@@ -12,9 +12,10 @@ msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-05-15 14:21+0200\n"
-"PO-Revision-Date: 2010-05-20 19:10+0800\n"
+"PO-Revision-Date: 2010-05-26 21:06+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -103,9 +104,8 @@ msgstr "游戏大厅音效"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:107
-#, fuzzy
 msgid "Disable notifications"
-msgstr "禁止自动存档。"
+msgstr "禁止桌面提示"
 
 #. [ai]: id=testing_ai_default
 #: data/ai/ais/testing_ai_default.cfg:5
@@ -265,7 +265,7 @@ msgstr "总体管理与协调"
 #. [about]
 #: data/core/about.cfg:231
 msgid "Artwork and Graphics"
-msgstr "插图与图像"
+msgstr "美术与图像"
 
 #. [about]
 #: data/core/about.cfg:583
@@ -668,10 +668,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Battle for Wesnoth是一个回合制策略游戏，与许多现代的策略游戏不尽相同。其他游"
-"戏着眼于复杂性，而Battle for Wesnoth却醉心于简单的规则与玩法，不过这并不会使"
-"得游戏变得“简陋”——从简易的规则中可以演化出丰富的策略，使得本游戏易于学习，难"
-"于精通。"
+"韦诺之战是一个回合制策略游戏，与许多现代的策略游戏不尽相同。其他游戏着眼于复"
+"杂性，而韦诺之战却醉心于简单的规则与玩法，不过这并不会使得游戏变得“简陋”——从"
+"简易的规则中可以演化出丰富的策略，使得本游戏易于学习，难于精通。"
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:141
@@ -687,9 +686,9 @@ msgid ""
 "of the game. For more detailed information on special situations and "
 "exceptions, please follow the links included."
 msgstr ""
-"这些页面概述了玩Battle for Wesnoth所必需的知识，包括基本玩法与游戏背后的基本"
-"机制。当您在游戏时遇到新的要素时，相应的新信息也会添加进来。如果需要了解详情"
-"或是特殊情况与例外情形，请跟随文中的链接。"
+"这些页面概述了玩韦诺之战所必需的知识，包括基本玩法与游戏背后的基本机制。当您"
+"在游戏时遇到新的要素时，相应的新信息也会添加进来。如果需要了解详情或是特殊情"
+"况与例外情形，请跟随文中的链接。"
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:144
@@ -706,10 +705,9 @@ msgstr ""
 "\n"
 "\n"
 "刚开始玩时，建议您在主菜单点击<italic>text=教程</italic>。这将带您进入互动教"
-"程，该模式将教给您Wesnoth的基本玩法。在这之后，建议您先玩“王座继承者”战役。先"
-"点击<italic>text=战役</italic>，再点击<italic>text=王座继承者</italic>。由"
-"于“Battle for Wesnoth”可能具有很强的挑战性，您可能希望从<italic>text=容易</"
-"italic>开始。"
+"程，该模式将教给您韦诺的基本玩法。在这之后，建议您先玩“王座继承者”战役。先点"
+"击<italic>text=战役</italic>，再点击<italic>text=王座继承者</italic>。由于“韦"
+"诺之战”可能具有很强的挑战性，您可能会希望从<italic>text=容易</italic>开始。"
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:147
@@ -817,7 +815,7 @@ msgid ""
 msgstr ""
 "游戏开始时，每一方都有一位领袖在城堡主楼里。在战斗开始时，以及战斗过程中，您"
 "可能需要为您的部队征募<ref>dst='..units' text='单位'</ref>。要想征募单位，您"
-"的首领（例如“王座继承者”战役中的Konrad）必须位于<ref>dst='terrain_castle' "
+"的首领（例如“王座继承者”战役中的科纳德）必须位于<ref>dst='terrain_castle' "
 "text='城堡'</ref>的主楼上。而后您将可以在菜单中选择“征募”或右键点击城堡内的一"
 "个格子并选择<italic>text=征募</italic>。此时会弹出征募菜单，其中列出了所有可"
 "以征募的单位类别和所需金币数。点击一个单位可以查看其数据，然后点击征募按钮就"
@@ -978,14 +976,14 @@ msgid ""
 "a move in a village you don't already own will also use up a unit's "
 "movement, but will still allow it to attack."
 msgstr ""
-"Battle for Wesnoth中单位的移动很简单。只需点击选中您想要移动的单位，再点击目"
-"的地就行了。当单位被选中时，该单位在本回合可移动的范围就会以高亮显示，而本回"
-"合无法到达的区域则会暗下去。移动鼠标到高亮显示的格子里，该单位在目的地的防御"
-"值（闪避率）便会显示出来。移动鼠标到暗格子上还会显示要到达那里所需的回合数，"
-"点击该格子会让单位以最佳的路线移动，并在接下来的几回合中到达目的地。如果您没"
-"有用完本回合中某单位所有的移动点数，则还可以继续移动他。当您要交换两个单位的"
-"位置时，这是很有用的。如果命令单位进行攻击，则将耗尽他的移动点数。当单位进入"
-"一个您还没有占领的村庄时也会耗尽所有的移动点数，但他仍然能够攻击。"
+"韦诺之战中单位的移动很简单。只需点击选中您想要移动的单位，再点击目的地就行"
+"了。当单位被选中时，该单位在本回合可移动的范围就会以高亮显示，而本回合无法到"
+"达的区域则会暗下去。移动鼠标到高亮显示的格子里，该单位在目的地的防御值（闪避"
+"率）便会显示出来。移动鼠标到暗格子上还会显示要到达那里所需的回合数，点击该格"
+"子会让单位以最佳的路线移动，并在接下来的几回合中到达目的地。如果您没有用完本"
+"回合中某单位所有的移动点数，则还可以继续移动他。当您要交换两个单位的位置时，"
+"这是很有用的。如果命令单位进行攻击，则将耗尽他的移动点数。当单位进入一个您还"
+"没有占领的村庄时也会耗尽所有的移动点数，但他仍然能够攻击。"
 
 #. [topic]: id=movement
 #: data/core/help.cfg:216
@@ -1026,9 +1024,9 @@ msgstr ""
 "\n"
 "\n"
 "移动时，您还需要记住控制区域的概念。每个单位都会在紧邻自身的格子中产生控制区"
-"域，敌军若进入那些格子，将立即耗尽移动点数。学习如何利用控制区域，是玩Wesnoth"
-"时的一个重点。只有<ref>dst='ability_skirmisher' text='游击'</ref>能力可以忽略"
-"控制区域的影响。"
+"域，敌军若进入那些格子，将立即耗尽移动点数。学习如何利用控制区域，是玩韦诺时"
+"的一个重点。只有<ref>dst='ability_skirmisher' text='游击'</ref>能力可以忽略控"
+"制区域的影响。"
 
 #. [topic]: id=movement
 #: data/core/help.cfg:220
@@ -1102,11 +1100,11 @@ msgid ""
 "involves weapons such as swords, axes or fangs; and ranged, which usually "
 "involves weapons such as bows, spears and fireballs."
 msgstr ""
-"Battle for Wesnoth中的战斗总是发生在相邻的两个单位之间。点击您的单位，然后再"
-"点击您想攻击的敌人：您的单位会向敌人方向移动，当两个单位相邻时，战斗就会开"
-"始。进攻者和防御者交替打击对方，直到都用完被分配的攻击次数为止。进攻者选择一"
-"种武器进行攻击，而防御者会使用相同种类的武器进行防御。攻击种类有两种：近战，"
-"使用的武器通常包括剑，斧，或者利齿；远程，使用的武器通常包括弓，矛以及火球。"
+"韦诺之战中的战斗总是发生在相邻的两个单位之间。点击您的单位，然后再点击您想攻"
+"击的敌人：您的单位会向敌人方向移动，当两个单位相邻时，战斗就会开始。进攻者和"
+"防御者交替打击对方，直到都用完被分配的攻击次数为止。进攻者选择一种武器进行攻"
+"击，而防御者会使用相同种类的武器进行防御。攻击种类有两种：近战，使用的武器通"
+"常包括剑，斧，或者利齿；远程，使用的武器通常包括弓，矛以及火球。"
 
 #. [topic]: id=combat
 #: data/core/help.cfg:240
@@ -1251,9 +1249,9 @@ msgid ""
 "and Arcane attacks. Different units may have resistances which alter the "
 "damage which they take from certain damage types."
 msgstr ""
-"在Wesnoth里，有三种伤害类型通常和物理攻击有关：剑刃，穿刺和冲击伤害。此外，还"
-"有三种伤害类型通常和魔法攻击有关：火焰，寒冰和奥术攻击。不同的单位可能对特定"
-"的伤害类型具有抗性，从而改变被击中时受到的伤害。"
+"在韦诺中，有三种伤害类型通常和物理攻击有关：剑刃，穿刺和冲击伤害。此外，还有"
+"三种伤害类型通常和魔法攻击有关：火焰，寒冰和奥术攻击。不同的单位可能对特定的"
+"伤害类型具有抗性，从而改变被击中时受到的伤害。"
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:263
@@ -1270,8 +1268,8 @@ msgstr ""
 "\n"
 "\n"
 "抗性的原理很简单：如果一个单位对某种伤害类型有40%的抗性，则被该种伤害类型击中"
-"时减少40%的伤害值。一个单位也有可能更易受某种伤害。如果一个单位对某种伤害有-"
-"100%的抗性，则被该种伤害类型击中时增加100%的伤害值。"
+"时减少40%的伤害值。一个单位也有可能更易受某种伤害。如果一个单位对某种伤害"
+"有-100%的抗性，则被该种伤害类型击中时增加100%的伤害值。"
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:265
@@ -1450,9 +1448,9 @@ msgid ""
 msgstr ""
 "战斗中，您的单位不可避免地会受到伤害。当一个单位"
 "<ref>dst='experience_and_advancement' text='升级'</ref>时，其生命值会完全回"
-"复。这会在您和敌人单位的战斗结束后发生，而不论当前是否是您的回合。Wesnoth还为"
-"您的单位提供了几种其他的治疗方式，这些治疗全部在您的回合的开始，而您还没有进"
-"行操作时发生。"
+"复。这会在您和敌人单位的战斗结束后发生，而不论当前是否是您的回合。韦诺还为您"
+"的单位提供了几种其他的治疗方式，这些治疗全部在您的回合的开始，而您还没有进行"
+"操作时发生。"
 
 #. [topic]: id=healing
 #: data/core/help.cfg:309
@@ -1539,9 +1537,9 @@ msgid ""
 "gold over from one scenario to the next. There are two aspects to this; "
 "Income and Upkeep."
 msgstr ""
-"在Wesnoth中，仅仅征募单位并战斗是不够的。您还得注意您的金币，特别是在战役中，"
-"因为您可以将多余的金币携带到下一场景。影响金币数量的主要是两个方面：收入和维"
-"护费用。"
+"在韦诺中，仅仅征募单位并战斗是不够的。您还得注意您的金币，特别是在战役中，因"
+"为您可以将多余的金币携带到下一场景。影响金币数量的主要是两个方面：收入和维护"
+"费用。"
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:325
@@ -1605,9 +1603,9 @@ msgid ""
 msgstr ""
 "\n"
 "维护费用的支付规则中有两个重要的例外：即具有忠诚特质的单位以及领袖不需要支付"
-"维护费用。每个场景开始时您所拥有的单位（比如Delfador），或在场景中加入己方的"
-"单位（如在“王座继承者”第二场景中加入的骑手）通常都具有忠诚特质。而您所扮演的"
-"角色（如Konrad）几乎总是一位领袖。"
+"维护费用。每个场景开始时您所拥有的单位（比如黎伐多），或在场景中加入己方的单"
+"位（如在“王座继承者”第二场景中加入的骑手）通常都具有忠诚特质。而您所扮演的角"
+"色（如科纳德）几乎总是一位领袖。"
 
 #. [topic]: id=wrap_up
 #: data/core/help.cfg:336
@@ -1623,7 +1621,7 @@ msgid ""
 "ref>, but you now know everything you need to know to play the Heir to the "
 "Throne campaign. Have fun, and good luck!"
 msgstr ""
-"Wesnoth的基础介绍到此结束。您或许想要继续阅读“基本策略”，或再熟悉一下"
+"韦诺的基础介绍到此结束。您或许想要继续阅读“基本策略”，或再熟悉一下"
 "<ref>dst='..traits_section' text='特质'</ref>和<ref>dst='.."
 "abilities_section' text='能力'</ref>。现在您已经有足够的知识去玩“王座继承"
 "者”战役了。祝您好运，玩得开心！"
@@ -2820,7 +2818,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"为当前阵营添加指定数量的金子。\n"
+"为当前阵营添加指定数量的金币。\n"
 "\n"
 
 #. [topic]: id=debug_commands
@@ -3347,7 +3345,7 @@ msgstr ""
 #. [set_menu_item]: id=ai_controller_leader_control_{CONTROLLED_SIDE}
 #: data/core/macros/ai.cfg:495
 msgid "Ask $ally_leader.name (leader of side $ally_leader.side) to move here"
-msgstr "让 $ally_leader.name（$ally_leader.side 阵营的领袖）移动到这里"
+msgstr "让$ally_leader.name（$ally_leader.side阵营的领袖）移动到这里"
 
 #. [option]: type=behaviour
 #: data/core/macros/ai_controller.cfg:144
@@ -3357,7 +3355,7 @@ msgstr "更注重进攻"
 #. [command]
 #: data/core/macros/ai_controller.cfg:160
 msgid "aggressive."
-msgstr "注重进攻"
+msgstr "注重进攻。"
 
 #. [option]: type=behaviour
 #: data/core/macros/ai_controller.cfg:177
@@ -3367,7 +3365,7 @@ msgstr "更注重防守"
 #. [command]
 #: data/core/macros/ai_controller.cfg:190
 msgid "defensive."
-msgstr "注重防守"
+msgstr "注重防守。"
 
 #. [option]: type=objective
 #: data/core/macros/ai_controller.cfg:211
@@ -3400,24 +3398,24 @@ msgstr "重点攻击哪方敌军？"
 #: data/core/macros/ai_controller.cfg:441
 #: data/core/macros/ai_controller.cfg:446
 msgid "(side $temp_i|)"
-msgstr "（阵营 $temp_i|）"
+msgstr "（阵营$temp_i|）"
 
 #. [then]
 #: data/core/macros/ai_controller.cfg:286
 #: data/core/macros/ai_controller.cfg:442
 msgid "$side_i_leader.name (side $temp_i|)"
-msgstr "$side_i_leader.name （阵营 $temp_i|）"
+msgstr "$side_i_leader.name （阵营$temp_i|）"
 
 #. [else]
 #: data/core/macros/ai_controller.cfg:291
 #: data/core/macros/ai_controller.cfg:447
 msgid "side $temp_i"
-msgstr "阵营 $temp_i"
+msgstr "阵营$temp_i"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:307
 msgid "focusing on defeating $this_enemy_description|."
-msgstr "重点攻击 $this_enemy_description|。"
+msgstr "重点攻击$this_enemy_description|。"
 
 #. [value]
 #. [option]: speaker=narrator
@@ -3441,7 +3439,7 @@ msgstr "着重保护哪方友军？"
 #. [command]
 #: data/core/macros/ai_controller.cfg:463
 msgid "focusing on protecting $this_ally_description|."
-msgstr "重点保护 $this_ally_description|。"
+msgstr "重点保护$this_ally_description|。"
 
 #. [option]: type=objective
 #: data/core/macros/ai_controller.cfg:524
@@ -3461,7 +3459,7 @@ msgstr "把守此地点"
 #. [command]
 #: data/core/macros/ai_controller.cfg:564
 msgid "focusing on defending the area around $x1|,$y1|."
-msgstr "重点防御 $x1|,$y1| 周围的区域。"
+msgstr "重点防御$x1|,$y1|周围的区域。"
 
 #. [print]
 #: data/core/macros/ai_controller.cfg:606
@@ -3494,7 +3492,7 @@ msgstr "未设置。"
 msgid ""
 "$ally_leader.name (side $ally_side|) has not been given any instructions and "
 "is acting normally."
-msgstr "$ally_leader.name（阵营 $ally_side|）没有被授予命令，目前正常行动。"
+msgstr "$ally_leader.name（阵营$ally_side|）没有被授予命令，目前正常行动。"
 
 #. [value]: speaker=narrator
 #: data/core/macros/ai_controller.cfg:825
@@ -3515,7 +3513,7 @@ msgstr ""
 msgid ""
 "$ally_leader.name (side $ally_side|) is carrying out the following "
 "instructions:"
-msgstr "$ally_leader.name (阵营 $ally_side|) 正在执行以下命令："
+msgstr "$ally_leader.name（阵营 $ally_side|）正在执行以下命令："
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:854
@@ -3550,7 +3548,7 @@ msgstr "把领袖移动到这里"
 
 #: data/core/macros/ai_controller.cfg:1065
 msgid "moving leader to $x1|,$y1|."
-msgstr "把领袖移动到 $x1|,$y1|。"
+msgstr "把领袖移动到$x1|,$y1|。"
 
 #: data/core/macros/ai_controller.cfg:1066
 msgid "Clear special orders"
@@ -3581,19 +3579,19 @@ msgstr "最大生命值奖励+"
 
 #: data/core/macros/carryover-utils.cfg:9
 msgid "Early finish bonus."
-msgstr "提前结束奖励。"
+msgstr "提前过关奖励："
 
 #: data/core/macros/carryover-utils.cfg:12
 msgid "No early finish bonus."
-msgstr "无提前结束奖励。"
+msgstr "无提前过关奖励。"
 
 #: data/core/macros/carryover-utils.cfg:15
 msgid "<small>(early finish bonus)</small>"
-msgstr "<small>（提前结束奖励）</small>"
+msgstr "<small>（提前过关奖励）</small>"
 
 #: data/core/macros/carryover-utils.cfg:18
 msgid "No gold carried over to the next scenario."
-msgstr "金子不会带到下一场景。"
+msgstr "不会有任何金币被带到下一场景。"
 
 #: data/core/macros/carryover-utils.cfg:22
 msgid ""
@@ -3601,7 +3599,7 @@ msgid ""
 "100% of finishing gold carried over to the next scenario."
 msgstr ""
 "\n"
-"100%金子会带到下一场景。"
+"100%的剩余金币会带到下一场景。"
 
 #: data/core/macros/carryover-utils.cfg:26
 msgid ""
@@ -3609,7 +3607,7 @@ msgid ""
 "40% of finishing gold carried over to the next scenario."
 msgstr ""
 "\n"
-"40%金子会带到下一场景。"
+"40%的剩余金币会带到下一场景。"
 
 #: data/core/macros/carryover-utils.cfg:30
 msgid ""
@@ -3617,7 +3615,7 @@ msgid ""
 "20% of finishing gold carried over to the next scenario."
 msgstr ""
 "\n"
-"20%金子会带到下一场景。"
+"20%的剩余金币会带到下一场景。"
 
 #. [objective]: description=<span color='white'>, condition=win
 #: data/core/macros/carryover-utils.cfg:34
@@ -3749,7 +3747,7 @@ msgstr "这个可怜的家伙喝了一些相当糟糕的东西。"
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:402
 msgid "Ring of Regeneration"
-msgstr "恢复戒指"
+msgstr "再生戒指"
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:405
@@ -3779,7 +3777,7 @@ msgstr "这支法杖将赐予持有者加速移动的能力。"
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:482
 msgid "Only magical beings can wield such an object."
-msgstr "只有魔法造物才可以携带这样的物体。"
+msgstr "只有魔法生物才可以携带这样的物体。"
 
 #: data/core/macros/items.cfg:532
 msgid "Only the mermen can use this item!"
@@ -3816,15 +3814,15 @@ msgid ""
 "Merritos Gark,Morusté,Murr,Omataké,Reshan,Vashitt,Velnick,Veralon,Veramo,"
 "Verath,Verditt,Verkon,Verlinn,Vermad,Vertick,Vladnir"
 msgstr ""
-"Egar,Elch,Ga'ash,Gadé Ihn,Gakré Ohm,Galeck,Galsh,Garadin,Garchin,Gark,Garlan,"
-"Garlin Ohn,Garrutin,Gart'lo,Garushi,Gashinar,Gashol,Gaushii,Gaustun,Gegchi,"
-"Gelka Kon,Gelknick,Gillan,Gisharri,Gost,Grada,Græt Ihn,Grashen,Gravlan,Grag,"
-"Grelnit,Grenn Ohn,Greth,Gribbel,Gridda,Grish,Gron Ihn,Ka,Kahn Ih,Karigan,"
-"Karri Kon,Karron,Kask,Kegrid,Kerath Ihn,Kerath Kor,Klash,Kon Garashé,Kraag,"
-"Krall Ohn,Kran Kor,Krash,Kraslar,Krenli,Kruggen,Kun,Mah Toa,Margian,"
-"Mar'Ildian,Markan,Markinos,Mar Ohn,Marra Di'lek,Marrito,Marritos,Merkush,"
-"Merritos Gark,Morusté,Murr,Omataké,Reshan,Vashitt,Velnick,Veralon,Veramo,"
-"Verath,Verditt,Verkon,Verlinn,Vermad,Vertick,Vladnir"
+"埃加,埃尔奇,伽·埃希,伽德·伊亨,伽克雷·欧姆,伽雷克,伽尔什,伽拉丁,伽钦,伽克,伽"
+"兰,伽林·欧亨,伽鲁丁,伽特·洛,伽鲁什,伽什纳,伽朔尔,高什,高斯唐,基格奇,基尔卡·"
+"孔,基尔克内克,基立安,基沙里,格斯特,格拉达,格莱特·伊亨,格拉申,格拉夫兰,格拉格,"
+"格雷林特,格雷恩·欧亨,格雷斯,格里贝尔,格里达,格里什,格罗恩·伊亨,卡,卡亨·伊恩,"
+"卡里甘,卡里·孔,卡罗恩,卡斯克,克格利德,克拉斯·伊亨,克拉斯·阔,克拉什,孔·伽拉什,"
+"克拉格,克拉尔·欧亨,克拉恩·阔,克拉什,克拉斯拉,克伦利,克拉根,亢,玛·托拉,玛吉安,"
+"玛·伊尔迪安,玛坎,玛基诺斯,玛·欧亨,玛拉•狄雷克,玛利托,玛利托斯,玛库什,玛利托斯"
+"·伽克,莫鲁斯特,玛阿,欧玛塔克,瑞山,法希特,维尔尼克,维拉隆,维拉莫,维拉什,维拉迪"
+"特,维尔孔,维尔林,维尔麦德,维尔提克,维拉德尼尔"
 
 #: data/core/macros/names.cfg:19
 msgid ""
@@ -3832,9 +3830,9 @@ msgid ""
 "Eshi,Olath,Omage,Omagrra,Orra Ka,Orridan,Orrida,Oshibi,Vallin,Valnirra,"
 "Valnitt,Velisk,Verra,Vellin Ka,Veshtar,Vushtin"
 msgstr ""
-"Alen Ka,Alinash Mal,Ashirt,Auginet Ka,Auuglann,Damell,Dell,Demla,Dinsill,"
-"Eshi,Olath,Omage,Omagrra,Orra Ka,Orridan,Orrida,Oshibi,Vallin,Valnirra,"
-"Valnitt,Velisk,Verra,Vellin Ka,Veshtar,Vushtin"
+"艾伦·卡,艾尔纳什·玛尔,阿希尔特,奥基奈特·卡,奥格兰,达姆埃尔,戴尔,德穆拉,丁希"
+"尔,艾希,欧拉丝,欧玛格,欧玛格拉,欧拉·卡,欧丽丹,欧丽达,欧什比,瓦琳,瓦尔尼拉,瓦"
+"尔尼特,瓦丽思科,瓦拉,瓦琳·卡,瓦什塔,瓦什丁"
 
 #: data/core/macros/names.cfg:23
 msgid ""
@@ -3882,49 +3880,51 @@ msgid ""
 "Trithduril,Trithduring,Trithdurlos,Trithdurol,Trithdursil,Trithdurus,"
 "Triththaas,Triththail,Triththaing,Triththasol,Triththaus"
 msgstr ""
-"Aigaithas,Aigaithil,Aigaithing,Aigaithol,Aigalas,Aigaling,Aigalis,Aigalol,"
-"Aigalsil,Aigatas,Aigatis,Aigatlos,Aigatsil,Aigatsol,Aigatus,Aigcatas,"
-"Aigcatil,Aigcating,Aigcatis,Aigcatsil,Aigcatsol,Aigcatus,Aigdring,Aigdris,"
-"Aigdrlos,Aigdrsil,Aigdrsol,Aigduras,Aigdurlos,Aigdursol,Aigthaing,Aigthais,"
-"Aigthasil,Aigthaus,Alaithas,Alaithis,Alaithlos,Alaithol,Alaithsol,Alaithus,"
-"Alalas,Alalil,Alalol,Alalsol,Alalus,Alatas,Alatil,Alating,Alatlos,Alatsil,"
-"Alcatil,Alcatis,Alcatlos,Alcatsil,Aldras,Aldril,Aldring,Aldris,Aldrlos,"
-"Aldrol,Aldrsol,Alduras,Aldurlos,Aldurol,Althaas,Althail,Althalos,Althaol,"
-"Althasil,Althasol,Althaus,Anaithas,Anaithil,Anaithing,Anaithis,Anaithsil,"
-"Anaithus,Analil,Anallos,Analol,Analsil,Analus,Anatas,Anating,Anatis,Anatol,"
-"Anatsol,Ancatas,Ancatil,Ancatol,Ancatus,Andril,Andris,Andrlos,Andrus,Anduril,"
-"Andurol,Andursol,Andurus,Anthaas,Anthaing,Anthais,Anthaol,Anthasil,Anthasol,"
-"Anthaus,Augaithas,Augaithing,Augaithsil,Augaithus,Augalas,Augaling,Augalol,"
-"Augating,Augatlos,Augatol,Augatsil,Augatsol,Augcatas,Augcatil,Augcatis,"
-"Augcatol,Augcatsil,Augcatus,Augdras,Augdris,Augdrsil,Augdrus,Augduras,"
-"Augduril,Augduring,Augdurol,Augdursol,Augdurus,Augthail,Augthais,Augthalos,"
-"Augthaol,Dulaithil,Dulaithing,Dulaithlos,Dulaithsil,Dulaithsol,Dulalas,"
-"Dulaling,Dulalis,Dulalsil,Dulatil,Dulating,Dulatol,Dulatsol,Dulatus,Dulcatil,"
-"Dulcating,Dulcatlos,Dulcatol,Dulcatsil,Dulcatsol,Duldril,Duldris,Duldrlos,"
-"Duldrol,Duldrsil,Duldrus,Dulduras,Dulduring,Duldursil,Duldurus,Dulthalos,"
-"Dulthasil,Dulthasol,Dulthaus,Glamaithil,Glamaithis,Glamaithol,Glamaithsol,"
-"Glamalil,Glamaling,Glamalis,Glamallos,Glamalsil,Glamalus,Glamatil,Glamatus,"
-"Glamcatas,Glamcatil,Glamcating,Glamcatsil,Glamcatus,Glamdras,Glamdril,"
-"Glamdrlos,Glamdrsol,Glamduras,Glamduril,Glamduring,Glamduris,Glamdursol,"
-"Glamthaas,Glamthaol,Glamthasil,Glamthasol,Glamthaus,Glomin,Gomaithas,"
-"Gomaithil,Gomaithol,Gomaithsol,Gomalil,Gomalis,Gomalus,Gomatas,Gomatil,"
-"Gomating,Gomatis,Gomatlos,Gomatol,Gomcatil,Gomcatis,Gomcatlos,Gomdras,"
-"Gomdril,Gomdring,Gomdris,Gomdrol,Gomdrsil,Gomduris,Gomdurlos,Gomdursil,"
-"Gomdursol,Gomdurus,Gomthaas,Gomthalos,Gomthasol,Naraithil,Naraithing,"
-"Naraithol,Naraithsil,Naraithsol,Naraithus,Naralas,Naralil,Naralsil,Naralus,"
-"Naratlos,Naratol,Naratsil,Narcating,Narcatis,Narcatol,Narcatsil,Narcatsol,"
-"Nardras,Nardril,Nardring,Nardris,Nardrol,Nardrsil,Nardrsol,Nardrus,Narduras,"
-"Narduril,Nardurol,Narthalos,Narthaol,Pelaithas,Pelaithil,Pelaithing,"
-"Pelaithis,Pelaithlos,Pelaithol,Pelaithsil,Pelaithsol,Pelalil,Pelaling,"
-"Pelalis,Pelalsil,Pelalsol,Pelalus,Pelatil,Pelating,Pelatis,Pelatol,Pelatsil,"
-"Pelatus,Pelcating,Pelcatlos,Pelcatol,Pelcatsil,Peldras,Peldril,Peldrsol,"
-"Peldrus,Pelduril,Pelduring,Pelduris,Peldurol,Peldursol,Peldurus,Pelthaas,"
-"Pelthail,Pelthasil,Trithaithas,Trithaithil,Trithaithis,Trithaithlos,"
-"Trithaithol,Trithaithsil,Trithaithsol,Trithaithus,Trithalis,Trithalol,"
-"Trithatas,Trithatil,Trithatlos,Trithatsol,Trithcatlos,Trithcatsol,Trithcatus,"
-"Trithdril,Trithdring,Trithdris,Trithdrlos,Trithdrol,Trithdrsol,Trithdrus,"
-"Trithduril,Trithduring,Trithdurlos,Trithdurol,Trithdursil,Trithdurus,"
-"Triththaas,Triththail,Triththaing,Triththasol,Triththaus"
+"埃该萨斯,埃该希尔,埃该辛,埃该索尔,埃加拉斯,埃加林,埃加利斯,埃加洛尔,埃加希尔,"
+"埃加塔斯,埃加提斯,埃加托洛斯,埃加特希尔,埃加特索尔,埃加塔斯,埃格卡塔斯,埃格卡"
+"提尔,埃格卡廷,埃格卡提斯,埃格卡特希尔,埃格卡特索尔,埃格卡托斯,埃格杜林,埃格杜"
+"林斯,埃格多洛斯,埃格多希尔,埃格多索尔,埃格杜拉斯,埃格杜洛斯,埃格杜索尔,埃格沙"
+"恩,埃格沙埃斯,埃格沙希尔,埃格沙斯,埃莱沙斯,埃莱希斯,埃莱希洛斯,埃莱希洛尔,埃"
+"莱希索尔,埃莱萨斯,阿拉拉斯,阿拉利尔,阿拉洛尔,阿拉尔索尔,阿拉拉鲁斯,阿拉塔斯,"
+"阿拉提尔,阿拉廷,阿拉特洛斯,阿拉特希尔,阿尔卡提尔,阿尔卡提斯,阿尔卡特洛斯,阿尔"
+"卡特希尔,阿尔德拉斯,阿尔德里尔,阿尔德林,阿尔德利斯,阿尔德洛斯,阿尔德洛尔,阿尔"
+"德索尔,阿尔杜拉斯,阿尔杜拉洛斯,阿尔杜洛尔,阿尔萨斯,阿尔赛尔,阿尔萨洛尔,阿尔萨"
+"欧尔,阿尔萨希尔,阿尔萨索尔,阿尔骚斯,阿奈萨斯,阿奈希尔,阿奈辛,阿奈希斯,阿奈斯"
+"希尔,阿耐萨尔斯,阿耐利尔,阿纳洛斯,阿纳洛尔,阿纳尔希尔,阿纳鲁斯,阿纳塔斯,阿纳"
+"廷,阿纳提斯,阿纳托尔,阿纳特索尔,安卡塔斯,安卡提尔,安卡托尔,安卡图斯,安德利尔,"
+"安德利斯,安德罗斯,安德鲁斯,安度利尔,安度洛尔,安度索尔,安度鲁斯,安萨斯,安萨因,"
+"安斯埃斯,安斯奥尔,安萨希尔,安萨索尔,安骚斯,奥该萨斯,奥该辛,奥该斯希尔,奥该苏"
+"斯,奥伽拉斯,奥伽林,奥伽洛尔,奥伽廷,奥伽托洛斯,奥伽托尔,奥加特希尔,奥加特索尔,"
+"奥格卡塔斯,奥格卡提尔,奥格卡提斯,奥格卡托尔,奥格卡特希尔,奥格卡托斯,奥格德拉"
+"斯,奥格德利斯,奥格德拉希尔,奥格德鲁斯,奥格杜拉斯,奥格杜利尔,奥格杜林,奥格度洛"
+"尔,奥格杜拉索尔,奥格杜鲁斯,奥格希尔,奥格夏斯,奥格夏洛斯,奥格夏埃尔,杜莱希尔,"
+"杜莱辛,杜莱希洛斯,杜莱斯尔,杜莱希索尔,杜拉拉斯,杜拉林,杜拉利斯,杜拉尔希尔,杜"
+"拉提尔,杜拉廷,杜拉托尔,杜拉特索尔,杜拉图斯,杜尔卡提尔,杜尔卡廷,杜尔卡特洛斯,"
+"杜尔卡托尔,杜尔卡特希尔,杜尔卡特索尔,杜尔德利尔,杜尔德利斯,杜尔德洛斯,杜尔德"
+"洛尔,杜尔德拉希尔,杜尔德鲁斯,杜尔杜拉斯,杜尔杜林,杜尔杜拉希尔,杜尔杜鲁斯,杜尔"
+"夏洛斯,杜尔夏希尔,杜尔夏索尔,杜尔沙斯,格拉迈希尔,格拉迈希斯,格拉迈索尔,格拉迈"
+"希索尔,格拉马利尔,格拉马林,格拉马利斯,格拉马洛斯,格拉马尔希尔,格拉马鲁斯,格拉"
+"马提尔,格拉马图斯,格拉姆卡塔斯,格拉姆卡提尔,格拉姆卡廷,格拉姆卡特希尔,格拉姆"
+"卡图斯,格拉姆德拉斯,格拉姆德利尔,格拉姆德洛斯,格拉姆德索尔,格拉姆杜拉斯,格拉"
+"姆杜利尔,格拉姆杜林,格拉姆杜利斯,格拉姆杜索尔,格拉姆萨阿斯,格拉姆萨奥尔,格拉"
+"姆萨希尔,格拉姆萨索尔,格拉姆骚斯,格罗明,戈麦萨斯,戈麦希尔,戈麦索尔,戈麦斯索"
+"尔,戈马利尔,戈马利斯,戈马鲁斯,戈马塔斯,戈马提尔,戈马廷,戈马提斯,戈马特洛斯,戈"
+"马托尔,戈姆卡提尔,戈姆卡提斯,戈姆卡特洛斯,戈姆德拉斯,戈姆德利尔,戈姆德林,戈姆"
+"德利斯,戈姆德洛尔,戈姆德希尔,戈姆杜利斯,戈姆杜尔洛斯,戈姆杜希尔,戈姆杜索尔,戈"
+"姆杜鲁斯,戈姆夏阿斯,戈姆夏洛斯,戈姆夏索尔,纳莱希尔,纳莱辛,纳莱索尔,纳莱希尔,"
+"纳莱希索尔,纳莱夏斯,纳拉拉斯,纳拉利尔,纳拉尔希尔,纳拉鲁斯,纳拉特洛斯,纳拉托"
+"尔,纳拉特希尔,纳,纳卡廷,纳卡托尔,纳卡特希尔,纳卡特索尔,纳德拉斯,纳德利尔,纳德"
+"林,纳德利斯,纳德洛尔,纳德希尔,纳德索尔,纳杜鲁斯,纳杜拉斯,纳杜利尔,纳杜洛尔,纳"
+"夏利斯,纳夏欧尔,佩莱萨斯,佩莱希尔,佩莱辛,佩莱希斯,佩莱希洛斯,佩莱索尔,佩莱夏"
+"希尔,佩莱夏索尔,佩莱利尔,佩拉林,佩拉利斯,佩拉尔希尔,佩拉尔索尔,佩拉鲁斯,佩拉"
+"提尔,佩拉廷,佩拉提斯,佩拉托尔,佩拉特索尔,佩拉图斯,佩尔卡廷,佩尔卡特洛斯,佩尔"
+"卡托尔,佩尔卡特索尔,佩尔德拉斯,佩尔德利尔,佩尔德拉索尔,佩尔德鲁斯,佩尔杜利尔,"
+"佩尔杜林,佩尔杜利斯,佩尔杜洛尔,佩尔杜索尔,佩尔杜鲁斯,佩尔萨阿斯,佩尔萨埃尔,佩"
+"尔萨希尔,崔塞萨斯,崔塞希尔,崔塞希斯,崔塞斯洛斯,崔赛索尔,崔赛斯希尔,崔塞斯索"
+"尔,崔赛苏斯,崔萨利斯,崔萨洛尔,崔萨塔斯,崔萨提尔,崔萨特洛斯,崔萨特索尔,崔斯卡"
+"特洛斯,崔斯卡特索尔,崔斯卡图斯,崔斯德利尔,崔斯德林,崔斯德利斯,崔斯德洛斯,崔斯"
+"德洛尔,崔斯德索尔,崔斯杜鲁斯,崔斯杜利尔,崔斯杜林,崔斯杜洛斯,崔斯杜洛尔,崔斯杜"
+"希尔,崔斯杜拉鲁斯,崔斯萨阿斯,崔斯赛尔,崔斯赛因,崔斯萨索尔,崔斯骚斯"
 
 #: data/core/macros/names.cfg:27
 msgid ""
@@ -3986,63 +3986,67 @@ msgid ""
 "Vándel,Vandir,Varalas,Vararion,Vebril,Vebrilas,Vebrinduil,Vel,Vilith,Vol,"
 "Vólas,Vóldur,Vondel,Vorfin,Vorfindil,Vulas,Vuldur,Vunduil,Vylas,Vyldor"
 msgstr ""
-"Amadrieriand,Amáril,Amelad,Ameldor,Amendel,Ameng,Amilmaldur,Amilmalith,"
-"Amilmandir,Amind,Amiol,Amiorion,Amithrarion,Amóldor,Amorfimir,Amorfir,Amowyn,"
-"Amulas,Amundil,Anán,Anebrin,Anebrir,Anémbor,Anénduil,Anerion,Anilad,Anil-"
-"Gawyn,Anilmambor,Anilmariand,Anior,Anithranduil,Anol,Anon,Anorfing,Anundil,"
-"Belán,Belandil,Belarandel,Belel,Belén,Belil-Gandil,Belilmand,Belilmang,"
-"Beliondil,Beliril,Belithraldor,Belithrawyn,Belólad,Belómir,Belondel,Belyrion,"
-"Cadriembor,Cadrieriand,Cálad,Caladrielas,Calándel,Caldur,Cáldur,Calebrindel,"
-"Calebrindir,Calénduil,Calil-Gandir,Calil-Gawyn,Calioriand,Caliril,Calónduil,"
-"Caloril,Cándir,Canduil,Caraldur,Carang,Célad,Celadrieriand,Celang,Celaral,"
-"Celarandil,Celáriand,Celebririon,Celelas,Celendel,Celér,Celilmalas,Celiondir,"
-"Celior,Celiorion,Celong,Celór,Celóril,Celorion,Celundir,Celuwyn,Celyndel,"
-"Cénduil,Cindil,Ciong,Cithralad,Cithraldur,Cithrand,Cithrandel,Cithraril,Col,"
-"Corfil,Corfildur,Cówyn,Cun,Cundir,Cylas,Delán,Delánd,Delandel,Delaraldur,"
-"Deláril,Delawyn,Deléng,Delilmaldor,Deliol,Delithrar,Deliwyn,Delóldor,"
-"Delorfilad,Delorfilith,Delorion,Delundil,Eäradriendel,Eäradrier,Eäránduil,"
-"Eäraralad,Eärebrindel,Eäréldor,Eäreng,Eärérion,Eärithrandil,Eäromir,"
-"Eärorfiriand,Eäryldur,Eäryriand,Eladrieng,Elálith,Elánd,Elándil,Elebrildor,"
-"Elebrindel,Elebriril,Elélas,Elémbor,Elemir,Elen,Elil-Garil,Elilmaldur,"
-"Eliomir,Eliondil,Elolas,Elólas,Elor,Elorfilad,Elradrien,Elralith,Elran,"
-"Elreldur,Elrilmand,Elrioldor,Elriolith,Elrithralith,Elrithranduil,Elrorfir,"
-"Elval,Elvandir,Elvaramir,Elváwyn,Elvebrind,Elvebrindel,Elvélith,Elvémir,"
-"Elverion,Elvil-Garion,Elvilmaldur,Elvilmaril,Elvioldur,Elvombor,Elvónduil,"
-"Elvorfimir,Elvorfiriand,Elvorfiril,Elvóriand,Elvund,Elyldor,Elyrion,Eowambor,"
-"Eowanduil,Eowar,Eowaraldor,Eowaran,Eowarar,Eowariand,Eowarion,Eowebrind,"
-"Eowémir,Eowil-Garion,Eowimbor,Eowiomir,Eowithrawyn,Eowóldur,Eoworfildor,"
-"Eowówyn,Eowylas,Fadriendel,Fandel,Farandir,Fáwyn,Fendel,Fer,Filman,Fioril,"
-"Fithraril,Forfilas,Fyrion,Gadriendil,Gadrieng,Galadrieldor,Galálad,Galálas,"
-"Galalith,Galar,Galelas,Galeldur,Galelith,Galémbor,Galithrariand,Galoldur,"
-"Galuldur,Galur,Galurion,Gambor,Gán,Ganduil,Garaldor,Gararil,Gelad,Géril,Gil-"
-"Gandel,Gil-Gang,Giombor,Githral,Githralad,Gladriendil,Glal,Glámbor,Glandil,"
-"Glarang,Glararil,Glilmal,Glimir,Glior,Glólas,Gloldor,Glómir,Glon,Glul,Golad,"
-"Gor,Gumbor,Gyl,Gymbor,Gyn,Harariand,Háriand,Hebril,Hemir,Hénduil,Hilas,Hil-"
-"Garion,Hilmariand,Hiong,Hirion,Hithrandel,Horfilad,Horfindel,Hundel,Hymir,"
-"Hyrion,Hywyn,Isadrieng,Isándir,Isarandel,Isarar,Iselas,Isér,Isilmandel,"
-"Isirion,Isithral,Isól,Isóndel,Isóng,Isorfilad,Isorfindir,Isuwyn,Isyndel,"
-"Legal,Legaran,Legémir,Legéril,Legilad,Legil-Gal,Legiondel,Legithralith,"
-"Legorfindil,Legorfirion,Legówyn,Legyl,Legyn,Linduilas,Lómadrieril,Lómarand,"
-"Lómariand,Lómebrilad,Lómebrind,Lómémbor,Lómilmaril,Lómiriand,Lómorfindil,"
-"Lómowyn,Madrieril,Maldur,Mánduil,Maraldur,Mebrin,Méng,Mérion,Miolith,Miomir,"
-"Mithrand,Mondir,Móndir,Morfilas,Morfin,Morfiriand,Mylith,Nadrieldor,Nalith,"
-"Nán,Nél,Nil-Galas,Nil-Galith,Nil-Gar,Nilmar,Nóndel,Norfildor,Norfilith,"
-"Norfindil,Norfindir,Numbor,Nyldur,Padrieriand,Padrieril,Pamir,Paraldor,"
-"Parariand,Pilmalad,Pindir,Pór,Porfildur,Pumbor,Pyldur,Rebrir,Réndir,"
-"Rilmandil,Rithrandil,Ról,Róldor,Roldur,Róldur,Rorfilad,Rorfindil,Rówyn,Ryn,"
-"Sadrielas,Sebrin,Sebriril,Sénd,Sil-Gal,Sólad,Sorfind,Sóriand,Tadriendir,"
-"Taral,Taraldur,Táriand,Tendel,Téwyn,Thradrieriand,Thrambor,Thraral,Threbring,"
-"Thrélad,Thréldur,Thril-Gamir,Thril-Gandir,Thril-Gar,Thrilmandel,Thrimir,"
-"Thrion,Thrithran,Throlas,Thrón,Thróng,Thrund,Thryriand,Til-Gan,Tilmalad,"
-"Tilmalas,Tinandir,Tinarambor,Tinarariand,Tinén,Tinil-Ganduil,Tinilmand,"
-"Tinilmawyn,Tinimir,Tinindil,Tinithrar,Tinoldor,Tinond,Tinorfind,Tinorfiriand,"
-"Tinóriand,Tinowyn,Tinun,Tinyl,Tion,Tolas,Torfildur,Tówyn,Tylad,Unadrieldor,"
-"Unadrier,Unál,Unalas,Unálas,Unaraldur,Unaril,Unárion,Unebrin,Unebrind,"
-"Uneldor,Unil,Unil-Gan,Uniolith,Unioril,Unólith,Unombor,Unóndel,Unondir,"
-"Unorfildor,Unorfiril,Unorfiwyn,Unulad,Uradrielas,Uradrierion,Urálas,Urálith,"
-"Urambor,Urér,Uril-Gambor,Urilmalith,Uróldor,Urorfildor,Urul,Urymir,Válad,Ván,"
-"Vándel,Vandir,Varalas,Vararion,Vebril,Vebrilas,Vebrinduil,Vel,Vilith,Vol,"
-"Vólas,Vóldur,Vondel,Vorfin,Vorfindil,Vulas,Vuldur,Vunduil,Vylas,Vyldor"
+"阿玛德利艾兰德,阿玛利尔,阿梅拉德,阿梅尔多,阿蒙德尔,阿蒙,阿米尔玛尔多,阿米尔玛"
+"利斯,阿米尔曼迪尔,阿明德,阿密欧尔,阿米欧利温,阿密斯拉利温,阿莫尔多,阿莫尔菲米"
+"尔,阿莫尔菲尔,阿莫温,阿穆拉斯,阿穆恩迪尔,阿南,阿纳布林,阿纳布利尔,阿纳姆波,阿"
+"纳恩杜伊尔,阿纳利温,阿尼拉德,阿尼尔-伽温,阿尼尔曼波,阿尼尔玛利安德,阿尼欧,阿"
+"尼斯兰杜伊尔,阿诺尔,阿诺恩,阿诺夫林,阿努迪尔,贝隆,贝兰迪尔,贝拉兰迪尔,贝雷尔,"
+"贝伦,贝利尔-甘迪尔,贝利尔曼德,贝利尔曼,贝利温迪尔,贝利理尔,贝利斯拉尔多,贝利"
+"斯拉温,贝洛拉德,贝洛米尔,贝隆德尔,贝利利温,卡德利姆波尔,卡德利尔安德,克拉德,"
+"卡拉德利尔拉斯,卡隆德尔,卡尔多,科尔多,卡勒布林德尔,卡勒布林迪尔,卡伦杜伊尔,卡"
+"利尔-甘迪尔,卡利尔-伽温,卡利欧利安德,卡利理尔,卡隆杜伊尔,卡洛利尔,坎迪尔,坎杜"
+"伊尔,卡莱尔杜尔,卡朗,希尔安德,希拉德利艾兰德,希朗,希拉莱尔,希拉兰迪尔,希洛尔"
+"艾兰德,希利布利利温,希利拉斯,希伦德尔,希勒,西利尔玛拉斯,希利温迪尔,希利欧,希"
+"利欧利温,希朗,希罗,希罗利尔,希罗利温,希伦迪尔,希鲁温,希林德尔,辛杜伊尔,辛迪"
+"尔,希温,希斯拉拉德,希斯拉尔多,希斯兰德,希斯兰德尔,希斯兰利尔,科尔,科菲尔,科菲"
+"尔多,科温,库恩,康迪尔,赛拉斯,德隆,德洛德,德兰德尔,德拉拉尔多,德洛利尔,德拉温,"
+"德伦,德利尔玛尔多,德利欧尔,德利斯拉尔,德利温,德洛尔多,德洛尔菲拉德,德洛尔菲利"
+"斯,德洛利温,德伦迪尔,艾拉德伦迪尔,艾拉德里尔,艾隆杜伊尔,艾拉纳德,艾勒布林德"
+"尔,艾勒尔多,艾朗,艾勒利温,艾利斯兰迪尔,艾洛米尔,艾洛菲利安德,艾瑞尔多,艾瑞尔"
+"利安德,艾拉德林,艾洛利斯,艾洛恩德,艾隆迪尔,艾勒布利尔多,艾洛布林德尔,艾勒布利"
+"利尔,艾勒拉斯,艾勒姆波,艾勒米尔,艾伦,艾利尔-伽利尔,艾利尔玛尔多,艾利欧米尔,艾"
+"利温迪尔,艾洛尔拉斯,艾罗尔拉斯,艾洛尔,艾洛尔菲拉德,艾尔拉德恩,艾尔拉利斯,艾尔"
+"兰,艾尔瑞多,艾尔瑞曼德,艾尔利欧尔多,艾尔利欧利斯,艾尔利斯拉利斯,艾尔利斯兰道"
+"尔,艾尔洛菲尔,艾尔凡,艾尔凡迪尔,艾尔凡拉米尔,艾尔凡温,艾尔凡布林德,艾尔凡布林"
+"德尔,艾尔凡利斯,艾尔凡米尔,艾尔凡利温,艾尔维-伽利温,艾尔维玛尔多,艾尔维玛利"
+"尔,艾尔维欧尔多,艾尔维姆波,艾尔冯多尔,艾尔冯非米尔,艾尔冯菲利兰德,艾尔冯菲利"
+"尔,艾尔冯艾兰德,艾尔冯德,艾利尔多,艾利利温,艾欧瓦姆波,艾欧瓦多尔,艾欧瓦,艾欧"
+"瓦拉尔多,艾欧瓦兰,艾欧瓦拉,艾欧瓦兰德,艾欧瓦利温,艾欧维布林德,艾欧威米尔,艾欧"
+"威尔-伽利温,艾欧维姆波,艾欧维欧米尔,艾欧维斯拉温,艾欧维尔多,艾欧维菲尔多,艾欧"
+"沃温,艾欧维尔拉斯,法德利安德尔,凡德尔,法兰迪尔,佛温,芬德尔,凡,菲尔曼,菲欧利"
+"尔,菲斯拉利尔,法菲尔拉斯,菲利温,伽德利恩迪尔,伽德利恩,伽拉德利尔多,伽洛拉德,"
+"伽洛拉斯,伽拉利斯,伽拉尔,伽勒拉斯,伽勒尔多,伽勒利斯,伽勒姆波,伽利斯拉兰德,伽"
+"洛尔多,伽鲁尔多,伽鲁尔,伽鲁林,甘博,甘,甘杜伊尔,伽拉尔多,伽拉利尔,吉拉德,吉利"
+"尔,吉尔-甘德尔,吉尔-甘,吉欧姆波,吉斯拉尔,吉斯拉兰德,吉拉德利恩迪尔,格拉尔,格"
+"罗姆波,格兰迪尔,格拉兰,格拉拉利尔,格利尔玛尔,格利米尔,格利欧尔,格洛拉斯,格洛"
+"尔多,格洛米尔,格伦,格鲁尔,格拉德,格,伽姆波,吉尔,吉姆波,吉恩,哈拉利安德,霍利安"
+"德,哈布利尔,哈米尔,哈杜伊尔,希拉斯,希尔-伽利温,希尔玛利兰德,希温,希利温,希斯"
+"兰德尔,霍菲拉德,霍芬德尔,哈恩德尔,希米尔,希利温,希温,伊萨德林恩,伊松迪尔,伊萨"
+"兰迪尔,伊萨拉,伊瑟拉斯,伊瑟尔,伊希尔曼德尔,伊希利温,伊希斯拉尔,伊索尔,伊松德"
+"尔,伊松,伊索菲拉德,伊索尔芬迪尔,伊萨温,伊辛迪尔,利戈尔,利伽兰,利格米尔,利格利"
+"尔,利基兰德,利基尔-吉尔,利基温德尔,利基斯拉利斯,利戈尔芬迪尔,利戈尔菲利温,利"
+"戈温,利基尔,利金,林杜伊拉斯,洛玛德利拉尔,洛玛兰德,洛玛利安德,洛梅布利兰德,洛"
+"梅布林德,洛梅姆波,洛米尔玛利尔,洛米利安德,洛摩芬迪尔,洛摩温,曼迪尔利尔,玛尔"
+"多,蒙杜伊尔,玛拉尔多,摩布林,蒙,摩利温,米欧利斯,米欧米尔,米斯兰德,蒙迪尔,蒙蒂"
+"尔,摩菲拉斯,摩芬,摩菲利兰德,米利斯,纳迪尔多,纳利斯,诺,内尔,尼尔-伽拉斯,尼尔-"
+"伽利斯,尼尔-伽,尼尔玛,诺德尔,诺菲尔多,诺菲利斯,诺芬迪尔,诺菲迪尔,纳姆波,尼尔"
+"多,帕德利尔安德,帕德利安利尔,帕米尔,帕拉尔多,帕拉利安德,皮尔玛拉德,平迪尔,波"
+"尔,波芬尔多,帕姆波,皮尔多,瑞波利尔,林迪尔,利尔曼迪尔,利斯兰迪尔,洛尔,洛尔多,"
+"洛尔达,鲁尔达,洛菲拉德,洛芬迪尔,洛温,林,萨德利拉斯,赛博林,赛博利利尔,森德,希"
+"尔-伽尔,索拉德,索芬德,索利安德,塔德利恩迪尔,塔拉尔,塔拉尔多,托利安德,特迪尔,"
+"特温,萨拉德利尔利安德,萨拉姆波,萨拉拉尔,萨勒布林,萨勒拉德,萨里尔多,萨利尔-伽"
+"米尔,萨利尔-甘迪尔,萨利尔-伽,萨利尔曼迪尔,萨利米尔,萨利温,萨利萨兰,萨洛拉斯,"
+"萨隆,萨罗恩,萨朗德,萨利兰德,提尔-甘,提尔玛拉德,提尔玛拉斯,提南迪尔,提纳拉姆"
+"波,提纳拉利安德,提南,提尼尔-甘杜伊尔,提尼尔曼德,提尼尔玛温,提尼米尔,提宁迪尔,"
+"提尼斯拉,提诺尔多,提诺恩德,提诺芬德,提诺菲利兰德,提诺利安德,提诺温,提南,提尼"
+"尔,提温,托拉斯,托菲尔多,托温,提拉德,尤安德利尔多,尤安德里尔,尤诺尔,尤纳拉斯,"
+"尤诺拉斯,尤纳拉尔多,尤纳利尔,尤诺利温,尤诺博林,尤诺布林德,尤内尔多,尤尼尔,尤"
+"尼尔-甘,尤尼欧利斯,尤尼欧利尔,尤诺利斯,尤诺姆波,尤诺德尔,尤诺迪尔,尤诺菲尔多,"
+"尤诺菲利尔,尤诺菲温,尤纳拉德,尤拉德利尔拉斯,尤拉德利尔利温,尤洛拉斯,尤洛利斯,"
+"尤拉姆波,尤内尔,尤利尔-甘波,尤利尔玛利斯,尤洛尔多,尤洛尔菲尔多,尤鲁尔,尤利米"
+"尔,佛拉德,冯,冯迪尔,凡迪尔,法拉拉斯,法拉利温,菲布利尔,菲布利拉斯,菲布林杜伊"
+"尔,菲尔,菲利斯,佛尔,佛拉斯,佛尔达,冯迪尔,佛芬,佛芬迪尔,瓦拉斯,瓦尔多,瓦杜伊"
+"尔,维拉斯,维尔多"
 
 #: data/core/macros/names.cfg:28
 msgid ""
@@ -4178,11 +4182,11 @@ msgstr ""
 
 #: data/core/macros/names.cfg:33
 msgid "Graa,Greaa,Gree,Kaaa,Kassshh,Kessshh,Korro,Kraa,Kuu,Kzaaa,Kzuuu"
-msgstr "Graa,Greaa,Gree,Kaaa,Kassshh,Kessshh,Korro,Kraa,Kuu,Kzaaa,Kzuuu"
+msgstr "葛拉,葛利拉,葛利,卡,卡什,柯什,柯罗,克拉,库,克匝,克苏"
 
 #: data/core/macros/names.cfg:34
 msgid "Kaasa,Kayya,Keyya,Kiira,Korra"
-msgstr "Kaasa,Kayya,Keyya,Kiira,Korra"
+msgstr "卡萨,卡娅,可娅,奇拉,可拉"
 
 #: data/core/macros/names.cfg:38
 msgid ""
@@ -4389,16 +4393,18 @@ msgid ""
 "Xartrez,Xasz,Xaztex,Xerxix,Xirasz,Xirr,Xirtras,Xirtrez,Xirz,Zandler,Zedrix,"
 "Zilrix,Zizzasz,Zslap,Zzalkz,Zzupde"
 msgstr ""
-"Amprixta,Anexir,Anitraz,Arix,Axiz,Bzz'Kza,Chamil,Cleezi,Clezz,Fazzis,"
-"Fizztrax,Flixta,Flizzil,Frikes,Frizzle,Hasz,Heffez,Hertrazzir,Hesz,Hezzir,"
-"Hezzis,Hix,Inexis,Irix,Jezzix,Jizz,Kaliez,Kepzs,Kernix,Kersezz,Kertrasz,Kerx,"
-"Kerxenix,Kezz,Klexaz,Klezyx,Krarax,Krenarex,Krex,Krinex,Krisess,Laizix,Lazki,"
-"Lixeez,Merax,Mexiss,Moxanzz,Naxisz,Nix,Pekzs,Plaxis,Plesix,Presch,Sailik,"
-"Salanix,Salik,Sandix,Saprazz,Satras,Skalix,Skandix,Skazix,Skeely,Skeezix,"
-"Sklizle,Skrez,Slizilx,Sprizz,Ssexur,Ssizer,Ssorix,Sszasz,Sterizz,Talerez,"
-"Tarex,Tarnix,Tezzaz,Tirasch,Tirax,Tirix,Trezz,Venezz,Vriss,Waks,Xaffrasz,"
-"Xartrez,Xasz,Xaztex,Xerxix,Xirasz,Xirr,Xirtras,Xirtrez,Xirz,Zandler,Zedrix,"
-"Zilrix,Zizzasz,Zslap,Zzalkz,Zzupde"
+"阿姆布里希塔,安纳希尔,安尼特拉兹,阿利克斯,阿克斯,布兹卡匝,查米尔,克里兹,克雷"
+"兹,法泽斯,菲兹特拉克斯,佛里克斯塔,佛利兹尔,佛里克斯,佛里索尔,哈兹,赫菲兹,赫塔"
+"兹尔,赫匝,赫兹尔,赫匝斯,希克斯,伊内科希斯,伊里克斯,杰希克斯,杰兹,卡勒兹,卡普"
+"兹,柯尼克斯,柯申斯,柯图拉特斯,柯克斯,柯申克斯,柯兹,柯勒克萨斯,柯勒辛斯,柯拉拉"
+"克斯,柯伦阿里克斯,柯雷克斯,柯里尼克斯,柯里申斯,莱希克斯,拉泽奇,历希斯,莫莱克"
+"斯,莫希斯,莫山斯,纳克希斯,尼克斯,佩克萨斯,普拉克希斯,普莱希克斯,普雷斯奇,赛里"
+"克,萨兰尼斯,赛里克,萨迪克斯,萨普拉兹,萨图拉斯,斯卡里克斯,斯堪迪克斯,斯卡希克"
+"斯,斯基利,斯基希克斯,斯基利希尔,斯柯雷兹,斯里兹里克斯,斯普里兹,瑟克萨,西萨,索"
+"里克斯,斯匝兹,斯特里兹,塔勒雷兹,塔雷克斯,塔尼克斯,特匝兹,提拉斯奇,提拉克斯,提"
+"里克斯,特雷兹,文内兹,文里斯,瓦克斯,夏夫拉兹,夏特雷兹,夏兹,夏特雷克斯,谢雷特西"
+"斯,希拉兹,希,希拉特拉斯,希拉特雷兹,希兹,赞多尔,泽德里克斯,希尔雷克斯,希兹阿"
+"兹,希斯拉普,匝尔克兹,匝普德"
 
 #: data/core/macros/names.cfg:47
 msgid ""
@@ -4410,13 +4416,13 @@ msgid ""
 "Tanaoa,Tangaloa,Tangaroa,Thaumas,Tikitiki,Tini,Tinilau,Tinirau,Toniwha,"
 "Triton,Vizi,Vodnik,Vourukasa"
 msgstr ""
-"Absu,Abzu,Aigaion,Alastyn,Apalala,Apam,Apsu,Aremata,Atlahua,Atlaua,Barinthus,"
-"Dhakhan,Dylan,Elcmar,Ember,Enki,Faro,Habaek,Ikatere,Jamm,Jin,Kinilau,Kulullu,"
-"Labuna,Laut,Lir,Llyr,Ludd,Makara,Maui,Melicertes,Mimir,Natat,Nechtan,Neptune,"
-"Nereus,Nethuns,Njord,Nuada,Nudd,Nudimmud,Nun,Oceanus,Okeanos,Phorcys,Pontus,"
-"Popoa,Poseidon,Proteus,Raja,Rau,Rorua,Ryujin,Scylla,Sinilau,Sisiutl,Tagaloa,"
-"Tanaoa,Tangaloa,Tangaroa,Thaumas,Tikitiki,Tini,Tinilau,Tinirau,Toniwha,"
-"Triton,Vizi,Vodnik,Vourukasa"
+"艾布苏,艾布祖,艾该温,阿拉斯廷,阿帕拉拉,阿帕姆,阿帕苏,阿雷麦塔,阿塔拉华,阿塔拉"
+"瓦,巴林萨斯,达克汉,迪兰,艾尔克瓦,艾姆巴,恩基,法罗,哈巴克,伊卡特尔,伽姆,金,金"
+"尼劳,库鲁鲁,拉布那,劳特,利尔,里尔,路德,马卡拉,茅伊,梅利希特斯,米米尔,纳塔特,"
+"纳特琉斯,内普丁,内纳鲁斯,内森斯,内贾德,努阿达,努德,努迪蒙德,纳恩,欧辛纳斯,欧"
+"金诺斯,菲欧希斯,本图斯,波波阿,波塞冬,普洛图斯,拉伽,劳,洛拉,柳金,斯奇拉,辛尼"
+"劳,希修提尔,塔伽洛阿,塔纳阿,坦甲洛阿,坦加,陶玛斯,提奇提奇,提尼,提尼劳,提尼洛,"
+"托尼瓦,托尼温,维兹,伏德尼克,伏鲁卡萨"
 
 #: data/core/macros/names.cfg:48
 msgid ""
@@ -4425,10 +4431,10 @@ msgid ""
 "Wata,Marina,Miranda,Miriam,Molpe,Parthenope,Pelagia,Pisinoe,Rân,Sedna,Stella "
 "Maris,Thelxiepia,Tirgata,Vatea,Ved-Ava,Veen emo,Vete-ema"
 msgstr ""
-"Aglaopheme,Amphitrite,Aphrodite,Ariel,Atargatis,Calypso,Delphine,Derceto,"
-"Diktynna,Electra,Galatea,Himeropa,Jengu,Leucosia,Ligia,Lori Lamaris,Mama "
-"Wata,Marina,Miranda,Miriam,Molpe,Parthenope,Pelagia,Pisinoe,Rân,Sedna,Stella "
-"Maris,Thelxiepia,Tirgata,Vatea,Ved-Ava,Veen emo,Vete-ema"
+"安吉拉菲米,艾蜜菲特,艾菲洛蒂特,艾莉儿,艾塔佳提丝,卡莉普索妮,德尔菲妮,德丝托"
+"妮,蒂可提娜,伊莱可特拉,伽拉提妮,希梅萝帕,珍古,琉克希娅,莉基娅,萝莉·拉玛莉丝,"
+"玛玛·瓦塔,玛丽娜,米兰达,米丽娅,莫尔菲,帕丝诺帕,佩娜吉拉,佩希诺伊,兰,希德娜,斯"
+"蒂拉·玛丽丝,希莉珂丝皮娅,提佳塔,瓦提,薇-艾娃,薇恩·艾墨儿,薇特-艾玛"
 
 #: data/core/macros/names.cfg:52
 msgid ""
@@ -4439,12 +4445,13 @@ msgid ""
 "Sekol,Silas,Skell,Skepz,Slell,Snol,Soill,Sorkol,Srell,Trixoz,Vilail,Vissal,"
 "Vlanis,Xabrak,Xamalel,Xinas,Xnamos,Xopkon,Zalsp,Zlek,Zpsek,Zsekp"
 msgstr ""
-"Abraxas,Aleiss,Amail,Axmail,Blanal,Bleii,Blo,Bress,Briss,Gaxmol,Griam,Griss,"
-"Grissileii,Hailoss,Hainoss,Harxos,Huzel,Inaloss,Ineii,Issal,Klezel,Kras,"
-"Krezkps,Kzap,Lamaiss,Lameii,Lexpek,Liness,Lobor,Maissol,Malinos,Milbor,"
-"Mileii,Nildloss,Oxpeii,Poniaz,Psell,Pson,Pzakp,Reii,Sassal,Saxil,Saxrireii,"
-"Sekol,Silas,Skell,Skepz,Slell,Snol,Soill,Sorkol,Srell,Trixoz,Vilail,Vissal,"
-"Vlanis,Xabrak,Xamalel,Xinas,Xnamos,Xopkon,Zalsp,Zlek,Zpsek,Zsekp"
+"阿布拉克萨斯,阿雷斯,阿梅尔,阿克斯梅尔,布拉纳尔,布雷伊,布罗,布瑞斯,布利斯,伽克"
+"斯摩尔,格里阿姆,格里斯,格里斯雷伊,海尔洛斯,海诺斯,哈克索斯,忽则尔,伊纳诺斯,伊"
+"内伊,伊萨尔,克勒泽尔,克拉斯,克雷泽克普斯,克扎普,拉米伊斯,拉姆雷,勒克斯佩克,利"
+"内斯,洛博,麦索尔,玛里诺斯,米尔博,米雷伊,尼尔德罗斯,欧克斯佩伊,波尼亚兹,波赛"
+"尔,波松,波扎克,雷伊,萨赛尔,萨克希尔,萨克斯利雷伊,瑟克尔,希拉斯,斯克尔,斯克普"
+"斯,斯勒尔,斯诺尔,索伊尔,索克尔,斯瑞尔,崔克斯欧兹,维拉尔,维萨尔,维拉尼斯,希布"
+"拉克,希玛雷尔,希纳斯,希纳莫斯,希欧普空,扎尔斯普,兹雷克,兹普斯克,兹斯克"
 
 #: data/core/macros/names.cfg:53
 msgid ""
@@ -4456,13 +4463,13 @@ msgid ""
 "Vissalai,Vlanissa,Xabrak,Xamalia,Xina,Xinasia,Xnamas,Xopkne,Zalsp,Zlek,Zpsek,"
 "Zsekp"
 msgstr ""
-"Aliasse,Amailis,Axmailia,Blai,Blanalai,Bli,Bliana,Brassas,Brissal,Gaxmail,"
-"Griama,Grissa,Grissilai,Haila,Haina,Harxias,Huzi,Inai,Inalai,Issalai,Klez,"
-"Kras,Krezkps,Kzap,Lamai,Lamaissa,Lexpek,Liabra,Lilin,Linassa,Maissa,Malina,"
-"Mila,Milbra,Nildlasi,Oxpel,Poniazal,Psal,Psen,Pzakp,Riaa,Sall,Sassalia,"
-"Saxiala,Saxririaa,Sek,Skal,Skepz,Sla,Snelia,Srak,Sral,Szak,Trixzed,Vilaila,"
-"Vissalai,Vlanissa,Xabrak,Xamalia,Xina,Xinasia,Xnamas,Xopkne,Zalsp,Zlek,Zpsek,"
-"Zsekp"
+"艾莉阿希,艾麦莉丝,艾克丝麦莉娅,巴莱,巴兰纳莱,波莉,波莉娅拉,布拉萨丝,布莉萨儿,"
+"伽克丝梅儿,格莉娅玛,格莉莎,格莉希莱,海莉娅,海娜,哈克夏丝,胡兹,伊娜儿,伊纳莱,"
+"伊萨莱,克勒丝,库拉丝,库瑞泽克普丝,克萨普斯,拉麦儿,拉麦萨,勒克丝佩可,莉娅波拉,"
+"琳琳,莉娜莎,麦莎,玛莉娜,米拉,米尔布拉,妮尔德拉丝,欧克丝佩儿,波妮娅瑟儿,赛儿,"
+"申,萨科普,莉娅,萨儿,萨萨莉娅,萨克丝夏拉,萨克丝莉莉娅,瑟科,斯卡儿,斯克普丝,斯"
+"拉,斯内莉娅,斯拉可,斯拉尔,斯扎可,崔克丝哲德,薇莱拉,薇萨莱,薇拉妮莎,夏布拉可,"
+"夏玛莉娅,希娜,希娜希娅,希纳玛丝,希欧普科内,扎尔丝帕,扎尔可,兹普丝可,兹斯可"
 
 #: data/core/macros/names.cfg:57
 msgid ""
@@ -4473,12 +4480,12 @@ msgid ""
 "Markaak,Markuk,Merknik,Nargak,Olk,Orkut,Reknak,Takolak,Trabuk,Trakkon,Urkar,"
 "Urkark"
 msgstr ""
-"Akoark,Akort,Akzalk,Arkarm,Barkuk,Blokkar,Borkuk,Bukkak,Bulruk,Corkkar,"
-"Delkkak,Garkuk,Gnukk,Goruk,Grak,Gurk,Gurm,Kalknix,Karak,Karbuk,Kargnak,"
-"Karterak,Kayrak,Kelkrar,Kerta,Kilkrar,Kingrok,Kirk,Klud,Kokkan,Kolk,Komak,"
-"Korgnak,Kork,Koruck,Kramak,Krog,Krukrak,Krumuk,Kuknuk,Kurkur,Kurmak,Makron,"
-"Markaak,Markuk,Merknik,Nargak,Olk,Orkut,Reknak,Takolak,Trabuk,Trakkon,Urkar,"
-"Urkark"
+"阿阔拉克,阿阔特,阿克扎尔克,阿克阿姆,巴库克,布罗卡,博库克,布卡克,布鲁克,阔卡,"
+"德尔卡克,伽库克,格努克,格鲁克,格拉克,嘎克,嘎姆,卡尔尼克斯,卡拉克,卡布克,卡格"
+"纳克,卡特拉克,凯拉克,基尔卡拉,柯塔,基尔克拉,金罗克,坷克,克鲁德,阔坎,阔克,阔马"
+"克,阔格纳克,阔尔克,阔鲁克,克拉马克,克鲁格,克鲁克拉克,克鲁马克,克鲁纳克,卡卡,"
+"卡马克,马克隆,马卡克,马库克,莫克内克,纳伽克,欧尔克,欧尔克特,雷克纳克,塔寇拉"
+"克,特拉布克,特拉空,乌卡,乌克阿克"
 
 #: data/core/macros/names.cfg:61
 msgid ""
@@ -4555,10 +4562,11 @@ msgid ""
 "Nak,Nuk Kar,Pag,Reck,Rok,Ruk,Sark,Shak,Shuf,Stuh,Targ,Thog,Thruf,Thur,Tohg,"
 "Torg,Trok,Tsok,Tuh,Tuk Ruh,Ugg,Üh,Urg,Urgh,Urk,Vak,Zog,Zuug"
 msgstr ""
-"Äg,Agh,Bog Äh,Borb,Brag,Brag Goh,Brok,Dak,Drog,Frok,Ga,Gah,Gark,Gnarf,Grar,"
-"Grokk,Grumph,Gulk,Hak,Hask,Hoth,Hug Bah,Hu Kah,Kak,Krak,Krug,Kub,Kuh,Lok,Luk,"
-"Nak,Nuk Kar,Pag,Reck,Rok,Ruk,Sark,Shak,Shuf,Stuh,Targ,Thog,Thruf,Thur,Tohg,"
-"Torg,Trok,Tsok,Tuh,Tuk Ruh,Ugg,Üh,Urg,Urgh,Urk,Vak,Zog,Zuug"
+"阿格,阿嘎,布格·阿,布博,布拉格,布拉格·嘎,布罗克,达克,德罗格,福罗克,嘎,格,嘎克,"
+"格纳夫,格拉,格罗克,格拉姆,格尔克,哈克,哈斯克,霍斯,哈格·巴,呼·卡,卡克,克拉克,"
+"库拉格,库博,库,罗克,鲁克,纳克,纳克·卡,帕格,雷克,路克,拉克,萨克,夏克,夏夫,斯"
+"图,塔格,图鲁格,图鲁夫,苏尔,托格,托尔格,托克,苏克,塔,塔克·拉,尤格,阿,乌格,乌"
+"拉,乌克,乏克,佐格,组格"
 
 #: data/core/macros/names.cfg:69
 msgid ""
@@ -4593,8 +4601,9 @@ msgid ""
 "Bal,Cam,Corn,Del,Earl,El,Fox,Fren,Gel,Hel,Hex,Hol,Hox,Il,Kin,Nam,Nes,New,Ol,"
 "Old,Olf,Oul,Ox,Rock,Rook,Sal,Sam,Sed,Sel,Sen,Sil,Tal,Water,Wet,York"
 msgstr ""
-"Bal,Cam,Corn,Del,Earl,El,Fox,Fren,Gel,Hel,Hex,Hol,Hox,Il,Kin,Nam,Nes,New,Ol,"
-"Old,Olf,Oul,Ox,Rock,Rook,Sal,Sam,Sed,Sel,Sen,Sil,Tal,Water,Wet,York"
+"巴尔,卡姆,科恩,德尔,伊艾尔,艾尔,福克斯,福伦,葛尔,黑尔,海克斯,霍尔,霍克斯,伊"
+"尔,金,纳姆,尼斯,纽,欧尔,欧德,欧夫,欧乌尔,欧克斯,洛克,卢克,萨尔,萨姆,希德,赛"
+"尔,森,西尔,塔尔,沃特,维特,约克"
 
 #. [message]: speaker=narrator
 #: data/core/macros/scenario-utils.cfg:155
@@ -4602,8 +4611,8 @@ msgid ""
 "The computer player might not be able to play side $side_number properly in "
 "this scenario. Side $side_number is intended to be played by a human player."
 msgstr ""
-"在本场景中，电脑玩家不能使用 $side_number 很好发挥。$side_number 是为人类玩家"
-"设计的。"
+"在本场景中，电脑玩家不能使用阵营$side_number很好发挥。阵营$side_number是为人"
+"类玩家设计的。"
 
 #. [time]: id=deep_underground
 #. [illuminated_time]: id=deep_underground_illum
@@ -5236,12 +5245,12 @@ msgstr ""
 "\n"
 "可能是由于与世隔绝的原因，矮人普遍对别的种族，尤其是精灵感到不堪信任甚至是怀"
 "有敌意，这一种族思维定势的唯一例外是人类。这可以追溯到Haldric一世时代，当人类"
-"和兽人同时来到大陆的时候。当时矮人便开始允许一些人类，主要是来自Wesnoth王国的"
-"政治避难者和罪犯，在Northlands的某些特定区域内安顿下来。矮人们的动机并不让人"
-"感到意外，这些人类当时所处的窘境不禁使矮人们回忆起他们在历史上曾经受到的迫"
-"害，这使得他们悻悻相惜。矮人们亦从他们和流亡者们之间的纽带关系中获益匪浅。他"
-"们会在矮人们不喜居住的地区定居下来，例如平原、树林以及沼泽，这让矮人们从防御"
-"这些地区的苦差事中解脱了出来。\n"
+"和兽人同时来到大陆的时候。当时矮人便开始允许一些人类，主要是来自韦诺王国的政"
+"治避难者和罪犯，在北方大陆的某些特定区域内安顿下来。矮人们的动机并不让人感到"
+"意外，这些人类当时所处的窘境不禁使矮人们回忆起他们在历史上曾经受到的迫害，这"
+"使得他们悻悻相惜。矮人们亦从他们和流亡者们之间的纽带关系中获益匪浅。他们会在"
+"矮人们不喜居住的地区定居下来，例如平原、树林以及沼泽，这让矮人们从防御这些地"
+"区的苦差事中解脱了出来。\n"
 "\n"
 "以人类的标准来衡量，矮人的身材都很短小，但他们一点儿都不脆弱，他们中的战士坚"
 "韧强悍，整个大陆的人们都对他们在战斗中表现出的高超技艺敬畏有加。除此之外，矮"
@@ -5432,21 +5441,21 @@ msgstr ""
 "颜色各不相同，从近乎白色到深棕色都有。\n"
 "\n"
 "<header>text='王国属民'</header>\n"
-"有许多不同的人类群体存在着，但居住于大陆上的人类中的绝大部分是在Wesnoth王国的"
-"统治下生活。最初来到大陆的人类来自于绿岛，一块远在大洋之西的土地，他们上岸后"
-"很快便在内陆城市Weldyn建立了首都。在接下来的几个世纪中，人类在大陆各处建立了"
-"一些城市。Wesnoth王国的士兵们保卫着这个国家，形成了已知的世界中最有组织的军事"
-"力量。战士们来自于王国的主要省份，在那里所有的男人都在很小的年纪就被征召入"
+"有许多不同的人类群体存在着，但居住于大陆上的人类中的绝大部分是在韦诺王国的统"
+"治下生活。最初来到大陆的人类来自于绿岛，一块远在大洋之西的土地，他们上岸后很"
+"快便在内陆城市维尔帝建立了首都。在接下来的几个世纪中，人类在大陆各处建立了一"
+"些城市。韦诺王国的士兵们保卫着这个国家，形成了已知的世界中最有组织的军事力"
+"量。战士们来自于王国的主要省份，在那里所有的男人都在很小的年纪就被征召入"
 "伍。\n"
 "\n"
 "<header>text='氏族成员'</header>\n"
-"Wesnoth的东部省份称被为氏族的故乡，那里和西部更文明的省份相比，有着更多开放的"
-"平原和连绵起伏的丘陵，是马上氏族的家园。他们与Wesnoth王国结盟，但独立运作，也"
-"保持着自己的身份。有些人把他们当做附庸国，向王国进贡食物和士兵以换取保护。而"
-"其他人说他们与Wesnoth的西半边平起平坐。不管怎么说，东部省份并没有一支像西"
-"Wesnoth那样的由义务兵组成的军队。为战斗而训练就是氏族的生活方式：从孩子的幼年"
-"开始，父母就教导他们骑马、格斗和射箭。一般来说，氏族武士们的组织性要比文明社"
-"会的战士们差一些，而他们可以互相取长补短。"
+"韦诺的东部省份称被为氏族的故乡，那里和西部更文明的省份相比，有着更多开放的平"
+"原和连绵起伏的丘陵，是马上氏族的家园。他们与韦诺王国结盟，但独立运作，也保持"
+"着自己的身份。有些人把他们当做附庸国，向王国进贡食物和士兵以换取保护。而其他"
+"人说他们与韦诺的西半边平起平坐。不管怎么说，东部省份并没有一支像西韦诺那样的"
+"由义务兵组成的军队。为战斗而训练就是氏族的生活方式：从孩子的幼年开始，父母就"
+"教导他们骑马、格斗和射箭。一般来说，氏族武士们的组织性要比文明社会的战士们差"
+"一些，而他们可以互相取长补短。"
 
 #. [race]: id=lizard, description=
 #: data/core/units.cfg:177
@@ -5714,8 +5723,8 @@ msgstr ""
 "两个种族之间的敌意可以上溯到上古时期。\n"
 "\n"
 "<header>text='地理'</header>\n"
-"在矮人们移居到大陆的山脉里之前，巨魔们就已经在这些地方定居了。巨魔在Wesnoth北"
-"方和东方的山脉里很常见，在兽人部落经过的地方也是如此。"
+"在矮人们移居到大陆的山脉里之前，巨魔们就已经在这些地方定居了。巨魔在韦诺北方"
+"和东方的山脉里很常见，在兽人部落经过的地方也是如此。"
 
 #. [race]: id=undead
 #: data/core/units.cfg:280
@@ -5801,12 +5810,12 @@ msgstr "树人"
 #. [server]
 #: data/game_config.cfg:4
 msgid "Official Wesnoth Server"
-msgstr "官方Wesnoth服务器"
+msgstr "官方韦诺服务器"
 
 #. [server]
 #: data/game_config.cfg:8 data/game_config.cfg:12
 msgid "Alternate Wesnoth Server"
-msgstr "替代用Wesnoth服务器"
+msgstr "替代用韦诺服务器"
 
 #. [language]
 #: data/hardwired/english.cfg:3
@@ -5894,23 +5903,23 @@ msgstr "$name之峰,$name山"
 #. [language]
 #: data/hardwired/english.cfg:25
 msgid "$name's Swamp,$name|marsh,$name|fen"
-msgstr "$name之沼泽,$name|marsh,$name|fen"
+msgstr "$name之沼泽,$name|沼泽,$name|泥沼"
 
 #. [language]
 #: data/hardwired/english.cfg:26
 msgid "$name|bury,$name|ham,$name|ton,$name|bury"
-msgstr "$name|bury,$name|ham,$name|ton,$name|bury"
+msgstr "$name|伯里,$name|汉姆,$name|顿,$name|伯里"
 
 #. [language]
 #: data/hardwired/english.cfg:27
 msgid "$name|harbor,$name|port,$lake|port,$lake|harbor"
-msgstr "$name|harbor,$name|port,$lake|port,$lake|harbor"
+msgstr "$name|湾,$name|港,$lake|港,$lake|湾"
 
 #. [language]
 #: data/hardwired/english.cfg:28
 msgid ""
 "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross,$name on river"
-msgstr "$name|ham,$name|ford,$name|cross,$river|ford,$river|cross,河上的$name"
+msgstr "$name|汉姆,$name|浅滩,$name|渡口,$river|浅滩,$river|渡口,河上的$name"
 
 #. [language]
 #: data/hardwired/english.cfg:29
@@ -5918,13 +5927,12 @@ msgid ""
 "$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge,$bridge|ham,"
 "$bridge|ton"
 msgstr ""
-"$river|bridge,$river|bridge,$river|bridge,$name|ham,$name|bridge,$bridge|ham,"
-"$bridge|ton"
+"$river|桥,$river|桥,$river|桥,$name|汉姆,$name|桥,$bridge|汉姆,$bridge|顿"
 
 #. [language]
 #: data/hardwired/english.cfg:30
 msgid "$name|ham,$name|ton,$name|field"
-msgstr "$name|ham,$name|ton,$name|field"
+msgstr "$name|汉姆,$name|顿,$name|菲尔德"
 
 #. [language]
 #: data/hardwired/english.cfg:31
@@ -5932,34 +5940,33 @@ msgid ""
 "$name|ham,$name|ton,$name|wood,$name Forest,$forest|wood,$forest|ham,$forest|"
 "ton"
 msgstr ""
-"$name|ham,$name|ton,$name|wood,$name森林,$forest|wood,$forest|ham,$forest|ton"
+"$name|汉姆,$name|顿,$name|伍德,$name森林,$forest|伍德,$forest|汉姆,$forest|顿"
 
 #. [language]
 #: data/hardwired/english.cfg:32
 msgid "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
-msgstr "$name|ham,$name|bury,$name|ton,$name|hill,$name|crest"
+msgstr "$name|汉姆,$name|伯里,$name|顿,$name|山,$name|峰"
 
 #. [language]
 #: data/hardwired/english.cfg:33
 msgid "$mountain|mont,$mountain|cliff,$mountain|bury,$mountain|ham"
-msgstr "$mountain|mont,$mountain|cliff,$mountain|bury,$mountain|ham"
+msgstr "$mountain|峰,$mountain|崖,$mountain|伯里,$mountain|汉姆"
 
 #. [language]
 #: data/hardwired/english.cfg:34
 msgid ""
 "$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
-msgstr ""
-"$name|ham,$name|bury,$name|ton,$name|mont,$name|mont,$name|cliff,$name|cliff"
+msgstr "$name|汉姆,$name|伯里,$name|顿,$name|峰,$name|峰,$name|崖,$name|崖"
 
 #. [language]
 #: data/hardwired/english.cfg:35
 msgid "$road's Rest,$road's Waypoint,$road|bury,$road|ham,$name|bury,$name|ham"
-msgstr "$road之驿站,$road之路标,$road|bury,$road|ham,$name|bury,$name|ham"
+msgstr "$road之驿站,$road之路标,$road|伯里,$road|汉姆,$name|伯里,$name|汉姆"
 
 #. [language]
 #: data/hardwired/english.cfg:36
 msgid "$name|bury,$name|ham,$name|ton,$swamp|bury,$swamp|ham,$swamp|ton,"
-msgstr "$name|bury,$name|ham,$name|ton,$swamp|bury,$swamp|ham,$swamp|ton,"
+msgstr "$name|伯里,$name|汉姆,$name|顿,$swamp|伯里,$swamp|汉姆,$swamp|顿,"
 
 #. [language]
 #: data/hardwired/english.cfg:39
@@ -6041,7 +6048,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:8 data/hardwired/tips.cfg:136
 msgid "— Great Mage Delfador, 516YW"
-msgstr "——大法师Delfador，516YW"
+msgstr "——大法师黎伐多，韦元516年"
 
 #. [tip]
 #: data/hardwired/tips.cfg:11
@@ -6072,7 +6079,7 @@ msgstr ""
 #: data/hardwired/tips.cfg:200 data/hardwired/tips.cfg:204
 #: data/hardwired/tips.cfg:209
 msgid "— The Wesnoth Tactical Guide"
-msgstr "——Wesnoth战术指南"
+msgstr "——韦诺战术指南"
 
 #. [tip]
 #: data/hardwired/tips.cfg:15
@@ -6087,7 +6094,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:16
 msgid "— King Konrad, 536YW"
-msgstr "——Konrad国王，536YW"
+msgstr "——科纳德国王，韦元536年"
 
 #. [tip]
 #: data/hardwired/tips.cfg:19
@@ -6103,7 +6110,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:20 data/hardwired/tips.cfg:128
 msgid "— Memoirs of Gweddry, 627YW"
-msgstr "——Gweddry的回忆录，627YW"
+msgstr "——格温德利的回忆录，韦元627年"
 
 #. [tip]
 #: data/hardwired/tips.cfg:23
@@ -6138,7 +6145,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:32 data/hardwired/tips.cfg:104
 msgid "— High Lord Kalenz, 470YW"
-msgstr "——Kalenz高阶领主，470YW"
+msgstr "——卡朗兹高阶领主，韦元470年"
 
 #. [tip]
 #: data/hardwired/tips.cfg:35
@@ -6165,13 +6172,13 @@ msgid ""
 "On www.wesnoth.org you can find strategy guides, technical support, the "
 "history of Wesnoth, and much more."
 msgstr ""
-"您可以在www.wesnoth.org找到战略指导，技术支持，Wesnoth的历史，以及更多其他的"
-"信息。中文用户也请访问www.wesnoth.cn。"
+"您可以在www.wesnoth.org找到战略指导，技术支持，韦诺的历史，以及更多其他的信"
+"息。中文用户也请访问www.wesnoth.cn。"
 
 #. [tip]
 #: data/hardwired/tips.cfg:44
 msgid "— The Wesnoth Community"
-msgstr "——Wesnoth社区"
+msgstr "——韦诺社区"
 
 #. [tip]
 #: data/hardwired/tips.cfg:47
@@ -6185,7 +6192,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:48
 msgid "— Royal Compendium of Battle Terminology — Volume II, 212YW"
-msgstr "——皇家战争术语纲要第二卷，212YW"
+msgstr "——皇家战争术语纲要第二卷，韦元212年"
 
 #. [tip]
 #: data/hardwired/tips.cfg:51
@@ -6197,7 +6204,7 @@ msgstr "如果进攻的时段不对头，再好的战术也是白搭。"
 #: data/hardwired/tips.cfg:52 data/hardwired/tips.cfg:76
 #: data/hardwired/tips.cfg:124 data/hardwired/tips.cfg:132
 msgid "— Handbook of Tactical Analysis Volume I — Haldric II, 42YW"
-msgstr "——战术分析手册第一卷，Haldric二世，42YW"
+msgstr "——战术分析手册第一卷，哈德里克二世，韦元42年"
 
 #. [tip]
 #: data/hardwired/tips.cfg:55
@@ -6285,7 +6292,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:80
 msgid "— Handbook of Tactical Analysis Volume II — Haldric II, 43YW"
-msgstr "——战术分析手册第二卷，Haldric二世，43YW"
+msgstr "——战术分析手册第二卷，哈德里克二世，韦元43年"
 
 #. [tip]
 #: data/hardwired/tips.cfg:83
@@ -6318,7 +6325,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:92 data/hardwired/tips.cfg:172
 msgid "— Sir Kaylan, 498YW"
-msgstr "——Kaylan爵士，498YW"
+msgstr "——凯兰爵士，韦元498年"
 
 #. [tip]
 #: data/hardwired/tips.cfg:95
@@ -6333,7 +6340,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:96
 msgid "— Sir Kaylan, 502YW"
-msgstr "——Kaylan爵士，502YW"
+msgstr "——凯兰爵士，韦元502年"
 
 #. [tip]
 #: data/hardwired/tips.cfg:99
@@ -6380,7 +6387,7 @@ msgstr "别害怕撤退和重整队形：这通常是胜利的关键。"
 #: data/hardwired/tips.cfg:116
 #, fuzzy
 msgid "— Meneldur, 123YW"
-msgstr "——Meneldur，123YW"
+msgstr "——蒙内杜尔，韦元123年"
 
 #. [tip]
 #: data/hardwired/tips.cfg:119
@@ -6442,7 +6449,7 @@ msgstr "用单位组成战线以掩护受伤的单位，让他们得到恢复。
 #. [tip]
 #: data/hardwired/tips.cfg:140
 msgid "— Princess Li'sar, 515YW"
-msgstr "——Li'sar公主，515YW"
+msgstr "——莉莎公主，韦元515年"
 
 #. [tip]
 #: data/hardwired/tips.cfg:143
@@ -6475,7 +6482,7 @@ msgstr "用治疗者来支援您的进攻——他们不需要亲手攻击任何
 #. [tip]
 #: data/hardwired/tips.cfg:156
 msgid "— The Scroll of Chantal, 516YW"
-msgstr "——Chantal之卷轴，516YW"
+msgstr "——香黛儿的卷轴，韦元516年"
 
 #. [tip]
 #: data/hardwired/tips.cfg:159
@@ -6494,7 +6501,7 @@ msgstr "奥术攻击能对亡灵造成强力的伤害。"
 #. [tip]
 #: data/hardwired/tips.cfg:164
 msgid "— Great Sage Dacyn, 626YW"
-msgstr "——大贤者Dacyn，626YW"
+msgstr "——大贤者达金，韦元626年"
 
 #. [tip]
 #: data/hardwired/tips.cfg:167
@@ -6539,8 +6546,8 @@ msgid ""
 "Nearly every icon and word in Wesnoth's playing screen has a tool-tip. Place "
 "your mouse pointer over one to get an explanation or description."
 msgstr ""
-"Wesnoth的游戏屏幕中几乎所有的图标和文字都有工具提示。把鼠标指针指向它们，就能"
-"够获得解释或描述信息。"
+"韦诺的游戏屏幕中几乎所有的图标和文字都有工具提示。把鼠标指针指向它们，就能够"
+"获得解释或描述信息。"
 
 #. [tip]
 #: data/hardwired/tips.cfg:187
@@ -6550,8 +6557,8 @@ msgid ""
 "right-hand corner of the game main screen). This information is vital so we "
 "can adjust campaign difficulty."
 msgstr ""
-"您可以使用“帮助Wesnoth”按钮（位于游戏主屏幕右下角的信封图标）来发送匿名的摘要"
-"信息给Wesnoth项目组。这些信息很重要，可以帮助我们调整战役的难度。"
+"您可以使用“帮助韦诺”按钮（位于游戏主屏幕右下角的信封图标）来发送匿名的摘要信"
+"息给韦诺项目组。这些信息很重要，可以帮助我们调整战役的难度。"
 
 #. [tip]
 #: data/hardwired/tips.cfg:191
@@ -6566,7 +6573,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:192
 msgid "— Queen Li'sar, 528YW"
-msgstr "——Li'sar女王，528YW"
+msgstr "——丽莎女王，韦元528年"
 
 #. [tip]
 #: data/hardwired/tips.cfg:195
@@ -6616,7 +6623,7 @@ msgstr "失败："
 
 #: data/temp-file_send_data_strings.cfg:12
 msgid "About to upload statistics — Help us make Wesnoth better for you!"
-msgstr "即将上传统计数据——帮助我们改进Wesnoth，提升您的游戏体验！"
+msgstr "即将上传统计数据——帮助我们改进韦诺，提升您的游戏体验！"
 
 #: data/temp-file_send_data_strings.cfg:13
 msgid "Save my reply and do not ask again"
@@ -6879,7 +6886,7 @@ msgstr[1] "$friends个友军"
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
 msgstr[0] "1个敌军"
-msgstr[1] "$enemies 个敌军"
+msgstr[1] "$enemies个敌军"
 
 #: src/actions.cpp:2538
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
@@ -6977,7 +6984,7 @@ msgstr "回应"
 
 #: src/addon_management.cpp:585
 msgid "Downloading add-on: $addon_title|..."
-msgstr "正在下载附加组件：$addon_title|..."
+msgstr "正在下载附加组件：$addon_title|……"
 
 #: src/addon_management.cpp:600
 msgid ""
@@ -7126,7 +7133,7 @@ msgstr "所有附加组件都更新成功了。"
 
 #: src/addon_management.cpp:1111
 msgid "Connecting to add-ons server..."
-msgstr "正在连接到附加组件服务器..."
+msgstr "正在连接到附加组件服务器……"
 
 #: src/addon_management.cpp:1114 src/network.cpp:369 src/network.cpp:377
 msgid "Could not connect to host."
@@ -7414,7 +7421,7 @@ msgstr "移动："
 
 #: src/game.cpp:615 src/game.cpp:1416
 msgid "The Battle for Wesnoth"
-msgstr "The Battle for Wesnoth"
+msgstr "韦诺之战"
 
 #: src/game.cpp:946 src/game.cpp:954
 msgid "The file you have tried to load is corrupt"
@@ -7675,7 +7682,7 @@ msgstr ""
 #: src/generate_report.cpp:359
 #, fuzzy
 msgid "Swarm: "
-msgstr "沼泽"
+msgstr "群击"
 
 #: src/generate_report.cpp:364
 #, fuzzy
@@ -7933,7 +7940,7 @@ msgstr "原始文件出错"
 
 #: src/help.cpp:3153
 msgid "The Battle for Wesnoth Help"
-msgstr "Battle for Wesnoth 帮助"
+msgstr "韦诺之战帮助"
 
 #: src/help.cpp:3209
 msgid "Parse error when parsing help text: "
@@ -7972,15 +7979,15 @@ msgstr "？"
 
 #: src/loadscreen.cpp:244
 msgid "Verifying cache..."
-msgstr "正在验证缓存..."
+msgstr "正在验证缓存……"
 
 #: src/loadscreen.cpp:262
 msgid "Reading unit files..."
-msgstr "正在读取兵种文件..."
+msgstr "正在读取单位文件……"
 
 #: src/loadscreen.cpp:280
 msgid "Reading files and creating cache..."
-msgstr "正在读取文件并创建缓存..."
+msgstr "正在读取文件并创建缓存……"
 
 #: src/map.cpp:163
 msgid "A map without a header is not supported"
@@ -8276,14 +8283,14 @@ msgstr "错误："
 
 #: src/menu_events.cpp:2002
 msgid "Missing argument $arg_id"
-msgstr "缺少参数 $arg_id"
+msgstr "缺少参数$arg_id"
 
 #: src/menu_events.cpp:2050
 msgid ""
 "Available commands $flags_description:\n"
 "$list_of_commands"
 msgstr ""
-"可用命令 $flags_description：\n"
+"可用命令$flags_description：\n"
 "$list_of_commands"
 
 #: src/menu_events.cpp:2050 src/menu_events.cpp:2051 src/menu_events.cpp:2074
@@ -8637,7 +8644,7 @@ msgstr "错误"
 
 #: src/menu_events.cpp:2553
 msgid "Unknown debug domain: '$domain'."
-msgstr "未知调试域“$domain”。"
+msgstr "未知调试域：“$domain”。"
 
 #: src/menu_events.cpp:2562
 msgid "Switched domain: '$domain' to level: '$level'."
@@ -8645,7 +8652,7 @@ msgstr "将“$domain”域切换到“$level”级别。"
 
 #: src/menu_events.cpp:2633
 msgid "whisper to $receiver"
-msgstr "对 $receiver 说悄悄话："
+msgstr "对$receiver说悄悄话："
 
 #: src/menu_events.cpp:2640
 msgid "whisper: $sender"
@@ -8698,7 +8705,7 @@ msgstr "以密码 *** 注册，未使用电子邮件地址"
 
 #: src/menu_events.cpp:2821
 msgid "registering with password *** and email address $email"
-msgstr "以密码 *** 和电子邮件地址 $email 注册"
+msgstr "以密码***和电子邮件地址$email注册"
 
 #: src/menu_events.cpp:2824 src/menu_events.cpp:2835 src/menu_events.cpp:2853
 #: src/menu_events.cpp:2867
@@ -8711,11 +8718,11 @@ msgstr "正在废弃您的用户名"
 
 #: src/menu_events.cpp:2853
 msgid "setting $var to $value"
-msgstr "正在设置 $var 为 $value"
+msgstr "正在设置$var为$value"
 
 #: src/menu_events.cpp:2867
 msgid "requesting information for user $nick"
-msgstr "正在请求用户 $nick 的信息"
+msgstr "正在请求用户$nick的信息"
 
 #: src/menu_events.cpp:2979
 msgid "Couldn't find label or unit containing the string '$search'."
@@ -8735,7 +8742,7 @@ msgstr "无法改变无效阵营的控制权：“$side”。"
 
 #: src/menu_events.cpp:3056
 msgid "Can't change control of out-of-bounds side: '$side'."
-msgstr "无法改变失去控制的阵营的控制权：“$side”。"
+msgstr "无法改变超出范围的阵营的控制权：“$side”。"
 
 #: src/menu_events.cpp:3147
 msgid "Choose Scenario (Debug!)"
@@ -8761,7 +8768,9 @@ msgstr "变量未找到"
 msgid ""
 "Invalid alignment: '$alignment', needs to be one of lawful, neutral or "
 "chaotic."
-msgstr "无效阵营：“$alignment”，应为lawful，neutral与chaotic之一。"
+msgstr ""
+"无效立场：“$alignment”，应为lawful（守序），neutral（中立）与chaotic（混乱）"
+"之一。"
 
 #: src/menu_events.cpp:3317
 msgid "Invalid unit type"
@@ -8793,17 +8802,17 @@ msgstr "选择武器："
 
 #: src/multiplayer.cpp:137 src/multiplayer.cpp:174
 msgid "Connecting to Server..."
-msgstr "正在连接到服务器..."
+msgstr "正在连接到服务器……"
 
 #: src/multiplayer.cpp:147
 msgid "Reading from Server..."
-msgstr "正在从服务器读取数据..."
+msgstr "正在从服务器读取数据……"
 
 #: src/multiplayer.cpp:157
 msgid ""
 "The server requires version '$version1' while you are using version "
 "'$version2'"
-msgstr "本服务器须要版本“$version1”，而您的版本是“$version2”"
+msgstr "本服务器需要版本“$version1”，而您的版本是“$version2”"
 
 #: src/multiplayer.cpp:168
 msgid "Server-side redirect loop"
@@ -8904,7 +8913,7 @@ msgstr "（空置槽位）"
 
 #: src/multiplayer_connect.cpp:694
 msgid "(Reserved for $playername)"
-msgstr "（预留给 $playername）"
+msgstr "（预留给$playername）"
 
 #: src/multiplayer_connect.cpp:793
 msgid "Reserved"
@@ -8920,7 +8929,7 @@ msgstr "仅允许当前时代中的随机阵营"
 
 #: src/multiplayer_connect.cpp:948
 msgid "Unable to find a leader type for faction $faction"
-msgstr "找不到$faction派系的领袖类型"
+msgstr "无法找到$faction派系的可用领袖类型"
 
 #: src/multiplayer_connect.cpp:985
 msgid "Game Lobby: "
@@ -8981,15 +8990,15 @@ msgstr "空位"
 
 #: src/multiplayer_connect.cpp:1606
 msgid "Cannot find era $era"
-msgstr "找不到$era时代"
+msgstr "无法找到$era时代"
 
 #: src/multiplayer_connect.cpp:1631
 msgid "Defeat enemy leader(s)"
-msgstr "打败敌人的领袖(们)"
+msgstr "击败敌军领袖(们)"
 
 #: src/multiplayer_connect.cpp:1735
 msgid "Waiting for players to join..."
-msgstr "等待玩家加入..."
+msgstr "正在等待玩家加入……"
 
 #: src/multiplayer_create.cpp:50
 msgid "Create Game"
@@ -9204,11 +9213,11 @@ msgstr "游戏大厅"
 
 #: src/multiplayer_wait.cpp:176
 msgid "Waiting for game to start..."
-msgstr "等待游戏开始..."
+msgstr "正在等待游戏开始……"
 
 #: src/multiplayer_wait.cpp:199
 msgid "Getting game data..."
-msgstr "正在获取游戏数据..."
+msgstr "正在获取游戏数据……"
 
 #: src/multiplayer_wait.cpp:261
 msgid "No era information found."
@@ -9295,7 +9304,7 @@ msgstr "失败"
 
 #: src/playcampaign.cpp:134 src/playcampaign.cpp:172
 msgid "You have been defeated!"
-msgstr "您被打败了！"
+msgstr "您被击败了！"
 
 #: src/playcampaign.cpp:402
 msgid "Error while reading the WML: "
@@ -9307,7 +9316,7 @@ msgstr "这一场景结束了。您想继续这个战役吗？"
 
 #: src/playcampaign.cpp:464
 msgid "Downloading next scenario..."
-msgstr "正在下载下一场景..."
+msgstr "正在下载下一场景……"
 
 #: src/playcampaign.cpp:612
 msgid "Do you want to save your game?"
@@ -9315,11 +9324,11 @@ msgstr "您想保存游戏吗？"
 
 #: src/playcampaign.cpp:631
 msgid "Unknown scenario: '$scenario|'"
-msgstr "未知场景：'$scenario|'"
+msgstr "未知场景：“$scenario|”"
 
 #: src/playmp_controller.cpp:95
 msgid "$name has taken control"
-msgstr "$name 接管控制权"
+msgstr "$name接管控制权"
 
 #: src/playmp_controller.cpp:97
 msgid "Turn changed"
@@ -9331,7 +9340,7 @@ msgstr "正在取消还没传输到服务器的移动。"
 
 #: src/playmp_controller.cpp:402
 msgid "Waiting for next scenario..."
-msgstr "等待下一场景开始..."
+msgstr "正在等待下一场景开始……"
 
 #: src/playmp_controller.cpp:523
 msgid ""
@@ -9354,7 +9363,7 @@ msgstr "所剩金币："
 
 #: src/playsingle_controller.cpp:217
 msgid "Early finish bonus: "
-msgstr "提早结束奖励："
+msgstr "提前过关奖励："
 
 #: src/playsingle_controller.cpp:219
 msgid "per turn"
@@ -9391,16 +9400,16 @@ msgid ""
 msgid_plural ""
 "You will start the next scenario with $gold on top of the defined minimum "
 "starting gold."
-msgstr[0] "您将以 $gold 金进入下一场景。不会考虑规定的最少启动资金。"
-msgstr[1] "您将以 $gold 金子开始下一幕。不会考虑游戏预定的最小起始资金。"
+msgstr[0] "您将会以$gold金币来开始下一个场景。不会考虑规定的最小起始资金。"
+msgstr[1] "您将会以$gold金币来开始下一个场景。不会考虑规定的最小起始资金。"
 
 #: src/playsingle_controller.cpp:255
 msgid ""
 "You will start the next scenario with the defined minimum starting gold."
 msgid_plural ""
 "You will start the next scenario with the defined minimum starting gold."
-msgstr[0] "您将以所规定的最少启动资金进入下一个场景。"
-msgstr[1] "您将以所规定的最少启动资金进入下一个场景。"
+msgstr[0] "您将以所规定的最小起始资金来开始下一个场景。"
+msgstr[1] "您将以所规定的最小起始资金来开始下一个场景。"
 
 #: src/playsingle_controller.cpp:263
 msgid ""
@@ -9409,8 +9418,8 @@ msgid ""
 msgid_plural ""
 "You will start the next scenario with $gold or its defined minimum starting "
 "gold, whichever is higher."
-msgstr[0] "您将以 $gold 金或者所规定的最少启动资金中较高者进入下一场景。"
-msgstr[1] "您将以 $gold 金子和预定的最小起始资金中较高那个开始下一幕。"
+msgstr[0] "您将会以$gold金币或者所规定的最小起始资金中较高者来开始下一个场景。"
+msgstr[1] "您将会以$gold金币或者所规定的最小起始资金中较高者来开始下一个场景。"
 
 #: src/playsingle_controller.cpp:415
 msgid "Game Over"
@@ -9418,7 +9427,7 @@ msgstr "游戏结束"
 
 #: src/playsingle_controller.cpp:416
 msgid "The game is over."
-msgstr "本游戏结束。"
+msgstr "游戏结束了。"
 
 #: src/playsingle_controller.cpp:501
 msgid ""
@@ -9430,7 +9439,7 @@ msgstr ""
 
 #: src/playsingle_controller.cpp:664
 msgid "It is now $name|'s turn"
-msgstr "轮到$name|了"
+msgstr "轮到$name|的回合了"
 
 #: src/playsingle_controller.cpp:882
 msgid "Scenario Report"
@@ -9458,11 +9467,11 @@ msgstr "终止游戏"
 
 #: src/playturn.cpp:225 src/playturn.cpp:239
 msgid "Replace with $player"
-msgstr "让 $player 替换上阵"
+msgstr "让$player替换上阵"
 
 #: src/playturn.cpp:245
 msgid "$player has left the game. What do you want to do?"
-msgstr "$player 已经离开游戏，您想做什么？"
+msgstr "$player已经离开游戏，您想做什么？"
 
 #: src/savegame.cpp:205 src/savegame.cpp:207
 msgid " replay"
@@ -9532,7 +9541,7 @@ msgstr "行首部出现非预期的字符"
 
 #: src/serialization/parser.cpp:159
 msgid "Missing closing tag for tag $tag at $pos"
-msgstr " 在 $pos 处缺少 $tag 标签的结束标签"
+msgstr "在$pos处缺少$tag标签的结束标签"
 
 #: src/serialization/parser.cpp:174
 msgid "Unterminated [element] tag"
@@ -9560,7 +9569,7 @@ msgstr "非预期的结束标签"
 
 #: src/serialization/parser.cpp:216
 msgid "Found invalid closing tag $tag2 for tag $tag1 (opened at $pos)"
-msgstr "结束标签 $tag2 无法匹配开启标签 $tag1 (开启位置为 $pos)"
+msgstr "结束标签$tag2无法匹配开启标签$tag1（开启位置为 $pos）"
 
 #: src/serialization/parser.cpp:241 src/serialization/parser.cpp:253
 msgid "Empty variable name"
@@ -9576,11 +9585,11 @@ msgstr "未终止的引用字符串"
 
 #: src/serialization/parser.cpp:346
 msgid "$error, value '$value', previous '$previous_value' at $pos"
-msgstr "$error，值为 '$value'，原值为 '$previous_value'，位于 $pos"
+msgstr "$error，值为“$value”，原值为“$previous_value”，位于$pos"
 
 #: src/serialization/parser.cpp:350
 msgid "$error, value '$value' at $pos"
-msgstr "$error，值为 '$value'，位于 $pos"
+msgstr "$error，值为“$value”，位于$pos"
 
 #: src/statistics_dialog.cpp:69 src/statistics_dialog.cpp:125
 msgid "Recruits"
@@ -9648,7 +9657,7 @@ msgstr "拥有的村庄"
 
 #: src/theme.cpp:313
 msgid "border_size should be between 0.0 and 0.5."
-msgstr "border_size 应设为0.0到0.5之间的数值。"
+msgstr "border_size应设为0.0到0.5之间的数值。"
 
 #: src/titlescreen.cpp:428
 msgid "TitleScreen button^Tutorial"
@@ -9684,7 +9693,7 @@ msgstr "首选项"
 
 #: src/titlescreen.cpp:438
 msgid "TitleScreen button^Credits"
-msgstr "贡献者"
+msgstr "制作人员表"
 
 #: src/titlescreen.cpp:439
 msgid "TitleScreen button^Quit"
@@ -9704,7 +9713,7 @@ msgstr "帮助"
 
 #: src/titlescreen.cpp:446
 msgid "TitleScreen button^Help Wesnoth"
-msgstr "帮助Wesnoth"
+msgstr "帮助韦诺"
 
 #: src/titlescreen.cpp:448
 msgid "Start a tutorial to familiarize yourself with the game"
@@ -9726,7 +9735,7 @@ msgstr "读取游戏存档"
 
 #: src/titlescreen.cpp:452
 msgid "Download usermade campaigns, eras, or map packs"
-msgstr "下载用户自定的战役、时代或地图包"
+msgstr "下载用户自定义的战役、时代或者地图包"
 
 #: src/titlescreen.cpp:454
 msgid "Start the map editor"
@@ -9754,7 +9763,7 @@ msgstr "显示下一个每日提示"
 
 #: src/titlescreen.cpp:461
 msgid "Show Battle for Wesnoth help"
-msgstr "显示Battle for Wesnoth的帮助"
+msgstr "显示韦诺之战帮助"
 
 #: src/titlescreen.cpp:462
 msgid "Upload statistics"
@@ -9771,11 +9780,11 @@ msgstr "发送信息，帮助韦诺"
 #: src/tod_manager.cpp:103 src/tod_manager.cpp:135 src/tod_manager.cpp:245
 #: src/tod_manager.cpp:258 src/tod_manager.cpp:310
 msgid "No time of day has been defined."
-msgstr "没有定义时刻。"
+msgstr "没有定义时段。"
 
 #: src/unit.cpp:717
 msgid "Unknown unit type '$type|' while generating traits"
-msgstr "生成特质时，遇到未知单位种类 '$type|'"
+msgstr "生成特质时，遇到未知的单位类型“$type|”"
 
 #: src/unit.cpp:2287 src/unit.cpp:2474 src/unit.cpp:2547
 msgid " and "
@@ -9783,7 +9792,7 @@ msgstr " 以及"
 
 #: src/unit.cpp:2298
 msgid "$attack_list|: $effect_description"
-msgstr "$attack_list|: $effect_description"
+msgstr "$attack_list|：$effect_description"
 
 #: src/unit.cpp:2363
 msgid "moves"
@@ -9799,11 +9808,11 @@ msgstr " 移动"
 
 #: src/unit.cpp:2509
 msgid "$effect_description per level"
-msgstr "每级 $effect_description"
+msgstr "每一等级$effect_description"
 
 #: src/unit.cpp:2556
 msgid "$trait_name|: $trait_description "
-msgstr "$trait_name|: $trait_description "
+msgstr "$trait_name|：$trait_description "
 
 #: src/unit_types.cpp:193 src/unit_types.cpp:259
 msgid "damage"
@@ -9887,14 +9896,14 @@ msgstr "开启摘要上传"
 #~ msgid_plural ""
 #~ "$addon_title depends upon the following add-ons which you have not "
 #~ "installed yet:"
-#~ msgstr[0] "$addon_title 依赖于以下您尚未安装的附加组件："
-#~ msgstr[1] "$addon_title 依赖于以下您尚未安装的附加组件："
+#~ msgstr[0] "$addon_title依赖于以下您尚未安装的附加组件："
+#~ msgstr[1] "$addon_title依赖于以下您尚未安装的附加组件："
 
 #~ msgid ""
 #~ "Do you still want to download $addon_title|? (You will have to install "
 #~ "all the dependencies in order to play.)"
 #~ msgstr ""
-#~ "您仍然希望下载 $addon_title|吗？（您需要安装它所有的依赖才能进行游戏。）"
+#~ "您仍然希望下载$addon_title|吗？（您需要安装它所有的依赖项才能进行游戏。）"
 
 #~ msgid "[unit_worth]'s filter didn't match any units!"
 #~ msgstr "[unit_worth]的过滤条件未能匹配任何单位！"
@@ -9914,6 +9923,24 @@ msgstr "开启摘要上传"
 
 #~ msgid "tooltip^% parry"
 #~ msgstr "%闪避"
+
+#~ msgid "Grant higher privileges to Lua scripts."
+#~ msgstr "赋予Lua脚本更高的权限。"
+
+#~ msgid "Unsafe Lua scripts."
+#~ msgstr "不安全的Lua脚本。"
+
+#~ msgid ""
+#~ "You are about to open a security breach in Wesnoth. Are you sure you want "
+#~ "to continue? If you have downloaded add-ons, do not click 'ok'! They "
+#~ "would instantly take over your computer. You have been warned."
+#~ msgstr ""
+#~ "您的操作有可能将破坏韦诺的安全性。您真的确定要继续吗？如果您下载过附加组"
+#~ "件，请不要点击“确定”！这些脚本将可能完全控制您的计算机！我们已经警告过您"
+#~ "了！"
+
+#~ msgid "Unsafe mode enabled!"
+#~ msgstr "不安全模式已启用！"
 
 #~ msgid "--no games open--"
 #~ msgstr "--没有游戏处于开放状态--"
