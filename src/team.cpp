@@ -319,31 +319,6 @@ void team::add_recruit(const std::string &recruit)
 	ai::manager::raise_recruit_list_changed();
 }
 
-namespace {
-	struct count_average {
-		count_average(int a) : a_(a), sum_(0), count_(0)
-		{}
-		~count_average() {
-			// If no recruits disable leader from moving to keep
-			if (count_ == 0)
-				a_ = 424242;
-			else
-				a_ = sum_/count_;
-		}
-		void operator()(const std::string& recruit)
-		{
-			const unit_type *ut = unit_types.find(recruit);
-			if (!ut) return;
-			++count_;
-			sum_ += ut->cost();
-		}
-		private:
-		int a_;
-		int sum_;
-		int count_;
-	};
-}
-
 bool team::calculate_enemies(size_t index) const
 {
 	if(teams == NULL || index >= teams->size()) {
