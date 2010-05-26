@@ -1,15 +1,9 @@
 package wesnoth_eclipse_plugin.builder;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.util.ArrayList;
+import java.io.File;
+import java.util.HashMap;
 import java.util.Map;
 
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
-
-import org.eclipse.core.internal.resources.IMarkerSetElement;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IProject;
@@ -20,48 +14,33 @@ import org.eclipse.core.resources.IResourceVisitor;
 import org.eclipse.core.resources.IncrementalProjectBuilder;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.preferences.IEclipsePreferences.INodeChangeListener;
-import org.eclipse.jface.text.BadLocationException;
-import org.eclipse.jface.text.BadPositionCategoryException;
-import org.eclipse.jface.text.Document;
-import org.eclipse.jface.text.IDocument;
-import org.eclipse.jface.text.IDocumentListener;
-import org.eclipse.jface.text.IDocumentPartitioner;
-import org.eclipse.jface.text.IDocumentPartitioningListener;
-import org.eclipse.jface.text.IPositionUpdater;
-import org.eclipse.jface.text.IRegion;
-import org.eclipse.jface.text.ITypedRegion;
-import org.eclipse.jface.text.Position;
-import org.eclipse.ui.editors.text.TextFileDocumentProvider;
-import org.eclipse.ui.texteditor.IDocumentProvider;
-import org.xml.sax.SAXException;
-import org.xml.sax.SAXParseException;
-import org.xml.sax.helpers.DefaultHandler;
+import org.eclipse.core.runtime.Path;
 
-
-import wesnoth_eclipse_plugin.Logger;
+import wesnoth_eclipse_plugin.preferences.PreferenceConstants;
+import wesnoth_eclipse_plugin.preferences.PreferenceInitializer;
+import wesnoth_eclipse_plugin.utils.AntUtils;
+import wesnoth_eclipse_plugin.utils.GUIUtils;
+import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
 
 public class SampleBuilder extends IncrementalProjectBuilder {
 
+	public static final String BUILDER_ID = "Wesnoth_Eclipse_Plugin.sampleBuilder";
+	private static final String MARKER_TYPE = "Wesnoth_Eclipse_Plugin.configProblem";
+
 	class SampleDeltaVisitor implements IResourceDeltaVisitor {
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see org.eclipse.core.resources.IResourceDeltaVisitor#visit(org.eclipse.core.resources.IResourceDelta)
-		 */
 		public boolean visit(IResourceDelta delta) throws CoreException {
 			IResource resource = delta.getResource();
 			switch (delta.getKind()) {
 			case IResourceDelta.ADDED:
 				// handle added resource
-				checkXML(resource);
+				checkResource(resource);
 				break;
 			case IResourceDelta.REMOVED:
 				// handle removed resource
 				break;
 			case IResourceDelta.CHANGED:
 				// handle changed resource
-				checkXML(resource);
+				checkResource(resource);
 				break;
 			}
 			//return true to continue visiting children.
@@ -71,68 +50,52 @@ public class SampleBuilder extends IncrementalProjectBuilder {
 
 	class SampleResourceVisitor implements IResourceVisitor {
 		public boolean visit(IResource resource) {
-			checkXML(resource);
+			checkResource(resource);
 			//return true to continue visiting children.
 			return true;
 		}
 	}
 
-	class XMLErrorHandler extends DefaultHandler {
-		
-		private IFile file;
-
-		public XMLErrorHandler(IFile file) {
-			this.file = file;
-		}
-
-		private void addMarker(SAXParseException e, int severity) {
-			SampleBuilder.this.addMarker(file, e.getMessage(), e
-					.getLineNumber(), severity);
-		}
-
-		public void error(SAXParseException exception) throws SAXException {
-			addMarker(exception, IMarker.SEVERITY_ERROR);
-		}
-
-		public void fatalError(SAXParseException exception) throws SAXException {
-			addMarker(exception, IMarker.SEVERITY_ERROR);
-		}
-
-		public void warning(SAXParseException exception) throws SAXException {
-			addMarker(exception, IMarker.SEVERITY_WARNING);
-		}
-	}
-
-	public static final String BUILDER_ID = "Wesnoth_Eclipse_Plugin.sampleBuilder";
-
-	private static final String MARKER_TYPE = "Wesnoth_Eclipse_Plugin.xmlProblem";
-	private String TOOL_PATH = "E:\\work\\java\\eclipse_plugin\\dummytool.exe";
-	private SAXParserFactory parserFactory;
-
-	private void addMarker(IFile file, String message, int lineNumber,
-			int severity) {
+	protected void fullBuild(final IProgressMonitor monitor) throws CoreException {
 		try {
-			IMarker marker = file.createMarker(MARKER_TYPE);
-			marker.setAttribute(IMarker.MESSAGE, message);
-			marker.setAttribute(IMarker.SEVERITY, severity);
-			if (lineNumber == -1) {
-				lineNumber = 1;
-			}
-			marker.setAttribute(IMarker.LINE_NUMBER, lineNumber);
+			getProject().accept(new SampleResourceVisitor());
 		} catch (CoreException e) {
+			e.printStackTrace();
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.eclipse.core.internal.events.InternalBuilder#build(int,
-	 *      java.util.Map, org.eclipse.core.runtime.IProgressMonitor)
-	 */
-	protected IProject[] build(int kind, Map args, IProgressMonitor monitor)
-			throws CoreException {
-		Logger.print("building");
-		
+	protected void incrementalBuild(IResourceDelta delta, IProgressMonitor monitor) throws CoreException {
+		// the visitor does the work.
+		delta.accept(new SampleDeltaVisitor());
+	}
+
+	@Override
+	protected IProject[] build(int kind, Map args, IProgressMonitor monitor) throws CoreException {
+		System.out.println("building");
+
+		if (PreferenceInitializer.getString(PreferenceConstants.P_WESNOTH_USER_DIR).isEmpty())
+		{
+			GUIUtils.showMessageBox(WorkspaceUtils.getWorkbenchWindow(),
+					"Please set the wesnoth user dir before creating the content");
+			return null;
+		}
+
+		// run the ant job to copy the whole project
+		// in the user add-ons directory (incremental)
+		if (!(new File(getProject().getLocation().toOSString() + "/build.xml").exists()))
+		{
+			GUIUtils.showMessageBox(WorkspaceUtils.getWorkbenchWindow(),
+				"The 'build.xml' file is missing. The building cannot continue.");
+			//TODO: better way of handling this - maybe regenerating?
+			return null;
+		}
+
+		HashMap<String, String> properties = new HashMap<String, String>();
+		properties.put("wesnoth.user.dir",
+				PreferenceInitializer.getString(PreferenceConstants.P_WESNOTH_USER_DIR) + Path.SEPARATOR);
+		System.out.println("Ant result:");
+		System.out.println(AntUtils.runAnt(getProject().getLocation().toOSString() + "/build.xml",properties));
+
 		if (kind == FULL_BUILD) {
 			fullBuild(monitor);
 		} else {
@@ -146,17 +109,17 @@ public class SampleBuilder extends IncrementalProjectBuilder {
 		return null;
 	}
 
-	void checkXML(IResource resource) {
+	void checkResource(IResource resource) {
 		// dummy condition
 		if (resource instanceof IFile && resource.getName().equals("_main.cfg")) {
 			try {
 				IFile file = (IFile) resource;
 				deleteMarkers(file);
-				
+
 				/*
 				IMarker[] resIMarkers = file.findMarkers(MARKER_TYPE, false, IResource.DEPTH_ZERO);
 				Logger.print("found markers: " + resIMarkers.length);
-				
+
 				ExternalToolInvoker invoker = new ExternalToolInvoker(TOOL_PATH, resource.getFullPath().toOSString(), true);
 				Logger.print("Tool: "+TOOL_PATH+ " checking file: "+resource.getFullPath().toOSString());
 				invoker.run();
@@ -167,7 +130,7 @@ public class SampleBuilder extends IncrementalProjectBuilder {
 				IDocumentProvider provider = new TextFileDocumentProvider();
 				provider.connect(file);
 				IDocument document = provider.getDocument(file);
-				
+
 				String line;MarkerToken token;
 				while((line  = invoker.readOutputLine()) != null)
 				{
@@ -189,33 +152,26 @@ public class SampleBuilder extends IncrementalProjectBuilder {
 		}
 	}
 
+	private void addMarker(IFile file, String message, int lineNumber,
+			int severity) {
+		try {
+			IMarker marker = file.createMarker(MARKER_TYPE);
+			marker.setAttribute(IMarker.MESSAGE, message);
+			marker.setAttribute(IMarker.SEVERITY, severity);
+			if (lineNumber == -1) {
+				lineNumber = 1;
+			}
+			marker.setAttribute(IMarker.LINE_NUMBER, lineNumber);
+		} catch (CoreException e) {
+			e.printStackTrace();
+		}
+	}
+
 	private void deleteMarkers(IFile file) {
 		try {
 			file.deleteMarkers(MARKER_TYPE, false, IResource.DEPTH_ZERO);
-		} catch (CoreException ce) {
-		}
-	}
-
-	protected void fullBuild(final IProgressMonitor monitor)
-	
-			throws CoreException {
-		try {
-			getProject().accept(new SampleResourceVisitor());
 		} catch (CoreException e) {
+			e.printStackTrace();
 		}
-	}
-
-	private SAXParser getParser() throws ParserConfigurationException,
-			SAXException {
-		if (parserFactory == null) {
-			parserFactory = SAXParserFactory.newInstance();
-		}
-		return parserFactory.newSAXParser();
-	}
-
-	protected void incrementalBuild(IResourceDelta delta,
-			IProgressMonitor monitor) throws CoreException {
-		// the visitor does the work.
-		delta.accept(new SampleDeltaVisitor());
 	}
 }
