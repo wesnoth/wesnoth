@@ -71,7 +71,6 @@ public:
 		int income;
 		int income_per_village;
 		int recall_cost;
-		mutable int average_price;
 		std::set<std::string> can_recruit;
 		std::string team_name;
 		t_string user_team_name;
@@ -152,8 +151,6 @@ public:
 	const std::vector<unit>& recall_list() const {return recall_list_;}
 	void set_current_player(const std::string& player)
 		{ info_.current_player = player; }
-
-	int average_recruit_price() const;
 
 	bool get_scroll_to_leader() const {return info_.scroll_to_leader;}
 

@@ -54,7 +54,6 @@ team::team_info::team_info(const config& cfg) :
 		income(cfg["income"]),
 		income_per_village(0),
 		recall_cost(0),
-		average_price(0),
 		can_recruit(),
 		team_name(cfg["team_name"]),
 		user_team_name(cfg["user_team_name"].t_str()),
@@ -311,14 +310,12 @@ void team::lose_village(const map_location& loc)
 void team::set_recruits(const std::set<std::string>& recruits)
 {
 	info_.can_recruit = recruits;
-	info_.average_price = 0;
 	ai::manager::raise_recruit_list_changed();
 }
 
 void team::add_recruit(const std::string &recruit)
 {
 	info_.can_recruit.insert(recruit);
-	info_.average_price = 0;
 	ai::manager::raise_recruit_list_changed();
 }
 
@@ -345,20 +342,6 @@ namespace {
 		int sum_;
 		int count_;
 	};
-}
-
-int team::average_recruit_price() const
-{
-	if (info_.average_price)
-		return info_.average_price;
-
-	{
-		count_average avg(info_.average_price);
-		BOOST_FOREACH(std::string type, info_.can_recruit){
-			avg(type);
-		}
-	}
-	return info_.average_price;
 }
 
 bool team::calculate_enemies(size_t index) const
