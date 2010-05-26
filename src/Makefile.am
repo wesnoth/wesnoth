@@ -78,6 +78,7 @@ wesnoth_source = \
 	ai/testing/stage_fallback.cpp \
 	ai/testing.cpp \
 	animated_game.cpp \
+	arrow.cpp \
 	attack_prediction.cpp \
 	attack_prediction_display.cpp \
 	callable_objects.cpp \

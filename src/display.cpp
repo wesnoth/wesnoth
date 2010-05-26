@@ -2369,10 +2369,12 @@ arrow* display::create_arrow() {
 	return new arrow;
 }
 
-void display::arrow_changed(const arrow & a) {
+void display::arrow_changed(const arrow &)
+{
 	//TODO: implement
 }
 
-void display::arrow_deleted(const arrow & a) {
+void display::arrow_deleted(const arrow &)
+{
 	//TODO: implement
 }
