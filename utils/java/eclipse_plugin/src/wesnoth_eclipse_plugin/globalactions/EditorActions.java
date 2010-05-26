@@ -13,6 +13,7 @@ import wesnoth_eclipse_plugin.Activator;
 import wesnoth_eclipse_plugin.builder.ExternalToolInvoker;
 import wesnoth_eclipse_plugin.preferences.PreferenceConstants;
 import wesnoth_eclipse_plugin.preferences.PreferenceInitializer;
+import wesnoth_eclipse_plugin.utils.GUIUtils;
 import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
 
 public class EditorActions
@@ -27,9 +28,7 @@ public class EditorActions
 
 		if (editorPath.isEmpty())
 		{
-			MessageBox box = new MessageBox(Activator.getShell());
-			box.setMessage(String.format("Please set the wesnoth's executable path first."));
-			box.open();
+			GUIUtils.showMessageBox(WorkspaceUtils.getWorkbenchWindow(), "Please set the wesnoth's executable path first.");
 			return;
 		}
 

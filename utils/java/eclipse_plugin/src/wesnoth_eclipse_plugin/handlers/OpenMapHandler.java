@@ -4,10 +4,9 @@ import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.resources.IFile;
-import org.eclipse.swt.widgets.MessageBox;
 
-import wesnoth_eclipse_plugin.Activator;
 import wesnoth_eclipse_plugin.globalactions.EditorActions;
+import wesnoth_eclipse_plugin.utils.GUIUtils;
 import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
 
 public class OpenMapHandler extends AbstractHandler
@@ -18,9 +17,7 @@ public class OpenMapHandler extends AbstractHandler
 		IFile selectedFile = WorkspaceUtils.getSelectedFile(WorkspaceUtils.getWorkbenchWindow());
 		if (!selectedFile.getName().endsWith(".map"))
 		{
-			MessageBox box = new MessageBox(Activator.getShell());
-			box.setMessage("Please select a .map file");
-			box.open();
+			GUIUtils.showMessageBox(WorkspaceUtils.getWorkbenchWindow(),"Please select a .map file");
 			return null;
 		}
 		EditorActions.startEditor(selectedFile.getLocation().toOSString());

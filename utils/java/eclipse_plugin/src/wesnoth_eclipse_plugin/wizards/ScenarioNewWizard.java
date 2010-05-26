@@ -22,7 +22,6 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.jface.wizard.Wizard;
-import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPage;
@@ -33,6 +32,8 @@ import org.eclipse.ui.ide.IDE;
 
 import wesnoth_eclipse_plugin.ReplaceableParameter;
 import wesnoth_eclipse_plugin.TemplateProvider;
+import wesnoth_eclipse_plugin.utils.GUIUtils;
+import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
 
 /**
  * This is a sample new wizard. Its role is to create a new file
@@ -183,9 +184,8 @@ public class ScenarioNewWizard extends Wizard implements INewWizard {
 
 		if (template == null)
 		{
-			MessageBox box = new MessageBox(this.getShell());
-			box.setMessage(String.format("Template for \"scenario\" not found."));
-			box.open();
+			GUIUtils.showMessageBox(WorkspaceUtils.getWorkbenchWindow(),
+					"Template for \"scenario\" not found.");
 			return null;
 		}
 
