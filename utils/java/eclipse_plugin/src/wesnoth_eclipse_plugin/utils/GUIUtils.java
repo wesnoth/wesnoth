@@ -15,6 +15,8 @@ public class GUIUtils
 	 */
 	public static void showMessageBox(final IWorkbenchWindow window,final String message)
 	{
+		if (window  == null || window.getShell() == null)
+			return;
 		try
 		{
 			window.getShell().getDisplay().asyncExec(new Runnable() {
