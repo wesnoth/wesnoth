@@ -54,6 +54,8 @@ public class WorkspaceUtils
 	}
 	public static IWorkbenchWindow getWorkbenchWindow()
 	{
-		return Activator.getDefault().getWorkbench().getActiveWorkbenchWindow();
+		if (Activator.getDefault().getWorkbench().getWorkbenchWindowCount() == 0)
+			return null;
+		return Activator.getDefault().getWorkbench().getWorkbenchWindows()[0];
 	}
 }
