@@ -2,12 +2,12 @@
 <project name="$$project_name" default="copyAll">
 	<!-- <property file="build.properties"/> -->
 	<target name="copyAll">
-    	<copy verbose="true" todir="${wesnoth.user.dir}/data/add-ons/">
-    		<fileset dir="">
-    			<!-- <exclude name=".project"/> -->
-    			<exclude name="build.xml"/>
-    			<exclude name="build.properties"/>
-    		</fileset>
-    	</copy>
-    </target>
+		<copy verbose="true" todir="${wesnoth.user.dir}/data/add-ons/$$project_name/">
+			<fileset dir="">
+				<!-- <exclude name=".project"/> -->
+				<exclude name="build.xml"/>
+				<exclude name="build.properties"/>
+			</fileset>
+		</copy>
+	</target>
 </project>
