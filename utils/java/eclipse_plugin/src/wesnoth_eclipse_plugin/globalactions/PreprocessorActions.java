@@ -6,9 +6,16 @@ package wesnoth_eclipse_plugin.globalactions;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.core.filesystem.EFS;
+import org.eclipse.core.filesystem.IFileStore;
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.runtime.Path;
+import org.eclipse.ui.ide.IDE;
+
 import wesnoth_eclipse_plugin.builder.ExternalToolInvoker;
 import wesnoth_eclipse_plugin.preferences.PreferenceConstants;
 import wesnoth_eclipse_plugin.preferences.PreferenceInitializer;
+import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
 
 public class PreprocessorActions
 {
@@ -51,6 +58,30 @@ public class PreprocessorActions
 		catch (Exception e) {
 			e.printStackTrace();
 			return false;
+		}
+	}
+
+	/**
+	 * Opens the preprocessed version of the specified file
+	 * @param file the file to show preprocessed output
+	 * @param openPlain true if it should open the plain preprocessed version
+	 * or false for the normal one
+	 */
+	public static void openPreprocessedFileInEditor(IFile file, boolean openPlain)
+	{
+		if (file == null)
+			return;
+
+		IFileStore preprocFile = EFS.getLocalFileSystem().getStore(new Path(WorkspaceUtils.getTemporaryFolder()));
+		preprocFile = preprocFile.getChild(file.getName() + (openPlain == true? ".plain" : "") );
+
+		try
+		{
+			IDE.openEditorOnFileStore(WorkspaceUtils.getWorkbenchWindow().getActivePage(), preprocFile);
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
 		}
 	}
 }
