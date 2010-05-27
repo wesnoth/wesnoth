@@ -4,6 +4,7 @@
 #include "display.hpp"
 
 #include <vector>
+#include <list>
 #include <utility>
 
 /**
@@ -23,10 +24,11 @@ class arrow_observer {
  */
 class arrow {
 
-  public:
-    void set_path(const std::list<map_location> & path);
+  public: //operations
 
-    void set_color(const SDL_Color & color);
+    void set_path(const std::list<map_location> path);
+
+    void set_color(const SDL_Color color);
 
     void set_layer(const display::tdrawing_layer & layer);
 
@@ -40,26 +42,27 @@ class arrow {
      */
     arrow();
 
-    void add_observer(const arrow_observer & observer);
+    void add_observer(arrow_observer & observer);
 
-    void remove_observer(const arrow_observer & observer);
+    void remove_observer(arrow_observer & observer);
 
-    std::vector<std::pair<map_location, surface> > getImages();
+    std::vector<std::pair<map_location, surface> > getImages() const;
 
-  private:
+  private: //operations
 
     void notify_arrow_changed();
 
     void notify_arrow_deleted();
 
-  private:
-    display::tdrawing_layer layer;
+  private: //properties
 
-    SDL_Color color;
+    display::tdrawing_layer layer_;
 
-    std::list<arrow_observer*> observers;
+    SDL_Color color_;
 
-    std::list<map_location> path;
+    std::list<arrow_observer*> observers_;
+
+    std::list<map_location> path_;
 
 };
 #endif
