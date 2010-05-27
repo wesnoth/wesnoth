@@ -20,10 +20,7 @@
 #include "ai.hpp"
 #include "engine.hpp"
 #include "rca.hpp"
-#include "../../foreach.hpp"
 #include "../../log.hpp"
-#include "../../util.hpp"
-#include "../../serialization/string_utils.hpp"
 
 namespace ai {
 
@@ -35,8 +32,12 @@ static lg::log_domain log_ai_stage_rca("ai/stage/rca");
 const double candidate_action::BAD_SCORE = 0;
 const double candidate_action::HIGH_SCORE = 10000000;
 
-candidate_action::candidate_action(rca_context &context, const config &cfg)
-	: recursion_counter_(context.get_recursion_count()), enabled_(utils::string_bool(cfg["enabled"],true)), engine_(cfg["engine"]), score_(lexical_cast_default<double>(cfg["score"],BAD_SCORE)),max_score_(lexical_cast_default<double>(cfg["max_score"],HIGH_SCORE)),id_(cfg["id"]),name_(cfg["name"]),type_(cfg["type"])
+candidate_action::candidate_action(rca_context &context, const config &cfg):
+	recursion_counter_(context.get_recursion_count()),
+	enabled_(cfg["enabled"].to_bool(true)), engine_(cfg["engine"]),
+	score_(cfg["score"].to_double(BAD_SCORE)),
+	max_score_(cfg["max_score"].to_double(HIGH_SCORE)),
+	id_(cfg["id"]), name_(cfg["name"]), type_(cfg["type"])
 {
 	init_rca_context_proxy(context);
 }
@@ -87,11 +88,11 @@ const std::string& candidate_action::get_type() const
 config candidate_action::to_config() const
 {
 	config cfg;
-	cfg["enabled"] = lexical_cast<std::string>(enabled_);
+	cfg["enabled"] = enabled_;
 	cfg["engine"] = engine_;
 	cfg["name"] = name_;
-	cfg["score"] = lexical_cast<std::string>(score_);
-	cfg["max_score"] = lexical_cast<std::string>(max_score_);
+	cfg["score"] = score_;
+	cfg["max_score"] = max_score_;
 	cfg["type"] = type_;
 	return cfg;
 }
