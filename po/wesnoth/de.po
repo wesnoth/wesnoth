@@ -1,18 +1,18 @@
 # Translators:
 #  Andre Schmidt <andre@schmidtandre.de>, 2004, 2005
 #  Boris Stumm <wesnoth@bstumm.de>, 2005
-#  Gerfried Fuchs <alfie@ist.org>, 2005, 2006
 #  Nils Kneuper <crazy-ivanovic@gmx.net>, 2005, 2006
 #  Christoph Berg <Christoph.Berg@kpm-sport.de>, 2005 - 2010
-#  Gerfried Fuchs <rhonda@deb.at>, 2010
+#  Gerfried Fuchs <rhonda@deb.at>, 2005, 2006, 2010
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.8\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-05-15 14:21+0200\n"
-"PO-Revision-Date: 2010-04-28 08:37+0200\n"
+"PO-Revision-Date: 2010-05-27 18:59+0200\n"
 "Last-Translator: Gerfried Fuchs <rhonda@deb.at>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -101,9 +101,8 @@ msgstr "Klänge der Eingangshalle"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:107
-#, fuzzy
 msgid "Disable notifications"
-msgstr "Deaktiviert das automatische Speichern zu Rundenbeginn."
+msgstr "Deaktiviert Benachrichtigungen"
 
 #. [ai]: id=testing_ai_default
 #: data/ai/ais/testing_ai_default.cfg:5
@@ -827,8 +826,8 @@ msgstr ""
 "\n"
 "\n"
 "Wenn Ihr in einem Szenario den Sieg errungen habt, ändert sich die "
-"Schaltfläche »Zug beenden« in »Szenario beenden« und die Karte wird mit einem "
-"grauen Schleier überzogen. Nun könnt Ihr beispielsweise Eure "
+"Schaltfläche »Zug beenden« in »Szenario beenden« und die Karte wird mit "
+"einem grauen Schleier überzogen. Nun könnt Ihr beispielsweise Eure "
 "Speicheroptionen ändern oder (falls Ihr Euch in einer Mehrspielerpartie "
 "befindet) Euch mit anderen Spielern unterhalten, bevor Ihr mit dem Spiel "
 "fortfahrt."
@@ -854,10 +853,10 @@ msgid ""
 msgstr ""
 "Am Anfang einer Schlacht, manchmal auch während des Kampfes, müsst Ihr "
 "<ref>dst='..units' text='Truppen'</ref> für Eure Armee ausbilden. Dafür muss "
-"Euer Anführer (beispielsweise Konrad in der Kampagne »Der Thronerbe«) auf dem "
-"Burgfried-Feld in einer <ref>dst='terrain_castle' text='Burg'</ref> stehen. "
-"Ihr könnt dann entweder »Ausbilden« im Menü auswählen oder nach einem "
-"Rechtsklick auf ein Hexfeld <italic>text=Ausbilden</italic> auswählen. "
+"Euer Anführer (beispielsweise Konrad in der Kampagne »Der Thronerbe«) auf "
+"dem Burgfried-Feld in einer <ref>dst='terrain_castle' text='Burg'</ref> "
+"stehen. Ihr könnt dann entweder »Ausbilden« im Menü auswählen oder nach "
+"einem Rechtsklick auf ein Hexfeld <italic>text=Ausbilden</italic> auswählen. "
 "Danach erscheint das Ausbildungsmenü, in dem alle Einheitentypen, die "
 "ausgebildet werden können, aufgelistet werden. Neben den Einheiten ist "
 "angegeben, wie viel die Ausbildung kostet. Wenn Ihr eine Einheit wählt, "
@@ -1160,12 +1159,12 @@ msgstr ""
 "bei der Rekrutierung), eingetreten ist. Das Erkunden eines vom Nebel des "
 "Krieges oder Schleier der Finsternis verborgenen Gebietes kann ebenfalls "
 "nicht rückgängig gemacht werden. Ihr könnt die Einstellung »Schleier "
-"verspätet aktualisieren« im Menü »Aktionen« aktivieren. Dies verhindert, dass "
-"Einheiten den Nebel oder Schleier aufdecken, bis das nächste Ereignis mit "
-"unvorhersehbarem Ausgang eintritt oder ein manuelles Aktualisieren mittels "
-"»Schleier jetzt aktualisieren« ausgelöst wird (oder am Ende Eures Zuges). "
-"Dadurch bleibt Euch die Möglichkeit erhalten, die Bewegung Eurer Einheit "
-"rückgängig zu machen."
+"verspätet aktualisieren« im Menü »Aktionen« aktivieren. Dies verhindert, "
+"dass Einheiten den Nebel oder Schleier aufdecken, bis das nächste Ereignis "
+"mit unvorhersehbarem Ausgang eintritt oder ein manuelles Aktualisieren "
+"mittels »Schleier jetzt aktualisieren« ausgelöst wird (oder am Ende Eures "
+"Zuges). Dadurch bleibt Euch die Möglichkeit erhalten, die Bewegung Eurer "
+"Einheit rückgängig zu machen."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:237
@@ -1524,9 +1523,9 @@ msgstr ""
 "\n"
 "Einheiten benötigen eine bestimmte Anzahl von Erfahrungspunkten, um eine "
 "Stufe aufzusteigen (20% weniger bei Einheiten mit der Charakteristik "
-"»Intelligent«). Sobald sie genügend Erfahrungspunkte gesammelt haben, steigen "
-"sie eine Stufe auf und werden vollständig geheilt. Bei einigen Einheiten "
-"könnt Ihr aus mehreren Aufstiegsmöglichkeiten auswählen."
+"»Intelligent«). Sobald sie genügend Erfahrungspunkte gesammelt haben, "
+"steigen sie eine Stufe auf und werden vollständig geheilt. Bei einigen "
+"Einheiten könnt Ihr aus mehreren Aufstiegsmöglichkeiten auswählen."
 
 #. [topic]: id=experience_and_advancement
 #: data/core/help.cfg:299
@@ -1751,8 +1750,8 @@ msgstr ""
 "niemals Unterhaltskosten. Einheiten, mit denen Ihr ein Szenario beginnt "
 "(beispielsweise Delfador) oder Einheiten, die sich Euch während eines "
 "Szenarios anschließen (beispielsweise der Reiter im zweiten Szenario von "
-"»Der Thronerbe«), sind üblicherweise »loyal«. Die Einheit, die Ihr verkörpert "
-"(beispielsweise Konrad), wird fast immer auch Euer Anführer sein."
+"»Der Thronerbe«), sind üblicherweise »loyal«. Die Einheit, die Ihr "
+"verkörpert (beispielsweise Konrad), wird fast immer auch Euer Anführer sein."
 
 #. [topic]: id=wrap_up
 #: data/core/help.cfg:336
@@ -2157,8 +2156,8 @@ msgstr ""
 "\n"
 "\n"
 "Tumb ist eine Charakteristik, die viele Kobolde und andere niedere Arten "
-"aufweisen. Einer der Gründe, dass man sie oft als »niedere Arten« bezeichnet, "
-"ist sicherlich ihr weniger stark entwickelter Intellekt."
+"aufweisen. Einer der Gründe, dass man sie oft als »niedere Arten« "
+"bezeichnet, ist sicherlich ihr weniger stark entwickelter Intellekt."
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:455
@@ -6599,8 +6598,8 @@ msgid ""
 "where they are). Use this to make sure the enemy can't reach your weak or "
 "injured units on his next turn."
 msgstr ""
-"Ihr könnt »Gegn. Bewegungen zeigen« aus dem »Aktionen« Menü auswählen, um die "
-"Zugmöglichkeiten Eures Gegners herauszufinden (Es wird von den aktuellen "
+"Ihr könnt »Gegn. Bewegungen zeigen« aus dem »Aktionen« Menü auswählen, um "
+"die Zugmöglichkeiten Eures Gegners herauszufinden (Es wird von den aktuellen "
 "Positionen Eurer Einheiten ausgegangen). Benutzt diese Möglichkeit, um "
 "sicherzustellen, dass der Gegner Eure schwachen und verwundeten Einheiten in "
 "seinem nächsten Zug nicht angreifen kann."
@@ -6667,9 +6666,9 @@ msgid ""
 "castle tile. That will let you choose which hex you put a new unit in. "
 "Placing units wisely can sometimes let you reach a village a turn earlier."
 msgstr ""
-"Die Befehle »Ausbilden« und »Einberufen« könnt Ihr über einen Rechtsklick auf "
-"ein Burgfeld erreichen. Dadurch könnt Ihr entscheiden, auf welchem Feld eine "
-"Einheit aufgestellt wird. Weise platzierte Einheiten können es Euch "
+"Die Befehle »Ausbilden« und »Einberufen« könnt Ihr über einen Rechtsklick "
+"auf ein Burgfeld erreichen. Dadurch könnt Ihr entscheiden, auf welchem Feld "
+"eine Einheit aufgestellt wird. Weise platzierte Einheiten können es Euch "
 "ermöglichen, Dörfer einen Zug früher einzunehmen."
 
 #. [tip]
@@ -6680,8 +6679,8 @@ msgid ""
 "doing in comparison."
 msgstr ""
 "Es gibt einige nützliche Zusammenfassungen, die Ihr über das »Menü« im Spiel "
-"erreichen könnt: die »Spielübersicht« zum Beispiel zeigt Euch, wie es um Eure "
-"Gegner steht und wie es Euch im Verhältnis ergeht."
+"erreichen könnt: die »Spielübersicht« zum Beispiel zeigt Euch, wie es um "
+"Eure Gegner steht und wie es Euch im Verhältnis ergeht."
 
 #. [tip]
 #: data/hardwired/tips.cfg:31
@@ -7060,9 +7059,9 @@ msgid ""
 "you can undo your move by pressing 'u'."
 msgstr ""
 "Ihr könnt die Bewegung einer Einheit rückgängig machen, indem Ihr die Taste "
-"»u« drückt. Dies geht jedoch nur, wenn diese Einheit noch nichts entdeckt hat "
-"– beispielsweise neue Dörfer oder gegnerische Einheiten – und sie noch keine "
-"gegnerische Einheit angegriffen hat."
+"»u« drückt. Dies geht jedoch nur, wenn diese Einheit noch nichts entdeckt "
+"hat – beispielsweise neue Dörfer oder gegnerische Einheiten – und sie noch "
+"keine gegnerische Einheit angegriffen hat."
 
 #. [tip]
 #: data/hardwired/tips.cfg:151
@@ -7149,8 +7148,8 @@ msgid ""
 "are limited by its maximum movement. Remember this when deciding what unit "
 "is best to scout specific types of terrain."
 msgstr ""
-"Auf Karten, für die der »Nebel des Krieges« oder der »Schleier der Finsternis« "
-"eingeschaltet wurde, ist die Sichtweite einer Einheit durch ihre "
+"Auf Karten, für die der »Nebel des Krieges« oder der »Schleier der "
+"Finsternis« eingeschaltet wurde, ist die Sichtweite einer Einheit durch ihre "
 "Bewegungsreichweite beschränkt. Behaltet dies im Hinterkopf, wenn Ihr Eure "
 "Späher für ein bestimmtes Gelände auswählt."
 
@@ -8335,7 +8334,7 @@ msgstr ""
 #: src/generate_report.cpp:359
 #, fuzzy
 msgid "Swarm: "
-msgstr "Sumpf"
+msgstr "Schwarm"
 
 #: src/generate_report.cpp:364
 #, fuzzy
@@ -9251,7 +9250,7 @@ msgstr "<Befehl>[;<Befehl>...]"
 
 #: src/menu_events.cpp:2464
 msgid "Set the command used by the custom command hotkey"
-msgstr "Weist einen Befehl dem Tastaturkürzel »Benutzerdefinierter Befehl« zu."
+msgstr "Weist dem Tastaturkürzel »Benutzerdefinierter Befehl« einen Befehl zu"
 
 #: src/menu_events.cpp:2466
 msgid "Launch the gamestate inspector"
@@ -9417,7 +9416,8 @@ msgstr ""
 
 #: src/menu_events.cpp:3008
 msgid "Can't droid invalid side: '$side'."
-msgstr "Kontrolle der ungültigen Fraktion »$side« kann nicht gewechselt werden."
+msgstr ""
+"Kontrolle der ungültigen Fraktion »$side« kann nicht gewechselt werden."
 
 #: src/menu_events.cpp:3013
 msgid "Can't droid networked side: '$side'."
@@ -9540,8 +9540,8 @@ msgstr ""
 #: src/multiplayer.cpp:308
 msgid "The nick '$nick' is reserved and cannot be used by players."
 msgstr ""
-"Der Benutzername »$nick« ist reserviert und kann von Spielern nicht verwendet "
-"werden."
+"Der Benutzername »$nick« ist reserviert und kann von Spielern nicht "
+"verwendet werden."
 
 #: src/multiplayer.cpp:310
 msgid "The nick '$nick' is not registered on this server."
@@ -10666,6 +10666,25 @@ msgstr "Die Übertragung von Zusammenfassungen erlauben"
 
 #~ msgid "tooltip^% parry"
 #~ msgstr "% Parade"
+
+#~ msgid "Grant higher privileges to Lua scripts."
+#~ msgstr "Lua-Skripten mehr Rechte gewähren."
+
+#~ msgid "Unsafe Lua scripts."
+#~ msgstr "Unsichere Lua-Skripte."
+
+#~ msgid ""
+#~ "You are about to open a security breach in Wesnoth. Are you sure you want "
+#~ "to continue? If you have downloaded add-ons, do not click 'ok'! They "
+#~ "would instantly take over your computer. You have been warned."
+#~ msgstr ""
+#~ "Ihr seid dabei, eine Sicherheitslücke in Wesnoth zu öffnen. Seid Ihr Euch "
+#~ "sicher, dass Ihr fortfahren wollt? Falls Ihr Erweiterungen "
+#~ "heruntergeladen habt, klickt nicht auf 'Okay'! Sie würden euren Rechner "
+#~ "augenblicklich übernehmen. Ihr wurdet gewarnt."
+
+#~ msgid "Unsafe mode enabled!"
+#~ msgstr "Unsicherer Modus aktiviert!"
 
 #~ msgid "--no games open--"
 #~ msgstr "--keine offenen Spiele--"
