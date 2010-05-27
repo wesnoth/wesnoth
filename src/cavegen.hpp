@@ -75,7 +75,7 @@ private:
 	}
 
 	void set_terrain(map_location loc, t_translation::t_terrain t);
-	void place_castle(const std::string& side, map_location loc);
+	void place_castle(int starting_position, const map_location &loc);
 
 	t_translation::t_terrain wall_, clear_, village_, castle_, keep_;
 	t_translation::t_map map_;

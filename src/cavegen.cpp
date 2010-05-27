@@ -148,8 +148,7 @@ void cave_map_generator::generate_chambers()
 	foreach (const config &ch, cfg_.child_range("chamber"))
 	{
 		// If there is only a chance of the chamber appearing, deal with that here.
-		const std::string &chance = ch["chance"];
-		if (!chance.empty() && (rand() % 100) < atoi(chance.c_str())) {
+		if (ch.has_attribute("chance") && (rand() % 100) < ch["chance"].to_int()) {
 			continue;
 		}
 
@@ -177,8 +176,8 @@ void cave_map_generator::generate_chambers()
 		const size_t x = translate_x(min_xpos + (rand()%(max_xpos-min_xpos)));
 		const size_t y = translate_y(min_ypos + (rand()%(max_ypos-min_ypos)));
 
-		size_t chamber_size = lexical_cast_default(ch["size"], 3);
-		size_t jagged_edges = lexical_cast_default(ch["jagged"], 0);
+		int chamber_size = ch["size"].to_int(3);
+		int jagged_edges = ch["jagged"];
 
 		chamber new_chamber;
 		new_chamber.center = map_location(x,y);
@@ -229,37 +228,30 @@ void cave_map_generator::place_chamber(const chamber& c)
 				object_filter = &of;
 		}
 
-		if(!utils::string_bool(cfg["same_location_as_previous"])) {
+		if (!it.cfg["same_location_as_previous"].to_bool()) {
 			index = rand()%c.locs.size();
 		}
-		const std::string loc_var = cfg["store_location_as"];
+		std::string loc_var = it.cfg["store_location_as"];
 
 		std::set<map_location>::const_iterator loc = c.locs.begin();
 		std::advance(loc,index);
 
-		std::string xbuf = str_cast(loc->x + 1);
-		cfg["x"] = xbuf;
+		cfg["x"] = loc->x + 1;
+		cfg["y"] = loc->y + 1;
+
 		if (filter) {
-			filter["x"] = xbuf;
+			filter["x"] = loc->x + 1;
+			filter["y"] = loc->y + 1;
 		}
 
-		if(object_filter != NULL) {
-			(*object_filter)["x"] = xbuf;
-		}
-
-		std::string ybuf = str_cast(loc->y + 1);
-		cfg["y"] = ybuf;
-		if (filter) {
-			filter["y"] = ybuf;
-		}
-
-		if(object_filter != NULL) {
-			(*object_filter)["y"] = ybuf;
+		if (object_filter) {
+			(*object_filter)["x"] = loc->x + 1;
+			(*object_filter)["y"] = loc->y + 1;
 		}
 
 		// If this is a side, place a castle for the side
-		if (it.key == "side" && !utils::string_bool(cfg["no_castle"])) {
-			place_castle(cfg["side"],*loc);
+		if (it.key == "side" && !it.cfg["no_castle"].to_bool()) {
+			place_castle(it.cfg["side"].to_int(-1), *loc);
 		}
 
 		res_.add_child(it.key, cfg);
@@ -269,10 +261,10 @@ void cave_map_generator::place_chamber(const chamber& c)
 			temp["name"] = "prestart";
 			config &xcfg = temp.add_child("set_variable");
 			xcfg["name"] = loc_var + "_x";
-			xcfg["value"] = xbuf;
+			xcfg["value"] = loc->x + 1;
 			config &ycfg = temp.add_child("set_variable");
 			ycfg["name"] = loc_var + "_y";
-			ycfg["value"] = ybuf;
+			ycfg["value"] = loc->y + 1;
 		}
 	}
 }
@@ -347,10 +339,9 @@ void cave_map_generator::set_terrain(map_location loc, t_translation::t_terrain 
 	}
 }
 
-void cave_map_generator::place_castle(const std::string& side, map_location loc)
+void cave_map_generator::place_castle(int starting_position, const map_location &loc)
 {
-	const int starting_position = lexical_cast_default<int>(side, -1);
-	if(starting_position != -1) {
+	if (starting_position != -1) {
 		set_terrain(loc, keep_);
 
 		t_translation::coordinate coord =
