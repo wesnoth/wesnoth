@@ -29,19 +29,26 @@
             adaptable="true"
             objectClass="org.eclipse.core.resources.IProject"
             nameFilter="*"
-            id="Wesnoth_Eclipse_Plugin.projectContributions">
+            id="plugin.projectContributions">
          <action
                class="wesnoth_eclipse_plugin.builder.ToggleNatureAction"
                enablesFor="+"
                icon="icons/wesnoth-icon_16.png"
                id="actions.addRemoveNature"
                label="Add/Remove Sample Nature"
-               menubarPath="additions">
+               menubarPath="_wesnoth">
+         </action>
+         <action
+               class="wesnoth_eclipse_plugin.action.WesnothProjectReport"
+               icon="icons/wesnoth-icon_16.png"
+               id="action.wesnothProjectReport"
+               label="Wesnoth project report"
+               menubarPath="_wesnoth">
          </action>
       </objectContribution>
       <objectContribution
             adaptable="true"
-            id="Wesnoth Eclipse Plugin.mapContributions"
+            id="plugin.mapContributions"
             nameFilter="*maps*"
             objectClass="org.eclipse.core.resources.IFolder">
          <action
@@ -50,12 +57,12 @@
                icon="icons/wesnoth_editor-icon_16.png"
                id="actions.importmap"
                label="Import map"
-               menubarPath="additions">
+               menubarPath="_wesnoth">
          </action>
       </objectContribution>
       <objectContribution
             adaptable="false"
-            id="Wesnoth Eclipse Plugin.mapFilesContributions"
+            id="plugin.mapFilesContributions"
             nameFilter="*.map"
             objectClass="org.eclipse.core.resources.IFile">
          <action
@@ -64,12 +71,12 @@
                icon="icons/wesnoth_editor-icon_16.png"
                id="actions.openMapInEditor"
                label="Open map in editor"
-               menubarPath="additions">
+               menubarPath="_wesnoth">
          </action>
       </objectContribution>
       <objectContribution
             adaptable="false"
-            id="Wesnoth Eclipse Plugin.configFilesContributions"
+            id="plugin.configFilesContributions"
             nameFilter="*.cfg"
             objectClass="org.eclipse.core.resources.IFile">
          <action
@@ -78,7 +85,28 @@
                icon="icons/wesnoth-icon_16.png"
                id="action.openScenarioInGame"
                label="Open Scenario in game"
-               menubarPath="additions">
+               menubarPath="_wesnoth">
+         </action>
+         <menu
+               icon="icons/wesnoth-icon_16.png"
+               id="plugin.preprocessorMenu"
+               label="Preprocessor"
+               path="_wesnoth">
+            <groupMarker
+                  name="preprocessorMenuMarker">
+            </groupMarker>
+         </menu>
+         <action
+               class="wesnoth_eclipse_plugin.action.ShowPreprocessedConfig"
+               id="action.preprocessedConfig"
+               label="Show preprocessed file"
+               menubarPath="plugin.preprocessorMenu/preprocessorMenuMarker">
+         </action>
+         <action
+               class="wesnoth_eclipse_plugin.action.ShowPlainPreprocessedConfig"
+               id="action.plainPreprocessedconfig"
+               label="Show plain preprocessed file"
+               menubarPath="plugin.preprocessorMenu/preprocessorMenuMarker">
          </action>
       </objectContribution>
    </extension>
