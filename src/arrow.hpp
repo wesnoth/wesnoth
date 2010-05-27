@@ -32,6 +32,9 @@
  */
 class arrow_observer {
   public:
+
+	virtual ~arrow_observer() {}
+
     virtual void arrow_changed(const arrow & a) = 0;
 
     virtual void arrow_deleted(const arrow & a) = 0;
