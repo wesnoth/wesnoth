@@ -124,7 +124,8 @@ public class SampleBuilder extends IncrementalProjectBuilder {
 
 	void checkResource(IResource resource) {
 		// config files
-		if (resource instanceof IFile && resource.getName().endsWith(".cfg")) {
+		if (resource instanceof IFile &&
+				(resource.getName().endsWith(".cfg") || resource.getName().endsWith(".CFG") )) {
 			try {
 				IFile file = (IFile) resource;
 				deleteMarkers(file);
