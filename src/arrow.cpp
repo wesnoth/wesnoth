@@ -13,16 +13,19 @@ arrow::arrow(): layer_(display::LAYER_ARROWS)
 void arrow::set_path(const std::list<map_location> path)
 {
 	path_ = path;
+	notify_arrow_changed();
 }
 
 void arrow::set_color(const SDL_Color color)
 {
 	color_ = color;
+	notify_arrow_changed();
 }
 
 void arrow::set_layer(const display::tdrawing_layer & layer)
 {
 	layer_ = layer;
+	notify_arrow_changed();
 }
 
 void arrow::add_observer(arrow_observer & observer)
