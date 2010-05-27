@@ -287,7 +287,7 @@ theme::tborder::tborder() :
 }
 
 theme::tborder::tborder(const config& cfg) :
-	size(lexical_cast_default<double>(cfg["border_size"], 0.0)),
+	size(cfg["border_size"].to_double()),
 
 	background_image(cfg["background_image"]),
 	tile_image(cfg["tile_image"]),
@@ -509,16 +509,15 @@ theme::menu::menu() :
 	items_()
 {}
 
-theme::menu::menu(const config& cfg) : object(cfg),
-                                       context_(utils::string_bool(cfg["is_context_menu"])),
-                                       title_(cfg["title"].str() + cfg["title_literal"].str()),
-									   tooltip_(cfg["tooltip"]),
-									   image_(cfg["image"]), type_(cfg["type"]),
-									   items_(utils::split(cfg["items"]))
+theme::menu::menu(const config &cfg):
+	object(cfg), context_(cfg["is_context_menu"].to_bool()),
+	title_(cfg["title"].str() + cfg["title_literal"].str()),
+	tooltip_(cfg["tooltip"]), image_(cfg["image"]), type_(cfg["type"]),
+	items_(utils::split(cfg["items"]))
 {
-	if (utils::string_bool(cfg["auto_tooltip"]) && tooltip_.empty() && items_.size() == 1) {
+	if (cfg["auto_tooltip"].to_bool() && tooltip_.empty() && items_.size() == 1) {
 		tooltip_ = hotkey::get_hotkey(items_[0]).get_description();
-	} else if (utils::string_bool(cfg["tooltip_name_prepend"]) && items_.size() == 1) {
+	} else if (cfg["tooltip_name_prepend"].to_bool() && items_.size() == 1) {
 		tooltip_ = hotkey::get_hotkey(items_[0]).get_description() + "\n" + tooltip_;
 	}
 }
