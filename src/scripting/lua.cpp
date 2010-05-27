@@ -1578,6 +1578,7 @@ static int impl_current_get(lua_State *L)
 	{
 		const game_events::queued_event &ev = queued_event_context::get();
 		config cfg;
+		cfg["name"] = ev.name;
 		if (const config &weapon = ev.data.child("first")) {
 			cfg.add_child("weapon", weapon);
 		}
