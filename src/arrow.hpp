@@ -19,6 +19,8 @@ class arrow_observer {
 
 };
 
+typedef std::pair<map_location, surface> arrow_image;
+
 /**
  * Arrows destined to be drawn on the map. Created for the whiteboard system.
  */
@@ -46,7 +48,7 @@ class arrow {
 
     void remove_observer(arrow_observer & observer);
 
-    std::vector<std::pair<map_location, surface> > getImages() const;
+    std::vector<arrow_image> getImages() const;
 
   private: //operations
 

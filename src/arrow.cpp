@@ -35,15 +35,15 @@ void arrow::remove_observer(arrow_observer & observer)
 	observers_.remove(&observer);
 }
 
-std::vector<std::pair<map_location, surface> > arrow::getImages() const
+std::vector<arrow_image> arrow::getImages() const
 {
 	//TODO: return the proper images instead of this placeholder
-	std::vector<std::pair<map_location, surface> > images;
+	std::vector<arrow_image> images;
 	surface test_picture = image::get_image("footsteps/teleport-in.png", image::SCALED_TO_HEX);
 
 	foreach(map_location loc, path_)
 	{
-		images.push_back(std::pair<map_location, surface>(loc, test_picture));
+		images.push_back(arrow_image(loc, test_picture));
 	}
 
 	return images;
