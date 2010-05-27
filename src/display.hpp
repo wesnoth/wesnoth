@@ -50,6 +50,7 @@ class arrow;
 #include "theme.hpp"
 #include "video.hpp"
 #include "widgets/button.hpp"
+#include "arrow_observer.hpp"
 
 #include "SDL.h"
 
@@ -62,7 +63,7 @@ class arrow;
 
 class gamemap;
 
-class display
+class display: public arrow_observer
 {
 public:
 	display(CVideo& video, const gamemap* map, const config& theme_cfg,

@@ -18,6 +18,7 @@
  */
 
 #include "arrow.hpp"
+#include "arrow_observer.hpp"
 
 #include "foreach.hpp"
 

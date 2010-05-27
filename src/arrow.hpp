@@ -26,20 +26,7 @@
 #include <list>
 #include <utility>
 
-/**
- * Interface implemented by any code interested of tracking an arrow's
- * changes (currently, only display implements it).
- */
-class arrow_observer {
-  public:
-
-	virtual ~arrow_observer() {}
-
-    virtual void arrow_changed(const arrow & a) = 0;
-
-    virtual void arrow_deleted(const arrow & a) = 0;
-
-};
+class arrow_observer;
 
 typedef std::pair<map_location, surface> arrow_image;
 
