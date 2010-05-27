@@ -1,16 +1,15 @@
 # Translators:
 #  Andre Schmidt <andre@schmidtandre.de>, 2004, 2005
 #  Boris Stumm <wesnoth@bstumm.de>, 2005
-#  Gerfried Fuchs <alfie@ist.org>, 2005, 2006
 #  Nils Kneuper <crazy-ivanovic@gmx.net>, 2005, 2006
 #  Christoph Berg <Christoph.Berg@kpm-sport.de>, 2005 - 2010
-#  Gerfried Fuchs <rhonda@deb.at>, 2010
+#  Gerfried Fuchs <rhonda@deb.at>, 2005, 2006, 2010
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.8\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-05-24 17:53+0200\n"
-"PO-Revision-Date: 2010-04-28 08:37+0200\n"
+"PO-Revision-Date: 2010-05-27 18:59+0200\n"
 "Last-Translator: Gerfried Fuchs <rhonda@deb.at>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
 "Language: \n"
@@ -102,9 +101,8 @@ msgstr "Klänge der Eingangshalle"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:107
-#, fuzzy
 msgid "Disable notifications"
-msgstr "Deaktiviert das automatische Speichern zu Rundenbeginn."
+msgstr "Deaktiviert Benachrichtigungen"
 
 #. [ai]: id=default # id is needed uniquely identify a MP AI, it is not needed in the scenario AI
 #: data/ai/ais/default_ai.cfg:4
@@ -9142,11 +9140,11 @@ msgstr "Führt eine Lua Anweisung aus."
 
 #: src/menu_events.cpp:2466
 msgid "Grant higher privileges to Lua scripts."
-msgstr ""
+msgstr "Lua-Skripten mehr Rechte gewähren."
 
 #: src/menu_events.cpp:2468
 msgid "Set the command used by the custom command hotkey"
-msgstr "Weist einen Befehl dem Tastaturkürzel »Benutzerdefinierter Befehl« zu."
+msgstr "Weist dem Tastaturkürzel »Benutzerdefinierter Befehl« einen Befehl zu"
 
 #: src/menu_events.cpp:2470
 msgid "Launch the gamestate inspector"
@@ -9349,7 +9347,7 @@ msgstr "Debugmodus deaktiviert!"
 
 #: src/menu_events.cpp:3191
 msgid "Unsafe Lua scripts."
-msgstr ""
+msgstr "Unsichere Lua-Skripte."
 
 #: src/menu_events.cpp:3192
 msgid ""
@@ -9357,10 +9355,14 @@ msgid ""
 "continue? If you have downloaded add-ons, do not click 'ok'! They would "
 "instantly take over your computer. You have been warned."
 msgstr ""
+"Ihr seid dabei, eine Sicherheitslücke in Wesnoth zu öffnen. Seid Ihr Euch "
+"sicher, dass Ihr fortfahren wollt? Falls Ihr Erweiterungen heruntergeladen "
+"habt, klickt nicht auf 'Okay'! Sie würden euren Rechner augenblicklich "
+"übernehmen. Ihr wurdet gewarnt."
 
 #: src/menu_events.cpp:3195
 msgid "Unsafe mode enabled!"
-msgstr ""
+msgstr "Unsicherer Modus aktiviert!"
 
 #: src/menu_events.cpp:3238
 msgid "Variable not found"
