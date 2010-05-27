@@ -29,7 +29,6 @@ class music_track
 {
 public:
 	music_track();
-	music_track(const music_track& mt);
 	music_track(const config& node);
 	music_track(const std::string& v_name);
 	void write(config& parent_node, bool append);
@@ -39,15 +38,13 @@ public:
 	bool append() const { return append_; }
 	bool immediate() const { return immediate_; }
 	bool play_once() const { return once_; }
-	unsigned int ms_before() const { return ms_before_; }
-	unsigned int ms_after()  const { return ms_after_;  }
+	int ms_before() const { return ms_before_; }
+	int ms_after()  const { return ms_after_;  }
 
 	const std::string& file_path() const { return file_path_; }
 	const std::string& id() const { return id_; }
 
 	void set_play_once(bool v) { once_ = v; }
-
-	music_track& operator=(const music_track& mt);
 
 private:
 	void resolve();
@@ -55,7 +52,7 @@ private:
 	std::string id_;
 	std::string file_path_;
 
-	unsigned int ms_before_, ms_after_;
+	int ms_before_, ms_after_;
 
 	bool once_;
 	bool append_;
