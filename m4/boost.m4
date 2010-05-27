@@ -162,7 +162,7 @@ AC_SUBST([BOOST_CPPFLAGS])dnl
     # e.g. "134" for 1_34_1 or "135" for 1_35
     boost_major_version=`echo "$boost_cv_lib_version" | sed 's/_//;s/_.*//'`
     case $boost_major_version in
-      '' | *[[^0-9]]*)
+      '' | *[[!0-9]]*)
         AC_MSG_ERROR([Invalid value: boost_major_version=$boost_major_version])
         ;;
     esac
