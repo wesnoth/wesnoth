@@ -13,6 +13,8 @@ AC_INIT([Battle for Wesnoth], WESNOTH_VERSION, WESNOTH_BUGS, [wesnoth])
 
 AC_REVISION([$Revision$])
 
+AM_MAINTAINER_MODE([enable])
+
 echo "****************************************"
 echo "***                                  ***"
 echo "***  At the moment we are also       ***"
