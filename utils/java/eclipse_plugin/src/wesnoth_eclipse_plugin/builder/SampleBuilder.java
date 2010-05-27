@@ -16,6 +16,8 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Path;
 
+import wesnoth_eclipse_plugin.Logger;
+import wesnoth_eclipse_plugin.globalactions.PreprocessorActions;
 import wesnoth_eclipse_plugin.preferences.PreferenceConstants;
 import wesnoth_eclipse_plugin.preferences.PreferenceInitializer;
 import wesnoth_eclipse_plugin.utils.AntUtils;
@@ -94,7 +96,18 @@ public class SampleBuilder extends IncrementalProjectBuilder {
 		properties.put("wesnoth.user.dir",
 				PreferenceInitializer.getString(PreferenceConstants.P_WESNOTH_USER_DIR) + Path.SEPARATOR);
 		System.out.println("Ant result:");
-		System.out.println(AntUtils.runAnt(getProject().getLocation().toOSString() + "/build.xml",properties));
+		String result = AntUtils.runAnt(getProject().getLocation().toOSString() + "/build.xml",properties,true);
+		System.out.println(result);
+
+		if (result == null)
+		{
+			Logger.print("There was an error running the ant job.");
+			GUIUtils.showMessageBox(WorkspaceUtils.getWorkbenchWindow(), "There was an error running the ant job.");
+			return null;
+		}
+
+		// create the temporary directory used by the plugin if not created
+		WorkspaceUtils.getTemporaryFolder();
 
 		if (kind == FULL_BUILD) {
 			fullBuild(monitor);
@@ -110,11 +123,14 @@ public class SampleBuilder extends IncrementalProjectBuilder {
 	}
 
 	void checkResource(IResource resource) {
-		// dummy condition
-		if (resource instanceof IFile && resource.getName().equals("_main.cfg")) {
+		// config files
+		if (resource instanceof IFile && resource.getName().endsWith(".cfg")) {
 			try {
 				IFile file = (IFile) resource;
 				deleteMarkers(file);
+
+				PreprocessorActions.preprocessFile(WorkspaceUtils.getPathRelativeToUserDir(file),
+						WorkspaceUtils.getTemporaryFolder(), null, true);
 
 				/*
 				IMarker[] resIMarkers = file.findMarkers(MARKER_TYPE, false, IResource.DEPTH_ZERO);

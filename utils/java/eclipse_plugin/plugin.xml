@@ -67,6 +67,20 @@
                menubarPath="additions">
          </action>
       </objectContribution>
+      <objectContribution
+            adaptable="false"
+            id="Wesnoth Eclipse Plugin.configFilesContributions"
+            nameFilter="*.cfg"
+            objectClass="org.eclipse.core.resources.IFile">
+         <action
+               class="wesnoth_eclipse_plugin.action.OpenScenarioInGame"
+               enablesFor="1"
+               icon="icons/wesnoth-icon_16.png"
+               id="action.openScenarioInGame"
+               label="Open Scenario in game"
+               menubarPath="additions">
+         </action>
+      </objectContribution>
    </extension>
    <extension
          id="xmlProblem"

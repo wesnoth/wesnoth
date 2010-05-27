@@ -20,9 +20,10 @@ public class AntUtils
 	 * Runs the specified ant file, and returns the output of the runned file
 	 * @param antFile
 	 * @param properties the hasmap with userproperties to be added to the ant file
-	 * @return
+	 * @param recordOutput true if the output of the runned file should be recorded and returned
+	 * @return null if the build didn't success
 	 */
-	public static String runAnt(String antFile, HashMap<String,String> properties)
+	public static String runAnt(String antFile, HashMap<String,String> properties, boolean recordOutput)
     {
          final Project project = new Project();
          ByteArrayOutputStream out=null;
@@ -30,7 +31,8 @@ public class AntUtils
          try
          {
               out = new ByteArrayOutputStream();
-              project.addBuildListener(AntUtils.createLogger(out));
+              if (recordOutput)
+                   project.addBuildListener(AntUtils.createLogger(out));
               project.init();
               File buildFile = new File(antFile);
               ProjectHelper.configureProject(project, buildFile);
@@ -43,13 +45,14 @@ public class AntUtils
                    project.setUserProperty(key,value);
               }
               project.executeTarget(project.getDefaultTarget());
+
+              return out.toString();
          }
-         catch (RuntimeException exc)
+         catch (Exception exc)
          {
               exc.printStackTrace();
+              return null;
          }
-
-         return out.toString();
     }
 
 	/**
