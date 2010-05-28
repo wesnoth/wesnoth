@@ -21,8 +21,9 @@
 
 #include "foreach.hpp"
 
-arrow::arrow(): layer_(display::LAYER_ARROWS)
+arrow::arrow(display* screen): layer_(display::LAYER_ARROWS)
 {
+	screen_ = screen;
 	color_.b = 0;
 	color_.g = 0;
 	color_.r = 0;
@@ -31,6 +32,7 @@ arrow::arrow(): layer_(display::LAYER_ARROWS)
 void arrow::set_path(const arrow_path_t path)
 {
 	previous_path_ = path_;
+	invalidate_arrow_path(previous_path_);
 	path_ = path;
 	update_symbols();
 }
@@ -57,9 +59,10 @@ const arrow_path_t & arrow::get_previous_path() const
 	return previous_path_;
 }
 
-void arrow::draw_hex(const map_location &)
+void arrow::draw_hex(const map_location & loc)
 {
-
+	screen_->render_image(loc.x, loc.y, layer_,
+				loc, symbols_map_[loc]);
 }
 
 void arrow::update_symbols()
@@ -70,5 +73,15 @@ void arrow::update_symbols()
 	foreach(map_location loc, path_)
 	{
 		symbols_map_[loc] = test_picture;
+	}
+
+	invalidate_arrow_path(path_);
+}
+
+void arrow::invalidate_arrow_path(arrow_path_t path)
+{
+	foreach(const map_location& loc, path)
+	{
+		screen_->invalidate(loc);
 	}
 }

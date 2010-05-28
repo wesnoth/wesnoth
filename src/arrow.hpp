@@ -39,7 +39,7 @@ class arrow {
 public:
 	//operations
 
-	arrow();
+	arrow(display* screen);
 
 	virtual ~arrow() {}
 
@@ -60,8 +60,12 @@ private:
 
 	void update_symbols();
 
+	void invalidate_arrow_path(arrow_path_t path);
+
 private:
 	//properties
+
+	display* screen_;
 
 	display::tdrawing_layer layer_;
 
