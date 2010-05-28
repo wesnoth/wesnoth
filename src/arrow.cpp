@@ -57,7 +57,7 @@ const arrow_path_t & arrow::get_previous_path() const
 	return previous_path_;
 }
 
-void arrow::draw_hex(const map_location & hex)
+void arrow::draw_hex(const map_location &)
 {
 
 }
