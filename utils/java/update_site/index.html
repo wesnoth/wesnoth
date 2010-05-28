@@ -41,12 +41,12 @@
 		processor.transform();
 		data.innerHTML = processor.output;
 	}
-	// separate transformation function for NSCP 7.1+ and Mozilla 1.4.1+ 
+	// separate transformation function for NSCP 7.1+ and Mozilla 1.4.1+
 	function transform(){
 		returnval+=1;
 		if (returnval==2){
 			var processor = new XSLTProcessor();
-			processor.importStylesheet(stylesheet); 
+			processor.importStylesheet(stylesheet);
 			doc = processor.transformToDocument(xmlFile);
 			document.getElementById("data").innerHTML = doc.documentElement.innerHTML;
 		}
@@ -56,6 +56,6 @@
 <body onload="init();">
 <!--[insert static HTML here]-->
 <div id="data"><!-- this is where the transformed data goes --></div>
-Last Update: 23 May 2010 10:42 GMT
+Last Update: 28 May 2010 19:32 GMT
 </body>
 </html>
