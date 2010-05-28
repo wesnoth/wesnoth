@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-05-24 17:53+0200\n"
-"PO-Revision-Date: 2010-04-26 12:16+0100\n"
+"PO-Revision-Date: 2010-05-28 11:19+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
 "Language: \n"
@@ -102,9 +102,8 @@ msgstr "Dźwięki poczekalni"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:107
-#, fuzzy
 msgid "Disable notifications"
-msgstr "Wyłącz automatyczny zapis."
+msgstr "Wyłącz powiadomienia"
 
 #. [ai]: id=default # id is needed uniquely identify a MP AI, it is not needed in the scenario AI
 #: data/ai/ais/default_ai.cfg:4
@@ -8997,7 +8996,7 @@ msgstr "Wykonaj instrukcję Lua."
 
 #: src/menu_events.cpp:2466
 msgid "Grant higher privileges to Lua scripts."
-msgstr ""
+msgstr "Nadaj większe uprawnienia skryptom Lua."
 
 #: src/menu_events.cpp:2468
 msgid "Set the command used by the custom command hotkey"
@@ -9197,7 +9196,7 @@ msgstr "Tryb debugowania wyłączony!"
 
 #: src/menu_events.cpp:3191
 msgid "Unsafe Lua scripts."
-msgstr ""
+msgstr "Potencjalnie niebezpieczne skrypty Lua."
 
 #: src/menu_events.cpp:3192
 msgid ""
@@ -9205,10 +9204,14 @@ msgid ""
 "continue? If you have downloaded add-ons, do not click 'ok'! They would "
 "instantly take over your computer. You have been warned."
 msgstr ""
+"Skorzystanie z tej opcji spowoduje otwarcie luki zabezpieczeń w Wesnoth. Czy "
+"chcesz kontynuować? Jeśli masz pobrane dodatki, nie klikaj przycisku OK! "
+"Dodatek zawierający złośliwy kod będzie w stanie przejąć kontrolę nad "
+"komputerem. Ostrzegaliśmy."
 
 #: src/menu_events.cpp:3195
 msgid "Unsafe mode enabled!"
-msgstr ""
+msgstr "Włączono tryb niebezpieczny!"
 
 #: src/menu_events.cpp:3238
 msgid "Variable not found"
