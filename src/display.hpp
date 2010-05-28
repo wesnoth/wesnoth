@@ -698,17 +698,17 @@ public:
 		};
 
 	/**
-	 * Draw the image of a unit at a certain location.
-	 * x,y: pixel location on screen to draw the unit
-	 * image: the image of the unit
-	 * reverse: if the unit should be flipped across the x axis
-	 * greyscale: used when the unit is petrified
+	 * Draw an image at a certain location.
+	 * x,y: pixel location on screen to draw the image
+	 * image: the image to draw
+	 * reverse: if the image should be flipped across the x axis
+	 * greyscale: used for instance to give the petrified appearance to a unit image
 	 * alpha: the merging to use with the background
 	 * blendto: blend to this colour using blend_ratio
 	 * submerged: the amount of the unit out of 1.0 that is submerged
 	 *            (presumably under water) and thus shouldn't be drawn
 	 */
-	void render_unit_image(int x, int y, const display::tdrawing_layer drawing_layer,
+	void render_image(int x, int y, const display::tdrawing_layer drawing_layer,
 			const map_location& loc, surface image,
 			bool hreverse=false, bool greyscale=false,
 			fixed_t alpha=ftofxp(1.0), Uint32 blendto=0,
