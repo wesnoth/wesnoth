@@ -860,7 +860,9 @@ private:
 	bool draw_terrain_codes_;
 
 	/** Map that holds the arrow images to draw for each hex */
-	std::map<map_location, std::list<std::pair<arrow_surface> > > arrow_symbols;
+	std::map<map_location, std::list<arrow_surface> > arrow_symbols;
+
+	void erase_arrow_symbols(arrow const* arrow_pointer, const std::list<map_location> & path);
 };
 
 #endif

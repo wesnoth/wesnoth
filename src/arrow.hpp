@@ -59,7 +59,9 @@ class arrow {
 
     std::list<arrow_image> get_images() const;
 
-    std::list<map_location> get_previous_path() const;
+    const std::list<map_location> & get_path() const;
+
+    const std::list<map_location> & get_previous_path() const;
 
 
   private: //operations

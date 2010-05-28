@@ -72,7 +72,13 @@ std::list<arrow_image> arrow::get_images() const
 	return images;
 }
 
-std::list<map_location> get_previous_path() const
+const std::list<map_location> & arrow::get_path() const
+{
+	return path_;
+}
+
+
+const std::list<map_location> & arrow::get_previous_path() const
 {
 	return previous_path_;
 }
