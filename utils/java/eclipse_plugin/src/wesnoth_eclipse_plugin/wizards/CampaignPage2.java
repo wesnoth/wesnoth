@@ -23,6 +23,7 @@ public class CampaignPage2 extends WizardPage {
 	private Text txtDefine_;
 	private Text txtDifficulties_;
 	private Text txtFirstScenario_;
+	private Text txtID_;
 
 	/**
 	 * Create the wizard.
@@ -75,6 +76,15 @@ public class CampaignPage2 extends WizardPage {
 		};
 
 		container.setLayout(new GridLayout(5, false));
+
+				Label lblId = new Label(container, SWT.NONE);
+				lblId.setText("ID* :");
+
+				txtID_ = new Text(container, SWT.BORDER);
+				txtID_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+		new Label(container, SWT.NONE);
+		new Label(container, SWT.NONE);
+		new Label(container, SWT.NONE);
 
 		Label lblAbbreviation = new Label(container, SWT.NONE);
 		lblAbbreviation.setText("Abbreviation* :");
@@ -141,6 +151,12 @@ public class CampaignPage2 extends WizardPage {
 	{
 		setPageComplete(false);
 
+		if (txtID_.getText().isEmpty())
+		{
+			setErrorMessage("Please specify an ID.");
+			return;
+		}
+
 		if (txtAbbrev_.getText().isEmpty())
 		{
 			setErrorMessage("Please specify an abbreviation.");
@@ -179,5 +195,8 @@ public class CampaignPage2 extends WizardPage {
 	 */
 	public String getFirstScenario() {
 		return txtFirstScenario_.getText();
+	}
+	public String getCampaignId(){
+		return txtID_.getText();
 	}
 }

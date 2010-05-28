@@ -130,6 +130,7 @@ public class CampaignNewWizard extends Wizard implements INewWizard {
 		params.add(new ReplaceableParameter("$$email", page1_.getEmail()));
 		params.add(new ReplaceableParameter("$$translations_dir", page1_.getTranslationDir()));
 
+		params.add(new ReplaceableParameter("$$campaign_id", page2_.getCampaignId()));
 		params.add(new ReplaceableParameter("$$abrev", page2_.getAbbrev()));
 		params.add(new ReplaceableParameter("$$define", page2_.getDefine()));
 		params.add(new ReplaceableParameter("$$difficulties", page2_.getDifficulties()));
