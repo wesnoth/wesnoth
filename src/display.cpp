@@ -2372,3 +2372,13 @@ void display::invalidate_animations()
 		}
 	}
 }
+
+void display::add_arrow(const arrow&)
+{
+
+}
+
+void display::remove_arrow(const arrow&)
+{
+
+}

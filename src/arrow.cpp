@@ -32,11 +32,13 @@ void arrow::set_path(const std::list<map_location> path)
 {
 	previous_path_ = path_;
 	path_ = path;
+	update_symbols();
 }
 
 void arrow::set_color(const SDL_Color color)
 {
 	color_ = color;
+	update_symbols();
 }
 
 void arrow::set_layer(const display::tdrawing_layer & layer)
@@ -53,4 +55,20 @@ const std::list<map_location> & arrow::get_path() const
 const std::list<map_location> & arrow::get_previous_path() const
 {
 	return previous_path_;
+}
+
+void arrow::draw_hex(const map_location & hex)
+{
+
+}
+
+void arrow::update_symbols()
+{
+	//TODO: use the proper images instead of this placeholder
+	surface test_picture = image::get_image("footsteps/teleport-in.png", image::SCALED_TO_HEX);
+
+	foreach(map_location loc, path_)
+	{
+		symbols_map_[loc] = test_picture;
+	}
 }

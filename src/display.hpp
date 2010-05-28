@@ -55,9 +55,13 @@ class arrow;
 #include <map>
 #include <set>
 #include <string>
+#include <list>
 
 #include <boost/function.hpp>
 #include <boost/scoped_ptr.hpp>
+#include <boost/unordered_map.hpp>
+
+typedef boost::unordered_map<map_location, std::list<arrow*> > arrows_map_t;
 
 class gamemap;
 
@@ -816,6 +820,12 @@ protected:
 	/** Used to indicate to drawing funtions that we are doing a map screenshot */
 	bool map_screenshot_;
 
+public: //operations for the arrow framework
+
+	void add_arrow(const arrow&);
+
+	void remove_arrow(const arrow&);
+
 private:
 	/** Handle for the label which displays frames per second. */
 	int fps_handle_;
@@ -835,11 +845,8 @@ private:
 	/** Debug flag - overlay terrain codes on tiles */
 	bool draw_terrain_codes_;
 
-	/** Map that holds the arrow images to draw for each hex */
-
-	std::map<map_location, std::list<arrow_surface> > arrow_symbols;
-
-
+	/** Maps the list of arrows for each location */
+	arrows_map_t arrows_map_;
 };
 
 #endif
