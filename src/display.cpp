@@ -145,6 +145,15 @@ display::~display()
 {
 }
 
+std::string display::fog_image(const map_location &loc)
+{
+	std::ostringstream tmp;
+	tmp << fog_image_;
+	tmp << (loc.x + loc.y) % 3 + 1;
+	tmp << ".png";
+	return tmp.str();
+}
+
 void display::rebuild_all()
 {
 	builder_->rebuild_all();
