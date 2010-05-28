@@ -1,98 +1,63 @@
 """
 Various helpers for use by the wmlunits tool.
 """
-import sys, os, re, glob, shutil, copy, urllib2
-from subprocess import Popen
+import sys, os, re, glob, shutil, copy, urllib2, subprocess
 
-import wesnoth.wmldata as wmldata
-import wesnoth.wmlparser as wmlparser
+import wesnoth.wmlparser2 as wmlparser2
 import wesnoth.wmltools as wmltools
 
-class ParserWithCoreMacros:
-    """
-    A wrapper around the WML parser to do some things like we want.
-    """
-    def __init__(self, isocode, datadir, userdir, transdir):
-        self.datadir = datadir
-        self.userdir = userdir
-        # Handle translations.
-        self.translations = wmltools.Translations(transdir)
-        def gettext(textdomain, x):
-            return self.translations.get(textdomain, isocode, x, x)
-        self.gettext = gettext
+def get_datadir(wesnoth_exe):
+    p = subprocess.Popen([wesnoth_exe, "--path"],
+        stdout = subprocess.PIPE, stderr = subprocess.PIPE)
+    out, err = p.communicate()
+    return out.strip()
 
-        # Create a new parser for the macros.
-        parser = wmlparser.Parser(datadir)
-        parser.gettext = self.gettext
-        
-        # Parse core macros.
-        parser.parse_text("{core/macros/}\n")
-        parser.parse_top(None)
-        self.core_macros = parser.macros
-                
-    def parse(self, text_to_parse, ignore_macros = None,
-        ignore_fatal_errors = False, verbose = False):
-
-        # Create the real parser.
-        parser = wmlparser.Parser(self.datadir, self.userdir)
-        parser.verbose = verbose
-        parser.gettext = self.gettext
-        parser.macros = copy.copy(self.core_macros)
-        
-        #parser.verbose = True
-        
-        # Suppress complaints about undefined terrain macros
-        parser.set_macro_not_found_callback(lambda wmlparser, name, params:
-        name.startswith("TERRAIN") or name == "DISABLE_TRANSITIONS")
-        
-        if ignore_macros:
-            parser.macro_callback = ignore_macros
-
-        # Create a WML root element and parse the given text into it.
-        WML = wmldata.DataSub("WML")
-
-        parser.parse_text(text_to_parse)
-
-        parser.parse_top(WML)
- 
-        return WML
+def get_userdir(wesnoth_exe):
+    p = subprocess.Popen([wesnoth_exe, "--config-path"],
+        stdout = subprocess.PIPE, stderr = subprocess.PIPE)
+    out, err = p.communicate()
+    return out.strip()
 
 class ImageCollector:
     """
     A class to collect all the images which need to be copied to the HTML
     output folder.
     """
-    def __init__(self, datadir, userdir):
+    def __init__(self, wesnoth_exe):
         self.images = {}
-        self.pathes_per_campaign = {}
-        self.ipathes = {}
+        self.paths_per_campaign = {}
+        self.ipaths = {}
         self.notfound = {}
-        self.datadir = datadir
-        self.userdir = userdir
         self.id = 0
         self.verbose = 0
+        
+        self.datadir = get_datadir(wesnoth_exe)
+        self.userdir = get_userdir(wesnoth_exe)
 
-    def add_binary_pathes_from_WML(self, campaign, WML):
-        self.pathes_per_campaign[campaign] = self.pathes_per_campaign.get(
+    def add_binary_paths_from_WML(self, campaign, WML):
+        self.paths_per_campaign[campaign] = self.paths_per_campaign.get(
             campaign, [])
-        for binpath in WML.get_all("binary_path"):
+        for binpath in WML.get_all(tag = "binary_path"):
             path = binpath.get_text_val("path")
-            self.pathes_per_campaign[campaign].append(path)
+            self.paths_per_campaign[campaign].append(path)
 
     def find_image(self, i, c):
         if c == "mainline":
-            bases = [os.path.join(self.datadir, "core/images")]
+            bases = [os.path.join(self.datadir, "data/core/images")]
         else:
-            bases = [os.path.join(self.datadir, "core/images")]
-            binpaths = self.pathes_per_campaign.get(c, [])
+            bases = [os.path.join(self.datadir, "data/core/images")]
+            binpaths = self.paths_per_campaign.get(c, [])
             binpaths.reverse()
             for x in binpaths:
                 if x.startswith("data/"):
                     for idir in ["images", "images/units"]:
-                        bases.append(os.path.join(self.datadir, x[5:], idir))
+                        bases.append(os.path.join(self.datadir, x, idir))
                         if self.userdir:
-                            bases.append(os.path.join(self.userdir, x[5:], idir))
+                            bases.append(os.path.join(self.userdir, x, idir))
         for base in bases:
+            tilde = i.find("~")
+            if tilde >= 0:
+                i = i[:tilde]
             ipath = os.path.join("%s" % base, i)
             if os.path.exists(ipath): return ipath, None
         return None, bases
@@ -101,8 +66,8 @@ class ImageCollector:
         if (campaign, path) in self.notfound:
             return self.notfound[(campaign, path)], True
         ipath, error = self.find_image(path, campaign)
-        if ipath in self.ipathes:
-            return self.ipathes[ipath], False
+        if ipath in self.ipaths:
+            return self.ipaths[ipath], False
     
         name = "%05d_" % self.id
         name += os.path.basename(path)
@@ -110,7 +75,7 @@ class ImageCollector:
 
         self.images[name] = ipath, path, campaign, error
         if ipath:
-            self.ipathes[ipath] = name
+            self.ipaths[ipath] = name
             return name, False
         else:
             self.notfound[(campaign, path)] = name
@@ -135,7 +100,7 @@ class ImageCollector:
                 # helpers.py currently executing.
                 command = os.path.join(os.path.dirname(__file__),
                     "TeamColorizer")
-                p = Popen([command, ipath, opath])
+                p = subprocess.Popen([command, ipath, opath])
                 p.wait()
             else:
                 sys.stderr.write(
@@ -150,23 +115,25 @@ class WesnothList:
     """
     Lists various Wesnoth stuff like units, campaigns, terrains, factions...
     """
-    def __init__(self, isocode, datadir, userdir, transdir):
+    def __init__(self, wesnoth_exe, transdir):
         self.unit_lookup = {}
         self.race_lookup = {}
         self.terrain_lookup = {}
         self.movetype_lookup = {}
         self.era_lookup = {}
         self.campaign_lookup = {}
-        self.parser = ParserWithCoreMacros(isocode, datadir, userdir, transdir)
+        self.parser = wmlparser2.Parser(wesnoth_exe)
+        
+        self.parser = wmlparser2.Parser(wesnoth_exe)
 
     def add_terrains(self):
         """
         We need those for movement costs and defenses.
         """
-        WML = self.parser.parse("{core/terrain.cfg}\n")
+        self.parser.parse_text("{core/terrain.cfg}\n")
 
         n = 0
-        for terrain in WML.get_all("terrain_type"):
+        for terrain in self.parser.get_all(tag = "terrain_type"):
             tstring = terrain.get_text_val("string")
             self.terrain_lookup[tstring] = terrain
             n += 1
@@ -180,7 +147,7 @@ class WesnothList:
         if not eid: return
         self.era_lookup[eid] = era
         era.faction_lookup = {}
-        for multiplayer_side in era.get_all("multiplayer_side"):
+        for multiplayer_side in era.get_all(tag = "multiplayer_side"):
             fid = multiplayer_side.get_text_val("id")
             if fid == "Random": continue
             era.faction_lookup[fid] = multiplayer_side
@@ -214,10 +181,10 @@ class WesnothList:
         """
         Find all mainline eras.
         """
-        WML = self.parser.parse("{multiplayer/eras.cfg}\n")
+        self.parser.parse_text("{multiplayer/eras.cfg}")
 
         n = 0
-        for era in WML.get_all("era"):
+        for era in self.parser.get_all(tag = "era"):
             self.add_era(era)
             n += 1
         return n
@@ -226,9 +193,9 @@ class WesnothList:
         """
         Find all mainline campaigns.
         """
-        WML = self.parser.parse("{campaigns}\n")
+        self.parser.parse_text("{campaigns}")
         n = 0
-        for campaign in WML.find_all("campaign"):
+        for campaign in self.parser.get_all(tag = "campaign"):
             self.add_campaign(campaign)
             n += 1
         return n
@@ -237,45 +204,65 @@ class WesnothList:
         """
         Find all addon eras and campaigns.
         """
-        n = 0
-        try:
-            WML = self.parser.parse("""
-                #define MULTIPLAYER\n#enddef
-                #define RANDOM_SIDE\n#enddef
-                {~add-ons}
-                """)
-        except wmlparser.Error, e:
-            try:
-                print(e)
-            except UnicodeEncodeError:
-                print(e.text.encode("utf8", "ignore"))
-            return n
-        for campaign in WML.find_all("campaign"):
-            cid = self.add_campaign(campaign)
-
-        for era in WML.find_all("era"):
-            eid = self.add_era(era)
-            if not eid: continue
-            image_collector.add_binary_pathes_from_WML(eid, WML)
-            
-        n = self.add_units(WML, "addons")
+        self.parser.parse_text("{multiplayer}{~add-ons}", "MULTIPLAYER")
         
-        image_collector.add_binary_pathes_from_WML("addons", WML)
-        return n
+        cn = 0
+        for campaign in self.parser.get_all(tag = "campaign"):
+            cid = self.add_campaign(campaign)
+            cn += 1
 
-    def add_units(self, WML, campaign):
+        en = 0
+        for era in self.parser.get_all(tag = "era"):
+            eid = self.add_era(era)
+            en += 1
+            if not eid: continue
+            image_collector.add_binary_paths_from_WML(eid,
+                self.parser.root)
+
+        un = self.add_units("addons")
+
+        image_collector.add_binary_paths_from_WML("addons",
+            self.parser.root)
+        return cn, en, un
+    
+    def add_mainline_units(self):
+        self.parser.parse_text("{core/units.cfg}")
+        return self.add_units("mainline")
+
+    def add_campaign_units(self, cname, image_collector):
+        campaign = self.campaign_lookup[cname]
+        define = campaign.get_text_val("define")
+        self.parser.parse_text("{campaigns}", define)
+        
+        image_collector.add_binary_paths_from_WML(cname,
+            self.parser.root)
+        
+        return self.add_units(cname)
+
+    def add_addon_campaign_units(self, cname, image_collector):
+        campaign = self.campaign_lookup[cname]
+        define = campaign.get_text_val("define")
+        self.parser.parse_text("{~add-ons}", define)
+        
+        image_collector.add_binary_paths_from_WML(cname,
+            self.parser.root)
+
+        return self.add_units(cname)
+
+    def add_units(self, campaign):
         """
         We assume each unit, in mainline and all addons, has one unique id. So
         we reference them everywhere by this id, and here can add them all to
         one big collection.
         """
-        addunits = WML.get_all("units")
+        addunits = self.parser.get_all(tag = "units")
+        addunits += self.parser.get_all(tag = "+units")
         if not addunits: return 0
-        
+
         def getall(oftype):
             r = []
             for units in addunits:
-                r += units.get_all(oftype)
+                r += units.get_all(tag = oftype)
             return r
 
         # Find all unit types.
@@ -285,10 +272,10 @@ class WesnothList:
                unit.get_text_val("hide_help", "no") in ["no", "false"]:
                 uid = unit.get_text_val("id")
                 if uid in self.unit_lookup:
-                    sys.stderr.write(
-                        ("Fatal: Unit id \"%s\" already exists - either it has" +
-                        " to be renamed, or there's a bug in this script.\n") % 
-                        uid)
+                    pass
+                    # TODO: We might want to compare the two units
+                    # with the same id and if one is different try
+                    # to do something clever like rename it...
                 else:
                     self.unit_lookup[uid] = unit
                 unit.campaign = campaign
@@ -366,8 +353,9 @@ class WesnothList:
                     unit.factions.append((eid, fid))
 
     def get_base_unit(self, unit):
-        b = unit.get_first("base_unit")
+        b = unit.get_all(tag = "base_unit")
         if b:
+            b = b[0]
             buid = b.get_text_val("id")
             try: baseunit = self.unit_lookup[buid]
             except KeyError:
@@ -378,12 +366,12 @@ class WesnothList:
             return baseunit
         return None
 
-    def get_unit_value(self, unit, attribute, default = None):
-        value = unit.get_text_val(attribute, None)
+    def get_unit_value(self, unit, attribute, default = None, translation = None):
+        value = unit.get_text_val(attribute, None, translation)
         if value == None:
             baseunit = self.get_base_unit(unit)
             if baseunit:
-                return self.get_unit_value(baseunit, attribute, default)
+                return self.get_unit_value(baseunit, attribute, default, translation)
             return default
         return value
 
@@ -416,7 +404,6 @@ class UnitForest:
                 u.children.append(c)
                 if not uid in c.parent_ids:
                     c.parent_ids.append(uid)
-            
 
         # Put all roots into the forest
         for uid, u in self.lookup.items():

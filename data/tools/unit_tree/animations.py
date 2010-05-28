@@ -8,15 +8,15 @@ def write_animation(out, aa, name):
         out.write("%d" % c[0])
 
 def count_animations(out, name, a, c):
-    frames = a.get_subs("frame")
+    frames = a.get_all(tag = "frame")
     if frames:
         c[0] += len(frames)
         c[1] += 1
-    for a2 in a.get_subs("animation"):
+    for a2 in a.get_all(tag = "animation"):
         count_animations(out, name, a2, c)
-    for a2 in a.get_subs("if"):
+    for a2 in a.get_all(tag = "if"):
         count_animations(out, name, a2, c)
-    for a2 in a.get_subs("else"):
+    for a2 in a.get_all(tag = "else"):
         count_animations(out, name, a2, c)
 
 def write_table_row(out, unit, color, name = None):
@@ -54,12 +54,12 @@ def write_table_row(out, unit, color, name = None):
     needed["healing_anim"] = False
     needed["leading_anim"] = False
     needed["teleport"] = False
-    for abil in unit.get_subs("abilities"):
-        if abil.get_subs("heals"):
+    for abil in unit.get_all(tag = "abilities"):
+        if abil.get_all(tag = "heals"):
             needed["healing_anim"] = True
-        if abil.get_subs("leadership"):
+        if abil.get_all(tag = "leadership"):
             needed["leading_anim"] = True
-        if abil.get_subs("teleport"):
+        if abil.get_all(tag = "teleport"):
             needed["teleport"] = True     
 
     if name == None: name = unit.id
@@ -68,7 +68,7 @@ def write_table_row(out, unit, color, name = None):
 
     for t in anim_types:
         if needed[t]:
-            aa = unit.get_subs(t)
+            aa = unit.get_all(tag = t)
             if t == "extra_anim":
                 out.write("<td class=\"none\">")
             else:
@@ -80,10 +80,10 @@ def write_table_row(out, unit, color, name = None):
 
     out.write("</tr>\n")
 
-    female = unit.get_first("female")
-    if female: write_table_row(out, female, color, name + "[f]")
+    female = unit.get_all(tag = "female")
+    if female: write_table_row(out, female[0], color, name + "[f]")
 
-    for variation in unit.get_all("variation"):
+    for variation in unit.get_all(tag = "variation"):
         write_table_row(out, variation, color, name + "[%s]" %
             variation.get_text_val("variation_name"))
 
@@ -109,12 +109,12 @@ def put_units(f, us):
 <th>level out</th>
 <th>extra</th>
 <th>animation</th>
-<th>resistance_anim</th>
-<th>recruiting_anim</th>
-<th>pre_movement_anim</th>
-<th>post_movement_anim</th>
-<th>draw_weapon_anim</th>
-<th>sheath_weapon_anim</th>
+<th>resistance</th>
+<th>recruiting</th>
+<th>pre movement</th>
+<th>post movement</th>
+<th>draw weapon</th>
+<th>sheath weapon</th>
 """.lstrip())
 
     f.write("</tr>\n")
