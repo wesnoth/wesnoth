@@ -52,13 +52,9 @@ class Translation:
                     textdomain, self.localedir, [self.langcode])
             except IOError:
                 self.catalog[textdomain] = self.dummy
-        try:
-            r = self.catalog[textdomain].ugettext(string)
-        except UnicodeDecodeError as e:
-            print(textdomain)
-            print(repr(string))
-            print(type(string))
-            raise
+
+        r = self.catalog[textdomain].ugettext(string)
+
         return r
 
 class GroupByRace:
