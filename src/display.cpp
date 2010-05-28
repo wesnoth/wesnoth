@@ -2365,16 +2365,24 @@ void display::invalidate_animations()
 }
 
 arrow* display::create_arrow() {
-	//TODO: implement
-	return new arrow;
+	arrow* new_arrow = new arrow();
+	new_arrow->add_observer(*this);
+	return new_arrow;
 }
 
-void display::arrow_changed(const arrow &)
+void display::arrow_changed(const arrow & changed)
 {
-	//TODO: implement
+	std::list<map_location> & previous_path = changed.get_previous_path();
+	
+	std::list<arrow_image> & images = changed.get_images();
+	foreach(arrow_image images, images)
+	{
+		
+	}
+	
 }
 
-void display::arrow_deleted(const arrow &)
+void display::arrow_deleted(const arrow & deleted)
 {
 	//TODO: implement
 }

@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
-   Copyright (C) 2010 by Gabriel Morin <gabrielmorin (at) gmail (dot) org>
+   Copyright (C) 2010 by Gabriel Morin <gabrielmorin (at) gmail (dot) com>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org
 
    This program is free software; you can redistribute it and/or modify
@@ -37,14 +37,14 @@ class arrow {
 
   public: //operations
 
-    void set_path(const std::list<map_location> path);
+    virtual void set_path(const std::list<map_location> path);
 
     void set_color(const SDL_Color color);
 
     void set_layer(const display::tdrawing_layer & layer);
 
     /** Notifies it's arrow_observer list of the arrow's destruction */
-    ~arrow() { notify_arrow_deleted(); }
+    virtual ~arrow() { notify_arrow_deleted(); }
 
     /**
      * If you want your arrow to be automatically registered and displayed, create
@@ -57,7 +57,10 @@ class arrow {
 
     void remove_observer(arrow_observer & observer);
 
-    std::vector<arrow_image> getImages() const;
+    std::list<arrow_image> get_images() const;
+
+    std::list<map_location> get_previous_path() const;
+
 
   private: //operations
 
@@ -74,6 +77,7 @@ class arrow {
     std::list<arrow_observer*> observers_;
 
     std::list<map_location> path_;
+    std::list<map_location> previous_path_;
 
 };
 #endif

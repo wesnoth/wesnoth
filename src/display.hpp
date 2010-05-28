@@ -61,6 +61,8 @@ class arrow;
 #include <boost/function.hpp>
 #include <boost/scoped_ptr.hpp>
 
+typedef std::pair<surface, arrow const*> arrow_surface;
+
 class gamemap;
 
 class display: public arrow_observer
@@ -858,7 +860,7 @@ private:
 	bool draw_terrain_codes_;
 
 	/** Map that holds the arrow images to draw for each hex */
-	std::map<map_location, std::list<std::pair<surface, arrow const*> > > arrow_symbols;
+	std::map<map_location, std::list<std::pair<arrow_surface> > > arrow_symbols;
 };
 
 #endif
