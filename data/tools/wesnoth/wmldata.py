@@ -2,6 +2,9 @@
 # encoding: utf8
 
 """
+NOTE: You should use wmlparser2.py instead which uses the C++
+preprocessor.
+
 This module represents the internal appearance of WML.
 
 Note: We cannot store textdomain information, due to how the parser work.

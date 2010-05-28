@@ -2,24 +2,8 @@
 # encoding: utf8
 
 """
-This module is the third WML parser I wrote from scratch. Unlike the
-first two this one does not have a pre-processor because now we can
-use the --preprocess option of wesnoth itself for it.
-
-Advantages are:
-
-- It's extremely fast (compared to previous versions).
-
-- Translations work 100%, a single string can be made up of multiple
-  non-translatable and translatable parts from different text domains.
-
-- Results are always 100% identical to the builtin game parser.
-
-The only disadvantage is:
-
-- A wesnoth binary with a working --preprocess option must be present
-  else only WML without preprocessor instructions can be parsed.
-
+This parser uses the --preprocess option of wesnoth so a working
+wesnoth executable must be available at runtime.
 """
 
 import os, glob, sys, re, subprocess, optparse, tempfile
@@ -75,9 +59,12 @@ class AttributeNode:
             [v.debug() for v in self.value])
         
     def get_text(self, translation = None):
-        r = ""
+        r = u""
         for s in self.value:
-            r += s.data
+            if translation:
+                r += translation(s.data.decode("utf8"), s.textdomain)
+            else:
+                r += s.data.decode("utf8")
         return r
 
 class TagNode:
@@ -92,6 +79,8 @@ class TagNode:
         # List of child elements, which are either of type TagNode or
         # AttributeNode.
         self.data = []
+        
+        self.speedy_tags = {}
     
     def debug(self):
         s = ""
@@ -103,6 +92,10 @@ class TagNode:
         return s
 
     def get_all(self, **kw):
+        
+        if len(kw) == 1 and "tag" in kw:
+            return self.speedy_tags.get(kw["tag"], [])
+        
         r = []
         for sub in self.data:
             ok = True
@@ -121,6 +114,14 @@ class TagNode:
         x = self.get_all(att = name)
         if not x: return default
         return x[0].get_text(translation)
+    
+    def append(self, node):
+        self.data.append(node)
+        
+        if isinstance(node, TagNode):
+            if node.name not in self.speedy_tags:
+                self.speedy_tags[node.name] =[]
+            self.speedy_tags[node.name].append(node)
 
 class RootNode(TagNode):
     """
@@ -137,34 +138,33 @@ class RootNode(TagNode):
         return s
 
 class Parser:
-    def __init__(self, wesnoth_exe, defines = ""):
+    def __init__(self, wesnoth_exe):
         """
         path - Path to the file to parse.
         wesnoth_exe - Wesnoth executable to use. This should have been
             configured to use the desired data and config directories.
         """
         self.wesnoth_exe = wesnoth_exe
-        self.defines = defines
         self.preprocessed = None
         
         self.last_wml_line = "?"
         self.parser_line = 0
     
-    def parse_file(self, path):
+    def parse_file(self, path, defines = ""):
         self.path = path
-        self.preprocess()
+        self.preprocess(defines)
         self.parse()
 
-    def parse_text(self, text):
+    def parse_text(self, text, defines = ""):
         self.file = tempfile.NamedTemporaryFile(prefix = "wmlparser_",
             suffix = ".cfg")
         self.file.write(text)
         self.file.flush()
         self.path = self.file.name
-        self.preprocess()
+        self.preprocess(defines)
         self.parse()
 
-    def preprocess(self):
+    def preprocess(self, defines):
         """
         Call wesnoth --preprocess to get preprocessed WML which we
         can subsequently parse.
@@ -174,7 +174,7 @@ class Parser:
         """
         output = "/tmp/wmlparser"
         if not os.path.exists(output): os.mkdir(output)
-        p_option = "-p=" + self.defines if self.defines else "-p "
+        p_option = "-p=" + defines if defines else "-p "
         commandline = [self.wesnoth_exe, p_option, self.path,
             output]
         p = subprocess.Popen(commandline,
@@ -290,7 +290,7 @@ class Parser:
             self.parent_node = self.parent_node[:-1]
         else:
             node = TagNode(tag)
-            self.parent_node[-1].data.append(node)
+            self.parent_node[-1].append(node)
             self.parent_node.append(node)
         self.parse_outside_strings(line[end + 1:])
 
@@ -307,7 +307,7 @@ class Parser:
             att = att.strip()
             node = AttributeNode(att)
             self.temp_key_nodes.append(node)
-            self.parent_node[-1].data.append(node)
+            self.parent_node[-1].append(node)
 
         if remainder:
             self.parse_outside_strings(remainder)
@@ -528,8 +528,8 @@ code = <<
         
         sys.exit(0)
 
-    p = Parser(options.wesnoth, options.defines)
-    if options.input: p.parse_file(options.input)
-    elif options.text: p.parse_text(options.text)
+    p = Parser(options.wesnoth)
+    if options.input: p.parse_file(options.input, options.defines)
+    elif options.text: p.parse_text(options.text, options.defines)
     print(p.root.debug())
 

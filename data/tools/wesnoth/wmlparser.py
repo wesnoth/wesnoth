@@ -3,7 +3,12 @@
 import wmldata, os, glob, sys
 import re
 
-"""Module implementing a WML parser."""
+"""
+NOTE: You should use wmlparser2.py instead which uses the C++
+preprocessor.
+
+Module implementing a WML parser in pure python.
+"""
 
 class Error(Exception):
     """
