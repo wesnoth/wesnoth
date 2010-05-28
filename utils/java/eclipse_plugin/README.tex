@@ -1,0 +1,82 @@
+\documentclass[10pt]{article}
+\usepackage[top=1cm, bottom=1cm, left=1cm, right=1cm]{geometry} 
+\usepackage[utf8x]{inputenc}
+
+%opening
+\title{Eclipse UMC Plugin Readme}
+\author{Timotei Dolean}
+
+\begin{document}
+
+\maketitle
+
+\newcounter{cnt}
+\newcommand{\icnt}{ \stepcounter{cnt} \thecnt }
+
+\section{Common prerequisites}
+\icnt) Download and install Eclipse ({\bf http://eclipse.org/downloads/}) \\
+\icnt) Install the library "EMF". \\ 
+For that, in Eclipse: Help menu -  Install new software, insert the link \\
+({\bf http://download.eclipse.org/modeling/emf/updates/releases/}) in that textbox, and press enter. 
+Check the "Group items by category", and select: \\ 
+    - {\bf "EMF SDK 2.5.0 (EMF + XDS)} - select "EMF - Eclipse Modeling Framework Core Runtime"\\
+\icnt) Install the library "XText". \\
+The download link: http://download.itemis.com/updates/releases. 
+After that, select the latest version of the following packages and 
+install them (Don't forget to have checked the "Group items by category" checkbox): \\
+    - {\bf "TMF XTEXT SDK (incubation) x.x.x"} \\
+    - {\bf "Xtext antlr Support x.x.x"} \\
+
+\section{Developer}
+\subsection{Setup the environment}
+\setcounter{cnt}{0}
+\icnt) Checkout plugin's folder from the svn (http://svn.gna.org/svn/wesnoth/trunk/utils/java/) \\
+\icnt) In Eclipse, right click in Package Explorer/Project Navigator and then select 
+Import - General- Existing projects into Workspace \\
+\icnt) Select the path where you downloaded the java folder, and check all the 4 projects 
+(the eclipse plugin + the other 3 xtext projects) \\
+\icnt) Build the projects. 
+\subsection{Running the plugin}
+After you've setup the environment and built the plugin you can run it. \\
+\setcounter{cnt}{0}
+\icnt) Open the file plugin.xml \\
+\icnt) In the {\bf Testing} section, select the desired method of launching the plugin 
+(non-debug/debug mode).
+
+\section{User}
+\subsection{Installing the plugin}
+\setcounter{cnt}{0}
+\icnt) Install the plugin from ({\bf http://eclipse.wesnoth.org/ } \\
+\icnt) Select {\bf "Wesnoth UMC Plugin"} and press finish.
+
+\section{Everybody}
+\subsection{Using the plugin}
+Ok. So, after you have your plugin installed(user) or running(developer), you can use its features. 
+But before of all, you must update the preferences. For this, go in "Window - Preferences - Wesnoth UMC Plugin".
+Here you should set all options. Should the working directory be empty, it will be computed automatically 
+based on wesnoth's executable
+
+\subsubsection{Wizards}
+To create a new {\bf Campaign}, open the "New..." menu (either from File - New menu, or right click in the 
+project navigator and select "New..." ). After that select "Wesnoth Campaign". Fill in the information needed,
+and press finish. Your campaign project is created in the workspace. \\
+To create a new {\bf Scenario}, open the "New..." menu, and select "Wesnoth scenario". 
+Complete the information needed and press finish.
+
+\subsubsection{Menus}
+There are currently 2 types of menus: the context menus for different file/folder types and the toolbar menus. \\
+
+{\bf Project context menus} - right click on the campaign projects created with the plugin\\
+   {\it Wesnoth project report} - will show a simple report with the numer of maps, scenarios and units.
+
+{\bf .cfg files context menus} - right click on any .cfg file\\
+   {\it Open scenario in game} - opens the selected file's scenario (if it contains one) in wesnoth \\
+   {\it WML Tools} - provides some options for using the wmltools with the specified file 
+   (e.g. run wmllint against the file and see the output in the console) \\
+   {\it Preprocessor} - provides ways of preprocessing and showing the result in an editor inside eclipse.
+
+{\bf "maps" folder} - right click on the "maps" folder\\
+   {\it Import map} - Shows a file selection window that let's you select a .map file that will be copied in your campaign project.
+
+
+\end{document}
