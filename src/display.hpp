@@ -49,7 +49,6 @@ class arrow;
 #include "theme.hpp"
 #include "video.hpp"
 #include "widgets/button.hpp"
-#include "arrow_observer.hpp"
 
 #include "SDL.h"
 
@@ -59,8 +58,6 @@ class arrow;
 
 #include <boost/function.hpp>
 #include <boost/scoped_ptr.hpp>
-
-typedef std::pair<surface, arrow const*> arrow_surface;
 
 class gamemap;
 
@@ -819,20 +816,6 @@ protected:
 	/** Used to indicate to drawing funtions that we are doing a map screenshot */
 	bool map_screenshot_;
 
-public:
-    /**
-     * Create a new arrow, with display registered as its observer. It will call display
-     * everytime it's modified to update its visuals. You're in charge of managing the
-     * lifecycle of this arrow; the arrow's destructor will notify display of its
-     * deletion.
-     */
-    arrow* create_arrow();
-
-    /** Called by arrow objects when they change. You should not need to call this directly. */
-    virtual void arrow_changed(const arrow & a);
-    /** Called by arrow objects when they get deleted. You should not need to call this directly. */
-    virtual void arrow_deleted(const arrow & a);
-
 private:
 	/** Handle for the label which displays frames per second. */
 	int fps_handle_;
@@ -853,9 +836,10 @@ private:
 	bool draw_terrain_codes_;
 
 	/** Map that holds the arrow images to draw for each hex */
+
 	std::map<map_location, std::list<arrow_surface> > arrow_symbols;
 
-	void erase_arrow_symbols(arrow const* arrow_pointer, const std::list<map_location> & path);
+
 };
 
 #endif
