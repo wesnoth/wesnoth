@@ -2373,12 +2373,20 @@ void display::invalidate_animations()
 	}
 }
 
-void display::add_arrow(const arrow&)
+void display::add_arrow(arrow& addme)
 {
-
+	const arrow_path_t & arrow_path = addme.get_path();
+	foreach (const map_location& loc, arrow_path)
+	{
+		arrows_map_[loc].push_back(&addme);
+	}
 }
 
-void display::remove_arrow(const arrow&)
+void display::remove_arrow(arrow& removeme)
 {
-
+	const arrow_path_t & arrow_path = removeme.get_path();
+	foreach (const map_location& loc, arrow_path)
+	{
+		arrows_map_[loc].remove(&removeme);
+	}
 }

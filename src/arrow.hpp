@@ -29,6 +29,8 @@
 
 typedef std::map<map_location, surface> symbols_map_t;
 
+typedef std::list<map_location> arrow_path_t;
+
 /**
  * Arrows destined to be drawn on the map. Created for the whiteboard system.
  */
@@ -47,9 +49,9 @@ public:
 
 	void set_layer(const display::tdrawing_layer & layer);
 
-	const std::list<map_location> & get_path() const;
+	const arrow_path_t & get_path() const;
 
-	const std::list<map_location> & get_previous_path() const;
+	const arrow_path_t & get_previous_path() const;
 
 	void draw_hex(const map_location & hex);
 
@@ -65,8 +67,8 @@ private:
 
 	SDL_Color color_;
 
-	std::list<map_location> path_;
-	std::list<map_location> previous_path_;
+	arrow_path_t path_;
+	arrow_path_t previous_path_;
 
 	symbols_map_t symbols_map_;
 

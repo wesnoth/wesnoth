@@ -60,7 +60,8 @@ class arrow;
 #include <boost/function.hpp>
 #include <boost/scoped_ptr.hpp>
 
-typedef std::map<map_location, std::list<arrow*> > arrows_map_t;
+typedef std::list<arrow*> arrows_list_t;
+typedef std::map<map_location, arrows_list_t > arrows_map_t;
 
 class gamemap;
 
@@ -821,9 +822,9 @@ protected:
 
 public: //operations for the arrow framework
 
-	void add_arrow(const arrow&);
+	void add_arrow(arrow&);
 
-	void remove_arrow(const arrow&);
+	void remove_arrow(arrow&);
 
 private:
 	/** Handle for the label which displays frames per second. */
