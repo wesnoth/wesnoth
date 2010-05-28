@@ -37,25 +37,15 @@ class arrow {
 
   public: //operations
 
+    arrow();
+
+    virtual ~arrow() {}
+
     virtual void set_path(const std::list<map_location> path);
 
     void set_color(const SDL_Color color);
 
     void set_layer(const display::tdrawing_layer & layer);
-
-    /** Notifies it's arrow_observer list of the arrow's destruction */
-    virtual ~arrow() { notify_arrow_deleted(); }
-
-    /**
-     * If you want your arrow to be automatically registered and displayed, create
-     * it through display::createNewArrow(). Only use this constructor directly
-     * if you have a good reason to do so.
-     */
-    arrow();
-
-    void add_observer(arrow_observer & observer);
-
-    void remove_observer(arrow_observer & observer);
 
     std::list<arrow_image> get_images() const;
 
@@ -63,20 +53,11 @@ class arrow {
 
     const std::list<map_location> & get_previous_path() const;
 
-
-  private: //operations
-
-    void notify_arrow_changed();
-
-    void notify_arrow_deleted();
-
   private: //properties
 
     display::tdrawing_layer layer_;
 
     SDL_Color color_;
-
-    std::list<arrow_observer*> observers_;
 
     std::list<map_location> path_;
     std::list<map_location> previous_path_;
