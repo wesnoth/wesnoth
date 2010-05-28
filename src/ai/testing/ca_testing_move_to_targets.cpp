@@ -566,10 +566,6 @@ std::pair<map_location,map_location> testing_move_to_targets_phase::choose_move(
 	for(std::vector<map_location>::reverse_iterator ri =
 	    best_route.steps.rbegin(); ri != best_route.steps.rend(); ++ri) {
 
-		if(game_config::debug) {
-			//game_display::debug_highlight(*ri,static_cast<size_t>(0.2));
-		}
-
 		//this is set to 'true' if we are hesitant to proceed because of enemy units,
 		//to rally troops around us.
 		bool is_dangerous = false;

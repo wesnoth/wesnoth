@@ -922,10 +922,10 @@ void game_display::invalidate_animations()
 	}
 }
 
-void game_display::debug_highlight(const map_location& loc, fixed_t amount)
+int& game_display::debug_highlight(const map_location& loc)
 {
 	assert(game_config::debug);
-	debugHighlights_[loc] += amount;
+	return debugHighlights_[loc];
 }
 
 void game_display::place_temporary_unit(unit *u)

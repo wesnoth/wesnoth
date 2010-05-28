@@ -259,11 +259,9 @@ public:
 	const unit_map& get_const_units() const {return units_;}
 
 	/**
-	 * Draws a cross on a tile to emphasize something there.
-	 *
-	 * It is used in debug mode, typically to show AI plans.
+	 * annotate hex with number, useful for debugging or UI protoype
 	 */
-	static void debug_highlight(const map_location& loc, fixed_t amount);
+	static int& debug_highlight(const map_location& loc);
 	static void clear_debug_highlights() { debugHighlights_.clear(); }
 
 	/** The viewing team is the team currently viewing the game. */
@@ -397,7 +395,7 @@ private:
 	tgame_mode game_mode_;
 
 	// For debug mode
-	static std::map<map_location,fixed_t> debugHighlights_;
+	static std::map<map_location, int> debugHighlights_;
 
 	/** Animated flags for each team */
 	std::vector<animated<image::locator> > flags_;
