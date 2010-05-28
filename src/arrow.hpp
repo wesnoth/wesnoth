@@ -25,10 +25,9 @@
 #include <vector>
 #include <list>
 #include <utility>
+#include <map>
 
-#include <boost/unordered_map.hpp>
-
-typedef boost::unordered_map<map_location, surface> symbols_map_t;
+typedef std::map<map_location, surface> symbols_map_t;
 
 /**
  * Arrows destined to be drawn on the map. Created for the whiteboard system.

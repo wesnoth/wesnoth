@@ -59,13 +59,12 @@ class arrow;
 
 #include <boost/function.hpp>
 #include <boost/scoped_ptr.hpp>
-#include <boost/unordered_map.hpp>
 
-typedef boost::unordered_map<map_location, std::list<arrow*> > arrows_map_t;
+typedef std::map<map_location, std::list<arrow*> > arrows_map_t;
 
 class gamemap;
 
-class display: public arrow_observer
+class display
 {
 public:
 	display(CVideo& video, const gamemap* map, const config& theme_cfg,
