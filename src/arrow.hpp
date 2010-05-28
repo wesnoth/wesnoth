@@ -43,7 +43,7 @@ public:
 
 	virtual ~arrow() {}
 
-	virtual void set_path(const std::list<map_location> path);
+	virtual void set_path(const arrow_path_t path);
 
 	void set_color(const SDL_Color color);
 

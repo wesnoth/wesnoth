@@ -2003,6 +2003,13 @@ void display::draw_hex(const map_location& loc) {
 		drawing_buffer_add(LAYER_TERRAIN_TMP_BG, loc, tblit(xpos, ypos, mouseover_hex_overlay_));
 	}
 
+	// Paint arrows
+	arrows_list_t arrows_in_hex = arrows_map_[loc];
+	foreach(arrow* a, arrows_in_hex)
+	{
+		a->draw_hex(loc);
+	}
+
 	// Apply shroud, fog and linger overlay
 	if(shrouded(loc)) {
 		// We apply void also on off-map tiles

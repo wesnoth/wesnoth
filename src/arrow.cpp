@@ -28,7 +28,7 @@ arrow::arrow(): layer_(display::LAYER_ARROWS)
 	color_.r = 0;
 }
 
-void arrow::set_path(const std::list<map_location> path)
+void arrow::set_path(const arrow_path_t path)
 {
 	previous_path_ = path_;
 	path_ = path;
@@ -46,13 +46,13 @@ void arrow::set_layer(const display::tdrawing_layer & layer)
 	layer_ = layer;
 }
 
-const std::list<map_location> & arrow::get_path() const
+const arrow_path_t & arrow::get_path() const
 {
 	return path_;
 }
 
 
-const std::list<map_location> & arrow::get_previous_path() const
+const arrow_path_t & arrow::get_previous_path() const
 {
 	return previous_path_;
 }
