@@ -4,16 +4,16 @@
 # This file is distributed under the same license as the Battle for Wesnoth package.
 #
 # Széll Tamás <tomi@digiflex.hu>, 2005.
-# Kádár-Németh Krisztián <krisztian.kad@gmail.com>, 2007, 2008, 2009, 2010.
+# Kádár-Németh Krisztián <krisztian.kad@gmail.com>, 2007-2010.
 # Pintér Csaba <piere-d-siorac@freemail.hu>, 2008.
 # Fábián Balázs <nermal93@freemail.hu>, 2008.
-# Barthalos Márton <barthalosmarton@yahoo.com>, 2008, 2009.
+# Barthalos Márton <barthalosmarton@yahoo.com>, 2008-2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: hu-wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-05-24 17:53+0200\n"
-"PO-Revision-Date: 2010-04-25 09:40+0200\n"
+"PO-Revision-Date: 2010-05-25 19:58+0200\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian <wesnoth-hungtrans@gna.org>\n"
 "Language: hu\n"
@@ -104,9 +104,8 @@ msgstr "Hangok engedélyezése a játékcsarnokban"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:107
-#, fuzzy
 msgid "Disable notifications"
-msgstr "Az automatikus mentés kikapcsolása."
+msgstr "Értesítések kikapcsolása"
 
 #. [ai]: id=default # id is needed uniquely identify a MP AI, it is not needed in the scenario AI
 #: data/ai/ais/default_ai.cfg:4
@@ -9000,7 +8999,7 @@ msgstr "Egy Lua utasítás végrehajtása."
 
 #: src/menu_events.cpp:2466
 msgid "Grant higher privileges to Lua scripts."
-msgstr ""
+msgstr "Magasabb prioritás biztosítása a Lua szkripteknek."
 
 #: src/menu_events.cpp:2468
 msgid "Set the command used by the custom command hotkey"
@@ -9202,7 +9201,7 @@ msgstr "Hibakereső üzemmód kikapcsolva!"
 
 #: src/menu_events.cpp:3191
 msgid "Unsafe Lua scripts."
-msgstr ""
+msgstr "Nem biztonságos Lua szkriptek."
 
 #: src/menu_events.cpp:3192
 msgid ""
@@ -9210,10 +9209,14 @@ msgid ""
 "continue? If you have downloaded add-ons, do not click 'ok'! They would "
 "instantly take over your computer. You have been warned."
 msgstr ""
+"Épp arra készülsz, hogy biztonsági rést nyiss a Wesnothban. Biztos vagy "
+"benne, hogy folytatni szeretnéd? Ha kiegészítőket töltöttél le, ne kattints "
+"a \"Rendben\"-re! Akár azonnal átvehetik a számítógéped feletti uralmat! Mi "
+"figyelmeztettünk!"
 
 #: src/menu_events.cpp:3195
 msgid "Unsafe mode enabled!"
-msgstr ""
+msgstr "Nem biztonságos üzemmód bekapcsolva!"
 
 #: src/menu_events.cpp:3238
 msgid "Variable not found"
