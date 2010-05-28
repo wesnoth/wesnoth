@@ -403,7 +403,7 @@ private:
 	std::vector<bool> known_boolean_states_;
 	static std::map<std::string, state_t> known_boolean_state_names_;
 	config variables_;
-	int emit_zoc_;
+	bool emit_zoc_;
 	STATE state_;
 
 	std::vector<std::string> overlays_;

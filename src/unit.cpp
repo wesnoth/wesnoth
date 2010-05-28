@@ -331,7 +331,7 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 		alpha_ = lexical_cast_default<fixed_t>(cfg["alpha"]);
 	}
 	if (cfg.has_attribute("zoc")) {
-		emit_zoc_ = cfg["zoc"].to_bool();
+		emit_zoc_ = cfg["zoc"].to_bool(level_ > 0);
 	}
 	if (cfg.has_attribute("flying")) {
 		flying_ = cfg["flying"].to_bool();
