@@ -1,4 +1,4 @@
-/* $Id: persist_var.cpp 42098 2010-04-10 17:30:45Z upthorn $ */
+/* $Id$ */
 /*
    Copyright (C) 2003 - 2010 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
@@ -104,13 +104,15 @@ bool persist_context::clear_var(std::string &global)
 {
 	if (cfg_.empty()) {
 		load_persist_data(namespace_,cfg_);
+		if (!cfg_.child("variables"))
+			cfg_.add_child("variables");
 	}
 
 	// TODO: get config's variables.
-	bool exists = cfg_.has_attribute(global);
+	bool exists = cfg_.child("variables").has_attribute(global);
 	bool ret;
 	if (!exists) {
-		if (cfg_.child(global)) {
+		if (cfg_.child("variables").child(global)) {
 			exists = true;
 			std::string::iterator index_start = std::find(global.begin(),global.end(),'[');
 			if (index_start != global.end())
@@ -118,14 +120,18 @@ bool persist_context::clear_var(std::string &global)
 				const std::string::iterator index_end = std::find(global.begin(),global.end(),']');
 				const std::string index_str(index_start+1,index_end);
 				size_t index = static_cast<size_t>(lexical_cast_default<int>(index_str));
-				cfg_.remove_child(global,index);
+				cfg_.child("variables").remove_child(global,index);
 			} else {
-				cfg_.clear_children(global);
+				cfg_.child("variables").clear_children(global);
 			}
 		}
 	}
 	if (exists) {
-		cfg_.remove_attribute(global);
+		cfg_.child("variables").remove_attribute(global);
+		if (cfg_.child("variables").empty()) {
+			cfg_.clear_children("variables");
+			cfg_.remove_attribute("variables");
+		}
 		ret = save_persist_data(namespace_,cfg_);
 	} else {
 		ret = exists;
@@ -138,12 +144,14 @@ config persist_context::get_var(const std::string &global)
 	config ret;
 	if (cfg_.empty()) {
 		load_persist_data(namespace_,cfg_,false);
+		if (!cfg_.child("variables"))
+			cfg_.add_child("variables");
 	}
 	//TODO: get config's [variables]
-	if (cfg_.child(global)) {
-		ret.add_child(global,cfg_.child(global));
+	if (cfg_.child("variables").child(global)) {
+		ret.add_child(global,cfg_.child("variables").child(global));
 	} else {
-		ret = pack_scalar(global,cfg_[global]);
+		ret = pack_scalar(global,cfg_.child("variables")[global]);
 	}
 	return ret;
 }
@@ -152,12 +160,15 @@ bool persist_context::set_var(const std::string &global,const config &val)
 {
 	if (cfg_.empty()) {
 		load_persist_data(namespace_,cfg_);
+		if (!cfg_.child("variables"))
+			cfg_.add_child("variables");
 	}
+
 	//TODO: get config's [variables]
 	if (val.has_attribute(global)) {
-		cfg_[global] = val[global];
+		cfg_.child("variables")[global] = val[global];
 	} else {
-		cfg_.add_child(global,val.child(global));
+		cfg_.child("variables").add_child(global,val.child(global));
 	}
 	return save_persist_data(namespace_,cfg_);
 }
