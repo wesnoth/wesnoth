@@ -8,9 +8,10 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-05-15 14:21+0200\n"
-"PO-Revision-Date: 2010-04-26 12:16+0100\n"
+"PO-Revision-Date: 2010-05-28 11:19+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -101,9 +102,8 @@ msgstr "Dźwięki poczekalni"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:107
-#, fuzzy
 msgid "Disable notifications"
-msgstr "Wyłącz automatyczny zapis."
+msgstr "Wyłącz powiadomienia"
 
 #. [ai]: id=testing_ai_default
 #: data/ai/ais/testing_ai_default.cfg:5
@@ -8192,7 +8192,7 @@ msgstr ""
 #: src/generate_report.cpp:359
 #, fuzzy
 msgid "Swarm: "
-msgstr "Bagno"
+msgstr "rój"
 
 #: src/generate_report.cpp:364
 #, fuzzy
@@ -8830,12 +8830,10 @@ msgid "aliases:"
 msgstr "aliasy"
 
 #: src/menu_events.cpp:2198
-#, fuzzy
 msgid "(A) - admin command"
 msgstr "(A) - polecenie trybu administracyjnego"
 
 #: src/menu_events.cpp:2205 src/menu_events.cpp:2403
-#, fuzzy
 msgid "(admin only)"
 msgstr "(tylko tryb administratora)"
 
@@ -9008,7 +9006,6 @@ msgid "Room query."
 msgstr "Zapytanie w pokoju."
 
 #: src/menu_events.cpp:2395
-#, fuzzy
 msgid "(D) - debug only, (N) - network only, (A) - admin only"
 msgstr ""
 "(D) - tylko tryb debugowania, (N) - tylko tryb sieciowy, (A) - tylko tryb "
@@ -9019,7 +9016,6 @@ msgid "(debug command)"
 msgstr "(polecenie trybu debugowania)"
 
 #: src/menu_events.cpp:2402
-#, fuzzy
 msgid "(network only)"
 msgstr "(tylko w sieci)"
 
@@ -10475,6 +10471,9 @@ msgstr "Pomóż nam uczynić Wesnoth lepszym!"
 msgid "Enable summary uploads"
 msgstr "Włącz wysyłanie podsumowań"
 
+#~ msgid "Multiplayer_AI^Default AI"
+#~ msgstr "Multiplayer_AI^Domyślne AI"
+
 #~ msgid ""
 #~ "$addon_title depends upon the following add-on which you have not "
 #~ "installed yet:"
@@ -10519,12 +10518,24 @@ msgstr "Włącz wysyłanie podsumowań"
 #~ msgid "tooltip^% parry"
 #~ msgstr "% parowania"
 
-#, fuzzy
-#~ msgid " (auth only)"
-#~ msgstr "(tylko tryb administratora)"
+#~ msgid "Grant higher privileges to Lua scripts."
+#~ msgstr "Nadaj większe uprawnienia skryptom Lua."
 
-#~ msgid "Multiplayer_AI^Default AI"
-#~ msgstr "Multiplayer_AI^Domyślne AI"
+#~ msgid "Unsafe Lua scripts."
+#~ msgstr "Potencjalnie niebezpieczne skrypty Lua."
+
+#~ msgid ""
+#~ "You are about to open a security breach in Wesnoth. Are you sure you want "
+#~ "to continue? If you have downloaded add-ons, do not click 'ok'! They "
+#~ "would instantly take over your computer. You have been warned."
+#~ msgstr ""
+#~ "Skorzystanie z tej opcji spowoduje otwarcie luki zabezpieczeń w Wesnoth. "
+#~ "Czy chcesz kontynuować? Jeśli masz pobrane dodatki, nie klikaj przycisku "
+#~ "OK! Dodatek zawierający złośliwy kod będzie w stanie przejąć kontrolę nad "
+#~ "komputerem. Ostrzegaliśmy."
+
+#~ msgid "Unsafe mode enabled!"
+#~ msgstr "Włączono tryb niebezpieczny!"
 
 #~ msgid "--no games open--"
 #~ msgstr "--brak otwartych gier--"
