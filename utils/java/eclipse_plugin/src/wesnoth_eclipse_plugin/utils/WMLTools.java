@@ -1,7 +1,7 @@
 /**
  * @author Timotei Dolean
  */
-package wesnoth_eclipse_plugin.globalactions;
+package wesnoth_eclipse_plugin.utils;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -16,8 +16,6 @@ import org.eclipse.ui.console.MessageConsoleStream;
 import wesnoth_eclipse_plugin.builder.ExternalToolInvoker;
 import wesnoth_eclipse_plugin.preferences.PreferenceConstants;
 import wesnoth_eclipse_plugin.preferences.PreferenceInitializer;
-import wesnoth_eclipse_plugin.utils.GUIUtils;
-import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
 
 public class WMLTools
 {

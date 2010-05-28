@@ -6,7 +6,7 @@ import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 
 import wesnoth_eclipse_plugin.globalactions.PreprocessorActions;
-import wesnoth_eclipse_plugin.globalactions.WMLTools;
+import wesnoth_eclipse_plugin.utils.WMLTools;
 import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
 
 public class RunWMLLintOnPreprocFile implements IObjectActionDelegate
