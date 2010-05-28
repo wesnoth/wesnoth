@@ -14,8 +14,8 @@ msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-05-24 17:53+0200\n"
-"PO-Revision-Date: 2010-05-15 18:17+0100\n"
-"Last-Translator: Guigou Guillaume <guillaume.guigou@orange.fr>\n"
+"PO-Revision-Date: 2010-05-28 08:18+0100\n"
+"Last-Translator: Guigou <guillaume.guigou@cnfpt.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -104,9 +104,8 @@ msgstr "Sons du vestibule"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:107
-#, fuzzy
 msgid "Disable notifications"
-msgstr "Désactive les sauvegardes automatiques."
+msgstr "Désactiver les notifications"
 
 #. [ai]: id=default # id is needed uniquely identify a MP AI, it is not needed in the scenario AI
 #: data/ai/ais/default_ai.cfg:4
@@ -2945,7 +2944,7 @@ msgstr ""
 "\n"
 "Éjecte un utilisateur en mode multijoueur. Il pourra rejoindre la partie. Si "
 "vous voulez seulement changer le contrôle de son camp, utilisez plutôt la "
-"commande « :control ».\n"
+"commande « :control ».\n"
 "\n"
 
 #. [topic]: id=mp_commands
@@ -3101,7 +3100,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Modifie une propriété de l'unité sélectionnée. Par exemple : :unit "
+"Modifie une propriété de l'unité sélectionnée. Par exemple : :unit "
 "hitpoints=100\n"
 "\n"
 
@@ -3112,7 +3111,7 @@ msgid ""
 "Makes the selected unit level up N times. Example: :unit advances=2"
 msgstr ""
 "\n"
-"Augmente N fois le niveau de l'unité séléctionnée. Par exemple : :unit "
+"Augmente N fois le niveau de l'unité séléctionnée. Par exemple : :unit "
 "advances=2"
 
 #. [heals]: id=curing
@@ -3758,7 +3757,7 @@ msgid ""
 msgstr ""
 "Objectif : $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_objective_description\n"
-"Comportement : $ai_controller.side_$ally_side|_current_settings."
+"Comportement : $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_behaviour_description"
 
 #. [value]: speaker=narrator
@@ -3766,7 +3765,7 @@ msgstr ""
 msgid ""
 "$ally_leader.name (side $ally_side|) is carrying out the following "
 "instructions:"
-msgstr "$ally_leader.name (camp $ally_side|) suit les instructions suivantes :"
+msgstr "$ally_leader.name (camp $ally_side|) suit les instructions suivantes :"
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:854
@@ -3813,7 +3812,7 @@ msgid ""
 "Special: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_special_description"
 msgstr ""
-"Spécial : $ai_controller.side_$ally_side|_current_settings."
+"Spécial : $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_special_description"
 
 #. [advancement]: id=amla_default
@@ -3875,7 +3874,7 @@ msgstr ""
 #: data/core/macros/carryover-utils.cfg:34
 #: data/core/macros/carryover-utils.cfg:42
 msgid "Alternative objective:"
-msgstr "Objectif alternatif :"
+msgstr "Objectif alternatif :"
 
 #. [message]: speaker=narrator
 #: data/core/macros/items.cfg:39
@@ -8019,7 +8018,7 @@ msgstr "Infos : "
 
 #: src/game_events.cpp:3268
 msgid "[unit_worth]'s filter didn't match any units!"
-msgstr "Le filtre [unit_worth] ne correspond à aucune unité !"
+msgstr "Le filtre [unit_worth] ne correspond à aucune unité !"
 
 #: src/generate_report.cpp:128
 msgid "invisible: "
@@ -8681,7 +8680,7 @@ msgid ""
 "Unknown command '$command', try $help_command for a list of available "
 "commands."
 msgstr ""
-"La commande « $command » est inconnue. Essayez « $help_command » pour "
+"La commande « $command » est inconnue. Essayez « $help_command » pour "
 "afficher la liste des commandes disponibles."
 
 #: src/menu_events.cpp:1951
@@ -8710,7 +8709,7 @@ msgid ""
 "Available commands $flags_description:\n"
 "$list_of_commands"
 msgstr ""
-"Commandes disponibles $flags_description :\n"
+"Commandes disponibles $flags_description :\n"
 "$list_of_commands"
 
 #: src/menu_events.cpp:2051 src/menu_events.cpp:2052 src/menu_events.cpp:2075
@@ -8727,11 +8726,11 @@ msgstr " Aucune aide disponible."
 
 #: src/menu_events.cpp:2068
 msgid "Usage:"
-msgstr "Usage : "
+msgstr "Usage :"
 
 #: src/menu_events.cpp:2073
 msgid "aliases:"
-msgstr "Alias : "
+msgstr "Alias :"
 
 #: src/menu_events.cpp:2199
 msgid "(A) - admin command"
@@ -9003,7 +9002,7 @@ msgstr "Exécute une commande Lua."
 
 #: src/menu_events.cpp:2466
 msgid "Grant higher privileges to Lua scripts."
-msgstr ""
+msgstr "Accorder des privilèges plus élevés pour les scripts Lua."
 
 #: src/menu_events.cpp:2468
 msgid "Set the command used by the custom command hotkey"
@@ -9115,7 +9114,7 @@ msgstr "Ajouté à la liste des ignorés : $nick"
 
 #: src/menu_events.cpp:2749 src/menu_events.cpp:2768
 msgid "Invalid username: $nick"
-msgstr "Nom d'utilisateur incorrect : $nick"
+msgstr "Nom d'utilisateur incorrect : $nick"
 
 #: src/menu_events.cpp:2759 src/menu_events.cpp:2766 src/menu_events.cpp:2792
 msgid "friends list"
@@ -9188,7 +9187,7 @@ msgstr "Impossible de changer le contrôle de ce camp hors-limites : « $side�
 
 #: src/menu_events.cpp:3151
 msgid "Choose Scenario (Debug!)"
-msgstr "Choisir un scénario (débogage !)"
+msgstr "Choisir un scénario (débogage !)"
 
 #: src/menu_events.cpp:3172
 msgid "Debug mode activated!"
@@ -9204,7 +9203,7 @@ msgstr "Mode debug désactivé !"
 
 #: src/menu_events.cpp:3191
 msgid "Unsafe Lua scripts."
-msgstr ""
+msgstr "Dangereux scripts Lua."
 
 #: src/menu_events.cpp:3192
 msgid ""
@@ -9212,10 +9211,14 @@ msgid ""
 "continue? If you have downloaded add-ons, do not click 'ok'! They would "
 "instantly take over your computer. You have been warned."
 msgstr ""
+"Vous êtes sur le point d'ouvrir une brèche de sécurité dans Wesnoth. Êtes-"
+"vous sûr de vouloir continuer ? Si vous avez téléchargé des extensions, ne "
+"cliquez pas sur « OK » ! Ils prendraient instantanément le contrôle de votre "
+"ordinateur. Vous aurez été prévenu."
 
 #: src/menu_events.cpp:3195
 msgid "Unsafe mode enabled!"
-msgstr ""
+msgstr "Activée en mode non sécurisé !"
 
 #: src/menu_events.cpp:3238
 msgid "Variable not found"
@@ -9226,8 +9229,8 @@ msgid ""
 "Invalid alignment: '$alignment', needs to be one of lawful, neutral or "
 "chaotic."
 msgstr ""
-"Alignement invalide : « $alignment ». Doit être « lawful », « neutral » ou « "
-"chaotic »."
+"Alignement invalide : « $alignment ». Doit être « lawful », « neutral » ou "
+"« chaotic »."
 
 #: src/menu_events.cpp:3333
 msgid "Invalid unit type"
@@ -9685,26 +9688,22 @@ msgid "Quit"
 msgstr "Quitter"
 
 #: src/multiplayer_lobby.cpp:734
-#, fuzzy
 msgid "Apply Filter"
-msgstr "Filtre : "
+msgstr "Appliquer le filtre"
 
 #: src/multiplayer_lobby.cpp:735
-#, fuzzy
 msgid "Invert"
-msgstr "Invertit"
+msgstr "Inverti"
 
 #: src/multiplayer_lobby.cpp:736
 msgid "Vacant Slots"
 msgstr "Places vacantes"
 
 #: src/multiplayer_lobby.cpp:737
-#, fuzzy
 msgid "Friends in Game"
 msgstr "Amis en jeu"
 
 #: src/multiplayer_lobby.cpp:738
-#, fuzzy
 msgid "Filter:"
 msgstr "Filtre : "
 
@@ -10399,7 +10398,7 @@ msgid_plural "strikes"
 msgstr[0] "attaque"
 msgstr[1] "attaques"
 
-# Benoît : j'ai du mal à piger l'anglais ici
+# Benoît : j'ai du mal à piger l'anglais ici
 #: src/unit_types.cpp:214
 #, no-c-format
 msgid "% accuracy"
