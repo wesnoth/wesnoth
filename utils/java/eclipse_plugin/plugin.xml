@@ -108,6 +108,27 @@
                label="Show plain preprocessed file"
                menubarPath="plugin.preprocessorMenu/preprocessorMenuMarker">
          </action>
+         <menu
+               icon="icons/wesnoth-icon_16.png"
+               id="plugin.wmltoolsMenu"
+               label="WML Tools"
+               path="_wesnoth">
+            <groupMarker
+                  name="wmltoolsMenuMarker">
+            </groupMarker>
+         </menu>
+         <action
+               class="wesnoth_eclipse_plugin.action.RunWMLLintOnFile"
+               id="Wesnoth Eclipse Plugin.action5"
+               label="Run &quot;wmllint&quot; on this file"
+               menubarPath="plugin.wmltoolsMenu/wmltoolsMenuMarker">
+         </action>
+         <action
+               class="wesnoth_eclipse_plugin.action.RunWMLLintOnPreprocFile"
+               id="Wesnoth Eclipse Plugin.action6"
+               label="Run &quot;wmllint&quot; on preprocessed file"
+               menubarPath="plugin.wmltoolsMenu/wmltoolsMenuMarker">
+         </action>
       </objectContribution>
    </extension>
    <extension

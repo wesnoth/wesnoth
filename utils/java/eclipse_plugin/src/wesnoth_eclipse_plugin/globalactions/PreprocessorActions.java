@@ -3,6 +3,7 @@
  */
 package wesnoth_eclipse_plugin.globalactions;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,9 +26,11 @@ public class PreprocessorActions
 	 * @param targetDirectory target directory where should be put the results
 	 * @param defines the list of additional defines to be added when preprocessing the file
 	 * @param useThread true if the preprocessing should use a thread
+	 * @param waitForIt true to wait for the preprocessing to finish
 	 * @return
 	 */
-	public static boolean preprocessFile(String fileName,String targetDirectory,List<String> defines, boolean useThread)
+	public static boolean preprocessFile(String fileName,String targetDirectory,List<String> defines,
+			boolean useThread, boolean waitForIt)
 	{
 		try{
 			List<String> arguments = new ArrayList<String>();
@@ -53,6 +56,8 @@ public class PreprocessorActions
 					arguments, useThread);
 			System.out.printf("preprocessing : %s\n", arguments);
 			wesnoth.run();
+			if (waitForIt)
+				wesnoth.waitFor();
 			return true;
 		}
 		catch (Exception e) {
@@ -83,5 +88,21 @@ public class PreprocessorActions
 		{
 			e.printStackTrace();
 		}
+	}
+
+	public static String getPreprocessedFilePath(IFile file, boolean plain)
+	{
+		IFileStore preprocFile = EFS.getLocalFileSystem().getStore(new Path(WorkspaceUtils.getTemporaryFolder()));
+		preprocFile = preprocFile.getChild(file.getName() + (plain == true? ".plain" : "") );
+		return preprocFile.toString();
+	}
+
+	public static void preprocessIfNotExists(IFile file,boolean useThread, boolean waitForIt)
+	{
+		if (new File(WorkspaceUtils.getTemporaryFolder() + file.getName()).exists())
+			return;
+
+		PreprocessorActions.preprocessFile(WorkspaceUtils.getPathRelativeToUserDir(file),
+				WorkspaceUtils.getTemporaryFolder(), null,useThread, waitForIt);
 	}
 }

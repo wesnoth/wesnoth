@@ -131,7 +131,7 @@ public class SampleBuilder extends IncrementalProjectBuilder {
 				deleteMarkers(file);
 
 				PreprocessorActions.preprocessFile(WorkspaceUtils.getPathRelativeToUserDir(file),
-						WorkspaceUtils.getTemporaryFolder(), null, true);
+						WorkspaceUtils.getTemporaryFolder(), null, true,false);
 
 				/*
 				IMarker[] resIMarkers = file.findMarkers(MARKER_TYPE, false, IResource.DEPTH_ZERO);
