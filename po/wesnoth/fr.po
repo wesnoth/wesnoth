@@ -14,9 +14,10 @@ msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-05-15 14:21+0200\n"
-"PO-Revision-Date: 2010-05-15 19:29+0100\n"
-"Last-Translator: Guigou Guillaume <guillaume.guigou@orange.fr>\n"
+"PO-Revision-Date: 2010-05-28 08:18+0100\n"
+"Last-Translator: Guigou <guillaume.guigou@cnfpt.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -104,12 +105,12 @@ msgstr "Sons du vestibule"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:107
 msgid "Disable notifications"
-msgstr "désactive les notifications"
+msgstr "Désactiver les notifications"
 
 #. [ai]: id=testing_ai_default
 #: data/ai/ais/testing_ai_default.cfg:5
 msgid "Multiplayer_AI^RCA AI"
-msgstr "Multijoueur IA RCA"
+msgstr "RCA IA"
 
 #. [time]: id=underground
 #. [illuminated_time]: id=underground_illum
@@ -848,8 +849,8 @@ msgstr ""
 "devez avoir votre chef (par exemple, il s'agit de Konrad dans la campagne "
 "« L'Héritier du trône ») sur une case donjon d'un <ref>dst='terrain_castle' "
 "text='château'</ref>. Vous pourrez alors recruter soit en choisissant "
-"« Recruter » dans le menu soit en effectuant un clic-droit sur un hexagone et "
-"en sélectionnant <italic>text='Recruter'</italic>. Cela affichera le menu "
+"« Recruter » dans le menu soit en effectuant un clic-droit sur un hexagone "
+"et en sélectionnant <italic>text='Recruter'</italic>. Cela affichera le menu "
 "d'enrôlement listant les unités disponibles et leur coût en or. Sélectionnez "
 "une unité pour voir ses caractéristiques, puis appuyez sur le bouton "
 "« Recruter » pour l'enrôler."
@@ -1332,6 +1333,7 @@ msgstr ""
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:263
+#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1346,7 +1348,7 @@ msgstr ""
 "Les résistances fonctionnent très simplement : une unité avec 40 % de "
 "résistance contre un type de dégâts subira 40 % de dégâts en moins sur un "
 "coup de ce type. Il est également possible pour une unité d'avoir une "
-"faiblesse contre certains types de dégâts : une unité avec —100 % de "
+"faiblesse contre certains types de dégâts : une unité avec -100 % de "
 "résistance contre un type de dégâts subira 100 % de dégâts en plus sur une "
 "attaque de ce type."
 
@@ -2116,6 +2118,7 @@ msgstr "Lent"
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:456
+#, fuzzy
 msgid "Slow units have −1 movement but 5% more hitpoints."
 msgstr ""
 "Les unités lentes ont 1 point de mouvement en moins, mais 5 % de points de "
@@ -2143,6 +2146,7 @@ msgstr "Faible"
 
 #. [topic]: id=traits_weak
 #: data/core/help.cfg:464
+#, fuzzy
 msgid "Units with trait Weak get a −1 increment in hitpoints and melee damage."
 msgstr ""
 "Les unités faibles ont 1 point de vie en moins ; elle infligent 1 point de "
@@ -2938,7 +2942,7 @@ msgstr ""
 "\n"
 "Éjecte un utilisateur en mode multijoueur. Il pourra rejoindre la partie. Si "
 "vous voulez seulement changer le contrôle de son camp, utilisez plutôt la "
-"commande « :control ».\n"
+"commande « :control ».\n"
 "\n"
 
 #. [topic]: id=mp_commands
@@ -3094,7 +3098,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Modifie une propriété de l'unité sélectionnée. Par exemple : :unit "
+"Modifie une propriété de l'unité sélectionnée. Par exemple : :unit "
 "hitpoints=100\n"
 "\n"
 
@@ -3105,7 +3109,7 @@ msgid ""
 "Makes the selected unit level up N times. Example: :unit advances=2"
 msgstr ""
 "\n"
-"Augmente N fois le niveau de l'unité séléctionnée. Par exemple : :unit "
+"Augmente N fois le niveau de l'unité séléctionnée. Par exemple : :unit "
 "advances=2"
 
 #. [heals]: id=curing
@@ -3751,7 +3755,7 @@ msgid ""
 msgstr ""
 "Objectif : $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_objective_description\n"
-"Comportement : $ai_controller.side_$ally_side|_current_settings."
+"Comportement : $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_behaviour_description"
 
 #. [value]: speaker=narrator
@@ -3759,7 +3763,7 @@ msgstr ""
 msgid ""
 "$ally_leader.name (side $ally_side|) is carrying out the following "
 "instructions:"
-msgstr "$ally_leader.name (camp $ally_side|) suit les instructions suivantes :"
+msgstr "$ally_leader.name (camp $ally_side|) suit les instructions suivantes :"
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:854
@@ -3806,7 +3810,7 @@ msgid ""
 "Special: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_special_description"
 msgstr ""
-"Spécial : $ai_controller.side_$ally_side|_current_settings."
+"Spécial : $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_special_description"
 
 #. [advancement]: id=amla_default
@@ -3868,7 +3872,7 @@ msgstr ""
 #: data/core/macros/carryover-utils.cfg:34
 #: data/core/macros/carryover-utils.cfg:42
 msgid "Alternative objective:"
-msgstr "Objectif alternatif :"
+msgstr "Objectif alternatif :"
 
 #. [message]: speaker=narrator
 #: data/core/macros/items.cfg:39
@@ -3958,7 +3962,8 @@ msgid ""
 "until the end of the current scenario. Should $unit.name use it?"
 msgstr ""
 "Cette eau bénira les armes de corps à corps, qui feront des dégâts de type "
-"« arcane » jusqu'à la fin du scénario. Est-ce que $unit.name doit l'utiliser ?"
+"« arcane » jusqu'à la fin du scénario. Est-ce que $unit.name doit "
+"l'utiliser ?"
 
 #: data/core/macros/items.cfg:288
 msgid "I am not suited to the use of this item! Let another take it."
@@ -5593,6 +5598,7 @@ msgstr "Elfes"
 
 #. [race]: id=elf
 #: data/core/units.cfg:118
+#, fuzzy
 msgid ""
 "Compared to humans, elves are somewhat taller, more agile but less sturdy. "
 "They have slightly pointy ears, pale skin and usually blond hair. Few "
@@ -6711,8 +6717,8 @@ msgid ""
 "a powerful and experienced army."
 msgstr ""
 "Vous pouvez utiliser des unités d'un scénario précédent en sélectionnant "
-"« Rappeler » dans le menu « Actions ». En rappelant toujours les mêmes unités "
-"vous pouvez constituer une armée expérimentée et puissante."
+"« Rappeler » dans le menu « Actions ». En rappelant toujours les mêmes "
+"unités vous pouvez constituer une armée expérimentée et puissante."
 
 #. [tip]
 #: data/hardwired/tips.cfg:75
@@ -6723,10 +6729,10 @@ msgid ""
 "between them and still create a barrier to the enemy. However, skirmishers "
 "are skilled enough to ignore these zones."
 msgstr ""
-"Les unités ont généralement une « zone de contrôle » sur chacun des hexagones "
-"qui leur sont adjacents. Une unité qui se déplace dans la zone de contrôle "
-"ennemie ne peut faire aucun autre mouvement pour ce tour ; deux unités "
-"peuvent donc barrer un passage avec deux cases vides entre elles. Les "
+"Les unités ont généralement une « zone de contrôle » sur chacun des "
+"hexagones qui leur sont adjacents. Une unité qui se déplace dans la zone de "
+"contrôle ennemie ne peut faire aucun autre mouvement pour ce tour ; deux "
+"unités peuvent donc barrer un passage avec deux cases vides entre elles. Les "
 "tirailleurs sont quant à eux suffisamment habiles pour ignorer ces zones."
 
 #. [tip]
@@ -6851,8 +6857,9 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:116
+#, fuzzy
 msgid "— Meneldur, 123YW"
-msgstr "— Meneldur, 123 YW"
+msgstr "- Meneldur, 123 YW"
 
 #. [tip]
 #: data/hardwired/tips.cfg:119
@@ -7524,8 +7531,9 @@ msgid "Type"
 msgstr "Type"
 
 #: src/addon_management.cpp:801
+#, fuzzy
 msgid "Install dependencies"
-msgstr "Installer dépendances"
+msgstr "Dépendances"
 
 #: src/addon_management.cpp:802
 msgid ""
@@ -7538,7 +7546,7 @@ msgstr[1] ""
 
 #: src/addon_management.cpp:831
 msgid "Installation of a dependency failed"
-msgstr "Installation d'une dépendance a échoué"
+msgstr ""
 
 #: src/addon_management.cpp:833
 msgid ""
@@ -7548,7 +7556,7 @@ msgstr ""
 
 #: src/addon_management.cpp:847
 msgid "Installation failed"
-msgstr "L'installation a échoué"
+msgstr ""
 
 #: src/addon_management.cpp:849 src/addon_management.cpp:1078
 msgid "The following add-on could not be downloaded or updated successfully:"
@@ -7607,7 +7615,7 @@ msgstr "Tout mettre à jour"
 #: src/addon_management.cpp:1043 src/addon_management.cpp:1060
 #: src/addon_management.cpp:1300
 msgid "Installation of some dependency failed"
-msgstr "L'installation de certaines dépendances a échoué"
+msgstr ""
 
 #: src/addon_management.cpp:1045 src/addon_management.cpp:1062
 #: src/addon_management.cpp:1302
@@ -8052,24 +8060,28 @@ msgid "Name: "
 msgstr "Nom : "
 
 #: src/generate_report.cpp:98
+#, fuzzy
 msgid "Type: "
-msgstr "Type :"
+msgstr "Type"
 
 #: src/generate_report.cpp:108 src/help.cpp:1403
 msgid "Race: "
 msgstr "Race : "
 
 #: src/generate_report.cpp:129
+#, fuzzy
 msgid "Level: "
-msgstr "Niveau :"
+msgstr "Niveau"
 
 #: src/generate_report.cpp:131
+#, fuzzy
 msgid "Advances to:"
 msgstr "Évolue en : "
 
 #: src/generate_report.cpp:149
+#, fuzzy
 msgid "Traits: "
-msgstr "Traits :"
+msgstr "Traits"
 
 #: src/generate_report.cpp:158
 msgid "invisible: "
@@ -8123,12 +8135,14 @@ msgstr ""
 "Cette unité a été changée en pierre. Elle ne peut ni bouger, ni attaquer."
 
 #: src/generate_report.cpp:182
+#, fuzzy
 msgid "Alignement: "
 msgstr "Alignement : "
 
 #: src/generate_report.cpp:196
+#, fuzzy
 msgid "Ability:"
-msgstr "Capacités : "
+msgstr "Capacités"
 
 #: src/generate_report.cpp:230
 msgid "Resistances: "
@@ -8143,65 +8157,78 @@ msgid "Experience Modifier: "
 msgstr "Modifications d'expérience : "
 
 #: src/generate_report.cpp:264
+#, fuzzy
 msgid "Terrain: "
-msgstr "Terrain :"
+msgstr "Terrain"
 
 #: src/generate_report.cpp:266
+#, fuzzy
 msgid "Chance to be hit: "
-msgstr "Chances d'être touché :"
+msgstr "Chance d'être indemne"
 
 #: src/generate_report.cpp:337
+#, fuzzy
 msgid "Weapon: "
-msgstr "Arme : "
+msgstr "portée de l'arme : "
 
 #: src/generate_report.cpp:338
+#, fuzzy
 msgid "Damage: "
-msgstr "Dégâts :"
+msgstr "Dégâts"
 
 #: src/generate_report.cpp:341
+#, fuzzy
 msgid "Base damage: "
-msgstr "Dégâts totaux :"
+msgstr "Dégâts totaux"
 
 #: src/generate_report.cpp:343
+#, fuzzy
 msgid "Time of day: "
-msgstr "Moment de la journée :"
+msgstr "Moment de la journée"
 
 #: src/generate_report.cpp:347
+#, fuzzy
 msgid "Leadership: "
-msgstr "Commandement :"
+msgstr "Commandement"
 
 #: src/generate_report.cpp:351
+#, fuzzy
 msgid "Slowed: "
-msgstr "ralentie :"
+msgstr "ralentie : "
 
 #: src/generate_report.cpp:355
+#, fuzzy
 msgid "Attacks: "
-msgstr "Attaques :"
+msgstr "Attaquant"
 
 #: src/generate_report.cpp:357
 msgid "Base attacks: "
-msgstr "Attaques de base :"
+msgstr ""
 
 #: src/generate_report.cpp:359
+#, fuzzy
 msgid "Swarm: "
-msgstr "Marais :"
+msgstr "déferlement"
 
-# Benoît : j'ai du mal à piger l'anglais ici
+# Benoît : j'ai du mal à piger l'anglais ici
 #: src/generate_report.cpp:364
+#, fuzzy
 msgid "Accuracy :"
-msgstr "Fidélité :"
+msgstr " % précision"
 
 #: src/generate_report.cpp:369
 msgid "Parry :"
-msgstr "Parade :"
+msgstr ""
 
 #: src/generate_report.cpp:380
+#, fuzzy
 msgid "Weapon range: "
-msgstr "Portée de l'arme : "
+msgstr "portée de l'arme : "
 
 #: src/generate_report.cpp:381
+#, fuzzy
 msgid "Damage type: "
-msgstr "Type de dégâts : "
+msgstr "type de dégâts : "
 
 #: src/generate_report.cpp:404
 msgid "vs"
@@ -8765,8 +8792,8 @@ msgid ""
 "Unknown command '$command', try $help_command for a list of available "
 "commands."
 msgstr ""
-"La commande « $command » est inconnue. Essayez « $help_command » pour afficher "
-"la liste des commandes disponibles."
+"La commande « $command » est inconnue. Essayez « $help_command » pour "
+"afficher la liste des commandes disponibles."
 
 #: src/menu_events.cpp:1950
 msgid ""
@@ -8794,7 +8821,7 @@ msgid ""
 "Available commands $flags_description:\n"
 "$list_of_commands"
 msgstr ""
-"Commandes disponibles $flags_description :\n"
+"Commandes disponibles $flags_description :\n"
 "$list_of_commands"
 
 #: src/menu_events.cpp:2050 src/menu_events.cpp:2051 src/menu_events.cpp:2074
@@ -8811,20 +8838,20 @@ msgstr " Aucune aide disponible."
 
 #: src/menu_events.cpp:2067
 msgid "Usage:"
-msgstr "Usage : "
+msgstr "Usage :"
 
 #: src/menu_events.cpp:2072
 msgid "aliases:"
-msgstr "Alias : "
+msgstr "Alias :"
 
 #: src/menu_events.cpp:2198
 msgid "(A) - admin command"
-msgstr "(A) - commande administrateur"
+msgstr "(A) - commande admin"
 
 # team labels
 #: src/menu_events.cpp:2205 src/menu_events.cpp:2403
 msgid "(admin only)"
-msgstr "(réservé aux adminstrateurs)"
+msgstr "(réservé aux admins)"
 
 #: src/menu_events.cpp:2225
 msgid ""
@@ -8995,8 +9022,7 @@ msgstr "Requête de salle."
 #: src/menu_events.cpp:2395
 msgid "(D) - debug only, (N) - network only, (A) - admin only"
 msgstr ""
-"(D) - débogage uniquement, (N) - réseau uniquement, (A) - adminstrateur "
-"uniquement"
+"(D) - débogage uniquement, (N) - réseau uniquement, (A) - admin uniquement"
 
 #: src/menu_events.cpp:2401
 msgid "(debug command)"
@@ -9196,7 +9222,7 @@ msgstr "Ajouté à la liste des ignorés : $nick"
 
 #: src/menu_events.cpp:2745 src/menu_events.cpp:2764
 msgid "Invalid username: $nick"
-msgstr "Nom d'utilisateur incorrect : $nick"
+msgstr "Nom d'utilisateur incorrect : $nick"
 
 #: src/menu_events.cpp:2755 src/menu_events.cpp:2762 src/menu_events.cpp:2788
 msgid "friends list"
@@ -9269,7 +9295,7 @@ msgstr "Impossible de changer le contrôle de ce camp hors-limites : « $side�
 
 #: src/menu_events.cpp:3147
 msgid "Choose Scenario (Debug!)"
-msgstr "Choisir un scénario (débogage !)"
+msgstr "Choisir un scénario (débogage !)"
 
 #: src/menu_events.cpp:3168
 msgid "Debug mode activated!"
@@ -9292,8 +9318,8 @@ msgid ""
 "Invalid alignment: '$alignment', needs to be one of lawful, neutral or "
 "chaotic."
 msgstr ""
-"Alignement invalide : « $alignment ». Doit être « lawful », « neutral » ou « "
-"chaotic »."
+"Alignement invalide : « $alignment ». Doit être « lawful », « neutral » ou "
+"« chaotic »."
 
 #: src/menu_events.cpp:3317
 msgid "Invalid unit type"
@@ -9491,8 +9517,9 @@ msgid "I'm Ready"
 msgstr "Je suis prêt"
 
 #: src/multiplayer_connect.cpp:1016
+#, fuzzy
 msgid "Add named local player"
-msgstr "Ajouter un nom de joueur local"
+msgstr "Joueur local anonyme"
 
 #: src/multiplayer_connect.cpp:1025
 msgid "The scenario is invalid because it has no id."
@@ -9504,11 +9531,11 @@ msgstr "Le scénario n'est pas valide car il ne possède pas de camps."
 
 #: src/multiplayer_connect.cpp:1096
 msgid "Enter a name for the new player"
-msgstr "Entrez un nom pour le nouveau joueur"
+msgstr ""
 
 #: src/multiplayer_connect.cpp:1438
 msgid "Adds a named hotseat player to the player list"
-msgstr "Ajoute un nom à la liste des joueurs en chaise tournante"
+msgstr ""
 
 #: src/multiplayer_connect.cpp:1455
 msgid "Network Player"
@@ -10388,7 +10415,7 @@ msgid_plural "strikes"
 msgstr[0] "attaque"
 msgstr[1] "attaques"
 
-# Benoît : j'ai du mal à piger l'anglais ici
+# Benoît : j'ai du mal à piger l'anglais ici
 #: src/unit_types.cpp:214
 #, no-c-format
 msgid "% accuracy"
@@ -10451,6 +10478,9 @@ msgstr "Aidez-nous à améliorer Wesnoth pour vous !"
 msgid "Enable summary uploads"
 msgstr "Autoriser l'envoi de résumés"
 
+#~ msgid "Multiplayer_AI^Default AI"
+#~ msgstr "IA par défaut"
+
 #~ msgid ""
 #~ "$addon_title depends upon the following add-on which you have not "
 #~ "installed yet:"
@@ -10472,7 +10502,7 @@ msgstr "Autoriser l'envoi de résumés"
 #~ "télécharger les extensions dont elle dépend afin de pouvoir y jouer.)"
 
 #~ msgid "[unit_worth]'s filter didn't match any units!"
-#~ msgstr "Le filtre [unit_worth] ne correspond à aucune unité !"
+#~ msgstr "Le filtre [unit_worth] ne correspond à aucune unité !"
 
 #~ msgid "tooltip^damage"
 #~ msgid_plural "damage"
@@ -10490,13 +10520,24 @@ msgstr "Autoriser l'envoi de résumés"
 #~ msgid "tooltip^% parry"
 #~ msgstr " % parade"
 
-# team labels
-#, fuzzy
-#~ msgid " (auth only)"
-#~ msgstr "(réservé aux admins)"
+#~ msgid "Grant higher privileges to Lua scripts."
+#~ msgstr "Accorder des privilèges plus élevés pour les scripts Lua."
 
-#~ msgid "Multiplayer_AI^Default AI"
-#~ msgstr "Multijoueur IA par défaut"
+#~ msgid "Unsafe Lua scripts."
+#~ msgstr "Dangereux scripts Lua."
+
+#~ msgid ""
+#~ "You are about to open a security breach in Wesnoth. Are you sure you want "
+#~ "to continue? If you have downloaded add-ons, do not click 'ok'! They "
+#~ "would instantly take over your computer. You have been warned."
+#~ msgstr ""
+#~ "Vous êtes sur le point d'ouvrir une brèche de sécurité dans Wesnoth. Êtes-"
+#~ "vous sûr de vouloir continuer ? Si vous avez téléchargé des extensions, "
+#~ "ne cliquez pas sur « OK » ! Ils prendraient instantanément le contrôle de "
+#~ "votre ordinateur. Vous aurez été prévenu."
+
+#~ msgid "Unsafe mode enabled!"
+#~ msgstr "Activée en mode non sécurisé !"
 
 #~ msgid "--no games open--"
 #~ msgstr "<aucune partie en cours>"
@@ -10523,10 +10564,10 @@ msgstr "Autoriser l'envoi de résumés"
 #~ msgstr "Quitter"
 
 #~ msgid "Apply Filter"
-#~ msgstr "Appliquer Filtre "
+#~ msgstr "Appliquer le filtre"
 
 #~ msgid "Invert"
-#~ msgstr "Intervertir"
+#~ msgstr "Inverti"
 
 #~ msgid "Vacant Slots"
 #~ msgstr "Places vacantes"

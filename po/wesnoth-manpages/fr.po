@@ -6,9 +6,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "POT-Creation-Date: 2010-03-26 15:41+0100\n"
-"PO-Revision-Date: 2009-06-27 13:55+0100\n"
-"Last-Translator: Damien J <guydelatourATgloireetpouvoir.com>\n"
+"PO-Revision-Date: 2010-05-28 11:48+0100\n"
+"Last-Translator: Guigou <guillaume.guigou@cnfpt.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -194,9 +195,9 @@ msgstr ""
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnoth.6:64
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-e,\\ --editor>I<\\ file>"
-msgstr "B<-e, --editor \\ fichier>"
+msgstr "B<-e,\\ --editor>I<\\ fichier>"
 
 # type: Plain text
 #. type: Plain text
@@ -368,14 +369,14 @@ msgstr "B<-m, --multiplayer>"
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:128
-#, fuzzy
 msgid ""
 "runs a multiplayer game. There are additional options that can be used "
 "together with B<--multiplayer> as explained below. Only these additional "
 "options can follow B<--multiplayer>."
 msgstr ""
 "Lance un jeu multijoueurs. Des options supplémentaires peuvent être "
-"utilisées avec B<--multiplayer> : voir ci-dessous."
+"utilisées avec B<--multiplayer> : voir ci-dessous. Seules ces options "
+"supplémentaires peuvent suivre B<--multiplayer>."
 
 # type: TP
 #. type: TP
@@ -753,7 +754,7 @@ msgstr "Définit le nombre de tours du scénario (par défaut : B<50>)."
 #: ../../doc/man/wesnoth.6:235 ../../doc/man/wesnothd.6:265
 #, no-wrap
 msgid "EXIT STATUS"
-msgstr ""
+msgstr "STATUT DE SORTIE"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:238
@@ -762,6 +763,9 @@ msgid ""
 "fonts, etc) initialization error. An exit status of 2 indicates an error "
 "with the command line options."
 msgstr ""
+"Le statut de sortie normal est 0. Un code de sortie de 1 indique une erreur "
+"(SDL, vidéo, police, etc.). Un code de sortie de 2 indique une erreur avec "
+"les options de ligne de commande."
 
 # type: SH
 #. type: SH
@@ -1050,16 +1054,14 @@ msgstr "[I<tag>]"
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:103
-#, fuzzy
 msgid "I<key>=\"I<value>\""
-msgstr "clé=\"I<valeur>\""
+msgstr "I<clé>=\"I<valeur>\""
 
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:105
-#, fuzzy
 msgid "I<key>=\"I<value>,I<value>,...\""
-msgstr "clé=\"I<valeur>,I<valeur>,...\""
+msgstr "I<clé>=\"I<valeur>,I<valeur>,...\""
 
 # type: Plain text
 #. type: Plain text
@@ -1079,7 +1081,7 @@ msgstr "Clés globales : "
 #: ../../doc/man/wesnothd.6:110
 #, no-wrap
 msgid "B<allow_remote_shutdown>"
-msgstr ""
+msgstr "B<allow_remote_shutdown>"
 
 # type: Plain text
 #. type: Plain text
@@ -1089,6 +1091,9 @@ msgid ""
 "they come from the fifo.  Set it to B<yes> to allow remote shutdown via a /"
 "query by an administrator."
 msgstr ""
+"Si vous choisissez B<no> (par défaut), shut_down et restart sont ignorées à "
+"moins qu'ils ne proviennent de la fifo. Réglez B<yes> pour permettre l'arrêt "
+"à distance via /query par un administrateur."
 
 # type: TP
 #. type: TP
@@ -1113,7 +1118,7 @@ msgstr ""
 #: ../../doc/man/wesnothd.6:118
 #, no-wrap
 msgid "B<compress_stored_rooms>"
-msgstr ""
+msgstr "B<compress_stored_rooms>"
 
 # type: Plain text
 #. type: Plain text
@@ -1122,6 +1127,8 @@ msgid ""
 "Determines whether the rooms file should be read and written to in "
 "compressed form. Defaults to B<yes>."
 msgstr ""
+"Détermine si les salles de discussion doivent être lues et écrites en format "
+"compressé. Par défaut B<yes>."
 
 # type: TP
 #. type: TP
@@ -1150,15 +1157,14 @@ msgstr "B<disallow_names>"
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:131
-#, fuzzy
 msgid ""
 "Names/nicks that are not accepted by the server. B<*> and B<?> from wildcard "
 "patterns are supported. See B<glob>(7)  for more details.  Default values "
 "(used if nothing is specified) are: B<*admin*,*admln*,*server*,ai,ai?,"
 "computer,human,network,player>."
 msgstr ""
-"Noms/surnoms non acceptés par le serveur. Les caractères génériques « * » et "
-"« ? » sont acceptés. Voir B<glob>(7) pour plus d'informations. Les valeurs "
+"Noms/surnoms non acceptés par le serveur. Les caractères génériques B<*> et "
+"B<?> sont acceptés. Voir B<glob>(7) pour plus d'informations. Les valeurs "
 "par défaut (utilisées si rien n'est précisé) sont : B<*admin*,*admln*,"
 "*server*,ai,ai?,computer,human,network,player>."
 
@@ -1172,7 +1178,6 @@ msgstr "B<fifo_path>"
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:135
-#, fuzzy
 msgid ""
 "The path to the fifo you can echo server commands into (same as /query ... "
 "from wesnoth).  If not specified defaults to the compile-time path (default: "
@@ -1180,8 +1185,8 @@ msgid ""
 msgstr ""
 "Chemin de la fifo dans laquelle vous pouvez envoyer des commandes au serveur "
 "(comme les /query depuis wesnoth). Si elle n'est pas précisée, le chemin est "
-"celui prédéfini lors de la compilation (valeur par défaut : /var/run/socket/"
-"wesnothd/socket)."
+"celui prédéfini lors de la compilation (valeur par défaut : B</var/run/"
+"socket/wesnothd/socket>)."
 
 # type: TP
 #. type: TP
@@ -1234,7 +1239,7 @@ msgstr "Le message du jour."
 #: ../../doc/man/wesnothd.6:144
 #, no-wrap
 msgid "B<new_room_policy>"
-msgstr ""
+msgstr "B<new_room_policy>"
 
 # type: Plain text
 #. type: Plain text
@@ -1245,6 +1250,11 @@ msgid ""
 "respectively to everyone, registered users, admin users or disables new room "
 "creation. Default value is B<everyone>."
 msgstr ""
+"Détermine qui peut créer des salles de discussion sur le serveur. Les "
+"valeurs disponibles sont B<everyone>, B<registered>, B<admin> et B<nobody>, "
+"et donne la permission respectivement à tout le monde, les utilisateurs "
+"inscrits, les administrateurs ou désactive la création de nouvelles salles. "
+"La valeur par défaut est B<everyone>."
 
 # type: TP
 #. type: TP
@@ -1256,12 +1266,11 @@ msgstr "B<passwd>"
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:150
-#, fuzzy
 msgid ""
 "The password used to gain admin privileges (via B</query admin >I<password>)."
 msgstr ""
-"Mot de passe pour obtenir des droits d'administrateur. Commence souvent par "
-"« admin »."
+"Mot de passe pour obtenir des droits d'administrateur.(via B</query admin "
+">I<password>)."
 
 #. type: TP
 #: ../../doc/man/wesnothd.6:150
@@ -1290,21 +1299,21 @@ msgstr "B<restart_command>"
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:156
-#, fuzzy
 msgid ""
 "The command that the server uses to start a new server process via the "
 "B<restart> command. (Can only be issued via the fifo. See the "
 "B<allow_remote_shutdown> setting.)"
 msgstr ""
 "Ligne de commande avec laquelle le serveur relance un processus depuis la "
-"commande « restart » (seulement possible depuis la fifo)."
+"commande  B<restart>. (seulement possible depuis la fifo. Voir le paramètre "
+"B<allow_remote_shutdown>.)"
 
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnothd.6:156
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<room_save_file>"
-msgstr "B<ban_save_file>"
+msgstr "B<room_save_file>"
 
 # type: Plain text
 #. type: Plain text
@@ -1314,6 +1323,9 @@ msgid ""
 "server startup and written to later. If empty or not set, rooms are not "
 "loaded and not saved."
 msgstr ""
+"Chemin du fichier où les informations sur les salles de discussion doivent "
+"être conservées. S’il est vide ou non spécifié, les salles ne sont pas "
+"chargées et non enregistrées."
 
 #. type: TP
 #: ../../doc/man/wesnothd.6:159
@@ -1340,15 +1352,14 @@ msgstr "B<versions_accepted>"
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:166
-#, fuzzy
 msgid ""
 "A comma separated list of version strings to be accepted by the server. B<*> "
 "and B<?> from wildcard patterns are supported.  (defaults to the "
 "corresponding wesnoth version)"
 msgstr ""
 "Liste des versions acceptées par le serveur, séparées par des virgules. Les "
-"caractères génériques « * » et « ? » sont acceptés (par défaut : version "
-"correspondant à celle du serveur)."
+"caractères génériques B<*> et B<?> sont acceptés (par défaut : version "
+"correspondant à celle de wesnoth)."
 
 # type: Plain text
 #. type: Plain text
@@ -1366,7 +1377,6 @@ msgstr "B<user_handler>"
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:173
-#, fuzzy
 msgid ""
 "The name of the user handler to use. Currently available user handlers are "
 "B<forum> (to connect wesnothd to a phpbb forum database) and B<sample> (a "
@@ -1375,11 +1385,11 @@ msgid ""
 "add a B<[user_handler]> section, see below."
 msgstr ""
 "Nom de l'identifiant utilisateur à utiliser. Les identifiants disponibles "
-"sont 'forum' (pour connecter wesnothd à une base de données pour forum "
-"phpbb) et 'sample' (une implémentation minimale de l'interface utilisateur ; "
-"courrez vous faire soigner si vous l'utilisez ;-)). La valeur par défaut est "
-"'forum'. Vous devrez aussi ajouter une section B<[user_handler]> comme "
-"indiqué ci-dessous."
+"sont B<forum> (pour connecter wesnothd à une base de données pour forum "
+"phpbb) et B<sample> (une implémentation minimale de l'interface "
+"utilisateur ; courrez vous faire soigner si vous l'utilisez). La valeur par "
+"défaut est B<forum>. Vous devrez aussi ajouter une section B<[user_handler]> "
+"comme indiqué ci-dessous."
 
 # type: SS
 #. type: SS
@@ -1474,7 +1484,6 @@ msgstr "B<time>"
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:207
-#, fuzzy
 msgid ""
 "The time length definition.  The format is: %d[%s[%d%s[...]]] where %s is s "
 "(seconds), m (minutes), h (hours), D (days), M (months) or Y (years) and %d "
@@ -1485,8 +1494,8 @@ msgstr ""
 "Format de la durée, au format %d[%s[%d%s[...]]], où %s est s (secondes), m "
 "(minutes), h (heures), D (jours), M (mois) ou Y (années), et %d un nombre. "
 "Si le type de durée n'est pas précisé, le temps est exprimé en minutes. "
-"Exemple : time=\"1D12h30m\" donne un bannissement de 1 jour, 12 heures et 30 "
-"minutes."
+"Exemple : B<time=\"1D12h30m\"> donne un bannissement de 1 jour, 12 heures et "
+"30 minutes."
 
 # type: Plain text
 #. type: Plain text
@@ -1503,18 +1512,16 @@ msgstr ""
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:221
-#, fuzzy
 msgid ""
 "B<[user_handler]> Configures the user handler. Available keys vary depending "
 "on which user handler is set with the B<user_handler> key. If no B<"
 "[user_handler]> section is present in the configuration the server will run "
 "without any nick registration service."
 msgstr ""
-"B<[user_handler]> Configure l'identifiant utilisateur ('user handler', en "
-"anglais). Les options disponibles dépendent de la configuration de la clé "
-"B<user_handler>. S'il n'y a aucune section [user_handler] dans la "
-"configuration, le serveur fonctionnera sans aucun service d'enregistrement "
-"d'alias."
+"B<[user_handler]> Configure l'identifiant utilisateur. Les options "
+"disponibles dépendent de la configuration de la clé B<user_handler>. S'il "
+"n'y a aucune section B< [user_handler]> dans la configuration, le serveur "
+"fonctionnera sans aucun service d'enregistrement d'alias."
 
 # type: TP
 #. type: TP
@@ -1601,7 +1608,6 @@ msgstr "B<db_extra_table>"
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:241
-#, fuzzy
 msgid ""
 "(for user_handler=forum) The name of the table in which wesnothd will save "
 "its own data about users. You will have to create this table manually, e.g.: "
@@ -1713,6 +1719,9 @@ msgid ""
 "Normal exit status is 0 when the server was properly shutdown. An exit "
 "status of 2 indicates an error with the command line options."
 msgstr ""
+"Le statut normal de sortie est de 0 lorsque le serveur a été correctement "
+"arrêté. Un code de sortie de 2 indique une erreur avec les options de ligne "
+"de commande."
 
 # type: Plain text
 #. type: Plain text

@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-05-15 14:01+0200\n"
-"PO-Revision-Date: 2010-04-24 17:00+0100\n"
-"Last-Translator: Guigou Guillaume <guillaume.guigou@orange.fr>\n"
+"POT-Creation-Date: 2010-05-15 14:21+0200\n"
+"PO-Revision-Date: 2010-05-28 08:49+0100\n"
+"Last-Translator: Guigou <guillaume.guigou@cnfpt.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -212,9 +213,8 @@ msgstr "Cratère"
 
 #. [terrain_type]: id=stones_small
 #: data/core/terrain.cfg:559
-#, fuzzy
 msgid "Stones"
-msgstr "Actions"
+msgstr ""
 
 #. [terrain_type]: id=mushrooms_small
 #: data/core/terrain.cfg:568
@@ -2304,7 +2304,7 @@ msgstr ""
 #: src/gui/auxiliary/window_builder/tree_view.cpp:90
 #, fuzzy
 msgid "No node defined."
-msgstr "Aucune grille définie."
+msgstr "Aucune page définie."
 
 #: src/gui/dialogs/game_load.cpp:258
 msgid "#(Invalid)"
@@ -3031,8 +3031,8 @@ msgid ""
 "In section '[$section|]' where '$primary_key| = $primary_value' the "
 "mandatory key '$key|' isn't set."
 msgstr ""
-"Dans la section « [$section|] » où « $primary_key| = $primary_value », la clé "
-"obligatoire « $key » n'est pas renseignée."
+"Dans la section « [$section|] » où « $primary_key| = $primary_value », la "
+"clé obligatoire « $key » n'est pas renseignée."
 
 #: src/wml_exception.cpp:76
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
@@ -3043,17 +3043,15 @@ msgstr ""
 #~ msgid "Road"
 #~ msgstr "Route"
 
-#, fuzzy
 #~ msgid "Use new lobby interface"
-#~ msgstr "Utiliser la nouvelle interface du vestibule."
+#~ msgstr "Utiliser l'interface du nouveau vestibule"
 
-#, fuzzy
 #~ msgid ""
 #~ "mouseover^Use new lobby interface (only works after a manual reconnect to "
 #~ "the server)"
 #~ msgstr ""
-#~ "Utiliser la nouvelle interface du vestibule (fonctionne uniquement après "
-#~ "une reconnexion manuelle sur le serveur)"
+#~ "Utiliser l'interface du nouveau vestibule (fonctionne uniquement après "
+#~ "une reconnexion manuelle au serveur)"
 
 #~ msgid "Save The Map"
 #~ msgstr "Sauvegarder la carte"
