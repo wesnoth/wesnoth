@@ -1080,10 +1080,10 @@ void display::draw_text_in_hex(const map_location& loc,
 	drawing_buffer_add(layer, loc, tblit(x, y, text_surf));
 }
 
-void display::render_image(int x, int y,const display::tdrawing_layer drawing_layer,
+void display::render_image(int x, int y, const display::tdrawing_layer drawing_layer,
 		const map_location& loc, surface image,
 		bool hreverse, bool greyscale, fixed_t alpha,
-		Uint32 blendto, double blend_ratio, double submerged,bool vreverse)
+		Uint32 blendto, double blend_ratio, double submerged, bool vreverse)
 {
 
 	if (image==NULL)
