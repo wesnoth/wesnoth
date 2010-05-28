@@ -58,6 +58,26 @@ public class WorkspaceUtils
 		return (IStructuredSelection)window.getSelectionService().getSelection();
 	}
 
+	public static IProject getSelectedProject()
+	{
+		return getSelectedProject(WorkspaceUtils.getWorkbenchWindow());
+	}
+
+	public static IFolder getSelectedFolder()
+	{
+		return getSelectedFolder(WorkspaceUtils.getWorkbenchWindow());
+	}
+
+	public static IFile getSelectedFile()
+	{
+		return getSelectedFile(WorkspaceUtils.getWorkbenchWindow());
+	}
+
+	public static IStructuredSelection getSelectedStructuredSelection()
+	{
+		return getSelectedStructuredSelection(WorkspaceUtils.getWorkbenchWindow());
+	}
+
 	/**
 	 * Returns the first WorkbenchWindow available.
 	 * This is not always the same with ActiveWorkbecnWindow
