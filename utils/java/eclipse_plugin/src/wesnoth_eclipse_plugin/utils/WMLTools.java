@@ -43,7 +43,7 @@ public class WMLTools
 		List<String> arguments = new ArrayList<String>();
 
 		arguments.add(wmllintFile.getAbsolutePath());
-		arguments.add("--dryrun");
+		if (dryrun) arguments.add("--dryrun");
 		arguments.add("--verbose");
 		arguments.add("--nospellcheck");
 		arguments.add(filePath);

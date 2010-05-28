@@ -3,10 +3,12 @@
  */
 package wesnoth_eclipse_plugin.utils;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 
 public class FileUtils
@@ -33,5 +35,31 @@ public class FileUtils
 		}
 		in.close();
 		out.close();
+	}
+
+	public static String getFileContents(File file)
+	{
+		String contentsString = "";
+		BufferedReader reader = null;
+		try
+		{
+			String line = "";
+			reader = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
+			while((line = reader.readLine()) != null)
+				contentsString += (line + "\n");
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		finally{
+			try{
+				reader.close();
+			}
+			catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return contentsString;
 	}
 }
