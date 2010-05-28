@@ -27,7 +27,7 @@
 #include <utility>
 #include <map>
 
-typedef std::map<map_location, surface> symbols_map_t;
+typedef std::map<map_location, image::locator> symbols_map_t;
 
 typedef std::list<map_location> arrow_path_t;
 

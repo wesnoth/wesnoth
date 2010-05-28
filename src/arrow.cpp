@@ -61,14 +61,15 @@ const arrow_path_t & arrow::get_previous_path() const
 
 void arrow::draw_hex(const map_location & loc)
 {
+	surface image_to_draw = image::get_image(symbols_map_[loc], image::SCALED_TO_ZOOM);
 	screen_->render_image(loc.x, loc.y, layer_,
-				loc, symbols_map_[loc]);
+				loc, image_to_draw);
 }
 
 void arrow::update_symbols()
 {
 	//TODO: use the proper images instead of this placeholder
-	surface test_picture = image::get_image("footsteps/teleport-in.png", image::SCALED_TO_HEX);
+	image::locator test_picture = image::locator("footsteps/teleport-in.png");
 
 	foreach(map_location loc, path_)
 	{
