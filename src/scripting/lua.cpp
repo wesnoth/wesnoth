@@ -292,12 +292,18 @@ bool luaW_toconfig(lua_State *L, int index, config &cfg, int tstring_meta)
 	{
 		if (lua_isnumber(L, -2)) continue;
 		if (!lua_isstring(L, -2)) return_misformed();
-		t_string v;
+		config::attribute_value &v = cfg[lua_tostring(L, -2)];
 		switch (lua_type(L, -1)) {
 			case LUA_TBOOLEAN:
-				v = lua_toboolean(L, -1) ? "yes" : "no";
+				v = bool(lua_toboolean(L, -1));
 				break;
 			case LUA_TNUMBER:
+			{
+				double n = lua_tonumber(L, -1);
+				if (n != int(n)) v = n;
+				else v = int(n);
+				break;
+			}
 			case LUA_TSTRING:
 				v = lua_tostring(L, -1);
 				break;
@@ -313,7 +319,6 @@ bool luaW_toconfig(lua_State *L, int index, config &cfg, int tstring_meta)
 			default:
 				return_misformed();
 		}
-		cfg[lua_tostring(L, -2)] = v;
 	}
 
 	lua_settop(L, initial_top);
@@ -990,9 +995,15 @@ static int intf_set_variable(lua_State *L)
 	variable_info v(m);
 	switch (lua_type(L, 2)) {
 		case LUA_TBOOLEAN:
-			v.as_scalar() = lua_toboolean(L, 2) ? "yes" : "no";
+			v.as_scalar() = bool(lua_toboolean(L, 2));
 			break;
 		case LUA_TNUMBER:
+		{
+			double n = lua_tonumber(L, -1);
+			if (n != int(n)) v.as_scalar() = n;
+			else v.as_scalar() = int(n);
+			break;
+		}
 		case LUA_TSTRING:
 			v.as_scalar() = lua_tostring(L, 2);
 			break;
