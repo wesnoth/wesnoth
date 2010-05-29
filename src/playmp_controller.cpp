@@ -226,17 +226,13 @@ void playmp_controller::play_human_turn(){
 					// Clean undo stack if turn has to be restarted (losing control)
 					if (!undo_stack_.empty())
 					{
-						const std::string msg =_("Undoing moves not yet transmitted to the server.");
-						const int size = 20;
-						const int lifetime = 150;
-						SDL_Color colour = {255,255,255,255};
+						font::floating_label flabel(_("Undoing moves not yet transmitted to the server."));
 
-						SDL_Rect rect = gui_->map_area();
-						font::floating_label flabel(msg);
-						flabel.set_font_size(size);
+						SDL_Color colour = {255,255,255,255};
 						flabel.set_colour(colour);
+						SDL_Rect rect = gui_->map_area();
 						flabel.set_position(rect.w/2, rect.h/2);
-						flabel.set_lifetime(lifetime);
+						flabel.set_lifetime(150);
 						flabel.set_clip_rect(rect);
 
 						font::add_floating_label(flabel);
