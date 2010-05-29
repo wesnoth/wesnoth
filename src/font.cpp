@@ -911,60 +911,27 @@ std::string make_text_ellipsis(const std::string &text, int font_size,
 
 }
 
-//floating labels
 namespace {
 
-class floating_label
-{
-public:
-	floating_label(const std::string& text, int font_size, const SDL_Color& colour, const SDL_Color& bgcolour,
-			double xpos, double ypos, double xmove, double ymove, int lifetime, const SDL_Rect& clip_rect,
-			font::ALIGN align, int border_size, bool scroll_with_map, bool use_markup)
-		: surf_(NULL), buf_(NULL), text_(text), font_size_(font_size), colour_(colour),
-		bgcolour_(bgcolour), bgalpha_(bgcolour.unused), xpos_(xpos), ypos_(ypos),
-		xmove_(xmove), ymove_(ymove), lifetime_(lifetime), clip_rect_(clip_rect),
-		alpha_change_(-255 / lifetime), visible_(true), align_(align),
-		border_(border_size), scroll_(scroll_with_map), use_markup_(use_markup)
-	{}
-
-	void move(double xmove, double ymove);
-
-	void draw(surface screen);
-	void undraw(surface screen);
-
-	surface create_surface();
-
-	bool expired() const { return lifetime_ == 0; }
-
-
-	void show(const bool value) { visible_ = value; }
-
-	bool scroll() const { return scroll_; }
-
-private:
-
-	int xpos(size_t width) const;
-
-	surface surf_, buf_;
-	std::string text_;
-	int font_size_;
-	SDL_Color colour_, bgcolour_;
-	int bgalpha_;
-	double xpos_, ypos_, xmove_, ymove_;
-	int lifetime_;
-	SDL_Rect clip_rect_;
-	int alpha_change_;
-	bool visible_;
-	font::ALIGN align_;
-	int border_;
-	bool scroll_, use_markup_;
-};
-
-typedef std::map<int,floating_label> label_map;
+typedef std::map<int, font::floating_label> label_map;
 label_map labels;
 int label_id = 1;
 
 std::stack<std::set<int> > label_contexts;
+}
+
+
+namespace font {
+
+floating_label::floating_label(const std::string& text)
+		: surf_(NULL), buf_(NULL), text_(text),
+		font_size_(SIZE_NORMAL),
+		colour_(NORMAL_COLOUR),	bgcolour_(), bgalpha_(0),
+		xpos_(0), ypos_(0),
+		xmove_(0), ymove_(0), lifetime_(-1), clip_rect_(screen_area()),
+		alpha_change_(0), visible_(true), align_(CENTER_ALIGN),
+		border_(0), scroll_(ANCHOR_LABEL_SCREEN), use_markup_(true)
+{}
 
 void floating_label::move(double xmove, double ymove)
 {
@@ -1108,31 +1075,14 @@ void floating_label::undraw(surface screen)
 	}
 }
 
-}
-
-namespace font {
-int add_floating_label(const std::string& text, int font_size, const SDL_Color& colour,
-		double xpos, double ypos, double xmove, double ymove, int lifetime, const SDL_Rect& clip_rect, ALIGN align,
-		const SDL_Color *bg_colour, int border_size, LABEL_SCROLL_MODE scroll_mode,
-		bool use_markup)
+int add_floating_label(const floating_label& flabel)
 {
 	if(label_contexts.empty()) {
 		return 0;
 	}
 
-	if(lifetime <= 0) {
-		lifetime = -1;
-	}
-
-	SDL_Color bg = {0,0,0,0};
-	if(bg_colour != NULL) {
-		bg = *bg_colour;
-	}
-
 	++label_id;
-	labels.insert(std::pair<int, floating_label>(label_id, floating_label(
-		text, font_size, colour, bg, xpos, ypos, xmove, ymove, lifetime, clip_rect,
-		align, border_size, scroll_mode == ANCHOR_LABEL_MAP, use_markup)));
+	labels.insert(std::pair<int, floating_label>(label_id, flabel));
 	label_contexts.top().insert(label_id);
 	return label_id;
 }

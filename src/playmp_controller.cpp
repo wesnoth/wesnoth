@@ -232,8 +232,14 @@ void playmp_controller::play_human_turn(){
 						SDL_Color colour = {255,255,255,255};
 
 						SDL_Rect rect = gui_->map_area();
-						font::add_floating_label(msg,size, colour,
-								rect.w/2,rect.h/2,0.0,0.0,lifetime,rect,font::CENTER_ALIGN);
+						font::floating_label flabel(msg);
+						flabel.set_font_size(size);
+						flabel.set_colour(colour);
+						flabel.set_position(rect.w/2, rect.h/2);
+						flabel.set_lifetime(lifetime);
+						flabel.set_clip_rect(rect);
+
+						font::add_floating_label(flabel);
 					}
 
 					while(!undo_stack_.empty())

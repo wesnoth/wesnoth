@@ -77,8 +77,16 @@ static void show_tooltip(const tooltip& tip)
 #endif
 
 	const std::string wrapped_message = font::word_wrap_text(tip.message, font_size, text_width);
-	tooltip_handle = font::add_floating_label(wrapped_message,font_size,tip.color,
-	                                          0,0,0,0,-1,area,font::LEFT_ALIGN,&bgcolour,border);
+
+	font::floating_label flabel(wrapped_message);
+	flabel.set_font_size(font_size);
+	flabel.set_colour(tip.color);
+	flabel.set_clip_rect(area);
+	flabel.set_alignement(font::LEFT_ALIGN);
+	flabel.set_bg_colour(bgcolour);
+	flabel.set_border_size(border);
+
+	tooltip_handle = font::add_floating_label(flabel);
 
 	SDL_Rect rect = font::get_floating_label_rect(tooltip_handle);
 

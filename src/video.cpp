@@ -479,7 +479,14 @@ int CVideo::set_help_string(const std::string& str)
 	const int border = 5;
 #endif
 
-	help_string_ = font::add_floating_label(str,size,font::NORMAL_COLOUR,getx()/2,gety(),0.0,0.0,-1,screen_area(),font::CENTER_ALIGN,&colour,border);
+	font::floating_label flabel(str);
+	flabel.set_font_size(size);
+	flabel.set_position(getx()/2, gety());
+	flabel.set_bg_colour(colour);
+	flabel.set_border_size(border);
+
+	help_string_ = font::add_floating_label(flabel);
+
 	const SDL_Rect& rect = font::get_floating_label_rect(help_string_);
 	font::move_floating_label(help_string_,0.0,-double(rect.h));
 	return help_string_;

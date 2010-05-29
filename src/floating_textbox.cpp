@@ -65,8 +65,13 @@ namespace gui{
 		if (label_ != 0)
 			font::remove_floating_label(label_);
 
-		label_ = font::add_floating_label(label_string_,font::SIZE_NORMAL,
-				font::YELLOW_COLOUR,area.x+border_size,ypos,0,0,-1, area,font::LEFT_ALIGN);
+		font::floating_label flabel(label_string_);
+		flabel.set_colour(font::YELLOW_COLOUR);
+		flabel.set_position(area.x + border_size, ypos);
+		flabel.set_alignement(font::LEFT_ALIGN);
+		flabel.set_clip_rect(area);
+
+		label_ = font::add_floating_label(flabel);
 
 		if (label_ == 0)
 			return;

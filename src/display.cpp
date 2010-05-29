@@ -914,9 +914,13 @@ void display::update_display()
 			drawn_hexes_ = 0;
 			invalidated_hexes_ = 0;
 
-			fps_handle_ = font::add_floating_label(stream.str(),12,
-				benchmark ? font::BAD_COLOUR : font::NORMAL_COLOUR,
-				10,100,0,0,-1,screen_area(),font::LEFT_ALIGN);
+			font::floating_label flabel(stream.str());
+			flabel.set_font_size(12);
+			flabel.set_colour(benchmark ? font::BAD_COLOUR : font::NORMAL_COLOUR);
+			flabel.set_position(10, 100);
+			flabel.set_alignement(font::LEFT_ALIGN);
+
+			fps_handle_ = font::add_floating_label(flabel);
 		}
 	} else if(fps_handle_ != 0) {
 		font::remove_floating_label(fps_handle_);
@@ -1164,7 +1168,13 @@ void display::set_diagnostic(const std::string& msg)
 	}
 
 	if(msg != "") {
-		diagnostic_label_ = font::add_floating_label(msg,font::SIZE_PLUS,font::YELLOW_COLOUR,300.0,50.0,0.0,0.0,-1,map_outside_area());
+		font::floating_label flabel(msg);
+		flabel.set_font_size(font::SIZE_PLUS);
+		flabel.set_colour(font::YELLOW_COLOUR);
+		flabel.set_position(300, 50);
+		flabel.set_clip_rect(map_outside_area());
+
+		diagnostic_label_ = font::add_floating_label(flabel);
 	}
 }
 
@@ -1292,14 +1302,14 @@ void display::enable_menu(const std::string& item, bool enable)
 
 void display::announce(const std::string& message, const SDL_Color& colour)
 {
-	font::add_floating_label(message,
-				 font::SIZE_XLARGE,
-				 colour,
-				 map_outside_area().w/2,
-				 map_outside_area().h/3,
-				 0.0,0.0,100,
-				 map_outside_area(),
-				 font::CENTER_ALIGN);
+	font::floating_label flabel(message);
+	flabel.set_font_size(font::SIZE_XLARGE);
+	flabel.set_colour(colour);
+	flabel.set_position(map_outside_area().w/2, map_outside_area().h/3);
+	flabel.set_lifetime(100);
+	flabel.set_clip_rect(map_outside_area());
+
+	font::add_floating_label(flabel);
 }
 
 void display::draw_border(const map_location& loc, const int xpos, const int ypos)

@@ -843,8 +843,17 @@ void game_display::float_label(const map_location& loc, const std::string& text,
 
 	const SDL_Color color = {red,green,blue,255};
 	int lifetime = static_cast<int>(60/turbo_speed());
-	font::add_floating_label(text,font::SIZE_XLARGE,color,get_location_x(loc)+zoom_/2,get_location_y(loc),
-	                         0,-2*turbo_speed(),lifetime,screen_area(),font::CENTER_ALIGN,NULL,0,font::ANCHOR_LABEL_MAP);
+/*	font::floating_label flabel(text,font::SIZE_XLARGE,color,get_location_x(loc)+zoom_/2,get_location_y(loc),
+	                         0,-2*turbo_speed(),lifetime,screen_area(),font::CENTER_ALIGN,NULL,0,font::ANCHOR_LABEL_MAP);*/
+	font::floating_label flabel(text);
+	flabel.set_font_size(font::SIZE_XLARGE);
+	flabel.set_colour(color);
+	flabel.set_position(get_location_x(loc)+zoom_/2, get_location_y(loc));
+	flabel.set_move(0, -2 * turbo_speed());
+	flabel.set_lifetime(lifetime);
+	flabel.set_scroll_mode(font::ANCHOR_LABEL_MAP);
+
+	font::add_floating_label(flabel);
 }
 
 struct is_energy_colour {
@@ -1374,16 +1383,31 @@ void game_display::add_chat_message(const time_t& time, const std::string& speak
 	message_complete << preferences::get_chat_timestamp(time) << str.str();
 
 	const SDL_Rect rect = map_outside_area();
-	int speaker_handle = font::add_floating_label(message_complete.str(),
-		font::SIZE_SMALL, speaker_colour, rect.x + chat_message_x,
-		rect.y + ypos, 0, 0, -1, rect, font::LEFT_ALIGN, &chat_message_bg,
-		chat_message_border, font::ANCHOR_LABEL_SCREEN, false);
 
-	int message_handle = font::add_floating_label(message_str.str(),
-		font::SIZE_SMALL, message_colour,
-		rect.x + chat_message_x + font::get_floating_label_rect(speaker_handle).w,
-		rect.y + ypos, 0, 0, -1, rect, font::LEFT_ALIGN, &chat_message_bg,
-		chat_message_border, font::ANCHOR_LABEL_SCREEN, false);
+	font::floating_label spk_flabel(message_complete.str());
+	spk_flabel.set_font_size(font::SIZE_SMALL);
+	spk_flabel.set_colour(speaker_colour);
+	spk_flabel.set_position(rect.x + chat_message_x, rect.y + ypos);
+	spk_flabel.set_clip_rect(rect);
+	spk_flabel.set_alignement(font::LEFT_ALIGN);
+	spk_flabel.set_bg_colour(chat_message_bg);
+	spk_flabel.set_border_size(chat_message_border);
+	spk_flabel.use_markup(false);
+
+	int speaker_handle = font::add_floating_label(spk_flabel);
+
+	font::floating_label msg_flabel(message_str.str());
+	msg_flabel.set_font_size(font::SIZE_SMALL);
+	msg_flabel.set_colour(message_colour);
+	msg_flabel.set_position(rect.x + chat_message_x + font::get_floating_label_rect(speaker_handle).w,
+	rect.y + ypos);
+	msg_flabel.set_clip_rect(rect);
+	msg_flabel.set_alignement(font::LEFT_ALIGN);
+	msg_flabel.set_bg_colour(chat_message_bg);
+	msg_flabel.set_border_size(chat_message_border);
+	msg_flabel.use_markup(false);
+
+	int message_handle = font::add_floating_label(msg_flabel);
 
 	// Send system notification if appropriate.
 	send_notification(speaker, message);

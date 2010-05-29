@@ -1988,8 +1988,15 @@ WML_HANDLER_FUNCTION(print, /*event_info*/, cfg)
 	const std::string& msg = text;
 	if(msg != "") {
 		const SDL_Rect rect = resources::screen->map_outside_area();
-		floating_label = font::add_floating_label(msg,size,colour,
-				rect.w/2,rect.h/2,0.0,0.0,lifetime,rect,font::CENTER_ALIGN);
+
+		font::floating_label flabel(msg);
+		flabel.set_font_size(size);
+		flabel.set_colour(colour);
+		flabel.set_position(rect.w/2,rect.h/2);
+		flabel.set_lifetime(lifetime);
+		flabel.set_clip_rect(rect);
+
+		floating_label = font::add_floating_label(flabel);
 	}
 }
 
