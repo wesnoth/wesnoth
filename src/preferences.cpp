@@ -61,8 +61,7 @@ base_manager::~base_manager()
 	if (no_preferences_save) return;
 
 	// Set the 'hidden' preferences.
-	prefs["scroll_threshold"] =
-			lexical_cast<std::string>(mouse_scroll_threshold());
+	prefs["scroll_threshold"] = mouse_scroll_threshold();
 
 	write_preferences();
 }
@@ -231,12 +230,12 @@ void _set_turbo(bool ison)
 
 double turbo_speed()
 {
-	return lexical_cast_default<double>(get("turbo_speed"), 2.0);
+	return prefs["turbo_speed"].to_double(2.0);
 }
 
 void save_turbo_speed(const double speed)
 {
-	preferences::set("turbo_speed", lexical_cast<std::string>(speed));
+	prefs["turbo_speed"] = speed;
 }
 
 bool idle_anim()
@@ -251,12 +250,12 @@ void _set_idle_anim(const bool ison)
 
 int idle_anim_rate()
 {
-	return lexical_cast_default<int>(get("idle_anim_rate"), 0);
+	return prefs["idle_anim_rate"];
 }
 
 void _set_idle_anim_rate(const int rate)
 {
-	preferences::set("idle_anim_rate", lexical_cast<std::string>(rate));
+	prefs["idle_anim_rate"] = rate;
 }
 
 std::string language()
@@ -299,7 +298,7 @@ size_t sound_buffer_size()
 		const size_t buf_size = 1024;
 	#endif
 
-	return lexical_cast_default<size_t>(get("sound_buffer_size"), buf_size);
+	return prefs["sound_buffer_size"].to_int(buf_size);
 }
 
 void save_sound_buffer_size(const size_t size)
@@ -321,7 +320,7 @@ void save_sound_buffer_size(const size_t size)
 
 int music_volume()
 {
-	return lexical_cast_default<int>(get("music_volume"), 100);
+	return prefs["music_volume"].to_int(100);
 }
 
 void set_music_volume(int vol)
@@ -330,13 +329,13 @@ void set_music_volume(int vol)
 		return;
 	}
 
-	preferences::set("music_volume", lexical_cast_default<std::string>(vol, "100"));
+	prefs["music_volume"] = vol;
 	sound::set_music_volume(music_volume());
 }
 
 int sound_volume()
 {
-	return lexical_cast_default<int>(get("sound_volume"), 100);
+	return prefs["sound_volume"].to_int(100);
 }
 
 void set_sound_volume(int vol)
@@ -345,13 +344,13 @@ void set_sound_volume(int vol)
 		return;
 	}
 
-	preferences::set("sound_volume", lexical_cast_default<std::string>(vol, "100"));
+	prefs["sound_volume"] = vol;
 	sound::set_sound_volume(sound_volume());
 }
 
 int bell_volume()
 {
-	return lexical_cast_default<int>(get("bell_volume"), 100);
+	return prefs["bell_volume"].to_int(100);
 }
 
 void set_bell_volume(int vol)
@@ -360,13 +359,13 @@ void set_bell_volume(int vol)
 		return;
 	}
 
-	preferences::set("bell_volume", lexical_cast_default<std::string>(vol, "100"));
+	prefs["bell_volume"] = vol;
 	sound::set_bell_volume(bell_volume());
 }
 
 int UI_volume()
 {
-	return lexical_cast_default<int>(get("UI_volume"), 100);
+	return prefs["UI_volume"].to_int(100);
 }
 
 void set_UI_volume(int vol)
@@ -375,7 +374,7 @@ void set_UI_volume(int vol)
 		return;
 	}
 
-	preferences::set("UI_volume", lexical_cast_default<std::string>(vol, "100"));
+	prefs["UI_volume"] = vol;
 	sound::set_UI_volume(UI_volume());
 }
 
@@ -495,7 +494,7 @@ int scroll_speed()
 
 void set_scroll_speed(const int new_speed)
 {
-	prefs["scroll"] = lexical_cast<std::string>(new_speed);
+	prefs["scroll"] = new_speed;
 	scroll = new_speed / 100.0;
 }
 
@@ -516,7 +515,7 @@ void enable_mouse_scroll(bool value)
 
 int mouse_scroll_threshold()
 {
-	return lexical_cast_default<int>(prefs["scroll_threshold"], 10);
+	return prefs["scroll_threshold"].to_int(10);
 }
 
 bool animate_map()
@@ -581,7 +580,7 @@ const config &get_alias()
 
 unsigned int sample_rate()
 {
-	return lexical_cast_default<unsigned int>(preferences::get("sample_rate"), 44100);
+	return prefs["sample_rate"].to_int(44100);
 }
 
 void save_sample_rate(const unsigned int rate)
@@ -589,7 +588,7 @@ void save_sample_rate(const unsigned int rate)
 	if (sample_rate() == rate)
 		return;
 
-	preferences::set("sample_rate", lexical_cast<std::string>(rate));
+	prefs["sample_rate"] = int(rate);
 
 	// If audio is open, we have to re set sample rate
 	sound::reset_sound();
