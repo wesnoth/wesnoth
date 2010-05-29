@@ -19,7 +19,7 @@ Version 1.9.0-svn:
  * Language and i18n:
    * Updated translations: British English, Chinese (Simplified), Czech,
      Finnish, French, Galician, German, Hungarian, Italian, Japanese, Latin,
-     Lithuanian, Polish, Russian, Spanish, Slovak
+     Latvian, Lithuanian, Polish, Russian, Spanish, Slovak
    * Fixed bug #15653: Made untranslateable strings translateable.
    * Fixed bug #15843: Made untranslateable strings translateable.
    * Fixed bug #15937: Made untranslateable strings translateable.
@@ -55,7 +55,8 @@ Version 1.9.0-svn:
    * added new "small mushrooms" embellishment
    * fix for dwarven castle to cave wall alignment issue by Alarantalara
    * made encampment and orc forts use regular dirt rather than a custom terrain
-   * created new editor group: "embellishments", and added desert plants to that group
+   * created new editor group: "embellishments", and added desert plants to
+     that group
    * improved snow terrain
    * added "leaf litter" terrain
    * added new "mine rail tracks" terrain
@@ -64,7 +65,8 @@ Version 1.9.0-svn:
    * adjusted the color of various terrains for a more coordinated appearance
    * added new dry hills terrain
  * Terrain WML
-   * rename TRANSITION_RESTRICTED and TRANSITION_RESTRICTED2 to OVERLAY_ROTATION_RESTRICTED and OVERLAY_ROTATION_RESTRICTED2
+   * rename TRANSITION_RESTRICTED and TRANSITION_RESTRICTED2 to
+     OVERLAY_ROTATION_RESTRICTED and OVERLAY_ROTATION_RESTRICTED2
  * User interface:
    * Added the era AI in the list of AI shown when opening a game
    * Added dialog for installation of add-on dependencies
@@ -114,7 +116,8 @@ Version 1.9.0-svn:
    * Trying to include a missing macro/file is now a fatal error
    * Added #ifhave/#ifnhave for testing existence of files and directories
    * Added [volume] tag, which allows game volume to be changed during scenarios
-   * Added ON_DIFFICULTY, a macro that makes using different values based on difficulty simpler
+   * Added ON_DIFFICULTY, a macro that makes using different values based on
+     difficulty simpler
    * Prototype support for [set_global_variable]
    * Prototype support for [get_global_variable]
    * Prototype support for [clear_global_variable]
@@ -131,7 +134,8 @@ Version 1.9.0-svn:
      systems
    * Added a way to compile wesnoth on windows by using CMake + MSVC9.
    * Added more command line arguments for starting a campaign+scenario
-   * Added command line "preprocess" to preprocess a specified file/folder and output the result
+   * Added command line "preprocess" to preprocess a specified file/folder and
+     output the result
    * Added command line "datadir" to explicitly override the data directory
    * Fixed the ping timeout not waiting for the default ping interval when
      ping timeout is not set to 0

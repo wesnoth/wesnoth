@@ -9,9 +9,10 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.7.9\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-05-15 14:21+0200\n"
-"PO-Revision-Date: 2010-03-15 23:42+0300\n"
+"PO-Revision-Date: 2010-05-29 20:28+0300\n"
 "Last-Translator: Reinis Danne <rei4dan@gmail.com>\n"
 "Language-Team: none\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -99,15 +100,13 @@ msgstr "Priekšnama skaņas"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:107
-#, fuzzy
 msgid "Disable notifications"
-msgstr "Atslēgt automātisko saglabāšanu."
+msgstr "Atslēgt paziņojumus"
 
 #. [ai]: id=testing_ai_default
 #: data/ai/ais/testing_ai_default.cfg:5
-#, fuzzy
 msgid "Multiplayer_AI^RCA AI"
-msgstr "Daudzspēlētāju"
+msgstr ""
 
 #. [time]: id=underground
 #. [illuminated_time]: id=underground_illum
@@ -5207,9 +5206,8 @@ msgstr "gados"
 
 #. [trait]: id=aged
 #: data/core/macros/traits.cfg:222
-#, fuzzy
 msgid "female^aged"
-msgstr "bāla"
+msgstr "gados"
 
 #. [color_range]: id=red
 #. [color_range]: id=1
@@ -8108,7 +8106,7 @@ msgstr ""
 #: src/generate_report.cpp:359
 #, fuzzy
 msgid "Swarm: "
-msgstr "Purvs"
+msgstr "spietošana"
 
 #: src/generate_report.cpp:364
 #, fuzzy
@@ -8421,7 +8419,6 @@ msgid "A map without a header is not supported"
 msgstr "Karte bez galvenes netiek atbalstīta"
 
 #: src/mapgen.cpp:740
-#, fuzzy
 msgid "Random maps with an odd width aren't supported."
 msgstr "Nejaušas kartes ar nepāra platumu netiek atbalstītas."
 
@@ -8696,6 +8693,8 @@ msgid ""
 "Unknown command '$command', try $help_command for a list of available "
 "commands."
 msgstr ""
+"Nezināma komanda '$command', izmēginiet $help_command, lai apskatītu "
+"pieejamās komandas."
 
 #: src/menu_events.cpp:1950
 msgid ""
@@ -8710,9 +8709,8 @@ msgid "do not translate the 'all'^[all|<command>]"
 msgstr ""
 
 #: src/menu_events.cpp:1996
-#, fuzzy
 msgid "Error:"
-msgstr "Kļūda: "
+msgstr "Kļūda:"
 
 #: src/menu_events.cpp:2002
 msgid "Missing argument $arg_id"
@@ -8725,9 +8723,8 @@ msgid ""
 msgstr ""
 
 #: src/menu_events.cpp:2050 src/menu_events.cpp:2051 src/menu_events.cpp:2074
-#, fuzzy
 msgid "help"
-msgstr "Palīdzība"
+msgstr "palīdzība"
 
 #: src/menu_events.cpp:2051
 msgid "Type $help_command <command> for more info."
@@ -8738,9 +8735,8 @@ msgid " No help available."
 msgstr " Palīdzība nav pieejama."
 
 #: src/menu_events.cpp:2067
-#, fuzzy
 msgid "Usage:"
-msgstr "Ziņa:"
+msgstr "Lietošana:"
 
 #: src/menu_events.cpp:2072
 msgid "aliases:"
@@ -8748,12 +8744,11 @@ msgstr ""
 
 #: src/menu_events.cpp:2198
 msgid "(A) - admin command"
-msgstr ""
+msgstr "(A) - administratora komanda"
 
 #: src/menu_events.cpp:2205 src/menu_events.cpp:2403
-#, fuzzy
 msgid "(admin only)"
-msgstr "Tikai komanda"
+msgstr "(tikai administratora)"
 
 #: src/menu_events.cpp:2225
 msgid ""
@@ -8806,9 +8801,8 @@ msgid "Send a message to the server admins currently online"
 msgstr "Sūta ziņu tiešsaistē esošajiem servera administratoriem"
 
 #: src/menu_events.cpp:2253
-#, fuzzy
 msgid "<message>"
-msgstr "Ziņa:"
+msgstr "<ziņa>"
 
 #: src/menu_events.cpp:2253
 msgid "Send an emotion or personal action in chat."
@@ -8924,16 +8918,15 @@ msgstr "Istabas pieprasījums."
 #: src/menu_events.cpp:2395
 msgid "(D) - debug only, (N) - network only, (A) - admin only"
 msgstr ""
+"(D) - tikai atkļūdošanai, (N) - tikai tīklā, (A) - tikai administratoram"
 
 #: src/menu_events.cpp:2401
-#, fuzzy
 msgid "(debug command)"
-msgstr "Atkļūdošanas darbības"
+msgstr "(atkļūdošanas darbība)"
 
 #: src/menu_events.cpp:2402
-#, fuzzy
 msgid "(network only)"
-msgstr "Tīkla spēlētājs"
+msgstr "(tikai tīklā)"
 
 #: src/menu_events.cpp:2427
 msgid "Refresh gui."
@@ -8964,9 +8957,8 @@ msgid "Visualize the screen refresh procedure."
 msgstr "Vizualizēt ekrāna atjaunināšanas procedūru."
 
 #: src/menu_events.cpp:2437
-#, fuzzy
 msgid "Show fps."
-msgstr "Parādīt atkārtojumu"
+msgstr "Rādīt kadru frekv."
 
 #: src/menu_events.cpp:2439
 msgid "Save game."
@@ -9103,11 +9095,11 @@ msgstr "Pārslēdza domēnu '$domain' uz līmeni '$level'."
 
 #: src/menu_events.cpp:2633
 msgid "whisper to $receiver"
-msgstr ""
+msgstr "pačukstēt $receiver"
 
 #: src/menu_events.cpp:2640
 msgid "whisper: $sender"
-msgstr ""
+msgstr "čukst: $sender"
 
 #: src/menu_events.cpp:2736 src/menu_events.cpp:2755
 #: src/multiplayer_connect.cpp:699
@@ -9115,74 +9107,65 @@ msgid "(empty)"
 msgstr "(tukšs)"
 
 #: src/menu_events.cpp:2736 src/menu_events.cpp:2742 src/menu_events.cpp:2792
-#, fuzzy
 msgid "ignores list"
-msgstr "Ignorēto sarakstā"
+msgstr "ignorēto saraksts"
 
 #: src/menu_events.cpp:2742
-#, fuzzy
 msgid "Added to ignore list: $nick"
-msgstr "Pievienoja ignorēto sarakstam: "
+msgstr "Pievienoja ignorēto sarakstam: $nick"
 
 #: src/menu_events.cpp:2745 src/menu_events.cpp:2764
-#, fuzzy
 msgid "Invalid username: $nick"
-msgstr "Nederīgs lietotājvārds: "
+msgstr "Nederīgs lietotājvārds: $nick"
 
 #: src/menu_events.cpp:2755 src/menu_events.cpp:2762 src/menu_events.cpp:2788
-#, fuzzy
 msgid "friends list"
-msgstr "Draugu sarakstā"
+msgstr "draugu saraksts"
 
 #: src/menu_events.cpp:2762
-#, fuzzy
 msgid "Added to friends list: $nick"
-msgstr "Pievienoja draugu sarakstam: "
+msgstr "Pievienoja draugu sarakstam: $nick"
 
 #: src/menu_events.cpp:2778
-#, fuzzy
 msgid "Removed from list: $nick"
-msgstr "Izņēma no saraksta: "
+msgstr "Izņēma no saraksta: $nick"
 
 #: src/menu_events.cpp:2778 src/menu_events.cpp:2796
-#, fuzzy
 msgid "friends and ignores list"
-msgstr "Ignorēto sarakstā"
+msgstr "draugu un ignorēto saraksts"
 
 #: src/menu_events.cpp:2796
 msgid "There are no players on your friends or ignore list."
 msgstr "Tavā draugu vai ignorēto sarakstā nav neviena spēlētāja."
 
 #: src/menu_events.cpp:2801
-#, fuzzy
 msgid "version"
-msgstr "Versija"
+msgstr "versija"
 
 #: src/menu_events.cpp:2817
 msgid "registering with password *** and no email address"
-msgstr ""
+msgstr "reģistrē ar paroli *** un bez e-pasta adreses"
 
 #: src/menu_events.cpp:2821
 msgid "registering with password *** and email address $email"
-msgstr ""
+msgstr "reģistrē ar paroli *** un e-pasta adresi $email"
 
 #: src/menu_events.cpp:2824 src/menu_events.cpp:2835 src/menu_events.cpp:2853
 #: src/menu_events.cpp:2867
 msgid "nick registration"
-msgstr ""
+msgstr "lietotājvārda reģistrēšana"
 
 #: src/menu_events.cpp:2835
 msgid "dropping your username"
-msgstr ""
+msgstr "atmet jūsu lietotāvārdu"
 
 #: src/menu_events.cpp:2853
 msgid "setting $var to $value"
-msgstr ""
+msgstr "iestata $var uz $value"
 
 #: src/menu_events.cpp:2867
-#, fuzzy
 msgid "requesting information for user $nick"
-msgstr "Pieprasīt informāciju par lietotājvārdu."
+msgstr "pieprasa informāciju par lietotāju $nick"
 
 #: src/menu_events.cpp:2979
 msgid "Couldn't find label or unit containing the string '$search'."
@@ -9222,23 +9205,23 @@ msgstr "Atkļūdošanas režīms atslēgts!"
 
 #: src/menu_events.cpp:3222
 msgid "Variable not found"
-msgstr ""
+msgstr "Mainīgie netika atrasti"
 
 #: src/menu_events.cpp:3260
 msgid ""
 "Invalid alignment: '$alignment', needs to be one of lawful, neutral or "
 "chaotic."
 msgstr ""
+"Nederīga piederība: '$alignment', jābūt vienam no - likumpaklausīgs, "
+"neitrāls vai haotisks."
 
 #: src/menu_events.cpp:3317
-#, fuzzy
 msgid "Invalid unit type"
-msgstr "Nederīgs iezīmes nosaukums"
+msgstr "Nederīgs vienības tips"
 
 #: src/menu_events.cpp:3330
-#, fuzzy
 msgid "Invalid location"
-msgstr "Nederīga krāsa"
+msgstr "Nederīga vieta"
 
 #: src/menu_events.cpp:3366
 msgid "ai"
@@ -9281,7 +9264,7 @@ msgstr "Servera puses pārvirzīšanas cilpa"
 
 #: src/multiplayer.cpp:256
 msgid "Bad data received from server"
-msgstr ""
+msgstr "No servera saņemti slikti dati"
 
 #: src/multiplayer.cpp:297
 msgid "You must login first."
@@ -9598,9 +9581,8 @@ msgid "Invalid era selected"
 msgstr "Izvēlēta nederīga ēra"
 
 #: src/multiplayer_create.cpp:333
-#, fuzzy
 msgid "The map is invalid."
-msgstr "Spēle ir beigusies."
+msgstr "Karte ir kļūdaina."
 
 #: src/multiplayer_create.cpp:335
 msgid "You must enter a name."
@@ -9884,7 +9866,6 @@ msgstr[2] ""
 "minimālajam sākuma zeltam."
 
 #: src/playsingle_controller.cpp:255
-#, fuzzy
 msgid ""
 "You will start the next scenario with the defined minimum starting gold."
 msgid_plural ""
@@ -10436,15 +10417,24 @@ msgstr "Atļaut kopsavilkumu augšupielādi"
 #~ msgid "tooltip^% parry"
 #~ msgstr "% atvairīšana"
 
-#~ msgid "Unknown unit type '$type|'"
-#~ msgstr "Nezināms vienības tips '$type|'"
+#~ msgid "Grant higher privileges to Lua scripts."
+#~ msgstr "Dod lielākas privilēģijas Lua skriptiem."
+
+#~ msgid "Unsafe Lua scripts."
+#~ msgstr "Nedroši Lua skripti."
 
 #~ msgid ""
-#~ "Leader position not empty - duplicate side definition for side '$side|' "
-#~ "found."
+#~ "You are about to open a security breach in Wesnoth. Are you sure you want "
+#~ "to continue? If you have downloaded add-ons, do not click 'ok'! They "
+#~ "would instantly take over your computer. You have been warned."
 #~ msgstr ""
-#~ "Līdera pozīcija nav tukša - atrasta divkārša puses definīcija pusei "
-#~ "'$side|'."
+#~ "Jūs grasāties atvērt drošības ievainojamību Vesotā. Vai iesiet "
+#~ "pārliecināti, ka vēlieties turpināt? Ja esiet lejupielādējuši "
+#~ "papildinājumus, nespiediet 'labi'! Tie momentā pārņems jūsu datoru. Jūs "
+#~ "esiet brīdināti."
+
+#~ msgid "Unsafe mode enabled!"
+#~ msgstr "Aktivizēts nedrošais režīms!"
 
 #~ msgid "--no games open--"
 #~ msgstr "--neviena spēle nav atvērta--"
@@ -10482,8 +10472,8 @@ msgstr "Atļaut kopsavilkumu augšupielādi"
 #~ msgid "Friends in Game"
 #~ msgstr "Draugi spēlē"
 
-#~ msgid "Search:"
-#~ msgstr "Meklēt:"
+#~ msgid "Filter:"
+#~ msgstr "Filtrēt:"
 
 #~ msgid "Skip quickly to the active turn when observing"
 #~ msgstr "Ātri pāriet uz aktīvo gājienu, kad novēro"
@@ -10494,6 +10484,13 @@ msgstr "Atļaut kopsavilkumu augšupielādi"
 #~ msgstr ""
 #~ "Iespējot spēļu filtru. Ja neieķeksēts, tad tiek rādītas visas spēles "
 #~ "neatkarīgi no filtriem."
+
+#~ msgid ""
+#~ "Show all games that do *not* match your filter. Useful for hiding games "
+#~ "you are not interested in."
+#~ msgstr ""
+#~ "Rādīt visas spēles, kuras *neatbilst* norādītajam filtram. Noder to spēļu "
+#~ "paslēpšanā, kurās neesiet ieinteresēti."
 
 #~ msgid "Only show games that have at least one vacant slot"
 #~ msgstr "Rādīt tikai spēles ar vismaz vienu brīvu vietu"
@@ -10510,6 +10507,19 @@ msgstr "Atļaut kopsavilkumu augšupielādi"
 
 #~ msgid "Joining this game requires a password."
 #~ msgstr "Lai pievienotos šai spēlei, nepieciešama parole."
+
+#~ msgid "Unknown unit type '$type|'"
+#~ msgstr "Nezināms vienības tips '$type|'"
+
+#~ msgid ""
+#~ "Leader position not empty - duplicate side definition for side '$side|' "
+#~ "found."
+#~ msgstr ""
+#~ "Līdera pozīcija nav tukša - atrasta divkārša puses definīcija pusei "
+#~ "'$side|'."
+
+#~ msgid "Search:"
+#~ msgstr "Meklēt:"
 
 #, fuzzy
 #~ msgid "Can rest while moving, takes a quarter less poison damage"

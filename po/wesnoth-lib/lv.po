@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.7.9\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-05-15 14:01+0200\n"
-"PO-Revision-Date: 2009-12-20 14:44+0300\n"
+"POT-Creation-Date: 2010-05-15 14:21+0200\n"
+"PO-Revision-Date: 2010-05-29 20:27+0300\n"
 "Last-Translator: Reinis Danne <rei4dan@gmail.com>\n"
 "Language-Team: none\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -214,9 +215,8 @@ msgstr "Krāteris"
 
 #. [terrain_type]: id=stones_small
 #: data/core/terrain.cfg:559
-#, fuzzy
 msgid "Stones"
-msgstr "Darbības"
+msgstr ""
 
 #. [terrain_type]: id=mushrooms_small
 #: data/core/terrain.cfg:568
@@ -2026,7 +2026,7 @@ msgstr "Nerādīt datora vienību kustības"
 
 #: src/game_preferences_display.cpp:342
 msgid "Sighting an allied unit interrupts your unit's movement"
-msgstr ""
+msgstr "Sabiedroto vienības atklāšana aptur tavas vienības pārvietošanos"
 
 #: src/game_preferences_display.cpp:350
 msgid "Overlay a grid onto the map"
@@ -2291,7 +2291,7 @@ msgstr ""
 #: src/gui/auxiliary/window_builder/tree_view.cpp:90
 #, fuzzy
 msgid "No node defined."
-msgstr "Tīkls nav definēts."
+msgstr "Neviena lapa nav definēta."
 
 #: src/gui/dialogs/game_load.cpp:258
 msgid "#(Invalid)"
@@ -2351,11 +2351,11 @@ msgstr "Istaba $name pievienota"
 
 #: src/gui/dialogs/lobby_main.cpp:1435
 msgid "$player has entered the room"
-msgstr ""
+msgstr "$player ienāca istabā"
 
 #: src/gui/dialogs/lobby_main.cpp:1473
 msgid "$player has left the room"
-msgstr ""
+msgstr "$player izgāja no istabas"
 
 #: src/gui/dialogs/lobby_main.cpp:1586
 msgid "Password Required"
@@ -3011,6 +3011,16 @@ msgstr "Sadaļā '[$section|]' obligātā atslēga '$key|' nav iestatīta."
 
 #~ msgid "Road"
 #~ msgstr "Ceļš"
+
+#~ msgid "Use new lobby interface"
+#~ msgstr "Izmantot jauno priekšnama interfeisu"
+
+#~ msgid ""
+#~ "mouseover^Use new lobby interface (only works after a manual reconnect to "
+#~ "the server)"
+#~ msgstr ""
+#~ "Izmantot jauno priekšnama interfeisu (darbosies tikai pēc jauna "
+#~ "savienojuma izveidošanas ar serveri)"
 
 #~ msgid "Save The Map"
 #~ msgstr "Saglabāt karti"
