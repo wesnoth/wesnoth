@@ -29,9 +29,48 @@
 #include <cstdlib>
 #include <cstring>
 #include <deque>
+#include <boost/variant.hpp>
 
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
+
+config::attribute_value::attribute_value()
+	: value()
+{
+}
+
+config::attribute_value &config::attribute_value::operator=(const config::attribute_value &other)
+{
+	value = other.value; return *this;
+}
+
+config::attribute_value &config::attribute_value::operator=(bool v)
+{
+	value = v;
+	return *this;
+}
+
+config::attribute_value &config::attribute_value::operator=(int v)
+{
+	value = v;
+	return *this;
+}
+
+config::attribute_value &config::attribute_value::operator=(double v)
+{
+	value = v;
+	return *this;
+}
+
+bool config::attribute_value::operator==(const config::attribute_value &other) const
+{
+	return value == other.value;
+}
+
+std::ostream &operator<<(std::ostream &os, const config::attribute_value &v)
+{
+	return os << v.str();
+}
 
 bool config::attribute_value::empty() const
 {

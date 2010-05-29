@@ -31,10 +31,10 @@
 #include "global.hpp"
 
 #include <map>
-#include <ostream>
+#include <iosfwd>
 #include <string>
 #include <vector>
-#include <boost/variant.hpp>
+#include <boost/variant/variant.hpp>
 
 #include "game_errors.hpp"
 #include "tstring.hpp"
@@ -160,23 +160,15 @@ public:
 
 	public:
 
-		attribute_value()
-			: value()
-		{
-		}
+		attribute_value();
+		attribute_value &operator=(const attribute_value &other);
 
-		attribute_value &operator=(const attribute_value &other)
-		{ value = other.value; return *this; }
-
-		attribute_value &operator=(bool v)
-		{ value = v; return *this; }
-		attribute_value &operator=(int v)
-		{ value = v; return *this; }
-		attribute_value &operator=(double v)
-		{ value = v; return *this; }
+		attribute_value &operator=(bool v);
+		attribute_value &operator=(int v);
+		attribute_value &operator=(double v);
 
 		attribute_value &operator=(const char *v)
-		{ return *this = std::string(v); }
+		{ return operator=(std::string(v)); }
 		attribute_value &operator=(const std::string &v);
 		attribute_value &operator=(const t_string &v);
 
@@ -192,13 +184,11 @@ public:
 		operator std::string() const { return str(); }
 		operator t_string() const { return t_str(); }
 
-		bool operator==(const attribute_value &other) const
-		{ return value == other.value; }
+		bool operator==(const attribute_value &other) const;
 		bool operator!=(const attribute_value &other) const
-		{ return !(value == other.value); }
+		{ return !operator==(other); }
 
-		inline friend std::ostream& operator<<(std::ostream &os, const attribute_value &v)
-		{ return os << v.str(); }
+		friend std::ostream& operator<<(std::ostream &os, const attribute_value &v);
 	};
 
 	typedef std::map<std::string, attribute_value> attribute_map;
