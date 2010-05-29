@@ -81,7 +81,7 @@ team::team_info::team_info(const config& cfg) :
 {
 	// If arel starting new scenario overide settings from [ai] tags
 	if (!user_team_name.translatable())
-		user_team_name = user_team_name.from_serialized(user_team_name);
+		user_team_name = t_string::from_serialized(user_team_name);
 
 	if(cfg.has_attribute("ai_config")) {
 		ai::manager::add_ai_for_side_from_file(side, cfg["ai_config"], true);

@@ -509,7 +509,7 @@ void wait::generate_menu()
 			str << sd["income"] << _(")");
 		}
 
-		str	<< COLUMN_SEPARATOR << t_string().from_serialized(sd["user_team_name"].str());
+		str << COLUMN_SEPARATOR << t_string::from_serialized(sd["user_team_name"].str());
 		int disp_color = sd["colour"];
 		if(!sd["colour"].empty()) {
 			try {
