@@ -46,6 +46,8 @@ void arrow::set_color(const SDL_Color color)
 void arrow::set_layer(const display::tdrawing_layer & layer)
 {
 	layer_ = layer;
+	invalidate_arrow_path(path_);
+	notify_arrow_changed();
 }
 
 const arrow_path_t & arrow::get_path() const
@@ -92,6 +94,8 @@ void arrow::update_symbols(arrow_path_t old_path)
 	}
 
 	invalidate_arrow_path(path_);
+
+	notify_arrow_changed();
 }
 
 void arrow::invalidate_arrow_path(arrow_path_t path)
