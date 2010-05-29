@@ -282,19 +282,18 @@ void game_display::pre_draw() {
 
 std::vector<map_location> game_display::get_invalidated_unit_locations() {
 	std::vector<map_location> unit_locations;
-	foreach (const map_location& loc, invalidated_) {
-		bool addlocation = false;
-		addlocation |= (units_.find(loc) != units_.end());
-		foreach(unit* temp_unit, temp_units_) {
-			addlocation |= (temp_unit->get_location() == loc);
-			if (addlocation) {
-				break;
-			}
-		}
-		if (addlocation) {
+	
+	foreach(unit* temp_unit, temp_units_) {
+		const map_location& loc = temp_unit->get_location();
+		if (invalidated_.find(loc) != invalidated_.end())
 			unit_locations.push_back(loc);
-		}
 	}
+
+	foreach (const map_location& loc, invalidated_) {
+		if (units_.find(loc) != units_.end())
+			unit_locations.push_back(loc);
+	}
+
 	return unit_locations;
 }
 
