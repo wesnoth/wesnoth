@@ -32,15 +32,14 @@ arrow::arrow(display* screen): layer_(display::LAYER_ARROWS)
 void arrow::set_path(const arrow_path_t path)
 {
 	previous_path_ = path_;
-	invalidate_arrow_path(previous_path_);
 	path_ = path;
-	update_symbols();
+	update_symbols(previous_path_);
 }
 
 void arrow::set_color(const SDL_Color color)
 {
 	color_ = color;
-	update_symbols();
+	update_symbols(path_);
 }
 
 void arrow::set_layer(const display::tdrawing_layer & layer)
@@ -65,8 +64,14 @@ void arrow::draw_hex(const map_location & loc)
 				loc, image::get_image(symbols_map_[loc], image::SCALED_TO_ZOOM));
 }
 
-void arrow::update_symbols()
+void arrow::update_symbols(arrow_path_t old_path)
 {
+	foreach(map_location loc, old_path)
+	{
+		symbols_map_.erase(loc);
+	}
+	invalidate_arrow_path(old_path);
+
 	//TODO: use the proper images instead of this placeholder
 	image::locator test_picture = image::locator("footsteps/teleport-in.png");
 

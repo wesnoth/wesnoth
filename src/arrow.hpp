@@ -27,7 +27,7 @@
 #include <utility>
 #include <map>
 
-typedef std::map<map_location, image::locator> symbols_map_t;
+typedef std::map<map_location, image::locator> arrow_symbols_map_t;
 
 typedef std::list<map_location> arrow_path_t;
 
@@ -58,7 +58,10 @@ public:
 private:
 	//operations
 
-	void update_symbols();
+	/**
+	 * @param old_path : the path to erase and replace with the new symbols
+	 */
+	void update_symbols(arrow_path_t old_path);
 
 	void invalidate_arrow_path(arrow_path_t path);
 
@@ -74,7 +77,7 @@ private:
 	arrow_path_t path_;
 	arrow_path_t previous_path_;
 
-	symbols_map_t symbols_map_;
+	arrow_symbols_map_t symbols_map_;
 
 };
 #endif
