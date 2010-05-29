@@ -189,11 +189,13 @@ void upload_log::read_replay()
 	foreach (const config &c, rd.child_range("command")) {
 		if(c.child("attack")) {
 			//search through the attack to see if a unit died
-			foreach (const config &c2, c.child_range("random")) {
-				if(c2.child("results") && c2.child("results")["dies"] == "yes") {
+			foreach (const config &c2, c.child_range("random"))
+			{
+				const config &res = c2.child("results");
+				if (res && res["dies"].to_bool()) {
 					config& cfg = game_->add_child("kill_event");
 					cfg.add_child("attack",c.child("attack"));
-					cfg.add_child("results",c2.child("results"));
+					cfg.add_child("results", res);
 				}
 			}
 		}
@@ -263,7 +265,7 @@ config &upload_log::add_game_result(const std::string &str, int turn)
 {
 	config &child = game_->add_child(str);
 	child["time"] = lexical_cast<std::string>(SDL_GetTicks() / 1000);
-	child["end_turn"] = lexical_cast<std::string>(turn);
+	child["end_turn"] = turn;
 	return child;
 }
 
@@ -301,8 +303,8 @@ void upload_log::start(game_state &state, const team &team,
 		(*game_)["version"] = state.classification().version;
 	if (!turn.empty())
 		(*game_)["start_turn"] = turn;
-	(*game_)["gold"] = lexical_cast<std::string>(team.gold());
-	(*game_)["num_turns"] = lexical_cast<std::string>(num_turns);
+	(*game_)["gold"] = team.gold();
+	(*game_)["num_turns"] = num_turns;
 }
 
 void upload_log::start(game_state &state, const std::string& map_data)
@@ -347,7 +349,7 @@ void upload_log::victory(int turn, int gold)
 	// game_ can be NULL if user takes over partway through MP game.
 	if (game_) {
 		config &e = add_game_result("victory", turn);
-		e["gold"] = lexical_cast<std::string>(gold);
+		e["gold"] = gold;
 	}
 }
 
