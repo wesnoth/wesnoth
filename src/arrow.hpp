@@ -31,6 +31,8 @@ typedef std::map<map_location, image::locator> arrow_symbols_map_t;
 
 typedef std::list<map_location> arrow_path_t;
 
+class arrow_observer;
+
 /**
  * Arrows destined to be drawn on the map. Created for the whiteboard system.
  */
@@ -41,7 +43,10 @@ public:
 
 	arrow(display* screen);
 
-	virtual ~arrow() {}
+	 /** Notifies it's arrow_observer list of the arrow's destruction */
+	virtual ~arrow() {
+		notify_arrow_deleted();
+	}
 
 	virtual void set_path(const arrow_path_t path);
 
@@ -55,6 +60,10 @@ public:
 
 	void draw_hex(const map_location & hex);
 
+	void add_observer(arrow_observer & observer);
+
+	void remove_observer(arrow_observer & observer);
+
 private:
 	//operations
 
@@ -64,6 +73,10 @@ private:
 	void update_symbols(arrow_path_t old_path);
 
 	void invalidate_arrow_path(arrow_path_t path);
+
+	void notify_arrow_changed();
+
+	void notify_arrow_deleted();
 
 private:
 	//properties
@@ -78,6 +91,8 @@ private:
 	arrow_path_t previous_path_;
 
 	arrow_symbols_map_t symbols_map_;
+
+    std::list<arrow_observer*> observers_;
 
 };
 #endif

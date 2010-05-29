@@ -18,6 +18,7 @@
  */
 
 #include "arrow.hpp"
+#include "arrow_observer.hpp"
 
 #include "foreach.hpp"
 
@@ -64,6 +65,16 @@ void arrow::draw_hex(const map_location & loc)
 				loc, image::get_image(symbols_map_[loc], image::SCALED_TO_ZOOM));
 }
 
+void arrow::add_observer(arrow_observer & observer)
+{
+	observers_.push_back(&observer);
+}
+
+void arrow::remove_observer(arrow_observer & observer)
+{
+	observers_.remove(&observer);
+}
+
 void arrow::update_symbols(arrow_path_t old_path)
 {
 	foreach(map_location loc, old_path)
@@ -88,5 +99,19 @@ void arrow::invalidate_arrow_path(arrow_path_t path)
 	foreach(const map_location& loc, path)
 	{
 		screen_->invalidate(loc);
+	}
+}
+
+void arrow::notify_arrow_changed() {
+	foreach(arrow_observer* observer, observers_)
+	{
+		observer->arrow_changed(*this);
+	}
+}
+
+void arrow::notify_arrow_deleted() {
+	foreach(arrow_observer* observer, observers_)
+	{
+		observer->arrow_deleted(*this);
 	}
 }
