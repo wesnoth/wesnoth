@@ -814,16 +814,13 @@ void game_display::float_label(const map_location& loc, const std::string& text,
 		return;
 	}
 
-	const SDL_Color color = {red,green,blue,255};
-	int lifetime = static_cast<int>(60/turbo_speed());
-/*	font::floating_label flabel(text,font::SIZE_XLARGE,color,get_location_x(loc)+zoom_/2,get_location_y(loc),
-	                         0,-2*turbo_speed(),lifetime,screen_area(),font::CENTER_ALIGN,NULL,0,font::ANCHOR_LABEL_MAP);*/
 	font::floating_label flabel(text);
 	flabel.set_font_size(font::SIZE_XLARGE);
+	const SDL_Color color = {red,green,blue,255};
 	flabel.set_colour(color);
 	flabel.set_position(get_location_x(loc)+zoom_/2, get_location_y(loc));
 	flabel.set_move(0, -2 * turbo_speed());
-	flabel.set_lifetime(lifetime);
+	flabel.set_lifetime(60/turbo_speed());
 	flabel.set_scroll_mode(font::ANCHOR_LABEL_MAP);
 
 	font::add_floating_label(flabel);
