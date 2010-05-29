@@ -426,33 +426,32 @@ void terrain_label::draw()
 	if (text_.empty())
 		return;
 	clear();
-	if (visible())
-	{
 
-		const map_location loc_nextx(loc_.x+1,loc_.y);
-		const map_location loc_nexty(loc_.x,loc_.y+1);
-		const int xloc = (parent_->disp().get_location_x(loc_) +
-				parent_->disp().get_location_x(loc_nextx)*2)/3;
-		const int yloc = parent_->disp().get_location_y(loc_nexty) - font::SIZE_NORMAL;
+	if (!visible())
+		return;
 
-		cfg_colour();
+	const map_location loc_nextx(loc_.x+1,loc_.y);
+	const map_location loc_nexty(loc_.x,loc_.y+1);
+	const int xloc = (parent_->disp().get_location_x(loc_) +
+			parent_->disp().get_location_x(loc_nextx)*2)/3;
+	const int yloc = parent_->disp().get_location_y(loc_nexty) - font::SIZE_NORMAL;
 
-		// If a colour is specified don't allow to override it with markup. (prevents faking map labels for example)
-		// FIXME: @todo Better detect if it's team label and not provided by
-		// the scenario.
-		bool use_markup = colour_ == font::LABEL_COLOUR;
+	// If a colour is specified don't allow to override it with markup. (prevents faking map labels for example)
+	// FIXME: @todo Better detect if it's team label and not provided by
+	// the scenario.
+	bool use_markup = colour_ == font::LABEL_COLOUR;
 
-		font::floating_label flabel(text_);
-		flabel.set_colour(colour_);
-		flabel.set_position(xloc, yloc);
-		flabel.set_clip_rect(parent_->disp().map_outside_area());
-		flabel.set_scroll_mode(font::ANCHOR_LABEL_MAP);
-		flabel.use_markup(use_markup);
+	font::floating_label flabel(text_);
+	flabel.set_colour(colour_);
+	flabel.set_position(xloc, yloc);
+	flabel.set_clip_rect(parent_->disp().map_outside_area());
+	flabel.set_scroll_mode(font::ANCHOR_LABEL_MAP);
+	flabel.use_markup(use_markup);
 
-		handle_ = font::add_floating_label(flabel);
+	handle_ = font::add_floating_label(flabel);
 
-		calculate_shroud();
-	}
+	calculate_shroud();
+
 }
 
 bool terrain_label::visible() const
