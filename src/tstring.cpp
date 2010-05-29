@@ -173,6 +173,10 @@ t_string_base::t_string_base() :
 {
 }
 
+t_string_base::~t_string_base()
+{
+}
+
 t_string_base::t_string_base(const t_string_base& string) :
 	value_(string.value_),
 	translated_value_(string.translated_value_),
@@ -423,6 +427,25 @@ t_string_base& t_string_base::operator+=(const char* string)
 	return *this;
 }
 
+bool t_string_base::operator==(const t_string_base &that) const
+{
+	return that.translatable_ == translatable_ && that.value_ == value_;
+}
+
+bool t_string_base::operator==(const std::string &that) const
+{
+	return !translatable_ && value_ == that;
+}
+
+bool t_string_base::operator==(const char *that) const
+{
+	return !translatable_ && value_ == that;
+}
+
+bool t_string_base::operator<(const t_string_base &that) const
+{
+	return value_ < that.value_;
+}
 
 const std::string& t_string_base::str() const
 {
@@ -448,6 +471,45 @@ const std::string& t_string_base::str() const
 	return translated_value_;
 }
 
+t_string::t_string() : super()
+{
+}
+
+t_string::~t_string()
+{
+}
+
+t_string::t_string(const t_string &o) : super(o)
+{
+}
+
+t_string::t_string(const base &o) : super(o)
+{
+}
+
+t_string::t_string(const char *o) : super(base(o))
+{
+}
+
+t_string::t_string(const std::string &o) : super(base(o))
+{
+}
+
+t_string::t_string(const std::string &o, const std::string &textdomain) : super(base(o, textdomain))
+{
+}
+
+t_string &t_string::operator=(const t_string &o)
+{
+	super::operator=(o);
+	return *this;
+}
+
+t_string &t_string::operator=(const char *o)
+{
+	super::operator=(base(o));
+	return *this;
+}
 
 void t_string::add_textdomain(const std::string &name, const std::string &path)
 {

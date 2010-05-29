@@ -52,6 +52,9 @@ public:
 	friend class walker;
 
 	t_string_base();
+	/** Default implementation, but defined out-of-line for efficiency reasons. */
+	~t_string_base();
+	/** Default implementation, but defined out-of-line for efficiency reasons. */
 	t_string_base(const t_string_base&);
 	t_string_base(const std::string& string);
 	t_string_base(const std::string& string, const std::string& textdomain);
@@ -60,6 +63,7 @@ public:
 	static t_string_base from_serialized(const std::string& string);
 	std::string to_serialized() const;
 
+	/** Default implementation, but defined out-of-line for efficiency reasons. */
 	t_string_base& operator=(const t_string_base&);
 	t_string_base& operator=(const std::string&);
 	t_string_base& operator=(const char*);
@@ -72,14 +76,18 @@ public:
 	t_string_base& operator+=(const std::string&);
 	t_string_base& operator+=(const char*);
 
-	bool operator==(const t_string_base& string) const    { return string.translatable_ == translatable_ && string.value_ == value_; }
-	bool operator==(const std::string& string) const { return !translatable_ && value_ == string; }
-	bool operator==(const char* string) const        { return !translatable_ && value_ == string; }
-	bool operator!=(const t_string_base& string) const    { return !(*this == string); }
-	bool operator!=(const std::string& string) const { return !(*this == string); }
-	bool operator!=(const char* string) const        { return !(*this == string); }
+	bool operator==(const t_string_base &) const;
+	bool operator==(const std::string &) const;
+	bool operator==(const char* string) const;
 
-	bool operator<(const t_string_base& string) const     { return value_ < string.value_; }
+	bool operator!=(const t_string_base &that) const
+	{ return !operator==(that); }
+	bool operator!=(const std::string &that) const
+	{ return !operator==(that); }
+	bool operator!=(const char *that) const
+	{ return !operator==(that); }
+
+	bool operator<(const t_string_base& string) const;
 
 	bool empty() const                               { return value_.empty(); }
 	std::string::size_type size() const              { return str().size(); }
@@ -111,17 +119,26 @@ public:
 	typedef t_string_base base;
 	typedef t_string_base::walker walker;
 
-	t_string() : super() { }
-	t_string(const base& o) : super(o) { }
-	t_string(const std::string& o) : super(base(o)) { }
-	t_string(const std::string& str, const std::string& textdomain) : super(base(str, textdomain)) { }
-	t_string(const char* string) : super(base(string)) { }
+	/** Default implementation, but defined out-of-line for efficiency reasons. */
+	t_string();
+	/** Default implementation, but defined out-of-line for efficiency reasons. */
+	~t_string();
+	/** Default implementation, but defined out-of-line for efficiency reasons. */
+	t_string(const t_string &);
+	/** Default implementation, but defined out-of-line for efficiency reasons. */
+	t_string &operator=(const t_string &);
+
+	t_string(const base &);
+	t_string(const char *);
+	t_string(const std::string &);
+	t_string(const std::string &str, const std::string &textdomain);
+
+	t_string &operator=(const char *o);
+
 	static t_string from_serialized(const std::string& string) { return t_string(base::from_serialized(string)); }
 	std::string to_serialized() const { return get().to_serialized(); }
 
 	operator t_string_base() const { return get(); }
-	t_string& operator=(const t_string& o) { super::operator=(o); return *this; }
-	t_string& operator=(const char* o) { super::operator=(base(o)); return *this; }
 
 	t_string operator+(const t_string& o) const { return get() + o.get(); }
 	t_string operator+(const std::string& o) const { return get() + o; }

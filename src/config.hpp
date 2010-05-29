@@ -159,9 +159,14 @@ public:
 		value_type value;
 
 	public:
-
+		/** Default implementation, but defined out-of-line for efficiency reasons. */
 		attribute_value();
-		attribute_value &operator=(const attribute_value &other);
+		/** Default implementation, but defined out-of-line for efficiency reasons. */
+		~attribute_value();
+		/** Default implementation, but defined out-of-line for efficiency reasons. */
+		attribute_value(const attribute_value &);
+		/** Default implementation, but defined out-of-line for efficiency reasons. */
+		attribute_value &operator=(const attribute_value &);
 
 		attribute_value &operator=(bool v);
 		attribute_value &operator=(int v);

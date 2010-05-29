@@ -39,9 +39,19 @@ config::attribute_value::attribute_value()
 {
 }
 
-config::attribute_value &config::attribute_value::operator=(const config::attribute_value &other)
+config::attribute_value::~attribute_value()
 {
-	value = other.value; return *this;
+}
+
+config::attribute_value &config::attribute_value::operator=(const config::attribute_value &that)
+{
+	value = that.value;
+	return *this;
+}
+
+config::attribute_value::attribute_value(const config::attribute_value &that)
+	: value(that.value)
+{
 }
 
 config::attribute_value &config::attribute_value::operator=(bool v)
