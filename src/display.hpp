@@ -802,17 +802,6 @@ protected:
 	void draw_all_panels();
 
 	/**
-	 * Strict weak ordering to sort a STL-set of hexes
-	 * for drawing using the z-order.
-	 * (1000 are just to weight the y compare to x)
-	 */
-	struct ordered_draw : public std::binary_function<map_location, map_location, bool> {
-		bool operator()(map_location a, map_location b) {
-			return (a.y*2 + a.x%2) * 1024 + a.x < (b.y*2 + b.x%2) * 1024 + b.x;
-		}
-	};
-
-	/**
 	 * Initiate a redraw.
 	 *
 	 * Invalidate controls and panels when changed after they have been drawn

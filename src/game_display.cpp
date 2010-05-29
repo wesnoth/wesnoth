@@ -295,8 +295,6 @@ std::vector<map_location> game_display::get_invalidated_unit_locations() {
 			unit_locations.push_back(loc);
 		}
 	}
-	//sorted according to a drawing ordering object in order to render correctly
-	std::sort(unit_locations.begin(), unit_locations.end(), ordered_draw());
 	return unit_locations;
 }
 
