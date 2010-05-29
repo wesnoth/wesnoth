@@ -157,11 +157,11 @@ public:
 	const t_string_base& get() const { return super::get(); }
 };
 inline std::ostream& operator<<(std::ostream& os, const t_string& str) { return os << str.get(); }
-inline bool operator==(const std::string& a, const t_string& b)    { return a == b.str(); }
-inline bool operator==(const char* a, const t_string& b)           { return b == a; }
-inline bool operator!=(const std::string& a, const t_string& b)    { return a != b.str(); }
-inline bool operator!=(const char* a, const t_string& b)           { return b != a; }
-inline t_string operator+(const std::string& a, const t_string& b) { return t_string(a + b.str()); }
-inline t_string operator+(const char* a, const t_string& b)        { return t_string(a) + b; }
+inline bool operator==(const std::string &a, const t_string &b)    { return b == a; }
+inline bool operator==(const char *a, const t_string &b)           { return b == a; }
+inline bool operator!=(const std::string &a, const t_string &b)    { return b != a; }
+inline bool operator!=(const char *a, const t_string &b)           { return b != a; }
+inline t_string operator+(const std::string &a, const t_string &b) { return t_string(a) + b; }
+inline t_string operator+(const char *a, const t_string &b)        { return t_string(a) + b; }
 #endif
 
