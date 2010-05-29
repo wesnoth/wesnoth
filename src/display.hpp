@@ -751,7 +751,10 @@ protected:
 	{
 		bool operator()(const map_location& lhs, const map_location& rhs) const
 		{
-			return lhs.y < rhs.y || (lhs.y == rhs.y && lhs.x < rhs.x);
+			// use similar y transformation as for on-screen coordinates
+			int ly = lhs.y*2 + lhs.x%2;
+			int ry = rhs.y*2 + rhs.x%2;
+			return ly < ry || (ly == ry && lhs.x < rhs.x);
 		}
 	};
 
