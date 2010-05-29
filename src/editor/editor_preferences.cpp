@@ -30,7 +30,7 @@ namespace editor {
 	}
 
 	bool use_mdi() {
-		return utils::string_bool(preferences::get("editor_use_mdi"), true);
+		return preferences::get("editor_use_mdi", true);
 	}
 
 	void set_use_mdi(bool value) {
@@ -46,7 +46,7 @@ namespace editor {
 	}
 
 	bool draw_terrain_codes() {
-		return utils::string_bool(preferences::get("editor_draw_terrain_codes"), false);
+		return preferences::get("editor_draw_terrain_codes", false);
 	}
 
 	void set_draw_terrain_codes(bool value) {
@@ -54,7 +54,7 @@ namespace editor {
 	}
 
 	bool draw_hex_coordinates() {
-		return utils::string_bool(preferences::get("editor_draw_hex_coordinates"), false);
+		return preferences::get("editor_draw_hex_coordinates", false);
 	}
 
 	void set_draw_hex_coordinates(bool value) {
