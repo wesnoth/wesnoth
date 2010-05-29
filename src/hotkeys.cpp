@@ -259,10 +259,10 @@ void hotkey_item::load_from_config(const config& cfg)
 {
 	const std::string& key = cfg["key"];
 
-	alt_ = utils::string_bool(cfg["alt"]);
-	cmd_ = utils::string_bool(cfg["cmd"]);
-	ctrl_ = utils::string_bool(cfg["ctrl"]);
-	shift_ = utils::string_bool(cfg["shift"]);
+	alt_ = cfg["alt"].to_bool();
+	cmd_ = cfg["cmd"].to_bool();
+	ctrl_ = cfg["ctrl"].to_bool();
+	shift_ = cfg["shift"].to_bool();
 
 	if (key.empty()) return;
 
