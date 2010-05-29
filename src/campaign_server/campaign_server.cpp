@@ -160,13 +160,13 @@ namespace {
 	{
 		scoped_istream stream = istream_file(file_);
 		read(cfg_, *stream);
-		bool network_use_system_sendfile = utils::string_bool(cfg_["network_use_system_sendfile"],false);
+		bool network_use_system_sendfile = cfg_["network_use_system_sendfile"].to_bool();
 		network_worker_pool::set_use_system_sendfile(network_use_system_sendfile);
- 		cfg_["network_use_system_sendfile"] = (network_use_system_sendfile?"yes":"no");
- 		/** Seems like compression level above 6 is waste of cpu cycle */
- 		compress_level_ = lexical_cast_default<int>(cfg_["compress_level"],6);
- 		cfg_["compress_level"] = lexical_cast<std::string>(compress_level_);
-		return lexical_cast_default<int>(cfg_["port"], default_campaignd_port);
+		cfg_["network_use_system_sendfile"] = network_use_system_sendfile;
+		/** Seems like compression level above 6 is waste of cpu cycle */
+		compress_level_ = cfg_["compress_level"].to_int(6);
+		cfg_["compress_level"] = compress_level_;
+		return cfg_["port"].to_int(default_campaignd_port);
 	}
 
 	campaign_server::campaign_server(const std::string& cfgfile,
@@ -294,10 +294,10 @@ namespace {
 		copying["contents"] = contents;
 
 	}
- 	void campaign_server::convert_binary_to_gzip()
- 	{
- 		if (cfg_["converted_to_gzipped_data"] != "yes")
- 		{
+	void campaign_server::convert_binary_to_gzip()
+	{
+		if (!cfg_["converted_to_gzipped_data"].to_bool())
+		{
 			// Convert all addons to gzip
 			config::const_child_itors camps = campaigns().child_range("campaign");
 			LOG_CS << "Converting all stored addons to gzip format. Number of addons: "
@@ -318,12 +318,12 @@ namespace {
 
 				scoped_ostream gzip_stream = ostream_file(filename);
 				config_writer writer(*gzip_stream, true, compress_level_);
- 				writer.write(data);
- 			}
+				writer.write(data);
+			}
 
- 			cfg_["converted_to_gzipped_data"] = "yes";
- 		}
-		if (cfg_["encoded"] != "yes")
+			cfg_["converted_to_gzipped_data"] = true;
+		}
+		if (!cfg_["encoded"].to_bool())
 		{
 			// Convert all addons to gzip
 			config::const_child_itors camps = campaigns().child_range("campaign");
@@ -364,7 +364,7 @@ namespace {
 				std::rename(newfilename.c_str(), filename.c_str());
 			}
 
-			cfg_["encoded"] = "yes";
+			cfg_["encoded"] = true;
 		}
  	}
 
@@ -475,8 +475,8 @@ namespace {
 									(network::send_data(cfg, sock, false)/1024)
 									<< "kb\n";
 							}
-							const int downloads = lexical_cast_default<int>(campaign["downloads"], 0) + 1;
-							campaign["downloads"] = lexical_cast<std::string>(downloads);
+							int downloads = campaign["downloads"].to_int() + 1;
+							campaign["downloads"] = downloads;
 						}
 
 					}
@@ -602,8 +602,8 @@ namespace {
 							}
 							(*campaign)["timestamp"] = lexical_cast<std::string>(time(NULL));
 
-							const int uploads = lexical_cast_default<int>((*campaign)["uploads"],0) + 1;
-							(*campaign)["uploads"] = lexical_cast<std::string>(uploads);
+							int uploads = (*campaign)["uploads"].to_int() + 1;
+							(*campaign)["uploads"] = uploads;
 
 							std::string filename = (*campaign)["filename"];
 							data["title"] = (*campaign)["title"];
