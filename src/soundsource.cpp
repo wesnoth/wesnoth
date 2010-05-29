@@ -232,13 +232,13 @@ void positional_source::write_config(config& cfg) const
 sourcespec::sourcespec(const config& cfg) :
 	id_(cfg["id"]),
 	files_(cfg["sounds"]),
-	min_delay_(lexical_cast_default<int>(cfg["delay"], DEFAULT_DELAY)),
-	chance_(lexical_cast_default<int>(cfg["chance"], DEFAULT_CHANCE)),
-	loops_(lexical_cast_default<int>(cfg["loop"], 0)),
-	range_(lexical_cast_default<int>(cfg["full_range"], 3)),
-	faderange_(lexical_cast_default<int>(cfg["fade_range"], 14)),
-	check_fogged_(utils::string_bool(cfg["check_fogged"], true)),
-	check_shrouded_(utils::string_bool(cfg["check_shrouded"], true)),
+	min_delay_(cfg["delay"].to_int(DEFAULT_DELAY)),
+	chance_(cfg["chance"].to_int(DEFAULT_CHANCE)),
+	loops_(cfg["loop"]),
+	range_(cfg["full_range"].to_int(3)),
+	faderange_(cfg["fade_range"].to_int(14)),
+	check_fogged_(cfg["check_fogged"].to_bool(true)),
+	check_shrouded_(cfg["check_shrouded"].to_bool(true)),
 	locations_()
 {
 	read_locations(cfg, locations_);
