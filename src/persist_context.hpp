@@ -23,16 +23,35 @@ static lg::log_domain log_persist("engine/persistence");
 config pack_scalar(const std::string &,const t_string &);
 class persist_context {
 private:
-	// TODO: dirty marking
-	// TODO: child persist_contexts for embedded namespaces?
+	// TODO: transaction support (needed for MP)
+	typedef std::map<std::string,persist_context*> child_map;
+	// TODO: parent and child members (needed for namespace embeddeding)
 	std::string namespace_;
 	config cfg_;
+	persist_context *parent_;
+	child_map children_;
 	bool valid_;
+	bool dirty_;
+	void load();
+	void init(const std::string &name_space);
+	bool save_context();
+	void update_configs();
 public:
 	persist_context(const std::string &);
+	persist_context(const std::string &, persist_context &);
+	~persist_context();
 	bool clear_var(std::string &);
 	config get_var(const std::string &);
 	bool set_var(const std::string &, const config &);
 	bool valid() const { return valid_; };
+	bool dirty() const { 
+		bool dirt = dirty_;
+		child_map::const_iterator i = children_.begin();
+		while ((!dirt) && (i != children_.end())) {
+			dirt |= i->second->dirty();
+			i++;
+		}
+		return dirt; 
+	};
 };
 #endif
