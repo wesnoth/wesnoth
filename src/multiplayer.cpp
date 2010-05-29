@@ -162,7 +162,7 @@ static server_type open_connection(game_display& disp, const std::string& origin
 		if (const config &redirect = data.child("redirect"))
 		{
 			host = redirect["host"].str();
-			port = lexical_cast_default<unsigned int>(redirect["port"], 15000);
+			port =redirect["port"].to_int(15000);
 
 			if(shown_hosts.find(hostpair(host,port)) != shown_hosts.end()) {
 				throw network::error(_("Server-side redirect loop"));
@@ -223,7 +223,7 @@ static server_type open_connection(game_display& disp, const std::string& origin
 				do {
 					std::string password = preferences::password();
 
-					bool fall_through = (*error)["force_confirmation"] == "yes" ?
+					bool fall_through = (*error)["force_confirmation"].to_bool() ?
 						(gui::dialog(disp,_("Confirm"),(*error)["message"],gui::OK_CANCEL).show() != 0) :
 						false;
 
@@ -235,7 +235,8 @@ static server_type open_connection(game_display& disp, const std::string& origin
 					// above go directly to the username/password dialog
 					if((is_pw_request || !password_reminder.empty()) && !fall_through) {
 						if(is_pw_request) {
-							if((*error)["phpbb_encryption"] == "yes") {
+							if ((*error)["phpbb_encryption"].to_bool())
+							{
 
 								// Apparently HTML key-characters are passed to the hashing functions of phpbb in this escaped form.
 								// I will do closer investigations on this, for now let's just hope these are all of them.
