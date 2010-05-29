@@ -280,23 +280,6 @@ void game_display::pre_draw() {
 	prune_chat_messages();
 }
 
-std::vector<map_location> game_display::get_invalidated_unit_locations() {
-	std::vector<map_location> unit_locations;
-	
-	foreach(unit* temp_unit, temp_units_) {
-		const map_location& loc = temp_unit->get_location();
-		if (invalidated_.find(loc) != invalidated_.end())
-			unit_locations.push_back(loc);
-	}
-
-	foreach (const map_location& loc, invalidated_) {
-		if (units_.find(loc) != units_.end())
-			unit_locations.push_back(loc);
-	}
-
-	return unit_locations;
-}
-
 image::TYPE game_display::get_image_type(const map_location& loc) {
 	// We highlight hex under the mouse, or under a selected unit.
 	if (get_map().on_board(loc)) {
@@ -317,8 +300,18 @@ void game_display::draw_invalidated()
 {
 	halo::unrender(invalidated_);
 	display::draw_invalidated();
-	std::vector<map_location> unit_invals = get_invalidated_unit_locations();
-	redraw_units(unit_invals);
+	
+	foreach(unit* temp_unit, temp_units_) {
+		const map_location& loc = temp_unit->get_location();
+		if (invalidated_.find(loc) != invalidated_.end())
+			temp_unit->redraw_unit();
+	}
+
+	foreach (const map_location& loc, invalidated_) {
+		unit_map::iterator u_it = units_.find(loc);
+		if (u_it != units_.end())
+			u_it->redraw_unit();
+	}
 }
 
 void game_display::post_commit()
@@ -415,23 +408,6 @@ void game_display::draw_hex(const map_location& loc)
 void game_display::update_time_of_day()
 {
 	tod_ = tod_manager_.get_time_of_day();
-}
-
-void game_display::redraw_units(const std::vector<map_location>& invalidated_unit_locations)
-{
-	// Units can overlap multiple hexes, so we need
-	// to redraw them last and in the good sequence.
-	foreach (map_location loc, invalidated_unit_locations) {
-		unit_map::iterator u_it = units_.find(loc);
-		if (u_it != units_.end()) {
-			u_it->redraw_unit();
-		}
-		foreach(unit* temp_unit, temp_units_) {
-			if (temp_unit->get_location() == loc) {
-					temp_unit->redraw_unit();
-			}
-		}
-	}
 }
 
 void game_display::draw_report(reports::TYPE report_num)

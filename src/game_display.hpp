@@ -150,20 +150,9 @@ protected:
 	void pre_draw();
 
 	/**
-	 * This function runs through invalidated_ and returns a vector of tiles
-	 * containing units, sorted according to a custom ordering
-	 */
-	std::vector<map_location> get_invalidated_unit_locations();
-
-	/**
 	 * Hex brightening for game - take units into account
 	 */
 	image::TYPE get_image_type(const map_location& loc);
-
-	/**
-	 * Draws units on specified hexes
-	 */
-	void redraw_units(const std::vector<map_location>& invalidated_unit_locations);
 
 	void draw_invalidated();
 
