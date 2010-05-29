@@ -133,7 +133,7 @@ std::string get(const std::string& key) {
 
 bool get(const std::string &key, bool def)
 {
-	return utils::string_bool(prefs[key], def);
+	return prefs[key].to_bool(def);
 }
 
 void disable_preferences_save() {
