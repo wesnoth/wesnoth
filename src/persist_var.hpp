@@ -1,4 +1,4 @@
-/* $Id: persist_var.hpp 41840 2010-03-28 10:42:41Z upthorn $ */
+/* $Id$ */
 /*
    Copyright (C) 2003 - 2010 by David White <dave@whitevine.net>
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
