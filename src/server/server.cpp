@@ -431,7 +431,7 @@ void server::load_config() {
 	input_.reset();
 	input_.reset(new input_stream(fifo_path));
 
-	save_replays_ = utils::string_bool(cfg_["save_replays"], false);
+	save_replays_ = cfg_["save_replays"].to_bool();
 	replay_save_path_ = cfg_["replay_save_path"].str();
 
 	tor_ip_list_ = utils::split(cfg_["tor_ip_list_path"].empty() ? "" : read_file(cfg_["tor_ip_list_path"]), '\n');
@@ -441,9 +441,9 @@ void server::load_config() {
 	lan_server_ = lexical_cast_default<time_t>(cfg_["lan_server"], 0);
 	uh_name_ = cfg_["user_handler"].str();
 
-	deny_unregistered_login_ = utils::string_bool(cfg_["deny_unregistered_login"], false);
+	deny_unregistered_login_ = cfg_["deny_unregistered_login"].to_bool();
 
-	allow_remote_shutdown_ = utils::string_bool(cfg_["allow_remote_shutdown"], false);
+	allow_remote_shutdown_ = cfg_["allow_remote_shutdown"].to_bool();
 
 	disallowed_names_.clear();
 	if (cfg_["disallow_names"] == "") {
@@ -459,21 +459,17 @@ void server::load_config() {
 	} else {
 		disallowed_names_ = utils::split(cfg_["disallow_names"]);
 	}
-	default_max_messages_ =
-			lexical_cast_default<size_t>(cfg_["max_messages"],4);
-	default_time_period_ =
-			lexical_cast_default<size_t>(cfg_["messages_time_period"],10);
-	concurrent_connections_ =
-			lexical_cast_default<size_t>(cfg_["connections_allowed"],5);
-	max_ip_log_size_ =
-			lexical_cast_default<size_t>(cfg_["max_ip_log_size"],500);
+	default_max_messages_ = cfg_["max_messages"].to_int(4);
+	default_time_period_ = cfg_["messages_time_period"].to_int(10);
+	concurrent_connections_ = cfg_["connections_allowed"].to_int(5);
+	max_ip_log_size_ = cfg_["max_ip_log_size"].to_int(500);
 
 	// Example config line:
 	// restart_command="./wesnothd-debug -d -c ~/.wesnoth1.5/server.cfg"
 	// remember to make new one as a daemon or it will block old one
 	restart_command = cfg_["restart_command"].str();
 
-	fps_limit_.set_ms_per_frame(lexical_cast_default<size_t>(cfg_["ms_per_frame"], 20));
+	fps_limit_.set_ms_per_frame(cfg_["ms_per_frame"].to_int(20));
 
 	accepted_versions_.clear();
 	const std::string& versions = cfg_["versions_accepted"];
@@ -629,7 +625,7 @@ void server::run() {
 				// send a 'ping' to all players to detect ghosts
 				DBG_SERVER << "Pinging inactive players.\n" ;
 				std::ostringstream strstr ;
-				strstr << "ping=\"" << lexical_cast<std::string>(now) << "\"" ;
+				strstr << "ping=\"" << now << "\"" ;
 				simple_wml::document ping( strstr.str().c_str(),
 							   simple_wml::INIT_COMPRESSED );
 				simple_wml::string_span s = ping.output_compressed();
@@ -932,7 +928,7 @@ void server::process_login(const network::connection sock,
 				<< ":\tconnecting them by proxy to " << config_it->second["host"]
 				<< ":" << config_it->second["port"] << "\n";
 			proxy::create_proxy(sock,config_it->second["host"],
-				lexical_cast_default<int>(config_it->second["port"],15000));
+				config_it->second["port"].to_int(15000));
 			return;
 		}
 		// No match, send a response and reject them.
