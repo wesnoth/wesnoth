@@ -2387,6 +2387,7 @@ void display::add_arrow(arrow& addme)
 	{
 		arrows_map_[loc].push_back(&addme);
 	}
+	addme.add_observer(*this);
 }
 
 void display::remove_arrow(arrow& removeme)
@@ -2396,6 +2397,7 @@ void display::remove_arrow(arrow& removeme)
 	{
 		arrows_map_[loc].remove(&removeme);
 	}
+	removeme.remove_observer(*this);
 }
 
 void display::arrow_changed(arrow & changed)
@@ -2415,4 +2417,5 @@ void display::arrow_changed(arrow & changed)
 void display::arrow_deleted(arrow & deleted)
 {
 	remove_arrow(deleted);
+	deleted.remove_observer(*this);
 }
