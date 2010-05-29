@@ -244,12 +244,12 @@ void wait::join_game(bool observe)
 			return;
 		}
 
-		const bool allow_changes = (*side_choice)["allow_changes"] != "no";
+		bool allow_changes = (*side_choice)["allow_changes"].to_bool(true);
 
 		//if the client is allowed to choose their team, instead of having
 		//it set by the server, do that here.
 		std::string leader_choice, gender_choice;
-		size_t faction_choice = 0;
+		int faction_choice = 0;
 
 		if(allow_changes) {
 			events::event_context context;
@@ -304,12 +304,12 @@ void wait::join_game(bool observe)
 			leader_choice = leader_selector.get_selected_leader();
 			gender_choice = leader_selector.get_selected_gender();
 
-			assert(faction_choice < leader_sides.size());
+			assert(unsigned(faction_choice) < leader_sides.size());
 
 			config faction;
 			config& change = faction.add_child("change_faction");
 			change["name"] = preferences::login();
-			change["faction"] = lexical_cast<std::string>(faction_choice);
+			change["faction"] = faction_choice;
 			change["leader"] = leader_choice;
 			change["gender"] = gender_choice;
 			network::send_data(faction, 0, true);
@@ -393,7 +393,7 @@ void wait::process_network_data(const config& data, const network::connection so
 				, _("Response")
 				, data["message"]);
 	}
-	if(data["failed"] == "yes") {
+	if (data["failed"].to_bool()) {
 		set_result(QUIT);
 		return;
 	} else if(data.child("stop_updates")) {
@@ -429,7 +429,7 @@ void wait::generate_menu()
 
 	foreach (const config &sd, level_.child_range("side"))
 	{
-		if(sd["allow_player"] == "no") {
+		if (!sd["allow_player"].to_bool(true)) {
 			continue;
 		}
 
@@ -445,7 +445,7 @@ void wait::generate_menu()
 		// saves.
 		foreach (const config &side_unit, sd.child_range("unit"))
 		{
-			if (utils::string_bool(side_unit["canrecruit"], false)) {
+			if (side_unit["canrecruit"].to_bool()) {
 				leader_type = side_unit["type"].str();
 				break;
 			}
@@ -498,10 +498,10 @@ void wait::generate_menu()
 			str << _("(") << leader_name << _(")");
 		str << COLUMN_SEPARATOR;
 		// Don't show gold for saved games
-		if(sd["allow_changes"] == "yes")
-			str << sd["gold"] << ' ' << _n("multiplayer_starting_gold^Gold", "multiplayer_starting_gold^Gold", lexical_cast_default<int>(sd["gold"], 0)) << COLUMN_SEPARATOR;
+		if (sd["allow_changes"].to_bool())
+			str << sd["gold"] << ' ' << _n("multiplayer_starting_gold^Gold", "multiplayer_starting_gold^Gold", sd["gold"].to_int()) << COLUMN_SEPARATOR;
 
-		int income_amt = lexical_cast_default<int>(sd["income"], 0);
+		int income_amt = sd["income"];
 		if(income_amt != 0){
 			str << _("(") << _("Income") << ' ';
 			if(income_amt > 0)
@@ -510,10 +510,10 @@ void wait::generate_menu()
 		}
 
 		str	<< COLUMN_SEPARATOR << t_string().from_serialized(sd["user_team_name"].str());
-		int disp_color = lexical_cast_default<int>(sd["colour"], 0) - 1;
+		int disp_color = sd["colour"];
 		if(!sd["colour"].empty()) {
 			try {
-				disp_color = game_config::color_info(sd["colour"]).index() - 1;
+				disp_color = game_config::color_info(sd["colour"]).index();
 			} catch(config::error&) {
 				//ignore
 			}
@@ -522,9 +522,9 @@ void wait::generate_menu()
 			 * @todo we fall back to the side colour, but that's ugly rather
 			 * make the colour mandatory in 1.5.
 			 */
-			disp_color = lexical_cast_default<int>(sd["side"], 0) - 1;
+			disp_color = sd["side"];
 		}
-		str << COLUMN_SEPARATOR << get_colour_string(disp_color);
+		str << COLUMN_SEPARATOR << get_colour_string(disp_color - 1);
 		details.push_back(str.str());
 	}
 
