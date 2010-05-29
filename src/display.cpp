@@ -2397,3 +2397,22 @@ void display::remove_arrow(arrow& removeme)
 		arrows_map_[loc].remove(&removeme);
 	}
 }
+
+void display::arrow_changed(arrow & changed)
+{
+	const arrow_path_t & previous_path = changed.get_previous_path();
+	foreach (const map_location& loc, previous_path)
+	{
+		arrows_map_[loc].remove(&changed);
+	}
+	const arrow_path_t & arrow_path = changed.get_path();
+	foreach (const map_location& loc, arrow_path)
+	{
+		arrows_map_[loc].push_back(&changed);
+	}
+}
+
+void display::arrow_deleted(arrow & deleted)
+{
+	remove_arrow(deleted);
+}

@@ -49,6 +49,7 @@ class arrow;
 #include "theme.hpp"
 #include "video.hpp"
 #include "widgets/button.hpp"
+#include "arrow_observer.hpp"
 
 #include "SDL.h"
 
@@ -65,7 +66,7 @@ typedef std::map<map_location, arrows_list_t > arrows_map_t;
 
 class gamemap;
 
-class display
+class display: public arrow_observer
 {
 public:
 	display(CVideo& video, const gamemap* map, const config& theme_cfg,
@@ -825,6 +826,12 @@ public: //operations for the arrow framework
 	void add_arrow(arrow&);
 
 	void remove_arrow(arrow&);
+
+	/** Called by arrow objects when they change. You should not need to call this directly. */
+	virtual void arrow_changed(arrow & a);
+
+	/** Called by arrow objects when they get deleted. You should not need to call this directly. */
+	virtual void arrow_deleted(arrow & a);
 
 private:
 	/** Handle for the label which displays frames per second. */

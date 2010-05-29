@@ -28,9 +28,9 @@ class arrow_observer {
 
     virtual ~arrow_observer() {}
 
-    virtual void arrow_changed(const arrow & a) = 0;
+    virtual void arrow_changed(arrow & a) = 0;
 
-    virtual void arrow_deleted(const arrow & a) = 0;
+    virtual void arrow_deleted(arrow & a) = 0;
 
 };
 
