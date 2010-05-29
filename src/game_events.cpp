@@ -1965,8 +1965,15 @@ WML_HANDLER_FUNCTION(object, event_info, cfg)
 
 WML_HANDLER_FUNCTION(print, /*event_info*/, cfg)
 {
+	// Remove any old message.
+	if (floating_label)
+		font::remove_floating_label(floating_label);
+
 	// Display a message on-screen
-	std::string text = cfg["text"];
+	const std::string& text = cfg["text"];
+	if(text.empty())
+		return;
+
 	std::string size_str = cfg["size"];
 	std::string duration_str = cfg["duration"];
 	std::string red_str = cfg["red"];
@@ -1981,23 +1988,16 @@ WML_HANDLER_FUNCTION(print, /*event_info*/, cfg)
 
 	SDL_Color colour = {red,green,blue,255};
 
-	// Remove any old message.
-	if (floating_label)
-		font::remove_floating_label(floating_label);
+	const SDL_Rect& rect = resources::screen->map_outside_area();
 
-	const std::string& msg = text;
-	if(msg != "") {
-		const SDL_Rect rect = resources::screen->map_outside_area();
+	font::floating_label flabel(text);
+	flabel.set_font_size(size);
+	flabel.set_colour(colour);
+	flabel.set_position(rect.w/2,rect.h/2);
+	flabel.set_lifetime(lifetime);
+	flabel.set_clip_rect(rect);
 
-		font::floating_label flabel(msg);
-		flabel.set_font_size(size);
-		flabel.set_colour(colour);
-		flabel.set_position(rect.w/2,rect.h/2);
-		flabel.set_lifetime(lifetime);
-		flabel.set_clip_rect(rect);
-
-		floating_label = font::add_floating_label(flabel);
-	}
+	floating_label = font::add_floating_label(flabel);
 }
 
 WML_HANDLER_FUNCTION(deprecated_message, /*event_info*/, cfg)
