@@ -128,8 +128,7 @@ static lg::log_domain log_preprocessor("preprocessor");
 #define LOG_PREPROC LOG_STREAM(info,log_preprocessor)
 
 static bool less_campaigns_rank(const config &a, const config &b) {
-	return lexical_cast_default<int>(a["rank"], 1000) <
-	       lexical_cast_default<int>(b["rank"], 1000);
+	return a["rank"].to_int(1000) < b["rank"].to_int(1000);
 }
 
 namespace {
@@ -829,7 +828,8 @@ bool game_controller::play_multiplayer_mode()
 			return false;
 		}
 
-		if (utils::string_bool((*side)["random_faction"])) {
+		if ((*side)["random_faction"].to_bool())
+		{
 			std::vector<std::string> faction_choices, faction_excepts;
 			faction_choices = utils::split((*side)["choices"]);
 			if(faction_choices.size() == 1 && faction_choices.front() == "") {
@@ -842,7 +842,7 @@ bool game_controller::play_multiplayer_mode()
 			unsigned j = 0;
 			foreach (const config &faction, era_cfg.child_range("multiplayer_side"))
 			{
-				if (utils::string_bool(faction["random_faction"])) continue;
+				if (faction["random_faction"].to_bool()) continue;
 				const std::string &faction_id = faction["id"];
 				if (!faction_choices.empty() &&
 				    std::find(faction_choices.begin(), faction_choices.end(), faction_id) == faction_choices.end())
@@ -853,7 +853,7 @@ bool game_controller::play_multiplayer_mode()
 				if (rand() % ++j == 0)
 					side = &faction;
 			}
-			if (utils::string_bool((*side)["random_faction"], false) == true) {
+			if ((*side)["random_faction"].to_bool()) {
 				std::string side_name = (type == side_types.end() ? "default" : type->second);
 				std::cerr << "Could not find any non-random faction for side " << side_num << "\n";
 				return false;
@@ -862,10 +862,7 @@ bool game_controller::play_multiplayer_mode()
 				" selected for side " << side_num << ".\n";
 		}
 
-		char buf[20];
-		snprintf(buf,sizeof(buf),"%d",side_num);
-		s["side"] = buf;
-
+		s["side"] = side_num;
 		s["canrecruit"] = true;
 
 		s.append(*side);
