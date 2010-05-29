@@ -61,9 +61,8 @@ const arrow_path_t & arrow::get_previous_path() const
 
 void arrow::draw_hex(const map_location & loc)
 {
-	surface image_to_draw = image::get_image(symbols_map_[loc], image::SCALED_TO_ZOOM);
-	screen_->render_image(loc.x, loc.y, layer_,
-				loc, image_to_draw);
+	screen_->render_image(screen_->get_location_x(loc), screen_->get_location_y(loc), layer_,
+				loc, image::get_image(symbols_map_[loc], image::SCALED_TO_ZOOM));
 }
 
 void arrow::update_symbols()
