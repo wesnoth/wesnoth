@@ -95,10 +95,10 @@ void room_info::process_room_members(const config& data)
 
 user_info::user_info(const config& c)
 	: name(c["name"])
-	, game_id(lexical_cast_default<int>(c["game_id"]))
+	, game_id(c["game_id"])
 	, relation(ME)
 	, state(game_id == 0 ? LOBBY : GAME)
-	, registered(utils::string_bool(c["registered"]))
+	, registered(c["registered"].to_bool())
 	, observing(c["status"] == "observing")
 {
 	update_relation();
@@ -157,7 +157,7 @@ std::string make_short_name(const std::string& long_name)
 
 game_info::game_info(const config& game, const config& game_config)
 : mini_map()
-, id(lexical_cast_default<int>(game["id"]))
+, id(game["id"])
 , map_data(game["map_data"])
 , name(game["name"])
 , scenario()
@@ -171,16 +171,16 @@ game_info::game_info(const config& game, const config& game_config)
 , vision()
 , status()
 , time_limit()
-, vacant_slots(lexical_cast_default<size_t>(game["slots"], 0))
+, vacant_slots(game["slots"].to_int())
 , current_turn(0)
-, reloaded(game["savegame"] == "yes")
+, reloaded(game["savegame"].to_bool())
 , started(false)
-, fog(game["mp_fog"] == "yes")
-, shroud(game["mp_shroud"] == "yes")
-, observers(game["observer"] != "no")
-, use_map_settings(game["mp_use_map_settings"] == "yes")
+, fog(game["mp_fog"].to_bool())
+, shroud(game["mp_shroud"].to_bool())
+, observers(game["observer"].to_bool(true))
+, use_map_settings(game["mp_use_map_settings"].to_bool())
 , verified(true)
-, password_required(game["password"] == "yes")
+, password_required(game["password"].to_bool())
 , have_era(true)
 , has_friends(false)
 , has_ignored(false)
@@ -200,7 +200,7 @@ game_info::game_info(const config& game, const config& game_config)
 				era_short = make_short_name(era);
 			}
 		} else {
-			have_era = (game["require_era"] == "no");
+			have_era = !game["require_era"].to_bool(true);
 			era = vgettext("Unknown era: $era_id", symbols);
 			era_short = "?" + make_short_name(era);
 			verified = false;
@@ -222,8 +222,9 @@ game_info::game_info(const config& game, const config& game_config)
 		try {
 			gamemap map(game_config, map_data);
 			//mini_map = image::getMinimap(minimap_size_, minimap_size_, map, 0);
-			map_size_info = lexical_cast_default<std::string, int>(map.w(), "??")
-				+ std::string("x") + lexical_cast_default<std::string, int>(map.h(), "??");
+			std::ostringstream msi;
+			msi << map.w() << 'x' << map.h();
+			map_size_info = msi.str();
 			map_info += " - " + map_size_info;
 		} catch (incorrect_map_format_exception &e) {
 			ERR_CF << "illegal map: " << e.msg_ << "\n";
@@ -311,7 +312,7 @@ game_info::game_info(const config& game, const config& game_config)
 	} else {
 		vision = _("none");
 	}
-	if (game["mp_countdown"] == "yes" ) {
+	if (game["mp_countdown"].to_bool()) {
 		time_limit =   game["mp_countdown_init_time"].str() + "+"
 		             + game["mp_countdown_turn_bonus"].str() + "/"
 		             + game["mp_countdown_action_bonus"].str();
