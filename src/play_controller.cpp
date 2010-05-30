@@ -1000,7 +1000,7 @@ void play_controller::expand_wml_commands(std::vector<std::string>& items)
 				config& show_if = itor->second->show_if;
 				config filter_location = itor->second->filter_location;
 				if ((show_if.empty()
-					|| game_events::conditional_passed(&units_, vconfig(show_if)))
+					|| game_events::conditional_passed(vconfig(show_if)))
 				&& (filter_location.empty()
 					|| terrain_filter(vconfig(filter_location), units_)(hex))
 				&& (!itor->second->needs_select

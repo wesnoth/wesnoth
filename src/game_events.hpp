@@ -141,8 +141,7 @@ namespace game_events
 			const entity_location& loc2=map_location::null_location,
 			const config& data=config());
 
-	bool conditional_passed(const unit_map* units,
-			const vconfig& cond, bool backwards_compat=true);
+	bool conditional_passed(const vconfig& cond, bool backwards_compat=true);
 
 	/**
 	 * Handles newly-created handlers. Flushes WML messages and errors.

@@ -1677,7 +1677,7 @@ static int intf_eval_conditional(lua_State *L)
 	if (!luaW_toconfig(L, 1, cond))
 		goto error_call_destructors;
 
-	bool b = game_events::conditional_passed(resources::units, vconfig(cond));
+	bool b = game_events::conditional_passed(vconfig(cond));
 	lua_pushboolean(L, b);
 	return 1;
 }

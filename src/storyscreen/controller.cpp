@@ -73,7 +73,7 @@ void controller::resolve_wml(const vconfig& cfg)
 		// [if]
 		else if(key == "if") {
 			const std::string branch_label =
-				game_events::conditional_passed(NULL, node) ?
+				game_events::conditional_passed(node) ?
 				"then" : "else";
 			if(node.has_child(branch_label)) {
 				const vconfig branch = node.child(branch_label);

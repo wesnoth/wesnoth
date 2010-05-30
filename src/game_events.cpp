@@ -385,8 +385,7 @@ namespace game_events {
 
 	static bool matches_special_filter(const config &cfg, const vconfig& filter);
 
-	static bool internal_conditional_passed(const unit_map* units,
-			const vconfig& cond, bool& backwards_compat)
+	static bool internal_conditional_passed(const vconfig& cond, bool& backwards_compat)
 	{
 		static std::vector<std::pair<int,int> > default_counts = utils::parse_ranges("1-99999");
 
@@ -395,18 +394,38 @@ namespace game_events {
 		const vconfig::child_list& have_unit = cond.get_children("have_unit");
 		backwards_compat = backwards_compat && have_unit.empty();
 		for(vconfig::child_list::const_iterator u = have_unit.begin(); u != have_unit.end(); ++u) {
-			if(units == NULL)
+			if(resources::units == NULL)
 				return false;
 			std::vector<std::pair<int,int> > counts = (*u).has_attribute("count")
 				? utils::parse_ranges((*u)["count"]) : default_counts;
 			int match_count = 0;
-			foreach (const unit &i, *units)
+			foreach (const unit &i, *resources::units)
 			{
 				if(i.hitpoints() > 0 && unit_matches_filter(i, *u)) {
 					++match_count;
 					if(counts == default_counts) {
 						// by default a single match is enough, so avoid extra work
 						break;
+					}
+				}
+			}
+			if(utils::string_bool((*u)["search_recall_list"]))
+			{
+				for(std::vector<team>::iterator team = resources::teams->begin();
+						team!=resources::teams->end(); ++team)
+				{
+					if(counts == default_counts && match_count) {
+						break;
+					}
+					std::vector<unit>& avail_units = team->recall_list();
+					for(std::vector<unit>::iterator unit = avail_units.begin(); unit!=avail_units.end();) {
+						if(counts == default_counts && match_count) {
+							break;
+						}
+						scoped_recall_unit auto_store("this_unit", team->save_id(), unit - avail_units.begin());
+						if (unit_matches_filter(*unit, *u)) {
+							++match_count;
+						}
 					}
 				}
 			}
@@ -421,7 +440,7 @@ namespace game_events {
 		backwards_compat = backwards_compat && have_location.empty();
 		for(vconfig::child_list::const_iterator v = have_location.begin(); v != have_location.end(); ++v) {
 			std::set<map_location> res;
-			terrain_filter(*v, *units).get_locations(res);
+			terrain_filter(*v, *resources::units).get_locations(res);
 
 			std::vector<std::pair<int,int> > counts = (*v).has_attribute("count")
 				? utils::parse_ranges((*v)["count"]) : default_counts;
@@ -476,12 +495,11 @@ namespace game_events {
 		return true;
 	}
 
-	bool conditional_passed(const unit_map* units,
-			const vconfig& cond, bool backwards_compat)
+	bool conditional_passed(const vconfig& cond, bool backwards_compat)
 	{
 		bool allow_backwards_compat = backwards_compat = backwards_compat &&
 			utils::string_bool(cond["backwards_compat"],true);
-		bool matches = internal_conditional_passed(units, cond, allow_backwards_compat);
+		bool matches = internal_conditional_passed(cond, allow_backwards_compat);
 
 		// Handle [and], [or], and [not] with in-order precedence
 		int or_count = 0;
@@ -495,19 +513,19 @@ namespace game_events {
 			// Handle [and]
 			if(cond_name == "and")
 			{
-				matches = matches && conditional_passed(units, cond_filter, backwards_compat);
+				matches = matches && conditional_passed(cond_filter, backwards_compat);
 				backwards_compat = false;
 			}
 			// Handle [or]
 			else if(cond_name == "or")
 			{
-				matches = matches || conditional_passed(units, cond_filter, backwards_compat);
+				matches = matches || conditional_passed(cond_filter, backwards_compat);
 				++or_count;
 			}
 			// Handle [not]
 			else if(cond_name == "not")
 			{
-				matches = matches && !conditional_passed(units, cond_filter, backwards_compat);
+				matches = matches && !conditional_passed(cond_filter, backwards_compat);
 				backwards_compat = false;
 			}
 			++cond_i;
@@ -523,7 +541,7 @@ namespace game_events {
 			 */
 			const vconfig::child_list& orcfgs = cond.get_children("or");
 			for(unsigned int i=0; i < orcfgs.size(); ++i) {
-				if(conditional_passed(units, orcfgs[i])) {
+				if(conditional_passed(orcfgs[i])) {
 					return true;
 				}
 			}
@@ -2634,8 +2652,7 @@ static void if_while_handler(bool is_if,
 	const std::string pass = (is_if ? "then" : "do");
 	const std::string fail = (is_if ? "else" : "");
 	for(size_t i = 0; i != max_iterations; ++i) {
-		const std::string type = game_events::conditional_passed(
-		resources::units, cfg) ? pass : fail;
+		const std::string type = game_events::conditional_passed(cfg) ? pass : fail;
 
 		if(type == "") {
 			break;
@@ -2892,7 +2909,7 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 			mi != menu_items.end(); ++mi) {
 		std::string msg_str = (*mi)["message"];
 		if (!mi->has_child("show_if")
-			|| game_events::conditional_passed(resources::units, mi->child("show_if")))
+			|| game_events::conditional_passed(mi->child("show_if")))
 		{
 			options.push_back(msg_str);
 			option_events.push_back((*mi).get_children("command"));
