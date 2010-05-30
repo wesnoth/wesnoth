@@ -57,7 +57,7 @@ public:
 	void choose_option(int index);
 	void text_input(std::string input);
 	void add_label(const terrain_label*);
-	void clear_labels(const std::string&);
+	void clear_labels(const std::string&, bool);
 	void add_rename(const std::string& name, const map_location& loc);
 	void init_side();
 	void end_turn();

@@ -39,6 +39,7 @@
 #include "game_preferences.hpp"
 #include "wml_exception.hpp"
 #include "formula_string_utils.hpp"
+#include "map_label.hpp"
 #include "ai/manager.hpp"
 #include "ai/testing.hpp"
 

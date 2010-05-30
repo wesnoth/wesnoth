@@ -130,7 +130,8 @@ const terrain_label* map_labels::set_label(const map_location& loc,
 					   const std::string& team_name,
 					   const SDL_Color colour,
 					   const bool visible_in_fog,
-					   const bool visible_in_shroud)
+					   const bool visible_in_shroud,
+					   const bool immutable)
 {
 	terrain_label* res = 0;
 	team_label_map::iterator current_label_map = labels_.find(team_name);
@@ -143,7 +144,7 @@ const terrain_label* map_labels::set_label(const map_location& loc,
 		if(text.empty())
 		{
 			current_label->second->set_text("");
-			res = new terrain_label("",team_name,loc,*this,colour,visible_in_fog,visible_in_shroud);
+			res = new terrain_label("",team_name,loc,*this,colour,visible_in_fog,visible_in_shroud,immutable);
 			delete current_label->second;
 			current_label_map->second.erase(loc);
 
@@ -182,7 +183,8 @@ const terrain_label* map_labels::set_label(const map_location& loc,
 				*this,
 				colour,
 				visible_in_fog,
-				visible_in_shroud);
+				visible_in_shroud,
+				immutable);
 		add_label(loc,label);
 
 		res = label;
@@ -201,35 +203,37 @@ void map_labels::add_label(const map_location &loc, terrain_label *new_label)
 	labels_[new_label->team_name()][loc] = new_label;
 }
 
-void map_labels::clear(const std::string& team_name)
+void map_labels::clear(const std::string& team_name, bool force)
 {
 	team_label_map::iterator i = labels_.find(team_name);
 	if (i != labels_.end())
 	{
-		clear_map(i->second);
+		clear_map(i->second, force);
 	}
 
 	i = labels_.find("");
 	if (i != labels_.end())
 	{
-		clear_map(i->second);
+		clear_map(i->second, force);
 	}
 }
 
-void map_labels::clear_map(label_map &m)
+void map_labels::clear_map(label_map &m, bool force)
 {
 	foreach (label_map::value_type &v, m)
 	{
-		delete v.second;
+		if (!v.second->immutable() || force) {
+			delete v.second;
+			m.erase(v.first);
+		}
 	}
-	m.clear();
 }
 
 void map_labels::clear_all()
 {
 	foreach (team_label_map::value_type &m, labels_)
 	{
-		clear_map(m.second);
+		clear_map(m.second, true);
 	}
 	labels_.clear();
 }
@@ -271,12 +275,14 @@ terrain_label::terrain_label(const std::string& text,
 							 const map_labels& parent,
 							 const SDL_Color colour,
 							 const bool visible_in_fog,
-							 const bool visible_in_shroud)  :
+							 const bool visible_in_shroud,
+							 const bool immutable)  :
 		handle_(0),
 		text_(text),
 		team_name_(team_name),
 		visible_in_fog_(visible_in_fog),
 		visible_in_shroud_(visible_in_shroud),
+		immutable_(immutable),
 		colour_(colour),
 		parent_(&parent),
 		loc_(loc)
@@ -292,6 +298,7 @@ terrain_label::terrain_label(const map_labels &parent, const config &cfg) :
 		team_name_(),
 		visible_in_fog_(true),
 		visible_in_shroud_(false),
+		immutable_(true),
 		colour_(),
 		parent_(&parent),
 		loc_()
@@ -317,6 +324,7 @@ void terrain_label::read(const config &cfg)
 	team_name_ = cfg["team_name"].str();
 	visible_in_fog_ = cfg["visible_in_fog"].to_bool(true);
 	visible_in_shroud_ = cfg["visible_in_shroud"].to_bool();
+	immutable_ = cfg["immutable"].to_bool(true);
 
 	text_ = utils::interpolate_variables_into_string(text_, vs);
 	team_name_ = utils::interpolate_variables_into_string(team_name_, vs);
@@ -344,6 +352,7 @@ void terrain_label::write(config& cfg) const
 	cfg["colour"] = cfg_colour();
 	cfg["visible_in_fog"] = visible_in_fog_;
 	cfg["visible_in_shroud"] = visible_in_shroud_;
+	cfg["immutable"] = immutable_;
 }
 
 const std::string& terrain_label::text() const
@@ -364,6 +373,11 @@ bool terrain_label::visible_in_fog() const
 bool terrain_label::visible_in_shroud() const
 {
 	return visible_in_shroud_;
+}
+
+bool terrain_label::immutable() const
+{
+	return immutable_;
 }
 
 const map_location& terrain_label::location() const

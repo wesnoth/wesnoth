@@ -2563,7 +2563,7 @@ WML_HANDLER_FUNCTION(label, /*event_info*/, cfg)
 	terrain_label label(screen.labels(), cfg.get_config());
 
 	screen.labels().set_label(label.location(), label.text(),
-		label.team_name(), label.colour(), label.visible_in_fog(), label.visible_in_shroud());
+		label.team_name(), label.colour(), label.visible_in_fog(), label.visible_in_shroud(), label.immutable());
 }
 
 WML_HANDLER_FUNCTION(heal_unit, event_info, cfg)

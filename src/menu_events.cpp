@@ -1576,8 +1576,8 @@ void menu_handler::clear_labels()
 	if (gui_->team_valid()
 	   && !is_observer())
 	{
-		gui_->labels().clear(gui_->current_team_name());
-		recorder.clear_labels(gui_->current_team_name());
+		gui_->labels().clear(gui_->current_team_name(), false);
+		recorder.clear_labels(gui_->current_team_name(), false);
 	}
 }
 

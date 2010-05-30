@@ -977,12 +977,14 @@ bool playsingle_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, 
 			res = !is_observer();
 			break;
 		case hotkey::HOTKEY_LABEL_TEAM_TERRAIN:
-		case hotkey::HOTKEY_LABEL_TERRAIN:
+		case hotkey::HOTKEY_LABEL_TERRAIN: {
+			const terrain_label *label = resources::screen->labels().get_label(mouse_handler_.get_last_hex());
 			res = !events::commands_disabled && map_.on_board(mouse_handler_.get_last_hex())
 				&& !gui_->shrouded(mouse_handler_.get_last_hex())
-				&& !is_observer();
+				&& !is_observer()
+				&& (!label || !label->immutable());
 			break;
-
+		}
 		case hotkey::HOTKEY_CONTINUE_MOVE: {
 			if(browse_ || events::commands_disabled)
 				return false;

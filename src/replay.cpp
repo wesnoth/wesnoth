@@ -328,13 +328,14 @@ void replay::add_label(const terrain_label* label)
 	cmd->add_child("label",val);
 }
 
-void replay::clear_labels(const std::string& team_name)
+void replay::clear_labels(const std::string& team_name, bool force)
 {
 	config* const cmd = add_command(false);
 
 	(*cmd)["undo"] = false;
 	config val;
 	val["team_name"] = team_name;
+	val["force"] = force;
 	cmd->add_child("clear_labels",val);
 }
 
@@ -858,7 +859,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 		}
 		else if (const config &child = cfg->child("clear_labels"))
 		{
-			resources::screen->labels().clear(std::string(child["team_name"]));
+			resources::screen->labels().clear(std::string(child["team_name"]), child["force"].to_bool());
 		}
 		else if (const config &child = cfg->child("rename"))
 		{
