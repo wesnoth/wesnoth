@@ -64,7 +64,7 @@ Active des options supplémentaires pour la ligne de commande dans le jeu (se
 reporter au Wiki\ : http://www.wesnoth.org/wiki/CommandMode pour plus
 d'informations).
 .TP 
-\fB\-e,\ \-\-editor\fP\fI\ file\fP
+\fB\-e,\ \-\-editor\fP\fI\ fichier\fP
 lance directement l'éditeur de carte.  Si \fIfile\fP est utilisé, cela équivaut
 à \fB\-e \-\-load\fP.
 .TP 
@@ -106,9 +106,9 @@ Nombre d'images par seconde que le jeu peut afficher. La valeur doit être
 comprise entre 1 et 1000, la valeur par défaut est \fB50\fP.
 .TP 
 \fB\-m, \-\-multiplayer\fP
-runs a multiplayer game. There are additional options that can be used
-together with \fB\-\-multiplayer\fP as explained below. Only these additional
-options can follow \fB\-\-multiplayer\fP.
+Lance un jeu multijoueurs. Des options supplémentaires peuvent être
+utilisées avec \fB\-\-multiplayer\fP\ : voir ci\-dessous. Seules ces options
+supplémentaires peuvent suivre \fB\-\-multiplayer\fP.
 .TP 
 \fB\-\-no\-delay\fP
 Lance le jeu sans pause pour mesurer les performances graphiques. Cette
@@ -203,11 +203,11 @@ identifiant. Les factions sont décrites dans le fichier
 \fB\-\-turns=\fP\fIvaleur\fP
 Définit le nombre de tours du scénario (par défaut\ : \fB50\fP).
 .
-.SH "EXIT STATUS"
+.SH "STATUT DE SORTIE"
 .
-Normal exit status is 0. An exit status of 1 indicates an (SDL, video,
-fonts, etc) initialization error. An exit status of 2 indicates an error
-with the command line options.
+Le statut de sortie normal est 0. Un code de sortie de 1 indique une erreur
+(SDL, vidéo, police, etc.). Un code de sortie de 2 indique une erreur avec
+les options de ligne de commande.
 .
 .SH AUTEUR
 .
