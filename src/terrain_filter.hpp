@@ -38,7 +38,8 @@ public:
 	terrain_filter(const vconfig& cfg,
 		const unit_map& units, const bool flat_tod=false, const size_t max_loop=MAX_MAP_AREA);
 	terrain_filter(const vconfig& cfg, const terrain_filter& original);
-	~terrain_filter() {};
+	/** Default implementation, but defined out-of-line for efficiency reasons. */
+	~terrain_filter();
 
 	terrain_filter(const terrain_filter &other);
 	terrain_filter& operator=(const terrain_filter &other);

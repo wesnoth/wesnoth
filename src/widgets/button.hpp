@@ -39,7 +39,8 @@ public:
 	       std::string button_image="", SPACE_CONSUMPTION spacing=DEFAULT_SPACE,
 		   const bool auto_join=true);
 
-	virtual ~button() {}
+	/** Default implementation, but defined out-of-line for efficiency reasons. */
+	virtual ~button();
 	void set_check(bool check);
 	void set_active(bool active);
 	bool checked() const;

@@ -42,6 +42,8 @@ class config_writer
 {
 public:
 	config_writer(std::ostream &out, bool compress, int level = -1);
+	/** Default implementation, but defined out-of-line for efficiency reasons. */
+	~config_writer();
 
 	void write(const config &cfg);
 

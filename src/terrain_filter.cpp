@@ -29,6 +29,10 @@
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
 
+terrain_filter::~terrain_filter()
+{
+}
+
 #ifdef _MSC_VER
 // This is a workaround for a VC bug; this constructor is never called
 // and so we don't care about the warnings this quick fix generates

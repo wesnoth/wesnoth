@@ -38,6 +38,8 @@ class attack_type
 public:
 
 	attack_type(const config& cfg);
+	/** Default implementation, but defined out-of-line for efficiency reasons. */
+	~attack_type();
 	const t_string& name() const { return description_; }
 	const std::string& id() const { return id_; }
 	const std::string& type() const { return type_; }

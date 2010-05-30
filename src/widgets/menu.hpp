@@ -162,6 +162,9 @@ public:
 	     bool click_selects=false, int max_height=-1, int max_width=-1,
 		 const sorter* sorter_obj=NULL, style *menu_style=NULL, const bool auto_join=true);
 
+	/** Default implementation, but defined out-of-line for efficiency reasons. */
+	~menu();
+
 	int selection() const;
 
 	void move_selection(size_t id);

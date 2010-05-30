@@ -203,6 +203,10 @@ menu::menu(CVideo& video, const std::vector<std::string>& items,
 	fill_items(items, true);
 }
 
+menu::~menu()
+{
+}
+
 void menu::fill_items(const std::vector<std::string>& items, bool strip_spaces)
 {
 	for(std::vector<std::string>::const_iterator itor = items.begin();

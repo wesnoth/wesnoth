@@ -97,6 +97,10 @@ button::button(CVideo& video, const std::string& label, button::TYPE type,
 	}
 }
 
+button::~button()
+{
+}
+
 void button::calculate_size()
 {
 	if (type_ == TYPE_IMAGE){

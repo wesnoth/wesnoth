@@ -60,6 +60,9 @@ config_writer::config_writer(
 	}
 }
 
+config_writer::~config_writer()
+{
+}
 
 void config_writer::write(const config &cfg)
 {
