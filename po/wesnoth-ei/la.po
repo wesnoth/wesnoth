@@ -12,10 +12,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-05-15 14:01+0200\n"
+"POT-Creation-Date: 2010-05-30 18:23+0200\n"
 "PO-Revision-Date: 2009-11-13 21:39-0500\n"
 "Last-Translator: Michael Babich (Aethaeryn) <michaelbabich7@gmail.com>\n"
 "Language-Team: none\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -3049,7 +3050,7 @@ msgid "Horse Lord"
 msgstr "Dominus Equorum"
 
 #. [unit_type]: id=Horse Lord, race=human
-#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:18
+#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:20
 #, fuzzy
 msgid ""
 "The greatest of the men of the plains, Horse Lords are heads of their houses "
@@ -3061,15 +3062,15 @@ msgstr ""
 "potest et aspergillum ceteros contundit."
 
 #. [attack]: type=blade
-#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:22
-#: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:29
-msgid "sword"
-msgstr "gladius"
+#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:24
+#: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:23
+msgid "greatsword"
+msgstr "spatha magna"
 
 #. [attack]: type=impact
-#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:31
-#: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:38
-#: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:38
+#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:33
+#: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:32
+#: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:32
 #, fuzzy
 msgid "morning star"
 msgstr "aspergillum"
@@ -3081,7 +3082,7 @@ msgid "Mounted Fighter"
 msgstr "Pugnator Equester"
 
 #. [unit_type]: id=Mounted Fighter, race=human
-#: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:25
+#: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:19
 #, fuzzy
 msgid ""
 "The nobles of the men of the plains are trained with the rest of the "
@@ -3093,6 +3094,11 @@ msgstr ""
 "bellatores magnos. Tamen et educantur in ductu contubernalium, et ii fiunt "
 "Tribuni exercituum Gentium."
 
+#. [attack]: type=blade
+#: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:23
+msgid "sword"
+msgstr "gladius"
+
 #. [unit_type]: id=Mounted Warrior, race=human
 #: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:4
 #, fuzzy
@@ -3100,7 +3106,7 @@ msgid "Mounted Warrior"
 msgstr "Bellator Equester"
 
 #. [unit_type]: id=Mounted Warrior, race=human
-#: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:25
+#: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:19
 #, fuzzy
 msgid ""
 "Leaders of the plains, Mounted Warriors are skilled with the use of the "
@@ -3111,11 +3117,6 @@ msgstr ""
 "Duces Equestres camporum, Bellatores Equestres periti sunt cum gladio et "
 "aspergillo. Equitantes se per aciem magna celeritate movere possunt et "
 "subsidium necessarium ad frontes varios praebere possunt."
-
-#. [attack]: type=blade
-#: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:29
-msgid "greatsword"
-msgstr "spatha magna"
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/utils/deaths.cfg:9

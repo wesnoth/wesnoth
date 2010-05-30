@@ -9,10 +9,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-05-15 14:01+0200\n"
+"POT-Creation-Date: 2010-05-30 18:23+0200\n"
 "PO-Revision-Date: 2010-04-30 23:19+0200\n"
 "Last-Translator: Mikko Nikkilä <miccoh@gmail.com>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
+"Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -3559,7 +3560,7 @@ msgid "Horse Lord"
 msgstr "Hevosherra"
 
 #. [unit_type]: id=Horse Lord, race=human
-#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:18
+#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:20
 msgid ""
 "The greatest of the men of the plains, Horse Lords are heads of their houses "
 "and are respected by all, friend or foe. Their sword can kill most ordinary "
@@ -3570,15 +3571,15 @@ msgstr ""
 "ja heidän piikkinuijansa murskaa jäljelle jääneet."
 
 #. [attack]: type=blade
-#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:22
-#: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:29
-msgid "sword"
-msgstr "miekka"
+#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:24
+#: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:23
+msgid "greatsword"
+msgstr "suurmiekka"
 
 #. [attack]: type=impact
-#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:31
-#: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:38
-#: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:38
+#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:33
+#: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:32
+#: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:32
 msgid "morning star"
 msgstr "piikkinuija"
 
@@ -3588,7 +3589,7 @@ msgid "Mounted Fighter"
 msgstr "Ratsusoturi"
 
 #. [unit_type]: id=Mounted Fighter, race=human
-#: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:25
+#: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:19
 msgid ""
 "The nobles of the men of the plains are trained with the rest of the "
 "horsemen to become great warriors. However, they are also trained in "
@@ -3599,13 +3600,18 @@ msgstr ""
 "sotureiksi. Heidät opetetaan kuitenkin myös komentamaan tovereitaan. Juuri "
 "heistä tulee klaanien armeijoiden kapteeneita."
 
+#. [attack]: type=blade
+#: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:23
+msgid "sword"
+msgstr "miekka"
+
 #. [unit_type]: id=Mounted Warrior, race=human
 #: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:4
 msgid "Mounted Warrior"
 msgstr "Ratsukomentaja"
 
 #. [unit_type]: id=Mounted Warrior, race=human
-#: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:25
+#: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:19
 msgid ""
 "Leaders of the plains, Mounted Warriors are skilled with the use of the "
 "sword and the morning star. Riding horses, they are able to move around the "
@@ -3615,11 +3621,6 @@ msgstr ""
 "Ratsusoturit, nuo taitavat miekan ja piikkinuijan käyttäjät, ovat arojen "
 "herroja. He kykenevät liikkumaan ratsain nopeasti pitkin taistelukenttää ja "
 "tarjoamaan apuaan sinne, missä sitä eniten tarvitaan."
-
-#. [attack]: type=blade
-#: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:29
-msgid "greatsword"
-msgstr "suurmiekka"
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/utils/deaths.cfg:9

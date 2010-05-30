@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-05-01 13:05+0200\n"
+"POT-Creation-Date: 2010-05-30 18:23+0200\n"
 "PO-Revision-Date: 2010-05-16 20:25+0200\n"
 "Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
@@ -3539,7 +3539,7 @@ msgid "Horse Lord"
 msgstr "Señor dos cabalos"
 
 #. [unit_type]: id=Horse Lord, race=human
-#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:18
+#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:20
 msgid ""
 "The greatest of the men of the plains, Horse Lords are heads of their houses "
 "and are respected by all, friend or foe. Their sword can kill most ordinary "
@@ -3550,17 +3550,17 @@ msgstr ""
 "súas espadas poden matar á maioría dos inimigos correntes, e o seu mallo "
 "esmaga ao resto."
 
-# sword=espada FIXADO
+# greatsword=espada grande FIXADO
 #. [attack]: type=blade
-#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:22
-#: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:29
-msgid "sword"
-msgstr "espada"
+#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:24
+#: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:23
+msgid "greatsword"
+msgstr "espada grande"
 
 #. [attack]: type=impact
-#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:31
-#: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:38
-#: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:38
+#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:33
+#: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:32
+#: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:32
 msgid "morning star"
 msgstr "maza"
 
@@ -3571,7 +3571,7 @@ msgid "Mounted Fighter"
 msgstr "Loitador montado"
 
 #. [unit_type]: id=Mounted Fighter, race=human
-#: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:25
+#: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:19
 msgid ""
 "The nobles of the men of the plains are trained with the rest of the "
 "horsemen to become great warriors. However, they are also trained in "
@@ -3582,6 +3582,12 @@ msgstr ""
 "chegar ser grandes guerreiros. Porén, tamén adestran para comandar aos seus "
 "camaradas, e son os únicos que chegan ser capitáns dos exércitos dos clans."
 
+# sword=espada FIXADO
+#. [attack]: type=blade
+#: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:23
+msgid "sword"
+msgstr "espada"
+
 # Mounted Warrior=Guerreiro Montado FIXADO
 #. [unit_type]: id=Mounted Warrior, race=human
 #: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:4
@@ -3589,7 +3595,7 @@ msgid "Mounted Warrior"
 msgstr "Guerreiro montado"
 
 #. [unit_type]: id=Mounted Warrior, race=human
-#: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:25
+#: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:19
 msgid ""
 "Leaders of the plains, Mounted Warriors are skilled with the use of the "
 "sword and the morning star. Riding horses, they are able to move around the "
@@ -3599,12 +3605,6 @@ msgstr ""
 "Líderes das chairas, os guerreiros montados están afeitos a usar a espada e "
 "a maza. A cabalo son capaces de moverse polo campo de batalla con gran "
 "velocidade, e poden resultar de gran axuda en diferentes frontes."
-
-# greatsword=espada grande FIXADO
-#. [attack]: type=blade
-#: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:29
-msgid "greatsword"
-msgstr "espada grande"
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/utils/deaths.cfg:9

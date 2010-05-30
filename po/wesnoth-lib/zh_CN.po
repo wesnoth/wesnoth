@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-05-15 14:21+0200\n"
+"POT-Creation-Date: 2010-05-30 18:23+0200\n"
 "PO-Revision-Date: 2010-05-26 21:32+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: none\n"
@@ -394,105 +394,106 @@ msgid "Dry Grass"
 msgstr ""
 
 #. [terrain_type]: id=hills
-#: data/core/terrain.cfg:898
+#. [terrain_type]: id=hills_dry
+#: data/core/terrain.cfg:898 data/core/terrain.cfg:906
 msgid "Hills"
 msgstr "丘陵"
 
 #. [terrain_type]: id=desert_hills
-#: data/core/terrain.cfg:906
+#: data/core/terrain.cfg:915
 msgid "Dunes"
 msgstr "沙丘"
 
 #. [terrain_type]: id=snow_hills
-#: data/core/terrain.cfg:916
+#: data/core/terrain.cfg:925
 msgid "Snow Hills"
 msgstr "雪丘"
 
 #. [terrain_type]: id=mountains
 #. [terrain_type]: id=desert_mountains
 #. [terrain_type]: id=snow_mountains
-#: data/core/terrain.cfg:930 data/core/terrain.cfg:938
-#: data/core/terrain.cfg:948
+#: data/core/terrain.cfg:939 data/core/terrain.cfg:947
+#: data/core/terrain.cfg:957
 msgid "Mountains"
 msgstr "山岭"
 
 #. [terrain_type]: id=desert_mountains
-#: data/core/terrain.cfg:939
+#: data/core/terrain.cfg:948
 msgid "Desert Mountains"
 msgstr "沙漠山脉"
 
 #. [terrain_type]: id=snow_mountains
-#: data/core/terrain.cfg:949
+#: data/core/terrain.cfg:958
 msgid "Snowy Mountains"
 msgstr "积雪覆盖的山脉"
 
 #. [terrain_type]: id=canyon
-#: data/core/terrain.cfg:963
+#: data/core/terrain.cfg:972
 msgid "Chasm"
 msgstr "深渊"
 
 #. [terrain_type]: id=lava_chasm
-#: data/core/terrain.cfg:972
+#: data/core/terrain.cfg:981
 msgid "Lava chasm"
 msgstr "熔岩裂口"
 
 #. [terrain_type]: id=lava
-#: data/core/terrain.cfg:982
+#: data/core/terrain.cfg:991
 msgid "Lava"
 msgstr "熔岩"
 
 #. [terrain_type]: id=farm
-#: data/core/terrain.cfg:996
+#: data/core/terrain.cfg:1005
 msgid "Farmland"
 msgstr "农场"
 
 #. [terrain_type]: id=dirt_dark
 #. [terrain_type]: id=dirt
 #. [terrain_type]: id=road
-#: data/core/terrain.cfg:1006 data/core/terrain.cfg:1015
-#: data/core/terrain.cfg:1024
+#: data/core/terrain.cfg:1015 data/core/terrain.cfg:1024
+#: data/core/terrain.cfg:1033
 msgid "Dirt"
 msgstr "尘土"
 
 #. [terrain_type]: id=road
 #. [terrain_type]: id=stone_path
-#: data/core/terrain.cfg:1033 data/core/terrain.cfg:1042
+#: data/core/terrain.cfg:1042 data/core/terrain.cfg:1051
 #, fuzzy
 msgid "Cobbles"
 msgstr "碎石"
 
 #. [terrain_type]: id=swamp_water
-#: data/core/terrain.cfg:1055
+#: data/core/terrain.cfg:1064
 msgid "Swamp"
 msgstr "沼泽"
 
 #. [terrain_type]: id=lit
-#: data/core/terrain.cfg:1069
+#: data/core/terrain.cfg:1078
 msgid "Lit"
 msgstr "光照"
 
 #. [terrain_type]: id=cave
-#: data/core/terrain.cfg:1079
+#: data/core/terrain.cfg:1088
 msgid "Cave"
 msgstr "洞穴"
 
 #. [terrain_type]: id=cave_path
-#: data/core/terrain.cfg:1097
+#: data/core/terrain.cfg:1106
 msgid "Cave path"
 msgstr "洞穴小径"
 
 #. [terrain_type]: id=fungus
-#: data/core/terrain.cfg:1106
+#: data/core/terrain.cfg:1115
 msgid "Mushroom Grove"
 msgstr "蘑菇林"
 
 #. [terrain_type]: id=fungus_beam
-#: data/core/terrain.cfg:1115
+#: data/core/terrain.cfg:1124
 msgid "Mushroom Grove Lit"
 msgstr "被照亮的蘑菇林"
 
 #. [terrain_type]: id=rocky_cave
-#: data/core/terrain.cfg:1126
+#: data/core/terrain.cfg:1135
 msgid "Rockbound Cave"
 msgstr "岩石洞穴"
 
@@ -504,7 +505,7 @@ msgstr "岩石洞穴"
 #. [terrain_type]: id=elven_snow_village
 #. [terrain_type]: id=elven_village
 #. [terrain_type]: id=snow_village
-#. [terrain_type]: id=village
+#. [terrain_type]: id=human_village
 #. [terrain_type]: id=city_village
 #. [terrain_type]: id=hill_village
 #. [terrain_type]: id=snow-hill_village
@@ -525,94 +526,102 @@ msgstr "岩石洞穴"
 #. [terrain_type]: id=mermen_village
 #. [terrain_type]: id=swamp_village
 #. [terrain_type]: id=swamp_merfolk-village
-#: data/core/terrain.cfg:1153 data/core/terrain.cfg:1164
-#: data/core/terrain.cfg:1177 data/core/terrain.cfg:1188
-#: data/core/terrain.cfg:1199 data/core/terrain.cfg:1210
-#: data/core/terrain.cfg:1223 data/core/terrain.cfg:1234
-#: data/core/terrain.cfg:1247 data/core/terrain.cfg:1258
-#: data/core/terrain.cfg:1268 data/core/terrain.cfg:1279
-#: data/core/terrain.cfg:1290 data/core/terrain.cfg:1302
-#: data/core/terrain.cfg:1313 data/core/terrain.cfg:1324
-#: data/core/terrain.cfg:1335 data/core/terrain.cfg:1346
-#: data/core/terrain.cfg:1359 data/core/terrain.cfg:1370
-#: data/core/terrain.cfg:1381 data/core/terrain.cfg:1392
-#: data/core/terrain.cfg:1403 data/core/terrain.cfg:1414
-#: data/core/terrain.cfg:1425 data/core/terrain.cfg:1436
-#: data/core/terrain.cfg:1447 data/core/terrain.cfg:1460
-#: data/core/terrain.cfg:1475 data/core/terrain.cfg:1486
+#. [terrain_type]: id=village
+#: data/core/terrain.cfg:1162 data/core/terrain.cfg:1174
+#: data/core/terrain.cfg:1188 data/core/terrain.cfg:1200
+#: data/core/terrain.cfg:1212 data/core/terrain.cfg:1224
+#: data/core/terrain.cfg:1238 data/core/terrain.cfg:1250
+#: data/core/terrain.cfg:1264 data/core/terrain.cfg:1276
+#: data/core/terrain.cfg:1288 data/core/terrain.cfg:1300
+#: data/core/terrain.cfg:1312 data/core/terrain.cfg:1324
+#: data/core/terrain.cfg:1336 data/core/terrain.cfg:1348
+#: data/core/terrain.cfg:1360 data/core/terrain.cfg:1372
+#: data/core/terrain.cfg:1386 data/core/terrain.cfg:1398
+#: data/core/terrain.cfg:1410 data/core/terrain.cfg:1422
+#: data/core/terrain.cfg:1434 data/core/terrain.cfg:1446
+#: data/core/terrain.cfg:1458 data/core/terrain.cfg:1470
+#: data/core/terrain.cfg:1482 data/core/terrain.cfg:1496
+#: data/core/terrain.cfg:1511 data/core/terrain.cfg:1522
+#: data/core/terrain.cfg:1698
 msgid "Village"
 msgstr "村庄"
 
 #. [terrain_type]: id=deep_water
-#: data/core/terrain.cfg:1501
+#: data/core/terrain.cfg:1537
 msgid "Deep Water"
 msgstr "深水"
 
 #. [terrain_type]: id=shallow_water
-#: data/core/terrain.cfg:1511
+#: data/core/terrain.cfg:1547
 msgid "Shallow Water"
 msgstr "浅水"
 
+#. [terrain_type]: id=tropical_water_depreciated
+#: data/core/terrain.cfg:1558
+msgid "Deprecated. Use 'Wwt'"
+msgstr ""
+
 #. [terrain_type]: id=tropical_water
-#: data/core/terrain.cfg:1521
+#: data/core/terrain.cfg:1569
 #, fuzzy
 msgid "Tropical Water"
 msgstr "热带森林"
 
 #. [terrain_type]: id=ford
-#: data/core/terrain.cfg:1532
+#: data/core/terrain.cfg:1580
 msgid "River Ford"
 msgstr "河滩"
 
 #. [terrain_type]: id=reef
-#: data/core/terrain.cfg:1543
+#: data/core/terrain.cfg:1591
 msgid "Coastal Reef"
 msgstr "礁石"
 
 #. [terrain_type]: id=cloud
-#: data/core/terrain.cfg:1557
+#. [terrain_type]: id=cloud_snow
+#: data/core/terrain.cfg:1605 data/core/terrain.cfg:1623
 msgid "Impassable Mountains"
 msgstr "高不可攀的大山"
 
 #. [terrain_type]: id=clouddesert
-#: data/core/terrain.cfg:1566
+#: data/core/terrain.cfg:1614
 msgid "Impassable Desert Mountains"
 msgstr "高不可攀的沙漠山脉"
 
 #. [terrain_type]: id=cavewall
-#: data/core/terrain.cfg:1575
+#: data/core/terrain.cfg:1632
 msgid "Cave Wall"
 msgstr "洞穴墙壁"
 
 #. [terrain_type]: id=wall_stone
 #. [terrain_type]: id=wall_stone_lit
-#: data/core/terrain.cfg:1584 data/core/terrain.cfg:1593
+#: data/core/terrain.cfg:1641 data/core/terrain.cfg:1650
 msgid "Wall"
 msgstr "墙壁"
 
 #. [terrain_type]: id=impassable_overlay
 #. [terrain_type]: id=impassable
-#: data/core/terrain.cfg:1603 data/core/terrain.cfg:1641
+#: data/core/terrain.cfg:1660 data/core/terrain.cfg:1705
 msgid "Impassable"
 msgstr "不可通过地形"
 
 #. [terrain_type]: id=void
-#: data/core/terrain.cfg:1614
+#: data/core/terrain.cfg:1671
 msgid "Void"
 msgstr "空"
 
 #. [terrain_type]: id=flat
-#: data/core/terrain.cfg:1627
+#: data/core/terrain.cfg:1684
 msgid "Flat"
 msgstr "平原"
 
 #. [terrain_type]: id=frozen
-#: data/core/terrain.cfg:1634
+#: data/core/terrain.cfg:1691
 msgid "Frozen"
 msgstr "雪地"
 
 #. [terrain_type]: id=unwalkable
-#: data/core/terrain.cfg:1648
+#: data/core/terrain.cfg:1712
 msgid "Unwalkable"
 msgstr "不可步行地形"
 
@@ -2210,7 +2219,7 @@ msgstr "字体大小是0。"
 msgid "Text doesn't start on canvas."
 msgstr "文字没有从画布上开始。"
 
-#: src/gui/auxiliary/widget_definition.cpp:136
+#: src/gui/auxiliary/widget_definition.cpp:135
 #: src/gui/auxiliary/window_builder.cpp:230
 msgid "No resolution defined."
 msgstr "分辨率未定义。"
@@ -2295,23 +2304,23 @@ msgstr "#（无效）"
 msgid "Campaign: $campaign_name"
 msgstr "战役：$campaign_name"
 
-#: src/gui/dialogs/game_load.cpp:297
+#: src/gui/dialogs/game_load.cpp:295
 msgid "replay"
 msgstr "录像"
 
-#: src/gui/dialogs/game_load.cpp:299
+#: src/gui/dialogs/game_load.cpp:297
 msgid "Turn"
 msgstr "回合"
 
-#: src/gui/dialogs/game_load.cpp:301
+#: src/gui/dialogs/game_load.cpp:299
 msgid "Scenario Start"
 msgstr "场景开始"
 
-#: src/gui/dialogs/game_load.cpp:304
+#: src/gui/dialogs/game_load.cpp:302
 msgid "Difficulty: "
 msgstr "难度："
 
-#: src/gui/dialogs/game_load.cpp:308
+#: src/gui/dialogs/game_load.cpp:306
 msgid "Version: "
 msgstr "版本："
 
@@ -2388,16 +2397,16 @@ msgstr "必须的构件“$id”未定义。"
 msgid "Window not defined."
 msgstr "窗口未定义。"
 
-#: src/gui/widgets/settings.cpp:387
+#: src/gui/widgets/settings.cpp:386
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr "构件定义“$definition”不包含“$id”的定义。"
 
-#: src/gui/widgets/settings.cpp:443
+#: src/gui/widgets/settings.cpp:442
 msgid "No default gui defined."
 msgstr "默认图形界面未定义。"
 
-#: src/gui/widgets/settings.cpp:470
+#: src/gui/widgets/settings.cpp:469
 msgid "No state or draw section defined."
 msgstr "状态或绘制区域未定义。"
 
@@ -2977,6 +2986,10 @@ msgid ""
 "A terrain with a string with more than 4 characters has been found, the "
 "affected terrain is :"
 msgstr "找到一个具有超过4个字符的字符串的地形，受影响的地形是："
+
+#: src/text.cpp:289
+msgid "The text contains invalid markup: "
+msgstr ""
 
 #: src/wml_exception.cpp:53
 msgid ""

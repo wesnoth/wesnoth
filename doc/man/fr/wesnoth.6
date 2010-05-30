@@ -48,7 +48,7 @@ partagez\-les avec d'autres.
 \fB\-\-bpp\fP\fI\ nombre\fP
 Définit la valeur de bits par pixel (couleurs). Exemple\ : \fB\-\-bpp 32\fP
 .TP 
-\fB\-c[[<difficulty>] <id_campaign> [<id_scenario>]], \-\-campaign[[<difficulty>] <id_campaign> [<id_scenario>]]\fP
+\fB\-c, \-\-campaign[[<difficulty>] <id_campaign> [<id_scenario>]]\fP
 goes directly to the campaign based on the parameters.  The difficulty is a
 number between 1 and current campaign's difficulties number.  The default
 difficulty is 1.  The scenario must be one of the campaign's child
@@ -62,12 +62,15 @@ ou "Mes Documents\eMes Jeux".
 Affiche le nom du répertoire de configuration utilisateur et quitte le
 programme.
 .TP 
+\fB\-datadir <directory>\fP
+overrides the data directory with the one specified
+.TP 
 \fB\-d, \-\-debug\fP
 Active des options supplémentaires pour la ligne de commande dans le jeu (se
 reporter au Wiki\ : http://www.wesnoth.org/wiki/CommandMode pour plus
 d'informations).
 .TP 
-\fB\-e,\ \-\-editor\fP\fI\ file\fP
+\fB\-e,\ \-\-editor\fP\fI\ fichier\fP
 lance directement l'éditeur de carte.  Si \fIfile\fP est utilisé, cela équivaut
 à \fB\-e \-\-load\fP.
 .TP 
@@ -109,9 +112,9 @@ Nombre d'images par seconde que le jeu peut afficher. La valeur doit être
 comprise entre 1 et 1000, la valeur par défaut est \fB50\fP.
 .TP 
 \fB\-m, \-\-multiplayer\fP
-runs a multiplayer game. There are additional options that can be used
-together with \fB\-\-multiplayer\fP as explained below. Only these additional
-options can follow \fB\-\-multiplayer\fP.
+Lance un jeu multijoueurs. Des options supplémentaires peuvent être
+utilisées avec \fB\-\-multiplayer\fP\ : voir ci\-dessous. Seules ces options
+supplémentaires peuvent suivre \fB\-\-multiplayer\fP.
 .TP 
 \fB\-\-no\-delay\fP
 Lance le jeu sans pause pour mesurer les performances graphiques. Cette
@@ -128,6 +131,17 @@ Lance le jeu sans son ni musique.
 .TP 
 \fB\-\-path\fP
 Affiche le nom du répertoire principal du jeu et quitte le programme.
+.TP 
+\fB\-\-preprocess, \-p[=<define1>,<define2>,...] <file/folder> <target directory>\fP
+preprocesses a specified file/folder. The file(s) will be written in
+specified target directory: a plain cfg file and a processed cfg file. If a
+folder is specified, it will be preprocessed recursively based on the known
+preprocessor rules. The common macroses from the data/core/macros will be
+preprocessed before the specified resources.  \fBdefine1,define2,...\fP \- the
+extra defines will be added before processing the files. If you want to add
+them you must add the '=' character before.  Example: \fB\-p
+~/wesnoth/data/campaigns/tutorial ~/result\fP or
+\fB\-p=MULTIPLAYER,MY_OWN_CAMPAIGN ~/wesnoth/data/campaign/camp ~/result\fP
 .TP 
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-résolution\fP\ \fIX\fP\fBx\fP\fIY\fP
 Définit la résolution de l'écran. Exemple\ : \fB\-r 800x600\fP
@@ -206,11 +220,11 @@ identifiant. Les factions sont décrites dans le fichier
 \fB\-\-turns=\fP\fIvaleur\fP
 Définit le nombre de tours du scénario (par défaut\ : \fB50\fP).
 .
-.SH "EXIT STATUS"
+.SH "STATUT DE SORTIE"
 .
-Normal exit status is 0. An exit status of 1 indicates an (SDL, video,
-fonts, etc) initialization error. An exit status of 2 indicates an error
-with the command line options.
+Le statut de sortie normal est 0. Un code de sortie de 1 indique une erreur
+(SDL, vidéo, police, etc.). Un code de sortie de 2 indique une erreur avec
+les options de ligne de commande.
 .
 .SH AUTEUR
 .

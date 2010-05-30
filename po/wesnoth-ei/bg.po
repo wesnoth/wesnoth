@@ -5,10 +5,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-05-15 14:01+0200\n"
+"POT-Creation-Date: 2010-05-30 18:23+0200\n"
 "PO-Revision-Date: 2007-05-14 22:53+0300\n"
 "Last-Translator: Nikolay Vladimirov <nikolay@vladimiroff.com>\n"
 "Language-Team: Български\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -3493,7 +3494,7 @@ msgid "Horse Lord"
 msgstr "Повелител на конете"
 
 #. [unit_type]: id=Horse Lord, race=human
-#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:18
+#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:20
 msgid ""
 "The greatest of the men of the plains, Horse Lords are heads of their houses "
 "and are respected by all, friend or foe. Their sword can kill most ordinary "
@@ -3505,15 +3506,15 @@ msgstr ""
 "оцелял."
 
 #. [attack]: type=blade
-#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:22
-#: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:29
-msgid "sword"
-msgstr "меч"
+#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:24
+#: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:23
+msgid "greatsword"
+msgstr "велик меч"
 
 #. [attack]: type=impact
-#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:31
-#: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:38
-#: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:38
+#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:33
+#: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:32
+#: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:32
 msgid "morning star"
 msgstr "боздуган с топка"
 
@@ -3523,7 +3524,7 @@ msgid "Mounted Fighter"
 msgstr "Боец-ездач"
 
 #. [unit_type]: id=Mounted Fighter, race=human
-#: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:25
+#: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:19
 msgid ""
 "The nobles of the men of the plains are trained with the rest of the "
 "horsemen to become great warriors. However, they are also trained in "
@@ -3534,13 +3535,18 @@ msgstr ""
 "велики войни. Освен това те се тренират и бъдат водачи на другарите си, и те "
 "са тези, които стават капитани в армиите на Клановете."
 
+#. [attack]: type=blade
+#: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:23
+msgid "sword"
+msgstr "меч"
+
 #. [unit_type]: id=Mounted Warrior, race=human
 #: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:4
 msgid "Mounted Warrior"
 msgstr "Войн-ездач"
 
 #. [unit_type]: id=Mounted Warrior, race=human
-#: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:25
+#: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:19
 msgid ""
 "Leaders of the plains, Mounted Warriors are skilled with the use of the "
 "sword and the morning star. Riding horses, they are able to move around the "
@@ -3550,11 +3556,6 @@ msgstr ""
 "Водачите от равнините, Войните-ездачи са тренирани в използването на меча и "
 "боздугана. Яздейки конете си, те могат да се движат из бойното поле със "
 "завидна скорост, и така осигуряват нужната помощ на различни фронтове."
-
-#. [attack]: type=blade
-#: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:29
-msgid "greatsword"
-msgstr "велик меч"
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/utils/deaths.cfg:9

@@ -47,7 +47,7 @@ hráčmi.
 \fB\-\-bpp\fP\fI\ číslo\fP
 nastaví počet bitov na obrazový bod (BitsPerPixel). Napríklad: \fB\-\-bpp 32\fP
 .TP 
-\fB\-c[[<difficulty>] <id_campaign> [<id_scenario>]], \-\-campaign[[<difficulty>] <id_campaign> [<id_scenario>]]\fP
+\fB\-c, \-\-campaign[[<difficulty>] <id_campaign> [<id_scenario>]]\fP
 goes directly to the campaign based on the parameters.  The difficulty is a
 number between 1 and current campaign's difficulties number.  The default
 difficulty is 1.  The scenario must be one of the campaign's child
@@ -59,6 +59,9 @@ nastaví adresár s používateľskými nastaveniami na \fImeno\fP pod $HOME ale
 .TP 
 \fB\-\-config\-path\fP
 vypíše názov adresára s používateľskými nastaveniami a skončí.
+.TP 
+\fB\-datadir <directory>\fP
+overrides the data directory with the one specified
 .TP 
 \fB\-d, \-\-debug\fP
 zapne ďalšie možnosti príkazového režimu hry (ďalšie informácie o príkazovom
@@ -123,6 +126,17 @@ spustí hru bez zvukov a hudby.
 .TP 
 \fB\-\-path\fP
 vypíše názov dátového adresára hry a skončí.
+.TP 
+\fB\-\-preprocess, \-p[=<define1>,<define2>,...] <file/folder> <target directory>\fP
+preprocesses a specified file/folder. The file(s) will be written in
+specified target directory: a plain cfg file and a processed cfg file. If a
+folder is specified, it will be preprocessed recursively based on the known
+preprocessor rules. The common macroses from the data/core/macros will be
+preprocessed before the specified resources.  \fBdefine1,define2,...\fP \- the
+extra defines will be added before processing the files. If you want to add
+them you must add the '=' character before.  Example: \fB\-p
+~/wesnoth/data/campaigns/tutorial ~/result\fP or
+\fB\-p=MULTIPLAYER,MY_OWN_CAMPAIGN ~/wesnoth/data/campaign/camp ~/result\fP
 .TP 
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
 nastaví rozlíšenie obrazovky. Napríklad: \fB\-r 800x600\fP

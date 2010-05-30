@@ -11,10 +11,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ca\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-05-15 14:01+0200\n"
+"POT-Creation-Date: 2010-05-30 18:23+0200\n"
 "PO-Revision-Date: 2008-07-13 18:23+0200\n"
 "Last-Translator: Marc Orcau <budalokko@gmail.com>\n"
 "Language-Team: Catalan <wesnoth-ca@ettin.org>\n"
+"Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -3549,7 +3550,7 @@ msgid "Horse Lord"
 msgstr "Senyor dels cavalls"
 
 #. [unit_type]: id=Horse Lord, race=human
-#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:18
+#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:20
 msgid ""
 "The greatest of the men of the plains, Horse Lords are heads of their houses "
 "and are respected by all, friend or foe. Their sword can kill most ordinary "
@@ -3562,15 +3563,15 @@ msgstr ""
 "atac."
 
 #. [attack]: type=blade
-#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:22
-#: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:29
-msgid "sword"
-msgstr "espasa"
+#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:24
+#: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:23
+msgid "greatsword"
+msgstr "espasa gran"
 
 #. [attack]: type=impact
-#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:31
-#: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:38
-#: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:38
+#: data/campaigns/Eastern_Invasion/units/Horse_Lord.cfg:33
+#: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:32
+#: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:32
 msgid "morning star"
 msgstr "estel d'alba"
 
@@ -3580,7 +3581,7 @@ msgid "Mounted Fighter"
 msgstr "Lluitador muntat"
 
 #. [unit_type]: id=Mounted Fighter, race=human
-#: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:25
+#: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:19
 msgid ""
 "The nobles of the men of the plains are trained with the rest of the "
 "horsemen to become great warriors. However, they are also trained in "
@@ -3592,13 +3593,18 @@ msgstr ""
 "seus camarades, i són aquells que es convertiran en capitans dels exèrcits "
 "dels clans."
 
+#. [attack]: type=blade
+#: data/campaigns/Eastern_Invasion/units/Mounted_Fighter.cfg:23
+msgid "sword"
+msgstr "espasa"
+
 #. [unit_type]: id=Mounted Warrior, race=human
 #: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:4
 msgid "Mounted Warrior"
 msgstr "Guerrer muntat"
 
 #. [unit_type]: id=Mounted Warrior, race=human
-#: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:25
+#: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:19
 msgid ""
 "Leaders of the plains, Mounted Warriors are skilled with the use of the "
 "sword and the morning star. Riding horses, they are able to move around the "
@@ -3609,11 +3615,6 @@ msgstr ""
 "de l'estel d'alba. Cavalcant els seus cavalls, poden arribar a moure's pel "
 "camp de batalla amb una gran velocitat, i poden oferir assistència als "
 "fronts on sigui més necessària."
-
-#. [attack]: type=blade
-#: data/campaigns/Eastern_Invasion/units/Mounted_Warrior.cfg:29
-msgid "greatsword"
-msgstr "espasa gran"
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/utils/deaths.cfg:9

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-05-15 14:21+0200\n"
+"POT-Creation-Date: 2010-05-30 18:23+0200\n"
 "PO-Revision-Date: 2010-05-28 16:04+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -33,9 +33,9 @@ msgstr "韦诺教程"
 #. [command]
 #. [option]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:82
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:83
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:168
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:170
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:84
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:169
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:171
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:295
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:296
 msgid "Konrad"
@@ -43,13 +43,13 @@ msgstr "科纳德"
 
 #. [unit]: id=Delfador, type=Elder Mage
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:133
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:140
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:134
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:141
 msgid "Delfador"
 msgstr "黎伐多"
 
 #. [objectives]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:148
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:149
 msgid ""
 "You will learn the basics of:\n"
 "Movement\n"
@@ -64,38 +64,38 @@ msgstr ""
 " 征募"
 
 #. [objective]: condition=win
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:150
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:151
 msgid "Destroy a fierce enemy"
 msgstr "击败凶残的敌人。"
 
 #. [objective]: condition=lose
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:154
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:155
 msgid "Get yourself killed"
 msgstr "把你自己搞死。"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:166
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:167
 msgid "Who would you like to play?"
 msgstr "你打算扮演谁？"
 
 #. [unit]: type=Fighteress, id=student
 #. [command]
 #. [option]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:175
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:177
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:189
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:176
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:178
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:191
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:365
 msgid "Li'sar"
 msgstr "莉莎"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:204
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:211
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:206
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:213
 msgid "<big>Welcome to Wesnoth!</big>"
 msgstr "<big>欢迎来到韦诺！</big>"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:206
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:208
 msgid ""
 "\n"
 "For this tutorial, you are playing Konrad. "
@@ -104,15 +104,15 @@ msgstr ""
 "在本教程中，你将扮演科纳德。"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:207
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:214
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:209
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:216
 msgid ""
 "You are standing in the keep, and your mentor Delfador is on the east side "
 "of the river."
 msgstr "你现在站在城堡主楼里，而你的导师黎伐多则在河的东岸。"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:213
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:215
 msgid ""
 "\n"
 "For this tutorial, you are playing Li'sar. "
@@ -123,23 +123,23 @@ msgstr ""
 #. [event]
 #. [event]: id=student moves 0}
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:218
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:391
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:511
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:220
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:393
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:513
 msgid "Left click on Konrad"
 msgstr "左键单击科纳德"
 
 #. [event]
 #. [event]: id=student moves 0}
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:219
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:392
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:512
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:221
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:394
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:514
 msgid "Left click on Li'sar"
 msgstr "左键单击莉莎"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:238
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:240
 msgid ""
 "<big>You have selected Konrad.</big>\n"
 "The places he can move to are highlighted."
@@ -148,7 +148,7 @@ msgstr ""
 "高亮区域显示的是他可以移动的范围。"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:245
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:247
 msgid ""
 "<big>You have selected Li'sar.</big>\n"
 "The places she can move to are highlighted."
@@ -157,27 +157,27 @@ msgstr ""
 "高亮区域显示的是她可以移动的范围。"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:250
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:252
 msgid "HERE"
 msgstr "这儿"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:256
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:258
 msgid "Move Konrad next to Delfador by clicking on the tile marked 'HERE'."
 msgstr "单击标记着“这儿”的格子，把科纳德移动到黎伐多身边。"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:260
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:262
 msgid "Move Li'sar next to Delfador by clicking on the tile marked 'HERE'."
 msgstr "单击标记着“这儿”的格子，把莉莎移动到黎伐多身边。"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:265
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:267
 msgid "Left click on tile labeled HERE"
 msgstr "左键单击标记着“这儿”的格子"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:292
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:294
 msgid ""
 "<big>Oops!</big>\n"
 "You moved to the wrong place! After this message, you can press 'u' to undo, "
@@ -188,49 +188,49 @@ msgstr ""
 "试一次。"
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:314
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:316
 msgid "Good morning, Delfador! Is it time to attack things?"
 msgstr "早上好，黎伐多！现在是不是该找点东西来揍揍了？"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:318
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:320
 msgid "Um, well..."
 msgstr "恩，好吧……"
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:322
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:324
 msgid "Have you found an orc for me to fight, huh? A troll?"
 msgstr "您找到了兽人来让我练手吗，哈？难道是个巨魔？"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:326
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:328
 msgid "Quiet! I will summon an enemy for you..."
 msgstr "安静！我会给你召唤个对手……"
 
 #. [event]: id=student moves 0}
 #. [unit_type]: id=Quintain, race=mechanical
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:354
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:356
 #: data/campaigns/tutorial/units/Quintain.cfg:4
 msgid "Quintain"
 msgstr "刺靶"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:358
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:360
 msgid "... this quintain!"
 msgstr "……这个刺靶！"
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:362
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:364
 msgid "A quintain? You want me to pretend to fight a dummy?"
 msgstr "一个刺靶？您是想让我装作和一个假人打斗吗？"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:366
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:368
 msgid "Child, you have 32 hitpoints and a sword. I'm fairly sure you'll win."
 msgstr "孩子，你有32点生命值和一把剑。我很确定你会赢的。"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:371
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:373
 msgid ""
 "To attack the quintain, first select the attacker (Konrad) then the target "
 "(the quintain). You will see an attack description. When you click OK, "
@@ -240,7 +240,7 @@ msgstr ""
 "描述。当你点击“确定”时，康纳德就会发动攻击。"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:376
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:378
 msgid ""
 "To attack the quintain, first select the attacker (Li'sar) then the target "
 "(the quintain). You will see an attack description. When you click OK, "
@@ -250,32 +250,32 @@ msgstr ""
 "述。当你点击“确定”时，莉莎就会发动攻击。"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:387
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:389
 msgid "Click on the quintain to attack it"
 msgstr "点击刺靶以攻击它"
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:423
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:425
 msgid "Hey! This quintain fights back!"
 msgstr "嘿！这个刺靶会反击！"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:427
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:429
 msgid "Hmm, maybe we should have started with a doll."
 msgstr "唔，也许我们应该从一个玩偶开始。"
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:431
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:433
 msgid "Should I retreat?"
 msgstr "我应该撤退吧？"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:435
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:437
 msgid "Good idea!"
 msgstr "好主意！"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:440
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:442
 msgid ""
 "Note: the tiny blue crown above Delfador means you will lose the game if he "
 "is killed. You will also lose the game if your leader (Konrad) is killed."
@@ -284,7 +284,7 @@ msgstr ""
 "袖（科纳德）被杀的话，游戏同样会失败。"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:443
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:445
 msgid ""
 "Note: the tiny blue crown above Delfador means you will lose the game if he "
 "is killed. You will also lose the game if your leader (Li'sar) is killed."
@@ -293,26 +293,26 @@ msgstr ""
 "袖（莉莎）被杀的话，游戏同样会失败。"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:455
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:457
 msgid ""
 "Unfortunately, you've used up your turn attacking the quintain. The quintain "
 "will now get a turn."
 msgstr "可惜你已经把你的回合用来攻击刺靶了，现在就要轮到刺靶的回合了。"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:460
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:462
 msgid ""
 "female^Unfortunately, you've used up your turn attacking the quintain. The "
 "quintain will now get a turn."
 msgstr "可惜你已经把你的回合用来攻击刺靶了，现在就要轮到刺靶的回合了。"
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:466
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:468
 msgid "The DUMMY gets a turn?"
 msgstr "轮到这个*假人*了？"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:472
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:474
 msgid ""
 "Yes. It's a magical quintain.\n"
 "Now, this quintain gets 5 chances to hit you for 3 damage each. If it hits "
@@ -324,24 +324,24 @@ msgstr ""
 "生命值会从$student_hp降到$future_hp。打起精神来！"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:475
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:477
 msgid "Click on the End Turn button on the bottom right"
 msgstr "单击右下角的“结束回合”按钮"
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:496
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:498
 msgid "Ouch! I need to heal! Only $student_hp hitpoints left!"
 msgstr "啊！我需要治疗！我只剩$student_hp点生命值了！"
 
 #. [event]
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:498
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:500
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:448
 msgid "Village"
 msgstr "村庄"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:503
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:505
 msgid ""
 "There is a village on the other side of the river. Visiting villages is a "
 "good idea, and ending your turn in one will heal you. To the village!"
@@ -350,7 +350,7 @@ msgstr ""
 "村庄！"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:508
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:510
 msgid ""
 "female^There is a village on the other side of the river. Visiting villages "
 "is a good idea, and ending your turn in one will heal you. To the village!"
@@ -359,17 +359,17 @@ msgstr ""
 "村庄！"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:521
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:523
 msgid "Click on the village to move Konrad"
 msgstr "单击村庄把科纳德移动到那里"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:522
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:524
 msgid "Click on the village to move Li'sar"
 msgstr "单击村庄把莉莎移动到那里"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:540
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:542
 msgid ""
 "You captured a village! It now flies your flag color and has been added to "
 "your total village count at the top of the screen (house icon). Villages "
@@ -383,16 +383,16 @@ msgstr ""
 #. [event]
 #. [then]
 #. [else]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:544
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:674
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:706
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:846
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:898
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:546
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:676
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:708
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:848
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:900
 msgid "Click on the End Turn button"
 msgstr "点击“结束回合”按钮"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:580
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:582
 msgid ""
 "You're about to be healed by $hp_difference hitpoints, but I think you're "
 "going to need some help against that quintain."
@@ -400,7 +400,7 @@ msgstr ""
 "你就要回复$hp_difference点生命值了，但我认为你需要帮助才能打败那个刺靶。"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:585
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:587
 msgid ""
 "female^You're about to be healed by $hp_difference hitpoints, but I think "
 "you're going to need some help against that quintain."
@@ -408,19 +408,19 @@ msgstr ""
 "你就要回复$hp_difference点生命值了，但我认为你需要帮助才能打败那个刺靶。"
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:591
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:593
 msgid "I'll recruit some elves!"
 msgstr "我会征募一些精灵！"
 
 #. [event]
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:593
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:595
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:976
 msgid "Keep"
 msgstr "主楼"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:598
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:600
 msgid ""
 "A splendid idea. You can recruit two units if you return to the keep. You "
 "have plenty of gold for that."
@@ -428,7 +428,7 @@ msgstr ""
 "相当好的主意。如果你回到城堡主楼，就可以征募两个单位。你有很多金币可以用。"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:603
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:605
 msgid ""
 "female^A splendid idea. You can recruit two units if you return to the keep. "
 "You have plenty of gold for that."
@@ -436,17 +436,17 @@ msgstr ""
 "相当好的主意。如果你回到城堡主楼，就可以征募两个单位。你有很多金币可以用。"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:609
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:611
 msgid "Move Konrad to the keep"
 msgstr "把科纳德移动到城堡主楼"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:610
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:612
 msgid "Move Li'sar to the keep"
 msgstr "把莉莎移动到城堡主楼"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:628
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:630
 msgid ""
 "Whenever you're on a keep, you can recruit into castle tiles around it by "
 "right-clicking and selecting 'Recruit'. This time you will only be given one "
@@ -456,13 +456,13 @@ msgstr ""
 "键单击格子并且选择“征募”。现在你只有一种单位类型可以选择：精灵战士。"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:632
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:634
 msgid "Right click on one castle tile and select Recruit"
 msgstr "右键单击一个城堡格子并选择“征募”"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:668
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:700
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:670
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:702
 msgid ""
 "These newly recruited units can do nothing this turn; you will control them "
 "next turn.\n"
@@ -474,24 +474,24 @@ msgstr ""
 "它的描述。"
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:679
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:711
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:681
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:713
 msgid "Right click on the other castle tile and Recruit another unit"
 msgstr "右键单击城堡的另一个格子并征募另一个单位"
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:733
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:735
 msgid ""
 "Hey, the quintain just healed 2 hitpoints! I'd better attack it at once!"
 msgstr "嘿，这个刺靶刚恢复了2点生命值！我得赶快弄死它！"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:737
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:739
 msgid "Yes, if a unit doesn't do anything for a turn, it will slowly heal."
 msgstr "是的，如果一个单位在一回合内什么都没有做，他将会缓慢地回复生命值。"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:743
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:745
 msgid ""
 "Had the quintain survived your onslaught, it would have regained two "
 "hitpoints. If a unit doesn't do anything for a turn, it will slowly heal."
@@ -500,36 +500,36 @@ msgstr ""
 "做,他将会缓慢地恢复生命."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:757
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:759
 msgid ""
 "But before you send your fighters against the quintain, you should know they "
 "have two kinds of attack..."
 msgstr "但是在指派你的战士去和刺靶战斗之前，你应该知道他们有两种攻击……"
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:761
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:763
 msgid "I'll tell them to use the one that does the most damage!"
 msgstr "我会让他们使用伤害最高的攻击方式！"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:765
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:767
 msgid ""
 "And which would that be? The sword (5-4) or the bow (3-3)? I suppose you'll "
 "find out..."
 msgstr "那么你认为哪种伤害更高呢？剑（5-4）还是弓（3-3）？我想你会找到答案的……"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:767
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:769
 msgid "Left click on an Elvish Fighter"
 msgstr "左键单击一个精灵战士"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:768
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:770
 msgid "End your turn and attack again."
 msgstr "结束你的回合，然后再次攻击。"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:787
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:789
 msgid ""
 "You wouldn't do anything stupid like charging that quintain yourself again, "
 "now would you?\n"
@@ -539,20 +539,20 @@ msgstr ""
 "首先使用你征募的战士们，他们会帮上大忙。"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:798
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:800
 msgid "Left click on the Quintain to attack it."
 msgstr "左键单击刺靶以攻击它。"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:835
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:842
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:837
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:844
 msgid " The ranged attack was safer."
 msgstr ""
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:835
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:842
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:854
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:837
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:844
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:856
 #, fuzzy
 msgid ""
 "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
@@ -562,8 +562,8 @@ msgstr ""
 "以它的近战攻击（3-5）进行反击。而远程攻击更安全。"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:843
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:895
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:845
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:897
 #, fuzzy
 msgid ""
 "\n"
@@ -571,22 +571,22 @@ msgid ""
 msgstr "结束你的回合，然后再次攻击。"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:855
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:857
 msgid ""
 "\n"
 "You should tell the other Elf to use the bow."
 msgstr ""
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:858
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:907
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:860
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:909
 msgid "Attack with the other Elf"
 msgstr "让另一个精灵攻击"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:887
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:894
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:905
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:889
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:896
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:907
 msgid ""
 "Your elf used a bow, which is a ranged attack (3-3; or 3 damage, 3 attacks). "
 "The quintain has no ranged attack, only a melee attack, so it could not "
@@ -596,17 +596,17 @@ msgstr ""
 "有远程攻击，只有近战攻击，所以它无法反击。"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:926
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:928
 msgid "Keep attacking with both elves until the quintain is finished!"
 msgstr "让两个精灵继续攻击,直到刺靶被消灭!"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:940
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:942
 msgid "Maybe you should recruit another elf?"
 msgstr "或许你应该再征募一个精灵?"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:946
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:948
 msgid ""
 "Note:\n"
 "You can right click on a unit to see a detailed Unit Description."
@@ -615,7 +615,7 @@ msgstr ""
 "你可以右键单击一个单位来查看详细的“单位描述”。."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:969
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:971
 msgid ""
 "Note:\n"
 "Remember to pull back wounded units into villages and recruit more if "
@@ -627,7 +627,7 @@ msgstr ""
 "最多经验值（XP）的单位，让他们可以升级！"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:988
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:990
 msgid ""
 "Note:\n"
 "Each village you own can support a single unit for free. After that, each "
@@ -638,7 +638,7 @@ msgstr ""
 "费你1个金币。"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1005
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1007
 msgid ""
 "Note:\n"
 "When a unit gets enough experience (the experience bar is the smaller bar on "
@@ -652,7 +652,7 @@ msgstr ""
 "单位的2倍。"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1022
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1024
 msgid ""
 "Note:\n"
 "Once you select a unit, you'll see percentages for different terrain tiles. "
@@ -667,13 +667,13 @@ msgstr ""
 "糟糕。但是，假人的攻击是魔法攻击，所以不管你站在哪里他们都有70%的可能命中你。"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1047
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1049
 msgid "The quintain is dead, and I have gained more experience!"
 msgstr "刺靶死掉了，而我获得了更多的经验值！"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1052
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1056
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1054
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1058
 msgid ""
 "Yes, you gain experience through battle, especially by killing an opponent. "
 "Gain enough experience and you'll become more powerful."
@@ -682,7 +682,7 @@ msgstr ""
 "更加强大。"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1053
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1055
 msgid ""
 " Now, Konrad, I will leave you with more dummies to practice on! After that, "
 "we have real work to do..."
@@ -690,7 +690,7 @@ msgstr ""
 " 现在，科纳德，我将会留给你更多假人来做练习！结束之后，我们有些真正的活要干……"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1057
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1059
 msgid ""
 " Now, Li'sar, I will leave you with more dummies to practice on! After that, "
 "we have real work to do..."
@@ -698,7 +698,7 @@ msgstr ""
 " 现在，莉莎，我将会留给你更多假人来做练习！结束之后，我们有些真正的活要干……"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1096
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1098
 msgid ""
 "Note:\n"
 "These dummies only attack if you are a single tile away. With care, you "
@@ -709,22 +709,22 @@ msgstr ""
 "们逐个击破。"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1105
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1107
 msgid "Do you want to keep practicing?"
 msgstr "你希望继续练习吗？"
 
 #. [option]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1107
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1109
 msgid "Yes, I'm still figuring it out."
 msgstr "是，我还在摸索呢。"
 
 #. [option]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1110
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1112
 msgid "No, I think I've got it."
 msgstr "不，我想我已经弄明白了。"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1151
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1153
 msgid ""
 "After your victory notice, the map will be grayed out to indicate that the "
 "scenario is over, but you will be able to examine the final positions and "

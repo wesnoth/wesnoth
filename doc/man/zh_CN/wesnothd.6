@@ -18,11 +18,11 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH WESNOTHD 6 2009 wesnothd 韦诺之战多人游戏服务器
+.TH WESNOTHD 6 2009 wesnothd "Battle for Wesnoth 多人游戏守护进程（网络服务器）"
 .
 .SH 命名
 .
-wesnothd \- 韦诺之战 \fBWesnoth\fP 多人游戏服务器
+wesnothd \- 韦诺之战（Battle for \fBWesnoth\fP） 多人游戏守护进程（网络服务器）
 .
 .SH 摘要
 .
@@ -33,43 +33,43 @@ wesnothd \- 韦诺之战 \fBWesnoth\fP 多人游戏服务器
 .
 .SH 描述
 .
-管理韦诺之战多人游戏。查看http://www.wesnoth.org/wiki/ServerAdministration
-获取服务器接受的命令列表。客户端使用/query 或 fifo 会显示这一列表。
+管理韦诺之战的多人游戏。请参见http://www.wesnoth.org/wiki/ServerAdministration以查看服务器可以接受的命令列表。服务器可以从wesnoth客户端（/query
+\&...）或者fifo接受命令。
 .
 .SH 选项
 .
 .TP 
 \fB\-c\ \fP\fIpath\fP\fB,\ \-\-config\fP\fI\ path\fP
-指定wesnothd查找配置文件的目录。查看下面的\fBSERVER CONFIG\fP通过发送SIGHUP信号给服务进程可以重新装载配置文件。
+指定wesnothd查找配置文件的目录。欲获知命令语法，请查看下面的\fB服务器配置\fP小节。通过发送SIGHUP信号给服务器可以重新装载配置文件。
 .TP 
 \fB\-d, \-\-daemon\fP
-以守护进程方式(daemon)运行wesnothd
+以守护进程方式运行wesnothd。
 .TP 
 \fB\-h, \-\-help\fP
-显示命令行选项的作用
+显示命令行选项的作用。
 .TP 
 \fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
-设置日志记录的级别.\fBall\fP用来匹配任意日志域(log domain)级别。可选的级别有：\fBerror\fP,\ \fBwarning\fP,\
-\fBinfo\fP,\ \fBdebug\fP。默认的级别是\fBerror\fP，对\fB服务器\fP域默认级别是\fBinfo\fP。
+设置日志域的严重度级别。\fBall\fP可以用来匹配任意日志域。可选的级别有：\fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\
+\fBdebug\fP。默认的级别是\fBerror\fP，对\fBserver\fP域而言，默认级别是\fBinfo\fP。
 .TP 
 \fB\-p\ \fP\fIport\fP\fB,\ \-\-port\fP\fI\ port\fP
-绑定服务到指定的端口。如果不指定端口将使用\fB15000\fP端口。
+绑定服务器到指定的端口。如果不指定，则将使用\fB15000\fP端口。
 .TP 
 \fB\-t\ \fP\fInumber\fP\fB,\ \-\-threads\fP\fI\ number\fP
-设置网络I/O的最大挂起线程数(waiting worker threads)为n (默认值为\fB5\fP，\ 最大为\ \fB30\fP)。
+设置网络I/O中等待状态的工作线程的最大数量为n（默认值：\fB5\fP，\ 最大值：\ \fB30\fP）。
 .TP 
 \fB\-T\ \fP\fInumber\fP\fB,\ \-\-max\-threads\fP\fI\ number\fP
-设置允许创建的最大正常线程数(worker threads)。如果设置为\fB0\fP则不限制线程数（默认值：\fB0\fP）
+设置允许创建的最大工作线程数。如果设置为\fB0\fP则不限制线程数（默认值：\fB0\fP）
 .TP 
 \fB\-V, \-\-version\fP
-显示版本号并退出
+显示版本号并退出。
 .TP 
 \fB\-v, \-\-verbose\fP
-开启调试日志记录
+开启调试日志记录。
 .
-.SH "SERVER CONFIG"
+.SH 服务器配置
 .
-.SS "The general syntax is:"
+.SS 通用的语法为：
 .
 .P
 [\fItag\fP]
@@ -80,131 +80,133 @@ wesnothd \- 韦诺之战 \fBWesnoth\fP 多人游戏服务器
 .P
 [/\fItag\fP]
 .
-.SS "Global keys:"
+.SS 全局主键：
 .
 .TP 
 \fBallow_remote_shutdown\fP
-如果设置为 \fBno\fP (默认值), 关闭和重启请求将被忽略，除非来自fifo。如果设为 \fByes\fP 则允许管理员通过 /query 远程关闭。
+如果设置为 \fBno\fP （默认值），shut_down（关闭）和restart（重启）请求将被忽略，除非这些请求来自于fifo。如果设为 \fByes\fP
+则允许管理员通过 /query 远程关闭。
 .TP 
 \fBban_save_file\fP
-一个服务器可读可写的（经gzip压缩的）文件的完整路径或相对路径。封禁信息会自动保存在这个文件，并在服务器重启时读取。
+一个服务器可读可写的（经gzip压缩的）文件的完整路径或相对路径。封禁信息会自动保存在这个文件里，并在服务器启动时读取。
 .TP 
 \fBcompress_stored_rooms\fP
-制定房间文件是否应该压缩。 默认值为 \fByes\fP.
+指定房间文件是否应该以压缩形式读写。默认值为\fByes\fP。
 .TP 
 \fBconnections_allowed\fP
-同一IP允许的连接数。\fB0\fP 表示无限制。(默认值：\fB5\fP)
+同一IP允许的连接数。\fB0\fP 表示无限制。（默认值：\fB5\fP）
 .TP 
 \fBdisallow_names\fP
-服务器不允许使用的用户名/昵称。可以使用\fB*\fP和\fB?\fP通配符。更多信息请查看 \fBglob\fP(7)
-。默认值(如果用户没有指定则自动使用)是：\fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
+服务器不允许使用的用户名/昵称。可以使用\fB*\fP和\fB?\fP通配符。更多详细信息请查看\fBglob\fP(7)。默认值（如果用户没有指定则自动使用）是：\fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP。
 .TP 
 \fBfifo_path\fP
-你能通过调用服务器命令的fifo路径（与在wesnoth中使用 /query
-功能相同）。如果不指定，则默认为编译时指定的路径(默认：\fB/var/run/socket/wesnothd/socket\fP).
+服务器所使用的fifo文件的路径（与在wesnoth中使用 /query
+功能相同），您可以向该文件内echo服务器命令。如果不指定，则默认为编译时指定的路径（默认值：\fB/var/run/socket/wesnothd/socket\fP）。
 .TP 
 \fBmax_messages\fP
-\fBmessages_time_period\fP中允许存在的消息数。 (默认值: \fB4\fP)
+\fBmessages_time_period\fP内允许的消息数。（默认值：\fB4\fP）
 .TP 
 \fBmessages_time_period\fP
-消息泛滥(message flooding)检测时间间隔(秒)。 (默认值: \fB10\fP 秒)
+消息泛滥检测的时间间隔（秒）。（默认值：\fB10\fP秒）
 .TP 
 \fBmotd\fP
-当日新闻
+每日一言
 .TP 
 \fBnew_room_policy\fP
-指定谁能在服务器上创建房间。可选值为 \fBeveryone\fP, \fBregistered\fP, \fBadmin\fP and \fBnobody\fP,
-分别表示所有人，注册用户，管理员用户，禁止创建房间。 默认值为 \fBeveryone\fP.
+指定谁能在服务器上创建新房间。可选值为
+\fBeveryone\fP，\fBregistered\fP，\fBadmin\fP和\fBnobody\fP，分别代表所有人，注册用户，管理员或者禁止创建新房间。默认值为
+\fBeveryone\fP。
 .TP 
 \fBpasswd\fP
-用来获取管理员权限的密码 (通过 \fB/query admin \fP\fIpassword\fP).
+用来获取管理员权限的密码（通过 \fB/query admin \fP\fIpassword\fP来取得权限）。
 .TP 
 \fBreplay_save_path\fP
-存放游戏录像的目录。(必须以/结尾!)默认为`'(空),也就是wesnothd 启动时的目录。
+服务器用于存放游戏录像的目录。（不要忘了以/结尾！）默认为`'（空），意思是wesnothd启动时的当前目录。
 .TP 
 \fBrestart_command\fP
-这是服务器使用\fBrestart\fP命令开启新进程时使用的命令。（只能通过fifo来调用。参考\fBallow_remote_shutdown\fP设置。）
+这是服务器通过\fBrestart\fP命令开启新服务器进程时使用的命令。（只能通过fifo来调用。参见\fBallow_remote_shutdown\fP设置。）
 .TP 
 \fBroom_save_file\fP
-制定存放房间信息的文件路径。这个文件在服务器启动时读取，之后会写入。如果设为空或者不设置，则房间不自动加载和保存。
+指定存放房间信息的文件的路径。这个文件在服务器启动时读取，之后会写入。如果设为空或者不设置，则房间不会被读取或保存。
 .TP 
 \fBsave_replays\fP
-设置服务器是否自动保存游戏录像。(默认值: \fBfalse\fP)
+设置服务器是否自动保存游戏录像。（默认值：\fBfalse\fP）
 .TP 
 \fBversions_accepted\fP
-用逗号分隔的服务器接受的版本号列表。支持\fB*\fP和\fB?\fP通配符。（默认为(与服务器)一致的wesnoth版本）
+服务器接受的客户端版本号列表，是以逗号分隔的字符串。支持\fB*\fP和\fB?\fP通配符。（默认为与服务器版本一致的wesnoth版本）
 .br
 例如: \fBversions_accepted="*"\fP 允许所有版本连接。
 .TP  
 \fBuser_handler\fP
-希望使用的用户处理单元。目前可选的有\fBforum\fP(将wesnothd与phpbb 论坛的数据库连接起来)
-和\fBsample\fP(一个实现用户处理的示例,如果你真的(直接)用这个那你一定是疯了)。默认值是\fBforum\fP同时你必须添加一个\fB[user_handler]\fP部分,看下面。
+希望使用的用户信息处理器的名称。目前可选的有\fBforum\fP（将wesnothd与phpbb论坛的数据库连接起来）和\fBsample\fP（一个用户信息处理接口的样例实现，如果您真的在实际中使用它，那您一定是疯了）。默认值是\fBforum\fP，同时您必须添加一个\fB[user_handler]\fP小节，请看下面。
 .
-.SS "Global tags:"
+.SS 全局标签：
 .
 .P
-\fB[redirect]\fP 服务器用来重定向特定客户端版本的标签。
+\fB[redirect]\fP 这个标签用于设定一个服务器，以将某些版本的客户端重定向到该服务器上。
 .RS
 .TP 
 \fBhost\fP
-重定向到的服务器地址
+重定向到的服务器的地址。
 .TP 
 \fBport\fP
-连接端口
+应连接的端口。
 .TP 
 \fBversion\fP
-用逗号分隔的需要重定向的版本号列表。同样可以使用`*'和`?'通配符。
+用逗号分隔的需要重定向的版本号列表。可以使用通配符，在这方面和 \fBversions_accepted\fP 一样。
 .RE
 .P
-\fB[ban_time]\fP 这个标签定义一些常用的封禁时间长度的关键字。
+\fB[ban_time]\fP 这个标签用于定义一些方便的关键字，以对应一些常用的临时封禁时间长度。
 .RS
 .TP 
 \fBname\fP
-给封禁时间起一个名字
+用于引用封禁时间的名字。
 .TP 
 \fBtime\fP
 时间长度定义。 格式为：%d[%s[%d%s[...]]]
-其中%s是s（秒），m（分钟），h（小时），D（天），M（月），Y（年），%d是一个数字。如果不指定时间单位，默认为分钟（m）例如：\fBtime=\"1D12h30m\"\fP结果是1天，12小时，30分钟的封禁。
+其中%s是s（秒），m（分钟），h（小时），D（天），M（月），Y（年），%d是一个数字。如果不指定时间单位，默认为分钟（m）。例如：\fBtime=\"1D12h30m\"\fP
+代表的是1天零12小时又30分钟的封禁。
 .RE
 .P
-\fB[proxy]\fP 这个标签告诉服务器扮演代理服务器角色，把用户连接重定向到另一台服务器。与\fB[redirect]\fP接受一样的参数。
+\fB[proxy]\fP
+这个标签用于告诉服务器扮演代理服务器角色，把连接在本服务器上的用户的请求转发到指定的服务器。与\fB[redirect]\fP接受一样的主键。
 .RE
 .P
 \fB[user_handler]\fP
-设置用户处理单元。可设置的键值很大程度上取决于通过\fBuser_handler\fP设置的用户处理单元的值。如果配置文件中没有\fB[user_handler]\fP部分,服务器以不提供昵称注册服务的方式运行。
+配置用户数据处理器。可设置的主键取决于通过\fBuser_handler\fP设置的用户数据处理器是哪一个。如果配置文件中没有\fB[user_handler]\fP小节，则服务器在运行中将不提供任何昵称注册服务。
 .RS
 .TP  
 \fBdb_host\fP
-(如果用户处理单元设置为 forum) 数据库服务器的主机名
+（如果user_handler=forum）数据库服务器的主机名
 .TP  
 \fBdb_name\fP
-(如果用户处理单元设置为 forum) 数据库名
+（如果user_handler=forum）数据库名
 .TP  
 \fBdb_user\fP
-(如果用户处理单元设置为 forum) 数据库登录用户名
+（如果user_handler=forum）数据库登录用户名
 .TP  
 \fBdb_password\fP
-(如果用户处理单元设置为 forum) 数据库登录密码
+（如果user_handler=forum）这个用户的密码
 .TP  
 \fBdb_users_table\fP
-(如果用户处理单元设置为 forum) phpbb 论坛中存放用户数据的表名。很可能是<table\-prefix>_users
-(例如phpbb3_users)。
+（如果user_handler=forum）phpbb
+论坛中存放用户数据的表名。很可能是<table\-prefix>_users（例如phpbb3_users）。
 .TP  
 \fBdb_extra_table\fP
-(如果用户处理单元设置为 forum) wesnothd存放用户游戏数据的表名。你必须自己创建这个表,例如:\fBCREATE TABLE
+（如果user_handler=forum）wesnothd存放自用的用户数据的表名。您必须自己手动创建这个表，例如：\fBCREATE TABLE
 <table\-name>(username VARCHAR(255) PRIMARY KEY, user_lastvisit INT
 UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) NOT NULL DEFAULT
 0);\fP
 .TP  
 \fBuser_expiration\fP
-(如果用户处理单元设置为 sample) 注册昵称失效时间(天数)。
+（如果user_handler=sample）注册昵称的失效时间（天数）。
 .RE
 .P
-\fB[mail]\fP 设置一个SMTP服务器,通过它用户处理单元可以发送邮件。目前只在sample 用户处理单元中使用。
+\fB[mail]\fP 设置一个SMTP服务器，通过它用户信息处理器可以发送邮件。目前只在样例处理器中使用。
 .RS
 .TP  
 \fBserver\fP
-邮件服务器的主机名
+邮件服务器的主机名。
 .TP  
 \fBusername\fP
 登录到邮件服务器的用户名。
@@ -213,36 +215,31 @@ UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) NOT NULL DEFAULT
 这个用户的密码。
 .TP  
 \fBfrom_address\fP
-"回复到"邮件地址
+您的邮箱的“回复到”邮件地址。
 .TP  
 \fBmail_port\fP
-邮件服务器的端口。默认值位5。
+邮件服务器的端口。默认值为25。
 .
-.SH "EXIT STATUS"
+.SH 退出状态码
 .
-Normal exit status is 0 when the server was properly shutdown. An exit
-status of 2 indicates an error with the command line options.
+正常退出时状态码为0，此时服务器正常关闭。状态码2代表命令行选项中有错误。
 .
 .SH 作者
 .
-由 David White <davidnwhite@verizon.net>编写。经 Nils Kneuper
-<crazy\-ivanovic@gmx.net>, ott <ott@gaon.net>, Soliton
+由 David White <davidnwhite@verizon.net> 编写。经 Nils Kneuper
+<crazy\-ivanovic@gmx.net>，ott <ott@gaon.net>，Soliton
 <soliton.de@gmail.com> 和 Thomas Baumhauer
-<thomas.baumhauer@gmail.com>. 修改。这个帮助页最早由Cyril Bouthors
-<cyril@bouthors.org>编写。
+<thomas.baumhauer@gmail.com> 编辑。这个手册页最初由 Cyril Bouthors
+<cyril@bouthors.org> 编写。
 .br
-访问官方网站: http://www.wesnoth.org/
-以及Wesnoth中文网站：http://www.wesnoth.cn
+请访问官方主页：http://www.wesnoth.org/
+以及Wesnoth中文爱好者主页：http://www.wesnoth.cn
 .
-.SH COPYRIGHT
+.SH 版权
 .
-Copyright \(co 2003\-2009 David White <davidnwhite@verizon.net>
+版权所有 \(co 2003\-2009 David White <davidnwhite@verizon.net>
 .br
-这是一个自由软件；使用由FSF发布的GPL v2协议授权。原文如下：This is Free Software; this software is
-licensed under the GPL version 2, as published by the Free Software
-Foundation.  There is NO warranty; not even for MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.There is NO warranty; not even for MERCHANTABILITY
-or FITNESS FOR A PARTICULAR PURPOSE.
+这是一款自由软件，使用由自由软件基金会发布的GPL版本2协议授权。使用本软件时*不*提供任何保证，甚至没有对“可销售性”和“针对某一特别目的之可用性”的保证。本段中文翻译不具有法律效力，只有GPL英文原本才具有法律效力。
 .
 .SH 参见
 .
