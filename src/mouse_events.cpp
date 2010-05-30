@@ -641,7 +641,8 @@ int mouse_handler::fill_weapon_choices(std::vector<battle_context>& bc_vector, u
 			battle_context bc(units_, attacker->get_location(), defender->get_location(), i);
 			bc_vector.push_back(bc);
 			if (bc.better_attack(bc_vector[best], 0.5)) {
-				best = i;
+				// as some weapons can be hidden, i is not a valid index into the resulting vector
+				best = bc_vector.size() - 1;
 			}
 		}
 	}

@@ -149,6 +149,7 @@ Version 1.9.0-svn:
    * Cleaned up the gui2 code at various places
    * Don't crash if a [story] [part] [if] misses [then] or [else] (bug #16028)
    * Fix a crash on OS X caused by passing invalid utf8 to pango (bug #16020)
+   * Hidden weapons (attack_weight = 0) no longer skew the best weapon selection
 
 Version 1.8.0:
  * AI:
