@@ -710,6 +710,27 @@ std::vector<surface> display::get_terrain_images(const map_location &loc,
 	return res;
 }
 
+void display::drawing_buffer_add(const tdrawing_layer layer,
+		const map_location& loc, const tblit& blit)
+{
+	tdrawing_layergroup group;
+
+	// find in which group the layer belongs
+	// FIXME: temporary method. Group splitting should be made
+	// public into the definition of tdrawing_layer
+	if(layer < LAYER_UNIT_FIRST) {
+		group = LAYERGROUP_TERRAIN_BG;
+	} else if(layer < LAYER_UNIT_MOVE_DEFAULT) {
+		group = LAYERGROUP_UNIT;
+	} else if(layer < LAYER_REACHMAP) {
+		group = LAYERGROUP_UNIT_MOVE;
+	} else {
+		group = LAYERGROUP_UI;
+	}
+
+	drawing_buffer_[group][loc][layer].push_back(blit);
+}
+
 void display::drawing_buffer_commit()
 {
 	SDL_Rect clip_rect = map_area();
@@ -725,82 +746,36 @@ void display::drawing_buffer_commit()
 	 * in the next hex. The foreground terrain needs to be drawn before to
 	 * avoid decapitation a unit.
 	 *
-	 * This ended in the following algorithm.
-	 *
-	 * - Loop over all layer groups.
-	 * - For all layers in this group proceed to render from low to high.
-	 *   - Render all rows (a row has a constant y) from low to high.
-	 *   - In the row render the columns from low to high.
-	 */
+	 * This ended in the following priority order:
+	 * layergroup > location > layer > 'tblit' > surface
+*/
 
-	// The drawing is done per layer_group, the range per group is [low, high).
-	static const tdrawing_layer layer_groups[] = {
-		LAYER_TERRAIN_BG,
-		LAYER_UNIT_FIRST,
-		LAYER_UNIT_MOVE_DEFAULT,
-		// Make sure the movement doesn't show above fog and reachmap.
-		LAYER_REACHMAP,
-		LAYER_LAST_LAYER };
+	foreach(const tgroup_map::value_type& group, drawing_buffer_) {
+		foreach(const tlocation_map::value_type& loc, group.second) {
+			foreach(const tlayer_map::value_type& layer, loc.second) {
+				foreach(const tblit& blit, layer.second) {
+					foreach(const surface& surf, blit.surf) {
+						// Note that dstrect can be changed by SDL_BlitSurface
+						// and so a new instance should be initialized
+						// to pass to each call to SDL_BlitSurface.
+						SDL_Rect dstrect = { blit.x, blit.y, 0, 0 };
 
-	for(size_t z = 1; z < sizeof(layer_groups)/sizeof(layer_groups[0]); ++z) {
+						if(blit.clip.x || blit.clip.y
+								||blit.clip.w ||blit.clip.h) {
 
-		for(int y = -get_map().border_size();
-				y < get_map().total_height(); ++y) {
-
-			for(tdrawing_buffer::const_iterator
-					layer_itor = drawing_buffer_.begin(),
-					layer_itor_end = drawing_buffer_.end();
-					layer_itor != layer_itor_end; ++layer_itor) {
-
-				if(!(layer_itor->first >= layer_groups[z - 1] &&
-							layer_itor->first < layer_groups[z])) {
-					// The current layer is not in the layer group, skip.
-					continue;
-				}
-
-				for(tblit_map::const_iterator
-						drawing_iterator = layer_itor->second.begin(),
-						drawing_iterator_end = layer_itor->second.end();
-						drawing_iterator != drawing_iterator_end;
-						++drawing_iterator) {
-
-					if(drawing_iterator->first.y != y) {
-						// The current row is not the row to render, skip.
-						continue;
-					}
-
-					for(std::vector<tblit>::const_iterator
-							blit_itor = drawing_iterator->second.begin(),
-							blit_itor_end = drawing_iterator->second.end();
-							blit_itor != blit_itor_end; ++blit_itor) {
-
-						for(std::vector<surface>::const_iterator
-								surface_itor = blit_itor->surf.begin(),
-								surface_itor_end = blit_itor->surf.end();
-								surface_itor != surface_itor_end; ++surface_itor) {
-
-							// Note that dstrect can be changed by SDL_BlitSurface
-							// and so a new instance should be initialized
-							// to pass to each call to SDL_BlitSurface.
-							SDL_Rect dstrect = { blit_itor->x, blit_itor->y, 0, 0 };
-
-							if(blit_itor->clip.x || blit_itor->clip.y
-									||blit_itor->clip.w ||blit_itor->clip.h) {
-
-								SDL_Rect srcrect = blit_itor->clip;
-								SDL_BlitSurface(*surface_itor,
-										&srcrect, screen, &dstrect);
-							} else {
-								SDL_BlitSurface(*surface_itor,
-										NULL, screen, &dstrect);
-							}
+							SDL_Rect srcrect = blit.clip;
+							SDL_BlitSurface(surf,
+									&srcrect, screen, &dstrect);
+						} else {
+							SDL_BlitSurface(surf,
+									NULL, screen, &dstrect);
 						}
-						update_rect(blit_itor->x, blit_itor->y, zoom_, zoom_);
-					} // for blit_itor
-				} // for drawing_iterator
-			} // for layer_itor
-		} // for y
-	} // for z
+					} //for surf
+					update_rect(blit.x, blit.y, zoom_, zoom_);
+				} // for blit
+			} //for layer
+		} //for loc
+	} //for group
 
 	drawing_buffer_clear();
 }

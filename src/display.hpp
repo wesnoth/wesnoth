@@ -743,16 +743,21 @@ protected:
 	};
 
 	/**
-	 * * Surfaces are rendered per level in a map.
-	 * * Per level the items are rendered per location these locations are
-	 *   stored in the drawing order required for units.
-	 * * every location has a vector with surfaces, each with its own screen
-	 *   coordinate to render at.
-	 * * every vector element has a vector with surfaces to render.
+	 * Group of layers:
+	 * layers of a group will always be rendered under layers of the next group
+	 * regardless of the location
 	 */
-	typedef std::map<map_location, std::vector<tblit>, draw_order> tblit_map;
-	typedef std::map<tdrawing_layer, tblit_map> tdrawing_buffer;
-	tdrawing_buffer drawing_buffer_;
+	enum tdrawing_layergroup{
+		LAYERGROUP_TERRAIN_BG,
+		LAYERGROUP_UNIT,
+		LAYERGROUP_UNIT_MOVE,
+		LAYERGROUP_UI
+	};
+
+	typedef std::map<tdrawing_layer, std::vector<tblit> > tlayer_map;
+	typedef std::map<map_location, tlayer_map, draw_order > tlocation_map;
+	typedef std::map<tdrawing_layergroup, tlocation_map> tgroup_map;
+	tgroup_map drawing_buffer_;
 
 public:
 
@@ -765,10 +770,7 @@ public:
 	 * @param blit               The structure to blit.
 	 */
 	void drawing_buffer_add(const tdrawing_layer layer,
-			const map_location& loc, const tblit& blit)
-	{
-		drawing_buffer_[layer][loc].push_back(blit);
-	}
+			const map_location& loc, const tblit& blit);
 
 protected:
 
