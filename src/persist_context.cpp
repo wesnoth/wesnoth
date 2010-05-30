@@ -135,7 +135,8 @@ cfg_(),
 parent_(NULL),
 children_(),
 valid_(is_valid_namespace(namespace_)),
-dirty_(false)
+dirty_(false),
+collected_(false)
 {
 	init(name_space);
 }
@@ -146,7 +147,8 @@ cfg_(),
 parent_(NULL),
 children_(),
 valid_(is_valid_namespace(namespace_)),
-dirty_(false)
+dirty_(false),
+collected_(false)
 {
 	children_[child.namespace_] = &child;
 	init(name_space);
@@ -155,8 +157,15 @@ dirty_(false)
 }
 
 persist_context::~persist_context() {
-	for (persist_context::child_map::iterator i = children_.begin(); i != children_.end(); i++)
-		delete i->second;
+	collected_ = true;
+	if (parent_ != NULL) {
+		if (!parent_->collected_)
+			delete parent_;
+	}
+	for (persist_context::child_map::iterator i = children_.begin(); i != children_.end(); i++) {
+		if (!i->second->collected_)
+			delete i->second;
+	}
 }
 
 bool persist_context::clear_var(std::string &global)

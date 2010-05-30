@@ -32,6 +32,7 @@ private:
 	child_map children_;
 	bool valid_;
 	bool dirty_;
+	bool collected_;
 	void load();
 	void init(const std::string &name_space);
 	bool save_context();
