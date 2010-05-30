@@ -62,10 +62,6 @@ void playmp_controller::set_replay_last_turn(unsigned int turn){
 	 replay_last_turn_ = turn;
 }
 
-void playmp_controller::clear_labels(){
-	menu_handler_.clear_labels();
-}
-
 void playmp_controller::speak(){
 	menu_handler_.speak();
 }
@@ -563,12 +559,10 @@ bool playmp_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 {
 	bool res = true;
 	switch (command){
-		case hotkey::HOTKEY_CLEAR_LABELS:
-			res = !is_observer();
 		case hotkey::HOTKEY_SPEAK:
 		case hotkey::HOTKEY_SPEAK_ALLY:
 		case hotkey::HOTKEY_SPEAK_ALL:
-			res = res && network::nconnections() > 0;
+			res = network::nconnections() > 0;
 			break;
 		case hotkey::HOTKEY_START_NETWORK:
 		case hotkey::HOTKEY_STOP_NETWORK:

@@ -160,6 +160,10 @@ void playsingle_controller::label_terrain(bool team_only){
 	menu_handler_.label_terrain(mouse_handler_, team_only);
 }
 
+void playsingle_controller::clear_labels(){
+	menu_handler_.clear_labels();
+}
+
 void playsingle_controller::continue_move(){
 	menu_handler_.continue_move(mouse_handler_, player_number_);
 }
@@ -969,6 +973,9 @@ bool playsingle_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, 
 		case hotkey::HOTKEY_CHANGE_SIDE:
 			return !events::commands_disabled && game_config::debug && map_.on_board(mouse_handler_.get_last_hex());
 
+		case hotkey::HOTKEY_CLEAR_LABELS:
+			res = !is_observer();
+			break;
 		case hotkey::HOTKEY_LABEL_TEAM_TERRAIN:
 		case hotkey::HOTKEY_LABEL_TERRAIN:
 			res = !events::commands_disabled && map_.on_board(mouse_handler_.get_last_hex())
