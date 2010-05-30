@@ -112,11 +112,7 @@ display::display(CVideo& video, const gamemap* map, const config& theme_cfg, con
 	selectedHex_(),
 	mouseoverHex_(),
 	keys_(),
-#if TDRAWING_BUFFER_USES_VECTOR
-	drawing_buffer_(LAYER_LAST_LAYER),
-#else
 	drawing_buffer_(),
-#endif
 	map_screenshot_(false),
 	fps_handle_(0),
 	invalidated_hexes_(0),
@@ -751,37 +747,20 @@ void display::drawing_buffer_commit()
 		for(int y = -get_map().border_size();
 				y < get_map().total_height(); ++y) {
 
-#if TDRAWING_BUFFER_USES_VECTOR
-			int layer = -1;
-#endif
 			for(tdrawing_buffer::const_iterator
 					layer_itor = drawing_buffer_.begin(),
 					layer_itor_end = drawing_buffer_.end();
 					layer_itor != layer_itor_end; ++layer_itor) {
 
-#if TDRAWING_BUFFER_USES_VECTOR
-				++layer;
-				if(!(layer >= layer_groups[z - 1] &&
-							layer < layer_groups[z])) {
-					// The current layer is not in the layer group, skip.
-					continue;
-				}
-#else
 				if(!(layer_itor->first >= layer_groups[z - 1] &&
 							layer_itor->first < layer_groups[z])) {
 					// The current layer is not in the layer group, skip.
 					continue;
 				}
-#endif
 
 				for(tblit_map::const_iterator
-#if TDRAWING_BUFFER_USES_VECTOR
-						drawing_iterator = layer_itor->begin(),
-						drawing_iterator_end = layer_itor->end();
-#else
 						drawing_iterator = layer_itor->second.begin(),
 						drawing_iterator_end = layer_itor->second.end();
-#endif
 						drawing_iterator != drawing_iterator_end;
 						++drawing_iterator) {
 
@@ -828,18 +807,7 @@ void display::drawing_buffer_commit()
 
 void display::drawing_buffer_clear()
 {
-#if TDRAWING_BUFFER_USES_VECTOR
-	// Note clear the items, the vector should remain the same size.
-	for(tdrawing_buffer::iterator layer_itor =
-			drawing_buffer_.begin(),
-			layer_itor_end = drawing_buffer_.end();
-			layer_itor != layer_itor_end; ++layer_itor) {
-
-		layer_itor->clear();
-	}
-#else
 	drawing_buffer_.clear();
-#endif
 }
 
 void display::sunset(const size_t delay)

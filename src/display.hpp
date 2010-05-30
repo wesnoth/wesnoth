@@ -725,22 +725,6 @@ public:
 		SDL_Color color, double x_in_hex=0.5, double y_in_hex=0.5);
 
 protected:
-
-	// Initially tdrawing_buffer was a vector but profiling showed that a map
-	// was more efficient. Tested with the LAYER_UNIT_LAST for various values
-	// and different types the results were. (Tested with oprofile.)
-
- 	// container    unit layers    counts
-	// vector       100            3748
-	// vector       10000          147338
-	// map          10000          3362
-
-	// Since a map with 10000 items was more efficient I didn't test the map
-	// with 100 items. I want to retest once more is converted, since with
-	// a different usage it numbers might differ so the old code is disabled
-	// with TDRAWING_BUFFER_USES_VECTOR
-	//     20080308 -- Mordante
-
 	/**
 	 * Compare functor for the blitting.
 	 *
@@ -767,11 +751,7 @@ protected:
 	 * * every vector element has a vector with surfaces to render.
 	 */
 	typedef std::map<map_location, std::vector<tblit>, draw_order> tblit_map;
-#if TDRAWING_BUFFER_USES_VECTOR
-	typedef std::vector<tblit_map> tdrawing_buffer;
-#else
 	typedef std::map<tdrawing_layer, tblit_map> tdrawing_buffer;
-#endif
 	tdrawing_buffer drawing_buffer_;
 
 public:
