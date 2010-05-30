@@ -359,12 +359,8 @@ bool vconfig::has_child(const std::string& key) const
 const t_string vconfig::expand(const std::string& key) const
 {
 	const t_string& val = (*cfg_)[key];
-	if(repos != NULL && !val.str().empty()) {
-		std::string interp = utils::interpolate_variables_into_string(val.str(), *repos);
-		if(val.str() != interp) {
-			return t_string(interp);
-		}
-	}
+	if(repos != NULL)
+		return utils::interpolate_variables_into_tstring(val, *repos);
 	return t_string(val);
 }
 

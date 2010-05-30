@@ -201,6 +201,17 @@ std::string interpolate_variables_into_string(const std::string &str, const vari
 	return do_interpolation(str, variables);
 }
 
+t_string interpolate_variables_into_tstring(const t_string &tstr, const variable_set& variables)
+{
+	if(!tstr.str().empty()) {
+		std::string interp = utils::interpolate_variables_into_string(tstr.str(), variables);
+		if(tstr.str() != interp) {
+			return t_string(interp);
+		}
+	}
+	return tstr;
+}
+
 }
 
 std::string vgettext(const char *msgid, const utils::string_map& symbols)

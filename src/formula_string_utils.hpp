@@ -28,6 +28,14 @@ namespace utils {
 std::string interpolate_variables_into_string(const std::string &str, const string_map * const symbols);
 std::string interpolate_variables_into_string(const std::string &str, const variable_set& variables);
 
+/**
+ * Function that does the same as the above, for t_stringS.
+ * If a change was made, then the t_string's translation is done in this
+ * function, rather than at use. This limitation is due to the use of
+ * create-time interpolation, rather than use-time.
+ */
+t_string interpolate_variables_into_tstring(const t_string &str, const variable_set& variables);
+
 }
 
 /** Handy wrappers around interpolate_variables_into_string and gettext. */
