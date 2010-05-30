@@ -126,7 +126,7 @@ void map_labels::set_team(const team* team)
 
 
 const terrain_label* map_labels::set_label(const map_location& loc,
-					   const std::string& text,
+					   const t_string& text,
 					   const std::string& team_name,
 					   const SDL_Color colour,
 					   const bool visible_in_fog,
@@ -141,7 +141,7 @@ const terrain_label* map_labels::set_label(const map_location& loc,
 			&& (current_label = current_label_map->second.find(loc)) != current_label_map->second.end() )
 	{
 		// Found old checking if need to erase it
-		if(text.empty())
+		if(text.str().empty())
 		{
 			current_label->second->set_text("");
 			res = new terrain_label("",team_name,loc,*this,colour,visible_in_fog,visible_in_shroud,immutable);
@@ -167,7 +167,7 @@ const terrain_label* map_labels::set_label(const map_location& loc,
 			res = current_label->second;
 		}
 	}
-	else if(!text.empty())
+	else if(!text.str().empty())
 	{
 		team_label_map::iterator global_label_map = labels_.find("");
 		label_map::iterator itor;
@@ -269,7 +269,7 @@ void map_labels::recalculate_shroud()
 
 
 /// creating new label
-terrain_label::terrain_label(const std::string& text,
+terrain_label::terrain_label(const t_string& text,
 							 const std::string& team_name,
 							 const map_location& loc,
 							 const map_labels& parent,
@@ -320,13 +320,13 @@ void terrain_label::read(const config &cfg)
 	SDL_Color colour = font::LABEL_COLOUR;
 	std::string tmp_colour = cfg["colour"];
 
-	text_ = cfg["text"].str();
+	text_ = cfg["text"];
 	team_name_ = cfg["team_name"].str();
 	visible_in_fog_ = cfg["visible_in_fog"].to_bool(true);
 	visible_in_shroud_ = cfg["visible_in_shroud"].to_bool();
 	immutable_ = cfg["immutable"].to_bool(true);
 
-	text_ = utils::interpolate_variables_into_string(text_, vs);
+	text_ = utils::interpolate_variables_into_tstring(text_, vs); // Not moved to rendering, as that would depend on variables at render-time
 	team_name_ = utils::interpolate_variables_into_string(team_name_, vs);
 	tmp_colour = utils::interpolate_variables_into_string(tmp_colour, vs);
 
@@ -355,7 +355,7 @@ void terrain_label::write(config& cfg) const
 	cfg["immutable"] = immutable_;
 }
 
-const std::string& terrain_label::text() const
+const t_string& terrain_label::text() const
 {
 	return text_;
 }
@@ -404,12 +404,12 @@ std::string terrain_label::cfg_colour() const
 	return buf.str();
 }
 
-void terrain_label::set_text(const std::string& text)
+void terrain_label::set_text(const t_string& text)
 {
 	text_ = text;
 }
 
-void terrain_label::update_info(const std::string& text,
+void terrain_label::update_info(const t_string& text,
 								const std::string& team_name,
 								const SDL_Color colour)
 {
@@ -455,7 +455,7 @@ void terrain_label::draw()
 	// the scenario.
 	bool use_markup = colour_ == font::LABEL_COLOUR;
 
-	font::floating_label flabel(text_);
+	font::floating_label flabel(text_.str());
 	flabel.set_colour(colour_);
 	flabel.set_position(xloc, yloc);
 	flabel.set_clip_rect(parent_->disp().map_outside_area());
@@ -485,7 +485,10 @@ void terrain_label::check_text_length()
 	// The actual data is wide_strings so test in wide_string mode
 	// also cutting a wide_string at an arbritary place gives odd
 	// problems.
-	utils::truncate_as_wstring(text_, parent_->get_max_chars());
+	std::string tmp = text_.str();
+	utils::truncate_as_wstring(tmp, parent_->get_max_chars());
+	if (tmp != text_.str())
+		text_ = t_string(tmp);
 }
 
 void terrain_label::clear()

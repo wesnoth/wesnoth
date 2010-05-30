@@ -2940,9 +2940,10 @@ void menu_handler::do_search(const std::string& new_search)
 		if (!gui_->shrouded(loc)) {
 			const terrain_label* label = gui_->labels().get_label(loc);
 			if(label) {
-				if(std::search(label->text().begin(), label->text().end(),
+				std::string label_text = label->text().str();
+				if(std::search(label_text.begin(), label_text.end(),
 						last_search_.begin(), last_search_.end(),
-						chars_equal_insensitive) != label->text().end()) {
+						chars_equal_insensitive) != label_text.end()) {
 					found = true;
 				}
 			}

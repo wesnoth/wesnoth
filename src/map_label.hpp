@@ -45,7 +45,7 @@ public:
 	// search a team-only label, if fails then try public labels
 	const terrain_label* get_label(const map_location& loc);
 	const terrain_label* set_label(const map_location& loc,
-							   const std::string& text,
+							   const t_string& text,
 							   const std::string& team = "",
 							   const SDL_Color colour = font::NORMAL_COLOUR,
 							   const bool visible_in_fog = true,
@@ -84,7 +84,7 @@ private:
 class terrain_label
 {
 public:
-	terrain_label(const std::string&,
+	terrain_label(const t_string&,
 				  const std::string&,
 				  const map_location&,
 				  const map_labels&,
@@ -100,7 +100,7 @@ public:
 	void write(config& res) const;
 	void read(const config &cfg);
 
-	const std::string& text() const;
+	const t_string& text() const;
 	const std::string& team_name() const;
 	bool visible_in_fog() const;
 	bool visible_in_shroud() const;
@@ -108,9 +108,9 @@ public:
 	const map_location& location() const;
 	const SDL_Colour& colour() const;
 
-	void set_text(const std::string&);
+	void set_text(const t_string&);
 
-	void update_info(const std::string&,
+	void update_info(const t_string&,
 					 const std::string&,
 					 const SDL_Color);
 
@@ -128,7 +128,7 @@ private:
 
 	int handle_;
 
-	std::string text_;
+	t_string text_;
 	std::string team_name_;
 	bool visible_in_fog_;
 	bool visible_in_shroud_;
