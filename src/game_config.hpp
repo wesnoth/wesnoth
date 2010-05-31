@@ -68,7 +68,9 @@ namespace game_config
 		moved_ball_image, unmoved_ball_image, partmoved_ball_image,
 		enemy_ball_image, ally_ball_image, energy_image,
 		flag_image, flag_icon_image,
-		terrain_mask_image, grid_image, unreachable_image, linger_image,
+		terrain_mask_image,
+		grid_image_top, grid_image_bottom,
+		unreachable_image, linger_image,
 		observer_image, tod_bright_image, tod_dark_image,
 		checked_menu_image, unchecked_menu_image, wml_menu_image, level_image,
 		ellipsis_image, default_victory_music, default_defeat_music;

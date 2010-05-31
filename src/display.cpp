@@ -1943,8 +1943,10 @@ void display::draw_hex(const map_location& loc) {
 
 	// Draw the grid, if that's been enabled
 		if(grid_ && on_map && !off_map_tile) {
-			drawing_buffer_add(LAYER_TERRAIN_TMP_BG, loc, tblit(xpos, ypos,
-				image::get_image(game_config::grid_image, image::SCALED_TO_HEX)));
+			drawing_buffer_add(LAYER_GRID_TOP, loc, tblit(xpos, ypos,
+				image::get_image(game_config::grid_image_top, image::SCALED_TO_HEX)));
+			drawing_buffer_add(LAYER_GRID_BOTTOM, loc, tblit(xpos, ypos,
+				image::get_image(game_config::grid_image_bottom, image::SCALED_TO_HEX)));
 		}
 	}
 

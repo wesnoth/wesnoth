@@ -662,6 +662,7 @@ public:
 		                            * Layer for the terrain drawn behind the
 		                            * unit.
 		                            */
+		LAYER_GRID_TOP,
 		LAYER_TERRAIN_TMP_BG,      /**<
 		                            * Layer which holds stuff that needs to be
 		                            * sorted out further, but under units.
@@ -673,6 +674,7 @@ public:
 		                            * Layer for the terrain drawn in front of
 		                            * the unit.
 		                            */
+		LAYER_GRID_BOTTOM,
 		LAYER_UNIT_MOVE_DEFAULT=LAYER_UNIT_FIRST+60/**<default layer for drawing moving units */,
 		LAYER_UNIT_FG =  LAYER_UNIT_FIRST+80, /**<
 		                            * Used for the ellipse in front of the
