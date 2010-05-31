@@ -1184,7 +1184,7 @@ WML_HANDLER_FUNCTION(move_units_fake, /*event_info*/, cfg)
 	for(size_t step = 1; step < longest_path; ++step) {
 		DBG_WML << "Doing step " << step << "...\n";
 		for(size_t un = 0; un < num_units; ++un) {
-			if(step >= paths[un].size())
+			if(step >= paths[un].size() || paths[un][step - 1] == paths[un][step])
 				continue;
 			DBG_WML << "Moving unit " << un << ", doing step " << step << '\n';
 			path_step[0] = paths[un][step - 1];
