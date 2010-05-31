@@ -1165,8 +1165,11 @@ WML_HANDLER_FUNCTION(move_units_fake, /*event_info*/, cfg)
 	foreach(const vconfig& config, unit_cfgs) {
 		const std::vector<std::string> xvals = utils::split(config["x"]);
 		const std::vector<std::string> yvals = utils::split(config["y"]);
+		const int skip_steps = lexical_cast_default<int>(config["skip_steps"]);
 		units.push_back(create_fake_unit(config));
 		paths.push_back(fake_unit_path(units.back(), xvals, yvals));
+		if(skip_steps > 0)
+			paths.back().insert(paths.back().begin(), skip_steps, paths.back().front());
 		longest_path = std::max(longest_path, paths.back().size());
 		DBG_WML << "Path " << paths.size() - 1 << " has length " << paths.back().size() << '\n';
 
