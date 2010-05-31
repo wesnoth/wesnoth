@@ -472,13 +472,13 @@ endif(ENABLE_EDITOR)
 # rename libwesnoth.a to libwesnoth-game.a to have clearer targets
 
 SET(libwesnoth-game_STAT_SRC
+    arrow.cpp
     builder.cpp
     cavegen.cpp
     clipboard.cpp
     construct_dialog.cpp
     cursor.cpp
     display.cpp
-    arrow.cpp
     events.cpp
     filechooser.cpp
     font.cpp

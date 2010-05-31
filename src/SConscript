@@ -61,6 +61,7 @@ libwesnoth_core_sources.extend([
 libwesnoth_core = env.Library("wesnoth_core", libwesnoth_core_sources)
 
 libwesnoth_sources = Split("""
+    arrow.cpp
     pathfind/astarsearch.cpp
     builder.cpp
     cavegen.cpp
@@ -68,7 +69,6 @@ libwesnoth_sources = Split("""
     construct_dialog.cpp
     cursor.cpp
     display.cpp
-    arrow.cpp
     events.cpp
     filechooser.cpp
     generic_event.cpp
