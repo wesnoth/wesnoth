@@ -90,7 +90,7 @@ play_controller::play_controller(const config& level, game_state& state_of_game,
 	loading_game_(level["playing_team"].empty() == false),
 	first_human_team_(-1),
 	player_number_(1),
-	first_player_(lexical_cast_default<unsigned int, std::string>(level_["playing_team"], 0) + 1),
+	first_player_(level_["playing_team"].to_int() + 1),
 	start_turn_(turn()),
 	is_host_(true),
 	skip_replay_(skip_replay),
@@ -150,9 +150,9 @@ void play_controller::init(CVideo& video){
 	}
 	recorder.set_skip(false);
 
-	const bool snapshot = utils::string_bool(level_["snapshot"]);
+	bool snapshot = level_["snapshot"].to_bool();
 
-	if(utils::string_bool(level_["modify_placing"])) {
+	if (level_["modify_placing"].to_bool()) {
 		LOG_NG << "modifying placing...\n";
 		place_sides_in_preferred_locations();
 	}
