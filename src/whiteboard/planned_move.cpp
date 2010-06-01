@@ -18,14 +18,21 @@
 
 #include "planned_move.hpp"
 #include "unit.hpp"
+#include "config.hpp"
 
 planned_move::planned_move(unit& subject, const map_location& target_hex)
 : unit_(subject), target_hex_(target_hex)
 {
-
+	//TODO: create arrow here
 }
 
 planned_move::~planned_move()
 {
+	//TODO: delete arrow here
+}
 
+config planned_move::to_cfg()
+{
+	//TODO: implement serialization to config
+}
 }
