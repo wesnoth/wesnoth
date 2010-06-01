@@ -70,7 +70,7 @@ public:
 
 	static bool cfg_to_value(const config &cfg)
 	{
-		return utils::string_bool(cfg["value"]);
+		return cfg["value"].to_bool();
 	}
 
 	static void cfg_to_value(const config &cfg, bool &value)
