@@ -1991,7 +1991,7 @@ WML_HANDLER_FUNCTION(print, /*event_info*/, cfg)
 		font::remove_floating_label(floating_label);
 
 	// Display a message on-screen
-	const std::string& text = cfg["text"];
+	std::string text = cfg["text"];
 	if(text.empty())
 		return;
 
