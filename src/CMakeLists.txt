@@ -161,6 +161,8 @@ if(MSVC)
 	SOURCE_GROUP("src tests gui" REGULAR_EXPRESSION "tests/gui/.*")
 	SOURCE_GROUP("src tests utils" REGULAR_EXPRESSION "tests/utils/.*")
 	SOURCE_GROUP("src tools" REGULAR_EXPRESSION "tools/.*")
+	SOURCE_GROUP("src tools" REGULAR_EXPRESSION "tools/.*")
+	SOURCE_GROUP("src whiteboard" REGULAR_EXPRESSION "whiteboard/.*")
 
 endif(MSVC)
 
