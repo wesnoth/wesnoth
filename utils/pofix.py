@@ -167,6 +167,7 @@ stringfixes = {
 # ... and aint -> ain't
 # conversion added in 1.9.0-svn
 ("I aint charging gold -", "I ain't charging gold —"),
+("'T'aint safe", "'T'ain't safe"),
 # Make it unspaced...
 # conversion added in 1.9.0-svn
 ("may be able to help us in - ", "may be able to help us in—"),
@@ -522,7 +523,7 @@ stringfixes = {
 # Speak, if all argument files are newer than this timestamp
 # Try to use UTC here
 # date --utc "+%s  # %c"
-timecheck = 1262364535  # Fri 01 Jan 2010 04:48:55 PM UTC
+timecheck = 1275358384  # Tue 01 Jun 2010 02:13:04 AM UTC
 
 import os, sys, time, stat, re
 
