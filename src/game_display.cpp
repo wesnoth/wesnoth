@@ -1072,7 +1072,7 @@ static DBusConnection *get_dbus_connection()
 	if (!initted)
 	{
 		initted = true;
-		if (utils::string_bool(preferences::get("disable_notifications"))) {
+		if (preferences::get("disable_notifications", false)) {
 			return NULL;
 		}
 		if (getenv("KDE_SESSION_VERSION")) {
