@@ -627,8 +627,8 @@ double move_leader_to_goals_phase::evaluate()
 		return BAD_SCORE;
 	}
 
-	double max_risk = lexical_cast_default<double>(goal["max_risk"],1-get_caution());
-	auto_remove_ = utils::string_bool(goal["auto_remove"],false);
+	double max_risk = goal["max_risk"].to_double(1 - get_caution());
+	auto_remove_ = goal["auto_remove"].to_bool();
 
 	dst_ = map_location(goal, &get_info().game_state_);
 	if (!dst_.valid()) {
@@ -708,7 +708,7 @@ void move_leader_to_goals_phase::execute()
 void move_leader_to_goals_phase::remove_goal(const std::string &id)
 {
 	config mod_ai;
-	mod_ai["side"] = lexical_cast<std::string>(get_side());
+	mod_ai["side"] = get_side();
 	mod_ai["path"] = "aspect[leader_goal].facet["+id+"]";
 	mod_ai["action"] = "delete";
 	manager::modify_active_ai_for_side(get_side(),mod_ai);
