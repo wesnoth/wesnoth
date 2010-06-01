@@ -270,6 +270,9 @@ wesnoth_source = \
 	upload_log.cpp \
 	variable.cpp \
 	variant.cpp \
+	whiteboard/planned_action.cpp \
+	whiteboard/planned_move.cpp \
+	whiteboard/planned_action_manager.cpp \
 	widgets/combo.cpp \
 	widgets/combo_drag.cpp \
 	widgets/drop_target.cpp \
