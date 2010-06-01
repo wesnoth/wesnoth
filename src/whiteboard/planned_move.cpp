@@ -17,14 +17,15 @@
  */
 
 #include "planned_move.hpp"
+#include "unit.hpp"
 
-planned_move::planned_move()
+planned_move::planned_move(unit& subject, const map_location& target_hex)
+: unit_(subject), target_hex_(target_hex)
 {
-	// TODO Auto-generated constructor stub
 
 }
 
 planned_move::~planned_move()
 {
-	// TODO Auto-generated destructor stub
+
 }

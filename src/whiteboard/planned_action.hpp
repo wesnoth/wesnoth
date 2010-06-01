@@ -16,8 +16,8 @@
  * @file planned_action.hpp
  */
 
-#ifndef PLANNED_ACTION_H_
-#define PLANNED_ACTION_H_
+#ifndef PLANNED_ACTION_HPP_
+#define PLANNED_ACTION_HPP_
 
 class planned_action
 {
@@ -26,4 +26,4 @@ public:
 	planned_action();
 };
 
-#endif /* PLANNED_ACTION_H_ */
+#endif /* PLANNED_ACTION_HPP_ */

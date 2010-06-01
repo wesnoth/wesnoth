@@ -16,16 +16,24 @@
  * @file planned_move.hpp
  */
 
-#ifndef PLANNED_MOVE_H_
-#define PLANNED_MOVE_H_
+#ifndef PLANNED_MOVE_HPP_
+#define PLANNED_MOVE_HPP_
 
 #include "planned_action.hpp"
+#include "map_location.hpp"
+
+class unit;
 
 class planned_move: public planned_action
 {
 public:
-	planned_move();
+	planned_move(unit& subject, const map_location& target_hex);
 	virtual ~planned_move();
+
+private:
+	unit & unit_;
+	map_location target_hex_;
+
 };
 
-#endif /* PLANNED_MOVE_H_ */
+#endif /* PLANNED_MOVE_HPP_ */
