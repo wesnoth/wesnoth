@@ -13,6 +13,10 @@ l10n_directories = ("l10n",)
 resource_extensions = map_extensions + image_extensions + sound_extensions
 image_reference = r"[A-Za-z0-9{}.][A-Za-z0-9_/+{}.-]*\.(png|jpg)(?=(~.*)?)"
 
+def is_root(dirname):
+    "Is the specified path the filesysten root?"
+    return dirname == os.sep or (os.sep == '\\' and dirname.endswith(':\\'))
+
 def pop_to_top(whoami):
     "Pop upward to the top-level directory."
     upwards = os.getcwd().split(os.sep)

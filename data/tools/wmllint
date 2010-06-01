@@ -1980,7 +1980,7 @@ def spellcheck(fn, d):
     # and for all directories above it.
     up = fn
     while True:
-        if not up or up == os.sep:
+        if not up or is_root(up):
             break
         else:
             local_spellings += declared_spellings.get(up,[])
