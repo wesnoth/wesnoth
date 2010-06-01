@@ -18,13 +18,23 @@
 
 #include "planned_action_manager.hpp"
 
+planned_action_manager* planned_action_manager::instance_ = NULL;
+
 planned_action_manager::planned_action_manager()
 {
-	// TODO Auto-generated constructor stub
 
 }
 
 planned_action_manager::~planned_action_manager()
 {
-	// TODO Auto-generated destructor stub
+
+}
+
+planned_action_manager* planned_action_manager::get_singleton()
+{
+	if (instance_ == NULL)
+	{
+		instance_ = new planned_action_manager;
+	}
+	return instance_;
 }

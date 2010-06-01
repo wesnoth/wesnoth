@@ -19,17 +19,29 @@
 #ifndef PLANNED_ACTION_SET_HPP_
 #define PLANNED_ACTION_SET_HPP_
 
-class planned_action;
+#include "planned_action.hpp"
+
+#include <deque>
+
+#include <boost/noncopyable.hpp>
 
 typedef std::deque<planned_action> planned_action_set;
 
-class planned_action_manager
+class planned_action_manager : private boost::noncopyable // Singleton -> Non-copyable
 {
 public:
-	planned_action_manager();
+
 	virtual ~planned_action_manager();
 
+	static planned_action_manager* get_singleton();
+
+
 private:
+	/// Singleton -> private constructor
+	planned_action_manager();
+
+	static planned_action_manager* instance_;
+
 	planned_action_set planned_actions;
 };
 
