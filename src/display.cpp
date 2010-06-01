@@ -107,8 +107,7 @@ display::display(CVideo& video, const gamemap* map, const config& theme_cfg, con
 	buttons_(),
 	invalidated_(),
 	previous_invalidated_(),
-	selected_hex_overlay_(0),
-	mouseover_hex_overlay_(0),
+	mouseover_hex_overlay_(NULL),
 	selectedHex_(),
 	mouseoverHex_(),
 	keys_(),
@@ -1950,12 +1949,9 @@ void display::draw_hex(const map_location& loc) {
 		}
 	}
 
-	// Paint selection and mouseover overlays
-	if(loc == selectedHex_ && on_map && selected_hex_overlay_ != NULL) {
-		drawing_buffer_add(LAYER_TERRAIN_TMP_BG, loc, tblit(xpos, ypos, selected_hex_overlay_));
-	}
+	// Paint mouseover overlays
 	if(loc == mouseoverHex_ && (on_map || (in_editor() && get_map().on_board_with_border(loc))) && mouseover_hex_overlay_ != NULL) {
-		drawing_buffer_add(LAYER_TERRAIN_TMP_BG, loc, tblit(xpos, ypos, mouseover_hex_overlay_));
+		drawing_buffer_add(LAYER_MOUSEOVER_OVERLAY, loc, tblit(xpos, ypos, mouseover_hex_overlay_));
 	}
 
 	// Paint arrows

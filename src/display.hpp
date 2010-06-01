@@ -320,21 +320,9 @@ public:
 	const gamemap& get_map() const { return *map_; }
 
 	/**
-	 * The last action in drawing a tile is adding the overlays.
-	 * These overlays are drawn in the following order:
-	 * hex_overlay_			if the drawn location is in the map
-	 * selected_hex_overlay_	if the drawn location is selected
-	 * mouseover_hex_overlay_	if the drawn location is underneath the mouse
-	 *
-	 * These functions require a prerendered surface.
-	 * Since they are drawn at the top, they are not influenced by TOD, shroud etc.
+	 * mouseover_hex_overlay_ require a prerendered surface
+	 * and is drawn underneath the mouse's location
 	 */
-	void set_selected_hex_overlay(const surface& image)
-		{ selected_hex_overlay_ = image; }
-
-	void clear_selected_hex_overlay()
-		{ selected_hex_overlay_ = NULL; }
-
 	void set_mouseover_hex_overlay(const surface& image)
 		{ mouseover_hex_overlay_ = image; }
 
@@ -609,7 +597,6 @@ protected:
 	std::vector<gui::button> buttons_;
 	std::set<map_location> invalidated_;
 	std::set<map_location> previous_invalidated_;
-	surface selected_hex_overlay_;
 	surface mouseover_hex_overlay_;
 	map_location selectedHex_;
 	map_location mouseoverHex_;
@@ -662,11 +649,9 @@ public:
 		                            * Layer for the terrain drawn behind the
 		                            * unit.
 		                            */
-		LAYER_GRID_TOP,
-		LAYER_TERRAIN_TMP_BG,      /**<
-		                            * Layer which holds stuff that needs to be
-		                            * sorted out further, but under units.
-		                            */
+		LAYER_GRID_TOP,            /**< Top half part of grid image */
+		LAYER_MOUSEOVER_OVERLAY,   /**< Mouseover overlay used by editor*/
+		LAYER_FOOTSTEPS,           /**< Footsteps showing path from unit to mouse */
 		LAYER_UNIT_FIRST,          /**< Reserve layers to be selected for WML. */
 		LAYER_UNIT_BG = LAYER_UNIT_FIRST+10,             /**< Used for the ellipse behind the unit. */
 		LAYER_UNIT_DEFAULT=LAYER_UNIT_FIRST+40,/**<default layer for drawing units */
@@ -674,7 +659,10 @@ public:
 		                            * Layer for the terrain drawn in front of
 		                            * the unit.
 		                            */
-		LAYER_GRID_BOTTOM,
+		LAYER_GRID_BOTTOM,         /**<
+		                            * Used for the bottom half part of grid image.
+		                            * Should be under moving units, to avoid masking south move.
+		                            */
 		LAYER_UNIT_MOVE_DEFAULT=LAYER_UNIT_FIRST+60/**<default layer for drawing moving units */,
 		LAYER_UNIT_FG =  LAYER_UNIT_FIRST+80, /**<
 		                            * Used for the ellipse in front of the

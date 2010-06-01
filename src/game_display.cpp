@@ -371,7 +371,7 @@ void game_display::draw_hex(const map_location& loc)
 	// Footsteps indicating a movement path
 	const std::vector<surface>& footstepImages = footsteps_images(loc);
 	if (footstepImages.size() != 0) {
-		drawing_buffer_add(LAYER_TERRAIN_TMP_BG, loc, tblit(xpos, ypos, footstepImages));
+		drawing_buffer_add(LAYER_FOOTSTEPS, loc, tblit(xpos, ypos, footstepImages));
 	}
 	// Draw the attack direction indicator
 	if(on_map && loc == attack_indicator_src_) {
