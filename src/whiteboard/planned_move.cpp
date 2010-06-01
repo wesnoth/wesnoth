@@ -30,9 +30,3 @@ planned_move::~planned_move()
 {
 	//TODO: delete arrow here
 }
-
-config planned_move::to_cfg()
-{
-	//TODO: implement serialization to config
-}
-}

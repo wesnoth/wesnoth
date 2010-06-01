@@ -21,6 +21,7 @@
 
 #include "planned_action.hpp"
 #include "map_location.hpp"
+#include "arrow.hpp"
 
 class unit;
 class config;
@@ -30,8 +31,6 @@ class planned_move: public planned_action
 public:
 	planned_move(unit& subject, const map_location& target_hex);
 	virtual ~planned_move();
-
-	config to_cfg();
 
 private:
 	unit & unit_;

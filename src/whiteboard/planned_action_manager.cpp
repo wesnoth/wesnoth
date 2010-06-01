@@ -18,6 +18,8 @@
 
 #include "planned_action_manager.hpp"
 
+#include <boost/make_shared.hpp>
+
 planned_action_manager* planned_action_manager::instance_ = NULL;
 
 planned_action_manager::planned_action_manager()
@@ -37,4 +39,14 @@ planned_action_manager* planned_action_manager::get_singleton()
 		instance_ = new planned_action_manager;
 	}
 	return instance_;
+}
+
+const planned_action_set& planned_action_manager::get_planned_actions() const
+{
+	return planned_actions_;
+}
+
+void planned_action_manager::add_planned_move(unit& subject, const map_location& target_hex)
+{
+	planned_actions_.push_back(boost::make_shared<planned_move>(boost::ref(subject), target_hex));
 }
