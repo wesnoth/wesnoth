@@ -18,13 +18,13 @@
 
 #include "planned_action.hpp"
 
-planned_action::planned_action()
+// Pure virtual destructor needs to have implementation,
+// since derived classes call it
+planned_action::~planned_action()
 {
-	// TODO Auto-generated constructor stub
-
 }
 
-planned_action::~planned_action()
+planned_action::planned_action()
 {
 
 }

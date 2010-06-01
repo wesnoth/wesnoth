@@ -22,8 +22,8 @@
 class planned_action
 {
 public:
+	virtual ~planned_action() = 0;
 	planned_action();
-	virtual ~planned_action();
 };
 
 #endif /* PLANNED_ACTION_H_ */

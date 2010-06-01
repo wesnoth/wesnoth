@@ -19,11 +19,18 @@
 #ifndef PLANNED_ACTION_SET_HPP_
 #define PLANNED_ACTION_SET_HPP_
 
+class planned_action;
+
+typedef std::deque<planned_action> planned_action_set;
+
 class planned_action_manager
 {
 public:
 	planned_action_manager();
 	virtual ~planned_action_manager();
+
+private:
+	planned_action_set planned_actions;
 };
 
 #endif /* PLANNED_ACTION_SET_HPP_ */
