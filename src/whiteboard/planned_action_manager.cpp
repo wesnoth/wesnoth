@@ -13,18 +13,18 @@
  */
 
 /**
- * @file planned_action_set.cpp
+ * @file planned_action_manager.cpp
  */
 
-#include "planned_action_set.hpp"
+#include "planned_action_manager.hpp"
 
-planned_action_set::planned_action_set()
+planned_action_manager::planned_action_manager()
 {
 	// TODO Auto-generated constructor stub
 
 }
 
-planned_action_set::~planned_action_set()
+planned_action_manager::~planned_action_manager()
 {
 	// TODO Auto-generated destructor stub
 }
