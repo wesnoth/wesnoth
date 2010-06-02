@@ -504,10 +504,8 @@ void loadgame::set_gamestate()
 	// For a replay we need to restore the start only, the replaying gets at
 	// proper location.
 	// For normal loading also restore the call count.
-	const int seed = lexical_cast_default<int>
-		(load_config_["random_seed"], 42);
-	const unsigned calls = show_replay_ ? 0 :
-		lexical_cast_default<unsigned> (gamestate_.snapshot["random_calls"]);
+	int seed = load_config_["random_seed"].to_int(42);
+	unsigned calls = show_replay_ ? 0 : gamestate_.snapshot["random_calls"].to_int();
 	gamestate_.rng().seed_random(seed, calls);
 }
 
@@ -885,13 +883,13 @@ void savegame::extract_summary_data_from_save(config& out)
 		if (side["controller"] != "human") {
 			continue;
 		}
-		if (utils::string_bool(side["shroud"])) {
+		if (side["shroud"].to_bool()) {
 			shrouded = true;
 		}
 
 		foreach (const config &u, side.child_range("unit"))
 		{
-			if (utils::string_bool(u["canrecruit"], false)) {
+			if (u["canrecruit"].to_bool()) {
 				leader = u["id"].str();
 				break;
 			}
