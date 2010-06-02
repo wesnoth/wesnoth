@@ -120,9 +120,9 @@ public:
 	 */
 	bool get_experience(int xp) { experience_ += xp; return advances(); }
 	/** Colors for the unit's hitpoints. */
-	SDL_Colour hp_color() const;
+	SDL_Color hp_color() const;
 	/** Colors for the unit's XP. */
-	SDL_Colour xp_color() const;
+	SDL_Color xp_color() const;
 	/** Set to true for some scenario-specific units which should not be renamed */
 	bool unrenamable() const { return unrenamable_; }
 	int side() const { return side_; }

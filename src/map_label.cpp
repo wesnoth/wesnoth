@@ -385,7 +385,7 @@ const map_location& terrain_label::location() const
 	return loc_;
 }
 
-const SDL_Colour& terrain_label::colour() const
+const SDL_Color& terrain_label::colour() const
 {
 	return colour_;
 }

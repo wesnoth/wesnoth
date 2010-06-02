@@ -941,7 +941,7 @@ std::string unit::transparent() const {
 	return image;
 }
 
-SDL_Colour unit::hp_color() const
+SDL_Color unit::hp_color() const
 {
 	double unit_energy = 0.0;
 	SDL_Color energy_colour = {0,0,0,0};
@@ -978,7 +978,7 @@ SDL_Colour unit::hp_color() const
 	return energy_colour;
 }
 
-SDL_Colour unit::xp_color() const
+SDL_Color unit::xp_color() const
 {
 	const SDL_Color near_advance_colour = {255,255,255,0};
 	const SDL_Color mid_advance_colour  = {150,255,255,0};
