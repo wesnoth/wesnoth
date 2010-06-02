@@ -85,9 +85,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 
 	if (const config &msg = cfg.child("message"))
 	{
-		const int side = lexical_cast_default<int>(msg["side"],0);
-
-		resources::screen->add_chat_message(time(NULL), msg["sender"], side,
+		resources::screen->add_chat_message(time(NULL), msg["sender"], msg["side"],
 				msg["message"], events::chat_handler::MESSAGE_PUBLIC,
 				preferences::message_bell());
 	}
@@ -334,11 +332,7 @@ void turn_info::change_side_controller(const std::string& side, const std::strin
 	config& change = cfg.add_child("change_controller");
 	change["side"] = side;
 	change["player"] = player;
-
-	if(own_side) {
-		change["own_side"] = "yes";
-	}
-
+	if (own_side) change["own_side"] = true;
 	network::send_data(cfg, 0, true);
 }
 
