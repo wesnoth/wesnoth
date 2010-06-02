@@ -120,7 +120,7 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist)
 	i = 0;
 	foreach (const config &j, cfg.child_range("multiplayer"))
 	{
-		if (utils::string_bool(j["allow_new_game"], true))
+		if (j["allow_new_game"].to_bool(true))
 		{
 			std::string name = j["name"];
 			menu_help_str = help_sep + name;
@@ -523,9 +523,9 @@ void create::process_event()
 
 		for (int pos = parameters_.scenario_data.child_count("side"); pos < map_positions; ++pos) {
 			config& side = parameters_.scenario_data.add_child("side");
-			side["side"] = lexical_cast<std::string>(pos+1);
-			side["team_name"] = lexical_cast<std::string>(pos+1);
-			side["canrecruit"] = "yes";
+			side["side"] = pos + 1;
+			side["team_name"] = pos + 1;
+			side["canrecruit"] = true;
 			side["controller"] = "human";
 		}
 
@@ -539,7 +539,7 @@ void create::process_event()
 
 		int nsides = 0;
 		foreach (const config &k, parameters_.scenario_data.child_range("side")) {
-			if (utils::string_bool(k["allow_player"], true)) ++nsides;
+			if (k["allow_player"].to_bool(true)) ++nsides;
 		}
 
 		std::stringstream players;
