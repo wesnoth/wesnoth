@@ -504,9 +504,9 @@ report generate_report(TYPE type,
 	case GOLD: {
 		char const *end = naps;
 		if (current_side != playing_side)
-			str << span_color(font::GRAY_COLOUR);
+			str << span_color(font::GRAY_COLOR);
 		else if (current_team.gold() < 0)
-			str << span_color(font::BAD_COLOUR);
+			str << span_color(font::BAD_COLOR);
 		else
 			end = "";
 		str << current_team.gold() << end;
@@ -515,7 +515,7 @@ report generate_report(TYPE type,
 	case VILLAGES: {
 		const team_data data = calculate_team_data(current_team,current_side,units);
 		if (current_side != playing_side)
-			str << span_color(font::GRAY_COLOUR);
+			str << span_color(font::GRAY_COLOR);
 		str << data.villages << '/';
 		if (current_team.uses_shroud()) {
 			int unshrouded_villages = 0;
@@ -534,7 +534,7 @@ report generate_report(TYPE type,
 	}
 	case NUM_UNITS: {
 		if (current_side != playing_side)
-			str << span_color(font::GRAY_COLOUR);
+			str << span_color(font::GRAY_COLOR);
 		str << side_units(units, current_side);
 		if (current_side != playing_side)
 			str << naps;
@@ -543,7 +543,7 @@ report generate_report(TYPE type,
 	case UPKEEP: {
 		const team_data data = calculate_team_data(current_team,current_side,units);
 		if (current_side != playing_side)
-			str << span_color(font::GRAY_COLOUR);
+			str << span_color(font::GRAY_COLOR);
 		str << data.expenses << " (" << data.upkeep << ")";
 		if (current_side != playing_side)
 			str << naps;
@@ -552,7 +552,7 @@ report generate_report(TYPE type,
 	case EXPENSES: {
 		const team_data data = calculate_team_data(current_team,current_side,units);
 		if (current_side != playing_side)
-			str << span_color(font::GRAY_COLOUR);
+			str << span_color(font::GRAY_COLOR);
 		str << data.expenses;
 		if (current_side != playing_side)
 			str << naps;
@@ -562,9 +562,9 @@ report generate_report(TYPE type,
 		team_data data = calculate_team_data(current_team, current_side, units);
 		char const *end = naps;
 		if (current_side != playing_side)
-			str << span_color(font::GRAY_COLOUR);
+			str << span_color(font::GRAY_COLOR);
 		else if (data.net_income < 0)
-			str << span_color(font::BAD_COLOUR);
+			str << span_color(font::BAD_COLOR);
 		else
 			end = "";
 		str << data.net_income << end;
@@ -698,7 +698,7 @@ report generate_report(TYPE type,
 			sec = current_team.countdown_time() / 1000;
 			char const *end = naps;
 			if (current_side != playing_side)
-				str << span_color(font::GRAY_COLOUR);
+				str << span_color(font::GRAY_COLOR);
 			else if (sec < 60)
 				str << "<span foreground=\"#c80000\">";
 			else if (sec < 120)

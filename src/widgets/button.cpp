@@ -122,7 +122,7 @@ void button::calculate_size()
 
 	if (type_ != TYPE_IMAGE){
 		textRect_ = font::draw_text(NULL, screen_area(), font_size,
-		                            font::BUTTON_COLOUR, label_, 0, 0);
+		                            font::BUTTON_COLOR, label_, 0, 0);
 	}
 
 	if (!change_size)
@@ -226,13 +226,13 @@ void button::draw_contents()
 		textx = loc.x + image_w + checkbox_horizontal_padding / 2;
 	}
 
-	SDL_Color button_colour = font::BUTTON_COLOUR;
+	SDL_Color button_colour = font::BUTTON_COLOR;
 
 	if (!enabled()) {
 		static const Uint32 disabled_btn_color = 0xAAAAAA;
 		static const double disabled_btn_adjust = 0.18;
 		image = blend_surface(greyscale_image(image), disabled_btn_adjust, disabled_btn_color);
-		button_colour = font::GRAY_COLOUR;
+		button_colour = font::GRAY_COLOR;
 	}
 
 	video().blit_surface(loc.x, loc.y, image);

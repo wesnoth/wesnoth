@@ -125,14 +125,14 @@ void default_map_generator::user_config(display& disp)
 	const std::string& castlesize_label = _("Castle Size:");
 	const std::string& landform_label = _("Landform:");
 
-	SDL_Rect players_rect = font::draw_text(NULL,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,players_label,0,0);
-	SDL_Rect width_rect = font::draw_text(NULL,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,width_label,0,0);
-	SDL_Rect height_rect = font::draw_text(NULL,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,height_label,0,0);
-	SDL_Rect iterations_rect = font::draw_text(NULL,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,iterations_label,0,0);
-	SDL_Rect hillsize_rect = font::draw_text(NULL,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,hillsize_label,0,0);
-	SDL_Rect villages_rect = font::draw_text(NULL,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,villages_label,0,0);
-	SDL_Rect castlesize_rect = font::draw_text(NULL,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,castlesize_label,0,0);
-	SDL_Rect landform_rect = font::draw_text(NULL,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,landform_label,0,0);
+	SDL_Rect players_rect = font::draw_text(NULL,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOR,players_label,0,0);
+	SDL_Rect width_rect = font::draw_text(NULL,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOR,width_label,0,0);
+	SDL_Rect height_rect = font::draw_text(NULL,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOR,height_label,0,0);
+	SDL_Rect iterations_rect = font::draw_text(NULL,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOR,iterations_label,0,0);
+	SDL_Rect hillsize_rect = font::draw_text(NULL,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOR,hillsize_label,0,0);
+	SDL_Rect villages_rect = font::draw_text(NULL,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOR,villages_label,0,0);
+	SDL_Rect castlesize_rect = font::draw_text(NULL,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOR,castlesize_label,0,0);
+	SDL_Rect landform_rect = font::draw_text(NULL,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOR,landform_label,0,0);
 
 	const int horz_margin = 15;
 	const int text_right = xpos + horz_margin +
@@ -276,39 +276,39 @@ void default_map_generator::user_config(display& disp)
 		events::raise_process_event();
 		events::raise_draw_event();
 
-		font::draw_text(&screen,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,players_label,players_rect.x,players_rect.y);
-		font::draw_text(&screen,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,width_label,width_rect.x,width_rect.y);
-		font::draw_text(&screen,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,height_label,height_rect.x,height_rect.y);
-		font::draw_text(&screen,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,iterations_label,iterations_rect.x,iterations_rect.y);
-		font::draw_text(&screen,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,hillsize_label,hillsize_rect.x,hillsize_rect.y);
-		font::draw_text(&screen,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,villages_label,villages_rect.x,villages_rect.y);
-		font::draw_text(&screen,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,castlesize_label,castlesize_rect.x,castlesize_rect.y);
-		font::draw_text(&screen,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,landform_label,landform_rect.x,landform_rect.y);
+		font::draw_text(&screen,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOR,players_label,players_rect.x,players_rect.y);
+		font::draw_text(&screen,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOR,width_label,width_rect.x,width_rect.y);
+		font::draw_text(&screen,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOR,height_label,height_rect.x,height_rect.y);
+		font::draw_text(&screen,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOR,iterations_label,iterations_rect.x,iterations_rect.y);
+		font::draw_text(&screen,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOR,hillsize_label,hillsize_rect.x,hillsize_rect.y);
+		font::draw_text(&screen,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOR,villages_label,villages_rect.x,villages_rect.y);
+		font::draw_text(&screen,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOR,castlesize_label,castlesize_rect.x,castlesize_rect.y);
+		font::draw_text(&screen,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOR,landform_label,landform_rect.x,landform_rect.y);
 
 		font::draw_text(&screen, screen_area(), font::SIZE_NORMAL,
-			font::NORMAL_COLOUR, str_cast(nplayers_),
+			font::NORMAL_COLOR, str_cast(nplayers_),
 			slider_right + horz_margin, players_rect.y);
 
 		font::draw_text(&screen, screen_area(), font::SIZE_NORMAL,
-			font::NORMAL_COLOUR, str_cast(width_),
+			font::NORMAL_COLOR, str_cast(width_),
 			slider_right + horz_margin, width_rect.y);
 
 		font::draw_text(&screen, screen_area(), font::SIZE_NORMAL,
-			font::NORMAL_COLOUR, str_cast(height_),
+			font::NORMAL_COLOR, str_cast(height_),
 			slider_right+horz_margin,height_rect.y);
 
 		std::stringstream villages_str;
 		villages_str << nvillages_ << _("/1000 tiles");
-		font::draw_text(&screen,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,villages_str.str(),
+		font::draw_text(&screen,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOR,villages_str.str(),
 		                slider_right+horz_margin,villages_rect.y);
 
 		font::draw_text(&screen, screen_area(), font::SIZE_NORMAL,
-			font::NORMAL_COLOUR, str_cast(castle_size_),
+			font::NORMAL_COLOR, str_cast(castle_size_),
 			slider_right + horz_margin, castlesize_rect.y);
 
 		std::stringstream landform_str;
 		landform_str << gettext(island_size_ == 0 ? N_("Inland") : (island_size_ < max_coastal ? N_("Coastal") : N_("Island")));
-		font::draw_text(&screen,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOUR,landform_str.str(),
+		font::draw_text(&screen,screen_area(),font::SIZE_NORMAL,font::NORMAL_COLOR,landform_str.str(),
 			            slider_right+horz_margin,landform_rect.y);
 
 		update_rect(xpos,ypos,width,height);

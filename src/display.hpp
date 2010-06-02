@@ -449,7 +449,7 @@ public:
 
 	/** Announce a message prominently. */
 	void announce(const std::string& msg,
-		       const SDL_Color& colour = font::GOOD_COLOUR);
+		       const SDL_Color& colour = font::GOOD_COLOR);
 
 	/**
 	 * Schedule the minimap for recalculation.

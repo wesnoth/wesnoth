@@ -858,7 +858,7 @@ void display::update_display()
 
 			font::floating_label flabel(stream.str());
 			flabel.set_font_size(12);
-			flabel.set_colour(benchmark ? font::BAD_COLOUR : font::NORMAL_COLOUR);
+			flabel.set_colour(benchmark ? font::BAD_COLOR : font::NORMAL_COLOR);
 			flabel.set_position(10, 100);
 			flabel.set_alignement(font::LEFT_ALIGN);
 
@@ -954,7 +954,7 @@ static void draw_label(CVideo& video, surface target, const theme::label& label)
 			tooltips::add_tooltip(loc,text);
 		}
 	} else if(text.empty() == false) {
-		font::draw_text(&video,loc,label.font_size(),font::NORMAL_COLOUR,text,loc.x,loc.y);
+		font::draw_text(&video,loc,label.font_size(),font::NORMAL_COLOR,text,loc.x,loc.y);
 	}
 
 	update_rect(loc);
@@ -1010,7 +1010,7 @@ void display::draw_text_in_hex(const map_location& loc,
 	);
 
 	surface text_surf = font::get_rendered_text(text, font_sz, color);
-	surface back_surf = font::get_rendered_text(text, font_sz, font::BLACK_COLOUR);
+	surface back_surf = font::get_rendered_text(text, font_sz, font::BLACK_COLOR);
 	const int x = get_location_x(loc) - text_surf->w/2
 	              + static_cast<int>(x_in_hex* hex_size());
 	const int y = get_location_y(loc) - text_surf->h/2
@@ -1112,7 +1112,7 @@ void display::set_diagnostic(const std::string& msg)
 	if(msg != "") {
 		font::floating_label flabel(msg);
 		flabel.set_font_size(font::SIZE_PLUS);
-		flabel.set_colour(font::YELLOW_COLOUR);
+		flabel.set_colour(font::YELLOW_COLOR);
 		flabel.set_position(300, 50);
 		flabel.set_clip_rect(map_outside_area());
 
@@ -1980,7 +1980,7 @@ void display::draw_hex(const map_location& loc) {
 		if (draw_coordinates_) {
 			int off_x = xpos + hex_size()/2;
 			int off_y = ypos + hex_size()/2;
-			surface text = font::get_rendered_text(lexical_cast<std::string>(loc), font::SIZE_SMALL, font::NORMAL_COLOUR);
+			surface text = font::get_rendered_text(lexical_cast<std::string>(loc), font::SIZE_SMALL, font::NORMAL_COLOR);
 			surface bg = create_neutral_surface(text->w, text->h);
 			SDL_Rect bg_rect = {0, 0, text->w, text->h};
 			SDL_FillRect(bg, &bg_rect, 0xaa000000);
@@ -1996,7 +1996,7 @@ void display::draw_hex(const map_location& loc) {
 		if (draw_terrain_codes_ && (game_config::debug || !shrouded(loc))) {
 			int off_x = xpos + hex_size()/2;
 			int off_y = ypos + hex_size()/2;
-			surface text = font::get_rendered_text(lexical_cast<std::string>(get_map().get_terrain(loc)), font::SIZE_SMALL, font::NORMAL_COLOUR);
+			surface text = font::get_rendered_text(lexical_cast<std::string>(get_map().get_terrain(loc)), font::SIZE_SMALL, font::NORMAL_COLOR);
 			surface bg = create_neutral_surface(text->w, text->h);
 			SDL_Rect bg_rect = {0, 0, text->w, text->h};
 			SDL_FillRect(bg, &bg_rect, 0xaa000000);

@@ -77,7 +77,7 @@ void progress_bar::draw_contents()
 			&video(),
 			location(),
 			font::SIZE_NORMAL,
-			font::BLACK_COLOUR,
+			font::BLACK_COLOR,
 			text,
 			text_area.x,
 			text_area.y

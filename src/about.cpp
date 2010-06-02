@@ -200,7 +200,7 @@ void show_about(display &disp, const std::string &campaign)
 	close.set_volatile(true);
 
 	const int def_size = font::SIZE_XLARGE;
-	const SDL_Color def_color = font::NORMAL_COLOUR;
+	const SDL_Color def_color = font::NORMAL_COLOR;
 
 	//substitute in the correct control characters for '+' and '-'
 	std::string before_header(2, ' ');

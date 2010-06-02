@@ -431,19 +431,19 @@ static void set_font_list(const std::vector<subset_descriptor>& fontlist)
 	char_blocks.compress();
 }
 
-const SDL_Color NORMAL_COLOUR = {0xDD,0xDD,0xDD,0},
-                GRAY_COLOUR   = {0x77,0x77,0x77,0},
-                LOBBY_COLOUR  = {0xBB,0xBB,0xBB,0},
-                GOOD_COLOUR   = {0x00,0xFF,0x00,0},
-                BAD_COLOUR    = {0xFF,0x00,0x00,0},
-                BLACK_COLOUR  = {0x00,0x00,0x00,0},
-                YELLOW_COLOUR = {0xFF,0xFF,0x00,0},
-                BUTTON_COLOUR = {0xBC,0xB0,0x88,0},
-                PETRIFIED_COLOUR = {0xA0,0xA0,0xA0,0},
-                TITLE_COLOUR  = {0xBC,0xB0,0x88,0},
-				LABEL_COLOUR  = {0x6B,0x8C,0xFF,0},
-				BIGMAP_COLOUR = {0xFF,0xFF,0xFF,0};
-const SDL_Color DISABLED_COLOUR = inverse(PETRIFIED_COLOUR);
+const SDL_Color NORMAL_COLOR = {0xDD,0xDD,0xDD,0},
+                GRAY_COLOR   = {0x77,0x77,0x77,0},
+                LOBBY_COLOR  = {0xBB,0xBB,0xBB,0},
+                GOOD_COLOR   = {0x00,0xFF,0x00,0},
+                BAD_COLOR    = {0xFF,0x00,0x00,0},
+                BLACK_COLOR  = {0x00,0x00,0x00,0},
+                YELLOW_COLOR = {0xFF,0xFF,0x00,0},
+                BUTTON_COLOR = {0xBC,0xB0,0x88,0},
+                PETRIFIED_COLOR = {0xA0,0xA0,0xA0,0},
+                TITLE_COLOR  = {0xBC,0xB0,0x88,0},
+				LABEL_COLOR  = {0x6B,0x8C,0xFF,0},
+				BIGMAP_COLOR = {0xFF,0xFF,0xFF,0};
+const SDL_Color DISABLED_COLOR = inverse(PETRIFIED_COLOR);
 
 namespace {
 
@@ -926,7 +926,7 @@ namespace font {
 floating_label::floating_label(const std::string& text)
 		: surf_(NULL), buf_(NULL), text_(text),
 		font_size_(SIZE_NORMAL),
-		colour_(NORMAL_COLOUR),	bgcolour_(), bgalpha_(0),
+		colour_(NORMAL_COLOR),	bgcolour_(), bgalpha_(0),
 		xpos_(0), ypos_(0),
 		xmove_(0), ymove_(0), lifetime_(-1),
 		width_(-1),

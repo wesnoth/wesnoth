@@ -317,7 +317,7 @@ void terrain_label::read(const config &cfg)
 {
 	const variable_set &vs = *resources::state_of_game;
 	loc_ = map_location(cfg, &vs);
-	SDL_Color colour = font::LABEL_COLOUR;
+	SDL_Color colour = font::LABEL_COLOR;
 	std::string tmp_colour = cfg["colour"];
 
 	text_ = cfg["text"];
@@ -453,7 +453,7 @@ void terrain_label::draw()
 	// If a colour is specified don't allow to override it with markup. (prevents faking map labels for example)
 	// FIXME: @todo Better detect if it's team label and not provided by
 	// the scenario.
-	bool use_markup = colour_ == font::LABEL_COLOUR;
+	bool use_markup = colour_ == font::LABEL_COLOR;
 
 	font::floating_label flabel(text_.str());
 	flabel.set_colour(colour_);

@@ -144,7 +144,7 @@ dialog::dialog(display &disp, const std::string& title, const std::string& messa
 
 	try {
 		std::string msg = font::word_wrap_text(message, message_font_size, screen.getx() / 2, screen.gety() / 2);
-		message_ = new label(screen, msg, message_font_size, font::NORMAL_COLOUR, false);
+		message_ = new label(screen, msg, message_font_size, font::NORMAL_COLOR, false);
 	} catch(utils::invalid_utf8_exception&) {
 		ERR_DP << "Problem handling utf8 in message '" << message << "'\n";
 		throw;
@@ -230,7 +230,7 @@ void dialog::set_textbox(const std::string& text_widget_label,
 				const std::string& text_widget_text,
 				const int text_widget_max_chars, const unsigned int text_box_width)
 {
-	label *label_ptr = new label(disp_.video(), text_widget_label, message_font_size, font::NORMAL_COLOUR, false);
+	label *label_ptr = new label(disp_.video(), text_widget_label, message_font_size, font::NORMAL_COLOR, false);
 	const bool editable_textbox = std::find(text_widget_text.begin(),text_widget_text.end(),'\n') == text_widget_text.end();
 	text_widget_ = new dialog_textbox(label_ptr, disp_.video(), text_box_width, text_widget_text, editable_textbox, text_widget_max_chars);
 	text_widget_->set_wrap(!editable_textbox);
@@ -826,7 +826,7 @@ void dialog::set_image(surface surf, const std::string &caption)
 {
 	label *label_ptr = NULL;
 	if(!caption.empty()) {
-		label_ptr = new label(disp_.video(), caption, caption_font_size, font::NORMAL_COLOUR, false);
+		label_ptr = new label(disp_.video(), caption, caption_font_size, font::NORMAL_COLOR, false);
 	}
 	set_image( new dialog_image(label_ptr, disp_.video(), surf ));
 }

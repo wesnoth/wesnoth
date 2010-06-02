@@ -51,7 +51,7 @@ const SDL_Color& label::set_colour(const SDL_Color& colour)
 
 const SDL_Color& label::get_colour() const
 {
-	return (enabled()) ? colour_ : font::DISABLED_COLOUR;
+	return (enabled()) ? colour_ : font::DISABLED_COLOR;
 }
 
 void label::draw_contents()

@@ -63,19 +63,19 @@ std::string::const_iterator parse_markup(std::string::const_iterator i1,
 			// quoted backslash - either way, remove leading backslash
 			break;
 		case BAD_TEXT:
-			if (colour) *colour = BAD_COLOUR;
+			if (colour) *colour = BAD_COLOR;
 			break;
 		case GOOD_TEXT:
-			if (colour) *colour = GOOD_COLOUR;
+			if (colour) *colour = GOOD_COLOR;
 			break;
 		case NORMAL_TEXT:
-			if (colour) *colour = NORMAL_COLOUR;
+			if (colour) *colour = NORMAL_COLOR;
 			break;
 		case BLACK_TEXT:
-			if (colour) *colour = BLACK_COLOUR;
+			if (colour) *colour = BLACK_COLOR;
 			break;
 		case GRAY_TEXT:
-			if (colour) *colour = GRAY_COLOUR;
+			if (colour) *colour = GRAY_COLOR;
 			break;
 		case LARGE_TEXT:
 			if (font_size) *font_size += 2;
@@ -179,7 +179,7 @@ std::string span_color(const SDL_Color &color)
 SDL_Rect text_area(const std::string& text, int size, int style)
 {
 	const SDL_Rect area = {0,0,10000,10000};
-	return draw_text(NULL, area, size, font::NORMAL_COLOUR, text, 0, 0, false, style);
+	return draw_text(NULL, area, size, font::NORMAL_COLOR, text, 0, 0, false, style);
 }
 
 SDL_Rect draw_text(surface dst, const SDL_Rect& area, int size,

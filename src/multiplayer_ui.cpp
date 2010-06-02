@@ -255,14 +255,14 @@ std::string chat::format_message(const msg& message)
 }
 
 SDL_Color chat::color_message(const msg& message) {
-	SDL_Color c = font::NORMAL_COLOUR;
+	SDL_Color c = font::NORMAL_COLOR;
 	// Normal users are not allowed to color their messages
 	if(message.user == "server"
 	|| message.user.substr(0,29) == "whisper: server message from ") {
 		font::parse_markup(message.message.begin(), message.message.end(), NULL, &c, NULL);
 	// Highlight private messages too
 	} else if(message.user.substr(0,8) == "whisper:") {
-	    c = font::LABEL_COLOUR;
+	    c = font::LABEL_COLOR;
 	}
 	return c;
 }
@@ -281,9 +281,9 @@ ui::ui(game_display& disp, const std::string& title, const config& cfg, chat& c,
 	gamelist_(gamelist),
 
 #ifdef USE_TINY_GUI
-	title_(disp.video(), title, font::SIZE_SMALL, font::TITLE_COLOUR),
+	title_(disp.video(), title, font::SIZE_SMALL, font::TITLE_COLOR),
 #else
-	title_(disp.video(), title, font::SIZE_LARGE, font::TITLE_COLOUR),
+	title_(disp.video(), title, font::SIZE_LARGE, font::TITLE_COLOR),
 	entry_textbox_(disp.video(), 100),
 #endif
 	chat_textbox_(disp.video(), 100, "", false),

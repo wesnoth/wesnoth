@@ -296,7 +296,7 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 
 	SDL_Rect clip_rect = { 0, 0, disp.w (), disp.h () };
 	SDL_Rect text_size = font::draw_text(NULL, clip_rect, font::SIZE_LARGE,
-					     font::NORMAL_COLOUR,_("Press desired Hotkey (Esc cancels)"),
+					     font::NORMAL_COLOR,_("Press desired Hotkey (Esc cancels)"),
 					     0, 0);
 
 	std::vector<std::string> menu_items;
@@ -363,7 +363,7 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 									text_size.h+12);
 			mini_frame.draw_background();
 			mini_frame.draw_border();
-			font::draw_text (&disp.video(), clip_rect, font::SIZE_LARGE,font::NORMAL_COLOUR,
+			font::draw_text (&disp.video(), clip_rect, font::SIZE_LARGE,font::NORMAL_COLOR,
 				 _("Press desired Hotkey (Esc cancels)"),centerx-text_size.w/2,
 				 centery-text_size.h/2);
 			disp.update_display();

@@ -418,7 +418,7 @@ private:
 	void add_text_item(const std::string& text, const std::string& ref_dst="",
 					   bool broken_link = false,
 					   int font_size=-1, bool bold=false, bool italic=false,
-					   SDL_Color color=font::NORMAL_COLOUR);
+					   SDL_Color color=font::NORMAL_COLOR);
 
 	/// Add an image item with the specified attributes.
 	void add_img_item(const std::string& path, const std::string& alignment, const bool floating,
@@ -568,7 +568,7 @@ static std::vector<std::string> parse_text(const std::string &text);
 /// [element_name]...[/element_name]. Return the resulting WML.
 static std::string convert_to_wml(const std::string &element_name, const std::string &contents);
 
-/// Return the color the string represents. Return font::NORMAL_COLOUR if
+/// Return the color the string represents. Return font::NORMAL_COLOR if
 /// the string is empty or can't be matched against any other color.
 static SDL_Color string_to_color(const std::string &s);
 
@@ -2201,7 +2201,7 @@ void help_text_area::set_items()
 	const std::string show_title =
 		font::make_text_ellipsis(shown_topic_->title, title_size, inner_location().w);
 	surface surf(font::get_rendered_text(show_title, title_size,
-					     font::NORMAL_COLOUR, TTF_STYLE_BOLD));
+					     font::NORMAL_COLOR, TTF_STYLE_BOLD));
 	if (surf != NULL) {
 		add_item(item(surf, 0, 0, show_title));
 		curr_loc_.second = title_spacing_;
@@ -2426,9 +2426,9 @@ void help_text_area::add_text_item(const std::string& text, const std::string& r
 		if(ref_dst.empty())
 			color = text_color;
 		else if(broken_link)
-			color = font::BAD_COLOUR;
+			color = font::BAD_COLOR;
 		else
-			color = font::YELLOW_COLOUR;
+			color = font::YELLOW_COLOR;
 
 		surface surf(font::get_rendered_text(first_part, font_size, color, state));
 		if (!surf.null())
@@ -3016,21 +3016,21 @@ std::string convert_to_wml(const std::string &element_name, const std::string &c
 SDL_Color string_to_color(const std::string &cmp_str)
 {
 	if (cmp_str == "green") {
-		return font::GOOD_COLOUR;
+		return font::GOOD_COLOR;
 	}
 	if (cmp_str == "red") {
-		return font::BAD_COLOUR;
+		return font::BAD_COLOR;
 	}
 	if (cmp_str == "black") {
-		return font::BLACK_COLOUR;
+		return font::BLACK_COLOR;
 	}
 	if (cmp_str == "yellow") {
-		return font::YELLOW_COLOUR;
+		return font::YELLOW_COLOR;
 	}
 	if (cmp_str == "white") {
-		return font::BIGMAP_COLOUR;
+		return font::BIGMAP_COLOR;
 	}
-	return font::NORMAL_COLOUR;
+	return font::NORMAL_COLOR;
 }
 
 std::vector<std::string> split_in_width(const std::string &s, const int font_size,

@@ -2476,13 +2476,13 @@ size_t move_unit(move_unit_spectator *move_spectator,
 		if (ambushed_string.empty())
 			ambushed_string = _("Ambushed!");
 		// We've been ambushed, display an appropriate message
-		disp.announce(ambushed_string, font::BAD_COLOUR);
+		disp.announce(ambushed_string, font::BAD_COLOR);
 		redraw = true;
 	}
 
 	if(teleport_failed) {
 		std::string teleport_string = _ ("Failed teleport! Exit not empty");
-		disp.announce(teleport_string, font::BAD_COLOUR);
+		disp.announce(teleport_string, font::BAD_COLOR);
 		redraw = true;
 	}
 
@@ -2527,17 +2527,17 @@ size_t move_unit(move_unit_spectator *move_spectator,
 		if(nfriends == 0 || nenemies == 0) {
 			if(nfriends > 0) {
 				message = vngettext("Friendly unit sighted", "$friends friendly units sighted", nfriends, symbols);
-				msg_colour = font::GOOD_COLOUR;
+				msg_colour = font::GOOD_COLOR;
 			} else if(nenemies > 0) {
 				message = vngettext("Enemy unit sighted!", "$enemies enemy units sighted!", nenemies, symbols);
-				msg_colour = font::BAD_COLOUR;
+				msg_colour = font::BAD_COLOR;
 			}
 		}
 		else {
 			symbols["friendphrase"] = vngettext("Part of 'Units sighted! (...)' sentence^1 friendly", "$friends friendly", nfriends, symbols);
 			symbols["enemyphrase"] = vngettext("Part of 'Units sighted! (...)' sentence^1 enemy", "$enemies enemy", nenemies, symbols);
 			message = vgettext("Units sighted! ($friendphrase, $enemyphrase)", symbols);
-			msg_colour = font::NORMAL_COLOUR;
+			msg_colour = font::NORMAL_COLOR;
 		}
 
 		if(steps.size() < route.size()) {

@@ -47,9 +47,9 @@ private:
 };
 
 //various standard colours
-extern const SDL_Color NORMAL_COLOUR, GRAY_COLOUR, LOBBY_COLOUR, GOOD_COLOUR, BAD_COLOUR,
-                       BLACK_COLOUR, YELLOW_COLOUR, BUTTON_COLOUR, BIGMAP_COLOUR,
-                       PETRIFIED_COLOUR, TITLE_COLOUR, DISABLED_COLOUR, LABEL_COLOUR;
+extern const SDL_Color NORMAL_COLOR, GRAY_COLOR, LOBBY_COLOR, GOOD_COLOR, BAD_COLOR,
+                       BLACK_COLOR, YELLOW_COLOR, BUTTON_COLOR, BIGMAP_COLOR,
+                       PETRIFIED_COLOR, TITLE_COLOR, DISABLED_COLOR, LABEL_COLOR;
 
 // font sizes, to be made theme parameters
 #ifdef USE_TINY_GUI

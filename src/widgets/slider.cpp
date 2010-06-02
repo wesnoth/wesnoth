@@ -142,10 +142,10 @@ void slider::draw_contents()
 	surface image(state_ != NORMAL ? highlightedImage_ : image_);
 	if (image == NULL)
 		return;
-	SDL_Color line_colour = font::NORMAL_COLOUR;
+	SDL_Color line_colour = font::NORMAL_COLOR;
 	if (!enabled()) {
 		image = greyscale_image(image);
-		line_colour = font::DISABLED_COLOUR;
+		line_colour = font::DISABLED_COLOR;
 	}
 
 	SDL_Rect const &loc = location();

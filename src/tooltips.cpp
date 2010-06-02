@@ -77,7 +77,7 @@ static void show_tooltip(const tooltip& tip)
 
 	font::floating_label flabel(tip.message);
 	flabel.set_font_size(font_size);
-	flabel.set_colour(font::NORMAL_COLOUR);
+	flabel.set_colour(font::NORMAL_COLOR);
 	flabel.set_clip_rect(area);
 	flabel.set_width(text_width);
 	flabel.set_alignement(font::LEFT_ALIGN);

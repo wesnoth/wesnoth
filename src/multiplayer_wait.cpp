@@ -119,12 +119,12 @@ void wait::leader_preview_pane::draw_contents()
 			SDL_BlitSurface(unit_image,NULL,screen,&image_rect);
 		}
 
-		font::draw_text(&video(),area,font::SIZE_PLUS,font::NORMAL_COLOUR,faction,area.x + 110, area.y + 60);
-		const SDL_Rect leader_rect = font::draw_text(&video(),area,font::SIZE_SMALL,font::NORMAL_COLOUR,
+		font::draw_text(&video(),area,font::SIZE_PLUS,font::NORMAL_COLOR,faction,area.x + 110, area.y + 60);
+		const SDL_Rect leader_rect = font::draw_text(&video(),area,font::SIZE_SMALL,font::NORMAL_COLOR,
 				_("Leader: "),area.x, area.y + 110);
-		const SDL_Rect gender_rect = font::draw_text(&video(),area,font::SIZE_SMALL,font::NORMAL_COLOUR,
+		const SDL_Rect gender_rect = font::draw_text(&video(),area,font::SIZE_SMALL,font::NORMAL_COLOR,
 				_("Gender: "),area.x, leader_rect.y + 30 + (leader_rect.h - leader_combo_.height()) / 2);
-		font::draw_wrapped_text(&video(),area,font::SIZE_SMALL,font::NORMAL_COLOUR,
+		font::draw_wrapped_text(&video(),area,font::SIZE_SMALL,font::NORMAL_COLOR,
 				_("Recruits: ") + recruit_string.str(),area.x, area.y + 132 + 30 + (leader_rect.h - leader_combo_.height()) / 2,
 				area.w);
 		leader_combo_.set_location(leader_rect.x + leader_rect.w + 16, leader_rect.y + (leader_rect.h - leader_combo_.height()) / 2);
@@ -172,7 +172,7 @@ wait::wait(game_display& disp, const config& cfg,
 		mp::chat& c, config& gamelist) :
 	ui(disp, _("Game Lobby"), cfg, c, gamelist),
 	cancel_button_(disp.video(), _("Cancel")),
-	start_label_(disp.video(), _("Waiting for game to start..."), font::SIZE_SMALL, font::LOBBY_COLOUR),
+	start_label_(disp.video(), _("Waiting for game to start..."), font::SIZE_SMALL, font::LOBBY_COLOR),
 	game_menu_(disp.video(), std::vector<std::string>(), false, -1, -1, NULL, &gui::menu::bluebg_style),
 	level_(),
 	state_(),

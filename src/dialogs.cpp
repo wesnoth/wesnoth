@@ -488,7 +488,7 @@ void save_preview_pane::draw_contents()
 		}
 	}
 
-	font::draw_text(&video(), area, font::SIZE_SMALL, font::NORMAL_COLOUR, str.str(), area.x, ypos, true);
+	font::draw_text(&video(), area, font::SIZE_SMALL, font::NORMAL_COLOR, str.str(), area.x, ypos, true);
 }
 
 std::string format_time_summary(time_t t)
@@ -752,7 +752,7 @@ void unit_preview_pane::draw_contents()
 		const std::string description = desc.str();
 		description_rect = font::text_area(description, font::SIZE_NORMAL);
 		description_rect = font::draw_text(&video(), area,
-							font::SIZE_NORMAL, font::NORMAL_COLOUR,
+							font::SIZE_NORMAL, font::NORMAL_COLOR,
 							desc.str(), right_align ?  image_rect.x :
 							image_rect.x + image_rect.w - description_rect.w,
 							image_rect.y + image_rect.h + details_button_.location().h);
@@ -828,7 +828,7 @@ void unit_preview_pane::draw_contents()
 				xpos = area.x + area.w - line_area.w;
 		}
 
-		SDL_Rect cur_area = font::draw_text(&video(),location(),font::SIZE_SMALL,font::NORMAL_COLOUR,*line,xpos,ypos);
+		SDL_Rect cur_area = font::draw_text(&video(),location(),font::SIZE_SMALL,font::NORMAL_COLOR,*line,xpos,ypos);
 		ypos += cur_area.h;
 	}
 }

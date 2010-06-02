@@ -1552,7 +1552,7 @@ void menu_handler::label_terrain(mouse_handler& mousehandler, bool team_only)
 
 	if(!d.show()) {
 		std::string team_name;
-		SDL_Color colour = font::LABEL_COLOUR;
+		SDL_Color colour = font::LABEL_COLOR;
 
 		if (d.option_checked()) {
 			team_name = gui_->labels().team_name();

@@ -186,7 +186,7 @@ void loadscreen::set_progress(const int percentage, const std::string &text, con
 		textarea_ = font::line_size(text, font::SIZE_NORMAL);
 		textarea_.x = scrx/2 + bw + bispw - textarea_.w / 2;
 		textarea_.y = pby + pbh + 4*(bw + bispw);
-		textarea_ = font::draw_text(&screen_,textarea_,font::SIZE_NORMAL,font::NORMAL_COLOUR,text,textarea_.x,textarea_.y);
+		textarea_ = font::draw_text(&screen_,textarea_,font::SIZE_NORMAL,font::NORMAL_COLOR,text,textarea_.x,textarea_.y);
 		oldarea.x = std::min<int>(textarea_.x, oldarea.x);
 		oldarea.y = std::min<int>(textarea_.y, oldarea.y);
 		oldarea.w = std::max<int>(textarea_.w, oldarea.w);

@@ -399,7 +399,7 @@ void game_display::draw_hex(const map_location& loc)
 		int debugH = debugHighlights_[loc];
 		if (debugH) {
 			std::string txt = lexical_cast<std::string>(debugH);
-			draw_text_in_hex(loc, LAYER_MOVE_INFO, txt, 18, font::BAD_COLOUR);
+			draw_text_in_hex(loc, LAYER_MOVE_INFO, txt, 18, font::BAD_COLOR);
 		}
 	}
 	//simulate_delay += 1;
@@ -616,7 +616,7 @@ void game_display::draw_movement_info(const map_location& loc)
 			if (w->second.turns > 1 || (w->second.turns == 1 && loc != route_.steps.back())) {
 				std::stringstream turns_text;
 				turns_text << w->second.turns;
-				draw_text_in_hex(loc, LAYER_MOVE_INFO, turns_text.str(), 17, font::NORMAL_COLOUR, 0.5,0.8);
+				draw_text_in_hex(loc, LAYER_MOVE_INFO, turns_text.str(), 17, font::NORMAL_COLOR, 0.5,0.8);
 			}
 
 			// The hex is full now, so skip the "show enemy moves"
@@ -628,7 +628,7 @@ void game_display::draw_movement_info(const map_location& loc)
 		reach_map::iterator reach = reach_map_.find(loc);
 		if (reach != reach_map_.end() && reach->second > 1) {
 			const std::string num = lexical_cast<std::string>(reach->second);
-			draw_text_in_hex(loc, LAYER_MOVE_INFO, num, 16, font::YELLOW_COLOUR);
+			draw_text_in_hex(loc, LAYER_MOVE_INFO, num, 16, font::YELLOW_COLOR);
 		}
 	}
 }

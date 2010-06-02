@@ -49,8 +49,8 @@ std::string::const_iterator parse_markup(std::string::const_iterator i1,
  * set for it equivalent to the entire contents of the text.
  *
  * Some very basic 'markup' will be done on the text:
- *  - any line beginning in # will be displayed in BAD_COLOUR  (red)
- *  - any line beginning in @ will be displayed in GOOD_COLOUR (green)
+ *  - any line beginning in # will be displayed in BAD_COLOR  (red)
+ *  - any line beginning in @ will be displayed in GOOD_COLOR (green)
  *  - any line beginning in + will be displayed with size increased by 2
  *  - any line beginning in - will be displayed with size decreased by 2
  *  - any line beginning with 0x0n will be displayed in the colour of side n

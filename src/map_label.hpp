@@ -47,7 +47,7 @@ public:
 	const terrain_label* set_label(const map_location& loc,
 							   const t_string& text,
 							   const std::string& team = "",
-							   const SDL_Color colour = font::NORMAL_COLOUR,
+							   const SDL_Color colour = font::NORMAL_COLOR,
 							   const bool visible_in_fog = true,
 							   const bool visible_in_shroud = false,
 							   const bool immutable = false);
@@ -88,7 +88,7 @@ public:
 				  const std::string&,
 				  const map_location&,
 				  const map_labels&,
-				  const SDL_Color colour = font::NORMAL_COLOUR,
+				  const SDL_Color colour = font::NORMAL_COLOR,
 				  const bool visible_in_fog = true,
 				  const bool visible_in_shroud = false,
 				  const bool immutable = false);

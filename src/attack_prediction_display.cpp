@@ -360,18 +360,18 @@ void battle_prediction_pane::draw_unit(int x_off, int damage_line_skip, int left
 	int y_off = 15;
 
 	// Draw unit label.
-	font::draw_text_line(screen, clip_rect, font::SIZE_15, font::NORMAL_COLOUR, label,
+	font::draw_text_line(screen, clip_rect, font::SIZE_15, font::NORMAL_COLOR, label,
 						 clip_rect.x + x_off + (units_width_ - label_width) / 2, clip_rect.y + y_off, 0, TTF_STYLE_BOLD);
 
 	y_off += 24;
 
 	// Draw unit left and right strings except the last two (total damage and unscathed probability).
 	for(i = 0; i < static_cast<int>(left_strings.size()) - 2; i++) {
-		font::draw_text_line(screen, clip_rect, font::SIZE_NORMAL, font::NORMAL_COLOUR, left_strings[i],
+		font::draw_text_line(screen, clip_rect, font::SIZE_NORMAL, font::NORMAL_COLOR, left_strings[i],
 							 clip_rect.x + x_off, clip_rect.y + y_off + (font::SIZE_NORMAL + inter_line_gap_) * i,
 							 0, TTF_STYLE_NORMAL);
 
-		font::draw_text_line(screen, clip_rect, font::SIZE_NORMAL, font::NORMAL_COLOUR, right_strings[i],
+		font::draw_text_line(screen, clip_rect, font::SIZE_NORMAL, font::NORMAL_COLOR, right_strings[i],
 							 clip_rect.x + x_off + left_strings_width + inter_column_gap_,
 							 clip_rect.y + y_off + (font::SIZE_NORMAL + inter_line_gap_) * i, 0, TTF_STYLE_NORMAL);
 	}
@@ -384,11 +384,11 @@ void battle_prediction_pane::draw_unit(int x_off, int damage_line_skip, int left
 		const std::string& left_string = left_strings[left_strings.size() - 2 + i];
 		const std::string& right_string = right_strings[right_strings.size() - 2 + i];
 
-		font::draw_text_line(screen, clip_rect, font::SIZE_NORMAL, font::NORMAL_COLOUR, left_string,
+		font::draw_text_line(screen, clip_rect, font::SIZE_NORMAL, font::NORMAL_COLOR, left_string,
 							 clip_rect.x + x_off, clip_rect.y + y_off + (font::SIZE_NORMAL + inter_line_gap_) * i,
 							 0, TTF_STYLE_NORMAL);
 
-		font::draw_text_line(screen, clip_rect, font::SIZE_NORMAL, font::NORMAL_COLOUR, right_string,
+		font::draw_text_line(screen, clip_rect, font::SIZE_NORMAL, font::NORMAL_COLOR, right_string,
 							 clip_rect.x + x_off + left_strings_width + inter_column_gap_,
 							 clip_rect.y + y_off + (font::SIZE_NORMAL + inter_line_gap_) * i, 0, TTF_STYLE_NORMAL);
 	}
@@ -396,7 +396,7 @@ void battle_prediction_pane::draw_unit(int x_off, int damage_line_skip, int left
 	y_off += 2 * (font::SIZE_NORMAL + inter_line_gap_) + 14;
 
 	// Draw hitpoints distribution string.
-	font::draw_text(screen, clip_rect, font::SIZE_SMALL, font::NORMAL_COLOUR, hp_distrib_string_,
+	font::draw_text(screen, clip_rect, font::SIZE_SMALL, font::NORMAL_COLOR, hp_distrib_string_,
 					clip_rect.x + x_off + (units_width_ - hp_distrib_string_width_) / 2, clip_rect.y + y_off);
 
 	y_off += 19;
@@ -500,7 +500,7 @@ void battle_prediction_pane::get_hp_distrib_surface(const std::vector<std::pair<
 		int hp_width = font::line_width(str_buf, fs);
 
 		// Draw bars.
-		font::draw_text_line(surf, clip_rect, fs, font::NORMAL_COLOUR, str_buf,
+		font::draw_text_line(surf, clip_rect, fs, font::NORMAL_COLOR, str_buf,
 							 hp_sep - hp_width - 2, 2 + (fs + 2) * i, 0, TTF_STYLE_NORMAL);
 
 		int bar_len = std::max<int>(static_cast<int>((prob * (bar_space - 4)) + 0.5), 2);
@@ -520,7 +520,7 @@ void battle_prediction_pane::get_hp_distrib_surface(const std::vector<std::pair<
 		// Draw probability percentage, aligned right.
 		format_prob(str_buf, static_cast<float>(prob));
 		int prob_width = font::line_width(str_buf, fs);
-		font::draw_text_line(surf, clip_rect, fs, font::NORMAL_COLOUR, str_buf,
+		font::draw_text_line(surf, clip_rect, fs, font::NORMAL_COLOR, str_buf,
 						 width - prob_width - 4, 2 + (fs + 2) * i, 0, TTF_STYLE_NORMAL);
 	}
 }

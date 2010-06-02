@@ -501,7 +501,7 @@ void terrain_palette::draw(bool force) {
 		}
 		if (!is_core) {
 			tooltip_text << " "
-					<< font::span_color(font::BAD_COLOUR)
+					<< font::span_color(font::BAD_COLOR)
 					<< _("(non-core)") << "\n"
 					<< _("Will not work in game without extra care.")
 					<< "</span>";

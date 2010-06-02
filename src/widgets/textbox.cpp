@@ -42,7 +42,7 @@ textbox::textbox(CVideo &video, int width, const std::string& text, bool editabl
 		  alpha_focus_(alpha_focus)
 {
 	// static const SDL_Rect area = d.screen_area();
-	// const int height = font::draw_text(NULL,area,font_size,font::NORMAL_COLOUR,"ABCD",0,0).h;
+	// const int height = font::draw_text(NULL,area,font_size,font::NORMAL_COLOR,"ABCD",0,0).h;
 	set_measurements(width, font::get_max_height(font_size));
 	set_scroll_rate(font::get_max_height(font_size) / 2);
 	update_text_cache(true);

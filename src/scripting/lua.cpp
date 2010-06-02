@@ -2077,8 +2077,8 @@ static int intf_float_label(lua_State *L)
 
 	t_string text;
 	if (!luaW_totstring(L, 3, text)) goto error_call_destructors_1;
-	resources::screen->float_label(loc, text, font::LABEL_COLOUR.r,
-		font::LABEL_COLOUR.g, font::LABEL_COLOUR.b);
+	resources::screen->float_label(loc, text, font::LABEL_COLOR.r,
+		font::LABEL_COLOR.g, font::LABEL_COLOR.b);
 	return 0;
 }
 

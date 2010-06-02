@@ -806,7 +806,7 @@ SDL_Rect menu::style::item_size(const std::string& item) const {
 		} else {
 			const SDL_Rect area = {0,0,10000,10000};
 			const SDL_Rect font_size =
-				font::draw_text(NULL,area,get_font_size(),font::NORMAL_COLOUR,str,0,0);
+				font::draw_text(NULL,area,get_font_size(),font::NORMAL_COLOR,str,0,0);
 			res.w += font_size.w;
 			res.h = std::max<int>(font_size.h, res.h);
 		}
@@ -956,7 +956,7 @@ void menu::draw_row(const size_t row_index, const SDL_Rect& rect, ROW_TYPE type)
 						: str;
 				const SDL_Rect& text_size = font::text_area(str,style_->get_font_size());
 				const size_t y = rect.y + (rect.h - text_size.h)/2;
-				font::draw_text(&video(),column,style_->get_font_size(),font::NORMAL_COLOUR,to_show,xpos,y);
+				font::draw_text(&video(),column,style_->get_font_size(),font::NORMAL_COLOR,to_show,xpos,y);
 
 				if(type == HEADING_ROW && sortby_ == int(i)) {
 					const surface sort_img = image::get_image(sortreversed_ ? "misc/sort-arrow.png" :
