@@ -138,7 +138,7 @@ void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)
 			tree_group_field["label"] = campaign["name"];
 			tree_group_item["name"] = tree_group_field;
 
-			if(utils::string_bool(campaign["completed"], false)) {
+			if (campaign["completed"].to_bool()) {
 				completed.add_child("campaign", tree_group_item)
 						.set_id(lexical_cast<std::string>(id++));
 			} else {
@@ -214,7 +214,7 @@ void tcampaign_selection::pre_show(CVideo& /*video*/, twindow& window)
 			assert(grid);
 
 			twidget* widget = grid->find("victory", false);
-			if(widget && !utils::string_bool(c["completed"], false)) {
+			if (widget && !c["completed"].to_bool()) {
 				widget->set_visible(twidget::HIDDEN);
 			}
 
