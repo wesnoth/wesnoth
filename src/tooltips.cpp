@@ -34,12 +34,11 @@ static const int text_width = 400;
 
 struct tooltip
 {
-	tooltip(const SDL_Rect& r, const std::string& msg, const SDL_Color& c)
-	: rect(r), message(msg), color(c)
+	tooltip(const SDL_Rect& r, const std::string& msg)
+	: rect(r), message(msg)
 	{}
 	SDL_Rect rect;
 	std::string message;
-	SDL_Color color;
 };
 
 std::vector<tooltip> tips;
@@ -78,7 +77,7 @@ static void show_tooltip(const tooltip& tip)
 
 	font::floating_label flabel(tip.message);
 	flabel.set_font_size(font_size);
-	flabel.set_colour(tip.color);
+	flabel.set_colour(font::NORMAL_COLOUR);
 	flabel.set_clip_rect(area);
 	flabel.set_width(text_width);
 	flabel.set_alignement(font::LEFT_ALIGN);
@@ -142,16 +141,16 @@ void clear_tooltips(const SDL_Rect& rect)
 	}
 }
 
-void add_tooltip(const SDL_Rect& rect, const std::string& message, const SDL_Color& color)
+void add_tooltip(const SDL_Rect& rect, const std::string& message)
 {
 	for(std::vector<tooltip>::iterator i = tips.begin(); i != tips.end(); ++i) {
 		if(rects_overlap(i->rect,rect)) {
-			*i = tooltip(rect, message, color);
+			*i = tooltip(rect, message);
 			return;
 		}
 	}
 
-	tips.push_back(tooltip(rect,message,color));
+	tips.push_back(tooltip(rect,message));
 	current_tooltip = tips.end();
 }
 
