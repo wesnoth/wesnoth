@@ -51,12 +51,6 @@ public:
 	 */
 	std::string get_terrain_string(const t_translation::t_terrain& terrain) const;
 
-	/** Throws exception if the map file is not in the correct format. */
-	struct incorrect_format_exception {
-		incorrect_format_exception(const char* msg) : msg_(msg) {}
-		const char* const msg_;
-	};
-
 	const t_translation::t_list& underlying_mvt_terrain(const map_location& loc) const
 		{ return underlying_mvt_terrain(get_terrain(loc)); }
 	const t_translation::t_list& underlying_def_terrain(const map_location& loc) const
@@ -109,7 +103,7 @@ public:
 	 * @param cfg the game config.
 	 * @param data the map data to load.
 	 */
-	gamemap(const config &cfg, const std::string &data); //throw(incorrect_format_exception)
+	gamemap(const config &cfg, const std::string &data); //throw(incorrect_map_format_exception)
 
 	virtual ~gamemap();
 
