@@ -222,7 +222,7 @@ tline::tline(const config& cfg)
 	, x2_(cfg["x2"])
 	, y2_(cfg["y2"])
 	, colour_(decode_colour(cfg["colour"]))
-	, thickness_(lexical_cast_default<unsigned>(cfg["thickness"]))
+	, thickness_(cfg["thickness"])
 {
 /*WIKI
  * @page = GUICanvasWML
@@ -552,7 +552,7 @@ trectangle::trectangle(const config& cfg)
 	, y_(cfg["y"])
 	, w_(cfg["w"])
 	, h_(cfg["h"])
-	, border_thickness_(lexical_cast_default<unsigned>(cfg["border_thickness"]))
+	, border_thickness_(cfg["border_thickness"])
 	, border_colour_(decode_colour(cfg["border_colour"]))
 	, fill_colour_(decode_colour(cfg["fill_colour"]))
 {
@@ -740,7 +740,7 @@ timage::timage(const config& cfg)
 	, src_clip_()
 	, image_()
 	, image_name_(cfg["name"])
-	, stretch_(utils::string_bool(cfg["stretch"]))
+	, stretch_(cfg["stretch"].to_bool())
 	, resize_mode_(get_resize_mode(cfg["resize_mode"]))
 	, vertical_mirror_(cfg["vertical_mirror"])
 {
@@ -1035,7 +1035,7 @@ ttext::ttext(const config& cfg)
 	, y_(cfg["y"])
 	, w_(cfg["w"])
 	, h_(cfg["h"])
-	, font_size_(lexical_cast_default<unsigned>(cfg["font_size"]))
+	, font_size_(cfg["font_size"])
 	, font_style_(decode_font_style(cfg["font_style"]))
 	, text_alignment_(cfg["text_alignment"])
 	, colour_(decode_colour(cfg["colour"]))
@@ -1279,8 +1279,7 @@ void tcanvas::parse_cfg(const config& cfg)
 					data.all_children_range()) {
 
 				if(function.key == "blur") {
-					blur_depth_ = lexical_cast_default<unsigned>(
-							function.cfg["depth"], 0);
+					blur_depth_ = function.cfg["depth"];
 				} else {
 					ERR_GUI_P << "Canvas: found a pre commit function"
 							<< " of an invalid type " << type << ".\n";
