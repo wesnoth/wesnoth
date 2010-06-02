@@ -166,7 +166,7 @@ void gamemap::read(const std::string& data)
 	config header;
 	::read(header, header_str);
 
-	border_size_ = lexical_cast_default<int>(header["border_size"], 0);
+	border_size_ = header["border_size"];
 	const std::string usage = header["usage"];
 
 	utils::string_map symbols;
@@ -256,23 +256,22 @@ void gamemap::read(const std::string& data)
 
 std::string gamemap::write() const
 {
-	std::map<int, t_translation::coordinate> starting_positions = std::map<int, t_translation::coordinate>();
-
 	// Convert the starting positions to a map
-	for(int i = 0; i < MAX_PLAYERS+1; ++i) {
-	if(on_board(startingPositions_[i])) {
-			const struct t_translation::coordinate position =
-				{startingPositions_[i].x + border_size_, startingPositions_[i].y + border_size_};
-
-			 starting_positions.insert(std::pair<int, t_translation::coordinate>(i, position));
-		}
+	std::map<int, t_translation::coordinate> starting_positions;
+	for (int i = 0; i < MAX_PLAYERS + 1; ++i)
+	{
+		if (!on_board(startingPositions_[i])) continue;
+		t_translation::coordinate position =
+			{ startingPositions_[i].x + border_size_, startingPositions_[i].y + border_size_ };
+		starting_positions[i] = position;
 	}
 
 	// Let the low level convertor do the conversion
-	const std::string& data = t_translation::write_game_map(tiles_, starting_positions);
-	const std::string& header = "border_size=" + lexical_cast<std::string>(border_size_)
-		+ "\nusage=" + (usage_ == IS_MAP ? "map" : "mask");
-	return header + "\n\n" + data;
+	std::ostringstream s;
+	s << "border_size=" << border_size_ << "\nusage="
+		<< (usage_ == IS_MAP ? "map" : "mask") << "\n\n"
+		<< t_translation::write_game_map(tiles_, starting_positions);
+	return s.str();
 }
 
 void gamemap::overlay(const gamemap& m, const config& rules_cfg, int xpos, int ypos, bool border)
@@ -350,8 +349,8 @@ void gamemap::overlay(const gamemap& m, const config& rules_cfg, int xpos, int y
 					new_terrain = terrain[0];
 				}
 
-				if(!utils::string_bool(cfg["use_old"])) {
-					set_terrain(map_location(x2,y2), new_terrain, mode, utils::string_bool(cfg["replace_if_failed"]));
+				if (!cfg["use_old"].to_bool()) {
+					set_terrain(map_location(x2, y2), new_terrain, mode, cfg["replace_if_failed"].to_bool());
 				}
 
 			} else {
