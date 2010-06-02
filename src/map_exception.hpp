@@ -18,8 +18,8 @@
 #define MAP_EXCEPTION_H_INCLUDED
 
 struct incorrect_map_format_exception {
-	incorrect_map_format_exception(const char* msg) : msg_(msg) {}
-	const char* const msg_;
+	incorrect_map_format_exception(const std::string& msg) : msg_(msg) {}
+	const std::string msg_;
 };
 
 #endif

@@ -161,6 +161,8 @@ Version 1.9.0-svn:
    * Don't crash if a [story] [part] [if] misses [then] or [else] (bug #16028)
    * Fix a crash on OS X caused by passing invalid utf8 to pango (bug #16020)
    * Hidden weapons (attack_weight = 0) no longer skew the best weapon selection
+   * Prevent dereferencing freed memory when reporting malformed maps, i.e. when
+     using an invalid terrain type
 
 Version 1.8.0:
  * AI:
