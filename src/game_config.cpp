@@ -186,8 +186,8 @@ namespace game_config
 		flag_image = v["flag_image"].str();
 		flag_icon_image = v["flag_icon_image"].str();
 
-		hp_bar_scaling = lexical_cast_default<double>(v["hp_bar_scaling"]);
-		xp_bar_scaling = lexical_cast_default<double>(v["xp_bar_scaling"]);
+		hp_bar_scaling = v["hp_bar_scaling"].to_double();
+		xp_bar_scaling = v["xp_bar_scaling"].to_double();
 
 		foot_speed_prefix = utils::split(v["footprint_prefix"]);
 		foot_teleport_enter = v["footprint_teleport_enter"].str();
