@@ -29,12 +29,11 @@ namespace implementation {
 
 tbuilder_slider::tbuilder_slider(const config& cfg)
 	: implementation::tbuilder_control(cfg)
-	, best_slider_length_(lexical_cast_default<unsigned>(
-				cfg["best_slider_length"]))
-	, minimum_value_(lexical_cast_default<int>(cfg["minimum_value"]))
-	, maximum_value_(lexical_cast_default<int>(cfg["maximum_value"]))
-	, step_size_(lexical_cast_default<unsigned>(cfg["step_size"]))
-	, value_(lexical_cast_default<unsigned>(cfg["value"]))
+	, best_slider_length_(cfg["best_slider_length"])
+	, minimum_value_(cfg["minimum_value"])
+	, maximum_value_(cfg["maximum_value"])
+	, step_size_(cfg["step_size"])
+	, value_(cfg["value"])
 	, minimum_value_label_(cfg["minimum_value_label"].t_str())
 	, maximum_value_label_(cfg["maximum_value_label"].t_str())
 	, value_labels_()
