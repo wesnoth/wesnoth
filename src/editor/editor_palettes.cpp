@@ -26,6 +26,8 @@
 #include "../gettext.hpp"
 #include "../serialization/string_utils.hpp"
 #include "../tooltips.hpp"
+#include "../marked-up_text.hpp"
+
 
 namespace editor {
 
@@ -498,10 +500,11 @@ void terrain_palette::draw(bool force) {
 			tooltip_text << " - " << terrain;
 		}
 		if (!is_core) {
-			tooltip_text << " <span foreground=\"red\">";
-			tooltip_text << _("(non-core)") << "\n";
-			tooltip_text << _("Will not work in game without extra care.");
-			tooltip_text << "</span>";
+			tooltip_text << " "
+					<< font::span_color(font::BAD_COLOUR)
+					<< _("(non-core)") << "\n"
+					<< _("Will not work in game without extra care.")
+					<< "</span>";
 		}
 		tooltips::add_tooltip(dstrect, tooltip_text.str());
 		if (counter_from_zero % size_specs_.terrain_width == size_specs_.terrain_width - 1)

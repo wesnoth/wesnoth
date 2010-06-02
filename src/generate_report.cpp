@@ -53,11 +53,6 @@ static std::string flush(std::ostringstream &s)
 	return r;
 }
 
-static std::string span_color(SDL_Color const &c)
-{
-	return "<span foreground=\"#" + font::color2hexa(c) + "\">";
-}
-
 static char const *naps = "</span>";
 
 report generate_report(TYPE type,
@@ -83,6 +78,7 @@ report generate_report(TYPE type,
 	std::ostringstream str;
 	std::ostringstream tooltip;
 	using utils::signed_percent;
+	using font::span_color;
 
 	switch(type) {
 	case UNIT_NAME:

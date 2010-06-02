@@ -98,6 +98,12 @@ std::string color2markup(const SDL_Color &color);
 std::string color2hexa(const SDL_Color &color);
 
 /**
+ * Creates pango markup of a color.
+ * Don't forget to close it with a </span>
+ */
+std::string span_color(const SDL_Color &color);
+
+/**
  * Wrap text.
  *
  * - If the text exceedes the specified max width, wrap it one a word basis.
