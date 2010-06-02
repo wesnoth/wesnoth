@@ -666,7 +666,7 @@ private:
 };
 
 terrain_height_mapper::terrain_height_mapper(const config& cfg) :
-	terrain_height(lexical_cast_default<int>(cfg["height"],0)),
+	terrain_height(cfg["height"]),
 	to(t_translation::GRASS_LAND)
 {
 	const std::string& terrain = cfg["terrain"];
@@ -704,10 +704,10 @@ terrain_converter::terrain_converter(const config& cfg) : min_temp(-1),
 	  from(t_translation::read_list(cfg["from"])),
 	  to(t_translation::NONE_TERRAIN)
 {
-	min_temp = lexical_cast_default<int>(cfg["min_temperature"],-100000);
-	max_temp = lexical_cast_default<int>(cfg["max_temperature"],100000);
-	min_height = lexical_cast_default<int>(cfg["min_height"],-100000);
-	max_height = lexical_cast_default<int>(cfg["max_height"],100000);
+	min_temp = cfg["min_temperature"].to_int(-100000);
+	max_temp = cfg["max_temperature"].to_int(100000);
+	min_height = cfg["min_height"].to_int(-100000);
+	max_height = cfg["max_height"].to_int(100000);
 
 	const std::string& to_str = cfg["to"];
 	if(to_str != "") {
