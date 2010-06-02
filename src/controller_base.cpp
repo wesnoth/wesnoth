@@ -136,7 +136,7 @@ void controller_base::post_mouse_press(const SDL_Event& /*event*/) {
 bool controller_base::handle_scroll(CKey& key, int mousex, int mousey, int mouse_flags)
 {
 	bool mouse_in_window = (SDL_GetAppState() & SDL_APPMOUSEFOCUS) != 0
-		|| utils::string_bool(preferences::get("scroll_when_mouse_outside"), true);
+		|| preferences::get("scroll_when_mouse_outside", true);
 	bool keyboard_focus = have_keyboard_focus();
 	int scroll_speed = preferences::scroll_speed();
 	int dx = 0, dy = 0;
