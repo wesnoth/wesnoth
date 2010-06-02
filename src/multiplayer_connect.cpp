@@ -79,8 +79,7 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 	income_lock_(cfg["income_lock"].to_bool()),
 	team_lock_(cfg["team_lock"].to_bool()),
 	colour_lock_(cfg["colour_lock"].to_bool()),
-	player_number_(parent.video(), lexical_cast_default<std::string>(index+1, ""),
-	               font::SIZE_LARGE, font::LOBBY_COLOUR),
+	player_number_(parent.video(), str_cast(index + 1), font::SIZE_LARGE, font::LOBBY_COLOUR),
 	combo_controller_(new gui::combo_drag(parent.disp(), parent.player_types_, parent.combo_control_group_)),
 	orig_controller_(parent.video(), current_player_, font::SIZE_SMALL),
 	combo_ai_algorithm_(parent.disp(), std::vector<std::string>()),
@@ -169,7 +168,7 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 	update_faction_combo();
 
 	if (const config &ai = cfg.child("ai"))
-		ai_algorithm_ = lexical_cast_default<std::string>(ai["ai_algorithm"], "default");
+		ai_algorithm_ = ai["ai_algorithm"].str();
 	else
 		ai_algorithm_ = "default";
 	init_ai_algorithm_combo();
@@ -188,7 +187,7 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 		std::string leader_type;
 		foreach (const config &side_unit, cfg.child_range("unit"))
 		{
-			if (utils::string_bool(side_unit["canrecruit"], false)) {
+			if (side_unit["canrecruit"].to_bool()) {
 				leader_type = side_unit["type"].str();
 				gender_ = side_unit["gender"].str();
 				break;
@@ -470,7 +469,7 @@ void connect::side::process_event()
 	}
 	if (slider_gold_.value() != gold_) {
 		gold_ = slider_gold_.value();
-		label_gold_.set_text(lexical_cast_default<std::string>(gold_, "0"));
+		label_gold_.set_text(str_cast(gold_));
 		changed_ = true;
 	}
 	if (slider_income_.value() != income_) {
@@ -618,7 +617,7 @@ void connect::side::update_ui()
 	combo_team_.set_selected(team_);
 	combo_colour_.set_selected(colour_);
 	slider_gold_.set_value(gold_);
-	label_gold_.set_text(lexical_cast_default<std::string>(gold_, "0"));
+	label_gold_.set_text(str_cast(gold_));
 	slider_income_.set_value(income_);
 	std::stringstream buf;
 	if(income_ < 0) {
@@ -643,9 +642,7 @@ config connect::side::get_config() const
 		res["faction_name"] = res["name"];
 	}
 	res.append(cfg_);
-	if (!cfg_.has_attribute("side")
-			|| cfg_["side"] != lexical_cast<std::string>(index_ + 1))
-	{
+	if (!cfg_.has_attribute("side") || cfg_["side"].to_int() != index_ + 1) {
 		res["side"] = index_ + 1;
 	}
 	res["controller"] = controller_names[controller_];
@@ -733,7 +730,7 @@ config connect::side::get_config() const
 		res["team_name"] = parent_->team_names_[team_];
 		res["user_team_name"] = parent_->user_team_names_[team_];
 		res["allow_player"] = allow_player_;
-		res["colour"] = lexical_cast<std::string>(colour_ + 1);
+		res["colour"] = colour_ + 1;
 		res["gold"] = gold_;
 		res["income"] = income_;
 
@@ -839,7 +836,7 @@ void connect::side::import_network_user(const config& data)
 
 	if(enabled_ && !parent_->era_sides_.empty()) {
 		if(combo_faction_.enabled()) {
-			faction_ = lexical_cast_default<int>(data["faction"], 0);
+			faction_ = data["faction"];
 			if(faction_ > int(parent_->era_sides_.size()))
 				faction_ = 0;
 			llm_.update_leader_list(faction_);
@@ -902,7 +899,7 @@ void connect::side::resolve_random()
 		foreach (const config *i, parent_->era_sides_)
 		{
 			++num;
-			if ((*i)["random_faction"] != "yes") {
+			if (!(*i)["random_faction"].to_bool()) {
 				const std::string& faction_id = (*i)["id"];
 				if (
 					!faction_choices.empty() &&
@@ -1196,8 +1193,9 @@ void connect::process_network_data(const config& data, const network::connection
 	}
 
 	if (!data["side_drop"].empty()) {
-		const int side_drop = lexical_cast_default<int>(data["side_drop"], 0) - 1;
-		if(side_drop >= 0 && side_drop < int(sides_.size())) {
+		unsigned side_drop = data["side_drop"].to_int() - 1;
+		if (side_drop < sides_.size())
+		{
 			connected_user_list::iterator player = find_player(sides_[side_drop].get_player_id());
 			sides_[side_drop].reset(sides_[side_drop].get_controller());
 			if (player != users_.end()) {
@@ -1211,7 +1209,7 @@ void connect::process_network_data(const config& data, const network::connection
 	}
 
 	if (!data["side"].empty()) {
-		int side_taken = lexical_cast_default<int>(data["side"], 0) - 1;
+		unsigned side_taken = data["side"].to_int() - 1;
 
 		// Checks if the connecting user has a valid and unique name.
 		const std::string name = data["name"];
@@ -1245,7 +1243,8 @@ void connect::process_network_data(const config& data, const network::connection
 		}
 
 		// Assigns this user to a side
-		if(side_taken >= 0 && side_taken < int(sides_.size())) {
+		if (side_taken < sides_.size())
+		{
 			if(!sides_[side_taken].available(name)) {
 				// This side is already taken.
 				// Try to reassing the player to a different position.
