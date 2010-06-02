@@ -51,7 +51,7 @@ static bool load_persist_data(const std::string &name_space, config &cfg, const 
 	return success;
 }
 
-static bool save_persist_data(std::string &name_space, config &cfg)
+static bool save_persist_data(const std::string &name_space, config &cfg)
 {
 	bool success = false;
 
