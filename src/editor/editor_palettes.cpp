@@ -493,20 +493,17 @@ void terrain_palette::draw(bool force) {
 		draw_rectangle(dstrect.x, dstrect.y, image->w, image->h, color, screen);
 
 		bool is_core = non_core_terrains_.find(terrain) == non_core_terrains_.end();
-		SDL_Color tip_color = font::NORMAL_COLOUR;
-		if (!is_core) {
-			SDL_Color red = {0xff, 0, 0, 0};
-			tip_color = red;
-		}
 		tooltip_text << map().get_terrain_string(terrain);
 		if (gui_.get_draw_terrain_codes()) {
 			tooltip_text << " - " << terrain;
 		}
 		if (!is_core) {
-			tooltip_text << " " << _("(non-core)") << "\n";
+			tooltip_text << " <span foreground=\"red\">";
+			tooltip_text << _("(non-core)") << "\n";
 			tooltip_text << _("Will not work in game without extra care.");
+			tooltip_text << "</span>";
 		}
-		tooltips::add_tooltip(dstrect, tooltip_text.str(), tip_color);
+		tooltips::add_tooltip(dstrect, tooltip_text.str());
 		if (counter_from_zero % size_specs_.terrain_width == size_specs_.terrain_width - 1)
 			y += size_specs_.terrain_space;
 	}
