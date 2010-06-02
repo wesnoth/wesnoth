@@ -297,7 +297,7 @@ report generate_report(TYPE type,
 			}
 		}
 
-		tooltip << "<b>" << _("Chance to be hit: ")
+		tooltip << "<b>" << _("Defense: ")
 			 << span_color(color)  << def << "%</span></b>";
 
 		return report(str.str(), "", tooltip.str());
