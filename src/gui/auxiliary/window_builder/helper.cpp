@@ -83,7 +83,7 @@ unsigned read_flags(const config& cfg)
 	const unsigned h_flags = get_h_align(cfg["horizontal_alignment"]);
 	flags |= get_border( utils::split(cfg["border"]));
 
-	if(utils::string_bool(cfg["vertical_grow"])) {
+	if (cfg["vertical_grow"].to_bool()) {
 		flags |= tgrid::VERTICAL_GROW_SEND_TO_CLIENT;
 
 		if(! (cfg["vertical_alignment"]).empty()) {
@@ -94,7 +94,7 @@ unsigned read_flags(const config& cfg)
 		flags |= v_flags;
 	}
 
-	if(utils::string_bool(cfg["horizontal_grow"])) {
+	if (cfg["horizontal_grow"].to_bool()) {
 		flags |= tgrid::HORIZONTAL_GROW_SEND_TO_CLIENT;
 
 		if(! (cfg["horizontal_alignment"]).empty()) {
