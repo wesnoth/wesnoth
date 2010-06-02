@@ -578,7 +578,7 @@ void terrain_builder::add_images_from_config(rule_imagelist& images, const confi
 	foreach (const config &img, cfg.child_range("image"))
 	{
 		const std::string &name = img["name"];
-		const int layer = lexical_cast_default<int>(img["layer"], 0);
+		int layer = img["layer"];
 
 		int basex = 0, basey = 0;
 		if (img["base"].empty()) {
@@ -820,7 +820,7 @@ void terrain_builder::parse_config(const config &cfg, bool local)
 		// Handles rotations
 		const std::string &rotations = br["rotations"];
 
-		int precedence = lexical_cast_default<int>(br["precedence"],0);
+		int precedence = br["precedence"];
 
 		add_rotated_rules(building_rules_, pbr, precedence, rotations);
 
