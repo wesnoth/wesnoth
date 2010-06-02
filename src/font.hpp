@@ -154,6 +154,8 @@ public:
 		bgalpha_ = bg_colour.unused;
 	}
 	void set_border_size(int border) {border_ = border;}
+	// set width for word wrapping (use -1 to disable it)
+	void set_width(int w) {width_ = w;}
 	void set_clip_rect(const SDL_Rect& r) {clip_rect_ = r;}
 	void set_alignement(ALIGN align) {align_ = align;}
 	void set_scroll_mode(LABEL_SCROLL_MODE scroll) {scroll_ = scroll;}
@@ -183,6 +185,7 @@ private:
 	int bgalpha_;
 	double xpos_, ypos_, xmove_, ymove_;
 	int lifetime_;
+	int width_;
 	SDL_Rect clip_rect_;
 	int alpha_change_;
 	bool visible_;

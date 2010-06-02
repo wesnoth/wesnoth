@@ -928,7 +928,9 @@ floating_label::floating_label(const std::string& text)
 		font_size_(SIZE_NORMAL),
 		colour_(NORMAL_COLOUR),	bgcolour_(), bgalpha_(0),
 		xpos_(0), ypos_(0),
-		xmove_(0), ymove_(0), lifetime_(-1), clip_rect_(screen_area()),
+		xmove_(0), ymove_(0), lifetime_(-1),
+		width_(-1),
+		clip_rect_(screen_area()),
 		alpha_change_(0), visible_(true), align_(CENTER_ALIGN),
 		border_(0), scroll_(ANCHOR_LABEL_SCREEN), use_markup_(true)
 {}
@@ -957,7 +959,7 @@ surface floating_label::create_surface()
 		font::ttext text;
 		text.set_foreground_colour((colour_.r << 24) | (colour_.g << 16) | (colour_.b << 8) | 255);
 		text.set_font_size(font_size_);
-		text.set_maximum_width(clip_rect_.w);
+		text.set_maximum_width(width_ < 0 ? clip_rect_.w : width_);
 		text.set_maximum_height(clip_rect_.h);
 		text.set_text(text_, use_markup_);
 		// Reset the maximum width, as we want the smallest bounding box.

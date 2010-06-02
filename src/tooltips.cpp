@@ -76,12 +76,11 @@ static void show_tooltip(const tooltip& tip)
 	unsigned int border = 10;
 #endif
 
-	const std::string wrapped_message = font::word_wrap_text(tip.message, font_size, text_width);
-
-	font::floating_label flabel(wrapped_message);
+	font::floating_label flabel(tip.message);
 	flabel.set_font_size(font_size);
 	flabel.set_colour(tip.color);
 	flabel.set_clip_rect(area);
+	flabel.set_width(text_width);
 	flabel.set_alignement(font::LEFT_ALIGN);
 	flabel.set_bg_colour(bgcolour);
 	flabel.set_border_size(border);
