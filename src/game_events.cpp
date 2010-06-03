@@ -770,7 +770,7 @@ WML_HANDLER_FUNCTION(sound, /*event_info*/, cfg)
 	sound::play_sound(sound, sound::SOUND_FX, repeats);
 }
 
-WML_HANDLER_FUNCTION(colour_adjust, /*event_info*/, cfg)
+static void color_adjust(const vconfig& cfg)
 {
 	game_display &screen = *resources::screen;
 	std::string red = cfg["red"];
@@ -783,6 +783,19 @@ WML_HANDLER_FUNCTION(colour_adjust, /*event_info*/, cfg)
 	screen.invalidate_all();
 	screen.draw(true,true);
 }
+
+WML_HANDLER_FUNCTION(color_adjust, /*event_info*/, cfg)
+{
+	color_adjust(cfg);
+}
+
+//Function handling old name
+//TODO: remove it when deprecated (should be 1.9.2)
+WML_HANDLER_FUNCTION(colour_adjust, /*event_info*/, cfg)
+{
+	color_adjust(cfg);
+}
+
 
 WML_HANDLER_FUNCTION(delay, /*event_info*/, cfg)
 {
