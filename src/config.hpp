@@ -255,12 +255,23 @@ public:
 	const attribute_value &operator[](const std::string &key) const;
 
 	/**
+	 * Function to handle backward compatibility
+	 * Get the value of key and if missing try old_key
+	*/
+	const attribute_value &get_old_attribute(const std::string &key, const std::string &old_key) const;
+	/**
 	 * Returns a reference to the first child with the given @a key.
 	 * Creates the child if it does not yet exist.
 	 */
 	config &child_or_add(const std::string &key);
 
 	bool has_attribute(const std::string &key) const;
+	/**
+	 * Function to handle backward compatibility
+	 * Check if has key or old_key
+	*/
+	bool has_old_attribute(const std::string &key, const std::string &old_key) const;
+
 	void remove_attribute(const std::string &key);
 	void merge_attributes(const config &);
 

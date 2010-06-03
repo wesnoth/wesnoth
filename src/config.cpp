@@ -201,6 +201,13 @@ bool config::has_attribute(const std::string &key) const
 	return values.find(key) != values.end();
 }
 
+bool config::has_old_attribute(const std::string &key, const std::string &old_key) const
+{
+	check_valid();
+	return values.find(key) != values.end() || values.find(old_key) != values.end();
+}
+
+
 void config::remove_attribute(const std::string &key)
 {
 	check_valid();
@@ -476,6 +483,19 @@ const config::attribute_value &config::operator[](const std::string &key) const
 	static const attribute_value empty_attribute;
 	return empty_attribute;
 }
+
+const config::attribute_value &config::get_old_attribute(const std::string &key, const std::string &old_key) const
+{
+	check_valid();
+
+	attribute_map::const_iterator i = values.find(key);
+	if (i != values.end()) return i->second;
+	i = values.find(old_key);
+	if (i != values.end()) return i->second;
+	static const attribute_value empty_attribute;
+	return empty_attribute;
+}
+
 
 void config::merge_attributes(const config &cfg)
 {
