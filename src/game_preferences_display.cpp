@@ -684,8 +684,6 @@ void preferences_dialog::process_event()
 			set_show_ai_moves(!show_ai_moves_button_.checked());
 		if (interrupt_when_ally_sighted_button_.pressed())
 			set_interrupt_when_ally_sighted(interrupt_when_ally_sighted_button_.checked());
-		if (show_grid_button_.pressed())
-			set_grid(show_grid_button_.checked());
 		if (save_replays_button_.pressed())
 			set_save_replays(save_replays_button_.checked());
 		if (delete_saves_button_.pressed())
@@ -694,8 +692,6 @@ void preferences_dialog::process_event()
 			set_turn_dialog(turn_dialog_button_.checked());
 		if (delay_shroud_updates_button_.pressed())
 			set_delay_shroud_updates_on_start(delay_shroud_updates_button_.checked());
-		if (show_team_colors_button_.pressed())
-			set_show_side_colors(show_team_colors_button_.checked());
 		if (hotkeys_button_.pressed()) {
 			show_hotkeys_dialog(disp_);
 			parent->clear_buttons();
@@ -737,6 +733,10 @@ void preferences_dialog::process_event()
 			set_color_cursors(show_color_cursors_button_.checked());
 		if (show_haloing_button_.pressed())
 			set_show_haloes(show_haloing_button_.checked());
+		if (show_team_colors_button_.pressed())
+			set_show_side_colors(show_team_colors_button_.checked());
+		if (show_grid_button_.pressed())
+			set_grid(show_grid_button_.checked());
 		if (flip_time_button_.pressed())
 			set_flip_time(flip_time_button_.checked());
 		if (idle_anim_button_.pressed()) {
