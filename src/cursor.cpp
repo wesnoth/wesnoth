@@ -155,7 +155,7 @@ void set(CURSOR_TYPE type)
 		current_cursor = NORMAL;
 	}
 
-	const CURSOR_TYPE new_cursor = use_color_cursors() && color_ready ? cursor::NO_CURSOR : current_cursor;
+	const CURSOR_TYPE new_cursor = use_color_cursors() /*&& color_ready*/ ? cursor::NO_CURSOR : current_cursor;
 
 	SDL_Cursor * cursor_image = get_cursor(new_cursor);
 
