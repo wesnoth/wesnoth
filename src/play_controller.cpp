@@ -462,7 +462,7 @@ void play_controller::fire_start(bool execute){
 		check_end_level();
 		// start event may modify start turn with WML, reflect any changes.
 		start_turn_ = turn();
-		gamestate_.set_variable("turn_number", str_cast<size_t>(start_turn_));
+		gamestate_.get_variable("turn_number") = int(start_turn_);
 	} else {
 		previous_turn_ = turn();
 	}
@@ -490,7 +490,7 @@ void play_controller::init_side(const unsigned int team_index, bool is_replay){
 	}
 	gui_->set_playing_team(size_t(team_index));
 
-	gamestate_.set_variable("side_number", str_cast(player_number_));
+	gamestate_.get_variable("side_number") = player_number_;
 	gamestate_.last_selected = map_location::null_location;
 
 	/**
@@ -646,7 +646,7 @@ void play_controller::finish_turn()
 {
 	LOG_NG << "turn event..." << (recorder.is_skipping() ? "skipping" : "no skip") << '\n';
 	update_locker lock_display(gui_->video(),recorder.is_skipping());
-	gamestate_.set_variable("turn_number", str_cast(turn()));
+	gamestate_.get_variable("turn_number") = int(turn());
 }
 
 bool play_controller::enemies_visible() const
@@ -985,12 +985,9 @@ void play_controller::expand_wml_commands(std::vector<std::string>& items)
 				break;
 			std::vector<std::string> newitems;
 
-			char buf[50];
 			const map_location& hex = mouse_handler_.get_last_hex();
-			snprintf(buf,sizeof(buf),"%d",hex.x+1);
-			gamestate_.set_variable("x1", buf);
-			snprintf(buf,sizeof(buf),"%d",hex.y+1);
-			gamestate_.set_variable("y1", buf);
+			gamestate_.get_variable("x1") = hex.x + 1;
+			gamestate_.get_variable("y1") = hex.y + 1;
 			scoped_xy_unit highlighted_unit("unit", hex.x, hex.y, units_);
 
 			std::map<std::string, wml_menu_item*>::iterator itor;
