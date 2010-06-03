@@ -75,10 +75,17 @@ team::team_info::team_info(const config& cfg) :
 		no_leader(cfg["no_leader"].to_bool()),
 		hidden(cfg["hidden"].to_bool()),
 		music(cfg["music"]),
-		color(cfg.has_old_attribute("color","colour") ? cfg.get_old_attribute("color","colour") : cfg["side"]),
+		color(),
 		side(cfg["side"].to_int(1)),
 		persistent(false)
 {
+	//@todo 1.9.2
+	const std::string colour_error = "Usage of 'colour' in [side] is deprecated, support will be removed in 1.9.2.\n";
+	if(cfg.has_old_attribute("color","colour",colour_error))
+		color = cfg.get_old_attribute("color","colour").str();
+	else
+		color = cfg["side"].str();
+
 	// If arel starting new scenario overide settings from [ai] tags
 	if (!user_team_name.translatable())
 		user_team_name = t_string::from_serialized(user_team_name);
