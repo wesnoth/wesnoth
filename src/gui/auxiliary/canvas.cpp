@@ -553,8 +553,8 @@ trectangle::trectangle(const config& cfg)
 	, w_(cfg["w"])
 	, h_(cfg["h"])
 	, border_thickness_(cfg["border_thickness"])
-	, border_color_(decode_color(cfg["border_colour"]))
-	, fill_color_(decode_color(cfg["fill_colour"]))
+	, border_color_(decode_color(cfg.get_old_attribute("border_color","border_colour")))
+	, fill_color_(decode_color(cfg.get_old_attribute("fill_color","fill_colour")))
 {
 /*WIKI
  * @page = GUICanvasWML
