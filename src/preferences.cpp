@@ -555,7 +555,7 @@ bool use_color_cursors()
 
 void _set_color_cursors(bool value)
 {
-	preferences::set("colour_cursors", value);
+	preferences::set("color_cursors", value);
 	color_cursors = value;
 }
 
