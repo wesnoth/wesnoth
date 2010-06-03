@@ -167,10 +167,10 @@ namespace {
 			++instance_count;
 		}
 		~pump_manager() {
-			resources::state_of_game->set_variable("x1", x1_);
-			resources::state_of_game->set_variable("x2", x2_);
-			resources::state_of_game->set_variable("y1", y1_);
-			resources::state_of_game->set_variable("y2", y2_);
+			resources::state_of_game->get_variable("x1") = x1_;
+			resources::state_of_game->get_variable("x2") = x2_;
+			resources::state_of_game->get_variable("y1") = y1_;
+			resources::state_of_game->get_variable("y2") = y2_;
 			--instance_count;
 		}
 		static unsigned count() {
@@ -178,7 +178,7 @@ namespace {
 		}
 		private:
 		static unsigned instance_count;
-		std::string x1_, x2_, y1_, y2_;
+		int x1_, x2_, y1_, y2_;
 	};
 	unsigned pump_manager::instance_count=0;
 
@@ -1007,14 +1007,14 @@ WML_HANDLER_FUNCTION(store_side, /*event_info*/, cfg)
 	state_of_game->get_variable(var_name+".shroud") = side_data["shroud"];
 	state_of_game->get_variable(var_name+".hidden") = side_data["hidden"];
 
-	state_of_game->get_variable(var_name+".income") = str_cast(teams[team_index].total_income());
-	state_of_game->get_variable(var_name+".village_gold") = str_cast(teams[team_index].village_gold());
+	state_of_game->get_variable(var_name+".income") = teams[team_index].total_income();
+	state_of_game->get_variable(var_name+".village_gold") = teams[team_index].village_gold();
 	state_of_game->get_variable(var_name+".name") = teams[team_index].name();
 	state_of_game->get_variable(var_name+".team_name") = teams[team_index].team_name();
 	state_of_game->get_variable(var_name+".user_team_name") = teams[team_index].user_team_name();
 	state_of_game->get_variable(var_name+".color") = teams[team_index].map_color_to();
 
-	state_of_game->get_variable(var_name+".gold") = str_cast(teams[team_index].gold());
+	state_of_game->get_variable(var_name+".gold") = teams[team_index].gold();
 }
 
 WML_HANDLER_FUNCTION(modify_turns, /*event_info*/, cfg)
@@ -1037,7 +1037,7 @@ WML_HANDLER_FUNCTION(modify_turns, /*event_info*/, cfg)
 			ERR_NG << "attempted to change current turn number to one out of range (" << new_turn_number << ") or less than current turn\n";
 		} else if(new_turn_number_u != current_turn_number) {
 			resources::controller->set_turn(new_turn_number_u);
-			resources::state_of_game->set_variable("turn_number", str_cast<size_t>(new_turn_number_u));
+			resources::state_of_game->get_variable("turn_number") = new_turn_number;
 			resources::screen->new_turn();
 		}
 	}
@@ -1050,7 +1050,7 @@ WML_HANDLER_FUNCTION(store_turns, /*event_info*/, cfg)
 		var_name = "turns";
 	}
 	int turns = resources::controller->number_of_turns();
-	resources::state_of_game->get_variable(var_name) = lexical_cast_default<std::string>(turns);
+	resources::state_of_game->get_variable(var_name) = turns;
 }
 
 namespace {
@@ -1255,7 +1255,7 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 		if(isint(var.str()) && isint(add)) {
 			var = var.to_int() + atoi(add.c_str());
 		} else {
-			var = str_cast(atof(var.str().c_str()) + atof(add.c_str()));
+			var = atof(var.str().c_str()) + atof(add.c_str());
 		}
 	}
 
@@ -1264,7 +1264,7 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 		if(isint(var.str()) && isint(sub)) {
 			var = var.to_int() - atoi(sub.c_str());
 		} else {
-			var = str_cast(atof(var.str().c_str()) - atof(sub.c_str()));
+			var = atof(var.str().c_str()) - atof(sub.c_str());
 		}
 	}
 
@@ -1273,7 +1273,7 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 		if(isint(var.str()) && isint(multiply)) {
 			var = var.to_int() * atoi(multiply.c_str());
 		} else {
-			var = str_cast(atof(var.str().c_str()) * atof(multiply.c_str()));
+			var = atof(var.str().c_str()) * atof(multiply.c_str());
 		}
 	}
 
@@ -1286,7 +1286,7 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 		if(isint(var.str()) && isint(divide)) {
 			var = var.to_int() / atoi(divide.c_str());
 		} else {
-			var = str_cast(atof(var.str().c_str()) / atof(divide.c_str()));
+			var = atof(var.str().c_str()) / atof(divide.c_str());
 		}
 	}
 
@@ -1299,8 +1299,7 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 		if(isint(var.str()) && isint(modulo)) {
 			var = var.to_int() % atoi(modulo.c_str());
 		} else {
-			double value = std::fmod(atof(var.str().c_str()), atof(modulo.c_str()));
-			var = str_cast(value);
+			var = std::fmod(atof(var.str().c_str()), atof(modulo.c_str()));
 		}
 	}
 
@@ -1320,38 +1319,32 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 			value = round_portable(value); // round() isn't implemented everywhere
 			value *= std::pow(10.0, -decimals); //and remove them
 		}
-		var = str_cast(value);
+		var = value;
 	}
 
 	const t_string ipart = cfg["ipart"];
 	if(ipart.empty() == false) {
-		const std::string orig = state_of_game->get_variable(ipart);
 		double result;
-		std::modf( std::atof(ipart.c_str()), &result );
-		var = str_cast(result);
+		std::modf(std::atof(ipart.c_str()), &result);
+		var = result;
 	}
 
 	const t_string fpart = cfg["fpart"];
 	if(fpart.empty() == false) {
-		const std::string orig = state_of_game->get_variable(fpart);
 		double ignore;
-		double result = std::modf( std::atof(fpart.c_str()), &ignore );
-		var = str_cast(result);
+		var = std::modf(std::atof(fpart.c_str()), &ignore);
 	}
 
 	const t_string string_length_target = cfg["string_length"];
 	if(string_length_target.empty() == false) {
-		const int value = string_length_target.str().length();
-		var = str_cast(value);
+		var = int(string_length_target.str().length());
 	}
 
 	// Note: maybe we add more options later, eg. strftime formatting.
 	// For now make the stamp mandatory.
 	const std::string time = cfg["time"];
 	if(time == "stamp") {
-		char buf[50];
-		snprintf(buf,sizeof(buf),"%d",SDL_GetTicks());
-		var = buf;
+		var = int(SDL_GetTicks());
 	}
 
 	// Random generation works as follows:
@@ -1850,7 +1843,7 @@ WML_HANDLER_FUNCTION(unit, /*event_info*/, cfg)
 		return;
 	}
 
-	int side = lexical_cast_default<int>(parsed_cfg["side"],1);
+	int side = parsed_cfg["side"].to_int(1);
 
 
 	if ((side<1)||(side > static_cast<int>(resources::teams->size()))) {
@@ -2644,7 +2637,7 @@ WML_HANDLER_FUNCTION(heal_unit, event_info, cfg)
 			healers, real_amount);
 	}
 
-	resources::state_of_game->set_variable("heal_amount", str_cast(real_amount));
+	resources::state_of_game->get_variable("heal_amount") = real_amount;
 }
 
 // Sub commands that need to be handled in a guaranteed ordering
@@ -3334,7 +3327,7 @@ static bool process_event(game_events::event_handler& handler, const game_events
 namespace game_events {
 
 	event_handler::event_handler(const config &cfg, bool imi) :
-		first_time_only_(utils::string_bool(cfg["first_time_only"], true)),
+		first_time_only_(cfg["first_time_only"].to_bool(true)),
 		disabled_(false), is_menu_item_(imi), cfg_(cfg)
 	{}
 
@@ -3668,18 +3661,10 @@ namespace game_events {
 					continue;
 				// Set the variables for the event
 				if (init_event_vars) {
-					char buf[50];
-					snprintf(buf,sizeof(buf),"%d",ev.loc1.x+1);
-					resources::state_of_game->set_variable("x1", buf);
-
-					snprintf(buf,sizeof(buf),"%d",ev.loc1.y+1);
-					resources::state_of_game->set_variable("y1", buf);
-
-					snprintf(buf,sizeof(buf),"%d",ev.loc2.x+1);
-					resources::state_of_game->set_variable("x2", buf);
-
-					snprintf(buf,sizeof(buf),"%d",ev.loc2.y+1);
-					resources::state_of_game->set_variable("y2", buf);
+					resources::state_of_game->get_variable("x1") = ev.loc1.x + 1;
+					resources::state_of_game->get_variable("y1") = ev.loc1.y + 1;
+					resources::state_of_game->get_variable("x2") = ev.loc2.x + 1;
+					resources::state_of_game->get_variable("y2") = ev.loc2.y + 1;
 					init_event_vars = false;
 				}
 
