@@ -270,12 +270,12 @@ void set_language(const std::string& s)
 
 bool ellipses()
 {
-	return get("show_side_colours", false);
+	return get("show_side_colors", false);
 }
 
 void _set_ellipses(bool ison)
 {
-	preferences::set("show_side_colours",  ison);
+	preferences::set("show_side_colors",  ison);
 }
 
 bool grid()

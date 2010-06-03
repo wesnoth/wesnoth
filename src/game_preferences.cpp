@@ -618,12 +618,12 @@ void set_show_ai_moves(bool value)
 
 void set_show_side_colors(bool value)
 {
-	preferences::set("show_side_colours", value);
+	preferences::set("show_side_colors", value);
 }
 
 bool show_side_colors()
 {
-	return preferences::get("show_side_colours", true);
+	return preferences::get("show_side_colors", true);
 }
 
 void set_save_replays(bool value)
