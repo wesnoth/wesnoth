@@ -273,7 +273,7 @@ void unit_creator::add_unit(const config &cfg)
 		}
 	} else {
 		assert( resources::units->find(loc) == resources::units->end() );
-		bool animate = utils::string_bool(temp_cfg["animate"],false);
+		bool animate = temp_cfg["animate"].to_bool();
 		temp_cfg.remove_attribute("animate");
 		if (recall_list_element==team_.recall_list().end()) {
 			//new unit
@@ -1221,7 +1221,7 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context &stats)
 	int damage = 0;
 	if (hits) {
 		damage = attacker.damage_;
-		resources::state_of_game->set_variable("damage_inflicted", str_cast<int>(damage));
+		resources::state_of_game->get_variable("damage_inflicted") = damage;
 	}
 
 	// Make sure that if we're serializing a game here,
@@ -1331,7 +1331,7 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context &stats)
 	}
 	else
 	{
-		bool results_dies = (*ran_results)["dies"] == "yes";
+		bool results_dies = (*ran_results)["dies"].to_bool();
 		if (results_dies != dies)
 		{
 			errbuf_ << "SYNC: In attack " << a_.dump() << " vs " << d_.dump()
