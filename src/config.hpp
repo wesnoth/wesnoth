@@ -257,8 +257,9 @@ public:
 	/**
 	 * Function to handle backward compatibility
 	 * Get the value of key and if missing try old_key
+	 * and log msg as a WML error (if not empty)
 	*/
-	const attribute_value &get_old_attribute(const std::string &key, const std::string &old_key) const;
+	const attribute_value &get_old_attribute(const std::string &key, const std::string &old_key, const std::string& msg = "") const;
 	/**
 	 * Returns a reference to the first child with the given @a key.
 	 * Creates the child if it does not yet exist.
@@ -269,8 +270,9 @@ public:
 	/**
 	 * Function to handle backward compatibility
 	 * Check if has key or old_key
+	 * and log msg as a WML error (if not empty)
 	*/
-	bool has_old_attribute(const std::string &key, const std::string &old_key) const;
+	bool has_old_attribute(const std::string &key, const std::string &old_key, const std::string& msg = "") const;
 
 	void remove_attribute(const std::string &key);
 	void merge_attributes(const config &);

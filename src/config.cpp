@@ -201,10 +201,17 @@ bool config::has_attribute(const std::string &key) const
 	return values.find(key) != values.end();
 }
 
-bool config::has_old_attribute(const std::string &key, const std::string &old_key) const
+bool config::has_old_attribute(const std::string &key, const std::string &old_key, const std::string& msg) const
 {
 	check_valid();
-	return values.find(key) != values.end() || values.find(old_key) != values.end();
+	if (values.find(key) != values.end()) {
+		return true;
+	} else if (values.find(old_key) != values.end()) {
+		if (!msg.empty())
+			lg::wml_error << msg;
+		return true;
+	}
+	return false;
 }
 
 
@@ -484,14 +491,21 @@ const config::attribute_value &config::operator[](const std::string &key) const
 	return empty_attribute;
 }
 
-const config::attribute_value &config::get_old_attribute(const std::string &key, const std::string &old_key) const
+const config::attribute_value &config::get_old_attribute(const std::string &key, const std::string &old_key, const std::string &msg) const
 {
 	check_valid();
 
 	attribute_map::const_iterator i = values.find(key);
-	if (i != values.end()) return i->second;
+	if (i != values.end())
+		return i->second;
+
 	i = values.find(old_key);
-	if (i != values.end()) return i->second;
+	if (i != values.end()) {
+		if (!msg.empty())
+			lg::wml_error << msg;
+		return i->second;
+	}
+
 	static const attribute_value empty_attribute;
 	return empty_attribute;
 }
