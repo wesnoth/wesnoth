@@ -318,7 +318,10 @@ void terrain_label::read(const config &cfg)
 	const variable_set &vs = *resources::state_of_game;
 	loc_ = map_location(cfg, &vs);
 	SDL_Color color = font::LABEL_COLOR;
-	std::string tmp_color = cfg.get_old_attribute("color","colour");
+
+	//@todo 1.9.2
+	const std::string colour_error = "Usage of 'colour' in [label] is deprecated, support will be removed in 1.9.2.\n";
+	std::string tmp_color = cfg.get_old_attribute("color","colour", colour_error);
 
 	text_ = cfg["text"];
 	team_name_ = cfg["team_name"].str();
