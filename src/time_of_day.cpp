@@ -19,8 +19,6 @@
 #include "foreach.hpp"
 #include "time_of_day.hpp"
 
-#include <cstdio>
-
 time_of_day::time_of_day(const config& cfg):
 	lawful_bonus(cfg["lawful_bonus"]), bonus_modified(0),
 	image(cfg["image"]), name(cfg["name"].t_str()), id(cfg["id"]),
@@ -46,19 +44,10 @@ time_of_day::time_of_day()
 
 void time_of_day::write(config& cfg) const
 {
-	char buf[50];
-	snprintf(buf,sizeof(buf),"%d",lawful_bonus);
-	cfg["lawful_bonus"] = buf;
-
-	snprintf(buf,sizeof(buf),"%d",red);
-	cfg["red"] = buf;
-
-	snprintf(buf,sizeof(buf),"%d",green);
-	cfg["green"] = buf;
-
-	snprintf(buf,sizeof(buf),"%d",blue);
-	cfg["blue"] = buf;
-
+	cfg["lawful_bonus"] = lawful_bonus;
+	cfg["red"] = red;
+	cfg["green"] = green;
+	cfg["blue"] = blue;
 	cfg["image"] = image;
 	cfg["name"] = name;
 	cfg["id"] = id;
