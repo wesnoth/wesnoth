@@ -36,9 +36,6 @@ struct combatant
 	/** Simulate a fight!  Can be called multiple times for cumulative calculations. */
 	void fight(combatant &opponent, bool levelup_considered=true);
 
-	/** takes into account level up when calculating resulting HP after a fight */
-	void consider_levelup(combatant &opponent);
-
 	/** Resulting probability distribution (may NOT be as large as max_hp) */
 	std::vector<double> hp_dist;
 
@@ -65,13 +62,13 @@ private:
 	static unsigned hp_dist_size(const battle_context_unit_stats &u, const combatant *prev);
 
 	/** Combat without chance of death, berserk, slow or drain is simple. */
-	void no_death_fight(combatant &opponent);
+	void no_death_fight(combatant &opponent, bool levelup_considered);
 
 	/** Combat with <= 1 strike each is simple, too. */
-	void one_strike_fight(combatant &opponent);
+	void one_strike_fight(combatant &opponent, bool levelup_considered);
 
 	/** All other cases. */
-	void complex_fight(combatant &opponent, unsigned int rounds);
+	void complex_fight(combatant &opponent, unsigned rounds, bool levelup_considered);
 
 	/** We must adjust for swarm after every combat. */
 	void adjust_hitchance();

@@ -65,6 +65,12 @@ struct prob_matrix
 	void receive_blow_a(unsigned damage, unsigned slow_damage, double hit_chance,
 						bool b_slows, bool b_drains);
 
+	void forced_levelup_a();
+	void conditional_levelup_a();
+
+	void forced_levelup_b();
+	void conditional_levelup_b();
+
 	// We lied: actually did less damage, adjust matrix.
 	void remove_petrify_distortion_a(unsigned damage, unsigned slow_damage, unsigned b_hp);
 	void remove_petrify_distortion_b(unsigned damage, unsigned slow_damage, unsigned a_hp);
@@ -478,6 +484,66 @@ void prob_matrix::receive_blow_a(unsigned damage, unsigned slow_damage, double h
 	}
 }
 
+void prob_matrix::forced_levelup_a()
+{
+	/* Move all the values (except 0hp) of all the planes to the last
+	   row of the planes unslowed for A. */
+	for (int p = 0; p < 4; ++p) {
+		if (!plane_[p]) continue;
+		for (unsigned row = std::max(min_row_[p], 1u); row < rows_; ++row) {
+			for (unsigned col = min_col_[p]; col < cols_; ++col) {
+				double v = val(p, row, col);
+				val(p, row, col) = 0;
+				val(p & -2, rows_ - 1, col) += v;
+			}
+		}
+	}
+}
+
+void prob_matrix::forced_levelup_b()
+{
+	/* Move all the values (except 0hp) of all the planes to the last
+	   column of planes unslowed for B. */
+	for (int p = 0; p < 4; ++p) {
+		if (!plane_[p]) continue;
+		for (unsigned row = min_row_[p]; row < rows_; ++row) {
+			for (unsigned col = std::max(min_col_[p], 1u); col < cols_; ++col) {
+				double v = val(p, row, col);
+				val(p, row, col) = 0;
+				val(p & -3, row, cols_ - 1) += v;
+			}
+		}
+	}
+}
+
+void prob_matrix::conditional_levelup_a()
+{
+	/* Move the values of the first column (except 0hp) of all the
+	   planes to the last row of the planes unslowed for A. */
+	for (int p = 0; p < 4; ++p) {
+		if (!plane_[p]) continue;
+		for (unsigned row = std::max(min_row_[p], 1u); row < rows_; ++row) {
+			double v = val(p, row, 0);
+			val(p, row, 0) = 0;
+			val(p & -2, rows_ - 1, 0) += v;
+		}
+	}
+}
+
+void prob_matrix::conditional_levelup_b()
+{
+	/* Move the values of the first row (except 0hp) of all the
+	   planes to the last column of the planes unslowed for B. */
+	for (int p = 0; p < 4; ++p) {
+		if (!plane_[p]) continue;
+		for (unsigned col = std::max(min_col_[p], 1u); col < cols_; ++col) {
+			double v = val(p, 0, col);
+			val(p, 0, col) = 0;
+			val(p & -3, 0, cols_ - 1) += v;
+		}
+	}
+}
+
 } // end anon namespace
 
 unsigned combatant::hp_dist_size(const battle_context_unit_stats &u, const combatant *prev)
@@ -574,8 +640,33 @@ unsigned combatant::min_hp() const
 	return i;
 }
 
+static void forced_levelup(std::vector<double> &hp_dist)
+{
+	/* If we survive the combat, we will level up. So the probability
+	   of death is unchanged, but all other cases get merged into the
+	   fully healed case. */
+	std::vector<double>::iterator i = hp_dist.begin();
+	++i; // Skip to the second value.
+	for (; i != hp_dist.end(); ++i) *i = 0;
+	// Full heal unless dead.
+	hp_dist.back() = 1 - hp_dist.front();
+}
+
+static void conditional_levelup(std::vector<double> &hp_dist, double kill_prob)
+{
+	/* If we kill, we will level up. So then the damage we had becomes
+	   less probable since it's now conditional on us not levelling up.
+	   This doesn't apply to the probability of us dying, of course. */
+	double scalefactor = 1 - kill_prob / (1 - hp_dist.front());
+	std::vector<double>::iterator i = hp_dist.begin();
+	++i; // Skip to the second value.
+	for (; i != hp_dist.end(); ++i) *i *= scalefactor;
+	// Full heal if leveled up.
+	hp_dist.back() += kill_prob;
+}
+
 // Combat without chance of death, berserk, slow or drain is simple.
-void combatant::no_death_fight(combatant &opp)
+void combatant::no_death_fight(combatant &opp, bool levelup_considered)
 {
 	if (summary[0].empty()) {
 		// Starts with a known HP, so Pascal's triangle.
@@ -620,10 +711,20 @@ void combatant::no_death_fight(combatant &opp)
 			}
 		}
 	}
+
+	if (!levelup_considered) return;
+
+	if (u_.experience + opp.u_.level >= u_.max_experience) {
+		forced_levelup(summary[0]);
+	}
+
+	if (opp.u_.experience + u_.level >= opp.u_.max_experience) {
+		forced_levelup(opp.summary[0]);
+	}
 }
 
 // Combat with <= 1 strike each is simple, too.
-void combatant::one_strike_fight(combatant &opp)
+void combatant::one_strike_fight(combatant &opp, bool levelup_considered)
 {
 	if (opp.summary[0].empty()) {
 		opp.summary[0] = std::vector<double>(opp.u_.max_hp+1);
@@ -664,9 +765,23 @@ void combatant::one_strike_fight(combatant &opp)
 			}
 		}
 	}
+
+	if (!levelup_considered) return;
+
+	if (u_.experience + opp.u_.level >= u_.max_experience) {
+		forced_levelup(summary[0]);
+	} else if (u_.experience + game_config::kill_xp(opp.u_.level) >= u_.max_experience) {
+		conditional_levelup(summary[0], opp.summary[0][0]);
+	}
+
+	if (opp.u_.experience + u_.level >= opp.u_.max_experience) {
+		forced_levelup(opp.summary[0]);
+	} else if (opp.u_.experience + game_config::kill_xp(u_.level) >= opp.u_.max_experience) {
+		conditional_levelup(opp.summary[0], summary[0][0]);
+	}
 }
 
-void combatant::complex_fight(combatant &opp, unsigned int rounds)
+void combatant::complex_fight(combatant &opp, unsigned rounds, bool levelup_considered)
 {
 	prob_matrix m(hp_dist.size()-1, opp.hp_dist.size()-1,
 				  u_.slows && !opp.u_.is_slowed, opp.u_.slows && !u_.is_slowed,
@@ -711,49 +826,22 @@ void combatant::complex_fight(combatant &opp, unsigned int rounds)
 	if (opp.u_.petrifies)
 		m.remove_petrify_distortion_b(opp.u_.damage, opp.u_.slow_damage, u_.hp);
 
-	// We extract results separately, then combine.
-	m.extract_results(summary, opp.summary);
-}
-
-void combatant::consider_levelup(combatant &opp) {
-	// adjust the probabilities to take into consideration the
-	// probability of us levelling up, and hence healing.
-	// We do not currently estimate how many HP we will have.
-
-	if (u_.experience + opp.u_.level >= u_.max_experience) {
-		// if we survive the combat, we will level up. So the probability
-		// of death is unchanged, but all other cases get merged into
-		// the fully healed case.
-		std::vector<double>::iterator i;
-		i = hp_dist.begin();
-		++i; // skip to the second value
-		for ( ; i != hp_dist.end(); ++i) {
-			*i = 0;
-		}
-		// fully healed unless dead
-		hp_dist.back() = 1 - hp_dist.front();
-
-
-
-	} else if (u_.experience + game_config::kill_xp(opp.u_.level) >= u_.max_experience) {
-		// if we kill, we will level up. So then the damage we had
-		// becomes less probable since it's now conditional on us not
-		// levelling up.  This doesn't apply to the probability of us
-		// dying, of course.
-		double scalefactor =
-			(1 - hp_dist.front() - opp.hp_dist.front()) / (1 - hp_dist.front());
-		std::vector<double>::iterator i;
-		i = hp_dist.begin();
-		++i; // skip to the second value
-		for( ; i != hp_dist.end(); ++i) {
-			*i *= scalefactor;
+	if (levelup_considered) {
+		if (u_.experience + opp.u_.level >= u_.max_experience) {
+			m.forced_levelup_a();
+		} else if (u_.experience + game_config::kill_xp(opp.u_.level) >= u_.max_experience) {
+			m.conditional_levelup_a();
 		}
 
-		// if we level up, we get fully healed. (FIXME: actually more so; we
-		// need to calculate how many HP we will gain)
-		hp_dist.back() += opp.hp_dist.front();
+		if (opp.u_.experience + u_.level >= opp.u_.max_experience) {
+			m.forced_levelup_b();
+		} else if (opp.u_.experience + game_config::kill_xp(u_.level) >= opp.u_.max_experience) {
+			m.conditional_levelup_b();
+		}
 	}
 
+	// We extract results separately, then combine.
+	m.extract_results(summary, opp.summary);
 }
 
 // Two man enter.  One man leave!
@@ -795,15 +883,15 @@ void combatant::fight(combatant &opp, bool levelup_considered)
 		!u_.drains && !opp.u_.drains && !u_.petrifies && !opp.u_.petrifies &&
 		summary[1].empty() && opp.summary[1].empty()) {
 		if (hit_chances_.size() <= 1 && opp.hit_chances_.size() <= 1) {
-			one_strike_fight(opp);
+			one_strike_fight(opp, levelup_considered);
 		} else if (hit_chances_.size() * u_.damage < opp.min_hp() &&
 			opp.hit_chances_.size() * opp.u_.damage < min_hp()) {
-			no_death_fight(opp);
+			no_death_fight(opp, levelup_considered);
 		} else {
-			complex_fight(opp, rounds);
+			complex_fight(opp, rounds, levelup_considered);
 		}
 	} else {
-			complex_fight(opp, rounds);
+			complex_fight(opp, rounds, levelup_considered);
 	}
 
 #if 0
@@ -835,11 +923,6 @@ void combatant::fight(combatant &opp, bool levelup_considered)
 	else {
 		for (unsigned int i = 0; i < opp.hp_dist.size(); ++i)
 			opp.hp_dist[i] = opp.summary[0][i] + opp.summary[1][i];
-	}
-
-	if(levelup_considered) {
-		consider_levelup(opp);
-		opp.consider_levelup(*this);
 	}
 
 	// Make sure we don't try to access the vectors out of bounds,

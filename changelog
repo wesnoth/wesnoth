@@ -164,6 +164,7 @@ Version 1.9.0-svn:
    * Hidden weapons (attack_weight = 0) no longer skew the best weapon selection
    * Prevent dereferencing freed memory when reporting malformed maps, i.e. when
      using an invalid terrain type
+   * Fixed attack predictions for combats with a unit leveling up thanks to a kill
 
 Version 1.8.0:
  * AI:
