@@ -107,7 +107,7 @@ surface cs_function::operator()(const surface& src) const
 {
 	return(
 		(r_ != 0 || g_ != 0 || b_ != 0) ?
-		adjust_surface_colour(src, r_, g_, b_) :
+		adjust_surface_color(src, r_, g_, b_) :
 		src
 	);
 }

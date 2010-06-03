@@ -34,7 +34,7 @@ leader_list_manager::leader_list_manager(const std::vector<const config *> &side
 	side_list_(side_list),
 	leader_combo_(leader_combo),
 	gender_combo_(gender_combo),
-	colour_(0)
+	color_(0)
 {
 }
 
@@ -251,11 +251,11 @@ std::string leader_list_manager::get_gender() const
 }
 
 #ifdef LOW_MEM
-std::string leader_list_manager::get_RC_suffix(const std::string& /*unit_colour*/) const {
+std::string leader_list_manager::get_RC_suffix(const std::string& /*unit_color*/) const {
 	return "";
 }
 #else
-std::string leader_list_manager::get_RC_suffix(const std::string& unit_colour) const {
-	return "~RC("+unit_colour+">"+lexical_cast<std::string>(colour_+1) +")";
+std::string leader_list_manager::get_RC_suffix(const std::string& unit_color) const {
+	return "~RC("+unit_color+">"+lexical_cast<std::string>(color_+1) +")";
 }
 #endif

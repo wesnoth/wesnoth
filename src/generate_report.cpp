@@ -109,7 +109,7 @@ report generate_report(TYPE type,
 	case UNIT_SIDE: {
 		std::string flag_icon = teams[u->side() - 1].flag_icon();
 		std::string old_rgb = game_config::flag_rgb;
-		std::string new_rgb = team::get_side_colour_index(u->side());
+		std::string new_rgb = team::get_side_color_index(u->side());
 		std::string mods = "~RC(" + old_rgb + ">" + new_rgb + ")";
 
 		if(flag_icon.empty()) {
@@ -647,7 +647,7 @@ report generate_report(TYPE type,
 	case SIDE_PLAYING: {
 		std::string flag_icon = teams[playing_side-1].flag_icon();
 		std::string old_rgb = game_config::flag_rgb;
-		std::string new_rgb = team::get_side_colour_index(playing_side);
+		std::string new_rgb = team::get_side_color_index(playing_side);
 		std::string mods = "~RC(" + old_rgb + ">" + new_rgb + ")";
 
 		if(flag_icon.empty()) {

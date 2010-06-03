@@ -75,7 +75,7 @@ team::team_info::team_info(const config& cfg) :
 		no_leader(cfg["no_leader"].to_bool()),
 		hidden(cfg["hidden"].to_bool()),
 		music(cfg["music"]),
-		colour(cfg.has_old_attribute("color","colour") ? cfg.get_old_attribute("color","colour") : cfg["side"]),
+		color(cfg.has_old_attribute("color","colour") ? cfg.get_old_attribute("color","colour") : cfg["side"]),
 		side(cfg["side"].to_int(1)),
 		persistent(false)
 {
@@ -217,7 +217,7 @@ void team::team_info::write(config& cfg) const
 	if(music.empty() == false)
 		cfg["music"] = music;
 
-	cfg["color"] = str_cast(colour);
+	cfg["color"] = str_cast(color);
 
 	cfg["persistent"] = persistent;
 
@@ -670,7 +670,7 @@ bool team::shroud_map::copy_from(const std::vector<const shroud_map*>& maps)
 std::map<int, color_range> team::team_color_range_;
 
 const color_range team::get_side_color_range(int side){
-  std::string index = get_side_colour_index(side);
+  std::string index = get_side_color_index(side);
   std::map<std::string, color_range>::iterator gp=game_config::team_rgb_range.find(index);
 
   if(gp != game_config::team_rgb_range.end()){
@@ -680,19 +680,19 @@ const color_range team::get_side_color_range(int side){
   return(color_range(0x00FF0000,0x00FFFFFF,0x00000000,0x00FF0000));
 }
 
-const SDL_Color team::get_minimap_colour(int side)
+const SDL_Color team::get_minimap_color(int side)
 {
 	// Note: use mid() instead of rep() unless
 	// high contrast is needed over a map or minimap!
 	return int_to_color(get_side_color_range(side).rep());
 }
 
-std::string team::get_side_colour_index(int side)
+std::string team::get_side_color_index(int side)
 {
 	size_t index = size_t(side-1);
 
 	if(teams != NULL && index < teams->size()) {
-		const std::string side_map = (*teams)[index].map_colour_to();
+		const std::string side_map = (*teams)[index].map_color_to();
 		if(side_map.size()) {
 			return side_map;
 		}

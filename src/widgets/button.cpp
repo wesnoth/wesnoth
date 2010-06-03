@@ -226,13 +226,13 @@ void button::draw_contents()
 		textx = loc.x + image_w + checkbox_horizontal_padding / 2;
 	}
 
-	SDL_Color button_colour = font::BUTTON_COLOR;
+	SDL_Color button_color = font::BUTTON_COLOR;
 
 	if (!enabled()) {
 		static const Uint32 disabled_btn_color = 0xAAAAAA;
 		static const double disabled_btn_adjust = 0.18;
 		image = blend_surface(greyscale_image(image), disabled_btn_adjust, disabled_btn_color);
-		button_colour = font::GRAY_COLOR;
+		button_color = font::GRAY_COLOR;
 	}
 
 	video().blit_surface(loc.x, loc.y, image);
@@ -241,7 +241,7 @@ void button::draw_contents()
 		clipArea.y += offset;
 		clipArea.w -= 2*offset;
 		clipArea.h -= 2*offset;
-		font::draw_text(&video(), clipArea, font_size, button_colour, label_, textx, texty);
+		font::draw_text(&video(), clipArea, font_size, button_color, label_, textx, texty);
 	}
 
 	update_rect(loc);

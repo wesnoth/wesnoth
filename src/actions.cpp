@@ -2523,21 +2523,21 @@ size_t move_unit(move_unit_spectator *move_spectator,
 		symbols["friends"] = lexical_cast<std::string>(nfriends);
 		symbols["enemies"] = lexical_cast<std::string>(nenemies);
 		std::string message;
-		SDL_Color msg_colour;
+		SDL_Color msg_color;
 		if(nfriends == 0 || nenemies == 0) {
 			if(nfriends > 0) {
 				message = vngettext("Friendly unit sighted", "$friends friendly units sighted", nfriends, symbols);
-				msg_colour = font::GOOD_COLOR;
+				msg_color = font::GOOD_COLOR;
 			} else if(nenemies > 0) {
 				message = vngettext("Enemy unit sighted!", "$enemies enemy units sighted!", nenemies, symbols);
-				msg_colour = font::BAD_COLOR;
+				msg_color = font::BAD_COLOR;
 			}
 		}
 		else {
 			symbols["friendphrase"] = vngettext("Part of 'Units sighted! (...)' sentence^1 friendly", "$friends friendly", nfriends, symbols);
 			symbols["enemyphrase"] = vngettext("Part of 'Units sighted! (...)' sentence^1 enemy", "$enemies enemy", nenemies, symbols);
 			message = vgettext("Units sighted! ($friendphrase, $enemyphrase)", symbols);
-			msg_colour = font::NORMAL_COLOR;
+			msg_color = font::NORMAL_COLOR;
 		}
 
 		if(steps.size() < route.size()) {
@@ -2549,7 +2549,7 @@ size_t move_unit(move_unit_spectator *move_spectator,
 			}
 		}
 
-		disp.announce(message, msg_colour);
+		disp.announce(message, msg_color);
 		redraw = true;
 	}
 

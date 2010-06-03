@@ -855,7 +855,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 			resources::screen->labels().set_label(label.location(),
 						label.text(),
 						label.team_name(),
-						label.colour());
+						label.color());
 		}
 		else if (const config &child = cfg->child("clear_labels"))
 		{

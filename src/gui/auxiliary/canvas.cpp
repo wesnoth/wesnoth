@@ -75,19 +75,19 @@ namespace {
  *
  * @param start           The memory address which is the start of the surface
  *                        buffer to draw in.
- * @param colour          The colour of the pixel to draw.
+ * @param color          The color of the pixel to draw.
  * @param w               The width of the surface.
  * @param x               The x coordinate of the pixel to draw.
  * @param y               The y coordinate of the pixel to draw.
  */
 static void put_pixel(
 		  const ptrdiff_t start
-		, const Uint32 colour
+		, const Uint32 color
 		, const unsigned w
 		, const unsigned x
 		, const unsigned y)
 {
-	*reinterpret_cast<Uint32*>(start + (y * w * 4) + x * 4) = colour;
+	*reinterpret_cast<Uint32*>(start + (y * w * 4) + x * 4) = color;
 }
 
 /**
@@ -95,7 +95,7 @@ static void put_pixel(
  *
  * @param canvas          The canvas to draw upon, the caller should lock the
  *                        surface before calling.
- * @param colour          The colour of the line to draw.
+ * @param color          The color of the line to draw.
  * @param x1              The start x coordinate of the line to draw.
  * @param y1              The start y coordinate of the line to draw.
  * @param x2              The end x coordinate of the line to draw.
@@ -103,17 +103,17 @@ static void put_pixel(
  */
 static void draw_line(
 		  surface& canvas
-		, Uint32 colour
+		, Uint32 color
 		, const unsigned x1
 		, unsigned y1
 		, const unsigned x2
 		, unsigned y2)
 {
-	colour = SDL_MapRGBA(canvas->format,
-		((colour & 0xFF000000) >> 24),
-		((colour & 0x00FF0000) >> 16),
-		((colour & 0x0000FF00) >> 8),
-		((colour & 0x000000FF)));
+	color = SDL_MapRGBA(canvas->format,
+		((color & 0xFF000000) >> 24),
+		((color & 0x00FF0000) >> 16),
+		((color & 0x0000FF00) >> 8),
+		((color & 0x000000FF)));
 
 	ptrdiff_t start = reinterpret_cast<ptrdiff_t>(canvas->pixels);
 	unsigned w = canvas->w;
@@ -135,7 +135,7 @@ static void draw_line(
 		}
 
 		for(unsigned y = y1; y <= y2; ++y) {
-			put_pixel(start, colour, w, x1, y);
+			put_pixel(start, color, w, x1, y);
 		}
 		return;
 	}
@@ -143,7 +143,7 @@ static void draw_line(
 	// use a special case for horizontal lines
 	if(y1 == y2) {
 		for(unsigned x  = x1; x <= x2; ++x) {
-			put_pixel(start, colour, w, x, y1);
+			put_pixel(start, color, w, x, y1);
 		}
 		return;
 	}
@@ -165,7 +165,7 @@ static void draw_line(
 
 	// Blit
 	for (unsigned x = x1; x <= x2; ++x) {
-		put_pixel(start, colour, w, x, y);
+		put_pixel(start, color, w, x, y);
 		if (d <= 0) {
 			d += incE;
 		} else {
@@ -203,8 +203,8 @@ private:
 		x2_, /**< The end x coordinate of the line. */
 		y2_; /**< The end y coordinate of the line. */
 
-	/** The colour of the line. */
-	Uint32 colour_;
+	/** The color of the line. */
+	Uint32 color_;
 
 	/**
 	 * The thickness of the line.
@@ -221,7 +221,7 @@ tline::tline(const config& cfg)
 	, y1_(cfg["y1"])
 	, x2_(cfg["x2"])
 	, y2_(cfg["y2"])
-	, colour_(decode_colour(cfg.get_old_attribute("color","colour")))
+	, color_(decode_color(cfg.get_old_attribute("color","colour")))
 	, thickness_(cfg["thickness"])
 {
 /*WIKI
@@ -238,7 +238,7 @@ tline::tline(const config& cfg)
  *     y1 (f_unsigned = 0)             The y coordinate of the startpoint.
  *     x2 (f_unsigned = 0)             The x coordinate of the endpoint.
  *     y2 (f_unsigned = 0)             The y coordinate of the endpoint.
- *     colour (colour = "")            The colour of the line.
+ *     color (color = "")            The color of the line.
  *     thickness = (unsigned = 0)      The thickness of the line if 0 nothing
  *                                     is drawn.
  *     debug = (string = "")           Debug message to show upon creation
@@ -348,11 +348,11 @@ tline::tline(const config& cfg)
  *     tstring                         A translatable string.
  *     f_tstring                       Formula returning a translatable string.
  *
- *     colour                          A string which contains the colour, this
+ *     color                          A string which contains the color, this
  *                                     a group of 4 numbers between 0 and 255
  *                                     separated by a comma. The numbers are red
  *                                     component, green component, blue
- *                                     component and alpha. A colour of 0 is not
+ *                                     component and alpha. A color of 0 is not
  *                                     available. An alpha of 255 is fully
  *                                     transparent. Omitted values are set to 0.
  *
@@ -491,9 +491,9 @@ void tline::draw(surface& canvas
 	surface_lock locker(canvas);
 	if(x1 > x2) {
 		// invert points
-		draw_line(canvas, colour_, x2, y2, x1, y1);
+		draw_line(canvas, color_, x2, y2, x1, y1);
 	} else {
-		draw_line(canvas, colour_, x1, y1, x2, y2);
+		draw_line(canvas, color_, x1, y1, x2, y2);
 	}
 }
 
@@ -528,23 +528,23 @@ private:
 	/**
 	 * Border thickness.
 	 *
-	 * If 0 the fill colour is used for the entire widget.
+	 * If 0 the fill color is used for the entire widget.
 	 */
 	unsigned border_thickness_;
 
 	/**
-	 * The border colour of the rectangle.
+	 * The border color of the rectangle.
 	 *
-	 * If the colour is fully transparent the border isn't drawn.
+	 * If the color is fully transparent the border isn't drawn.
 	 */
-	Uint32 border_colour_;
+	Uint32 border_color_;
 
 	/**
-	 * The border colour of the rectangle.
+	 * The border color of the rectangle.
 	 *
-	 * If the colour is fully transparent the rectangle won't be filled.
+	 * If the color is fully transparent the rectangle won't be filled.
 	 */
-	Uint32 fill_colour_;
+	Uint32 fill_color_;
 };
 
 trectangle::trectangle(const config& cfg)
@@ -553,8 +553,8 @@ trectangle::trectangle(const config& cfg)
 	, w_(cfg["w"])
 	, h_(cfg["h"])
 	, border_thickness_(cfg["border_thickness"])
-	, border_colour_(decode_colour(cfg["border_colour"]))
-	, fill_colour_(decode_colour(cfg["fill_colour"]))
+	, border_color_(decode_color(cfg["border_colour"]))
+	, fill_color_(decode_color(cfg["fill_colour"]))
 {
 /*WIKI
  * @page = GUICanvasWML
@@ -573,9 +573,9 @@ trectangle::trectangle(const config& cfg)
  *     h (f_unsigned = 0)              The height of the rectangle.
  *     border_thickness (unsigned = 0) The thickness of the border if the
  *                                     thickness is zero it's not drawn.
- *     border_colour (colour = "")     The colour of the border if empty it's
+ *     border_color (color = "")     The color of the border if empty it's
  *                                     not drawn.
- *     fill_colour (colour = "")       The colour of the interior if omitted
+ *     fill_color (color = "")       The color of the interior if omitted
  *                                     it's not drawn.
  *     debug = (string = "")           Debug message to show upon creation
  *                                     this message is not stored.
@@ -584,7 +584,7 @@ trectangle::trectangle(const config& cfg)
  * See [[#general_variables|Line]].
  *
  */
-	if(border_colour_ == 0) {
+	if(border_color_ == 0) {
 		border_thickness_ = 0;
 	}
 
@@ -630,21 +630,21 @@ void trectangle::draw(surface& canvas
 		const unsigned bottom = top + h - (i * 2) - 1;
 
 		// top horizontal (left -> right)
-		draw_line(canvas, border_colour_, left, top, right, top);
+		draw_line(canvas, border_color_, left, top, right, top);
 
 		// right vertical (top -> bottom)
-		draw_line(canvas, border_colour_, right, top, right, bottom);
+		draw_line(canvas, border_color_, right, top, right, bottom);
 
 		// bottom horizontal (left -> right)
-		draw_line(canvas, border_colour_, left, bottom, right, bottom);
+		draw_line(canvas, border_color_, left, bottom, right, bottom);
 
 		// left vertical (top -> bottom)
-		draw_line(canvas, border_colour_, left, top, left, bottom);
+		draw_line(canvas, border_color_, left, top, left, bottom);
 	}
 
 	// The fill_rect_alpha code below fails, can't remember the exact cause
 	// so use the slow line drawing method to fill the rect.
-	if(fill_colour_) {
+	if(fill_color_) {
 
 		const unsigned left = x + border_thickness_;
 		const unsigned right = left + w - (2 * border_thickness_) - 1;
@@ -653,7 +653,7 @@ void trectangle::draw(surface& canvas
 
 		for(unsigned i = top; i < bottom; ++i) {
 
-			draw_line(canvas, fill_colour_, left, i, right, i);
+			draw_line(canvas, fill_color_, left, i, right, i);
 		}
 	}
 }
@@ -1014,8 +1014,8 @@ private:
 	/** The alignment of the text. */
 	tformula<PangoAlignment> text_alignment_;
 
-	/** The colour of the text. */
-	Uint32 colour_;
+	/** The color of the text. */
+	Uint32 color_;
 
 	/** The text to draw. */
 	tformula<t_string> text_;
@@ -1038,7 +1038,7 @@ ttext::ttext(const config& cfg)
 	, font_size_(cfg["font_size"])
 	, font_style_(decode_font_style(cfg["font_style"]))
 	, text_alignment_(cfg["text_alignment"])
-	, colour_(decode_colour(cfg.get_old_attribute("color","colour")))
+	, color_(decode_color(cfg.get_old_attribute("color","colour")))
 	, text_(cfg["text"])
 	, text_markup_(cfg["text_markup"], false)
 	, maximum_width_(cfg["maximum_width"], -1)
@@ -1063,7 +1063,7 @@ ttext::ttext(const config& cfg)
  *     font_style (font_style = "")    The style of the text.
  *     text_alignment (f_h_align = "left")
  *                                     The alignment of the text.
- *     colour (colour = "")            The colour of the text.
+ *     color (color = "")            The color of the text.
  *     text (f_tstring = "")           The text to draw (translatable).
  *     text_markup (f_bool = false)    Can the text have markup?
  *     maximum_width (f_int = -1)      The maximum width the text is allowed to
@@ -1115,7 +1115,7 @@ void ttext::draw(surface& canvas
 	text_renderer.set_font_size(font_size_)
 			.set_font_style(font_style_)
 			.set_alignment(text_alignment_(variables))
-			.set_foreground_colour(colour_)
+			.set_foreground_color(color_)
 			.set_maximum_width(maximum_width_(variables))
 			.set_maximum_height(maximum_height_(variables))
 			.set_ellipse_mode(variables.has_key("text_wrap_mode")

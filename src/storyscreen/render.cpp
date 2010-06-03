@@ -274,7 +274,7 @@ void part_ui::render_title_box()
 
 	t.set_font_style(font::ttext::STYLE_NORMAL)
 		 .set_font_size(titlebox_font_size)
-		 .set_foreground_colour(titlebox_font_color)
+		 .set_foreground_color(titlebox_font_color)
 		 .set_maximum_width(titlebox_max_w)
 		 .set_maximum_height(titlebox_max_h);
 	surface txtsurf = t.render();
@@ -392,7 +392,7 @@ void part_ui::render_story_box()
 	}
 	t.set_font_style(font::ttext::STYLE_NORMAL)
 	     .set_font_size(storybox_font_size)
-		 .set_foreground_colour(storybox_font_color)
+		 .set_foreground_color(storybox_font_color)
 		 .set_maximum_width(max_width)
 		 .set_maximum_height(max_height);
 	surface txtsurf = t.render();

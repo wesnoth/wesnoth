@@ -83,9 +83,9 @@ unsigned decode_font_style(const std::string& style)
 	return TTF_STYLE_NORMAL;
 }
 
-Uint32 decode_colour(const std::string& colour)
+Uint32 decode_color(const std::string& color)
 {
-	std::vector<std::string> fields = utils::split(colour);
+	std::vector<std::string> fields = utils::split(color);
 
 	// make sure we have four fields
 	while(fields.size() < 4) fields.push_back("0");

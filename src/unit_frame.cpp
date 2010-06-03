@@ -660,11 +660,11 @@ const frame_parameters unit_frame::merge_parameters(int current_time,const frame
 	assert(engine_val.text_color == 0);
 	result.text_color = current_val.text_color?current_val.text_color:animation_val.text_color;
 
-	/** engine provide a blend colour for poisoned units */
+	/** engine provide a blend color for poisoned units */
 	result.blend_with = current_val.blend_with?current_val.blend_with:animation_val.blend_with;
 	if(primary&& engine_val.blend_with) result.blend_with = display::max_rgb(engine_val.blend_with,result.blend_with);
 
-	/** engine provide a blend colour for poisoned units */
+	/** engine provide a blend color for poisoned units */
 	result.blend_ratio = current_val.blend_ratio?current_val.blend_ratio:animation_val.blend_ratio;
 	if(primary && engine_val.blend_ratio) result.blend_ratio = std::min(result.blend_ratio + engine_val.blend_ratio,1.0);
 

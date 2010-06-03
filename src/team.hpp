@@ -105,7 +105,7 @@ public:
 
 		std::string music;
 
-		std::string colour;
+		std::string color;
 
 		int side;
 		bool persistent;
@@ -195,7 +195,7 @@ public:
 	}
 
 	team_info::CONTROLLER controller() const { return info_.controller; }
-	const std::string& colour() const { return info_.colour; }
+	const std::string& color() const { return info_.color; }
 	bool is_human() const { return info_.controller == team_info::HUMAN; }
 	bool is_human_ai() const { return info_.controller == team_info::HUMAN_AI; }
 	bool is_network_human() const { return info_.controller == team_info::NETWORK; }
@@ -247,7 +247,7 @@ public:
 	bool auto_shroud_updates() const { return auto_shroud_updates_; }
 	void set_auto_shroud_updates(bool value) { auto_shroud_updates_ = value; }
 	bool get_disallow_observers() const {return info_.disallow_observers; };
-	std::string map_colour_to() const { return info_.colour; };
+	std::string map_color_to() const { return info_.color; };
 	bool no_leader() const { return info_.no_leader; }
 	void have_leader(bool value=true) { info_.no_leader = !value; }
 	bool hidden() const { return info_.hidden; }
@@ -256,13 +256,13 @@ public:
 
 	static int nteams();
 
-	//function which, when given a 1-based side will return the colour used by that side.
+	//function which, when given a 1-based side will return the color used by that side.
 	static const color_range get_side_color_range(int side);
 	static Uint32 get_side_rgb(int side) { return(get_side_color_range(side).mid()); }
 	static Uint32 get_side_rgb_max(int side) { return(get_side_color_range(side).max()); }
 	static Uint32 get_side_rgb_min(int side) { return(get_side_color_range(side).min()); }
-	static const SDL_Color get_minimap_colour(int side);
-	static std::string get_side_colour_index(int side);
+	static const SDL_Color get_minimap_color(int side);
+	static std::string get_side_color_index(int side);
 	static std::string get_side_highlight(int side);
 
 	void log_recruitable();

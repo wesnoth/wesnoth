@@ -40,8 +40,8 @@ public:
 	std::string get_gender() const;
 	void set_leader(const std::string& leader);
 	void set_gender(const std::string& gender);
-	void set_colour(int colour) {colour_ = colour;};
-	std::string get_RC_suffix(const std::string& unit_colour) const;
+	void set_color(int color) {color_ = color;};
+	std::string get_RC_suffix(const std::string& unit_color) const;
 
 private:
 	void populate_leader_combo(int selected_index);
@@ -51,7 +51,7 @@ private:
 	std::vector<const config *> side_list_;
 	gui::combo* leader_combo_;
 	gui::combo* gender_combo_;
-	int colour_;
+	int color_;
 };
 
 #endif

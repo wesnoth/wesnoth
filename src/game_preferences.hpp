@@ -151,8 +151,8 @@ namespace preferences {
 	bool show_ai_moves();
 	void set_show_ai_moves(bool value);
 
-	void set_show_side_colours(bool value);
-	bool show_side_colours();
+	void set_show_side_colors(bool value);
+	bool show_side_colors();
 
 	bool save_replays();
 	void set_save_replays(bool value);

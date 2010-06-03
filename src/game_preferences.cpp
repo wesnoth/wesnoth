@@ -616,12 +616,12 @@ void set_show_ai_moves(bool value)
 	preferences::set("show_ai_moves", value);
 }
 
-void set_show_side_colours(bool value)
+void set_show_side_colors(bool value)
 {
 	preferences::set("show_side_colours", value);
 }
 
-bool show_side_colours()
+bool show_side_colors()
 {
 	return preferences::get("show_side_colours", true);
 }

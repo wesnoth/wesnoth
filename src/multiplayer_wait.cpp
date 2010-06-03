@@ -48,7 +48,7 @@ wait::leader_preview_pane::leader_preview_pane(game_display& disp,
 	leaders_(side_list, &leader_combo_, &gender_combo_),
 	selection_(0)
 {
-	leaders_.set_colour(color_);
+	leaders_.set_color(color_);
 	set_location(leader_pane_position);
 }
 
@@ -519,12 +519,12 @@ void wait::generate_menu()
 			}
 		} else {
 			/**
-			 * @todo we fall back to the side colour, but that's ugly rather
-			 * make the colour mandatory in 1.5.
+			 * @todo we fall back to the side color, but that's ugly rather
+			 * make the color mandatory in 1.5.
 			 */
 			disp_color = sd["side"];
 		}
-		str << COLUMN_SEPARATOR << get_colour_string(disp_color - 1);
+		str << COLUMN_SEPARATOR << get_color_string(disp_color - 1);
 		details.push_back(str.str());
 	}
 

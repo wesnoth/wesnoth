@@ -120,8 +120,8 @@ namespace preferences {
 	void add_alias(const std::string& alias, const std::string& command);
 	const config &get_alias();
 
-	bool use_colour_cursors();
-	void _set_colour_cursors(bool value);
+	bool use_color_cursors();
+	void _set_color_cursors(bool value);
 
 	int scroll_speed();
 	void set_scroll_speed(const int scroll);

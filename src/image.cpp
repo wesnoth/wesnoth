@@ -805,7 +805,7 @@ void set_pixel_format(SDL_PixelFormat* format)
 	last_pixel_format = *format;
 }
 
-void set_colour_adjustment(int r, int g, int b)
+void set_color_adjustment(int r, int g, int b)
 {
 	if(r != red_adjust || g != green_adjust || b != blue_adjust) {
 		red_adjust = r;
@@ -818,14 +818,14 @@ void set_colour_adjustment(int r, int g, int b)
 	}
 }
 
-colour_adjustment_resetter::colour_adjustment_resetter()
+color_adjustment_resetter::color_adjustment_resetter()
 : r_(red_adjust), g_(green_adjust), b_(blue_adjust)
 {
 }
 
-void colour_adjustment_resetter::reset()
+void color_adjustment_resetter::reset()
 {
-	set_colour_adjustment(r_, g_, b_);
+	set_color_adjustment(r_, g_, b_);
 }
 
 void set_team_colors(const std::vector<std::string>* colors)
@@ -881,10 +881,10 @@ static surface get_scaled_to_hex(const locator& i_locator)
 {
 	surface res(get_image(i_locator, UNMASKED));
 
-	// Adjusts colour if necessary.
+	// Adjusts color if necessary.
 	if (red_adjust != 0 ||
 				green_adjust != 0 || blue_adjust != 0) {
-		res = surface(adjust_surface_colour(res,
+		res = surface(adjust_surface_color(res,
 					red_adjust, green_adjust, blue_adjust));
 	}
 

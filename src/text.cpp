@@ -77,7 +77,7 @@ ttext::ttext() :
 	markedup_text_(false),
 	font_size_(14),
 	font_style_(STYLE_NORMAL),
-	foreground_colour_(0xFFFFFFFF), // solid white
+	foreground_color_(0xFFFFFFFF), // solid white
 	maximum_width_(-1),
 	maximum_height_(-1),
 	ellipse_mode_(PANGO_ELLIPSIZE_END),
@@ -331,10 +331,10 @@ ttext& ttext::set_font_style(const unsigned font_style)
 	return *this;
 }
 
-ttext& ttext::set_foreground_colour(const Uint32 colour)
+ttext& ttext::set_foreground_color(const Uint32 color)
 {
-	if(colour != foreground_colour_) {
-		foreground_colour_ = colour;
+	if(color != foreground_color_) {
+		foreground_color_ = color;
 		surface_dirty_ = true;
 	}
 
@@ -601,12 +601,12 @@ void ttext::rerender(const bool force) const
 				CAIRO_FORMAT_ARGB32, width, height, stride);
 		cairo_t *cr = cairo_create(cairo_surface);
 
-		/* set colour (used for foreground). */
+		/* set color (used for foreground). */
 		cairo_set_source_rgba(cr,
-			 (foreground_colour_ >> 24)         / 256.0,
-			((foreground_colour_ >> 16) & 0xFF) / 256.0,
-			((foreground_colour_ >> 8)  & 0xFF) / 256.0,
-			(foreground_colour_         & 0xFF) / 256.0);
+			 (foreground_color_ >> 24)         / 256.0,
+			((foreground_color_ >> 16) & 0xFF) / 256.0,
+			((foreground_color_ >> 8)  & 0xFF) / 256.0,
+			(foreground_color_         & 0xFF) / 256.0);
 
 		pango_cairo_show_layout(cr, layout_);
 

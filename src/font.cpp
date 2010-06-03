@@ -690,7 +690,7 @@ text_surface &text_cache::find(text_surface const &t)
 
 }
 
-static surface render_text(const std::string& text, int fontsize, const SDL_Color& colour, int style, bool use_markup)
+static surface render_text(const std::string& text, int fontsize, const SDL_Color& color, int style, bool use_markup)
 {
 	// we keep blank lines and spaces (may be wanted for indentation)
 	const std::vector<std::string> lines = utils::split(text, '\n', 0);
@@ -705,7 +705,7 @@ static surface render_text(const std::string& text, int fontsize, const SDL_Colo
 
 		std::string::const_iterator after_markup = use_markup ?
 			parse_markup(ln->begin(), ln->end(), &sz, NULL, &text_style) : ln->begin();
-		text_surface txt_surf(sz, colour, text_style);
+		text_surface txt_surf(sz, color, text_style);
 
 		if (after_markup == ln->end() && (ln+1 != ln_end || lines.begin()+1 == ln_end)) {
 			// we replace empty line by a space (to have a line height)
@@ -763,18 +763,18 @@ static surface render_text(const std::string& text, int fontsize, const SDL_Colo
 }
 
 
-surface get_rendered_text(const std::string& str, int size, const SDL_Color& colour, int style)
+surface get_rendered_text(const std::string& str, int size, const SDL_Color& color, int style)
 {
 	// TODO maybe later also to parse markup here, but a lot to check
-	return render_text(str, size, colour, style, false);
+	return render_text(str, size, color, style, false);
 }
 
 SDL_Rect draw_text_line(surface gui_surface, const SDL_Rect& area, int size,
-		   const SDL_Color& colour, const std::string& text,
+		   const SDL_Color& color, const std::string& text,
 		   int x, int y, bool use_tooltips, int style)
 {
 	if (gui_surface.null()) {
-		text_surface const &u = text_cache::find(text_surface(text, size, colour, style));
+		text_surface const &u = text_cache::find(text_surface(text, size, color, style));
 		SDL_Rect res = {0, 0, u.width(), u.height()};
 		return res;
 	}
@@ -787,7 +787,7 @@ SDL_Rect draw_text_line(surface gui_surface, const SDL_Rect& area, int size,
 	const std::string etext = make_text_ellipsis(text, size, area.w);
 
 	// for the main current use, we already parsed markup
-	surface surface(render_text(etext,size,colour,style,false));
+	surface surface(render_text(etext,size,color,style,false));
 	if(surface == NULL) {
 		SDL_Rect res = {0,0,0,0};
 		return res;
@@ -799,7 +799,7 @@ SDL_Rect draw_text_line(surface gui_surface, const SDL_Rect& area, int size,
 #ifdef	HAVE_FRIBIDI
 		// Oron -- Conditional, until all draw_text_line calls have fixed area parameter
 		if(getenv("NO_RTL") == NULL) {
-			bool is_rtl = text_cache::find(text_surface(text, size, colour, style)).is_rtl();
+			bool is_rtl = text_cache::find(text_surface(text, size, color, style)).is_rtl();
 			if(is_rtl)
 				dest.x = area.x + area.w - surface->w - (x - area.x);
 		}
@@ -926,7 +926,7 @@ namespace font {
 floating_label::floating_label(const std::string& text)
 		: surf_(NULL), buf_(NULL), text_(text),
 		font_size_(SIZE_NORMAL),
-		colour_(NORMAL_COLOR),	bgcolour_(), bgalpha_(0),
+		color_(NORMAL_COLOR),	bgcolor_(), bgalpha_(0),
 		xpos_(0), ypos_(0),
 		xmove_(0), ymove_(0), lifetime_(-1),
 		width_(-1),
@@ -957,7 +957,7 @@ surface floating_label::create_surface()
 {
 	if (surf_.null()) {
 		font::ttext text;
-		text.set_foreground_colour((colour_.r << 24) | (colour_.g << 16) | (colour_.b << 8) | 255);
+		text.set_foreground_color((color_.r << 24) | (color_.g << 16) | (color_.b << 8) | 255);
 		text.set_font_size(font_size_);
 		text.set_maximum_width(width_ < 0 ? clip_rect_.w : width_);
 		text.set_maximum_height(clip_rect_.h);
@@ -982,7 +982,7 @@ surface floating_label::create_surface()
 				return surf_;
 			}
 
-			Uint32 color = SDL_MapRGBA(foreground->format, bgcolour_.r,bgcolour_.g, bgcolour_.b, bgalpha_);
+			Uint32 color = SDL_MapRGBA(foreground->format, bgcolor_.r,bgcolor_.g, bgcolor_.b, bgalpha_);
 			SDL_FillRect(background,NULL, color);
 
 			// we make the text less transparent, because the blitting on the

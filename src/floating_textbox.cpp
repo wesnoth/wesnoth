@@ -66,7 +66,7 @@ namespace gui{
 			font::remove_floating_label(label_);
 
 		font::floating_label flabel(label_string_);
-		flabel.set_colour(font::YELLOW_COLOR);
+		flabel.set_color(font::YELLOW_COLOR);
 		flabel.set_position(area.x + border_size, ypos);
 		flabel.set_alignement(font::LEFT_ALIGN);
 		flabel.set_clip_rect(area);

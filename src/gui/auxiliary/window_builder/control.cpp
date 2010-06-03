@@ -36,7 +36,7 @@ tbuilder_control::tbuilder_control(const config& cfg)
 		utils::string_bool("use_tooltip_on_label_overflow", true))
 #ifndef LOW_MEM
 	, debug_border_mode(lexical_cast_default<int>(cfg["debug_border_mode"]))
-	, debug_border_colour(decode_colour(cfg["debug_border_colour"]))
+	, debug_border_color(decode_color(cfg["debug_border_colour"]))
 #endif
 {
 	if(definition.empty()) {
@@ -60,7 +60,7 @@ void tbuilder_control::init_control(tcontrol* control) const
 	control->set_use_tooltip_on_label_overflow(use_tooltip_on_label_overflow);
 #ifndef LOW_MEM
 	control->set_debug_border_mode(debug_border_mode);
-	control->set_debug_border_colour(debug_border_colour);
+	control->set_debug_border_color(debug_border_color);
 #endif
 }
 
@@ -131,7 +131,7 @@ void tbuilder_control::init_control(tcontrol* control) const
  *                                     @* 1 1 pixel border.
  *                                     @* 2 floodfill the widget area.
  *
- *   debug_border_colour (colour = "") The colour of the debug border.
+ *   debug_border_color (color = "") The color of the debug border.
  * @end_table
  */
 

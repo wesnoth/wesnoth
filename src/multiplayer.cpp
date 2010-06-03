@@ -540,13 +540,13 @@ static void enter_lobby_mode(game_display& disp, const config& game_config, mp::
 		lobby_info li(game_config);
 
 		// Force a black background
-		const Uint32 colour = SDL_MapRGBA(disp.video().getSurface()->format
+		const Uint32 color = SDL_MapRGBA(disp.video().getSurface()->format
 				, 0
 				, 0
 				, 0
 				, 255);
 
-		SDL_FillRect(disp.video().getSurface(), NULL, colour);
+		SDL_FillRect(disp.video().getSurface(), NULL, color);
 
 		gui2::tlobby_main dlg(game_config, li, disp);
 		dlg.set_preferences_callback(

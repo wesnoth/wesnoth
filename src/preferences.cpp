@@ -37,7 +37,7 @@ static lg::log_domain log_filesystem("filesystem");
 
 namespace {
 
-bool colour_cursors = false;
+bool color_cursors = false;
 
 bool no_preferences_save = false;
 
@@ -548,15 +548,15 @@ void set_draw_delay(int value)
 	draw_delay_ = value;
 }
 
-bool use_colour_cursors()
+bool use_color_cursors()
 {
-	return colour_cursors;
+	return color_cursors;
 }
 
-void _set_colour_cursors(bool value)
+void _set_color_cursors(bool value)
 {
 	preferences::set("colour_cursors", value);
-	colour_cursors = value;
+	color_cursors = value;
 }
 
 void load_hotkeys() {

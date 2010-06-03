@@ -203,7 +203,7 @@ surface scale_surface(const surface &surf, int w, int h, bool optimize=true);
 surface scale_opaque_surface(const surface &surf, int w, int h, bool optimize_format=false);
 
 surface scale_surface_blended(const surface &surf, int w, int h, bool optimize=true);
-surface adjust_surface_colour(const surface &surf, int r, int g, int b, bool optimize=true);
+surface adjust_surface_color(const surface &surf, int r, int g, int b, bool optimize=true);
 surface greyscale_image(const surface &surf, bool optimize=true);
 /** create an heavy shadow of the image, by blurring, increasing alpha and darkening */
 surface shadow_image(const surface &surf, bool optimize=true);
@@ -272,7 +272,7 @@ surface blur_alpha_surface(const surface &surf, int depth = 1, bool optimize=tru
 
 /** Cuts a rectangle from a surface. */
 surface cut_surface(const surface &surf, SDL_Rect const &r);
-surface blend_surface(const surface &surf, double amount, Uint32 colour, bool optimize=true);
+surface blend_surface(const surface &surf, double amount, Uint32 color, bool optimize=true);
 surface flip_surface(const surface &surf, bool optimize=true);
 surface flop_surface(const surface &surf, bool optimize=true);
 surface create_compatible_surface(const surface &surf, int width = -1, int height = -1);
@@ -294,7 +294,7 @@ surface create_compatible_surface(const surface &surf, int width = -1, int heigh
 void blit_surface(const surface& src,
 	const SDL_Rect* srcrect, surface& dst, const SDL_Rect* dstrect);
 
-void fill_rect_alpha(SDL_Rect &rect, Uint32 colour, Uint8 alpha, const surface &target);
+void fill_rect_alpha(SDL_Rect &rect, Uint32 color, Uint8 alpha, const surface &target);
 
 SDL_Rect get_non_transparent_portion(const surface &surf);
 
@@ -302,7 +302,7 @@ bool operator==(const SDL_Rect& a, const SDL_Rect& b);
 bool operator!=(const SDL_Rect& a, const SDL_Rect& b);
 bool operator==(const SDL_Color& a, const SDL_Color& b);
 bool operator!=(const SDL_Color& a, const SDL_Color& b);
-SDL_Color inverse(const SDL_Color& colour);
+SDL_Color inverse(const SDL_Color& color);
 SDL_Color int_to_color(const Uint32 rgb);
 
 /**
@@ -363,7 +363,7 @@ private:
 };
 
 
-void draw_rectangle(int x, int y, int w, int h, Uint32 colour, surface tg);
+void draw_rectangle(int x, int y, int w, int h, Uint32 color, surface tg);
 
 void draw_solid_tinted_rectangle(int x, int y, int w, int h,
                                  int r, int g, int b,

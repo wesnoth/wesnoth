@@ -110,7 +110,7 @@ private:
 			friends_add_friend_button_, friends_add_ignore_button_,
 			friends_remove_button_, show_floating_labels_button_,
 			turn_dialog_button_, delay_shroud_updates_button_, turn_bell_button_,
-			show_team_colours_button_, show_colour_cursors_button_,
+			show_team_colors_button_, show_color_cursors_button_,
 			show_haloing_button_, video_mode_button_,
 			theme_button_, hotkeys_button_,
 			flip_time_button_, advanced_button_, sound_button_,
@@ -178,8 +178,8 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	  turn_dialog_button_(disp.video(), _("Turn Dialog"), gui::button::TYPE_CHECK),
 	  delay_shroud_updates_button_(disp.video(), _("Delay Shroud Updates on Start"), gui::button::TYPE_CHECK),
 	  turn_bell_button_(disp.video(), _("Turn Bell"), gui::button::TYPE_CHECK),
-	  show_team_colours_button_(disp.video(), _("Show Team Colors"), gui::button::TYPE_CHECK),
-	  show_colour_cursors_button_(disp.video(), _("Show Color Cursors"), gui::button::TYPE_CHECK),
+	  show_team_colors_button_(disp.video(), _("Show Team Colors"), gui::button::TYPE_CHECK),
+	  show_color_cursors_button_(disp.video(), _("Show Color Cursors"), gui::button::TYPE_CHECK),
 	  show_haloing_button_(disp.video(), _("Show Haloing Effects"), gui::button::TYPE_CHECK),
 	  video_mode_button_(disp.video(), _("Change Resolution")),
 	  theme_button_(disp.video(), _("Theme")),
@@ -391,14 +391,14 @@ preferences_dialog::preferences_dialog(display& disp, const config& game_cfg)
 	turn_bell_button_.set_check(turn_bell());
 	turn_bell_button_.set_help_string(_("Play a bell sound at the beginning of your turn"));
 
-	show_team_colours_button_.set_check(show_side_colours());
-	show_team_colours_button_.set_help_string(_("Show a colored circle around the base of each unit to show which side it is on"));
+	show_team_colors_button_.set_check(show_side_colors());
+	show_team_colors_button_.set_help_string(_("Show a colored circle around the base of each unit to show which side it is on"));
 
 	flip_time_button_.set_check(flip_time());
 	flip_time_button_.set_help_string(_("Choose whether the sun moves left-to-right or right-to-left"));
 
-	show_colour_cursors_button_.set_check(use_colour_cursors());
-	show_colour_cursors_button_.set_help_string(_("Use colored mouse cursors (may be slower)"));
+	show_color_cursors_button_.set_check(use_color_cursors());
+	show_color_cursors_button_.set_help_string(_("Use colored mouse cursors (may be slower)"));
 
 	show_haloing_button_.set_check(show_haloes());
 	show_haloing_button_.set_help_string(_("Use graphical special effects (may be slower)"));
@@ -450,8 +450,8 @@ handler_vector preferences_dialog::handler_members()
 	h.push_back(&delay_shroud_updates_button_);
 	h.push_back(&turn_bell_button_);
 	h.push_back(&UI_sound_button_);
-	h.push_back(&show_team_colours_button_);
-	h.push_back(&show_colour_cursors_button_);
+	h.push_back(&show_team_colors_button_);
+	h.push_back(&show_color_cursors_button_);
 	h.push_back(&show_haloing_button_);
 	h.push_back(&video_mode_button_);
 	h.push_back(&theme_button_);
@@ -534,11 +534,11 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	ypos = rect.y + top_border;
 	fullscreen_button_.set_location(rect.x, ypos);
 	ypos += item_interline; scroll_to_action_button_.set_location(rect.x, ypos);
-	ypos += item_interline; show_colour_cursors_button_.set_location(rect.x, ypos);
+	ypos += item_interline; show_color_cursors_button_.set_location(rect.x, ypos);
 	ypos += item_interline; flip_time_button_.set_location(rect.x,ypos);
 	ypos += item_interline; show_floating_labels_button_.set_location(rect.x, ypos);
 	ypos += item_interline; show_haloing_button_.set_location(rect.x, ypos);
-	ypos += item_interline; show_team_colours_button_.set_location(rect.x, ypos);
+	ypos += item_interline; show_team_colors_button_.set_location(rect.x, ypos);
 	ypos += item_interline; show_grid_button_.set_location(rect.x, ypos);
 	ypos += item_interline; idle_anim_button_.set_location(rect.x, ypos);
 	ypos += short_interline;
@@ -694,8 +694,8 @@ void preferences_dialog::process_event()
 			set_turn_dialog(turn_dialog_button_.checked());
 		if (delay_shroud_updates_button_.pressed())
 			set_delay_shroud_updates_on_start(delay_shroud_updates_button_.checked());
-		if (show_team_colours_button_.pressed())
-			set_show_side_colours(show_team_colours_button_.checked());
+		if (show_team_colors_button_.pressed())
+			set_show_side_colors(show_team_colors_button_.checked());
 		if (hotkeys_button_.pressed()) {
 			show_hotkeys_dialog(disp_);
 			parent->clear_buttons();
@@ -733,8 +733,8 @@ void preferences_dialog::process_event()
 											: video_mode_change_exception::MAKE_WINDOWED);
 		if (scroll_to_action_button_.pressed())
 			set_scroll_to_action(scroll_to_action_button_.checked());
-		if (show_colour_cursors_button_.pressed())
-			set_colour_cursors(show_colour_cursors_button_.checked());
+		if (show_color_cursors_button_.pressed())
+			set_color_cursors(show_color_cursors_button_.checked());
 		if (show_haloing_button_.pressed())
 			set_show_haloes(show_haloing_button_.checked());
 		if (flip_time_button_.pressed())
@@ -1093,7 +1093,7 @@ void preferences_dialog::set_selection(int index)
 
 	const bool hide_display = tab_ != DISPLAY_TAB;
 	show_floating_labels_button_.hide(hide_display);
-	show_colour_cursors_button_.hide(hide_display);
+	show_color_cursors_button_.hide(hide_display);
 	show_haloing_button_.hide(hide_display);
 	fullscreen_button_.hide(hide_display);
 	scroll_to_action_button_.hide(hide_display);
@@ -1105,7 +1105,7 @@ void preferences_dialog::set_selection(int index)
 	video_mode_button_.hide(hide_display);
 	theme_button_.hide(hide_display);
 	flip_time_button_.hide(hide_display);
-	show_team_colours_button_.hide(hide_display);
+	show_team_colors_button_.hide(hide_display);
 	show_grid_button_.hide(hide_display);
 
 	const bool hide_sound = tab_ != SOUND_TAB;

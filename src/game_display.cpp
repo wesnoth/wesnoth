@@ -93,7 +93,7 @@ game_display::game_display(unit_map& units, CVideo& video, const gamemap& map,
 	side_colors.reserve(teams_.size());
 
 	for(size_t i = 0; i != teams_.size(); ++i) {
-		std::string side_color = team::get_side_colour_index(i+1);
+		std::string side_color = team::get_side_color_index(i+1);
 		side_colors.push_back(side_color);
 		std::string flag = teams_[i].flag();
 		std::string old_rgb = game_config::flag_rgb;
@@ -196,16 +196,16 @@ void game_display::new_turn()
 
 	first_turn_ = false;
 
-	image::set_colour_adjustment(tod.red,tod.green,tod.blue);
+	image::set_color_adjustment(tod.red,tod.green,tod.blue);
 
 	invalidate_all();
 	draw();
 }
 
-void game_display::adjust_colours(int r, int g, int b)
+void game_display::adjust_colors(int r, int g, int b)
 {
 	const time_of_day& tod = tod_manager_.get_time_of_day();
-	image::set_colour_adjustment(tod.red+r,tod.green+g,tod.blue+b);
+	image::set_color_adjustment(tod.red+r,tod.green+g,tod.blue+b);
 }
 
 void game_display::select_hex(map_location hex)
@@ -474,7 +474,7 @@ void game_display::draw_minimap_units()
 		}
 
 		int side = u->side();
-		const SDL_Color col = team::get_minimap_colour(side);
+		const SDL_Color col = team::get_minimap_color(side);
 		const Uint32 mapped_col = SDL_MapRGB(video().getSurface()->format,col.r,col.g,col.b);
 
 		double u_x = u->get_location().x * xscaling;
@@ -817,7 +817,7 @@ void game_display::float_label(const map_location& loc, const std::string& text,
 	font::floating_label flabel(text);
 	flabel.set_font_size(font::SIZE_XLARGE);
 	const SDL_Color color = {red,green,blue,255};
-	flabel.set_colour(color);
+	flabel.set_color(color);
 	flabel.set_position(get_location_x(loc)+zoom_/2, get_location_y(loc));
 	flabel.set_move(0, -2 * turbo_speed());
 	flabel.set_lifetime(60/turbo_speed());
@@ -826,11 +826,11 @@ void game_display::float_label(const map_location& loc, const std::string& text,
 	font::add_floating_label(flabel);
 }
 
-struct is_energy_colour {
-	bool operator()(Uint32 colour) const { return (colour&0xFF000000) > 0x10000000 &&
-	                                              (colour&0x00FF0000) < 0x00100000 &&
-												  (colour&0x0000FF00) < 0x00001000 &&
-												  (colour&0x000000FF) < 0x00000010; }
+struct is_energy_color {
+	bool operator()(Uint32 color) const { return (color&0xFF000000) > 0x10000000 &&
+	                                              (color&0x00FF0000) < 0x00100000 &&
+												  (color&0x0000FF00) < 0x00001000 &&
+												  (color&0x000000FF) < 0x00000010; }
 };
 
 const SDL_Rect& game_display::calculate_energy_bar(surface surf)
@@ -850,8 +850,8 @@ const SDL_Rect& game_display::calculate_energy_bar(surface surf)
 	for(int y = 0; y != image->h; ++y) {
 		const Uint32* const i1 = begin + image->w*y;
 		const Uint32* const i2 = i1 + image->w;
-		const Uint32* const itor = std::find_if(i1,i2,is_energy_colour());
-		const int count = std::count_if(itor,i2,is_energy_colour());
+		const Uint32* const itor = std::find_if(i1,i2,is_energy_color());
+		const int count = std::count_if(itor,i2,is_energy_color());
 
 		if(itor != i2) {
 			if(first_row == -1) {
@@ -1261,7 +1261,7 @@ namespace {
 	const int chat_message_border = 5;
 	const int chat_message_x = 10;
 	const int chat_message_y = 10;
-	const SDL_Color chat_message_colour = {255,255,255,255};
+	const SDL_Color chat_message_color = {255,255,255,255};
 	const SDL_Color chat_message_bg     = {0,0,0,140};
 }
 
@@ -1317,19 +1317,19 @@ void game_display::add_chat_message(const time_t& time, const std::string& speak
 		ypos += std::max(font::get_floating_label_rect(m->handle).h,
 			font::get_floating_label_rect(m->speaker_handle).h);
 	}
-	SDL_Color speaker_colour = {255,255,255,255};
+	SDL_Color speaker_color = {255,255,255,255};
 	if(side >= 1) {
-		speaker_colour = int_to_color(team::get_side_color_range(side).mid());
+		speaker_color = int_to_color(team::get_side_color_range(side).mid());
 	}
 
-	SDL_Color message_colour = chat_message_colour;
+	SDL_Color message_color = chat_message_color;
 	std::stringstream str;
 	std::stringstream message_str;
 
 	if(type ==  events::chat_handler::MESSAGE_PUBLIC) {
 		if(action) {
 			str << "<" << speaker << " " << msg << ">";
-			message_colour = speaker_colour;
+			message_color = speaker_color;
 			message_str << " ";
 		} else {
 			if (!speaker.empty())
@@ -1339,7 +1339,7 @@ void game_display::add_chat_message(const time_t& time, const std::string& speak
 	} else {
 		if(action) {
 			str << "*" << speaker << " " << msg << "*";
-			message_colour = speaker_colour;
+			message_color = speaker_color;
 			message_str << " ";
 		} else {
 			if (!speaker.empty())
@@ -1356,11 +1356,11 @@ void game_display::add_chat_message(const time_t& time, const std::string& speak
 
 	font::floating_label spk_flabel(message_complete.str());
 	spk_flabel.set_font_size(font::SIZE_SMALL);
-	spk_flabel.set_colour(speaker_colour);
+	spk_flabel.set_color(speaker_color);
 	spk_flabel.set_position(rect.x + chat_message_x, rect.y + ypos);
 	spk_flabel.set_clip_rect(rect);
 	spk_flabel.set_alignement(font::LEFT_ALIGN);
-	spk_flabel.set_bg_colour(chat_message_bg);
+	spk_flabel.set_bg_color(chat_message_bg);
 	spk_flabel.set_border_size(chat_message_border);
 	spk_flabel.use_markup(false);
 
@@ -1368,12 +1368,12 @@ void game_display::add_chat_message(const time_t& time, const std::string& speak
 
 	font::floating_label msg_flabel(message_str.str());
 	msg_flabel.set_font_size(font::SIZE_SMALL);
-	msg_flabel.set_colour(message_colour);
+	msg_flabel.set_color(message_color);
 	msg_flabel.set_position(rect.x + chat_message_x + font::get_floating_label_rect(speaker_handle).w,
 	rect.y + ypos);
 	msg_flabel.set_clip_rect(rect);
 	msg_flabel.set_alignement(font::LEFT_ALIGN);
-	msg_flabel.set_bg_colour(chat_message_bg);
+	msg_flabel.set_bg_color(chat_message_bg);
 	msg_flabel.set_border_size(chat_message_border);
 	msg_flabel.use_markup(false);
 

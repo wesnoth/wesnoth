@@ -47,7 +47,7 @@ public:
 	const terrain_label* set_label(const map_location& loc,
 							   const t_string& text,
 							   const std::string& team = "",
-							   const SDL_Color colour = font::NORMAL_COLOR,
+							   const SDL_Color color = font::NORMAL_COLOR,
 							   const bool visible_in_fog = true,
 							   const bool visible_in_shroud = false,
 							   const bool immutable = false);
@@ -88,7 +88,7 @@ public:
 				  const std::string&,
 				  const map_location&,
 				  const map_labels&,
-				  const SDL_Color colour = font::NORMAL_COLOR,
+				  const SDL_Color color = font::NORMAL_COLOR,
 				  const bool visible_in_fog = true,
 				  const bool visible_in_shroud = false,
 				  const bool immutable = false);
@@ -106,7 +106,7 @@ public:
 	bool visible_in_shroud() const;
 	bool immutable() const;
 	const map_location& location() const;
-	const SDL_Color& colour() const;
+	const SDL_Color& color() const;
 
 	void set_text(const t_string&);
 
@@ -124,7 +124,7 @@ private:
 	void draw();
 	bool visible() const;
 	void check_text_length();
-	std::string cfg_colour() const;
+	std::string cfg_color() const;
 
 	int handle_;
 
@@ -134,7 +134,7 @@ private:
 	bool visible_in_shroud_;
 	bool immutable_;
 
-	SDL_Color	colour_;
+	SDL_Color	color_;
 
 	const map_labels* parent_;
 	map_location loc_;

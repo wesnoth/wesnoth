@@ -84,15 +84,15 @@ std::ostream &operator<<(std::ostream &stream, const tpoint& point);
 SDL_Rect create_rect(const tpoint& origin, const tpoint& size);
 
 /**
- * Converts a colour string to a colour.
+ * Converts a color string to a color.
  *
- * @param colour                  A colour string see
+ * @param color                  A color string see
  *                                http://www.wesnoth.org/wiki/GUIVariable for
  *                                more info.
  *
- * @returns                       The colour.
+ * @returns                       The color.
  */
-Uint32 decode_colour(const std::string& colour);
+Uint32 decode_color(const std::string& color);
 
 /**
  * Converts a text alignment string to a text alignment.

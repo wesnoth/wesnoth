@@ -224,14 +224,14 @@ namespace image {
 	void set_wm_icon();
 
 	///will make all scaled images have these rgb values added to all
-	///their pixels. i.e. add a certain colour hint to images. useful
+	///their pixels. i.e. add a certain color hint to images. useful
 	///for representing day/night. Invalidates all scaled images.
-	void set_colour_adjustment(int r, int g, int b);
+	void set_color_adjustment(int r, int g, int b);
 
-	class colour_adjustment_resetter
+	class color_adjustment_resetter
 	{
 		public:
-			colour_adjustment_resetter();
+			color_adjustment_resetter();
 			void reset();
 		private:
 			int r_, g_, b_;

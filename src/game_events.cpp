@@ -779,7 +779,7 @@ WML_HANDLER_FUNCTION(colour_adjust, /*event_info*/, cfg)
 	const int r = atoi(red.c_str());
 	const int g = atoi(green.c_str());
 	const int b = atoi(blue.c_str());
-	screen.adjust_colours(r,g,b);
+	screen.adjust_colors(r,g,b);
 	screen.invalidate_all();
 	screen.draw(true,true);
 }
@@ -884,7 +884,7 @@ WML_HANDLER_FUNCTION(modify_side, /*event_info*/, cfg)
 	const config& parsed = cfg.get_parsed_config();
 	const config::const_child_itors &ai = parsed.child_range("ai");
 	/**
-	 * @todo also allow client to modify a side's colour if it is possible
+	 * @todo also allow client to modify a side's color if it is possible
 	 * to change it on the fly without causing visual glitches
 	 */
 	std::string switch_ai = cfg["switch_ai"];
@@ -999,7 +999,7 @@ WML_HANDLER_FUNCTION(store_side, /*event_info*/, cfg)
 	state_of_game->get_variable(var_name+".name") = teams[team_index].name();
 	state_of_game->get_variable(var_name+".team_name") = teams[team_index].team_name();
 	state_of_game->get_variable(var_name+".user_team_name") = teams[team_index].user_team_name();
-	state_of_game->get_variable(var_name+".color") = teams[team_index].map_colour_to();
+	state_of_game->get_variable(var_name+".color") = teams[team_index].map_color_to();
 
 	state_of_game->get_variable(var_name+".gold") = str_cast(teams[team_index].gold());
 }
@@ -2007,13 +2007,13 @@ WML_HANDLER_FUNCTION(print, /*event_info*/, cfg)
 	const int green = lexical_cast_default<int>(green_str,0);
 	const int blue = lexical_cast_default<int>(blue_str,0);
 
-	SDL_Color colour = {red,green,blue,255};
+	SDL_Color color = {red,green,blue,255};
 
 	const SDL_Rect& rect = resources::screen->map_outside_area();
 
 	font::floating_label flabel(text);
 	flabel.set_font_size(size);
-	flabel.set_colour(colour);
+	flabel.set_color(color);
 	flabel.set_position(rect.w/2,rect.h/2);
 	flabel.set_lifetime(lifetime);
 	flabel.set_clip_rect(rect);
@@ -2584,7 +2584,7 @@ WML_HANDLER_FUNCTION(label, /*event_info*/, cfg)
 	terrain_label label(screen.labels(), cfg.get_config());
 
 	screen.labels().set_label(label.location(), label.text(),
-		label.team_name(), label.colour(), label.visible_in_fog(), label.visible_in_shroud(), label.immutable());
+		label.team_name(), label.color(), label.visible_in_fog(), label.visible_in_shroud(), label.immutable());
 }
 
 WML_HANDLER_FUNCTION(heal_unit, event_info, cfg)

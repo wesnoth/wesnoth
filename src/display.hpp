@@ -449,7 +449,7 @@ public:
 
 	/** Announce a message prominently. */
 	void announce(const std::string& msg,
-		       const SDL_Color& colour = font::GOOD_COLOR);
+		       const SDL_Color& color = font::GOOD_COLOR);
 
 	/**
 	 * Schedule the minimap for recalculation.
@@ -695,7 +695,7 @@ public:
 	 * reverse: if the image should be flipped across the x axis
 	 * greyscale: used for instance to give the petrified appearance to a unit image
 	 * alpha: the merging to use with the background
-	 * blendto: blend to this colour using blend_ratio
+	 * blendto: blend to this color using blend_ratio
 	 * submerged: the amount of the unit out of 1.0 that is submerged
 	 *            (presumably under water) and thus shouldn't be drawn
 	 */

@@ -592,7 +592,7 @@ void twindow::draw()
 	}
 
 	if(dirty_list_.empty()) {
-		if(preferences::use_colour_cursors() || sunset_) {
+		if(preferences::use_color_cursors() || sunset_) {
 			surface frame_buffer = get_video_surface();
 
 			if(sunset_) {

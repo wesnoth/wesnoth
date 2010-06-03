@@ -66,7 +66,7 @@ static void show_tooltip(const tooltip& tip)
 
 	clear_tooltip();
 
-	const SDL_Color bgcolour = {0,0,0,160};
+	const SDL_Color bgcolor = {0,0,0,160};
 	SDL_Rect area = screen_area();
 
 #ifdef USE_TINY_GUI
@@ -77,11 +77,11 @@ static void show_tooltip(const tooltip& tip)
 
 	font::floating_label flabel(tip.message);
 	flabel.set_font_size(font_size);
-	flabel.set_colour(font::NORMAL_COLOR);
+	flabel.set_color(font::NORMAL_COLOR);
 	flabel.set_clip_rect(area);
 	flabel.set_width(text_width);
 	flabel.set_alignement(font::LEFT_ALIGN);
-	flabel.set_bg_colour(bgcolour);
+	flabel.set_bg_color(bgcolor);
 	flabel.set_border_size(border);
 
 	tooltip_handle = font::add_floating_label(flabel);

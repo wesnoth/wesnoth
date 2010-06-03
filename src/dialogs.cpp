@@ -178,7 +178,7 @@ bool animate_unit_advancement(const map_location &loc, size_t choice)
 	}
 
 	// When the unit advances, it fades to white, and then switches
-	// to the new unit, then fades back to the normal colour
+	// to the new unit, then fades back to the normal color
 
 	if (!resources::screen->video().update_locked()) {
 		unit_animator animator;
@@ -921,7 +921,7 @@ const unit_types_preview_pane::details unit_types_preview_pane::get_details() co
     //FIXME: There should be a better way to deal with this
 	unit_types.find(t->id(), unit_type::WITHOUT_ANIMATIONS);
 
-	std::string mod = "~RC(" + t->flag_rgb() + ">" + team::get_side_colour_index(side_) + ")";
+	std::string mod = "~RC(" + t->flag_rgb() + ">" + team::get_side_color_index(side_) + ")";
 	det.image = image::get_image(t->image()+mod);
 
 	det.name = "";

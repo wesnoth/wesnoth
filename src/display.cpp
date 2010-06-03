@@ -691,11 +691,11 @@ std::vector<surface> display::get_terrain_images(const map_location &loc,
 			const image::locator& image = preferences::animate_map() ?
 				it->get_current_frame() : it->get_first_frame();
 
-			// We prevent ToD colouring and brightening of off-map tiles,
+			// We prevent ToD coloring and brightening of off-map tiles,
 			// except if we are not in_game and so in the editor.
 			// We need to test for the tile to be rendered and
 			// not the location, since the transitions are rendered
-			// over the offmap-terrain and these need a ToD colouring.
+			// over the offmap-terrain and these need a ToD coloring.
 			const bool off_map = (image.get_filename() == off_map_name);
 			const surface surface(image::get_image(image,
 				off_map ? image::UNMASKED : image_type));
@@ -858,7 +858,7 @@ void display::update_display()
 
 			font::floating_label flabel(stream.str());
 			flabel.set_font_size(12);
-			flabel.set_colour(benchmark ? font::BAD_COLOR : font::NORMAL_COLOR);
+			flabel.set_color(benchmark ? font::BAD_COLOR : font::NORMAL_COLOR);
 			flabel.set_position(10, 100);
 			flabel.set_alignement(font::LEFT_ALIGN);
 
@@ -1112,7 +1112,7 @@ void display::set_diagnostic(const std::string& msg)
 	if(msg != "") {
 		font::floating_label flabel(msg);
 		flabel.set_font_size(font::SIZE_PLUS);
-		flabel.set_colour(font::YELLOW_COLOR);
+		flabel.set_color(font::YELLOW_COLOR);
 		flabel.set_position(300, 50);
 		flabel.set_clip_rect(map_outside_area());
 
@@ -1242,11 +1242,11 @@ void display::enable_menu(const std::string& item, bool enable)
 	}
 }
 
-void display::announce(const std::string& message, const SDL_Color& colour)
+void display::announce(const std::string& message, const SDL_Color& color)
 {
 	font::floating_label flabel(message);
 	flabel.set_font_size(font::SIZE_XLARGE);
-	flabel.set_colour(colour);
+	flabel.set_color(color);
 	flabel.set_position(map_outside_area().w/2, map_outside_area().h/3);
 	flabel.set_lifetime(100);
 	flabel.set_clip_rect(map_outside_area());
@@ -2142,7 +2142,7 @@ void display::refresh_report(reports::TYPE report_num, reports::report report)
 			// Draw a text element.
 			font::ttext text;
 			if (item->font_rgb_set()) {
-				text.set_foreground_colour(item->font_rgb());
+				text.set_foreground_color(item->font_rgb());
 			}
 			std::string t = e->text;
 			bool eol = false;

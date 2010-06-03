@@ -49,7 +49,7 @@ tcontrol::tcontrol(const unsigned canvas_count)
 void tcontrol::set_members(const string_map& data)
 {
 	/** @todo document this feature on the wiki. */
-	/** @todo do we need to add the debug colours here as well? */
+	/** @todo do we need to add the debug colors here as well? */
 	string_map::const_iterator itor = data.find("id");
 	if(itor != data.end()) {
 		set_id(itor->second);

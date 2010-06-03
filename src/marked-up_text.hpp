@@ -37,7 +37,7 @@ extern const SDL_Color weapon_color, weapon_details_color, unit_type_color, race
 std::string::const_iterator parse_markup(std::string::const_iterator i1,
 												std::string::const_iterator i2,
 												int* font_size,
-												SDL_Color* colour, int* style);
+												SDL_Color* color, int* style);
 
 /**
  * Function to draw text on a surface.
@@ -53,7 +53,7 @@ std::string::const_iterator parse_markup(std::string::const_iterator i1,
  *  - any line beginning in @ will be displayed in GOOD_COLOR (green)
  *  - any line beginning in + will be displayed with size increased by 2
  *  - any line beginning in - will be displayed with size decreased by 2
- *  - any line beginning with 0x0n will be displayed in the colour of side n
+ *  - any line beginning with 0x0n will be displayed in the color of side n
  *
  * The above special characters can be quoted using a C-style backslash.
  *
@@ -61,12 +61,12 @@ std::string::const_iterator parse_markup(std::string::const_iterator i1,
  * text will not be drawn, and a bounding rectangle only will be returned.
  */
 SDL_Rect draw_text(surface dst, const SDL_Rect& area, int size,
-                   const SDL_Color& colour, const std::string& text,
+                   const SDL_Color& color, const std::string& text,
                    int x, int y, bool use_tooltips = false, int style = 0);
 
 /** wrapper of the previous function, gui can also be NULL */
 SDL_Rect draw_text(CVideo* gui, const SDL_Rect& area, int size,
-                   const SDL_Color& colour, const std::string& text,
+                   const SDL_Color& color, const std::string& text,
                    int x, int y, bool use_tooltips = false, int style = 0);
 
 /** Calculate the size of a text (in pixels) if it were to be drawn. */
@@ -125,7 +125,7 @@ std::string word_wrap_text(const std::string& unwrapped_text, int font_size,
  * @returns                       A bounding rectangle of the text.
  */
 SDL_Rect draw_wrapped_text(CVideo* gui, const SDL_Rect& area, int font_size,
-			     const SDL_Color& colour, const std::string& text,
+			     const SDL_Color& color, const std::string& text,
 			     int x, int y, int max_width);
 
 } // end namespace font

@@ -121,7 +121,7 @@ editor_controller::editor_controller(const config &game_config, CVideo& video, m
 	hotkey::get_hotkey(hotkey::HOTKEY_QUIT_GAME).set_description(_("Quit Editor"));
 	get_map_context().set_starting_position_labels(gui());
 	cursor::set(cursor::NORMAL);
-	image::set_colour_adjustment(preferences::editor::tod_r(), preferences::editor::tod_g(), preferences::editor::tod_b());
+	image::set_color_adjustment(preferences::editor::tod_r(), preferences::editor::tod_g(), preferences::editor::tod_b());
 	theme& theme = gui().get_theme();
 	const theme::menu* default_tool_menu = NULL;
 	foreach (const theme::menu& m, theme.menus()) {
@@ -378,13 +378,13 @@ void editor_controller::editor_settings_dialog()
 	dialog.set_tods(tods_);
 	dialog.set_current_adjustment(preferences::editor::tod_r(), preferences::editor::tod_g(), preferences::editor::tod_b());
 	dialog.set_redraw_callback(boost::bind(&editor_controller::editor_settings_dialog_redraw_callback, this, _1, _2, _3));
-	image::colour_adjustment_resetter adjust_resetter;
+	image::color_adjustment_resetter adjust_resetter;
 	dialog.set_use_mdi(use_mdi_);
 	dialog.show(gui().video());
 
 	int res = dialog.get_retval();
 	if(res == gui2::twindow::OK) {
-		image::set_colour_adjustment(dialog.get_red(), dialog.get_green(), dialog.get_blue());
+		image::set_color_adjustment(dialog.get_red(), dialog.get_green(), dialog.get_blue());
 		preferences::editor::set_tod_r(dialog.get_red());
 		preferences::editor::set_tod_g(dialog.get_green());
 		preferences::editor::set_tod_b(dialog.get_blue());
@@ -399,7 +399,7 @@ void editor_controller::editor_settings_dialog()
 void editor_controller::editor_settings_dialog_redraw_callback(int r, int g, int b)
 {
 	SCOPE_ED;
-	image::set_colour_adjustment(r, g, b);
+	image::set_color_adjustment(r, g, b);
 	gui().redraw_everything();
 }
 

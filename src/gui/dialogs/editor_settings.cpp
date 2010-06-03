@@ -49,7 +49,7 @@ namespace gui2 {
  *
  *     (custom_tod_toggle) (toggle_button) ()
  *                                Allow to set the ToD mask by selecting the
- *                                colour components manually.
+ *                                color components manually.
  *     (custom_tod_red) (slider) ()
  *                                Sets the red component of the custom ToD
  *                                mask.

@@ -53,7 +53,7 @@ const SDL_Color
 std::string::const_iterator parse_markup(std::string::const_iterator i1,
 												std::string::const_iterator i2,
 												int* font_size,
-												SDL_Color* colour, int* style)
+												SDL_Color* color, int* style)
 {
 	std::string::const_iterator i_start=i1;
 	while(i1 != i2) {
@@ -63,19 +63,19 @@ std::string::const_iterator parse_markup(std::string::const_iterator i1,
 			// quoted backslash - either way, remove leading backslash
 			break;
 		case BAD_TEXT:
-			if (colour) *colour = BAD_COLOR;
+			if (color) *color = BAD_COLOR;
 			break;
 		case GOOD_TEXT:
-			if (colour) *colour = GOOD_COLOR;
+			if (color) *color = GOOD_COLOR;
 			break;
 		case NORMAL_TEXT:
-			if (colour) *colour = NORMAL_COLOR;
+			if (color) *color = NORMAL_COLOR;
 			break;
 		case BLACK_TEXT:
-			if (colour) *colour = BLACK_COLOR;
+			if (color) *color = BLACK_COLOR;
 			break;
 		case GRAY_TEXT:
-			if (colour) *colour = GRAY_COLOR;
+			if (color) *color = GRAY_COLOR;
 			break;
 		case LARGE_TEXT:
 			if (font_size) *font_size += 2;
@@ -123,7 +123,7 @@ std::string::const_iterator parse_markup(std::string::const_iterator i1,
 				blue=temp;
 				if (i1 != i2 && '>' == (*i1)) {
 					SDL_Color temp_color = {red, green, blue, 0};
-					if (colour) *colour = temp_color;
+					if (color) *color = temp_color;
 				} else {
 					// stop parsing and do not consume any chars
 					return start;
@@ -183,7 +183,7 @@ SDL_Rect text_area(const std::string& text, int size, int style)
 }
 
 SDL_Rect draw_text(surface dst, const SDL_Rect& area, int size,
-                   const SDL_Color& colour, const std::string& txt,
+                   const SDL_Color& color, const std::string& txt,
                    int x, int y, bool use_tooltips, int style)
 {
 	// Make sure there's always at least a space,
@@ -200,7 +200,7 @@ SDL_Rect draw_text(surface dst, const SDL_Rect& area, int size,
 	std::string::const_iterator i1 = text.begin();
 	std::string::const_iterator i2 = std::find(i1,text.end(),'\n');
 	for(;;) {
-		SDL_Color col = colour;
+		SDL_Color col = color;
 		int sz = size;
 		int text_style = style;
 
@@ -230,10 +230,10 @@ SDL_Rect draw_text(surface dst, const SDL_Rect& area, int size,
 }
 
 SDL_Rect draw_text(CVideo* gui, const SDL_Rect& area, int size,
-                   const SDL_Color& colour, const std::string& txt,
+                   const SDL_Color& color, const std::string& txt,
                    int x, int y, bool use_tooltips, int style)
 {
-	return draw_text(gui != NULL ? gui->getSurface() : NULL, area, size, colour, txt, x, y, use_tooltips, style);
+	return draw_text(gui != NULL ? gui->getSurface() : NULL, area, size, color, txt, x, y, use_tooltips, style);
 }
 
 bool is_format_char(char c)
@@ -524,11 +524,11 @@ std::string word_wrap_text(const std::string& unwrapped_text, int font_size,
 }
 
 SDL_Rect draw_wrapped_text(CVideo* gui, const SDL_Rect& area, int font_size,
-		     const SDL_Color& colour, const std::string& text,
+		     const SDL_Color& color, const std::string& text,
 		     int x, int y, int max_width)
 {
 	std::string wrapped_text = word_wrap_text(text, font_size, max_width);
-	return font::draw_text(gui, area, font_size, colour, wrapped_text, x, y, false);
+	return font::draw_text(gui, area, font_size, color, wrapped_text, x, y, false);
 }
 
 } // end namespace font

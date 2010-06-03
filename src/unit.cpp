@@ -944,75 +944,75 @@ std::string unit::transparent() const {
 SDL_Color unit::hp_color() const
 {
 	double unit_energy = 0.0;
-	SDL_Color energy_colour = {0,0,0,0};
+	SDL_Color energy_color = {0,0,0,0};
 
 	if(max_hitpoints() > 0) {
 		unit_energy = double(hitpoints())/double(max_hitpoints());
 	}
 
 	if(1.0 == unit_energy){
-		energy_colour.r = 33;
-		energy_colour.g = 225;
-		energy_colour.b = 0;
+		energy_color.r = 33;
+		energy_color.g = 225;
+		energy_color.b = 0;
 	} else if(unit_energy > 1.0) {
-		energy_colour.r = 100;
-		energy_colour.g = 255;
-		energy_colour.b = 100;
+		energy_color.r = 100;
+		energy_color.g = 255;
+		energy_color.b = 100;
 	} else if(unit_energy >= 0.75) {
-		energy_colour.r = 170;
-		energy_colour.g = 255;
-		energy_colour.b = 0;
+		energy_color.r = 170;
+		energy_color.g = 255;
+		energy_color.b = 0;
 	} else if(unit_energy >= 0.5) {
-		energy_colour.r = 255;
-		energy_colour.g = 175;
-		energy_colour.b = 0;
+		energy_color.r = 255;
+		energy_color.g = 175;
+		energy_color.b = 0;
 	} else if(unit_energy >= 0.25) {
-		energy_colour.r = 255;
-		energy_colour.g = 155;
-		energy_colour.b = 0;
+		energy_color.r = 255;
+		energy_color.g = 155;
+		energy_color.b = 0;
 	} else {
-		energy_colour.r = 255;
-		energy_colour.g = 0;
-		energy_colour.b = 0;
+		energy_color.r = 255;
+		energy_color.g = 0;
+		energy_color.b = 0;
 	}
-	return energy_colour;
+	return energy_color;
 }
 
 SDL_Color unit::xp_color() const
 {
-	const SDL_Color near_advance_colour = {255,255,255,0};
-	const SDL_Color mid_advance_colour  = {150,255,255,0};
-	const SDL_Color far_advance_colour  = {0,205,205,0};
-	const SDL_Color normal_colour 	  = {0,160,225,0};
-	const SDL_Color near_amla_colour	  = {225,0,255,0};
-	const SDL_Color mid_amla_colour	  = {169,30,255,0};
-	const SDL_Color far_amla_colour	  = {139,0,237,0};
-	const SDL_Color amla_colour		  = {170,0,255,0};
+	const SDL_Color near_advance_color = {255,255,255,0};
+	const SDL_Color mid_advance_color  = {150,255,255,0};
+	const SDL_Color far_advance_color  = {0,205,205,0};
+	const SDL_Color normal_color 	  = {0,160,225,0};
+	const SDL_Color near_amla_color	  = {225,0,255,0};
+	const SDL_Color mid_amla_color	  = {169,30,255,0};
+	const SDL_Color far_amla_color	  = {139,0,237,0};
+	const SDL_Color amla_color		  = {170,0,255,0};
 	const bool near_advance = max_experience() - experience() <= game_config::kill_experience;
 	const bool mid_advance  = max_experience() - experience() <= game_config::kill_experience*2;
 	const bool far_advance  = max_experience() - experience() <= game_config::kill_experience*3;
 
-	SDL_Color colour=normal_colour;
+	SDL_Color color=normal_color;
 	if(advances_to().size()){
 		if(near_advance){
-			colour=near_advance_colour;
+			color=near_advance_color;
 		} else if(mid_advance){
-			colour=mid_advance_colour;
+			color=mid_advance_color;
 		} else if(far_advance){
-			colour=far_advance_colour;
+			color=far_advance_color;
 		}
 	} else if (get_modification_advances().size()){
 		if(near_advance){
-			colour=near_amla_colour;
+			color=near_amla_color;
 		} else if(mid_advance){
-			colour=mid_amla_colour;
+			color=mid_amla_color;
 		} else if(far_advance){
-			colour=far_amla_colour;
+			color=far_amla_color;
 		} else {
-			colour=amla_colour;
+			color=amla_color;
 		}
 	}
-	return(colour);
+	return(color);
 }
 
 std::string unit::side_id() const {return teams_manager::get_teams()[side()-1].save_id(); }
@@ -1842,7 +1842,7 @@ void unit::redraw_unit()
 	surface ellipse_front(NULL);
 	surface ellipse_back(NULL);
 	int ellipse_floating = 0;
-	if(draw_bars && preferences::show_side_colours()) {
+	if(draw_bars && preferences::show_side_colors()) {
 		// The division by 2 seems to have no real meaning,
 		// It just works fine with the current center of ellipse
 		// and prevent a too large adjust if submerge = 1.0
@@ -1857,7 +1857,7 @@ void unit::redraw_unit()
 
 		// Load the ellipse parts recolored to match team color
 		char buf[100];
-		std::string tc=team::get_side_colour_index(side_);
+		std::string tc=team::get_side_color_index(side_);
 
 		snprintf(buf,sizeof(buf),"%s-%stop.png~RC(ellipse_red>%s)",ellipse.c_str(),selected,tc.c_str());
 		ellipse_back.assign(image::get_image(image::locator(buf), image::SCALED_TO_ZOOM));
@@ -1926,9 +1926,9 @@ void unit::redraw_unit()
 
 			const int xp_bar_height = static_cast<int>(max_experience()*game_config::xp_bar_scaling / std::max<int>(level_,1));
 
-			SDL_Color colour=xp_color();
+			SDL_Color color=xp_color();
 			disp.draw_bar(*energy_file, xsrc, ysrc +adjusted_params.y,
-				loc_, xp_bar_height, filled, colour, bar_alpha);
+				loc_, xp_bar_height, filled, color, bar_alpha);
 		}
 
 		if (can_recruit()) {
@@ -2824,7 +2824,7 @@ temporary_unit_mover::~temporary_unit_mover()
 std::string unit::TC_image_mods() const{
 	std::stringstream modifier;
 	if(flag_rgb_.size()){
-		modifier << "~RC("<< flag_rgb_ << ">" << team::get_side_colour_index(side()) << ")";
+		modifier << "~RC("<< flag_rgb_ << ">" << team::get_side_color_index(side()) << ")";
 	}
 	return modifier.str();
 }

@@ -149,7 +149,7 @@ public:
 		mp::controller controller_;
 		int faction_;
 		int team_;
-		int colour_;
+		int color_;
 		int gold_;
 		int income_;
 		std::string leader_;
@@ -161,7 +161,7 @@ public:
 		bool gold_lock_;
 		bool income_lock_;
 		bool team_lock_;
-		bool colour_lock_;
+		bool color_lock_;
 
 		// Widgets for this side
 		gui::label player_number_;
@@ -172,7 +172,7 @@ public:
 		gui::combo combo_leader_;
 		gui::combo combo_gender_;
 		gui::combo combo_team_;
-		gui::combo combo_colour_;
+		gui::combo combo_color_;
 		gui::slider slider_gold_;
 		gui::slider slider_income_;
 		gui::label label_gold_;
@@ -289,7 +289,7 @@ private:
 	std::vector<std::string> player_types_;
 	std::vector<std::string> player_factions_;
 	std::vector<std::string> player_teams_;
-	std::vector<std::string> player_colours_;
+	std::vector<std::string> player_colors_;
 	std::vector<ai::description*> ai_algorithms_;
 
 	// team_name list and "Team" prefix
@@ -311,7 +311,7 @@ private:
 	gui::label type_title_label_;
 	gui::label faction_title_label_;
 	gui::label team_title_label_;
-	gui::label colour_title_label_;
+	gui::label color_title_label_;
 	gui::label gold_title_label_;
 	gui::label income_title_label_;
 

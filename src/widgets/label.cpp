@@ -21,7 +21,7 @@
 
 namespace gui {
 
-label::label(CVideo& video, const std::string& text, int size, const SDL_Color& colour, const bool auto_join) : widget(video, auto_join), text_(text), size_(size), colour_(colour)
+label::label(CVideo& video, const std::string& text, int size, const SDL_Color& color, const bool auto_join) : widget(video, auto_join), text_(text), size_(size), color_(color)
 {
 	update_label_size();
 }
@@ -42,23 +42,23 @@ const std::string& label::get_text() const
 	return text_;
 }
 
-const SDL_Color& label::set_colour(const SDL_Color& colour)
+const SDL_Color& label::set_color(const SDL_Color& color)
 {
-	colour_ = colour;
+	color_ = color;
 	set_dirty();
-	return get_colour();
+	return get_color();
 }
 
-const SDL_Color& label::get_colour() const
+const SDL_Color& label::get_color() const
 {
-	return (enabled()) ? colour_ : font::DISABLED_COLOR;
+	return (enabled()) ? color_ : font::DISABLED_COLOR;
 }
 
 void label::draw_contents()
 {
 	const SDL_Rect& loc = location();
 	if (!text_.empty() && loc.w > 0 && loc.h > 0)
-		font::draw_text(&video(), loc, size_, get_colour(), text_, loc.x, loc.y);
+		font::draw_text(&video(), loc, size_, get_color(), text_, loc.x, loc.y);
 }
 
 void label::update_label_size()

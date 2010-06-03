@@ -35,7 +35,7 @@ twidget::twidget()
 	, linked_group_()
 #ifndef LOW_MEM
 	, debug_border_mode_(0)
-	, debug_border_colour_(0)
+	, debug_border_color_(0)
 #endif
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 	, last_best_size_(tpoint(0,0))
@@ -299,10 +299,10 @@ void twidget::draw_debug_border(surface& frame_buffer)
 			break;
 		case 1:
 			draw_rectangle(r.x, r.y, r.w, r.h
-					, debug_border_colour_, frame_buffer);
+					, debug_border_color_, frame_buffer);
 			break;
 		case 2:
-			SDL_FillRect(frame_buffer, &r, debug_border_colour_);
+			SDL_FillRect(frame_buffer, &r, debug_border_color_);
 			break;
 		default:
 			assert(false);

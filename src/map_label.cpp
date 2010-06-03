@@ -128,7 +128,7 @@ void map_labels::set_team(const team* team)
 const terrain_label* map_labels::set_label(const map_location& loc,
 					   const t_string& text,
 					   const std::string& team_name,
-					   const SDL_Color colour,
+					   const SDL_Color color,
 					   const bool visible_in_fog,
 					   const bool visible_in_shroud,
 					   const bool immutable)
@@ -144,7 +144,7 @@ const terrain_label* map_labels::set_label(const map_location& loc,
 		if(text.str().empty())
 		{
 			current_label->second->set_text("");
-			res = new terrain_label("",team_name,loc,*this,colour,visible_in_fog,visible_in_shroud,immutable);
+			res = new terrain_label("",team_name,loc,*this,color,visible_in_fog,visible_in_shroud,immutable);
 			delete current_label->second;
 			current_label_map->second.erase(loc);
 
@@ -163,7 +163,7 @@ const terrain_label* map_labels::set_label(const map_location& loc,
 		}
 		else
 		{
-			current_label->second->update_info(text, team_name, colour);
+			current_label->second->update_info(text, team_name, color);
 			res = current_label->second;
 		}
 	}
@@ -181,7 +181,7 @@ const terrain_label* map_labels::set_label(const map_location& loc,
 				team_name,
 				loc,
 				*this,
-				colour,
+				color,
 				visible_in_fog,
 				visible_in_shroud,
 				immutable);
@@ -273,7 +273,7 @@ terrain_label::terrain_label(const t_string& text,
 							 const std::string& team_name,
 							 const map_location& loc,
 							 const map_labels& parent,
-							 const SDL_Color colour,
+							 const SDL_Color color,
 							 const bool visible_in_fog,
 							 const bool visible_in_shroud,
 							 const bool immutable)  :
@@ -283,7 +283,7 @@ terrain_label::terrain_label(const t_string& text,
 		visible_in_fog_(visible_in_fog),
 		visible_in_shroud_(visible_in_shroud),
 		immutable_(immutable),
-		colour_(colour),
+		color_(color),
 		parent_(&parent),
 		loc_(loc)
 {
@@ -299,7 +299,7 @@ terrain_label::terrain_label(const map_labels &parent, const config &cfg) :
 		visible_in_fog_(true),
 		visible_in_shroud_(false),
 		immutable_(true),
-		colour_(),
+		color_(),
 		parent_(&parent),
 		loc_()
 {
@@ -317,8 +317,8 @@ void terrain_label::read(const config &cfg)
 {
 	const variable_set &vs = *resources::state_of_game;
 	loc_ = map_location(cfg, &vs);
-	SDL_Color colour = font::LABEL_COLOR;
-	std::string tmp_colour = cfg.get_old_attribute("color","colour");
+	SDL_Color color = font::LABEL_COLOR;
+	std::string tmp_color = cfg.get_old_attribute("color","colour");
 
 	text_ = cfg["text"];
 	team_name_ = cfg["team_name"].str();
@@ -328,20 +328,20 @@ void terrain_label::read(const config &cfg)
 
 	text_ = utils::interpolate_variables_into_tstring(text_, vs); // Not moved to rendering, as that would depend on variables at render-time
 	team_name_ = utils::interpolate_variables_into_string(team_name_, vs);
-	tmp_colour = utils::interpolate_variables_into_string(tmp_colour, vs);
+	tmp_color = utils::interpolate_variables_into_string(tmp_color, vs);
 
-	if(!tmp_colour.empty()) {
+	if(!tmp_color.empty()) {
 		std::vector<Uint32> temp_rgb;
 		try {
-			temp_rgb = string2rgb(tmp_colour);
+			temp_rgb = string2rgb(tmp_color);
 		} catch(bad_lexical_cast&) {
 			//throw config::error(_("Invalid color range: ") + name);
 		}
 		if(!temp_rgb.empty()) {
-			colour = int_to_color(temp_rgb[0]);
+			color = int_to_color(temp_rgb[0]);
 		}
 	}
-	colour_ = colour;
+	color_ = color;
 }
 
 void terrain_label::write(config& cfg) const
@@ -349,7 +349,7 @@ void terrain_label::write(config& cfg) const
 	loc_.write(cfg);
 	cfg["text"] = text();
 	cfg["team_name"] = (this->team_name());
-	cfg["color"] = cfg_colour();
+	cfg["color"] = cfg_color();
 	cfg["visible_in_fog"] = visible_in_fog_;
 	cfg["visible_in_shroud"] = visible_in_shroud_;
 	cfg["immutable"] = immutable_;
@@ -385,18 +385,18 @@ const map_location& terrain_label::location() const
 	return loc_;
 }
 
-const SDL_Color& terrain_label::colour() const
+const SDL_Color& terrain_label::color() const
 {
-	return colour_;
+	return color_;
 }
 
-std::string terrain_label::cfg_colour() const
+std::string terrain_label::cfg_color() const
 {
 	std::stringstream buf;
-	const unsigned int red = static_cast<unsigned int>(colour_.r);
-	const unsigned int green = static_cast<unsigned int>(colour_.g);
-	const unsigned int blue = static_cast<unsigned int>(colour_.b);
-	const unsigned int alpha = static_cast<unsigned int>(colour_.unused);
+	const unsigned int red = static_cast<unsigned int>(color_.r);
+	const unsigned int green = static_cast<unsigned int>(color_.g);
+	const unsigned int blue = static_cast<unsigned int>(color_.b);
+	const unsigned int alpha = static_cast<unsigned int>(color_.unused);
 	buf << red << ","
 			<< green << ","
 			<< blue << ","
@@ -411,9 +411,9 @@ void terrain_label::set_text(const t_string& text)
 
 void terrain_label::update_info(const t_string& text,
 								const std::string& team_name,
-								const SDL_Color colour)
+								const SDL_Color color)
 {
-	colour_ = colour;
+	color_ = color;
 	text_ = text;
 	check_text_length();
 	team_name_ = team_name;
@@ -450,13 +450,13 @@ void terrain_label::draw()
 			parent_->disp().get_location_x(loc_nextx)*2)/3;
 	const int yloc = parent_->disp().get_location_y(loc_nexty) - font::SIZE_NORMAL;
 
-	// If a colour is specified don't allow to override it with markup. (prevents faking map labels for example)
+	// If a color is specified don't allow to override it with markup. (prevents faking map labels for example)
 	// FIXME: @todo Better detect if it's team label and not provided by
 	// the scenario.
-	bool use_markup = colour_ == font::LABEL_COLOR;
+	bool use_markup = color_ == font::LABEL_COLOR;
 
 	font::floating_label flabel(text_.str());
-	flabel.set_colour(colour_);
+	flabel.set_color(color_);
 	flabel.set_position(xloc, yloc);
 	flabel.set_clip_rect(parent_->disp().map_outside_area());
 	flabel.set_scroll_mode(font::ANCHOR_LABEL_MAP);

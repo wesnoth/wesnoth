@@ -63,7 +63,7 @@ namespace preferences {
 	void set_ellipses(bool ison);
 	void set_grid(bool ison);
 	void set_turbo_speed(double speed);
-	void set_colour_cursors(bool value);
+	void set_color_cursors(bool value);
 
 	// Control unit idle animations
 	void set_idle_anim(bool ison);

@@ -57,7 +57,7 @@ struct time_of_day
 	std::string image_mask;
 
 	/**
-	 * The colour modifications that should be made
+	 * The color modifications that should be made
 	 * to the game board to reflect the time of day.
 	 */
 	int red, green, blue;

@@ -142,10 +142,10 @@ void slider::draw_contents()
 	surface image(state_ != NORMAL ? highlightedImage_ : image_);
 	if (image == NULL)
 		return;
-	SDL_Color line_colour = font::NORMAL_COLOR;
+	SDL_Color line_color = font::NORMAL_COLOR;
 	if (!enabled()) {
 		image = greyscale_image(image);
-		line_colour = font::DISABLED_COLOR;
+		line_color = font::DISABLED_COLOR;
 	}
 
 	SDL_Rect const &loc = location();
@@ -156,7 +156,7 @@ void slider::draw_contents()
 
 	SDL_Rect line_rect = { loc.x + image->w / 2, loc.y + loc.h / 2, loc.w - image->w, 1 };
 	SDL_FillRect(screen, &line_rect, SDL_MapRGB(screen->format,
-		line_colour.r, line_colour.g, line_colour.b));
+		line_color.r, line_color.g, line_color.b));
 
 	SDL_Rect const &slider = slider_area();
 	video().blit_surface(slider.x, slider.y, image);

@@ -393,7 +393,7 @@ void menu_handler::status_table(int selected)
 	//to see details about the other sides, only their own
 	//side, allied sides and a ??? is shown to demonstrate
 	//lack of information about the other sides But he see
-	//all names with in colours
+	//all names with in colors
 	for(size_t n = 0; n != teams_.size(); ++n) {
 		if(teams_[n].is_empty()||teams_[n].hidden()) {
 			continue;
@@ -410,7 +410,7 @@ void menu_handler::status_table(int selected)
 		unit_map::const_iterator leader = units_.find_leader(n + 1);
 		std::string leader_name;
 		//output the number of the side first, and this will
-		//cause it to be displayed in the correct colour
+		//cause it to be displayed in the correct color
 		if(leader != units_.end()) {
 
 			// Add leader image. If it's fogged
@@ -428,7 +428,7 @@ void menu_handler::status_table(int selected)
 				leader_name = teams_[n].current_player();
 
 #ifndef LOW_MEM
-			str << "~RC(" << leader->team_color() << '>' << team::get_side_colour_index(n+1) << ')';
+			str << "~RC(" << leader->team_color() << '>' << team::get_side_color_index(n+1) << ')';
 #endif
 		} else {
 			leader_bools.push_back(false);
@@ -539,7 +539,7 @@ void menu_handler::scenario_settings_table(int selected)
 			}
 #ifndef LOW_MEM
 			str << "~RC(" << leader->team_color() << '>'
-			    << team::get_side_colour_index(n+1) << ")";
+			    << team::get_side_color_index(n+1) << ")";
 #endif
 		} else {
 			leader_bools.push_back(false);
@@ -694,7 +694,7 @@ void menu_handler::recruit(int side_num, const map_location &last_hex)
 		description << font::IMAGE << type->image();
 #ifndef LOW_MEM
 		description << "~RC(" << type->flag_rgb() << '>'
-			<< team::get_side_colour_index(side_num) << ')';
+			<< team::get_side_color_index(side_num) << ')';
 #endif
 		description << COLUMN_SEPARATOR << font::LARGE_TEXT << prefix << type->type_name() << "\n"
 				<< prefix << type->cost() << " " << sngettext("unit^Gold", "Gold", type->cost());
@@ -864,7 +864,7 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 		option << IMAGE_PREFIX << u.absolute_image();
 #ifndef LOW_MEM
 		option << "~RC("  << u.team_color() << '>'
-			<< team::get_side_colour_index(side_num) << ')';
+			<< team::get_side_color_index(side_num) << ')';
 #endif
 		option << COLUMN_SEPARATOR
 			<< u.type_name() << COLUMN_SEPARATOR
@@ -1552,20 +1552,20 @@ void menu_handler::label_terrain(mouse_handler& mousehandler, bool team_only)
 
 	if(!d.show()) {
 		std::string team_name;
-		SDL_Color colour = font::LABEL_COLOR;
+		SDL_Color color = font::LABEL_COLOR;
 
 		if (d.option_checked()) {
 			team_name = gui_->labels().team_name();
 		} else {
-			colour = int_to_color(team::get_side_rgb(gui_->viewing_side()));
+			color = int_to_color(team::get_side_rgb(gui_->viewing_side()));
 		}
 		const std::string& old_team_name = old_label ? old_label->team_name() : "";
 		// remove the old label if we changed the team_name
 		if (d.option_checked() == (old_team_name == "")) {
-			const terrain_label* old = gui_->labels().set_label(loc, "", old_team_name, colour);
+			const terrain_label* old = gui_->labels().set_label(loc, "", old_team_name, color);
 			if (old) recorder.add_label(old);
 		}
-		const terrain_label* res = gui_->labels().set_label(loc, d.textbox_text(), team_name, colour);
+		const terrain_label* res = gui_->labels().set_label(loc, d.textbox_text(), team_name, color);
 		if (res)
 			recorder.add_label(res);
 	}

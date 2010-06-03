@@ -124,7 +124,7 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw)
 				surf = i->second;
 
 				if (need_fogging) {
-					surf = surface(adjust_surface_colour(surf,-50,-50,-50));
+					surf = surface(adjust_surface_color(surf,-50,-50,-50));
 					fog_cache->insert(cache_map::value_type(terrain,surf));
 				}
 

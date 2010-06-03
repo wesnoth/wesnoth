@@ -62,11 +62,11 @@ public:
 	void new_turn();
 
 	/**
-	 * Add r,g,b to the colours for all images displayed on the map.
+	 * Add r,g,b to the colors for all images displayed on the map.
 	 *
 	 * Used for special effects like flashes.
 	 */
-	void adjust_colours(int r, int g, int b);
+	void adjust_colors(int r, int g, int b);
 
 	/**
 	 * Scrolls to the leader of a certain side.
@@ -315,7 +315,7 @@ private:
 	/**
 	 * Finds the start and end rows on the energy bar image.
 	 *
-	 * White pixels are substituted for the colour of the energy.
+	 * White pixels are substituted for the color of the energy.
 	 */
 	const SDL_Rect& calculate_energy_bar(surface surf);
 	std::map<surface,SDL_Rect> energy_bar_rects_;

@@ -910,7 +910,7 @@ void playsingle_controller::store_gold(bool obs)
 				if ((*side_it)["save_id"] == t.save_id()) {
 					(*side_it)["gold"] = str_cast<int>(carryover_gold);
 					(*side_it)["gold_add"] = end_level.carryover_add;
-					(*side_it)["color"] = t.colour();
+					(*side_it)["color"] = t.color();
 					(*side_it)["current_player"] = t.current_player();
 					(*side_it)["name"] = t.name();
 					break;
@@ -924,7 +924,7 @@ void playsingle_controller::store_gold(bool obs)
 				new_side["save_id"] = t.save_id();
 				new_side["gold"] = str_cast<int>(carryover_gold);
 				new_side["gold_add"] = end_level.carryover_add;
-				new_side["color"] = t.colour();
+				new_side["color"] = t.color();
 				new_side["current_player"] = t.current_player();
 				new_side["name"] = t.name();
 			}

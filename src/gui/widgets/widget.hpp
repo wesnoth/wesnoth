@@ -436,9 +436,9 @@ public:
 		debug_border_mode_ = debug_border_mode;
 	}
 
-	void set_debug_border_colour(const unsigned debug_border_colour)
+	void set_debug_border_color(const unsigned debug_border_color)
 	{
-		debug_border_colour_ = debug_border_colour;
+		debug_border_color_ = debug_border_color;
 	}
 #endif
 
@@ -622,7 +622,7 @@ private:
 	unsigned debug_border_mode_;
 
 	/** The color for the debug border. */
-	unsigned debug_border_colour_;
+	unsigned debug_border_color_;
 
 	void draw_debug_border(surface& frame_buffer);
 #else

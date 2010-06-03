@@ -25,12 +25,12 @@ class label : public widget
 {
 public:
 	label(CVideo& video, const std::string& text, int size=font::SIZE_NORMAL,
-			const SDL_Color& colour=font::NORMAL_COLOR, const bool auto_join=true);
+			const SDL_Color& color=font::NORMAL_COLOR, const bool auto_join=true);
 	const std::string& set_text(const std::string& text);
 	const std::string& get_text() const;
 
-	const SDL_Color& set_colour(const SDL_Color& colour);
-	const SDL_Color& get_colour() const;
+	const SDL_Color& set_color(const SDL_Color& color);
+	const SDL_Color& get_color() const;
 
 	virtual void draw_contents();
 private:
@@ -38,7 +38,7 @@ private:
 
 	std::string text_;
 	int size_;
-	SDL_Color colour_;
+	SDL_Color color_;
 };
 
 }

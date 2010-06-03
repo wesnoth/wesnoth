@@ -618,7 +618,7 @@ surface scale_surface_blended(const surface &surf, int w, int h, bool optimize)
 	return optimize ? create_optimized_surface(dst) : dst;
 }
 
-surface adjust_surface_colour(const surface &surf, int red, int green, int blue, bool optimize)
+surface adjust_surface_color(const surface &surf, int red, int green, int blue, bool optimize)
 {
 	if((red == 0 && green == 0 && blue == 0) || surf == NULL)
 		return create_optimized_surface(surf);
@@ -1303,7 +1303,7 @@ surface cut_surface(const surface &surf, SDL_Rect const &r)
 	return res;
 }
 
-surface blend_surface(const surface &surf, double amount, Uint32 colour, bool optimize)
+surface blend_surface(const surface &surf, double amount, Uint32 color, bool optimize)
 {
 	if(surf== NULL) {
 		return NULL;
@@ -1322,7 +1322,7 @@ surface blend_surface(const surface &surf, double amount, Uint32 colour, bool op
 		Uint32* end = beg + nsurf->w*surf->h;
 
 		Uint8 red, green, blue, alpha;
-		SDL_GetRGBA(colour,nsurf->format,&red,&green,&blue,&alpha);
+		SDL_GetRGBA(color,nsurf->format,&red,&green,&blue,&alpha);
 
 		red   = Uint8(red   * amount);
 		green = Uint8(green * amount);
@@ -1581,10 +1581,10 @@ void blit_surface(const surface& src,
 
 
 
-void fill_rect_alpha(SDL_Rect &rect, Uint32 colour, Uint8 alpha, const surface &target)
+void fill_rect_alpha(SDL_Rect &rect, Uint32 color, Uint8 alpha, const surface &target)
 {
 	if(alpha == SDL_ALPHA_OPAQUE) {
-		SDL_FillRect(target,&rect,colour);
+		SDL_FillRect(target,&rect,color);
 		return;
 	} else if(alpha == SDL_ALPHA_TRANSPARENT) {
 		return;
@@ -1596,7 +1596,7 @@ void fill_rect_alpha(SDL_Rect &rect, Uint32 colour, Uint8 alpha, const surface &
 	}
 
 	SDL_Rect r = {0,0,rect.w,rect.h};
-	SDL_FillRect(tmp,&r,colour);
+	SDL_FillRect(tmp,&r,color);
 	SDL_SetAlpha(tmp,SDL_SRCALPHA,alpha);
 	SDL_BlitSurface(tmp,NULL,target,&rect);
 }
@@ -1734,11 +1734,11 @@ bool operator!=(const SDL_Color& a, const SDL_Color& b) {
 	return !operator==(a,b);
 }
 
-SDL_Color inverse(const SDL_Color& colour) {
+SDL_Color inverse(const SDL_Color& color) {
 	SDL_Color inverse;
-	inverse.r = 255 - colour.r;
-	inverse.g = 255 - colour.g;
-	inverse.b = 255 - colour.b;
+	inverse.r = 255 - color.r;
+	inverse.g = 255 - color.g;
+	inverse.b = 255 - color.b;
 	inverse.unused = 0;
 	return inverse;
 }
@@ -1794,7 +1794,7 @@ void surface_restorer::cancel()
 	surface_.assign(NULL);
 }
 
-void draw_rectangle(int x, int y, int w, int h, Uint32 colour,surface target)
+void draw_rectangle(int x, int y, int w, int h, Uint32 color,surface target)
 {
 
 	SDL_Rect top = {x,y,w,1};
@@ -1802,10 +1802,10 @@ void draw_rectangle(int x, int y, int w, int h, Uint32 colour,surface target)
 	SDL_Rect left = {x,y,1,h};
 	SDL_Rect right = {x+w-1,y,1,h};
 
-	SDL_FillRect(target,&top,colour);
-	SDL_FillRect(target,&bot,colour);
-	SDL_FillRect(target,&left,colour);
-	SDL_FillRect(target,&right,colour);
+	SDL_FillRect(target,&top,color);
+	SDL_FillRect(target,&bot,color);
+	SDL_FillRect(target,&left,color);
+	SDL_FillRect(target,&right,color);
 }
 
 void draw_solid_tinted_rectangle(int x, int y, int w, int h,

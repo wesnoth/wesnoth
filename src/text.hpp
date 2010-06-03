@@ -32,7 +32,7 @@ namespace gui2 {
 
 namespace font {
 
-// add background colour and also font markup.
+// add background color and also font markup.
 
 /**
  * Text class.
@@ -169,7 +169,7 @@ public:
 
 	ttext& set_font_style(const unsigned font_style);
 
-	ttext& set_foreground_colour(const Uint32 colour);
+	ttext& set_foreground_color(const Uint32 color);
 
 	ttext& set_maximum_width(int width);
 
@@ -203,8 +203,8 @@ private:
 	/** The style of the font, this is an orred mask of the font flags. */
 	unsigned font_style_;
 
-	/** The foreground colour. */
-	Uint32 foreground_colour_;
+	/** The foreground color. */
+	Uint32 foreground_color_;
 
 	/**
 	 * The maximum width of the text.

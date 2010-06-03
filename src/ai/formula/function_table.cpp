@@ -1248,10 +1248,10 @@ private:
                 game_display* gui = game_display::get_singleton();
 		std::string team_name;
 
-		SDL_Color colour = int_to_color(team::get_side_rgb(ai_.get_side()));
+		SDL_Color color = int_to_color(team::get_side_rgb(ai_.get_side()));
 
 		const terrain_label *res;
-		res = gui->labels().set_label(location, text, team_name, colour);
+		res = gui->labels().set_label(location, text, team_name, color);
 		if (res)
 			recorder.add_label(res);
         }

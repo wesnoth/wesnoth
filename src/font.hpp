@@ -46,7 +46,7 @@ private:
 	void deinit() const;
 };
 
-//various standard colours
+//various standard colors
 extern const SDL_Color NORMAL_COLOR, GRAY_COLOR, LOBBY_COLOR, GOOD_COLOR, BAD_COLOR,
                        BLACK_COLOR, YELLOW_COLOR, BUTTON_COLOR, BIGMAP_COLOR,
                        PETRIFIED_COLOR, TITLE_COLOR, DISABLED_COLOR, LABEL_COLOR;
@@ -85,11 +85,11 @@ const int
   ;
 #endif
 
-// Returns a SDL surface containing the text rendered in a given colour.
-surface get_rendered_text(const std::string& text, int size, const SDL_Color& colour, int style=0);
+// Returns a SDL surface containing the text rendered in a given color.
+surface get_rendered_text(const std::string& text, int size, const SDL_Color& color, int style=0);
 
 SDL_Rect draw_text_line(surface gui_surface, const SDL_Rect& area, int size,
-						const SDL_Color& colour, const std::string& text,
+						const SDL_Color& color, const std::string& text,
 						int x, int y, bool use_tooltips, int style);
 
 // Returns the maximum height of a font, in pixels
@@ -148,10 +148,10 @@ public:
 	}
 	// set the number of frames to display the text for, or -1 to display until removed
 	void set_lifetime(int lifetime) {lifetime_ = lifetime;}
-	void set_colour(const SDL_Color& colour) {colour_ = colour;}
-	void set_bg_colour(const SDL_Color& bg_colour) {
-		bgcolour_ = bg_colour;
-		bgalpha_ = bg_colour.unused;
+	void set_color(const SDL_Color& color) {color_ = color;}
+	void set_bg_color(const SDL_Color& bg_color) {
+		bgcolor_ = bg_color;
+		bgalpha_ = bg_color.unused;
 	}
 	void set_border_size(int border) {border_ = border;}
 	// set width for word wrapping (use -1 to disable it)
@@ -181,7 +181,7 @@ private:
 	surface surf_, buf_;
 	std::string text_;
 	int font_size_;
-	SDL_Color colour_, bgcolour_;
+	SDL_Color color_, bgcolor_;
 	int bgalpha_;
 	double xpos_, ypos_, xmove_, ymove_;
 	int lifetime_;

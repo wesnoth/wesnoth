@@ -143,10 +143,10 @@ bool image_empty(surface surf)
 	Uint32* beg = lock.pixels();
 	Uint32* end = beg + surf->w*surf->h;
 
-	Uint32 colour = *beg;
+	Uint32 color = *beg;
 
 	while(beg != end) {
-		if((*beg & 0xff000000) != 0 && (*beg != colour))
+		if((*beg & 0xff000000) != 0 && (*beg != color))
 			return false;
 
 		++beg;

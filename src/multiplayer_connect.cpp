@@ -68,7 +68,7 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 	controller_(CNTR_NETWORK),
 	faction_(cfg["faction"]),
 	team_(0),
-	colour_(index),
+	color_(index),
 	gold_(cfg["gold"].to_int(100)),
 	income_(cfg["income"]),
 	leader_(),
@@ -78,7 +78,7 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 	gold_lock_(cfg["gold_lock"].to_bool()),
 	income_lock_(cfg["income_lock"].to_bool()),
 	team_lock_(cfg["team_lock"].to_bool()),
-	colour_lock_(cfg["colour_lock"].to_bool()),
+	color_lock_(cfg["colour_lock"].to_bool()),
 	player_number_(parent.video(), str_cast(index + 1), font::SIZE_LARGE, font::LOBBY_COLOR),
 	combo_controller_(new gui::combo_drag(parent.disp(), parent.player_types_, parent.combo_control_group_)),
 	orig_controller_(parent.video(), current_player_, font::SIZE_SMALL),
@@ -87,7 +87,7 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 	combo_leader_(parent.disp(), std::vector<std::string>()),
 	combo_gender_(parent.disp(), std::vector<std::string>()),
 	combo_team_(parent.disp(), parent.player_teams_),
-	combo_colour_(parent.disp(), parent.player_colours_),
+	combo_color_(parent.disp(), parent.player_colors_),
 	slider_gold_(parent.video()),
 	slider_income_(parent.video()),
 	label_gold_(parent.video(), "100", font::SIZE_SMALL, font::LOBBY_COLOR),
@@ -145,7 +145,7 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 	combo_leader_.enable(enabled_);
 	combo_gender_.enable(enabled_);
 	combo_team_.enable(enabled_);
-	combo_colour_.enable(enabled_);
+	combo_color_.enable(enabled_);
 	slider_gold_.hide(!enabled_);
 	slider_income_.hide(!enabled_);
 	label_gold_.hide(!enabled_);
@@ -161,9 +161,9 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 		team_ = itor - parent_->team_names_.begin();
 	}
 	if (cfg.has_old_attribute("color","colour")) {
-		colour_ = game_config::color_info(cfg.get_old_attribute("color","colour")).index() - 1;
+		color_ = game_config::color_info(cfg.get_old_attribute("color","colour")).index() - 1;
 	}
-	llm_.set_colour(colour_);
+	llm_.set_color(color_);
 
 	update_faction_combo();
 
@@ -226,13 +226,13 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 		combo_gender_.set_items(gender_name_pseudolist);
 		combo_gender_.set_selected(0);
 	} else if(parent_->params_.use_map_settings) {
-		// gold, income, team, and colour are only suggestions unless explicitly locked
+		// gold, income, team, and color are only suggestions unless explicitly locked
 		slider_gold_.enable(!gold_lock_);
 		label_gold_.enable(!gold_lock_);
 		slider_income_.enable(!income_lock_);
 		label_income_.enable(!income_lock_);
 		combo_team_.enable(!team_lock_);
-		combo_colour_.enable(!colour_lock_);
+		combo_color_.enable(!color_lock_);
 
 		// Set the leader and gender
 		leader_ = cfg["type"].str();
@@ -331,7 +331,7 @@ connect::side::side(const side& a) :
 	index_(a.index_), id_(a.id_), player_id_(a.player_id_),  save_id_(a.save_id_),
 	current_player_(a.current_player_),
 	controller_(a.controller_),
-	faction_(a.faction_), team_(a.team_), colour_(a.colour_),
+	faction_(a.faction_), team_(a.team_), color_(a.color_),
 	gold_(a.gold_), income_(a.income_), leader_(a.leader_),
 	gender_(a.gender_),
 	ai_algorithm_(a.ai_algorithm_),
@@ -339,18 +339,18 @@ connect::side::side(const side& a) :
 	gold_lock_(a.gold_lock_),
 	income_lock_(a.income_lock_),
 	team_lock_(a.team_lock_),
-	colour_lock_(a.colour_lock_),
+	color_lock_(a.color_lock_),
 	player_number_(a.player_number_), combo_controller_(a.combo_controller_),
 	orig_controller_(a.orig_controller_),
 	combo_ai_algorithm_(a.combo_ai_algorithm_),
 	combo_faction_(a.combo_faction_), combo_leader_(a.combo_leader_), combo_gender_(a.combo_gender_),
-	combo_team_(a.combo_team_), combo_colour_(a.combo_colour_),
+	combo_team_(a.combo_team_), combo_color_(a.combo_color_),
 	slider_gold_(a.slider_gold_), slider_income_(a.slider_income_),
 	label_gold_(a.label_gold_), label_income_(a.label_income_),
 	allow_player_(a.allow_player_), allow_changes_(a.allow_changes_),
 	enabled_(a.enabled_), changed_(a.changed_), llm_(a.llm_)
 {
-	llm_.set_colour(colour_);
+	llm_.set_color(color_);
 	llm_.set_leader_combo((enabled_ && leader_.empty()) ? &combo_leader_ : NULL);
 	llm_.set_gender_combo((enabled_ && leader_.empty()) ? &combo_gender_ : NULL);
 	// FIXME: this is an ugly hack to force updating the gender list when the side
@@ -369,7 +369,7 @@ void connect::side::add_widgets_to_scrollpane(gui::scrollpane& pane, int pos)
 	pane.add_widget(&combo_leader_,  135, 35 + pos);
 	pane.add_widget(&combo_gender_,  250, 35 + pos);
 	pane.add_widget(&combo_team_,    250, 5 + pos);
-	pane.add_widget(&combo_colour_,  365, 5 + pos);
+	pane.add_widget(&combo_color_,  365, 5 + pos);
 	pane.add_widget(&slider_gold_,   475, 5 + pos);
 	pane.add_widget(&label_gold_,    475, 35 + pos);
 	pane.add_widget(&slider_income_, 475 + slider_gold_.width(),  5 + pos);
@@ -437,9 +437,9 @@ void connect::side::process_event()
 	if(!enabled_)
 		return;
 
-	if (combo_colour_.changed() && combo_colour_.selected() >= 0) {
-		colour_ = combo_colour_.selected();
-		llm_.set_colour(colour_);
+	if (combo_color_.changed() && combo_color_.selected() >= 0) {
+		color_ = combo_color_.selected();
+		llm_.set_color(color_);
 		update_faction_combo();
 		llm_.set_leader_combo(&combo_leader_);
 		llm_.set_gender_combo(&combo_gender_);
@@ -597,7 +597,7 @@ void connect::side::update_faction_combo()
 			if (rgb.empty())
 				rgb = "magenta";
 
-			factions.push_back(IMAGE_PREFIX + icon + "~RC(" + rgb + ">" + lexical_cast<std::string>(colour_+1) + ")" + COLUMN_SEPARATOR + name);
+			factions.push_back(IMAGE_PREFIX + icon + "~RC(" + rgb + ">" + lexical_cast<std::string>(color_+1) + ")" + COLUMN_SEPARATOR + name);
 		} else {
 			factions.push_back(name);
 		}
@@ -615,7 +615,7 @@ void connect::side::update_ui()
 	}
 
 	combo_team_.set_selected(team_);
-	combo_colour_.set_selected(colour_);
+	combo_color_.set_selected(color_);
 	slider_gold_.set_value(gold_);
 	label_gold_.set_text(str_cast(gold_));
 	slider_income_.set_value(income_);
@@ -730,7 +730,7 @@ config connect::side::get_config() const
 		res["team_name"] = parent_->team_names_[team_];
 		res["user_team_name"] = parent_->user_team_names_[team_];
 		res["allow_player"] = allow_player_;
-		res["color"] = colour_ + 1;
+		res["color"] = color_ + 1;
 		res["gold"] = gold_;
 		res["income"] = income_;
 
@@ -988,7 +988,7 @@ connect::connect(game_display& disp, const config& game_config,
 	player_types_(),
 	player_factions_(),
 	player_teams_(),
-	player_colours_(),
+	player_colors_(),
 	ai_algorithms_(),
 	team_names_(),
 	user_team_names_(),
@@ -1002,7 +1002,7 @@ connect::connect(game_display& disp, const config& game_config,
 	type_title_label_(video(), _("Player/Type"), font::SIZE_SMALL, font::LOBBY_COLOR),
 	faction_title_label_(video(), _("Faction"), font::SIZE_SMALL, font::LOBBY_COLOR),
 	team_title_label_(video(), _("Team/Gender"), font::SIZE_SMALL, font::LOBBY_COLOR),
-	colour_title_label_(video(), _("Color"), font::SIZE_SMALL, font::LOBBY_COLOR),
+	color_title_label_(video(), _("Color"), font::SIZE_SMALL, font::LOBBY_COLOR),
 	gold_title_label_(video(), _("Gold"), font::SIZE_SMALL, font::LOBBY_COLOR),
 	income_title_label_(video(), _("Income"), font::SIZE_SMALL, font::LOBBY_COLOR),
 
@@ -1173,7 +1173,7 @@ void connect::hide_children(bool hide)
 	}
 	faction_title_label_.hide(hide);
 	team_title_label_.hide(hide);
-	colour_title_label_.hide(hide);
+	color_title_label_.hide(hide);
 	if (!params_.saved_game) {
 		gold_title_label_.hide(hide);
 		income_title_label_.hide(hide);
@@ -1428,7 +1428,7 @@ void connect::layout_children(const SDL_Rect& rect)
 	type_title_label_.set_location(left+30, top+35);
 	faction_title_label_.set_location((left+145), top+35);
 	team_title_label_.set_location((left+260), top+35);
-	colour_title_label_.set_location((left+375), top+35);
+	color_title_label_.set_location((left+375), top+35);
 	gold_title_label_.set_location((left+493), top+35);
 	income_title_label_.set_location((left+560), top+35);
 
@@ -1519,9 +1519,9 @@ void connect::lists_init()
 		}
 	}
 
-	// Colours
+	// Colors
 	for(int i = 0; i < gamemap::MAX_PLAYERS; ++i) {
-		player_colours_.push_back(get_colour_string(i));
+		player_colors_.push_back(get_color_string(i));
 	}
 
 	// Populates "sides_" from the level configuration

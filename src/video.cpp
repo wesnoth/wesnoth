@@ -457,7 +457,7 @@ int CVideo::set_help_string(const std::string& str)
 {
 	font::remove_floating_label(help_string_);
 
-	const SDL_Color colour = { 0, 0, 0, 0xbb };
+	const SDL_Color color = { 0, 0, 0, 0xbb };
 
 #ifdef USE_TINY_GUI
 	int size = font::SIZE_NORMAL;
@@ -482,7 +482,7 @@ int CVideo::set_help_string(const std::string& str)
 	font::floating_label flabel(str);
 	flabel.set_font_size(size);
 	flabel.set_position(getx()/2, gety());
-	flabel.set_bg_colour(colour);
+	flabel.set_bg_color(color);
 	flabel.set_border_size(border);
 
 	help_string_ = font::add_floating_label(flabel);

@@ -26,9 +26,9 @@
 
 #include <iostream>
 
-static bool use_colour_cursors()
+static bool use_color_cursors()
 {
-	return game_config::editor == false && preferences::use_colour_cursors();
+	return game_config::editor == false && preferences::use_color_cursors();
 }
 
 static SDL_Cursor* create_cursor(surface surf)
@@ -89,7 +89,7 @@ const std::string bw_images[cursor::NUM_CURSORS] = { "normal.png", "wait-alt.png
 const std::string bw_images[cursor::NUM_CURSORS] = { "normal.png", "wait.png", "move.png", "attack.png", "select.png", "move_drag.png", "attack_drag.png", "no_cursor.png"};
 #endif
 
-const std::string colour_images[cursor::NUM_CURSORS] = { "normal.png", "wait.png", "move.png", "attack.png", "select.png", "move_drag.png", "attack_drag.png", ""};
+const std::string color_images[cursor::NUM_CURSORS] = { "normal.png", "wait.png", "move.png", "attack.png", "select.png", "move_drag.png", "attack_drag.png", ""};
 
 // Position of the hotspot of the cursor, from the normal topleft
 const int shift_x[cursor::NUM_CURSORS] = {0, 0, 0, 0, 0, 2, 3, 0};
@@ -100,7 +100,7 @@ cursor::CURSOR_TYPE current_cursor = cursor::NORMAL;
 int cursor_x = -1, cursor_y = -1;
 surface cursor_buf = NULL;
 bool have_focus = true;
-bool colour_ready = false;
+bool color_ready = false;
 
 }
 
@@ -155,7 +155,7 @@ void set(CURSOR_TYPE type)
 		current_cursor = NORMAL;
 	}
 
-	const CURSOR_TYPE new_cursor = use_colour_cursors() && colour_ready ? cursor::NO_CURSOR : current_cursor;
+	const CURSOR_TYPE new_cursor = use_color_cursors() && color_ready ? cursor::NO_CURSOR : current_cursor;
 
 	SDL_Cursor * cursor_image = get_cursor(new_cursor);
 
@@ -195,7 +195,7 @@ void set_focus(bool focus)
 {
 	have_focus = focus;
 	if (focus==false) {
-		colour_ready = false;
+		color_ready = false;
 		set();
 	}
 }
@@ -212,7 +212,7 @@ setter::~setter()
 
 void draw(surface screen)
 {
-	if(use_colour_cursors() == false) {
+	if(use_color_cursors() == false) {
 		return;
 	}
 
@@ -225,20 +225,20 @@ void draw(surface screen)
 		return;
 	}
 
-	if (!colour_ready) {
+	if (!color_ready) {
 		// Display start to draw cursor
-		// so it can now display colour cursor
-		colour_ready = true;
+		// so it can now display color cursor
+		color_ready = true;
 		// Reset the cursor to be sure that we hide the b&w
 		set();
 	}
 
 	/** @todo FIXME: don't parse the file path every time */
-	const surface surf(image::get_image("cursors/" + colour_images[current_cursor]));
+	const surface surf(image::get_image("cursors/" + color_images[current_cursor]));
 	if(surf == NULL) {
 		// Fall back to b&w cursors
-		std::cerr << "could not load colour cursors. Falling back to hardware cursors\n";
-		preferences::set_colour_cursors(false);
+		std::cerr << "could not load color cursors. Falling back to hardware cursors\n";
+		preferences::set_color_cursors(false);
 		return;
 	}
 
@@ -274,7 +274,7 @@ void draw(surface screen)
 
 void undraw(surface screen)
 {
-	if(use_colour_cursors() == false) {
+	if(use_color_cursors() == false) {
 		return;
 	}
 
