@@ -75,7 +75,7 @@ team::team_info::team_info(const config& cfg) :
 		no_leader(cfg["no_leader"].to_bool()),
 		hidden(cfg["hidden"].to_bool()),
 		music(cfg["music"]),
-		colour(cfg.has_attribute("colour") ? cfg["colour"] : cfg["side"]),
+		colour(cfg.has_old_attribute("color","colour") ? cfg.get_old_attribute("color","colour") : cfg["side"]),
 		side(cfg["side"].to_int(1)),
 		persistent(false)
 {
@@ -217,7 +217,7 @@ void team::team_info::write(config& cfg) const
 	if(music.empty() == false)
 		cfg["music"] = music;
 
-	cfg["colour"] = str_cast(colour);
+	cfg["color"] = str_cast(colour);
 
 	cfg["persistent"] = persistent;
 

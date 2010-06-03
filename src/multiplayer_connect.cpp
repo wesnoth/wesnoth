@@ -160,8 +160,8 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 	} else {
 		team_ = itor - parent_->team_names_.begin();
 	}
-	if (cfg.has_attribute("colour")) {
-		colour_ = game_config::color_info(cfg["colour"]).index() - 1;
+	if (cfg.has_old_attribute("color","colour")) {
+		colour_ = game_config::color_info(cfg.get_old_attribute("color","colour")).index() - 1;
 	}
 	llm_.set_colour(colour_);
 
@@ -730,7 +730,7 @@ config connect::side::get_config() const
 		res["team_name"] = parent_->team_names_[team_];
 		res["user_team_name"] = parent_->user_team_names_[team_];
 		res["allow_player"] = allow_player_;
-		res["colour"] = colour_ + 1;
+		res["color"] = colour_ + 1;
 		res["gold"] = gold_;
 		res["income"] = income_;
 
@@ -751,7 +751,7 @@ config connect::side::get_config() const
 	if(parent_->params_.use_map_settings && enabled_) {
 		config trimmed = cfg_;
 		static char const *attrs[] = { "side", "controller", "id",
-			"team_name", "user_team_name", "colour", "gold",
+			"team_name", "user_team_name", "color", "gold",
 			"income", "allow_changes" };
 		foreach (const char *attr, attrs) {
 			trimmed.remove_attribute(attr);

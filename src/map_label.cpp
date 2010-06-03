@@ -318,7 +318,7 @@ void terrain_label::read(const config &cfg)
 	const variable_set &vs = *resources::state_of_game;
 	loc_ = map_location(cfg, &vs);
 	SDL_Color colour = font::LABEL_COLOR;
-	std::string tmp_colour = cfg["colour"];
+	std::string tmp_colour = cfg.get_old_attribute("color","colour");
 
 	text_ = cfg["text"];
 	team_name_ = cfg["team_name"].str();
@@ -349,7 +349,7 @@ void terrain_label::write(config& cfg) const
 	loc_.write(cfg);
 	cfg["text"] = text();
 	cfg["team_name"] = (this->team_name());
-	cfg["colour"] = cfg_colour();
+	cfg["color"] = cfg_colour();
 	cfg["visible_in_fog"] = visible_in_fog_;
 	cfg["visible_in_shroud"] = visible_in_shroud_;
 	cfg["immutable"] = immutable_;

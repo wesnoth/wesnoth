@@ -230,7 +230,7 @@ void write_players(game_state& gamestate, config& cfg, const bool use_snapshot, 
 				}
 				(*scenario_side)["name"] = carryover_side["name"];
 				(*scenario_side)["current_player"] = carryover_side["current_player"];
-				(*scenario_side)["colour"] = carryover_side["colour"];
+				(*scenario_side)["color"] = carryover_side.get_old_attribute("color","colour");
 				//add recallable units
 				foreach (const config &u, carryover_side.child_range("unit")) {
 					scenario_side->add_child("unit", u);
@@ -904,7 +904,7 @@ protected:
 			"current_player", "countdown_time", "action_bonus_count",
 			"flag", "flag_icon", "objectives", "objectives_changed",
 			"disallow_observers", "allow_player", "no_leader",
-			"hidden", "music", "colour", "ai_config", "gold",
+			"hidden", "music", "color", "ai_config", "gold",
 			"start_gold", "team_rgb", "village_gold", "recall_cost",
 			"controller", "persistent", "share_view",
 			"share_maps", "recruit", "fog", "shroud", "shroud_data",
