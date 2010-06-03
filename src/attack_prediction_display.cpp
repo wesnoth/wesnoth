@@ -22,18 +22,16 @@
 #include "resources.hpp"
 #include "unit_abilities.hpp"
 
-// Conversion routine for both unscatched and damage change percentage.
-static void format_prob(char str_buf[10], const float prob)
+// Conversion routine for both unscathed and damage change percentage.
+static void format_prob(char str_buf[10], double prob)
 {
 
 	if(prob > 0.9995) {
 		snprintf(str_buf, 10, "100 %%");
 	} else if(prob >= 0.1) {
-		snprintf(str_buf, 10, "%4.1f %%",
-			static_cast<float>(100.0 * (prob + 0.0005)));
+		snprintf(str_buf, 10, "%4.1f %%", 100.0 * prob);
 	} else {
-		snprintf(str_buf, 10, " %3.1f %%",
-			static_cast<float>(100.0 * (prob + 0.0005)));
+		snprintf(str_buf, 10, " %3.1f %%", 100.0 * prob);
 	}
 
 	str_buf[9] = '\0';  //prevents _snprintf error
@@ -518,7 +516,7 @@ void battle_prediction_pane::get_hp_distrib_surface(const std::vector<std::pair<
 		SDL_FillRect(surf, &bar_rect_4, blend_rgb(surf, row_color.r, row_color.g, row_color.b, 0));
 
 		// Draw probability percentage, aligned right.
-		format_prob(str_buf, static_cast<float>(prob));
+		format_prob(str_buf, prob);
 		int prob_width = font::line_width(str_buf, fs);
 		font::draw_text_line(surf, clip_rect, fs, font::NORMAL_COLOR, str_buf,
 						 width - prob_width - 4, 2 + (fs + 2) * i, 0, TTF_STYLE_NORMAL);
