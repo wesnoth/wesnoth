@@ -5,6 +5,7 @@ using boost::asio::ip::tcp;
 
 #include "ana.hpp"
 
+#include "asio_proxy_connection.hpp"
 #include "asio_listener.hpp"
 #include "mili/mili.h"
 
@@ -24,9 +25,16 @@ class asio_client : public ana::client,
         asio_client(std::string address, ana::port port);
 
     private:
-        virtual ~asio_client() {}
+        virtual ~asio_client();
 
         virtual void connect( ana::connection_handler* );
+
+        virtual void connect_through_proxy(ana::proxy::authentication_type auth_type,
+                                           std::string                     proxy_address,
+                                           std::string                     proxy_port,
+                                           ana::connection_handler*        handler,
+                                           std::string                     user_name = "",
+                                           std::string                     password = "");
 
         virtual void run();
 
@@ -58,6 +66,8 @@ class asio_client : public ana::client,
 
         std::string               address_;
         ana::port                 port_;
+
+        proxy_connection*         proxy_;
 };
 
 #endif

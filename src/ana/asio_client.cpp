@@ -16,8 +16,14 @@ asio_client::asio_client(ana::address address, ana::port pt) :
     socket_(io_service_),
     asio_listener(io_service_, socket_),
     address_(address),
-    port_(pt)
+    port_(pt),
+    proxy_( NULL )
 {
+}
+
+asio_client::~asio_client()
+{
+    delete proxy_;
 }
 
 ana::client* ana::client::create(ana::address address, ana::port pt)
@@ -80,6 +86,26 @@ void asio_client::connect( ana::connection_handler* handler )
         handler->handle_connect( boost::system::error_code(1,boost::system::get_generic_category() ), 0 );
         std::cerr << "Client: An error ocurred, " << e.what() << std::endl;
     }
+}
+
+void asio_client::connect_through_proxy(ana::proxy::authentication_type auth_type,
+                                        std::string                     proxy_address,
+                                        std::string                     proxy_port,
+                                        ana::connection_handler*        handler,
+                                        std::string                     user_name,
+                                        std::string                     password)
+{
+    proxy_information proxy_info;
+
+    proxy_info.auth_type     = auth_type;
+    proxy_info.proxy_address = proxy_address;
+    proxy_info.proxy_port    = proxy_port;
+    proxy_info.user_name     = user_name;
+    proxy_info.password      = password;
+
+    proxy_ = new proxy_connection( socket_, proxy_info, address_, port_);
+
+    proxy_->connect( handler );
 }
 
 void asio_client::send(boost::asio::const_buffer buffer, ana::send_handler* handler, ana::send_type copy_buffer )

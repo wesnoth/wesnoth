@@ -194,14 +194,18 @@ Here is  a list  of some of  the simple  types defined under  the \ana
      has a  total order, so it  can be compared to  other instances of
      its type. A server will have an ID equal to zero and every client
      a greater than zero value.
-   \item [port] : A string representing a port descriptor.
-   \item [address] : A string representing a network address.
-   \item [send\_type]  : Send operation type.   Operations may involve
-     copying the buffer  being sent or not (which  can result in great
+   \item [port] : A string representing a port  descriptor, the string
+     should be able to cast itself to a unsigned short int.
+   \item [address] : A string  representing a network  address, it may 
+     be an IP address of a hostname.
+   \item [send\_type]  : Send operation  type, this is related  to the
+     lifecycle of  the buffer  used in the  send operation,  which may
+     involve  copying the  buffer or  not  (this can  result in  great
      improvement regarding memory usage.)  A value of this type may be
      evaluated  as a  boolean  (where \emph{true}  means  to copy  the
      buffer.)   To  set   a  value,  constants  \texttt{ZeroCopy}  and
-     \texttt{CopyBuffer} are provided.
+     \texttt{CopyBuffer} are provided.   See section \ref{bufcopy} for
+     more information.
    \item  [error\_code] :  Descriptor of  an error  code. It  can also
      evaluate  to a boolean  value where  \emph{false} means  no error
      occurred.
@@ -297,6 +301,7 @@ Here   are   some   very   important   recommendations   about   using
 \end{itemize}
 
 \subsection{Details about Buffers}
+\label{bufcopy}
 
 There is a reason why  multiple-send operations are better. If you are
 using     a    multiple-send    operation     (    \texttt{send\_all},
