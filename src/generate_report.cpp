@@ -95,7 +95,9 @@ report generate_report(TYPE type,
 			<< "<b>" << u->type_name() << "</b>\n"
 			<< u->unit_description();
 
-		return report(str.str(), "", tooltip.str());
+		const std::string help_page = "unit_" + u->type_id();
+
+		return report(str.str(), "", tooltip.str(), help_page);
 	}
 	case UNIT_RACE: {
 		str << span_color(font::race_color)
@@ -104,7 +106,9 @@ report generate_report(TYPE type,
 		tooltip << _("Race: ")
 			<< "<b>" << u->race()->name(u->gender()) << "</b>";
 
-		return report(str.str(), "", tooltip.str());
+		const std::string help_page = "..race_" + u->race()->id();
+
+		return report(str.str(), "", tooltip.str(), help_page);
 	}
 	case UNIT_SIDE: {
 		std::string flag_icon = teams[u->side() - 1].flag_icon();
