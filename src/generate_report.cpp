@@ -457,9 +457,11 @@ report generate_report(TYPE type,
 				for(std::vector<t_string>::const_iterator sp_it = specials.begin(); sp_it != specials.end(); ++sp_it) {
 					str << span_color(font::weapon_details_color)
 						<< "  " << *sp_it << "</span>\n";
+					const std::string help_page = "weaponspecial_" + sp_it->base_str();
 					++sp_it;
 					tooltip << *sp_it << '\n';
-					res.add_text(flush(str), flush(tooltip));
+
+					res.add_text(flush(str), flush(tooltip), help_page);
 				}
 			}
 		}
