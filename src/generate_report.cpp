@@ -459,8 +459,8 @@ report generate_report(TYPE type,
 						<< "  " << *sp_it << "</span>\n";
 					++sp_it;
 					tooltip << *sp_it << '\n';
+					res.add_text(flush(str), flush(tooltip));
 				}
-				res.add_text(flush(str), flush(tooltip));
 			}
 		}
 
