@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: The Battle for Wesnoth 1.7.14+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-05-15 14:21+0200\n"
-"PO-Revision-Date: 2010-05-29 23:41+0900\n"
+"POT-Creation-Date: 2010-05-30 18:23+0200\n"
+"PO-Revision-Date: 2010-06-04 02:35+0900\n"
 "Last-Translator: clearpotion <clearpotion+fantasy@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
 "Language: \n"
@@ -195,10 +195,10 @@ msgid ""
 "be among the champions of our brotherhood of mages. I give you the first "
 "syllable of power, the beginning of your name: DEL"
 msgstr ""
-"平和な時代は過ぎ去った。邪悪はまさしく邪悪な存在として大陸に根付いてしまう。"
-"混沌の時代になりつつある。暗闇はすぐに訪れる。世界は変わってしまう。そして、"
-"お前は魔術師の中でも先頭に立つ者の一人となるであろう。力を持つ名前を授けよ"
-"う。お前の名前の最初の音節は、DEL"
+"平和な時代は過ぎ去った。邪悪はまさしく邪悪な存在として大陸の中心に根付いてし"
+"まう。混沌の時代になりつつある。暗闇はすぐに訪れる。世界は変わってしまう。そ"
+"して、お前は魔術師の中でも先頭に立つ者の一人となるであろう。力を持つ名前を授"
+"けよう。お前の名前の最初の音節は、DEL"
 
 #. [message]: speaker=Second Oracle
 #: data/campaigns/Delfadors_Memoirs/scenarios/01_overture.cfg:132
@@ -210,6 +210,7 @@ msgstr ""
 "お前は先頭に立つ者の中でも後塵を拝すことはない。否、存命中に「偉大なる」と呼"
 "ばれるようになるだろう。お前の名前、力を持つ第二音節は、FA"
 
+# 破壊された　→ 砕かれた なんとなく
 #. [message]: speaker=Third Oracle
 #: data/campaigns/Delfadors_Memoirs/scenarios/01_overture.cfg:141
 msgid ""
@@ -217,9 +218,9 @@ msgid ""
 "And you will be the father of it. I call the power of the Bright Gods into "
 "the second part of your name. FA"
 msgstr ""
-"その通りだ。平和は破壊された。されど、望みは失われていない。望みは常にある。"
-"そして、お前はその望みの父となるのだ。我は、お前の名前の第二音節「FA」に知性"
-"の神々の力を与えよう。"
+"その通りだ。平和は砕かれた。されど、望みは失われていない。望みは常にある。そ"
+"して、お前はその望みの父となるのだ。我は、お前の名前の第二音節「FA」に知性の"
+"神々の力を与えよう。"
 
 #. [message]: speaker=Fourth Oracle
 #: data/campaigns/Delfadors_Memoirs/scenarios/01_overture.cfg:150
@@ -438,7 +439,7 @@ msgid ""
 "Heed my last words, Delfador! Journey northeast to Weldyn, and seek out my "
 "friend Leollyn. He will help you."
 msgstr ""
-"Delfador、最後の言葉を聞け！Weldyn の北東に向かい、我が友  Leollyn を探すの"
+"Delfador、最後の言葉を聞け！北東 のWeldynに向かい、我が友  Leollyn を探すの"
 "だ。きっとお前の助けになるだろう。"
 
 #. [message]: speaker=Methor
@@ -585,18 +586,18 @@ msgid ""
 "region trains the best bowmen in Wesnoth."
 msgstr ""
 "我々は同胞を助けるために集まり、戦のために武装しています。我々は互いに助け合"
-"うことができるでしょう。共に戦えば後悔することはないはずです。この地方は、"
+"うことができるでしょう――共に戦えば後悔することはないはずです。この地方は、"
 "Wesnoth で最も優秀な射手を訓練しています。"
 
 #. [message]: speaker=unit
 #: data/campaigns/Delfadors_Memoirs/scenarios/03_road_to_weldyn.cfg:152
 msgid "Take this, you slimy invader!"
-msgstr "汚らしい侵略者がきました！"
+msgstr "これでも食らえ、汚らしい侵略者め！"
 
 #. [message]: role=bowman_advisor
 #: data/campaigns/Delfadors_Memoirs/scenarios/03_road_to_weldyn.cfg:167
 msgid "Beware! Night is falling — that's when the orcs tend to attack!"
-msgstr "気をつけて！夜になってしまいました。オーク族が攻撃してきます！"
+msgstr "気をつけて！夜になってしまいました――オーク族が攻撃してきます！"
 
 #. [message]: role=bowman_advisor
 #: data/campaigns/Delfadors_Memoirs/scenarios/03_road_to_weldyn.cfg:182
@@ -616,6 +617,7 @@ msgstr ""
 "どういたしまして……だが、私はオーク族が Wesnoth の国境の中にまで深く入り、何を"
 "していたのかが不思議だ。"
 
+# %c
 #. [message]: role=bowman_advisor
 #: data/campaigns/Delfadors_Memoirs/scenarios/03_road_to_weldyn.cfg:190
 msgid ""
@@ -657,14 +659,15 @@ msgstr "Hagha-Tan を倒す"
 msgid "Death of Leollyn"
 msgstr "Leollyn の死"
 
+# Methor は都市の外縁、Royal Forest にある塔で Leollyn に会えると私に言いました。この近くだと思うのだが……
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/04_leollyn.cfg:138
 msgid ""
 "Methor told me that I could find Leollyn in his tower in the Royal Forest "
 "outside the city. It should be near here..."
 msgstr ""
-"Methor は都市の外縁、Royal Forest にある塔で Leollyn に会えると私に言いまし"
-"た。この近くだと思うのだが……"
+"Methor は都市の外縁、Royal Forest にある塔で Leollyn に会えると私に言ったのだ"
+"けれど。この近くだと思うのだが……"
 
 #. [message]: speaker=Hagha-Tan
 #: data/campaigns/Delfadors_Memoirs/scenarios/04_leollyn.cfg:142
@@ -706,6 +709,7 @@ msgstr ""
 msgid "Yes... yes... slay them, my assassins!"
 msgstr "いいぞ……いいぞ……我が暗殺者よ、こいつ等を殺してしまえ！"
 
+# %c
 #. [message]: speaker=second_unit
 #: data/campaigns/Delfadors_Memoirs/scenarios/04_leollyn.cfg:175
 msgid "Uh oh... I don't like the look of this..."
@@ -795,7 +799,7 @@ msgstr ""
 #. [scenario]: id=05_council_in_weldyn
 #: data/campaigns/Delfadors_Memoirs/scenarios/05_council_in_weldyn.cfg:3
 msgid "Council in Weldyn"
-msgstr "Weldyn の協議会"
+msgstr "Weldyn の評議会"
 
 #. [side]: type=King of Wesnoth, id=Garard
 #: data/campaigns/Delfadors_Memoirs/scenarios/05_council_in_weldyn.cfg:32
@@ -819,15 +823,16 @@ msgstr ""
 "Delfador と Leollyn が Weldyn に戻る途中にはそれ以上の襲撃はありませんでし"
 "た。都市に到着したとき、Delfador はその大きさ、その壮大な壁、そして印象的な要"
 "塞に驚きました。一晩休んだあと、Leollyn は王との会合に同席するように "
-"Delfador を誘いました。Garard が Wesnoth の辺境からの知らせをきくことを切望し"
-"ているようにも思えました。"
+"Delfador を誘いました。Garard が Wesnoth の辺境からの知らせを聞きたくてやきも"
+"きしているようにも思えました。"
 
+# %c last チェック
 #. [message]: speaker=Garard
 #: data/campaigns/Delfadors_Memoirs/scenarios/05_council_in_weldyn.cfg:90
 msgid ""
 "Ah, now the last of my council is here. Lionel, what tidings from the north?"
 msgstr ""
-"ああ、現在、協議会の最後がここである。Lionel、北からはどのような知らせが？"
+"ああ、現在、評議会の最後がここである。Lionel 北からはどのような知らせが？"
 
 #. [message]: speaker=Lionel
 #: data/campaigns/Delfadors_Memoirs/scenarios/05_council_in_weldyn.cfg:94
@@ -852,8 +857,8 @@ msgid ""
 "Worse news — the orcs are already here, sire. I myself was set upon within "
 "the royal forest. Were it not for this young fellow here..."
 msgstr ""
-"さらに悪いことに、オーク族は既にこの辺りにきています。私自らは王家の森林に取"
-"りのこされていました。ここにいる若者がいなければ……"
+"さらに悪いことに、オーク族は既にこの辺りにきています。私自らは王家の森に取り"
+"のこされていました。ここにいる若者がいなければ……"
 
 #. [message]: speaker=Garard
 #: data/campaigns/Delfadors_Memoirs/scenarios/05_council_in_weldyn.cfg:102
@@ -889,7 +894,7 @@ msgid ""
 "Your majesty... may I join your army? I mean, I came to Weldyn to seek your "
 "employ. And if it's archers you need, might not a mage be of help?"
 msgstr ""
-"閣下……私もその軍隊に加えていただけませんか？実は、私は閣下に仕えるために "
+"陛下……私もその軍隊に加えていただけませんか？実は、私は陛下に仕えるために "
 "Weldyn に来たのです。射手が必要ということであれば、魔術師も役に立つのではない"
 "でしょうか？"
 
@@ -1097,7 +1102,7 @@ msgid ""
 "I think that's all of them! Let's move on — the less time we spend in this "
 "swamp the better."
 msgstr ""
-"これがすべてだろう！移動した方がいい。この湿地帯で過ごす時間は短い方がいい。"
+"これがすべてだろう！移動した方がいい――この湿地帯で過ごす時間は短い方がいい。"
 
 # % プログラムミス　実際には13ターン
 # 12ターン生き延びる
@@ -1123,7 +1128,7 @@ msgstr ""
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/07_night_in_the_swamp.cfg:130
 msgid "Those standing stones — they summon evil creatures!"
-msgstr "立っている石がある。不吉な生き物を召喚しているぞ！"
+msgstr "立っている石がある――不吉な生き物を召喚しているぞ！"
 
 #. [message]: speaker=Lionel
 #: data/campaigns/Delfadors_Memoirs/scenarios/07_night_in_the_swamp.cfg:134
@@ -1315,6 +1320,7 @@ msgstr ""
 msgid "Are you sure that's wise?"
 msgstr "それが賢明であるという確信はあるのか？"
 
+# とりあえず　過ち→異常
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/08_ur_thorodor.cfg:201
 msgid ""
@@ -1322,8 +1328,8 @@ msgid ""
 "rejoin you when I have carried out my mission, and determined what is amiss "
 "in the world of the dead."
 msgstr ""
-"Lionel、それしか方法はありません！軍隊を本土に帰してください。私は、私の任務"
-"を達成し、死の世界での過ちを解決したとき、再び合流します。"
+"Lionel それしか方法はありません！軍隊を本土に帰してください。私は、私の任務を"
+"達成し、死の世界での異常を解決したとき、再び合流します。"
 
 #. [message]: speaker=Ur-Thorodor
 #: data/campaigns/Delfadors_Memoirs/scenarios/08_ur_thorodor.cfg:208
@@ -1367,10 +1373,11 @@ msgstr "人間の魔術師か……死んでいるのか？"
 msgid "Easy to find out... thump it and see if it wakes up!"
 msgstr "見破るのは簡単だ……強打してやれ、それで目覚めるかどうかでわかる！"
 
+# 強打！　悪くないけど擬音語に
 #. [message]: speaker=narrator
 #: data/campaigns/Delfadors_Memoirs/scenarios/08_ur_thorodor.cfg:278
 msgid "THUMP!"
-msgstr "強打！"
+msgstr "ドゴッ！"
 
 # % 表示未確認
 #. [message]: speaker={STRING}
@@ -1475,15 +1482,16 @@ msgid ""
 "Delfador opens his eyes and realizes he is <i>alone</i> in the <i>dark</i>."
 msgstr "Delfador が目を開くと、暗闇の中に一人ぼっちでいることに気づきました。"
 
+# セリフではないので　日本語が必要にならない限りOKでは？　
 #. [scenario]: id=09_houses_of_the_dead
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_houses_of_the_dead.cfg:321
 msgid "Rattles"
-msgstr ""
+msgstr "Rattles"
 
 #. [scenario]: id=09_houses_of_the_dead
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_houses_of_the_dead.cfg:322
 msgid "Bones"
-msgstr ""
+msgstr "Bones"
 
 #. [message]: speaker=Penella
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_houses_of_the_dead.cfg:330
@@ -1508,13 +1516,11 @@ msgstr ""
 "お前は骸骨に出会ったか？奴等の城がこの北にある。襲撃するのは難しいが、Sythan "
 "の村を越えた谷の中に秘密の入り口が存在する。"
 
-# %
 #. [message]: speaker=Nameless
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_houses_of_the_dead.cfg:348
 msgid "I died a long time ago. I have forgotten my name."
 msgstr "俺が死んだのはずいぶん昔の事だ。名前なんぞ忘れてしまった。"
 
-# %
 #. [message]: speaker=Melinna
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_houses_of_the_dead.cfg:355
 msgid ""
@@ -1524,7 +1530,6 @@ msgstr ""
 "Iliah - Malal は「この世」への入り口を開けることができると言う。 彼に従う者た"
 "ちは、生あった時のように地上を歩くだろう。"
 
-# %
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_houses_of_the_dead.cfg:359
 msgid ""
@@ -1534,7 +1539,6 @@ msgstr ""
 "死者はなぜそれほどまでに落ち着かないのだ？ ここは休息と平穏の場所であるべきだ"
 "が。"
 
-# %
 #. [message]: speaker=Melinna
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_houses_of_the_dead.cfg:363
 msgid ""
@@ -1573,8 +1577,8 @@ msgid ""
 "It is said that they guard a powerful magical artifact. Roddry knows more "
 "than I do; he lives to the west."
 msgstr ""
-"奴等は強力で魔術的な人工物を警備していると言われている。Roddry は私以上に詳し"
-"い。彼は西に住んでいる。"
+"奴等は強力で魔法の神器を警備していると言われている。Roddry は私以上に詳しい。"
+"彼は西に住んでいる。"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_houses_of_the_dead.cfg:419
@@ -1621,7 +1625,7 @@ msgid ""
 "help you."
 msgstr ""
 "干上がった川を越え、道を進み北にある目印に行け。我がお前を導こう。他の者を助"
-"けるために、通り道にある使者の住処には入るんだ。"
+"けるために、通り道にある使者の住処には入るのだ。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_houses_of_the_dead.cfg:492
@@ -1633,6 +1637,7 @@ msgstr "AN-USRUKHAR の墓に立ち入るのは誰だ？"
 msgid "I...I am Delfador, a mage of Wesnoth."
 msgstr "わ……私は Delfador。Wesnoth の魔術師だ。"
 
+# またがる　→　御する　元々意味不明なので更に謎っぽくしてみました。
 #. [message]: speaker=narrator
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_houses_of_the_dead.cfg:504
 msgid ""
@@ -1640,8 +1645,8 @@ msgid ""
 "the morning of time, who sleeps now in a death beyond death until the "
 "unmaking of the world."
 msgstr ""
-"私は、世界を元に戻すまで死を越えた死の中で眠り続け、始まりの時の中で Irdya に"
-"またがる最も偉大なる魔術師 An-Usrukhar の意思。"
+"私は、世界を元に戻すまで死を越えた死の中で眠り続け、始まりの時の中で Irdya を"
+"御する最も偉大なる魔術師 An-Usrukhar の意思。"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/09_houses_of_the_dead.cfg:509
@@ -1771,7 +1776,7 @@ msgid ""
 "end to death itself!"
 msgstr ""
 "それで、これは我が僕が我に伝えたのだ……死者を従えて歩く生ける人間よ。お前は時"
-"間内に我が最大級の成果を見ることになるだろう。死にゆく中でな！"
+"間内に我が最大級の成果を見ることになるだろう――死にゆく中でな！"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/10_the_gate_between_worlds.cfg:98
@@ -1803,7 +1808,7 @@ msgstr ""
 "今、我が生ける僕よ、我はお前を召喚する！死は何でもないということを受け入れ、"
 "我がために戦うことを恐れるな！"
 
-# %check
+# %check 最後の一文チェック
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/10_the_gate_between_worlds.cfg:201
 msgid ""
@@ -1841,12 +1846,13 @@ msgid ""
 "must catch him, and somehow force him to close it!"
 msgstr ""
 "Iliah-Malal が創り出したこの門は強い、そして恐ろしい魔術の仕業だ。奴を捕ら"
-"え、これを強制的に閉じさせねばならない！"
+"え、なんとかして奴にこれを強制的に閉じさせねばならない！"
 
+# シナリオ仮題　日本語の「荒野」　みたいな感じではなく、オークに荒らされているエルフの領土
 #. [scenario]: id=11_wasteland
 #: data/campaigns/Delfadors_Memoirs/scenarios/11_wasteland.cfg:3
 msgid "Wasteland"
-msgstr ""
+msgstr "荒らされた地"
 
 #. [side]: type=Orcish Warlord, id=Tish Golub
 #: data/campaigns/Delfadors_Memoirs/scenarios/11_wasteland.cfg:39
@@ -1894,7 +1900,7 @@ msgstr "Delfador が凍死してしまう前に避難所を見つける"
 #. [message]: speaker=unit
 #: data/campaigns/Delfadors_Memoirs/scenarios/11_wasteland.cfg:147
 msgid "What are you doing in our forests, stranger?"
-msgstr "見知らぬ人間よ、貴方は私たちの森林で何をしている？"
+msgstr "見知らぬ人間よ、貴方は私たちの森で何をしている？"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/11_wasteland.cfg:151
@@ -1902,8 +1908,8 @@ msgid ""
 "It's a long story... but I wonder whether I might first ask for your "
 "hospitality? I'm lost, and freezing to death here!"
 msgstr ""
-"話せば長くなる……だが、その前にあなたたちの親切なもてなし求めて良いだろうか？"
-"このままではここで凍死してしまう！"
+"話せば長くなる……だが、その前にあなたたちの親切なもてなしを求めて良いだろう"
+"か？このままではここで凍死してしまう！"
 
 #. [message]: speaker=unit
 #: data/campaigns/Delfadors_Memoirs/scenarios/11_wasteland.cfg:155
@@ -1985,8 +1991,8 @@ msgid ""
 "If I might ask, where am I? And what of Lionel, and King Garard? What has "
 "befallen them?"
 msgstr ""
-"尋ねたいことがある。私は今何処にいる？そして、Lionel、及び Garard 王はどう"
-"なった？彼らに何かが起こってしまったのですか？"
+"尋ねたいことがある。私は今何処にいる？そして、Lionel 及び Garard 王はどうなっ"
+"た？彼らに何かが起こってしまったのですか？"
 
 #. [message]: speaker=Chantal
 #: data/campaigns/Delfadors_Memoirs/scenarios/11_wasteland.cfg:207
@@ -1997,9 +2003,9 @@ msgid ""
 "Great River, and your home. Of your friends, I know nothing."
 msgstr ""
 "貴方は Lintanir の森の中、北部エルフ族と共にいます。私たちの能力で、森の中に"
-"いれば冬風邪を抑えることができます。ここから南と西には野蛮人とオーク族だけが"
-"住む不毛地帯があります。更に南にいけば Great River、そして貴方の居住地。貴方"
-"の友人については私は何も知りません。"
+"いれば冬の寒さを抑えることができます。ここから南と西には野蛮人とオーク族だけ"
+"が住む不毛地帯があります。更に南にいけば Great River、そして貴方の居住地。貴"
+"方の友人については私は何も知りません。"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/11_wasteland.cfg:211
@@ -2473,7 +2479,7 @@ msgstr "敵襲か？"
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/12_terror_at_the_ford_of_parthyn.cfg:974
 msgid "He will be, if you help. Now follow me into battle!"
-msgstr "あなたの助けがあれば彼は生き延びるだろう。今はこの戦いを私と共に！"
+msgstr "あなた方の助けがあれば彼は生き延びるだろう。今はこの戦いを私と共に！"
 
 #. [message]: speaker=unit
 #: data/campaigns/Delfadors_Memoirs/scenarios/12_terror_at_the_ford_of_parthyn.cfg:988
@@ -2544,9 +2550,9 @@ msgid ""
 "that. And we must also defeat those that have already escaped the Land of "
 "the Dead."
 msgstr ""
-"私たちには考えているよりもはるかに時間はないようだ。Iliah-Malal が攻勢にでて"
+"私たちには思っていたよりもはるかに時間がないようだ。Iliah-Malal が攻勢にでて"
 "きてしまった。手遅れになる前に奴の門を閉じねばならない。だが、その方法はまだ"
-"わからない。また、私たちは死者の国から既に出てきてしまったものどもをも滅ぼさ"
+"分からない。また、私たちは死者の国から既に出てきてしまったものどもをも滅ぼさ"
 "ねばならない。"
 
 # %  a paramount chief  とりあえず　総帥　他に最高司令官とかでも
@@ -2566,7 +2572,6 @@ msgstr ""
 "の総帥が現れたとしたら、王は Abez の浅瀬で致命的な罠に足を踏み入れてしまうか"
 "もしれない。"
 
-# %
 #. [message]: speaker=Chantal
 #: data/campaigns/Delfadors_Memoirs/scenarios/12_terror_at_the_ford_of_parthyn.cfg:1182
 msgid ""
@@ -2580,7 +2585,6 @@ msgstr ""
 "けていることは分かりません。そして彼は間違いなくアンデッドの脅威についても知"
 "りません。"
 
-# %
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/12_terror_at_the_ford_of_parthyn.cfg:1187
 msgid ""
@@ -2590,19 +2594,17 @@ msgid ""
 "quickly through these wildlands and head west from here."
 msgstr ""
 "多分王に警告するのに間に合う。Lionel はもうそろそろWeldyn に戻っている頃だろ"
-"う。彼に駐屯部隊のメッセージライダーを送ろう。だが私自身が南へ行く時間は無"
-"い。私はできる限り多くの兵を集め、これらの荒れ地を素早く通り抜け西に向かお"
-"う。"
+"う。彼に駐屯部隊の使者を送ろう。だが私自身が南へ行く時間は無い。私はできる限"
+"り多くの兵を集め、これらの荒れ地を素早く通り抜け西に向かおう。"
 
-# %
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/12_terror_at_the_ford_of_parthyn.cfg:1191
 msgid ""
 "Will you join me? Elves know these northern paths better than any human. "
 msgstr ""
-"あなたに加わって頂けませんか？ エルフは人間族より北の道を良く知っています。"
+"あなた方も加わって頂けませんか？ エルフ族は人間族より北の道を良く知っていま"
+"す。"
 
-# %
 #. [message]: speaker=Chantal
 #: data/campaigns/Delfadors_Memoirs/scenarios/12_terror_at_the_ford_of_parthyn.cfg:1195
 msgid ""
@@ -2611,10 +2613,9 @@ msgid ""
 "Lord Kalenz or get a message to him."
 msgstr ""
 "それはかないません、Delfador。私は許されている限り速く Lintanir に戻らなくて"
-"はなりませんし、すぐに北部エルフに知らせなくてはなりません――おそらく私は"
-"Kalenz 卿を見つけられるでしょう。彼へのメッセージをお受けします。"
+"はなりませんし、すぐに北部エルフに知らせなくてはなりません――おそらく私は高級"
+"貴族Kalenz に会えるでしょう。彼へのメッセージを承ります。"
 
-# %
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/12_terror_at_the_ford_of_parthyn.cfg:1199
 msgid ""
@@ -2624,7 +2625,6 @@ msgstr ""
 "我が王は彼を指揮しないでしょう……しかし、もしエルフ族と人間族が団結しないのな"
 "ら、私は双方が個々に敗れてしまう事を恐れています。"
 
-# %
 #. [message]: speaker=Chantal
 #: data/campaigns/Delfadors_Memoirs/scenarios/12_terror_at_the_ford_of_parthyn.cfg:1203
 msgid ""
@@ -2632,8 +2632,8 @@ msgid ""
 "for I sense that you hold the fate of Wesnoth in your hands, and will need "
 "all the strength you have. I think we will meet again."
 msgstr ""
-"まったくそうね。王の元へ行きなさい、Delfador。そして自分を信じなさい。なぜな"
-"ら私には、あなたが Wesnoth の運命を握っていると感じますから。そしてあなたが"
+"全くその通りだわ。王の元へ行きなさい、Delfador。そして自分を信じなさい。なぜ"
+"なら私には、あなたが Wesnoth の運命を握っていると感じますから。そしてあなたが"
 "持っているすべての力を必要とするでしょう。きっとまた会えると思うわ。"
 
 #. [message]: speaker=Delfador
@@ -2643,9 +2643,8 @@ msgid ""
 "abominations back to the darkness!"
 msgstr ""
 "奴等の第二陣がくるぞ。戦士たちよ、自分の持ち場を守り、この憎悪を暗闇に送り返"
-"してやりましょう！"
+"してやろう！"
 
-# %
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/12_terror_at_the_ford_of_parthyn.cfg:1226
 msgid ""
@@ -2653,10 +2652,11 @@ msgid ""
 "limited."
 msgstr "絶望的だ。 我々の兵員は限られているのに、更に多くの敵がやって来る。"
 
+# シナリオ仮題　オークがエルフ領に戻った意味
 #. [scenario]: id=13_the_return_of_trouble
 #: data/campaigns/Delfadors_Memoirs/scenarios/13_the_return_of_trouble.cfg:4
 msgid "The return of trouble"
-msgstr ""
+msgstr "災いの再来"
 
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/13_the_return_of_trouble.cfg:17
@@ -2683,7 +2683,6 @@ msgstr ""
 "降霊術の秘薬により寿命が延び、愛妻 Cleodil の死後、エルフの高級貴族の地位を捨"
 "て、武者修行として大陸を放浪しました。"
 
-# %
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/13_the_return_of_trouble.cfg:26
 msgid ""
@@ -2693,11 +2692,11 @@ msgid ""
 "Kalenz quickly gathered a small troop of picked guards. War had returned to "
 "the land of the elves."
 msgstr ""
-"けれども Kalenz には半ば分かっていて、そして彼が再び必要とされることを半ば恐"
-"れていました、そして彼が長い間予知していた日がついに訪れました。Lintanir も含"
-"めた、エルフの森周辺を攻撃しているオークの大部隊についての報告が彼に来まし"
-"た。Kalenz は兵を選抜した小部隊を手早く集めました。戦争がエルフの領土に舞い"
-"戻っていました。"
+"けれども Kalenz には、自分が再び必要とされることが半ば分かっていて、また半ば"
+"恐れていました、そして彼が長い間予見していた日がついに訪れました。Lintanir も"
+"含めた、エルフの森周辺を攻撃しているオークの大部隊についての報告が彼に届きま"
+"した。Kalenz は兵を選抜した小部隊を手早く集めました。戦争がエルフの領土に再び"
+"訪れていました。"
 
 #. [side]: type=Orcish Warlord, id=Knafa-ord
 #: data/campaigns/Delfadors_Memoirs/scenarios/13_the_return_of_trouble.cfg:68
@@ -2738,23 +2737,22 @@ msgid ""
 "Kill these filthy elves! All warlords will then accept our leader, Zorlan, "
 "as king and he will reward you all!"
 msgstr ""
-"あの汚らわしいエルフを殺せ！そうすればすべての将軍が我らが指導者 Zorlan を王"
-"として認めるだろう。王はお前らすべてにも報酬を振舞ってくださるぞ！"
+"あの汚らわしいエルフ共をぶち殺せ！そうすればすべての将軍が我らが指導者 "
+"Zorlan を王として認めるだろう。王はお前らすべてにも報酬を振舞ってくださるぞ！"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Delfadors_Memoirs/scenarios/13_the_return_of_trouble.cfg:205
 msgid "This is what we have been training for! Now we drive these beasts back!"
 msgstr "これは我々の訓練である！獣どもを退けろ！"
 
-# %おなじ
 #. [message]: id=Kalenz
 #: data/campaigns/Delfadors_Memoirs/scenarios/13_the_return_of_trouble.cfg:218
 msgid ""
 "The orcs are retreating! And...what is this? A shyde flying towards us as if "
 "hell were on her heels..."
 msgstr ""
-"The orcs are retreating! And...what is this? A shyde flying towards us as if "
-"hell were on her heels..."
+"オークどもが退却していったぞ！だが……あれは何だ？シェードがまるで地獄の上を歩"
+"いているように駆け寄ってきた……"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Delfadors_Memoirs/scenarios/13_the_return_of_trouble.cfg:224
@@ -2765,8 +2763,7 @@ msgstr ""
 "オークどもが退却していったぞ！だが……あれは何だ？ドルイドがまるで地獄の上を歩"
 "いているように駆け寄ってきた……"
 
-# 我が主君 Kalenz、ついに見つけたわ！
-# たぶん My lord は間投詞
+# 孫娘なので たぶん My lord は間投詞
 #. [message]: id=Chantal
 #: data/campaigns/Delfadors_Memoirs/scenarios/13_the_return_of_trouble.cfg:242
 msgid "My lord Kalenz, at last I have found you!"
@@ -2789,7 +2786,6 @@ msgstr ""
 "いえ、ここの敵は既に退却しています。貴方の知恵を必要とするとても重大な問題が"
 "あるのです。"
 
-# %
 #. [message]: id=Chantal
 #: data/campaigns/Delfadors_Memoirs/scenarios/13_the_return_of_trouble.cfg:254
 msgid ""
@@ -2810,7 +2806,6 @@ msgstr ""
 "更に悪い知らせがあります。邪悪が解き放たれました。死者の国の門が開いていま"
 "す。こうしている間にも、アンデッド軍が台頭してきています。"
 
-# %
 #. [message]: id=Kalenz
 #: data/campaigns/Delfadors_Memoirs/scenarios/13_the_return_of_trouble.cfg:262
 msgid "This is very serious. Have you informed the elvish settlements?"
@@ -2825,15 +2820,13 @@ msgstr ""
 "はい。 そして私は戦士のために聖水を用意しました。さしあたって私たちの森では、"
 "アンデッドに対して持ちこたえられるようにと。"
 
-# % ちょっとfuzzy
 #. [message]: id=Kalenz
 #: data/campaigns/Delfadors_Memoirs/scenarios/13_the_return_of_trouble.cfg:270
 msgid ""
 "Holy water? What is this? Have you been dabbling where you should not, in "
 "the Book of Crelanu?"
-msgstr "聖水？ それは何だ？ やめておけと言ったCrelanu の本で聞きかじったのか？"
+msgstr "聖水？ それは何だ？ やめておけと言ったCrelanu の本でかじったのか？"
 
-# %
 #. [message]: id=Chantal
 #: data/campaigns/Delfadors_Memoirs/scenarios/13_the_return_of_trouble.cfg:274
 msgid ""
@@ -2842,10 +2835,10 @@ msgid ""
 "one we have been awaiting since Cleodil accepted the guardianship of the "
 "Book. You know of what I speak."
 msgstr ""
-"いいえ。 けれども Cleodil は娘たちに本の中の危険の少ない秘密を伝授しました、"
-"それで私は母からそれを聞いたわ。そして私はその人を見つけたと思います。"
-"Cleodil が本の後見人の役を受け入れたときから待っていた人を。私が何について話"
-"すか分かっているでしょう。 "
+"違うわ。 でも Cleodil は自分の娘たちに本の中の危険の少ない秘密を伝えたわ。私"
+"は母からそれを聞いたのよ。そして私はその人を見つけたと思うわ。Cleodil が本の"
+"後見人の役を受け入れたときから待っていた人を。私が何について話そうとしている"
+"か、もう分かったでしょ。 "
 
 #. [message]: id=Kalenz
 #: data/campaigns/Delfadors_Memoirs/scenarios/13_the_return_of_trouble.cfg:278
@@ -2853,7 +2846,8 @@ msgid ""
 "I never thought to see such a human, not even in all the years I have lived. "
 "Who is this person?"
 msgstr ""
-"私は今までの人生でそんな人間に会おうなどと思ったことは無い。その人物は誰だ？"
+"私は今までの人生でそんな人間に会おうなどと思ったことは無い。その人物とは誰"
+"だ？"
 
 # % uncorruptedは仮の訳
 #. [message]: id=Chantal
@@ -2871,7 +2865,6 @@ msgstr ""
 "一緒にアンデッドと戦いました。私が北に来た理由の一つは、私が Crelanu の本を"
 "取ってきて彼にあげようと思ったからです。"
 
-# %
 #. [message]: id=Kalenz
 #: data/campaigns/Delfadors_Memoirs/scenarios/13_the_return_of_trouble.cfg:286
 msgid "He is uncorrupted? You are sure of this?"
@@ -2883,7 +2876,6 @@ msgstr "彼は屍ではない？ 確かなのか？"
 msgid "I have bent my healing senses upon him. I am as sure as I can be."
 msgstr "私は彼に回復感覚を傾けました。私が生きているのと同じぐらい確かです。"
 
-# %
 #. [message]: id=Kalenz
 #: data/campaigns/Delfadors_Memoirs/scenarios/13_the_return_of_trouble.cfg:295
 msgid ""
@@ -2898,11 +2890,9 @@ msgstr ""
 # シナリオ仮題
 #. [scenario]: id=14_shadows
 #: data/campaigns/Delfadors_Memoirs/scenarios/14_shadows.cfg:4
-#, fuzzy
 msgid "Shadows in the dark"
 msgstr "闇にうごめく影"
 
-# %
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/14_shadows.cfg:19
 msgid ""
@@ -2934,7 +2924,6 @@ msgstr "Barth-Malal"
 msgid "Defeat all enemy leaders"
 msgstr "敵のリーダーをすべて倒せ"
 
-# %
 #. [message]: id=Kalenz
 #: data/campaigns/Delfadors_Memoirs/scenarios/14_shadows.cfg:143
 msgid ""
@@ -2944,13 +2933,11 @@ msgstr ""
 "静かな森のようだが――あまりにも静かすぎる。 慎重に進むのだ。こういうのは全く好"
 "きになれない。"
 
-# %
 #. [message]: id=Barth-Malal
 #: data/campaigns/Delfadors_Memoirs/scenarios/14_shadows.cfg:150
 msgid "Living... Soon, you'll be more troops for my master!"
 msgstr "生きている者よ……間もなくお前たちは我が主人の更なる兵となるのだ！"
 
-# %
 #. [message]: id=Kalenz
 #: data/campaigns/Delfadors_Memoirs/scenarios/14_shadows.cfg:154
 msgid "Undead! Where did they come from?"
@@ -2961,7 +2948,7 @@ msgstr "アンデッドだ！ 奴らはどこから来たのだ？"
 #: data/campaigns/Delfadors_Memoirs/scenarios/14_shadows.cfg:158
 msgid ""
 "We should try to go west. I sense things are worse on the eastern front."
-msgstr "私たちは西へ行ってみるべきね。 東戦線の状況がもっと悪いと感じます。"
+msgstr "私たちは西へ行ってみるべきね。 東戦線の状況はもっと悪そうだわ。"
 
 #. [unit]: id=Nameless, type=Spectre
 #: data/campaigns/Delfadors_Memoirs/scenarios/14_shadows.cfg:165
@@ -2993,7 +2980,6 @@ msgstr "Nfrigt"
 msgid "Rkrin"
 msgstr "Rkrin"
 
-# %
 #. [message]: id=Rudimil
 #: data/campaigns/Delfadors_Memoirs/scenarios/14_shadows.cfg:213
 msgid "We have more help!"
@@ -3035,19 +3021,17 @@ msgstr "Dert"
 msgid "And now even more help!"
 msgstr "そして更なる援軍が今到着した！"
 
-# %
 #. [message]: id=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/14_shadows.cfg:290
 msgid "Foul creatures, it is time for your final rest!"
-msgstr "おぞましき生き物よ、これからは最後の休息だ！"
+msgstr "おぞましき生き物達よ、これからは最後の休息の時だ！"
 
-# %
 #. [message]: id=Chantal
 #: data/campaigns/Delfadors_Memoirs/scenarios/14_shadows.cfg:294
 msgid "That is Delfador. Do you see, now?"
 msgstr "あれがDelfador よ。分かる？"
 
-# %
+# 日本語では合わない　孫娘→Chantal　
 #. [message]: id=Kalenz
 #: data/campaigns/Delfadors_Memoirs/scenarios/14_shadows.cfg:298
 msgid ""
@@ -3055,16 +3039,14 @@ msgid ""
 "well, granddaughter; he is indeed the one to whom the Book of Crelanu should "
 "pass."
 msgstr ""
-"分かるぞ。彼は私の心の目に、燃え上がる炎のように見える。孫娘よ、お前は良い者"
+"分かるぞ。彼は私の心の目に、燃え上がる炎のように見える。Chantal、お前は良い者"
 "を選んだようだな。彼は本当に Crelanu の本を渡すにふさわしき者のようだ。"
 
-# %
 #. [message]: id=Chantal
 #: data/campaigns/Delfadors_Memoirs/scenarios/14_shadows.cfg:302
 msgid "If I were human, I think I would be in love with him."
-msgstr "私が人間だったら、彼に惚れていたと思うわ。"
+msgstr "私が人間だったら、彼に恋していたと思うわ。"
 
-# %
 #. [message]: id=Kalenz
 #: data/campaigns/Delfadors_Memoirs/scenarios/14_shadows.cfg:306
 msgid ""
@@ -3073,20 +3055,19 @@ msgid ""
 "even our greatest mystics do not shine so brightly as this one."
 msgstr ""
 "もしお前が人間族であったなら、それは全く正しいだろう。不思議だ……彼らは概して"
-"不機嫌な子供のように、短命で、粗野でけんかっ早い。けれども我々のうちで最も偉"
-"大で神秘的な者でさえ、彼ほど光り輝いてはいまい。"
+"不機嫌な子供のように、短命で、粗野で喧嘩っ早い。けれども我々のうちで最も偉大"
+"で神秘的な者でさえ、彼ほど光り輝いてはいまい。"
 
-# %
 #. [message]: id=Chantal
 #: data/campaigns/Delfadors_Memoirs/scenarios/14_shadows.cfg:310
 msgid "I hope the Book does not destroy him."
 msgstr "私は本が彼を滅ぼさないと思うわ。"
 
-# %
+# %c
 #. [message]: id=Kalenz
 #: data/campaigns/Delfadors_Memoirs/scenarios/14_shadows.cfg:314
 msgid "You speak my thought, granddaughter. May it be so."
-msgstr "私の考えていた事をしゃべってくれたな。そうあらんことを。"
+msgstr "私の思った事を言ってくれたな。かくあらんことを。"
 
 #. [objective]: condition=win
 #: data/campaigns/Delfadors_Memoirs/scenarios/14_shadows.cfg:320
@@ -3104,12 +3085,12 @@ msgstr "Krumful"
 msgid "Unhul"
 msgstr "Unhul"
 
+# %fuzzy  未確認　どうすると表示されるか分からない
 #. [message]: id=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/14_shadows.cfg:395
 msgid "I arrive too late for the entertainment, it would seem."
-msgstr ""
+msgstr "お楽しみには遅すぎたようだ。"
 
-# %
 #. [message]: id=Kalenz
 #: data/campaigns/Delfadors_Memoirs/scenarios/14_shadows.cfg:402
 msgid ""
@@ -3119,7 +3100,6 @@ msgstr ""
 "お会いできて嬉しい、Delfador。 Chantal があなたのことを話してくれた。 私は"
 "Kalenz。エルフの高級貴族です。今日はあなたに借りができました。"
 
-# %
 #. [message]: id=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/14_shadows.cfg:406
 msgid ""
@@ -3129,7 +3109,7 @@ msgstr ""
 "あなたにお会いして光栄です。またChantal が安全に家族の元に戻れてほっとしてい"
 "ます。"
 
-# %　安全だとははっきりしません
+# 安全だとははっきりしません
 #. [message]: id=Chantal
 #: data/campaigns/Delfadors_Memoirs/scenarios/14_shadows.cfg:410
 msgid ""
@@ -3139,7 +3119,6 @@ msgstr ""
 "近頃では誰にも安全だとは言い切れません。でも私たちは同じ道を旅し、同じ敵に会"
 "いましたね。"
 
-# %
 #. [message]: id=Kalenz
 #: data/campaigns/Delfadors_Memoirs/scenarios/14_shadows.cfg:414
 msgid ""
@@ -3147,26 +3126,22 @@ msgid ""
 "not too late to prevent an orcish victory there."
 msgstr ""
 "そう。我々はあなたを追ってAbez の浅瀬に向かったのです、Delfador。我々はオーク"
-"の勝利をそこで阻止するのに遅すぎないと期待しよう。"
+"の勝利をそこで阻止するのに遅すぎないと祈ろう。"
 
-# %
 #. [scenario]: id=15_save_the_king
 #: data/campaigns/Delfadors_Memoirs/scenarios/15_save_the_king.cfg:4
-#, fuzzy
 msgid "Save the King"
 msgstr "国王救出"
 
-# %
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/15_save_the_king.cfg:21
 msgid ""
 "Following Delfador, the elves moved to unite with the Wesnothian forces and "
 "meet Zorlan head-on..."
 msgstr ""
-"Delfadorの後に続き、Wesnoth軍と連合しに向かいました。Zorlan と真正面から戦う"
-"めに……。"
+"Delfadorの後に続き、Wesnoth軍と合流しに向かいました。Zorlan と真正面から戦う"
+"為に……。"
 
-# %
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/15_save_the_king.cfg:27
 msgid "but the King was in an unenviable position..."
@@ -3209,7 +3184,6 @@ msgstr "Zorlan を倒す"
 msgid "Death of Garard"
 msgstr "Garard の死"
 
-# %
 #. [message]: id=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/15_save_the_king.cfg:246
 msgid ""
@@ -3217,18 +3191,15 @@ msgid ""
 "by the enemy."
 msgstr "到着がギリギリで間に合ったようだ！王が敵に囲まれて窮地に立っている。"
 
-# %
 #. [message]: id=Chantal
 #: data/campaigns/Delfadors_Memoirs/scenarios/15_save_the_king.cfg:250
 msgid ""
 "I fear we may be too late. This new warlord must have united every orcish "
 "tribe north of the Great River. Look at their army, it is vast!"
 msgstr ""
-"遅すぎたかもしれないと心配です。この新しい指揮官は Great River.の北にあるすべ"
-"てのオークの部族を結束させたに違いありません。彼らの軍を見てください。巨大で"
-"す！"
+"遅すぎかもしれないかと心配だわ。この新しい指揮官は Great River.の北にあるすべ"
+"てのオークの部族を結束させたに違いないわ。彼らの軍を見て、巨大よ！"
 
-# %
 #. [message]: id=Zorlan
 #: data/campaigns/Delfadors_Memoirs/scenarios/15_save_the_king.cfg:254
 msgid ""
@@ -3238,19 +3209,17 @@ msgstr ""
 "エルフ共！ お前らが俺をずっと探していたと聞いた！ だがお前らは人間族の王子と"
 "自分たちのどちらも守れまい。"
 
-# %　少し日本語変orz
+# %c
 #. [message]: id=Kalenz
 #: data/campaigns/Delfadors_Memoirs/scenarios/15_save_the_king.cfg:258
 msgid "We must destroy this warlord now, before his power grows any greater!"
 msgstr "この指揮官の力が更に大きくなる前に、今すぐ撃破しなくてはならんな！"
 
-# %
 #. [message]: id=Kalenz
 #: data/campaigns/Delfadors_Memoirs/scenarios/15_save_the_king.cfg:266
 msgid "Victory! "
 msgstr "勝利！"
 
-# %
 #. [message]: id=Garard II
 #: data/campaigns/Delfadors_Memoirs/scenarios/15_save_the_king.cfg:270
 msgid ""
@@ -3260,19 +3229,16 @@ msgstr ""
 "Delfador ！ そしてエルフの友たちよ！ Wesnoth の王国は本日そなたらに借りができ"
 "たな！"
 
-# %
 #. [message]: id=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/15_save_the_king.cfg:274
 msgid "My King, this is Kalenz, High Lord of the Elves."
 msgstr "王様、こちらがKalenzです。エルフの高級貴族です。"
 
-# %
 #. [message]: id=Garard II
 #: data/campaigns/Delfadors_Memoirs/scenarios/15_save_the_king.cfg:278
 msgid "You will be forever welcome in the court of Wesnoth."
 msgstr "Wesnothの宮廷ではそなたを永遠に歓迎しようぞ。"
 
-# %
 #. [message]: id=Kalenz
 #: data/campaigns/Delfadors_Memoirs/scenarios/15_save_the_king.cfg:282
 msgid ""
@@ -3280,7 +3246,6 @@ msgid ""
 msgstr ""
 "我々は残る脅威を打ち破るべく、あなたの傍で戦うことを楽しみにしております。"
 
-# %
 #. [message]: id=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/15_save_the_king.cfg:286
 msgid ""
@@ -3290,11 +3255,10 @@ msgid ""
 "skills may be insufficient for that task."
 msgstr ""
 "陛下、我々には更に緊急事項があります。Leollyn は私に死者がなぜ休まないのかを"
-"調査する任につけました。おぞましきネクロマンサーが死者の国の門を開けました。"
-"それは、どんな犠牲を払ってでも閉じておくべきものです。そして私はその任を遂行"
-"するにあたり自分の技量が不十分なのではないかと恐れております。"
+"調査する任につけました。おぞましき降霊術師が死者の国の門を開けました。それ"
+"は、どんな犠牲を払ってでも閉じておくべきものです。そして私はその任を遂行する"
+"にあたり自分の技量が不十分なのではないかと恐れております。"
 
-# %
 #. [message]: id=Kalenz
 #: data/campaigns/Delfadors_Memoirs/scenarios/15_save_the_king.cfg:290
 msgid ""
@@ -3307,7 +3271,6 @@ msgstr ""
 "助をしてあげられる。何世紀も前に偉大な魔術師Crelanu は、我々に知識の本を託し"
 "た。強力な知識と危険な秘密。Crelanu が自分の全生涯をかけて集めたものだ。"
 
-# %
 #. [message]: id=Kalenz
 #: data/campaigns/Delfadors_Memoirs/scenarios/15_save_the_king.cfg:294
 msgid ""
@@ -3319,7 +3282,7 @@ msgstr ""
 "Delfador 、我々はあなたがその人であると信じている。その本は門を閉じる方法を見"
 "つけだす助けになるかもしれない。"
 
-# %
+# %c 表現検討
 #. [message]: id=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/15_save_the_king.cfg:298
 msgid ""
@@ -3329,7 +3292,6 @@ msgstr ""
 "友よ、あなた方の言葉は恐らく私が値するより大きく称えている。私がこの任にふさ"
 "わしいのか定かではない。"
 
-# %
 #. [message]: id=Kalenz
 #: data/campaigns/Delfadors_Memoirs/scenarios/15_save_the_king.cfg:302
 msgid ""
@@ -3338,21 +3300,19 @@ msgid ""
 "upon us. And so it proved, though at the time we had no other choice. The "
 "victories you win with it may cost you as dearly."
 msgstr ""
-"Chantal と私はあなたの素質について確信している。だがご注意して頂きたい。この"
-"本には呪いがかかっている。Crelanu は、彼の秘術が我々にたくさんの苦悩をもたら"
-"すであろうとかなり通告した。そしてその通りだと判明したが、その時には我々には"
-"他のどのような選択の余地が無かった。あなたが本により勝利を勝ち取っても、多大"
-"な負担をかけるかもしれない。"
+"Chantal と私はあなたの素質について確信している。だが注意して頂きたい。この本"
+"には呪いがかかっている。Crelanu は、彼の秘術が我々にたくさんの苦悩をもたらす"
+"であろうと大変警告した。そしてその通りだと判明したが、その時には我々には他に"
+"どのような選択の余地も無かった。あなたが本により勝利を勝ち取っても、多大な負"
+"担をかけるかもしれない。"
 
-# %
 #. [message]: id=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/15_save_the_king.cfg:306
 msgid "Curse or no, we must close that portal soon, or else we are all doomed."
 msgstr ""
 "呪いがあろうともなかろうとも、我々はすぐにその門を閉じなくてはならない。さも"
-"なければ我々は全員破滅してしまう。"
+"なければ我々は皆破滅してしまう。"
 
-# %
 #. [message]: id=Kalenz
 #: data/campaigns/Delfadors_Memoirs/scenarios/15_save_the_king.cfg:310
 msgid ""
@@ -3364,17 +3324,15 @@ msgstr ""
 "と戦うのなら、たとえ結果がどうなろうとも、あなたと共に戦うのは名誉なことだろ"
 "う。"
 
-# %
 #. [message]: id=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/15_save_the_king.cfg:314
 msgid ""
 "I think I, too, have no choice but to accept the book. I cannot allow the "
 "sure death of many humans and elves for fear of the curse."
 msgstr ""
-"私も同じだと思う。私には本を受け入れる以外の選択は無い。私は呪いの不安の為"
-"に、多くの人間とエルフ達の確実な死を許すわけにはいかないのだ。"
+"私も同じように思っている。私には本を受け入れる以外の選択は無い。私は呪いの不"
+"安の為に、多くの人間とエルフ達の確実な死を許すわけにはいかないのだ。"
 
-# %
 #. [message]: id=Chantal
 #: data/campaigns/Delfadors_Memoirs/scenarios/15_save_the_king.cfg:318
 msgid ""
@@ -3385,7 +3343,6 @@ msgstr ""
 "焉をもたらしますように。 そしてあなたの犠牲が、私たちの払った犠牲以下で済みま"
 "すように……。"
 
-# %
 #. [message]: id=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/15_save_the_king.cfg:322
 msgid ""
@@ -3396,17 +3353,15 @@ msgstr ""
 "ありがとう、友よ。 我々はもっと幸せな時に再会できますように。 さあ急がなくて"
 "は。私には本を調べ、アンデッドとの戦いの準備をする必要がある。"
 
-# %
 #. [message]: id=Qgthun
 #: data/campaigns/Delfadors_Memoirs/scenarios/15_save_the_king.cfg:335
 msgid "Invincible Zorlan is dead? Quick, run for your lives!"
 msgstr "無敵の Zorlan が死んだだと？ 急げ！ 命が惜しけりゃ逃げろ！"
 
-# %c
 #. [message]: id=Kalenz
 #: data/campaigns/Delfadors_Memoirs/scenarios/15_save_the_king.cfg:339
 msgid "You will terrorize Wesnoth no more!"
-msgstr "Wesnoth をもう威嚇するな！"
+msgstr "Wesnoth をもう恐怖に陥れるな！"
 
 #. [message]: speaker=Garard II
 #: data/campaigns/Delfadors_Memoirs/scenarios/15_save_the_king.cfg:393
@@ -3414,6 +3369,8 @@ msgid ""
 "The enemy is drawing near. My personal guards must join the fight. We can "
 "only hope help arrives soon."
 msgstr ""
+"敵が近づいてきた。 余の護衛も参戦するのだ。後は助けがすぐに来ることをただ望む"
+"だけとなったか。"
 
 #. [unit]: id=Adamar, type=Royal Guard
 #: data/campaigns/Delfadors_Memoirs/scenarios/15_save_the_king.cfg:405
@@ -3433,12 +3390,13 @@ msgstr "Ronduger"
 #. [message]: speaker=Adamar
 #: data/campaigns/Delfadors_Memoirs/scenarios/15_save_the_king.cfg:465
 msgid "For the King!"
-msgstr ""
+msgstr "国王陛下のために！"
 
+# シナリオ仮題
 #. [scenario]: id=16_dark_sky_over_weldyn
 #: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:3
 msgid "Dark Sky Over Weldyn"
-msgstr ""
+msgstr "Weldynの暗雲"
 
 # fuzzy ride
 #. [part]
@@ -3470,7 +3428,6 @@ msgstr ""
 msgid "King Garard"
 msgstr "Garard 王"
 
-# %
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:24
 msgid ""
@@ -3478,7 +3435,7 @@ msgid ""
 "orcs have been defeated decisively. Their Great Chief is dead and their army "
 "has been scattered. We owe much of this great victory to Delfador."
 msgstr ""
-"我々は良い知らせと悪い知らせの為にここに集った： 良い知らせはオークが決定的に"
+"我々は良い知らせと悪い知らせの為にここに集った。良い知らせはオークが決定的に"
 "倒されたということだ。彼らの大帝は死に、彼らの軍は四散した。 我々のこの素晴ら"
 "しい勝利はDelfador に負うたところが大きい。"
 
@@ -3493,14 +3450,13 @@ msgstr ""
 msgid "Delfador"
 msgstr "Delfador"
 
-# %
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:28
 msgid ""
 "I did very little, sire. It was actually the elves who saved us on that day."
 msgstr ""
-"私はほんの少ししかしておりませんでした、陛下。 実際にあの日に我々を救ったのは"
-"エルフでした。"
+"陛下、私の働きなどほんの少しです。 実際にあの日に我々を救ったのはエルフでし"
+"た。"
 
 #. [part]
 #. [side]: type=General, id=Lionel
@@ -3517,17 +3473,16 @@ msgstr ""
 msgid "Lionel"
 msgstr "Lionel"
 
-# %
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:32
 msgid ""
 "We owe the elves nothing, sire. They refused to send their archers when we "
 "needed them!"
 msgstr ""
-"我々はエルフに何も負うところは御座いません、陛下。 我々が必要とした時、彼らは"
-"射手を送ることを拒否しました！"
+"陛下、我々はエルフに何も負うところは御座いません。 我々が必要とした時、彼らは"
+"射手を送ることを拒否したのです！"
 
-# % young master...
+# %c young master...
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:36
 msgid ""
@@ -3536,25 +3491,23 @@ msgid ""
 "reports of an undead threat. He was able to fight them off at Parthyn Ford, "
 "but more are coming."
 msgstr ""
-"控えよ Lionel.。 エルフはうまく戦い、そして我々の敬意を得た。 だが評議会はこ"
-"こに憂慮すべき事態を取り上げておる。 若き達人 Delfador はアンデッドの脅威につ"
-"いてここで報告するだろう。 彼は Parthyn の浅瀬において彼らと戦い撃退できた。"
-"だが更に多くの敵が侵攻している。"
+"控えよ Lionel。 エルフはうまく戦い、そして我々の敬意を得た。 だが評議会はここ"
+"に憂慮すべき事態を取り上げておる。 ここにいる若き達人 Delfador がアンデッドの"
+"脅威について報告しよう。 彼は Parthyn の浅瀬において彼らと戦い撃退できた。だ"
+"が更に多くの敵が侵攻しておる。"
 
-# %
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:40
 msgid ""
 "With your permission, sire, I will take some picked men north and crush "
 "these abominations."
 msgstr ""
-"陛下、お許しを頂ければ私は選抜した部下たちを率いて北に向かい、これらの忌まわ"
-"しき者共を壊滅させましょうぞ。"
+"陛下、お許しを頂ければ、私は選抜した部下たちを率いて北に向かい、これらの忌ま"
+"わしき者共を壊滅させましょうぞ。"
 
-# 全部陛下になってしまう……あとで sire変更  %c
+# %c 全部陛下w……あとで sire検討
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:44
-#, fuzzy
 msgid ""
 "Your majesty, these are no stray undead; This lunatic, Iliah-Malal, has "
 "opened a portal to the Land of the Dead. Unless we close this portal soon, "
@@ -3565,18 +3518,21 @@ msgid ""
 "against them."
 msgstr ""
 "陛下、これらは彷徨えるアンデッドではありません。この狂人、 Iliah - Malal 、は"
-"死者の国の門を開けました。我々が、すぐに、この入り口を閉じないなら敵部隊の比"
-"較的小さい数"
+"死者の国の門を開けました。我々が、すぐに、この入り口を閉じなければ、比較的少"
+"ない部隊数の敵は、今後絶え間なく果てしないアンデッドを指揮するでしょう。そし"
+"て我々の軍ですが、主に襲撃してくるオーク向けに装備や訓練がされております。そ"
+"れは彼が送り込む部隊とさえ戦うのにはあまり適しておりません。魔術師です。彼ら"
+"を重歩兵と組み合わせるのが彼らに対抗するのに最も効果的なのです。"
 
-# %
+# Sagus
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:48
 msgid ""
 "I think our young and inexperienced friend overestimates the powers of the "
 "enemy. I'm sure they'll be no match for Wesnothian troops."
 msgstr ""
-"わしは若く経験不足の友が敵の力を過大評価していると思っておる。 わしは奴らなど"
-"Wesnoth軍に匹敵するものではないと確信しておる。"
+"わしは若く未熟な友が敵の力を過大評価していると思っておる。 わしは奴らなど"
+"Wesnoth軍に匹敵するものではないと確信しておるわ。"
 
 #. [side]: type=Lich, id=Sagus
 #. [part]
@@ -3592,8 +3548,8 @@ msgid ""
 "I have fought these things, and I know what I am talking about. This is a "
 "deadly serious threat."
 msgstr ""
-"私はこれらと戦いました、そして私は自分が何について話をしているか分かっており"
-"ます。 これは命にかかわる深刻な脅威です。"
+"私はこれらと戦ったのです、そして私は自分が何について話をしているか分かってお"
+"ります。 これは命にかかわる深刻な脅威です。"
 
 # Artuman 魔術師
 #. [part]
@@ -3601,30 +3557,30 @@ msgstr ""
 msgid ""
 "Are you saying Master Sagus speaks idly? Somebody needs to teach you respect!"
 msgstr ""
-"あなたはSagus 卿が無為に話したと言われるのか？ 誰かがあなたに敬意というものを"
-"教える必要がある！"
+"貴君はSagus 卿が無為に話したと言われるか？ 貴君には敬意というものを誰かが教え"
+"てやる必要がある！"
 
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:57
 msgid "Artuman"
 msgstr "Artuman"
 
-# % King
+# King
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:61
 msgid ""
 "You have proven your bravery, young Delfador, but I think you underestimate "
 "the might of our army."
 msgstr ""
-"若きDelfador よ。そなたは自分の勇敢さを証明した。だがそなたは我が軍の力を過小"
-"評価していると思う。"
+"若きDelfador よ。そなたは自分の勇敢さを証明した。だがそなたは我が軍の力を見く"
+"びっておるように思う。"
 
-# % Lionel
+# Lionel
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:66
 msgid "Sire, may I lead some part of your army to crush the undead?"
 msgstr ""
-"陛下、私にアンデッドを壊滅させる為、軍の一部を指揮させて下さいませんか？"
+"陛下、私にアンデッドを壊滅させる為、軍の一部の指揮をお任せ下さいませんか？"
 
 # % King
 #. [part]
@@ -3636,13 +3592,13 @@ msgstr ""
 "ならん Lionel。このような簡単な任に最上の将校は要らぬ。我が軍の大部分の代わり"
 "にDudponを送ろう。"
 
-# % Lionel
+# Lionel
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:74
 msgid "What are my orders, then?"
 msgstr "では、私へのご命令は？"
 
-# % King
+# King
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:78
 msgid ""
@@ -3651,16 +3607,15 @@ msgid ""
 "the circumstances of Leollyn's death are not fully clear."
 msgstr ""
 "Delfador の勇敢さの褒美として、そなたには一時的に部下と共に彼個人の護衛を命ず"
-"る。Leollyn の死の真相が完全に明らかになってはいないように、彼に不都合な事が"
-"起こらぬよう確実に護衛するのだ。"
+"る。Leollyn の死の一件の真相が完全に明らかになってはおらぬように、彼に不都合"
+"な事が起こらぬようしかと護衛するのだ。"
 
-# % Lionel
+# Lionel
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:82
 msgid "As you command, sire!"
 msgstr "ご命令通りに、陛下！"
 
-# %
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:89
 msgid ""
@@ -3676,7 +3631,7 @@ msgstr ""
 "ました。今や Iliah - Malal軍と Weldyn の間を阻むものは何もありませんでし"
 "た……。"
 
-# % King
+# King
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:93
 msgid ""
@@ -3684,15 +3639,15 @@ msgid ""
 "And I should have listened to you, Delfador."
 msgstr ""
 "惨たんたる有様だ。余は自身で軍を率い、そして彼らと共に死ぬべきであった。 そし"
-"て余はそなたに耳をかたむけるべきだったな、Delfadorよ。"
+"て余はそなたに耳を傾けるべきだったな、Delfadorよ。"
 
-# % Lionel
+# Lionel
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:97
 msgid "We will fight till the last man, my King."
-msgstr "王様、我々は最後の一人まで戦い抜くでしょう。"
+msgstr "国王陛下、我々は最後の一兵まで戦い抜くでありましょう。"
 
-# % Delf
+# Delf
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:101
 msgid ""
@@ -3702,13 +3657,12 @@ msgstr ""
 "我が君、事は非常に重大です。ですがまだ全てが失われたわけではありません。我々"
 "が挫けなければ、まだ望みがあります。"
 
-# % King
+# King
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:105
 msgid "Yes, Delfador. This time we will follow your advice."
 msgstr "そうだなDelfador。 我々は今回はそなたの助言に従おう。"
 
-# %　最後の一文チェック
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:109
 msgid ""
@@ -3724,16 +3678,16 @@ msgstr ""
 "衛を編成しなくてはなりません。 第二に、我々はエルフに陽動作戦を頼む必要があり"
 "ます。Iliah - Malal の注意を逸らして遅らせるためにです。 エルフは平原では真正"
 "面からアンデッドと戦えないでしょう。けれども彼らは、アンデッドがあえて追跡し"
-"ない森から攻撃することで、彼らをしつこく攻撃することができます。 そして最後"
-"に、私は今まで学習していました。そして今私はIliah - Malal のの死者の国の門を"
-"どのようにすれば閉じることができるか分かったと思います。 私は少々護衛を必要と"
-"するでしょう、しかしこれは即座になされなくてはなりません。"
+"ようとしない森から攻撃することで、彼らをしつこく攻撃することができます。 そし"
+"て最後に、私は今まで学習していました。そして今私はIliah - Malal のの死者の国"
+"の門をどのようにすれば閉じることができるか分かったと思います。 私は少々護衛を"
+"必要とするでしょう、しかしこれは迅速になされなくてはなりません。"
 
-# % Lionel
+# Lionel
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:113
 msgid "My Lord, I can arrange the defenses around the city."
-msgstr "陛下、私に都市の周りの防衛隊を配置させてください。"
+msgstr "陛下、私に都市周りの防衛隊の編成をお任せ下さい。"
 
 # % King
 #. [part]
@@ -3741,7 +3695,7 @@ msgstr "陛下、私に都市の周りの防衛隊を配置させてください
 msgid "Very well, Lionel, take command."
 msgstr "よかろう、Lionel。指揮を執れ。"
 
-# % Del   fuzzy
+# Del
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:121
 msgid ""
@@ -3750,20 +3704,20 @@ msgid ""
 "every mage in Wesnoth, from Alduin and elsewhere. And you must prepare more "
 "heavy infantry."
 msgstr ""
-"これらはただ第一歩に過ぎません。 もし我々がアンデッドを倒すなら、我々は軍の使"
-"い方と訓練を今までより違う方法でする必要があります。 最初に、あなたはAlduin "
-"と他のどこかから、 Wesnoth のすべての魔術師を召還しなくてはなりません。 そし"
-"てもっと多くの重歩兵を準備しなくてはなりません。"
+"これらはただ第一歩に過ぎません。 もし我々がアンデッドを倒そうとするなら、我々"
+"は軍の使い方と訓練を今までと違う方法でする必要があります。 最初にAlduin と他"
+"のどこかからWesnoth のすべての魔術師を召還しなくてはなりません。 そしてもっと"
+"多くの重歩兵を準備しなくてはなりません。"
 
-# % Lionel
+# Lionel
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/16_dark_sky_over_weldyn.cfg:125
 msgid ""
 "But heavy infantry is too slow! And mages in the army? Who can command these "
 "know-it-alls?"
 msgstr ""
-"だが重歩兵はあまりにも遅い！ そして軍に魔術師？ 誰がそんな知ったかぶり連中を"
-"指揮することができよう？"
+"だが重歩兵はあまりにも遅い！ そして軍に魔術師？ 誰がかような知ったかぶり連中"
+"を指揮することができよう？"
 
 # % King 少しLionelとDelfadorごっちゃ?
 #. [part]
@@ -3777,12 +3731,12 @@ msgstr ""
 "実に防御せよ。彼らは貴重だ。さあ、行って門を閉じ、そしてすぐに戻って来るの"
 "だ！"
 
+# シナリオ仮題
 #. [scenario]: id=17_a_new_ally
 #: data/campaigns/Delfadors_Memoirs/scenarios/17_a_new_ally.cfg:3
 msgid "A New Ally"
-msgstr ""
+msgstr "新同盟"
 
-# % fuzzy
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/17_a_new_ally.cfg:23
 msgid ""
@@ -3826,7 +3780,6 @@ msgstr "Ulrek の死"
 msgid "Death of Relgorn"
 msgstr "Relgorn の死"
 
-# % Gruv-Malal
 #. [message]: speaker=Gruv-Malal
 #: data/campaigns/Delfadors_Memoirs/scenarios/17_a_new_ally.cfg:134
 msgid ""
@@ -3834,13 +3787,12 @@ msgid ""
 msgstr ""
 "攻撃せよ、我が忠実な兵士たちよ。殺せば殺すほどに、主人の兵が増えるのだ！"
 
-# % fuzzy
+# bagって嫌な奴みたいな感じらしい いい訳があれば
 #. [message]: speaker=Ulrek
 #: data/campaigns/Delfadors_Memoirs/scenarios/17_a_new_ally.cfg:138
 msgid "Keep fighting them sacks o' bones."
 msgstr "戦い続けておれ、骨の袋め。"
 
-# %
 #. [message]: speaker=Relgorn
 #: data/campaigns/Delfadors_Memoirs/scenarios/17_a_new_ally.cfg:142
 msgid "Ulrek, more enemies approach from the south... Wait, these are humans!"
@@ -3851,13 +3803,11 @@ msgstr "Ulrek 、更なる敵が南から接近してくるぞ……待て、人
 msgid "Dwarves, attacked by undead. We must help them."
 msgstr "ドワーフだ。アンデッドに攻撃されている。彼らを助けなくては。"
 
-# %
 #. [message]: speaker=Gruv-Malal
 #: data/campaigns/Delfadors_Memoirs/scenarios/17_a_new_ally.cfg:150
 msgid "Then your corpses will also serve my master."
-msgstr "ならば、貴様の屍も同じく主人に仕えることになるのだ。"
+msgstr "ならば、貴様たちの屍も同じく主人に仕えることになるのだ。"
 
-# %
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/17_a_new_ally.cfg:154
 msgid "Your master's days are numbered. Yours will end this day!"
@@ -3869,13 +3819,11 @@ msgstr "お前の主人の余命はいくばくもない。そしてお前の余
 msgid "I am Delfador. And you are dust!"
 msgstr "私はDelfador。 そしてもはやお前は塵にすぎん！"
 
-# % fuzzy
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/17_a_new_ally.cfg:183
 msgid "Now we shall rid Wesnoth of the rest of your unholy spawn!"
-msgstr "さあ我々は 神聖でない卵の残りをWesnoth から取り除くのだ！"
+msgstr "さあ我々は悪魔の卵の残りをWesnoth から取り除くのだ！"
 
-# %
 #. [message]: speaker=Ulrek
 #: data/campaigns/Delfadors_Memoirs/scenarios/17_a_new_ally.cfg:187
 msgid "We are in your debt."
@@ -3888,10 +3836,10 @@ msgid ""
 "house is in yer debt today. But who are ye and what do ye do in these lands? "
 msgstr ""
 "人間族よ、おぬし達はよく戦った。 わしはUlrek。Norlund クランの族長だ。 わしの"
-"一家は今日おぬし達に借りがある。 だがおぬし達は何者で、このあたりで何をするの"
-"だ？"
+"一家は今日おぬし達に借りがある。 だがおぬし達は何者で、このあたりで何をしよう"
+"というのだ？"
 
-# % fuzzy　ひさし　?
+# %c 　ひさし　?　とりあえず　「すぐ脇」
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/17_a_new_ally.cfg:203
 msgid ""
@@ -3901,10 +3849,9 @@ msgid ""
 "all doomed."
 msgstr ""
 "私はDelfador です。 友よ、強大な邪悪が解き放たれました。これらの丘の北の最果"
-"ての近くで死者の国の門が開けられました。Lintanir の森のひさしの下で。私はそれ"
-"を閉じなくてはなりません、さもなくば我々は全員破滅します。"
+"ての近くで死者の国の門が開けられました。Lintanir の森のすぐ脇で。私はそれを閉"
+"じなくてはなりません、さもなくば我々は皆破滅します。"
 
-# % service
 #. [message]: speaker=Ulrek
 #: data/campaigns/Delfadors_Memoirs/scenarios/17_a_new_ally.cfg:207
 msgid ""
@@ -3920,17 +3867,15 @@ msgstr ""
 "連れて行くのだ。わしの一族の残っていた者達に守られ安全だろう。 だが、おぬし達"
 "は本当にあれを閉じることができるのか？"
 
-# % このグラ、父ちゃんより老けて見える　父ちゃん　でいいのか？w
 #. [message]: speaker=Relgorn
 #: data/campaigns/Delfadors_Memoirs/scenarios/17_a_new_ally.cfg:211
 msgid ""
 "Father, did ye not see these thunderbolts! This was awesome. Even our "
 "thundersticks do not strike so powerfully!"
 msgstr ""
-"父ちゃん、さっきの雷を見なかったのか！ あれはもの凄かった。 俺たちのいかづち"
-"の杖でさえあれほど強力じゃないぞ！"
+"族長、さっきの雷を見なかったのか！ あれはもの凄かった。 俺たちの雷撃でさえあ"
+"れほど強力じゃないぞ！"
 
-# %　恩に着る　ニュアンス違うかも
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/17_a_new_ally.cfg:215
 msgid ""
@@ -3940,7 +3885,6 @@ msgstr ""
 "友よ。あなたの親切な申し出には恩に着ます。だが、我々は時間を無駄にできませ"
 "ん！"
 
-# %
 #. [message]: speaker=Ulrek
 #: data/campaigns/Delfadors_Memoirs/scenarios/17_a_new_ally.cfg:219
 msgid ""
@@ -3958,18 +3902,20 @@ msgid ""
 "With their leader slain we cannot count on dwarvish help to reach Iliah-"
 "Malal's portal! All is lost!"
 msgstr ""
+"リーダーが殺されてしまっては、Iliah - Malal の門まで行くのにドワーフの助けを"
+"当てにすることができない！ すべては無駄になった！"
 
 #. [message]: speaker=Ulrek
 #: data/campaigns/Delfadors_Memoirs/scenarios/17_a_new_ally.cfg:252
 msgid "Relgorn fell! Quickly, run for yer lives!"
-msgstr ""
+msgstr "Relgorn がやられた！ 早く、命が惜しければ逃げるのだ！"
 
+# シナリオ仮題
 #. [scenario]: id=18_the_portal_of_doom
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_the_portal_of_doom.cfg:3
 msgid "The Portal of Doom"
-msgstr ""
+msgstr "破滅の門"
 
-# %c
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_the_portal_of_doom.cfg:40
 msgid ""
@@ -3979,9 +3925,9 @@ msgid ""
 "destination, undetected by Iliah-Malal."
 msgstr ""
 "ドワーフはトンネルでできた本当の迷路の中を Delfador を案内しました。ドワーフ"
-"がどれだけトンネル内を速く移動できるのか、 Delfador はそのスピードにびっくり"
-"しました。彼が到着可能だと思ったよりも、はるかに早くIliah - Malal にも見つか"
-"らず目的地に着きました。"
+"がどれだけトンネル内を速く移動できるのか、 Delfador はそのスピードに驚きまし"
+"た。彼が到着可能だと思ったよりも、はるかに早く、Iliah - Malal にも見つからず"
+"に目的地に着きました。"
 
 #. [side]: type=Death Knight, id=Prepolur
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_the_portal_of_doom.cfg:63
@@ -3993,22 +3939,19 @@ msgstr "Prepolur"
 msgid "Unuvim"
 msgstr "Unuvim"
 
-# %
 #. [objective]: condition=win
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_the_portal_of_doom.cfg:150
 msgid "Close the Portal and return Delfador to his keep"
 msgstr "門を閉め、Delfador を城に帰す。"
 
-# %
 #. [message]: speaker=Prepolur
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_the_portal_of_doom.cfg:186
 msgid ""
 "Living men and dwarves are nearing. Rise, Portal Guard and slay those "
 "intruders!"
 msgstr ""
-"生ある人間とドワーフ共が接近中だ。 立ち上がれ、門の警備隊。侵入者を殺せ！"
+"生ある人間共とドワーフ共が接近中だ。 立ち上がれ、門の警備隊。侵入者を殺せ！"
 
-# %
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_the_portal_of_doom.cfg:190
 msgid ""
@@ -4018,7 +3961,6 @@ msgstr ""
 "門はどんな犠牲を払っても閉じなくてはならないのだ。 閉じる為には許してくれ。そ"
 "うすれば私が閉鎖できる。"
 
-# %
 #. [message]: speaker=Ulrek
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_the_portal_of_doom.cfg:194
 msgid "Ye all heard! Naught will ever say dwarves ever feared anyone. Attack!"
@@ -4026,25 +3968,21 @@ msgstr ""
 "全員聞いたな！ 誰にもドワーフが決して何者をも恐れないと常に言わせるのだ。 攻"
 "撃せよ！"
 
-# %
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_the_portal_of_doom.cfg:219
 msgid "Earth, rise and shut this gate of evil for good!"
-msgstr "大地よ、起きよ！ そして善なる者の為に悪なるこの門を封鎖したまえ！"
+msgstr "大地よ、起きよ！ そして永遠に悪なるこの門を封鎖したまえ！"
 
-# %
 #. [message]: speaker=Iliah-Malal
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_the_portal_of_doom.cfg:244
 msgid "Portal, reopen! No! What have you done? "
-msgstr "門よ、再度開きしことを！ ダメだ！ お前は何をしたのだ？ "
+msgstr "門よ、再び開くのだ！ ダメだ！ お前は何をしたのだ？ "
 
-# %
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_the_portal_of_doom.cfg:249
 msgid "Your portal is shut. And you cannot open another one."
 msgstr "お前の門は閉鎖した。別のものも開けることはできないぞ。"
 
-# %
 #. [message]: speaker=Iliah-Malal
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_the_portal_of_doom.cfg:253
 msgid ""
@@ -4056,48 +3994,43 @@ msgstr ""
 "れば、お前は私の右腕となって生きるだろう。我々の魔法の技能が一緒になれば、圧"
 "倒的で並ぶものなどなくなるだろう。"
 
-# %
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_the_portal_of_doom.cfg:257
 msgid "Join you?"
 msgstr "お前の仲間に？"
 
-# %
 #. [message]: speaker=Iliah-Malal
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_the_portal_of_doom.cfg:261
 msgid "Or, fight me and die. I will then resurrect you as my slave."
 msgstr "さもなくば私と戦って死ね。そのあとは私の奴隷として生き返らせよう。"
 
-# %
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_the_portal_of_doom.cfg:265
 msgid ""
 "My path is set. Your path must end. I will not dishonor my oaths, and will "
 "not abandon friends and country."
 msgstr ""
-"私の道は揺るぎ無い。 お前の道は終わろう。 私は自分の誓いを汚しはしない。そし"
-"て友と国を見捨てるものか。"
+"私の道は揺るぎ無い。 お前の道は終わるのだ。 私は自分の誓いを汚しはしない。そ"
+"して友と国を見捨てるものか。"
 
-# %
 #. [message]: speaker=Iliah-Malal
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_the_portal_of_doom.cfg:269
 msgid ""
 "Then you shall perish. After I finish with these pesky elves and dwarves, "
 "Weldyn will be mine. Wesnoth has no army to resist me."
 msgstr ""
-"ならば、お前に死があろう。 私がこれらのうるさいエルフとドワーフを始末した後、"
+"ならば、お前に死あろう。 私がこいつらうるさいエルフとドワーフ共を始末した後、"
 "Weldyn は私のものになろう。 Wesnoth には私に抗える軍は無い。"
 
-# %
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_the_portal_of_doom.cfg:273
 msgid ""
 "(to the dwarves). Quickly, back in the tunnel. I will stay last to seal the "
 "entrance."
 msgstr ""
-"（ドワーフに）速くトンネルに戻って。 私は入口を封鎖するために最後までいる。"
+"（ドワーフに）速くトンネルに戻ってくれ。 私は入口を封鎖するために最後までい"
+"る。"
 
-# %
 #. [objective]: condition=win
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_the_portal_of_doom.cfg:289
 msgid "All the player's units must reach the tunnel. Then Delfador."
@@ -4108,13 +4041,12 @@ msgstr "すべてのユニットをトンネルに移動する。 最後にDelfa
 msgid "Hurry up!"
 msgstr "急げ！"
 
-# % now 後で確認
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_the_portal_of_doom.cfg:357
 msgid "We're in. Now: Earth, seal this entrance!"
-msgstr "全員入ったな。大地よ、この入口を封鎖したまえ！"
+msgstr "全員入ったな。さあ大地よ、この入口を封鎖したまえ！"
 
-# %　どけ！　でもいいけどw
+# どけ　か
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_the_portal_of_doom.cfg:405
 msgid "Out of my way, foul creatures!"
@@ -4150,14 +4082,12 @@ msgstr "Hyvrun"
 msgid "Blud"
 msgstr "Blud"
 
-# %　
 #. [message]: id=Iliah-Malal
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_the_portal_of_doom.cfg:478
 msgid "What's going on here? Is this Delfador? Welcome to your doom, Delfador!"
 msgstr ""
 "ここで何が起こっておる？ Delfador か？ お前の破滅にようこそ、 Delfador ！"
 
-# %
 #. [message]: id=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_the_portal_of_doom.cfg:482
 msgid ""
@@ -4170,7 +4100,6 @@ msgstr "敵の援軍だ。 急げ、制圧される前に門を閉じなくて�
 msgid "Slay them all!"
 msgstr "皆殺しだ！"
 
-# %
 #. [message]: speaker=Iliah-Malal
 #: data/campaigns/Delfadors_Memoirs/scenarios/18_the_portal_of_doom.cfg:504
 msgid ""
@@ -4179,15 +4108,16 @@ msgid ""
 "you!"
 msgstr ""
 "愚か者め！ お前は死者の国で私を殺すことができなかった。同じくこの世でもできな"
-"いのだ！ 私は死と生双方を超越している。そして私はお前たちを破滅させる為に戻ろ"
-"う！"
+"いのだ！ 私は死と生双方を超越している。そして私はお前たちを破滅させる為に戻っ"
+"てこよう！"
 
+# シナリオ仮題
 #. [scenario]: id=19_showdown_in_the_northern_swamp
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_showdown_in_the_northern_swamp.cfg:4
 msgid "Showdown in the Northern Swamp"
-msgstr ""
+msgstr "北の沼の決着"
 
-# %fuzzy %c 臭気を放つ中に軍を育てることについての瀬戸際で　なんのこっちゃ
+# %c 以下あまりきれいなナレーションではないので、再度検討
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_showdown_in_the_northern_swamp.cfg:18
 msgid ""
@@ -4200,7 +4130,7 @@ msgstr ""
 "門が閉じられ、Iliah - Malal の力は弱くなりました。 彼は力を取り戻し、もう１つ"
 "の魔法を試みるために 恐怖の沼　の中へと撤退しました。 Delfador の兵たちは、ド"
 "ワーフの秘密の道を通って西に急ぎました。そして夜間はひそかに Listra を渡りま"
-"した。そこでネクロマンサーを見つけました。(一行未訳)。"
+"した。そこで降霊術師を見つけました。彼は臭気の中から別の軍を出す直前でした。"
 
 # %
 #. [part]
@@ -4226,17 +4156,15 @@ msgstr "Maldun"
 msgid "Alderoth"
 msgstr "Alderoth"
 
-# %
 #. [message]: speaker=Iliah-Malal
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_showdown_in_the_northern_swamp.cfg:181
 msgid ""
 "So we meet again, Delfador. You were a fool to turn down my offer. None of "
 "your allies will save you now."
 msgstr ""
-"そしてまた会ったな、 Delfador。私の申し出を却下するとは愚か者よ。 お前の同盟"
-"者のいずれもお前を救えまい。"
+"そしてまた会ったな、 Delfador。私の申し出を蹴るとは愚か者よ。 お前の同盟者の"
+"いずれもお前を救えまい。"
 
-# %
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_showdown_in_the_northern_swamp.cfg:185
 msgid ""
@@ -4246,7 +4174,7 @@ msgstr ""
 "お前は邪悪な秘術で自分の魂を荒廃させたのだ。お前の言葉は空虚だ。そんなものを"
 "恐れはしない。"
 
-# % mighty の訳　powerfulとはっきり区別できる単語がみつからないのでとりあえず……ちょっと変かも
+# 私の踵の下で潰れることになるのだ。　直訳の方がいいのか
 #. [message]: speaker=Iliah-Malal
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_showdown_in_the_northern_swamp.cfg:189
 msgid ""
@@ -4254,35 +4182,33 @@ msgid ""
 "Delfador the Mighty, Delfador the Powerful, Delfador the Great...rather than "
 "a jumped-up hedge wizard I shall shortly crush beneath my heel."
 msgstr ""
-"我が下僕達よ、奴は面白くないものよのぉ？　奴は生意気な似非魔術師よりのぼせあ"
-"がりおって。高貴なるDelfador、強大なるDelfador、偉大なるDelfador……。お前はま"
-"もなく私のかかとの下で潰れることになるのだ。"
+"我が僕達よ、奴は面白くないものよのぉ？　奴は生意気な似非魔術師よりのぼせあが"
+"りおって。並外れたDelfador、強大なるDelfador、偉大なるDelfador……。お前は間も"
+"なく私に踏み潰されるのだ。"
 
-# % 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_showdown_in_the_northern_swamp.cfg:193
 msgid ""
 "Delfador the Great, eh? And so it comes to pass as the four Oracles "
 "foretold. I accept your name-gift, Iliah-Malal."
 msgstr ""
-"偉大なるDelfador。えっ？ ならばそれは四賢人が予言した通りになる。私はお前の名"
-"前の贈り物を快く受け取ろう、Iliah - Malalよ。"
+"えっ？偉大なるDelfadorだと？ ならばそれは四賢人が予言した通りになる。私はお前"
+"の名前の贈り物を頂戴しよう、Iliah - Malalよ。"
 
-# %
 #. [message]: speaker=Iliah-Malal
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_showdown_in_the_northern_swamp.cfg:197
 msgid ""
 "Oracles? What nonsense you babble...after you die, I will raise your corpse "
 "and compel you to tell me how to reopen my portal!"
 msgstr ""
-"賢人だと？ お前のたわごとなどくだらん。お前が死んだ後に死体を甦らせ、再び門を"
-"開くすべを話すよう強制してやる！"
+"賢人だと？ お前の戯言などくだらん。お前が死んだ後に死体を甦らせ、再び門を開く"
+"すべを話すよう強いてやる！"
 
-# %
+# おかしい。Delfadorが止めを刺すはずなんだが
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_showdown_in_the_northern_swamp.cfg:201
 msgid "One of us will find a final death here. I do not think it will be me."
-msgstr "仲間の１人が決定的な死を見いだすだろう。それが私だと思わないが。"
+msgstr "仲間の１人がここで決定的な死を見いだすだろう。それが私だと思わないが。"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_showdown_in_the_northern_swamp.cfg:212
@@ -4290,15 +4216,16 @@ msgid ""
 "In this scenario only, you may recall your veterans from the Land of the "
 "Dead. The killing blow against Iliah-Malal can only be struck by one of them."
 msgstr ""
+"このシナリオにおいてのみ、あなたは死者の国から戦士を召還しても構いません。 "
+"Iliah - Malal に対しての止めの一撃は、彼らのうちの１人によってのみ与えられま"
+"す。"
 
-# %
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_showdown_in_the_northern_swamp.cfg:227
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_showdown_in_the_northern_swamp.cfg:282
 msgid "Now your days are ended!"
 msgstr "今度こそお前の命運は尽きた！"
 
-# %
 #. [message]: speaker=Iliah-Malal
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_showdown_in_the_northern_swamp.cfg:231
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_showdown_in_the_northern_swamp.cfg:258
@@ -4308,10 +4235,9 @@ msgid ""
 "The power of death is mine! When you strike me down I arise stronger than "
 "before!"
 msgstr ""
-"死の力は私のものだ！ お前達が私を打ち倒そうとも、私は前より強くなって甦るの"
+"死の力は私のものだ！ お前達が私を打ち倒そうとも、私は以前より強くなって甦るの"
 "だ！"
 
-# %
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_showdown_in_the_northern_swamp.cfg:235
 msgid ""
@@ -4320,9 +4246,9 @@ msgid ""
 "themselves."
 msgstr ""
 "今回はだめだ。なぜなら私はCrelanu の本の降霊術の暗黒の中心部分を良く見たから"
-"だ。そしてそこにお前の死者自身の手にかかって決定的な死を見つけたのだ。"
+"だ。そしてそこに死者たち自身の手によるお前の決定的な死を見つけたのだ。"
 
-# % fuzzy 私が光を留まらせる！  ?
+# 新しいバージョンではDelfadorの止め必須らしい
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_showdown_in_the_northern_swamp.cfg:290
 msgid ""
@@ -4330,16 +4256,13 @@ msgid ""
 "Book of Crelanu, AND I REMAIN OF THE LIGHT!"
 msgstr ""
 "今回はだめだ。なぜなら私はCrelanu の本の降霊術の暗黒の中心部分を良く見たから"
-"だ。そしてそこにお前の死者自身の手にかかって決定的な死を見つけたのだ。光よ留"
-"まれ！"
+"だ。そして「我光を留まらせり！」"
 
-# %
 #. [message]: speaker=Lionel
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_showdown_in_the_northern_swamp.cfg:332
 msgid "Delfador...you raise undead?!?"
 msgstr "Delfador あなたはアンデッドを甦らせたのか？！？"
 
-# %
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_showdown_in_the_northern_swamp.cfg:336
 msgid ""
@@ -4351,78 +4274,69 @@ msgstr ""
 "何名かにここの事を提案したのだ。そして彼らは自ら進んで来てくれた。今日、彼ら"
 "は生ある者の為に戦う。"
 
-# %
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_showdown_in_the_northern_swamp.cfg:344
 msgid ""
 "I have prepared some holy water. Sprinkle it on your impact weapon and smash "
 "those foul creatures into dust!"
 msgstr ""
-"私はいくつかの聖水を用意した。 あなたの打撃武器の上にそれを撒き、おぞましき生"
+"私は聖水をいくつか用意した。 あなた方の打撃武器の上にそれを撒き、おぞましき生"
 "物共を打ち砕いて塵にするのだ！"
 
-# %
 #. [message]: speaker=Iliah-Malal
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_showdown_in_the_northern_swamp.cfg:349
 msgid "Powers of darkness, enshroud this field!"
 msgstr "闇の力よ、この戦場を覆い隠せ！"
 
-# %
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_showdown_in_the_northern_swamp.cfg:363
 msgid "Darkness shall be dispelled!"
 msgstr "闇よ晴れたまえ！"
 
-# %
 #. [message]: speaker=Iliah-Malal
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_showdown_in_the_northern_swamp.cfg:371
 msgid "No!"
 msgstr "やめろ！"
 
-# % まじっすか？
+# ちょっと違うかも
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_showdown_in_the_northern_swamp.cfg:375
 msgid "Let the light shine forth!"
-msgstr "以後、輝く光あれ！"
+msgstr "光よまばゆく溢れよ！"
 
-# %
 #. [message]: speaker=Iliah-Malal
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_showdown_in_the_northern_swamp.cfg:379
 msgid ""
 "Your sorcery matters little. Your army will fall like wheat to the sickle "
 "before my undead legions."
 msgstr ""
-"お前の魔術ごときは些細な事だ。お前の軍は私のアンデッドの大群の前には鎌に当た"
-"る麦のように倒れよう。"
+"お前の魔術ごときは些細な事だ。お前の軍など私のアンデッドの大群の前には、鎌に"
+"当たる麦のように倒れよう。"
 
-# %c match
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_showdown_in_the_northern_swamp.cfg:383
 msgid ""
 "Your mindless minions will be no match for the spirit and fire of the living."
-msgstr "お前の愚かな手下共は、生きているものの勇気と情熱に匹敵しないだろう。"
+msgstr "お前の愚かな手先共は、生きている者の勇気と情熱に敵うまい。"
 
-# %
 #. [message]: speaker=Lionel
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_showdown_in_the_northern_swamp.cfg:388
 msgid ""
 "Delfador, as the King ordered I place all troops under your command. They "
 "will follow you to death, if necessary, and so will I!"
 msgstr ""
-"Delfador 、王がお命じになったように、私はすべての兵をあなたの指揮の下に置く。"
+"Delfador、国王がお命じになったように、私はすべての兵をあなたの指揮下に置く。"
 "必要とあらば彼らは死ぬまであなたに従うだろう。私とて同じだ！"
 
-# %
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_showdown_in_the_northern_swamp.cfg:393
 msgid ""
 "Lionel, it is an honor to go into battle beside you. Now let us fight for "
 "life over death!"
 msgstr ""
-"Lionel, あなたの傍で戦闘に参加することは名誉だ。では死を越え、生のために戦お"
+"Lionel、あなたの傍で戦闘に参加することは名誉だ。では死を越え、生のために戦お"
 "う！"
 
-# %
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_showdown_in_the_northern_swamp.cfg:405
 msgid ""
@@ -4433,7 +4347,7 @@ msgstr ""
 "なぜなら Iliah - Malal の生無きことは、生無き者の接触によってのみ終わらせるこ"
 "とができるのだから。"
 
-# %
+# 最新版はこのセリフのみ有効……たぶん
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_showdown_in_the_northern_swamp.cfg:411
 msgid ""
@@ -4444,23 +4358,20 @@ msgstr ""
 "Iliah - Malal の生無きことは、私がこの任務の為に特別に作った呪文によってのみ"
 "終わらせることができるのだから。"
 
-# %
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_showdown_in_the_northern_swamp.cfg:424
 msgid ""
 "Evil has been vanquished on this day. May this victory bring lasting peace."
 msgstr "邪悪が本日征服された。 この勝利が恒久平和をもたらしますように。"
 
-# %
 #. [message]: speaker=Kalenz
 #. [message]: speaker=Admirer5
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_showdown_in_the_northern_swamp.cfg:433
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_showdown_in_the_northern_swamp.cfg:443
 msgid ""
 "You have earned the name the accursed one gave you...Delfador the Great."
-msgstr "あなたは、あの呪われし者が与えた名を得ました……偉大なるDelfador。"
+msgstr "あなたは、あの呪われし者が与えし名を得ました……偉大なるDelfador。"
 
-# %
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_showdown_in_the_northern_swamp.cfg:455
 msgid ""
@@ -4468,15 +4379,13 @@ msgid ""
 "living on this day, return now to your peace and rest."
 msgstr ""
 "死者の国で私と共に戦い、本日生けるものと共に戦うことを選択したあなた。あなた"
-"の平穏と休息のためにすぐに戻ってください。"
+"方の平穏と休息のためにすぐに戻ってください。"
 
-# % for good
 #. [message]: speaker=Lionel
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_showdown_in_the_northern_swamp.cfg:466
 msgid "And the portal, it is sealed for good?"
 msgstr "それから門。あれは永久に閉鎖されますか？"
 
-# % fuzzy
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/19_showdown_in_the_northern_swamp.cfg:470
 msgid ""
@@ -4487,19 +4396,17 @@ msgid ""
 "corruption of the dark arts, and show themselves worthy of the land they "
 "live in."
 msgstr ""
-"はいそうです。けれども全体的に未完成な魔法では、重大すぎた仕事でした。まだ"
+"はいそうなります。しかし全体的に未完成な魔法では重大すぎた仕事でした。まだ"
 "残っている欠陥があります。あの世とこの世を行き来した Iliah - Malal の跡。アン"
-"デッドを甦らせることは将来においては以前より少し容易になるでしょう。 我々の後"
-"に続く者たちは、暗黒の秘術の悪用に対して、用心深くなければならないでしょう。"
-"そして彼らが住んでいる国が価値あることを示してください。"
+"デッドを甦らせることは、将来においては以前より少し容易になるでしょう。 我々の"
+"後に続く者たちは、暗黒の秘術の悪用に対して、用心深くなければならないでしょ"
+"う。そして彼らが住んでいる国が価値あることを示してください。"
 
-# %
 #. [scenario]: id=20_prince_of_wesnoth
 #: data/campaigns/Delfadors_Memoirs/scenarios/20_prince_of_wesnoth.cfg:4
 msgid "Prince of Wesnoth"
 msgstr "Wesnothの王子"
 
-# %
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/20_prince_of_wesnoth.cfg:22
 msgid ""
@@ -4523,7 +4430,6 @@ msgstr ""
 "エルフ族は、Delfadorが王の傍にいることを知りました。Wesnoth は信頼できる同盟"
 "者でしょう。 しばらくの間は。"
 
-# %
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/20_prince_of_wesnoth.cfg:31
 msgid ""
@@ -4533,7 +4439,6 @@ msgstr ""
 "けれども Delfador は王が傾聴するただ１人の人物ではありませんでした。更に王に"
 "近い人物がいたのです。 女王の力が増大していました……。"
 
-# %c　
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/20_prince_of_wesnoth.cfg:37
 msgid ""
@@ -4541,7 +4446,7 @@ msgid ""
 "Kalenz gathered a small force and hurried to the disputed country."
 msgstr ""
 "ある日、Wesnoth軍がエルフの国境を占領していると報告が届きました。Kalenz は小"
-"部隊を集めて、そして紛争中の地方に急ぎました。"
+"部隊を集めて紛争中の地方に急ぎました。"
 
 #. [side]: type=General, id=Eldred
 #: data/campaigns/Delfadors_Memoirs/scenarios/20_prince_of_wesnoth.cfg:66
@@ -4558,7 +4463,6 @@ msgstr "Lowel"
 msgid "Defeat Eldred"
 msgstr "Eldred を倒す"
 
-# %
 #. [message]: id=Kalenz
 #: data/campaigns/Delfadors_Memoirs/scenarios/20_prince_of_wesnoth.cfg:133
 msgid ""
@@ -4570,7 +4474,6 @@ msgstr ""
 "に撤退しなくてはなりません。 私はKalenz。エルフの高級貴族です。 偉大なる"
 "Delfador が我々との条約を確認するでしょう。"
 
-# %
 #. [message]: id=Eldred
 #: data/campaigns/Delfadors_Memoirs/scenarios/20_prince_of_wesnoth.cfg:137
 msgid ""
@@ -4580,9 +4483,8 @@ msgid ""
 msgstr ""
 "ここはもはやエルフの国ではない。俺はWesnoth の王子Eldred。俺と王位継承者は "
 "Wesnoth と Asheviere 女王の為にその権利を求める。 Delfadorは Wesnoth を牛耳っ"
-"てはいない！"
+"てはいないぞ！"
 
-# %
 #. [message]: id=Kalenz
 #: data/campaigns/Delfadors_Memoirs/scenarios/20_prince_of_wesnoth.cfg:141
 msgid ""
@@ -4592,7 +4494,6 @@ msgstr ""
 "私は人間族の血を流すことを望まないが、この傲慢な王子は私に他に選択を与えな"
 "い。"
 
-# %
 #. [message]: id=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/20_prince_of_wesnoth.cfg:170
 msgid ""
@@ -4608,7 +4509,6 @@ msgstr ""
 "ために最も深く謝罪をします。そして償いをする為、何でも彼の最大限の力ですると"
 "いう約束をします。"
 
-# %
 #. [message]: id=Kalenz
 #: data/campaigns/Delfadors_Memoirs/scenarios/20_prince_of_wesnoth.cfg:174
 msgid ""
@@ -4620,7 +4520,7 @@ msgstr ""
 "常に注意深くあるべきだと思っている。なぜなら彼は、 Wesnoth において唯一の支配"
 "者であるようには思えないのだ！"
 
-# % fuzzy cloud 前後見てから　影　か　雲
+# 影　か　雲　→　別シナリオのタイトル　で暗雲　にしたので雲で
 #. [message]: id=Chantal
 #: data/campaigns/Delfadors_Memoirs/scenarios/20_prince_of_wesnoth.cfg:178
 msgid ""
@@ -4628,10 +4528,9 @@ msgid ""
 "Royal Palace, and it has more centers than the prince alone. I see dark days "
 "ahead..."
 msgstr ""
-"Kalenz、とても心配だわ。宮殿の周りに、邪悪な渦を巻く影があります。そしてそれ"
+"Kalenz、とても心配だわ。宮殿の周りに、邪悪な渦を巻く雲があります。そしてそれ"
 "は王子だけでなく、沢山の中心を持っています。 前途に暗い日々が見えます……。"
 
-# %
 #. [message]: id=Kalenz
 #: data/campaigns/Delfadors_Memoirs/scenarios/20_prince_of_wesnoth.cfg:182
 msgid ""
@@ -4642,9 +4541,9 @@ msgid ""
 msgstr ""
 "私は Crelanu の本がこの背後にないのかと思う。 本はそれだけでは邪悪ではない。"
 "だがそれが与える力は読み手の魂の中の邪悪を拡大する傾向にある。 Delfador 、あ"
-"なたが本を手に入れてから、誰かあなた以外の者がその表紙を開けなかったか？"
+"なたが本を手に入れてから、誰かあなた以外の者がその表紙を開けなかっただろう"
+"か？"
 
-# %
 #. [message]: id=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/20_prince_of_wesnoth.cfg:186
 msgid ""
@@ -4658,13 +4557,11 @@ msgstr ""
 "のような話をすべて終わらせた。私はそれをただ高慢で強情な女性の一時的な気まぐ"
 "れに過ぎないと思った。"
 
-# %
 #. [message]: id=Chantal
 #: data/campaigns/Delfadors_Memoirs/scenarios/20_prince_of_wesnoth.cfg:190
 msgid "I wonder if we have not dangerously misjudged her..."
 msgstr "私たちは危険なまでに彼女を誤解していなかったのかしら……。"
 
-# %　
 #. [message]: id=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/20_prince_of_wesnoth.cfg:194
 msgid ""
@@ -4678,14 +4575,13 @@ msgstr ""
 #. [message]: id=Kalenz
 #: data/campaigns/Delfadors_Memoirs/scenarios/20_prince_of_wesnoth.cfg:207
 msgid "We are too late! All is lost!"
-msgstr ""
+msgstr "遅すぎた！ 全てが無駄になってしまった！"
 
 #. [scenario]: id=21_clash_at_the_manor
 #: data/campaigns/Delfadors_Memoirs/scenarios/21_clash_at_the_manor.cfg:4
 msgid "Clash at the manor"
 msgstr "荘園での激突"
 
-# %
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/21_clash_at_the_manor.cfg:26
 msgid ""
@@ -4697,13 +4593,11 @@ msgid ""
 "Lionel's mission had been compromised from the start."
 msgstr ""
 "Weldyn へ帰る途中、Delfadorは女王が家族の領地を訪問し、病気療養中の両親を見舞"
-"うために強力な護衛をつけて向かっていったのを見つけました。王の最も信頼を寄せ"
-"る将官Lionelは、Asheviere の要請で炎の笏を探索する任務のために Knalga に送ら"
-"れていました。その任務はLionelの命を犠牲にするでしょう。そしてLionelと "
-"Delfador のいずれもLionelの任務が初めから危ういものだと知る由もありませんでし"
-"た。"
+"うために強力な護衛をつけて向かっていったのを見ました。王の最も信頼を寄せる将"
+"官Lionelは、Asheviere の要請で炎の笏を探索する任務のために Knalga に送られて"
+"いました。その任務はLionelの命を犠牲にするでしょう。そしてLionelと Delfador "
+"のいずれもLionelの任務が初めから危ういものだと知る由もありませんでした。"
 
-# %
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/21_clash_at_the_manor.cfg:29
 msgid ""
@@ -4716,7 +4610,6 @@ msgstr ""
 "Eldred と彼の母親の背後にいることに気づきました。 Asheviere は彼らにお世辞を"
 "言い、次の戦争においての名誉と略奪品の約束で彼らを騙していました。"
 
-# %
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/21_clash_at_the_manor.cfg:33
 msgid ""
@@ -4730,7 +4623,6 @@ msgstr ""
 "以上の行動を起こさないよう命じました。 そして一度だけ、 Delfador は王の命令に"
 "従うことができないと分かっていました。"
 
-# %
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/21_clash_at_the_manor.cfg:37
 msgid ""
@@ -4757,7 +4649,6 @@ msgstr "Pilafman を倒す"
 msgid "Enemy unit reaches the signpost"
 msgstr "敵のユニットが目的に到達する"
 
-# %
 #. [message]: id=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/21_clash_at_the_manor.cfg:124
 msgid ""
@@ -4767,7 +4658,6 @@ msgstr ""
 "私はこんな手段に訴えざるを得なくて、悲嘆に暮れる。それでも本はどんな犠牲を"
 "払っても取り戻さなくてはならない。 そして誰も生かしておくわけにはいかない。"
 
-# %
 #. [message]: id=Kalenz
 #: data/campaigns/Delfadors_Memoirs/scenarios/21_clash_at_the_manor.cfg:128
 msgid ""
@@ -4779,7 +4669,6 @@ msgstr ""
 "ではいられない。 我々はあなたが要求したオークの武器を得た。 誰もこれをあなた"
 "やエルフと関連づけられはしないだろう。"
 
-# %
 #. [message]: id=Kalenz
 #: data/campaigns/Delfadors_Memoirs/scenarios/21_clash_at_the_manor.cfg:132
 msgid "Make sure everybody hears the orders. Nobody must escape."
@@ -4794,13 +4683,11 @@ msgstr ""
 "エルフだ！ そして裏切り者の Delfador も一緒だ！ 騎手、早く女王に注意を喚起し"
 "に行け。 そして衛兵、奴らを打ち破る用意だ！"
 
-# %
 #. [message]: id=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/21_clash_at_the_manor.cfg:183
 msgid "The guards are slain. Now we must look for the book."
 msgstr "衛兵は殺した。 さあ本を探さなくては。"
 
-# %
 #. [objective]: condition=win
 #: data/campaigns/Delfadors_Memoirs/scenarios/21_clash_at_the_manor.cfg:188
 msgid " New Objective: Find the secret door. Explore the manor."
@@ -4809,17 +4696,18 @@ msgstr "新しい目的：秘密の扉を見つける。荘園の探索。"
 #. [message]: id=unit
 #: data/campaigns/Delfadors_Memoirs/scenarios/21_clash_at_the_manor.cfg:207
 msgid "This looks like a secret door. Let's see where it leads..."
-msgstr ""
+msgstr "秘密のドアのようだ。どこに続いているか見てみよう……。"
 
 #. [message]: id=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/21_clash_at_the_manor.cfg:264
 msgid "Reinforcements on the horizon. We are too late!"
-msgstr ""
+msgstr "地平線上に援軍が。遅すぎた！"
 
+# シナリオ仮題　
 #. [scenario]: id=22_face_of_the_enemy
 #: data/campaigns/Delfadors_Memoirs/scenarios/22_face_of_the_enemy.cfg:4
 msgid "Face of the enemy"
-msgstr ""
+msgstr "敵の顔"
 
 # %c
 #. [part]
@@ -4829,64 +4717,56 @@ msgid ""
 "dungeon, a veritable maze of narrow corridors."
 msgstr ""
 "Delfador とエルフ達は秘密の扉を通り抜けました。そして迷宮になっていました、狭"
-"い通路の紛れも無い迷路。"
+"い通路で出来た紛れも無い迷路。"
 
 #. [objective]: condition=win
 #: data/campaigns/Delfadors_Memoirs/scenarios/22_face_of_the_enemy.cfg:72
 msgid "Defeat Sagus"
 msgstr "Sagus を倒す"
 
-# %
 #. [message]: speaker=Chantal
 #: data/campaigns/Delfadors_Memoirs/scenarios/22_face_of_the_enemy.cfg:107
 msgid "There is no doubt the book is here; I can feel its presence."
 msgstr "本はきっとここにあるわ。私にはその存在を感じとれます。"
 
-# %
 #. [message]: speaker=Kalenz
 #: data/campaigns/Delfadors_Memoirs/scenarios/22_face_of_the_enemy.cfg:111
 msgid ""
 "This place stinks of evil and death. Chantal, do we have any holy water with "
 "us? I fear we may have need of it ere long."
 msgstr ""
-"この場所は悪と死の悪臭がする。 Chantal 、聖水はあるか？ やがてそれが必要をに"
-"なるかもしれないと心配だ。"
+"この場所は悪と死の悪臭がする。 Chantal 、聖水はあるか？ やがてそれが必要にな"
+"るかもしれないと心配だ。"
 
-# %
 #. [message]: speaker=Chantal
 #: data/campaigns/Delfadors_Memoirs/scenarios/22_face_of_the_enemy.cfg:115
 msgid "Only one bottle, Kalenz. Choose carefully who will take it."
-msgstr "１ビンだけよ、Kalenz。誰が使うか慎重に決めて。"
+msgstr "１本だけよ、Kalenz。誰が使うか慎重に決めて。"
 
-# %
 #. [message]: speaker=Sagus
 #: data/campaigns/Delfadors_Memoirs/scenarios/22_face_of_the_enemy.cfg:123
 msgid "So, we meet again, Delfador! This time you will not steal what is mine!"
-msgstr "で、また会ったなDelfador ！ 今回は私のものを奪えまい！"
+msgstr "で、また会ったのおDelfador ！ 今回はわしのものを奪えまい！"
 
-# %
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/22_face_of_the_enemy.cfg:127
 msgid "Who are you, and what did I ever steal from you?"
 msgstr "お前は誰だ？ そして私がお前から今までに何を奪ったというのだ？"
 
-# %
 #. [message]: speaker=Sagus
 #: data/campaigns/Delfadors_Memoirs/scenarios/22_face_of_the_enemy.cfg:132
 msgid ""
 "I am the one whose place you took in the court of Wesnoth. But my daughter "
 "brought me what you seek, and I have seized the power of it."
 msgstr ""
-"私はお前が Wesnoth の宮廷でその地位を奪った者だ。だが私の娘はお前が探し求めて"
-"いる物を持って来てくれた。そして私はその力を掌握したのだ。"
+"わしはお前が Wesnoth の宮廷でその地位を奪った者だ。だがわしの娘はお前が探し求"
+"めている物を持って来てくれた。そしてわしはその力を掌握したのだ。"
 
-# %
 #. [message]: speaker=Chantal
 #: data/campaigns/Delfadors_Memoirs/scenarios/22_face_of_the_enemy.cfg:136
 msgid "Asheviere is this thing's daughter?"
-msgstr "Asheviere はこのものの娘なのですか？"
+msgstr "Asheviere はこのモノの娘なのですか？"
 
-# %
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/22_face_of_the_enemy.cfg:140
 msgid ""
@@ -4895,7 +4775,6 @@ msgstr ""
 "私はそれを恐れている。 これは熟練魔術師 Sagus だった。 私が彼を知った頃、彼は"
 "良い男だった。"
 
-# %c
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/22_face_of_the_enemy.cfg:144
 msgid ""
@@ -4905,7 +4784,7 @@ msgstr ""
 "Sagus……旧友……。あなたが取った本はあなたにも、あなたの娘にも、または王国のため"
 "にも何の役にも立ちません。それはあなた方二人を破壊するでしょう！"
 
-# %
+# 同い年？w 前のグラ……w
 #. [message]: speaker=Sagus
 #: data/campaigns/Delfadors_Memoirs/scenarios/22_face_of_the_enemy.cfg:148
 msgid ""
@@ -4915,11 +4794,10 @@ msgid ""
 "the same fate as he. Rise, my loyal soldiers!"
 msgstr ""
 "同い年のDelfador 、傲慢で、自信過剰で、常に他の者の上に自分自身を置いている。"
-"だが、私はお前と同じぐらい強力になった。私は本を習得した！ Leollyn がお前の前"
-"にそうしたように、お前は常に私を過小評価していた。 さあお前は彼と同じ運命をた"
-"どるだろう。 甦れ、私の忠実な兵たちよ！"
+"だが、わしはお前と同じぐらい強力になった。わしは本を習得した！ Leollyn がお前"
+"の前にそうしたように、お前は常にわしを見くびっておった。 さあお前は彼と同じ運"
+"命をたどることになるだろう。 甦れ、わしの忠実な兵たちよ！"
 
-# %
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/22_face_of_the_enemy.cfg:152
 msgid ""
@@ -4929,13 +4807,12 @@ msgstr ""
 "私はあなたが本を習得して、あなたを破滅させたのが分かる。ごきげんよう Sagus。 "
 "あなたはかつていい男だった。"
 
-# %
+# プレイヤーのヒントなので、分かり易いように
 #. [message]: speaker=Kalenz
 #: data/campaigns/Delfadors_Memoirs/scenarios/22_face_of_the_enemy.cfg:157
 msgid "Prepare to fight! Block the chokepoints and hold them there!"
-msgstr "戦闘準備！ 幅の狭い場所を塞ぎ、そこで奴らを止めるのだ！"
+msgstr "戦闘準備！ 幅の狭くなる地点でブロックし、そこで奴らを抑え込むのだ！"
 
-# %
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/22_face_of_the_enemy.cfg:169
 msgid ""
@@ -4944,17 +4821,17 @@ msgid ""
 msgstr ""
 "本は取り戻した。しかし後の祭りだ。友よ、ありがとう。さあここから出よう！"
 
+# %c
 #. [message]: speaker=Kalenz
 #: data/campaigns/Delfadors_Memoirs/scenarios/22_face_of_the_enemy.cfg:184
 msgid "We are too late! Royal troops are coming! We are trapped!"
-msgstr ""
+msgstr "遅すぎた！王軍が来たぞ！身動きが取れない！"
 
 #. [scenario]: id=23_epilogue
 #: data/campaigns/Delfadors_Memoirs/scenarios/23_epilogue.cfg:3
 msgid "Epilogue"
 msgstr "エピローグ"
 
-# %
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/23_epilogue.cfg:17
 msgid ""
@@ -4972,7 +4849,6 @@ msgstr ""
 "おける大規模な戦闘に導きます。でもそれは裏切り行為を通して失われてしまいまし"
 "た。"
 
-# %
 #. [part]
 #: data/campaigns/Delfadors_Memoirs/scenarios/23_epilogue.cfg:20
 msgid ""
@@ -5138,16 +5014,15 @@ msgstr "Ulrek"
 msgid "Methor"
 msgstr "Methor"
 
-# しまった！若すぎたか……
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/utils/deaths.cfg:13
 msgid "No! So young..."
-msgstr "しまった！まだまだ未熟者だった……"
+msgstr "しまった！ こうも未熟とは……。"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/utils/deaths.cfg:27
 msgid "No! Without Lionel's help, I am as good as defeated!"
-msgstr ""
+msgstr "ダメだ！ Lionel　の助け無しでは、私は倒されたも同然だ！"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/utils/deaths.cfg:40
@@ -5155,7 +5030,7 @@ msgid ""
 "Chantal! No — you can't be dead! I have no hope of returning to Wesnoth "
 "now..."
 msgstr ""
-"Chantal！いや、あなたが死ぬはずはない！もう、Wesnoth に戻るという望みはなく"
+"Chantal！そんな――あなたが死ぬはずはない！もう、Wesnoth に戻るという望みはなく"
 "なってしまった……"
 
 #. [message]: speaker=unit
@@ -5171,22 +5046,25 @@ msgstr "しまった！全てを失ってしまった……"
 #. [message]: id=Kalenz
 #: data/campaigns/Delfadors_Memoirs/utils/deaths.cfg:80
 msgid "No! It's all over!"
-msgstr ""
+msgstr "ダメだ！全ては終わった！"
 
 #. [message]: speaker=unit
 #: data/campaigns/Delfadors_Memoirs/utils/generators.cfg:66
 msgid "I call upon all that is holy to break the power of this evil stone!"
 msgstr "聖なる力をもってこの邪悪な石の力を打ち砕け！"
 
+# %c
 #. [message]: speaker=unit
 #: data/campaigns/Delfadors_Memoirs/utils/generators.cfg:107
 msgid "Evil emanates from this stone, but I have not the power to destroy it."
 msgstr ""
+"邪悪がこの石から放出されています。でも私にはそれを封じる力がありません。"
 
+# %c
 #. [message]: speaker=unit
 #: data/campaigns/Delfadors_Memoirs/utils/items.cfg:17
 msgid "Ahh... I can slake my thirst at this well. Glug, glug glug..."
-msgstr ""
+msgstr "これでうまいことのどの渇きを満たせる。ゴクゴクゴク……。"
 
 #. [object]: id=staff_lightning
 #: data/campaigns/Delfadors_Memoirs/utils/items.cfg:42
@@ -5205,7 +5083,7 @@ msgstr ""
 #. [object]: id=staff_lightning
 #: data/campaigns/Delfadors_Memoirs/utils/items.cfg:46
 msgid "Only a powerful mage can wield this."
-msgstr "強力な魔術師にしかがこれを振るうことはできません。"
+msgstr "強力な魔術師しかこれを振るうことはできません。"
 
 #. [effect]
 #: data/campaigns/Delfadors_Memoirs/utils/items.cfg:51
@@ -5220,7 +5098,7 @@ msgstr "雷"
 #. [message]: speaker=unit
 #: data/campaigns/Delfadors_Memoirs/utils/misc.cfg:37
 msgid "A secret passage... I wonder where it leads..."
-msgstr "抜け道だ……これでどこかに導かれるのだろうと思う……"
+msgstr "抜け道だ……どこに通じているのだろう……。"
 
 #. [time]: id=land_of_the_dead
 #. [illuminated_time]: id=land_of_the_dead
