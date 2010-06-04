@@ -11,15 +11,17 @@
 
    See the COPYING file for more details.
 */
-
 #include "global.hpp"
 
-#include "font.hpp"
-#include "marked-up_text.hpp"
 #include "tooltips.hpp"
+
+#include "font.hpp"
+#include "foreach.hpp"
+#include "game_display.hpp"
+#include "help.hpp"
+#include "marked-up_text.hpp"
+#include "resources.hpp"
 #include "video.hpp"
-
-
 
 namespace {
 
@@ -34,11 +36,12 @@ static const int text_width = 400;
 
 struct tooltip
 {
-	tooltip(const SDL_Rect& r, const std::string& msg)
-	: rect(r), message(msg)
+	tooltip(const SDL_Rect& r, const std::string& msg, const std::string& act = "")
+	: rect(r), message(msg), action(act)
 	{}
 	SDL_Rect rect;
 	std::string message;
+	std::string action;
 };
 
 std::vector<tooltip> tips;
@@ -141,16 +144,16 @@ void clear_tooltips(const SDL_Rect& rect)
 	}
 }
 
-void add_tooltip(const SDL_Rect& rect, const std::string& message)
+void add_tooltip(const SDL_Rect& rect, const std::string& message, const std::string& action)
 {
 	for(std::vector<tooltip>::iterator i = tips.begin(); i != tips.end(); ++i) {
 		if(rects_overlap(i->rect,rect)) {
-			*i = tooltip(rect, message);
+			*i = tooltip(rect, message, action);
 			return;
 		}
 	}
 
-	tips.push_back(tooltip(rect,message));
+	tips.push_back(tooltip(rect, message, action));
 	current_tooltip = tips.end();
 }
 
@@ -170,6 +173,18 @@ void process(int mousex, int mousey)
 
 	clear_tooltip();
 	current_tooltip = tips.end();
+}
+
+bool click(int mousex, int mousey)
+{
+	foreach(tooltip tip, tips) {
+		if(!tip.action.empty() && point_in_rect(mousex, mousey, tip.rect)) {
+			display* disp = resources::screen;
+			help::show_help(*disp, tip.action);
+			return true;
+		}
+	}
+	return false;
 }
 
 }

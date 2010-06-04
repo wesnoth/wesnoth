@@ -2231,10 +2231,11 @@ void display::refresh_report(reports::TYPE report_num, reports::report report)
 		skip_element:
 		if (!e->tooltip.empty()) {
 			if (!used_ellipsis) {
-				tooltips::add_tooltip(area, e->tooltip);
+				tooltips::add_tooltip(area, e->tooltip, e->action);
 			} else {
 				// Collect all tooltips for the ellipsis.
 				// TODO: need a better separator
+				// TODO: assign an action
 				ellipsis_tooltip << e->tooltip;
 				if(e+1 != report.end())
 					ellipsis_tooltip << "\n  _________\n\n";

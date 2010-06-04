@@ -45,7 +45,8 @@ namespace reports {
 		explicit element(const std::string& text) :
 				image(),
 				text(text),
-				tooltip()
+				tooltip(),
+				action()
 				{}
 
 		// Invariant: either text or image should be empty
@@ -55,30 +56,34 @@ namespace reports {
 		std::string text;
 
 		std::string tooltip;
-		element(const std::string& text, const std::string& image, const std::string& tooltip) :
-			image(image), text(text), tooltip(tooltip) {}
+		std::string action;
+		element(const std::string& text, const std::string& image,
+				const std::string& tooltip, const std::string& action="") :
+			image(image), text(text), tooltip(tooltip), action(action) {}
 
-		element(const std::string& text, const image::locator& image, const std::string& tooltip) :
-			image(image), text(text), tooltip(tooltip) {}
-		element(const std::string& text, const char* image, const std::string& tooltip) :
-			image(image), text(text), tooltip(tooltip) {}
+		element(const std::string& text, const image::locator& image,
+				const std::string& tooltip,	const std::string& action="") :
+			image(image), text(text), tooltip(tooltip), action(action) {}
+		element(const std::string& text, const char* image,
+				const std::string& tooltip, const std::string& action="") :
+			image(image), text(text), tooltip(tooltip), action(action) {}
 
 		bool operator==(const element& o) const {
-			return o.text == text && o.image == image && o.tooltip == tooltip;
+			return o.text == text && o.image == image && o.tooltip == tooltip && o.action == action;
 		}
 		bool operator!=(const element& o) const { return !(o == *this); }
 	};
 	struct report : public std::vector<element> {
 		report() {}
 		explicit report(const std::string& text) { this->push_back(element(text)); }
-		report(const std::string& text, const std::string& image, const std::string& tooltip) {
-			this->push_back(element(text, image, tooltip));
+		report(const std::string& text, const std::string& image, const std::string& tooltip, const std::string& action="") {
+			this->push_back(element(text, image, tooltip, action));
 		}
-		report(const std::string& text, const char* image, const std::string& tooltip) {
-			this->push_back(element(text, image, tooltip));
+		report(const std::string& text, const char* image, const std::string& tooltip, const std::string& action="") {
+			this->push_back(element(text, image, tooltip, action));
 		}
-		report(const std::string& text, const image::locator& image, const std::string& tooltip) {
-			this->push_back(element(text, image, tooltip));
+		report(const std::string& text, const image::locator& image, const std::string& tooltip, const std::string& action="") {
+			this->push_back(element(text, image, tooltip, action));
 		}
 
 		// Convenience functions
