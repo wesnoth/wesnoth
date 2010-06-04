@@ -202,7 +202,6 @@ void controller_base::play_slice(bool is_delay_enabled)
 
 	int mousex, mousey;
 	Uint8 mouse_flags = SDL_GetMouseState(&mousex, &mousey);
-	tooltips::process(mousex, mousey);
 	bool was_scrolling = scrolling_;
 	scrolling_ = handle_scroll(key, mousex, mousey, mouse_flags);
 
