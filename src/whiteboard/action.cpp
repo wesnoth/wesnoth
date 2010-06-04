@@ -20,7 +20,6 @@
 
 namespace wb {
 
-}
 // Pure virtual destructor needs to have implementation,
 // since derived classes call it
 action::~action()

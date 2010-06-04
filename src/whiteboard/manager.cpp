@@ -41,14 +41,14 @@ manager* manager::get_singleton()
 	return instance_;
 }
 
-const planned_action_set& manager::get_planned_actions() const
+const action_set& manager::get_planned_actions() const
 {
 	return planned_actions_;
 }
 
 void manager::add_planned_move(unit& subject, const map_location& target_hex)
 {
-	planned_action_ptr ptr(new move(subject, target_hex));
+	action_ptr ptr(new move(subject, target_hex));
 	planned_actions_.push_back(ptr);
 }
 

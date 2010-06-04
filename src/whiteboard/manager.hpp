@@ -29,8 +29,8 @@
 
 namespace wb {
 
-typedef boost::shared_ptr<action> planned_action_ptr;
-typedef std::deque<planned_action_ptr> planned_action_set;
+typedef boost::shared_ptr<action> action_ptr;
+typedef std::deque<action_ptr> action_set;
 
 class manager : private boost::noncopyable // Singleton -> Non-copyable
 {
@@ -40,7 +40,7 @@ public:
 
 	static manager* get_singleton();
 
-	const planned_action_set& get_planned_actions() const;
+	const action_set& get_planned_actions() const;
 
 	void add_planned_move(unit& subject, const map_location& target_hex);
 
@@ -50,7 +50,7 @@ private:
 
 	static manager* instance_;
 
-	planned_action_set planned_actions_;
+	action_set planned_actions_;
 };
 
 } // end namespace wb
