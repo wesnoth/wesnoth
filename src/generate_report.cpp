@@ -197,14 +197,17 @@ report generate_report(TYPE type,
 		report res;
 		const std::vector<std::string> &abilities = u->ability_tooltips();
 		for(std::vector<std::string>::const_iterator i = abilities.begin(); i != abilities.end(); ++i) {
-			str << gettext(i->c_str());
+			const std::string& name = gettext(i->c_str());
+			str << name;
 			if(i+2 != abilities.end())
 				str << ", ";
 			++i;
 			//FIXME pull out ability's name from description
 			tooltip << _("Ability:") << "\n"
 				<< *i;
-			res.add_text(flush(str), flush(tooltip));
+			const std::string help_page = "ability_" + name;
+
+			res.add_text(flush(str), flush(tooltip), help_page);
 		}
 
 		return res;

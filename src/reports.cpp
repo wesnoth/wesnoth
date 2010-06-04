@@ -41,12 +41,14 @@ const std::string& report_name(TYPE type)
 	return report_names[type];
 }
 
-void report::add_text(const std::string& text, const std::string& tooltip) {
-	this->push_back(element(text,"",tooltip));
+void report::add_text(const std::string& text,
+		const std::string& tooltip, const std::string& action) {
+	this->push_back(element(text,"",tooltip,action));
 }
 
-void report::add_image(const std::string& image, const std::string& tooltip) {
-	this->push_back(element("",image,tooltip));
+void report::add_image(const std::string& image, const std::string& tooltip,
+		const std::string& action) {
+	this->push_back(element("",image,tooltip,action));
 }
 
 }
