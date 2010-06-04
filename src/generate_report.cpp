@@ -191,7 +191,7 @@ report generate_report(TYPE type,
 		tooltip << _("Alignement: ")
 			<< "<b>" << align << "</b>\n"
 			<< string_table[align_id + "_description"];
-		return report(str.str(), "", tooltip.str());
+		return report(str.str(), "", tooltip.str(), "time_of_day");
 	}
 	case UNIT_ABILITIES: {
 		report res;
@@ -491,7 +491,7 @@ report generate_report(TYPE type,
 		else if (tod.bonus_modified < 0) tod_image += "~DARKEN()";
 		if (preferences::flip_time()) tod_image += "~FL(horiz)";
 
-		return report("",tod_image,tooltip.str());
+		return report("",tod_image,tooltip.str(),"time_of_day");
 	}
 	case TURN: {
 		str << resources::tod_manager->turn();
