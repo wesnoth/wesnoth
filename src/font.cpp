@@ -961,7 +961,14 @@ surface floating_label::create_surface()
 		text.set_font_size(font_size_);
 		text.set_maximum_width(width_ < 0 ? clip_rect_.w : width_);
 		text.set_maximum_height(clip_rect_.h);
-		text.set_text(text_, use_markup_);
+
+		//ignore last '\n'
+		if(!text_.empty() && *(text_.rbegin()) == '\n'){
+			text.set_text(std::string(text_.begin(), text_.end()-1), use_markup_);
+		} else {
+			text.set_text(text_, use_markup_);
+		}
+
 		// Reset the maximum width, as we want the smallest bounding box.
 		text.set_maximum_width(text.get_width());
 		surface foreground = text.render();
