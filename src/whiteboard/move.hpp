@@ -13,20 +13,35 @@
  */
 
 /**
- * @file planned_move.cpp
+ * @file move.hpp
  */
 
-#include "planned_move.hpp"
-#include "unit.hpp"
-#include "config.hpp"
+#ifndef PLANNED_MOVE_HPP_
+#define PLANNED_MOVE_HPP_
 
-planned_move::planned_move(unit& subject, const map_location& target_hex)
-: unit_(subject), target_hex_(target_hex)
-{
-	//TODO: create arrow here
-}
+#include "action.hpp"
+#include "map_location.hpp"
+#include "arrow.hpp"
 
-planned_move::~planned_move()
+namespace wb {
+
+class unit;
+class config;
+
+class move: public action
 {
-	//TODO: delete arrow here
-}
+public:
+	move(unit& subject, const map_location& target_hex);
+	virtual ~move();
+
+private:
+	unit & unit_;
+	map_location target_hex_;
+
+	arrow* arrow_;
+
+};
+
+} // end namespace wb
+
+#endif /* PLANNED_MOVE_HPP_ */

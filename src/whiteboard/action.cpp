@@ -13,17 +13,23 @@
  */
 
 /**
- * @file planned_action.hpp
+ * @file action.cpp
  */
 
-#ifndef PLANNED_ACTION_HPP_
-#define PLANNED_ACTION_HPP_
+#include "action.hpp"
 
-class planned_action
+namespace wb {
+
+}
+// Pure virtual destructor needs to have implementation,
+// since derived classes call it
+action::~action()
 {
-public:
-	virtual ~planned_action() = 0;
-	planned_action();
-};
+}
 
-#endif /* PLANNED_ACTION_HPP_ */
+action::action()
+{
+
+}
+
+} // end namespace wb

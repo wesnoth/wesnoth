@@ -13,30 +13,32 @@
  */
 
 /**
- * @file planned_action_manager.hpp
+ * @file manager.hpp
  */
 
-#ifndef PLANNED_ACTION_SET_HPP_
-#define PLANNED_ACTION_SET_HPP_
+#ifndef WB_MANAGER_HPP_
+#define WB_MANAGER_HPP_
 
-#include "planned_action.hpp"
-#include "planned_move.hpp"
+#include "action.hpp"
+#include "move.hpp"
 
 #include <deque>
 
 #include <boost/noncopyable.hpp>
 #include <boost/shared_ptr.hpp>
 
-typedef boost::shared_ptr<planned_action> planned_action_ptr;
+namespace wb {
+
+typedef boost::shared_ptr<action> planned_action_ptr;
 typedef std::deque<planned_action_ptr> planned_action_set;
 
-class planned_action_manager : private boost::noncopyable // Singleton -> Non-copyable
+class manager : private boost::noncopyable // Singleton -> Non-copyable
 {
 public:
 
-	virtual ~planned_action_manager();
+	virtual ~manager();
 
-	static planned_action_manager* get_singleton();
+	static manager* get_singleton();
 
 	const planned_action_set& get_planned_actions() const;
 
@@ -44,11 +46,13 @@ public:
 
 private:
 	/// Singleton -> private constructor
-	planned_action_manager();
+	manager();
 
-	static planned_action_manager* instance_;
+	static manager* instance_;
 
 	planned_action_set planned_actions_;
 };
 
-#endif /* PLANNED_ACTION_SET_HPP_ */
+} // end namespace wb
+
+#endif /* WB_MANAGER_HPP_ */

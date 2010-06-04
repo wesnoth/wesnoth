@@ -13,31 +13,21 @@
  */
 
 /**
- * @file planned_move.hpp
+ * @file action.hpp
  */
 
-#ifndef PLANNED_MOVE_HPP_
-#define PLANNED_MOVE_HPP_
+#ifndef WB_ACTION_HPP_
+#define WB_ACTION_HPP_
 
-#include "planned_action.hpp"
-#include "map_location.hpp"
-#include "arrow.hpp"
+namespace wb {
 
-class unit;
-class config;
-
-class planned_move: public planned_action
+class action
 {
 public:
-	planned_move(unit& subject, const map_location& target_hex);
-	virtual ~planned_move();
-
-private:
-	unit & unit_;
-	map_location target_hex_;
-
-	arrow* arrow_;
-
+	virtual ~action() = 0;
+	action();
 };
 
-#endif /* PLANNED_MOVE_HPP_ */
+} // end namespace wb
+
+#endif /* WB_ACTION_HPP_ */

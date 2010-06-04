@@ -13,39 +13,43 @@
  */
 
 /**
- * @file planned_action_manager.cpp
+ * @file manager.cpp
  */
 
-#include "planned_action_manager.hpp"
+#include "manager.hpp"
 
-planned_action_manager* planned_action_manager::instance_ = NULL;
+namespace wb {
 
-planned_action_manager::planned_action_manager()
+manager* manager::instance_ = NULL;
+
+manager::manager()
 {
 
 }
 
-planned_action_manager::~planned_action_manager()
+manager::~manager()
 {
 
 }
 
-planned_action_manager* planned_action_manager::get_singleton()
+manager* manager::get_singleton()
 {
 	if (instance_ == NULL)
 	{
-		instance_ = new planned_action_manager;
+		instance_ = new manager;
 	}
 	return instance_;
 }
 
-const planned_action_set& planned_action_manager::get_planned_actions() const
+const planned_action_set& manager::get_planned_actions() const
 {
 	return planned_actions_;
 }
 
-void planned_action_manager::add_planned_move(unit& subject, const map_location& target_hex)
+void manager::add_planned_move(unit& subject, const map_location& target_hex)
 {
-	planned_action_ptr ptr(new planned_move(subject, target_hex));
+	planned_action_ptr ptr(new move(subject, target_hex));
 	planned_actions_.push_back(ptr);
 }
+
+} // end namespace wb

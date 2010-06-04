@@ -13,18 +13,24 @@
  */
 
 /**
- * @file planned_action.cpp
+ * @file move.cpp
  */
 
-#include "planned_action.hpp"
+#include "move.hpp"
+#include "unit.hpp"
+#include "config.hpp"
 
-// Pure virtual destructor needs to have implementation,
-// since derived classes call it
-planned_action::~planned_action()
+namespace wb {
+
+move::move(unit& subject, const map_location& target_hex)
+: unit_(subject), target_hex_(target_hex)
 {
+	//TODO: create arrow here
 }
 
-planned_action::planned_action()
+move::~move()
 {
-
+	//TODO: delete arrow here
 }
+
+} // end namespace wb
