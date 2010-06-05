@@ -16,8 +16,8 @@
  * @file move.hpp
  */
 
-#ifndef PLANNED_MOVE_HPP_
-#define PLANNED_MOVE_HPP_
+#ifndef WB_MOVE_HPP_
+#define WB_MOVE_HPP_
 
 #include "action.hpp"
 #include "map_location.hpp"
@@ -48,4 +48,4 @@ private:
 
 } // end namespace wb
 
-#endif /* PLANNED_MOVE_HPP_ */
+#endif /* WB_MOVE_HPP_ */
