@@ -13,7 +13,8 @@ using boost::asio::ip::tcp;
 #define ASIO_CLIENT_HPP
 
 class asio_client : public ana::client,
-                    public asio_listener
+                    public asio_listener,
+                    private proxy_connection_manager
 {
     public:
         /**
@@ -44,6 +45,8 @@ class asio_client : public ana::client,
 
         virtual void disconnect_listener();
 
+        virtual void handle_proxy_connection();
+
         void handle_sent_header(const boost::system::error_code& ec,
                                 mili::bostream*, ana::detail::shared_buffer,
                                 ana::send_handler*);
@@ -68,6 +71,7 @@ class asio_client : public ana::client,
         ana::port                 port_;
 
         proxy_connection*         proxy_;
+        bool                      use_proxy_;
 };
 
 #endif

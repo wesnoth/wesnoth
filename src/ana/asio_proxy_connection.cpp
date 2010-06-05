@@ -1,10 +1,14 @@
+#include <sstream>
+
 #include "asio_proxy_connection.hpp"
 
-proxy_connection::proxy_connection(tcp::socket& socket, proxy_information pi, ana::address address, ana::port port) :
+proxy_connection::proxy_connection(tcp::socket& socket, proxy_information pi, ana::address address,
+                                   ana::port port, proxy_connection_manager* manager) :
     socket_(socket),
     proxy_info_(pi),
     address_(address),
-    port_(port)
+    port_(port),
+    manager_(manager)
 {
 }
 
@@ -19,12 +23,27 @@ std::string* proxy_connection::generate_connect_request() const
     );
 }
 
-void proxy_connection::handle_response(ana::detail::read_buffer         buf,
+void proxy_connection::handle_response(boost::asio::streambuf*          buf,
                                        const boost::system::error_code& ec,
                                        ana::connection_handler*         handler)
 {
     //TODO: interpret the response and act accordingly
-    std::cout << "Received: " << buf->string() << "\n"; //to debug for now!
+    if ( ec )
+        handler->handle_connect(ec, 0);
+    else
+    {
+        std::stringstream ss;
+        ss << buf;
+
+        const size_t find_pos = ss.str().find( std::string( "200 Connection established" ) );
+
+        if ( find_pos < ss.str().size() )
+        {
+            handler->handle_connect( ec, 0 );
+            manager_->handle_proxy_connection();
+        }
+    }
+    delete buf;
 }
 
 void proxy_connection::handle_sent_request(const boost::system::error_code& ec,
@@ -33,12 +52,12 @@ void proxy_connection::handle_sent_request(const boost::system::error_code& ec,
 {
     delete request;
 
-    //TODO: use a meaningful constant instead of 100
-    ana::detail::read_buffer read_buf( new ana::detail::read_buffer_implementation( 100 ) );
+    boost::asio::streambuf* buf = new boost::asio::streambuf( 500 );
 
-    boost::asio::async_read(socket_, boost::asio::buffer( read_buf->base(), read_buf->size() ),
-                            boost::bind(&proxy_connection::handle_response, this,
-                                        read_buf, boost::asio::placeholders::error, handler));
+    boost::asio::async_read_until(socket_, *buf,
+                                  "\r\n\r\n",
+                                  boost::bind(&proxy_connection::handle_response, this,
+                                              buf, boost::asio::placeholders::error, handler));
 
 }
 

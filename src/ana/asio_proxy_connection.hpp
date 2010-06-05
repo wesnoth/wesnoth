@@ -9,6 +9,11 @@ using boost::asio::ip::tcp;
 #ifndef ASIO_PROXY_CONNECTION
 #define ASIO_PROXY_CONNECTION
 
+struct proxy_connection_manager
+{
+    virtual void handle_proxy_connection() = 0;
+};
+
 struct proxy_information
 {
     proxy_information() :
@@ -30,7 +35,11 @@ struct proxy_information
 class proxy_connection
 {
     public:
-        proxy_connection(tcp::socket& socket, proxy_information pi, ana::address address, ana::port port);
+        proxy_connection(tcp::socket& socket,
+                         proxy_information pi,
+                         ana::address address,
+                         ana::port port,
+                         proxy_connection_manager* manager);
 
         void connect( ana::connection_handler* handler );
 
@@ -44,7 +53,7 @@ class proxy_connection
         void handle_sent_request(const boost::system::error_code& ec,
                                  std::string* request, ana::connection_handler* handler);
 
-        void handle_response( ana::detail::read_buffer ,
+        void handle_response( boost::asio::streambuf* buf ,
                               const boost::system::error_code& ,
                               ana::connection_handler* );
 
@@ -55,6 +64,8 @@ class proxy_connection
 
         ana::address      address_;
         ana::port         port_;
+
+        proxy_connection_manager* manager_;
 };
 
 #endif

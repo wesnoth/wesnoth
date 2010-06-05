@@ -17,7 +17,8 @@ asio_client::asio_client(ana::address address, ana::port pt) :
     asio_listener(io_service_, socket_),
     address_(address),
     port_(pt),
-    proxy_( NULL )
+    proxy_( NULL ),
+    use_proxy_( false )
 {
 }
 
@@ -33,7 +34,8 @@ ana::client* ana::client::create(ana::address address, ana::port pt)
 
 void asio_client::run()
 {
-    run_listener( );
+    if ( ! use_proxy_ ) // If I will connect through a proxy, defer this call until connected.
+        run_listener( );
 
     boost::thread t( boost::bind( &boost::asio::io_service::run, &io_service_) );
 }
@@ -41,6 +43,11 @@ void asio_client::run()
 ana::client_id asio_client::id() const
 {
     return 0;
+}
+
+void asio_client::handle_proxy_connection()
+{
+    run_listener();
 }
 
 void asio_client::handle_connect(const boost::system::error_code& ec,
@@ -95,6 +102,8 @@ void asio_client::connect_through_proxy(ana::proxy::authentication_type auth_typ
                                         std::string                     user_name,
                                         std::string                     password)
 {
+    use_proxy_ = true;
+
     proxy_information proxy_info;
 
     proxy_info.auth_type     = auth_type;
@@ -103,7 +112,7 @@ void asio_client::connect_through_proxy(ana::proxy::authentication_type auth_typ
     proxy_info.user_name     = user_name;
     proxy_info.password      = password;
 
-    proxy_ = new proxy_connection( socket_, proxy_info, address_, port_);
+    proxy_ = new proxy_connection( socket_, proxy_info, address_, port_, this);
 
     proxy_->connect( handler );
 }
