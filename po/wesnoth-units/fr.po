@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: fr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-05-15 14:21+0200\n"
-"PO-Revision-Date: 2010-03-20 19:43+0100\n"
-"Last-Translator: Benoît Timbert <benoît.timbert@free.fr>\n"
+"PO-Revision-Date: 2010-06-02 19:59+0100\n"
+"Last-Translator: Mathieu Guilbaud <mathieu@guim.info>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -62,7 +62,6 @@ msgstr "Chauve-souris terrifiante"
 
 #. [unit_type]: id=Dread Bat, race=bats
 #: data/core/units/bats/Bat_Dread.cfg:26
-#, fuzzy
 msgid ""
 "The most vicious, predatory, and successful of the Blood Bats become Dread "
 "Bats, gaining the ability to drain not merely the blood but the very life "
@@ -161,6 +160,7 @@ msgstr "Autorité dracane"
 
 #. [unit_type]: id=Drake Arbiter, race=drake
 #: data/core/units/drakes/Arbiter.cfg:19
+#, fuzzy
 msgid ""
 "Arbiters take their caste duty of enforcing order very seriously. In order "
 "to better execute their duties, they have abandoned the drakes' traditional "
@@ -169,6 +169,13 @@ msgid ""
 "raw heft the massive metal head provides. The thick plate these drakes wear "
 "protects them well against weapons that could slip between their scales."
 msgstr ""
+"Les Autorités dracanes prennent leur devoir du maintien de l'ordre très au "
+"sérieux. Dans le but d'exécuter au mieux leur mission, ils ont abandonné les "
+"griffes traditionnelles et leur lance pour le tranchant et le perforant "
+"d'une hallebarde. À leur yeux, la perte de maniabilité est un faible prix à "
+"payer pour la puissance brute que délivre la tête de métal. L'épaisse armure "
+"que porte ces dracans les protège efficacement contre les armes qui "
+"pourraient s'introduire entre leurs écailles."
 
 #. [attack]: type=blade
 #. [attack]: type=pierce
@@ -223,7 +230,6 @@ msgstr "Maître-lame dracan"
 
 #. [unit_type]: id=Drake Blademaster, race=drake
 #: data/core/units/drakes/Blademaster.cfg:21
-#, fuzzy
 msgid ""
 "Black armor marks the elite order of the Fighter caste: the Blademasters. "
 "Only a few manage to gain the skill and power necessary to be admitted to "
@@ -233,12 +239,12 @@ msgid ""
 "dispute their right to do so."
 msgstr ""
 "Les Armures Noires forment l'élite de la caste de Combattants : Les Maître-"
-"lames. Il y en a peu qui arrivent à gagner les compétences et le pouvoir "
+"lames. Seulement une poignée arrivent à gagner les compétences et le pouvoir "
 "nécessaire pour être admis à ce haut rang, sans périr dans la bataille. Bien "
 "qu'il arrive aux autres dracans de critiquer la caste de Combattants, ils "
-"vérifient deux fois pour s'assurer qu'il n'y en a aucun aux alentours; Les "
-"Maître-lames protègent farouchement l'honneur de leur ordre, et personne ne "
-"leur disputerait ce droit."
+"vérifient toujours deux fois pour s'assurer qu'il n'y en a aucun aux "
+"alentours; Les Maître-lames protègent farouchement l'honneur de leur ordre, "
+"et personne ne leur disputerait ce droit."
 
 #. [attack]: type=blade
 #: data/core/units/drakes/Blademaster.cfg:41
@@ -287,7 +293,6 @@ msgstr "Cogneur dracan"
 
 #. [unit_type]: id=Drake Clasher, race=drake
 #: data/core/units/drakes/Clasher.cfg:23
-#, fuzzy
 msgid ""
 "The Clashers are members of a unique caste among the drakes. Their thick "
 "armor, while compensating for the drakes' natural weakness against spears "
@@ -307,7 +312,12 @@ msgstr ""
 "ne sont alors plus capables de voler ou d'utiliser leur feu interne, faute "
 "de souffle. Ils ont embrassé cet handicap, moulant totalement leurs ailes "
 "pour montrer qu'ils n'ont pas besoin de voler pour triompher lors de la "
-"bataille."
+"bataille.\n"
+"\n"
+"C'est également la seule caste autorisée à briser le tabou, en se battant "
+"avec des lances en plus des traditionnels griffes, ce qui les rend "
+"particulièrement efficaces pour « résoudre »les conflits territoriaux contre "
+"les autres dracans et pour appliquer la loi de leur tribu."
 
 #. [attack]: type=pierce
 #: data/core/units/drakes/Clasher.cfg:48
@@ -346,6 +356,7 @@ msgstr "Exécuteur dracan"
 
 #. [unit_type]: id=Drake Enforcer, race=drake
 #: data/core/units/drakes/Enforcer.cfg:21
+#, fuzzy
 msgid ""
 "Not for Enforcers are the tactics of maneuver and deception; rather, they "
 "charge in wherever the melee is the fiercest. At close range, it matters "
@@ -354,6 +365,13 @@ msgid ""
 "careful not to besmirch the honor of the Enforcers, and generally call upon "
 "them to combat only the most pernicious of enemies."
 msgstr ""
+"Les exécuteurs dracans n'utilisent pas de tactique de contournement face à "
+"leur ennemis, il frappe là ou le combat est le plus féroce. Au corps-à-"
+"corps, il importe peu que leur armure les empêche de cracher du feu ; ce qui "
+"importe c'est la puissance qu'ils ont appris à canaliser dans chacune de "
+"leur frappe. Les commandants dracans se gardent bien de salir l'honneur d'un "
+"exécuteur , généralement ils les appellent seulement pour combattre les "
+"ennemis les plus pernicieux."
 
 #. [attack]: type=impact
 #: data/core/units/drakes/Enforcer.cfg:45
@@ -402,7 +420,6 @@ msgstr "Dracan incendiaire"
 
 #. [unit_type]: id=Fire Drake, race=drake
 #: data/core/units/drakes/Fire.cfg:19
-#, fuzzy
 msgid ""
 "Not yet permitted to wear the red-gold reserved for the highest ranks of the "
 "Burners, the Fire Drakes trim their armor with silver. Though they have only "
@@ -412,9 +429,9 @@ msgid ""
 msgstr ""
 "N'ayant pas encore le droit de porter le rouge-or réservé aux plus hauts "
 "rangs des Pyrodracans, les Dracans Incendiaires font leurs armures en "
-"argent. Bien qu'ils viennent juste de commencer à dédier leurs vies à la "
-"flamme qui brule en eux, c'est leur vitalité qui émane à travers leur peau, "
-"brulant leurs écailles et les rendant gris-rouge."
+"argent. Bien qu'ils viennent tout juste de dédier leurs vies à la flamme qui "
+"brûle en eux, c'est leur vitalité qui émane à travers leur peau, brûlant "
+"leurs écailles et les rendant gris-rouge."
 
 #. [unit_type]: id=Drake Flameheart, race=drake
 #: data/core/units/drakes/Flameheart.cfg:4
@@ -440,6 +457,7 @@ msgstr "Dracan flamboyant"
 
 #. [unit_type]: id=Drake Flare, race=drake
 #: data/core/units/drakes/Flare.cfg:26
+#, fuzzy
 msgid ""
 "Respected for the heat of their flame and revered for their charisma, Flares "
 "aspire to become great leaders of their people, both in war and peace. "
@@ -447,6 +465,12 @@ msgid ""
 "they are more often seen leading small war parties or mediating disputes "
 "with a subtle hand."
 msgstr ""
+"Respecté pour la chaleur de leur leur flamme et vénéré pour leur charisme, "
+"les dracans flamboyants aspirent à devenir de grands meneurs au sein de leur "
+"peuple, en temps de guerre comme en temps de paix. Bien que quelques tribues "
+"isolées accepte d'être dirigé par un dracan flamboyant, ils sont plus "
+"généralement employés à diriger des escouades ou bien à gérer les conflits "
+"d'un gant de velours."
 
 #. [unit_type]: id=Drake Glider, race=drake
 #: data/core/units/drakes/Glider.cfg:4
@@ -483,6 +507,7 @@ msgstr "Dracan cyclone"
 
 #. [unit_type]: id=Hurricane Drake, race=drake
 #: data/core/units/drakes/Hurricane.cfg:20
+#, fuzzy
 msgid ""
 "Hurricane Drakes have moved above the menial hunting and gathering to which "
 "the lower members of their caste are relegated. They are an integral part of "
@@ -492,6 +517,14 @@ msgid ""
 "other castes has increased their skill in combat, but their greatest "
 "strength still lies in their speed and flight."
 msgstr ""
+"Les dracan cyclone sont au dessus des autres membres de leur caste, relégués "
+"au basses besognes de la chasse et de la cueillette. Ils font partie "
+"intégrante de l'armée dracanne, reconnaissant derrière les lignes ennemies, "
+"apportant des messages à travers le champs de bataile et tombant sur "
+"l'ennemi là où il s'y attendait le moins. Autorisé - avec réticence - à "
+"s'entraîner avec les nouvelles recrues des autres castes, ils ont pu "
+"acquérir des capacités au combat, mais leur plus grand force réside dans "
+"leur vitesse et leur capacité à voler."
 
 #. [unit_type]: id=Inferno Drake, race=drake
 #: data/core/units/drakes/Inferno.cfg:4
@@ -1233,17 +1266,17 @@ msgstr "Haut seigneur elfe"
 
 #. [unit_type]: id=Elvish High Lord, race=elf
 #: data/core/units/elves/High_Lord.cfg:19
-#, fuzzy
 msgid ""
 "The leaders of elvenkind command an instinctive loyalty from their people "
 "that rulers of other races can only envy, and earn it with great mindfulness "
 "and wisdom. Quiet and contemplative in times of peace, a High Lord in the "
 "full of his wrath is an awesome sight indeed."
 msgstr ""
-"Les meneurs elfes ne déclinent pas avec le grand âge. Au contraire, il "
-"atteignent là leur vrai potentiel. Silencieux et contemplatif durant les "
-"périodes de paix, un haut seigneur elfe au sommet de sa fureur est vraiment "
-"un spectacle terrifiant à contempler."
+"Les meneurs elfes impose à leur peuple une loyauté instinctive que les "
+"dirigeants des autres races leur envient ; il la gagne avec beaucoup de "
+"conscience et de sagesse. Silencieux et contemplatif durant les périodes de "
+"paix, un haut seigneur elfe au sommet de sa fureur est vraiment un spectacle "
+"terrifiant à contempler."
 
 #. [unit_type]: id=Elvish Lady, race=elf
 #: data/core/units/elves/Lady.cfg:5
@@ -2209,6 +2242,12 @@ msgid ""
 "positions. A few of these in battle line will stiffen it considerably, "
 "albeit at an obvious cost in tactical flexibility."
 msgstr ""
+"Les fantassins lourds sont des guerriers musclés, protégés par une armure "
+"intégrale et équipés d'armes massives. Bien qu'ils se battent avec une "
+"puissance inégalée au corps-à-corps, ils se déplacent très mal et servent "
+"principalement à assurer une défense statique d'un position fortifiée. "
+"Quelques-uns d'entre eux dans une ligne la renforcera considérablement, mais "
+"au prix d'une flexibilité tactique amoindrie."
 
 #. [attack]: type=impact
 #: data/core/units/humans/Loyalist_Heavy_Infantryman.cfg:37
@@ -3339,6 +3378,7 @@ msgstr "Rétiaire ondin"
 
 #. [unit_type]: id=Merman Entangler, race=merman
 #: data/core/units/merfolk/Entangler.cfg:22
+#, fuzzy
 msgid ""
 "Merfolk tend to use a combination of both nets and clubs in fishing; nets to "
 "collect the fish, and clubs to finish the kill. Both of these tools have "
@@ -3351,6 +3391,14 @@ msgid ""
 "effective chase over land, and are at a great disadvantage in hand-to-hand "
 "combat."
 msgstr ""
+"Les ondins utilisent une combinaison de filets et de massues pour pêcher ; "
+"les filets pour collecter les poissons et les massues pour les tuer. Ces "
+"deux outils qui ont été adapté pour la guerre, sont suffisamment précieux "
+"pour que des combattants en deviennent des spécialistes.\n"
+"\n"
+"Les ondins se retrouvent souvent dans une impasse face à des ennemis "
+"terrestres ; ils sont surpuissant dans l'eau, mais trop faible sur la terre "
+"ferme pour causé des dégâts."
 
 #. [unit_type]: id=Merman Fighter, race=merman
 #: data/core/units/merfolk/Fighter.cfg:4
@@ -3453,6 +3501,7 @@ msgstr "Lanceur de filet ondin"
 
 #. [unit_type]: id=Merman Netcaster, race=merman
 #: data/core/units/merfolk/Netcaster.cfg:21
+#, fuzzy
 msgid ""
 "Fishing, as practiced by mermen, is largely a matter of chasing schools of "
 "fish into waiting nets, where oar-like clubs are used to dispatch the prey. "
@@ -3466,6 +3515,18 @@ msgid ""
 "shore. Clubs were used in combat with little or no adaptation from fishing, "
 "since they were already quite deadly."
 msgstr ""
+"La pêche, telle que pratiquée par les ondins, consiste essentiellement à "
+"chasse des bancs de poisson vers des filets où des bâtons sont utilisés pour "
+"séparer leur proie. L'utilisation improvisée de cette technique contre des "
+"soldats ce révéla fructueuse ; la plupart des créatures continentales sont "
+"déjà maladroites immergées jusqu'à la poitrine, une fois attrapées dans un "
+"filet, elles deviennent impuissantes.\n"
+"\n"
+"L'efficacité de cette méthode a conduit à l'élaboration de filets plus "
+"petits et plus légers qui peuvent être lancés à travers les airs ; ils sont "
+"inutiles à la pêche, mais très utiles pour le combat et les parties de "
+"chasse qui s'approche trop près du rivage. Les bâtons sont utilisés sans "
+"aucune transformations car ils sont déjà suffisamment mortels."
 
 #. [unit_type]: id=Mermaid Priestess, race=merman
 #: data/core/units/merfolk/Priestess.cfg:4
@@ -4168,7 +4229,6 @@ msgstr "Souverain orc"
 
 #. [unit_type]: id=Orcish Sovereign, race=orc
 #: data/core/units/orcs/Sovereign.cfg:19
-#, fuzzy
 msgid ""
 "From time to time, an orc will arise who has a natural charisma and command "
 "over his ilk. If he is also strong and cunning enough to survive early "
@@ -4178,11 +4238,11 @@ msgid ""
 "to slay this rare orc who can hold it together."
 msgstr ""
 "De temps en temps, un orc doté d'un grand charisme surgit pour commander les "
-"siens. S'il est également fort et astucieux, il finira inévitablement par "
-"diriger une grande horde de guerriers et deviendra une grande source de "
-"problèmes pour les races civilisées de ce monde. La méthode la plus efficace "
-"pour disperser une telle armée est de tuer cet orc d'exception qui la "
-"maintient unie."
+"siens. S'il est suffisamment fort et astucieux pour survivre aux querelles "
+"pour le commandement, il finira inévitablement par diriger une grande horde "
+"de guerriers et deviendra une grande source de problèmes pour les races "
+"civilisées de ce monde. La méthode la plus efficace pour disperser une telle "
+"armée est de tuer cet orc d'exception qui la maintient unie."
 
 #. [unit_type]: id=Orcish Warlord, race=orc
 #: data/core/units/orcs/Warlord.cfg:4
@@ -4530,7 +4590,6 @@ msgstr "Nécrophage"
 
 #. [unit_type]: id=Necrophage, race=undead
 #: data/core/units/undead/Corpse_Necrophage.cfg:20
-#, fuzzy
 msgid ""
 "The necrophage, or 'devourer of the dead', is a monstrous, corpulent thing, "
 "which bears only a crude resemblance to a man. They appear to be quite "
