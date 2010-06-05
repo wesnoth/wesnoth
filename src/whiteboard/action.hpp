@@ -21,6 +21,9 @@
 
 namespace wb {
 
+/**
+ * Superclass for all the whiteboard planned actions.
+ */
 class action
 {
 public:

@@ -28,6 +28,10 @@ namespace wb {
 class unit;
 class config;
 
+/**
+ * A planned move, represented on the map by an arrow and
+ * a ghosted unit in the destination hex.
+ */
 class move: public action
 {
 public:

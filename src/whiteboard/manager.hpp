@@ -32,13 +32,16 @@ namespace wb {
 typedef boost::shared_ptr<action> action_ptr;
 typedef std::deque<action_ptr> action_set;
 
+/**
+ * This class holds and manages all of the whiteboard's planned actions.
+ */
 class manager : private boost::noncopyable // Singleton -> Non-copyable
 {
 public:
 
 	virtual ~manager();
 
-	static manager* get_singleton();
+	static manager& get_singleton();
 
 	const action_set& get_planned_actions() const;
 

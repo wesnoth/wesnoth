@@ -32,13 +32,13 @@ manager::~manager()
 
 }
 
-manager* manager::get_singleton()
+manager& manager::get_singleton()
 {
 	if (instance_ == NULL)
 	{
 		instance_ = new manager;
 	}
-	return instance_;
+	return *instance_;
 }
 
 const action_set& manager::get_planned_actions() const
