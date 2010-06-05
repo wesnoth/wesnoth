@@ -13,20 +13,25 @@
  */
 
 /**
- * @file action.cpp
+ * @file validate_visitor.cpp
  */
 
-#include "action.hpp"
+#include "validate_visitor.hpp"
 
-namespace wb {
+namespace wb
+{
 
-action::~action()
+validate_visitor::validate_visitor()
 {
 }
 
-action::action()
+validate_visitor::~validate_visitor()
+{
+}
+
+void validate_visitor::visit_move(move&)
 {
 
 }
 
-} // end namespace wb
+}//end namespace wb

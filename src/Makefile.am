@@ -273,6 +273,10 @@ wesnoth_source = \
 	whiteboard/action.cpp \
 	whiteboard/move.cpp \
 	whiteboard/manager.cpp \
+	whiteboard/find_visitor.cpp \
+	whiteboard/mapbuilder_visitor.cpp \
+	whiteboard/validate_visitor.cpp \
+	whiteboard/visitor.cpp \
 	widgets/combo.cpp \
 	widgets/combo_drag.cpp \
 	widgets/drop_target.cpp \

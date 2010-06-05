@@ -19,6 +19,8 @@
 #ifndef WB_ACTION_HPP_
 #define WB_ACTION_HPP_
 
+#include "visitor.hpp"
+
 namespace wb {
 
 /**
@@ -27,8 +29,10 @@ namespace wb {
 class action
 {
 public:
-	virtual ~action() = 0;
 	action();
+	virtual ~action();
+
+	virtual void accept(visitor& v) = 0;
 };
 
 } // end namespace wb

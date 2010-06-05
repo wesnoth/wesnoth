@@ -13,20 +13,26 @@
  */
 
 /**
- * @file action.cpp
+ * @file mapbuilder_visitor.h
  */
 
-#include "action.hpp"
+#ifndef WB_MAPBUILDER_VISITOR_HPP_
+#define WB_MAPBUILDER_VISITOR_HPP_
 
-namespace wb {
+#include "visitor.hpp"
 
-action::~action()
-{
-}
-
-action::action()
+namespace wb
 {
 
+class mapbuilder_visitor: public visitor
+{
+public:
+	mapbuilder_visitor();
+	virtual ~mapbuilder_visitor();
+
+	virtual void visit_move(move& p_move);
+};
+
 }
 
-} // end namespace wb
+#endif /* WB_MAPBUILDER_VISITOR_HPP_ */

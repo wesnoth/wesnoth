@@ -23,10 +23,10 @@
 #include "map_location.hpp"
 #include "arrow.hpp"
 
-namespace wb {
-
 class unit;
 class config;
+
+namespace wb {
 
 /**
  * A planned move, represented on the map by an arrow and
@@ -37,6 +37,8 @@ class move: public action
 public:
 	move(unit& subject, const map_location& target_hex);
 	virtual ~move();
+
+	virtual void accept(visitor& v);
 
 private:
 	unit & unit_;

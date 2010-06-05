@@ -13,20 +13,26 @@
  */
 
 /**
- * @file action.cpp
+ * @file find_visitor.hpp
  */
 
-#include "action.hpp"
+#ifndef WB_FIND_VISITOR_HPP_
+#define WB_FIND_VISITOR_HPP_
 
-namespace wb {
+#include "visitor.hpp"
 
-action::~action()
-{
-}
-
-action::action()
+namespace wb
 {
 
+class find_visitor: public visitor
+{
+public:
+	find_visitor();
+	virtual ~find_visitor();
+
+	virtual void visit_move(move& p_move);
+};
+
 }
 
-} // end namespace wb
+#endif /* WB_FIND_VISITOR_HPP_ */

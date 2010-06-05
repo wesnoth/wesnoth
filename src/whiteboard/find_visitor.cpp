@@ -13,20 +13,25 @@
  */
 
 /**
- * @file action.cpp
+ * @file find_visitor.cpp
  */
 
-#include "action.hpp"
+#include "find_visitor.hpp"
 
-namespace wb {
+namespace wb
+{
 
-action::~action()
+find_visitor::find_visitor()
 {
 }
 
-action::action()
+find_visitor::~find_visitor()
+{
+}
+
+void find_visitor::visit_move(move&)
 {
 
 }
 
-} // end namespace wb
+}//end namespace wb

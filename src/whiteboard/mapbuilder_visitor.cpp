@@ -13,20 +13,28 @@
  */
 
 /**
- * @file action.cpp
+ * @file mapbuilder_visitor.cpp
  */
 
-#include "action.hpp"
+#include "mapbuilder_visitor.hpp"
 
-namespace wb {
-
-action::~action()
-{
-}
-
-action::action()
+namespace wb
 {
 
+mapbuilder_visitor::mapbuilder_visitor()
+{
+	// TODO Auto-generated constructor stub
+
 }
 
-} // end namespace wb
+mapbuilder_visitor::~mapbuilder_visitor()
+{
+	// TODO Auto-generated destructor stub
+}
+
+void mapbuilder_visitor::visit_move(move&)
+{
+
+}
+
+}

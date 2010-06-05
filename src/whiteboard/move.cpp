@@ -33,4 +33,9 @@ move::~move()
 	//TODO: delete arrow here
 }
 
+void move::accept(visitor& v)
+{
+	v.visit_move(*this);
+}
+
 } // end namespace wb

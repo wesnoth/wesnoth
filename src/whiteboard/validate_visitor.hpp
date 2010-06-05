@@ -13,20 +13,26 @@
  */
 
 /**
- * @file action.cpp
+ * @file validate_visitor.hpp
  */
 
-#include "action.hpp"
+#ifndef WB_VALIDATE_VISITOR_HPP_
+#define WB_VALIDATE_VISITOR_HPP_
 
-namespace wb {
+#include "visitor.hpp"
 
-action::~action()
-{
-}
-
-action::action()
+namespace wb
 {
 
+class validate_visitor: public visitor
+{
+public:
+	validate_visitor();
+	virtual ~validate_visitor();
+
+	virtual void visit_move(move& p_move);
+};
+
 }
 
-} // end namespace wb
+#endif /* WB_VALIDATE_VISITOR_HPP_ */
