@@ -791,20 +791,22 @@ void unit_preview_pane::draw_contents()
 			//at_it->set_specials_context(map_location(),u);
 
 			// see generate_report() in generate_report.cpp
-			text << font::weapon << at_it->name()
-				<< " (" << gettext(at_it->type().c_str()) << ")\n";
+			text << font::weapon
+				<< at_it->damage() << "-" << at_it->num_attacks()
+				<< " " << at_it->name() << "\n";
+			text << font::weapon_details
+				<< "  " << _(at_it->range().c_str())
+				<< "--" << _(at_it->type().c_str()) << "\n";
+
+			std::string accuracy_parry = at_it->accuracy_parry_description();
+			if(accuracy_parry.empty() == false) {
+				text << font::weapon_details << "  " << accuracy_parry << "\n";
+			}
 
 			std::string special = at_it->weapon_specials(true);
 			if (!special.empty()) {
 				text << font::weapon_details << "  " << special << "\n";
 			}
-			std::string accuracy = at_it->accuracy_parry_description();
-			if(accuracy.empty() == false) {
-				accuracy += " ";
-			}
-
-			text << font::weapon_details << "  " << at_it->damage() << "-" << at_it->num_attacks()
-				<< " " << accuracy << "-- " << _(at_it->range().c_str()) << "\n";
 		}
 	}
 
