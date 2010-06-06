@@ -33,18 +33,18 @@ find_visitor::~find_visitor()
 {
 }
 
-void find_visitor::visit_move(move& p_move)
+void find_visitor::visit_move(move& move)
 {
-	if( &p_move.get_unit() == search_target_ )
+	if( &move.get_unit() == search_target_ )
 	{
-		search_result_.push_back(action_ptr(&p_move));
+		search_result_.push_back(action_ptr(&move));
 		found_ = true;
 	}
 }
 
-action_set find_visitor::find_action_of(const unit& target)
+action_set find_visitor::find_actions_of(const unit& unit)
 {
-	search_target_ = &target;
+	search_target_ = &unit;
 	found_ = false;
 	search_result_.clear();
 	action_set actions = manager::instance().get_actions();
@@ -55,9 +55,9 @@ action_set find_visitor::find_action_of(const unit& target)
 	return search_result_;
 }
 
-action_ptr find_visitor::find_first_action_of(const unit& target)
+action_ptr find_visitor::find_first_action_of(const unit& unit)
 {
-	search_target_ = &target;
+	search_target_ = &unit;
 	found_ = false;
 	search_result_.clear();
 	action_set actions = manager::instance().get_actions();

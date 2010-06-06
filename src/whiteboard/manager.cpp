@@ -17,6 +17,8 @@
  */
 
 #include "manager.hpp"
+#include "action.hpp"
+#include "move.hpp"
 
 namespace wb {
 

@@ -19,15 +19,19 @@
 #ifndef WB_MANAGER_HPP_
 #define WB_MANAGER_HPP_
 
-#include "action.hpp"
-#include "move.hpp"
+#include "map_location.hpp"
 
 #include <deque>
 
 #include <boost/noncopyable.hpp>
 #include <boost/shared_ptr.hpp>
 
+class unit;
+
 namespace wb {
+
+class action;
+class move;
 
 typedef boost::shared_ptr<action> action_ptr;
 typedef std::deque<action_ptr> action_set;

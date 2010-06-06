@@ -36,10 +36,10 @@ public:
 	find_visitor();
 	virtual ~find_visitor();
 
-	virtual void visit_move(move& p_move);
+	virtual void visit_move(move& move);
 
-	virtual action_set find_action_of(const unit& target);
-	virtual action_ptr find_first_action_of(const unit& target);
+	virtual action_set find_actions_of(const unit& unit);
+	virtual action_ptr find_first_action_of(const unit& unit);
 
 private:
 	bool found_;
