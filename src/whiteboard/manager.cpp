@@ -41,12 +41,12 @@ manager& manager::instance()
 	return *instance_;
 }
 
-const action_set& manager::get_planned_actions() const
+const action_set& manager::get_actions() const
 {
 	return planned_actions_;
 }
 
-void manager::add_planned_move(unit& subject, const map_location& target_hex)
+void manager::add_move(unit& subject, const map_location& target_hex)
 {
 	action_ptr ptr(new move(subject, target_hex));
 	planned_actions_.push_back(ptr);

@@ -46,9 +46,9 @@ public:
 	 */
 	static manager& instance();
 
-	const action_set& get_planned_actions() const;
+	const action_set& get_actions() const;
 
-	void add_planned_move(unit& subject, const map_location& target_hex);
+	void add_move(unit& subject, const map_location& target_hex);
 
 private:
 	/// Singleton -> private constructor

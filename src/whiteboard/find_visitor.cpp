@@ -47,7 +47,7 @@ action_set find_visitor::find_action_of(const unit& target)
 	search_target_ = &target;
 	found_ = false;
 	search_result_.clear();
-	action_set actions = manager::instance().get_planned_actions();
+	action_set actions = manager::instance().get_actions();
 	foreach (action_ptr a, actions)
 	{
 		a->accept(*this);
@@ -60,7 +60,7 @@ action_ptr find_visitor::find_first_action_of(const unit& target)
 	search_target_ = &target;
 	found_ = false;
 	search_result_.clear();
-	action_set actions = manager::instance().get_planned_actions();
+	action_set actions = manager::instance().get_actions();
 	foreach (action_ptr a, actions)
 	{
 		a->accept(*this);
