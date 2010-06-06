@@ -81,19 +81,10 @@ std::string attack_type::accuracy_parry_description() const
 	}
 
 	std::ostringstream s;
-	if(accuracy_ > 0) {
-		s << "+";
-	}
-
-	s << accuracy_ << "%";
+	s << utils::signed_percent(accuracy_);
 
 	if(parry_ != 0) {
-		s << "/";
-		if(parry_ > 0) {
-			s << "+";
-		}
-
-		s << parry_ << "%";
+		s << "/" << utils::signed_percent(parry_);
 	}
 
 	return s.str();
