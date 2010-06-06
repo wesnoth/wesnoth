@@ -24,7 +24,7 @@ namespace wb {
 
 manager* manager::instance_ = NULL;
 
-manager::manager()
+manager::manager(): planning_mode_(false)
 {
 
 }
@@ -48,60 +48,75 @@ const action_set& manager::get_actions() const
 	return planned_actions_;
 }
 
-void manager::add_move(unit& subject, const map_location& target_hex, arrow& arrow, int index)
+void manager::insert_move(unit& subject, const map_location& target_hex, arrow& arrow, size_t index)
 {
-	action_ptr ptr(new move(subject, target_hex, arrow));
-	if (index == -1)
+	action_ptr action(new move(subject, target_hex, arrow));
+	assert(index < end());
+	planned_actions_.insert(planned_actions_.begin() + index, action);
+
+}
+
+void manager::queue_move(unit& subject, const map_location& target_hex, arrow& arrow)
+{
+	insert_move(subject, target_hex, arrow, end());
+}
+
+void manager::move_earlier(size_t index, size_t increment)
+{
+	move_in_queue(index, - (int) increment);
+}
+
+void manager::move_later(size_t index, size_t increment)
+{
+	move_in_queue(index, (int) increment);
+}
+
+void manager::remove_action(size_t index)
+{
+	assert(!planned_actions_.empty());
+	assert(index < end());
+
+	action_set::iterator position = planned_actions_.begin()+index;
+	if (position < planned_actions_.end())
 	{
-		planned_actions_.push_back(ptr);
-	}
-	else
-	{
-		assert(index < (int) planned_actions_.size());
-		planned_actions_[index] = ptr;
+		planned_actions_.erase(position);
 	}
 }
 
-void manager::push_up(int index, size_t increment)
+/*
+ * Utility function to move actions around the queue.
+ * Positive increment = move toward back of the queue and later execution.
+ * Negative increment = move toward front of the queue and earlier execution.
+ */
+void manager::move_in_queue(size_t index, int increment)
 {
+	assert(!planned_actions_.empty());
+	assert(index < end());
+	if (planned_actions_.empty() || index >= end())
+	{
+		return;
+	}
+
 	action_set::iterator position;
-	if (index == -1)
+	position = planned_actions_.begin() + index;
+
+	assert(index + increment < end());
+	if (index + increment >= end())
 	{
-		position = planned_actions_.end() - 1;
-	}
-	else
-	{
-		assert(index < (int) planned_actions_.size());
-		position = planned_actions_.begin() + index;
+		increment = int(end()) - index;
 	}
 
-	action_set::iterator destination;
-	destination = position - increment;
-
-	assert(destination >= planned_actions_.begin() &&
-			destination < planned_actions_.end());
+	assert(int(index) + increment >= 0);
+	if (int(index) + increment < 0)
+	{
+		increment = -index;
+	}
 
 	action_ptr action = *position;
-	planned_actions_.erase(position);
+	action_set::iterator after = planned_actions_.erase(position);
+	//be careful, previous iterators have just been invalidated by erase()
+	action_set::iterator destination = after + increment;
 	planned_actions_.insert(destination, action);
-}
-
-void manager::push_down(int index, size_t increment)
-{
-	push_up(index,-increment);
-}
-
-void manager::remove_action(int index)
-{
-	if (index == -1)
-	{
-		planned_actions_.pop_back();
-	}
-	else
-	{
-		assert(index < (int) planned_actions_.size());
-		planned_actions_.erase(planned_actions_.begin()+index);
-	}
 }
 
 } // end namespace wb

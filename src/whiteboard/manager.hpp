@@ -51,36 +51,72 @@ public:
 	 */
 	static manager& instance();
 
+	/**
+	 * Determine whether the whiteboard is activated.
+	 */
+	bool active(){ return planning_mode_; }
+
+	void set_active(bool active){ planning_mode_ = active; }
+
 	const action_set& get_actions() const;
 
 	/**
-	 * If index = -1, the default value, then the move is appended at the end of the action_set.
-	 * For any other value, the added move REPLACES the action at the specified position.
+	 * Returns the index for the first (executed earlier) action within the actions set.
 	 */
-	void add_move(unit& subject, const map_location& target_hex, arrow& arrow, int index = -1);
+	size_t begin() {return 0; }
 
 	/**
-	 * Moves an action toward the front of the action_set by the specified increment.
-	 * If index = -1, the default value, then the last action is moved up the action_set.
+	 * Returns the index for the position *after* the last executed action within the actions set.
 	 */
-	void push_up(int index = -1, size_t increment = 1);
+	size_t end() { return planned_actions_.size(); }
 
 	/**
-	 * Moves an action toward the back of the action_set by the specified increment.
+	 * Inserts a move at the specified index. The begin() and end() functions might prove useful here.
 	 */
-	void push_down(int index, size_t increment = 1);
+	void insert_move(unit& subject, const map_location& target_hex, arrow& arrow, size_t index);
 
 	/**
-	 * If index = -1, the default value, the the last action in the action_set is deleted.
-	 * Otherwise the action at the specified index is deleted.
+	 * Inserts a move to be executed last (i.e. at the back of the queue)
 	 */
-	void remove_action(int index = -1);
+	void queue_move(unit& subject, const map_location& target_hex, arrow& arrow);
+
+	/**
+	 * Moves an action earlier in the execution order (i.e. at the front of the queue),
+	 * by the specified increment.
+	 * If the increment is too large, the action will be simply moved at the earliest position.
+	 */
+	void move_earlier(size_t index, size_t increment);
+
+	/**
+	 * Moves an action later in the execution order (i.e. at the back of the queue),
+	 * by the specified increment.
+	 * If the increment is too large, the action will be simply moved at the latest position.
+	 */
+	void move_later(size_t index, size_t increment);
+
+	/**
+	 * Deletes the action at the specified index. The begin() and end() functions might prove useful here.
+	 * If the index doesn't exist, the function does nothing.
+	 */
+	void remove_action(size_t index);
 
 private:
 	/// Singleton -> private constructor
 	manager();
 
+	/**
+	 * Utility function to move actions around the queue.
+	 * Positive increment = move toward back of the queue and later execution.
+	 * Negative increment = move toward front of the queue and earlier execution.
+	 */
+	void move_in_queue(size_t index, int increment);
+
 	static manager* instance_;
+
+	/**
+	 * Tracks whether the whiteboard is active.
+	 */
+	bool planning_mode_;
 
 	action_set planned_actions_;
 };
