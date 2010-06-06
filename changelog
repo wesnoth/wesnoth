@@ -108,11 +108,12 @@ Version 1.9.0-svn:
    * More info in the weapon tooltip (damage bonus calculation and swarm effect)
    * Terrain defense tooltip show terrain's info and defense calculation
    * Level tooltip shows next advancements
-   * Each trait has its own tooltip
+   * Each trait and special attack has its own tooltip
    * Most sidebar tooltips have now a category indication
    * Tooltips of ellipsed text are grouped in the last visible item's tooltip
    * Increase a little tooltip's opacity
    * Render grid above foreground terrain
+   * Clicking on some elements of sidebar now open the related help page
  * WML Engine:
    * Deprecated [set_variable]'s random key, use rand instead
    * Renamed [unit][status] healable to unhealable so it can default to 'no'
@@ -137,6 +138,8 @@ Version 1.9.0-svn:
    * Added search_recall_list key to [have_unit] tag
    * Added [move_units_fake] tag
    * Added reveal_map key to [endlevel] tag
+   * Rename all "colour" keys to "color" (in [side] and [label]), same for
+     "colour_lock"
  * Miscellaneous and bug fixes:
    * Added help entry when new unit is created directly in the recall list
    * Defaulted log level to warning again
@@ -166,6 +169,7 @@ Version 1.9.0-svn:
    * Prevent dereferencing freed memory when reporting malformed maps, i.e. when
      using an invalid terrain type
    * Fixed attack predictions for combats with a unit leveling up thanks to a kill
+   * Fix rare layer's order bug about unit drawn above big south-west unit
 
 Version 1.8.0:
  * AI:
