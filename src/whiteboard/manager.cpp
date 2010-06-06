@@ -45,14 +45,14 @@ manager& manager::instance()
 
 const action_set& manager::get_actions() const
 {
-	return planned_actions_;
+	return actions_;
 }
 
 void manager::insert_move(unit& subject, const map_location& target_hex, arrow& arrow, size_t index)
 {
 	action_ptr action(new move(subject, target_hex, arrow));
 	assert(index < end());
-	planned_actions_.insert(planned_actions_.begin() + index, action);
+	actions_.insert(actions_.begin() + index, action);
 
 }
 
@@ -73,13 +73,13 @@ void manager::move_later(size_t index, size_t increment)
 
 void manager::remove_action(size_t index)
 {
-	assert(!planned_actions_.empty());
+	assert(!actions_.empty());
 	assert(index < end());
 
-	action_set::iterator position = planned_actions_.begin()+index;
-	if (position < planned_actions_.end())
+	action_set::iterator position = actions_.begin()+index;
+	if (position < actions_.end())
 	{
-		planned_actions_.erase(position);
+		actions_.erase(position);
 	}
 }
 
@@ -90,15 +90,15 @@ void manager::remove_action(size_t index)
  */
 void manager::move_in_queue(size_t index, int increment)
 {
-	assert(!planned_actions_.empty());
+	assert(!actions_.empty());
 	assert(index < end());
-	if (planned_actions_.empty() || index >= end())
+	if (actions_.empty() || index >= end())
 	{
 		return;
 	}
 
 	action_set::iterator position;
-	position = planned_actions_.begin() + index;
+	position = actions_.begin() + index;
 
 	assert(index + increment < end());
 	if (index + increment >= end())
@@ -113,10 +113,10 @@ void manager::move_in_queue(size_t index, int increment)
 	}
 
 	action_ptr action = *position;
-	action_set::iterator after = planned_actions_.erase(position);
+	action_set::iterator after = actions_.erase(position);
 	//be careful, previous iterators have just been invalidated by erase()
 	action_set::iterator destination = after + increment;
-	planned_actions_.insert(destination, action);
+	actions_.insert(destination, action);
 }
 
 } // end namespace wb

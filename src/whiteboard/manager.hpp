@@ -68,7 +68,7 @@ public:
 	/**
 	 * Returns the index for the position *after* the last executed action within the actions set.
 	 */
-	size_t end() { return planned_actions_.size(); }
+	size_t end() { return actions_.size(); }
 
 	/**
 	 * Inserts a move at the specified index. The begin() and end() functions might prove useful here.
@@ -118,7 +118,7 @@ private:
 	 */
 	bool planning_mode_;
 
-	action_set planned_actions_;
+	action_set actions_;
 };
 
 } // end namespace wb
