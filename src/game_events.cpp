@@ -2526,6 +2526,7 @@ WML_HANDLER_FUNCTION(endlevel, /*event_info*/, cfg)
 	data.prescenario_save = utils::string_bool(cfg["save"], true);
 	data.linger_mode = utils::string_bool(cfg["linger_mode"], true)
 		&& !resources::teams->empty();
+	data.reveal_map = utils::string_bool(cfg["reveal_map"], true);
 	data.gold_bonus = utils::string_bool(cfg["bonus"], true);
 	data.carryover_percentage = lexical_cast_default<int>
 		(cfg["carryover_percentage"],

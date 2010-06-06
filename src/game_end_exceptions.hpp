@@ -65,6 +65,7 @@ struct end_level_data
 		, carryover_percentage(80)
 		, carryover_add(false)
 		, custom_endlevel_music()
+		, reveal_map(true)
 	{}
 
 	bool carryover_report;             /**< Should a summary of the scenario outcome be displayed? */
@@ -74,6 +75,7 @@ struct end_level_data
 	int carryover_percentage;          /**< How much gold is carried over to next scenario. */
 	bool carryover_add;                /**< Add or replace next scenario's minimum starting gold. */
 	std::string custom_endlevel_music; /**< Custom short music played at the end. */
+	bool reveal_map;                   /**< Should we reveal map when game is ended? (Multiplayer only) */
 };
 
 #endif /* ! GAME_END_EXCEPTIONS_HPP_INCLUDED */

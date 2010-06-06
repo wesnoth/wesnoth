@@ -334,12 +334,13 @@ void playmp_controller::linger(upload_log& log)
 
 	set_end_scenario_button();
 
-	// switch to observer viewpoint
-	gui_->set_team(0,true);
-	gui_->recalculate_minimap();
-	gui_->invalidate_all();
-	gui_->draw(true,true);
-
+	if ( get_end_level_data().reveal_map ) {
+		// switch to observer viewpoint
+		gui_->set_team(0,true);
+		gui_->recalculate_minimap();
+		gui_->invalidate_all();
+		gui_->draw(true,true);
+	}
 	bool quit;
 	do {
 		quit = true;
