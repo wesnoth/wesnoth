@@ -39,16 +39,18 @@ const char LARGE_TEXT='*', SMALL_TEXT='`',
            GREEN_TEXT='@', RED_TEXT='#',
            COLOR_TEXT='<', IMAGE='&';
 
-// some colors often used in UI
 const std::string weapon = "<245,230,193>",
 		weapon_details = "<166,146,117>",
 		unit_type = "<245,230,193>",
 		race = "<166,146,117>";
+
 const SDL_Color
 	weapon_color = { 245, 230, 193, 0 },
 	weapon_details_color = { 166, 146, 117, 0 },
 	unit_type_color = { 245, 230, 193, 0 },
 	race_color = { 166, 146, 117, 0 };
+
+const std::string weapon_numbers_sep = "-", weapon_details_sep = "--";
 
 std::string::const_iterator parse_markup(std::string::const_iterator i1,
 												std::string::const_iterator i2,

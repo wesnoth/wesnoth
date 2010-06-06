@@ -367,7 +367,7 @@ report generate_report(TYPE type,
 			}
 
 			str << span_color(font::weapon_color)
-				<< damage << '-' << nattacks
+				<< damage << font::weapon_numbers_sep << nattacks
 				<< ' ' << at.name()
 				<< "</span>\n";
 
@@ -402,7 +402,8 @@ report generate_report(TYPE type,
 			std::string lang_type = gettext(at.type().c_str());
 
 			str << span_color(font::weapon_details_color) << "  "
-				<< range << "--" << lang_type << "</span>\n";
+				<< range << font::weapon_details_sep
+				<< lang_type << "</span>\n";
 
 			tooltip << _("Weapon range: ") << "<b>" << range << "</b>\n"
 				<< _("Damage type: ")  << "<b>" << lang_type << "</b>\n";

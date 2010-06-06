@@ -792,11 +792,14 @@ void unit_preview_pane::draw_contents()
 
 			// see generate_report() in generate_report.cpp
 			text << font::weapon
-				<< at_it->damage() << "-" << at_it->num_attacks()
+				<< at_it->damage()
+				<< font::weapon_numbers_sep
+				<< at_it->num_attacks()
 				<< " " << at_it->name() << "\n";
 			text << font::weapon_details
 				<< "  " << _(at_it->range().c_str())
-				<< "--" << _(at_it->type().c_str()) << "\n";
+				<< font::weapon_details_sep
+				<< _(at_it->type().c_str()) << "\n";
 
 			std::string accuracy_parry = at_it->accuracy_parry_description();
 			if(accuracy_parry.empty() == false) {
