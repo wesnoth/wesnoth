@@ -484,13 +484,15 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 	experience_ = cfg["experience"];
 	resting_ = cfg["resting"].to_bool();
 	unrenamable_ = cfg["unrenamable"].to_bool();
-	if(cfg["alignment"]=="lawful") {
+
+	const std::string& align = cfg["alignment"];
+	if(align == "lawful") {
 		alignment_ = unit_type::LAWFUL;
-	} else if(cfg["alignment"]=="neutral") {
+	} else if(align == "neutral") {
 		alignment_ = unit_type::NEUTRAL;
-	} else if(cfg["alignment"]=="chaotic") {
+	} else if(align == "chaotic") {
 		alignment_ = unit_type::CHAOTIC;
-	} else if(cfg["alignment"]!="") {
+	} else if(align.empty()==false){
 		alignment_ = unit_type::NEUTRAL;
 	}
 
@@ -913,8 +915,9 @@ const unit_type* unit::type() const
 
 std::string unit::profile() const
 {
-	if(cfg_["profile"] != "" && cfg_["profile"] != "unit_image") {
-		return cfg_["profile"];
+	const std::string& prof = cfg_["profile"];
+	if(!prof.empty() && prof != "unit_image") {
+		return prof;
 	}
 	return absolute_image();
 }
@@ -1070,7 +1073,8 @@ void unit::remove_temporary_modifications()
 		for (int j = modifications_.child_count(mod_name) - 1; j >= 0; --j)
 		{
 			const config &mod = modifications_.child(mod_name, j);
-			if (mod["duration"] != "forever" && !mod["duration"].empty()) {
+			const std::string& duration = mod["duration"];
+			if (!duration.empty() && duration != "forever") {
 				if(mod.has_attribute("prev_type")) {
 					type_ = mod["prev_type"].str();
 				}
