@@ -50,7 +50,7 @@ const SDL_Color
 	unit_type_color = { 245, 230, 193, 0 },
 	race_color = { 166, 146, 117, 0 };
 
-const std::string weapon_numbers_sep = "-", weapon_details_sep = "--";
+const std::string weapon_numbers_sep = "–", weapon_details_sep = "--";
 
 std::string::const_iterator parse_markup(std::string::const_iterator i1,
 												std::string::const_iterator i2,
