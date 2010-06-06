@@ -41,7 +41,10 @@ public:
 
 	virtual ~manager();
 
-	static manager& get_singleton();
+	/**
+	 * Get the singleton instance.
+	 */
+	static manager& instance();
 
 	const action_set& get_planned_actions() const;
 

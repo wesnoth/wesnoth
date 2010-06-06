@@ -32,7 +32,7 @@ manager::~manager()
 
 }
 
-manager& manager::get_singleton()
+manager& manager::instance()
 {
 	if (instance_ == NULL)
 	{

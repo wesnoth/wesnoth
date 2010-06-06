@@ -22,6 +22,7 @@
 namespace wb
 {
 
+class action;
 class move;
 
 class visitor

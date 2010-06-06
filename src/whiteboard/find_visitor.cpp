@@ -17,11 +17,15 @@
  */
 
 #include "find_visitor.hpp"
+#include "move.hpp"
+
+#include "foreach.hpp"
 
 namespace wb
 {
 
 find_visitor::find_visitor()
+: found_(false), search_target_(NULL)
 {
 }
 
@@ -29,9 +33,43 @@ find_visitor::~find_visitor()
 {
 }
 
-void find_visitor::visit_move(move&)
+void find_visitor::visit_move(move& p_move)
 {
+	if( &p_move.get_unit() == search_target_ )
+	{
+		search_result_.push_back(action_ptr(&p_move));
+		found_ = true;
+	}
+}
 
+action_set find_visitor::find_action_of(const unit& target)
+{
+	search_target_ = &target;
+	found_ = false;
+	search_result_.clear();
+	action_set actions = manager::instance().get_planned_actions();
+	foreach (action_ptr a, actions)
+	{
+		a->accept(*this);
+	}
+	return search_result_;
+}
+
+action_ptr find_visitor::find_first_action_of(const unit& target)
+{
+	search_target_ = &target;
+	found_ = false;
+	search_result_.clear();
+	action_set actions = manager::instance().get_planned_actions();
+	foreach (action_ptr a, actions)
+	{
+		a->accept(*this);
+		if (found_)
+		{
+			return search_result_[0];
+		}
+	}
+	return action_ptr();
 }
 
 }//end namespace wb

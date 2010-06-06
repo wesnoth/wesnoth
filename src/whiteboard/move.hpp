@@ -40,6 +40,8 @@ public:
 
 	virtual void accept(visitor& v);
 
+	unit& get_unit() { return unit_; }
+
 private:
 	unit & unit_;
 	map_location target_hex_;

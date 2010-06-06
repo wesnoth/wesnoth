@@ -20,10 +20,16 @@
 #define WB_FIND_VISITOR_HPP_
 
 #include "visitor.hpp"
+#include "manager.hpp"
+
+class unit;
 
 namespace wb
 {
 
+/**
+ * Visitor to find the action(s) associated with a unit.
+ */
 class find_visitor: public visitor
 {
 public:
@@ -31,6 +37,14 @@ public:
 	virtual ~find_visitor();
 
 	virtual void visit_move(move& p_move);
+
+	virtual action_set find_action_of(const unit& target);
+	virtual action_ptr find_first_action_of(const unit& target);
+
+private:
+	bool found_;
+	const unit* search_target_;
+	action_set search_result_;
 };
 
 }
