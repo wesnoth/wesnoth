@@ -366,10 +366,10 @@ report generate_report(TYPE type,
 				nattacks = swarm_min_attacks + (swarm_max_attacks - swarm_min_attacks) * hitp / mhitp;
 			}
 
-			str << span_color(font::weapon_color);
-			str << damage << '-' << nattacks;
-			str << ' ' << at.name() << ' ' << at.accuracy_parry_description();
-			str << "</span>\n";
+			str << span_color(font::weapon_color)
+				<< damage << '-' << nattacks
+				<< ' ' << at.name()
+				<< "</span>\n";
 
 			tooltip << _("Weapon: ") << "<b>" << at.name() << "</b>\n"
 				<< _("Damage: ") << "<b>" << damage << "</b>\n";
@@ -394,16 +394,6 @@ report generate_report(TYPE type,
 				tooltip << "\t" << _("Base attacks: ") << base_nattacks << "\n";
 				int hp_ratio = u->hitpoints() * 100 / u->max_hitpoints();
 				tooltip << "\t" << _("Swarm: ") << "* "<< hp_ratio <<"%" << "\n";
-			}
-
-			int accuracy = at.accuracy();
-			if(accuracy) {
-				tooltip << _("Accuracy :") << "<b>" << accuracy << "</b>\n";
-			}
-
-			int parry = at.parry();
-			if(parry) {
-				tooltip << _("Parry :") << "<b>" << parry << "</b>\n";
 			}
 
 			res.add_text(flush(str), flush(tooltip));
@@ -450,6 +440,23 @@ report generate_report(TYPE type,
 			}
 
 			res.add_text(flush(str), flush(tooltip));
+
+			const std::string& accuracy_parry = at.accuracy_parry_description();
+			if(!accuracy_parry.empty()){
+				str << span_color(font::weapon_details_color)
+					<< "  " << accuracy_parry << "</span>\n";
+				int accuracy = at.accuracy();
+				if(accuracy) {
+					tooltip << _("Accuracy :") << "<b>"
+						<< signed_percent(accuracy) << "</b>\n";
+				}
+				int parry = at.parry();
+				if(parry) {
+					tooltip << _("Parry :") << "<b>"
+						<< signed_percent(parry) << "</b>\n";
+				}
+				res.add_text(flush(str), flush(tooltip));
+			}
 
 			const std::vector<t_string> &specials = at.special_tooltips();
 
