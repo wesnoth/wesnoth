@@ -21,10 +21,10 @@
 
 #include "action.hpp"
 #include "map_location.hpp"
-#include "arrow.hpp"
 
 class unit;
 class config;
+class arrow;
 
 namespace wb {
 
@@ -35,7 +35,7 @@ namespace wb {
 class move: public action
 {
 public:
-	move(unit& subject, const map_location& target_hex);
+	move(unit& subject, const map_location& target_hex, arrow& arrow);
 	virtual ~move();
 
 	virtual void accept(visitor& v);
@@ -46,7 +46,7 @@ private:
 	unit & unit_;
 	map_location target_hex_;
 
-	arrow* arrow_;
+	arrow& arrow_;
 
 };
 

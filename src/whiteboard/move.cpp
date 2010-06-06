@@ -17,20 +17,19 @@
  */
 
 #include "move.hpp"
+#include "arrow.hpp"
 #include "unit.hpp"
 #include "config.hpp"
 
 namespace wb {
 
-move::move(unit& subject, const map_location& target_hex)
-: unit_(subject), target_hex_(target_hex)
+move::move(unit& subject, const map_location& target_hex, arrow& arrow)
+: unit_(subject), target_hex_(target_hex), arrow_(arrow)
 {
-	//TODO: create arrow here
 }
 
 move::~move()
 {
-	//TODO: delete arrow here
 }
 
 void move::accept(visitor& v)

@@ -27,6 +27,7 @@
 #include <boost/shared_ptr.hpp>
 
 class unit;
+class arrow;
 
 namespace wb {
 
@@ -52,7 +53,28 @@ public:
 
 	const action_set& get_actions() const;
 
-	void add_move(unit& subject, const map_location& target_hex);
+	/**
+	 * If index = -1, the default value, then the move is appended at the end of the action_set.
+	 * For any other value, the added move REPLACES the action at the specified position.
+	 */
+	void add_move(unit& subject, const map_location& target_hex, arrow& arrow, int index = -1);
+
+	/**
+	 * Moves an action toward the front of the action_set by the specified increment.
+	 * If index = -1, the default value, then the last action is moved up the action_set.
+	 */
+	void push_up(int index = -1, size_t increment = 1);
+
+	/**
+	 * Moves an action toward the back of the action_set by the specified increment.
+	 */
+	void push_down(int index, size_t increment = 1);
+
+	/**
+	 * If index = -1, the default value, the the last action in the action_set is deleted.
+	 * Otherwise the action at the specified index is deleted.
+	 */
+	void remove_action(int index = -1);
 
 private:
 	/// Singleton -> private constructor
