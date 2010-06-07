@@ -2796,6 +2796,10 @@ team_data calculate_team_data(const team& tm, int side, const unit_map& units)
 	return res;
 }
 
+temporary_unit_map_modifier::~temporary_unit_map_modifier()
+{
+}
+
 temporary_unit_placer::temporary_unit_placer(unit_map& m, const map_location& loc, unit& u)
 	: m_(m), loc_(loc), temp_(m.extract(loc))
 {
