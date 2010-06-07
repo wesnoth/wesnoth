@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-05-30 18:23+0200\n"
-"PO-Revision-Date: 2010-05-25 23:40+0100\n"
+"PO-Revision-Date: 2010-06-06 23:53+0100\n"
 "Last-Translator: aceman <acelists@atlas.sk>\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -84,7 +84,7 @@ msgstr "Súkromné správy prijímať len od priateľov"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:86
 msgid "Auto-open whisper windows in lobby"
-msgstr "Automaticky otvoriť okno na súkromné správy v čakárni"
+msgstr "Súkromné správy v čakárni otvoria okno"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:93
@@ -9637,7 +9637,7 @@ msgstr "Neplatná farba"
 
 #: src/multiplayer_ui.cpp:425
 msgid "Selected user: "
-msgstr "Vyber používateľa: "
+msgstr "Vybraný používateľ: "
 
 #: src/multiplayer_wait.cpp:124
 msgid "Leader: "
@@ -9653,7 +9653,7 @@ msgstr "Čakáreň"
 
 #: src/multiplayer_wait.cpp:175
 msgid "Waiting for game to start..."
-msgstr "Čakám, kým začne hra..."
+msgstr "Čaká sa na začiatok hry..."
 
 #: src/multiplayer_wait.cpp:198
 msgid "Getting game data..."
@@ -10348,9 +10348,6 @@ msgstr "Pomôž nám urobiť Wesnoth lepším pre teba!"
 msgid "Enable summary uploads"
 msgstr "Umožni posielanie štatistík"
 
-#~ msgid "$trait_name|: $trait_description "
-#~ msgstr "$trait_name|: $trait_description "
-
 #~ msgid "Multiplayer_AI^Default AI"
 #~ msgstr "Štandardná UI"
 
@@ -10423,10 +10420,10 @@ msgstr "Umožni posielanie štatistík"
 #~ msgstr "Koniec"
 
 #~ msgid "Apply Filter"
-#~ msgstr "Použi filter"
+#~ msgstr "Použiť filter"
 
 #~ msgid "Invert"
-#~ msgstr "Invertuj"
+#~ msgstr "Invertovať"
 
 #~ msgid "Vacant Slots"
 #~ msgstr "Voľné miesta"
@@ -10444,29 +10441,32 @@ msgstr "Umožni posielanie štatistík"
 #~ "Enable the games filter. If unchecked all games are shown, regardless of "
 #~ "any filter."
 #~ msgstr ""
-#~ "Zapni filter hier. Ak nie je zvolené, zobrazia sa všetky hry, bez ohľadu "
+#~ "Zapnúť filter hier. Ak nie je zvolené, zobrazia sa všetky hry, bez ohľadu "
 #~ "na filter."
 
 #~ msgid ""
 #~ "Show all games that do *not* match your filter. Useful for hiding games "
 #~ "you are not interested in."
 #~ msgstr ""
-#~ "Zobraz všetky hry, ktoré nespĺňajú filter. Vhodné na skrytie hier, ktoré "
-#~ "nie sú zaujímavé."
+#~ "Zobraziť všetky hry, ktoré nespĺňajú filter. Vhodné na skrytie hier, "
+#~ "ktoré nie sú zaujímavé."
 
 #~ msgid "Only show games that have at least one vacant slot"
-#~ msgstr "Zobraz len hry s aspoň jedným voľným miestom"
+#~ msgstr "Zobraziť len hry s aspoň jedným voľným miestom"
 
 #~ msgid ""
 #~ "Only show games that are played or observed by at least one of your "
 #~ "friends"
-#~ msgstr "Zobraz len hry, kde hrá alebo pozoruje niektorý tvoj priateľ"
+#~ msgstr "Zobraziť len hry, kde hrá alebo pozoruje niektorý tvoj priateľ"
 
 #~ msgid "Only show games whose title or description contain the entered text"
-#~ msgstr "Zobraz len hry, ktorých názov alebo popis obsahuje zadaný text"
+#~ msgstr "Zobraziť len hry, ktorých názov alebo popis obsahuje zadaný text"
 
 #~ msgid "Joining this game requires a password."
 #~ msgstr "Vstup do tejto hry vyžaduje heslo."
+
+#~ msgid "$trait_name|: $trait_description "
+#~ msgstr "$trait_name|: $trait_description "
 
 #~ msgid " (auth only)"
 #~ msgstr " (len pri autentifikácii)"
