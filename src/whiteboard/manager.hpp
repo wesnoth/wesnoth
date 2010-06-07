@@ -19,6 +19,8 @@
 #ifndef WB_MANAGER_HPP_
 #define WB_MANAGER_HPP_
 
+#include "side_actions.hpp"
+
 #include <vector>
 
 #include <boost/noncopyable.hpp>
@@ -32,8 +34,6 @@ class manager : private boost::noncopyable // Singleton -> Non-copyable
 {
 public:
 
-	virtual ~manager();
-
 	/**
 	 * Get the singleton instance.
 	 */
@@ -46,6 +46,8 @@ public:
 
 	void set_active(bool active){ active_ = active; }
 
+	side_actions& get_side_actions(size_t side);
+
 private:
 	/// Singleton -> private constructor
 	manager();
@@ -56,6 +58,11 @@ private:
 	 * Tracks whether the whiteboard is active.
 	 */
 	bool active_;
+
+	/**
+	 * Data structure holding one side_actions object per side.
+	 */
+	std::vector<side_actions> actions_;
 
 };
 
