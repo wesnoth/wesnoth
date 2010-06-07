@@ -60,6 +60,7 @@ static void clear_resources()
 	resources::screen = NULL;
 	resources::soundsources = NULL;
 	resources::tod_manager = NULL;
+	resources::whiteboard = NULL;
 }
 
 play_controller::play_controller(const config& level, game_state& state_of_game,
