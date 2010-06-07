@@ -1,9 +1,10 @@
+/* $Id$ */
+
 /**
  * @file ana.hpp
  * @brief Main include file for application developers that wish to use ana.
  *
  * ana: Asynchronous Network API.
- * <http://async-net-api.googlecode.com/>
  * Copyright (C) 2010 Guillermo Biset.
  *
  * This file is part of the ana project.
@@ -11,11 +12,10 @@
  * Contents:       Main header file for ana providing the whole public API.
  *
  * System:         ana
- * Homepage:       <http://async-net-api.googlecode.com/>
  * Language:       C++
  *
  * Author:         Guillermo Biset
- * E-Mail:         billybiset AT gmail.com
+ * E-Mail:         billybiset AT gmail DOT com
  *
  * ana is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

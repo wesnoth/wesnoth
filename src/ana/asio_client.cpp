@@ -1,3 +1,35 @@
+/* $Id$ */
+
+/**
+ * @file asio_client.cpp
+ * @brief Implementation of the client side of the ana project.
+ *
+ * ana: Asynchronous Network API.
+ * Copyright (C) 2010 Guillermo Biset.
+ *
+ * This file is part of the ana project.
+ *
+ * System:         ana
+ * Language:       C++
+ *
+ * Author:         Guillermo Biset
+ * E-Mail:         billybiset AT gmail DOT com
+ *
+ * ana is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * ana is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with ana.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ */
+
 #include <iostream>
 
 #include <memory>
@@ -24,7 +56,6 @@ asio_client::asio_client(ana::address address, ana::port pt) :
 
 asio_client::~asio_client()
 {
-    delete proxy_;
 }
 
 ana::client* ana::client::create(ana::address address, ana::port pt)
@@ -45,9 +76,14 @@ ana::client_id asio_client::id() const
     return 0;
 }
 
-void asio_client::handle_proxy_connection()
+void asio_client::handle_proxy_connection(const boost::system::error_code& ec, ana::connection_handler* handler)
 {
-    run_listener();
+    handler->handle_connect( ec, 0 );
+
+    if ( ! ec )
+        run_listener();
+        
+    delete proxy_;
 }
 
 void asio_client::handle_connect(const boost::system::error_code& ec,
@@ -112,9 +148,9 @@ void asio_client::connect_through_proxy(ana::proxy::authentication_type auth_typ
     proxy_info.user_name     = user_name;
     proxy_info.password      = password;
 
-    proxy_ = new proxy_connection( socket_, proxy_info, address_, port_, this);
+    proxy_ = new proxy_connection( socket_, proxy_info, address_, port_);
 
-    proxy_->connect( handler );
+    proxy_->connect( this, handler );
 }
 
 void asio_client::send(boost::asio::const_buffer buffer, ana::send_handler* handler, ana::send_type copy_buffer )

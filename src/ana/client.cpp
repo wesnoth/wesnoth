@@ -1,3 +1,35 @@
+/* $Id$ */
+
+/**
+ * @file client.cpp
+ * @brief Client side chat application. Example for the ana project.
+ *
+ * ana: Asynchronous Network API.
+ * Copyright (C) 2010 Guillermo Biset.
+ *
+ * This file is part of the ana project.
+ *
+ * System:         ana
+ * Language:       C++
+ *
+ * Author:         Guillermo Biset
+ * E-Mail:         billybiset AT gmail DOT com
+ *
+ * ana is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * ana is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with ana.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ */
+
 #include <iostream>
 
 #include "getopt_pp.h"
@@ -126,7 +158,9 @@ class ChatClient : public ana::listener_handler,
                     client_->connect_through_proxy(conn_info_.get_ana_auth_type(),
                                                    conn_info_.proxyaddr,
                                                    conn_info_.proxyport,
-                                                   this);
+                                                   this,
+                                                   conn_info_.user,
+                                                   conn_info_.password);
 
                 client_->set_listener_handler( this );
                 client_->run();
@@ -152,12 +186,12 @@ class ChatClient : public ana::listener_handler,
         virtual void handle_connect( ana::error_code error, client_id server_id )
         {
             if ( error )
-                std::cerr << "Error connecting." << std::endl;
-            else
             {
-                std::cout << "\nConnected.\n";
-                client_->send( ana::buffer( std::string("/name ") + name_) , this);
+                std::cerr << "\nError connecting." << std::endl;
+                continue_ = false;
             }
+            else
+                client_->send( ana::buffer( std::string("/name ") + name_) , this);
         }
 
         virtual void handle_disconnect( ana::error_code error, client_id server_id)

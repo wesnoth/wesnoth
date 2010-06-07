@@ -1,3 +1,35 @@
+/* $Id$ */
+
+/**
+ * @file asio_listener.hpp
+ * @brief Header file of a listener for the ana project.
+ *
+ * ana: Asynchronous Network API.
+ * Copyright (C) 2010 Guillermo Biset.
+ *
+ * This file is part of the ana project.
+ *
+ * System:         ana
+ * Language:       C++
+ *
+ * Author:         Guillermo Biset
+ * E-Mail:         billybiset AT gmail DOT com
+ *
+ * ana is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * ana is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with ana.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ */
+
 #ifndef ASIO_LISTENER_HPP
 #define ASIO_LISTENER_HPP
 
