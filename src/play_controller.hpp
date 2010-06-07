@@ -58,6 +58,10 @@ namespace tooltips {
 	struct manager;
 } // namespace tooltips
 
+namespace wb {
+	class manager; // whiteboard manager
+} // namespace wb
+
 class play_controller : public controller_base, public events::observer, public savegame::savegame_config
 {
 public:
@@ -195,6 +199,7 @@ protected:
 	events::menu_handler menu_handler_;
 	boost::scoped_ptr<soundsource::manager> soundsources_manager_;
 	tod_manager tod_manager_;
+	boost::scoped_ptr<wb::manager> whiteboard_manager_;
 
 	//other objects
 	boost::scoped_ptr<game_display> gui_;

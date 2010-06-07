@@ -25,4 +25,5 @@ namespace resources
 	lua::LuaKernel *lua_kernel;
 	play_controller *controller;
 	::tod_manager *tod_manager;
+	wb::manager *whiteboard;
 }

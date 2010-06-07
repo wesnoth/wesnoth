@@ -41,6 +41,7 @@
 #include "formula_string_utils.hpp"
 #include "ai/manager.hpp"
 #include "ai/testing.hpp"
+#include "whiteboard/manager.hpp"
 
 static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
@@ -257,8 +258,10 @@ void play_controller::init_managers(){
 	prefs_disp_manager_.reset(new preferences::display_manager(gui_.get()));
 	tooltips_manager_.reset(new tooltips::manager(gui_->video()));
 	soundsources_manager_.reset(new soundsource::manager(*gui_));
+	whiteboard_manager_.reset(new wb::manager());
 
 	resources::soundsources = soundsources_manager_.get();
+	resources::whiteboard = whiteboard_manager_.get();
 
 	halo_manager_.reset(new halo::manager(*gui_));
 	LOG_NG << "done initializing managers... " << (SDL_GetTicks() - ticks_) << "\n";

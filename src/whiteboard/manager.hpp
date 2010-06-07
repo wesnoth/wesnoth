@@ -19,25 +19,23 @@
 #ifndef WB_MANAGER_HPP_
 #define WB_MANAGER_HPP_
 
-#include "side_actions.hpp"
+#include "log.hpp"
 
-#include <vector>
-
-#include <boost/noncopyable.hpp>
+static lg::log_domain log_whiteboard("whiteboard");
+#define LOG_WB LOG_STREAM(info, log_whiteboard)
+#define DBG_WB LOG_STREAM(debug, log_whiteboard)
+#define ERR_WB LOG_STREAM(err, log_whiteboard)
 
 namespace wb {
 
 /**
  * This class holds and manages all of the whiteboard's planned actions.
  */
-class manager : private boost::noncopyable // Singleton -> Non-copyable
+class manager
 {
 public:
 
-	/**
-	 * Get the singleton instance.
-	 */
-	static manager& instance();
+	manager();
 
 	/**
 	 * Determine whether the whiteboard is activated.
@@ -46,24 +44,11 @@ public:
 
 	void set_active(bool active){ active_ = active; }
 
-	side_actions& get_side_actions(size_t side);
-
 private:
-	/// Singleton -> private constructor
-	manager();
-
-	static manager* instance_;
-
 	/**
 	 * Tracks whether the whiteboard is active.
 	 */
 	bool active_;
-
-	/**
-	 * Data structure holding one side_actions object per side.
-	 */
-	std::vector<side_actions> actions_;
-
 };
 
 } // end namespace wb

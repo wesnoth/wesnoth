@@ -31,6 +31,8 @@ class unit_map;
 
 namespace soundsource { class manager; }
 
+namespace wb { class manager; } //whiteboard manager
+
 namespace resources
 {
 	extern game_display *screen;
@@ -42,6 +44,7 @@ namespace resources
 	extern lua::LuaKernel *lua_kernel;
 	extern play_controller *controller;
 	extern tod_manager *tod_manager;
+	extern wb::manager *whiteboard;
 }
 
 #endif

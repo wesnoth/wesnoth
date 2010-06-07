@@ -20,24 +20,8 @@
 
 namespace wb {
 
-manager* manager::instance_ = NULL;
-
 manager::manager(): active_(false)
 {
-}
-
-manager& manager::instance()
-{
-	if (instance_ == NULL)
-	{
-		instance_ = new manager;
-	}
-	return *instance_;
-}
-
-side_actions& manager::get_side_actions(size_t side)
-{
-	return actions_[side];
 }
 
 } // end namespace wb
