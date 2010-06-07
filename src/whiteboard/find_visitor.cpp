@@ -17,6 +17,7 @@
  */
 
 #include "find_visitor.hpp"
+#include "manager.hpp"
 #include "move.hpp"
 
 #include "foreach.hpp"
@@ -42,12 +43,11 @@ void find_visitor::visit_move(move& move)
 	}
 }
 
-action_set find_visitor::find_actions_of(const unit& unit)
+action_set find_visitor::find_actions_of(const unit& unit, action_set actions)
 {
 	search_target_ = &unit;
 	found_ = false;
 	search_result_.clear();
-	action_set actions = manager::instance().get_actions();
 	foreach (action_ptr a, actions)
 	{
 		a->accept(*this);
@@ -55,12 +55,11 @@ action_set find_visitor::find_actions_of(const unit& unit)
 	return search_result_;
 }
 
-action_ptr find_visitor::find_first_action_of(const unit& unit)
+action_ptr find_visitor::find_first_action_of(const unit& unit, action_set actions)
 {
 	search_target_ = &unit;
 	found_ = false;
 	search_result_.clear();
-	action_set actions = manager::instance().get_actions();
 	foreach (action_ptr a, actions)
 	{
 		a->accept(*this);

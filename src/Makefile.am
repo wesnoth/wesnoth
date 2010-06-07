@@ -275,6 +275,7 @@ wesnoth_source = \
 	whiteboard/manager.cpp \
 	whiteboard/find_visitor.cpp \
 	whiteboard/mapbuilder_visitor.cpp \
+	whiteboard/side_actions.cpp \
 	whiteboard/validate_visitor.cpp \
 	whiteboard/visitor.cpp \
 	widgets/combo.cpp \

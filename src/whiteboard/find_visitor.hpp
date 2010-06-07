@@ -20,7 +20,7 @@
 #define WB_FIND_VISITOR_HPP_
 
 #include "visitor.hpp"
-#include "manager.hpp"
+#include "side_actions.hpp"
 
 class unit;
 
@@ -38,8 +38,8 @@ public:
 
 	virtual void visit_move(move& move);
 
-	virtual action_set find_actions_of(const unit& unit);
-	virtual action_ptr find_first_action_of(const unit& unit);
+	virtual action_set find_actions_of(const unit& unit, action_set actions);
+	virtual action_ptr find_first_action_of(const unit& unit, action_set actions);
 
 private:
 	bool found_;

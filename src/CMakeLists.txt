@@ -446,6 +446,7 @@ set(wesnoth-main_SRC
     whiteboard/move.cpp
     whiteboard/find_visitor.cpp
     whiteboard/mapbuilder_visitor.cpp
+    whiteboard/side_actions.cpp
     whiteboard/validate_visitor.cpp
     whiteboard/visitor.cpp
     widgets/combo.cpp
