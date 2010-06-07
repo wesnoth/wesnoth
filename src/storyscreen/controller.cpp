@@ -42,12 +42,15 @@ static lg::log_domain log_engine("engine");
 
 namespace storyscreen {
 
-controller::controller(display& disp, const vconfig& data, const std::string& scenario_name)
+controller::controller(display& disp, const vconfig& data, const std::string& scenario_name,
+		       int segment_index, int total_segments)
 	: disp_(disp)
 	, disp_resize_lock_()
 	, evt_context_()
 	, data_(data)
 	, scenario_name_(scenario_name)
+	, segment_index_(segment_index)
+	, total_segments_(total_segments)
 	, parts_()
 {
 	ASSERT_LOG(resources::state_of_game != NULL, "Ouch: gamestate is NULL when initializing storyscreen controller");
@@ -120,17 +123,18 @@ void controller::resolve_wml(const vconfig& cfg)
 	}
 }
 
-void controller::show()
+STORY_RESULT controller::show(START_POSITION startpos)
 {
 	if(parts_.empty()) {
 		LOG_NG << "no storyscreen parts to show\n";
-		return;
+		return NEXT;
 	}
 
-	gui::button next_button(disp_.video(),_("Next") + std::string(" >"));
-	gui::button skip_button(disp_.video(),_("Skip"));
-	// TODO:
-	//  gui::button back_button(disp_.video(),std::string("< ")+_("Next"));
+	gui::button first_button(disp_.video(),_("First") + std::string(" <<"));
+	gui::button last_button (disp_.video(),std::string(">> ") + _("Last"));
+	gui::button back_button (disp_.video(),std::string("< ")+ _("Back"));
+	gui::button next_button (disp_.video(),_("Next") + std::string(" >"));
+	gui::button play_button (disp_.video(),_("Play") + std::string(" >"));
 
 	// Build renderer cache unless built for a low-memory environment;
 	// caching the scaled backgrounds can take over a decent amount of memory.
@@ -138,39 +142,83 @@ void controller::show()
 	std::vector< render_pointer_type > uis_;
 	foreach(part_pointer_type p, parts_) {
 		ASSERT_LOG( p != NULL, "Ouch: hit NULL storyscreen part in collection" );
-		render_pointer_type const rpt(new part_ui(*p, disp_, next_button, skip_button));
+		render_pointer_type const rpt(new part_ui(*p, disp_, next_button, back_button, first_button, last_button, play_button));
 		uis_.push_back(rpt);
 	}
 #endif
 
 	size_t k = 0;
+	switch(startpos) {
+	case START_BEGINNING:
+		break;
+	case START_END:
+		k = parts_.size() -1;
+		break;
+	default:
+		assert(false);
+		break;
+	}
 
 	while(k < parts_.size()) {
 #ifndef LOW_MEM
 		render_reference_type render_interface = *uis_[k];
 #else
-		render_value_type render_interface(*parts_[k], disp_, next_button, skip_button);
+		render_value_type render_interface(*parts_[k], disp_, next_button, back_button, first_button, last_button, play_button);
 #endif
 
 		LOG_NG << "displaying storyscreen part " << k+1 << " of " << parts_.size() << '\n';
+
+		const bool first_page = (segment_index_ == 0) && (k == 0);
+		const bool last_page  = (segment_index_ == total_segments_ - 1) && (k == parts_.size() - 1);
+
+		first_button.hide(first_page);
+		back_button.hide(first_page);
+		last_button.hide(last_page);
+		next_button.hide(false);
+		play_button.hide(!last_page);
 
 		switch(render_interface.show()) {
 		case part_ui::NEXT:
 			++k;
 			break;
 		case part_ui::BACK:
-			// If we are at the first page we can't go back.
 			if(k > 0) {
 				--k;
+			} 
+			else if(segment_index_ > 0) {
+				return BACK;
 			}
 			break;
-		case part_ui::SKIP:
-			k = parts_.size();
+		case part_ui::FIRST:
+			if(segment_index_ == 0) {
+				// this is the first segment
+				k = 0;
+			} 
+			else {
+				// we want to rewind all the way
+				// to the last segment
+				return FIRST;
+			}
 			break;
+		case part_ui::LAST:
+			if(segment_index_ == total_segments_ - 1) {
+				// not at the end of this segment
+				k = parts_.size() - 1;
+			} 
+			else {
+				// we want to fast forward all the way
+				// to the last segment
+				return LAST;
+			}
+			break;
+		case part_ui::QUIT:
+			return QUIT;
 		default:
-			throw quit();
+			assert(false);
+			return QUIT;
 		}
 	}
+	return NEXT;
 }
 
 } // end namespace storyscreen

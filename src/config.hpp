@@ -107,6 +107,8 @@ public:
 
 		child_iterator &operator++() { ++i_; return *this; }
 		child_iterator operator++(int) { return child_iterator(i_++); }
+		child_iterator &operator--() { --i_; return *this; }
+		child_iterator operator--(int) { return child_iterator(i_--); }
 
 		config &operator*() const { return **i_; }
 		config *operator->() const { return &**i_; }
@@ -132,6 +134,8 @@ public:
 
 		const_child_iterator &operator++() { ++i_; return *this; }
 		const_child_iterator operator++(int) { return const_child_iterator(i_++); }
+		const_child_iterator &operator--() { --i_; return *this; }
+		const_child_iterator operator--(int) { return const_child_iterator(i_--); }
 
 		const config &operator*() const { return **i_; }
 		const config *operator->() const { return &**i_; }

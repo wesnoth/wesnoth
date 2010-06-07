@@ -21,6 +21,7 @@
 #define STORYSCREEN_CONTROLLER_HPP_INCLUDED
 
 #include "events.hpp"
+#include "interface.hpp"
 #include "variable.hpp"
 #include "video.hpp"
 
@@ -39,12 +40,13 @@ class floating_image;
 class controller
 {
 public:
-	controller(display& disp, const vconfig& data, const std::string& scenario_name);
-
+	controller(display& disp, const vconfig& data, const std::string& scenario_name,
+		   int segment_index, int total_segments);
+	
 	/**
 	 * Display all story screen parts in a first..last sequence.
 	 */
-	void show();
+	STORY_RESULT show(START_POSITION startpos=START_BEGINNING);
 
 private:
 	typedef boost::shared_ptr< part    > part_pointer_type;
@@ -67,14 +69,14 @@ private:
 
 	vconfig data_;
 	std::string scenario_name_;
+	int segment_index_;
+	int total_segments_;
 
 	// The part cache.
 	std::vector< part_pointer_type > parts_;
 
 public:
 	struct no_parts {};
-	struct quit {};
-
 };
 
 } // end namespace storyscreen

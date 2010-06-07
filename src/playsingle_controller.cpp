@@ -290,9 +290,11 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 	sound::commit_music_changes();
 
 	if(!skip_replay) {
-		foreach (const config &s, story) {
-			show_storyscreen(*gui_, vconfig(s, true), level_["name"]);
+		storyscreen::STORY_RESULT result = show_story(*gui_, level_["name"], story);
+		if(result == storyscreen::QUIT) {
+			return QUIT;
 		}
+		assert(result == storyscreen::NEXT);
 	}
 	gui_->labels().read(level_);
 

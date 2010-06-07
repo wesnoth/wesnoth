@@ -81,13 +81,19 @@ namespace {
 
 namespace storyscreen {
 
-part_ui::part_ui(part& p, display& disp, gui::button& next_button, gui::button& skip_button)
+part_ui::part_ui(part& p, display& disp, 
+		 gui::button& next_button, gui::button& back_button, 
+		 gui::button& first_button, gui::button& last_button,
+		 gui::button& play_button)
 	: p_(p)
 	, disp_(disp)
 	, video_(disp.video())
 	, keys_()
 	, next_button_(next_button)
-	, skip_button_(skip_button)
+	, back_button_(back_button)
+	, first_button_(first_button)
+	, last_button_(last_button)
+	, play_button_(play_button)
 	, ret_(NEXT)
 	, scale_factor_(1.0)
 	, base_rect_()
@@ -139,8 +145,11 @@ void part_ui::prepare_geometry()
 	buttons_x_ = video_.getx() - 50;
 	buttons_y_ = base_rect_.y + base_rect_.h - 20;
 
-	next_button_.set_location(buttons_x_, buttons_y_ - 20);
-	skip_button_.set_location(buttons_x_, buttons_y_);
+	next_button_.set_location(buttons_x_, buttons_y_ - 60);
+	back_button_.set_location(buttons_x_, buttons_y_ - 40);
+	first_button_.set_location(buttons_x_, buttons_y_ - 20);
+	last_button_.set_location(buttons_x_, buttons_y_);
+	play_button_.set_location(buttons_x_, buttons_y_);
 
 #else // elif !defined(USE_TINY_GUI)
 
@@ -163,12 +172,18 @@ void part_ui::prepare_geometry()
 		buttons_y_ = video_.gety() - 40;
 		break;
 	}
-	next_button_.set_location(buttons_x_, buttons_y_ - 30);
-	skip_button_.set_location(buttons_x_, buttons_y_);
+	next_button_.set_location(buttons_x_, buttons_y_ - 90);
+	back_button_.set_location(buttons_x_, buttons_y_ - 60);
+	first_button_.set_location(buttons_x_, buttons_y_ - 30);
+	last_button_.set_location(buttons_x_, buttons_y_);
+	play_button_.set_location(buttons_x_, buttons_y_);
 #endif
 
     next_button_.set_volatile(true);
-    skip_button_.set_volatile(true);
+    play_button_.set_volatile(true);
+    back_button_.set_volatile(true);
+    first_button_.set_volatile(true);
+    last_button_.set_volatile(true);
 }
 
 void part_ui::prepare_floating_images()
@@ -194,6 +209,7 @@ bool part_ui::render_floating_images()
 	update_whole_screen();
 
 	bool skip = false;
+	bool last_key = true;
 
 	size_t fi_n = 0;
 	foreach(floating_image::render_input& ri, imgs_) {
@@ -206,14 +222,30 @@ bool part_ui::render_floating_images()
 
 		if(skip == false) {
 			for(unsigned i = 0; i != 50; ++i) {
-				if(keys_[SDLK_ESCAPE] || skip_button_.pressed()) {
-					ret_ = SKIP;
+				const bool next_keydown = keys_[SDLK_SPACE] || keys_[SDLK_RETURN] || keys_[SDLK_KP_ENTER] || keys_[SDLK_RIGHT];
+				const bool play_keydown = keys_[SDLK_ESCAPE] && !play_button_.hidden();
+				const bool last_keydown = (keys_[SDLK_ESCAPE] && play_button_.hidden()) || keys_[SDLK_END] || keys_[SDLK_DOWN];
+				const bool first_keydown = keys_[SDLK_HOME] || keys_[SDLK_UP];
+				const bool back_keydown = keys_[SDLK_BACKSPACE] || keys_[SDLK_LEFT];
+
+				if((last_keydown && !last_key) || last_button_.pressed()) {
+					ret_ = LAST;
 					return false;
 				}
-				else if(next_button_.pressed()) {
+				else if((first_keydown && !last_key) || first_button_.pressed()) {
+					ret_ = FIRST;
+					return false;
+				}
+				else if(((next_keydown || play_keydown) && !last_key) || next_button_.pressed() || play_button_.pressed()) {
 					ret_ = NEXT;
 					return false;
 				}
+				else if((back_keydown && !last_key) || back_button_.pressed()) {
+					ret_ = BACK;
+					return false;
+				}
+
+				last_key = next_keydown || play_keydown || last_keydown || first_keydown || back_keydown;
 
 				disp_.delay(fi.display_delay() / 50);
 
@@ -238,7 +270,10 @@ bool part_ui::render_floating_images()
 			}
 		}
 
-		if(keys_[SDLK_ESCAPE] || next_button_.pressed() || skip_button_.pressed()) {
+		if(keys_[SDLK_ESCAPE] || 
+		   next_button_.pressed()  || back_button_.pressed() || 
+		   first_button_.pressed() || last_button_.pressed() ||
+		   play_button_.pressed()) {
 			skip = true;
 			++fi_n;
 			continue;
@@ -372,6 +407,8 @@ void part_ui::render_story_box_borders(SDL_Rect& update_area)
 
 void part_ui::render_story_box()
 {
+	LOG_NG << "ENTER part_ui()::render_story_box()\n";
+
 	const std::string& storytxt = p_.text();
 	if(storytxt.empty()) {
 		wait_for_input();
@@ -429,10 +466,17 @@ void part_ui::render_story_box()
 		// by the buttons being hidden and unhidden in this scope.
 		update_locker locker(video_);
 
-		//back_button_.hide();
+		const bool next_hidden = next_button_.hidden();
+		const bool back_hidden = back_button_.hidden();
+		const bool play_hidden = play_button_.hidden();
+		const bool first_hidden = first_button_.hidden();
+		const bool last_hidden = last_button_.hidden();
+
 		next_button_.hide();
-		skip_button_.hide();
-		//quit_button_.hide();
+		back_button_.hide();
+		first_button_.hide();
+		last_button_.hide();
+		play_button_.hide();
 
 #ifndef LOW_MEM
 		blur_area(video_, fix_text_y, fix_text_h);
@@ -449,9 +493,15 @@ void part_ui::render_story_box()
 
 		// Make GUI1 buttons aware of background modifications
 		next_button_.set_location(next_button_.location());
-		next_button_.hide(false);
-		skip_button_.set_location(skip_button_.location());
-		skip_button_.hide(false);
+		next_button_.hide(next_hidden);
+		back_button_.set_location(back_button_.location());
+		back_button_.hide(back_hidden);
+		first_button_.set_location(first_button_.location());
+		first_button_.hide(first_hidden);
+		last_button_.set_location(last_button_.location());
+		last_button_.hide(last_hidden);
+		play_button_.set_location(play_button_.location());
+		play_button_.hide(play_hidden);
 	}
 
 	if(imgs_.empty()) {
@@ -478,10 +528,15 @@ void part_ui::render_story_box()
 			update_rect(dstrect);
 			++scan.y;
 		}
+		next_button_.hide(next_button_.hidden() || (scan_finished && last_button_.hidden()));
 
-		const bool keydown = keys_[SDLK_SPACE] || keys_[SDLK_RETURN] || keys_[SDLK_KP_ENTER];
+		const bool next_keydown  = keys_[SDLK_SPACE] || keys_[SDLK_RETURN] || keys_[SDLK_KP_ENTER] || keys_[SDLK_RIGHT];
+		const bool back_keydown  = keys_[SDLK_BACKSPACE] || keys_[SDLK_LEFT];
+		const bool play_keydown  = keys_[SDLK_ESCAPE] && !play_button_.hidden();
+		const bool last_keydown  = (keys_[SDLK_ESCAPE] && play_button_.hidden()) || keys_[SDLK_END] || keys_[SDLK_DOWN];
+		const bool first_keydown = keys_[SDLK_HOME] || keys_[SDLK_UP];
 
-		if((keydown && !last_key) || next_button_.pressed()) {
+		if((next_keydown && !last_key) || next_button_.pressed()) {
 			if(skip == true || scan_finished) {
 				ret_ = NEXT;
 				break;
@@ -490,12 +545,27 @@ void part_ui::render_story_box()
 			}
 		}
 
-		last_key = keydown;
+		if((play_keydown && !last_key) || play_button_.pressed()) {
+			ret_ = NEXT;
+			break;
+		}
 
-		if(keys_[SDLK_ESCAPE] || skip_button_.pressed()) {
-			ret_ = SKIP;
+		if((back_keydown && !last_key) || back_button_.pressed()) {
+			ret_ = BACK;
+			break;
+		}
+
+		if((last_keydown && !last_key) || last_button_.pressed()) {
+			ret_ = LAST;
+			return;
+		} 
+
+		if((first_keydown && !last_key) || first_button_.pressed()) {
+			ret_ = FIRST;
 			return;
 		}
+
+		last_key = next_keydown || back_keydown || play_keydown || last_keydown || first_keydown;
 
 		events::pump();
 		events::raise_process_event();
@@ -515,21 +585,39 @@ void part_ui::render_story_box()
 
 void part_ui::wait_for_input()
 {
-	bool last_key = true;
-	while(true) {
-		const bool keydown = keys_[SDLK_SPACE] || keys_[SDLK_RETURN] || keys_[SDLK_KP_ENTER];
+	LOG_NG << "ENTER part_ui()::wait_for_input()\n";
 
-		if((keydown && !last_key) || next_button_.pressed()) {
+	bool last_key = true;
+	next_button_.hide(next_button_.hidden() || last_button_.hidden());
+	while(true) {
+		const bool next_keydown = keys_[SDLK_SPACE] || keys_[SDLK_RETURN] || keys_[SDLK_KP_ENTER] || keys_[SDLK_RIGHT];
+		const bool play_keydown = keys_[SDLK_ESCAPE] && !play_button_.hidden();
+		const bool last_keydown = (keys_[SDLK_ESCAPE] && play_button_.hidden()) || keys_[SDLK_END] || keys_[SDLK_DOWN];
+		const bool first_keydown = keys_[SDLK_HOME] || keys_[SDLK_UP];
+		const bool back_keydown = keys_[SDLK_BACKSPACE] || keys_[SDLK_LEFT];
+
+		if(((next_keydown || play_keydown) && !last_key) || next_button_.pressed() || play_button_.pressed()) {
 			ret_ = NEXT;
 			break;
 		}
+	
+		if((back_keydown && !last_key) || back_button_.pressed()) {
+			ret_ = BACK;
+			break;
+		}
 
-		last_key = keydown;
 
-		if(keys_[SDLK_ESCAPE] || skip_button_.pressed()) {
-			ret_ = SKIP;
+		if((last_keydown && !last_key) || last_button_.pressed()) {
+			ret_ = LAST;
 			return;
 		}
+
+		if((first_keydown && !last_key) || first_button_.pressed()) {
+			ret_ = FIRST;
+			return;
+		}
+
+		last_key = next_keydown || back_keydown || first_keydown || last_keydown || play_keydown;
 
 		events::pump();
 		events::raise_process_event();
