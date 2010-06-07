@@ -21,7 +21,13 @@
 
 #include "visitor.hpp"
 
+#include <boost/shared_ptr.hpp>
+
+struct temporary_unit_map_modifier;
+
 namespace wb {
+
+typedef boost::shared_ptr<temporary_unit_map_modifier> modifier_ptr;
 
 /**
  * Superclass for all the whiteboard planned actions.

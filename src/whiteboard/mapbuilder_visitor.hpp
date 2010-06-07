@@ -20,17 +20,34 @@
 #define WB_MAPBUILDER_VISITOR_HPP_
 
 #include "visitor.hpp"
+#include "action.hpp"
+
+#include <stack>
+
+#include <boost/shared_ptr.hpp>
+
+class unit_map;
 
 namespace wb
 {
 
+/**
+ * Visitor that collects and applies unit_map modifications from the actions it visits
+ * and reverts all changes on destruction.
+ */
 class mapbuilder_visitor: public visitor
 {
+
 public:
-	mapbuilder_visitor();
+	mapbuilder_visitor(unit_map& unit_map);
 	virtual ~mapbuilder_visitor();
 
-	virtual void visit_move(move& p_move);
+	virtual void visit_move(move& move);
+
+private:
+	unit_map& unit_map_;
+
+	std::stack<modifier_ptr> modifiers_;
 };
 
 }

@@ -17,24 +17,29 @@
  */
 
 #include "mapbuilder_visitor.hpp"
+#include "move.hpp"
+#include "unit_map.hpp"
 
 namespace wb
 {
 
-mapbuilder_visitor::mapbuilder_visitor()
+mapbuilder_visitor::mapbuilder_visitor(unit_map& unit_map)
+: unit_map_(unit_map)
 {
-	// TODO Auto-generated constructor stub
-
 }
 
 mapbuilder_visitor::~mapbuilder_visitor()
 {
-	// TODO Auto-generated destructor stub
+	size_t stack_size = modifiers_.size();
+	for (size_t i = 0; i < stack_size; ++i )
+	{
+		modifiers_.pop();
+	}
 }
 
-void mapbuilder_visitor::visit_move(move&)
+void mapbuilder_visitor::visit_move(move& move)
 {
-
+	modifiers_.push(move.apply_temp_modifier(unit_map_));
 }
 
 }

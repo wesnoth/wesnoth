@@ -31,7 +31,7 @@ public:
 	visitor();
 	virtual ~visitor();
 
-	virtual void visit_move(move& p_move) = 0;
+	virtual void visit_move(move& move) = 0;
 };
 
 }

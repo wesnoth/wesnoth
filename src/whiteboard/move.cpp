@@ -37,4 +37,10 @@ void move::accept(visitor& v)
 	v.visit_move(*this);
 }
 
+modifier_ptr move::apply_temp_modifier(unit_map& unit_map)
+{
+	modifier_ptr modifier(new temporary_unit_mover(unit_map, unit_.get_location(), target_hex_));
+	return modifier;
+}
+
 } // end namespace wb

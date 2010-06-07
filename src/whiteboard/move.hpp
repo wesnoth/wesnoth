@@ -22,9 +22,10 @@
 #include "action.hpp"
 #include "map_location.hpp"
 
-class unit;
-class config;
 class arrow;
+class config;
+class unit;
+class unit_map;
 
 namespace wb {
 
@@ -41,6 +42,13 @@ public:
 	virtual void accept(visitor& v);
 
 	unit& get_unit() { return unit_; }
+
+	/**
+	 * Applies temporarily the result of this move to the unit map, and returns
+	 * the corresponding modifier. Dropping the returned reference will revert
+	 * the changes.
+	 */
+	modifier_ptr apply_temp_modifier(unit_map& unit_map);
 
 private:
 	unit & unit_;
