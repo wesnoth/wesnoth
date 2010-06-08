@@ -29,7 +29,7 @@
 
 typedef std::map<map_location, image::locator> arrow_symbols_map_t;
 
-typedef std::list<map_location> arrow_path_t;
+typedef std::vector<map_location> arrow_path_t;
 
 class arrow_observer;
 
@@ -48,7 +48,7 @@ public:
 		notify_arrow_deleted();
 	}
 
-	virtual void set_path(const arrow_path_t path);
+	virtual void set_path(const arrow_path_t &path);
 
 	void set_color(const SDL_Color color);
 

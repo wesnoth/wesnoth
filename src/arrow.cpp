@@ -30,7 +30,7 @@ arrow::arrow(display* screen): layer_(display::LAYER_ARROWS)
 	color_.r = 0;
 }
 
-void arrow::set_path(const arrow_path_t path)
+void arrow::set_path(const arrow_path_t &path)
 {
 	previous_path_ = path_;
 	path_ = path;
