@@ -3379,6 +3379,11 @@ void console_handler::do_toggle_draw_terrain_codes() {
 
 void console_handler::do_toggle_whiteboard() {
 	resources::whiteboard->set_active(!resources::whiteboard->active());
+	if (resources::whiteboard->active()) {
+		print(get_cmd(), _("Whiteboard activated."));
+	} else {
+		print(get_cmd(), _("Whiteboard deactivated."));
+	}
 }
 
 void menu_handler::do_ai_formula(const std::string& str,
