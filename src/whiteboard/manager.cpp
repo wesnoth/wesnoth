@@ -18,10 +18,37 @@
 
 #include "manager.hpp"
 
+#include "resources.hpp"
+#include "arrow.hpp"
+
 namespace wb {
 
-manager::manager(): active_(false)
+manager::manager(): active_(false), move_arrow_(NULL)
 {
+}
+
+void manager::apply_temp_modifiers()
+{
+	mapbuilder_.reset(new mapbuilder_visitor(*resources::units));
+}
+void manager::remove_temp_modifiers()
+{
+	mapbuilder_.reset();
+}
+
+void manager::set_route(const std::vector<map_location> &steps)
+{
+	route_ = steps;
+	if (route_.size() > 1)
+	{
+		if (move_arrow_ == NULL)
+		{
+			display *screen = (display*) resources::screen;
+			move_arrow_ = new arrow(screen);
+			screen->add_arrow(*move_arrow_);
+		}
+		move_arrow_->set_path(route_);
+	}
 }
 
 } // end namespace wb
