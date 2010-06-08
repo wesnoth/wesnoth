@@ -37,6 +37,7 @@
 #include "rng.hpp"
 #include "tod_manager.hpp"
 #include "wml_separators.hpp"
+#include "whiteboard/manager.hpp"
 
 #include <boost/bind.hpp>
 
@@ -219,9 +220,18 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 				// the movement_reset is active only if it's not the unit's turn
 				unit_movement_resetter move_reset(*selected_unit,
 						selected_unit->side() != side_num_);
+				if (resources::whiteboard->active()) {
+					resources::whiteboard->apply_temp_modifiers();
+				}
 				current_route_ = get_route(selected_unit, dest, waypoints_, viewing_team());
+				if (resources::whiteboard->active()) {
+					resources::whiteboard->remove_temp_modifiers();
+				}
 				if(!browse) {
 					gui().set_route(&current_route_);
+					if (resources::whiteboard->active()) {
+						resources::whiteboard->set_route(current_route_.steps);
+					}
 				}
 			}
 		}
