@@ -54,6 +54,7 @@
 #include "wml_separators.hpp"
 #include "formula_string_utils.hpp"
 #include "scripting/lua.hpp"
+#include "whiteboard/manager.hpp"
 #include "widgets/combo.hpp"
 
 #include <boost/bind.hpp>
@@ -2388,6 +2389,7 @@ class console_handler : public map_command_handler<console_handler>, private cha
 		void do_event();
 		void do_toggle_draw_coordinates();
 		void do_toggle_draw_terrain_codes();
+		void do_toggle_whiteboard();
 
 		std::string get_flags_description() const {
 			return _("(D) - debug only, (N) - network only, (A) - admin only");
@@ -2499,6 +2501,9 @@ class console_handler : public map_command_handler<console_handler>, private cha
 			register_command("show_terrain_codes", &console_handler::do_toggle_draw_terrain_codes,
 				_("Toggle overlaying of terrain codes on hexes."));
 			register_alias("show_terrain_codes", "tc");
+			register_command("whiteboard", &console_handler::do_toggle_whiteboard,
+				_("Toggle planning mode."), "", "D");
+			register_alias("whiteboard", "wb");
 
 			if (const config &alias_list = preferences::get_alias())
 			{
@@ -3370,6 +3375,10 @@ void console_handler::do_toggle_draw_coordinates() {
 void console_handler::do_toggle_draw_terrain_codes() {
 	menu_handler_.gui_->set_draw_terrain_codes(!menu_handler_.gui_->get_draw_terrain_codes());
 	menu_handler_.gui_->invalidate_all();
+}
+
+void console_handler::do_toggle_whiteboard() {
+	resources::whiteboard->set_active(!resources::whiteboard->active());
 }
 
 void menu_handler::do_ai_formula(const std::string& str,
