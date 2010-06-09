@@ -112,6 +112,7 @@ void unit_map::add(const map_location &l, const unit &u) {
 }
 
 void unit_map::move(const map_location &src, const map_location &dst) {
+	DBG_NG << "Unit map: Moving unit from " << src << " to " << dst << "\n";
 	unit *p = extract(src);
 	assert(p);
 	p->set_location(dst);
@@ -155,7 +156,7 @@ void unit_map::insert(unit *p)
 	}
 
 	DBG_NG << "Adding unit " << p->underlying_id() << " - " << p->id()
-		<< " to location: (" << loc.x + 1 << "," << loc.y + 1 << ")\n";
+		<< " to location: (" << loc << ")\n";
 
 	std::pair<lmap::iterator,bool> res = lmap_.insert(std::make_pair(loc, unit_id));
 	assert(res.second);
@@ -197,7 +198,8 @@ unit *unit_map::extract(const map_location &loc)
 	unit *res = iter->second;
 	res->set_game_context(NULL);
 
-	DBG_NG << "Extract unit " << i->second << '\n';
+	DBG_NG << "Extract unit " << res->underlying_id() << " - " << res->id()
+			<< " from location: (" << loc << ")\n";
 	iter->second = NULL;
 	++num_invalid_;
 	lmap_.erase(i);
