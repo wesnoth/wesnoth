@@ -130,11 +130,11 @@ STORY_RESULT controller::show(START_POSITION startpos)
 		return NEXT;
 	}
 
-	gui::button first_button(disp_.video(),_("First") + std::string(" <<"));
-	gui::button last_button (disp_.video(),std::string(">> ") + _("Last"));
-	gui::button back_button (disp_.video(),std::string("< ")+ _("Back"));
-	gui::button next_button (disp_.video(),_("Next") + std::string(" >"));
-	gui::button play_button (disp_.video(),_("Play") + std::string(" >"));
+	gui::button first_button(disp_.video(),_("First") + std::string(" ↞"));
+	gui::button last_button (disp_.video(),std::string("↠ ") + _("Last"));
+	gui::button back_button (disp_.video(),std::string("← ")+ _("Back"));
+	gui::button next_button (disp_.video(),_("Next") + std::string(" →"));
+	gui::button play_button (disp_.video(),_("Play") + std::string(" →"));
 
 	// Build renderer cache unless built for a low-memory environment;
 	// caching the scaled backgrounds can take over a decent amount of memory.
@@ -184,7 +184,7 @@ STORY_RESULT controller::show(START_POSITION startpos)
 		case part_ui::BACK:
 			if(k > 0) {
 				--k;
-			} 
+			}
 			else if(segment_index_ > 0) {
 				return BACK;
 			}
@@ -193,7 +193,7 @@ STORY_RESULT controller::show(START_POSITION startpos)
 			if(segment_index_ == 0) {
 				// this is the first segment
 				k = 0;
-			} 
+			}
 			else {
 				// we want to rewind all the way
 				// to the last segment
@@ -204,7 +204,7 @@ STORY_RESULT controller::show(START_POSITION startpos)
 			if(segment_index_ == total_segments_ - 1) {
 				// not at the end of this segment
 				k = parts_.size() - 1;
-			} 
+			}
 			else {
 				// we want to fast forward all the way
 				// to the last segment
