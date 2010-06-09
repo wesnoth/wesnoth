@@ -18,8 +18,10 @@
 
 #include "manager.hpp"
 
-#include "resources.hpp"
 #include "arrow.hpp"
+#include "foreach.hpp"
+#include "resources.hpp"
+#include "team.hpp"
 
 namespace wb {
 
@@ -30,6 +32,14 @@ manager::manager(): active_(false), move_arrow_(NULL)
 void manager::apply_temp_modifiers()
 {
 	mapbuilder_.reset(new mapbuilder_visitor(*resources::units));
+	foreach(team &team, *resources::teams)
+	{
+		const action_set& actions = team.get_side_actions().actions();
+		foreach (action_ptr action, actions)
+		{
+			action->accept(*mapbuilder_);
+		}
+	}
 }
 void manager::remove_temp_modifiers()
 {

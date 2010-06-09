@@ -34,7 +34,7 @@ side_actions::~side_actions()
 	// TODO Auto-generated destructor stub
 }
 
-const action_set& side_actions::get_actions() const
+const action_set& side_actions::actions() const
 {
 	return actions_;
 }

@@ -43,7 +43,7 @@ public:
 	side_actions();
 	virtual ~side_actions();
 
-	const action_set& get_actions() const;
+	const action_set& actions() const;
 
 	/**
 	 * Returns the index for the first (executed earlier) action within the actions set.
