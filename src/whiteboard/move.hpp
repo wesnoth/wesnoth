@@ -52,7 +52,8 @@ public:
 
 private:
 	unit & unit_;
-	map_location target_hex_;
+	map_location orig_hex_;
+	map_location dest_hex_;
 
 	arrow& arrow_;
 

@@ -49,7 +49,8 @@ void side_actions::insert_move(unit& subject, const map_location& target_hex, ar
 
 void side_actions::queue_move(unit& subject, const map_location& target_hex, arrow& arrow)
 {
-	insert_move(subject, target_hex, arrow, end());
+	action_ptr action(new move(subject, target_hex, arrow));
+	actions_.push_back(action);
 }
 
 void side_actions::move_earlier(size_t index, size_t increment)

@@ -17,6 +17,9 @@
  */
 
 #include "move.hpp"
+
+#include "visitor.hpp"
+
 #include "arrow.hpp"
 #include "unit.hpp"
 #include "config.hpp"
@@ -24,7 +27,7 @@
 namespace wb {
 
 move::move(unit& subject, const map_location& target_hex, arrow& arrow)
-: unit_(subject), target_hex_(target_hex), arrow_(arrow)
+: unit_(subject), orig_hex_(subject.get_location()), dest_hex_(target_hex), arrow_(arrow)
 {
 }
 
@@ -39,7 +42,10 @@ void move::accept(visitor& v)
 
 modifier_ptr move::apply_temp_modifier(unit_map& unit_map)
 {
-	modifier_ptr modifier(new temporary_unit_mover(unit_map, unit_.get_location(), target_hex_));
+	assert(unit_.get_location() == orig_hex_);
+	DBG_WB << "Adding temp unit mover for unit " << unit_.name() << " [" << unit_.underlying_id() << "] "
+			<< " from (" << orig_hex_ << ") to (" << dest_hex_ <<")\n";
+	modifier_ptr modifier(new temporary_unit_mover(unit_map, orig_hex_, dest_hex_));
 	return modifier;
 }
 

@@ -21,19 +21,14 @@
 
 #include "mapbuilder_visitor.hpp"
 
-#include "log.hpp"
 #include "map_location.hpp"
 
 #include <boost/scoped_ptr.hpp>
 
 #include <vector>
 
-static lg::log_domain log_whiteboard("whiteboard");
-#define LOG_WB LOG_STREAM(info, log_whiteboard)
-#define DBG_WB LOG_STREAM(debug, log_whiteboard)
-#define ERR_WB LOG_STREAM(err, log_whiteboard)
-
 class arrow;
+class unit;
 
 namespace wb {
 
@@ -62,6 +57,13 @@ public:
 
 	/** Set the route for move creation purposes */
 	void set_route(const std::vector<map_location> &steps);
+
+	/**
+	 * Creates a move action for the current side,
+	 * and erases the stored route. The move is inserted
+	 * at the end of the queue, to be executed last.
+     */
+	void create_move_from_route(unit& subject);
 
 private:
 	/**

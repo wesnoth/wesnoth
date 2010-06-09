@@ -18,8 +18,11 @@
 
 #include "manager.hpp"
 
+#include "action.hpp"
+
 #include "arrow.hpp"
 #include "foreach.hpp"
+#include "play_controller.hpp"
 #include "resources.hpp"
 #include "team.hpp"
 
@@ -32,18 +35,18 @@ manager::manager(): active_(false), move_arrow_(NULL)
 void manager::apply_temp_modifiers()
 {
 	mapbuilder_.reset(new mapbuilder_visitor(*resources::units));
-	foreach(team &team, *resources::teams)
+	team& current_team = (*resources::teams)[resources::controller->current_side()];
+	const action_set& actions = current_team.get_side_actions().actions();
+	foreach (action_ptr action, actions)
 	{
-		const action_set& actions = team.get_side_actions().actions();
-		foreach (action_ptr action, actions)
-		{
-			action->accept(*mapbuilder_);
-		}
+		action->accept(*mapbuilder_);
 	}
 }
 void manager::remove_temp_modifiers()
 {
+	DBG_WB << "Removing temporary modifiers.\n";
 	mapbuilder_.reset();
+	DBG_WB << "Removed temporary modifiers.\n";
 }
 
 void manager::set_route(const std::vector<map_location> &steps)
@@ -59,6 +62,16 @@ void manager::set_route(const std::vector<map_location> &steps)
 		}
 		move_arrow_->set_path(route_);
 	}
+}
+
+void manager::create_move_from_route(unit& subject)
+{
+	team& current_team = (*resources::teams)[resources::controller->current_side()];
+	DBG_WB << "Creating move for unit " << subject.name() << " from " << subject.get_location()
+			<< " to " << route_.back() << "\n";
+	current_team.get_side_actions().queue_move(subject, route_.back(), *move_arrow_);
+	//ownership of the arrow transferred to the new move action
+	move_arrow_ = NULL;
 }
 
 } // end namespace wb
