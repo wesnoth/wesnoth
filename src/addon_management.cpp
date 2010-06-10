@@ -171,6 +171,8 @@ namespace {
 		   UNIX platforms */
 		files.push_back(".*");
 		dirs.push_back(".*");
+		/* MacOS X metadata-like cruft (http://floatingsun.net/2007/02/07/whats-with-__macosx-in-zip-files/) */
+		dirs.push_back("__MACOSX");
 
 		files.push_back("#*#");
 		files.push_back("*~");
