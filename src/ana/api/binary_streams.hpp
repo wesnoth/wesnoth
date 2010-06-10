@@ -40,123 +40,127 @@
 #include <assert.h>
 #include <stdint.h>
 
-namespace serializer
+namespace ana
 {
-    class bostream
+    namespace serializer
     {
-        public:
-            bostream() :
-                _s()
-            {
-            }
+        class bostream
+        {
+            public:
+                bostream() :
+                    _s()
+                {
+                }
 
-            template <class T>
-            bostream& operator<< (T x)
-            {
-                _s.append(reinterpret_cast<char*>(&x), sizeof(T));
-                return *this;
-            }
+                template <class T>
+                bostream& operator<< (T x)
+                {
+                    _s.append(reinterpret_cast<char*>(&x), sizeof(T));
+                    return *this;
+                }
 
-            /* Inserting a string inserts its size first. */
-            bostream& operator<< (const std::string& s)
-            {
-                (*this) << uint32_t( s.size() );
-                _s += s;
-                return *this;
-            }
+                /* Inserting a string inserts its size first. */
+                bostream& operator<< (const std::string& s)
+                {
+                    (*this) << uint32_t( s.size() );
+                    _s += s;
+                    return *this;
+                }
 
-            template <class Other>
-            bostream& operator<< (const std::vector<Other>& vec)
-            {
-                const uint32_t size(vec.size());
-                (*this) << size;
-                for (size_t i(0); i < size; ++i)
-                    (*this) << vec[i];
+                template <class Other>
+                bostream& operator<< (const std::vector<Other>& vec)
+                {
+                    const uint32_t size(vec.size());
+                    (*this) << size;
+                    for (size_t i(0); i < size; ++i)
+                        (*this) << vec[i];
 
-                return *this;
-            }
+                    return *this;
+                }
 
-            bostream& operator<< (const char* cs)
-            {
-                const std::string s(cs);
-                return operator<< (s);
-            }
+                bostream& operator<< (const char* cs)
+                {
+                    const std::string s(cs);
+                    return operator<< (s);
+                }
 
-            const std::string& str() const
-            {
-                return _s;
-            }
+                const std::string& str() const
+                {
+                    return _s;
+                }
 
-            void clear()
-            {
-                _s.clear();
-            }
+                void clear()
+                {
+                    _s.clear();
+                }
 
-        private:
-            std::string _s;
-    };
+            private:
+                std::string _s;
+        };
 
-    class bistream
-    {
-        public:
-            bistream(const std::string& str) :
-                _s(str),
-                _pos(0)
-            {
-            }
+        class bistream
+        {
+            public:
+                bistream(const std::string& str) :
+                    _s(str),
+                    _pos(0)
+                {
+                }
 
-            bistream() :
-                _s(),
-                _pos(0)
-            {
-            }
+                bistream() :
+                    _s(),
+                    _pos(0)
+                {
+                }
 
-            void str(const std::string& str)
-            {
-                _pos = 0;
-                _s = str;
-            }
+                void str(const std::string& str)
+                {
+                    _pos = 0;
+                    _s = str;
+                }
 
-            template <class T>
-            bistream& operator >> (T& x)
-            {
-                assert(_s.size() >= _pos + sizeof(x));
-                _pos += _s.copy(reinterpret_cast<char*>(&x), sizeof(x),_pos);
-                return *this;
-            }
+                template <class T>
+                bistream& operator >> (T& x)
+                {
+                    assert(_s.size() >= _pos + sizeof(x));
+                    _pos += _s.copy(reinterpret_cast<char*>(&x), sizeof(x),_pos);
+                    return *this;
+                }
 
-            bistream& operator >> (std::string& str)
-            {
-                uint32_t size;
-                (*this) >> size;
-                assert(_s.size() >= size+_pos);
-                str  = _s.substr(_pos,size);
-                _pos += size;
-                return *this;
-            }
+                bistream& operator >> (std::string& str)
+                {
+                    uint32_t size;
+                    (*this) >> size;
+                    assert(_s.size() >= size+_pos);
+                    str  = _s.substr(_pos,size);
+                    _pos += size;
+                    return *this;
+                }
 
-            template <class Other>
-            bistream& operator>> (std::vector<Other>& vec)
-            {
-                uint32_t size;
-                (*this) >> size;
-                assert(_s.size() >= (size * sizeof(Other)) + _pos);
-                vec.resize(size);
-                for (size_t i(0); i < size; i++)
-                    (*this) >> vec[i];
+                template <class Other>
+                bistream& operator>> (std::vector<Other>& vec)
+                {
+                    uint32_t size;
+                    (*this) >> size;
+                    assert(_s.size() >= (size * sizeof(Other)) + _pos);
+                    vec.resize(size);
+                    for (size_t i(0); i < size; i++)
+                        (*this) >> vec[i];
 
-                return *this;
-            }
+                    return *this;
+                }
 
-            void clear()
-            {
-                _s.clear();
-                _pos = 0;
-            }
+                void clear()
+                {
+                    _s.clear();
+                    _pos = 0;
+                }
 
-        private:
-            std::string _s;
-            std::size_t _pos;
-    };
-} //serializer namespace
+            private:
+                std::string _s;
+                std::size_t _pos;
+        };
+    } //serializer namespace
+} //ana namespace
+
 #endif

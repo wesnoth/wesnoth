@@ -51,12 +51,9 @@
  *
  * @section requirements requirements
  * To compile ana, you need:
- * - Boost, version 1.37 or older
+ * - Boost, version 1.35 or older
  *
  */
-
-#ifndef ANA_HPP
-#define ANA_HPP
 
 #include <boost/cstdint.hpp>
 #include <boost/noncopyable.hpp>
@@ -68,184 +65,22 @@
 #include <cstdlib>
 #include <ctime>
 
+#ifndef ANA_HPP
+#define ANA_HPP
+
+#define ANA_DETAIL_INTERNAL_HPP
+#include "common.hpp"               //Main definitions
+#include "timers.hpp"               //Timer related
+#include "predicates.hpp"           //Client predicates, used for conditional sending
+#include "binary_streams.hpp"       //For serialization
+#undef  ANA_DETAIL_INTERNAL_HPP
+
 /** @namespace ana
  *
  * Namespace for project ana, the entire API is under this namespce.
  */
 namespace ana
 {
-    /** @name Type and constant definitions
-     *
-     * Definitions of main types and relevant constants.
-     */
-    //@{
-    typedef uint32_t ana_uint32  /** Standard unsigned int, with fixed size to 32 bits. */ ;
-    typedef int32_t  ana_int32   /** Standard int, with fixed size to 32 bits.          */ ;
-
-    typedef ana_uint32  client_id          /** Type of IDs of connected components, unique.   */ ;
-    typedef ana_uint32  message_size       /** Message size type.                             */ ;
-
-    typedef std::string port               /** Port type, a std::string (instead of a short.) */ ;
-    typedef std::string address            /** Address type, a string. Either IP of hostname. */ ;
-
-    typedef bool        send_type          /** Send operation type, true to copy the buffer.    */ ;
-
-    typedef boost::system::error_code error_code /** Standard error code, can evaluate to bool. */ ;
-
-    const send_type ZeroCopy   = false     /** Don't copy the buffer. */ ;
-    const send_type CopyBuffer = true      /** Copy the buffer.       */ ;
-
-    const message_size HeaderLength = sizeof(ana_uint32) /** Length of message header. */ ;
-
-    const client_id ServerID = 0  /** The ID of the server application. */ ;
-
-    /**
-     * Timeout policies for send operations.
-     *
-     * \sa timer
-     */
-    enum timeout_policy
-    {
-        NoTimeouts       /** Don't use timers in any operation.                */,
-        FixedTime        /** Use timers with a fixed time for every operation. */,
-        TimePerKilobyte  /** Use timers, calculating the necessary time from
-        the size of the buffer that is to be sent.        */
-    };
-    //@}
-
-    /** @name Predicates over client ids.
-     *
-     * Declaration of types used in conditional send operations, e.g. send_if.
-     * \sa send_if
-     */
-    //@{
-    /** A boolean predicate of client IDs. Used for conditional send operations. */
-    struct client_predicate
-    {
-        /**
-         * Decides if a given condition applies to a client.
-         *
-         * @param client ID of the queried client.
-         * @returns true if the condition holds for this client.
-         */
-        virtual bool selects(client_id) const = 0;
-    };
-    //@}
-
-    /** @name Timers
-     *
-     * Definitions of timer related types.
-     */
-    //@{
-
-    /**
-     * General purpose asynchronous timer.
-     */
-    class timer
-    {
-        public:
-            /** Standard constructor. */
-            timer() :
-                io_service_(),
-                timer_(io_service_)
-            {
-            }
-
-            /**
-             * Wait in background a given amount of milliseconds.
-             *
-             * The method shouldn't be called with a size_t constant
-             * directly. Instead, the user should use the functions in
-             * the ana::time namespace.
-             *
-             * @param milliseconds : Amount of milliseconds to wait.
-             * @param handler : Handler object to handle the timeout event.
-             *
-             * Examples:
-             *    - wait( ana::time::seconds(5),
-             *            boost::bind( &ChatServer::handle_timeout, this,
-             *                         boost::asio::placeholders::error);
-             *
-             * \sa ana::time
-             */
-            template<class Handler>
-            void wait(size_t milliseconds, Handler handler)
-            {
-                timer_.expires_from_now(milliseconds / 1000);
-                timer_.async_wait(handler);
-                boost::thread t( boost::bind( &boost::asio::io_service::run_one, &io_service_ ) );
-            }
-
-            /** Cancel the timer if running. */
-            void cancel()
-            {
-                timer_.cancel();
-            }
-
-            /** Standard destructor, cancels pending operations and stops the I/O service. */
-            ~timer()
-            {
-                timer_.cancel();
-                io_service_.stop();
-            }
-
-        private:
-            /** Private class providing traits for the timer type. */
-            struct time_t_traits
-            {
-                // The time type.
-                typedef std::time_t time_type;
-
-                // The duration type.
-                struct duration_type
-                {
-                    duration_type() : value(0) {}
-                    duration_type(std::time_t v) : value(v) {}
-                    std::time_t value;
-                };
-
-                // Get the current time.
-                static time_type now()
-                {
-                    return std::time(0);
-                }
-
-                // Add a duration to a time.
-                static time_type add(const time_type& t, const duration_type& d)
-                {
-                    return t + d.value;
-                }
-
-                // Subtract one time from another.
-                static duration_type subtract(const time_type& t1, const time_type& t2)
-                {
-                    return duration_type(t1 - t2);
-                }
-
-                // Test whether one time is less than another.
-                static bool less_than(const time_type& t1, const time_type& t2)
-                {
-                    return t1 < t2;
-                }
-
-                // Convert to POSIX duration type.
-                static boost::posix_time::time_duration to_posix_duration(const duration_type& d)
-                {
-                    return boost::posix_time::seconds(d.value);
-                }
-            };
-
-            boost::asio::io_service io_service_;
-
-            boost::asio::basic_deadline_timer<std::time_t,time_t_traits> timer_;
-    };
-
-    #define DETAIL_INTERNAL_HPP
-    #include "detail.hpp"
-    #undef  DETAIL_INTERNAL_HPP
-
-    #include "binary_streams.hpp"
-
     /** @name Handler Interfaces
      *
      * Interfaces to handle network events.
@@ -286,6 +121,42 @@ namespace ana
         virtual void handle_disconnect(error_code, client_id) = 0;
     };
 
+    /** Used for implementation purposes. */
+    namespace detail
+    {
+        /**
+         * Base class for any network entity that handles incoming messages.
+         */
+        class listener
+        {
+            public:
+                /**
+                * Sets the handler for incoming messages.
+                *
+                * @param listener : Pointer to the listener_handler object that will
+                *                   handle following incoming message events.
+                *
+                * \sa listener_handler
+                */
+                virtual void set_listener_handler( listener_handler* listener ) = 0;
+                
+                /**
+                * Get the client_id of this listener.
+                *
+                * @returns : ServerID for the server application, or a comparable client_id
+                *            unique to this listener.
+                *
+                * \sa ServerID
+                * \sa client_id
+                */
+                virtual client_id id() const                                    = 0;
+                
+            protected: // should be so?
+                /** Start listening for incoming messages. */
+                virtual void run_listener()                                     = 0;
+        };
+    } //namespace details
+    
     /**
      * Class that should be implemented to handle new connection events.
      */
@@ -324,61 +195,6 @@ namespace ana
         virtual void handle_send( error_code, client_id ) = 0;
     };
     //@}
-
-    namespace detail
-    {
-        /**
-         * Base class for any network entity that handles incoming messages.
-         */
-        class listener
-        {
-            public:
-                /**
-                 * Sets the handler for incoming messages.
-                 *
-                 * @param listener : Pointer to the listener_handler object that will
-                 *                   handle following incoming message events.
-                 *
-                 * \sa listener_handler
-                 */
-                virtual void set_listener_handler( listener_handler* listener ) = 0;
-
-                /**
-                 * Get the client_id of this listener.
-                 *
-                 * @returns : ServerID for the server application, or a comparable client_id
-                 *            unique to this listener.
-                 *
-                 * \sa ServerID
-                 * \sa client_id
-                 */
-                virtual client_id id() const                                    = 0;
-
-            protected: // should be so?
-                /** Start listening for incoming messages. */
-                virtual void run_listener()                                     = 0;
-        };
-    }
-
-
-    /**
-      * Creates a client predicate to be used in send operations.
-      *
-      * This function can be used to create predicate objects from the standard library's
-      * bind1st objects and from boost::bind too.
-      *
-      * Examples:
-      *    - server_->send_if(boost::asio::buffer( str ), this, create_predicate(
-      *                       boost::bind( std::not_equal_to<client_id>(), client, _1) ) );
-      *
-      * @param pred Predicate of the queried client.
-      * @returns Predicate for client selection.
-      */
-    template<class predicate>
-    detail::_generic_client_predicate<predicate> create_predicate(const predicate& pred)
-    {
-        return detail::_generic_client_predicate<predicate>(pred);
-    }
 
     /** @name Time duration functions. */
     //@{
@@ -653,150 +469,6 @@ namespace ana
         /** Standard destructor. */
         virtual ~client() {}
     };
-    //@}
-
-    /** @name Buffer creation methods
-     *
-     * @defgroup buffer
-     *
-     * API user should create buffers with one of these methods.
-     *
-     * Paraphrasing boost asio's documentation on the buffer function:
-     * The ana::buffer function is used to create a buffer object to represent raw memory,
-     * an array of POD elements, a vector of POD elements, or a std::string.
-     *
-     * Check <http://think-async.com/Asio/boost_asio_1_3_1/doc/html/boost_asio/reference/buffer.html>
-     */
-    //@{
-
-    inline boost::asio::mutable_buffers_1 buffer(const boost::asio::mutable_buffer & b)
-    {
-        return boost::asio::buffer(b);
-    }
-
-    inline boost::asio::mutable_buffers_1 buffer(const boost::asio::mutable_buffer & b, std::size_t max_size_in_bytes)
-    {
-        return boost::asio::buffer(b, max_size_in_bytes);
-    }
-
-    inline boost::asio::const_buffers_1 buffer(const boost::asio::const_buffer & b)
-    {
-        return boost::asio::buffer(b);
-    }
-
-    inline boost::asio::const_buffers_1 buffer(const boost::asio::const_buffer & b, std::size_t max_size_in_bytes)
-    {
-        return boost::asio::buffer(b, max_size_in_bytes);
-    }
-
-    inline boost::asio::mutable_buffers_1 buffer(void * data, std::size_t size_in_bytes)
-    {
-        return boost::asio::buffer(data, size_in_bytes);
-    }
-
-    inline boost::asio::const_buffers_1 buffer(const void * data, std::size_t size_in_bytes)
-    {
-        return boost::asio::buffer(data, size_in_bytes);
-    }
-
-    template<typename PodType, std::size_t N>
-    inline boost::asio::mutable_buffers_1 buffer(PodType & data)
-    {
-        return boost::asio::buffer(data);
-    }
-
-    template<typename PodType, std::size_t N>
-    inline boost::asio::mutable_buffers_1 buffer(PodType & data, std::size_t max_size_in_bytes)
-    {
-        return boost::asio::buffer(data, max_size_in_bytes);
-    }
-
-    template<typename PodType, std::size_t N>
-    inline boost::asio::const_buffers_1 buffer(const PodType & data)
-    {
-        return boost::asio::buffer(data);
-    }
-
-    template<typename PodType, std::size_t N>
-    inline boost::asio::const_buffers_1 buffer(const PodType & data, std::size_t max_size_in_bytes)
-    {
-        return boost::asio::buffer(data, max_size_in_bytes);
-    }
-
-    template<typename PodType, std::size_t N>
-    inline boost::asio::mutable_buffers_1 buffer(boost::array< PodType, N > & data)
-    {
-        return boost::asio::buffer(data);
-    }
-
-    template<typename PodType, std::size_t N> 
-    inline boost::asio::mutable_buffers_1 buffer(boost::array< PodType, N > & data,
-                                                 std::size_t max_size_in_bytes)
-    {
-        return boost::asio::buffer(data, max_size_in_bytes);
-    }
-
-    template<typename PodType, std::size_t N>
-    inline boost::asio::const_buffers_1 buffer(boost::array< const PodType, N > & data)
-    {
-        return boost::asio::buffer(data);
-    }
-
-    template<typename PodType, std::size_t N>
-    inline boost::asio::const_buffers_1 buffer(boost::array< const PodType, N > & data,
-                                               std::size_t max_size_in_bytes)
-    {
-        return boost::asio::buffer(data, max_size_in_bytes);
-    }
-
-    template<typename PodType, std::size_t N>
-    inline boost::asio::const_buffers_1 buffer(const boost::array< PodType, N > & data)
-    {
-        return boost::asio::buffer(data);
-    }
-
-    template<typename PodType, std::size_t N>
-    inline boost::asio::const_buffers_1 buffer(const boost::array< PodType, N > & data,
-                                               std::size_t max_size_in_bytes)
-    {
-        return boost::asio::buffer(data, max_size_in_bytes);
-    }
-
-    template<typename PodType, typename Allocator>
-    inline boost::asio::mutable_buffers_1 buffer(std::vector< PodType, Allocator > & data)
-    {
-        return boost::asio::buffer(data);
-    }
-
-    template<typename PodType, typename Allocator>
-    inline boost::asio::mutable_buffers_1 buffer(std::vector< PodType, Allocator > & data,
-                                                 std::size_t max_size_in_bytes)
-    {
-        return boost::asio::buffer(data, max_size_in_bytes);
-    }
-
-    template<typename PodType, typename Allocator> 
-    inline boost::asio::const_buffers_1 buffer(const std::vector< PodType, Allocator > & data)
-    {
-        return boost::asio::buffer(data);
-    }
-
-    template<typename PodType, typename Allocator>
-    inline boost::asio::const_buffers_1 buffer(const std::vector< PodType, Allocator > & data,
-                                                                          std::size_t max_size_in_bytes)
-    {
-        return boost::asio::buffer(data, max_size_in_bytes);
-    }
-
-    inline boost::asio::const_buffers_1 buffer(const std::string & data)
-    {
-        return boost::asio::buffer(data);
-    }
-
-    inline boost::asio::const_buffers_1 buffer(const std::string & data, std::size_t max_size_in_bytes)
-    {
-        return boost::asio::buffer(data, max_size_in_bytes);
-    }
     //@}
 }
 

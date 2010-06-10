@@ -1,6 +1,6 @@
 include_directories( ../api )
 
-find_package( Boost 1.37 REQUIRED COMPONENTS thread system)
+find_package( Boost 1.35 REQUIRED COMPONENTS thread system)
 
 set ( server_srcs asio_server.cpp asio_listener.cpp )
 

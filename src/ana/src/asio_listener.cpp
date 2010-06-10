@@ -126,6 +126,6 @@ void asio_listener::listen_one_message()
     }
     catch(const std::exception& e)
     {
-        disconnect(listener_, boost::system::error_code(1,boost::system::get_generic_category() ));
+        disconnect(listener_, boost::system::error_code(1,boost::system::system_category) );
     }
 }
