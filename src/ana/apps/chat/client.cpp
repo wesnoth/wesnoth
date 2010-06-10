@@ -34,7 +34,7 @@
 
 #include "getopt_pp.h"
 
-#include "ana/ana.hpp"
+#include "ana.hpp"
 
 using namespace GetOpt;
 using namespace ana;
