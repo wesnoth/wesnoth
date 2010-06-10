@@ -24,7 +24,6 @@
 
 #include <vector>
 #include <list>
-#include <utility>
 #include <map>
 
 typedef std::map<map_location, image::locator> arrow_symbols_map_t;

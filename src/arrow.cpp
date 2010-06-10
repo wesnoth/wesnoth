@@ -21,6 +21,14 @@
 #include "arrow_observer.hpp"
 
 #include "foreach.hpp"
+#include "log.hpp"
+#include "map_location.hpp"
+
+static lg::log_domain log_arrows("arrows");
+#define ERR_ARR LOG_STREAM(err, log_arrows)
+#define WRN_ARR LOG_STREAM(warn, log_arrows)
+#define LOG_ARR LOG_STREAM(info, log_arrows)
+#define DBG_ARR LOG_STREAM(debug, log_arrows)
 
 arrow::arrow(display* screen): layer_(display::LAYER_ARROWS)
 {
@@ -83,14 +91,99 @@ void arrow::update_symbols(arrow_path_t old_path)
 	{
 		symbols_map_.erase(loc);
 	}
+
 	invalidate_arrow_path(old_path);
 
-	//TODO: use the proper images instead of this placeholder
-	image::locator test_picture = image::locator("footsteps/teleport-in.png");
+	//TODO: use color from the set_color method
+	const std::string mods = "~RC(FF00FF>FF0000)"; //magenta to red
 
-	foreach(map_location loc, path_)
+	const std::string dirname = "arrows/";
+	map_location::DIRECTION exit_dir = map_location::NDIRECTIONS;
+	map_location::DIRECTION enter_dir = map_location::NDIRECTIONS;
+	std::string prefix = "";
+	std::string suffix = "";
+	std::string image_filename = "";
+	bool begin = false;
+	bool end = false;
+	bool teleport_out = false;
+	bool teleport_in = false;
+
+	arrow_path_t::iterator hex;
+	for (hex = path_.begin(); hex != path_.end() - 1; ++hex)
 	{
-		symbols_map_[loc] = test_picture;
+		exit_dir = map_location::NDIRECTIONS;
+		enter_dir = map_location::NDIRECTIONS;
+		prefix = "";
+		suffix = "";
+		image_filename = "";
+		begin = end = false;
+		teleport_in = teleport_out;
+		teleport_out = false;
+
+		// Determine some special cases
+		if (hex == path_.begin())
+			begin = true;
+		if (hex == path_.end() - 2)
+			end = true;
+		if (!tiles_adjacent(*hex, *(hex + 1)))
+			teleport_out = true;
+
+		// Now figure out the actual images
+		if (teleport_out)
+		{
+			image_filename = "footsteps/teleport-out.png";
+		}
+		else if (teleport_in)
+		{
+			image_filename = "footsteps/teleport-in.png";
+		}
+		else if (begin)
+		{
+			prefix = "start";
+			exit_dir = hex->get_relative_dir(*(hex+1));
+			suffix = map_location::write_direction(exit_dir);
+			if (end)
+			{
+				suffix = suffix + "_end";
+			}
+			image_filename = dirname + prefix + "-" + suffix + ".png";
+		}
+		else
+		{
+			enter_dir = hex->get_relative_dir(*(hex-1));
+			exit_dir = hex->get_relative_dir(*(hex+1));
+			std::string enter, exit;
+			enter = map_location::write_direction(enter_dir);
+			exit = map_location::write_direction(exit_dir);
+			if (end)
+			{
+				exit = exit + "_end";
+			}
+
+			assert(abs(enter_dir - exit_dir) > 1); //impossible turn?
+			if (enter_dir < exit_dir)
+			{
+				prefix = enter;
+				suffix = exit;
+			}
+			else //(enter_dir > exit_dir)
+			{
+				prefix = exit;
+				suffix = enter;
+			}
+			image_filename = dirname + prefix + "-" + suffix + ".png";
+		}
+
+		if (image_filename != "")
+		{
+			image::locator image = image::locator(image_filename, mods);
+			if (!image.file_exists())
+				{
+					ERR_ARR << "Image " << image_filename << " not found.\n";
+					image = image::locator("misc/missing-image.png");
+				}
+			symbols_map_[*hex] = image;
+		}
 	}
 
 	invalidate_arrow_path(path_);
