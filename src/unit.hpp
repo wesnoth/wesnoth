@@ -528,7 +528,7 @@ struct temporary_unit_placer : public temporary_unit_map_modifier
 
 private:
 	unit_map& m_;
-	const map_location& loc_;
+	const map_location loc_;
 	unit *temp_;
 };
 
@@ -544,8 +544,8 @@ struct temporary_unit_mover : public temporary_unit_map_modifier
 
 private:
 	unit_map& m_;
-	const map_location& src_;
-	const map_location& dst_;
+	const map_location src_;
+	const map_location dst_;
 	unit *temp_;
 };
 
