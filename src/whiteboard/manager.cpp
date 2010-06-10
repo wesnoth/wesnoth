@@ -67,7 +67,8 @@ void manager::set_route(const std::vector<map_location> &steps)
 void manager::create_move_from_route(unit& subject)
 {
 	team& current_team = (*resources::teams)[resources::controller->current_side()];
-	DBG_WB << "Creating move for unit " << subject.name() << " from " << subject.get_location()
+	LOG_WB << "Creating move for unit " << subject.name() << " [" << subject.id() << "]"
+			<< " from " << subject.get_location()
 			<< " to " << route_.back() << "\n";
 	current_team.get_side_actions().queue_move(subject, route_.back(), *move_arrow_);
 	//ownership of the arrow transferred to the new move action
