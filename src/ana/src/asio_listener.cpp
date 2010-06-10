@@ -34,10 +34,8 @@
 #include <boost/thread.hpp>
 
 #include "asio_listener.hpp"
-#include "mili/mili.h"
 
 using boost::asio::ip::tcp;
-using namespace mili;
 
 asio_listener::asio_listener( boost::asio::io_service& io_service, tcp::socket& socket) :
     io_service_(io_service),
@@ -85,7 +83,7 @@ void asio_listener::handle_header(char* header, const boost::system::error_code&
             disconnect(listener, ec);
         else
         {
-            bistream input( std::string(header, ana::HeaderLength) );
+            ana::serializer::bistream input( std::string(header, ana::HeaderLength) );
 
             size_t   size;
             input >> size;

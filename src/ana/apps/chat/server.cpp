@@ -34,7 +34,7 @@
 
 #include <boost/bind.hpp>
 
-#include "ana.hpp"
+#include "ana/ana.hpp"
 #include "getopt_pp.h"
 
 using namespace GetOpt;

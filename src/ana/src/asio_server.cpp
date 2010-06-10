@@ -39,13 +39,9 @@
 
 #include "asio_server.hpp"
 
-#include "mili/mili.h"
-
 using namespace ana;
 
 using boost::asio::ip::tcp;
-
-using namespace mili;
 
 client_id server::client_proxy::last_client_id_ = 0;
 
@@ -230,7 +226,7 @@ tcp::socket& asio_server::asio_client_proxy::socket()
 }
 
 void asio_server::asio_client_proxy::handle_sent_header(const boost::system::error_code& ec,
-                                                        mili::bostream* bos, ana::detail::shared_buffer buffer,
+                                                        ana::serializer::bostream* bos, ana::detail::shared_buffer buffer,
                                                         send_handler* handler, timer* running_timer)
 {
     delete bos;
@@ -281,7 +277,7 @@ void asio_server::asio_client_proxy::send(ana::detail::shared_buffer buffer,
                                              boost::bind(&asio_server::asio_client_proxy::handle_timeout, this,
                                                          boost::asio::placeholders::error, handler ) );
 
-        bostream* output_stream = new bostream();
+        ana::serializer::bostream* output_stream = new ana::serializer::bostream();
         (*output_stream) << buffer->size();
 
         //write the header first in a separate operation, then send the full buffer

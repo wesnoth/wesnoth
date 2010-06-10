@@ -39,7 +39,6 @@ using boost::asio::ip::tcp;
 
 #include "asio_proxy_connection.hpp"
 #include "asio_listener.hpp"
-#include "mili/mili.h"
 
 #ifndef ASIO_CLIENT_HPP
 #define ASIO_CLIENT_HPP
@@ -80,7 +79,7 @@ class asio_client : public ana::client,
         virtual void handle_proxy_connection(const boost::system::error_code&, ana::connection_handler*);
 
         void handle_sent_header(const boost::system::error_code& ec,
-                                mili::bostream*, ana::detail::shared_buffer,
+                                ana::serializer::bostream*, ana::detail::shared_buffer,
                                 ana::send_handler*);
 
                                 void handle_send(const boost::system::error_code& ec,

@@ -39,7 +39,6 @@
 
 #include "ana.hpp"
 #include "asio_listener.hpp"
-#include "mili/mili.h"
 
 using boost::asio::ip::tcp;
 
@@ -68,7 +67,7 @@ class asio_server : public  ana::server,
                 virtual void send(ana::detail::shared_buffer, ana::send_handler*, ana::detail::timed_sender* );
 
                 void handle_sent_header(const boost::system::error_code& ec,
-                                        mili::bostream*, ana::detail::shared_buffer,
+                                        ana::serializer::bostream*, ana::detail::shared_buffer,
                                         ana::send_handler*, ana::timer*);
 
                                         void handle_send(const boost::system::error_code& ec,

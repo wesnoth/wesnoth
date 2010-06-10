@@ -38,10 +38,8 @@
 #include <boost/thread.hpp>
 
 #include "asio_client.hpp"
-#include "mili/mili.h"
 
 using boost::asio::ip::tcp;
-using namespace mili;
 
 asio_client::asio_client(ana::address address, ana::port pt) :
     io_service_(),
@@ -160,7 +158,7 @@ void asio_client::send(boost::asio::const_buffer buffer, ana::send_handler* hand
         ana::detail::shared_buffer s_buf(
           new ana::detail::copying_buffer(buffer, copy_buffer ) ); // it's a boost::shared_ptr
 
-        bostream* output_stream = new bostream();
+        ana::serializer::bostream* output_stream = new ana::serializer::bostream();
         (*output_stream) << s_buf->size();
 
         //write the header first in a separate operation, then send the full buffer
@@ -176,7 +174,7 @@ void asio_client::send(boost::asio::const_buffer buffer, ana::send_handler* hand
 }
 
 void asio_client::handle_sent_header(const boost::system::error_code& ec,
-                                     mili::bostream* bos, ana::detail::shared_buffer buffer,
+                                     ana::serializer::bostream* bos, ana::detail::shared_buffer buffer,
                                      ana::send_handler* handler)
 {
     delete bos;

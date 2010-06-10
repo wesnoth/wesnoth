@@ -244,6 +244,8 @@ namespace ana
     #include "detail.hpp"
     #undef  DETAIL_INTERNAL_HPP
 
+    #include "binary_streams.hpp"
+
     /** @name Handler Interfaces
      *
      * Interfaces to handle network events.

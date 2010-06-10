@@ -175,8 +175,6 @@ WARN_FORMAT            = "$file:$line: $text"
 
 WARN_LOGFILE           = 
 
-
-
 INPUT                  = 
 
 
@@ -189,7 +187,7 @@ FILE_PATTERNS          =  *.cpp *.hpp
 RECURSIVE              = YES
 
 
-EXCLUDE                = libraries mili apps
+EXCLUDE                = apps
 
 
 EXCLUDE_SYMLINKS       = NO
