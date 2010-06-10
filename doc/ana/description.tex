@@ -1,0 +1,544 @@
+\documentclass[a4paper,12pt,english]{article}
+
+\newcommand{\ana}{\textbf{ana}}
+
+\usepackage{listings}
+
+% \usepackage{setspace}
+
+\usepackage{color}
+\usepackage{textcomp}
+\definecolor{listinggray}{gray}{0.9}
+\definecolor{lbcolor}{rgb}{0.95,0.95,0.95}
+\lstset{
+    backgroundcolor=\color{lbcolor},
+    tabsize=4,
+    rulecolor=,
+    language=matlab,
+        basicstyle=\scriptsize,
+        upquote=true,
+        aboveskip={1.5\baselineskip},
+        columns=fixed,
+        showstringspaces=false,
+        extendedchars=true,
+        breaklines=true,
+        prebreak = \raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+        frame=single,
+        showtabs=false,
+        showspaces=false,
+        showstringspaces=false,
+        identifierstyle=\ttfamily,
+        keywordstyle=\color[rgb]{0.1,0.1,0.6}\bfseries,
+        commentstyle=\color[rgb]{0.133,0.545,0.133},
+        stringstyle=\color[rgb]{0.627,0.126,0.941},
+}
+
+
+\title{Developing Server/Client applications \\
+using the \ana \ API/library}
+
+\author{Guillermo Biset}
+
+\begin{document}
+
+\maketitle
+
+\vfill
+
+\begin{abstract}
+Developing network applications is no easy task. Most of the time, the
+important features are not  even network-related, yet the implementers
+spend most of their time coding  to get this part of the functionality
+right.
+
+This  document introduces  \ana, an  API designed  to let  you develop
+simple network  server and  client applications using  an asynchronous
+(i.e. non blocking) model in  C++ without having to deal directly with
+network components such as sockets.
+
+\end{abstract}
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+\section{Preliminaries}
+
+\textbf{Disclaimer}: This section contains no technical information
+whatsoever.
+
+\section{Introduction}
+
+\textbf{Ana} (stands for Asynchronous  Network API) is an API designed
+to  help   you  develop  server  and  client   applications  using  an
+asynchronous model  (i.e.  non-blocking operations .) By  using it the
+progammer doesn't need  to pay too much attention  to the network code
+itself but can concentrate on other features relevant to the program.
+
+Also, \ana \ comes with  an accompanying implementation.  Hence, it is
+also a library that implements  the API features.  For example, MPI is
+an API  for message passing and  LAM/MPI is a  library that implements
+it. Further on it is possible that the two will be separated, but this
+is unlikely at the moment.
+
+The dynamics involved in writing server/client applications using \ana
+\ is  fairly simple.   There are interfaces  designed for each  set of
+handlers relevant to network events (described in later sections) that
+one must implement  and every event will be  issued by a corresponding
+component with a unique ID.
+
+In the simpler cases, developing a server involves:
+\begin{enumerate}
+    \item Creating an \ana::server object.
+    \item Running it on a given port.
+    \item Having  a class of  your own inherit from  the corresponding
+      interfaces to handle network events.
+    \item Implement these handlers.
+\end{enumerate}
+
+The client side implementation is analogous:
+\begin{enumerate}
+    \item Create an \ana::client object.
+    \item Instruct it to connect to a given address:port.
+    \item   Create  classes  that   inherit  from   the  corresponding
+      interfaces to handle network events.
+    \item Implement these handlers.
+\end{enumerate}
+
+\section{On Asynchronous Operations}
+
+Evidently, implementing these handlers  may not be so simple. However,
+a  large   amount  of  functionality  may  be   achieved  from  simple
+implementations in them.
+
+Every  operation in  \ana  \ is  asynchronous,  which is  both a  good
+feature and a  bad one. The drawback is  that some assumptions usually
+made about function invocation require thinking twice about them.
+
+The main problem is not understanding fully what the function does, in
+our  case, and  as  an  example, a  \texttt{send}  operation does  not
+necessarily  return after  it has  sent any  data to  anyone,  it just
+\emph{queues} the corresponding operation, thus leaving the work to be
+carried out at a later time.
+
+It is  through the invocation of  the handler that  one can understand
+what happened.
+
+For example:
+\begin{itemize}
+    \item Returning  from a send  operation doesn't mean the  data was
+      sent (you just started sending it, the library will let you know
+      when the operation was completed.)
+    \item Returning  from a connect operation doesn't  mean the client
+      succesfully connected  to the server (you just  instructed it to
+      start a connection attempt.)
+    \item  Implementing  the  handler  for  an  event  involves  error
+      checking  to see  if  the  event failed  and,  if you  performed
+      several operations of a  single type (e.g. many send operations)
+      you won't be  able to identify which of  these failed (since the
+      error belongs only to \textit{one} of these.)
+\end{itemize}
+
+%\section{Features}
+
+%\textbf{Ana} incorporates the following features:
+%\begin{description}
+% \item [
+%\end{description}
+
+\section{API overview}
+
+\subsection{Namespaces}
+
+The list of namespaces is as follows:
+
+\begin{description}
+
+\item[\ana] : Main namespace.
+
+\item[\ana::time]   :  Functions  to   build   time  durations
+  (i.e. \ana::time::seconds.)
+
+\item[\ana::detail] : Implementation specific definitions. 
+
+\end{description}
+
+The whole  API can be found under  one namespace: \ana. From  now on I
+will  refer  to elements  in  the \ana  \  namespace  using C++  scope
+operator ::, for instance, method \texttt{f} from namespace \ana \ may
+be referred to as \ana::\texttt{f}.
+
+Since  timeout  configuration (to  be  discussed)  may  be done  using
+different  functions  to  construct  time durations,  a  \textbf{time}
+namespace  is added  to  \ana. So,  the \ana::\textbf{time}  namespace
+contains functions for creating time durations.
+
+The last namespace, and the one  least relevant to the user of the API
+is the namespace \textbf{detail}, enclosing all implementation related
+code.
+
+\subsection{Basic Types Defined}
+
+Here is  a list  of some of  the simple  types defined under  the \ana
+\ namespace
+
+\begin{description}
+   \item [ana\_uint] : Standard unsigned int. This type should be used
+     if you  expect to serialize data  in an object, send  it over the
+     network, and then extract it on  the other side (which may have a
+     different architecture.)
+   \item [ana\_int] :  Standard int. Idem.
+   \item [client\_id] : A unique  ID of a network component. This type
+     has a  total order, so it  can be compared to  other instances of
+     its type. A server will have an ID equal to zero and every client
+     a greater than zero value.
+   \item [port] : A string representing a port  descriptor, the string
+     should be able to cast itself to a unsigned short int.
+   \item [address] : A string  representing a network  address, it may 
+     be an IP address of a hostname.
+   \item [send\_type]  : Send operation  type, this is related  to the
+     lifecycle of  the buffer  used in the  send operation,  which may
+     involve  copying the  buffer or  not  (this can  result in  great
+     improvement regarding memory usage.)  A value of this type may be
+     evaluated  as a  boolean  (where \emph{true}  means  to copy  the
+     buffer.)   To  set   a  value,  constants  \texttt{ZeroCopy}  and
+     \texttt{CopyBuffer} are provided.   See section \ref{bufcopy} for
+     more information.
+   \item  [error\_code] :  Descriptor of  an error  code. It  can also
+     evaluate  to a boolean  value where  \emph{false} means  no error
+     occurred.
+\end{description}
+
+\subsection{Main Classes}
+
+The main classes to be used from the \ana \ API are:
+\begin{description}
+
+\item[ana::server] :  A network  server.  An object  of this  type can
+  handle several connected clients.  It is possible to create pointers
+  to    an    object    of    this    type    using    the    function
+  \ana::\texttt{create\_server}.
+
+\item[ana::client]  : A  network  client. A  network  entity that  can
+  connect to  a running server.  To create a  pointer to an  object of
+  this type use the \ana::\texttt{create\_client} function.
+
+\end{description}
+
+\subsection{Main Interfaces}
+
+\begin{description}
+
+\item[\ana::listener\_handler]  :  Should  be  implemented  to  handle
+  incoming messages and the disconnection of a connected component.
+
+\item[\ana::connection\_handler]  : Handling  of  new connections.
+
+\item[\ana::send\_handler] : Handling completed or failed send events.
+
+\end{description}
+
+\subsection{Extras}
+
+\subsubsection{Timers}
+
+Besides  supporting  configurable timeouts  on  send operations,  \ana
+\ provides a  simple timer interface to be  used for general purposes.
+One can create timers and set  them to call a specific handler after a
+certain amount of time has passed.
+
+To  create  these  time   lapses  functions  are  provided  under  the
+\textbf{time} namespace for  milliseconds, seconds, minutes and hours,
+and these functions  may be used in both  cases (instructing a general
+purpose  timer to wait  for given  amount of  time or  configuring the
+amount of time required for a timeout event on a send operation.)
+
+Here are a few examples of how to construct time durations:
+\begin{center}
+\begin{tabular}{|l|l|}
+  \hline
+  Five minutes & \texttt{ana::time::minutes(5)} \\
+  \hline
+  A second and a half & \texttt{ana::time::seconds(1.5)} \\
+  \hline
+  One hour and ten milliseconds & \texttt{ana::time::hours(1)} + \\
+  \ &     \texttt{ana::time::milliseconds(10)} \\
+  \hline
+\end{tabular}
+\end{center}
+
+\section{Using the API}
+
+\subsection{Important Recommendations}
+
+Here   are   some   very   important   recommendations   about   using
+\ana. Explanations can be found in the following subsection.
+
+\begin{itemize}
+   \item If you are unsure about the consistency of the memory region
+     you are using to send data, then use a send operation that copies
+     the buffer before using it (this ensures that the buffer is
+     copied before the invocation to the operation returns.)
+     
+     There are two ways to  accomplish this, but to keep things short,
+     just use the default send operation without setting that specific
+     parameter (e.g. \texttt{server\_->send\_all(  ana::buffer ( str )
+       ) } .)
+   \item   Always  prefer   single   multiple-send  operations   (e.g.
+     \texttt{send\_if})   to  executing   many  times   a  single-send
+     operation (\texttt{send\_one}.)
+   \item  If you  are \textbf{absolutely}  sure the  memory  you'll be
+     using for the send buffer will be consistent from the time of the
+     invocation  to  the  send  operation  to the  invocation  of  its
+     associated  handler,   then  use  a  zero   copy  send  operation
+     (e.g.    \texttt{server\_->send\_all(    ana::buffer(   str    ),
+       ana::ZeroCopy ) } .)
+   \item  Use  the  code as  if  handlers  are  called in  a  mutually
+     exclusive way,  but they are executed concurrently  with the rest
+     of your application code.
+\end{itemize}
+
+\subsection{Details about Buffers}
+\label{bufcopy}
+
+There is a reason why  multiple-send operations are better. If you are
+using     a    multiple-send    operation     (    \texttt{send\_all},
+\texttt{send\_if} ) that copies the buffer (the default behavior) then
+the buffer will be copied only once. Also, sending to each client will
+read from that original buffer. Finally, the buffer will be destructed
+automatically after the last handler has been called.
+
+\subsection{Details about Threads}
+
+\textbf{Ana} can't intercede between you and the rest of your program,
+this means that it can't  ensure mutual exclusion between its code and
+your own. What it can ensure is that the handlers you implemented will
+be  called from a  single thread  (i.e. there  won't be  two different
+handlers running concurrently.)
+
+But  this  forces  the  user  of  the API  to  take  this  case  under
+consideration    and    implement    its    own    mutual    exclusion
+mechanism.  However,  the  most  common  scenario will  have  a  clear
+separation between the rest of the program and the code using \ana.
+
+For instance, there is no shared data structure between \ana \ and its
+user.  The case  to look  out for  is when  the implementation  of the
+network event  handlers happen  to modify data  that is  also modified
+within the rest of the code.
+
+\section{Example: Chat Application}
+
+This  section describes  the  devolopment  of a chat server and client
+applications. There is  nothing  interesting  about it except the fact
+that it serves to show how one would go about using \ana.
+
+First of all, we will  develop  two  separate executable files, one for
+the server and one for the client. The server application  will start a 
+chat server in a given  port  and  connect clients, keeping track of their
+assigned  names. It also provides commands to change a client's name and
+listing everyone connected.
+
+A client can connect to a running server and send  messages or commands
+to it. Regular messages will in  turn  be  broadcasted  to  every other
+client (prepending the name of the originating client first) and commands
+executed.
+
+Since the client application is simpler, lets look at code for it first.
+
+\subsection{Client Code}
+
+The main function is very straightforward, it just creates a \texttt{ChatClient}
+object and tells it to run according to parameters taken from the command
+line. So, if the executable is \texttt{client} one may execute the
+following command: \texttt{./client -n billy -a address.com -p 12345}.
+
+\begin{table}[!htb]
+\lstset{language=C++}
+\begin{lstlisting}[frame=single]
+int main(int argc, char **argv)
+{
+    GetOpt_pp options(argc, argv);
+
+    if (options >> OptionPresent('h', "help"))
+        show_help();
+    else
+    {
+        port pt(DEFAULT_PORT);
+        std::string address(DEFAULT_ADDRESS);
+        std::string name("Unnamed");
+
+        options >> Option('p', "port", pt) 
+                >> Option('a',"address",address) 
+                >> Option('n',"name",name);
+        std::cout << "Main client app.: Starting client" << std::endl;
+
+        ChatClient client(address,pt,name);
+        client.run();
+    }
+}
+\end{lstlisting}
+\centering \caption{The client's main function.} 
+\label{client-main}
+\end{table}
+
+So, not much to look at here, move along. Table \ref{chatclient-decl} is a little
+more interesting and shows how one should declare classes to implement the
+handler methods relevant to network events. 
+
+\begin{table}[!htb]
+\lstset{language=C++}
+\begin{lstlisting}[frame=single]
+class ChatClient : public ana::listener_handler,
+                   public ana::send_handler,
+                   public ana::connection_handler
+{
+    public:
+        ChatClient(const std::string& address, port pt, std::string name)
+          : continue_(true),
+            client_( create_client(address,pt) ),
+            name_(name)
+        {
+        }
+        
+        void run();
+        /* ... */
+    private:
+        /* Handler profiles. */
+        virtual void handle_connect( ana::error_code error, 
+                                     ana::client_id server_id );
+
+        virtual void handle_disconnect( ana::error_code error, 
+                                        ana::client_id server_id);
+
+        virtual void handle_message( ana::error_code error, 
+                                     ana::client_id, 
+                                     ana::detail::read_buffer msg);
+
+        virtual void handle_send( ana::error_code error, 
+                                  ana::client_id client);
+
+        /* Attributes.       */
+        bool                continue_;
+        ana::client*        client_;
+        std::string         name_;
+};
+\end{lstlisting}
+\centering \caption{A class that will implement handlers (all of them in this case.)} 
+\label{chatclient-decl}
+\end{table}
+
+\begin{table}[!htb]
+\lstset{language=C++}
+\begin{lstlisting}[frame=single]
+void ChatClient::run()
+{
+    try
+    {
+        client_->connect( this );
+        client_->set_listener_handler( this );
+        client_->run();
+
+        // list available commands
+
+        run_input(); // read lines and send them
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << std::endl;
+    }
+
+    delete client_;
+}
+\end{lstlisting}
+\centering \caption{Running a client application.} 
+\label{client-run}
+\end{table}
+
+For this particular client application most handlers are trivial, method
+\texttt{handle\_disconnect} simply informs that the server disconnected
+and sets things up to quit, function \texttt{handle\_message} prints the
+incoming message and \texttt{handle\_send} reports the error if it occurred.
+
+Method \texttt{handle\_connect} has some interest to it since it tells the
+server what its desired name is. Table \ref{client-connect} shows the
+corresponding code.
+
+\begin{table}[!htb]
+\lstset{language=C++}
+\begin{lstlisting}[frame=single]
+virtual void handle_connect( ana::error_code error, client_id server_id )
+{
+  if ( error )
+      std::cerr << "Error connecting." << std::endl;
+  else
+      client_->send( ana::buffer( std::string("/name ") + name_) , this);
+}
+\end{lstlisting}
+\centering \caption{Implementation of the connection handler in the chat client's app.} 
+\label{client-connect}
+\end{table}
+
+\subsection{Server Code}
+
+Things are a little more interesting on the server side. Table \ref{server-run}
+shows the code from running a server and table \ref{server-message} shows the
+code that handles an incoming message in the server side. Exactly as one would
+expect, if not a command, the message is broadcasted to everyone else (i.e.
+with the exception of the originating client.)
+
+
+\begin{table}[!htb]
+\lstset{language=C++}
+\begin{lstlisting}[frame=single]
+void ChatServer::run(port pt)
+{
+    server_->set_connection_handler( this );
+    server_->set_listener_handler( this );
+    server_->run(pt);
+    server_->set_timeouts(ana::FixedTime, ana::time::seconds(10));
+
+    std::cout << "Server running, Enter to quit." << std::endl;
+
+    std::string s;
+    std::getline(std::cin, s); //yes, i've seen better code :)
+}
+\end{lstlisting}
+\centering \caption{Running a server.} 
+\label{server-run}
+\end{table} 
+
+
+\begin{table}[!htb]
+\lstset{language=C++}
+\begin{lstlisting}[frame=single]
+void ChatServer::handle_message( ana::error_code error, 
+                                 client_id client, 
+                                 ana::detail::read_buffer buffer)
+{
+    if (! error)
+    {
+        std::string msg = buffer->string();
+
+        if (msg[0] == '/')
+            parse_command(client, msg); //interpret the command
+        else
+        {
+            std::stringstream ss;
+            ss << names_[client] << " : " << msg;
+            server_->send_if(ana::buffer( ss.str() ), this,
+                     create_predicate( boost::bind( 
+                         std::not_equal_to<client_id>(), client, _1) ) );
+        }
+    }
+    else
+        handle_disconnect(error, client);
+}
+\end{lstlisting}
+\centering \caption{Conditional broadcasting of an incoming message.} 
+\label{server-message}
+\end{table} 
+
+
+\end{document}
