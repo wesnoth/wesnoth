@@ -43,7 +43,7 @@ void move::accept(visitor& v)
 modifier_ptr move::apply_temp_modifier(unit_map& unit_map)
 {
 	assert(unit_.get_location() == orig_hex_);
-	LOG_WB << "Adding temp unit mover for unit " << unit_.name() << " [" << unit_.underlying_id() << "] "
+	DBG_WB << "Adding temp unit mover for unit " << unit_.name() << " [" << unit_.underlying_id() << "] "
 			<< " from (" << orig_hex_ << ") to (" << dest_hex_ <<")\n";
 	modifier_ptr modifier(new temporary_unit_mover(unit_map, orig_hex_, dest_hex_));
 	return modifier;
