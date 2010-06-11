@@ -30,12 +30,9 @@ static lg::log_domain log_arrows("arrows");
 #define LOG_ARR LOG_STREAM(info, log_arrows)
 #define DBG_ARR LOG_STREAM(debug, log_arrows)
 
-arrow::arrow(display* screen): layer_(display::LAYER_ARROWS)
+arrow::arrow(display* screen)
+:screen_(screen), layer_(display::LAYER_ARROWS), color_("255,0,0")
 {
-	screen_ = screen;
-	color_.b = 0;
-	color_.g = 0;
-	color_.r = 0;
 }
 
 void arrow::set_path(const arrow_path_t &path)
@@ -45,7 +42,7 @@ void arrow::set_path(const arrow_path_t &path)
 	update_symbols(previous_path_);
 }
 
-void arrow::set_color(const SDL_Color color)
+void arrow::set_color(const std::string& color)
 {
 	color_ = color;
 	update_symbols(path_);
@@ -94,8 +91,7 @@ void arrow::update_symbols(arrow_path_t old_path)
 
 	invalidate_arrow_path(old_path);
 
-	//TODO: use color from the set_color method
-	const std::string mods = "~RC(FF00FF>FF0000)"; //magenta to red
+	const std::string mods = "~RC(FF00FF>"+ color_ + ")"; //magenta to current color
 
 	const std::string dirname = "arrows/";
 	map_location::DIRECTION exit_dir = map_location::NDIRECTIONS;
@@ -117,6 +113,7 @@ void arrow::update_symbols(arrow_path_t old_path)
 		suffix = "";
 		image_filename = "";
 		begin = end = false;
+		// teleport in if we teleported out last hex
 		teleport_in = teleport_out;
 		teleport_out = false;
 
@@ -199,14 +196,16 @@ void arrow::invalidate_arrow_path(arrow_path_t path)
 	}
 }
 
-void arrow::notify_arrow_changed() {
+void arrow::notify_arrow_changed()
+{
 	foreach(arrow_observer* observer, observers_)
 	{
 		observer->arrow_changed(*this);
 	}
 }
 
-void arrow::notify_arrow_deleted() {
+void arrow::notify_arrow_deleted()
+{
 	foreach(arrow_observer* observer, observers_)
 	{
 		observer->arrow_deleted(*this);

@@ -49,7 +49,12 @@ public:
 
 	virtual void set_path(const arrow_path_t &path);
 
-	void set_color(const SDL_Color color);
+	/**
+	 * The string color parameter is in the same format expected by the
+	 * image::locator modifiers parameter. Examples: red is "FF0000" or "255,0,0".
+	 * Feel free to add another method that accepts an Uint32 as a parameter instead.
+	 */
+	void set_color(const std::string& color);
 
 	void set_layer(const display::tdrawing_layer & layer);
 
@@ -63,13 +68,16 @@ public:
 
 	void remove_observer(arrow_observer & observer);
 
-private:
+protected:
 	//operations
 
 	/**
 	 * @param old_path : the path to erase and replace with the new symbols
 	 */
 	void update_symbols(arrow_path_t old_path);
+
+private:
+	//operations
 
 	void invalidate_arrow_path(arrow_path_t path);
 
@@ -84,7 +92,7 @@ private:
 
 	display::tdrawing_layer layer_;
 
-	SDL_Color color_;
+	std::string color_;
 
 	arrow_path_t path_;
 	arrow_path_t previous_path_;
