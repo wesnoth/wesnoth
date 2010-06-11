@@ -103,6 +103,30 @@ stringfixes = {
 ("question remained - would he", "question remained — would he"),
 ("this scenario - you must", "this scenario — you must"),
 ("worse - an orcish", "worse — an orcish"),
+# Straight apostrophes and quotes to curly ones
+# conversion added in 1.9.0-svn
+# (NOT YET)
+#("Wesmere's furthermost-faring scouts.", "Wesmere’s furthermost-faring scouts."),
+#("Two days' travel later, the forward scouts", "Two days’ travel later, the forward scouts"),
+#("Use Elven Scouts and Linaera's power of teleportation", "Use Elven Scouts and Linaera’s power of teleportation"),
+#("It's of human design...but we", "It’s of human design...but we"),
+#("Do it. We'll have a guest soon.", "Do it. We’ll have a guest soon."),
+#("Lord... I'm... I am filled with grief.", "Lord... I’m... I am filled with grief."),
+#("else we'll never have peace again.", "else we’ll never have peace again."),
+#("We will come in numbers... (*cough*) You can't imagine..", "We will come in numbers... (*cough*) You can’t imagine.."),
+#("I'll be waiting... Among the dead...", "I’ll be waiting... Among the dead..."),
+#("It's done, lord. No-one escaped. No-one", "It’s done, lord. No-one escaped. No-one"),
+#("we won't find much forage on the march.", "we won’t find much forage on the march."),
+#("We can't carry on Lord, the men are to tired.", "We can’t carry on Lord, the men are to tired."),
+#("we'll try again when reinforcements arrive.", "we’ll try again when reinforcements arrive."),
+#("planning an invasion, I'm sure of it.", "planning an invasion, I’m sure of it."),
+#("The sun's fully over the horizon.", "The sun’s fully over the horizon."),
+#("We'll rest a bit on the other side;", "We’ll rest a bit on the other side;"),
+#("they won't take long to rally.", "they won’t take long to rally."),
+#("No! This can't be!", "No! This can’t be!"),
+#("We can't get through, my Lord.", "We can’t get through, my Lord."),
+#("Never in my life did I dream I'd be bested by mere trolls.", "Never in my life did I dream I’d be bested by mere trolls."),
+#("We'll wait for reinforcements.", "We’ll wait for reinforcements."),
 ),
 
 "wesnoth-did" : (
@@ -151,6 +175,10 @@ stringfixes = {
 ("a week ago - wanted", "a week ago — wanted"),
 ("disturbing that a Kai - and", "disturbing that a Kai — and"),
 ("- would run here", "— would run here"),
+# Straight apostrophes and quotes to curly ones
+# conversion added in 1.9.0-svn
+# (NOT YET)
+#("Delfador's Memoirs", "Delfador’s Memoirs"),
 ),
 
 "wesnoth-ei" : (
@@ -199,7 +227,7 @@ stringfixes = {
 ),
 
 "wesnoth-l" : (
-# Convert makeshift dashes:
+# Convert makeshift dashes and other stuff:
 # conversion added in 1.9.0-svn
 ("are on the hunt - and", "are on the hunt — and"),
 ("and ruthlessness - and their", "and ruthlessness — and their"),
@@ -207,7 +235,75 @@ stringfixes = {
 ("my father - your grandfather - brought", "my father — your grandfather — brought"),
 ("catacombs - cover me.", "catacombs — cover me."),
 ("Liberty - Epilogue", "Liberty — Epilogue"),
-("old friend. - Relnan", "old friend. — Relnan"),
+("'If you wish to find us, head southwest. When you reach the land's end, just keep going. See you in the Three Sisters, old friend. - Relnan'", "“If you wish to find us, head southwest. When you reach the land’s end, just keep going. See you in the Three Sisters, old friend. ― Relnan”"),
+# Fix screw up
+# conversion added in 1.9.0-svn
+("'If you wish to find us, head southwest. When you reach the land's end, just keep going. See you in the Three Sisters, old friend. — Relnan'", "“If you wish to find us, head southwest. When you reach the land’s end, just keep going. See you in the Three Sisters, old friend. ― Relnan”"),
+# Straight apostrophes and quotes to curly ones
+# conversion added in 1.9.0-svn
+("By the sound of the wolves, the scent trail of Fal Khag's killers ends here.", "By the sound of the wolves, the scent trail of Fal Khag’s killers ends here."),
+("But when the effects fall on mere peasants, the wrong of it may not seem so obvious from a noble's chair.", "But when the effects fall on mere peasants, the wrong of it may not seem so obvious from a noble’s chair."),
+("Then they'll be back in force.", "Then they’ll be back in force."),
+("Well, it won't be long until they report back to the local garrison with the details of your encounter.", "Well, it won’t be long until they report back to the local garrison with the details of your encounter."),
+("In your many years as Delwyn's magistrate I have never known your judgment to err.", "In your many years as Delwyn’s magistrate I have never known your judgment to err."),
+("there would be no help for the villagers, ground beneath the wheels of Asheviere's wrath.", "there would be no help for the villagers, ground beneath the wheels of Asheviere’s wrath."),
+("After more than a week of fierce fighting, the main body of Asheviere's", "After more than a week of fierce fighting, the main body of Asheviere’s"),
+("I think it's working!", "I think it’s working!"),
+("It's done.", "It’s done."),
+("I'm inside the tower! I'm going", "I’m inside the tower! I’m going"),
+("I think... I think they're trying to storm Halstead itself... the fools!", "I think... I think they’re trying to storm Halstead itself... the fools!"),
+("Baldras, Gwydion is Lord Maddock's son. This battle isn't just about Annuvin anymore.", "Baldras, Gwydion is Lord Maddock’s son. This battle isn’t just about Annuvin anymore."),
+("They're in for a surprise.", "They’re in for a surprise."),
+("They must think Wesnoth's army is spread out right now.", "They must think Wesnoth’s army is spread out right now."),
+("I hope you're right.", "I hope you’re right."),
+("I don't see how we can bring it down.", "I don’t see how we can bring it down."),
+("the base of Halstead's frozen waves of stone.", "the base of Halstead’s frozen waves of stone."),
+("from the earth's living rock.", "from the earth’s living rock."),
+("338 years before Asheviere's betrayal,", "338 years before Asheviere’s betrayal,"),
+("I'm the crazy one. Let's finish this folly.", "I’m the crazy one. Let’s finish this folly."),
+("I haven't run this much in years.", "I haven’t run this much in years."),
+("They've seen us, RUN!", "They’ve seen us, RUN!"),
+("we're all in big trouble...", "we’re all in big trouble..."),
+("so if we're careful enough we", "so if we’re careful enough we"),
+("They're looking for us.", "They’re looking for us."),
+("I'm not sure where we're supposed to go now.", "I’m not sure where we’re supposed to go now."),
+("from sleep... we're not exactly sure.", "from sleep... we’re not exactly sure."),
+("We don't. You have sought us out.", "We don’t. You have sought us out."),
+("The former King's magic ministry", "The former King’s magic ministry"),
+("It's not noble work, but our pursuits require plenty of gold.", "It’s not noble work, but our pursuits require plenty of gold."),
+("Rest well tonight, because tomorrow's battle", "Rest well tonight, because tomorrow’s battle"),
+("It's an ambush!", "It’s an ambush!"),
+("I am seen so far from my Lord's borders.", "I am seen so far from my Lord’s borders."),
+("It's this or nothing.", "It’s this or nothing."),
+("You just said we can't beat their entire army!", "You just said we can’t beat their entire army!"),
+("They mustn't take one step without", "They mustn’t take one step without"),
+("What's worse is that she appears to", "What’s worse is that she appears to"),
+("'We fled like criminals in the night, but we made sure that no one would harass us anymore.'", "“We fled like criminals in the night, but we made sure that no one would harass us anymore.”"),
+("'Baldras, You would have been proud. We gave 'em hell. But in the end, it wasn't enough.'", "“Baldras, You would have been proud. We gave ’em hell. But in the end, it wasn’t enough.”"),
+("with bitter humor he realized that Lord Maddock's men", "with bitter humor he realized that Lord Maddock’s men"),
+("convinced Asheviere's second in command", "convinced Asheviere’s second in command"),
+("As the main body of Asheviere's army", "As the main body of Asheviere’s army"),
+("The spectacle of Halstead's destruction stunned them into", "The spectacle of Halstead’s destruction stunned them into"),
+("Indeed, Asheviere's armies", "Indeed, Asheviere’s armies"),
+("a second time, we're going to", "a second time, we’re going to"),
+("I don't understand.", "I don’t understand."),
+("Unless you want me to round up the city's", "Unless you want me to round up the city’s"),
+("the King's son and betrayer.", "the King’s son and betrayer."),
+("Queen's", "Queen’s"),
+("the King's rule", "the King’s rule"),
+("But we'll need to chase them all down if we're going to stop them.", "But we’ll need to chase them all down if we’re going to stop them."),
+("And Harper... don't get yourself killed. I'm responsible for you now that your father is gone, and I won't dishonor his memory by breaking my promise to keep you safe.", "And Harper... don’t get yourself killed. I’m responsible for you now that your father is gone, and I won’t dishonor his memory by breaking my promise to keep you safe."),
+("All right now, let's", "All right now, let’s"),
+("They're getting closer", "They’re getting closer"),
+("They'll come out when they see those riders, or us, approaching, but there aren't many of them... I wouldn't count on them being able to protect the village alone for long.", "They’ll come out when they see those riders, or us, approaching, but there aren’t many of them... I wouldn’t count on them being able to protect the village alone for long."),
+("What's happening here?", "What’s happening here?"),
+("Some mages are thrown out of the mage's", "Some mages are thrown out of the mage’s"),
+("In the process they pick up a good deal of the Knight's", "In the process they pick up a good deal of the Knight’s"),
+("take responsibility for the community's", "take responsibility for the community’s"),
+("the village's wisest and most", "the village’s wisest and most"),
+("but as Asheviere's grip", "but as Asheviere’s grip"),
+("I don't want to touch it.", "I don’t want to touch it."),
+("With bitter humor he realized that Lord Maddock's", "With bitter humor he realized that Lord Maddock’s"),
 ),
 
 "wesnoth-lib" : (
@@ -434,6 +530,10 @@ stringfixes = {
 ("And thus Rugnur died - a glorious death, in the eyes of the dwarven sages. ", "And thus Rugnur died — a glorious death, in the eyes of the dwarven sages. "),
 ("And Krawg - well, Krawg followed him. I know not how. But Krawg made his way ", "And Krawg — well, Krawg followed him. I know not how. But Krawg made his way "),
 ("But before it was found, legends grew up around it, and around its makers - ", "But before it was found, legends grew up around it, and around its makers — "),
+# Straight apostrophes and quotes to curly ones
+# conversion added in 1.9.0-svn
+("The land of Wesnoth's banner bold", "The land of Wesnoth’s banner bold"),
+("Made by a runesmith's hand.", "Made by a runesmith’s hand."),
 ),
 
 "wesnoth-sotbe" :(
