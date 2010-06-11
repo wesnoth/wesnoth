@@ -532,8 +532,9 @@ stringfixes = {
 ("But before it was found, legends grew up around it, and around its makers - ", "But before it was found, legends grew up around it, and around its makers — "),
 # Straight apostrophes and quotes to curly ones
 # conversion added in 1.9.0-svn
-("The land of Wesnoth's banner bold", "The land of Wesnoth’s banner bold"),
-("Made by a runesmith's hand.", "Made by a runesmith’s hand."),
+# (NOT YET)
+#("The land of Wesnoth's banner bold", "The land of Wesnoth’s banner bold"),
+#("Made by a runesmith's hand.", "Made by a runesmith’s hand."),
 ),
 
 "wesnoth-sotbe" :(
