@@ -31,7 +31,7 @@ static lg::log_domain log_arrows("arrows");
 #define DBG_ARR LOG_STREAM(debug, log_arrows)
 
 arrow::arrow(display* screen)
-:screen_(screen), layer_(display::LAYER_ARROWS), color_("255,0,0")
+:screen_(screen), layer_(display::LAYER_ARROWS), color_("255,0,0"), style_("")
 {
 }
 
@@ -45,6 +45,12 @@ void arrow::set_path(const arrow_path_t &path)
 void arrow::set_color(const std::string& color)
 {
 	color_ = color;
+	update_symbols(path_);
+}
+
+void arrow::set_style(const std::string& style)
+{
+	style_ = style;
 	update_symbols(path_);
 }
 
@@ -94,6 +100,9 @@ void arrow::update_symbols(arrow_path_t old_path)
 	const std::string mods = "~RC(FF00FF>"+ color_ + ")"; //magenta to current color
 
 	const std::string dirname = "arrows/";
+	std::string style = style_;
+	if (!style.empty())
+		style = style + "/";
 	map_location::DIRECTION exit_dir = map_location::NDIRECTIONS;
 	map_location::DIRECTION enter_dir = map_location::NDIRECTIONS;
 	std::string prefix = "";
@@ -143,7 +152,7 @@ void arrow::update_symbols(arrow_path_t old_path)
 			{
 				suffix = suffix + "_end";
 			}
-			image_filename = dirname + prefix + "-" + suffix + ".png";
+			image_filename = dirname + style + prefix + "-" + suffix + ".png";
 		}
 		else
 		{
@@ -168,7 +177,7 @@ void arrow::update_symbols(arrow_path_t old_path)
 				prefix = exit;
 				suffix = enter;
 			}
-			image_filename = dirname + prefix + "-" + suffix + ".png";
+			image_filename = dirname + style + prefix + "-" + suffix + ".png";
 		}
 
 		if (image_filename != "")

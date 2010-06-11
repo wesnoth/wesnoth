@@ -56,6 +56,14 @@ public:
 	 */
 	void set_color(const std::string& color);
 
+	/**
+	 * The style is simply the name of a subdirectory under images/arrows,
+	 * that holds an alternate copy of the arrow graphics.
+	 * If it doesn't exist or has missing images, you'll get "under construction"
+	 * symbols instead of arrow graphics.
+	 */
+	void set_style(const std::string& style);
+
 	void set_layer(const display::tdrawing_layer & layer);
 
 	const arrow_path_t & get_path() const;
@@ -93,6 +101,9 @@ private:
 	display::tdrawing_layer layer_;
 
 	std::string color_;
+
+	/// represents the subdirectory that holds images for this arrow style
+	std::string style_;
 
 	arrow_path_t path_;
 	arrow_path_t previous_path_;
