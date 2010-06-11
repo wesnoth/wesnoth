@@ -174,15 +174,13 @@ void save_image(surface surf, const std::string &filename)
 	//TODO: review whether providing NULL error handlers is something
 	//sensible
 	png_struct* png_ptr = png_create_write_struct
-		(PNG_LIBPNG_VER_STRING, reinterpret_cast<png_voidp>(png_voidp_NULL),
-		 png_error_ptr_NULL, png_error_ptr_NULL);
+		(PNG_LIBPNG_VER_STRING, NULL, NULL, NULL);
 	if(!png_ptr)
 		throw exploder_failure("Unable to initialize the png write structure");
 
 	png_info* info_ptr = png_create_info_struct(png_ptr);
 	if(!info_ptr) {
-		png_destroy_write_struct(&png_ptr,
-				static_cast<png_infopp>(NULL));
+		png_destroy_write_struct(&png_ptr, NULL);
 		throw exploder_failure("Unable to initialize the png info structure");
 	}
 

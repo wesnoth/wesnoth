@@ -666,7 +666,7 @@ SET(exploder_SRC
 )
 
 add_executable(exploder ${exploder_SRC})
-target_link_libraries(exploder wesnoth-core png12 ${tools-external-libs})
+target_link_libraries(exploder wesnoth-core png ${tools-external-libs})
 set_target_properties(exploder PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}exploder${BINARY_SUFFIX})
 
 install(TARGETS exploder DESTINATION ${BINDIR})
@@ -681,7 +681,7 @@ SET(cutter_SRC
 )
 
 add_executable(cutter ${cutter_SRC})
-target_link_libraries(cutter wesnoth-core png12 ${tools-external-libs})
+target_link_libraries(cutter wesnoth-core png ${tools-external-libs})
 set_target_properties(cutter PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}cutter${BINARY_SUFFIX})
 
 install(TARGETS cutter DESTINATION ${BINDIR})
