@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en@shaw\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-05-30 18:23+0200\n"
+"POT-Creation-Date: 2010-06-11 13:53+0200\n"
 "PO-Revision-Date: 2009-10-08 21:45-0400\n"
 "Last-Translator: Arc Riley <arcriley@ubuntu.com>\n"
 "Language-Team: Shavian English <ubuntu-l10n-en-shaw@lists.launchpad.net>\n"
@@ -86,18 +86,28 @@ msgstr "𐑮𐑳𐑓"
 msgid "cave"
 msgstr "𐑒𐑱𐑝"
 
-#. [editor_group]: id=village
+#. [editor_group]: id=obstacle
 #: data/core/editor/terrain-groups.cfg:72
+msgid "obstacle"
+msgstr ""
+
+#. [editor_group]: id=village
+#: data/core/editor/terrain-groups.cfg:79
 msgid "village"
 msgstr "𐑝𐑦𐑤𐑦𐑡"
 
 #. [editor_group]: id=castle
-#: data/core/editor/terrain-groups.cfg:79
+#: data/core/editor/terrain-groups.cfg:86
 msgid "castle"
 msgstr "𐑒𐑨𐑕𐑩𐑤"
 
+#. [editor_group]: id=bridge
+#: data/core/editor/terrain-groups.cfg:93
+msgid "bridge"
+msgstr ""
+
 #. [editor_group]: id=special
-#: data/core/editor/terrain-groups.cfg:86
+#: data/core/editor/terrain-groups.cfg:100
 msgid "special"
 msgstr "𐑕𐑐𐑧𐑖𐑩𐑤"
 
@@ -312,11 +322,11 @@ msgstr "𐑐𐑤𐑱𐑻"
 msgid "The size of the target map is different from the current map"
 msgstr "𐑞 𐑕𐑲𐑟 𐑝 𐑞 𐑑𐑸𐑜𐑧𐑑 𐑥𐑨𐑐 𐑦𐑟 𐑛𐑦𐑓𐑼𐑩𐑯𐑑 𐑓𐑮𐑪𐑥 𐑞 𐑒𐑳𐑮𐑩𐑯𐑑 𐑥𐑨𐑐"
 
-#: src/editor/editor_palettes.cpp:506
+#: src/editor/editor_palettes.cpp:505
 msgid "(non-core)"
 msgstr "(𐑯𐑪𐑯-𐑒𐑴𐑮)"
 
-#: src/editor/editor_palettes.cpp:507
+#: src/editor/editor_palettes.cpp:506
 msgid "Will not work in game without extra care."
 msgstr "𐑢𐑦𐑤 𐑯𐑪𐑑 𐑢𐑻𐑒 𐑦𐑯 𐑜𐑱𐑥 𐑢𐑦𐑞𐑬𐑑 𐑧𐑒𐑕𐑑𐑮𐑩 𐑒𐑺."
 

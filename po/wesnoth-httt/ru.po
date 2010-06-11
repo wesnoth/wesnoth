@@ -18,7 +18,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-httt.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-05-15 14:21+0200\n"
+"POT-Creation-Date: 2010-06-11 13:53+0200\n"
 "PO-Revision-Date: 2010-04-30 12:18+0400\n"
 "Last-Translator: Fedor Khod'kov <fedor76@istra.ru>\n"
 "Language-Team:\n"
@@ -562,11 +562,10 @@ msgstr "О нет! Они разрушат наш дом!"
 msgid "There can be no looking back. We must go quickly!"
 msgstr "Не оглядывайся назад. Уходим, живо!"
 
-#. [label]
 #. [scenario]: id=02_Blackwater_Port
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:4
-#: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:49
-msgid "Blackwater Port"
+#, fuzzy
+msgid "scenario name^Blackwater Port"
 msgstr "Черноводье"
 
 #. [objective]: condition=win
@@ -590,6 +589,11 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:37
 msgid "Death of Sir Kaylan"
 msgstr "Смерть сэра Кайлана"
+
+#. [label]
+#: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:49
+msgid "Blackwater Port"
+msgstr "Черноводье"
 
 #. [side]: type=Grand Knight, id=Kaylan
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:71

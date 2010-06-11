@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-05-15 14:21+0200\n"
+"POT-Creation-Date: 2010-06-11 13:53+0200\n"
 "PO-Revision-Date: 2010-01-16 15:45+0100\n"
 "Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
@@ -84,18 +84,28 @@ msgstr "accidenté"
 msgid "cave"
 msgstr "caverne"
 
-#. [editor_group]: id=village
+#. [editor_group]: id=obstacle
 #: data/core/editor/terrain-groups.cfg:72
+msgid "obstacle"
+msgstr ""
+
+#. [editor_group]: id=village
+#: data/core/editor/terrain-groups.cfg:79
 msgid "village"
 msgstr "village"
 
 #. [editor_group]: id=castle
-#: data/core/editor/terrain-groups.cfg:79
+#: data/core/editor/terrain-groups.cfg:86
 msgid "castle"
 msgstr "château"
 
+#. [editor_group]: id=bridge
+#: data/core/editor/terrain-groups.cfg:93
+msgid "bridge"
+msgstr ""
+
 #. [editor_group]: id=special
-#: data/core/editor/terrain-groups.cfg:86
+#: data/core/editor/terrain-groups.cfg:100
 msgid "special"
 msgstr "spécial"
 
@@ -321,11 +331,11 @@ msgstr ""
 "La taille de la carte de destination est différente de celle de la carte "
 "actuelle"
 
-#: src/editor/editor_palettes.cpp:506
+#: src/editor/editor_palettes.cpp:505
 msgid "(non-core)"
 msgstr "(extension)"
 
-#: src/editor/editor_palettes.cpp:507
+#: src/editor/editor_palettes.cpp:506
 msgid "Will not work in game without extra care."
 msgstr "Ne fonctionnera pas dans le jeu sans travail supplémentaire."
 

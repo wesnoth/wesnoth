@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.2-SVN\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-05-30 18:23+0200\n"
+"POT-Creation-Date: 2010-06-11 13:53+0200\n"
 "PO-Revision-Date: 2006-07-02 01:01+0100\n"
 "Last-Translator: Gaute Storli <gauteamus@gmail.com>\n"
 "Language-Team: none\n"
@@ -551,11 +551,10 @@ msgstr "De ødelegger hjemmet vårt!"
 msgid "There can be no looking back. We must go quickly!"
 msgstr "Vi kan ikke se oss tilbake. Vi må dra snart avgårde!"
 
-#. [label]
 #. [scenario]: id=02_Blackwater_Port
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:4
-#: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:49
-msgid "Blackwater Port"
+#, fuzzy
+msgid "scenario name^Blackwater Port"
 msgstr "Svartvann Havn"
 
 #. [objective]: condition=win
@@ -577,6 +576,11 @@ msgstr "Bekjemp alle fiendtlige ledere"
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:37
 msgid "Death of Sir Kaylan"
 msgstr "Ridder Kaylan dør"
+
+#. [label]
+#: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:49
+msgid "Blackwater Port"
+msgstr "Svartvann Havn"
 
 #. [side]: type=Grand Knight, id=Kaylan
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:71

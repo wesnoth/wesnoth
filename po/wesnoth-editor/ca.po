@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.5.5+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-05-30 18:23+0200\n"
+"POT-Creation-Date: 2010-06-11 13:53+0200\n"
 "PO-Revision-Date: 2008-10-18 17:11+0200\n"
 "Last-Translator: Jordà Polo <jorda@ettin.org>\n"
 "Language-Team: Catalan <wesnoth-ca@ettin.org>\n"
@@ -84,18 +84,28 @@ msgstr "abrupte"
 msgid "cave"
 msgstr "cova"
 
-#. [editor_group]: id=village
+#. [editor_group]: id=obstacle
 #: data/core/editor/terrain-groups.cfg:72
+msgid "obstacle"
+msgstr ""
+
+#. [editor_group]: id=village
+#: data/core/editor/terrain-groups.cfg:79
 msgid "village"
 msgstr "llogaret"
 
 #. [editor_group]: id=castle
-#: data/core/editor/terrain-groups.cfg:79
+#: data/core/editor/terrain-groups.cfg:86
 msgid "castle"
 msgstr "castell"
 
+#. [editor_group]: id=bridge
+#: data/core/editor/terrain-groups.cfg:93
+msgid "bridge"
+msgstr ""
+
 #. [editor_group]: id=special
-#: data/core/editor/terrain-groups.cfg:86
+#: data/core/editor/terrain-groups.cfg:100
 msgid "special"
 msgstr ""
 
@@ -307,11 +317,11 @@ msgstr "Jugador"
 msgid "The size of the target map is different from the current map"
 msgstr ""
 
-#: src/editor/editor_palettes.cpp:506
+#: src/editor/editor_palettes.cpp:505
 msgid "(non-core)"
 msgstr ""
 
-#: src/editor/editor_palettes.cpp:507
+#: src/editor/editor_palettes.cpp:506
 msgid "Will not work in game without extra care."
 msgstr ""
 

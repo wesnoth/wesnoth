@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth - HTTT 1.2.0\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-05-30 18:23+0200\n"
+"POT-Creation-Date: 2010-06-11 13:53+0200\n"
 "PO-Revision-Date: 2010-04-16 01:36+0100\n"
 "Last-Translator: Thomas Hockings <elprofesh@gmail.com>\n"
 "Language-Team: Latin\n"
@@ -549,11 +549,10 @@ msgstr "Eheu! Domus nostras devastamus!"
 msgid "There can be no looking back. We must go quickly!"
 msgstr "Non possumus retro aspicere. Oportet festinare!"
 
-#. [label]
 #. [scenario]: id=02_Blackwater_Port
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:4
-#: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:49
-msgid "Blackwater Port"
+#, fuzzy
+msgid "scenario name^Blackwater Port"
 msgstr "Portus Aquanigrae"
 
 #. [objective]: condition=win
@@ -578,6 +577,11 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:37
 msgid "Death of Sir Kaylan"
 msgstr "Mors Cailani Domini"
+
+#. [label]
+#: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:49
+msgid "Blackwater Port"
+msgstr "Portus Aquanigrae"
 
 #. [side]: type=Grand Knight, id=Kaylan
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:71

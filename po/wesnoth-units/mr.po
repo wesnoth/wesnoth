@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.5.9+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-05-30 18:23+0200\n"
+"POT-Creation-Date: 2010-06-11 13:53+0200\n"
 "PO-Revision-Date: 2009-02-01 17:59+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -553,7 +553,7 @@ msgstr ""
 #: data/core/units/humans/Woodsman_Huntsman.cfg:51
 #: data/core/units/humans/Woodsman_Poacher.cfg:48
 #: data/core/units/humans/Woodsman_Trapper.cfg:82
-#: data/core/units/orcs/Archer.cfg:26 data/core/units/orcs/Assassin.cfg:40
+#: data/core/units/orcs/Archer.cfg:41 data/core/units/orcs/Assassin.cfg:40
 #: data/core/units/orcs/Slayer.cfg:39
 #: data/core/units/undead/Skele_Banebow.cfg:31
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:29
@@ -875,7 +875,7 @@ msgstr ""
 #: data/core/units/humans/Woodsman_Poacher.cfg:57
 #: data/core/units/humans/Woodsman_Ranger.cfg:68
 #: data/core/units/humans/Woodsman_Trapper.cfg:91
-#: data/core/units/orcs/Archer.cfg:35 data/core/units/orcs/Archer.cfg:44
+#: data/core/units/orcs/Archer.cfg:50 data/core/units/orcs/Archer.cfg:59
 #: data/core/units/orcs/Warlord.cfg:46
 #: data/core/units/undead/Skele_Banebow.cfg:40
 #: data/core/units/undead/Skele_Bone_Shooter.cfg:38
@@ -2845,6 +2845,7 @@ msgstr ""
 
 #. [attack]: type=blade
 #: data/core/units/monsters/Fire_Dragon.cfg:31
+#: data/core/units/monsters/Giant_Rat.cfg:37
 msgid "bite"
 msgstr ""
 
@@ -2880,6 +2881,18 @@ msgstr ""
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:56
 #: data/core/units/monsters/Mudcrawler.cfg:46
 msgid "mud glob"
+msgstr ""
+
+#. [unit_type]: id=Giant Rat, race=monster
+#: data/core/units/monsters/Giant_Rat.cfg:4
+msgid "Giant Rat"
+msgstr ""
+
+#. [unit_type]: id=Giant Rat, race=monster
+#: data/core/units/monsters/Giant_Rat.cfg:18
+msgid ""
+"Given an adequate supply of food, some rats can grow to truly impressive "
+"sizes. They can also grow quite aggressive."
 msgstr ""
 
 #. [unit_type]: id=Giant Scorpion, race=monster
@@ -3137,7 +3150,7 @@ msgid "Orcish Archer"
 msgstr ""
 
 #. [unit_type]: id=Orcish Archer, race=orc
-#: data/core/units/orcs/Archer.cfg:19
+#: data/core/units/orcs/Archer.cfg:20
 msgid ""
 "Amongst orcs, bows are often regarded as a cowardly weapon; but even orcs, "
 "especially youths and those of slight build, are pragmatic enough to use "

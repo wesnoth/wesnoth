@@ -17,7 +17,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-05-15 14:21+0200\n"
+"POT-Creation-Date: 2010-06-11 13:53+0200\n"
 "PO-Revision-Date: 2009-11-30 13:23+0200\n"
 "Last-Translator: Victor Sergienko <singalen@gmail.com>\n"
 "Language-Team: Russian <bugs.wesnoth.org>\n"
@@ -97,18 +97,28 @@ msgstr "возвышение"
 msgid "cave"
 msgstr "пещера"
 
-#. [editor_group]: id=village
+#. [editor_group]: id=obstacle
 #: data/core/editor/terrain-groups.cfg:72
+msgid "obstacle"
+msgstr ""
+
+#. [editor_group]: id=village
+#: data/core/editor/terrain-groups.cfg:79
 msgid "village"
 msgstr "деревня"
 
 #. [editor_group]: id=castle
-#: data/core/editor/terrain-groups.cfg:79
+#: data/core/editor/terrain-groups.cfg:86
 msgid "castle"
 msgstr "замок"
 
+#. [editor_group]: id=bridge
+#: data/core/editor/terrain-groups.cfg:93
+msgid "bridge"
+msgstr ""
+
 #. [editor_group]: id=special
-#: data/core/editor/terrain-groups.cfg:86
+#: data/core/editor/terrain-groups.cfg:100
 msgid "special"
 msgstr "особое"
 
@@ -330,11 +340,11 @@ msgstr "Игрок"
 msgid "The size of the target map is different from the current map"
 msgstr "Размер целевой карты отличается от размера текущей"
 
-#: src/editor/editor_palettes.cpp:506
+#: src/editor/editor_palettes.cpp:505
 msgid "(non-core)"
 msgstr "(не-базовые)"
 
-#: src/editor/editor_palettes.cpp:507
+#: src/editor/editor_palettes.cpp:506
 msgid "Will not work in game without extra care."
 msgstr "В игре не заработает без дополнительной работы."
 

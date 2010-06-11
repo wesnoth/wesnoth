@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.2-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-05-30 18:23+0200\n"
+"POT-Creation-Date: 2010-06-11 13:53+0200\n"
 "PO-Revision-Date: 2010-03-22 21:07+0200\n"
 "Last-Translator: Samu Voutilainen <smar@smar.fi>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
@@ -552,11 +552,10 @@ msgstr "Voi ei! He tuhoavat kotimme!"
 msgid "There can be no looking back. We must go quickly!"
 msgstr "Emme voi katsoa taaksepäin. Meidän on kiiruhdettava!"
 
-#. [label]
 #. [scenario]: id=02_Blackwater_Port
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:4
-#: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:49
-msgid "Blackwater Port"
+#, fuzzy
+msgid "scenario name^Blackwater Port"
 msgstr "Mustaveden satama"
 
 #. [objective]: condition=win
@@ -581,6 +580,11 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:37
 msgid "Death of Sir Kaylan"
 msgstr "Kaylanin kuolema"
+
+#. [label]
+#: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:49
+msgid "Blackwater Port"
+msgstr "Mustaveden satama"
 
 #. [side]: type=Grand Knight, id=Kaylan
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:71

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-05-30 18:23+0200\n"
+"POT-Creation-Date: 2010-06-11 13:53+0200\n"
 "PO-Revision-Date: 2009-11-02 10:17-0500\n"
 "Last-Translator: Eric S. Raymond <esr@thyrsus.com>\n"
 "Language-Team: en_GB\n"
@@ -77,18 +77,28 @@ msgstr "rough"
 msgid "cave"
 msgstr "cave"
 
-#. [editor_group]: id=village
+#. [editor_group]: id=obstacle
 #: data/core/editor/terrain-groups.cfg:72
+msgid "obstacle"
+msgstr ""
+
+#. [editor_group]: id=village
+#: data/core/editor/terrain-groups.cfg:79
 msgid "village"
 msgstr "village"
 
 #. [editor_group]: id=castle
-#: data/core/editor/terrain-groups.cfg:79
+#: data/core/editor/terrain-groups.cfg:86
 msgid "castle"
 msgstr "castle"
 
+#. [editor_group]: id=bridge
+#: data/core/editor/terrain-groups.cfg:93
+msgid "bridge"
+msgstr ""
+
 #. [editor_group]: id=special
-#: data/core/editor/terrain-groups.cfg:86
+#: data/core/editor/terrain-groups.cfg:100
 msgid "special"
 msgstr "special"
 
@@ -307,11 +317,11 @@ msgstr "Player"
 msgid "The size of the target map is different from the current map"
 msgstr "The size of the target map is different from the current map"
 
-#: src/editor/editor_palettes.cpp:506
+#: src/editor/editor_palettes.cpp:505
 msgid "(non-core)"
 msgstr "(non-core)"
 
-#: src/editor/editor_palettes.cpp:507
+#: src/editor/editor_palettes.cpp:506
 msgid "Will not work in game without extra care."
 msgstr "Will not work in game without extra care."
 

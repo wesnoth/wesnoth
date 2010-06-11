@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.6-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-05-30 18:23+0200\n"
+"POT-Creation-Date: 2010-06-11 13:53+0200\n"
 "PO-Revision-Date: 2004-08-08 15:00+0200\n"
 "Last-Translator: lynx\n"
 "Language-Team: none\n"
@@ -545,11 +545,10 @@ msgstr "Uničujejo naš dom!"
 msgid "There can be no looking back. We must go quickly!"
 msgstr "Ne smemo se obračati. Iti moramo, hitro!"
 
-#. [label]
 #. [scenario]: id=02_Blackwater_Port
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:4
-#: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:49
-msgid "Blackwater Port"
+#, fuzzy
+msgid "scenario name^Blackwater Port"
 msgstr "Pristanišče Temna Voda"
 
 #. [objective]: condition=win
@@ -571,6 +570,11 @@ msgstr "Premagaj vse sovražne voditelje"
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:37
 msgid "Death of Sir Kaylan"
 msgstr "Sir Kaylan umre"
+
+#. [label]
+#: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:49
+msgid "Blackwater Port"
+msgstr "Pristanišče Temna Voda"
 
 #. [side]: type=Grand Knight, id=Kaylan
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:71

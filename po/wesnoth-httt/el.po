@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.5-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-05-30 18:23+0200\n"
+"POT-Creation-Date: 2010-06-11 13:53+0200\n"
 "PO-Revision-Date: 2007-02-18 21:14+0200\n"
 "Last-Translator: Κωνσταντίνος Έγκαρχος <atixos@gmail.com>\n"
 "Language-Team: none\n"
@@ -555,11 +555,10 @@ msgstr "Ωχ, όχι! Πάει το σπίτι μας!"
 msgid "There can be no looking back. We must go quickly!"
 msgstr "Μην κοιτάς πίσω. Πρέπει να φύγουμε!"
 
-#. [label]
 #. [scenario]: id=02_Blackwater_Port
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:4
-#: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:49
-msgid "Blackwater Port"
+#, fuzzy
+msgid "scenario name^Blackwater Port"
 msgstr "Λιμάνι Μαύρο Ύδωρ"
 
 #. [objective]: condition=win
@@ -581,6 +580,11 @@ msgstr "Νίκησε του αντίπαλους αρχηγούς"
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:37
 msgid "Death of Sir Kaylan"
 msgstr "Θάνατος του Λόρδου Κάυλαν"
+
+#. [label]
+#: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:49
+msgid "Blackwater Port"
+msgstr "Λιμάνι Μαύρο Ύδωρ"
 
 #. [side]: type=Grand Knight, id=Kaylan
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:71

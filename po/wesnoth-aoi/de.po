@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.8\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-05-30 18:23+0200\n"
+"POT-Creation-Date: 2010-06-11 13:53+0200\n"
 "PO-Revision-Date: 2009-09-20 12:48+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
@@ -213,7 +213,7 @@ msgstr "Besiegt Urugha"
 #: data/campaigns/An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:107
 #: data/campaigns/An_Orcish_Incursion/scenarios/2_Assassins.cfg:98
 #: data/campaigns/An_Orcish_Incursion/scenarios/3_Wasteland.cfg:94
-#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:151
+#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:167
 #: data/campaigns/An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:116
 #: data/campaigns/An_Orcish_Incursion/scenarios/6_A_Detour_through_the_Swamp.cfg:66
 #: data/campaigns/An_Orcish_Incursion/scenarios/7_Showdown.cfg:118
@@ -224,7 +224,7 @@ msgstr "Erlornas fällt in der Schlacht"
 #: data/campaigns/An_Orcish_Incursion/scenarios/1_Defend_the_Forest.cfg:111
 #: data/campaigns/An_Orcish_Incursion/scenarios/2_Assassins.cfg:102
 #: data/campaigns/An_Orcish_Incursion/scenarios/3_Wasteland.cfg:98
-#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:155
+#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:171
 #: data/campaigns/An_Orcish_Incursion/scenarios/5_Linaera_the_Quick.cfg:124
 #: data/campaigns/An_Orcish_Incursion/scenarios/6_A_Detour_through_the_Swamp.cfg:74
 #: data/campaigns/An_Orcish_Incursion/scenarios/7_Showdown.cfg:122
@@ -822,25 +822,25 @@ msgstr ""
 msgid "Valley of Trolls"
 msgstr "Tal der Trolle"
 
-#. [side]: type=Troll Warrior, id=Gurk
-#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:36
+#. [side]: type=Troll, type=Troll Warrior, id=Gurk
+#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:40
 msgid "Gurk"
 msgstr "Gurk"
 
-#. [side]: type=Troll Warrior, id=Gurk
-#. [side]: type=Troll Warrior, id=Hrugu
-#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:44
-#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:74
+#. [side]: type=Troll, type=Troll Warrior, id=Gurk
+#. [side]: type=Troll, type=Troll Warrior, id=Hrugu
+#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:52
+#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:90
 msgid "Trolls"
 msgstr "Trolle"
 
-#. [side]: type=Troll Warrior, id=Hrugu
-#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:67
+#. [side]: type=Troll, type=Troll Warrior, id=Hrugu
+#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:79
 msgid "Hrugu"
 msgstr "Hrugu"
 
 #. [part]
-#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:105
+#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:121
 msgid ""
 "Next morning, the elves set off again, increasingly wearied by the hardships "
 "of the campaign and longing for the green comfort of their home forests. "
@@ -855,7 +855,7 @@ msgstr ""
 "näher rückten."
 
 #. [part]
-#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:109
+#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:125
 msgid ""
 "At dusk they arrived at the mouth of a valley cutting almost straight "
 "through the range and made camp, as scouts warned that the area was hostile "
@@ -871,7 +871,7 @@ msgstr ""
 "von jenen, die zur Wache eingeteilt waren."
 
 #. [part]
-#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:113
+#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:129
 msgid ""
 "When sunrise came, the elves moved into battle formations. Whatever waited "
 "in the slopes ahead, it would not find them unprepared."
@@ -881,7 +881,7 @@ msgstr ""
 "würden ihm nicht unvorbereitet entgegentreten."
 
 #. [objectives]
-#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:141
+#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:157
 msgid ""
 "Hint:\n"
 "Trolls are poor fighters when not on rugged terrain and fare even worse "
@@ -893,12 +893,12 @@ msgstr ""
 "den Hügeln und greift während des Tages an."
 
 #. [objective]: condition=win
-#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:147
+#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:163
 msgid "Defeat all enemy leaders"
 msgstr "Besiegt alle gegnerischen Anführer"
 
 #. [message]: role=Advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:177
+#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:193
 msgid ""
 "We are far from our lands, now, Erlornas, and we have driven the orcs from "
 "the forest. Why do we not return home?"
@@ -907,7 +907,7 @@ msgstr ""
 "Wald vertrieben. Warum kehren wir nicht nach Hause zurück?"
 
 #. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:181
+#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:197
 msgid ""
 "You know well enough... Rualsha. That name sounds everywhere we go since the "
 "incursion began. That orc is much more than a mere marauding bandit in "
@@ -922,12 +922,12 @@ msgstr ""
 "können."
 
 #. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:185
+#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:201
 msgid "And tell me... How did you sleep last night?"
 msgstr "Sage mir... Wie hast du in der letzten Nacht geschlafen?"
 
 #. [message]: role=Advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:189
+#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:205
 msgid ""
 "How did I?... Uneasy, lord. My dreams were bleak, some of them nightmares."
 msgstr ""
@@ -935,7 +935,7 @@ msgstr ""
 "blanke Albträume."
 
 #. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:193
+#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:209
 msgid ""
 "Yes. The earth currents are perturbed here, and the bridges to the dreamland "
 "are tainted. I think there is a mage dwelling somewhere nearby. Or perhaps "
@@ -948,7 +948,7 @@ msgstr ""
 "sind nicht eindeutig und manche tragen eine unheilvolle Disharmonie in sich."
 
 #. [message]: role=Advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:197
+#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:213
 msgid ""
 "It would be dire indeed for us if these orcs have magic to add to their "
 "battle-might."
@@ -957,12 +957,12 @@ msgstr ""
 "noch magische Unterstützung hätten."
 
 #. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:201
+#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:217
 msgid "We must discover if this is so."
 msgstr "Wir müssen herausfinden ob dem so ist."
 
 #. [message]: role=Advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:205
+#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:221
 msgid ""
 "Information will do us no good if we are killed before we return with it! "
 "These mountains look like troll territory."
@@ -971,12 +971,12 @@ msgstr ""
 "damit zurückkehren können. Diese Berge wirken als lebten hier Trolle."
 
 #. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:209
+#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:225
 msgid "Enough. The sun's fully over the horizon. Give the order to advance."
 msgstr "Genug. Die Sonne thront am Horizont. Wir brechen auf."
 
 #. [message]: role=Advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:226
+#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:242
 msgid ""
 "That was the last of the chieftains, lord. The lesser trolls seem to be "
 "retreating now."
@@ -985,7 +985,7 @@ msgstr ""
 "sich zurück."
 
 #. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:230
+#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:246
 msgid ""
 "It is well. Break camp and move everyone through the pass before they rally. "
 "We'll rest a bit on the other side; we have earned it."
@@ -995,12 +995,12 @@ msgstr ""
 "erholen. Die Männer haben es sich verdient."
 
 #. [message]: role=Advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:234
+#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:250
 msgid "At once. How much time do you think we have?"
 msgstr "Sofort. Wieviel Zeit werden wir haben?"
 
 #. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:238
+#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:254
 msgid ""
 "A day, perhaps. We fought two clans today; they won't take long to rally. We "
 "need to be gone from here by sunset next."
@@ -1010,23 +1010,23 @@ msgstr ""
 "Spätestens bei Sonnenuntergang müssen wir verschwunden sein."
 
 #. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:257
+#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:273
 msgid "We have slain a chieftain! Take heart! This battle is almost won!"
 msgstr ""
 "Wir haben einen der Stammesführer erschlagen. Dieser Kampf ist fast gewonnen!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:278
+#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:294
 msgid "Ha! Me smashed da funny elf. Me got a trophy!"
 msgstr "Ha! Ich zerquetscht kleinen Elfen. Jetzt haben neue Trophäe!"
 
 #. [message]: role=Advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:282
+#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:298
 msgid "No! This can't be!"
 msgstr "Nein! Mein Fürst!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:286
+#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:302
 msgid ""
 "Soon after Erlornas died the elven party, lacking a leader and pressed from "
 "all sides, scattered and fled. Their retreat to Wesmere was arduous and long."
@@ -1036,7 +1036,7 @@ msgstr ""
 "nicht wenige der übrig gebliebenen Krieger sahen ihre Heimat niemals wieder."
 
 #. [message]: speaker=narrator
-#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:291
+#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:307
 msgid ""
 "During their retreat, the pass was crossed by another army moving in the "
 "opposite direction. Orcs were back south of the pass, and this time they "
@@ -1047,7 +1047,7 @@ msgstr ""
 "Heimat und diesmal würden sie dort für eine lange, lange Zeit bleiben."
 
 #. [message]: role=Advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:301
+#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:317
 msgid ""
 "We can't get through, my Lord. These whelps are not individually very "
 "dangerous, but there are huge numbers of them."
@@ -1056,7 +1056,7 @@ msgstr ""
 "Trollwelpen sind allein kein großes Problem, aber ihre große Zahl..."
 
 #. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:305
+#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:321
 msgid ""
 "Four days of combat and nothing to show for it. How does it feel to you?"
 msgstr ""
@@ -1064,7 +1064,7 @@ msgstr ""
 "sich das für dich an?"
 
 #. [message]: role=Advisor
-#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:309
+#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:325
 msgid ""
 "Terrible, my lord. Never in my life did I dream I'd be bested by mere "
 "trolls. What are your orders?"
@@ -1073,7 +1073,7 @@ msgstr ""
 "einfachen Trollen geschlagen zu werden. Wie lauten eure Befehle?"
 
 #. [message]: id=Erlornas
-#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:313
+#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:329
 msgid ""
 "Withdraw and make camp a safe distance from the hills. There is no further "
 "point in this fight. We'll wait for reinforcements."
@@ -1083,7 +1083,7 @@ msgstr ""
 "Verstärkung."
 
 #. [message]: speaker=narrator
-#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:317
+#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:333
 msgid ""
 "The reinforcements arrived a few days later, a crack force of rangers with "
 "some cavalry support. When they attempted the pass again, they found not "
@@ -1095,7 +1095,7 @@ msgstr ""
 "Eine orkische Armee, die in südliche Richtung unterwegs war."
 
 #. [message]: speaker=narrator
-#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:322
+#: data/campaigns/An_Orcish_Incursion/scenarios/4_Valley_of_Trolls.cfg:338
 msgid ""
 "The battle that ensued was bloody and inconclusive, and the elven losses "
 "were only the beginning of the mournful toll in a war that would rage for "
