@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-05-30 18:23+0200\n"
-"PO-Revision-Date: 2009-09-26 15:40+0700\n"
-"Last-Translator: Phạm Thành Nam <phamthanhnam.ptn@gmail.com>\n"
+"PO-Revision-Date: 2010-06-11 11:18+0700\n"
+"Last-Translator: Huynh Yen Loc <walkingcorpse13@gmail.com>\n"
 "Language-Team: Vietnamese <>\n"
 "Language: vi\n"
 "MIME-Version: 1.0\n"
@@ -17,12 +17,12 @@ msgstr ""
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:5
 msgid "Compressed Saves"
-msgstr "Nén bản sao lưu"
+msgstr "Nén bản lưu"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:12
 msgid "Confirm deleting saves"
-msgstr "Xác nhận xóa bản sao lưu"
+msgstr "Xác nhận xóa bản lưu"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:19
@@ -74,12 +74,12 @@ msgstr "Số giây cần chờ phản hồi ping trước khi hết giờ. Vô h
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:79
 msgid "Accept whisper messages from friends only"
-msgstr "Chỉ chấp nhận tin nhắn thì thầm từ bạn bè"
+msgstr "Chỉ chấp nhận tin nhắn riêng từ bạn bè"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:86
 msgid "Auto-open whisper windows in lobby"
-msgstr "Tự động mở cửa sổ thì thầm trong phòng gặp gỡ"
+msgstr "Tự động mở cửa sổ tin nhắn riêng trong phòng gặp gỡ"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:93
@@ -93,15 +93,13 @@ msgstr "Âm thanh trong phòng gặp gỡ"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:107
-#, fuzzy
 msgid "Disable notifications"
-msgstr "Vô hiệu lực lưu tự động."
+msgstr "tắt thông báo"
 
 #. [ai]: id=testing_ai_default
 #: data/ai/ais/testing_ai_default.cfg:5
-#, fuzzy
 msgid "Multiplayer_AI^RCA AI"
-msgstr "Nhiều đấu thủ"
+msgstr "Nhiều người chơi"
 
 #. [time]: id=underground
 #. [illuminated_time]: id=underground_illum
@@ -133,8 +131,7 @@ msgid ""
 msgstr ""
 "Điên cuồng:\n"
 "Khi được sử dụng để tấn công hoặc phòng thủ, đòn này đẩy cuộc giao chiến đến "
-"khi một trong hai bên tham chiến bị tiêu diệt, hoặc 30 vòng tấn công đã diễn "
-"ra."
+"khi một trong hai bên tham chiến bị tiêu diệt, hoặc 30 vòng đấu đã diễn ra."
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:765
@@ -168,7 +165,7 @@ msgid ""
 "This unit always strikes first with this attack, even if they are defending."
 msgstr ""
 "Đánh trước:\n"
-"Đơn vị này luôn đánh trước với đòn này, kể cả khi đang phòng thủ."
+"Đơn vị này luôn ra đon trước với đòn này, kể cả khi đang phòng thủ."
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [then]
@@ -188,13 +185,13 @@ msgstr "bị chậm"
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
 #: data/core/macros/abilities.cfg:10
 msgid "heals +4"
-msgstr "điều trị +4"
+msgstr "hồi máu +4"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:17
 #: data/core/macros/abilities.cfg:11
 msgid "female^heals +4"
-msgstr "điều trị +4"
+msgstr "hồi máu +4"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:22
@@ -208,12 +205,12 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
-"Điều trị +4:\n"
-"Cho phép đơn vị điều trị cho các đơn vị đồng minh đứng bên cạnh ở đầu mỗi "
+"Hồi máu +4:\n"
+"Cho phép đơn vị hồi máu cho các đơn vị đồng minh đứng bên cạnh ở đầu mỗi "
 "lượt.\n"
 "\n"
-"Một đơn vị được điều trị viên này chăm sóc có thể phục hồi lên tới 4 NL mỗi "
-"lượt, hoặc ngăn chất độc phát huy hiệu lực ở lượt đó.\n"
+"Một đơn vị được đơn vị hồi máu này hồi máu có thể phục hồi lên tới 4 đơn vị "
+"máu mỗi lượt, hoặc ngăn chất độc phát huy hiệu lực ở lượt đó.\n"
 "Một đơn vị bị nhiễm độc không thể được một điều trị viên cứu chữa khỏi chất "
 "độc, mà phải tìm kiếm sự chăm sóc của một ngôi làng hoặc một đơn vị có khả "
 "năng giải độc."
@@ -222,13 +219,13 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:45
 #: data/core/macros/abilities.cfg:30
 msgid "heals +8"
-msgstr "điều trị +8"
+msgstr "hồi máu +8"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:46
 #: data/core/macros/abilities.cfg:31
 msgid "female^heals +8"
-msgstr "điều trị +8"
+msgstr "hồi máu +8"
 
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:51
@@ -243,12 +240,12 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
-"Điều trị +8:\n"
+"Hồi máu +8:\n"
 "Đơn vị này kết hợp các phương thuốc thảo mộc với phép thuật để điều trị cho "
 "các đơn vị trên chiến trường nhanh hơn bình thường.\n"
 "\n"
-"Một đơn vị được điều trị viên này chăm sóc có thể phục hồi lên tới 8 NL mỗi "
-"lượt, hoặc ngăn chất độc phát huy hiệu lực ở lượt đó.\n"
+"Một đơn vị được đơn vị hồi máu này chăm sóc có thể phục hồi lên tới 8 đơn vị "
+"máu mỗi lượt, hoặc ngăn chất độc phát huy hiệu lực ở lượt đó.\n"
 "Một đơn vị bị nhiễm độc không thể được một điều trị viên cứu chữa khỏi chất "
 "độc, mà phải tìm kiếm sự chăm sóc của một ngôi làng hoặc một đơn vị có khả "
 "năng giải độc."
@@ -286,7 +283,7 @@ msgstr "Thiết kế chiến dịch"
 #. [about]
 #: data/core/about.cfg:708
 msgid "Multiplayer Maps and Balancing"
-msgstr "Bản đồ và cân đối tài chính nhiều đấu thủ"
+msgstr "Bản đồ và cân đối nhiều người chơi"
 
 #. [about]
 #: data/core/about.cfg:749
@@ -311,7 +308,7 @@ msgstr "Sửa câu tiếng Anh"
 #. [about]
 #: data/core/about.cfg:1104
 msgid "Afrikaans Translation"
-msgstr "Bản dịch tiếng Hà Lan Nam Phi"
+msgstr "Bản dịch tiếng Nam Phi"
 
 #. [about]
 #: data/core/about.cfg:1120
@@ -370,7 +367,6 @@ msgstr "Bản dịch tiếng Anh (vương quốc Anh)"
 
 #. [about]
 #: data/core/about.cfg:1455
-#, fuzzy
 msgid "English (Shaw) Translation"
 msgstr "Bản dịch tiếng Anh (vương quốc Anh)"
 
@@ -546,9 +542,8 @@ msgstr "Bản dịch tiếng Va-len-ci-a (Ca-ta-lan phía nam)"
 
 #. [about]
 #: data/core/about.cfg:2490
-#, fuzzy
 msgid "Vietnamese Translation"
-msgstr "Bản dịch tiếng Trung Quốc"
+msgstr "Bản dịch tiếng Việt"
 
 #. [about]
 #: data/core/about.cfg:2497
@@ -601,7 +596,7 @@ msgstr "Tính đặc biệt của vũ khí"
 #. [section]: id=factions_section
 #: data/core/help.cfg:67 src/help.cpp:1294 src/help.cpp:1296
 msgid "Factions"
-msgstr "Bè phái"
+msgstr "Liên minh"
 
 #. [section]: id=terrains
 #. [topic]: id=..terrains
@@ -635,7 +630,7 @@ msgid ""
 "attacking with them.\n"
 "\n"
 msgstr ""
-"Một số vũ khí có các tính năng đặc biệt giúp tăng hiệu quả tấn công.\n"
+"Một số vũ khí có các đặc trưng giúp tăng hiệu quả tấn công.\n"
 "\n"
 
 #. [topic]: id=.unknown_unit
@@ -654,7 +649,7 @@ msgstr ""
 "\n"
 "\n"
 "Đơn vị này hiện thời không xác định. Bạn phải khám phá nó trong trò chơi để "
-"được phép xem mô tả."
+"được phép xem mô tả về nó."
 
 #. [topic]: id=introduction_topic
 #: data/core/help.cfg:126
@@ -758,10 +753,10 @@ msgid ""
 "If your computer has a connection to the Internet, you can play against "
 "other people across the Internet."
 msgstr ""
-"Trò chơi diễn ra theo một loạt các trận chiến, gọi là các kịch bản. Trong "
-"mỗi kịch bản, quân của bạn sẽ đọ sức với quân của một hoặc nhiều đối thủ. "
-"Bạn có thể chơi đấu với máy tính, hoặc với bạn bè, mỗi người một lượt khi "
-"ngồi bên máy tính (ghế nóng). Nếu máy tính của bạn kết nối với một mạng máy "
+"Trò chơi diễn ra theo một loạt các trận chiến, gọi là các màn. Trong mỗi "
+"màn, quân của bạn sẽ đọ sức với quân của một hoặc nhiều người chơi. Bạn có "
+"thể chơi đấu với máy tính, hoặc với bạn bè, mỗi người theo lượt khi ngồi bên "
+"máy tính (chế độ ghế nóng). Nếu máy tính của bạn kết nối với một mạng máy "
 "tính, bạn cũng có thể chơi đấu với những người khác cùng kết nối với mạng "
 "đó. Nếu máy tính của bạn có kết nối Internet, bạn có thể chơi đấu với những "
 "người khác qua Internet."
@@ -778,14 +773,14 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Các chiến dịch bao gồm nhiều kịch bản nối tiếp nhau, kể một câu chuyện. "
-"Trong một chiến dịch, bạn cần chơi cẩn thận hơn, giữ gìn những quân lính tốt "
-"nhất để có thể sử dụng lại chúng trong các kịch bản sau của chiến dịch."
+"Các chiến dịch bao gồm nhiều màn nối tiếp nhau, kể về câu chuyện. Trong một "
+"chiến dịch, bạn cần chơi cẩn thận hơn, giữ gìn những quân lính tốt nhất để "
+"có thể sử dụng lại trong các màn sau của chiến dịch."
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:161
 msgid "Victory and Defeat"
-msgstr "Chiến thắng và Thua cuộc"
+msgstr "Chiến thắng và Bại trận"
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:162
@@ -797,12 +792,12 @@ msgid ""
 "rescuing someone, or solving a puzzle, or holding out against a siege until "
 "a certain number of turns have elapsed."
 msgstr ""
-"Chú ý cẩn thận hộp thoại Mục tiêu ở đầu mỗi kịch bản. Thông thường bạn sẽ "
-"giành chiến thắng bằng cách giết toàn bộ lãnh đạo của kẻ thù, và chỉ bị thua "
-"cuộc khi để người lãnh đạo của mình bị giết. Nhưng các kịch bản có thể có "
-"những mục tiêu chiến thắng khác, đưa người lãnh đạo của bạn đến một điểm xác "
-"định, giải cứu ai đó, giải quyết một vấn đề, hoặc trấn giữ chống lại một "
-"cuộc bao vây đến hết một số lượt nhất định."
+"Chú ý cẩn thận hộp thoại Mục tiêu ở đầu mỗi màn. Thông thường bạn sẽ giành "
+"chiến thắng bằng cách giết toàn bộ chỉ huy của kẻ thù, và chỉ bị thua cuộc "
+"khi để người chỉ huy của mình bị giết. Nhưng các màn có thể có những mục "
+"tiêu chiến thắng khác, đưa người lãnh đạo của bạn đến một điểm xác định, "
+"giải cứu ai đó, giải quyết một vấn đề, hoặc phòng thủ chống lại một cuộc bao "
+"vây đến hết một số lượt nhất định."
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:164
@@ -816,10 +811,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Khi bạn thắng một kịch bản, bản đồ sẽ xám lại và nút 'Kết thúc lượt' sẽ thay "
-"đổi thành 'Kết thúc kịch bản'. Giờ bạn có thể làm những việc như thay đổi "
-"các tùy chọn lưu trò chơi hoặc (nếu bạn đang tham gia một trò chơi nhiều đấu "
-"thủ) tán gẫu với các đấu thủ khác trước khi ấn nút đó để đi tiếp."
+"Khi bạn thắng một màn, bản đồ sẽ xám lại và nút 'Kết thúc lượt' sẽ thay đổi "
+"thành 'Kết thúc màn'. Giờ bạn có thể làm những việc như thay đổi các tùy "
+"chọn lưu trò chơi hoặc (nếu bạn đang tham gia một trò chơi nhiều người "
+"chơi ) tán gẫu với các người chơi  khác trước khi ấn nút đó để đi tiếp."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:171
@@ -840,16 +835,16 @@ msgid ""
 "Click on a unit to see its statistics, then press the recruit button to "
 "recruit it."
 msgstr ""
-"Mỗi phe bắt đầu bằng một người lãnh đạo trong pháo đài. Lúc bắt đầu trận "
+"Mỗi phe bắt đầu bằng một người chỉ huy trong pháo đài. Lúc bắt đầu trận "
 "chiến, và vào các thời điểm trong trận chiến, bạn cần tuyển các <ref>dst='.."
 "units' text='đơn vị'</ref> vào quân đội. Để tuyển quân, bạn phải để người "
-"lãnh đạo của bạn (lấy ví dụ, Konrad trong chiến dịch Người thừa kế ngai "
-"vàng) trên ô pháo đài của một <ref>dst='terrain_castle' text='lâu đài'</"
-"ref>. Sau đó, bạn có thể tuyển quân bằng cách chọn Tuyển quân từ trình đơn "
-"hoặc nhấn chuột phải lên một hình lục giác và chọn <italic>text='Tuyển "
-"quân'</italic>. Thao tác này mở trình đơn tuyển quân, liệt kê các đơn vị có "
-"thể tuyển cùng với giá vàng của chúng. Nhấn lên một đơn vị để xem thống kê "
-"của nó, sau đó ấn nút tuyển quân để tuyển đơn vị."
+"chi huy của bạn (lấy ví dụ, Konrad trong chiến dịch Người thừa kế ngai vàng) "
+"trên ô pháo đài của một <ref>dst='terrain_castle' text='lâu đài'</ref>. Sau "
+"đó, bạn có thể tuyển quân bằng cách chọn Tuyển quân từ trình đơn hoặc nhấn "
+"chuột phải lên một ô lục giác và chọn <italic>text='Tuyển quân'</italic>. "
+"Thao tác này mở trình đơn tuyển quân, liệt kê các đơn vị có thể tuyển cùng "
+"với chi phí của chúng. Nhấn lên một đơn vị để xem những chỉ số thống kê của "
+"nó, sau đó ấn nút tuyển quân để tuyển đơn vị."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:174
@@ -893,9 +888,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Trong các kịch bản về sau, bạn cũng có thể gọi lại những người sống sót từ "
-"các trận chiến trước. Việc gọi lại có giá chung 20 lượng vàng và hiện ra một "
-"danh sách tất cả những đơn vị sống sót từ các kịch bản trước."
+"Trong các màn về sau, bạn cũng có thể Gọi lại những người sống sót từ các "
+"trận chiến trước. Việc gọi lại có giá chung 20 đơn vị vàng và hiện ra một "
+"danh sách tất cả những đơn vị sống sót từ các màn trước."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:180
@@ -923,8 +918,8 @@ msgid ""
 "On top of the energy bar shown next to each unit of yours is an orb. For "
 "units you control, this orb is:"
 msgstr ""
-"Phía trên thanh năng lượng hiện bên cạnh mỗi đơn vị của bạn là một quả cầu. "
-"Đối với các đơn vị bạn điều khiển, quả cầu này có màu:"
+"Phía trên thanh máu hiện bên cạnh mỗi đơn vị của bạn là một quả cầu. Đối với "
+"các đơn vị bạn điều khiển, quả cầu này có màu:"
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:189
@@ -951,12 +946,12 @@ msgstr ""
 #. [topic]: id=orbs
 #: data/core/help.cfg:193
 msgid "Enemy units have no orb on top of their energy bar."
-msgstr "Các đơn vị của kẻ thù không có quả cầu phía trên thanh năng lượng."
+msgstr "Các đơn vị của kẻ thù không có quả cầu phía trên thanh máu."
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:200
 msgid "Hitpoints and Experience"
-msgstr "Năng lượng và Kinh nghiệm"
+msgstr "Máu và Kinh nghiệm"
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:201
@@ -966,10 +961,10 @@ msgid ""
 "experience points (XP). A freshly recruited unit starts with no experience "
 "points, and gains experience by fighting enemies."
 msgstr ""
-"Mỗi đơn vị có một số năng lượng (NL) nhất định. Nếu năng lượng của một đơn "
-"vị xuống dưới 1, đơn vị đó sẽ chết. Mỗi đơn vị cũng có một số điểm kinh "
-"nghiệm (KN) nhất định. Một đơn vị vừa mới tuyển dụng ban đầu không có điểm "
-"kinh nghiệm, và giành kinh nghiệm bằng cách chiến đấu với kẻ thù."
+"Mỗi đơn vị có một số lượng máu (Máu) nhất định. Nếu máu của một đơn vị xuống "
+"dưới 1, đơn vị đó sẽ chết. Mỗi đơn vị cũng có một số điểm kinh nghiệm (KN) "
+"nhất định. Một đơn vị vừa mới tuyển dụng ban đầu không có điểm kinh nghiệm, "
+"và giành kinh nghiệm bằng cách chiến đấu với kẻ thù."
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:205
@@ -978,8 +973,8 @@ msgid ""
 "using two numbers (the current value and the maximum value the unit can "
 "have)."
 msgstr ""
-"Cả hai điểm năng lượng và kinh nghiệm đều được chỉ thị trong khung trạng "
-"thái bằng hai số (giá trị hiện thời và giá trị tối đa đơn vị có thể có)."
+"Cả máu và điểm kinh nghiệm đều được chỉ thị trong khung trạng thái bằng hai "
+"số (giá trị hiện thời và giá trị tối đa đơn vị có thể có)."
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:206
@@ -989,10 +984,10 @@ msgid ""
 "experience bar, which turns white as the unit is about to "
 "<ref>dst='experience_and_advancement' text='advance'</ref>."
 msgstr ""
-"Năng lượng cũng được chỉ thị bằng một thanh năng lượng bên cạnh mỗi đơn vị, "
-"có màu xanh lá cây, vàng hoặc đỏ. Một đơn vị với ít nhất 1 điểm kinh nghiệm "
-"có thanh kinh nghiệm màu xanh lam, thanh kinh nghiệm chuyển thành màu trắng "
-"khi đơn vị đó sắp sửa <ref>dst='experience_and_advancement' text='nâng cấp'</"
+"Máu cũng được chỉ thị bằng một thanh năng lượng bên cạnh mỗi đơn vị, có màu "
+"xanh lá cây, vàng hoặc đỏ. Một đơn vị với ít nhất 1 điểm kinh nghiệm có "
+"thanh kinh nghiệm màu xanh lam, thanh kinh nghiệm chuyển thành màu trắng khi "
+"đơn vị đó sắp sửa <ref>dst='experience_and_advancement' text='nâng cấp'</"
 "ref>."
 
 #. [topic]: id=movement
@@ -1017,19 +1012,19 @@ msgid ""
 "up its movement. Ending a move in a village you don't already own will also "
 "use up a unit's movement, but will still allow it to attack."
 msgstr ""
-"Di chuyển trong Trận chiến giành Wesnoth là đơn giản. Nhấn lên đơn vị bạn "
-"muốn di chuyển để chọn nó, sau đó nhấn lên hình lục giác bạn muốn di chuyển "
+"Di chuyển trong Trận chiến giành Wesnoth rất đơn giản. Nhấp chuột vào đơn vị "
+"bạn muốn di chuyển để chọn nó, sau đó nhấn lên ô lục giác bạn muốn di chuyển "
 "nó đến. Khi chọn một đơn vị, mọi nơi nó có thể di chuyển ở lượt này sẽ được "
 "tô sáng, và tất cả các hình lục giác khác trên bản đồ bị làm tối lại. Di "
 "chuyển chuột trên một hình lục giác được tô sáng sẽ hiện tỷ lệ phòng thủ đơn "
-"vị sẽ có nếu bạn di chuyển nó đến hình lục giác đó. Di chuyển chuột trên một "
-"hình lục giác tối cũng sẽ hiện số lượt cần thiết để đến được đó, và nhấn "
-"chuột sẽ làm cho đơn vị di chuyển đến đó theo đường ngắn nhất ở lượt này và "
-"các lượt tiếp theo. Nếu bạn không sử dụng hết toàn bộ di chuyển khi bạn di "
-"chuyển một đơn vị, bạn có thể tiếp tục di chuyển nó. Thao tác này hữu ích "
-"khi để hai đơn vị chuyển đổi vị trí. Tấn công bằng một đơn vị sẽ sử dụng hết "
-"toàn bộ di chuyển của nó. Kết thúc di chuyển trong một ngôi làng bạn chưa sở "
-"hữu cũng sẽ sử dụng hết di chuyển của đơn vị, nhưng vẫn cho phép nó tấn công."
+"vị sẽ có nếu bạn di chuyển nó đến ô lục giác đó. Di chuyển chuột trên một ô "
+"lục giác tối cũng sẽ hiện số lượt cần thiết để đến được đó, và nhấn chuột sẽ "
+"làm cho đơn vị di chuyển đến đó theo đường ngắn nhất ở lượt này và các lượt "
+"tiếp theo. Nếu bạn không sử dụng hết toàn bộ di chuyển khi bạn di chuyển một "
+"đơn vị, bạn có thể tiếp tục di chuyển nó. Thao tác này hữu ích khi để hai "
+"đơn vị chuyển đổi vị trí. Tấn công bằng một đơn vị sẽ sử dụng hết toàn bộ di "
+"chuyển của nó. Kết thúc di chuyển trong một ngôi làng bạn chưa sở hữu cũng "
+"sẽ sử dụng hết di chuyển của đơn vị, nhưng vẫn cho phép nó tấn công."
 
 #. [topic]: id=movement
 #: data/core/help.cfg:216
@@ -1049,9 +1044,9 @@ msgstr ""
 "\n"
 "\n"
 "Mỗi đơn vị có một số điểm di chuyển nhất định, được sử dụng hết khi di "
-"chuyển đến một hình lục giác mới, tùy thuộc vào địa hình của hình lục giác "
-"cụ thể đó. Lấy ví dụ, để vào đồng cỏ gần như luôn mất 1 điểm di chuyển. Số "
-"lượng điểm di chuyển chính xác cần tiêu tốn khi vào một hình lục giác phụ "
+"chuyển đến một ô lục giác mới, tùy thuộc vào địa hình của ô lục giác cụ thể "
+"đó. Lấy ví dụ, để di chuyển vào đồng cỏ gần như luôn mất 1 điểm di chuyển. "
+"Số lượng điểm di chuyển chính xác cần tiêu tốn khi vào một ô lục giác phụ "
 "thuộc vào kiểu đơn vị - trong rừng, các đơn vị thần tiên chỉ tốn 1 điểm di "
 "chuyển, hầu hết các đơn vị con người và người thú tốn 2, trong khi kỵ binh "
 "tốn 3. Bạn có thể tìm hiểu số lượng điểm di chuyển mà một đơn vị cần để vào "
@@ -1072,9 +1067,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Một thứ khác cần lưu ý trong khi di chuyển là vùng kiểm soát. Mỗi đơn vị tạo "
-"ra một vùng kiểm soát trong các hình lục giác ngay xung quanh nó, và bất kỳ "
-"đơn vị kẻ thù nào khi vào các hình lục giác này đều kết thúc ngay lập tức di "
+"Một thứ khác cần lưu ý trong khi di chuyển là Vùng kiểm soát. Mỗi đơn vị tạo "
+"ra một vùng kiểm soát trong các ô lục giác ngay xung quanh nó, và bất kỳ đơn "
+"vị kẻ thù nào khi vào các hình lục giác này đều kết thúc ngay lập tức di "
 "chuyển. Tìm hiểu cách sử dụng vùng kiểm soát là một phần quan trọng của "
 "Wesnoth, vì chỉ những đơn vị có khả năng <ref>dst='ability_skirmisher' "
 "text='đột nhập'</ref> mới có thể bỏ qua vùng kiểm soát."
@@ -1121,21 +1116,21 @@ msgid ""
 "a manual update via 'update shroud now' (or the end of your turn) and "
 "thereby perserve your ability to undo movement."
 msgstr ""
-"Trong một số kịch bản, các phần của bản đồ sẽ bị ẩn với bạn. Có hai cơ chế "
-"có thể được sử dụng riêng biệt hoặc đồng thời. Màn che ẩn cả địa hình lẫn "
-"mọi đơn vị tại một vị trí. Tuy nhiên, khi đã mở màn che, bạn luôn có thể "
-"nhìn thấy vị trí đó. Sương mù chiến tranh chỉ ẩn các đơn vị và quyền sở hữu "
-"các ngôi làng (không phải của bạn hoặc đồng minh). Sương mù chiến tranh mở "
-"tạm thời khi bạn có các đơn vị ở gần, nhưng phủ lại khi chúng rời đi. Cả hai "
-"màn che và sương mù chiến tranh đều do các đơn vị mở. Mỗi đơn vị mở các vị "
-"trí xung quanh chúng trong phạm vi di chuyển của một lượt (bỏ qua vùng kiểm "
-"soát và đơn vị kẻ thù).\n"
+"Trong một số màn, các phần của bản đồ sẽ bị ẩn với bạn. Có hai cơ chế có thể "
+"được sử dụng riêng biệt hoặc đồng thời. Màn che ẩn cả địa hình lẫn mọi đơn "
+"vị tại một vị trí. Tuy nhiên, khi đã mở màn che, bạn luôn có thể nhìn thấy "
+"vị trí đó. Sương mù chiến tranh chỉ ẩn các đơn vị và quyền sở hữu các ngôi "
+"làng (không phải của bạn hoặc đồng minh). Sương mù chiến tranh mở tạm thời "
+"khi bạn có các đơn vị ở gần, nhưng phủ lại khi chúng rời đi. Cả hai màn che "
+"và sương mù chiến tranh đều do các đơn vị mở. Mỗi đơn vị mở các vị trí xung "
+"quanh chúng trong phạm vi di chuyển của một lượt (bỏ qua vùng kiểm soát và "
+"đơn vị kẻ thù).\n"
 "\n"
 "Thông thường, bạn có thể đảo ngược di chuyển của một đơn vị, miễn là một sự "
 "kiện có kết quả ngẫu nhiên chưa xảy ra, chẳng hạn như chiến đấu hoặc tuyển "
 "quân (do hầu hết các đơn vị đều nhận được những đặc điểm ngẫu nhiên khi "
 "tuyển quân). Khám phá địa hình ẩn bằng cách mở màn che hoặc sương mù cũng sẽ "
-"làm mất khả năng đảo ngược về trạng thái trước. Bạn có thể kích hoạt 'trễ "
+"làm mất khả năng đảo ngược về trạng thái trước. Bạn có thể kích hoạt 'hoãn "
 "cập nhật màn che' trong trình đơn hành động. Thao tác này sẽ ngăn ngừa các "
 "đơn vị mở màn che hoặc sương mù đến khi xảy ra sự kiện ngẫu nhiên hoặc đến "
 "khi cập nhật thủ công qua 'cập nhật màn che ngay' (hoặc kết thúc lượt của "
@@ -1162,12 +1157,12 @@ msgid ""
 "fireballs."
 msgstr ""
 "Chiến đấu trong Trận chiến giành Wesnoth luôn diễn ra giữa hai đơn vị trong "
-"hai hình lục giác kề nhau. Nhấn lên đơn vị của bạn, và nhấn lên kẻ thù bạn "
-"muốn tấn công: đơn vị của bạn sẽ di chuyển về phía đơn vị kẻ thù, và khi "
-"chúng ở cạnh nhau, cuộc giao chiến sẽ bắt đầu. Người tấn công và người phòng "
-"thủ đánh luân phiên đến khi mỗi bên đã sử dụng hết số lần đánh được phép. "
-"Người tấn công chọn một trong số các vũ khí để tấn công, và người phòng thủ "
-"trả đũa bằng một trong số các vũ khí có cùng kiểu. Có hai kiểu tấn công: cận "
+"hai ô lục giác kề nhau. Nhấn lên đơn vị của bạn, và nhấn lên kẻ thù bạn muốn "
+"tấn công: đơn vị của bạn sẽ di chuyển về phía đơn vị kẻ thù, và khi chúng ở "
+"cạnh nhau, cuộc giao chiến sẽ bắt đầu. Người tấn công và người phòng thủ "
+"đánh luân phiên đến khi mỗi bên đã sử dụng hết số lần đánh được phép. Người "
+"tấn công chọn một trong số các vũ khí để tấn công, và người phòng thủ phản "
+"công bằng một trong số các vũ khí có cùng kiểu. Có hai kiểu tấn công: cận "
 "chiến, thường liên quan đến những vũ khí như kiếm, rìu hoặc răng nanh; và từ "
 "xa, thường liên quan đến những vũ khí như cung, lao và cầu lửa."
 
@@ -1197,7 +1192,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Người tấn công đánh đòn đầu tiên, sau đó người phòng thủ trả đũa. Mỗi đòn "
+"Người tấn công đánh đòn đầu tiên, sau đó người phòng thủ phản công. Mỗi đòn "
 "hoặc là trúng, gây một lượng thiệt hại nào đó, hoặc là trượt, không gây "
 "lượng thiệt hại nào. Các đòn đánh luân phiên nhau đến khi mỗi đơn vị đã sử "
 "dụng hết toàn bộ số đòn đánh của nó. Số lần đánh của mỗi đơn vị là khác "
@@ -1257,8 +1252,8 @@ msgstr ""
 "<ref>dst='weaponspecial_magical' text='phép thuật'</ref> và "
 "<ref>dst='weaponspecial_marksman' text='thiện xạ'</ref>. Đòn tấn công phép "
 "thuật luôn có cơ hội đánh trúng 70%, bất kể địa hình, và khi được sử dụng để "
-"tấn công, các thiện xạ luôn có cơ hội đánh trúng ít nhất 60%, bất kể địa "
-"hình."
+"tấn công, các đòn tấn công thiện xạ luôn có cơ hội đánh trúng ít nhất 60%, "
+"bất kể địa hình."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:250
@@ -1326,11 +1321,11 @@ msgid ""
 "and Arcane attacks. Different units may have resistances which alter the "
 "damage which they take from certain damage types."
 msgstr ""
-"Trong Wesnoth, có ba kiểu thiệt hại thường kết hợp với các đòn tấn công về "
-"thể chất: chém, đâm và va chạm. Ngoài ra, có ba kiểu thiệt hại khác thường "
-"kết hợp với các đòn tấn công phép thuật: lửa, lạnh và bí kíp. Các đơn vị "
-"khác nhau có thể có những sức kháng cự khác nhau, làm thay đổi lượng thiệt "
-"hại mà chúng phải chịu từ các kiểu thiệt hại nhất định."
+"Trong Wesnoth, có ba kiểu thiệt hại thường kết hợp với các đòn tấn công vật "
+"lý: Chém, Đâm và Va chạm. Ngoài ra, có ba kiểu thiệt hại khác thường kết hợp "
+"với các đòn tấn công phép thuật: Lửa, Lạnh và Bí kíp. Các đơn vị khác nhau "
+"có thể có những sức kháng cự khác nhau, làm thay đổi lượng thiệt hại mà "
+"chúng phải chịu từ các kiểu thiệt hại nhất định."
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:263
@@ -1363,9 +1358,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Ví dụ, các bộ xương có sức kháng cự cao với thiệt hại chém và đâm, nhưng có "
-"nhược điểm với thiệt hại va chạm và lửa, và cực kỳ có nhược điểm với thiệt "
-"hại bí kíp."
+"Ví dụ, các đơn vị bộ xương có sức kháng cự cao với kiểu thiệt hại Chém và "
+"Đâm, nhưng có nhược điểm với kiểu thiệt hại Va chạm và Lửa, và cực kỳ yếu "
+"với kiểu thiệt hại Bí kíp."
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:267
@@ -1458,8 +1453,7 @@ msgstr "Canh hai"
 msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
 "perpetually night!"
-msgstr ""
-"Lưu ý rằng một số kịch bản diễn ra dưới lòng đất, ở đó luôn luôn là đêm!"
+msgstr "Lưu ý rằng một số màn diễn ra dưới lòng đất, ở đó luôn luôn là đêm!"
 
 #. [topic]: id=experience_and_advancement
 #: data/core/help.cfg:294
@@ -1475,10 +1469,10 @@ msgid ""
 "level 1, 16 for level 2, 24 for level 3, and so forth."
 msgstr ""
 "Nếu cả hai đơn vị sống sót sau trận đấu, chúng giành được số điểm kinh "
-"nghiệm bằng trình độ của đơn vị mà chúng đánh. Tuy nhiên, nếu một đơn vị "
-"giết một đơn vị khác, nó giành được số điểm kinh nghiệm lớn hơn nhiều - 4 "
-"với một đơn vị trình độ 0, 8 với trình độ 1, 16 với trình độ 2, 24 với trình "
-"độ 3, và cứ thế tiếp tục."
+"nghiệm bằng cấp độ của đơn vị mà chúng đánh. Tuy nhiên, nếu một đơn vị giết "
+"một đơn vị khác, nó giành được số điểm kinh nghiệm lớn hơn nhiều - 4 với một "
+"đơn vị cấp độ 0, 8 với cấp độ 1, 16 với cấp độ 2, 24 với cấp độ 3, và cứ thế "
+"tiếp tục."
 
 #. [topic]: id=experience_and_advancement
 #: data/core/help.cfg:297
@@ -1494,8 +1488,8 @@ msgstr ""
 "\n"
 "Các đơn vị có một lượng kinh nghiệm nhất định cần để nâng cấp (ít hơn 20% "
 "với các đơn vị có đặc điểm thông minh). Khi chúng đạt đến số lượng này, "
-"chúng nâng cấp ngay lập tức lên trình độ kế tiếp, phục hồi hoàn toàn năng "
-"lượng. Trong một số trường hợp, bạn sẽ được chọn tùy chọn nâng cấp."
+"chúng nâng cấp ngay lập tức lên trình độ kế tiếp, phục hồi hoàn toàn máu. "
+"Trong một số trường hợp, bạn sẽ được chọn hướng nâng cấp."
 
 #. [topic]: id=experience_and_advancement
 #: data/core/help.cfg:299
@@ -1515,21 +1509,22 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Hầu hết các đơn vị có ba trình độ, nhưng không phải tất cả đều như thế. Một "
-"số ít đơn vị (chẳng hạn <ref>dst='unit_Mage' text='pháp sư'</ref>) có thể có "
+"Hầu hết các đơn vị có ba cấp độ, nhưng không phải tất cả đều như thế. Một số "
+"ít đơn vị (chẳng hạn <ref>dst='unit_Mage' text='pháp sư'</ref>) có thể có "
 "bốn. Khi một đơn vị đã đạt đến trình độ tối đa, nó có thể nâng cấp sau trình "
 "độ tối đa. Nâng cấp sau trình độ tối đa sẽ làm thay đổi đơn vị mỗi lần nó "
 "đạt đến mục tiêu kinh nghiệm, nhưng đơn vị vẫn giữ nguyên trình độ. Hiệu lực "
-"nâng cấp sau trình độ tối đa thường là tăng NL tối đa lên 3 và phục hồi hoàn "
-"toàn. Nâng cấp sau trình độ tối đa lần đầu thường sẽ đạt đến sau khi giành "
-"được 150 KN (120 KN với các đơn vị thông minh). Tuy nhiên, giành được nâng "
-"cấp sau trình độ tối đa dần dần trở nên khó hơn sau mỗi lần nâng cấp, do đó "
-"tìm cách nâng cấp những đơn vị có trình độ thấp thường hữu ích hơn."
+"nâng cấp sau trình độ tối đa thường là tăng lượng máu tối đa lên 3 và hồi "
+"máu hoàn toàn. Nâng cấp sau trình độ tối đa lần đầu thường sẽ đạt đến sau "
+"khi giành được 150 KN (120 KN với các đơn vị thông minh). Tuy nhiên, giành "
+"được nâng cấp sau trình độ tối đa dần dần trở nên khó hơn sau mỗi lần nâng "
+"cấp, do đó tìm cách nâng cấp những đơn vị có trình độ thấp thường hữu ích "
+"hơn."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:306
 msgid "Healing"
-msgstr "Điều trị"
+msgstr "Hồi máu"
 
 #. [topic]: id=healing
 #: data/core/help.cfg:307
@@ -1542,10 +1537,10 @@ msgid ""
 msgstr ""
 "Khi chiến đấu, các đơn vị của bạn sẽ phải chịu các thiệt hại không thể tránh "
 "khỏi. Khi một đơn vị <ref>dst='experience_and_advancement' text='nâng cấp'</"
-"ref>, nó sẽ phục hồi hoàn toàn. Điều này có thể xảy ra khi bạn hoàn thành "
+"ref>, nó sẽ hồi máu hoàn toàn. Điều này có thể xảy ra khi bạn hoàn thành "
 "chiến đấu với kẻ thù, có thể ở lượt của bạn hoặc không. Wesnoth cung cấp một "
-"số cách khác để điều trị cho các đơn vị, tất cả các cách điều trị này diễn "
-"ra ở đầu lượt của bạn, trước khi bạn hành động."
+"số cách khác để hồi máu cho các đơn vị, tất cả các cách điều trị này diễn ra "
+"ở đầu lượt của bạn, trước khi bạn hành động."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:309
@@ -1558,7 +1553,7 @@ msgstr ""
 "\n"
 "\n"
 "Nghỉ ngơi: Một đơn vị không di chuyển, không tấn công cũng như không bị tấn "
-"công sẽ phục hồi 2 NL ở lượt tiếp theo của nó."
+"công sẽ phục hồi 2 đơn vị máu ở lượt tiếp theo của nó."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:310
@@ -1567,7 +1562,7 @@ msgid ""
 "Villages: A unit which starts a turn in a village will heal 8HP."
 msgstr ""
 "\n"
-"Làng: Một đơn vị bắt đầu lượt trong một ngôi làng sẽ phục hồi 8 NL."
+"Làng: Một đơn vị bắt đầu lượt trong một ngôi làng sẽ phục hồi 8 đợn vị máu."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:311
@@ -1578,7 +1573,7 @@ msgid ""
 msgstr ""
 "\n"
 "<ref>dst='ability_regenerates' text='Tái tạo'</ref>: Một số đơn vị (chẳng "
-"hạn như quỷ khổng lồ) sẽ tự động phục hồi 8 NL mỗi lượt."
+"hạn như quỷ núi) sẽ tự động phục hồi 8 đơn vị máu mỗi lượt."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:312
@@ -1590,11 +1585,11 @@ msgid ""
 "turn, or prevent Poison from causing that unit damage."
 msgstr ""
 "\n"
-"Đơn vị điều trị: các đơn vị có khả năng <ref>dst='ability_heals +4' "
-"text='điều trị'</ref> sẽ phục hồi cho mỗi đơn vị đồng minh đứng bên cạnh, "
-"thường là <ref>dst='ability_heals +4' text='4NL'</ref> hay "
-"<ref>dst='ability_heals +8' text='8NL'</ref> mỗi lượt, hoặc ngăn chất độc "
-"không gây thiệt hại cho đơn vị đó."
+"Đơn vị hồi máu: các đơn vị có khả năng <ref>dst='ability_heals +4' text='hồi "
+"máu'</ref> sẽ hồi máu cho mỗi đơn vị đồng minh đứng bên cạnh, thường là "
+"<ref>dst='ability_heals +4' text='4 đơn vị máu'</ref> hay "
+"<ref>dst='ability_heals +8' text='8 đơn vị máu'</ref> mỗi lượt, hoặc ngăn "
+"chất độc không gây thiệt hại cho đơn vị đó."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:313
@@ -1622,7 +1617,7 @@ msgstr ""
 "\n"
 "Nghỉ ngơi có thể được kết hợp với các dạng điều trị khác, nhưng làng, tái "
 "tạo, điều trị và giải độc không thể kết hợp với nhau: tùy chọn tốt nhất sẽ "
-"được sử dụng. Cuối cùng, các đơn vị phục hồi hoàn toàn giữa hai kịch bản."
+"được sử dụng. Cuối cùng, các đơn vị phục hồi hoàn toàn giữa hai màn."
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:322
@@ -1639,8 +1634,7 @@ msgid ""
 msgstr ""
 "Trong Wesnoth, không chỉ đơn giản là tuyển các đơn vị và chiến đấu. Bạn cũng "
 "phải xem xét lượng vàng, đặc biệt trong các chiến dịch, ở đó bạn có thể mang "
-"thêm vàng từ kịch bản này sang kịch bản khác. Có hai yếu tố: thu nhập và phí "
-"bảo trì."
+"thêm vàng từ màn này sang màn khác. Có hai yếu tố: thu nhập và phí bảo trì."
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:325
@@ -1654,7 +1648,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Thu nhập là đơn giản. Bạn có thu nhập cơ bản là 2 lượng vàng mỗi lượt. Với "
+"Thu nhập thì đơn giản. Bạn có thu nhập cơ bản là 2 lượng vàng mỗi lượt. Với "
 "mỗi ngôi làng bạn kiểm soát, bạn giành thêm một lượng vàng mỗi lượt. Do đó, "
 "nếu bạn có mười ngôi làng, bạn sẽ có 12 lượng vàng mỗi lượt. Chi phí bảo trì "
 "bị trừ vào thu nhập này, như chi tiết bên dưới."
@@ -1709,11 +1703,11 @@ msgid ""
 msgstr ""
 "\n"
 "Phí bảo trì có hai ngoại lệ quan trọng: các đơn vị có đặc điểm trung thành "
-"và những người lãnh đạo không bao giờ đòi phí bảo trì. Các đơn vị bạn bắt "
-"đầu kịch bản cùng (chẳng hạn Delfador), hoặc các đơn vị gia nhập vào quân "
-"đội của bạn trong một kịch bản (chẳng hạn kỵ binh trong kịch bản thứ hai của "
-"Người thừa kế ngai vàng) thường có đặc điểm trung thành. Đơn vị mà bạn đang "
-"chơi (chẳng hạn Konrad) gần như luôn là một người lãnh đạo."
+"và những người chỉ huy không bao giờ đòi phí bảo trì. Các đơn vị bạn bắt đầu "
+"màn cùng (chẳng hạn Delfador), hoặc các đơn vị gia nhập vào quân đội của bạn "
+"trong một màn (chẳng hạn kỵ binh trong màn thứ hai của Người thừa kế ngai "
+"vàng) thường có đặc điểm trung thành. Đơn vị mà bạn đang chơi (chẳng hạn "
+"Konrad) gần như luôn là một người chỉ huy."
 
 #. [topic]: id=wrap_up
 #: data/core/help.cfg:336
@@ -1733,7 +1727,7 @@ msgstr ""
 "kỹ lưỡng Chiến thuật cơ bản, hoặc làm quen với các <ref>dst='.."
 "traits_section' text='đặc điểm'</ref> và <ref>dst='..abilities_section' "
 "text='khả năng'</ref>, nhưng giờ bạn đã biết mọi thứ bạn cần để chơi chiến "
-"dịch Người thừa kế ngai vàng. Chúc vui, và chúc may mắn!"
+"dịch Người thừa kế ngai vàng. Chúc vui vẻ, và chúc may mắn!"
 
 #. [topic]: id=about
 #: data/core/help.cfg:342
@@ -1753,8 +1747,8 @@ msgid ""
 "modifications that change a unit's attributes slightly. They are usually "
 "randomly assigned to a unit when it is recruited."
 msgstr ""
-"Hầu hết các đơn vị có hai đặc điểm. Tuy nhiên, các đơn vị ma quỷ chỉ được "
-"cấp đặc điểm duy nhất 'ma quỷ', và thần rừng không nhận được đặc điểm nào. "
+"Hầu hết các đơn vị có hai đặc điểm. Tuy nhiên, các đơn vị ma quái chỉ được "
+"cấp đặc điểm duy nhất 'ma quái', và thần rừng không nhận được đặc điểm nào. "
 "Đặc điểm là những biến đổi làm thay đổi một chút các thuộc tính của một đơn "
 "vị. Chúng thường được cấp ngẫu nhiên cho một đơn vị khi tuyển quân."
 
@@ -1770,7 +1764,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Những đặc điểm có thể cấp cho tất cả các đơn vị không phải ma quỷ là "
+"Những đặc điểm có thể cấp cho tất cả các đơn vị không phải ma quái là "
 "<ref>dst='traits_intelligent' text='thông minh'</ref>, "
 "<ref>dst='traits_quick' text='nhanh nhẹn'</ref>, <ref>dst='traits_resilient' "
 "text='bền bỉ'</ref>, và <ref>dst='traits_strong' text='mạnh mẽ'</ref>."
@@ -1789,7 +1783,7 @@ msgstr ""
 "\n"
 "Những đặc điểm khác có thể cấp cho các đơn vị là <ref>dst='traits_dextrous' "
 "text='khéo léo'</ref>, <ref>dst='traits_loyal' text='trung thành'</ref>, và "
-"<ref>dst='traits_undead' text='ma quỷ'</ref>.\n"
+"<ref>dst='traits_undead' text='ma quái'</ref>.\n"
 "\n"
 
 #. [topic]: id=traits_intelligent
@@ -1801,7 +1795,8 @@ msgstr "Thông minh"
 #: data/core/help.cfg:370
 msgid "Intelligent units require 20% less experience than usual to advance."
 msgstr ""
-"Các đơn vị thông minh đòi hỏi kinh nghiệm nâng cấp ít hơn bình thường 20%."
+"Các đơn vị thông minh đòi hỏi điểm kinh nghiệm để nâng cấp ít hơn bình "
+"thường 20%."
 
 #. [topic]: id=traits_intelligent
 #: data/core/help.cfg:372
@@ -1818,7 +1813,7 @@ msgstr ""
 "\n"
 "Các đơn vị thông minh rất hữu ích ở đầu một chiến dịch vì chúng có thể nâng "
 "cấp lên trình độ cao nhanh hơn. Về sau trong chiến dịch, thông minh không "
-"hữu ích lắm bởi vì nâng cấp sau trình độ tối đa không phải là một thay đổi "
+"hữu ích lắm bởi vì Nâng cấp sau trình độ tối đa không phải là một thay đổi "
 "có ý nghĩa bằng nâng cấp trình độ. Nếu bạn có nhiều đơn vị ở 'trình độ tối "
 "đa', bạn có thể gọi lại các đơn vị có những đặc điểm khác tốt hơn."
 
@@ -1831,8 +1826,8 @@ msgstr "Nhanh nhẹn"
 #: data/core/help.cfg:378
 msgid "Quick units have 1 extra movement point, but 5% less HP than usual."
 msgstr ""
-"Các đơn vị nhanh nhẹn có thêm 1 điểm di chuyển, nhưng ít NL hơn bình thường "
-"5%."
+"Các đơn vị nhanh nhẹn có thêm 1 điểm di chuyển, nhưng ít đơn vị máu hơn bình "
+"thường 5%."
 
 #. [topic]: id=traits_quick
 #: data/core/help.cfg:380
@@ -1848,12 +1843,12 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Nhanh nhẹn là đặc điểm đáng chú ý nhất, đặc biệt ở các đơn vị di chuyển chậm "
-"như quỷ khổng lồ hay bộ binh nặng. Các đơn vị có đặc điểm nhanh nhẹn thường "
-"có tính linh động tăng đáng kể trên địa hình khó, đó có thể là điều quan "
-"trọng cần xem xét khi triển khai lực lượng. Ngoài ra, các đơn vị nhanh nhẹn "
-"không dai sức bằng các đơn vị không có đặc điểm này và do đó kém hơn khi "
-"trấn giữ những vị trí tranh chấp."
+"Nhanh nhẹn là đặc điểm dễ nhận thấy nhất, đặc biệt ở các đơn vị di chuyển "
+"chậm như quỷ núi hay bộ binh hạng nặng. Các đơn vị có đặc điểm nhanh nhẹn "
+"thường có tính linh động tăng đáng kể trên địa hình gồ ghề, đó có thể là "
+"điều quan trọng cần xem xét khi triển khai lực lượng. Ngoài ra, các đơn vị "
+"nhanh nhẹn không dai sức bằng các đơn vị không có đặc điểm này và do đó kém "
+"hơn khi trấn giữ những vị trí tranh chấp."
 
 #. [topic]: id=traits_resilient
 #: data/core/help.cfg:385
@@ -1864,8 +1859,8 @@ msgstr "Bền bỉ"
 #: data/core/help.cfg:386
 msgid "Resilient units have 4 HP plus 1 HP per level more than usual."
 msgstr ""
-"Các đơn vị bền bỉ có nhiều hơn bình thường 4 NL cộng thêm 1 NL với mỗi trình "
-"độ."
+"Các đơn vị bền bỉ có nhiều hơn bình thường 4 đơn vị máu cộng thêm 1 đơn vị "
+"máu với mỗi trình độ."
 
 #. [topic]: id=traits_resilient
 #: data/core/help.cfg:388
@@ -1882,9 +1877,9 @@ msgstr ""
 "\n"
 "Các đơn vị bền bỉ có thể hữu dụng ở mọi giai đoạn của chiến dịch, và đây là "
 "đặc điểm hữu dụng cho mọi đơn vị. Bền bỉ thường là đặc điểm hữu ích nhất khi "
-"nó xảy ra ở một đơn vị có tổ hợp nào đó của năng lượng thấp, phòng thủ tốt, "
-"hoặc sức kháng cự cao. Các đơn vị bền bỉ đặc biệt hữu ích để trấn giữ những "
-"vị trí chiến lược trước đối thủ."
+"nó xảy ra ở một đơn vị có sự kết hợp của lượng máu thấp, phòng thủ tốt, hoặc "
+"sức kháng cự cao. Các đơn vị bền bỉ đặc biệt hữu ích để trấn giữ những vị "
+"trí chiến lược trước đối thủ."
 
 #. [topic]: id=traits_strong
 #: data/core/help.cfg:393
@@ -1898,7 +1893,7 @@ msgid ""
 "and have 1 more HP."
 msgstr ""
 "Các đơn vị mạnh mẽ gây nhiều hơn 1 điểm thiệt hại với mỗi đòn đánh trúng "
-"trong giao đấu cận chiến, và có nhiều hơn 1 NL."
+"trong chiến đấu cận chiến, và có nhiều hơn 1 đơn vị máu."
 
 #. [topic]: id=traits_strong
 #: data/core/help.cfg:396
@@ -1912,10 +1907,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Hữu ích cho mọi đơn vị cận chiến, nhưng mạnh mẽ hiệu quả nhất với các đơn vị "
-"có số lần đánh cao chẳng hạn như đấu sĩ thần tiên. Các đơn vị mạnh mẽ có thể "
-"rất hữu ích khi một chút xíu thiệt hại bổ sung là tất cả những gì cần để "
-"biến một đòn gây thiệt hại bình thường thành một cú đánh kết liễu."
+" Mặc dù hữu ích cho mọi đơn vị cận chiến, nhưng  đặc điểm mạnh mẽ hiệu quả "
+"nhất với các đơn vị có số lần đánh cao chẳng hạn như đấu sĩ thần tiên. Các "
+"đơn vị mạnh mẽ có thể rất hữu ích khi một chút xíu thiệt hại bổ sung là tất "
+"cả những gì cần để biến một đòn gây thiệt hại bình thường thành một cú đánh "
+"kết liễu."
 
 #. [topic]: id=traits_fearless
 #: data/core/help.cfg:401
@@ -1963,14 +1959,14 @@ msgstr ""
 "người chơi với ý muốn riêng. Các đơn vị này được đánh dấu bằng đặc điểm "
 "trung thành. Mặc dù chúng có thể đòi tiền để được gọi lại, nhưng chúng không "
 "bao giờ đòi chi phí bảo trì. Đặc điểm này có thể khiến chúng trở nên vô giá "
-"trong một kịch bản dài, khi lượng vàng tiếp tế ít. Các đơn vị được tuyển "
+"trong một chiến dịch dài, khi lượng vàng tiếp tế ít. Các đơn vị được tuyển "
 "không bao giờ có đặc điểm này, do đó sẽ là không khôn ngoan khi thải hồi các "
 "đơn vị trung thành hoặc để chúng chết một cách dại dột."
 
 #. [topic]: id=traits_undead
 #: data/core/help.cfg:415
 msgid "trait^Undead"
-msgstr "Ma quỷ"
+msgstr "Ma quái"
 
 #. [topic]: id=traits_undead
 #: data/core/help.cfg:416
@@ -1978,7 +1974,7 @@ msgid ""
 "Undead units are immune to poison, also drain and plague doesn't work on "
 "them."
 msgstr ""
-"Các đơn vị ma quỷ miễn nhiễm với độc, cũng như bòn rút và lây truyền không "
+"Các đơn vị ma quái miễn nhiễm với độc, cũng như bòn rút và bệnh dịch không "
 "có tác dụng với chúng."
 
 #. [topic]: id=traits_undead
@@ -1993,10 +1989,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Các đơn vị ma quỷ nói chung có 'ma quỷ' là đặc điểm duy nhất. Do các đơn vị "
-"ma quỷ là thân xác của người chết, được gọi lên để chiến đấu, chất độc không "
-"có hiệu lực với chúng. Điều này có thể khiến chúng trở nên vô giá khi thanh "
-"toán những địch thủ sử dụng chất độc kết hợp với tấn công."
+"Các đơn vị ma quái nói chung có 'ma quái' là đặc điểm duy nhất. Do các đơn "
+"vị ma quái là thân xác của người chết, được gọi lên để chiến đấu, chất độc "
+"không có hiệu lực với chúng. Điều này có thể khiến chúng trở nên vô giá khi "
+"thanh toán những địch thủ sử dụng chất độc kết hợp với tấn công."
 
 #. [topic]: id=traits_mechanical
 #: data/core/help.cfg:423
@@ -2009,7 +2005,7 @@ msgid ""
 "Mechanical units are immune to poison, also drain and plague doesn't work on "
 "them."
 msgstr ""
-"Các đơn vị cơ giới miễn nhiễm với độc, cũng như bòn rút và lây truyền không "
+"Các đơn vị máy móc miễn nhiễm với độc, cũng như bòn rút và bệnh dịch không "
 "có hiệu lực với chúng."
 
 #. [topic]: id=traits_mechanical
@@ -2023,9 +2019,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Các đơn vị cơ giới nói chung có 'cơ giới' là đặc điểm duy nhất. Do các đơn "
-"vị cơ giới không có sự sống, nên bòn rút, độc và lây truyền không có hiệu "
-"lực với chúng."
+"Các đơn vị máy móc nói chung có 'máy móc' là đặc điểm duy nhất. Do các đơn "
+"vị máy móc không có sự sống, nên bòn rút, độc và bệnh dịch không có hiệu lực "
+"với chúng."
 
 #. [topic]: id=traits_dextrous
 #: data/core/help.cfg:431
@@ -2038,7 +2034,7 @@ msgid ""
 "Dextrous units do 1 more damage for every successful strike in ranged combat."
 msgstr ""
 "Các đơn vị khéo léo gây nhiều hơn 1điểm thiệt hại với mỗi đòn đánh trúng "
-"trong giao đấu từ xa."
+"trong chiến đấu từ xa."
 
 #. [topic]: id=traits_dextrous
 #: data/core/help.cfg:434
@@ -2054,8 +2050,8 @@ msgstr ""
 "\n"
 "Khéo léo là đặc điểm chỉ có ở thần tiên. Thần tiên nổi tiếng vì vẻ huyền bí, "
 "và tài khéo léo với cây cung. Tuy nhiên, một số thần tiên được ban tặng tài "
-"năng bẩm sinh trội hơn đồng bào của họ. Những thần tiên này gây thêm một "
-"điểm thiệt hại với mỗi mũi tên."
+"năng bẩm sinh trội hơn anh em của họ. Những thần tiên này gây thêm một điểm "
+"thiệt hại với mỗi mũi tên."
 
 #. [topic]: id=traits_healthy
 #: data/core/help.cfg:439
@@ -2082,9 +2078,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Các đơn vị khỏe mạnh có nhiều hơn bình thường 1 NL cộng thêm 1 NL với mỗi "
-"trình độ và phục hồi 2 NL khi nghỉ ngơi sau mỗi lượt chúng không chiến đấu. "
-"Chúng cũng chịu thiệt hại do độc tố ít hơn một phần tư."
+"Các đơn vị khỏe mạnh có nhiều hơn bình thường 1 đơn vị máu cộng thêm 1 đơn "
+"vị máu với mỗi trình độ và phục hồi 2 đơn vị máu khi nghỉ ngơi sau mỗi lượt "
+"chúng không chiến đấu. Chúng cũng chịu thiệt hại do độc tố ít hơn một phần "
+"tư."
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:447
@@ -2096,8 +2093,8 @@ msgstr "Đần độn"
 msgid ""
 "Units with trait Dim suffer a 20% increase in experience required to advance."
 msgstr ""
-"Các đơn vị có đặc điểm đần độn phải chịu mức tăng 20% kinh nghiệm cần để "
-"nâng cấp."
+"Các đơn vị có đặc điểm đần độn phải chịu mức tăng 20% điểm kinh nghiệm cần "
+"để nâng cấp."
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:450
@@ -2122,7 +2119,7 @@ msgstr "Chậm chạp"
 #: data/core/help.cfg:456
 #, fuzzy
 msgid "Slow units have −1 movement but 5% more hitpoints."
-msgstr "Các đơn vị chậm chạp có di chuyển -1 nhưng nhiều năng lượng hơn 5%."
+msgstr "Các đơn vị chậm chạp có di chuyển -1 nhưng nhiều máu hơn 5%."
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:458
@@ -2149,8 +2146,7 @@ msgstr "Yếu ớt"
 #, fuzzy
 msgid "Units with trait Weak get a −1 increment in hitpoints and melee damage."
 msgstr ""
-"Các đơn vị có đặc điểm yếu ớt giảm 1 điểm năng lượng và lượng thiệt hại cận "
-"chiến."
+"Các đơn vị có đặc điểm yếu ớt giảm 1 lượng máu và lượng thiệt hại cận chiến."
 
 #. [topic]: id=..terrains
 #: data/core/help.cfg:472
@@ -2159,7 +2155,7 @@ msgid ""
 "unit's defensive capability in combat.\n"
 "\n"
 msgstr ""
-"Bản đồ trò chơi bao gồm nhiều địa hình tác động đến cả di chuyển lẫn khả "
+"Bản đồ màn chơi bao gồm nhiều địa hình tác động đến cả di chuyển lẫn khả "
 "năng phòng thủ khi chiến đấu của một đơn vị.\n"
 "\n"
 
@@ -2261,10 +2257,9 @@ msgid ""
 msgstr ""
 "Đồi tương ứng với những địa hình tương đối gồ ghề, có đủ chỗ trũng và gò cao "
 "trên bề mặt để ẩn nấp. Hầu hết quân lính khó di chuyển trên đồi. Người lùn, "
-"quỷ khổng lồ và người thú có đủ quen thuộc với địa hình nên chúng có thể "
-"băng qua đồi mà không bị giảm tốc độ. Kỵ binh gặp nhiều khó khăn khi di "
-"chuyển trên địa hình đến nỗi mất hết mọi lợi thế phòng thủ có được từ việc "
-"ẩn nấp.\n"
+"quỷ núi và người thú có đủ quen thuộc với địa hình nên chúng có thể băng qua "
+"đồi mà không bị giảm tốc độ. Kỵ binh gặp nhiều khó khăn khi di chuyển trên "
+"địa hình đến nỗi mất hết mọi lợi thế phòng thủ có được từ việc ẩn nấp.\n"
 "\n"
 "Hầu hết các đơn vị có tỷ lệ phòng thủ khoảng 50% trên đồi, trong khi kỵ binh "
 "chỉ có 40%. Người lùn hưởng tỷ lệ phòng thủ 60% trên đồi."
@@ -2291,8 +2286,8 @@ msgstr ""
 "Với bản chất này, địa hình núi cung cấp lợi thế phòng thủ đáng kể cho hầu "
 "hết quân lính, nhưng cũng cực kỳ cản trở người đi. Hầu hết kỵ binh đơn giản "
 "không thể vào địa hình núi; tuy nhiên, kỵ binh thần tiên là một ngoại lệ, "
-"cũng như kỵ binh chó sói yêu tinh. Cả người lùn lẫn quỷ khổng lồ đều gắn bó "
-"với địa hình núi, và đi qua rất dễ dàng.\n"
+"cũng như yêu tinh cưỡi sói. Cả người lùn lẫn quỷ núi đều gắn bó với địa hình "
+"núi, và đi qua rất dễ dàng.\n"
 "\n"
 "Hầu hết các đơn vị nhận tỷ lệ phòng thủ khoảng 60% trên núi, trong khi người "
 "lùn hưởng 70%."
@@ -2478,11 +2473,11 @@ msgid ""
 msgstr ""
 "Địa hình hang động tương ứng với những hang động dưới lòng đất có đủ chỗ cho "
 "một đơn vị đi qua. Hầu hết các đơn vị hoàn toàn xa lạ với địa hình, do đó "
-"vừa bị giảm tốc độ vừa bị hạn chế khả năng phòng thủ. Người lùn và quỷ khổng "
-"lồ, những kẻ sống trong hang động, cả hai đều di chuyển tương đối dễ dàng "
-"trên địa hình này, đặc biệt là người lùn, nhờ kích thước nhỏ nên có thể vượt "
-"qua nhiều chướng ngại vật mà những loài khác không thể. Một số ít hang động "
-"được <ref>dst='terrain_illuminated_cave' text='chiếu sáng'</ref>.\n"
+"vừa bị giảm tốc độ vừa bị hạn chế khả năng phòng thủ. Người lùn và quỷ núi, "
+"những kẻ sống trong hang động, cả hai đều di chuyển tương đối dễ dàng trên "
+"địa hình này, đặc biệt là người lùn, nhờ kích thước nhỏ nên có thể vượt qua "
+"nhiều chướng ngại vật mà những loài khác không thể. Một số ít hang động được "
+"<ref>dst='terrain_illuminated_cave' text='chiếu sáng'</ref>.\n"
 "\n"
 "Hầu hết các đơn vị nhận tỷ lệ phòng thủ 20% đến 40% trong hang động, trong "
 "khi người lùn có 50%."
@@ -2509,10 +2504,10 @@ msgstr ""
 "Địa hình hang đá được tạo nên bởi hoạt động của nước và gió, mang theo nhiều "
 "hạt xói mòn tạc thành đá. Địa hình này giống với hang động dưới lòng đất là "
 "làm giảm tính hiệu quả của hầu hết các đơn vị, nhưng tăng khả năng phòng "
-"thủ. Người lùn và quỷ khổng lồ, những cư dân chủ yếu của hang động, di "
-"chuyển tương đối dễ dàng trên địa hình này. Người lùn, nhờ kích thước nhỏ "
-"nên có đầy đủ lợi thế khi di chuyển trong địa hình như thế. Một số ít hang "
-"động được <ref>dst='terrain_illuminated_cave' text='chiếu sáng'</ref>.\n"
+"thủ. Người lùn và quỷ núi, những cư dân chủ yếu của hang động, di chuyển "
+"tương đối dễ dàng trên địa hình này. Người lùn, nhờ kích thước nhỏ nên có "
+"đầy đủ lợi thế khi di chuyển trong địa hình như thế. Một số ít hang động "
+"được <ref>dst='terrain_illuminated_cave' text='chiếu sáng'</ref>.\n"
 "\n"
 "Hầu hết các đơn vị có tỷ lệ phòng thủ khoảng 50% trong hang đá, trong khi kỵ "
 "binh chỉ có 40%. Người lùn hưởng tỷ lệ phòng thủ 60% trong hang đá."
@@ -2558,8 +2553,8 @@ msgstr ""
 "tối ẩm thấp. Hầu hết các đơn vị đều gặp khó khăn khi di chuyển trên bề mặt "
 "mềm xốp của những cây nấm nhỏ, nhưng lại có nhiều chỗ ẩn nấp đằng sau những "
 "cuống nấm lớn. Tuy nhiên, các đơn vị cưỡi ngựa trở nên hoàn toàn sa lầy và "
-"mất khả năng tự do di chuyển khi chiến đấu. Các đơn vị ma quỷ ham thích sự "
-"hủy diệt và hoạt động khá tốt trong những khu rừng nấm.\n"
+"mất khả năng tự do di chuyển khi chiến đấu. Các đơn vị ma quái ham thích sự "
+"mục rữa và hoạt động khá tốt trong những khu rừng nấm.\n"
 "\n"
 "Hầu hết các đơn vị nhận tỷ lệ phòng thủ 50% đến 60% trong các lùm nấm, trong "
 "khi kỵ binh chỉ nhận 20%."
@@ -2588,7 +2583,7 @@ msgstr ""
 "khác. Gần như mọi đơn vị, kể cả kỵ binh, đều dễ dàng di chuyển qua làng, và "
 "hầu hết các đơn vị đều giành được lợi thế phòng thủ khi chiếm đóng một ngôi "
 "làng. Làng cung cấp tài nguyên và chăm sóc các đơn vị bị thương, cho phép "
-"đơn vị đứng bên trong phục hồi tám năng lượng mỗi lượt, hoặc được giải độc.\n"
+"đơn vị đứng bên trong phục hồi tám đơn vị máu mỗi lượt, hoặc được giải độc.\n"
 "\n"
 "Hầu hết các đơn vị có tỷ lệ phòng thủ 50% đến 60% trong làng, trong khi kỵ "
 "binh chỉ nhận được 40%.\n"
@@ -2617,7 +2612,7 @@ msgstr ""
 "chuyển và phòng thủ trong những ngôi làng này. Tuy nhiên, cũng giống như bất "
 "kỳ ngôi làng nào khác, tất cả mọi sinh vật đều nhận được lợi ích từ việc "
 "chăm sóc các đơn vị bị thương. Bất kỳ đơn vị nào đứng trong làng đều có thể "
-"phục hồi tám năng lượng mỗi lượt, hoặc được giải độc.\n"
+"phục hồi tám đơn vị máu mỗi lượt, hoặc được giải độc.\n"
 "\n"
 "Người cá và người rắn có tỷ lệ phòng thủ 60% trong làng ngập nước, trong khi "
 "các đơn vị chiến đấu trên cạn thường có tỷ lệ phòng thủ thấp."
@@ -2656,13 +2651,13 @@ msgid ""
 "This provides an attack bonus for lawful units and removes the attack bonus "
 "from chaotic units."
 msgstr ""
-"Những nguy hiểm khi thử đi trên dung nham là khá rõ ràng. Xét về mặt di "
-"chuyển, dung nham tương đương với địa hình <ref>dst='terrain_unwalkable' "
-"text='không thể đi bộ qua'</ref>, và chỉ những đơn vị có khả năng bay ở một "
-"khoảng cách lớn trên bề mặt mới có thể vượt qua. Nham thạch nóng chảy cũng "
-"tạo ra luồng sáng lớn, chiếu sáng vùng ngay xung quanh nó. Ánh sáng này tạo "
-"lợi thế tấn công cho các đơn vị chính thống và làm mất lợi thế tấn công của "
-"các đơn vị hỗn độn."
+"Những nguy hiểm khi thử đi trên dung nham là rõ ràng. Xét về mặt di chuyển, "
+"dung nham tương đương với địa hình <ref>dst='terrain_unwalkable' text='không "
+"thể đi bộ qua'</ref>, và chỉ những đơn vị có khả năng bay ở một khoảng cách "
+"lớn trên bề mặt mới có thể vượt qua. Nham thạch nóng chảy cũng tạo ra luồng "
+"sáng lớn, chiếu sáng vùng ngay xung quanh nó. Ánh sáng này tạo lợi thế tấn "
+"công cho các đơn vị chính thống và làm mất lợi thế tấn công của các đơn vị "
+"hỗn độn."
 
 #. [topic]: id=terrain_ford
 #: data/core/help.cfg:717
@@ -2679,7 +2674,7 @@ msgid ""
 "choosing whichever one offers the best defensive and movement bonuses for "
 "the unit on it."
 msgstr ""
-"Khi một dòng sông trở nên cực kỳ nông, việc băng qua nó là một chuyện tầm "
+"Khi một dòng sông trở nên cực kỳ nông, việc băng qua nó là một chuyện bình "
 "thường với các đơn vị chiến đấu trên cạn. Ngoài ra, bất kỳ sinh vật nào "
 "thích nghi nhất với việc bơi lội cũng có đầy đủ tính linh động kể cả ở những "
 "nơi như thế trên sông. Đối với trò chơi, chỗ cạn ở sông được xử lý giống như "
@@ -2701,10 +2696,10 @@ msgid ""
 "\n"
 "Mermen and Naga both receive 70% defense on coastal reefs."
 msgstr ""
-"Đá ngầm vên biển là những vùng nước nông được tạo nên bởi đá, san hô và cát. "
+"Đá ngầm ven biển là những vùng nước nông được tạo nên bởi đá, san hô và cát. "
 "Địa hình này cho hầu hết các đơn vị trên cạn một chỗ đứng và vị trí phòng "
 "thủ vững chắc hơn việc lội qua nước nông bình thường, và cũng cho hầu hết "
-"các loài sống dưới nước một tỷ lệ phòng thủ cực kỳ cao.\n"
+"các loài sống dưới nước một tỷ lệ phòng thủ đặc biệt cao.\n"
 "\n"
 "Người cá và người rắn cả hai đều nhận được tỷ lệ phòng thủ 70% trên đá ngầm "
 "ven biển."
@@ -2760,7 +2755,7 @@ msgstr ""
 "vượt qua bao gồm những bức tường đá rắn chắc, những ngọn núi cao và dốc đến "
 "nỗi chúng luôn có mây bao phủ. Kể cả các sinh vật bay cũng không thể di "
 "chuyển qua những đỉnh núi lởm chởm ở độ cao hiếm có như thế, và dù là con "
-"quỷ khổng lồ dữ tợn nhất cũng không thể đập thủng những bức tường đá dày."
+"quỷ núi dữ tợn nhất cũng không thể đập thủng những bức tường đá dày."
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:767
@@ -2788,7 +2783,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Bật chế độ gỡ lỗi (không hoạt động trong chế độ nhiều đấu thủ). Xem "
+"Bật chế độ gỡ lỗi (không hoạt động trong chế độ nhiều người chơi). Xem "
 "<ref>dst='debug_commands' text='lệnh chế độ gỡ lỗi'</ref>.\n"
 "Tắt chế độ gỡ lỗi bằng cách thoát khỏi trò chơi hoặc :nodebug.\n"
 "\n"
@@ -2805,11 +2800,11 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Thiết lập hoặc chuyển đổi đấu thủ của phe giữa người và máy tính. Đấu thủ/"
-"máy khách điều khiển phe đó cần chấp nhận lệnh này. Nếu không cung cấp tham "
-"số thứ hai, chuyển đổi giữa người và máy tính. Nếu là 'on', thiết lập để máy "
-"tính điều khiển. Nếu là 'off', thiết lập để người điều khiển. Mặc định là "
-"phe đang kích hoạt nếu không cung cấp tham số.\n"
+"Thiết lập hoặc chuyển đổi người chơi của phe giữa người và máy tính. Người "
+"chơi/máy khách điều khiển phe đó cần chấp nhận lệnh này. Nếu không cung cấp "
+"tham số thứ hai, chuyển đổi giữa người và máy tính. Nếu là 'on', thiết lập "
+"để máy tính điều khiển. Nếu là 'off', thiết lập để người điều khiển. Mặc "
+"định là phe đang kích hoạt nếu không cung cấp tham số.\n"
 "\n"
 
 #. [topic]: id=general_commands
@@ -2864,7 +2859,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Thoát khỏi kịch bản (không nhắc nhở).\n"
+"Thoát khỏi màn (không nhắc nhở).\n"
 "\n"
 
 #. [topic]: id=general_commands
@@ -2885,12 +2880,12 @@ msgid ""
 "Save the game and quit the scenario (without prompting)."
 msgstr ""
 "\n"
-"Lưu trò chơi và thoát khỏi kịch bản (không nhắc nhở)."
+"Lưu trò chơi và thoát khỏi màn (không nhắc nhở)."
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:806
 msgid "Multiplayer commands"
-msgstr "Lệnh nhiều đấu thủ"
+msgstr "Lệnh nhiều người chơi"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:810
@@ -2902,8 +2897,8 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Cấm một người trong một trò chơi nhiều đấu thủ theo địa chỉ IP người đó sử "
-"dụng và đuổi người đó. Có thể sử dụng lệnh này với những người không tham "
+"Cấm một người trong một trò chơi nhiều người chơi theo địa chỉ IP người đó "
+"sử dụng và đuổi người đó. Có thể sử dụng lệnh này với những người không tham "
 "gia chơi nhưng ở trên máy chủ. (Tất nhiên họ sẽ không bị đuổi.)\n"
 "\n"
 
@@ -2920,10 +2915,10 @@ msgid ""
 msgstr ""
 "\n"
 "Thay đổi người điều khiển cho phe (viết số thứ tự phe ở đây) thành tên người "
-"dùng (viết biệt danh của đấu thủ hoặc người quan sát ở đây). Bạn có thể kiểm "
-"tra phe nào thuộc về đấu thủ nào trong hộp thoại 'Thiết lập kịch bản' (Ấn "
-"nút 'nhiều hơn' trong 'Bảng trạng thái' (alt+s theo mặc định).). Người chủ "
-"trò chơi có thể thay đổi quyền điều khiển của bất kỳ phe nào.\n"
+"dùng (viết biệt danh của người chơi hoặc người quan sát ở đây). Bạn có thể "
+"kiểm tra phe nào thuộc về người chơi  nào trong hộp thoại 'Thiết lập "
+"màn' (Ấn nút 'nhiều hơn' trong 'Bảng trạng thái' (alt+s theo mặc định).). "
+"Người chủ trò chơi có thể thay đổi quyền điều khiển của bất kỳ phe nào.\n"
 "\n"
 
 #. [topic]: id=mp_commands
@@ -2936,9 +2931,9 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Đuổi một người trong chế độ nhiều đấu thủ. Người đó sẽ có thể tham gia lại "
-"trò chơi. Nếu bạn chỉ muốn thay đổi quyền điều khiển phe của người đó, sử "
-"dụng lệnh :control.\n"
+"Đuổi một người trong chế độ nhiều người chơi. Người đó sẽ có thể tham gia "
+"lại trò chơi. Nếu bạn chỉ muốn thay đổi quyền điều khiển phe của người đó, "
+"sử dụng lệnh :control.\n"
 "\n"
 
 #. [topic]: id=mp_commands
@@ -2974,7 +2969,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Hủy lệnh cấm một người trong một trò chơi nhiều đấu thủ theo địa chỉ IP "
+"Hủy lệnh cấm một người trong một trò chơi nhiều người chơi theo địa chỉ IP "
 "người đó sử dụng. Có thể sử dụng lệnh này với những người không tham gia "
 "chơi nhưng ở trên máy chủ.\n"
 "\n"
@@ -2993,7 +2988,7 @@ msgstr ""
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:833
 msgid "Debug mode commands"
-msgstr "Lệnh chế độ gỡ lỗi"
+msgstr "Lệnh  trong chế độ gỡ lỗi"
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:837
@@ -3004,7 +2999,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Mở trình đơn chọn kịch bản để vào ngay lập tức trong một chiến dịch.\n"
+"Mở trình đơn chọn màn để vào ngay lập tức trong một chiến dịch.\n"
 "\n"
 
 #. [topic]: id=debug_commands
@@ -3048,7 +3043,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Vào ngay lập tức kịch bản kế tiếp trong một chiến dịch.\n"
+"Vào ngay lập tức màn kế tiếp trong một chiến dịch.\n"
 "\n"
 
 #. [topic]: id=debug_commands
@@ -3059,7 +3054,7 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Thiết lập thủ công một biến trạng thái trò chơi thành một giá trị.\n"
+"Thiết lập thủ công một biến trạng thái của trò chơi thành một giá trị.\n"
 "\n"
 
 #. [topic]: id=debug_commands
@@ -3124,7 +3119,7 @@ msgid ""
 msgstr ""
 "Giải độc:\n"
 "Một người giải độc có thể cứu chữa một đơn vị khỏi độc tố, mặc dù đơn vị đó "
-"sẽ không nhận được thêm năng lượng phục hồi ở lượt nó được giải độc."
+"sẽ không nhận được thêm lượng máu phục hồi ở lượt nó được giải độc."
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:76
@@ -3144,8 +3139,8 @@ msgid ""
 "the poison instead of healing."
 msgstr ""
 "Tái tạo:\n"
-"Đơn vị sẽ tự phục hồi 8 NL mỗi lượt. Nếu nó bị nhiễm độc, nó sẽ loại bỏ chất "
-"độc thay vì phục hồi."
+"Đơn vị sẽ tự phục hồi 8 đơn vị máu mỗi lượt. Nếu nó bị nhiễm độc, nó sẽ loại "
+"bỏ chất độc thay vì phục hồi."
 
 #. [resistance]: id=steadfast
 #: data/core/macros/abilities.cfg:98
@@ -3201,8 +3196,8 @@ msgstr ""
 "chiến đấu tốt hơn.\n"
 "\n"
 "Các đơn vị cùng phe có trình độ thấp hơn đứng cạnh sẽ gây nhiều thiệt hại "
-"hơn khi chiến đấu. Khi một đơn vị đứng cạnh, có trình độ thấp hơn, và ở cùng "
-"phe với đơn vị có khả năng lãnh đạo giao chiến, các đòn tấn công của nó gây "
+"hơn khi chiến đấu. Khi một đơn vị đứng cạnh, có cấp thấp hơn, và ở cùng phe "
+"với đơn vị có khả năng lãnh đạo giao chiến, các đòn tấn công của nó gây "
 "thiệt hại nhiều hơn 25% nhân với mức chênh lệch trình độ của chúng."
 
 #. [skirmisher]: id=skirmisher
@@ -3224,7 +3219,7 @@ msgid ""
 msgstr ""
 "Đột nhập:\n"
 "Đơn vị này rất giỏi trong việc di chuyển nhanh chóng qua kẻ thù, và bỏ qua "
-"toàn bộ vùng kiểm soát của kẻ thù."
+"toàn bộ Vùng kiểm soát của kẻ thù."
 
 #. [illuminates]: id=illumination
 #: data/core/macros/abilities.cfg:363
@@ -3300,7 +3295,7 @@ msgstr ""
 "\n"
 "Các đơn vị kẻ thù không thể nhìn thấy đơn vị này khi nó ở trong rừng, trừ "
 "khi chúng có đơn vị bên cạnh nó. Bất kỳ đơn vị kẻ thù nào phát hiện ra đơn "
-"vị này đều mất ngay lập tức toàn bộ di chuyển còn lại."
+"vị này đều mất ngay lập tức toàn bộ điểm di chuyển còn lại."
 
 #. [hides]: id=nightstalk
 #: data/core/macros/abilities.cfg:416 data/core/macros/abilities.cfg:417
@@ -3323,7 +3318,7 @@ msgstr ""
 "\n"
 "Các đơn vị kẻ thù không thể nhìn thấy đơn vị này vào ban đêm, trừ khi chúng "
 "có đơn vị bên cạnh nó. Bất kỳ đơn vị kẻ thù nào phát hiện ra đơn vị này đều "
-"mất ngay lập tức toàn bộ di chuyển còn lại."
+"mất ngay lập tức toàn bộ điểm di chuyển còn lại."
 
 #. [hides]: id=nightstalk
 #: data/core/macros/abilities.cfg:423
@@ -3357,7 +3352,7 @@ msgstr ""
 "\n"
 "Các đơn vị kẻ thù không thể nhìn thấy đơn vị này khi nó ở trong làng, trừ "
 "khi chúng có đơn vị bên cạnh nó. Bất kỳ đơn vị kẻ thù nào phát hiện ra đơn "
-"vị này đều mất ngay lập tức toàn bộ di chuyển còn lại."
+"vị này đều mất ngay lập tức toàn bộ điểm di chuyển còn lại."
 
 #. [hides]: id=submerge
 #: data/core/macros/abilities.cfg:468 data/core/macros/abilities.cfg:474
@@ -3384,7 +3379,7 @@ msgstr ""
 "\n"
 "Các đơn vị kẻ thù không thể nhìn thấy đơn vị này khi nó ở trong nước sâu, "
 "trừ khi chúng có đơn vị bên cạnh nó. Bất kỳ đơn vị kẻ thù nào phát hiện ra "
-"đơn vị này đều mất ngay lập tức toàn bộ di chuyển còn lại."
+"đơn vị này đều mất ngay lập tức toàn bộ  điểm di chuyển còn lại."
 
 #. [dummy]: id=feeding
 #: data/core/macros/abilities.cfg:497
@@ -3404,12 +3399,12 @@ msgid ""
 "unit."
 msgstr ""
 "Bồi dưỡng:\n"
-"Đơn vị này tăng thêm 1 năng lượng tối đa khi nó giết một đơn vị có sự sống."
+"Đơn vị này tăng thêm 1 đơn vị máu tối đa khi nó giết một đơn vị có sự sống."
 
 #. [unstore_unit]
 #: data/core/macros/abilities.cfg:524
 msgid "+1 max HP"
-msgstr "+1 NL tối đa"
+msgstr "+1 đơn vị máu tối đa"
 
 #. [damage]: id=backstab
 #: data/core/macros/abilities.cfg:566
@@ -3433,7 +3428,7 @@ msgstr ""
 #. [plague]: id=plague, type=Walking Corpse
 #: data/core/macros/abilities.cfg:580 data/core/macros/abilities.cfg:592
 msgid "plague"
-msgstr "lây truyền"
+msgstr "bệnh dịch"
 
 #. [plague]: id=plague({TYPE}), type={TYPE}
 #: data/core/macros/abilities.cfg:582
@@ -3443,10 +3438,10 @@ msgid ""
 "identical to and on the same side as the unit with the Plague attack. This "
 "doesn't work on Undead or units in villages."
 msgstr ""
-"Lây truyền:\n"
-"Khi một đơn vị bị giết bởi một đòn tấn công lây truyền, đơn vị đó sẽ bị thay "
+"Bệnh dịch:\n"
+"Khi một đơn vị bị giết bởi một đòn tấn công bệnh dịch, đơn vị đó sẽ bị thay "
 "thế bằng một đơn vị giống hệt và ở cùng phe với đơn vị có đòn tấn công lây "
-"truyền. Đòn này không có tác dụng với ma quỷ hoặc các đơn vị ở trong làng."
+"truyền. Đòn này không có tác dụng với ma quái hoặc các đơn vị ở trong làng."
 
 #. [plague]: id=plague, type=Walking Corpse
 #: data/core/macros/abilities.cfg:594
@@ -3456,10 +3451,10 @@ msgid ""
 "Walking Corpse on the same side as the unit with the Plague attack. This "
 "doesn't work on Undead or units in villages."
 msgstr ""
-"Lây truyền:\n"
-"Khi một đơn vị bị giết bởi một đòn tấn công lây truyền, đơn vị đó sẽ bị thay "
-"thế bằng một xác chết đi bộ ở cùng phe với đơn vị có đòn tấn công lây "
-"truyền. Đòn này không có tác dụng với các đơn vị ma quỷ hoặc các đơn vị ở "
+"Bệnh dịch:\n"
+"Khi một đơn vị bị giết bởi một đòn tấn công bệnh dịch, đơn vị đó sẽ bị thay "
+"thế bằng một xác chết biết đi ở cùng phe với đơn vị có đòn tấn công bệnh "
+"dịch. Đòn này không có tác dụng với các đơn vị ma quái hoặc các đơn vị ở "
 "trong làng."
 
 #. [slow]: id=slow
@@ -3529,8 +3524,9 @@ msgid ""
 msgstr ""
 "Liên hoàn:\n"
 "Số lần đánh của đòn tấn công này giảm khi đơn vị bị thương. Số lần đánh tỷ "
-"lệ với phần trăm NL trên NL tối đa đơn vị có. Ví dụ một đơn vị có NL bằng "
-"3/4 NL tối đa sẽ có số lần đánh bằng 3/4 số lần đánh được phép."
+"lệ với phần trăm lượng máu trên lượng tối đa đơn vị có. Ví dụ một đơn vị có "
+"lượng máu bằng 3/4 lượng máu tối đa sẽ có số lần đánh bằng 3/4 số lần đánh "
+"được phép."
 
 #. [damage]: id=charge
 #: data/core/macros/abilities.cfg:664
@@ -3547,7 +3543,7 @@ msgstr ""
 "Xung kích:\n"
 "Khi được sử dụng để tấn công, đòn này gây lượng thiệt hại lớn gấp đôi cho "
 "đối phương. Nó cũng khiến cho đơn vị này phải chịu lượng thiệt hại lớn gấp "
-"đôi từ đòn trả đũa của đối phương."
+"đôi từ đòn phản công của đối phương."
 
 #. [drains]: id=drains
 #: data/core/macros/abilities.cfg:678
@@ -3562,9 +3558,8 @@ msgid ""
 "amount of damage it deals (rounded down)."
 msgstr ""
 "Bòn rút:\n"
-"Đơn vị này bòn rút sức khỏe từ các đơn vị có sự sống, phục hồi năng lượng "
-"cho bản thân một lượng bằng một nửa lượng thiệt hại mà nó gây ra (làm tròn "
-"xuống)."
+"Đơn vị này bòn rút sức sống từ các đơn vị có sự sống, phục hồi máu cho bản "
+"thân một lượng bằng một nửa lượng thiệt hại mà nó gây ra (làm tròn xuống)."
 
 #. [poison]: id=poison
 #: data/core/macros/abilities.cfg:700
@@ -3581,13 +3576,14 @@ msgid ""
 msgstr ""
 "Độc:\n"
 "Đòn tấn công này làm nhiễm độc những đối thủ có sự sống. Các đơn vị bị nhiễm "
-"độc mất 8 NL mỗi lượt đến khi chúng được giải độc hoặc bị giảm xuống còn 1 "
-"NL. Bản thân chất độc không thể giết một đơn vị."
+"độc mất 8 đơn vị máu mỗi lượt đến khi chúng được giải độc hoặc bị giảm xuống "
+"còn 1 đơn vị máu. Bản thân chất độc không thể giết một đơn vị."
 
 #. [set_menu_item]: id=ai_controller_leader_control_{CONTROLLED_SIDE}
 #: data/core/macros/ai.cfg:495
 msgid "Ask $ally_leader.name (leader of side $ally_leader.side) to move here"
 msgstr ""
+"Yêu cầu $ally_leader.name (chỉ huy của $ally_leader.side) di chuyển đến đây"
 
 #: data/core/macros/ai_controller.cfg:5
 #, fuzzy
@@ -3596,28 +3592,28 @@ msgid ""
 "In this scenario, you may issue instructions to an allied side by right-"
 "clicking on them."
 msgstr ""
-"Trong nhiều kịch bản chiến dịch, bạn có thể cấp những chỉ thị đơn giản cho "
+"Trong nhiều màn của chiến dịch, bạn có thể cấp những chỉ thị đơn giản cho "
 "đồng minh do máy tính điều khiển sử dụng trình đơn ngữ cảnh chuột phải."
 
 #. [option]: type=behaviour
 #: data/core/macros/ai_controller.cfg:148
 msgid "Be more aggressive"
-msgstr "Tấn công kiên quyết hơn"
+msgstr "Trở nên hung hãn hơn"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:164
 msgid "aggressive."
-msgstr "tấn công."
+msgstr "hung hãn."
 
 #. [option]: type=behaviour
 #: data/core/macros/ai_controller.cfg:181
 msgid "Be more defensive"
-msgstr "Phòng thủ kiên quyết hơn"
+msgstr "Trở nên phòng ngự hơn"
 
 #. [command]
 #: data/core/macros/ai_controller.cfg:194
 msgid "defensive."
-msgstr "phòng thủ."
+msgstr "phòng ngự."
 
 #. [option]: type=objective
 #: data/core/macros/ai_controller.cfg:215
@@ -3785,47 +3781,41 @@ msgid "Exit"
 msgstr "Thoát"
 
 #: data/core/macros/ai_controller.cfg:1065
-#, fuzzy
 msgid "Set special orders..."
-msgstr "Thiết lập hành vi..."
+msgstr "Thiết lập chỉ thị đặc biệt..."
 
 #: data/core/macros/ai_controller.cfg:1066
 msgid "Move leader to..."
-msgstr ""
+msgstr "Di chuyển chi huy đến..."
 
 #: data/core/macros/ai_controller.cfg:1067
-#, fuzzy
 msgid "Right-click to select a location to move leader to"
-msgstr "Nhấn chuột phải để chọn vị trí cần bảo vệ"
+msgstr "Nhấn chuột phải để di chuyển chỉ huy đến vị trí đó"
 
 #: data/core/macros/ai_controller.cfg:1068
 msgid "Move leader here"
-msgstr ""
+msgstr "Di chuyển chỉ huy đến đây"
 
 #: data/core/macros/ai_controller.cfg:1069
 msgid "moving leader to $x1|,$y1|."
-msgstr ""
+msgstr "Di chuyển chỉ huy đến $x1|,$y1|."
 
 #: data/core/macros/ai_controller.cfg:1070
-#, fuzzy
 msgid "Clear special orders"
-msgstr "Xóa mọi chỉ thị"
+msgstr "Xóa chỉ thị đặc biệt"
 
 #: data/core/macros/ai_controller.cfg:1071
-#, fuzzy
 msgid ""
 "Special: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_special_description"
 msgstr ""
-"Mục tiêu: $ai_controller.side_$ally_side|_current_settings."
-"currently_doing_objective_description\n"
-"Hành vi: $ai_controller.side_$ally_side|_current_settings."
-"currently_doing_behaviour_description"
+"Đặc biệt: $ai_controller.side_$ally_side|_current_settings."
+"currently_doing_special_description"
 
 #. [advancement]: id=amla_default
 #: data/core/macros/amla.cfg:10
 msgid "Max HP bonus +3, Max XP +20%"
-msgstr "Thưởng NL tối đa +3, KN tối đa +20%"
+msgstr "Thưởng lượng máu tối đa +3, KN tối đa +20%"
 
 #. [advancement]: id=tough_{HP_ADVANCE_NUMBER}
 #: data/core/macros/amla.cfg:38
@@ -3835,7 +3825,7 @@ msgstr ", KN tối đa +25%"
 #. [advancement]: id=tough_{HP_ADVANCE_NUMBER}
 #: data/core/macros/amla.cfg:38
 msgid "Max HP bonus +"
-msgstr "Thưởng NL tối đa +"
+msgstr "Thưởng lượng máu tối đa +"
 
 #: data/core/macros/carryover-utils.cfg:9
 msgid "Early finish bonus."
@@ -3851,7 +3841,7 @@ msgstr "<small>(thưởng kết thúc sớm)</small>"
 
 #: data/core/macros/carryover-utils.cfg:18
 msgid "No gold carried over to the next scenario."
-msgstr "Không có lượng vàng nào được mang sang kịch bản kế tiếp."
+msgstr "Không có lượng vàng nào được mang sang màn kế tiếp."
 
 #: data/core/macros/carryover-utils.cfg:22
 msgid ""
@@ -3859,7 +3849,7 @@ msgid ""
 "100% of finishing gold carried over to the next scenario."
 msgstr ""
 "\n"
-"100% lượng vàng kết thúc được mang sang kịch bản kế tiếp."
+"100% lượng vàng kết thúc được mang sang màn kế tiếp."
 
 #: data/core/macros/carryover-utils.cfg:26
 msgid ""
@@ -3867,7 +3857,7 @@ msgid ""
 "40% of finishing gold carried over to the next scenario."
 msgstr ""
 "\n"
-"40% lượng vàng kết thúc được mang sang kịch bản kế tiếp."
+"40% lượng vàng kết thúc được mang sang màn kế tiếp."
 
 #: data/core/macros/carryover-utils.cfg:30
 msgid ""
@@ -3875,7 +3865,7 @@ msgid ""
 "20% of finishing gold carried over to the next scenario."
 msgstr ""
 "\n"
-"20% lượng vàng kết thúc được mang sang kịch bản kế tiếp."
+"20% lượng vàng kết thúc được mang sang màn kế tiếp."
 
 #. [objective]: description=<span color='white'>, condition=win
 #: data/core/macros/carryover-utils.cfg:34
@@ -3899,7 +3889,8 @@ msgid ""
 "With this golden coin, I wish that this battle end in a swift and safe "
 "victory."
 msgstr ""
-"Tôi ước trận chiến này kết thúc bằng một chiến thắng nhanh chóng và an toàn."
+"Với đồng tiền vàng này, tôi ước trận chiến này kết thúc bằng một chiến thắng "
+"nhanh chóng và an toàn."
 
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:55
@@ -3967,7 +3958,7 @@ msgid ""
 "until the end of the current scenario. Should $unit.name use it?"
 msgstr ""
 "Vẩy nước này lên các vũ khí cận chiến sẽ ban cho chúng kiểu thiệt hại 'bí "
-"kíp' đến cuối kịch bản hiện thời. $unit.name có nên sử dụng nó không?"
+"kíp' đến cuối màn hiện thời. $unit.name có nên sử dụng nó không?"
 
 #: data/core/macros/items.cfg:288
 msgid "I am not suited to the use of this item! Let another take it."
@@ -3985,7 +3976,7 @@ msgid ""
 "end of the current scenario."
 msgstr ""
 "Nước này sẽ làm cho các vũ khí cận chiến có kiểu thiệt hại 'bí kíp' đến cuối "
-"kịch bản hiện thời."
+"màn hiện thời."
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:322
@@ -4000,7 +3991,7 @@ msgstr "Người uống được ban sức mạnh."
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:365
 msgid "Potion of Decay"
-msgstr "Liều thuốc hủy diệt"
+msgstr "Liều thuốc mục rữa"
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:368
@@ -4015,8 +4006,7 @@ msgstr "Nhẫn tái tạo"
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:405
 msgid "This ring will heal the bearer a little each turn."
-msgstr ""
-"Chiếc nhẫn này sẽ điều trị cho người đeo chút ít năng lượng ở mỗi lượt."
+msgstr "Chiếc nhẫn này sẽ hồi cho người đeo chút ít máu ở mỗi lượt."
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:441
@@ -4026,7 +4016,7 @@ msgstr "Nhẫn chậm chạp"
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:444
 msgid "The bearer of this ring is slowed."
-msgstr "Người đeo chiếc nhẫn này sẽ bị chậm."
+msgstr "Người đeo chiếc nhẫn này đã bị chậm."
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:478
@@ -4864,7 +4854,7 @@ msgid ""
 "The computer player might not be able to play side $side_number properly in "
 "this scenario. Side $side_number is intended to be played by a human player."
 msgstr ""
-"Đấu thủ máy tính không thể điều khiển phe $side_number trong kịch bản này. "
+"người chơi  máy tính không thể điều khiển phe $side_number trong màn này. "
 "Phe $side_number dành cho người điều khiển."
 
 #. [time]: id=deep_underground
@@ -4896,18 +4886,18 @@ msgid ""
 " This unit's arcane attack deals tremendous damage to magical creatures, and "
 "even some to mundane creatures."
 msgstr ""
-" Đòn tấn công bí kíp của đơn vị này gây thiệt hại khủng khiếp cho các sinh "
-"vật ma thuật, và cũng đáng kể cho các sinh vật cõi trần."
+" Đòn tấn công bí kíp của đơn vị này gây thiệt hại ghê gớm cho các sinh vật "
+"ma thuật, và cũng đáng kể cho các sinh vật cõi trần."
 
 #: data/core/macros/special-notes.cfg:14
 msgid " This unit is capable of basic healing."
-msgstr " Đơn vị này có khả năng điều trị cơ bản."
+msgstr " Đơn vị này có khả năng hồi máu cơ bản."
 
 #: data/core/macros/special-notes.cfg:17
 msgid ""
 " This unit is capable of healing those around it, and curing them of poison."
 msgstr ""
-" Đơn vị này có khả năng điều trị cho các đơn vị xung quanh, và giải độc cho "
+" Đơn vị này có khả năng hồi máu cho các đơn vị xung quanh, và giải độc cho "
 "chúng."
 
 #: data/core/macros/special-notes.cfg:20
@@ -4941,15 +4931,15 @@ msgid ""
 msgstr ""
 " Khả năng lãnh đạo của đơn vị này cho phép các đơn vị đứng cạnh ở cùng phe "
 "gây nhiều thiệt hại hơn khi chiến đấu, dù khả năng này chỉ áp dụng cho các "
-"đơn vị có trình độ thấp hơn."
+"đơn vị có cấp thấp hơn."
 
 #: data/core/macros/special-notes.cfg:32
 msgid ""
 " This unit's skill at skirmishing allows it to ignore enemies' zones of "
 "control and thus move unhindered around them."
 msgstr ""
-" Kỹ năng đột nhập của đơn vị này cho phép nó bỏ qua các vùng kiểm soát của "
-"kẻ thù, do đó di chuyển xung quanh kẻ thù mà không bị cản trở."
+" Kỹ năng đột nhập của đơn vị này cho phép nó bỏ qua vùng kiểm soát của kẻ "
+"thù, do đó di chuyển xung quanh kẻ thù mà không bị cản trở."
 
 #: data/core/macros/special-notes.cfg:35
 msgid " Illumination increases the lighting level in adjacent areas."
@@ -4960,8 +4950,8 @@ msgid ""
 " This unit can use one move to teleport between any two empty villages "
 "controlled by its side."
 msgstr ""
-" Đơn vị này có thể sử dụng một di chuyển để dịch chuyển tức thời giữa hai "
-"ngôi làng trống bất kỳ mà phe nó kiểm soát."
+" Đơn vị này có thể sử dụng một điểm di chuyển để dịch chuyển tức thời giữa "
+"hai ngôi làng trống bất kỳ mà phe nó kiểm soát."
 
 #: data/core/macros/special-notes.cfg:41
 msgid ""
@@ -4990,14 +4980,14 @@ msgid ""
 " This unit can move unseen in deep water, requiring no air from the surface."
 msgstr ""
 " Đơn vị này có thể di chuyển trong nước sâu mà không bị phát hiện, không cần "
-"không khí để thở."
+"không khí mặt thoáng để thở."
 
 #: data/core/macros/special-notes.cfg:53
 msgid ""
 " This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
 msgstr ""
-" Đơn vị này tăng thêm 1 năng lượng tối đa khi nó giết một đơn vị có sự sống."
+" Đơn vị này tăng thêm 1 đơn vị máu tối đa khi nó giết một đơn vị có sự sống."
 
 #: data/core/macros/special-notes.cfg:56
 msgid ""
@@ -5022,7 +5012,7 @@ msgid ""
 " Foes who lose their life to the plague will rise again in unlife, unless "
 "they are standing on a village."
 msgstr ""
-" Địch thủ nào mất mạng bởi đòn tấn công lây truyền sẽ hồi sinh với sự sống "
+" Địch thủ nào mất mạng bởi đòn tấn công bệnh dịch sẽ hồi sinh với sự sống "
 "giả tạo, trừ khi đứng trong một ngôi làng."
 
 #: data/core/macros/special-notes.cfg:65
@@ -5031,7 +5021,7 @@ msgid ""
 "attack damage until they end a turn."
 msgstr ""
 " Đơn vị này có thể làm chậm kẻ thù, giảm một nửa tốc độ di chuyển và lượng "
-"thiệt hại tấn công của chúng đến khi chúng kết thúc lượt."
+"thiệt hại từ đòn tấn công của chúng đến khi chúng kết thúc lượt."
 
 #: data/core/macros/special-notes.cfg:68
 msgid ""
@@ -5077,15 +5067,15 @@ msgid ""
 "health."
 msgstr ""
 " Trong trận chiến, đơn vị này có thể bòn rút năng lượng từ các nạn nhân để "
-"phục hồi sức khỏe của nó."
+"phục hồi máu của nó."
 
 #: data/core/macros/special-notes.cfg:86
 msgid ""
 " The length of this unit's weapon allows it to strike first in melee, even "
 "in defense."
 msgstr ""
-" Chiều dài vũ khí của đơn vị này cho phép nó đánh trước khi cận chiến, kể cả "
-"khi phòng thủ."
+" Chiều dài vũ khí của đơn vị này cho phép nó ra đòn trước trong cận chiến, "
+"kể cả khi phòng thủ."
 
 #: data/core/macros/special-notes.cfg:89
 msgid ""
@@ -5114,28 +5104,28 @@ msgstr "Phí bảo trì bằng không"
 #. [trait]: id=undead
 #: data/core/macros/traits.cfg:22
 msgid "undead"
-msgstr "ma quỷ"
+msgstr "ma quái"
 
 #. [trait]: id=undead
 #: data/core/macros/traits.cfg:23
 msgid "female^undead"
-msgstr "ma quỷ"
+msgstr "ma quái"
 
 #. [trait]: id=undead
 #. [trait]: id=mechanical
 #: data/core/macros/traits.cfg:24 data/core/macros/traits.cfg:39
 msgid "Immune to drain, poison and plague"
-msgstr "Miễn nhiễm với bòn rút, độc và lây truyền"
+msgstr "Miễn nhiễm với bòn rút, độc và bệnh dịch"
 
 #. [trait]: id=mechanical
 #: data/core/macros/traits.cfg:37
 msgid "mechanical"
-msgstr "cơ giới"
+msgstr "máy móc"
 
 #. [trait]: id=mechanical
 #: data/core/macros/traits.cfg:38
 msgid "female^mechanical"
-msgstr "cơ giới"
+msgstr "máy móc"
 
 #. [trait]: id=strong
 #: data/core/macros/traits.cfg:51
@@ -5200,7 +5190,7 @@ msgstr "khỏe mạnh"
 #. [trait]: id=healthy
 #: data/core/macros/traits.cfg:133
 msgid "Always rest heals"
-msgstr "Luôn phục hồi kiểu nghỉ ngơi"
+msgstr "Luôn hồi máu như khi nghỉ ngơi"
 
 #. [trait]: id=fearless
 #: data/core/macros/traits.cfg:150 data/core/macros/traits.cfg:163
@@ -5255,9 +5245,8 @@ msgstr "già"
 
 #. [trait]: id=aged
 #: data/core/macros/traits.cfg:222
-#, fuzzy
 msgid "female^aged"
-msgstr "đần độn"
+msgstr "già"
 
 #. [color_range]: id=red
 #. [color_range]: id=1
@@ -5321,7 +5310,7 @@ msgstr "Trắng"
 #. [color_range]: id=9
 #: data/core/team-colors.cfg:74 data/core/team-colors.cfg:131
 msgid "Teal"
-msgstr "Mòng két"
+msgstr "Xanh ngọc"
 
 #. [race]: id=bats, description=
 #: data/core/units.cfg:42
@@ -5341,17 +5330,17 @@ msgstr "Dơi"
 #. [race]: id=drake
 #: data/core/units.cfg:52
 msgid "race^Drake"
-msgstr "Rồng"
+msgstr "Người rồng"
 
 #. [race]: id=drake
 #: data/core/units.cfg:53
 msgid "race+female^Drake"
-msgstr "Rồng"
+msgstr "Người rồng"
 
 #. [race]: id=drake
 #: data/core/units.cfg:54
 msgid "race^Drakes"
-msgstr "Rồng"
+msgstr "Người rồng"
 
 #. [race]: id=drake
 #: data/core/units.cfg:67
@@ -5419,65 +5408,67 @@ msgid ""
 "a relatively cold climate, a feature which has allowed them to populate even "
 "some of the mountains of the far north of the Great Continent."
 msgstr ""
-"Rồng là những sinh vật lớn, có cánh và thở ra lửa, khiến người ta liên tưởng "
-"đến loài rồng thần thoại. Trung bình, một con rồng trưởng thành đứng cao "
-"khoảng ba mét và nặng hơn cả một người với một ngựa. Da của chúng được tạo "
-"nên từ những chiếc vảy cứng, kháng cự với hầu hết các đòn tấn công vật lý "
-"trừ đâm và lạnh. Rồng nói chung có khả năng bay thực sự và có thể băng qua "
-"nhanh chóng những khoảng cách lớn. Tuy nhiên, sức nặng và thân hình đồ sộ "
-"hơi làm hạn chế năng lực bay lượn, khiến chúng trở nên lóng ngóng trong "
-"không trung. Khi có thể, chúng sử dụng các đặc tính của địa hình như đồi, "
-"núi và cây làm bàn đạp để đạt được độ cao và tốc độ lớn hơn. May mắn cho kẻ "
-"thù, chúng vẫn là những sinh vật khá vụng về và chậm chạp một cách đáng ngạc "
-"nhiên khi chiến đấu. Điều này, cùng với kích thước lớn, làm cho chúng trở "
-"thành mục tiêu dễ dàng cho những ai dám tấn công.\n"
+"Người rồng là những sinh vật lớn, có cánh và thở ra lửa, khiến người ta liên "
+"tưởng đến loài rồng thần thoại. Trung bình, một người rồng trưởng thành đứng "
+"cao khoảng ba mét và nặng hơn cả một người cộng với một con ngựa. Da của "
+"chúng được tạo nên từ những chiếc vảy cứng, kháng cự với hầu hết các đòn tấn "
+"công vật lý trừ đâm và lạnh. Người rồng nói chung có khả năng bay thực sự và "
+"có thể băng qua nhanh chóng những khoảng cách lớn. Tuy nhiên, sức nặng và "
+"thân hình đồ sộ hơi làm hạn chế năng lực bay lượn, khiến chúng trở nên lóng "
+"ngóng trong không trung. Khi có thể, chúng sử dụng các đặc tính của địa hình "
+"như đồi, núi và cây làm bàn đạp để đạt được độ cao và tốc độ lớn hơn. May "
+"mắn cho kẻ thù, chúng vẫn là những sinh vật khá vụng về và chậm chạp một "
+"cách đáng ngạc nhiên khi chiến đấu. Điều này, cùng với kích thước lớn, làm "
+"cho chúng trở thành mục tiêu dễ dàng cho những ai dám tấn công.\n"
 "\n"
-"Rồng vốn là những sinh vật có phép thuật, với một ngọn lửa nội tại bí ẩn "
-"cung cấp năng lượng sống cho chúng. Có thể dễ dàng chứng kiến điều này khi "
-"một con rồng bỏ mạng trong chiến trận, ngọn lửa nội tại của nó bùng lên, đốt "
-"toàn bộ thân xác ra tro. Ngọn lửa đó cũng là điểm yếu lớn nhất của chúng, "
-"khiến chúng cực kỳ có nhược điểm trước các đòn tấn công lạnh. Dù bản chất có "
-"phép thuật, nhưng loài rồng không thể kiểm soát nó. Phép thuật ngập tràn bên "
-"trong cơ thể cho phép rồng phun ra lửa, nhưng chúng không có khả năng điều "
-"khiển chủ động công dụng của phép thuật này.\n"
+"Người rồng vốn là những sinh vật có phép thuật, với một ngọn lửa bí ẩn nằm "
+"bên trong cung cấp năng lượng sống cho chúng. Có thể dễ dàng chứng kiến điều "
+"này khi một người rồng bỏ mạng trong chiến trận, ngọn lửa bên trong của nó "
+"bùng lên, đốt toàn bộ thân xác ra tro. Ngọn lửa đó cũng là điểm yếu lớn nhất "
+"của chúng, khiến chúng cực kỳ có yếu điểm trước các đòn tấn công lạnh. Dù "
+"bản chất có phép thuật, nhưng người rồng không thể kiểm soát nó. Phép thuật "
+"ngập tràn bên trong cơ thể cho phép người rồng phun ra lửa, nhưng chúng "
+"không có khả năng điều khiển chủ động sự vận hành của phép thuật này.\n"
 "\n"
-"<header>text='Đời sống xã hội'</header>\n"
-"Rồng là một loài tương đối hiếu chiến và có thể mô tả đời sống xã hội của "
-"chúng là xã hội quân sự có văn hóa. Nòng cốt của một bộ lạc rồng là một nhóm "
-"nhỏ các chiến binh kỳ cựu, được dẫn đầu bởi một lãnh tụ mà mọi thành viên "
-"đều tôn trọng, hoặc chỉ đơn thuần là sợ, người cai quản xã hội bằng một nắm "
-"đấm sắt. Mỗi thành viên phải xứng đáng với vị trí của mình trong hệ thống "
-"thứ bậc nghiêm ngặt, tuân lệnh cấp trên và chỉ huy cấp dưới. Được xếp vào "
-"thành phần xã hội ưu tú chỉ có thể thông qua việc thách thức và đánh bại cấp "
-"trên trong trận đấu một đối một, đó cũng là cách để thiết lập trật tự trong "
-"thành phần ưu tú. Việc sử dụng mưu mẹo gian dối dưới bất kỳ hình thức nào "
-"với đồng loại luôn bị xem là hèn nhát và không thể chấp nhận được.\n"
+"<header>text='Xã hội'</header>\n"
+"Người rồng là một loài tương đối hiếu chiến và có thể mô tả đời sống xã hội "
+"của chúng là xã hội có văn hóa quân sự. Nòng cốt của một bộ lạc người rồng "
+"là một nhóm nhỏ các chiến binh kỳ cựu, được dẫn đầu bởi một lãnh tụ mà mọi "
+"thành viên đều tôn trọng, hoặc chỉ đơn thuần là sợ, người cai quản xã hội "
+"bằng với một kỷ cương thép. Mỗi thành viên phải xứng đáng với vị trí của "
+"mình trong hệ thống thứ bậc nghiêm ngặt, tuân lệnh cấp trên và chỉ huy cấp "
+"dưới. Được xếp vào thành phần xã hội ưu tú chỉ có thể thông qua việc thách "
+"thức và đánh bại cấp trên trong trận đấu một đối một, đó cũng là cách để "
+"thiết lập trật tự trong thành phần ưu tú. Việc sử dụng mưu mẹo gian dối dưới "
+"bất kỳ hình thức nào với đồng loại luôn bị xem là hèn nhát và không thể chấp "
+"nhận được.\n"
 "\n"
-"Bản chất hiếu chiến và ý thức sở hữu khiến chúng kiên quyết bảo vệ lãnh thổ "
-"của mình, nhưng loài rồng hiếm khi xâm chiếm hay xâm phạm vào những vùng các "
-"loài khác đã chiếm hữu. Trái lại, chúng chỉ cư ngụ trong những khu vực không "
-"dân cư để thiết lập lãnh thổ riêng ở đó. Chúng kiếm mồi chủ yếu bằng cách đi "
-"săn trong những vùng đất thấp xung quanh nơi ở, nhưng những con non và những "
-"con rồng đẳng cấp thấp ăn rêu và nấm chúng trồng sâu trong hang động. Kỹ "
-"thuật duy nhất loài rồng tự hào là nghề rèn áo giáp và vũ khí, chúng không "
-"biết cũng như không cần khoa học hay văn hóa khác ngoài nghề này. Tuy nhiên, "
-"một vài công cụ chúng chế tạo gần như là vô địch về mặt chất lượng, chỉ "
-"những sản phẩm từ các lò xưởng tốt nhất của người lùn mới có thể sánh được.\n"
+"Bản chất hiếu chiến và ý thức sở hữu lãnh thổ khiến chúng kiên quyết bảo vệ "
+"lãnh thổ của mình, nhưng người rồng hiếm khi xâm chiếm hay xâm phạm vào "
+"những vùng các loài khác đã chiếm hữu. Trái lại, chúng chỉ cư ngụ trong "
+"những khu vực không dân cư để thiết lập lãnh thổ riêng ở đó. Chúng kiếm mồi "
+"chủ yếu bằng cách đi săn trong những vùng đất thấp xung quanh nơi ở, nhưng "
+"những cá thể non và những cá thể đẳng cấp thấp ăn rêu và nấm chúng trồng sâu "
+"trong hang động. Kỹ thuật duy nhất người rồng tự hào là nghề rèn áo giáp và "
+"vũ khí, chúng không biết cũng như không cần khoa học hay văn hóa khác ngoài "
+"nghề này. Tuy nhiên, một vài công cụ chúng chế tạo gần như là vô địch về mặt "
+"chất lượng, chỉ những sản phẩm từ các lò xưởng tốt nhất của người lùn mới có "
+"thể sánh được.\n"
 "\n"
-"Rồng nở ra từ trứng và thường sống tự nhiên giữa 20 đến 30 năm. Hy sinh khi "
-"chiến đấu là cách vinh dự nhất để một con rồng rời khỏi thế giới này. Không "
-"giống như những thành viên lớn tuổi của các loài khác, loài rồng càng lớn "
-"càng trở nên hung hăng và liều lĩnh cho tới cuối đời, có lẽ để đảm bảo vị "
-"trí của mình trong những truyền thuyết anh hùng của đồng loại.\n"
+"Người rồng nở ra từ trứng và thường sống tự nhiên giữa 20 đến 30 năm. Hy "
+"sinh khi chiến đấu là cách vinh dự nhất để một người rồng rời khỏi thế giới "
+"này. Không giống như những thành viên lớn tuổi của các loài khác, người rồng "
+"càng lớn càng trở nên hung hăng và liều lĩnh cho tới cuối đời, có lẽ để đảm "
+"bảo vị trí của mình trong những truyền thuyết anh hùng của đồng loại.\n"
 "\n"
 "<header>text='Địa lý'</header>\n"
-"Loài rồng bắt nguồn từ một loạt đảo núi lửa ở Đại Dương Lớn. Ảnh hưởng kết "
-"hợp của áp lực dân số và sự lún chìm của nhiều hòn đảo đã khiến các thực dân "
-"rồng trải rộng đến Đại Lục Địa. Chúng có xu hướng xây nhà trong các hang "
-"động trên núi, gần núi lửa để bảo vệ trứng, con non và lò xưởng của chúng. "
-"Chúng vốn thích hơi ấm, nhưng ngọn lửa nội tại có thể giúp chúng chống chọi "
-"kể cả trong điều kiện khí hậu tương đối lạnh, một đặc điểm đã cho phép chúng "
-"cư trú trên một số ngọn núi ở phương bắc xa xôi của Đại Lục Địa."
+"Người rồng bắt nguồn từ một loạt đảo núi lửa ở Đại Dương. Ảnh hưởng kết hợp "
+"của áp lực dân số và sự lún chìm của nhiều hòn đảo đã khiến các đoàn người "
+"rồng tản ra đến Đại Lục Địa. Chúng có xu hướng xây nhà trong các hang động "
+"trên núi, gần núi lửa để bảo vệ trứng, cá thể còn non và lò xưởng của chúng. "
+"Chúng vốn thích hơi ấm, nhưng ngọn lửa bên trong có thể giúp chúng chống "
+"chọi kể cả trong điều kiện khí hậu tương đối lạnh, một đặc điểm đã cho phép "
+"chúng cư trú trên một số ngọn núi ở phương bắc xa xôi của Đại Lục Địa."
 
 #. [race]: id=dwarf
 #: data/core/units.cfg:87
@@ -5543,34 +5534,34 @@ msgid ""
 "Called runesmiths, they use these carvings to enchant items in order to "
 "augment certain aspects of their natures."
 msgstr ""
-"Người lùn là loài nổi tiếng nhờ các thợ mỏ, thợ rèn, thương nhân và quân "
-"nhân. Được xem là loài lâu năm thứ ba trên đại lục địa sau thần tiên và quỷ "
-"khổng lồ, lịch sử trước đó của họ vẫn là điều bí ẩn. Truyền thuyết kể về một "
-"khoảng thời gian đã bị lãng quên từ lâu khi người lùn bắt đầu nổi lên từ thế "
-"giới dưới lòng đất, xuyên qua hang động. Người ta không biết gì về cuộc sống "
-"của họ trước đó, cũng như lý do để vào thế giới trên mặt đất, nhưng họ đã "
-"trở thành một phần của lịch sử lục địa. Không lâu sau khi nổi lên từ dưới "
-"lòng đất, người lùn bắt đầu xung đột với những cư dân gốc gác của vùng đất, "
-"các thần tiên. Nguyên nhân tranh chấp đã thất lạc theo thời gian, nhưng hai "
-"loài đã đánh nhau suốt ba cuộc chiến tranh dài, bị gián đoạn bởi một vài "
-"thập kỷ hòa bình. Trong các cuộc chiến tranh này, người lùn không thể đánh "
-"đuổi thần tiên ra khỏi những khu rừng sâu phía nam, mà chỉ củng cố được vị "
-"trí của mình trong vùng đồi núi phía bắc lục địa, bây giờ gọi là vùng đất "
-"phương bắc. Kể từ đó họ đã xây dựng nhiều công sự và căn cứ lớn sâu bên "
-"trong núi với những vách đá lởm chởm trên lãnh thổ của họ.\n"
+"Người lùn là loài nổi tiếng bởi các thợ mỏ, thợ rèn, nhà buôn và chiến binh. "
+"Được xem là loài lâu năm thứ ba trên đại lục địa sau thần tiên và quỷ núi, "
+"lịch sử trước đó của họ vẫn là điều bí ẩn. Truyền thuyết kể về một khoảng "
+"thời gian đã bị lãng quên từ lâu khi người lùn bắt đầu xuất hiện từ thế giới "
+"dưới lòng đất, xuyên qua hang động. Người ta không biết gì về cuộc sống của "
+"họ trước đó, cũng như lý do để vào thế giới trên mặt đất, nhưng họ đã trở "
+"thành một phần của lịch sử lục địa. Không lâu sau khi xuất hiện từ dưới lòng "
+"đất, người lùn bắt đầu xung đột với những cư dân đầu tiên của vùng đất, các "
+"thần tiên. Nguyên nhân tranh chấp đã thất lạc theo thời gian, nhưng hai loài "
+"đã đánh nhau suốt ba cuộc chiến tranh dài, bị gián đoạn bởi một vài thập kỷ "
+"hòa bình. Trong các cuộc chiến tranh này, người lùn không thể đánh đuổi thần "
+"tiên ra khỏi những khu rừng sâu phía nam, mà chỉ củng cố được vị trí của "
+"mình trong vùng đồi núi phía bắc lục địa, bây giờ gọi là vùng đất phương "
+"bắc. Kể từ đó họ đã xây dựng nhiều công sự và căn cứ lớn sâu bên trong núi "
+"với những vách đá lởm chởm trên lãnh thổ của họ.\n"
 "\n"
 "Có lẽ do sống tách biệt, người lùn thường hay nghi ngờ hoặc thù địch với hầu "
 "hết các loài khác, đặc biệt là thần tiên. Ngoại lệ duy nhất của tính khí này "
 "là đối với con người. Nguyên nhân có thể bắt nguồn từ thời đại của Haldric I "
-"và sự du nhập của con người và người thú vào lục địa. Ở điểm này người lùn "
-"bắt đầu cho phép một số con người, chủ yếu là những người ly khai và phạm "
-"pháp đến từ vương quốc Wesnoth, cư ngụ trong một số vùng của vùng đất phương "
-"bắc. Động cơ của họ không có gì đáng ngạc nhiên. Cảnh ngộ của những cá nhân "
-"này nhắc nhở người lùn về quá khứ bị ngược đãi trước đây của mình, gợi cho "
-"họ ý thức đoàn kết. Người lùn cũng kiếm được nhiều khi liên kết với những "
-"con người bơ vơ này - họ cư ngụ ở những khu vực mà người lùn không thích "
-"sống như đồng bằng, rừng, đầm lầy; giải phóng người lùn khỏi việc phải bảo "
-"vệ những vùng đó.\n"
+"và sự di cư của con người và người thú vào lục địa. Ở điểm này người lùn bắt "
+"đầu cho phép một số con người, chủ yếu là những người chống đối và nằm ngoài "
+"vòng pháp luật đối với vương quốc Wesnoth, cư ngụ trong một số vùng của vùng "
+"đất phương bắc. Động cơ của họ không có gì đáng ngạc nhiên. Cảnh ngộ của "
+"những cá nhân này nhắc nhở người lùn về quá khứ bị ngược đãi trước đây của "
+"mình, gợi cho họ ý thức đoàn kết. Người lùn cũng kiếm được nhiều khi liên "
+"kết với những con người bơ vơ này - họ cư ngụ ở những khu vực mà người lùn "
+"không thích sống như đồng bằng, rừng, đầm lầy; giải phóng người lùn khỏi "
+"việc phải bảo vệ những vùng đó.\n"
 "\n"
 "Người lùn có vóc dáng nhỏ hơn con người, nhưng điều đó không có nghĩa là họ "
 "yếu ớt. Các chiến sĩ của họ dẻo dai và mạnh mẽ, vừa đáng sợ vừa đáng nể trên "
@@ -5578,16 +5569,16 @@ msgstr ""
 "biết đến vì tài trí tính toán và sự lành nghề tuyệt vời của họ. Thợ rèn "
 "người lùn lừng danh vì những vũ khí chết người và áo giáo hạng nặng. Những "
 "quân dụng này là vô địch về mặt chất lượng, có lẽ chỉ những sản phẩm của "
-"loài rồng mới có thể sánh được. Trí tuệ và tính tò mò bẩm sinh cũng khiến họ "
-"trở thành loài tiến bộ nhất về kỹ thuật trên lục địa. Một trong những phát "
-"minh nổi tiếng và đáng sợ nhất của họ là loại thuốc súng bí ẩn có thể tạo ra "
-"một vụ nổ lớn khi châm lửa. Một số chiến sĩ người lùn sử dụng loại thuốc "
-"súng này để phóng những vật thể nhỏ với tốc độ khủng khiếp. Do có năng khiếu "
-"về kỹ thuật, nhiều người lùn thường không tin vào những người sử dụng phép "
-"thuật. Tuy nhiên, một số người lùn tập luyện một dạng phép thuật dựa vào "
-"việc chạm trổ các dấu thần. Những người này được gọi là thợ khắc dấu thần, "
-"họ sử dụng nghệ thuật chạm khắc để ếm bùa các vật thể, làm phong phú thêm "
-"bản sắc của người lùn."
+"người rồng mới có thể sánh được. Trí tuệ và tính tò mò bẩm sinh cũng khiến "
+"họ trở thành loài tiến bộ nhất về kỹ thuật trên lục địa. Một trong những "
+"phát minh nổi tiếng và đáng sợ nhất của họ là loại bột bí ẩn có thể tạo ra "
+"một vụ nổ lớn khi châm lửa. Một số chiến sĩ người lùn sử dụng loại bột này "
+"để phóng những vật thể nhỏ với tốc độ khủng khiếp. Do có năng khiếu về kỹ "
+"thuật, nhiều người lùn thường không tin vào những người sử dụng phép thuật. "
+"Tuy nhiên, một số người lùn tập luyện một dạng phép thuật dựa vào việc chạm "
+"trổ các dấu thần. Những người này được gọi là thợ khắc dấu thần, họ sử dụng "
+"nghệ thuật chạm khắc để ếm bùa các vật thể, làm phong phú thêm bản sắc của "
+"người lùn."
 
 #. [race]: id=elf
 #: data/core/units.cfg:106
@@ -5650,35 +5641,37 @@ msgstr ""
 "đời dài khác thường - đa số, trừ khi do bệnh tật, tai nạn hoặc chiến tranh, "
 "sống đến tận hai thế kỷ rưỡi. Một số thần tiên sở hữu năng lực phép thuật "
 "cao, được biết có thể sống thêm một thế kỷ nữa, nhưng hầu hết các thần tiên "
-"bắt đầu trở nên già yếu ở khoảng giữa 250 và 300 tuổi, sau đó ra đi nhanh "
+"bắt đầu trở nên già yếu ở khoảng giữa 250 đến 300 tuổi, sau đó ra đi nhanh "
 "chóng, thường là sau một hoặc hai năm.\n"
 "\n"
-"Thần tiên vốn có phép thuật ở mức độ nhỏ. Dù đa số không thể điều khiển phép "
-"thuật một cách trực tiếp, nhưng sự có mặt tiềm ẩn của nó cho họ cảm nhận sắc "
-"bén và cuộc sống lâu dài. Nhiều thần tiên có tài năng thiên hướng phép thuật "
-"như tài thiện xạ hoặc ẩn nấp, cho phép họ thực hiện những công việc mà hầu "
-"hết những người bình thường sẽ cảm thấy ngạc nhiên. Những thần tiên học cách "
-"sử dụng sức mạnh này có thể trở nên thực sự ghê gớm khi sử dụng nó. Nhiều "
-"thần tiên chọn sử dụng năng khiếu của mình để điều trị cho người khác.\n"
+"Thần tiên vốn sở hữu năng lực phép thuật ở mức độ nhỏ. Dù đa số không thể "
+"điều khiển phép thuật một cách trực tiếp, nhưng sự có mặt tiềm ẩn của nó cho "
+"họ cảm nhận sắc bén và cuộc sống lâu dài. Nhiều thần tiên có tài năng thiên "
+"hướng phép thuật như tài thiện xạ hoặc ẩn nấp, cho phép họ thực hiện những "
+"công việc mà hầu hết những người bình thường sẽ cảm thấy ngạc nhiên. Những "
+"thần tiên học cách sử dụng sức mạnh này có thể trở nên thực sự ghê gớm khi "
+"sử dụng nó. Nhiều thần tiên chọn sử dụng năng khiếu của mình để điều trị cho "
+"người khác.\n"
 "\n"
 "Một số ít thần tiên, mạo hiểm theo con đường phép thuật thần bí, trở nên "
-"nhạy cảm với sự hiện diện của thép lạnh. Truyền thuyết thần tiên kể rằng "
-"điều này đã từng rất phổ biến trong quá khứ xa xôi.\n"
+"nhạy cảm với sự hiện diện của thép lạnh và còn có thể bị thiêu đốt bởi nó. "
+"Truyền thuyết thần tiên kể rằng điều này đã từng rất phổ biến trong quá khứ "
+"xa xôi.\n"
 "\n"
 "Thần tiên dành nhiều thời gian để mài dũa tài năng. Những ai không giỏi phép "
 "thuật thường tập trung thời gian để rèn luyện kỹ năng thể chất. Nhờ đó, thần "
 "tiên vượt trội về cung thuật, có lẽ là phương pháp chiến đấu quan trọng nhất "
 "của họ. Hầu hết quân đội thần tiên đều mang cung và không một loài nào khác "
 "có thể sánh với các cung thủ ở tốc độ và độ chính xác. Tất cả các thần tiên "
-"cũng đều có chung một tình cảm mãnh liệt với thiên nhiên tươi đẹp. Họ thường "
-"cảm thấy không thoải mái khi ở trong những không gian trống trải không có "
-"cây cối. Họ sống chủ yếu trong những khu rừng của Đại Lục Địa; như "
+"cũng đều có chung một tình cảm mãnh liệt với thiên nhiên nguyên thủy. Họ "
+"thường cảm thấy không thoải mái khi ở trong những không gian trống trải "
+"không có cây cối. Họ sống chủ yếu trong những khu rừng của Đại Lục Địa; như "
 "Aethenwood ở phía tây nam, Wesmere ở phía tây bắc và những khu rừng lớn phía "
 "bắc mà khu rừng Lintanir là rìa cực nam.\n"
 "\n"
-"Thần tiên là loài lâu năm nhất của lục địa, cùng với ngoại lệ có thể là quỷ "
-"khổng lồ. Nhiều nơi cư ngụ của họ không thể tính tuổi một cách đáng tin cậy, "
-"chắc chắn đã tồn tại trên một thiên niên kỷ."
+"Thần tiên là loài lâu năm nhất của lục địa, với ngoại lệ có thể là quỷ núi. "
+"Nhiều nơi cư ngụ của họ không thể tính tuổi một cách đáng tin cậy, chắc chắn "
+"đã tồn tại trên một thiên niên kỷ."
 
 #. [race]: id=goblin, description=
 #: data/core/units.cfg:128
@@ -5766,18 +5759,18 @@ msgid ""
 "general, the Clan warriors are less organized than the civilized fighters, "
 "and the strengths and weaknesses of these groups complement each other."
 msgstr ""
-"Loài người là một chủng tộc cực kỳ phong phú. Ban đầu đến từ Lục Địa Cũ, "
-"nhưng con người đã trải rộng trên khắp thế giới và phân chia thành nhiều nền "
-"văn hóa và chủng tộc khác nhau. Mặc dù không có phép thuật như các sinh vật "
-"khác, nhưng con người có thể tìm hiểu cách sử dụng nó và học được nhiều kiểu "
-"hơn hầu hết các loài khác. Con người không có khả năng hay năng lực gì thực "
-"sự đặc biệt ngoài tài linh hoạt và nghị lực. Thường bất hòa với các loài "
-"khác, nhưng con người đôi khi có thể liên minh với những loài ít hung hãn "
-"như thần tiên và người lùn. Một số người cũng không ngần ngại hay chùn bước "
-"khi mướn lính đánh thuê người thú. Con người không có kẻ thù bẩm sinh, mặc "
-"dù đa số, cũng giống như hầu hết người của mọi loài khác, căm ghét theo bản "
-"năng loài ma quỷ. Con người thấp hơn thần tiên, nhưng vẫn cao hơn người lùn. "
-"Màu da có thể biến đổi khác nhau, từ gần như trắng đến nâu sẫm.\n"
+"Loài người là một chủng tộc cực kỳ phong phú. Ban đầu đến từ Lục Địa Cũ, con "
+"người đã trải rộng trên khắp thế giới và phân chia thành nhiều nền văn hóa "
+"và chủng tộc khác nhau. Mặc dù không có phép thuật như các sinh vật khác, "
+"nhưng con người có thể tìm hiểu cách sử dụng nó và học được nhiều kiểu hơn "
+"hầu hết các loài khác. Con người không có khả năng hay năng lực gì thực sự "
+"đặc biệt ngoài tài linh hoạt và nghị lực. Thường bất hòa với các loài khác, "
+"nhưng con người đôi khi có thể liên minh với những loài ít hung hãn như thần "
+"tiên và người lùn. Một số người cũng không ngần ngại hay chùn bước khi mướn "
+"lính đánh thuê người thú. Con người không có kẻ thù bẩm sinh, mặc dù đa số, "
+"cũng giống như hầu hết người của mọi loài khác, căm ghét theo bản năng loài "
+"ma quái. Con người thấp hơn thần tiên, nhưng vẫn cao hơn người lùn. Màu da "
+"có thể biến đổi khác nhau, từ gần như trắng đến nâu sẫm.\n"
 "\n"
 "<header>text='Thần dân của vương triều'</header>\n"
 "Có nhiều nhóm người khác nhau, nhưng đa số trên Đại Lục Địa đều sống dưới sự "
@@ -5821,12 +5814,12 @@ msgstr "Thằn lằn"
 #. [race]: id=mechanical, description=
 #: data/core/units.cfg:188
 msgid "race^Mechanical"
-msgstr "Cơ giới"
+msgstr "Máy móc"
 
 #. [race]: id=mechanical, description=
 #: data/core/units.cfg:189
 msgid "race+plural^Mechanical"
-msgstr "Cơ giới"
+msgstr "Máy móc"
 
 #. [race]: id=merman, description=
 #: data/core/units.cfg:199
@@ -5871,17 +5864,17 @@ msgstr "Người rắn"
 #. [race]: id=ogre, description=
 #: data/core/units.cfg:228
 msgid "race^Ogre"
-msgstr "Quỷ ăn thịt người"
+msgstr "Quỷ khổng lồ"
 
 #. [race]: id=ogre, description=
 #: data/core/units.cfg:229
 msgid "race+female^Ogre"
-msgstr "Quỷ ăn thịt người"
+msgstr "Quỷ khổng lồ"
 
 #. [race]: id=ogre, description=
 #: data/core/units.cfg:230
 msgid "race^Ogres"
-msgstr "Quỷ ăn thịt người"
+msgstr "Quỷ khổng lồ"
 
 #. [race]: id=orc
 #: data/core/units.cfg:239
@@ -5964,7 +5957,7 @@ msgstr ""
 "vật tàn bạo với cả đồng loại, nhưng chúng có xu hướng bầy đàn; một cá thể "
 "người thú không bao giờ đi lâu hay sống riêng lẻ theo từng nhóm nhỏ.\n"
 "\n"
-"<header>text='Đời sống xã hội'</header>\n"
+"<header>text='Xã hội'</header>\n"
 "Gần như mọi cá thể người thú đều là thành viên của một bộ lạc hoặc một thị "
 "tộc. Mối quan hệ giữa các bộ lạc cạnh nhau thường là bạo lực, trừ trường hợp "
 "có một kẻ thù chung đe dọa sự tồn tại của chúng hoặc những viễn cảnh cướp "
@@ -5988,47 +5981,47 @@ msgstr ""
 "\n"
 "Người thú sống chủ yếu trong những vùng hoang dã, thường ở chân đồi hoặc "
 "vùng núi, đôi khi trong hang động. Chúng không trồng trọt cũng không chăn "
-"nuôi, mà chỉ đi săn như thể dáng vóc và tính tàn bạo của chúng đã quy định "
-"như vậy. Nhờ số lượng lớn, chúng có thể săn một vùng gần như sạch sẽ bất cứ "
-"con gì to hơn loài chuột trong khoảng thời gian tương đối ngắn. Chính vì "
-"điều này và sự lãnh đạo không ổn định của chúng, các bộ lạc người thú có xu "
-"hướng sống kiểu nửa du cư, không bao giờ định cư ở một vùng quá lâu. Những "
-"bộ lạc lớn hơn có thể ổn định ở một vùng trong vài năm hoặc thậm chí vài "
-"thập kỷ và xây dựng các doanh trại lớn gần giống các thành phố, nhưng các "
-"doanh trại này cũng có thể dễ dàng bị tháo dỡ và bỏ hoang nếu cần di chuyển "
-"quân đoàn.\n"
+"nuôi, nhưng là một thợ săn thành thạo như là kết quả của dáng vóc và tính "
+"tàn bạo của chúng. Nhờ số lượng lớn, chúng có thể săn một vùng gần như sạch "
+"sẽ bất cứ con gì to hơn loài chuột trong khoảng thời gian tương đối ngắn. "
+"Chính vì điều này và sự lãnh đạo không ổn định của chúng, các bộ lạc người "
+"thú có xu hướng sống kiểu nửa du cư, không bao giờ định cư ở một vùng quá "
+"lâu. Những bộ lạc lớn hơn có thể ổn định ở một vùng trong vài năm hoặc thậm "
+"chí vài thập kỷ và xây dựng các doanh trại lớn gần giống các thành phố, "
+"nhưng các doanh trại này cũng có thể dễ dàng bị tháo dỡ và bỏ hoang nếu cần "
+"di chuyển binh đoàn.\n"
 "\n"
 "Người thú sống lâu nhất được biết vào khoảng 50 đến 60 tuổi, nhưng rất ít cá "
-"thể đã từng sống qua hai hoặc ba thập kỷ trước khi gặp gỡ định mệnh, chúng "
-"chết trong chiến tranh hoặc dưới tay một trong số họ hàng của chúng. Những "
-"cá thể người thú già nhất thường là pháp sư, có lẽ là những cá thể duy nhất "
-"mà hầu hết người thú coi là đáng tin cậy và trung lập. Không ai biết nguồn "
-"gốc của phong tục này, vì các pháp sư không đóng góp trực tiếp nhiều cho xã "
-"hội người thú mà chỉ hoạt động như những cố vấn - không phải là thứ bọn "
-"người thú coi trọng. Pháp sư người thú đối lập nhiều với hầu hết các cá thể "
-"người thú khác: chúng thường tiều tụy, yếu đuối và thiếu năng lực chiến đấu. "
-"Dù dựa vào sức mạnh thô sơ, nhưng không phải mọi cá thể người thú khi lớn "
-"lên đều sở hữu sức mạnh. Nhiều cá thể người thú khi sinh ra nhỏ hơn và yếu "
-"hơn đồng loại, và hầu như ngay từ lúc mới sinh ra đã bị các cá thể anh em "
-"mạnh hơn đặt vào vị trí. Những cá thể mạnh sẽ chiếm đoạt gần hết thức ăn và "
-"do đó vẫn lớn lên mạnh hơn, trong khi những cá thể yếu thì không. Nhiều "
-"trong số các cá thể này có xu hướng chuyên môn hóa các kỹ năng khác, như bắn "
-"cung hoặc ám sát."
+"thể đã từng sống qua hai hoặc ba thập kỷ trước khi gặp gỡ cái chết trong "
+"chiến tranh hoặc dưới tay một trong số đồng loại của chúng. Những cá thể "
+"người thú già nhất thường là pháp sư, có lẽ là những cá thể duy nhất mà hầu "
+"hết người thú coi là đáng tin cậy và trung lập. Không ai biết nguồn gốc của "
+"phong tục này, vì các pháp sư không đóng góp trực tiếp nhiều cho xã hội "
+"người thú mà chỉ hoạt động như những cố vấn - không phải là thứ bọn người "
+"thú coi trọng. Pháp sư người thú đối lập nhiều với hầu hết các cá thể người "
+"thú khác: chúng thường tiều tụy, yếu đuối và thiếu năng lực chiến đấu. Dù "
+"dựa vào sức mạnh thô sơ, nhưng không phải mọi cá thể người thú khi lớn lên "
+"đều sở hữu sức mạnh. Nhiều cá thể người thú khi sinh ra nhỏ hơn và yếu hơn "
+"đồng loại, và hầu như ngay từ lúc mới sinh ra đã bị các cá thể anh em mạnh "
+"hơn bắt nạt. Những cá thể mạnh sẽ chiếm đoạt gần hết thức ăn và do đó vẫn "
+"lớn lên mạnh hơn, trong khi những cá thể yếu thì không. Nhiều trong số các "
+"cá thể này có xu hướng chuyên môn hóa các kỹ năng khác, như bắn cung hoặc ám "
+"sát."
 
 #. [race]: id=troll
 #: data/core/units.cfg:258
 msgid "race^Troll"
-msgstr "Quỷ khổng lồ"
+msgstr "Quỷ núi"
 
 #. [race]: id=troll
 #: data/core/units.cfg:259
 msgid "race+female^Troll"
-msgstr "Quỷ khổng lồ"
+msgstr "Quỷ núi"
 
 #. [race]: id=troll
 #: data/core/units.cfg:260
 msgid "race^Trolls"
-msgstr "Quỷ khổng lồ"
+msgstr "Quỷ núi"
 
 #. [race]: id=troll
 #: data/core/units.cfg:266
@@ -6068,57 +6061,55 @@ msgid ""
 "dwarves who migrated there. Trolls are a common sight on the mountain ranges "
 "north and east of Wesnoth, and wherever Orcish hordes travel."
 msgstr ""
-"Quỷ khổng lồ là những sinh vật cổ xưa, một trong những loài lâu năm nhất "
-"trên Đại Lục Địa. Chúng to lớn, chậm chạp, chất phác và sống cực kỳ lâu "
-"trong các hang sâu hoặc các đỉnh núi cao. Đặc trưng gần như duy nhất của quỷ "
-"khổng lồ là sức sống nội tại giúp chúng chịu đựng và phục hồi từ bên trong. "
-"Do đó, chúng sống rất khác biệt với hầu hết các sinh vật khác. Quỷ khổng lồ "
-"có rất ít nhu cầu thực tế: chúng chỉ cần một chút thức ăn hoặc nước, do đó "
-"chúng không có nhiều mục tiêu để theo đuổi ngoài việc bảo vệ bản thân trước "
-"những kẻ thù địch. Điều này có nghĩa là chúng hiếm khi phải lo lắng về bất "
-"cứ thứ gì và có thể dành nhiều thời gian để ngủ hoặc thưởng ngoạn. Quỷ khổng "
-"lồ có mối quan hệ kỳ lạ với tự nhiên. Chúng không gắn bó với những thứ sống "
-"động như các thần tiên, mà với đất và đá. Chúng cũng hơi tò mò về môi trường "
-"xung quanh, nhiều cá thể trẻ tuổi thậm chí còn thích ngao du và khám phá thế "
-"giới. Khi quỷ khổng lồ già đi, chúng có xu hướng trở nên ngày càng thụ động, "
-"dần dần ít quan tâm đến môi trường và dành nhiều thời gian để ngủ trong một "
-"góc yên tĩnh, thân thuộc của hang động nơi chúng ở. Chúng ngủ như thế đến "
-"khi vĩnh viễn ra đi, xác của chúng từ từ biến thành những bức tượng đá bất "
-"động.\n"
+"Quỷ núi là những sinh vật cổ xưa, một trong những loài lâu năm nhất trên Đại "
+"Lục Địa. Chúng to lớn, chậm chạp, suy nghĩ đơn giản và sống cực kỳ lâu trong "
+"các hang sâu hoặc các đỉnh núi cao. Đặc trưng gần như duy nhất của quỷ núi "
+"là sức sống bên trong giúp chúng chịu đựng và phục hồi từ bên trong. Do đó, "
+"chúng sống rất khác biệt với hầu hết các sinh vật khác. Quỷ núi có rất ít "
+"nhu cầu thạt sự: chúng chỉ cần một chút thức ăn hoặc nước, do đó chúng không "
+"có nhiều mục tiêu để theo đuổi ngoài việc bảo vệ bản thân trước những kẻ thù "
+"địch. Điều này có nghĩa là chúng hiếm khi phải lo lắng về bất cứ thứ gì và "
+"có thể dành nhiều thời gian để ngủ hoặc thưởng ngoạn. Quỷ núi có mối quan hệ "
+"kỳ lạ với tự nhiên. Chúng không gắn bó với những thứ sống động như các thần "
+"tiên, mà với đất và đá. Chúng cũng hơi tò mò về môi trường xung quanh, nhiều "
+"cá thể trẻ tuổi thậm chí còn thích ngao du và khám phá thế giới. Khi quỷ núi "
+"già đi, chúng có xu hướng trở nên ngày càng thụ động, dần dần ít quan tâm "
+"đến môi trường và dành nhiều thời gian để ngủ trong một góc yên tĩnh, thân "
+"thuộc của hang động nơi chúng ở. Chúng ngủ như thế đến khi vĩnh viễn ra đi, "
+"xác của chúng từ từ biến thành những bức tượng đá bất động.\n"
 "\n"
-"Quỷ khổng lồ bị nhiều người coi là một loài quái vật man rợ. Quan niệm sai "
-"lầm phổ biến này một phần là do bọn người thú đã thuyết phục quỷ khổng lồ "
-"gia nhập quân đội của chúng. Bởi vì quỷ khổng lồ khá ngờ nghệch và không "
-"hiểu được mưu đồ của các loài khác, hoặc không quan tâm, nên bọn người thú "
-"thường dễ dàng dụ dỗ một nhóm quỷ khổng lồ rằng bằng cách tham gia quân đội "
-"người thú, quỷ khổng lồ sẽ có cơ hội trả thù những kẻ trước đây đã từng săn "
-"đuổi chúng. Những lính mới này sau đó sẽ được điều ra tấn công bất cứ kẻ nào "
-"mà bọn người thú hiện đang xung đột, không biết trước đó có phải là kẻ thù "
-"của quỷ khổng lồ hay không; điều đó khiến những con quỷ khổng lồ ngốc nghếch "
-"thậm chí còn có nhiều kẻ thù hơn cả bọn người thú. Kẻ thù phổ biến nhất của "
-"quỷ khổng lồ là người lùn, và tình trạng thù địch giữa hai loài này đã có từ "
-"rất lâu.\n"
+"Quỷ núi bị nhiều người coi là một loài quái vật man rợ. Quan niệm sai lầm "
+"phổ biến này một phần là do bọn người thú đã thuyết phục quỷ núi gia nhập "
+"quân đội của chúng. Bởi vì quỷ núi khá ngờ nghệch và không hiểu được mưu đồ "
+"của các loài khác, hoặc không quan tâm, nên bọn người thú thường dễ dàng dụ "
+"dỗ một nhóm quỷ núi rằng bằng cách tham gia quân đội người thú, quỷ núi sẽ "
+"có cơ hội trả thù những kẻ trước đây đã từng săn đuổi chúng. Những lính mới "
+"này sau đó sẽ được điều ra tấn công bất cứ kẻ nào mà bọn người thú hiện đang "
+"xung đột, không biết trước đó có phải là kẻ thù của quỷ núi hay không; điều "
+"đó khiến những con quỷ núi bị lừa dối thậm chí còn có nhiều kẻ thù hơn cả "
+"bọn người thú. Kẻ thù phổ biến nhất của quỷ núi là người lùn, và tình trạng "
+"thù địch giữa hai loài này đã có từ rất lâu.\n"
 "\n"
 "<header>text='Địa lý'</header>\n"
-"Quỷ khổng lồ sống ở vùng núi của Đại Lục Địa từ lâu đời hơn người lùn - "
-"những người đã di cư đến đó. Quỷ khổng lồ là một cảnh tượng thường thấy trên "
-"những dãy núi phía bắc và phía đông Wesnoth, và bất cứ nơi nào đạo quân "
-"người thú đi qua."
+"Quỷ núi sống ở vùng núi của Đại Lục Địa từ lâu đời hơn người lùn - những "
+"người đã di cư đến đó. Quỷ núi là một loài thường được thấy trên những dãy "
+"núi phía bắc và phía đông Wesnoth, và bất cứ nơi nào đạo quân người thú đi "
+"qua."
 
 #. [race]: id=undead
 #: data/core/units.cfg:280
 msgid "race^Undead"
-msgstr "Ma quỷ"
+msgstr "Ma quái"
 
 #. [race]: id=undead
 #: data/core/units.cfg:281
 msgid "race+female^Undead"
-msgstr "Ma quỷ"
+msgstr "Ma quái"
 
 #. [race]: id=undead
 #: data/core/units.cfg:282
 msgid "race+plural^Undead"
-msgstr "Ma quỷ"
+msgstr "Ma quái"
 
 #. [race]: id=undead
 #: data/core/units.cfg:288
@@ -6148,14 +6139,14 @@ msgid ""
 "only in the wake of Haldric I, they were not completely unheard of by elves "
 "and dwarves before that."
 msgstr ""
-"Ma quỷ thực sự không phải là một loài sinh vật, nhưng thường được coi như "
+"Ma quái thực sự không phải là một loài sinh vật, nhưng thường được coi như "
 "thế. Gần như bất kỳ sinh vật nào đã chết, nhờ một pháp sư gọi hồn đủ năng "
-"lực, cũng đều có thể hồi sinh với sự sống giả tạo. Ma quỷ phần lớn là những "
+"lực, cũng đều có thể hồi sinh với sự sống giả tạo. Ma quái phần lớn là những "
 "kết cấu trái với tự nhiên nhưng không có trí tuệ, chỉ biết tuân lệnh bất cứ "
 "kẻ nào đã tạo ra chúng, mà không cần hỏi hay suy nghĩ. Điều bí ẩn lớn của "
 "thuật gọi hồn là những kết cấu đó được giữ vững bằng cách nào mà không cần "
-"sự nỗ lực liên tục từ pháp sư gọi hồn. Một sinh vật ma quỷ không cần sự chú "
-"tâm liên tục của pháp sư gọi hồn để ra lệnh và duy trì, mà vẫn có thể hoạt "
+"sự chú ý liên tục từ pháp sư gọi hồn. Một sinh vật ma quái không cần sự chú "
+"ý liên tục của pháp sư gọi hồn để ra lệnh và duy trì, mà vẫn có thể hoạt "
 "động tự lập theo lệnh của chủ nhân. Hiếm khi, có thể là một lần mỗi vài "
 "tháng, pháp sư gọi hồn cần bảo trì tác phẩm của mình.\n"
 "\n"
@@ -6163,13 +6154,13 @@ msgstr ""
 "loài có năng khiếu phép thuật như thần tiên và người cá cũng kể chỉ có rất "
 "ít người của họ đã từng nghiên cứu ma thuật. Người ta phỏng đoán rằng phép "
 "thuật gọi hồn đòi hỏi khả năng thích ứng lớn và một tâm trí linh hoạt, những "
-"điều kiện này phổ biến nhất ở loài người. Mục tiêu tột đỉnh của các pháp sư "
-"gọi hồn là dùng phép thuật để kéo dài sự sống, sau đó hóa thân với bất cứ "
-"giá nào, cuối cùng thoát khỏi cái chết bằng cách giữ lại trí tuệ và tinh "
-"thần của mình.\n"
+"điều kiện này phổ biến nhất ở loài người. Mục tiêu lớn nhất của các pháp sư "
+"gọi hồn là dùng phép thuật để kéo dài sự sống, sau đó tự biến đổi với bất cứ "
+"giá nào, cuối cùng thoát khỏi cái chết bằng cách giữ lại trí tuệ và linh hồn "
+"của mình.\n"
 "\n"
 "<header>text='Địa lý'</header>\n"
-"Những tên chúa tể ma quỷ đã đến Đại Lục Địa với số lượng lớn theo chân "
+"Những tên chúa tể ma quái đã đến Đại Lục Địa với số lượng lớn theo chân "
 "Haldric I, nhưng thần tiên và người lùn hoàn toàn chưa từng nghe nói về "
 "chúng trước đó."
 
@@ -6297,7 +6288,7 @@ msgstr "Đầm lầy $name"
 #. [language]
 #: data/hardwired/english.cfg:26
 msgid "$name|bury,$name|ham,$name|ton,$name|bury"
-msgstr "Làng $name"
+msgstr "mộ $name, làng $name"
 
 #. [language]
 #: data/hardwired/english.cfg:27
@@ -6431,9 +6422,9 @@ msgid ""
 "if you coddle him too much he may be at too low a level to survive future "
 "battles."
 msgstr ""
-"Đừng chểnh mảng việc giành kinh nghiệm cho người lãnh đạo của bạn! Bạn cần "
+"Đừng sao lãng việc giành điểm kinh nghiệm cho người chỉ huy của bạn! Bạn cần "
 "giữ anh ta an toàn, nhưng nếu bạn nâng niu quá mức, anh ta sẽ quá yếu để có "
-"thể sống sót trong những trận chiến tương lai."
+"thể sống sót trong những trận chiến trong tương lai."
 
 #. [tip]
 #: data/hardwired/tips.cfg:8 data/hardwired/tips.cfg:136
@@ -6449,7 +6440,7 @@ msgid ""
 "injured units on his next turn."
 msgstr ""
 "Trong trình đơn 'Hành động', bạn có thể chọn 'Hiện di chuyển của kẻ thù' để "
-"tô sáng tất cả các hình lục giác mà đối thủ có thể di chuyển đến (giả sử các "
+"tô sáng tất cả các ô lục giác mà đối thủ có thể di chuyển đến (giả sử các "
 "đơn vị của bạn vẫn ở tại chỗ). Sử dụng thao tác này để đảm bảo kẻ thù không "
 "thể tiếp cận các đơn vị yếu hoặc bị thương của bạn ở lượt kế tiếp."
 
@@ -6470,7 +6461,7 @@ msgstr ""
 #: data/hardwired/tips.cfg:200 data/hardwired/tips.cfg:204
 #: data/hardwired/tips.cfg:209
 msgid "— The Wesnoth Tactical Guide"
-msgstr "- Chỉ dẫn mưu lược Wesnoth"
+msgstr "- Chỉ dẫn chiến thuật Wesnoth"
 
 #. [tip]
 #: data/hardwired/tips.cfg:15
@@ -6481,7 +6472,7 @@ msgid ""
 msgstr ""
 "Các đơn vị có đặc điểm 'thông minh' cần điểm kinh nghiệm để nâng cấp ít hơn. "
 "Ban đầu trong một chiến dịch, cố gắng để các đơn vị này đánh đòn kết liễu, "
-"như thế bạn sẽ có quân lính trình độ cao sớm hơn."
+"như thế bạn sẽ có quân lính cấp cao sớm hơn."
 
 #. [tip]
 #: data/hardwired/tips.cfg:16
@@ -6495,10 +6486,10 @@ msgid ""
 "By placing two units on opposite sides of an enemy, their zones of control "
 "will restrict it to one hex of movement in any direction."
 msgstr ""
-"Thủ đoạn bao vây là rất mạnh, đặc biệt để chống lại những đối thủ di chuyển "
-"nhanh. Bằng cách bố trí hai đơn vị ở hai phía đối diện của một kẻ thù, vùng "
-"kiểm soát của chúng sẽ hạn chế kẻ thù chỉ còn một hình lục giác di chuyển "
-"theo bất kỳ hướng nào."
+"Chiến thuật bao vây rất lợi hại, đặc biệt để chống lại những đối thủ di "
+"chuyển nhanh. Bằng cách bố trí hai đơn vị ở hai phía đối diện của một kẻ "
+"thù, vùng kiểm soát của chúng sẽ hạn chế kẻ thù chỉ còn một ô lục giác di "
+"chuyển theo bất kỳ hướng nào."
 
 #. [tip]
 #: data/hardwired/tips.cfg:20 data/hardwired/tips.cfg:128
@@ -6513,7 +6504,7 @@ msgid ""
 "Placing units wisely can sometimes let you reach a village a turn earlier."
 msgstr ""
 "Bạn có thể truy cập các lệnh 'Tuyển quân' và 'Gọi lại' bằng cách nhấn chuột "
-"phải trên một ô lâu đài. Với thao tác đó, bạn có thể chọn hình lục giác bạn "
+"phải trên một ô lâu đài. Với thao tác đó, bạn có thể chọn ô lục giác bạn "
 "muốn đặt đơn vị mới. Bố trí các đơn vị một cách khôn ngoan đôi khi có thể "
 "cho phép bạn đến được một ngôi làng sớm hơn một lượt."
 
@@ -6524,9 +6515,9 @@ msgid ""
 "'Status Table' will let you know how your enemies are doing, and how you are "
 "doing in comparison."
 msgstr ""
-"Có một số màn hình tổng kết hữu ích trong trình đơn chính: lấy ví dụ, 'Bảng "
-"trạng thái' sẽ cho bạn biết cũng như so sánh cách kẻ thù đang làm với cách "
-"bạn đang làm."
+"Có một số bảng tổng kết hữu ích trong trình đơn chính: lấy ví dụ, 'Bảng "
+"trạng thái' sẽ cho bạn biết tình hình của kẻ địch cũng như tình hình của "
+"mình."
 
 #. [tip]
 #: data/hardwired/tips.cfg:31
@@ -6535,10 +6526,10 @@ msgid ""
 "important when moving through difficult terrain such as water or caves. It "
 "can make the difference between being able to move one hex or two."
 msgstr ""
-"Các đơn vị có đặc điểm 'nhanh nhẹn' di chuyển thêm một hình lục giác mỗi "
-"lượt. Điều này có thể rất quan trọng khi di chuyển qua địa hình khó như nước "
-"hoặc hang động. Nó có thể tạo nên sự khác biệt lớn giữa việc có thể di "
-"chuyển một hay hai hình lục giác."
+"Các đơn vị có đặc điểm 'nhanh nhẹn' di chuyển thêm một ô lục giác mỗi lượt. "
+"Điều này có thể rất quan trọng khi di chuyển qua địa hình khó như nước hoặc "
+"hang động. Nó có thể tạo nên sự khác biệt lớn giữa việc có thể di chuyển một "
+"hay hai ô lục giác."
 
 #. [tip]
 #: data/hardwired/tips.cfg:32 data/hardwired/tips.cfg:104
@@ -6551,9 +6542,8 @@ msgid ""
 "After you have played a few scenarios, read the 'Gameplay' section in the "
 "help screen carefully. Details become important as scenarios get harder!"
 msgstr ""
-"Sau khi bạn đã chơi một vài kịch bản, đọc cẩn thận phần 'Cách chơi' trong "
-"màn hình trợ giúp. Chi tiết trở nên quan trọng khi các kịch bản trở nên khó "
-"hơn!"
+"Sau khi bạn đã chơi qua một vài màn, đọc cẩn thận phần 'Cách chơi' trong màn "
+"hình trợ giúp. Chi tiết trở nên quan trọng khi các màn trở nên khó hơn!"
 
 #. [tip]
 #: data/hardwired/tips.cfg:39
@@ -6562,9 +6552,9 @@ msgid ""
 "level units that are about to level up than with those same units at a "
 "higher level."
 msgstr ""
-"Bắt đầu kịch bản kế tiếp trong một chiến dịch với các đơn vị trình độ thấp "
-"nhưng sắp sửa nâng cấp thường tốt hơn là bắt đầu với cùng các đơn vị đó ở "
-"trình độ cao."
+"Bắt đầu màn kế tiếp trong một chiến dịch với các đơn vị trình độ thấp nhưng "
+"sắp sửa nâng cấp thường tốt hơn là bắt đầu với cùng các đơn vị đó ở trình độ "
+"cao."
 
 #. [tip]
 #: data/hardwired/tips.cfg:43
@@ -6601,8 +6591,8 @@ msgstr ""
 msgid ""
 "An otherwise sound plan can fail if you attack at the wrong time of day."
 msgstr ""
-"Một kế hoạch nghe có vẻ hợp lý vẫn có thể thất bại nếu bạn tấn công vào thời "
-"điểm trong ngày không hợp lý."
+"Một kế hoạch nghe có vẻ hợp lý vẫn có thể thất bại nếu bạn tấn công nhầm vào "
+"thời điểm trông ngày."
 
 #. [tip]
 #: data/hardwired/tips.cfg:52 data/hardwired/tips.cfg:76
@@ -6620,9 +6610,9 @@ msgid ""
 msgstr ""
 "Nếu bạn đang chơi với 'màn che' hoặc 'sương mù chiến tranh' được bật, bạn sẽ "
 "không biết bạn đang đối mặt với những gì. Trong trường hợp này, các đơn vị "
-"trinh sát tầm xa là xứng đáng với chi phí của chúng. Cố gắng chọn những "
-"trinh sát có thể dễ dàng di chuyển băng qua địa hình bao quanh, bởi vì các "
-"đơn vị nhìn xa bằng số di chuyển của chúng trong một lượt."
+"trinh sát tầm xa hoàn toàn xứng đáng với chi phí của chúng. Cố gắng chọn "
+"những trinh sát có thể dễ dàng di chuyển băng qua địa hình bao quanh, bởi vì "
+"các đơn vị nhìn xa bằng số di chuyển của chúng trong một lượt."
 
 #. [tip]
 #: data/hardwired/tips.cfg:59
@@ -6633,7 +6623,7 @@ msgid ""
 "is resistant to, and which will affect it the most."
 msgstr ""
 "Có sáu kiểu tấn công: đâm, chém, va chạm, lửa, lạnh và bí kíp. Các đơn vị "
-"khác nhau có nhược điểm với các kiểu tấn công khác nhau. Nhấn chuột phải "
+"khác nhau có nhược điểm đối với các kiểu tấn công khác nhau. Nhấn chuột phải "
 "trên một đơn vị và chọn 'Mô tả đơn vị' để xem nó kháng cự với kiểu tấn công "
 "nào, và kiểu tấn công nào sẽ tác động đến nó nhiều nhất."
 
@@ -6658,11 +6648,11 @@ msgid ""
 "not be removed unless the unit regenerates, or begins a turn in a village or "
 "next to a unit with the 'Cures' ability."
 msgstr ""
-"Các đơn vị bị nhiễm độc sẽ mất tám năng lượng mỗi lượt đến khi chỉ còn một "
-"điểm năng lượng. Chúng vẫn ở ngưỡng cửa chết chóc đến khi được giải độc. "
-"Điều trị viên có thể ngăn chặn việc hủy hoại một đơn vị bị nhiễm độc, nhưng "
-"chất độc vẫn không bị loại bỏ trừ khi đơn vị tái tạo, bắt đầu lượt trong một "
-"ngôi làng hoặc bên cạnh một đơn vị có khả  năng 'giải độc'."
+"Các đơn vị bị nhiễm độc sẽ mất tám đơn vị máu mỗi lượt đến khi chỉ còn một "
+"đơn vị máu. Chúng sẽ ở ngưỡng cửa của cái chết đến khi được giải độc. Điều "
+"trị viên có thể ngăn chặn việc hủy hoại một đơn vị bị nhiễm độc, nhưng chất "
+"độc vẫn không bị loại bỏ trừ khi đơn vị tái tạo, bắt đầu lượt trong một ngôi "
+"làng hoặc bên cạnh một đơn vị có khả  năng 'giải độc'."
 
 #. [tip]
 #: data/hardwired/tips.cfg:71
@@ -6671,7 +6661,7 @@ msgid ""
 "'Actions' menu. By recalling the same units over and over, you can build up "
 "a powerful and experienced army."
 msgstr ""
-"Bạn có thể sử dụng các đơn vị từ một kịch bản trước bằng cách chọn 'Gọi lại' "
+"Bạn có thể sử dụng các đơn vị từ một màn trước bằng cách chọn 'Gọi lại' "
 "trong trình đơn 'Hành động'. Bằng cách gọi đi gọi lại các đơn vị, bạn có thể "
 "xây dựng một quân đội hùng mạnh và thiện chiến."
 
@@ -6684,12 +6674,12 @@ msgid ""
 "between them and still create a barrier to the enemy. However, skirmishers "
 "are skilled enough to ignore these zones."
 msgstr ""
-"Các đơn vị có trình độ một và cao hơn có một 'vùng kiểm soát' trong mỗi hình "
-"lục giác bên cạnh chúng. Nếu một đơn vị di chuyển vào trong vùng kiểm soát "
-"của kẻ thù, nó không thể di chuyển thêm ở lượt đó được nữa. Điều này có "
-"nghĩa là hai đơn vị có thể có hai hình lục giác trống giữa chúng và vẫn tạo "
-"được hàng rào ngăn chặn kẻ thù. Tuy nhiên, các đơn vị đột nhập có đủ năng "
-"lực để bỏ qua những vùng này."
+"Các đơn vị có cấp một và cao hơn có một 'Vùng kiểm soát' trong mỗi ô lục "
+"giác bên cạnh chúng. Nếu một đơn vị di chuyển vào trong vùng kiểm soát của "
+"kẻ thù, nó không thể di chuyển thêm ở lượt đó được nữa. Điều này có nghĩa là "
+"hai đơn vị có thể có hai ô lục giác trống giữa chúng và vẫn tạo được hàng "
+"rào ngăn chặn kẻ thù. Tuy nhiên, các đơn vị đột nhập có đủ năng lực để bỏ "
+"qua những vùng này."
 
 #. [tip]
 #: data/hardwired/tips.cfg:79
@@ -6805,7 +6795,8 @@ msgstr ""
 #: data/hardwired/tips.cfg:115
 msgid ""
 "Do not be afraid to retreat and regroup; it is often the key to victory."
-msgstr "Đừng sợ rút lui và tập hợp lại, đó thường là chìa khóa để chiến thắng."
+msgstr ""
+"Đừng ngại rút lui và tập hợp lại, đó thường là chìa khóa để chiến thắng."
 
 #. [tip]
 #: data/hardwired/tips.cfg:116
@@ -6846,8 +6837,8 @@ msgid ""
 "Skeletons are resistant to piercing, bladed and cold-based attacks but are "
 "vulnerable to impact, fire, and arcane attacks."
 msgstr ""
-"Các bộ xương kháng cự với những đòn tấn công đâm, chém và lạnh nhưng dễ bị "
-"tổn thương với những đòn tấn công va chạm, lửa và bí kíp."
+"Các đơn vị lính bộ xương kháng cự với những đòn tấn công đâm, chém và lạnh "
+"nhưng có nhược điểm với những đòn tấn công va chạm, lửa và bí kíp."
 
 #. [tip]
 #: data/hardwired/tips.cfg:131
@@ -6866,9 +6857,9 @@ msgid ""
 "the village and attack you, while enjoying the defense and healing of the "
 "village."
 msgstr ""
-"Cố gắng tránh di chuyển cạnh những ngôi làng chưa bị chiếm giữ. Một đơn vị "
-"kẻ thù có thể di chuyển vào trong làng và tấn công bạn, mà vẫn được hưởng "
-"lợi thế phòng thủ và sự điều trị của ngôi làng."
+"Cố gắng tránh di chuyển quân đến cạnh những ngôi làng chưa bị chiếm giữ. Một "
+"đơn vị kẻ thù có thể di chuyển vào trong làng và tấn công bạn, đồng thời còn "
+"được hưởng lợi thế phòng thủ và sự hồi máu từ ngôi làng."
 
 #. [tip]
 #: data/hardwired/tips.cfg:139
@@ -6885,7 +6876,7 @@ msgstr "- Công chúa Li'sar, năm Wesnoth 515"
 #. [tip]
 #: data/hardwired/tips.cfg:143
 msgid "Read the hotkeys list in the preferences menu."
-msgstr "Đọc danh sách phím nóng trong trình đơn tùy thích."
+msgstr "Đọc danh sách phím tắt trong trình đơn tùy thích."
 
 #. [tip]
 #: data/hardwired/tips.cfg:147
@@ -6932,7 +6923,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:163
 msgid "Arcane attacks are very powerful against undead."
-msgstr "Đòn tấn công bí kíp rất mạnh để chống lại ma quỷ."
+msgstr "Đòn tấn công bí kíp rất mạnh để chống lại ma quái."
 
 #. [tip]
 #: data/hardwired/tips.cfg:164
@@ -6945,8 +6936,8 @@ msgid ""
 "Units are healed when they advance a level. Used wisely, this can turn a "
 "fight."
 msgstr ""
-"Các đơn vị phục hồi năng lượng khi chúng nâng cấp trình độ. Nếu biết sử dụng "
-"một cách khôn ngoan, điều này có thể đổi chiều một trận đấu."
+"Các đơn vị hồi máu khi chúng nâng cấp trình độ. Nếu biết sử dụng một cách "
+"khôn ngoan, điều này có thể cục diện một trận đấu."
 
 #. [tip]
 #: data/hardwired/tips.cfg:171
@@ -6966,11 +6957,10 @@ msgid ""
 "from advancing a level, so it is generally more useful to try to advance "
 "your lower-level units instead."
 msgstr ""
-"Thay vì tăng trình độ, các đơn vị trình độ cao giành được một 'nâng cấp sau "
-"trình độ tối đa', thường tăng năng lượng tối đa của đơn vị lên ba và phục "
-"hồi hoàn toàn. Điều này là ít hơn nhiều so với những lợi ích bình thường có "
-"được từ việc nâng cấp trình độ, do đó tìm cách nâng cấp các đơn vị trình độ "
-"thấp nói chung hữu ích hơn."
+"Thay vì tăng cấp, các đơn vị cấp cao giành được một 'Nâng cấp sau trình độ "
+"tối đa', thường tăng lượng máu tối đa của đơn vị lên ba và hồi máu.Điều này "
+"là ít hơn nhiều so với những lợi ích bình thường có được từ việc nâng cấp "
+"bình thường.Do đó việc nâng cấp các đơn vị cấp thấp luôn hữu ich hơn."
 
 #. [tip]
 #: data/hardwired/tips.cfg:179
@@ -6980,8 +6970,9 @@ msgid ""
 "is best to scout specific types of terrain."
 msgstr ""
 "Trên những bản đồ cho hiệu lực 'màn che' hoặc 'sương mù chiến tranh', tầm "
-"nhìn của một đơn vị bị giới hạn bởi di chuyển tối đa của nó. Nhớ điều này "
-"khi quyết định đơn vị nào là tốt nhất để trinh sát các kiểu địa hình cụ thể."
+"nhìn của một đơn vị bị giới hạn bởi di chuyển tối đa của nó. Ghi nhớ điều "
+"này khi quyết định đơn vị nào là tốt nhất để trinh sát các kiểu địa hình cụ "
+"thể."
 
 #. [tip]
 #: data/hardwired/tips.cfg:183
@@ -6990,7 +6981,7 @@ msgid ""
 "your mouse pointer over one to get an explanation or description."
 msgstr ""
 "Gần như mọi biểu tượng và từ ngữ trong màn hình chơi của Wesnoth đều có một "
-"hộp trợ giúp. Đặt con trỏ chuột lên một mục để nhận giải thích hoặc mô tả."
+"hộp trợ giúp. Rê con trỏ chuột lên một mục để nhận giải thích hoặc mô tả."
 
 #. [tip]
 #: data/hardwired/tips.cfg:187
@@ -7000,7 +6991,7 @@ msgid ""
 "right-hand corner of the game main screen). This information is vital so we "
 "can adjust campaign difficulty."
 msgstr ""
-"Bạn có thể gửi cho dự án Wesnoth một bản tổng kết ẩn danh về tiến triển của "
+"Bạn có thể gửi cho Dự án Wesnoth một bản tổng kết ẩn danh về tiến triển của "
 "bạn, sử dụng nút 'Giúp Wesnoth' (được chỉ thị bằng biểu tượng phong bì gần "
 "góc phải phía dưới trên màn hình chính của trò chơi). Thông tin này là quan "
 "trọng để chúng tôi có thể điều chỉnh độ khó của chiến dịch."
@@ -7012,9 +7003,9 @@ msgid ""
 "veteran to damage a joint target heavily enough for the junior partner to "
 "get in the killing blow."
 msgstr ""
-"Để nâng cấp nhanh chóng các đơn vị trình độ thấp, ghép chúng với một binh sĩ "
-"kỳ cựu và sử dụng binh sĩ kỳ cựu này gây tổn thương nặng nề một đối phương, "
-"đủ cho đơn vị cấp dưới đánh đòn kết liễu."
+"Để nâng cấp nhanh chóng các đơn vị cấp thấp, ghép chúng với một binh sĩ kỳ "
+"cựu và sử dụng binh sĩ kỳ cựu này gây tổn thương nặng nề một đối phương, đủ "
+"cho đơn vị cấp dưới đánh đòn kết liễu."
 
 #. [tip]
 #: data/hardwired/tips.cfg:192
@@ -7028,9 +7019,9 @@ msgid ""
 "Shroud Updates' option on when you need to move units while retaining the "
 "ability to undo."
 msgstr ""
-"Bạn không thể đảo ngược một di chuyển đã mở sương mù hoặc màn che. Bật tùy "
-"chọn 'Trễ cập nhật màn che' khi bạn cần di chuyển đơn vị mà vẫn giữ khả năng "
-"đảo ngược."
+"Bạn không thể đảo ngược một nước đi đã mở sương mù hoặc màn che. Bật tùy "
+"chọn 'Hoãn cập nhật màn che' khi bạn cần di chuyển đơn vị mà vẫn giữ khả "
+"năng đảo ngược."
 
 #. [tip]
 #: data/hardwired/tips.cfg:199
@@ -7058,7 +7049,7 @@ msgid ""
 "In many campaign scenarios, you may issue simple instructions for your "
 "computer-controlled allies using the right-click context menu."
 msgstr ""
-"Trong nhiều kịch bản chiến dịch, bạn có thể cấp những chỉ thị đơn giản cho "
+"Trong nhiều màn của chiến dịch, bạn có thể cấp những chỉ thị đơn giản cho "
 "đồng minh do máy tính điều khiển sử dụng trình đơn ngữ cảnh chuột phải."
 
 #: data/lua/wml-tags.lua:24 src/multiplayer_connect.cpp:1627
@@ -7071,7 +7062,9 @@ msgstr "Thua cuộc:"
 
 #: data/temp-file_send_data_strings.cfg:12
 msgid "About to upload statistics — Help us make Wesnoth better for you!"
-msgstr "Sắp tải lên thống kê - Giúp chúng tôi làm cho Wesnoth tốt hơn cho bạn!"
+msgstr ""
+"Sắp tải lên thông tin thống kê - Giúp chúng tôi làm cho Wesnoth tốt hơn cho "
+"bạn!"
 
 #: data/temp-file_send_data_strings.cfg:13
 msgid "Save my reply and do not ask again"
@@ -7121,7 +7114,7 @@ msgstr "Kết thúc lượt"
 #: data/themes/default.cfg:154 data/themes/default.cfg:775
 #: data/themes/default.cfg:1033 data/themes/dfool.cfg:166
 msgid "End Scenario"
-msgstr "Kết thúc kịch bản"
+msgstr "Kết thúc màn"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
@@ -7129,7 +7122,7 @@ msgstr "Kết thúc kịch bản"
 #: data/themes/experimental.cfg:187 src/menu_events.cpp:209 src/unit.cpp:2339
 #: src/unit.cpp:2488
 msgid "HP"
-msgstr "NL"
+msgstr "Máu"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-xp
@@ -7173,7 +7166,7 @@ msgstr "thu nhập"
 #: data/themes/default.cfg:429 data/themes/dfool.cfg:472
 #: data/themes/experimental.cfg:375
 msgid "statuspanel^level"
-msgstr "trình độ"
+msgstr "cấp"
 
 #. [unit_moves]: id=unit-moves
 #: data/themes/default.cfg:459 data/themes/experimental.cfg:405
@@ -7199,7 +7192,7 @@ msgstr "KTL"
 #. [label]: id=label-mp
 #: data/themes/dfool.cfg:257
 msgid "MP"
-msgstr "NĐT"
+msgstr "NNC"
 
 #. [label]: id=replay-label
 #: data/themes/macros.cfg:59
@@ -7273,15 +7266,15 @@ msgstr "Đóng"
 
 #: src/actions.cpp:372
 msgid "You don't have a leader to recruit with."
-msgstr "Bạn không có người lãnh đạo để tuyển quân."
+msgstr "Bạn không có người chỉ huy để tuyển quân."
 
 #: src/actions.cpp:379
 msgid "You must have your leader on a keep to recruit or recall units."
-msgstr "Bạn phải để người lãnh đạo trên pháo đài để tuyển quân hoặc gọi lại."
+msgstr "Bạn phải để người chỉ huy trên pháo đài để tuyển quân hoặc gọi lại."
 
 #: src/actions.cpp:398
 msgid "There are no vacant castle tiles in which to recruit a unit."
-msgstr "Không có ô pháo đài nào trống để tuyển quân."
+msgstr "Không có ô lâu đài nào trống để tuyển quân."
 
 #: src/actions.cpp:532 src/actions.cpp:591 src/actions.cpp:1522
 msgid "An invalid attacker weapon got selected."
@@ -7314,22 +7307,22 @@ msgstr "Dịch chuyển tức thời thất bại! Lối ra không trống"
 #: src/actions.cpp:2529
 msgid "Friendly unit sighted"
 msgid_plural "$friends friendly units sighted"
-msgstr[0] "Nhìn thấy $friends đơn vị đồng minh"
+msgstr[0] "Dịch chuyển tức thời thất bại! Lối ra không trống"
 
 #: src/actions.cpp:2532
 msgid "Enemy unit sighted!"
 msgid_plural "$enemies enemy units sighted!"
-msgstr[0] "Nhìn thấy $enemies đơn vị kẻ thù!"
+msgstr[0] "Dịch chuyển tức thời thất bại! Lối ra không trống"
 
 #: src/actions.cpp:2537
 msgid "Part of 'Units sighted! (...)' sentence^1 friendly"
 msgid_plural "$friends friendly"
-msgstr[0] "$friends đồng minh"
+msgstr[0] "Dịch chuyển tức thời thất bại! Lối ra không trống"
 
 #: src/actions.cpp:2538
 msgid "Part of 'Units sighted! (...)' sentence^1 enemy"
 msgid_plural "$enemies enemy"
-msgstr[0] "$enemies kẻ thù"
+msgstr[0] "Dịch chuyển tức thời thất bại! Lối ra không trống"
 
 #: src/actions.cpp:2539
 msgid "Units sighted! ($friendphrase, $enemyphrase)"
@@ -7337,7 +7330,7 @@ msgstr "Nhìn thấy đơn vị! ($friendphrase, $enemyphrase)"
 
 #: src/actions.cpp:2548
 msgid "(press $hotkey to keep moving)"
-msgstr "(ấn $hotkey để tiếp tục di chuyển)"
+msgstr "(nhấn $hotkey để tiếp tục di chuyển)"
 
 #: src/addon/manager.cpp:342 src/unit_types.cpp:955
 msgid "No description available."
@@ -7365,27 +7358,27 @@ msgstr "Chiến dịch"
 
 #: src/addon/manager.cpp:458
 msgid "addon_type^Scenario"
-msgstr "Kịch bản"
+msgstr "Màn"
 
 #: src/addon/manager.cpp:460
 msgid "addon_type^MP era"
-msgstr "Kỷ nguyên NĐT"
+msgstr "các liên minh NNC"
 
 #: src/addon/manager.cpp:462
 msgid "addon_type^MP faction"
-msgstr "Bè phái NĐT"
+msgstr "liên minh NNC"
 
 #: src/addon/manager.cpp:464
 msgid "addon_type^MP map-pack"
-msgstr "Gói bản đồ NĐT"
+msgstr "Gói bản đồ NNC"
 
 #: src/addon/manager.cpp:466
 msgid "addon_type^MP scenario"
-msgstr "Kịch bản NĐT"
+msgstr "màn NNC"
 
 #: src/addon/manager.cpp:468
 msgid "addon_type^MP campaign"
-msgstr "Chiến dịch NĐT"
+msgstr "Chiến dịch NNC"
 
 #: src/addon/manager.cpp:470
 msgid "addon_type^Resources"
@@ -7406,7 +7399,7 @@ msgstr "Kết nối hết giờ"
 
 #: src/addon/manager.cpp:489
 msgid "The server responded with an error: \"$error|\""
-msgstr "Máy chủ đã trả lời bằng lỗi: \"$error|\""
+msgstr "Máy chủ đã trả lời với thông báo lỗi: \"$error|\""
 
 #: src/addon/manager.cpp:498
 msgid "Terms"
@@ -7418,7 +7411,7 @@ msgstr "Đang gửi phần bổ sung"
 
 #: src/addon/manager.cpp:537 src/addon/manager.cpp:562
 msgid "The server responded with an error: \""
-msgstr "Máy chủ đã trả lời bằng lỗi: \""
+msgstr "Máy chủ đã trả lời với tông báo lỗi: \""
 
 #: src/addon/manager.cpp:540 src/addon/manager.cpp:565
 #: src/multiplayer_wait.cpp:393
@@ -7501,7 +7494,7 @@ msgstr ""
 msgid "The following add-on could not be downloaded or updated successfully:"
 msgid_plural ""
 "The following add-ons could not be downloaded or updated successfully:"
-msgstr[0] "Không thể tải về hoặc cập nhật thành công các phần bổ sung sau đây:"
+msgstr[0] "Cập nhật thất bại"
 
 #: src/addon/manager.cpp:911
 msgid "Outdated add-ons"
@@ -7514,9 +7507,7 @@ msgid ""
 msgid_plural ""
 "Some outdated local add-ons have publishing information attached. They will "
 "not be offered for updating."
-msgstr[0] ""
-"Một số phần bổ sung cục bộ lỗi thời có thông tin phát hành đính kèm. Chúng "
-"sẽ không được cập nhật."
+msgstr[0] "Phần bổ sung lỗi thời"
 
 #: src/addon/manager.cpp:925
 msgid "No add-ons to update"
@@ -7621,7 +7612,7 @@ msgstr "Bộ lọc: "
 
 #: src/addon/manager.cpp:1268
 msgid "Description"
-msgstr ""
+msgstr "Mô tả"
 
 #: src/addon/manager.cpp:1312
 msgid "Network communication error."
@@ -7681,7 +7672,7 @@ msgstr "Người phòng thủ"
 
 #: src/attack_prediction_display.cpp:126
 msgid "Expected Battle Result (HP)"
-msgstr "Kết quả trận đấu dự tính (NL)"
+msgstr "Kết quả trận đấu dự tính (máu)"
 
 #: src/attack_prediction_display.cpp:215
 msgid "Time of day"
@@ -7753,7 +7744,7 @@ msgstr "Chiến dịch: $campaign_name"
 
 #: src/dialogs.cpp:468
 msgid "Multiplayer"
-msgstr "Nhiều đấu thủ"
+msgstr "Nhiều người chơi"
 
 #: src/dialogs.cpp:470
 msgid "Tutorial"
@@ -7769,7 +7760,7 @@ msgstr "Lượt"
 
 #: src/dialogs.cpp:482
 msgid "Scenario Start"
-msgstr "Mở đầu kịch bản"
+msgstr "Mở đầu màn"
 
 #: src/dialogs.cpp:485
 msgid "Difficulty: "
@@ -7808,7 +7799,7 @@ msgid ""
 msgstr ""
 "Không có bản lưu trò chơi nào để tải.\n"
 "\n"
-"(Trò chơi được lưu tự động khi bạn hoàn thành một kịch bản)"
+"(Trò chơi được lưu tự động khi bạn hoàn thành một màn)"
 
 #: src/dialogs.cpp:570
 msgid "Date"
@@ -7854,7 +7845,7 @@ msgstr "trình độ"
 
 #: src/dialogs.cpp:778 src/help.cpp:1443
 msgid "HP: "
-msgstr "NL: "
+msgstr "Máu: "
 
 #: src/dialogs.cpp:781
 msgid "XP: "
@@ -7901,8 +7892,8 @@ msgid ""
 "The server will run in a background process until all users have "
 "disconnected."
 msgstr ""
-"Máy chủ sẽ chạy trong một tiến trình ngầm đến khi tất cả các đấu thủ đã ngắt "
-"kết nối."
+"Máy chủ sẽ chạy trong một tiến trình ngầm đến khi tất cả các người chơi đã "
+"ngắt kết nối."
 
 #: src/game.cpp:1325
 msgid "Don't show again"
@@ -7927,7 +7918,7 @@ msgstr "Không thể tải bản đồ trò chơi: "
 #: src/game.cpp:1566
 msgid "The following add-on had errors and could not be loaded:"
 msgid_plural "The following add-ons had errors and could not be loaded:"
-msgstr[0] "Các phần bổ sung sau đây có lỗi và không thể tải được:"
+msgstr[0] "Không thể tải bản đồ trò chơi: "
 
 #: src/game.cpp:1573
 msgid "ERROR DETAILS:"
@@ -8044,11 +8035,12 @@ msgid ""
 "Units cannot be killed by poison alone. The poison will not reduce it below "
 "1 HP."
 msgstr ""
-"Đơn vị này bị nhiễm độc. Nó sẽ mất 8 NL mỗi lượt đến khi nó được giải độc "
-"trong một ngôi làng hoặc nhờ một đơn vị đồng minh có khả năng 'giải độc'.\n"
+"Đơn vị này bị nhiễm độc. Nó sẽ mất 8 đơn vị mỗi lượt đến khi nó được giải "
+"độc trong một ngôi làng hoặc nhờ một đơn vị đồng minh có khả năng 'giải "
+"độc'.\n"
 "\n"
 "Các đơn vị không thể bị giết chỉ do chất độc. Chất độc sẽ không làm giảm nó "
-"xuống dưới 1 NL."
+"xuống dưới 1 đơn vị máu."
 
 #: src/generate_report.cpp:183
 msgid "petrified: "
@@ -8140,7 +8132,7 @@ msgstr ""
 #: src/generate_report.cpp:393
 #, fuzzy
 msgid "Swarm: "
-msgstr "Đầm lầy"
+msgstr "liên hoàn"
 
 #: src/generate_report.cpp:398
 #, fuzzy
@@ -8183,27 +8175,27 @@ msgstr "Người quan sát:"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:204
 msgid "Unknown era: $era_id"
-msgstr "Kỷ nguyên không xác định: $era_id"
+msgstr "Các liên minh không xác định: $era_id"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:209
 msgid "Unknown era"
-msgstr "Kỷ nguyên không xác định"
+msgstr "Các liên minh không xác định"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:265
 msgid "Remote scenario"
-msgstr "Kịch bản xa"
+msgstr "Màn từ xa"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:273
 msgid "Unknown scenario: $scenario_id"
-msgstr "Kịch bản không xác định: $scenario_id"
+msgstr "Màn không xác định: $scenario_id"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:278
 msgid "Unknown scenario"
-msgstr "Kịch bản không xác định"
+msgstr "Màn không xác định"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:284
 msgid "Reloaded game"
-msgstr "Trò chơi tải lại"
+msgstr "Trò chơi được tải lại"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:295
 msgid "Turn "
@@ -8212,7 +8204,7 @@ msgstr "Lượt "
 #: src/gui/dialogs/lobby/lobby_data.cpp:299
 msgid "Vacant Slot:"
 msgid_plural "Vacant Slots:"
-msgstr[0] "Khe trống:"
+msgstr[0] "Lượt "
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:305
 msgid "Fog"
@@ -8244,22 +8236,20 @@ msgid "In lobby"
 msgstr "Trong phòng gặp gỡ"
 
 #: src/gui/dialogs/lobby_player_info.cpp:128
-#, fuzzy
 msgid "On friends list"
-msgstr "Đã thêm vào danh sách bạn bè: "
+msgstr "Trong danh sách bạn bè"
 
 #: src/gui/dialogs/lobby_player_info.cpp:133
-#, fuzzy
 msgid "On ignores list"
-msgstr "Đã thêm vào danh sách bỏ qua: "
+msgstr "trong danh sách từ chối"
 
 #: src/gui/dialogs/lobby_player_info.cpp:138
 msgid "Neither a friend nor ignored"
-msgstr ""
+msgstr "Không là bạn cũng không là người đã từ chối"
 
 #: src/gui/dialogs/lobby_player_info.cpp:143
 msgid "You"
-msgstr ""
+msgstr "Bạn"
 
 #: src/gui/dialogs/lobby_player_info.cpp:146 src/multiplayer_create.cpp:551
 msgid "Error"
@@ -8279,7 +8269,7 @@ msgstr "<header>text='Các đơn vị có khả năng này'</header>"
 
 #: src/help.cpp:1256
 msgid "Leaders:"
-msgstr "Người lãnh đạo:"
+msgstr "Chỉ huy:"
 
 #: src/help.cpp:1265
 msgid "Recruits:"
@@ -8287,15 +8277,15 @@ msgstr "Tuyển quân:"
 
 #: src/help.cpp:1279 src/multiplayer_create.cpp:79
 msgid "Era:"
-msgstr "Kỷ nguyên:"
+msgstr "Các liên miinh:"
 
 #: src/help.cpp:1287
 msgid "Factions:"
-msgstr "Bè phái:"
+msgstr "Liên minhi:"
 
 #: src/help.cpp:1297
 msgid "Factions are only used in multiplayer"
-msgstr "Bè phái chỉ được sử dụng trong chế độ nhiều đấu thủ"
+msgstr "Liên minh chỉ được sử dụng trong chế độ nhiều người chơi."
 
 #: src/help.cpp:1372
 msgid "Advances from: "
@@ -8482,7 +8472,7 @@ msgstr "Thống kê"
 
 #: src/menu_events.cpp:207
 msgid "Moves"
-msgstr "DC"
+msgstr "Di chuyển"
 
 #: src/menu_events.cpp:208
 msgid "Status"
@@ -8490,7 +8480,7 @@ msgstr "Trạng thái"
 
 #: src/menu_events.cpp:210 src/menu_events.cpp:845
 msgid "Level^Lvl."
-msgstr "TĐ"
+msgstr "Cấp"
 
 #: src/menu_events.cpp:212
 msgid "unit list^Traits"
@@ -8506,7 +8496,7 @@ msgstr "Cuộn đến"
 
 #: src/menu_events.cpp:370
 msgid "Leader"
-msgstr "Người lãnh đạo"
+msgstr "Chỉ huy"
 
 #: src/menu_events.cpp:371 src/multiplayer_connect.cpp:998
 msgid "Team"
@@ -8562,8 +8552,8 @@ msgid ""
 "scenario settings^Base\n"
 "Income"
 msgstr ""
-"Thu nhập\n"
-"cơ bản"
+"Cơ bản\n"
+"Thu Nhập"
 
 #: src/menu_events.cpp:505
 msgid ""
@@ -8591,7 +8581,7 @@ msgstr "có"
 
 #: src/menu_events.cpp:571
 msgid "Scenario Settings"
-msgstr "Thiết lập kịch bản"
+msgstr "Thiết lập màn "
 
 #: src/menu_events.cpp:593
 msgid "Save the Map As"
@@ -8628,11 +8618,11 @@ msgstr "Chỉ gửi cho người quan sát"
 #: src/menu_events.cpp:700
 msgid "unit^Gold"
 msgid_plural "Gold"
-msgstr[0] "Vàng"
+msgstr[0] "Chỉ gửi cho người quan sát"
 
 #: src/menu_events.cpp:707
 msgid "You have no units available to recruit."
-msgstr "Bạn không thể tuyển bất kỳ đơn vị nào."
+msgstr "Bạn không có đơn vị nào để tuyển. "
 
 #: src/menu_events.cpp:719
 msgid "Recruit"
@@ -8656,7 +8646,7 @@ msgid ""
 "(You must have veteran survivors from a previous scenario)"
 msgstr ""
 "Không có quân lính nào để gọi lại\n"
-"(Bạn phải có người sống sót kỳ cựu từ kịch bản trước)"
+"(Bạn phải có người sống sót kỳ cựu từ màn trước)"
 
 #: src/menu_events.cpp:909
 msgid "Recall"
@@ -8664,18 +8654,18 @@ msgstr "Gọi lại"
 
 #: src/menu_events.cpp:919
 msgid "Dismiss Unit"
-msgstr "Thải hồi đơn vị"
+msgstr "Giải tán đơn vị"
 
 #: src/menu_events.cpp:940
 msgid "You must have at least 1 gold piece to recall a unit"
 msgid_plural "You must have at least $cost gold pieces to recall a unit"
-msgstr[0] "Bạn phải có ít nhất $cost lượng vàng để gọi lại một đơn vị"
+msgstr[0] "Giải tán đơn vị"
 
 #: src/menu_events.cpp:1303
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr ""
-"Bạn chưa bắt đầu lượt của bạn. Bạn có thực sự muốn kết thúc lượt không?"
+"Bạn còn chưa bắt đầu lượt của bạn. Bạn có thực sự muốn kết thúc lượt không?"
 
 #: src/menu_events.cpp:1311 src/menu_events.cpp:1316
 msgid "Some units have movement left. Do you really want to end your turn?"
@@ -8717,13 +8707,14 @@ msgstr "Tìm kiếm"
 
 #: src/menu_events.cpp:1933
 msgid "This command is currently unavailable."
-msgstr "Lệnh này hiện thời không khả dụng."
+msgstr "Lệnh này hiện thời không sẵn có."
 
 #: src/menu_events.cpp:1939
 msgid ""
 "Unknown command '$command', try $help_command for a list of available "
 "commands."
 msgstr ""
+"Lệnh '$command' không xác định, gõ $help_command để xem danh sách các lệnh."
 
 #: src/menu_events.cpp:1947
 msgid ""
@@ -8731,57 +8722,55 @@ msgid ""
 "include currently unavailable commands."
 msgstr ""
 "Danh sách các lệnh và trợ giúp riêng mỗi lệnh. Sử dụng \"help all\" để bao "
-"gồm cả lệnh không khả dụng hiện thời."
+"gồm cả lệnh không có sẵn hiện thời."
 
 #: src/menu_events.cpp:1949
 msgid "do not translate the 'all'^[all|<command>]"
-msgstr ""
+msgstr "không dịch 'all'^[all|<command>]"
 
 #: src/menu_events.cpp:1993
-#, fuzzy
 msgid "Error:"
 msgstr "Lỗi: "
 
 #: src/menu_events.cpp:1999
 msgid "Missing argument $arg_id"
-msgstr ""
+msgstr "Thiếu lý lẽ $arg_id"
 
 #: src/menu_events.cpp:2047
 msgid ""
 "Available commands $flags_description:\n"
 "$list_of_commands"
 msgstr ""
+"Các lệnh có hiệu lực $flags_description:\n"
+"$list_of_commands"
 
 #: src/menu_events.cpp:2047 src/menu_events.cpp:2048 src/menu_events.cpp:2071
-#, fuzzy
 msgid "help"
-msgstr "Trợ giúp"
+msgstr "trợ giúp"
 
 #: src/menu_events.cpp:2048
 msgid "Type $help_command <command> for more info."
-msgstr ""
+msgstr "Gõ $help_command <command> để biết thêm chi tiết."
 
 #: src/menu_events.cpp:2059
 msgid " No help available."
 msgstr " Không có trợ giúp."
 
 #: src/menu_events.cpp:2064
-#, fuzzy
 msgid "Usage:"
-msgstr "Tin nhắn:"
+msgstr "Cách sử dụng:"
 
 #: src/menu_events.cpp:2069
 msgid "aliases:"
-msgstr ""
+msgstr "biệt danh:"
 
 #: src/menu_events.cpp:2195
 msgid "(A) - admin command"
-msgstr ""
+msgstr "(A) - lệnh của quản trị"
 
 #: src/menu_events.cpp:2202 src/menu_events.cpp:2401
-#, fuzzy
 msgid "(admin only)"
-msgstr "Chỉ đội"
+msgstr "(chỉ người quản trị)"
 
 #: src/menu_events.cpp:2222
 msgid ""
@@ -8789,21 +8778,21 @@ msgid ""
 "available commands."
 msgstr ""
 "Gửi truy vấn đến máy chủ. Không có tham số, máy chủ sẽ cho bạn biết các lệnh "
-"khả dụng."
+"sẵn có."
 
 #: src/menu_events.cpp:2226
 msgid ""
 "Ban and kick a player or observer. If he is not in the game but on the "
 "server he will only be banned."
 msgstr ""
-"Cấm và đuổi một đấu thủ hoặc người quan sát. Nếu người đó không tham gia "
+"Cấm và đuổi một người chơi hoặc người quan sát. Nếu người đó không tham gia "
 "chơi nhưng ở trên máy chủ, người đó sẽ chỉ bị cấm."
 
 #: src/menu_events.cpp:2227 src/menu_events.cpp:2230 src/menu_events.cpp:2232
 #: src/menu_events.cpp:2234 src/menu_events.cpp:2236 src/menu_events.cpp:2261
 #: src/menu_events.cpp:2263 src/menu_events.cpp:2265 src/menu_events.cpp:2279
 msgid "<nick>"
-msgstr ""
+msgstr "<biệt danh>"
 
 #: src/menu_events.cpp:2229
 msgid "Unban a user. He does not have to be in the game but on the server."
@@ -8812,7 +8801,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2232
 msgid "Kick a player or observer."
-msgstr "Đuổi một đấu thủ hoặc người quan sát."
+msgstr "Đuổi một người chơi hoặc người quan sát."
 
 #: src/menu_events.cpp:2234
 msgid "Mute an observer. Without an argument displays the mute status."
@@ -8835,29 +8824,28 @@ msgid "Send a message to the server admins currently online"
 msgstr "Gửi tin nhắn đến những người quản trị máy chủ hiện đang trực tuyến"
 
 #: src/menu_events.cpp:2250
-#, fuzzy
 msgid "<message>"
-msgstr "Tin nhắn:"
+msgstr "<tin nhắn>"
 
 #: src/menu_events.cpp:2250
 msgid "Send an emotion or personal action in chat."
-msgstr "Gửi cảm xúc hoặc hành động riêng tư khi tán gẫu."
+msgstr "Gửi biểu tưởng cảm xúc hoặc hành động riêng tư khi tán gẫu."
 
 #: src/menu_events.cpp:2253
 msgid ""
 "Sends a private message. You can't send messages to players that don't "
 "control a side in a running game you are in."
 msgstr ""
-"Gửi tin nhắn riêng tư. Bạn không thể gửi tin nhắn đến những đấu thủ không "
+"Gửi tin nhắn riêng tư. Bạn không thể gửi tin nhắn đến những người chơi không "
 "điều khiển phe nào trong trò chơi bạn đang tham gia."
 
 #: src/menu_events.cpp:2255
 msgid "<nick> <message>"
-msgstr ""
+msgstr "<biệt danh> <tin nhắn>"
 
 #: src/menu_events.cpp:2259
 msgid "<level> <domain>"
-msgstr ""
+msgstr "<cấp> <miền>"
 
 #: src/menu_events.cpp:2259
 msgid "Change the log level of a log domain."
@@ -8865,7 +8853,7 @@ msgstr "Thay đổi mức độ ghi lưu của một phạm vi ghi lưu."
 
 #: src/menu_events.cpp:2261
 msgid "Add a nick to your ignores list."
-msgstr "Thêm một biệt danh vào danh sách bỏ qua của bạn."
+msgstr "Thêm một biệt danh vào danh sách từ chối của bạn."
 
 #: src/menu_events.cpp:2263
 msgid "Add a nick to your friends list."
@@ -8873,11 +8861,12 @@ msgstr "Thêm một biệt danh vào danh sách bạn bè của bạn."
 
 #: src/menu_events.cpp:2265
 msgid "Remove a nick from your ignores or friends list."
-msgstr "Xóa một biệt danh khỏi danh sách bỏ qua hoặc danh sách bạn bè của bạn."
+msgstr ""
+"Xóa một biệt danh khỏi danh sách từ chối hoặc danh sách bạn bè của bạn."
 
 #: src/menu_events.cpp:2267
 msgid "Show your ignores and friends list."
-msgstr "Hiện danh sách bỏ qua và danh sách bạn bè của bạn."
+msgstr "Hiện danh sách từ chối và danh sách bạn bè của bạn."
 
 #: src/menu_events.cpp:2270
 msgid "Display version information."
@@ -8885,7 +8874,7 @@ msgstr "Hiển thị thông tin phiên bản."
 
 #: src/menu_events.cpp:2272
 msgid "<password> <email (optional)>"
-msgstr ""
+msgstr "<mật khẩu> <email (tùy chọn)>"
 
 #: src/menu_events.cpp:2272
 msgid "Register your nick"
@@ -8902,7 +8891,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2277
 msgid "<detail> <value>"
-msgstr ""
+msgstr "<chi tiết> <giá trị>"
 
 #: src/menu_events.cpp:2279
 msgid "Request information about a nick."
@@ -8914,7 +8903,7 @@ msgstr "Lấy danh sách chi tiết bạn có thể thiết lập cho biệt dan
 
 #: src/menu_events.cpp:2283 src/menu_events.cpp:2286 src/menu_events.cpp:2288
 msgid "<room>"
-msgstr ""
+msgstr "<phòng>"
 
 #: src/menu_events.cpp:2283
 msgid "Join a room."
@@ -8930,11 +8919,11 @@ msgstr "Liệt kê các thành viên trong phòng."
 
 #: src/menu_events.cpp:2290
 msgid "List available rooms."
-msgstr "Liệt kê các phòng."
+msgstr "Liệt kê các phòng sẵn có."
 
 #: src/menu_events.cpp:2292
 msgid "<room> <msg>"
-msgstr ""
+msgstr "<phòng> <tin nhắn>"
 
 #: src/menu_events.cpp:2292
 msgid "Room message."
@@ -8942,7 +8931,7 @@ msgstr "Tin nhắn trong phòng."
 
 #: src/menu_events.cpp:2294
 msgid "<room> <type> [value]"
-msgstr ""
+msgstr "<phòng> <loại> [value]"
 
 #: src/menu_events.cpp:2294
 msgid "Room query."
@@ -8950,17 +8939,15 @@ msgstr "Truy vấn trong phòng."
 
 #: src/menu_events.cpp:2393
 msgid "(D) - debug only, (N) - network only, (A) - admin only"
-msgstr ""
+msgstr "(D) - chỉ chế độ gỡ lỗi, (N) - chỉ chế độ mạng, (A) - chỉ quản trị"
 
 #: src/menu_events.cpp:2399
-#, fuzzy
 msgid "(debug command)"
-msgstr "Lệnh chế độ gỡ lỗi"
+msgstr "(lệnh chế độ gỡ lỗi)"
 
 #: src/menu_events.cpp:2400
-#, fuzzy
 msgid "(network only)"
-msgstr "Đấu thủ mạng"
+msgstr "(chỉ trong chế độ mạng)"
 
 #: src/menu_events.cpp:2425
 msgid "Refresh gui."
@@ -8972,15 +8959,16 @@ msgstr "Chuyển một phe thành/từ điều khiển của máy tính."
 
 #: src/menu_events.cpp:2427
 msgid "do not translate the on/off^[<side> [on/off]]"
-msgstr ""
+msgstr "không dịch on/off^[<side> [on/off]]"
 
 #: src/menu_events.cpp:2430
 msgid "<side> <nick>"
-msgstr ""
+msgstr "<phe> <biệt danh>"
 
 #: src/menu_events.cpp:2430
 msgid "Assign control of a side to a different player or observer."
-msgstr "Cấp quyền điều khiển một phe cho một đấu thủ hoặc người quan sát khác."
+msgstr ""
+"Cấp quyền điều khiển một phe cho một người chơi hoặc người quan sát khác."
 
 #: src/menu_events.cpp:2432
 msgid "Clear chat history."
@@ -8991,9 +8979,8 @@ msgid "Visualize the screen refresh procedure."
 msgstr "Trực quan hóa thủ tục tải lại màn hình."
 
 #: src/menu_events.cpp:2435
-#, fuzzy
 msgid "Show fps."
-msgstr "Hiện phát lại"
+msgstr "Hiện fps."
 
 #: src/menu_events.cpp:2437
 msgid "Save game."
@@ -9013,19 +9000,19 @@ msgstr "Bỏ qua các lỗi phát lại."
 
 #: src/menu_events.cpp:2448
 msgid "Disable autosaves."
-msgstr "Vô hiệu lực lưu tự động."
+msgstr "Tắt chế độ lưu tự động."
 
 #: src/menu_events.cpp:2450
 msgid "<id>"
-msgstr ""
+msgstr "<id>"
 
 #: src/menu_events.cpp:2450
 msgid "Advance to the next scenario, or scenario identified by 'id'"
-msgstr "Chuyển sang kịch bản kế tiếp, hoặc kịch bản được xác định bởi 'id'"
+msgstr "Chuyển sang màn kế tiếp, hoặc màn được xác định bởi 'id'"
 
 #: src/menu_events.cpp:2453
 msgid "Choose next scenario"
-msgstr "Chọn kịch bản kế tiếp"
+msgstr "Chọn màn kế tiếp"
 
 #: src/menu_events.cpp:2456
 msgid "Turn debug mode on."
@@ -9037,7 +9024,7 @@ msgstr "Tắt chế độ gỡ lỗi."
 
 #: src/menu_events.cpp:2460 src/menu_events.cpp:2464
 msgid "<command>[;<command>...]"
-msgstr ""
+msgstr "<lệnh>[;<lệnh>...]"
 
 #: src/menu_events.cpp:2460
 msgid "Execute a Lua statement."
@@ -9045,7 +9032,7 @@ msgstr "Thi hành một câu lệnh Lua."
 
 #: src/menu_events.cpp:2462
 msgid "Grant higher privileges to Lua scripts."
-msgstr ""
+msgstr "Cấp đặc quyền cao hơn cho mã lệnh Lua"
 
 #: src/menu_events.cpp:2464
 msgid "Set the command used by the custom command hotkey"
@@ -9057,7 +9044,7 @@ msgstr "Khởi chạy trình kiểm tra trạng thái trò chơi"
 
 #: src/menu_events.cpp:2468
 msgid "<name>[=<command>]"
-msgstr ""
+msgstr "<tên>[=<lệnh>]"
 
 #: src/menu_events.cpp:2468
 msgid "Set or show alias to a command"
@@ -9065,19 +9052,19 @@ msgstr "Thiết lập hoặc hiện bí danh một lệnh"
 
 #: src/menu_events.cpp:2470
 msgid "<var>=<value>"
-msgstr ""
+msgstr "<biến>=<giá trị>"
 
 #: src/menu_events.cpp:2470
 msgid "Set a scenario variable."
-msgstr "Thiết lập một biến kịch bản."
+msgstr "Thiết lập một biến cho màn chơi."
 
 #: src/menu_events.cpp:2472
 msgid "<var>"
-msgstr ""
+msgstr "<biến>"
 
 #: src/menu_events.cpp:2472
 msgid "Show a scenario variable."
-msgstr "Hiện một biến kịch bản."
+msgstr "Hiện một biến cho màn chơi."
 
 #: src/menu_events.cpp:2474
 msgid "Modify a unit variable. (Only top level keys are supported.)"
@@ -9093,15 +9080,15 @@ msgstr "Tạo một đơn vị."
 
 #: src/menu_events.cpp:2488
 msgid "Toggle fog for the current player."
-msgstr "Bật tắt sương mù cho đấu thủ hiện thời."
+msgstr "Bật tắt sương mù cho người chơi  hiện thời."
 
 #: src/menu_events.cpp:2490
 msgid "Toggle shroud for the current player."
-msgstr "Bật tắt màn che cho đấu thủ hiện thời."
+msgstr "Bật tắt màn che cho người chơi  hiện thời."
 
 #: src/menu_events.cpp:2492
 msgid "Give gold to the current player."
-msgstr "Thêm vàng cho đấu thủ hiện thời."
+msgstr "Thêm vàng cho người chơi  hiện thời."
 
 #: src/menu_events.cpp:2494
 msgid "Fire a game event."
@@ -9109,11 +9096,11 @@ msgstr "Kích hoạt một sự kiện trò chơi."
 
 #: src/menu_events.cpp:2497
 msgid "Toggle overlaying of x,y coordinates on hexes."
-msgstr "Bật tắt phủ tọa độ x,y trên các hình lục giác."
+msgstr "Bật tắt phủ tọa độ x,y trên các ô lục giác."
 
 #: src/menu_events.cpp:2500
 msgid "Toggle overlaying of terrain codes on hexes."
-msgstr "Bật tắt phủ mã địa hình trên các hình lục giác."
+msgstr "Bật tắt phủ mã địa hình trên các ô lục giác."
 
 #: src/menu_events.cpp:2544
 msgid "Unknown debug level: '$level'."
@@ -9133,11 +9120,11 @@ msgstr "Đã chuyển phạm vi: '$domain' thành mức độ: '$level'."
 
 #: src/menu_events.cpp:2633
 msgid "whisper to $receiver"
-msgstr ""
+msgstr "nhắn tin cá nhân đến $receiver"
 
 #: src/menu_events.cpp:2640
 msgid "whisper: $sender"
-msgstr ""
+msgstr "tin nhắn cá nhân: $sender"
 
 #: src/menu_events.cpp:2736 src/menu_events.cpp:2755
 #: src/multiplayer_connect.cpp:699
@@ -9145,74 +9132,65 @@ msgid "(empty)"
 msgstr "(bỏ trống)"
 
 #: src/menu_events.cpp:2736 src/menu_events.cpp:2742 src/menu_events.cpp:2792
-#, fuzzy
 msgid "ignores list"
-msgstr "Đã thêm vào danh sách bỏ qua: "
+msgstr "danh sach từ chối"
 
 #: src/menu_events.cpp:2742
-#, fuzzy
 msgid "Added to ignore list: $nick"
-msgstr "Đã thêm vào danh sách bỏ qua: "
+msgstr "Đã thêm vào danh sách từ chối: "
 
 #: src/menu_events.cpp:2745 src/menu_events.cpp:2764
-#, fuzzy
 msgid "Invalid username: $nick"
-msgstr "Tên người dùng không hợp lệ: "
+msgstr "Tên người dùng không hợp lệ: $nick"
 
 #: src/menu_events.cpp:2755 src/menu_events.cpp:2762 src/menu_events.cpp:2788
-#, fuzzy
 msgid "friends list"
-msgstr "Đã thêm vào danh sách bạn bè: "
+msgstr "danh sách bạn bè"
 
 #: src/menu_events.cpp:2762
-#, fuzzy
 msgid "Added to friends list: $nick"
-msgstr "Đã thêm vào danh sách bạn bè: "
+msgstr "Đã thêm vào danh sách bạn bè: $nick"
 
 #: src/menu_events.cpp:2778
-#, fuzzy
 msgid "Removed from list: $nick"
-msgstr "Đã xóa khỏi danh sách: "
+msgstr "Đã xóa khỏi danh sách: $nick"
 
 #: src/menu_events.cpp:2778 src/menu_events.cpp:2796
-#, fuzzy
 msgid "friends and ignores list"
-msgstr "Đã thêm vào danh sách bỏ qua: "
+msgstr "danh sách bạn bè và từ chối"
 
 #: src/menu_events.cpp:2796
 msgid "There are no players on your friends or ignore list."
-msgstr "Không có đấu thủ nào trong danh sách bạn bè hoặc danh sách bỏ qua."
+msgstr "Không có người chơi  nào trong danh sách bạn bè hoặc danh sách bỏ qua."
 
 #: src/menu_events.cpp:2801
-#, fuzzy
 msgid "version"
 msgstr "Phiên bản"
 
 #: src/menu_events.cpp:2817
 msgid "registering with password *** and no email address"
-msgstr ""
+msgstr "đăng ký với mật khẩu *** và không có địa chỉ email"
 
 #: src/menu_events.cpp:2821
 msgid "registering with password *** and email address $email"
-msgstr ""
+msgstr "đăng ký với mật khẩu *** và địa chỉ email $email"
 
 #: src/menu_events.cpp:2824 src/menu_events.cpp:2835 src/menu_events.cpp:2853
 #: src/menu_events.cpp:2867
 msgid "nick registration"
-msgstr ""
+msgstr "đăng ký biệt danh"
 
 #: src/menu_events.cpp:2835
 msgid "dropping your username"
-msgstr ""
+msgstr "loại bỏ tên người dùng của bạn"
 
 #: src/menu_events.cpp:2853
 msgid "setting $var to $value"
-msgstr ""
+msgstr "thiếp lập $var thành $value"
 
 #: src/menu_events.cpp:2867
-#, fuzzy
 msgid "requesting information for user $nick"
-msgstr "Lấy thông tin về một biệt danh."
+msgstr "Lấy thông tin về một người dùng"
 
 #: src/menu_events.cpp:2979
 msgid "Couldn't find label or unit containing the string '$search'."
@@ -9236,7 +9214,7 @@ msgstr "Không thể thay đổi quyền điều khiển của phe ngoài phạm
 
 #: src/menu_events.cpp:3147
 msgid "Choose Scenario (Debug!)"
-msgstr "Chọn kịch bản (Gỡ lỗi!)"
+msgstr "Chọn màn (Gỡ lỗi!)"
 
 #: src/menu_events.cpp:3168
 msgid "Debug mode activated!"
@@ -9252,7 +9230,7 @@ msgstr "Đã ngừng kích hoạt chế độ gỡ lỗi!"
 
 #: src/menu_events.cpp:3187
 msgid "Unsafe Lua scripts."
-msgstr ""
+msgstr "Mã lệnh Lua không an toàn"
 
 #: src/menu_events.cpp:3188
 msgid ""
@@ -9260,34 +9238,37 @@ msgid ""
 "continue? If you have downloaded add-ons, do not click 'ok'! They would "
 "instantly take over your computer. You have been warned."
 msgstr ""
+"Bạn sắp sửa mở một lổ hông bảo mật của Wesnoth. Bạn có chắc muốn tiếp tục? "
+"Nếu bạn đã tải thành phần bổ sung, không nhấp chọn 'chấp nhận'! Chúng sẽ "
+"ngay lập tức chiếm quyền điều khiển máy tính của bạn. Bạn đã được cảnh báo."
 
 #: src/menu_events.cpp:3191
 msgid "Unsafe mode enabled!"
-msgstr ""
+msgstr "Đã kích hoạt chế độ không an toàn."
 
 #: src/menu_events.cpp:3234
 msgid "Variable not found"
-msgstr ""
+msgstr "Không tìm thấy biến số"
 
 #: src/menu_events.cpp:3272
 msgid ""
 "Invalid alignment: '$alignment', needs to be one of lawful, neutral or "
 "chaotic."
 msgstr ""
+"Thuộc tính không hợp lệ: '$alignment', phải là hoặc chính thống hoặc trung "
+"lập hoặc hỗn độn ."
 
 #: src/menu_events.cpp:3329
-#, fuzzy
 msgid "Invalid unit type"
-msgstr "Tên thẻ không hợp lệ"
+msgstr "Loại đơn vị không hợp lệ"
 
 #: src/menu_events.cpp:3342
-#, fuzzy
 msgid "Invalid location"
-msgstr "Màu không hợp lệ"
+msgstr " Vị trí không hợp lệ"
 
 #: src/menu_events.cpp:3378
 msgid "ai"
-msgstr "mt"
+msgstr "Máy Tính"
 
 #: src/menu_events.cpp:3388 src/menu_events.cpp:3403
 msgid "prompt^Command:"
@@ -9327,7 +9308,7 @@ msgstr "Lặp điều hướng phía máy chủ"
 
 #: src/multiplayer.cpp:257
 msgid "Bad data received from server"
-msgstr ""
+msgstr "Dữ liệu lỗi đã nhận từ máy chủ"
 
 #: src/multiplayer.cpp:298
 msgid "You must login first."
@@ -9351,7 +9332,7 @@ msgstr "Biệt danh '$nick' quá dài. Biệt danh phải từ 18 ký tự trở
 
 #: src/multiplayer.cpp:309
 msgid "The nick '$nick' is reserved and cannot be used by players."
-msgstr "Biệt danh '$nick' là dành riêng và các đấu thủ không thể sử dụng."
+msgstr "Biệt danh '$nick' là dành riêng và các người chơi  không thể sử dụng."
 
 #: src/multiplayer.cpp:311
 msgid "The nick '$nick' is not registered on this server."
@@ -9374,9 +9355,11 @@ msgstr ""
 "máy khách đó bị đuổi!"
 
 #: src/multiplayer.cpp:320
+#, fuzzy
 msgid ""
 "Error in the login procedure (the server had no seed for your connection)."
-msgstr "Lỗi trong thủ tục đăng nhập (máy chủ không gieo mầm kết nối của bạn)."
+msgstr ""
+"Lỗi trong thủ tục đăng nhập (máy chủ không tương thích với kết nối của bạn)."
 
 #: src/multiplayer.cpp:323
 msgid "The password you provided was incorrect."
@@ -9408,11 +9391,11 @@ msgstr "(Khe trống)"
 
 #: src/multiplayer_connect.cpp:667
 msgid "Anonymous local player"
-msgstr "Đấu thủ cục bộ ẩn danh"
+msgstr "người chơi  cục bộ ẩn danh"
 
 #: src/multiplayer_connect.cpp:680 src/multiplayer_connect.cpp:1456
 msgid "Computer Player"
-msgstr "Đấu thủ máy tính"
+msgstr "máy tính"
 
 #: src/multiplayer_connect.cpp:683
 msgid "$playername $side"
@@ -9436,11 +9419,11 @@ msgstr "--cho--"
 
 #: src/multiplayer_connect.cpp:922
 msgid "Only random sides in the current era."
-msgstr "Chỉ các phe ngẫu nhiên trong kỷ nguyên hiện thời."
+msgstr "Chỉ các phe ngẫu nhiên trong các liên minh hiện thời."
 
 #: src/multiplayer_connect.cpp:946
 msgid "Unable to find a leader type for faction $faction"
-msgstr "Không thể tìm thấy kiểu người lãnh đạo cho bè phái $faction"
+msgstr "Không thể tìm thấy kiểu chỉ huy cho liên minh $faction"
 
 #: src/multiplayer_connect.cpp:983
 msgid "Game Lobby: "
@@ -9448,11 +9431,11 @@ msgstr "Phòng gặp gỡ trò chơi: "
 
 #: src/multiplayer_connect.cpp:1005
 msgid "Player/Type"
-msgstr "Đấu thủ/Kiểu"
+msgstr "người chơi /Kiểu"
 
 #: src/multiplayer_connect.cpp:1006
 msgid "Faction"
-msgstr "Bè phái"
+msgstr "Liên minh"
 
 #: src/multiplayer_connect.cpp:1007
 msgid "Team/Gender"
@@ -9469,15 +9452,15 @@ msgstr "Tôi đã sẵn sàng"
 #: src/multiplayer_connect.cpp:1014
 #, fuzzy
 msgid "Add named local player"
-msgstr "Đấu thủ cục bộ ẩn danh"
+msgstr "người chơi  cục bộ ẩn danh"
 
 #: src/multiplayer_connect.cpp:1023
 msgid "The scenario is invalid because it has no id."
-msgstr "Kịch bản không hợp lệ vì nó không có định danh."
+msgstr "màn không hợp lệ vì nó không có định danh."
 
 #: src/multiplayer_connect.cpp:1027
 msgid "The scenario is invalid because it has no sides."
-msgstr "Kịch bản không hợp lệ vì nó không có phe nào."
+msgstr "màn không hợp lệ vì nó không có phe nào."
 
 #: src/multiplayer_connect.cpp:1094
 msgid "Enter a name for the new player"
@@ -9489,11 +9472,11 @@ msgstr ""
 
 #: src/multiplayer_connect.cpp:1453
 msgid "Network Player"
-msgstr "Đấu thủ mạng"
+msgstr "người chơi  mạng"
 
 #: src/multiplayer_connect.cpp:1455
 msgid "Local Player"
-msgstr "Đấu thủ cục bộ"
+msgstr "người chơi  cục bộ"
 
 #: src/multiplayer_connect.cpp:1457
 msgid "Empty"
@@ -9501,7 +9484,7 @@ msgstr "Bỏ trống"
 
 #: src/multiplayer_connect.cpp:1604
 msgid "Cannot find era $era"
-msgstr "Không thể tìm thấy kỷ nguyên $era"
+msgstr "Không thể tìm thấy các liên minh $era"
 
 #: src/multiplayer_connect.cpp:1629
 msgid "Defeat enemy leader(s)"
@@ -9509,12 +9492,12 @@ msgstr "Đánh bại lãnh đạo kẻ thù"
 
 #: src/multiplayer_connect.cpp:1728
 msgid "Waiting for players to join..."
-msgstr "Đang chờ các đấu thủ tham gia..."
+msgstr "Đang chờ các người chơi  tham gia..."
 
 #: src/multiplayer_connect.cpp:1729
 #, fuzzy
 msgid "Waiting for players to choose factions..."
-msgstr "Đang chờ các đấu thủ tham gia..."
+msgstr "Đang chờ các người chơi  tham gia..."
 
 #: src/multiplayer_create.cpp:50
 msgid "Create Game"
@@ -9586,7 +9569,7 @@ msgstr "Thời gian cho các tác vụ chung mỗi lượt (giây)"
 
 #: src/multiplayer_create.cpp:170
 msgid "Time for each attack, recruit, and capture"
-msgstr "Thời gian cho mỗi tấn công, tuyển quân và chiếm giữ"
+msgstr "Thời gian cho mỗi cuộc tấn công, tuyển quân và chiếm giữ"
 
 #: src/multiplayer_create.cpp:175
 msgid "The amount of income each village yields per turn"
@@ -9598,7 +9581,7 @@ msgstr "Lượng kinh nghiệm một đơn vị cần để nâng cấp"
 
 #: src/multiplayer_create.cpp:184
 msgid "Use scenario specific settings"
-msgstr "Sử dụng thiết lập của riêng kịch bản"
+msgstr "Sử dụng thiết lập của riêng màn"
 
 #: src/multiplayer_create.cpp:187
 msgid "Randomize time of day in begin"
@@ -9632,11 +9615,11 @@ msgstr "Không chia sẻ gì"
 
 #: src/multiplayer_create.cpp:212
 msgid "No eras found."
-msgstr "Không tìm thấy kỷ nguyên nào."
+msgstr "Không tìm thấy các liên minh nào."
 
 #: src/multiplayer_create.cpp:213
 msgid "No eras found"
-msgstr "Không tìm thấy kỷ nguyên nào"
+msgstr "Không tìm thấy các liên minh nào"
 
 #: src/multiplayer_create.cpp:226
 msgid "$login's game"
@@ -9644,12 +9627,11 @@ msgstr "Trò chơi của $login"
 
 #: src/multiplayer_create.cpp:287
 msgid "Invalid era selected"
-msgstr "Đã chọn kỷ nguyên không hợp lệ"
+msgstr "Đã chọn liên minh hợp lệ"
 
 #: src/multiplayer_create.cpp:333
-#, fuzzy
 msgid "The map is invalid."
-msgstr "Trò chơi kết thúc."
+msgstr "Bản đồ không hợp lệ."
 
 #: src/multiplayer_create.cpp:335
 msgid "You must enter a name."
@@ -9702,7 +9684,7 @@ msgstr "Hệ số kn: "
 
 #: src/multiplayer_create.cpp:548
 msgid "Players: "
-msgstr "Đấu thủ: "
+msgstr "người chơi : "
 
 #: src/multiplayer_create.cpp:549
 msgid "Size: "
@@ -9738,24 +9720,24 @@ msgstr "Đang lấy dữ liệu trò chơi..."
 
 #: src/multiplayer_wait.cpp:260
 msgid "No era information found."
-msgstr "Không tìm thấy thông tin kỷ nguyên."
+msgstr "Không tìm thấy thông tin các liên minh."
 
 #: src/multiplayer_wait.cpp:264
 msgid "No multiplayer sides found"
-msgstr "Không tìm thấy phe nhiều đấu thủ nào"
+msgstr "Không tìm thấy phe nhiều người chơi  nào"
 
 #: src/multiplayer_wait.cpp:297
 msgid "Choose your faction:"
-msgstr "Chọn bè phái của bạn:"
+msgstr "Chọn liên minh của bạn:"
 
 #: src/multiplayer_wait.cpp:297
 msgid "Starting position: "
-msgstr "Vị trí ban đầu: "
+msgstr "Vị trí ban đầu:"
 
 #: src/multiplayer_wait.cpp:502
 msgid "multiplayer_starting_gold^Gold"
 msgid_plural "multiplayer_starting_gold^Gold"
-msgstr[0] "Vàng"
+msgstr[0] "Số vàng cho ban đầu"
 
 #: src/network.cpp:106
 msgid "invalid network handle"
@@ -9767,9 +9749,10 @@ msgstr "Máy khách đã ngắt kết nối"
 
 #: src/network.cpp:528
 msgid "Could not add socket to socket set"
-msgstr "Không thể thêm ổ cắm vào tập hợp ổ cắm"
+msgstr "Không thể thêm cổng kết nối vào tập hợp cổng kết nối"
 
 #: src/network.cpp:540
+#, fuzzy
 msgid "Could not send initial handshake"
 msgstr "Không thể gửi lệnh bắt tay ban đầu"
 
@@ -9795,11 +9778,11 @@ msgstr "Đang khởi tạo màn hình"
 
 #: src/play_controller.cpp:212
 msgid "time left for current turn"
-msgstr ""
+msgstr "thời gian còn lại cho lược hiện tại"
 
 #: src/play_controller.cpp:214 src/replay_controller.cpp:137
 msgid "current local time"
-msgstr ""
+msgstr "giờ địa phương hiện tại"
 
 #: src/play_controller.cpp:252
 msgid "Starting game"
@@ -9820,19 +9803,19 @@ msgstr "Thua cuộc"
 
 #: src/playcampaign.cpp:134 src/playcampaign.cpp:172
 msgid "You have been defeated!"
-msgstr "Bạn đã thua cuộc!"
+msgstr "Bạn đã bị đánh bại!"
 
 #: src/playcampaign.cpp:392
 msgid "Error while reading the WML: "
-msgstr "Lỗi khi đọc WML: "
+msgstr "Lỗi trong khi đọc WML: "
 
 #: src/playcampaign.cpp:428
 msgid "This scenario has ended. Do you want to continue the campaign?"
-msgstr "Kịch bản đã kết thúc. Bạn có muốn tiếp tục chiến dịch không?"
+msgstr "Màn đã kết thúc. Bạn có muốn tiếp tục chiến dịch không?"
 
 #: src/playcampaign.cpp:454
 msgid "Downloading next scenario..."
-msgstr "Đang tải về kịch bản kế tiếp..."
+msgstr "Đang tải về màn kế tiếp..."
 
 #: src/playcampaign.cpp:602
 msgid "Do you want to save your game?"
@@ -9840,7 +9823,7 @@ msgstr "Bạn có muốn lưu trò chơi không?"
 
 #: src/playcampaign.cpp:621
 msgid "Unknown scenario: '$scenario|'"
-msgstr "Kịch bản không xác định: '$scenario|'"
+msgstr "Màn không xác định: '$scenario|'"
 
 #: src/playmp_controller.cpp:91
 msgid "$name has taken control"
@@ -9856,7 +9839,7 @@ msgstr "Đang đảo ngược những di chuyển chưa được truyền đến
 
 #: src/playmp_controller.cpp:400
 msgid "Waiting for next scenario..."
-msgstr "Đang chờ kịch bản kế tiếp..."
+msgstr "Đang chờ màn kế tiếp..."
 
 #: src/playmp_controller.cpp:521
 msgid ""
@@ -9868,9 +9851,9 @@ msgid ""
 "Do you want to save an error log of your game?"
 msgstr ""
 "Trò chơi mất đồng bộ, và không thể tiếp tục. Có một số lý do: tình huống này "
-"có thể xảy ra nếu bạn hoặc một đấu thủ khác đã sửa đổi các thiết lập trò "
-"chơi. Điều này có nghĩa là một trong số các đấu thủ đang tìm cách gian lận. "
-"Cũng có thể do lỗi trong trò chơi, nhưng ít khi do khả năng này.\n"
+"có thể xảy ra nếu bạn hoặc một người chơi  khác đã sửa đổi các thiết lập trò "
+"chơi. Điều này có nghĩa là một trong số các người chơi  đang tìm cách gian "
+"lận. Cũng có thể do lỗi trong trò chơi, nhưng ít khi do khả năng này.\n"
 "\n"
 "Bạn có muốn lưu nhật ký lỗi trò chơi không?"
 
@@ -9917,19 +9900,14 @@ msgid ""
 msgid_plural ""
 "You will start the next scenario with $gold on top of the defined minimum "
 "starting gold."
-msgstr[0] ""
-"Bạn sẽ bắt đầu kịch bản kế tiếp với $gold cộng vào lượng vàng tối thiểu ban "
-"đầu của kịch bản."
+msgstr[0] "Lượng vàng giữ lại: "
 
 #: src/playsingle_controller.cpp:259
-#, fuzzy
 msgid ""
 "You will start the next scenario with the defined minimum starting gold."
 msgid_plural ""
 "You will start the next scenario with the defined minimum starting gold."
-msgstr[0] ""
-"Bạn sẽ bắt đầu kịch bản kế tiếp với $gold cộng vào lượng vàng tối thiểu ban "
-"đầu của kịch bản."
+msgstr[0] "Lượng vàng giữ lại: "
 
 #: src/playsingle_controller.cpp:267
 msgid ""
@@ -9938,9 +9916,7 @@ msgid ""
 msgid_plural ""
 "You will start the next scenario with $gold or its defined minimum starting "
 "gold, whichever is higher."
-msgstr[0] ""
-"Bạn sẽ bắt đầu kịch bản kế tiếp với $gold hoặc lượng vàng tối thiểu ban đầu "
-"của kịch bản, tùy theo cái nào cao hơn."
+msgstr[0] "Lượng vàng giữ lại: "
 
 #: src/playsingle_controller.cpp:415
 msgid "Game Over"
@@ -9955,7 +9931,7 @@ msgid ""
 "A network disconnection has occurred, and the game\n"
 "cannot continue. Do you want to save the game?"
 msgstr ""
-"Đã xảy ra ngắt kết nối mạng, và trò chơi không thể tiếp tục.\n"
+"Mạng bị ngắt, và trò chơi không thể tiếp tục.\n"
 "Bạn có muốn lưu trò chơi không?"
 
 #: src/playsingle_controller.cpp:661
@@ -9964,7 +9940,7 @@ msgstr "Giờ là lượt của $name"
 
 #: src/playsingle_controller.cpp:879
 msgid "Scenario Report"
-msgstr "Báo cáo kịch bản"
+msgstr "Báo cáo màn"
 
 #: src/playsingle_controller.cpp:881
 msgid "Victory"
@@ -9980,7 +9956,7 @@ msgstr "Thay thế bằng máy tính"
 
 #: src/playturn.cpp:218
 msgid "Replace with local player"
-msgstr "Thay thế bằng đấu thủ cục bộ"
+msgstr "Thay thế bằng người chơi  cục bộ"
 
 #: src/playturn.cpp:219
 msgid "Abort game"
@@ -10015,7 +9991,7 @@ msgstr ""
 
 #: src/savegame.cpp:540
 msgid "This is not a multiplayer save"
-msgstr "Đây không phải bản lưu nhiều đấu thủ"
+msgstr "Đây không phải bản lưu nhiều người chơi "
 
 #: src/savegame.cpp:606
 msgid "The game could not be saved: "
@@ -10167,15 +10143,15 @@ msgstr "Nhảy qua"
 
 #: src/terrain.cpp:159
 msgid "Allied village"
-msgstr "Ngôi làng của đồng minh"
+msgstr "Làng của đồng minh"
 
 #: src/terrain.cpp:164
 msgid "Enemy village"
-msgstr "Ngôi làng của kẻ thù"
+msgstr "Làng của kẻ thù"
 
 #: src/terrain.cpp:169
 msgid "Owned village"
-msgstr "Ngôi làng đã sở hữu"
+msgstr "Làng đã sở hữu"
 
 #: src/theme.cpp:313
 msgid "border_size should be between 0.0 and 0.5."
@@ -10191,7 +10167,7 @@ msgstr "Chiến dịch"
 
 #: src/titlescreen.cpp:430
 msgid "TitleScreen button^Multiplayer"
-msgstr "Nhiều đấu thủ"
+msgstr "Nhiều người chơi "
 
 #: src/titlescreen.cpp:431
 msgid "TitleScreen button^Load"
@@ -10243,15 +10219,15 @@ msgstr "Bắt đầu một hướng dẫn để làm quen với trò chơi"
 
 #: src/titlescreen.cpp:449
 msgid "Start a new single player campaign"
-msgstr "Bắt đầu một kịch bản một đấu thủ mới"
+msgstr "Bắt đầu một màn một người chơi  mới"
 
 #: src/titlescreen.cpp:450
 msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
 msgstr ""
-"Chơi trò chơi nhiều đấu thủ (ghế nóng, mạng cục bộ, Internet), hoặc một kịch "
-"bản đấu với máy tính"
+"Chơi trò chơi nhiều người chơi  (ghế nóng, mạng cục bộ, Internet), hoặc một "
+"màn đấu với máy tính"
 
 #: src/titlescreen.cpp:451
 msgid "Load a saved game"
@@ -10259,7 +10235,7 @@ msgstr "Tải một trò chơi đã lưu"
 
 #: src/titlescreen.cpp:452
 msgid "Download usermade campaigns, eras, or map packs"
-msgstr "Tải về các chiến dịch, kỷ nguyên hoặc gói bản đồ do người dùng tạo"
+msgstr "Tải về các chiến dịch, các liên minh hoặc gói bản đồ do người dùng tạo"
 
 #: src/titlescreen.cpp:454
 msgid "Start the map editor"
@@ -10337,12 +10313,12 @@ msgstr "$effect_description mỗi trình độ"
 #: src/unit_types.cpp:194 src/unit_types.cpp:264
 msgid "damage"
 msgid_plural "damage"
-msgstr[0] "lượng thiệt hại"
+msgstr[0] "$trait_name|: $trait_description "
 
 #: src/unit_types.cpp:205 src/unit_types.cpp:272
 msgid "strike"
 msgid_plural "strikes"
-msgstr[0] "đòn đánh"
+msgstr[0] "$trait_name|: $trait_description "
 
 #: src/unit_types.cpp:217
 #, no-c-format
@@ -10407,8 +10383,8 @@ msgstr "Giúp chúng tôi làm cho Wesnoth tốt hơn cho bạn!"
 msgid "Enable summary uploads"
 msgstr "Cho phép tải lên bản tổng kết"
 
-#~ msgid "$trait_name|: $trait_description "
-#~ msgstr "$trait_name|: $trait_description "
+#~ msgid "Multiplayer_AI^Default AI"
+#~ msgstr "Nhiều người chơi"
 
 #~ msgid ""
 #~ "$addon_title depends upon the following add-on which you have not "
@@ -10416,26 +10392,25 @@ msgstr "Cho phép tải lên bản tổng kết"
 #~ msgid_plural ""
 #~ "$addon_title depends upon the following add-ons which you have not "
 #~ "installed yet:"
-#~ msgstr[0] ""
-#~ "$addon_title phụ thuộc vào các phần bổ sung chưa cài đặt sau đây:"
+#~ msgstr[0] "Phụ thuộc"
 
 #~ msgid ""
 #~ "Do you still want to download $addon_title|? (You will have to install "
 #~ "all the dependencies in order to play.)"
 #~ msgstr ""
-#~ "Bạn vẫn muốn tải về $addon_title|? (Bạn sẽ phải cài đặt tất cả các phụ "
-#~ "thuộc để chơi.)"
+#~ "Bạn vẫn muốn tải về $addon_title|? (Bạn sẽ phải cài đặt tất cả các phần "
+#~ "phụ thuộc bổ sung để chơi.)"
 
 #~ msgid "[unit_worth]'s filter didn't match any units!"
 #~ msgstr "Bộ lọc của [unit_worth] không khớp với bất kỳ đơn vị nào!"
 
 #~ msgid "tooltip^damage"
 #~ msgid_plural "damage"
-#~ msgstr[0] "lượng thiệt hại"
+#~ msgstr[0] "Hệ số kinh nghiệm: "
 
 #~ msgid "tooltip^attack"
 #~ msgid_plural "attacks"
-#~ msgstr[0] "đòn tấn công"
+#~ msgstr[0] "Hệ số kinh nghiệm: "
 
 #~ msgid "tooltip^% accuracy"
 #~ msgstr "% chính xác"
@@ -10443,19 +10418,11 @@ msgstr "Cho phép tải lên bản tổng kết"
 #~ msgid "tooltip^% parry"
 #~ msgstr "% tránh né"
 
-#~ msgid "Unknown unit type '$type|'"
-#~ msgstr "Kiểu đơn vị '$type|' không xác định"
-
-#~ msgid ""
-#~ "Leader position not empty - duplicate side definition for side '$side|' "
-#~ "found."
-#~ msgstr "Vị trí người lãnh đạo không trống - trùng định nghĩa phe '$side|'."
-
 #~ msgid "--no games open--"
 #~ msgstr "--không có trò chơi nào mở--"
 
 #~ msgid " (Unknown Era)"
-#~ msgstr " (Kỷ nguyên không xác định)"
+#~ msgstr " (Các liên minh không xác định)"
 
 #~ msgid "Password Required"
 #~ msgstr "Cần mật khẩu"
@@ -10470,7 +10437,7 @@ msgstr "Cho phép tải lên bản tổng kết"
 #~ msgstr "Phát lại nhanh"
 
 #~ msgid "Preferences"
-#~ msgstr "Tùy thích"
+#~ msgstr "Tùy chọn"
 
 #~ msgid "Quit"
 #~ msgstr "Thoát"
@@ -10487,8 +10454,8 @@ msgstr "Cho phép tải lên bản tổng kết"
 #~ msgid "Friends in Game"
 #~ msgstr "Bạn bè đang chơi"
 
-#~ msgid "Search:"
-#~ msgstr "Tìm kiếm:"
+#~ msgid "Filter:"
+#~ msgstr "Bộ lọc: "
 
 #~ msgid "Skip quickly to the active turn when observing"
 #~ msgstr "Nhảy nhanh đến lượt hoạt động khi quan sát"
@@ -10497,8 +10464,8 @@ msgstr "Cho phép tải lên bản tổng kết"
 #~ "Enable the games filter. If unchecked all games are shown, regardless of "
 #~ "any filter."
 #~ msgstr ""
-#~ "Cho hiệu lực bộ lọc trò chơi. Nếu không đánh dấu, sẽ hiện mọi trò chơi, "
-#~ "bất kể bộ lọc là gì."
+#~ "Bật bộ lọc trò chơi. Nếu không đánh dấu, sẽ hiện mọi trò chơi, bất kể bộ "
+#~ "lọc là gì."
 
 #~ msgid ""
 #~ "Show all games that do *not* match your filter. Useful for hiding games "
@@ -10508,7 +10475,7 @@ msgstr "Cho phép tải lên bản tổng kết"
 #~ "những trò chơi mà bạn không quan tâm."
 
 #~ msgid "Only show games that have at least one vacant slot"
-#~ msgstr "Chỉ hiện những trò chơi có ít nhất một khe trống"
+#~ msgstr "Chỉ hiện những trò chơi có ít nhất một chỗ trống"
 
 #~ msgid ""
 #~ "Only show games that are played or observed by at least one of your "
@@ -10522,6 +10489,20 @@ msgstr "Cho phép tải lên bản tổng kết"
 
 #~ msgid "Joining this game requires a password."
 #~ msgstr "Cần mật khẩu để tham gia trò chơi này."
+
+#~ msgid "$trait_name|: $trait_description "
+#~ msgstr "$trait_name|: $trait_description "
+
+#~ msgid "Unknown unit type '$type|'"
+#~ msgstr "Kiểu đơn vị '$type|' không xác định"
+
+#~ msgid ""
+#~ "Leader position not empty - duplicate side definition for side '$side|' "
+#~ "found."
+#~ msgstr "Vị trí người lãnh đạo không trống - trùng định nghĩa phe '$side|'."
+
+#~ msgid "Search:"
+#~ msgstr "Tìm kiếm:"
 
 #~ msgid "End scenario"
 #~ msgstr "Kết thúc kịch bản"
