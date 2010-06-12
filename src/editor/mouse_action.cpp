@@ -169,12 +169,12 @@ void mouse_action::set_terrain_mouse_overlay(editor_display& disp, t_translation
 
 	// Blit left side
 	image_fg = scale_surface(image_fg, new_size, new_size);
-	SDL_Rect rcDestLeft = { offset, quarter_size, 0, 0 };
+	SDL_Rect rcDestLeft = create_rect(offset, quarter_size, 0, 0);
 	SDL_BlitSurface ( image_fg, NULL, image, &rcDestLeft );
 
 	// Blit left side
 	image_bg = scale_surface(image_bg, new_size, new_size);
-	SDL_Rect rcDestRight = { half_size, quarter_size, 0, 0 };
+	SDL_Rect rcDestRight = create_rect(half_size, quarter_size, 0, 0);
 	SDL_BlitSurface ( image_bg, NULL, image, &rcDestRight );
 
 	//apply mask so the overlay is contained within the mouseover hex
