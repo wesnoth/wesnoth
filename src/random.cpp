@@ -168,12 +168,12 @@ int rng::get_random_private(bool check)
 	if (random_child_ >= random_size) {
 		random_child_ = random_size + 1;
 		int res = generator_.get_next_random() & 0x7FFFFFFF;
-		(random_->add_child("random"))["value"] = lexical_cast<std::string>(res);
+		(random_->add_child("random"))["value"] = res;
 		LOG_RND << "get_random() returning " << res << " (added to random_)\n";
 		return res;
 	} else {
 		int mine = generator_.get_next_random();
-		int stored = lexical_cast_default<int>(random_->child("random", random_child_++)["value"]);
+		int stored = random_->child("random", random_child_++)["value"];
 		if (mine != stored) {
 			if (check) {
 				ERR_RND << "Random number mismatch, mine " << mine << " vs " << stored << "\n";
@@ -247,7 +247,7 @@ simple_rng::simple_rng(const config& cfg) :
 	 * @todo  older savegames don't have random_seed stored, evaluate later
      * whether default can be removed again. Look after branching 1.5.
 	 */
-    random_seed_(lexical_cast_default<int>(cfg["random_seed"], 42)),
+    random_seed_(cfg["random_seed"].to_int(42)),
     random_pool_(random_seed_),
     random_calls_(0)
 {
