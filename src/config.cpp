@@ -491,6 +491,12 @@ const config::attribute_value &config::operator[](const std::string &key) const
 	return empty_attribute;
 }
 
+config::attribute_value &config::operator[](const std::string &key)
+{
+	check_valid();
+	return values[key];
+}
+
 const config::attribute_value &config::get_old_attribute(const std::string &key, const std::string &old_key, const std::string &msg) const
 {
 	check_valid();

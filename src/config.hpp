@@ -254,8 +254,16 @@ public:
 	config& add_child(const std::string& key, const config& val);
 	config& add_child_at(const std::string& key, const config& val, size_t index);
 
-	attribute_value &operator[](const std::string &key)
-	{ return values[key]; }
+	/**
+	 * Returns a reference to the attribute with the given @a key.
+	 * Creates it if it does not exist.
+	 */
+	attribute_value &operator[](const std::string &key);
+
+	/**
+	 * Returns a reference to the attribute with the given @a key
+	 * or to a dummy empty attribute if it does not exist.
+	 */
 	const attribute_value &operator[](const std::string &key) const;
 
 	/**
