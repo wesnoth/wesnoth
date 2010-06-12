@@ -27,7 +27,6 @@
 #include "../serialization/preprocessor.hpp"
 #include "../team.hpp"
 
-#include <boost/lexical_cast.hpp>
 #include <vector>
 
 namespace ai {
@@ -266,7 +265,7 @@ bool configuration::parse_side_config(side_number side, const config& original_c
 	int version = 10600;
 	foreach (const config &aiparam, cfg.child_range("ai")) {
 		if (aiparam.has_attribute("version")){
-			int v = lexical_cast_default<int>(aiparam["version"],version);
+			int v = aiparam["version"].to_int(version);
 			if (version<v) {
 				version = v;
 			}
@@ -295,7 +294,7 @@ bool configuration::parse_side_config(side_number side, const config& original_c
 	}
 
 	LOG_AI_CONFIGURATION << "side "<< side <<": setting config version to "<< version << std::endl;
-	parsed_cfg["version"] = boost::lexical_cast<std::string>( version );
+	parsed_cfg["version"] = version;
 
 
 	LOG_AI_CONFIGURATION << "side "<< side <<": merging AI aspect with the same id"<< std::endl;
