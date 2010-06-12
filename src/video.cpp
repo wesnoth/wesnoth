@@ -151,7 +151,7 @@ static void calc_rects()
 					int x = lower->second.x, y = lower->first;
 					unsigned w = iter->x - x;
 					unsigned h = next->first - y;
-					SDL_Rect a = {x, y, w, h};
+					SDL_Rect a = create_rect(x, y, w, h);
 
 					if (update_rects.empty()) {
 						update_rects.push_back(a);
@@ -231,14 +231,12 @@ surface get_video_surface()
 
 SDL_Rect screen_area()
 {
-	const SDL_Rect res = {0,0,frameBuffer->w,frameBuffer->h};
-	return res;
+	return create_rect(0, 0, frameBuffer->w, frameBuffer->h);
 }
 
 void update_rect(size_t x, size_t y, size_t w, size_t h)
 {
-	const SDL_Rect rect = {x,y,w,h};
-	update_rect(rect);
+	update_rect(create_rect(x, y, w, h));
 }
 
 void update_rect(const SDL_Rect& rect_value)
@@ -326,7 +324,7 @@ CVideo::~CVideo()
 void CVideo::blit_surface(int x, int y, surface surf, SDL_Rect* srcrect, SDL_Rect* clip_rect)
 {
 	const surface target(getSurface());
-	SDL_Rect dst = {x,y,0,0};
+	SDL_Rect dst = create_rect(x, y, 0, 0);
 
 	const clip_rect_setter clip_setter(target, clip_rect, clip_rect != NULL);
 	SDL_BlitSurface(surf,srcrect,target,&dst);
