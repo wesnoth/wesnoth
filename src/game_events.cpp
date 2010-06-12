@@ -2013,7 +2013,7 @@ WML_HANDLER_FUNCTION(print, /*event_info*/, cfg)
 	const int green = lexical_cast_default<int>(green_str,0);
 	const int blue = lexical_cast_default<int>(blue_str,0);
 
-	SDL_Color color = {red,green,blue,255};
+	SDL_Color color = create_color(red, green, blue, 255);
 
 	const SDL_Rect& rect = resources::screen->map_outside_area();
 
