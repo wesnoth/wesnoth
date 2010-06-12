@@ -110,26 +110,22 @@ void widget::bg_register(SDL_Rect const &rect)
 
 void widget::set_location(int x, int y)
 {
-	SDL_Rect rect = { x, y, rect_.w, rect_.h };
-	set_location(rect);
+	set_location(create_rect(x, y, rect_.w, rect_.h));
 }
 
 void widget::set_width(unsigned w)
 {
-	SDL_Rect rect = { rect_.x, rect_.y, w, rect_.h };
-	set_location(rect);
+	set_location(create_rect(rect_.x, rect_.y, w, rect_.h));
 }
 
 void widget::set_height(unsigned h)
 {
-	SDL_Rect rect = { rect_.x, rect_.y, rect_.w, h };
-	set_location(rect);
+	set_location(create_rect(rect_.x, rect_.y, rect_.w, h));
 }
 
 void widget::set_measurements(unsigned w, unsigned h)
 {
-	SDL_Rect rect = { rect_.x, rect_.y, w, h };
-	set_location(rect);
+	set_location(create_rect(rect_.x, rect_.y, w, h));
 }
 
 unsigned widget::width() const
