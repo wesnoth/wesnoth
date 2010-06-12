@@ -224,10 +224,8 @@ void replay::add_countdown_update(int value, int team)
 {
 	config* const cmd = add_command();
 	config val;
-
-	val["value"] = lexical_cast_default<std::string>(value);
-	val["team"] = lexical_cast_default<std::string>(team);
-
+	val["value"] = value;
+	val["team"] = team;
 	cmd->add_child("countdown_update",val);
 }
 
@@ -804,7 +802,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 			//but if this isn't a promotion, we just keep waiting for the promotion
 			//command -- it may have been mixed up with other commands such as messages
 			if (const config &child = cfg->child("choose")) {
-				const int val = lexical_cast_default<int>(child["value"]);
+				int val = child["value"];
 				map_location loc = get_replay_source().expected_advancements().front();
 				dialogs::animate_unit_advancement(loc, val);
 				get_replay_source().pop_expected_advancement();
@@ -841,7 +839,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 			bool is_whisper = (speaker_name.find("whisper: ") == 0);
 			get_replay_source().add_chat_message_location();
 			if (!get_replay_source().is_skipping() || is_whisper) {
-				const int side = lexical_cast_default<int>(child["side"],0);
+				int side = child["side"];
 				resources::screen->add_chat_message(time(NULL), speaker_name, side, message,
 						(team_name.empty() ? events::chat_handler::MESSAGE_PUBLIC
 						: events::chat_handler::MESSAGE_PRIVATE),
@@ -902,8 +900,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 
 		else if (const config &child = cfg->child("recruit"))
 		{
-			const std::string& recruit_num = child["value"];
-			const int val = lexical_cast_default<int>(recruit_num);
+			int val = child["value"];
 
 			map_location loc(child, resources::state_of_game);
 
@@ -990,10 +987,8 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 		}
 		else if (const config &child = cfg->child("countdown_update"))
 		{
-			const std::string &num = child["value"];
-			const int val = lexical_cast_default<int>(num);
-			const std::string &tnum = child["team"];
-			const int tval = lexical_cast_default<int>(tnum);
+			int val = child["value"];
+			int tval = child["team"];
 			if (tval <= 0  || tval > int(resources::teams->size())) {
 				std::stringstream errbuf;
 				errbuf << "Illegal countdown update \n"
@@ -1072,16 +1067,11 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 			const map_location src(source, resources::state_of_game);
 			const map_location dst(destination, resources::state_of_game);
 
-			const std::string &weapon = child["weapon"];
-			const int weapon_num = lexical_cast_default<int>(weapon);
-
-			const std::string &def_weapon = child["defender_weapon"];
-			int def_weapon_num = -1;
-			if (def_weapon.empty()) {
+			int weapon_num = child["weapon"];
+			int def_weapon_num = child["defender_weapon"].to_int(-1);
+			if (def_weapon_num == -1) {
 				// Let's not gratuitously destroy backwards compat.
 				ERR_REPLAY << "Old data, having to guess weapon\n";
-			} else {
-				def_weapon_num = lexical_cast_default<int>(def_weapon);
 			}
 
 			unit_map::iterator u = resources::units->find(src);
