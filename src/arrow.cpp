@@ -31,10 +31,15 @@ static lg::log_domain log_arrows("arrows");
 #define DBG_ARR LOG_STREAM(debug, log_arrows)
 
 arrow::arrow(display* screen)
-:screen_(screen),
- layer_(display::LAYER_ARROWS),
- color_("red"),
- style_("")
+	: screen_(screen)
+	, layer_(display::LAYER_ARROWS)
+	, color_("red")
+	, style_("")
+	, alpha_()
+	, path_()
+	, previous_path_()
+	, symbols_map_()
+	, observers_()
 {
 }
 
