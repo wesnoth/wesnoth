@@ -28,7 +28,7 @@ namespace implementation {
 tbuilder_button::tbuilder_button(const config& cfg)
 	: tbuilder_control(cfg)
 	, retval_id_(cfg["return_value_id"])
-	, retval_(lexical_cast_default<int>(cfg["return_value"]))
+	, retval_(cfg["return_value"])
 {
 }
 
