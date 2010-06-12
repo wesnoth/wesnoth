@@ -136,7 +136,10 @@ void cutter::add_sub_image(const surface &surf, surface_map &map, const config* 
 	int x = atoi(pos[0].c_str());
 	int y = atoi(pos[1].c_str());
 
-	const SDL_Rect cut = {x - mask.shift.x, y - mask.shift.y, mask.image->w, mask.image->h};
+	const SDL_Rect cut = create_rect(x - mask.shift.x
+			, y - mask.shift.y
+			, mask.image->w
+			, mask.image->h);
 
 	typedef std::pair<std::string, positioned_surface> sme;
 
