@@ -206,10 +206,10 @@ void loadscreen::increment_progress(const int percentage, const std::string &tex
 
 void loadscreen::clear_screen(const bool commit)
 {
-	int scrx = screen_.getx();					//< Screen width.
-	int scry = screen_.gety();					//< Screen height.
-	SDL_Rect area = {0, 0, scrx, scry};		// Screen area.
-	surface const disp(screen_.getSurface());	// Screen surface.
+	int scrx = screen_.getx();                     //< Screen width.
+	int scry = screen_.gety();                     //< Screen height.
+	SDL_Rect area = create_rect(0, 0, scrx, scry); // Screen area.
+	surface const disp(screen_.getSurface());      // Screen surface.
 	// Make everything black.
 	SDL_FillRect(disp,&area,SDL_MapRGB(disp->format,0,0,0));
 	if(commit)
