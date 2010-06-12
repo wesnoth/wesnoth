@@ -927,10 +927,23 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 		rmenu.add_pane(&unit_preview);
 
 		//sort by level
-		rmenu.get_menu().sort_by(3);
+		static int sort_by = 3;
+		static bool sort_reversed = false;
+	
+		if(sort_by >= 0) {
+			rmenu.get_menu().sort_by(sort_by);
+			// "reclick" on the sorter to reverse the order
+			if(sort_reversed) {
+				rmenu.get_menu().sort_by(sort_by);
+			}
+		}
 
 		res = rmenu.show();
 		res = filter->get_index(res);
+
+		sort_by = rmenu.get_menu().get_sort_by();
+		sort_reversed = rmenu.get_menu().get_sort_reversed();
+
 		if (res < 0) return;
 	}
 

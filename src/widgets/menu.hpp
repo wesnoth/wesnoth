@@ -206,6 +206,8 @@ public:
 	//this should be changed to a more object-oriented approach
 	void set_sorter(sorter *s);
 	void sort_by(int column);
+	int get_sort_by() {return sortby_;};
+	bool get_sort_reversed() {return sortreversed_;};
 
 protected:
 	bool item_ends_with_image(const std::string& item) const;
