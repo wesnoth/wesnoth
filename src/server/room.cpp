@@ -47,9 +47,9 @@ room::room(const config& wml)
 void room::write(config& cfg) const
 {
 	cfg["name"] = name_;
-	cfg["persistent"] = lexical_cast<std::string>(persistent_);
+	cfg["persistent"] = persistent_;
 	cfg["topic"] = topic_;
-	cfg["logged"] = lexical_cast<std::string>(logged_);
+	cfg["logged"] = logged_;
 }
 
 const std::string& room::name() const
