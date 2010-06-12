@@ -81,6 +81,15 @@ void arrow::set_layer(const display::tdrawing_layer & layer)
 	}
 }
 
+void arrow::set_alpha(float_t alpha)
+{
+	alpha_ = ftofxp(alpha);
+	if (valid_path())
+	{
+		update_symbols(path_);
+	}
+}
+
 const arrow_path_t & arrow::get_path() const
 {
 	return path_;
@@ -94,7 +103,7 @@ const arrow_path_t & arrow::get_previous_path() const
 void arrow::draw_hex(const map_location & loc)
 {
 	screen_->render_image(screen_->get_location_x(loc), screen_->get_location_y(loc), layer_,
-				loc, image::get_image(symbols_map_[loc], image::SCALED_TO_ZOOM));
+				loc, image::get_image(symbols_map_[loc], image::SCALED_TO_ZOOM), false, false, alpha_);
 }
 
 bool arrow::valid_path() const

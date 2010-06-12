@@ -67,6 +67,10 @@ public:
 
 	void set_layer(const display::tdrawing_layer & layer);
 
+	/// Sets transparency to the specified alpha value
+	/// 0.5 is 50% transparent, anything above 1.0 brightens the arrow images
+	void set_alpha(float_t alpha);
+
 	const arrow_path_t & get_path() const;
 
 	const arrow_path_t & get_previous_path() const;
@@ -108,6 +112,8 @@ protected:
 
 	/// represents the subdirectory that holds images for this arrow style
 	std::string style_;
+
+	float_t alpha_;
 
 	arrow_path_t path_;
 	arrow_path_t previous_path_;
