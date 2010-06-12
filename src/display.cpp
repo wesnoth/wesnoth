@@ -121,7 +121,9 @@ display::display(CVideo& video, const gamemap* map, const config& theme_cfg, con
 	map_screenshot_surf_(NULL),
 	redraw_observers_(),
 	draw_coordinates_(false),
-	draw_terrain_codes_(false)
+	draw_terrain_codes_(false),
+	arrows_map_(),
+	arrows_list_()
 {
 	if(non_interactive()
 		&& (get_video_surface() != NULL
