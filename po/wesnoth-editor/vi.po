@@ -4,8 +4,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-06-11 13:53+0200\n"
-"PO-Revision-Date: 2009-09-24 10:23+0700\n"
-"Last-Translator: Phạm Thành Nam <phamthanhnam.ptn@gmail.com>\n"
+"PO-Revision-Date: 2010-06-11 15:03+0700\n"
+"Last-Translator: Huynh Yen Loc <walkingcorpse13@gmail.com>\n"
 "Language-Team: Vietnamese <>\n"
 "Language: vi\n"
 "MIME-Version: 1.0\n"
@@ -72,7 +72,7 @@ msgstr "đóng băng"
 #. [editor_group]: id=rough
 #: data/core/editor/terrain-groups.cfg:58
 msgid "rough"
-msgstr "lởm chởm"
+msgstr "gồ ghề"
 
 #. [editor_group]: id=cave
 #: data/core/editor/terrain-groups.cfg:65
@@ -274,7 +274,7 @@ msgstr "Dữ liệu bản đồ nhúng đã tải"
 
 #: src/editor/editor_controller.cpp:689 src/editor/editor_controller.cpp:703
 msgid "Map loaded from scenario"
-msgstr "Bản đồ tải từ kịch bản"
+msgstr "Bản đồ tải từ màn chơi"
 
 #: src/editor/editor_controller.cpp:699
 msgid ""
@@ -314,7 +314,7 @@ msgstr "Tự động cập nhật chuyển tiếp địa hình: Không"
 
 #: src/editor/editor_map.cpp:149 src/editor/mouse_action.cpp:429
 msgid "Player"
-msgstr "Đấu thủ"
+msgstr "Người chơi"
 
 #: src/editor/editor_map.cpp:256
 msgid "The size of the target map is different from the current map"
@@ -345,7 +345,7 @@ msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
 msgstr ""
-"Tập tin bản đồ trông giống như một kịch bản, nhưng giá trị map_data không "
+"Tập tin bản đồ trông giống như một màn chơi, nhưng giá trị map_data không "
 "chỉ đến một tập tin tồn tại."
 
 #: src/editor/map_context.cpp:99
@@ -354,7 +354,7 @@ msgstr "Tập tin bản đồ rỗng"
 
 #: src/editor/map_context.cpp:219
 msgid "Could not save into scenario"
-msgstr "Không thể lưu vào kịch bản"
+msgstr "Không thể lưu vào màn chơi"
 
 #: src/editor/map_context.cpp:226
 msgid "Could not save the map: $msg"
@@ -366,7 +366,7 @@ msgstr "Không có"
 
 #: src/editor/mouse_action.cpp:433
 msgid "Choose player"
-msgstr "Chọn đấu thủ"
+msgstr "Chọn người chơi"
 
 #: src/editor/mouse_action.cpp:434
 msgid ""
@@ -375,9 +375,9 @@ msgid ""
 "the cursor. Pressing a number key by itself will scroll to that player's "
 "starting position."
 msgstr ""
-"Đấu thủ nào sẽ bắt đầu ở đây? Bạn có thể sử dụng alt và một phím số để thiết "
-"lập vị trí ban đầu cho một đấu thủ, và del để xóa vị trí ban đầu dưới con "
-"trỏ. Ấn một phím số sẽ cuộn đến vị trí ban đầu của đấu thủ đó."
+"Người chơi nào sẽ bắt đầu ở đây? Bạn có thể sử dụng alt và một phím số để "
+"thiết lập vị trí ban đầu cho một người chơi, và del để xóa vị trí ban đầu "
+"dưới con trỏ. Ấn một phím số sẽ cuộn đến vị trí ban đầu của người chơi đó."
 
 #: src/gui/dialogs/editor_settings.cpp:166
 msgid "Custom setting"

@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-06-11 13:53+0200\n"
-"PO-Revision-Date: 2009-09-26 15:45+0700\n"
-"Last-Translator: Phạm Thành Nam <phamthanhnam.ptn@gmail.com>\n"
+"PO-Revision-Date: 2010-06-12 07:54+0700\n"
+"Last-Translator: Huynh Yen Loc <walkingcorpse13@gmail.com>\n"
 "Language-Team: Vietnamese <>\n"
 "Language: vi\n"
 "MIME-Version: 1.0\n"
@@ -126,9 +126,8 @@ msgstr "Hố"
 
 #. [terrain_type]: id=stones_small
 #: data/core/terrain.cfg:290
-#, fuzzy
 msgid "Stones"
-msgstr "Hành động"
+msgstr ""
 
 #. [terrain_type]: id=mushrooms_small
 #: data/core/terrain.cfg:299
@@ -549,22 +548,22 @@ msgstr "Pháo đài công sự"
 #: data/core/terrain.cfg:1431 data/core/terrain.cfg:1468
 #: data/core/terrain.cfg:1507
 msgid "Castle Keep"
-msgstr "Pháo đài lâu đài"
+msgstr "Pháo đài"
 
 #. [terrain_type]: id=elven_keep
 #: data/core/terrain.cfg:1455
 msgid "Elven Keep"
-msgstr "Pháo đài thần tiên"
+msgstr "Pháo đài của thần tiên"
 
 #. [terrain_type]: id=ruined_keep
 #: data/core/terrain.cfg:1481
 msgid "Ruined Castle Keep"
-msgstr "Pháo đài lâu đài đổ nát"
+msgstr "Pháo đài đổ nát"
 
 #. [terrain_type]: id=sunken_keep
 #: data/core/terrain.cfg:1494
 msgid "Sunken Castle Keep"
-msgstr "Pháo đài lâu đài bị chìm"
+msgstr "Pháo đài bị chìm"
 
 #. [terrain_type]: id=desert_keep
 #: data/core/terrain.cfg:1542 data/core/terrain.cfg:1543
@@ -882,7 +881,7 @@ msgstr "Hành động"
 #. [button]: id=step
 #: data/gui/default/window/formula_debugger.cfg:120
 msgid "Step operation"
-msgstr "Nhảy qua thao tác"
+msgstr "Can thiệp thao tác"
 
 #. [button]: id=next
 #: data/gui/default/window/formula_debugger.cfg:131
@@ -1027,7 +1026,7 @@ msgstr "Lỗi OOS"
 #. [toggle_button]: id=ignore_all
 #: data/gui/default/window/game_save_oos.cfg:134
 msgid "Ignore All"
-msgstr "Bỏ qua tất cả"
+msgstr "từ chối tất cả"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=quit_game
@@ -1121,17 +1120,17 @@ msgstr "Cần mật khẩu để tham gia"
 #: data/gui/default/window/lobby_main.cfg:178
 #: data/gui/default/window/mp_create_game.cfg:313
 msgid "Use map settings"
-msgstr "Sử dụng thiết lập bản đồ"
+msgstr "Sử dụng thiết lập mặc định của bản đồ"
 
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:179
 msgid "Reloaded game"
-msgstr "Trò chơi tải lại"
+msgstr "Trò chơi được tải lại"
 
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:180
 msgid "Unknown era"
-msgstr "Kỷ nguyên không xác định"
+msgstr "các liên minh không xác định"
 
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:182
@@ -1153,12 +1152,12 @@ msgstr "Giới hạn thời gian"
 #. [label]
 #: data/gui/default/window/lobby_main.cfg:305
 msgid "Sort players:"
-msgstr "Sắp xếp đấu thủ:"
+msgstr "Sắp xếp người chơi:"
 
 #. [toggle_button]: id=player_list_sort_relation
 #: data/gui/default/window/lobby_main.cfg:313
 msgid "Friends first, ignored people last"
-msgstr "Bạn bè trước, những người bị bỏ qua sau"
+msgstr "Bạn bè trước, những người bị từ chối sau"
 
 #. [toggle_button]: id=player_list_sort_name
 #: data/gui/default/window/lobby_main.cfg:321
@@ -1198,7 +1197,7 @@ msgstr "Tin nhắn đang chờ"
 #. [label]
 #: data/gui/default/window/lobby_main.cfg:567
 msgid "Multiplayer Lobby"
-msgstr "Phòng gặp gỡ nhiều đấu thủ"
+msgstr "Phòng gặp gỡ nhiều người chơi"
 
 #. [label]
 #: data/gui/default/window/lobby_main.cfg:575
@@ -1213,7 +1212,7 @@ msgstr "Bạn bè"
 #. [toggle_button]: id=filter_without_ignored
 #: data/gui/default/window/lobby_main.cfg:592
 msgid "No ignored"
-msgstr "Không bỏ qua"
+msgstr "Không từ chối"
 
 #. [toggle_button]: id=filter_vacant_slots
 #: data/gui/default/window/lobby_main.cfg:598
@@ -1237,7 +1236,7 @@ msgstr "Gửi"
 #: data/gui/default/window/title_screen.cfg:233
 #: src/game_preferences_display.cpp:53 src/hotkeys.cpp:79
 msgid "Preferences"
-msgstr "Tùy thích"
+msgstr "Tùy chọn"
 
 #. [button]: id=refresh
 #: data/gui/default/window/lobby_main.cfg:672
@@ -1269,7 +1268,7 @@ msgstr "Phát lại nhanh"
 #. [label]
 #: data/gui/default/window/lobby_player_info.cfg:30
 msgid "Player Info — "
-msgstr "Thông tin đấu thủ - "
+msgstr "Thông tin người chơi - "
 
 #. [button]: id=start_whisper
 #: data/gui/default/window/lobby_player_info.cfg:62
@@ -1284,7 +1283,7 @@ msgstr "Thêm vào danh sách bạn bè"
 #. [button]: id=add_to_ignores
 #: data/gui/default/window/lobby_player_info.cfg:100
 msgid "Add to ignores list"
-msgstr "Thêm vào danh sách bỏ qua"
+msgstr "Thêm vào danh sách từ chối"
 
 #. [button]: id=remove_from_list
 #: data/gui/default/window/lobby_player_info.cfg:109
@@ -1325,7 +1324,7 @@ msgstr "Đuổi/cấm"
 #. [window]: id=mp_cmd_wrapper
 #: data/gui/default/window/mp_cmd_wrapper.cfg:8
 msgid "Multiplayer command dialog"
-msgstr "Hộp thoại lệnh nhiều đấu thủ"
+msgstr "Hộp thoại lệnh nhiều người chơi"
 
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:31
@@ -1345,7 +1344,7 @@ msgstr "Gửi tin nhắn riêng tư"
 #. [label]
 #: data/gui/default/window/mp_cmd_wrapper.cfg:133
 msgid "Friends/Ignored List"
-msgstr "Danh sách bạn bè/bỏ qua"
+msgstr "Danh sách bạn bè/từ chối"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=add_friend
@@ -1359,7 +1358,7 @@ msgstr "Thêm vào Bạn bè"
 #: data/gui/default/window/mp_cmd_wrapper.cfg:177
 #: src/game_preferences_display.cpp:175
 msgid "Add As Ignore"
-msgstr "Thêm vào Bỏ qua"
+msgstr "Thêm vào Từ chối"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=remove
@@ -1397,7 +1396,7 @@ msgstr "Đuổi"
 #: data/gui/default/window/mp_connect.cfg:50
 #: data/gui/default/window/mp_server_list.cfg:61
 msgid "You will now connect to the multiplayer server."
-msgstr "Bây giờ bạn sẽ kết nối đến máy chủ nhiều đấu thủ."
+msgstr "Bây giờ bạn sẽ kết nối đến máy chủ nhiều người chơi."
 
 #. [button]: id=list
 #: data/gui/default/window/mp_connect.cfg:148
@@ -1414,7 +1413,7 @@ msgstr "Tên trò chơi:"
 #. [label]: id=map_players
 #: data/gui/default/window/mp_create_game.cfg:140
 msgid "Players: "
-msgstr "Số đấu thủ: "
+msgstr "Số người chơi: "
 
 #. [label]: id=map_size
 #: data/gui/default/window/mp_create_game.cfg:159
@@ -1424,7 +1423,7 @@ msgstr "Kích thước bản đồ: "
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:177
 msgid "Era:"
-msgstr "Kỷ nguyên:"
+msgstr "Các liên minh:"
 
 #. [button]: id=era
 #: data/gui/default/window/mp_create_game.cfg:196
@@ -1474,7 +1473,7 @@ msgstr "Tạo trò chơi"
 #. [window]: id=mp_login
 #: data/gui/default/window/mp_login.cfg:8
 msgid "Multiplayer server login dialog"
-msgstr "Hộp thoại đăng nhập máy chủ nhiều đấu thủ"
+msgstr "Hộp thoại đăng nhập máy chủ nhiều người chơi"
 
 #. [label]
 #: data/gui/default/window/mp_login.cfg:31
@@ -1511,7 +1510,7 @@ msgstr "Trình nhắc nhở mật khẩu"
 #: data/gui/default/window/title_screen.cfg:228
 #: src/gui/dialogs/game_load.cpp:285
 msgid "Multiplayer"
-msgstr "Nhiều đấu thủ"
+msgstr "Nhiều người chơi"
 
 #. [text_box]: id=user_name
 #: data/gui/default/window/mp_method_selection.cfg:82
@@ -1523,8 +1522,8 @@ msgid ""
 "\n"
 "The Battle for Wesnoth forum can be found at http://www.wesnoth.org/forum/"
 msgstr ""
-"Bạn phải đăng nhập vào máy chủ nhiều đấu thủ chính thức bằng tên người dùng "
-"và mật khẩu trên diễn đàn của bạn.\n"
+"Bạn phải đăng nhập vào máy chủ nhiều người chơi chính thức bằng tên người "
+"dùng và mật khẩu trên diễn đàn của bạn.\n"
 "Chú ý rằng đăng ký là không bắt buộc để tham gia máy chủ: bạn chỉ cần cung "
 "cấp mật khẩu nếu bạn muốn sử dụng một tên người dùng đã đăng ký.\n"
 "\n"
@@ -1538,7 +1537,7 @@ msgstr "Tham gia máy chủ chính thức"
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:139
 msgid "Log on to the official Wesnoth multiplayer server"
-msgstr "Đăng nhập vào máy chủ nhiều đấu thủ Wesnoth chính thức"
+msgstr "Đăng nhập vào máy chủ nhiều người chơi Wesnoth chính thức"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:149
@@ -1548,7 +1547,7 @@ msgstr "Tham gia máy chủ khác"
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:158
 msgid "Host Networked Game"
-msgstr "Làm chủ trò chơi mạng"
+msgstr "Làm máy chủ cho trò chơi mạng"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:159
@@ -1563,7 +1562,8 @@ msgstr "Trò chơi cục bộ"
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:169
 msgid "Play a multiplayer game with the AI or humans sharing the same machine"
-msgstr "Chơi trò chơi nhiều đấu thủ với máy tính hoặc người trên cùng một máy"
+msgstr ""
+"Chơi trò chơi nhiều người chơi với máy tính hoặc người trên cùng một máy"
 
 #. [label]: id=address
 #: data/gui/default/window/mp_server_list.cfg:113
@@ -1639,7 +1639,7 @@ msgstr "Tải"
 #: data/gui/default/window/title_screen.cfg:229
 #, fuzzy
 msgid "Load a saved game"
-msgstr "Trò chơi tải lại"
+msgstr "Trò chơi được tải lại"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:230
@@ -1765,7 +1765,7 @@ msgstr "Không xác định được máy chủ nào."
 
 #: src/game_preferences.cpp:349
 msgid "player"
-msgstr "đấu thủ"
+msgstr "người chơi"
 
 #: src/game_preferences_display.cpp:157
 msgid "Full Screen"
@@ -1777,15 +1777,15 @@ msgstr "Cho phép theo dõi hành động của đơn vị"
 
 #: src/game_preferences_display.cpp:159
 msgid "Accelerated Speed"
-msgstr "Tốc độ tăng tốc"
+msgstr "Tăng tốc"
 
 #: src/game_preferences_display.cpp:160
 msgid "Skip AI Moves"
-msgstr "Nhảy qua di chuyển của máy tính"
+msgstr "Bỏ qua nước đi của máy tính"
 
 #: src/game_preferences_display.cpp:161
 msgid "Interrupt move when an ally is sighted"
-msgstr ""
+msgstr "Gián đoạn nước đi khi nhìn thấy đồng minh"
 
 #: src/game_preferences_display.cpp:162
 msgid "Show Grid"
@@ -1829,7 +1829,7 @@ msgstr "Danh sách bạn bè"
 
 #: src/game_preferences_display.cpp:173
 msgid "Multiplayer Options"
-msgstr "Tùy chọn nhiều đấu thủ"
+msgstr "Tùy chọn nhiều người chơi"
 
 #: src/game_preferences_display.cpp:177
 msgid "Show Floating Labels"
@@ -1837,7 +1837,7 @@ msgstr "Hiện nhãn nổi"
 
 #: src/game_preferences_display.cpp:178
 msgid "Turn Dialog"
-msgstr "Hộp thoại lượt"
+msgstr "Hộp thoại nhắc lượt"
 
 #: src/game_preferences_display.cpp:179
 #, fuzzy
@@ -1846,7 +1846,7 @@ msgstr "Trễ cập nhật màn che"
 
 #: src/game_preferences_display.cpp:180
 msgid "Turn Bell"
-msgstr "Chuông lượt"
+msgstr "Chuông nhắc lượt"
 
 #: src/game_preferences_display.cpp:181
 msgid "Show Team Colors"
@@ -1870,7 +1870,7 @@ msgstr "Sắc thái"
 
 #: src/game_preferences_display.cpp:186
 msgid "Hotkeys"
-msgstr "Phím nóng"
+msgstr "Phím tắt"
 
 #: src/game_preferences_display.cpp:187
 msgid "Reverse Time Graphics"
@@ -1914,11 +1914,11 @@ msgstr "Âm lượng âm nhạc:"
 
 #: src/game_preferences_display.cpp:201
 msgid "SFX Volume:"
-msgstr "Âm lượng HƯÂT:"
+msgstr "Âm lượng SFX:"
 
 #: src/game_preferences_display.cpp:202
 msgid "UI Sound Volume:"
-msgstr "Âm lượng GDND:"
+msgstr "Âm lượng giao diện:"
 
 #: src/game_preferences_display.cpp:203
 msgid "Bell Volume:"
@@ -2025,11 +2025,11 @@ msgstr "Thiết lập số bản lưu tự động tối đa cần giữ lại"
 
 #: src/game_preferences_display.cpp:339
 msgid "Do not animate AI units moving"
-msgstr "Không hoạt hóa di chuyển của đơn vị máy tính điều khiển"
+msgstr "Không hiện hoạt ảnh di chuyển của đơn vị do máy tính điều khiển"
 
 #: src/game_preferences_display.cpp:342
 msgid "Sighting an allied unit interrupts your unit's movement"
-msgstr ""
+msgstr "Nhìn thấy đơn vị đồng minh làm gián đoạn nước đi của đơn vị của bạn"
 
 #: src/game_preferences_display.cpp:350
 msgid "Overlay a grid onto the map"
@@ -2037,11 +2037,11 @@ msgstr "Phủ lưới lên trên bản đồ"
 
 #: src/game_preferences_display.cpp:353
 msgid "Sort the player list in the lobby by player groups"
-msgstr "Sắp xếp danh sách đấu thủ trong phòng gặp gỡ theo từng nhóm"
+msgstr "Sắp xếp danh sách người chơi trong phòng gặp gỡ theo từng nhóm"
 
 #: src/game_preferences_display.cpp:356
 msgid "Show icons in front of the player names in the lobby."
-msgstr "Hiện biểu tượng trước tên đấu thủ trong phòng gặp gỡ."
+msgstr "Hiện biểu tượng trước tên người chơi trong phòng gặp gỡ."
 
 #: src/game_preferences_display.cpp:359
 msgid "Uncheck to delete the saved password (on exit)."
@@ -2049,7 +2049,7 @@ msgstr "Hủy đánh dấu để xóa mật khẩu đã lưu (khi thoát)."
 
 #: src/game_preferences_display.cpp:363
 msgid "Do not show messages about players joining the multiplayer lobby"
-msgstr "Không hiện tin nhắn về những đấu thủ tham gia phòng gặp gỡ"
+msgstr "Không hiện tin nhắn về những người chơi tham gia phòng gặp gỡ"
 
 #: src/game_preferences_display.cpp:365
 msgid "Show messages about your friends joining the multiplayer lobby"
@@ -2057,7 +2057,7 @@ msgstr "Hiện tin nhắn về bạn bè của bạn tham gia phòng gặp gỡ"
 
 #: src/game_preferences_display.cpp:367
 msgid "Show messages about all players joining the multiplayer lobby"
-msgstr "Hiện tin nhắn về tất cả các đấu thủ tham gia phòng gặp gỡ"
+msgstr "Hiện tin nhắn về tất cả các người chơi tham gia phòng gặp gỡ"
 
 #: src/game_preferences_display.cpp:369
 msgid "Find and set path to MP server to host LAN games."
@@ -2067,11 +2067,11 @@ msgstr ""
 
 #: src/game_preferences_display.cpp:370
 msgid "View and edit your friends and ignores list"
-msgstr "Xem và sửa danh sách bạn bè và danh sách bỏ qua của bạn"
+msgstr "Xem và sửa danh sách bạn bè và danh sách từ chối của bạn"
 
 #: src/game_preferences_display.cpp:371
 msgid "Back to the multiplayer options"
-msgstr "Trở lại tùy chọn nhiều đấu thủ"
+msgstr "Trở lại tùy chọn nhiều người chơi"
 
 #: src/game_preferences_display.cpp:372
 msgid "Add this username to your friends list"
@@ -2079,7 +2079,7 @@ msgstr "Thêm tên người dùng này vào danh sách bạn bè của bạn"
 
 #: src/game_preferences_display.cpp:373
 msgid "Add this username to your ignores list"
-msgstr "Thêm tên người dùng này vào danh sách bỏ qua của bạn"
+msgstr "Thêm tên người dùng này vào danh sách từ chối của bạn"
 
 #: src/game_preferences_display.cpp:374
 msgid "Remove this username from your list"
@@ -2183,7 +2183,7 @@ msgstr "Âm thanh"
 
 #: src/game_preferences_display.cpp:1187
 msgid "Prefs section^Multiplayer"
-msgstr "Nhiều đấu thủ"
+msgstr "Nhiều người chơi"
 
 #: src/game_preferences_display.cpp:1188
 msgid "Advanced section^Advanced"
@@ -2200,7 +2200,7 @@ msgstr "Sắc thái mới sẽ có hiệu lực ở trò chơi mới hoặc tả
 #: src/game_preferences_display.cpp:1233
 msgid "No known themes. Try changing from within an existing game."
 msgstr ""
-"Không có sắc thái nào. Thử thay đổi từ bên trong một trò chơi đang chạy."
+"Không có chủ đề nào nào. Thử thay đổi từ bên trong một trò chơi đang chạy."
 
 #: src/game_preferences_display.cpp:1276
 msgid "Find $filename server binary to host networked games"
@@ -2296,7 +2296,7 @@ msgstr ""
 #: src/gui/auxiliary/window_builder/tree_view.cpp:90
 #, fuzzy
 msgid "No node defined."
-msgstr "Không xác định được lưới."
+msgstr "Không xác định được trang."
 
 #: src/gui/dialogs/game_load.cpp:258
 msgid "#(Invalid)"
@@ -2316,7 +2316,7 @@ msgstr "Lượt"
 
 #: src/gui/dialogs/game_load.cpp:299
 msgid "Scenario Start"
-msgstr "Mở đầu kịch bản"
+msgstr "Mở đầu màn"
 
 #: src/gui/dialogs/game_load.cpp:302
 msgid "Difficulty: "
@@ -2328,11 +2328,11 @@ msgstr "Phiên bản: "
 
 #: src/gui/dialogs/lobby_main.cpp:229
 msgid "whisper to $receiver"
-msgstr ""
+msgstr "gửi tin nhắn cá nhân đến $receiver"
 
 #: src/gui/dialogs/lobby_main.cpp:660
 msgid "Games: showing $num_shown out of $num_total"
-msgstr ""
+msgstr "Trò chơi: hiện $num_shown trông số $num_total"
 
 #: src/gui/dialogs/lobby_main.cpp:704
 msgid "Observers allowed"
@@ -2356,11 +2356,11 @@ msgstr "Đã tham gia phòng $name"
 
 #: src/gui/dialogs/lobby_main.cpp:1435
 msgid "$player has entered the room"
-msgstr ""
+msgstr "$player đã vào phòng"
 
 #: src/gui/dialogs/lobby_main.cpp:1473
 msgid "$player has left the room"
-msgstr ""
+msgstr "$player đã rời khỏi phòng"
 
 #: src/gui/dialogs/lobby_main.cpp:1586
 msgid "Password Required"
@@ -2418,7 +2418,7 @@ msgstr ""
 
 #: src/gui/widgets/window.cpp:809
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
-msgstr "Nhấn thải hồi cần một nút 'click_dismiss' hoặc 'ok'."
+msgstr "Nhấn giải tán cần một nút 'click_dismiss' hoặc 'ok'."
 
 #: src/gui/widgets/window.cpp:834 src/gui/widgets/window.cpp:867
 #: src/tests/gui/test_gui2.cpp:229
@@ -2507,7 +2507,7 @@ msgstr "Tuyển quân"
 
 #: src/hotkeys.cpp:68
 msgid "Repeat Recruit"
-msgstr "Lặp lại tuyển quân"
+msgstr "Tuyển lại quân giống trước đó"
 
 #: src/hotkeys.cpp:69
 msgid "Recall"
@@ -2547,7 +2547,7 @@ msgstr "Thay đổi phe (Gỡ lỗi!)"
 
 #: src/hotkeys.cpp:80
 msgid "Scenario Objectives"
-msgstr "Mục tiêu kịch bản"
+msgstr "Mục tiêu màn"
 
 #: src/hotkeys.cpp:81
 msgid "Unit List"
@@ -2579,11 +2579,11 @@ msgstr "Xóa nhãn"
 
 #: src/hotkeys.cpp:89
 msgid "Show Enemy Moves"
-msgstr "Hiện di chuyển của kẻ thù"
+msgstr "Hiện nước đi của kẻ thù"
 
 #: src/hotkeys.cpp:90
 msgid "Best Possible Enemy Moves"
-msgstr "Di chuyển của kẻ thù tốt nhất có thể"
+msgstr " Phạm vi di chuyển của kẻ thù tốt nhất có thể"
 
 #: src/hotkeys.cpp:92
 msgid "Reset"
@@ -2873,7 +2873,7 @@ msgstr "Trình tạo bản đồ"
 
 #: src/mapgen_dialog.cpp:119
 msgid "Players:"
-msgstr "Số đấu thủ:"
+msgstr "Số người chơi:"
 
 #: src/mapgen_dialog.cpp:122
 msgid "Number of Hills:"
@@ -2939,11 +2939,11 @@ msgstr ""
 
 #: src/preferences_display.cpp:293
 msgid "Hotkey Settings"
-msgstr "Thiết lập phím nóng"
+msgstr "Thiết lập phím tắt"
 
 #: src/preferences_display.cpp:299 src/preferences_display.cpp:367
 msgid "Press desired Hotkey (Esc cancels)"
-msgstr "Ấn phím nóng mong muốn (Esc hủy bỏ)"
+msgstr "Ấn phím tắt mong muốn (Esc hủy bỏ)"
 
 #: src/preferences_display.cpp:318
 msgid "Action"
@@ -2955,21 +2955,21 @@ msgstr "Gán"
 
 #: src/preferences_display.cpp:330
 msgid "Change Hotkey"
-msgstr "Thay đổi phím nóng"
+msgstr "Thay đổi phím tắt"
 
 #: src/preferences_display.cpp:333
 msgid "Clear Hotkey"
-msgstr "Xóa phím nóng"
+msgstr "Xóa phím tắt"
 
 #: src/preferences_display.cpp:401
 msgid "This Hotkey is already in use."
-msgstr "Phím nóng này đã được sử dụng."
+msgstr "Phím tắt này đã được sử dụng."
 
 #: src/preferences_display.cpp:412
 msgid ""
 "Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."
 msgstr ""
-"Cảnh báo: phím nóng chụp màn hình không được kết hợp với các phím Control, "
+"Cảnh báo: phím tắt chụp màn hình không được kết hợp với các phím Control, "
 "Alt hay Meta."
 
 #: src/preferences_display.cpp:509
@@ -3019,8 +3019,18 @@ msgstr ""
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "Trong phần '[$section|]' khóa bắt buộc '$key|' không được thiết lập."
 
+#~ msgid "Road"
+#~ msgstr "Đường"
+
 #~ msgid "River Ford"
 #~ msgstr "Chỗ cạn ở sông"
 
-#~ msgid "Road"
-#~ msgstr "Đường"
+#~ msgid "Use new lobby interface"
+#~ msgstr "Sử dụng giao diện phòng gặp gỡ mới"
+
+#~ msgid ""
+#~ "mouseover^Use new lobby interface (only works after a manual reconnect to "
+#~ "the server)"
+#~ msgstr ""
+#~ "rê chuột qua^Sử dung giao diện phòng gặp gỡ mới (chỉ hoạt động sau khi "
+#~ "thủ công kết nối lại đến máy chủ)"
