@@ -65,8 +65,24 @@ private:
 			return name_space(lineage_);
 		}
 		operator bool () const { return valid_; }
-		name_space() : valid_(false) {};
-		name_space(const std::string &ns) : namespace_(ns) {
+		name_space()
+			: namespace_()
+			, root_()
+			, node_()
+			, lineage_()
+			, descendants_()
+			, valid_(false)
+		{
+		}
+
+		name_space(const std::string &ns)
+			: namespace_(ns)
+			, root_()
+			, node_()
+			, lineage_()
+			, descendants_()
+			, valid_(false)
+		{
 			parse();
 			valid_ = ((namespace_.find_first_not_of("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz_.") > namespace_.length()) && !namespace_.empty());
 			root_ = namespace_.substr(0,namespace_.find_first_of("."));
@@ -87,8 +103,15 @@ private:
 		config &cfg_;
 		node *parent_;
 		child_map children_;
-		node(std::string name, persist_context *root, config & cfg, node *parent = NULL) : name_(name), root_(root), cfg_(cfg),parent_(parent) {
+		node(std::string name, persist_context *root, config & cfg, node *parent = NULL)
+			: name_(name)
+			, root_(root)
+			, cfg_(cfg)
+			, parent_(parent)
+			, children_()
+		{
 		}
+
 		~node() {
 			for (child_map::iterator i = children_.begin(); i != children_.end(); i++)
 				delete (i->second);
@@ -123,7 +146,14 @@ private:
 	void load();
 	void init();
 	bool save_context();
-	persist_context() : valid_(false), root_node_("",this,cfg_), active_(&root_node_) {};
+	persist_context()
+		: namespace_()
+		, cfg_()
+		, valid_(false)
+		, root_node_("",this,cfg_)
+		, active_(&root_node_)
+	{};
+
 	static persist_context invalid;
 	persist_context &add_child(const std::string &key);
 public:
