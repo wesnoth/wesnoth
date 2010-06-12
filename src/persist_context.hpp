@@ -35,7 +35,7 @@ private:
 		}
 		void parse() {
 			while (namespace_.find_first_of("^") < namespace_.size()) {
-				if (namespace_[0] = '^') {
+				if (namespace_[0] == '^') {
 					//TODO: Throw a WML error
 					namespace_ = "";
 					break;
@@ -78,16 +78,16 @@ private:
 		}
 	};
 	// TODO: transaction support (needed for MP)
-	config cfg_;
 	name_space namespace_;
+	config cfg_;
 	struct node {
 		typedef std::map<std::string,node*> child_map;
 		std::string name_;
 		persist_context *root_;
+		config &cfg_;
 		node *parent_;
 		child_map children_;
-		config &cfg_;
-		node(std::string name, persist_context *root, config & cfg, node *parent = NULL) : name_(name), root_(root), cfg_(cfg),parent_(parent) { 
+		node(std::string name, persist_context *root, config & cfg, node *parent = NULL) : name_(name), root_(root), cfg_(cfg),parent_(parent) {
 		}
 		~node() {
 			for (child_map::iterator i = children_.begin(); i != children_.end(); i++)
@@ -117,9 +117,9 @@ private:
 				cfg_.add_child("variables");
 		}
 	};
+	bool valid_;
 	node root_node_;
 	node *active_;
-	bool valid_;
 	void load();
 	void init();
 	bool save_context();
