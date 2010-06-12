@@ -310,8 +310,8 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 	}
 
 	advance_to(type(), use_traits, state);
-	if (cfg.has_attribute("race")) {
-		if (const unit_race *r = unit_types.find_race(cfg["race"])) {
+	if (const config::attribute_value *v = cfg.get("race")) {
+		if (const unit_race *r = unit_types.find_race(*v)) {
 			race_ = r;
 		} else {
 			static const unit_race dummy_race;
@@ -319,35 +319,35 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 		}
 	}
 	level_ = cfg["level"].to_int(level_);
-	if(cfg["undead_variation"] != "") {
-		undead_variation_ = cfg["undead_variation"].str();
+	if (const config::attribute_value *v = cfg.get("undead_variation")) {
+		undead_variation_ = v->str();
 	}
-	if(cfg["max_attacks"] != "") {
-		max_attacks_ = std::max(0, cfg["max_attacks"].to_int(1));
+	if(const config::attribute_value *v = cfg.get("max_attacks")) {
+		max_attacks_ = std::max(0, v->to_int(1));
 	}
 	attacks_left_ = std::max(0, cfg["attacks_left"].to_int(max_attacks_));
 
-	if(cfg["alpha"] != "") {
-		alpha_ = lexical_cast_default<fixed_t>(cfg["alpha"]);
+	if (const config::attribute_value *v = cfg.get("alpha")) {
+		alpha_ = lexical_cast_default<fixed_t>(*v);
 	}
-	if (cfg.has_attribute("zoc")) {
-		emit_zoc_ = cfg["zoc"].to_bool(level_ > 0);
+	if (const config::attribute_value *v = cfg.get("zoc")) {
+		emit_zoc_ = v->to_bool(level_ > 0);
 	}
-	if (cfg.has_attribute("flying")) {
-		flying_ = cfg["flying"].to_bool();
+	if (const config::attribute_value *v = cfg.get("flying")) {
+		flying_ = v->to_bool();
 	}
-	if (cfg.has_attribute("description")) {
-		cfg_["description"] = cfg["description"];
+	if (const config::attribute_value *v = cfg.get("description")) {
+		cfg_["description"] = *v;
 	}
-	if (cfg.has_attribute("cost")) {
-		unit_value_ = cfg["cost"];
+	if (const config::attribute_value *v = cfg.get("cost")) {
+		unit_value_ = *v;
 	}
-	if(cfg["halo"] != "") {
+	if (const config::attribute_value *v = cfg.get("halo")) {
 		clear_haloes();
-		cfg_["halo"] = cfg["halo"];
+		cfg_["halo"] = *v;
 	}
-	if(cfg["profile"] != "") {
-		cfg_["profile"] = cfg["profile"];
+	if (const config::attribute_value *v = cfg.get("profile")) {
+		cfg_["profile"] = *v;
 	}
 	max_hit_points_ = std::max(1, cfg["max_hitpoints"].to_int(max_hit_points_));
 	max_movement_ = std::max(0, cfg["max_moves"].to_int(max_movement_));
@@ -454,8 +454,8 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 		cfg_.clear_children(tag_name);
 	}
 
-	if (cfg.has_attribute("hitpoints")) {
-		hit_points_ = cfg["hitpoints"];
+	if (const config::attribute_value *v = cfg.get("hitpoints")) {
+		hit_points_ = *v;
 	} else {
 		hit_points_ = max_hit_points_;
 	}
@@ -472,8 +472,8 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 		}
 	}
 
-	if(cfg["moves"] != "") {
-		movement_ = cfg["moves"];
+	if (const config::attribute_value *v = cfg.get("moves")) {
+		movement_ = *v;
 		if(movement_ < 0) {
 			attacks_left_ = 0;
 			movement_ = 0;
@@ -811,8 +811,9 @@ void unit::advance_to(const unit_type* t, bool use_traits, game_state* state)
 	static char const *persistent_attrs[] = { "upkeep", "ellipse",
 		"image", "usage", "random_traits", "generate_name" };
 	foreach (const char *attr, persistent_attrs) {
-		if (!old_cfg.has_attribute(attr)) continue;
-		cfg_[attr] = old_cfg[attr];
+		if (const config::attribute_value *v = old_cfg.get(attr)) {
+			cfg_[attr] = *v;
+		}
 	}
 
 	if(t->movement_type().get_parent()) {
@@ -1075,8 +1076,8 @@ void unit::remove_temporary_modifications()
 			const config &mod = modifications_.child(mod_name, j);
 			const std::string& duration = mod["duration"];
 			if (!duration.empty() && duration != "forever") {
-				if(mod.has_attribute("prev_type")) {
-					type_ = mod["prev_type"].str();
+				if (const config::attribute_value *v = mod.get("prev_type")) {
+					type_ = v->str();
 				}
 				modifications_.remove_child(mod_name, j);
 				rebuild_from_type = true;
@@ -2425,8 +2426,8 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 						mod_mdr_merge(mv, ap, !effect["replace"].to_bool());
 					}
 				} else if (apply_to == "zoc") {
-					if (effect.has_attribute("value")) {
-						emit_zoc_ = effect["value"].to_bool();
+					if (const config::attribute_value *v = effect.get("value")) {
+						emit_zoc_ = v->to_bool();
 					}
 				} else if (apply_to == "new_ability") {
 					config &ab = cfg_.child_or_add("abilities");
@@ -2522,8 +2523,8 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 			variation_ = last_effect["name"].str();
 			advance_to(this->type());
 		} else if ((last_effect)["apply_to"] == "type") {
-			if (!new_child->has_attribute("prev_type"))
-				(*new_child)["prev_type"] = type_id();
+			config::attribute_value &prev_type = (*new_child)["prev_type"];
+			if (prev_type.blank()) prev_type = type_id();
 			type_ = last_effect["name"].str();
 			int hit_points = hit_points_;
 			int experience = experience_;
