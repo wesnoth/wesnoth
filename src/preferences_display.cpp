@@ -294,7 +294,7 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 	f.layout(xpos,ypos,width,height);
 	f.draw();
 
-	SDL_Rect clip_rect = { 0, 0, disp.w (), disp.h () };
+	SDL_Rect clip_rect = create_rect(0, 0, disp.w (), disp.h ());
 	SDL_Rect text_size = font::draw_text(NULL, clip_rect, font::SIZE_LARGE,
 					     font::NORMAL_COLOR,_("Press desired Hotkey (Esc cancels)"),
 					     0, 0);
@@ -351,10 +351,11 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 
 		if (change_button.pressed () || menu_.double_clicked()) {
 			// Lets change this hotkey......
-			SDL_Rect dlgr = {centerx-text_size.w/2 - 30,
-								centery-text_size.h/2 - 16,
-									text_size.w+60,
-									text_size.h+32};
+			SDL_Rect dlgr = create_rect(centerx - text_size.w / 2 - 30
+					, centery - text_size.h / 2 - 16
+					, text_size.w + 60
+					, text_size.h + 32);
+
 			surface_restorer restorer(&disp.video(),dlgr);
 			gui::dialog_frame mini_frame(disp.video());
 			mini_frame.layout(centerx-text_size.w/2 - 20,
