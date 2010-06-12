@@ -31,7 +31,7 @@ tbuilder_toggle_panel::tbuilder_toggle_panel(const config& cfg)
 	: tbuilder_control(cfg)
 	, grid(NULL)
 	, retval_id_(cfg["return_value_id"])
-	, retval_(lexical_cast_default<int>(cfg["return_value"]))
+	, retval_(cfg["return_value"])
 {
 	const config &c = cfg.child("grid");
 
