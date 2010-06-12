@@ -209,7 +209,7 @@ namespace game_config
 
 		add_color_info(v);
 
-		if (v.has_attribute("flag_rgb")) flag_rgb = v["flag_rgb"].str();
+		if (const config::attribute_value *a = v.get("flag_rgb")) flag_rgb = a->str();
 
 		red_green_scale = string2rgb(v["red_green_scale"]);
 		if (red_green_scale.empty()) {
@@ -234,9 +234,11 @@ namespace game_config
 	{
 		foreach (const config &teamC, v.child_range("color_range"))
 		{
-			if (!teamC.has_attribute("id") || !teamC.has_attribute("rgb")) continue;
-			std::string id = teamC["id"];
-			std::vector<Uint32> temp = string2rgb(teamC["rgb"]);
+			const config::attribute_value *a1 = teamC.get("id"),
+				*a2 = teamC.get("rgb");
+			if (!a1 || !a2) continue;
+			std::string id = *a1;
+			std::vector<Uint32> temp = string2rgb(*a2);
 			team_rgb_range.insert(std::make_pair(id,color_range(temp)));
 			team_rgb_name[id] = teamC["name"];
 			//generate palette of same name;
