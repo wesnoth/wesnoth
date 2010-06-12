@@ -95,9 +95,9 @@ bool goal::active() const
 void target_unit_goal::on_create()
 {
 	goal::on_create();
-	if (cfg_.has_attribute("value")) {
+	if (const config::attribute_value *v = cfg_.get("value")) {
 		try {
-			value_ = boost::lexical_cast<double>(cfg_["value"]);
+			value_ = boost::lexical_cast<double>(*v);
 		} catch (boost::bad_lexical_cast){
 			ERR_AI_GOAL << "bad value of goal"<<std::endl;
 			value_ = 0;
@@ -136,17 +136,17 @@ target_unit_goal::target_unit_goal(readonly_context &context, const config &cfg)
 void protect_goal::on_create()
 {
 	goal::on_create();
-	if (cfg_.has_attribute("value")) {
+	if (const config::attribute_value *v = cfg_.get("value")) {
 		try {
-			value_ = boost::lexical_cast<double>(cfg_["value"]);
+			value_ = boost::lexical_cast<double>(*v);
 		} catch (boost::bad_lexical_cast){
 			ERR_AI_GOAL << "bad value of protect_goal"<<std::endl;
 			value_ = 0;
 		}
 	}
-	if (cfg_.has_attribute("protect_radius")) {
+	if (const config::attribute_value *v = cfg_.get("protect_radius")) {
 		try {
-			radius_ = boost::lexical_cast<int>(cfg_["protect_radius"]);
+			radius_ = boost::lexical_cast<int>(*v);
 		} catch (boost::bad_lexical_cast){
 			ERR_AI_GOAL << "bad protection radius of protect_goal"<<std::endl;
 			radius_ = 1;
