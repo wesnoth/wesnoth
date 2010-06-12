@@ -157,7 +157,11 @@ void terrain_palette::adjust_size() {
 	}
 	const size_t group_height = group_rows * (group_button_height + group_button_padding);
 
-	SDL_Rect rect = { size_specs_.palette_x, size_specs_.palette_y, size_specs_.palette_w, size_specs_.palette_h };
+	SDL_Rect rect = create_rect(size_specs_.palette_x
+			, size_specs_.palette_y
+			, size_specs_.palette_w
+			, size_specs_.palette_h);
+
 	set_location(rect);
 	top_button_y_ = size_specs_.palette_y + group_height ;
 	button_x_ = size_specs_.palette_x + size_specs_.palette_w/2 - button_height/2;
@@ -636,7 +640,7 @@ void brush_bar::draw(bool force) {
 		|| static_cast<unsigned>(image->h) != size_) {
 			image.assign(scale_surface(image, size_, size_));
 		}
-		SDL_Rect dstrect = {x, size_specs_.brush_y, image->w, image->h};
+		SDL_Rect dstrect = create_rect(x, size_specs_.brush_y, image->w, image->h);
 		SDL_BlitSurface(image, NULL, screen, &dstrect);
 		const Uint32 color = i == selected_brush_size() ?
 			SDL_MapRGB(screen->format,0xFF,0x00,0x00) :
