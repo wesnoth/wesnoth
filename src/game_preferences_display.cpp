@@ -509,14 +509,20 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	// General tab
 	int ypos = rect.y + top_border;
 	scroll_label_.set_location(rect.x, ypos);
-	SDL_Rect scroll_rect = { rect.x + scroll_label_.width(), ypos,
-							rect.w - scroll_label_.width() - right_border, 0 };
+	SDL_Rect scroll_rect = create_rect(rect.x + scroll_label_.width()
+			, ypos
+			, rect.w - scroll_label_.width() - right_border
+			, 0);
+
 	scroll_slider_.set_location(scroll_rect);
 	ypos += item_interline; turbo_button_.set_location(rect.x, ypos);
 	ypos += short_interline; turbo_slider_label_.set_location(rect.x + horizontal_padding, ypos);
 	ypos += short_interline;
-	SDL_Rect turbo_rect = { rect.x + horizontal_padding, ypos,
-							rect.w - horizontal_padding - right_border, 0 };
+	SDL_Rect turbo_rect = create_rect(rect.x + horizontal_padding
+			, ypos
+			, rect.w - horizontal_padding - right_border
+			, 0);
+
 	turbo_slider_.set_location(turbo_rect);
 	ypos += item_interline; show_ai_moves_button_.set_location(rect.x, ypos);
 	ypos += short_interline; turn_dialog_button_.set_location(rect.x, ypos);
@@ -525,8 +531,11 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	ypos += item_interline; save_replays_button_.set_location(rect.x, ypos);
 	ypos += short_interline; delete_saves_button_.set_location(rect.x, ypos);
 	ypos += short_interline; autosavemax_slider_label_.set_location(rect.x, ypos);
-	SDL_Rect autosavemax_rect = { rect.x, ypos+short_interline,
-				  rect.w - right_border, 0};
+	SDL_Rect autosavemax_rect = create_rect(rect.x
+			, ypos + short_interline
+			, rect.w - right_border
+			, 0);
+
 	autosavemax_slider_.set_location(autosavemax_rect);
 	hotkeys_button_.set_location(rect.x, bottom_row_y - hotkeys_button_.height());
 
@@ -543,8 +552,11 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	ypos += item_interline; idle_anim_button_.set_location(rect.x, ypos);
 	ypos += short_interline;
 	idle_anim_slider_label_.set_location(rect.x, ypos);
-	SDL_Rect idle_anim_rect = { rect.x + idle_anim_slider_label_.width(), ypos,
-	                            rect.w - idle_anim_slider_label_.width() - right_border, 0 };
+	SDL_Rect idle_anim_rect = create_rect(rect.x + idle_anim_slider_label_.width()
+			, ypos
+			, rect.w - idle_anim_slider_label_.width() - right_border
+			, 0);
+
 	idle_anim_slider_.set_location(idle_anim_rect);
 	video_mode_button_.set_location(rect.x, bottom_row_y - video_mode_button_.height());
 	theme_button_.set_location(rect.x + video_mode_button_.width() + 10,
@@ -559,8 +571,10 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 
 	ypos += short_interline;
 	sound_label_.set_location(rect.x, ypos);
-	const SDL_Rect sound_rect = { rect.x + slider_label_width_, ypos,
-								rect.w - slider_label_width_ - right_border, 0 };
+	const SDL_Rect sound_rect = create_rect(rect.x + slider_label_width_
+			, ypos
+			, rect.w - slider_label_width_ - right_border
+			, 0);
 	sound_slider_.set_location(sound_rect);
 
 	ypos += item_interline;
@@ -568,24 +582,30 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 
 	ypos += short_interline;
 	music_label_.set_location(rect.x, ypos);
-	const SDL_Rect music_rect = { rect.x + slider_label_width_, ypos,
-								rect.w - slider_label_width_ - right_border, 0 };
+	const SDL_Rect music_rect = create_rect(rect.x + slider_label_width_
+			, ypos
+			, rect.w - slider_label_width_ - right_border
+			, 0);
 	music_slider_.set_location(music_rect);
 
 	ypos += item_interline; //Bell slider
 	turn_bell_button_.set_location(rect.x, ypos);
 	ypos += short_interline;
 	bell_label_.set_location(rect.x, ypos);
-	const SDL_Rect bell_rect = {rect.x + slider_label_width_, ypos,
-								rect.w - slider_label_width_ - right_border, 0 };
+	const SDL_Rect bell_rect = create_rect(rect.x + slider_label_width_
+			, ypos
+			, rect.w - slider_label_width_ - right_border
+			, 0);
 	bell_slider_.set_location(bell_rect);
 
 	ypos += item_interline; //UI sound slider
 	UI_sound_button_.set_location(rect.x, ypos);
 	ypos += short_interline;
 	UI_sound_label_.set_location(rect.x, ypos);
-	const SDL_Rect UI_sound_rect = {rect.x + slider_label_width_, ypos,
-								rect.w - slider_label_width_ - right_border, 0 };
+	const SDL_Rect UI_sound_rect = create_rect(rect.x + slider_label_width_
+			, ypos
+			, rect.w - slider_label_width_ - right_border
+			, 0);
 	UI_sound_slider_.set_location(UI_sound_rect);
 	advanced_sound_button_.set_location(rect.x, bottom_row_y - advanced_sound_button_.height());
 
@@ -608,8 +628,10 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	ypos += item_interline;
 	buffer_size_label_.set_location(rect.x, ypos);
 	ypos += short_interline;
-	SDL_Rect buffer_rect = {rect.x + horizontal_padding, ypos,
-							rect.w - horizontal_padding - right_border, 0 };
+	SDL_Rect buffer_rect = create_rect(rect.x + horizontal_padding
+			, ypos
+			, rect.w - horizontal_padding - right_border
+			, 0);
 	buffer_size_slider_.set_location(buffer_rect);
 	ypos += item_interline;
 	normal_sound_button_.set_location(rect.x, bottom_row_y - normal_sound_button_.height());
@@ -619,8 +641,10 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 	ypos = rect.y + top_border;
 	chat_lines_label_.set_location(rect.x, ypos);
 	ypos += short_interline;
-	SDL_Rect chat_lines_rect = { rect.x + horizontal_padding, ypos,
-								rect.w - horizontal_padding - right_border, 0 };
+	SDL_Rect chat_lines_rect = create_rect(rect.x + horizontal_padding
+			, ypos
+			, rect.w - horizontal_padding - right_border
+			, 0);
 	chat_lines_slider_.set_location(chat_lines_rect);
 	ypos += item_interline; chat_timestamp_button_.set_location(rect.x, ypos);
 	ypos += item_interline; remember_pw_button_.set_location(rect.x, ypos);
@@ -665,8 +689,10 @@ void preferences_dialog::update_location(SDL_Rect const &rect)
 
 	advanced_button_.set_location(rect.x,ypos);
 	advanced_slider_label_.set_location(rect.x,ypos);
-	const SDL_Rect advanced_slider_rect = { rect.x, ypos+short_interline,
-				rect.w - right_border, 0};
+	const SDL_Rect advanced_slider_rect = create_rect(rect.x
+			, ypos + short_interline
+			, rect.w - right_border
+			, 0);
 	advanced_slider_.set_location(advanced_slider_rect);
 
 	set_selection(tab_);
