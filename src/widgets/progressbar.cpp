@@ -51,7 +51,11 @@ void progress_bar::draw_contents()
 		int	lightning_thickness = 2;
 		static const SDL_Color selected_text_color = {0xCC,0xCC,0xCC,0};
 
-		SDL_Rect inner_area = {area.x+1,area.y+1,area.w-2,area.h-2};
+		SDL_Rect inner_area = create_rect(area.x + 1
+				, area.y + 1
+				, area.w - 2
+				, area.h - 2);
+
 		SDL_FillRect(surf,&area,SDL_MapRGB(surf->format,bcr,bcg,bcb));
 		SDL_FillRect(surf,&inner_area,SDL_MapRGB(surf->format,gcr,gcg,gcb));
 
