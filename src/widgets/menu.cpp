@@ -1108,7 +1108,7 @@ SDL_Rect menu::get_item_rect_internal(size_t item) const
 		y = prev.y + prev.h;
 	}
 
-	SDL_Rect res = { loc.x, y, loc.w, get_item_height(item) };
+	SDL_Rect res = create_rect(loc.x, y, loc.w, get_item_height(item));
 
 	SDL_Rect const &screen_area = ::screen_area();
 
