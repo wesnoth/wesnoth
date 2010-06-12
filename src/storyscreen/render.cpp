@@ -71,7 +71,7 @@ namespace {
 
 	void blur_area(CVideo& video, int y, int h)
 	{
-		SDL_Rect blur_rect = { 0, y, screen_area().w, h };
+		SDL_Rect blur_rect = create_rect(0, y, screen_area().w, h);
 		surface blur = get_surface_portion(video.getSurface(), blur_rect);
 		blur = blur_surface(blur, 1, false);
 		video.blit_surface(0, y, blur);
@@ -459,7 +459,10 @@ void part_ui::render_story_box()
 		break;
 	}
 
-	SDL_Rect update_area = { 0, fix_text_y, screen_area().w, fix_text_h };
+	SDL_Rect update_area = create_rect(0
+			, fix_text_y
+			, screen_area().w
+			, fix_text_h);
 
 	/* do */ {
 		// this should kill the tiniest flickering caused
@@ -512,8 +515,8 @@ void part_ui::render_story_box()
 
 	// Time to do some fucking visual effect.
 	const int scan_height = 1, scan_width = txtsurf->w;
-	SDL_Rect scan = { 0, 0, scan_width, scan_height };
-	SDL_Rect dstrect = { text_x_, 0, scan_width, scan_height };
+	SDL_Rect scan = create_rect(0, 0, scan_width, scan_height);
+	SDL_Rect dstrect = create_rect(text_x_, 0, scan_width, scan_height);
 	surface scan_dst = video_.getSurface();
 	bool scan_finished = false;
 	while(true) {
