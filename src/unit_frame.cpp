@@ -578,7 +578,7 @@ std::set<map_location> unit_frame::get_overlaped_hex(const int frame_time,const 
 		if (image != NULL) {
 			const int x = static_cast<int>(tmp_offset * xdst + (1.0-tmp_offset) * xsrc)+current_data.x+d2-(image->w/2);
 			const int y = static_cast<int>(tmp_offset * ydst + (1.0-tmp_offset) * ysrc)+current_data.y+d2-(image->h/2);
-			const SDL_Rect r = {x,y,image->w,image->h};
+			const SDL_Rect r = create_rect(x, y, image->w, image->h);
 			// check if our underlying hexes are invalidated
 			// if we need to update ourselve because we changed, invalidate our hexes
 			// and return whether or not our hexs was invalidated
