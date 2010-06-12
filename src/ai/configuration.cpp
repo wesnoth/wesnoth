@@ -220,11 +220,11 @@ bool configuration::upgrade_aspect_config_from_1_07_02_to_1_07_03(side_number /*
 			}
 		}
 
-		if (aiparam.has_attribute("turns")) {
-			facet_config["turns"] = aiparam["turns"];
+		if (const config::attribute_value *v = aiparam.get("turns")) {
+			facet_config["turns"] = *v;
 		}
-		if (aiparam.has_attribute("time_of_day")) {
-			facet_config["time_of_day"] = aiparam["time_of_day"];
+		if (const config::attribute_value *v = aiparam.get("time_of_day")) {
+			facet_config["time_of_day"] = *v;
 		}
 
 		aspect_config.add_child("facet",facet_config);
@@ -246,9 +246,9 @@ bool configuration::parse_side_config(side_number side, const config& original_c
 	}
 
 	//backward-compatability hack: put ai_algorithm if it is present
-	if (original_cfg.has_attribute("ai_algorithm")) {
+	if (const config::attribute_value *v = original_cfg.get("ai_algorithm")) {
 		config ai_a;
-		ai_a["ai_algorithm"] = original_cfg["ai_algorithm"];
+		ai_a["ai_algorithm"] = *v;
 		cfg.add_child("ai",ai_a);
 	}
 	DBG_AI_CONFIGURATION << "side " << side << ": config contains:"<< std::endl << cfg << std::endl;
@@ -264,8 +264,8 @@ bool configuration::parse_side_config(side_number side, const config& original_c
 	//find version
 	int version = 10600;
 	foreach (const config &aiparam, cfg.child_range("ai")) {
-		if (aiparam.has_attribute("version")){
-			int v = aiparam["version"].to_int(version);
+		if (const config::attribute_value *a = aiparam.get("version")){
+			int v = a->to_int(version);
 			if (version<v) {
 				version = v;
 			}
@@ -362,10 +362,10 @@ bool configuration::upgrade_side_config_from_1_07_02_to_1_07_03(side_number side
 			foreach (const config &aitarget, aiparam.child_range("target")) {
 				config aigoal;
 
-				if (aitarget.has_attribute("value")) {
-					aigoal["value"] = aitarget["value"];
+				if (const config::attribute_value *v = aitarget.get("value")) {
+					aigoal["value"] = *v;
 				} else {
-					aigoal["value"] = "0";
+					aigoal["value"] = 0;
 				}
 
 				config &aigoalcriteria = aigoal.add_child("criteria",aitarget);
@@ -388,13 +388,14 @@ bool configuration::upgrade_side_config_from_1_07_02_to_1_07_03(side_number side
 			aiparam.clear_children("protect_location");
 
 
-			if (aiparam.has_attribute("protect_leader")) {
+			if (const config::attribute_value *v = aiparam.get("protect_leader"))
+			{
 				config c;
-				c["value"] = aiparam["protect_leader"];
+				c["value"] = *v;
 				c["canrecruit"] = true;
-				c["side_number"] = str_cast(side);
-				if (aiparam.has_attribute("protect_leader_radius")) {
-					c["radius"] = aiparam["protect_leader_radius"];
+				c["side_number"] = side;
+				if (const config::attribute_value *v = aiparam.get("protect_leader_radius")) {
+					c["radius"] = *v;
 				}
 
 				upgrade_protect_goal_config_from_1_07_02_to_1_07_03(side,c,parsed_cfg,true);
@@ -452,17 +453,17 @@ void configuration::upgrade_protect_goal_config_from_1_07_02_to_1_07_03(side_num
 	config aigoal;
 	aigoal["name"] = "protect";
 
-	if (protect_cfg.has_attribute("value")) {
-		aigoal["value"] = protect_cfg["value"];
+	if (const config::attribute_value *v = protect_cfg.get("value")) {
+		aigoal["value"] = *v;
 	} else {
-		aigoal["value"] = "1";//old default value
+		aigoal["value"] = 1; //old default value
 	}
 
 	//note: 'radius' attribute is renamed to avoid confusion with SLF's radius
-	if (protect_cfg.has_attribute("radius")) {
-		aigoal["protect_radius"] = protect_cfg["radius"];
+	if (const config::attribute_value *v = protect_cfg.get("radius")) {
+		aigoal["protect_radius"] = *v;
 	} else {
-		aigoal["protect_radius"] = "20";//old default value
+		aigoal["protect_radius"] = 20; //old default value
 	}
 	DBG_AI_CONFIGURATION << "side "<< side <<": upgrading protect goal from syntax of 1.7.2 to 1.7.3, old-style config is:" << std::endl << protect_cfg << std::endl;
 
