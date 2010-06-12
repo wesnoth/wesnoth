@@ -185,6 +185,7 @@ public:
 		int to_int(int def = 0) const;
 		double to_double(double def = 0.) const;
 
+		bool blank() const;
 		bool empty() const;
 		std::string str() const;
 		t_string t_str() const;
@@ -265,6 +266,12 @@ public:
 	 * or to a dummy empty attribute if it does not exist.
 	 */
 	const attribute_value &operator[](const std::string &key) const;
+
+	/**
+	 * Returns a pointer to the attribute with the given @a key
+	 * or NULL if it does not exist.
+	 */
+	const attribute_value *get(const std::string &key) const;
 
 	/**
 	 * Function to handle backward compatibility

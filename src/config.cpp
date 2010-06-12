@@ -82,6 +82,11 @@ std::ostream &operator<<(std::ostream &os, const config::attribute_value &v)
 	return os << v.str();
 }
 
+bool config::attribute_value::blank() const
+{
+	return boost::get<const boost::blank>(&value);
+}
+
 bool config::attribute_value::empty() const
 {
 	if (boost::get<const boost::blank>(&value)) return true;
@@ -489,6 +494,13 @@ const config::attribute_value &config::operator[](const std::string &key) const
 	if (i != values.end()) return i->second;
 	static const attribute_value empty_attribute;
 	return empty_attribute;
+}
+
+const config::attribute_value *config::get(const std::string &key) const
+{
+	check_valid();
+	attribute_map::const_iterator i = values.find(key);
+	return i != values.end() ? &i->second : NULL;
 }
 
 config::attribute_value &config::operator[](const std::string &key)
