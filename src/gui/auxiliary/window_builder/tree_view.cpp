@@ -34,8 +34,7 @@ tbuilder_tree_view::tbuilder_tree_view(const config& cfg)
 			get_scrollbar_mode(cfg["vertical_scrollbar_mode"]))
 	, horizontal_scrollbar_mode(
 			get_scrollbar_mode(cfg["horizontal_scrollbar_mode"]))
-	, indention_step_size(
-			lexical_cast_default<unsigned>(cfg["indention_step_size"]))
+	, indention_step_size(cfg["indention_step_size"])
 	, nodes()
 {
 
