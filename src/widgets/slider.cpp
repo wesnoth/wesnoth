@@ -133,8 +133,7 @@ SDL_Rect slider::slider_area() const
 
 	int xpos = loc.x + (value_ - min_) *
 		static_cast<int>(loc.w - image_->w) / (max_ - min_);
-	SDL_Rect res = { xpos, loc.y, image_->w, image_->h };
-	return res;
+	return create_rect(xpos, loc.y, image_->w, image_->h);
 }
 
 void slider::draw_contents()
@@ -154,7 +153,11 @@ void slider::draw_contents()
 
 	surface const screen = video().getSurface();
 
-	SDL_Rect line_rect = { loc.x + image->w / 2, loc.y + loc.h / 2, loc.w - image->w, 1 };
+	SDL_Rect line_rect = create_rect(loc.x + image->w / 2
+			, loc.y + loc.h / 2
+			, loc.w - image->w
+			, 1);
+
 	SDL_FillRect(screen, &line_rect, SDL_MapRGB(screen->format,
 		line_color.r, line_color.g, line_color.b));
 
