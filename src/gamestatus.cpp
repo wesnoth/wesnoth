@@ -803,15 +803,11 @@ protected:
 		log_step("previous recruits");
 		// If the game state specifies units that
 		// can be recruited for the player, add them.
-		// the can_recruit attribute is checked for backwards compatibility of saves
-		if(player_cfg_ != NULL &&
-		   ((*player_cfg_).has_attribute("previous_recruits") || (*player_cfg_).has_attribute("can recruit")) ) {
+		if (player_cfg_ && (*player_cfg_).has_attribute("previous_recruits"))
+		{
 			std::vector<std::string> player_recruits;
 			if (!(*player_cfg_)["previous_recruits"].empty()) {
 				player_recruits = utils::split((*player_cfg_)["previous_recruits"]);
-			}
-			else {
-				player_recruits = utils::split((*player_cfg_)["can_recruit"]);
 			}
 			foreach (std::string rec, player_recruits) {
 				DBG_NG_TC << "adding previous recruit: "<< rec << std::endl;
