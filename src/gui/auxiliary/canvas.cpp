@@ -889,7 +889,7 @@ void timage::draw(surface& canvas
 
 	// Copy the data to local variables to avoid overwriting the originals.
 	SDL_Rect src_clip = src_clip_;
-	SDL_Rect dst_clip = {x, y, 0, 0};
+	SDL_Rect dst_clip = ::create_rect(x, y, 0, 0);
 	surface surf;
 
 	// Test whether we need to scale and do the scaling if needed.
@@ -930,9 +930,11 @@ void timage::draw(surface& canvas
 
 				for(int x = 0; x < columns; ++x) {
 					for(int y = 0; y < rows; ++y) {
-						const SDL_Rect dest =
-								{x * image_->w, y * image_->h, 0, 0};
-
+						const SDL_Rect dest = ::create_rect(
+								  x * image_->w
+								, y * image_->h
+								, 0
+								, 0);
 						blit_surface(image_, NULL, surf, &dest);
 					}
 				}
@@ -1168,7 +1170,7 @@ void ttext::draw(surface& canvas
 				"canvas and will be clipped.\n";
 	}
 
-	SDL_Rect dst = { x, y, canvas->w, canvas->h };
+	SDL_Rect dst = ::create_rect(x, y, canvas->w, canvas->h);
 	blit_surface(surf, 0, canvas, &dst);
 }
 
