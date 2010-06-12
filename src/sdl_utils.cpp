@@ -108,11 +108,11 @@ SDL_Rect get_rect_union(SDL_Rect const &rect1, SDL_Rect const& rect2) {
 		return empty_rect;
 	}
 
-	SDL_Rect result = {
+	SDL_Rect result = create_rect(
 			left_side,
 			top_side,
 			right_side - left_side,
-			bottom_side - top_side};
+			bottom_side - top_side);
 
 	return result;
 }
@@ -1012,7 +1012,7 @@ surface blur_surface(const surface &surf, int depth, bool optimize)
 		return NULL;
 	}
 
-	SDL_Rect rect = { 0, 0, surf->w, surf->h };
+	SDL_Rect rect = create_rect(0, 0, surf->w, surf->h);
 	blur_surface(res, rect, depth);
 
 	return optimize ? create_optimized_surface(res) : res;
@@ -1439,7 +1439,7 @@ void blit_surface(const surface& src,
 	assert(dst);
 
 	// Get the areas to blit
-	SDL_Rect dst_rect = { 0, 0, dst->w, dst->h };
+	SDL_Rect dst_rect = create_rect(0, 0, dst->w, dst->h);
 	if(dstrect) {
 		dst_rect.x = dstrect->x;
 		dst_rect.w -= dstrect->x;
@@ -1449,7 +1449,7 @@ void blit_surface(const surface& src,
 
 	}
 
-	SDL_Rect src_rect = { 0, 0, src->w, src->h };
+	SDL_Rect src_rect = create_rect(0, 0, src->w, src->h);
 	if(srcrect && srcrect->w && srcrect->h) {
 		src_rect.x = srcrect->x;
 		src_rect.y = srcrect->y;
@@ -1801,10 +1801,10 @@ void surface_restorer::cancel()
 void draw_rectangle(int x, int y, int w, int h, Uint32 color,surface target)
 {
 
-	SDL_Rect top = {x,y,w,1};
-	SDL_Rect bot = {x,y+h-1,w,1};
-	SDL_Rect left = {x,y,1,h};
-	SDL_Rect right = {x+w-1,y,1,h};
+	SDL_Rect top = create_rect(x, y, w, 1);
+	SDL_Rect bot = create_rect(x, y + h - 1, w, 1);
+	SDL_Rect left = create_rect(x, y, 1, h);
+	SDL_Rect right = create_rect(x + w - 1, y, 1, h);
 
 	SDL_FillRect(target,&top,color);
 	SDL_FillRect(target,&bot,color);
@@ -1817,7 +1817,7 @@ void draw_solid_tinted_rectangle(int x, int y, int w, int h,
                                  double alpha, surface target)
 {
 
-	SDL_Rect rect = {x,y,w,h};
+	SDL_Rect rect = create_rect(x, y, w, h);
 	fill_rect_alpha(rect,SDL_MapRGB(target->format,r,g,b),Uint8(alpha*255),target);
 }
 
