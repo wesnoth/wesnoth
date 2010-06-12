@@ -95,7 +95,7 @@ private:
 		}
 		config &cfg() { return cfg_; }
 		node &add_child(const std::string &name) {
-			children_[name] = new node(name,root_,cfg_.child_or_add(name),this);	
+			children_[name] = new node(name,root_,cfg_.child_or_add(name),this);
 			return *(children_[name]);
 		}
 		node &child(const name_space &name) {
@@ -133,7 +133,7 @@ public:
 	config get_var(const std::string &);
 	bool set_var(const std::string &, const config &);
 	bool valid() const { return valid_; };
-	bool dirty() const { 
+	bool dirty() const {
 		return true;
 	};
 	operator bool() { return valid_; }

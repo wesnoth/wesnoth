@@ -929,7 +929,7 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 		//sort by level
 		static int sort_by = 3;
 		static bool sort_reversed = false;
-	
+
 		if(sort_by >= 0) {
 			rmenu.get_menu().sort_by(sort_by);
 			// "reclick" on the sorter to reverse the order

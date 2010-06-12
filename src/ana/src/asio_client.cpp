@@ -80,7 +80,7 @@ void asio_client::handle_proxy_connection(const boost::system::error_code& ec, a
 
     if ( ! ec )
         run_listener();
-        
+
     delete proxy_;
 }
 

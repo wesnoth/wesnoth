@@ -42,7 +42,7 @@ class controller
 public:
 	controller(display& disp, const vconfig& data, const std::string& scenario_name,
 		   int segment_index, int total_segments);
-	
+
 	/**
 	 * Display all story screen parts in a first..last sequence.
 	 */

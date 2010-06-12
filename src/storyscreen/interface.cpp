@@ -46,7 +46,7 @@ namespace {
 		partcfg["text_align"] = "centered";
 	}
 
-	int count_segments(const config::const_child_itors &story) 
+	int count_segments(const config::const_child_itors &story)
 	{
 		config::const_child_iterator itor = story.first;
 		int count = 0;
@@ -59,7 +59,7 @@ namespace {
 } // end anonymous namespace
 
 
-storyscreen::STORY_RESULT show_story(display& disp, 
+storyscreen::STORY_RESULT show_story(display& disp,
 				     const std::string& scenario_name,
 				     const config::const_child_itors &story) {
 	const int total_segments = count_segments(story);
@@ -67,7 +67,7 @@ storyscreen::STORY_RESULT show_story(display& disp,
 	config::const_child_iterator itor = story.first;
 	storyscreen::START_POSITION startpos = storyscreen::START_BEGINNING;
 	while(itor != story.second) {
-		storyscreen::STORY_RESULT result = show_storyscreen(disp, vconfig(*itor, true), scenario_name, 
+		storyscreen::STORY_RESULT result = show_storyscreen(disp, vconfig(*itor, true), scenario_name,
 								    startpos, segment_count, total_segments);
 		switch(result) {
 		case storyscreen::NEXT:
@@ -106,7 +106,7 @@ storyscreen::STORY_RESULT show_story(display& disp,
 	return storyscreen::NEXT;
 }
 
-storyscreen::STORY_RESULT show_storyscreen(display& disp, const vconfig& story_cfg, 
+storyscreen::STORY_RESULT show_storyscreen(display& disp, const vconfig& story_cfg,
 					   const std::string& scenario_name,
 					   storyscreen::START_POSITION startpos,
 					   int segment_index, int total_segments)

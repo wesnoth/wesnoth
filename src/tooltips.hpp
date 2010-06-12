@@ -36,7 +36,7 @@ void process(int mousex, int mousey);
 
 // Check if we clicked on a tooltip having an action.
 // If it is, then execute the action and return true
-// (only possible action are opening help page for the moment) 
+// (only possible action are opening help page for the moment)
 bool click(int mousex, int mousey);
 
 }

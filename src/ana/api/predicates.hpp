@@ -57,7 +57,7 @@ namespace ana
             virtual bool selects(client_id) const = 0;
         };
         //@}
-        
+
     /**
      * Intended for private use, should be created with create_predicate.
      *

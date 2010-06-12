@@ -57,13 +57,13 @@ namespace ana
                 size_( size )
                 {
                 }
-                
+
                 /** Deletes the buffer from heap. */
                 ~read_buffer_implementation()
                 {
                     delete[] base_;
                 }
-                
+
                 /**
                  * Get the base address.
                  *
@@ -73,7 +73,7 @@ namespace ana
                 {
                     return base_;
                 }
-                
+
                 /**
                  * Get the base address.
                  *
@@ -83,19 +83,19 @@ namespace ana
                 {
                     return static_cast<void*>(base_);
                 }
-                
+
                 /** Get the size of the buffer. */
                 size_t size() const
                 {
                     return size_;
                 }
-                
+
                 /** Create a string from the buffer. */
                 std::string string()
                 {
                     return std::string( base_, size_ );
                 }
-                
+
             private:
                 char*  base_;
                 size_t size_;
@@ -125,17 +125,17 @@ namespace ana
                     else
                         base_ = const_cast<void*>(boost::asio::detail::buffer_cast_helper(buffer));
                 }
-                
+
                 inline size_t size() const { return size_; }
-                
+
                 inline void*  base() const { return base_; }
-                
+
                 ~copying_buffer()
                 {
                     if (copy_)
                         std::free( base_ );
                 }
-                
+
             private:
                 const size_t size_;
                 void*        base_;
@@ -145,7 +145,7 @@ namespace ana
     typedef boost::shared_ptr<detail::copying_buffer> shared_buffer;
 
     } //namespace detail
-    
+
 
     /** @name Buffer creation methods
      *
@@ -221,7 +221,7 @@ namespace ana
         return boost::asio::buffer(data);
     }
 
-    template<typename PodType, std::size_t N> 
+    template<typename PodType, std::size_t N>
     inline boost::asio::mutable_buffers_1 buffer(boost::array< PodType, N > & data,
                                                  std::size_t max_size_in_bytes)
     {
@@ -267,7 +267,7 @@ namespace ana
         return boost::asio::buffer(data, max_size_in_bytes);
     }
 
-    template<typename PodType, typename Allocator> 
+    template<typename PodType, typename Allocator>
     inline boost::asio::const_buffers_1 buffer(const std::vector< PodType, Allocator > & data)
     {
         return boost::asio::buffer(data);

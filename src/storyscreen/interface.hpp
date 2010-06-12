@@ -59,11 +59,11 @@ enum START_POSITION {
  * storyline,and 'img' is a background image. Each part of the sequence will
  * be displayed in turn, with the user able to go to the next part, or skip
  * it entirely.
- * @return is NEXT if the segment played to the end, BACK if the segment played to the beginning, 
+ * @return is NEXT if the segment played to the end, BACK if the segment played to the beginning,
  * FIRST if a skip to the first segment is requested, LAST if a skip to the last segment is requested,
  * and QUIT if the story was quit
  */
-storyscreen::STORY_RESULT show_storyscreen(display& disp, const vconfig& story_cfg, 
+storyscreen::STORY_RESULT show_storyscreen(display& disp, const vconfig& story_cfg,
 					   const std::string& scenario_name,
 					   storyscreen::START_POSITION startpos,
 					   int segment_index, int total_segments);

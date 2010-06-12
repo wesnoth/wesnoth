@@ -58,8 +58,8 @@ public:
 	 * @param next_button Next button. Shouldn't be destroyed before the part_ui object.
 	 * @param skip_button Skip button. Shouldn't be destroyed before the part_ui object.
 	 */
-        part_ui(part& p, display& disp, 
-                gui::button& next_button,  gui::button& back_button, 
+        part_ui(part& p, display& disp,
+                gui::button& next_button,  gui::button& back_button,
                 gui::button& first_button, gui::button& last_button,
 		gui::button& play_button);
 

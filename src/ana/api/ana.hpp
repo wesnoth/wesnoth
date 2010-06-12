@@ -139,7 +139,7 @@ namespace ana
                 * \sa listener_handler
                 */
                 virtual void set_listener_handler( listener_handler* listener ) = 0;
-                
+
                 /**
                 * Get the client_id of this listener.
                 *
@@ -150,13 +150,13 @@ namespace ana
                 * \sa client_id
                 */
                 virtual client_id id() const                                    = 0;
-                
+
             protected: // should be so?
                 /** Start listening for incoming messages. */
                 virtual void run_listener()                                     = 0;
         };
     } //namespace details
-    
+
     /**
      * Class that should be implemented to handle new connection events.
      */

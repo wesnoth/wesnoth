@@ -177,7 +177,7 @@ void proxy_connection::handle_connect(const boost::system::error_code& ec,
     if ( ! ec )
     {
         std::string* request( NULL );
-        
+
         if ( authenticating_ )
             request = generate_base64_credentials();
         else

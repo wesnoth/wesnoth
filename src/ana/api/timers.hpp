@@ -53,7 +53,7 @@ namespace ana
         TimePerKilobyte  /** Use timers, calculating the necessary time from
         the size of the buffer that is to be sent.        */
     };
-    
+
     /** @name Timers
      *
      * Definitions of timer related types.

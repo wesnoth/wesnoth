@@ -81,8 +81,8 @@ namespace {
 
 namespace storyscreen {
 
-part_ui::part_ui(part& p, display& disp, 
-		 gui::button& next_button, gui::button& back_button, 
+part_ui::part_ui(part& p, display& disp,
+		 gui::button& next_button, gui::button& back_button,
 		 gui::button& first_button, gui::button& last_button,
 		 gui::button& play_button)
 	: p_(p)
@@ -270,8 +270,8 @@ bool part_ui::render_floating_images()
 			}
 		}
 
-		if(keys_[SDLK_ESCAPE] || 
-		   next_button_.pressed()  || back_button_.pressed() || 
+		if(keys_[SDLK_ESCAPE] ||
+		   next_button_.pressed()  || back_button_.pressed() ||
 		   first_button_.pressed() || last_button_.pressed() ||
 		   play_button_.pressed()) {
 			skip = true;
@@ -561,7 +561,7 @@ void part_ui::render_story_box()
 		if((last_keydown && !last_key) || last_button_.pressed()) {
 			ret_ = LAST;
 			return;
-		} 
+		}
 
 		if((first_keydown && !last_key) || first_button_.pressed()) {
 			ret_ = FIRST;
@@ -603,7 +603,7 @@ void part_ui::wait_for_input()
 			ret_ = NEXT;
 			break;
 		}
-	
+
 		if((back_keydown && !last_key) || back_button_.pressed()) {
 			ret_ = BACK;
 			break;

@@ -92,8 +92,8 @@ void persist_context::load() {
 	load_persist_data(namespace_.root_,cfg_,false);
 }
 
-persist_context::persist_context(const std::string &name_space) : 
-namespace_(name_space), 
+persist_context::persist_context(const std::string &name_space) :
+namespace_(name_space),
 cfg_(),
 valid_(namespace_.valid()),
 root_node_(namespace_.root_,this,cfg_),

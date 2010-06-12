@@ -300,7 +300,7 @@ void game_display::draw_invalidated()
 {
 	halo::unrender(invalidated_);
 	display::draw_invalidated();
-	
+
 	foreach(unit* temp_unit, temp_units_) {
 		const map_location& loc = temp_unit->get_location();
 		if (invalidated_.find(loc) != invalidated_.end())
