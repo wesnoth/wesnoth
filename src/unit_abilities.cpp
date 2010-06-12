@@ -818,8 +818,8 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 		if (!filter_base_matches(cfg, def))
 			continue;
 
-		if (cfg.has_attribute("value")) {
-			int value = cfg["value"];
+		if (const config::attribute_value *v = cfg.get("value")) {
+			int value = *v;
 			bool cumulative = cfg["cumulative"].to_bool();
 			if (!value_is_set && !cumulative) {
 				value_set = value;
@@ -834,15 +834,15 @@ effect::effect(const unit_ability_list& list, int def, bool backstab) :
 			value_is_set = true;
 		}
 
-		if (cfg.has_attribute("add")) {
-			int add = cfg["add"];
+		if (const config::attribute_value *v = cfg.get("add")) {
+			int add = *v;
 			std::map<std::string,individual_effect>::iterator add_effect = values_add.find(effect_id);
 			if(add_effect == values_add.end() || add > add_effect->second.value) {
 				values_add[effect_id].set(ADD,add,i->first,i->second);
 			}
 		}
-		if (cfg.has_attribute("multiply")) {
-			int multiply = int(cfg["multiply"].to_double() * 100);
+		if (const config::attribute_value *v = cfg.get("multiply")) {
+			int multiply = int(v->to_double() * 100);
 			std::map<std::string,individual_effect>::iterator mul_effect = values_mul.find(effect_id);
 			if(mul_effect == values_mul.end() || multiply > mul_effect->second.value) {
 				values_mul[effect_id].set(MUL,multiply,i->first,i->second);
