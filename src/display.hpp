@@ -114,7 +114,7 @@ public:
 		{ return theme_.unit_image_location(screen_area()); }
 
 	SDL_Rect screen_area() const
-		{ const SDL_Rect res = {0,0,w(),h()}; return res; }
+		{ return create_rect(0, 0, w(), h()); }
 
 	/**
 	 * Returns the maximum area used for the map
