@@ -431,7 +431,7 @@ void battle_prediction_pane::get_hp_distrib_surface(const std::vector<std::pair<
 	// FIXME: use standard alpha and blit_surface instead
 	SDL_SetAlpha(surf, 0, SDL_ALPHA_OPAQUE);
 
-	SDL_Rect clip_rect = {0, 0, width, height};
+	SDL_Rect clip_rect = create_rect(0, 0, width, height);
 	Uint32 grey_color = SDL_MapRGB(surf->format, 0xb7, 0xc1, 0xc1);
 	Uint32 transparent_color = SDL_MapRGB(surf->format, 1, 1, 1);
 
@@ -440,22 +440,22 @@ void battle_prediction_pane::get_hp_distrib_surface(const std::vector<std::pair<
 	SDL_FillRect(surf, &clip_rect, transparent_color);
 
 	// Draw the surrounding borders and separators.
-	SDL_Rect top_border_rect = {0, 0, width, 2};
+	SDL_Rect top_border_rect = create_rect(0, 0, width, 2);
 	SDL_FillRect(surf, &top_border_rect, grey_color);
 
-	SDL_Rect bottom_border_rect = {0, height - 2, width, 2};
+	SDL_Rect bottom_border_rect = create_rect(0, height - 2, width, 2);
 	SDL_FillRect(surf, &bottom_border_rect, grey_color);
 
-	SDL_Rect left_border_rect = {0, 0, 2, height};
+	SDL_Rect left_border_rect = create_rect(0, 0, 2, height);
 	SDL_FillRect(surf, &left_border_rect, grey_color);
 
-	SDL_Rect right_border_rect = {width - 2, 0, 2, height};
+	SDL_Rect right_border_rect = create_rect(width - 2, 0, 2, height);
 	SDL_FillRect(surf, &right_border_rect, grey_color);
 
-	SDL_Rect hp_sep_rect = {hp_sep, 0, 2, height};
+	SDL_Rect hp_sep_rect = create_rect(hp_sep, 0, 2, height);
 	SDL_FillRect(surf, &hp_sep_rect, grey_color);
 
-	SDL_Rect percent_sep_rect = {width - percent_sep - 2, 0, 2, height};
+	SDL_Rect percent_sep_rect = create_rect(width - percent_sep - 2, 0, 2, height);
 	SDL_FillRect(surf, &percent_sep_rect, grey_color);
 
 	// Draw the rows (lower HP values are at the bottom).
@@ -503,16 +503,16 @@ void battle_prediction_pane::get_hp_distrib_surface(const std::vector<std::pair<
 
 		int bar_len = std::max<int>(static_cast<int>((prob * (bar_space - 4)) + 0.5), 2);
 
-		SDL_Rect bar_rect_1 = {hp_sep + 4, 6 + (fs + 2) * i, bar_len, 8};
+		SDL_Rect bar_rect_1 = create_rect(hp_sep + 4, 6 + (fs + 2) * i, bar_len, 8);
 		SDL_FillRect(surf, &bar_rect_1, blend_rgb(surf, row_color.r, row_color.g, row_color.b, 100));
 
-		SDL_Rect bar_rect_2 = {hp_sep + 4, 7 + (fs + 2) * i, bar_len, 6};
+		SDL_Rect bar_rect_2 = create_rect(hp_sep + 4, 7 + (fs + 2) * i, bar_len, 6);
 		SDL_FillRect(surf, &bar_rect_2, blend_rgb(surf, row_color.r, row_color.g, row_color.b, 66));
 
-		SDL_Rect bar_rect_3 = {hp_sep + 4, 8 + (fs + 2) * i, bar_len, 4};
+		SDL_Rect bar_rect_3 = create_rect(hp_sep + 4, 8 + (fs + 2) * i, bar_len, 4);
 		SDL_FillRect(surf, &bar_rect_3, blend_rgb(surf, row_color.r, row_color.g, row_color.b, 33));
 
-		SDL_Rect bar_rect_4 = {hp_sep + 4, 9 + (fs + 2) * i, bar_len, 2};
+		SDL_Rect bar_rect_4 = create_rect(hp_sep + 4, 9 + (fs + 2) * i, bar_len, 2);
 		SDL_FillRect(surf, &bar_rect_4, blend_rgb(surf, row_color.r, row_color.g, row_color.b, 0));
 
 		// Draw probability percentage, aligned right.
