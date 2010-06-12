@@ -818,6 +818,9 @@ private:
 
 	/** Maps the list of arrows for each location */
 	arrows_map_t arrows_map_;
+
+	/** List of arrows to help unregister the display (on destruction) as an arrow observer */
+	arrows_list_t arrows_list_;
 };
 
 #endif

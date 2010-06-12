@@ -138,6 +138,10 @@ display::display(CVideo& video, const gamemap* map, const config& theme_cfg, con
 
 display::~display()
 {
+	foreach(arrow* a, arrows_list_)
+	{
+		a->remove_observer(*this);
+	}
 }
 
 std::string display::fog_image(const map_location &loc)
@@ -2332,24 +2336,26 @@ void display::invalidate_animations()
 	}
 }
 
-void display::add_arrow(arrow& addme)
+void display::add_arrow(arrow& arrow)
 {
-	const arrow_path_t & arrow_path = addme.get_path();
+	const arrow_path_t & arrow_path = arrow.get_path();
 	foreach (const map_location& loc, arrow_path)
 	{
-		arrows_map_[loc].push_back(&addme);
+		arrows_map_[loc].push_back(&arrow);
 	}
-	addme.add_observer(*this);
+	arrows_list_.push_back(&arrow);
+	arrow.add_observer(*this);
 }
 
-void display::remove_arrow(arrow& removeme)
+void display::remove_arrow(arrow& arrow)
 {
-	const arrow_path_t & arrow_path = removeme.get_path();
+	const arrow_path_t & arrow_path = arrow.get_path();
 	foreach (const map_location& loc, arrow_path)
 	{
-		arrows_map_[loc].remove(&removeme);
+		arrows_map_[loc].remove(&arrow);
 	}
-	removeme.remove_observer(*this);
+	arrows_list_.remove(&arrow);
+	arrow.remove_observer(*this);
 }
 
 void display::arrow_changed(arrow & changed)
