@@ -705,8 +705,7 @@ void create::layout_children(const SDL_Rect& rect)
 
 	const int minimap_width = resolution.first > resolution_for_small_minimap ? 200 : 130;
 
-	SDL_Rect mmrect = { xpos, ypos, minimap_width, minimap_width };
-	minimap_rect_ = mmrect;
+	minimap_rect_ = create_rect(xpos, ypos, minimap_width, minimap_width);
 	ypos += minimap_width + border_size;
 
 	num_players_label_.set_location(xpos, ypos);
