@@ -314,7 +314,7 @@ report generate_report(TYPE type,
 		}
 
 		int grey = 128 + static_cast<int>((255-128) * movement_frac);
-		SDL_Color c = { grey, grey, grey, 0 };
+		SDL_Color c = create_color(grey, grey, grey);
 		str << span_color(c) << u->movement_left()
 			<< '/' << u->total_movement() << naps;
 		break;
