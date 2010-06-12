@@ -261,7 +261,10 @@ void draw(surface screen)
 	cursor_y = new_cursor_y;
 
 	// Save the screen area where the cursor is being drawn onto the back buffer
-	SDL_Rect area = {cursor_x - shift_x[current_cursor], cursor_y - shift_y[current_cursor],surf->w,surf->h};
+	SDL_Rect area = create_rect(cursor_x - shift_x[current_cursor]
+			, cursor_y - shift_y[current_cursor]
+			, surf->w
+			, surf->h);
 	SDL_BlitSurface(screen,&area,cursor_buf,NULL);
 
 	// Blit the surface
@@ -282,7 +285,10 @@ void undraw(surface screen)
 		return;
 	}
 
-	SDL_Rect area = {cursor_x - shift_x[current_cursor], cursor_y - shift_y[current_cursor],cursor_buf->w,cursor_buf->h};
+	SDL_Rect area = create_rect(cursor_x - shift_x[current_cursor]
+			, cursor_y - shift_y[current_cursor]
+			, cursor_buf->w
+			, cursor_buf->h);
 	SDL_BlitSurface(cursor_buf,NULL,screen,&area);
 	update_rect(area);
 }
