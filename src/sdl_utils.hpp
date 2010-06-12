@@ -305,6 +305,11 @@ bool operator!=(const SDL_Color& a, const SDL_Color& b);
 SDL_Color inverse(const SDL_Color& color);
 SDL_Color int_to_color(const Uint32 rgb);
 
+SDL_Color create_color(const unsigned char red
+		, unsigned char green
+		, unsigned char blue
+		, unsigned char unused = 0);
+
 /**
  * Helper class for pinning SDL surfaces into memory.
  * @note This class should be used only with neutral surfaces, so that

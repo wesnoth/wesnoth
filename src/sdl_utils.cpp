@@ -43,13 +43,28 @@ surface_lock::~surface_lock()
 		SDL_UnlockSurface(surface_);
 }
 
-SDL_Color int_to_color(const Uint32 rgb) {
-	SDL_Color to_return = {
-		(0x00FF0000 & rgb)>>16,
-		(0x0000FF00 & rgb)>>8,
-		(0x000000FF & rgb), 0
-	};
-	return to_return;
+SDL_Color int_to_color(const Uint32 rgb)
+{
+	SDL_Color result;
+	result.r = (0x00FF0000 & rgb )>> 16;
+	result.g = (0x0000FF00 & rgb) >> 8;
+	result.b = (0x000000FF & rgb);
+	result.unused = 0;
+	return result;
+}
+
+SDL_Color create_color(const unsigned char red
+		, unsigned char green
+		, unsigned char blue
+		, unsigned char unused)
+{
+	SDL_Color result;
+	result.r = red;
+	result.g = green;
+	result.b = blue;
+	result.unused = unused;
+
+	return result;
 }
 
 SDLKey sdl_keysym_from_name(std::string const &keyname)
