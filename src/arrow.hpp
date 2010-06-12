@@ -69,7 +69,7 @@ public:
 
 	/// Sets transparency to the specified alpha value
 	/// 0.5 is 50% transparent, anything above 1.0 brightens the arrow images
-	void set_alpha(float_t alpha);
+	void set_alpha(float alpha);
 
 	const arrow_path_t & get_path() const;
 
@@ -113,7 +113,7 @@ protected:
 	/// represents the subdirectory that holds images for this arrow style
 	std::string style_;
 
-	float_t alpha_;
+	float alpha_;
 
 	arrow_path_t path_;
 	arrow_path_t previous_path_;
