@@ -69,7 +69,10 @@ static void run_lobby_loop(display& disp, mp::ui& ui)
 	font::cache_mode(font::CACHE_LOBBY);
 	while (ui.get_result() == mp::ui::CONTINUE) {
 		if (disp.video().modeChanged() || first) {
-			SDL_Rect lobby_pos = { 0, 0, disp.video().getx(), disp.video().gety() };
+			SDL_Rect lobby_pos = create_rect(0
+					, 0
+					, disp.video().getx()
+					, disp.video().gety());
 			ui.set_location(lobby_pos);
 			first = false;
 		}
