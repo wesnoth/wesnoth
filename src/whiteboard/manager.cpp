@@ -32,6 +32,7 @@ namespace wb {
 manager::manager():
 		active_(false),
 		mapbuilder_(NULL),
+		route_(),
 		move_arrow_(NULL),
 		fake_unit_(NULL)
 {
