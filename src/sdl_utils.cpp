@@ -118,7 +118,11 @@ SDL_Rect get_rect_union(SDL_Rect const &rect1, SDL_Rect const& rect2) {
 }
 SDL_Rect create_rect(const int x, const int y, const int w, const int h)
 {
-	SDL_Rect rect = { x, y, w, h };
+	SDL_Rect rect;
+	rect.x = x;
+	rect.y = y;
+	rect.w = w;
+	rect.h = h;
 	return rect;
 }
 
