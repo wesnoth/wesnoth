@@ -750,7 +750,7 @@ static surface render_text(const std::string& text, int fontsize, const SDL_Colo
 			for(std::vector<surface>::const_iterator j = i->begin(),
 					j_end = i->end(); j != j_end; ++j) {
 				SDL_SetAlpha(*j, 0, 0); // direct blit without alpha blending
-				SDL_Rect dstrect = {xpos, ypos, 0, 0};
+				SDL_Rect dstrect = create_rect(xpos, ypos, 0, 0);
 				SDL_BlitSurface(*j, NULL, res, &dstrect);
 				xpos += (*j)->w;
 				height = std::max<size_t>((*j)->h, height);
@@ -775,13 +775,11 @@ SDL_Rect draw_text_line(surface gui_surface, const SDL_Rect& area, int size,
 {
 	if (gui_surface.null()) {
 		text_surface const &u = text_cache::find(text_surface(text, size, color, style));
-		SDL_Rect res = {0, 0, u.width(), u.height()};
-		return res;
+		return create_rect(0, 0, u.width(), u.height());
 	}
 
 	if(area.w == 0) {  // no place to draw
-		SDL_Rect res = {0,0,0,0};
-		return res;
+		return create_rect(0, 0, 0, 0);
 	}
 
 	const std::string etext = make_text_ellipsis(text, size, area.w);
@@ -789,8 +787,7 @@ SDL_Rect draw_text_line(surface gui_surface, const SDL_Rect& area, int size,
 	// for the main current use, we already parsed markup
 	surface surface(render_text(etext,size,color,style,false));
 	if(surface == NULL) {
-		SDL_Rect res = {0,0,0,0};
-		return res;
+		return create_rect(0, 0, 0, 0);
 	}
 
 	SDL_Rect dest;
@@ -998,7 +995,7 @@ surface floating_label::create_surface()
 			// (where the text was blitted directly on screen)
 			foreground = adjust_surface_alpha(foreground, ftofxp(1.13), false);
 
-			SDL_Rect r = { border_, border_, 0, 0 };
+			SDL_Rect r = create_rect( border_, border_, 0, 0);
 			SDL_SetAlpha(foreground,SDL_SRCALPHA,SDL_ALPHA_OPAQUE);
 			blit_surface(foreground, NULL, background, &r);
 
@@ -1053,7 +1050,7 @@ void floating_label::draw(surface screen)
 		return;
 	}
 
-	SDL_Rect rect = {xpos(surf_->w),int(ypos_),surf_->w,surf_->h};
+	SDL_Rect rect = create_rect(xpos(surf_->w), ypos_, surf_->w, surf_->h);
 	const clip_rect_setter clip_setter(screen, &clip_rect_);
 	SDL_BlitSurface(screen,&rect,buf_,NULL);
 	SDL_BlitSurface(surf_,NULL,screen,&rect);
@@ -1067,7 +1064,7 @@ void floating_label::undraw(surface screen)
 		return;
 	}
 
-	SDL_Rect rect = {xpos(surf_->w),int(ypos_),surf_->w,surf_->h};
+	SDL_Rect rect = create_rect(xpos(surf_->w), ypos_, surf_->w, surf_->h);
 	const clip_rect_setter clip_setter(screen, &clip_rect_);
 	SDL_BlitSurface(buf_,NULL,screen,&rect);
 
@@ -1139,8 +1136,7 @@ SDL_Rect get_floating_label_rect(int handle)
 	if(i != labels.end()) {
 		const surface surf = i->second.create_surface();
 		if(surf != NULL) {
-			SDL_Rect rect = {0,0,surf->w,surf->h};
-			return rect;
+			return create_rect(0, 0, surf->w, surf->h);
 		}
 	}
 
