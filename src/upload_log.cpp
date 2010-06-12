@@ -216,7 +216,7 @@ upload_log::~upload_log()
 
 	if (enabled_ && !config_.empty() && !game_config::debug) {
 		config_["version"] = VERSION;
-		config_["format_version"] = "2";
+		config_["format_version"] = 2;
 		config_["id"] = preferences::upload_id();
 		config_["serial"] = lexical_cast<std::string>(time(NULL)) + file_name(filename_);
 		config_["language"] = preferences::language();
@@ -264,7 +264,7 @@ bool upload_log::game_finished(config *game)
 config &upload_log::add_game_result(const std::string &str, int turn)
 {
 	config &child = game_->add_child(str);
-	child["time"] = lexical_cast<std::string>(SDL_GetTicks() / 1000);
+	child["time"] = int(SDL_GetTicks() / 1000);
 	child["end_turn"] = turn;
 	return child;
 }
@@ -286,7 +286,7 @@ void upload_log::start(game_state &state, const team &team,
 	// so delete game_ to prevent memory leak
 	delete game_;
 	game_ = new config();
-	(*game_)["time"] = lexical_cast<std::string>(SDL_GetTicks() / 1000);
+	(*game_)["time"] = int(SDL_GetTicks() / 1000);
 	(*game_)["campaign"] = state.classification().campaign_define;
 	(*game_)["difficulty"] = state.classification().difficulty;
 	(*game_)["scenario"] = state.classification().scenario;
@@ -318,7 +318,7 @@ void upload_log::start(game_state &state, const std::string& map_data)
 	// so delete game_ to prevent memory leak
 	delete game_;
 	game_ = new config();
-	(*game_)["time"] = lexical_cast<std::string>(SDL_GetTicks() / 1000);
+	(*game_)["time"] = int(SDL_GetTicks() / 1000);
 	(*game_)["campaign"] = state.classification().campaign_type;
 	(*game_)["difficulty"] = state.classification().difficulty;
 	(*game_)["scenario"] = state.classification().label;
