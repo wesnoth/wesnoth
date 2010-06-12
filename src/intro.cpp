@@ -67,7 +67,7 @@ static void the_end_old(display &disp, std::string text, unsigned int duration)
 		if(n)
 			SDL_FillRect(video.getSurface(),&area,0);
 
-		const SDL_Color col = {n,n,n,n};
+		const SDL_Color col = create_color(n, n, n, n);
 		font::draw_text(&video,area,font_size,col,text,area.x,area.y);
 		update_rect(area);
 
