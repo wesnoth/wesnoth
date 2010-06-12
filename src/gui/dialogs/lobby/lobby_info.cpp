@@ -131,7 +131,7 @@ bool lobby_info::process_gamelist_diff(const config &data)
 	for (config::child_iterator i = range.first; i != range.second; ++i) {
 		config& c = *i;
 		DBG_LB << "data process: " << c["id"] << " (" << c[config::diff_track_attribute] << ")\n";
-		int game_id = lexical_cast_default<int>(c["id"]);
+		int game_id = c["id"];
 		if (game_id == 0) {
 			ERR_LB << "game with id 0 in gamelist config\n";
 			network::send_data(config("refresh_lobby"), 0, true);
