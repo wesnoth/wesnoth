@@ -761,7 +761,7 @@ void display::drawing_buffer_commit()
 						// Note that dstrect can be changed by SDL_BlitSurface
 						// and so a new instance should be initialized
 						// to pass to each call to SDL_BlitSurface.
-						SDL_Rect dstrect = { blit.x, blit.y, 0, 0 };
+						SDL_Rect dstrect = create_rect(blit.x, blit.y, 0, 0);
 
 						if(blit.clip.x || blit.clip.y
 								||blit.clip.w ||blit.clip.h) {
@@ -995,7 +995,7 @@ static void draw_background(surface screen, const SDL_Rect& area, const std::str
 
 	for(unsigned int w = 0, w_off = area.x; w < w_count; ++w, w_off += width) {
 		for(unsigned int h = 0, h_off = area.y; h < h_count; ++h, h_off += height) {
-			SDL_Rect clip = {w_off, h_off, 0, 0};
+			SDL_Rect clip = create_rect(w_off, h_off, 0, 0);
 			SDL_BlitSurface(background, NULL, screen, &clip);
 		}
 	}
@@ -1039,7 +1039,7 @@ void display::render_image(int x, int y, const display::tdrawing_layer drawing_l
 	if (image==NULL)
 		return;
 
-	SDL_Rect image_rect = {x, y, image->w, image->h};
+	SDL_Rect image_rect = create_rect(x, y, image->w, image->h);
 	SDL_Rect clip_rect = map_area();
 	if (!rects_overlap(image_rect, clip_rect))
 		return;
@@ -1075,8 +1075,7 @@ void display::render_image(int x, int y, const display::tdrawing_layer drawing_l
 
 	const int submerge_height = std::min<int>(surf->h,std::max<int>(0,int(surf->h*(1.0-submerged))));
 
-
-	SDL_Rect srcrect = {0,0,surf->w,submerge_height};
+	SDL_Rect srcrect = create_rect(0, 0, surf->w, submerge_height);
 
 	drawing_buffer_add(drawing_layer, loc, tblit(x, y, surf, srcrect));
 
@@ -1916,7 +1915,7 @@ void display::draw_invalidated() {
 		int xpos = get_location_x(loc);
 		int ypos = get_location_y(loc);
 		const bool on_map = get_map().on_board(loc);
-		SDL_Rect hex_rect = {xpos, ypos, zoom_, zoom_};
+		SDL_Rect hex_rect = create_rect(xpos, ypos, zoom_, zoom_);
 		if(!rects_overlap(hex_rect,clip_rect)) {
 			continue;
 		}
@@ -1986,7 +1985,7 @@ void display::draw_hex(const map_location& loc) {
 			int off_y = ypos + hex_size()/2;
 			surface text = font::get_rendered_text(lexical_cast<std::string>(loc), font::SIZE_SMALL, font::NORMAL_COLOR);
 			surface bg = create_neutral_surface(text->w, text->h);
-			SDL_Rect bg_rect = {0, 0, text->w, text->h};
+			SDL_Rect bg_rect = create_rect(0, 0, text->w, text->h);
 			SDL_FillRect(bg, &bg_rect, 0xaa000000);
 			off_x -= text->w / 2;
 			if (draw_terrain_codes_) {
@@ -2002,7 +2001,7 @@ void display::draw_hex(const map_location& loc) {
 			int off_y = ypos + hex_size()/2;
 			surface text = font::get_rendered_text(lexical_cast<std::string>(get_map().get_terrain(loc)), font::SIZE_SMALL, font::NORMAL_COLOR);
 			surface bg = create_neutral_surface(text->w, text->h);
-			SDL_Rect bg_rect = {0, 0, text->w, text->h};
+			SDL_Rect bg_rect = create_rect(0, 0, text->w, text->h);
 			SDL_FillRect(bg, &bg_rect, 0xaa000000);
 			off_x -= text->w / 2;
 			if (!draw_coordinates_) {
@@ -2136,7 +2135,7 @@ void display::refresh_report(reports::TYPE report_num, reports::report report)
 	reports::report::iterator e = report.begin();
 	for(; e != report.end(); ++e)
 	{
-		SDL_Rect area = { x, y, rect.w + rect.x - x, rect.h + rect.y - y };
+		SDL_Rect area = create_rect(x, y, rect.w + rect.x - x, rect.h + rect.y - y);
 		if (area.h <= 0) break;
 
 		if (!e->text.empty())
