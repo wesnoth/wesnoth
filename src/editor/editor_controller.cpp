@@ -1263,7 +1263,7 @@ void editor_controller::redraw_toolbar()
 	foreach (mouse_action_map::value_type a, mouse_actions_) {
 		if (a.second->toolbar_button() != NULL) {
 			SDL_Rect r = a.second->toolbar_button()->location(gui().screen_area());
-			SDL_Rect outline = {r.x - 2, r.y - 2, r.h + 4, r.w + 4};
+			SDL_Rect outline = create_rect(r.x - 2, r.y - 2, r.h + 4, r.w + 4);
 			//outline = intersect_rects(r, gui().screen_area());
 			SDL_Surface* const screen = gui().video().getSurface();
 			Uint32 color;
