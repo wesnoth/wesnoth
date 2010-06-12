@@ -47,7 +47,8 @@ public:
 		notify_arrow_deleted();
 	}
 
-	virtual void set_path(const arrow_path_t &path);
+	/// returns false if the received path is invalid
+	virtual bool set_path(const arrow_path_t &path);
 
 	/**
 	 * The string color parameter is in the same format expected by the
@@ -72,6 +73,9 @@ public:
 
 	void draw_hex(const map_location & hex);
 
+	/// Checks that the path is not of length 0 or 1
+	bool valid_path() const;
+
 	void add_observer(arrow_observer & observer);
 
 	void remove_observer(arrow_observer & observer);
@@ -84,16 +88,16 @@ protected:
 	 */
 	void update_symbols(arrow_path_t old_path);
 
+	void invalidate_arrow_path(arrow_path_t path);
+
 private:
 	//operations
-
-	void invalidate_arrow_path(arrow_path_t path);
 
 	void notify_arrow_changed();
 
 	void notify_arrow_deleted();
 
-private:
+protected:
 	//properties
 
 	display* screen_;
@@ -110,6 +114,8 @@ private:
 
 	arrow_symbols_map_t symbols_map_;
 
+private:
+	//properties
     std::list<arrow_observer*> observers_;
 
 };

@@ -45,7 +45,6 @@ public:
 	 * Determine whether the whiteboard is activated.
 	 */
 	bool active(){ return active_; }
-
 	void set_active(bool active){ active_ = active; }
 
 	/**

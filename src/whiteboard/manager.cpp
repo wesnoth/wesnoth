@@ -58,18 +58,25 @@ void manager::set_route(const std::vector<map_location> &steps)
 		{
 			display *screen = (display*) resources::screen;
 			move_arrow_ = new arrow(screen);
+			move_arrow_->set_color("white");
 			screen->add_arrow(*move_arrow_);
 		}
+
 		move_arrow_->set_path(route_);
 	}
 }
 
 void manager::create_move_from_route(unit& subject)
 {
-	team& current_team = (*resources::teams)[resources::controller->current_side()];
+	int current_side = resources::controller->current_side();
+	team& current_team = (*resources::teams)[current_side];
+
 	LOG_WB << "Creating move for unit " << subject.name() << " [" << subject.id() << "]"
 			<< " from " << subject.get_location()
 			<< " to " << route_.back() << "\n";
+
+	move_arrow_->set_color(team::get_side_color_index(current_side));
+
 	current_team.get_side_actions().queue_move(subject, route_.back(), *move_arrow_);
 	//ownership of the arrow transferred to the new move action
 	move_arrow_ = NULL;

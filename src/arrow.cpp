@@ -31,41 +31,60 @@ static lg::log_domain log_arrows("arrows");
 #define DBG_ARR LOG_STREAM(debug, log_arrows)
 
 arrow::arrow(display* screen)
-:screen_(screen), layer_(display::LAYER_ARROWS), color_("red"), style_("")
+:screen_(screen),
+ layer_(display::LAYER_ARROWS),
+ color_("red"),
+ style_("")
 {
 }
 
-void arrow::set_path(const arrow_path_t &path)
+bool arrow::set_path(const arrow_path_t &path)
 {
 	previous_path_ = path_;
 	path_ = path;
-	update_symbols(previous_path_);
+	if (valid_path())
+	{
+		update_symbols(previous_path_);
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 }
 
 void arrow::set_color(const std::string& color)
 {
 	color_ = color;
-	update_symbols(path_);
+	if (valid_path())
+	{
+		update_symbols(path_);
+	}
 }
 
 void arrow::set_style(const std::string& style)
 {
 	style_ = style;
-	update_symbols(path_);
+	if (valid_path())
+	{
+		update_symbols(path_);
+	}
 }
 
 void arrow::set_layer(const display::tdrawing_layer & layer)
 {
 	layer_ = layer;
-	invalidate_arrow_path(path_);
-	notify_arrow_changed();
+	if (valid_path())
+	{
+		invalidate_arrow_path(path_);
+		notify_arrow_changed();
+	}
 }
 
 const arrow_path_t & arrow::get_path() const
 {
 	return path_;
 }
-
 
 const arrow_path_t & arrow::get_previous_path() const
 {
@@ -76,6 +95,14 @@ void arrow::draw_hex(const map_location & loc)
 {
 	screen_->render_image(screen_->get_location_x(loc), screen_->get_location_y(loc), layer_,
 				loc, image::get_image(symbols_map_[loc], image::SCALED_TO_ZOOM));
+}
+
+bool arrow::valid_path() const
+{
+	if (path_.size() >= 2)
+		return true;
+	else
+		return false;
 }
 
 void arrow::add_observer(arrow_observer & observer)
@@ -90,6 +117,12 @@ void arrow::remove_observer(arrow_observer & observer)
 
 void arrow::update_symbols(arrow_path_t old_path)
 {
+	if (!valid_path())
+	{
+		WRN_ARR << "arrow::update_symbols called with invalid path\n";
+		return;
+	}
+
 	foreach(map_location loc, old_path)
 	{
 		symbols_map_.erase(loc);
