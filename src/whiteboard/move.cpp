@@ -27,7 +27,10 @@
 namespace wb {
 
 move::move(unit& subject, const map_location& target_hex, arrow& arrow)
-: unit_(subject), orig_hex_(subject.get_location()), dest_hex_(target_hex), arrow_(arrow)
+: unit_(subject),
+  orig_hex_(subject.get_location()),
+  dest_hex_(target_hex),
+  arrow_(arrow)
 {
 }
 

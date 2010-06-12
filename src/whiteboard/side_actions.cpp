@@ -23,15 +23,12 @@
 namespace wb
 {
 
-side_actions::side_actions()
+side_actions::side_actions(): actions_()
 {
-	// TODO Auto-generated constructor stub
-
 }
 
 side_actions::~side_actions()
 {
-	// TODO Auto-generated destructor stub
 }
 
 const action_set& side_actions::actions() const
@@ -44,7 +41,6 @@ void side_actions::insert_move(unit& subject, const map_location& target_hex, ar
 	action_ptr action(new move(subject, target_hex, arrow));
 	assert(index < end());
 	actions_.insert(actions_.begin() + index, action);
-
 }
 
 void side_actions::queue_move(unit& subject, const map_location& target_hex, arrow& arrow)

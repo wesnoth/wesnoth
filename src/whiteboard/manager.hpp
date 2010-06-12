@@ -19,12 +19,11 @@
 #ifndef WB_MANAGER_HPP_
 #define WB_MANAGER_HPP_
 
-#include "mapbuilder_visitor.hpp"
-
 #include "map_location.hpp"
 
-#include <boost/scoped_ptr.hpp>
+#include <boost/noncopyable.hpp>
 
+#include <memory>
 #include <vector>
 
 class arrow;
@@ -32,14 +31,17 @@ class unit;
 
 namespace wb {
 
+class mapbuilder_visitor;
+
 /**
  * This class holds and manages all of the whiteboard's planned actions.
  */
-class manager
+class manager : private boost::noncopyable
 {
 public:
 
 	manager();
+	~manager();
 
 	/**
 	 * Determine whether the whiteboard is activated.
@@ -70,11 +72,12 @@ private:
 	 */
 	bool active_;
 
-	boost::scoped_ptr<mapbuilder_visitor> mapbuilder_;
+	std::auto_ptr<mapbuilder_visitor> mapbuilder_;
 
 	std::vector<map_location> route_;
 
-	arrow* move_arrow_;
+	std::auto_ptr<arrow> move_arrow_;
+	std::auto_ptr<unit> fake_unit_;
 };
 
 } // end namespace wb
