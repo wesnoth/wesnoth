@@ -500,8 +500,8 @@ void scoped_xy_unit::activate()
 	if(itor != umap_.end()) {
 		config tmp_cfg;
 		itor->write(tmp_cfg);
-		tmp_cfg["x"] = lexical_cast<std::string,int>(x_ + 1);
-		tmp_cfg["y"] = lexical_cast<std::string,int>(y_ + 1);
+		tmp_cfg["x"] = x_ + 1;
+		tmp_cfg["y"] = y_ + 1;
 		LOG_NG << "auto-storing $" << name() << " at (" << loc << ")\n";
 		store(tmp_cfg);
 	} else {
@@ -635,7 +635,7 @@ variable_info::variable_info(const std::string& varname,
 			case variable_info::TYPE_SCALAR:
 			default:
 				// Store the length of the array as a temporary variable
-				repos->temporaries[varname] = lexical_cast<std::string>(size);
+				repos->temporaries[varname] = int(size);
 				is_valid = true;
 				break;
 			}
