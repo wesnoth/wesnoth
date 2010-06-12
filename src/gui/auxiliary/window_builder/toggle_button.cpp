@@ -29,7 +29,7 @@ tbuilder_toggle_button::tbuilder_toggle_button(const config& cfg)
 	: tbuilder_control(cfg)
 	, icon_name_(cfg["icon"])
 	, retval_id_(cfg["return_value_id"])
-	, retval_(lexical_cast_default<int>(cfg["return_value"]))
+	, retval_(cfg["return_value"])
 {
 }
 
