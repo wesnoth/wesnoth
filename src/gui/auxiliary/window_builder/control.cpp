@@ -32,10 +32,9 @@ tbuilder_control::tbuilder_control(const config& cfg)
 	, label(cfg["label"].t_str())
 	, tooltip(cfg["tooltip"].t_str())
 	, help(cfg["help"].t_str())
-	, use_tooltip_on_label_overflow(
-		utils::string_bool("use_tooltip_on_label_overflow", true))
+	, use_tooltip_on_label_overflow(true)
 #ifndef LOW_MEM
-	, debug_border_mode(lexical_cast_default<int>(cfg["debug_border_mode"]))
+	, debug_border_mode(cfg["debug_border_mode"])
 	, debug_border_color(decode_color(cfg["debug_border_colour"]))
 #endif
 {
