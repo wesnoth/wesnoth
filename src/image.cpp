@@ -420,21 +420,21 @@ surface locator::load_image_sub_file() const
 	if(val_.loc_.x>-1 && val_.loc_.y>-1 && val_.center_x_>-1 && val_.center_y_>-1){
 		int offset_x = mother_surface->w/2 - val_.center_x_;
 		int offset_y = mother_surface->h/2 - val_.center_y_;
-		SDL_Rect srcrect = {
-			((tile_size*3) / 4) * val_.loc_.x + offset_x,
-			tile_size * val_.loc_.y + (tile_size/2) * (val_.loc_.x % 2) + offset_y,
-			tile_size, tile_size
-		};
+		SDL_Rect srcrect = create_rect(
+				  ((tile_size*3) / 4) * val_.loc_.x + offset_x
+				, tile_size * val_.loc_.y + (tile_size / 2) * (val_.loc_.x % 2) + offset_y
+				, tile_size
+				, tile_size);
 
 		surface tmp(cut_surface(mother_surface, srcrect));
 		surf=mask_surface(tmp, mask);
 	}
 	else if(val_.loc_.x>-1 && val_.loc_.y>-1 ){
-	  SDL_Rect srcrect = {
-	    ((tile_size*3) / 4) * val_.loc_.x,
-	    tile_size * val_.loc_.y + (tile_size/2) * (val_.loc_.x % 2),
-	    tile_size, tile_size
-	  };
+	  SDL_Rect srcrect = create_rect(
+		      ((tile_size*3) / 4) * val_.loc_.x
+			, tile_size * val_.loc_.y + (tile_size / 2) * (val_.loc_.x % 2)
+			, tile_size
+			, tile_size);
 
 	  surface tmp(cut_surface(mother_surface, srcrect));
 	  surf=mask_surface(tmp, mask);
