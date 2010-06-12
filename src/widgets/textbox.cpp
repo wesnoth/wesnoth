@@ -101,7 +101,11 @@ void textbox::append_text(const std::string& text, bool auto_scroll, const SDL_C
 
 	SDL_BlitSurface(text_image_,NULL,new_surface,NULL);
 
-	SDL_Rect target = {0,text_image_->h,new_text->w,new_text->h};
+	SDL_Rect target = create_rect(0
+			, text_image_->h
+			, new_text->w
+			, new_text->h);
+
 	SDL_BlitSurface(new_text,NULL,new_surface,&target);
 	text_image_.assign(new_surface);
 
@@ -130,7 +134,11 @@ void textbox::clear()
 void textbox::draw_cursor(int pos, CVideo &video) const
 {
 	if(show_cursor_ && editable_) {
-		SDL_Rect rect = {location().x + pos, location().y, 1, location().h };
+		SDL_Rect rect = create_rect(location().x + pos
+				, location().y
+				, 1
+				, location().h);
+
 		surface const frame_buffer = video.getSurface();
 		SDL_FillRect(frame_buffer,&rect,SDL_MapRGB(frame_buffer->format,255,255,255));
 	}
@@ -174,7 +182,10 @@ void textbox::draw_contents()
 					break;
 				}
 
-				SDL_Rect rect = { loc.x + startx, loc.y + starty - src.y, right - startx, line_height_ };
+				SDL_Rect rect = create_rect(loc.x + startx
+						, loc.y + starty - src.y
+						, right - startx
+						, line_height_);
 
 				const clip_rect_setter clipper(surf, &loc);
 
