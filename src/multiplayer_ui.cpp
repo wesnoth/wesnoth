@@ -296,7 +296,10 @@ ui::ui(game_display& disp, const std::string& title, const config& cfg, chat& c,
 	gamelist_refresh_(false),
 	lobby_clock_(0)
 {
-	const SDL_Rect area = { 0, 0, disp.video().getx(), disp.video().gety() };
+	const SDL_Rect area = create_rect(0
+			, 0
+			, disp.video().getx()
+			, disp.video().gety());
 	users_menu_.set_numeric_keypress_selection(false);
 	set_location(area);
 }
