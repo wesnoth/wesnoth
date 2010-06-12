@@ -59,6 +59,7 @@ void manager::set_route(const std::vector<map_location> &steps)
 			display *screen = (display*) resources::screen;
 			move_arrow_ = new arrow(screen);
 			move_arrow_->set_color("white");
+			move_arrow_->set_alpha(0.5);
 			screen->add_arrow(*move_arrow_);
 		}
 
