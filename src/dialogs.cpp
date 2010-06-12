@@ -350,8 +350,11 @@ void save_preview_pane::draw_contents()
 	surface const screen = video().getSurface();
 
 	SDL_Rect const &loc = location();
-	const SDL_Rect area = { loc.x + save_preview_border, loc.y + save_preview_border,
-	                        loc.w - save_preview_border * 2, loc.h - save_preview_border * 2 };
+	const SDL_Rect area = create_rect(loc.x + save_preview_border
+			, loc.y + save_preview_border
+			, loc.w - save_preview_border * 2
+			, loc.h - save_preview_border * 2);
+
 	const clip_rect_setter clipper(screen, &area);
 
 	int ypos = area.y;
@@ -366,7 +369,7 @@ void save_preview_pane::draw_contents()
 #endif
 
 		if(image != NULL) {
-			SDL_Rect image_rect = {area.x,area.y,image->w,image->h};
+			SDL_Rect image_rect = create_rect(area.x, area.y, image->w, image->h);
 			ypos += image_rect.h + save_preview_border;
 
 			SDL_BlitSurface(image,NULL,screen,&image_rect);
@@ -416,7 +419,11 @@ void save_preview_pane::draw_contents()
 	}
 
 	if(map_surf != NULL) {
-		SDL_Rect map_rect = {area.x + area.w - map_surf->w,area.y,map_surf->w,map_surf->h};
+		SDL_Rect map_rect = create_rect(area.x + area.w - map_surf->w
+				, area.y
+				, map_surf->w
+				, map_surf->h);
+
 		ypos = std::max<int>(ypos,map_rect.y + map_rect.h + save_preview_border);
 		SDL_BlitSurface(map_surf,NULL,screen,&map_rect);
 	}
@@ -722,29 +729,46 @@ void unit_preview_pane::draw_contents()
 	surface const screen = video().getSurface();
 
 	SDL_Rect const &loc = location();
-	const SDL_Rect area = { loc.x + unit_preview_border, loc.y + unit_preview_border,
-	                        loc.w - unit_preview_border * 2, loc.h - unit_preview_border * 2 };
+	const SDL_Rect area = create_rect(loc.x + unit_preview_border
+			, loc.y + unit_preview_border
+			, loc.w - unit_preview_border * 2
+			, loc.h - unit_preview_border * 2);
+
 	const clip_rect_setter clipper(screen, &area);
 
 	surface unit_image = det.image;
 	if (!left_)
 		unit_image = image::reverse_image(unit_image);
 
-	SDL_Rect image_rect = {area.x,area.y,0,0};
+	SDL_Rect image_rect = create_rect(area.x, area.y, 0, 0);
 
 	if(unit_image != NULL) {
-		SDL_Rect rect = {right_align ? area.x : area.x + area.w - unit_image->w,area.y,unit_image->w,unit_image->h};
+		SDL_Rect rect = create_rect(
+				  right_align
+					? area.x
+					: area.x + area.w - unit_image->w
+				, area.y
+				, unit_image->w
+				, unit_image->h);
+
 		SDL_BlitSurface(unit_image,NULL,screen,&rect);
 		image_rect = rect;
 	}
 
 	// Place the 'unit profile' button
-	const SDL_Rect button_loc = {right_align ? area.x : area.x + area.w - details_button_.location().w,
-		                             image_rect.y + image_rect.h,
-		                             details_button_.location().w,details_button_.location().h};
+	const SDL_Rect button_loc = create_rect(
+			  right_align
+				? area.x
+				: area.x + area.w - details_button_.location().w
+			, image_rect.y + image_rect.h
+			, details_button_.location().w
+			, details_button_.location().h);
 	details_button_.set_location(button_loc);
 
-	SDL_Rect description_rect = {image_rect.x,image_rect.y+image_rect.h+details_button_.location().h,0,0};
+	SDL_Rect description_rect = create_rect(image_rect.x
+			, image_rect.y + image_rect.h + details_button_.location().h
+			, 0
+			, 0);
 
 	if(det.name.empty() == false) {
 		std::stringstream desc;
@@ -1037,7 +1061,11 @@ static network::connection network_data_dialog(display& disp, const std::string&
 	frame.layout(centered_layout);
 	frame.draw();
 
-	const SDL_Rect progress_rect = {centered_layout.x+border,centered_layout.y+border,centered_layout.w-border*2,centered_layout.h-border*2};
+	const SDL_Rect progress_rect = create_rect(centered_layout.x + border
+			, centered_layout.y + border
+			, centered_layout.w - border * 2
+			, centered_layout.h - border * 2);
+
 	gui::progress_bar progress(disp.video());
 	progress.set_location(progress_rect);
 
