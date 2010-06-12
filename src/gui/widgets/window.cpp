@@ -599,7 +599,7 @@ void twindow::draw()
 				/** @todo should probably be moved to event::thandler::draw. */
 				static unsigned i = 0;
 				if(++i % sunset_ == 0) {
-					SDL_Rect r = {0, 0, frame_buffer->w, frame_buffer->h };
+					SDL_Rect r = ::create_rect(0, 0, frame_buffer->w, frame_buffer->h);
 					const Uint32 color =
 							SDL_MapRGBA(frame_buffer->format,0,0,0,255);
 
@@ -974,12 +974,11 @@ void twindow::do_show_tooltip(const tpoint& location, const t_string& tooltip)
 	tooltip_.set_label(tooltip);
 	const tpoint size = tooltip_.get_best_size();
 
-	SDL_Rect tooltip_rect = {
-		(settings::screen_width - size.x) / 2
+	SDL_Rect tooltip_rect = ::create_rect(
+		  (settings::screen_width - size.x) / 2
 		, settings::screen_height - size.y
 		, size.x
-		, size.y
-		};
+		, size.y);
 #if 0
 	// Find the best position to place the widget
 	if(widget_rect.y - size.y > 0) {
@@ -1034,7 +1033,7 @@ void twindow::do_show_help_popup(const tpoint& location, const t_string& help_po
 	help_popup_.set_label(help_popup);
 	const tpoint size = help_popup_.get_best_size();
 
-	SDL_Rect help_popup_rect = {0, 0, size.x, size.y};
+	SDL_Rect help_popup_rect = ::create_rect(0, 0, size.x, size.y);
 
 	// Find the best position to place the widget
 	if(widget_rect.y - size.y > 0) {
