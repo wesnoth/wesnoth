@@ -209,7 +209,7 @@ void upload_log::read_replay()
 upload_log::~upload_log()
 {
 	// If last game has a conclusion, add it.
-	if (game_finished(game_))
+	if (game_finished())
 		config_.add_child("game", *game_);
 
 	delete game_;
@@ -249,16 +249,16 @@ upload_log::~upload_log()
 	}
 }
 
-bool upload_log::game_finished(config *game)
+bool upload_log::game_finished()
 {
-	if (!game)
+	if (!game_)
 		return false;
 
 	bool has_ai_log = false;
-	if(game->child("upload_log"))
-		has_ai_log = game->child("upload_log").child("ai_log") != 0;
+	if (const config &c = game_->child("upload_log"))
+		has_ai_log = c.child("ai_log");
 
-	return game->child("victory") || game->child("defeat") || game->child("quit") || has_ai_log;
+	return game_->child("victory") || game_->child("defeat") || game_->child("quit") || has_ai_log;
 }
 
 config &upload_log::add_game_result(const std::string &str, int turn)
@@ -278,7 +278,7 @@ void upload_log::start(game_state &state, const team &team,
 	std::vector<const unit*> all_units;
 
 	// If we have a previous game which is finished, add it.
-	if (game_finished(game_)) {
+	if (game_finished()) {
 		config_.add_child("game", *game_);
 	}
 
@@ -310,7 +310,7 @@ void upload_log::start(game_state &state, const team &team,
 void upload_log::start(game_state &state, const std::string& map_data)
 {
 	// If we have a previous game which is finished, add it.
-	if (game_finished(game_)) {
+	if (game_finished()) {
 		config_.add_child("game", *game_);
 	}
 

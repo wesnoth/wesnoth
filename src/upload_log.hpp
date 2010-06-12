@@ -68,7 +68,7 @@ public:
 
 private:
 	config &add_game_result(const std::string &str, int turn);
-	bool game_finished(config *game);
+	bool game_finished();
 
 	static struct thread_info thread_;
 	static manager* manager_;
