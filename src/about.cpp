@@ -177,7 +177,7 @@ void show_about(display &disp, const std::string &campaign)
 	if (screen == NULL) return;
 
 	std::vector<std::string> text = about::get_text(campaign);
-	SDL_Rect screen_rect = {0, 0, screen->w, screen->h};
+	SDL_Rect screen_rect = create_rect(0, 0, screen->w, screen->h);
 
 	const surface_restorer restorer(&video, screen_rect);
 
@@ -234,12 +234,11 @@ void show_about(display &disp, const std::string &campaign)
 
 	int first_line_height = 0;
 
-	SDL_Rect frame_area = {
-		screen->w * 3/32,
-		top_margin,
-		screen->w * 13 / 16,
-		screen->h - top_margin - bottom_margin
-	};
+	SDL_Rect frame_area = create_rect(
+			  screen->w * 3 / 32
+			, top_margin
+			, screen->w * 13 / 16
+			, screen->h - top_margin - bottom_margin);
 
 	// we use a dialog to contains the text. Strange idea but at least the style
 	// will be consistent with the titlescreen
@@ -293,7 +292,7 @@ void show_about(display &disp, const std::string &campaign)
 		} else {
 			// redraw the saved part of the dialog where text scrolled
 			// thus erasing all text
-			SDL_Rect modified = {0,0, max_text_width, text_rect.h};
+			SDL_Rect modified = create_rect(0, 0, max_text_width, text_rect.h);
 			SDL_BlitSurface(text_surf, &modified, screen, &text_rect_blit);
 			update_rect(text_rect);
 		}
