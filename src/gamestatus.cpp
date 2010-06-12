@@ -216,15 +216,15 @@ void write_players(game_state& gamestate, config& cfg, const bool use_snapshot, 
 					ngold = player_gold;
 				}
 				carryover_side["gold"] = str_cast(ngold);
-				if (scenario_side->has_attribute("gold_add")) {
-					carryover_side["gold_add"] = (*scenario_side)["gold_add"];
+				if (const config::attribute_value *v = scenario_side->get("gold_add")) {
+					carryover_side["gold_add"] = *v;
 				}
 				//merge player information into the scenario cfg
 				(*scenario_side)["save_id"] = carryover_side["save_id"];
 				(*scenario_side)["gold"] = ngold;
 				(*scenario_side)["gold_add"] = carryover_side["gold_add"];
-				if (carryover_side.has_attribute("previous_recruits")) {
-					(*scenario_side)["previous_recruits"] = carryover_side["previous_recruits"];
+				if (const config::attribute_value *v = carryover_side.get("previous_recruits")) {
+					(*scenario_side)["previous_recruits"] = *v;
 				} else {
 					(*scenario_side)["previous_recruits"] = carryover_side["can_recruit"];
 				}
@@ -803,14 +803,10 @@ protected:
 		log_step("previous recruits");
 		// If the game state specifies units that
 		// can be recruited for the player, add them.
-		if (player_cfg_ && (*player_cfg_).has_attribute("previous_recruits"))
-		{
-			std::vector<std::string> player_recruits;
-			if (!(*player_cfg_)["previous_recruits"].empty()) {
-				player_recruits = utils::split((*player_cfg_)["previous_recruits"]);
-			}
-			foreach (std::string rec, player_recruits) {
-				DBG_NG_TC << "adding previous recruit: "<< rec << std::endl;
+		if (!player_cfg_) return;
+		if (const config::attribute_value *v = player_cfg_->get("previous_recruits")) {
+			foreach (const std::string &rec, utils::split(*v)) {
+				DBG_NG_TC << "adding previous recruit: " << rec << '\n';
 				t_->add_recruit(rec);
 			}
 		}
@@ -860,12 +856,10 @@ protected:
 		if (!side_cfg_["no_leader"].to_bool() && side_cfg_["controller"] != "null") {
 			leader_cfg_ = side_cfg_;
 
-			if (!leader_cfg_.has_attribute("canrecruit")){
-				leader_cfg_["canrecruit"] = true;
-			}
-			if (!leader_cfg_.has_attribute("placement")){
-				leader_cfg_["placement"] = "map,leader";
-			}
+			config::attribute_value &a1 = leader_cfg_["canrecruit"];
+			if (a1.blank()) a1 = true;
+			config::attribute_value &a2 = leader_cfg_["placement"];
+			if (a2.blank()) a2 = "map,leader";
 
 			handle_unit(leader_cfg_,"leader_cfg");
 		} else {
