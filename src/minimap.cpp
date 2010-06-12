@@ -136,9 +136,12 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw)
 
 				// also do 1-pixel shift because the scaling
 				// function seems to do it with its rounding
-				SDL_Rect maprect = {x * scale*3/4 - 1,
-					y*scale + scale/4 * (is_odd(x) ? 1 : -1) - 1,
-					0, 0};
+				SDL_Rect maprect = create_rect(
+						  x * scale * 3 / 4 - 1
+						, y * scale + scale / 4 * (is_odd(x) ? 1 : -1) - 1
+						, 0
+						, 0);
+
 				SDL_BlitSurface(surf, NULL, minimap, &maprect);
 			}
 		}
