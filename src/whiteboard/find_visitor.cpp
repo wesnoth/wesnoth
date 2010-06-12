@@ -26,7 +26,9 @@ namespace wb
 {
 
 find_visitor::find_visitor()
-: found_(false), search_target_(NULL)
+	: found_(false)
+	, search_target_(NULL)
+	, search_result_()
 {
 }
 
