@@ -792,9 +792,7 @@ protected:
 		// to the level-global "objectives"
 		if(t_->objectives().empty()){
 			const config& child = level_.find_child_recursive("objectives", "side", side_cfg_["side"]);
-			bool silent = false;
-			if (child && child.has_attribute("silent"))
-				silent = child["silent"].to_bool();
+			bool silent = child ? child["silent"].to_bool() : false;
 			t_->set_objectives(level_["objectives"], silent);
 		}
 	}
