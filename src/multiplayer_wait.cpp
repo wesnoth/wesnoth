@@ -69,8 +69,10 @@ void wait::leader_preview_pane::draw_contents()
 	surface const screen = video().getSurface();
 
 	SDL_Rect const &loc = location();
-	const SDL_Rect area = { loc.x + leader_pane_border, loc.y + leader_pane_border,
-	                        loc.w - leader_pane_border * 2, loc.h - leader_pane_border * 2 };
+	const SDL_Rect area = create_rect(loc.x + leader_pane_border
+			, loc.y + leader_pane_border
+			, loc.w - leader_pane_border * 2
+			, loc.h - leader_pane_border * 2);
 	const clip_rect_setter clipper(screen, &area);
 
 	if(selection_ < side_list_.size()) {
