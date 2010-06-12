@@ -349,6 +349,12 @@ class preprocessor_data: preprocessor
 	/** Description of a preprocessing chunk. */
 	struct token_desc
 	{
+		token_desc(const char type, const int stack_pos, const int linenum)
+			: type(type)
+			, stack_pos(stack_pos)
+			, linenum(linenum)
+		{
+		}
 		/** @todo FIXME: add enum for token type. */
 		/**
 		 * Preprocessor state.
@@ -493,7 +499,7 @@ preprocessor_data::~preprocessor_data()
 
 void preprocessor_data::push_token(char t)
 {
-	token_desc token = { t, strings_.size(), linenum_ };
+	token_desc token(t, strings_.size(), linenum_);
 	tokens_.push_back(token);
 	std::ostringstream s;
 	if (!skipping_ && slowpath_) {
