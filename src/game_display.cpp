@@ -483,9 +483,10 @@ void game_display::draw_minimap_units()
 		double u_w = 4.0 / 3.0 * xscaling;
 		double u_h = yscaling;
 
-		SDL_Rect r = { minimap_location_.x + round_double(u_x),
-                       minimap_location_.y + round_double(u_y),
-                       round_double(u_w), round_double(u_h) };
+		SDL_Rect r = create_rect(minimap_location_.x + round_double(u_x)
+				, minimap_location_.y + round_double(u_y)
+				, round_double(u_w)
+				, round_double(u_h));
 
 		SDL_FillRect(video().getSurface(), &r, mapped_col);
 	}
@@ -522,10 +523,11 @@ void game_display::draw_bar(const std::string& image, int xpos, int ypos,
 	else {
 	  const fixed_t xratio = fxpdiv(surf->w,bar_surf->w);
 	  const fixed_t yratio = fxpdiv(surf->h,bar_surf->h);
-	  const SDL_Rect scaled_bar_loc = {fxptoi(unscaled_bar_loc. x * xratio),
-					   fxptoi(unscaled_bar_loc. y * yratio + 127),
-					   fxptoi(unscaled_bar_loc. w * xratio + 255),
-					   fxptoi(unscaled_bar_loc. h * yratio + 255)};
+	  const SDL_Rect scaled_bar_loc = create_rect(
+			    fxptoi(unscaled_bar_loc. x * xratio)
+			  , fxptoi(unscaled_bar_loc. y * yratio + 127)
+			  , fxptoi(unscaled_bar_loc. w * xratio + 255)
+			  , fxptoi(unscaled_bar_loc. h * yratio + 255));
 	  bar_loc = scaled_bar_loc;
 	}
 
@@ -542,8 +544,8 @@ void game_display::draw_bar(const std::string& image, int xpos, int ypos,
 
 	const size_t skip_rows = bar_loc.h - height;
 
-	SDL_Rect top = {0,0,surf->w,bar_loc.y};
-	SDL_Rect bot = {0,bar_loc.y+skip_rows,surf->w,0};
+	SDL_Rect top = create_rect(0, 0, surf->w, bar_loc.y);
+	SDL_Rect bot = create_rect(0, bar_loc.y + skip_rows, surf->w, 0);
 	bot.h = surf->w - bot.y;
 
 	drawing_buffer_add(LAYER_UNIT_BAR, loc, tblit(xpos, ypos, surf, top));
@@ -554,7 +556,7 @@ void game_display::draw_bar(const std::string& image, int xpos, int ypos,
 	if(unfilled < height && alpha >= ftofxp(0.3)) {
 		const Uint8 r_alpha = std::min<unsigned>(unsigned(fxpmult(alpha,255)),255);
 		surface filled_surf = create_compatible_surface(bar_surf, bar_loc.w, height - unfilled);
-		SDL_Rect filled_area = {0, 0, bar_loc.w, height-unfilled};
+		SDL_Rect filled_area = create_rect(0, 0, bar_loc.w, height-unfilled);
 		SDL_FillRect(filled_surf,&filled_area,SDL_MapRGBA(bar_surf->format,col.r,col.g,col.b, r_alpha));
 		drawing_buffer_add(LAYER_UNIT_BAR, loc, tblit(xpos + bar_loc.x, ypos + bar_loc.y + unfilled, filled_surf));
 	}
@@ -864,7 +866,10 @@ const SDL_Rect& game_display::calculate_energy_bar(surface surf)
 		}
 	}
 
-	const SDL_Rect res = {first_col,first_row,last_col-first_col,last_row+1-first_row};
+	const SDL_Rect res = create_rect(first_col
+			, first_row
+			, last_col-first_col
+			, last_row+1-first_row);
 	energy_bar_rects_.insert(std::pair<surface,SDL_Rect>(surf,res));
 	return calculate_energy_bar(surf);
 }
