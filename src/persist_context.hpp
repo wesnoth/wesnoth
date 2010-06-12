@@ -28,21 +28,18 @@ private:
 		std::string root_;
 		std::string node_;
 		std::string lineage_;
+		std::string descendants_;
 		bool valid_;
 		bool valid() const {
 			return valid_;
 		}
-		std::string lineage() const {
-			return lineage_;
-		}
-		std::string node() const {
-			return node_;
-		}
-		std::string root() const {
-			return root_;
-		}
 		void parse() {
 			while (namespace_.find_first_of("^") < namespace_.size()) {
+				if (namespace_[0] = '^') {
+					//TODO: Throw a WML error
+					namespace_ = "";
+					break;
+				}
 				std::string infix = namespace_.substr(namespace_.find_first_of("^"));
 				size_t end = infix.find_first_not_of("^");
 				if (!((end >= infix.length()) || (infix[end] == '.'))) {
@@ -61,6 +58,14 @@ private:
 				}
 			}
 		}
+		name_space next() const {
+			return name_space(descendants_);
+		}
+		name_space prev() const {
+			return name_space(lineage_);
+		}
+		operator bool () const { return valid_; }
+		name_space() : valid_(false) {};
 		name_space(const std::string &ns) : namespace_(ns) {
 			parse();
 			valid_ = ((namespace_.find_first_not_of("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz_.") > namespace_.length()) && !namespace_.empty());
@@ -68,39 +73,69 @@ private:
 			node_ = namespace_.substr(namespace_.find_last_of(".") + 1);
 			if (namespace_.find_last_of(".") <= namespace_.length())
 				lineage_ = namespace_.substr(0,namespace_.find_last_of("."));
+			if (namespace_.find_first_of(".") <= namespace_.length())
+				descendants_ = namespace_.substr(namespace_.find_first_of(".") + 1);
 		}
 	};
 	// TODO: transaction support (needed for MP)
-	typedef std::map<std::string,persist_context*> child_map;
-	// TODO: parent and child members (needed for namespace embeddeding)
-	name_space namespace_;
 	config cfg_;
-	persist_context *parent_;
-	child_map children_;
+	name_space namespace_;
+	struct node {
+		typedef std::map<std::string,node*> child_map;
+		std::string name_;
+		persist_context *root_;
+		node *parent_;
+		child_map children_;
+		config &cfg_;
+		node(std::string name, persist_context *root, config & cfg, node *parent = NULL) : name_(name), root_(root), cfg_(cfg),parent_(parent) { 
+		}
+		~node() {
+			for (child_map::iterator i = children_.begin(); i != children_.end(); i++)
+				delete (i->second);
+		}
+		config &cfg() { return cfg_; }
+		node &add_child(const std::string &name) {
+			children_[name] = new node(name,root_,cfg_.child_or_add(name),this);	
+			return *(children_[name]);
+		}
+		node &child(const name_space &name) {
+			if (name) {
+				if (children_.find(name.root_) == children_.end())
+					add_child(name.root_);
+				node &chld = *children_[name.root_];
+				return chld.child(name.next());
+			}
+			else return *this;
+		}
+		void init () {
+			for (config::all_children_iterator i = cfg_.ordered_begin(); i != cfg_.ordered_end(); i++) {
+				if (i->key != "variables") {
+					child(i->key).init();
+				}
+			}
+			if (!cfg_.child("variables"))
+				cfg_.add_child("variables");
+		}
+	};
+	node root_node_;
+	node *active_;
 	bool valid_;
-	bool dirty_;
-	bool collected_;
 	void load();
 	void init();
 	bool save_context();
-	void update_configs();
+	persist_context() : valid_(false), root_node_("",this,cfg_), active_(&root_node_) {};
+	static persist_context invalid;
+	persist_context &add_child(const std::string &key);
 public:
-	persist_context(const std::string &);
-	persist_context(const std::string &, persist_context &);
-	persist_context(const std::string &, persist_context *);
+	persist_context(const std::string &name_space);
 	~persist_context();
 	bool clear_var(std::string &);
 	config get_var(const std::string &);
 	bool set_var(const std::string &, const config &);
 	bool valid() const { return valid_; };
 	bool dirty() const { 
-		bool dirt = dirty_;
-		child_map::const_iterator i = children_.begin();
-		while ((!dirt) && (i != children_.end())) {
-			dirt |= i->second->dirty();
-			i++;
-		}
-		return dirt; 
+		return true;
 	};
+	operator bool() { return valid_; }
 };
 #endif
