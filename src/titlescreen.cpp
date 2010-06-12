@@ -109,8 +109,8 @@ static bool fade_logo(game_display& screen, int xcpos, int ycpos)
 	LOG_DP << "logo size: " << logo->w << "," << logo->h << "\n";
 
 	for(int x = 0; x != logo->w; ++x) {
-		SDL_Rect srcrect = {x,0,1,logo->h};
-		SDL_Rect dstrect = {xpos+x,ypos,1,logo->h};
+		SDL_Rect srcrect = create_rect(x, 0, 1, logo->h);
+		SDL_Rect dstrect = create_rect(xpos + x, ypos, 1, logo->h);
 		SDL_BlitSurface(logo,&srcrect,fb,&dstrect);
 
 		update_rect(dstrect);
@@ -487,8 +487,10 @@ TITLE_RESULT show_title(game_display& screen, config& tips_of_day)
 		if(b + TUTORIAL == QUIT_GAME) break;	// Menu-frame ends at the quit-button
 	}
 
-	SDL_Rect main_dialog_area = {menu_xbase-padding, menu_ybase-padding, max_width+padding*2,
-								 menu_yincr*(n_menubuttons)+buttons.back().height()+padding*2};
+	SDL_Rect main_dialog_area = create_rect(menu_xbase-padding
+			, menu_ybase - padding
+			, max_width + padding * 2
+			, menu_yincr * (n_menubuttons) + buttons.back().height() + padding * 2);
 
 	gui::dialog_frame main_frame(screen.video(), "", gui::dialog_frame::titlescreen_style, false);
 	main_frame.layout(main_dialog_area);
