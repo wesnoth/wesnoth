@@ -28,8 +28,10 @@
 #include "pathfind/pathfind.hpp"
 #include "pathutils.hpp"
 #include "race.hpp"
+#include "util.hpp"
 #include "wml_exception.hpp"
 #include "formula_string_utils.hpp"
+#include "SDL.h"
 
 
 static lg::log_domain log_engine("engine");

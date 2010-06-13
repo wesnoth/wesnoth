@@ -20,12 +20,13 @@
 #ifndef PATHFIND_H_INCLUDED
 #define PATHFIND_H_INCLUDED
 
+class gamemap;
+class team;
 class unit;
 class unit_map;
 class unit_movement_type;
 
 #include "map_location.hpp"
-#include "team.hpp"
 
 #include <map>
 #include <list>

@@ -27,6 +27,7 @@
 #include "../../foreach.hpp"
 #include "../../log.hpp"
 #include "../../map.hpp"
+#include "../../team.hpp"
 #include "../../wml_exception.hpp"
 #include "../../pathfind/pathfind.hpp"
 

@@ -30,6 +30,7 @@
 #include "replay.hpp"
 #include "resources.hpp"
 #include "statistics.hpp"
+#include "team.hpp"
 #include "unit.hpp"
 #include "unit_id.hpp"
 #include "wesconfig.h"
