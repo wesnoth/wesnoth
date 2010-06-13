@@ -2486,9 +2486,8 @@ class console_handler : public map_command_handler<console_handler>, private cha
 			//    _("Remove a trait from a unit. (Does not work yet.)"), "", "D");
 			register_command("discover", &console_handler::do_discover,
 				_("Discover all units in help."), "");
-			// Hide to prevent unwanted clearing of user's progress
-			// register_command("undiscover", &console_handler::do_undiscover,
-			//	  _("'Undiscover' all units in help."), "");*/
+			register_command("undiscover", &console_handler::do_undiscover,
+				  _("'Undiscover' all units in help."), "");
 			register_command("create", &console_handler::do_create,
 				_("Create a unit."), "", "D");
 			register_command("fog", &console_handler::do_fog,
@@ -3330,7 +3329,10 @@ void console_handler::do_discover() {
 	}
 }
 void console_handler::do_undiscover() {
-	preferences::encountered_units().clear();
+	const int res = gui::dialog(*menu_handler_.gui_, "Undiscover", _("Clear all your discovered units from help?"),gui::YES_NO).show();
+	if(res == 0) {
+		preferences::encountered_units().clear();
+	}
 }
 void console_handler::do_create() {
 	const map_location &loc = mouse_handler_.get_last_hex();
