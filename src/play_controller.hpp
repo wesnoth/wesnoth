@@ -17,6 +17,8 @@
 #define PLAY_CONTROLLER_H_INCLUDED
 
 #include "global.hpp"
+
+#include "actions.hpp"
 #include "controller_base.hpp"
 #include "game_end_exceptions.hpp"
 #include "help.hpp"

@@ -17,10 +17,10 @@
 #define MENU_EVENTS_H_INCLUDED
 
 #include "global.hpp"
-#include "actions.hpp"
 #include "chat_events.hpp"
 #include "show_dialog.hpp"
 #include "floating_textbox.hpp"
+#include "unit_map.hpp"
 
 class game_state;
 class tod_manager;

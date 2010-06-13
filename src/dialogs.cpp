@@ -19,6 +19,7 @@
 
 #include "global.hpp"
 
+#include "actions.hpp"
 #include "dialogs.hpp"
 #include "foreach.hpp"
 #include "game_events.hpp"
