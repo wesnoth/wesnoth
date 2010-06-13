@@ -37,8 +37,7 @@ class menu_handler : private chat_handler {
 public:
 	menu_handler(game_display* gui, unit_map& units, std::vector<team>& teams,
 		const config& level, const gamemap& map,
-		const config& game_config, const tod_manager& tod_mng, game_state& gamestate,
-		undo_list& undo_stack, undo_list& redo_stack);
+		const config& game_config, const tod_manager& tod_mng, game_state& gamestate);
 	virtual ~menu_handler();
 
 	gui::floating_textbox& get_textbox();
@@ -127,8 +126,6 @@ private:
 	const tod_manager& tod_manager_;
 	game_state& gamestate_;
 
-	undo_list& undo_stack_;
-	undo_list& redo_stack_;
 	gui::floating_textbox textbox_info_;
 	std::string last_search_;
 	map_location last_search_hit_;

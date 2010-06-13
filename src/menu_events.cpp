@@ -68,15 +68,13 @@ namespace events{
 class delete_recall_unit : public gui::dialog_button_action
 {
 public:
-	delete_recall_unit(game_display& disp, gui::filter_textbox& filter, std::vector<unit>& units, undo_list& undo_stack, undo_list& redo_stack) : disp_(disp), filter_(filter), units_(units), undo_stack_(undo_stack), redo_stack_(redo_stack) {}
+	delete_recall_unit(game_display& disp, gui::filter_textbox& filter, std::vector<unit>& units) : disp_(disp), filter_(filter), units_(units) {}
 private:
 	gui::dialog_button_action::RESULT button_pressed(int menu_selection);
 
 	game_display& disp_;
 	gui::filter_textbox& filter_;
 	std::vector<unit>& units_;
-	undo_list& undo_stack_;
-	undo_list& redo_stack_;
 };
 
 gui::dialog_button_action::RESULT delete_recall_unit::button_pressed(int menu_selection)
@@ -109,7 +107,7 @@ gui::dialog_button_action::RESULT delete_recall_unit::button_pressed(int menu_se
 		// Remove the item from filter_textbox memory
 		filter_.delete_item(menu_selection);
 		//add dismissal to the undo stack
-		undo_stack_.push_back(undo_action(u, map_location(), undo_action::DISMISS));
+		resources::undo_stack->push_back(undo_action(u, map_location(), undo_action::DISMISS));
 
 		//remove the unit from the recall list
 		std::vector<unit>::iterator dismissed_unit = std::find_if(units_.begin(), units_.end(), boost::bind(&unit::matches_id, _1, u.id()));
@@ -118,7 +116,7 @@ gui::dialog_button_action::RESULT delete_recall_unit::button_pressed(int menu_se
 		units_.erase(dismissed_unit);
 
 		//clear the redo stack to avoid duplication of dismissals
-		redo_stack_.clear();
+		resources::redo_stack->clear();
 		return gui::DELETE_ITEM;
 	} else {
 		return gui::CONTINUE_DIALOG;
@@ -127,8 +125,7 @@ gui::dialog_button_action::RESULT delete_recall_unit::button_pressed(int menu_se
 
 menu_handler::menu_handler(game_display* gui, unit_map& units, std::vector<team>& teams,
 		const config& level, const gamemap& map,
-		const config& game_config, const tod_manager& tod_mng, game_state& gamestate,
-		undo_list& undo_stack, undo_list& redo_stack) :
+		const config& game_config, const tod_manager& tod_mng, game_state& gamestate) :
 	gui_(gui),
 	units_(units),
 	teams_(teams),
@@ -137,8 +134,6 @@ menu_handler::menu_handler(game_display* gui, unit_map& units, std::vector<team>
 	game_config_(game_config),
 	tod_manager_(tod_mng),
 	gamestate_(gamestate),
-	undo_stack_(undo_stack),
-	redo_stack_(redo_stack),
 	textbox_info_(),
 	last_search_(),
 	last_search_hit_(),
@@ -785,7 +780,7 @@ void menu_handler::do_recruit(const std::string &name, int side_num,
 	//MP_COUNTDOWN grant time bonus for recruiting
 	current_team.set_action_bonus_count(1 + current_team.action_bonus_count());
 
-	redo_stack_.clear();
+	resources::redo_stack->clear();
 	assert(new_unit.type());
 
 	// Dissallow undoing of recruits. Can be enabled again once the unit's
@@ -795,7 +790,7 @@ void menu_handler::do_recruit(const std::string &name, int side_num,
 		|| new_unit.type()->has_random_traits()) {
 		clear_undo_stack(side_num);
 	} else {
-		undo_stack_.push_back(undo_action(new_unit, loc, undo_action::RECRUIT));
+		resources::undo_stack->push_back(undo_action(new_unit, loc, undo_action::RECRUIT));
 	}
 
 	gui_->recalculate_minimap();
@@ -913,7 +908,7 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 			_("Filter: "), options, options_to_filter, 1, rmenu, 200);
 		rmenu.set_textbox(filter);
 
-		delete_recall_unit recall_deleter(*gui_, *filter, recall_list_team, undo_stack_, redo_stack_);
+		delete_recall_unit recall_deleter(*gui_, *filter, recall_list_team);
 		gui::dialog_button_info delete_button(&recall_deleter,_("Dismiss Unit"));
 		rmenu.add_button(delete_button);
 
@@ -975,10 +970,10 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 	if (shroud_cleared) {
 		clear_undo_stack(side_num);
 	} else {
-		undo_stack_.push_back(undo_action(un, loc, undo_action::RECALL));
+		resources::undo_stack->push_back(undo_action(un, loc, undo_action::RECALL));
 	}
 
-	redo_stack_.clear();
+	resources::redo_stack->clear();
 	gui_->invalidate_game_status();
 	gui_->invalidate_all();
 	recorder.add_checksum_check(loc);
@@ -986,13 +981,13 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 
 void menu_handler::undo(int side_num)
 {
-	if(undo_stack_.empty())
+	if(resources::undo_stack->empty())
 		return;
 
 	const events::command_disabler disable_commands;
 	team &current_team = teams_[side_num - 1];
 
-	undo_action& action = undo_stack_.back();
+	undo_action& action = resources::undo_stack->back();
 	if (action.is_dismiss()) {
 		//undo a dismissal
 
@@ -1088,8 +1083,8 @@ void menu_handler::undo(int side_num)
 	gui_->invalidate_unit();
 	gui_->invalidate_game_status();
 
-	redo_stack_.push_back(action);
-	undo_stack_.pop_back();
+	resources::redo_stack->push_back(action);
+	resources::undo_stack->pop_back();
 
 	recorder.undo();
 
@@ -1104,13 +1099,13 @@ void menu_handler::undo(int side_num)
 
 void menu_handler::redo(int side_num)
 {
-	if(redo_stack_.empty())
+	if(resources::redo_stack->empty())
 		return;
 
 	const events::command_disabler disable_commands;
 	team &current_team = teams_[side_num - 1];
 
-	undo_action& action = redo_stack_.back();
+	undo_action& action = resources::redo_stack->back();
 	if (action.is_dismiss()) {
 		if(!current_team.persistent()) {
 			ERR_NG << "trying to redo a dismiss for side " << side_num
@@ -1234,8 +1229,8 @@ void menu_handler::redo(int side_num)
 	gui_->invalidate_unit();
 	gui_->invalidate_game_status();
 
-	undo_stack_.push_back(action);
-	redo_stack_.pop_back();
+	resources::undo_stack->push_back(action);
+	resources::redo_stack->pop_back();
 }
 
 bool menu_handler::clear_shroud(int side_num)
@@ -1248,8 +1243,8 @@ bool menu_handler::clear_shroud(int side_num)
 void menu_handler::clear_undo_stack(int side_num)
 {
 	if (!teams_[side_num - 1].auto_shroud_updates())
-		apply_shroud_changes(undo_stack_, side_num);
-	undo_stack_.clear();
+		apply_shroud_changes(*resources::undo_stack, side_num);
+	resources::undo_stack->clear();
 }
 
 // Highlights squares that an enemy could move to on their turn, showing how many can reach each square.
@@ -1617,7 +1612,7 @@ void menu_handler::move_unit_to_loc(const unit_map::const_iterator &ui,
 	assert(route.steps.front() == ui->get_location());
 
 	gui_->set_route(&route);
-	move_unit(NULL, route.steps, &recorder, &undo_stack_, true, NULL, continue_move);
+	move_unit(NULL, route.steps, &recorder, resources::undo_stack, true, NULL, continue_move);
 	gui_->invalidate_game_status();
 }
 
@@ -1685,7 +1680,7 @@ void menu_handler::execute_gotos(mouse_handler &mousehandler, int side)
 			}
 
 			gui_->set_route(&route);
-			int moves = ::move_unit(NULL, route.steps, &recorder, &undo_stack_, true, NULL, false);
+			int moves = ::move_unit(NULL, route.steps, &recorder, resources::undo_stack, true, NULL, false);
 			change = moves > 0;
 
 			if (change) {
