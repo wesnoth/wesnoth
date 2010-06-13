@@ -33,7 +33,6 @@
 Growl_Delegate growl_obj;
 #endif
 
-#include "actions.hpp"
 #include "foreach.hpp"
 #include "halo.hpp"
 #include "log.hpp"
