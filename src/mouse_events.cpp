@@ -17,6 +17,7 @@
 
 #include "mouse_events.hpp"
 
+#include "actions.hpp"
 #include "attack_prediction_display.hpp"
 #include "dialogs.hpp"
 #include "foreach.hpp"
@@ -49,16 +50,13 @@ namespace events{
 
 
 mouse_handler::mouse_handler(game_display* gui, std::vector<team>& teams,
-		unit_map& units, gamemap& map, tod_manager& tod_mng,
-		undo_list& undo_stack, undo_list& redo_stack) :
+		unit_map& units, gamemap& map, tod_manager& tod_mng) :
 	mouse_handler_base(),
 	map_(map),
 	gui_(gui),
 	teams_(teams),
 	units_(units),
 	tod_manager_(tod_mng),
-	undo_stack_(undo_stack),
-	redo_stack_(redo_stack),
 	previous_hex_(),
 	previous_free_hex_(),
 	selected_hex_(),
@@ -577,8 +575,8 @@ void mouse_handler::deselect_hex() {
 
 void mouse_handler::clear_undo_stack()
 {
-	apply_shroud_changes(undo_stack_, side_num_);
-	undo_stack_.clear();
+	apply_shroud_changes(*resources::undo_stack, side_num_);
+	resources::undo_stack->clear();
 }
 
 bool mouse_handler::move_unit_along_current_route(bool check_shroud, bool attackmove)
@@ -605,7 +603,7 @@ bool mouse_handler::move_unit_along_current_route(bool check_shroud, bool attack
 		if (resources::whiteboard->active()) {
 			resources::whiteboard->create_move_from_route(*units_.find(steps.front()));
 		} else {
-			moves = ::move_unit(NULL, steps, &recorder, &undo_stack_, true, &next_unit_, false, check_shroud);
+			moves = ::move_unit(NULL, steps, &recorder, resources::undo_stack, true, &next_unit_, false, check_shroud);
 		}
 	} catch(end_turn_exception&) {
 		attackmove_ = false;
@@ -622,7 +620,7 @@ bool mouse_handler::move_unit_along_current_route(bool check_shroud, bool attack
 	if(moves == 0)
 		return false;
 
-	redo_stack_.clear();
+	resources::redo_stack->clear();
 
 	assert(moves <= steps.size());
 	const map_location& dst = steps[moves-1];
@@ -807,7 +805,7 @@ void mouse_handler::attack_enemy_(unit_map::iterator attacker, unit_map::iterato
 
 	attacker->set_goto(map_location());
 	clear_undo_stack();
-	redo_stack_.clear();
+	resources::redo_stack->clear();
 
 	current_paths_ = pathfind::paths();
 	// make the attacker's stats appear during the attack

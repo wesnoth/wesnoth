@@ -75,7 +75,7 @@ play_controller::play_controller(const config& level, game_state& state_of_game,
 	halo_manager_(),
 	labels_manager_(),
 	help_manager_(&game_config, &map_),
-	mouse_handler_(NULL, teams_, units_, map_, tod_manager_, undo_stack_, redo_stack_),
+	mouse_handler_(NULL, teams_, units_, map_, tod_manager_),
 	menu_handler_(NULL, units_, teams_, level, map_, game_config, tod_manager_, state_of_game, undo_stack_, redo_stack_),
 	soundsources_manager_(),
 	tod_manager_(level, num_turns, &state_of_game),
@@ -112,6 +112,8 @@ play_controller::play_controller(const config& level, game_state& state_of_game,
 	resources::state_of_game = &gamestate_;
 	resources::controller = this;
 	resources::tod_manager = &tod_manager_;
+	resources::undo_stack = &undo_stack_;
+	resources::redo_stack = &redo_stack_;
 
 	// Setup victory and defeat music
 	set_victory_music_list(level_["victory_music"]);
