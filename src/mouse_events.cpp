@@ -439,7 +439,7 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 		if (attack_from == selected_hex_) { //no move needed
 			int choice = show_attack_dialog(attack_from, clicked_u->get_location());
 			if (choice >=0 ) {
-				attack_enemy(u, clicked_u, choice);
+				attack_enemy(u->get_location(), clicked_u->get_location(), choice);
 			}
 			return false;
 		}
@@ -485,18 +485,8 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 				return false;
 			}
 
-			// a WML event could have invalidated both attacker and defender
-			// so make sure they're valid before attacking
-			u = find_unit(attack_from);
-			unit_map::iterator enemy = find_unit(hex);
-			if (u != units_.end() && u->side() == side_num_ &&
-			    enemy != units_.end() && current_team().is_enemy(enemy->side()) && !enemy->incapacitated()
-				&& !commands_disabled) {
-
-				attack_enemy(u, enemy, choice); // Fight !!
-				return false;
-			}
-
+			attack_enemy(attack_from, hex, choice); // Fight !!
+			return false;
 		}
 	}
 
@@ -571,12 +561,6 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse) {
 
 void mouse_handler::deselect_hex() {
 	select_hex(map_location(), true);
-}
-
-void mouse_handler::clear_undo_stack()
-{
-	apply_shroud_changes(*resources::undo_stack, side_num_);
-	resources::undo_stack->clear();
 }
 
 bool mouse_handler::move_unit_along_current_route(bool check_shroud, bool attackmove)
@@ -776,17 +760,32 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 	return res;
 }
 
-void mouse_handler::attack_enemy(unit_map::iterator attacker, unit_map::iterator defender, int choice)
+void mouse_handler::attack_enemy(const map_location& attacker_loc, const map_location& defender_loc, int choice)
 {
 	try {
-		attack_enemy_(attacker, defender, choice);
+		attack_enemy_(attacker_loc, defender_loc, choice);
 	} catch(std::bad_alloc) {
 		lg::wml_error << "Memory exhausted a unit has either a lot hitpoints or a negative amount.\n";
 	}
 }
 
-void mouse_handler::attack_enemy_(unit_map::iterator attacker, unit_map::iterator defender, int choice)
+void mouse_handler::attack_enemy_(const map_location attacker_loc, const map_location defender_loc, int choice)
 {
+	//we must get locations by value instead of by references,
+	//because unit_map changes may affect them if from unit_map::iterator
+
+	apply_shroud_changes(*resources::undo_stack, side_num_);
+	resources::undo_stack->clear();
+	resources::redo_stack->clear();
+
+	unit_map::iterator attacker = find_unit(attacker_loc);
+	if(attacker == units_.end() || attacker->side() == side_num_ || attacker->incapacitated())
+		return;
+	
+	unit_map::iterator defender = find_unit(defender_loc);
+	if(defender == units_.end() || current_team().is_enemy(defender->side()) || defender->incapacitated())
+		return;
+
 	std::vector<battle_context> bc_vector;
 	fill_weapon_choices(bc_vector, attacker, defender);
 
@@ -794,18 +793,11 @@ void mouse_handler::attack_enemy_(unit_map::iterator attacker, unit_map::iterato
 		return;
 	}
 
-	//we must get locations by value instead of by references, because the iterators
-	//may become invalidated later
-	const map_location attacker_loc = attacker->get_location();
-	const map_location defender_loc = defender->get_location();
-
 	commands_disabled++;
 	const battle_context_unit_stats &att = bc_vector[choice].get_attacker_stats();
 	const battle_context_unit_stats &def = bc_vector[choice].get_defender_stats();
 
 	attacker->set_goto(map_location());
-	clear_undo_stack();
-	resources::redo_stack->clear();
 
 	current_paths_ = pathfind::paths();
 	// make the attacker's stats appear during the attack
