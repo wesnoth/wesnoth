@@ -32,8 +32,6 @@ struct time_of_day;
 #include "unit.hpp"
 #include "unit_map.hpp"
 
-#include <deque>
-
 
 class unit_creator {
 public:
