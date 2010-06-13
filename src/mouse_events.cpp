@@ -741,12 +741,12 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 
 		atts << IMAGE_PREFIX << attw.icon() << COLUMN_SEPARATOR
 			 << font::BOLD_TEXT << attw_name  << "\n"
-			 << att.damage << "-" << att.num_blows
+			 << att.damage << font::weapon_numbers_sep << att.num_blows
 			 << "  " << att_weapon_special << "\n"
 			 << font::color2markup(att_cth_color) << att.chance_to_hit << "%"
 			 << COLUMN_SEPARATOR << font::weapon_details << "- " << range << " -" << COLUMN_SEPARATOR
 			 << font::BOLD_TEXT << defw_name  << "\n"
-			 << def.damage << "-" << def.num_blows
+			 << def.damage << font::weapon_numbers_sep << def.num_blows
 			 << "  " << def_weapon_special << "\n"
 			 << font::color2markup(def_cth_color) << def.chance_to_hit << "%"
 			 << COLUMN_SEPARATOR << IMAGE_PREFIX << defw.icon();
