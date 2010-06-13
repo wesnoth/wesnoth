@@ -79,7 +79,7 @@ optimize_imgfile()
 
 	echo "* processing ${1} (nice = ${2})..."
 
-	nice -n $2 convert -strip ${1} ${1}.new
+	nice -n $2 convert -strip -define png:color-type=6 ${1} ${1}.new
 	nice -n $2 optipng -q -o5 -nb -nc -np ${1}.new
 	# Sometimes lower compression level gives a better compression
 	nice -n $2 advdef -z -4 ${1}.new > /dev/null
