@@ -124,6 +124,7 @@ Version 1.9.0-svn:
    * Display weapon stats in recruit/recall dialog the same way as in sidebar
    * Accuracy/parry have its own line and tooltip in sidebar.
    * Add first, last, play and back buttons to storyscreens
+   * Remember recall list sorting order (FR #16149)
  * Units:
    * Giant Rat moved from DiD to core.
  * WML Engine:
@@ -183,6 +184,7 @@ Version 1.9.0-svn:
    * Fixed attack predictions for combats with a unit leveling up thanks to a kill
    * Fix rare layer's order bug about unit drawn above big south-west unit
    * Improvements to make Wesnoth compile better with g++-4.5 in C++-0x mode
+   * Added ":undiscover" to clear all your discovered units from help
 
 Version 1.8.0:
  * AI:
