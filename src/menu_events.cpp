@@ -149,9 +149,6 @@ menu_handler::menu_handler(game_display* gui, unit_map& units, std::vector<team>
 menu_handler::~menu_handler()
 {
 }
-const undo_list& menu_handler::get_undo_list() const{
-	 return undo_stack_;
-}
 
 gui::floating_textbox& menu_handler::get_textbox(){
 	return textbox_info_;

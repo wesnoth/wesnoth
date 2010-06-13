@@ -41,7 +41,6 @@ public:
 		undo_list& undo_stack, undo_list& redo_stack);
 	virtual ~menu_handler();
 
-	const undo_list& get_undo_list() const;
 	gui::floating_textbox& get_textbox();
 	void set_gui(game_display* gui) { gui_ = gui; }
 
