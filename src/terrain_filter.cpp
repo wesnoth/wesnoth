@@ -474,3 +474,7 @@ config terrain_filter::to_config() const
 	return cfg_.get_config();
 }
 
+terrain_filter::terrain_filter_cache::~terrain_filter_cache() {
+	delete parsed_terrain;
+	delete adjacent_matches;
+}

@@ -22,6 +22,9 @@
 #include "../../gamestatus.hpp"
 #include "../../foreach.hpp"
 #include "../../terrain_filter.hpp"
+#include "../../unit.hpp"
+#include "../../unit_map.hpp"
+#include "../../team.hpp"
 #include "../../variable.hpp"
 
 #include <boost/lexical_cast.hpp>

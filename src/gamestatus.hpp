@@ -20,16 +20,22 @@
 #include "mp_game_settings.hpp"
 #include "random.hpp"
 #include "simple_rng.hpp"
-#include "team.hpp"
+#include "map_location.hpp"
 #include "variable.hpp"
 #include "savegame_config.hpp"
 #include "serialization/binary_or_text.hpp"
+#include "serialization/string_utils.hpp"
 
 #include <time.h>
 #include <string>
 #include <vector>
 
 class scoped_wml_variable;
+class team;
+class gamemap;
+namespace t_translation {
+	class t_match;
+}
 
 //meta information of the game
 class game_classification : public savegame::savegame_config

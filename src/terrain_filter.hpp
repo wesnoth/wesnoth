@@ -75,10 +75,7 @@ private:
 		{
 		}
 
-		~terrain_filter_cache() {
-			delete parsed_terrain;
-			delete adjacent_matches;
-		}
+		~terrain_filter_cache();
 
 		//parsed_terrain: optimizes handling of terrain="..."
 		t_translation::t_match *parsed_terrain;

@@ -32,6 +32,7 @@
 #include "network.hpp"
 #include "replay.hpp"
 #include "serialization/parser.hpp"
+#include "team.hpp"
 #include "unit.hpp"
 #include "unit_map.hpp"
 #include "wesconfig.h"

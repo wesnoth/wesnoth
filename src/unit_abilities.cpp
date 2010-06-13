@@ -22,6 +22,7 @@
 #include "resources.hpp"
 #include "terrain_filter.hpp"
 #include "unit.hpp"
+#include "team.hpp"
 #include "unit_abilities.hpp"
 
 
