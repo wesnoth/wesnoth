@@ -241,12 +241,16 @@ public:
 	/**
 	 * Returns the nth child with the given @a key, or
 	 * a reference to an invalid config if there is none.
+	 * @note A negative @a n accesses from the end of the object.
+	 *       For instance, -1 is the index of the last child.
 	 */
 	config &child(const std::string& key, int n = 0);
 
 	/**
 	 * Returns the nth child with the given @a key, or
 	 * a reference to an invalid config if there is none.
+	 * @note A negative @a n accesses from the end of the object.
+	 *       For instance, -1 is the index of the last child.
 	 */
 	const config &child(const std::string& key, int n = 0) const
 	{ return const_cast<config *>(this)->child(key, n); }

@@ -316,11 +316,9 @@ config &config::child(const std::string& key, int n)
 	check_valid();
 
 	const child_map::const_iterator i = children.find(key);
-	if (i != children.end() && i->second.size() > size_t(n)) {
-		return *i->second[n];
-	} else {
-		return invalid;
-	}
+	if (i == children.end()) return invalid;
+	if (n < 0) n = i->second.size() + n;
+	return  size_t(n) < i->second.size() ? *i->second[n] : invalid;
 }
 
 config config::child_or_empty(const std::string& key) const
