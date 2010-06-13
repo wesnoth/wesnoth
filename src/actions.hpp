@@ -367,7 +367,7 @@ struct undo_action {
 	bool is_recruit() const { return type == RECRUIT; }
 };
 
-typedef std::deque<undo_action> undo_list;
+typedef std::vector<undo_action> undo_list;
 
 /**
  * function which moves a unit along the sequence of locations given by steps.
