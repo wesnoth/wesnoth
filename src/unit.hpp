@@ -29,7 +29,6 @@ class game_display;
 class game_state;
 class vconfig;
 class team;
-class unit_type;
 
 #include <string>
 #include <vector>
