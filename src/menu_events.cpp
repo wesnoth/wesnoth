@@ -3329,7 +3329,7 @@ void console_handler::do_discover() {
 	}
 }
 void console_handler::do_undiscover() {
-	const int res = gui::dialog(*menu_handler_.gui_, "Undiscover", _("Clear all your discovered units from help?"),gui::YES_NO).show();
+	const int res = gui::dialog(*menu_handler_.gui_, "Undiscover", _("Do you wish to clear all of your discovered units from help?"),gui::YES_NO).show();
 	if(res == 0) {
 		preferences::encountered_units().clear();
 	}
