@@ -26,4 +26,6 @@ namespace resources
 	play_controller *controller;
 	::tod_manager *tod_manager;
 	wb::manager *whiteboard;
+	std::vector<undo_action> *undo_stack;
+	std::vector<undo_action> *redo_stack;
 }
