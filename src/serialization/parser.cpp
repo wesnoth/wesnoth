@@ -68,20 +68,14 @@ private:
 	tokenizer *tok_;
 
 	struct element {
-		element(config *cfg, std::string
-			const &name, const size_t& start_line = 0, const std::string& file="") :
-				cfg(cfg),
-				name(name),
-				last_element_map(),
-				start_line(start_line),
-			    file(file)
-			{}
+		element(config *cfg, std::string const &name,
+			int start_line = 0, const std::string &file = "") :
+			cfg(cfg), name(name), start_line(start_line), file(file)
+		{}
 
 		config* cfg;
 		std::string name;
-
-		std::map<std::string, config*> last_element_map;
-		size_t start_line;
+		int start_line;
 		std::string file;
 	};
 
@@ -165,7 +159,6 @@ void parser::parse_element()
 	tok_->next_token();
 	std::string elname;
 	config* current_element = NULL;
-	std::map<std::string, config*>::const_iterator last_element_itor;
 
 	switch(tok_->current_token().type) {
 	case token::STRING: // [element]
@@ -175,7 +168,6 @@ void parser::parse_element()
 
 		// Add the element
 		current_element = &(elements.top().cfg->add_child(elname));
-		elements.top().last_element_map[elname] = current_element;
 		elements.push(element(current_element, elname, tok_->get_start_line(), tok_->get_file()));
 		break;
 
@@ -188,13 +180,11 @@ void parser::parse_element()
 
 		// Find the last child of the current element whose name is
 		// element
-		last_element_itor = elements.top().last_element_map.find(elname);
-		if(last_element_itor == elements.top().last_element_map.end()) {
-			current_element = &elements.top().cfg->add_child(elname);
+		if (config &c = elements.top().cfg->child(elname, -1)) {
+			current_element = &c;
 		} else {
-			current_element = last_element_itor->second;
+			current_element = &elements.top().cfg->add_child(elname);
 		}
-		elements.top().last_element_map[elname] = current_element;
 		elements.push(element(current_element, elname, tok_->get_start_line(), tok_->get_file()));
 		break;
 
