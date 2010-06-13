@@ -32,8 +32,8 @@
 static lg::log_domain log_network("network");
 #define ERR_NW LOG_STREAM(err, log_network)
 
-turn_info::turn_info(unsigned team_num, replay_network_sender &replay_sender, undo_list &undo_stack) :
-	team_num_(team_num), undo_stack_(undo_stack),
+turn_info::turn_info(unsigned team_num, replay_network_sender &replay_sender) :
+	team_num_(team_num),
 	replay_sender_(replay_sender),
 	host_transfer_("host_transfer"), replay_()
 {
@@ -45,7 +45,7 @@ turn_info::turn_info(unsigned team_num, replay_network_sender &replay_sender, un
 }
 
 turn_info::~turn_info(){
-	undo_stack_.clear();
+	resources::undo_stack->clear();
 }
 
 void turn_info::sync_network()
@@ -68,7 +68,7 @@ void turn_info::sync_network()
 
 void turn_info::send_data()
 {
-	if(undo_stack_.empty()) {
+	if(resources::undo_stack->empty()) {
 		replay_sender_.commit_and_sync();
 	} else {
 		replay_sender_.sync_non_undoable();

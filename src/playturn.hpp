@@ -20,7 +20,6 @@ class replay_network_sender;
 
 #include "global.hpp"
 
-#include "actions.hpp"
 #include "generic_event.hpp"
 #include "network.hpp"
 #include "replay.hpp"
@@ -31,7 +30,7 @@ class replay_network_sender;
 class turn_info
 {
 public:
-	turn_info(unsigned team_num, replay_network_sender &network_sender, undo_list &undo_stack);
+	turn_info(unsigned team_num, replay_network_sender &network_sender);
 
 	~turn_info();
 
@@ -62,8 +61,6 @@ private:
 	static void change_side_controller(const std::string& side, const std::string& player, bool own_side=false);
 
 	unsigned int team_num_;
-
-	undo_list& undo_stack_;
 
 	replay_network_sender& replay_sender_;
 
