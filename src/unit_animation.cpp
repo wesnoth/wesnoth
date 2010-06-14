@@ -52,6 +52,7 @@ struct tag_name_manager {
 		names.push_back("draw_weapon_anim");
 		names.push_back("sheath_weapon_anim");
 		names.push_back("victory_anim");
+		names.push_back("_transparent"); // Used for WB
 	}
 	std::vector<std::string> names;
 };
@@ -346,6 +347,10 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 		animations.push_back(*itor);
 		animations.back().event_ = utils::split("standing");
 		animations.back().play_offscreen_ = false;
+
+		animations.push_back(*itor);
+		animations.back().unit_anim_.override(0,300,"","0.5");
+		animations.back().event_ = utils::split("ghosted");
 
 		animations.push_back(*itor);
 		animations.back().unit_anim_.override(0,300,"","0.0~0.3:100,0.3~0.0:200",display::rgb(255,255,255));

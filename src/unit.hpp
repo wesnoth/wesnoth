@@ -198,6 +198,8 @@ public:
 
 	void set_standing(bool with_bars = true);
 
+	void set_ghosted(bool with_bars = true);
+
 	void set_idling();
 	void set_selecting();
 	unit_animation* get_animation() {  return anim_;};
