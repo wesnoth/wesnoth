@@ -78,7 +78,7 @@ public:
 	void draw_hex(const map_location & hex);
 
 	/// Checks that the path is not of length 0 or 1
-	bool valid_path() const;
+	bool valid_path(arrow_path_t path) const;
 
 	void add_observer(arrow_observer & observer);
 

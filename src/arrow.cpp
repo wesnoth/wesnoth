@@ -45,10 +45,10 @@ arrow::arrow(display* screen)
 
 bool arrow::set_path(const arrow_path_t &path)
 {
-	previous_path_ = path_;
-	path_ = path;
-	if (valid_path())
+	if (valid_path(path))
 	{
+		previous_path_ = path_;
+		path_ = path;
 		update_symbols(previous_path_);
 		return true;
 	}
@@ -61,7 +61,7 @@ bool arrow::set_path(const arrow_path_t &path)
 void arrow::set_color(const std::string& color)
 {
 	color_ = color;
-	if (valid_path())
+	if (valid_path(path_))
 	{
 		update_symbols(path_);
 	}
@@ -70,7 +70,7 @@ void arrow::set_color(const std::string& color)
 void arrow::set_style(const std::string& style)
 {
 	style_ = style;
-	if (valid_path())
+	if (valid_path(path_))
 	{
 		update_symbols(path_);
 	}
@@ -79,7 +79,7 @@ void arrow::set_style(const std::string& style)
 void arrow::set_layer(const display::tdrawing_layer & layer)
 {
 	layer_ = layer;
-	if (valid_path())
+	if (valid_path(path_))
 	{
 		invalidate_arrow_path(path_);
 		notify_arrow_changed();
@@ -89,7 +89,7 @@ void arrow::set_layer(const display::tdrawing_layer & layer)
 void arrow::set_alpha(float alpha)
 {
 	alpha_ = ftofxp(alpha);
-	if (valid_path())
+	if (valid_path(path_))
 	{
 		update_symbols(path_);
 	}
@@ -111,9 +111,9 @@ void arrow::draw_hex(const map_location & loc)
 				loc, image::get_image(symbols_map_[loc], image::SCALED_TO_ZOOM), false, false, alpha_);
 }
 
-bool arrow::valid_path() const
+bool arrow::valid_path(arrow_path_t path) const
 {
-	if (path_.size() >= 2)
+	if (path.size() >= 2)
 		return true;
 	else
 		return false;
@@ -131,7 +131,7 @@ void arrow::remove_observer(arrow_observer & observer)
 
 void arrow::update_symbols(arrow_path_t old_path)
 {
-	if (!valid_path())
+	if (!valid_path(path_))
 	{
 		WRN_ARR << "arrow::update_symbols called with invalid path\n";
 		return;
