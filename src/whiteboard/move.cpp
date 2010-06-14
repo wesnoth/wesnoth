@@ -23,19 +23,33 @@
 #include "arrow.hpp"
 #include "unit.hpp"
 #include "config.hpp"
+#include "resources.hpp"
+#include "game_display.hpp"
 
 namespace wb {
 
-move::move(unit& subject, const map_location& target_hex, arrow& arrow)
+move::move(unit& subject, const map_location& target_hex, arrow& arrow, unit& fake_unit)
 : unit_(subject),
   orig_hex_(subject.get_location()),
   dest_hex_(target_hex),
-  arrow_(arrow)
+  arrow_(&arrow),
+  fake_unit_(&fake_unit)
 {
 }
 
 move::~move()
 {
+	if (resources::screen != NULL)
+	{
+		if (fake_unit_.get() != NULL)
+		{
+			resources::screen->remove_temporary_unit(fake_unit_.get());
+		}
+		if (arrow_.get() != NULL)
+		{
+			resources::screen->remove_arrow(*arrow_);
+		}
+	}
 }
 
 void move::accept(visitor& v)

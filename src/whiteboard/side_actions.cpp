@@ -36,16 +36,16 @@ const action_set& side_actions::actions() const
 	return actions_;
 }
 
-void side_actions::insert_move(unit& subject, const map_location& target_hex, arrow& arrow, size_t index)
+void side_actions::insert_move(unit& subject, const map_location& target_hex, arrow& arrow, size_t index, unit& fake_unit)
 {
-	action_ptr action(new move(subject, target_hex, arrow));
+	action_ptr action(new move(subject, target_hex, arrow, fake_unit));
 	assert(index < end());
 	actions_.insert(actions_.begin() + index, action);
 }
 
-void side_actions::queue_move(unit& subject, const map_location& target_hex, arrow& arrow)
+void side_actions::queue_move(unit& subject, const map_location& target_hex, arrow& arrow, unit& fake_unit)
 {
-	action_ptr action(new move(subject, target_hex, arrow));
+	action_ptr action(new move(subject, target_hex, arrow, fake_unit));
 	actions_.push_back(action);
 }
 
