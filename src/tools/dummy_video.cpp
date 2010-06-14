@@ -15,6 +15,7 @@
 /** @file tools/dummy_video.cpp */
 
 #include "../video.hpp"
+#include "../sdl_utils.hpp"
 
 surface CVideo::getSurface()
 {
