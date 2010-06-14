@@ -18,8 +18,8 @@
 #define MARKED_UP_TEXT_HPP_INCLUDED
 
 
-#include "sdl_utils.hpp"
 class CVideo;
+struct surface;
 #include <SDL_video.h>
 #include <string>
 
