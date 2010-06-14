@@ -18,7 +18,7 @@
 #define CURSOR_HPP_INCLUDED
 
 #include "SDL.h"
-#include "sdl_utils.hpp"
+struct surface;
 
 namespace cursor
 {

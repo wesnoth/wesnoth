@@ -22,6 +22,7 @@
 #include "cursor.hpp"
 #include "image.hpp"
 #include "preferences_display.hpp"
+#include "sdl_utils.hpp"
 #include "video.hpp"
 
 #include <iostream>
