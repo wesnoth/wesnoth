@@ -794,9 +794,6 @@ public: //operations for the arrow framework
 	/** Called by arrow objects when they change. You should not need to call this directly. */
 	virtual void arrow_changed(arrow & a);
 
-	/** Called by arrow objects when they get deleted. You should not need to call this directly. */
-	virtual void arrow_deleted(arrow & a);
-
 private:
 	/** Handle for the label which displays frames per second. */
 	int fps_handle_;
@@ -818,9 +815,6 @@ private:
 
 	/** Maps the list of arrows for each location */
 	arrows_map_t arrows_map_;
-
-	/** List of arrows to help unregister the display (on destruction) as an arrow observer */
-	arrows_list_t arrows_list_;
 };
 
 #endif

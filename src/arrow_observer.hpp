@@ -30,8 +30,6 @@ class arrow_observer {
 
     virtual void arrow_changed(arrow & a) = 0;
 
-    virtual void arrow_deleted(arrow & a) = 0;
-
 };
 
 #endif /* ARROW_OBSERVER_HPP_ */

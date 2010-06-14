@@ -42,10 +42,8 @@ public:
 
 	arrow(display* screen);
 
-	 /** Notifies it's arrow_observer list of the arrow's destruction */
-	virtual ~arrow() {
-		notify_arrow_deleted();
-	}
+
+	virtual ~arrow();
 
 	/// returns false if the received path is invalid
 	virtual bool set_path(const arrow_path_t &path);
@@ -98,8 +96,6 @@ private:
 	//operations
 
 	void notify_arrow_changed();
-
-	void notify_arrow_deleted();
 
 protected:
 	//properties

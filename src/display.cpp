@@ -122,8 +122,7 @@ display::display(CVideo& video, const gamemap* map, const config& theme_cfg, con
 	redraw_observers_(),
 	draw_coordinates_(false),
 	draw_terrain_codes_(false),
-	arrows_map_(),
-	arrows_list_()
+	arrows_map_()
 {
 	if(non_interactive()
 		&& (get_video_surface() != NULL
@@ -140,10 +139,6 @@ display::display(CVideo& video, const gamemap* map, const config& theme_cfg, con
 
 display::~display()
 {
-	foreach(arrow* a, arrows_list_)
-	{
-		a->remove_observer(*this);
-	}
 }
 
 std::string display::fog_image(const map_location &loc)
@@ -2344,7 +2339,6 @@ void display::add_arrow(arrow& arrow)
 	{
 		arrows_map_[loc].push_back(&arrow);
 	}
-	arrows_list_.push_back(&arrow);
 	arrow.add_observer(*this);
 }
 
@@ -2355,7 +2349,6 @@ void display::remove_arrow(arrow& arrow)
 	{
 		arrows_map_[loc].remove(&arrow);
 	}
-	arrows_list_.remove(&arrow);
 	arrow.remove_observer(*this);
 }
 
@@ -2371,10 +2364,4 @@ void display::arrow_changed(arrow & changed)
 	{
 		arrows_map_[loc].push_back(&changed);
 	}
-}
-
-void display::arrow_deleted(arrow & deleted)
-{
-	remove_arrow(deleted);
-	deleted.remove_observer(*this);
 }

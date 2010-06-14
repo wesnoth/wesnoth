@@ -43,6 +43,10 @@ arrow::arrow(display* screen)
 {
 }
 
+arrow::~arrow()
+{
+}
+
 bool arrow::set_path(const arrow_path_t &path)
 {
 	if (valid_path(path))
@@ -257,13 +261,5 @@ void arrow::notify_arrow_changed()
 	foreach(arrow_observer* observer, observers_)
 	{
 		observer->arrow_changed(*this);
-	}
-}
-
-void arrow::notify_arrow_deleted()
-{
-	foreach(arrow_observer* observer, observers_)
-	{
-		observer->arrow_deleted(*this);
 	}
 }
