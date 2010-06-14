@@ -84,8 +84,11 @@ void manager::create_temp_move(const std::vector<map_location> &steps)
 
 void manager::erase_temp_move()
 {
-	resources::screen->remove_arrow(*move_arrow_);
-	move_arrow_.reset();
+	if (move_arrow_.get() != NULL)
+	{
+		resources::screen->remove_arrow(*move_arrow_);
+		move_arrow_.reset();
+	}
 }
 
 void manager::save_temp_move(unit& subject)

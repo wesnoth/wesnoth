@@ -556,6 +556,9 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse) {
 		gui().unhighlight_reach();
 		current_paths_ = pathfind::paths();
 		current_route_.steps.clear();
+		if (resources::whiteboard->active()) {
+			resources::whiteboard->erase_temp_move();
+		}
 	}
 }
 
