@@ -779,11 +779,15 @@ void mouse_handler::attack_enemy_(const map_location attacker_loc, const map_loc
 	resources::redo_stack->clear();
 
 	unit_map::iterator attacker = find_unit(attacker_loc);
-	if(attacker == units_.end() || attacker->side() == side_num_ || attacker->incapacitated())
+	if(attacker == units_.end()
+			|| attacker->side() != side_num_
+			|| attacker->incapacitated())
 		return;
 	
 	unit_map::iterator defender = find_unit(defender_loc);
-	if(defender == units_.end() || current_team().is_enemy(defender->side()) || defender->incapacitated())
+	if(defender == units_.end()
+			|| current_team().is_enemy(defender->side()) == false
+			|| defender->incapacitated())
 		return;
 
 	std::vector<battle_context> bc_vector;
