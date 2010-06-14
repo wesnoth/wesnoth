@@ -62,7 +62,7 @@ void manager::remove_temp_modifiers()
 	DBG_WB << "Removed temporary modifiers.\n";
 }
 
-void manager::set_route(const std::vector<map_location> &steps)
+void manager::create_temp_move(const std::vector<map_location> &steps)
 {
 	route_ = steps;
 	if (route_.size() > 1)
@@ -82,7 +82,13 @@ void manager::set_route(const std::vector<map_location> &steps)
 	}
 }
 
-void manager::create_move_from_route(unit& subject)
+void manager::erase_temp_move()
+{
+	resources::screen->remove_arrow(*move_arrow_);
+	move_arrow_.reset();
+}
+
+void manager::save_temp_move(unit& subject)
 {
 	int current_side = resources::controller->current_side();
 	team& current_team = (*resources::teams)[current_side - 1];

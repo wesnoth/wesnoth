@@ -228,7 +228,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 				if(!browse) {
 					gui().set_route(&current_route_);
 					if (resources::whiteboard->active()) {
-						resources::whiteboard->set_route(current_route_.steps);
+						resources::whiteboard->create_temp_move(current_route_.steps);
 					}
 				}
 			}
@@ -585,7 +585,7 @@ bool mouse_handler::move_unit_along_current_route(bool check_shroud, bool attack
 	size_t moves = 0;
 	try {
 		if (resources::whiteboard->active()) {
-			resources::whiteboard->create_move_from_route(*units_.find(steps.front()));
+			resources::whiteboard->save_temp_move(*units_.find(steps.front()));
 		} else {
 			moves = ::move_unit(NULL, steps, &recorder, resources::undo_stack, true, &next_unit_, false, check_shroud);
 		}

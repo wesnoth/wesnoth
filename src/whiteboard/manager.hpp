@@ -57,14 +57,16 @@ public:
 	void remove_temp_modifiers();
 
 	/** Set the route for move creation purposes */
-	void set_route(const std::vector<map_location> &steps);
+	void create_temp_move(const std::vector<map_location> &steps);
+
+	void erase_temp_move();
 
 	/**
 	 * Creates a move action for the current side,
 	 * and erases the stored route. The move is inserted
 	 * at the end of the queue, to be executed last.
      */
-	void create_move_from_route(unit& subject);
+	void save_temp_move(unit& subject);
 
 private:
 	/**
