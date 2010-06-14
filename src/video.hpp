@@ -16,9 +16,10 @@
 
 #include "events.hpp"
 #include "SDL.h"
-#include "sdl_utils.hpp"
 
 #include <boost/utility.hpp>
+
+struct surface;
 
 //possible flags when setting video modes
 #define FULL_SCREEN SDL_FULLSCREEN

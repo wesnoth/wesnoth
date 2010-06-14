@@ -19,6 +19,7 @@
 
 #include "global.hpp"
 
+#include "sdl_utils.hpp"
 #include "video.hpp"
 
 #include <algorithm>

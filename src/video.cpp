@@ -24,6 +24,7 @@
 #include "image.hpp"
 #include "log.hpp"
 #include "preferences_display.hpp"
+#include "sdl_utils.hpp"
 #include "video.hpp"
 
 #include <vector>
