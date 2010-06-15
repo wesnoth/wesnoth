@@ -24,6 +24,7 @@
 #include "../../foreach.hpp"
 #include "../../log.hpp"
 #include "../../map.hpp"
+#include "../../resources.hpp"
 #include "../../team.hpp"
 #include "../composite/goal.hpp"
 #include "../../pathfind/pathfind.hpp"
@@ -72,7 +73,7 @@ default_ai_context_impl::~default_ai_context_impl()
 int default_ai_context_impl::count_free_hexes_in_castle(const map_location &loc, std::set<map_location> &checked_hexes)
 {
 	int ret = 0;
-	unit_map &units_ = get_info().units;
+	unit_map &units_ = *resources::units;
 	map_location adj[6];
 	get_adjacent_tiles(loc,adj);
 	for(size_t n = 0; n != 6; ++n) {
@@ -104,7 +105,7 @@ bool default_ai_context_impl::multistep_move_possible(const map_location& from,
 	const map_location& to, const map_location& via,
 	const moves_map& possible_moves) const
 {
-	unit_map &units_ = get_info().units;
+	unit_map &units_ = *resources::units;
 	const unit_map::const_iterator i = units_.find(from);
 	if(i != units_.end()) {
 		if(from != via && to != via && units_.count(via) == 0) {
@@ -179,7 +180,7 @@ std::vector<target> default_ai_context_impl::find_targets(const move_map& enemy_
 {
 
 	log_scope2(log_ai, "finding targets...");
-	unit_map &units_ = get_info().units;
+	unit_map &units_ = *resources::units;
 	unit_map::iterator leader = units_.find_leader(get_side());
 	gamemap &map_ = get_info().map;
 	std::vector<team> teams_ = get_info().teams;

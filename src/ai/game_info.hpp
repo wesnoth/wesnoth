@@ -120,11 +120,10 @@ typedef std::map<std::string, known_aspect_ptr > known_aspect_map;
 class game_info {
 public:
 
-		game_info(game_display& disp, gamemap& map, unit_map& units,
+		game_info(game_display& disp, gamemap& map,
 			std::vector<team>& teams, tod_manager& tod_mng, class game_state& game_state)
 			: disp(disp)
 			, map(map)
-			, units(units)
 			, teams(teams)
 			, tod_manager_(tod_mng)
 			, game_state_(game_state)
@@ -136,9 +135,6 @@ public:
 
 		/** The map of the game -- use this object to find the terrain at any location. */
 		gamemap& map;
-
-		/** The map of units. It maps locations -> units. */
-		unit_map& units;
 
 		/** A list of the teams in the game. */
 		std::vector<team>& teams;

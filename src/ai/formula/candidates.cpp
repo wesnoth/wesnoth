@@ -20,6 +20,7 @@
 #include "candidates.hpp"
 #include "foreach.hpp"
 #include "../../log.hpp"
+#include "../../resources.hpp"
 
 static lg::log_domain log_formula_ai("ai/engine/fai");
 #define ERR_AI LOG_STREAM(err, log_formula_ai)
@@ -216,7 +217,7 @@ void attack_candidate_action::evaluate(ai::formula_ai* ai, unit_map& units)
 			}
 		} else
 		{
-			if (ai->current_team().is_enemy(i->side()) && !i->incapacitated() && !i->invisible(i->get_location(), ai->get_info().units, ai->get_info().teams)) {
+			if (ai->current_team().is_enemy(i->side()) && !i->incapacitated() && !i->invisible(i->get_location(), *resources::units, ai->get_info().teams)) {
 				enemy_res.push_back(variant(new unit_callable(*i)));
 			}
 		}

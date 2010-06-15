@@ -21,6 +21,7 @@
 #include "../../log.hpp"
 #include "../../gamestatus.hpp"
 #include "../../foreach.hpp"
+#include "../../resources.hpp"
 #include "../../terrain_filter.hpp"
 #include "../../unit.hpp"
 #include "../../unit_map.hpp"
@@ -118,7 +119,7 @@ void target_unit_goal::add_targets(std::back_insert_iterator< std::vector< targe
 	if (!criteria) return;
 
 	//find the enemy leaders and explicit targets
-	foreach (const unit &u, get_info().units) {
+	foreach (const unit &u, *resources::units) {
 		if (u.matches_filter(vconfig(criteria), u.get_location())) {
 			LOG_AI_GOAL << "found explicit target... " << u.get_location() << " with value: " << value() << "\n";
 			*target_list = target(u.get_location(), value(), target::EXPLICIT);
@@ -161,7 +162,7 @@ void protect_goal::on_create()
 	}
 	const config &criteria = cfg_.child("criteria");
 	if (criteria) {
-		filter_ptr_ = boost::shared_ptr<terrain_filter>(new terrain_filter(vconfig(criteria),get_info().units));
+		filter_ptr_ = boost::shared_ptr<terrain_filter>(new terrain_filter(vconfig(criteria),*resources::units));
 	}
 
 
@@ -195,7 +196,7 @@ void protect_goal::add_targets(std::back_insert_iterator< std::vector< target > 
 	}
 
 
-	unit_map &units = get_info().units;
+	unit_map &units = *resources::units;
 	std::vector<team> &teams = get_info().teams;
 
 

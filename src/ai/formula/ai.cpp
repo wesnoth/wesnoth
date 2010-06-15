@@ -35,6 +35,7 @@
 #include "../../formula_debugger.hpp"
 #include "../../log.hpp"
 #include "../../menu_events.hpp"
+#include "../../resources.hpp"
 #include "../../terrain_filter.hpp"
 #include "../../tod_manager.hpp"
 #include "../../pathfind/pathfind.hpp"
@@ -186,7 +187,7 @@ pathfind::plain_route formula_ai::shortest_path_calculator(const map_location &s
 {
     map_location destination = dst;
 
-    unit_map &units_ = get_info().units;
+    unit_map &units_ = *resources::units;
     pathfind::shortest_path_calculator calc(*unit_it, current_team(), units_, get_info().teams, get_info().map);
 
     unit_map::const_iterator dst_un = units_.find(destination);
@@ -236,7 +237,7 @@ pathfind::plain_route formula_ai::shortest_path_calculator(const map_location &s
 
 std::set<map_location> formula_ai::get_allowed_teleports(unit_map::iterator& unit_it) const
 {
-  return pathfind::get_teleport_locations(*unit_it, get_info().units, current_team(), true);
+  return pathfind::get_teleport_locations(*unit_it, *resources::units, current_team(), true);
 }
 
 map_location formula_ai::path_calculator(const map_location& src, const map_location& dst, unit_map::iterator& unit_it) const{
@@ -295,6 +296,8 @@ variant formula_ai::execute_variant(const variant& var, ai_context &ai_, bool co
 
 	variant error;
 
+	unit_map& units = *resources::units;
+	
 	while( !vars.empty() ) {
 
 		if(vars.top().is_null()) {
@@ -396,7 +399,7 @@ variant formula_ai::execute_variant(const variant& var, ai_context &ai_, bool co
 			assert(_attack_analysis->movements.empty() == false);
 
 			//make sure that unit which has to attack is at given position and is able to attack
-			unit_map::const_iterator unit = get_info().units.find(_attack_analysis->movements.front().first);
+			unit_map::const_iterator unit = units.find(_attack_analysis->movements.front().first);
 			if (!unit.valid() || unit->attacks_left() == 0)
 				continue;
 
@@ -405,22 +408,22 @@ variant formula_ai::execute_variant(const variant& var, ai_context &ai_, bool co
 			const map_location& att_dst = _attack_analysis->target;
 
 			//check if target is still valid
-			unit = get_info().units.find(att_dst);
-			if ( unit == get_info().units.end() )
+			unit = units.find(att_dst);
+			if ( unit == units.end() )
 				continue;
 
                         //check if we need to move
                         if( move_from != att_src ) {
                             //now check if location to which we want to move is still unoccupied
-				unit = get_info().units.find(att_src);
-				if ( unit != get_info().units.end() ) {
+				unit = units.find(att_src);
+				if ( unit != units.end() ) {
 					continue;
 				}
 
 				ai_.execute_move_action(move_from, att_src);
                         }
 
-			if(get_info().units.count(att_src)) {
+			if(units.count(att_src)) {
 				ai_.execute_attack_action(_attack_analysis->movements.front().second,_attack_analysis->target,-1);
 			}
 			made_moves.push_back(action);
@@ -493,7 +496,7 @@ variant formula_ai::execute_variant(const variant& var, ai_context &ai_, bool co
 
 			if( !infinite_loop_guardian_.set_unit_var_check() ) {
 			    status = 5001; //exceeded nmber of calls in a row - possible infinite loop
-			} else if( (unit = get_info().units.find(set_unit_var_command->loc())) == get_info().units.end() ) {
+			} else if( (unit = units.find(set_unit_var_command->loc())) == units.end() ) {
 			    status = 5002; //unit not found
 			} else if (unit->side() != get_side()) {
 			    status = 5003;//unit does not belong to our side
@@ -608,6 +611,8 @@ variant villages_from_set(const Container& villages,
 
 variant formula_ai::get_value(const std::string& key) const
 {
+	const unit_map& units = *resources::units;
+
 	if(key == "aggression")
 	{
 		return variant(get_aggression()*1000,variant::DECIMAL_VARIANT);
@@ -782,7 +787,7 @@ variant formula_ai::get_value(const std::string& key) const
 	} else if(key == "units")
 	{
 		std::vector<variant> vars;
-		for(unit_map::const_iterator i = get_info().units.begin(); i != get_info().units.end(); ++i) {
+		for(unit_map::const_iterator i = units.begin(); i != units.end(); ++i) {
 			vars.push_back(variant(new unit_callable(*i)));
 		}
 		return variant(&vars);
@@ -796,7 +801,7 @@ variant formula_ai::get_value(const std::string& key) const
 			std::vector<variant> v;
 			tmp.push_back( v );
 		}
-		foreach (const unit &u, get_info().units) {
+		foreach (const unit &u, units) {
 			tmp[u.side() - 1].push_back(variant(new unit_callable(u)));
 		}
 		for( size_t i = 0; i<tmp.size(); ++i)
@@ -806,7 +811,7 @@ variant formula_ai::get_value(const std::string& key) const
 	} else if(key == "my_units")
 	{
 		std::vector<variant> vars;
-		for(unit_map::const_iterator i = get_info().units.begin(); i != get_info().units.end(); ++i) {
+		for(unit_map::const_iterator i = units.begin(); i != units.end(); ++i) {
 			if (i->side() == get_side()) {
 				vars.push_back(variant(new unit_callable(*i)));
 			}
@@ -816,7 +821,7 @@ variant formula_ai::get_value(const std::string& key) const
 	} else if(key == "enemy_units")
 	{
 		std::vector<variant> vars;
-		for(unit_map::const_iterator i = get_info().units.begin(); i != get_info().units.end(); ++i) {
+		for(unit_map::const_iterator i = units.begin(); i != units.end(); ++i) {
 			if (current_team().is_enemy(i->side())) {
 				if (!i->incapacitated()) {
 					vars.push_back(variant(new unit_callable(*i)));
@@ -827,19 +832,19 @@ variant formula_ai::get_value(const std::string& key) const
 
 	} else if(key == "my_moves")
 	{
-		return variant(new move_map_callable(get_srcdst(), get_dstsrc(), get_info().units));
+		return variant(new move_map_callable(get_srcdst(), get_dstsrc(), units));
 
 	} else if(key == "my_attacks")
 	{
-		return variant(new attack_map_callable(*this, get_srcdst(), get_info().units));
+		return variant(new attack_map_callable(*this, get_srcdst(), units));
 	} else if(key == "enemy_moves")
 	{
-		return variant(new move_map_callable(get_enemy_srcdst(), get_enemy_dstsrc(), get_info().units));
+		return variant(new move_map_callable(get_enemy_srcdst(), get_enemy_dstsrc(), units));
 
 	} else if(key == "my_leader")
 	{
-		unit_map::const_iterator i = get_info().units.find_leader(get_side());
-		if(i == get_info().units.end()) {
+		unit_map::const_iterator i = units.find_leader(get_side());
+		if(i == units.end()) {
 			return variant();
 		}
 		return variant(new unit_callable(*i));
@@ -1004,7 +1009,7 @@ void formula_ai::on_create(){
 
 void formula_ai::evaluate_candidate_action(game_logic::candidate_action_ptr fai_ca)
 {
-	fai_ca->evaluate(this,get_info().units);
+	fai_ca->evaluate(this,*resources::units);
 
 }
 

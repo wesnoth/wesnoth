@@ -29,6 +29,7 @@
 #include "../../map_label.hpp"
 #include "../../menu_events.hpp"
 #include "../../replay.hpp"
+#include "../../resources.hpp"
 #include "../../terrain_filter.hpp"
 #include "../../unit.hpp"
 #include "../../pathfind/pathfind.hpp"
@@ -288,10 +289,10 @@ private:
 		for( size_t i = 0; i< number_of_teams; ++i)
 			scores[i].resize(w*h);
 
-//		for(unit_map::const_iterator i = ai_.get_info().units.begin(); i != ai_.get_info().units.end(); ++i) {
+//		for(unit_map::const_iterator i = resources::units->begin(); i != resources::units->end(); ++i) {
 //			unit_counter[i->second.side()-1]++;
 //			unit_adapter unit(i->second);
-//			find_movemap( ai_.get_info().map, ai_.get_info().units, unit, i->first, scores[i->second.side()-1], ai_.get_info().teams , true );
+//			find_movemap( ai_.get_info().map, *resources::units, unit, i->first, scores[i->second.side()-1], ai_.get_info().teams , true );
 //		}
 
 		for(size_t side = 0 ; side < units_input.num_elements() ; ++side) {
@@ -604,7 +605,7 @@ private:
 			loc = &u_call->get_location();
 		}
 
-		return variant(combat_modifier(ai_.get_info().units, *loc, un.alignment(), un.is_fearless()));
+		return variant(combat_modifier(*resources::units, *loc, un.alignment(), un.is_fearless()));
 	}
 
 	const formula_ai& ai_;
@@ -658,10 +659,11 @@ public:
 private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		const map_location loc = convert_variant<location_callable>(args()[0]->evaluate(variables,add_debug_info(fdb,0,"suitable_keep:location")))->loc();
-		if (ai_.get_info().units.find(loc)==ai_.get_info().units.end()){
+		const unit_map& units = *resources::units;
+		if (units.find(loc) == units.end()){
 			return variant();
 		}
-		const pathfind::paths unit_paths(ai_.get_info().map, ai_.get_info().units, loc ,ai_.get_info().teams, false, false, ai_.current_team());
+		const pathfind::paths unit_paths(ai_.get_info().map, units, loc ,ai_.get_info().teams, false, false, ai_.current_team());
 		return variant(new location_callable(ai_.suitable_keep(loc,unit_paths)));
 	}
 
@@ -718,8 +720,8 @@ private:
 			range_s = 0;
 		}
 		size_t range = static_cast<size_t>(range_s);
-		unit_map::const_iterator un = ai_.get_info().units.begin();
-		unit_map::const_iterator end = ai_.get_info().units.end();
+		unit_map::const_iterator un = resources::units->begin();
+		unit_map::const_iterator end = resources::units->end();
 		while (un != end) {
 			if (distance_between(loc, un->get_location()) <= range) {
 				if (un->side() != ai_.get_side()) {//fixme: ignores allied units
@@ -748,9 +750,10 @@ private:
 		if (args().size() > 3) weapon = args()[3]->evaluate(variables,add_debug_info(fdb,3,"calculate_outcome:weapon")).as_int();
 		else weapon = -1;
 
+		const unit_map& units = *resources::units;
 		map_location attacker_location =
 			convert_variant<location_callable>(args()[0]->evaluate(variables,add_debug_info(fdb,0,"calculate_outcome:attacker_current_location")))->loc();
-		if(ai_.get_info().units.count(attacker_location) == 0) {
+		if(units.count(attacker_location) == 0) {
 			ERR_AI << "Performing calculate_outcome() with non-existent attacker at (" <<
 				attacker_location.x+1 << "," << attacker_location.y+1 << ")\n";
 			return variant();
@@ -758,14 +761,14 @@ private:
 
 		map_location defender_location =
 			convert_variant<location_callable>(args()[2]->evaluate(variables,add_debug_info(fdb,2,"calculate_outcome:defender_location")))->loc();
-		if(ai_.get_info().units.count(defender_location) == 0) {
+		if(units.count(defender_location) == 0) {
 			ERR_AI << "Performing calculate_outcome() with non-existent defender at (" <<
 				defender_location.x+1 << "," << defender_location.y+1 << ")\n";
 			return variant();
 		}
 
-		battle_context bc(ai_.get_info().units, convert_variant<location_callable>(args()[1]->evaluate(variables,add_debug_info(fdb,1,"calculate_outcome:attacker_attack_location")))->loc(),
-			defender_location, weapon, -1, 1.0, NULL, &*ai_.get_info().units.find(attacker_location));
+		battle_context bc(units, convert_variant<location_callable>(args()[1]->evaluate(variables,add_debug_info(fdb,1,"calculate_outcome:attacker_attack_location")))->loc(),
+			defender_location, weapon, -1, 1.0, NULL, &*units.find(attacker_location));
 		std::vector<double> hp_dist = bc.get_attacker_combatant().hp_dist;
 		std::vector<double>::iterator it = hp_dist.begin();
 		int i = 0;
@@ -829,7 +832,7 @@ private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		variant attack = args()[0]->evaluate(variables,add_debug_info(fdb,0,"outcomes:attack"));
 		ai::attack_analysis* analysis = convert_variant<ai::attack_analysis>(attack);
-		unit_map units_with_moves(ai_.get_info().units);
+		unit_map units_with_moves(*resources::units);
 		typedef std::pair<map_location, map_location> mv;
 		foreach (const mv &m, analysis->movements) {
 			units_with_moves.move(m.first, m.second);
@@ -967,9 +970,9 @@ private:
                 else
                     unit_loc = src;
 
-                unit_map::iterator unit_it = ai_.get_info().units.find(unit_loc);
+                unit_map::iterator unit_it = resources::units->find(unit_loc);
 
-		if( unit_it == ai_.get_info().units.end() ) {
+		if( unit_it == resources::units->end() ) {
 			std::ostringstream str;
 			str << "shortest_path function: expected unit at location (" << (unit_loc.x+1) << "," << (unit_loc.y+1) << ")";
 			throw formula_error( str.str(), "", "", 0);
@@ -1017,9 +1020,9 @@ private:
                 else
                     unit_loc = src;
 
-                unit_map::iterator unit_it = ai_.get_info().units.find(unit_loc);
+                unit_map::iterator unit_it = resources::units->find(unit_loc);
 
-		if( unit_it == ai_.get_info().units.end() ) {
+		if( unit_it == resources::units->end() ) {
 			std::ostringstream str;
 			str << "simplest_path function: expected unit at location (" << (unit_loc.x+1) << "," << (unit_loc.y+1) << ")";
 			throw formula_error( str.str(), "", "", 0);
@@ -1071,9 +1074,9 @@ private:
                 else
                     unit_loc = src;
 
-                unit_map::iterator unit_it = ai_.get_info().units.find(unit_loc);
+                unit_map::iterator unit_it = resources::units->find(unit_loc);
 
-		if( unit_it == ai_.get_info().units.end() ) {
+		if( unit_it == resources::units->end() ) {
 			std::ostringstream str;
 			str << "next_hop function: expected unit at location (" << (unit_loc.x+1) << "," << (unit_loc.y+1) << ")";
 			throw formula_error( str.str(), "", "", 0);
@@ -1193,7 +1196,7 @@ private:
 		const map_location src = convert_variant<location_callable>(args()[1]->evaluate(variables,add_debug_info(fdb,1,"attack:src")))->loc();
 		const map_location dst = convert_variant<location_callable>(args()[2]->evaluate(variables,add_debug_info(fdb,2,"attack:dst")))->loc();
 		const int weapon = args().size() == 4 ? args()[3]->evaluate(variables,add_debug_info(fdb,3,"attack:weapon")).as_int() : -1;
-		if(ai_.get_info().units.count(move_from) == 0 || ai_.get_info().units.count(dst) == 0) {
+		if(resources::units->count(move_from) == 0 || resources::units->count(dst) == 0) {
 			ERR_AI << "AI ERROR: Formula produced illegal attack: " << move_from << " -> " << src << " -> " << dst << "\n";
 			return variant();
 		}
@@ -1324,8 +1327,8 @@ private:
 			return variant();
 		}
 		const location_callable* loc = convert_variant<location_callable>(loc_var);
-		const unit_map::const_iterator i = ai_.get_info().units.find(loc->loc());
-		if(i != ai_.get_info().units.end()) {
+		const unit_map::const_iterator i = resources::units->find(loc->loc());
+		if(i != resources::units->end()) {
 			return variant(new unit_callable(*i));
 		} else {
 			return variant();
@@ -1378,8 +1381,8 @@ private:
 		std::pair<ai::move_map::const_iterator,ai::move_map::const_iterator> range =
 			dstsrc.equal_range(convert_variant<location_callable>(args()[1]->evaluate(variables,add_debug_info(fdb,1,"units_can_reach:possible_move_list")))->loc());
 		while(range.first != range.second) {
-			unit_map::const_iterator un = ai_.get_info().units.find(range.first->second);
-			assert(un != ai_.get_info().units.end());
+			unit_map::const_iterator un = resources::units->find(range.first->second);
+			assert(un != resources::units->end());
 			vars.push_back(variant(new unit_callable(*un)));
 			++range.first;
 		}

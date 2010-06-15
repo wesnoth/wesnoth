@@ -24,6 +24,7 @@
 #include "../../formula.hpp"
 #include "../../formula_function.hpp"
 #include "../../log.hpp"
+#include "../../resources.hpp"
 #include <boost/lexical_cast.hpp>
 
 static lg::log_domain log_formula_ai("ai/stage/unit_formulas");
@@ -49,7 +50,7 @@ bool stage_unit_formulas::do_play_stage()
 	//execute units formulas first
 	game_logic::unit_formula_set units_with_formulas;
 
-	unit_map &units_ = get_info().units;
+	unit_map &units_ = *resources::units;
 
 	for(unit_map::unit_iterator i = units_.begin() ; i != units_.end() ; ++i)
 	{

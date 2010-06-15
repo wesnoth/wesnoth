@@ -31,6 +31,7 @@
 #include "../../terrain_filter.hpp"
 #include "../../util.hpp"
 #include "../../serialization/string_utils.hpp"
+#include "../../resources.hpp"
 
 #include <vector>
 
@@ -184,10 +185,10 @@ public:
 	static terrain_filter cfg_to_value(const config &cfg)
 	{
 		if (const config &v = cfg.child("value")) {
-			return terrain_filter(vconfig(v), manager::get_ai_info().units);
+			return terrain_filter(vconfig(v), *resources::units);
 		}
 		static config c("not");
-		return terrain_filter(vconfig(c),manager::get_ai_info().units);
+		return terrain_filter(vconfig(c),*resources::units);
 	}
 
 	static void cfg_to_value(const config &cfg, terrain_filter &value)
@@ -418,7 +419,7 @@ public:
 	static terrain_filter variant_to_value(const variant &var)
 	{
 		static config c("not");
-		terrain_filter value(vconfig(c),manager::get_ai_info().units);
+		terrain_filter value(vconfig(c),*resources::units);
 		variant_to_value(var,value);
 		return value;
 	}

@@ -26,6 +26,7 @@
 #include "../../map.hpp"
 #include "../../team.hpp"
 #include "../../tod_manager.hpp"
+#include "../../resources.hpp"
 #include "../../unit.hpp"
 #include "../../pathfind/pathfind.hpp"
 
@@ -69,7 +70,7 @@ boost::shared_ptr<attacks_vector> aspect_attacks::analyze_targets() const
 		const move_map& enemy_dstsrc = get_enemy_dstsrc();
 
 		boost::shared_ptr<attacks_vector> res(new attacks_vector());
-		unit_map& units_ = get_info().units;
+		unit_map& units_ = *resources::units;
 
 		std::vector<map_location> unit_locs;
 		for(unit_map::const_iterator i = units_.begin(); i != units_.end(); ++i) {
@@ -133,7 +134,7 @@ void aspect_attacks::do_attack_analysis(
 		return;
 	}
 	gamemap &map_ = get_info().map;
-	unit_map &units_ = get_info().units;
+	unit_map &units_ = *resources::units;
 	std::vector<team> &teams_ = get_info().teams;
 
 	static double best_results[6];
@@ -425,7 +426,7 @@ double aspect_attacks::power_projection(const map_location& loc, const move_map&
 
 	const int lawful_bonus = get_info().tod_manager_.get_time_of_day().lawful_bonus;
 	gamemap& map_ = get_info().map;
-	unit_map& units_ = get_info().units;
+	unit_map& units_ = *resources::units;
 
 	int res = 0;
 

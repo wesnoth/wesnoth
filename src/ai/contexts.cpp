@@ -40,6 +40,7 @@
 #include "../game_preferences.hpp"
 #include "../log.hpp"
 #include "../mouse_handler_base.hpp"
+#include "../resources.hpp"
 #include "../replay.hpp"
 #include "../statistics.hpp"
 #include "../tod_manager.hpp"
@@ -308,7 +309,7 @@ void readonly_context_impl::calculate_possible_moves(std::map<map_location,pathf
 		move_map& dstsrc, bool enemy, bool assume_full_movement,
 		const terrain_filter* remove_destinations) const
 {
-  calculate_moves(get_info().units,res,srcdst,dstsrc,enemy,assume_full_movement,remove_destinations);
+  calculate_moves(*resources::units,res,srcdst,dstsrc,enemy,assume_full_movement,remove_destinations);
 }
 
 void readonly_context_impl::calculate_moves(const unit_map& units, std::map<map_location,pathfind::paths>& res, move_map& srcdst,
@@ -425,8 +426,8 @@ void readonly_context_impl::add_facet(const std::string &id, const config &cfg) 
 const defensive_position& readonly_context_impl::best_defensive_position(const map_location& loc,
 		const move_map& dstsrc, const move_map& srcdst, const move_map& enemy_dstsrc) const
 {
-	const unit_map::const_iterator itor = get_info().units.find(loc);
-	if(itor == get_info().units.end()) {
+	const unit_map::const_iterator itor = resources::units->find(loc);
+	if(itor == resources::units->end()) {
 		static defensive_position pos;
 		pos.chance_to_hit = 0;
 		pos.vulnerability = pos.support = 0;
@@ -531,7 +532,7 @@ const terrain_filter& readonly_context_impl::get_avoid() const
 	}
 	config cfg;
 	cfg.add_child("not");
-	static terrain_filter tf(vconfig(cfg),get_info().units);
+	static terrain_filter tf(vconfig(cfg),*resources::units);
 	return tf;
 }
 
@@ -904,8 +905,8 @@ const std::set<map_location>& keeps_cache::get()
 
 bool readonly_context_impl::leader_can_reach_keep() const
 {
-	const unit_map::iterator leader = get_info().units.find_leader(get_side());
-	if(leader == get_info().units.end() || leader->incapacitated()) {
+	const unit_map::iterator leader = resources::units->find_leader(get_side());
+	if(leader == resources::units->end() || leader->incapacitated()) {
 		return false;
 	}
 
@@ -919,7 +920,7 @@ bool readonly_context_impl::leader_can_reach_keep() const
 	}
 
 	// Find where the leader can move
-	const pathfind::paths leader_paths(get_info().map, get_info().units,
+	const pathfind::paths leader_paths(get_info().map, *resources::units,
 		leader->get_location(), get_info().teams, false, false, current_team());
 
 
@@ -960,7 +961,7 @@ double readonly_context_impl::power_projection(const map_location& loc, const mo
 
 	const int lawful_bonus = get_info().tod_manager_.get_time_of_day().lawful_bonus;
 	gamemap& map_ = get_info().map;
-	unit_map& units_ = get_info().units;
+	unit_map& units_ = *resources::units;
 
 	int res = 0;
 
@@ -1059,7 +1060,7 @@ void readonly_context_impl::recalculate_move_maps() const
 	srcdst_ = move_map();
 	calculate_possible_moves(possible_moves_,srcdst_,dstsrc_,false,false,&get_avoid());
 	if (get_passive_leader()||get_passive_leader_shares_keep()) {
-		unit_map::iterator i = get_info().units.find_leader(get_side());
+		unit_map::iterator i = resources::units->find_leader(get_side());
 		if (i.valid()) {
 			map_location loc = i->get_location();
 			srcdst_.erase(loc);
@@ -1104,7 +1105,7 @@ const map_location& readonly_context_impl::suitable_keep(const map_location& lea
 		if (keeps().find(loc)!=keeps().end()){
 
 			const int move_left_at_loc = dest.move_left;
-			if (get_info().units.count(loc) == 0) {
+			if (resources::units->count(loc) == 0) {
 				if ((*best_free_keep==map_location::null_location)||(move_left_at_loc>move_left_at_best_free_keep)){
 					best_free_keep = &loc;
 					move_left_at_best_free_keep = move_left_at_loc;

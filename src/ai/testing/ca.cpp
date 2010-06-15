@@ -27,6 +27,7 @@
 #include "../../foreach.hpp"
 #include "../../log.hpp"
 #include "../../map.hpp"
+#include "../../resources.hpp"
 #include "../../team.hpp"
 #include "../../wml_exception.hpp"
 #include "../../pathfind/pathfind.hpp"
@@ -61,7 +62,7 @@ double goto_phase::evaluate()
 {
 	// Execute goto-movements - first collect gotos in a list
 	std::vector<map_location> gotos;
-	unit_map &units_ = get_info().units;
+	unit_map &units_ = *resources::units;
 	gamemap &map_ = get_info().map;
 
 	for(unit_map::iterator ui = units_.begin(); ui != units_.end(); ++ui) {
@@ -124,15 +125,15 @@ aspect_recruitment_phase::~aspect_recruitment_phase()
 
 double aspect_recruitment_phase::evaluate()
 {
-	const unit_map::const_iterator leader = get_info().units.find_leader(get_side());
-	if(leader == get_info().units.end()) {
+	const unit_map::const_iterator leader = resources::units->find_leader(get_side());
+	if(leader == resources::units->end()) {
 		return BAD_SCORE;
 	}
 	if (!get_info().map.is_keep(leader->get_location())) {
 		return BAD_SCORE;
 	}
 
-	map_location recruit_loc = find_vacant_tile(get_info().map, get_info().units, leader->get_location(), pathfind::VACANT_CASTLE);
+	map_location recruit_loc = find_vacant_tile(get_info().map, *resources::units, leader->get_location(), pathfind::VACANT_CASTLE);
 	if (!get_info().map.on_board(recruit_loc)) {
 		return BAD_SCORE;
 	}
@@ -171,8 +172,8 @@ recruitment_phase::~recruitment_phase()
 
 double recruitment_phase::evaluate()
 {
-	const unit_map::const_iterator leader = get_info().units.find_leader(get_side());
-	if(leader == get_info().units.end()) {
+	const unit_map::const_iterator leader = resources::units->find_leader(get_side());
+	if(leader == resources::units->end()) {
 		return BAD_SCORE;
 	}
 	if (!get_info().map.is_keep(leader->get_location())) {
@@ -197,7 +198,7 @@ void recruitment_phase::execute()
 	unit_combat_scores_.clear();
 	unit_movement_scores_.clear();
 
-	unit_map &units_ = get_info().units;
+	unit_map &units_ = *resources::units;
 	gamemap &map_ = get_info().map;
 	std::vector<team> &teams_ = get_info().teams;
 
@@ -448,7 +449,7 @@ int recruitment_phase::compare_unit_types(const unit_type& a, const unit_type& b
 
 void recruitment_phase::analyze_potential_recruit_combat()
 {
-	unit_map &units_ = get_info().units;
+	unit_map &units_ = *resources::units;
 	if(unit_combat_scores_.empty() == false || get_recruitment_ignore_bad_combat()) {
 		return;
 	}
@@ -637,7 +638,7 @@ double move_leader_to_goals_phase::evaluate()
 		return BAD_SCORE;
 	}
 
-	const unit_map::iterator leader = get_info().units.find_leader(get_side());
+	const unit_map::iterator leader = resources::units->find_leader(get_side());
 	if (!leader.valid() || leader->incapacitated()) {
 		WRN_AI_TESTING_AI_DEFAULT << "Leader not found\n";
 		return BAD_SCORE;
@@ -658,7 +659,7 @@ double move_leader_to_goals_phase::evaluate()
 		}
 	}
 
-	pathfind::shortest_path_calculator calc(*leader, current_team(), get_info().units, get_info().teams, get_info().map);
+	pathfind::shortest_path_calculator calc(*leader, current_team(), *resources::units, get_info().teams, get_info().map);
 	pathfind::plain_route route = a_star_search(leader->get_location(), dst_, 1000.0, &calc,
 			get_info().map.w(), get_info().map.h());
 	if(route.steps.empty()) {
@@ -666,7 +667,7 @@ double move_leader_to_goals_phase::evaluate()
 		return BAD_SCORE;
 	}
 
-	const pathfind::paths leader_paths(get_info().map, get_info().units, leader->get_location(),
+	const pathfind::paths leader_paths(get_info().map, *resources::units, leader->get_location(),
 				 get_info().teams, false, false, current_team());
 
 	std::map<map_location,pathfind::paths> possible_moves;
@@ -730,7 +731,7 @@ move_leader_to_keep_phase::~move_leader_to_keep_phase()
 
 double move_leader_to_keep_phase::evaluate()
 {
-	unit_map &units_ = get_info().units;
+	unit_map &units_ = *resources::units;
 	const unit_map::iterator leader = units_.find_leader(get_side());
 
 	if (leader == units_.end() || leader->incapacitated() || leader->movement_left() == 0) {
@@ -814,7 +815,7 @@ get_villages_phase::~get_villages_phase()
 double get_villages_phase::evaluate()
 {
 	moves_.clear();
-	unit_map::const_iterator leader = get_info().units.find_leader(get_side());
+	unit_map::const_iterator leader = resources::units->find_leader(get_side());
 	get_villages(get_possible_moves(),get_dstsrc(),get_enemy_dstsrc(),leader);
 	if (moves_.size()>0) {
 		return get_score();
@@ -825,7 +826,7 @@ double get_villages_phase::evaluate()
 
 void get_villages_phase::execute()
 {
-	unit_map &units_ = get_info().units;
+	unit_map &units_ = *resources::units;
 	unit_map::const_iterator leader = units_.find_leader(get_side());
 	// Move all the units to get villages, however move the leader last,
 	// so that the castle will be cleared if it wants to stop to recruit along the way.
@@ -878,7 +879,7 @@ void get_villages_phase::get_villages(const moves_map& possible_moves,
 		unit_map::const_iterator &leader)
 {
 	DBG_AI_TESTING_AI_DEFAULT << "deciding which villages we want...\n";
-	unit_map &units_ = get_info().units;
+	unit_map &units_ = *resources::units;
 	const int ticks = SDL_GetTicks();
 	best_leader_loc_ = map_location::null_location;
 	if(leader != units_.end()) {
@@ -1019,8 +1020,8 @@ void get_villages_phase::find_villages(
 			vulnerability.insert(std::pair<map_location,double>(current_loc,threat));
 		}
 
-		const unit_map::const_iterator u = get_info().units.find(j->second);
-		if (u == get_info().units.end() || u->get_state("guardian")) {
+		const unit_map::const_iterator u = resources::units->find(j->second);
+		if (u == resources::units->end() || u->get_state("guardian")) {
 			continue;
 		}
 
@@ -1624,7 +1625,7 @@ get_healing_phase::~get_healing_phase()
 double get_healing_phase::evaluate()
 {
 	// Find units in need of healing.
-	unit_map &units_ = get_info().units;
+	unit_map &units_ = *resources::units;
 	unit_map::iterator u_it = units_.begin();
 	for(; u_it != units_.end(); ++u_it) {
 		unit &u = *u_it;
@@ -1698,7 +1699,7 @@ double retreat_phase::evaluate()
 
 
 	// Get versions of the move map that assume that all units are at full movement
-	unit_map units_ = get_info().units;
+	unit_map units_ = *resources::units;
 
 	unit_map::const_iterator leader = units_.find_leader(get_side());
 	std::map<map_location,pathfind::paths> dummy_possible_moves;
@@ -1841,7 +1842,7 @@ simple_move_and_targeting_phase::~simple_move_and_targeting_phase()
 
 double simple_move_and_targeting_phase::evaluate()
 {
-	unit_map &units_ = get_info().units;
+	unit_map &units_ = *resources::units;
 
 	unit_map::const_iterator leader = units_.find_leader(get_side());
 	map_location my_leader_loc = map_location::null_location;

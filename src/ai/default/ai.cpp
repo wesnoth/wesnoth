@@ -32,6 +32,7 @@
 #include "../../log.hpp"
 #include "../../mouse_handler_base.hpp"
 #include "../../replay.hpp"
+#include "../../resources.hpp"
 #include "../../statistics.hpp"
 #include "../../terrain_filter.hpp"
 #include "../../unit_display.hpp"
@@ -216,7 +217,7 @@ bool ai_default_recruitment_stage::recruit_usage(const std::string& usage)
 
 			if (imc != maximum_counts_.end()) {
 				int count_active = 0;
-				for (unit_map::iterator u = get_info().units.begin(); u != get_info().units.end(); ++u) {
+				for (unit_map::const_iterator u = resources::units->begin(); u != resources::units->end(); ++u) {
 					if (u->side() == get_side() && !u->incapacitated() && u->type_id() == name) {
 						++count_active;
 					}
@@ -423,7 +424,7 @@ void ai_default_recruitment_stage::get_combat_score_vs(const unit_type& ut, cons
 int ai_default_recruitment_stage::get_combat_score(const unit_type& ut) const
 {
 	int score = 0, weighting = 0;
-	const unit_map & units_ = get_info().units;
+	const unit_map & units_ = *resources::units;
 	for(unit_map::const_iterator j = units_.begin(); j != units_.end(); ++j) {
 		if (!current_team().is_enemy(j->side())) {
 			continue;
@@ -532,7 +533,7 @@ ai_default_recruitment_stage::~ai_default_recruitment_stage()
 
 void ai_default_recruitment_stage::analyze_potential_recruit_movements()
 {
-	unit_map &units_ = get_info().units;
+	unit_map &units_ = *resources::units;
 	gamemap &map_ = get_info().map;
 
 	if(unit_movement_scores_.empty() == false ||
@@ -791,7 +792,8 @@ bool ai_default_recruitment_stage::analyze_recall_list()
 
 bool ai_default_recruitment_stage::do_play_stage()
 {
-	const unit_map &units_ = get_info().units;
+	const unit_map &units_ = *resources::units;
+
 	const unit_map::const_iterator leader = units_.find_leader(get_side());
 	if(leader == units_.end()) {
 		return false;

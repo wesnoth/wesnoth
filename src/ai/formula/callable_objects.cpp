@@ -14,6 +14,7 @@
 #include "ai.hpp"
 #include "../../attack_prediction.hpp"
 #include "callable_objects.hpp"
+#include "../../resources.hpp"
 
 
 namespace game_logic {
@@ -109,11 +110,11 @@ void outcome_callable::get_inputs(std::vector<game_logic::formula_input>* inputs
 }
 
 
-attack_callable::attack_callable(const ai::formula_ai& ai, const map_location& move_from,
+attack_callable::attack_callable(const ai::formula_ai& /*ai*/, const map_location& move_from,
 				    const map_location& src, const map_location& dst, int weapon)
 	: move_from_(move_from), src_(src), dst_(dst),
-	bc_(ai.get_info().units, src, dst, weapon, -1, 1.0, NULL,
-		&*ai.get_info().units.find(move_from))
+	bc_(*resources::units, src, dst, weapon, -1, 1.0, NULL,
+		&*resources::units->find(move_from))
 {
       type_ = ATTACK_C;
 }
@@ -176,7 +177,7 @@ variant attack_map_callable::get_value(const std::string& key) const {
 			}
 		}
 		/* special case, when unit moved toward enemy and can only attack */
-		for(unit_map::const_iterator i = ai_.get_info().units.begin(); i != ai_.get_info().units.end(); ++i) {
+		for(unit_map::const_iterator i = resources::units->begin(); i != resources::units->end(); ++i) {
 			if (i->side() == ai_.get_side() && i->attacks_left() > 0) {
 				collect_possible_attacks(vars, i->get_location(), i->get_location());
 			}

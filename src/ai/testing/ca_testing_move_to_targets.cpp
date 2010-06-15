@@ -24,6 +24,7 @@
 #include "../../foreach.hpp"
 #include "../../log.hpp"
 #include "../../map.hpp"
+#include "../../resources.hpp"
 #include "../../team.hpp"
 #include "../../terrain_filter.hpp"
 #include "../../pathfind/pathfind.hpp"
@@ -132,7 +133,7 @@ double testing_move_to_targets_phase::evaluate()
 
 void testing_move_to_targets_phase::execute()
 {
-	unit_map::const_iterator leader = get_info().units.find_leader(get_side());
+	unit_map::const_iterator leader = resources::units->find_leader(get_side());
 	gamemap &map_ = get_info().map;
 	LOG_AI << "finding targets...\n";
 	std::vector<target> targets;
@@ -271,7 +272,7 @@ std::pair<map_location,map_location> testing_move_to_targets_phase::choose_move(
 	log_scope2(log_ai_testing_ca_testing_move_to_targets, "choosing move");
 
 	raise_user_interact();
-	unit_map &units_ = get_info().units;
+	unit_map &units_ = *resources::units;
 	gamemap &map_ = get_info().map;
 
 	unit_map::iterator u;
@@ -621,7 +622,7 @@ std::pair<map_location,map_location> testing_move_to_targets_phase::choose_move(
 
 void testing_move_to_targets_phase::access_points(const move_map& srcdst, const map_location& u, const map_location& dst, std::vector<map_location>& out)
 {
-	unit_map &units_ = get_info().units;
+	unit_map &units_ = *resources::units;
 	gamemap &map_ = get_info().map;
 	const unit_map::const_iterator u_it = units_.find(u);
 	if(u_it == units_.end()) {
@@ -669,7 +670,7 @@ void testing_move_to_targets_phase::enemies_along_path(const std::vector<map_loc
 
 map_location testing_move_to_targets_phase::form_group(const std::vector<map_location>& route, const move_map& dstsrc, std::set<map_location>& res)
 {
-	unit_map &units_ = get_info().units;
+	unit_map &units_ = *resources::units;
 	if(route.empty()) {
 		return map_location();
 	}
@@ -712,7 +713,7 @@ map_location testing_move_to_targets_phase::form_group(const std::vector<map_loc
 
 bool testing_move_to_targets_phase::move_group(const map_location& dst, const std::vector<map_location>& route, const std::set<map_location>& units)
 {
-	unit_map &units_ = get_info().units;
+	unit_map &units_ = *resources::units;
 	gamemap &map_ = get_info().map;
 
 	const std::vector<map_location>::const_iterator itor = std::find(route.begin(),route.end(),dst);
@@ -814,7 +815,7 @@ bool testing_move_to_targets_phase::move_group(const map_location& dst, const st
 
 double testing_move_to_targets_phase::rate_group(const std::set<map_location>& group, const std::vector<map_location>& battlefield) const
 {
-	unit_map &units_ = get_info().units;
+	unit_map &units_ = *resources::units;
 	gamemap &map_ = get_info().map;
 
 	double strength = 0.0;
