@@ -193,7 +193,7 @@ public:
 		const terrain_filter* remove_destinations=NULL,
 		bool see_all=false) const = 0;
 
-	const virtual game_info& get_info() const = 0;
+	virtual const game_info& get_info() const = 0;
 
 
 	//@note: following part is in alphabetic order
@@ -555,7 +555,7 @@ public:
 		target_->calculate_moves(units, possible_moves, srcdst, dstsrc, enemy, assume_full_movement, remove_destinations, see_all);
 	}
 
-	const virtual game_info& get_info() const
+	virtual const game_info& get_info() const
 	{
 		return target_->get_info();
 	}
@@ -1174,7 +1174,7 @@ public:
 		bool see_all=false) const;
 
 
-	const virtual game_info& get_info() const;
+	virtual const game_info& get_info() const;
 
 	/**
 	 * Function which should be called frequently to allow the user to interact
