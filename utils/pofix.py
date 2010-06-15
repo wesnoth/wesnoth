@@ -71,6 +71,7 @@ stringfixes = {
 ("- The Scroll of Chantal,", "― The Scroll of Chantal,"),
 ("- Great Sage Dacyn,", "― Great Sage Dacyn,"),
 ("- Queen Li'sar,", "― Queen Li'sar,"),
+("- Meneldur,", "― Meneldur,"),
 ("upload statistics - Help", "upload statistics — Help"),
 ("(A) - auth command", "(A) — auth command"),
 ("(D) - debug only, (N) - network only, (A) - auth only", "(D) — debug only, (N) — network only, (A) — auth only"),
@@ -93,6 +94,7 @@ stringfixes = {
 ("— Great Sage Dacyn,", "― Great Sage Dacyn,"),
 ("— Queen Li'sar,", "― Queen Li'sar,"),
 ("— King Konrad,", "― King Konrad,"),
+("— Meneldur,", "― Meneldur,"),
 ),
 
 "wesnoth-anl" : (
