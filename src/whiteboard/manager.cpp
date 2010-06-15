@@ -79,7 +79,7 @@ void manager::remove_temp_modifiers()
 	DBG_WB << "Removed temporary modifiers.\n";
 }
 
-void manager::select_unit(const unit& unit)
+void manager::select_unit(unit& unit)
 {
 	selected_unit_ = &unit;
 }
@@ -107,7 +107,7 @@ void manager::create_temp_move(const std::vector<map_location> &steps)
 			screen->add_arrow(*move_arrow_);
 
 			// Create temp ghost unit
-			fake_unit_.reset(new unit(*resources::units->find(route_.front())));
+			fake_unit_.reset(new unit(*selected_unit_));
 			fake_unit_->set_location(route_.back());
 			fake_unit_->set_ghosted(show_ghosted_unit_bars);
 			screen->place_temporary_unit(fake_unit_.get());
@@ -130,15 +130,15 @@ void manager::erase_temp_move()
 	}
 }
 
-void manager::save_temp_move(unit& subject)
+void manager::save_temp_move()
 {
-	LOG_WB << "Creating move for unit " << subject.name() << " [" << subject.id() << "]"
-			<< " from " << subject.get_location()
+	LOG_WB << "Creating move for unit " << selected_unit_->name() << " [" << selected_unit_->id() << "]"
+			<< " from " << selected_unit_->get_location()
 			<< " to " << route_.back() << "\n";
 
 	move_arrow_->set_alpha(0.6);
 
-	get_current_side_actions().queue_move(subject, route_.back(),
+	get_current_side_actions().queue_move(*selected_unit_, route_.back(),
 			*(move_arrow_.release()) /* ownership of the arrow transferred to the new move action */,
 			*(fake_unit_.release())  /* ownership of the fake unit transferred to the new move action */);
 

@@ -56,7 +56,7 @@ public:
 	void apply_temp_modifiers();
 	void remove_temp_modifiers();
 
-	void select_unit(const unit& unit);
+	void select_unit(unit& unit);
 	void deselect_unit();
 
 	/** Set the route for move creation purposes */
@@ -69,7 +69,7 @@ public:
 	 * and erases the stored route. The move is inserted
 	 * at the end of the queue, to be executed last.
      */
-	void save_temp_move(unit& subject);
+	void save_temp_move();
 
 private:
 	/**
@@ -84,7 +84,7 @@ private:
 	std::auto_ptr<arrow> move_arrow_;
 	std::auto_ptr<unit> fake_unit_;
 
-	unit const* selected_unit_;
+	unit* selected_unit_;
 };
 
 } // end namespace wb
