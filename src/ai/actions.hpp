@@ -88,17 +88,7 @@ protected:
 	/* return real information about the game state */
 	game_info& get_info() const;
 
-	/* return subjective information about the game state */
-	game_info& get_subjective_info() const;
-
-	/* are we using the subjective info ? */
-	bool using_subjective_info() const;
-
-	/* get the team object corresponding to current side */
-	team& get_my_team(game_info& info) const;
-
-	/* get the team object corresponding to current side */
-	const team& get_my_team(const game_info& info) const;
+	team& get_my_team() const;
 
 	/* set error code */
 	void set_error(int error_code, bool log_as_error = true);
@@ -159,7 +149,6 @@ protected:
 	virtual void do_execute();
 	virtual void do_init_for_execution();
 private:
-	const unit* get_unit(game_info &info, const map_location &loc) const;
 	const map_location& attacker_loc_;
 	const map_location& defender_loc_;
 	int attacker_weapon_;
@@ -189,8 +178,8 @@ protected:
 	virtual void do_execute();
 	virtual void do_init_for_execution();
 private:
-	const unit *get_unit(const unit_map &units, const std::vector<team> &teams, bool update_knowledge = false);
-	bool test_route(const unit &un, const team &my_team, const unit_map &units, const std::vector<team> &teams, const gamemap &map, bool update_knowledge = false);
+	const unit *get_unit();
+	bool test_route(const unit &un);
 	const map_location from_;
 	move_unit_spectator move_spectator_;
 	const map_location to_;
@@ -215,22 +204,15 @@ protected:
 	virtual void do_execute();
 	virtual void do_init_for_execution();
 private:
-	bool test_available_for_recalling(const team &my_team, bool update_knowledge = false);
+	bool test_available_for_recalling(
+		const team& my_team);
 	bool test_enough_gold(
-		const team& my_team,
-		bool update_knowledge = false );
-	const unit *get_leader(
-		const unit_map& units,
-		bool update_knowledge = false );
+		const team& my_team);
+	const unit *get_leader();
 	bool test_leader_on_keep(
-		const gamemap& map,
-		const unit &my_leader,
-		bool update_knowledge = false);
-	bool test_suitable_recall_location (
-		const gamemap& map,
-		const unit_map& units,
-		const unit &my_leader,
-		bool update_knowledge = false);
+		const unit &my_leader);
+	bool test_suitable_recall_location(
+		const unit &my_leader);
 
 	const std::string& unit_id_;
 	const map_location where_;
@@ -255,27 +237,17 @@ protected:
 	virtual void do_init_for_execution();
 private:
 	const std::string &get_available_for_recruiting(
-		const team& my_team,
-		bool update_knowledge = false );
+		const team& my_team);
 	const unit_type *get_unit_type_known(
-		const std::string &recruit,
-		bool update_knowledge = false );
+		const std::string &recruit);
 	bool test_enough_gold(
 		const team& my_team,
-		const unit_type &type,
-		bool update_knowledge = false );
-	const unit *get_leader(
-		const unit_map& units,
-		bool update_knowledge = false );
+		const unit_type &type );
+	const unit *get_leader();
 	bool test_leader_on_keep(
-		const gamemap& map,
-		const unit &my_leader,
-		bool update_knowledge = false);
+		const unit &my_leader);
 	bool test_suitable_recruit_location (
-		const gamemap& map,
-		const unit_map& units,
-		const unit &my_leader,
-		bool update_knowledge = false);
+		const unit &my_leader);
 	const std::string& unit_name_;
 	const map_location& where_;
 	map_location recruit_location_;
@@ -299,7 +271,7 @@ protected:
 	virtual void do_execute();
 	virtual void do_init_for_execution();
 private:
-	const unit *get_unit(const unit_map &units, bool update_knowledge = false);
+	const unit *get_unit();
 	const map_location& unit_location_;
 	const bool remove_movement_;
 	const bool remove_attacks_;
