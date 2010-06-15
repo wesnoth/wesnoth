@@ -2715,28 +2715,28 @@ unit_movement_resetter::~unit_movement_resetter()
 	u_.movement_ = moves_;
 }
 
-int side_units(const unit_map& units, int side)
+int side_units(int side)
 {
 	int res = 0;
-	foreach (const unit &u, units) {
+	foreach (const unit &u, *resources::units) {
 		if (u.side() == side) ++res;
 	}
 	return res;
 }
 
-int side_units_cost(const unit_map& units, int side)
+int side_units_cost(int side)
 {
 	int res = 0;
-	foreach (const unit &u, units) {
+	foreach (const unit &u, *resources::units) {
 		if (u.side() == side) res += u.cost();
 	}
 	return res;
 }
 
-int side_upkeep(const unit_map& units, int side)
+int side_upkeep(int side)
 {
 	int res = 0;
-	foreach (const unit &u, units) {
+	foreach (const unit &u, *resources::units) {
 		if (u.side() == side) res += u.upkeep();
 	}
 	return res;
@@ -2791,11 +2791,11 @@ void unit::refresh()
 	}
 }
 
-team_data calculate_team_data(const team& tm, int side, const unit_map& units)
+team_data calculate_team_data(const team& tm, int side, const unit_map& /*units*/)
 {
 	team_data res;
-	res.units = side_units(units, side);
-	res.upkeep = side_upkeep(units, side);
+	res.units = side_units(side);
+	res.upkeep = side_upkeep(side);
 	res.villages = tm.villages().size();
 	res.expenses = std::max<int>(0,res.upkeep - res.villages);
 	res.net_income = tm.total_income() - res.expenses;

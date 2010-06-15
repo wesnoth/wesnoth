@@ -551,7 +551,7 @@ void play_controller::do_init_side(const unsigned int team_index){
 
 		// If the expense is less than the number of villages owned,
 		// then we don't have to pay anything at all
-		int expense = side_upkeep(units_, player_number_) -
+		int expense = side_upkeep(player_number_) -
 								current_team.villages().size();
 		if(expense > 0) {
 			current_team.spend_gold(expense);

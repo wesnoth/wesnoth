@@ -552,7 +552,7 @@ report generate_report(TYPE type,
 	case NUM_UNITS: {
 		if (current_side != playing_side)
 			str << span_color(font::GRAY_COLOR);
-		str << side_units(units, current_side);
+		str << side_units(current_side);
 		if (current_side != playing_side)
 			str << naps;
 		break;

@@ -469,12 +469,12 @@ private:
 void sort_units(std::vector< unit > &);
 
 /** Returns the number of units of the side @a side_num. */
-int side_units(const unit_map& units, int side_num);
+int side_units(int side_num);
 
 /** Returns the total cost of units of side @a side_num. */
-int side_units_cost(const unit_map& units, int side_num);
+int side_units_cost(int side_num);
 
-int side_upkeep(const unit_map& units, int side_num);
+int side_upkeep(int side_num);
 
 unit_map::iterator find_visible_unit(unit_map &units, const map_location &loc,
 	const team &current_team, bool see_all = false);

@@ -545,7 +545,7 @@ void playsingle_controller::play_turn(bool save)
 			LOG_NG << "result of replay: " << (replaying_?"true":"false") << "\n";
 		} else {
 			// If a side is dead end the turn.
-			if (current_team().is_human() && side_units(units_, player_number_) == 0)
+			if (current_team().is_human() && side_units(player_number_) == 0)
 			{
 				turn_info turn_data(player_number_, replay_sender_);
 				recorder.end_turn();

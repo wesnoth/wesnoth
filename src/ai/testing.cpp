@@ -47,8 +47,8 @@ void ai_testing::log_turn(const char* msg, unsigned int side)
 	team& current_team = i.teams[side-1];
 
 	int _turn_number = i.tod_manager_.turn();
-	int _units = side_units(*resources::units,side);
-	int _units_cost = side_units_cost(*resources::units,side);
+	int _units = side_units(side);
+	int _units_cost = side_units_cost(side);
 	int _gold = current_team.gold();
 	int _villages = current_team.villages().size();
 	int _income = current_team.total_income();
@@ -110,6 +110,6 @@ void ai_testing::log_game_end()
 	for (std::vector<team>::const_iterator tm = i.teams.begin(); tm != i.teams.end(); ++tm) {
 		int side = tm-i.teams.begin()+1;
 		recorder.add_log_data("ai_log","end_gold"+str_cast(side),str_cast(tm->gold()));
-		recorder.add_log_data("ai_log","end_units"+str_cast(side),str_cast(side_units(*resources::units,side)));
+		recorder.add_log_data("ai_log","end_units"+str_cast(side),str_cast(side_units(side)));
 	}
 }
