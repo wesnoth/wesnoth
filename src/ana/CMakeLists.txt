@@ -12,3 +12,10 @@ if ( apps )
     message ( STATUS "Compiling sample applications as well." )
     add_subdirectory( apps )
 endif ( apps )
+
+option( tests "Compile test applications as well" OFF )
+
+if ( tests )
+    message ( STATUS "Compiling test applications as well." )
+    add_subdirectory( test )
+endif ( tests )

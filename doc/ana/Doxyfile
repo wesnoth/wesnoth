@@ -6,7 +6,7 @@ PROJECT_NUMBER         =
 
 OUTPUT_DIRECTORY       = doc/code
 
-CREATE_SUBDIRS         = NO
+CREATE_SUBDIRS         = YES
 
 OUTPUT_LANGUAGE        = English
 
@@ -22,7 +22,7 @@ INLINE_INHERITED_MEMB  = NO
 
 FULL_PATH_NAMES        = YES
 
-STRIP_FROM_PATH        = 
+STRIP_FROM_PATH        = src/ana
 
 STRIP_FROM_INC_PATH    = 
 
@@ -175,7 +175,7 @@ WARN_FORMAT            = "$file:$line: $text"
 
 WARN_LOGFILE           = 
 
-INPUT                  = 
+INPUT                  = ../../src/ana
 
 
 INPUT_ENCODING         = UTF-8
