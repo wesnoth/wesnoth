@@ -34,7 +34,8 @@ manager::manager():
 		mapbuilder_(NULL),
 		route_(),
 		move_arrow_(NULL),
-		fake_unit_(NULL)
+		fake_unit_(NULL),
+		selected_unit_(NULL)
 {
 }
 
@@ -53,13 +54,18 @@ manager::~manager()
 	}
 }
 
-void manager::apply_temp_modifiers()
+side_actions& get_current_side_actions()
 {
-	mapbuilder_.reset(new mapbuilder_visitor(*resources::units));
 	int current_side = resources::controller->current_side();
 	team& current_team = (*resources::teams)[current_side - 1];
 	side_actions& side_actions = current_team.get_side_actions();
-	const action_set& actions = side_actions.actions();
+	return side_actions;
+}
+
+void manager::apply_temp_modifiers()
+{
+	mapbuilder_.reset(new mapbuilder_visitor(*resources::units));
+	const action_set& actions = get_current_side_actions().actions();
 	foreach (const action_ptr &action, actions)
 	{
 		assert(action);
@@ -71,6 +77,16 @@ void manager::remove_temp_modifiers()
 	DBG_WB << "Removing temporary modifiers.\n";
 	mapbuilder_.reset();
 	DBG_WB << "Removed temporary modifiers.\n";
+}
+
+void manager::select_unit(const unit& unit)
+{
+	selected_unit_ = &unit;
+}
+
+void manager::deselect_unit()
+{
+	selected_unit_ = NULL;
 }
 
 void manager::create_temp_move(const std::vector<map_location> &steps)
@@ -116,16 +132,13 @@ void manager::erase_temp_move()
 
 void manager::save_temp_move(unit& subject)
 {
-	int current_side = resources::controller->current_side();
-	team& current_team = (*resources::teams)[current_side - 1];
-
 	LOG_WB << "Creating move for unit " << subject.name() << " [" << subject.id() << "]"
 			<< " from " << subject.get_location()
 			<< " to " << route_.back() << "\n";
 
 	move_arrow_->set_alpha(0.6);
 
-	current_team.get_side_actions().queue_move(subject, route_.back(),
+	get_current_side_actions().queue_move(subject, route_.back(),
 			*(move_arrow_.release()) /* ownership of the arrow transferred to the new move action */,
 			*(fake_unit_.release())  /* ownership of the fake unit transferred to the new move action */);
 

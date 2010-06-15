@@ -550,6 +550,9 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse) {
 			sound::play_UI_sound("select-unit.wav");
 			u->set_selecting();
 			game_events::fire("select", hex);
+			if (resources::whiteboard->active()) {
+				resources::whiteboard->select_unit(*u);
+			}
 		}
 
 	} else {
@@ -558,6 +561,7 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse) {
 		current_route_.steps.clear();
 		if (resources::whiteboard->active()) {
 			resources::whiteboard->erase_temp_move();
+			resources::whiteboard->deselect_unit();
 		}
 	}
 }

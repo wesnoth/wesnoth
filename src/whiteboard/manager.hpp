@@ -46,7 +46,7 @@ public:
 	/**
 	 * Determine whether the whiteboard is activated.
 	 */
-	bool active(){ return active_; }
+	bool active() const { return active_; }
 	void set_active(bool active){ active_ = active; }
 
 	/**
@@ -55,6 +55,9 @@ public:
 	 */
 	void apply_temp_modifiers();
 	void remove_temp_modifiers();
+
+	void select_unit(const unit& unit);
+	void deselect_unit();
 
 	/** Set the route for move creation purposes */
 	void create_temp_move(const std::vector<map_location> &steps);
@@ -80,6 +83,8 @@ private:
 
 	std::auto_ptr<arrow> move_arrow_;
 	std::auto_ptr<unit> fake_unit_;
+
+	unit const* selected_unit_;
 };
 
 } // end namespace wb
