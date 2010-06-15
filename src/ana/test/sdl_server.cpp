@@ -1,4 +1,31 @@
-#include <iostream>
+/* $Id$ */
+
+/**
+ * @file sdl_server.cpp
+ * @brief Server application using SDL_net to test compatibility with ana.
+ *
+ * Language : C
+ *
+ * Code was taken from:
+ *        <http://gpwiki.org/index.php/SDL:Tutorial:Using_SDL_net>
+ *
+ * Documentation at gpwiki is published under the GNU Free Documentation License 1.2.
+ *    See <http://www.gnu.org/copyleft/fdl.html>
+ *
+ * ana is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * ana is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with ana.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ */
 
 #include <SDL/SDL_net.h>
 

@@ -4,11 +4,13 @@ include_directories( ../api )
 
 find_package( Boost 1.35 REQUIRED COMPONENTS thread system)
 
-set ( server_srcs asio_server.cpp asio_listener.cpp )
+set ( common_srcs asio_listener.cpp )
 
-set ( client_srcs  asio_client.cpp asio_listener.cpp asio_proxy_connection.cpp )
+set ( server_srcs asio_server.cpp  )
 
-add_library( ana SHARED ${server_srcs} ${client_srcs} )
+set ( client_srcs asio_client.cpp asio_proxy_connection.cpp )
+
+add_library( ana SHARED ${server_srcs} ${client_srcs} ${common_srcs} )
 
 target_link_libraries( ana ${Boost_SYSTEM_LIBRARY} ${Boost_THREAD_LIBRARY} )
 
