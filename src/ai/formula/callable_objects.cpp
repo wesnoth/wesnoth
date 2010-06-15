@@ -199,7 +199,7 @@ void attack_map_callable::collect_possible_attacks(std::vector<variant>& vars, m
 
 	for(int n = 0; n != 6; ++n) {
 		/* if adjacent tile is outside the board */
-		if (! ai_.get_info().map.on_board(adj[n]))
+		if (! resources::game_map->on_board(adj[n]))
 			continue;
 		unit_map::const_iterator unit = units_.find(adj[n]);
 		/* if tile is empty */

@@ -212,7 +212,7 @@ readonly_context_impl::readonly_context_impl(side_context &context, const config
 		add_known_aspect("support_villages",support_villages_);
 		add_known_aspect("village_value",village_value_);
 		add_known_aspect("villages_per_scout",villages_per_scout_);
-		keeps_.init(get_info().map);
+		keeps_.init(*resources::game_map);
 
 	}
 
@@ -350,7 +350,7 @@ void readonly_context_impl::calculate_moves(const unit_map& units, std::map<map_
 		}
 		bool teleports = un_it->get_ability_bool("teleport");
 		res.insert(std::pair<map_location,pathfind::paths>(
-			un_it->get_location(), pathfind::paths(get_info().map,
+			un_it->get_location(), pathfind::paths(*resources::game_map,
 			units, un_it->get_location(), *resources::teams, false,
 			teleports, current_team(), 0, see_all)));
 	}
@@ -374,7 +374,7 @@ void readonly_context_impl::calculate_moves(const unit_map& units, std::map<map_
 			bool friend_owns = false;
 
 			// Don't take friendly villages
-			if(!enemy && get_info().map.is_village(dst)) {
+			if(!enemy && resources::game_map->is_village(dst)) {
 				for(size_t n = 0; n != resources::teams->size(); ++n) {
 					if((*resources::teams)[n].owns_village(dst)) {
 						int side = n + 1;
@@ -449,7 +449,7 @@ const defensive_position& readonly_context_impl::best_defensive_position(const m
 	typedef move_map::const_iterator Itor;
 	const std::pair<Itor,Itor> itors = srcdst.equal_range(loc);
 	for(Itor i = itors.first; i != itors.second; ++i) {
-		const int defense = itor->defense_modifier(get_info().map.get_terrain(i->second));
+		const int defense = itor->defense_modifier(resources::game_map->get_terrain(i->second));
 		if(defense > pos.chance_to_hit) {
 			continue;
 		}
@@ -920,7 +920,7 @@ bool readonly_context_impl::leader_can_reach_keep() const
 	}
 
 	// Find where the leader can move
-	const pathfind::paths leader_paths(get_info().map, *resources::units,
+	const pathfind::paths leader_paths(*resources::game_map, *resources::units,
 		leader->get_location(), *resources::teams, false, false, current_team());
 
 
@@ -960,7 +960,7 @@ double readonly_context_impl::power_projection(const map_location& loc, const mo
 	get_adjacent_tiles(loc,locs);
 
 	const int lawful_bonus = get_info().tod_manager_.get_time_of_day().lawful_bonus;
-	gamemap& map_ = get_info().map;
+	gamemap& map_ = *resources::game_map;
 	unit_map& units_ = *resources::units;
 
 	int res = 0;
@@ -1089,7 +1089,7 @@ void readonly_context_impl::recalculate_move_maps_enemy() const
 
 
 const map_location& readonly_context_impl::suitable_keep(const map_location& leader_location, const pathfind::paths& leader_paths){
-	if (get_info().map.is_keep(leader_location)) {
+	if (resources::game_map->is_keep(leader_location)) {
 		return leader_location; //if leader already on keep, then return leader_location
 	}
 

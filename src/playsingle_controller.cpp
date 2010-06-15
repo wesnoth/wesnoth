@@ -71,7 +71,7 @@ playsingle_controller::playsingle_controller(const config& level,
 		browse_ = linger_ = true;
 	}
 
-	ai::game_info ai_info(*gui_,map_, tod_manager_, gamestate_);
+	ai::game_info ai_info(*gui_, tod_manager_, gamestate_);
 	ai::manager::set_ai_info(ai_info);
 	ai::manager::add_observer(this) ;
 }

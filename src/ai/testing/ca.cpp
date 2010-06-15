@@ -63,7 +63,7 @@ double goto_phase::evaluate()
 	// Execute goto-movements - first collect gotos in a list
 	std::vector<map_location> gotos;
 	unit_map &units_ = *resources::units;
-	gamemap &map_ = get_info().map;
+	gamemap &map_ = *resources::game_map;
 
 	for(unit_map::iterator ui = units_.begin(); ui != units_.end(); ++ui) {
 		if (ui->get_goto() == ui->get_location()) {
@@ -129,12 +129,12 @@ double aspect_recruitment_phase::evaluate()
 	if(leader == resources::units->end()) {
 		return BAD_SCORE;
 	}
-	if (!get_info().map.is_keep(leader->get_location())) {
+	if (!resources::game_map->is_keep(leader->get_location())) {
 		return BAD_SCORE;
 	}
 
-	map_location recruit_loc = find_vacant_tile(get_info().map, *resources::units, leader->get_location(), pathfind::VACANT_CASTLE);
-	if (!get_info().map.on_board(recruit_loc)) {
+	map_location recruit_loc = find_vacant_tile(*resources::game_map, *resources::units, leader->get_location(), pathfind::VACANT_CASTLE);
+	if (!resources::game_map->on_board(recruit_loc)) {
 		return BAD_SCORE;
 	}
 
@@ -176,7 +176,7 @@ double recruitment_phase::evaluate()
 	if(leader == resources::units->end()) {
 		return BAD_SCORE;
 	}
-	if (!get_info().map.is_keep(leader->get_location())) {
+	if (!resources::game_map->is_keep(leader->get_location())) {
 		return BAD_SCORE;
 	}
 
@@ -199,7 +199,7 @@ void recruitment_phase::execute()
 	unit_movement_scores_.clear();
 
 	unit_map &units_ = *resources::units;
-	gamemap &map_ = get_info().map;
+	gamemap &map_ = *resources::game_map;
 	std::vector<team> &teams_ = *resources::teams;
 
 	map_location start_pos = units_.find_leader(get_side())->get_location();
@@ -358,7 +358,7 @@ bool recruitment_phase::recruit_usage(const std::string& usage)
 
 int recruitment_phase::average_resistance_against(const unit_type& a, const unit_type& b) const
 {
-	gamemap &map_ = get_info().map;
+	gamemap &map_ = *resources::game_map;
 
 	int weighting_sum = 0, defense = 0;
 	const std::map<t_translation::t_terrain, size_t>& terrain =
@@ -659,15 +659,15 @@ double move_leader_to_goals_phase::evaluate()
 		}
 	}
 
-	pathfind::shortest_path_calculator calc(*leader, current_team(), *resources::units, *resources::teams, get_info().map);
+	pathfind::shortest_path_calculator calc(*leader, current_team(), *resources::units, *resources::teams, *resources::game_map);
 	pathfind::plain_route route = a_star_search(leader->get_location(), dst_, 1000.0, &calc,
-			get_info().map.w(), get_info().map.h());
+			resources::game_map->w(), resources::game_map->h());
 	if(route.steps.empty()) {
 		LOG_AI_TESTING_AI_DEFAULT << "route empty";
 		return BAD_SCORE;
 	}
 
-	const pathfind::paths leader_paths(get_info().map, *resources::units, leader->get_location(),
+	const pathfind::paths leader_paths(*resources::game_map, *resources::units, leader->get_location(),
 				 *resources::teams, false, false, current_team());
 
 	std::map<map_location,pathfind::paths> possible_moves;
@@ -739,7 +739,7 @@ double move_leader_to_keep_phase::evaluate()
 	}
 
 	// Find where the leader can move
-	const pathfind::paths leader_paths(get_info().map, units_, leader->get_location(),
+	const pathfind::paths leader_paths(*resources::game_map, units_, leader->get_location(),
 		*resources::teams, false, false, current_team());
 	const map_location& keep = suitable_keep(leader->get_location(), leader_paths);
 
@@ -863,7 +863,7 @@ void get_villages_phase::execute()
 	}
 
 	if(leader_move.second.valid()) {
-		if(units_.count(leader_move.first) == 0 && get_info().map.is_village(leader_move.first)) {
+		if(units_.count(leader_move.first) == 0 && resources::game_map->is_village(leader_move.first)) {
 			move_result_ptr move_res = execute_move_action(leader_move.second,leader_move.first,true);
 			if (!move_res->is_ok()) {
 				return;
@@ -945,7 +945,7 @@ void get_villages_phase::find_villages(
 	const bool passive_leader = get_passive_leader();
 
 	size_t min_distance = 100000;
-	gamemap &map_ = get_info().map;
+	gamemap &map_ = *resources::game_map;
 	std::vector<team> &teams_ = *resources::teams;
 
 	// When a unit is dispatched we need to make sure we don't
@@ -1647,7 +1647,7 @@ double get_healing_phase::evaluate()
 			Itor best_loc = it.second;
 			while(it.first != it.second) {
 				const map_location& dst = it.first->second;
-				if (get_info().map.gives_healing(dst) && (units_.find(dst) == units_.end() || dst == u_it->get_location())) {
+				if (resources::game_map->gives_healing(dst) && (units_.find(dst) == units_.end() || dst == u_it->get_location())) {
 					const double vuln = power_projection(it.first->first, get_enemy_dstsrc());
 					DBG_AI_TESTING_AI_DEFAULT << "found village with vulnerability: " << vuln << "\n";
 					if(vuln < best_vulnerability) {
@@ -1736,8 +1736,8 @@ double retreat_phase::evaluate()
 				map_location best_pos, best_defensive(i->get_location());
 
 				double best_rating = -1000.0;
-				int best_defensive_rating = i->defense_modifier(get_info().map.get_terrain(i->get_location()))
-					- (get_info().map.is_village(i->get_location()) ? 10 : 0);
+				int best_defensive_rating = i->defense_modifier(resources::game_map->get_terrain(i->get_location()))
+					- (resources::game_map->is_village(i->get_location()) ? 10 : 0);
 				while(itors.first != itors.second) {
 
 					if(leader != units_.end() && std::count(leader_adj,
@@ -1751,7 +1751,7 @@ double retreat_phase::evaluate()
 					// compared to theirs, multiplying their power projection by their
 					// chance to hit us on the hex we're planning to flee to.
 					const map_location& hex = itors.first->second;
-					const int defense = i->defense_modifier(get_info().map.get_terrain(hex));
+					const int defense = i->defense_modifier(resources::game_map->get_terrain(hex));
 					const double our_power = power_projection(hex,get_dstsrc());
 					const double their_power = power_projection(hex,get_enemy_dstsrc()) * double(defense)/100.0;
 					const double rating = our_power - their_power;
@@ -1761,7 +1761,7 @@ double retreat_phase::evaluate()
 					}
 
 					// Give a bonus for getting to a village.
-					const int modified_defense = defense - (get_info().map.is_village(hex) ? 10 : 0);
+					const int modified_defense = defense - (resources::game_map->is_village(hex) ? 10 : 0);
 
 					if(modified_defense < best_defensive_rating) {
 						best_defensive_rating = modified_defense;
@@ -1815,7 +1815,7 @@ bool retreat_phase::should_retreat(const map_location& loc, const unit_map::cons
 	double optimal_terrain = best_defensive_position(un->get_location(), dstsrc,
 			srcdst, enemy_dstsrc).chance_to_hit/100.0;
 	const double proposed_terrain =
-		un->defense_modifier(get_info().map.get_terrain(loc)) / 100.0;
+		un->defense_modifier(resources::game_map->get_terrain(loc)) / 100.0;
 
 	// The 'exposure' is the additional % chance to hit
 	// this unit receives from being on a sub-optimal defensive terrain.

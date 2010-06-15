@@ -289,7 +289,7 @@ struct protected_item {
 class remove_wrong_targets {
 public:
 	remove_wrong_targets(const readonly_context &context)
-		:avoid_(context.get_avoid()), map_(context.get_info().map)
+		:avoid_(context.get_avoid()), map_(*resources::game_map)
 	{
 	}
 
@@ -321,7 +321,7 @@ private:
 int ai_default_recruitment_stage::average_resistance_against(const unit_type& a, const unit_type& b) const
 {
 	int weighting_sum = 0, defense = 0;
-	gamemap &map_ = get_info().map;
+	gamemap &map_ = *resources::game_map;
 	const std::map<t_translation::t_terrain, size_t>& terrain =
 		map_.get_weighted_terrain_frequencies();
 
@@ -534,7 +534,7 @@ ai_default_recruitment_stage::~ai_default_recruitment_stage()
 void ai_default_recruitment_stage::analyze_potential_recruit_movements()
 {
 	unit_map &units_ = *resources::units;
-	gamemap &map_ = get_info().map;
+	gamemap &map_ = *resources::game_map;
 
 	if(unit_movement_scores_.empty() == false ||
 			get_recruitment_ignore_bad_movement()) {
@@ -587,7 +587,7 @@ void ai_default_recruitment_stage::analyze_potential_recruit_movements()
 		for(std::vector<target>::const_iterator t = targets.begin(); t != targets.end(); ++t) {
 			LOG_AI << "analyzing '" << *i << "' getting to target...\n";
 			pathfind::plain_route route = a_star_search(start, t->loc, 100.0, &calc,
-					get_info().map.w(), get_info().map.h());
+					resources::game_map->w(), resources::game_map->h());
 
 			if (!route.steps.empty()) {
 				LOG_AI << "made it: " << route.move_cost << "\n";
@@ -830,7 +830,7 @@ bool ai_default_recruitment_stage::do_play_stage()
 		// We recruit the initial allocation of scouts
 		// based on how many neutral villages there are
 		// that are closer to us than to other keeps.
-		const std::vector<map_location>& villages = get_info().map.villages();
+		const std::vector<map_location>& villages = resources::game_map->villages();
 		for(std::vector<map_location>::const_iterator v = villages.begin(); v != villages.end(); ++v) {
 			const int owner = village_owner(*v,*resources::teams);
 			if(owner == -1) {
@@ -839,7 +839,7 @@ bool ai_default_recruitment_stage::do_play_stage()
 				bool closest = true;
 				for(std::vector<team>::const_iterator i = resources::teams->begin(); i != resources::teams->end(); ++i) {
 					const int index = i - resources::teams->begin() + 1;
-					const map_location& loc = get_info().map.starting_position(index);
+					const map_location& loc = resources::game_map->starting_position(index);
 					if(loc != start_pos && distance_between(loc,*v) < distance) {
 						closest = false;
 						break;

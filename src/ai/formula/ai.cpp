@@ -188,7 +188,7 @@ pathfind::plain_route formula_ai::shortest_path_calculator(const map_location &s
     map_location destination = dst;
 
     unit_map &units_ = *resources::units;
-    pathfind::shortest_path_calculator calc(*unit_it, current_team(), units_, *resources::teams, get_info().map);
+    pathfind::shortest_path_calculator calc(*unit_it, current_team(), units_, *resources::teams, *resources::game_map);
 
     unit_map::const_iterator dst_un = units_.find(destination);
 
@@ -203,7 +203,7 @@ pathfind::plain_route formula_ai::shortest_path_calculator(const map_location &s
         get_adjacent_tiles(destination,adj);
 
         for(size_t n = 0; n != 6; ++n) {
-                if(get_info().map.on_board(adj[n]) == false) {
+                if(resources::game_map->on_board(adj[n]) == false) {
                         continue;
                 }
 
@@ -230,7 +230,7 @@ pathfind::plain_route formula_ai::shortest_path_calculator(const map_location &s
     }
 
     pathfind::plain_route route = pathfind::a_star_search(src, destination, 1000.0, &calc,
-            get_info().map.w(), get_info().map.h(), &allowed_teleports);
+            resources::game_map->w(), resources::game_map->h(), &allowed_teleports);
 
     return route;
 }
@@ -253,8 +253,8 @@ map_location formula_ai::path_calculator(const map_location& src, const map_loca
 		pathfind::plain_route route = shortest_path_calculator( src, dst, unit_it, allowed_teleports );
 
 		if( route.steps.size() == 0 ) {
-			pathfind::emergency_path_calculator em_calc(*unit_it, get_info().map);
-			route = pathfind::a_star_search(src, dst, 1000.0, &em_calc, get_info().map.w(), get_info().map.h(), &allowed_teleports);
+			pathfind::emergency_path_calculator em_calc(*unit_it, *resources::game_map);
+			route = pathfind::a_star_search(src, dst, 1000.0, &em_calc, resources::game_map->w(), resources::game_map->h(), &allowed_teleports);
 			if( route.steps.size() < 2 ) {
 				return map_location();
 			}
@@ -867,10 +867,10 @@ variant formula_ai::get_value(const std::string& key) const
 		return get_keeps();
 	} else if(key == "map")
 	{
-		return variant(new gamemap_callable(get_info().map));
+		return variant(new gamemap_callable(*resources::game_map));
 	} else if(key == "villages")
 	{
-		return villages_from_set(get_info().map.villages());
+		return villages_from_set(resources::game_map->villages());
 	} else if(key == "villages_of_side")
 	{
 		std::vector<variant> vars;
@@ -890,7 +890,7 @@ variant formula_ai::get_value(const std::string& key) const
 
 	} else if(key == "enemy_and_unowned_villages")
 	{
-		return villages_from_set(get_info().map.villages(), &current_team().villages());
+		return villages_from_set(resources::game_map->villages(), &current_team().villages());
 	}
 
 	return variant();
@@ -932,14 +932,14 @@ variant formula_ai::get_keeps() const
 {
 	if(keeps_cache_.is_null()) {
 		std::vector<variant> vars;
-		for(size_t x = 0; x != size_t(get_info().map.w()); ++x) {
-			for(size_t y = 0; y != size_t(get_info().map.h()); ++y) {
+		for(size_t x = 0; x != size_t(resources::game_map->w()); ++x) {
+			for(size_t y = 0; y != size_t(resources::game_map->h()); ++y) {
 				const map_location loc(x,y);
-				if(get_info().map.is_keep(loc)) {
+				if(resources::game_map->is_keep(loc)) {
 					map_location adj[6];
 					get_adjacent_tiles(loc,adj);
 					for(size_t n = 0; n != 6; ++n) {
-						if(get_info().map.is_castle(adj[n])) {
+						if(resources::game_map->is_castle(adj[n])) {
 							vars.push_back(variant(new location_callable(loc)));
 							break;
 						}

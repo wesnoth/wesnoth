@@ -80,7 +80,7 @@ int default_ai_context_impl::count_free_hexes_in_castle(const map_location &loc,
 		if (checked_hexes.find(adj[n]) != checked_hexes.end())
 			continue;
 		checked_hexes.insert(adj[n]);
-		if (get_info().map.is_castle(adj[n])) {
+		if (resources::game_map->is_castle(adj[n])) {
 			const unit_map::const_iterator u = units_.find(adj[n]);
 			ret += count_free_hexes_in_castle(adj[n], checked_hexes);
 			if (u == units_.end()
@@ -127,7 +127,7 @@ bool default_ai_context_impl::multistep_move_possible(const map_location& from,
 					unit temp_unit(*i);
 					temp_unit.set_movement(itor->move_left);
 					const temporary_unit_placer unit_placer(units_,via,temp_unit);
-					const pathfind::paths unit_paths(get_info().map,units_,via,*resources::teams,false,false,current_team());
+					const pathfind::paths unit_paths(*resources::game_map,units_,via,*resources::teams,false,false,current_team());
 
 					LOG_AI << "Found " << unit_paths.destinations.size() << " moves for temp leader.\n";
 
@@ -147,7 +147,7 @@ bool default_ai_context_impl::multistep_move_possible(const map_location& from,
 
 int default_ai_context_impl::rate_terrain(const unit& u, const map_location& loc) const
 {
-	gamemap &map_ = get_info().map;
+	gamemap &map_ = *resources::game_map;
 	const t_translation::t_terrain terrain = map_.get_terrain(loc);
 	const int defense = u.defense_modifier(terrain);
 	int rating = 100 - defense;
@@ -182,7 +182,7 @@ std::vector<target> default_ai_context_impl::find_targets(const move_map& enemy_
 	log_scope2(log_ai, "finding targets...");
 	unit_map &units_ = *resources::units;
 	unit_map::iterator leader = units_.find_leader(get_side());
-	gamemap &map_ = get_info().map;
+	gamemap &map_ = *resources::game_map;
 	std::vector<team> teams_ = *resources::teams;
 	const bool has_leader = leader != units_.end();
 
