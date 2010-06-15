@@ -2339,7 +2339,6 @@ void display::add_arrow(arrow& arrow)
 	{
 		arrows_map_[loc].push_back(&arrow);
 	}
-	arrow.add_observer(*this);
 }
 
 void display::remove_arrow(arrow& arrow)
@@ -2349,19 +2348,18 @@ void display::remove_arrow(arrow& arrow)
 	{
 		arrows_map_[loc].remove(&arrow);
 	}
-	arrow.remove_observer(*this);
 }
 
-void display::arrow_changed(arrow & changed)
+void display::update_arrow(arrow & arrow)
 {
-	const arrow_path_t & previous_path = changed.get_previous_path();
+	const arrow_path_t & previous_path = arrow.get_previous_path();
 	foreach (const map_location& loc, previous_path)
 	{
-		arrows_map_[loc].remove(&changed);
+		arrows_map_[loc].remove(&arrow);
 	}
-	const arrow_path_t & arrow_path = changed.get_path();
+	const arrow_path_t & arrow_path = arrow.get_path();
 	foreach (const map_location& loc, arrow_path)
 	{
-		arrows_map_[loc].push_back(&changed);
+		arrows_map_[loc].push_back(&arrow);
 	}
 }

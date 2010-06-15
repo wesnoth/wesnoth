@@ -22,6 +22,7 @@
 #include "map_location.hpp"
 
 #include <boost/noncopyable.hpp>
+#include <boost/shared_ptr.hpp>
 
 #include <memory>
 #include <vector>
@@ -81,8 +82,8 @@ private:
 
 	std::vector<map_location> route_;
 
-	std::auto_ptr<arrow> move_arrow_;
-	std::auto_ptr<unit> fake_unit_;
+	boost::shared_ptr<arrow> move_arrow_;
+	boost::shared_ptr<unit> fake_unit_;
 
 	unit* selected_unit_;
 };

@@ -26,34 +26,32 @@
 #include <list>
 #include <map>
 
-typedef std::map<map_location, image::locator> arrow_symbols_map_t;
-
 typedef std::vector<map_location> arrow_path_t;
-
-class arrow_observer;
 
 /**
  * Arrows destined to be drawn on the map. Created for the whiteboard system.
  */
 class arrow {
 
+	typedef std::map<map_location, image::locator> arrow_symbols_map_t;
+
 public:
 	//operations
 
-	arrow(display* screen);
-
-
+	arrow();
 	virtual ~arrow();
 
 	/// returns false if the received path is invalid
 	virtual bool set_path(const arrow_path_t &path);
+
+	virtual void clear_path();
 
 	/**
 	 * The string color parameter is in the same format expected by the
 	 * image::locator modifiers parameter. Examples: red is "red" or "FF0000" or "255,0,0".
 	 * Feel free to add another method that accepts an Uint32 as a parameter instead.
 	 */
-	void set_color(const std::string& color);
+	virtual void set_color(const std::string& color);
 
 	/**
 	 * The style is simply the name of a subdirectory under images/arrows,
@@ -73,14 +71,12 @@ public:
 
 	const arrow_path_t & get_previous_path() const;
 
-	void draw_hex(const map_location & hex);
+	virtual void draw_hex(const map_location & hex);
 
 	/// Checks that the path is not of length 0 or 1
-	bool valid_path(arrow_path_t path) const;
+	virtual bool valid_path(arrow_path_t path) const;
 
-	void add_observer(arrow_observer & observer);
-
-	void remove_observer(arrow_observer & observer);
+	virtual void notify_arrow_changed();
 
 protected:
 	//operations
@@ -88,19 +84,14 @@ protected:
 	/**
 	 * @param old_path : the path to erase and replace with the new symbols
 	 */
-	void update_symbols(arrow_path_t old_path);
+	virtual void update_symbols(arrow_path_t old_path);
 
-	void invalidate_arrow_path(arrow_path_t path);
-
-private:
-	//operations
-
-	void notify_arrow_changed();
+	virtual void invalidate_arrow_path(arrow_path_t path);
 
 protected:
 	//properties
 
-	display* screen_;
+	display*& screen_;
 
 	display::tdrawing_layer layer_;
 
@@ -115,10 +106,5 @@ protected:
 	arrow_path_t previous_path_;
 
 	arrow_symbols_map_t symbols_map_;
-
-private:
-	//properties
-    std::list<arrow_observer*> observers_;
-
 };
 #endif

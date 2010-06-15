@@ -34,23 +34,19 @@ manager::manager():
 		active_(false),
 		mapbuilder_(NULL),
 		route_(),
-		move_arrow_(NULL),
-		fake_unit_(NULL),
+		move_arrow_(),
+		fake_unit_(),
 		selected_unit_(NULL)
 {
 }
 
 manager::~manager()
 {
-	if (resources::screen != NULL)
+	if (resources::screen)
 	{
-		if (fake_unit_.get() != NULL)
+		if (fake_unit_)
 		{
 			resources::screen->remove_temporary_unit(fake_unit_.get());
-		}
-		if (move_arrow_.get() != NULL)
-		{
-			resources::screen->remove_arrow(*move_arrow_);
 		}
 	}
 }
@@ -78,7 +74,6 @@ void manager::remove_temp_modifiers()
 {
 	DBG_WB << "Removing temporary modifiers.\n";
 	mapbuilder_.reset();
-	DBG_WB << "Removed temporary modifiers.\n";
 }
 
 void manager::select_unit(unit& unit)
@@ -89,8 +84,11 @@ void manager::select_unit(unit& unit)
 
 void manager::deselect_unit()
 {
-	DBG_WB << "Deselecting unit " << selected_unit_->name() << " [" << selected_unit_->id() << "]\n";
-	selected_unit_ = NULL;
+	if (selected_unit_)
+	{
+		DBG_WB << "Deselecting unit " << selected_unit_->name() << " [" << selected_unit_->id() << "]\n";
+		selected_unit_ = NULL;
+	}
 }
 
 void manager::create_temp_move(const std::vector<map_location> &steps)
@@ -100,21 +98,20 @@ void manager::create_temp_move(const std::vector<map_location> &steps)
 	{
 		bool show_ghosted_unit_bars = false;
 
-		if (move_arrow_.get() == NULL)
+		if (!move_arrow_)
 		{
 			// Create temp arrow
-			game_display *screen = resources::screen;
-			move_arrow_.reset(new arrow((display*) screen));
+			move_arrow_.reset(new arrow());
 			int current_side = resources::controller->current_side();
 			move_arrow_->set_color(team::get_side_color_index(current_side));
 			move_arrow_->set_alpha(2.0);
-			screen->add_arrow(*move_arrow_);
+			resources::screen->add_arrow(*move_arrow_);
 
 			// Create temp ghost unit
 			fake_unit_.reset(new unit(*selected_unit_));
 			fake_unit_->set_location(route_.back());
 			fake_unit_->set_ghosted(show_ghosted_unit_bars);
-			screen->place_temporary_unit(fake_unit_.get());
+			resources::screen->place_temporary_unit(fake_unit_.get());
 		}
 
 		move_arrow_->set_path(route_);
@@ -125,10 +122,9 @@ void manager::create_temp_move(const std::vector<map_location> &steps)
 
 void manager::erase_temp_move()
 {
-	if (move_arrow_.get() != NULL)
+	if (move_arrow_)
 	{
-		resources::screen->remove_arrow(*move_arrow_);
-		move_arrow_.reset();
+		move_arrow_.reset(); //auto-removes itself from display
 		resources::screen->remove_temporary_unit(fake_unit_.get());
 		fake_unit_.reset();
 	}
@@ -137,17 +133,17 @@ void manager::erase_temp_move()
 void manager::save_temp_move()
 {
 	//If selected unit already has a move defined, erase it first
+
 	// TODO: implement a find_and_erase method in find_visitor to avoid iterating twice over actions
-	{ // scope-limiting block
-		find_visitor finder;
-		action_ptr action = finder.find_first_action_of(*selected_unit_, get_current_side_actions().actions());
-		if (action)
-		{
-			LOG_WB << "Previous action found for unit " << selected_unit_->name() << " [" << selected_unit_->id() << "]"
-					<< ", erasing action.\n";
-			get_current_side_actions().remove_action(action);
-		}
-	} // end scope-limiting block
+
+	find_visitor finder;
+	action_ptr action = finder.find_first_action_of(*selected_unit_, get_current_side_actions().actions());
+	if (action)
+	{
+		LOG_WB << "Previous action found for unit " << selected_unit_->name() << " [" << selected_unit_->id() << "]"
+				<< ", erasing action.\n";
+		get_current_side_actions().remove_action(action);
+	}
 
 	//Define the new move
 	LOG_WB << "Creating move for unit " << selected_unit_->name() << " [" << selected_unit_->id() << "]"
@@ -156,9 +152,9 @@ void manager::save_temp_move()
 
 	move_arrow_->set_alpha(0.6);
 
-	get_current_side_actions().queue_move(*selected_unit_, route_.back(),
-			*(move_arrow_.release()) /* ownership of the arrow transferred to the new move action */,
-			*(fake_unit_.release())  /* ownership of the fake unit transferred to the new move action */);
+	get_current_side_actions().queue_move(*selected_unit_, route_.back(), move_arrow_, fake_unit_);
+	move_arrow_.reset();
+	fake_unit_.reset();
 }
 
 } // end namespace wb

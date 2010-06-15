@@ -22,8 +22,6 @@
 #include "action.hpp"
 #include "map_location.hpp"
 
-#include <memory>
-
 class arrow;
 class config;
 class unit;
@@ -38,8 +36,8 @@ namespace wb {
 class move: public action
 {
 public:
-	/// Takes ownership of arrow and fake_unit
-	move(unit& subject, const map_location& target_hex, arrow& arrow, unit& fake_unit);
+	move(unit& subject, const map_location& target_hex, boost::shared_ptr<arrow> arrow,
+			boost::shared_ptr<unit> fake_unit);
 	virtual ~move();
 
 	virtual void accept(visitor& v);
@@ -58,8 +56,8 @@ private:
 	map_location orig_hex_;
 	map_location dest_hex_;
 
-	std::auto_ptr<arrow> arrow_;
-	std::auto_ptr<unit> fake_unit_;
+	boost::shared_ptr<arrow> arrow_;
+	boost::shared_ptr<unit> fake_unit_;
 };
 
 } // end namespace wb

@@ -28,26 +28,23 @@
 
 namespace wb {
 
-move::move(unit& subject, const map_location& target_hex, arrow& arrow, unit& fake_unit)
+move::move(unit& subject, const map_location& target_hex, boost::shared_ptr<arrow> arrow,
+		boost::shared_ptr<unit> fake_unit)
 : unit_(subject),
   orig_hex_(subject.get_location()),
   dest_hex_(target_hex),
-  arrow_(&arrow),
-  fake_unit_(&fake_unit)
+  arrow_(arrow),
+  fake_unit_(fake_unit)
 {
 }
 
 move::~move()
 {
-	if (resources::screen != NULL)
+	if (resources::screen)
 	{
-		if (fake_unit_.get() != NULL)
+		if (fake_unit_)
 		{
 			resources::screen->remove_temporary_unit(fake_unit_.get());
-		}
-		if (arrow_.get() != NULL)
-		{
-			resources::screen->remove_arrow(*arrow_);
 		}
 	}
 }

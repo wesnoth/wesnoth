@@ -18,11 +18,11 @@
  */
 
 #include "arrow.hpp"
-#include "arrow_observer.hpp"
 
 #include "foreach.hpp"
 #include "log.hpp"
 #include "map_location.hpp"
+#include "resources.hpp"
 
 static lg::log_domain log_arrows("arrows");
 #define ERR_ARR LOG_STREAM(err, log_arrows)
@@ -30,8 +30,8 @@ static lg::log_domain log_arrows("arrows");
 #define LOG_ARR LOG_STREAM(info, log_arrows)
 #define DBG_ARR LOG_STREAM(debug, log_arrows)
 
-arrow::arrow(display* screen)
-	: screen_(screen)
+arrow::arrow()
+	: screen_((display*&) resources::screen)
 	, layer_(display::LAYER_ARROWS)
 	, color_("red")
 	, style_("")
@@ -39,12 +39,15 @@ arrow::arrow(display* screen)
 	, path_()
 	, previous_path_()
 	, symbols_map_()
-	, observers_()
 {
 }
 
 arrow::~arrow()
 {
+	if (screen_)
+	{
+		screen_->remove_arrow(*this);
+	}
 }
 
 bool arrow::set_path(const arrow_path_t &path)
@@ -60,6 +63,15 @@ bool arrow::set_path(const arrow_path_t &path)
 	{
 		return false;
 	}
+}
+
+void arrow::clear_path()
+{
+	invalidate_arrow_path(path_);
+	path_.clear();
+	previous_path_.clear();
+	symbols_map_.clear();
+	notify_arrow_changed();
 }
 
 void arrow::set_color(const std::string& color)
@@ -111,6 +123,8 @@ const arrow_path_t & arrow::get_previous_path() const
 
 void arrow::draw_hex(const map_location & loc)
 {
+	if(!screen_) return;
+
 	screen_->render_image(screen_->get_location_x(loc), screen_->get_location_y(loc), layer_,
 				loc, image::get_image(symbols_map_[loc], image::SCALED_TO_ZOOM), false, false, alpha_);
 }
@@ -121,16 +135,6 @@ bool arrow::valid_path(arrow_path_t path) const
 		return true;
 	else
 		return false;
-}
-
-void arrow::add_observer(arrow_observer & observer)
-{
-	observers_.push_back(&observer);
-}
-
-void arrow::remove_observer(arrow_observer & observer)
-{
-	observers_.remove(&observer);
 }
 
 void arrow::update_symbols(arrow_path_t old_path)
@@ -250,6 +254,8 @@ void arrow::update_symbols(arrow_path_t old_path)
 
 void arrow::invalidate_arrow_path(arrow_path_t path)
 {
+	if(!screen_) return;
+
 	foreach(const map_location& loc, path)
 	{
 		screen_->invalidate(loc);
@@ -258,8 +264,7 @@ void arrow::invalidate_arrow_path(arrow_path_t path)
 
 void arrow::notify_arrow_changed()
 {
-	foreach(arrow_observer* observer, observers_)
-	{
-		observer->arrow_changed(*this);
-	}
+	if(!screen_) return;
+
+	screen_->update_arrow(*this);
 }

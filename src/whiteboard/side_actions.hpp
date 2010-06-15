@@ -57,15 +57,15 @@ public:
 
 	/**
 	 * Inserts a move at the specified index. The begin() and end() functions might prove useful here.
-	 * Gives ownership of the arrow and fake_unit to the new move object
 	 */
-	void insert_move(unit& subject, const map_location& target_hex, arrow& arrow, size_t index, unit& fake_unit);
+	void insert_move(unit& subject, const map_location& target_hex, size_t index, boost::shared_ptr<arrow> arrow,
+			boost::shared_ptr<unit> fake_unit);
 
 	/**
 	 * Inserts a move to be executed last (i.e. at the back of the queue)
-	 * Gives ownership of the arrow and fake_unit to the new move object
 	 */
-	void queue_move(unit& subject, const map_location& target_hex, arrow& arrow, unit& fake_unit);
+	void queue_move(unit& subject, const map_location& target_hex, boost::shared_ptr<arrow> arrow,
+			boost::shared_ptr<unit> fake_unit);
 
 	/**
 	 * Moves an action earlier in the execution order (i.e. at the front of the queue),
