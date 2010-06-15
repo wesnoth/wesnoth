@@ -20,6 +20,8 @@
 #include "action.hpp"
 #include "move.hpp"
 
+#include "foreach.hpp"
+
 namespace wb
 {
 
@@ -68,6 +70,21 @@ void side_actions::remove_action(size_t index)
 	if (position < actions_.end())
 	{
 		actions_.erase(position);
+	}
+}
+
+void side_actions::remove_action(action_ptr action)
+{
+	assert(!actions_.empty());
+
+	action_set::iterator position;
+	for ( position = actions_.begin(); position != actions_.end(); ++position)
+	{
+		if (*position == action)
+		{
+			actions_.erase(position);
+			break;
+		}
 	}
 }
 

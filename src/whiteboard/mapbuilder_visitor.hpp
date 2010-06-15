@@ -22,10 +22,12 @@
 #include "visitor.hpp"
 #include "action.hpp"
 
+#include <set>
 #include <stack>
 
 #include <boost/shared_ptr.hpp>
 
+class unit;
 class unit_map;
 
 namespace wb
@@ -44,10 +46,15 @@ public:
 
 	virtual void visit_move(move& move);
 
+	// Any actions associated with this unit will be ignored when modifying the unit map
+	virtual void exclude(const unit& unit) { excluded_units_.insert(&unit); }
+
 private:
 	unit_map& unit_map_;
 
 	std::stack<modifier_ptr> modifiers_;
+
+	std::set<unit const*> excluded_units_;
 };
 
 }

@@ -18,6 +18,8 @@
 
 #include "mapbuilder_visitor.hpp"
 #include "move.hpp"
+
+#include "unit.hpp"
 #include "unit_map.hpp"
 
 namespace wb
@@ -26,6 +28,7 @@ namespace wb
 mapbuilder_visitor::mapbuilder_visitor(unit_map& unit_map)
 	: unit_map_(unit_map)
 	, modifiers_()
+    , excluded_units_()
 {
 }
 
@@ -40,7 +43,10 @@ mapbuilder_visitor::~mapbuilder_visitor()
 
 void mapbuilder_visitor::visit_move(move& move)
 {
-	modifiers_.push(move.apply_temp_modifier(unit_map_));
+	if (excluded_units_.count(&move.get_unit()) == 0)
+	{
+		modifiers_.push(move.apply_temp_modifier(unit_map_));
+	}
 }
 
 }

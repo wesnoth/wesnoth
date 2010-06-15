@@ -20,6 +20,7 @@
 
 #include "action.hpp"
 #include "mapbuilder_visitor.hpp"
+#include "find_visitor.hpp"
 
 #include "arrow.hpp"
 #include "foreach.hpp"
@@ -65,6 +66,7 @@ side_actions& get_current_side_actions()
 void manager::apply_temp_modifiers()
 {
 	mapbuilder_.reset(new mapbuilder_visitor(*resources::units));
+	mapbuilder_->exclude(*selected_unit_);
 	const action_set& actions = get_current_side_actions().actions();
 	foreach (const action_ptr &action, actions)
 	{
@@ -82,17 +84,19 @@ void manager::remove_temp_modifiers()
 void manager::select_unit(unit& unit)
 {
 	selected_unit_ = &unit;
+	DBG_WB << "Selected unit " << selected_unit_->name() << " [" << selected_unit_->id() << "]\n";
 }
 
 void manager::deselect_unit()
 {
+	DBG_WB << "Deselecting unit " << selected_unit_->name() << " [" << selected_unit_->id() << "]\n";
 	selected_unit_ = NULL;
 }
 
 void manager::create_temp_move(const std::vector<map_location> &steps)
 {
 	route_ = steps;
-	if (route_.size() > 1)
+	if (route_.size() > 1 && selected_unit_ != NULL)
 	{
 		bool show_ghosted_unit_bars = false;
 
@@ -132,6 +136,20 @@ void manager::erase_temp_move()
 
 void manager::save_temp_move()
 {
+	//If selected unit already has a move defined, erase it first
+	// TODO: implement a find_and_erase method in find_visitor to avoid iterating twice over actions
+	{ // scope-limiting block
+		find_visitor finder;
+		action_ptr action = finder.find_first_action_of(*selected_unit_, get_current_side_actions().actions());
+		if (action)
+		{
+			LOG_WB << "Previous action found for unit " << selected_unit_->name() << " [" << selected_unit_->id() << "]"
+					<< ", erasing action.\n";
+			get_current_side_actions().remove_action(action);
+		}
+	} // end scope-limiting block
+
+	//Define the new move
 	LOG_WB << "Creating move for unit " << selected_unit_->name() << " [" << selected_unit_->id() << "]"
 			<< " from " << selected_unit_->get_location()
 			<< " to " << route_.back() << "\n";
@@ -141,7 +159,6 @@ void manager::save_temp_move()
 	get_current_side_actions().queue_move(*selected_unit_, route_.back(),
 			*(move_arrow_.release()) /* ownership of the arrow transferred to the new move action */,
 			*(fake_unit_.release())  /* ownership of the fake unit transferred to the new move action */);
-
 }
 
 } // end namespace wb

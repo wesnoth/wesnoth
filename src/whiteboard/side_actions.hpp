@@ -87,6 +87,11 @@ public:
 	 */
 	void remove_action(size_t index);
 
+	/**
+	 * Deletes the specified action. If the action doesn't exist, the function does nothing.
+	 */
+	void remove_action(action_ptr action);
+
 private:
 	/**
 	 * Utility function to move actions around the queue.
