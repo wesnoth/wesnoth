@@ -17,7 +17,7 @@
  *
  * ana is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
+ * the Free Software Foundation, either version 2 of the License, or
  * (at your option) any later version.
  *
  * ana is distributed in the hope that it will be useful,
@@ -49,7 +49,6 @@ struct proxy_connection_manager
 struct proxy_information
 {
     proxy_information() :
-        auth_type(ana::proxy::none),
         proxy_address(),
         proxy_port(),
         user_name(),
@@ -57,7 +56,6 @@ struct proxy_information
     {
     }
 
-    ana::proxy::authentication_type auth_type;
     std::string                     proxy_address;
     std::string                     proxy_port;
     std::string                     user_name;

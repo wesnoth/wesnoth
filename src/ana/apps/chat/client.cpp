@@ -17,7 +17,7 @@
  *
  * ana is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
+ * the Free Software Foundation, either version 2 of the License, or
  * (at your option) any later version.
  *
  * ana is distributed in the hope that it will be useful,
@@ -32,32 +32,32 @@
 
 #include <iostream>
 
-#include "getopt_pp.h"
-
 #include "ana.hpp"
 
-using namespace GetOpt;
 using namespace ana;
 
 const port DEFAULT_PORT = "30303";
 
 const char* const DEFAULT_ADDRESS = "127.0.0.1";
 const char* const DEFAULT_NAME    = "Unnamed";
-const char* const DEFAULT_PROXYA  = "none";
 
 
-void show_help()
+void show_help(char* const command)
 {
-    std::cout << "Valid options are:\n"
-        "\t-p --port        [optional]    Set port. Default=" << DEFAULT_PORT << std::endl <<
-        "\t-a --address     [optional]    Set address. Default=" << DEFAULT_ADDRESS << std::endl <<
-        "\t-n --name        [recommended] Set name. Default=" << DEFAULT_NAME << std::endl <<
-        "\t-x --proxyaddr   [optional]    Set proxy address." << std::endl <<
-        "\t-y --proxyport   [optional]    Set proxy port." << std::endl <<
-        "\t-t --auth        [optional]    Set proxy authentication type use [none,basic,digest]. Default=" << DEFAULT_PROXYA << std::endl <<
-        "\t-u --user        [optional]    Set proxy authentication user name." << std::endl <<
-        "\t-w --password    [optional]    Set proxy authentication password." << std::endl;
-    ;
+    std::cout << "The following options should be given in order and are all optional:\n"
+        "\tName:            [recommended] Set name. Default=" << DEFAULT_NAME << std::endl <<
+        "\tAddress:         [optional]    Set address. Default=" << DEFAULT_ADDRESS << std::endl <<
+        "\tPort:            [optional]    Set port. Default=" << DEFAULT_PORT << std::endl <<
+        "\tProxy address:   [optional]    Set proxy address." << std::endl <<
+        "\tProxy port:      [optional]    Set proxy port." << std::endl <<
+        "\tProxy user:      [optional]    Set proxy authentication user name." << std::endl <<
+        "\tProxy password:  [optional]    Set proxy authentication password." << std::endl <<
+        "Examples:\n" <<
+        "\t" << command << " billy localhost 12345\n" <<
+        "\t\tConnect to a local server on port 12345 with nick billy.\n" <<
+        "\t" << command << " billy X.K.C.D 12345 localhost 3128 foo bar\n" <<
+        "\t\tConnect to a remote server at X.K.C.D:12345 using a local proxy with credentials foo:bar.\n\n";
+        ;
 }
 
 struct connection_info
@@ -68,7 +68,6 @@ struct connection_info
         name(DEFAULT_NAME),
         proxyaddr(),
         proxyport(),
-        auth("none"),
         user(),
         password()
     {
@@ -76,17 +75,7 @@ struct connection_info
 
     bool use_proxy() const
     {
-        return (auth == "none" || auth == "basic" || auth == "digest") && proxyaddr != "" && proxyport != "";
-    }
-
-    ana::proxy::authentication_type get_ana_auth_type() const
-    {
-        if (auth == "digest")
-            return ana::proxy::digest;
-        else if (auth == "basic")
-            return ana::proxy::basic;
-        else
-            return ana::proxy::none;
+        return proxyaddr != "" && proxyport != "";
     }
 
     port        pt;
@@ -94,7 +83,6 @@ struct connection_info
     std::string name;
     std::string proxyaddr;
     std::string proxyport;
-    std::string auth;
     std::string user;
     std::string password;
 };
@@ -155,8 +143,7 @@ class ChatClient : public ana::listener_handler,
                 if ( ! conn_info_.use_proxy() )
                     client_->connect( this );
                 else
-                    client_->connect_through_proxy(conn_info_.get_ana_auth_type(),
-                                                   conn_info_.proxyaddr,
+                    client_->connect_through_proxy(conn_info_.proxyaddr,
                                                    conn_info_.proxyport,
                                                    this,
                                                    conn_info_.user,
@@ -224,26 +211,27 @@ class ChatClient : public ana::listener_handler,
 
 int main(int argc, char **argv)
 {
-    GetOpt_pp options(argc, argv);
+    show_help(argv[0]);
 
-    if (options >> OptionPresent('h', "help"))
-        show_help();
-    else
-    {
-        connection_info ci;
+    connection_info ci;
 
-        options >> Option('p', "port", ci.pt)
-                >> Option('a', "address", ci.address)
-                >> Option('n', "name", ci.name)
-                >> Option('x', "proxyaddr", ci.proxyaddr)
-                >> Option('y', "proxyport", ci.proxyport)
-                >> Option('t', "auth", ci.auth)
-                >> Option('u', "user", ci.user)
-                >> Option('w', "password", ci.password);
+    if ( argc > 1 )
+        ci.name      = argv[1];
+    if ( argc > 2 )
+        ci.address   = argv[2];
+    if ( argc > 3 )
+        ci.pt        = argv[3];
+    if ( argc > 4 )
+        ci.proxyaddr = argv[4];
+    if ( argc > 5 )
+        ci.proxyport = argv[5];
+    if ( argc > 6 )
+        ci.user      = argv[6];
+    if ( argc > 7 )
+        ci.password  = argv[7];
 
-        std::cout << "Main client app.: Starting client" << std::endl;
+    std::cout << "Main client app.: Starting client" << std::endl;
 
-        ChatClient client(ci);
-        client.run();
-    }
+    ChatClient client(ci);
+    client.run();
 }

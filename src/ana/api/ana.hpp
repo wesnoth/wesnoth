@@ -19,7 +19,7 @@
  *
  * ana is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
+ * the Free Software Foundation, either version 2 of the License, or
  * (at your option) any later version.
  *
  * ana is distributed in the hope that it will be useful,
@@ -51,8 +51,7 @@
  *
  * @section requirements requirements
  * To compile ana, you need:
- * - Boost, version 1.35 or older
- *
+ *  - Boost, version 1.35 or newer
  */
 
 #include <boost/cstdint.hpp>
@@ -131,24 +130,24 @@ namespace ana
         {
             public:
                 /**
-                * Sets the handler for incoming messages.
-                *
-                * @param listener : Pointer to the listener_handler object that will
-                *                   handle following incoming message events.
-                *
-                * \sa listener_handler
-                */
+                 * Sets the handler for incoming messages.
+                 *
+                 * @param listener : Pointer to the listener_handler object that will
+                 *                   handle following incoming message events.
+                 *
+                 * \sa listener_handler
+                 */
                 virtual void set_listener_handler( listener_handler* listener ) = 0;
 
                 /**
-                * Get the client_id of this listener.
-                *
-                * @returns : ServerID for the server application, or a comparable client_id
-                *            unique to this listener.
-                *
-                * \sa ServerID
-                * \sa client_id
-                */
+                 * Get the client_id of this listener.
+                 *
+                 * @returns : ServerID for the server application, or a comparable client_id
+                 *            unique to this listener.
+                 *
+                 * \sa ServerID
+                 * \sa client_id
+                 */
                 virtual client_id id() const                                    = 0;
 
             protected: // should be so?
@@ -163,16 +162,16 @@ namespace ana
     struct connection_handler
     {
         /**
-         * Handle new connection event.
-         *
-         * @param error_code : Error code of the event.
-         *
-         * @param client_id  : ID of the client that connects.
-         *
-         * \sa error_code
-         * \sa client_id
-         * \sa ServerID
-         */
+          * Handle new connection event.
+          *
+          * @param error_code : Error code of the event.
+          *
+          * @param client_id  : ID of the client that connects.
+          *
+          * \sa error_code
+          * \sa client_id
+          * \sa ServerID
+          */
         virtual void handle_connect( error_code, client_id )  = 0;
     };
 
@@ -393,20 +392,6 @@ namespace ana
     };
 
     /**
-     * Defines types and constants related to proxy configuration.
-     */
-    namespace proxy
-    {
-        /** Types of proxy authentication. See RFCs 2616 and 2617. */
-        enum authentication_type
-        {
-            none   /** Use proxies, but without authentication. */,
-            basic  /** Authenticate to proxy via a basic scheme. See RFC2617.*/,
-            digest /** Authenticate to proxy via a digest scheme. See RFC2617.*/
-        };
-    }
-
-    /**
      * A network client.
      *
      * \sa listener
@@ -439,8 +424,7 @@ namespace ana
          *
          * \sa connection_handler
          */
-        virtual void connect_through_proxy(proxy::authentication_type auth_type,
-                                           std::string proxy_address,
+        virtual void connect_through_proxy(std::string proxy_address,
                                            std::string proxy_port,
                                            connection_handler* handler,
                                            std::string user_name = "",

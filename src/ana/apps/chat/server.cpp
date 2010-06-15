@@ -17,7 +17,7 @@
  *
  * ana is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
+ * the Free Software Foundation, either version 2 of the License, or
  * (at your option) any later version.
  *
  * ana is distributed in the hope that it will be useful,
@@ -29,15 +29,11 @@
  * along with ana.  If not, see <http://www.gnu.org/licenses/>.
  *
  */
+
 #include <iostream>
 #include <sstream>
 
-#include <boost/bind.hpp>
-
 #include "ana.hpp"
-#include "getopt_pp.h"
-
-using namespace GetOpt;
 
 using namespace ana;
 
@@ -150,27 +146,16 @@ class ChatServer : public listener_handler,
         std::map<client_id, std::string> names_;
 };
 
-
-void show_help()
-{
-    std::cout << "Valid options are:\n"
-        "\t-p --port        [optional] Set port. Default=" << DEFAULT_PORT << std::endl;
-    ;
-}
-
 int main(int argc, char **argv)
 {
-    GetOpt_pp options(argc, argv);
+    std::cout << "Use " << argv[0] << " port_number to run on a specific port (default: "
+              << DEFAULT_PORT << ".)\n\n";
 
     port pt(DEFAULT_PORT);
 
-    if (options >> OptionPresent('h', "help"))
-        show_help();
-    else
-    {
-        options >> Option('p', "port", pt);
+    if ( argc > 1 )
+        pt = argv[1];
 
-        ChatServer server;
-        server.run(pt);
-    }
+    ChatServer server;
+    server.run(pt);
 }

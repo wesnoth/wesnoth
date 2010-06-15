@@ -1,34 +1,38 @@
 /* $Id$ */
 
 /**
-* @file buffers.hpp
-* @brief Implementation details for the ana project dealing with buffers.
-*
-* ana: Asynchronous Network API.
-* Copyright (C) 2010 Guillermo Biset.
-*
-* This file is part of the ana project.
-*
-* System:         ana
-* Language:       C++
-*
-* Author:         Guillermo Biset
-* E-Mail:         billybiset AT gmail DOT com
-*
-* ana is free software: you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* ana is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with ana.  If not, see <http://www.gnu.org/licenses/>.
-*
-*/
+ * @file buffers.hpp
+ * @brief Implementation details for the ana project dealing with buffers.
+ *
+ * ana: Asynchronous Network API.
+ * Copyright (C) 2010 Guillermo Biset.
+ *
+ * This file is part of the ana project.
+ *
+ * System:         ana
+ * Language:       C++
+ *
+ * Author:         Guillermo Biset
+ * E-Mail:         billybiset AT gmail DOT com
+ *
+ * ana is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * ana is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with ana.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ */
+
+#include <cstring>
+
+#include <boost/noncopyable.hpp>
 
 #ifndef ANA_BUFFERS_HPP
 #define ANA_BUFFERS_HPP
@@ -44,7 +48,7 @@ namespace ana
         /**
          * A simple buffer to read things on, supports conversion to string.
          */
-        class read_buffer_implementation
+        class read_buffer_implementation : boost::noncopyable
         {
             public:
                 /**
@@ -96,6 +100,13 @@ namespace ana
                     return std::string( base_, size_ );
                 }
 
+                template<class T>
+                void copy_to(T& x)
+                {
+                    assert( size_ == sizeof(T) );
+                    std::memcpy( reinterpret_cast<void*>(&x), base(), sizeof(T) );
+                }
+
             private:
                 char*  base_;
                 size_t size_;
@@ -104,12 +115,11 @@ namespace ana
         /** A shared pointer to a read_buffer, self destructs when no one is left referencing it. */
         typedef boost::shared_ptr<read_buffer_implementation> read_buffer;
 
-
         /**
-        * A buffer to be constructed from different buffers that can duplicate the other
-        * and hold a local copy that will destruct with the object itself.
-        */
-        class copying_buffer
+         * A buffer to be constructed from different buffers that can duplicate the other
+         * and hold a local copy that will destruct with the object itself.
+         */
+        class copying_buffer : boost::noncopyable
         {
             public:
                 copying_buffer( boost::asio::const_buffer buffer, ana::send_type copy_buffer) :
@@ -145,7 +155,6 @@ namespace ana
     typedef boost::shared_ptr<detail::copying_buffer> shared_buffer;
 
     } //namespace detail
-
 
     /** @name Buffer creation methods
      *
@@ -221,7 +230,7 @@ namespace ana
         return boost::asio::buffer(data);
     }
 
-    template<typename PodType, std::size_t N>
+    template<typename PodType, std::size_t N> 
     inline boost::asio::mutable_buffers_1 buffer(boost::array< PodType, N > & data,
                                                  std::size_t max_size_in_bytes)
     {
@@ -267,7 +276,7 @@ namespace ana
         return boost::asio::buffer(data, max_size_in_bytes);
     }
 
-    template<typename PodType, typename Allocator>
+    template<typename PodType, typename Allocator> 
     inline boost::asio::const_buffers_1 buffer(const std::vector< PodType, Allocator > & data)
     {
         return boost::asio::buffer(data);
@@ -290,7 +299,6 @@ namespace ana
         return boost::asio::buffer(data, max_size_in_bytes);
     }
     //@}
-
 }
 
 #endif

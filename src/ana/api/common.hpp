@@ -17,7 +17,7 @@
 *
 * ana is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
+* the Free Software Foundation, either version 2 of the License, or
 * (at your option) any later version.
 *
 * ana is distributed in the hope that it will be useful,
@@ -40,9 +40,9 @@
 namespace ana
 {
     /** @name Type and constant definitions
-    *
-    * Definitions of main types and relevant constants.
-    */
+     *
+     * Definitions of main types and relevant constants.
+     */
     //@{
         typedef boost::uint32_t ana_uint32  /** Standard unsigned int, with fixed size to 32 bits.  */ ;
         typedef boost::int32_t  ana_int32   /** Standard int, with fixed size to 32 bits.           */ ;

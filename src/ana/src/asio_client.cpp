@@ -17,7 +17,7 @@
  *
  * ana is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
+ * the Free Software Foundation, either version 2 of the License, or
  * (at your option) any later version.
  *
  * ana is distributed in the hope that it will be useful,
@@ -129,8 +129,7 @@ void asio_client::connect( ana::connection_handler* handler )
     }
 }
 
-void asio_client::connect_through_proxy(ana::proxy::authentication_type auth_type,
-                                        std::string                     proxy_address,
+void asio_client::connect_through_proxy(std::string                     proxy_address,
                                         std::string                     proxy_port,
                                         ana::connection_handler*        handler,
                                         std::string                     user_name,
@@ -140,7 +139,6 @@ void asio_client::connect_through_proxy(ana::proxy::authentication_type auth_typ
 
     proxy_information proxy_info;
 
-    proxy_info.auth_type     = auth_type;
     proxy_info.proxy_address = proxy_address;
     proxy_info.proxy_port    = proxy_port;
     proxy_info.user_name     = user_name;
