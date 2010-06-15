@@ -2,11 +2,7 @@
 
 #include <SDL/SDL_net.h>
 
-#include <ana.hpp>
-
-using namespace ana;
-
-const port DEFAULT_PORT = "12345";
+const int DEFAULT_PORT = 2000;
 
 int main(int argc, char **argv)
 {
@@ -22,7 +18,7 @@ int main(int argc, char **argv)
     }
 
     /* Resolving the host using NULL make network interface to listen */
-    if (SDLNet_ResolveHost(&ip, NULL, 2000) < 0)
+    if (SDLNet_ResolveHost(&ip, NULL, DEFAULT_PORT) < 0)
     {
         fprintf(stderr, "SDLNet_ResolveHost: %s\n", SDLNet_GetError());
         exit(EXIT_FAILURE);
@@ -56,9 +52,19 @@ int main(int argc, char **argv)
             quit2 = 0;
             while (!quit2)
             {
+                // Added this, from here
+                char buf[4];
+                int len = SDLNet_TCP_Recv(csd,buf,4);
+
+                const int message_length = *( reinterpret_cast<int*>(buf) );
+
+                printf("Next message length %d\n", message_length);
+                // ... to here
+
                 if (SDLNet_TCP_Recv(csd, buffer, 512) > 0)
                 {
-                    printf("Client say: %s\n", buffer);
+                    buffer[message_length] = '\0';     // Added this, interpret the message correctly ugly fix
+                    printf("Client says: %s\n", buffer);
 
                     if(strcmp(buffer, "exit") == 0) /* Terminate this connection */
                     {
@@ -84,70 +90,3 @@ int main(int argc, char **argv)
 
     return EXIT_SUCCESS;
 }
-
-/*
-class test_server : public listener_handler,
-                    public send_handler,
-                    public connection_handler
-{
-    public:
-        test_server() :
-            server_( ana::server::create() )
-        {
-        }
-
-        void run(port pt)
-        {
-            server_->set_connection_handler( this );
-
-            server_->set_listener_handler( this );
-
-            server_->run(pt);
-
-            std::cout << "Server running, Enter to quit." << std::endl;
-
-            std::string s;
-            std::getline(std::cin, s); //yes, i've seen better code :)
-        }
-
-        ~test_server()
-        {
-            delete server_;
-        }
-    private:
-
-        virtual void handle_connect(ana::error_code error, client_id client)
-        {
-            if (! error)
-                std::cout << "Server: User " << client << " has joined.\n";
-        }
-
-        virtual void handle_disconnect(ana::error_code error, client_id client)
-        {
-            std::cout << "Server: User " << client << " disconnected.\n";
-        }
-
-        virtual void handle_send(ana::error_code error, client_id client)
-        {
-            if ( error )
-                std::cerr << "Error sending to client " << client << ". Timeout?" << std::endl;
-        }
-
-        virtual void handle_message( ana::error_code error, client_id client, ana::detail::read_buffer buffer)
-        {
-            if (! error)
-                std::cout << buffer->string() << std::endl;
-            else
-                handle_disconnect(error, client);
-        }
-
-        server*                          server_;
-};
-
-
-int main()
-{
-    test_server test;
-    test.run(DEFAULT_PORT);
-}
-*/
