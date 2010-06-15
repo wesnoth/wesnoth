@@ -110,7 +110,7 @@ void outcome_callable::get_inputs(std::vector<game_logic::formula_input>* inputs
 }
 
 
-attack_callable::attack_callable(const ai::formula_ai& /*ai*/, const map_location& move_from,
+attack_callable::attack_callable(const map_location& move_from,
 				    const map_location& src, const map_location& dst, int weapon)
 	: move_from_(move_from), src_(src), dst_(dst),
 	bc_(*resources::units, src, dst, weapon, -1, 1.0, NULL,
@@ -211,7 +211,7 @@ void attack_map_callable::collect_possible_attacks(std::vector<variant>& vars, m
 		    unit->invisible(unit->get_location(), units_, ai_.get_info().teams))
 			continue;
 		/* add attacks with default weapon */
-		attack_callable* item = new attack_callable(ai_, attacker_location, attack_position, adj[n], -1);
+		attack_callable* item = new attack_callable(attacker_location, attack_position, adj[n], -1);
 		vars.push_back(variant(item));
 	}
 }

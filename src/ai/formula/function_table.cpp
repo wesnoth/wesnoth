@@ -1200,7 +1200,7 @@ private:
 			ERR_AI << "AI ERROR: Formula produced illegal attack: " << move_from << " -> " << src << " -> " << dst << "\n";
 			return variant();
 		}
-		return variant(new attack_callable(ai_, move_from, src, dst, weapon));
+		return variant(new attack_callable(move_from, src, dst, weapon));
 	}
 
 	const formula_ai& ai_;

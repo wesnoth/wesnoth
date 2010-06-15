@@ -52,7 +52,7 @@ class attack_callable : public formula_callable {
 
 	void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
 public:
-	attack_callable(const ai::formula_ai& ai, const map_location& move_from,
+	attack_callable(const map_location& move_from,
 			    const map_location& src, const map_location& dst, int weapon);
 
 	const map_location& move_from() const { return move_from_; }
