@@ -19,6 +19,8 @@
 #ifndef WB_VISITOR_HPP_
 #define WB_VISITOR_HPP_
 
+#include <boost/shared_ptr.hpp>
+
 namespace wb
 {
 
@@ -31,7 +33,7 @@ public:
 	visitor();
 	virtual ~visitor();
 
-	virtual void visit_move(move& move) = 0;
+	virtual void visit_move(boost::shared_ptr<move> move) = 0;
 };
 
 }

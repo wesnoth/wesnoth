@@ -51,7 +51,7 @@ move::~move()
 
 void move::accept(visitor& v)
 {
-	v.visit_move(*this);
+	v.visit_move(shared_from_this());
 }
 
 modifier_ptr move::apply_temp_modifier(unit_map& unit_map)

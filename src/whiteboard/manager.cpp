@@ -62,7 +62,10 @@ side_actions& get_current_side_actions()
 void manager::apply_temp_modifiers()
 {
 	mapbuilder_.reset(new mapbuilder_visitor(*resources::units));
-	mapbuilder_->exclude(*selected_unit_);
+	if (selected_unit_)
+	{
+		mapbuilder_->exclude(*selected_unit_);
+	}
 	const action_set& actions = get_current_side_actions().actions();
 	foreach (const action_ptr &action, actions)
 	{
@@ -135,15 +138,16 @@ void manager::save_temp_move()
 	//If selected unit already has a move defined, erase it first
 
 	// TODO: implement a find_and_erase method in find_visitor to avoid iterating twice over actions
-
-	find_visitor finder;
-	action_ptr action = finder.find_first_action_of(*selected_unit_, get_current_side_actions().actions());
-	if (action)
 	{
-		LOG_WB << "Previous action found for unit " << selected_unit_->name() << " [" << selected_unit_->id() << "]"
-				<< ", erasing action.\n";
-		get_current_side_actions().remove_action(action);
-	}
+		find_visitor finder;
+		action_ptr action = finder.find_first_action_of(*selected_unit_, get_current_side_actions().actions());
+		if (action)
+		{
+			LOG_WB << "Previous action found for unit " << selected_unit_->name() << " [" << selected_unit_->id() << "]"
+					<< ", erasing action.\n";
+			get_current_side_actions().remove_action(action);
+		}
+	} // kill action shared_ptr by closing scope
 
 	//Define the new move
 	LOG_WB << "Creating move for unit " << selected_unit_->name() << " [" << selected_unit_->id() << "]"
@@ -155,6 +159,7 @@ void manager::save_temp_move()
 	get_current_side_actions().queue_move(*selected_unit_, route_.back(), move_arrow_, fake_unit_);
 	move_arrow_.reset();
 	fake_unit_.reset();
+	selected_unit_ = NULL;
 }
 
 } // end namespace wb

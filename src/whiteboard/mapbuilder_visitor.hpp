@@ -44,7 +44,7 @@ public:
 	mapbuilder_visitor(unit_map& unit_map);
 	virtual ~mapbuilder_visitor();
 
-	virtual void visit_move(move& move);
+	virtual void visit_move(boost::shared_ptr<move> move);
 
 	// Any actions associated with this unit will be ignored when modifying the unit map
 	virtual void exclude(const unit& unit) { excluded_units_.insert(&unit); }

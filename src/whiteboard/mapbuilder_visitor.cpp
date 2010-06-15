@@ -41,11 +41,11 @@ mapbuilder_visitor::~mapbuilder_visitor()
 	}
 }
 
-void mapbuilder_visitor::visit_move(move& move)
+void mapbuilder_visitor::visit_move(boost::shared_ptr<move> move)
 {
-	if (excluded_units_.count(&move.get_unit()) == 0)
+	if (excluded_units_.count(&move->get_unit()) == 0)
 	{
-		modifiers_.push(move.apply_temp_modifier(unit_map_));
+		modifiers_.push(move->apply_temp_modifier(unit_map_));
 	}
 }
 

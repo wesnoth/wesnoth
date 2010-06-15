@@ -22,6 +22,8 @@
 #include "action.hpp"
 #include "map_location.hpp"
 
+#include <boost/enable_shared_from_this.hpp>
+
 class arrow;
 class config;
 class unit;
@@ -33,7 +35,7 @@ namespace wb {
  * A planned move, represented on the map by an arrow and
  * a ghosted unit in the destination hex.
  */
-class move: public action
+class move: public action, public boost::enable_shared_from_this<move>
 {
 public:
 	move(unit& subject, const map_location& target_hex, boost::shared_ptr<arrow> arrow,
