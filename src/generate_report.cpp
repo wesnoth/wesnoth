@@ -530,7 +530,7 @@ report generate_report(TYPE type,
 		break;
 	}
 	case VILLAGES: {
-		const team_data data = calculate_team_data(current_team,current_side,units);
+		const team_data data = calculate_team_data(current_team,current_side);
 		if (current_side != playing_side)
 			str << span_color(font::GRAY_COLOR);
 		str << data.villages << '/';
@@ -558,7 +558,7 @@ report generate_report(TYPE type,
 		break;
 	}
 	case UPKEEP: {
-		const team_data data = calculate_team_data(current_team,current_side,units);
+		const team_data data = calculate_team_data(current_team,current_side);
 		if (current_side != playing_side)
 			str << span_color(font::GRAY_COLOR);
 		str << data.expenses << " (" << data.upkeep << ")";
@@ -567,7 +567,7 @@ report generate_report(TYPE type,
 		break;
 	}
 	case EXPENSES: {
-		const team_data data = calculate_team_data(current_team,current_side,units);
+		const team_data data = calculate_team_data(current_team,current_side);
 		if (current_side != playing_side)
 			str << span_color(font::GRAY_COLOR);
 		str << data.expenses;
@@ -576,7 +576,7 @@ report generate_report(TYPE type,
 		break;
 	}
 	case INCOME: {
-		team_data data = calculate_team_data(current_team, current_side, units);
+		team_data data = calculate_team_data(current_team, current_side);
 		char const *end = naps;
 		if (current_side != playing_side)
 			str << span_color(font::GRAY_COLOR);

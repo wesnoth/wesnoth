@@ -506,7 +506,7 @@ struct team_data
 	std::string teamname;
 };
 
-team_data calculate_team_data(const class team& tm, int side, const unit_map& units);
+team_data calculate_team_data(const class team& tm, int side);
 
 /**
  * Superclass for temporary unit_map modifiers. Allows putting them together

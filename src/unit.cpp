@@ -2791,7 +2791,7 @@ void unit::refresh()
 	}
 }
 
-team_data calculate_team_data(const team& tm, int side, const unit_map& /*units*/)
+team_data calculate_team_data(const team& tm, int side)
 {
 	team_data res;
 	res.units = side_units(side);
