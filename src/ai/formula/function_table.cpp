@@ -292,7 +292,7 @@ private:
 //		for(unit_map::const_iterator i = resources::units->begin(); i != resources::units->end(); ++i) {
 //			unit_counter[i->second.side()-1]++;
 //			unit_adapter unit(i->second);
-//			find_movemap( ai_.get_info().map, *resources::units, unit, i->first, scores[i->second.side()-1], ai_.get_info().teams , true );
+//			find_movemap( ai_.get_info().map, *resources::units, unit, i->first, scores[i->second.side()-1], ai_.*resources::teams , true );
 //		}
 
 		for(size_t side = 0 ; side < units_input.num_elements() ; ++side) {
@@ -663,7 +663,7 @@ private:
 		if (units.find(loc) == units.end()){
 			return variant();
 		}
-		const pathfind::paths unit_paths(ai_.get_info().map, units, loc ,ai_.get_info().teams, false, false, ai_.current_team());
+		const pathfind::paths unit_paths(ai_.get_info().map, units, loc ,*resources::teams, false, false, ai_.current_team());
 		return variant(new location_callable(ai_.suitable_keep(loc,unit_paths)));
 	}
 

@@ -121,10 +121,9 @@ class game_info {
 public:
 
 		game_info(game_display& disp, gamemap& map,
-			std::vector<team>& teams, tod_manager& tod_mng, class game_state& game_state)
+			 tod_manager& tod_mng, class game_state& game_state)
 			: disp(disp)
 			, map(map)
-			, teams(teams)
 			, tod_manager_(tod_mng)
 			, game_state_(game_state)
 			, recent_attacks()
@@ -135,9 +134,6 @@ public:
 
 		/** The map of the game -- use this object to find the terrain at any location. */
 		gamemap& map;
-
-		/** A list of the teams in the game. */
-		std::vector<team>& teams;
 
 		/** Information about what turn it is, and what time of day. */
 		tod_manager& tod_manager_;

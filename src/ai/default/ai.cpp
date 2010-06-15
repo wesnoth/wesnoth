@@ -432,7 +432,7 @@ int ai_default_recruitment_stage::get_combat_score(const unit_type& ut) const
 
 		if (j->can_recruit()) {
 
-			team &enemy_team = get_info().teams[j->side() - 1];
+			team &enemy_team = (*resources::teams)[j->side() - 1];
 			const std::set<std::string> &recruits = enemy_team.recruits();
 			foreach (const std::string &rec, recruits) {
 				get_combat_score_vs(ut,rec,score,weighting,0,0);
@@ -832,13 +832,13 @@ bool ai_default_recruitment_stage::do_play_stage()
 		// that are closer to us than to other keeps.
 		const std::vector<map_location>& villages = get_info().map.villages();
 		for(std::vector<map_location>::const_iterator v = villages.begin(); v != villages.end(); ++v) {
-			const int owner = village_owner(*v,get_info().teams);
+			const int owner = village_owner(*v,*resources::teams);
 			if(owner == -1) {
 				const size_t distance = distance_between(start_pos,*v);
 
 				bool closest = true;
-				for(std::vector<team>::const_iterator i = get_info().teams.begin(); i != get_info().teams.end(); ++i) {
-					const int index = i - get_info().teams.begin() + 1;
+				for(std::vector<team>::const_iterator i = resources::teams->begin(); i != resources::teams->end(); ++i) {
+					const int index = i - resources::teams->begin() + 1;
 					const map_location& loc = get_info().map.starting_position(index);
 					if(loc != start_pos && distance_between(loc,*v) < distance) {
 						closest = false;

@@ -635,7 +635,7 @@ void testing_move_to_targets_phase::access_points(const move_map& srcdst, const 
 	for(move_map::const_iterator i = locs.first; i != locs.second; ++i) {
 		const map_location& loc = i->second;
 		if (int(distance_between(loc,dst)) <= u_it->total_movement()) {
-			pathfind::shortest_path_calculator calc(*u_it, current_team(), units_, get_info().teams, map_);
+			pathfind::shortest_path_calculator calc(*u_it, current_team(), units_, *resources::teams, map_);
 			pathfind::plain_route rt = a_star_search(loc, dst, u_it->total_movement(), &calc, map_.w(), map_.h());
 			if(rt.steps.empty() == false) {
 				out.push_back(loc);

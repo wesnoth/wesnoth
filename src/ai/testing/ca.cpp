@@ -200,7 +200,7 @@ void recruitment_phase::execute()
 
 	unit_map &units_ = *resources::units;
 	gamemap &map_ = get_info().map;
-	std::vector<team> &teams_ = get_info().teams;
+	std::vector<team> &teams_ = *resources::teams;
 
 	map_location start_pos = units_.find_leader(get_side())->get_location();
 
@@ -659,7 +659,7 @@ double move_leader_to_goals_phase::evaluate()
 		}
 	}
 
-	pathfind::shortest_path_calculator calc(*leader, current_team(), *resources::units, get_info().teams, get_info().map);
+	pathfind::shortest_path_calculator calc(*leader, current_team(), *resources::units, *resources::teams, get_info().map);
 	pathfind::plain_route route = a_star_search(leader->get_location(), dst_, 1000.0, &calc,
 			get_info().map.w(), get_info().map.h());
 	if(route.steps.empty()) {
@@ -668,7 +668,7 @@ double move_leader_to_goals_phase::evaluate()
 	}
 
 	const pathfind::paths leader_paths(get_info().map, *resources::units, leader->get_location(),
-				 get_info().teams, false, false, current_team());
+				 *resources::teams, false, false, current_team());
 
 	std::map<map_location,pathfind::paths> possible_moves;
 	possible_moves.insert(std::pair<map_location,pathfind::paths>(leader->get_location(), leader_paths));
@@ -740,7 +740,7 @@ double move_leader_to_keep_phase::evaluate()
 
 	// Find where the leader can move
 	const pathfind::paths leader_paths(get_info().map, units_, leader->get_location(),
-		get_info().teams, false, false, current_team());
+		*resources::teams, false, false, current_team());
 	const map_location& keep = suitable_keep(leader->get_location(), leader_paths);
 
 	std::map<map_location,pathfind::paths> possible_moves;
@@ -946,7 +946,7 @@ void get_villages_phase::find_villages(
 
 	size_t min_distance = 100000;
 	gamemap &map_ = get_info().map;
-	std::vector<team> &teams_ = get_info().teams;
+	std::vector<team> &teams_ = *resources::teams;
 
 	// When a unit is dispatched we need to make sure we don't
 	// dispatch this unit a second time, so store them here.

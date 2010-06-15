@@ -96,7 +96,7 @@ boost::shared_ptr<attacks_vector> aspect_attacks::analyze_targets() const
 		// Attack anyone who is on the enemy side,
 		// and who is not invisible or petrified.
 		if (current_team().is_enemy(j->side()) && !j->incapacitated() &&
-		    !j->invisible(j->get_location(),units_,get_info().teams))
+		    !j->invisible(j->get_location(),units_,*resources::teams))
 		{
 			if (!j->matches_filter(vconfig(filter_enemy_), j->get_location())) {
 				continue;
@@ -135,7 +135,7 @@ void aspect_attacks::do_attack_analysis(
 	}
 	gamemap &map_ = get_info().map;
 	unit_map &units_ = *resources::units;
-	std::vector<team> &teams_ = get_info().teams;
+	std::vector<team> &teams_ = *resources::teams;
 
 	static double best_results[6];
 	if(result.empty()) {
@@ -388,7 +388,7 @@ int aspect_attacks::rate_terrain(const unit& u, const map_location& loc) const
 	}
 
 	if(map_.is_village(terrain)) {
-		int owner = village_owner(loc, get_info().teams) + 1;
+		int owner = village_owner(loc, *resources::teams) + 1;
 
 		if(owner == get_side()) {
 			rating += friendly_village_value;

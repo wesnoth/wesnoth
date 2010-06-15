@@ -89,7 +89,7 @@ void readwrite_context_impl::raise_gamestate_changed() const
 
 team& readwrite_context_impl::current_team_w()
 {
-	return get_info_w().teams[get_side()-1];
+	return (*resources::teams)[get_side()-1];
 }
 
 attack_result_ptr readwrite_context_impl::execute_attack_action(const map_location& attacker_loc, const map_location& defender_loc, int attacker_weapon){
@@ -292,7 +292,7 @@ void readonly_context_impl::diagnostic(const std::string& msg)
 
 const team& readonly_context_impl::current_team() const
 {
-	return get_info().teams[get_side()-1];
+	return (*resources::teams)[get_side()-1];
 }
 
 
@@ -335,7 +335,7 @@ void readonly_context_impl::calculate_moves(const unit_map& units, std::map<map_
 		}
 
 		// We can't see where invisible enemy units might move.
-		if (enemy && un_it->invisible(un_it->get_location(), units, get_info().teams) && !see_all) {
+		if (enemy && un_it->invisible(un_it->get_location(), units, *resources::teams) && !see_all) {
 			continue;
 		}
 		// If it's an enemy unit, reset its moves while we do the calculations.
@@ -351,7 +351,7 @@ void readonly_context_impl::calculate_moves(const unit_map& units, std::map<map_
 		bool teleports = un_it->get_ability_bool("teleport");
 		res.insert(std::pair<map_location,pathfind::paths>(
 			un_it->get_location(), pathfind::paths(get_info().map,
-			units, un_it->get_location(), get_info().teams, false,
+			units, un_it->get_location(), *resources::teams, false,
 			teleports, current_team(), 0, see_all)));
 	}
 
@@ -375,8 +375,8 @@ void readonly_context_impl::calculate_moves(const unit_map& units, std::map<map_
 
 			// Don't take friendly villages
 			if(!enemy && get_info().map.is_village(dst)) {
-				for(size_t n = 0; n != get_info().teams.size(); ++n) {
-					if(get_info().teams[n].owns_village(dst)) {
+				for(size_t n = 0; n != resources::teams->size(); ++n) {
+					if((*resources::teams)[n].owns_village(dst)) {
 						int side = n + 1;
 						if (get_side() != side && !current_team().is_enemy(side)) {
 							friend_owns = true;
@@ -921,7 +921,7 @@ bool readonly_context_impl::leader_can_reach_keep() const
 
 	// Find where the leader can move
 	const pathfind::paths leader_paths(get_info().map, *resources::units,
-		leader->get_location(), get_info().teams, false, false, current_team());
+		leader->get_location(), *resources::teams, false, false, current_team());
 
 
 	return leader_paths.destinations.contains(start_pos);

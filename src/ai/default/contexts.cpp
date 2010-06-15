@@ -85,8 +85,8 @@ int default_ai_context_impl::count_free_hexes_in_castle(const map_location &loc,
 			ret += count_free_hexes_in_castle(adj[n], checked_hexes);
 			if (u == units_.end()
 				|| (current_team().is_enemy(u->side())
-					&& u->invisible(adj[n], units_, get_info().teams))
-				|| ((&get_info().teams[u->side() - 1]) == &current_team()
+					&& u->invisible(adj[n], units_, *resources::teams))
+				|| ((&(*resources::teams)[u->side() - 1]) == &current_team()
 					&& u->movement_left() > 0)) {
 				ret += 1;
 			}
@@ -127,7 +127,7 @@ bool default_ai_context_impl::multistep_move_possible(const map_location& from,
 					unit temp_unit(*i);
 					temp_unit.set_movement(itor->move_left);
 					const temporary_unit_placer unit_placer(units_,via,temp_unit);
-					const pathfind::paths unit_paths(get_info().map,units_,via,get_info().teams,false,false,current_team());
+					const pathfind::paths unit_paths(get_info().map,units_,via,*resources::teams,false,false,current_team());
 
 					LOG_AI << "Found " << unit_paths.destinations.size() << " moves for temp leader.\n";
 
@@ -162,7 +162,7 @@ int default_ai_context_impl::rate_terrain(const unit& u, const map_location& loc
 	}
 
 	if(map_.is_village(terrain)) {
-		int owner = village_owner(loc, get_info().teams) + 1;
+		int owner = village_owner(loc, *resources::teams) + 1;
 
 		if(owner == get_side()) {
 			rating += friendly_village_value;
@@ -183,7 +183,7 @@ std::vector<target> default_ai_context_impl::find_targets(const move_map& enemy_
 	unit_map &units_ = *resources::units;
 	unit_map::iterator leader = units_.find_leader(get_side());
 	gamemap &map_ = get_info().map;
-	std::vector<team> teams_ = get_info().teams;
+	std::vector<team> teams_ = *resources::teams;
 	const bool has_leader = leader != units_.end();
 
 	std::vector<target> targets;

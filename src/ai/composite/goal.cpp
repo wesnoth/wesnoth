@@ -197,7 +197,7 @@ void protect_goal::add_targets(std::back_insert_iterator< std::vector< target > 
 
 
 	unit_map &units = *resources::units;
-	std::vector<team> &teams = get_info().teams;
+	std::vector<team> &teams = *resources::teams;
 
 
 	std::set<map_location> items;
