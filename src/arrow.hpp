@@ -91,8 +91,6 @@ protected:
 protected:
 	//properties
 
-	display*& screen_;
-
 	display::tdrawing_layer layer_;
 
 	std::string color_;

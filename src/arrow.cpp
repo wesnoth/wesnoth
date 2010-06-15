@@ -31,8 +31,7 @@ static lg::log_domain log_arrows("arrows");
 #define DBG_ARR LOG_STREAM(debug, log_arrows)
 
 arrow::arrow()
-	: screen_((display*&) resources::screen)
-	, layer_(display::LAYER_ARROWS)
+	: layer_(display::LAYER_ARROWS)
 	, color_("red")
 	, style_("")
 	, alpha_()
@@ -44,9 +43,9 @@ arrow::arrow()
 
 arrow::~arrow()
 {
-	if (screen_)
+	if (((display*)resources::screen))
 	{
-		screen_->remove_arrow(*this);
+		((display*)resources::screen)->remove_arrow(*this);
 	}
 }
 
@@ -123,9 +122,9 @@ const arrow_path_t & arrow::get_previous_path() const
 
 void arrow::draw_hex(const map_location & loc)
 {
-	if(!screen_) return;
+	if(!((display*)resources::screen)) return;
 
-	screen_->render_image(screen_->get_location_x(loc), screen_->get_location_y(loc), layer_,
+	((display*)resources::screen)->render_image(((display*)resources::screen)->get_location_x(loc), ((display*)resources::screen)->get_location_y(loc), layer_,
 				loc, image::get_image(symbols_map_[loc], image::SCALED_TO_ZOOM), false, false, alpha_);
 }
 
@@ -254,17 +253,17 @@ void arrow::update_symbols(arrow_path_t old_path)
 
 void arrow::invalidate_arrow_path(arrow_path_t path)
 {
-	if(!screen_) return;
+	if(!((display*)resources::screen)) return;
 
 	foreach(const map_location& loc, path)
 	{
-		screen_->invalidate(loc);
+		((display*)resources::screen)->invalidate(loc);
 	}
 }
 
 void arrow::notify_arrow_changed()
 {
-	if(!screen_) return;
+	if(!((display*)resources::screen)) return;
 
-	screen_->update_arrow(*this);
+	((display*)resources::screen)->update_arrow(*this);
 }
