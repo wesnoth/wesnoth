@@ -90,7 +90,7 @@ void arrow::set_layer(const display::tdrawing_layer & layer)
 	}
 }
 
-void arrow::set_alpha(float alpha)
+void arrow::set_alpha(double alpha)
 {
 	alpha_ = ftofxp(alpha);
 	if (valid_path(path_))

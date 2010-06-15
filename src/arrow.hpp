@@ -67,7 +67,7 @@ public:
 
 	/// Sets transparency to the specified alpha value
 	/// 0.5 is 50% transparent, anything above 1.0 brightens the arrow images
-	void set_alpha(float alpha);
+	void set_alpha(double alpha);
 
 	const arrow_path_t & get_path() const;
 
