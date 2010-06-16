@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-06-11 13:53+0200\n"
-"PO-Revision-Date: 2010-06-12 21:14+0700\n"
+"PO-Revision-Date: 2010-06-16 15:05+0700\n"
 "Last-Translator: Huynh Yen Loc <walkingcorpse13@gmail.com>\n"
 "Language-Team: Vietnamese <>\n"
 "Language: vi\n"
@@ -1616,7 +1616,7 @@ msgstr ""
 "\n"
 "\n"
 "Nghỉ ngơi có thể được kết hợp với các dạng điều trị khác, nhưng làng, tái "
-"tạo, điều trị và giải độc không thể kết hợp với nhau: tùy chọn tốt nhất sẽ "
+"tạo, điều trị và giải độc không thể kết hợp với nhau: lựa chọn tốt nhất sẽ "
 "được sử dụng. Cuối cùng, các đơn vị phục hồi hoàn toàn giữa hai màn."
 
 #. [topic]: id=income_and_upkeep
@@ -6803,7 +6803,6 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:116
-#, fuzzy
 msgid "― Meneldur, 123YW"
 msgstr "― Meneldur, năm Wesnoth 123"
 
@@ -7185,7 +7184,7 @@ msgstr "di chuyển"
 #. [unit_defense]: id=unit-defense
 #: data/themes/default.cfg:468 data/themes/experimental.cfg:414
 msgid "statuspanel^terrain def."
-msgstr "phòng thủ địa hình"
+msgstr "pt địa hình"
 
 #. [change]: id=actions-menu
 #: data/themes/default.cfg:1004
@@ -7372,7 +7371,7 @@ msgstr "Màn"
 
 #: src/addon/manager.cpp:462
 msgid "addon_type^MP era"
-msgstr "các liên minh NNC"
+msgstr "Thời đại NNC"
 
 #: src/addon/manager.cpp:464
 msgid "addon_type^MP faction"
@@ -8185,11 +8184,11 @@ msgstr "Người quan sát:"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:204
 msgid "Unknown era: $era_id"
-msgstr "Các liên minh không xác định: $era_id"
+msgstr "Thời đại không xác định: $era_id"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:209
 msgid "Unknown era"
-msgstr "Các liên minh không xác định"
+msgstr "Thời đại không xác định"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:265
 msgid "Remote scenario"
@@ -9442,7 +9441,7 @@ msgstr "--cho--"
 
 #: src/multiplayer_connect.cpp:919
 msgid "Only random sides in the current era."
-msgstr "Chỉ các phe ngẫu nhiên trong các liên minh hiện thời."
+msgstr "Chỉ các phe ngẫu nhiên trong thời đại hiện thời."
 
 #: src/multiplayer_connect.cpp:943
 msgid "Unable to find a leader type for faction $faction"
@@ -9507,7 +9506,7 @@ msgstr "Bỏ trống"
 
 #: src/multiplayer_connect.cpp:1603
 msgid "Cannot find era $era"
-msgstr "Không thể tìm thấy các liên minh $era"
+msgstr "Không thể tìm thấy thời đại $era"
 
 #: src/multiplayer_connect.cpp:1628
 msgid "Defeat enemy leader(s)"
@@ -9638,11 +9637,11 @@ msgstr "Không chia sẻ gì"
 
 #: src/multiplayer_create.cpp:212
 msgid "No eras found."
-msgstr "Không tìm thấy các liên minh nào."
+msgstr "Không tìm thấy thời đại nào."
 
 #: src/multiplayer_create.cpp:213
 msgid "No eras found"
-msgstr "Không tìm thấy các liên minh nào"
+msgstr "Không tìm thấy thời đại nào"
 
 #: src/multiplayer_create.cpp:226
 msgid "$login's game"
@@ -9743,7 +9742,7 @@ msgstr "Đang lấy dữ liệu trò chơi..."
 
 #: src/multiplayer_wait.cpp:260
 msgid "No era information found."
-msgstr "Không tìm thấy thông tin các liên minh."
+msgstr "Không tìm thấy thông tin về thời đại."
 
 #: src/multiplayer_wait.cpp:264
 msgid "No multiplayer sides found"
@@ -10262,7 +10261,7 @@ msgstr "Tải một trò chơi đã lưu"
 
 #: src/titlescreen.cpp:452
 msgid "Download usermade campaigns, eras, or map packs"
-msgstr "Tải về các chiến dịch, các liên minh hoặc gói bản đồ do người dùng tạo"
+msgstr "Tải về các chiến dịch, thời đại hoặc gói bản đồ do người dùng tạo"
 
 #: src/titlescreen.cpp:454
 msgid "Start the map editor"
@@ -10452,7 +10451,7 @@ msgstr "Cho phép tải lên bản tổng kết"
 #~ msgstr "--không có trò chơi nào mở--"
 
 #~ msgid " (Unknown Era)"
-#~ msgstr " (Các liên minh không xác định)"
+#~ msgstr " (Thời đại không xác định)"
 
 #~ msgid "Password Required"
 #~ msgstr "Cần mật khẩu"
