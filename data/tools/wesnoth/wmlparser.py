@@ -821,6 +821,7 @@ Massage a string into what appears to be a JSON-compatible form
 """
     s = repr(string)
     front = s.index("'")
+    s = s.replace('"', '\\"')
     return '"%s"' % s[front+1:len(s)-1]
 
 def jsonify(tree, verbose=False, depth=0):
