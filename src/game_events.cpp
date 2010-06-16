@@ -2581,6 +2581,7 @@ WML_HANDLER_FUNCTION(redraw, /*event_info*/, cfg)
 
 WML_HANDLER_FUNCTION(animate_unit, event_info, cfg)
 {
+	const events::command_disabler disable_commands;
 	unit_display::wml_animation(cfg, event_info.loc1);
 }
 
