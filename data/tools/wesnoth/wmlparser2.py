@@ -50,12 +50,12 @@ class AttributeNode:
             id=Elfish Archer
         [/unit]
     """
-    def __init__(self, key):
-        self.key = key
+    def __init__(self, name):
+        self.name = name
         self.value = [] # List of StringNode
     
     def debug(self):
-        return self.key + "=" + " .. ".join(
+        return self.name + "=" + " .. ".join(
             [v.debug() for v in self.value])
         
     def get_text(self, translation = None):
@@ -105,7 +105,7 @@ class TagNode:
                    elif not sub.name == v: ok = False
                 elif k == "att":
                    if not isinstance(sub, AttributeNode): ok = False
-                   elif not sub.key == v: ok = False
+                   elif not sub.name == v: ok = False
             if ok:
                 r.append(sub)
         return r
@@ -393,6 +393,41 @@ class Parser:
 #                                                                      #
 ########################################################################
 
+def strify(string):
+    """
+Massage a string into what appears to be a JSON-compatible form
+"""
+    s = repr(string)
+    front = s.index("'")
+    s = s.replace('"', '\\"')
+    return '"%s"' % s[front+1:len(s)-1]
+
+def jsonify(tree, verbose=False, depth=0):
+    """
+Convert a DataSub into JSON
+
+If verbose, insert a linebreak after every brace and comma (put every item on its own line), otherwise, condense everything into a single line.
+"""
+    print "{",
+    first = True
+    sdepth1 = "\n" + " " * depth
+    sdepth2 = sdepth1 + " "
+    for child in tree.data:
+        if first:
+            first = False
+        else:
+            sys.stdout.write(",")
+        if verbose:
+            sys.stdout.write(sdepth2)
+        print'"%s":' % child.name,
+        if isinstance(child, TagNode):
+            jsonify(child, verbose, depth + 1)
+        else:
+            print strify(child.get_text()),
+    if verbose:
+        sys.stdout.write(sdepth1)
+    sys.stdout.write("}")
+
 if __name__ == "__main__":
     opt = optparse.OptionParser()
     opt.add_option("-i", "--input")
@@ -400,6 +435,7 @@ if __name__ == "__main__":
     opt.add_option("-w", "--wesnoth")
     opt.add_option("-d", "--defines")
     opt.add_option("-T", "--test", action = "store_true")
+    opt.add_option("-j", "--to-json", action = "store_true")
     options, args = opt.parse_args()
 
     if not options.input and not options.text and not options.test:
@@ -531,5 +567,9 @@ code = <<
     p = Parser(options.wesnoth)
     if options.input: p.parse_file(options.input, options.defines)
     elif options.text: p.parse_text(options.text, options.defines)
-    print(p.root.debug())
+    if options.to_json:
+        jsonify(p.root, True)
+        print
+    else:
+        print(p.root.debug())
 
