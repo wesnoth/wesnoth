@@ -30,6 +30,7 @@ private:
 		std::string lineage_;
 		std::string descendants_;
 		bool valid_;
+
 		bool valid() const {
 			return valid_;
 		}
@@ -93,22 +94,21 @@ private:
 				descendants_ = namespace_.substr(namespace_.find_first_of(".") + 1);
 		}
 	};
-	// TODO: transaction support (needed for MP)
-	name_space namespace_;
-	config cfg_;
 	struct node {
 		typedef std::map<std::string,node*> child_map;
+
 		std::string name_;
 		persist_context *root_;
-		config &cfg_;
 		node *parent_;
 		child_map children_;
+		config &cfg_;
+
 		node(std::string name, persist_context *root, config & cfg, node *parent = NULL)
 			: name_(name)
 			, root_(root)
-			, cfg_(cfg)
 			, parent_(parent)
 			, children_()
+			, cfg_(cfg)
 		{
 		}
 
@@ -140,30 +140,34 @@ private:
 				cfg_.add_child("variables");
 		}
 	};
-	bool valid_;
+
+	config cfg_;
+	name_space namespace_;
 	node root_node_;
 	node *active_;
+	bool valid_;
+
+	// TODO: transaction support (needed for MP)
 	void load();
 	void init();
 	bool save_context();
 	persist_context()
-		: namespace_()
-		, cfg_()
-		, valid_(false)
+		: cfg_()
+		, namespace_()
 		, root_node_("",this,cfg_)
 		, active_(&root_node_)
+		, valid_(false)
 	{};
 
 	static persist_context invalid;
 	persist_context &add_child(const std::string &key);
 public:
 	persist_context(const std::string &name_space);
-	~persist_context();
 	bool clear_var(std::string &);
-	config get_var(const std::string &);
+	config get_var(const std::string &) const;
 	bool set_var(const std::string &, const config &);
 	bool valid() const { return valid_; };
-	bool dirty() const {
+	bool dirty() const { 
 		return true;
 	};
 	operator bool() { return valid_; }

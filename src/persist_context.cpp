@@ -92,28 +92,16 @@ void persist_context::load() {
 	load_persist_data(namespace_.root_,cfg_,false);
 }
 
-persist_context::persist_context(const std::string &name_space) :
-namespace_(name_space),
-cfg_(),
-valid_(namespace_.valid()),
-root_node_(namespace_.root_,this,cfg_),
-active_(&root_node_)
+persist_context::persist_context(const std::string &name_space) 
+	: cfg_()
+	, namespace_(name_space)
+	, root_node_(namespace_.root_,this,cfg_)
+	, active_(&root_node_)
+	, valid_(namespace_.valid())
 {
 	load();
 	root_node_.init();
 	active_ = &(root_node_.child(namespace_.next()));
-}
-
-persist_context::~persist_context() {
-//	collected_ = true;
-//	if (parent_ != NULL) {
-//		if (!parent_->collected_)
-//			delete parent_;
-//	}
-//	for (persist_context::child_map::iterator i = children_.begin(); i != children_.end(); i++) {
-//		if (!i->second->collected_)
-//			delete i->second;
-//	}
 }
 
 bool persist_context::clear_var(std::string &global)
@@ -166,7 +154,7 @@ bool persist_context::clear_var(std::string &global)
 	return ret;
 }
 
-config persist_context::get_var(const std::string &global)
+config persist_context::get_var(const std::string &global) const
 {
 	config ret;
 //	if (cfg_.empty()) {
