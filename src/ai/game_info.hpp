@@ -120,16 +120,11 @@ typedef std::map<std::string, known_aspect_ptr > known_aspect_map;
 class game_info {
 public:
 
-		game_info(game_display& disp,
-			 tod_manager& tod_mng, class game_state& game_state)
-			: disp(disp)
-			, tod_manager_(tod_mng)
+		game_info(tod_manager& tod_mng, class game_state& game_state)
+			: tod_manager_(tod_mng)
 			, game_state_(game_state)
 			, recent_attacks()
 		{}
-
-		/** The display object, used to draw the moves the AI makes. */
-		game_display& disp;
 
 		/** Information about what turn it is, and what time of day. */
 		tod_manager& tod_manager_;
