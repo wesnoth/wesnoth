@@ -32,6 +32,8 @@
 
 namespace wb {
 
+typedef boost::shared_ptr<side_actions> side_actions_ptr;
+
 manager::manager():
 		active_(false),
 		mapbuilder_(),
@@ -51,11 +53,11 @@ manager::~manager()
 	}
 }
 
-side_actions& get_current_side_actions()
+side_actions_ptr get_current_side_actions()
 {
 	int current_side = resources::controller->current_side();
 	team& current_team = (*resources::teams)[current_side - 1];
-	side_actions& side_actions = current_team.get_side_actions();
+	side_actions_ptr side_actions = current_team.get_side_actions();
 	return side_actions;
 }
 
@@ -66,7 +68,7 @@ void manager::apply_temp_modifiers()
 	{
 		mapbuilder_->exclude(*selected_unit_);
 	}
-	const action_set& actions = get_current_side_actions().actions();
+	const action_set& actions = get_current_side_actions()->actions();
 	foreach (const action_ptr &action, actions)
 	{
 		assert(action);
@@ -82,7 +84,7 @@ void manager::remove_temp_modifiers()
 void manager::highlight_action(const unit& unit)
 {
 	find_visitor finder;
-	highlighted_action_ = finder.find_first_action_of(unit, get_current_side_actions().actions());
+	highlighted_action_ = finder.find_first_action_of(unit, get_current_side_actions()->actions());
 	if (highlighted_action_)
 	{
 		highlight_visitor highlighter(true);
@@ -165,21 +167,21 @@ void manager::save_temp_move()
 	// TODO: implement a find_and_erase method in find_visitor to avoid iterating twice over actions
 	{
 		find_visitor finder;
-		action_ptr action = finder.find_first_action_of(*selected_unit_, get_current_side_actions().actions());
+		action_ptr action = finder.find_first_action_of(*selected_unit_, get_current_side_actions()->actions());
 		if (action)
 		{
 			//FIXME: temporary for testing: if move created twice on same hex, execute instead
 			if (dynamic_cast<move*>(action.get())->get_arrow()->get_path().back()
 					== move_arrow_->get_path().back())
 			{
-				get_current_side_actions().execute(action);
+				get_current_side_actions()->execute(action);
 				return;
 			}
 			else //erase move
 			{
 				LOG_WB << "Previous action found for unit " << selected_unit_->name() << " [" << selected_unit_->id() << "]"
 						<< ", erasing action.\n";
-				get_current_side_actions().remove_action(action);
+				get_current_side_actions()->remove_action(action);
 			}
 		}
 	} // kill action shared_ptr by closing scope
@@ -191,7 +193,7 @@ void manager::save_temp_move()
 
 	move_arrow_->set_alpha(move::ALPHA_NORMAL);
 
-	get_current_side_actions().queue_move(*selected_unit_, route_.back(), move_arrow_, fake_unit_);
+	get_current_side_actions()->queue_move(*selected_unit_, route_.back(), move_arrow_, fake_unit_);
 	move_arrow_.reset();
 	fake_unit_.reset();
 	selected_unit_ = NULL;
@@ -199,7 +201,7 @@ void manager::save_temp_move()
 
 void manager::execute_first()
 {
-	get_current_side_actions().execute_first();
+	get_current_side_actions()->execute_first();
 }
 
 } // end namespace wb

@@ -20,13 +20,19 @@
 #include "map_location.hpp"
 #include "savegame_config.hpp"
 #include "unit.hpp"
-#include "whiteboard/side_actions.hpp"
 
 class gamemap;
+
+namespace wb {
+	class side_actions;
+}
 
 #include <set>
 #include <string>
 #include <vector>
+
+
+#include <boost/shared_ptr.hpp>
 
 #include "SDL.h"
 
@@ -277,7 +283,7 @@ public:
 	static void clear_caches();
 
 	/** get the whiteboard planned actions for this team */
-	wb::side_actions& get_side_actions() { return planned_actions_; }
+	boost::shared_ptr<wb::side_actions> get_side_actions() { return planned_actions_; }
 
 	config to_config() const;
 
@@ -314,7 +320,7 @@ private:
 	/**
 	 * Whiteboard planned actions for this team.
 	 */
-	wb::side_actions planned_actions_;
+	boost::shared_ptr<wb::side_actions> planned_actions_;
 };
 
 namespace teams_manager {

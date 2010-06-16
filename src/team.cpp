@@ -28,6 +28,7 @@
 #include "resources.hpp"
 #include "game_preferences.hpp"
 #include "team.hpp"
+#include "whiteboard/side_actions.hpp"
 
 static lg::log_domain log_engine("engine");
 #define DBG_NG LOG_STREAM(debug, log_engine)
@@ -282,6 +283,8 @@ team::team(const config& cfg, const gamemap& map, int gold) :
 
 	countdown_time_ = cfg["countdown_time"];
 	action_bonus_count_ = cfg["action_bonus_count"];
+
+	planned_actions_.reset(new wb::side_actions());
 }
 
 void team::write(config& cfg) const
