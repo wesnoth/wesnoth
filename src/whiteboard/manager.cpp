@@ -124,7 +124,8 @@ void manager::create_temp_move(const std::vector<map_location> &steps)
 	route_ = steps;
 	if (route_.size() > 1 && selected_unit_ != NULL)
 	{
-		bool show_ghosted_unit_bars = false;
+		bool show_src_unit_bars = false;
+		bool show_dst_unit_bars = true;
 
 		if (!move_arrow_)
 		{
@@ -138,13 +139,18 @@ void manager::create_temp_move(const std::vector<map_location> &steps)
 			// Create temp ghost unit
 			fake_unit_.reset(new unit(*selected_unit_));
 			fake_unit_->set_location(route_.back());
-			fake_unit_->set_ghosted(show_ghosted_unit_bars);
+			//fake_unit_->set_ghosted(show_ghosted_unit_bars);
+			fake_unit_->set_standing(show_dst_unit_bars);
 			resources::screen->place_temporary_unit(fake_unit_.get());
+
+			// test: set selected unit as ghosted
+			selected_unit_->set_ghosted(show_src_unit_bars);
 		}
 
 		move_arrow_->set_path(route_);
 		fake_unit_->set_location(route_.back());
-		fake_unit_->set_ghosted(show_ghosted_unit_bars);
+		//fake_unit_->set_ghosted(show_ghosted_unit_bars);
+		fake_unit_->set_standing(show_dst_unit_bars);
 	}
 }
 
@@ -159,6 +165,18 @@ void manager::erase_temp_move()
 	if (move_arrow_)
 	{
 		move_arrow_.reset(); //auto-removes itself from display
+
+		//part of UI test: reset src unit back to normal, if it lacks any planned action
+		if (selected_unit_)
+		{
+			find_visitor finder;
+			action_ptr action = finder.find_first_action_of(*selected_unit_, get_current_side_actions()->actions());
+			if (!action)
+			{
+				bool show_bars = true;
+				selected_unit_->set_standing(show_bars);
+			}
+		}
 	}
 	if (fake_unit_)
 	{
