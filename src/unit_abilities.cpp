@@ -126,12 +126,12 @@ bool unit::get_ability_bool(const std::string& ability, const map_location& loc)
 		}
 	}
 
-	assert(units_);
+	const unit_map& units = *resources::units;
 	map_location adjacent[6];
 	get_adjacent_tiles(loc,adjacent);
 	for(int i = 0; i != 6; ++i) {
-		const unit_map::const_iterator it = units_->find(adjacent[i]);
-		if (it == units_->end() || it->incapacitated())
+		const unit_map::const_iterator it = units.find(adjacent[i]);
+		if (it == units.end() || it->incapacitated())
 			continue;
 		const config &adj_abilities = it->cfg_.child("abilities");
 		if (!adj_abilities)
@@ -160,12 +160,12 @@ unit_ability_list unit::get_abilities(const std::string& ability, const map_loca
 		}
 	}
 
-	assert(units_ != NULL);
+	const unit_map& units = *resources::units;
 	map_location adjacent[6];
 	get_adjacent_tiles(loc,adjacent);
 	for(int i = 0; i != 6; ++i) {
-		const unit_map::const_iterator it = units_->find(adjacent[i]);
-		if (it == units_->end() || it->incapacitated())
+		const unit_map::const_iterator it = units.find(adjacent[i]);
+		if (it == units.end() || it->incapacitated())
 			continue;
 		const config &adj_abilities = it->cfg_.child("abilities");
 		if (!adj_abilities)
@@ -246,7 +246,7 @@ static bool cache_illuminates(int &cache, std::string const &ability)
 bool unit::ability_active(const std::string& ability,const config& cfg,const map_location& loc) const
 {
 	int illuminates = -1;
-	assert(units_ && resources::game_map && resources::teams && resources::tod_manager);
+	assert(resources::units && resources::game_map && resources::teams && resources::tod_manager);
 
 	if (const config &afilter = cfg.child("filter"))
 		if (!matches_filter(vconfig(afilter), loc, cache_illuminates(illuminates, ability)))
@@ -254,6 +254,7 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const map
 
 	map_location adjacent[6];
 	get_adjacent_tiles(loc,adjacent);
+	const unit_map& units = *resources::units;
 
 	foreach (const config &i, cfg.child_range("filter_adjacent"))
 	{
@@ -263,8 +264,8 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const map
 				map_location::parse_direction(j);
 			if (index == map_location::NDIRECTIONS)
 				continue;
-			unit_map::const_iterator unit = units_->find(adjacent[index]);
-			if (unit == units_->end())
+			unit_map::const_iterator unit = units.find(adjacent[index]);
+			if (unit == units.end())
 				return false;
 			if (!unit->matches_filter(vconfig(i), unit->get_location(),
 				cache_illuminates(illuminates, ability)))
@@ -280,7 +281,7 @@ bool unit::ability_active(const std::string& ability,const config& cfg,const map
 			if (index == map_location::NDIRECTIONS) {
 				continue;
 			}
-			terrain_filter adj_filter(vconfig(i), *units_);
+			terrain_filter adj_filter(vconfig(i), units);
 			adj_filter.flatten(cache_illuminates(illuminates, ability));
 			if(!adj_filter.match(adjacent[index])) {
 				return false;
@@ -752,11 +753,11 @@ void attack_type::set_specials_context(const map_location& aloc,const map_locati
 	other_attack_ = other_attack;
 }
 
-void attack_type::set_specials_context(const map_location& loc, const map_location& dloc, const unit& un, bool attacker) const
+void attack_type::set_specials_context(const map_location& loc, const map_location& dloc, const unit& /*un*/, bool attacker) const
 {
 	aloc_ = loc;
 	dloc_ = dloc;
-	unitmap_ = un.units_;
+	unitmap_ = resources::units;
 	attacker_ = attacker;
 	other_attack_ = NULL;
 }

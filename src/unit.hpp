@@ -441,7 +441,6 @@ private:
 	config modifications_;
 
 	friend void attack_type::set_specials_context(const map_location& loc, const map_location&, const unit& un, bool) const;
-	const unit_map* units_;
 
 	/** Hold the visibility status cache for a unit, mutable since it's a cache. */
 	mutable std::map<map_location, bool> invisibility_cache_;

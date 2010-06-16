@@ -200,7 +200,6 @@ unit::unit(const unit& o):
            draw_bars_(o.draw_bars_),
 
            modifications_(o.modifications_),
-           units_(o.units_),
 		   invisibility_cache_()
 {
 }
@@ -273,7 +272,6 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 	hidden_(false),
 	draw_bars_(false),
 	modifications_(),
-	units_(resources::units),
 	invisibility_cache_()
 {
 	if (type_.empty()) {
@@ -621,7 +619,6 @@ unit::unit(const unit_type *t, int side, bool real_unit,
 	hidden_(false),
 	draw_bars_(false),
 	modifications_(),
-	units_(resources::units),
 	invisibility_cache_()
 {
 
@@ -681,10 +678,8 @@ unit& unit::operator=(const unit& u)
 
 
 
-void unit::set_game_context(unit_map *unitmap)
+void unit::set_game_context(unit_map* /*unitmap*/)
 {
-	units_ = unitmap;
-
 	// In case the unit carries EventWML, apply it now
 	game_events::add_events(cfg_.child_range("event"), type_);
 	cfg_.clear_children("event");
@@ -1209,8 +1204,8 @@ bool unit::matches_filter(const vconfig& cfg, const map_location& loc, bool use_
 	bool matches = true;
 
 	if(loc.valid()) {
-		assert(units_ != NULL);
-		scoped_xy_unit auto_store("this_unit", loc.x, loc.y, *units_);
+		assert(resources::units != NULL);
+		scoped_xy_unit auto_store("this_unit", loc.x, loc.y, *resources::units);
 		matches = internal_matches_filter(cfg, loc, use_flat_tod);
 	} else {
 		// If loc is invalid, then this is a recall list unit (already been scoped)
@@ -1263,9 +1258,9 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 		assert(resources::game_map != NULL);
 		assert(resources::teams != NULL);
 		assert(resources::tod_manager != NULL);
-		assert(units_ != NULL);
+		assert(resources::units != NULL);
 		const vconfig& t_cfg = cfg.child("filter_location");
-		terrain_filter t_filter(t_cfg, *units_, use_flat_tod);
+		terrain_filter t_filter(t_cfg, *resources::units, use_flat_tod);
 		if(!t_filter.match(loc)) {
 			return false;
 		}
@@ -1447,7 +1442,7 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 			std::set<int>::const_iterator viewer, viewer_end = viewers.end();
 			for (viewer = viewers.begin(); viewer != viewer_end; ++viewer) {
 				bool not_fogged = !teams_manager::get_teams()[*viewer - 1].fogged(loc);
-				bool not_hiding = !this->invisible(loc, *units_, teams_manager::get_teams()/*, false(?) */);
+				bool not_hiding = !this->invisible(loc, *resources::units, teams_manager::get_teams()/*, false(?) */);
 				if (visible != not_fogged && not_hiding) {
 					return false;
 				}
@@ -1456,7 +1451,8 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 	}
 
 	if (cfg.has_child("filter_adjacent")) {
-		assert(units_ && resources::game_map);
+		assert(resources::units && resources::game_map);
+		const unit_map& units = *resources::units;
 		map_location adjacent[6];
 		get_adjacent_tiles(loc, adjacent);
 		vconfig::child_list::const_iterator i, i_end;
@@ -1469,8 +1465,8 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 				? map_location::parse_directions((*i)["adjacent"]) : default_dirs;
 			std::vector<map_location::DIRECTION>::const_iterator j, j_end = dirs.end();
 			for (j = dirs.begin(); j != j_end; ++j) {
-				unit_map::const_iterator unit_itor = units_->find(adjacent[*j]);
-				if (unit_itor == units_->end()
+				unit_map::const_iterator unit_itor = units.find(adjacent[*j]);
+				if (unit_itor == units.end()
 				|| !unit_itor->matches_filter(*i, unit_itor->get_location(), use_flat_tod)) {
 					continue;
 				}
