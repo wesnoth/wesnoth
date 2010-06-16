@@ -32,7 +32,7 @@ namespace wb {
 
 manager::manager():
 		active_(false),
-		mapbuilder_(NULL),
+		mapbuilder_(),
 		route_(),
 		move_arrow_(),
 		fake_unit_(),
@@ -128,6 +128,9 @@ void manager::erase_temp_move()
 	if (move_arrow_)
 	{
 		move_arrow_.reset(); //auto-removes itself from display
+	}
+	if (fake_unit_)
+	{
 		resources::screen->remove_temporary_unit(fake_unit_.get());
 		fake_unit_.reset();
 	}

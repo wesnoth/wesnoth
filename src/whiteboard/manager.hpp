@@ -23,8 +23,8 @@
 
 #include <boost/noncopyable.hpp>
 #include <boost/shared_ptr.hpp>
+#include <boost/scoped_ptr.hpp>
 
-#include <memory>
 #include <vector>
 
 class arrow;
@@ -57,6 +57,7 @@ public:
 	void apply_temp_modifiers();
 	void remove_temp_modifiers();
 
+	/** Choose the target unit for action creation */
 	void select_unit(unit& unit);
 	void deselect_unit();
 
@@ -67,7 +68,7 @@ public:
 
 	/**
 	 * Creates a move action for the current side,
-	 * and erases the stored route. The move is inserted
+	 * and erases the temp move. The move action is inserted
 	 * at the end of the queue, to be executed last.
      */
 	void save_temp_move();
@@ -78,7 +79,7 @@ private:
 	 */
 	bool active_;
 
-	std::auto_ptr<mapbuilder_visitor> mapbuilder_;
+	boost::scoped_ptr<mapbuilder_visitor> mapbuilder_;
 
 	std::vector<map_location> route_;
 
