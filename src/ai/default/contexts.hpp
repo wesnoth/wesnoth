@@ -165,11 +165,6 @@ public:
 	virtual std::vector<target> find_targets(const move_map& enemy_dstsrc) = 0;
 
 
-	virtual bool multistep_move_possible(const map_location& from,
-		const map_location& to, const map_location& via,
-		const moves_map& possible_moves) const = 0;
-
-
 	virtual int rate_terrain(const unit& u, const map_location& loc) const = 0;
 
 
@@ -231,14 +226,6 @@ public:
 	void init_default_ai_context_proxy(default_ai_context &target);
 
 
-	virtual bool multistep_move_possible(const map_location& from,
-		const map_location& to, const map_location& via,
-		const moves_map& possible_moves) const
-	{
-		return target_->multistep_move_possible(from,to,via,possible_moves);
-	}
-
-
 	virtual int rate_terrain(const unit& u, const map_location& loc) const
 	{
 		return target_->rate_terrain(u,loc);
@@ -290,11 +277,6 @@ public:
 
 
 	virtual std::vector<target> find_targets(const move_map& enemy_dstsrc);
-
-
-	virtual bool multistep_move_possible(const map_location& from,
-		const map_location& to, const map_location& via,
-		const moves_map& possible_moves) const;
 
 
 	virtual int rate_terrain(const unit& u, const map_location& loc) const;

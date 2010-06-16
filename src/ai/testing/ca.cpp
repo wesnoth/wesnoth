@@ -936,7 +936,7 @@ void get_villages_phase::find_villages(
 	treachmap& reachmap,
 	tmoves& moves,
 	const std::multimap<map_location,map_location>& dstsrc,
-	const std::map<map_location,pathfind::paths>& possible_moves,
+	const std::map<map_location,pathfind::paths>& /*possible_moves*/,
 	const std::multimap<map_location,map_location>& enemy_dstsrc)
 
 {
@@ -997,17 +997,6 @@ void get_villages_phase::find_villages(
 		// If it is a neutral village, and we have no leader,
 		// then the village is of no use to us, and we don't want it.
 		if(!owned && leader_loc_ == map_location::null_location) {
-			continue;
-		}
-
-		// If we have a decent amount of gold, and the leader can't access
-		// the keep this turn if they get this village,
-		// then don't get this village with them.
-		if(want_village &&
-				current_team().gold() > 20 &&
-				leader_loc_ == current_loc &&
-				leader_loc_ != keep_loc_ &&
-				multistep_move_possible(j->second, current_loc, keep_loc_, possible_moves) == false) {
 			continue;
 		}
 
