@@ -1687,7 +1687,7 @@ double retreat_phase::evaluate()
 
 
 	// Get versions of the move map that assume that all units are at full movement
-	unit_map units_ = *resources::units;
+	const unit_map& units_ = *resources::units;
 
 	unit_map::const_iterator leader = units_.find_leader(get_side());
 	std::map<map_location,pathfind::paths> dummy_possible_moves;
@@ -1702,7 +1702,7 @@ double retreat_phase::evaluate()
 		get_adjacent_tiles(leader->get_location(), leader_adj);
 	}
 
-	for(unit_map::iterator i = units_.begin(); i != units_.end(); ++i) {
+	for(unit_map::const_iterator i = units_.begin(); i != units_.end(); ++i) {
 		if (i->side() == get_side() &&
 		    i->movement_left() == i->total_movement() &&
 		    unit_map::const_iterator(i) != leader &&
