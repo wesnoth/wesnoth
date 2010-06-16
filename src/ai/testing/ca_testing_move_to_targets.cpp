@@ -29,6 +29,8 @@
 #include "../../terrain_filter.hpp"
 #include "../../pathfind/pathfind.hpp"
 
+#include <deque>
+
 namespace ai {
 
 namespace testing_ai_default {
