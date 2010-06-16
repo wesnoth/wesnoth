@@ -42,11 +42,10 @@ void ai_testing::log_turn_end(unsigned int side)
 
 void ai_testing::log_turn(const char* msg, unsigned int side)
 {
-	ai::game_info& i = ai::manager::get_ai_info();
 	assert(side>=1);
 	team& current_team = (*resources::teams)[side-1];
 
-	int _turn_number = i.tod_manager_.turn();
+	int _turn_number = resources::tod_manager->turn();
 	int _units = side_units(side);
 	int _units_cost = side_units_cost(side);
 	int _gold = current_team.gold();
@@ -102,9 +101,9 @@ void ai_testing::log_game_start()
 
 void ai_testing::log_game_end()
 {
-	LOG_AI_TESTING << "GAME_END_TURN: "<< ai::manager::get_ai_info().tod_manager_.turn() <<std::endl;
+	LOG_AI_TESTING << "GAME_END_TURN: "<< resources::tod_manager->turn() <<std::endl;
 	recorder.add_log_data("ai_log","end_turn",
-		str_cast(ai::manager::get_ai_info().tod_manager_.turn()));
+		str_cast(resources::tod_manager->turn()));
 	for (std::vector<team>::const_iterator tm = resources::teams->begin(); tm != resources::teams->end(); ++tm) {
 		int side = tm-resources::teams->begin()+1;
 		recorder.add_log_data("ai_log","end_gold"+str_cast(side),str_cast(tm->gold()));

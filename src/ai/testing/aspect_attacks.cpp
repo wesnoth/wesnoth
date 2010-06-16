@@ -424,7 +424,7 @@ double aspect_attacks::power_projection(const map_location& loc, const move_map&
 	map_location locs[6];
 	get_adjacent_tiles(loc,locs);
 
-	const int lawful_bonus = get_info().tod_manager_.get_time_of_day().lawful_bonus;
+	const int lawful_bonus = resources::tod_manager->get_time_of_day().lawful_bonus;
 	gamemap& map_ = *resources::game_map;
 	unit_map& units_ = *resources::units;
 

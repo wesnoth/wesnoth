@@ -120,14 +120,10 @@ typedef std::map<std::string, known_aspect_ptr > known_aspect_map;
 class game_info {
 public:
 
-		game_info(tod_manager& tod_mng, class game_state& game_state)
-			: tod_manager_(tod_mng)
-			, game_state_(game_state)
+		game_info(class game_state& game_state)
+			: game_state_(game_state)
 			, recent_attacks()
 		{}
-
-		/** Information about what turn it is, and what time of day. */
-		tod_manager& tod_manager_;
 
 		/** The global game state, because we may set the completion field. */
 		class game_state& game_state_;

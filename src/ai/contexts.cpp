@@ -959,7 +959,7 @@ double readonly_context_impl::power_projection(const map_location& loc, const mo
 	map_location locs[6];
 	get_adjacent_tiles(loc,locs);
 
-	const int lawful_bonus = get_info().tod_manager_.get_time_of_day().lawful_bonus;
+	const int lawful_bonus = resources::tod_manager->get_time_of_day().lawful_bonus;
 	gamemap& map_ = *resources::game_map;
 	unit_map& units_ = *resources::units;
 
@@ -1143,13 +1143,13 @@ bool readonly_context_impl::is_active(const std::string &time_of_day, const std:
 {
 		if(time_of_day.empty() == false) {
 			const std::vector<std::string>& times = utils::split(time_of_day);
-			if(std::count(times.begin(),times.end(),this->get_info().tod_manager_.get_time_of_day().name) == 0) {
+			if(std::count(times.begin(),times.end(),resources::tod_manager->get_time_of_day().name) == 0) {
 				return false;
 			}
 		}
 
 		if(turns.empty() == false) {
-			int turn = this->get_info().tod_manager_.turn();
+			int turn = resources::tod_manager->turn();
 			const std::vector<std::string>& turns_list = utils::split(turns);
 			for(std::vector<std::string>::const_iterator j = turns_list.begin(); j != turns_list.end() ; ++j ) {
 				const std::pair<int,int> range = utils::parse_range(*j);

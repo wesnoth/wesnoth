@@ -694,11 +694,11 @@ variant formula_ai::get_value(const std::string& key) const
 
 	} else if(key == "turn")
 	{
-		return variant(get_info().tod_manager_.turn());
+		return variant(resources::tod_manager->turn());
 
 	} else if(key == "time_of_day")
 	{
-		return variant(get_info().tod_manager_.get_time_of_day().id);
+		return variant(resources::tod_manager->get_time_of_day().id);
 
 	} else if(key == "my_side")
 	{

@@ -23,6 +23,7 @@
 #include "../contexts.hpp"
 #include "../../foreach.hpp"
 #include "../../log.hpp"
+#include "../../resources.hpp"
 #include "../../tod_manager.hpp"
 #include <map>
 #include <string>
@@ -105,7 +106,7 @@ idle_stage::~idle_stage()
 }
 
 bool idle_stage::do_play_stage(){
-	LOG_AI_STAGE << "Turn " << get_info().tod_manager_.turn() << ": playing idle stage for side: "<< get_side() << std::endl;
+	LOG_AI_STAGE << "Turn " << resources::tod_manager->turn() << ": playing idle stage for side: "<< get_side() << std::endl;
 	return false;
 }
 
