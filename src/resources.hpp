@@ -28,7 +28,7 @@ class play_controller;
 class team;
 class tod_manager;
 class unit_map;
-class undo_action;
+struct undo_action;
 
 namespace soundsource { class manager; }
 
