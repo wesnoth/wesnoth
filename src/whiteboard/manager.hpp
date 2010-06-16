@@ -32,6 +32,7 @@ class unit;
 
 namespace wb {
 
+class action;
 class mapbuilder_visitor;
 
 /**
@@ -56,6 +57,13 @@ public:
 	 */
 	void apply_temp_modifiers();
 	void remove_temp_modifiers();
+
+	/**
+	 * Highlights the action for this unit,
+	 * for instance highlights the arrow if it's a move.
+	 */
+	void highlight_action(const unit& unit);
+	void remove_highlight();
 
 	/** Choose the target unit for action creation */
 	void select_unit(unit& unit);
@@ -87,6 +95,8 @@ private:
 	boost::shared_ptr<unit> fake_unit_;
 
 	unit* selected_unit_;
+
+	boost::shared_ptr<action> highlighted_action_;
 };
 
 } // end namespace wb

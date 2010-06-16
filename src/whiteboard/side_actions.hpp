@@ -19,6 +19,8 @@
 #ifndef WB_SIDE_ACTIONS_HPP_
 #define WB_SIDE_ACTIONS_HPP_
 
+#include "action.hpp"
+
 #include "map_location.hpp"
 
 #include <deque>
@@ -31,10 +33,8 @@ class arrow;
 namespace wb
 {
 
-class action;
 class move;
 
-typedef boost::shared_ptr<action> action_ptr;
 typedef std::deque<action_ptr> action_set;
 
 class side_actions

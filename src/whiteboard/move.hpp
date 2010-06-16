@@ -35,8 +35,12 @@ namespace wb {
  * A planned move, represented on the map by an arrow and
  * a ghosted unit in the destination hex.
  */
-class move: public action, public boost::enable_shared_from_this<move>
+class move : public action, public boost::enable_shared_from_this<move>
 {
+public: //constants
+	static const double ALPHA_HIGHLIGHT = 2.0;
+	static const double ALPHA_NORMAL = 0.6;
+
 public:
 	move(unit& subject, const map_location& target_hex, boost::shared_ptr<arrow> arrow,
 			boost::shared_ptr<unit> fake_unit);
@@ -45,6 +49,8 @@ public:
 	virtual void accept(visitor& v);
 
 	unit& get_unit() { return unit_; }
+
+	boost::shared_ptr<arrow> get_arrow() { return arrow_; }
 
 	/**
 	 * Applies temporarily the result of this move to the unit map, and returns

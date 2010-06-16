@@ -158,6 +158,15 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 		const unit_map::iterator selected_unit = find_unit(selected_hex_);
 		const unit_map::iterator mouseover_unit = find_unit(new_hex);
 
+		if (resources::whiteboard) {
+			if (update)	{
+				resources::whiteboard->remove_highlight();
+				if (mouseover_unit != units_.end())	{
+					resources::whiteboard->highlight_action(*mouseover_unit);
+				}
+			}
+		}
+
 		// we search if there is an attack possibility and where
 		map_location attack_from = current_unit_attacks_from(new_hex);
 

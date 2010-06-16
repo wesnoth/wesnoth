@@ -34,9 +34,13 @@ struct temporary_unit_map_modifier;
 
 namespace wb {
 
+class action;
 class visitor;
 
 typedef boost::shared_ptr<temporary_unit_map_modifier> modifier_ptr;
+
+typedef boost::shared_ptr<action> action_ptr;
+
 
 /**
  * Superclass for all the whiteboard planned actions.
