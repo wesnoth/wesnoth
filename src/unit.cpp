@@ -1699,7 +1699,7 @@ void unit::set_ghosted(bool with_bars)
 {
 	game_display *disp = game_display::get_singleton();
 	start_animation(INT_MAX, choose_animation(*disp, loc_, "ghosted"),
-			with_bars, true, "", 0, STATE_STANDING);
+			with_bars, true);
 }
 
 void unit::set_idling()
