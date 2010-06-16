@@ -81,7 +81,9 @@ stringfixes = {
 ("About to upload statistics - Help us make Wesnoth better for you!", "About to upload statistics — Help us make Wesnoth better for you!"),
 #the following rule applies to wesnoth/*.po* and to wesnoth-manual/*.po*
 ("victory objectives - getting", "victory objectives — getting"),
+
 # Fix screw up
+# conversion added in 1.9.0-svn
 ("— Great Mage Delfador", "― Great Mage Delfador"),
 ("— The Wesnoth Tactical Guide", "― The Wesnoth Tactical Guide"),
 ("— King Konrad, 536YW", "― King Konrad, 536YW"),
@@ -95,6 +97,14 @@ stringfixes = {
 ("— Queen Li'sar,", "― Queen Li'sar,"),
 ("— King Konrad,", "― King Konrad,"),
 ("— Meneldur,", "― Meneldur,"),
+
+# Straight apostrophes and quotes to curly ones
+# conversion added in 1.9.0-svn
+("Ga'ash", "Ga’ash"),
+("Gart'lo", "Gart’lo"),
+("Mar'Ildian", "Mar’Ildian"),
+("Marra Di'lek", "Marra Di’lek"),
+("Bzz'Kza", "Bzz’Kza"),
 ),
 
 "wesnoth-anl" : (
