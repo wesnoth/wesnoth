@@ -150,7 +150,7 @@ void manager::create_temp_move(const std::vector<map_location> &steps)
 
 bool manager::has_temp_move()
 {
-	bool has_it = move_arrow_;
+	bool has_it = selected_unit_ != NULL;
 	return has_it;
 }
 

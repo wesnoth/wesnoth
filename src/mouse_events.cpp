@@ -107,6 +107,10 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 
 	const map_location new_hex = gui().hex_clicked_on(x,y);
 
+	if (resources::whiteboard->active() && resources::whiteboard->has_temp_move()) {
+		resources::whiteboard->apply_temp_modifiers();
+	}
+
 	if(new_hex != last_hex_) {
 		update = true;
 		if (last_hex_.valid()) {
@@ -227,13 +231,9 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 				// the movement_reset is active only if it's not the unit's turn
 				unit_movement_resetter move_reset(*selected_unit,
 						selected_unit->side() != side_num_);
-				if (resources::whiteboard->active()) {
-					resources::whiteboard->apply_temp_modifiers();
-				}
+
 				current_route_ = get_route(selected_unit, dest, waypoints_, viewing_team());
-				if (resources::whiteboard->active()) {
-					resources::whiteboard->remove_temp_modifiers();
-				}
+
 				if(!browse) {
 					gui().set_route(&current_route_);
 					if (resources::whiteboard->active()) {
@@ -267,6 +267,9 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 				over_route_ = true;
 			}
 		}
+	}
+	if (resources::whiteboard->active() && resources::whiteboard->has_temp_move()) {
+		resources::whiteboard->remove_temp_modifiers();
 	}
 }
 
@@ -437,7 +440,13 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 		waypoints_.clear();
 	}
 
+	if (resources::whiteboard->active() && resources::whiteboard->has_temp_move()) {
+			resources::whiteboard->apply_temp_modifiers();
+	}
 	unit_map::iterator clicked_u = find_unit(hex);
+	if (resources::whiteboard->active() && resources::whiteboard->has_temp_move()) {
+		resources::whiteboard->remove_temp_modifiers();
+	}
 
 	const map_location src = selected_hex_;
 	pathfind::paths orig_paths = current_paths_;
