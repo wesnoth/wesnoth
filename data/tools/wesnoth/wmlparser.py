@@ -823,29 +823,31 @@ Massage a string into what appears to be a JSON-compatible form
     front = s.index("'")
     return '"%s"' % s[front+1:len(s)-1]
 
-def jsonify(tree, verbose=False):
+def jsonify(tree, verbose=False, depth=0):
     """
 Convert a DataSub into JSON
 
 If verbose, insert a linebreak after every brace and comma (put every item on its own line), otherwise, condense everything into a single line.
 """
     print "{",
-    if verbose: print
     first = True
+    sdepth1 = "\n" + " " * depth
+    sdepth2 = sdepth1 + " "
     for child in tree.children():
         if first:
             first = False
         else:
-            print ",",
-            if verbose: print
-        print '"%s":' % child.name,
+            sys.stdout.write(",")
+        if verbose:
+            sys.stdout.write(sdepth2)
+        print'"%s":' % child.name,
         if child.get_type() == "DataSub":
-            jsonify(child)
+            jsonify(child, verbose, depth + 1)
         else:
             print strify(child.get_value()),
-            if verbose: print
-    print "}",
-    if verbose: print
+    if verbose:
+        sys.stdout.write(sdepth1)
+    sys.stdout.write("}")
 
 if __name__ == "__main__":
     import optparse, subprocess
@@ -908,7 +910,7 @@ if __name__ == "__main__":
     wmlparser.parse_top(data)
 
     if options.to_json:
-        jsonify(data)#, True) # For more readable results
+        jsonify(data, True) # For more readable results
     else:
         data.debug(show_contents = options.contents, use_color = options.color)
 
