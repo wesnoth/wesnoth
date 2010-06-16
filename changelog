@@ -6,6 +6,7 @@ Version 1.8.2+svn:
    * Prevent dereferencing freed memory when reporting malformed maps, i.e.
      when using an invalid terrain type
    * Fixed bug #16171: Disable commands during [animate_unit]
+   * Fixed crash if a sighted event killed a unit just before a fight.
 
 Version 1.8.2:
  * Campaigns:

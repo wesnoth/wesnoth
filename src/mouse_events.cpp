@@ -748,6 +748,32 @@ void mouse_handler::attack_enemy(unit_map::iterator attacker, unit_map::iterator
 
 void mouse_handler::attack_enemy_(unit_map::iterator attacker, unit_map::iterator defender, int choice)
 {
+	//we must get locations by value instead of by references, because the iterators
+	//may become invalidated later
+	const map_location attacker_loc = attacker->first;
+	const map_location defender_loc = defender->first;
+
+	commands_disabled++;
+
+	attacker->second.set_goto(map_location());
+	//This triggers a shroud update which could fire a sighted event
+	//invalidating our iterators (or do more changes)
+	clear_undo_stack();
+	redo_stack_.clear();
+
+	// refresh iterators
+	attacker = units_.find(attacker_loc);
+	defender = units_.find(defender_loc);
+
+	if(attacker == units_.end() || attacker->second.incapacitated()
+			|| attacker->second.side() != side_num_) {
+		return;
+	}
+	if(defender == units_.end() || defender->second.incapacitated()
+			|| current_team().is_enemy(defender->second.side()) == false) {
+		return;
+	}
+
 	std::vector<battle_context> bc_vector;
 	fill_weapon_choices(bc_vector, attacker, defender);
 
@@ -755,18 +781,8 @@ void mouse_handler::attack_enemy_(unit_map::iterator attacker, unit_map::iterato
 		return;
 	}
 
-	//we must get locations by value instead of by references, because the iterators
-	//may become invalidated later
-	const map_location attacker_loc = attacker->first;
-	const map_location defender_loc = defender->first;
-
-	commands_disabled++;
 	const battle_context::unit_stats &att = bc_vector[choice].get_attacker_stats();
 	const battle_context::unit_stats &def = bc_vector[choice].get_defender_stats();
-
-	attacker->second.set_goto(map_location());
-	clear_undo_stack();
-	redo_stack_.clear();
 
 	current_paths_ = pathfind::paths();
 	// make the attacker's stats appear during the attack
