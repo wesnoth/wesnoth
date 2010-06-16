@@ -59,7 +59,7 @@ public:
 	 * the corresponding modifier. Dropping the returned reference will revert
 	 * the changes.
 	 */
-	modifier_ptr apply_temp_modifier(unit_map& unit_map);
+	virtual modifier_ptr apply_temp_modifier(unit_map& unit_map);
 
 private:
 	unit & unit_;

@@ -43,7 +43,7 @@ mapbuilder_visitor::~mapbuilder_visitor()
 
 void mapbuilder_visitor::visit_move(boost::shared_ptr<move> move)
 {
-	if (excluded_units_.count(&move->get_unit()) == 0)
+	if (excluded_units_.find(&move->get_unit()) == excluded_units_.end())
 	{
 		modifiers_.push(move->apply_temp_modifier(unit_map_));
 	}

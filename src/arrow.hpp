@@ -44,7 +44,7 @@ public:
 	/// returns false if the received path is invalid
 	virtual bool set_path(const arrow_path_t &path);
 
-	virtual void clear_path();
+	virtual void reset();
 
 	/**
 	 * The string color parameter is in the same format expected by the

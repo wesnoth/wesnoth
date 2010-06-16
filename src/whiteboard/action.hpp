@@ -32,6 +32,8 @@ static lg::log_domain log_whiteboard("whiteboard");
 
 struct temporary_unit_map_modifier;
 
+class unit_map;
+
 namespace wb {
 
 class action;
@@ -54,6 +56,13 @@ public:
 	virtual void accept(visitor& v) = 0;
 
 	virtual void execute() = 0;
+
+	/**
+	 * Applies temporarily the result of this action to the unit map, and returns
+	 * the corresponding modifier. Dropping the returned reference will revert
+	 * the changes.
+	 */
+	virtual modifier_ptr apply_temp_modifier(unit_map& unit_map) = 0;
 };
 
 } // end namespace wb

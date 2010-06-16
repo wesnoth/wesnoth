@@ -67,7 +67,7 @@ bool arrow::set_path(const arrow_path_t &path)
 	}
 }
 
-void arrow::clear_path()
+void arrow::reset()
 {
 	invalidate_arrow_path(path_);
 	symbols_map_.clear();
