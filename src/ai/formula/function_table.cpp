@@ -832,23 +832,23 @@ private:
 	variant execute(const formula_callable& variables, formula_debugger *fdb) const {
 		variant attack = args()[0]->evaluate(variables,add_debug_info(fdb,0,"outcomes:attack"));
 		ai::attack_analysis* analysis = convert_variant<ai::attack_analysis>(attack);
-		unit_map units_with_moves(*resources::units);
-		typedef std::pair<map_location, map_location> mv;
-		foreach (const mv &m, analysis->movements) {
-			units_with_moves.move(m.first, m.second);
-		}
+		//unit_map units_with_moves(*resources::units);
+		//typedef std::pair<map_location, map_location> mv;
+		//foreach (const mv &m, analysis->movements) {
+		//	units_with_moves.move(m.first, m.second);
+		//}
 
 		std::vector<variant> vars;
 		if(analysis->chance_to_kill > 0.0) {
-			unit_map units(units_with_moves);
-			units.erase(analysis->target);
-			vars.push_back(variant(new position_callable(&units, static_cast<int>(analysis->chance_to_kill*100))));
+			//unit_map units(units_with_moves);
+			//units.erase(analysis->target);
+			vars.push_back(variant(new position_callable(/*&units,*/ static_cast<int>(analysis->chance_to_kill*100))));
 
 		}
 
 		if(analysis->chance_to_kill < 1.0) {
-			unit_map units(units_with_moves);
-			vars.push_back(variant(new position_callable(&units, static_cast<int>(100 - analysis->chance_to_kill*100))));
+			//unit_map units(units_with_moves);
+			vars.push_back(variant(new position_callable(/*&units,*/ static_cast<int>(100 - analysis->chance_to_kill*100))));
 		}
 
 		return variant(&vars);

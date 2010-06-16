@@ -264,17 +264,17 @@ public:
 };
 
 class position_callable : public formula_callable {
-	unit_map units_;
+	//unit_map units_;
 	int chance_;
 	variant get_value(const std::string& key) const;
 
 	void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
 public:
-	position_callable(unit_map* units, int chance) :
-		units_(),
+	position_callable(/*unit_map* units,*/ int chance) :
+		//units_(),
 		chance_(chance)
 	{
-		units->swap(units_);
+		//units->swap(units_);
 	}
 
 	struct move_map_backup {
