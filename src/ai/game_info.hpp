@@ -120,13 +120,9 @@ typedef std::map<std::string, known_aspect_ptr > known_aspect_map;
 class game_info {
 public:
 
-		game_info(class game_state& game_state)
-			: game_state_(game_state)
-			, recent_attacks()
+		game_info()
+			: recent_attacks()
 		{}
-
-		/** The global game state, because we may set the completion field. */
-		class game_state& game_state_;
 
 		/** hack. @todo 1.9 rework that via extended event system, or at least ensure it hurts no one */
 		std::set<map_location> recent_attacks;

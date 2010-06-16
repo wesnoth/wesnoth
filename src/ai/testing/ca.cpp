@@ -337,7 +337,7 @@ bool recruitment_phase::recruit_usage(const std::string& usage)
 		//FIXME: This message should be suppressed when WML author
 		//chooses the default recruitment pattern.
 		const std::string warning = "At difficulty level " +
-			get_info().game_state_.classification().difficulty + ", trying to recruit a:" +
+			resources::state_of_game->classification().difficulty + ", trying to recruit a:" +
 			usage + " but no unit of that type (usage=) is"
 			" available. Check the recruit and [ai]"
 			" recruitment_pattern keys for team '" +
@@ -632,7 +632,7 @@ double move_leader_to_goals_phase::evaluate()
 	double max_risk = goal["max_risk"].to_double(1 - get_caution());
 	auto_remove_ = goal["auto_remove"].to_bool();
 
-	dst_ = map_location(goal, &get_info().game_state_);
+	dst_ = map_location(goal, resources::state_of_game);
 	if (!dst_.valid()) {
 		ERR_AI_TESTING_AI_DEFAULT << "Invalid goal: "<<std::endl<<goal;
 		return BAD_SCORE;
