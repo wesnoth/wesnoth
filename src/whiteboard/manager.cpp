@@ -168,9 +168,19 @@ void manager::save_temp_move()
 		action_ptr action = finder.find_first_action_of(*selected_unit_, get_current_side_actions().actions());
 		if (action)
 		{
-			LOG_WB << "Previous action found for unit " << selected_unit_->name() << " [" << selected_unit_->id() << "]"
-					<< ", erasing action.\n";
-			get_current_side_actions().remove_action(action);
+			//FIXME: temporary for testing: if move created twice on same hex, execute instead
+			if (dynamic_cast<move*>(action.get())->get_arrow()->get_path().back()
+					== move_arrow_->get_path().back())
+			{
+				get_current_side_actions().execute(action);
+				return;
+			}
+			else //erase move
+			{
+				LOG_WB << "Previous action found for unit " << selected_unit_->name() << " [" << selected_unit_->id() << "]"
+						<< ", erasing action.\n";
+				get_current_side_actions().remove_action(action);
+			}
 		}
 	} // kill action shared_ptr by closing scope
 
@@ -185,6 +195,11 @@ void manager::save_temp_move()
 	move_arrow_.reset();
 	fake_unit_.reset();
 	selected_unit_ = NULL;
+}
+
+void manager::execute_first()
+{
+	get_current_side_actions().execute_first();
 }
 
 } // end namespace wb

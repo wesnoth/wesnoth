@@ -38,6 +38,21 @@ const action_set& side_actions::actions() const
 	return actions_;
 }
 
+void side_actions::execute_first()
+{
+	actions_.front()->execute();
+	actions_.pop_front();
+	//TODO: Validate remaining actions here
+}
+
+void side_actions::execute(action_ptr action)
+{
+	assert(!actions_.empty());
+	action->execute();
+	remove_action(action);
+	//TODO: Validate remaining actions here
+}
+
 void side_actions::insert_move(unit& subject, const map_location& target_hex, size_t index, boost::shared_ptr<arrow> arrow,
 		boost::shared_ptr<unit> fake_unit)
 {

@@ -52,6 +52,8 @@ public:
 	virtual ~action();
 
 	virtual void accept(visitor& v) = 0;
+
+	virtual void execute() = 0;
 };
 
 } // end namespace wb

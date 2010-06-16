@@ -81,6 +81,9 @@ public:
      */
 	void save_temp_move();
 
+	/** Executes first action in the queue for current side */
+	void execute_first();
+
 private:
 	/**
 	 * Tracks whether the whiteboard is active.

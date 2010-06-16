@@ -46,6 +46,18 @@ public:
 	const action_set& actions() const;
 
 	/**
+	 * Executes the first action in the queue, and then deletes it.
+	 * TODO: Validate all subsequent actions after doing this!
+	 */
+	void execute_first();
+
+	/**
+	 * Executes the specified action, if it exists in the queue.
+	 * TODO: Validate all subsequent actions after doing this!
+	 */
+	void execute(action_ptr action);
+
+	/**
 	 * Returns the index for the first (executed earlier) action within the actions set.
 	 */
 	size_t begin() {return 0; }

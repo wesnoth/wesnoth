@@ -48,6 +48,8 @@ public:
 
 	virtual void accept(visitor& v);
 
+	virtual void execute();
+
 	unit& get_unit() { return unit_; }
 
 	boost::shared_ptr<arrow> get_arrow() { return arrow_; }

@@ -20,10 +20,14 @@
 
 #include "visitor.hpp"
 
+#include "actions.hpp"
 #include "arrow.hpp"
 #include "unit.hpp"
 #include "config.hpp"
+#include "play_controller.hpp"
+#include "replay.hpp"
 #include "resources.hpp"
+#include "team.hpp"
 #include "game_display.hpp"
 
 namespace wb {
@@ -49,9 +53,24 @@ move::~move()
 	}
 }
 
+team& get_current_team()
+{
+	int current_side = resources::controller->current_side();
+	team& current_team = (*resources::teams)[current_side - 1];
+	return current_team;
+}
+
 void move::accept(visitor& v)
 {
 	v.visit_move(shared_from_this());
+}
+
+void move::execute()
+{
+	static bool show_move = true;
+	map_location* next_unit = NULL; //FIXME: Not sure what to do with this variable as of now
+	::move_unit(NULL, arrow_->get_path(), &recorder, resources::undo_stack, show_move, next_unit,
+			get_current_team().auto_shroud_updates());
 }
 
 modifier_ptr move::apply_temp_modifier(unit_map& unit_map)
