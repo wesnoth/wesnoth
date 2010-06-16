@@ -38,8 +38,8 @@ namespace wb {
 class move : public action, public boost::enable_shared_from_this<move>
 {
 public: //constants
-	static const double ALPHA_HIGHLIGHT = 2.0;
-	static const double ALPHA_NORMAL = 0.6;
+	static const double ALPHA_HIGHLIGHT;
+	static const double ALPHA_NORMAL;
 
 public:
 	move(unit& subject, const map_location& target_hex, boost::shared_ptr<arrow> arrow,
