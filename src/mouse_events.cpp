@@ -158,7 +158,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 		const unit_map::iterator selected_unit = find_unit(selected_hex_);
 		const unit_map::iterator mouseover_unit = find_unit(new_hex);
 
-		if (resources::whiteboard) {
+		if (resources::whiteboard->active()) {
 			if (update)	{
 				resources::whiteboard->remove_highlight();
 				if (mouseover_unit != units_.end())	{

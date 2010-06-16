@@ -69,8 +69,10 @@ public:
 	void select_unit(unit& unit);
 	void deselect_unit();
 
-	/** Set the route for move creation purposes */
+	/** Creates a temporary visual arrow, that follows the cursor, for move creation purposes */
 	void create_temp_move(const std::vector<map_location> &steps);
+	/** Informs whether an arrow is being displayed for move creation purposes */
+	bool has_temp_move();
 
 	void erase_temp_move();
 

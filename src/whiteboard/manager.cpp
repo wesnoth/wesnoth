@@ -105,6 +105,7 @@ void manager::remove_highlight()
 
 void manager::select_unit(unit& unit)
 {
+	erase_temp_move();
 	selected_unit_ = &unit;
 	DBG_WB << "Selected unit " << selected_unit_->name() << " [" << selected_unit_->id() << "]\n";
 }
@@ -145,6 +146,12 @@ void manager::create_temp_move(const std::vector<map_location> &steps)
 		fake_unit_->set_location(route_.back());
 		fake_unit_->set_ghosted(show_ghosted_unit_bars);
 	}
+}
+
+bool manager::has_temp_move()
+{
+	bool has_it = move_arrow_;
+	return has_it;
 }
 
 void manager::erase_temp_move()
