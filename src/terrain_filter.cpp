@@ -39,7 +39,7 @@ terrain_filter::~terrain_filter()
 #pragma warning(push)
 #pragma warning(disable:4413)
 terrain_filter::terrain_filter():
-	cfg_(unconstructed_vconfig()),
+	cfg_(vconfig::unconstructed_vconfig()),
 	units_(unit_map()),
 	cache_(),
 	max_loop_(),
