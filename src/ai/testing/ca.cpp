@@ -816,7 +816,7 @@ double get_villages_phase::evaluate()
 {
 	moves_.clear();
 	unit_map::const_iterator leader = resources::units->find_leader(get_side());
-	get_villages(get_possible_moves(),get_dstsrc(),get_enemy_dstsrc(),leader);
+	get_villages(get_dstsrc(),get_enemy_dstsrc(),leader);
 	if (moves_.size()>0) {
 		return get_score();
 	}
@@ -874,7 +874,7 @@ void get_villages_phase::execute()
 	return;
 }
 
-void get_villages_phase::get_villages(const moves_map& possible_moves,
+void get_villages_phase::get_villages(
 		const move_map& dstsrc, const move_map& enemy_dstsrc,
 		unit_map::const_iterator &leader)
 {
@@ -905,7 +905,7 @@ void get_villages_phase::get_villages(const moves_map& possible_moves,
 
 	DBG_AI_TESTING_AI_DEFAULT << reachmap.size() << " units found who can try to capture a village.\n";
 
-	find_villages(reachmap, moves_, dstsrc, possible_moves, enemy_dstsrc);
+	find_villages(reachmap, moves_, dstsrc, enemy_dstsrc);
 
 	treachmap::iterator itor = reachmap.begin();
 	while(itor != reachmap.end()) {
@@ -936,7 +936,6 @@ void get_villages_phase::find_villages(
 	treachmap& reachmap,
 	tmoves& moves,
 	const std::multimap<map_location,map_location>& dstsrc,
-	const std::map<map_location,pathfind::paths>& /*possible_moves*/,
 	const std::multimap<map_location,map_location>& enemy_dstsrc)
 
 {

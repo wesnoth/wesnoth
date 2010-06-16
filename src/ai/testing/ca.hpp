@@ -249,7 +249,7 @@ private:
 	void dump_reachmap(treachmap& reachmap);
 
 
-	void get_villages(const moves_map &possible_moves,
+	void get_villages(
 		const move_map &dstsrc, const move_map &enemy_dstsrc,
 		unit_map::const_iterator &leader);
 
@@ -258,7 +258,6 @@ private:
 		treachmap& reachmap,
 		tmoves& moves,
 		const std::multimap<map_location,map_location>& dstsrc,
-		const std::map<map_location,pathfind::paths>& possible_moves,
 		const std::multimap<map_location,map_location>& enemy_dstsrc);
 
 };
