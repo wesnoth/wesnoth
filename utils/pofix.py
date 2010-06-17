@@ -346,6 +346,17 @@ stringfixes = {
 ("follow you, Kalenz - but", "follow you, Kalenz — but"),
 ("Kalenz - lead us", "Kalenz — lead us"),
 ("them aid - it's clear", "them aid — it's clear"),
+
+# Correct capitalization
+# conversion added in 1.9.0-svn
+("Breaking the siege", "Breaking the Siege"),
+("Council ruling", "Council Ruling"),
+("The Chief must die", "The Chief Must Die"),
+("News from the front", "News from the Front"),
+("Battle of the book", "Battle of the Book"),
+("Council of hard choices", "Council of Hard Choices"),
+("Ka'lian under attack", "Ka’lian under Attack"), # Also convert apostrophe to its curly form
+("Hostile mountains", "Hostile Mountains"),
 ),
 
 "wesnoth-manual" : (
