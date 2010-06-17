@@ -554,7 +554,23 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse) {
 		if (!browse && !commands_disabled && u->side() == gui().viewing_side()) {
 			sound::play_UI_sound("select-unit.wav");
 			u->set_selecting();
-			game_events::fire("select", hex);
+
+			if (!(resources::whiteboard->active() && resources::whiteboard->has_action(*u))) {
+				bool modifiers_applied = false;
+				if (resources::whiteboard->active()) {
+					modifiers_applied = resources::whiteboard->temp_modifiers_applied();
+					if (modifiers_applied) {
+						resources::whiteboard->remove_temp_modifiers();
+					}
+				}
+
+				game_events::fire("select", hex);
+
+				if (resources::whiteboard->active() && modifiers_applied) {
+					resources::whiteboard->apply_temp_modifiers();
+				}
+			}
+
 			if (resources::whiteboard->active()) {
 				resources::whiteboard->select_unit(*u);
 			}

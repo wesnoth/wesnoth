@@ -57,6 +57,8 @@ public:
 	 */
 	void apply_temp_modifiers();
 	void remove_temp_modifiers();
+	void toggle_temp_modifiers();
+	bool temp_modifiers_applied() { return temp_modifiers_applied_; }
 
 	/**
 	 * Highlights the action for this unit,
@@ -72,7 +74,7 @@ public:
 	/** Creates a temporary visual arrow, that follows the cursor, for move creation purposes */
 	void create_temp_move(const std::vector<map_location> &steps);
 	/** Informs whether an arrow is being displayed for move creation purposes */
-	bool has_temp_move();
+	bool during_move_creation() const;
 
 	void erase_temp_move();
 
@@ -85,6 +87,10 @@ public:
 
 	/** Executes first action in the queue for current side */
 	void execute_first();
+
+	/** Checks whether the specified unit has at least one planned action,
+	 *  and returns the first action found. */
+	boost::shared_ptr<action> has_action(const unit& unit) const;
 
 private:
 	/**

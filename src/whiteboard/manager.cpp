@@ -90,6 +90,14 @@ void manager::remove_temp_modifiers()
 	temp_modifiers_applied_ = false;
 }
 
+void manager::toggle_temp_modifiers()
+{
+	if (temp_modifiers_applied_)
+		remove_temp_modifiers();
+	else
+		apply_temp_modifiers();
+}
+
 void manager::highlight_action(const unit& unit)
 {
 	find_visitor finder;
@@ -171,7 +179,7 @@ void manager::create_temp_move(const std::vector<map_location> &steps)
 	}
 }
 
-bool manager::has_temp_move()
+bool manager::during_move_creation() const
 {
 	bool has_it = selected_unit_ != NULL;
 	return has_it;
@@ -203,8 +211,7 @@ void manager::save_temp_move()
 
 	// TODO: implement a find_and_erase method in find_visitor to avoid iterating twice over actions
 	{
-		find_visitor finder;
-		action_ptr action = finder.find_first_action_of(*selected_unit_, get_current_side_actions()->actions());
+		action_ptr action = has_action(*selected_unit_);
 		if (action)
 		{
 			//FIXME: temporary for testing: if move created twice on same hex, execute instead
@@ -245,6 +252,13 @@ void manager::save_temp_move()
 void manager::execute_first()
 {
 	get_current_side_actions()->execute_first();
+}
+
+action_ptr manager::has_action(const unit& unit) const
+{
+	find_visitor finder;
+	action_ptr action = finder.find_first_action_of(unit, get_current_side_actions()->actions());
+	return action;
 }
 
 } // end namespace wb
