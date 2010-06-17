@@ -186,6 +186,17 @@ stringfixes = {
 ("This forest looks quiet - too quiet.", "This forest looks quiet — too quiet."),
 ("No - you can't be dead!", "No — you can't be dead!"),
 ("of our help too - this", "of our help too — this"),
+
+# Correct capitalization
+# conversion added in 1.9.0-svn
+("Clash at the manor", "Clash at the Manor"),
+("Shadows in the dark", "Shadows in the Dark"),
+("Face of the enemy", "Face of the Enemy"),
+
+# Straight apostrophes and quotes to curly ones
+# conversion added in 1.9.0-svn
+# (NOT YET)
+#("Delfador's Memoirs", "Delfador’s Memoirs"),
 ),
 
 "wesnoth-dw" : (
@@ -196,10 +207,6 @@ stringfixes = {
 ("a week ago - wanted", "a week ago — wanted"),
 ("disturbing that a Kai - and", "disturbing that a Kai — and"),
 ("- would run here", "— would run here"),
-# Straight apostrophes and quotes to curly ones
-# conversion added in 1.9.0-svn
-# (NOT YET)
-#("Delfador's Memoirs", "Delfador’s Memoirs"),
 ),
 
 "wesnoth-ei" : (
