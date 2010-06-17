@@ -62,9 +62,6 @@ static lg::log_domain log_network("network");
 #define ERR_NW LOG_STREAM(err, log_network)
 // Only warnings and not errors to avoid DoS by log flooding
 
-// TODO: just a temporary typedef
-typedef ana::client_id TCPsocket;
-
 namespace {
 
 // We store the details of a connection in a map that must be looked up by its handle.
