@@ -388,6 +388,10 @@ pathfind::marked_route mouse_handler::get_route(unit_map::const_iterator un, map
 				route.steps.insert(route.steps.end(),
 					inter_route.steps.begin()+1,inter_route.steps.end());
 				route.move_cost+=inter_route.move_cost;
+			} else {
+				// we can't reach dst, stop the route at the last src
+				// as the normal case do
+				break;
 			}
 		}
 	}
