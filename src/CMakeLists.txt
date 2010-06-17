@@ -69,7 +69,6 @@ else(MSVC)
 		${SDL_LIBRARY}
 		${Boost_IOSTREAMS_LIBRARY}
 		${Boost_REGEX_LIBRARY}
-        ${Boost_SYSTEM_LIBRARIES}
 	)
 endif(MSVC)
 
@@ -93,6 +92,11 @@ if(MSVC)
 		${CAIRO_LIBRARY}
 		${GOBJECT_LIBRARY}
 	)
+else(MSVC)
+    set( game-external-libs
+        ${game-external-libs}
+        ${Boost_SYSTEM_LIBRARIES}
+    )
 endif(MSVC)
 
 
