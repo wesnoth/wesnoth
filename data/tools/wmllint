@@ -1896,6 +1896,10 @@ def inner_spellcheck(nav, value, spelldict):
     value = value.replace("\xe2\x80\x94", " ")	# UTF-8 em dash
     value = value.replace("\xe2\x80\x93", " ")	# UTF-8 en dash
     value = value.replace("\xe2\x80\x95", " ")	# UTF-8 horizontal dash
+    value = value.replace("\xe2\x80\x99", "'")	# UTF-8 right single quote
+    value = value.replace("\xe2\x80\x98", "'")	# UTF-8 left single quote
+    value = value.replace("\xe2\x80\x9d", " ")	# UTF-8 right double quote
+    value = value.replace("\xe2\x80\x9c", " ")	# UTF-8 left double quote
     value = value.replace("''", "")
     value = value.replace("female^", " ")
     value = value.replace("male^", " ")
