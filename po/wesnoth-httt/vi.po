@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-06-11 13:53+0200\n"
-"PO-Revision-Date: 2009-09-26 16:21+0700\n"
-"Last-Translator: Phạm Thành Nam <phamthanhnam.ptn@gmail.com>\n"
+"PO-Revision-Date: 2010-06-17 10:05+0700\n"
+"Last-Translator: Huynh Yen Loc <walkingcorpse13@gmail.com>\n"
 "Language-Team: Vietnamese <>\n"
 "Language: vi\n"
 "MIME-Version: 1.0\n"
@@ -34,7 +34,7 @@ msgstr "(Người mới bắt đầu)"
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:16
 #: data/campaigns/Heir_To_The_Throne/units/Fighter.cfg:5
 msgid "Fighter"
-msgstr "Đấu sĩ"
+msgstr "Chiến binh"
 
 #. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:17
@@ -59,7 +59,7 @@ msgstr "Nhà vô địch"
 #. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:21
 msgid "(Novice level, 25 scenarios.)"
-msgstr "(Mức độ mới bắt đầu, 25 kịch bản)"
+msgstr "(Mức độ mới bắt đầu, 25 màn chơi)"
 
 #. [campaign]: id=Heir_To_The_Throne
 #: data/campaigns/Heir_To_The_Throne/_main.cfg:21
@@ -546,7 +546,7 @@ msgstr "Ta là Delfador Vĩ đại. Chuẩn bị chết đi!"
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:477
 msgid "Let me through, you rogue!"
-msgstr "Để ta qua, ôn con!"
+msgstr "Để ta qua, tên đểu cán!"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/01_The_Elves_Besieged.cfg:492
@@ -578,7 +578,7 @@ msgid ""
 "small>"
 msgstr ""
 "<span color='white'>Mục tiêu thay thế:</span>\n"
-"<span color='green'>Đánh bại lãnh đạo của kẻ thù</span> <small>(phần thưởng "
+"<span color='green'>Đánh bại chỉ huy của kẻ thù</span> <small>(phần thưởng "
 "đặc biệt)</small>"
 
 #. [objective]: condition=lose
@@ -622,8 +622,7 @@ msgstr ""
 "Chúng ta có thể lên tàu ở cảng Nước Đen, nhưng hình như bọn người thú cũng "
 "đang chặn đầu chúng ta ở đó. Những người nổi loạn căm ghét Asheviere và "
 "trung thành với đức vua quá cố đang liều mạng trấn giữ bến cảng, vì đó là "
-"một trong những địa điểm duy nhất bọn chúng có thể chuyển đồ tiếp tế và vũ "
-"khí."
+"một trong những địa điểm duy nhất họ có thể chuyển đồ tiếp tế và vũ khí."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:158
@@ -661,9 +660,9 @@ msgid ""
 "It seems the orcs have come here too, to try to wrest this port from our "
 "hands. Our defenses are still weak, but reinforcements will arrive soon!"
 msgstr ""
-"Hình như bọn người thú cũng đã đến đây, để giành giật bến cảng này từ tay "
-"chúng tôi. Lực lượng phòng thủ của chúng tôi khá yếu, nhưng chẳng bao lâu "
-"nữa quân tiếp viện sẽ đến!"
+"Hình như bọn người thú cũng đã đến đây, để giành bến cảng này từ tay chúng "
+"tôi. Lực lượng phòng thủ của chúng tôi khá yếu, nhưng chẳng bao lâu nữa quân "
+"tiếp viện sẽ đến!"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/02_Blackwater_Port.cfg:174
@@ -909,7 +908,7 @@ msgstr "Đảo Alduin"
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:18
 #: data/campaigns/Heir_To_The_Throne/scenarios/19a_Snow_Plains.cfg:21
 msgid "Defeat the enemy leader"
-msgstr "Đánh bại lãnh đạo của kẻ thù"
+msgstr "Đánh bại chỉ huy của kẻ thù"
 
 #. [side]: type=Orcish Warrior, id=Usadar Q'kai
 #: data/campaigns/Heir_To_The_Throne/scenarios/03_The_Isle_of_Alduin.cfg:65
@@ -932,7 +931,7 @@ msgstr "Và đội quân đổ bộ lên đảo Alduin."
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/03_The_Isle_of_Alduin.cfg:191
 msgid "So this is Alduin. It looks a little... desolate."
-msgstr "Đây là Alduin sao? Trông nó hơi... tan hoang."
+msgstr "Đây là Alduin sao? Trông nó hơi... hoang vắng."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/03_The_Isle_of_Alduin.cfg:195
@@ -1002,8 +1001,8 @@ msgid ""
 "attacks almost always find their mark, even against well-defended troops."
 msgstr ""
 "Chắc chắn không tên người thú nào có thể chống cự nổi chúng ta khi có các "
-"pháp sư trong hàng ngũ. Đòn tấn công phép thuật của họ luôn tìm được đích "
-"đến, kể cả khi đấu với những quân lính được bảo vệ cẩn thận."
+"pháp sư trong hàng ngũ. Đòn tấn công phép thuật của họ hầu như luôn tìm được "
+"dấu ấn của mình, kể cả khi đấu với những quân lính được bảo vệ cẩn thận."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/03_The_Isle_of_Alduin.cfg:252
@@ -1095,7 +1094,7 @@ msgstr "Vịnh Ngọc Trai"
 #: data/campaigns/Heir_To_The_Throne/scenarios/04_The_Bay_of_Pearls.cfg:19
 msgid "Defeat one enemy leader, and resist the other until time expires"
 msgstr ""
-"Đánh bại một lãnh đạo của kẻ thù, và kháng cự tên còn lại đến khi hết thời "
+"Đánh bại một chỉ huy của kẻ thù, và kháng cự tên còn lại đến khi hết thời "
 "gian"
 
 #. [objective]: condition=win
@@ -1106,7 +1105,7 @@ msgid ""
 "bonus)</small>"
 msgstr ""
 "<span color='white'>Mục tiêu thay thế:</span>\n"
-"<span color='green'>Đánh bại mọi lãnh đạo của kẻ thù</span> <small>(thưởng "
+"<span color='green'>Đánh bại mọi chỉ huy của kẻ thù</span> <small>(thưởng "
 "hoàn thành sớm)</small>"
 
 #. [side]: type=Orcish Warrior, id=Dwaba-Kukai
@@ -1444,7 +1443,7 @@ msgid ""
 "You will prevail. I have faith in you. Head north. Elensefar is but three "
 "days' travel if you make haste."
 msgstr ""
-"Cậu sẽ thắng thế. Tôi tin ở cậu. Tiến về phía bắc. Elensefar chỉ còn cách ba "
+"Cậu sẽ thắng. Tôi tin ở cậu. Tiến về phía bắc. Elensefar chỉ còn cách ba "
 "ngày đường nếu cậu khẩn trương."
 
 #. [message]: speaker=Konrad
@@ -1625,7 +1624,7 @@ msgstr "Muff Malar"
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:153
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:102
 msgid "Undead"
-msgstr "Cải tử"
+msgstr "Ma quái"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/05a_Muff_Malal_Peninsula.cfg:117
@@ -1634,7 +1633,7 @@ msgid ""
 "upon by a strong band of undead."
 msgstr ""
 "Nhưng con đường đến Elensefar lại là một con đường đầy cạm bẫy. Konrad và "
-"người của mình bị một băng nhóm cải tử hoàn sinh tấn công."
+"người của mình bị một băng nhóm ma quái tấn công."
 
 #. [message]: speaker=Muff Malal
 #: data/campaigns/Heir_To_The_Throne/scenarios/05a_Muff_Malal_Peninsula.cfg:121
@@ -1657,10 +1656,10 @@ msgid ""
 "probably be grateful. But I do not know if we have the strength to defeat "
 "such a foe, or the time to spare."
 msgstr ""
-"Trông nó giống như một tiền đồn của bọn ma quỷ! Nếu chúng ta có thể đánh bại "
-"chúng, những người dân địa phương chắc sẽ rất biết ơn. Nhưng tôi không biết "
-"liệu chúng ta có đủ sức mạnh, cũng như thời gian cần thiết để đánh bại một "
-"kẻ thù như thế hay không."
+"Trông nó giống như một tiền đồn của bọn ma quái! Nếu chúng ta có thể đánh "
+"bại chúng, những người dân địa phương chắc sẽ rất biết ơn. Nhưng tôi không "
+"biết liệu chúng ta có đủ sức mạnh, cũng như thời gian cần thiết để đánh bại "
+"một kẻ thù như thế hay không."
 
 #. [message]: role=Advisor
 #: data/campaigns/Heir_To_The_Throne/scenarios/05a_Muff_Malal_Peninsula.cfg:133
@@ -1668,7 +1667,7 @@ msgid ""
 "Cleansing this land of undead does not appear overly difficult. It could be "
 "good training for those yet untested in battle."
 msgstr ""
-"Dọn dẹp bọn ma quỷ khỏi vùng đất này có vẻ không khó lắm. Đây có thể là cơ "
+"Dọn dẹp bọn ma quái khỏi vùng đất này có vẻ không khó lắm. Đây có thể là cơ "
 "hội rèn luyện tốt cho những người chưa được thử thách trong chiến trận."
 
 #. [message]: speaker=Konrad
@@ -1723,7 +1722,7 @@ msgstr ""
 #. [scenario]: id=05b_Isle_of_the_Damned
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:5
 msgid "Isle of the Damned"
-msgstr "Đảo Đọa Đày"
+msgstr "Hòn đảo bị nguyền rủa"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:24
@@ -1733,13 +1732,13 @@ msgid ""
 "small>"
 msgstr ""
 "<span color='white'>Mục tiêu thay thế:</span>\n"
-"<span color='green'>Đánh bại mọi lãnh đạo kẻ thù</span> <small>(thưởng đặc "
+"<span color='green'>Đánh bại mọi chỉ huy kẻ thù</span> <small>(thưởng đặc "
 "biệt)</small>"
 
 #. [objectives]
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:32
 msgid "No gold carried over to the next scenario."
-msgstr "Không có lượng vàng nào được mang sang kịch bản kế tiếp."
+msgstr "Không có lượng vàng nào được mang sang màn kế tiếp."
 
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:40
@@ -1761,7 +1760,8 @@ msgid ""
 "back to the ship. By dint of great effort they reached a nearby island..."
 msgstr ""
 "Các người cá cuối cùng cũng cứu được Konrad khỏi chết đuối, nhưng không thể "
-"đưa cậu trở lại tàu. Nhờ những nỗ lực lớn, họ đến được một hòn đảo ở gần..."
+"đưa cậu trở lại tàu. Nhờ những nỗ lực lớn, họ đến được một hòn đảo ở gần "
+"đó..."
 
 #. [side]: id=Haf-Mal, type=Lich
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:77
@@ -1798,7 +1798,7 @@ msgid ""
 "devastated the island into an ugly wasteland."
 msgstr ""
 "Chúng tôi chỉ nghe được những điều tồi tệ nhất về nơi này, thưa ngài. Người "
-"ta nói rằng đạo quân ma quỷ đã đến đây với số lượng đông đảo và đã tàn phá "
+"ta nói rằng đạo quân ma quái đã đến đây với số lượng đông đảo và đã tàn phá "
 "hòn đảo thành một vùng đất hoang xấu xí."
 
 #. [message]: speaker=Konrad
@@ -1819,7 +1819,7 @@ msgid ""
 msgstr ""
 "Vẫn có một số băng nhóm loài người đang ẩn nấp trên hòn đảo, thưa ngài. Nếu "
 "ngài tuyển được một vài người bọn họ để giúp sức, chúng ta có thể hy vọng "
-"trấn giữ được quân đoàn ma quỷ!"
+"trấn giữ được quân đoàn ma quái!"
 
 #. [event]: id=Delurin 21 12}
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:182
@@ -1878,7 +1878,7 @@ msgid ""
 "I was hiding in this holy place, planning how to defeat the evil undead. Now "
 "with your help, I can destroy them."
 msgstr ""
-"Tôi đang ẩn nấp ở nơi linh thiêng này, tìm cách đánh bại bọn ma quỷ xấu xa. "
+"Tôi đang ẩn nấp ở nơi linh thiêng này, tìm cách đánh bại bọn ma quái xấu xa. "
 "Giờ đây, với sự giúp đỡ của các bạn, tôi có thể tiêu diệt chúng."
 
 #. [message]: speaker=Konrad
@@ -1894,7 +1894,7 @@ msgid ""
 "If we eradicate the undead blight on these islands, I will surely go with "
 "you. Otherwise, I plan to finish my task here before moving on."
 msgstr ""
-"Nếu chúng ta trừ tiệt được mầm mống bọn ma quỷ trên hòn đảo này, tôi chắc "
+"Nếu chúng ta trừ tiệt được mầm mống bọn ma quái trên hòn đảo này, tôi chắc "
 "chắn sẽ đi cùng các bạn. Nếu không, tôi cần phải hoàn thành nhiệm vụ của "
 "mình ở đây trước khi đi tiếp."
 
@@ -1913,7 +1913,7 @@ msgstr ""
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:396
 msgid "Fight on against the undead without me, friends!"
-msgstr "Hãy đánh lại bọn ma quỷ mà không có tôi nhé, các bạn!"
+msgstr "Hãy đánh lại bọn ma quái mà không có tôi nhé, các bạn!"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/05b_Isle_of_the_Damned.cfg:429
@@ -1921,7 +1921,7 @@ msgid ""
 "We have wrested control of the island from the evil undead! Now all we have "
 "to do is wait for the ship to arrive, so we can make our way to Elensefar!"
 msgstr ""
-"Chúng ta đã giành quyền kiểm soát hòn đảo này từ tay bọn ma quỷ xấu xa! Bây "
+"Chúng ta đã giành quyền kiểm soát hòn đảo này từ tay bọn ma quái xấu xa! Bây "
 "giờ tất cả những gì chúng ta cần làm là chờ tàu đến, để chúng ta có thể lên "
 "đường đến Elensefar!"
 
@@ -1931,7 +1931,7 @@ msgid ""
 "Together we have vanquished the foul undead! Come, I will join you on your "
 "noble quest."
 msgstr ""
-"Chúng ta đã cùng nhau đánh bại được bọn ma quỷ bẩn thỉu! Đi thôi, tôi sẽ "
+"Chúng ta đã cùng nhau đánh bại được bọn ma quái bẩn thỉu! Đi thôi, tôi sẽ "
 "tham gia cùng các bạn trên con đường thực hiện mục tiêu cao quý."
 
 #. [message]: speaker=narrator
@@ -1968,7 +1968,7 @@ msgid ""
 "we meet again some day!"
 msgstr ""
 "Cảm ơn các anh em đã giúp đỡ. Tôi sẽ ở lại để tiếp tục chiến đấu với bọn ma "
-"quỷ bẩn thỉu. Cầu chúa phù hộ các bạn trên con đường thực hiện mục tiêu cao "
+"quái bẩn thỉu. Cầu chúa phù hộ các bạn trên con đường thực hiện mục tiêu cao "
 "quý, và hy vọng một ngày nào đó chúng ta sẽ gặp lại nhau!"
 
 #. [scenario]: id=06_The_Siege_of_Elensefar
@@ -1982,7 +1982,7 @@ msgstr "Bao vây Elensefar"
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:21
 #: data/campaigns/Heir_To_The_Throne/scenarios/22_Return_to_Wesnoth.cfg:21
 msgid "Defeat all enemy leaders"
-msgstr "Đánh bại mọi lãnh đạo của kẻ thù"
+msgstr "Đánh bại mọi chỉ huy của kẻ thù"
 
 #. [label]
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:38
@@ -2023,7 +2023,7 @@ msgid ""
 "fallen to the savage orcs."
 msgstr ""
 "Đội quân cuối cùng cũng đến được Elensefar, nhưng nhận ra rằng thành phố đã "
-"rơi vào tay bọn người thú hoang dã."
+"rơi vào tay bọn người thú tàn ác."
 
 #. [message]: role=Advisor
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:178
@@ -2042,7 +2042,7 @@ msgid ""
 "seems that the undead are allied with the orcs!"
 msgstr ""
 "Bọn chúng có quá đông. Điều này sẽ không dễ dàng chút nào! Và hãy nhìn về "
-"phía bắc kìa! Hình như bọn ma quỷ liên minh với bọn người thú!"
+"phía bắc kìa! Hình như bọn ma quái liên minh với bọn người thú!"
 
 #. [message]: speaker=Muff Jaanal
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:190
@@ -2059,7 +2059,7 @@ msgid ""
 "We must take the city, and destroy the evil undead before reinforcements "
 "arrive!"
 msgstr ""
-"Chúng ta phải chiếm lại thành phố, và tiêu diệt bọn ma quỷ xấu xa trước khi "
+"Chúng ta phải chiếm lại thành phố, và tiêu diệt bọn ma quái xấu xa trước khi "
 "quân tiếp viện đến!"
 
 #. [unit]: id=Reglok, type=Rogue
@@ -2144,7 +2144,7 @@ msgid ""
 "orcs. Alternatively, we can lay in wait until you give us a signal then "
 "ambush the orcs' rear."
 msgstr ""
-"Chúng tôi sống sót nhờ trộm cắp. Chúng tôi có thể giúp ngài lẻn vào trong "
+"Chúng tôi sống sót nhờ ẩn mình. Chúng tôi có thể giúp ngài lẻn vào trong "
 "thành phố và bao vây bọn người thú. Ngoài ra, chúng tôi có thể nằm chờ đến "
 "khi ngài ra hiệu cho chúng tôi mai phục phía sau bọn người thú."
 
@@ -2172,7 +2172,7 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:313
 msgid "I want you to reinforce us once we break through their line."
 msgstr ""
-"Tôi muốn các anh viện trợ cho chúng tôi sau khi chúng tôi đã chọc thủng qua "
+"Tôi muốn các anh tiếp viện cho chúng tôi sau khi chúng tôi đã chọc thủng qua "
 "phòng tuyến của chúng."
 
 #. [message]: speaker=Reglok
@@ -2206,8 +2206,8 @@ msgid ""
 "Do not fear, friends. There will be a slaughter here, but it will be orcish "
 "blood staining the streets."
 msgstr ""
-"Đừng sợ, các bạn. Sẽ chỉ có một chỗ chết ở đây, nhưng đó sẽ là máu của bọn "
-"người thú nhuộm màu đường phố."
+"Đừng sợ, các bạn. Sẽ chỉ có một cuộc tàn sát ở đây, nhưng đó sẽ là máu của "
+"bọn người thú nhuộm đỏ đường phố."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:346
@@ -2322,13 +2322,13 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:591
 msgid "The Ka'lian has met and decided: we must capture the Scepter of Fire."
 msgstr ""
-"Hội đồng Ka'lian đã họp và quyết định: chúng ta phải chiếm được cây trượng "
+"Hội đồng Ka'lian đã họp và quyết định: chúng ta phải chiếm được vương trượng "
 "lửa."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:596
 msgid "The Scepter of Fire? What's that?"
-msgstr "Cây trượng lửa? Đó là cái gì?"
+msgstr "Vương trượng lửa? Đó là cái gì?"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:601
@@ -2341,19 +2341,19 @@ msgid ""
 "Years have passed, and the fortunes of the dwarves have waxed and waned, but "
 "the Scepter has never been found."
 msgstr ""
-"Cây trượng lửa là báu vật cổ xưa nhất của vương quốc Wesnoth. Nó được rèn "
+"Vương trượng lửa là báu vật cổ xưa nhất của vương quốc Wesnoth. Nó được rèn "
 "dưới tay các người lùn Knalga theo yêu cầu của vua Haldric II. Các thợ rèn "
 "giỏi nhất đã mất hàng năm trời để tạo ra nó, nhưng không lâu sau khi hoàn "
 "thành, những người chế tạo đã bị săn đuổi bên dưới lòng đất, bị các thần "
-"tiên tấn công. Không ai biết chính xác điều gì đã xảy ra, nhưng cây trượng "
+"tiên tấn công. Không ai biết chính xác điều gì đã xảy ra, nhưng vương trượng "
 "đã bị thất lạc đâu đó trong các hang động lớn. Hàng năm trời trôi qua, sự "
-"thịnh vượng của người lùn lúc đến lúc đi, nhưng cây trượng thì chẳng bao giờ "
-"được tìm thấy."
+"thịnh vượng của người lùn lúc đến lúc đi, nhưng vương trượng thì chẳng bao "
+"giờ được tìm thấy."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:606
 msgid "But what has this to do with me?"
-msgstr "Nhưng tôi sẽ làm gì với cây trượng đó?"
+msgstr "Nhưng nó có liên quan gì đến tôi?"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:611
@@ -2363,13 +2363,13 @@ msgid ""
 "of Fire would rule the land."
 msgstr ""
 "Khi Garard II, chú của cậu, quyết định chọn người kế vị, ngài đã ban một sắc "
-"lệnh rằng bất cứ thành viên nào của hoàng gia tìm lại được cây trượng lửa sẽ "
-"có quyền cai trị vương quốc."
+"lệnh rằng bất cứ thành viên nào của hoàng gia tìm lại được vương trượng lửa "
+"sẽ có quyền cai trị vương quốc."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:616
 msgid "Oh, and you want me to get this scepter?"
-msgstr "Ồ, và ngài muốn tôi lấy cây trượng đó sao?"
+msgstr "Ồ, và ngài muốn tôi lấy vương trượng đó sao?"
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:621
@@ -2383,9 +2383,9 @@ msgid ""
 "help seal her place as ruler. But if you find the Scepter first, the people "
 "will support you as the king."
 msgstr ""
-"Thời gian không còn nhiều. Chúng tôi nghĩ rằng Asheviere cũng đang tìm cây "
+"Thời gian không còn nhiều. Chúng tôi nghĩ rằng Asheviere cũng đang tìm vương "
 "trượng, để giúp khẳng định ngôi vị thống trị của mụ. Nhưng nếu cậu tìm được "
-"cây trượng trước, mọi người sẽ ủng hộ cậu làm vua."
+"vương trượng trước, mọi người sẽ ủng hộ cậu làm vua."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/06_The_Siege_of_Elensefar.cfg:631
@@ -2561,7 +2561,7 @@ msgid ""
 "We dare not confront Asheviere yet. We must retrieve the Scepter of Fire and "
 "gather more allies in the north."
 msgstr ""
-"Chúng ta chưa thể đương đầu với Asheviere. Chúng ta phải tìm lại được cây "
+"Chúng ta chưa thể đương đầu với Asheviere. Chúng ta phải tìm lại được vương "
 "trượng lửa và thu thập thêm đồng minh ở phía bắc."
 
 #. [message]: speaker=Konrad
@@ -2572,12 +2572,12 @@ msgstr "Chiến thắng là của chúng ta. Hãy tiến hướng đông bắc!"
 #. [scenario]: id=08_The_Princess_of_Wesnoth
 #: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:4
 msgid "The Princess of Wesnoth"
-msgstr "Công chúa Wesnoth"
+msgstr "Công chúa của Wesnoth"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:20
 msgid "Force Li'sar's surrender (reduce her hitpoints to 0 or lower)"
-msgstr "Buộc Li'sar đầu hàng (giảm năng lượng của cô ta xuống 0 hoặc thấp hơn)"
+msgstr "Buộc Li'sar đầu hàng (giảm máu của cô ta xuống 0 hoặc thấp hơn)"
 
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:46
@@ -2684,7 +2684,7 @@ msgstr "Có lẽ ta đã không sử dụng đủ lực lượng..."
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:216
 msgid "I surrender! Don't hurt me, impostor."
-msgstr "Tôi đầu hàng! Đừng hại tôi, kẻ mạo danh."
+msgstr "Tôi đầu hàng! Đừng hại tôi, tên mạo danh."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/08_The_Princess_of_Wesnoth.cfg:220
@@ -2749,7 +2749,7 @@ msgid ""
 "(Ha ha, little do they know just how many undead have wandered the northern "
 "road of late. Surely they are doomed!)"
 msgstr ""
-"(Ha ha, bọn chúng không biết bọn ma quỷ đã lang thang khắp con đường phía "
+"(Ha ha, bọn chúng không biết bọn ma quái đã lang thang khắp con đường phía "
 "bắc nhiều đến thế nào đâu. Chắc chắn bọn chúng sẽ tận số)"
 
 #. [message]: speaker=Li'sar
@@ -2835,7 +2835,7 @@ msgid ""
 "the hills — there are undead about!"
 msgstr ""
 "Hoàng tử! Con đường này có vẻ không an toàn như chúng ta mong đợi. Hãy nhìn "
-"những ngọn đồi xung quanh chúng ta - có đầy bọn ma quỷ!"
+"những ngọn đồi xung quanh chúng ta - có đầy bọn ma quái!"
 
 #. [message]: speaker=Selda-Mana
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:226
@@ -2845,7 +2845,7 @@ msgstr "Những kẻ đang đến là ai thế? Hãy giết tất cả bọn ch�
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:230
 msgid "To arms, men! The undead hordes approach!"
-msgstr "Mọi người, vào vị trí! Đạo quân ma quỷ đang đến gần!"
+msgstr "Mọi người, vào vị trí! Đạo quân ma quái đang đến gần!"
 
 #. [message]: speaker=Moremirmu
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:234
@@ -2869,8 +2869,8 @@ msgid ""
 "lasts until the end of the battle, and they shrink in utter fear of our "
 "blades... if that is possible for an undead minion."
 msgstr ""
-"Người của tôi vẩy nước thánh lên vũ khí khi chiến đấu với bọn ma quỷ. Tác "
-"dụng này thường kéo dài đến tận cuối trận chiến, và bọn ma quỷ chùn bước "
+"Người của tôi vẩy nước thánh lên vũ khí khi chiến đấu với bọn ma quái. Tác "
+"dụng này thường kéo dài đến tận cuối trận chiến, và bọn ma quái chùn bước "
 "trong sợ hãi trước những lưỡi kiếm của chúng tôi..."
 
 #. [message]: speaker=Delfador
@@ -2895,8 +2895,8 @@ msgid ""
 "That is Moremirmu! He helped us fight the undead in the Isles of the Damned, "
 "let us hope he can help us once more!"
 msgstr ""
-"Đó là Moremirmu! Ông ấy đã giúp chúng tôi đánh bọn ma quỷ trên đảo Đọa Đày. "
-"Hy vọng ông ấy có thể giúp chúng ta một lần nữa!"
+"Đó là Moremirmu! Ông ấy đã giúp chúng tôi đánh bọn ma quái trên hòn đảo bị "
+"nguyền rủa. Hy vọng ông ấy có thể giúp chúng ta một lần nữa!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:312
@@ -2904,7 +2904,7 @@ msgid ""
 "The sun rises in the east. Surely the undead do not have the power to "
 "continue their onslaught through another day!"
 msgstr ""
-"Mặt trời đã mọc ở phía đông. Chắc chắn bọn ma quỷ không có đủ sức mạnh để "
+"Mặt trời đã mọc ở phía đông. Chắc chắn bọn ma quái không có đủ sức mạnh để "
 "tiếp tục cuộc tấn công qua một ngày khác nữa!"
 
 #. [message]: speaker=Kalenz
@@ -3003,8 +3003,8 @@ msgid ""
 "This place makes me feel uneasy, even with the undead retreating. Where may "
 "we go now?"
 msgstr ""
-"Nơi này khiến tôi cảm thấy không thoải mái, kể cả khi bọn ma quỷ đã rút lui. "
-"Bây giờ chúng ta có thể đi đâu?"
+"Nơi này khiến tôi cảm thấy không thoải mái, kể cả khi bọn ma quái đã rút "
+"lui. Bây giờ chúng ta có thể đi đâu?"
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/scenarios/09_The_Valley_of_Death.cfg:418
@@ -3034,9 +3034,8 @@ msgstr "Đánh bại sư tử đầu chim mẹ và chỉ huy của kẻ thù"
 
 #. [side]: type=General, id=Robryn
 #: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:70
-#, fuzzy
 msgid "Robryn"
-msgstr "Ronry"
+msgstr "Robryn"
 
 #. [side]: type=Gryphon, id=Mother Gryphon
 #: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:88
@@ -3075,7 +3074,7 @@ msgid ""
 "the young to be flying mounts. Would that work, Delfador?"
 msgstr ""
 "Núi sư tử đầu chim! Chúng ta có thể đánh cắp một vài quả trứng từ bọn sư tử "
-"đầu chim và luyện những con non làm vật cưỡi biết bay. Điều đó có được "
+"đầu chim và luyện những con non làm thú cưỡi biết bay. Điều đó có được "
 "không, Delfador?"
 
 #. [message]: speaker=Delfador
@@ -3085,10 +3084,10 @@ msgid ""
 "prove dangerous... and yet such mounts could help us greatly later. Whatever "
 "we do, we must pass by this place."
 msgstr ""
-"Chúng ta có thể làm điều đó, nhưng phải hết sức cẩn thận. Quấy nhiễu bọn sư "
-"tử đầu chim có thể rất nguy hiểm... nhưng những vật cưỡi như thế sau này có "
-"thể giúp ích nhiều cho chúng ta. Cho dù làm gì, chúng ta cũng phải đi qua "
-"nơi này."
+"Chúng ta có thể làm điều đó, nhưng phải hết sức cẩn thận. Quấy nhiễu sư tử "
+"đầu chim có thể rất nguy hiểm... nhưng những thú cưỡi như thế sau này có thể "
+"giúp ích nhiều cho chúng ta. Cho dù làm gì, chúng ta cũng phải đi qua nơi "
+"này."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:138
@@ -3105,7 +3104,7 @@ msgstr "Đây là những quả trứng của con sư tử đầu chim mẹ!"
 msgid "Excellent! We should be able to breed Gryphons for our own uses now!"
 msgstr ""
 "Tuyệt vời. Chúng ta sẽ có thể nhân giống sư tử đầu chim cho những mục đích "
-"của riêng chúng ta!"
+"riêng của chúng ta!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:170
@@ -3127,7 +3126,7 @@ msgid ""
 "Ha ha! We have killed this foul beast of the air, and can deny the rebels "
 "its eggs!"
 msgstr ""
-"Ha ha! Chúng ta đã giết được con vật bẩn thỉu của không trung, chúng ta đã "
+"Ha ha! Chúng ta đã giết được con vật bẩn thỉu bay trên trời này, chúng ta đã "
 "phỗng tay trên những quả trứng trước bọn phiến loạn!"
 
 #. [message]: speaker=Konrad
@@ -3230,19 +3229,19 @@ msgstr "Chúng ta hãy tiếp tục lên đường!"
 #: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:414
 #: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:451
 msgid "Rampant Graak"
-msgstr "Graak chồm dậy"
+msgstr "Graak hung hăng"
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:425
 #: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:462
 msgid "Rampant Grook"
-msgstr "Grook chồm dậy"
+msgstr "Grook hung hăng"
 
 #. [event]
 #: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:436
 #: data/campaigns/Heir_To_The_Throne/scenarios/10_Gryphon_Mountain.cfg:473
 msgid "Rampant Gruak"
-msgstr "Gruak chồm dậy"
+msgstr "Gruak hung hăng"
 
 #. [scenario]: id=11_The_Ford_of_Abez
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:4
@@ -3275,8 +3274,8 @@ msgid ""
 msgstr ""
 "Đây là bờ sông Abez. Khi lội qua dòng sông này, chúng ta sẽ rời khỏi "
 "Wesnoth, và vào vùng đất phương bắc. Người lùn đã từng cai trị những vùng "
-"đất này, nhưng bây giờ chúng chỉ còn là hỗn độn. Đây là nơi cha và chú của "
-"cậu đã bị bội phản, cách đây cũng gần mười chín năm rồi, Konrad."
+"đất này, nhưng bây giờ chúng chỉ còn lại sự hỗn loạn. Đây là nơi cha và chú "
+"của cậu đã bị phản bội, cách đây cũng gần mười chín năm rồi, Konrad."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:192
@@ -3326,8 +3325,8 @@ msgid ""
 "know not now whether it was wisdom or cowardice, but I did flee, seeing no "
 "further hope on that day."
 msgstr ""
-"Khi tôi nhìn thấy đức vua bị phản đội và ngọn cờ của ngài rơi xuống, tôi đã "
-"chạy trốn khỏi trận chiến. Bây giờ tôi cũng không biết như thế là khôn ngoan "
+"Khi tôi nhìn thấy đức vua bị phản đội và ngọn cờ của ngài sụp đổ, tôi đã "
+"chạy trốn khỏi trận chiến. Đến giờ tôi cũng không biết như thế là khôn ngoan "
 "hay hèn nhát nữa, nhưng tôi đã chạy trốn, chẳng còn thấy hy vọng gì ngày hôm "
 "đó."
 
@@ -3343,7 +3342,7 @@ msgstr ""
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:224
 msgid "That foolish boy killed himself."
-msgstr "Tên ngu xuẩn đó đã tự sát."
+msgstr "Tên ngu xuẩn đó đã tự giết chính hắn."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:228
@@ -3387,8 +3386,9 @@ msgid ""
 "immediately. And, look! It seems that the guard-towers on the river banks "
 "are manned!"
 msgstr ""
-"Thưa các ngài, chúng ta phải khẩn trương lên. Chúng ta phải lội qua sông "
-"ngay lập tức. Và, nhìn kìa! Hình như các tháp canh bên bờ sông có người!"
+"Thưa các ngài, với tất cả sự tôn trọng, chúng ta phải khẩn trương lên. Chúng "
+"ta phải lội qua sông ngay lập tức. Và, nhìn kìa! Hình như các tháp canh bên "
+"bờ sông có người!"
 
 #. [message]: speaker=Gaga-Breuk
 #: data/campaigns/Heir_To_The_Throne/scenarios/11_The_Ford_of_Abez.cfg:249
@@ -3416,8 +3416,8 @@ msgid ""
 "full of soldiers! We must cross here, and quickly!"
 msgstr ""
 "Mùa đông sắp buông xuống đầu chúng ta. Chúng ta chỉ có vài ngày để băng qua "
-"sông, và cây cầu gần nhất ở xa phía ngược dòng. Bị sập bẫy ở phía nam dòng "
-"sông khi mùa đông đến chắc chắn sẽ là tự vẫn. Asheviere sẽ bẫy chúng ta như "
+"sông, và cây cầu gần nhất ở xa phía ngược dòng. Bị mắc bẫy ở phía nam dòng "
+"sông khi mùa đông đến chắc chắn sẽ là tự sát. Asheviere sẽ bẫy chúng ta như "
 "những con chuột! Nhìn phía tây kìa! Asheviere có một pháo đài ở biên giới, "
 "và hình như đầy quân lính! Chúng ta phải băng qua sông ở đây, mau lên!"
 
@@ -3427,7 +3427,7 @@ msgid ""
 "There they are! So it is true, they foiled the undead. Now they are trying "
 "to leave Wesnoth. We can't let them cross the river. After them, men!"
 msgstr ""
-"Bọn chúng kia rồi! Vậy là đúng, bọn chúng đã đánh bại được bọn ma quỷ. Giờ "
+"Bọn chúng kia rồi! Vậy là đúng, bọn chúng đã đánh bại được bọn ma quái. Giờ "
 "bọn chúng đang định rời khỏi Wesnoth. Chúng ta không thể để chúng băng qua "
 "sông! Người đâu, mau đuổi theo chúng!"
 
@@ -3486,7 +3486,7 @@ msgid ""
 "Creatures of the deep are upon us! This may be very dangerous. Be quick! We "
 "must get to the other side with all haste!"
 msgstr ""
-"Những sinh vật của đáy sâu sắp tấn công chúng ta! Chúng rất nguy hiểm! Mau "
+"Những sinh vật từ đáy sâu sắp tấn công chúng ta! Chúng rất nguy hiểm! Mau "
 "lên! Chúng ta phải mau chóng đến được bờ bên kia!"
 
 #. [message]: speaker=Konrad
@@ -3577,8 +3577,8 @@ msgid ""
 "Stop and rest? My lord, we must go hard after the Scepter of Fire, lest it "
 "fall into the hands of our enemies!"
 msgstr ""
-"Dừng lại và nghỉ ngơi sao? Thưa hoàng tử, chúng ta phải mau chóng tìm ra cây "
-"trượng lửa, để nó không rơi vào tay kẻ thù!"
+"Dừng lại và nghỉ ngơi sao? Thưa hoàng tử, chúng ta phải mau chóng tìm ra "
+"vương trượng lửa, để nó không rơi vào tay kẻ thù!"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/12_Northern_Winter.cfg:163
@@ -3588,10 +3588,10 @@ msgid ""
 "money. This land looks fertile enough. Surely we can settle here for the "
 "winter!"
 msgstr ""
-"Chúng ta đã hành quân vất vả kể từ lần chúng ta bị bọn ma quỷ bao vây ở "
-"thung lũng bẩn thỉu đó. Giờ thì mùa đông đang đánh gục chúng ta, và chúng ta "
-"đã tiêu gần hết tiền. Vùng đất này trông có vẻ khá màu mỡ. Chắc chắn chúng "
-"ta có thể cư ngụ ở đây trong mùa đông!"
+"Chúng ta đã hành quân vất vả kể từ lần chúng ta bị bọn ma quái bao vây ở "
+"thung lũng bẩn thỉu đó. Giờ thì mùa đông đang trút xuống chúng ta, và chúng "
+"ta đã tiêu gần hết tiền. Vùng đất này trông có vẻ khá màu mỡ. Chắc chắn "
+"chúng ta có thể cư ngụ ở đây trong mùa đông!"
 
 #. [message]: role=human-advisor
 #: data/campaigns/Heir_To_The_Throne/scenarios/12_Northern_Winter.cfg:167
@@ -3612,9 +3612,9 @@ msgid ""
 "rest? Onward, I say!"
 msgstr ""
 "Chúng ta đang bị lực lượng của kẻ thù lớn nhất của các cậu truy đuổi, đang "
-"đi tìm cây trượng lửa, định mệnh của vương quốc đang nằm trong tay chúng ta, "
-"vậy mà loài người các cậu lại muốn dừng lại và nghỉ ngơi sao? Tôi nói, lên "
-"đường!"
+"đi tìm vương trượng lửa, định mệnh của vương quốc đang nằm trong tay chúng "
+"ta, vậy mà loài người các cậu lại muốn dừng lại và nghỉ ngơi sao? Tôi nói, "
+"lên đường!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/12_Northern_Winter.cfg:175
@@ -3624,11 +3624,11 @@ msgid ""
 "soon. But in these wild north lands, we must fight even for the right to "
 "rest. Look to the north! Those foul orcs will not allow us any peace!"
 msgstr ""
-"Họ nói đúng đấy, Kalenz. Lúc đầu tôi cũng muốn lấy được cây trượng trong "
+"Họ nói đúng đấy, Kalenz. Lúc đầu tôi cũng muốn lấy được vương trượng trong "
 "vòng một tháng, nhưng không thể. Quân lính của chúng ta sẽ bắt đầu bỏ trốn "
 "nếu họ không sớm được nghỉ ngơi. Nhưng ở vùng đất phương bắc hoang vu này, "
 "chúng ta vẫn phải chiến đấu để giành quyền nghỉ ngơi! Nhìn phía bắc kìa! Bọn "
-"người thú bẩn thỉu đó sẽ không cho chúng ta một tí hòa bình nào đâu!"
+"người thú bẩn thỉu đó sẽ không cho chúng ta một tí bình yên nào đâu!"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/12_Northern_Winter.cfg:179
@@ -3689,7 +3689,7 @@ msgid ""
 "shamans had a natural rapport with the gryphlets, whose wings were still too "
 "small to carry a mount."
 msgstr ""
-"Konrad giao cho các pháp sư thần tiên nhiệm vụ quây nhốt động vật. Các pháp "
+"Konrad giao cho các pháp sư thần tiên nhiệm vụ nuôi nhốt động vật. Các pháp "
 "sư thần tiên có mối quan hệ bẩm sinh với bọn sư tử đầu chim non, mà đôi cánh "
 "của chúng vẫn còn quá nhỏ để chở người."
 
@@ -3702,7 +3702,7 @@ msgid ""
 "the dwarven kingdom..."
 msgstr ""
 "Konrad cuối cùng đã quyết định không thể chờ đến lúc bọn sư tử đầu chim "
-"trưởng thành - lời nhắc nhở của Delfador về việc phải tìm lại được cây "
+"trưởng thành - lời nhắc nhở của Delfador về việc phải tìm lại được vương "
 "trượng quá thúc giục. Và sau nhiều ngày nghỉ ngơi, đoàn quân lại bắt đầu lên "
 "đường đến vương quốc người lùn..."
 
@@ -3724,7 +3724,7 @@ msgid ""
 "having yet fully arrived. And so after many days of rest, the party set out "
 "once again for the dwarven kingdom..."
 msgstr ""
-"Cuối cùng, lời nhắc nhở của Delfador về việc phải tìm lại được cây trượng "
+"Cuối cùng, lời nhắc nhở của Delfador về việc phải tìm lại được vương trượng "
 "quá thúc giục, kể cả khi điều đó có nghĩa là phải tháo dỡ toàn bộ doanh trại "
 "trong khi mùa xuân chưa hoàn toàn đến. Và sau nhiều ngày nghỉ ngơi, đoàn "
 "quân lại bắt đầu lên đường đến vương quốc người lùn..."
@@ -3732,7 +3732,7 @@ msgstr ""
 #. [scenario]: id=13_The_Dwarven_Doors
 #: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:4
 msgid "The Dwarven Doors"
-msgstr "Cửa Động Người Lùn"
+msgstr "Cửa Hang Người Lùn"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:28
@@ -3802,7 +3802,7 @@ msgid ""
 "of Fire. If we tarry in this place, hordes of orcs will surround us."
 msgstr ""
 "Điều đó không phải là sự lựa chọn khôn ngoan, vì nhiệm vụ của chúng ta là "
-"tìm lại được cây trượng lửa. Nếu chúng ta chần chừ ở nơi này, quân đoàn "
+"tìm lại được vương trượng lửa. Nếu chúng ta chần chừ ở nơi này, quân đoàn "
 "người thú sẽ bao vây chúng ta."
 
 #. [message]: speaker=Kalenz
@@ -3814,7 +3814,7 @@ msgid ""
 msgstr ""
 "Konrad, hãy lưu ý đến những lời của Delfador. Chúng ta sẽ trở lại để xóa bỏ "
 "sự kìm kẹp của bọn người thú khỏi vùng đất này. Nhìn kìa - bọn người thú đã "
-"tập hợp. Số nhiều hơn chắc chắn đã sẵn sàng tấn công chúng ta."
+"tập hợp. Số nhiều hơn chắc chắn đang trên đường đến đây."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:206
@@ -3848,8 +3848,8 @@ msgid ""
 "could get grain carts in under the very noses of those ugly orcs."
 msgstr ""
 "Chú của tôi trước đây thường buôn lậu... ờ... ý tôi là... buôn bán thực phẩm "
-"cho các người lùn. Chú ấy có thể lấy các xe thóc lúa ngay trước mũi bọn "
-"người thú xấu xí đó."
+"cho các người lùn. Chú ấy có thể lấy các xe thóc ngay trước mũi bọn người "
+"thú xấu xí đó."
 
 #. [message]: role=Outlaw_Advisor
 #: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:251
@@ -3958,7 +3958,7 @@ msgstr "Như mọi khi, chú ạ!"
 #. [message]: speaker=Uncle Somf
 #: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:413
 msgid "That bad, huh?"
-msgstr "Cách xấu xa đó hả?"
+msgstr "Tệ thật, đúng không?"
 
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:444
@@ -4032,7 +4032,7 @@ msgstr ""
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:512
 msgid "I hope we can make it through the main doors, then."
-msgstr "Thế thì tôi hy vọng chúng ta có thể qua được các cửa động chính."
+msgstr "Thế thì tôi hy vọng chúng ta có thể qua được các cửa hang chính."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/13_The_Dwarven_Doors.cfg:516
@@ -4104,13 +4104,13 @@ msgid ""
 "caves that lie ahead of us!"
 msgstr ""
 "Chà! Chúng ta đã qua được màn sương mù nguy hiểm của vùng núi, và bây giờ "
-"lại có cảnh hỗn độn này trước mắt chúng ta! Người đâu, tiến lên! Chúng ta "
+"lại có cảnh hỗn loạn này trước mắt chúng ta! Người đâu, tiến lên! Chúng ta "
 "phải vào được hang động nằm phía trước chúng ta!"
 
 #. [scenario]: id=14_Plunging_into_the_Darkness
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:4
 msgid "Plunging into the Darkness"
-msgstr "Đâm sâu vào bóng tối"
+msgstr "Tiến sâu vào bóng tối"
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:21
@@ -4167,7 +4167,7 @@ msgid ""
 "in peace without the treacherous elves coming to bother us?"
 msgstr ""
 "Ồ, thế sao? Tôi thấy ông đi cùng với bọn thần tiên. Người lùn bọn ta không "
-"thể sống hòa bình mà không có bọn thần tiên phản bội đến để làm phiền bọn ta "
+"thể sống bình yên mà không có bọn thần tiên phản bội đến để làm phiền bọn ta "
 "hay sao?"
 
 #. [message]: speaker=Kalenz
@@ -4229,14 +4229,14 @@ msgid ""
 "claim his throne. We seek the Scepter of Fire."
 msgstr ""
 "Chúng tôi đến để một người thừa kế có thể đòi lại quyền thừa kế của mình, để "
-"một vị vua có thể đòi lại ngai vàng của mình. Chúng tôi tìm cây trượng lửa."
+"một vị vua có thể đòi lại ngai vàng của mình. Chúng tôi tìm vương trượng lửa."
 
 #. [message]: speaker=Relgorn
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:356
 msgid ""
 "The Scepter of Fire? Are you out of your minds? Surely you speak in jest!"
 msgstr ""
-"Cây trượng lửa? Các ngươi bị mất trí rồi sao? Chắc chắn các ngươi đang nói "
+"Vương trượng lửa? Các ngươi bị mất trí rồi sao? Chắc chắn các ngươi đang nói "
 "đùa!"
 
 #. [message]: speaker=Delfador
@@ -4246,7 +4246,7 @@ msgid ""
 "dwarves in finding it. But know that we will find it, whether you help us or "
 "not."
 msgstr ""
-"Chúng tôi không nói đùa, anh bạn. Chúng tôi tìm cây trượng lửa. Chúng tôi "
+"Chúng tôi không nói đùa, anh bạn. Chúng tôi tìm vương trượng lửa. Chúng tôi "
 "thỉnh cầu sự giúp đỡ của các người lùn để tìm nó. Nhưng chắc chắn chúng tôi "
 "sẽ tìm thấy nó, bất kể các anh có giúp chúng tôi hay không."
 
@@ -4256,8 +4256,8 @@ msgid ""
 "You speak foolishness. No one even knows if the Scepter of Fire still "
 "exists. And who is this heir, this king that you speak of?"
 msgstr ""
-"Ngươi nói lời ngu xuẩn. Thậm chí còn không ai biết cây trượng lửa có còn tồn "
-"tại hay không. Và ai là người thừa kế, vị vua mà ngươi nói đó?"
+"Ngươi nói lời ngu xuẩn. Thậm chí còn không ai biết vương trượng lửa có còn "
+"tồn tại hay không. Và ai là người thừa kế, vị vua mà ngươi nói đó?"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:371
@@ -4312,13 +4312,13 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:426
 msgid "They thought I was dead. They hoped I was dead. Yet still I live."
 msgstr ""
-"Bọn chúng đã nghĩ rằng ta đã chết. Bọn chúng đã hy vọng rằng ta đã chết. "
-"Nhưng ta vẫn sống."
+"Bọn chúng đã nghĩ rằng ta đã chết. Bọn chúng hy vọng rằng ta đã chết. Nhưng "
+"ta vẫn sống."
 
 #. [message]: speaker=Relgorn
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:431
 msgid "And you really think that you can find the Scepter of Fire?"
-msgstr "Và ông thực sự nghĩ rằng ông có thể tìm thấy cây trượng lửa sao?"
+msgstr "Và ông thực sự nghĩ rằng ông có thể tìm thấy vương trượng lửa sao?"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:436
@@ -4329,10 +4329,10 @@ msgid ""
 "better than hiding from the orcs like worms."
 msgstr ""
 "Đúng vậy. Nếu các anh giúp chúng tôi, anh bạn, toàn bộ kho báu của Knalga mà "
-"chúng tôi tìm thấy sẽ là của các anh. Chúng tôi chỉ muốn cây trượng. Sẽ rất "
-"nguy hiểm. Đừng mắc sai lầm về điều đó: người lùn sẽ bị giết, có lẽ là nhiều "
-"người lùn. Nhưng chắc chắn tốt hơn việc trốn tránh bọn người thú như loài "
-"giun dế."
+"chúng tôi tìm thấy sẽ là của các anh. Chúng tôi chỉ muốn vương trượng. Sẽ "
+"rất nguy hiểm. Đừng mắc sai lầm về điều đó: người lùn sẽ bị giết, có lẽ là "
+"nhiều người lùn. Nhưng chắc chắn tốt hơn việc trốn tránh bọn người thú như "
+"loài giun dế."
 
 #. [message]: speaker=Relgorn
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:441
@@ -4341,8 +4341,8 @@ msgid ""
 "where the Scepter is though. Legend says it is hidden in the eastern tunnels."
 msgstr ""
 "Ông nói đúng, ông bạn. Tôi sẽ để các ông tùy ý sử dụng những người tốt nhất "
-"của tôi. Mặc dù vậy, bọn tôi không biết cây trượng ở đâu. Truyền thuyết nói "
-"rằng nó bị thất lạc trong các đường hầm phía đông."
+"của tôi. Mặc dù vậy, bọn tôi không biết vương trượng ở đâu. Truyền thuyết "
+"nói rằng nó bị thất lạc trong các đường hầm phía đông."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:446
@@ -4373,13 +4373,13 @@ msgstr ""
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:562
 msgid "Beasts? We were planning to use them as mounts."
-msgstr "Súc vật? Chúng tôi định sử dụng chúng làm vật cưỡi."
+msgstr "Súc vật? Chúng tôi định sử dụng chúng làm thú cưỡi."
 
 #. [message]: speaker=Relgorn
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:566
 msgid "Ha ha! Gryphons as mounts! Is there no end to your folly?"
 msgstr ""
-"Ha ha! Sư tử đầu chim làm vật cưỡi! Các ngươi vẫn chưa hết điên rồ sao?"
+"Ha ha! Sư tử đầu chim làm thú cưỡi! Các người vẫn chưa hết điên rồ sao?"
 
 #. [message]: speaker=Konrad
 #. [message]: speaker=Kalenz
@@ -4395,9 +4395,9 @@ msgid ""
 "troops as riders! A frail human — or worse, an elf — would never be able to "
 "handle their violent instincts!"
 msgstr ""
-"Thôi được, nếu các ngươi phải thực hiện kế hoạch điên rồ này, ta sẽ cung cấp "
-"cho các ngươi quân lính của riêng ta để làm kỵ binh! Một con người yếu ớt - "
-"hoặc tệ hơn, một thần tiên - sẽ chẳng bao giờ có thể điều khiển được bản "
+"Thôi được, nếu các người phải thực hiện kế hoạch điên rồ này, ta sẽ cung cấp "
+"cho các ngươi quân lính của riêng ta để làm điểu binh! Một con người yếu ớt "
+"- hoặc tệ hơn, một thần tiên - sẽ chẳng bao giờ có thể điều khiển được bản "
 "năng bạo lực của chúng!"
 
 #. [message]: speaker=Delfador
@@ -4412,7 +4412,7 @@ msgstr ""
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:586
 msgid "Well, I suppose..."
-msgstr "Tôi cho rằng..."
+msgstr "Vâng, tôi giả sử..."
 
 #. [unit]: type=Gryphon Rider, id=Mounted Dwarf
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:611
@@ -4427,7 +4427,7 @@ msgstr "Chà chà... Không cần phải cáu kỉnh. Dễ mà... dễ thôi mà
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:650
 msgid "You can now recruit fearsome Gryphon Riders!"
-msgstr "Bây giờ bạn có thể tuyển các kỵ binh sư tử đầu chim đáng sợ!"
+msgstr "Bây giờ bạn có thể tuyển các điểu binh sư tử đầu chim đáng sợ!"
 
 #. [message]: speaker=Relgorn
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:655
@@ -4437,9 +4437,9 @@ msgid ""
 "again, they will dominate the skies. Best of luck, Allies-of-Knalga."
 msgstr ""
 "Mặc dù bốc mùi, nhưng sư tử đầu chim là những động vật lộng lẫy. Chúng di "
-"chuyển trong các hang động ngoằn ngoèo của bọn ta không được tốt cho lắm, "
-"nhưng nếu các ngươi nhìn thấy mặt đất lần nữa, chúng sẽ thống trị bầu trời. "
-"Thay mặt liên minh Knalga, chúc các ngươi may mắn."
+"chuyển trong các hang động ngoằn ngoèo của chúng tôi không được tốt cho lắm, "
+"nhưng nếu các người nhìn thấy mặt đất lần nữa, chúng sẽ thống trị bầu trời. "
+"Thay mặt liên minh Knalga, chúc các người may mắn."
 
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/14_Plunging_Into_the_Darkness.cfg:682
@@ -4458,7 +4458,7 @@ msgstr ""
 #. [scenario]: id=15_The_Lost_General
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:4
 msgid "The Lost General"
-msgstr "Viên tướng bị mất tích"
+msgstr "Viên tướng thất lạc"
 
 #. [side]: id=Geldar, type=Dwarvish Lord
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:58
@@ -4547,7 +4547,7 @@ msgstr ""
 "Tôi là người cá, cư dân của các đại dương rộng lớn! Đừng hỏi tôi đang làm gì "
 "trong hang động. Chủ tướng của tôi có thể hơi lập dị. Chúng tôi đang chiến "
 "đấu cùng phe với các cư dân trong hang động, đồng đội của anh để đánh đuổi "
-"bọn người thú và quỷ khổng lồ."
+"bọn người thú và quỷ núi."
 
 #. [message]: speaker=Ulfdain
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:226
@@ -4555,13 +4555,13 @@ msgid ""
 "(sniffs) A mer-mahn. Never heard of it. I doubt yer as tasty as my friends "
 "here."
 msgstr ""
-"(ngửi ngửi) Một ngoài-cá. Chưa bao giờ nghe nói đến. Ta hông biết mi có ngon "
-"như các bạn của ta ở đây hông."
+"(khụt khịt) Một ngoài-cá. Chưa bao giờ nghe nói đến. Ta không biết mi có "
+"ngon như các bạn của ta ở đây hông."
 
 #. [message]
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:230
 msgid "Why are you down here? Are those... troll carcasses?"
-msgstr "Tại sao anh lại ở dưới này? Kia là... xác quỷ khổng lồ phải không?"
+msgstr "Tại sao anh lại ở dưới này? Kia là... xác quỷ núi phải không?"
 
 #. [message]: speaker=Ulfdain
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:234
@@ -4585,9 +4585,9 @@ msgid ""
 "little ravenous, if ye catch my drift. Canna' swim past that current, and "
 "no' for lack o' tryin'."
 msgstr ""
-"Ơ, ít nhất cũng vài ngày. Thịt quỷ khổng lồ bắt đầu bốc mùi, và ta thì khá "
-"phàm ăn, mi hiểu điều ta muốn nói chứ. Hông thể bơi qua dòng nước đó, và "
-"hông phải là ta chưa thử."
+"Ơ, ít nhất cũng vài ngày. Thịt quỷ núi bắt đầu bốc mùi, và ta thì khá phàm "
+"ăn, mi hiểu điều ta muốn nói chứ. Không thể bơi qua dòng nước đó, và không "
+"phải là ta chưa thử."
 
 #. [message]
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:246
@@ -4614,7 +4614,7 @@ msgid ""
 "Well, mer-mahn, we made it. I will fight for yer lord. He sounds like a "
 "brave fellow."
 msgstr ""
-"Chà, ngoài-cá, chúng ta thành công rồi. Ta sẽ chiến đấu cho chủ tướng của "
+"Chà, người-cá, chúng ta thành công rồi. Ta sẽ chiến đấu cho chủ tướng của "
 "mi. Ông ta có vẻ là một ông bạn dũng cảm."
 
 #. [message]: speaker=unit
@@ -4651,7 +4651,7 @@ msgstr "Đá đang xê dịch!"
 #. [message]: speaker=second_unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:430
 msgid "Who goes there? Friend or foe?"
-msgstr "Ai đến đó? Bạn hay thù?"
+msgstr "Ai đó? Bạn hay thù?"
 
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:434
@@ -4659,8 +4659,8 @@ msgid ""
 "We are desperately trying to rid these tunnels of orcs and trolls! Please "
 "help us in our quest."
 msgstr ""
-"Chúng tôi đang liều lĩnh tìm cách tống khứ bọn người thú và quỷ khổng lồ "
-"khỏi các đường hầm này. Xin hãy giúp đỡ chúng tôi."
+"Chúng tôi đang liều mạng tìm cách tống khứ bọn người thú và quỷ núi khỏi các "
+"đường hầm này. Xin hãy giúp đỡ chúng tôi."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:445
@@ -4672,7 +4672,7 @@ msgstr ""
 #. [message]: speaker=second_unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:456
 msgid "I did not know that the undead were in these pits!"
-msgstr "Tôi không biết bọn ma quỷ đã ở trong những hang ổ đó!"
+msgstr "Tôi không biết bọn ma quái đã ở trong những hang ổ đó!"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:467
@@ -4683,7 +4683,7 @@ msgstr "Kẻ thù bẩn thỉu mà chúng ta đang đánh là ai thế?"
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:471
 msgid "I am Lionel. I am the Lost General. I will avenge myself upon you all!"
 msgstr ""
-"Ta là Lionel. Ta là viên tướng bị mất tích. Ta sẽ trả thù tất cả các ngươi!"
+"Ta là Lionel. Ta là viên tướng bị thất lạc. Ta sẽ trả thù tất cả các ngươi!"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:475
@@ -4704,7 +4704,7 @@ msgid ""
 "die. Now I will get revenge on you all!"
 msgstr ""
 "Ngươi còn nhớ ta sao? Ta là tướng lĩnh giỏi nhất của đức vua, được phái "
-"xuống các hang ổ này để tìm lại cây trượng. Nhưng bọn người thú đã đặt bẫy "
+"xuống các hang ổ này để tìm lại vương trượng. Nhưng bọn người thú đã đặt bẫy "
 "ta và người của ta trong hang động này, bỏ đói bọn ta đến chết. Bọn người "
 "lùn thì chẳng giúp gì, để ta chết. Giờ ta sẽ báo thù tất cả các ngươi!"
 
@@ -4733,14 +4733,14 @@ msgid ""
 msgstr ""
 "Ta đã bị tiêu diệt, nhưng nhiệm vụ của ta phải được hoàn thành. Dù các ngươi "
 "là kẻ thù, nhưng ít ra các ngươi cũng là những kẻ xứng đáng, vì thế ta sẽ "
-"cho các ngươi biết, cây trượng ở phía đông nơi đây, con đường mà các ngươi "
+"cho các ngươi biết, vương trượng ở phía đông nơi đây, con đường mà các ngươi "
 "đã đến, sâu trong các hang động. Ta đã mắc sai lầm vì không hỏi phương hướng "
 "lúc ta bị lạc. Cầu mong các ngươi sẽ có vận may tốt hơn ta!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:524
 msgid "The earth shakes."
-msgstr "Trái đất rung chuyển."
+msgstr "Mặt đất rung chuyển."
 
 #. [message]: speaker=Geldar
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:560
@@ -4759,9 +4759,9 @@ msgid ""
 "We are not alone, and now that our foes have smelled our blood it will be "
 "worse."
 msgstr ""
-"Những hang động này rất rộng lớn. Nếu chúng ta định tìm cây trượng lửa chúng "
-"ta phải mau lên. Chúng ta không đơn độc, và sẽ còn tệ hơn vì kẻ thù đã đánh "
-"hơi được máu của chúng ta."
+"Những hang động này rất rộng lớn. Nếu chúng ta định tìm vương trượng lửa "
+"chúng ta phải mau lên. Chúng ta không đơn độc, và sẽ còn tệ hơn vì kẻ thù đã "
+"đánh hơi được máu của chúng ta."
 
 #. [message]: speaker=Geldar
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:568
@@ -4770,8 +4770,8 @@ msgid ""
 "Beyond my citadel the spawn of the darkness hold complete sway. You'll no' "
 "survive without assistance."
 msgstr ""
-"Cây trượng? À, các bạn đang tìm cây trượng. Những cư dân trên mặt đất các "
-"bạn thật là nhiều tham vọng. Ngoài thành lũy của tôi, bè lũ của bóng tối "
+"Vương trượng? À, các bạn đang tìm vương trượng. Những cư dân trên mặt đất "
+"các bạn thật là nhiều tham vọng. Ngoài thành lũy của tôi, bè lũ của bóng tối "
 "chiếm thế thống trị hoàn toàn. Các bạn sẽ không thể sống sót nếu không được "
 "hỗ trợ."
 
@@ -4788,9 +4788,9 @@ msgid ""
 "accept the service of my guardsmen. These elite warriors will protect you."
 msgstr ""
 "Phía đông bắc pháo đài của tôi, chàng trai trẻ, các đường hầm hội tụ hướng "
-"đến những nơi sâu nhất của vương quốc dưới lòng đất. Cây trượng chỉ có thể ở "
-"đó. Hãy chấp nhận sự phục vụ của các vệ sĩ của tôi. Những chiến sĩ tinh nhuệ "
-"này sẽ bảo vệ các bạn."
+"đến những nơi sâu nhất của vương quốc dưới lòng đất. Vương trượng chỉ có thể "
+"ở đó. Hãy chấp nhận sự phục vụ của các vệ binh của tôi. Những chiến binh "
+"tinh nhuệ này sẽ bảo vệ các bạn."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:586
@@ -4798,14 +4798,14 @@ msgid ""
 "Your boon is most welcome, sir dwarf. Keeping the Scepter out of the hands "
 "of evil beasts is a common goal for us, and we will prevail with your help."
 msgstr ""
-"Chúng tôi hoan nghênh lời đề nghị của ngài. Giữ cây trượng tránh xa tay bọn "
-"súc vật xấu xa cũng là mục tiêu của chúng tôi, và chúng tôi sẽ thắng thế với "
+"Chúng tôi hoan nghênh lời đề nghị của ngài. Giữ vương trượng tránh xa tay "
+"bọn súc vật xấu xa cũng là mục tiêu của chúng tôi, và chúng tôi sẽ thắng với "
 "sự giúp đỡ của ngài."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:591
 msgid "You may now recruit the legendary dwarvish guardsmen!"
-msgstr "Bây giờ bạn có thể tuyển các vệ sĩ người lùn huyền thoại!"
+msgstr "Bây giờ bạn có thể tuyển các vệ binh người lùn huyền thoại!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/15_The_Lost_General.cfg:600
@@ -4873,7 +4873,7 @@ msgstr ""
 "Một khoảng không rộng lớn trải dài phía trước, băng qua đó, đoàn quân cũng "
 "không nhìn thấy trần hay vách. Gió hú và quất từng hồi trên những rìa đá "
 "chật hẹp vắt vẻo, như thể được cổ vũ bởi một ma thuật mạnh mẽ nào đó ở "
-"gần... và một tội lỗi mới thức dậy."
+"gần... và một thế lực đen tối mới thức dậy."
 
 #. [side]: type=Commander, id=Konrad
 #. [side]: type=Princess, id=Li'sar
@@ -4890,7 +4890,8 @@ msgstr "Haaf-Garga"
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:149
 msgid "Where are we? Which way now? I am tired of this darkness!"
-msgstr "Chúng ta đang ở đâu? Giờ đi đường nào? Tôi mệt mỏi vì bóng tối này!"
+msgstr ""
+"Chúng ta đang ở đâu? Giờ đi đường nào? Tôi quá mệt mỏi với bóng tối này!"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:153
@@ -4920,8 +4921,8 @@ msgid ""
 "to ruin!"
 msgstr ""
 "Đồ ngốc! Chúng ta đang ở nơi sâu nhất của hang động, có thể đang bị đủ mọi "
-"thể loại sinh vật bao vây, vậy mà cô vẫn muốn đánh chúng tôi sao? Cô sẽ "
-"khiến tất cả chúng ta toi mạng!"
+"loại sinh vật bao vây, vậy mà cô vẫn muốn đánh chúng tôi sao? Cô sẽ khiến "
+"tất cả chúng ta toi mạng!"
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:229
@@ -4931,8 +4932,8 @@ msgid ""
 "daylight again!"
 msgstr ""
 "Đừng có lừa ta! Ta biết tại sao các ngươi đến đây! Nhưng ta sẽ kết liễu các "
-"ngươi và mưu phản của các ngươi ở đây. Sau đó ta sẽ lấy cây trượng, và lại "
-"trở về với ánh mặt trời!"
+"ngươi và ý đồ mưu phản của các ngươi ở đây. Sau đó ta sẽ lấy vương trượng, "
+"và lại trở về với ánh mặt trời!"
 
 #. [message]: type=Goblin Knight
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:340
@@ -4995,7 +4996,7 @@ msgstr ""
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:374
 msgid "Thank you, Princess. Come, men. Let us find the Scepter!"
-msgstr "Cảm ơn, Công chúa. Mọi người, đi thôi. Hãy tìm cây trượng!"
+msgstr "Cảm ơn, Công chúa. Mọi người, đi thôi. Hãy tìm vương trượng!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/16_Hasty_Alliance.cfg:419
@@ -5008,7 +5009,7 @@ msgstr "Ta không thể tin kết cục lại như thế này!"
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:4
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:33
 msgid "The Scepter of Fire"
-msgstr "Cây trượng lửa"
+msgstr "Vương trượng lửa"
 
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:15
@@ -5031,18 +5032,18 @@ msgid ""
 "centuries-old burden..."
 msgstr ""
 "Những tiếng ầm ầm từ xa và những trận động đất khiến việc đứng vững trở nên "
-"khó khăn. Trái đất trở nên đầy sức sống, căng tràn, sẵn sàng giải tỏa gánh "
+"khó khăn. Lòng đất trở nên đầy sức sống, căng tràn, sẵn sàng giải tỏa gánh "
 "nặng đã chất chứa hàng thế kỷ..."
 
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:62
 msgid "Capture the Scepter of Fire with Konrad or Li'sar"
-msgstr "Konrad hoặc Li'sar lấy được cây trượng lửa"
+msgstr "Konrad hoặc Li'sar lấy được vương trượng lửa"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:155
 msgid "The Scepter must be getting close now! Where shall we go?"
-msgstr "Cây trượng chắc chắn phải ở gần đây! Chúng ta sẽ đi đâu?"
+msgstr "Vương trượng chắc chắn phải ở gần đây! Chúng ta sẽ đi đâu?"
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:159
@@ -5063,7 +5064,7 @@ msgstr "Đúng vậy, tôi cảm thấy nó ở gần đây! Chúng ta phải t�
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:169
 msgid "An earthquake! We'll be trapped!"
-msgstr "Một trận động đất! Chúng ta đã bị sập bẫy!"
+msgstr "Một trận động đất! Chúng ta sẽ bị sập bẫy!"
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:173
@@ -5087,10 +5088,10 @@ msgid ""
 "mind. It was forged here, not far north of where we now stand. The sheer "
 "power of it!"
 msgstr ""
-"Cây trượng... trái đất... dung nham nóng chảy... lửa... không khí xung quanh "
-"chúng ta... mọi thứ. Nó đang gọi người thừa kế - tôi vừa mới nhớ ra. Nó đã "
-"được rèn ở đây, không xa về phía bắc của nơi chúng ta đang đứng. Sức mạnh "
-"tuyệt đối của nó!"
+"Vương trượng... lòng đất... dung nham nóng chảy... lửa... không khí xung "
+"quanh chúng ta... mọi thứ. Nó đang gọi người thừa kế - Tôi chỉ có thể giữ nó "
+"lại trong tâm trí của tôi. Nó đã được rèn ở đây, không xa về phía bắc của "
+"nơi chúng ta đang đứng. Sức mạnh tuyệt đối của nó!"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:186
@@ -5105,7 +5106,7 @@ msgstr "Phía bắc. Tôi chỉ có thể nói vậy."
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:194
 msgid "Konrad, as promised, here is my purse, full of gold."
-msgstr "Konrad, như đã hứa, đây là ví tiền của tôi, đầy vàng."
+msgstr "Konrad, như đã hứa, đây là tiền của tôi, đầy vàng."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/17_Scepter_of_Fire.cfg:202
@@ -5115,7 +5116,7 @@ msgstr "Bạn nhận được 300 lượng vàng!"
 #. [scenario]: id=18_A_Choice_Must_Be_Made
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:4
 msgid "A Choice Must Be Made"
-msgstr "Lựa chọn quyết định"
+msgstr "Một lựa chọn phải được đưa ra"
 
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:16
@@ -5124,10 +5125,10 @@ msgid ""
 "from the ruby's inner fire. Dwarvish runes on the golden handle lit up in "
 "pulsating blue. The heat and light were comforting in the pitch-black."
 msgstr ""
-"Cây trượng, ban đầu bị mờ sau hàng thập kỷ khói bụi và đất đá, bắt đầu bừng "
-"sáng nhờ ngọn lửa của viên đá bên trong. Những dấu thần bí của người lùn "
-"trên cán trượng bằng vàng sáng lên màu xanh lung linh. Hơi nóng và ánh sáng "
-"xua tan màu đen sền sệt."
+"Vương trượng, ban đầu bị mờ sau hàng thập kỷ khói bụi và đất đá, bắt đầu "
+"bừng sáng nhờ ngọn lửa của viên đá bên trong. Những dấu thần bí của người "
+"lùn trên cán trượng bằng vàng sáng lên màu xanh lung linh. Hơi nóng và ánh "
+"sáng xua tan màu đen sền sệt."
 
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:21
@@ -5136,8 +5137,8 @@ msgid ""
 "several trolls as smoking husks. Sensing the awakening of a powerful magic, "
 "the dwellers of the deep quickly scattered and remained out of sight."
 msgstr ""
-"Cuộc chạm trán đầu tiên với cây trượng trong tay những người sở hữu mới của "
-"nó biến một vài con quỷ khổng lồ thành những cái xác bốc khói. Cảm nhận sự "
+"Cuộc chạm trán đầu tiên với vương trượng trong tay những người sở hữu mới "
+"của nó biến một vài con quỷ núi thành những cái xác bốc khói. Cảm nhận sự "
 "thức giấc của một phép thuật mạnh mẽ, các cư dân của cõi sâu nhanh chóng bỏ "
 "chạy tán loạn và tránh xa."
 
@@ -5157,7 +5158,7 @@ msgstr ""
 #. [objective]: condition=win
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:39
 msgid "Defeat either of the enemy leaders"
-msgstr "Đánh bại một trong hai lãnh đạo của kẻ thù"
+msgstr "Đánh bại một trong hai chỉ huy của kẻ thù"
 
 #. [side]: type=Death Knight, id=Unan-Ka'tall
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:105
@@ -5192,7 +5193,7 @@ msgid ""
 msgstr ""
 "Không đơn giản thế đâu! Chúng ta đã lên được mặt đất, nhưng không phải chúng "
 "ta đã an toàn. Tôi vừa mới biết chúng ta đang ở đâu. Hãy nhìn về phía bắc, "
-"có bọn người thú! Hãy nhìn về phía nam, có các đạo quân ma quỷ!"
+"có bọn người thú! Hãy nhìn về phía nam, có các đạo quân ma quái!"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:186
@@ -5210,7 +5211,7 @@ msgid ""
 "little longer... but I do want that Scepter, and someday I will have it!"
 msgstr ""
 "Có lẽ tốt nhất cho cả hai chúng ta là tiếp tục liên minh thêm một chút "
-"nữa... nhưng ta vẫn muốn cây trượng đó, và một ngày nào đó ta sẽ có nó!"
+"nữa... nhưng ta vẫn muốn vương trượng đó, và một ngày nào đó ta sẽ có nó!"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:194
@@ -5227,8 +5228,8 @@ msgstr "Chúng ta đã trốn thoát."
 msgid ""
 "Yes, we have. Now I suppose you want to use the Scepter against me, Princess?"
 msgstr ""
-"Đúng vậy. Bây giờ cô còn muốn sử dụng cây trượng để chống lại tôi nữa không, "
-"Công chúa?"
+"Đúng vậy. Bây giờ cô còn muốn sử dụng vương trượng để chống lại tôi nữa "
+"không, Công chúa?"
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:210
@@ -5248,14 +5249,14 @@ msgid ""
 "Scepter or no Scepter."
 msgstr ""
 "Thưa Công chúa. Lại một lần nữa chính chúng tôi mới là những người sẽ tha "
-"mạng cho cô, cho dù có hay không có cây trượng."
+"mạng cho cô, cho dù có hay không có vương trượng."
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:218
 msgid "Such words in the presence of royalty! Do you want me to fry you, Elf?"
 msgstr ""
 "Ngươi dám nói những lời như thế với một công chúa hoàng gia sao! Ngươi có "
-"muốn ta rán chín ngươi không?"
+"muốn ta rán chín ngươi không, tên thần tiên kia?"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:222
@@ -5367,7 +5368,7 @@ msgid ""
 msgstr ""
 "Thế thì chúng ta phải lựa chọn. Đi về phía bắc vượt qua bọn người thú, nơi "
 "có vùng đồng bằng tuyết cổ xưa của các thần tiên, hoặc đi về phía nam, vượt "
-"qua đội quân của bọn ma quỷ, nơi những đầm lầy kinh hoàng đang chờ đợi."
+"qua đội quân của bọn ma quái, nơi những đầm lầy kinh hoàng đang chờ đợi."
 
 #. [message]: speaker=unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:285
@@ -5407,7 +5408,7 @@ msgid ""
 "army to your strength and protection."
 msgstr ""
 "Người của các bạn đã từng cứu tôi khỏi chết đuối, chiến đấu bên cạnh tôi lúc "
-"những nỗi khủng khiếp ma quỷ đe dọa hủy diệt chúng tôi. Tôi giao quân đội "
+"những nỗi khủng khiếp ma quái đe dọa hủy diệt chúng tôi. Tôi giao quân đội "
 "của chúng tôi cho sức mạnh và sự bảo vệ của các bạn."
 
 #. [message]: speaker=Konrad
@@ -5423,7 +5424,7 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne/scenarios/18_A_Choice_Must_Be_Made.cfg:311
 msgid "I am, my liege. We press ahead. Stay close, noble masters."
 msgstr ""
-"Tôi đây, thưa chủ tướng. Chúng ta thẳng tiến. Hãy đi gần nhau, các người cá "
+"Tôi đây, thưa chủ tướng. Chúng ta thẳng tiến. Hãy đi gần nhau, các chủ tướng "
 "cao quý."
 
 #. [message]: speaker=Delfador
@@ -5506,7 +5507,7 @@ msgstr ""
 "Phải chịu đựng sỉ nhục khi chấp nhận ý chí của loài người là một điều xúc "
 "phạm đến lòng kiêu hãnh và sự thông thái của ngài, đặc biệt trong tình hình "
 "gay gắt như thế này. Tôi nhấn mạnh để ngài biết từ lâu chúng ta đã được dẫn "
-"dắt dưới sự lãnh đạo của Konrad, và chúng ta sắp sửa giáng cây búa định mệnh "
+"dắt dưới sự chỉ huy của Konrad, và chúng ta sắp sửa giáng cây búa định mệnh "
 "xuống ngai vàng phi nghĩa của Asheviere. Chúng ta sẽ tiến về phía đông."
 
 #. [message]: speaker=Kalenz
@@ -5636,7 +5637,8 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne/scenarios/19a_Snow_Plains.cfg:137
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:340
 msgid "He was just someone who couldn't handle the power given to him."
-msgstr "Đó chỉ là một kẻ không biết điều khiển sức mạnh được trao cho mình."
+msgstr ""
+"Ông ấy chỉ là một người không biết điều khiển sức mạnh được trao cho mình."
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/scenarios/19a_Snow_Plains.cfg:141
@@ -5712,7 +5714,7 @@ msgid ""
 "other, and when no men remain, outsiders will claim Wesnoth as their home."
 msgstr ""
 "Tôi biết nỗi đau khổ mẹ cô đã gây ra cho Wesnoth, cô bé. Đất nước đã bị chia "
-"cắt. Thần tiên biết. Bọn người thú biết. Bọn ma quỷ cảm nhận được. Nhiều "
+"cắt. Thần tiên biết. Bọn người thú biết. Bọn ma quái cảm nhận được. Nhiều "
 "quân đội lớn loài người băng qua các vùng đồng bằng săn đuổi lẫn nhau, và "
 "khi không còn người nào sống sót, những kẻ ngoài cuộc sẽ tự nhận Wesnoth là "
 "nhà của chúng."
@@ -5791,9 +5793,9 @@ msgid ""
 "Look there! The swamp is infested with all manner of skeletons, corpses, and "
 "worse. I hope I have made a wise choice in taking this path."
 msgstr ""
-"Nhìn kìa! Đầm lầy bị đủ mọi thể loại xương khô, xác chết và những thứ tồi tệ "
-"hơn quấy phá. Tôi hy vọng mình đã thực hiện một lựa chọn khôn ngoan khi đi "
-"đường này."
+"Nhìn kìa! Đầm lầy bị tràn ngập với đủ mọi thể loại xương khô, xác chết và "
+"những thứ tồi tệ. Tôi hy vọng mình đã thực hiện một lựa chọn khôn ngoan khi "
+"đi đường này."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:198
@@ -5803,8 +5805,7 @@ msgid ""
 "spirits on their own."
 msgstr ""
 "Các Hiệp sĩ chết chóc hình như là nô lệ của tên Chúa tể thây ma. Tên này "
-"chắc phải rất mạnh, vì các Hiệp sĩ chết chóc thường có tinh thần rất cứng "
-"cỏi."
+"chắc phải rất mạnh, vì các Hiệp sĩ chết chóc thường có linh hồn rất cứng cỏi."
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:202
@@ -5816,7 +5817,7 @@ msgstr ""
 "Tôi tin chúng ta có thể tiêu diệt tên chủ tướng và giải thoát các nô lệ. "
 "Chúng ta sẽ phải chiến đấu quyết liệt trước khi có thể an toàn đi qua vùng "
 "đầm lầy này. Hy vọng những bộ xương của chúng ta sẽ không tham gia cùng các "
-"chiến binh đã chết đó để chống lại chúng ta."
+"chiến binh đã chết đó giờ đang chống lại chúng ta."
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/scenarios/19b_Swamp_Of_Dread.cfg:216
@@ -5962,7 +5963,7 @@ msgstr "Đến được cuối dòng sông"
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:137
 #: data/campaigns/Heir_To_The_Throne/scenarios/20b_Underground_Channels.cfg:84
 msgid "Drakes"
-msgstr "Rồng"
+msgstr "Người rồng"
 
 #. [unit]: type=Injured Sergeant, id=Warven
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:265
@@ -6065,7 +6066,8 @@ msgid ""
 "we came from and fight our way through the orcs or the undead."
 msgstr ""
 "Thế thì chúng ta chỉ có hai lựa chọn: tiếp tục xuôi theo dòng sông hoặc trở "
-"lại nơi chúng ta đã đến từ đó và tìm đường qua bọn người thú hoặc bọn ma quỷ."
+"lại nơi chúng ta đã đến từ đó và tìm đường qua bọn người thú hoặc bọn ma "
+"quái."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:324
@@ -6104,8 +6106,8 @@ msgid ""
 "I am Keh Ohn, leader of the drakes who have settled upon these cliffs. Who "
 "are you?"
 msgstr ""
-"Ta là Keh Ohn, người lãnh đạo của loài rồng sinh sống trên các vách đá này. "
-"Các ngươi là ai?"
+"Ta là Keh Ohn, người chỉ huy của loài người rồng sinh sống trên các vách đá "
+"này. Các ngươi là ai?"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:369
@@ -6128,7 +6130,7 @@ msgid ""
 "dragon. This is a drake."
 msgstr ""
 "Thưa hoàng tử, thưa công chúa, cả hai người đều sai. Đây không phải là một "
-"con rồng huyền thoại. Đây chỉ là một biến thể."
+"con rồng huyền thoại. Đây chỉ là một người rồng."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:381
@@ -6136,8 +6138,8 @@ msgid ""
 "Here? But, drakes have never been seen in Wesnoth before... Are you certain "
 "of this?"
 msgstr ""
-"Đây sao? Nhưng trước đây người ta chẳng bao giờ nhìn thấy rồng ở Wesnoth... "
-"Ngươi có chắc chắn không?"
+"Đây sao? Nhưng trước đây người ta chẳng bao giờ nhìn thấy người rồng ở "
+"Wesnoth... Ngươi có chắc chắn không?"
 
 #. [message]: role=merman-advisor
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:387
@@ -6152,9 +6154,9 @@ msgid ""
 msgstr ""
 "Tôi sinh ra ở vịnh Ngọc Trai và đã sống cả đời ở bờ biển phía đông. Nhưng "
 "tôi đã nói chuyện với những người đã từng đến đại dương phía tây và gặp bọn "
-"rồng trong cuộc hành trình của họ. Do đó, tôi chắc chắn không nghi ngờ rằng "
-"sinh vật đang bay phía trước chúng ta là một con rồng biến thể, Delfador. "
-"Còn việc người ta chưa bao giờ nhìn thấy rồng ở Wesnoth, tôi có cần phải "
+"người rồng trong cuộc hành trình của họ. Do đó, tôi chắc chắn không nghi ngờ "
+"rằng sinh vật đang bay phía trước chúng ta là một người rồng, Delfador. Còn "
+"việc người ta chưa bao giờ nhìn thấy người rồng ở Wesnoth, tôi có cần phải "
 "nhắc ngài rằng chúng ta không còn ở Wesnoth nữa? Có nhiều thứ và nhiều sinh "
 "vật không thể tưởng tượng nổi có thể thấy được bên ngoài Wesnoth."
 
@@ -6174,7 +6176,7 @@ msgid ""
 "Konrad, leader of the group and heir to the throne of Wesnoth."
 msgstr ""
 "Ơ... vâng tất nhiên, thưa ngài rồng. Hãy để tôi tự giới thiệu - tôi là Hoàng "
-"tử Konrad, người lãnh đạo nhóm và người thừa kế ngai vàng Wesnoth."
+"tử Konrad, người chỉ huy nhóm và người thừa kế ngai vàng Wesnoth."
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:400
@@ -6250,8 +6252,7 @@ msgstr ""
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:436
 msgid "You will regret challenging us. Drakes, to arms!"
 msgstr ""
-"Các ngươi sẽ hối hận vì đã thách thức bọn ta. Anh em rồng, sẵn sàng chiến "
-"đấu!"
+"Các ngươi sẽ hối hận vì đã thách thức bọn ta. Anh em, sẵn sàng chiến đấu!"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:537
@@ -6259,8 +6260,8 @@ msgid ""
 "I slew the undead monster but somehow it has revived! Dark magic is stirring "
 "around us!"
 msgstr ""
-"Tôi đã giết được con quái vật ma quỷ nhưng không hiểu sao nó đã sống lại! Ma "
-"thuật bóng tối đang khuấy động xung quanh chúng ta!"
+"Tôi đã giết được con quái vật nhưng không hiểu sao nó đã sống lại! Ma thuật "
+"bóng tối đang khuấy động xung quanh chúng ta!"
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:541
@@ -6269,7 +6270,7 @@ msgid ""
 "indestructible. We must find another way to go."
 msgstr ""
 "Đó là một số trong những con quái vật mà tôi đã cảnh báo. Những kẻ bảo vệ ma "
-"quỷ như thế là không thể tiêu diệt được. Chúng ta phải tìm một con đường "
+"quái như thế là không thể tiêu diệt được. Chúng ta phải tìm một con đường "
 "khác."
 
 #. [message]: speaker=unit
@@ -6293,7 +6294,7 @@ msgstr "GRRRÀÀÀÀOOOO"
 #. [message]: speaker=second_unit
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:821
 msgid "Hurrah! We've killed their leader"
-msgstr "Hoan hô! Chúng ta đã giết được kẻ lãnh đạo của bọn chúng"
+msgstr "Hoan hô! Chúng ta đã giết được kẻ chỉ huy của bọn chúng"
 
 #. [message]
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:826
@@ -6301,8 +6302,8 @@ msgid ""
 "Our leader is dead, but it matters not! Time enough to appoint a new leader "
 "after the battle is won! Fight on to the last, comrades!"
 msgstr ""
-"Người lãnh đạo của bọn ta đã chết, nhưng điều đó chẳng có gì quan trọng! Bọn "
-"ta có đủ thời gian để bổ nhiệm người lãnh đạo mới sau khi thắng trận! Các "
+"Người chỉ huy của bọn ta đã chết, nhưng điều đó chẳng có gì quan trọng! Bọn "
+"ta có đủ thời gian để bổ nhiệm người chỉ huy mới sau khi thắng trận! Các "
 "bạn, hãy chiến đấu đến cùng!"
 
 #. [message]: speaker=Konrad
@@ -6313,9 +6314,9 @@ msgid ""
 "meet the same fate as their leader!"
 msgstr ""
 "Cứ tiếp tục xuôi theo dòng sông. Chừng nào chúng ta còn chưa đến nơi, hãy "
-"bắt bọn rồng phải trả giá bằng mạng sống của chúng càng nhiều càng tốt. Bọn "
-"chúng đã coi thường chúng ta, và giờ chúng sẽ cùng chung số phận với kẻ lãnh "
-"đạo của chúng!"
+"bắt bọn người rồng phải trả giá bằng mạng sống của chúng càng nhiều càng "
+"tốt. Bọn chúng đã coi thường chúng ta, và giờ chúng sẽ cùng chung số phận "
+"với kẻ chỉ huy của chúng!"
 
 #. [message]
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:836
@@ -6342,7 +6343,7 @@ msgid ""
 "there are not any drakes or undead in that area."
 msgstr ""
 "Tôi tự hỏi tại sao bọn rồng không giết anh ta? Thật lạ là không có bất kỳ "
-"bọn rồng hay ma quỷ nào ở vùng đó."
+"bọn rồng hay ma quái nào ở vùng đó."
 
 #. [message]: type=Water Serpent
 #: data/campaigns/Heir_To_The_Throne/scenarios/19c_Cliffs_of_Thoria.cfg:1022
@@ -6515,7 +6516,7 @@ msgstr ""
 "tiên phương bắc. Người ta nói rằng nó là một dòng chảy mạnh của Everlore, "
 "dòng sông chảy trong vùng đất quê hương của tôi, và có một hệ thống hang "
 "động trong vùng đó với nhiều lối vào và nhiều dòng suối chảy vào lòng đất. "
-"Tôi không thể nói gì hơn, ngoại trừ nó đầy ma quỷ và những sinh vật khác, "
+"Tôi không thể nói gì hơn, ngoại trừ nó đầy ma quái và những sinh vật khác, "
 "những kẻ tìm thấy sức mạnh trong bóng tối của hang động. Thần tiên chúng tôi "
 "không thích mạo hiểm vào trong hang động, mà đứng canh gác gần các lối vào "
 "để giết các sinh vật bẩn thỉu ngốc nghếch khi lang thang ra ngoài. Hàng thế "
@@ -6652,7 +6653,7 @@ msgid ""
 "ahead!"
 msgstr ""
 "Nhưng lại có màn sương mù lớn xung quanh chúng ta! Chúng ta không biết những "
-"nguy hiểm gì có thể nằm phía trước!uy "
+"nguy hiểm gì có thể nằm phía trước! "
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:361
@@ -6690,7 +6691,7 @@ msgid ""
 "There is trouble afoot!"
 msgstr ""
 "Khi chủ tướng của tôi biết được tin các ngài sắp đến, ông ấy đã phái kỵ binh "
-"đi tìm kiếm các ngài! Chúng tôi đang gặp rắc rối!"
+"đi tìm kiếm các ngài! Sắp có rắc rối xảy ra!"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/20a_North_Elves.cfg:410
@@ -6972,7 +6973,7 @@ msgid ""
 "El'rien, we have the Scepter of Fire with us! We must escort them to "
 "Elensiria!"
 msgstr ""
-"El'rien, chúng tôi cầm theo cây trượng lửa! Chúng ta sẽ hộ tống họ đến "
+"El'rien, chúng tôi cầm theo vương trượng lửa! Chúng ta sẽ hộ tống họ đến "
 "Elensiria!"
 
 #. [message]: speaker=El'rien
@@ -7076,14 +7077,14 @@ msgid ""
 "man has been considered Elf-friend enough to stand here in Elensiria."
 msgstr ""
 "Chào, và chào mừng các bạn đến thủ đô của chúng tôi. Các bạn sẽ cảm thấy "
-"được kính trọng. Đã nửa thế kỷ - một thế hệ theo cách tính thời gian của "
-"chủng tộc các bạn - kể từ khi có con người đủ phẩm chất để được xem là bạn "
-"của thần tiên đứng ở đây, ở Elensiria."
+"vinh dự. Đã nửa thế kỷ - một thế hệ theo cách tính thời gian của chủng tộc "
+"các bạn - kể từ khi có con người đủ phẩm chất để được xem là bạn của thần "
+"tiên đứng ở đây, ở Elensiria."
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:105
 msgid "We are indeed honored."
-msgstr "Chúng tôi quả thực đáng được kính trọng."
+msgstr "Chúng tôi quả thực rất vinh dự."
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:109
@@ -7091,7 +7092,7 @@ msgid ""
 "I might also say that it is you who are honored. It has been so long since "
 "you have been graced by the presence of a princess of Wesnoth."
 msgstr ""
-"Tôi cũng có thể nói rằng chính các vị mới là những người được kính trọng. Đã "
+"Tôi cũng có thể nói rằng chính các vị mới là những người được vinh dự. Đã "
 "lâu kể từ khi các vị được vinh dự diện kiến một công chúa của Wesnoth."
 
 #. [message]: speaker=Delfador
@@ -7110,8 +7111,8 @@ msgid ""
 "Yes... you are right, sir. It is I who am honored to be here, and I "
 "apologize for my discourtesy."
 msgstr ""
-"Vâng... ngài nói đúng, thưa ngài. Chính tôi mới là người được kính trọng khi "
-"ở đây, và tôi xin lỗi vì sự bất lịch sự của mình."
+"Vâng... ngài nói đúng, thưa ngài. Chính tôi mới là người được vinh dự khi ở "
+"đây, và tôi xin lỗi vì sự bất lịch sự của mình."
 
 #. [message]: speaker=Uradredia
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:121
@@ -7217,9 +7218,9 @@ msgid ""
 "accept me as Queen. I will rule justly and fairly. My mother is only Queen "
 "Mother. The throne is rightfully mine, and with the Scepter I can prove it."
 msgstr ""
-"Đó là lý do tại sao ta phải lấy cây trượng. Ta sẽ trở về, và mọi người sẽ "
+"Đó là lý do tại sao ta phải lấy vương trượng. Ta sẽ trở về, và mọi người sẽ "
 "chấp nhận ta làm Nữ hoàng. Ta sẽ cai trị một cách công bằng và hợp lẽ phải. "
-"Mẹ ta chỉ là Hoàng hậu. Ngai vàng là của ta một cách hợp pháp, và với cây "
+"Mẹ ta chỉ là Hoàng hậu. Ngai vàng là của ta một cách hợp pháp, và với vương "
 "trượng ta có thể chứng tỏ điều đó."
 
 #. [message]: speaker=Delfador
@@ -7229,7 +7230,7 @@ msgid ""
 "Konrad has the Scepter. He will take the throne."
 msgstr ""
 "Công chúa, cô là người tốt, nhưng ngai vàng không phải là của cô. Konrad có "
-"cây trượng. Cậu ấy sẽ giành ngai vàng."
+"vương trượng. Cậu ấy sẽ giành ngai vàng."
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:181
@@ -7239,10 +7240,10 @@ msgid ""
 "will rule from it with justice and fairness. I may even accept you as my "
 "adviser and counselor, Delfador."
 msgstr ""
-"Ta có cây trượng! Ta sẽ trở về và mọi người sẽ chấp nhận ta làm Nữ hoàng. Mẹ "
-"ta chỉ là Hoàng hậu. Ngai vàng là của ta một cách hợp pháp, và ta sẽ cai trị "
-"bằng công bằng và lẽ phải. Thậm chí ta có thể chấp nhận ngài làm cố vấn và "
-"quân sư của ta, Delfador."
+"Ta có vương trượng! Ta sẽ trở về và mọi người sẽ chấp nhận ta làm Nữ hoàng. "
+"Mẹ ta chỉ là Hoàng hậu. Ngai vàng là của ta một cách hợp pháp, và ta sẽ cai "
+"trị bằng công bằng và lẽ phải. Thậm chí ta có thể chấp nhận ngài làm cố vấn "
+"và quân sư của ta, Delfador."
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:185
@@ -7250,8 +7251,8 @@ msgid ""
 "Though you have the Scepter, Princess, it is rightfully Konrad's. You have "
 "it now only because we helped you get it."
 msgstr ""
-"Mặc dù cô có cây trượng, Công chúa, nhưng nó rõ ràng là của Konrad. Cô có nó "
-"chỉ bởi vì chúng ta đã giúp cô lấy nó."
+"Mặc dù cô có vương trượng, Công chúa, nhưng nó rõ ràng là của Konrad. Cô có "
+"nó chỉ bởi vì chúng ta đã giúp cô lấy nó."
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/scenarios/21_Elven_Council.cfg:189
@@ -7613,7 +7614,7 @@ msgid ""
 "wishes of King Garard II. We have the Scepter of Fire, so let us in!"
 msgstr ""
 "Cái gì? Ta, kẻ phản bội? Chính Nữ hoàng mới là kẻ phản bội, vì không tuân "
-"theo mong muốn của Vua Garard II. Bọn ta có cây trượng lửa, hãy để bọn ta "
+"theo mong muốn của Vua Garard II. Bọn ta có vương trượng lửa, hãy để bọn ta "
 "vào!"
 
 #. [message]: speaker=Malatus
@@ -7668,7 +7669,7 @@ msgid ""
 "<span color='green'>Defeat all enemy leaders</span>"
 msgstr ""
 "<span color='white'>Mục tiêu phần thưởng:</span>\n"
-"<span color='green'>Đánh bại mọi lãnh đạo của kẻ thù</span>"
+"<span color='green'>Đánh bại mọi chỉ huy của kẻ thù</span>"
 
 #. [side]: type=Grand Knight, id=Sir Alric
 #. [side]: type=Grand Knight, id=Sir Ruga
@@ -7849,7 +7850,7 @@ msgstr ""
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:320
 msgid "Their leader has fallen but still they fight!"
-msgstr "Người lãnh đạo của họ đã thua nhưng bọn họ vẫn chiến đấu!"
+msgstr "Người chỉ huy của họ đã thua nhưng bọn họ vẫn chiến đấu!"
 
 #. [message]: speaker=Sir Daryn
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:344
@@ -7914,7 +7915,7 @@ msgstr "Tôi nghĩ các ông đã nhầm! Các ông sẽ giúp tôi trở thành
 #. [message]: role=clanboss
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:447
 msgid "Who then is your leader? Who do we serve?"
-msgstr "Thế thì ai là người lãnh đạo? Chúng tôi phục vụ ai?"
+msgstr "Thế thì ai là người chỉ huy? Chúng tôi phục vụ ai?"
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Heir_To_The_Throne/scenarios/23_Test_of_the_Clans.cfg:451
@@ -8001,8 +8002,8 @@ msgid ""
 "me. I failed, and I cannot atone for it."
 msgstr ""
 "Tôi không nhìn thành phố này đã mười bảy năm. Cách đây mười bảy năm, khi tôi "
-"ở đỉnh cao của quyền lực. Nhưng sức mạnh của tôi đã khiến tôi thất bại. Tôi "
-"đã thất bại, và tôi không thể chuộc lại nó."
+"ở đỉnh cao của quyền lực. Nhưng sức mạnh của tôi thất bại. Tôi đã thất bại, "
+"và tôi không thể chuộc lại nó."
 
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:59
@@ -8158,7 +8159,7 @@ msgid ""
 msgstr ""
 "Mọi người còn phải chịu đựng sự thống trị của ngươi bao lâu nữa? Hãy trao "
 "ngai vàng cho con gái ngươi. Cô ấy là người thừa kế hợp pháp. Thậm chí bọn "
-"ta còn giữ cây trượng để chứng tỏ điều đó!"
+"ta còn giữ vương trượng để chứng tỏ điều đó!"
 
 #. [message]: speaker=Asheviere
 #: data/campaigns/Heir_To_The_Throne/scenarios/24_Battle_for_Wesnoth.cfg:251
@@ -8364,7 +8365,7 @@ msgid ""
 "of Fire, which she would pass on to all her successors."
 msgstr ""
 "Triều đại của Nữ hoàng bóng tối kết thúc. Li'sar, con gái của Garard II và "
-"người thừa kế ngai vàng Wesnoth, lên ngôi Nữ hoàng và là người cầm cây "
+"người thừa kế ngai vàng Wesnoth, lên ngôi Nữ hoàng và là người cầm vương "
 "trượng lửa, báu vật mà cô sẽ truyền cho những người kế vị của mình."
 
 #. [part]
@@ -8433,9 +8434,9 @@ msgid ""
 msgstr ""
 "Mang dòng dõi quý tộc, Công chúa đã học đánh kiếm với những tướng lĩnh giỏi "
 "nhất, và mưu lược chiến đấu với những nhà hiền triết vĩ đại nhất, điều đó "
-"khiến cô vừa là một chiến sĩ xuất sắc vừa là một nhà lãnh đạo tài ba. Giờ "
-"với kinh nghiệm trận mạc dày dạn và sức mạnh của ý chí, cô có thể giúp quân "
-"sĩ xung quanh am hiểu nghệ thuật chiến đấu."
+"khiến cô vừa là một chiến sĩ xuất sắc vừa là một nhà chỉ huy tài ba. Giờ với "
+"kinh nghiệm trận mạc dày dạn và sức mạnh của ý chí, cô có thể giúp quân sĩ "
+"xung quanh am hiểu nghệ thuật chiến đấu."
 
 #. [attack]: type=blade
 #: data/campaigns/Heir_To_The_Throne/units/Battle_Princess.cfg:35
@@ -8484,11 +8485,10 @@ msgid ""
 "lost, so is the battle."
 msgstr ""
 "Cấp bậc Người chỉ huy dành cho những người có khả năng dẫn đầu các đội quân "
-"tham gia chiến đấu. Sở hữu năng lực lãnh đạo, họ cho các đơn vị trình độ "
-"thấp hơn trong những hình lục giác lân cận một hiệu quả chiến đâu tốt hơn. "
-"Những người chỉ huy sử dụng kiếm thành thạo nhất, mặc dù họ cũng mang theo "
-"cung để sử dụng khi cần thiết. Nếu người chỉ huy thua cuộc, trận chiến cũng "
-"bại theo."
+"tham gia chiến đấu. Sở hữu năng lực chỉ huy, họ cho các đơn vị trình độ thấp "
+"hơn trong những ô lục giác lân cận một hiệu quả chiến đấu tốt hơn. Những "
+"người chỉ huy sử dụng kiếm thành thạo nhất, mặc dù họ cũng mang theo cung để "
+"sử dụng khi cần thiết. Nếu người chỉ huy thua cuộc, trận chiến cũng bại theo."
 
 #. [unit_type]: id=Dark Queen, race=human
 #: data/campaigns/Heir_To_The_Throne/units/Dark_Queen.cfg:4
@@ -8548,10 +8548,10 @@ msgid ""
 "leadership skills, and improve the fighting ability of all adjacent lower-"
 "level units."
 msgstr ""
-"Những người lãnh đạo cao quý của nhiều quân lính, các Chủ tướng đặc biệt "
-"mạnh khi cận chiến, và cũng có kỹ năng bắn cung. Giống như những Người chỉ "
-"huy, các Chủ tướng có năng lực lãnh đạo, và cải tiến khả năng chiến đấu của "
-"mọi đơn vị ở gần có trình độ thấp hơn."
+"Những người chỉ huy cao quý của nhiều quân lính, các Chủ tướng đặc biệt mạnh "
+"khi cận chiến, và cũng có kỹ năng bắn cung. Giống như những Người chỉ huy, "
+"các Chủ tướng có năng lực chỉ huy, và cải tiến khả năng chiến đấu của mọi "
+"đơn vị ở gần có trình độ thấp hơn."
 
 #. [variation]: id=Princess, race=human
 #. [unit_type]: id=Princess, race=human
@@ -8573,10 +8573,10 @@ msgid ""
 msgstr ""
 "Mang dòng dõi quý tộc, Công chúa đã học đánh kiếm với những tướng lĩnh giỏi "
 "nhất và mưu lược chiến đấu với những nhà hiền triết vĩ đại nhất, điều đó "
-"khiến cô vừa là một chiến sĩ xuất sắc vừa là một nhà lãnh đạo tài ba. Các "
-"đơn vị có trình độ thấp hơn xung quanh Công chúa sẽ chiến đấu tốt hơn nhờ sự "
-"có mặt của cô. Công chúa cũng nhanh nhẹn và khéo léo, có những năng lực "
-"giống như của một kẻ trộm."
+"khiến cô vừa là một chiến sĩ xuất sắc vừa là một nhà chỉ huy tài ba. Các đơn "
+"vị có trình độ thấp hơn xung quanh Công chúa sẽ chiến đấu tốt hơn nhờ sự có "
+"mặt của cô. Công chúa cũng nhanh nhẹn và khéo léo, có những năng lực giống "
+"như của một kẻ trộm."
 
 #. [unit_type]: id=Sea Orc, race=orc
 #: data/campaigns/Heir_To_The_Throne/units/Sea_Orc.cfg:4
@@ -8660,12 +8660,12 @@ msgstr ""
 "Thanh kiếm đồ sộ này đã được chế tạo cách đây hàng thế kỷ dưới tay các thợ "
 "rèn thần tiên - những người đã bị lãng quên từ lâu, họ đã phù phép khối thép "
 "xanh xanh bằng một ngọn lửa phép thuật. Những ánh lửa nhảy múa trên bề mặt "
-"khối kim loại, cho nó một ánh gương không tỳ vết."
+"khối kim loại, cho nó một ánh gương hoàn mĩ."
 
 #. [object]: id={ID}
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:54
 msgid "Only the leader of an army can wield this sword!"
-msgstr "Chỉ người lãnh đạo quân đội mới có thể sử dụng thanh kiếm này!"
+msgstr "Chỉ người chỉ huy quân đội mới có thể sử dụng thanh kiếm này!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:66
@@ -8739,13 +8739,13 @@ msgstr ""
 "Áo giáp hư không cấp cho các sức kháng cự sau đây:\n"
 "chém: 50%\n"
 "đâm: 40%\n"
-"va chạm: 40%\n"
+"va đập: 40%\n"
 "lửa: +10%"
 
 #. [object]: id=object_scepter
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:384
 msgid "Scepter of Fire"
-msgstr "Cây trượng lửa"
+msgstr "vương trượng lửa"
 
 #. [object]: id=object_scepter
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:387
@@ -8754,9 +8754,9 @@ msgid ""
 "A symbol of the kingship of Wesnoth, the Sceptre has the power to shoot "
 "fireballs at enemies of the bearer!"
 msgstr ""
-"Cây trượng cổ này đã được rèn dưới tay những người lùn của vùng núi Trung "
-"Tâm. Một biểu tượng của vương quyền Wesnoth, cây trượng có sức mạnh bắn các "
-"quả cầu lửa vào kẻ thù của người cầm nó!"
+"Vương trượng cổ này đã được rèn dưới tay những người lùn của vùng núi Trung "
+"Tâm. Một biểu tượng của vương quyền Wesnoth, vương trượng có sức mạnh bắn "
+"các quả cầu lửa vào kẻ thù của người cầm nó!"
 
 #. [object]: id=object_scepter
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:388
@@ -8764,13 +8764,13 @@ msgid ""
 "This is the Sceptre of Fire. Only a true successor to the throne can "
 "possibly dare to take this!"
 msgstr ""
-"Đây là cây trượng lửa. Chỉ một người kế vị ngai vàng thực sự mới dám cầm báu "
-"vật này!"
+"Đây là vương trượng lửa. Chỉ một người kế vị ngai vàng thực sự mới dám cầm "
+"báu vật này!"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:413
 msgid "Here it is at last, I have the Sceptre!"
-msgstr "Nó đây rồi. Cuối cùng, tôi cũng có cây trượng!"
+msgstr "Nó đây rồi. Cuối cùng, tôi cũng có vương trượng!"
 
 #. [message]: speaker=Kalenz
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:417
@@ -8790,7 +8790,7 @@ msgstr ""
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:444
 msgid "At last! I have the Sceptre!"
-msgstr "Cuối cùng, tôi cũng có cây trượng!"
+msgstr "Cuối cùng, tôi cũng có vương trượng!"
 
 #. [message]: speaker=Konrad
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:448
@@ -8815,9 +8815,9 @@ msgid ""
 "The Sceptre makes its wielder powerful, but hardly immortal, child. Use it "
 "prudently. Now come, I believe there is an exit to the north!"
 msgstr ""
-"Cây trượng giúp người sở hữu nó trở nên mạnh mẽ, nhưng không thể bất tử, cô "
-"bé. Hãy sử dụng nó một cách cẩn thận. Đi thôi, tôi tin có một lối ra ở phía "
-"bắc!"
+"Vương trượng giúp người sở hữu nó trở nên mạnh mẽ, nhưng không thể bất tử, "
+"cô bé. Hãy sử dụng nó một cách cẩn thận. Đi thôi, tôi tin có một lối ra ở "
+"phía bắc!"
 
 #. [message]: speaker=Li'sar
 #: data/campaigns/Heir_To_The_Throne/utils/httt_utils.cfg:460
@@ -8852,7 +8852,7 @@ msgid ""
 "the heat of battle, Eldred's men turned on the king. And so, Garard was "
 "slain in battle that day, along with his brother and all his sons but Eldred."
 msgstr ""
-"Eldred là một chiến binh dũng cảm, có tài lãnh đạo quân sĩ. Không may cho "
+"Eldred là một chiến binh dũng cảm, có tài chỉ huy quân sĩ. Không may cho "
 "Garard, con trai ngài cũng là một kẻ đầy tham vọng... và phản bội. Giữa trận "
 "chiến, người của Eldred đột nhiên trở mặt với nhà vua. Garard đã bị giết "
 "trong trận chiến ngày hôm đó, cùng với anh trai và toàn bộ con trai của mình "
@@ -8921,8 +8921,8 @@ msgid ""
 "son's lifeless body, fixed to the ground by the great mage's staff."
 msgstr ""
 "Cuối cùng, người của Delfador đã thua trận và thất bại thảm hại, nhưng "
-"Asheviere tìm thấy xác con trai mình nằm bất động trên mặt đất, bên cạnh cây "
-"gậy phép của vị pháp sư."
+"Asheviere tìm thấy xác con trai mình nằm bất động trên mặt đất, bị hạ gục "
+"bởi gậy phép của vị pháp sư."
 
 #. [part]
 #: data/campaigns/Heir_To_The_Throne/utils/intro.cfg:42
