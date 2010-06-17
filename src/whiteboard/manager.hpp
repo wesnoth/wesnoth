@@ -100,8 +100,10 @@ private:
 	boost::shared_ptr<unit> fake_unit_;
 
 	unit* selected_unit_;
-
+	unit const* highlight_unit_;
 	boost::shared_ptr<action> highlighted_action_;
+
+	bool temp_modifiers_applied_;
 };
 
 } // end namespace wb

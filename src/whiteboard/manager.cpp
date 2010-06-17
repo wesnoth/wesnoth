@@ -41,12 +41,15 @@ manager::manager():
 		move_arrow_(),
 		fake_unit_(),
 		selected_unit_(NULL),
-		highlighted_action_()
+		highlight_unit_(NULL),
+		highlighted_action_(),
+		temp_modifiers_applied_(false)
 {
 }
 
 manager::~manager()
 {
+	remove_temp_modifiers();
 	if (resources::screen && fake_unit_)
 	{
 		resources::screen->remove_temporary_unit(fake_unit_.get());
@@ -63,43 +66,57 @@ side_actions_ptr get_current_side_actions()
 
 void manager::apply_temp_modifiers()
 {
-	mapbuilder_.reset(new mapbuilder_visitor(*resources::units));
-	if (selected_unit_)
+	if (!temp_modifiers_applied_)
 	{
-		mapbuilder_->exclude(*selected_unit_);
-	}
-	const action_set& actions = get_current_side_actions()->actions();
-	foreach (const action_ptr &action, actions)
-	{
-		assert(action);
-		action->accept(*mapbuilder_);
+		mapbuilder_.reset(new mapbuilder_visitor(*resources::units));
+		//TEST
+//		if (selected_unit_)
+//		{
+//			mapbuilder_->exclude(*selected_unit_);
+//		}
+		const action_set& actions = get_current_side_actions()->actions();
+		foreach (const action_ptr &action, actions)
+		{
+			assert(action);
+			action->accept(*mapbuilder_);
+		}
+		temp_modifiers_applied_ = true;
 	}
 }
 void manager::remove_temp_modifiers()
 {
 	DBG_WB << "Removing temporary modifiers.\n";
 	mapbuilder_.reset();
+	temp_modifiers_applied_ = false;
 }
 
 void manager::highlight_action(const unit& unit)
 {
 	find_visitor finder;
-	highlighted_action_ = finder.find_first_action_of(unit, get_current_side_actions()->actions());
-	if (highlighted_action_)
+	action_set actions_to_highlight = finder.find_actions_of(unit, get_current_side_actions()->actions());
+
+	highlight_visitor highlighter(true);
+	foreach(action_ptr action, actions_to_highlight)
 	{
-		highlight_visitor highlighter(true);
-		highlighted_action_->accept(highlighter);
+		action->accept(highlighter);
 	}
+	highlight_unit_ = &unit;
 
 }
 
 void manager::remove_highlight()
 {
-	if (highlighted_action_)
+	if (highlight_unit_)
 	{
+		find_visitor finder;
+		action_set actions_to_unhighlight = finder.find_actions_of(*highlight_unit_, get_current_side_actions()->actions());
+
 		highlight_visitor unhighlighter(false);
-		highlighted_action_->accept(unhighlighter);
-		highlighted_action_.reset();
+		foreach(action_ptr action, actions_to_unhighlight)
+		{
+			action->accept(unhighlighter);
+		}
+		highlight_unit_ = NULL;
 	}
 }
 
@@ -169,13 +186,8 @@ void manager::erase_temp_move()
 		//part of UI test: reset src unit back to normal, if it lacks any planned action
 		if (selected_unit_)
 		{
-			find_visitor finder;
-			action_ptr action = finder.find_first_action_of(*selected_unit_, get_current_side_actions()->actions());
-			if (!action)
-			{
 				bool show_bars = true;
 				selected_unit_->set_standing(show_bars);
-			}
 		}
 	}
 	if (fake_unit_)
@@ -204,9 +216,10 @@ void manager::save_temp_move()
 			}
 			else //erase move
 			{
-				LOG_WB << "Previous action found for unit " << selected_unit_->name() << " [" << selected_unit_->id() << "]"
-						<< ", erasing action.\n";
-				get_current_side_actions()->remove_action(action);
+				//TEST: actually, don't erase it :P
+//				LOG_WB << "Previous action found for unit " << selected_unit_->name() << " [" << selected_unit_->id() << "]"
+//						<< ", erasing action.\n";
+//				get_current_side_actions()->remove_action(action);
 			}
 		}
 	} // kill action shared_ptr by closing scope
@@ -219,8 +232,13 @@ void manager::save_temp_move()
 	move_arrow_->set_alpha(move::ALPHA_NORMAL);
 
 	get_current_side_actions()->queue_move(*selected_unit_, route_.back(), move_arrow_, fake_unit_);
+	fake_unit_->set_location(route_.front());
+	fake_unit_->set_ghosted(false);
 	move_arrow_.reset();
 	fake_unit_.reset();
+	remove_temp_modifiers();
+	apply_temp_modifiers();
+	selected_unit_->set_standing(true);
 	selected_unit_ = NULL;
 }
 
