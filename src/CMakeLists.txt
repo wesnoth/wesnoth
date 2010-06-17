@@ -38,6 +38,16 @@ if(ZLIB_INCLUDE_DIR)
   include_directories( ${ZLIB_INCLUDE_DIR} )
 endif()
 
+option ( USE_ANA_NETWORK "Compile network module using ana" OFF )
+
+set( network_implementation_files network.cpp network_worker.cpp )
+
+if( USE_ANA_NETWORK )
+    set( network_implementation_files network_ana.cpp )
+    message( STATUS "Compiling network module with ana: ${network_implementation_files}" )
+    find_package( Boost 1.35 REQUIRED COMPONENTS system )
+endif ( USE_ANA_NETWORK )
+
 # needed to get include paths in the subfolders correct
 include_directories( ${CMAKE_SOURCE_DIR}/src/ )
 # needed to have the generated config.h used, too
@@ -59,6 +69,7 @@ else(MSVC)
 		${SDL_LIBRARY}
 		${Boost_IOSTREAMS_LIBRARY}
 		${Boost_REGEX_LIBRARY}
+        ${Boost_SYSTEM_LIBRARIES}
 	)
 endif(MSVC)
 
@@ -400,8 +411,7 @@ set(wesnoth-main_SRC
     multiplayer_wait.cpp
     multiplayer_connect.cpp
     multiplayer_create.cpp
-    network.cpp
-    network_worker.cpp
+    ${network_implementation_files} # network.cpp and network_worker.cpp are included by default (without USE_ANA_NETWORK)
     persist_context.cpp
     persist_var.cpp
     playcampaign.cpp
