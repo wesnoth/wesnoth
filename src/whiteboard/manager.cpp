@@ -29,6 +29,7 @@
 #include "play_controller.hpp"
 #include "resources.hpp"
 #include "team.hpp"
+#include "unit_display.hpp"
 
 namespace wb {
 
@@ -235,6 +236,8 @@ void manager::save_temp_move()
 	LOG_WB << "Creating move for unit " << selected_unit_->name() << " [" << selected_unit_->id() << "]"
 			<< " from " << selected_unit_->get_location()
 			<< " to " << route_.back() << "\n";
+
+	unit_display::move_unit(route_, *selected_unit_, *resources::teams, true);
 
 	move_arrow_->set_alpha(move::ALPHA_NORMAL);
 

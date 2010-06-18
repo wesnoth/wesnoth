@@ -84,5 +84,5 @@ modifier_ptr move::apply_temp_modifier(unit_map& unit_map)
 }
 
 const double move::ALPHA_HIGHLIGHT = 2.0;
-const double move::ALPHA_NORMAL = 0.6;
+const double move::ALPHA_NORMAL = 0.2;
 } // end namespace wb
