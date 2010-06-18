@@ -1698,6 +1698,13 @@ void unit::set_ghosted(bool with_bars)
 			with_bars, true);
 }
 
+void unit::set_disabled_ghosted(bool with_bars)
+{
+	game_display *disp = game_display::get_singleton();
+	start_animation(INT_MAX, choose_animation(*disp, loc_, "disabled_ghosted"),
+			with_bars, true);
+}
+
 void unit::set_idling()
 {
 	game_display *disp = game_display::get_singleton();

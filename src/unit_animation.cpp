@@ -353,6 +353,10 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 		animations.back().event_ = utils::split("ghosted");
 
 		animations.push_back(*itor);
+		animations.back().unit_anim_.override(0,300,"","0.2");
+		animations.back().event_ = utils::split("disabled_ghosted");
+
+		animations.push_back(*itor);
 		animations.back().unit_anim_.override(0,300,"","0.0~0.3:100,0.3~0.0:200",display::rgb(255,255,255));
 		animations.back().event_ = utils::split("selected");
 
