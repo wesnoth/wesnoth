@@ -851,6 +851,24 @@ If verbose, insert a linebreak after every brace and comma (put every item on it
         sys.stdout.write(sdepth1)
     sys.stdout.write("}")
 
+from xml.sax.saxutils import escape
+def xmlify(tree, verbose=False, depth=0):
+    sdepth = ""
+    if verbose:
+        sdepth = "  " * depth
+    for child in tree.children():
+        if child.get_type() == "DataSub":
+            print '%s<%s>' % (sdepth, child.name)
+            xmlify(child, verbose, depth + 1)
+            print '%s</%s>' % (sdepth, child.name)
+        else:
+            if "\n" in child.get_value() or "\r" in child.get_value():
+                print sdepth + '<' + child.name + '>' + \
+            '<![CDATA[' + child.get_value() + ']]>' + '</' + child.name + '>'
+            else:
+                print sdepth + '<' + child.name + '>' + \
+            escape(child.get_value())  + '</' + child.name + '>'
+
 if __name__ == "__main__":
     import optparse, subprocess
     try: import psyco
@@ -875,6 +893,8 @@ if __name__ == "__main__":
         help = "display contents of every tag")
     optionparser.add_option("-j", "--to-json", action = "store_true",
         help = "output JSON version of tree")
+    optionparser.add_option("-x", "--to-xml", action = "store_true",
+        help = "output XML version of tree")
     options, args = optionparser.parse_args()
 
     if options.path:
@@ -913,6 +933,8 @@ if __name__ == "__main__":
 
     if options.to_json:
         jsonify(data, True) # For more readable results
+    elif options.to_xml:
+        xmlify(data, True)
     else:
         data.debug(show_contents = options.contents, use_color = options.color)
 
