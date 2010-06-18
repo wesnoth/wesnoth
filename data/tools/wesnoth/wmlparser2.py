@@ -429,7 +429,27 @@ If verbose, insert a linebreak after every brace and comma (put every item on it
         sys.stdout.write(sdepth1)
     sys.stdout.write("}")
 
+from xml.sax.saxutils import escape
+def xmlify(tree, verbose=False, depth=0):
+    sdepth = ""
+    if verbose:
+        sdepth = "  " * depth
+    for child in tree.data:
+        if isinstance(child, TagNode):
+            print '%s<%s>' % (sdepth, child.name)
+            xmlify(child, verbose, depth + 1)
+            print '%s</%s>' % (sdepth, child.name)
+        else:
+            if "\n" in child.get_text() or "\r" in child.get_text():
+                print sdepth + '<' + child.name + '>' + \
+            '<![CDATA[' + child.get_text() + ']]>' + '</' + child.name + '>'
+            else:
+                print sdepth + '<' + child.name + '>' + \
+            escape(child.get_text())  + '</' + child.name + '>'
+
 if __name__ == "__main__":
+    # Hack to make us not crash when we encounter characters that aren't ASCII
+    sys.stdout = __import__("codecs").getwriter('utf-8')(sys.stdout)
     opt = optparse.OptionParser()
     opt.add_option("-i", "--input")
     opt.add_option("-t", "--text")
@@ -437,6 +457,7 @@ if __name__ == "__main__":
     opt.add_option("-d", "--defines")
     opt.add_option("-T", "--test", action = "store_true")
     opt.add_option("-j", "--to-json", action = "store_true")
+    opt.add_option("-x", "--to-xml", action = "store_true")
     options, args = opt.parse_args()
 
     if not options.input and not options.text and not options.test:
@@ -571,6 +592,8 @@ code = <<
     if options.to_json:
         jsonify(p.root, True)
         print
+    elif options.to_xml:
+        xmlify(p.root, True)
     else:
         print(p.root.debug())
 
