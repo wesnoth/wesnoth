@@ -54,7 +54,7 @@ move::~move()
 }
 
 //FIXME: move this out of here if it ends up being used only once
-team& get_current_team()
+static team& get_current_team()
 {
 	int current_side = resources::controller->current_side();
 	team& current_team = (*resources::teams)[current_side - 1];
