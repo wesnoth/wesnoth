@@ -1,4 +1,4 @@
-# Many of the msacros in these files are generated from template meta-macros using the
+# Many of the macros in these files are generated from template meta-macros using the
 # expand-terrain-macros.py tool.  Here's a canned invocation that will rebuild all.
 
 rebuild:
