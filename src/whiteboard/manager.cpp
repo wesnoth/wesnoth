@@ -56,7 +56,7 @@ manager::~manager()
 	}
 }
 
-side_actions_ptr get_current_side_actions()
+static side_actions_ptr get_current_side_actions()
 {
 	int current_side = resources::controller->current_side();
 	team& current_team = (*resources::teams)[current_side - 1];
