@@ -278,7 +278,7 @@ void terrain_builder::rebuild_terrain(const map_location &loc)
 		const std::string filename =
 			map().get_terrain_info(map().get_terrain(loc)).minimap_image();
 		animated<image::locator> img_loc;
-		img_loc.add_frame(100,image::locator("terrain/" + filename + ".png"));
+		img_loc.add_frame(100,image::locator("terrain/" + filename));
 		img_loc.start_animation(0, true);
 		btile.images_background.push_back(img_loc);
 
@@ -287,7 +287,7 @@ void terrain_builder::rebuild_terrain(const map_location &loc)
 			const std::string filename_ovl =
 				map().get_terrain_info(map().get_terrain(loc)).minimap_image_overlay();
 			animated<image::locator> img_loc_ovl;
-			img_loc_ovl.add_frame(100,image::locator("terrain/" + filename_ovl + ".png"));
+			img_loc_ovl.add_frame(100,image::locator("terrain/" + filename_ovl));
 			img_loc_ovl.start_animation(0, true);
 			btile.images_background.push_back(img_loc_ovl);
 		}
@@ -325,7 +325,10 @@ bool terrain_builder::rule_valid(const building_rule &rule) const
 
 				// we already precached file existence in the constructor
 				// but only for filenames not using ".."
-				if(!image::exists("terrain/" + s + ".png", s.find("..") == std::string::npos)){
+				if(!image::exists("terrain/" + s, s.find("..") == std::string::npos)){
+					// This warning can be removed after 1.9.2
+					if(image::exists("terrain/" + s + ".png", s.find("..") == std::string::npos))
+						lg::wml_error << "Terrain image '" << s << "' misses the '.png' extension\n";
 				//	printf("%s\n",s.c_str());
 					return false;
 				}
@@ -367,9 +370,9 @@ bool terrain_builder::start_animation(building_rule &rule)
 						time = 100;
 					}
 					if(image->global_image) {
-						image_vector.push_back(animated<image::locator>::frame_description(time,image::locator("terrain/" + str + ".png",constraint->second.loc, image->center_x, image->center_y)));
+						image_vector.push_back(animated<image::locator>::frame_description(time,image::locator("terrain/" + str,constraint->second.loc, image->center_x, image->center_y)));
 					} else {
-						image_vector.push_back(animated<image::locator>::frame_description(time,image::locator("terrain/" + str + ".png")));
+						image_vector.push_back(animated<image::locator>::frame_description(time,image::locator("terrain/" + str)));
 					}
 
 				}
