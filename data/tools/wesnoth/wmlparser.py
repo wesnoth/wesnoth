@@ -817,7 +817,8 @@ class Parser:
 
 def strify(string):
     """
-Massage a string into what appears to be a JSON-compatible form
+Massage a string into what appears to be a JSON-compatible form.
+This can be replaced with json.dumps() in python 2.6.
 """
     s = repr(string)
     front = s.index("'")
