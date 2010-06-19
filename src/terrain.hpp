@@ -74,6 +74,7 @@ public:
 	t_translation::t_terrain default_base() const { return editor_default_base_; }
 	t_translation::t_terrain terrain_with_default_base() const;
 
+	bool operator==(const terrain_type& other) const;
 private:
 	/** The image used in the minimap */
 	std::string minimap_image_;

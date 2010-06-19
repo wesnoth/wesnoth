@@ -24,7 +24,6 @@
 #include <set>
 
 static lg::log_domain log_config("config");
-#define ERR_CF LOG_STREAM(err, log_config)
 #define WRN_G LOG_STREAM(warn, lg::general)
 #define LOG_G LOG_STREAM(info, lg::general)
 #define DBG_G LOG_STREAM(debug, lg::general)
@@ -254,6 +253,27 @@ t_translation::t_terrain terrain_type::terrain_with_default_base() const {
 	return number_;
 }
 
+bool terrain_type::operator==(const terrain_type& other) const {
+	return minimap_image_         == other.minimap_image_
+		&& minimap_image_overlay_ == other.minimap_image_overlay_
+		&& editor_image_          == other.editor_image_
+		&& id_                    == other.id_
+		&& name_.base_str()       == other.name_.base_str()
+		&& description_           == other.description_
+		&& number_                == other.number_
+		&& height_adjust_         == other.height_adjust_
+		&& height_adjust_set_     == other.height_adjust_set_
+		&& submerge_              == other.submerge_
+		&& submerge_set_          == other.submerge_set_
+		&& light_modification_    == other.light_modification_
+		&& heals_                 == other.heals_
+		&& village_               == other.village_
+		&& castle_                == other.castle_
+		&& keep_                  == other.keep_
+		&& editor_default_base_   == other.editor_default_base_
+		&& hide_in_editor_        == other.hide_in_editor_;
+}
+
 void create_terrain_maps(const config::const_child_itors &cfgs,
                          t_translation::t_list& terrain_list,
                          std::map<t_translation::t_terrain, terrain_type>& letter_to_terrain)
@@ -268,21 +288,37 @@ void create_terrain_maps(const config::const_child_itors &cfgs,
 		res = letter_to_terrain.insert(std::make_pair(terrain.number(), terrain));
 		if (!res.second) {
 			terrain_type& curr = res.first->second;
-			WRN_G << "Duplicate terrain code definition found for " << terrain.number() << "\n";
-			WRN_G << "Trying to add terrain "
-				<< terrain.id() << " (" << terrain.name() << ") "
-				<< "[" << terrain.editor_group() << "]" << "\n";
-			WRN_G << "which conflicts with  "
-				<< curr.id() << " (" << curr.name() << ") "
-				<< "[" << curr.editor_group() << "]" << "\n";
-			std::vector<std::string> eg1 = utils::split(curr.editor_group());
-			std::vector<std::string> eg2 = utils::split(terrain.editor_group());
-			std::set<std::string> egs;
-			std::copy(eg1.begin(), eg1.end(), std::inserter(egs, egs.begin()));
-			std::copy(eg2.begin(), eg2.end(), std::inserter(egs, egs.begin()));
-			std::string joined = utils::join(egs);
-			curr.set_editor_group(joined);
-			WRN_G << "Editor groups merged to: " << joined << "\n";
+			if(terrain == curr) {
+				LOG_G << "Merging terrain " << terrain.number()
+					<< ": " << terrain.id() << " (" << terrain.name() << ")\n";
+				std::vector<std::string> eg1 = utils::split(curr.editor_group());
+				std::vector<std::string> eg2 = utils::split(terrain.editor_group());
+				std::set<std::string> egs;
+				bool clean_merge = true;
+				foreach(std::string& t, eg1)
+					clean_merge &= egs.insert(t).second;
+				foreach(std::string& t, eg2)
+					clean_merge &= egs.insert(t).second;
+
+				std::string joined = utils::join(egs);
+				curr.set_editor_group(joined);
+				if(clean_merge) {
+					LOG_G << "Editor groups merged to: " << joined << "\n";
+				} else {
+					lg::wml_error << "Merged terrain " << terrain.number()
+					<< ": " << terrain.id() << " (" << terrain.name() << ") "
+					<< "with duplicate editor groups [" << terrain.editor_group() << "] "
+					<< "and [" << curr.editor_group() << "]\n";
+				}
+			} else {
+				lg::wml_error << "Duplicate terrain code definition found for " << terrain.number() << "\n";
+				lg::wml_error << "Failed to add terrain "
+					<< terrain.id() << " (" << terrain.name() << ") "
+					<< "[" << terrain.editor_group() << "]" << "\n";
+				lg::wml_error << "which conflicts with  "
+					<< curr.id() << " (" << curr.name() << ") "
+					<< "[" << curr.editor_group() << "]" << "\n";
+			}
 		} else {
 			terrain_list.push_back(terrain.number());
 		}
