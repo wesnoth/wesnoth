@@ -277,8 +277,12 @@ void terrain_builder::rebuild_terrain(const map_location &loc)
 		btile.images_background.clear();
 		const std::string filename =
 			map().get_terrain_info(map().get_terrain(loc)).minimap_image();
+		const size_t tilde = filename.find('~');
 		animated<image::locator> img_loc;
-		img_loc.add_frame(100,image::locator("terrain/" + filename));
+		if(tilde == std::string::npos)
+			img_loc.add_frame(100,image::locator("terrain/" + filename));
+		else
+			img_loc.add_frame(100,image::locator("terrain/" + filename.substr(0,tilde), filename.substr(tilde+1)));
 		img_loc.start_animation(0, true);
 		btile.images_background.push_back(img_loc);
 
@@ -286,8 +290,12 @@ void terrain_builder::rebuild_terrain(const map_location &loc)
 		if(map().get_terrain_info(map().get_terrain(loc)).is_combined()) {
 			const std::string filename_ovl =
 				map().get_terrain_info(map().get_terrain(loc)).minimap_image_overlay();
+			const size_t tilde_ovl = filename.find('~');
 			animated<image::locator> img_loc_ovl;
-			img_loc_ovl.add_frame(100,image::locator("terrain/" + filename_ovl));
+			if(tilde_ovl == std::string::npos)
+				img_loc_ovl.add_frame(100,image::locator("terrain/" + filename_ovl));
+			else
+				img_loc_ovl.add_frame(100,image::locator("terrain/" + filename_ovl.substr(0,tilde_ovl), filename_ovl.substr(tilde_ovl+1)));
 			img_loc_ovl.start_animation(0, true);
 			btile.images_background.push_back(img_loc_ovl);
 		}
@@ -321,7 +329,7 @@ bool terrain_builder::rule_valid(const building_rule &rule) const
 
 			for(variant = image->variants.begin(); variant != image->variants.end(); ++variant) {
 				std::string s = variant->second.image_string;
-				s = s.substr(0, s.find_first_of(",:"));
+				s = s.substr(0, s.find_first_of(",:~"));
 
 				// we already precached file existence in the constructor
 				// but only for filenames not using ".."
@@ -355,7 +363,7 @@ bool terrain_builder::start_animation(building_rule &rule)
 			for(variant = image->variants.begin(); variant != image->variants.end(); ++variant) {
 
 				animated<image::locator>::anim_description image_vector;
-				std::vector<std::string> items = utils::split(variant->second.image_string);
+				std::vector<std::string> items = utils::parenthetical_split(variant->second.image_string,',');
 				std::vector<std::string>::const_iterator itor = items.begin();
 				for(; itor != items.end(); ++itor) {
 					const std::vector<std::string>& items = utils::split(*itor, ':');
@@ -369,10 +377,21 @@ bool terrain_builder::start_animation(building_rule &rule)
 						str = *itor;
 						time = 100;
 					}
+					const size_t tilde = str.find('~');
 					if(image->global_image) {
-						image_vector.push_back(animated<image::locator>::frame_description(time,image::locator("terrain/" + str,constraint->second.loc, image->center_x, image->center_y)));
+						image::locator locator;
+						if(tilde == std::string::npos)
+							locator = image::locator("terrain/" + str,constraint->second.loc, image->center_x, image->center_y);
+						else
+							locator = image::locator("terrain/" + str.substr(0,tilde),constraint->second.loc, image->center_x, image->center_y, str.substr(tilde+1));
+						image_vector.push_back(animated<image::locator>::frame_description(time,locator));
 					} else {
-						image_vector.push_back(animated<image::locator>::frame_description(time,image::locator("terrain/" + str)));
+						image::locator locator;
+						if(tilde == std::string::npos)
+							locator = image::locator("terrain/" + str);
+						else
+							locator = image::locator("terrain/" + str.substr(0,tilde), str.substr(tilde+1));
+						image_vector.push_back(animated<image::locator>::frame_description(time,locator));
 					}
 
 				}
