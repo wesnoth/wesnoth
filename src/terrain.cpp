@@ -260,7 +260,6 @@ bool terrain_type::operator==(const terrain_type& other) const {
 		&& editor_image_          == other.editor_image_
 		&& id_                    == other.id_
 		&& name_.base_str()       == other.name_.base_str()
-		&& description_           == other.description_
 		&& number_                == other.number_
 		&& height_adjust_         == other.height_adjust_
 		&& height_adjust_set_     == other.height_adjust_set_
