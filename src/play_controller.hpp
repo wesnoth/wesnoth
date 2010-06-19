@@ -203,7 +203,6 @@ protected:
 	events::menu_handler menu_handler_;
 	boost::scoped_ptr<soundsource::manager> soundsources_manager_;
 	tod_manager tod_manager_;
-	boost::scoped_ptr<wb::manager> whiteboard_manager_;
 
 	//other objects
 	boost::scoped_ptr<game_display> gui_;
@@ -215,6 +214,9 @@ protected:
 	unit_map units_;
 	undo_list undo_stack_;
 	undo_list redo_stack_;
+
+	//whiteboard manager
+	boost::scoped_ptr<wb::manager> whiteboard_manager_;
 
 	const unit_type::experience_accelerator xp_mod_;
 	//if a team is specified whose turn it is, it means we're loading a game
