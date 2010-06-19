@@ -277,12 +277,8 @@ void terrain_builder::rebuild_terrain(const map_location &loc)
 		btile.images_background.clear();
 		const std::string filename =
 			map().get_terrain_info(map().get_terrain(loc)).minimap_image();
-		const size_t tilde = filename.find('~');
 		animated<image::locator> img_loc;
-		if(tilde == std::string::npos)
-			img_loc.add_frame(100,image::locator("terrain/" + filename));
-		else
-			img_loc.add_frame(100,image::locator("terrain/" + filename.substr(0,tilde), filename.substr(tilde+1)));
+		img_loc.add_frame(100,image::locator("terrain/" + filename + ".png"));
 		img_loc.start_animation(0, true);
 		btile.images_background.push_back(img_loc);
 
@@ -290,12 +286,8 @@ void terrain_builder::rebuild_terrain(const map_location &loc)
 		if(map().get_terrain_info(map().get_terrain(loc)).is_combined()) {
 			const std::string filename_ovl =
 				map().get_terrain_info(map().get_terrain(loc)).minimap_image_overlay();
-			const size_t tilde_ovl = filename.find('~');
 			animated<image::locator> img_loc_ovl;
-			if(tilde_ovl == std::string::npos)
-				img_loc_ovl.add_frame(100,image::locator("terrain/" + filename_ovl));
-			else
-				img_loc_ovl.add_frame(100,image::locator("terrain/" + filename_ovl.substr(0,tilde_ovl), filename_ovl.substr(tilde_ovl+1)));
+			img_loc_ovl.add_frame(100,image::locator("terrain/" + filename_ovl + ".png"));
 			img_loc_ovl.start_animation(0, true);
 			btile.images_background.push_back(img_loc_ovl);
 		}
