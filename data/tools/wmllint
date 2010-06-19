@@ -509,6 +509,10 @@ linechanges = (
         ("second_value=", "value_second="),	# Correct earlier wmllint error
         (".stones", ".petrifies"),
         ("stones=", "petrifies="),
+        # Changes just before 1.9.1
+        ("[colour_adjust]", "[color_adjust]"),
+        ("[/colour_adjust]", "[/color_adjust]"),
+        ("colour=", "color="),
         )
 
 def validate_on_pop(tagstack, closer, filename, lineno):
