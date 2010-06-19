@@ -100,7 +100,7 @@ const struct {
 	{ hotkey::HOTKEY_REPLAY_SHOW_TEAM1, "replayshowteam1",
 	  N_("Team 1"), false, hotkey::SCOPE_GAME },
 	{ hotkey::HOTKEY_REPLAY_SKIP_ANIMATION, "replayskipanimation", N_("Skip animation"), false, hotkey::SCOPE_GAME },
-	//@todo 1.9 : unhide whiteboard hotkeys once whiteboard is mature enough
+	// Whiteboard commands
 	{ hotkey::HOTKEY_EXECUTE_NEXT_ACTION, "executenextaction", N_("Execute next planned action"), false, hotkey::SCOPE_GAME },
 
 #ifndef DISABLE_EDITOR
