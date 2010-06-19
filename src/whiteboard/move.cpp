@@ -75,6 +75,8 @@ void move::accept(visitor& v)
 
 void move::execute()
 {
+	arrow_->set_alpha(ALPHA_HIGHLIGHT);
+
 	static const bool show_move = false;
 	map_location* next_unit = NULL; //Set to something else than null to get final unit location in this out parameter
 	::move_unit(NULL, arrow_->get_path(), &recorder, resources::undo_stack, show_move, next_unit,
