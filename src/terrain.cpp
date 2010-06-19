@@ -24,6 +24,7 @@
 #include <set>
 
 static lg::log_domain log_config("config");
+#define ERR_G LOG_STREAM(err, lg::general)
 #define WRN_G LOG_STREAM(warn, lg::general)
 #define LOG_G LOG_STREAM(info, lg::general)
 #define DBG_G LOG_STREAM(debug, lg::general)
@@ -305,17 +306,17 @@ void create_terrain_maps(const config::const_child_itors &cfgs,
 				if(clean_merge) {
 					LOG_G << "Editor groups merged to: " << joined << "\n";
 				} else {
-					lg::wml_error << "Merged terrain " << terrain.number()
+					ERR_G << "Merged terrain " << terrain.number()
 					<< ": " << terrain.id() << " (" << terrain.name() << ") "
 					<< "with duplicate editor groups [" << terrain.editor_group() << "] "
 					<< "and [" << curr.editor_group() << "]\n";
 				}
 			} else {
-				lg::wml_error << "Duplicate terrain code definition found for " << terrain.number() << "\n";
-				lg::wml_error << "Failed to add terrain "
+				ERR_G << "Duplicate terrain code definition found for " << terrain.number() << "\n";
+				ERR_G << "Failed to add terrain "
 					<< terrain.id() << " (" << terrain.name() << ") "
 					<< "[" << terrain.editor_group() << "]" << "\n";
-				lg::wml_error << "which conflicts with  "
+				ERR_G << "which conflicts with  "
 					<< curr.id() << " (" << curr.name() << ") "
 					<< "[" << curr.editor_group() << "]" << "\n";
 			}
