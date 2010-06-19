@@ -49,7 +49,7 @@ public:
 	 * Executes the first action in the queue, and then deletes it.
 	 * TODO: Validate all subsequent actions after doing this!
 	 */
-	void execute_first();
+	void execute_next();
 
 	/**
 	 * Executes the specified action, if it exists in the queue.

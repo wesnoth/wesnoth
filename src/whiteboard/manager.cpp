@@ -255,7 +255,14 @@ void manager::save_temp_move()
 void manager::execute_next()
 {
 	remove_temp_modifiers();
-	get_current_side_actions()->execute_first();
+	get_current_side_actions()->execute_next();
+	apply_temp_modifiers();
+}
+
+void manager::delete_last()
+{
+	remove_temp_modifiers();
+	get_current_side_actions()->remove_action(get_current_side_actions()->end() - 1);
 	apply_temp_modifiers();
 }
 

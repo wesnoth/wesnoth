@@ -50,6 +50,8 @@ move::~move()
 		{
 			resources::screen->remove_temporary_unit(fake_unit_.get());
 		}
+		resources::screen->invalidate(orig_hex_);
+		unit_.set_standing();
 	}
 }
 

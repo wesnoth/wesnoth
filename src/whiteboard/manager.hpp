@@ -88,6 +88,9 @@ public:
 	/** Executes first action in the queue for current side */
 	void execute_next();
 
+	/** Deletes last action in the queue for current side */
+	void delete_last();
+
 	/** Checks whether the specified unit has at least one planned action,
 	 *  and returns the first action found. */
 	boost::shared_ptr<action> has_action(const unit& unit) const;

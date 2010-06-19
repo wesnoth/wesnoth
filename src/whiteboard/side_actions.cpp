@@ -38,7 +38,7 @@ const action_set& side_actions::actions() const
 	return actions_;
 }
 
-void side_actions::execute_first()
+void side_actions::execute_next()
 {
 	if (!actions_.empty())
 	{

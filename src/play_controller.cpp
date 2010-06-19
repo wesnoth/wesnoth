@@ -451,6 +451,10 @@ void play_controller::execute_next_action(){
 	whiteboard_manager_->execute_next();
 }
 
+void play_controller::delete_last_action(){
+	whiteboard_manager_->delete_last();
+}
+
 void play_controller::fire_prestart(bool execute){
 	// Run initialization scripts, even if loading from a snapshot.
 	game_events::fire("preload");
@@ -775,6 +779,7 @@ bool play_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int in
 			teams_[menu_handler_.current_unit(mouse_handler_)->side() - 1].is_human();
 
 	case hotkey::HOTKEY_EXECUTE_NEXT_ACTION:
+	case hotkey::HOTKEY_DELETE_LAST_ACTION:
 		return resources::whiteboard->active();
 
 	default:
