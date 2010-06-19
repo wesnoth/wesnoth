@@ -211,26 +211,26 @@ void manager::save_temp_move()
 	//If selected unit already has a move defined, erase it first
 
 	// TODO: implement a find_and_erase method in find_visitor to avoid iterating twice over actions
-	{
-		action_ptr action = has_action(*selected_unit_);
-		if (action)
-		{
-			//FIXME: temporary for testing: if move created twice on same hex, execute instead
-			if (dynamic_cast<move*>(action.get())->get_arrow()->get_path().back()
-					== move_arrow_->get_path().back())
-			{
-				get_current_side_actions()->execute(action);
-				return;
-			}
-			else //erase move
-			{
-				//TEST: actually, don't erase it :P
-//				LOG_WB << "Previous action found for unit " << selected_unit_->name() << " [" << selected_unit_->id() << "]"
-//						<< ", erasing action.\n";
-//				get_current_side_actions()->remove_action(action);
-			}
-		}
-	} // kill action shared_ptr by closing scope
+//	{
+//		action_ptr action = has_action(*selected_unit_);
+//		if (action)
+//		{
+//			//FIXME: temporary for testing: if move created twice on same hex, execute instead
+//			if (dynamic_cast<move*>(action.get())->get_arrow()->get_path().back()
+//					== move_arrow_->get_path().back())
+//			{
+//				get_current_side_actions()->execute(action);
+//				return;
+//			}
+//			else //erase move
+//			{
+//				//TEST: actually, don't erase it :P
+////				LOG_WB << "Previous action found for unit " << selected_unit_->name() << " [" << selected_unit_->id() << "]"
+////						<< ", erasing action.\n";
+////				get_current_side_actions()->remove_action(action);
+//			}
+//		}
+//	} // kill action shared_ptr by closing scope
 
 	//Define the new move
 	LOG_WB << "Creating move for unit " << selected_unit_->name() << " [" << selected_unit_->id() << "]"
@@ -252,9 +252,11 @@ void manager::save_temp_move()
 	selected_unit_ = NULL;
 }
 
-void manager::execute_first()
+void manager::execute_next()
 {
+	remove_temp_modifiers();
 	get_current_side_actions()->execute_first();
+	apply_temp_modifiers();
 }
 
 action_ptr manager::has_action(const unit& unit) const

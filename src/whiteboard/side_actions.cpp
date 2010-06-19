@@ -40,9 +40,12 @@ const action_set& side_actions::actions() const
 
 void side_actions::execute_first()
 {
-	actions_.front()->execute();
-	actions_.pop_front();
-	//TODO: Validate remaining actions here
+	if (!actions_.empty())
+	{
+		actions_.front()->execute();
+		actions_.pop_front();
+		//TODO: Validate remaining actions here
+	}
 }
 
 void side_actions::execute(action_ptr action)

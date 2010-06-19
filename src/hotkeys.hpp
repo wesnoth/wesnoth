@@ -61,6 +61,9 @@ enum HOTKEY_COMMAND {
 	HOTKEY_REPLAY_SHOW_EACH, HOTKEY_REPLAY_SHOW_TEAM1,
 	HOTKEY_REPLAY_SKIP_ANIMATION,
 
+	// Whiteboard commands
+	HOTKEY_EXECUTE_NEXT_ACTION,
+
 #ifndef DISABLE_EDITOR
 	HOTKEY_EDITOR_QUIT_TO_DESKTOP,
 	HOTKEY_EDITOR_CLOSE_MAP, HOTKEY_EDITOR_SWITCH_MAP,
@@ -296,6 +299,7 @@ public:
 	virtual void replay_show_each() {}
 	virtual void replay_show_team1() {}
 	virtual void replay_skip_animation() {}
+	virtual void execute_next_action() {}
 
 	//Gets the action's image (if any). Displayed left of the action text in menus.
 	virtual std::string get_action_image(hotkey::HOTKEY_COMMAND /*command*/, int /*index*/) const { return ""; }

@@ -447,6 +447,9 @@ void play_controller::search(){
 	menu_handler_.search();
 }
 
+void play_controller::execute_next_action(){
+	whiteboard_manager_->execute_next();
+}
 
 void play_controller::fire_prestart(bool execute){
 	// Run initialization scripts, even if loading from a snapshot.
@@ -770,6 +773,9 @@ bool play_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int in
 			!(menu_handler_.current_unit(mouse_handler_)->unrenamable()) &&
 			menu_handler_.current_unit(mouse_handler_)->side() == gui_->viewing_side() &&
 			teams_[menu_handler_.current_unit(mouse_handler_)->side() - 1].is_human();
+
+	case hotkey::HOTKEY_EXECUTE_NEXT_ACTION:
+		return resources::whiteboard->active();
 
 	default:
 		return false;

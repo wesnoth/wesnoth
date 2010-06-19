@@ -86,7 +86,7 @@ public:
 	void save_temp_move();
 
 	/** Executes first action in the queue for current side */
-	void execute_first();
+	void execute_next();
 
 	/** Checks whether the specified unit has at least one planned action,
 	 *  and returns the first action found. */
