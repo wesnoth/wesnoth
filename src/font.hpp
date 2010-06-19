@@ -147,7 +147,10 @@ public:
 		ymove_ = ymove;
 	}
 	// set the number of frames to display the text for, or -1 to display until removed
-	void set_lifetime(int lifetime) {lifetime_ = lifetime;}
+	void set_lifetime(int lifetime) {
+		lifetime_ = lifetime;
+		alpha_change_ = -255 / lifetime_;
+	}
 	void set_color(const SDL_Color& color) {color_ = color;}
 	void set_bg_color(const SDL_Color& bg_color) {
 		bgcolor_ = bg_color;
