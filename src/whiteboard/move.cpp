@@ -29,8 +29,12 @@
 #include "resources.hpp"
 #include "team.hpp"
 #include "game_display.hpp"
+#include "unit_display.hpp"
 
 namespace wb {
+
+const double move::ALPHA_HIGHLIGHT = 2.0;
+const double move::ALPHA_NORMAL = 0.2;
 
 move::move(unit& subject, const map_location& target_hex, boost::shared_ptr<arrow> arrow,
 		boost::shared_ptr<unit> fake_unit)
@@ -50,7 +54,8 @@ move::~move()
 		{
 			resources::screen->remove_temporary_unit(fake_unit_.get());
 		}
-		resources::screen->invalidate(orig_hex_);
+		//resources::screen->invalidate(orig_hex_);
+		resources::screen->invalidate(fake_unit_->get_location());
 		unit_.set_standing();
 	}
 }
@@ -70,8 +75,8 @@ void move::accept(visitor& v)
 
 void move::execute()
 {
-	static bool show_move = true;
-	map_location* next_unit = NULL; //FIXME: Not sure what to do with this variable as of now
+	static const bool show_move = false;
+	map_location* next_unit = NULL; //Set to something else than null to get final unit location in this out parameter
 	::move_unit(NULL, arrow_->get_path(), &recorder, resources::undo_stack, show_move, next_unit,
 			get_current_team().auto_shroud_updates());
 }
@@ -85,6 +90,4 @@ modifier_ptr move::apply_temp_modifier(unit_map& unit_map)
 	return modifier;
 }
 
-const double move::ALPHA_HIGHLIGHT = 2.0;
-const double move::ALPHA_NORMAL = 0.2;
 } // end namespace wb
