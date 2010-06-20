@@ -21,32 +21,34 @@
 .TH WESNOTH 6 2009 wesnoth "Battle for Wesnoth"
 .
 .SH NOME
-wesnoth \- Battle for Wesnoth, un xogo fantástico de estratexia por turnos
+wesnoth ─ Battle for Wesnoth, un xogo de estratexia por roldas ambientado
+nun mundo fantástico.
 .
 .SH SINOPSE
 .
-\fBwesnoth\fP [\fIOPCIÓNS\fP] [\fIRUTA_ÓS_DATOS\fP]
+\fBwesnoth\fP [\fIOPCIÓNS\fP] [\fIRUTA_AOS_DATOS\fP]
 .
 .SH DESCRICIÓN
 .
-Battle for \fBWesnoth\fP é un xogo fantástico de estratexia por turnos
+O Battle for \fBWesnoth\fP é un xogo de estratexia por roldas ambientado nun
+mundo fantástico.
 
-Derrota a tódolos líderes inimigos usando un cadro de tropas ben escollido,
-tendo en conta a xestión dos teus recursos de ouro e vilas. Tódalas unidades
-teñen as súas propias fortalezas e debilidades; para gañar, desprega as túas
-forzas para que teñan as máximas vantaxes mentres lle impides ós teus
-inimigos face\-lo mesmo. A medida que as unidades conseguen experiencia,
-adquiren novas habilidades e fanse máis poderosas. Xoga na túa propia lingua
-e proba as túas habilidades contra un opoñente por ordenador intelixente, ou
-únete á gran comunidade de xogadores en liña de Wesnoth. Crea as túas
-propias unidades personalizadas, escenarios ou campañas, e comparteos cos
-demais.
+Derrota a todos os líderes inimigos escollendo sabiamente ás túas tropas e
+xestionando coidadosamente os teus recursos de ouro e vilas. Todas as
+unidades teñen as súas propias fortalezas e debilidades. Para gañar,
+desprega as túas forzas de xeito que aproveiten completamente o seu
+potencial, e impide que o fagan os inimigos. A medida que as unidades
+consigan experiencia, adquirirán novas habilidades e volveranse máis
+poderosas. Xoga na túa propia lingua e proba as túas habilidades contra a
+intelixencia artificial, ou únete á gran comunidade de xogadores en liña do
+Wesnoth. Crea as túas propias unidades personalizadas, escenarios ou
+campañas, e compárteos cos demais.
 .
 .SH OPCIÓNS
 .
 .TP 
 \fB\-\-bpp\fP\fI\ número\fP
-establece o valor de BitsPerPixel. Exemplo: \fB\-\-bpp 32\fP
+Establece o valor de bits por píxel. Por exemplo: \fB\-\-bpp 32\fP
 .TP 
 \fB\-c, \-\-campaign[[<difficulty>] <id_campaign> [<id_scenario>]]\fP
 goes directly to the campaign based on the parameters.  The difficulty is a
@@ -55,80 +57,82 @@ difficulty is 1.  The scenario must be one of the campaign's child
 scenarios. The default scenario is campaign's first scenario.
 .TP 
 \fB\-\-config\-dir\fP\fI\ nome\fP
-define \fIname\fP coma o directorio da configuración do usuario en $HOME ou "Os
-Meus Documentos\eOs Meus Xogos" en windows.
+Define \fInome\fP coma o cartafol da configuración do usuario no seu directorio
+persoal («$HOME») ou «Os meus documentos»\e«Os meus xogos» en Windows.
 .TP 
 \fB\-\-config\-path\fP
-mostra a ruta do directorio de configuración do usuario e sae.
+Amosa a ruta do directorio da configuración do usuario e sae.
 .TP 
 \fB\-datadir <directory>\fP
 overrides the data directory with the one specified
 .TP 
 \fB\-d, \-\-debug\fP
-activa opcións de modo de comando adicionais no xogo (consulte a páxina wiki
-en http://www.wesnoth.org/wiki/CommandMode para obter máis información sobre
-o modo de comando).
+Activa opcións adicionais na consola do xogo (consulta a páxina wiki
+«http://wiki.wesnoth.org/CommandMode», en inglés, para obter máis
+información sobre a consola).
 .TP 
 \fB\-e,\ \-\-editor\fP\fI\ ficheiro\fP
-inicia directamente o editor de mapas integrado. Se se especifica
-\fIficheiro\fP, equivale a \fB\-e \-\-load\fP
+Inicia directamente o editor de mapas integrado. Se se especifica un
+\fIficheiro\fP, fai o mesmo que \fB\-l \-\-load\fP
 .TP 
 \fB\-\-fps\fP
-amosa o número de imaxes por segundo ó que se está executando o xogo, nunha
+Amosa o número de imaxes por segundo ao que se está executando o xogo, nunha
 esquina da pantalla.
 .TP 
 \fB\-f, \-\-fullscreen\fP
-executa o xogo a pantalla completa.
+Executa o xogo a pantalla completa.
 .TP 
 \fB\-\-gunzip\fP\fI\ ficheiroentrada.gz\fP
-descomprime un ficheiro que debería estar en formato gzip e gárdao co sufixo
-\&.gz. O \fIficheiroentrada.gz\fP eliminarase.
+Descomprime un ficheiro que debería estar en formato gzip e gárdao sen o
+sufixo .gz. Borrarase o \fIficheiroentrada.gz\fP.
 .TP 
 \fB\-\-gzip\fP\fI\ ficheiroentrada\fP
-comprime un ficheiro con formato gzip, gárdao coma \fIficheiroentrada\fP.gz e
-elimina \fIficheiroentrada\fP.
+Comprime un ficheiro en formato gzip, gárdao coma \fIficheiroentrada\fP.gz e
+borra o \fIficheiroentrada\fP.
 .TP 
 \fB\-h, \-\-help\fP
-amosa un resumo das opcións de liña de comandos na saída estándar, e sae.
+Amosa un resumo das opcións da liña de ordes, e sae.
 .TP 
 \fB\-l,\ \-\-load\fP\fI\ ficheiro\fP
-carga a partida \fIficheiro\fP dende o directorio de partidas estándar. Se
-tamén se usan as opcións \fB\-e\fP ou \fB\-\-editor\fP, iníciase o editor co mapa de
+Carga a partida \fIficheiro\fP do directorio de partidas estándar. Se tamén se
+usan as opcións \fB\-e\fP ou \fB\-\-editor\fP, iníciase o editor co mapa do
 \fIficheiro\fP aberto. Se é un directorio, o editor iniciarase cun diálogo de
 carga de mapas aberto en dito directorio.
 .TP 
 \fB\-\-log\-\fP\fInivel\fP\fB=\fP\fIdominio1\fP\fB,\fP\fIdominio2\fP\fB,\fP\fI...\fP
-establece o nivel de severidade dos dominios de log.  Pódese usar \fBall\fP
-para referirse a calquera dominio de log. Niveis dispoñibles: \fBerror\fP,\
-\fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP.  Por defecto úsase o nivel \fBerror\fP.
+Establece o nivel de severidade dos dominios do rexistro.  Pódese usar
+\fBall\fP para referirse a calquera dominio do rexistro. Os niveis dispoñibles
+son os seguintes: \fBerror\fP (erro),\ \fBwarning\fP (aviso),\ \fBinfo\fP
+(información) e \ \fBdebug\fP (depuración).  Por defecto úsase o nivel
+\fBerror\fP.
 .TP 
 \fB\-\-logdomains\fP
-Mostra unha lista de tódolos dominios de log e sae.
+Mostra unha lista de todos os dominios do rexistro e sae.
 .TP 
 \fB\-\-max\-fps\fP
-o número de imaxes por segundo que pode amosar o xogo, o valor debe estar
-entre 1 e 1000, o predeterminado é \fB50\fP.
+O número de imaxes por segundo que pode amosar o xogo, o valor debe estar
+entre 1 e 1000, sendo \fB50\fP o valor por defecto.
 .TP 
 \fB\-m, \-\-multiplayer\fP
-runs a multiplayer game. There are additional options that can be used
-together with \fB\-\-multiplayer\fP as explained below. Only these additional
-options can follow \fB\-\-multiplayer\fP.
+Executa unha partida multixogador. Hai opcións adicionais que poden usarse
+xunta con \fB\-\-multiplayer\fP tal como se explica máis abaixo. \fB\-\-multiplayer\fP
+só pode ir seguido destas opcións adicionais.
 .TP 
 \fB\-\-no\-delay\fP
-executa o xogo sen retrasos para probas de rendemento gráfico. Isto actívase
+Executa o xogo sen atrasos para probas de rendemento gráfico. Isto actívase
 automaticamente con \fB\-\-nogui\fP.
 .TP 
 \fB\-\-nocache\fP
-deshabilita a caché de datos de xogo.
+Desactiva a caché de datos das partidas.
 .TP 
 \fB\-\-nomusic\fP
-executa o xogo sen música.
+Executa o xogo sen música.
 .TP 
 \fB\-\-nosound\fP
-executa o xogo sen son e sen música.
+Executa o xogo sen sons e sen música.
 .TP 
 \fB\-\-path\fP
-amosa o nome do directorio de datos do xogo e sae.
+Amosa o nome do directorio de datos do xogo e sae.
 .TP 
 \fB\-\-preprocess, \-p[=<define1>,<define2>,...] <file/folder> <target directory>\fP
 preprocesses a specified file/folder. The file(s) will be written in
@@ -142,105 +146,108 @@ them you must add the '=' character before.  Example: \fB\-p
 \fB\-p=MULTIPLAYER,MY_OWN_CAMPAIGN ~/wesnoth/data/campaign/camp ~/result\fP
 .TP 
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
-establece a resolución da pantalla. Por exemplo: \fB\-r 800x600\fP
+Establece a resolución da pantalla. Por exemplo: \fB\-r 800x600\fP
 .TP 
 \fB\-\-smallgui\fP
-permite usar resolucións de pantalla inferiores a 800x480 e redimensiona un
-poucos elementos da interface.
+Permite usar resolucións de pantalla inferiores a 800x480 e cambia o tamaño
+dalgúns elementos da interface.
 .TP 
 \fB\-s,\ \-\-server\ [máquina]\fP
-conéctase á máquina especificada se existe, noutro caso conéctase ó primeiro
-servidor das preferencias. Exemplo: \fB\-\-server server.wesnoth.org\fP
+Conéctase á máquina especificada se existe, senón conéctase ao primeiro
+servidor das preferencias. Por exemplo: \fB\-\-server server.wesnoth.org\fP
 .TP 
 \fB\-t, \-\-test\fP
-executa o xogo nun pequeno escenario de proba.
+Executa o xogo nun pequeno escenario de proba.
 .TP 
 \fB\-\-validcache\fP
-asume que a caché é válida. (perigoso)
+Asume que a caché é válida (perigoso).
 .TP 
 \fB\-v, \-\-version\fP
-amosa o número de versión e sae.
+Amosa o número da versión e sae.
 .TP 
 \fB\-w, \-\-windowed\fP
-executa o xogo nunha ventá.
+Executa o xogo nunha fiestra.
 .TP 
 \fB\-\-with\-replay\fP
-reproduce a partida cargada ca opción \fB\-\-load\fP.
+Reproduce a partida cargada coa opción \fB\-\-load\fP.
 .
 .SH "Opcións para \-\-multiplayer"
 .
-As opcións multixogador específicas dun bando márcanse con \fInúmero\fP.
-\fInúmero\fP tense que substituír por un número de bando. Normalmente é 1 ou 2
-pero depende do número de xogadores posible do escenario escollido.
+As opcións multixogador específicas dun bando márcanse cun
+\fInúmero\fP. «\fInúmero\fP» tense que substituír por un número de
+bando. Normalmente é 1 ou 2 pero depende do número de xogadores posible do
+escenario escollido.
 .TP 
-\fB\-\-ai_config\fP\fInumber\fP\fB=\fP\fIvalue\fP
-selects a configuration file to load for the AI controller for this side.
+\fB\-\-ai_config\fP\fInúmero\fP\fB=\fP\fIvalor\fP
+Escolle un ficheiro de configuración a cargar para a intelixencia artificial
+que controla o banod especificado.
 .TP 
 \fB\-\-algorithm\fP\fInúmero\fP\fB=\fP\fIvalor\fP
-selecciona un algoritmo non estándar para que o use o controlador da IA dese
-bando. Valores dispoñibles: \fBidle_ai\fP e \fBsample_ai\fP.
+Selecciona un algoritmo non estándar para que o use o controlador da
+intelixencia artificial dese bando. Os seus posibles valores son: \fBidle_ai\fP
+e \fBsample_ai\fP.
 .TP  
 \fB\-\-controller\fP\fInúmero\fP\fB=\fP\fIvalor\fP
-selecciona o controlador deste bando. Valores dispoñibles: \fBhuman\fP e \fBai\fP.
+Selecciona o controlador dese bando. Os valores dispoñibles son: \fBhuman\fP e
+\fBai\fP.
 .TP  
 \fB\-\-era=\fP\fIvalor\fP
-use esta opción para xogar na era seleccionada en vez de na era
-\fBDefault\fP. A era elíxese mediante un id. As eras descríbense no ficheiro
+Usa esta opción para xogar na era seleccionada en vez de na era por defecto
+(\fBDefault\fP). A era elíxese mediante un id. As eras descríbense no ficheiro
 \fBdata/multiplayer/eras.cfg\fP.
 .TP 
 \fB\-\-exit\-at\-end\fP
-sae unha vez se rematou o escenario, sen mostrar un diálogo de victoria ou
-derrota que require que o usuario prema Aceptar. Isto tamén se emprega para
-probas de rendemento automatizadas mediante scripts.
+Sae unha vez se rematou o escenario, sen amosar un diálogo de vitoria ou
+derrota que require que o usuario prema «Aceptar». Isto tamén se emprega
+para probas de rendemento automatizadas mediante guións.
 .TP 
 \fB\-\-nogui\fP
-executa o xogo sen GUI. Debe aparecer antes de \fB\-\-multiplayer\fP para ter o
-efecto desexado.
+Executa o xogo sen interface gráfica. Debe aparecer antes de
+\fB\-\-multiplayer\fP para ter o efecto desexado.
 .TP 
 \fB\-\-parm\fP\fInúmero\fP\fB=\fP\fInome\fP\fB:\fP\fIvalor\fP
-establece parámetros adicionais para este bando. Este parámetro depende das
+Establece parámetros adicionais para o bando. Este parámetro depende das
 opcións usadas con \fB\-\-controller\fP e \fB\-\-algorithm\fP. Debería ter únicamente
-utilidade para a xente que está deseñando a súa propia IA. (ainda non
-documentado de forma completa)
+utilidade para a xente que está deseñando a súa propia intelixencia
+artificial (aínda non está documentado de forma completa).
 .TP 
 \fB\-\-scenario=\fP\fIvalor\fP
-selecciona un escenario multixogador polo id. O id do escenario
+Selecciona un escenario multixogador polo id. O id do escenario
 predeterminado é \fBmultiplayer_The_Freelands\fP.
 .TP 
 \fB\-\-side\fP\fInúmero\fP\fB=\fP\fIvalor\fP
-selecciona unha facción da era actual para este bando. A facción elíxese
+Selecciona unha facción da era actual para este bando. A facción elíxese
 mediante un id. As faccións descríbense no ficheiro data/multiplayer.cfg.
 .TP 
 \fB\-\-turns=\fP\fIvalor\fP
-establece o número de turnos para o escenario elixido. Por defecto é \fB50\fP.
+Establece o número de roldas para o escenario elixido. Por defecto é \fB50\fP.
 .
-.SH "EXIT STATUS"
+.SH "ESTADO AO SAÍR"
 .
-Normal exit status is 0. An exit status of 1 indicates an (SDL, video,
-fonts, etc) initialization error. An exit status of 2 indicates an error
-with the command line options.
+O estado normal ao saír é 0. O estado 1 un erro de inicialización ─ben do
+SDL, de vídeo, dos tipos de letra, etc─. O estado 2 indica que o erro se
+produzo coas opcións da liña de ordes.
 .
 .SH AUTOR
 .
-Escrito por David White <davidnwhite@verizon.net>.
+Autor: David White <davidnwhite@verizon.net>.
 .br
-Editado por Nils Kneuper <crazy\-ivanovic@gmx.net>, ott
-<ott@gaon.net> e Soliton <soliton.de@gmail.com>.
+Modificacións posteriores: Nils Kneuper <crazy\-ivanovic@gmx.net>,
+ott <ott@gaon.net> e Soliton <soliton.de@gmail.com>.
 .br
-Esta páxina de manual escribiuna orixinalmente Cyril Bouthors
-<cyril@bouthors.org>.
+Autor orixinal: Cyril Bouthors <cyril@bouthors.org>.
 .br
 Visite o sitio oficial: http://www.wesnoth.org/
 .
-.SH COPYRIGHT
+.SH "DEREITOS DE AUTOR"
 .
 Copyright \(co 2003\-2009 David White <davidnwhite@verizon.net>
 .br
-Isto é Software Libre; este software está licenciado baixo a GPL versión 2,
-tal e como foi publicada pola Free Software Foundation.  Non existe NINGUNHA
-garantía; nin sequera para o SEU USO COMERCIAL ou ADECUACIÓN PARA UN
-PROPÓSITO PARTICULAR.
+Isto é software libre. Este software está protexido polos termos da versión
+2 da licenza GNU GPL, tal e como foi publicada pola Free Software
+Foundation.  Non existe NINGUNHA garantía. Nin sequera para o seu USO
+COMERCIAL ou ADECUACIÓN PARA UN PROPÓSITO PARTICULAR.
 .
-.SH "CONSULTE TAMÉN"
+.SH "VÉXASE TAMÉN"
 .
-\fBwesnoth_editor\fP(6), \fBwesnothd\fP(6)
+\fBwesnothd\fP(6)

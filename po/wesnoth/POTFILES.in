@@ -43,6 +43,8 @@ src/ana/src/asio_client.cpp
 src/ana/src/asio_listener.cpp
 src/ana/src/asio_proxy_connection.cpp
 src/ana/src/asio_server.cpp
+src/ana/test/ana_client.cpp
+src/ana/test/sdl_server.cpp
 src/animated_game.cpp
 src/arrow.cpp
 src/attack_prediction.cpp
@@ -109,6 +111,7 @@ src/multiplayer.cpp
 src/multiplayer_create.cpp
 src/multiplayer_ui.cpp
 src/multiplayer_wait.cpp
+src/network_ana.cpp
 src/network.cpp
 src/network_worker.cpp
 src/pathfind/astarsearch.cpp
@@ -196,6 +199,7 @@ src/version.cpp
 src/video.cpp
 src/whiteboard/action.cpp
 src/whiteboard/find_visitor.cpp
+src/whiteboard/highlight_visitor.cpp
 src/whiteboard/manager.cpp
 src/whiteboard/mapbuilder_visitor.cpp
 src/whiteboard/move.cpp

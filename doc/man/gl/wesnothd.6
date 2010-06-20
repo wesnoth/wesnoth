@@ -18,11 +18,11 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH WESNOTHD 6 2009 wesnothd "Daemon de rede multixogador de Battle for Wesnoth"
+.TH WESNOTHD 6 2009 wesnothd "Daemon de rede multixogador do Battle for Wesnoth"
 .
 .SH NOME
 .
-wesnothd \- Daemon de rede multixogador de Battle for \fBWesnoth\fP
+wesnothd \- Daemon de rede multixogador do Battle for \fBWesnoth\fP
 .
 .SH SINOPSE
 .
@@ -33,47 +33,50 @@ wesnothd \- Daemon de rede multixogador de Battle for \fBWesnoth\fP
 .
 .SH DESCRICIÓN
 .
-Administra partidas multixogador de Battle for Wesnoth. Consulte
-http://www.wesnoth.org/wiki/ServerAdministration para ver os comandos que
-acepta o servidor a través do cliente wesnoth (/query ...) ou do fifo.
+Administra partidas multixogador do Battle for Wesnoth. Véxase
+«http://www.wesnoth.org/wiki/ServerAdministration» (en inglés) para ver as
+ordes que acepta o servidor a través do cliente wesnoth (/query ...) ou do
+fifo.
 .
 .SH OPCIÓNS
 .
 .TP 
 \fB\-c\ \fP\fIruta\fP\fB,\ \-\-config\fP\fI\ ruta\fP
-dille a wesnothd onde atopar o ficheiro de configuración a usar. Consulte
-embaixo a sección \fBCONFIGURACIÓN DO SERVIDOR\fP para ver a sintaxe. Pódese
-recargar a configuración enviando SIGHUP ó proceso do servidor.
+Indícalle a wesnothd onde atopar o ficheiro de configuración a usar. Véxase
+máis adiante a sección de \fBCONFIGURACIÓN DO SERVIDOR\fP para ver a
+sintaxe. Pódese recargar a configuración enviando SIGHUP ao proceso do
+servidor.
 .TP 
 \fB\-d, \-\-daemon\fP
-executa wesnothd coma un daemon.
+Executa wesnothd coma un daemon.
 .TP 
 \fB\-h, \-\-help\fP
-diche que fan as opcións de liña de comandos.
+Indica as funcións das opcións de liña de ordes.
 .TP 
 \fB\-\-log\-\fP\fInivel\fP\fB=\fP\fIdominio1\fP\fB,\fP\fIdominio2\fP\fB,\fP\fI...\fP
-establece o nivel de severidade dos dominios de log.  Pode usarse \fBall\fP
-para referirse a calquera dominio de log. Niveis dispoñibles: \fBerror\fP,\
-\fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP.  Por defecto úsase o nivel \fBerror\fP e o
-nivel \fBinfo\fP para o dominio \fBserver\fP.
+Establece o nivel de severidade dos dominios de rexistro. Pode usarse \fBall\fP
+para referirse a calquera dominio de rexistro. Os niveis dispoñibles son:
+\fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP. Por defecto úsase o nivel
+\fBerror\fP («erro») e o nivel \fBinfo\fP («información») para o dominio \fBserver\fP
+(«servidor»).
 .TP 
 \fB\-p\ \fP\fIporto\fP\fB,\ \-\-port\fP\fI\ porto\fP
-asocia o servidor ó porto especificado. Se non se especifica un porto, hase
+Asocia o servidor ao porto especificado. Se non se especifica un porto, hase
 usar o porto \fB15000\fP.
 .TP 
 \fB\-t\ \fP\fInúmero\fP\fB,\ \-\-threads\fP\fI\ número\fP
-define o número máximo de fíos efectivos en espera para a entrada/saída de
-rede a n (por defecto: \fB5\fP,\ max:\ \fB30\fP).
+Define o número máximo de fíos efectivos en espera para a entrada e saída de
+rede a n (por defecto \fB5\fP,\ máximo \ \fB30\fP).
 .TP 
 \fB\-T\ \fP\fInúmero\fP\fB,\ \-\-max\-threads\fP\fI\ número\fP
-define o número máximo de fíos efectivos que se van crear. Se o define a
-\fB0\fP non terá limite (por defecto: \fB0\fP).
+Define o número máximo de fíos efectivos que se van crear. Se se define a
+\fB0\fP non terá límite (por defecto vale \fB0\fP).
 .TP 
 \fB\-V, \-\-version\fP
-amosa o número de versión e sae.
+Amosa o número da versión e sae.
 .TP 
 \fB\-v, \-\-verbose\fP
-activa o rexistro da depuración.
+Activa o rexistro da depuración.
 .
 .SH "CONFIGURACIÓN DO SERVIDOR"
 .
@@ -82,9 +85,9 @@ activa o rexistro da depuración.
 .P
 [\fIetiqueta\fP]
 .IP
-\fIkey\fP="\fIvalue\fP"
+\fIclave\fP="\fIvalor\fP"
 .IP
-\fIkey\fP="\fIvalue\fP,\fIvalue\fP,..."
+\fIclave\fP="\fIvalor\fP,\fIvalor\fP,..."
 .P
 [/\fIetiqueta\fP]
 .
@@ -92,206 +95,212 @@ activa o rexistro da depuración.
 .
 .TP 
 \fBallow_remote_shutdown\fP
-If set to \fBno\fP (default), shut_down and restart requests are ignored unless
-they come from the fifo.  Set it to \fByes\fP to allow remote shutdown via a
-/query by an administrator.
+Se se lle dá o valor \fBno\fP («non», valor por defecto), as solicitudes de
+apagado e reinicio ignoraranse salvo que procedan do fifo.  Co valor \fByes\fP
+(«si») permitirase o apagado remoto por medio dunha /query realizada por un
+administrador.
 .TP 
 \fBban_save_file\fP
-Ruta completa ou relativa a un ficheiro (comprimido con gzip) que o servidor
+Ruta completa ou relativa a un ficheiro ─comprimido con gzip─ que o servidor
 poida ler e escribir. As vedas hanse gardar neste ficheiro e leranse de novo
 cando se inicie o servidor.
 .TP 
 \fBcompress_stored_rooms\fP
-Determines whether the rooms file should be read and written to in
-compressed form. Defaults to \fByes\fP.
+Determina se se debe ler e escribir o ficheiro de salas de forma
+comprimida. O valor por defecto é \fByes\fP («si»).
 .TP 
 \fBconnections_allowed\fP
-O número de conexións permitidas dende o mesmo IP. \fB0\fP significa
-infinitas. (por defecto: \fB5\fP)
+O número de conexións permitidas dende o mesmo IP. \fB0\fP equivale a
+infinitas. O valor por defecto é \fB5\fP.
 .TP 
 \fBdisallow_names\fP
-Names/nicks that are not accepted by the server. \fB*\fP and \fB?\fP from wildcard
-patterns are supported. See \fBglob\fP(7)  for more details.  Default values
-(used if nothing is specified) are:
+Nomes e alcumes que o servidor non acepta. Acéptanse \fB*\fP e \fB?\fP como
+comodíns para patróns. Véxase \fBglob\fP(7)  para máis información. Os valores
+por defecto (utilizados se non se especifica o contrario) son:
 \fB*admin*,*admln*,*server*,ai,ai?,computer,human,network,player\fP.
 .TP 
 \fBfifo_path\fP
-The path to the fifo you can echo server commands into (same as /query
-\&... from wesnoth).  If not specified defaults to the compile\-time path
-(default: \fB/var/run/socket/wesnothd/socket\fP).
+A ruta ao fifo polo que se poden enviar ordes ao servidor ─equivalente ao
+/query ... dende o wesnoth─. Se non se especifica outra cousa, toma a ruta
+indicada como valor por defecto durante a compilación (por defecto
+\fB/var/run/socket/wesnothd/socket\fP).
 .TP 
 \fBmax_messages\fP
-O número de mensaxes permitidas en \fBmessages_time_period\fP. (por defecto:
+O número de mensaxes permitidas en \fBmessages_time_period\fP. (por defecto
 \fB4\fP)
 .TP 
 \fBmessages_time_period\fP
-O periodo de tempo (en segundos) que se usa para detectar unha inundación de
-mensaxes. (por defecto: \fB10\fP segundos)
+O período de tempo (en segundos) que se usa para detectar unha inundación de
+mensaxes (por defecto \fB10\fP segundos).
 .TP 
 \fBmotd\fP
 A mensaxe do día.
 .TP 
 \fBnew_room_policy\fP
-Determines who can create new rooms on the server. Available values are
-\fBeveryone\fP, \fBregistered\fP, \fBadmin\fP and \fBnobody\fP, and give the permission
-respectively to everyone, registered users, admin users or disables new room
-creation. Default value is \fBeveryone\fP.
+Determina quen pode crear novas salas no servidor. Os valores dispoñibles
+son \fBeveryone\fP («todos»), \fBregistered\fP (só os usuarios «rexistrados»),
+\fBadmin\fP (só os usuarios «administradores») e \fBnobody\fP («ninguén»). Por
+defecto poden todos.
 .TP 
 \fBpasswd\fP
-The password used to gain admin privileges (via \fB/query admin
-\fP\fIpassword\fP).
+O contrasinal que se utiliza para obter privilexios de administrador ─por
+medio de \fB/query admin \fP\fIcontrasinal\fP─.
 .TP 
-\fBruta do ficheiro de repetición\fP
+\fBreplay_save_path\fP
 O directorio no que o servidor garda as repeticións das partidas (non
 esquezas a canle /!). Por defecto é `' que fai referencia ao directorio no
 que se iniciou wesnothd.
 .TP 
 \fBrestart_command\fP
-The command that the server uses to start a new server process via the
-\fBrestart\fP command. (Can only be issued via the fifo. See the
-\fBallow_remote_shutdown\fP setting.)
+A orde que utiliza o servidor para iniciar outro proceso de servidor por
+medio da orde \fBrestart\fP («reiniciar»). Só se pode establecer mediante o
+fifo. Véxase a opción \fBallow_remote_shutdown\fP.
 .TP 
 \fBroom_save_file\fP
-Path to a file where the room info should be stored. This file is read on
-server startup and written to later. If empty or not set, rooms are not
-loaded and not saved.
+Ruta a un ficheiro onde gardar a información das salas. Lerase durante a
+inicialización do servidor e escribirase nel máis tarde. Se o ficheiro está
+baleiro ou non se forneceu unha ruta ao mesmo, nin se cargará nin se gardará
+ningunha sala.
 .TP 
 \fBsave_replays\fP
-Define se o servidor gardará as repeticións das partidas automaticamente
-(por defecto \fBfalse\fP).
+Determina se o servidor gardará as repeticións das partidas
+automaticamente. O seu valor por defecto é \fBfalse\fP («non»).
 .TP 
 \fBversions_accepted\fP
-A comma separated list of version strings to be accepted by the server. \fB*\fP
-and \fB?\fP from wildcard patterns are supported.  (defaults to the
-corresponding wesnoth version)
+Unha lista separada por comas de cadeas de versión que o servidor
+aceptará. Sopórtanse os comodíns de patróns \fB*\fP e \fB?\fP. O seu valor por
+defecto será a versión do wesnoth correspondente.
 .br
-Exemplo: \fBversions_accepted="*"\fP acepta calquera cadea de versión.
+Por exemplo: \fBversions_accepted="*"\fP aceptará calquera cadea de versión.
 .TP  
 \fBuser_handler\fP
-The name of the user handler to use. Currently available user handlers are
-\fBforum\fP (to connect wesnothd to a phpbb forum database) and \fBsample\fP (a
-sample implementation of the user handler interface, if you use this on
-anything real you are insane). The default value is \fBforum\fP. You must also
-add a \fB[user_handler]\fP section, see below.
+O nome do xestor de usuarios a utilizar. Os xestores de usuarios dispoñibles
+actualmente son \fBforum\fP ─para conectar wesnothd á base de datos dun foro
+phpbb─ e \fBsample\fP ─unha mostra de exemplo da interface do xestor de
+usuarios, hai que estar tolo para utilizala en algo real─. O valor por
+defecto é \fBforum\fP. Tamén hai que engadir unha sección \fB[user_handler]\fP,
+véxase a continuación.
 .
 .SS "Etiquetas globais:"
 .
 .P
-\fB[redirect]\fP Unha etiqueta para especificar un servidor ó que redirixir
+\fB[redirect]\fP é unha etiqueta para especificar un servidor ao que dirixir
 certas versións do cliente.
 .RS
 .TP 
 \fBhost\fP
-O enderezo do servidor ó que se redirixe.
+O enderezo do servidor ao que se dirixir.
 .TP 
 \fBport\fP
-O porto ó que se conectar.
+O porto ao que se conectar.
 .TP 
 \fBversion\fP
-Unha lista separada por comas de versións a redirixir. Compórtase do mesmo
-xeito ca \fBversions_accepted\fP no referente ós comodíns de patróns.
+Unha lista separada por comas de versións a dirixir. Compórtase do mesmo
+xeito que \fBversions_accepted\fP no referente aos comodíns de patróns.
 .RE
 .P
-\fB[ban_time]\fP Unha etiqueta para definir palabras clave axeitadas para
+\fB[ban_time]\fP é unha etiqueta para definir palabras clave axeitadas para
 duracións de tempos de veda temporais.
 .RS
 .TP 
 \fBname\fP
-O nome que se usa para refirirse ó tempo de veda.
+O nome que se usa para referirse ao tempo de veda.
 .TP 
 \fBtime\fP
-The time length definition.  The format is: %d[%s[%d%s[...]]] where %s is s
-(seconds), m (minutes), h (hours), D (days), M (months) or Y (years) and %d
-is a number.  If no time modifier is given minutes (m) are assumed.
-Example: \fBtime="1D12h30m"\fP results in a ban time of 1 day, 12 hours and 30
-minutes.
+A definición do tempo de duración. O formato é «%d[%s[%d%s[...]]]», onde %s
+será «s» (segundos), «m» (minutos), «h» (horas), «D» (días), «M» (meses) ou
+«Y» (anos), e %d será un número. Se non se proporciona un modificador de
+tempo asumirase en minutos (m). Por exemplo: time="1D12h30m" é un tempo de
+veda de 1 día, 12 horas e 30 minutos.
 .RE
 .P
-\fB[proxy]\fP Unha etiqueta para dicirlle ó servidor que actúe coma un proxy e
-redirixa as solicitudes dos clientes conectados ó servidor
-especificado. Acepta as mesmas claves ca \fB[redirect]\fP.
+\fB[proxy]\fP é unha etiqueta para que o servidor actúe coma proxy e dirixa as
+solicitudes dos clientes conectados ao servidor especificado. Acepta as
+mesmas claves que \fB[redirect]\fP.
 .RE
 .P
-\fB[user_handler]\fP Configures the user handler. Available keys vary depending
-on which user handler is set with the \fBuser_handler\fP key. If no
-\fB[user_handler]\fP section is present in the configuration the server will
-run without any nick registration service.
+\fB[user_handler]\fP configura o xestor de usuarios. As palabras clave
+dispoñibles variarán dependendo do xestor de usuarios que se estableza
+mediante a palabra clave \fBuser_handler\fP. Se non hai ningunha sección
+\fB[user_handler]\fP na configuración, o servidor executarase sen ningún
+servizo de rexistro de alcumes.
 .RS
 .TP  
 \fBdb_host\fP
-(para user_handler=forum) O nome do servidor da base de datos
+(para «user_handler=forum») O nome do servidor da base de datos.
 .TP  
 \fBdb_name\fP
-(para user_handler=forum) O nome da base de datos
+(para «user_handler=forum») O nome da base de datos.
 .TP  
 \fBdb_user\fP
-(para user_handler=forum) O nome do usuario co que iniciar sesión na base de
-datos
+(para «user_handler=forum») O nome do usuario co que iniciar sesión na base
+de datos.
 .TP  
 \fBdb_password\fP
-(para user_handler=forum) O contrasinal deste usuario
+(para «user_handler=forum») O contrasinal de dito usuario.
 .TP  
 \fBdb_users_table\fP
-(para user_handler=forum) O nome da táboa na que o foro phpbb almacena os
+(para «user_handler=forum») O nome da táboa na que o foro phpbb almacena os
 datos do usuario. O máis probable é que dita táboa sexa
 <prefixo\-da\-táboa>_users (por exemplo, phpbb3_users).
 .TP  
 \fBdb_extra_table\fP
-(for user_handler=forum) The name of the table in which wesnothd will save
-its own data about users. You will have to create this table manually, e.g.:
-\fBCREATE TABLE <table\-name>(username VARCHAR(255) PRIMARY KEY,
-user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4)
-NOT NULL DEFAULT 0);\fP
+(para «user_handler=forum») O nome da táboa na que wesnothd gardará os seus
+propios datos dos usuarios. Terás que crear esta táboa manualmente, por
+exemplo mediante: \fBCREATE TABLE <nome\-da\-táboa>(username
+VARCHAR(255) PRIMARY KEY, user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0,
+user_is_moderator TINYINT(4) NOT NULL DEFAULT 0);\fP
 .TP  
 \fBuser_expiration\fP
-(PARA user_handler=sample) O tempo en días tras o cal caduca un alcume
+(para «user_handler=sample») O tempo en días tras o cal caduca un alcume
 rexistrado.
 .RE
 .P
-\fB[mail]\fP Configura un servidor SMTP mediante o cal o xestor de usuarios
+\fB[mail]\fP configura un servidor SMTP mediante o cal o xestor de usuarios
 pode enviar correos electrónicos. Actualmente só o utiliza o xestor de
 usuarios de exemplo.
 .RS
 .TP  
-\fBservidor\fP
-O nome do servidor de correo
+\fBserver\fP
+O nome do servidor de correo.
 .TP  
-\fBusuario\fP
+\fBusername\fP
 O nome de usuario co que iniciar sesión no servidor de correo electrónico.
 .TP  
-\fBcontrasinal\fP
+\fBpassword\fP
 O contrasinal deste usuario.
 .TP  
-\fBremitente\fP
+\fBfrom_address\fP
 O enderezo do remitente da mensaxe.
 .TP  
-\fBporto_correo\fP
-O porto no que se executa o servidor de correo electrónico. Por defecto 25.
+\fBmail_port\fP
+O porto no que se executa o servidor de correo electrónico. O seu valor por
+defecto é «25».
 .
-.SH "EXIT STATUS"
+.SH "ESTADO AO SAÍR"
 .
-Normal exit status is 0 when the server was properly shutdown. An exit
-status of 2 indicates an error with the command line options.
+O estado normal ao saír será 0 cando o servidor se apague
+correctamente. Será 2 en caso de houber un erro coa liña de ordes.
 .
 .SH AUTOR
 .
-Autor: David White <davidnwhite@verizon.net>. Edición: Nils Kneuper
-<crazy\-ivanovic@gmx.net>, ott <ott@gaon.net>, Soliton
-<soliton.de@gmail.com> e Thomas Baumhauer
-<thomas.baumhauer@gmail.com>. Autor orixinal do manual: Cyril
+Autor: David White <davidnwhite@verizon.net>. Modificacións
+posteriores: Nils Kneuper <crazy\-ivanovic@gmx.net>, ott
+<ott@gaon.net>, Soliton <soliton.de@gmail.com> e Thomas
+Baumhauer <thomas.baumhauer@gmail.com>. Autor orixinal: Cyril
 Bouthors <cyril@bouthors.org>.
 .br
 Visite o sitio oficial: http://www.wesnoth.org/
 .
-.SH COPYRIGHT
+.SH "DEREITOS DE AUTOR"
 .
 Copyright \(co 2003\-2009 David White <davidnwhite@verizon.net>
 .br
-Isto é Software Libre; este software está licenciado baixo a GPL versión 2,
-tal e como foi publicada pola Free Software Foundation.  Non existe NINGUNHA
-garantía; nin sequera para o SEU USO COMERCIAL ou ADECUACIÓN PARA UN
-PROPÓSITO PARTICULAR.
+Isto é software libre. Este software está protexido polos termos da versión
+2 da licenza GNU GPL, tal e como foi publicada pola Free Software
+Foundation.  Non existe NINGUNHA garantía. Nin sequera para o seu USO
+COMERCIAL ou ADECUACIÓN PARA UN PROPÓSITO PARTICULAR.
 .
-.SH "CONSULTE TAMÉN"
+.SH "VÉXASE TAMÉN"
 .
-\fBwesnoth\fP(6), \fBwesnoth_editor\fP(6)
+\fBwesnoth\fP(6)
