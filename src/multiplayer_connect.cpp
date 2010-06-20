@@ -1584,7 +1584,7 @@ void connect::load_game()
 	}
 
 	// Add the map name to the title.
-	append_to_title(" - " + level_["name"].t_str());
+	append_to_title(" — " + level_["name"].t_str());
 
 
 	std::string era = params_.mp_era;
