@@ -1,0 +1,29 @@
+//
+// Prefix header for all source files of the 'Wesnoth' target in the 'Wesnoth' project
+//
+
+#ifdef __cplusplus
+#include <string>
+#include <vector>
+#include <map>
+#include <set>
+#include <iostream>
+#include <list>
+
+#include <cstdlib>
+#include <cstring>
+#include <ctime>
+#include <cassert>
+#include <climits>
+
+#include <boost/noncopyable.hpp>
+#include <boost/shared_ptr.hpp>
+#include <boost/smart_ptr.hpp>
+#include <SDL.h>
+
+#include "wesconfig.h"
+#endif
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+#endif

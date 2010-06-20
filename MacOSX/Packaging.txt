@@ -1,0 +1,30 @@
+This folder should be inside the Wesnoth root directory to work.
+
+Requirements:
+XCode tools at least version 3 (which requires Mac OS X 10.5)
+gettext tools
+ - Only required to build translations
+ - Available via fink (http://www.finkproject.org/) or probably somewhere else
+DMG Canvas
+ - Only required if you want to make a fancy disk image
+ - Available free at http://www.araelium.com/dmgcanvas/
+
+Steps to package Wesnoth into a .dmg:
+1. Update version numbers in Info.plist
+2. Update the changelog in SDLMain.nib with player_changelog
+3. Rebuild all in XCode (clean all, then build)
+4. Rebuild translations, and move to Resources
+ - $scons translations
+5. Make dmg with Wesnoth.dmgCanvas, after updating volume name with version number
+//6. Convert dmg to UDBZ to save space
+ - $hdiutil convert Releases/Wesnoth_1.x.x.dmg -format UDBZ -o Releases/Wesnoth_1.x.x_bz.dmg - no longer necessary, since DMG Canvas 2.0
+
+Steps to make simple dmg without DMG Canvas (replace steps 5 and 6 with this):
+1. Make new folder in Releases called "Wesnoth 1.x.x", copy the .app to it
+2. Create dmg with BZ compression
+ - $cd wesnoth_dir/Releases/
+ - $hdiutil create -srcfolder "Wesnoth 1.x.x" -format UDBZ Wesnoth_1.x.x.dmg
+ 
+ Note: Only the Release build configuration works.
+ 
+ -- Ben Anderman / crimson_penguin <ben@happyspork.com>, April 2 2010 --
