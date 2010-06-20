@@ -61,6 +61,9 @@ public:
 	 */
 	virtual modifier_ptr apply_temp_modifier(unit_map& unit_map);
 
+	virtual bool is_related_to(const map_location& hex) const;
+	virtual bool is_related_to(const unit& unit) const;
+
 private:
 	unit & unit_;
 	map_location orig_hex_;

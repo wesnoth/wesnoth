@@ -42,16 +42,13 @@ manager::manager():
 		move_arrow_(),
 		fake_unit_(),
 		selected_unit_(NULL),
-		highlight_unit_(NULL),
-		highlighted_action_(),
+		highlighted_hex_(map_location::null_location),
 		temp_modifiers_applied_(false)
 {
 }
 
 manager::~manager()
 {
-	//TODO: it may be appropriate to restore the unit map here
-
 	if (resources::screen && fake_unit_)
 	{
 		resources::screen->remove_temporary_unit(fake_unit_.get());
@@ -95,39 +92,57 @@ void manager::toggle_temp_modifiers()
 		apply_temp_modifiers();
 }
 
-void manager::highlight_action(const unit& unit)
+void manager::highlight_hex(const map_location& hex)
 {
-	find_visitor finder;
-	action_set actions_to_highlight = finder.find_actions_of(unit, get_current_side_actions()->actions());
+	if (selected_unit_ != NULL) return;
+
+	highlighted_hex_ = hex;
+
+	unit_map::iterator highlighted_unit = resources::units->find(hex);
 
 	highlight_visitor highlighter(true);
-	foreach(action_ptr action, actions_to_highlight)
-	{
-		action->accept(highlighter);
-	}
-	highlight_unit_ = &unit;
 
+	action_set actions = get_current_side_actions()->actions();
+	foreach(action_ptr action, actions)
+	{
+		if (action->is_related_to(hex)
+			|| (highlighted_unit.valid() && action->is_related_to(*highlighted_unit)))
+		{
+			action->accept(highlighter);
+		}
+	}
 }
 
 void manager::remove_highlight()
 {
-	if (highlight_unit_)
-	{
-		find_visitor finder;
-		action_set actions_to_unhighlight = finder.find_actions_of(*highlight_unit_, get_current_side_actions()->actions());
+	if (selected_unit_ != NULL) return;
 
-		highlight_visitor unhighlighter(false);
-		foreach(action_ptr action, actions_to_unhighlight)
-		{
-			action->accept(unhighlighter);
-		}
-		highlight_unit_ = NULL;
+	highlight_visitor unhighlighter(false);
+
+	action_set actions = get_current_side_actions()->actions();
+	foreach(action_ptr action, actions)
+	{
+		action->accept(unhighlighter);
 	}
 }
 
 void manager::select_unit(unit& unit)
 {
 	erase_temp_move();
+	action_set actions = get_current_side_actions()->actions();
+	highlight_visitor unhighlighter(false);
+	foreach(action_ptr action, actions)
+	{
+			action->accept(unhighlighter);
+	}
+	highlight_visitor highlighter(true);
+	foreach(action_ptr action, actions)
+	{
+		if (action->is_related_to(unit))
+		{
+			action->accept(highlighter);
+		}
+	}
 	selected_unit_ = &unit;
 	DBG_WB << "Selected unit " << selected_unit_->name() << " [" << selected_unit_->id() << "]\n";
 }
@@ -170,8 +185,8 @@ void manager::create_temp_move(const std::vector<map_location> &steps)
 
 bool manager::during_move_creation() const
 {
-	bool has_it = selected_unit_ != NULL;
-	return has_it;
+	bool during_move_creation = selected_unit_ != NULL;
+	return during_move_creation;
 }
 
 void manager::erase_temp_move()
@@ -206,7 +221,7 @@ void manager::save_temp_move()
 	fake_unit_->set_ghosted(false);
 
 	move_arrow_->set_alpha(move::ALPHA_HIGHLIGHT);
-	highlight_unit_ = selected_unit_;
+	highlighted_hex_ = selected_unit_->get_location();
 
 	resources::screen->add_arrow(*move_arrow_);
 

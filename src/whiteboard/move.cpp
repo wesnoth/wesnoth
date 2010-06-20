@@ -92,4 +92,16 @@ modifier_ptr move::apply_temp_modifier(unit_map& unit_map)
 	return modifier;
 }
 
+bool move::is_related_to(const map_location& hex) const
+{
+	bool is_related = arrow_->path_contains(hex);
+	return is_related;
+}
+
+bool move::is_related_to(const unit& unit) const
+{
+	bool is_related = &unit_ == &unit;
+	return is_related;
+}
+
 } // end namespace wb

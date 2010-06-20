@@ -65,6 +65,9 @@ public:
 	 * for instance highlights the arrow if it's a move.
 	 */
 	void highlight_action(const unit& unit);
+
+	void highlight_hex(const map_location& hex);
+
 	void remove_highlight();
 
 	/** Choose the target unit for action creation */
@@ -109,8 +112,7 @@ private:
 	boost::shared_ptr<unit> fake_unit_;
 
 	unit* selected_unit_;
-	unit const* highlight_unit_;
-	boost::shared_ptr<action> highlighted_action_;
+	map_location highlighted_hex_;
 
 	bool temp_modifiers_applied_;
 };

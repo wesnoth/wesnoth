@@ -29,9 +29,9 @@ static lg::log_domain log_whiteboard("whiteboard");
 #define LOG_WB LOG_STREAM(info, log_whiteboard)
 #define DBG_WB LOG_STREAM(debug, log_whiteboard)
 
-
+struct map_location;
 struct temporary_unit_map_modifier;
-
+class unit;
 class unit_map;
 
 namespace wb {
@@ -63,6 +63,18 @@ public:
 	 * the changes.
 	 */
 	virtual modifier_ptr apply_temp_modifier(unit_map& unit_map) = 0;
+
+	/**
+	 * Indicates whether this action is related to the specified hex.
+	 * "Related" means the action affects this hex or draws a visual symbol in it
+	 * at some point. Ex.: a move is related to this hex if its path goes through it.
+	 */
+	virtual bool is_related_to(const map_location& hex) const = 0;
+
+	/**
+	 * Indicates whether this actions targets the specified unit.
+	 */
+	virtual bool is_related_to(const unit& unit) const = 0;
 };
 
 } // end namespace wb
