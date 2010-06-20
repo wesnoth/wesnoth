@@ -1523,6 +1523,7 @@ void attack::perform()
 	a_.get_unit().set_movement(a_.get_unit().movement_left() -
 		a_.get_unit().attacks()[a_.weapon_].movement_used());
 	a_.get_unit().set_state(unit::STATE_NOT_MOVED,false);
+	a_.get_unit().set_resting(false);
 	d_.get_unit().set_resting(false);
 
 	// If the attacker was invisible, she isn't anymore!
