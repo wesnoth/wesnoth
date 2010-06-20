@@ -83,27 +83,30 @@ void side_actions::move_later(size_t index, size_t increment)
 
 void side_actions::remove_action(size_t index)
 {
-	assert(!actions_.empty());
-	assert(index < end());
-
-	action_set::iterator position = actions_.begin()+index;
-	if (position < actions_.end())
+	if(!actions_.empty())
 	{
-		actions_.erase(position);
+		assert(index < end());
+
+		action_set::iterator position = actions_.begin()+index;
+		if (position < actions_.end())
+		{
+			actions_.erase(position);
+		}
 	}
 }
 
 void side_actions::remove_action(action_ptr action)
 {
-	assert(!actions_.empty());
-
-	action_set::iterator position;
-	for ( position = actions_.begin(); position != actions_.end(); ++position)
+	if (!actions_.empty())
 	{
-		if (*position == action)
+		action_set::iterator position;
+		for (position = actions_.begin(); position != actions_.end(); ++position)
 		{
-			actions_.erase(position);
-			break;
+			if (*position == action)
+			{
+				actions_.erase(position);
+				break;
+			}
 		}
 	}
 }
