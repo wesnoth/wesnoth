@@ -37,6 +37,7 @@ arrow::arrow()
 	, color_("red")
 	, style_("")
 	, alpha_()
+    , draw_last_hex_()
 	, path_()
 	, previous_path_()
 	, symbols_map_()
@@ -52,18 +53,13 @@ arrow::~arrow()
 	}
 }
 
-bool arrow::set_path(const arrow_path_t &path)
+void arrow::set_path(const arrow_path_t &path)
 {
 	if (valid_path(path))
 	{
 		previous_path_ = path_;
 		path_ = path;
 		update_symbols(previous_path_);
-		return true;
-	}
-	else
-	{
-		return false;
 	}
 }
 
@@ -123,12 +119,19 @@ const arrow_path_t & arrow::get_previous_path() const
 	return previous_path_;
 }
 
-void arrow::draw_hex(const map_location & loc)
+bool arrow::path_contains(const map_location & hex) const
 {
-	if(!SCREEN) return;
+	bool contains = symbols_map_.find(hex) != symbols_map_.end();
+	return contains;
+}
 
-	SCREEN->render_image(SCREEN->get_location_x(loc), SCREEN->get_location_y(loc), layer_,
-				loc, image::get_image(symbols_map_[loc], image::SCALED_TO_ZOOM), false, false, alpha_);
+void arrow::draw_hex(const map_location & hex)
+{
+	if(SCREEN && path_contains(hex))
+	{
+		SCREEN->render_image(SCREEN->get_location_x(hex), SCREEN->get_location_y(hex), layer_,
+					hex, image::get_image(symbols_map_[hex], image::SCALED_TO_ZOOM), false, false, alpha_);
+	}
 }
 
 bool arrow::valid_path(arrow_path_t path) const
@@ -147,10 +150,7 @@ void arrow::update_symbols(arrow_path_t old_path)
 		return;
 	}
 
-	foreach(map_location loc, old_path)
-	{
-		symbols_map_.erase(loc);
-	}
+	symbols_map_.clear();
 
 	invalidate_arrow_path(old_path);
 
@@ -167,11 +167,12 @@ void arrow::update_symbols(arrow_path_t old_path)
 	std::string image_filename = "";
 	bool begin = false;
 	bool end = false;
+	bool empty_after_end = false;
 	bool teleport_out = false;
 	bool teleport_in = false;
 
 	arrow_path_t::iterator hex;
-	for (hex = path_.begin(); hex != path_.end() - 1; ++hex)
+	for (hex = path_.begin(); hex != path_.end(); ++hex)
 	{
 		exit_dir = map_location::NDIRECTIONS;
 		enter_dir = map_location::NDIRECTIONS;
@@ -186,19 +187,27 @@ void arrow::update_symbols(arrow_path_t old_path)
 		// Determine some special cases
 		if (hex == path_.begin())
 			begin = true;
-		if (hex == path_.end() - 2)
+		if (hex == path_.end() - 1 && draw_last_hex_)
 			end = true;
-		if (!tiles_adjacent(*hex, *(hex + 1)))
+		else if (hex == path_.end() - 2 && !draw_last_hex_)
+			end = true;
+		else if (hex == path_.end() - 1 && !draw_last_hex_)
+			empty_after_end = true;
+		if (hex != path_.end() - 1 && !tiles_adjacent(*hex, *(hex + 1)))
 			teleport_out = true;
 
 		// Now figure out the actual images
 		if (teleport_out)
 		{
-			image_filename = "footsteps/teleport-out.png";
+			image_filename = dirname + style + "teleport-out.png";
 		}
 		else if (teleport_in)
 		{
-			image_filename = "footsteps/teleport-in.png";
+			image_filename = dirname + style + "teleport-in.png";
+		}
+		else if (empty_after_end)
+		{
+			image_filename = "";
 		}
 		else if (begin)
 		{
@@ -246,6 +255,10 @@ void arrow::update_symbols(arrow_path_t old_path)
 					image = image::locator("misc/missing-image.png");
 				}
 			symbols_map_[*hex] = image;
+		}
+		else
+		{
+			symbols_map_[*hex] = image::locator();
 		}
 	}
 

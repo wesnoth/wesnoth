@@ -41,8 +41,7 @@ public:
 	arrow();
 	virtual ~arrow();
 
-	/// returns false if the received path is invalid
-	virtual bool set_path(const arrow_path_t &path);
+	virtual void set_path(const arrow_path_t &path);
 
 	virtual void reset();
 
@@ -67,9 +66,14 @@ public:
 	/// 0.5 is 50% transparent, anything above 1.0 brightens the arrow images
 	void set_alpha(double alpha);
 
+	/// If set to false (default), the end symbol is drawn in the second-to-last hex
+	void set_draw_last_hex(bool draw_last_hex) { draw_last_hex_ = draw_last_hex; }
+
 	const arrow_path_t & get_path() const;
 
 	const arrow_path_t & get_previous_path() const;
+
+	bool path_contains(const map_location & hex) const;
 
 	virtual void draw_hex(const map_location & hex);
 
@@ -94,11 +98,10 @@ protected:
 	display::tdrawing_layer layer_;
 
 	std::string color_;
-
 	/// represents the subdirectory that holds images for this arrow style
 	std::string style_;
-
 	float alpha_;
+	bool draw_last_hex_;
 
 	arrow_path_t path_;
 	arrow_path_t previous_path_;
