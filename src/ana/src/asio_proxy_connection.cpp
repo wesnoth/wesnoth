@@ -121,7 +121,7 @@ bool proxy_connection::finds( const std::string& source, char const* pattern )
 
 void proxy_connection::handle_response(boost::asio::streambuf*          buf,
                                        const boost::system::error_code& ec,
-                                       size_t                           bytes_read)
+                                       size_t                           /*bytes_read*/)
 {
     std::stringstream ss;
     ss << buf;
@@ -158,7 +158,7 @@ void proxy_connection::handle_response(boost::asio::streambuf*          buf,
     }
 }
 
-void proxy_connection::handle_sent_request(const boost::system::error_code& ec,
+void proxy_connection::handle_sent_request(const boost::system::error_code& /*ec*/,
                                            std::string*                     request)
 {
     delete request;

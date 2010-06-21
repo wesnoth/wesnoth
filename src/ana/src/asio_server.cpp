@@ -215,8 +215,8 @@ std::string asio_server::ip_address( net_id id ) const
 
 asio_server::asio_client_proxy::asio_client_proxy(boost::asio::io_service& io_service, asio_proxy_manager* server) :
     client_proxy(),
+    asio_listener(),
     socket_(io_service),
-    asio_listener(io_service, socket_),
     manager_(server)
 {
 }
@@ -254,8 +254,8 @@ void asio_server::asio_client_proxy::handle_sent_header(const boost::system::err
 
 
 void asio_server::asio_client_proxy::handle_send(const boost::system::error_code& ec,
-                                                 ana::detail::shared_buffer buffer,
-                                                 send_handler* handler, timer* running_timer)
+                                                 ana::detail::shared_buffer       /*buffer*/,
+                                                 send_handler* handler, timer*    running_timer)
 {
     running_timer->cancel();
 

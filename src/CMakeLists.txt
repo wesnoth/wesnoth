@@ -84,6 +84,14 @@ set( game-external-libs
     ${LIBDBUS_LIBRARIES}
 )
 
+if ( USE_ANA_NETWORK ) 
+    add_subdirectory ( ana )
+    set( game-external-libs
+        ${game-external-libs}
+        ana-static
+       )
+endif ( USE_ANA_NETWORK )
+
 if(MSVC)
 	set( game-external-libs
 		${game-external-libs}

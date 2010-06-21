@@ -57,7 +57,7 @@ class asio_server : public  ana::server,
             public:
                 asio_client_proxy(boost::asio::io_service& io_service, asio_proxy_manager* mgr);
 
-                tcp::socket& socket();
+                virtual tcp::socket& socket();
 
                 virtual ~asio_client_proxy();
             private:
@@ -65,7 +65,7 @@ class asio_server : public  ana::server,
                 virtual void disconnect_listener();
 
                 virtual void send(ana::detail::shared_buffer, ana::send_handler*, ana::detail::timed_sender* );
-                
+
                 virtual std::string ip_address( ) const;
 
                 void handle_sent_header(const boost::system::error_code& ec,

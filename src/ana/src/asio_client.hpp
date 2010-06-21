@@ -75,6 +75,8 @@ class asio_client : public ana::client,
 
         virtual void handle_proxy_connection(const boost::system::error_code&, ana::connection_handler*);
 
+        virtual tcp::socket& socket();
+        
         void handle_sent_header(const boost::system::error_code& ec,
                                 ana::serializer::bostream*, ana::detail::shared_buffer,
                                 ana::send_handler*);

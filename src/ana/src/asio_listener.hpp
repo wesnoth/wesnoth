@@ -43,12 +43,16 @@ using boost::asio::ip::tcp;
 class asio_listener : public virtual ana::detail::listener
 {
     public:
-        asio_listener( boost::asio::io_service&, tcp::socket&);
+        asio_listener( );
 
         virtual void set_listener_handler( ana::listener_handler* listener);
         virtual void run_listener();
 
         virtual ~asio_listener();
+        
+    protected:
+        virtual tcp::socket& socket() = 0;
+
     private:
         virtual void disconnect_listener() {}
 
@@ -61,8 +65,6 @@ class asio_listener : public virtual ana::detail::listener
         void handle_body( ana::detail::read_buffer , const boost::system::error_code& , ana::listener_handler* );
 
         /*attr*/
-        boost::asio::io_service&   io_service_;
-        tcp::socket&               socket_;
         ana::listener_handler*     listener_;
         char                       header_[ana::HEADER_LENGTH];
 };

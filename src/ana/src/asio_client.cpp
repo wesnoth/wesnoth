@@ -42,9 +42,9 @@
 using boost::asio::ip::tcp;
 
 asio_client::asio_client(ana::address address, ana::port pt) :
+    asio_listener(),
     io_service_(),
     socket_(io_service_),
-    asio_listener(io_service_, socket_),
     address_(address),
     port_(pt),
     proxy_( NULL ),
@@ -77,6 +77,11 @@ void asio_client::handle_proxy_connection(const boost::system::error_code& ec, a
         run_listener();
 
     delete proxy_;
+}
+
+tcp::socket& asio_client::socket()
+{
+    return socket_;
 }
 
 void asio_client::handle_connect(const boost::system::error_code& ec,
@@ -183,8 +188,8 @@ void asio_client::handle_sent_header(const boost::system::error_code& ec,
 
 
 void asio_client::handle_send(const boost::system::error_code& ec,
-                              ana::detail::shared_buffer buffer,
-                              ana::send_handler* handler)
+                              ana::detail::shared_buffer       /*buffer*/,
+                              ana::send_handler*               handler)
 {
     handler->handle_send( ec, id() );
 

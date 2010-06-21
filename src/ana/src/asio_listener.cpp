@@ -37,9 +37,7 @@
 
 using boost::asio::ip::tcp;
 
-asio_listener::asio_listener( boost::asio::io_service& io_service, tcp::socket& socket) :
-    io_service_(io_service),
-    socket_(socket),
+asio_listener::asio_listener( ) :
     listener_( NULL )
 {
 }
@@ -54,8 +52,9 @@ void asio_listener::disconnect( ana::listener_handler* listener, boost::system::
     disconnect_listener();
 }
 
+
 void asio_listener::handle_body( ana::detail::read_buffer buf,
-                                const boost::system::error_code& ec, ana::listener_handler* listener )
+                                 const boost::system::error_code& ec, ana::listener_handler* listener )
 {
     try
     {
@@ -92,7 +91,7 @@ void asio_listener::handle_header(char* header, const boost::system::error_code&
             {
                 ana::detail::read_buffer read_buf( new ana::detail::read_buffer_implementation( size ) );
 
-                boost::asio::async_read(socket_, boost::asio::buffer( read_buf->base(), read_buf->size() ),
+                boost::asio::async_read(socket(), boost::asio::buffer( read_buf->base(), read_buf->size() ),
                                         boost::bind(&asio_listener::handle_body,
                                                     this, read_buf,
                                                     boost::asio::placeholders::error,
@@ -120,7 +119,7 @@ void asio_listener::listen_one_message()
 {
     try
     {
-        boost::asio::async_read(socket_, boost::asio::buffer(header_, ana::HEADER_LENGTH),
+        boost::asio::async_read(socket(), boost::asio::buffer(header_, ana::HEADER_LENGTH),
                                 boost::bind(&asio_listener::handle_header, this,
                                             header_, boost::asio::placeholders::error, listener_));
     }

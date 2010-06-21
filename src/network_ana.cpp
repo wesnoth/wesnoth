@@ -17,7 +17,7 @@
  * See the COPYING file for more details.
  */
 
-#include "ana/ana.hpp"
+#include "ana/api/ana.hpp"
 #include "network.hpp"
 
 #include "global.hpp"
@@ -62,6 +62,89 @@ static lg::log_domain log_network("network");
 #define ERR_NW LOG_STREAM(err, log_network)
 // Only warnings and not errors to avoid DoS by log flooding
 
+
+class ana_network_manager : public ana::listener_handler,
+                            public ana::send_handler,
+                            public ana::connection_handler
+{
+    public:
+        ana_network_manager() :
+            servers_( ),
+            clients_( ),
+            connected_clients_()
+        {
+        }
+
+        ana::net_id create_server( )
+        {
+            ana::server* server = ana::server::create();
+            servers_[ server->id() ] = server;
+            return server->id();
+        }
+
+        ana::net_id create_client_and_connect(std::string host, int port)
+        {
+            std::stringstream ss;
+            ss << port;
+            
+            ana::client* client = ana::client::create(host, ss.str() );
+            clients_[ client->id() ] = client;
+            client->connect( this );
+            
+            return client->id();
+        }
+
+
+        void run_server(ana::net_id id, int port)
+        {
+            std::stringstream ss;
+            ss << port;
+            servers_[ id ]->run( ss.str() ); //check with find to see if its defined?
+        }
+
+        std::string ip_address( network::connection id )
+        {
+            std::map<ana::net_id, ana::server*>::iterator it;
+            
+            for (it = servers_.begin(); it != servers_.end(); ++it)
+            {
+                const std::string ip = (it->second)->ip_address( ana::net_id( id ) );
+                if  (ip != "")
+                    return ip;
+            }
+            return "";
+        }
+
+    private:
+        virtual void handle_connect(ana::error_code error, ana::net_id client)
+        {
+            if (! error )
+                connected_clients_.insert(client);
+        }
+
+        virtual void handle_disconnect(ana::error_code /*error*/, ana::net_id client)
+        {
+            connected_clients_.erase(client);
+        }
+
+        virtual void handle_send(ana::error_code /*error*/, ana::net_id /*client*/)
+        {
+        }
+
+        virtual void handle_message( ana::error_code /*error*/, ana::net_id /*client*/, ana::detail::read_buffer /*buffer*/)
+        {
+        }
+
+        std::map<ana::net_id, ana::server*> servers_;
+        std::map<ana::net_id, ana::client*> clients_;
+        std::set<ana::net_id>               connected_clients_;
+};
+
+namespace
+{
+    ana_network_manager ana_manager;
+}
+
 namespace {
 
 // We store the details of a connection in a map that must be looked up by its handle.
@@ -103,7 +186,7 @@ static connection_details& get_connection_details(network::connection handle)
 
 static void check_error()
 {
-    throw("TODO:Not implemented");
+//     throw("TODO:Not implemented");
 }
 
 namespace {
@@ -175,22 +258,27 @@ pending_statistics get_pending_stats()
 
 manager::manager(size_t /*min_threads*/, size_t /*max_threads*/) : free_(true)
 {
-    throw("TODO:Not implemented");
+//     throw("TODO:Not implemented");
 }
 
 manager::~manager()
 {
-    throw("TODO:Not implemented");
+//     throw("TODO:Not implemented");
 }
 
 void set_raw_data_only()
 {
-    throw("TODO:Not implemented");
+//     throw("TODO:Not implemented");
 }
 
-server_manager::server_manager(int /*port*/, CREATE_SERVER /*create_server*/) : free_(false), connection_(0)
+server_manager::server_manager(int port, CREATE_SERVER create_server) : free_(false), connection_(0)
 {
-    throw("TODO:Not implemented");
+    if ( create_server != NO_SERVER )
+    {
+        ana::net_id server_id = ana_manager.create_server( );
+        
+        ana_manager.run_server( server_id, port);
+    }
 }
 
 server_manager::~server_manager()
@@ -218,20 +306,22 @@ bool is_server()
     throw("TODO:Not implemented");
 }
 
-connection connect(const std::string& /*host*/, int /*port*/)
+connection connect(const std::string& host, int port)
 {
-    throw("TODO:Not implemented");
+    return ana_manager.create_client_and_connect( host, port );
+    //     throw("TODO:Not implemented");
 }
 
-connection connect(const std::string& /*host*/, int /*port*/, threading::waiter& /*waiter*/)
+connection connect(const std::string& host, int port, threading::waiter& /*waiter*/)
 {
-    throw("TODO:Not implemented");
+    return connect( host, port );
+//     throw("TODO:Not implemented");
 }
 
 namespace {
 
 connection accept_connection_pending(std::vector<TCPsocket>& /*pending_sockets*/,
-                                     socket_set_type& /*pending_socket_set*/)
+                                     socket_set_type&        /*pending_socket_set*/)
 {
     throw("TODO:Not implemented");
 }
@@ -250,19 +340,21 @@ bool disconnect(connection /*s*/)
 
 void queue_disconnect(network::connection sock)
 {
+//     throw("TODO:Not implemented");
     disconnection_queue.push_back(sock);
 }
 
-connection receive_data(config& /*cfg*/,
-                        connection /*connection_num*/,
-                        unsigned int /*timeout*/,
+connection receive_data(config&           /*cfg*/,
+                        connection        /*connection_num*/,
+                        unsigned int      /*timeout*/,
                         bandwidth_in_ptr* /*bandwidth_in*/)
 {
     throw("TODO:Not implemented");
 }
 
-connection receive_data(config& /*cfg*/, connection /*connection_num*/,
-                        bool* /*gzipped*/,
+connection receive_data(config&           /*cfg*/,
+                        connection        /*connection_num*/,
+                        bool*             /*gzipped*/,
                         bandwidth_in_ptr* /*bandwidth_in*/)
 {
     throw("TODO:Not implemented");
@@ -411,17 +503,17 @@ void send_file(const std::string& /*filename*/, connection /*connection_num*/, c
  * all data gzipped. This can be done once the campaign server is also updated
  * to work with gzipped data.
  */
-size_t send_data(const config& /*cfg*/,
-                 connection /*connection_num*/,
-                 const bool /*gzipped*/,
+size_t send_data(const config&      /*cfg*/,
+                 connection         /*connection_num*/,
+                 const bool         /*gzipped*/,
                  const std::string& /*packet_type*/)
 {
     throw("TODO:Not implemented");
 }
 
-void send_raw_data(const char* /*buf*/,
-                   int /*len*/,
-                   connection /*connection_num*/,
+void send_raw_data(const char*        /*buf*/,
+                   int                /*len*/,
+                   connection         /*connection_num*/,
                    const std::string& /*packet_type*/)
 {
     throw("TODO:Not implemented");
@@ -433,16 +525,16 @@ void process_send_queue(connection, size_t)
 }
 
 /** @todo Note the gzipped parameter should be removed later. */
-void send_data_all_except(const config& /*cfg*/,
-                          connection /*connection_num*/,
-                          const bool /*gzipped*/,
+void send_data_all_except(const config&      /*cfg*/,
+                          connection         /*connection_num*/,
+                          const bool         /*gzipped*/,
                           const std::string& /*packet_type*/)
 {
 }
 
-std::string ip_address(connection /*connection_num*/)
+std::string ip_address(connection connection_num)
 {
-    throw("TODO:Not implemented");
+    return ana_manager.ip_address( connection_num);
 }
 
 statistics get_send_stats(connection /*handle*/)
