@@ -78,9 +78,11 @@ void move::execute()
 	arrow_->set_alpha(ALPHA_HIGHLIGHT);
 
 	static const bool show_move = false;
-	map_location* next_unit = NULL; //Set to something else than null to get final unit location in this out parameter
-	::move_unit(NULL, arrow_->get_path(), &recorder, resources::undo_stack, show_move, next_unit,
+	map_location next_unit;
+	::move_unit(NULL, arrow_->get_path(), &recorder, resources::undo_stack, show_move, &next_unit,
 			get_current_team().auto_shroud_updates());
+	// next_unit now contains the final unit location
+	// if that isn't needed, pass NULL rather than &next_unit
 }
 
 modifier_ptr move::apply_temp_modifier(unit_map& unit_map)
