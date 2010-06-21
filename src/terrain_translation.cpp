@@ -764,10 +764,6 @@ static t_terrain string_to_number_(std::string str, int& start_position, const t
 		const std::string overlay_str(str, offset + 1, str.size());
 		result = t_terrain(base_str, overlay_str);
 	} else {
-		// If the string is longer than 4 characters bail out
-		if(str.size() > 4) {
-			return VOID_TERRAIN;
-		}
 		result = t_terrain(str, filler);
 
 		// Ugly hack
