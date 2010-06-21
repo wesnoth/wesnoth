@@ -200,6 +200,19 @@ void asio_server::send_all(boost::asio::const_buffer buffer, send_handler* handl
                                                                               s_buf, handler, this));
 }
 
+std::string asio_server::ip_address( net_id id ) const
+{
+    std::list<ana::server::client_proxy*>::const_iterator it;
+    
+    it = std::find_if( client_proxies_.begin(), client_proxies_.end(),
+                       boost::bind( &client_proxy::id, _1) == id );
+                  
+    if ( it != client_proxies_.end() )
+        return (*it)->ip_address();
+    else
+        return "";
+}
+
 asio_server::asio_client_proxy::asio_client_proxy(boost::asio::io_service& io_service, asio_proxy_manager* server) :
     client_proxy(),
     socket_(io_service),
@@ -292,3 +305,7 @@ void asio_server::asio_client_proxy::disconnect_listener()
     delete this;
 }
 
+std::string asio_server::asio_client_proxy::ip_address() const
+{
+    return socket_.remote_endpoint().address().to_string();
+}

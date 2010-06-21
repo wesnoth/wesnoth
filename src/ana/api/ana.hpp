@@ -347,6 +347,9 @@ namespace ana
          */
         virtual void run(port pt)                                  = 0;
 
+        /** Returns the string representing the ip address of the connected client with id net_id. */
+        virtual std::string ip_address( net_id ) const = 0;
+        
         /** Standard destructor. */
         virtual ~server() {}
 
@@ -371,6 +374,9 @@ namespace ana
 
             /** Standard destructor. */
             virtual ~client_proxy() {}
+            
+            /** Returns the string representing the ip address of the connected client. */
+            virtual std::string ip_address() const = 0;
 
             // Allow server objects to invoke run_listener directly.
             using detail::listener::run_listener;

@@ -65,6 +65,8 @@ class asio_server : public  ana::server,
                 virtual void disconnect_listener();
 
                 virtual void send(ana::detail::shared_buffer, ana::send_handler*, ana::detail::timed_sender* );
+                
+                virtual std::string ip_address( ) const;
 
                 void handle_sent_header(const boost::system::error_code& ec,
                                         ana::serializer::bostream*, ana::detail::shared_buffer,
@@ -97,6 +99,8 @@ class asio_server : public  ana::server,
         virtual void run(ana::port pt);
 
         virtual void deregister_client(client_proxy* client);
+        
+        virtual std::string ip_address( ana::net_id ) const;
 
         void handle_accept (const boost::system::error_code& ec,asio_client_proxy* client, ana::connection_handler* );
 

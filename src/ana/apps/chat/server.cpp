@@ -77,7 +77,7 @@ class ChatServer : public listener_handler,
             if (! error)
             {
                 std::stringstream ss;
-                ss << "Server: User " << client << " has joined.";
+                ss << "Server: User " << client << " has joined from " << server_->ip_address( client ) << ".";
                 server_->send_all_except(client, ana::buffer( ss.str() ), this);
             }
         }
