@@ -698,8 +698,7 @@ static t_layer string_to_layer_(const std::string& str)
 
 	t_layer result = 0;
 
-	// Validate the string (Note at the moment the error is caught at another
-	// location and sending a lg::wml_error() but that can be replaced later)
+	// Validate the string
 	VALIDATE(str.size() <= 4, _("A terrain with a string with more "
 		"than 4 characters has been found, the affected terrain is :") + str);
 
@@ -756,10 +755,6 @@ static t_terrain string_to_number_(std::string str, int& start_position, const t
 
 	offset = str.find('^', 0);
 	if(offset !=  std::string::npos) {
-		// If either string is longer than 4 characters bail out
-		if(offset > 4 || (str.size() - offset) > 5) {
-			return VOID_TERRAIN;
-		}
 		const std::string base_str(str, 0, offset);
 		const std::string overlay_str(str, offset + 1, str.size());
 		result = t_terrain(base_str, overlay_str);
