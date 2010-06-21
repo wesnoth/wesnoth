@@ -69,11 +69,6 @@ void asio_client::run()
     boost::thread t( boost::bind( &boost::asio::io_service::run, &io_service_) );
 }
 
-ana::client_id asio_client::id() const
-{
-    return 0;
-}
-
 void asio_client::handle_proxy_connection(const boost::system::error_code& ec, ana::connection_handler* handler)
 {
     handler->handle_connect( ec, 0 );

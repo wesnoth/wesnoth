@@ -69,8 +69,6 @@ class asio_client : public ana::client,
 
         virtual void run();
 
-        virtual ana::client_id id() const;
-
         virtual void send( boost::asio::const_buffer, ana::send_handler*, ana::send_type );
 
         virtual void disconnect_listener();

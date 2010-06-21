@@ -123,6 +123,9 @@ namespace ana
     /** Used for implementation purposes. */
     namespace detail
     {
+        /** Last issued client_id.  */ 
+        static client_id last_client_id_ = 0;
+
         /**
          * Base class for any network entity that handles incoming messages.
          */
@@ -140,19 +143,22 @@ namespace ana
                 virtual void set_listener_handler( listener_handler* listener ) = 0;
 
                 /**
-                 * Get the client_id of this listener.
+                 * Get the ID of this listener.
                  *
-                 * @returns : ServerID for the server application, or a comparable client_id
-                 *            unique to this listener.
-                 *
-                 * \sa ServerID
-                 * \sa client_id
+                 * @returns : ID of the network component represented by this listener.
                  */
-                virtual client_id id() const                                    = 0;
+                client_id id() const {return id_;}
 
-            protected: // should be so?
+            protected:
+                listener() :
+                    id_(++last_client_id_)
+                {
+                }
+
                 /** Start listening for incoming messages. */
                 virtual void run_listener()                                     = 0;
+
+                const client_id     id_               /** This proxy's client_id. */ ;
         };
     } //namespace details
 
@@ -351,43 +357,27 @@ namespace ana
         /**
          * A connected client's representative in the server side.
          */
-        class client_proxy : public virtual detail::listener,
-                             boost::noncopyable
+        struct client_proxy : public virtual detail::listener,
+                              boost::noncopyable
         {
-            public:
-                /**
-                 * Send a buffer to the corresponding client.
-                 *
-                 * @param buffer : The memory portion or buffer being sent.
-                 * @param handler : The handler of the completion or error event.
-                 * @param sender : The object with the timeout configuration.
-                 *
-                 * \sa shared_buffer
-                 * \sa send_handler
-                 * \sa timed_sender
-                 */
-                virtual void send(detail::shared_buffer, send_handler*, timed_sender* ) = 0;
+            /**
+             * Send a buffer to the corresponding client.
+             *
+             * @param buffer : The memory portion or buffer being sent.
+             * @param handler : The handler of the completion or error event.
+             * @param sender : The object with the timeout configuration.
+             *
+             * \sa shared_buffer
+             * \sa send_handler
+             * \sa timed_sender
+             */
+            virtual void send(detail::shared_buffer, send_handler*, timed_sender* ) = 0;
 
-                /**
-                 * Get the ID of this client.
-                 *
-                 * @returns : ID of the client represented by this proxy.
-                 */
-                virtual client_id id() const {return id_;}
+            /** Standard destructor. */
+            virtual ~client_proxy() {}
 
-                /** Standard destructor. */
-                virtual ~client_proxy() {}
-
-                // Allow server objects to invoke run_listener directly.
-                using detail::listener::run_listener;
-
-            protected:
-                /** Standard constructor, sets the ID to the next available one. */
-                client_proxy() : id_(++last_client_id_) {}
-
-            private:
-                static client_id    last_client_id_   /** Last issued client_id.  */ ;
-                const client_id     id_               /** This proxy's client_id. */ ;
+            // Allow server objects to invoke run_listener directly.
+            using detail::listener::run_listener;
         };
     };
 

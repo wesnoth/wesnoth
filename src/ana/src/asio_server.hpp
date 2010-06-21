@@ -96,8 +96,6 @@ class asio_server : public  ana::server,
         virtual void run_listener();
         virtual void run(ana::port pt);
 
-        virtual ana::client_id id() const;
-
         virtual void deregister_client(client_proxy* client);
 
         void handle_accept (const boost::system::error_code& ec,asio_client_proxy* client, ana::connection_handler* );

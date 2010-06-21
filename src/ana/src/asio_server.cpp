@@ -43,8 +43,6 @@ using namespace ana;
 
 using boost::asio::ip::tcp;
 
-client_id server::client_proxy::last_client_id_ = 0;
-
 asio_server::asio_server() :
     io_service_(),
     io_thread_(),
@@ -100,11 +98,6 @@ void asio_server::run(port pt)
     run_listener( );
 
     io_thread_ = boost::thread( boost::bind( &boost::asio::io_service::run, &io_service_) );
-}
-
-client_id asio_server::id() const
-{
-    return 0;
 }
 
 void asio_server::async_accept( connection_handler* handler )
