@@ -105,6 +105,11 @@ stringfixes = {
 ("Mar'Ildian", "Mar’Ildian"),
 ("Marra Di'lek", "Marra Di’lek"),
 ("Bzz'Kza", "Bzz’Kza"),
+
+# Fix capitalization
+# conversion added in 1.9.0-svn
+("Icelandic translation", "Icelandic Translation"),
+("Miscellaneous contributors", "Miscellaneous Contributors"),
 ),
 
 "wesnoth-anl" : (
