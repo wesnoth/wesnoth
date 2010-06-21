@@ -95,15 +95,14 @@ namespace ana
          *
          * @param error_code : Error code of the client sending the message,
          *                     if it evaluates to false, then no error occurred.
-         * @param client_id  : ID of the client that sends the message.
+         * @param net_id  : ID of the client that sends the message.
          * @param shared_buffer : The buffer from the incoming message.
          *
          * \sa read_buffer
          * \sa error_code
-         * \sa client_id
-         * \sa ServerID
+         * \sa net_id
          */
-        virtual void handle_message   (error_code, client_id, detail::read_buffer) = 0;
+        virtual void handle_message   (error_code, net_id, detail::read_buffer) = 0;
 
         /**
          * Handle a disconnect event.
@@ -111,20 +110,19 @@ namespace ana
          * @param error_code : Error code of the disconnecting client, it could
          *                     shed some light into why it got disconnected.
          *
-         * @param client_id  : ID of the client that gets disconnected.
+         * @param net_id  : ID of the client that gets disconnected.
          *
          * \sa error_code
-         * \sa client_id
-         * \sa ServerID
+         * \sa net_id
          */
-        virtual void handle_disconnect(error_code, client_id) = 0;
+        virtual void handle_disconnect(error_code, net_id) = 0;
     };
 
     /** Used for implementation purposes. */
     namespace detail
     {
-        /** Last issued client_id.  */ 
-        static client_id last_client_id_ = 0;
+        /** Last issued net_id.  */ 
+        static net_id last_net_id_ = 0;
 
         /**
          * Base class for any network entity that handles incoming messages.
@@ -147,18 +145,18 @@ namespace ana
                  *
                  * @returns : ID of the network component represented by this listener.
                  */
-                client_id id() const {return id_;}
+                net_id id() const {return id_;}
 
             protected:
                 listener() :
-                    id_(++last_client_id_)
+                    id_(++last_net_id_)
                 {
                 }
 
                 /** Start listening for incoming messages. */
                 virtual void run_listener()                                     = 0;
 
-                const client_id     id_               /** This proxy's client_id. */ ;
+                const net_id     id_               /** This proxy's net_id. */ ;
         };
     } //namespace details
 
@@ -172,13 +170,12 @@ namespace ana
           *
           * @param error_code : Error code of the event.
           *
-          * @param client_id  : ID of the client that connects.
+          * @param net_id  : ID of the client that connects.
           *
           * \sa error_code
-          * \sa client_id
-          * \sa ServerID
+          * \sa net_id
           */
-        virtual void handle_connect( error_code, client_id )  = 0;
+        virtual void handle_connect( error_code, net_id )  = 0;
     };
 
     /**
@@ -191,13 +188,12 @@ namespace ana
          *
          * @param error_code : Error code of the event.
          *
-         * @param client_id  : ID of the client that sent the message.
+         * @param net_id  : ID of the client that sent the message.
          *
          * \sa error_code
-         * \sa client_id
-         * \sa ServerID
+         * \sa net_id
          */
-        virtual void handle_send( error_code, client_id ) = 0;
+        virtual void handle_send( error_code, net_id ) = 0;
     };
     //@}
 
@@ -276,13 +272,13 @@ namespace ana
          *
          * Examples:
          *    - server_->send_all( ana::buffer( str ), this );
-         *    - server_->send_all( ana::buffer( large_pod_array ), handler_object, ana::ZeroCopy );
+         *    - server_->send_all( ana::buffer( large_pod_array ), handler_object, ana::ZERO_COPY );
          *
          * \sa send_type
          * \sa buffer
          * \sa send_handler
          */
-        virtual void send_all(boost::asio::const_buffer, send_handler*, send_type = CopyBuffer )            = 0;
+        virtual void send_all(boost::asio::const_buffer, send_handler*, send_type = COPY_BUFFER )            = 0;
 
         /**
          * Send a buffer to every connected client that satisfies a given condition/property.
@@ -294,7 +290,7 @@ namespace ana
          *
          * Examples:
          *    - server_->send_if( ana::buffer( str() ), this,
-         *                        create_predicate( boost::bind( std::not_equal_to<client_id>(), client, _1) ) );
+         *                        create_predicate( boost::bind( std::not_equal_to<net_id>(), client, _1) ) );
          *
          * \sa client_predicate
          * \sa send_type
@@ -302,7 +298,7 @@ namespace ana
          * \sa send_handler
          */
         virtual void send_if(boost::asio::const_buffer,
-                                send_handler*, const client_predicate&, send_type = CopyBuffer )               = 0;
+                                send_handler*, const client_predicate&, send_type = COPY_BUFFER )               = 0;
 
         /**
          * Send a buffer to every connected client except one. Equals a send_all if the client doesn't exist.
@@ -312,29 +308,29 @@ namespace ana
          * @param send_type : Optional, type of the send operation. Defaults to a value of CopyBufer.
          *
          * Examples:
-         *    - server_->send_all_except( client, ana::buffer( str ), this, ana::ZeroCopy);
+         *    - server_->send_all_except( client, ana::buffer( str ), this, ana::ZERO_COPY);
          *
          * \sa send_type
          * \sa buffer
          * \sa send_handler
          */
-        virtual void send_all_except(client_id, boost::asio::const_buffer, send_handler*, send_type = CopyBuffer ) = 0;
+        virtual void send_all_except(net_id, boost::asio::const_buffer, send_handler*, send_type = COPY_BUFFER ) = 0;
 
         /**
-         * Send a buffer to a connected client with a given client_id. Does nothing if no such client exists.
+         * Send a buffer to a connected client with a given net_id. Does nothing if no such client exists.
          *
          * @param buffer : Buffer to be sent. Should be constucted with the buffer function.
          * @param handler : Handler of a possible event resulting from this operation.
          * @param send_type : Optional, type of the send operation. Defaults to a value of CopyBufer.
          *
          * Examples:
-         *    - server_->send_one( client, ana::buffer( str ), this, ana::ZeroCopy);
+         *    - server_->send_one( client, ana::buffer( str ), this, ana::ZERO_COPY);
          *
          * \sa send_type
          * \sa buffer
          * \sa send_handler
          */
-        virtual void send_one(client_id, boost::asio::const_buffer, send_handler*, send_type = CopyBuffer ) = 0;
+        virtual void send_one(net_id, boost::asio::const_buffer, send_handler*, send_type = COPY_BUFFER ) = 0;
 
         /**
          * Set the handler for new connection events.
@@ -428,7 +424,7 @@ namespace ana
          *
          * Examples:
          *    - client_->send( ana::buffer( str ), this );
-         *    - client_->send( ana::buffer( large_pod_array ), handler_object, ana::ZeroCopy );
+         *    - client_->send( ana::buffer( large_pod_array ), handler_object, ana::ZERO_COPY );
          *
          * @param buffer : The buffer being sent.
          * @param handler : Handler of events resulting from this operation.
@@ -438,7 +434,7 @@ namespace ana
          * \sa buffer
          * \sa send_handler
          */
-        virtual void send(boost::asio::const_buffer buffer, send_handler* handler, send_type type = CopyBuffer ) = 0;
+        virtual void send(boost::asio::const_buffer buffer, send_handler* handler, send_type type = COPY_BUFFER ) = 0;
 
         /** Standard destructor. */
         virtual ~client() {}

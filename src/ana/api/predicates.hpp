@@ -54,7 +54,7 @@ namespace ana
             * @param client ID of the queried client.
             * @returns true if the condition holds for this client.
             */
-            virtual bool selects(client_id) const = 0;
+            virtual bool selects(net_id) const = 0;
         };
         //@}
 
@@ -87,7 +87,7 @@ namespace ana
              *
              * \sa client_predicate
              */
-            virtual bool selects(client_id cid) const
+            virtual bool selects(net_id cid) const
             {
                 return pred(cid);
             }
@@ -101,7 +101,7 @@ namespace ana
      *
      * Examples:
      *    - server_->send_if(boost::asio::buffer( str ), this, create_predicate(
-     *                       boost::bind( std::not_equal_to<client_id>(), client, _1) ) );
+     *                       boost::bind( std::not_equal_to<net_id>(), client, _1) ) );
      *
      * @param pred Predicate of the queried client.
      * @returns Predicate for client selection.

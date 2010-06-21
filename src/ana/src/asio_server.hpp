@@ -89,8 +89,8 @@ class asio_server : public  ana::server,
 
         virtual void send_all(boost::asio::const_buffer, ana::send_handler*, ana::send_type );
         virtual void send_if (boost::asio::const_buffer, ana::send_handler*, const ana::client_predicate&, ana::send_type );
-        virtual void send_one(ana::client_id, boost::asio::const_buffer, ana::send_handler*, ana::send_type );
-        virtual void send_all_except(ana::client_id, boost::asio::const_buffer, ana::send_handler*, ana::send_type );
+        virtual void send_one(ana::net_id, boost::asio::const_buffer, ana::send_handler*, ana::send_type );
+        virtual void send_all_except(ana::net_id, boost::asio::const_buffer, ana::send_handler*, ana::send_type );
 
         virtual void set_listener_handler( ana::listener_handler* );
         virtual void run_listener();

@@ -83,7 +83,7 @@ void asio_listener::handle_header(char* header, const boost::system::error_code&
             disconnect(listener, ec);
         else
         {
-            ana::serializer::bistream input( std::string(header, ana::HeaderLength) );
+            ana::serializer::bistream input( std::string(header, ana::HEADER_LENGTH) );
 
             size_t   size;
             input >> size;
@@ -120,7 +120,7 @@ void asio_listener::listen_one_message()
 {
     try
     {
-        boost::asio::async_read(socket_, boost::asio::buffer(header_, ana::HeaderLength),
+        boost::asio::async_read(socket_, boost::asio::buffer(header_, ana::HEADER_LENGTH),
                                 boost::bind(&asio_listener::handle_header, this,
                                             header_, boost::asio::placeholders::error, listener_));
     }

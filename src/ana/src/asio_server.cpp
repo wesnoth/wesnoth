@@ -169,14 +169,14 @@ void asio_server::set_listener_handler( listener_handler* listener )
     listener_  = listener;
 }
 
-void asio_server::send_one(client_id id,boost::asio::const_buffer buffer, send_handler* handler, send_type copy_buffer)
+void asio_server::send_one(net_id id,boost::asio::const_buffer buffer, send_handler* handler, send_type copy_buffer)
 {
-    send_if(buffer, handler, create_predicate ( boost::bind( std::equal_to<client_id>(), id, _1) ), copy_buffer );
+    send_if(buffer, handler, create_predicate ( boost::bind( std::equal_to<net_id>(), id, _1) ), copy_buffer );
 }
 
-void asio_server::send_all_except(client_id id,boost::asio::const_buffer buffer, send_handler* handler, send_type copy_buffer)
+void asio_server::send_all_except(net_id id,boost::asio::const_buffer buffer, send_handler* handler, send_type copy_buffer)
 {
-    send_if(buffer, handler, create_predicate ( boost::bind( std::not_equal_to<client_id>(), id, _1) ), copy_buffer );
+    send_if(buffer, handler, create_predicate ( boost::bind( std::not_equal_to<net_id>(), id, _1) ), copy_buffer );
 }
 
 

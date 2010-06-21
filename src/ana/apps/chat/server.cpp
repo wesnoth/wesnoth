@@ -72,7 +72,7 @@ class ChatServer : public listener_handler,
         }
     private:
 
-        virtual void handle_connect(ana::error_code error, client_id client)
+        virtual void handle_connect(ana::error_code error, net_id client)
         {
             if (! error)
             {
@@ -82,7 +82,7 @@ class ChatServer : public listener_handler,
             }
         }
 
-        virtual void handle_disconnect(ana::error_code error, client_id client)
+        virtual void handle_disconnect(ana::error_code error, net_id client)
         {
             std::stringstream ss;
             ss << names_[client] << " disconnected.";
@@ -90,7 +90,7 @@ class ChatServer : public listener_handler,
             names_.erase(client);
         }
 
-        virtual void handle_send(ana::error_code error, client_id client)
+        virtual void handle_send(ana::error_code error, net_id client)
         {
             if ( error )
                 std::cerr << "Error sending to client " << client << ". Timeout?" << std::endl;
@@ -103,7 +103,7 @@ class ChatServer : public listener_handler,
             return msg.substr(pos+1);
         }
 
-        void parse_command(client_id client, const std::string& msg)
+        void parse_command(net_id client, const std::string& msg)
         {
             switch (msg[1]) //Lame
             {
@@ -114,7 +114,7 @@ class ChatServer : public listener_handler,
                             std::stringstream ss;
                             ss << "Connected clients: \n";
 
-                            std::map<client_id, std::string>::iterator it;
+                            std::map<net_id, std::string>::iterator it;
                             for(it = names_.begin(); it != names_.end(); ++it)
                                 ss << "    " << it->second << "\n";
 
@@ -123,7 +123,7 @@ class ChatServer : public listener_handler,
             }
         }
 
-        virtual void handle_message( ana::error_code error, client_id client, ana::detail::read_buffer buffer)
+        virtual void handle_message( ana::error_code error, net_id client, ana::detail::read_buffer buffer)
         {
             if (! error)
             {
@@ -143,7 +143,7 @@ class ChatServer : public listener_handler,
         }
 
         server*                          server_;
-        std::map<client_id, std::string> names_;
+        std::map<net_id, std::string> names_;
 };
 
 int main(int argc, char **argv)

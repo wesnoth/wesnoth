@@ -47,8 +47,9 @@ namespace ana
         typedef boost::uint32_t ana_uint32  /** Standard unsigned int, with fixed size to 32 bits.  */ ;
         typedef boost::int32_t  ana_int32   /** Standard int, with fixed size to 32 bits.           */ ;
 
-        typedef ana_uint32  client_id          /** Type of IDs of connected components, unique.     */ ;
         typedef ana_uint32  message_size       /** Message size type.                               */ ;
+        
+        typedef size_t      net_id             /** IDs of connected components, unique, non zero.   */ ;
 
         typedef std::string port               /** Port type, a std::string (instead of a short.)   */ ;
         typedef std::string address            /** Address type, a string. Either IP of hostname.   */ ;
@@ -57,13 +58,10 @@ namespace ana
 
         typedef boost::system::error_code error_code /** Standard error code, can evaluate to bool. */ ;
 
-        const send_type ZeroCopy   = false     /** Don't copy the buffer. */ ;
-        const send_type CopyBuffer = true      /** Copy the buffer.       */ ;
+        const send_type ZERO_COPY   = false     /** Don't copy the buffer. */ ;
+        const send_type COPY_BUFFER = true      /** Copy the buffer.       */ ;
 
-        const message_size HeaderLength = sizeof(ana_uint32) /** Length of message header. */ ;
-
-        const client_id ServerID = 0  /** The ID of the server application. */ ;
-
+        const message_size HEADER_LENGTH = sizeof(ana_uint32) /** Length of message header. */ ;
 }
 
 #endif

@@ -170,7 +170,7 @@ class ChatClient : public ana::listener_handler,
 
     private:
 
-        virtual void handle_connect( ana::error_code error, client_id server_id )
+        virtual void handle_connect( ana::error_code error, net_id server_id )
         {
             if ( error )
             {
@@ -181,13 +181,13 @@ class ChatClient : public ana::listener_handler,
                 client_->send( ana::buffer( std::string("/name ") + name_) , this);
         }
 
-        virtual void handle_disconnect( ana::error_code error, client_id server_id)
+        virtual void handle_disconnect( ana::error_code error, net_id server_id)
         {
             std::cerr << "\nServer disconnected. Enter to exit." << std::endl;
             continue_ = false;
         }
 
-        virtual void handle_message( ana::error_code error, client_id, ana::detail::read_buffer msg)
+        virtual void handle_message( ana::error_code error, net_id, ana::detail::read_buffer msg)
         {
             if (! error)
             {
@@ -197,7 +197,7 @@ class ChatClient : public ana::listener_handler,
             }
         }
 
-        virtual void handle_send( ana::error_code error, client_id client)
+        virtual void handle_send( ana::error_code error, net_id client)
         {
             if ( error )
                 std::cout << "Error. Timeout?" << std::endl;

@@ -64,7 +64,7 @@ class asio_listener : public virtual ana::detail::listener
         boost::asio::io_service&   io_service_;
         tcp::socket&               socket_;
         ana::listener_handler*     listener_;
-        char                       header_[ana::HeaderLength];
+        char                       header_[ana::HEADER_LENGTH];
 };
 
 #endif
