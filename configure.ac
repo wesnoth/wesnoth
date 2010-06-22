@@ -261,6 +261,11 @@ AC_ARG_WITH([fribidi],
 	      [fribidi=$withval],
 	      [fribidi=yes])
 
+AC_ARG_ENABLE([ana],
+              AS_HELP_STRING([--enable-ana], [use the experimental ANA networking framework (work-in-progress)]),
+	      [ana=$enableval],
+	      [ana=no])
+
 AC_ARG_ENABLE([pool-alloc],
               AS_HELP_STRING([--enable-pool-alloc], [enable the pool allocator]),
 	      [poolalloc=$enableval],
@@ -331,6 +336,7 @@ AM_CONDITIONAL([GCC], [test x$GXX = xyes])
 AM_CONDITIONAL([INCLUDEDINTL], [test x$nls_cv_use_gnu_gettext = xyes])
 AM_CONDITIONAL([INSTALLDATA], [test [ x$game = xyes || test x$editor = xyes ]])
 AM_CONDITIONAL([POOLALLOC], [test x$poolalloc = xyes])
+AM_CONDITIONAL([ANA], [test x$ana = xyes])
 
 if test x$editor = xno
 then
@@ -890,6 +896,11 @@ AC_MSG_RESULT([$found_notifications])
 BOOST_REQUIRE([1.35])
 BOOST_IOSTREAMS
 BOOST_REGEX
+
+if test "x$ana" = "xyes"; then
+	BOOST_ASIO
+	BOOST_THREADS
+fi
 
 if test "x$tests" = "xyes"; then
 	BOOST_TEST

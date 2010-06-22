@@ -28,6 +28,9 @@ CLEANFILES += $(bin_SCRIPTS)
 endif
 
 noinst_LIBRARIES = libwesnoth-core.a libwesnoth.a
+if ANA
+noinst_LIBRARIES += libana.a
+endif
 
 pkgdatadir=$(datadir)/@DATADIR@
 
@@ -36,6 +39,14 @@ INTERNALLIBS = -lwesnoth-core -lwesnoth
 THELIBS = -L. $(SDL_IMAGE_LIBS) $(SDL_MIXER_LIBS) $(SDL_NET_LIBS) \
 	$(SDL_TTF_LIBS) $(SDL_LIBS) $(LIBINTL) \
 	$(BOOST_IOSTREAMS_LIBS) $(BOOST_REGEX_LIBS)
+
+if ANA
+network_core = network_ana.cpp
+else
+network_core = \
+	network.cpp \
+	network_worker.cpp
+endif
 
 wesnoth_source = \
 	about.cpp \
@@ -227,8 +238,7 @@ wesnoth_source = \
 	multiplayer_wait.cpp \
 	multiplayer_connect.cpp \
 	multiplayer_create.cpp \
-	network.cpp \
-	network_worker.cpp \
+	$(network_core) \
 	pathfind/pathfind.cpp \
 	persist_context.cpp \
 	persist_var.cpp \
@@ -326,6 +336,10 @@ wesnoth_SOURCES = \
 
 wesnoth_LDADD = $(INTERNALLIBS) $(THELIBS) $(PANGO_LIBS) $(FONTCONFIG_LIBS)
 wesnoth_DEPENDENCIES=libwesnoth-core.a libwesnoth.a
+if ANA
+wesnoth_LDADD += $(BOOST_SYSTEM_LIBS) $(BOOST_THREAD_LIBS) -lana
+wesnoth_DEPENDENCIES += libana.a
+endif
 
 
 #############################################################################
@@ -347,13 +361,16 @@ wesnothd_SOURCES = \
 	server/user_handler.cpp \
 	server/forum_user_handler.cpp \
 	server/sample_user_handler.cpp \
-	network.cpp \
-	network_worker.cpp \
+	$(network_core) \
 	loadscreen_empty.cpp
 
 
 wesnothd_LDADD = -L. -lwesnoth-core $(BOOST_IOSTREAMS_LIBS) @SDL_NET_LIBS@ @SDL_LIBS@ $(LIBINTL)
 wesnothd_DEPENDENCIES=libwesnoth-core.a
+if ANA
+wesnothd_LDADD += $(BOOST_SYSTEM_LIBS) $(BOOST_THREAD_LIBS) -lana
+wesnothd_DEPENDENCIES += libana.a
+endif
 
 #############################################################################
 #    Campaign Server                                                        #
@@ -363,12 +380,15 @@ campaignd_SOURCES = \
 	addon/validation.cpp \
 	campaign_server/campaign_server.cpp \
 	server/input_stream.cpp \
-	network.cpp \
-	network_worker.cpp \
+	$(network_core) \
 	loadscreen_empty.cpp 
 
 campaignd_LDADD = -L. -lwesnoth-core $(BOOST_IOSTREAMS_LIBS) @SDL_NET_LIBS@ @SDL_LIBS@ $(LIBINTL)
 campaignd_DEPENDENCIES=libwesnoth-core.a
+if ANA
+campaignd_LDADD += $(BOOST_SYSTEM_LIBS) $(BOOST_THREAD_LIBS) -lana
+campaignd_DEPENDENCIES += libana.a
+endif
 
 #############################################################################
 #    Castle building helpers                                                #
@@ -409,7 +429,7 @@ test_SOURCES =  \
 	tests/test_config_cache.cpp \
 	tests/test_formula_ai.cpp \
 	tests/test_lexical_cast.cpp	\
-    tests/test_network_worker.cpp \
+	tests/test_network_worker.cpp \
 	tests/test_policy.cpp \
 	tests/test_team.cpp \
 	tests/test_util.cpp \
@@ -514,6 +534,15 @@ libwesnoth_a_SOURCES = \
 	widgets/widget.cpp \
 	wml_exception.cpp 
 
+if ANA
+libana_a_SOURCES = \
+	ana/src/asio_client.cpp \
+	ana/src/asio_listener.cpp \
+	ana/src/asio_proxy_connection.cpp \
+	ana/src/asio_server.cpp
+CXXFLAGS += -Iana/api
+endif
+
 # Until game_config.cpp is removed, this will be needed to ensure that the
 # REVISION constant gets updated correctly.  If and when that definition is
 # moved elsewhere, this dependency must follow it.
@@ -576,6 +605,9 @@ LDFLAGS += -all-static
 endif
 
 LDFLAGS += $(BOOST_IOSTREAMS_LDFLAGS)  $(BOOST_REGEX_LDFLAGS)
+if ANA
+LDFLAGS += $(BOOST_SYSTEM_LDFLAGS)
+endif
 
 
 #if STATIC
