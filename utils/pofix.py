@@ -46,7 +46,7 @@ stringfixes = {
 (" -1%", " −1%"),
 (" -100%", " −100%"),
 
-# Convert makeshift dashes:
+# Convert makeshift dashes/straight apostrophes:
 # conversion added in 1.9.0-svn
 ("however - from these", "however — from these"),
 ("campaign first - click", "campaign first — click"),
@@ -66,11 +66,11 @@ stringfixes = {
 ("- The Wesnoth Community", "― The Wesnoth Community"),
 ("don't have to - let it", "don't have to — let it"),
 ("- Sir Kaylan,", "― Sir Kaylan,"),
-("- Princess Li'sar,", "― Princess Li'sar,"),
+("- Princess Li'sar,", "― Princess Li’sar,"),
 ("your attacks - they will", "your attacks — they will"),
 ("- The Scroll of Chantal,", "― The Scroll of Chantal,"),
 ("- Great Sage Dacyn,", "― Great Sage Dacyn,"),
-("- Queen Li'sar,", "― Queen Li'sar,"),
+("- Queen Li'sar,", "― Queen Li’sar,"),
 ("- Meneldur,", "― Meneldur,"),
 ("upload statistics - Help", "upload statistics — Help"),
 ("(A) - auth command", "(A) — auth command"),
@@ -91,12 +91,14 @@ stringfixes = {
 ("— High Lord Kalenz, 470YW", "― High Lord Kalenz, 470YW"),
 ("— The Wesnoth Community", "― The Wesnoth Community"),
 ("— Sir Kaylan,", "― Sir Kaylan,"),
-("— Princess Li'sar,", "― Princess Li'sar,"),
+("— Princess Li'sar,", "― Princess Li’sar,"),
 ("— The Scroll of Chantal,", "― The Scroll of Chantal,"),
 ("— Great Sage Dacyn,", "― Great Sage Dacyn,"),
-("— Queen Li'sar,", "― Queen Li'sar,"),
+("— Queen Li'sar,", "― Queen Li’sar,"),
 ("— King Konrad,", "― King Konrad,"),
 ("— Meneldur,", "― Meneldur,"),
+("― Princess Li'sar,", "― Princess Li’sar,"),
+("― Queen Li'sar,", "― Queen Li’sar,"),
 
 # Straight apostrophes and quotes to curly ones
 # conversion added in 1.9.0-svn
@@ -200,8 +202,8 @@ stringfixes = {
 # Convert makeshift dashes:
 # conversion added in 1.9.0-svn
 ("warn you - a party", "warn you — a party"),
-("each other - and you'll", "each other — and you'll"),
-("Night is falling - that's", "Night is falling — that's"),
+("each other - and you'll", "each other — and you’ll"),
+("Night is falling - that's", "Night is falling — that’s"),
 ("work by now - I did not", "work by now — I did not"),
 ("seeking you - you see", "seeking you — you see"),
 ("Of course - do you", "Of course — do you"),
@@ -211,8 +213,8 @@ stringfixes = {
 ("the dead - should", "the dead — should"),
 ("Illuven - lesser", "Illuven — lesser"),
 ("need protection - cost", "need protection — cost"),
-("No thanks - we'll manage by ourselves...", "No thanks — we'll manage by ourselves..."),
-("Let's move on - the less", "Let's move on — the less"),
+("No thanks - we'll manage by ourselves...", "No thanks — we’ll manage by ourselves..."),
+("Let's move on - the less", "Let’s move on — the less"),
 ("We should camp for the night now - we", "We should camp for the night now — we"),
 ("Those standing stones - they summon", "Those standing stones — they summon"),
 ("possible - I want to get us", "possible — I want to get us"),
@@ -223,8 +225,16 @@ stringfixes = {
 ("see my greatest achievement - an", "see my greatest achievement — an"),
 ("must be informed immediately -", "must be informed immediately —"),
 ("This forest looks quiet - too quiet.", "This forest looks quiet — too quiet."),
-("No - you can't be dead!", "No — you can't be dead!"),
+("No - you can't be dead!", "No — you can’t be dead!"),
 ("of our help too - this", "of our help too — this"),
+
+# Fix screw up
+# conversion added in 1.9.0-svn
+("each other — and you'll", "each other — and you’ll"),
+("Night is falling — that's", "Night is falling — that’s"),
+("No thanks — we'll manage by ourselves...", "No thanks — we’ll manage by ourselves..."),
+("Let's move on — the less", "Let’s move on — the less"),
+("No — you can't be dead!", "No — you can’t be dead!"),
 
 # Correct capitalization
 # conversion added in 1.9.0-svn
@@ -235,6 +245,22 @@ stringfixes = {
 # Straight apostrophes and quotes to curly ones
 # conversion added in 1.9.0-svn
 ("Delfador's Memoirs", "Delfador’s Memoirs"),
+("'The Great'", "“The Great”"),
+("Don't die!", "Don’t die!"),
+("Methor's", "Methor’s"),
+("I don't like", "I don’t like"),
+("I've told you", "I’ve told you"),
+("father's", "father’s"),
+("After a night's rest", "After a night’s rest"),
+("And if it's archers you need", "And if it’s archers you need"),
+("Leollyn's", "Leollyn’s"),
+("king's", "king’s"),
+("Lionel's", "Lionel’s"),
+("I'm honored that", "I’m honored that"),
+("Here's", "Here’s"),
+("It's been a pleasure", "It’s been a pleasure"),
+("You'll", "You’ll"),
+("I think that's all", "I think that’s all"),
 ),
 
 "wesnoth-dw" : (
@@ -260,24 +286,29 @@ stringfixes = {
 ("Run for your - what the", "Run for your — what the"),
 # ... and aint -> ain't
 # conversion added in 1.9.0-svn
-("I aint charging gold -", "I ain't charging gold —"),
-("'T'aint safe", "'T'ain't safe"),
+("I aint charging gold -", "I ain’t charging gold —"),
+("'T'aint safe", "’T’ain’t safe"),
 # Make it unspaced...
 # conversion added in 1.9.0-svn
 ("may be able to help us in - ", "may be able to help us in—"),
 ("Wait - what just happened?", "Wait — what just happened?"),
+
+# Fix screw up
+# conversion added in 1.9.0-svn
+("I ain't charging gold —", "I ain’t charging gold —"),
+("'T'ain't safe", "’T’ain’t safe"),
 ),
 
 "wesnoth-httt" : (
 # Convert makeshift dashes:
 # conversion added in 1.9.0-svn
 ("and the support of my men - from", "and the support of my men — from"),
-("NE - Dan'Tonk", "NE — Dan'Tonk"),
+("NE - Dan'Tonk", "NE — Dan’Tonk"),
 ("SE - Fort Tahn", "SE — Fort Tahn"),
-("The Valley of Death - The Princess's Revenge", "The Valley of Death — The Princess's Revenge"),
+("The Valley of Death - The Princess's Revenge", "The Valley of Death — The Princess’s Revenge"),
 ("the hills - there are undead about!", "the hills — there are undead about!"),
 ("those gryphon eggs - they", "those gryphon eggs — they"),
-("- Delfador's insistence", "— Delfador's insistence"),
+("- Delfador's insistence", "— Delfador’s insistence"),
 ("Look - orcs are", "Look — orcs are"),
 ("A frail human - or worse, an elf -", "A frail human — or worse, an elf —"),
 ("out to the heir - I", "out to the heir — I"),
@@ -285,11 +316,19 @@ stringfixes = {
 ("introduce myself - I", "introduce myself — I"),
 ("my warning - prepare", "my warning — prepare"),
 ("princess - the heiress", "princess — the heiress"),
-("don't try to fight us - you", "don't try to fight us — you"),
-("Princess Li'sar - here?", "Princess Li'sar — here?"),
+("don't try to fight us - you", "don’t try to fight us — you"),
+("Princess Li'sar - here?", "Princess Li’sar — here?"),
 ("Look - you can", "Look — you can"),
 ("century - a generation", "century — a generation"),
 ("vast human army - his", "vast human army — his"),
+
+# Fix screw up
+# conversion added in 1.9.0-svn
+("NE — Dan'Tonk", "NE — Dan’Tonk"),
+("The Valley of Death — The Princess's Revenge", "The Valley of Death — The Princess’s Revenge"),
+("— Delfador's insistence", "— Delfador’s insistence"),
+("don't try to fight us — you", "don’t try to fight us — you"),
+("Princess Li'sar — here?", "Princess Li’sar — here?"),
 ),
 
 "wesnoth-l" : (
@@ -383,7 +422,11 @@ stringfixes = {
 # conversion added in 1.9.0-svn
 ("follow you, Kalenz - but", "follow you, Kalenz — but"),
 ("Kalenz - lead us", "Kalenz — lead us"),
-("them aid - it's clear", "them aid — it's clear"),
+("them aid - it's clear", "them aid — it’s clear"),
+
+# Fix screw up
+# conversion added in 1.9.0-svn
+("them aid — it's clear", "them aid — it’s clear"),
 
 # Correct capitalization
 # conversion added in 1.9.0-svn
@@ -453,29 +496,29 @@ stringfixes = {
 ("Tallin. He's lucky, he is - or he makes his own luck.", "Tallin. He's lucky, he is — or he makes his own luck."),
 ("Black-Tusk, but we survived the orcs and trolls -- only to be captured by ", "Black-Tusk, but we survived the orcs and trolls — only to be captured by "),
 ("What was that? Oh, woe - two big slabs of rock cutting off our retreat!", "What was that? Oh, woe — two big slabs of rock cutting off our retreat!"),
-("Well, if you don't mind me saying - that certainly isn't the state of ", "Well, if you don't mind me saying — that certainly isn't the state of "),
+("Well, if you don't mind me saying - that certainly isn't the state of ", "Well, if you don’t mind me saying — that certainly isn’t the state of "),
 ("Interesting. I wonder who - or what - could have created such a powerful ", "Interesting. I wonder who — or what — could have created such a powerful "),
 ("Thus, compelled by some strange and irresistible force, Tallin - eyes glazed ", "Thus, compelled by some strange and irresistible force, Tallin — eyes glazed "),
 ("and mind unthinking - did the will of his new master.", "and mind unthinking — did the will of his new master."),
-("dwarves - it's because of you that we ha' made a start rebuilding Knalga in ", "dwarves — it's because of you that we ha' made a start rebuilding Knalga in "),
+("dwarves - it's because of you that we ha' made a start rebuilding Knalga in ", "dwarves — it’s because of you that we ha’ made a start rebuilding Knalga in "),
 ("I am here simply finishing the job Khazg Black-Tusk started years ago - the ", "I am here simply finishing the job Khazg Black-Tusk started years ago — the "),
 ("And I am grateful - but what should we do from here? The number of humans ", "And I am grateful — but what should we do from here? The number of humans "),
 ("Orcs are fickle; if we negotiated a treaty with them - assuming they would ", "Orcs are fickle; if we negotiated a treaty with them — assuming they would "),
 ("accept - it would just be broken as soon as the next warlord arose among ", "accept — it would just be broken as soon as the next warlord arose among "),
 ("I have heard all about him from my good friend Stalrag. He is - or was ", "I have heard all about him from my good friend Stalrag. He is — or was "),
-("anyway, haven't heard from him in years - the chief o' the villages that lay ", "anyway, haven't heard from him in years — the chief o' the villages that lay "),
+("anyway, haven't heard from him in years - the chief o' the villages that lay ", "anyway, haven’t heard from him in years — the chief o’ the villages that lay "),
 ("As Tallin sat staring blankly at the body of his former friend - loathing ", "As Tallin sat staring blankly at the body of his former friend — loathing "),
 ("and hating what he had become - he received an urgent summons from his ", "and hating what he had become — he received an urgent summons from his "),
 ("Pew! Nick of time too - I almost bought it there!", "Pew! Nick of time too — I almost bought it there!"),
 ("elves - for the sorceress was, in fact, a princess of the highest rank.", "elves — for the sorceress was, in fact, a princess of the highest rank."),
 ("our help in rescuing their Princess? You heard their message - those elves ", "our help in rescuing their Princess? You heard their message — those elves "),
 ("Well, suppose we do join up with the elves - assuming they will let us - and ", "Well, suppose we do join up with the elves — assuming they will let us — and "),
-("Just our luck to be here when they're mustering a field force - probably to ", "Just our luck to be here when they're mustering a field force — probably to "),
-("Later, princess, first let's get outta -- uh, let us take our leave of this ", "Later, princess, first let's get outta — uh, let us take our leave of this "),
+("Just our luck to be here when they're mustering a field force - probably to ", "Just our luck to be here when they’re mustering a field force — probably to "),
+("Later, princess, first let's get outta -- uh, let us take our leave of this ", "Later, princess, first let’s get outta — uh, let us take our leave of this "),
 ("him, and so he fled. As he did so, visions of his dying friends - friends ", "him, and so he fled. As he did so, visions of his dying friends — friends "),
 ("that he had slain - flashed before his eyes, while their voices chided him ", "that he had slain — flashed before his eyes, while their voices chided him "),
 ("under his control, I have done unthinkable deeds - I have studied the most ", "under his control, I have done unthinkable deeds — I have studied the most "),
-("never would have risked their lives - nay, if I were not there they wouldn't ", "never would have risked their lives — nay, if I were not there they wouldn't "),
+("never would have risked their lives - nay, if I were not there they wouldn't ", "never would have risked their lives — nay, if I were not there they wouldn’t "),
 ("Ruler of Men to ensure peace, harmony and above all - justice. For hundreds ", "Ruler of Men to ensure peace, harmony and above all — justice. For hundreds "),
 ("Tallin, accompanied by the ghost of the king - whose name he soon discovered ", "Tallin, accompanied by the ghost of the king — whose name he soon discovered "),
 ("to be Abhai - set off down the tunnels in search of the Rod of Justice. ", "to be Abhai — set off down the tunnels in search of the Rod of Justice. "),
@@ -489,15 +532,15 @@ stringfixes = {
 ("There is a large elvish force not far from here who - we believe anyway - ", "There is a large elvish force not far from here who — we believe anyway — "),
 ("hesitated and found himself unable to proceed. Abhai came forth - his ", "hesitated and found himself unable to proceed. Abhai came forth — his "),
 ("defenders - and fearlessly lifted the Rod in his ghostly hands. He paused ", "defenders — and fearlessly lifted the Rod in his ghostly hands. He paused "),
-("Tallin raised his eyes to look into Abhai's and Abhai met his gaze - ", "Tallin raised his eyes to look into Abhai's and Abhai met his gaze — "),
-("your doubts at rest.' Tallin held the gaze for one more long moment - and ", "your doubts at rest.' Tallin held the gaze for one more long moment — and "),
+("Tallin raised his eyes to look into Abhai's and Abhai met his gaze - ", "Tallin raised his eyes to look into Abhai’s and Abhai met his gaze — "),
+("your doubts at rest.' Tallin held the gaze for one more long moment - and ", "your doubts at rest.” Tallin held the gaze for one more long moment — and "),
 ("Yes, Tallin - it is I.", "Yes, Tallin — it is I."),
 ("How did you get here - I thought you you were dead... and for that matter, ", "How did you get here — I thought you you were dead... and for that matter, "),
 ("of unimaginable splendor, glory and transcendence - the very realm of the ", "of unimaginable splendor, glory and transcendence — the very realm of the "),
 ("They are all here, princess! Hand picked by your father - the finest and ", "They are all here, princess! Hand picked by your father — the finest and "),
 ("They are all here, princess! Hand picked by your father - the finest and ", "They are all here, princess! Hand picked by your father — the finest and "),
 ("and leave them a small guard. Then they pressed onward to rescue Hidel - and ", "and leave them a small guard. Then they pressed onward to rescue Hidel — and "),
-("Cheer up -- you won't have to live with your failure for long...*snicker*", "Cheer up — you won't have to live with your failure for long...*snicker*"),
+("Cheer up -- you won't have to live with your failure for long...*snicker*", "Cheer up — you won’t have to live with your failure for long...*snicker*"),
 ("have a few scores to settle with you. Take them, troops - I want no orc left ", "have a few scores to settle with you. Take them, troops — I want no orc left "),
 ("been crushed. This relieves a blight on our land - but if we do not address ", "been crushed. This relieves a blight on our land — but if we do not address "),
 ("what race they come from - even orcs.", "what race they come from — even orcs."),
@@ -508,6 +551,18 @@ stringfixes = {
 ("- and unknown - world to trade with the Dwarves of Knalga.", "— and unknown — world to trade with the Dwarves of Knalga."),
 ("Thus, from a small, enslaved community, the people of Dwarven Doors - by ", "Thus, from a small, enslaved community, the people of Dwarven Doors — by "),
 ("their fortitude, valor, and wisdom - brought the Northlands out of the ", "their fortitude, valor, and wisdom — brought the Northlands out of the "),
+
+# Fix screw up
+# conversion added in 1.9.0-svn
+("Cheer up — you won't have to live with your failure for long...*snicker*", "Cheer up — you won’t have to live with your failure for long...*snicker*"),
+("your doubts at rest.' Tallin held the gaze for one more long moment — and ", "your doubts at rest.” Tallin held the gaze for one more long moment — and "),
+("Tallin raised his eyes to look into Abhai's and Abhai met his gaze — ", "Tallin raised his eyes to look into Abhai’s and Abhai met his gaze — "),
+("never would have risked their lives — nay, if I were not there they wouldn't ", "never would have risked their lives — nay, if I were not there they wouldn’t "),
+("Later, princess, first let's get outta — uh, let us take our leave of this ", "Later, princess, first let’s get outta — uh, let us take our leave of this "),
+("Just our luck to be here when they're mustering a field force — probably to ", "Just our luck to be here when they’re mustering a field force — probably to "),
+("anyway, haven't heard from him in years — the chief o' the villages that lay ", "anyway, haven’t heard from him in years — the chief o’ the villages that lay "),
+("dwarves — it's because of you that we ha' made a start rebuilding Knalga in ", "dwarves — it’s because of you that we ha’ made a start rebuilding Knalga in "),
+("Well, if you don't mind me saying — that certainly isn't the state of ", "Well, if you don’t mind me saying — that certainly isn’t the state of "),
 ),
 
 "wesnoth-thot" : (
@@ -526,13 +581,13 @@ stringfixes = {
 # Convert makeshift dashes:
 # conversion added in 1.9.0-svn
 ("Nay! Off with your hea- - -", "Nay! Off with your hea—"),
-("is time - but I'll", "is time — but I'll"),
+("is time - but I'll", "is time — but I’ll"),
 ("SE - The River Road.", "SE — The River Road."),
 ("SW - The", "SW — The"),
 ("SW - Southbay.", "SW — Southbay."),
 ("Hold - I see", "Hold — I see"),
 ("The River Road -", "The River Road —"),
-("I'm a tinkin- -", "I'm a tinkin—"),
+("I'm a tinkin- -", "I’m a tinkin—"),
 ("NW - Southbay", "NW — Southbay"),
 # Also, "Like" -> "like"
 ("More Like NW - Every orc", "More like NW — Every orc"),
@@ -547,13 +602,19 @@ stringfixes = {
 ("- As we agreed.", "— As we agreed."),
 ("and your people -", "and your people —"),
 ("their aid at all -", "their aid at all —"),
-("me - I'll be dead", "me — I'll be dead"),
+("me - I'll be dead", "me — I’ll be dead"),
 ("to say it - but", "to say it — but"),
 ("is ridiculous! I -", "is ridiculous! I —"),
 ("all I need - prepare", "all I need — prepare"),
 ("much -- from both", "much — from both"),
 ("a Lord -- to join", "a Lord — to join"),
 ("best of times - so", "best of times — so"),
+
+# Fix screw up
+# conversion added in 1.9.0-svn
+("is time — but I'll", "is time — but I’ll"),
+("I'm a tinkin—", "I’m a tinkin—"),
+("me — I'll be dead", "me — I’ll be dead"),
 ),
 
 "wesnoth-tsg" : (
@@ -570,10 +631,13 @@ stringfixes = {
 ("I too will make my stand here - I owe you my life and must atone for my ", "I too will make my stand here — I owe you my life and must atone for my "),
 ("Minister Hylas, ride with me to Westin - you must summon the Council of ", "Minister Hylas, ride with me to Westin — you must summon the Council of "),
 ("Far from home I fall - but not in vain! Guard our people, Deoran!", "Far from home I fall — but not in vain! Guard our people, Deoran!"),
-("when they have an ally directly behind the unit they are attacking - they'll ", "when they have an ally directly behind the unit they are attacking — they'll "),
+("when they have an ally directly behind the unit they are attacking - they'll ", "when they have an ally directly behind the unit they are attacking — they’ll "),
 ("magic. They are slow and weak - any of your units is more than a match for ", "magic. They are slow and weak — any of your units is more than a match for "),
 ("Finally Ethiliel told the men to halt and pitch camp - they had reached the ", "Finally Ethiliel told the men to halt and pitch camp — they had reached the "),
 
+# Fix screw up
+# conversion added in 1.9.0-svn
+("when they have an ally directly behind the unit they are attacking — they'll ", "when they have an ally directly behind the unit they are attacking — they’ll "),
 ),
 
 "wesnoth-sof" : (
@@ -583,26 +647,26 @@ stringfixes = {
 ("The Fire-sceptre great -", "The Fire-sceptre great —"),
 ("Uh, no, wait! Lets talk business - how much will you pay us to do this for ", "Uh, no, wait! Lets talk business — how much will you pay us to do this for "),
 ("Fine then - ten thousand... now, what exactly do you want us to make the ", "Fine then — ten thousand... now, what exactly do you want us to make the "),
-("Hey! You can't do that - this road is an elvish road. We're not letting you ", "Hey! You can't do that — this road is an elvish road. We're not letting you "),
+("Hey! You can't do that - this road is an elvish road. We're not letting you ", "Hey! You can’t do that — this road is an elvish road. We’re not letting you "),
 ("Ah, I see - you are one of the rebels. Our treaty with the elves does not ", "Ah, I see — you are one of the rebels. Our treaty with the elves does not "),
 ("We will see about that - if you ever get underground, which I doubt. Ha!", "We will see about that — if you ever get underground, which I doubt. Ha!"),
-("Here - I'll go warn the council. You stay here and fight.", "Here — I'll go warn the council. You stay here and fight."),
-("dwarf-made stonecraft. We refuse - now let's close these gates!", "dwarf-made stonecraft. We refuse — now let's close these gates!"),
-("Just watch. The gates wi' close very soon. Then the elves outside - and, ", "Just watch. The gates wi' close very soon. Then the elves outside — and, "),
-("unfortunately, our dwarves who are still out there - wi' become irrelevant.", "unfortunately, our dwarves who are still out there — wi' become irrelevant."),
+("Here - I'll go warn the council. You stay here and fight.", "Here — I’ll go warn the council. You stay here and fight."),
+("dwarf-made stonecraft. We refuse - now let's close these gates!", "dwarf-made stonecraft. We refuse — now let’s close these gates!"),
+("Just watch. The gates wi' close very soon. Then the elves outside - and, ", "Just watch. The gates wi’ close very soon. Then the elves outside — and, "),
+("unfortunately, our dwarves who are still out there - wi' become irrelevant.", "unfortunately, our dwarves who are still out there — wi’ become irrelevant."),
 ("for the runesmith named Thursagan - the sage of fire.", "for the runesmith named Thursagan — the sage of fire."),
 ("members of their party - one expected, and one not.", "members of their party — one expected, and one not."),
-("In the treasury. And leave it there until you're ready to work with it - I ", "In the treasury. And leave it there until you're ready to work with it — I "),
-("the finest coal, and many of the finest jewels in the land - we'll need ", "the finest coal, and many of the finest jewels in the land — we'll need "),
+("In the treasury. And leave it there until you're ready to work with it - I ", "In the treasury. And leave it there until you’re ready to work with it — I "),
+("the finest coal, and many of the finest jewels in the land - we'll need ", "the finest coal, and many of the finest jewels in the land — we’ll need "),
 ("to fight them; also be prepared to spend quite some time here - mining can ", "to fight them; also be prepared to spend quite some time here — mining can "),
-("Yes, although we will have to hire the miners - they don't work for free. ", "Yes, although we will have to hire the miners v they don't work for free. "),
+("Yes, although we will have to hire the miners - they don't work for free. ", "Yes, although we will have to hire the miners — they don’t work for free. "),
 ("were others - many others. Thus I present Theganli, the jeweler. His role is ", "were others — many others. Thus I present Theganli, the jeweler. His role is "),
 ("were no exception. They were crafters of crafters - they made tools. The ", "were no exception. They were crafters of crafters — they made tools. The "),
 ("How about this - I help you defeat them, and you let me keep the ruby when ", "How about this — I help you defeat them, and you let me keep the ruby when "),
 ("Well, back to the battle - we are all in the caves, but there are still ", "Well, back to the battle — we are all in the caves, but there are still "),
 ("Well, back to the battle - we need everyone to get into the Shorbear caves. ", "Well, back to the battle — we need everyone to get into the Shorbear caves. "),
-("If ye'll permit me to say so, sir, ye're wrong. We could - ", "If ye'll permit me to say so, sir, ye're wrong. We could — "),
-("If you'll permit me to say so, sir, you're wrong. We could - ", "If you'll permit me to say so, sir, you're wrong. We could — "),
+("If ye'll permit me to say so, sir, ye're wrong. We could - ", "If ye’ll permit me to say so, sir, ye’re wrong. We could — "),
+("If you'll permit me to say so, sir, you're wrong. We could - ", "If you’ll permit me to say so, sir, you’re wrong. We could — "),
 ("went south - back to the Wesnoth border.", "went south — back to the Wesnoth border."),
 ("And thus Rugnur died - a glorious death, in the eyes of the dwarven sages. ", "And thus Rugnur died — a glorious death, in the eyes of the dwarven sages. "),
 ("And Krawg - well, Krawg followed him. I know not how. But Krawg made his way ", "And Krawg — well, Krawg followed him. I know not how. But Krawg made his way "),
@@ -612,6 +676,19 @@ stringfixes = {
 # (NOT YET)
 #("The land of Wesnoth's banner bold", "The land of Wesnoth’s banner bold"),
 #("Made by a runesmith's hand.", "Made by a runesmith’s hand."),
+
+# Fix screw up:
+# conversion added in 1.9.0-svn
+("Yes, although we will have to hire the miners v they don't work for free. ", "Yes, although we will have to hire the miners — they don’t work for free. "),
+("Hey! You can't do that — this road is an elvish road. We're not letting you ", "Hey! You can’t do that — this road is an elvish road. We’re not letting you "),
+("If you'll permit me to say so, sir, you're wrong. We could — ", "If you’ll permit me to say so, sir, you’re wrong. We could — "),
+("If ye'll permit me to say so, sir, ye're wrong. We could — ", "If ye’ll permit me to say so, sir, ye’re wrong. We could — "),
+("the finest coal, and many of the finest jewels in the land — we'll need ", "the finest coal, and many of the finest jewels in the land — we’ll need "),
+("In the treasury. And leave it there until you're ready to work with it — I ", "In the treasury. And leave it there until you’re ready to work with it — I "),
+("unfortunately, our dwarves who are still out there — wi' become irrelevant.", "unfortunately, our dwarves who are still out there — wi’ become irrelevant."),
+("Just watch. The gates wi' close very soon. Then the elves outside — and, ", "Just watch. The gates wi’ close very soon. Then the elves outside — and, "),
+("dwarf-made stonecraft. We refuse — now let's close these gates!", "dwarf-made stonecraft. We refuse — now let’s close these gates!"),
+("Here — I'll go warn the council. You stay here and fight.", "Here — I’ll go warn the council. You stay here and fight."),
 ),
 
 "wesnoth-sotbe" :(
@@ -625,31 +702,43 @@ stringfixes = {
 ("followed were relatively peaceful and prosperous - at least, for the humans.", "followed were relatively peaceful and prosperous — at least, for the humans."),
 ("In the thirteenth year of the Lord Protectorship of Howgarth III - the ", "In the thirteenth year of the Lord Protectorship of Howgarth III — the "),
 ("successor of Rahul I - tension began to rise between orcish tribes and human ", "successor of Rahul I — tension began to rise between orcish tribes and human "),
-("on their lands. Then, Earl Lanbec'h - the most powerful human warlord of the ", "on their lands. Then, Earl Lanbec'h — the most powerful human warlord of the "),
+("on their lands. Then, Earl Lanbec'h - the most powerful human warlord of the ", "on their lands. Then, Earl Lanbec’h — the most powerful human warlord of the "),
 ("North - determined to abolish the orcish menace raised an army and conferred ", "North — determined to abolish the orcish menace raised an army and conferred "),
 ("Who is this unlicked whelp? Grunts - kill him and bring me his head!", "Who is this unlicked whelp? Grunts — kill him and bring me his head!"),
-("Wise decision, Kapou'e. By the size of that army, this is no mere raid - it ", "Wise decision, Kapou'e. By the size of that army, this is no mere raid — it "),
-("And this is that stupid human who dares march against Kapou'e - Son of the ", "And this is that stupid human who dares march against Kapou'e — Son of the "),
-("Hey, Chief, I was thinking - dwarves are pretty slow; why don't we just ", "Hey, Chief, I was thinking — dwarves are pretty slow; why don't we just "),
-("As soon as the sandstorm died down, Kapou'e and his men - eager to escape ", "As soon as the sandstorm died down, Kapou'e and his men — eager to escape "),
+("Wise decision, Kapou'e. By the size of that army, this is no mere raid - it ", "Wise decision, Kapou’e. By the size of that army, this is no mere raid — it "),
+("And this is that stupid human who dares march against Kapou'e - Son of the ", "And this is that stupid human who dares march against Kapou’e — Son of the "),
+("Hey, Chief, I was thinking - dwarves are pretty slow; why don't we just ", "Hey, Chief, I was thinking — dwarves are pretty slow; why don’t we just "),
+("As soon as the sandstorm died down, Kapou'e and his men - eager to escape ", "As soon as the sandstorm died down, Kapou’e and his men — eager to escape "),
 ("the searing heat - left the oasis and continued on their trek.", "the searing heat — left the oasis and continued on their trek."),
 ("and all the natural sounds of the forest died away - leaving everything ", "and all the natural sounds of the forest died away — leaving everything "),
-("Leave your people here Kapou'e - they are safe for the moment - and go ", "Leave your people here Kapou'e — they are safe for the moment — and go "),
+("Leave your people here Kapou'e - they are safe for the moment - and go ", "Leave your people here Kapou’e — they are safe for the moment — and go "),
 ("friends - get them!", "friends — get them!"),
 ("After a fair amount of squabbling - for some of the older warlords were ", "After a fair amount of squabbling — for some of the older warlords were "),
 ("reluctant to let this young upstart lead them - and a few consequent ", "reluctant to let this young upstart lead them — and a few consequent "),
-("Kapou'e placed one force under the leadership of Shan Taum the Smug, who - ", "Kapou'e placed one force under the leadership of Shan Taum the Smug, who — "),
+("Kapou'e placed one force under the leadership of Shan Taum the Smug, who - ", "Kapou’e placed one force under the leadership of Shan Taum the Smug, who — "),
 ("despite his obnoxious nature - was a fierce and capable leader. He was sent ", "despite his obnoxious nature — was a fierce and capable leader. He was sent "),
 ("He sent the shamans, Pirk, Gork and Vraurk back to Borstep - a city just ", "He sent the shamans, Pirk, Gork and Vraurk back to Borstep — a city just "),
 ("north of the Mourned Hills - to organize any remaining orcish forces as well ", "north of the Mourned Hills — to organize any remaining orcish forces as well "),
-("Kapou'e himself - desiring to settle this business once and for all - led ", "Kapou'e himself — desiring to settle this business once and for all — led "),
+("Kapou'e himself - desiring to settle this business once and for all - led ", "Kapou’e himself — desiring to settle this business once and for all — led "),
 ("The orcs are making headway. The city must not fall - call the reserves!", "The orcs are making headway. The city must not fall — call the reserves!"),
 ("fall. A few days after the first snowfall a goblin rider - half dead from ", "fall. A few days after the first snowfall a goblin rider — half dead from "),
 ("exhaustion - raced into Dorset with the news that Borstep was under siege by ", "exhaustion — raced into Dorset with the news that Borstep was under siege by "),
 ("give him a good chance to clobber the orcs together again - the old ", "give him a good chance to clobber the orcs together again — the old "),
-("Kapou'e's exploits had been widely circulated - from his rescue of the ", "Kapou'e's exploits had been widely circulated — from his rescue of the "),
+("Kapou'e's exploits had been widely circulated - from his rescue of the ", "Kapou’e’s exploits had been widely circulated — from his rescue of the "),
 ("horde was dispersed he appointed three more shamans - with the consent of ", "horde was dispersed he appointed three more shamans — with the consent of "),
 ("all - to make the Great Council complete again.", "all — to make the Great Council complete again."),
+
+# Fix screw up
+# conversion added in 1.9.0-svn
+("Kapou'e's exploits had been widely circulated — from his rescue of the ", "Kapou’e’s exploits had been widely circulated — from his rescue of the "),
+("Kapou'e himself — desiring to settle this business once and for all — led ", "Kapou’e himself — desiring to settle this business once and for all — led "),
+("Kapou'e placed one force under the leadership of Shan Taum the Smug, who — ", "Kapou’e placed one force under the leadership of Shan Taum the Smug, who — "),
+("Leave your people here Kapou'e — they are safe for the moment — and go ", "Leave your people here Kapou’e — they are safe for the moment — and go "),
+("As soon as the sandstorm died down, Kapou'e and his men — eager to escape ", "As soon as the sandstorm died down, Kapou’e and his men — eager to escape "),
+("Hey, Chief, I was thinking — dwarves are pretty slow; why don't we just ", "Hey, Chief, I was thinking — dwarves are pretty slow; why don’t we just "),
+("And this is that stupid human who dares march against Kapou'e — Son of the ", "And this is that stupid human who dares march against Kapou’e — Son of the "),
+("Wise decision, Kapou'e. By the size of that army, this is no mere raid — it ", "Wise decision, Kapou’e. By the size of that army, this is no mere raid — it "),
+("on their lands. Then, Earl Lanbec'h — the most powerful human warlord of the ", "on their lands. Then, Earl Lanbec’h — the most powerful human warlord of the "),
 ),
 
 "wesnoth-tb" : (
@@ -680,14 +769,19 @@ stringfixes = {
 # Convert makeshift dashes:
 # conversion added in 1.9.0-svn
 ("Strike hard and fast and also be careful--right, this is going to be fun.", "Strike hard and fast and also be careful—right, this is going to be fun."),
-("There might be, but I don't--", "There might be, but I don't—"),
+("There might be, but I don't--", "There might be, but I don’t—"),
 ("You idiot--", "You idiot—"),
 ("unfortunately we found your men dead--", "unfortunately we found your men dead—"),
 ("Well, actually they were fleeing from--", "Well, actually they were fleeing from—"),
-("Look, if you'll just let me explain--", "Look, if you'll just let me explain—"),
+("Look, if you'll just let me explain--", "Look, if you’ll just let me explain—"),
 ("This is--", "This is—"),
 ("This entire journey has been based on a lie--", "This entire journey has been based on a lie—"),
 ("the last few generations--if anything the land had grown even more", "the last few generations—if anything the land had grown even more"),
+
+# Fix screw up
+# conversion added in 1.9.0-svn
+("Look, if you'll just let me explain—", "Look, if you’ll just let me explain—"),
+("There might be, but I don't—", "There might be, but I don’t—"),
 ),
 
 "1.8-announcement" : (
