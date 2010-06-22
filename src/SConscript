@@ -22,7 +22,6 @@ libwesnoth_core_sources = Split("""
     map.cpp
     map_location.cpp
     md5.cpp
-    network.cpp
     thread.cpp
     tstring.cpp
     util.cpp
@@ -42,6 +41,14 @@ if env["pool_alloc"]:
 
 libwesnoth_core_sources.extend(env.Object("network_worker.cpp", EXTRA_DEFINE = env['raw_sockets'] and "NETWORK_USE_RAW_SOCKETS" or None))
 
+if env["use_network_ana"]:
+    client_env.Append(CPPPATH = ["#/src/ana/api"])
+    libwesnoth_core_sources.append("network_ana.cpp")
+    ana = SConscript("ana/src/SConscript", exports = {"env" : client_env})
+else:
+    libwesnoth_core_sources.append("network.cpp")
+    ana = []
+
 game_config_env = env.Clone()
 filesystem_env = env.Clone()
 if env["PLATFORM"] != "win32":
@@ -58,7 +65,7 @@ libwesnoth_core_sources.extend([
     filesystem_env.Object("filesystem.cpp")
     ])
 
-libwesnoth_core = env.Library("wesnoth_core", libwesnoth_core_sources)
+libwesnoth_core = [env.Library("wesnoth_core", libwesnoth_core_sources), ana]
 
 libwesnoth_sources = Split("""
     arrow.cpp
