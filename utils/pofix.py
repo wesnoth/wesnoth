@@ -817,6 +817,10 @@ if __name__ == '__main__':
             after = before
             decommented = re.sub("#.*", "", before)
             for (domain, fixes) in stringfixes.items():
+	        # In case of screwed-up pairs that are hard to find, uncomment the following:
+	        #for fix in fixes:
+                #    if len(fix) != 2:
+                #        print fix
                 for (old, new) in fixes:
                     if old is new:
                         #complain loudly
