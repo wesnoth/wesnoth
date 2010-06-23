@@ -2697,7 +2697,8 @@ WML_HANDLER_FUNCTION(switch, event_info, cfg)
 	bool not_found = true;
 	// execute all cases where the value matches
 	foreach (const vconfig &c, cfg.get_children("case")) {
-		if (var == c["value"]) {
+		std::vector<std::string> vals = utils::split(c["value"]);
+		if (std::find(vals.begin(), vals.end(), var) != vals.end()) {
 			not_found = false;
 			handle_event_commands(event_info, c);
 		}
