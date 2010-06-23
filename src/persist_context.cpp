@@ -85,6 +85,7 @@ bool persist_context::clear_var(std::string &global)
 						active_->cfg_.clear_children("variables");
 						active_->cfg_.remove_attribute("variables");
 					}
+					namespace_ = namespace_.prev();
 				}
 			}
 	//		dirty_ = true;
@@ -135,18 +136,8 @@ bool persist_context::set_var(const std::string &global,const config &val)
 }
 void persist_context::set_node(const std::string &name) {
 	active_ = &(root_node_.child(name));
+	namespace_ = name_space(namespace_.namespace_ + "." + name);
 }
 std::string persist_context::get_node() {
-	std::vector<std::string> layers;
-	node *ptr = active_;
-	while (ptr != NULL) {
-		layers.push_back(ptr->name_);
-		ptr = ptr->parent_;
-	}
-	std::string ret;
-	for (int i = layers.size() - 1; i >= 0; i--) {
-		ret += layers[i];
-		if (i != 0) ret += ".";
-	}
-	return ret;
+	return namespace_.namespace_;
 }
