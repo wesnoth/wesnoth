@@ -123,6 +123,21 @@ private:
 			children_[name] = new node(name,root_,cfg_.child_or_add(name),this);
 			return *(children_[name]);
 		}
+		bool remove_child(const std::string &name) {
+			bool ret = false;
+			if (children_.find(name) != children_.end()) {
+				cfg_.clear_children(name);
+				cfg_.remove_attribute(name);
+				if (cfg_.child("variables").empty()) {
+					cfg_.clear_children("variables");
+					cfg_.remove_attribute("variables");
+				}
+				delete children_[name];
+				children_.erase(name);
+				ret = true;
+			}
+			return ret;
+		}
 		node &child(const name_space &name) {
 			if (name) {
 				if (children_.find(name.root_) == children_.end())

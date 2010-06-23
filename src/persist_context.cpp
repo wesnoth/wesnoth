@@ -79,12 +79,7 @@ bool persist_context::clear_var(std::string &global)
 				active_->cfg_.remove_attribute("variables");
 				while ((active_->cfg_.empty()) && (active_->parent_ != NULL)) {
 					active_ = active_->parent_;
-					active_->cfg_.clear_children(namespace_.node_);
-					active_->cfg_.remove_attribute(namespace_.node_);
-					if (active_->cfg_.child("variables").empty()) {
-						active_->cfg_.clear_children("variables");
-						active_->cfg_.remove_attribute("variables");
-					}
+					active_->remove_child(namespace_.node_);
 					namespace_ = namespace_.prev();
 				}
 			}
