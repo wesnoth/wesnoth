@@ -87,13 +87,13 @@ static void move_unit_between(const map_location& a, const map_location& b, unit
 
 		// target_time must be short to avoid jumpy move
 		// std::cout << "target time: " << target_time << "\n";
-	// we round it to the next multile of 150
-	target_time += 150;
-	target_time -= target_time%150;
+	// we round it to the next multile of 110
+	target_time += 110;
+	target_time -= target_time%110;
 
-	// This code causes backwards teleport because the time > 150 causes offset > 1.0
+	// This code causes backwards teleport because the time > 110 causes offset > 1.0
 	// which will not match with the following -1.0
-	// if(  target_time - animator.get_animation_time_potential() < 100 ) target_time +=150;
+	// if(  target_time - animator.get_animation_time_potential() < 100 ) target_time +=110;
 
 	animator.wait_until(target_time);
 		// debug code, see unit_frame::redraw()
