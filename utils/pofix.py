@@ -782,6 +782,39 @@ stringfixes = {
 # conversion added in 1.9.0-svn
 ("Look, if you'll just let me explain—", "Look, if you’ll just let me explain—"),
 ("There might be, but I don't—", "There might be, but I don’t—"),
+
+# Convert straight apostrophes and quotation marks
+# conversion added in 1.9.0-svn
+# (NOT YET)
+#("What's happened? Oh Eloh, the craters are everywhere, everything is gone, ruined. I can hardly recognize our village. I didn't think it could be this bad.", "What’s happened? Oh Eloh, the craters are everywhere, everything is gone, ruined. I can hardly recognize our village. I didn’t think it could be this bad."),
+#("C'mon", "C’mon"),
+#("Tanuil's", "Tanuil’s"),
+#("That's", "That’s"),
+#("Uria's", "Uria’s"),
+#("If we don't stop them", "If we don’t stop them"),
+#("Then let's join the battle!", "Then let’s join the battle!"),
+#("let's get rid of them", "let’s get rid of them"),
+#("If we don't", "If we don’t"),
+#("things won't be", "things won’t be"),
+#("we can't dwell on the dead", "we can’t dwell on the dead"),
+#("Let's keep exploring the wreckage.", "Let’s keep exploring the wreckage."),
+#("They're destroyed at last.", "They’re destroyed at last."),
+#("But there's no time", "But there’s no time"),
+#("so we'll have", "so we’ll have"),
+#("I'm fine. I'm afraid only", "I’m fine. I’m afraid only"),
+#("Maybe they're hiding in the stables. Let's go check.", "Maybe they’re hiding in the stables. Let’s go check."),
+#("We'll need your help", "We’ll need your help"),
+#("They've agreed to", "They’ve agreed to"),
+#("couldn't", "couldn’t"),
+#("Eloh's", "Eloh’s"),
+#("I've fought", "I’ve fought"),
+#("We'll just have to find out.", "We’ll just have to find out."),
+#("I suppose we wouldn't", "I suppose we wouldn’t"),
+#("there'll be one heck", "there’ll be one heck"),
+#("You've been working on", "You’ve been working on"),
+#("Hey Kaleh, how's", "Hey Kaleh, how’s"),
+#("I'm not quite", "I’m not quite"),
+#("Yechnagoth's", "Yechnagoth’s"),
 ),
 
 "1.8-announcement" : (
