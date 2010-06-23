@@ -62,7 +62,8 @@ playsingle_controller::playsingle_controller(const config& level,
 	replaying_(false),
 	turn_over_(false),
 	skip_next_turn_(false),
-	level_result_(NONE)
+	level_result_(NONE),
+	persist_()
 {
 	// game may need to start in linger mode
 	if (state_of_game.classification().completion == "victory" || state_of_game.classification().completion == "defeat")
@@ -74,12 +75,14 @@ playsingle_controller::playsingle_controller(const config& level,
 	ai::game_info ai_info;
 	ai::manager::set_ai_info(ai_info);
 	ai::manager::add_observer(this) ;
+	resources::persist = &persist_;
 }
 
 playsingle_controller::~playsingle_controller()
 {
 	ai::manager::remove_observer(this) ;
 	ai::manager::clear_ais() ;
+	resources::persist = NULL;
 }
 
 void playsingle_controller::init_gui(){

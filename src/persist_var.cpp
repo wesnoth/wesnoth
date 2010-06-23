@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 - 2010 by David White <dave@whitevine.net>
+   Copyright (C) 2010 by Jody Northup
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -17,6 +17,7 @@
 #include "gamestatus.hpp"
 #include "log.hpp"
 #include "persist_context.hpp"
+#include "persist_manager.hpp"
 #include "persist_var.hpp"
 #include "resources.hpp"
 
@@ -78,7 +79,7 @@ void verify_and_get_global_variable(const vconfig &pcfg)
 	// TODO: determine single or multiplayer and check for side=, depending.
 	if (valid)
 	{
-		persist_context ctx(pcfg["namespace"]);
+		persist_context &ctx = resources::persist->get_context((pcfg["namespace"]));
 		if (ctx.valid()) {
 			get_global_variable(ctx,pcfg);
 		} else {
@@ -104,7 +105,7 @@ void verify_and_set_global_variable(const vconfig &pcfg)
 	// TODO: determine single or multiplayer and check for side=, depending.
 	if (valid)
 	{
-		persist_context ctx(pcfg["namespace"]);
+		persist_context &ctx = resources::persist->get_context((pcfg["namespace"]));
 		if (ctx.valid()) {
 			set_global_variable(ctx,pcfg);
 		} else {
@@ -126,7 +127,7 @@ void verify_and_clear_global_variable(const vconfig &pcfg)
 	// TODO: determine single or multiplayer and check for side=, depending.
 	if (valid)
 	{
-		persist_context ctx(pcfg["namespace"]);
+		persist_context &ctx = resources::persist->get_context((pcfg["namespace"]));
 		if (ctx.valid()) {
 			clear_global_variable(ctx,pcfg);
 		} else {

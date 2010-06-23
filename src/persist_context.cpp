@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 - 2010 by David White <dave@whitevine.net>
+   Copyright (C) 2010 by Jody Northup
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -14,68 +14,11 @@
 
 #include "global.hpp"
 
-#include "filesystem.hpp"
-#include "util.hpp"
 #include "log.hpp"
 #include "persist_context.hpp"
+#include "persist_manager.hpp"
 #include "resources.hpp"
-#include "serialization/binary_or_text.hpp"
-
-static std::string get_persist_cfg_name(const std::string &name_space) {
-	return (get_dir(get_user_data_dir() + "/persist/") + name_space + ".cfg");
-}
-
-static bool load_persist_data(const std::string &name_space, config &cfg, const bool create_if_missing = true)
-{
-	bool success = false;
-	std::string cfg_dir = get_dir(get_user_data_dir() + "/persist");
-	create_directory_if_missing(cfg_dir);
-
-	std::string cfg_name = get_persist_cfg_name(name_space);
-	if (!cfg_name.empty()) {
-		scoped_istream file_stream = istream_file(cfg_name);
-		if (file_stream->fail()) {
-			if (create_if_missing) {
-				success = true;
-			}
-		} else {
-			try {
-				detect_format_and_read(cfg,*file_stream);
-				success = true;
-			} catch (config::error &err) {
-				LOG_SAVE << err.message;
-				success = false;
-			}
-		}
-	}
-	return success;
-}
-
-static bool save_persist_data(const std::string &name_space, config &cfg)
-{
-	bool success = false;
-
-	std::string cfg_name = get_persist_cfg_name(name_space);
-	if (!cfg_name.empty()) {
-		if (cfg.empty()) {
-			success = delete_directory(cfg_name);
-		} else {
-			scoped_ostream out = ostream_file(cfg_name);
-			if (!out->fail())
-			{
-				config_writer writer(*out,false);
-				try {
-					writer.write(cfg);
-					success = true;
-				} catch(config::error &err) {
-					LOG_SAVE << err.message;
-					success = false;
-				}
-			}
-		}
-	}
-	return success;
-}
+#include "util.hpp"
 
 config pack_scalar(const std::string &name, const t_string &val)
 {
@@ -89,12 +32,12 @@ persist_context &persist_context::add_child(const std::string& /*key*/)  {
 	return *this;//(children_[key]);
 }
 void persist_context::load() {
-	load_persist_data(namespace_.root_,cfg_,false);
+	resources::persist->load_data(namespace_.root_,cfg_,false);
 }
 
 persist_context::persist_context(const std::string &name_space) 
 	: cfg_()
-	, namespace_(name_space)
+	, namespace_(name_space,true)
 	, root_node_(namespace_.root_,this,cfg_)
 	, active_(&root_node_)
 	, valid_(namespace_.valid())
@@ -142,7 +85,6 @@ bool persist_context::clear_var(std::string &global)
 						active_->cfg_.clear_children("variables");
 						active_->cfg_.remove_attribute("variables");
 					}
-					namespace_ = namespace_.prev();
 				}
 			}
 	//		dirty_ = true;
@@ -174,7 +116,7 @@ config persist_context::get_var(const std::string &global) const
 	return ret;
 }
 bool persist_context::save_context() {
-	return save_persist_data(namespace_.root_,cfg_);
+	return resources::persist->save_data(namespace_.root_,cfg_);
 }
 bool persist_context::set_var(const std::string &global,const config &val)
 {
@@ -190,4 +132,21 @@ bool persist_context::set_var(const std::string &global,const config &val)
 	}
 //	dirty_ = true;
 	return save_context();
+}
+void persist_context::set_node(const std::string &name) {
+	active_ = &(root_node_.child(name));
+}
+std::string persist_context::get_node() {
+	std::vector<std::string> layers;
+	node *ptr = active_;
+	while (ptr != NULL) {
+		layers.push_back(ptr->name_);
+		ptr = ptr->parent_;
+	}
+	std::string ret;
+	for (int i = layers.size() - 1; i >= 0; i--) {
+		ret += layers[i];
+		if (i != 0) ret += ".";
+	}
+	return ret;
 }

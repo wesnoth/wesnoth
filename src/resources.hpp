@@ -28,6 +28,7 @@ class play_controller;
 class team;
 class tod_manager;
 class unit_map;
+class persist_manager;
 struct undo_action;
 
 namespace soundsource { class manager; }
@@ -48,6 +49,7 @@ namespace resources
 	extern wb::manager *whiteboard;
 	extern std::vector<undo_action> *undo_stack;
 	extern std::vector<undo_action> *redo_stack;
+	extern persist_manager *persist;
 }
 
 #endif

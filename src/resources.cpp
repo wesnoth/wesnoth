@@ -28,4 +28,5 @@ namespace resources
 	wb::manager *whiteboard;
 	std::vector<undo_action> *undo_stack;
 	std::vector<undo_action> *redo_stack;
+	persist_manager *persist;
 }

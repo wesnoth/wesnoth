@@ -425,6 +425,7 @@ set(wesnoth-main_SRC
     multiplayer_create.cpp
     ${network_implementation_files} # network.cpp and network_worker.cpp are included by default (without USE_ANA_NETWORK)
     persist_context.cpp
+    persist_manager.cpp
     persist_var.cpp
     playcampaign.cpp
     play_controller.cpp

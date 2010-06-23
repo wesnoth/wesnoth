@@ -241,6 +241,7 @@ wesnoth_source = \
 	$(network_core) \
 	pathfind/pathfind.cpp \
 	persist_context.cpp \
+	persist_manager.cpp \
 	persist_var.cpp \
 	playcampaign.cpp \
 	play_controller.cpp \

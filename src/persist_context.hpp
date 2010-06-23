@@ -1,6 +1,6 @@
 /* $Id$ */
 /*
-   Copyright (C) 2003 - 2010 by David White <dave@whitevine.net>
+   Copyright (C) 2010 by Jody Northup
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
 
    This program is free software; you can redistribute it and/or modify
@@ -22,7 +22,7 @@ static lg::log_domain log_persist("engine/persistence");
 #define ERR_SAVE LOG_STREAM(err, log_persist)
 config pack_scalar(const std::string &,const t_string &);
 class persist_context {
-private:
+public:
 	struct name_space {
 		std::string namespace_;
 		std::string root_;
@@ -76,7 +76,7 @@ private:
 		{
 		}
 
-		name_space(const std::string &ns)
+		name_space(const std::string &ns, bool doParse = false)
 			: namespace_(ns)
 			, root_()
 			, node_()
@@ -84,7 +84,8 @@ private:
 			, descendants_()
 			, valid_(false)
 		{
-			parse();
+			if (doParse)
+				parse();
 			valid_ = ((namespace_.find_first_not_of("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz_.") > namespace_.length()) && !namespace_.empty());
 			root_ = namespace_.substr(0,namespace_.find_first_of("."));
 			node_ = namespace_.substr(namespace_.find_last_of(".") + 1);
@@ -94,6 +95,7 @@ private:
 				descendants_ = namespace_.substr(namespace_.find_first_of(".") + 1);
 		}
 	};
+private:
 	struct node {
 		typedef std::map<std::string,node*> child_map;
 
@@ -166,6 +168,8 @@ public:
 	bool clear_var(std::string &);
 	config get_var(const std::string &) const;
 	bool set_var(const std::string &, const config &);
+	std::string get_node();
+	void set_node(const std::string &);
 	bool valid() const { return valid_; };
 	bool dirty() const { 
 		return true;
