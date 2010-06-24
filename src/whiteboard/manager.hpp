@@ -55,12 +55,12 @@ public:
 	 * Temporarily apply the effects of the current team's
 	 * planned moves to the unit map.
 	 */
-	void apply_temp_modifiers();
-	void remove_temp_modifiers();
-	void toggle_temp_modifiers();
-	bool temp_modifiers_applied() { return temp_modifiers_applied_; }
+	void push_temp_modifiers();
+	void pop_temp_modifiers();
+	void clear_temp_modifiers();
+	bool temp_modifiers_applied() { return stacked_modifiers_calls_ > 0; }
 
-	bool block_mouse_motion() {return block_mouse_motion_; }
+	bool ignore_mouse_motion() {return ignore_mouse_motion_; }
 
 	/**
 	 * Highlights the action for this unit,
@@ -68,8 +68,8 @@ public:
 	 */
 	void highlight_action(const unit& unit);
 
+	void mouseover_hex(const map_location& hex);
 	void highlight_hex(const map_location& hex);
-
 	void remove_highlight();
 
 	/** Choose the target unit for action creation */
@@ -116,8 +116,21 @@ private:
 	unit* selected_unit_;
 	map_location highlighted_hex_;
 
-	bool temp_modifiers_applied_;
-	bool block_mouse_motion_;
+	bool ignore_mouse_motion_;
+
+	unsigned int stacked_modifiers_calls_;
+};
+
+struct scoped_modifiers
+{
+	scoped_modifiers();
+	~scoped_modifiers();
+};
+
+struct scoped_modifiers_remover
+{
+	scoped_modifiers_remover();
+	~scoped_modifiers_remover();
 };
 
 } // end namespace wb

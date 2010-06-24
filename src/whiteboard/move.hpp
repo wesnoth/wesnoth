@@ -42,7 +42,7 @@ public: //constants
 	static const double ALPHA_NORMAL;
 
 public:
-	move(unit& subject, const map_location& target_hex, boost::shared_ptr<arrow> arrow,
+	move(unit& subject, const map_location& source_hex, const map_location& target_hex, boost::shared_ptr<arrow> arrow,
 			boost::shared_ptr<unit> fake_unit);
 	virtual ~move();
 

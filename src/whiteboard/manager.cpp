@@ -43,8 +43,8 @@ manager::manager():
 		fake_unit_(),
 		selected_unit_(NULL),
 		highlighted_hex_(map_location::null_location),
-		temp_modifiers_applied_(false),
-		block_mouse_motion_(false)
+		ignore_mouse_motion_(false),
+		stacked_modifiers_calls_(0)
 {
 }
 
@@ -64,39 +64,63 @@ static side_actions_ptr get_current_side_actions()
 	return side_actions;
 }
 
-void manager::apply_temp_modifiers()
+void manager::push_temp_modifiers()
 {
-	if (!temp_modifiers_applied_)
+	if (active_)
 	{
-		mapbuilder_.reset(new mapbuilder_visitor(*resources::units));
-		const action_set& actions = get_current_side_actions()->actions();
-		foreach (const action_ptr &action, actions)
+		if (stacked_modifiers_calls_ == 0)
 		{
-			assert(action);
-			action->accept(*mapbuilder_);
+			mapbuilder_.reset(new mapbuilder_visitor(*resources::units));
+			const action_set& actions = get_current_side_actions()->actions();
+			foreach (const action_ptr &action, actions)
+			{
+				assert(action);
+				action->accept(*mapbuilder_);
+			}
 		}
-		temp_modifiers_applied_ = true;
+		DBG_WB << "Increasing stacked modifiers calls count to " << stacked_modifiers_calls_ << "\n";
+		++stacked_modifiers_calls_;
 	}
 }
-void manager::remove_temp_modifiers()
+
+void manager::pop_temp_modifiers()
 {
-	DBG_WB << "Removing temporary modifiers.\n";
-	mapbuilder_.reset();
-	temp_modifiers_applied_ = false;
+	if (active_)
+	{
+		if (stacked_modifiers_calls_ > 0)
+		{
+			DBG_WB << "Decreasing stacked modifiers calls count to " << stacked_modifiers_calls_ << "\n";
+			--stacked_modifiers_calls_;
+			if (stacked_modifiers_calls_ == 0)
+			{
+				DBG_WB << "Removing temporary modifiers.\n";
+				mapbuilder_.reset();
+			}
+		}
+	}
 }
 
-void manager::toggle_temp_modifiers()
+void manager::clear_temp_modifiers()
 {
-	if (temp_modifiers_applied_)
-		remove_temp_modifiers();
-	else
-		apply_temp_modifiers();
+	if (active_)
+	{
+		DBG_WB << "Removing temporary modifiers and erasing stack marker.\n";
+		stacked_modifiers_calls_ = 0;
+		mapbuilder_.reset();
+	}
+}
+
+void manager::mouseover_hex(const map_location& hex)
+{
+	if (active_ && !selected_unit_)
+	{
+		remove_highlight();
+		highlight_hex(hex);
+	}
 }
 
 void manager::highlight_hex(const map_location& hex)
 {
-	if (selected_unit_ != NULL) return;
-
 	highlighted_hex_ = hex;
 
 	unit_map::iterator highlighted_unit = resources::units->find(hex);
@@ -116,8 +140,6 @@ void manager::highlight_hex(const map_location& hex)
 
 void manager::remove_highlight()
 {
-	if (selected_unit_ != NULL) return;
-
 	highlight_visitor unhighlighter(false);
 
 	action_set actions = get_current_side_actions()->actions();
@@ -130,12 +152,8 @@ void manager::remove_highlight()
 void manager::select_unit(unit& unit)
 {
 	erase_temp_move();
+	remove_highlight();
 	action_set actions = get_current_side_actions()->actions();
-	highlight_visitor unhighlighter(false);
-	foreach(action_ptr action, actions)
-	{
-			action->accept(unhighlighter);
-	}
 	highlight_visitor highlighter(true);
 	foreach(action_ptr action, actions)
 	{
@@ -153,6 +171,7 @@ void manager::deselect_unit()
 	if (selected_unit_)
 	{
 		DBG_WB << "Deselecting unit " << selected_unit_->name() << " [" << selected_unit_->id() << "]\n";
+		erase_temp_move();
 		selected_unit_ = NULL;
 	}
 }
@@ -178,9 +197,9 @@ void manager::create_temp_move(const std::vector<map_location> &steps)
 		// Create temp ghost unit (erases previous one if there was one)
 		if (fake_unit_)
 			resources::screen->remove_temporary_unit(fake_unit_.get());
-		resources::screen->draw();
 		fake_unit_.reset(new unit(*selected_unit_));
 		unit_display::move_unit(route_, *fake_unit_, *resources::teams, false); //get facing right
+		fake_unit_->set_location(route_.back());
 		resources::screen->place_temporary_unit(fake_unit_.get());
 		fake_unit_->set_ghosted(true);
 
@@ -220,21 +239,23 @@ void manager::erase_temp_move()
 void manager::save_temp_move()
 {
 	LOG_WB << "Creating move for unit " << selected_unit_->name() << " [" << selected_unit_->id() << "]"
-			<< " from " << selected_unit_->get_location()
+			<< " from " << route_.front()
 			<< " to " << route_.back() << "\n";
-	block_mouse_motion_ = true;
+	ignore_mouse_motion_ = true;
+
+	scoped_modifiers wb_modifiers;
 
 	selected_unit_->set_ghosted(false);
 	unit_display::move_unit(route_, *fake_unit_, *resources::teams, true);
 	fake_unit_->set_standing(true);
 
-	get_current_side_actions()->queue_move(*selected_unit_, route_.back(), move_arrow_, fake_unit_);
+	get_current_side_actions()->queue_move(*selected_unit_, route_.front(), route_.back(), move_arrow_, fake_unit_);
 	move_arrow_.reset();
 	fake_unit_.reset();
 	//selected_unit_->set_standing(true);
 	selected_unit_ = NULL;
 
-	block_mouse_motion_ = false;
+	ignore_mouse_motion_ = false;
 }
 
 void manager::execute_next()
@@ -254,6 +275,26 @@ action_ptr manager::has_action(const unit& unit) const
 	find_visitor finder;
 	action_ptr action = finder.find_first_action_of(unit, get_current_side_actions()->actions());
 	return action;
+}
+
+scoped_modifiers::scoped_modifiers()
+{
+	resources::whiteboard->push_temp_modifiers();
+}
+
+scoped_modifiers::~scoped_modifiers()
+{
+	resources::whiteboard->pop_temp_modifiers();
+}
+
+scoped_modifiers_remover::scoped_modifiers_remover()
+{
+	resources::whiteboard->pop_temp_modifiers();
+}
+
+scoped_modifiers_remover::~scoped_modifiers_remover()
+{
+	resources::whiteboard->push_temp_modifiers();
 }
 
 } // end namespace wb

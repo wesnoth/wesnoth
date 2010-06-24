@@ -95,7 +95,7 @@ int mouse_handler::drag_threshold() const
 void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 {
 	if (attackmove_) return;
-	if (resources::whiteboard->block_mouse_motion()) return;
+	if (resources::whiteboard->ignore_mouse_motion()) return;
 
 	// we ignore the position coming from event handler
 	// because it's always a little obsolete and we don't need
@@ -128,7 +128,9 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 		if (reachmap_invalid_) {
 			reachmap_invalid_ = false;
 			if (!current_paths_.destinations.empty() && !show_partial_move_) {
+				resources::whiteboard->push_temp_modifiers();
 				unit_map::iterator u = find_unit(selected_hex_);
+				resources::whiteboard->pop_temp_modifiers();
 				if(selected_hex_.valid() && u != units_.end() ) {
 					// reselect the unit without firing events (updates current_paths_)
 					select_hex(selected_hex_, true);
@@ -155,17 +157,15 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 		}
 
 		gui().highlight_hex(new_hex);
+		resources::whiteboard->mouseover_hex(new_hex);
 
+		resources::whiteboard->push_temp_modifiers();
 		const unit_map::iterator selected_unit = find_unit(selected_hex_);
 		const unit_map::iterator mouseover_unit = find_unit(new_hex);
 
-		if (resources::whiteboard->active()) {
-			resources::whiteboard->remove_highlight();
-			resources::whiteboard->highlight_hex(new_hex);
-		}
-
 		// we search if there is an attack possibility and where
 		map_location attack_from = current_unit_attacks_from(new_hex);
+		resources::whiteboard->pop_temp_modifiers();
 
 		//see if we should show the normal cursor, the movement cursor, or
 		//the attack cursor
@@ -200,6 +200,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 			gui().clear_attack_indicator();
 		}
 
+		resources::whiteboard->push_temp_modifiers();
 		// the destination is the pointed hex or the adjacent hex
 		// used to attack it
 		map_location dest;
@@ -247,15 +248,8 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 
 				bool teleport = un->get_ability_bool("teleport");
 
-				//Show reach as influenced by units' future positions from whiteboard
-				if (resources::whiteboard->active()) {
-					resources::whiteboard->apply_temp_modifiers();
-
-					current_paths_ = pathfind::paths(map_,units_,new_hex,teams_,
-														false,teleport,viewing_team(),path_turns_);
-
-					resources::whiteboard->remove_temp_modifiers();
-				}
+				current_paths_ = pathfind::paths(map_,units_,new_hex,teams_,
+													false,teleport,viewing_team(),path_turns_);
 
 				gui().highlight_reach(current_paths_);
 				enemy_paths_ = true;
@@ -269,6 +263,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 				over_route_ = true;
 			}
 		}
+		resources::whiteboard->pop_temp_modifiers();
 	}
 }
 
@@ -433,13 +428,11 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 	//since it's what update our global state
 	map_location hex = last_hex_;
 
-	if (resources::whiteboard->active()) {
-		resources::whiteboard->apply_temp_modifiers();
-	}
+	resources::whiteboard->push_temp_modifiers();
+
 	unit_map::iterator u = find_unit(selected_hex_);
-	if (resources::whiteboard->active()) {
-		resources::whiteboard->remove_temp_modifiers();
-	}
+
+	resources::whiteboard->pop_temp_modifiers();
 
 	//if the unit is selected and then itself clicked on,
 	//any goto command and waypoints are cancelled
@@ -449,13 +442,13 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 		waypoints_.clear();
 	}
 
-	if (resources::whiteboard->active()) {
-		resources::whiteboard->apply_temp_modifiers();
-	}
+
+	resources::whiteboard->push_temp_modifiers();
+
 	unit_map::iterator clicked_u = find_unit(hex);
-	if (resources::whiteboard->active()) {
-		resources::whiteboard->remove_temp_modifiers();
-	}
+
+	resources::whiteboard->pop_temp_modifiers();
+
 
 	const map_location src = selected_hex_;
 	pathfind::paths orig_paths = current_paths_;
@@ -533,7 +526,7 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 
 		if (resources::whiteboard->during_move_creation()) {
 
-			//TODO: create move action for whiteboard
+			resources::whiteboard->save_temp_move();
 
 		} else {
 			//register the mouse-UI waypoints into the unit's waypoints
@@ -565,12 +558,17 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse) {
 	waypoints_.clear();
 	show_partial_move_ = false;
 
-	if (resources::whiteboard->active()) {
-		resources::whiteboard->apply_temp_modifiers();
-	}
+	resources::whiteboard->push_temp_modifiers();
+
 	unit_map::iterator u = find_unit(hex);
 
+	resources::whiteboard->pop_temp_modifiers();
+
+
 	if (hex.valid() && u != units_.end() && !u->get_hidden()) {
+
+		resources::whiteboard->push_temp_modifiers();
+
 		next_unit_ = u->get_location();
 
 		{
@@ -589,12 +587,14 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse) {
 		enemy_paths_ = false;
 		gui().set_route(NULL);
 
+		resources::whiteboard->pop_temp_modifiers();
+
 		// selection have impact only if we are not observing and it's our unit
 		if (!browse && !commands_disabled && u->side() == gui().viewing_side()) {
 			sound::play_UI_sound("select-unit.wav");
-			u->set_selecting();
 
 			if (!(resources::whiteboard->active() && resources::whiteboard->has_action(*u))) {
+				u->set_selecting();
 				game_events::fire("select", hex);
 			}
 
@@ -608,13 +608,8 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse) {
 		current_paths_ = pathfind::paths();
 		current_route_.steps.clear();
 		if (resources::whiteboard->active()) {
-			resources::whiteboard->erase_temp_move();
 			resources::whiteboard->deselect_unit();
 		}
-	}
-
-	if (resources::whiteboard->active()) {
-		resources::whiteboard->remove_temp_modifiers();
 	}
 }
 

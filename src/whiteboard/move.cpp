@@ -36,10 +36,10 @@ namespace wb {
 const double move::ALPHA_HIGHLIGHT = 2.0;
 const double move::ALPHA_NORMAL = 0.2;
 
-move::move(unit& subject, const map_location& target_hex, boost::shared_ptr<arrow> arrow,
-		boost::shared_ptr<unit> fake_unit)
+move::move(unit& subject, const map_location& source_hex, const map_location& target_hex,
+		boost::shared_ptr<arrow> arrow,	boost::shared_ptr<unit> fake_unit)
 : unit_(subject),
-  orig_hex_(subject.get_location()),
+  orig_hex_(source_hex),
   dest_hex_(target_hex),
   arrow_(arrow),
   fake_unit_(fake_unit)

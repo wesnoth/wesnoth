@@ -70,14 +70,14 @@ public:
 	/**
 	 * Inserts a move at the specified index. The begin() and end() functions might prove useful here.
 	 */
-	void insert_move(unit& subject, const map_location& target_hex, size_t index, boost::shared_ptr<arrow> arrow,
-			boost::shared_ptr<unit> fake_unit);
+	void insert_move(unit& subject, const map_location& source_hex, const map_location& target_hex, size_t index,
+			boost::shared_ptr<arrow> arrow,	boost::shared_ptr<unit> fake_unit);
 
 	/**
 	 * Inserts a move to be executed last (i.e. at the back of the queue)
 	 */
-	void queue_move(unit& subject, const map_location& target_hex, boost::shared_ptr<arrow> arrow,
-			boost::shared_ptr<unit> fake_unit);
+	void queue_move(unit& subject, const map_location& source_hex, const map_location& target_hex,
+			boost::shared_ptr<arrow> arrow,	boost::shared_ptr<unit> fake_unit);
 
 	/**
 	 * Moves an action earlier in the execution order (i.e. at the front of the queue),

@@ -56,18 +56,18 @@ void side_actions::execute(action_ptr action)
 	//TODO: Validate remaining actions here
 }
 
-void side_actions::insert_move(unit& subject, const map_location& target_hex, size_t index, boost::shared_ptr<arrow> arrow,
+void side_actions::insert_move(unit& subject, const map_location& source_hex, const map_location& target_hex, size_t index, boost::shared_ptr<arrow> arrow,
 		boost::shared_ptr<unit> fake_unit)
 {
-	action_ptr action(new move(subject, target_hex, arrow, fake_unit));
+	action_ptr action(new move(subject, source_hex, target_hex, arrow, fake_unit));
 	assert(index < end());
 	actions_.insert(actions_.begin() + index, action);
 }
 
-void side_actions::queue_move(unit& subject, const map_location& target_hex, boost::shared_ptr<arrow> arrow,
-		boost::shared_ptr<unit> fake_unit)
+void side_actions::queue_move(unit& subject, const map_location& source_hex, const map_location& target_hex,
+		boost::shared_ptr<arrow> arrow,	boost::shared_ptr<unit> fake_unit)
 {
-	action_ptr action(new move(subject, target_hex, arrow, fake_unit));
+	action_ptr action(new move(subject, source_hex, target_hex, arrow, fake_unit));
 	actions_.push_back(action);
 }
 
