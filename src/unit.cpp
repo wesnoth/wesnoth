@@ -2742,9 +2742,10 @@ int side_upkeep(int side)
 	return res;
 }
 
-unit_map::iterator find_visible_unit(unit_map& units, const map_location &loc,
+unit_map::iterator find_visible_unit(const map_location &loc,
 	const team& current_team, bool see_all)
 {
+	unit_map& units = *resources::units;
 	if (!resources::game_map->on_board(loc)) return units.end();
 	unit_map::iterator u = units.find(loc);
 	if (see_all) return u;
@@ -2758,7 +2759,7 @@ unit_map::iterator find_visible_unit(unit_map& units, const map_location &loc,
 const unit *get_visible_unit(const unit_map &units, const map_location &loc,
 	const team &current_team, bool see_all)
 {
-	unit_map::const_iterator ui = find_visible_unit(units, loc,
+	unit_map::const_iterator ui = find_visible_unit(loc,
 		current_team, see_all);
 	if (ui == units.end()) return NULL;
 	return &*ui;

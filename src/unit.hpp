@@ -476,15 +476,8 @@ int side_units_cost(int side_num);
 
 int side_upkeep(int side_num);
 
-unit_map::iterator find_visible_unit(unit_map &units, const map_location &loc,
+unit_map::iterator find_visible_unit(const map_location &loc,
 	const team &current_team, bool see_all = false);
-
-inline unit_map::const_iterator find_visible_unit(const unit_map &units,
-	const map_location &loc, const team &current_team, bool see_all = false)
-{
-	return find_visible_unit(const_cast<unit_map &>(units), loc,
-		current_team, see_all);
-}
 
 const unit *get_visible_unit(const unit_map &units, const map_location &loc,
 	const team &current_team, bool see_all = false);
