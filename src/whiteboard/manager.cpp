@@ -168,18 +168,29 @@ void manager::create_temp_move(const std::vector<map_location> &steps)
 			move_arrow_.reset(new arrow());
 			int current_side = resources::controller->current_side();
 			move_arrow_->set_color(team::get_side_color_index(current_side));
+			move_arrow_->set_alpha(move::ALPHA_HIGHLIGHT);
+			resources::screen->add_arrow(*move_arrow_);
 
-			// Create temp ghost unit
-			fake_unit_.reset(new unit(*selected_unit_));
-			unit_display::move_unit(route_, *fake_unit_, *resources::teams, false); //get facing right
-			fake_unit_->set_ghosted(true);
-			resources::screen->place_temporary_unit(fake_unit_.get());
+		}
+		else
+		{
+			move_arrow_->set_path(route_);
 		}
 
-		move_arrow_->set_path(route_);
-		fake_unit_->set_location(route_.back());
-		//unit_display::move_unit(route_, *fake_unit_, *resources::teams, false); //get facing right
+		// Create temp ghost unit (erases previous one if there was one)
+		if (fake_unit_)
+			resources::screen->remove_temporary_unit(fake_unit_.get());
+		fake_unit_.reset(new unit(*selected_unit_));
+		unit_display::move_unit(route_, *fake_unit_, *resources::teams, false); //get facing right
 		fake_unit_->set_ghosted(true);
+		resources::screen->place_temporary_unit(fake_unit_.get());
+		fake_unit_->set_ghosted(true);
+
+		//this commented-out code is the alternative of moving fake unit instead of recreating it
+		//unit_display::move_unit doesn't seem to work properly with this method
+//		fake_unit_->set_location(route_.back());
+//		unit_display::move_unit(route_, *fake_unit_, *resources::teams, false); //get facing right
+//		fake_unit_->set_ghosted(true);
 	}
 }
 
@@ -214,38 +225,27 @@ void manager::save_temp_move()
 			<< " from " << selected_unit_->get_location()
 			<< " to " << route_.back() << "\n";
 
-	fake_unit_->set_location(route_.front());
-	fake_unit_->set_ghosted(false);
+	selected_unit_->set_ghosted(false);
 	unit_display::move_unit(route_, *selected_unit_, *resources::teams, true);
-	selected_unit_->set_standing(true);
-	fake_unit_->set_ghosted(false);
-
-	move_arrow_->set_alpha(move::ALPHA_HIGHLIGHT);
-	highlighted_hex_ = selected_unit_->get_location();
-
-	resources::screen->add_arrow(*move_arrow_);
+	fake_unit_->set_standing(true);
 
 	get_current_side_actions()->queue_move(*selected_unit_, route_.back(), move_arrow_, fake_unit_);
 	move_arrow_.reset();
 	fake_unit_.reset();
-	remove_temp_modifiers();
-	apply_temp_modifiers();
-	selected_unit_->set_standing(true);
+	//selected_unit_->set_standing(true);
 	selected_unit_ = NULL;
 }
 
 void manager::execute_next()
 {
-	remove_temp_modifiers();
+	//TODO: catch end_turn_exception somewhere here?
+	//TODO: switch display to "prototype A", i.e. dst as ghost
 	get_current_side_actions()->execute_next();
-	apply_temp_modifiers();
 }
 
 void manager::delete_last()
 {
-	remove_temp_modifiers();
 	get_current_side_actions()->remove_action(get_current_side_actions()->end() - 1);
-	apply_temp_modifiers();
 }
 
 action_ptr manager::has_action(const unit& unit) const
