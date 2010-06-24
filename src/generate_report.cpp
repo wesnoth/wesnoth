@@ -69,7 +69,7 @@ report generate_report(TYPE type,
 	const unit *u = NULL;
 
 	if((int(type) >= int(UNIT_REPORTS_BEGIN) && int(type) < int(UNIT_REPORTS_END)) || type == POSITION){
-		u = get_visible_unit(units, displayed_unit_hex, current_team, show_everything);
+		u = get_visible_unit(displayed_unit_hex, current_team, show_everything);
 		if (!u && type != POSITION) {
 			return report();
 		}

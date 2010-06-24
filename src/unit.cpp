@@ -2756,12 +2756,12 @@ unit_map::iterator find_visible_unit(const map_location &loc,
 	return u;
 }
 
-const unit *get_visible_unit(const unit_map &units, const map_location &loc,
+const unit *get_visible_unit(const map_location &loc,
 	const team &current_team, bool see_all)
 {
 	unit_map::const_iterator ui = find_visible_unit(loc,
 		current_team, see_all);
-	if (ui == units.end()) return NULL;
+	if (ui == resources::units->end()) return NULL;
 	return &*ui;
 }
 

@@ -219,12 +219,12 @@ void game_display::select_hex(map_location hex)
 
 void game_display::highlight_hex(map_location hex)
 {
-	const unit *u = get_visible_unit(units_, hex, teams_[viewing_team()], !viewpoint_);
+	const unit *u = get_visible_unit(hex, teams_[viewing_team()], !viewpoint_);
 	if (u) {
 		displayedUnitHex_ = hex;
 		invalidate_unit();
 	} else {
-		u = get_visible_unit(units_, mouseoverHex_, teams_[viewing_team()], !viewpoint_);
+		u = get_visible_unit(mouseoverHex_, teams_[viewing_team()], !viewpoint_);
 		if (u) {
 			// mouse moved from unit hex to non-unit hex
 			if (units_.count(selectedHex_)) {
@@ -241,7 +241,7 @@ void game_display::highlight_hex(map_location hex)
 
 void game_display::display_unit_hex(map_location hex)
 {
-	const unit *u = get_visible_unit(units_, hex, teams_[viewing_team()], !viewpoint_);
+	const unit *u = get_visible_unit(hex, teams_[viewing_team()], !viewpoint_);
 	if (u) {
 		displayedUnitHex_ = hex;
 		invalidate_unit();
@@ -285,7 +285,7 @@ image::TYPE game_display::get_image_type(const map_location& loc) {
 		if (loc == mouseoverHex_ || loc == attack_indicator_src_) {
 			return image::BRIGHTENED;
 		} else if (loc == selectedHex_) {
-			const unit *un = get_visible_unit(units_, loc, teams_[currentTeam_], !viewpoint_);
+			const unit *un = get_visible_unit(loc, teams_[currentTeam_], !viewpoint_);
 			if (un && !un->get_hidden()) {
 				return image::BRIGHTENED;
 			}

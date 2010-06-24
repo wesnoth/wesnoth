@@ -85,7 +85,7 @@ map_location pathfind::find_vacant_tile(const gamemap& map,
 	return map_location();
 }
 
-bool pathfind::enemy_zoc(unit_map const &units, std::vector<team> const &teams,
+bool pathfind::enemy_zoc(unit_map const & /*units*/, std::vector<team> const &teams,
 	map_location const &loc, team const &viewing_team, int side, bool see_all)
 {
 	map_location locs[6];
@@ -93,7 +93,7 @@ bool pathfind::enemy_zoc(unit_map const &units, std::vector<team> const &teams,
 	get_adjacent_tiles(loc,locs);
 	for (int i = 0; i != 6; ++i)
 	{
-		const unit *u = get_visible_unit(units, locs[i], viewing_team, see_all);
+		const unit *u = get_visible_unit(locs[i], viewing_team, see_all);
 		if (u && u->side() != side && current_team.is_enemy(u->side()) &&
 		    u->emits_zoc())
 		{
@@ -105,7 +105,7 @@ bool pathfind::enemy_zoc(unit_map const &units, std::vector<team> const &teams,
 }
 
 std::set<map_location> pathfind::get_teleport_locations(const unit &u,
-	const unit_map &units, const team &viewing_team,
+	const unit_map & /*units*/, const team &viewing_team,
 	bool see_all, bool ignore_units)
 {
 	std::set<map_location> res;
@@ -120,7 +120,7 @@ std::set<map_location> pathfind::get_teleport_locations(const unit &u,
 		if (!see_all && viewing_team.is_enemy(u.side()) && viewing_team.fogged(l))
 			continue;
 		if (!ignore_units && l != loc &&
-		    get_visible_unit(units, l, viewing_team, see_all))
+		    get_visible_unit(l, viewing_team, see_all))
 			continue;
 		res.insert(l);
 	}
@@ -256,7 +256,7 @@ static void find_routes(const gamemap& map, const unit_map& units,
 
 			if (!ignore_units) {
 				const unit *v =
-					get_visible_unit(units, locs[i], viewing_team, see_all);
+					get_visible_unit(locs[i], viewing_team, see_all);
 				if (v && current_team.is_enemy(v->side()))
 					continue;
 
@@ -480,7 +480,7 @@ double pathfind::shortest_path_calculator::cost(const map_location& loc, const d
 	int other_unit_subcost = 0;
 	if (!ignore_unit_) {
 		const unit *other_unit =
-			get_visible_unit(units_, loc, viewing_team_, see_all_);
+			get_visible_unit(loc, viewing_team_, see_all_);
 
 		// We can't traverse visible enemy and we also prefer empty hexes
 		// (less blocking in multi-turn moves and better when exploring fog,
