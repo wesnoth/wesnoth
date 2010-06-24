@@ -42,8 +42,12 @@ void side_actions::execute_next()
 {
 	if (!actions_.empty())
 	{
-		actions_.front()->execute();
-		actions_.pop_front();
+		bool finished = actions_.front()->execute();
+		if (finished)
+		{
+			actions_.pop_front();
+		}
+
 		//TODO: Validate remaining actions here
 	}
 }

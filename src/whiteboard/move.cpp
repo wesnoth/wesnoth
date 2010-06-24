@@ -22,13 +22,14 @@
 
 #include "actions.hpp"
 #include "arrow.hpp"
-#include "unit.hpp"
 #include "config.hpp"
+#include "foreach.hpp"
+#include "game_display.hpp"
 #include "play_controller.hpp"
 #include "replay.hpp"
 #include "resources.hpp"
 #include "team.hpp"
-#include "game_display.hpp"
+#include "unit.hpp"
 #include "unit_display.hpp"
 
 namespace wb {
@@ -73,16 +74,57 @@ void move::accept(visitor& v)
 	v.visit_move(shared_from_this());
 }
 
-void move::execute()
+bool move::execute()
 {
 	arrow_->set_alpha(ALPHA_HIGHLIGHT);
 
+	const arrow_path_t& arrow_path = arrow_->get_path();
 	static const bool show_move = false;
-	map_location next_unit;
-	::move_unit(NULL, arrow_->get_path(), &recorder, resources::undo_stack, show_move, &next_unit,
+	map_location final_location;
+	::move_unit(NULL, arrow_path, &recorder, resources::undo_stack, show_move, &final_location,
 			get_current_team().auto_shroud_updates());
-	// next_unit now contains the final unit location
-	// if that isn't needed, pass NULL rather than &next_unit
+	// final_location now contains the final unit location
+	// if that isn't needed, pass NULL rather than &final_location
+
+	bool move_finished_successfully = false;
+	if (arrow_path.back() == final_location)
+	{
+		move_finished_successfully = true;
+	}
+	else if (final_location.valid())
+	{
+		LOG_WB << "Move finished at (" << final_location << ") instead of at (" << dest_hex_ << "), analysing\n";
+		arrow_path_t::const_iterator start_new_path;
+		bool found = false;
+		for (start_new_path = arrow_path.begin(); ((start_new_path != arrow_path.end()) && !found); ++start_new_path)
+		{
+			if (*start_new_path == final_location)
+			{
+				found = true;
+			}
+		}
+		if (found)
+		{
+			orig_hex_ = final_location;
+			--start_new_path; //since the for loop incremented the iterator once after we found the right one.
+			arrow_path_t new_path(start_new_path, arrow_path.end());
+			LOG_WB << "Setting new path for this move from (" << new_path.front()
+					<< ") to (" << new_path.back() << ").\n";
+			arrow_->set_path(new_path);
+		}
+		else //Unit ended up in location outside path, , likely due to a WML event
+		{
+			//TODO: handle unit ending up in unexpected location
+			WRN_WB << "Unit ended up in location outside path during move execution; Case unhandled as yet.\n";
+		}
+	}
+	else //Unit disappeared from the map, likely due to a WML event
+	{
+		//TODO: handle unit disappearing from map
+		WRN_WB << "Unit disappeared from map during move execution; Case unhandled as yet.\n";
+	}
+
+	return move_finished_successfully;
 }
 
 modifier_ptr move::apply_temp_modifier(unit_map& unit_map)

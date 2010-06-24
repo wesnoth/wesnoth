@@ -55,7 +55,8 @@ public:
 
 	virtual void accept(visitor& v) = 0;
 
-	virtual void execute() = 0;
+	/** Returns true if the action has been completely executed and can be deleted */
+	virtual bool execute() = 0;
 
 	/**
 	 * Applies temporarily the result of this action to the unit map, and returns

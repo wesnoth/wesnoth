@@ -48,7 +48,7 @@ public:
 
 	virtual void accept(visitor& v);
 
-	virtual void execute();
+	virtual bool execute();
 
 	unit& get_unit() { return unit_; }
 
