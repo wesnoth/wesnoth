@@ -237,7 +237,7 @@ pathfind::plain_route formula_ai::shortest_path_calculator(const map_location &s
 
 std::set<map_location> formula_ai::get_allowed_teleports(unit_map::iterator& unit_it) const
 {
-  return pathfind::get_teleport_locations(*unit_it, *resources::units, current_team(), true);
+  return pathfind::get_teleport_locations(*unit_it, current_team(), true);
 }
 
 map_location formula_ai::path_calculator(const map_location& src, const map_location& dst, unit_map::iterator& unit_it) const{

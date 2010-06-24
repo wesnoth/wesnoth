@@ -57,7 +57,7 @@ bool enemy_zoc(unit_map const &units,
                team const &viewing_team, int side, bool see_all=false);
 
 std::set<map_location> get_teleport_locations(const unit &u,
-	const unit_map &units, const team &viewing_team,
+	const team &viewing_team,
 	bool see_all = false, bool ignore_units = false);
 
 struct cost_calculator

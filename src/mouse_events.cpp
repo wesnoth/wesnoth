@@ -355,7 +355,7 @@ pathfind::marked_route mouse_handler::get_route(unit_map::const_iterator un, map
 	// The pathfinder will check unit visibility (fogged/stealthy).
 	const pathfind::shortest_path_calculator calc(*un, team, units_, teams_, map_);
 
-	std::set<map_location> allowed_teleports = pathfind::get_teleport_locations(*un, units_, viewing_team());
+	std::set<map_location> allowed_teleports = pathfind::get_teleport_locations(*un, viewing_team());
 
 	pathfind::plain_route route;
 

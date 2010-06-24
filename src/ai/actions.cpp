@@ -390,7 +390,7 @@ bool move_result::test_route(const unit &un)
 	const pathfind::shortest_path_calculator calc(un, my_team, *resources::units, *resources::teams, *resources::game_map);
 
 	//allowed teleports
-	std::set<map_location> allowed_teleports = pathfind::get_teleport_locations(un, *resources::units, my_team, true);//@todo 1.9: see_all -> false
+	std::set<map_location> allowed_teleports = pathfind::get_teleport_locations(un, my_team, true);//@todo 1.9: see_all -> false
 
 	//do an A*-search
 	route_ = boost::shared_ptr<pathfind::plain_route>( new pathfind::plain_route(pathfind::a_star_search(un.get_location(), to_, 10000.0, &calc, resources::game_map->w(), resources::game_map->h(), &allowed_teleports)));

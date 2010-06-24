@@ -1815,7 +1815,7 @@ static int intf_find_path(lua_State *L)
 		team &viewing_team = teams[(viewing_side ? viewing_side : u->side()) - 1];
 		if (!ignore_teleport) {
 			teleport_locations = pathfind::get_teleport_locations(
-				*u, units, viewing_team, see_all, ignore_units);
+				*u, viewing_team, see_all, ignore_units);
 		}
 		calc = new pathfind::shortest_path_calculator(*u, viewing_team,
 			units, teams, map, ignore_units, false, see_all);

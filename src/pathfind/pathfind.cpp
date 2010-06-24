@@ -105,7 +105,7 @@ bool pathfind::enemy_zoc(unit_map const & /*units*/, std::vector<team> const &te
 }
 
 std::set<map_location> pathfind::get_teleport_locations(const unit &u,
-	const unit_map & /*units*/, const team &viewing_team,
+	const team &viewing_team,
 	bool see_all, bool ignore_units)
 {
 	std::set<map_location> res;
@@ -195,7 +195,7 @@ static void find_routes(const gamemap& map, const unit_map& units,
 	const team& current_team = teams[u.side() - 1];
 	std::set<map_location> teleports;
 	if (allow_teleport) {
-	  teleports = pathfind::get_teleport_locations(u, units, viewing_team, see_all, ignore_units);
+	  teleports = pathfind::get_teleport_locations(u, viewing_team, see_all, ignore_units);
 	}
 
 	const int total_movement = u.total_movement();
