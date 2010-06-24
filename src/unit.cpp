@@ -496,7 +496,6 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 
 	generate_name(state ? &(state->rng()) : 0);
 
-	game_events::add_events(cfg.child_range("event"), type_);
 	// Make the default upkeep "full"
 	if(cfg_["upkeep"].empty()) {
 		cfg_["upkeep"] = "full";
@@ -677,8 +676,7 @@ unit& unit::operator=(const unit& u)
 }
 
 
-
-void unit::set_game_context(unit_map* /*unitmap*/)
+void unit::set_game_context()
 {
 	// In case the unit carries EventWML, apply it now
 	game_events::add_events(cfg_.child_range("event"), type_);
@@ -891,8 +889,7 @@ void unit::advance_to(const unit_type* t, bool use_traits, game_state* state)
 		heal_all();
 	}
 
-	game_events::add_events(cfg_.child_range("event"), type_);
-	cfg_.clear_children("event");
+	set_game_context();
 
 	set_state(STATE_POISONED,false);
 	set_state(STATE_SLOWED,false);
