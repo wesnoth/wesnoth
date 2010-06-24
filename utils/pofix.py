@@ -745,6 +745,27 @@ stringfixes = {
 # Convert makeshift dashes:
 # conversion added in 1.9.0-svn
 ("A Tale of Two Brothers - Epilogue", "A Tale of Two Brothers — Epilogue"),
+
+# Convert straight apostrophes and quotation marks
+## conversion added in 1.9.0-svn
+("The village's mage Bjarn", "The village’s mage Bjarn"),
+("'Fear and obey Mordak the Mage!'", "“Fear and obey Mordak the Mage!”"),
+("Mordak's", "Mordak’s"),
+("more than two days'", "more than two days’"),
+("brother's", "brother’s"),
+("We're chasing after", "We’re chasing after"),
+("master's", "master’s"),
+("let's catch those", "let’s catch those"),
+("We think there's", "We think there’s"),
+("They've captured my brother", "They’ve captured my brother"),
+("Arne's", "Arne’s"),
+("let's kill some orcs", "let’s kill some orcs"),
+("you're supposed", "you’re supposed"),
+("isn't it", "isn’t it"),
+("aren't our relief", "aren’t our relief"),
+("they're holding Bjarn", "they’re holding Bjarn"),
+("day's", "day’s"),
+("I don't think we can rescue", "I don’t think we can rescue"),
 ),
 
 "wesnoth-tutorial" : (
@@ -785,7 +806,6 @@ stringfixes = {
 
 # Convert straight apostrophes and quotation marks
 # conversion added in 1.9.0-svn
-# (NOT YET)
 ("What's happened? Oh Eloh, the craters are everywhere, everything is gone, ruined. I can hardly recognize our village. I didn't think it could be this bad.", "What’s happened? Oh Eloh, the craters are everywhere, everything is gone, ruined. I can hardly recognize our village. I didn’t think it could be this bad."),
 ("C'mon", "C’mon"),
 ("Tanuil's", "Tanuil’s"),
