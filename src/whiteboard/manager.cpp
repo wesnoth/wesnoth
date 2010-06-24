@@ -181,15 +181,18 @@ void manager::create_temp_move(const std::vector<map_location> &steps)
 			resources::screen->add_arrow(*move_arrow_);
 
 		}
+		if (!fake_unit_)
+		{
+			// Create temp ghost unit
+			fake_unit_.reset(new unit(*selected_unit_));
+			resources::screen->place_temporary_unit(fake_unit_.get());
+
+		}
+
 		move_arrow_->set_path(route_);
 
-		// Create temp ghost unit (erases previous one if there was one)
-		if (fake_unit_)
-			resources::screen->remove_temporary_unit(fake_unit_.get());
-		fake_unit_.reset(new unit(*selected_unit_));
 		unit_display::move_unit(route_, *fake_unit_, *resources::teams, false); //get facing right
 		fake_unit_->set_location(route_.back());
-		resources::screen->place_temporary_unit(fake_unit_.get());
 		fake_unit_->set_ghosted(true);
 
 		//this commented-out code is the alternative of moving fake unit instead of recreating it
@@ -243,7 +246,7 @@ void manager::save_temp_move()
 			boost::shared_ptr<move> tempmove = boost::dynamic_pointer_cast<move>(*action);
 			if (tempmove)
 			{
-				tempmove->get_fake_unit()->set_ghosted(false);
+				tempmove->get_fake_unit()->set_disabled_ghosted(false);
 				action_found = true;
 			}
 		}
