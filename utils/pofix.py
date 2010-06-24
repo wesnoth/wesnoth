@@ -297,6 +297,11 @@ stringfixes = {
 # conversion added in 1.9.0-svn
 ("I ain't charging gold —", "I ain’t charging gold —"),
 ("'T'ain't safe", "’T’ain’t safe"),
+
+# Enforce "-gue" spelling; include the quotation marks so that pofix won't find
+# "Epilogue" thinking that it is "Epilog"
+# conversion added in 1.9.0-svn
+("\"Epilog\"", "\"Epilogue\""),
 ),
 
 "wesnoth-httt" : (
