@@ -421,6 +421,7 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 {
 	undo_ = false;
 	if (mouse_handler_base::left_click(x, y, browse)) return false;
+	if (resources::whiteboard->ignore_mouse_motion()) return false;
 
 	bool check_shroud = current_team().auto_shroud_updates();
 

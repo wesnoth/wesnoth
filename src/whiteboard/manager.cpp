@@ -120,6 +120,8 @@ void manager::mouseover_hex(const map_location& hex)
 
 void manager::highlight_hex(const map_location& hex)
 {
+	scoped_modifiers wb_modifiers;
+
 	unit_map::iterator highlighted_unit = resources::units->find(hex);
 
 	highlight_visitor highlighter(true);
