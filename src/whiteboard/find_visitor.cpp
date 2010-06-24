@@ -26,8 +26,7 @@ namespace wb
 {
 
 find_visitor::find_visitor()
-	: found_(false)
-	, search_target_(NULL)
+	: search_target_(NULL)
 	, search_result_()
 {
 }
@@ -41,14 +40,12 @@ void find_visitor::visit_move(boost::shared_ptr<move> move)
 	if( &(move->get_unit()) == search_target_ )
 	{
 		search_result_.push_back(move);
-		found_ = true;
 	}
 }
 
 action_set find_visitor::find_actions_of(const unit& unit, action_set actions)
 {
 	search_target_ = &unit;
-	found_ = false;
 	search_result_.clear();
 	foreach (action_ptr a, actions)
 	{
@@ -60,12 +57,11 @@ action_set find_visitor::find_actions_of(const unit& unit, action_set actions)
 action_ptr find_visitor::find_first_action_of(const unit& unit, action_set actions)
 {
 	search_target_ = &unit;
-	found_ = false;
 	search_result_.clear();
 	foreach (action_ptr a, actions)
 	{
 		a->accept(*this);
-		if (found_)
+		if (!search_result_.empty())
 		{
 			return search_result_[0];
 		}

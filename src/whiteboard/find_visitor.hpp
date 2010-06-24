@@ -42,7 +42,6 @@ public:
 	virtual action_ptr find_first_action_of(const unit& unit, action_set actions);
 
 private:
-	bool found_;
 	const unit* search_target_;
 	action_set search_result_;
 };
