@@ -186,20 +186,13 @@ void manager::create_temp_move(const std::vector<map_location> &steps)
 			// Create temp ghost unit
 			fake_unit_.reset(new unit(*selected_unit_));
 			resources::screen->place_temporary_unit(fake_unit_.get());
-
 		}
 
 		move_arrow_->set_path(route_);
 
 		unit_display::move_unit(route_, *fake_unit_, *resources::teams, false); //get facing right
 		fake_unit_->set_location(route_.back());
-		fake_unit_->set_ghosted(true);
-
-		//this commented-out code is the alternative of moving fake unit instead of recreating it
-		//unit_display::move_unit doesn't seem to work properly with this method
-//		fake_unit_->set_location(route_.back());
-//		unit_display::move_unit(route_, *fake_unit_, *resources::teams, false); //get facing right
-//		fake_unit_->set_ghosted(true);
+		fake_unit_->set_disabled_ghosted(true);
 	}
 }
 
@@ -256,7 +249,7 @@ void manager::save_temp_move()
 		selected_unit_->set_ghosted(false);
 	}
 
-	scoped_planned_unit_map wb_modifiers;
+	//scoped_planned_unit_map wb_modifiers;
 
 	unit_display::move_unit(route_, *fake_unit_, *resources::teams, true);
 	fake_unit_->set_standing(true);
