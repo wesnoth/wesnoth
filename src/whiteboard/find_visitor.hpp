@@ -40,6 +40,7 @@ public:
 
 	virtual action_set find_actions_of(const unit& unit, action_set actions);
 	virtual action_ptr find_first_action_of(const unit& unit, action_set actions);
+	//maybe find action at and find first action at... just an idea
 
 private:
 	bool found_;

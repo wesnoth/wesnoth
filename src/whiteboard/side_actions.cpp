@@ -47,6 +47,7 @@ void side_actions::execute_next()
 		{
 			actions_.pop_front();
 		}
+		//I love this finish idea
 
 		//TODO: Validate remaining actions here
 	}
@@ -57,6 +58,7 @@ void side_actions::execute(action_ptr action)
 	assert(!actions_.empty());
 	action->execute();
 	remove_action(action);
+	// check if finish ?
 	//TODO: Validate remaining actions here
 }
 

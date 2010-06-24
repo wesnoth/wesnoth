@@ -58,6 +58,7 @@ move::~move()
 		//resources::screen->invalidate(orig_hex_);
 		resources::screen->invalidate(fake_unit_->get_location());
 		unit_.set_standing();
+		//JRO: we don't invalidate/remove the arrow ?
 	}
 }
 

@@ -40,6 +40,10 @@ class mapbuilder_visitor;
  */
 class manager : private boost::noncopyable
 {
+	//  Names are purpose based, not effect based
+	// what is the diff between the tmp action and the "top stack" action ?
+	// UI note, we probably want to change the style of the "bottom action" i.e first to execute
+
 public:
 
 	manager();

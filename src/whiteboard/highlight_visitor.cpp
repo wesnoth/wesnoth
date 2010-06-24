@@ -20,6 +20,8 @@
 #include "move.hpp"
 
 #include "arrow.hpp"
+// this is a highlight ALL ? when do we need that ? 
+// adding highlight on action & using find_visitor would probably work better
 
 namespace wb
 {
