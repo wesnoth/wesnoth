@@ -315,8 +315,7 @@ public:
 	void generate_name(rand_rng::simple_rng *rng = 0);
 
 	// Only see_all=true use caching
-	bool invisible(const map_location& loc,
-		const unit_map& units,const std::vector<team>& teams, bool see_all=true) const;
+	bool invisible(const map_location& loc, bool see_all=true) const;
 
 	/** Mark this unit as clone so it can be insterted to unit_map
 	 * @returns                   self (for convenience)

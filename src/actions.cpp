@@ -1881,7 +1881,7 @@ void calculate_healing(int side, bool update_display)
 
 
 		if (!recorder.is_skipping() && update_display &&
-		    !(u.invisible(u.get_location(), units, *resources::teams) &&
+		    !(u.invisible(u.get_location()) &&
 		      (*resources::teams)[resources::screen->viewing_team()].is_enemy(side)))
 		{
 			unit_healing_struct uhs = { &u, healers, healing };
@@ -2075,7 +2075,7 @@ namespace {
 
 			const unit_map::const_iterator sighted = resources::units->find(*it);
 			if (sighted.valid() &&
-			    (!sighted->invisible(*it, *resources::units, *resources::teams)
+			    (!sighted->invisible(*it)
 			     || !tm.is_enemy(sighted->side())))
 			{
 				//check if we know this unit, but we always know ourself
@@ -2323,7 +2323,7 @@ size_t move_unit(move_unit_spectator *move_spectator,
 
 			const unit_map::const_iterator it = units.find(adjacent[i]);
 			if (it != units.end() && tm->is_enemy(it->side()) &&
-			    it->invisible(it->get_location(), units, teams))
+			    it->invisible(it->get_location()))
 			{
 				discovered_unit = true;
 				should_clear_stack = true;
@@ -2390,7 +2390,7 @@ size_t move_unit(move_unit_spectator *move_spectator,
 	for(int i = 0; i != 6; ++i) {
 		const unit_map::const_iterator it = units.find(adjacent[i]);
 		if (it != units.end() && tm->is_enemy(it->side()) &&
-				it->invisible(it->get_location(), units, teams))
+				it->invisible(it->get_location()))
 			disp.invalidate(adjacent[i]);
 	}
 

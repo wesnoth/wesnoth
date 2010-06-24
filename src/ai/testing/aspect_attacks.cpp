@@ -96,7 +96,7 @@ boost::shared_ptr<attacks_vector> aspect_attacks::analyze_targets() const
 		// Attack anyone who is on the enemy side,
 		// and who is not invisible or petrified.
 		if (current_team().is_enemy(j->side()) && !j->incapacitated() &&
-		    !j->invisible(j->get_location(),units_,*resources::teams))
+		    !j->invisible(j->get_location()))
 		{
 			if (!j->matches_filter(vconfig(filter_enemy_), j->get_location())) {
 				continue;

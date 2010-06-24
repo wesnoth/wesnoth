@@ -85,7 +85,7 @@ int default_ai_context_impl::count_free_hexes_in_castle(const map_location &loc,
 			ret += count_free_hexes_in_castle(adj[n], checked_hexes);
 			if (u == units_.end()
 				|| (current_team().is_enemy(u->side())
-					&& u->invisible(adj[n], units_, *resources::teams))
+					&& u->invisible(adj[n]))
 				|| ((&(*resources::teams)[u->side() - 1]) == &current_team()
 					&& u->movement_left() > 0)) {
 				ret += 1;
@@ -237,7 +237,7 @@ std::vector<target> default_ai_context_impl::find_targets(const move_map& enemy_
 		for(u = units_.begin(); u != units_.end(); ++u) {
 			//is a visible enemy leader
 			if (u->can_recruit() && current_team().is_enemy(u->side())
-			    && !u->invisible(u->get_location(), units_, teams_)) {
+			    && !u->invisible(u->get_location())) {
 				assert(map_.on_board(u->get_location()));
 				LOG_AI << "found enemy leader (side: " << u->side() << ") target... " << u->get_location() << " with value: " << get_leader_value() << "\n";
 				targets.push_back(target(u->get_location(), get_leader_value(), target::LEADER));

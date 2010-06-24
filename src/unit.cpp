@@ -1439,7 +1439,7 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 			std::set<int>::const_iterator viewer, viewer_end = viewers.end();
 			for (viewer = viewers.begin(); viewer != viewer_end; ++viewer) {
 				bool not_fogged = !teams_manager::get_teams()[*viewer - 1].fogged(loc);
-				bool not_hiding = !this->invisible(loc, *resources::units, teams_manager::get_teams()/*, false(?) */);
+				bool not_hiding = !this->invisible(loc/*, false(?) */);
 				if (visible != not_fogged && not_hiding) {
 					return false;
 				}
@@ -1761,7 +1761,7 @@ void unit::redraw_unit()
 	game_display &disp = *game_display::get_singleton();
 	const gamemap &map = disp.get_map();
 	if (!loc_.valid() || hidden_ || disp.fogged(loc_) ||
-	    (invisible(loc_, disp.get_units(), disp.get_teams())
+	    (invisible(loc_)
 	&& disp.get_teams()[disp.viewing_team()].is_enemy(side())))
 	{
 		clear_haloes();
@@ -1786,7 +1786,7 @@ void unit::redraw_unit()
 	// do not set to 0 so we can distinguih the flying from the "not on submerge terrain"
 	 params.submerge= is_flying() ? 0.01 : terrain_info.unit_submerge();
 
-	if (invisible(loc_, disp.get_units(), disp.get_teams()) &&
+	if (invisible(loc_) &&
 			params.highlight_ratio > 0.5) {
 		params.highlight_ratio = 0.5;
 	}
@@ -2624,8 +2624,7 @@ void unit::apply_modifications()
 	max_experience_ = std::max<int>(1, (max_experience_ * exp_accel + 50)/100);
 }
 
-bool unit::invisible(const map_location& loc,
-		const unit_map& units,const std::vector<team>& teams, bool see_all) const
+bool unit::invisible(const map_location& loc, bool see_all) const
 {
 	// Fetch from cache
 	/**
@@ -2643,7 +2642,8 @@ bool unit::invisible(const map_location& loc,
 	static const std::string hides("hides");
 	bool is_inv = !get_state(STATE_UNCOVERED) && get_ability_bool(hides,loc);
 	if(is_inv){
-		foreach (const unit &u, units)
+		const std::vector<team>& teams = *resources::teams;
+		foreach (const unit &u, *resources::units)
 		{
 			const map_location &u_loc = u.get_location();
 			if (teams[side_-1].is_enemy(u.side()) && tiles_adjacent(loc, u_loc)) {
@@ -2653,7 +2653,7 @@ bool unit::invisible(const map_location& loc,
 					is_inv = false;
 					break;
 				} else if (!teams[side_-1].fogged(u_loc)
-				&& !u.invisible(u_loc, units, teams, true)) {
+				&& !u.invisible(u_loc, true)) {
 					is_inv = false;
 					break;
 				}
@@ -2750,7 +2750,7 @@ unit_map::iterator find_visible_unit(unit_map& units, const map_location &loc,
 	if (see_all) return u;
 	if (!u.valid() || current_team.fogged(loc) ||
 	    (current_team.is_enemy(u->side()) &&
-	     u->invisible(loc, units, *resources::teams)))
+	     u->invisible(loc)))
 		return units.end();
 	return u;
 }

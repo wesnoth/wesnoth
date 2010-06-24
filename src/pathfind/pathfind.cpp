@@ -421,7 +421,7 @@ pathfind::marked_route pathfind::mark_route(const plain_route &rt,
 
 			++turns;
 
-			bool invisible = u.invisible(*i,units,teams,false);
+			bool invisible = u.invisible(*i,false);
 
 			res.marks[*i] = marked_route::mark(turns, pass_here, zoc, capture, invisible);
 
@@ -432,7 +432,7 @@ pathfind::marked_route pathfind::mark_route(const plain_route &rt,
 				return res; //we can't reach destination
 			}
 		} else if (pass_here) {
-			bool invisible = u.invisible(*i,units,teams,false);
+			bool invisible = u.invisible(*i,false);
 			res.marks[*i] = marked_route::mark(0, pass_here, zoc, false, invisible);
 		}
 

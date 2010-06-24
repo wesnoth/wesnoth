@@ -922,7 +922,7 @@ bool mouse_handler::unit_in_cycle(unit_map::const_iterator it)
 		return false;
 
 	if (current_team().is_enemy(int(gui().viewing_team()+1)) &&
-	    it->invisible(it->get_location(), units_, teams_))
+	    it->invisible(it->get_location()))
 		return false;
 
 	if (it->get_hidden())

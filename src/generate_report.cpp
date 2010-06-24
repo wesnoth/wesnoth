@@ -166,7 +166,7 @@ report generate_report(TYPE type,
 	case UNIT_STATUS: {
 		report res;
 		if (map.on_board(displayed_unit_hex) &&
-		    u->invisible(displayed_unit_hex, units, teams))
+		    u->invisible(displayed_unit_hex))
 		{
 			add_status(res, "misc/invisible.png", N_("invisible: "),
 				N_("This unit is invisible. It cannot be seen or attacked by enemy units."));
@@ -419,7 +419,7 @@ report generate_report(TYPE type,
 				    !current_team.fogged(loc) &&
 				    seen_units.count(u_it->type_id()) == 0 &&
 				    (!current_team.is_enemy(u_it->side()) ||
-				     !u_it->invisible(loc, units, teams)))
+				     !u_it->invisible(loc)))
 				{
 					seen_units.insert(u_it->type_id());
 					int resistance = u_it->resistance_against(at, false, loc) - 100;

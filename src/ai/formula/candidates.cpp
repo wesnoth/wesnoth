@@ -217,7 +217,7 @@ void attack_candidate_action::evaluate(ai::formula_ai* ai, unit_map& units)
 			}
 		} else
 		{
-			if (ai->current_team().is_enemy(i->side()) && !i->incapacitated() && !i->invisible(i->get_location(), *resources::units, *resources::teams)) {
+			if (ai->current_team().is_enemy(i->side()) && !i->incapacitated() && !i->invisible(i->get_location())) {
 				enemy_res.push_back(variant(new unit_callable(*i)));
 			}
 		}

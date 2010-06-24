@@ -256,7 +256,7 @@ void menu_handler::unit_list()
 			row << IMAGE_PREFIX << "misc/poisoned.png" << IMG_TEXT_SEPARATOR;
 		if(i->get_state(unit::STATE_SLOWED))
 			row << IMAGE_PREFIX << "misc/slowed.png"   << IMG_TEXT_SEPARATOR;
-		if(i->invisible(i->get_location(), units_, teams_ ,false))
+		if(i->invisible(i->get_location(),false))
 			row << IMAGE_PREFIX << "misc/invisible.png";
 		row << COLUMN_SEPARATOR;
 
@@ -1248,7 +1248,7 @@ void menu_handler::show_enemy_moves(bool ignore_units, int side_num)
 
 	// Compute enemy movement positions
 	for(unit_map::iterator u = units_.begin(); u != units_.end(); ++u) {
-		bool invisible = u->invisible(u->get_location(), units_, teams_);
+		bool invisible = u->invisible(u->get_location());
 
 		if (teams_[side_num - 1].is_enemy(u->side()) &&
 		    !gui_->fogged(u->get_location()) && !u->incapacitated() && !invisible)
@@ -2960,7 +2960,7 @@ void menu_handler::do_search(const std::string& new_search)
 						last_search_.begin(), last_search_.end(),
 						chars_equal_insensitive) != name.end()) {
 					if (!teams_[gui_->viewing_team()].is_enemy(ui->side()) ||
-					    !ui->invisible(ui->get_location(), units_,teams_)) {
+					    !ui->invisible(ui->get_location())) {
 						found = true;
 					}
 				}

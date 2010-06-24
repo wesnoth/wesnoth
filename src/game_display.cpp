@@ -468,7 +468,7 @@ void game_display::draw_minimap_units()
 	for(unit_map::const_iterator u = units_.begin(); u != units_.end(); ++u) {
 		if (fogged(u->get_location()) ||
 		    (teams_[currentTeam_].is_enemy(u->side()) &&
-		     u->invisible(u->get_location(), units_,teams_))) {
+		     u->invisible(u->get_location()))) {
 			continue;
 		}
 

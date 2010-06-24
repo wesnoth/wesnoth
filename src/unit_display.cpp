@@ -135,10 +135,8 @@ void move_unit(const std::vector<map_location>& path, unit& u,
 		return;
 	}
 
-	const unit_map& units = disp->get_units();
-
 	bool invisible = teams[u.side()-1].is_enemy(int(disp->viewing_team()+1)) &&
-		u.invisible(path[0],units,teams);
+		u.invisible(path[0]);
 
 	bool was_hidden = u.get_hidden();
 	// Original unit is usually hidden (but still on map, so count is correct)
@@ -179,8 +177,8 @@ void move_unit(const std::vector<map_location>& path, unit& u,
 	for(size_t i = 0; i+1 < path.size(); ++i) {
 
 		invisible = teams[temp_unit.side()-1].is_enemy(int(disp->viewing_team()+1)) &&
-				temp_unit.invisible(path[i],units,teams) &&
-				temp_unit.invisible(path[i+1],units,teams);
+				temp_unit.invisible(path[i]) &&
+				temp_unit.invisible(path[i+1]);
 
 		if(!invisible) {
 			if (!disp->tile_fully_on_screen(path[i]) || !disp->tile_fully_on_screen(path[i+1])) {
