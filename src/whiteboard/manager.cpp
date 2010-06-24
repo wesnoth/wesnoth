@@ -212,12 +212,6 @@ void manager::create_temp_move(const std::vector<map_location> &steps)
 	}
 }
 
-bool manager::during_move_creation() const
-{
-	bool during_move_creation = selected_unit_ != NULL;
-	return during_move_creation;
-}
-
 void manager::erase_temp_move()
 {
 	//TODO: properly handle movement points

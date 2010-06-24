@@ -79,7 +79,7 @@ public:
 	/** Creates a temporary visual arrow, that follows the cursor, for move creation purposes */
 	void create_temp_move(const std::vector<map_location> &steps);
 	/** Informs whether an arrow is being displayed for move creation purposes */
-	bool during_move_creation() const;
+	bool during_move_creation() const { return selected_unit_ != NULL; }
 
 	void erase_temp_move();
 
