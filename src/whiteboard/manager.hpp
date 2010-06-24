@@ -59,7 +59,7 @@ public:
 	void set_real_unit_map();
 	bool has_planned_unit_map() { return planned_unit_map_; }
 
-	bool ignore_mouse() {return ignore_mouse_motion_; }
+	bool ignore_mouse() {return ignore_mouse_; }
 
 	/**
 	 * Highlights the action for this unit,
@@ -67,18 +67,18 @@ public:
 	 */
 	void highlight_action(const unit& unit);
 
-	void mouseover_hex(const map_location& hex);
+	void on_mouseover_change(const map_location& hex);
 	void highlight_hex(const map_location& hex);
 	void remove_highlight();
 
 	/** Choose the target unit for action creation */
-	void select_unit(unit& unit);
-	void deselect_unit();
+	void on_unit_select(unit& unit);
+	void on_unit_deselect();
 
 	/** Creates a temporary visual arrow, that follows the cursor, for move creation purposes */
 	void create_temp_move(const std::vector<map_location> &steps);
 	/** Informs whether an arrow is being displayed for move creation purposes */
-	bool during_move_creation() const { return selected_unit_ != NULL; }
+	bool has_temp_move() const { return selected_unit_ != NULL; }
 
 	void erase_temp_move();
 
@@ -97,7 +97,7 @@ public:
 
 	/** Checks whether the specified unit has at least one planned action,
 	 *  and returns the first action found. */
-	boost::shared_ptr<action> has_action(const unit& unit) const;
+	boost::shared_ptr<action> get_first_action(const unit& unit) const;
 
 private:
 	/**
@@ -114,7 +114,7 @@ private:
 
 	unit* selected_unit_;
 
-	bool ignore_mouse_motion_;
+	bool ignore_mouse_;
 
 	bool planned_unit_map_;
 };

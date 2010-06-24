@@ -42,7 +42,7 @@ manager::manager():
 		move_arrow_(),
 		fake_unit_(),
 		selected_unit_(NULL),
-		ignore_mouse_motion_(false),
+		ignore_mouse_(false),
 		planned_unit_map_(false)
 {
 }
@@ -97,7 +97,7 @@ void manager::set_real_unit_map()
 	}
 }
 
-void manager::mouseover_hex(const map_location& hex)
+void manager::on_mouseover_change(const map_location& hex)
 {
 	if (active_ && !selected_unit_)
 	{
@@ -136,7 +136,7 @@ void manager::remove_highlight()
 	}
 }
 
-void manager::select_unit(unit& unit)
+void manager::on_unit_select(unit& unit)
 {
 	erase_temp_move();
 	remove_highlight();
@@ -153,7 +153,7 @@ void manager::select_unit(unit& unit)
 	DBG_WB << "Selected unit " << selected_unit_->name() << " [" << selected_unit_->id() << "]\n";
 }
 
-void manager::deselect_unit()
+void manager::on_unit_deselect()
 {
 	if (selected_unit_)
 	{
@@ -209,7 +209,7 @@ void manager::erase_temp_move()
 		move_arrow_.reset(); //auto-removes itself from display
 
 		//reset src unit back to normal, if it lacks any planned action
-		if (selected_unit_ && !has_action(*selected_unit_))
+		if (selected_unit_ && !get_first_action(*selected_unit_))
 		{
 				selected_unit_->set_standing(true);
 		}
@@ -228,7 +228,7 @@ void manager::save_temp_move()
 	LOG_WB << "Creating move for unit " << selected_unit_->name() << " [" << selected_unit_->id() << "]"
 			<< " from " << route_.front()
 			<< " to " << route_.back() << "\n";
-	ignore_mouse_motion_ = true;
+	ignore_mouse_ = true;
 
 	assert(!has_planned_unit_map());
 	// Ghost either the real unit, or the fake unit of the last move of this unit if the move exists.
@@ -264,7 +264,7 @@ void manager::save_temp_move()
 	//selected_unit_->set_standing(true);
 	selected_unit_ = NULL;
 
-	ignore_mouse_motion_ = false;
+	ignore_mouse_ = false;
 }
 
 void manager::execute_next()
@@ -281,7 +281,7 @@ void manager::delete_last()
 	//TODO: restore "standing" animation on last remaining move of this unit
 }
 
-action_ptr manager::has_action(const unit& unit) const
+action_ptr manager::get_first_action(const unit& unit) const
 {
 	find_visitor finder;
 	action_ptr action = finder.find_first_action_of(unit, get_current_side_actions()->actions());

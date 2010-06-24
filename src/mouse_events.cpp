@@ -157,7 +157,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 		}
 
 		gui().highlight_hex(new_hex);
-		resources::whiteboard->mouseover_hex(new_hex);
+		resources::whiteboard->on_mouseover_change(new_hex);
 
 		resources::whiteboard->set_planned_unit_map();
 		const unit_map::iterator selected_unit = find_unit(selected_hex_);
@@ -462,7 +462,7 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 
 	//see if we're trying to do a attack or move-and-attack
 	if(!browse && !commands_disabled && attack_from.valid()) {
-		if (resources::whiteboard->during_move_creation()) {
+		if (resources::whiteboard->has_temp_move()) {
 
 			//TODO: create attack action for whiteboard
 
@@ -530,7 +530,7 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 
 		gui().unhighlight_reach();
 
-		if (resources::whiteboard->during_move_creation()) {
+		if (resources::whiteboard->has_temp_move()) {
 
 			// Create planned move for whiteboard
 			resources::whiteboard->save_temp_move();
@@ -600,13 +600,13 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse) {
 		if (!browse && !commands_disabled && u->side() == gui().viewing_side()) {
 			sound::play_UI_sound("select-unit.wav");
 
-			if (!(resources::whiteboard->is_active() && resources::whiteboard->has_action(*u))) {
+			if (!(resources::whiteboard->is_active() && resources::whiteboard->get_first_action(*u))) {
 				u->set_selecting();
 				game_events::fire("select", hex);
 			}
 
 			if (resources::whiteboard->is_active()) {
-				resources::whiteboard->select_unit(*u);
+				resources::whiteboard->on_unit_select(*u);
 			}
 		}
 
@@ -615,7 +615,7 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse) {
 		current_paths_ = pathfind::paths();
 		current_route_.steps.clear();
 		if (resources::whiteboard->is_active()) {
-			resources::whiteboard->deselect_unit();
+			resources::whiteboard->on_unit_deselect();
 		}
 	}
 }
