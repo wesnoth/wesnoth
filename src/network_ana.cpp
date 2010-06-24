@@ -22,9 +22,12 @@
 
 #include "global.hpp"
 
+#include "config.hpp"
+
 #include "gettext.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
+#include "serialization/binary_or_text.hpp"
 #include "thread.hpp"
 #include "util.hpp"
 
@@ -63,9 +66,30 @@ static lg::log_domain log_network("network");
 // Only warnings and not errors to avoid DoS by log flooding
 
 
+class ana_handler : public ana::send_handler
+{
+    public:
+        ana_handler( boost::mutex& mutex ) :
+            mutex_(mutex),
+            error_code_()
+        {
+            mutex_.lock();
+        }
+        
+    private:
+        
+        virtual void handle_send(ana::error_code error_code, ana::net_id /*client*/)
+        {
+            error_code_ = error_code;
+            mutex_.unlock();
+        }
+
+        boost::mutex&   mutex_;
+        ana::error_code error_code_;
+};
+
 class ana_network_manager : public ana::listener_handler,
-                            public ana::send_handler,
-                            public ana::connection_handler
+                            public ana::connection_handler  
 {
     public:
         ana_network_manager() :
@@ -78,6 +102,10 @@ class ana_network_manager : public ana::listener_handler,
         ana::net_id create_server( )
         {
             ana::server* server = ana::server::create();
+
+            server->set_connection_handler( this );
+            server->set_listener_handler( this );
+
             servers_[ server->id() ] = server;
             return server->id();
         }
@@ -115,25 +143,62 @@ class ana_network_manager : public ana::listener_handler,
             return "";
         }
 
+        size_t number_of_connections() const
+        {
+            return connected_clients_.size();
+        }
+
+        void send_all( const config& cfg, bool zipped )
+        {
+            std::stringstream out;
+            config_writer cfg_writer(out, zipped);
+            cfg_writer.write(cfg);
+            
+            std::map<ana::net_id, ana::server*>::iterator it;
+            
+            boost::mutex mutex;
+            for (it = servers_.begin(); it != servers_.end(); ++it)
+            {
+                ana_handler handler( mutex );
+                it->second->send_all( ana::buffer( out.str() ), &handler, ana::ZERO_COPY);
+            }
+            mutex.lock(); // this won't work with multiple sends
+        }
+
+        void send( network::connection id, const config& cfg, bool zipped )
+        {
+            std::stringstream out;
+            config_writer cfg_writer(out, zipped);
+            cfg_writer.write(cfg);
+
+            std::map<ana::net_id, ana::server*>::iterator it;
+            
+            boost::mutex mutex;
+            for (it = servers_.begin(); it != servers_.end(); ++it)
+            {
+                ana_handler handler( mutex );
+                it->second->send_one( ana::net_id( id ), ana::buffer( out.str() ), &handler, ana::ZERO_COPY);
+            }
+            mutex.lock();
+        }
+
     private:
         virtual void handle_connect(ana::error_code error, ana::net_id client)
         {
             if (! error )
                 connected_clients_.insert(client);
         }
-
+        
         virtual void handle_disconnect(ana::error_code /*error*/, ana::net_id client)
         {
             connected_clients_.erase(client);
         }
-
-        virtual void handle_send(ana::error_code /*error*/, ana::net_id /*client*/)
-        {
-        }
-
+        
+        
         virtual void handle_message( ana::error_code /*error*/, ana::net_id /*client*/, ana::detail::read_buffer /*buffer*/)
         {
         }
+        
 
         std::map<ana::net_id, ana::server*> servers_;
         std::map<ana::net_id, ana::client*> clients_;
@@ -186,7 +251,7 @@ static connection_details& get_connection_details(network::connection handle)
 
 static void check_error()
 {
-//     throw("TODO:Not implemented");
+//     throw std::runtime_error("TODO:Not implemented");
 }
 
 namespace {
@@ -219,331 +284,340 @@ std::set<network::connection> bad_sockets;
 
 namespace network {
 
-/**
- * Amount of seconds after the last server ping when we assume to have timed out.
- * When set to '0' ping timeout isn't checked.
- * Gets set in preferences::manager according to the preferences file.
- */
-unsigned int ping_timeout = 0;
+    /**
+    * Amount of seconds after the last server ping when we assume to have timed out.
+    * When set to '0' ping timeout isn't checked.
+    * Gets set in preferences::manager according to the preferences file.
+    */
+    unsigned int ping_timeout = 0;
 
-connection_stats::connection_stats(int sent, int received, int connected_at)
-       : bytes_sent(sent), bytes_received(received), time_connected(0 - connected_at)
-                                                    // TODO: s/SDLGetTicks/0/
-{}
-
-connection_stats get_connection_stats(connection connection_num)
-{
-    connection_details& details = get_connection_details(connection_num);
-    return connection_stats(get_send_stats(connection_num).total,
-                            get_receive_stats(connection_num).total,
-                            details.connected_at);
-}
-
-error::error(const std::string& msg, connection sock) : message(msg), socket(sock)
-{
-    if(socket) {
-        bad_sockets.insert(socket);
-    }
-}
-
-void error::disconnect()
-{
-    if(socket) network::disconnect(socket);
-}
-
-pending_statistics get_pending_stats()
-{
-    throw("TODO:Not implemented");
-}
-
-manager::manager(size_t /*min_threads*/, size_t /*max_threads*/) : free_(true)
-{
-//     throw("TODO:Not implemented");
-}
-
-manager::~manager()
-{
-//     throw("TODO:Not implemented");
-}
-
-void set_raw_data_only()
-{
-//     throw("TODO:Not implemented");
-}
-
-server_manager::server_manager(int port, CREATE_SERVER create_server) : free_(false), connection_(0)
-{
-    if ( create_server != NO_SERVER )
-    {
-        ana::net_id server_id = ana_manager.create_server( );
-        
-        ana_manager.run_server( server_id, port);
-    }
-}
-
-server_manager::~server_manager()
-{
-    stop();
-}
-
-void server_manager::stop()
-{
-    throw("TODO:Not implemented");
-}
-
-bool server_manager::is_running() const
-{
-    throw("TODO:Not implemented");
-}
-
-size_t nconnections()
-{
-    return sockets.size();
-}
-
-bool is_server()
-{
-    throw("TODO:Not implemented");
-}
-
-connection connect(const std::string& host, int port)
-{
-    return ana_manager.create_client_and_connect( host, port );
-    //     throw("TODO:Not implemented");
-}
-
-connection connect(const std::string& host, int port, threading::waiter& /*waiter*/)
-{
-    return connect( host, port );
-//     throw("TODO:Not implemented");
-}
-
-namespace {
-
-connection accept_connection_pending(std::vector<TCPsocket>& /*pending_sockets*/,
-                                     socket_set_type&        /*pending_socket_set*/)
-{
-    throw("TODO:Not implemented");
-}
-
-} //anon namespace
-
-connection accept_connection()
-{
-    throw("TODO:Not implemented");
-}
-
-bool disconnect(connection /*s*/)
-{
-    throw("TODO:Not implemented");
-}
-
-void queue_disconnect(network::connection sock)
-{
-//     throw("TODO:Not implemented");
-    disconnection_queue.push_back(sock);
-}
-
-connection receive_data(config&           /*cfg*/,
-                        connection        /*connection_num*/,
-                        unsigned int      /*timeout*/,
-                        bandwidth_in_ptr* /*bandwidth_in*/)
-{
-    throw("TODO:Not implemented");
-}
-
-connection receive_data(config&           /*cfg*/,
-                        connection        /*connection_num*/,
-                        bool*             /*gzipped*/,
-                        bandwidth_in_ptr* /*bandwidth_in*/)
-{
-    throw("TODO:Not implemented");
-}
-
-connection receive_data(std::vector<char>& /*buf*/, bandwidth_in_ptr* /*bandwidth_in*/)
-{
-    throw("TODO:Not implemented");
-}
-
-struct bandwidth_stats {
-    int out_packets;
-    int out_bytes;
-    int in_packets;
-    int in_bytes;
-    int day;
-    const static size_t type_width = 16;
-    const static size_t packet_width = 7;
-    const static size_t bytes_width = 10;
-    bandwidth_stats& operator+=(const bandwidth_stats& a)
-    {
-        out_packets += a.out_packets;
-        out_bytes += a.out_bytes;
-        in_packets += a.in_packets;
-        in_bytes += a.in_bytes;
-
-        return *this;
-    }
-};
-
-typedef std::map<const std::string, bandwidth_stats> bandwidth_map;
-typedef std::vector<bandwidth_map> hour_stats_vector;
-hour_stats_vector hour_stats(24);
-
-static bandwidth_map::iterator add_bandwidth_entry(const std::string& packet_type)
-{
-    time_t now = time(0);
-    struct tm * timeinfo = localtime(&now);
-    int hour = timeinfo->tm_hour;
-    int day = timeinfo->tm_mday;
-    assert(hour < 24 && hour >= 0);
-    std::pair<bandwidth_map::iterator,bool> insertion = hour_stats[hour].insert(std::make_pair(packet_type, bandwidth_stats()));
-    bandwidth_map::iterator inserted = insertion.first;
-    if (!insertion.second && day != inserted->second.day)
-    {
-        // clear previuos day stats
-        hour_stats[hour].clear();
-        //insert again to cleared map
-        insertion = hour_stats[hour].insert(std::make_pair(packet_type, bandwidth_stats()));
-        inserted = insertion.first;
-    }
-
-    inserted->second.day = day;
-    return inserted;
-}
-
-typedef boost::shared_ptr<bandwidth_stats> bandwidth_stats_ptr;
-
-
-struct bandwidth_stats_output {
-    bandwidth_stats_output(std::stringstream& ss) : ss_(ss), totals_(new bandwidth_stats())
+    connection_stats::connection_stats(int sent, int received, int connected_at)
+        : bytes_sent(sent), bytes_received(received), time_connected(0 - connected_at)
+                                                        // TODO: s/SDLGetTicks/0/
     {}
-    void operator()(const bandwidth_map::value_type& stats)
+
+    connection_stats get_connection_stats(connection connection_num)
     {
-        // name
-        ss_ << " " << std::setw(bandwidth_stats::type_width) <<  stats.first << "| "
-            << std::setw(bandwidth_stats::packet_width)<< stats.second.out_packets << "| "
-            << std::setw(bandwidth_stats::bytes_width) << stats.second.out_bytes/1024 << "| "
-            << std::setw(bandwidth_stats::packet_width)<< stats.second.in_packets << "| "
-            << std::setw(bandwidth_stats::bytes_width) << stats.second.in_bytes/1024 << "\n";
-        *totals_ += stats.second;
-    }
-    void output_totals()
-    {
-        (*this)(std::make_pair(std::string("total"), *totals_));
-    }
-    private:
-    std::stringstream& ss_;
-    bandwidth_stats_ptr totals_;
-};
-
-std::string get_bandwidth_stats_all()
-{
-    std::string result;
-    for (int hour = 0; hour < 24; ++hour)
-    {
-        result += get_bandwidth_stats(hour);
-    }
-    return result;
-}
-
-std::string get_bandwidth_stats()
-{
-    time_t now = time(0);
-    struct tm * timeinfo = localtime(&now);
-    int hour = timeinfo->tm_hour - 1;
-    if (hour < 0)
-        hour = 23;
-    return get_bandwidth_stats(hour);
-}
-
-std::string get_bandwidth_stats(int hour)
-{
-    assert(hour < 24 && hour >= 0);
-    std::stringstream ss;
-
-    ss << "Hour stat starting from " << hour << "\n " << std::left << std::setw(bandwidth_stats::type_width) <<  "Type of packet" << "| "
-        << std::setw(bandwidth_stats::packet_width)<< "out #"  << "| "
-        << std::setw(bandwidth_stats::bytes_width) << "out kb" << "| " /* Are these bytes or bits? base10 or base2? */
-        << std::setw(bandwidth_stats::packet_width)<< "in #"  << "| "
-        << std::setw(bandwidth_stats::bytes_width) << "in kb" << "\n";
-
-    bandwidth_stats_output outputer(ss);
-    std::for_each(hour_stats[hour].begin(), hour_stats[hour].end(), outputer);
-
-    outputer.output_totals();
-    return ss.str();
-}
-
-void add_bandwidth_out(const std::string& packet_type, size_t len)
-{
-    bandwidth_map::iterator itor = add_bandwidth_entry(packet_type);
-    itor->second.out_bytes += len;
-    ++(itor->second.out_packets);
-}
-
-void add_bandwidth_in(const std::string& packet_type, size_t len)
-{
-    bandwidth_map::iterator itor = add_bandwidth_entry(packet_type);
-    itor->second.in_bytes += len;
-    ++(itor->second.in_packets);
-}
-
-    bandwidth_in::~bandwidth_in()
-    {
-        add_bandwidth_in(type_, len_);
+        connection_details& details = get_connection_details(connection_num);
+        return connection_stats(get_send_stats(connection_num).total,
+                                get_receive_stats(connection_num).total,
+                                details.connected_at);
     }
 
-void send_file(const std::string& /*filename*/, connection /*connection_num*/, const std::string& /*packet_type*/)
-{
-    throw("TODO:Not implemented");
-}
+    error::error(const std::string& msg, connection sock) : message(msg), socket(sock)
+    {
+        if(socket) {
+            bad_sockets.insert(socket);
+        }
+    }
 
-/**
- * @todo Note the gzipped parameter should be removed later, we want to send
- * all data gzipped. This can be done once the campaign server is also updated
- * to work with gzipped data.
- */
-size_t send_data(const config&      /*cfg*/,
-                 connection         /*connection_num*/,
-                 const bool         /*gzipped*/,
-                 const std::string& /*packet_type*/)
-{
-    throw("TODO:Not implemented");
-}
+    void error::disconnect()
+    {
+        if(socket) network::disconnect(socket);
+    }
 
-void send_raw_data(const char*        /*buf*/,
-                   int                /*len*/,
-                   connection         /*connection_num*/,
-                   const std::string& /*packet_type*/)
-{
-    throw("TODO:Not implemented");
-}
+    pending_statistics get_pending_stats()
+    {
+        throw std::runtime_error("TODO:Not implemented get_pending_stats");
+    }
 
-void process_send_queue(connection, size_t)
-{
-    check_error();
-}
+    manager::manager(size_t /*min_threads*/, size_t /*max_threads*/) : free_(true)
+    {
+    //     throw std::runtime_error("TODO:Not implemented");
+    }
 
-/** @todo Note the gzipped parameter should be removed later. */
-void send_data_all_except(const config&      /*cfg*/,
-                          connection         /*connection_num*/,
-                          const bool         /*gzipped*/,
-                          const std::string& /*packet_type*/)
-{
-}
+    manager::~manager()
+    {
+    //     throw std::runtime_error("TODO:Not implemented");
+    }
 
-std::string ip_address(connection connection_num)
-{
-    return ana_manager.ip_address( connection_num);
-}
+    void set_raw_data_only()
+    {
+    //     throw std::runtime_error("TODO:Not implemented");
+    }
 
-statistics get_send_stats(connection /*handle*/)
-{
-    throw("TODO:Not implemented");
-}
-statistics get_receive_stats(connection /*handle*/)
-{
-    throw("TODO:Not implemented");
-}
+    server_manager::server_manager(int port, CREATE_SERVER create_server) : free_(false), connection_(0)
+    {
+        if ( create_server != NO_SERVER )
+        {
+            ana::net_id server_id = ana_manager.create_server( );
+            
+            ana_manager.run_server( server_id, port);
+        }
+    }
+
+    server_manager::~server_manager()
+    {
+        stop();
+    }
+
+    void server_manager::stop()
+    {
+        throw std::runtime_error("TODO:Not implemented stop");
+    }
+
+    bool server_manager::is_running() const
+    {
+        throw std::runtime_error("TODO:Not implemented is_running");
+    }
+
+    size_t nconnections()
+    {
+        return ana_manager.number_of_connections();
+    //     return sockets.size();
+    }
+
+    bool is_server()
+    {
+        throw std::runtime_error("TODO:Not implemented is_server");
+    }
+
+    connection connect(const std::string& host, int port)
+    {
+        return ana_manager.create_client_and_connect( host, port );
+        //     throw std::runtime_error("TODO:Not implemented");
+    }
+
+    connection connect(const std::string& host, int port, threading::waiter& /*waiter*/)
+    {
+        return connect( host, port );
+    //     throw std::runtime_error("TODO:Not implemented");
+    }
+
+    namespace {
+
+    connection accept_connection_pending(std::vector<TCPsocket>& /*pending_sockets*/,
+                                        socket_set_type&        /*pending_socket_set*/)
+    {
+        throw std::runtime_error("TODO:Not implemented accept_connection_pending");
+    }
+
+    } //anon namespace
+
+    connection accept_connection()
+    {
+        throw std::runtime_error("TODO:Not implemented accept_connection");
+    }
+
+    bool disconnect(connection /*s*/)
+    {
+        throw std::runtime_error("TODO:Not implemented disconnect");
+    }
+
+    void queue_disconnect(network::connection sock)
+    {
+    //     throw("TODO:Not implemented");
+        disconnection_queue.push_back(sock);
+    }
+
+    connection receive_data(config&           /*cfg*/,
+                            connection        /*connection_num*/,
+                            unsigned int      /*timeout*/,
+                            bandwidth_in_ptr* /*bandwidth_in*/)
+    {
+        throw std::runtime_error("TODO:Not implemented receive_data0");
+    }
+
+    connection receive_data(config&           /*cfg*/,
+                            connection        /*connection_num*/,
+                            bool*             /*gzipped*/,
+                            bandwidth_in_ptr* /*bandwidth_in*/)
+    {
+        throw std::runtime_error("TODO:Not implemented receive_data1");
+    }
+
+    connection receive_data(std::vector<char>& /*buf*/, bandwidth_in_ptr* /*bandwidth_in*/)
+    {
+        throw std::runtime_error("TODO:Not implemented receive_data2");
+    }
+
+    struct bandwidth_stats {
+        int out_packets;
+        int out_bytes;
+        int in_packets;
+        int in_bytes;
+        int day;
+        const static size_t type_width = 16;
+        const static size_t packet_width = 7;
+        const static size_t bytes_width = 10;
+        bandwidth_stats& operator+=(const bandwidth_stats& a)
+        {
+            out_packets += a.out_packets;
+            out_bytes += a.out_bytes;
+            in_packets += a.in_packets;
+            in_bytes += a.in_bytes;
+
+            return *this;
+        }
+    };
+
+    typedef std::map<const std::string, bandwidth_stats> bandwidth_map;
+    typedef std::vector<bandwidth_map> hour_stats_vector;
+    hour_stats_vector hour_stats(24);
+
+    static bandwidth_map::iterator add_bandwidth_entry(const std::string& packet_type)
+    {
+        time_t now = time(0);
+        struct tm * timeinfo = localtime(&now);
+        int hour = timeinfo->tm_hour;
+        int day = timeinfo->tm_mday;
+        assert(hour < 24 && hour >= 0);
+        std::pair<bandwidth_map::iterator,bool> insertion = hour_stats[hour].insert(std::make_pair(packet_type, bandwidth_stats()));
+        bandwidth_map::iterator inserted = insertion.first;
+        if (!insertion.second && day != inserted->second.day)
+        {
+            // clear previuos day stats
+            hour_stats[hour].clear();
+            //insert again to cleared map
+            insertion = hour_stats[hour].insert(std::make_pair(packet_type, bandwidth_stats()));
+            inserted = insertion.first;
+        }
+
+        inserted->second.day = day;
+        return inserted;
+    }
+
+    typedef boost::shared_ptr<bandwidth_stats> bandwidth_stats_ptr;
+
+
+    struct bandwidth_stats_output {
+        bandwidth_stats_output(std::stringstream& ss) : ss_(ss), totals_(new bandwidth_stats())
+        {}
+        void operator()(const bandwidth_map::value_type& stats)
+        {
+            // name
+            ss_ << " " << std::setw(bandwidth_stats::type_width) <<  stats.first << "| "
+                << std::setw(bandwidth_stats::packet_width)<< stats.second.out_packets << "| "
+                << std::setw(bandwidth_stats::bytes_width) << stats.second.out_bytes/1024 << "| "
+                << std::setw(bandwidth_stats::packet_width)<< stats.second.in_packets << "| "
+                << std::setw(bandwidth_stats::bytes_width) << stats.second.in_bytes/1024 << "\n";
+            *totals_ += stats.second;
+        }
+        void output_totals()
+        {
+            (*this)(std::make_pair(std::string("total"), *totals_));
+        }
+        private:
+        std::stringstream& ss_;
+        bandwidth_stats_ptr totals_;
+    };
+
+    std::string get_bandwidth_stats_all()
+    {
+        std::string result;
+        for (int hour = 0; hour < 24; ++hour)
+        {
+            result += get_bandwidth_stats(hour);
+        }
+        return result;
+    }
+
+    std::string get_bandwidth_stats()
+    {
+        time_t now = time(0);
+        struct tm * timeinfo = localtime(&now);
+        int hour = timeinfo->tm_hour - 1;
+        if (hour < 0)
+            hour = 23;
+        return get_bandwidth_stats(hour);
+    }
+
+    std::string get_bandwidth_stats(int hour)
+    {
+        assert(hour < 24 && hour >= 0);
+        std::stringstream ss;
+
+        ss << "Hour stat starting from " << hour << "\n " << std::left << std::setw(bandwidth_stats::type_width) <<  "Type of packet" << "| "
+            << std::setw(bandwidth_stats::packet_width)<< "out #"  << "| "
+            << std::setw(bandwidth_stats::bytes_width) << "out kb" << "| " /* Are these bytes or bits? base10 or base2? */
+            << std::setw(bandwidth_stats::packet_width)<< "in #"  << "| "
+            << std::setw(bandwidth_stats::bytes_width) << "in kb" << "\n";
+
+        bandwidth_stats_output outputer(ss);
+        std::for_each(hour_stats[hour].begin(), hour_stats[hour].end(), outputer);
+
+        outputer.output_totals();
+        return ss.str();
+    }
+
+    void add_bandwidth_out(const std::string& packet_type, size_t len)
+    {
+        bandwidth_map::iterator itor = add_bandwidth_entry(packet_type);
+        itor->second.out_bytes += len;
+        ++(itor->second.out_packets);
+    }
+
+    void add_bandwidth_in(const std::string& packet_type, size_t len)
+    {
+        bandwidth_map::iterator itor = add_bandwidth_entry(packet_type);
+        itor->second.in_bytes += len;
+        ++(itor->second.in_packets);
+    }
+
+        bandwidth_in::~bandwidth_in()
+        {
+            add_bandwidth_in(type_, len_);
+        }
+
+    void send_file(const std::string& /*filename*/, connection /*connection_num*/, const std::string& /*packet_type*/)
+    {
+        throw std::runtime_error("TODO:Not implemented send_file");
+    }
+
+    /**
+    * @todo Note the gzipped parameter should be removed later, we want to send
+    * all data gzipped. This can be done once the campaign server is also updated
+    * to work with gzipped data.
+    */
+    size_t send_data(const config&                cfg,
+                     connection                   connection_num,
+                     const bool                   gzipped,
+                     const std::string&           /*packet_type*/)
+    {
+        if(cfg.empty())
+            return 0;
+
+        if( connection_num == 0 )
+            ana_manager.send_all( cfg, gzipped );
+        else
+            ana_manager.send( connection_num, cfg, gzipped );
+        
+        throw std::runtime_error("TODO:Not implemented send_data");
+    }
+
+    void send_raw_data(const char*        /*buf*/,
+                    int                /*len*/,
+                    connection         /*connection_num*/,
+                    const std::string& /*packet_type*/)
+    {
+        throw std::runtime_error("TODO:Not implemented send_raw_data");
+    }
+
+    void process_send_queue(connection, size_t)
+    {
+        check_error();
+    }
+
+    /** @todo Note the gzipped parameter should be removed later. */
+    void send_data_all_except(const config&       /*cfg*/,
+                              connection          /*connection_num*/,
+                              const bool          /*gzipped*/,
+                              const std::string&  /*packet_type*/)
+    {
+    }
+
+    std::string ip_address(connection connection_num)
+    {
+        return ana_manager.ip_address( connection_num);
+    }
+
+    statistics get_send_stats(connection /*handle*/)
+    {
+        throw std::runtime_error("TODO:Not implemented get_send_stats");
+    }
+    statistics get_receive_stats(connection /*handle*/)
+    {
+        throw std::runtime_error("TODO:Not implemented get_receive_stats");
+    }
 
 } // end namespace network
