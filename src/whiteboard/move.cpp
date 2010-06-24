@@ -76,20 +76,25 @@ void move::accept(visitor& v)
 
 bool move::execute()
 {
+	bool move_finished_completely = false;
+
 	arrow_->set_alpha(ALPHA_HIGHLIGHT);
 
 	const arrow_path_t& arrow_path = arrow_->get_path();
 	static const bool show_move = false;
 	map_location final_location;
-	::move_unit(NULL, arrow_path, &recorder, resources::undo_stack, show_move, &final_location,
+	int steps_done = ::move_unit(NULL, arrow_path, &recorder, resources::undo_stack, show_move, &final_location,
 			get_current_team().auto_shroud_updates());
 	// final_location now contains the final unit location
 	// if that isn't needed, pass NULL rather than &final_location
 
-	bool move_finished_successfully = false;
 	if (arrow_path.back() == final_location)
 	{
-		move_finished_successfully = true;
+		move_finished_completely = true;
+	}
+	else if (steps_done == 0)
+	{
+		DBG_WB << "Move execution resulted in zero movement.\n";
 	}
 	else if (final_location.valid())
 	{
@@ -124,7 +129,7 @@ bool move::execute()
 		WRN_WB << "Unit disappeared from map during move execution; Case unhandled as yet.\n";
 	}
 
-	return move_finished_successfully;
+	return move_finished_completely;
 }
 
 modifier_ptr move::apply_temp_modifier(unit_map& unit_map)
