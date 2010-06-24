@@ -53,6 +53,7 @@ public:
 	unit& get_unit() { return unit_; }
 
 	boost::shared_ptr<arrow> get_arrow() { return arrow_; }
+	boost::shared_ptr<unit> get_fake_unit() { return fake_unit_; }
 
 	/**
 	 * Applies temporarily the result of this move to the unit map, and returns

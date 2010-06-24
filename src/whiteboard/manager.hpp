@@ -114,7 +114,6 @@ private:
 	boost::shared_ptr<unit> fake_unit_;
 
 	unit* selected_unit_;
-	map_location highlighted_hex_;
 
 	bool ignore_mouse_motion_;
 

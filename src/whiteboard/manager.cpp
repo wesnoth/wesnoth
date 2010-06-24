@@ -42,7 +42,6 @@ manager::manager():
 		move_arrow_(),
 		fake_unit_(),
 		selected_unit_(NULL),
-		highlighted_hex_(map_location::null_location),
 		ignore_mouse_motion_(false),
 		stacked_modifiers_calls_(0)
 {
@@ -121,8 +120,6 @@ void manager::mouseover_hex(const map_location& hex)
 
 void manager::highlight_hex(const map_location& hex)
 {
-	highlighted_hex_ = hex;
-
 	unit_map::iterator highlighted_unit = resources::units->find(hex);
 
 	highlight_visitor highlighter(true);
@@ -243,9 +240,30 @@ void manager::save_temp_move()
 			<< " to " << route_.back() << "\n";
 	ignore_mouse_motion_ = true;
 
+	assert(!temp_modifiers_applied());
+	// Ghost either the real unit, or the fake unit of the last move of this unit if the move exists.
+	bool action_found = false;
+	const action_set& actions = get_current_side_actions()->actions();
+	action_set::const_iterator action;
+	for (action = actions.end() - 1; ((action != actions.begin() - 1) && !action_found ); --action)
+	{
+		if ((**action).is_related_to(*selected_unit_))
+		{
+			boost::shared_ptr<move> tempmove = boost::dynamic_pointer_cast<move>(*action);
+			if (tempmove)
+			{
+				tempmove->get_fake_unit()->set_ghosted(false);
+				action_found = true;
+			}
+		}
+	}
+	if (!action_found)
+	{
+		selected_unit_->set_ghosted(false);
+	}
+
 	scoped_modifiers wb_modifiers;
 
-	selected_unit_->set_ghosted(false);
 	unit_display::move_unit(route_, *fake_unit_, *resources::teams, true);
 	fake_unit_->set_standing(true);
 
