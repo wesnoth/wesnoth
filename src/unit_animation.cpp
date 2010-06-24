@@ -381,7 +381,7 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 		animations.back().event_ = utils::split("post_movement");
 
 		animations.push_back(*itor);
-		animations.back().unit_anim_.override(0,3740,"","",0,"0~1:110,0~1:110,0~1:110,0~1:110,0~1:110,0~1:110,0~1:110,0~1:110,0~1:110,0~1:110,0~1:110,0~1:110,0~1:110,0~1:110,0~1:110,0~1:110,0~1:110,0~1:110,0~1:110,0~1:110,0~1:110,0~1:110,0~1:110,0~1:110,0~1:110,0~1:110,0~1:110,0~1:110,0~1:110,0~1:110,0~1:110,0~1:110,0~1:110,0~1:110,",lexical_cast<std::string>(display::LAYER_UNIT_MOVE_DEFAULT-display::LAYER_UNIT_FIRST));
+		animations.back().unit_anim_.override(0,6800,"","",0,"0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,",lexical_cast<std::string>(display::LAYER_UNIT_MOVE_DEFAULT-display::LAYER_UNIT_FIRST));
 		animations.back().event_ = utils::split("movement");
 
 		animations.push_back(*itor);
@@ -570,7 +570,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 	foreach (config &anim, expanded_cfg.child_range("movement_anim"))
 	{
 		if (anim["offset"].empty()) {
-			anim["offset"] = "0~1:110,0~1:110,0~1:110,0~1:110,0~1:110,0~1:110,0~1:110,0~1:110,0~1:110,0~1:110,0~1:110,0~1:110,0~1:110,0~1:110,0~1:110,0~1:110,0~1:110,0~1:110,0~1:110,0~1:110,0~1:110,0~1:110,0~1:110,0~1:110,0~1:110,0~1:110,0~1:110,0~1:110,0~1:110,0~1:110,0~1:110,0~1:110,0~1:110,0~1:110,";
+			anim["offset"] = "0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,";
 		}
 		anim["apply_to"] = "movement";
 		if (anim["layer"].empty()) anim["layer"] = move_layer;
