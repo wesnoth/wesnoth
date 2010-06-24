@@ -43,7 +43,7 @@ manager::manager():
 		fake_unit_(),
 		selected_unit_(NULL),
 		ignore_mouse_motion_(false),
-		stacked_modifiers_calls_(0)
+		planned_unit_map_(false)
 {
 }
 
@@ -63,49 +63,37 @@ static side_actions_ptr get_current_side_actions()
 	return side_actions;
 }
 
-void manager::push_temp_modifiers()
+void manager::set_planned_unit_map()
 {
 	if (active_)
 	{
-		if (stacked_modifiers_calls_ == 0)
+		assert (!planned_unit_map_);
+		if (!planned_unit_map_)
 		{
 			mapbuilder_.reset(new mapbuilder_visitor(*resources::units));
 			const action_set& actions = get_current_side_actions()->actions();
+			DBG_WB << "Building planned unit map.\n";
 			foreach (const action_ptr &action, actions)
 			{
 				assert(action);
 				action->accept(*mapbuilder_);
 			}
+			planned_unit_map_ = true;
 		}
-		DBG_WB << "Increasing stacked modifiers calls count to " << stacked_modifiers_calls_ << "\n";
-		++stacked_modifiers_calls_;
 	}
 }
 
-void manager::pop_temp_modifiers()
+void manager::set_real_unit_map()
 {
 	if (active_)
 	{
-		if (stacked_modifiers_calls_ > 0)
+		assert (planned_unit_map_);
+		if (planned_unit_map_)
 		{
-			DBG_WB << "Decreasing stacked modifiers calls count to " << stacked_modifiers_calls_ << "\n";
-			--stacked_modifiers_calls_;
-			if (stacked_modifiers_calls_ == 0)
-			{
-				DBG_WB << "Removing temporary modifiers.\n";
-				mapbuilder_.reset();
-			}
+			DBG_WB << "Restoring regular unit map.\n";
+			mapbuilder_.reset();
+			planned_unit_map_ = false;
 		}
-	}
-}
-
-void manager::clear_temp_modifiers()
-{
-	if (active_)
-	{
-		DBG_WB << "Removing temporary modifiers and erasing stack marker.\n";
-		stacked_modifiers_calls_ = 0;
-		mapbuilder_.reset();
 	}
 }
 
@@ -120,7 +108,7 @@ void manager::mouseover_hex(const map_location& hex)
 
 void manager::highlight_hex(const map_location& hex)
 {
-	scoped_modifiers wb_modifiers;
+	scoped_planned_unit_map wb_modifiers;
 
 	unit_map::iterator highlighted_unit = resources::units->find(hex);
 
@@ -242,10 +230,11 @@ void manager::save_temp_move()
 			<< " to " << route_.back() << "\n";
 	ignore_mouse_motion_ = true;
 
-	assert(!temp_modifiers_applied());
+	assert(!has_planned_unit_map());
 	// Ghost either the real unit, or the fake unit of the last move of this unit if the move exists.
 	bool action_found = false;
 	const action_set& actions = get_current_side_actions()->actions();
+	//FIXME: could use a reverse iterator here
 	action_set::const_iterator action;
 	for (action = actions.end() - 1; ((action != actions.begin() - 1) && !action_found ); --action)
 	{
@@ -264,7 +253,7 @@ void manager::save_temp_move()
 		selected_unit_->set_ghosted(false);
 	}
 
-	scoped_modifiers wb_modifiers;
+	scoped_planned_unit_map wb_modifiers;
 
 	unit_display::move_unit(route_, *fake_unit_, *resources::teams, true);
 	fake_unit_->set_standing(true);
@@ -289,6 +278,7 @@ void manager::execute_next()
 void manager::delete_last()
 {
 	get_current_side_actions()->remove_action(get_current_side_actions()->end() - 1);
+	//TODO: restore "standing" animation on last remaining move of this unit
 }
 
 action_ptr manager::has_action(const unit& unit) const
@@ -298,24 +288,24 @@ action_ptr manager::has_action(const unit& unit) const
 	return action;
 }
 
-scoped_modifiers::scoped_modifiers()
+scoped_planned_unit_map::scoped_planned_unit_map()
 {
-	resources::whiteboard->push_temp_modifiers();
+	resources::whiteboard->set_planned_unit_map();
 }
 
-scoped_modifiers::~scoped_modifiers()
+scoped_planned_unit_map::~scoped_planned_unit_map()
 {
-	resources::whiteboard->pop_temp_modifiers();
+	resources::whiteboard->set_real_unit_map();
 }
 
-scoped_modifiers_remover::scoped_modifiers_remover()
+scoped_real_unit_map::scoped_real_unit_map()
 {
-	resources::whiteboard->pop_temp_modifiers();
+	resources::whiteboard->set_real_unit_map();
 }
 
-scoped_modifiers_remover::~scoped_modifiers_remover()
+scoped_real_unit_map::~scoped_real_unit_map()
 {
-	resources::whiteboard->push_temp_modifiers();
+	resources::whiteboard->set_planned_unit_map();
 }
 
 } // end namespace wb

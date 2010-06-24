@@ -55,12 +55,11 @@ public:
 	 * Temporarily apply the effects of the current team's
 	 * planned moves to the unit map.
 	 */
-	void push_temp_modifiers();
-	void pop_temp_modifiers();
-	void clear_temp_modifiers();
-	bool temp_modifiers_applied() { return stacked_modifiers_calls_ > 0; }
+	void set_planned_unit_map();
+	void set_real_unit_map();
+	bool has_planned_unit_map() { return planned_unit_map_; }
 
-	bool ignore_mouse_motion() {return ignore_mouse_motion_; }
+	bool ignore_mouse() {return ignore_mouse_motion_; }
 
 	/**
 	 * Highlights the action for this unit,
@@ -117,19 +116,19 @@ private:
 
 	bool ignore_mouse_motion_;
 
-	unsigned int stacked_modifiers_calls_;
+	bool planned_unit_map_;
 };
 
-struct scoped_modifiers
+struct scoped_planned_unit_map
 {
-	scoped_modifiers();
-	~scoped_modifiers();
+	scoped_planned_unit_map();
+	~scoped_planned_unit_map();
 };
 
-struct scoped_modifiers_remover
+struct scoped_real_unit_map
 {
-	scoped_modifiers_remover();
-	~scoped_modifiers_remover();
+	scoped_real_unit_map();
+	~scoped_real_unit_map();
 };
 
 } // end namespace wb
