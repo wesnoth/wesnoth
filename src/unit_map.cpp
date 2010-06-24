@@ -51,12 +51,6 @@ void unit_map::swap(unit_map &o)
 	std::swap(map_, o.map_);
 	std::swap(lmap_, o.lmap_);
 	std::swap(num_invalid_, o.num_invalid_);
-	for (const_unit_iterator i = begin(); i != end(); ++i) {
-		i->set_game_context(this);
-	}
-	for (const_unit_iterator i = o.begin(); i != o.end(); ++i) {
-		i->set_game_context(&o);
-	}
 }
 
 unit_map::~unit_map()
@@ -134,8 +128,6 @@ void unit_map::insert(unit *p)
 	std::pair<umap::iterator, bool> biter =
 		map_.insert(std::make_pair(unit_id, p));
 
-	p->set_game_context(this);
-
 	if (biter.second) {
 	} else if (!biter.first->second) {
 		biter.first->second = p;
@@ -196,7 +188,6 @@ unit *unit_map::extract(const map_location &loc)
 
 	umap::iterator iter = map_.find(i->second);
 	unit *res = iter->second;
-	res->set_game_context(NULL);
 
 	DBG_NG << "Extract unit " << res->underlying_id() << " - " << res->id()
 			<< " from location: (" << loc << ")\n";
