@@ -47,7 +47,6 @@ void side_actions::execute_next()
 		{
 			actions_.pop_front();
 		}
-		//I love this finish idea
 
 		//TODO: Validate remaining actions here
 	}

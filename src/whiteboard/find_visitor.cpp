@@ -29,7 +29,6 @@ find_visitor::find_visitor()
 	: found_(false)
 	, search_target_(NULL)
 	, search_result_()
-	  // found == !search_result_.empty();
 {
 }
 

@@ -52,7 +52,6 @@ manager::~manager()
 	if (resources::screen && fake_unit_)
 	{
 		resources::screen->remove_temporary_unit(fake_unit_.get());
-		// no destruction of stack ?
 	}
 }
 
@@ -215,8 +214,6 @@ void manager::create_temp_move(const std::vector<map_location> &steps)
 
 bool manager::during_move_creation() const
 {
-	// style: inline  return selected_unit_ != NULL
-	// is this used ?
 	bool during_move_creation = selected_unit_ != NULL;
 	return during_move_creation;
 }
