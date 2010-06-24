@@ -409,7 +409,12 @@ bool mouse_handler::right_click_show_menu(int x, int y, const bool browse)
 {
 	// The first right-click cancel the selection if any,
 	// the second open the context menu
-	if (selected_hex_.valid() && find_unit(selected_hex_) != units_.end()) {
+	unit_map::iterator unit;
+	{
+		wb::scoped_modifiers wb_modifiers;
+		unit = find_unit(selected_hex_);
+	}
+	if (selected_hex_.valid() && unit != units_.end()) {
 		select_hex(map_location(), browse);
 		return false;
 	} else {
@@ -527,6 +532,7 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 
 		if (resources::whiteboard->during_move_creation()) {
 
+			// Create planned move for whiteboard
 			resources::whiteboard->save_temp_move();
 
 		} else {
