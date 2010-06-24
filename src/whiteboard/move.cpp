@@ -87,6 +87,8 @@ void move::execute()
 
 modifier_ptr move::apply_temp_modifier(unit_map& unit_map)
 {
+	//TODO: properly handle movement points
+
 	assert(unit_.get_location() == orig_hex_);
 	DBG_WB << "Adding temp unit mover for unit " << unit_.name() << " [" << unit_.underlying_id() << "] "
 			<< " from (" << orig_hex_ << ") to (" << dest_hex_ <<")\n";

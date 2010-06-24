@@ -177,6 +177,8 @@ void manager::deselect_unit()
 
 void manager::create_temp_move(const std::vector<map_location> &steps)
 {
+	//TODO: properly handle movement points
+
 	//NOTE: route.back() = dst, and route.front() = src
 	route_ = steps;
 	if (route_.size() > 1 && selected_unit_ != NULL)
@@ -218,6 +220,8 @@ bool manager::during_move_creation() const
 
 void manager::erase_temp_move()
 {
+	//TODO: properly handle movement points
+
 	if (move_arrow_)
 	{
 		move_arrow_.reset(); //auto-removes itself from display
@@ -237,6 +241,8 @@ void manager::erase_temp_move()
 
 void manager::save_temp_move()
 {
+	//TODO: properly handle movement points
+
 	LOG_WB << "Creating move for unit " << selected_unit_->name() << " [" << selected_unit_->id() << "]"
 			<< " from " << route_.front()
 			<< " to " << route_.back() << "\n";
@@ -282,6 +288,7 @@ void manager::execute_next()
 {
 	//TODO: catch end_turn_exception somewhere here?
 	//TODO: switch display to "prototype A", i.e. dst as ghost
+	//TODO: properly handle movement points
 	get_current_side_actions()->execute_next();
 }
 
