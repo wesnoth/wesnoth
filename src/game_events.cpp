@@ -417,8 +417,8 @@ namespace game_events {
 					if(counts == default_counts && match_count) {
 						break;
 					}
-					std::vector<unit>& avail_units = team->recall_list();
-					for(std::vector<unit>::iterator unit = avail_units.begin(); unit!=avail_units.end();) {
+					const std::vector<unit>& avail_units = team->recall_list();
+					for(std::vector<unit>::const_iterator unit = avail_units.begin(); unit!=avail_units.end();) {
 						if(counts == default_counts && match_count) {
 							break;
 						}

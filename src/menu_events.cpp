@@ -815,12 +815,6 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 
 	std::vector<unit>& recall_list_team = current_team.recall_list();
 
-	//sort the available units into order by value
-	//so that the most valuable units are shown first
-	//FIXME: this is bad! The dialog directly sort the recall list itself.
-	//and is now useless because level's column sorting is used later
-	sort_units(recall_list_team);
-
 	gui_->draw(); //clear the old menu
 
 	if(recall_list_team.empty()) {

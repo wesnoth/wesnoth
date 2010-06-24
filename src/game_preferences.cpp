@@ -882,10 +882,9 @@ void encounter_start_units(unit_map& units){
 }
 
 void encounter_recallable_units(std::vector<team>& teams){
-	for (std::vector<team>::iterator help_team_it = teams.begin();
-		help_team_it != teams.end(); ++help_team_it) {
-		for(std::vector<unit>::iterator help_recall_it = help_team_it->recall_list().begin(); help_recall_it != help_team_it->recall_list().end(); ++help_recall_it) {
-			encountered_units_set.insert(help_recall_it->type_id());
+	foreach(const team& t, teams) {
+		foreach(const unit& u, t.recall_list()) {
+			encountered_units_set.insert(u.type_id());
 		}
 	}
 }

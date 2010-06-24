@@ -109,7 +109,7 @@ class units_list_preview_pane : public dialogs::unit_preview_pane
 public:
 	units_list_preview_pane(const unit &u, TYPE type = SHOW_ALL, bool left_side = true);
 	units_list_preview_pane(
-			std::vector<unit>& units, const gui::filter_textbox* filter=NULL,
+			const std::vector<unit>& units, const gui::filter_textbox* filter=NULL,
 			TYPE type=SHOW_ALL, bool left_side=true);
 
 private:
@@ -117,7 +117,7 @@ private:
 	const details get_details() const;
 	void process_event();
 
-	std::vector<unit>* units_;
+	const std::vector<unit>* units_;
 	std::vector<unit> unit_store_;
 };
 

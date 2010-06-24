@@ -870,7 +870,7 @@ units_list_preview_pane::units_list_preview_pane(const unit &u, TYPE type, bool 
 {
 }
 
-units_list_preview_pane::units_list_preview_pane(std::vector<unit> &units,
+units_list_preview_pane::units_list_preview_pane(const std::vector<unit> &units,
 		const gui::filter_textbox* filter, TYPE type, bool on_left_side) :
 	unit_preview_pane(filter, type, on_left_side),
 	units_(&units),
@@ -885,7 +885,7 @@ size_t units_list_preview_pane::size() const
 
 const unit_preview_pane::details units_list_preview_pane::get_details() const
 {
-	unit& u = (*units_)[index_];
+	const unit& u = (*units_)[index_];
 	details det;
 
 	det.image = u.still_image();
