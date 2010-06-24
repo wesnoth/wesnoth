@@ -43,7 +43,8 @@ manager::manager():
 		fake_unit_(),
 		selected_unit_(NULL),
 		highlighted_hex_(map_location::null_location),
-		temp_modifiers_applied_(false)
+		temp_modifiers_applied_(false),
+		block_mouse_motion_(false)
 {
 }
 
@@ -172,17 +173,14 @@ void manager::create_temp_move(const std::vector<map_location> &steps)
 			resources::screen->add_arrow(*move_arrow_);
 
 		}
-		else
-		{
-			move_arrow_->set_path(route_);
-		}
+		move_arrow_->set_path(route_);
 
 		// Create temp ghost unit (erases previous one if there was one)
 		if (fake_unit_)
 			resources::screen->remove_temporary_unit(fake_unit_.get());
+		resources::screen->draw();
 		fake_unit_.reset(new unit(*selected_unit_));
 		unit_display::move_unit(route_, *fake_unit_, *resources::teams, false); //get facing right
-		fake_unit_->set_ghosted(true);
 		resources::screen->place_temporary_unit(fake_unit_.get());
 		fake_unit_->set_ghosted(true);
 
@@ -224,9 +222,10 @@ void manager::save_temp_move()
 	LOG_WB << "Creating move for unit " << selected_unit_->name() << " [" << selected_unit_->id() << "]"
 			<< " from " << selected_unit_->get_location()
 			<< " to " << route_.back() << "\n";
+	block_mouse_motion_ = true;
 
 	selected_unit_->set_ghosted(false);
-	unit_display::move_unit(route_, *selected_unit_, *resources::teams, true);
+	unit_display::move_unit(route_, *fake_unit_, *resources::teams, true);
 	fake_unit_->set_standing(true);
 
 	get_current_side_actions()->queue_move(*selected_unit_, route_.back(), move_arrow_, fake_unit_);
@@ -234,6 +233,8 @@ void manager::save_temp_move()
 	fake_unit_.reset();
 	//selected_unit_->set_standing(true);
 	selected_unit_ = NULL;
+
+	block_mouse_motion_ = false;
 }
 
 void manager::execute_next()

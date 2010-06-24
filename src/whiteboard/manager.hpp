@@ -60,6 +60,8 @@ public:
 	void toggle_temp_modifiers();
 	bool temp_modifiers_applied() { return temp_modifiers_applied_; }
 
+	bool block_mouse_motion() {return block_mouse_motion_; }
+
 	/**
 	 * Highlights the action for this unit,
 	 * for instance highlights the arrow if it's a move.
@@ -115,6 +117,7 @@ private:
 	map_location highlighted_hex_;
 
 	bool temp_modifiers_applied_;
+	bool block_mouse_motion_;
 };
 
 } // end namespace wb

@@ -95,6 +95,7 @@ int mouse_handler::drag_threshold() const
 void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 {
 	if (attackmove_) return;
+	if (resources::whiteboard->block_mouse_motion()) return;
 
 	// we ignore the position coming from event handler
 	// because it's always a little obsolete and we don't need
@@ -127,17 +128,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 		if (reachmap_invalid_) {
 			reachmap_invalid_ = false;
 			if (!current_paths_.destinations.empty() && !show_partial_move_) {
-
-				if (resources::whiteboard->active()) {
-					resources::whiteboard->apply_temp_modifiers();
-				}
-
-					unit_map::iterator u = find_unit(selected_hex_);
-
-				if (resources::whiteboard->active()) {
-					resources::whiteboard->remove_temp_modifiers();
-				}
-
+				unit_map::iterator u = find_unit(selected_hex_);
 				if(selected_hex_.valid() && u != units_.end() ) {
 					// reselect the unit without firing events (updates current_paths_)
 					select_hex(selected_hex_, true);
@@ -164,22 +155,14 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 		}
 
 		gui().highlight_hex(new_hex);
+
+		const unit_map::iterator selected_unit = find_unit(selected_hex_);
+		const unit_map::iterator mouseover_unit = find_unit(new_hex);
+
 		if (resources::whiteboard->active()) {
 			resources::whiteboard->remove_highlight();
 			resources::whiteboard->highlight_hex(new_hex);
 		}
-
-		if (resources::whiteboard->active()) {
-			resources::whiteboard->apply_temp_modifiers();
-		}
-
-			const unit_map::iterator selected_unit = find_unit(selected_hex_);
-			const unit_map::iterator mouseover_unit = find_unit(new_hex);
-
-		if (resources::whiteboard->active()) {
-			resources::whiteboard->remove_temp_modifiers();
-		}
-
 
 		// we search if there is an attack possibility and where
 		map_location attack_from = current_unit_attacks_from(new_hex);
@@ -242,13 +225,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 				unit_movement_resetter move_reset(*selected_unit,
 						selected_unit->side() != side_num_);
 
-				if (resources::whiteboard->active()) {
-					resources::whiteboard->apply_temp_modifiers();
-
-					current_route_ = get_route(selected_unit, dest, waypoints_, viewing_team());
-
-					resources::whiteboard->remove_temp_modifiers();
-				}
+				current_route_ = get_route(selected_unit, dest, waypoints_, viewing_team());
 
 				if(!browse) {
 					gui().set_route(&current_route_);
@@ -270,6 +247,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 
 				bool teleport = un->get_ability_bool("teleport");
 
+				//Show reach as influenced by units' future positions from whiteboard
 				if (resources::whiteboard->active()) {
 					resources::whiteboard->apply_temp_modifiers();
 
@@ -285,16 +263,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 				//unit is on our team, show path if the unit has one
 				const map_location go_to = un->get_goto();
 				if(map_.on_board(go_to)) {
-					if (resources::whiteboard->active()) {
-						resources::whiteboard->apply_temp_modifiers();
-					}
-
-						pathfind::marked_route route = get_route(un, go_to, un->waypoints(), current_team());
-
-					if (resources::whiteboard->active()) {
-						resources::whiteboard->remove_temp_modifiers();
-					}
-
+					pathfind::marked_route route = get_route(un, go_to, un->waypoints(), current_team());
 					gui().set_route(&route);
 				}
 				over_route_ = true;
@@ -464,7 +433,13 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 	//since it's what update our global state
 	map_location hex = last_hex_;
 
+	if (resources::whiteboard->active()) {
+		resources::whiteboard->apply_temp_modifiers();
+	}
 	unit_map::iterator u = find_unit(selected_hex_);
+	if (resources::whiteboard->active()) {
+		resources::whiteboard->remove_temp_modifiers();
+	}
 
 	//if the unit is selected and then itself clicked on,
 	//any goto command and waypoints are cancelled
@@ -474,7 +449,13 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 		waypoints_.clear();
 	}
 
+	if (resources::whiteboard->active()) {
+		resources::whiteboard->apply_temp_modifiers();
+	}
 	unit_map::iterator clicked_u = find_unit(hex);
+	if (resources::whiteboard->active()) {
+		resources::whiteboard->remove_temp_modifiers();
+	}
 
 	const map_location src = selected_hex_;
 	pathfind::paths orig_paths = current_paths_;
@@ -482,57 +463,63 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 
 	//see if we're trying to do a attack or move-and-attack
 	if(!browse && !commands_disabled && attack_from.valid()) {
-		if (attack_from == selected_hex_) { //no move needed
-			int choice = show_attack_dialog(attack_from, clicked_u->get_location());
-			if (choice >=0 ) {
-				attack_enemy(u->get_location(), clicked_u->get_location(), choice);
-			}
-			return false;
-		}
-		else {
-			// we will now temporary move next to the enemy
-			pathfind::paths::dest_vect::const_iterator itor =
-					current_paths_.destinations.find(attack_from);
-			if(itor == current_paths_.destinations.end()) {
-				// can't reach the attacking location
-				// not supposed to happen, so abort
+		if (resources::whiteboard->during_move_creation()) {
+
+			//TODO: create attack action for whiteboard
+
+		} else {
+			if (attack_from == selected_hex_) { //no move needed
+				int choice = show_attack_dialog(attack_from, clicked_u->get_location());
+				if (choice >=0 ) {
+					attack_enemy(u->get_location(), clicked_u->get_location(), choice);
+				}
 				return false;
 			}
-			// update movement_left as if we did the move
-			int move_left_dst = itor->move_left;
-			int move_left_src = u->movement_left();
-			u->set_movement(move_left_dst);
+			else {
+				// we will now temporary move next to the enemy
+				pathfind::paths::dest_vect::const_iterator itor =
+						current_paths_.destinations.find(attack_from);
+				if(itor == current_paths_.destinations.end()) {
+					// can't reach the attacking location
+					// not supposed to happen, so abort
+					return false;
+				}
+				// update movement_left as if we did the move
+				int move_left_dst = itor->move_left;
+				int move_left_src = u->movement_left();
+				u->set_movement(move_left_dst);
 
-			int choice = -1;
-			// block where we temporary move the unit
-			{
-				temporary_unit_mover temp_mover(units_, src, attack_from);
-				choice = show_attack_dialog(attack_from, clicked_u->get_location());
-			}
-			// restore unit as before
-			u = units_.find(src);
-			u->set_movement(move_left_src);
-			u->set_standing();
+				int choice = -1;
+				// block where we temporary move the unit
+				{
+					temporary_unit_mover temp_mover(units_, src, attack_from);
+					choice = show_attack_dialog(attack_from, clicked_u->get_location());
+				}
+				// restore unit as before
+				u = units_.find(src);
+				u->set_movement(move_left_src);
+				u->set_standing();
 
-			if (choice < 0) {
-				// user hit cancel, don't start move+attack
+				if (choice < 0) {
+					// user hit cancel, don't start move+attack
+					return false;
+				}
+
+				//register the mouse-UI waypoints into the unit's waypoints
+				u->waypoints() = waypoints_;
+
+				// move the unit without clearing fog (to avoid interruption)
+				//TODO: clear fog and interrupt+resume move
+				if(!move_unit_along_current_route(false, true)) {
+					// interrupted move
+					// we assume that move_unit() did the cleaning
+					// (update shroud/fog, clear undo if needed)
+					return false;
+				}
+
+				attack_enemy(attack_from, hex, choice); // Fight !!
 				return false;
 			}
-
-			//register the mouse-UI waypoints into the unit's waypoints
-			u->waypoints() = waypoints_;
-
-			// move the unit without clearing fog (to avoid interruption)
-			//TODO: clear fog and interrupt+resume move
-			if(!move_unit_along_current_route(false, true)) {
-				// interrupted move
-				// we assume that move_unit() did the cleaning
-				// (update shroud/fog, clear undo if needed)
-				return false;
-			}
-
-			attack_enemy(attack_from, hex, choice); // Fight !!
-			return false;
 		}
 	}
 
@@ -544,15 +531,21 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 
 		gui().unhighlight_reach();
 
-		//register the mouse-UI waypoints into the unit's waypoints
-		u->waypoints() = waypoints_;
+		if (resources::whiteboard->during_move_creation()) {
 
-		move_unit_along_current_route(check_shroud);
-		// during the move, we may have selected another unit
-		// (but without triggering a select event (command was disabled)
-		// in that case reselect it now to fire the event (+ anim & sound)
-		if (selected_hex_ != src) {
-			select_hex(selected_hex_, browse);
+			//TODO: create move action for whiteboard
+
+		} else {
+			//register the mouse-UI waypoints into the unit's waypoints
+			u->waypoints() = waypoints_;
+
+			move_unit_along_current_route(check_shroud);
+			// during the move, we may have selected another unit
+			// (but without triggering a select event (command was disabled)
+			// in that case reselect it now to fire the event (+ anim & sound)
+			if (selected_hex_ != src) {
+				select_hex(selected_hex_, browse);
+			}
 		}
 		return false;
 	} else if (!attackmove_) {
@@ -577,10 +570,6 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse) {
 	}
 	unit_map::iterator u = find_unit(hex);
 
-	if (resources::whiteboard->active()) {
-		resources::whiteboard->remove_temp_modifiers();
-	}
-
 	if (hex.valid() && u != units_.end() && !u->get_hidden()) {
 		next_unit_ = u->get_location();
 
@@ -589,14 +578,9 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse) {
 			// and we restore them before the "select" event is raised
 			unit_movement_resetter move_reset(*u, u->side() != side_num_);
 			bool teleport = u->get_ability_bool("teleport");
-			if (resources::whiteboard->active()) {
-				resources::whiteboard->apply_temp_modifiers();
-			}
+
 			current_paths_ = pathfind::paths(map_, units_, hex, teams_,
 				false, teleport, viewing_team(), path_turns_);
-			if (resources::whiteboard->active()) {
-				resources::whiteboard->remove_temp_modifiers();
-			}
 		}
 		show_attack_options(u);
 		gui().highlight_reach(current_paths_);
@@ -628,6 +612,10 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse) {
 			resources::whiteboard->deselect_unit();
 		}
 	}
+
+	if (resources::whiteboard->active()) {
+		resources::whiteboard->remove_temp_modifiers();
+	}
 }
 
 void mouse_handler::deselect_hex() {
@@ -655,11 +643,7 @@ bool mouse_handler::move_unit_along_current_route(bool check_shroud, bool attack
 	attackmove_ = attackmove;
 	size_t moves = 0;
 	try {
-		if (resources::whiteboard->active()) {
-			resources::whiteboard->save_temp_move();
-		} else {
 			moves = ::move_unit(NULL, steps, &recorder, resources::undo_stack, true, &next_unit_, false, check_shroud);
-		}
 	} catch(end_turn_exception&) {
 		attackmove_ = false;
 		cursor::set(cursor::NORMAL);
