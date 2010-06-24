@@ -230,7 +230,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 
 				if(!browse) {
 					gui().set_route(&current_route_);
-					if (resources::whiteboard->active()) {
+					if (resources::whiteboard->is_active()) {
 						resources::whiteboard->create_temp_move(current_route_.steps);
 					}
 				}
@@ -600,12 +600,12 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse) {
 		if (!browse && !commands_disabled && u->side() == gui().viewing_side()) {
 			sound::play_UI_sound("select-unit.wav");
 
-			if (!(resources::whiteboard->active() && resources::whiteboard->has_action(*u))) {
+			if (!(resources::whiteboard->is_active() && resources::whiteboard->has_action(*u))) {
 				u->set_selecting();
 				game_events::fire("select", hex);
 			}
 
-			if (resources::whiteboard->active()) {
+			if (resources::whiteboard->is_active()) {
 				resources::whiteboard->select_unit(*u);
 			}
 		}
@@ -614,7 +614,7 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse) {
 		gui().unhighlight_reach();
 		current_paths_ = pathfind::paths();
 		current_route_.steps.clear();
-		if (resources::whiteboard->active()) {
+		if (resources::whiteboard->is_active()) {
 			resources::whiteboard->deselect_unit();
 		}
 	}

@@ -780,7 +780,7 @@ bool play_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int in
 
 	case hotkey::HOTKEY_EXECUTE_NEXT_ACTION:
 	case hotkey::HOTKEY_DELETE_LAST_ACTION:
-		return resources::whiteboard->active();
+		return resources::whiteboard->is_active();
 
 	default:
 		return false;

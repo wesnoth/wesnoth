@@ -48,7 +48,7 @@ public:
 	/**
 	 * Determine whether the whiteboard is activated.
 	 */
-	bool active() const { return active_; }
+	bool is_active() const { return active_; }
 	void set_active(bool active){ active_ = active; }
 
 	/**
