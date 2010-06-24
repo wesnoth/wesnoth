@@ -52,8 +52,7 @@ map_location find_vacant_tile(const gamemap& map,
                                    const unit* pass_check=NULL);
 
 /** Function which determines if a given location is in an enemy zone of control. */
-bool enemy_zoc(unit_map const &units,
-               std::vector<team> const &teams, map_location const &loc,
+bool enemy_zoc(std::vector<team> const &teams, map_location const &loc,
                team const &viewing_team, int side, bool see_all=false);
 
 std::set<map_location> get_teleport_locations(const unit &u,

@@ -85,7 +85,7 @@ map_location pathfind::find_vacant_tile(const gamemap& map,
 	return map_location();
 }
 
-bool pathfind::enemy_zoc(unit_map const & /*units*/, std::vector<team> const &teams,
+bool pathfind::enemy_zoc(std::vector<team> const &teams,
 	map_location const &loc, team const &viewing_team, int side, bool see_all)
 {
 	map_location locs[6];
@@ -184,7 +184,7 @@ struct comp {
 };
 }
 
-static void find_routes(const gamemap& map, const unit_map& units,
+static void find_routes(const gamemap& map, const unit_map& /*units*/,
 		const unit& u, const map_location& loc,
 		int move_left, pathfind::paths::dest_vect &destinations,
 		std::vector<team> const &teams,
@@ -261,7 +261,7 @@ static void find_routes(const gamemap& map, const unit_map& units,
 					continue;
 
 				if (!force_ignore_zocs && t.movement_left > 0
-				    && pathfind::enemy_zoc(units, teams, locs[i], viewing_team, u.side(), see_all)
+				    && pathfind::enemy_zoc(teams, locs[i], viewing_team, u.side(), see_all)
 						&& !u.get_ability_bool("skirmisher", locs[i])) {
 					t.movement_left = 0;
 				}
@@ -382,7 +382,7 @@ pathfind::paths::paths(gamemap const &map, unit_map const &units,
 
 pathfind::marked_route pathfind::mark_route(const plain_route &rt,
 	const std::vector<map_location>& waypoints, const unit &u,
-	const team &viewing_team, const unit_map &units,
+	const team &viewing_team, const unit_map & /*units*/,
 	const std::vector<team> &teams, const gamemap &map)
 {
 	marked_route res;
@@ -436,7 +436,7 @@ pathfind::marked_route pathfind::mark_route(const plain_route &rt,
 			res.marks[*i] = marked_route::mark(0, pass_here, zoc, false, invisible);
 		}
 
-		zoc = enemy_zoc(units, teams, *(i + 1), viewing_team,u.side())
+		zoc = enemy_zoc(teams, *(i + 1), viewing_team,u.side())
 					&& !u.get_ability_bool("skirmisher", *(i+1));
 
 		if (zoc || capture) {
@@ -519,7 +519,7 @@ double pathfind::shortest_path_calculator::cost(const map_location& loc, const d
 
 	// check ZoC
 	if (!ignore_unit_ && remaining_movement != terrain_cost
-	    && enemy_zoc(units_, teams_, loc, viewing_team_, unit_.side(), see_all_)
+	    && enemy_zoc(teams_, loc, viewing_team_, unit_.side(), see_all_)
 			&& !unit_.get_ability_bool("skirmisher", loc)) {
 		// entering ZoC cost all remaining MP
 		move_cost += remaining_movement;

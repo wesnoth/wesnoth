@@ -2308,7 +2308,7 @@ size_t move_unit(move_unit_spectator *move_spectator,
 		team_num = ui->side() - 1;
 		tm = &teams[team_num];
 
-		if (!skirmisher && pathfind::enemy_zoc(units, teams, *step, *tm, ui->side())) {
+		if (!skirmisher && pathfind::enemy_zoc(teams, *step, *tm, ui->side())) {
 			moves_left = 0;
 		}
 
