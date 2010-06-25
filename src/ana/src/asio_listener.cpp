@@ -62,6 +62,8 @@ void asio_listener::handle_body( ana::detail::read_buffer buf,
             disconnect(listener, ec);
         else
         {
+            log_receive( buf );
+            
             listener->handle_message( ec, id(), buf );
 
             listen_one_message();

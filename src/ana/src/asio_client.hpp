@@ -77,6 +77,13 @@ class asio_client : public ana::client,
 
         virtual tcp::socket& socket();
         
+        virtual void log_receive( ana::detail::read_buffer buffer );
+
+        virtual void start_logging();
+        virtual void stop_logging();
+        
+        virtual const ana::stats* get_stats( ana::stat_type type ) const;
+        
         void handle_sent_header(const boost::system::error_code& ec,
                                 ana::serializer::bostream*, ana::detail::shared_buffer,
                                 ana::send_handler*);
@@ -102,6 +109,8 @@ class asio_client : public ana::client,
 
         proxy_connection*         proxy_;
         bool                      use_proxy_;
+        
+        ana::stats_collector*     stats_collector_;
 };
 
 #endif

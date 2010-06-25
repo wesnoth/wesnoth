@@ -48,12 +48,14 @@ asio_client::asio_client(ana::address address, ana::port pt) :
     address_(address),
     port_(pt),
     proxy_( NULL ),
-    use_proxy_( false )
+    use_proxy_( false ),
+    stats_collector_( NULL )
 {
 }
 
 asio_client::~asio_client()
 {
+    stop_logging();
 }
 
 ana::client* ana::client::create(ana::address address, ana::port pt)
@@ -171,6 +173,31 @@ void asio_client::send(boost::asio::const_buffer buffer, ana::send_handler* hand
     }
 }
 
+void asio_client::log_receive( ana::detail::read_buffer buffer )
+{
+    if (stats_collector_ != NULL )
+        stats_collector_->log_receive( buffer );
+}
+
+void asio_client::start_logging()
+{
+    stop_logging();
+    stats_collector_ = new ana::stats_collector();
+}
+
+void asio_client::stop_logging()
+{
+    delete stats_collector_;
+}
+
+const ana::stats* asio_client::get_stats( ana::stat_type type ) const
+{
+    if (stats_collector_ != NULL )
+        return stats_collector_->get_stats( type );
+    else
+        throw std::runtime_error("Logging is disabled. Use start_logging first.");
+}
+
 void asio_client::handle_sent_header(const boost::system::error_code& ec,
                                      ana::serializer::bostream* bos, ana::detail::shared_buffer buffer,
                                      ana::send_handler* handler)
@@ -188,9 +215,12 @@ void asio_client::handle_sent_header(const boost::system::error_code& ec,
 
 
 void asio_client::handle_send(const boost::system::error_code& ec,
-                              ana::detail::shared_buffer       /*buffer*/,
+                              ana::detail::shared_buffer       buffer,
                               ana::send_handler*               handler)
 {
+    if ( stats_collector_ != NULL )
+        stats_collector_->log_send( buffer );
+
     handler->handle_send( ec, id() );
 
     if ( ec )
@@ -201,3 +231,4 @@ void asio_client::disconnect_listener()
 {
     io_service_.stop();
 }
+

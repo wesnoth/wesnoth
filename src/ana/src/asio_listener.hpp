@@ -56,6 +56,8 @@ class asio_listener : public virtual ana::detail::listener
     private:
         virtual void disconnect_listener() {}
 
+        virtual void log_receive( ana::detail::read_buffer buffer ) {}
+
         void listen_one_message();
 
         void disconnect( ana::listener_handler* listener, boost::system::error_code error);

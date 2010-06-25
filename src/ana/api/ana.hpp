@@ -70,6 +70,7 @@
 #define ANA_DETAIL_INTERNAL_HPP
 #include "common.hpp"               //Main definitions
 #include "timers.hpp"               //Timer related
+#include "stats.hpp"                //Network statistics
 #include "predicates.hpp"           //Client predicates, used for conditional sending
 #include "binary_streams.hpp"       //For serialization
 #undef  ANA_DETAIL_INTERNAL_HPP
@@ -197,51 +198,26 @@ namespace ana
     };
     //@}
 
-    /** @name Time duration functions. */
-    //@{
-    /** @namespace time
-     *
-     * Time conversion functions.
-     */
-    namespace time
+    struct network_stats_logger
     {
+        /** Start logging network events for statistics collection. */
+        virtual void start_logging() = 0;
+        
+        /** Stop logging network events (disables statistics collection.) */
+        virtual void stop_logging()  = 0;
+        
         /**
-         * Create a time lapse from a given amount of milliseconds.
+         * Get the associated collected stats as per a stat_type.
          *
-         * @param ms : Milliseconds of elapsed time, must be a positive integer value.
+         * @param type : stat_type to be collected ( ACCUMULATED, SECONDS, MINUTES, HOURS, DAYS )
          *
-         * @returns : A time duration amount (in milliseconds) to be used with timers.
+         * @returns A const pointer to a stats object holding the stats.
+         * 
+         * \sa stats
+         * \sa stat_type
          */
-        inline size_t milliseconds(size_t ms) { return ms;              }
-
-        /**
-         * Create a time lapse from a given amount of seconds.
-         *
-         * @param ms : Seconds of elapsed time.
-         *
-         * @returns : A time duration amount (in milliseconds) to be used with timers.
-         */
-        inline size_t seconds(double s)       { return size_t(s * 1000);}
-
-        /**
-         * Create a time lapse from a given amount of minutes.
-         *
-         * @param ms : Minutes of elapsed time.
-         *
-         * @returns : A time duration amount (in milliseconds) to be used with timers.
-         */
-        inline size_t minutes(double m)       { return seconds(m * 60); }
-
-        /**
-         * Create a time lapse from a given amount of hours.
-         *
-         * @param ms : Hours of elapsed time.
-         *
-         * @returns : A time duration amount (in milliseconds) to be used with timers.
-         */
-        inline size_t hours(double h)         { return minutes(h * 60); }
-    }
-    //@}
+        virtual const stats* get_stats( stat_type type ) const = 0;
+    };
 
     /** @name Main classes.
      *
@@ -252,7 +228,8 @@ namespace ana
      * A network server. An object of this type can handle several connected clients.
      */
     struct server : public virtual detail::listener,
-                    public         detail::timed_sender
+                    public         detail::timed_sender,
+                    public         network_stats_logger
     {
         /**
          * Creates an ana server.
@@ -377,7 +354,7 @@ namespace ana
             
             /** Returns the string representing the ip address of the connected client. */
             virtual std::string ip_address() const = 0;
-
+          
             // Allow server objects to invoke run_listener directly.
             using detail::listener::run_listener;
         };
@@ -390,7 +367,8 @@ namespace ana
      * \sa timed_sender
      */
     struct client : public virtual detail::listener,
-                    public         detail::timed_sender
+                    public         detail::timed_sender,
+                    public         network_stats_logger
     {
         /**
          * Creates a client.
@@ -441,7 +419,7 @@ namespace ana
          * \sa send_handler
          */
         virtual void send(boost::asio::const_buffer buffer, send_handler* handler, send_type type = COPY_BUFFER ) = 0;
-
+      
         /** Standard destructor. */
         virtual ~client() {}
     };

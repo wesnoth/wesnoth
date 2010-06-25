@@ -51,7 +51,8 @@ asio_server::asio_server() :
     listening_(false),
     listener_( NULL ),
     connection_handler_( NULL ),
-    last_client_proxy_( NULL )
+    last_client_proxy_( NULL ),
+    stats_collector_( NULL )
 {
 }
 
@@ -212,6 +213,32 @@ std::string asio_server::ip_address( net_id id ) const
     else
         return "";
 }
+
+void asio_server::log_receive( ana::detail::read_buffer buffer )
+{
+    if (stats_collector_ != NULL )
+        stats_collector_->log_receive( buffer );
+}
+
+void asio_server::start_logging()
+{
+    stop_logging();
+    stats_collector_ = new ana::stats_collector();
+}
+
+void asio_server::stop_logging()
+{
+    delete stats_collector_;
+}
+
+const ana::stats* asio_server::get_stats( ana::stat_type type ) const
+{
+    if (stats_collector_ != NULL )
+        return stats_collector_->get_stats( type );
+    else
+        throw std::runtime_error("Logging is disabled. Use start_logging first.");
+}
+
 
 asio_server::asio_client_proxy::asio_client_proxy(boost::asio::io_service& io_service, asio_proxy_manager* server) :
     client_proxy(),

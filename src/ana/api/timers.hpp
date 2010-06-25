@@ -41,6 +41,61 @@
 
 namespace ana
 {
+        /** @name Time duration functions. */
+    //@{
+    /** @namespace time
+     *
+     * Time conversion functions.
+     */
+    namespace time
+    {
+        /**
+         * Create a time lapse from a given amount of milliseconds.
+         *
+         * @param ms : Milliseconds of elapsed time, must be a positive integer value.
+         *
+         * @returns : A time duration amount (in milliseconds) to be used with timers.
+         */
+        inline size_t milliseconds(size_t ms) { return ms;              }
+
+        /**
+         * Create a time lapse from a given amount of seconds.
+         *
+         * @param ms : Seconds of elapsed time.
+         *
+         * @returns : A time duration amount (in milliseconds) to be used with timers.
+         */
+        inline size_t seconds(double s)       { return size_t(s * 1000);}
+
+        /**
+         * Create a time lapse from a given amount of minutes.
+         *
+         * @param ms : Minutes of elapsed time.
+         *
+         * @returns : A time duration amount (in milliseconds) to be used with timers.
+         */
+        inline size_t minutes(double m)       { return seconds(m * 60); }
+
+        /**
+         * Create a time lapse from a given amount of hours.
+         *
+         * @param ms : Hours of elapsed time.
+         *
+         * @returns : A time duration amount (in milliseconds) to be used with timers.
+         */
+        inline size_t hours(double h)         { return minutes(h * 60); }
+
+        /**
+         * Create a time lapse from a given amount of days.
+         *
+         * @param ms : Hours of elapsed time.
+         *
+         * @returns : A time duration amount (in milliseconds) to be used with timers.
+         */
+        inline size_t days(double d)         { return hours(d * 24); }
+    }
+    //@}
+
     /**
      * Timeout policies for send operations.
      *
@@ -93,7 +148,7 @@ namespace ana
             template<class Handler>
             void wait(size_t milliseconds, Handler handler)
             {
-                timer_.expires_from_now(milliseconds / 1000);
+                timer_.expires_from_now( milliseconds / 1000.0); //conversion will use a double or float
                 timer_.async_wait(handler);
                 boost::thread t( boost::bind( &boost::asio::io_service::run_one, &io_service_ ) );
             }

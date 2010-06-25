@@ -148,7 +148,7 @@ class ana_network_manager : public ana::listener_handler,
             return connected_clients_.size();
         }
 
-        void send_all( const config& cfg, bool zipped )
+        size_t send_all( const config& cfg, bool zipped )
         {
             std::stringstream out;
             config_writer cfg_writer(out, zipped);
@@ -163,9 +163,10 @@ class ana_network_manager : public ana::listener_handler,
                 it->second->send_all( ana::buffer( out.str() ), &handler, ana::ZERO_COPY);
             }
             mutex.lock(); // this won't work with multiple sends
+            return out.str().size();
         }
 
-        void send( network::connection id, const config& cfg, bool zipped )
+        size_t send( network::connection id, const config& cfg, bool zipped )
         {
             std::stringstream out;
             config_writer cfg_writer(out, zipped);
@@ -180,6 +181,7 @@ class ana_network_manager : public ana::listener_handler,
                 it->second->send_one( ana::net_id( id ), ana::buffer( out.str() ), &handler, ana::ZERO_COPY);
             }
             mutex.lock();
+            return out.str().size();
         }
 
     private:
@@ -578,11 +580,9 @@ namespace network {
             return 0;
 
         if( connection_num == 0 )
-            ana_manager.send_all( cfg, gzipped );
+            return ana_manager.send_all( cfg, gzipped );
         else
-            ana_manager.send( connection_num, cfg, gzipped );
-        
-        throw std::runtime_error("TODO:Not implemented send_data");
+            return ana_manager.send( connection_num, cfg, gzipped );
     }
 
     void send_raw_data(const char*        /*buf*/,
@@ -615,6 +615,7 @@ namespace network {
     {
         throw std::runtime_error("TODO:Not implemented get_send_stats");
     }
+    
     statistics get_receive_stats(connection /*handle*/)
     {
         throw std::runtime_error("TODO:Not implemented get_receive_stats");
