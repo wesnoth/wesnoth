@@ -76,6 +76,9 @@ public:
 	 * Indicates whether this actions targets the specified unit.
 	 */
 	virtual bool is_related_to(const unit& unit) const = 0;
+
+	/** Return the unit targeted by this action. */
+	virtual unit& get_unit() = 0;
 };
 
 } // end namespace wb

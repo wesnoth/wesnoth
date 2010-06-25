@@ -50,7 +50,7 @@ public:
 
 	virtual bool execute();
 
-	unit& get_unit() { return unit_; }
+	virtual unit& get_unit() { return unit_; }
 
 	boost::shared_ptr<arrow> get_arrow() { return arrow_; }
 	boost::shared_ptr<unit> get_fake_unit() { return fake_unit_; }

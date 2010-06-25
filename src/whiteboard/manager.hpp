@@ -97,7 +97,7 @@ public:
 
 	/** Checks whether the specified unit has at least one planned action,
 	 *  and returns the first action found. */
-	boost::shared_ptr<action> get_first_action(const unit& unit) const;
+	boost::shared_ptr<action> get_first_action_of(const unit& unit) const;
 
 private:
 	/**

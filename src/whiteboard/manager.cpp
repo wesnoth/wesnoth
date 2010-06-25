@@ -192,7 +192,7 @@ void manager::create_temp_move(const std::vector<map_location> &steps)
 
 		unit_display::move_unit(route_, *fake_unit_, *resources::teams, false); //get facing right
 		fake_unit_->set_location(route_.back());
-		fake_unit_->set_disabled_ghosted(true);
+		fake_unit_->set_ghosted(true);
 	}
 }
 
@@ -205,7 +205,7 @@ void manager::erase_temp_move()
 		move_arrow_.reset(); //auto-removes itself from display
 
 		//reset src unit back to normal, if it lacks any planned action
-		if (selected_unit_ && !get_first_action(*selected_unit_))
+		if (selected_unit_ && !get_first_action_of(*selected_unit_))
 		{
 				selected_unit_->set_standing(true);
 		}
@@ -273,11 +273,13 @@ void manager::execute_next()
 
 void manager::delete_last()
 {
+	unit& unit = get_current_side_actions()->actions().back()->get_unit();
 	get_current_side_actions()->remove_action(get_current_side_actions()->end() - 1);
-	//TODO: restore "standing" animation on last remaining move of this unit
+	if (!get_first_action_of(unit))
+		unit.set_standing(true);
 }
 
-action_ptr manager::get_first_action(const unit& unit) const
+action_ptr manager::get_first_action_of(const unit& unit) const
 {
 	find_visitor finder;
 	action_ptr action = finder.find_first_action_of(unit, get_current_side_actions()->actions());
