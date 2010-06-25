@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth1.4\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-05-30 17:45+0200\n"
+"POT-Creation-Date: 2010-06-25 11:17+0200\n"
 "PO-Revision-Date: 2009-05-08 22:09+0800\n"
 "Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
 "Language-Team: Chinese/Traditional <steven2880@gmail.com>\n"
@@ -554,12 +554,12 @@ msgid "Vietnamese Translation"
 msgstr "簡體中文翻譯團隊"
 
 #. [about]
-#: data/core/about.cfg:2454
+#: data/core/about.cfg:2457
 msgid "RACV's Translation"
 msgstr "巴倫西亞語翻譯團隊"
 
 #. [about]
-#: data/core/about.cfg:2461
+#: data/core/about.cfg:2464
 msgid "Bots"
 msgstr "電腦"
 
@@ -5910,9 +5910,9 @@ msgstr ""
 #: data/hardwired/tips.cfg:148 data/hardwired/tips.cfg:156
 #: data/hardwired/tips.cfg:164 data/hardwired/tips.cfg:172
 #: data/hardwired/tips.cfg:176 data/hardwired/tips.cfg:180
-#: data/hardwired/tips.cfg:184 data/hardwired/tips.cfg:192
-#: data/hardwired/tips.cfg:196 data/hardwired/tips.cfg:200
-#: data/hardwired/tips.cfg:205
+#: data/hardwired/tips.cfg:185 data/hardwired/tips.cfg:194
+#: data/hardwired/tips.cfg:198 data/hardwired/tips.cfg:202
+#: data/hardwired/tips.cfg:207
 msgid "- The Wesnoth Tactical Guide"
 msgstr "- 韋諾 戰術指南"
 
@@ -6373,7 +6373,7 @@ msgstr ""
 "能夠顯示解釋或描述信息。"
 
 #. [tip]
-#: data/hardwired/tips.cfg:183
+#: data/hardwired/tips.cfg:184
 msgid ""
 "You can send the Wesnoth Project an anonymous summary of your progress using "
 "the 'Help Wesnoth' button (indicated by the envelope icon near the lower-"
@@ -6384,7 +6384,7 @@ msgstr ""
 "息給韋諾項目組。這些信息對我們調整戰役難度有重大意義。"
 
 #. [tip]
-#: data/hardwired/tips.cfg:187
+#: data/hardwired/tips.cfg:189
 msgid ""
 "To advance low-level units quickly, team them with a veteran and use the "
 "veteran to damage a joint target heavily enough for the junior partner to "
@@ -6392,12 +6392,12 @@ msgid ""
 msgstr "讓低等級單位完成最後一撃可以使它更快地升級"
 
 #. [tip]
-#: data/hardwired/tips.cfg:188
+#: data/hardwired/tips.cfg:190
 msgid "- Queen Li'sar, 528YW"
 msgstr "- 麗莎 女王，528YW"
 
 #. [tip]
-#: data/hardwired/tips.cfg:191
+#: data/hardwired/tips.cfg:193
 msgid ""
 "You cannot undo a move that reveals any fog or shroud. Toggle the 'Delay "
 "Shroud Updates' option on when you need to move units while retaining the "
@@ -6407,14 +6407,14 @@ msgstr ""
 "確保單位的移動隨時可以撤銷，可以將‘暫緩刷新戰爭迷霧’選項打勾。"
 
 #. [tip]
-#: data/hardwired/tips.cfg:195
+#: data/hardwired/tips.cfg:197
 msgid ""
 "If an enemy benefits more from a rare terrain type than you do, occupying "
 "that terrain will deprive them of its benefits."
 msgstr "如果敵人在一個稀有地形上防禦比您更好，占領那個地形可以避免讓對方獲益。"
 
 #. [tip]
-#: data/hardwired/tips.cfg:199
+#: data/hardwired/tips.cfg:201
 msgid ""
 "Few units have good defenses in water; a line of attackers along the edge of "
 "a river can inflict heavy casualties. Elves can use the edge of a forest in "
@@ -6424,7 +6424,7 @@ msgstr ""
 "害。精靈和矮人可以類似地使用森林、山地邊界。"
 
 #. [tip]
-#: data/hardwired/tips.cfg:204
+#: data/hardwired/tips.cfg:206
 msgid ""
 "In many campaign scenarios, you may issue simple instructions for your "
 "computer-controlled allies using the right-click context menu."
@@ -6715,72 +6715,72 @@ msgstr "發現非我方控制單位！（$friendphrase, $enemyphrase）"
 msgid "(press $hotkey to keep moving)"
 msgstr "（按$hotkey鍵繼續移動）"
 
-#: src/addon_management.cpp:342 src/unit_types.cpp:951
+#: src/addon_management.cpp:344 src/unit_types.cpp:951
 msgid "No description available."
 msgstr "沒有資料。"
 
-#: src/addon_management.cpp:414
+#: src/addon_management.cpp:416
 msgid "B"
 msgstr "B"
 
-#: src/addon_management.cpp:417 src/dialogs.cpp:1054
+#: src/addon_management.cpp:419 src/dialogs.cpp:1054
 msgid "KB"
 msgstr "KB"
 
-#: src/addon_management.cpp:420
+#: src/addon_management.cpp:422
 msgid "MB"
 msgstr "MB"
 
-#: src/addon_management.cpp:423
+#: src/addon_management.cpp:425
 msgid "GB"
 msgstr "GB"
 
-#: src/addon_management.cpp:456
+#: src/addon_management.cpp:458
 msgid "addon_type^Campaign"
 msgstr "戰役"
 
-#: src/addon_management.cpp:458
+#: src/addon_management.cpp:460
 msgid "addon_type^Scenario"
 msgstr "任務"
 
-#: src/addon_management.cpp:460
+#: src/addon_management.cpp:462
 msgid "addon_type^MP era"
 msgstr "多人遊戲時代"
 
-#: src/addon_management.cpp:462
+#: src/addon_management.cpp:464
 msgid "addon_type^MP faction"
 msgstr "多人遊戲陣營"
 
-#: src/addon_management.cpp:464
+#: src/addon_management.cpp:466
 msgid "addon_type^MP map-pack"
 msgstr "多人遊戲地圖"
 
-#: src/addon_management.cpp:466
+#: src/addon_management.cpp:468
 msgid "addon_type^MP scenario"
 msgstr "多人遊戲任務"
 
-#: src/addon_management.cpp:468
+#: src/addon_management.cpp:470
 msgid "addon_type^MP campaign"
 msgstr "多人遊戲戰役"
 
-#: src/addon_management.cpp:470
+#: src/addon_management.cpp:472
 msgid "addon_type^Resources"
 msgstr "資源"
 
-#: src/addon_management.cpp:472
+#: src/addon_management.cpp:474
 #, fuzzy
 msgid "addon_type^Other"
 msgstr "多人遊戲時代"
 
-#: src/addon_management.cpp:474
+#: src/addon_management.cpp:476
 msgid "addon_type^(unknown)"
 msgstr "未知"
 
-#: src/addon_management.cpp:504
+#: src/addon_management.cpp:506
 msgid "Dependencies"
 msgstr "需求"
 
-#: src/addon_management.cpp:508
+#: src/addon_management.cpp:510
 #, fuzzy
 msgid ""
 "$addon_title depends upon the following add-on which you have not installed "
@@ -6791,60 +6791,60 @@ msgid_plural ""
 msgstr[0] "這個模組需要以下額外的需求:"
 msgstr[1] "這個模組需要以下額外的需求:"
 
-#: src/addon_management.cpp:511
+#: src/addon_management.cpp:513
 msgid ""
 "Do you still want to download $addon_title|? (You will have to install all "
 "the dependencies in order to play.)"
 msgstr ""
 
-#: src/addon_management.cpp:532 src/addon_management.cpp:606
+#: src/addon_management.cpp:534 src/addon_management.cpp:608
 #: src/multiplayer.cpp:215 src/multiplayer.cpp:274 src/multiplayer_ui.cpp:80
 msgid "Connection timed out"
 msgstr "連接超時"
 
-#: src/addon_management.cpp:535
+#: src/addon_management.cpp:537
 msgid "The server responded with an error: \"$error|\""
 msgstr "伺服器返回一個錯誤： \""
 
-#: src/addon_management.cpp:544
+#: src/addon_management.cpp:546
 msgid "Terms"
 msgstr "條件"
 
-#: src/addon_management.cpp:579
+#: src/addon_management.cpp:581
 msgid "Sending add-on"
 msgstr "發送模組"
 
-#: src/addon_management.cpp:583 src/addon_management.cpp:608
+#: src/addon_management.cpp:585 src/addon_management.cpp:610
 msgid "The server responded with an error: \""
 msgstr "伺服器回應錯誤： \""
 
-#: src/addon_management.cpp:586 src/addon_management.cpp:611
+#: src/addon_management.cpp:588 src/addon_management.cpp:613
 #: src/multiplayer_wait.cpp:394
 msgid "Response"
 msgstr "回應"
 
-#: src/addon_management.cpp:638
+#: src/addon_management.cpp:640
 msgid "Downloading add-on: $addon_title|..."
 msgstr "正在下載模組:$addon_title|..."
 
-#: src/addon_management.cpp:653
+#: src/addon_management.cpp:655
 msgid ""
 "The add-on has an invalid file or directory name and can not be installed."
 msgstr "模組的元件或目錄的名稱錯誤導致無法安裝。"
 
-#: src/addon_management.cpp:702
+#: src/addon_management.cpp:704
 msgid "The add-on '$addon_title|' has been successfully installed."
 msgstr "這個模組已經成功安裝。"
 
-#: src/addon_management.cpp:703
+#: src/addon_management.cpp:705
 msgid "Add-on Installed"
 msgstr "模組已安裝完成"
 
-#: src/addon_management.cpp:786
+#: src/addon_management.cpp:788
 msgid "Outdated add-ons"
 msgstr "舊模組"
 
-#: src/addon_management.cpp:788
+#: src/addon_management.cpp:790
 msgid ""
 "An outdated local add-on has publishing information attached. It will not be "
 "offered for updating."
@@ -6854,171 +6854,171 @@ msgid_plural ""
 msgstr[0] "一個舊模組附加的資訊。此模組將不會在升級。"
 msgstr[1] "一些舊模組附加的資訊。這些模組將不會在升級。"
 
-#: src/addon_management.cpp:800
+#: src/addon_management.cpp:802
 msgid "No add-ons to update"
 msgstr "沒有要更新的模組"
 
-#: src/addon_management.cpp:801
+#: src/addon_management.cpp:803
 msgid "Could not find any updated add-ons on this server."
 msgstr "無法在這個伺服器找到可以升級的模組。"
 
-#: src/addon_management.cpp:813 src/addon_management.cpp:1011
+#: src/addon_management.cpp:815 src/addon_management.cpp:1013
 #: src/dialogs.cpp:571 src/menu_events.cpp:206 src/menu_events.cpp:843
 msgid "Name"
 msgstr "名稱"
 
-#: src/addon_management.cpp:813
+#: src/addon_management.cpp:815
 msgid "New version"
 msgstr "新版本"
 
-#: src/addon_management.cpp:813
+#: src/addon_management.cpp:815
 msgid "Old version"
 msgstr "舊版本"
 
-#: src/addon_management.cpp:814 src/addon_management.cpp:1012
+#: src/addon_management.cpp:816 src/addon_management.cpp:1014
 msgid "Author"
 msgstr "作者"
 
-#: src/addon_management.cpp:814 src/addon_management.cpp:1012
+#: src/addon_management.cpp:816 src/addon_management.cpp:1014
 msgid "Size"
 msgstr "大小"
 
-#: src/addon_management.cpp:865
+#: src/addon_management.cpp:867
 msgid "Update add-ons"
 msgstr "更新模組"
 
-#: src/addon_management.cpp:866
+#: src/addon_management.cpp:868
 msgid "Select an add-on to update:"
 msgstr "選擇要更新的模組:"
 
-#: src/addon_management.cpp:880
+#: src/addon_management.cpp:882
 msgid "Update all"
 msgstr "全部更新"
 
-#: src/addon_management.cpp:937
+#: src/addon_management.cpp:939
 msgid "Update failed"
 msgstr "更新失敗"
 
-#: src/addon_management.cpp:939
+#: src/addon_management.cpp:941
 msgid "The following add-on could not be downloaded or updated successfully:"
 msgid_plural ""
 "The following add-ons could not be downloaded or updated successfully:"
 msgstr[0] "以下模組，無法下載或是已經下載成功："
 msgstr[1] "以下模組，無法下載或是已經下載成功："
 
-#: src/addon_management.cpp:947
+#: src/addon_management.cpp:949
 msgid "Update succeeded"
 msgstr "更新成功"
 
-#: src/addon_management.cpp:948
+#: src/addon_management.cpp:950
 msgid "Add-on updated successfully."
 msgstr "模組已更新成功。"
 
-#: src/addon_management.cpp:949
+#: src/addon_management.cpp:951
 msgid "All add-ons updated successfully."
 msgstr "全部的模組已更新成功。"
 
-#: src/addon_management.cpp:972
+#: src/addon_management.cpp:974
 msgid "Connecting to add-ons server..."
 msgstr "正在連接到伺服器..."
 
-#: src/addon_management.cpp:975 src/network.cpp:369 src/network.cpp:377
+#: src/addon_management.cpp:977 src/network.cpp:369 src/network.cpp:377
 msgid "Could not connect to host."
 msgstr "無法連接到主機。"
 
-#: src/addon_management.cpp:983
+#: src/addon_management.cpp:985
 msgid "Requesting list of add-ons"
 msgstr "搜尋模組列表"
 
-#: src/addon_management.cpp:995
+#: src/addon_management.cpp:997
 msgid "An error occurred while communicating with the server."
 msgstr "與伺服器通訊錯誤。"
 
-#: src/addon_management.cpp:1011 src/titlescreen.cpp:339
+#: src/addon_management.cpp:1013 src/titlescreen.cpp:339
 msgid "Version"
 msgstr "版本"
 
-#: src/addon_management.cpp:1012
+#: src/addon_management.cpp:1014
 msgid "Downloads"
 msgstr "下載數"
 
-#: src/addon_management.cpp:1012 src/help.cpp:1462 src/menu_events.cpp:205
+#: src/addon_management.cpp:1014 src/help.cpp:1462 src/menu_events.cpp:205
 #: src/menu_events.cpp:842 src/menu_events.cpp:1437
 msgid "Type"
 msgstr "類型"
 
-#: src/addon_management.cpp:1086
+#: src/addon_management.cpp:1088
 msgid "Publish add-on: "
 msgstr "發布模組： "
 
-#: src/addon_management.cpp:1092
+#: src/addon_management.cpp:1094
 msgid "Delete add-on: "
 msgstr "移除模組： "
 
-#: src/addon_management.cpp:1098
+#: src/addon_management.cpp:1100
 msgid "There are no add-ons available for download from this server."
 msgstr "這個伺服器上無可供下載的模組。"
 
-#: src/addon_management.cpp:1111
+#: src/addon_management.cpp:1113
 msgid "Get add-ons"
 msgstr "取得模組"
 
-#: src/addon_management.cpp:1112
+#: src/addon_management.cpp:1114
 msgid "Choose the add-on to download."
 msgstr "選擇要下載的模組。"
 
-#: src/addon_management.cpp:1124 src/dialogs.cpp:596 src/menu_events.cpp:916
+#: src/addon_management.cpp:1126 src/dialogs.cpp:596 src/menu_events.cpp:916
 #: src/menu_events.cpp:1473
 msgid "Filter: "
 msgstr "過濾： "
 
-#: src/addon_management.cpp:1129
+#: src/addon_management.cpp:1131
 msgid "Description"
 msgstr ""
 
-#: src/addon_management.cpp:1166
+#: src/addon_management.cpp:1168
 msgid "Network communication error."
 msgstr "網絡通訊錯誤。"
 
-#: src/addon_management.cpp:1169
+#: src/addon_management.cpp:1171
 msgid "Remote host disconnected."
 msgstr "遠程主機關閉。"
 
-#: src/addon_management.cpp:1172
+#: src/addon_management.cpp:1174
 msgid ""
 "A problem occurred when trying to create the files necessary to install this "
 "add-on."
 msgstr "安裝這個模組時發生錯誤。"
 
-#: src/addon_management.cpp:1190
+#: src/addon_management.cpp:1192
 msgid "You have no add-ons installed."
 msgstr "您没有安裝任何模組。"
 
-#: src/addon_management.cpp:1202
+#: src/addon_management.cpp:1204
 msgid "Choose the add-on to remove."
 msgstr "選擇要移除的模組。"
 
-#: src/addon_management.cpp:1202
+#: src/addon_management.cpp:1204
 msgid "Uninstall add-ons"
 msgstr "移除模組"
 
-#: src/addon_management.cpp:1214
+#: src/addon_management.cpp:1216
 msgid "Are you sure you want to remove the add-on '$addon|'?"
 msgstr "您確定要移除模組 '$addon|' ?"
 
-#: src/addon_management.cpp:1220 src/multiplayer.cpp:227
+#: src/addon_management.cpp:1222 src/multiplayer.cpp:227
 msgid "Confirm"
 msgstr "確認"
 
-#: src/addon_management.cpp:1233
+#: src/addon_management.cpp:1235
 msgid "Add-on '$addon|' deleted."
 msgstr "模組'$addon|'已移除"
 
-#: src/addon_management.cpp:1238
+#: src/addon_management.cpp:1240
 msgid "Add-on deleted"
 msgstr "模組已移除"
 
-#: src/addon_management.cpp:1246
+#: src/addon_management.cpp:1248
 msgid "Add-on could not be deleted properly:"
 msgstr "無法移除模組:"
 
@@ -7066,7 +7066,7 @@ msgstr "無可用武器"
 msgid "Chance of being unscathed"
 msgstr "不受傷的幾率"
 
-#: src/attack_prediction_display.cpp:547 src/mouse_events.cpp:720
+#: src/attack_prediction_display.cpp:547 src/mouse_events.cpp:724
 msgid "Damage Calculations"
 msgstr "攻撃計算"
 
@@ -7330,7 +7330,7 @@ msgstr "偵錯:"
 msgid "Info: "
 msgstr "資訊:"
 
-#: src/game_events.cpp:3268
+#: src/game_events.cpp:3269
 msgid "[unit_worth]'s filter didn't match any units!"
 msgstr ""
 
@@ -8565,11 +8565,11 @@ msgstr "命令："
 msgid "User-Command#3"
 msgstr "使用者命令#3"
 
-#: src/mouse_events.cpp:730
+#: src/mouse_events.cpp:734
 msgid "Attack Enemy"
 msgstr "攻撃敵人"
 
-#: src/mouse_events.cpp:731
+#: src/mouse_events.cpp:735
 msgid "Choose weapon:"
 msgstr "選擇武器："
 
