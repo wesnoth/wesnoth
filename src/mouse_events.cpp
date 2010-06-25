@@ -534,6 +534,7 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 
 			// Create planned move for whiteboard
 			resources::whiteboard->save_temp_move();
+			deselect_hex();
 
 		} else {
 			//register the mouse-UI waypoints into the unit's waypoints
