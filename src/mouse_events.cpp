@@ -95,7 +95,6 @@ int mouse_handler::drag_threshold() const
 void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 {
 	if (attackmove_) return;
-	if (resources::whiteboard->ignore_mouse()) return;
 
 	// we ignore the position coming from event handler
 	// because it's always a little obsolete and we don't need
@@ -105,6 +104,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 	SDL_GetMouseState(&x,&y);  // <-- modify x and y
 
 	if (mouse_handler_base::mouse_motion_default(x, y, update)) return;
+	if (resources::whiteboard->ignore_mouse()) return;
 
 	const map_location new_hex = gui().hex_clicked_on(x,y);
 
