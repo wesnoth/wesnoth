@@ -13,8 +13,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-06-20 11:03+0200\n"
-"PO-Revision-Date: 2010-05-24 21:41+0200\n"
+"POT-Creation-Date: 2010-06-20 11:14+0200\n"
+"PO-Revision-Date: 2010-06-21 15:09+0200\n"
 "Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
 "Language: gl\n"
@@ -131,7 +131,7 @@ msgstr "envelenado"
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:749
 #: data/core/macros/abilities.cfg:554
 msgid "berserk"
-msgstr "furia"
+msgstr "furioso"
 
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:752
@@ -142,14 +142,14 @@ msgid ""
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
 msgstr ""
 "Furia:\n"
-"Usado de forma ofensiva ou defensiva, este ataque alonga o combateata que "
+"Usado de forma ofensiva ou defensiva, este ataque prolonga o combate ata que "
 "morre un dos combatentes, ou ata que se realicen 30 rondas de ataques."
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:765
 #: data/core/macros/abilities.cfg:640
 msgid "magical"
-msgstr "maxia"
+msgstr "máxico"
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:768
@@ -220,7 +220,7 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
-"Sanda +4:\n"
+"Sandar +4:\n"
 "Permite ás unidades sandar ás unidades amigas adxacentes ao comezo da súa "
 "quenda.\n"
 "\n"
@@ -254,7 +254,7 @@ msgid ""
 "A poisoned unit cannot be cured of its poison by a healer, and must seek the "
 "care of a village or a unit that can cure."
 msgstr ""
-"Sanda +8:\n"
+"Sandar +8:\n"
 "Esta unidade combina remedios de herbas con maxia para sandar ás unidades "
 "máis rápido do normal no campo de batalla.\n"
 "\n"
@@ -747,9 +747,9 @@ msgid ""
 "first time."
 msgstr ""
 "Ao xogar, ten en conta que ao pór o rato enriba de moitos dos elementos do "
-"xogo, como a información que se amosa no panel de estado, mostrarase unha "
-"breve descrición do elemento en cuestión. Isto é moi útil cando atopas novas "
-"<ref>dst='..abilities_section' text='habilidades'</ref> por vez primeira."
+"xogo, como a información que se amosa no panel lateral, amosarase unha breve "
+"descrición do elemento en cuestión. Isto é moi útil ao descubrir <ref>dst='.."
+"abilities_section' text='habilidades'</ref> por vez primeira."
 
 #. [topic]: id=about_game
 #: data/core/help.cfg:152
@@ -987,8 +987,9 @@ msgid ""
 "using two numbers (the current value and the maximum value the unit can "
 "have)."
 msgstr ""
-"Os puntos de vida e os puntos de experiencia indícanse no panel de estado "
-"usando dous números (o valor actual e o valor máximo que a unidade pode ter)."
+"Os puntos de vida e os puntos de experiencia indícanse no panel lateral "
+"mediante dous números ─o valor actual e o valor máximo que a unidade pode "
+"ter─."
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:206
@@ -1247,7 +1248,7 @@ msgstr ""
 "\n"
 "\n"
 "Cada unidade ten unha probabilidade de esquivar os ataques, que depende do "
-"terreo no que estea. Isto amósase no panel de estado, e pode verse tamén "
+"terreo no que estea. Isto amósase no panel lateral, e pode verse tamén "
 "premendo co botón dereito do rato nunha unidade, seleccionando a descrición "
 "da unidade, e mirando os <italic>text='modificadores do terreo'</italic>. "
 "Por exemplo: a meirande parte dos elfos teñen unha defensa do 70% nos "
@@ -1269,11 +1270,11 @@ msgstr ""
 "\n"
 "\n"
 "Existen dúas excepcións: os <ref>dst='weaponspecial_magical' text='ataques "
-"máxicos'</ref> e os <ref>dst='weaponspecial_marksman' text='tiradores'</"
-"ref>. Os ataques máxicos sempre teñen un 70% de probabilidades de atinar, "
-"sen importar o terreo, e os tiradores, cando son eles os atacantes, sempre "
-"teñen como mínimo un 60% de probabilidade de atinar, independentemente do "
-"terreo."
+"máxicos'</ref> e os ataques con <ref>dst='weaponspecial_marksman' "
+"text='puntería'</ref>. Os ataques máxicos sempre teñen un 70% de "
+"probabilidades de atinar, sen importar o terreo, e os tiradores, cando son "
+"eles os atacantes, sempre teñen como mínimo un 60% de probabilidade de "
+"atinar, independentemente do terreo."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:250
@@ -1428,9 +1429,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"O momento do día actual pode observarse baixo o mapa, no panel de estado. "
-"Para o ciclo normal día-noite, a mañá e maila tarde contan coma día, a "
-"noitiña e maila noite pecha contan coma noite:\n"
+"O momento do día actual pode observarse baixo o mapa, no panel lateral. Para "
+"o ciclo normal día-noite, a mañá e maila tarde contan coma día, a noitiña e "
+"maila noite pecha contan coma noite:\n"
 
 #. [time]: id=dawn
 #. [topic]: id=time_of_day
@@ -1816,7 +1817,7 @@ msgstr ""
 #. [topic]: id=traits_intelligent
 #: data/core/help.cfg:369
 msgid "Intelligent"
-msgstr "Intelixente"
+msgstr "Intelixencia"
 
 #. [topic]: id=traits_intelligent
 #: data/core/help.cfg:370
@@ -1847,7 +1848,7 @@ msgstr ""
 #. [topic]: id=traits_quick
 #: data/core/help.cfg:377
 msgid "Quick"
-msgstr "Rápido"
+msgstr "Rapidez"
 
 #. [topic]: id=traits_quick
 #: data/core/help.cfg:378
@@ -1880,7 +1881,7 @@ msgstr ""
 #. [topic]: id=traits_resilient
 #: data/core/help.cfg:385
 msgid "Resilient"
-msgstr "Resistente"
+msgstr "Resistencia"
 
 #. [topic]: id=traits_resilient
 #: data/core/help.cfg:386
@@ -1911,7 +1912,7 @@ msgstr ""
 #. [topic]: id=traits_strong
 #: data/core/help.cfg:393
 msgid "Strong"
-msgstr "Forte"
+msgstr "Forza"
 
 #. [topic]: id=traits_strong
 #: data/core/help.cfg:394
@@ -1943,18 +1944,18 @@ msgstr ""
 #. [topic]: id=traits_fearless
 #: data/core/help.cfg:401
 msgid "Fearless"
-msgstr "Afouto"
+msgstr "Valentía"
 
 #. [topic]: id=traits_fearless
 #: data/core/help.cfg:402
 msgid "Aversion to light and dark holds no sway over these brave individuals."
 msgstr ""
-"A aversión á luz ou á escuridade non significa nada para estes valentes."
+"A aversión á luz ou á escuridade non significa nada para estes afoutos."
 
 #. [topic]: id=traits_loyal
 #: data/core/help.cfg:407
 msgid "Loyal"
-msgstr "Leal"
+msgstr "Lealdade"
 
 #. [topic]: id=traits_loyal
 #: data/core/help.cfg:408
@@ -1991,7 +1992,7 @@ msgstr ""
 #. [topic]: id=traits_undead
 #: data/core/help.cfg:415
 msgid "trait^Undead"
-msgstr "Non morto"
+msgstr "Non morte"
 
 #. [topic]: id=traits_undead
 #: data/core/help.cfg:416
@@ -2022,7 +2023,7 @@ msgstr ""
 #. [topic]: id=traits_mechanical
 #: data/core/help.cfg:423
 msgid "trait^Mechanical"
-msgstr "Mecánico"
+msgstr "Mecánica"
 
 #. [topic]: id=traits_mechanical
 #: data/core/help.cfg:424
@@ -2051,7 +2052,7 @@ msgstr ""
 #. [topic]: id=traits_dextrous
 #: data/core/help.cfg:431
 msgid "Dextrous"
-msgstr "Destro"
+msgstr "Destreza"
 
 #. [topic]: id=traits_dextrous
 #: data/core/help.cfg:432
@@ -2081,7 +2082,7 @@ msgstr ""
 #. [topic]: id=traits_healthy
 #: data/core/help.cfg:439
 msgid "Healthy"
-msgstr "Saudable"
+msgstr "Vitalidade"
 
 #. [topic]: id=traits_healthy
 #: data/core/help.cfg:440
@@ -2104,14 +2105,14 @@ msgstr ""
 "\n"
 "\n"
 "As unidades saudables teñen un punto de vida máis do normal e un punto de "
-"vida adicional por cada nivel, e sandan os dous puntos de vida por "
-"descansarsempre que non loitan nunha rolda. Asemade, o veleno failles só un "
-"cuarto do dano habitual."
+"vida adicional por cada nivel, e sandan os dous puntos de vida por descansar "
+"sempre que non loitan nunha rolda. Asemade, o veleno failles só un cuarto do "
+"dano habitual."
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:447
 msgid "Dim"
-msgstr "Parvo"
+msgstr "Estupidez"
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:448
@@ -2136,7 +2137,7 @@ msgstr ""
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:455
 msgid "Slow"
-msgstr "Lento"
+msgstr "Lentitude"
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:456
@@ -2164,7 +2165,7 @@ msgstr ""
 #. [topic]: id=traits_weak
 #: data/core/help.cfg:463
 msgid "Weak"
-msgstr "Débil"
+msgstr "Debilidade"
 
 #. [topic]: id=traits_weak
 #: data/core/help.cfg:464
@@ -2181,8 +2182,8 @@ msgid ""
 "unit's defensive capability in combat.\n"
 "\n"
 msgstr ""
-"Os mapas do xogo teñen unha ampla variedade de terreos que afectan tanto "
-"aomovemento das unidades como á súa capacidade defensiva no combate.\n"
+"Os mapas do xogo teñen unha ampla variedade de terreos que afectan tanto ao "
+"movemento das unidades como á súa capacidade defensiva no combate.\n"
 "\n"
 
 # Flat é “chaira“, pero no xogo refírese aos herbais (terreos con herba), non a todas as chairas.
@@ -2958,7 +2959,7 @@ msgstr ""
 "Ceder o control dun bando (substitúe “<side>” polo número do bando) a un "
 "usuario (substitúe “<username>” polo alcume do xogador ou observador. Podes "
 "comprobar que bando pertence a cada xogador no diálogo de «Preferencias do "
-"escenario» (preme o botón “máis” na «Táboa de estado» ─Alt+S por defecto─ "
+"escenario» (preme o botón “máis” no «Cadro da situación» ─Alt+S por defecto─ "
 "para chegar). O anfitrión pode cambiar o control de calquera dos bandos.\n"
 "\n"
 
@@ -3161,19 +3162,19 @@ msgid ""
 "A curer can cure a unit of poison, although that unit will receive no "
 "additional healing on the turn it is cured of the poison."
 msgstr ""
-"Cura:\n"
+"Curación:\n"
 "Os curadores poden extraerlle o veleno ás unidades, aínda que esas unidades "
 "non sandarán vida algunha durante a rolda en que as curan."
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:76
 msgid "regenerates"
-msgstr "rexeneración"
+msgstr "rexenérase"
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:77
 msgid "female^regenerates"
-msgstr "rexeneración"
+msgstr "rexenérase"
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:79
@@ -3203,7 +3204,7 @@ msgid ""
 "This unit's resistances are doubled, up to a maximum of 50%, when defending. "
 "Vulnerabilities are not affected."
 msgstr ""
-"Firme:\n"
+"Firmeza:\n"
 "Cando se defende, as resistencias desta unidade duplícanse, ata un máximo do "
 "50%. Isto non afecta ás súas vulnerabilidades."
 
@@ -3212,14 +3213,14 @@ msgstr ""
 #: data/core/macros/abilities.cfg:172 data/core/macros/abilities.cfg:219
 #: data/core/macros/abilities.cfg:278
 msgid "leadership"
-msgstr "liderado"
+msgstr "líder"
 
 #. [leadership]: id=leadership
 #: data/core/macros/abilities.cfg:115 data/core/macros/abilities.cfg:138
 #: data/core/macros/abilities.cfg:173 data/core/macros/abilities.cfg:220
 #: data/core/macros/abilities.cfg:279
 msgid "female^leadership"
-msgstr "liderado"
+msgstr "líder"
 
 #. [leadership]: id=leadership
 #: data/core/macros/abilities.cfg:119 data/core/macros/abilities.cfg:142
@@ -3261,7 +3262,7 @@ msgid ""
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
 "Zones of Control."
 msgstr ""
-"Guerrilleiro:\n"
+"Guerrilla:\n"
 "Esta unidade ten a habilidade de moverse rápido entre os inimigos, e pode "
 "ignorar todas as zonas de control inimigas."
 
@@ -3285,7 +3286,7 @@ msgid ""
 "Any units adjacent to this unit will fight as if it were dusk when it is "
 "night, and as if it were day when it is dusk."
 msgstr ""
-"Iluminar:\n"
+"Iluminación:\n"
 "Esta unidade ilumina os arredores facendo que as unidades legais loiten "
 "mellor e as unidades caóticas loiten peor.\n"
 "\n"
@@ -3296,12 +3297,12 @@ msgstr ""
 #. [teleport]: id=teleport
 #: data/core/macros/abilities.cfg:378
 msgid "teleport"
-msgstr "teleportar"
+msgstr "telepórtase"
 
 #. [teleport]: id=teleport
 #: data/core/macros/abilities.cfg:379
 msgid "female^teleport"
-msgstr "teleportar"
+msgstr "telepórtase"
 
 #. [teleport]: id=teleport
 #: data/core/macros/abilities.cfg:381
@@ -3310,7 +3311,7 @@ msgid ""
 "This unit may teleport between any two empty villages owned by its side "
 "using one of its moves."
 msgstr ""
-"Teleportar:\n"
+"Teleportación:\n"
 "Esta unidade pode teleportarse entre dúas vilas baleiras calquera do seu "
 "bando usando un dos seus movementos."
 
@@ -3334,7 +3335,7 @@ msgid ""
 "units next to it. Any enemy unit that first discovers this unit immediately "
 "loses all its remaining movement."
 msgstr ""
-"Embosca:\n"
+"Emboscada:\n"
 "Esta unidade pode ocultarse no bosque, e evitar que os seus inimigos a "
 "detecten.\n"
 "\n"
@@ -3346,7 +3347,7 @@ msgstr ""
 #: data/core/macros/abilities.cfg:416 data/core/macros/abilities.cfg:417
 #: data/core/macros/abilities.cfg:422
 msgid "nightstalk"
-msgstr "espía"
+msgstr "asexante nocturno"
 
 #. [hides]: id=nightstalk
 #: data/core/macros/abilities.cfg:421 data/core/macros/abilities.cfg:427
@@ -3358,7 +3359,7 @@ msgid ""
 "it. Any enemy unit that first discovers this unit immediately loses all its "
 "remaining movement."
 msgstr ""
-"Espía:\n"
+"Asexo nocturno:\n"
 "A unidade vólvese invisible pola noite.\n"
 "\n"
 "As unidades inimigas non poden ver a esta unidade pola noite, agás se teñen "
@@ -3368,17 +3369,17 @@ msgstr ""
 #. [hides]: id=nightstalk
 #: data/core/macros/abilities.cfg:423
 msgid "female^nightstalk"
-msgstr "espía"
+msgstr "asexante nocturna"
 
 #. [hides]: id=concealment
 #: data/core/macros/abilities.cfg:442 data/core/macros/abilities.cfg:448
 msgid "concealment"
-msgstr "ocultación"
+msgstr "ocúltase"
 
 #. [hides]: id=concealment
 #: data/core/macros/abilities.cfg:443 data/core/macros/abilities.cfg:449
 msgid "female^concealment"
-msgstr "ocultación"
+msgstr "ocúltase"
 
 #. [hides]: id=concealment
 #: data/core/macros/abilities.cfg:447 data/core/macros/abilities.cfg:453
@@ -3402,12 +3403,12 @@ msgstr ""
 #. [hides]: id=submerge
 #: data/core/macros/abilities.cfg:468 data/core/macros/abilities.cfg:474
 msgid "submerge"
-msgstr "mergullo"
+msgstr "mergúllase"
 
 #. [hides]: id=submerge
 #: data/core/macros/abilities.cfg:469 data/core/macros/abilities.cfg:475
 msgid "female^submerge"
-msgstr "mergullo"
+msgstr "mergúllase"
 
 #. [hides]: id=submerge
 #: data/core/macros/abilities.cfg:473 data/core/macros/abilities.cfg:479
@@ -3430,12 +3431,12 @@ msgstr ""
 #. [dummy]: id=feeding
 #: data/core/macros/abilities.cfg:497
 msgid "feeding"
-msgstr "alimentación"
+msgstr "aliméntase"
 
 #. [dummy]: id=feeding
 #: data/core/macros/abilities.cfg:498
 msgid "female^feeding"
-msgstr "alimentación"
+msgstr "aliméntase"
 
 #. [dummy]: id=feeding
 #: data/core/macros/abilities.cfg:500
@@ -3506,7 +3507,7 @@ msgstr ""
 #. [slow]: id=slow
 #: data/core/macros/abilities.cfg:604
 msgid "slows"
-msgstr "ralentizar"
+msgstr "ralentiza"
 
 #. [slow]: id=slow
 #: data/core/macros/abilities.cfg:606
@@ -3517,7 +3518,7 @@ msgid ""
 "that is slowed will feature a snail icon in its sidebar information when it "
 "is selected."
 msgstr ""
-"Ralentizar:\n"
+"Ralentización:\n"
 "Este ataque ralentiza ao obxectivo durante unha rolda. Ralentizar reduce á "
 "metade o dano causado polos ataques e o custo de movemento da unidade "
 "ralentizada duplícase. Unha unidade ralentizada terá unha icona de caracol "
@@ -3535,14 +3536,14 @@ msgid ""
 "This attack petrifies the target, turning it to stone. Units that have been "
 "petrified may not move or attack."
 msgstr ""
-"Petrifica:\n"
+"Petrificación:\n"
 "Este ataque converte ao obxectivo en pedra. As unidades convertidas en pedra "
 "non poden moverse nin atacar."
 
 #. [chance_to_hit]: id=marksman
 #: data/core/macros/abilities.cfg:626
 msgid "marksman"
-msgstr "tirador"
+msgstr "puntería"
 
 #. [chance_to_hit]: id=marksman
 #: data/core/macros/abilities.cfg:628
@@ -3550,7 +3551,7 @@ msgid ""
 "Marksman:\n"
 "When used offensively, this attack always has at least a 60% chance to hit."
 msgstr ""
-"Tirador:\n"
+"Puntería:\n"
 "Cando se usa de forma ofensiva, este ataque sempre ten como mínimo un 60% de "
 "probabilidades de atinar."
 
@@ -3603,14 +3604,14 @@ msgid ""
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals (rounded down)."
 msgstr ""
-"Absorbe:\n"
+"Absorción:\n"
 "Esta unidade absorbe a vida de unidades vivas, sandando a metade do dano que "
 "inflixe (redondeado cara abaixo)."
 
 #. [poison]: id=poison
 #: data/core/macros/abilities.cfg:700
 msgid "poison"
-msgstr "veleno"
+msgstr "velenoso"
 
 #. [poison]: id=poison
 #: data/core/macros/abilities.cfg:702
@@ -6696,9 +6697,9 @@ msgid ""
 "'Status Table' will let you know how your enemies are doing, and how you are "
 "doing in comparison."
 msgstr ""
-"Hai algunhas ventás de resumo útiles no menú principal. Por exemplo, a "
-"«Táboa de estado» permitirache saber como lles vai aos teus inimigos, e como "
-"che vai a ti en comparación."
+"Hai algunhas ventás de resumo útiles no menú principal. Por exemplo, o "
+"«Cadro da situación» permitirache saber como lles vai aos teus inimigos, e "
+"como che vai a ti en comparación."
 
 #. [tip]
 #: data/hardwired/tips.cfg:31
@@ -6874,9 +6875,9 @@ msgid ""
 msgstr ""
 "A probabilidade de atinarlle a unha unidade normalmente depende do ben que "
 "esa unidade pode defenderse no terreo no que está. Aínda así os ataques "
-"máxicos teñen sempre unha probabilidade do 70% de atinar, e as unidades coa "
-"habilidade de “tirador” sempre teñen como mínimo unha probabilidade do 60% "
-"de atinar cando atacan na súa quenda."
+"máxicos teñen sempre unha probabilidade do 70% de atinar, e as unidades con "
+"“puntería” sempre teñen como mínimo unha probabilidade do 60% de atinar "
+"cando atacan na súa quenda."
 
 #. [tip]
 #: data/hardwired/tips.cfg:80
@@ -8751,7 +8752,7 @@ msgstr "Ingresos"
 
 #: src/menu_events.cpp:474
 msgid "Current Status"
-msgstr "Estado actual"
+msgstr "Situación"
 
 #: src/menu_events.cpp:475
 msgid "More >"

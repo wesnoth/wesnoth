@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: wesnoth-editor\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-06-20 11:03+0200\n"
-"PO-Revision-Date: 2009-10-04 19:43+0100\n"
-"Last-Translator: Alexander van Gessel (AI/AI0867) <AI0867@gmail.com>\n"
+"PO-Revision-Date: 2010-06-21 23:49+0100\n"
+"Last-Translator: Koen Vervloesem <koen@vervloesem.eu>\n"
 "Language-Team: Dutch <AI0867@gmail.com>\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
@@ -18,6 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Language: Dutch\n"
 "X-Generator: KBabel 1.11.4\n"
+"X-Poedit-Basepath: /home/koan/wesnoth\n"
 
 #. [brush]
 #: data/core/editor/brushes.cfg:5
@@ -37,7 +38,7 @@ msgstr "Radius 2 Hex"
 #. [brush]
 #: data/core/editor/brushes.cfg:55
 msgid "Hex Line NW-SE"
-msgstr "Hex lijn NW-SO"
+msgstr "Hex lijn NW-ZO"
 
 #. [editor_group]: id=all
 #: data/core/editor/terrain-groups.cfg:10
@@ -62,7 +63,7 @@ msgstr "woestijn"
 #. [editor_group]: id=embellishments
 #: data/core/editor/terrain-groups.cfg:37
 msgid "embellishments"
-msgstr ""
+msgstr "versieringen"
 
 #. [editor_group]: id=forest
 #: data/core/editor/terrain-groups.cfg:44
@@ -87,7 +88,7 @@ msgstr "grot"
 #. [editor_group]: id=obstacle
 #: data/core/editor/terrain-groups.cfg:72
 msgid "obstacle"
-msgstr ""
+msgstr "obstakel"
 
 #. [editor_group]: id=village
 #: data/core/editor/terrain-groups.cfg:79
@@ -102,7 +103,7 @@ msgstr "kasteel"
 #. [editor_group]: id=bridge
 #: data/core/editor/terrain-groups.cfg:93
 msgid "bridge"
-msgstr ""
+msgstr "brug"
 
 #. [editor_group]: id=special
 #: data/core/editor/terrain-groups.cfg:100
@@ -119,9 +120,9 @@ msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only. Ctrl+click to sample terrain under cursor."
 msgstr ""
-"Gebruik links/rechts muis knop om voor-/achtergrond terrein te tekenen. Houd "
-"Shift ingedrukt om alleen het basis layer te tekenen. Ctrl+klik om het "
-"terrein onder de cursor over te nemen."
+"Gebruik linker/rechter muisknop om voor-/achtergrondterrein te tekenen. Houd "
+"Shift ingedrukt om alleen de basislaag te tekenen. Ctrl+klik om het terrein "
+"onder de cursor over te nemen."
 
 #. [editor_tool_hint]: id=editor-tool-select
 #. [menu]: id=select_button_editor
@@ -130,8 +131,8 @@ msgid ""
 "Left mouse button selects, right deselects. Hold Shift for magic-wand "
 "selection of tiles with same terrain."
 msgstr ""
-"Linkerknop selecteert, rechterknop deselecteert. Houd Shift ingedrukt voor "
-"toverstok selectie van hokjes met hetzelfde terrein."
+"Linker muisknop selecteert, rechter muisknop deselecteert. Houd Shift "
+"ingedrukt voor toverstokselectie van hokjes met hetzelfde terrein."
 
 #. [editor_tool_hint]: id=editor-tool-starting-position
 #. [menu]: id=start_position_button_editor
@@ -141,9 +142,9 @@ msgid ""
 "scroll to the starting position, alt+number sets respective starting "
 "position under cursor, delete clears."
 msgstr ""
-"Linkerknop weergeeft speler selectie, rechterknop wist. Nummer toetsen "
-"ontrol tot startpositie, alt+nummer stelt respectieve startpositie onder "
-"cursor in, delete wist."
+"Linker muisknop geeft spelerselectie weer, rechter muisknop wist. Numerieke "
+"toetsen scrollen tot startpositie, alt+nummer stelt respectieve startpositie "
+"onder cursor in, delete wist."
 
 #. [editor_tool_hint]: id=editor-paste
 #: data/core/editor/tool-hints.cfg:30
@@ -152,8 +153,8 @@ msgid ""
 "edit menu to transform the clipboard (rotate, mirror)."
 msgstr ""
 "Klik om te plakken, zoom uit voor meer nauwkeurigheid bij het plakken van "
-"grote gebieden. Gebruik het bewerken-menu om het klembord te bewerken "
-"(draaien, spiegel)."
+"grote gebieden. Gebruik het bewerken-menu om het klembord te vervormen "
+"(draaien, spiegelen)."
 
 #. [menu]: id=menu-editor-file
 #: data/themes/editor.cfg:120
@@ -186,7 +187,7 @@ msgstr "Editor verlaten"
 
 #: src/editor/editor_controller.cpp:276
 msgid "Fatal error"
-msgstr "Fataal fout"
+msgstr "Fatale fout"
 
 #: src/editor/editor_controller.cpp:301 src/editor/editor_controller.cpp:1062
 msgid "(New Map)"
@@ -201,16 +202,16 @@ msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
 msgstr ""
-"Wilt u echt sluiten? Wijzigingen van de kaart sinds het laatste opname "
-"zullen worden verloren."
+"Wilt u echt afsluiten? Wijzigingen van de kaart sinds de laatste save gaan "
+"verloren."
 
 #: src/editor/editor_controller.cpp:311
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
 msgstr ""
-"Wilt u echt sluiten? De volgende kaarten zijn gewijzigd en alle wijzigingen "
-"sinds de laatste opname zullen worden verloren."
+"Wilt u echt afsluiten? De volgende kaarten zijn gewijzigd en alle "
+"wijzigingen sinds de laatste save gaan verloren."
 
 #: src/editor/editor_controller.cpp:316
 msgid "Quit"
@@ -218,7 +219,7 @@ msgstr "Afsluiten"
 
 #: src/editor/editor_controller.cpp:373
 msgid "No editor time-of-day found."
-msgstr "Geen editor tijd-van-dag gevonden"
+msgstr "Geen editor tijd-van-dag gevonden."
 
 #: src/editor/editor_controller.cpp:409
 msgid "Unsaved Changes"
@@ -227,7 +228,8 @@ msgstr "Onopgeslagen wijzigingen"
 #: src/editor/editor_controller.cpp:410
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
-msgstr "Wilt u alle wijzigigen sinds u laatst de kaart opsloeg ongedaan maken?"
+msgstr ""
+"Wilt u alle wijzigingen sinds u laatst de kaart opsloeg ongedaan maken?"
 
 #: src/editor/editor_controller.cpp:428
 msgid "Choose a Map to Open"
@@ -235,35 +237,35 @@ msgstr "Kies een kaart om in te lezen"
 
 #: src/editor/editor_controller.cpp:463
 msgid "Save the Map As"
-msgstr "Kaart opslaan als"
+msgstr "Sla de kaart op als"
 
 #: src/editor/editor_controller.cpp:467
 msgid "The file already exists. Do you want to overwrite it?"
-msgstr "Wilt u de bestaande kaart overschrijven?"
+msgstr "Het bestand bestaat al. Wilt u de bestaande kaart overschrijven?"
 
 #: src/editor/editor_controller.cpp:484
 msgid "No random map generators found."
-msgstr "Geen willekeurige kaart generator gevonden"
+msgstr "Geen generator van willekeurige kaarten gevonden."
 
 #: src/editor/editor_controller.cpp:497 src/editor/editor_controller.cpp:501
 msgid "Map creation failed."
-msgstr "Kaart aanmaken mislukt"
+msgstr "Kaart aanmaken mislukt."
 
 #: src/editor/editor_controller.cpp:516
 msgid "Choose a mask to apply"
-msgstr "Kies een masker om aan te passen"
+msgstr "Kies een masker om toe te passen"
 
 #: src/editor/editor_controller.cpp:523
 msgid "Error loading mask"
-msgstr "Fout bij laden van het masker"
+msgstr "Fout bij het laden van het masker"
 
 #: src/editor/editor_controller.cpp:538
 msgid "Choose target map"
-msgstr "Kiez doel kaart"
+msgstr "Kies doelkaart"
 
 #: src/editor/editor_controller.cpp:545 src/editor/editor_controller.cpp:709
 msgid "Error loading map"
-msgstr "Fout bij laden van het kaart"
+msgstr "Fout bij het laden van de kaart"
 
 #: src/editor/editor_controller.cpp:623 src/editor/editor_controller.cpp:665
 msgid "This map is already open."
@@ -275,7 +277,7 @@ msgstr "Kaart opgeslagen."
 
 #: src/editor/editor_controller.cpp:688
 msgid "Loaded embedded map data"
-msgstr "Ingebedde kaartdata geladen"
+msgstr "Ingebedde kaartgegevens geladen"
 
 #: src/editor/editor_controller.cpp:689 src/editor/editor_controller.cpp:703
 msgid "Map loaded from scenario"
@@ -307,15 +309,15 @@ msgstr "Kan niet herhalen"
 
 #: src/editor/editor_controller.cpp:1105
 msgid "Auto-update Terrain Transitions: Yes"
-msgstr "Update Terrein Transities Automatisch: Ja"
+msgstr "Update terreinovergangen automatisch: Ja"
 
 #: src/editor/editor_controller.cpp:1108
 msgid "Auto-update Terrain Transitions: Partial"
-msgstr "Update Terrein Transities Automatisch: Gedeeltelijk"
+msgstr "Update terreinovergangen automatisch: Gedeeltelijk"
 
 #: src/editor/editor_controller.cpp:1112
 msgid "Auto-update Terrain Transitions: No"
-msgstr "Update Terrein Transities Automatisch: Nee"
+msgstr "Update terreinovergangen automatisch: Nee"
 
 #: src/editor/editor_map.cpp:149 src/editor/mouse_action.cpp:429
 msgid "Player"
@@ -323,7 +325,7 @@ msgstr "Speler"
 
 #: src/editor/editor_map.cpp:256
 msgid "The size of the target map is different from the current map"
-msgstr "De groote van het doelmap verschilt van die van de huidige kaart"
+msgstr "De grootte van de doelkaart verschilt van die van de huidige kaart"
 
 #: src/editor/editor_palettes.cpp:509
 msgid "(non-core)"
@@ -380,20 +382,14 @@ msgid ""
 "the cursor. Pressing a number key by itself will scroll to that player's "
 "starting position."
 msgstr ""
-"Welke speler moet hier starten? Je kan alt en een nummerknop gebruiken om de "
-"startpositie voor een speler in te stellen en del om de startpositie onder "
-"de cursor te verwijderen. Het indrukken van een nummerknop schuift het "
-"scherm naar de startpositie van die speler."
+"Welke speler moet hier starten? Je kan alt en een numerieke knop gebruiken "
+"om de startpositie voor een speler in te stellen, en del om de startpositie "
+"onder de cursor te verwijderen. Het indrukken van enkel een numerieke knop "
+"schuift het scherm naar de startpositie van die speler."
 
 #: src/gui/dialogs/editor_settings.cpp:166
 msgid "Custom setting"
-msgstr "Eigen instelligen"
-
-#~ msgid "Error creating action object"
-#~ msgstr "Error bij het creëeren actie object"
-
-#~ msgid "Action not implemented"
-#~ msgstr "Actie niet geïmplementeerd"
+msgstr "Eigen instelling"
 
 #~ msgid "Error"
 #~ msgstr "Fout"
