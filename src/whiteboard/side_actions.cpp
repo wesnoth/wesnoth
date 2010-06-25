@@ -55,9 +55,11 @@ void side_actions::execute_next()
 void side_actions::execute(action_ptr action)
 {
 	assert(!actions_.empty());
-	action->execute();
-	remove_action(action);
-	// check if finish ?
+	bool finished = action->execute();
+	if (finished)
+	{
+		remove_action(action);
+	}
 	//TODO: Validate remaining actions here
 }
 
