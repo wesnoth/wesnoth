@@ -1,4 +1,4 @@
-/* $Id: persist_manager.cpp 43488 2010-06-16 13:47:53Z upthorn $ */
+/* $Id$ */
 /*
    Copyright (C) 2010 by Jody Northup
    Part of the Battle for Wesnoth Project http://www.wesnoth.org/
