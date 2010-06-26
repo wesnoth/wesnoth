@@ -1,0 +1,4 @@
+import org::wesnoth::wML;
+
+sortedGreetings(Model this) :
+	this.greetings.sortBy(g|g.name.toLowerCase());

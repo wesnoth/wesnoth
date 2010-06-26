@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.wesnoth.wml.generator
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0
+Bundle-SymbolicName: org.wesnoth.wml.generator; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.wesnoth.wml;visibility:=reexport,
+ org.eclipse.xpand;visibility:=reexport,
+ org.eclipse.xtend;visibility:=reexport,
+ org.eclipse.xtext;visibility:=reexport,
+ org.eclipse.emf.mwe2.launch;resolution:=optional,
+ org.eclipse.emf.mwe.utils;visibility:=reexport,
+ org.eclipse.xtend.typesystem.emf;visibility:=reexport
+Import-Package: org.apache.log4j
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
