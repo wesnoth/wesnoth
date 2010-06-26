@@ -163,13 +163,13 @@ public interface WMLPackage extends EPackage
   int MACRO = 3;
 
   /**
-   * The feature id for the '<em><b>Macro Name</b></em>' attribute.
+   * The feature id for the '<em><b>Macro Content</b></em>' attribute list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MACRO__MACRO_NAME = PREPROCESSOR_FEATURE_COUNT + 0;
+  int MACRO__MACRO_CONTENT = PREPROCESSOR_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Macro</em>' class.
@@ -488,15 +488,15 @@ public interface WMLPackage extends EPackage
   EClass getMacro();
 
   /**
-   * Returns the meta object for the attribute '{@link org.wesnoth.wML.Macro#getMacroName <em>Macro Name</em>}'.
+   * Returns the meta object for the attribute list '{@link org.wesnoth.wML.Macro#getMacroContent <em>Macro Content</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Macro Name</em>'.
-   * @see org.wesnoth.wML.Macro#getMacroName()
+   * @return the meta object for the attribute list '<em>Macro Content</em>'.
+   * @see org.wesnoth.wML.Macro#getMacroContent()
    * @see #getMacro()
    * @generated
    */
-  EAttribute getMacro_MacroName();
+  EAttribute getMacro_MacroContent();
 
   /**
    * Returns the meta object for class '{@link org.wesnoth.wML.PathInclude <em>Path Include</em>}'.
@@ -764,12 +764,12 @@ public interface WMLPackage extends EPackage
     EClass MACRO = eINSTANCE.getMacro();
 
     /**
-     * The meta object literal for the '<em><b>Macro Name</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Macro Content</b></em>' attribute list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute MACRO__MACRO_NAME = eINSTANCE.getMacro_MacroName();
+    EAttribute MACRO__MACRO_CONTENT = eINSTANCE.getMacro_MacroContent();
 
     /**
      * The meta object literal for the '{@link org.wesnoth.wML.impl.PathIncludeImpl <em>Path Include</em>}' class.

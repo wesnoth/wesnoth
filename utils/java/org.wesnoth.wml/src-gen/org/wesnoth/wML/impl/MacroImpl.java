@@ -5,11 +5,13 @@
  */
 package org.wesnoth.wML.impl;
 
-import org.eclipse.emf.common.notify.Notification;
+import java.util.Collection;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EDataTypeEList;
 
 import org.wesnoth.wML.Macro;
 import org.wesnoth.wML.WMLPackage;
@@ -21,7 +23,7 @@ import org.wesnoth.wML.WMLPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.wesnoth.wML.impl.MacroImpl#getMacroName <em>Macro Name</em>}</li>
+ *   <li>{@link org.wesnoth.wML.impl.MacroImpl#getMacroContent <em>Macro Content</em>}</li>
  * </ul>
  * </p>
  *
@@ -30,24 +32,14 @@ import org.wesnoth.wML.WMLPackage;
 public class MacroImpl extends PreprocessorImpl implements Macro
 {
   /**
-   * The default value of the '{@link #getMacroName() <em>Macro Name</em>}' attribute.
+   * The cached value of the '{@link #getMacroContent() <em>Macro Content</em>}' attribute list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getMacroName()
+   * @see #getMacroContent()
    * @generated
    * @ordered
    */
-  protected static final String MACRO_NAME_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getMacroName() <em>Macro Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getMacroName()
-   * @generated
-   * @ordered
-   */
-  protected String macroName = MACRO_NAME_EDEFAULT;
+  protected EList<String> macroContent;
 
   /**
    * <!-- begin-user-doc -->
@@ -75,22 +67,13 @@ public class MacroImpl extends PreprocessorImpl implements Macro
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getMacroName()
+  public EList<String> getMacroContent()
   {
-    return macroName;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setMacroName(String newMacroName)
-  {
-    String oldMacroName = macroName;
-    macroName = newMacroName;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, WMLPackage.MACRO__MACRO_NAME, oldMacroName, macroName));
+    if (macroContent == null)
+    {
+      macroContent = new EDataTypeEList<String>(String.class, this, WMLPackage.MACRO__MACRO_CONTENT);
+    }
+    return macroContent;
   }
 
   /**
@@ -103,8 +86,8 @@ public class MacroImpl extends PreprocessorImpl implements Macro
   {
     switch (featureID)
     {
-      case WMLPackage.MACRO__MACRO_NAME:
-        return getMacroName();
+      case WMLPackage.MACRO__MACRO_CONTENT:
+        return getMacroContent();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -114,13 +97,15 @@ public class MacroImpl extends PreprocessorImpl implements Macro
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
-      case WMLPackage.MACRO__MACRO_NAME:
-        setMacroName((String)newValue);
+      case WMLPackage.MACRO__MACRO_CONTENT:
+        getMacroContent().clear();
+        getMacroContent().addAll((Collection<? extends String>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -136,8 +121,8 @@ public class MacroImpl extends PreprocessorImpl implements Macro
   {
     switch (featureID)
     {
-      case WMLPackage.MACRO__MACRO_NAME:
-        setMacroName(MACRO_NAME_EDEFAULT);
+      case WMLPackage.MACRO__MACRO_CONTENT:
+        getMacroContent().clear();
         return;
     }
     super.eUnset(featureID);
@@ -153,8 +138,8 @@ public class MacroImpl extends PreprocessorImpl implements Macro
   {
     switch (featureID)
     {
-      case WMLPackage.MACRO__MACRO_NAME:
-        return MACRO_NAME_EDEFAULT == null ? macroName != null : !MACRO_NAME_EDEFAULT.equals(macroName);
+      case WMLPackage.MACRO__MACRO_CONTENT:
+        return macroContent != null && !macroContent.isEmpty();
     }
     return super.eIsSet(featureID);
   }
@@ -170,8 +155,8 @@ public class MacroImpl extends PreprocessorImpl implements Macro
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (macroName: ");
-    result.append(macroName);
+    result.append(" (macroContent: ");
+    result.append(macroContent);
     result.append(')');
     return result.toString();
   }

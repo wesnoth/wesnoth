@@ -251,7 +251,7 @@ public class WMLPackageImpl extends EPackageImpl implements WMLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getMacro_MacroName()
+  public EAttribute getMacro_MacroContent()
   {
     return (EAttribute)macroEClass.getEStructuralFeatures().get(0);
   }
@@ -457,7 +457,7 @@ public class WMLPackageImpl extends EPackageImpl implements WMLPackage
     preprocessorEClass = createEClass(PREPROCESSOR);
 
     macroEClass = createEClass(MACRO);
-    createEAttribute(macroEClass, MACRO__MACRO_NAME);
+    createEAttribute(macroEClass, MACRO__MACRO_CONTENT);
 
     pathIncludeEClass = createEClass(PATH_INCLUDE);
     createEAttribute(pathIncludeEClass, PATH_INCLUDE__PATH);
@@ -528,7 +528,7 @@ public class WMLPackageImpl extends EPackageImpl implements WMLPackage
     initEClass(preprocessorEClass, Preprocessor.class, "Preprocessor", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(macroEClass, Macro.class, "Macro", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getMacro_MacroName(), ecorePackage.getEString(), "macroName", null, 0, 1, Macro.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getMacro_MacroContent(), ecorePackage.getEString(), "macroContent", null, 0, -1, Macro.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(pathIncludeEClass, PathInclude.class, "PathInclude", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getPathInclude_Path(), ecorePackage.getEString(), "path", null, 0, 1, PathInclude.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -41,11 +41,11 @@ public class WMLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getPathIncludeAccess().getPathAlternatives_1_0(), "rule__PathInclude__PathAlternatives_1_0");
 					put(grammarAccess.getRootTagAccess().getAlternatives(), "rule__RootTag__Alternatives");
 					put(grammarAccess.getAttributesAccess().getAttrValueAlternatives_2_0(), "rule__Attributes__AttrValueAlternatives_2_0");
+					put(grammarAccess.getRootAccess().getGroup(), "rule__Root__Group__0");
 					put(grammarAccess.getTextDomainAccess().getGroup(), "rule__TextDomain__Group__0");
 					put(grammarAccess.getMacroAccess().getGroup(), "rule__Macro__Group__0");
 					put(grammarAccess.getPathIncludeAccess().getGroup(), "rule__PathInclude__Group__0");
-					put(grammarAccess.getRootTypeAccess().getGroup_0(), "rule__RootType__Group_0__0");
-					put(grammarAccess.getRootTypeAccess().getGroup_2(), "rule__RootType__Group_2__0");
+					put(grammarAccess.getRootTypeAccess().getGroup(), "rule__RootType__Group__0");
 					put(grammarAccess.getSimpleTagAccess().getGroup(), "rule__SimpleTag__Group__0");
 					put(grammarAccess.getAddedTagAccess().getGroup(), "rule__AddedTag__Group__0");
 					put(grammarAccess.getAttributesAccess().getGroup(), "rule__Attributes__Group__0");
@@ -55,20 +55,18 @@ public class WMLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getRootAccess().getPreprocAssignment_1(), "rule__Root__PreprocAssignment_1");
 					put(grammarAccess.getRootAccess().getRootsAssignment_2(), "rule__Root__RootsAssignment_2");
 					put(grammarAccess.getTextDomainAccess().getDomainNameAssignment_1(), "rule__TextDomain__DomainNameAssignment_1");
-					put(grammarAccess.getMacroAccess().getMacroNameAssignment_1(), "rule__Macro__MacroNameAssignment_1");
+					put(grammarAccess.getMacroAccess().getMacroContentAssignment_1(), "rule__Macro__MacroContentAssignment_1");
 					put(grammarAccess.getPathIncludeAccess().getPathAssignment_1(), "rule__PathInclude__PathAssignment_1");
-					put(grammarAccess.getRootTypeAccess().getStartTagAssignment_0_1(), "rule__RootType__StartTagAssignment_0_1");
-					put(grammarAccess.getRootTypeAccess().getSubTypesAssignment_0_3(), "rule__RootType__SubTypesAssignment_0_3");
-					put(grammarAccess.getRootTypeAccess().getAtAssignment_1(), "rule__RootType__AtAssignment_1");
-					put(grammarAccess.getRootTypeAccess().getOkpreprocAssignment_2_0(), "rule__RootType__OkpreprocAssignment_2_0");
-					put(grammarAccess.getRootTypeAccess().getEndTagAssignment_2_3(), "rule__RootType__EndTagAssignment_2_3");
+					put(grammarAccess.getRootTypeAccess().getStartTagAssignment_1(), "rule__RootType__StartTagAssignment_1");
+					put(grammarAccess.getRootTypeAccess().getSubTypesAssignment_3(), "rule__RootType__SubTypesAssignment_3");
+					put(grammarAccess.getRootTypeAccess().getAtAssignment_4(), "rule__RootType__AtAssignment_4");
+					put(grammarAccess.getRootTypeAccess().getOkpreprocAssignment_5(), "rule__RootType__OkpreprocAssignment_5");
+					put(grammarAccess.getRootTypeAccess().getEndTagAssignment_8(), "rule__RootType__EndTagAssignment_8");
 					put(grammarAccess.getSimpleTagAccess().getEndTagAssignment_0(), "rule__SimpleTag__EndTagAssignment_0");
 					put(grammarAccess.getSimpleTagAccess().getTagNameAssignment_1(), "rule__SimpleTag__TagNameAssignment_1");
 					put(grammarAccess.getAddedTagAccess().getTagNameAssignment_1(), "rule__AddedTag__TagNameAssignment_1");
 					put(grammarAccess.getAttributesAccess().getAttrNameAssignment_0(), "rule__Attributes__AttrNameAssignment_0");
 					put(grammarAccess.getAttributesAccess().getAttrValueAssignment_2(), "rule__Attributes__AttrValueAssignment_2");
-					put(grammarAccess.getRootAccess().getUnorderedGroup(), "rule__Root__UnorderedGroup");
-					put(grammarAccess.getRootTypeAccess().getUnorderedGroup(), "rule__RootType__UnorderedGroup");
 				}
 			};
 		}

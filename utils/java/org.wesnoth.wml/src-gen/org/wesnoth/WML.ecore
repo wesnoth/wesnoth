@@ -16,7 +16,8 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Preprocessor"/>
   <eClassifiers xsi:type="ecore:EClass" name="Macro" eSuperTypes="#//Preprocessor">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="macroName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="macroContent" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PathInclude" eSuperTypes="#//Preprocessor">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="path" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
