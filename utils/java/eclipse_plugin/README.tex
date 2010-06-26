@@ -14,17 +14,23 @@
 
 \section{Common prerequisites}
 \begin{enumerate}
-\item Download and install Eclipse (\textbf{http://eclipse.org/downloads/})
+\item Download and install Eclipse (\textbf{http://eclipse.org/downloads/}) \\
+  \textit{Note1:} For every plugin installing please check "Group items by category" and
+    "Contact all update sites during install to find required software" in the "Install new software" window. \\
+  \textit{Note2:} If you are prompted for any license agreements or certificates press Yes on all.
 \item Install the library "EMF". For that, in Eclipse: Help menu -  Install new software, insert the link \\
   (\textbf{http://download.eclipse.org/modeling/emf/updates/releases/}) in that textbox, and press enter.
-  Check the "Group items by category", and select: \\
-  \indent - \textbf{"EMF SDK 2.5.0 (EMF + XDS)} - select "EMF - Eclipse Modeling Framework Core Runtime"
+  Select the following: \\
+  \indent - \textbf{"EMF SDK 2.5.0 (EMF + XSD)} - after selecting it, uncheck everything that ends in "Source" or "UI",
+  and everything that startx with "XSD"
 \item Install the library "XText". \\
   The download link: http://download.itemis.com/updates/releases.
   After that, select the latest version of the following packages and
   install them (Don't forget to have checked the "Group items by category" checkbox): \\
-  \indent - \textbf{"TMF XTEXT SDK (incubation) x.x.x"} \\
-  \indent - \textbf{"Xtext antlr Support x.x.x"}
+  \indent - \textbf{"tmf-xtext 1.0.0"} - after selecting it, uncheck everything that ends in "Source" \\
+  \indent - \textbf{"xtext-antlr 1.0.0"} - select just "Xtext Antlr Runtime Feature" \\
+  \indent - \textbf{"emft-mwe 1.0.0"} - select just "MWE Core"
+  \indent - \textbf{"emft-mwe2 1.0.0"} - select just "MWE 2 runtime SDK"
 \end{enumerate}
 
 \section{Developer}
