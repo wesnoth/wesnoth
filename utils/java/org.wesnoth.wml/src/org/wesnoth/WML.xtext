@@ -1,0 +1,70 @@
+/**
+ * @author Timotei Dolean
+ */
+grammar org.wesnoth.WML hidden(WS,SL_COMMENT)
+
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+
+generate wML "http://www.wesnoth.org/WML"
+
+Root:
+	textdomains += TextDomain* 
+	& preproc += Preprocessor*
+	& roots += RootType*
+	;
+
+TextDomain:
+	'#textdomain ' DomainName=ID;
+
+Preprocessor:
+	Macro | PathInclude;
+Macro:
+	'{' macroName = ID '}';
+PathInclude:
+	'{' path = (HOMEPATH |PATH) '}';
+	
+RootType:
+	'[' startTag = RootTag ']'
+		subTypes += RootType* 
+		& at += Attributes*
+		& okpreproc += Preprocessor*
+	'[' '/' endTag = RootTag ']';
+
+RootTag:
+	SimpleTag | AddedTag; 
+SimpleTag:
+	(endTag?='/')?  tagName=RootTagsList;
+AddedTag:
+	'+' tagName = RootTagsList; 
+
+RootTagsList:
+	ID; //'about'  | 'binary_path' | 'campaign' | 'textdomain' | 'units';
+
+Attributes:
+	attrName=ID '=' attrValue=(ID|IDLIST|TSTRING|STRING|PATH);
+
+// translatable string
+TSTRING:
+	'_' STRING;
+HOMEPATH:
+	'~' PATH;
+// ==== TERMINAL RULES ====
+terminal SL_COMMENT: '#' !('\n'|'\r')* ('\r'? '\n')?;
+terminal WS		: (' '|'\t'|'\r'|'\n')+;
+// no multiline comment defined on WML, 
+// terminal ML_COMMENT: '#' !('\n'|'\r')* ('\r'? '\n')?;
+terminal ID  		: ('a'..'z'|'A'..'Z'|'_'|'-'|'0'..'9')+;
+terminal IDLIST	: (ID ',')* ID;
+//terminal INT returns ecore::EInt: ('0'..'9')+;
+terminal STRING	: 
+			'"' ( '\\' ('b'|'t'|'n'|'f'|'r'|'"'|"'"|'\\') | !('\\'|'"') )* '"' |
+			"'" ( '\\' ('b'|'t'|'n'|'f'|'r'|'"'|"'"|'\\') | !('\\'|"'") )* "'";
+terminal ANY_OTHER: .;
+//terminal WORD_START: ' ' | '=';
+//terminal WORD_END	: '#' | ' ';
+// line end
+terminal PATH		: //('"')? 
+					  (('a'..'z'|'A'..'Z'|'_'|'.'|'-'|'0'..'9')+ '/')*
+					   ('a'..'z'|'A'..'Z'|'_'|'.'|'-'|'0'..'9')+ '/'? 
+					  //('"')?
+					  ;

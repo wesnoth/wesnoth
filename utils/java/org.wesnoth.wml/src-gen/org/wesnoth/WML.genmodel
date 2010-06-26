@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.wesnoth.wml/src-gen"
+    editDirectory="/org.wesnoth.wml.edit/src" editorDirectory="/org.wesnoth.wml.editor/src"
+    modelPluginID="org.wesnoth.wml" forceOverwrite="true" modelName="WML" updateClasspath="false"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" complianceLevel="5.0"
+    copyrightFields="false" editPluginID="org.wesnoth.wml.edit" editorPluginID="org.wesnoth.wml.editor">
+  <genPackages prefix="WML" basePackage="org.wesnoth" disposableProviderFactory="true"
+      ecorePackage="WML.ecore#/">
+    <genClasses ecoreClass="WML.ecore#//Root">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//Root/textdomains"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//Root/preproc"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//Root/roots"/>
+    </genClasses>
+    <genClasses ecoreClass="WML.ecore#//TextDomain">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//TextDomain/DomainName"/>
+    </genClasses>
+    <genClasses ecoreClass="WML.ecore#//Preprocessor"/>
+    <genClasses ecoreClass="WML.ecore#//Macro">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//Macro/macroName"/>
+    </genClasses>
+    <genClasses ecoreClass="WML.ecore#//PathInclude">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//PathInclude/path"/>
+    </genClasses>
+    <genClasses ecoreClass="WML.ecore#//RootType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//RootType/startTag"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//RootType/subTypes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//RootType/at"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//RootType/okpreproc"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//RootType/endTag"/>
+    </genClasses>
+    <genClasses ecoreClass="WML.ecore#//RootTag">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//RootTag/tagName"/>
+    </genClasses>
+    <genClasses ecoreClass="WML.ecore#//SimpleTag">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//SimpleTag/endTag"/>
+    </genClasses>
+    <genClasses ecoreClass="WML.ecore#//AddedTag"/>
+    <genClasses ecoreClass="WML.ecore#//Attributes">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//Attributes/attrName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//Attributes/attrValue"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
