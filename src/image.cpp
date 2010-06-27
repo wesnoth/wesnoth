@@ -55,7 +55,7 @@ image::bool_cache in_hex_info_;
 
 // const int cache_version_ = 0;
 
-std::map<image::locator,bool> image_existence_map;
+std::map<std::string,bool> image_existence_map;
 
 // directories where we already cached file existence
 std::set<std::string> precached_dirs;
@@ -1054,24 +1054,16 @@ surface reverse_image(const surface& surf)
 	return rev;
 }
 
-bool exists(const image::locator& i_locator, bool precached)
+bool exists(const image::locator& i_locator)
 {
 	typedef image::locator loc;
 	loc::type type = i_locator.get_type();
 	if (type != loc::FILE && type != loc::SUB_FILE)
 		return false;
 
-	if (precached) {
-		std::map<image::locator,bool>::const_iterator b =  image_existence_map.find(i_locator);
-		if (b != image_existence_map.end())
-			return b->second;
-		else
-			return false;
-	}
-
 	// The insertion will fail if there is already an element in the cache
-	std::pair< std::map< image::locator, bool >::iterator, bool >
-		it = image_existence_map.insert(std::make_pair(i_locator, false));
+	std::pair< std::map< std::string, bool >::iterator, bool >
+		it = image_existence_map.insert(std::make_pair(i_locator.get_filename(), false));
 	bool &cache = it.first->second;
 	if (it.second)
 		cache = !get_binary_file_location("images", i_locator.get_filename()).empty();
@@ -1113,6 +1105,14 @@ void precache_file_existence(const std::string& subdir)
 	}
 }
 
+bool precached_file_exists(const std::string& file)
+{
+	std::map<std::string, bool>::const_iterator b =  image_existence_map.find(file);
+	if (b != image_existence_map.end())
+		return b->second;
+	else
+		return false;
+}
 
 template<typename T>
 cache_item<T>& cache_type<T>::get_element(int index){

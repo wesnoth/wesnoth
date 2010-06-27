@@ -322,15 +322,17 @@ bool terrain_builder::rule_valid(const building_rule &rule) const
 			for(variant = image->variants.begin(); variant != image->variants.end(); ++variant) {
 				std::string s = variant->second.image_string;
 				s = s.substr(0, s.find_first_of(",:~"));
-
 				// we already precached file existence in the constructor
 				// but only for filenames not using ".."
-				if(!image::exists("terrain/" + s, s.find("..") == std::string::npos)){
-					// This warning can be removed after 1.9.2
-					if(image::exists("terrain/" + s + ".png", s.find("..") == std::string::npos))
-						lg::wml_error << "Terrain image '" << s << "' misses the '.png' extension\n";
-				//	printf("%s\n",s.c_str());
-					return false;
+				bool precached = s.find("..") == std::string::npos;
+				s = "terrain/" + s;
+				if(precached) {
+					//TODO reactivate this (costly) warning
+					//if precached_file_exists(s+".png")
+					//  lg::wml_error << "Terrain image '" << s << "' misses the '.png' extension\n";
+					return image::precached_file_exists(s);
+				} else {
+					return image::exists(s);
 				}
 			}
 		}

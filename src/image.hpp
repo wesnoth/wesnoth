@@ -272,11 +272,11 @@ namespace image {
 	surface reverse_image(const surface &surf);
 
 	///returns true if the given image actually exists, without loading it.
-	/// precached : if we already have precached the directory containing the file
-	bool exists(const locator& i_locator, bool precached = false);
+	bool exists(const locator& i_locator);
 
 	/// precache the existence of files in the subdir (ex: "terrain/")
 	void precache_file_existence(const std::string& subdir = "");
+	bool precached_file_exists(const std::string& file);
 }
 
 #endif
