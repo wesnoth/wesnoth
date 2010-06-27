@@ -790,6 +790,7 @@ static int impl_unit_get(lua_State *L)
 	}
 	return_int_attrib("side", u.side());
 	return_string_attrib("id", u.id());
+	return_string_attrib("type", u.type_id());
 	return_int_attrib("hitpoints", u.hitpoints());
 	return_int_attrib("max_hitpoints", u.max_hitpoints());
 	return_int_attrib("experience", u.experience());
