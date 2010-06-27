@@ -20,12 +20,10 @@
 #include "terrain_translation.hpp"
 
 #include "SDL.h"
-#include "cassert"
 
 #include <map>
 #include <string>
 #include <vector>
-#include <list>
 
 ///this module manages the cache of images. With an image name, you can get
 ///the surface corresponding to that image.
@@ -43,57 +41,9 @@ namespace image {
 #else
 	const int tile_size = 72;
 #endif
-	/**
-	 * Iterators from this dummy list are needed to ensure that iterator member
-	 * of cache_item is always non-singular iterator thus avoiding
-	 * "Copy-contruct from singular iterator" error when libstdc++ debug mode
-	 * is enabled. Note copying a singular iterator is undefined behaviour by
-	 * the C++ standard.
-	 */
-	extern std::list<int> dummy_list;
 
 	template<typename T>
-	struct cache_item {
-		cache_item() :
-			loaded(false),
-			item() ,
-			position(dummy_list.end())
-		{
-		}
-
-		cache_item(T item) :
-			loaded(true),
-			item(item),
-			position(dummy_list.end())
-		{
-		}
-
-		bool loaded;
-		T item;
-       	std::list<int>::iterator position;
-	};
-
-	template<typename T>
-	class cache_type
-	{
-	public:
-		cache_type() :
-			cache_size_(0),
-			cache_max_size_(2000),
-			lru_list_(),
-			content_()
-		{
-		}
-
-		cache_item<T>& get_element(int index);
-		void on_load(int index);
-		void flush();
-	private:
-		int cache_size_;
-		int cache_max_size_;
-       	std::list<int> lru_list_;
-       	std::vector<cache_item<T> > content_;
-	};
+	class cache_type;
 
 	//a generic image locator. Abstracts the location of an image.
 	class locator
@@ -178,17 +128,12 @@ namespace image {
 		surface load_from_disk() const;
 
 		template <typename T>
-		bool in_cache(cache_type<T>& cache) const
-			{ return index_ == -1 ? false : cache.get_element(index_).loaded; }
+		bool in_cache(cache_type<T> &cache) const;
 		template <typename T>
-		T locate_in_cache(cache_type<T>& cache) const
-			{ return index_ == -1 ? T() : cache.get_element(index_).item; }
+		const T &locate_in_cache(cache_type<T> &cache) const;
 		template <typename T>
-		void add_to_cache(cache_type<T>& cache, const T &data) const
-			{ if(index_ != -1 ) cache.get_element(index_) = cache_item<T>(data); cache.on_load(index_); }
+		void add_to_cache(cache_type<T> &cache, const T &data) const;
 
-	protected:
-		static int last_index_;
 	private:
 
 		surface load_image_file() const;

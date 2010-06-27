@@ -36,11 +36,86 @@
 
 #include <boost/functional/hash.hpp>
 
+#include <list>
 #include <set>
 
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
 #define LOG_DP LOG_STREAM(info, log_display)
+
+/**
+ * Iterators from this dummy list are needed to ensure that iterator member
+ * of cache_item is always non-singular iterator thus avoiding
+ * "Copy-contruct from singular iterator" error when libstdc++ debug mode
+ * is enabled. Note copying a singular iterator is undefined behaviour by
+ * the C++ standard.
+ */
+static std::list<int> dummy_list;
+
+template<typename T>
+struct cache_item
+{
+	cache_item(): loaded(false), item(), position(dummy_list.end())
+	{
+	}
+
+	cache_item(const T &item): loaded(true), item(item), position(dummy_list.end())
+	{
+	}
+
+	bool loaded;
+	T item;
+	std::list<int>::iterator position;
+};
+
+namespace image {
+
+template<typename T>
+class cache_type
+{
+public:
+	cache_type(): cache_size_(0), cache_max_size_(2000), lru_list_(), content_()
+	{
+	}
+
+	cache_item<T> &get_element(int index);
+	void on_load(int index);
+
+	void flush()
+	{
+		content_.clear();
+		lru_list_.clear();
+		cache_size_ = 0;
+	}
+
+private:
+	int cache_size_;
+	int cache_max_size_;
+	std::list<int> lru_list_;
+	std::vector<cache_item<T> > content_;
+};
+
+template <typename T>
+bool locator::in_cache(cache_type<T> &cache) const
+{
+	return index_ == -1 ? false : cache.get_element(index_).loaded;
+}
+
+template <typename T>
+const T &locator::locate_in_cache(cache_type<T> &cache) const
+{
+	static T dummy;
+	return index_ == -1 ? dummy : cache.get_element(index_).item;
+}
+
+template <typename T>
+void locator::add_to_cache(cache_type<T> &cache, const T &data) const
+{
+	if (index_ != -1 ) cache.get_element(index_) = cache_item<T>(data);
+	cache.on_load(index_);
+}
+
+}
 
 namespace {
 
@@ -76,19 +151,10 @@ namespace image {
 
 std::list<int> dummy_list;
 
-template<typename T>
-void cache_type<T>::flush()
-{
-	typename std::vector<cache_item<T> >::iterator beg = content_.begin();
-	typename std::vector<cache_item<T> >::iterator end = content_.end();
-
-	for(; beg != end; ++beg) {
-		beg->loaded = false;
-		beg->item = T();
-	}
-}
 mini_terrain_cache_map mini_terrain_cache;
 mini_terrain_cache_map mini_fogged_terrain_cache;
+
+static int last_index_ = 0;
 
 void flush_cache()
 {
@@ -105,9 +171,8 @@ void flush_cache()
 	reversed_images_.clear();
 	image_existence_map.clear();
 	precached_dirs.clear();
+	last_index_ = 0;
 }
-
-int locator::last_index_ = 0;
 
 void locator::init_index()
 {
@@ -1115,11 +1180,10 @@ bool precached_file_exists(const std::string& file)
 }
 
 template<typename T>
-cache_item<T>& cache_type<T>::get_element(int index){
+cache_item<T>& cache_type<T>::get_element(int index)
+{
 	assert (index != -1);
-	while(static_cast<size_t>(index) >= content_.size()) {
-		content_.push_back(cache_item<T>());
-	}
+	if (unsigned(index) >= content_.size()) content_.resize(index + 1);
 	cache_item<T>& elt = content_[index];
 	if(elt.loaded) {
 		assert(*elt.position == index);
