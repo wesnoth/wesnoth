@@ -171,7 +171,10 @@ void flush_cache()
 	reversed_images_.clear();
 	image_existence_map.clear();
 	precached_dirs.clear();
-	last_index_ = 0;
+	/* We can't reset last_index_, since some locators are still alive
+	   when using :refresh. That would cause them to point to the wrong
+	   images. Not resetting the variable causes a memory leak, though. */
+	// last_index_ = 0;
 }
 
 void locator::init_index()
