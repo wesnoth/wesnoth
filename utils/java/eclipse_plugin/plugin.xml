@@ -129,6 +129,12 @@
                label="Run &quot;wmllint&quot; on preprocessed file"
                menubarPath="plugin.wmltoolsMenu/wmltoolsMenuMarker">
          </action>
+         <action
+               class="wesnoth_eclipse_plugin.action.RunWMLIndentOnFile"
+               id="Wesnoth Eclipse Plugin.action7"
+               label="Run &quot;wmlindent&quot; on this file"
+               menubarPath="plugin.wmltoolsMenu/wmltoolsMenuMarker">
+         </action>
       </objectContribution>
    </extension>
    <extension

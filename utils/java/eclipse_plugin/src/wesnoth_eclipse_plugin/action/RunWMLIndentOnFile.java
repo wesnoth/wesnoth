@@ -11,9 +11,10 @@ import org.eclipse.ui.IWorkbenchPart;
 import wesnoth_eclipse_plugin.utils.WMLTools;
 import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
 
-public class RunWMLLintOnFile implements IObjectActionDelegate
+public class RunWMLIndentOnFile  implements IObjectActionDelegate
 {
-	public RunWMLLintOnFile(){	}
+
+	public RunWMLIndentOnFile() { }
 
 	@Override
 	public void setActivePart(IAction action, IWorkbenchPart targetPart){
@@ -22,7 +23,7 @@ public class RunWMLLintOnFile implements IObjectActionDelegate
 	@Override
 	public void run(IAction action)
 	{
-		WMLTools.runWMLLint(WorkspaceUtils.getPathRelativeToUserDir(WorkspaceUtils.getSelectedFile()),
+		WMLTools.runWMLIndent(WorkspaceUtils.getPathRelativeToUserDir(WorkspaceUtils.getSelectedFile()),
 				true, true,false);
 	}
 
