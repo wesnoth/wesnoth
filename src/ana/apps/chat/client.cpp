@@ -120,6 +120,18 @@ class ChatClient : public ana::listener_handler,
                 const ana::stats* day_stats = client_->get_stats( ana::DAYS );
                 
                 std::cout << "Network Statistics:\n"
+                          << "\tPackets Out:\n"
+                          << "\t\tTotal: " << acum_stats->packets_out() << std::endl
+                          << "\t\tLast Second: " << sec_stats->packets_out() << std::endl 
+                          << "\t\tLast Minute: " << min_stats->packets_out() << std::endl
+                          << "\t\tLast Hour: " << hour_stats->packets_out() << std::endl
+                          << "\t\tLast Day: " << day_stats->packets_out() << std::endl
+                          << "\tPackets In:\n"
+                          << "\t\tTotal: " << acum_stats->packets_in() << std::endl
+                          << "\t\tLast Second: " << sec_stats->packets_in() << std::endl 
+                          << "\t\tLast Minute: " << min_stats->packets_in() << std::endl
+                          << "\t\tLast Hour: " << hour_stats->packets_in() << std::endl
+                          << "\t\tLast Day: " << day_stats->packets_in() << std::endl
                           << "\tBytes Out:\n"
                           << "\t\tTotal: " << acum_stats->bytes_out() << std::endl
                           << "\t\tLast Second: " << sec_stats->bytes_out() << std::endl 
@@ -175,6 +187,7 @@ class ChatClient : public ana::listener_handler,
                 std::cout << "Available commands: \n"  <<
                              "    '/quit'      : Quit. \n"
                              "    '/who'       : List connected users. \n" <<
+                             "    '/stats'     : Print full network stats. \n" <<
                              "    '/name name' : Change name." << std::endl;
 
                 run_input();

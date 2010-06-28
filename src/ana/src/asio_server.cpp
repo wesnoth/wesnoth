@@ -214,6 +214,19 @@ std::string asio_server::ip_address( net_id id ) const
         return "";
 }
 
+const ana::stats* asio_server::get_client_stats( ana::net_id id, ana::stat_type type  ) const
+{
+    std::list<ana::server::client_proxy*>::const_iterator it;
+    
+    it = std::find_if( client_proxies_.begin(), client_proxies_.end(),
+                       boost::bind( &client_proxy::id, _1) == id );
+                  
+    if ( it != client_proxies_.end() )
+        return (*it)->get_stats(type);
+    else
+        return NULL; //No such client
+}
+
 void asio_server::log_receive( ana::detail::read_buffer buffer )
 {
     if (stats_collector_ != NULL )
@@ -244,7 +257,8 @@ asio_server::asio_client_proxy::asio_client_proxy(boost::asio::io_service& io_se
     client_proxy(),
     asio_listener(),
     socket_(io_service),
-    manager_(server)
+    manager_(server),
+    stats_collector_( NULL )
 {
 }
 
@@ -256,6 +270,31 @@ asio_server::asio_client_proxy::~asio_client_proxy()
 tcp::socket& asio_server::asio_client_proxy::socket()
 {
     return socket_;
+}
+
+void asio_server::asio_client_proxy::log_receive( ana::detail::read_buffer buffer )
+{
+    if ( stats_collector_ != NULL )
+        stats_collector_->log_receive( buffer );
+}
+
+void asio_server::asio_client_proxy::start_logging()
+{
+    stop_logging();
+    stats_collector_ = new ana::stats_collector();
+}
+
+void asio_server::asio_client_proxy::stop_logging()
+{
+    delete stats_collector_;
+}
+
+const ana::stats* asio_server::asio_client_proxy::get_stats( ana::stat_type type ) const
+{
+    if (stats_collector_ != NULL )
+        return stats_collector_->get_stats( type );
+    else
+        throw std::runtime_error("Logging is disabled. Use start_logging first.");
 }
 
 void asio_server::asio_client_proxy::handle_sent_header(const boost::system::error_code& ec,

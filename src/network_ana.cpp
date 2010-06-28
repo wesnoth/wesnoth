@@ -122,6 +122,42 @@ class ana_network_manager : public ana::listener_handler,
             return client->id();
         }
 
+        const ana::stats* get_stats( network::connection connection_num )
+        {
+            ana::net_id id( connection_num );
+            
+            {
+                std::map<ana::net_id, ana::server*>::iterator it;
+                
+                it = servers_.find( id );
+                
+                if ( it != servers_.end() )
+                    return it->second->get_stats( ana::ACCUMULATED );
+            }
+
+            {
+                std::map<ana::net_id, ana::client*>::iterator it;
+                
+                it = clients_.find( id );
+                
+                if ( it != clients_.end() )
+                    return it->second->get_stats( ana::ACCUMULATED );
+            }
+            
+            {
+                std::map<ana::net_id, ana::server*>::iterator it;
+                
+                for( it = servers_.begin(); it != servers_.end(); ++it)
+                {
+                    const ana::stats* stats = it->second->get_client_stats( id, ana::ACCUMULATED );
+
+                    if ( stats != NULL )
+                        return stats;
+                }
+            }
+
+            throw std::runtime_error("Wrong connection id to get stats from.");
+        }
 
         void run_server(ana::net_id id, int port)
         {
@@ -240,16 +276,6 @@ connection_map connections;
 
 } // end anon namespace
 
-static connection_details& get_connection_details(network::connection handle)
-{
-    const connection_map::iterator i = connections.find(handle);
-    if(i == connections.end()) {
-        throw network::error(_("invalid network handle"));
-    }
-
-    return i->second;
-}
-
 
 static void check_error()
 {
@@ -300,10 +326,11 @@ namespace network {
 
     connection_stats get_connection_stats(connection connection_num)
     {
-        connection_details& details = get_connection_details(connection_num);
-        return connection_stats(get_send_stats(connection_num).total,
-                                get_receive_stats(connection_num).total,
-                                details.connected_at);
+        const ana::stats* stats = ana_manager.get_stats( connection_num );
+      
+        return connection_stats( stats->bytes_out(),
+                                 stats->bytes_in(),
+                                 0); // TODO (int connected_at)
     }
 
     error::error(const std::string& msg, connection sock) : message(msg), socket(sock)
@@ -556,10 +583,10 @@ namespace network {
         ++(itor->second.in_packets);
     }
 
-        bandwidth_in::~bandwidth_in()
-        {
-            add_bandwidth_in(type_, len_);
-        }
+    bandwidth_in::~bandwidth_in()
+    {
+        add_bandwidth_in(type_, len_);
+    }
 
     void send_file(const std::string& /*filename*/, connection /*connection_num*/, const std::string& /*packet_type*/)
     {
@@ -586,9 +613,9 @@ namespace network {
     }
 
     void send_raw_data(const char*        /*buf*/,
-                    int                /*len*/,
-                    connection         /*connection_num*/,
-                    const std::string& /*packet_type*/)
+                       int                /*len*/,
+                       connection         /*connection_num*/,
+                       const std::string& /*packet_type*/)
     {
         throw std::runtime_error("TODO:Not implemented send_raw_data");
     }
@@ -608,17 +635,35 @@ namespace network {
 
     std::string ip_address(connection connection_num)
     {
-        return ana_manager.ip_address( connection_num);
+        return ana_manager.ip_address( connection_num );
     }
 
-    statistics get_send_stats(connection /*handle*/)
+    statistics get_send_stats(connection handle)
     {
-        throw std::runtime_error("TODO:Not implemented get_send_stats");
+        const ana::stats* stats = ana_manager.get_stats( handle );
+        
+        statistics s;
+        
+        s.total = stats->bytes_out();
+        //s.current = ?
+        //s.current_max = ?
+        
+        return s;
+        //TODO: check validity of this
     }
     
-    statistics get_receive_stats(connection /*handle*/)
+    statistics get_receive_stats(connection handle)
     {
-        throw std::runtime_error("TODO:Not implemented get_receive_stats");
+        const ana::stats* stats = ana_manager.get_stats( handle );
+        
+        statistics s;
+        
+        s.total = stats->bytes_in();
+        //s.current = ?
+        //s.current_max = ?
+        
+        return s;
+        //TODO: check validity of this
     }
 
 } // end namespace network

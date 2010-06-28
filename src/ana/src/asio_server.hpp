@@ -68,6 +68,14 @@ class asio_server : public  ana::server,
 
                 virtual std::string ip_address( ) const;
                 
+                virtual void log_receive( ana::detail::read_buffer buffer );
+                
+                virtual void start_logging();
+                virtual void stop_logging();
+                
+                virtual const ana::stats* get_stats( ana::stat_type type ) const;
+                
+                
                 void handle_sent_header(const boost::system::error_code& ec,
                                         ana::serializer::bostream*, ana::detail::shared_buffer,
                                         ana::send_handler*, ana::timer*);
@@ -77,8 +85,9 @@ class asio_server : public  ana::server,
 
                 void handle_timeout(const boost::system::error_code& ec, ana::send_handler*);
 
-                tcp::socket         socket_;
-                asio_proxy_manager* manager_;
+                tcp::socket           socket_;
+                asio_proxy_manager*   manager_;
+                ana::stats_collector* stats_collector_;
         };
 
     public:
@@ -102,6 +111,8 @@ class asio_server : public  ana::server,
         
         virtual std::string ip_address( ana::net_id ) const;
 
+        virtual const ana::stats* get_client_stats( ana::net_id, ana::stat_type ) const;
+        
         virtual void log_receive( ana::detail::read_buffer buffer );
         
         virtual void start_logging();

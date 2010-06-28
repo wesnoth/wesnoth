@@ -90,7 +90,7 @@ namespace ana
                 }
                 
             private:
-                void reset(boost::system::error_code& ec)
+                void reset(boost::system::error_code& /*ec*/)
                 {
                     packets_in_  = 0;
                     packets_out_ = 0;
@@ -162,6 +162,7 @@ namespace ana
                     case HOURS       : return &hours_stats_;
                     case DAYS        : return &days_stats_;
                 }
+                throw std::runtime_error("Wrong stat stype requested.");
             }
             
             void log_send( detail::shared_buffer buffer )

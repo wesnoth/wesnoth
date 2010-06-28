@@ -327,6 +327,9 @@ namespace ana
         /** Returns the string representing the ip address of the connected client with id net_id. */
         virtual std::string ip_address( net_id ) const = 0;
         
+        /** Returns a pointer to an ana::stats object of a connected client. */
+        virtual const stats* get_client_stats( net_id, stat_type ) const = 0;
+        
         /** Standard destructor. */
         virtual ~server() {}
 
@@ -334,6 +337,7 @@ namespace ana
          * A connected client's representative in the server side.
          */
         struct client_proxy : public virtual detail::listener,
+                              public         network_stats_logger,
                               boost::noncopyable
         {
             /**
