@@ -2,6 +2,7 @@ package wesnoth_eclipse_plugin.builder;
 
 import java.io.File;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 import org.eclipse.core.resources.IFile;
@@ -24,9 +25,9 @@ import wesnoth_eclipse_plugin.utils.AntUtils;
 import wesnoth_eclipse_plugin.utils.GUIUtils;
 import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
 
-public class SampleBuilder extends IncrementalProjectBuilder {
+public class WesnothProjectBuilder extends IncrementalProjectBuilder {
 
-	public static final String BUILDER_ID = "Wesnoth_Eclipse_Plugin.sampleBuilder";
+	public static final String BUILDER_ID = "Wesnoth_Eclipse_Plugin.projectBuilder";
 	private static final String MARKER_TYPE = "Wesnoth_Eclipse_Plugin.configProblem";
 
 	class SampleDeltaVisitor implements IResourceDeltaVisitor {
@@ -125,13 +126,19 @@ public class SampleBuilder extends IncrementalProjectBuilder {
 	void checkResource(IResource resource) {
 		// config files
 		if (resource instanceof IFile &&
-				(resource.getName().endsWith(".cfg") || resource.getName().endsWith(".CFG") )) {
-			try {
+			(resource.getName().toLowerCase(Locale.ENGLISH).endsWith(".cfg")))
+		{
+			try
+			{
 				IFile file = (IFile) resource;
 				deleteMarkers(file);
 
 				PreprocessorActions.preprocessFile(WorkspaceUtils.getPathRelativeToUserDir(file),
 						WorkspaceUtils.getTemporaryFolder(), null, true,false);
+
+				// TODO: here be dragons
+				// - add markers for wmllint, wmlscope
+				// - need a better output from wmltools
 
 				/*
 				IMarker[] resIMarkers = file.findMarkers(MARKER_TYPE, false, IResource.DEPTH_ZERO);

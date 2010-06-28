@@ -7,7 +7,7 @@
          name="Sample Project Builder"
          point="org.eclipse.core.resources.builders">
       <builder hasNature="true">
-         <run class="wesnoth_eclipse_plugin.builder.SampleBuilder"/>
+         <run class="wesnoth_eclipse_plugin.builder.WesnothProjectBuilder"/>
       </builder>
    </extension>
    <extension
@@ -16,7 +16,7 @@
          point="org.eclipse.core.resources.natures">
       <runtime>
          <run
-               class="wesnoth_eclipse_plugin.builder.SampleNature">
+               class="wesnoth_eclipse_plugin.builder.WesnothProjectNature">
          </run>
       </runtime>
       <builder
