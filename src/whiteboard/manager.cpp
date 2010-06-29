@@ -230,7 +230,6 @@ void manager::save_temp_move()
 	assert(!has_planned_unit_map());
 
 	unit_display::move_unit(route_, *fake_unit_, *resources::teams, true);
-	fake_unit_->set_standing(true);
 
 	get_current_side_actions()->queue_move(*selected_unit_, route_.front(), route_.back(), move_arrow_, fake_unit_);
 	move_arrow_.reset();
@@ -252,10 +251,7 @@ void manager::execute_next()
 //TODO: transfer most of this function into side_actions
 void manager::delete_last()
 {
-	unit& unit = get_current_side_actions()->actions().back()->get_unit();
-	get_current_side_actions()->remove_action(get_current_side_actions()->end() - 1);
-	if (!get_first_action_of(unit))
-		unit.set_standing(true);
+		get_current_side_actions()->remove_action(get_current_side_actions()->end() - 1);
 }
 
 //TODO: better to move this function into side_actions

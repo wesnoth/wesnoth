@@ -51,6 +51,11 @@ move::move(unit& subject, const map_location& source_hex, const map_location& ta
 
 move::~move()
 {
+	if (last_action_)
+	{
+		unit_.set_standing(true);
+	}
+
 	if (resources::screen)
 	{
 		if (fake_unit_)
