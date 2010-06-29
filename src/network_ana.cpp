@@ -1,4 +1,4 @@
-/* $Id$ */
+// c/* $Id$ */
 
 /**
  * @file network_ana.hpp
@@ -71,29 +71,33 @@ static lg::log_domain log_network("network");
 class ana_handler : public ana::send_handler
 {
     public:
-        ana_handler( boost::mutex& mutex ) :
+        ana_handler( boost::mutex& mutex, size_t calls = 1 ) :
             mutex_(mutex),
+            target_calls_( calls ),
             error_code_()
         {
-            mutex_.lock();
+            if ( calls > 0 )
+                mutex_.lock();
+        }
+
+        ~ana_handler()
+        {
+            if ( target_calls_ > 0 )
+                throw std::runtime_error("Handler wasn't called enough times.");
         }
 
     private:
-
         virtual void handle_send(ana::error_code error_code, ana::net_id /*client*/)
         {
             error_code_ = error_code;
-            mutex_.unlock();
+            if ( --target_calls_ == 0 )
+                mutex_.unlock();
         }
 
         boost::mutex&   mutex_;
+        size_t          target_calls_;
         ana::error_code error_code_;
 };
-
-// struct net_elem : public ana::server,
-//                   public ana::client
-// {
-// };
 
 class ana_component
 {
@@ -151,10 +155,38 @@ class ana_component
         {
             return boost::get<ana::detail::listener*>(base_);
         }
-        
+
         boost::variant<ana::server*, ana::client*> base_;
 
         bool is_server_;
+};
+
+class clients_manager : public ana::connection_handler
+{
+    public:
+        clients_manager() :
+            ids_()
+        {
+        }
+
+        size_t client_amount() const
+        {
+            return ids_.size();
+        }
+
+    private:
+        virtual void handle_connect(ana::error_code error, ana::net_id client)
+        {
+            if (! error )
+                ids_.insert(client);
+        }
+
+        virtual void handle_disconnect(ana::error_code /*error*/, ana::net_id client)
+        {
+            ids_.erase(client);
+        }
+
+        std::set<ana::net_id> ids_;
 };
 
 class ana_network_manager : public ana::listener_handler,
@@ -162,19 +194,25 @@ class ana_network_manager : public ana::listener_handler,
 {
     public:
         ana_network_manager() :
-            components_()
+            components_(),
+            server_manager()
         {
         }
 
         ana::net_id create_server( )
         {
-            ana_component* server = new ana_component( );
-            components_.insert( server );
+            ana_component* new_component = new ana_component( );
+            components_.insert( new_component );
 
-            server->server()->set_connection_handler( this );
-            server->server()->set_listener_handler( this );
+            ana::server* server = new_component->server();
 
-            return server->server()->id();
+            clients_manager* manager = new clients_manager();
+            server_manager[ server ] = manager;
+
+            server->set_connection_handler( manager );
+            server->set_listener_handler( this );
+
+            return server->id();
         }
 
         network::connection create_client_and_connect(std::string host, int port)
@@ -195,10 +233,10 @@ class ana_network_manager : public ana::listener_handler,
             ana::net_id id( connection_num );
 
             std::set<ana_component*>::iterator it;
-            
+
             it = std::find_if( components_.begin(), components_.end(),
                                boost::bind(&ana_component::get_id, _1) == id );
-                            
+
             if ( it != components_.end())
                 return (*it)->get_stats();
 
@@ -214,7 +252,7 @@ class ana_network_manager : public ana::listener_handler,
 
             it = std::find_if( components_.begin(), components_.end(),
                                boost::bind(&ana_component::get_id, _1) == id );
-                            
+
             if ( it != components_.end())
                 return (*it)->server()->run( ss.str() );
         }
@@ -240,71 +278,75 @@ class ana_network_manager : public ana::listener_handler,
             return components_.size(); // TODO:check if this is the intention, guessing not
         }
 
-        size_t send_all( const config& /*cfg*/, bool /*zipped */)
+        size_t send_all( const config& cfg, bool zipped )
         {
-            throw std::runtime_error("TODO: send_all not implemented.");
-/*
             std::stringstream out;
             config_writer cfg_writer(out, zipped);
             cfg_writer.write(cfg);
 
-            std::map<ana::net_id, ana::server*>::iterator it;
+            std::set<ana_component*>::iterator it;
 
-            boost::mutex mutex;
-            for (it = servers_.begin(); it != servers_.end(); ++it)
+            for (it = components_.begin(); it != components_.end(); ++it)
             {
-                ana_handler handler( mutex );
-                it->second->send_all( ana::buffer( out.str() ), &handler, ana::ZERO_COPY);
+                if ( (*it)->is_server() )
+                {
+                    boost::mutex mutex;
+                    const size_t necessary_calls = server_manager[ (*it)->server() ]->client_amount();
+
+                    ana_handler handler( mutex, necessary_calls );
+
+                    (*it)->server()->send_all( ana::buffer( out.str() ), &handler, ana::ZERO_COPY);
+
+                    mutex.lock(); // the handler will release the mutex after necessary_calls calls
+                }
             }
-            mutex.lock(); // this won't work with multiple sends
             return out.str().size();
-*/
         }
 
-        size_t send( network::connection /*id*/, const config& /*cfg*/, bool /*zipped */)
+        size_t send( network::connection connection_num , const config& cfg, bool zipped )
         {
-            throw std::runtime_error("TODO: send not implemented.");
-/*
+            ana::net_id id( connection_num );
+
             std::stringstream out;
             config_writer cfg_writer(out, zipped);
             cfg_writer.write(cfg);
 
-            std::map<ana::net_id, ana::server*>::iterator it;
+            std::set<ana_component*>::iterator it;
 
-            boost::mutex mutex;
-            for (it = servers_.begin(); it != servers_.end(); ++it)
+            for (it = components_.begin(); it != components_.end(); ++it)
             {
-                ana_handler handler( mutex );
-                it->second->send_one( ana::net_id( id ), ana::buffer( out.str() ), &handler, ana::ZERO_COPY);
+                if ( (*it)->is_server() )
+                {
+                    boost::mutex mutex;
+                    ana_handler handler( mutex );
+                    (*it)->server()->send_one( id, ana::buffer( out.str() ), &handler, ana::ZERO_COPY);
+                    mutex.lock(); // this should work just fine
+                }
             }
-            mutex.lock();
             return out.str().size();
-*/
         }
 
     private:
-        virtual void handle_connect(ana::error_code /*error*/, ana::net_id /*client*/)
-        {
-            /*
-            if (! error )
-                connected_clients_.insert(client);
-            */
-        }
-
-        virtual void handle_disconnect(ana::error_code /*error*/, ana::net_id /*client*/)
-        {
-            /*
-            connected_clients_.erase(client);
-            */
-        }
-
         virtual void handle_message( ana::error_code /*error*/,
                                      ana::net_id     /*client*/,
                                      ana::detail::read_buffer /*buffer*/)
         {
         }
 
+        // Only for client connection/disconnection 
+        virtual void handle_connect(ana::error_code error, ana::net_id /*client*/)
+        {
+            if ( error )
+                throw std::runtime_error("Error connecting to server.");
+        }
+
+        virtual void handle_disconnect(ana::error_code /*error*/, ana::net_id /*client*/)
+        {
+//             ids_.erase(client);
+        }
+
         std::set< ana_component* > components_;
+        std::map< ana::server*, const clients_manager* > server_manager;
 };
 
 namespace
