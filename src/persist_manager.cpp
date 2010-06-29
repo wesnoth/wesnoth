@@ -82,4 +82,4 @@ persist_context &persist_manager::get_context(const std::string &ns)
 	if (ret->get_node() != ns)
 		ret->set_node(name.descendants_);
 	return *ret;
-};
+}
