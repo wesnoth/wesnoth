@@ -17,6 +17,8 @@
  * See the COPYING file for more details.
  */
 
+#include <boost/variant.hpp>
+
 #include "ana/api/ana.hpp"
 #include "network.hpp"
 
@@ -75,9 +77,9 @@ class ana_handler : public ana::send_handler
         {
             mutex_.lock();
         }
-        
+
     private:
-        
+
         virtual void handle_send(ana::error_code error_code, ana::net_id /*client*/)
         {
             error_code_ = error_code;
@@ -88,110 +90,166 @@ class ana_handler : public ana::send_handler
         ana::error_code error_code_;
 };
 
+// struct net_elem : public ana::server,
+//                   public ana::client
+// {
+// };
+
+class ana_component
+{
+    public:
+        ana_component( ) :
+            base_( ana::server::create() ),
+            is_server_( true )
+        {
+        }
+
+        ana_component( const std::string& host, const std::string& port) :
+            base_( ana::client::create(host,port) ),
+            is_server_( false )
+        {
+        }
+
+        ana::server* server() const
+        {
+            if( ! is_server_ )
+                throw std::runtime_error("Component is not a server.");
+
+            return boost::get<ana::server*>(base_);
+        }
+
+        ana::client* client() const
+        {
+            if( is_server_ )
+                throw std::runtime_error("Component is not a client.");
+
+            return boost::get<ana::client*>(base_);
+        }
+
+        bool is_server() const
+        {
+            return is_server_;
+        }
+
+        bool is_client() const
+        {
+            return ! is_server_;
+        }
+
+        ana::net_id get_id() const
+        {
+            return listener()->id();
+        }
+
+        const ana::stats* get_stats() const
+        {
+            return listener()->get_stats();
+        }
+
+    private:
+        const ana::detail::listener* listener() const
+        {
+            return boost::get<ana::detail::listener*>(base_);
+        }
+        
+        boost::variant<ana::server*, ana::client*> base_;
+
+        bool is_server_;
+};
+
 class ana_network_manager : public ana::listener_handler,
-                            public ana::connection_handler  
+                            public ana::connection_handler
 {
     public:
         ana_network_manager() :
-            servers_( ),
-            clients_( ),
-            connected_clients_()
+            components_()
         {
         }
 
         ana::net_id create_server( )
         {
-            ana::server* server = ana::server::create();
+            ana_component* server = new ana_component( );
+            components_.insert( server );
 
-            server->set_connection_handler( this );
-            server->set_listener_handler( this );
+            server->server()->set_connection_handler( this );
+            server->server()->set_listener_handler( this );
 
-            servers_[ server->id() ] = server;
-            return server->id();
+            return server->server()->id();
         }
 
-        ana::net_id create_client_and_connect(std::string host, int port)
+        network::connection create_client_and_connect(std::string host, int port)
         {
             std::stringstream ss;
             ss << port;
-            
-            ana::client* client = ana::client::create(host, ss.str() );
-            clients_[ client->id() ] = client;
-            client->connect( this );
-            
-            return client->id();
+
+            ana_component* client = new ana_component( host, ss.str() );
+            components_.insert(client);
+
+            client->client()->connect( this );
+
+            return network::connection( client->client()->id() );
         }
 
         const ana::stats* get_stats( network::connection connection_num )
         {
             ana::net_id id( connection_num );
+
+            std::set<ana_component*>::iterator it;
             
-            {
-                std::map<ana::net_id, ana::server*>::iterator it;
-                
-                it = servers_.find( id );
-                
-                if ( it != servers_.end() )
-                    return it->second->get_stats( ana::ACCUMULATED );
-            }
+            it = std::find_if( components_.begin(), components_.end(),
+                               boost::bind(&ana_component::get_id, _1) == id );
+                            
+            if ( it != components_.end())
+                return (*it)->get_stats();
 
-            {
-                std::map<ana::net_id, ana::client*>::iterator it;
-                
-                it = clients_.find( id );
-                
-                if ( it != clients_.end() )
-                    return it->second->get_stats( ana::ACCUMULATED );
-            }
-            
-            {
-                std::map<ana::net_id, ana::server*>::iterator it;
-                
-                for( it = servers_.begin(); it != servers_.end(); ++it)
-                {
-                    const ana::stats* stats = it->second->get_client_stats( id, ana::ACCUMULATED );
-
-                    if ( stats != NULL )
-                        return stats;
-                }
-            }
-
-            throw std::runtime_error("Wrong connection id to get stats from.");
+            return NULL;
         }
 
         void run_server(ana::net_id id, int port)
         {
             std::stringstream ss;
             ss << port;
-            servers_[ id ]->run( ss.str() ); //check with find to see if its defined?
+
+            std::set<ana_component*>::iterator it;
+
+            it = std::find_if( components_.begin(), components_.end(),
+                               boost::bind(&ana_component::get_id, _1) == id );
+                            
+            if ( it != components_.end())
+                return (*it)->server()->run( ss.str() );
         }
 
         std::string ip_address( network::connection id )
         {
-            std::map<ana::net_id, ana::server*>::iterator it;
-            
-            for (it = servers_.begin(); it != servers_.end(); ++it)
+            std::set<ana_component*>::iterator it;
+
+            for (it = components_.begin(); it != components_.end(); ++it)
             {
-                const std::string ip = (it->second)->ip_address( ana::net_id( id ) );
-                if  (ip != "")
-                    return ip;
+                if ( (*it)->is_server() )
+                {
+                    const std::string ip = (*it)->server()->ip_address( ana::net_id( id ) );
+                    if  (ip != "")
+                        return ip;
+                }
             }
             return "";
         }
 
         size_t number_of_connections() const
         {
-            return connected_clients_.size();
+            return components_.size(); // TODO:check if this is the intention, guessing not
         }
 
-        size_t send_all( const config& cfg, bool zipped )
+        size_t send_all( const config& /*cfg*/, bool /*zipped */)
         {
+            throw std::runtime_error("TODO: send_all not implemented.");
+/*
             std::stringstream out;
             config_writer cfg_writer(out, zipped);
             cfg_writer.write(cfg);
-            
+
             std::map<ana::net_id, ana::server*>::iterator it;
-            
+
             boost::mutex mutex;
             for (it = servers_.begin(); it != servers_.end(); ++it)
             {
@@ -200,16 +258,19 @@ class ana_network_manager : public ana::listener_handler,
             }
             mutex.lock(); // this won't work with multiple sends
             return out.str().size();
+*/
         }
 
-        size_t send( network::connection id, const config& cfg, bool zipped )
+        size_t send( network::connection /*id*/, const config& /*cfg*/, bool /*zipped */)
         {
+            throw std::runtime_error("TODO: send not implemented.");
+/*
             std::stringstream out;
             config_writer cfg_writer(out, zipped);
             cfg_writer.write(cfg);
 
             std::map<ana::net_id, ana::server*>::iterator it;
-            
+
             boost::mutex mutex;
             for (it = servers_.begin(); it != servers_.end(); ++it)
             {
@@ -218,29 +279,32 @@ class ana_network_manager : public ana::listener_handler,
             }
             mutex.lock();
             return out.str().size();
+*/
         }
 
     private:
-        virtual void handle_connect(ana::error_code error, ana::net_id client)
+        virtual void handle_connect(ana::error_code /*error*/, ana::net_id /*client*/)
         {
+            /*
             if (! error )
                 connected_clients_.insert(client);
+            */
         }
-        
-        virtual void handle_disconnect(ana::error_code /*error*/, ana::net_id client)
-        {
-            connected_clients_.erase(client);
-        }
-        
-        
-        virtual void handle_message( ana::error_code /*error*/, ana::net_id /*client*/, ana::detail::read_buffer /*buffer*/)
-        {
-        }
-        
 
-        std::map<ana::net_id, ana::server*> servers_;
-        std::map<ana::net_id, ana::client*> clients_;
-        std::set<ana::net_id>               connected_clients_;
+        virtual void handle_disconnect(ana::error_code /*error*/, ana::net_id /*client*/)
+        {
+            /*
+            connected_clients_.erase(client);
+            */
+        }
+
+        virtual void handle_message( ana::error_code /*error*/,
+                                     ana::net_id     /*client*/,
+                                     ana::detail::read_buffer /*buffer*/)
+        {
+        }
+
+        std::set< ana_component* > components_;
 };
 
 namespace
@@ -370,7 +434,7 @@ namespace network {
         if ( create_server != NO_SERVER )
         {
             ana::net_id server_id = ana_manager.create_server( );
-            
+
             ana_manager.run_server( server_id, port);
         }
     }
@@ -444,6 +508,8 @@ namespace network {
                             unsigned int      /*timeout*/,
                             bandwidth_in_ptr* /*bandwidth_in*/)
     {
+//         connection conn = ana_manager.receive_data( connection_num );
+
         throw std::runtime_error("TODO:Not implemented receive_data0");
     }
 
@@ -638,32 +704,15 @@ namespace network {
         return ana_manager.ip_address( connection_num );
     }
 
-    statistics get_send_stats(connection handle)
+    statistics get_send_stats(connection /*handle*/)
     {
-        const ana::stats* stats = ana_manager.get_stats( handle );
-        
-        statistics s;
-        
-        s.total = stats->bytes_out();
-        //s.current = ?
-        //s.current_max = ?
-        
-        return s;
-        //TODO: check validity of this
-    }
-    
-    statistics get_receive_stats(connection handle)
-    {
-        const ana::stats* stats = ana_manager.get_stats( handle );
-        
-        statistics s;
-        
-        s.total = stats->bytes_in();
-        //s.current = ?
-        //s.current_max = ?
-        
-        return s;
-        //TODO: check validity of this
+        throw std::runtime_error("TODO:Not implemented get_send_stats");
+//         return ana_manager.get_send_stats( handle );
     }
 
-} // end namespace network
+    statistics get_receive_stats(connection /*handle*/)
+    {
+        throw std::runtime_error("TODO:Not implemented get_receive_stats");
+    }
+
+}// end namespace network

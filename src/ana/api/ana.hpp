@@ -119,16 +119,38 @@ namespace ana
         virtual void handle_disconnect(error_code, net_id) = 0;
     };
 
+    struct network_stats_logger
+    {
+        /** Start logging network events for statistics collection. */
+        virtual void start_logging() = 0;
+
+        /** Stop logging network events (disables statistics collection.) */
+        virtual void stop_logging()  = 0;
+
+        /**
+         * Get the associated collected stats as per a stat_type.
+         *
+         * @param type : stat_type to be collected ( ACCUMULATED, SECONDS, MINUTES, HOURS, DAYS )
+         *
+         * @returns A const pointer to a stats object holding the stats.
+         *
+         * \sa stats
+         * \sa stat_type
+         */
+        virtual const stats* get_stats( stat_type type = ACCUMULATED ) const = 0;
+    };
+
     /** Used for implementation purposes. */
     namespace detail
     {
         /** Last issued net_id.  */ 
         static net_id last_net_id_ = 0;
 
+
         /**
          * Base class for any network entity that handles incoming messages.
          */
-        class listener
+        class listener : public virtual network_stats_logger
         {
             public:
                 /**
@@ -198,27 +220,6 @@ namespace ana
     };
     //@}
 
-    struct network_stats_logger
-    {
-        /** Start logging network events for statistics collection. */
-        virtual void start_logging() = 0;
-        
-        /** Stop logging network events (disables statistics collection.) */
-        virtual void stop_logging()  = 0;
-        
-        /**
-         * Get the associated collected stats as per a stat_type.
-         *
-         * @param type : stat_type to be collected ( ACCUMULATED, SECONDS, MINUTES, HOURS, DAYS )
-         *
-         * @returns A const pointer to a stats object holding the stats.
-         * 
-         * \sa stats
-         * \sa stat_type
-         */
-        virtual const stats* get_stats( stat_type type ) const = 0;
-    };
-
     /** @name Main classes.
      *
      * Main classes in ana.
@@ -228,8 +229,7 @@ namespace ana
      * A network server. An object of this type can handle several connected clients.
      */
     struct server : public virtual detail::listener,
-                    public         detail::timed_sender,
-                    public         network_stats_logger
+                    public         detail::timed_sender
     {
         /**
          * Creates an ana server.
@@ -326,10 +326,10 @@ namespace ana
 
         /** Returns the string representing the ip address of the connected client with id net_id. */
         virtual std::string ip_address( net_id ) const = 0;
-        
+
         /** Returns a pointer to an ana::stats object of a connected client. */
         virtual const stats* get_client_stats( net_id, stat_type ) const = 0;
-        
+
         /** Standard destructor. */
         virtual ~server() {}
 
@@ -337,7 +337,6 @@ namespace ana
          * A connected client's representative in the server side.
          */
         struct client_proxy : public virtual detail::listener,
-                              public         network_stats_logger,
                               boost::noncopyable
         {
             /**
@@ -355,10 +354,10 @@ namespace ana
 
             /** Standard destructor. */
             virtual ~client_proxy() {}
-            
+
             /** Returns the string representing the ip address of the connected client. */
             virtual std::string ip_address() const = 0;
-          
+
             // Allow server objects to invoke run_listener directly.
             using detail::listener::run_listener;
         };
@@ -371,8 +370,7 @@ namespace ana
      * \sa timed_sender
      */
     struct client : public virtual detail::listener,
-                    public         detail::timed_sender,
-                    public         network_stats_logger
+                    public         detail::timed_sender
     {
         /**
          * Creates a client.
@@ -423,7 +421,7 @@ namespace ana
          * \sa send_handler
          */
         virtual void send(boost::asio::const_buffer buffer, send_handler* handler, send_type type = COPY_BUFFER ) = 0;
-      
+
         /** Standard destructor. */
         virtual ~client() {}
     };
