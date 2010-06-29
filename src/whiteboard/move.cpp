@@ -80,7 +80,7 @@ bool move::execute()
 	arrow_->set_alpha(ALPHA_HIGHLIGHT);
 
 	const arrow_path_t& arrow_path = arrow_->get_path();
-	static const bool show_move = false;
+	static const bool show_move = true;
 	map_location final_location;
 	int steps_done = ::move_unit(NULL, arrow_path, &recorder, resources::undo_stack, show_move, &final_location,
 			get_current_team().auto_shroud_updates());
