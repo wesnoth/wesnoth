@@ -270,6 +270,7 @@ void manager::execute_next()
 	//TODO: properly handle movement points
 	get_current_side_actions()->set_future_view(false);
 	get_current_side_actions()->execute_next();
+	get_current_side_actions()->set_future_view(true);
 }
 
 //TODO: transfer most of this function into side_actions
