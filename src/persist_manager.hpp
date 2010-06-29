@@ -23,7 +23,7 @@ class persist_manager {
 		context_map contexts_;
 	public:
 		persist_manager() : in_transaction_(false),contexts_() {}
-		~persist_manager() {
+		virtual ~persist_manager() {
 			for (context_map::iterator i = contexts_.begin(); i != contexts_.end(); i++)
 				delete (i->second);
 		}
