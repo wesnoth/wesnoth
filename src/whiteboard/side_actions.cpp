@@ -21,6 +21,7 @@
 #include "move.hpp"
 
 #include "foreach.hpp"
+#include <set>
 
 namespace wb
 {
@@ -114,6 +115,27 @@ void side_actions::remove_action(action_ptr action)
 				actions_.erase(position);
 				break;
 			}
+		}
+	}
+}
+
+void side_actions::set_future_view(bool future_view)
+{
+	std::set<unit const*> seen_unit_list;
+	action_set::reverse_iterator it;
+	for (it = actions_.rbegin(); it != actions_.rend(); ++it)
+	{
+		action_ptr action = *it;
+		action->set_future_display(future_view);
+		unit const* target_unit = &action->get_unit();
+		if (seen_unit_list.find(target_unit) == seen_unit_list.end()) // last action of this unit
+		{
+			seen_unit_list.insert(target_unit);
+			action->set_last_action(true);
+		}
+		else // not the last action of this unit
+		{
+			action->set_last_action(false);
 		}
 	}
 }

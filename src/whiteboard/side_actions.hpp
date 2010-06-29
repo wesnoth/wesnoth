@@ -104,6 +104,8 @@ public:
 	 */
 	void remove_action(action_ptr action);
 
+	void set_future_view(bool future_view);
+
 private:
 	/**
 	 * Utility function to move actions around the queue.

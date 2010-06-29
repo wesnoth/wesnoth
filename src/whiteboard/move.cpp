@@ -43,7 +43,9 @@ move::move(unit& subject, const map_location& source_hex, const map_location& ta
   orig_hex_(source_hex),
   dest_hex_(target_hex),
   arrow_(arrow),
-  fake_unit_(fake_unit)
+  fake_unit_(fake_unit),
+  future_display_(false),
+  last_action_(false)
 {
 }
 
@@ -150,6 +152,32 @@ bool move::is_related_to(const unit& unit) const
 {
 	bool is_related = &unit_ == &unit;
 	return is_related;
+}
+
+void move::update_display()
+{
+	if(future_display_)
+	{
+		if (last_action_)
+		{
+			fake_unit_->set_standing(true);
+		}
+		else
+		{
+			fake_unit_->set_disabled_ghosted(false);
+		}
+	}
+	else // not future display
+	{
+		if (last_action_)
+		{
+			fake_unit_->set_ghosted(false);
+		}
+		else
+		{
+			fake_unit_->set_disabled_ghosted(false);
+		}
+	}
 }
 
 } // end namespace wb

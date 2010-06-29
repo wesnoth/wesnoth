@@ -79,6 +79,12 @@ public:
 
 	/** Return the unit targeted by this action. */
 	virtual unit& get_unit() = 0;
+
+	virtual void set_future_display(bool future_display) = 0;
+
+	virtual void set_last_action(bool last_action) = 0;
+
+	virtual void update_display() = 0;
 };
 
 } // end namespace wb
