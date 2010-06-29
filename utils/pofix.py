@@ -188,7 +188,9 @@ stringfixes = {
 ("It's of human design", "It’s of human design"),
 ("We'll have a guest soon", "We’ll have a guest soon"),
 ("Without Linaera's help", "Without Linaera’s help"),
-("The Ka'lian has deliberated", "The Ka’lian has deliberated")
+("The Ka'lian has deliberated", "The Ka’lian has deliberated"),
+("they're tired and afraid", "they’re tired and afraid"),
+("I'm... disturbed", "I’m... disturbed"),
 ),
 
 "wesnoth-did" : (
