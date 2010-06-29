@@ -104,7 +104,18 @@ public:
 	 */
 	void remove_action(action_ptr action);
 
+	/**
+	 * future_view = true : units are shown at their future positions
+	 * future_view = false: units' future positions are shown with ghosts
+	 */
 	void set_future_view(bool future_view);
+
+	/**
+	 * Determines which is the last action of each unit, and updates the actions' display
+	 * accordingly.
+	 */
+	void update_last_action_display();
+
 
 private:
 	/**

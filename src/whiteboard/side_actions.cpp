@@ -26,7 +26,8 @@
 namespace wb
 {
 
-side_actions::side_actions(): actions_()
+side_actions::side_actions()
+	: actions_()
 {
 }
 
@@ -47,6 +48,7 @@ void side_actions::execute_next()
 		if (finished)
 		{
 			actions_.pop_front();
+			update_last_action_display();
 		}
 
 		//TODO: Validate remaining actions here
@@ -70,6 +72,7 @@ void side_actions::insert_move(unit& subject, const map_location& source_hex, co
 	action_ptr action(new move(subject, source_hex, target_hex, arrow, fake_unit));
 	assert(index < end());
 	actions_.insert(actions_.begin() + index, action);
+	update_last_action_display();
 }
 
 void side_actions::queue_move(unit& subject, const map_location& source_hex, const map_location& target_hex,
@@ -99,6 +102,7 @@ void side_actions::remove_action(size_t index)
 		if (position < actions_.end())
 		{
 			actions_.erase(position);
+			update_last_action_display();
 		}
 	}
 }
@@ -113,6 +117,7 @@ void side_actions::remove_action(action_ptr action)
 			if (*position == action)
 			{
 				actions_.erase(position);
+				update_last_action_display();
 				break;
 			}
 		}
@@ -121,12 +126,19 @@ void side_actions::remove_action(action_ptr action)
 
 void side_actions::set_future_view(bool future_view)
 {
+	foreach (action_ptr action, actions_)
+	{
+		action->set_future_display(future_view);
+	}
+}
+
+void side_actions::update_last_action_display()
+{
 	std::set<unit const*> seen_unit_list;
 	action_set::reverse_iterator it;
 	for (it = actions_.rbegin(); it != actions_.rend(); ++it)
 	{
 		action_ptr action = *it;
-		action->set_future_display(future_view);
 		unit const* target_unit = &action->get_unit();
 		if (seen_unit_list.find(target_unit) == seen_unit_list.end()) // last action of this unit
 		{

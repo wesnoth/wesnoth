@@ -140,6 +140,7 @@ void manager::on_unit_select(unit& unit)
 {
 	erase_temp_move();
 	remove_highlight();
+	get_current_side_actions()->set_future_view(true);
 	action_set actions = get_current_side_actions()->actions();
 	highlight_visitor highlighter(true);
 	foreach(action_ptr action, actions)
@@ -266,11 +267,12 @@ void manager::save_temp_move()
 void manager::execute_next()
 {
 	//TODO: catch end_turn_exception somewhere here?
-	//TODO: switch display to "prototype A", i.e. dst as ghost
 	//TODO: properly handle movement points
+	get_current_side_actions()->set_future_view(false);
 	get_current_side_actions()->execute_next();
 }
 
+//TODO: transfer most of this function into side_actions
 void manager::delete_last()
 {
 	unit& unit = get_current_side_actions()->actions().back()->get_unit();
@@ -279,6 +281,7 @@ void manager::delete_last()
 		unit.set_standing(true);
 }
 
+//TODO: better to move this function into side_actions
 action_ptr manager::get_first_action_of(const unit& unit) const
 {
 	find_visitor finder;
