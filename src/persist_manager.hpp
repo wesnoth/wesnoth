@@ -12,6 +12,9 @@
    See the COPYING file for more details.
 */
 
+#ifndef PERSIST_MANAGER_HPP_INCLUDED
+#define PERSIST_MANAGER_HPP_INCLUDED
+
 #include "config.hpp"
 #include "persist_context.hpp"
 
@@ -38,3 +41,5 @@ class persist_manager {
 		bool end_transaction();
 		bool cancel_transaction();
 };
+
+#endif
