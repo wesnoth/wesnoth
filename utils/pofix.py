@@ -107,6 +107,13 @@ stringfixes = {
 ("Mar'Ildian", "Mar’Ildian"),
 ("Marra Di'lek", "Marra Di’lek"),
 ("Bzz'Kza", "Bzz’Kza"),
+("unit's", "unit’s"),
+("side's", "side’s"),
+("man's", "man’s"),
+("player's", "player’s"),
+("elf's", "elf’s"),
+("turn's", "turn’s"),
+("it's best to click the", "it’s best to click the"),
 
 # Fix capitalization
 # conversion added in 1.9.0-svn
