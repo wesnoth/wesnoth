@@ -228,29 +228,6 @@ void manager::save_temp_move()
 	ignore_mouse_ = true;
 
 	assert(!has_planned_unit_map());
-	// Ghost either the real unit, or the fake unit of the last move of this unit if the move exists.
-	bool action_found = false;
-	const action_set& actions = get_current_side_actions()->actions();
-	//FIXME: could use a reverse iterator here
-	action_set::const_iterator action;
-	for (action = actions.end() - 1; ((action != actions.begin() - 1) && !action_found ); --action)
-	{
-		if ((**action).is_related_to(*selected_unit_))
-		{
-			boost::shared_ptr<move> tempmove = boost::dynamic_pointer_cast<move>(*action);
-			if (tempmove)
-			{
-				tempmove->get_fake_unit()->set_disabled_ghosted(false);
-				action_found = true;
-			}
-		}
-	}
-	if (!action_found)
-	{
-		selected_unit_->set_ghosted(false);
-	}
-
-	//scoped_planned_unit_map wb_modifiers;
 
 	unit_display::move_unit(route_, *fake_unit_, *resources::teams, true);
 	fake_unit_->set_standing(true);
@@ -258,7 +235,6 @@ void manager::save_temp_move()
 	get_current_side_actions()->queue_move(*selected_unit_, route_.front(), route_.back(), move_arrow_, fake_unit_);
 	move_arrow_.reset();
 	fake_unit_.reset();
-	//selected_unit_->set_standing(true);
 	selected_unit_ = NULL;
 
 	ignore_mouse_ = false;

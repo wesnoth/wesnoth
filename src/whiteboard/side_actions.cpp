@@ -80,6 +80,7 @@ void side_actions::queue_move(unit& subject, const map_location& source_hex, con
 {
 	action_ptr action(new move(subject, source_hex, target_hex, arrow, fake_unit));
 	actions_.push_back(action);
+	update_last_action_display();
 }
 
 void side_actions::move_earlier(size_t index, size_t increment)

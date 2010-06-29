@@ -44,8 +44,8 @@ move::move(unit& subject, const map_location& source_hex, const map_location& ta
   dest_hex_(target_hex),
   arrow_(arrow),
   fake_unit_(fake_unit),
-  future_display_(false),
-  last_action_(false)
+  future_display_(true),
+  last_action_(true)
 {
 }
 
@@ -158,6 +158,7 @@ void move::update_display()
 {
 	if(future_display_)
 	{
+		unit_.set_ghosted(false);
 		if (last_action_)
 		{
 			fake_unit_->set_standing(true);
@@ -169,6 +170,7 @@ void move::update_display()
 	}
 	else // not future display
 	{
+		unit_.set_standing(true);
 		if (last_action_)
 		{
 			fake_unit_->set_ghosted(false);
