@@ -229,6 +229,7 @@ void manager::save_temp_move()
 
 	assert(!has_planned_unit_map());
 
+	selected_unit_->set_ghosted(false); //FIXME: doesn't take effect until after the move animation, boucman: help!
 	unit_display::move_unit(route_, *fake_unit_, *resources::teams, true);
 
 	get_current_side_actions()->queue_move(*selected_unit_, route_.front(), route_.back(), move_arrow_, fake_unit_);
