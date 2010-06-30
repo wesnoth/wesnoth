@@ -116,6 +116,8 @@ public:
 	 */
 	void update_last_action_display();
 
+	void validate_actions();
+
 
 private:
 	/**

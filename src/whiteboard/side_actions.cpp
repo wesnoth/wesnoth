@@ -19,8 +19,10 @@
 #include "side_actions.hpp"
 #include "action.hpp"
 #include "move.hpp"
+#include "validate_visitor.hpp"
 
 #include "foreach.hpp"
+#include "resources.hpp"
 #include <set>
 
 namespace wb
@@ -51,7 +53,7 @@ void side_actions::execute_next()
 			update_last_action_display();
 		}
 
-		//TODO: Validate remaining actions here
+		validate_actions();
 	}
 }
 
@@ -63,7 +65,7 @@ void side_actions::execute(action_ptr action)
 	{
 		remove_action(action);
 	}
-	//TODO: Validate remaining actions here
+	validate_actions();
 }
 
 void side_actions::insert_move(unit& subject, const map_location& source_hex, const map_location& target_hex, size_t index, boost::shared_ptr<arrow> arrow,
@@ -72,6 +74,7 @@ void side_actions::insert_move(unit& subject, const map_location& source_hex, co
 	action_ptr action(new move(subject, source_hex, target_hex, arrow, fake_unit));
 	assert(index < end());
 	actions_.insert(actions_.begin() + index, action);
+	validate_actions();
 	update_last_action_display();
 }
 
@@ -103,6 +106,7 @@ void side_actions::remove_action(size_t index)
 		if (position < actions_.end())
 		{
 			actions_.erase(position);
+			validate_actions();
 			update_last_action_display();
 		}
 	}
@@ -118,6 +122,7 @@ void side_actions::remove_action(action_ptr action)
 			if (*position == action)
 			{
 				actions_.erase(position);
+				validate_actions();
 				update_last_action_display();
 				break;
 			}
@@ -150,6 +155,15 @@ void side_actions::update_last_action_display()
 		{
 			action->set_last_action(false);
 		}
+	}
+}
+
+void side_actions::validate_actions()
+{
+	validate_visitor validator(*resources::units);
+	foreach(action_ptr action, actions_)
+	{
+		action->accept(validator);
 	}
 }
 
@@ -187,6 +201,7 @@ void side_actions::move_in_queue(size_t index, int increment)
 	//be careful, previous iterators have just been invalidated by erase()
 	action_set::iterator destination = after + increment;
 	actions_.insert(destination, action);
+	validate_actions();
 }
 
 

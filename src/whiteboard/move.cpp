@@ -187,4 +187,20 @@ void move::update_display()
 	}
 }
 
+void move::set_valid(bool valid)
+{
+	const std::string ARROW_STYLE_VALID = "";
+	const std::string ARROW_STYLE_INVALID = "invalid";
+
+	valid_ = valid;
+	if (valid_)
+	{
+		arrow_->set_style(ARROW_STYLE_VALID);
+	}
+	else
+	{
+		arrow_->set_style(ARROW_STYLE_INVALID);
+	}
+}
+
 } // end namespace wb

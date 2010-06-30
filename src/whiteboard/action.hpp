@@ -84,7 +84,15 @@ public:
 
 	virtual void set_last_action(bool last_action) = 0;
 
+	//TODO: rename this if it ends up only refreshing the future and last action display
 	virtual void update_display() = 0;
+
+	/**
+	 * Indicates to an action whether its status is invalid, and whether it should change its
+	 * display (and avoid any change to the game state) accordingly
+	 */
+	virtual void set_valid(bool valid) = 0;
+	virtual bool is_valid() = 0;
 };
 
 } // end namespace wb

@@ -37,6 +37,7 @@ namespace wb {
  */
 class move : public action, public boost::enable_shared_from_this<move>
 {
+	friend class validate_visitor;
 public: //constants
 	static const double ALPHA_HIGHLIGHT;
 	static const double ALPHA_NORMAL;
@@ -69,6 +70,9 @@ public:
 	virtual void set_last_action(bool last_action) {last_action_ = last_action; update_display(); }
 	virtual void update_display();
 
+	virtual void set_valid(bool valid);
+	virtual bool is_valid() { return valid_; }
+
 private:
 	unit & unit_;
 	map_location orig_hex_;
@@ -79,6 +83,8 @@ private:
 
 	bool future_display_;
 	bool last_action_;
+
+	bool valid_;
 };
 
 } // end namespace wb
