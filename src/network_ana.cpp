@@ -67,14 +67,20 @@ static lg::log_domain log_network("network");
 #define ERR_NW LOG_STREAM(err, log_network)
 // Only warnings and not errors to avoid DoS by log flooding
 
+struct send_stats_logger
+{
+    virtual void update_send_stats( size_t ) = 0;
+};
 
 class ana_handler : public ana::send_handler
 {
     public:
-        ana_handler( boost::mutex& mutex, size_t calls = 1 ) :
+        ana_handler( boost::mutex& mutex, send_stats_logger* logger, size_t buf_size, size_t calls = 1 ) :
             mutex_(mutex),
             target_calls_( calls ),
-            error_code_()
+            error_code_(),
+            logger_( logger ),
+            buf_size_( buf_size )
         {
             if ( calls > 0 )
                 mutex_.lock();
@@ -89,29 +95,51 @@ class ana_handler : public ana::send_handler
     private:
         virtual void handle_send(ana::error_code error_code, ana::net_id /*client*/)
         {
+            if ( ! error_code )
+                logger_->update_send_stats( buf_size_ );
+
             error_code_ = error_code;
+
             if ( --target_calls_ == 0 )
                 mutex_.unlock();
         }
 
-        boost::mutex&   mutex_;
-        size_t          target_calls_;
-        ana::error_code error_code_;
+        boost::mutex&      mutex_;
+        size_t             target_calls_;
+        ana::error_code    error_code_;
+        send_stats_logger* logger_;
+        size_t             buf_size_;
 };
 
-class ana_component
+class ana_component : public send_stats_logger
 {
     public:
         ana_component( ) :
             base_( ana::server::create() ),
-            is_server_( true )
+            is_server_( true ),
+            send_stats_(),
+            receive_stats_()
         {
+            server()->start_logging();
         }
 
         ana_component( const std::string& host, const std::string& port) :
             base_( ana::client::create(host,port) ),
-            is_server_( false )
+            is_server_( false ),
+            send_stats_(),
+            receive_stats_()
         {
+            client()->start_logging();
+        }
+
+        network::statistics get_send_stats() const
+        {
+            return send_stats_;
+        }
+
+        network::statistics get_receive_stats() const
+        {
+            return receive_stats_;
         }
 
         ana::server* server() const
@@ -150,7 +178,21 @@ class ana_component
             return listener()->get_stats();
         }
 
+        void update_receive_stats( size_t buffer_size )
+        {
+            receive_stats_.current_max = ( buffer_size > receive_stats_.current_max) ? buffer_size : receive_stats_.current_max;
+            receive_stats_.total      += buffer_size;
+            receive_stats_.current     = buffer_size;
+        }
+
     private:
+
+        virtual void update_send_stats( size_t buffer_size)
+        {
+            send_stats_.current_max = ( buffer_size > send_stats_.current_max) ? buffer_size : send_stats_.current_max;
+            send_stats_.total      += buffer_size;
+            send_stats_.current     = buffer_size;
+        }
         const ana::detail::listener* listener() const
         {
             return boost::get<ana::detail::listener*>(base_);
@@ -159,6 +201,9 @@ class ana_component
         boost::variant<ana::server*, ana::client*> base_;
 
         bool is_server_;
+
+        network::statistics send_stats_;
+        network::statistics receive_stats_;
 };
 
 class clients_manager : public ana::connection_handler
@@ -195,7 +240,7 @@ class ana_network_manager : public ana::listener_handler,
     public:
         ana_network_manager() :
             components_(),
-            server_manager()
+            server_manager_()
         {
         }
 
@@ -207,7 +252,7 @@ class ana_network_manager : public ana::listener_handler,
             ana::server* server = new_component->server();
 
             clients_manager* manager = new clients_manager();
-            server_manager[ server ] = manager;
+            server_manager_[ server ] = manager;
 
             server->set_connection_handler( manager );
             server->set_listener_handler( this );
@@ -291,9 +336,9 @@ class ana_network_manager : public ana::listener_handler,
                 if ( (*it)->is_server() )
                 {
                     boost::mutex mutex;
-                    const size_t necessary_calls = server_manager[ (*it)->server() ]->client_amount();
+                    const size_t necessary_calls = server_manager_[ (*it)->server() ]->client_amount();
 
-                    ana_handler handler( mutex, necessary_calls );
+                    ana_handler handler( mutex, *it, out.str().size(), necessary_calls );
 
                     (*it)->server()->send_all( ana::buffer( out.str() ), &handler, ana::ZERO_COPY);
 
@@ -318,7 +363,7 @@ class ana_network_manager : public ana::listener_handler,
                 if ( (*it)->is_server() )
                 {
                     boost::mutex mutex;
-                    ana_handler handler( mutex );
+                    ana_handler handler( mutex, *it, out.str().size() );
                     (*it)->server()->send_one( id, ana::buffer( out.str() ), &handler, ana::ZERO_COPY);
                     mutex.lock(); // this should work just fine
                 }
@@ -326,11 +371,71 @@ class ana_network_manager : public ana::listener_handler,
             return out.str().size();
         }
 
-    private:
-        virtual void handle_message( ana::error_code /*error*/,
-                                     ana::net_id     /*client*/,
-                                     ana::detail::read_buffer /*buffer*/)
+        network::statistics get_send_stats(network::connection handle)
         {
+            if ( handle != 0 )
+            {
+                ana::net_id id( handle );
+                std::set< ana_component* >::iterator it;
+
+                it = std::find_if( components_.begin(), components_.end(),
+                                    boost::bind(&ana_component::get_id, _1) == id );
+
+                if ( it != components_.end() )
+                    return (*it)->get_send_stats( );
+                else
+                    throw std::runtime_error("Received message from a non connected component.");
+            }
+            else if( ! components_.empty() )
+            {
+                std::set< ana_component* >::iterator it = components_.begin();
+                return (*it)->get_send_stats();
+            }
+            else
+                return network::statistics();
+        }
+
+        network::statistics get_receive_stats(network::connection handle)
+        {
+            if ( handle != 0 )
+            {
+                ana::net_id id( handle );
+                std::set< ana_component* >::iterator it;
+
+                it = std::find_if( components_.begin(), components_.end(),
+                                    boost::bind(&ana_component::get_id, _1) == id );
+
+                if ( it != components_.end() )
+                    return (*it)->get_receive_stats( );
+                else
+                    throw std::runtime_error("Received message from a non connected component.");
+            }
+            else if( ! components_.empty() )
+            {
+                std::set< ana_component* >::iterator it = components_.begin();
+                return (*it)->get_receive_stats();
+            }
+            else
+                return network::statistics();
+        }
+
+    private:
+        virtual void handle_message( ana::error_code          error,
+                                     ana::net_id              client,
+                                     ana::detail::read_buffer buffer)
+        {
+            if (! error)
+            {
+                std::set< ana_component* >::iterator it;
+
+                it = std::find_if( components_.begin(), components_.end(),
+                                   boost::bind(&ana_component::get_id, _1) == client );
+
+                if ( it != components_.end() )
+                    (*it)->update_receive_stats( buffer->size() );
+                else
+                    throw std::runtime_error("Received message from a non connected component.");
+            }
         }
 
         // Only for client connection/disconnection 
@@ -342,11 +447,10 @@ class ana_network_manager : public ana::listener_handler,
 
         virtual void handle_disconnect(ana::error_code /*error*/, ana::net_id /*client*/)
         {
-//             ids_.erase(client);
         }
 
         std::set< ana_component* > components_;
-        std::map< ana::server*, const clients_manager* > server_manager;
+        std::map< ana::server*, const clients_manager* > server_manager_;
 };
 
 namespace
@@ -433,7 +537,7 @@ namespace network {
     connection_stats get_connection_stats(connection connection_num)
     {
         const ana::stats* stats = ana_manager.get_stats( connection_num );
-      
+
         return connection_stats( stats->bytes_out(),
                                  stats->bytes_in(),
                                  0); // TODO (int connected_at)
@@ -746,15 +850,14 @@ namespace network {
         return ana_manager.ip_address( connection_num );
     }
 
-    statistics get_send_stats(connection /*handle*/)
+    statistics get_send_stats(connection handle)
     {
-        throw std::runtime_error("TODO:Not implemented get_send_stats");
-//         return ana_manager.get_send_stats( handle );
+        return ana_manager.get_send_stats( handle );
     }
 
-    statistics get_receive_stats(connection /*handle*/)
+    statistics get_receive_stats(connection handle)
     {
-        throw std::runtime_error("TODO:Not implemented get_receive_stats");
+        return ana_manager.get_receive_stats( handle );
     }
 
 }// end namespace network
