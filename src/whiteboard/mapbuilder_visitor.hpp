@@ -49,12 +49,13 @@ public:
 	// Any actions associated with this unit will be ignored when modifying the unit map
 	virtual void exclude(const unit& unit) { excluded_units_.insert(&unit); }
 
-private:
+protected:
 	unit_map& unit_map_;
 
-	std::stack<modifier_ptr> modifiers_;
-
 	std::set<unit const*> excluded_units_;
+
+private:
+	std::stack<modifier_ptr> modifiers_;
 };
 
 }

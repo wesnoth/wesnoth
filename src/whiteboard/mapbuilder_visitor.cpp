@@ -27,8 +27,8 @@ namespace wb
 
 mapbuilder_visitor::mapbuilder_visitor(unit_map& unit_map)
 	: unit_map_(unit_map)
-	, modifiers_()
     , excluded_units_()
+	, modifiers_()
 {
 }
 

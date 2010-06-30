@@ -19,18 +19,18 @@
 #ifndef WB_VALIDATE_VISITOR_HPP_
 #define WB_VALIDATE_VISITOR_HPP_
 
-#include "visitor.hpp"
+#include "mapbuilder_visitor.hpp"
 
 namespace wb
 {
 
-class validate_visitor: public visitor
+class validate_visitor: public mapbuilder_visitor
 {
 public:
-	validate_visitor();
+	validate_visitor(unit_map& unit_map);
 	virtual ~validate_visitor();
 
-	virtual void visit_move(move& p_move);
+	virtual void visit_move(boost::shared_ptr<move> move);
 };
 
 }

@@ -21,7 +21,8 @@
 namespace wb
 {
 
-validate_visitor::validate_visitor()
+validate_visitor::validate_visitor(unit_map& unit_map)
+	: mapbuilder_visitor(unit_map)
 {
 }
 
@@ -29,8 +30,9 @@ validate_visitor::~validate_visitor()
 {
 }
 
-void validate_visitor::visit_move(move&)
+void validate_visitor::visit_move(boost::shared_ptr<move> move)
 {
+	mapbuilder_visitor::visit_move(move);
 
 }
 
