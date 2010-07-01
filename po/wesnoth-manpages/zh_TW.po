@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "POT-Creation-Date: 2010-05-30 18:23+0300\n"
-"PO-Revision-Date: 2009-05-13 15:51+0800\n"
-"Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
+"PO-Revision-Date: 2010-06-25 15:02+0800\n"
+"Last-Translator: YP_Lin <yenpinlin@gmail.com>\n"
 "Language-Team: none\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -103,7 +103,7 @@ msgstr "B<--bpp>I<\\ number>"
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:49
 msgid "sets BitsPerPixel value. Example: B<--bpp 32>"
-msgstr "設定每個像素佔多少位子。例如：B<--bpp 32>"
+msgstr "設定每個像素的位元數。例如：B<--bpp 32>"
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:49
@@ -133,6 +133,8 @@ msgid ""
 "sets the user configuration directory to I<name> under $HOME or \"My "
 "Documents\\eMy Games\" for windows."
 msgstr ""
+"設定玩家配置目錄到 $HOME 之下或「我的文件\\我的遊戲 (My Documents\\eMy "
+"Games)」(Windows 系統)之下的 I<name>目錄。"
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:59
@@ -143,7 +145,7 @@ msgstr "B<--config-path>"
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:62
 msgid "prints the path of the user configuration directory and exits."
-msgstr "顯示遊戲資料庫目錄並退出。"
+msgstr "顯示玩家配置目錄的路徑並退出。"
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:62
@@ -174,9 +176,9 @@ msgstr ""
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:69
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<-e,\\ --editor>I<\\ file>"
-msgstr "B<-e, --editor>"
+msgstr "B<-e,\\ --editor>I<\\ file>"
 
 # type: Plain text
 #. type: Plain text
@@ -185,6 +187,8 @@ msgid ""
 "start the in-game map editor directly. If I<file> is specified, equivalent "
 "to B<-e --load>"
 msgstr ""
+"直接啟動遊戲內建的地圖編輯器。如果指定 I<file> is specified，則等同 B<-e --"
+"load>"
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:75
@@ -265,6 +269,9 @@ msgid ""
 "from I<file> open. If it is a directory, the editor will start with a load "
 "map dialog opened there."
 msgstr ""
+"從預設遊戲存檔目錄讀取存檔I<file>。如果與 B<-e> 或 B<--editor> 選項同時使用，"
+"啟動地圖編輯器並打開I<file>所對應的地圖。如果是一個目錄，則編輯器啟動後自動打"
+"開讀取地圖對話框並定位到該目錄。"
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:109 ../../doc/man/wesnothd.6:58
@@ -314,13 +321,13 @@ msgstr "B<-m, --multiplayer>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:133
-#, fuzzy
 msgid ""
 "runs a multiplayer game. There are additional options that can be used "
 "together with B<--multiplayer> as explained below. Only these additional "
 "options can follow B<--multiplayer>."
 msgstr ""
-"啟動一個多人游戲。關於多人遊戲下面有更多選項可以與B<--multiplayer>一起使用。"
+"啟動一個多人游戲。有更多的額外選項可以與B<--multiplayer>一起使用，詳見下述。"
+"只有這些額外選項可以跟在B<--multiplayer>之後。"
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:133
@@ -423,7 +430,7 @@ msgstr "B<--smallgui>"
 msgid ""
 "allows to use screen resolutions down to 800x480 and resizes a few interface "
 "elements."
-msgstr ""
+msgstr "可以使用低至800x480的螢幕解析度，並自動調節一些界面元素的大小。"
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:169
@@ -438,6 +445,8 @@ msgid ""
 "connects to the specified host if any, otherwise connect to the first server "
 "in preferences. Example: B<--server server.wesnoth.org>"
 msgstr ""
+"如果指定了主機的話，連接到指定的主機。否則，連接到偏好設定中的第一個伺服器。"
+"例如：B<--server server.wesnoth.org>"
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:173
@@ -460,7 +469,7 @@ msgstr "B<--validcache>"
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:179
 msgid "assumes that the cache is valid. (dangerous)"
-msgstr ""
+msgstr "假定快取是有效的。（因此不進行快取驗證，危險）"
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:179
@@ -494,7 +503,7 @@ msgstr "B<--with-replay>"
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:190
 msgid "replays the game loaded with the B<--load> option."
-msgstr ""
+msgstr "透過和B<--load>選項一起使用，播放遊戲錄影。"
 
 #. type: SH
 #: ../../doc/man/wesnoth.6:191
@@ -515,16 +524,16 @@ msgstr ""
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:198
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<--ai_config>I<number>B<=>I<value>"
-msgstr "B<--side>I<number>B<=>I<value>"
+msgstr "B<--ai_config>I<number>B<=>I<value>"
 
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:201
 msgid ""
 "selects a configuration file to load for the AI controller for this side."
-msgstr ""
+msgstr "為該陣營的AI控制者選擇一個配置檔案來讀取。"
 
 #. type: TP
 #: ../../doc/man/wesnoth.6:201
@@ -657,7 +666,7 @@ msgstr "設定所選任務的回合數限制。預設值為B<50>。"
 #: ../../doc/man/wesnoth.6:253 ../../doc/man/wesnothd.6:265
 #, no-wrap
 msgid "EXIT STATUS"
-msgstr ""
+msgstr "退出狀態碼"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:256
@@ -666,6 +675,8 @@ msgid ""
 "fonts, etc) initialization error. An exit status of 2 indicates an error "
 "with the command line options."
 msgstr ""
+"正常退出時的狀態碼為0。狀態碼1代表發生了（SDL、視訊、字型等）初始化錯誤。狀態"
+"碼2代表命令行選項中有錯誤。"
 
 #. type: SH
 #: ../../doc/man/wesnoth.6:257 ../../doc/man/wesnothd.6:269
@@ -698,8 +709,8 @@ msgstr "這個說明頁最早由 Cyril Bouthors 撰寫E<lt>cyril@bouthors.orgE<g
 #: ../../doc/man/wesnoth.6:266 ../../doc/man/wesnothd.6:276
 msgid "Visit the official homepage: http://www.wesnoth.org/"
 msgstr ""
-"官方網站: http://www.wesnoth.org/繁體中文翻譯團隊:http://wesnoth-tw.blogspot."
-"com/"
+"官方網站：http://www.wesnoth.org/；繁體中文翻譯團隊：http://wesnoth-tw."
+"blogspot.com/"
 
 #. type: SH
 #: ../../doc/man/wesnoth.6:267 ../../doc/man/wesnothd.6:277
@@ -910,15 +921,13 @@ msgstr "[I<tag>]"
 
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:103
-#, fuzzy
 msgid "I<key>=\"I<value>\""
-msgstr "key=\"I<value>\""
+msgstr "I<key>=\"I<value>\""
 
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:105
-#, fuzzy
 msgid "I<key>=\"I<value>,I<value>,...\""
-msgstr "key=\"I<value>,I<value>,...\""
+msgstr "I<key>=\"I<value>,I<value>,...\""
 
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:107
@@ -937,7 +946,7 @@ msgstr "全球關鍵字:"
 #: ../../doc/man/wesnothd.6:110
 #, no-wrap
 msgid "B<allow_remote_shutdown>"
-msgstr ""
+msgstr "B<allow_remote_shutdown>"
 
 # type: Plain text
 #. type: Plain text
@@ -947,6 +956,8 @@ msgid ""
 "they come from the fifo.  Set it to B<yes> to allow remote shutdown via a /"
 "query by an administrator."
 msgstr ""
+"如果設置為 B<no> （預設值），shut_down（關閉）和restart（重啟）請求將被忽略，"
+"除非這些請求來自於fifo。如果設為 B<yes> 則允許管理員透過 /query 遠程關閉。"
 
 #. type: TP
 #: ../../doc/man/wesnothd.6:114
@@ -961,13 +972,15 @@ msgid ""
 "Full or relative path to a (gzip compressed) file that the server can read "
 "and write.  Bans will be saved to this file and read again on server start."
 msgstr ""
+"一個伺服器可讀可寫的（經gzip壓縮的）檔案的完整路徑或相對路徑。封禁訊息會自動"
+"保存在這個檔案裡，並在伺服器啟動時讀取。"
 
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnothd.6:118
 #, no-wrap
 msgid "B<compress_stored_rooms>"
-msgstr ""
+msgstr "B<compress_stored_rooms>"
 
 # type: Plain text
 #. type: Plain text
@@ -975,7 +988,7 @@ msgstr ""
 msgid ""
 "Determines whether the rooms file should be read and written to in "
 "compressed form. Defaults to B<yes>."
-msgstr ""
+msgstr "指定房間檔案是否應該以壓縮形式讀寫。預設值為B<yes>。"
 
 #. type: TP
 #: ../../doc/man/wesnothd.6:121
@@ -998,16 +1011,15 @@ msgstr "B<disallow_names>"
 
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:131
-#, fuzzy
 msgid ""
 "Names/nicks that are not accepted by the server. B<*> and B<?> from wildcard "
 "patterns are supported. See B<glob>(7)  for more details.  Default values "
 "(used if nothing is specified) are: B<*admin*,*admln*,*server*,ai,ai?,"
 "computer,human,network,player>."
 msgstr ""
-"伺服器不允許使用的使用者名稱/暱稱。可以使用 \"＊\" 和 \"？\"符號。更多資料請"
-"查看 B<glob>(7) 。預設值(如果使用者沒有指定則自動使用)是： B<*admin*,*admln*,"
-"*server*,ai,ai?,computer,human,network,player>。"
+"伺服器不允許使用的使用者名稱／暱稱。支援使用 B<*>和B<?>這兩個萬用字元。更多資"
+"料請查看 B<glob>(7) 。預設值(如果使用者沒有指定則自動使用)是：B<*admin*,"
+"*admln*,*server*,ai,ai?,computer,human,network,player>.。"
 
 #. type: TP
 #: ../../doc/man/wesnothd.6:131
@@ -1023,6 +1035,9 @@ msgid ""
 "from wesnoth).  If not specified defaults to the compile-time path (default: "
 "B</var/run/socket/wesnothd/socket>)."
 msgstr ""
+"伺服器所使用的fifo檔案的路徑（與在wesnoth中使用 /query 功能相同），您可以從該"
+"檔案內ECHO伺服器命令。如果不指定，則預設為編譯時指定的路徑（預設值：B</var/"
+"run/socket/wesnothd/socket>）。"
 
 #. type: TP
 #: ../../doc/man/wesnothd.6:135
@@ -1065,7 +1080,7 @@ msgstr "當日訊息。"
 #: ../../doc/man/wesnothd.6:144
 #, no-wrap
 msgid "B<new_room_policy>"
-msgstr ""
+msgstr "B<new_room_policy>"
 
 # type: Plain text
 #. type: Plain text
@@ -1076,6 +1091,9 @@ msgid ""
 "respectively to everyone, registered users, admin users or disables new room "
 "creation. Default value is B<everyone>."
 msgstr ""
+"指定誰能在伺服器上創建新房間。可選值為 B<everyone>、B<registered>、B<admin>、"
+"和B<nobody>，分別代表所有人、註冊用戶、管理員、或者禁止創建新房間。預設值為 "
+"B<everyone>。"
 
 #. type: TP
 #: ../../doc/man/wesnothd.6:147
@@ -1085,10 +1103,9 @@ msgstr "B<passwd>"
 
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:150
-#, fuzzy
 msgid ""
 "The password used to gain admin privileges (via B</query admin >I<password>)."
-msgstr "取得管理員權限的密碼。通常以\"admin\"開頭。"
+msgstr "取得管理員權限的密碼(透過 B</query admin >I<password> 來取得權限)。"
 
 #. type: TP
 #: ../../doc/man/wesnothd.6:150
@@ -1103,6 +1120,8 @@ msgid ""
 "trailing /!) Defaults to `' which means the directory wesnothd was started "
 "in."
 msgstr ""
+"伺服器用於存放遊戲錄影的目錄。（不要忘了以/結尾！）預設為`'（空），意思是本遊"
+"戲啟動時的當前目錄。"
 
 #. type: TP
 #: ../../doc/man/wesnothd.6:153
@@ -1118,12 +1137,14 @@ msgid ""
 "B<restart> command. (Can only be issued via the fifo. See the "
 "B<allow_remote_shutdown> setting.)"
 msgstr ""
+"這是伺服器通過B<restart>命令開啟新伺服器進程時使用的命令。（只能通過fifo來調"
+"用。參見B<allow_remote_shutdown>設置。）"
 
 #. type: TP
 #: ../../doc/man/wesnothd.6:156
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "B<room_save_file>"
-msgstr "B<ban_save_file>"
+msgstr "B<room_save_file>"
 
 # type: Plain text
 #. type: Plain text
@@ -1133,6 +1154,8 @@ msgid ""
 "server startup and written to later. If empty or not set, rooms are not "
 "loaded and not saved."
 msgstr ""
+"指定存放房間訊息的檔案的路徑。這個檔案在伺服器啟動時讀取，之後會寫入。如果設"
+"為空或者不設置，則房間不會被讀取或保存。"
 
 #. type: TP
 #: ../../doc/man/wesnothd.6:159
@@ -1145,7 +1168,7 @@ msgstr "B<save_replays>"
 msgid ""
 "Defines whether the server will automatically save replays of games. "
 "(default: B<false>)"
-msgstr ""
+msgstr "設置伺服器是否自動保存遊戲錄影。（預設值：B<false>）"
 
 #. type: TP
 #: ../../doc/man/wesnothd.6:162
@@ -1155,14 +1178,13 @@ msgstr "B<versions_accepted>"
 
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:166
-#, fuzzy
 msgid ""
 "A comma separated list of version strings to be accepted by the server. B<*> "
 "and B<?> from wildcard patterns are supported.  (defaults to the "
 "corresponding wesnoth version)"
 msgstr ""
-"用逗號分隔的伺服器接受版本列表。支援 \"＊\" 和 \"？\" 符號。（預設為相同版"
-"本）"
+"用逗號分隔的伺服器接受版本列表。支援使用 B<*> 和B<?>這兩個萬用字元。（預設為"
+"相同版本）"
 
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:168
@@ -1185,6 +1207,10 @@ msgid ""
 "anything real you are insane). The default value is B<forum>. You must also "
 "add a B<[user_handler]> section, see below."
 msgstr ""
+"希望使用的用戶處理程序的名稱。目前可選的有B<forum>（將wesnothd與phpbb論壇的資"
+"料庫連接起來）和B<sample>（一個用戶處理介面的執行樣本，如果您真的在實際中使用"
+"它，那您一定是瘋了）。預設值是B<forum>，同時您必須添加一個B<[user_handler]>小"
+"節，請看下面。"
 
 #. type: SS
 #: ../../doc/man/wesnothd.6:174
@@ -1243,6 +1269,8 @@ msgid ""
 "B<[ban_time]> A tag to define convenient keywords for temporary ban time "
 "lengths."
 msgstr ""
+"ban_time]> 這個標籤用於定義一些方便的關鍵字，以對應一些常用的臨時封禁時間長"
+"度。"
 
 #. type: TP
 #: ../../doc/man/wesnothd.6:196
@@ -1254,7 +1282,7 @@ msgstr "B<name>"
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:199
 msgid "The name used to reference the ban time."
-msgstr ""
+msgstr "用於參照封禁時間的名字。"
 
 #. type: TP
 #: ../../doc/man/wesnothd.6:199
@@ -1272,6 +1300,9 @@ msgid ""
 "Example: B<time=\"1D12h30m\"> results in a ban time of 1 day, 12 hours and "
 "30 minutes."
 msgstr ""
+"時間長度定義。 格式為：%d[%s[%d%s[...]]] 其中%s是s（秒），m（分鐘），h（小"
+"時），D（天），M（月），Y（年），%d是一個數字。如果不指定時間單位，預設為分鐘"
+"（m）。例如：B<time=\\\"1D12h30m\\\"> 代表的是1天12小時30分的封禁。"
 
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:213
@@ -1292,6 +1323,9 @@ msgid ""
 "[user_handler]> section is present in the configuration the server will run "
 "without any nick registration service."
 msgstr ""
+"B<[user_handler]> 配置用戶處理程序。可設置的主鍵取決於通過B<user_handler>設置"
+"的用戶資料處理器是哪一個。如果配置檔案中沒有B<[user_handler]>小節，則伺服器在"
+"運行中將不提供任何暱稱註冊服務。"
 
 #. type: TP
 #: ../../doc/man/wesnothd.6:222
@@ -1303,7 +1337,7 @@ msgstr "B<db_host>"
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:225
 msgid "(for user_handler=forum) The hostname of the database server"
-msgstr ""
+msgstr "（如果user_handler=forum）資料庫伺服器的主機名"
 
 #. type: TP
 #: ../../doc/man/wesnothd.6:225
@@ -1315,7 +1349,7 @@ msgstr "B<db_name>"
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:228
 msgid "(for user_handler=forum) The name of the database"
-msgstr ""
+msgstr "（如果user_handler=forum）資料庫名"
 
 #. type: TP
 #: ../../doc/man/wesnothd.6:228
@@ -1329,7 +1363,7 @@ msgstr "B<db_user>"
 msgid ""
 "(for user_handler=forum) The name of the user under which to log into the "
 "database"
-msgstr ""
+msgstr "（如果user_handler=forum）資料庫登錄用戶名"
 
 #. type: TP
 #: ../../doc/man/wesnothd.6:231
@@ -1341,7 +1375,7 @@ msgstr "B<db_password>"
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:234
 msgid "(for user_handler=forum) This user's password"
-msgstr ""
+msgstr "（如果user_handler=forum）這個用戶的密碼"
 
 #. type: TP
 #: ../../doc/man/wesnothd.6:234
@@ -1357,6 +1391,8 @@ msgid ""
 "saves its user data. Most likely this will be E<lt>table-prefixE<gt>_users "
 "(e.g. phpbb3_users)."
 msgstr ""
+"（如果user_handler=forum）phpbb 論壇中存放用戶資料的表名。很可能是E<lt>table-"
+"prefixE<gt>_users（例如phpbb3_users）。"
 
 #. type: TP
 #: ../../doc/man/wesnothd.6:237
@@ -1374,6 +1410,10 @@ msgid ""
 "user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, user_is_moderator TINYINT(4) "
 "NOT NULL DEFAULT 0);>"
 msgstr ""
+"（如果user_handler=forum）wesnothd存放自用的用戶資料的表名。您必須自己手動創"
+"建這個表，例如：B<CREATE TABLE E<lt>table-nameE<gt>(username VARCHAR(255) "
+"PRIMARY KEY, user_lastvisit INT UNSIGNED NOT NULL DEFAULT 0, "
+"user_is_moderator TINYINT(4) NOT NULL DEFAULT 0);>"
 
 #. type: TP
 #: ../../doc/man/wesnothd.6:241
@@ -1387,7 +1427,7 @@ msgstr "B<user_expiration>"
 msgid ""
 "(for user_handler=sample) The time after which a registered nick expires (in "
 "days)."
-msgstr ""
+msgstr "（如果user_handler=sample）註冊暱稱的失效時間（單位是天數）。"
 
 # type: Plain text
 #. type: Plain text
@@ -1396,6 +1436,8 @@ msgid ""
 "B<[mail]> Configures an SMTP server through which the user handler can send "
 "mail. Currently only used by the sample user handler."
 msgstr ""
+"B<[mail]> 設置一個SMTP伺服器，通過用戶處理程序可以發送郵件。目前只在樣本用戶"
+"處理程序中使用。"
 
 #. type: TP
 #: ../../doc/man/wesnothd.6:249
@@ -1407,7 +1449,7 @@ msgstr "B<server>"
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:252
 msgid "The hostname of the mail server"
-msgstr ""
+msgstr "郵件伺服器的主機名。"
 
 #. type: TP
 #: ../../doc/man/wesnothd.6:252
@@ -1419,7 +1461,7 @@ msgstr "B<username>"
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:255
 msgid "The user name under which to log into the mail server."
-msgstr ""
+msgstr "登錄到郵件伺服器的用戶名。"
 
 #. type: TP
 #: ../../doc/man/wesnothd.6:255
@@ -1442,7 +1484,7 @@ msgstr "B<from_address>"
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:261
 msgid "The reply-to address of you mail."
-msgstr ""
+msgstr "您的電子信箱的回覆地址。"
 
 #. type: TP
 #: ../../doc/man/wesnothd.6:261
@@ -1454,7 +1496,7 @@ msgstr "B<mail_port>"
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:264
 msgid "The port on which your mail server is running. Default is 25."
-msgstr ""
+msgstr "郵件伺服器的埠口。預設值為25。"
 
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:268
@@ -1462,6 +1504,7 @@ msgid ""
 "Normal exit status is 0 when the server was properly shutdown. An exit "
 "status of 2 indicates an error with the command line options."
 msgstr ""
+"正常退出時狀態碼為0，此時伺服器正常關閉。狀態碼2代表命令行選項中有錯誤。"
 
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:274
@@ -1484,6 +1527,10 @@ msgstr "B<wesnoth>(6), B<wesnoth_editor>(6)"
 
 #~ msgid "B<-c, --campaign>"
 #~ msgstr "B<-c, --campaign>"
+
+# type: Plain text
+#~ msgid "goes directly to the campaign selection menu."
+#~ msgstr "直接進入戰役選單"
 
 #~ msgid "B<--dummy-locales>"
 #~ msgstr "B<--dummy-locales>"

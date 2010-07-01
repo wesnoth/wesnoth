@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-06-20 11:03+0200\n"
-"PO-Revision-Date: 2009-05-14 16:20+0800\n"
-"Last-Translator: 楊綮銘 <steven2880@gmail.com>\n"
+"POT-Creation-Date: 2010-06-25 11:25+0200\n"
+"PO-Revision-Date: 2010-06-25 13:28+0800\n"
+"Last-Translator: YP_Lin <yenpinlin@gmail.com>\n"
 "Language-Team: Chinese/Traditional <steven2880@gmail.com>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -117,7 +117,7 @@ msgid ""
 "Use left/right mouse button to draw fore-/background terrain. Hold Shift to "
 "paint base layer only. Ctrl+click to sample terrain under cursor."
 msgstr ""
-"使用滑鼠左（右）鍵繪製前（背）景地形。按下Shift鍵可以只繪製地表圖形。Ctrl+右"
+"使用滑鼠左（右）鍵繪製前（背）景地形。按住Shift鍵可以只繪製地表圖形。Ctrl+右"
 "鍵點選可對點選方格做地形位置取樣。"
 
 #. [editor_tool_hint]: id=editor-tool-select
@@ -127,7 +127,7 @@ msgid ""
 "Left mouse button selects, right deselects. Hold Shift for magic-wand "
 "selection of tiles with same terrain."
 msgstr ""
-"使用滑鼠左鍵選擇，右鍵取消選擇。按下Shift鍵可以自動選擇同一地形的地面。"
+"使用滑鼠左鍵選擇，右鍵取消選擇。按住Shift鍵可以自動選擇同一地形的地面。"
 
 #. [editor_tool_hint]: id=editor-tool-starting-position
 #. [menu]: id=start_position_button_editor
@@ -150,7 +150,7 @@ msgstr "點選貼上，貼上區域呈鏡面效果。"
 #. [menu]: id=menu-editor-file
 #: data/themes/editor.cfg:120
 msgid "File"
-msgstr "文件"
+msgstr "檔案"
 
 #. [menu]: id=menu-editor-edit
 #: data/themes/editor.cfg:131
@@ -198,7 +198,7 @@ msgstr "您確定要退出嗎？對地圖所作的更動將遺失。"
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
-msgstr "您確定要退出嗎？對地圖所作的更動將遺失:"
+msgstr "您確定要退出嗎？以下地圖已修改，而對地圖所作的更動將遺失:"
 
 #: src/editor/editor_controller.cpp:316
 msgid "Quit"
@@ -243,7 +243,7 @@ msgstr "選擇要套用的遮罩"
 
 #: src/editor/editor_controller.cpp:523
 msgid "Error loading mask"
-msgstr "讀取遮罩食錯誤"
+msgstr "讀取遮罩時錯誤"
 
 #: src/editor/editor_controller.cpp:538
 msgid "Choose target map"
@@ -263,18 +263,18 @@ msgstr "地圖已儲存。"
 
 #: src/editor/editor_controller.cpp:688
 msgid "Loaded embedded map data"
-msgstr "以讀取嵌入地圖的資料"
+msgstr "已讀取嵌入地圖的資料"
 
 #: src/editor/editor_controller.cpp:689 src/editor/editor_controller.cpp:703
 msgid "Map loaded from scenario"
-msgstr "以從任務中讀取地圖"
+msgstr "已從任務中讀取地圖"
 
 #: src/editor/editor_controller.cpp:699
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
 msgstr ""
-"以讀取地圖引用檔案:\n"
+"已讀取地圖引用檔案:\n"
 "$new"
 
 #: src/editor/editor_controller.cpp:1092
@@ -295,16 +295,15 @@ msgstr "無法重作"
 
 #: src/editor/editor_controller.cpp:1105
 msgid "Auto-update Terrain Transitions: Yes"
-msgstr ""
+msgstr "自動更新地形轉換：是"
 
 #: src/editor/editor_controller.cpp:1108
 msgid "Auto-update Terrain Transitions: Partial"
-msgstr ""
+msgstr "自動更新地形轉換：部分"
 
 #: src/editor/editor_controller.cpp:1112
-#, fuzzy
 msgid "Auto-update Terrain Transitions: No"
-msgstr "更新"
+msgstr "自動更新地形轉換：否"
 
 #: src/editor/editor_map.cpp:149 src/editor/mouse_action.cpp:429
 msgid "Player"
@@ -316,11 +315,11 @@ msgstr "目標地圖尺寸與當前地圖不同"
 
 #: src/editor/editor_palettes.cpp:509
 msgid "(non-core)"
-msgstr ""
+msgstr "（非核心）"
 
 #: src/editor/editor_palettes.cpp:510
 msgid "Will not work in game without extra care."
-msgstr ""
+msgstr "如果不特別注意，在遊戲中就不會正常運作。"
 
 #: src/editor/editor_palettes.cpp:536
 msgid "FG"
@@ -354,7 +353,7 @@ msgstr "無法儲存地圖： $msg"
 
 #: src/editor/mouse_action.cpp:426
 msgid "(Player)^None"
-msgstr "玩家"
+msgstr "無"
 
 #: src/editor/mouse_action.cpp:433
 msgid "Choose player"
