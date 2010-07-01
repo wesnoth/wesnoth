@@ -31,6 +31,7 @@
  */
 
 #include "buffers.hpp"
+#include <boost/thread.hpp>
 
 #ifndef ANA_TIMERS_HPP
 #define ANA_TIMERS_HPP
@@ -123,6 +124,7 @@ namespace ana
         public:
             /** Standard constructor. */
             timer() :
+                mutex_(),
                 io_service_(),
                 timer_(io_service_)
             {
@@ -156,27 +158,35 @@ namespace ana
             /** Cancel the timer if running. */
             void cancel()
             {
-                timer_.cancel();
+                if ( ! mutex_.try_lock() ) // handler wasn't called, unlock to delete this
+                {
+                    timer_.cancel();    // it's a cancel, handler wasn't called
+
+                    //wait for running thread to finish
+                    mutex_.lock();
+                }
+                mutex_.unlock();
             }
 
-            /** Standard destructor, cancels pending operations and stops the I/O service. */
+            /** Standard destructor, cancels pending operations if handler wasn't called. */
             ~timer()
             {
-                timer_.cancel();
-                io_service_.stop();
+                if ( ! mutex_.try_lock() ) // handler wasn't called, unlock to delete this
+                {
+                    timer_.cancel();    // it's a cancel, handler wasn't called
+
+                    //wait for running thread to finish
+                    mutex_.lock();
+                }
+                mutex_.unlock();
             }
 
         private:
             void run()
             {
-                try
-                {
-                    io_service_.run_one();
-                }
-                catch(const std::exception& e)
-                {
-                    // Timer was cancelled. Don't propagate exception
-                }
+                mutex_.lock();
+                io_service_.run_one();
+                mutex_.unlock();
             }
 
             /** Private class providing traits for the timer type. */
@@ -223,6 +233,8 @@ namespace ana
                     return boost::posix_time::seconds(d.value);
                 }
             };
+
+            boost::mutex mutex_;
 
             boost::asio::io_service io_service_;
 

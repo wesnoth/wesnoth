@@ -154,6 +154,7 @@ class ana_connect_handler : public ana::connection_handler
         virtual void handle_connect(ana::error_code error_code, ana::net_id /*client*/)
         {
             connected_ = true;
+            timer_->cancel();
 
             if (! error_code)
                 std::cout << "DEBUG: Connected.\n";
@@ -177,19 +178,21 @@ class ana_component : public send_stats_logger
         ana_component( ) :
             base_( ana::server::create() ),
             is_server_( true ),
+            id_( server()->id() ),
             send_stats_(),
             receive_stats_()
         {
-            server()->start_logging();
+//             server()->start_logging();
         }
 
         ana_component( const std::string& host, const std::string& port) :
             base_( ana::client::create(host,port) ),
             is_server_( false ),
+            id_(  client()->id() ),
             send_stats_(),
             receive_stats_()
         {
-            client()->start_logging();
+//             client()->start_logging();
         }
 
         network::statistics get_send_stats() const
@@ -230,12 +233,15 @@ class ana_component : public send_stats_logger
 
         ana::net_id get_id() const
         {
-            return listener()->id();
+            return id_;
         }
 
         const ana::stats* get_stats() const
         {
-            return listener()->get_stats();
+            if ( is_server_)
+                return server()->get_stats();
+            else
+                return client()->get_stats();
         }
 
         void update_receive_stats( size_t buffer_size )
@@ -246,21 +252,17 @@ class ana_component : public send_stats_logger
         }
 
     private:
-
         virtual void update_send_stats( size_t buffer_size)
         {
             send_stats_.current_max = ( buffer_size > send_stats_.current_max) ? buffer_size : send_stats_.current_max;
             send_stats_.total      += buffer_size;
             send_stats_.current     = buffer_size;
         }
-        const ana::detail::listener* listener() const
-        {
-            return boost::get<ana::detail::listener*>(base_);
-        }
 
         boost::variant<ana::server*, ana::client*> base_;
 
-        bool is_server_;
+        bool        is_server_;
+        ana::net_id id_;
 
         network::statistics send_stats_;
         network::statistics receive_stats_;
@@ -318,7 +320,6 @@ class ana_network_manager : public ana::listener_handler
 
             server->set_connection_handler( manager );
             server->set_listener_handler( this );
-            server->start_logging();
 
             return server->id();
         }
@@ -351,7 +352,7 @@ class ana_network_manager : public ana::listener_handler
 
                 client->set_listener_handler( this );
                 client->run();
-                client->start_logging();
+//                 client->start_logging();
 
                 mutex.lock();   // just wait for handler to release it
                 mutex.unlock(); // unlock for destruction

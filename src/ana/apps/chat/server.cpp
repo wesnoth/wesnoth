@@ -58,7 +58,7 @@ class ChatServer : public listener_handler,
 
             server_->run(pt);
 
-            server_->set_timeouts(ana::FixedTime, ana::time::milliseconds(1));
+//             server_->set_timeouts(ana::FixedTime, ana::time::milliseconds(1));
 
             std::cout << "Server running, Enter to quit." << std::endl;
 

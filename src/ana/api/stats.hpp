@@ -58,9 +58,9 @@ namespace ana
         virtual size_t bytes_in()     const = 0;
         virtual size_t bytes_out()    const = 0;
     };
-    
+
     namespace detail
-    {        
+    {
         class stats_logger : public stats
         {
             public:
@@ -82,13 +82,13 @@ namespace ana
                     ++packets_out_;
                     bytes_out_ += buffer->size() + HEADER_LENGTH;
                 }
-                
+
                 void log_receive( detail::read_buffer buffer )
                 {
                     ++packets_in_;
                     bytes_in_ += buffer->size() + HEADER_LENGTH;
                 }
-                
+
             private:
                 void reset(boost::system::error_code& /*ec*/)
                 {
@@ -96,26 +96,26 @@ namespace ana
                     packets_out_ = 0;
                     bytes_in_    = 0;
                     bytes_out_   = 0;
-                    
+
                     if (ms_to_reset_ > 0 )
                         timer_.wait(ms_to_reset_, boost::bind( &stats_logger::reset, this, boost::asio::placeholders::error ) );
                 }
-                
+
                 virtual size_t uptime()       const
                 {
                     return 0;
                 }
-                
+
                 virtual size_t packets_in()   const
                 {
                     return packets_in_;
                 }
-                
+
                 virtual size_t packets_out()  const
                 {
                     return packets_out_;
                 }
-                
+
                 virtual size_t bytes_in()     const
                 {
                     return bytes_in_;
@@ -125,21 +125,20 @@ namespace ana
                 {
                     return bytes_out_;
                 }
-                
+
                 size_t ms_to_reset_;
                 timer  timer_;
-                
+
                 std::time_t start_time_;
-                
+
                 size_t packets_in_;
                 size_t packets_out_;
-                
+
                 size_t bytes_in_;
                 size_t bytes_out_;
-                
         };
     }
-   
+
     class stats_collector
     {
         public:

@@ -114,11 +114,11 @@ class ChatClient : public ana::listener_handler,
             else if (msg[1] == 's')
             {
                 const ana::stats* acum_stats = client_->get_stats( ana::ACCUMULATED );
-                const ana::stats* sec_stats = client_->get_stats( ana::SECONDS );
-                const ana::stats* min_stats = client_->get_stats( ana::MINUTES );
+                const ana::stats* sec_stats  = client_->get_stats( ana::SECONDS );
+                const ana::stats* min_stats  = client_->get_stats( ana::MINUTES );
                 const ana::stats* hour_stats = client_->get_stats( ana::HOURS );
-                const ana::stats* day_stats = client_->get_stats( ana::DAYS );
-                
+                const ana::stats* day_stats  = client_->get_stats( ana::DAYS );
+
                 std::cout << "Network Statistics:\n"
                           << "\tPackets Out:\n"
                           << "\t\tTotal: " << acum_stats->packets_out() << std::endl
@@ -144,7 +144,7 @@ class ChatClient : public ana::listener_handler,
                           << "\t\tLast Minute: " << min_stats->bytes_in() << std::endl
                           << "\t\tLast Hour: " << hour_stats->bytes_in() << std::endl
                           << "\t\tLast Day: " << day_stats->bytes_in() << std::endl;
-            }   
+            }
         }
 
         void run_input()
@@ -182,7 +182,7 @@ class ChatClient : public ana::listener_handler,
 
                 client_->set_listener_handler( this );
                 client_->run();
-                client_->start_logging();
+//                 client_->start_logging();
 
                 std::cout << "Available commands: \n"  <<
                              "    '/quit'      : Quit. \n"
