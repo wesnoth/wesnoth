@@ -43,7 +43,7 @@ manager::manager():
 		fake_unit_(),
 		selected_unit_(NULL),
 		highlighted_unit_(NULL),
-		ignore_mouse_(false),
+		move_saving_mutex_(),
 		planned_unit_map_(false)
 {
 }
@@ -225,8 +225,10 @@ void manager::erase_temp_move()
 	{
 		move_arrow_.reset(); //auto-removes itself from display
 
-		//reset src unit back to normal, if it lacks any planned action
-		if (selected_unit_ && !get_first_action_of(*selected_unit_))
+		//reset src unit back to normal, if it lacks any planned action,
+		//and we're not in the process of saving a move
+		wb_scoped_lock try_lock(move_saving_mutex_, boost::interprocess::try_to_lock);
+		if (try_lock && selected_unit_ && !get_first_action_of(*selected_unit_))
 		{
 				selected_unit_->set_standing(true);
 		}
@@ -240,24 +242,35 @@ void manager::erase_temp_move()
 
 void manager::save_temp_move()
 {
-	//TODO: properly handle movement points
+	wb_scoped_lock try_lock(move_saving_mutex_, boost::interprocess::try_to_lock);
+	if (try_lock)
+	{
+		std::vector<map_location> route = route_;
+		arrow_ptr move_arrow;
+		move_arrow.reset(new arrow(*move_arrow_.get()));
+		resources::screen->add_arrow(*move_arrow);
+		fake_unit_ptr fake_unit;
+		fake_unit.reset(new unit(*fake_unit_.get()));
+		resources::screen->place_temporary_unit(fake_unit.get());
+		unit* target_unit = selected_unit_;
 
-	LOG_WB << "Creating move for unit " << selected_unit_->name() << " [" << selected_unit_->id() << "]"
-			<< " from " << route_.front()
-			<< " to " << route_.back() << "\n";
-	ignore_mouse_ = true;
+		erase_temp_move();
+		selected_unit_ = NULL;
+		//TODO: properly handle movement points
 
-	assert(!has_planned_unit_map());
+		LOG_WB << "Creating move for unit " << target_unit->name() << " [" << target_unit->id() << "]"
+				<< " from " << route.front()
+				<< " to " << route.back() << "\n";
 
-	selected_unit_->set_ghosted(false); //FIXME: doesn't take effect until after the move animation, boucman: help!
-	unit_display::move_unit(route_, *fake_unit_, *resources::teams, true);
+		assert(!has_planned_unit_map());
 
-	get_current_side_actions()->queue_move(*selected_unit_, route_.front(), route_.back(), move_arrow_, fake_unit_);
-	move_arrow_.reset();
-	fake_unit_.reset();
-	selected_unit_ = NULL;
+		target_unit->set_ghosted(false); //FIXME: doesn't take effect until after the move animation, boucman: help!
+		unit_display::move_unit(route, *fake_unit, *resources::teams, true);
 
-	ignore_mouse_ = false;
+		get_current_side_actions()->queue_move(*target_unit, route.front(), route.back(), move_arrow, fake_unit);
+
+	}
+
 }
 
 void manager::contextual_execute()

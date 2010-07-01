@@ -67,13 +67,15 @@ void side_actions::execute(size_t index)
 
 void side_actions::execute(action_ptr action)
 {
-	assert(!actions_.empty());
-	bool finished = action->execute();
-	if (finished)
+	if (!actions_.empty())
 	{
-		remove_action(action);
+		bool finished = action->execute();
+		if (finished)
+		{
+			remove_action(action);
+		}
+		validate_actions();
 	}
-	validate_actions();
 }
 
 void side_actions::insert_move(unit& subject, const map_location& source_hex, const map_location& target_hex, size_t index, boost::shared_ptr<arrow> arrow,

@@ -21,6 +21,8 @@
 
 #include "map_location.hpp"
 
+#include <boost/interprocess/sync/interprocess_mutex.hpp>
+#include <boost/interprocess/sync/scoped_lock.hpp>
 #include <boost/noncopyable.hpp>
 #include <boost/shared_ptr.hpp>
 #include <boost/scoped_ptr.hpp>
@@ -58,8 +60,6 @@ public:
 	void set_planned_unit_map();
 	void set_real_unit_map();
 	bool has_planned_unit_map() { return planned_unit_map_; }
-
-	bool ignore_mouse() {return ignore_mouse_; }
 
 	/**
 	 * Highlights the action for this unit,
@@ -109,13 +109,17 @@ private:
 
 	std::vector<map_location> route_;
 
-	boost::shared_ptr<arrow> move_arrow_;
-	boost::shared_ptr<unit> fake_unit_;
+	typedef boost::shared_ptr<arrow> arrow_ptr;
+	arrow_ptr move_arrow_;
+	typedef boost::shared_ptr<unit> fake_unit_ptr;
+	fake_unit_ptr fake_unit_;
 
 	unit* selected_unit_;
 	unit* highlighted_unit_;
 
-	bool ignore_mouse_;
+	typedef boost::interprocess::interprocess_mutex wb_mutex;
+	typedef boost::interprocess::scoped_lock<wb_mutex> wb_scoped_lock;
+	wb_mutex move_saving_mutex_;
 
 	bool planned_unit_map_;
 };

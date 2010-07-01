@@ -104,7 +104,6 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 	SDL_GetMouseState(&x,&y);  // <-- modify x and y
 
 	if (mouse_handler_base::mouse_motion_default(x, y, update)) return;
-	if (resources::whiteboard->ignore_mouse()) return;
 
 	const map_location new_hex = gui().hex_clicked_on(x,y);
 
@@ -426,7 +425,6 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 {
 	undo_ = false;
 	if (mouse_handler_base::left_click(x, y, browse)) return false;
-	if (resources::whiteboard->ignore_mouse()) return false;
 
 	bool check_shroud = current_team().auto_shroud_updates();
 
@@ -532,9 +530,17 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 
 		if (resources::whiteboard->has_temp_move()) {
 
-			// Create planned move for whiteboard
+			// Unselect the current hex, and create planned move for whiteboard
+			selected_hex_ = map_location();
+			gui().select_hex(map_location());
+			gui().clear_attack_indicator();
+			gui().set_route(NULL);
+			waypoints_.clear();
+			show_partial_move_ = false;
+			gui().unhighlight_reach();
+			current_paths_ = pathfind::paths();
+			current_route_.steps.clear();
 			resources::whiteboard->save_temp_move();
-			deselect_hex();
 
 		} else {
 			//register the mouse-UI waypoints into the unit's waypoints
