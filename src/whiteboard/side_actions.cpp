@@ -57,6 +57,14 @@ void side_actions::execute_next()
 	}
 }
 
+void side_actions::execute(size_t index)
+{
+	if (!actions_.empty() && index < end())
+	{
+		execute(actions_[index]);
+	}
+}
+
 void side_actions::execute(action_ptr action)
 {
 	assert(!actions_.empty());

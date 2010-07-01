@@ -53,8 +53,8 @@ public:
 
 	/**
 	 * Executes the specified action, if it exists in the queue.
-	 * TODO: Validate all subsequent actions after doing this!
 	 */
+	void execute(size_t index);
 	void execute(action_ptr action);
 
 	/**
