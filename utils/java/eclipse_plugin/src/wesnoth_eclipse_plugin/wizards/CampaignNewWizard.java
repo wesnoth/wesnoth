@@ -4,6 +4,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
 import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -14,6 +15,7 @@ import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
 
+import wesnoth_eclipse_plugin.builder.WesnothProjectNature;
 import wesnoth_eclipse_plugin.utils.ResourceUtils;
 import wesnoth_eclipse_plugin.utils.StringUtils;
 
@@ -82,7 +84,15 @@ public class CampaignNewWizard extends Wizard implements INewWizard
 
 			// the project
 			currentProject.create(new NullProgressMonitor());
+			currentProject.open(null);
 			monitor.worked(2);
+
+			// add the nature to the project
+			String[] nature = new String[1];
+			nature[0] = WesnothProjectNature.NATURE_ID;
+			IProjectDescription description = currentProject.getDescription();
+			description.setNatureIds(nature);
+			currentProject.setDescription(description, null);
 
 			String campaignStructure = prepareTemplate("campaign_structure");
 			if (campaignStructure == null)
