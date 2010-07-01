@@ -14,7 +14,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IWorkbenchWindow;
 
 import wesnoth_eclipse_plugin.Activator;
-import wesnoth_eclipse_plugin.utils.FileUtils;
+import wesnoth_eclipse_plugin.utils.ResourceUtils;
 import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
 
 public class MapActions
@@ -47,7 +47,7 @@ public class MapActions
 						return;
 				}
 
-				FileUtils.copyTo(source, target);
+				ResourceUtils.copyTo(source, target);
 				WorkspaceUtils.getSelectedFolder(window).refreshLocal(IResource.DEPTH_INFINITE, null);
 			}
 			catch (Exception e)

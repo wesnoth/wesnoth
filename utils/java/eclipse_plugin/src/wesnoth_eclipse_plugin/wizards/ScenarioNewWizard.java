@@ -30,28 +30,25 @@ import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
 
-import wesnoth_eclipse_plugin.ReplaceableParameter;
-import wesnoth_eclipse_plugin.TemplateProvider;
 import wesnoth_eclipse_plugin.utils.GUIUtils;
 import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
 
 /**
- * This is a sample new wizard. Its role is to create a new file
- * resource in the provided container. If the container resource
- * (a folder or a project) is selected in the workspace
- * when the wizard is opened, it will accept it as the target
- * container. The wizard creates one file with the extension
- * "cfg". If a sample multi-page editor (also available
- * as a template) is registered for the same extension, it will
- * be able to open it.
+ * This is a sample new wizard. Its role is to create a new file resource in the
+ * provided container. If the container resource (a folder or a project) is
+ * selected in the workspace when the wizard is opened, it will accept it as the
+ * target container. The wizard creates one file with the extension "cfg". If a
+ * sample multi-page editor (also available as a template) is registered for the
+ * same extension, it will be able to open it.
  */
 
-public class ScenarioNewWizard extends Wizard implements INewWizard {
-	private ScenarioPage0 page0_;
-	private ScenarioPage1 page1_;
-	private ISelection selection;
+public class ScenarioNewWizard extends Wizard implements INewWizard
+{
+	private ScenarioPage0	page0_;
+	private ScenarioPage1	page1_;
+	private ISelection		selection;
 
-	protected int lastPageHashCode_;
+	protected int			lastPageHashCode_;
 
 	/**
 	 * Constructor for ScenarioNewWizard.
@@ -65,49 +62,61 @@ public class ScenarioNewWizard extends Wizard implements INewWizard {
 	 * Adding the page to the wizard.
 	 */
 	@Override
-	public void addPages() {
-		page0_ = new ScenarioPage0(selection);
-		addPage(page0_);
+	public void addPages()
+	{
+		this.page0_ = new ScenarioPage0(this.selection);
+		addPage(this.page0_);
 
-		page1_  = new ScenarioPage1();
-		//addPage(page1_);
+		this.page1_ = new ScenarioPage1();
+		// addPage(page1_);
 
-		lastPageHashCode_ = getPages()[getPageCount()-1].hashCode();
+		this.lastPageHashCode_ = getPages()[getPageCount() - 1].hashCode();
 	}
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
 	 * @see org.eclipse.jface.wizard.Wizard#canFinish()
 	 */
 	@Override
-	public boolean canFinish() {
+	public boolean canFinish()
+	{
 		IWizardPage page = getContainer().getCurrentPage();
-		return super.canFinish() && page.hashCode() == lastPageHashCode_ && page.isPageComplete();
+		return super.canFinish() && page.hashCode() == this.lastPageHashCode_ && page.isPageComplete();
 	}
+
 	/**
-	 * This method is called when 'Finish' button is pressed in
-	 * the wizard. We will create an operation and run it
-	 * using wizard as execution context.
+	 * This method is called when 'Finish' button is pressed in the wizard. We
+	 * will create an operation and run it using wizard as execution context.
 	 */
 	@Override
-	public boolean performFinish() {
-		final String containerName = page0_.getProjectName();
-		final String fileName = page0_.getFileName();
+	public boolean performFinish()
+	{
+		final String containerName = this.page0_.getProjectName();
+		final String fileName = this.page0_.getFileName();
 		IRunnableWithProgress op = new IRunnableWithProgress() {
 			@Override
-			public void run(IProgressMonitor monitor) throws InvocationTargetException {
-				try {
+			public void run(IProgressMonitor monitor) throws InvocationTargetException
+			{
+				try
+				{
 					doFinish(containerName, fileName, monitor);
-				} catch (CoreException e) {
+				} catch (CoreException e)
+				{
 					throw new InvocationTargetException(e);
-				} finally {
+				} finally
+				{
 					monitor.done();
 				}
 			}
 		};
-		try {
+		try
+		{
 			getContainer().run(false, false, op);
-		} catch (InterruptedException e) {
+		} catch (InterruptedException e)
+		{
 			return false;
-		} catch (InvocationTargetException e) {
+		} catch (InvocationTargetException e)
+		{
 			Throwable realException = e.getTargetException();
 			MessageDialog.openError(getShell(), "Error", realException.getMessage());
 			return false;
@@ -116,50 +125,56 @@ public class ScenarioNewWizard extends Wizard implements INewWizard {
 	}
 
 	/**
-	 * The worker method. It will find the container, create the
-	 * file if missing or just replace its contents, and open
-	 * the editor on the newly created file.
+	 * The worker method. It will find the container, create the file if missing
+	 * or just replace its contents, and open the editor on the newly created
+	 * file.
 	 */
-	private void doFinish(
-			String containerName,
-			String fileName,
-			IProgressMonitor monitor)
-	throws CoreException {
+	private void doFinish(String containerName, String fileName, IProgressMonitor monitor) throws CoreException
+	{
 		// create a sample file
 		monitor.beginTask("Creating " + fileName, 2);
 		IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
 		IResource resource = root.findMember(new Path(containerName));
-		if (!resource.exists() || !(resource instanceof IContainer)) {
+		if (!resource.exists() || !(resource instanceof IContainer))
+		{
 			throwCoreException("Container \"" + containerName + "\" does not exist.");
 		}
 		IContainer container = (IContainer) resource;
 		final IFile file = container.getFile(new Path(fileName));
 
-		try {
+		try
+		{
 			InputStream stream = getScenarioStream();
 
-			if (stream == null) {
+			if (stream == null)
+			{
 				return;
 			}
 
-			if (file.exists()) {
+			if (file.exists())
+			{
 				file.setContents(stream, true, true, monitor);
-			} else {
+			} else
+			{
 				file.create(stream, true, monitor);
 			}
 			stream.close();
-		} catch (IOException e) {
+		} catch (IOException e)
+		{
 			e.printStackTrace();
 		}
 		monitor.worked(1);
 		monitor.setTaskName("Opening file for editing...");
 		getShell().getDisplay().asyncExec(new Runnable() {
-			public void run() {
-				IWorkbenchPage page =
-					PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
-				try {
+			@Override
+			public void run()
+			{
+				IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
+				try
+				{
 					IDE.openEditor(page, file, true);
-				} catch (PartInitException e) {
+				} catch (PartInitException e)
+				{
 				}
 			}
 		});
@@ -169,41 +184,42 @@ public class ScenarioNewWizard extends Wizard implements INewWizard {
 	/**
 	 * Returns the scenario file contents as an InputStream
 	 */
-	private InputStream getScenarioStream() {
+	private InputStream getScenarioStream()
+	{
 		ArrayList<ReplaceableParameter> params = new ArrayList<ReplaceableParameter>();
 
-		params.add(new ReplaceableParameter("$$scenario_id", page0_.getScenarioId()));
-		params.add(new ReplaceableParameter("$$next_scenario_id", page0_.getNextScenarioId()));
-		params.add(new ReplaceableParameter("$$scenario_name", page0_.getScenarioName()));
-		params.add(new ReplaceableParameter("$$map_data", page0_.getMapData()));
+		params.add(new ReplaceableParameter("$$scenario_id", this.page0_.getScenarioId()));
+		params.add(new ReplaceableParameter("$$next_scenario_id", this.page0_.getNextScenarioId()));
+		params.add(new ReplaceableParameter("$$scenario_name", this.page0_.getScenarioName()));
+		params.add(new ReplaceableParameter("$$map_data", this.page0_.getMapData()));
 
-		params.add(new ReplaceableParameter("$$turns_number", String.valueOf(page0_.getTurnsNumber())));
-
+		params.add(new ReplaceableParameter("$$turns_number", String.valueOf(this.page0_.getTurnsNumber())));
 
 		String template = TemplateProvider.getProcessedTemplate("scenario", params);
 
 		if (template == null)
 		{
-			GUIUtils.showMessageBox(WorkspaceUtils.getWorkbenchWindow(),
-					"Template for \"scenario\" not found.");
+			GUIUtils.showMessageBox(WorkspaceUtils.getWorkbenchWindow(), "Template for \"scenario\" not found.");
 			return null;
 		}
 
 		return new ByteArrayInputStream(template.getBytes());
 	}
 
-	private void throwCoreException(String message) throws CoreException {
-		IStatus status =
-			new Status(IStatus.ERROR, "Wesnoth_Eclipse_Plugin", IStatus.OK, message, null);
+	private void throwCoreException(String message) throws CoreException
+	{
+		IStatus status = new Status(IStatus.ERROR, "Wesnoth_Eclipse_Plugin", IStatus.OK, message, null);
 		throw new CoreException(status);
 	}
 
 	/**
-	 * We will accept the selection in the workbench to see if
-	 * we can initialize from it.
+	 * We will accept the selection in the workbench to see if we can initialize
+	 * from it.
 	 * @see IWorkbenchWizard#init(IWorkbench, IStructuredSelection)
 	 */
-	public void init(IWorkbench workbench, IStructuredSelection selection) {
+	@Override
+	public void init(IWorkbench workbench, IStructuredSelection selection)
+	{
 		this.selection = selection;
 	}
 }

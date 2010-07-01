@@ -25,15 +25,20 @@ import wesnoth_eclipse_plugin.utils.AntUtils;
 import wesnoth_eclipse_plugin.utils.GUIUtils;
 import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
 
-public class WesnothProjectBuilder extends IncrementalProjectBuilder {
+public class WesnothProjectBuilder extends IncrementalProjectBuilder
+{
 
-	public static final String BUILDER_ID = "Wesnoth_Eclipse_Plugin.projectBuilder";
-	private static final String MARKER_TYPE = "Wesnoth_Eclipse_Plugin.configProblem";
+	public static final String	BUILDER_ID	= "Wesnoth_Eclipse_Plugin.projectBuilder";
+	private static final String	MARKER_TYPE	= "Wesnoth_Eclipse_Plugin.configProblem";
 
-	class SampleDeltaVisitor implements IResourceDeltaVisitor {
-		public boolean visit(IResourceDelta delta) throws CoreException {
+	class SampleDeltaVisitor implements IResourceDeltaVisitor
+	{
+		@Override
+		public boolean visit(IResourceDelta delta) throws CoreException
+		{
 			IResource resource = delta.getResource();
-			switch (delta.getKind()) {
+			switch (delta.getKind())
+			{
 			case IResourceDelta.ADDED:
 				// handle added resource
 				checkResource(resource);
@@ -46,40 +51,47 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder {
 				checkResource(resource);
 				break;
 			}
-			//return true to continue visiting children.
+			// return true to continue visiting children.
 			return true;
 		}
 	}
 
-	class SampleResourceVisitor implements IResourceVisitor {
-		public boolean visit(IResource resource) {
+	class SampleResourceVisitor implements IResourceVisitor
+	{
+		@Override
+		public boolean visit(IResource resource)
+		{
 			checkResource(resource);
-			//return true to continue visiting children.
+			// return true to continue visiting children.
 			return true;
 		}
 	}
 
-	protected void fullBuild(final IProgressMonitor monitor) throws CoreException {
-		try {
+	protected void fullBuild(final IProgressMonitor monitor) throws CoreException
+	{
+		try
+		{
 			getProject().accept(new SampleResourceVisitor());
-		} catch (CoreException e) {
+		} catch (CoreException e)
+		{
 			e.printStackTrace();
 		}
 	}
 
-	protected void incrementalBuild(IResourceDelta delta, IProgressMonitor monitor) throws CoreException {
+	protected void incrementalBuild(IResourceDelta delta, IProgressMonitor monitor) throws CoreException
+	{
 		// the visitor does the work.
 		delta.accept(new SampleDeltaVisitor());
 	}
 
 	@Override
-	protected IProject[] build(int kind, Map args, IProgressMonitor monitor) throws CoreException {
+	protected IProject[] build(int kind, Map args, IProgressMonitor monitor) throws CoreException
+	{
 		System.out.println("building");
 
 		if (PreferenceInitializer.getString(PreferenceConstants.P_WESNOTH_USER_DIR).isEmpty())
 		{
-			GUIUtils.showMessageBox(WorkspaceUtils.getWorkbenchWindow(),
-					"Please set the wesnoth user dir before creating the content");
+			GUIUtils.showMessageBox(WorkspaceUtils.getWorkbenchWindow(), "Please set the wesnoth user dir before creating the content");
 			return null;
 		}
 
@@ -87,17 +99,15 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder {
 		// in the user add-ons directory (incremental)
 		if (!(new File(getProject().getLocation().toOSString() + "/build.xml").exists()))
 		{
-			GUIUtils.showMessageBox(WorkspaceUtils.getWorkbenchWindow(),
-				"The 'build.xml' file is missing. The building cannot continue.");
-			//TODO: better way of handling this - maybe regenerating?
+			GUIUtils.showMessageBox(WorkspaceUtils.getWorkbenchWindow(), "The 'build.xml' file is missing. The building cannot continue.");
+			// TODO: better way of handling this - maybe regenerating?
 			return null;
 		}
 
 		HashMap<String, String> properties = new HashMap<String, String>();
-		properties.put("wesnoth.user.dir",
-				PreferenceInitializer.getString(PreferenceConstants.P_WESNOTH_USER_DIR) + Path.SEPARATOR);
+		properties.put("wesnoth.user.dir", PreferenceInitializer.getString(PreferenceConstants.P_WESNOTH_USER_DIR) + Path.SEPARATOR);
 		System.out.println("Ant result:");
-		String result = AntUtils.runAnt(getProject().getLocation().toOSString() + "/build.xml",properties,true);
+		String result = AntUtils.runAnt(getProject().getLocation().toOSString() + "/build.xml", properties, true);
 		System.out.println(result);
 
 		if (result == null)
@@ -110,91 +120,103 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder {
 		// create the temporary directory used by the plugin if not created
 		WorkspaceUtils.getTemporaryFolder();
 
-		if (kind == FULL_BUILD) {
+		if (kind == FULL_BUILD)
+		{
 			fullBuild(monitor);
-		} else {
+		}
+		else
+		{
 			IResourceDelta delta = getDelta(getProject());
-			if (delta == null) {
+			if (delta == null)
+			{
 				fullBuild(monitor);
-			} else {
+			}
+			else
+			{
 				incrementalBuild(delta, monitor);
 			}
 		}
 		return null;
 	}
 
-	void checkResource(IResource resource) {
+	void checkResource(IResource resource)
+	{
 		// config files
-		if (resource instanceof IFile &&
-			(resource.getName().toLowerCase(Locale.ENGLISH).endsWith(".cfg")))
+		if (resource instanceof IFile && (resource.getName().toLowerCase(Locale.ENGLISH).endsWith(".cfg")))
 		{
 			try
 			{
 				IFile file = (IFile) resource;
 				deleteMarkers(file);
 
-				PreprocessorActions.preprocessFile(WorkspaceUtils.getPathRelativeToUserDir(file),
-						WorkspaceUtils.getTemporaryFolder(), null, true,false);
+				PreprocessorActions.preprocessFile(WorkspaceUtils.getPathRelativeToUserDir(file), WorkspaceUtils.getTemporaryFolder(), null, true, false);
 
 				// TODO: here be dragons
 				// - add markers for wmllint, wmlscope
 				// - need a better output from wmltools
 
 				/*
-				IMarker[] resIMarkers = file.findMarkers(MARKER_TYPE, false, IResource.DEPTH_ZERO);
-				Logger.print("found markers: " + resIMarkers.length);
-
-				ExternalToolInvoker invoker = new ExternalToolInvoker(TOOL_PATH, resource.getFullPath().toOSString(), true);
-				Logger.print("Tool: "+TOOL_PATH+ " checking file: "+resource.getFullPath().toOSString());
-				invoker.run();
-				invoker.waitFor();
-
-				// we need to find the correct column start/end based on the current document
-				// (or get that from the tool)
-				IDocumentProvider provider = new TextFileDocumentProvider();
-				provider.connect(file);
-				IDocument document = provider.getDocument(file);
-
-				String line;MarkerToken token;
-				while((line  = invoker.readOutputLine()) != null)
-				{
-					token = MarkerToken.parseToken(line);
-					IMarker marker = file.createMarker(MARKER_TYPE);
-					marker.setAttribute(IMarker.MESSAGE, token.getMessage());
-					if (token.getColumnEnd() != 0)
-					{
-						marker.setAttribute(IMarker.CHAR_START,document.getLineOffset(token.getLine()-1) + token.getColumnStart());
-						marker.setAttribute(IMarker.CHAR_END, document.getLineOffset(token.getLine()-1) + token.getColumnEnd());
-					}
-					marker.setAttribute(IMarker.LINE_NUMBER, token.getLine());
-					marker.setAttribute(IMarker.SEVERITY,token.getType().toMarkerSeverity());
-				}
-				*/
-			} catch (Exception e) {
+				 * IMarker[] resIMarkers = file.findMarkers(MARKER_TYPE, false,
+				 * IResource.DEPTH_ZERO); Logger.print("found markers: " +
+				 * resIMarkers.length); ExternalToolInvoker invoker = new
+				 * ExternalToolInvoker(TOOL_PATH,
+				 * resource.getFullPath().toOSString(), true);
+				 * Logger.print("Tool: "+TOOL_PATH+
+				 * " checking file: "+resource.getFullPath().toOSString());
+				 * invoker.run(); invoker.waitFor(); // we need to find the
+				 * correct column start/end based on the current document // (or
+				 * get that from the tool) IDocumentProvider provider = new
+				 * TextFileDocumentProvider(); provider.connect(file); IDocument
+				 * document = provider.getDocument(file); String
+				 * line;MarkerToken token; while((line =
+				 * invoker.readOutputLine()) != null) { token =
+				 * MarkerToken.parseToken(line); IMarker marker =
+				 * file.createMarker(MARKER_TYPE);
+				 * marker.setAttribute(IMarker.MESSAGE, token.getMessage()); if
+				 * (token.getColumnEnd() != 0) {
+				 * marker.setAttribute(IMarker.CHAR_START
+				 * ,document.getLineOffset(token.getLine()-1) +
+				 * token.getColumnStart());
+				 * marker.setAttribute(IMarker.CHAR_END,
+				 * document.getLineOffset(token.getLine()-1) +
+				 * token.getColumnEnd()); }
+				 * marker.setAttribute(IMarker.LINE_NUMBER, token.getLine());
+				 * marker
+				 * .setAttribute(IMarker.SEVERITY,token.getType().toMarkerSeverity
+				 * ()); }
+				 */
+			} catch (Exception e)
+			{
 				e.printStackTrace();
 			}
 		}
 	}
 
-	private void addMarker(IFile file, String message, int lineNumber,
-			int severity) {
-		try {
+	private void addMarker(IFile file, String message, int lineNumber, int severity)
+	{
+		try
+		{
 			IMarker marker = file.createMarker(MARKER_TYPE);
 			marker.setAttribute(IMarker.MESSAGE, message);
 			marker.setAttribute(IMarker.SEVERITY, severity);
-			if (lineNumber == -1) {
+			if (lineNumber == -1)
+			{
 				lineNumber = 1;
 			}
 			marker.setAttribute(IMarker.LINE_NUMBER, lineNumber);
-		} catch (CoreException e) {
+		} catch (CoreException e)
+		{
 			e.printStackTrace();
 		}
 	}
 
-	private void deleteMarkers(IFile file) {
-		try {
+	private void deleteMarkers(IFile file)
+	{
+		try
+		{
 			file.deleteMarkers(MARKER_TYPE, false, IResource.DEPTH_ZERO);
-		} catch (CoreException e) {
+		} catch (CoreException e)
+		{
 			e.printStackTrace();
 		}
 	}

@@ -16,7 +16,7 @@ public class ProjectUtils
 		if (!file.exists())
 			return null;
 
-		String fileContents = FileUtils.getFileContents(file);
+		String fileContents = ResourceUtils.getFileContents(file);
 		int index = fileContents.indexOf(propertyName + "=");
 		if (index == -1)
 			return null;
@@ -62,13 +62,13 @@ public class ProjectUtils
 	public static boolean isCampaignFile(String fileName)
 	{
 		//TODO: replace this with a better checking
-		String fileContentString = FileUtils.getFileContents(new File(fileName));
+		String fileContentString = ResourceUtils.getFileContents(new File(fileName));
 		return (fileContentString.contains("[campaign]") && fileContentString.contains("[/campaign]"));
 	}
 	public static boolean isScenarioFile(String fileName)
 	{
 		//TODO: replace this with a better checking
-		String fileContentString = FileUtils.getFileContents(new File(fileName));
+		String fileContentString = ResourceUtils.getFileContents(new File(fileName));
 		return (fileContentString.contains("[scenario]") && fileContentString.contains("[/scenario]"));
 	}
 }

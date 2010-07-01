@@ -1,7 +1,7 @@
 /**
  * @author Timotei Dolean
  */
-package wesnoth_eclipse_plugin;
+package wesnoth_eclipse_plugin.wizards;
 
 public class ReplaceableParameter{
 	public String paramName;

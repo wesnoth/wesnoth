@@ -3,16 +3,18 @@
 <plugin>
 
    <extension
-         id="sampleBuilder"
+         id="Wesnoth_Eclipse_Plugin.projectBuilder"
          name="Sample Project Builder"
          point="org.eclipse.core.resources.builders">
       <builder hasNature="true">
-         <run class="wesnoth_eclipse_plugin.builder.WesnothProjectBuilder"/>
+         <run
+               class="wesnoth_eclipse_plugin.builder.WesnothProjectBuilder">
+         </run>
       </builder>
    </extension>
    <extension
-         id="sampleNature"
-         name="Sample Project Nature"
+         id="Wesnoth_Eclipse_Plugin.sampleNature"
+         name="ProjectNature"
          point="org.eclipse.core.resources.natures">
       <runtime>
          <run
@@ -20,7 +22,7 @@
          </run>
       </runtime>
       <builder
-            id="Wesnoth_Eclipse_Plugin.sampleBuilder">
+            id="Wesnoth_Eclipse_Plugin.projectBuilder">
       </builder>
    </extension>
    <extension

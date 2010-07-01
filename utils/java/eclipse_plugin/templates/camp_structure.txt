@@ -1,6 +1,6 @@
-# specifies the folders or files(and template name used)
-# to be created on a new campaign project
-# NOT IMPLEMENTED!
+# specifies a list of file/directory names to be created on a new campaign project
+# if a line doesn't contain a template (e.g. <filename>:<template_name>)
+# it will be considered a directory
 ai
 images
 maps
@@ -10,3 +10,4 @@ units
 utils
 _main.cfg:campaign
 $$campaign_name.pbl:pbl
+build.xml:build_xml
