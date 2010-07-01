@@ -59,7 +59,7 @@ public:
 	 */
 	void set_planned_unit_map();
 	void set_real_unit_map();
-	bool has_planned_unit_map() { return planned_unit_map_; }
+	bool has_planned_unit_map() const { return planned_unit_map_active_; }
 
 	/**
 	 * Highlights the action for this unit,
@@ -95,9 +95,8 @@ public:
 	/** Deletes last action in the queue for current side */
 	void delete_last();
 
-	/** Checks whether the specified unit has at least one planned action,
-	 *  and returns the first action found. */
-	boost::shared_ptr<action> get_first_action_of(const unit& unit) const;
+	/** Checks whether the specified unit has at least one planned action */
+	bool unit_has_actions(const unit& unit) const;
 
 private:
 	/**
@@ -123,7 +122,7 @@ private:
 	//TODO: this mutex might find a better home within the side_actions class.
 	wb_mutex actions_modification_mutex_;
 
-	bool planned_unit_map_;
+	bool planned_unit_map_active_;
 };
 
 struct scoped_planned_unit_map

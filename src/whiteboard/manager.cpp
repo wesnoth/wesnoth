@@ -19,10 +19,10 @@
 #include "manager.hpp"
 
 #include "action.hpp"
-#include "find_visitor.hpp"
 #include "highlight_visitor.hpp"
 #include "mapbuilder_visitor.hpp"
 #include "move.hpp"
+#include "side_actions.hpp"
 
 #include "arrow.hpp"
 #include "foreach.hpp"
@@ -44,7 +44,7 @@ manager::manager():
 		selected_unit_(NULL),
 		highlighted_unit_(NULL),
 		move_saving_mutex_(),
-		planned_unit_map_(false)
+		planned_unit_map_active_(false)
 {
 }
 
@@ -56,7 +56,7 @@ manager::~manager()
 	}
 }
 
-static side_actions_ptr get_current_side_actions()
+static side_actions_ptr current_actions()
 {
 	int current_side = resources::controller->current_side();
 	team& current_team = (*resources::teams)[current_side - 1];
@@ -68,18 +68,18 @@ void manager::set_planned_unit_map()
 {
 	if (active_)
 	{
-		assert (!planned_unit_map_);
-		if (!planned_unit_map_)
+		assert (!planned_unit_map_active_);
+		if (!planned_unit_map_active_)
 		{
 			mapbuilder_.reset(new mapbuilder_visitor(*resources::units));
-			const action_set& actions = get_current_side_actions()->actions();
+			const action_set& actions = current_actions()->actions();
 			DBG_WB << "Building planned unit map.\n";
 			foreach (const action_ptr &action, actions)
 			{
 				assert(action);
 				action->accept(*mapbuilder_);
 			}
-			planned_unit_map_ = true;
+			planned_unit_map_active_ = true;
 		}
 	}
 }
@@ -88,18 +88,20 @@ void manager::set_real_unit_map()
 {
 	if (active_)
 	{
-		assert (planned_unit_map_);
-		if (planned_unit_map_)
+		assert (planned_unit_map_active_);
+		if (planned_unit_map_active_)
 		{
 			DBG_WB << "Restoring regular unit map.\n";
 			mapbuilder_.reset();
-			planned_unit_map_ = false;
+			planned_unit_map_active_ = false;
 		}
 	}
 }
 
 void manager::on_mouseover_change(const map_location& hex)
 {
+	//FIXME: Detect if a WML event is executing, and if so, avoid modifying the unit map during that time.
+	// Acting otherwise causes a crash.
 	if (active_ && !selected_unit_)
 	{
 		remove_highlight();
@@ -123,7 +125,7 @@ void manager::highlight_hex(const map_location& hex)
 	}
 	else
 	{
-		action_set actions = get_current_side_actions()->actions();
+		action_set actions = current_actions()->actions();
 		foreach(action_ptr action, actions)
 		{
 			if (action->is_related_to(hex))
@@ -137,7 +139,7 @@ void manager::highlight_hex(const map_location& hex)
 	{
 		highlight_visitor highlighter(true);
 
-		action_set actions = get_current_side_actions()->actions();
+		action_set actions = current_actions()->actions();
 		foreach(action_ptr action, actions)
 		{
 			if (action->is_related_to(*highlighted_unit_))
@@ -152,7 +154,7 @@ void manager::remove_highlight()
 {
 	highlight_visitor unhighlighter(false);
 
-	action_set actions = get_current_side_actions()->actions();
+	action_set actions = current_actions()->actions();
 	foreach(action_ptr action, actions)
 	{
 		action->accept(unhighlighter);
@@ -164,8 +166,8 @@ void manager::on_unit_select(unit& unit)
 {
 	erase_temp_move();
 	remove_highlight();
-	get_current_side_actions()->set_future_view(true);
-	action_set actions = get_current_side_actions()->actions();
+	current_actions()->set_future_view(true);
+	action_set actions = current_actions()->actions();
 	highlight_visitor highlighter(true);
 	foreach(action_ptr action, actions)
 	{
@@ -232,7 +234,8 @@ void manager::erase_temp_move()
 		//reset src unit back to normal, if it lacks any planned action,
 		//and we're not in the process of saving a move
 		wb_scoped_lock try_lock(move_saving_mutex_, boost::interprocess::try_to_lock);
-		if (try_lock && selected_unit_ && !get_first_action_of(*selected_unit_))
+		if (try_lock && selected_unit_
+				&& current_actions()->find_first_action_of(*selected_unit_) == current_actions()->end())
 		{
 				selected_unit_->set_standing(true);
 		}
@@ -251,7 +254,9 @@ void manager::save_temp_move()
 	fake_unit_ptr fake_unit;
 	unit* target_unit;
 
-	{ //This block of code protected against simultaneous execution by multiple threads
+	{
+		// Wait until the block is finished and the variables have finished copying,
+		// before granting another thread access.
 		wb_scoped_lock lock(move_saving_mutex_); //waits for lock
 
 		route = route_;
@@ -263,8 +268,6 @@ void manager::save_temp_move()
 
 		erase_temp_move();
 		selected_unit_ = NULL;
-		//TODO: properly handle movement points
-
 
 		LOG_WB << "Creating move for unit " << target_unit->name() << " [" << target_unit->id() << "]"
 				<< " from " << route.front()
@@ -273,10 +276,10 @@ void manager::save_temp_move()
 
 	assert(!has_planned_unit_map());
 
-	target_unit->set_ghosted(false); //FIXME: doesn't take effect until after the move animation, boucman: help!
+	target_unit->set_ghosted(false);
 	unit_display::move_unit(route, *fake_unit, *resources::teams, true);
 
-	get_current_side_actions()->queue_move(*target_unit, route.front(), route.back(), move_arrow, fake_unit);
+	current_actions()->queue_move(*target_unit, route.front(), route.back(), move_arrow, fake_unit);
 }
 
 void manager::contextual_execute()
@@ -285,25 +288,28 @@ void manager::contextual_execute()
 	if (!try_lock)
 		return;
 
-	//TODO: catch end_turn_exception somewhere here?
-	//TODO: properly handle movement points
-	get_current_side_actions()->set_future_view(false);
-
-	if (selected_unit_)
+	if (!current_actions()->empty())
 	{
-		get_current_side_actions()->execute(get_first_action_of(*selected_unit_));
-	}
-	else if (highlighted_unit_)
-	{
-		get_current_side_actions()->execute(get_first_action_of(*highlighted_unit_));
-	}
-	else
-	{
-		get_current_side_actions()->execute_next();
-	}
+		//TODO: catch end_turn_exception somewhere here?
+		//TODO: properly handle movement points, probably through the mapbuilder_visitor
+		current_actions()->set_future_view(false);
+
+		if (selected_unit_)
+		{
+			current_actions()->execute(current_actions()->find_first_action_of(*selected_unit_));
+		}
+		else if (highlighted_unit_)
+		{
+			current_actions()->execute(current_actions()->find_first_action_of(*highlighted_unit_));
+		}
+		else
+		{
+			current_actions()->execute_next();
+		}
 
 
-	get_current_side_actions()->set_future_view(true);
+		current_actions()->set_future_view(true);
+	}
 }
 
 //TODO: transfer most of this function into side_actions
@@ -313,15 +319,14 @@ void manager::delete_last()
 	if (!try_lock)
 		return;
 
-	get_current_side_actions()->remove_action(get_current_side_actions()->end() - 1);
+	if (!current_actions()->empty())
+		current_actions()->remove_action(current_actions()->end() - 1);
 }
 
-//TODO: better to move this function into side_actions
-action_ptr manager::get_first_action_of(const unit& unit) const
+bool manager::unit_has_actions(const unit& unit) const
 {
-	find_visitor finder;
-	action_ptr action = finder.find_first_action_of(unit, get_current_side_actions()->actions());
-	return action;
+	return current_actions()->find_first_action_of(unit)
+			!= current_actions()->end();
 }
 
 scoped_planned_unit_map::scoped_planned_unit_map()

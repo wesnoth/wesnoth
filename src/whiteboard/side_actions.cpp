@@ -42,87 +42,79 @@ const action_set& side_actions::actions() const
 	return actions_;
 }
 
-void side_actions::execute_next()
+side_actions::iterator side_actions::execute_next()
 {
 	if (!actions_.empty())
 	{
-		bool finished = actions_.front()->execute();
-		if (finished)
-		{
-			actions_.pop_front();
-			update_last_action_display();
-		}
-
-		validate_actions();
+		execute(begin());
+		return begin();
 	}
+	return end();
 }
 
-void side_actions::execute(size_t index)
+side_actions::iterator side_actions::execute(side_actions::iterator position)
 {
-	if (!actions_.empty() && index < end())
+	if (!actions_.empty() && validate_iterator(position))
 	{
-		execute(actions_[index]);
-	}
-}
-
-void side_actions::execute(action_ptr action)
-{
-	if (!actions_.empty())
-	{
+		size_t distance = std::distance(begin(), position);
+		action_ptr& action = *position;
 		bool finished = action->execute();
 		if (finished)
 		{
-			remove_action(action);
+			remove_action(position);
 		}
 		validate_actions();
+		return begin() + distance;
+	}
+	else
+	{
+		return end();
 	}
 }
 
-void side_actions::insert_move(unit& subject, const map_location& source_hex, const map_location& target_hex, size_t index, boost::shared_ptr<arrow> arrow,
-		boost::shared_ptr<unit> fake_unit)
+side_actions::iterator side_actions::insert_move(unit& subject, const map_location& source_hex, const map_location& target_hex, side_actions::iterator position,
+		boost::shared_ptr<arrow> arrow,	boost::shared_ptr<unit> fake_unit)
 {
 	action_ptr action(new move(subject, source_hex, target_hex, arrow, fake_unit));
-	assert(index < end());
-	actions_.insert(actions_.begin() + index, action);
+	assert(position < end());
+	iterator valid_position = actions_.insert(position, action);
 	validate_actions();
-	update_last_action_display();
+	return valid_position;
 }
 
-void side_actions::queue_move(unit& subject, const map_location& source_hex, const map_location& target_hex,
+side_actions::iterator side_actions::queue_move(unit& subject, const map_location& source_hex, const map_location& target_hex,
 		boost::shared_ptr<arrow> arrow,	boost::shared_ptr<unit> fake_unit)
 {
 	action_ptr action(new move(subject, source_hex, target_hex, arrow, fake_unit));
 	actions_.push_back(action);
+	// Contrary to insert_move, no need to validate actions here since we're adding to the end of the queue
 	update_last_action_display();
+	return end() - 1;
 }
 
-void side_actions::move_earlier(size_t index, size_t increment)
+side_actions::iterator side_actions::move_earlier(side_actions::iterator position, size_t increment)
 {
-	move_in_queue(index, - (int) increment);
+	return move_in_queue(position, - (int) increment);
 }
 
-void side_actions::move_later(size_t index, size_t increment)
+side_actions::iterator side_actions::move_later(side_actions::iterator position, size_t increment)
 {
-	move_in_queue(index, (int) increment);
+	return move_in_queue(position, (int) increment);
 }
 
-void side_actions::remove_action(size_t index)
+side_actions::iterator side_actions::remove_action(side_actions::iterator position)
 {
-	if(!actions_.empty())
+	assert((!actions_.empty() && validate_iterator(position)));
+	size_t distance = std::distance(begin(), position);
+	if (!actions_.empty() && validate_iterator(position))
 	{
-		assert(index < end());
-
-		action_set::iterator position = actions_.begin()+index;
-		if (position < actions_.end())
-		{
-			actions_.erase(position);
-			validate_actions();
-			update_last_action_display();
-		}
+		actions_.erase(position);
+		validate_actions();
 	}
+	return begin() + distance;
 }
 
-void side_actions::remove_action(action_ptr action)
+side_actions::iterator side_actions::get_position_of(action_ptr action)
 {
 	if (!actions_.empty())
 	{
@@ -131,13 +123,30 @@ void side_actions::remove_action(action_ptr action)
 		{
 			if (*position == action)
 			{
-				actions_.erase(position);
-				validate_actions();
-				update_last_action_display();
-				break;
+				return position;
 			}
 		}
 	}
+	return end();
+}
+
+side_actions::iterator side_actions::find_first_action_of(const unit& unit, side_actions::iterator start_position)
+{
+	if (start_position == side_actions::iterator())
+	{
+		start_position = begin();
+	}
+
+	side_actions::iterator position;
+	for (position = start_position; position != end(); ++position)
+	{
+		action_ptr& action = *position;
+		if (&action->get_unit() == &unit)
+		{
+			return position;
+		}
+	}
+	return end();
 }
 
 void side_actions::set_future_view(bool future_view)
@@ -175,43 +184,23 @@ void side_actions::validate_actions()
 	{
 		action->accept(validator);
 	}
+	update_last_action_display();
 }
 
-/*
- * Utility function to move actions around the queue.
- * Positive increment = move toward back of the queue and later execution.
- * Negative increment = move toward front of the queue and earlier execution.
- */
-void side_actions::move_in_queue(size_t index, int increment)
+side_actions::iterator side_actions::move_in_queue(side_actions::iterator position, int increment)
 {
 	assert(!actions_.empty());
-	assert(index < end());
-	if (actions_.empty() || index >= end())
-	{
-		return;
-	}
+	assert(validate_iterator(position));
+	if (actions_.empty() || !validate_iterator(position))
+		return end();
 
-	action_set::iterator position;
-	position = actions_.begin() + index;
-
-	assert(index + increment < end());
-	if (index + increment >= end())
-	{
-		increment = int(end()) - index;
-	}
-
-	assert(int(index) + increment >= 0);
-	if (int(index) + increment < 0)
-	{
-		increment = -index;
-	}
-
-	action_ptr action = *position;
+	const action_ptr& action = *position;
 	action_set::iterator after = actions_.erase(position);
 	//be careful, previous iterators have just been invalidated by erase()
 	action_set::iterator destination = after + increment;
-	actions_.insert(destination, action);
+	action_set::iterator valid_position = actions_.insert(destination, action);
 	validate_actions();
+	return valid_position;
 }
 
 

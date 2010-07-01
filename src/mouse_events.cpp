@@ -607,7 +607,7 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse) {
 		if (!browse && !commands_disabled && u->side() == gui().viewing_side()) {
 			sound::play_UI_sound("select-unit.wav");
 
-			if (!(resources::whiteboard->is_active() && resources::whiteboard->get_first_action_of(*u))) {
+			if (!(resources::whiteboard->is_active() && resources::whiteboard->unit_has_actions(*u))) {
 				u->set_selecting();
 				game_events::fire("select", hex);
 			}

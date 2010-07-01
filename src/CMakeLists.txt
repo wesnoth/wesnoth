@@ -467,7 +467,6 @@ set(wesnoth-main_SRC
     whiteboard/action.cpp
     whiteboard/manager.cpp
     whiteboard/move.cpp
-    whiteboard/find_visitor.cpp
     whiteboard/highlight_visitor.cpp
     whiteboard/mapbuilder_visitor.cpp
     whiteboard/side_actions.cpp
