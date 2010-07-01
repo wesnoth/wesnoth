@@ -242,39 +242,45 @@ void manager::erase_temp_move()
 
 void manager::save_temp_move()
 {
-	wb_scoped_lock try_lock(move_saving_mutex_, boost::interprocess::try_to_lock);
-	if (try_lock)
-	{
-		std::vector<map_location> route = route_;
-		arrow_ptr move_arrow;
+	std::vector<map_location> route;
+	arrow_ptr move_arrow;
+	fake_unit_ptr fake_unit;
+	unit* target_unit;
+
+	{ //This block of code protected against simultaneous execution by multiple threads
+		wb_scoped_lock lock(move_saving_mutex_); //waits for lock
+
+		route = route_;
 		move_arrow.reset(new arrow(*move_arrow_.get()));
 		resources::screen->add_arrow(*move_arrow);
-		fake_unit_ptr fake_unit;
 		fake_unit.reset(new unit(*fake_unit_.get()));
 		resources::screen->place_temporary_unit(fake_unit.get());
-		unit* target_unit = selected_unit_;
+		target_unit = selected_unit_;
 
 		erase_temp_move();
 		selected_unit_ = NULL;
 		//TODO: properly handle movement points
 
+
 		LOG_WB << "Creating move for unit " << target_unit->name() << " [" << target_unit->id() << "]"
 				<< " from " << route.front()
 				<< " to " << route.back() << "\n";
-
-		assert(!has_planned_unit_map());
-
-		target_unit->set_ghosted(false); //FIXME: doesn't take effect until after the move animation, boucman: help!
-		unit_display::move_unit(route, *fake_unit, *resources::teams, true);
-
-		get_current_side_actions()->queue_move(*target_unit, route.front(), route.back(), move_arrow, fake_unit);
-
 	}
 
+	assert(!has_planned_unit_map());
+
+	target_unit->set_ghosted(false); //FIXME: doesn't take effect until after the move animation, boucman: help!
+	unit_display::move_unit(route, *fake_unit, *resources::teams, true);
+
+	get_current_side_actions()->queue_move(*target_unit, route.front(), route.back(), move_arrow, fake_unit);
 }
 
 void manager::contextual_execute()
 {
+	wb_scoped_lock try_lock(actions_modification_mutex_, boost::interprocess::try_to_lock);
+	if (!try_lock)
+		return;
+
 	//TODO: catch end_turn_exception somewhere here?
 	//TODO: properly handle movement points
 	get_current_side_actions()->set_future_view(false);
@@ -299,7 +305,11 @@ void manager::contextual_execute()
 //TODO: transfer most of this function into side_actions
 void manager::delete_last()
 {
-		get_current_side_actions()->remove_action(get_current_side_actions()->end() - 1);
+	wb_scoped_lock try_lock(actions_modification_mutex_, boost::interprocess::try_to_lock);
+	if (!try_lock)
+		return;
+
+	get_current_side_actions()->remove_action(get_current_side_actions()->end() - 1);
 }
 
 //TODO: better to move this function into side_actions
