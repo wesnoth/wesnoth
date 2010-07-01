@@ -53,17 +53,16 @@ move::move(unit& subject, const map_location& source_hex, const map_location& ta
 
 move::~move()
 {
-	if (last_action_)
+	if (last_action_
+		&& resources::units //FIXME: could tweak play_controller to ensure the unit map is still valid here
+		)
 	{
 		unit_.set_standing(true);
 	}
 
-	if (resources::screen)
+	if (resources::screen && fake_unit_)
 	{
-		if (fake_unit_)
-		{
-			resources::screen->remove_temporary_unit(fake_unit_.get());
-		}
+		resources::screen->remove_temporary_unit(fake_unit_.get());
 	}
 }
 
