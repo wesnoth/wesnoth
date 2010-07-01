@@ -37,7 +37,7 @@ find_visitor::~find_visitor()
 
 void find_visitor::visit_move(boost::shared_ptr<move> move)
 {
-	if( &(move->get_unit()) == search_target_ )
+	if( &move->get_unit() == search_target_ )
 	{
 		search_result_.push_back(move);
 	}
