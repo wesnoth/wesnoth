@@ -115,17 +115,32 @@ void manager::highlight_hex(const map_location& hex)
 
 	if (highlighted_unit.valid())
 	{
+		highlighted_unit_ = &*highlighted_unit;
+	}
+	else
+	{
+		action_set actions = get_current_side_actions()->actions();
+		foreach(action_ptr action, actions)
+		{
+			if (action->is_related_to(hex))
+			{
+				highlighted_unit_ = &action->get_unit();
+			}
+		}
+	}
+
+	if (highlighted_unit_)
+	{
 		highlight_visitor highlighter(true);
 
 		action_set actions = get_current_side_actions()->actions();
 		foreach(action_ptr action, actions)
 		{
-			if (action->is_related_to(*highlighted_unit))
+			if (action->is_related_to(*highlighted_unit_))
 			{
 				action->accept(highlighter);
 			}
 		}
-		highlighted_unit_ = &*highlighted_unit;
 	}
 }
 
