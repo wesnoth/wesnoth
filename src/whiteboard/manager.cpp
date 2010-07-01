@@ -42,6 +42,7 @@ manager::manager():
 		move_arrow_(),
 		fake_unit_(),
 		selected_unit_(NULL),
+		highlighted_unit_(NULL),
 		ignore_mouse_(false),
 		planned_unit_map_(false)
 {
@@ -123,6 +124,9 @@ void manager::highlight_hex(const map_location& hex)
 			action->accept(highlighter);
 		}
 	}
+
+	if (highlighted_unit.valid())
+		highlighted_unit_ = &*highlighted_unit;
 }
 
 void manager::remove_highlight()
@@ -134,6 +138,7 @@ void manager::remove_highlight()
 	{
 		action->accept(unhighlighter);
 	}
+	highlighted_unit_ = NULL;
 }
 
 void manager::on_unit_select(unit& unit)
@@ -240,12 +245,26 @@ void manager::save_temp_move()
 	ignore_mouse_ = false;
 }
 
-void manager::execute_next()
+void manager::contextual_execute()
 {
 	//TODO: catch end_turn_exception somewhere here?
 	//TODO: properly handle movement points
 	get_current_side_actions()->set_future_view(false);
-	get_current_side_actions()->execute_next();
+
+	if (selected_unit_)
+	{
+		get_current_side_actions()->execute(get_first_action_of(*selected_unit_));
+	}
+	else if (highlighted_unit_)
+	{
+		get_current_side_actions()->execute(get_first_action_of(*highlighted_unit_));
+	}
+	else
+	{
+		get_current_side_actions()->execute_next();
+	}
+
+
 	get_current_side_actions()->set_future_view(true);
 }
 

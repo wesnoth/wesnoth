@@ -90,7 +90,7 @@ public:
 	void save_temp_move();
 
 	/** Executes first action in the queue for current side */
-	void execute_next();
+	void contextual_execute();
 
 	/** Deletes last action in the queue for current side */
 	void delete_last();
@@ -113,6 +113,7 @@ private:
 	boost::shared_ptr<unit> fake_unit_;
 
 	unit* selected_unit_;
+	unit* highlighted_unit_;
 
 	bool ignore_mouse_;
 

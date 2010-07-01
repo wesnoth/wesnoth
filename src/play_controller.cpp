@@ -448,7 +448,7 @@ void play_controller::search(){
 }
 
 void play_controller::execute_next_action(){
-	whiteboard_manager_->execute_next();
+	whiteboard_manager_->contextual_execute();
 }
 
 void play_controller::delete_last_action(){
