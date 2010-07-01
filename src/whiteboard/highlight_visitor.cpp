@@ -17,9 +17,11 @@
  */
 
 #include "highlight_visitor.hpp"
+#include "manager.hpp"
 #include "move.hpp"
 
 #include "arrow.hpp"
+#include "resources.hpp"
 
 namespace wb
 {
@@ -35,6 +37,8 @@ highlight_visitor::~highlight_visitor()
 
 void highlight_visitor::visit_move(boost::shared_ptr<move> move)
 {
+	assert (!resources::whiteboard->has_planned_unit_map());
+
 	if (highlight_)
 	{
 		move->get_arrow()->set_alpha(move::ALPHA_HIGHLIGHT);

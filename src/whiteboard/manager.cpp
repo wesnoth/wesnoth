@@ -109,11 +109,15 @@ void manager::on_mouseover_change(const map_location& hex)
 
 void manager::highlight_hex(const map_location& hex)
 {
-	scoped_planned_unit_map wb_modifiers;
+	unit_map::iterator highlighted_unit;
+	bool unit_exists;
+	{
+		scoped_planned_unit_map wb_modifiers;
+		highlighted_unit = resources::units->find(hex);
+		unit_exists = highlighted_unit.valid();
+	}
 
-	unit_map::iterator highlighted_unit = resources::units->find(hex);
-
-	if (highlighted_unit.valid())
+	if (unit_exists)
 	{
 		highlighted_unit_ = &*highlighted_unit;
 	}
