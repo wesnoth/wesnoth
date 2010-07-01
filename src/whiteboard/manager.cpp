@@ -113,20 +113,20 @@ void manager::highlight_hex(const map_location& hex)
 
 	unit_map::iterator highlighted_unit = resources::units->find(hex);
 
-	highlight_visitor highlighter(true);
-
-	action_set actions = get_current_side_actions()->actions();
-	foreach(action_ptr action, actions)
-	{
-		if (action->is_related_to(hex)
-			|| (highlighted_unit.valid() && action->is_related_to(*highlighted_unit)))
-		{
-			action->accept(highlighter);
-		}
-	}
-
 	if (highlighted_unit.valid())
+	{
+		highlight_visitor highlighter(true);
+
+		action_set actions = get_current_side_actions()->actions();
+		foreach(action_ptr action, actions)
+		{
+			if (action->is_related_to(*highlighted_unit))
+			{
+				action->accept(highlighter);
+			}
+		}
 		highlighted_unit_ = &*highlighted_unit;
+	}
 }
 
 void manager::remove_highlight()
