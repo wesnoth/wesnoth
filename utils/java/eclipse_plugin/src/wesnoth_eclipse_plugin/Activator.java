@@ -5,8 +5,6 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
-import wesnoth_eclipse_plugin.wizards.TemplateProvider;
-
 /**
  * The activator class controls the plug-in life cycle
  */
@@ -36,7 +34,6 @@ public class Activator extends AbstractUIPlugin
 	{
 		super.start(context);
 		plugin = this;
-		TemplateProvider.getInstance().loadTemplates();
 	}
 
 	/*

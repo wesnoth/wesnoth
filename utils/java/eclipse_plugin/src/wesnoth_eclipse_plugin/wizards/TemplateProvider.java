@@ -14,7 +14,6 @@ import wesnoth_eclipse_plugin.utils.StringUtils;
 
 public class TemplateProvider
 {
-
 	private static TemplateProvider			instance_;
 	private final HashMap<String, String>	templates_	= new HashMap<String, String>();
 
@@ -23,6 +22,7 @@ public class TemplateProvider
 		if (instance_ == null)
 		{
 			instance_ = new TemplateProvider();
+			instance_.loadTemplates();
 		}
 		return instance_;
 	}
@@ -40,8 +40,8 @@ public class TemplateProvider
 		{
 			Logger.print("reading templates...");
 
-			Logger.print(this.pluginFullPath_ + this.templatesFile);
-			BufferedReader reader = new BufferedReader(new FileReader(getClass().getProtectionDomain().getCodeSource().getLocation().getPath() + this.templatesFile));
+			Logger.print(pluginFullPath_ + templatesFile);
+			BufferedReader reader = new BufferedReader(new FileReader(getClass().getProtectionDomain().getCodeSource().getLocation().getPath() + templatesFile));
 			BufferedReader tmpReader;
 			String line, tmpLine, content;
 
@@ -64,14 +64,14 @@ public class TemplateProvider
 
 				content = "";
 
-				if (new File(this.pluginFullPath_ + tokensStrings[1]).exists())
+				if (new File(pluginFullPath_ + tokensStrings[1]).exists())
 				{
-					tmpReader = new BufferedReader(new FileReader(this.pluginFullPath_ + tokensStrings[1]));
+					tmpReader = new BufferedReader(new FileReader(pluginFullPath_ + tokensStrings[1]));
 					while ((tmpLine = tmpReader.readLine()) != null)
 					{
 						content += tmpLine + '\n';
 					}
-					this.templates_.put(tokensStrings[0], content);
+					templates_.put(tokensStrings[0], content);
 					// System.out.println(String.format("read %s with content: %s\n",tokensStrings[0],content));
 					tmpReader.close();
 				}
@@ -121,8 +121,8 @@ public class TemplateProvider
 
 	public String getTemplate(String name)
 	{
-		if (this.templates_.get(name) == null)
+		if (templates_.get(name) == null)
 			return "";
-		return this.templates_.get(name);
+		return templates_.get(name);
 	}
 }
