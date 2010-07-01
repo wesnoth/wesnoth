@@ -135,6 +135,7 @@ bool move::execute()
 		WRN_WB << "Unit disappeared from map during move execution; Case unhandled as yet.\n";
 	}
 
+	arrow_->set_alpha(ALPHA_NORMAL);
 	return move_finished_completely;
 }
 
