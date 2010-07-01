@@ -452,7 +452,7 @@ void play_controller::execute_next_action(){
 }
 
 void play_controller::delete_last_action(){
-	whiteboard_manager_->delete_last();
+	whiteboard_manager_->contextual_delete();
 }
 
 void play_controller::fire_prestart(bool execute){

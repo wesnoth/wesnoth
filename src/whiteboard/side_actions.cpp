@@ -132,18 +132,44 @@ side_actions::iterator side_actions::get_position_of(action_ptr action)
 
 side_actions::iterator side_actions::find_first_action_of(const unit& unit, side_actions::iterator start_position)
 {
+
 	if (start_position == side_actions::iterator())
 	{
 		start_position = begin();
 	}
 
-	side_actions::iterator position;
-	for (position = start_position; position != end(); ++position)
+	if (validate_iterator(start_position))
 	{
-		action_ptr& action = *position;
-		if (&action->get_unit() == &unit)
+		side_actions::iterator position;
+		for (position = start_position; position != end(); ++position)
 		{
-			return position;
+			action_ptr& action = *position;
+			if (&action->get_unit() == &unit)
+			{
+				return position;
+			}
+		}
+	}
+	return end();
+}
+
+side_actions::iterator side_actions::find_last_action_of(const unit& unit, side_actions::iterator start_position)
+{
+	if (start_position == side_actions::iterator())
+	{
+		start_position = end() - 1;
+	}
+
+	if (validate_iterator(start_position))
+	{
+		side_actions::iterator position;
+		for (position = start_position; position != begin() - 1; --position)
+		{
+			action_ptr& action = *position;
+			if (&action->get_unit() == &unit)
+			{
+				return position;
+			}
 		}
 	}
 	return end();

@@ -68,6 +68,7 @@ void manager::set_planned_unit_map()
 {
 	if (active_)
 	{
+		wb_scoped_lock lock(actions_modification_mutex_);
 		assert (!planned_unit_map_active_);
 		if (!planned_unit_map_active_)
 		{
@@ -88,6 +89,7 @@ void manager::set_real_unit_map()
 {
 	if (active_)
 	{
+		wb_scoped_lock lock(actions_modification_mutex_);
 		assert (planned_unit_map_active_);
 		if (planned_unit_map_active_)
 		{
@@ -294,11 +296,11 @@ void manager::contextual_execute()
 		//TODO: properly handle movement points, probably through the mapbuilder_visitor
 		current_actions()->set_future_view(false);
 
-		if (selected_unit_)
+		if (selected_unit_ && unit_has_actions(*selected_unit_))
 		{
 			current_actions()->execute(current_actions()->find_first_action_of(*selected_unit_));
 		}
-		else if (highlighted_unit_)
+		else if (highlighted_unit_ && unit_has_actions(*highlighted_unit_))
 		{
 			current_actions()->execute(current_actions()->find_first_action_of(*highlighted_unit_));
 		}
@@ -312,15 +314,29 @@ void manager::contextual_execute()
 	}
 }
 
-//TODO: transfer most of this function into side_actions
-void manager::delete_last()
+void manager::contextual_delete()
 {
 	wb_scoped_lock try_lock(actions_modification_mutex_, boost::interprocess::try_to_lock);
 	if (!try_lock)
 		return;
 
 	if (!current_actions()->empty())
-		current_actions()->remove_action(current_actions()->end() - 1);
+	{
+		if (selected_unit_ && unit_has_actions(*selected_unit_))
+		{
+			remove_highlight();
+			erase_temp_move();
+			current_actions()->remove_action(current_actions()->find_last_action_of(*selected_unit_));
+		}
+		else if (highlighted_unit_ && unit_has_actions(*highlighted_unit_))
+		{
+			current_actions()->remove_action(current_actions()->find_last_action_of(*highlighted_unit_));
+		}
+		else
+		{
+			current_actions()->remove_action(current_actions()->end() - 1);
+		}
+	}
 }
 
 bool manager::unit_has_actions(const unit& unit) const

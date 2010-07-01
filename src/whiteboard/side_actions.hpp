@@ -125,6 +125,12 @@ public:
 	iterator find_first_action_of(const unit& unit, iterator start_position = iterator());
 
 	/**
+	 * Finds the last action that belongs to this unit, starting the search backwards from the specified position.
+	 * @return The position, or end() if not found.
+	 */
+	iterator find_last_action_of(const unit& unit, iterator start_position = iterator());
+
+	/**
 	 * future_view = true : units are shown at their future positions
 	 * future_view = false: units' future positions are shown with ghosts
 	 */

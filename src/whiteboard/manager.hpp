@@ -93,7 +93,7 @@ public:
 	void contextual_execute();
 
 	/** Deletes last action in the queue for current side */
-	void delete_last();
+	void contextual_delete();
 
 	/** Checks whether the specified unit has at least one planned action */
 	bool unit_has_actions(const unit& unit) const;
