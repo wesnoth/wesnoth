@@ -149,7 +149,8 @@ modifier_ptr move::apply_temp_modifier(unit_map& unit_map)
 
 bool move::is_related_to(const map_location& hex) const
 {
-	bool is_related = arrow_->path_contains(hex);
+	//bool is_related = arrow_->path_contains(hex);
+	bool is_related = hex == orig_hex_ || hex == dest_hex_;
 	return is_related;
 }
 
