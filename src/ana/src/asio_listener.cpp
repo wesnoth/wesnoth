@@ -38,6 +38,7 @@
 using boost::asio::ip::tcp;
 
 asio_listener::asio_listener( ) :
+    disconnected_( false ),
     listener_( NULL )
 {
 }
@@ -48,8 +49,12 @@ asio_listener::~asio_listener()
 
 void asio_listener::disconnect( ana::listener_handler* listener, boost::system::error_code error)
 {
-    listener->handle_disconnect( error, id() );
-    disconnect_listener();
+    if ( ! disconnected_ )
+    {
+        listener->handle_disconnect( error, id() );
+        disconnect_listener();
+        disconnected_ = true;
+    }
 }
 
 
@@ -63,7 +68,7 @@ void asio_listener::handle_body( ana::detail::read_buffer buf,
         else
         {
             log_receive( buf );
-            
+
             listener->handle_message( ec, id(), buf );
 
             listen_one_message();

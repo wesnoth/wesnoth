@@ -67,6 +67,7 @@ class asio_listener : public virtual ana::detail::listener
         void handle_body( ana::detail::read_buffer , const boost::system::error_code& , ana::listener_handler* );
 
         /*attr*/
+        bool                       disconnected_;
         ana::listener_handler*     listener_;
         char                       header_[ana::HEADER_LENGTH];
 };

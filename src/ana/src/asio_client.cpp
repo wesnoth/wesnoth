@@ -127,7 +127,6 @@ void asio_client::connect( ana::connection_handler* handler )
     catch (const std::exception& e)
     {
         handler->handle_connect( boost::system::error_code(1,boost::system::system_category ), 0 );
-        std::cerr << "Client: An error ocurred, " << e.what() << std::endl;
     }
 }
 

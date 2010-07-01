@@ -150,7 +150,7 @@ namespace ana
             {
                 timer_.expires_from_now( milliseconds / 1000.0); //conversion will use a double or float
                 timer_.async_wait(handler);
-                boost::thread t( boost::bind( &boost::asio::io_service::run_one, &io_service_ ) );
+                boost::thread t( boost::bind( &timer::run, this ) );
             }
 
             /** Cancel the timer if running. */
@@ -167,6 +167,18 @@ namespace ana
             }
 
         private:
+            void run()
+            {
+                try
+                {
+                    io_service_.run_one();
+                }
+                catch(const std::exception& e)
+                {
+                    // Timer was cancelled. Don't propagate exception
+                }
+            }
+
             /** Private class providing traits for the timer type. */
             struct time_t_traits
             {

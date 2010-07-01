@@ -314,7 +314,7 @@ void asio_server::asio_client_proxy::handle_sent_header(const boost::system::err
     else
     {
         disconnect_listener();
-        running_timer->cancel();
+        delete running_timer;
     }
 }
 
@@ -323,7 +323,7 @@ void asio_server::asio_client_proxy::handle_send(const boost::system::error_code
                                                  ana::detail::shared_buffer       /*buffer*/,
                                                  send_handler* handler, timer*    running_timer)
 {
-    running_timer->cancel();
+    delete running_timer;
 
     handler->handle_send( ec, id() );
 
@@ -361,7 +361,7 @@ void asio_server::asio_client_proxy::send(ana::detail::shared_buffer buffer,
     catch(std::exception& e)
     {
         disconnect_listener();
-        running_timer->cancel();
+        delete running_timer;
     }
 }
 
