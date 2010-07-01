@@ -36,6 +36,8 @@ namespace wb {
 
 const double move::ALPHA_HIGHLIGHT = 2.0;
 const double move::ALPHA_NORMAL = 0.2;
+const std::string move::ARROW_STYLE_VALID = "";
+const std::string move::ARROW_STYLE_INVALID = "invalid";
 
 move::move(unit& subject, const map_location& source_hex, const map_location& target_hex,
 		boost::shared_ptr<arrow> arrow,	boost::shared_ptr<unit> fake_unit)
@@ -190,9 +192,6 @@ void move::update_display()
 
 void move::set_valid(bool valid)
 {
-	const std::string ARROW_STYLE_VALID = "";
-	const std::string ARROW_STYLE_INVALID = "invalid";
-
 	valid_ = valid;
 	if (valid_)
 	{

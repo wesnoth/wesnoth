@@ -41,6 +41,8 @@ class move : public action, public boost::enable_shared_from_this<move>
 public: //constants
 	static const double ALPHA_HIGHLIGHT;
 	static const double ALPHA_NORMAL;
+	static const std::string ARROW_STYLE_VALID;
+	static const std::string ARROW_STYLE_INVALID;
 
 public:
 	move(unit& subject, const map_location& source_hex, const map_location& target_hex, boost::shared_ptr<arrow> arrow,
