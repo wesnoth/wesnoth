@@ -8,8 +8,10 @@ import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import wesnoth_eclipse_plugin.Logger;
+import wesnoth_eclipse_plugin.utils.Pair;
 import wesnoth_eclipse_plugin.utils.StringUtils;
 
 public class TemplateProvider
@@ -83,7 +85,7 @@ public class TemplateProvider
 		}
 	}
 
-	public static String getProcessedTemplate(String templateName, ArrayList<ReplaceableParameter> parameters)
+	public String getProcessedTemplate(String templateName, ArrayList<ReplaceableParameter> parameters)
 	{
 		String tmpTemplate = TemplateProvider.getInstance().getTemplate(templateName);
 		if (tmpTemplate == null)
@@ -124,5 +126,42 @@ public class TemplateProvider
 		if (templates_.get(name) == null)
 			return "";
 		return templates_.get(name);
+	}
+
+	/**
+	 * Gets the lists of the specified structure template. The first return
+	 * value is a list of <String, String> that consist of <Filename, Template
+	 * used for file contents> and the second return value is a list of String
+	 * with directories names
+	 * @param structureTemplate the template
+	 * @return
+	 */
+	public Pair<List<Pair<String, String>>, List<String>> getFilesDirectories(String structureTemplate)
+	{
+		List<Pair<String, String>> files = new ArrayList<Pair<String, String>>();
+		List<String> dirs = new ArrayList<String>();
+
+		for (String line : StringUtils.getLines(structureTemplate))
+		{
+			if (StringUtils.startsWith(line, "#"))
+				continue;
+
+			if (line.contains(":")) // file with template
+			{
+				String[] tmpLine = line.split(":");
+
+				// oops. error
+				if (tmpLine.length != 2)
+					continue;
+
+				files.add(new Pair<String, String>(tmpLine[0].trim(), tmpLine[1].trim()));
+			}
+			else
+			{
+				dirs.add(line.trim());
+			}
+		}
+
+		return new Pair<List<Pair<String, String>>, List<String>>(files, dirs);
 	}
 }

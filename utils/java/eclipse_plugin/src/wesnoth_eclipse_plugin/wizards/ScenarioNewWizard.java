@@ -64,13 +64,13 @@ public class ScenarioNewWizard extends Wizard implements INewWizard
 	@Override
 	public void addPages()
 	{
-		this.page0_ = new ScenarioPage0(this.selection);
-		addPage(this.page0_);
+		page0_ = new ScenarioPage0(selection);
+		addPage(page0_);
 
-		this.page1_ = new ScenarioPage1();
+		page1_ = new ScenarioPage1();
 		// addPage(page1_);
 
-		this.lastPageHashCode_ = getPages()[getPageCount() - 1].hashCode();
+		lastPageHashCode_ = getPages()[getPageCount() - 1].hashCode();
 	}
 
 	/*
@@ -81,7 +81,7 @@ public class ScenarioNewWizard extends Wizard implements INewWizard
 	public boolean canFinish()
 	{
 		IWizardPage page = getContainer().getCurrentPage();
-		return super.canFinish() && page.hashCode() == this.lastPageHashCode_ && page.isPageComplete();
+		return super.canFinish() && page.hashCode() == lastPageHashCode_ && page.isPageComplete();
 	}
 
 	/**
@@ -91,8 +91,8 @@ public class ScenarioNewWizard extends Wizard implements INewWizard
 	@Override
 	public boolean performFinish()
 	{
-		final String containerName = this.page0_.getProjectName();
-		final String fileName = this.page0_.getFileName();
+		final String containerName = page0_.getProjectName();
+		final String fileName = page0_.getFileName();
 		IRunnableWithProgress op = new IRunnableWithProgress() {
 			@Override
 			public void run(IProgressMonitor monitor) throws InvocationTargetException
@@ -135,10 +135,12 @@ public class ScenarioNewWizard extends Wizard implements INewWizard
 		monitor.beginTask("Creating " + fileName, 2);
 		IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
 		IResource resource = root.findMember(new Path(containerName));
+
 		if (!resource.exists() || !(resource instanceof IContainer))
 		{
 			throwCoreException("Container \"" + containerName + "\" does not exist.");
 		}
+
 		IContainer container = (IContainer) resource;
 		final IFile file = container.getFile(new Path(fileName));
 
@@ -147,22 +149,23 @@ public class ScenarioNewWizard extends Wizard implements INewWizard
 			InputStream stream = getScenarioStream();
 
 			if (stream == null)
-			{
 				return;
-			}
 
 			if (file.exists())
 			{
 				file.setContents(stream, true, true, monitor);
-			} else
+			}
+			else
 			{
 				file.create(stream, true, monitor);
 			}
+
 			stream.close();
 		} catch (IOException e)
 		{
 			e.printStackTrace();
 		}
+
 		monitor.worked(1);
 		monitor.setTaskName("Opening file for editing...");
 		getShell().getDisplay().asyncExec(new Runnable() {
@@ -188,14 +191,14 @@ public class ScenarioNewWizard extends Wizard implements INewWizard
 	{
 		ArrayList<ReplaceableParameter> params = new ArrayList<ReplaceableParameter>();
 
-		params.add(new ReplaceableParameter("$$scenario_id", this.page0_.getScenarioId()));
-		params.add(new ReplaceableParameter("$$next_scenario_id", this.page0_.getNextScenarioId()));
-		params.add(new ReplaceableParameter("$$scenario_name", this.page0_.getScenarioName()));
-		params.add(new ReplaceableParameter("$$map_data", this.page0_.getMapData()));
+		params.add(new ReplaceableParameter("$$scenario_id", page0_.getScenarioId()));
+		params.add(new ReplaceableParameter("$$next_scenario_id", page0_.getNextScenarioId()));
+		params.add(new ReplaceableParameter("$$scenario_name", page0_.getScenarioName()));
+		params.add(new ReplaceableParameter("$$map_data", page0_.getMapData()));
 
-		params.add(new ReplaceableParameter("$$turns_number", String.valueOf(this.page0_.getTurnsNumber())));
+		params.add(new ReplaceableParameter("$$turns_number", String.valueOf(page0_.getTurnsNumber())));
 
-		String template = TemplateProvider.getProcessedTemplate("scenario", params);
+		String template = TemplateProvider.getInstance().getProcessedTemplate("scenario", params);
 
 		if (template == null)
 		{

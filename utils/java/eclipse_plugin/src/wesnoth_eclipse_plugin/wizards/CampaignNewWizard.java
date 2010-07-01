@@ -2,6 +2,7 @@ package wesnoth_eclipse_plugin.wizards;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
@@ -16,8 +17,8 @@ import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
 
 import wesnoth_eclipse_plugin.builder.WesnothProjectNature;
+import wesnoth_eclipse_plugin.utils.Pair;
 import wesnoth_eclipse_plugin.utils.ResourceUtils;
-import wesnoth_eclipse_plugin.utils.StringUtils;
 
 public class CampaignNewWizard extends Wizard implements INewWizard
 {
@@ -98,25 +99,20 @@ public class CampaignNewWizard extends Wizard implements INewWizard
 			if (campaignStructure == null)
 				return;
 
-			for (String line : StringUtils.getLines(campaignStructure))
+			List<Pair<String, String>> files;
+			List<String> dirs;
+			Pair<List<Pair<String, String>>, List<String>> tmp = TemplateProvider.getInstance().getFilesDirectories(campaignStructure);
+			files = tmp.First;
+			dirs = tmp.Second;
+
+			for (Pair<String, String> file : files)
 			{
-				if (StringUtils.startsWith(line, "#"))
-					continue;
-
-				if (line.contains(":")) // file with template
-				{
-					String[] tmpLine = line.split(":");
-
-					// oops. error
-					if (tmpLine.length != 2)
-						continue;
-
-					ResourceUtils.createFile(currentProject, tmpLine[0].trim(), prepareTemplate(tmpLine[1].trim()));
-				}
-				else
-				{
-					ResourceUtils.createFolder(currentProject, line.trim());
-				}
+				ResourceUtils.createFile(currentProject, file.First, prepareTemplate(file.Second));
+				monitor.worked(1);
+			}
+			for (String dir : dirs)
+			{
+				ResourceUtils.createFolder(currentProject, dir);
 				monitor.worked(1);
 			}
 
@@ -151,7 +147,7 @@ public class CampaignNewWizard extends Wizard implements INewWizard
 		params.add(new ReplaceableParameter("$$project_name", page0_.getProjectName()));
 		params.add(new ReplaceableParameter("$$type", page1_.isMultiplayer() ? "campaign_mp" : "campaign"));
 
-		return TemplateProvider.getProcessedTemplate(templateName, params);
+		return TemplateProvider.getInstance().getProcessedTemplate(templateName, params);
 	}
 
 	@Override
