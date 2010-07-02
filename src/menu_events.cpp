@@ -33,6 +33,7 @@
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/dialogs/wml_message.hpp"
 #include "gui/dialogs/gamestate_inspector.hpp"
+#include "gui/dialogs/data_manage.hpp"
 #include "gui/dialogs/unit_create.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
@@ -2377,6 +2378,7 @@ class console_handler : public map_command_handler<console_handler>, private cha
 		void do_set_var();
 		void do_show_var();
 		void do_inspect();
+		void do_manage();
 		void do_unit();
 		// void do_buff();
 		// void do_unbuff();
@@ -2466,6 +2468,8 @@ class console_handler : public map_command_handler<console_handler>, private cha
 				_("Set the command used by the custom command hotkey"), _("<command>[;<command>...]"));
 			register_command("inspect", &console_handler::do_inspect,
 				_("Launch the gamestate inspector"), "", "D");
+			register_command("manage", &console_handler::do_manage,
+				_("Manage persistence data"), "", "D");
 			register_command("alias", &console_handler::do_set_alias,
 				_("Set or show alias to a command"), _("<name>[=<command>]"));
 			register_command("set_var", &console_handler::do_set_var,
@@ -3248,6 +3252,12 @@ void console_handler::do_inspect() {
 	vconfig cfg = vconfig::empty_vconfig();
 	gui2::tgamestate_inspector inspect_dialog(cfg);
 	inspect_dialog.show(resources::screen->video());
+}
+
+void console_handler::do_manage() {
+	config cfg;
+	gui2::tdata_manage manager(cfg);
+	manager.show(resources::screen->video());
 }
 
 void console_handler::do_unit() {
