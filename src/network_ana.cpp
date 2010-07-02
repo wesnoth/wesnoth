@@ -180,9 +180,11 @@ class ana_component : public send_stats_logger
             is_server_( true ),
             id_( server()->id() ),
             send_stats_(),
-            receive_stats_()
+            receive_stats_(),
+            mutex_(),
+            condition_(),
+            buffers_()
         {
-//             server()->start_logging();
         }
 
         ana_component( const std::string& host, const std::string& port) :
@@ -190,9 +192,11 @@ class ana_component : public send_stats_logger
             is_server_( false ),
             id_(  client()->id() ),
             send_stats_(),
-            receive_stats_()
+            receive_stats_(),
+            mutex_(),
+            condition_(),
+            buffers_()
         {
-//             client()->start_logging();
         }
 
         network::statistics get_send_stats() const
@@ -244,6 +248,30 @@ class ana_component : public send_stats_logger
                 return client()->get_stats();
         }
 
+        void add_buffer(ana::detail::read_buffer buffer)
+        {
+            {
+                boost::lock_guard<boost::mutex> lock(mutex_);
+                buffers_.push( buffer );
+            }
+            condition_.notify_all();
+        }
+
+        ana::detail::read_buffer wait_for_element()
+        {
+            boost::unique_lock<boost::mutex> lock(mutex_);
+
+            while(buffers_.empty())
+                condition_.wait(lock);
+
+            const ana::detail::read_buffer buffer_ret = buffers_.front();
+
+            buffers_.pop();
+
+            return buffer_ret;
+        }
+
+
         void update_receive_stats( size_t buffer_size )
         {
             receive_stats_.current_max = ( buffer_size > receive_stats_.current_max) ? buffer_size : receive_stats_.current_max;
@@ -266,6 +294,12 @@ class ana_component : public send_stats_logger
 
         network::statistics send_stats_;
         network::statistics receive_stats_;
+
+        //Buffer queue attributes
+        boost::mutex                   mutex_;
+        boost::condition_variable      condition_;
+
+        std::queue< ana::detail::read_buffer > buffers_;
 };
 
 class clients_manager : public ana::connection_handler
@@ -471,6 +505,39 @@ class ana_network_manager : public ana::listener_handler
             return out.str().size();
         }
 
+        ana::detail::read_buffer read_from( network::connection connection_num )
+        {
+            std::set<ana_component*>::iterator it;
+
+            if ( connection_num == 0 )
+            {
+                if ( components_.empty() )
+                    throw std::runtime_error("Trying to read but nothing was running.");
+
+                if ( components_.size() == 1 )
+                {
+                    it = components_.begin();
+                    return (*it)->wait_for_element();
+                }
+                else
+                    throw std::runtime_error("Global Buffer Queue here?");
+            }
+            else
+            {
+                ana::net_id id( connection_num );
+
+                std::cout << "DEBUG: Trying to read something from (" << connection_num << " = " << id << ")\n";
+
+                it = std::find_if( components_.begin(), components_.end(),
+                                boost::bind(&ana_component::get_id, _1) == id );
+
+                if ( it != components_.end())
+                    return (*it)->wait_for_element();
+                else
+                    throw std::runtime_error("Trying a network read from an invalid component id.");
+            }
+        }
+
         network::statistics get_send_stats(network::connection handle)
         {
             if ( handle != 0 )
@@ -526,13 +593,21 @@ class ana_network_manager : public ana::listener_handler
         {
             if (! error)
             {
+                std::cout << "DEBUG: Buffer received with size " << buffer->size() << " from " << client << "\n";
+
                 std::set< ana_component* >::iterator it;
+
+                for (it = components_.begin(); it != components_.end(); ++it)
+                    std::cout << "DEBUG: Component id : " << (*it)->get_id() << "\n";
 
                 it = std::find_if( components_.begin(), components_.end(),
                                    boost::bind(&ana_component::get_id, _1) == client );
 
                 if ( it != components_.end() )
+                {
                     (*it)->update_receive_stats( buffer->size() );
+                    (*it)->add_buffer( buffer );
+                }
                 else
                     throw std::runtime_error("Received message from a non connected component.");
             }
@@ -647,7 +722,7 @@ namespace network {
 
         return connection_stats( stats->bytes_out(),
                                  stats->bytes_in(),
-                                 0); // TODO (int connected_at)
+                                 stats->uptime() ); //TODO: is uptime ok?
     }
 
     error::error(const std::string& msg, connection sock) : message(msg), socket(sock)
@@ -754,11 +829,14 @@ namespace network {
     }
 
     connection receive_data(config&           /*cfg*/,
-                            connection        /*connection_num*/,
+                            connection        connection_num,
                             unsigned int      /*timeout*/,
                             bandwidth_in_ptr* /*bandwidth_in*/)
     {
-//         connection conn = ana_manager.receive_data( connection_num );
+        ana::detail::read_buffer buffer = ana_manager.read_from( connection_num );
+
+        std::cout << "DEBUG: Read a buffer of size " << buffer->size() << "\n";
+
         throw std::runtime_error("TODO:Not implemented receive_data0");
     }
 

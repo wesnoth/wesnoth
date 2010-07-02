@@ -65,6 +65,7 @@ namespace ana
         {
             public:
                 stats_logger(size_t ms_to_reset, boost::asio::io_service& io_service) :
+                    started_at_( std::time(0) ),
                     secs_to_reset_(ms_to_reset / 1000.0),
                     timer_(io_service),
                     start_time_( 0 ),
@@ -109,7 +110,7 @@ namespace ana
 
                 virtual size_t uptime()       const
                 {
-                    return 0;
+                    return std::time(0) - started_at_;
                 }
 
                 virtual size_t packets_in()   const
@@ -131,6 +132,9 @@ namespace ana
                 {
                     return bytes_out_;
                 }
+
+
+                std::time_t  started_at_;
 
                 double       secs_to_reset_;
                 boost_timer  timer_;
@@ -174,20 +178,20 @@ namespace ana
 
             void log_send( detail::shared_buffer buffer )
             {
-                accumulator_.log_send( buffer );
+                accumulator_.log_send  ( buffer );
                 seconds_stats_.log_send( buffer );
                 minutes_stats_.log_send( buffer );
-                hours_stats_.log_send( buffer );
-                days_stats_.log_send( buffer );
+                hours_stats_.log_send  ( buffer );
+                days_stats_.log_send   ( buffer );
             }
 
             void log_receive( detail::read_buffer buffer )
             {
-                accumulator_.log_receive( buffer );
+                accumulator_.log_receive  ( buffer );
                 seconds_stats_.log_receive( buffer );
                 minutes_stats_.log_receive( buffer );
-                hours_stats_.log_receive( buffer );
-                days_stats_.log_receive( buffer );
+                hours_stats_.log_receive  ( buffer );
+                days_stats_.log_receive   ( buffer );
             }
 
         private:
