@@ -400,6 +400,15 @@ class ana_network_manager : public ana::listener_handler,
                     const std::string empty_str;
                     client->send( ana::buffer( empty_str ), this );
 
+                    int32_t my_id;
+                    ana::serializer::bistream bis;
+
+                    client->wait_raw_object(bis, sizeof(my_id) );
+
+                    bis >> my_id;
+
+                    std::cout << "DEBUG: Received id " << my_id << "\n";
+
                     return network::connection( client->id() );
                 }
                 else

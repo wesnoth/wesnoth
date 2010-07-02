@@ -213,7 +213,6 @@ void asio_client::handle_sent_header(const boost::system::error_code& ec,
     }
 }
 
-
 void asio_client::handle_send(const boost::system::error_code& ec,
                               ana::detail::shared_buffer       buffer,
                               ana::send_handler*               handler)

@@ -49,7 +49,7 @@ class asio_listener : public virtual ana::detail::listener
         virtual void run_listener();
 
         virtual ~asio_listener();
-        
+
     protected:
         virtual tcp::socket& socket() = 0;
 
@@ -57,6 +57,8 @@ class asio_listener : public virtual ana::detail::listener
         virtual void disconnect_listener() {}
 
         virtual void log_receive( ana::detail::read_buffer /*buffer*/ ) {}
+
+        virtual void wait_raw_object(ana::serializer::bistream& bis, size_t size);
 
         void listen_one_message();
 

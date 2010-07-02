@@ -121,6 +121,29 @@ void asio_listener::handle_header(char* header, const boost::system::error_code&
     }
 }
 
+void asio_listener::wait_raw_object(ana::serializer::bistream& bis, size_t size)
+{
+    tcp::socket& sock = socket();
+
+    sock.get_io_service().stop();
+
+    char buf[ size ];
+
+    size_t received;
+
+    received = sock.receive( boost::asio::buffer( buf, size ) );
+
+    if ( received != size )
+        throw std::runtime_error("Read a different amount of bytes than what was expected.");
+
+    bis.str( std::string( buf, size ) );
+
+    //restart normal (asynchronous) operation
+//     use_proxy_ = false;
+    run_listener();
+}
+
+
 void asio_listener::set_listener_handler( ana::listener_handler* listener )
 {
     listener_ = listener;

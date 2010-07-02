@@ -170,6 +170,11 @@ namespace ana
                  */
                 net_id id() const {return id_;}
 
+                /**
+                 * Switch to raw data mode and perform a blocking wait, only POD types should be used.
+                 */
+                virtual void wait_raw_object(ana::serializer::bistream& bis, size_t size) = 0;
+
             protected:
                 listener() :
                     id_(++last_net_id_)

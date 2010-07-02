@@ -168,7 +168,7 @@ class ChatClient : public ana::listener_handler,
 
                 if (msg == "/quit")
                     std::cout << "\nExiting.\n";
-                if (msg == "/empty")
+                else if (msg == "/empty")
                 {
                     const std::string empty_str;
 
