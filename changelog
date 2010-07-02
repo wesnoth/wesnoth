@@ -1,12 +1,25 @@
 Version 1.8.2+svn:
+ * Campaigns:
+   * The Rise of Wesnoth:
+     * Balancing changes to 'Troll Hole': made the map slightly more favourable
+       to the player, gave all enemies an extra starting village, 20 less
+       starting gold and a limit of 1 Troll and 1 Troll Rocklobber on easy and
+       2 of both on the harder difficulties
+   * Under the Burning Suns:
+     * Fixed bug #16126: Fixed some duplicate unit id's, some buggy messages
+       and a broken event filter
+ * Graphics:
+   * Fixed bug #16145: Fixed highwayman not having attack animation
  * Language and i18n:
    * Updated translations: Chinese (Traditional), Dutch, French, Galician,
      German, Japanese, Slovak, Vietnamese
  * Miscellaneous and bug fixes:
+   * Fixed bug #16171: Disable commands during [animate_unit]
+   * Fixed bugs when a waypoint is unreachable
+   * Fixed crash if a sighted event killed a unit just before a fight
+   * Fixed missing 'type' attribute for units in lua
    * Prevent dereferencing freed memory when reporting malformed maps, i.e.
      when using an invalid terrain type
-   * Fixed bug #16171: Disable commands during [animate_unit]
-   * Fixed crash if a sighted event killed a unit just before a fight.
 
 Version 1.8.2:
  * Campaigns:

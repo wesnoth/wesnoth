@@ -3,6 +3,17 @@ changes may be omitted). For a complete list of changes, see the main
 changelog: http://svn.gna.org/viewcvs/*checkout*/wesnoth/branches/1.8/changelog
 
 Version 1.8.2+svn:
+ * Campaigns:
+   * The Rise of Wesnoth:
+     * Balancing changes to 'Troll Hole': made the map slightly more favourable
+       to the player, gave all enemies an extra starting village, 20 less
+       starting gold and a limit of 1 Troll and 1 Troll Rocklobber on easy and
+       2 of both on the harder difficulties
+   * Under the Burning Suns:
+     * Fixed bug #16126: Fixed some duplicate unit id's, some buggy messages
+       and a broken event filter
+ * Graphics:
+   * Fixed bug #16145: Fixed highwayman not having attack animation
  * Language and i18n:
    * Updated translations: Chinese (Traditional), Dutch, French, Galician,
      German, Japanese, Slovak, Vietnamese.
