@@ -57,14 +57,21 @@ side_actions::iterator side_actions::execute(side_actions::iterator position)
 	if (!actions_.empty() && validate_iterator(position))
 	{
 		size_t distance = std::distance(begin(), position);
-		action_ptr& action = *position;
+		action_ptr action = *position;
 		bool finished = action->execute();
 		if (finished)
 		{
-			remove_action(position);
+			actions_.erase(position);
+			validate_actions();
+			return begin() + distance;
 		}
-		validate_actions();
-		return begin() + distance;
+		else
+		{
+			actions_.erase(position);
+			actions_.insert(end(), action);
+			validate_actions();
+			return end() - 1;
+		}
 	}
 	else
 	{
@@ -143,7 +150,7 @@ side_actions::iterator side_actions::find_first_action_of(const unit& unit, side
 		side_actions::iterator position;
 		for (position = start_position; position != end(); ++position)
 		{
-			action_ptr& action = *position;
+			action_ptr action = *position;
 			if (&action->get_unit() == &unit)
 			{
 				return position;
@@ -165,7 +172,7 @@ side_actions::iterator side_actions::find_last_action_of(const unit& unit, side_
 		side_actions::iterator position;
 		for (position = start_position; position != begin() - 1; --position)
 		{
-			action_ptr& action = *position;
+			action_ptr action = *position;
 			if (&action->get_unit() == &unit)
 			{
 				return position;
@@ -220,7 +227,7 @@ side_actions::iterator side_actions::move_in_queue(side_actions::iterator positi
 	if (actions_.empty() || !validate_iterator(position))
 		return end();
 
-	const action_ptr& action = *position;
+	action_ptr action = *position;
 	action_set::iterator after = actions_.erase(position);
 	//be careful, previous iterators have just been invalidated by erase()
 	action_set::iterator destination = after + increment;

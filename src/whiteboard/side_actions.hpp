@@ -58,6 +58,7 @@ public:
 
 	/**
 	 * Executes the specified action, if it exists in the queue.
+	 * If the action is not finished, it's moved at the end of the queue.
 	 * @return An iterator to the action itself if not finished, or else the next action in the queue.
 	 *         Returns end() if no actions remain.
 	 */
