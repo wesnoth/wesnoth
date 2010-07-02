@@ -68,10 +68,9 @@ void manager::set_planned_unit_map()
 {
 	if (active_)
 	{
-		wb_scoped_lock lock(actions_modification_mutex_);
-		assert (!planned_unit_map_active_);
 		if (!planned_unit_map_active_)
 		{
+			//wb_scoped_lock lock(actions_modification_mutex_);
 			mapbuilder_.reset(new mapbuilder_visitor(*resources::units));
 			const action_set& actions = current_actions()->actions();
 			DBG_WB << "Building planned unit map.\n";
@@ -82,6 +81,10 @@ void manager::set_planned_unit_map()
 			}
 			planned_unit_map_active_ = true;
 		}
+		else
+		{
+			WRN_WB << "Attempt to set planned unit map when it was already set.\n";
+		}
 	}
 }
 
@@ -89,13 +92,16 @@ void manager::set_real_unit_map()
 {
 	if (active_)
 	{
-		wb_scoped_lock lock(actions_modification_mutex_);
-		assert (planned_unit_map_active_);
 		if (planned_unit_map_active_)
 		{
+			//wb_scoped_lock lock(actions_modification_mutex_);
 			DBG_WB << "Restoring regular unit map.\n";
 			mapbuilder_.reset();
 			planned_unit_map_active_ = false;
+		}
+		else
+		{
+			WRN_WB << "Attempt to disable the planned unit map, when it was already disabled.\n";
 		}
 	}
 }
