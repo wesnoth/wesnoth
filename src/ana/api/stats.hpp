@@ -64,17 +64,20 @@ namespace ana
         class stats_logger : public stats
         {
             public:
-                stats_logger(size_t ms_to_reset) :
-                    ms_to_reset_(ms_to_reset),
-                    timer_(),
+                stats_logger(size_t ms_to_reset, boost::asio::io_service& io_service) :
+                    secs_to_reset_(ms_to_reset / 1000.0),
+                    timer_(io_service),
                     start_time_( 0 ),
                     packets_in_( 0 ),
                     packets_out_( 0 ),
                     bytes_in_( 0 ),
                     bytes_out_( 0 )
                 {
-                    if (ms_to_reset_ > 0 )
-                        timer_.wait(ms_to_reset_, boost::bind( &stats_logger::reset, this, boost::asio::placeholders::error ) );
+                    if (secs_to_reset_ > 0 )
+                    {
+                        timer_.expires_from_now( secs_to_reset_ );
+                        timer_.async_wait(boost::bind( &stats_logger::reset, this, boost::asio::placeholders::error ) );
+                    }
                 }
 
                 void log_send( detail::shared_buffer buffer )
@@ -97,8 +100,11 @@ namespace ana
                     bytes_in_    = 0;
                     bytes_out_   = 0;
 
-                    if (ms_to_reset_ > 0 )
-                        timer_.wait(ms_to_reset_, boost::bind( &stats_logger::reset, this, boost::asio::placeholders::error ) );
+                    if (secs_to_reset_ > 0 )
+                    {
+                        timer_.expires_from_now( secs_to_reset_ );
+                        timer_.async_wait(boost::bind( &stats_logger::reset, this, boost::asio::placeholders::error ) );
+                    }
                 }
 
                 virtual size_t uptime()       const
@@ -126,8 +132,8 @@ namespace ana
                     return bytes_out_;
                 }
 
-                size_t ms_to_reset_;
-                timer  timer_;
+                double       secs_to_reset_;
+                boost_timer  timer_;
 
                 std::time_t start_time_;
 
@@ -143,12 +149,14 @@ namespace ana
     {
         public:
             stats_collector() :
-                accumulator_( 0 ),
-                seconds_stats_( time::seconds(1) ),
-                minutes_stats_( time::minutes(1) ),
-                hours_stats_( time::hours(1) ),
-                days_stats_( time::days(1) )
+                io_service_(),
+                accumulator_( 0, io_service_),
+                seconds_stats_( time::seconds(1), io_service_ ),
+                minutes_stats_( time::minutes(1), io_service_ ),
+                hours_stats_( time::hours(1), io_service_ ),
+                days_stats_( time::days(1), io_service_ )
             {
+                boost::thread t( boost::bind(&boost::asio::io_service::run, &io_service_) );
             }
 
             const stats* get_stats( stat_type type ) const
@@ -163,7 +171,7 @@ namespace ana
                 }
                 throw std::runtime_error("Wrong stat stype requested.");
             }
-            
+
             void log_send( detail::shared_buffer buffer )
             {
                 accumulator_.log_send( buffer );
@@ -172,7 +180,7 @@ namespace ana
                 hours_stats_.log_send( buffer );
                 days_stats_.log_send( buffer );
             }
-            
+
             void log_receive( detail::read_buffer buffer )
             {
                 accumulator_.log_receive( buffer );
@@ -181,8 +189,10 @@ namespace ana
                 hours_stats_.log_receive( buffer );
                 days_stats_.log_receive( buffer );
             }
-            
+
         private:
+            boost::asio::io_service io_service_;
+
             detail::stats_logger accumulator_;
             detail::stats_logger seconds_stats_;
             detail::stats_logger minutes_stats_;

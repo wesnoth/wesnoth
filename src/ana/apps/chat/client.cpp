@@ -182,7 +182,7 @@ class ChatClient : public ana::listener_handler,
 
                 client_->set_listener_handler( this );
                 client_->run();
-//                 client_->start_logging();
+                client_->start_logging();
 
                 std::cout << "Available commands: \n"  <<
                              "    '/quit'      : Quit. \n"
