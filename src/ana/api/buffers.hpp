@@ -57,8 +57,8 @@ namespace ana
                  * @param size : The size of the buffer.
                  */
                 read_buffer_implementation( size_t size ) :
-                base_( new char[ size ] ),
-                size_( size )
+                    base_( new char[ size ] ),
+                    size_( size )
                 {
                 }
 
@@ -123,9 +123,9 @@ namespace ana
         {
             public:
                 copying_buffer( boost::asio::const_buffer buffer, ana::send_type copy_buffer) :
-                size_(boost::asio::detail::buffer_size_helper(buffer) ),
-                base_( NULL ),
-                copy_( copy_buffer )
+                    size_(boost::asio::detail::buffer_size_helper(buffer) ),
+                    base_( NULL ),
+                    copy_( copy_buffer )
                 {
                     if (copy_buffer)
                     {

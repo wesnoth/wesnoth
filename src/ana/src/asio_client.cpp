@@ -205,10 +205,11 @@ void asio_client::handle_sent_header(const boost::system::error_code& ec,
 
     if ( ! ec )
     {
-        boost::asio::async_write(socket_, boost::asio::buffer(buffer->base(), buffer->size() ),
-                                    boost::bind(&asio_client::handle_send,this,
-                                                boost::asio::placeholders::error,
-                                                buffer, handler));
+        if ( buffer->size() != 0 )
+            boost::asio::async_write(socket_, boost::asio::buffer(buffer->base(), buffer->size() ),
+                                        boost::bind(&asio_client::handle_send,this,
+                                                     boost::asio::placeholders::error,
+                                                     buffer, handler));
     }
 }
 

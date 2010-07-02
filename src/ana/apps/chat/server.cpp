@@ -129,7 +129,9 @@ class ChatServer : public listener_handler,
             {
                 std::string msg = buffer->string();
 
-                if (msg[0] == '/')
+                if (msg.empty())
+                    std::cout << "Received empty buffer. Size: " << buffer->size() << "\n";
+                else if (msg[0] == '/')
                     parse_command(client, msg);
                 else
                 {

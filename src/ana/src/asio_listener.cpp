@@ -104,6 +104,15 @@ void asio_listener::handle_header(char* header, const boost::system::error_code&
                                                     boost::asio::placeholders::error,
                                                     listener));
             }
+            else
+            {
+                // copy the header to a read_buffer
+                ana::detail::read_buffer read_buf ( new ana::detail::read_buffer_implementation( ana::HEADER_LENGTH ) );
+                for (size_t i(0); i< ana::HEADER_LENGTH; ++i)
+                    static_cast<char*>(read_buf->base())[i] = header[i];
+
+                listener->handle_message( ec, id(), read_buf );
+            }
         }
     }
     catch(const std::exception& e)

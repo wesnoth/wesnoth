@@ -330,7 +330,8 @@ class clients_manager : public ana::connection_handler
         std::set<ana::net_id> ids_;
 };
 
-class ana_network_manager : public ana::listener_handler
+class ana_network_manager : public ana::listener_handler,
+                            public ana::send_handler
 {
     public:
         ana_network_manager() :
@@ -378,7 +379,7 @@ class ana_network_manager : public ana::listener_handler
 
                 ana_connect_handler handler(mutex, connect_timer_);
 
-                connect_timer_->wait( ana::time::seconds(3), // 3 seconds to connection timeout
+                connect_timer_->wait( ana::time::seconds(10), // 10 seconds to connection timeout
                                     boost::bind(&ana_connect_handler::handle_timeout, &handler,
                                                 boost::asio::error::make_error_code( boost::asio::error::timed_out ) ) );
 
@@ -386,7 +387,7 @@ class ana_network_manager : public ana::listener_handler
 
                 client->set_listener_handler( this );
                 client->run();
-//                 client->start_logging();
+                client->start_logging();
 
                 mutex.lock();   // just wait for handler to release it
                 mutex.unlock(); // unlock for destruction
@@ -394,7 +395,13 @@ class ana_network_manager : public ana::listener_handler
                 delete connect_timer_;
 
                 if( ! handler.error() )
+                {
+                    //Send handshake
+                    const std::string empty_str;
+                    client->send( ana::buffer( empty_str ), this );
+
                     return network::connection( client->id() );
+                }
                 else
                     return 0;
             }
@@ -540,6 +547,8 @@ class ana_network_manager : public ana::listener_handler
 
         network::statistics get_send_stats(network::connection handle)
         {
+            std::cout << "DEBUG: in get_send_stats to " << handle << "\n";
+
             if ( handle != 0 )
             {
                 ana::net_id id( handle );
@@ -587,6 +596,12 @@ class ana_network_manager : public ana::listener_handler
         }
 
     private:
+        virtual void handle_send(ana::error_code error_code, ana::net_id client)
+        {
+            if ( error_code )
+                network::disconnect( client );
+        }
+
         virtual void handle_message( ana::error_code          error,
                                      ana::net_id              client,
                                      ana::detail::read_buffer buffer)
