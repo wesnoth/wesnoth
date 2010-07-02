@@ -114,7 +114,7 @@ void tdata_manage::fill_game_list(twindow& window
 	}
 }
 
-void tdata_manage::list_item_clicked(twindow& window)
+void tdata_manage::list_item_clicked(twindow& /*window*/)
 {
 }
 
@@ -163,7 +163,7 @@ bool tdata_manage::filter_text_changed(ttext_* textbox, const std::string& text)
 	return false;
 }
 
-void tdata_manage::post_show(twindow& window)
+void tdata_manage::post_show(twindow& /*window*/)
 {
 }
 
