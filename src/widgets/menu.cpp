@@ -299,8 +299,7 @@ void menu::assert_pos()
 	size_t sz = items_.size();
 	assert(item_pos_.size() == sz);
 	for(size_t n = 0; n != sz; ++n) {
-		size_t i = item_pos_[n];
-		assert(i < sz && n == items_[i].id);
+		assert(item_pos_[n] < sz && n == items_[item_pos_[n]].id);
 	}
 }
 

@@ -199,7 +199,7 @@ twidget* thorizontal_list::find_at(
 		const tpoint& coordinate, const bool must_be_active)
 {
 	twindow* window = get_window();
-	assert(window);
+	assert(window); (void) window /* avoids unused parameter warning */;
 
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
@@ -222,7 +222,7 @@ const twidget* thorizontal_list::find_at(const tpoint& coordinate,
 		const bool must_be_active) const
 {
 	const twindow* window = get_window();
-	assert(window);
+	assert(window); (void) window /* avoids unused parameter warning */;
 
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
@@ -394,7 +394,7 @@ twidget* tvertical_list::find_at(
 		const tpoint& coordinate, const bool must_be_active)
 {
 	twindow* window = get_window();
-	assert(window);
+	assert(window); (void) window /* avoids unused parameter warning */;
 
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
@@ -418,7 +418,7 @@ const twidget* tvertical_list::find_at(const tpoint& coordinate,
 		const bool must_be_active) const
 {
 	const twindow* window = get_window();
-	assert(window);
+	assert(window); (void) window /* avoids unused parameter warning */;
 
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
@@ -556,7 +556,7 @@ twidget* tindependant::find_at(const tpoint& coordinate
 		, const bool must_be_active)
 {
 	const twindow* window = get_window();
-	assert(window);
+	assert(window); (void) window /* avoids unused parameter warning */;
 
 	const int selected_item = get_selected_item();
 	if(selected_item < 0) {
@@ -571,7 +571,7 @@ const twidget* tindependant::find_at(const tpoint& coordinate
 		, const bool must_be_active) const
 {
 	const twindow* window = get_window();
-	assert(window);
+	assert(window); (void) window /* avoids unused parameter warning */;
 
 	const int selected_item = get_selected_item();
 	if(selected_item < 0) {
@@ -681,7 +681,7 @@ void tshow::init(tgrid* grid
 		, const std::map<std::string /* widget id */, string_map>& data
 		, void (*callback)(twidget*))
 {
-	assert(!callback);
+	assert(!callback); (void) callback /* avoids unused parameter warning */;
 
 	typedef std::pair<std::string, string_map> hack;
 	foreach(const hack& item, data) {

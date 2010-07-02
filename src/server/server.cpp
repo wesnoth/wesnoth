@@ -128,17 +128,20 @@ static lg::log_domain log_config("config");
 sig_atomic_t config_reload = 0;
 
 static void reload_config(int signal) {
+	(void) signal; //avoids usused parameter warning
 	assert(signal == SIGHUP);
 	config_reload = 1;
 }
 
 static void exit_sigint(int signal) {
+	(void) signal; //avoids usused parameter warning
 	assert(signal == SIGINT);
 	LOG_SERVER << "SIGINT caught, exiting without cleanup immediately.\n";
 	exit(128 + SIGINT);
 }
 
 static void exit_sigterm(int signal) {
+	(void) signal; //avoids usused parameter warning
 	assert(signal == SIGTERM);
 	LOG_SERVER << "SIGTERM caught, exiting without cleanup immediately.\n";
 	exit(128 + SIGTERM);

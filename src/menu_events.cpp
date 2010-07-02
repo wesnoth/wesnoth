@@ -2101,6 +2101,7 @@ class map_command_handler
 			}
 		}
 		virtual void assert_existence(const std::string& cmd) {
+			(void) cmd; //prevents unused parameter warning in release build
 			assert(command_map_.count(cmd));
 		}
 		virtual void register_alias(const std::string& to_cmd,

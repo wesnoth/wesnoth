@@ -136,7 +136,6 @@ double testing_move_to_targets_phase::evaluate()
 void testing_move_to_targets_phase::execute()
 {
 	unit_map::const_iterator leader = resources::units->find_leader(get_side());
-	gamemap &map_ = *resources::game_map;
 	LOG_AI << "finding targets...\n";
 	std::vector<target> targets;
 	for(;;) {
@@ -163,15 +162,15 @@ void testing_move_to_targets_phase::execute()
 
 		for(std::vector<target>::const_iterator ittg = targets.begin();
 				ittg != targets.end(); ++ittg) {
-			assert(map_.on_board(ittg->loc));
+			assert(resources::game_map->on_board(ittg->loc));
 		}
 
 		if(move.first.valid() == false || move.second.valid() == false) {
 			break;
 		}
 
-		assert (map_.on_board(move.first)
-			&& map_.on_board(move.second));
+		assert (resources::game_map->on_board(move.first)
+			&& resources::game_map->on_board(move.second));
 
 		LOG_AI << "move: " << move.first << " -> " << move.second << '\n';
 
