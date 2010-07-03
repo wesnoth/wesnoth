@@ -150,17 +150,6 @@ void aspect_attacks::do_attack_analysis(
 		return;
 	}
 
-	const double cur_rating = cur_analysis.movements.empty() ? -1.0 :
-	                          cur_analysis.rating(get_aggression(),*this);
-
-	double rating_to_beat = cur_rating;
-
-	if(!cur_analysis.movements.empty()) {
-		assert(cur_analysis.movements.size() < 6);
-		double& best_res = best_results[cur_analysis.movements.size()-1];
-		rating_to_beat = best_res = std::max(best_res,cur_rating);
-	}
-
 	for(size_t i = 0; i != units.size(); ++i) {
 		const map_location current_unit = units[i];
 
