@@ -136,3 +136,4 @@ void persist_context::set_node(const std::string &name) {
 std::string persist_context::get_node() {
 	return namespace_.namespace_;
 }
+
