@@ -1003,7 +1003,7 @@ std::istream *preprocess_file(std::string const &fname,
 	return new preprocessor_deleter(buf, owned_defines);
 }
 
-void preprocess_resource(const std::string res_name, preproc_map *defines_map,
+void preprocess_resource(const std::string& res_name, preproc_map *defines_map,
 			 bool write_cfg, bool write_plain_cfg,std::string target_directory)
 {
 	if (is_directory(res_name))
@@ -1013,14 +1013,14 @@ void preprocess_resource(const std::string res_name, preproc_map *defines_map,
 		get_files_in_dir(res_name, &files, &dirs, ENTIRE_FILE_PATH, SKIP_MEDIA_DIR, DO_REORDER);
 
 		// subdirectories
-		foreach(const std::string dir, dirs)
+		foreach(const std::string& dir, dirs)
 		{
 			LOG_PREPROC<<"processing sub-dir: "<<dir<<'\n';
 			preprocess_resource(dir,defines_map,write_cfg,write_plain_cfg,target_directory);
 		}
 
 		// files in current directory
-		foreach(const std::string file, files)
+		foreach(const std::string& file, files)
 		{
 			preprocess_resource(file,defines_map,write_cfg,write_plain_cfg,target_directory);
 		}
