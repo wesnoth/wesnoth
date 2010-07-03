@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-06-25 11:25+0200\n"
+"POT-Creation-Date: 2010-07-03 09:51+0200\n"
 "PO-Revision-Date: 2009-10-04 19:41+0100\n"
 "Last-Translator: Alexander van Gessel (AI/AI0867) <AI0867@gmail.com>\n"
 "Language-Team: Dutch <AI0867@gmail.com>\n"
@@ -19,145 +19,171 @@ msgstr ""
 "X-Poedit-Language: Dutch\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#. [terrain_type]: id=m
+#: data/core/terrain.cfg:18
+msgid "Test M"
+msgstr ""
+
+#. [terrain_type]: id=y
+#: data/core/terrain.cfg:26
+msgid "Test Y"
+msgstr ""
+
+#. [terrain_type]: id=b
+#: data/core/terrain.cfg:34
+msgid "Test B"
+msgstr ""
+
 #. [terrain_type]: id=deep_water
-#: data/core/terrain.cfg:20
+#: data/core/terrain.cfg:47
 msgid "Deep Water"
 msgstr "Diep water"
 
 #. [terrain_type]: id=shallow_water
-#: data/core/terrain.cfg:30
+#: data/core/terrain.cfg:57
 msgid "Shallow Water"
 msgstr "Ondiep water"
 
 #. [terrain_type]: id=tropical_water
-#: data/core/terrain.cfg:40
+#: data/core/terrain.cfg:67
 #, fuzzy
 msgid "Tropical Water"
 msgstr "Tropisch Woud"
 
 #. [terrain_type]: id=ford
-#: data/core/terrain.cfg:51
+#: data/core/terrain.cfg:78
 msgid "Ford"
 msgstr ""
 
 #. [terrain_type]: id=reef
-#: data/core/terrain.cfg:62
+#: data/core/terrain.cfg:89
 msgid "Coastal Reef"
 msgstr "Kustrif"
 
 #. [terrain_type]: id=tropical_water_depreciated
-#: data/core/terrain.cfg:73
+#: data/core/terrain.cfg:100
 msgid "Deprecated. Use 'Wwt'"
 msgstr ""
 
 #. [terrain_type]: id=swamp_water
-#: data/core/terrain.cfg:86
+#: data/core/terrain.cfg:113
 msgid "Swamp"
 msgstr "Moeras"
 
 #. [terrain_type]: id=grassland
-#. [terrain_type]: id=grassland_flowers
 #. [terrain_type]: id=leaf_litter
-#: data/core/terrain.cfg:103 data/core/terrain.cfg:113
-#: data/core/terrain.cfg:140
+#: data/core/terrain.cfg:130 data/core/terrain.cfg:167
 msgid "Grassland"
 msgstr "Grasland"
 
+#. [terrain_type]: id=grassland_flowers
+#: data/core/terrain.cfg:140
+msgid "Depreciated. Use and Embellihsment Overaly"
+msgstr ""
+
 #. [terrain_type]: id=savanna
-#: data/core/terrain.cfg:122
+#: data/core/terrain.cfg:149
 msgid "Savanna"
 msgstr "Savanne"
 
 #. [terrain_type]: id=grass_dry
-#: data/core/terrain.cfg:131
+#: data/core/terrain.cfg:158
 msgid "Dry Grass"
 msgstr ""
-
-#. [terrain_type]: id=farm
-#: data/core/terrain.cfg:151
-msgid "Farmland"
-msgstr "Bouwland"
 
 #. [terrain_type]: id=dirt_dark
 #. [terrain_type]: id=dirt
 #. [terrain_type]: id=road
-#: data/core/terrain.cfg:161 data/core/terrain.cfg:170
-#: data/core/terrain.cfg:179
+#: data/core/terrain.cfg:179 data/core/terrain.cfg:188
+#: data/core/terrain.cfg:197
 msgid "Dirt"
 msgstr "Vuil"
 
 #. [terrain_type]: id=road
+#. [terrain_type]: id=road_clean
 #. [terrain_type]: id=stone_path
-#: data/core/terrain.cfg:188 data/core/terrain.cfg:197
+#: data/core/terrain.cfg:206 data/core/terrain.cfg:215
+#: data/core/terrain.cfg:224
 #, fuzzy
 msgid "Cobbles"
 msgstr "Steenslag"
 
 #. [terrain_type]: id=ice
-#: data/core/terrain.cfg:210
+#: data/core/terrain.cfg:237
 msgid "Ice"
 msgstr "IJs"
 
 #. [terrain_type]: id=snow
-#: data/core/terrain.cfg:220
+#: data/core/terrain.cfg:247
 msgid "Snow"
 msgstr "Sneeuw"
 
 #. [terrain_type]: id=desert
-#: data/core/terrain.cfg:235
+#: data/core/terrain.cfg:262
 msgid "Desert"
 msgstr "Woestijn"
 
 #. [terrain_type]: id=sand
-#: data/core/terrain.cfg:245
+#: data/core/terrain.cfg:272
 msgid "Sand"
 msgstr "Zand"
 
 #. [terrain_type]: id=oasis
-#: data/core/terrain.cfg:253
+#: data/core/terrain.cfg:280
 msgid "Oasis"
 msgstr "Oase"
 
 #. [terrain_type]: id=sand_rubble
-#: data/core/terrain.cfg:265
+#: data/core/terrain.cfg:292
 msgid "Rubble"
 msgstr "Steenslag"
 
 #. [terrain_type]: id=crater
-#: data/core/terrain.cfg:276
+#: data/core/terrain.cfg:303
 msgid "Crater"
 msgstr "Krater"
 
+#. [terrain_type]: id=flowers_mixed
+#: data/core/terrain.cfg:318
+#, fuzzy
+msgid "Mixed Flowers"
+msgstr "Herfst Gemengd Bos"
+
+#. [terrain_type]: id=farm
+#: data/core/terrain.cfg:327
+msgid "Farmland"
+msgstr "Bouwland"
+
 #. [terrain_type]: id=stones_small
-#: data/core/terrain.cfg:291
+#: data/core/terrain.cfg:336
 #, fuzzy
 msgid "Stones"
 msgstr "Acties"
 
 #. [terrain_type]: id=mushrooms_small
-#: data/core/terrain.cfg:300
+#: data/core/terrain.cfg:345
 #, fuzzy
 msgid "Mushrooms"
 msgstr "Paddenstoelenveld"
 
 #. [terrain_type]: id=desert_plants
-#: data/core/terrain.cfg:309
+#: data/core/terrain.cfg:354
 #, fuzzy
 msgid "Desert Plants"
 msgstr "Woestijnbergen"
 
 #. [terrain_type]: id=windmill
-#: data/core/terrain.cfg:318
+#: data/core/terrain.cfg:363
 msgid "Windmill"
 msgstr ""
 
 #. [terrain_type]: id=great_tree
-#: data/core/terrain.cfg:332
+#: data/core/terrain.cfg:377
 msgid "Great Tree"
 msgstr "Reuzenboom"
 
 #. [terrain_type]: id=tropical_forest
-#: data/core/terrain.cfg:342
+#: data/core/terrain.cfg:387
 msgid "Tropical Forest"
 msgstr "Tropisch Woud"
 
@@ -168,15 +194,15 @@ msgstr "Tropisch Woud"
 #. [terrain_type]: id=mixed_forest_summer
 #. [terrain_type]: id=mixed_forest_fall
 #. [terrain_type]: id=mixed_forest_winter
-#: data/core/terrain.cfg:352 data/core/terrain.cfg:374
-#: data/core/terrain.cfg:385 data/core/terrain.cfg:396
-#: data/core/terrain.cfg:419 data/core/terrain.cfg:430
-#: data/core/terrain.cfg:441
+#: data/core/terrain.cfg:397 data/core/terrain.cfg:419
+#: data/core/terrain.cfg:430 data/core/terrain.cfg:441
+#: data/core/terrain.cfg:464 data/core/terrain.cfg:475
+#: data/core/terrain.cfg:486
 msgid "Forest"
 msgstr "Bos"
 
 #. [terrain_type]: id=forest
-#: data/core/terrain.cfg:353
+#: data/core/terrain.cfg:398
 #, fuzzy
 msgid "Pine Forest"
 msgstr "Besneeuwd Bos"
@@ -184,90 +210,90 @@ msgstr "Besneeuwd Bos"
 #. [terrain_type]: id=snow_forest
 #. [terrain_type]: id=deciduous_forest_winter_snow
 #. [terrain_type]: id=mixed_forest_winter_snow
-#: data/core/terrain.cfg:362 data/core/terrain.cfg:407
-#: data/core/terrain.cfg:452
+#: data/core/terrain.cfg:407 data/core/terrain.cfg:452
+#: data/core/terrain.cfg:497
 msgid "Snow Forest"
 msgstr "Besneeuwd Bos"
 
 #. [terrain_type]: id=snow_forest
-#: data/core/terrain.cfg:363
+#: data/core/terrain.cfg:408
 #, fuzzy
 msgid "Snowy Pine Forest"
 msgstr "Besneeuwd Bos"
 
 #. [terrain_type]: id=deciduous_forest_summer
-#: data/core/terrain.cfg:375
+#: data/core/terrain.cfg:420
 msgid "Summer Deciduous Forest"
 msgstr "Zomer Loofbos"
 
 #. [terrain_type]: id=deciduous_forest_fall
-#: data/core/terrain.cfg:386
+#: data/core/terrain.cfg:431
 msgid "Fall Deciduous Forest"
 msgstr "Herfst Loofbos"
 
 #. [terrain_type]: id=deciduous_forest_winter
-#: data/core/terrain.cfg:397
+#: data/core/terrain.cfg:442
 msgid "Winter Deciduous Forest"
 msgstr "Winter Loofbox"
 
 #. [terrain_type]: id=deciduous_forest_winter_snow
-#: data/core/terrain.cfg:408
+#: data/core/terrain.cfg:453
 #, fuzzy
 msgid "Snowy Deciduous Forest"
 msgstr "Besneeuwd Bos"
 
 #. [terrain_type]: id=mixed_forest_summer
-#: data/core/terrain.cfg:420
+#: data/core/terrain.cfg:465
 msgid "Summer Mixed Forest"
 msgstr "Zomer Gemengd Box"
 
 #. [terrain_type]: id=mixed_forest_fall
-#: data/core/terrain.cfg:431
+#: data/core/terrain.cfg:476
 msgid "Fall Mixed Forest"
 msgstr "Herfst Gemengd Bos"
 
 #. [terrain_type]: id=mixed_forest_winter
-#: data/core/terrain.cfg:442
+#: data/core/terrain.cfg:487
 msgid "Winter Mixed Forest"
 msgstr "Winter Gemengd Bos"
 
 #. [terrain_type]: id=mixed_forest_winter_snow
-#: data/core/terrain.cfg:453
+#: data/core/terrain.cfg:498
 #, fuzzy
 msgid "Snowy Mixed Forest"
 msgstr "Besneeuwd Bos"
 
 #. [terrain_type]: id=hills
 #. [terrain_type]: id=hills_dry
-#: data/core/terrain.cfg:469 data/core/terrain.cfg:477
+#: data/core/terrain.cfg:514 data/core/terrain.cfg:522
 msgid "Hills"
 msgstr "Heuvels"
 
 #. [terrain_type]: id=desert_hills
-#: data/core/terrain.cfg:486
+#: data/core/terrain.cfg:531
 msgid "Dunes"
 msgstr "Duinen"
 
 #. [terrain_type]: id=snow_hills
-#: data/core/terrain.cfg:496
+#: data/core/terrain.cfg:541
 msgid "Snow Hills"
 msgstr "Besneeuwde Heuvels"
 
 #. [terrain_type]: id=mountains
 #. [terrain_type]: id=desert_mountains
 #. [terrain_type]: id=snow_mountains
-#: data/core/terrain.cfg:510 data/core/terrain.cfg:518
-#: data/core/terrain.cfg:528
+#: data/core/terrain.cfg:555 data/core/terrain.cfg:563
+#: data/core/terrain.cfg:573
 msgid "Mountains"
 msgstr "Bergen"
 
 #. [terrain_type]: id=desert_mountains
-#: data/core/terrain.cfg:519
+#: data/core/terrain.cfg:564
 msgid "Desert Mountains"
 msgstr "Woestijnbergen"
 
 #. [terrain_type]: id=snow_mountains
-#: data/core/terrain.cfg:529
+#: data/core/terrain.cfg:574
 msgid "Snowy Mountains"
 msgstr "Besneeuwde Bergen"
 
@@ -278,151 +304,151 @@ msgstr "Besneeuwde Bergen"
 #. [terrain_type]: id=mixed_forest_summer_hills
 #. [terrain_type]: id=mixed_forest_fall_hills
 #. [terrain_type]: id=mixed_forest_winter_hills
-#: data/core/terrain.cfg:543 data/core/terrain.cfg:563
-#: data/core/terrain.cfg:574 data/core/terrain.cfg:585
-#: data/core/terrain.cfg:607 data/core/terrain.cfg:618
-#: data/core/terrain.cfg:628
+#: data/core/terrain.cfg:588 data/core/terrain.cfg:608
+#: data/core/terrain.cfg:619 data/core/terrain.cfg:630
+#: data/core/terrain.cfg:652 data/core/terrain.cfg:663
+#: data/core/terrain.cfg:673
 msgid "Forested Hills"
 msgstr "Beboste Heuvels"
 
 #. [terrain_type]: id=forested_snow_hills
 #. [terrain_type]: id=deciduous_forest_winter_snow_hills
 #. [terrain_type]: id=mixed_forest_winter_snow_hills
-#: data/core/terrain.cfg:553 data/core/terrain.cfg:596
-#: data/core/terrain.cfg:639
+#: data/core/terrain.cfg:598 data/core/terrain.cfg:641
+#: data/core/terrain.cfg:684
 msgid "Forested Snow Hills"
 msgstr "Beboste Besneeuwde Heuvels"
 
 #. [terrain_type]: id=deciduous_forest_summer_hills
-#: data/core/terrain.cfg:564
+#: data/core/terrain.cfg:609
 #, fuzzy
 msgid "Summer Deciduous Forested Hills"
 msgstr "Beboste Heuvels"
 
 #. [terrain_type]: id=deciduous_forest_fall_hills
-#: data/core/terrain.cfg:575
+#: data/core/terrain.cfg:620
 #, fuzzy
 msgid "Fall Deciduous Forested Hills"
 msgstr "Beboste Heuvels"
 
 #. [terrain_type]: id=deciduous_forest_winter_hills
-#: data/core/terrain.cfg:586
+#: data/core/terrain.cfg:631
 #, fuzzy
 msgid "Winter Deciduous Forested Hills"
 msgstr "Beboste Heuvels"
 
 #. [terrain_type]: id=deciduous_forest_winter_snow_hills
-#: data/core/terrain.cfg:597
+#: data/core/terrain.cfg:642
 #, fuzzy
 msgid "Snowy Deciduous Forested Hills"
 msgstr "Beboste Heuvels"
 
 #. [terrain_type]: id=mixed_forest_summer_hills
-#: data/core/terrain.cfg:608
+#: data/core/terrain.cfg:653
 #, fuzzy
 msgid "Summer Mixed Forested Hills"
 msgstr "Beboste Heuvels"
 
 #. [terrain_type]: id=mixed_forest_winter_hills
-#: data/core/terrain.cfg:629
+#: data/core/terrain.cfg:674
 #, fuzzy
 msgid "Winter Mixed Forested Hills"
 msgstr "Beboste Heuvels"
 
 #. [terrain_type]: id=mixed_forest_winter_snow_hills
-#: data/core/terrain.cfg:640
+#: data/core/terrain.cfg:685
 #, fuzzy
 msgid "Snowy Mixed Forested Hills"
 msgstr "Beboste Heuvels"
 
 #. [terrain_type]: id=lit
-#: data/core/terrain.cfg:655
+#: data/core/terrain.cfg:700
 msgid "Lit"
 msgstr "Verlicht"
 
 #. [terrain_type]: id=cave
-#: data/core/terrain.cfg:665
+#: data/core/terrain.cfg:710
 msgid "Cave"
 msgstr "Grot"
 
 #. [terrain_type]: id=cave_path
-#: data/core/terrain.cfg:683
+#: data/core/terrain.cfg:728
 msgid "Cave path"
 msgstr "Grotpad"
 
 #. [terrain_type]: id=fungus
-#: data/core/terrain.cfg:692
+#: data/core/terrain.cfg:737
 msgid "Mushroom Grove"
 msgstr "Paddenstoelenveld"
 
 #. [terrain_type]: id=fungus_beam
-#: data/core/terrain.cfg:701
+#: data/core/terrain.cfg:746
 msgid "Mushroom Grove Lit"
 msgstr "Verlicht paddenstoelenveld"
 
 #. [terrain_type]: id=rocky_cave
-#: data/core/terrain.cfg:712
+#: data/core/terrain.cfg:757
 msgid "Rockbound Cave"
 msgstr "Rotsgrot"
 
 #. [terrain_type]: id=rails
 #. [terrain_type]: id=railsdiag1
 #. [terrain_type]: id=railsdiag2
-#: data/core/terrain.cfg:735 data/core/terrain.cfg:747
-#: data/core/terrain.cfg:759
+#: data/core/terrain.cfg:780 data/core/terrain.cfg:792
+#: data/core/terrain.cfg:804
 msgid "Mine Rail"
 msgstr ""
 
 #. [terrain_type]: id=canyon
-#: data/core/terrain.cfg:776
+#: data/core/terrain.cfg:821
 msgid "Chasm"
 msgstr "Afgrond"
 
 #. [terrain_type]: id=abyss
-#: data/core/terrain.cfg:785
+#: data/core/terrain.cfg:830
 msgid "Ethereal Abyss"
 msgstr ""
 
 #. [terrain_type]: id=lava_chasm
-#: data/core/terrain.cfg:794
+#: data/core/terrain.cfg:839
 msgid "Lava chasm"
 msgstr "Lava kloof"
 
 #. [terrain_type]: id=lava
-#: data/core/terrain.cfg:804
+#: data/core/terrain.cfg:849
 msgid "Lava"
 msgstr "Lava"
 
 #. [terrain_type]: id=cloud
 #. [terrain_type]: id=cloud_snow
-#: data/core/terrain.cfg:819 data/core/terrain.cfg:837
+#: data/core/terrain.cfg:864 data/core/terrain.cfg:882
 msgid "Impassable Mountains"
 msgstr "Onbegaanbaar Gebergte"
 
 #. [terrain_type]: id=clouddesert
-#: data/core/terrain.cfg:828
+#: data/core/terrain.cfg:873
 msgid "Impassable Desert Mountains"
 msgstr "Onoverbrugbare woestijnbergen"
 
 #. [terrain_type]: id=cavewall
-#: data/core/terrain.cfg:846
+#: data/core/terrain.cfg:891
 msgid "Cave Wall"
 msgstr "Grotwand"
 
 #. [terrain_type]: id=wall_stone
 #. [terrain_type]: id=wall_stone_lit
-#: data/core/terrain.cfg:855 data/core/terrain.cfg:864
+#: data/core/terrain.cfg:900 data/core/terrain.cfg:909
 msgid "Wall"
 msgstr "Muur"
 
 #. [terrain_type]: id=impassable_overlay
 #. [terrain_type]: id=impassable
-#: data/core/terrain.cfg:874 data/core/terrain.cfg:1765
+#: data/core/terrain.cfg:919 data/core/terrain.cfg:1810
 msgid "Impassable"
 msgstr "Onbegaanbaar"
 
 #. [terrain_type]: id=void
-#: data/core/terrain.cfg:885
+#: data/core/terrain.cfg:930
 msgid "Void"
 msgstr "Ongeldig"
 
@@ -456,37 +482,37 @@ msgstr "Ongeldig"
 #. [terrain_type]: id=mermen_village
 #. [terrain_type]: id=swamp_merfolk-village
 #. [terrain_type]: id=village
-#: data/core/terrain.cfg:901 data/core/terrain.cfg:913
-#: data/core/terrain.cfg:927 data/core/terrain.cfg:939
-#: data/core/terrain.cfg:951 data/core/terrain.cfg:963
-#: data/core/terrain.cfg:977 data/core/terrain.cfg:989
-#: data/core/terrain.cfg:1003 data/core/terrain.cfg:1015
-#: data/core/terrain.cfg:1027 data/core/terrain.cfg:1039
-#: data/core/terrain.cfg:1051 data/core/terrain.cfg:1063
-#: data/core/terrain.cfg:1075 data/core/terrain.cfg:1087
-#: data/core/terrain.cfg:1099 data/core/terrain.cfg:1111
-#: data/core/terrain.cfg:1125 data/core/terrain.cfg:1137
-#: data/core/terrain.cfg:1149 data/core/terrain.cfg:1161
-#: data/core/terrain.cfg:1173 data/core/terrain.cfg:1185
-#: data/core/terrain.cfg:1197 data/core/terrain.cfg:1209
-#: data/core/terrain.cfg:1221 data/core/terrain.cfg:1235
-#: data/core/terrain.cfg:1246 data/core/terrain.cfg:1259
-#: data/core/terrain.cfg:1758
+#: data/core/terrain.cfg:946 data/core/terrain.cfg:958
+#: data/core/terrain.cfg:972 data/core/terrain.cfg:984
+#: data/core/terrain.cfg:996 data/core/terrain.cfg:1008
+#: data/core/terrain.cfg:1022 data/core/terrain.cfg:1034
+#: data/core/terrain.cfg:1048 data/core/terrain.cfg:1060
+#: data/core/terrain.cfg:1072 data/core/terrain.cfg:1084
+#: data/core/terrain.cfg:1096 data/core/terrain.cfg:1108
+#: data/core/terrain.cfg:1120 data/core/terrain.cfg:1132
+#: data/core/terrain.cfg:1144 data/core/terrain.cfg:1156
+#: data/core/terrain.cfg:1170 data/core/terrain.cfg:1182
+#: data/core/terrain.cfg:1194 data/core/terrain.cfg:1206
+#: data/core/terrain.cfg:1218 data/core/terrain.cfg:1230
+#: data/core/terrain.cfg:1242 data/core/terrain.cfg:1254
+#: data/core/terrain.cfg:1266 data/core/terrain.cfg:1280
+#: data/core/terrain.cfg:1291 data/core/terrain.cfg:1304
+#: data/core/terrain.cfg:1803
 msgid "Village"
 msgstr "Dorp"
 
 #. [terrain_type]: id=encampment
-#: data/core/terrain.cfg:1275
+#: data/core/terrain.cfg:1320
 msgid "Encampment"
 msgstr "Kamp"
 
 #. [terrain_type]: id=orcish_fort
-#: data/core/terrain.cfg:1286
+#: data/core/terrain.cfg:1331
 msgid "Fort"
 msgstr "Fort"
 
 #. [terrain_type]: id=snow_orcish_fort
-#: data/core/terrain.cfg:1297
+#: data/core/terrain.cfg:1342
 #, fuzzy
 msgid "Snowy Fort"
 msgstr "Besneeuwd Bos"
@@ -495,34 +521,34 @@ msgstr "Besneeuwd Bos"
 #. [terrain_type]: id=elven_castle
 #. [terrain_type]: id=dwarven_castle
 #. [terrain_type]: id=castle_overlay
-#: data/core/terrain.cfg:1308 data/core/terrain.cfg:1328
-#: data/core/terrain.cfg:1339 data/core/terrain.cfg:1542
+#: data/core/terrain.cfg:1353 data/core/terrain.cfg:1373
+#: data/core/terrain.cfg:1384 data/core/terrain.cfg:1587
 msgid "Castle"
 msgstr "Kasteel"
 
 #. [terrain_type]: id=snow_castle
-#: data/core/terrain.cfg:1318
+#: data/core/terrain.cfg:1363
 #, fuzzy
 msgid "Snowy Castle"
 msgstr "Kasteel"
 
 #. [terrain_type]: id=ruin
-#: data/core/terrain.cfg:1350
+#: data/core/terrain.cfg:1395
 msgid "Ruin"
 msgstr "Ruïne"
 
 #. [terrain_type]: id=sunkenruin
-#: data/core/terrain.cfg:1361
+#: data/core/terrain.cfg:1406
 msgid "Sunken Ruin"
 msgstr "Verzonken Ruïne"
 
 #. [terrain_type]: id=swampruin
-#: data/core/terrain.cfg:1373
+#: data/core/terrain.cfg:1418
 msgid "Swamp Ruin"
 msgstr "Moerasruïne"
 
 #. [terrain_type]: id=sand_castle
-#: data/core/terrain.cfg:1385
+#: data/core/terrain.cfg:1430
 #, fuzzy
 msgid "Desert Castle"
 msgstr "Kasteel"
@@ -538,27 +564,27 @@ msgstr "Kasteel"
 #. [terrain_type]: id=sunken_keep
 #. [terrain_type]: id=swamp_keep
 #. [terrain_type]: id=keep_overlay
-#: data/core/terrain.cfg:1401 data/core/terrain.cfg:1414
-#: data/core/terrain.cfg:1427 data/core/terrain.cfg:1440
-#: data/core/terrain.cfg:1453 data/core/terrain.cfg:1464
-#: data/core/terrain.cfg:1477 data/core/terrain.cfg:1490
-#: data/core/terrain.cfg:1503 data/core/terrain.cfg:1516
-#: data/core/terrain.cfg:1530
+#: data/core/terrain.cfg:1446 data/core/terrain.cfg:1459
+#: data/core/terrain.cfg:1472 data/core/terrain.cfg:1485
+#: data/core/terrain.cfg:1498 data/core/terrain.cfg:1509
+#: data/core/terrain.cfg:1522 data/core/terrain.cfg:1535
+#: data/core/terrain.cfg:1548 data/core/terrain.cfg:1561
+#: data/core/terrain.cfg:1575
 msgid "Keep"
 msgstr "Donjon"
 
 #. [terrain_type]: id=encampment_keep
-#: data/core/terrain.cfg:1402
+#: data/core/terrain.cfg:1447
 msgid "Encampment Keep"
 msgstr "Kampdonjon"
 
 #. [terrain_type]: id=orcish_keep
-#: data/core/terrain.cfg:1415
+#: data/core/terrain.cfg:1460
 msgid "Fort Keep"
 msgstr "Fortdonjon"
 
 #. [terrain_type]: id=snow_orcish_keep
-#: data/core/terrain.cfg:1428
+#: data/core/terrain.cfg:1473
 #, fuzzy
 msgid "Snowy Fort Keep"
 msgstr "Fortdonjon"
@@ -566,28 +592,28 @@ msgstr "Fortdonjon"
 #. [terrain_type]: id=human_keep
 #. [terrain_type]: id=dwarven_keep
 #. [terrain_type]: id=swamp_keep
-#: data/core/terrain.cfg:1441 data/core/terrain.cfg:1478
-#: data/core/terrain.cfg:1517
+#: data/core/terrain.cfg:1486 data/core/terrain.cfg:1523
+#: data/core/terrain.cfg:1562
 msgid "Castle Keep"
 msgstr "Kasteeldonjon"
 
 #. [terrain_type]: id=elven_keep
-#: data/core/terrain.cfg:1465
+#: data/core/terrain.cfg:1510
 msgid "Elven Keep"
 msgstr "Elfendonjon"
 
 #. [terrain_type]: id=ruined_keep
-#: data/core/terrain.cfg:1491
+#: data/core/terrain.cfg:1536
 msgid "Ruined Castle Keep"
 msgstr "Kasteeldonjon Ruines"
 
 #. [terrain_type]: id=sunken_keep
-#: data/core/terrain.cfg:1504
+#: data/core/terrain.cfg:1549
 msgid "Sunken Castle Keep"
 msgstr "Gezonken Kasteeldonjon"
 
 #. [terrain_type]: id=desert_keep
-#: data/core/terrain.cfg:1552 data/core/terrain.cfg:1553
+#: data/core/terrain.cfg:1597 data/core/terrain.cfg:1598
 #, fuzzy
 msgid "Desert Keep"
 msgstr "Woestijn"
@@ -602,43 +628,43 @@ msgstr "Woestijn"
 #. [terrain_type]: id=bridgelava
 #. [terrain_type]: id=bridgelavadiag1
 #. [terrain_type]: id=bridglavadiag2
-#: data/core/terrain.cfg:1572 data/core/terrain.cfg:1583
-#: data/core/terrain.cfg:1594 data/core/terrain.cfg:1607
-#: data/core/terrain.cfg:1618 data/core/terrain.cfg:1629
-#: data/core/terrain.cfg:1642 data/core/terrain.cfg:1651
-#: data/core/terrain.cfg:1661 data/core/terrain.cfg:1673
-#: data/core/terrain.cfg:1683 data/core/terrain.cfg:1694
+#: data/core/terrain.cfg:1617 data/core/terrain.cfg:1628
+#: data/core/terrain.cfg:1639 data/core/terrain.cfg:1652
+#: data/core/terrain.cfg:1663 data/core/terrain.cfg:1674
+#: data/core/terrain.cfg:1687 data/core/terrain.cfg:1696
+#: data/core/terrain.cfg:1706 data/core/terrain.cfg:1718
+#: data/core/terrain.cfg:1728 data/core/terrain.cfg:1739
 msgid "Bridge"
 msgstr "Brug"
 
 #. [terrain_type]: id=off_map
-#: data/core/terrain.cfg:1712
+#: data/core/terrain.cfg:1757
 msgid "None"
 msgstr "Geen"
 
 #. [toggle_button]: id=shroud
 #. [terrain_type]: id=shroud
-#: data/core/terrain.cfg:1721 data/gui/default/window/mp_create_game.cfg:471
+#: data/core/terrain.cfg:1766 data/gui/default/window/mp_create_game.cfg:471
 msgid "Shroud"
 msgstr "Sluier"
 
 #. [terrain_type]: id=fog
-#: data/core/terrain.cfg:1730
+#: data/core/terrain.cfg:1775
 msgid "Fog"
 msgstr "Mist"
 
 #. [terrain_type]: id=flat
-#: data/core/terrain.cfg:1744
+#: data/core/terrain.cfg:1789
 msgid "Flat"
 msgstr "Vlak"
 
 #. [terrain_type]: id=frozen
-#: data/core/terrain.cfg:1751
+#: data/core/terrain.cfg:1796
 msgid "Frozen"
 msgstr "Bevroren"
 
 #. [terrain_type]: id=unwalkable
-#: data/core/terrain.cfg:1772
+#: data/core/terrain.cfg:1817
 msgid "Unwalkable"
 msgstr "Onbegaanbaar"
 
@@ -686,6 +712,7 @@ msgstr "Verbinden"
 #. [button]: id=cancel
 #: data/gui/default/window/addon_connect.cfg:220
 #: data/gui/default/window/campaign_dialog.cfg:434
+#: data/gui/default/window/data_manage.cfg:353
 #: data/gui/default/window/editor_generate_map.cfg:111
 #: data/gui/default/window/editor_new_map.cfg:111
 #: data/gui/default/window/editor_resize_map.cfg:273
@@ -715,6 +742,8 @@ msgstr "Veldtocht spelen"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
 #: data/gui/default/window/campaign_dialog.cfg:420
+#: data/gui/default/window/data_manage.cfg:339
+#: data/gui/default/window/data_manage.cfg:340
 #: data/gui/default/window/editor_settings.cfg:230
 #: data/gui/default/window/game_load.cfg:429
 #: data/gui/default/window/game_load.cfg:430
@@ -730,6 +759,55 @@ msgstr "Veldtocht spelen"
 #: src/gui/dialogs/message.cpp:168
 msgid "OK"
 msgstr "Ok"
+
+#. [label]: id=lblTitle
+#: data/gui/default/window/data_manage.cfg:42
+msgid "Manage Data"
+msgstr ""
+
+#. [label]: id=lblChoose
+#: data/gui/default/window/data_manage.cfg:81
+#: data/gui/default/window/game_load.cfg:181
+msgid "Choose the game to load"
+msgstr "Kies spel om te laden"
+
+#. [label]: id=lblFilter
+#: data/gui/default/window/data_manage.cfg:105
+#: data/gui/default/window/game_load.cfg:205
+msgid "Filter"
+msgstr "Filter"
+
+#. [label]: id=filename
+#. [label]: id=name
+#: data/gui/default/window/data_manage.cfg:155
+#: data/gui/default/window/game_load.cfg:255
+#: data/gui/default/window/mp_server_list.cfg:96
+msgid "Name"
+msgstr "Naam"
+
+#. [label]: id=date
+#: data/gui/default/window/data_manage.cfg:169
+#: data/gui/default/window/game_load.cfg:269
+msgid "Date"
+msgstr "Datum"
+
+#. [button]: id=clear
+#: data/gui/default/window/data_manage.cfg:258
+#: data/gui/default/window/data_manage.cfg:259
+msgid "Clear"
+msgstr ""
+
+#. [button]: id=restore
+#: data/gui/default/window/data_manage.cfg:275
+#: data/gui/default/window/data_manage.cfg:276
+msgid "Restore"
+msgstr ""
+
+#. [button]: id=backup
+#: data/gui/default/window/data_manage.cfg:292
+#: data/gui/default/window/data_manage.cfg:293
+msgid "Backup"
+msgstr ""
 
 #. [label]
 #: data/gui/default/window/editor_generate_map.cfg:38
@@ -988,28 +1066,6 @@ msgstr "Nee"
 #: src/gui/dialogs/mp_create_game.cpp:87 src/hotkeys.cpp:66
 msgid "Load Game"
 msgstr "Spel laden"
-
-#. [label]: id=lblChoose
-#: data/gui/default/window/game_load.cfg:181
-msgid "Choose the game to load"
-msgstr "Kies spel om te laden"
-
-#. [label]: id=lblFilter
-#: data/gui/default/window/game_load.cfg:205
-msgid "Filter"
-msgstr "Filter"
-
-#. [label]: id=name
-#. [label]: id=filename
-#: data/gui/default/window/game_load.cfg:255
-#: data/gui/default/window/mp_server_list.cfg:96
-msgid "Name"
-msgstr "Naam"
-
-#. [label]: id=date
-#: data/gui/default/window/game_load.cfg:269
-msgid "Date"
-msgstr "Datum"
 
 #. [button]: id=delete
 #: data/gui/default/window/game_load.cfg:352
@@ -1553,7 +1609,7 @@ msgstr "Wachtwoord Herinnering"
 #. [grid]
 #: data/gui/default/window/mp_method_selection.cfg:31
 #: data/gui/default/window/title_screen.cfg:228
-#: src/gui/dialogs/game_load.cpp:285
+#: src/gui/dialogs/data_manage.cpp:203 src/gui/dialogs/game_load.cpp:285
 msgid "Multiplayer"
 msgstr "Multiplayer"
 
@@ -1656,7 +1712,7 @@ msgstr ""
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:226
-#: src/gui/dialogs/game_load.cpp:287
+#: src/gui/dialogs/data_manage.cpp:205 src/gui/dialogs/game_load.cpp:287
 msgid "Tutorial"
 msgstr "Oefenspel"
 
@@ -2353,32 +2409,32 @@ msgstr ""
 msgid "No node defined."
 msgstr "Er is geen rooster gedefiniëerd."
 
-#: src/gui/dialogs/game_load.cpp:258
+#: src/gui/dialogs/data_manage.cpp:176 src/gui/dialogs/game_load.cpp:258
 msgid "#(Invalid)"
 msgstr "#(Ongeldig)"
 
-#: src/gui/dialogs/game_load.cpp:278
+#: src/gui/dialogs/data_manage.cpp:196 src/gui/dialogs/game_load.cpp:278
 msgid "Campaign: $campaign_name"
 msgstr "Veldtocht: $campaign_name"
 
-#: src/gui/dialogs/game_load.cpp:295
+#: src/gui/dialogs/data_manage.cpp:213 src/gui/dialogs/game_load.cpp:295
 #, fuzzy
 msgid "replay"
 msgstr "speler"
 
-#: src/gui/dialogs/game_load.cpp:297
+#: src/gui/dialogs/data_manage.cpp:215 src/gui/dialogs/game_load.cpp:297
 msgid "Turn"
 msgstr "Beurt"
 
-#: src/gui/dialogs/game_load.cpp:299
+#: src/gui/dialogs/data_manage.cpp:217 src/gui/dialogs/game_load.cpp:299
 msgid "Scenario Start"
 msgstr "Scenario Begin"
 
-#: src/gui/dialogs/game_load.cpp:302
+#: src/gui/dialogs/data_manage.cpp:220 src/gui/dialogs/game_load.cpp:302
 msgid "Difficulty: "
 msgstr "Moelijkheid: "
 
-#: src/gui/dialogs/game_load.cpp:306
+#: src/gui/dialogs/data_manage.cpp:224 src/gui/dialogs/game_load.cpp:306
 msgid "Version: "
 msgstr "Versie: "
 
@@ -2446,7 +2502,7 @@ msgstr "Versie: "
 msgid "Version"
 msgstr "Versie"
 
-#: src/gui/widgets/helper.cpp:134
+#: src/gui/widgets/helper.cpp:136
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "Verplicht widget '$id' is niet gedefiniëerd."
 
@@ -2923,7 +2979,7 @@ msgstr "Schermafdruk maken mislukt"
 #. other's resources rather than duplicating them. For example,
 #. Swedish (sv) and Danish (da) are such, so Swedish translator could
 #. translate this message as "sv,da", while Danish as "da,sv".
-#: src/image.cpp:345
+#: src/image.cpp:413
 msgid "language code for localized resources^en_US"
 msgstr "nl"
 

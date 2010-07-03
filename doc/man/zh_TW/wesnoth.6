@@ -39,7 +39,7 @@
 .
 .TP 
 \fB\-\-bpp\fP\fI\ number\fP
-設定每個像素佔多少位子。例如：\fB\-\-bpp 32\fP
+設定每個像素的位元數。例如：\fB\-\-bpp 32\fP
 .TP 
 \fB\-c, \-\-campaign[[<difficulty>] <id_campaign> [<id_scenario>]]\fP
 goes directly to the campaign based on the parameters.  The difficulty is a
@@ -48,11 +48,11 @@ difficulty is 1.  The scenario must be one of the campaign's child
 scenarios. The default scenario is campaign's first scenario.
 .TP 
 \fB\-\-config\-dir\fP\fI\ name\fP
-sets the user configuration directory to \fIname\fP under $HOME or "My
-Documents\eMy Games" for windows.
+設定玩家配置目錄到 $HOME 之下或「我的文件\我的遊戲 (My Documents\eMy Games)」(Windows 系統)之下的
+\fIname\fP目錄。
 .TP 
 \fB\-\-config\-path\fP
-顯示遊戲資料庫目錄並退出。
+顯示玩家配置目錄的路徑並退出。
 .TP 
 \fB\-datadir <directory>\fP
 overrides the data directory with the one specified
@@ -62,8 +62,7 @@ overrides the data directory with the one specified
 http://www.wesnoth.org/wiki/CommandMode 。
 .TP 
 \fB\-e,\ \-\-editor\fP\fI\ file\fP
-start the in\-game map editor directly. If \fIfile\fP is specified, equivalent
-to \fB\-e \-\-load\fP
+直接啟動遊戲內建的地圖編輯器。如果指定 \fIfile\fP is specified，則等同 \fB\-e \-\-load\fP
 .TP 
 \fB\-\-fps\fP
 在螢幕一角的顯示游戲幀幅數。
@@ -81,10 +80,8 @@ to \fB\-e \-\-load\fP
 顯示指令可用選項，然後退出。
 .TP 
 \fB\-l,\ \-\-load\fP\fI\ file\fP
-loads the savegame \fIfile\fP from the standard save game directory.  If the
-\fB\-e\fP or \fB\-\-editor\fP option is used as well, starts the editor with the map
-from \fIfile\fP open. If it is a directory, the editor will start with a load
-map dialog opened there.
+從預設遊戲存檔目錄讀取存檔\fIfile\fP。如果與 \fB\-e\fP 或 \fB\-\-editor\fP
+選項同時使用，啟動地圖編輯器並打開\fIfile\fP所對應的地圖。如果是一個目錄，則編輯器啟動後自動打開讀取地圖對話框並定位到該目錄。
 .TP 
 \fB\-\-log\-\fP\fIlevel\fP\fB=\fP\fIdomain1\fP\fB,\fP\fIdomain2\fP\fB,\fP\fI...\fP
 設定debug的級別。\fBall\fP用來支配任意bebug級別。可選的級別有：\fBerror\fP，\ \fBwarning\fP，\ \fBinfo\fP，\
@@ -97,9 +94,7 @@ map dialog opened there.
 遊戲每秒能顯示的幀幅數，可以設為1－1000的數，預設為\fB50\fP。
 .TP 
 \fB\-m, \-\-multiplayer\fP
-runs a multiplayer game. There are additional options that can be used
-together with \fB\-\-multiplayer\fP as explained below. Only these additional
-options can follow \fB\-\-multiplayer\fP.
+啟動一個多人游戲。有更多的額外選項可以與\fB\-\-multiplayer\fP一起使用，詳見下述。只有這些額外選項可以跟在\fB\-\-multiplayer\fP之後。
 .TP 
 \fB\-\-no\-delay\fP
 不延遲圖形基準測試，直接執行遊戲。使用 \fB\-\-nogui\fP 選項時會自動啟動本選項。
@@ -131,18 +126,16 @@ them you must add the '=' character before.  Example: \fB\-p
 設定螢幕解析度。例如： \fB\-r 800x600\fP
 .TP 
 \fB\-\-smallgui\fP
-allows to use screen resolutions down to 800x480 and resizes a few interface
-elements.
+可以使用低至800x480的螢幕解析度，並自動調節一些界面元素的大小。
 .TP 
 \fB\-s,\ \-\-server\ [host]\fP
-connects to the specified host if any, otherwise connect to the first server
-in preferences. Example: \fB\-\-server server.wesnoth.org\fP
+如果指定了主機的話，連接到指定的主機。否則，連接到偏好設定中的第一個伺服器。例如：\fB\-\-server server.wesnoth.org\fP
 .TP 
 \fB\-t, \-\-test\fP
 執行游戲測試任務。
 .TP 
 \fB\-\-validcache\fP
-assumes that the cache is valid. (dangerous)
+假定快取是有效的。（因此不進行快取驗證，危險）
 .TP 
 \fB\-v, \-\-version\fP
 顯示版本並退出。
@@ -151,7 +144,7 @@ assumes that the cache is valid. (dangerous)
 使用視窗模式執行遊戲。
 .TP 
 \fB\-\-with\-replay\fP
-replays the game loaded with the \fB\-\-load\fP option.
+透過和\fB\-\-load\fP選項一起使用，播放遊戲錄影。
 .
 .SH \-\-multiplayer的額外選項
 .
@@ -159,7 +152,7 @@ replays the game loaded with the \fB\-\-load\fP option.
 或者2。不過不同的任務可選的陣營數會有不同。取決於您的任務。
 .TP 
 \fB\-\-ai_config\fP\fInumber\fP\fB=\fP\fIvalue\fP
-selects a configuration file to load for the AI controller for this side.
+為該陣營的AI控制者選擇一個配置檔案來讀取。
 .TP 
 \fB\-\-algorithm\fP\fInumber\fP\fB=\fP\fIvalue\fP
 為這個陣營選擇一個非標準的AI控制。可選值有：\fBidle_ai\fP 和 \fBsample_ai\fP.
@@ -188,11 +181,9 @@ selects a configuration file to load for the AI controller for this side.
 \fB\-\-turns=\fP\fIvalue\fP
 設定所選任務的回合數限制。預設值為\fB50\fP。
 .
-.SH "EXIT STATUS"
+.SH 退出狀態碼
 .
-Normal exit status is 0. An exit status of 1 indicates an (SDL, video,
-fonts, etc) initialization error. An exit status of 2 indicates an error
-with the command line options.
+正常退出時的狀態碼為0。狀態碼1代表發生了（SDL、視訊、字型等）初始化錯誤。狀態碼2代表命令行選項中有錯誤。
 .
 .SH 作者
 .
@@ -203,7 +194,7 @@ and Soliton <soliton.de@gmail.com>更動。
 .br
 這個說明頁最早由 Cyril Bouthors 撰寫<cyril@bouthors.org>。
 .br
-官方網站: http://www.wesnoth.org/繁體中文翻譯團隊:http://wesnoth\-tw.blogspot.com/
+官方網站：http://www.wesnoth.org/；繁體中文翻譯團隊：http://wesnoth\-tw.blogspot.com/
 .
 .SH 版權
 .
