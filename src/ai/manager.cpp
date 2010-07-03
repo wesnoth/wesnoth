@@ -300,10 +300,8 @@ void manager::set_ai_info(const game_info& i)
 
 
 void manager::clear_ai_info(){
-	if (ai_info_ != NULL){
-		delete ai_info_;
-		ai_info_ = NULL;
-	}
+	delete ai_info_;
+	ai_info_ = NULL;
 }
 
 
