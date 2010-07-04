@@ -142,9 +142,13 @@ public class WorkspaceUtils
 			if (!proj.exists())
 			{
 				IProjectDescription description = ResourcesPlugin.getWorkspace().newProjectDescription("User Addons");
-				// cleanup any project file if exists.
+
+				// cleanup any strictly-project related files if any.
 				if (new File(userDir + Path.SEPARATOR + "data/add-ons/.project").exists())
 					new File(userDir + Path.SEPARATOR + "data/add-ons/.project").delete();
+
+				if (new File(userDir + Path.SEPARATOR + "data/add-ons/.ignore").exists())
+					new File(userDir + Path.SEPARATOR + "data/add-ons/.ignore").delete();
 
 				description.setLocation(new Path(userDir + Path.SEPARATOR + "data/add-ons/"));
 				proj.create(description, null);
@@ -167,7 +171,7 @@ public class WorkspaceUtils
 				{
 					if (project.getName().equals("User Addons"))
 						continue;
-					skipList += (project.getName() + "\n");
+					skipList += (project.getLocation().toOSString() + "\n");
 				}
 				ResourceUtils.createFile(proj, ".ignore",skipList);
 			}
