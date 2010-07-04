@@ -25,7 +25,7 @@ const std::string hash_prefix = "$H$";
 
 unsigned char* md5(const std::string& input) {
 	MD5 md5_worker;
-	md5_worker.update((unsigned char*) input.c_str(), input.size());
+	md5_worker.update(const_cast<unsigned char*>(reinterpret_cast<const unsigned char*>(input.c_str())), input.size());
 	md5_worker.finalize();
 	return md5_worker.raw_digest();
 }
@@ -56,12 +56,12 @@ std::string encode_hash(unsigned char* input) {
 		unsigned value = input[i++];
 		encoded_hash.append(itoa64.substr(value & 0x3f,1));
 		if(i < 16)
-			value |= (int)input[i] << 8;
+			value |= static_cast<int>(input[i]) << 8;
 		encoded_hash.append(itoa64.substr((value >> 6) & 0x3f,1));
 		if(i++ >= 16)
 			break;
 		if(i < 16)
-			value |= (int)input[i] << 16;
+			value |= static_cast<int>(input[i]) << 16;
 		encoded_hash.append(itoa64.substr((value >> 12) & 0x3f,1));
 		if(i++ >= 16)
 			break;
@@ -76,7 +76,7 @@ std::string create_hash(const std::string& password, const std::string& salt, in
 
 	unsigned char* output = md5(salt + password);
 	do {
-		output = md5(std::string((char *) output, (char *) output + 16).append(password));
+		output = md5(std::string(reinterpret_cast<char*>(output), reinterpret_cast<char*>(output) + 16).append(password));
 	} while(--iteration_count);
 
 	return encode_hash(output);
