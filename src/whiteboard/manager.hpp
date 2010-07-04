@@ -125,16 +125,21 @@ private:
 	bool planned_unit_map_active_;
 };
 
+/** Applies the planned unit map for the duration of the struct's life.
+ *  Reverts to real unit map on exit, no matter what was the status when the struct was created. */
 struct scoped_planned_unit_map
 {
 	scoped_planned_unit_map();
 	~scoped_planned_unit_map();
 };
 
+/** Ensures that the real unit map is active for the duration of the struct's life,
+ * and reverts to planned unit map if it was active when the struct was created. */
 struct scoped_real_unit_map
 {
 	scoped_real_unit_map();
 	~scoped_real_unit_map();
+	bool has_planned_unit_map_;
 };
 
 } // end namespace wb

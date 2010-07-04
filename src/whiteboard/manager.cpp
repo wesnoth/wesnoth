@@ -353,22 +353,27 @@ bool manager::unit_has_actions(const unit& unit) const
 
 scoped_planned_unit_map::scoped_planned_unit_map()
 {
-	resources::whiteboard->set_planned_unit_map();
+	if (!resources::whiteboard->has_planned_unit_map())
+		resources::whiteboard->set_planned_unit_map();
 }
 
 scoped_planned_unit_map::~scoped_planned_unit_map()
 {
-	resources::whiteboard->set_real_unit_map();
+	if (resources::whiteboard->has_planned_unit_map())
+		resources::whiteboard->set_real_unit_map();
 }
 
 scoped_real_unit_map::scoped_real_unit_map()
+:has_planned_unit_map_(resources::whiteboard->has_planned_unit_map())
 {
-	resources::whiteboard->set_real_unit_map();
+	if (has_planned_unit_map_)
+		resources::whiteboard->set_real_unit_map();
 }
 
 scoped_real_unit_map::~scoped_real_unit_map()
 {
-	resources::whiteboard->set_planned_unit_map();
+	if (has_planned_unit_map_ && !resources::whiteboard->has_planned_unit_map())
+		resources::whiteboard->set_planned_unit_map();
 }
 
 } // end namespace wb
