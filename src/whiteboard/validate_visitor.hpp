@@ -27,8 +27,10 @@ namespace wb
 class validate_visitor: public mapbuilder_visitor
 {
 public:
-	validate_visitor(unit_map& unit_map);
+	validate_visitor(unit_map& unit_map, side_actions_ptr side_actions);
 	virtual ~validate_visitor();
+
+	void validate_actions();
 
 	virtual void visit_move(boost::shared_ptr<move> move);
 };

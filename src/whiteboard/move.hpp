@@ -58,12 +58,10 @@ public:
 	boost::shared_ptr<arrow> get_arrow() { return arrow_; }
 	boost::shared_ptr<unit> get_fake_unit() { return fake_unit_; }
 
-	/**
-	 * Applies temporarily the result of this move to the unit map, and returns
-	 * the corresponding modifier. Dropping the returned reference will revert
-	 * the changes.
-	 */
-	virtual modifier_ptr apply_temp_modifier(unit_map& unit_map);
+	/** Applies temporarily the result of this action to the specified unit map. */
+	virtual void apply_temp_modifier(unit_map& unit_map);
+	/** Removes the result of this action from the specified unit map. */
+	virtual void remove_temp_modifier(unit_map& unit_map);
 
 	virtual bool is_related_to(const map_location& hex) const;
 	virtual bool is_related_to(const unit& unit) const;
@@ -77,7 +75,7 @@ public:
 
 private:
 	unit & unit_;
-	map_location orig_hex_;
+	map_location source_hex_;
 	map_location dest_hex_;
 
 	boost::shared_ptr<arrow> arrow_;

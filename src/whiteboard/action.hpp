@@ -58,12 +58,10 @@ public:
 	/** Returns true if the action has been completely executed and can be deleted */
 	virtual bool execute() = 0;
 
-	/**
-	 * Applies temporarily the result of this action to the unit map, and returns
-	 * the corresponding modifier. Dropping the returned reference will revert
-	 * the changes.
-	 */
-	virtual modifier_ptr apply_temp_modifier(unit_map& unit_map) = 0;
+	/** Applies temporarily the result of this action to the specified unit map. */
+	virtual void apply_temp_modifier(unit_map& unit_map) = 0;
+	/** Removes the result of this action from the specified unit map. */
+	virtual void remove_temp_modifier(unit_map& unit_map) = 0;
 
 	/**
 	 * Indicates whether this action is related to the specified hex.

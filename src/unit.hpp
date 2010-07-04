@@ -502,20 +502,11 @@ struct team_data
 team_data calculate_team_data(const class team& tm, int side);
 
 /**
- * Superclass for temporary unit_map modifiers. Allows putting them together
- * in stl containers without too much fuss.
- */
-struct temporary_unit_map_modifier
-{
-	virtual ~temporary_unit_map_modifier() = 0;
-};
-
-/**
  * This object is used to temporary place a unit in the unit map, swapping out
  * any unit that is already there.  On destruction, it restores the unit map to
  * its original.
  */
-struct temporary_unit_placer : public temporary_unit_map_modifier
+struct temporary_unit_placer
 {
 	temporary_unit_placer(unit_map& m, const map_location& loc, unit& u);
 	virtual  ~temporary_unit_placer();
@@ -531,7 +522,7 @@ private:
  * any unit that is already there.  On destruction, it restores the unit map to
  * its original.
  */
-struct temporary_unit_mover : public temporary_unit_map_modifier
+struct temporary_unit_mover
 {
 	temporary_unit_mover(unit_map& m, const map_location& src,  const map_location& dst);
 	virtual  ~temporary_unit_mover();

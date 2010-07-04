@@ -42,7 +42,7 @@ const std::string move::ARROW_STYLE_INVALID = "invalid";
 move::move(unit& subject, const map_location& source_hex, const map_location& target_hex,
 		boost::shared_ptr<arrow> arrow,	boost::shared_ptr<unit> fake_unit)
 : unit_(subject),
-  orig_hex_(source_hex),
+  source_hex_(source_hex),
   dest_hex_(target_hex),
   arrow_(arrow),
   fake_unit_(fake_unit),
@@ -115,7 +115,7 @@ bool move::execute()
 		}
 		if (found)
 		{
-			orig_hex_ = final_location;
+			source_hex_ = final_location;
 			--start_new_path; //since the for loop incremented the iterator once after we found the right one.
 			arrow_path_t new_path(start_new_path, arrow_path.end());
 			LOG_WB << "Setting new path for this move from (" << new_path.front()
@@ -138,21 +138,28 @@ bool move::execute()
 	return move_finished_completely;
 }
 
-modifier_ptr move::apply_temp_modifier(unit_map& unit_map)
+void move::apply_temp_modifier(unit_map& unit_map)
 {
 	//TODO: properly handle movement points
 
-	assert(unit_.get_location() == orig_hex_);
-	DBG_WB << "Adding temp unit mover for unit " << unit_.name() << " [" << unit_.underlying_id() << "] "
-			<< " from (" << orig_hex_ << ") to (" << dest_hex_ <<")\n";
-	modifier_ptr modifier(new temporary_unit_mover(unit_map, orig_hex_, dest_hex_));
-	return modifier;
+	assert(unit_.get_location() == source_hex_);
+	DBG_WB << "Temporarily moving unit " << unit_.name() << " [" << unit_.underlying_id() << "] "
+			<< " from (" << source_hex_ << ") to (" << dest_hex_ <<")\n";
+	unit_map.move(source_hex_, dest_hex_);
+	assert(unit_.get_location() == dest_hex_);
+}
+
+void move::remove_temp_modifier(unit_map& unit_map)
+{
+	assert(unit_.get_location() == dest_hex_);
+	unit_map.move(dest_hex_, source_hex_);
+	assert(unit_.get_location() == source_hex_);
 }
 
 bool move::is_related_to(const map_location& hex) const
 {
 	//bool is_related = arrow_->path_contains(hex);
-	bool is_related = hex == orig_hex_ || hex == dest_hex_;
+	bool is_related = hex == source_hex_ || hex == dest_hex_;
 	return is_related;
 }
 

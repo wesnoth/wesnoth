@@ -25,6 +25,7 @@
 
 #include <deque>
 
+#include <boost/enable_shared_from_this.hpp>
 #include <boost/shared_ptr.hpp>
 
 class unit;
@@ -34,10 +35,12 @@ namespace wb
 {
 
 class move;
+class side_actions;
 
+typedef boost::shared_ptr<side_actions> side_actions_ptr;
 typedef std::deque<action_ptr> action_set;
 
-class side_actions
+class side_actions: public boost::enable_shared_from_this<side_actions>
 {
 public:
 

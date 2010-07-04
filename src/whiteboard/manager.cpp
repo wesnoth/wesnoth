@@ -34,8 +34,6 @@
 
 namespace wb {
 
-typedef boost::shared_ptr<side_actions> side_actions_ptr;
-
 manager::manager():
 		active_(false),
 		mapbuilder_(),
@@ -72,15 +70,9 @@ void manager::set_planned_unit_map()
 	{
 		if (!planned_unit_map_active_)
 		{
-			//wb_scoped_lock lock(actions_modification_mutex_);
-			mapbuilder_.reset(new mapbuilder_visitor(*resources::units));
-			const action_set& actions = current_actions()->actions();
 			DBG_WB << "Building planned unit map.\n";
-			foreach (const action_ptr &action, actions)
-			{
-				assert(action);
-				action->accept(*mapbuilder_);
-			}
+			mapbuilder_.reset(new mapbuilder_visitor(*resources::units, current_actions()));
+			mapbuilder_->build_map();
 			planned_unit_map_active_ = true;
 		}
 		else
@@ -96,7 +88,6 @@ void manager::set_real_unit_map()
 	{
 		if (planned_unit_map_active_)
 		{
-			//wb_scoped_lock lock(actions_modification_mutex_);
 			DBG_WB << "Restoring regular unit map.\n";
 			mapbuilder_.reset();
 			planned_unit_map_active_ = false;

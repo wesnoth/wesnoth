@@ -238,11 +238,8 @@ void side_actions::validate_actions()
 		ERR_WB << "Validating action queue while temp modifiers are applied!!!\n";
 	}
 
-	validate_visitor validator(*resources::units);
-	foreach(action_ptr action, actions_)
-	{
-		action->accept(validator);
-	}
+	validate_visitor validator(*resources::units, shared_from_this());
+	validator.validate_actions();
 	update_last_action_display();
 }
 

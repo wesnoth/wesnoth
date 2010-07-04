@@ -17,9 +17,11 @@
  */
 
 #include "validate_visitor.hpp"
-#include "arrow.hpp"
 #include "move.hpp"
+#include "side_actions.hpp"
 
+#include "arrow.hpp"
+#include "foreach.hpp"
 #include "pathfind/pathfind.hpp"
 #include "play_controller.hpp"
 #include "resources.hpp"
@@ -28,8 +30,8 @@
 namespace wb
 {
 
-validate_visitor::validate_visitor(unit_map& unit_map)
-	: mapbuilder_visitor(unit_map)
+validate_visitor::validate_visitor(unit_map& unit_map, side_actions_ptr side_actions)
+	: mapbuilder_visitor(unit_map, side_actions)
 {
 }
 
@@ -45,14 +47,22 @@ static team& get_current_team()
 	return current_team;
 }
 
+void validate_visitor::validate_actions()
+{
+	foreach(action_ptr action, side_actions_->actions())
+	{
+		action->accept(*this);
+	}
+}
+
 void validate_visitor::visit_move(boost::shared_ptr<move> move)
 {
 	bool valid = true;
 
-	if (!(move->orig_hex_.valid() && move->dest_hex_.valid()))
+	if (!(move->source_hex_.valid() && move->dest_hex_.valid()))
 		valid = false;
 
-	if (valid && resources::units->find(move->orig_hex_) == resources::units->end())
+	if (valid && resources::units->find(move->source_hex_) == resources::units->end())
 		valid = false;
 
 	pathfind::plain_route route;
@@ -60,7 +70,7 @@ void validate_visitor::visit_move(boost::shared_ptr<move> move)
 	{
 		pathfind::shortest_path_calculator path_calc(move->unit_, get_current_team(), *resources::units,
 				*resources::teams, *resources::game_map);
-		route = pathfind::a_star_search(move->orig_hex_,
+		route = pathfind::a_star_search(move->source_hex_,
 				move->dest_hex_, 10000, &path_calc, resources::game_map->w(), resources::game_map->h());
 		if (route.move_cost >= path_calc.getNoPathValue())
 		{
