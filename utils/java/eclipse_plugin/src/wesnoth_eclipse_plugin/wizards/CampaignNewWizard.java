@@ -89,10 +89,8 @@ public class CampaignNewWizard extends Wizard implements INewWizard
 			monitor.worked(2);
 
 			// add the nature to the project
-			String[] nature = new String[1];
-			nature[0] = WesnothProjectNature.NATURE_ID;
 			IProjectDescription description = currentProject.getDescription();
-			description.setNatureIds(nature);
+			description.setNatureIds(new String[] { WesnothProjectNature.NATURE_ID });
 			currentProject.setDescription(description, null);
 
 			String campaignStructure = prepareTemplate("campaign_structure");
