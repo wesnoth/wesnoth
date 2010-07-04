@@ -156,35 +156,36 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 				// - need a better output from wmltools
 
 				/*
-				 * IMarker[] resIMarkers = file.findMarkers(MARKER_TYPE, false,
-				 * IResource.DEPTH_ZERO); Logger.print("found markers: " +
-				 * resIMarkers.length); ExternalToolInvoker invoker = new
-				 * ExternalToolInvoker(TOOL_PATH,
-				 * resource.getFullPath().toOSString(), true);
-				 * Logger.print("Tool: "+TOOL_PATH+
-				 * " checking file: "+resource.getFullPath().toOSString());
-				 * invoker.run(); invoker.waitFor(); // we need to find the
-				 * correct column start/end based on the current document // (or
-				 * get that from the tool) IDocumentProvider provider = new
-				 * TextFileDocumentProvider(); provider.connect(file); IDocument
-				 * document = provider.getDocument(file); String
-				 * line;MarkerToken token; while((line =
-				 * invoker.readOutputLine()) != null) { token =
-				 * MarkerToken.parseToken(line); IMarker marker =
-				 * file.createMarker(MARKER_TYPE);
-				 * marker.setAttribute(IMarker.MESSAGE, token.getMessage()); if
-				 * (token.getColumnEnd() != 0) {
-				 * marker.setAttribute(IMarker.CHAR_START
-				 * ,document.getLineOffset(token.getLine()-1) +
-				 * token.getColumnStart());
-				 * marker.setAttribute(IMarker.CHAR_END,
-				 * document.getLineOffset(token.getLine()-1) +
-				 * token.getColumnEnd()); }
-				 * marker.setAttribute(IMarker.LINE_NUMBER, token.getLine());
-				 * marker
-				 * .setAttribute(IMarker.SEVERITY,token.getType().toMarkerSeverity
-				 * ()); }
-				 */
+				IMarker[] resIMarkers = file.findMarkers(MARKER_TYPE, false, IResource.DEPTH_ZERO);
+				Logger.print("found markers: " + resIMarkers.length);
+
+				ExternalToolInvoker invoker = new ExternalToolInvoker(TOOL_PATH, resource.getFullPath().toOSString(), true);
+				Logger.print("Tool: "+TOOL_PATH+ " checking file: "+resource.getFullPath().toOSString());
+				invoker.run();
+				invoker.waitFor();
+
+				// we need to find the correct column start/end based on the current document
+				// (or get that from the tool)
+				IDocumentProvider provider = new TextFileDocumentProvider();
+				provider.connect(file);
+				IDocument document = provider.getDocument(file);
+
+				String line;MarkerToken token;
+				while((line  = invoker.readOutputLine()) != null)
+				{
+					token = MarkerToken.parseToken(line);
+					IMarker marker = file.createMarker(MARKER_TYPE);
+					marker.setAttribute(IMarker.MESSAGE, token.getMessage());
+					if (token.getColumnEnd() != 0)
+					{
+						marker.setAttribute(IMarker.CHAR_START,document.getLineOffset(token.getLine()-1) + token.getColumnStart());
+						marker.setAttribute(IMarker.CHAR_END, document.getLineOffset(token.getLine()-1) + token.getColumnEnd());
+					}
+					marker.setAttribute(IMarker.LINE_NUMBER, token.getLine());
+					marker.setAttribute(IMarker.SEVERITY,token.getType().toMarkerSeverity());
+				}
+				*/
+
 			} catch (Exception e)
 			{
 				e.printStackTrace();
