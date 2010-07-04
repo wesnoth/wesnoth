@@ -82,13 +82,13 @@ void MD5::update (uint1 *input, uint4 input_length) {
   }
 
   // Compute number of bytes mod 64
-  buffer_index = (unsigned int)((count[0] >> 3) & 0x3F);
+  buffer_index = static_cast<unsigned int>(((count[0] >> 3) & 0x3F));
 
   // Update number of bits
-  if (  (count[0] += ((uint4) input_length << 3))<((uint4) input_length << 3) )
+  if (  (count[0] += (static_cast<uint4>(input_length) << 3))<(static_cast<uint4>(input_length) << 3) )
     count[1]++;
 
-  count[1] += ((uint4)input_length >> 29);
+  count[1] += (static_cast<uint4>(input_length) >> 29);
 
 
   buffer_space = 64 - buffer_index;  // how much space is left in buffer
@@ -114,8 +114,6 @@ void MD5::update (uint1 *input, uint4 input_length) {
   memcpy(buffer+buffer_index, input+input_index, input_length-input_index);
 }
 
-
-
 // MD5 finalization. Ends an MD5 message-digest operation, writing the
 // the message digest and zeroizing the context.
 
@@ -139,7 +137,7 @@ void MD5::finalize (){
   encode (bits, count, 8);
 
   // Pad out to 56 mod 64.
-  index = (uint4) ((count[0] >> 3) & 0x3f);
+  index = static_cast<uint4>((count[0] >> 3) & 0x3f);
   padLen = (index < 56) ? (56 - index) : (120 - index);
   update (PADDING, padLen);
 
@@ -157,7 +155,6 @@ void MD5::finalize (){
 }
 
 
-
 unsigned char *MD5::raw_digest()
 {
   static uint1 s[16];
@@ -165,7 +162,7 @@ unsigned char *MD5::raw_digest()
   if (!finalized){
     std::cerr << "MD5::raw_digest:  Can't get digest if you haven't "<<
       "finalized the digest!" <<std::endl;
-    return ( (unsigned char*) "");
+    return ( const_cast<unsigned char*>(reinterpret_cast<const unsigned char*>("")));
   }
 
   memcpy(s, digest, 16);
@@ -301,7 +298,7 @@ void MD5::transform (uint1 block[64]){
   state[3] += d;
 
   // Zeroize sensitive information.
-  memset ( (uint1 *) x, 0, sizeof(x));
+  memset ( reinterpret_cast<uint1*>(x), 0, sizeof(x));
 
 }
 
@@ -314,10 +311,10 @@ void MD5::encode (uint1 *output, uint4 *input, uint4 len) {
   unsigned int i, j;
 
   for (i = 0, j = 0; j < len; i++, j += 4) {
-    output[j]   = (uint1)  (input[i] & 0xff);
-    output[j+1] = (uint1) ((input[i] >> 8) & 0xff);
-    output[j+2] = (uint1) ((input[i] >> 16) & 0xff);
-    output[j+3] = (uint1) ((input[i] >> 24) & 0xff);
+    output[j]   = static_cast<uint1> (input[i] & 0xff);
+    output[j+1] = static_cast<uint1>((input[i] >> 8) & 0xff);
+    output[j+2] = static_cast<uint1>((input[i] >> 16) & 0xff);
+    output[j+3] = static_cast<uint1>((input[i] >> 24) & 0xff);
   }
 }
 
@@ -331,8 +328,10 @@ void MD5::decode (uint4 *output, uint1 *input, uint4 len){
   unsigned int i, j;
 
   for (i = 0, j = 0; j < len; i++, j += 4)
-    output[i] = ((uint4)input[j]) | (((uint4)input[j+1]) << 8) |
-      (((uint4)input[j+2]) << 16) | (((uint4)input[j+3]) << 24);
+    output[i] = (static_cast<uint4>(input[j]))
+			| ((static_cast<uint4>(input[j+1])) << 8)
+			| ((static_cast<uint4>(input[j+2])) << 16)
+			| ((static_cast<uint4>(input[j+3])) << 24);
 }
 
 
