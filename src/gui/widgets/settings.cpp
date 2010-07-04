@@ -279,8 +279,11 @@ const std::string& tgui_definition::read(const config& cfg)
 				; itor != registered_window_types().end()
 				; ++itor) {
 
+            const std::string error_msg("Window not defined in WML: '" +
+                                         *itor +
+                                         "'. Perhaps a mismatch between data and source versions. Try -datadir <trunk-dir>" );
 			VALIDATE(window_types.find(*itor) != window_types.end()
-					, _("Window not defined."));
+					, error_msg.c_str() );
 		}
 	}
 
