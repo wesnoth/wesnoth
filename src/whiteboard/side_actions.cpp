@@ -18,6 +18,7 @@
 
 #include "side_actions.hpp"
 #include "action.hpp"
+#include "manager.hpp"
 #include "move.hpp"
 #include "validate_visitor.hpp"
 
@@ -54,6 +55,11 @@ side_actions::iterator side_actions::execute_next()
 
 side_actions::iterator side_actions::execute(side_actions::iterator position)
 {
+	if (resources::whiteboard->has_planned_unit_map())
+	{
+		ERR_WB << "Modifying action queue while temp modifiers are applied!!!\n";
+	}
+
 	if (!actions_.empty() && validate_iterator(position))
 	{
 		size_t distance = std::distance(begin(), position);
@@ -82,6 +88,11 @@ side_actions::iterator side_actions::execute(side_actions::iterator position)
 side_actions::iterator side_actions::insert_move(unit& subject, const map_location& source_hex, const map_location& target_hex, side_actions::iterator position,
 		boost::shared_ptr<arrow> arrow,	boost::shared_ptr<unit> fake_unit)
 {
+	if (resources::whiteboard->has_planned_unit_map())
+	{
+		ERR_WB << "Modifying action queue while temp modifiers are applied!!!\n";
+	}
+
 	action_ptr action(new move(subject, source_hex, target_hex, arrow, fake_unit));
 	assert(position < end());
 	iterator valid_position = actions_.insert(position, action);
@@ -92,6 +103,11 @@ side_actions::iterator side_actions::insert_move(unit& subject, const map_locati
 side_actions::iterator side_actions::queue_move(unit& subject, const map_location& source_hex, const map_location& target_hex,
 		boost::shared_ptr<arrow> arrow,	boost::shared_ptr<unit> fake_unit)
 {
+	if (resources::whiteboard->has_planned_unit_map())
+	{
+		ERR_WB << "Modifying action queue while temp modifiers are applied!!!\n";
+	}
+
 	action_ptr action(new move(subject, source_hex, target_hex, arrow, fake_unit));
 	actions_.push_back(action);
 	// Contrary to insert_move, no need to validate actions here since we're adding to the end of the queue
@@ -111,6 +127,11 @@ side_actions::iterator side_actions::move_later(side_actions::iterator position,
 
 side_actions::iterator side_actions::remove_action(side_actions::iterator position)
 {
+	if (resources::whiteboard->has_planned_unit_map())
+	{
+		ERR_WB << "Modifying action queue while temp modifiers are applied!!!\n";
+	}
+
 	assert((!actions_.empty() && validate_iterator(position)));
 	size_t distance = std::distance(begin(), position);
 	if (!actions_.empty() && validate_iterator(position))
@@ -212,6 +233,11 @@ void side_actions::update_last_action_display()
 
 void side_actions::validate_actions()
 {
+	if (resources::whiteboard->has_planned_unit_map())
+	{
+		ERR_WB << "Validating action queue while temp modifiers are applied!!!\n";
+	}
+
 	validate_visitor validator(*resources::units);
 	foreach(action_ptr action, actions_)
 	{
@@ -222,6 +248,11 @@ void side_actions::validate_actions()
 
 side_actions::iterator side_actions::move_in_queue(side_actions::iterator position, int increment)
 {
+	if (resources::whiteboard->has_planned_unit_map())
+	{
+		ERR_WB << "Modifying action queue while temp modifiers are applied!!!\n";
+	}
+
 	assert(!actions_.empty());
 	assert(validate_iterator(position));
 	if (actions_.empty() || !validate_iterator(position))
@@ -237,4 +268,4 @@ side_actions::iterator side_actions::move_in_queue(side_actions::iterator positi
 }
 
 
-}
+} //end namespace wb
