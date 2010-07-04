@@ -4,6 +4,7 @@
 package wesnoth_eclipse_plugin.utils;
 
 import java.io.File;
+import java.util.ArrayList;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
@@ -19,6 +20,8 @@ import wesnoth_eclipse_plugin.Activator;
 import wesnoth_eclipse_plugin.builder.WesnothProjectNature;
 import wesnoth_eclipse_plugin.preferences.PreferenceConstants;
 import wesnoth_eclipse_plugin.preferences.PreferenceInitializer;
+import wesnoth_eclipse_plugin.wizards.ReplaceableParameter;
+import wesnoth_eclipse_plugin.wizards.TemplateProvider;
 
 public class WorkspaceUtils
 {
@@ -139,6 +142,10 @@ public class WorkspaceUtils
 			if (!proj.exists())
 			{
 				IProjectDescription description = ResourcesPlugin.getWorkspace().newProjectDescription("User Addons");
+				// cleanup any project file if exists.
+				if (new File(userDir + Path.SEPARATOR + "data/add-ons/.project").exists())
+					new File(userDir + Path.SEPARATOR + "data/add-ons/.project").delete();
+
 				description.setLocation(new Path(userDir + Path.SEPARATOR + "data/add-ons/"));
 				proj.create(description, null);
 				proj.open(null);
@@ -146,6 +153,23 @@ public class WorkspaceUtils
 				// the nature isn't set on creation so the nature adds the builder aswell
 				description.setNatureIds(new String[] { WesnothProjectNature.NATURE_ID });
 				proj.setDescription(description, null);
+
+				// add the build.xml file
+				ArrayList<ReplaceableParameter> param = new ArrayList<ReplaceableParameter>();
+				param.add(new ReplaceableParameter("$$project_name", "User Addons"));
+				ResourceUtils.createFile(proj, "build.xml",
+						TemplateProvider.getInstance().getProcessedTemplate("build_xml", param));
+
+
+				// we need to skip the already created projects (if any) in the addons directory
+				String skipList = "";
+				for (IProject project : ResourcesPlugin.getWorkspace().getRoot().getProjects())
+				{
+					if (project.getName().equals("User Addons"))
+						continue;
+					skipList += (project.getName() + "\n");
+				}
+				ResourceUtils.createFile(proj, ".ignore",skipList);
 			}
 			GUIUtils.showMessageBox(WorkspaceUtils.getWorkbenchWindow(),
 					"Workspace was set up successfully.");
