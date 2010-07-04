@@ -43,7 +43,10 @@ mapbuilder_visitor::~mapbuilder_visitor()
 	action_set::const_reverse_iterator rit;
 	for (rit = actions.rbegin(); rit != actions.rend(); ++rit)
 	{
-		(*rit)->accept(*this);
+		if ((*rit)->is_valid())
+		{
+			(*rit)->accept(*this);
+		}
 	}
 
 }
@@ -54,7 +57,10 @@ void mapbuilder_visitor::build_map()
 	const action_set& actions = side_actions_->actions();
 	foreach(action_ptr action, actions)
 	{
-		action->accept(*this);
+		if (action->is_valid())
+		{
+			action->accept(*this);
+		}
 	}
 }
 
