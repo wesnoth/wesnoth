@@ -5,6 +5,7 @@ package wesnoth_eclipse_plugin.utils;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Locale;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
@@ -120,8 +121,11 @@ public class WorkspaceUtils
 	 */
 	public static String getPathRelativeToUserDir(IResource resource)
 	{
-		return PreferenceInitializer.getString(PreferenceConstants.P_WESNOTH_USER_DIR) + Path.SEPARATOR + "data/add-ons/" + resource.getProject().getName()
-				+ Path.SEPARATOR + resource.getProjectRelativePath().toOSString();
+		String result = PreferenceInitializer.getString(PreferenceConstants.P_WESNOTH_USER_DIR) + Path.SEPARATOR + "data/add-ons/";
+		if (!resource.getProject().getName().toLowerCase(new Locale("English")).equals("user addons"))
+			result += (resource.getProject().getName() + Path.SEPARATOR);
+		result += resource.getProjectRelativePath().toOSString();
+		return result;
 	}
 
 	public static void setupWorkspace()
