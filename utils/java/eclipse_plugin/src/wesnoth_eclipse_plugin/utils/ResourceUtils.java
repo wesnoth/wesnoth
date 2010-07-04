@@ -67,6 +67,7 @@ public class ResourceUtils
 		} catch (Exception e)
 		{
 			e.printStackTrace();
+			return null;
 		} finally
 		{
 			try
@@ -82,7 +83,7 @@ public class ResourceUtils
 
 	/**
 	 * Creates the desired resource
-	 * 
+	 *
 	 * @param resource the resource to be created (IFile/IFolder)
 	 * @param project the project where to be created the resource
 	 * @param resourceName the name of the resource
