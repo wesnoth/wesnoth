@@ -105,7 +105,7 @@ public class CampaignNewWizard extends Wizard implements INewWizard
 
 			for (Pair<String, String> file : files)
 			{
-				ResourceUtils.createFile(currentProject, file.First, prepareTemplate(file.Second));
+				ResourceUtils.createFile(currentProject, file.First, prepareTemplate(file.Second), true);
 				monitor.worked(1);
 			}
 			for (String dir : dirs)
@@ -143,6 +143,7 @@ public class CampaignNewWizard extends Wizard implements INewWizard
 		params.add(new ReplaceableParameter("$$first_scenario", page2_.getFirstScenario()));
 
 		params.add(new ReplaceableParameter("$$project_name", page0_.getProjectName()));
+		params.add(new ReplaceableParameter("$$project_dir_name", page0_.getProjectName()));
 		params.add(new ReplaceableParameter("$$type", page1_.isMultiplayer() ? "campaign_mp" : "campaign"));
 
 		return TemplateProvider.getInstance().getProcessedTemplate(templateName, params);

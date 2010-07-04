@@ -151,9 +151,6 @@ public class WorkspaceUtils
 				if (new File(userDir + Path.SEPARATOR + "data/add-ons/.project").exists())
 					new File(userDir + Path.SEPARATOR + "data/add-ons/.project").delete();
 
-				if (new File(userDir + Path.SEPARATOR + "data/add-ons/.ignore").exists())
-					new File(userDir + Path.SEPARATOR + "data/add-ons/.ignore").delete();
-
 				description.setLocation(new Path(userDir + Path.SEPARATOR + "data/add-ons/"));
 				proj.create(description, null);
 				proj.open(null);
@@ -165,8 +162,9 @@ public class WorkspaceUtils
 				// add the build.xml file
 				ArrayList<ReplaceableParameter> param = new ArrayList<ReplaceableParameter>();
 				param.add(new ReplaceableParameter("$$project_name", "User Addons"));
+				param.add(new ReplaceableParameter("$$project_dir_name", ""));
 				ResourceUtils.createFile(proj, "build.xml",
-						TemplateProvider.getInstance().getProcessedTemplate("build_xml", param));
+						TemplateProvider.getInstance().getProcessedTemplate("build_xml", param), true);
 
 
 				// we need to skip the already created projects (if any) in the addons directory
@@ -177,7 +175,7 @@ public class WorkspaceUtils
 						continue;
 					skipList += (project.getLocation().toOSString() + "\n");
 				}
-				ResourceUtils.createFile(proj, ".ignore",skipList);
+				ResourceUtils.createFile(proj, ".ignore",skipList, true);
 			}
 			GUIUtils.showMessageBox(WorkspaceUtils.getWorkbenchWindow(),
 					"Workspace was set up successfully.");
