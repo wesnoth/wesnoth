@@ -33,6 +33,10 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 
 	class SampleDeltaVisitor implements IResourceDeltaVisitor
 	{
+		private IProgressMonitor monitor_;
+		public SampleDeltaVisitor(IProgressMonitor monitor){
+			monitor_ = monitor;
+		}
 		@Override
 		public boolean visit(IResourceDelta delta) throws CoreException
 		{
@@ -41,14 +45,14 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 			{
 			case IResourceDelta.ADDED:
 				// handle added resource
-				checkResource(resource);
+				checkResource(resource, monitor_);
 				break;
 			case IResourceDelta.REMOVED:
 				// handle removed resource
 				break;
 			case IResourceDelta.CHANGED:
 				// handle changed resource
-				checkResource(resource);
+				checkResource(resource, monitor_);
 				break;
 			}
 			// return true to continue visiting children.
@@ -58,10 +62,14 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 
 	class SampleResourceVisitor implements IResourceVisitor
 	{
+		private IProgressMonitor monitor_;
+		public SampleResourceVisitor(IProgressMonitor monitor){
+			monitor_ = monitor;
+		}
 		@Override
 		public boolean visit(IResource resource)
 		{
-			checkResource(resource);
+			checkResource(resource, monitor_);
 			// return true to continue visiting children.
 			return true;
 		}
@@ -71,7 +79,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 	{
 		try
 		{
-			getProject().accept(new SampleResourceVisitor());
+			getProject().accept(new SampleResourceVisitor(monitor));
 		} catch (CoreException e)
 		{
 			e.printStackTrace();
@@ -81,13 +89,14 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 	protected void incrementalBuild(IResourceDelta delta, IProgressMonitor monitor) throws CoreException
 	{
 		// the visitor does the work.
-		delta.accept(new SampleDeltaVisitor());
+		delta.accept(new SampleDeltaVisitor(monitor));
 	}
 
 	@Override
 	protected IProject[] build(int kind, Map args, IProgressMonitor monitor) throws CoreException
 	{
 		System.out.println("building");
+		monitor.beginTask("Building...", 100);
 
 		if (PreferenceInitializer.getString(PreferenceConstants.P_WESNOTH_USER_DIR).isEmpty())
 		{
@@ -104,11 +113,14 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 			return null;
 		}
 
+		// Ant copy
+		monitor.subTask("Copying resources...");
 		HashMap<String, String> properties = new HashMap<String, String>();
 		properties.put("wesnoth.user.dir", PreferenceInitializer.getString(PreferenceConstants.P_WESNOTH_USER_DIR) + Path.SEPARATOR);
 		System.out.println("Ant result:");
 		String result = AntUtils.runAnt(getProject().getLocation().toOSString() + "/build.xml", properties, true);
 		System.out.println(result);
+		monitor.worked(10);
 
 		if (result == null)
 		{
@@ -118,7 +130,9 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 		}
 
 		// create the temporary directory used by the plugin if not created
+		monitor.subTask("Creating temporary directory...");
 		WorkspaceUtils.getTemporaryFolder();
+		monitor.worked(2);
 
 		if (kind == FULL_BUILD)
 		{
@@ -136,11 +150,14 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 				incrementalBuild(delta, monitor);
 			}
 		}
+
+		monitor.done();
 		return null;
 	}
 
-	void checkResource(IResource resource)
+	void checkResource(IResource resource, IProgressMonitor monitor)
 	{
+		monitor.worked(5);
 		// config files
 		if (resource instanceof IFile && (resource.getName().toLowerCase(Locale.ENGLISH).endsWith(".cfg")))
 		{
@@ -149,7 +166,9 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 				IFile file = (IFile) resource;
 				deleteMarkers(file);
 
+				monitor.subTask("Preprocessing...");
 				PreprocessorActions.preprocessFile(WorkspaceUtils.getPathRelativeToUserDir(file), WorkspaceUtils.getTemporaryFolder(), null, true, false);
+				monitor.worked(5);
 
 				// TODO: here be dragons
 				// - add markers for wmllint, wmlscope
