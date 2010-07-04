@@ -32,6 +32,10 @@
 class arrow;
 class unit;
 
+namespace pathfind {
+	struct marked_route;
+}
+
 namespace wb {
 
 class action;
@@ -76,9 +80,9 @@ public:
 	void on_unit_deselect();
 
 	/** Creates a temporary visual arrow, that follows the cursor, for move creation purposes */
-	void create_temp_move(const std::vector<map_location> &steps);
+	void create_temp_move(const pathfind::marked_route &route);
 	/** Informs whether an arrow is being displayed for move creation purposes */
-	bool has_temp_move() const { return selected_unit_ != NULL; }
+	bool has_temp_move() const { return route_; }
 
 	void erase_temp_move();
 
@@ -106,7 +110,8 @@ private:
 
 	boost::scoped_ptr<mapbuilder_visitor> mapbuilder_;
 
-	std::vector<map_location> route_;
+	boost::scoped_ptr<pathfind::marked_route> route_;
+	std::vector<map_location> steps_;
 
 	typedef boost::shared_ptr<arrow> arrow_ptr;
 	arrow_ptr move_arrow_;

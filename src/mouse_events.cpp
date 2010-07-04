@@ -230,7 +230,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 				if(!browse) {
 					gui().set_route(&current_route_);
 					if (resources::whiteboard->is_active()) {
-						resources::whiteboard->create_temp_move(current_route_.steps);
+						resources::whiteboard->create_temp_move(current_route_);
 					}
 				}
 			}
@@ -528,20 +528,21 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 
 		gui().unhighlight_reach();
 
-		if (resources::whiteboard->has_temp_move()) {
-
-			// Unselect the current hex, and create planned move for whiteboard
-			selected_hex_ = map_location();
-			gui().select_hex(map_location());
-			gui().clear_attack_indicator();
-			gui().set_route(NULL);
-			waypoints_.clear();
-			show_partial_move_ = false;
-			gui().unhighlight_reach();
-			current_paths_ = pathfind::paths();
-			current_route_.steps.clear();
-			resources::whiteboard->save_temp_move();
-
+		if (resources::whiteboard->is_active()) {
+				// Unselect the current hex, and create planned move for whiteboard
+				selected_hex_ = map_location();
+				gui().select_hex(map_location());
+				gui().clear_attack_indicator();
+				gui().set_route(NULL);
+				waypoints_.clear();
+				show_partial_move_ = false;
+				gui().unhighlight_reach();
+				current_paths_ = pathfind::paths();
+				current_route_.steps.clear();
+				if (resources::whiteboard->has_temp_move())
+				{
+					resources::whiteboard->save_temp_move();
+				}
 		} else {
 			//register the mouse-UI waypoints into the unit's waypoints
 			u->waypoints() = waypoints_;

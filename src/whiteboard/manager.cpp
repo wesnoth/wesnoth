@@ -26,6 +26,7 @@
 
 #include "arrow.hpp"
 #include "foreach.hpp"
+#include "pathfind/pathfind.hpp"
 #include "play_controller.hpp"
 #include "resources.hpp"
 #include "team.hpp"
@@ -39,6 +40,7 @@ manager::manager():
 		active_(false),
 		mapbuilder_(),
 		route_(),
+		steps_(),
 		move_arrow_(),
 		fake_unit_(),
 		selected_unit_(NULL),
@@ -198,43 +200,62 @@ void manager::on_unit_deselect()
 	}
 }
 
-void manager::create_temp_move(const std::vector<map_location> &steps)
+void manager::create_temp_move(const pathfind::marked_route &route)
 {
-	//TODO: properly handle movement points
+	//TODO: properly handle turn end
 
-	//NOTE: route.back() = dst, and route.front() = src
-	route_ = steps;
-	if (route_.size() > 1 && selected_unit_ != NULL)
+	if (selected_unit_ == NULL || route.steps.empty() || route.steps.size() < 2)
 	{
-		if (!move_arrow_) //TODO: create new arrow if turn ended
-		{
-			// Create temp arrow
-			move_arrow_.reset(new arrow());
-			int current_side = resources::controller->current_side();
-			move_arrow_->set_color(team::get_side_color_index(current_side));
-			move_arrow_->set_alpha(move::ALPHA_HIGHLIGHT);
-			resources::screen->add_arrow(*move_arrow_);
-
-		}
-		if (!fake_unit_)
-		{
-			// Create temp ghost unit
-			fake_unit_.reset(new unit(*selected_unit_));
-			resources::screen->place_temporary_unit(fake_unit_.get());
-		}
-
-		move_arrow_->set_path(route_);
-
-		unit_display::move_unit(route_, *fake_unit_, *resources::teams, false); //get facing right
-		fake_unit_->set_location(route_.back());
-		fake_unit_->set_ghosted(true);
+		erase_temp_move();
+		return;
 	}
+
+
+	//Temporary: Don't draw move arrow if move goes beyond range.
+	bool cancel = false;
+	foreach (const map_location& hex, route.steps)
+	{
+		if (cancel)
+		{
+			erase_temp_move();
+			return;
+		}
+		pathfind::marked_route::mark_map::const_iterator w = route.marks.find(hex);
+		if(w != route.marks.end() && w->second.turns == 1)
+		{
+			cancel = true;
+		}
+	}
+
+	route_.reset(new pathfind::marked_route(route));
+	//NOTE: route_.steps.back() = dst, and route_.steps.front() = src
+
+	if (!move_arrow_)
+	{
+		// Create temp arrow
+		move_arrow_.reset(new arrow());
+		int current_side = resources::controller->current_side();
+		move_arrow_->set_color(team::get_side_color_index(current_side));
+		move_arrow_->set_alpha(move::ALPHA_HIGHLIGHT);
+		resources::screen->add_arrow(*move_arrow_);
+
+	}
+	if (!fake_unit_)
+	{
+		// Create temp ghost unit
+		fake_unit_.reset(new unit(*selected_unit_));
+		resources::screen->place_temporary_unit(fake_unit_.get());
+	}
+
+	move_arrow_->set_path(route_->steps);
+
+	unit_display::move_unit(route_->steps, *fake_unit_, *resources::teams, false); //get facing right
+	fake_unit_->set_location(route_->steps.back());
+	fake_unit_->set_ghosted(true);
 }
 
 void manager::erase_temp_move()
 {
-	//TODO: properly handle movement points
-
 	if (move_arrow_)
 	{
 		move_arrow_.reset(); //auto-removes itself from display
@@ -253,11 +274,15 @@ void manager::erase_temp_move()
 		resources::screen->remove_temporary_unit(fake_unit_.get());
 		fake_unit_.reset();
 	}
+	if (route_)
+	{
+		route_.reset();
+	}
 }
 
 void manager::save_temp_move()
 {
-	std::vector<map_location> route;
+	std::vector<map_location> steps;
 	arrow_ptr move_arrow;
 	fake_unit_ptr fake_unit;
 	unit* target_unit;
@@ -267,7 +292,8 @@ void manager::save_temp_move()
 		// before granting another thread access.
 		wb_scoped_lock lock(move_saving_mutex_); //waits for lock
 
-		route = route_;
+		//Temporary: Only keep as path the steps can be done this turn
+		steps = route_->steps;
 		move_arrow.reset(new arrow(*move_arrow_.get()));
 		resources::screen->add_arrow(*move_arrow);
 		fake_unit.reset(new unit(*fake_unit_.get()));
@@ -278,16 +304,16 @@ void manager::save_temp_move()
 		selected_unit_ = NULL;
 
 		LOG_WB << "Creating move for unit " << target_unit->name() << " [" << target_unit->id() << "]"
-				<< " from " << route.front()
-				<< " to " << route.back() << "\n";
+				<< " from " << steps.front()
+				<< " to " << steps.back() << "\n";
 	}
 
 	assert(!has_planned_unit_map());
 
 	target_unit->set_ghosted(false);
-	unit_display::move_unit(route, *fake_unit, *resources::teams, true);
+	unit_display::move_unit(steps, *fake_unit, *resources::teams, true);
 
-	current_actions()->queue_move(*target_unit, route.front(), route.back(), move_arrow, fake_unit);
+	current_actions()->queue_move(*target_unit, steps.front(), steps.back(), move_arrow, fake_unit);
 }
 
 void manager::contextual_execute()
