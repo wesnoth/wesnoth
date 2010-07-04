@@ -84,6 +84,7 @@ void validate_visitor::visit_move(boost::shared_ptr<move> move)
 		{
 			//new valid path differs from the previous one, replace
 			move->arrow_->set_path(route.steps);
+			move->movement_cost_ = route.move_cost;
 
 			//TODO: Since this might lengthen the path, we probably need a special conflict state
 			// to warn the player that the initial path is no longer possible.

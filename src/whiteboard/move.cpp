@@ -39,21 +39,41 @@ const double move::ALPHA_NORMAL = 0.2;
 const std::string move::ARROW_STYLE_VALID = "";
 const std::string move::ARROW_STYLE_INVALID = "invalid";
 
+//FIXME: move this out of here if it ends up being used only once
+static team& get_current_team()
+{
+	int current_side = resources::controller->current_side();
+	team& current_team = (*resources::teams)[current_side - 1];
+	return current_team;
+}
+
 move::move(unit& subject, const map_location& source_hex, const map_location& target_hex,
 		boost::shared_ptr<arrow> arrow,	boost::shared_ptr<unit> fake_unit)
 : unit_(subject),
   source_hex_(source_hex),
   dest_hex_(target_hex),
+  movement_cost_(0),
   arrow_(arrow),
   fake_unit_(fake_unit),
   future_display_(true),
-  last_action_(true)
+  last_action_(true),
+  valid_(true)
 {
+	// Calculate move cost
+	pathfind::shortest_path_calculator path_calc(unit_, get_current_team(), *resources::units,
+			*resources::teams, *resources::game_map);
+
+	pathfind::plain_route route = pathfind::a_star_search(source_hex_,
+			dest_hex_, 10000, &path_calc, resources::game_map->w(), resources::game_map->h());
+
+	assert(unit_.movement_left() - route.move_cost >= 0);
+
+	movement_cost_ = route.move_cost;
 }
 
 move::~move()
 {
-	if (last_action_
+	if (last_action_ //FIXME: This should be done if the action removed is the first and only, not the last !!!
 		&& resources::units //FIXME: could tweak play_controller to ensure the unit map is still valid here
 		)
 	{
@@ -64,14 +84,6 @@ move::~move()
 	{
 		resources::screen->remove_temporary_unit(fake_unit_.get());
 	}
-}
-
-//FIXME: move this out of here if it ends up being used only once
-static team& get_current_team()
-{
-	int current_side = resources::controller->current_side();
-	team& current_team = (*resources::teams)[current_side - 1];
-	return current_team;
 }
 
 void move::accept(visitor& v)
@@ -140,20 +152,30 @@ bool move::execute()
 
 void move::apply_temp_modifier(unit_map& unit_map)
 {
-	//TODO: properly handle movement points
-
+	// Move the unit
 	assert(unit_.get_location() == source_hex_);
 	DBG_WB << "Temporarily moving unit " << unit_.name() << " [" << unit_.underlying_id() << "] "
 			<< " from (" << source_hex_ << ") to (" << dest_hex_ <<")\n";
 	unit_map.move(source_hex_, dest_hex_);
 	assert(unit_.get_location() == dest_hex_);
+
+	//Modify movement points accordingly
+	DBG_WB <<"Changing movement points for unit " << unit_.name() << " [" << unit_.underlying_id()
+			<< "] from " << unit_.movement_left() <<" to "
+			<< unit_.movement_left() - movement_cost_ << "\n.";
+	unit_.set_movement(unit_.movement_left() - movement_cost_);
+
 }
 
 void move::remove_temp_modifier(unit_map& unit_map)
 {
+	// Restore the unit to its original position
 	assert(unit_.get_location() == dest_hex_);
 	unit_map.move(dest_hex_, source_hex_);
 	assert(unit_.get_location() == source_hex_);
+
+	// Restore movement points
+	unit_.set_movement(unit_.movement_left() + movement_cost_);
 }
 
 bool move::is_related_to(const map_location& hex) const

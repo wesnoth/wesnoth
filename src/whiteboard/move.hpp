@@ -77,6 +77,7 @@ private:
 	unit & unit_;
 	map_location source_hex_;
 	map_location dest_hex_;
+	int movement_cost_;
 
 	boost::shared_ptr<arrow> arrow_;
 	boost::shared_ptr<unit> fake_unit_;
