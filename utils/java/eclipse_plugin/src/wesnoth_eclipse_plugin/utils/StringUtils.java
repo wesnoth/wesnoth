@@ -96,4 +96,41 @@ public class StringUtils
 	{
 		return string.split("\\r?\\n");
 	}
+
+	public static String trimPathSeparators(String string)
+	{
+		while(string.charAt(string.length() - 1) == '/' ||
+			  string.charAt(string.length() - 1) == '\\')
+			string = string.substring(0,string.length() - 1);
+		return string;
+	}
+
+	/**
+	 * Normalizez the path given by the string, removing repeated separators
+	 * and replacing them by '|'
+	 * @param path the string that represents the path to be normalized
+	 * @return
+	 */
+	public static String normalizePath(String path)
+	{
+		String str = StringUtils.trimPathSeparators(path);
+		StringBuilder sb = new StringBuilder(str.length());
+
+		// normalize strings - remove repeating separators and replace them by |
+		for (int i = 0, sw = 0; i < str.length(); i++)
+		{
+			if (str.charAt(i) == '/' || str.charAt(i) == '\\')
+			{
+				if (sw == 0) // we haven't added already the | token
+				{
+					sb.append('|');
+					sw = 1;
+				}
+				continue;
+			}
+			sb.append(str.charAt(i));
+			sw = 0; // reset the switch when meeting non-separators
+		}
+		return sb.toString();
+	}
 }

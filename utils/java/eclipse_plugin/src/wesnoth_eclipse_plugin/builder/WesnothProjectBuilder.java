@@ -1,7 +1,9 @@
 package wesnoth_eclipse_plugin.builder;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -23,13 +25,22 @@ import wesnoth_eclipse_plugin.preferences.PreferenceConstants;
 import wesnoth_eclipse_plugin.preferences.PreferenceInitializer;
 import wesnoth_eclipse_plugin.utils.AntUtils;
 import wesnoth_eclipse_plugin.utils.GUIUtils;
+import wesnoth_eclipse_plugin.utils.Pair;
+import wesnoth_eclipse_plugin.utils.ResourceUtils;
+import wesnoth_eclipse_plugin.utils.StringUtils;
 import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
 
 public class WesnothProjectBuilder extends IncrementalProjectBuilder
 {
-
 	public static final String	BUILDER_ID	= "Wesnoth_Eclipse_Plugin.projectBuilder";
 	private static final String	MARKER_TYPE	= "Wesnoth_Eclipse_Plugin.configProblem";
+
+	/**
+	 * The key is the project name
+	 * The value is: - the last modified date for the .ignore file
+	 * 				 - the list with ignored directories names
+	 */
+	private static HashMap<String,Pair<Long,List<String>>> ignoreCache_ = new HashMap<String, Pair<Long,List<String>>>();
 
 	class SampleDeltaVisitor implements IResourceDeltaVisitor
 	{
@@ -98,6 +109,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 		System.out.println("building");
 		monitor.beginTask("Building...", 100);
 
+		monitor.subTask("Checking conditions...");
 		if (PreferenceInitializer.getString(PreferenceConstants.P_WESNOTH_USER_DIR).isEmpty())
 		{
 			GUIUtils.showMessageBox(WorkspaceUtils.getWorkbenchWindow(), "Please set the wesnoth user dir before creating the content");
@@ -112,6 +124,28 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 			// TODO: better way of handling this - maybe regenerating?
 			return null;
 		}
+		monitor.worked(2);
+
+		// get the directories list to ignore
+		File ignoreFile = new File(getProject().getLocation().toOSString() +
+				Path.SEPARATOR + ".ignore");
+		if (!ignoreCache_.containsKey(getProject().getName()) ||
+			ignoreFile.lastModified() != ignoreCache_.get(getProject().getName()).First)
+		{
+			String contents = ResourceUtils.getFileContents(ignoreFile);
+			if (contents != null )
+			{
+				List<String> list  = new ArrayList<String>();
+				String[] lines = StringUtils.getLines(contents);
+				for(String line : lines)
+					list.add(line);
+
+				ignoreCache_.remove(getProject().getName());
+				ignoreCache_.put(getProject().getName(),
+						new Pair<Long,List<String>>(ignoreFile.lastModified(), list));
+			}
+		}
+		monitor.worked(5);
 
 		// Ant copy
 		monitor.subTask("Copying resources...");
@@ -158,6 +192,9 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 	void checkResource(IResource resource, IProgressMonitor monitor)
 	{
 		monitor.worked(5);
+		if (isResourceIgnored(resource))
+			return;
+
 		// config files
 		if (resource instanceof IFile && (resource.getName().toLowerCase(Locale.ENGLISH).endsWith(".cfg")))
 		{
@@ -212,6 +249,21 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 		}
 	}
 
+	private boolean isResourceIgnored(IResource res)
+	{
+		// we have an ignore cache
+		if (ignoreCache_.containsKey(getProject().getName()))
+		{
+			List<String> ignoreList = ignoreCache_.get(getProject().getName()).Second;
+			for (String path : ignoreList)
+			{
+				if (StringUtils.normalizePath(WorkspaceUtils.getPathRelativeToUserDir(res)).contains(
+						StringUtils.normalizePath(path)))
+					return true;
+			}
+		}
+		return false;
+	}
 	private void addMarker(IFile file, String message, int lineNumber, int severity)
 	{
 		try

@@ -173,7 +173,8 @@ public class WorkspaceUtils
 				{
 					if (project.getName().equals("User Addons"))
 						continue;
-					skipList += (project.getLocation().toOSString() + "\n");
+
+					skipList += (StringUtils.trimPathSeparators(getPathRelativeToUserDir(project)) + "\n");
 				}
 				ResourceUtils.createFile(proj, ".ignore",skipList, true);
 			}
