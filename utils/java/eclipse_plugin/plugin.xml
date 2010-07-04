@@ -278,6 +278,19 @@
                   label="Open map with editor"
                   style="push">
             </command>
+            <separator
+                  name="separator2"
+                  visible="true">
+            </separator>
+            <command
+                  commandId="org.eclipse.ui.window.preferences"
+                  label="Open plugin&apos;s preferences"
+                  style="push">
+               <parameter
+                     name="preferencePageId"
+                     value="plugin_preferences">
+               </parameter>
+            </command>
          </menu>
       </menuContribution>
    </extension>
@@ -285,7 +298,7 @@
          point="org.eclipse.ui.preferencePages">
       <page
             class="wesnoth_eclipse_plugin.preferences.WesnothEditorPreferences"
-            id="wesnoth_eclipse_plugin.preferences.WesnothEditorPreferences"
+            id="plugin_preferences"
             name="Wesnoth UMC Plugin">
       </page>
    </extension>
