@@ -1,9 +1,17 @@
 package wesnoth_eclipse_plugin;
 
+import java.io.File;
+
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
+
+import wesnoth_eclipse_plugin.preferences.PreferenceConstants;
+import wesnoth_eclipse_plugin.preferences.PreferenceInitializer;
+import wesnoth_eclipse_plugin.utils.GUIUtils;
+import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
 
 /**
  * The activator class controls the plug-in life cycle
@@ -23,25 +31,15 @@ public class Activator extends AbstractUIPlugin
 	public Activator() {
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see
-	 * org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext
-	 * )
-	 */
 	@Override
 	public void start(BundleContext context) throws Exception
 	{
 		super.start(context);
 		plugin = this;
+
+		checkConditions();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see
-	 * org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext
-	 * )
-	 */
 	@Override
 	public void stop(BundleContext context) throws Exception
 	{
@@ -51,7 +49,7 @@ public class Activator extends AbstractUIPlugin
 
 	/**
 	 * Returns the shared instance
-	 * 
+	 *
 	 * @return the shared instance
 	 */
 	public static Activator getDefault()
@@ -62,7 +60,7 @@ public class Activator extends AbstractUIPlugin
 	/**
 	 * Returns an image descriptor for the image file at the given plug-in
 	 * relative path
-	 * 
+	 *
 	 * @param path the path
 	 * @return the image descriptor
 	 */
@@ -78,5 +76,36 @@ public class Activator extends AbstractUIPlugin
 	public static Shell getShell()
 	{
 		return plugin.getWorkbench().getDisplay().getActiveShell();
+	}
+
+	/**
+	 * Checks if the user has set some needed preferences
+	 */
+	private static void checkConditions()
+	{
+		String execDir = PreferenceInitializer.getString(PreferenceConstants.P_WESNOTH_EXEC_PATH);
+		String userDir = PreferenceInitializer.getString(PreferenceConstants.P_WESNOTH_USER_DIR);
+		String wmltoolsDir = PreferenceInitializer.getString(PreferenceConstants.P_WESNOTH_WMLTOOLS_DIR);
+		String workingDir = PreferenceInitializer.getString(PreferenceConstants.P_WESNOTH_WORKING_DIR);
+
+		if (!validPath(execDir) || !validPath(userDir) || !validPath(wmltoolsDir) || !validPath(workingDir))
+		{
+			GUIUtils.showMessageBox(WorkspaceUtils.getWorkbenchWindow(),
+					"Please set all plugin's preferences before using it.");
+		}
+
+		// check if workspace is setup - the "userdir addons" directory created
+		// as a project
+		if (!ResourcesPlugin.getWorkspace().getRoot().getProject("User Addons").exists())
+		{
+			GUIUtils.showMessageBox(WorkspaceUtils.getWorkbenchWindow(),
+					"Please setup the workspace before using the plugin. Go to \"Wesnoth\" menu," +
+					" and then click on the \"Setup Workspace\" entry following the instructions on the screen.");
+		}
+	}
+
+	private static boolean validPath(String path)
+	{
+		return !path.isEmpty() && new File(path).exists();
 	}
 }

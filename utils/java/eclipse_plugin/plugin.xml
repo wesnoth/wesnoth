@@ -246,6 +246,12 @@
             id="Wesnoth_Eclipse_Plugin.commands.openMapInEditor"
             name="openMapInEditor">
       </command>
+      <command
+            defaultHandler="wesnoth_eclipse_plugin.handlers.SetupWorkspaceHandler"
+            description="Setups the workspace"
+            id="Wesnoth_Eclipse_Plugin.commands.setupWorkspace"
+            name="Setup Workspace">
+      </command>
    </extension>
    <extension
          point="org.eclipse.ui.menus">
@@ -282,6 +288,11 @@
                   name="separator2"
                   visible="true">
             </separator>
+            <command
+                  commandId="Wesnoth_Eclipse_Plugin.commands.setupWorkspace"
+                  label="Setup Workspace"
+                  style="push">
+            </command>
             <command
                   commandId="org.eclipse.ui.window.preferences"
                   label="Open plugin&apos;s preferences"
