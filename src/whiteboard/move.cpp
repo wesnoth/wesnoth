@@ -73,16 +73,13 @@ move::move(unit& subject, const map_location& source_hex, const map_location& ta
 
 move::~move()
 {
+	DBG_WB <<"Deleting move.\n";
+
 	if (last_action_ //FIXME: This should be done if the action removed is the first and only, not the last !!!
 		&& resources::units //FIXME: could tweak play_controller to ensure the unit map is still valid here
 		)
 	{
 		unit_.set_standing(true);
-	}
-
-	if (resources::screen && fake_unit_)
-	{
-		resources::screen->remove_temporary_unit(fake_unit_.get());
 	}
 }
 

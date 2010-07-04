@@ -50,10 +50,6 @@ manager::manager():
 
 manager::~manager()
 {
-	if (resources::screen && fake_unit_)
-	{
-		resources::screen->remove_temporary_unit(fake_unit_.get());
-	}
 }
 
 static side_actions_ptr current_actions()
@@ -234,7 +230,7 @@ void manager::create_temp_move(const pathfind::marked_route &route)
 	if (!fake_unit_)
 	{
 		// Create temp ghost unit
-		fake_unit_.reset(new unit(*selected_unit_));
+		fake_unit_.reset(new unit(*selected_unit_), wb::manager::fake_unit_deleter());
 		resources::screen->place_temporary_unit(fake_unit_.get());
 	}
 
@@ -262,7 +258,6 @@ void manager::erase_temp_move()
 	}
 	if (fake_unit_)
 	{
-		resources::screen->remove_temporary_unit(fake_unit_.get());
 		fake_unit_.reset();
 	}
 	if (route_)
@@ -285,10 +280,8 @@ void manager::save_temp_move()
 
 		//Temporary: Only keep as path the steps can be done this turn
 		steps = route_->steps;
-		move_arrow.reset(new arrow(*move_arrow_.get()));
-		resources::screen->add_arrow(*move_arrow);
-		fake_unit.reset(new unit(*fake_unit_.get()));
-		resources::screen->place_temporary_unit(fake_unit.get());
+		move_arrow = arrow_ptr(move_arrow_);
+		fake_unit = fake_unit_ptr(fake_unit_);
 		target_unit = selected_unit_;
 
 		erase_temp_move();
@@ -366,6 +359,19 @@ bool manager::unit_has_actions(const unit& unit) const
 {
 	return current_actions()->find_first_action_of(unit)
 			!= current_actions()->end();
+}
+
+void manager::fake_unit_deleter::operator() (unit*& fake_unit)
+{
+    if (fake_unit)
+    {
+        if(resources::screen)
+        {
+        	resources::screen->remove_temporary_unit(fake_unit);
+        }
+        DBG_WB << "Erasing temporary unit " << fake_unit->name() << " [ " << fake_unit->underlying_id() << "]\n";
+        delete fake_unit;
+    }
 }
 
 scoped_planned_unit_map::scoped_planned_unit_map()

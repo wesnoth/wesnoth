@@ -102,6 +102,10 @@ public:
 	/** Checks whether the specified unit has at least one planned action */
 	bool unit_has_actions(const unit& unit) const;
 
+	struct fake_unit_deleter {
+	    void operator() (unit*& ptr);
+	};
+
 private:
 	/**
 	 * Tracks whether the whiteboard is active.
