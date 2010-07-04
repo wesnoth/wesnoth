@@ -31,6 +31,7 @@
  */
 
 #include "buffers.hpp"
+#include <boost/bind.hpp>
 #include <boost/thread.hpp>
 
 #ifndef ANA_TIMERS_HPP
