@@ -54,6 +54,9 @@ public class ResourceUtils
 
 	public static String getFileContents(File file)
 	{
+		if (!file.exists())
+			return null;
+
 		String contentsString = "";
 		BufferedReader reader = null;
 		try
@@ -135,8 +138,10 @@ public class ResourceUtils
 	 * @param project the project in which the file will be created
 	 * @param fileName the filename of the file
 	 * @param fileContentsString the text which will be contained in the file
+	 * @param overwrite true to overwrite the file if it already exists
 	 */
-	public static void createFile(IProject project, String fileName, String fileContentsString)
+	public static void createFile(IProject project, String fileName, String fileContentsString,
+			boolean overwrite)
 	{
 		IFile file = project.getFile(fileName);
 		if (fileContentsString == null)
@@ -144,6 +149,15 @@ public class ResourceUtils
 			fileContentsString = "";
 			Logger.print("file contents are null", 2);
 		}
+
+		if (file.exists() && overwrite)
+			try
+			{
+				file.delete(true, null);
+			} catch (CoreException e)
+			{
+				e.printStackTrace();
+			}
 
 		ByteArrayInputStream inputStream = new ByteArrayInputStream(fileContentsString.getBytes());
 		createResource(file, project, fileName, inputStream);
