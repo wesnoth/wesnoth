@@ -82,7 +82,7 @@ void MD5::update (uint1 *input, uint4 input_length) {
   }
 
   // Compute number of bytes mod 64
-  buffer_index = static_cast<unsigned int>(((count[0] >> 3) & 0x3F));
+  buffer_index = static_cast<boost::uint32_t>(((count[0] >> 3) & 0x3F));
 
   // Update number of bits
   if (  (count[0] += (static_cast<uint4>(input_length) << 3))<(static_cast<uint4>(input_length) << 3) )
@@ -120,8 +120,8 @@ void MD5::update (uint1 *input, uint4 input_length) {
 
 void MD5::finalize (){
 
-  unsigned char bits[8];
-  unsigned int index, padLen;
+  boost::uint8_t bits[8];
+  boost::uint32_t index, padLen;
   static uint1 PADDING[64]={
     0x80, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -155,14 +155,14 @@ void MD5::finalize (){
 }
 
 
-unsigned char *MD5::raw_digest()
+boost::uint8_t *MD5::raw_digest()
 {
   static uint1 s[16];
 
   if (!finalized){
     std::cerr << "MD5::raw_digest:  Can't get digest if you haven't "<<
       "finalized the digest!" <<std::endl;
-    return ( const_cast<unsigned char*>(reinterpret_cast<const unsigned char*>("")));
+    return ( const_cast<boost::uint8_t*>(reinterpret_cast<const boost::uint8_t*>("")));
   }
 
   memcpy(s, digest, 16);
@@ -304,11 +304,11 @@ void MD5::transform (uint1 block[64]){
 
 
 
-// Encodes input (UINT4) into output (unsigned char). Assumes len is
+// Encodes input (UINT4) into output (boost::uint8_t). Assumes len is
 // a multiple of 4.
 void MD5::encode (uint1 *output, uint4 *input, uint4 len) {
 
-  unsigned int i, j;
+  boost::uint32_t i, j;
 
   for (i = 0, j = 0; j < len; i++, j += 4) {
     output[j]   = static_cast<uint1> (input[i] & 0xff);
@@ -321,11 +321,11 @@ void MD5::encode (uint1 *output, uint4 *input, uint4 len) {
 
 
 
-// Decodes input (unsigned char) into output (UINT4). Assumes len is
+// Decodes input (boost::uint8_t) into output (UINT4). Assumes len is
 // a multiple of 4.
 void MD5::decode (uint4 *output, uint1 *input, uint4 len){
 
-  unsigned int i, j;
+  boost::uint32_t i, j;
 
   for (i = 0, j = 0; j < len; i++, j += 4)
     output[i] = (static_cast<uint4>(input[j]))
@@ -339,7 +339,7 @@ void MD5::decode (uint4 *output, uint1 *input, uint4 len){
 
 // ROTATE_LEFT rotates x left n bits.
 
-inline unsigned int MD5::rotate_left  (uint4 x, uint4 n){
+inline boost::uint32_t MD5::rotate_left  (uint4 x, uint4 n){
   return (x << n) | (x >> (32-n))  ;
 }
 
@@ -348,19 +348,19 @@ inline unsigned int MD5::rotate_left  (uint4 x, uint4 n){
 
 // F, G, H and I are basic MD5 functions.
 
-inline unsigned int MD5::F            (uint4 x, uint4 y, uint4 z){
+inline boost::uint32_t MD5::F            (uint4 x, uint4 y, uint4 z){
   return (x & y) | (~x & z);
 }
 
-inline unsigned int MD5::G            (uint4 x, uint4 y, uint4 z){
+inline boost::uint32_t MD5::G            (uint4 x, uint4 y, uint4 z){
   return (x & z) | (y & ~z);
 }
 
-inline unsigned int MD5::H            (uint4 x, uint4 y, uint4 z){
+inline boost::uint32_t MD5::H            (uint4 x, uint4 y, uint4 z){
   return x ^ y ^ z;
 }
 
-inline unsigned int MD5::I            (uint4 x, uint4 y, uint4 z){
+inline boost::uint32_t MD5::I            (uint4 x, uint4 y, uint4 z){
   return y ^ (x | ~z);
 }
 
