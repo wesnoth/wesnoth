@@ -137,13 +137,6 @@ void aspect_attacks::do_attack_analysis(
 	unit_map &units_ = *resources::units;
 	std::vector<team> &teams_ = *resources::teams;
 
-	static double best_results[6];
-	if(result.empty()) {
-		for(int i = 0; i != 6; ++i) {
-			best_results[i] = 0.0;
-		}
-	}
-
 	const size_t max_positions = 1000;
 	if(result.size() > max_positions && !cur_analysis.movements.empty()) {
 		LOG_AI << "cut analysis short with number of positions\n";
