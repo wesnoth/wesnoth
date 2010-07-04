@@ -43,7 +43,7 @@ option ( USE_ANA_NETWORK "Compile network module using ana" OFF )
 set( network_implementation_files network.cpp network_worker.cpp )
 
 if( USE_ANA_NETWORK )
-    set( network_implementation_files network_ana.cpp )
+    set( network_implementation_files network_ana.cpp network_manager_ana.cpp)
     message( STATUS "Compiling network module with ana: ${network_implementation_files}" )
     find_package( Boost 1.35 REQUIRED COMPONENTS system )
 endif ( USE_ANA_NETWORK )

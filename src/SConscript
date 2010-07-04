@@ -44,6 +44,7 @@ libwesnoth_core_sources.extend(env.Object("network_worker.cpp", EXTRA_DEFINE = e
 if env["use_network_ana"]:
     client_env.Append(CPPPATH = ["#/src/ana/api"])
     libwesnoth_core_sources.append("network_ana.cpp")
+    libwesnoth_core_sources.append("network_manager_ana.cpp")
     ana = SConscript("ana/src/SConscript", exports = {"env" : client_env})
 else:
     libwesnoth_core_sources.append("network.cpp")

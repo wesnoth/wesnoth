@@ -41,7 +41,9 @@ THELIBS = -L. $(SDL_IMAGE_LIBS) $(SDL_MIXER_LIBS) $(SDL_NET_LIBS) \
 	$(BOOST_IOSTREAMS_LIBS) $(BOOST_REGEX_LIBS)
 
 if ANA
-network_core = network_ana.cpp
+network_core = \
+	network_ana.cpp \
+	network_manager_ana.cpp
 else
 network_core = \
 	network.cpp \
