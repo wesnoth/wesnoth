@@ -43,7 +43,6 @@ manager::manager():
 		fake_unit_(),
 		selected_unit_(NULL),
 		highlighted_unit_(NULL),
-		move_saving_mutex_(),
 		planned_unit_map_active_(false)
 {
 }

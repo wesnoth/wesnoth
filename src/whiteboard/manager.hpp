@@ -21,8 +21,6 @@
 
 #include "map_location.hpp"
 
-#include <boost/interprocess/sync/interprocess_mutex.hpp>
-#include <boost/interprocess/sync/scoped_lock.hpp>
 #include <boost/noncopyable.hpp>
 #include <boost/shared_ptr.hpp>
 #include <boost/scoped_ptr.hpp>
@@ -131,12 +129,6 @@ private:
 
 	unit* selected_unit_;
 	unit* highlighted_unit_;
-
-	typedef boost::interprocess::interprocess_mutex wb_mutex;
-	typedef boost::interprocess::scoped_lock<wb_mutex> wb_scoped_lock;
-	wb_mutex move_saving_mutex_;
-	//TODO: this mutex might find a better home within the side_actions class.
-	wb_mutex actions_modification_mutex_;
 
 	bool planned_unit_map_active_;
 };
