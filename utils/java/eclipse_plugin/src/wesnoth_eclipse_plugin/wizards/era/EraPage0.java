@@ -2,7 +2,7 @@
  * @author Timotei Dolean
  *
  */
-package wesnoth_eclipse_plugin.wizards;
+package wesnoth_eclipse_plugin.wizards.era;
 
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IResource;

@@ -2,7 +2,7 @@
  * @author Timotei Dolean
  *
  */
-package wesnoth_eclipse_plugin.wizards;
+package wesnoth_eclipse_plugin.wizards.faction;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -27,6 +27,9 @@ import org.eclipse.ui.ide.IDE;
 
 import wesnoth_eclipse_plugin.utils.GUIUtils;
 import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
+import wesnoth_eclipse_plugin.wizards.NewWizardTemplate;
+import wesnoth_eclipse_plugin.wizards.ReplaceableParameter;
+import wesnoth_eclipse_plugin.wizards.TemplateProvider;
 
 public class FactionNewWizard extends NewWizardTemplate
 {
