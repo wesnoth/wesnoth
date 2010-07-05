@@ -473,7 +473,7 @@ game_controller::game_controller(int argc, char** argv) :
 				}
 			}
 #endif
-		} else if(val == "-datadir") {
+		} else if(val == "--data-dir") {
 			if(arg_+1 != argc_) {
 				++arg_;
 				const std::string datadir(argv_[arg_]);
@@ -1773,7 +1773,7 @@ static int process_command_args(int argc, char** argv) {
 			<< "                               $HOME/<name> or My Documents\\My Games\\<name> for windows.\n"
 			<< "  --config-path                prints the path of the user config directory and\n"
 			<< "                               exits.\n"
-			<< "  -datadir <directory>         overrides the data directory with the one specified.\n"
+			<< "  --data-dir <directory>       overrides the data directory with the one specified.\n"
 			<< "  -d, --debug                  enables additional command mode options in-game.\n"
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 			<< "  --debug-dot-level=<level1>,<level2>,...\n"
