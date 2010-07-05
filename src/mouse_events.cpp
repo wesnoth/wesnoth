@@ -143,6 +143,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 		if(new_hex.valid() == false) {
 			current_route_.steps.clear();
 			gui().set_route(NULL);
+			resources::whiteboard->erase_temp_move();
 		}
 
 		if(enemy_paths_) {
@@ -153,6 +154,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 			over_route_ = false;
 			current_route_.steps.clear();
 			gui().set_route(NULL);
+			resources::whiteboard->erase_temp_move();
 		}
 
 		gui().highlight_hex(new_hex);
@@ -215,6 +217,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 		if(dest == selected_hex_ || dest_un != units_.end()) {
 			current_route_.steps.clear();
 			gui().set_route(NULL);
+			resources::whiteboard->erase_temp_move();
 		}
 		else if (!current_paths_.destinations.empty() &&
 		         map_.on_board(selected_hex_) && map_.on_board(new_hex))
@@ -1005,6 +1008,7 @@ void mouse_handler::set_current_paths(pathfind::paths new_paths) {
 	current_paths_ = new_paths;
 	current_route_.steps.clear();
 	gui().set_route(NULL);
+	resources::whiteboard->erase_temp_move();
 }
 
 mouse_handler *mouse_handler::singleton_ = NULL;
