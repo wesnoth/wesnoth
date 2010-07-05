@@ -201,7 +201,7 @@
        <wizard name="Wesnoth Campaign"
            icon="icons/wesnoth-icon_16.png"
 		   category="wesnoth.eclipse.newWizards"
-           class="wesnoth_eclipse_plugin.wizards.CampaignNewWizard"
+           class="wesnoth_eclipse_plugin.wizards.campaign.CampaignNewWizard"
            id="wesnoth_eclipse_plugin.wizards.CampaignNewWizard"
            project="true">
            <description>Create a Wesnoth campaign.</description>
@@ -216,7 +216,7 @@
        <wizard name="Wesnoth Scenario"
            icon="icons/wesnoth-icon_16.png"
 		   category="wesnoth.eclipse.newWizards"
-           class="wesnoth_eclipse_plugin.wizards.ScenarioNewWizard"
+           class="wesnoth_eclipse_plugin.wizards.scenario.ScenarioNewWizard"
            id="wesnoth_eclipse_plugin.wizards.ScenarioNewWizard"
            project="false">
            <description>Create a Wesnoth campaign.</description>

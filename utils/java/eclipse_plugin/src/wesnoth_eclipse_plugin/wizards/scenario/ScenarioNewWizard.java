@@ -1,4 +1,4 @@
-package wesnoth_eclipse_plugin.wizards;
+package wesnoth_eclipse_plugin.wizards.scenario;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -32,6 +32,8 @@ import org.eclipse.ui.ide.IDE;
 
 import wesnoth_eclipse_plugin.utils.GUIUtils;
 import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
+import wesnoth_eclipse_plugin.wizards.ReplaceableParameter;
+import wesnoth_eclipse_plugin.wizards.TemplateProvider;
 
 /**
  * This is a sample new wizard. Its role is to create a new file resource in the

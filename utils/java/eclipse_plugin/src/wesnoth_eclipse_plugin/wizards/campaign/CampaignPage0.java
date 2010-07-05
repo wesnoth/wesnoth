@@ -1,4 +1,4 @@
-package wesnoth_eclipse_plugin.wizards;
+package wesnoth_eclipse_plugin.wizards.campaign;
 
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.dialogs.WizardNewProjectCreationPage;

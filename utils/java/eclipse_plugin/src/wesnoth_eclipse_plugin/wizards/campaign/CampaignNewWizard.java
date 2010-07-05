@@ -1,4 +1,4 @@
-package wesnoth_eclipse_plugin.wizards;
+package wesnoth_eclipse_plugin.wizards.campaign;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
@@ -19,6 +19,8 @@ import org.eclipse.ui.IWorkbench;
 import wesnoth_eclipse_plugin.builder.WesnothProjectNature;
 import wesnoth_eclipse_plugin.utils.Pair;
 import wesnoth_eclipse_plugin.utils.ResourceUtils;
+import wesnoth_eclipse_plugin.wizards.ReplaceableParameter;
+import wesnoth_eclipse_plugin.wizards.TemplateProvider;
 
 public class CampaignNewWizard extends Wizard implements INewWizard
 {

@@ -1,7 +1,7 @@
 /**
  * @author Timotei Dolean
  */
-package wesnoth_eclipse_plugin.wizards;
+package wesnoth_eclipse_plugin.wizards.campaign;
 
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
