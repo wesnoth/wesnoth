@@ -10,25 +10,19 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.jface.operation.IRunnableWithProgress;
-import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.wizard.IWizardPage;
-import org.eclipse.jface.wizard.Wizard;
-import org.eclipse.ui.INewWizard;
-import org.eclipse.ui.IWorkbench;
 
 import wesnoth_eclipse_plugin.builder.WesnothProjectNature;
 import wesnoth_eclipse_plugin.utils.Pair;
 import wesnoth_eclipse_plugin.utils.ResourceUtils;
+import wesnoth_eclipse_plugin.wizards.NewWizardTemplate;
 import wesnoth_eclipse_plugin.wizards.ReplaceableParameter;
 import wesnoth_eclipse_plugin.wizards.TemplateProvider;
 
-public class CampaignNewWizard extends Wizard implements INewWizard
+public class CampaignNewWizard extends NewWizardTemplate
 {
 	protected CampaignPage0	page0_;
 	protected CampaignPage1	page1_;
 	protected CampaignPage2	page2_;
-
-	protected int			lastPageHashCode_	= 0;
 
 	@Override
 	public void addPages()
@@ -42,17 +36,12 @@ public class CampaignNewWizard extends Wizard implements INewWizard
 		page2_ = new CampaignPage2();
 		addPage(page2_);
 
-		lastPageHashCode_ = getPages()[getPageCount() - 1].hashCode();
+		super.addPages();
 	}
 
 	public CampaignNewWizard() {
 		setWindowTitle("Create a new Campaign");
 		setNeedsProgressMonitor(true);
-	}
-
-	@Override
-	public void init(IWorkbench workbench, IStructuredSelection selection)
-	{
 	}
 
 	@Override
@@ -149,12 +138,5 @@ public class CampaignNewWizard extends Wizard implements INewWizard
 		params.add(new ReplaceableParameter("$$type", page1_.isMultiplayer() ? "campaign_mp" : "campaign"));
 
 		return TemplateProvider.getInstance().getProcessedTemplate(templateName, params);
-	}
-
-	@Override
-	public boolean canFinish()
-	{
-		IWizardPage page = getContainer().getCurrentPage();
-		return super.canFinish() && page.hashCode() == lastPageHashCode_ && page.isPageComplete();
 	}
 }

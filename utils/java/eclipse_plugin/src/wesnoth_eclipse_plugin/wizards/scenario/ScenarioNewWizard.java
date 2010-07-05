@@ -18,20 +18,14 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
-import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.wizard.IWizardPage;
-import org.eclipse.jface.wizard.Wizard;
-import org.eclipse.ui.INewWizard;
-import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPage;
-import org.eclipse.ui.IWorkbenchWizard;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
 
 import wesnoth_eclipse_plugin.utils.GUIUtils;
 import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
+import wesnoth_eclipse_plugin.wizards.NewWizardTemplate;
 import wesnoth_eclipse_plugin.wizards.ReplaceableParameter;
 import wesnoth_eclipse_plugin.wizards.TemplateProvider;
 
@@ -44,13 +38,10 @@ import wesnoth_eclipse_plugin.wizards.TemplateProvider;
  * same extension, it will be able to open it.
  */
 
-public class ScenarioNewWizard extends Wizard implements INewWizard
+public class ScenarioNewWizard extends NewWizardTemplate
 {
 	private ScenarioPage0	page0_;
 	private ScenarioPage1	page1_;
-	private ISelection		selection;
-
-	protected int			lastPageHashCode_;
 
 	/**
 	 * Constructor for ScenarioNewWizard.
@@ -66,24 +57,13 @@ public class ScenarioNewWizard extends Wizard implements INewWizard
 	@Override
 	public void addPages()
 	{
-		page0_ = new ScenarioPage0(selection);
+		page0_ = new ScenarioPage0(selection_);
 		addPage(page0_);
 
 		page1_ = new ScenarioPage1();
 		// addPage(page1_);
 
-		lastPageHashCode_ = getPages()[getPageCount() - 1].hashCode();
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * @see org.eclipse.jface.wizard.Wizard#canFinish()
-	 */
-	@Override
-	public boolean canFinish()
-	{
-		IWizardPage page = getContainer().getCurrentPage();
-		return super.canFinish() && page.hashCode() == lastPageHashCode_ && page.isPageComplete();
+		super.addPages();
 	}
 
 	/**
@@ -215,16 +195,5 @@ public class ScenarioNewWizard extends Wizard implements INewWizard
 	{
 		IStatus status = new Status(IStatus.ERROR, "Wesnoth_Eclipse_Plugin", IStatus.OK, message, null);
 		throw new CoreException(status);
-	}
-
-	/**
-	 * We will accept the selection in the workbench to see if we can initialize
-	 * from it.
-	 * @see IWorkbenchWizard#init(IWorkbench, IStructuredSelection)
-	 */
-	@Override
-	public void init(IWorkbench workbench, IStructuredSelection selection)
-	{
-		this.selection = selection;
 	}
 }
