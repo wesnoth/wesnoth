@@ -103,7 +103,7 @@ public class TemplateProvider
 				{
 					template[i] = template[i].replace(param.paramName, param.paramValue);
 
-					if ((templateName!= "build_xml") && (param.paramValue == null || param.paramValue.isEmpty()))
+					if (!templateName.equals("build_xml") && (param.paramValue == null || param.paramValue.isEmpty()))
 					{
 						// we don't have any value supplied -
 						// let's comment that line (if it's not already
@@ -133,6 +133,7 @@ public class TemplateProvider
 	 * value is a list of <String, String> that consist of <Filename, Template
 	 * used for file contents> and the second return value is a list of String
 	 * with directories names
+	 * 
 	 * @param structureTemplate the template
 	 * @return
 	 */

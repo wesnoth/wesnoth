@@ -221,6 +221,14 @@
            project="false">
            <description>Create a Wesnoth scenario.</description>
        </wizard>
+       <wizard
+             category="wesnoth.eclipse.newWizards"
+             class="wesnoth_eclipse_plugin.wizards.EraNewWizard"
+             icon="icons/wesnoth-icon_16.png"
+             id="wesnoth_eclipse_plugin.wizards.eraNewWizard"
+             name="Wesnoth Era"
+             project="false">
+       </wizard>
    </extension>
    <extension
          point="org.eclipse.ui.commands">
