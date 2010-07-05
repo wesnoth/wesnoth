@@ -269,24 +269,18 @@ void manager::save_temp_move()
 	fake_unit_ptr fake_unit;
 	unit* target_unit;
 
-	{
-		// Wait until the block is finished and the variables have finished copying,
-		// before granting another thread access.
-		wb_scoped_lock lock(move_saving_mutex_); //waits for lock
+	//Temporary: Only keep as path the steps can be done this turn
+	steps = route_->steps;
+	move_arrow = arrow_ptr(move_arrow_);
+	fake_unit = fake_unit_ptr(fake_unit_);
+	target_unit = selected_unit_;
 
-		//Temporary: Only keep as path the steps can be done this turn
-		steps = route_->steps;
-		move_arrow = arrow_ptr(move_arrow_);
-		fake_unit = fake_unit_ptr(fake_unit_);
-		target_unit = selected_unit_;
+	erase_temp_move();
+	selected_unit_ = NULL;
 
-		erase_temp_move();
-		selected_unit_ = NULL;
-
-		LOG_WB << "Creating move for unit " << target_unit->name() << " [" << target_unit->id() << "]"
-				<< " from " << steps.front()
-				<< " to " << steps.back() << "\n";
-	}
+	LOG_WB << "Creating move for unit " << target_unit->name() << " [" << target_unit->id() << "]"
+			<< " from " << steps.front()
+			<< " to " << steps.back() << "\n";
 
 	assert(!has_planned_unit_map());
 
@@ -297,10 +291,6 @@ void manager::save_temp_move()
 
 void manager::contextual_execute()
 {
-	wb_scoped_lock try_lock(actions_modification_mutex_, boost::interprocess::try_to_lock);
-	if (!try_lock)
-		return;
-
 	if (!current_actions()->empty())
 	{
 		//TODO: catch end_turn_exception somewhere here?
@@ -323,10 +313,6 @@ void manager::contextual_execute()
 
 void manager::contextual_delete()
 {
-	wb_scoped_lock try_lock(actions_modification_mutex_, boost::interprocess::try_to_lock);
-	if (!try_lock)
-		return;
-
 	if (!current_actions()->empty())
 	{
 		if (selected_unit_ && unit_has_actions(*selected_unit_))
