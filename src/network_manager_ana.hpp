@@ -26,6 +26,9 @@
 #include "network.hpp"
 #include "ana/api/ana.hpp"
 
+#ifndef NETWORK_MANAGER_ANA_HPP_INCLUDED
+#define NETWORK_MANAGER_ANA_HPP_INCLUDED
+
 /** Interface for objects that log send statistics. */
 struct send_stats_logger
 {
@@ -282,3 +285,5 @@ class ana_network_manager : public ana::listener_handler,
 
         std::map< ana::server*, const clients_manager* > server_manager_;
 };
+
+#endif
