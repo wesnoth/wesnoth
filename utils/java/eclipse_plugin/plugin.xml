@@ -229,6 +229,14 @@
              name="Wesnoth Era"
              project="false">
        </wizard>
+       <wizard
+             category="wesnoth.eclipse.newWizards"
+             class="wesnoth_eclipse_plugin.wizards.FactionNewWizard"
+             icon="icons/wesnoth-icon_16.png"
+             id="wesnoth_eclipse_plugin.wizard.factionNewWizard"
+             name="Wesnoth Faction"
+             project="false">
+       </wizard>
    </extension>
    <extension
          point="org.eclipse.ui.commands">

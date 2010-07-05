@@ -24,23 +24,26 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.dialogs.ContainerSelectionDialog;
 
-public class EraPage0 extends WizardPage
+public class FactionPage0 extends WizardPage
 {
 	private ISelection	selection_;
-	private Text		txtDirectory_;
 	private Text		txtFileName_;
-	private Text		txtEraID_;
-	private Text		txtEraName_;
-	private Button		chkRequireEra_;
+	private Text		txtDirectory_;
+	private Text		txtFactionId_;
+	private Text		txtFactionName_;
+	private Text		txtType_;
+	private Text		txtLeader_;
+	private Text		txtRandomLeader_;
+	private Text		txtTerrainLiked_;
+	private Text		text;
 
 	/**
 	 * Create the wizard.
 	 */
-	public EraPage0(ISelection selection) {
+	public FactionPage0(ISelection selection) {
 		super("wizardPage");
-		setTitle("New era wizard");
-		setDescription("Create a new era");
-		selection_ = selection;
+		setTitle("New faction wizard");
+		setDescription("Create a new faction");
 	}
 
 	/**
@@ -51,6 +54,8 @@ public class EraPage0 extends WizardPage
 	@Override
 	public void createControl(Composite parent)
 	{
+		Composite container = new Composite(parent, SWT.NULL);
+
 		ModifyListener modifyListener = new ModifyListener() {
 			@Override
 			public void modifyText(ModifyEvent e)
@@ -59,24 +64,22 @@ public class EraPage0 extends WizardPage
 			}
 		};
 
-		Composite container = new Composite(parent, SWT.NULL);
-
 		setControl(container);
 		container.setLayout(new GridLayout(3, false));
 
-		Label lblProject = new Label(container, SWT.NONE);
-		GridData gd_lblProject = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
-		gd_lblProject.widthHint = 99;
-		lblProject.setLayoutData(gd_lblProject);
-		lblProject.setText("Directory* :");
+		Label label = new Label(container, SWT.NONE);
+		GridData gd_label = new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1);
+		gd_label.widthHint = 95;
+		label.setLayoutData(gd_label);
+		label.setText("Directory* :");
 
 		txtDirectory_ = new Text(container, SWT.BORDER);
 		txtDirectory_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 		txtDirectory_.addModifyListener(modifyListener);
 
-		Button btnBrowse = new Button(container, SWT.NONE);
-		btnBrowse.setText("Browse...");
-		btnBrowse.addSelectionListener(new SelectionAdapter() {
+		Button button = new Button(container, SWT.NONE);
+		button.setText("Browse...");
+		button.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e)
 			{
@@ -84,37 +87,72 @@ public class EraPage0 extends WizardPage
 			}
 		});
 
-		Label lblFileName = new Label(container, SWT.NONE);
-		lblFileName.setText("File name* :");
+		Label label_4 = new Label(container, SWT.NONE);
+		label_4.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
+		label_4.setText("File name* :");
 
 		txtFileName_ = new Text(container, SWT.BORDER);
-		txtFileName_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+		txtFileName_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
 		new Label(container, SWT.NONE);
 		txtFileName_.addModifyListener(modifyListener);
 
-		Label lblEraID = new Label(container, SWT.NONE);
-		lblEraID.setText("Era Id*:");
+		Label lblFactionId = new Label(container, SWT.NONE);
+		lblFactionId.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
+		lblFactionId.setText("Faction Id*:");
 
-		txtEraID_ = new Text(container, SWT.BORDER);
-		txtEraID_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+		txtFactionId_ = new Text(container, SWT.BORDER);
+		txtFactionId_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 		new Label(container, SWT.NONE);
-		txtEraID_.addModifyListener(modifyListener);
+		txtFactionId_.addModifyListener(modifyListener);
 
-		Label lblEraName = new Label(container, SWT.NONE);
-		lblEraName.setText("Era name*:");
+		Label lblName = new Label(container, SWT.NONE);
+		lblName.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
+		lblName.setText("Faction name*:");
 
-		txtEraName_ = new Text(container, SWT.BORDER);
-		txtEraName_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+		txtFactionName_ = new Text(container, SWT.BORDER);
+		txtFactionName_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 		new Label(container, SWT.NONE);
-		txtEraName_.addModifyListener(modifyListener);
+		txtFactionName_.addModifyListener(modifyListener);
 
-		chkRequireEra_ = new Button(container, SWT.CHECK);
-		chkRequireEra_
-				.setToolTipText("whether clients are required to have this era installed beforehand to be allowed join a game using this era. Possible values 'yes' (the default) and 'no'. ");
-		chkRequireEra_.setText("Require era");
-		new Label(container, SWT.NONE);
+		Label lblType = new Label(container, SWT.NONE);
+		lblType.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
+		lblType.setText("Type:");
+
+		txtType_ = new Text(container, SWT.BORDER);
+		txtType_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 		new Label(container, SWT.NONE);
 
+		Label lblLeader = new Label(container, SWT.NONE);
+		lblLeader.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
+		lblLeader.setText("Leader:");
+
+		txtLeader_ = new Text(container, SWT.BORDER);
+		txtLeader_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+		new Label(container, SWT.NONE);
+
+		Label lblRandomLeaders = new Label(container, SWT.NONE);
+		lblRandomLeaders.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
+		lblRandomLeaders.setText("Random leader:");
+
+		txtRandomLeader_ = new Text(container, SWT.BORDER);
+		txtRandomLeader_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+		new Label(container, SWT.NONE);
+
+		Label lblTerrainLiked = new Label(container, SWT.NONE);
+		lblTerrainLiked.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
+		lblTerrainLiked.setText("Terrain liked:");
+
+		txtTerrainLiked_ = new Text(container, SWT.BORDER);
+		txtTerrainLiked_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+		new Label(container, SWT.NONE);
+
+		Label lblRecruit = new Label(container, SWT.NONE);
+		lblRecruit.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
+		lblRecruit.setText("Recruit:");
+
+		text = new Text(container, SWT.BORDER);
+		text.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+		new Label(container, SWT.NONE);
 		initialize();
 		updatePageIsComplete();
 	}
@@ -156,15 +194,15 @@ public class EraPage0 extends WizardPage
 			return;
 		}
 
-		if (getEraID().isEmpty())
+		if (getFactionId().isEmpty())
 		{
-			setErrorMessage("The era ID cannot be empty.");
+			setErrorMessage("The faction ID cannot be empty.");
 			return;
 		}
 
-		if (getEraName().isEmpty())
+		if (getFactionName().isEmpty())
 		{
-			setErrorMessage("The era name cannot be empty.");
+			setErrorMessage("The faction name cannot be empty.");
 			return;
 		}
 
@@ -177,6 +215,7 @@ public class EraPage0 extends WizardPage
 	 */
 	private void initialize()
 	{
+		setPageComplete(true);
 		if (selection_ != null && selection_.isEmpty() == false && selection_ instanceof IStructuredSelection)
 		{
 			IStructuredSelection ssel = (IStructuredSelection) selection_;
@@ -218,43 +257,43 @@ public class EraPage0 extends WizardPage
 		}
 	}
 
-	/**
-	 * @return true if this requires the era to be installed in user's game
-	 */
-	public boolean getRequiresEra()
+	public String getDirectoryName()
 	{
-		return chkRequireEra_.getSelection();
+		return txtDirectory_.getText();
 	}
 
-	/**
-	 * @return the era id
-	 */
-	public String getEraID()
+	public String getFactionId()
 	{
-		return txtEraID_.getText();
+		return txtFactionId_.getText();
 	}
 
-	/**
-	 * @return the era name
-	 */
-	public String getEraName()
+	public String getFactionName()
 	{
-		return txtEraName_.getText();
+		return txtFactionName_.getText();
 	}
 
-	/**
-	 * @return the filename containing the era
-	 */
 	public String getFileName()
 	{
 		return txtFileName_.getText();
 	}
 
-	/**
-	 * @return the directory where the file will be placed
-	 */
-	public String getDirectoryName()
+	public String getLeader()
 	{
-		return txtDirectory_.getText();
+		return txtLeader_.getText();
+	}
+
+	public String getTerrainLiked()
+	{
+		return txtTerrainLiked_.getText();
+	}
+
+	public String getRandomLeader()
+	{
+		return txtRandomLeader_.getText();
+	}
+
+	public String getType()
+	{
+		return txtType_.getText();
 	}
 }
