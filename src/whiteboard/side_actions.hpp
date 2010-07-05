@@ -134,18 +134,6 @@ public:
 	 */
 	iterator find_last_action_of(const unit& unit, iterator start_position = iterator());
 
-	/**
-	 * future_view = true : units are shown at their future positions
-	 * future_view = false: units' future positions are shown with ghosts
-	 */
-	void set_future_view(bool future_view);
-
-	/**
-	 * Determines which is the last action of each unit, and updates the actions' display
-	 * accordingly.
-	 */
-	void update_last_action_display();
-
 	void validate_actions();
 
 private:

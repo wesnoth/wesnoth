@@ -34,8 +34,8 @@
 
 namespace wb {
 
-const double move::ALPHA_HIGHLIGHT = 2.0;
-const double move::ALPHA_NORMAL = 0.2;
+const double move::ALPHA_HIGHLIGHT = 1.0;
+const double move::ALPHA_NORMAL = 0.6;
 const std::string move::ARROW_STYLE_VALID = "";
 const std::string move::ARROW_STYLE_INVALID = "invalid";
 
@@ -55,8 +55,6 @@ move::move(unit& subject, const map_location& source_hex, const map_location& ta
   movement_cost_(0),
   arrow_(arrow),
   fake_unit_(fake_unit),
-  future_display_(true),
-  last_action_(true),
   valid_(true)
 {
 	// Calculate move cost
@@ -73,14 +71,6 @@ move::move(unit& subject, const map_location& source_hex, const map_location& ta
 
 move::~move()
 {
-	DBG_WB <<"Deleting move.\n";
-
-	if (last_action_ //FIXME: This should be done if the action removed is the first and only, not the last !!!
-		&& resources::units //FIXME: could tweak play_controller to ensure the unit map is still valid here
-		)
-	{
-		unit_.set_standing(true);
-	}
 }
 
 void move::accept(visitor& v)
@@ -186,34 +176,6 @@ bool move::is_related_to(const unit& unit) const
 {
 	bool is_related = &unit_ == &unit;
 	return is_related;
-}
-
-void move::update_display()
-{
-	if(future_display_)
-	{
-		unit_.set_ghosted(false);
-		if (last_action_)
-		{
-			fake_unit_->set_standing(true);
-		}
-		else
-		{
-			fake_unit_->set_disabled_ghosted(false);
-		}
-	}
-	else // not future display
-	{
-		unit_.set_standing(true);
-		if (last_action_)
-		{
-			fake_unit_->set_ghosted(false);
-		}
-		else
-		{
-			fake_unit_->set_disabled_ghosted(false);
-		}
-	}
 }
 
 void move::set_valid(bool valid)

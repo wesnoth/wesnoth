@@ -78,13 +78,6 @@ public:
 	/** Return the unit targeted by this action. */
 	virtual unit& get_unit() = 0;
 
-	virtual void set_future_display(bool future_display) = 0;
-
-	virtual void set_last_action(bool last_action) = 0;
-
-	//TODO: rename this if it ends up only refreshing the future and last action display
-	virtual void update_display() = 0;
-
 	/**
 	 * Indicates to an action whether its status is invalid, and whether it should change its
 	 * display (and avoid any change to the game state) accordingly

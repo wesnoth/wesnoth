@@ -42,13 +42,14 @@ void highlight_visitor::visit_move(boost::shared_ptr<move> move)
 	if (highlight_)
 	{
 		move->get_arrow()->set_alpha(move::ALPHA_HIGHLIGHT);
-		move->get_fake_unit()->set_selecting();
+		move->get_fake_unit()->set_ghosted(false);
 		move->get_unit().set_selecting();
 	}
 	else
 	{
 		move->get_arrow()->set_alpha(move::ALPHA_NORMAL);
-		move->update_display();
+		move->get_fake_unit()->set_disabled_ghosted(false);
+		move->get_unit().set_standing(true);
 	}
 }
 

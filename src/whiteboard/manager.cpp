@@ -163,7 +163,6 @@ void manager::on_unit_select(unit& unit)
 {
 	erase_temp_move();
 	remove_highlight();
-	current_actions()->set_future_view(true);
 	action_set actions = current_actions()->actions();
 	highlight_visitor highlighter(true);
 	foreach(action_ptr action, actions)
@@ -232,13 +231,14 @@ void manager::create_temp_move(const pathfind::marked_route &route)
 		// Create temp ghost unit
 		fake_unit_.reset(new unit(*selected_unit_), wb::manager::fake_unit_deleter());
 		resources::screen->place_temporary_unit(fake_unit_.get());
+		fake_unit_->set_ghosted(false);
 	}
 
 	move_arrow_->set_path(route_->steps);
 
 	unit_display::move_unit(route_->steps, *fake_unit_, *resources::teams, false); //get facing right
 	fake_unit_->set_location(route_->steps.back());
-	fake_unit_->set_ghosted(true);
+	fake_unit_->set_ghosted(false);
 }
 
 void manager::erase_temp_move()
@@ -246,19 +246,10 @@ void manager::erase_temp_move()
 	if (move_arrow_)
 	{
 		move_arrow_.reset(); //auto-removes itself from display
-
-		//reset src unit back to normal, if it lacks any planned action,
-		//and we're not in the process of saving a move
-		wb_scoped_lock try_lock(move_saving_mutex_, boost::interprocess::try_to_lock);
-		if (try_lock && selected_unit_
-				&& current_actions()->find_first_action_of(*selected_unit_) == current_actions()->end())
-		{
-				selected_unit_->set_standing(true);
-		}
 	}
 	if (fake_unit_)
 	{
-		fake_unit_.reset();
+		fake_unit_.reset(); //auto-removes itself from display thanks to custom deleter in the shared_ptr
 	}
 	if (route_)
 	{
@@ -294,9 +285,8 @@ void manager::save_temp_move()
 
 	assert(!has_planned_unit_map());
 
-	target_unit->set_ghosted(false);
-	unit_display::move_unit(steps, *fake_unit, *resources::teams, true);
-
+	//unit_display::move_unit(steps, *fake_unit, *resources::teams, false);
+	fake_unit->set_disabled_ghosted(false);
 	current_actions()->queue_move(*target_unit, steps.front(), steps.back(), move_arrow, fake_unit);
 }
 
@@ -310,7 +300,6 @@ void manager::contextual_execute()
 	{
 		//TODO: catch end_turn_exception somewhere here?
 		//TODO: properly handle movement points, probably through the mapbuilder_visitor
-		current_actions()->set_future_view(false);
 
 		if (selected_unit_ && unit_has_actions(*selected_unit_))
 		{
@@ -324,9 +313,6 @@ void manager::contextual_execute()
 		{
 			current_actions()->execute_next();
 		}
-
-
-		current_actions()->set_future_view(true);
 	}
 }
 

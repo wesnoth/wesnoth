@@ -66,10 +66,6 @@ public:
 	virtual bool is_related_to(const map_location& hex) const;
 	virtual bool is_related_to(const unit& unit) const;
 
-	virtual void set_future_display(bool future_display) { future_display_ = future_display; update_display(); }
-	virtual void set_last_action(bool last_action) {last_action_ = last_action; update_display(); }
-	virtual void update_display();
-
 	virtual void set_valid(bool valid);
 	virtual bool is_valid() { return valid_; }
 
@@ -81,9 +77,6 @@ private:
 
 	boost::shared_ptr<arrow> arrow_;
 	boost::shared_ptr<unit> fake_unit_;
-
-	bool future_display_;
-	bool last_action_;
 
 	bool valid_;
 };

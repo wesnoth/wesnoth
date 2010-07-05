@@ -111,7 +111,6 @@ side_actions::iterator side_actions::queue_move(unit& subject, const map_locatio
 	action_ptr action(new move(subject, source_hex, target_hex, arrow, fake_unit));
 	actions_.push_back(action);
 	// Contrary to insert_move, no need to validate actions here since we're adding to the end of the queue
-	update_last_action_display();
 	return end() - 1;
 }
 
@@ -203,34 +202,6 @@ side_actions::iterator side_actions::find_last_action_of(const unit& unit, side_
 	return end();
 }
 
-void side_actions::set_future_view(bool future_view)
-{
-	foreach (action_ptr action, actions_)
-	{
-		action->set_future_display(future_view);
-	}
-}
-
-void side_actions::update_last_action_display()
-{
-	std::set<unit const*> seen_unit_list;
-	action_set::reverse_iterator it;
-	for (it = actions_.rbegin(); it != actions_.rend(); ++it)
-	{
-		action_ptr action = *it;
-		unit const* target_unit = &action->get_unit();
-		if (seen_unit_list.find(target_unit) == seen_unit_list.end()) // last action of this unit
-		{
-			seen_unit_list.insert(target_unit);
-			action->set_last_action(true);
-		}
-		else // not the last action of this unit
-		{
-			action->set_last_action(false);
-		}
-	}
-}
-
 void side_actions::validate_actions()
 {
 	if (resources::whiteboard->has_planned_unit_map())
@@ -240,7 +211,6 @@ void side_actions::validate_actions()
 
 	validate_visitor validator(*resources::units, shared_from_this());
 	validator.validate_actions();
-	update_last_action_display();
 }
 
 side_actions::iterator side_actions::move_in_queue(side_actions::iterator position, int increment)
