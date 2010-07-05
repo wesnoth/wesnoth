@@ -24,27 +24,28 @@
 #include "network_manager_ana.hpp"
 #include "serialization/binary_or_text.hpp"
 
+// Begin ana_send_handler implementation ---------------------------------------------------------------
 
-ana_handler::ana_handler( boost::mutex& mutex, send_stats_logger* logger, size_t buf_size, size_t calls) :
-    mutex_(mutex),
+ana_send_handler::ana_send_handler( send_stats_logger* logger, size_t buf_size, size_t calls) :
+    mutex_(),
     target_calls_( calls ),
     error_code_(),
     logger_( logger ),
     buf_size_( buf_size )
 {
-    std::cout << "DEBUG: Constructing a new ana_handler...\n";
+    std::cout << "DEBUG: Constructing a new ana_send_handler...\n";
     if ( calls > 0 )
         mutex_.lock();
 }
 
-ana_handler::~ana_handler()
+ana_send_handler::~ana_send_handler()
 {
-    std::cout << "DEBUG: Terminating an ana_handler...\n";
+    std::cout << "DEBUG: Terminating an ana_send_handler...\n";
     if ( target_calls_ > 0 )
         throw std::runtime_error("Handler wasn't called enough times.");
 }
 
-void ana_handler::handle_send(ana::error_code error_code, ana::net_id /*client*/)
+void ana_send_handler::handle_send(ana::error_code error_code, ana::net_id /*client*/)
 {
     if ( ! error_code )
         logger_->update_send_stats( buf_size_ );
@@ -55,8 +56,16 @@ void ana_handler::handle_send(ana::error_code error_code, ana::net_id /*client*/
         mutex_.unlock();
 }
 
-ana_connect_handler::ana_connect_handler( boost::mutex& mutex, ana::timer* timer) :
-    mutex_(mutex),
+void ana_send_handler::wait_completion()
+{
+    mutex_.lock();
+    mutex_.unlock();
+}
+
+// Begin ana_connect_handler implementation ------------------------------------------------------------
+
+ana_connect_handler::ana_connect_handler( ana::timer* timer ) :
+    mutex_( ),
     timer_(timer),
     error_code_(),
     connected_(false)
@@ -103,6 +112,13 @@ void ana_connect_handler::handle_connect(ana::error_code error_code, ana::net_id
     mutex_.unlock();
 }
 
+void ana_connect_handler::wait_completion()
+{
+    mutex_.lock();
+    mutex_.unlock();
+}
+
+// Begin ana_component implementation ------------------------------------------------------------------
 
 ana_component::ana_component( ) :
     base_( ana::server::create() ),
@@ -214,6 +230,8 @@ void ana_component::update_send_stats( size_t buffer_size)
     send_stats_.current     = buffer_size;
 }
 
+// Begin clients_manager  implementation ---------------------------------------------------------------
+
 clients_manager::clients_manager() :
     ids_()
 {
@@ -234,6 +252,8 @@ void clients_manager::handle_disconnect(ana::error_code /*error*/, ana::net_id c
 {
     ids_.erase(client);
 }
+
+// Begin ana_network_manager implementation ------------------------------------------------------------
 
 ana_network_manager::ana_network_manager() :
     connect_timer_( NULL ),
@@ -274,11 +294,9 @@ network::connection ana_network_manager::create_client_and_connect(std::string h
 
         ana::client* const client = new_component->client();
 
-        boost::mutex mutex;
-
         connect_timer_ = new ana::timer();
 
-        ana_connect_handler handler(mutex, connect_timer_);
+        ana_connect_handler handler(connect_timer_);
 
         connect_timer_->wait( ana::time::seconds(10), // 10 seconds to connection timeout
                             boost::bind(&ana_connect_handler::handle_timeout, &handler,
@@ -290,8 +308,7 @@ network::connection ana_network_manager::create_client_and_connect(std::string h
         client->run();
         client->start_logging();
 
-        mutex.lock();   // just wait for handler to release it
-        mutex.unlock(); // unlock for destruction
+        handler.wait_completion(); // just wait for handler to finish
 
         delete connect_timer_;
 
@@ -385,14 +402,13 @@ size_t ana_network_manager::send_all( const config& cfg, bool zipped )
     {
         if ( (*it)->is_server() )
         {
-            boost::mutex mutex;
             const size_t necessary_calls = server_manager_[ (*it)->server() ]->client_amount();
 
-            ana_handler handler( mutex, *it, out.str().size(), necessary_calls );
+            ana_send_handler handler( *it, out.str().size(), necessary_calls );
 
             (*it)->server()->send_all( ana::buffer( out.str() ), &handler, ana::ZERO_COPY);
 
-            mutex.lock(); // the handler will release the mutex after necessary_calls calls
+            handler.wait_completion(); // the handler will release the mutex after necessary_calls calls
         }
     }
     return out.str().size();
@@ -413,10 +429,10 @@ size_t ana_network_manager::send( network::connection connection_num , const con
     {
         if ( (*it)->is_server() )
         {
-            boost::mutex mutex;
-            ana_handler handler( mutex, *it, out.str().size() );
+            ana_send_handler handler( *it, out.str().size() );
             (*it)->server()->send_one( id, ana::buffer( out.str() ), &handler, ana::ZERO_COPY);
-            mutex.lock(); // this should work just fine
+
+            handler.wait_completion();
         }
     }
     return out.str().size();

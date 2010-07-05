@@ -26,76 +26,146 @@
 #include "network.hpp"
 #include "ana/api/ana.hpp"
 
+/** Interface for objects that log send statistics. */
 struct send_stats_logger
 {
     virtual void update_send_stats( size_t ) = 0;
 };
 
-class ana_handler : public ana::send_handler
+/**
+ * To use the asynchronous library synchronously, objects of this
+ * type lock a mutex until enough calls have been made to the
+ * associated handler.
+ */
+class ana_send_handler : public ana::send_handler
 {
     public:
-        ana_handler( boost::mutex& mutex, send_stats_logger* logger, size_t buf_size, size_t calls = 1 );
+        /**
+         * Constructs a handler object.
+         * @param logger : A pointer to an object logging send statistics.
+         * @param buf_size : The size of the buffer being sent.
+         * @param calls [optional, default 1] : The amount of calls to the handler expected.
+         */
+        ana_send_handler( send_stats_logger* logger, size_t buf_size, size_t calls = 1 );
 
-        ~ana_handler();
+        /** Destructor, checks that the necessary calls were made. */
+        ~ana_send_handler();
+
+        /** Locks current thread until all the calls are made. */
+        void wait_completion();
 
     private:
         virtual void handle_send(ana::error_code error_code, ana::net_id /*client*/);
 
-        boost::mutex&      mutex_;
+        boost::mutex       mutex_;
         size_t             target_calls_;
         ana::error_code    error_code_;
         send_stats_logger* logger_;
         size_t             buf_size_;
 };
 
+/**
+ * To use the asynchronous library synchronously, objects of this
+ * type lock a mutex until enough calls have been made to the
+ * associated handler.
+ */
 class ana_connect_handler : public ana::connection_handler
 {
     public:
-        ana_connect_handler( boost::mutex& mutex, ana::timer* timer);
+        /**
+         * Constructs a connection handler.
+         *
+         * @param timer : A pointer to a running timer dealing with the timeout of this connect operation.
+         */
+        ana_connect_handler( ana::timer* timer);
 
+        /**
+         * Handler of the timeout operation of the timer.
+         */
         void handle_timeout(ana::error_code error_code);
 
+        /** Destructor. */
         ~ana_connect_handler();
 
+        /**
+         * Checks if an error occured during the connection procedure.
+         *
+         * @returns Error code of the operation.
+         */
         const ana::error_code& error() const;
+
+        /** Locks current thread until the connection attempt has finished. */
+        void wait_completion();
 
     private:
         virtual void handle_connect(ana::error_code error_code, ana::net_id /*client*/);
 
-        boost::mutex&      mutex_;
+        boost::mutex       mutex_;
         ana::timer*        timer_;
         ana::error_code    error_code_;
         bool               connected_;
 };
 
-
+/**
+ * A representative of a network component to the application.
+ */
 class ana_component : public send_stats_logger
 {
     public:
+        /** Constructs a server component. */
         ana_component( );
 
+        /**
+         * Constructs a client component. 
+         *
+         * @param host : The hostname to which it is supposed to connect to.
+         * @param port : The port it is supposed to connect to.
+         */
         ana_component( const std::string& host, const std::string& port);
 
+        /** Get network upload statistics for this component. */
         network::statistics get_send_stats() const;
 
+        /** Get network download statistics for this component. */
         network::statistics get_receive_stats() const;
 
+        /**
+         * Get the pointer to an ana::server object for this component.
+         *
+         * @Pre : This component is a server.
+         */
         ana::server* server() const;
 
+        /**
+         * Get the pointer to an ana::client object for this component.
+         *
+         * @Pre : This component is a client.
+         */
         ana::client* client() const;
 
+        /** Returns true iff this component is a server. */
         bool is_server() const;
 
+        /** Returns true iff this component is a client. */
         bool is_client() const;
 
+        /** Returns this component's id. */
         ana::net_id get_id() const;
 
+        /** Returns a pointer to the ana::stats object for accumulated network stats. */
         const ana::stats* get_stats() const;
 
+        /** Push a buffer to the queue of incoming messages. */
         void add_buffer(ana::detail::read_buffer buffer);
 
+        /**
+         * Blocking operation to wait for a message in a component.
+         *
+         * @returns The buffer that was received first from all pending buffers.
+         */
         ana::detail::read_buffer wait_for_element();
 
+        /** Log an incoming buffer. */
         void update_receive_stats( size_t buffer_size );
 
     private:
@@ -116,11 +186,16 @@ class ana_component : public send_stats_logger
         std::queue< ana::detail::read_buffer > buffers_;
 };
 
+/**
+ * Manages connected client ids for a given server.
+ */
 class clients_manager : public ana::connection_handler
 {
     public:
+        /** Constructor. */
         clients_manager();
 
+        /** Returns the amount of components connected to this server. */
         size_t client_amount() const;
 
     private:
@@ -131,32 +206,66 @@ class clients_manager : public ana::connection_handler
         std::set<ana::net_id> ids_;
 };
 
+/**
+ * Provides network functionality for Wesnoth using the ana API and library.
+ */
 class ana_network_manager : public ana::listener_handler,
                             public ana::send_handler
 {
     public:
+        /** Constructor. */
         ana_network_manager();
 
+        /**
+         * Create a server component and return it's ID.
+         *
+         * @returns The ID of the new created server.
+         */
         ana::net_id create_server( );
 
+        /**
+         * Create a client component and return it's network connection number.
+         *
+         * @returns The ID of the new created client, as a network::connection number.
+         */
         network::connection create_client_and_connect(std::string host, int port);
 
+        /**
+         * Get the associated stats of a given component.
+         *
+         * @param connection_num : The ID of the network component.
+         *
+         * @returns A pointer to an ana::stats object of the given component.
+         */
         const ana::stats* get_stats( network::connection connection_num );
 
+        /**
+         * Start a server on a given port.
+         *
+         * @param id : The ID of the server component.
+         * @param port : The port on which to listen for new connections.
+         */
         void run_server(ana::net_id id, int port);
 
+        /** Get the IP address of a connected component by it's ID. */
         std::string ip_address( network::connection id );
 
+        /** The amount of connected components to every server object created. */
         size_t number_of_connections() const;
 
+        /** Send data to all created components. */
         size_t send_all( const config& cfg, bool zipped );
 
+        /** Send data to the component with a given ID. */
         size_t send( network::connection connection_num , const config& cfg, bool zipped );
 
+        /** Read a message from a given component. */
         ana::detail::read_buffer read_from( network::connection connection_num );
 
+        /** Retrieve upload statistics on a given component. */
         network::statistics get_send_stats(network::connection handle);
 
+        /** Retrieve download statistics on a given component. */
         network::statistics get_receive_stats(network::connection handle);
 
     private:
