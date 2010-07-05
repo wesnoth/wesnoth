@@ -40,8 +40,10 @@ Growl_Delegate growl_obj;
 #include "map_label.hpp"
 #include "marked-up_text.hpp"
 #include "game_preferences.hpp"
+#include "resources.hpp"
 #include "tod_manager.hpp"
 #include "sound.hpp"
+#include "whiteboard/manager.hpp"
 
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
@@ -367,10 +369,18 @@ void game_display::draw_hex(const map_location& loc)
 			image::get_image(game_config::unreachable_image,image::UNMASKED)));
 	}
 
-	// Footsteps indicating a movement path
-	const std::vector<surface>& footstepImages = footsteps_images(loc);
-	if (footstepImages.size() != 0) {
-		drawing_buffer_add(LAYER_FOOTSTEPS, loc, tblit(xpos, ypos, footstepImages));
+	if (resources::whiteboard->is_active())
+	{
+		resources::whiteboard->draw_hex(loc);
+	}
+
+	if (!resources::whiteboard->is_active())
+	{
+		// Footsteps indicating a movement path
+		const std::vector<surface>& footstepImages = footsteps_images(loc);
+		if (footstepImages.size() != 0) {
+			drawing_buffer_add(LAYER_FOOTSTEPS, loc, tblit(xpos, ypos, footstepImages));
+		}
 	}
 	// Draw the attack direction indicator
 	if(on_map && loc == attack_indicator_src_) {

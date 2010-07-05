@@ -66,6 +66,13 @@ public:
 	bool has_planned_unit_map() const { return planned_unit_map_active_; }
 
 	/**
+	 * Callback from the display when drawing hexes, to allow the whiteboard to
+	 * add visual elements. Some visual elements such as arrows and fake units
+	 * are not handled through this function, but separately registered with the display.
+	 */
+	void draw_hex(const map_location& hex);
+
+	/**
 	 * Highlights the action for this unit,
 	 * for instance highlights the arrow if it's a move.
 	 */

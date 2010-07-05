@@ -95,6 +95,11 @@ void manager::set_real_unit_map()
 	}
 }
 
+void manager::draw_hex(const map_location& hex)
+{
+	(void) hex; //temporary code that does nothing, to avoid warning
+}
+
 void manager::on_mouseover_change(const map_location& hex)
 {
 	//FIXME: Detect if a WML event is executing, and if so, avoid modifying the unit map during that time.
