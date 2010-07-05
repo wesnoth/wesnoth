@@ -146,7 +146,7 @@ Language:
 			echo "||";
 		}
 
-		if($code==$lang){ 
+		if($code==$lang){
 ?>
 			<strong><?=$langname?></strong>
 <? 		}else{ ?>
@@ -205,12 +205,12 @@ foreach($stats as $stat){
 ?>
 <tr class="row<?=$class?>">
     <td>
-<? 
+<?
 	$repo = ($version == 'trunk') ? 'trunk' : "branches/$branch";
 	if($official == 0){
 		echo "<strong><a href='http://svn.gna.org/viewcvs/*checkout*/wesnoth/$repo/po/" . $stat[4]. "/" . $lang . ".po'>" . $stat[4] . "</a></strong>";
 	}else{
-		echo "<strong><a href='http://svn.berlios.de/viewcvs/*checkout*/wescamp-i18n/$repo/" . getpackage($stat[4]) . "/po/" . $lang . ".po'>" . $stat[4] . "</a></strong>";
+		echo "<strong><a href='http://svn.berlios.de/viewvc/wescamp-i18n/$repo/" . getpackage($stat[4]) . "/po/" . $lang . ".po'>" . $stat[4] . "</a></strong>";
 	}
 
 ?>

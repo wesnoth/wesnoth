@@ -115,7 +115,7 @@ if(!$nostats){
 	$date = $filestat[9];
 
 	if($order=='trans'){
-		uasort($stats,"cmp_translated");	
+		uasort($stats,"cmp_translated");
 	}else{
 		uksort($stats,"cmp_alpha");
 	}
@@ -208,7 +208,7 @@ echo "||";
 			if($i==1){
 				$pack = getdomain($pack);
 			}
-			if($pack==$package){ 
+			if($pack==$package){
 				if($i==1){
 					$official=false;
 				}
@@ -265,7 +265,7 @@ foreach($stats as $lang => $stat){
 <?	}
 ?>
     <td>
-<? 
+<?
 if ($package=='alloff' || $package=='allun' || $package=='all' || $package=='allcore'){
 	echo "<strong>" . $langs[$lang] . "</strong> (" . $lang . ")";
 }else{
@@ -273,7 +273,7 @@ if ($package=='alloff' || $package=='allun' || $package=='all' || $package=='all
 	if($official){
 		echo "<a href='http://svn.gna.org/viewcvs/*checkout*/wesnoth/$repo/po/" . $package . "/" . $lang . ".po?view=markup'>" . $langs[$lang] . "</a> (" .$lang . ")";
 	}else{
-		echo "<a href='http://svn.berlios.de/viewcvs/wescamp-i18n/$repo/" . getpackage($package) . "/po/" . $lang . ".po?view=markup'>" . $langs[$lang] . "</a> (" . $lang . ")";
+		echo "<a href='http://svn.berlios.de/viewvc/wescamp-i18n/$repo/" . getpackage($package) . "/po/" . $lang . ".po?view=markup'>" . $langs[$lang] . "</a> (" . $lang . ")";
 	}
 } ?>
 	</td>
@@ -314,7 +314,7 @@ if ($package=='alloff' || $package=='allun' || $package=='all' || $package=='all
 	if($official){
 		echo "<a href='http://svn.gna.org/viewcvs/*checkout*/wesnoth/$repo/po/" . $package . "/" . $package . ".pot?view=markup'>Template catalog</a>";
 	}else{
-		echo "<a href='http://svn.berlios.de/viewcvs/wescamp-i18n/$repo/" . getpackage($package) . "/po/" . $package . ".pot?view=markup'>Template catalog</a>";
+		echo "<a href='http://svn.berlios.de/viewvc/wescamp-i18n/$repo/" . getpackage($package) . "/po/" . $package . ".pot?view=markup'>Template catalog</a>";
 	}
 }
 ?></td>
