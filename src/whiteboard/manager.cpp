@@ -32,6 +32,8 @@
 #include "team.hpp"
 #include "unit_display.hpp"
 
+#include <sstream>
+
 namespace wb {
 
 manager::manager():
@@ -96,7 +98,26 @@ void manager::set_real_unit_map()
 
 void manager::draw_hex(const map_location& hex)
 {
-	(void) hex; //temporary code that does nothing, to avoid warning
+	const action_set& actions = current_actions()->actions();
+	action_set::const_iterator it = actions.begin();
+	for(; it != actions.end(); ++it)
+	{
+		if((*it)->is_related_to(hex))
+		{
+			//draw number corresponding to iterator's position + 1
+			size_t number = (it - actions.begin()) + 1;
+			std::stringstream number_text;
+			number_text << number;
+			const size_t font_size = 12;
+			SDL_Color color; color.r = 255; color.g = 255; color.b = 0; //yellow
+			// position 0,0 in the hex is the upper left corner
+			const double x_in_hex = 0.80; // 0.80 = horizontal coord., close to the right side of the hex
+			const double y_in_hex = 0.5; //0.5 = halfway in the hex vertically
+			resources::screen->draw_text_in_hex(hex, display::LAYER_ACTIONS_NUMBERING,
+					number_text.str(), font_size, color, x_in_hex, y_in_hex);
+			return;
+		}
+	}
 }
 
 void manager::on_mouseover_change(const map_location& hex)
