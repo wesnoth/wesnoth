@@ -56,6 +56,7 @@ asio_client::asio_client(ana::address address, ana::port pt) :
 asio_client::~asio_client()
 {
     stop_logging();
+    disconnect_listener();
 }
 
 ana::client* ana::client::create(ana::address address, ana::port pt)
@@ -172,6 +173,7 @@ void asio_client::start_logging()
 void asio_client::stop_logging()
 {
     delete stats_collector_;
+    stats_collector_ = NULL;
 }
 
 const ana::stats* asio_client::get_stats( ana::stat_type type ) const

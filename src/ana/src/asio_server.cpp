@@ -242,6 +242,7 @@ void asio_server::start_logging()
 void asio_server::stop_logging()
 {
     delete stats_collector_;
+    stats_collector_ = NULL;
 }
 
 const ana::stats* asio_server::get_stats( ana::stat_type type ) const

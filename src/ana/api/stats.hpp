@@ -154,13 +154,14 @@ namespace ana
         public:
             stats_collector() :
                 io_service_(),
+                collector_thread_( NULL ),
                 accumulator_( 0, io_service_),
                 seconds_stats_( time::seconds(1), io_service_ ),
                 minutes_stats_( time::minutes(1), io_service_ ),
                 hours_stats_( time::hours(1), io_service_ ),
                 days_stats_( time::days(1), io_service_ )
             {
-                boost::thread t( boost::bind(&boost::asio::io_service::run, &io_service_) );
+                collector_thread_ = new boost::thread( boost::bind(&boost::asio::io_service::run, &io_service_) );
             }
 
             const stats* get_stats( stat_type type ) const
@@ -194,8 +195,17 @@ namespace ana
                 days_stats_.log_receive   ( buffer );
             }
 
+            ~stats_collector()
+            {
+                io_service_.stop();
+                collector_thread_->join();
+                delete collector_thread_;
+            }
+
         private:
             boost::asio::io_service io_service_;
+
+            boost::thread*       collector_thread_;
 
             detail::stats_logger accumulator_;
             detail::stats_logger seconds_stats_;
