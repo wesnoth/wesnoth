@@ -33,6 +33,7 @@
 
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
+#define WRN_CF LOG_STREAM(warn, log_config)
 #define LOG_CF LOG_STREAM(info, log_config)
 #define DBG_CF LOG_STREAM(debug, log_config)
 
@@ -397,6 +398,7 @@ class preprocessor_data: preprocessor
 
 	std::string read_word();
 	std::string read_line();
+	std::string read_rest_of_line();
 	void skip_spaces();
 	void skip_eol();
 	void push_token(char);
@@ -566,6 +568,17 @@ std::string preprocessor_data::read_line()
 		if (c != '\r')
 			res += static_cast<char>(c);
 	}
+}
+
+std::string preprocessor_data::read_rest_of_line()
+{
+	std::string res;
+	while(in_->good() && in_->peek() != '\n') {
+		int c = in_->get();
+		if (c != '\r')
+			res += static_cast<char>(c);
+	}
+	return res;
 }
 
 void preprocessor_data::put(char c)
@@ -814,6 +827,27 @@ bool preprocessor_data::get_chunk()
 			std::string const &symbol = read_word();
 			target_.defines_->erase(symbol);
 			LOG_CF << "undefine macro " << symbol << " (location " << target_.location_ << ")\n";
+		} else if (command == "error") {
+			DBG_CF << "Encountered an #error, we are currently at skipping_ level: " << skipping_ << '\n';
+			if(skipping_ == 0) {
+				skip_spaces();
+				std::string message = read_rest_of_line();
+				std::ostringstream error;
+				std::ostringstream location;
+				error << "#error: \"" << message << '"';
+				location<<linenum_<<' '<<target_.location_;
+				target_.error(error.str(), location.str());
+			} else
+				LOG_CF << "Skipped an error\n";
+		} else if (command == "warning") {
+			DBG_CF << "Encountered a #warning, we are currently at skipping_ level: " << skipping_ << '\n';
+			if(skipping_ == 0) {
+				skip_spaces();
+				std::string message = read_rest_of_line();
+				WRN_CF << "#warning: \"" << message << "\" at "
+					<< linenum_ << ' ' << target_.location_ << '\n';
+			} else
+				LOG_CF << "Skipped a warning\n";
 		} else
 			comment = token.type != '{';
 		skip_eol();
