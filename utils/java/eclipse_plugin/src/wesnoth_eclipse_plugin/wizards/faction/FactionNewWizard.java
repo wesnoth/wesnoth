@@ -36,6 +36,11 @@ public class FactionNewWizard extends NewWizardTemplate
 	FactionPage0	page0_;
 	FactionPage1	page1_;
 
+	public FactionNewWizard() {
+		setWindowTitle("Create a new faction");
+		setNeedsProgressMonitor(true);
+	}
+
 	@Override
 	public void addPages()
 	{

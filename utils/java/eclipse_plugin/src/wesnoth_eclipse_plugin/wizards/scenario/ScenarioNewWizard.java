@@ -48,6 +48,7 @@ public class ScenarioNewWizard extends NewWizardTemplate
 	 */
 	public ScenarioNewWizard() {
 		super();
+		setWindowTitle("Create a new scenario");
 		setNeedsProgressMonitor(true);
 	}
 

@@ -36,7 +36,7 @@ public class EraNewWizard extends NewWizardTemplate
 	EraPage0	page0_;
 
 	public EraNewWizard() {
-		setWindowTitle("New Wizard");
+		setWindowTitle("Create a new era");
 		setNeedsProgressMonitor(true);
 	}
 
