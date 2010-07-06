@@ -101,7 +101,6 @@ const ana::error_code& ana_connect_handler::error() const
 void ana_connect_handler::handle_connect(ana::error_code error_code, ana::net_id /*client*/)
 {
     connected_ = true;
-    timer_->cancel();
 
     if (! error_code)
         std::cout << "DEBUG: Connected.\n";
@@ -306,6 +305,9 @@ network::connection ana_network_manager::create_client_and_connect(std::string h
 
         client->set_listener_handler( this );
         client->run();
+
+        client->set_raw_data_mode();
+
         client->start_logging();
 
         handler.wait_completion(); // just wait for handler to finish
@@ -315,8 +317,8 @@ network::connection ana_network_manager::create_client_and_connect(std::string h
         if( ! handler.error() )
         {
             //Send handshake
-            const std::string empty_str;
-            client->send( ana::buffer( empty_str ), this );
+//             const std::string empty_str;
+//             client->send( ana::buffer( empty_str ), this );
 
             uint32_t my_id;
             ana::serializer::bistream bis;
