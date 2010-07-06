@@ -44,6 +44,7 @@ using boost::asio::ip::tcp;
 asio_client::asio_client(ana::address address, ana::port pt) :
     asio_listener(),
     io_service_(),
+    work_( io_service_ ),
     socket_(io_service_),
     address_(address),
     port_(pt),
@@ -66,9 +67,6 @@ ana::client* ana::client::create(ana::address address, ana::port pt)
 
 void asio_client::run()
 {
-    if ( ! use_proxy_ ) // If I will connect through a proxy, defer this call until connected.
-        run_listener( );
-
     boost::thread t( boost::bind( &boost::asio::io_service::run, &io_service_) );
 }
 
@@ -92,7 +90,12 @@ void asio_client::handle_connect(const boost::system::error_code& ec,
                                  ana::connection_handler* handler )
 {
     if ( ! ec )
+    {
         handler->handle_connect( ec, 0 );
+
+        if ( ana::client::header_mode() )
+            run_listener();
+    }
     else
     {
         if ( endpoint_iterator == tcp::resolver::iterator() ) // finished iterating, not connected

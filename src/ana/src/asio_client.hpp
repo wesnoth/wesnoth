@@ -100,7 +100,9 @@ class asio_client : public ana::client,
         asio_client& operator= (const asio_client& other);
 
         /*attr*/
-        boost::asio::io_service   io_service_;
+        boost::asio::io_service       io_service_;
+        boost::asio::io_service::work work_;
+
         tcp::socket               socket_;
 
         std::string               address_;

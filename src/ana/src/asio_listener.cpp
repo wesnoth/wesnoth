@@ -124,13 +124,13 @@ void asio_listener::wait_raw_object(ana::serializer::bistream& bis, size_t size)
 {
     tcp::socket& sock = socket();
 
-    sock.get_io_service().stop();
+//     sock.get_io_service().stop();
 
     char buf[ size ];
 
     size_t received;
 
-    sock.get_io_service().reset(); // prepare to reset the io_service
+//     sock.get_io_service().reset(); // prepare to reset the io_service
     received = sock.receive( boost::asio::buffer( buf, size ) );
 
     if ( received != size )
@@ -139,10 +139,10 @@ void asio_listener::wait_raw_object(ana::serializer::bistream& bis, size_t size)
     bis.str( std::string( buf, size ) );
 
     //restart normal (asynchronous) operation
-    run_listener();
-    sock.get_io_service().reset(); // prepare to reset the io_service
+//     run_listener();
+//     sock.get_io_service().reset(); // prepare to reset the io_service
 
-    boost::thread t( boost::bind( &boost::asio::io_service::run, &sock.get_io_service() ) );
+//     boost::thread t( boost::bind( &boost::asio::io_service::run, &sock.get_io_service() ) );
 }
 
 

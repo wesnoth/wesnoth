@@ -223,11 +223,11 @@ namespace ana
                  */
                 virtual void wait_raw_object(ana::serializer::bistream& bis, size_t size) = 0;
 
-            protected:
-                listener() {}
-
                 /** Start listening for incoming messages. */
                 virtual void run_listener() = 0;
+
+            protected:
+                listener() {}
         };
 
         /** Provides send option setting to network components. */

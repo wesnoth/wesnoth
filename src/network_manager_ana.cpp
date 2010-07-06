@@ -343,6 +343,7 @@ network::connection ana_network_manager::create_client_and_connect(std::string h
                 std::cout << "DEBUG: Received id " << my_id << "\n";
 
                 client->set_header_first_mode();
+                client->run_listener();
 
                 return network::connection( client->id() );
             }
