@@ -508,16 +508,12 @@ protected:
 	 */
 	virtual void draw_hex(const map_location& loc);
 
+	virtual const time_of_day get_time_of_day(const map_location& /*loc*/) {return time_of_day();}
 	/**
 	 * @returns the image type to be used for the passed hex
 	 * (mostly to do with brightening like for mouseover)
 	 */
 	virtual image::TYPE get_image_type(const map_location& loc);
-
-	/**
-	 * Update time of day member to the tod to be used in the current drawing
-	 */
-	virtual void update_time_of_day();
 
 	/**
 	 * Called near the end of a draw operation, derived classes can use this
@@ -577,7 +573,6 @@ protected:
 	boost::scoped_ptr<map_labels> map_labels_;
 	std::string shroud_image_;
 	std::string fog_image_;
-	time_of_day tod_;
 
 	/** Event raised when the map is being scrolled */
 	mutable events::generic_event scroll_event_;
@@ -597,6 +592,10 @@ protected:
 	std::set<map_location> invalidated_;
 	std::set<map_location> previous_invalidated_;
 	surface mouseover_hex_overlay_;
+	// If we're transitioning from one time of day to the next,
+	// then we will use these two masks on top of all hexes when we blit.
+	surface tod_hex_mask1, tod_hex_mask2;
+
 	map_location selectedHex_;
 	map_location mouseoverHex_;
 	CKey keys_;

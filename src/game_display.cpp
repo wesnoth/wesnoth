@@ -77,8 +77,6 @@ game_display::game_display(unit_map& units, CVideo& video, const gamemap& map,
 		in_game_(false),
 		observers_(),
 		chat_messages_(),
-		tod_hex_mask1(NULL),
-		tod_hex_mask2(NULL),
 		reach_map_(),
 		reach_map_old_(),
 		reach_map_changed_(true),
@@ -349,17 +347,6 @@ void game_display::draw_hex(const map_location& loc)
 		drawing_buffer_add(LAYER_TERRAIN_BG, loc, tblit(xpos, ypos, get_flag(loc)));
 	}
 
-	// Draw the time-of-day mask on top of the terrain in the hex.
-	// tod may differ from tod if hex is illuminated.
-	const std::string& tod_hex_mask = tod_manager_.get_time_of_day(0, loc).image_mask;
-	if(tod_hex_mask1 != NULL || tod_hex_mask2 != NULL) {
-		drawing_buffer_add(LAYER_TERRAIN_FG, loc, tblit(xpos, ypos, tod_hex_mask1));
-		drawing_buffer_add(LAYER_TERRAIN_FG, loc, tblit(xpos, ypos, tod_hex_mask2));
-	} else if(!tod_hex_mask.empty()) {
-		drawing_buffer_add(LAYER_TERRAIN_FG, loc, tblit(xpos, ypos,
-			image::get_image(tod_hex_mask,image::UNMASKED)));
-	}
-
 	// Draw reach_map information.
 	// We remove the reachability mask of the unit
 	// that we want to attack.
@@ -414,9 +401,9 @@ void game_display::draw_hex(const map_location& loc)
 	//simulate_delay += 1;
 }
 
-void game_display::update_time_of_day()
+const time_of_day game_display::get_time_of_day(const map_location& loc)
 {
-	tod_ = tod_manager_.get_time_of_day();
+	return tod_manager_.get_time_of_day(0,loc);
 }
 
 void game_display::draw_report(reports::TYPE report_num)

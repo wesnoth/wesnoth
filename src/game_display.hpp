@@ -160,7 +160,7 @@ protected:
 
 	void draw_hex(const map_location& loc);
 
-	void update_time_of_day();
+	const time_of_day get_time_of_day(const map_location& loc);
 
 	/**
 	 * Animated hex invalidation specific to gameplay
@@ -369,10 +369,6 @@ private:
 	void prune_chat_messages(bool remove_all=false);
 
 	std::vector<chat_message> chat_messages_;
-
-	// If we're transitioning from one time of day to the next,
-	// then we will use these two masks on top of all hexes when we blit.
-	surface tod_hex_mask1, tod_hex_mask2;
 
 	// Tiles lit for showing where unit(s) can reach
 	typedef std::map<map_location,unsigned int> reach_map;

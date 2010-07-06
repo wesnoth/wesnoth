@@ -100,7 +100,6 @@ display::display(CVideo& video, const gamemap* map, const config& theme_cfg, con
 	map_labels_(new map_labels(*this, 0)),
 	shroud_image_("terrain/" + get_map().get_terrain_info(t_translation::VOID_TERRAIN).minimap_image() + ".png"),
 	fog_image_("terrain/" + get_map().get_terrain_info(t_translation::FOGGED).minimap_image()),
-	tod_(time_of_day()),
 	scroll_event_("scrolled"),
 	nextDraw_(0),
 	report_(),
@@ -108,6 +107,8 @@ display::display(CVideo& video, const gamemap* map, const config& theme_cfg, con
 	invalidated_(),
 	previous_invalidated_(),
 	mouseover_hex_overlay_(NULL),
+	tod_hex_mask1(NULL),
+	tod_hex_mask2(NULL),
 	selectedHex_(),
 	mouseoverHex_(),
 	keys_(),
@@ -1846,7 +1847,6 @@ void display::draw(bool update,bool force) {
 	pre_draw();
 	// invalidate all that needs to be invalidated
 	invalidate_animations();
-	update_time_of_day();
 	// at this stage we have everything that needs to be invalidated for this redraw
 	// save it as the previous invalidated, and merge with the previous invalidated_
 	// we merge with the previous redraw because if a hex had a unit last redraw but
@@ -1932,13 +1932,14 @@ void display::draw_hex(const map_location& loc) {
 	image::TYPE image_type = get_image_type(loc);
 	const bool on_map = get_map().on_board(loc);
 	const bool off_map_tile = (get_map().get_terrain(loc) == t_translation::OFF_MAP_USER);
+	const time_of_day& tod = get_time_of_day(loc);
 	if(!shrouded(loc)) {
 		// unshrouded terrain (the normal case)
 		drawing_buffer_add(LAYER_TERRAIN_BG, loc, tblit(xpos, ypos,
-			get_terrain_images(loc,tod_.id, image_type, ADJACENT_BACKGROUND)));
+			get_terrain_images(loc,tod.id, image_type, ADJACENT_BACKGROUND)));
 
 		 drawing_buffer_add(LAYER_TERRAIN_FG, loc, tblit(xpos, ypos,
-			get_terrain_images(loc,tod_.id,image_type,ADJACENT_FOREGROUND)));
+			get_terrain_images(loc,tod.id,image_type,ADJACENT_FOREGROUND)));
 
 	// Draw the grid, if that's been enabled
 		if(grid_ && on_map && !off_map_tile) {
@@ -1947,6 +1948,17 @@ void display::draw_hex(const map_location& loc) {
 			drawing_buffer_add(LAYER_GRID_BOTTOM, loc, tblit(xpos, ypos,
 				image::get_image(game_config::grid_image_bottom, image::SCALED_TO_HEX)));
 		}
+	}
+
+	// Draw the time-of-day mask on top of the terrain in the hex.
+	// tod may differ from tod if hex is illuminated.
+	const std::string& tod_hex_mask = tod.image_mask;
+	if(tod_hex_mask1 != NULL || tod_hex_mask2 != NULL) {
+		drawing_buffer_add(LAYER_TERRAIN_FG, loc, tblit(xpos, ypos, tod_hex_mask1));
+		drawing_buffer_add(LAYER_TERRAIN_FG, loc, tblit(xpos, ypos, tod_hex_mask2));
+	} else if(!tod_hex_mask.empty()) {
+		drawing_buffer_add(LAYER_TERRAIN_FG, loc, tblit(xpos, ypos,
+			image::get_image(tod_hex_mask,image::UNMASKED)));
 	}
 
 	// Paint mouseover overlays
@@ -1974,7 +1986,7 @@ void display::draw_hex(const map_location& loc) {
 
 	if(!shrouded(loc)) {
 		drawing_buffer_add(LAYER_FOG_SHROUD, loc, tblit(xpos, ypos,
-			get_terrain_images(loc, tod_.id, image_type, ADJACENT_FOGSHROUD)));
+			get_terrain_images(loc, tod.id, image_type, ADJACENT_FOGSHROUD)));
 	}
 	if (on_map) {
 		if (draw_coordinates_) {
@@ -2012,10 +2024,6 @@ void display::draw_hex(const map_location& loc) {
 
 image::TYPE display::get_image_type(const map_location& /*loc*/) {
 	return image::SCALED_TO_HEX;
-}
-
-void display::update_time_of_day() {
-	//no action
 }
 
 void display::draw_sidebar() {
