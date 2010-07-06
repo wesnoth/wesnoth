@@ -333,7 +333,8 @@ bool terrain_builder::rule_valid(const building_rule &rule) const
 				} else if (image::exists(s)){
 					continue;
 				}
-				if(s.find(".png") == std::string::npos){
+				// This warning can be removed after 1.9.2
+				if(s.find(".png") == std::string::npos && image::precached_file_exists(s + ".png")){
 					lg::wml_error << "Terrain image '" << s << "' misses the '.png' extension\n";
 				}
 				return false;
