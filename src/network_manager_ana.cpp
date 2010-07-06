@@ -318,7 +318,7 @@ network::connection ana_network_manager::create_client_and_connect(std::string h
             const std::string empty_str;
             client->send( ana::buffer( empty_str ), this );
 
-            int32_t my_id;
+            uint32_t my_id;
             ana::serializer::bistream bis;
 
             client->wait_raw_object(bis, sizeof(my_id) );
@@ -528,8 +528,8 @@ void ana_network_manager::handle_send(ana::error_code error_code, ana::net_id cl
 }
 
 void ana_network_manager::handle_message( ana::error_code          error,
-                                            ana::net_id              client,
-                                            ana::detail::read_buffer buffer)
+                                          ana::net_id              client,
+                                          ana::detail::read_buffer buffer)
 {
     if (! error)
     {

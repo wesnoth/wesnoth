@@ -204,10 +204,10 @@ void asio_server::send_all(boost::asio::const_buffer buffer, send_handler* handl
 std::string asio_server::ip_address( net_id id ) const
 {
     std::list<ana::server::client_proxy*>::const_iterator it;
-    
+
     it = std::find_if( client_proxies_.begin(), client_proxies_.end(),
                        boost::bind( &client_proxy::id, _1) == id );
-                  
+
     if ( it != client_proxies_.end() )
         return (*it)->ip_address();
     else
@@ -217,10 +217,10 @@ std::string asio_server::ip_address( net_id id ) const
 const ana::stats* asio_server::get_client_stats( ana::net_id id, ana::stat_type type  ) const
 {
     std::list<ana::server::client_proxy*>::const_iterator it;
-    
+
     it = std::find_if( client_proxies_.begin(), client_proxies_.end(),
                        boost::bind( &client_proxy::id, _1) == id );
-                  
+
     if ( it != client_proxies_.end() )
         return (*it)->get_stats(type);
     else
@@ -297,72 +297,11 @@ const ana::stats* asio_server::asio_client_proxy::get_stats( ana::stat_type type
         throw std::runtime_error("Logging is disabled. Use start_logging first.");
 }
 
-void asio_server::asio_client_proxy::handle_sent_header(const boost::system::error_code& ec,
-                                                        ana::serializer::bostream* bos, ana::detail::shared_buffer buffer,
-                                                        send_handler* handler, timer* running_timer)
-{
-    delete bos;
-
-    if ( ! ec )
-    {
-        boost::asio::async_write(socket_, boost::asio::buffer(buffer->base(), buffer->size() ),
-                                    boost::bind(&asio_server::asio_client_proxy::handle_send,this,
-                                                boost::asio::placeholders::error,
-                                                buffer, handler, running_timer));
-
-    }
-    else
-    {
-        disconnect_listener();
-        delete running_timer;
-    }
-}
-
-
-void asio_server::asio_client_proxy::handle_send(const boost::system::error_code& ec,
-                                                 ana::detail::shared_buffer       /*buffer*/,
-                                                 send_handler* handler, timer*    running_timer)
-{
-    delete running_timer;
-
-    handler->handle_send( ec, id() );
-
-    if ( ec )
-        disconnect_listener();
-}
-
-void asio_server::asio_client_proxy::handle_timeout(const boost::system::error_code& ec, ana::send_handler* handler)
-{
-    if ( ec != boost::asio::error::operation_aborted) // The timer wasn't cancelled. So: inform this and disconnect
-        handler->handle_send( boost::asio::error::make_error_code( boost::asio::error::timed_out ) , id() );
-}
-
 void asio_server::asio_client_proxy::send(ana::detail::shared_buffer buffer,
                                           send_handler* handler,
-                                          ana::detail::timed_sender* sender)
+                                          ana::detail::sender* sender)
 {
-    timer* running_timer( NULL );
-    //timer is either running or wasn't created
-    try
-    {
-        running_timer = sender->start_timer( buffer,
-                                             boost::bind(&asio_server::asio_client_proxy::handle_timeout, this,
-                                                         boost::asio::placeholders::error, handler ) );
-
-        ana::serializer::bostream* output_stream = new ana::serializer::bostream();
-        (*output_stream) << buffer->size();
-
-        //write the header first in a separate operation, then send the full buffer
-        boost::asio::async_write(socket_, boost::asio::buffer( output_stream->str() ),
-                                    boost::bind(&asio_server::asio_client_proxy::handle_sent_header,this,
-                                                boost::asio::placeholders::error, output_stream,
-                                                buffer, handler, running_timer));
-    }
-    catch(std::exception& e)
-    {
-        disconnect_listener();
-        delete running_timer;
-    }
+    asio_sender::send( buffer, socket_, handler, sender );
 }
 
 void asio_server::asio_client_proxy::disconnect_listener()

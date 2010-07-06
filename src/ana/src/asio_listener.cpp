@@ -52,8 +52,8 @@ void asio_listener::disconnect( ana::listener_handler* listener, boost::system::
     if ( ! disconnected_ )
     {
         listener->handle_disconnect( error, id() );
-        disconnect_listener();
         disconnected_ = true;
+        disconnect_listener();
     }
 }
 
@@ -80,7 +80,6 @@ void asio_listener::handle_body( ana::detail::read_buffer buf,
     }
 }
 
-
 void asio_listener::handle_header(char* header, const boost::system::error_code& ec, ana::listener_handler* listener )
 {
     try
@@ -105,8 +104,7 @@ void asio_listener::handle_header(char* header, const boost::system::error_code&
                                                     listener));
             }
             else
-            {
-                // copy the header to a read_buffer
+            {   // copy the header to a read_buffer
                 ana::detail::read_buffer read_buf ( new ana::detail::read_buffer_implementation( ana::HEADER_LENGTH ) );
                 for (size_t i(0); i< ana::HEADER_LENGTH; ++i)
                     static_cast<char*>(read_buf->base())[i] = header[i];
@@ -131,6 +129,7 @@ void asio_listener::wait_raw_object(ana::serializer::bistream& bis, size_t size)
 
     size_t received;
 
+    sock.get_io_service().reset(); // prepare to reset the io_service
     received = sock.receive( boost::asio::buffer( buf, size ) );
 
     if ( received != size )
@@ -139,8 +138,10 @@ void asio_listener::wait_raw_object(ana::serializer::bistream& bis, size_t size)
     bis.str( std::string( buf, size ) );
 
     //restart normal (asynchronous) operation
-//     use_proxy_ = false;
     run_listener();
+    sock.get_io_service().reset(); // prepare to reset the io_service
+
+    boost::thread t( boost::bind( &boost::asio::io_service::run, &sock.get_io_service() ) );
 }
 
 

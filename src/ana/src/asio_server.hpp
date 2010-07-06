@@ -39,6 +39,7 @@
 
 #include "ana.hpp"
 #include "asio_listener.hpp"
+#include "asio_sender.hpp"
 
 using boost::asio::ip::tcp;
 
@@ -51,8 +52,9 @@ class asio_server : public  ana::server,
                     private asio_proxy_manager
 {
     private:
-        class asio_client_proxy : public ana::server::client_proxy,
-                                  public asio_listener
+        class asio_client_proxy : public virtual ana::server::client_proxy,
+                                  public asio_listener,
+                                  private asio_sender
         {
             public:
                 asio_client_proxy(boost::asio::io_service& io_service, asio_proxy_manager* mgr);
@@ -61,10 +63,11 @@ class asio_server : public  ana::server,
 
                 virtual ~asio_client_proxy();
             private:
+                virtual void disconnect() { disconnect_listener(); }
 
                 virtual void disconnect_listener();
 
-                virtual void send(ana::detail::shared_buffer, ana::send_handler*, ana::detail::timed_sender* );
+                virtual void send(ana::detail::shared_buffer, ana::send_handler*, ana::detail::sender* );
 
                 virtual std::string ip_address( ) const;
 
@@ -73,16 +76,9 @@ class asio_server : public  ana::server,
                 virtual void start_logging();
                 virtual void stop_logging();
 
+                virtual ana::stats_collector* stats_collector() { return stats_collector_; }
+
                 virtual const ana::stats* get_stats( ana::stat_type type ) const;
-
-                void handle_sent_header(const boost::system::error_code& ec,
-                                        ana::serializer::bostream*, ana::detail::shared_buffer,
-                                        ana::send_handler*, ana::timer*);
-
-                void handle_send(const boost::system::error_code& ec,
-                                    ana::detail::shared_buffer, ana::send_handler*, ana::timer*);
-
-                void handle_timeout(const boost::system::error_code& ec, ana::send_handler*);
 
                 tcp::socket           socket_;
                 asio_proxy_manager*   manager_;
@@ -120,6 +116,10 @@ class asio_server : public  ana::server,
         virtual const ana::stats* get_stats( ana::stat_type type ) const;
 
         virtual void wait_raw_object(ana::serializer::bistream& , size_t ) {}
+
+        virtual void disconnect() {}
+
+        virtual ana::stats_collector* stats_collector() { return stats_collector_; }
 
         void handle_accept (const boost::system::error_code& ec,asio_client_proxy* client, ana::connection_handler* );
 

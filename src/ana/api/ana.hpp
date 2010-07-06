@@ -146,11 +146,46 @@ namespace ana
         /** Last issued net_id.  */ 
         static net_id last_net_id_ = 0;
 
+        /** Base class of network components. */
+        class ana_component
+        {
+            public:
+                /**
+                 * Get the ID of this component.
+                 *
+                 * @returns : ID of the network component represented by this object.
+                 */
+                net_id id() const {return id_;}
+
+                /**
+                 * Disconnect the component.
+                 */
+                virtual void disconnect() = 0;
+
+                /**
+                 * Get associated stats_collector object.
+                 *
+                 * @returns A pointer to the associated stats_collector object, NULL if not keeping stats.
+                 *
+                 * \sa stats_collector.
+                 */
+                virtual ana::stats_collector* stats_collector() = 0;
+
+            protected:
+                /** Initialize component, assign fres id. */
+                ana_component() :
+                    id_(++last_net_id_)
+                {
+                }
+
+                const net_id     id_ /** This component's net_id. */ ;
+        };
 
         /**
          * Base class for any network entity that handles incoming messages.
          */
-        class listener : public virtual network_stats_logger
+        class listener : public virtual network_stats_logger,
+                         public virtual ana_component
         {
             public:
                 /**
@@ -164,27 +199,69 @@ namespace ana
                 virtual void set_listener_handler( listener_handler* listener ) = 0;
 
                 /**
-                 * Get the ID of this listener.
-                 *
-                 * @returns : ID of the network component represented by this listener.
-                 */
-                net_id id() const {return id_;}
-
-                /**
                  * Switch to raw data mode and perform a blocking wait, only POD types should be used.
                  */
                 virtual void wait_raw_object(ana::serializer::bistream& bis, size_t size) = 0;
 
             protected:
-                listener() :
-                    id_(++last_net_id_)
+                listener() {}
+
+                /** Start listening for incoming messages. */
+                virtual void run_listener() = 0;
+        };
+
+        /** Provides send option setting to network components. */
+        class sender : public timed_sender,
+                       public virtual ana_component
+        {
+            public:
+                /**
+                 * Enter Raw Data mode, ana won't prefix your packets with header information.
+                 *
+                 * This is good for handshake procedures or every time you know how much you are
+                 * supposed to receive. Combine this mode with a listener that is reading things
+                 * the right way.
+                 *
+                 * \sa listener
+                 */
+                void set_raw_data_mode()     { raw_data_ = true;  }
+
+                /**
+                 * Enter header first mode, ana will prefix anything you send with size information
+                 * first, so the listener will inform a new packet has been received only after it
+                 * receives the whole packet.
+                 */
+                void set_header_first_mode() { raw_data_ = false; }
+
+                /** Enter asynchronous mode, default. */
+                void set_async_mode() { async_mode_ = true; }
+
+                /** Enter synchronous mode, not impemented ATM. */
+                void set_sync_mode() { async_mode_ = false; }
+
+                /** Returns true iff the sender is in raw data mode. */
+                bool raw_mode()    const {return raw_data_;   }
+
+                /** Returns false iff the sender is in raw data mode. */
+                bool header_mode() const {return ! raw_data_; }
+
+                /** Returns true iff the sender is in async mode. */
+                bool async_mode() const {return async_mode_;   }
+
+                /** Returns false iff the sender is in raw data mode. */
+                bool sync_mode()  const {return ! async_mode_; }
+
+            protected:
+                /** Initialize sender component in header-first and async modes. */
+                sender() :
+                    raw_data_( false ),
+                    async_mode_( true )
                 {
                 }
 
-                /** Start listening for incoming messages. */
-                virtual void run_listener()                                     = 0;
-
-                const net_id     id_               /** This proxy's net_id. */ ;
+            private:
+                bool raw_data_   /** The component is in raw data mode.*/ ;
+                bool async_mode_ /** The component is in async mode.   */ ;
         };
     } //namespace details
 
@@ -234,7 +311,7 @@ namespace ana
      * A network server. An object of this type can handle several connected clients.
      */
     struct server : public virtual detail::listener,
-                    public         detail::timed_sender
+                    public virtual detail::sender
     {
         /**
          * Creates an ana server.
@@ -342,6 +419,7 @@ namespace ana
          * A connected client's representative in the server side.
          */
         struct client_proxy : public virtual detail::listener,
+                              public         detail::sender,
                               boost::noncopyable
         {
             /**
@@ -353,9 +431,9 @@ namespace ana
              *
              * \sa shared_buffer
              * \sa send_handler
-             * \sa timed_sender
+             * \sa sender
              */
-            virtual void send(detail::shared_buffer, send_handler*, timed_sender* ) = 0;
+            virtual void send(detail::shared_buffer, send_handler*, sender* ) = 0;
 
             /** Standard destructor. */
             virtual ~client_proxy() {}
@@ -372,10 +450,10 @@ namespace ana
      * A network client.
      *
      * \sa listener
-     * \sa timed_sender
+     * \sa sender
      */
     struct client : public virtual detail::listener,
-                    public         detail::timed_sender
+                    public         detail::sender
     {
         /**
          * Creates a client.

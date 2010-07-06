@@ -541,6 +541,7 @@ if ANA
 libana_a_SOURCES = \
 	ana/src/asio_client.cpp \
 	ana/src/asio_listener.cpp \
+	ana/src/asio_sender.cpp \
 	ana/src/asio_proxy_connection.cpp \
 	ana/src/asio_server.cpp
 CXXFLAGS += -Iana/api

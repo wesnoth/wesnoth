@@ -152,24 +152,9 @@ void asio_client::connect_through_proxy(std::string                     proxy_ad
 
 void asio_client::send(boost::asio::const_buffer buffer, ana::send_handler* handler, ana::send_type copy_buffer )
 {
-    try
-    {
-        ana::detail::shared_buffer s_buf(
-          new ana::detail::copying_buffer(buffer, copy_buffer ) ); // it's a boost::shared_ptr
+    ana::detail::shared_buffer s_buf(new ana::detail::copying_buffer(buffer, copy_buffer ) );
 
-        ana::serializer::bostream* output_stream = new ana::serializer::bostream();
-        (*output_stream) << s_buf->size();
-
-        //write the header first in a separate operation, then send the full buffer
-        boost::asio::async_write(socket_, boost::asio::buffer( output_stream->str() ),
-                                 boost::bind(&asio_client::handle_sent_header,this,
-                                             boost::asio::placeholders::error, output_stream,
-                                             s_buf, handler));
-    }
-    catch(std::exception& e)
-    {
-        disconnect_listener();
-    }
+    asio_sender::send(s_buf, socket_, handler, static_cast<ana::client*>(this));
 }
 
 void asio_client::log_receive( ana::detail::read_buffer buffer )
@@ -195,35 +180,6 @@ const ana::stats* asio_client::get_stats( ana::stat_type type ) const
         return stats_collector_->get_stats( type );
     else
         throw std::runtime_error("Logging is disabled. Use start_logging first.");
-}
-
-void asio_client::handle_sent_header(const boost::system::error_code& ec,
-                                     ana::serializer::bostream* bos, ana::detail::shared_buffer buffer,
-                                     ana::send_handler* handler)
-{
-    delete bos;
-
-    if ( ! ec )
-    {
-        if ( buffer->size() != 0 )
-            boost::asio::async_write(socket_, boost::asio::buffer(buffer->base(), buffer->size() ),
-                                        boost::bind(&asio_client::handle_send,this,
-                                                     boost::asio::placeholders::error,
-                                                     buffer, handler));
-    }
-}
-
-void asio_client::handle_send(const boost::system::error_code& ec,
-                              ana::detail::shared_buffer       buffer,
-                              ana::send_handler*               handler)
-{
-    if ( stats_collector_ != NULL )
-        stats_collector_->log_send( buffer );
-
-    handler->handle_send( ec, id() );
-
-    if ( ec )
-        disconnect_listener();
 }
 
 void asio_client::disconnect_listener()

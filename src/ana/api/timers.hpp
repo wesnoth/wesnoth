@@ -278,13 +278,13 @@ namespace ana
                 }
 
                 /**
-                * Start a timer given the current configuration.
-                *
-                * @param buffer : The buffer used in the send operation.
-                * @param handler : The handler of the timeout/abort event.
-                *
-                * @returns : A pointer to a newly created timer object.
-                */
+                 * Start a timer given the current configuration.
+                 *
+                 * @param buffer : The buffer used in the send operation.
+                 * @param handler : The handler of the timeout/abort event.
+                 *
+                 * @returns : A pointer to a newly created timer object.
+                 */
                 template<class Handler>
                 timer* start_timer( shared_buffer buffer, Handler handler ) const
                 {

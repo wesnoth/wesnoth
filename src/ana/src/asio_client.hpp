@@ -30,6 +30,9 @@
  *
  */
 
+#ifndef ASIO_CLIENT_HPP
+#define ASIO_CLIENT_HPP
+
 #include <boost/asio.hpp>
 #include <memory>
 
@@ -39,13 +42,13 @@ using boost::asio::ip::tcp;
 
 #include "asio_proxy_connection.hpp"
 #include "asio_listener.hpp"
+#include "asio_sender.hpp"
 
-#ifndef ASIO_CLIENT_HPP
-#define ASIO_CLIENT_HPP
 
 class asio_client : public ana::client,
                     public asio_listener,
-                    private proxy_connection_manager
+                    private proxy_connection_manager,
+                    private asio_sender
 {
     public:
         /**
@@ -71,6 +74,8 @@ class asio_client : public ana::client,
 
         virtual void send( boost::asio::const_buffer, ana::send_handler*, ana::send_type );
 
+        virtual void disconnect() { disconnect_listener(); }
+
         virtual void disconnect_listener();
 
         virtual void handle_proxy_connection(const boost::system::error_code&, ana::connection_handler*);
@@ -84,15 +89,7 @@ class asio_client : public ana::client,
 
         virtual const ana::stats* get_stats( ana::stat_type type ) const;
 
-//         virtual void wait_raw_object(ana::serializer::bistream& bis, size_t size);
-
-        void handle_sent_header(const boost::system::error_code& ec,
-                                ana::serializer::bostream*, ana::detail::shared_buffer,
-                                ana::send_handler*);
-
-                                void handle_send(const boost::system::error_code& ec,
-                                                 ana::detail::shared_buffer,
-                                                 ana::send_handler*);
+        virtual ana::stats_collector* stats_collector() { return stats_collector_; }
 
         void handle_connect(const boost::system::error_code& ec,
                             tcp::resolver::iterator endpoint_iterator,

@@ -179,6 +179,8 @@ class ChatClient : public ana::listener_handler,
                         client_->send( ana::buffer( msg ), this);
 
             } while ( (msg != "/quit") && continue_);
+
+            client_->disconnect();
         }
 
         void run()

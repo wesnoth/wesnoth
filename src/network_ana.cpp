@@ -1,8 +1,8 @@
 /* $Id$ */
 
 /**
- * @file network_ana.hpp
- * @brief Network implementation using ana.
+ * @file network_ana.cpp
+ * @brief Network API implementation using ana.
  *
  * Copyright (C) 2010 Guillermo Biset.
  *
@@ -261,6 +261,8 @@ namespace network {
                             unsigned int      /*timeout*/,
                             bandwidth_in_ptr* /*bandwidth_in*/)
     {
+        ana::net_id id(connection_num);
+        std::cout << "DEBUG: Trying to read from connection " << connection_num << ":" << id << "\n";
         ana::detail::read_buffer buffer = ana_manager.read_from( connection_num );
 
         std::cout << "DEBUG: Read a buffer of size " << buffer->size() << "\n";
