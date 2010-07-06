@@ -97,8 +97,12 @@ public:
 	virtual void toggle_ellipses();
 	virtual void toggle_grid();
 	virtual void search();
-	virtual void execute_next_action(); //part of whiteboard
-	virtual void delete_last_action(); //part of whiteboard
+
+	// Whiteboard hotkeys
+	virtual void whiteboard_execute_action();
+	virtual void whiteboard_delete_action();
+	virtual void whiteboard_bump_up_action();
+	virtual void whiteboard_bump_down_action();
 
 	virtual void do_init_side(const unsigned int team_index);
 	virtual void play_side(const unsigned int team_num, bool save) = 0;

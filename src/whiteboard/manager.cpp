@@ -352,6 +352,44 @@ void manager::contextual_delete()
 	}
 }
 
+void manager::contextual_bump_up_action()
+{
+	if (!current_actions()->empty())
+	{
+		if (selected_unit_ && unit_has_actions(*selected_unit_))
+		{
+
+		}
+		else if (highlighted_unit_ && unit_has_actions(*highlighted_unit_))
+		{
+
+		}
+		else
+		{
+
+		}
+	}
+}
+
+void manager::contextual_bump_down_action()
+{
+	if (!current_actions()->empty())
+	{
+		if (selected_unit_ && unit_has_actions(*selected_unit_))
+		{
+
+		}
+		else if (highlighted_unit_ && unit_has_actions(*highlighted_unit_))
+		{
+
+		}
+		else
+		{
+
+		}
+	}
+}
+
 bool manager::unit_has_actions(const unit& unit) const
 {
 	return current_actions()->find_first_action_of(unit)

@@ -100,9 +100,12 @@ public:
 
 	/** Executes first action in the queue for current side */
 	void contextual_execute();
-
 	/** Deletes last action in the queue for current side */
 	void contextual_delete();
+	/** Moves the action determined by the UI toward the beginning of the queue  */
+	void contextual_bump_up_action();
+	/** Moves the action determined by the UI toward the beginning of the queue  */
+	void contextual_bump_down_action();
 
 	/** Checks whether the specified unit has at least one planned action */
 	bool unit_has_actions(const unit& unit) const;

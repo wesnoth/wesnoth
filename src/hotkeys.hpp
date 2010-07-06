@@ -62,8 +62,10 @@ enum HOTKEY_COMMAND {
 	HOTKEY_REPLAY_SKIP_ANIMATION,
 
 	// Whiteboard commands
-	HOTKEY_EXECUTE_NEXT_ACTION,
-	HOTKEY_DELETE_LAST_ACTION,
+	HOTKEY_WB_EXECUTE_ACTION,
+	HOTKEY_WB_DELETE_ACTION,
+	HOTKEY_WB_BUMP_UP_ACTION,
+	HOTKEY_WB_BUMP_DOWN_ACTION,
 
 #ifndef DISABLE_EDITOR
 	HOTKEY_EDITOR_QUIT_TO_DESKTOP,
@@ -300,8 +302,10 @@ public:
 	virtual void replay_show_each() {}
 	virtual void replay_show_team1() {}
 	virtual void replay_skip_animation() {}
-	virtual void execute_next_action() {}
-	virtual void delete_last_action() {}
+	virtual void whiteboard_execute_action() {}
+	virtual void whiteboard_delete_action() {}
+	virtual void whiteboard_bump_up_action() {}
+	virtual void whiteboard_bump_down_action() {}
 
 	//Gets the action's image (if any). Displayed left of the action text in menus.
 	virtual std::string get_action_image(hotkey::HOTKEY_COMMAND /*command*/, int /*index*/) const { return ""; }
