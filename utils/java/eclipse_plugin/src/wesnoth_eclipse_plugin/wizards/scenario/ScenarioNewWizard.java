@@ -61,7 +61,7 @@ public class ScenarioNewWizard extends NewWizardTemplate
 		addPage(page0_);
 
 		page1_ = new ScenarioPage1();
-		// addPage(page1_);
+		addPage(page1_);
 
 		super.addPages();
 	}
@@ -173,6 +173,7 @@ public class ScenarioNewWizard extends NewWizardTemplate
 	{
 		ArrayList<ReplaceableParameter> params = new ArrayList<ReplaceableParameter>();
 
+		// common variables (sp + mp)
 		params.add(new ReplaceableParameter("$$scenario_id", page0_.getScenarioId()));
 		params.add(new ReplaceableParameter("$$next_scenario_id", page0_.getNextScenarioId()));
 		params.add(new ReplaceableParameter("$$scenario_name", page0_.getScenarioName()));
@@ -180,7 +181,10 @@ public class ScenarioNewWizard extends NewWizardTemplate
 
 		params.add(new ReplaceableParameter("$$turns_number", String.valueOf(page0_.getTurnsNumber())));
 
-		String template = TemplateProvider.getInstance().getProcessedTemplate("scenario", params);
+		// multiplayer only variables
+		params.add(new ReplaceableParameter("$$allow_new_game", page1_.getAllowNewGame()));
+
+		String template = TemplateProvider.getInstance().getProcessedTemplate(page1_.isMultiplayerScenario() ? "multiplayer" : "scenario", params);
 
 		if (template == null)
 		{

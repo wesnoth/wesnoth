@@ -37,7 +37,7 @@ public class EraPage0 extends WizardPage
 	 * Create the wizard.
 	 */
 	public EraPage0(ISelection selection) {
-		super("wizardPage");
+		super("eraPage0");
 		setTitle("New era wizard");
 		setDescription("Create a new era");
 		selection_ = selection;

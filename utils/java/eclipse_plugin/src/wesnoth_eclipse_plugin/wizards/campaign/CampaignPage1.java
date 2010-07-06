@@ -14,22 +14,23 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
-public class CampaignPage1 extends WizardPage {
-	private Text txtCampaignName_;
-	private Text txtVersion_;
-	private Text txtTranslationDir_;
-	private Text txtAuthor_;
-	private Text txtEmail_;
-	private Text txtDescription_;
-	private Text txtPassphrase_;
-	private Text txtIcon_;
-	private Button chkMultiCampaign_;
+public class CampaignPage1 extends WizardPage
+{
+	private Text	txtCampaignName_;
+	private Text	txtVersion_;
+	private Text	txtTranslationDir_;
+	private Text	txtAuthor_;
+	private Text	txtEmail_;
+	private Text	txtDescription_;
+	private Text	txtPassphrase_;
+	private Text	txtIcon_;
+	private Button	chkMultiCampaign_;
 
 	/**
 	 * Create the wizard.
 	 */
 	public CampaignPage1() {
-		super("wizardPage");
+		super("campaignPage1");
 		setTitle("Create New Campaign");
 		setDescription("Creates a new campaign and the files structure.");
 		setPageComplete(false);
@@ -37,15 +38,19 @@ public class CampaignPage1 extends WizardPage {
 
 	/**
 	 * Create contents of the wizard.
+	 * 
 	 * @param parent
 	 */
-	public void createControl(Composite parent) {
+	@Override
+	public void createControl(Composite parent)
+	{
 		Composite container = new Composite(parent, SWT.NULL);
 
 		setControl(container);
 		ModifyListener updatePageCompleteListener = new ModifyListener() {
 			@Override
-			public void modifyText(ModifyEvent e) {
+			public void modifyText(ModifyEvent e)
+			{
 				updateIsPageComplete();
 			}
 		};
@@ -54,11 +59,11 @@ public class CampaignPage1 extends WizardPage {
 		Label _lblCampaignName = new Label(container, SWT.NONE);
 		_lblCampaignName.setText("Campaign name* :");
 
-				txtCampaignName_ = new Text(container, SWT.BORDER);
-				GridData gd_txtCampaignName_ = new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1);
-				gd_txtCampaignName_.heightHint = 15;
-				txtCampaignName_.setLayoutData(gd_txtCampaignName_);
-				txtCampaignName_.addModifyListener(updatePageCompleteListener);
+		txtCampaignName_ = new Text(container, SWT.BORDER);
+		GridData gd_txtCampaignName_ = new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1);
+		gd_txtCampaignName_.heightHint = 15;
+		txtCampaignName_.setLayoutData(gd_txtCampaignName_);
+		txtCampaignName_.addModifyListener(updatePageCompleteListener);
 		new Label(container, SWT.NONE);
 
 		Label lblVersion = new Label(container, SWT.NONE);
@@ -69,51 +74,52 @@ public class CampaignPage1 extends WizardPage {
 		txtVersion_.addModifyListener(updatePageCompleteListener);
 
 		Label lblFormat = new Label(container, SWT.NONE);
-		lblFormat.setToolTipText("Displayed to the right of the title, it is just text. However,\r\nstarting with Wesnoth 1.6, the required format is x.y.z \r\nwhere x, y and z are numbers and a value for x greater than 0 \r\nimplies the campaign is complete and balanced. \r\nTrailing non-numeric elements are ok, but nothing should\r\nappear before the numbers. This is necessary for the Update \r\nadd-ons button to work correctly.");
+		lblFormat
+				.setToolTipText("Displayed to the right of the title, it is just text. However,\r\nstarting with Wesnoth 1.6, the required format is x.y.z \r\nwhere x, y and z are numbers and a value for x greater than 0 \r\nimplies the campaign is complete and balanced. \r\nTrailing non-numeric elements are ok, but nothing should\r\nappear before the numbers. This is necessary for the Update \r\nadd-ons button to work correctly.");
 		lblFormat.setText("Format: x.y.z");
 
-																										Label lblTranslationsDir = new Label(container, SWT.NONE);
-																										lblTranslationsDir.setText("Translations folder:");
+		Label lblTranslationsDir = new Label(container, SWT.NONE);
+		lblTranslationsDir.setText("Translations folder:");
 
-																								txtTranslationDir_ = new Text(container, SWT.BORDER);
-																								txtTranslationDir_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
+		txtTranslationDir_ = new Text(container, SWT.BORDER);
+		txtTranslationDir_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
 
-																						Label lblRelativeToThe = new Label(container, SWT.NONE);
-																						lblRelativeToThe.setText("Relative to the data folder");
+		Label lblRelativeToThe = new Label(container, SWT.NONE);
+		lblRelativeToThe.setText("Relative to the data folder");
 
-																				chkMultiCampaign_ = new Button(container, SWT.CHECK);
-																				GridData gd_chkMultiCampaign_ = new GridData(SWT.LEFT, SWT.CENTER, false, false, 2, 1);
-																				gd_chkMultiCampaign_.widthHint = 236;
-																				chkMultiCampaign_.setLayoutData(gd_chkMultiCampaign_);
-																				chkMultiCampaign_.setText("This is a multiplayer campaign");
-																		new Label(container, SWT.NONE);
+		chkMultiCampaign_ = new Button(container, SWT.CHECK);
+		GridData gd_chkMultiCampaign_ = new GridData(SWT.LEFT, SWT.CENTER, false, false, 2, 1);
+		gd_chkMultiCampaign_.widthHint = 236;
+		chkMultiCampaign_.setLayoutData(gd_chkMultiCampaign_);
+		chkMultiCampaign_.setText("This is a multiplayer campaign");
+		new Label(container, SWT.NONE);
 
-																		Label lblAuthor = new Label(container, SWT.NONE);
-																		lblAuthor.setText("Author:");
+		Label lblAuthor = new Label(container, SWT.NONE);
+		lblAuthor.setText("Author:");
 
-																txtAuthor_ = new Text(container, SWT.BORDER);
-																txtAuthor_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
-														new Label(container, SWT.NONE);
+		txtAuthor_ = new Text(container, SWT.BORDER);
+		txtAuthor_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
+		new Label(container, SWT.NONE);
 
-														Label lblDescription = new Label(container, SWT.NONE);
-														lblDescription.setText("Email:");
+		Label lblDescription = new Label(container, SWT.NONE);
+		lblDescription.setText("Email:");
 
-												txtEmail_ = new Text(container, SWT.BORDER);
-												txtEmail_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
-										new Label(container, SWT.NONE);
+		txtEmail_ = new Text(container, SWT.BORDER);
+		txtEmail_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
+		new Label(container, SWT.NONE);
 
-										Label lblDescription_1 = new Label(container, SWT.NONE);
-										lblDescription_1.setText("Description:");
+		Label lblDescription_1 = new Label(container, SWT.NONE);
+		lblDescription_1.setText("Description:");
 
-								txtDescription_ = new Text(container, SWT.BORDER);
-								txtDescription_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
-						new Label(container, SWT.NONE);
+		txtDescription_ = new Text(container, SWT.BORDER);
+		txtDescription_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
+		new Label(container, SWT.NONE);
 
-						Label lblIcon = new Label(container, SWT.NONE);
-						lblIcon.setText("Passphrase:");
+		Label lblIcon = new Label(container, SWT.NONE);
+		lblIcon.setText("Passphrase:");
 
-				txtPassphrase_ = new Text(container, SWT.BORDER);
-				txtPassphrase_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
+		txtPassphrase_ = new Text(container, SWT.BORDER);
+		txtPassphrase_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
 		new Label(container, SWT.NONE);
 
 		Label lblIcon_1 = new Label(container, SWT.NONE);
@@ -128,16 +134,19 @@ public class CampaignPage1 extends WizardPage {
 		GridData gd_lblRelativeToThe_1 = new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1);
 		gd_lblRelativeToThe_1.widthHint = 285;
 		lblRelativeToThe_1.setLayoutData(gd_lblRelativeToThe_1);
-		lblRelativeToThe_1.setToolTipText("An image, displayed leftmost on the \"download campaigns\" screen.\r\nIt must be a standard Wesnoth graphic and not a custom one. \r\n(Well, a custom graphic will work if the user already has the campaign \r\ninstalled, or if it is a custom graphic from a different campaign that the \r\nuser has installed but others won't see it!) (Note that the icon used to \r\ndisplay your campaign for when it is played can be custom; for more\r\ninformation see CampaignWML.) If the icon is a unit with magenta color,\r\nplease use ImagePathFunctionWML to team-color it. ");
+		lblRelativeToThe_1
+				.setToolTipText("An image, displayed leftmost on the \"download campaigns\" screen.\r\nIt must be a standard Wesnoth graphic and not a custom one. \r\n(Well, a custom graphic will work if the user already has the campaign \r\ninstalled, or if it is a custom graphic from a different campaign that the \r\nuser has installed but others won't see it!) (Note that the icon used to \r\ndisplay your campaign for when it is played can be custom; for more\r\ninformation see CampaignWML.) If the icon is a unit with magenta color,\r\nplease use ImagePathFunctionWML to team-color it. ");
 		lblRelativeToThe_1.setText("Relative to the data/core/images folder");
 
 		updateIsPageComplete();
 	}
+
 	/* (non-Javadoc)
 	 * @see org.eclipse.jface.wizard.WizardPage#canFlipToNextPage()
 	 */
 	@Override
-	public boolean canFlipToNextPage() {
+	public boolean canFlipToNextPage()
+	{
 		return (isPageComplete() && getNextPage() != null);
 	}
 
@@ -154,8 +163,7 @@ public class CampaignPage1 extends WizardPage {
 		}
 
 		// match the pattern x.y.z
-		if (txtVersion_.getText().isEmpty() ||
-			!(txtVersion_.getText().matches("[\\d]+\\.[\\d]+\\.\\d[\\w\\W\\d\\D\\s\\S]*")))
+		if (txtVersion_.getText().isEmpty() || !(txtVersion_.getText().matches("[\\d]+\\.[\\d]+\\.\\d[\\w\\W\\d\\D\\s\\S]*")))
 		{
 			setErrorMessage("The version must have the format: x.y.z");
 			return;
@@ -164,59 +172,77 @@ public class CampaignPage1 extends WizardPage {
 		setErrorMessage(null);
 		setPageComplete(true);
 	}
+
 	/**
 	 * @return the Campaign Name
 	 */
-	public String getCampaignName() {
+	public String getCampaignName()
+	{
 		return txtCampaignName_.getText();
 	}
+
 	/**
 	 * @return the author
 	 */
-	public String getAuthor() {
+	public String getAuthor()
+	{
 		return txtAuthor_.getText();
 	}
+
 	/**
 	 * @return the version
 	 */
-	public String getVersion() {
+	public String getVersion()
+	{
 		return txtVersion_.getText();
 	}
+
 	/**
 	 * @return the description
 	 */
 	@Override
-	public String getDescription() {
+	public String getDescription()
+	{
 		return txtDescription_.getText();
 	}
+
 	/**
 	 * @return the Icon
 	 */
-	public String getIconPath() {
+	public String getIconPath()
+	{
 		return txtIcon_.getText();
 	}
+
 	/**
 	 * @return the email
 	 */
-	public String getEmail() {
+	public String getEmail()
+	{
 		return txtEmail_.getText();
 	}
+
 	/**
 	 * @return the passphrase
 	 */
-	public String getPassphrase() {
+	public String getPassphrase()
+	{
 		return txtPassphrase_.getText();
 	}
+
 	/**
 	 * @return the translation directory
 	 */
-	public String getTranslationDir() {
+	public String getTranslationDir()
+	{
 		return txtTranslationDir_.getText();
 	}
+
 	/**
 	 * @return true if the campaign is multiplayer
 	 */
-	public boolean isMultiplayer(){
+	public boolean isMultiplayer()
+	{
 		return chkMultiCampaign_.getSelection();
 	}
 }

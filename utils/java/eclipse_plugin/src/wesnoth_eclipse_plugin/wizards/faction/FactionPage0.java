@@ -41,7 +41,7 @@ public class FactionPage0 extends WizardPage
 	 * Create the wizard.
 	 */
 	public FactionPage0(ISelection selection) {
-		super("wizardPage");
+		super("factionPage0");
 		setTitle("New faction wizard");
 		setDescription("Create a new faction");
 	}

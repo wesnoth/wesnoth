@@ -219,7 +219,7 @@
            class="wesnoth_eclipse_plugin.wizards.scenario.ScenarioNewWizard"
            id="wesnoth_eclipse_plugin.wizards.ScenarioNewWizard"
            project="false">
-           <description>Create a Wesnoth scenario.</description>
+           <description>Create a Wesnoth single player or multiplayer scenario.</description>
        </wizard>
        <wizard
              category="wesnoth.eclipse.newWizards"
@@ -228,6 +228,9 @@
              id="wesnoth_eclipse_plugin.wizards.eraNewWizard"
              name="Wesnoth Era"
              project="false">
+          <description>
+             Create a new wesnoth era.
+          </description>
        </wizard>
        <wizard
              category="wesnoth.eclipse.newWizards"
@@ -236,6 +239,9 @@
              id="wesnoth_eclipse_plugin.wizard.factionNewWizard"
              name="Wesnoth Faction"
              project="false">
+          <description>
+             Create a new Wesnoth faction.
+          </description>
        </wizard>
    </extension>
    <extension

@@ -30,13 +30,14 @@ public class CampaignPage2 extends WizardPage
 	 * Create the wizard.
 	 */
 	public CampaignPage2() {
-		super("wizardPage");
+		super("campaignPage2");
 		setTitle("Campaign details");
 		setDescription("Set the campaign details");
 	}
 
 	/**
 	 * Create contents of the wizard.
+	 * 
 	 * @param parent
 	 */
 	@Override

@@ -139,8 +139,8 @@ public class EraNewWizard extends NewWizardTemplate
 	{
 		ArrayList<ReplaceableParameter> params = new ArrayList<ReplaceableParameter>();
 
-		params.add(new ReplaceableParameter("$$era_id", String.valueOf(page0_.getEraID())));
-		params.add(new ReplaceableParameter("$$era_name", String.valueOf(page0_.getEraName())));
+		params.add(new ReplaceableParameter("$$era_id", page0_.getEraID()));
+		params.add(new ReplaceableParameter("$$era_name", page0_.getEraName()));
 		params.add(new ReplaceableParameter("$$require_era", String.valueOf(page0_.getRequiresEra())));
 
 		String template = TemplateProvider.getInstance().getProcessedTemplate("era", params);

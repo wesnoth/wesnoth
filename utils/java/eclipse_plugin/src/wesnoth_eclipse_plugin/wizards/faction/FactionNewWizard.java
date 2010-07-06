@@ -49,6 +49,12 @@ public class FactionNewWizard extends NewWizardTemplate
 	}
 
 	@Override
+	public boolean canFinish()
+	{
+		return getContainer().getCurrentPage().isPageComplete();
+	}
+
+	@Override
 	public boolean performFinish()
 	{
 		final String containerName = page0_.getDirectoryName();
@@ -138,16 +144,16 @@ public class FactionNewWizard extends NewWizardTemplate
 	{
 		ArrayList<ReplaceableParameter> params = new ArrayList<ReplaceableParameter>();
 
-		params.add(new ReplaceableParameter("$$faction_id", String.valueOf(page0_.getFactionId())));
-		params.add(new ReplaceableParameter("$$faction_name", String.valueOf(page0_.getFactionName())));
-		params.add(new ReplaceableParameter("$$faction_type", String.valueOf(page0_.getType())));
-		params.add(new ReplaceableParameter("$$leader", String.valueOf(page0_.getLeader())));
-		params.add(new ReplaceableParameter("$$random_leader", String.valueOf(page0_.getRandomLeader())));
-		params.add(new ReplaceableParameter("$$terrain_liked", String.valueOf(page0_.getTerrainLiked())));
+		params.add(new ReplaceableParameter("$$faction_id", page0_.getFactionId()));
+		params.add(new ReplaceableParameter("$$faction_name", page0_.getFactionName()));
+		params.add(new ReplaceableParameter("$$faction_type", page0_.getType()));
+		params.add(new ReplaceableParameter("$$leader", page0_.getLeader()));
+		params.add(new ReplaceableParameter("$$random_leader", page0_.getRandomLeader()));
+		params.add(new ReplaceableParameter("$$terrain_liked", page0_.getTerrainLiked()));
 
 		params.add(new ReplaceableParameter("$$random_faction", String.valueOf(page1_.getIsRandomFaction())));
-		params.add(new ReplaceableParameter("$$choices", String.valueOf(page1_.getChoices())));
-		params.add(new ReplaceableParameter("$$except", String.valueOf(page1_.getExcept())));
+		params.add(new ReplaceableParameter("$$choices", page1_.getChoices()));
+		params.add(new ReplaceableParameter("$$except", page1_.getExcept()));
 
 		String template = TemplateProvider.getInstance().getProcessedTemplate("faction", params);
 

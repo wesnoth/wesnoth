@@ -25,7 +25,7 @@ public class FactionPage1 extends WizardPage
 	 * Create the wizard.
 	 */
 	public FactionPage1() {
-		super("wizardPage");
+		super("factionPage1");
 		setTitle("New faction wizard");
 		setDescription("Faction details");
 	}
