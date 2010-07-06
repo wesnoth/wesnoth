@@ -20,8 +20,7 @@
 #define WB_ACTION_HPP_
 
 #include "log.hpp"
-
-#include <boost/shared_ptr.hpp>
+#include "typedefs.hpp"
 
 static lg::log_domain log_whiteboard("whiteboard");
 #define ERR_WB LOG_STREAM(err, log_whiteboard)
@@ -29,20 +28,9 @@ static lg::log_domain log_whiteboard("whiteboard");
 #define LOG_WB LOG_STREAM(info, log_whiteboard)
 #define DBG_WB LOG_STREAM(debug, log_whiteboard)
 
-struct map_location;
-struct temporary_unit_map_modifier;
-class unit;
-class unit_map;
-
 namespace wb {
 
-class action;
 class visitor;
-
-typedef boost::shared_ptr<temporary_unit_map_modifier> modifier_ptr;
-
-typedef boost::shared_ptr<action> action_ptr;
-
 
 /**
  * Superclass for all the whiteboard planned actions.

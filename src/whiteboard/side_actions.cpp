@@ -38,7 +38,7 @@ side_actions::~side_actions()
 {
 }
 
-const action_set& side_actions::actions() const
+const action_queue& side_actions::actions() const
 {
 	return actions_;
 }
@@ -86,7 +86,7 @@ side_actions::iterator side_actions::execute(side_actions::iterator position)
 }
 
 side_actions::iterator side_actions::insert_move(unit& subject, const map_location& source_hex, const map_location& target_hex, side_actions::iterator position,
-		boost::shared_ptr<arrow> arrow,	boost::shared_ptr<unit> fake_unit)
+		arrow_ptr arrow,	fake_unit_ptr fake_unit)
 {
 	if (resources::whiteboard->has_planned_unit_map())
 	{
@@ -101,7 +101,7 @@ side_actions::iterator side_actions::insert_move(unit& subject, const map_locati
 }
 
 side_actions::iterator side_actions::queue_move(unit& subject, const map_location& source_hex, const map_location& target_hex,
-		boost::shared_ptr<arrow> arrow,	boost::shared_ptr<unit> fake_unit)
+		arrow_ptr arrow,	fake_unit_ptr fake_unit)
 {
 	if (resources::whiteboard->has_planned_unit_map())
 	{
@@ -145,7 +145,7 @@ side_actions::iterator side_actions::get_position_of(action_ptr action)
 {
 	if (!actions_.empty())
 	{
-		action_set::iterator position;
+		action_queue::iterator position;
 		for (position = actions_.begin(); position != actions_.end(); ++position)
 		{
 			if (*position == action)
@@ -226,10 +226,10 @@ side_actions::iterator side_actions::move_in_queue(side_actions::iterator positi
 		return end();
 
 	action_ptr action = *position;
-	action_set::iterator after = actions_.erase(position);
+	action_queue::iterator after = actions_.erase(position);
 	//be careful, previous iterators have just been invalidated by erase()
-	action_set::iterator destination = after + increment;
-	action_set::iterator valid_position = actions_.insert(destination, action);
+	action_queue::iterator destination = after + increment;
+	action_queue::iterator valid_position = actions_.insert(destination, action);
 	validate_actions();
 	return valid_position;
 }

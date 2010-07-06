@@ -19,38 +19,30 @@
 #ifndef WB_SIDE_ACTIONS_HPP_
 #define WB_SIDE_ACTIONS_HPP_
 
-#include "action.hpp"
+#include "typedefs.hpp"
 
 #include "map_location.hpp"
 
 #include <deque>
 
 #include <boost/enable_shared_from_this.hpp>
-#include <boost/shared_ptr.hpp>
-
-class unit;
-class arrow;
 
 namespace wb
 {
 
 class move;
-class side_actions;
-
-typedef boost::shared_ptr<side_actions> side_actions_ptr;
-typedef std::deque<action_ptr> action_set;
 
 class side_actions: public boost::enable_shared_from_this<side_actions>
 {
 public:
 
-	typedef action_set::iterator iterator;
-	typedef action_set::const_iterator const_iterator;
+	typedef action_queue::iterator iterator;
+	typedef action_queue::const_iterator const_iterator;
 
 	side_actions();
 	virtual ~side_actions();
 
-	const action_set& actions() const;
+	const action_queue& actions() const;
 
 	/**
 	 * Executes the first action in the queue, and then deletes it.
@@ -86,15 +78,15 @@ public:
 	 * Inserts a move at the specified position. The begin() and end() functions might prove useful here.
 	 * @return The inserted move's position.
 	 */
-	iterator insert_move(unit& subject, const map_location& source_hex, const map_location& target_hex, iterator position,
-			boost::shared_ptr<arrow> arrow,	boost::shared_ptr<unit> fake_unit);
+	iterator insert_move(unit& subject, const map_location& source_hex, const map_location& target_hex,
+			iterator position, arrow_ptr arrow, fake_unit_ptr fake_unit);
 
 	/**
 	 * Inserts a move to be executed last (i.e. at the back of the queue)
 	 * @return The queued move's position
 	 */
 	iterator queue_move(unit& subject, const map_location& source_hex, const map_location& target_hex,
-			boost::shared_ptr<arrow> arrow,	boost::shared_ptr<unit> fake_unit);
+			arrow_ptr arrow, fake_unit_ptr fake_unit);
 
 	/**
 	 * Moves an action earlier in the execution order (i.e. at the front of the queue),
@@ -147,7 +139,7 @@ private:
 
 	bool validate_iterator(iterator position) { return position >= begin() && position < end(); }
 
-	action_set actions_;
+	action_queue actions_;
 };
 
 }

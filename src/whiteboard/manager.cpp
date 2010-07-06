@@ -98,8 +98,8 @@ void manager::set_real_unit_map()
 
 void manager::draw_hex(const map_location& hex)
 {
-	const action_set& actions = current_actions()->actions();
-	action_set::const_iterator it = actions.begin();
+	const action_queue& actions = current_actions()->actions();
+	action_queue::const_iterator it = actions.begin();
 	for(; it != actions.end(); ++it)
 	{
 		if((*it)->is_related_to(hex))
@@ -147,7 +147,7 @@ void manager::highlight_hex(const map_location& hex)
 	}
 	else
 	{
-		action_set actions = current_actions()->actions();
+		action_queue actions = current_actions()->actions();
 		foreach(action_ptr action, actions)
 		{
 			if (action->is_related_to(hex))
@@ -161,7 +161,7 @@ void manager::highlight_hex(const map_location& hex)
 	{
 		highlight_visitor highlighter(true);
 
-		action_set actions = current_actions()->actions();
+		action_queue actions = current_actions()->actions();
 		foreach(action_ptr action, actions)
 		{
 			if (action->is_related_to(*highlighted_unit_))
@@ -176,7 +176,7 @@ void manager::remove_highlight()
 {
 	highlight_visitor unhighlighter(false);
 
-	action_set actions = current_actions()->actions();
+	action_queue actions = current_actions()->actions();
 	foreach(action_ptr action, actions)
 	{
 		action->accept(unhighlighter);
@@ -188,7 +188,7 @@ void manager::on_unit_select(unit& unit)
 {
 	erase_temp_move();
 	remove_highlight();
-	action_set actions = current_actions()->actions();
+	action_queue actions = current_actions()->actions();
 	highlight_visitor highlighter(true);
 	foreach(action_ptr action, actions)
 	{

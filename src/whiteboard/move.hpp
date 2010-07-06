@@ -21,13 +21,9 @@
 
 #include "action.hpp"
 #include "map_location.hpp"
+#include "typedefs.hpp"
 
 #include <boost/enable_shared_from_this.hpp>
-
-class arrow;
-class config;
-class unit;
-class unit_map;
 
 namespace wb {
 
@@ -45,8 +41,8 @@ public: //constants
 	static const std::string ARROW_STYLE_INVALID;
 
 public:
-	move(unit& subject, const map_location& source_hex, const map_location& target_hex, boost::shared_ptr<arrow> arrow,
-			boost::shared_ptr<unit> fake_unit);
+	move(unit& subject, const map_location& source_hex, const map_location& target_hex, arrow_ptr arrow,
+			fake_unit_ptr fake_unit);
 	virtual ~move();
 
 	virtual void accept(visitor& v);
@@ -55,8 +51,8 @@ public:
 
 	virtual unit& get_unit() { return unit_; }
 
-	boost::shared_ptr<arrow> get_arrow() { return arrow_; }
-	boost::shared_ptr<unit> get_fake_unit() { return fake_unit_; }
+	arrow_ptr get_arrow() { return arrow_; }
+	fake_unit_ptr get_fake_unit() { return fake_unit_; }
 
 	/** Applies temporarily the result of this action to the specified unit map. */
 	virtual void apply_temp_modifier(unit_map& unit_map);
@@ -75,8 +71,8 @@ private:
 	map_location dest_hex_;
 	int movement_cost_;
 
-	boost::shared_ptr<arrow> arrow_;
-	boost::shared_ptr<unit> fake_unit_;
+	arrow_ptr arrow_;
+	fake_unit_ptr fake_unit_;
 
 	bool valid_;
 };

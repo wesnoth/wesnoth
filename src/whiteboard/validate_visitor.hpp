@@ -32,7 +32,7 @@ public:
 
 	void validate_actions();
 
-	virtual void visit_move(boost::shared_ptr<move> move);
+	virtual void visit_move(move_ptr move);
 };
 
 }

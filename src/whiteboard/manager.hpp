@@ -19,16 +19,14 @@
 #ifndef WB_MANAGER_HPP_
 #define WB_MANAGER_HPP_
 
+#include "typedefs.hpp"
+
 #include "map_location.hpp"
 
 #include <boost/noncopyable.hpp>
-#include <boost/shared_ptr.hpp>
 #include <boost/scoped_ptr.hpp>
 
 #include <vector>
-
-class arrow;
-class unit;
 
 namespace pathfind {
 	struct marked_route;
@@ -36,7 +34,6 @@ namespace pathfind {
 
 namespace wb {
 
-class action;
 class mapbuilder_visitor;
 
 /**
@@ -125,9 +122,7 @@ private:
 	boost::scoped_ptr<pathfind::marked_route> route_;
 	std::vector<map_location> steps_;
 
-	typedef boost::shared_ptr<arrow> arrow_ptr;
 	arrow_ptr move_arrow_;
-	typedef boost::shared_ptr<unit> fake_unit_ptr;
 	fake_unit_ptr fake_unit_;
 
 	unit* selected_unit_;

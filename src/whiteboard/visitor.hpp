@@ -19,14 +19,12 @@
 #ifndef WB_VISITOR_HPP_
 #define WB_VISITOR_HPP_
 
+#include "typedefs.hpp"
+
 #include <boost/noncopyable.hpp>
-#include <boost/shared_ptr.hpp>
 
 namespace wb
 {
-
-class action;
-class move;
 
 class visitor : private boost::noncopyable
 {
@@ -34,7 +32,7 @@ public:
 	visitor();
 	virtual ~visitor();
 
-	virtual void visit_move(boost::shared_ptr<move> move) = 0;
+	virtual void visit_move(move_ptr move) = 0;
 };
 
 }

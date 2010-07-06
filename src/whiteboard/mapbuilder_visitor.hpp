@@ -20,22 +20,14 @@
 #define WB_MAPBUILDER_VISITOR_HPP_
 
 #include "visitor.hpp"
+
 #include "action.hpp"
 
 #include <set>
 #include <stack>
 
-#include <boost/shared_ptr.hpp>
-
-class unit;
-class unit_map;
-
 namespace wb
 {
-
-class side_actions;
-
-typedef boost::shared_ptr<side_actions> side_actions_ptr;
 
 /**
  * Visitor that collects and applies unit_map modifications from the actions it visits
@@ -48,11 +40,6 @@ public:
 	mapbuilder_visitor(unit_map& unit_map, side_actions_ptr side_actions);
 	virtual ~mapbuilder_visitor();
 
-	enum mapbuilder_mode {
-		BUILD_PLANNED_MAP,
-		RESTORE_NORMAL_MAP
-	};
-
 	/**
 	 * Visits all the actions contained in the side_actions object passed to the constructor,
 	 * and calls the appropriate visit_* method on each of them.
@@ -63,7 +50,7 @@ public:
 	virtual void exclude(const unit& unit) { excluded_units_.insert(&unit); }
 
 	/// Visitor pattern method, no need to call this directly
-	virtual void visit_move(boost::shared_ptr<move> move);
+	virtual void visit_move(move_ptr move);
 
 
 
@@ -74,7 +61,13 @@ protected:
 
 	side_actions_ptr side_actions_;
 
+	enum mapbuilder_mode {
+		BUILD_PLANNED_MAP,
+		RESTORE_NORMAL_MAP
+	};
+
 	mapbuilder_mode mode_;
+
 
 };
 

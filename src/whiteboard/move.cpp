@@ -48,7 +48,7 @@ static team& get_current_team()
 }
 
 move::move(unit& subject, const map_location& source_hex, const map_location& target_hex,
-		boost::shared_ptr<arrow> arrow,	boost::shared_ptr<unit> fake_unit)
+		arrow_ptr arrow, fake_unit_ptr fake_unit)
 : unit_(subject),
   source_hex_(source_hex),
   dest_hex_(target_hex),

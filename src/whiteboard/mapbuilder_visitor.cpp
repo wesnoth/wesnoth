@@ -39,8 +39,8 @@ mapbuilder_visitor::mapbuilder_visitor(unit_map& unit_map, side_actions_ptr side
 mapbuilder_visitor::~mapbuilder_visitor()
 {
 	mode_ = RESTORE_NORMAL_MAP;
-	const action_set& actions = side_actions_->actions();
-	action_set::const_reverse_iterator rit;
+	const action_queue& actions = side_actions_->actions();
+	action_queue::const_reverse_iterator rit;
 	for (rit = actions.rbegin(); rit != actions.rend(); ++rit)
 	{
 		if ((*rit)->is_valid())
@@ -54,7 +54,7 @@ mapbuilder_visitor::~mapbuilder_visitor()
 void mapbuilder_visitor::build_map()
 {
 	mode_ = BUILD_PLANNED_MAP;
-	const action_set& actions = side_actions_->actions();
+	const action_queue& actions = side_actions_->actions();
 	foreach(action_ptr action, actions)
 	{
 		if (action->is_valid())
@@ -64,7 +64,7 @@ void mapbuilder_visitor::build_map()
 	}
 }
 
-void mapbuilder_visitor::visit_move(boost::shared_ptr<move> move)
+void mapbuilder_visitor::visit_move(move_ptr move)
 {
 	if (excluded_units_.find(&move->get_unit()) == excluded_units_.end())
 	{

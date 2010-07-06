@@ -55,7 +55,7 @@ void validate_visitor::validate_actions()
 	}
 }
 
-void validate_visitor::visit_move(boost::shared_ptr<move> move)
+void validate_visitor::visit_move(move_ptr move)
 {
 	bool valid = true;
 

@@ -21,6 +21,8 @@
 
 #include "visitor.hpp"
 
+#include "typedefs.hpp"
+
 namespace wb
 {
 
@@ -30,7 +32,7 @@ public:
 	highlight_visitor(bool highlight);
 	virtual ~highlight_visitor();
 
-	virtual void visit_move(boost::shared_ptr<move> move);
+	virtual void visit_move(move_ptr move);
 
 private:
 	bool highlight_;

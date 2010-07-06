@@ -35,7 +35,7 @@ highlight_visitor::~highlight_visitor()
 {
 }
 
-void highlight_visitor::visit_move(boost::shared_ptr<move> move)
+void highlight_visitor::visit_move(move_ptr move)
 {
 	assert (!resources::whiteboard->has_planned_unit_map());
 
