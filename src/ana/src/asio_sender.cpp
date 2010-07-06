@@ -55,8 +55,11 @@ void asio_sender::send(ana::detail::shared_buffer buffer,
         }
         else
         {
+            ana::ana_uint32 size( buffer->size() );
+            ana::to_network_byte_order( size );
+
             ana::serializer::bostream* output_stream = new ana::serializer::bostream();
-            (*output_stream) << buffer->size();
+            (*output_stream) << size;
 
             //write the header first in a separate operation, then send the full buffer
             boost::asio::async_write(socket, boost::asio::buffer( output_stream->str() ),

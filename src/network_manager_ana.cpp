@@ -297,16 +297,14 @@ network::connection ana_network_manager::create_client_and_connect(std::string h
 
         ana_connect_handler handler(connect_timer_);
 
-        connect_timer_->wait( ana::time::seconds(10), // 10 seconds to connection timeout
+        connect_timer_->wait( ana::time::seconds(10), // 10 seconds to connection timeout, will be configurable
                             boost::bind(&ana_connect_handler::handle_timeout, &handler,
                                         boost::asio::error::make_error_code( boost::asio::error::timed_out ) ) );
 
+        client->set_raw_data_mode();
         client->connect( &handler );
-
         client->set_listener_handler( this );
         client->run();
-
-        client->set_raw_data_mode();
 
         client->start_logging();
 
@@ -314,25 +312,41 @@ network::connection ana_network_manager::create_client_and_connect(std::string h
 
         delete connect_timer_;
 
-        if( ! handler.error() )
+        if( handler.error() )
+            return 0;
+        else
         {
             //Send handshake
-//             const std::string empty_str;
-//             client->send( ana::buffer( empty_str ), this );
+            ana::serializer::bostream bos;
 
-            uint32_t my_id;
-            ana::serializer::bistream bis;
+            uint32_t handshake( 0 );
+            bos << handshake;
 
-            client->wait_raw_object(bis, sizeof(my_id) );
+            ana_send_handler send_handler( new_component, bos.str().size() );
 
-            bis >> my_id;
+            client->send( ana::buffer( bos.str()), &send_handler );
 
-            std::cout << "DEBUG: Received id " << my_id << "\n";
+            send_handler.wait_completion();
 
-            return network::connection( client->id() );
+            if ( send_handler.error() )
+                return 0;
+            else
+            {
+                uint32_t my_id;
+                ana::serializer::bistream bis;
+
+                client->wait_raw_object(bis, sizeof(my_id) );
+
+                bis >> my_id;
+                // to network byte order ->
+                ana::from_network_byte_order( my_id );
+                std::cout << "DEBUG: Received id " << my_id << "\n";
+
+                client->set_header_first_mode();
+
+                return network::connection( client->id() );
+            }
         }
-        else
-            return 0;
     }
     catch( const std::exception& e )
     {

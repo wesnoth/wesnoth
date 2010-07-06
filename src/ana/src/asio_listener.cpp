@@ -90,8 +90,9 @@ void asio_listener::handle_header(char* header, const boost::system::error_code&
         {
             ana::serializer::bistream input( std::string(header, ana::HEADER_LENGTH) );
 
-            size_t   size;
+            ana::ana_uint32 size;
             input >> size;
+            ana::from_network_byte_order( size );
 
             if (size != 0)
             {

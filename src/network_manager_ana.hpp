@@ -57,6 +57,11 @@ class ana_send_handler : public ana::send_handler
         /** Locks current thread until all the calls are made. */
         void wait_completion();
 
+        const ana::error_code& error() const
+        {
+            return error_code_;
+        }
+
     private:
         virtual void handle_send(ana::error_code error_code, ana::net_id /*client*/);
 

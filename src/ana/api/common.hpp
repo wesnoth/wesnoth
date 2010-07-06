@@ -48,7 +48,7 @@ namespace ana
         typedef boost::int32_t  ana_int32   /** Standard int, with fixed size to 32 bits.           */ ;
 
         typedef ana_uint32  message_size       /** Message size type.                               */ ;
-        
+
         typedef size_t      net_id             /** IDs of connected components, unique, non zero.   */ ;
 
         typedef std::string port               /** Port type, a std::string (instead of a short.)   */ ;
@@ -62,6 +62,7 @@ namespace ana
         const send_type COPY_BUFFER = true      /** Copy the buffer.       */ ;
 
         const message_size HEADER_LENGTH = sizeof(ana_uint32) /** Length of message header. */ ;
+    //@}
 }
 
 #endif

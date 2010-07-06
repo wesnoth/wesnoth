@@ -81,6 +81,26 @@
  */
 namespace ana
 {
+    /** @name Miscellaneous Functions
+     *
+     * Functions for data conversions.
+     */
+    //@{
+
+    /** Converts a 32 bit number into a network byte order number. */
+    inline void to_network_byte_order( ana_uint32& number )
+    {
+        number =  ((number & 0xff) << 24 )   + ((number & 0xff00) << 16)
+                + ((number & 0xff0000) >> 8) + ((number & 0xff000000) >> 24);
+    }
+
+    /** Reverts a 32 bit network byte order number. TODO: check host endianness.*/
+    inline void from_network_byte_order( ana_uint32& number )
+    {
+        to_network_byte_order( number );
+    }
+    //@}
+
     /** @name Handler Interfaces
      *
      * Interfaces to handle network events.
