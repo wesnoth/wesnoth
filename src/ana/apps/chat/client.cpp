@@ -198,6 +198,7 @@ class ChatClient : public ana::listener_handler,
 
                 client_->set_listener_handler( this );
                 client_->run();
+                client_->set_timeouts(ana::FixedTime, ana::time::seconds(10));
                 client_->start_logging();
 
                 std::cout << "Available commands: \n"  <<

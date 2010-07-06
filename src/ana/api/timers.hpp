@@ -175,8 +175,8 @@ namespace ana
         public:
             /** Standard constructor. */
             timer() :
-                mutex_(),
                 io_service_(),
+                timer_thread_( NULL ),
                 timer_(io_service_)
             {
             }
@@ -203,46 +203,26 @@ namespace ana
             {
                 timer_.expires_from_now( milliseconds / 1000.0); //conversion will use a double or float
                 timer_.async_wait(handler);
-                boost::thread t( boost::bind( &timer::run, this ) );
-            }
-
-            /** Cancel the timer if running. */
-            void cancel()
-            {
-                if ( ! mutex_.try_lock() ) // handler wasn't called, unlock to delete this
-                {
-                    timer_.cancel();    // it's a cancel, handler wasn't called
-
-                    //wait for running thread to finish
-                    mutex_.lock();
-                }
-                mutex_.unlock();
+                timer_thread_ = new boost::thread( boost::bind( &timer::run, this ) );
             }
 
             /** Standard destructor, cancels pending operations if handler wasn't called. */
             ~timer()
             {
-                if ( ! mutex_.try_lock() ) // handler wasn't called, unlock to delete this
-                {
-                    timer_.cancel();    // it's a cancel, handler wasn't called
-
-                    //wait for running thread to finish
-                    mutex_.lock();
-                }
-                mutex_.unlock();
+                io_service_.stop();
+                timer_thread_->join();
+                delete timer_thread_;
             }
 
         private:
             void run()
             {
-                mutex_.lock();
                 io_service_.run_one();
-                mutex_.unlock();
             }
 
-            boost::mutex mutex_;
-
             boost::asio::io_service io_service_;
+
+            boost::thread* timer_thread_;
 
             boost_timer timer_;
     };
@@ -250,24 +230,24 @@ namespace ana
     namespace detail
     {
         /**
-        * A network sender component that can be configured to issue timeout events.
-        */
+         * A network sender component that can be configured to issue timeout events.
+         */
         class timed_sender
         {
             public:
                 /**
-                * Set the policy for timed operations (such as send.)
-                *
-                * @param type : Type of timeout policy.
-                * @param ms : Milliseconds related to the given policy, 0 means no timeouts.
-                *
-                * Examples:
-                *    - set_timeouts( ana::NoTimeouts );
-                *    - set_timeouts( ana::FixedTime, ana::time::minutes( 1 ) );
-                *
-                * \sa timeout_policy
-                * \sa ana::time
-                */
+                 * Set the policy for timed operations (such as send.)
+                 *
+                 * @param type : Type of timeout policy.
+                 * @param ms : Milliseconds related to the given policy, 0 means no timeouts.
+                 *
+                 * Examples:
+                 *    - set_timeouts( ana::NoTimeouts );
+                 *    - set_timeouts( ana::FixedTime, ana::time::minutes( 1 ) );
+                 *
+                 * \sa timeout_policy
+                 * \sa ana::time
+                 */
                 void set_timeouts(timeout_policy type, size_t ms = 0)
                 {
                     timeout_milliseconds_ = ms;
