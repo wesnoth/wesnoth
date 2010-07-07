@@ -82,11 +82,23 @@ public:
 			iterator position, arrow_ptr arrow, fake_unit_ptr fake_unit);
 
 	/**
-	 * Inserts a move to be executed last (i.e. at the back of the queue)
+	 * Queues a move to be executed last
 	 * @return The queued move's position
 	 */
 	iterator queue_move(unit& subject, const map_location& source_hex, const map_location& target_hex,
 			arrow_ptr arrow, fake_unit_ptr fake_unit);
+
+	/**
+	 * Inserts an action at the specified position. The begin() and end() functions might prove useful here.
+	 * @return The inserted action's position.
+	 */
+	iterator insert_action(iterator position, action_ptr action);
+
+	/**
+	 * Queues an action to be executed last
+	 * @return The queued action's position
+	 */
+	iterator queue_action(action_ptr action);
 
 	/**
 	 * Moves an action earlier in the execution order (i.e. at the front of the queue),

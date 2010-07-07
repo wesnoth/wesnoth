@@ -86,31 +86,39 @@ side_actions::iterator side_actions::execute(side_actions::iterator position)
 }
 
 side_actions::iterator side_actions::insert_move(unit& subject, const map_location& source_hex, const map_location& target_hex, side_actions::iterator position,
-		arrow_ptr arrow,	fake_unit_ptr fake_unit)
+		arrow_ptr arrow, fake_unit_ptr fake_unit)
+{
+	action_ptr action(new move(subject, source_hex, target_hex, arrow, fake_unit));
+	return insert_action(position, action);
+}
+
+side_actions::iterator side_actions::queue_move(unit& subject, const map_location& source_hex, const map_location& target_hex,
+		arrow_ptr arrow, fake_unit_ptr fake_unit)
+{
+	action_ptr action(new move(subject, source_hex, target_hex, arrow, fake_unit));
+	return queue_action(action);
+}
+
+side_actions::iterator side_actions::insert_action(iterator position, action_ptr action)
 {
 	if (resources::whiteboard->has_planned_unit_map())
 	{
 		ERR_WB << "Modifying action queue while temp modifiers are applied!!!\n";
 	}
-
-	action_ptr action(new move(subject, source_hex, target_hex, arrow, fake_unit));
-	assert(position < end());
+	assert(position >= begin() && position < end());
 	iterator valid_position = actions_.insert(position, action);
 	validate_actions();
 	return valid_position;
 }
 
-side_actions::iterator side_actions::queue_move(unit& subject, const map_location& source_hex, const map_location& target_hex,
-		arrow_ptr arrow,	fake_unit_ptr fake_unit)
+side_actions::iterator side_actions::queue_action(action_ptr action)
 {
 	if (resources::whiteboard->has_planned_unit_map())
 	{
 		ERR_WB << "Modifying action queue while temp modifiers are applied!!!\n";
 	}
-
-	action_ptr action(new move(subject, source_hex, target_hex, arrow, fake_unit));
 	actions_.push_back(action);
-	// Contrary to insert_move, no need to validate actions here since we're adding to the end of the queue
+	// Contrary to insert_action, no need to validate actions here since we're adding to the end of the queue
 	return end() - 1;
 }
 
