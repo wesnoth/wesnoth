@@ -45,6 +45,9 @@ struct time_of_day
 	int lawful_bonus;
 	int bonus_modified;
 
+	/** Indicate if it's local ToD (in a [time_area]) */
+	bool local;
+
 	/** The image to be displayed in the game status. */
 	std::string image;
 	t_string name;
