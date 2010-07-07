@@ -90,7 +90,6 @@ class tod_manager : public savegame::savegame_config
 		 */
 		void remove_time_area(const std::string& id);
 
-		void next_time_of_day();
 		const std::vector<time_of_day> times() const {return times_;}
 
 		//consider tod modifying units (e.g. illuminates)

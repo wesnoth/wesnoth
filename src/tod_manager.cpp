@@ -253,12 +253,6 @@ time_of_day tod_manager::get_time_of_day_turn(int nturn) const
 
 	return times_[time];
 }
-void tod_manager::next_time_of_day()
-{
-	VALIDATE(times_.size(), _("No time of day has been defined."));
-
-	currentTime_ = (currentTime_ + 1)%times_.size();
-}
 
 time_of_day tod_manager::time_of_day_at(const unit_map& units,const map_location& loc, const gamemap& map) const
 {
@@ -326,7 +320,9 @@ void tod_manager::set_turn(unsigned int num)
 
 bool tod_manager::next_turn()
 {
-	next_time_of_day();
+	VALIDATE(times_.size(), _("No time of day has been defined."));
+
+	currentTime_ = (currentTime_ + 1)%times_.size();
 	++turn_;
 	return is_time_left();
 }
