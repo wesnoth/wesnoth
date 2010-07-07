@@ -103,18 +103,14 @@ time_of_day tod_manager::get_time_of_day() const
 	return times_[currentTime_];
 }
 
-bool tod_manager::set_time_of_day(int newTime)
+void tod_manager::set_time_of_day(int newTime)
 {
-	// newTime can come from network so have to take run time test
-	if( newTime >= static_cast<int>(times_.size())
-			|| newTime < 0)
-	{
-		return false;
+	newTime = newTime % times_.size();
+	while(newTime < 0) {
+		newTime += times_.size();
 	}
 
 	currentTime_ = newTime;
-
-	return true;
 }
 
 time_of_day tod_manager::get_previous_time_of_day() const

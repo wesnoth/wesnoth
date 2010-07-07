@@ -49,9 +49,8 @@ class tod_manager : public savegame::savegame_config
 		time_of_day get_time_of_day(int illuminated, const map_location& loc, int n_turn) const;
 		/**
 		 * Sets global time of day in this turn.
-		 * Time is a number between 0 and n-1, where n is number of ToDs.
 		 */
-		bool set_time_of_day(int newTime);
+		void set_time_of_day(int newTime);
 
 		static bool is_start_ToD(const std::string&);
 
