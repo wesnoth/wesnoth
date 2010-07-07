@@ -18,6 +18,7 @@
 
 #include "highlight_visitor.hpp"
 #include "manager.hpp"
+#include "action.hpp"
 #include "move.hpp"
 #include "side_actions.hpp"
 
@@ -89,11 +90,11 @@ void highlight_visitor::highlight()
 		find_secondary_highlights();
 
 
-		if (main_highlight_ )
+		if (action_ptr main = main_highlight_.lock())
 		{
 			//Highlight main highlight
 			mode_ = HIGHLIGHT_MAIN;
-			main_highlight_->accept(*this);
+			main->accept(*this);
 		}
 
 		if (!secondary_highlights_.empty())
@@ -101,9 +102,9 @@ void highlight_visitor::highlight()
 			owner_unit_->set_selecting();
 			//Highlight secondary highlights
 			mode_ = HIGHLIGHT_SECONDARY;
-			foreach(action_ptr action, secondary_highlights_)
+			foreach(weak_action_ptr weak, secondary_highlights_)
 			{
-				if (action)
+				if (action_ptr action = weak.lock())
 				{
 					action->accept(*this);
 				}
@@ -119,12 +120,12 @@ void highlight_visitor::unhighlight()
 
 	mode_ = UNHIGHLIGHT;
 	//unhighlight main highlight
-	if( main_highlight_)
-		main_highlight_->accept(*this);
+	if (action_ptr main = main_highlight_.lock() )
+		main->accept(*this);
 	//unhighlight secondary highlights
-	foreach(action_ptr action, secondary_highlights_)
+	foreach(weak_action_ptr weak, secondary_highlights_)
 	{
-		if (action)
+		if (action_ptr action = weak.lock())
 		{
 			action->accept(*this);
 		}
@@ -152,7 +153,7 @@ action_ptr highlight_visitor::get_delete_target()
 
 action_ptr highlight_visitor::get_bump_target()
 {
-	return main_highlight_;
+	return main_highlight_.lock();
 }
 
 void highlight_visitor::visit_move(move_ptr move)
@@ -167,7 +168,7 @@ void highlight_visitor::visit_move(move_ptr move)
 		break;
 	case FIND_SECONDARY_HIGHLIGHTS:
 		if (&move->unit_ == owner_unit_
-				&& move != main_highlight_)
+				&& move != main_highlight_.lock())
 		{
 			secondary_highlights_.push_back(move);
 		}
@@ -183,7 +184,7 @@ void highlight_visitor::visit_move(move_ptr move)
 		move->fake_unit_->set_ghosted(false);
 		break;
 	case UNHIGHLIGHT:
-		if (move == main_highlight_)
+		if (move == main_highlight_.lock())
 		{
 			move->arrow_->set_color(color_backup_);
 		}
@@ -208,13 +209,13 @@ void highlight_visitor::find_main_highlight()
 	// Even if we already found an owner_unit_ in the mouseover hex,
 	// action destination hexes usually take priority over that
 	mode_ = FIND_MAIN_HIGHLIGHT;
-	assert(!main_highlight_);
+	assert(main_highlight_.expired());
 	foreach(action_ptr action, *side_actions_)
 	{
 		action->accept(*this);
-		if (main_highlight_)
+		if (action_ptr main = main_highlight_.lock())
 		{
-			owner_unit_ = &main_highlight_->get_unit();
+			owner_unit_ = &main->get_unit();
 			break;
 		}
 	}

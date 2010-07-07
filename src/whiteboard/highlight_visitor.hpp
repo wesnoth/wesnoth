@@ -23,6 +23,8 @@
 
 #include "map_location.hpp"
 
+#include <boost/weak_ptr.hpp>
+
 static lg::log_domain log_whiteboard_highlight("whiteboard/highlight");
 #define ERR_WB_H LOG_STREAM(err, log_whiteboard_highlight)
 #define WRN_WB_H LOG_STREAM(warn, log_whiteboard_highlight)
@@ -77,8 +79,9 @@ private:
 	unit* selected_unit_;
 	map_location mouseover_hex_;
 	unit* owner_unit_;
-	action_ptr main_highlight_;
-	action_queue secondary_highlights_;
+
+	weak_action_ptr main_highlight_;
+	std::deque<weak_action_ptr> secondary_highlights_;
 
 	std::string color_backup_;
 };

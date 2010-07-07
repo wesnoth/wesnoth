@@ -29,6 +29,7 @@ static lg::log_domain log_whiteboard("whiteboard");
 #define DBG_WB LOG_STREAM(debug, log_whiteboard)
 
 #include <boost/shared_ptr.hpp>
+#include <boost/weak_ptr.hpp>
 #include <deque>
 
 class arrow;
@@ -46,6 +47,7 @@ typedef boost::shared_ptr<arrow> arrow_ptr;
 typedef boost::shared_ptr<unit> fake_unit_ptr;
 
 typedef boost::shared_ptr<action> action_ptr;
+typedef boost::weak_ptr<action> weak_action_ptr;
 typedef std::deque<action_ptr> action_queue;
 typedef boost::shared_ptr<move> move_ptr;
 typedef boost::shared_ptr<side_actions> side_actions_ptr;
