@@ -23,6 +23,12 @@
 
 #include "map_location.hpp"
 
+static lg::log_domain log_whiteboard_highlight("whiteboard/highlight");
+#define ERR_WB_H LOG_STREAM(err, log_whiteboard_highlight)
+#define WRN_WB_H LOG_STREAM(warn, log_whiteboard_highlight)
+#define LOG_WB_H LOG_STREAM(info, log_whiteboard_highlight)
+#define DBG_WB_H LOG_STREAM(debug, log_whiteboard_highlight)
+
 namespace wb
 {
 

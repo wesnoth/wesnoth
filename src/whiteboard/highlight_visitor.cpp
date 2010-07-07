@@ -56,16 +56,18 @@ void highlight_visitor::set_mouseover_hex(const map_location& hex)
 	scoped_real_unit_map ensure_real_map;
 	mouseover_hex_ = hex;
 	//if we're right over a unit, just highlight all of this unit's actions
-	//and select it's first action as the focus
 	unit_map::const_iterator it = unit_map_.find(hex);
 	if (it != unit_map_.end())
 	{
 		owner_unit_ = &(*it);
-		side_actions::iterator action_it = side_actions_->find_first_action_of(*it);
-		if (action_it != side_actions_->end())
-		{
-			main_highlight_ = *action_it;
-		}
+
+		//commented code below is to also select the first action of this unit as
+		//the main highlight; it doesn't fit too well in the UI
+//		side_actions::iterator action_it = side_actions_->find_first_action_of(*it);
+//		if (action_it != side_actions_->end())
+//		{
+//			main_highlight_ = *action_it;
+//		}
 	}
 }
 
@@ -86,23 +88,26 @@ void highlight_visitor::highlight()
 		//Find secondary actions to highlight
 		find_secondary_highlights();
 
-		//Highlight owner unit
-		owner_unit_->set_selecting();
-		//Highlight main highlight
-		if (main_highlight_)
+
+		if (main_highlight_ )
 		{
+			//Highlight main highlight
 			mode_ = HIGHLIGHT_MAIN;
 			main_highlight_->accept(*this);
 		}
-		//Highlight secondary highlights
-		mode_ = HIGHLIGHT_SECONDARY;
-		foreach(action_ptr action, secondary_highlights_)
-		{
-			if (action)
+
+		if (!secondary_highlights_.empty())
+			//Highlight owner unit
+			owner_unit_->set_selecting();
+			//Highlight secondary highlights
+			mode_ = HIGHLIGHT_SECONDARY;
+			foreach(action_ptr action, secondary_highlights_)
 			{
-				action->accept(*this);
+				if (action)
+				{
+					action->accept(*this);
+				}
 			}
-		}
 	}
 }
 
@@ -200,20 +205,17 @@ void highlight_visitor::visit_all_actions()
 
 void highlight_visitor::find_main_highlight()
 {
-	// We only need to search for an action on this hex if we haven't
-	// already found a unit here.
-	if (!owner_unit_)
+	// Even if we already found an owner_unit_ in the mouseover hex,
+	// action destination hexes usually take priority over that
+	mode_ = FIND_MAIN_HIGHLIGHT;
+	assert(!main_highlight_);
+	foreach(action_ptr action, *side_actions_)
 	{
-		mode_ = FIND_MAIN_HIGHLIGHT;
-		assert(!main_highlight_);
-		foreach(action_ptr action, *side_actions_)
+		action->accept(*this);
+		if (main_highlight_)
 		{
-			action->accept(*this);
-			if (main_highlight_)
-			{
-				owner_unit_ = &action->get_unit();
-				break;
-			}
+			owner_unit_ = &main_highlight_->get_unit();
+			break;
 		}
 	}
 }
