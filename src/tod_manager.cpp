@@ -100,8 +100,6 @@ config tod_manager::to_config() const
 
 time_of_day tod_manager::get_time_of_day() const
 {
-	VALIDATE(times_.size(), _("No time of day has been defined."));
-
 	return times_[currentTime_];
 }
 
@@ -121,7 +119,7 @@ bool tod_manager::set_time_of_day(int newTime)
 
 time_of_day tod_manager::get_previous_time_of_day() const
 {
-	return get_time_of_day_turn(turn() - 1);
+	return get_time_of_day_turn(turn_ - 1);
 }
 
 time_of_day tod_manager::get_time_of_day(int illuminated, const map_location& loc, int n_turn) const
@@ -149,7 +147,7 @@ time_of_day tod_manager::get_time_of_day(int illuminated, const map_location& lo
 
 time_of_day tod_manager::get_time_of_day(int illuminated, const map_location& loc) const
 {
-	return get_time_of_day(illuminated, loc, turn());
+	return get_time_of_day(illuminated, loc, turn_);
 }
 
 bool tod_manager::is_start_ToD(const std::string& random_start_time)
@@ -242,12 +240,9 @@ void tod_manager::set_start_ToD(config &level, int current_turn)
 
 time_of_day tod_manager::get_time_of_day_turn(int nturn) const
 {
-	VALIDATE(times_.size(), _("No time of day has been defined."));
+	int time = (currentTime_ + nturn  - turn_) % times_.size();
 
-	int time = (currentTime_ + nturn  - turn_)% times_.size();
-
-	if (time < 0)
-	{
+	while(time < 0)	{
 		time += times_.size();
 	}
 
@@ -301,7 +296,6 @@ void tod_manager::add_turns(int num)
 
 void tod_manager::set_turn(unsigned int num)
 {
-	VALIDATE(times_.size(), _("No time of day has been defined."));
 	const unsigned int old_num = turn_;
 	// Correct ToD
 	int current_time = (currentTime_ + num - old_num) % times_.size();
@@ -320,8 +314,6 @@ void tod_manager::set_turn(unsigned int num)
 
 bool tod_manager::next_turn()
 {
-	VALIDATE(times_.size(), _("No time of day has been defined."));
-
 	currentTime_ = (currentTime_ + 1)%times_.size();
 	++turn_;
 	return is_time_left();
