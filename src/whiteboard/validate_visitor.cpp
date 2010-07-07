@@ -57,6 +57,11 @@ void validate_visitor::validate_actions()
 
 void validate_visitor::visit_move(move_ptr move)
 {
+	//invalidate start and end hexes so number display is updated properly
+	resources::screen->invalidate(move->source_hex_);
+	resources::screen->invalidate(move->dest_hex_);
+
+	//validation proper
 	bool valid = true;
 
 	if (!(move->source_hex_.valid() && move->dest_hex_.valid()))
