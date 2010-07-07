@@ -23,8 +23,11 @@
 #include "validate_visitor.hpp"
 
 #include "foreach.hpp"
+#include "game_display.hpp"
 #include "resources.hpp"
+
 #include <set>
+#include <sstream>
 
 namespace wb
 {
@@ -38,9 +41,27 @@ side_actions::~side_actions()
 {
 }
 
-const action_queue& side_actions::actions() const
+void side_actions::draw_hex(const map_location& hex)
 {
-	return actions_;
+	const_iterator it;
+	for(it = begin(); it != end(); ++it)
+	{
+		if((*it)->is_target_hex(hex))
+		{
+			//draw number corresponding to iterator's position + 1
+			size_t number = (it - begin()) + 1;
+			std::stringstream number_text;
+			number_text << number;
+			const size_t font_size = 12;
+			SDL_Color color; color.r = 255; color.g = 255; color.b = 0; //yellow
+			// position 0,0 in the hex is the upper left corner
+			const double x_in_hex = 0.80; // 0.80 = horizontal coord., close to the right side of the hex
+			const double y_in_hex = 0.5; //0.5 = halfway in the hex vertically
+			resources::screen->draw_text_in_hex(hex, display::LAYER_ACTIONS_NUMBERING,
+					number_text.str(), font_size, color, x_in_hex, y_in_hex);
+			return; //since we found the appropriate hex
+		}
+	}
 }
 
 side_actions::iterator side_actions::execute_next()

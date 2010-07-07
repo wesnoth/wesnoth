@@ -149,7 +149,7 @@ void move::apply_temp_modifier(unit_map& unit_map)
 	//Modify movement points accordingly
 	DBG_WB <<"Changing movement points for unit " << unit_.name() << " [" << unit_.underlying_id()
 			<< "] from " << unit_.movement_left() <<" to "
-			<< unit_.movement_left() - movement_cost_ << "\n.";
+			<< unit_.movement_left() - movement_cost_ << ".\n";
 	unit_.set_movement(unit_.movement_left() - movement_cost_);
 
 }
@@ -165,10 +165,14 @@ void move::remove_temp_modifier(unit_map& unit_map)
 	unit_.set_movement(unit_.movement_left() + movement_cost_);
 }
 
-bool move::is_related_to(const map_location& hex) const
+void move::draw_hex(const map_location& hex)
 {
-	//bool is_related = arrow_->path_contains(hex);
-	bool is_related = hex == source_hex_ || hex == dest_hex_;
+	(void) hex; //temporary to avoid unused param warning
+}
+
+bool move::is_target_hex(const map_location& hex) const
+{
+	bool is_related = hex == dest_hex_;
 	return is_related;
 }
 

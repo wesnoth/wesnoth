@@ -42,7 +42,10 @@ public:
 	side_actions();
 	virtual ~side_actions();
 
-	const action_queue& actions() const;
+	const action_queue& actions() const { return actions_; }
+
+	/** Gets called when display is drawing a hex, to allow drawing symbols to the screen */
+	void draw_hex(const map_location& hex);
 
 	/**
 	 * Executes the first action in the queue, and then deletes it.

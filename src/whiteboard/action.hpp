@@ -51,17 +51,18 @@ public:
 	/** Removes the result of this action from the specified unit map. */
 	virtual void remove_temp_modifier(unit_map& unit_map) = 0;
 
-	/**
-	 * Indicates whether this action is related to the specified hex.
-	 * "Related" means the action affects this hex or draws a visual symbol in it
-	 * at some point. Ex.: a move is related to this hex if its path goes through it.
-	 */
-	virtual bool is_related_to(const map_location& hex) const = 0;
+	/** Gets called by display when drawing a hex, to allow actions to draw to the screen. */
+	virtual void draw_hex(const map_location& hex) = 0;
 
 	/**
 	 * Indicates whether this actions targets the specified unit.
 	 */
 	virtual bool is_related_to(const unit& unit) const = 0;
+
+	/**
+	 * Answers whether the specified hex is the main target of action for this action.
+	 */
+	virtual bool is_target_hex(const map_location& hex) const = 0;
 
 	/** Return the unit targeted by this action. */
 	virtual unit& get_unit() = 0;

@@ -32,9 +32,16 @@
 #include "team.hpp"
 #include "unit_display.hpp"
 
-#include <sstream>
-
 namespace wb {
+
+
+static side_actions_ptr current_actions()
+{
+	int current_side = resources::controller->current_side();
+	team& current_team = (*resources::teams)[current_side - 1];
+	side_actions_ptr side_actions = current_team.get_side_actions();
+	return side_actions;
+}
 
 manager::manager():
 		active_(false),
@@ -47,18 +54,11 @@ manager::manager():
 		selected_unit_(NULL),
 		planned_unit_map_active_(false)
 {
+	highlighter_.reset(new highlight_visitor(*resources::units, current_actions()));
 }
 
 manager::~manager()
 {
-}
-
-static side_actions_ptr current_actions()
-{
-	int current_side = resources::controller->current_side();
-	team& current_team = (*resources::teams)[current_side - 1];
-	side_actions_ptr side_actions = current_team.get_side_actions();
-	return side_actions;
 }
 
 void manager::set_planned_unit_map()
@@ -98,26 +98,7 @@ void manager::set_real_unit_map()
 
 void manager::draw_hex(const map_location& hex)
 {
-	const action_queue& actions = current_actions()->actions();
-	action_queue::const_iterator it = actions.begin();
-	for(; it != actions.end(); ++it)
-	{
-		if((*it)->is_related_to(hex))
-		{
-			//draw number corresponding to iterator's position + 1
-			size_t number = (it - actions.begin()) + 1;
-			std::stringstream number_text;
-			number_text << number;
-			const size_t font_size = 12;
-			SDL_Color color; color.r = 255; color.g = 255; color.b = 0; //yellow
-			// position 0,0 in the hex is the upper left corner
-			const double x_in_hex = 0.80; // 0.80 = horizontal coord., close to the right side of the hex
-			const double y_in_hex = 0.5; //0.5 = halfway in the hex vertically
-			resources::screen->draw_text_in_hex(hex, display::LAYER_ACTIONS_NUMBERING,
-					number_text.str(), font_size, color, x_in_hex, y_in_hex);
-			return;
-		}
-	}
+	current_actions()->draw_hex(hex);
 }
 
 void manager::on_mouseover_change(const map_location& hex)
@@ -126,10 +107,6 @@ void manager::on_mouseover_change(const map_location& hex)
 	// Acting otherwise causes a crash.
 	if (active_ && !selected_unit_)
 	{
-		if (!highlighter_)
-		{
-			highlighter_.reset(new highlight_visitor(*resources::units, current_actions()));
-		}
 		highlighter_->set_mouseover_hex(hex);
 		highlighter_->highlight();
 	}
@@ -258,17 +235,15 @@ void manager::contextual_execute()
 		erase_temp_move();
 
 		//TODO: catch end_turn_exception somewhere here?
+		action_ptr action;
 		if (selected_unit_)
 		{
 				current_actions()->execute(current_actions()->find_first_action_of(*selected_unit_));
 		}
-		else if (highlighter_)
+		else if (highlighter_
+				&& (action = highlighter_->get_execute_target())) //intentional assignment of action with '='
 		{
-			action_ptr action = highlighter_->get_execute_target();
-			if (action)
-			{
-				current_actions()->execute(current_actions()->get_position_of(action));
-			}
+			current_actions()->execute(current_actions()->get_position_of(action));
 		}
 		else
 		{
@@ -283,17 +258,14 @@ void manager::contextual_delete()
 	{
 		erase_temp_move();
 
+		action_ptr action;
 		if (selected_unit_)
 		{
-				current_actions()->remove_action(current_actions()->find_first_action_of(*selected_unit_));
+			current_actions()->remove_action(current_actions()->find_first_action_of(*selected_unit_));
 		}
-		else if (highlighter_)
+		else if (highlighter_ && (action = highlighter_->get_delete_target()))
 		{
-			action_ptr action = highlighter_->get_delete_target();
-			if (action)
-			{
-				current_actions()->remove_action(current_actions()->get_position_of(action));
-			}
+			current_actions()->remove_action(current_actions()->get_position_of(action));
 		}
 		else
 		{
