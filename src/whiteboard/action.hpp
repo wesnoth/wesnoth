@@ -19,14 +19,7 @@
 #ifndef WB_ACTION_HPP_
 #define WB_ACTION_HPP_
 
-#include "log.hpp"
 #include "typedefs.hpp"
-
-static lg::log_domain log_whiteboard("whiteboard");
-#define ERR_WB LOG_STREAM(err, log_whiteboard)
-#define WRN_WB LOG_STREAM(warn, log_whiteboard)
-#define LOG_WB LOG_STREAM(info, log_whiteboard)
-#define DBG_WB LOG_STREAM(debug, log_whiteboard)
 
 namespace wb {
 

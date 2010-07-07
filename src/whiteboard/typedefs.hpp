@@ -21,6 +21,13 @@
 #ifndef WB_TYPEDEFS_HPP_
 #define WB_TYPEDEFS_HPP_
 
+#include "log.hpp"
+static lg::log_domain log_whiteboard("whiteboard");
+#define ERR_WB LOG_STREAM(err, log_whiteboard)
+#define WRN_WB LOG_STREAM(warn, log_whiteboard)
+#define LOG_WB LOG_STREAM(info, log_whiteboard)
+#define DBG_WB LOG_STREAM(debug, log_whiteboard)
+
 #include <boost/shared_ptr.hpp>
 #include <deque>
 
