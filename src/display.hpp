@@ -64,9 +64,6 @@ class gamemap;
 
 class display
 {
-	typedef std::list<arrow*> arrows_list_t;
-	typedef std::map<map_location, arrows_list_t > arrows_map_t;
-
 public:
 	display(CVideo& video, const gamemap* map, const config& theme_cfg,
 			const config& level);
@@ -812,6 +809,8 @@ private:
 	/** Debug flag - overlay terrain codes on tiles */
 	bool draw_terrain_codes_;
 
+	typedef std::list<arrow*> arrows_list_t;
+	typedef std::map<map_location, arrows_list_t > arrows_map_t;
 	/** Maps the list of arrows for each location */
 	arrows_map_t arrows_map_;
 };
