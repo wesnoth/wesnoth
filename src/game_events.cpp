@@ -1022,21 +1022,22 @@ WML_HANDLER_FUNCTION(modify_turns, /*event_info*/, cfg)
 	std::string value = cfg["value"];
 	std::string add = cfg["add"];
 	std::string current = cfg["current"];
+	tod_manager& tod_man = *resources::tod_manager;
 	if(!add.empty()) {
-		resources::controller->modify_turns(add);
+		tod_man.modify_turns(add);
 	} else if(!value.empty()) {
-		resources::controller->add_turns(-resources::controller->number_of_turns());
-		resources::controller->add_turns(lexical_cast_default<int>(value,-1));
+		tod_man.add_turns(-tod_man.number_of_turns());
+		tod_man.add_turns(lexical_cast_default<int>(value,-1));
 	}
 	// change current turn only after applying mods
 	if(!current.empty()) {
-		const unsigned int current_turn_number = resources::controller->turn();
+		const unsigned int current_turn_number = tod_man.turn();
 		const int new_turn_number = lexical_cast_default<int>(current, current_turn_number);
 		const unsigned int new_turn_number_u = static_cast<unsigned int>(new_turn_number);
-		if(new_turn_number_u < current_turn_number || (new_turn_number > resources::controller->number_of_turns() && resources::controller->number_of_turns() != -1)) {
+		if(new_turn_number_u < current_turn_number || (new_turn_number > tod_man.number_of_turns() && tod_man.number_of_turns() != -1)) {
 			ERR_NG << "attempted to change current turn number to one out of range (" << new_turn_number << ") or less than current turn\n";
 		} else if(new_turn_number_u != current_turn_number) {
-			resources::controller->set_turn(new_turn_number_u);
+			tod_man.set_turn(new_turn_number_u);
 			resources::state_of_game->get_variable("turn_number") = new_turn_number;
 			resources::screen->new_turn();
 		}
@@ -1049,7 +1050,7 @@ WML_HANDLER_FUNCTION(store_turns, /*event_info*/, cfg)
 	if(var_name.empty()) {
 		var_name = "turns";
 	}
-	int turns = resources::controller->number_of_turns();
+	int turns = resources::tod_manager->number_of_turns();
 	resources::state_of_game->get_variable(var_name) = turns;
 }
 
@@ -3071,8 +3072,6 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 // Adding/removing new time_areas dynamically with Standard Location Filters.
 WML_HANDLER_FUNCTION(time_area, /*event_info*/, cfg)
 {
-	play_controller *controller = resources::controller;
-
 	log_scope("time_area");
 
 	const bool remove = utils::string_bool(cfg["remove"],false);
@@ -3082,7 +3081,7 @@ WML_HANDLER_FUNCTION(time_area, /*event_info*/, cfg)
 		const std::vector<std::string> id_list =
 			utils::split(ids, ',', utils::STRIP_SPACES | utils::REMOVE_EMPTY);
 		foreach(const std::string& id, id_list) {
-			controller->remove_time_area(id);
+			resources::tod_manager->remove_time_area(id);
 			LOG_NG << "event WML removed time_area '" << id << "'\n";
 		}
 	}
@@ -3099,7 +3098,7 @@ WML_HANDLER_FUNCTION(time_area, /*event_info*/, cfg)
 		filter.restrict_size(game_config::max_loop);
 		filter.get_locations(locs);
 		config parsed_cfg = cfg.get_parsed_config();
-		controller->add_time_area(id, locs, parsed_cfg);
+		resources::tod_manager->add_time_area(id, locs, parsed_cfg);
 		LOG_NG << "event WML inserted time_area '" << id << "'\n";
 	}
 }

@@ -127,28 +127,9 @@ public:
 	 */
 	void check_victory();
 
-	//turn functions
 	size_t turn() const {return tod_manager_.turn();}
-	int number_of_turns() const {return tod_manager_.number_of_turns();}
-	void modify_turns(const std::string& mod)  {tod_manager_.modify_turns(mod);}
-	void add_turns(int num) {tod_manager_.add_turns(num);}
-
-	/** Dynamically change the current turn number. */
-	void set_turn(unsigned int num) {tod_manager_.set_turn(num);}
-
-	/**
-	 * Function to move to the next turn.
-	 *
-	 * @returns                   True if time has not expired.
-	 */
-	bool next_turn() {return tod_manager_.next_turn();}
 
 	int current_side() const { return player_number_; }
-
-	void add_time_area(const config& cfg) {tod_manager_.add_time_area(cfg);}
-	void add_time_area(const std::string& id, const std::set<map_location>& locs,
-				const config& time_cfg) {tod_manager_.add_time_area(id, locs, time_cfg);}
-	void remove_time_area(const std::string& id) {tod_manager_.remove_time_area(id);}
 
 	config to_config() const;
 

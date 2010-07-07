@@ -94,7 +94,7 @@ play_controller::play_controller(const config& level, game_state& state_of_game,
 	first_human_team_(-1),
 	player_number_(1),
 	first_player_(level_["playing_team"].to_int() + 1),
-	start_turn_(turn()),
+	start_turn_(tod_manager_.turn()), // tod_manager_ constructed above
 	is_host_(true),
 	skip_replay_(skip_replay),
 	linger_(false),
@@ -163,7 +163,7 @@ void play_controller::init(CVideo& video){
 	}
 
 	foreach (const config &t, level_.child_range("time_area")) {
-		add_time_area(t);
+		tod_manager_.add_time_area(t);
 	}
 
 	LOG_NG << "initialized teams... "    << (SDL_GetTicks() - ticks_) << "\n";

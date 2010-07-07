@@ -328,7 +328,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 		if (first_human_team_ != -1) { //sp logs
 			log.start(gamestate_, teams_[first_human_team_],
 				loading_game_ ? gamestate_.get_variable("turn_number").str().c_str() : "",
-				number_of_turns(), resources::game_map->write());
+				tod_manager_.number_of_turns(), resources::game_map->write());
 		} else { //ai vs. ai upload logs
 			log.start(gamestate_, resources::game_map->write());
 		}
@@ -817,7 +817,7 @@ void playsingle_controller::handle_generic_event(const std::string& name){
 }
 
 void playsingle_controller::check_time_over(){
-	bool b = next_turn();
+	bool b = tod_manager_.next_turn();
 	if(!b) {
 
 		LOG_NG << "firing time over event...\n";
@@ -900,7 +900,7 @@ void playsingle_controller::store_gold(bool obs)
 		int finishing_bonus_per_turn =
 			map_.villages().size() * game_config::village_income +
 			game_config::base_income;
-		int turns_left = std::max<int>(0, number_of_turns() - turn());
+		int turns_left = std::max<int>(0, tod_manager_.number_of_turns() - turn());
 		int finishing_bonus = (end_level.gold_bonus && turns_left > -1) ?
 			finishing_bonus_per_turn * turns_left : 0;
 		foreach (const team &t, teams_)
