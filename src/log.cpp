@@ -83,14 +83,12 @@ bool set_log_domain_severity(std::string const &name, int severity)
 	return true;
 }
 
-std::string list_logdomains()
+std::string list_logdomains(const std::string& filter)
 {
 	std::ostringstream res;
-	bool first = true;
 	foreach (logd &l, *domains) {
-		if (first) first = false;
-		else res << ", ";
-		res << l.first;
+		if(l.first.find(filter) != std::string::npos)
+			res << l.first << "\n";
 	}
 	return res.str();
 }

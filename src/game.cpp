@@ -1823,7 +1823,8 @@ static int process_command_args(int argc, char** argv) {
 			<< "                               'all' can be used to match any log domain.\n"
 			<< "                               Available levels: error, warning, info, debug.\n"
 			<< "                               By default the 'error' level is used.\n"
-			<< "  --logdomains                 lists defined log domains and exits.\n"
+			<< "  --logdomains [filter]        lists defined log domains containing filter and\n"
+			<< "                               exits.\n"
 			<< "  --max-fps                    the maximum fps the game tries to run at. Values\n"
 			<< "                               should be between 1 and 1000, the default is 50.\n"
 			<< "  -m, --multiplayer            starts a multiplayer game. There are additional\n"
@@ -1955,7 +1956,12 @@ static int process_command_args(int argc, char** argv) {
 			gzip_decode(input_file, output_file);
 
 		} else if(val == "--logdomains") {
-			std::cout << lg::list_logdomains() << "\n";
+			std::string filter;
+			if(arg + 1 != argc) {
+				++arg;
+				filter = argv[arg];
+			}
+			std::cout << lg::list_logdomains(filter);
 			return 0;
 		} else if(val == "--rng-seed") {
 			if (argc <= ++arg) {
