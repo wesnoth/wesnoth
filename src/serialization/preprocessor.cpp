@@ -482,8 +482,9 @@ preprocessor_data::preprocessor_data(preprocessor_streambuf &t,
 			s << ' ';
 		s << utils::escape(name, " \\");
 	}
-	if (!t.location_.empty())
-		s << ' ' << t.linenum_ << ' ' << t.location_;
+	//FIXME: temporary ignore the inclusion chain
+/*	if (!t.location_.empty())
+		s << ' ' << t.linenum_ << ' ' << t.location_;*/
 	t.location_ = s.str();
 	t.linenum_ = linenum;
 	t.textdomain_ = domain;
