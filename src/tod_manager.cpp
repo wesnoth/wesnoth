@@ -247,10 +247,12 @@ time_of_day tod_manager::get_time_of_day_turn(int nturn) const
 
 time_of_day tod_manager::time_of_day_at(const unit_map& units,const map_location& loc, const gamemap& map) const
 {
-	int lighten = std::max<int>(map.get_terrain_info(map.get_terrain(loc)).light_modification() , 0);
-	int darken = std::min<int>(map.get_terrain_info(map.get_terrain(loc)).light_modification() , 0);
+	int light_modif =  map.get_terrain_info(map.get_terrain(loc)).light_modification();
+	int lighten = std::max<int>(light_modif, 0);
+	int darken = std::min<int>(light_modif, 0);
+	int illumination = lighten + darken;
 
-	time_of_day tod = get_time_of_day(lighten + darken,loc);
+	time_of_day tod = get_time_of_day(illumination, loc);
 
 	if(loc.valid()) {
 		map_location locs[7];
@@ -275,8 +277,11 @@ time_of_day tod_manager::time_of_day_at(const unit_map& units,const map_location
 				darken = std::min<int>(mod, darken);
 			}
 		}
+		if(lighten + darken != illumination) {
+			//update tod with the corrected  illumination
+			tod = get_time_of_day(lighten + darken,loc);
+		}
 	}
-	tod = get_time_of_day(lighten + darken,loc);
 
 	return tod;
 }
