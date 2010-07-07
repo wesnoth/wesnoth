@@ -160,6 +160,10 @@ class ana_component : public send_stats_logger
         /** Returns this component's id. */
         ana::net_id get_id() const;
 
+        network::connection get_wesnoth_id() const;
+
+        void set_wesnoth_id( network::connection ) ;
+
         /** Returns a pointer to the ana::stats object for accumulated network stats. */
         const ana::stats* get_stats() const;
 
@@ -182,7 +186,9 @@ class ana_component : public send_stats_logger
         boost::variant<ana::server*, ana::client*> base_;
 
         bool        is_server_;
-        ana::net_id id_;
+
+        ana::net_id         id_;
+        network::connection wesnoth_id_;
 
         network::statistics send_stats_;
         network::statistics receive_stats_;
@@ -268,7 +274,7 @@ class ana_network_manager : public ana::listener_handler,
         size_t send( network::connection connection_num , const config& cfg, bool zipped );
 
         /** Read a message from a given component. */
-        ana::detail::read_buffer read_from( network::connection connection_num );
+        network::connection read_from( network::connection connection_num, ana::detail::read_buffer& buffer );
 
         /** Retrieve upload statistics on a given component. */
         network::statistics get_send_stats(network::connection handle);

@@ -27,6 +27,7 @@
 #include "gettext.hpp"
 #include "log.hpp"
 #include "serialization/string_utils.hpp"
+#include "serialization/parser.hpp"
 #include "thread.hpp"
 #include "util.hpp"
 
@@ -256,18 +257,38 @@ namespace network {
         disconnection_queue.push_back(sock);
     }
 
-    connection receive_data(config&           /*cfg*/,
+    connection receive_data(config&           cfg,
                             connection        connection_num,
                             unsigned int      /*timeout*/,
                             bandwidth_in_ptr* /*bandwidth_in*/)
     {
         ana::net_id id(connection_num);
         std::cout << "DEBUG: Trying to read from connection " << connection_num << ":" << id << "\n";
-        ana::detail::read_buffer buffer = ana_manager.read_from( connection_num );
+        ana::detail::read_buffer buffer;
 
-        std::cout << "DEBUG: Read a buffer of size " << buffer->size() << "\n";
+        network::connection read_id = ana_manager.read_from( connection_num, buffer );
 
-        throw std::runtime_error("TODO:Not implemented receive_data0");
+        if ( buffer == NULL ) // check timeout and return 0, or throw if error occured
+            return 0;
+        else
+        {
+            std::cout << "DEBUG: Read a buffer of size " << buffer->size() << "\n";
+
+            std::istringstream input( buffer->string() );
+
+            read_gz(cfg, input);
+
+            std::cout << cfg;
+            cfg.debug();
+
+            if (cfg.empty())
+                std::cout << "Empty buffer.\n";
+            else
+                std::cout << "Buffer has something.\n";
+
+            return read_id;
+//             return connection_num;
+        }
     }
 
     connection receive_data(config&           /*cfg*/,

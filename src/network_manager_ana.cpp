@@ -145,11 +145,16 @@ ana_component::ana_component( const std::string& host, const std::string& port) 
 
 network::statistics ana_component::get_send_stats() const
 {
+    std::cout << "Send stats.\n";
     return send_stats_;
 }
 
 network::statistics ana_component::get_receive_stats() const
 {
+    std::cout << "Receive stats: " << receive_stats_.current <<
+                 "," << receive_stats_.current_max << "," <<
+                 receive_stats_.total << "\n";
+
     return receive_stats_;
 }
 
@@ -182,6 +187,16 @@ bool ana_component::is_client() const
 ana::net_id ana_component::get_id() const
 {
     return id_;
+}
+
+network::connection ana_component::get_wesnoth_id() const
+{
+    return wesnoth_id_;
+}
+
+void ana_component::set_wesnoth_id( network::connection id )
+{
+    wesnoth_id_ = id;
 }
 
 const ana::stats* ana_component::get_stats() const
@@ -217,6 +232,7 @@ ana::detail::read_buffer ana_component::wait_for_element()
 
 void ana_component::update_receive_stats( size_t buffer_size )
 {
+    // The current field doesn't hold the relevant information, but the size of the last received buffer.
     receive_stats_.current_max = ( buffer_size > receive_stats_.current_max) ? buffer_size : receive_stats_.current_max;
     receive_stats_.total      += buffer_size;
     receive_stats_.current     = buffer_size;
@@ -313,7 +329,10 @@ network::connection ana_network_manager::create_client_and_connect(std::string h
         delete connect_timer_;
 
         if( handler.error() )
+        {
+            network::disconnect( client->id() );
             return 0;
+        }
         else
         {
             //Send handshake
@@ -341,6 +360,8 @@ network::connection ana_network_manager::create_client_and_connect(std::string h
                 // to network byte order ->
                 ana::from_network_byte_order( my_id );
                 std::cout << "DEBUG: Received id " << my_id << "\n";
+
+                new_component->set_wesnoth_id( my_id );
 
                 client->set_header_first_mode();
                 client->run_listener();
@@ -455,7 +476,7 @@ size_t ana_network_manager::send( network::connection connection_num , const con
     return out.str().size();
 }
 
-ana::detail::read_buffer ana_network_manager::read_from( network::connection connection_num )
+network::connection ana_network_manager::read_from( network::connection connection_num, ana::detail::read_buffer& buffer )
 {
     std::set<ana_component*>::iterator it;
 
@@ -467,7 +488,9 @@ ana::detail::read_buffer ana_network_manager::read_from( network::connection con
         if ( components_.size() == 1 )
         {
             it = components_.begin();
-            return (*it)->wait_for_element();
+
+            buffer = (*it)->wait_for_element();
+            return (*it)->get_wesnoth_id();
         }
         else
             throw std::runtime_error("Global Buffer Queue here?");
@@ -482,7 +505,10 @@ ana::detail::read_buffer ana_network_manager::read_from( network::connection con
                         boost::bind(&ana_component::get_id, _1) == id );
 
         if ( it != components_.end())
-            return (*it)->wait_for_element();
+        {
+            buffer = (*it)->wait_for_element();
+            return (*it)->get_wesnoth_id();
+        }
         else
             throw std::runtime_error("Trying a network read from an invalid component id.");
     }

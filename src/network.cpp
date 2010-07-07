@@ -1136,7 +1136,9 @@ statistics get_send_stats(connection handle)
 }
 statistics get_receive_stats(connection handle)
 {
-	return network_worker_pool::get_current_transfer_stats(handle == 0 ? get_socket(sockets.back()) : get_socket(handle)).second;
+    const statistics result = network_worker_pool::get_current_transfer_stats(handle == 0 ? get_socket(sockets.back()) : get_socket(handle)).second;
+
+	return result;
 }
 
 } // end namespace network
