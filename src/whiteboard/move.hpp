@@ -33,7 +33,10 @@ namespace wb {
  */
 class move : public action, public boost::enable_shared_from_this<move>
 {
+
 	friend class validate_visitor;
+	friend class highlight_visitor;
+
 public: //constants
 	static const double ALPHA_HIGHLIGHT;
 	static const double ALPHA_NORMAL;

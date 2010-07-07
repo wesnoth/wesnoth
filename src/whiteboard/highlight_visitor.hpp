@@ -16,28 +16,67 @@
  * @file highlight_visitor.hpp
  */
 
-#ifndef HIGHLIGHT_VISITOR_HPP_
-#define HIGHLIGHT_VISITOR_HPP_
+#ifndef WB_HIGHLIGHT_VISITOR_HPP_
+#define WB_HIGHLIGHT_VISITOR_HPP_
 
 #include "visitor.hpp"
 
-#include "typedefs.hpp"
+#include "map_location.hpp"
 
 namespace wb
 {
 
+
 class highlight_visitor: public wb::visitor
 {
 public:
-	highlight_visitor(bool highlight);
+	highlight_visitor(const unit_map& unit_map, side_actions_ptr side_actions);
 	virtual ~highlight_visitor();
+
+	void set_selected_unit(unit& unit);
+	void set_mouseover_hex(const map_location& hex);
+	const map_location& get_mouseover_hex() const {return mouseover_hex_; }
+
+	void highlight();
+	void unhighlight();
+
+	action_ptr get_execute_target();
+	action_ptr get_delete_target();
+	action_ptr get_bump_target();
 
 	virtual void visit_move(move_ptr move);
 
 private:
-	bool highlight_;
+
+	void clear();
+	void visit_all_actions();
+
+	void find_main_highlight();
+	void find_secondary_highlights();
+
+	enum mode {
+		FIND_MAIN_HIGHLIGHT,
+		FIND_SECONDARY_HIGHLIGHTS,
+		HIGHLIGHT_MAIN,
+		HIGHLIGHT_SECONDARY,
+		UNHIGHLIGHT,
+		NONE
+	};
+
+	mode mode_;
+
+	const unit_map& unit_map_;
+	side_actions_ptr side_actions_;
+
+	unit* selected_unit_;
+	map_location mouseover_hex_;
+	unit* owner_unit_;
+	action_ptr main_highlight_;
+	action_queue secondary_highlights_;
+
+	std::string color_backup_;
 };
 
 } // end namespace wb
 
-#endif /* HIGHLIGHT_VISITOR_HPP_ */
+#endif /* WB_HIGHLIGHT_VISITOR_HPP_ */

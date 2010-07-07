@@ -122,14 +122,65 @@ side_actions::iterator side_actions::queue_action(action_ptr action)
 	return end() - 1;
 }
 
-side_actions::iterator side_actions::move_earlier(side_actions::iterator position, size_t increment)
+//move action toward front of queue
+side_actions::iterator side_actions::bump_earlier(side_actions::iterator position)
 {
-	return move_in_queue(position, - (int) increment);
+	if (resources::whiteboard->has_planned_unit_map())
+	{
+		ERR_WB << "Modifying action queue while temp modifiers are applied!!!\n";
+	}
+
+	assert(validate_iterator(position));
+	//Do nothing if the result position would be impossible
+	if(!validate_iterator(position - 1))
+		return end();
+
+	//Verify we're not moving an action out-of-order compared to other action of the same unit
+	side_actions::iterator previous = position - 1;
+	if (&(*previous)->get_unit() == &(*position)->get_unit())
+		return end();
+
+	action_ptr action = *position;
+	action_queue::iterator after = actions_.erase(position);
+	//be careful, previous iterators have just been invalidated by erase()
+	action_queue::iterator destination = after - 1;
+	assert(destination >= begin() && destination <= end());
+	action_queue::iterator valid_position = actions_.insert(destination, action);
+	assert(validate_iterator(valid_position));
+	validate_actions();
+	return valid_position;
 }
 
-side_actions::iterator side_actions::move_later(side_actions::iterator position, size_t increment)
+//move action toward back of queue
+side_actions::iterator side_actions::bump_later(side_actions::iterator position)
 {
-	return move_in_queue(position, (int) increment);
+	DBG_WB << "Bump requested for action from pos. " << position - begin() << "/" << actions_.size()
+			<< " to pos. " << (position + 1) - begin()  << "/" << actions_.size() << ".\n";
+	if (resources::whiteboard->has_planned_unit_map())
+	{
+		ERR_WB << "Modifying action queue while temp modifiers are applied!!!\n";
+	}
+
+	assert(validate_iterator(position));
+	//Do nothing if the result position would be impossible
+	if(!validate_iterator(position + 1))
+		return end();
+
+	//Verify we're not moving an action out-of-order compared to other action of the same unit
+	side_actions::iterator previous = position + 1;
+	if (&(*previous)->get_unit() == &(*position)->get_unit())
+		return end();
+
+	action_ptr action = *position;
+	action_queue::iterator after = actions_.erase(position);
+	//be careful, previous iterators have just been invalidated by erase()
+	DBG_WB << "Action temp. removed, position after is " << after - begin()  << "/" << actions_.size() << ".\n";
+	action_queue::iterator destination = after + 1;
+	assert(destination >= begin() && destination <= end());
+	action_queue::iterator valid_position = actions_.insert(destination, action);
+	assert(validate_iterator(valid_position));
+	validate_actions();
+	return valid_position;
 }
 
 side_actions::iterator side_actions::remove_action(side_actions::iterator position)
@@ -220,27 +271,5 @@ void side_actions::validate_actions()
 	validate_visitor validator(*resources::units, shared_from_this());
 	validator.validate_actions();
 }
-
-side_actions::iterator side_actions::move_in_queue(side_actions::iterator position, int increment)
-{
-	if (resources::whiteboard->has_planned_unit_map())
-	{
-		ERR_WB << "Modifying action queue while temp modifiers are applied!!!\n";
-	}
-
-	assert(!actions_.empty());
-	assert(validate_iterator(position));
-	if (actions_.empty() || !validate_iterator(position))
-		return end();
-
-	action_ptr action = *position;
-	action_queue::iterator after = actions_.erase(position);
-	//be careful, previous iterators have just been invalidated by erase()
-	action_queue::iterator destination = after + increment;
-	action_queue::iterator valid_position = actions_.insert(destination, action);
-	validate_actions();
-	return valid_position;
-}
-
 
 } //end namespace wb

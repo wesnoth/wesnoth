@@ -52,6 +52,8 @@ public:
 	 */
 	virtual void set_color(const std::string& color);
 
+	virtual std::string get_color() const { return color_; }
+
 	/**
 	 * The style is simply the name of a subdirectory under images/arrows,
 	 * that holds an alternate copy of the arrow graphics.

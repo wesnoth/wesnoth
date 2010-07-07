@@ -35,6 +35,7 @@ namespace pathfind {
 namespace wb {
 
 class mapbuilder_visitor;
+class highlight_visitor;
 
 /**
  * This class holds and manages all of the whiteboard's planned actions.
@@ -67,16 +68,7 @@ public:
 	 */
 	void draw_hex(const map_location& hex);
 
-	/**
-	 * Highlights the action for this unit,
-	 * for instance highlights the arrow if it's a move.
-	 */
-	void highlight_action(const unit& unit);
-
 	void on_mouseover_change(const map_location& hex);
-	void highlight_hex(const map_location& hex);
-	void remove_highlight();
-
 	/** Choose the target unit for action creation */
 	void on_unit_select(unit& unit);
 	void on_unit_deselect();
@@ -118,6 +110,7 @@ private:
 	bool active_;
 
 	boost::scoped_ptr<mapbuilder_visitor> mapbuilder_;
+	boost::scoped_ptr<highlight_visitor> highlighter_;
 
 	boost::scoped_ptr<pathfind::marked_route> route_;
 	std::vector<map_location> steps_;
@@ -126,7 +119,6 @@ private:
 	fake_unit_ptr fake_unit_;
 
 	unit* selected_unit_;
-	unit* highlighted_unit_;
 
 	bool planned_unit_map_active_;
 };

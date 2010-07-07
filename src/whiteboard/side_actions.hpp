@@ -102,17 +102,17 @@ public:
 
 	/**
 	 * Moves an action earlier in the execution order (i.e. at the front of the queue),
-	 * by the specified increment.
+	 * by one position.
 	 * @return The action's new position.
 	 */
-	iterator move_earlier(iterator position, size_t increment);
+	iterator bump_earlier(iterator position);
 
 	/**
 	 * Moves an action later in the execution order (i.e. at the back of the queue),
-	 * by the specified increment.
+	 * by one position.
 	 * @return The action's new position.
 	 */
-	iterator move_later(iterator position, size_t increment);
+	iterator bump_later(iterator position);
 
 	/**
 	 * Deletes the action at the specified position.
@@ -141,13 +141,6 @@ public:
 	void validate_actions();
 
 private:
-	/**
-	 * Utility function to move an action around the queue.
-	 * Positive increment = move toward back of the queue and later execution.
-	 * Negative increment = move toward front of the queue and earlier execution.
-	 * @return The action's new position.
-	 */
-	iterator move_in_queue(iterator position, int increment);
 
 	bool validate_iterator(iterator position) { return position >= begin() && position < end(); }
 

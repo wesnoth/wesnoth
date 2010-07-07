@@ -39,12 +39,12 @@ namespace wb {
 manager::manager():
 		active_(false),
 		mapbuilder_(),
+		highlighter_(),
 		route_(),
 		steps_(),
 		move_arrow_(),
 		fake_unit_(),
 		selected_unit_(NULL),
-		highlighted_unit_(NULL),
 		planned_unit_map_active_(false)
 {
 }
@@ -126,77 +126,19 @@ void manager::on_mouseover_change(const map_location& hex)
 	// Acting otherwise causes a crash.
 	if (active_ && !selected_unit_)
 	{
-		remove_highlight();
-		highlight_hex(hex);
-	}
-}
-
-void manager::highlight_hex(const map_location& hex)
-{
-	unit_map::iterator highlighted_unit;
-	bool unit_exists;
-	{
-		scoped_planned_unit_map wb_modifiers;
-		highlighted_unit = resources::units->find(hex);
-		unit_exists = highlighted_unit.valid();
-	}
-
-	if (unit_exists)
-	{
-		highlighted_unit_ = &*highlighted_unit;
-	}
-	else
-	{
-		action_queue actions = current_actions()->actions();
-		foreach(action_ptr action, actions)
+		if (!highlighter_)
 		{
-			if (action->is_related_to(hex))
-			{
-				highlighted_unit_ = &action->get_unit();
-			}
+			highlighter_.reset(new highlight_visitor(*resources::units, current_actions()));
 		}
+		highlighter_->set_mouseover_hex(hex);
+		highlighter_->highlight();
 	}
-
-	if (highlighted_unit_)
-	{
-		highlight_visitor highlighter(true);
-
-		action_queue actions = current_actions()->actions();
-		foreach(action_ptr action, actions)
-		{
-			if (action->is_related_to(*highlighted_unit_))
-			{
-				action->accept(highlighter);
-			}
-		}
-	}
-}
-
-void manager::remove_highlight()
-{
-	highlight_visitor unhighlighter(false);
-
-	action_queue actions = current_actions()->actions();
-	foreach(action_ptr action, actions)
-	{
-		action->accept(unhighlighter);
-	}
-	highlighted_unit_ = NULL;
 }
 
 void manager::on_unit_select(unit& unit)
 {
 	erase_temp_move();
-	remove_highlight();
-	action_queue actions = current_actions()->actions();
-	highlight_visitor highlighter(true);
-	foreach(action_ptr action, actions)
-	{
-		if (action->is_related_to(unit))
-		{
-			action->accept(highlighter);
-		}
-	}
+
 	selected_unit_ = &unit;
 	DBG_WB << "Selected unit " << selected_unit_->name() << " [" << selected_unit_->id() << "]\n";
 }
@@ -313,16 +255,20 @@ void manager::contextual_execute()
 {
 	if (!current_actions()->empty())
 	{
-		//TODO: catch end_turn_exception somewhere here?
-		//TODO: properly handle movement points, probably through the mapbuilder_visitor
+		erase_temp_move();
 
-		if (selected_unit_ && unit_has_actions(*selected_unit_))
+		//TODO: catch end_turn_exception somewhere here?
+		if (selected_unit_)
 		{
-			current_actions()->execute(current_actions()->find_first_action_of(*selected_unit_));
+				current_actions()->execute(current_actions()->find_first_action_of(*selected_unit_));
 		}
-		else if (highlighted_unit_ && unit_has_actions(*highlighted_unit_))
+		else if (highlighter_)
 		{
-			current_actions()->execute(current_actions()->find_first_action_of(*highlighted_unit_));
+			action_ptr action = highlighter_->get_execute_target();
+			if (action)
+			{
+				current_actions()->execute(current_actions()->get_position_of(action));
+			}
 		}
 		else
 		{
@@ -335,15 +281,19 @@ void manager::contextual_delete()
 {
 	if (!current_actions()->empty())
 	{
-		if (selected_unit_ && unit_has_actions(*selected_unit_))
+		erase_temp_move();
+
+		if (selected_unit_)
 		{
-			remove_highlight();
-			erase_temp_move();
-			current_actions()->remove_action(current_actions()->find_last_action_of(*selected_unit_));
+				current_actions()->remove_action(current_actions()->find_first_action_of(*selected_unit_));
 		}
-		else if (highlighted_unit_ && unit_has_actions(*highlighted_unit_))
+		else if (highlighter_)
 		{
-			current_actions()->remove_action(current_actions()->find_last_action_of(*highlighted_unit_));
+			action_ptr action = highlighter_->get_delete_target();
+			if (action)
+			{
+				current_actions()->remove_action(current_actions()->get_position_of(action));
+			}
 		}
 		else
 		{
@@ -354,38 +304,24 @@ void manager::contextual_delete()
 
 void manager::contextual_bump_up_action()
 {
-	if (!current_actions()->empty())
+	if (!current_actions()->empty() && highlighter_)
 	{
-		if (selected_unit_ && unit_has_actions(*selected_unit_))
+		action_ptr action = highlighter_->get_bump_target();
+		if (action)
 		{
-
-		}
-		else if (highlighted_unit_ && unit_has_actions(*highlighted_unit_))
-		{
-
-		}
-		else
-		{
-
+			current_actions()->bump_earlier(current_actions()->get_position_of(action));
 		}
 	}
 }
 
 void manager::contextual_bump_down_action()
 {
-	if (!current_actions()->empty())
+	if (!current_actions()->empty() && highlighter_)
 	{
-		if (selected_unit_ && unit_has_actions(*selected_unit_))
+		action_ptr action = highlighter_->get_bump_target();
+		if (action)
 		{
-
-		}
-		else if (highlighted_unit_ && unit_has_actions(*highlighted_unit_))
-		{
-
-		}
-		else
-		{
-
+			current_actions()->bump_later(current_actions()->get_position_of(action));
 		}
 	}
 }
