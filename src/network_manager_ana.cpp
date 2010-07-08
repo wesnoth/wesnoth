@@ -71,37 +71,41 @@ void ana_send_handler::wait_completion()
 ana_receive_handler::ana_receive_handler( ) :
     mutex_(),
     handler_mutex_(),
-    timeout_mutex_(),
+    timeout_called_mutex_(),
     error_code_(),
     buffer_(),
     receive_timer_( NULL ),
-    received_( false )
+    finished_( false )
 {
     std::cout << "DEBUG: Constructing a new ana_receive_handler...\n";
     mutex_.lock();
-    timeout_mutex_.lock();
+    timeout_called_mutex_.lock();
 }
 
 ana_receive_handler::~ana_receive_handler()
 {
-    boost::mutex::scoped_lock lock( handler_mutex_);
-
-    if ( receive_timer_ != NULL )
-        delete receive_timer_;
-
-    timeout_mutex_.lock();
-    timeout_mutex_.unlock();
+    timeout_called_mutex_.lock();
+    timeout_called_mutex_.unlock();
 }
 
 void ana_receive_handler::wait_completion(ana::detail::timed_sender* component, size_t timeout_ms )
 {
-    if (timeout_ms > 0)
     {
-        receive_timer_ = component->create_timer();
+        boost::mutex::scoped_lock lock( handler_mutex_);
+        if ( finished_ )
+        {
+            mutex_.unlock();
+            timeout_called_mutex_.unlock();
+        }
+        else if ( timeout_ms > 0 )
+        {
+            receive_timer_ = component->create_timer();
 
-        receive_timer_->wait( ana::time::milliseconds(timeout_ms),
-                            boost::bind(&ana_receive_handler::handle_timeout, this, ana::timeout_error ) );
+            receive_timer_->wait( ana::time::milliseconds(timeout_ms),
+                                boost::bind(&ana_receive_handler::handle_timeout, this, ana::timeout_error ) );
+        }
     }
+
     mutex_.lock();
     mutex_.unlock();
 }
@@ -110,44 +114,54 @@ void ana_receive_handler::handle_message(ana::error_code error_c, ana::net_id, a
 {
     boost::mutex::scoped_lock lock( handler_mutex_);
 
-    received_ = true;
-
     delete receive_timer_;
     receive_timer_ = NULL;
+
     buffer_ = read_buffer;
     error_code_ = error_c;
-    mutex_.unlock();
+
+    if (! finished_ )
+    {
+        finished_ = true;
+        mutex_.unlock();
+    }
 }
 
 void ana_receive_handler::handle_disconnect(ana::error_code error_c, ana::net_id)
 {
     boost::mutex::scoped_lock lock( handler_mutex_);
 
-    received_ = true;
-
     delete receive_timer_;
     receive_timer_ = NULL;
+
     error_code_ = error_c;
-    mutex_.unlock();
+    if (! finished_ )
+    {
+        finished_ = true;
+        mutex_.unlock();
+    }
 }
 
 void ana_receive_handler::handle_timeout(ana::error_code error_code)
 {
+    boost::mutex::scoped_lock lock( handler_mutex_ );
+
+    delete receive_timer_;
+    receive_timer_ = NULL;
+
+    if (! finished_ )
     {
-        boost::mutex::scoped_lock lock( handler_mutex_ );
+        if (error_code)
+            std::cout << "DEBUG: Receive attempt timed out\n";
+        else
+            std::cout << "DEBUG: Shouldn't reach here\n";
 
-        if (! received_ )
-        {
-            if (error_code)
-                std::cout << "DEBUG: Receive attempt timed out\n";
-            else
-                std::cout << "DEBUG: Shouldn't reach here\n";
-
-            error_code_ = error_code;
-            mutex_.unlock();
-        }
+        error_code_ = error_code;
+        finished_ = true;
+        mutex_.unlock();
     }
-    timeout_mutex_.unlock();
+
+    timeout_called_mutex_.unlock();
 }
 
 // Begin ana_connect_handler implementation ------------------------------------------------------------

@@ -120,11 +120,11 @@ class ana_receive_handler : public ana::listener_handler
 
         boost::mutex             mutex_;
         boost::mutex             handler_mutex_;
-        boost::mutex             timeout_mutex_;
+        boost::mutex             timeout_called_mutex_;
         ana::error_code          error_code_;
         ana::detail::read_buffer buffer_;
         ana::timer*              receive_timer_;
-        bool                     received_;
+        bool                     finished_;
 };
 
 
