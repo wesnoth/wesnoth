@@ -291,10 +291,16 @@
             name="openMapInEditor">
       </command>
       <command
-            defaultHandler="wesnoth_eclipse_plugin.handlers.SetupWorkspaceHandler"
+            defaultHandler="wesnoth_eclipse_plugin.handlers.ReloadFiles"
             description="Setups the workspace"
             id="Wesnoth_Eclipse_Plugin.commands.setupWorkspace"
-            name="Setup Workspace">
+            name="setupWorkspace">
+      </command>
+      <command
+            defaultHandler="wesnoth_eclipse_plugin.handlers.ReloadFiles"
+            description="Reloads all plugin related files"
+            id="Wesnoth_Eclipse_Plugin.commands.reloadFiles"
+            name="reloadFiles">
       </command>
    </extension>
    <extension
@@ -337,6 +343,15 @@
                   label="Setup Workspace"
                   style="push">
             </command>
+            <command
+                  commandId="Wesnoth_Eclipse_Plugin.commands.reloadFiles"
+                  label="Reload files"
+                  style="push">
+            </command>
+            <separator
+                  name="separator3"
+                  visible="true">
+            </separator>
             <command
                   commandId="org.eclipse.ui.window.preferences"
                   label="Open plugin&apos;s preferences"

@@ -71,7 +71,7 @@ public class SchemaParser
 
 					if (!tagName.equals("description"))
 					{
-						System.out.println(simpleTagName);
+						//System.out.println(simpleTagName);
 						if (tags_.containsKey(simpleTagName))
 						{
 							currentTag = tags_.get(simpleTagName);
@@ -101,7 +101,7 @@ public class SchemaParser
 					String[] tokens = line.split("=");
 					if (tokens.length != 2)
 					{
-						System.out.println("Error. invalid line :" + index);
+						System.err.println("Error. invalid line :" + index);
 						continue; //return;
 					}
 					primitives_.put(tokens[0].trim(), tokens[1].trim());
@@ -116,7 +116,7 @@ public class SchemaParser
 
 					if (tokens.length != 2)
 					{
-						System.out.println("Error. invalid line :" + index);
+						System.err.println("Error. invalid line :" + index);
 						continue; //return;
 					}
 
@@ -139,7 +139,7 @@ public class SchemaParser
 					String[] value = tokens[1].substring(1, tokens[1].length() - 1).split(" ");
 					if (value.length != 2)
 					{
-						System.out.println("Error. invalid line :" + index);
+						System.err.println("Error. invalid line :" + index);
 						continue; //return;
 					}
 
@@ -154,7 +154,7 @@ public class SchemaParser
 							// tag wasn't created yet
 							{
 								targetTag = new Tag(value[1], getCardinality(value[0]));
-								System.err.println("creating missing tag: " + value[1]);
+								//System.err.println("creating missing tag: " + value[1]);
 								tags_.put(value[1], targetTag);
 							}
 
@@ -173,7 +173,7 @@ public class SchemaParser
 				}
 			}
 		}
-		System.out.println("End parsing");
+		//System.out.println("End parsing");
 		parsingDone_ = true;
 		//
 		//		try
