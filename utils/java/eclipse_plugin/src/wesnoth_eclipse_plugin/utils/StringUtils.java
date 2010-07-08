@@ -25,7 +25,7 @@ public class StringUtils
 	public static int countOf(String target, char character)
 	{
 		if (target.indexOf(character) == -1)
-			return -1;
+			return 0;
 		int cnt = 0;
 		String tmpString = target;
 		while (tmpString.contains(new String(new char[] { character })))
@@ -99,6 +99,8 @@ public class StringUtils
 
 	public static String[] getLines(String string)
 	{
+		if (string == null)
+			return new String[0];
 		return string.split("\\r?\\n");
 	}
 

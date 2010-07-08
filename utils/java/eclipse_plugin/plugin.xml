@@ -243,6 +243,17 @@
              Create a new Wesnoth faction.
           </description>
        </wizard>
+       <wizard
+             category="wesnoth.eclipse.newWizards"
+             class="wesnoth_eclipse_plugin.wizards.unit.UnitsNewWizard"
+             icon="icons/wesnoth-icon_16.png"
+             id="wesnoth_eclipse_plugin.wizard.unitNewWizard"
+             name="Wesnoth Unit"
+             project="false">
+          <description>
+             Creates a new unit
+          </description>
+       </wizard>
    </extension>
    <extension
          point="org.eclipse.ui.commands">

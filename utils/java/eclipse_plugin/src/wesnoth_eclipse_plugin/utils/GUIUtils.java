@@ -11,22 +11,35 @@ public class GUIUtils
 {
 	/**
 	 * Shows a message box with the specified message (thread-safe)
+	 * 
 	 * @param window the window where to show the message box
 	 * @param message the message to print
 	 */
-	public static void showMessageBox(final IWorkbenchWindow window,final String message)
+	public static void showMessageBox(final String message)
 	{
-		showMessageBox(window, message,SWT.DEFAULT);
+		showMessageBox(WorkspaceUtils.getWorkbenchWindow(), message, SWT.DEFAULT);
 	}
 
 	/**
 	 * Shows a message box with the specified message (thread-safe)
+	 * 
 	 * @param window the window where to show the message box
 	 * @param message the message to print
 	 */
-	public static void showMessageBox(final IWorkbenchWindow window,final String message,final int style)
+	public static void showMessageBox(final IWorkbenchWindow window, final String message)
 	{
-		if (window  == null || window.getShell() == null)
+		showMessageBox(window, message, SWT.DEFAULT);
+	}
+
+	/**
+	 * Shows a message box with the specified message (thread-safe)
+	 * 
+	 * @param window the window where to show the message box
+	 * @param message the message to print
+	 */
+	public static void showMessageBox(final IWorkbenchWindow window, final String message, final int style)
+	{
+		if (window == null || window.getShell() == null)
 			return;
 		try
 		{
@@ -39,8 +52,7 @@ public class GUIUtils
 					box.open();
 				}
 			});
-		}
-		catch (Exception e)
+		} catch (Exception e)
 		{
 			e.printStackTrace();
 		}
