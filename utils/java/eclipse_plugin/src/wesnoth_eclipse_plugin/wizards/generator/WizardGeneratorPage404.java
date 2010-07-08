@@ -4,11 +4,11 @@
  */
 package wesnoth_eclipse_plugin.wizards.generator;
 
-import com.swtdesigner.SWTResourceManager;
-
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 
 public class WizardGeneratorPage404 extends WizardPage
@@ -27,9 +27,11 @@ public class WizardGeneratorPage404 extends WizardPage
 
 		setControl(container);
 
+		Font font = new Font(Display.getDefault().getSystemFont().getDevice(),
+				Display.getDefault().getSystemFont().getFontData()[0].getName(), 20, SWT.NORMAL);
 		Label lblThisIsSooo = new Label(container, SWT.WRAP);
-		lblThisIsSooo.setFont(SWTResourceManager.getFont("Segoe UI", 13, SWT.NORMAL));
-		lblThisIsSooo.setBounds(82, 65, 415, 132);
-		lblThisIsSooo.setText("This is embarassing. It shouldn't happen. \r\nIt seems something is missing from the schema.cfg");
+		lblThisIsSooo.setFont(font);
+		lblThisIsSooo.setBounds(10, 89, 554, 137);
+		lblThisIsSooo.setText("This is embarassing. It shouldn't happen. \r\nIt seems something is missing from schema.cfg");
 	}
 }

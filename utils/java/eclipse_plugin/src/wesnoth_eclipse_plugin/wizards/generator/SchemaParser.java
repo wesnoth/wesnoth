@@ -8,6 +8,8 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Stack;
 
+import wesnoth_eclipse_plugin.preferences.PreferenceConstants;
+import wesnoth_eclipse_plugin.preferences.PreferenceInitializer;
 import wesnoth_eclipse_plugin.utils.ResourceUtils;
 import wesnoth_eclipse_plugin.utils.StringUtils;
 
@@ -31,7 +33,9 @@ public class SchemaParser
 		if (parsingDone_ && !force)
 			return;
 
-		String res = ResourceUtils.getFileContents(new File("D:\\timo\\gw\\data\\schema.cfg"));
+		File schemaFile = new File(PreferenceInitializer.getString(
+						PreferenceConstants.P_WESNOTH_WORKING_DIR) + "/data/schema.cfg");
+		String res = ResourceUtils.getFileContents(schemaFile);
 		String[] lines = StringUtils.getLines(res);
 		Stack<String> tagStack = new Stack<String>();
 
