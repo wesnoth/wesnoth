@@ -12,6 +12,7 @@ import wesnoth_eclipse_plugin.preferences.PreferenceConstants;
 import wesnoth_eclipse_plugin.preferences.PreferenceInitializer;
 import wesnoth_eclipse_plugin.utils.GUIUtils;
 import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
+import wesnoth_eclipse_plugin.wizards.generator.SchemaParser;
 
 /**
  * The activator class controls the plug-in life cycle
@@ -38,6 +39,7 @@ public class Activator extends AbstractUIPlugin
 		plugin = this;
 
 		checkConditions();
+		SchemaParser.getInstance().parseSchema(false);
 	}
 
 	@Override
@@ -49,7 +51,7 @@ public class Activator extends AbstractUIPlugin
 
 	/**
 	 * Returns the shared instance
-	 *
+	 * 
 	 * @return the shared instance
 	 */
 	public static Activator getDefault()
@@ -60,7 +62,7 @@ public class Activator extends AbstractUIPlugin
 	/**
 	 * Returns an image descriptor for the image file at the given plug-in
 	 * relative path
-	 *
+	 * 
 	 * @param path the path
 	 * @return the image descriptor
 	 */
@@ -71,6 +73,7 @@ public class Activator extends AbstractUIPlugin
 
 	/**
 	 * Returns the plugin's shell
+	 * 
 	 * @return
 	 */
 	public static Shell getShell()
@@ -100,7 +103,7 @@ public class Activator extends AbstractUIPlugin
 		{
 			GUIUtils.showMessageBox(WorkspaceUtils.getWorkbenchWindow(),
 					"Please setup the workspace before using the plugin. Go to \"Wesnoth\" menu," +
-					" and then click on the \"Setup Workspace\" entry following the instructions on the screen.");
+							" and then click on the \"Setup Workspace\" entry following the instructions on the screen.");
 		}
 	}
 
