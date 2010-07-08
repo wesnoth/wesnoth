@@ -77,6 +77,54 @@ class ana_send_handler : public ana::send_handler
  * type lock a mutex until enough calls have been made to the
  * associated handler.
  */
+class ana_receive_handler : public ana::listener_handler
+{
+    public:
+        /**
+         * Constructs a handler object.
+         * @param logger : A pointer to an object logging send statistics.
+         * @param buf_size : The size of the buffer being sent.
+         * @param calls [optional, default 1] : The amount of calls to the handler expected.
+         */
+        ana_receive_handler( );
+
+        /** Destructor, checks that the necessary calls were made. */
+        ~ana_receive_handler();
+
+        /** Locks current thread until all the calls are made. */
+        void wait_completion(ana::client*, size_t timeout_ms = 0);
+
+        const ana::error_code& error() const
+        {
+            return error_code_;
+        }
+
+        ana::detail::read_buffer buffer() const
+        {
+            return buffer_;
+        }
+
+    private:
+        virtual void handle_message   (ana::error_code, ana::net_id, ana::detail::read_buffer);
+        virtual void handle_disconnect(ana::error_code, ana::net_id);
+
+        void handle_timeout(ana::error_code error_code);
+
+        boost::mutex             mutex_;
+        boost::mutex             handler_mutex_;
+        boost::mutex             timeout_mutex_;
+        ana::error_code          error_code_;
+        ana::detail::read_buffer buffer_;
+        ana::timer*              receive_timer_;
+        bool                     received_;
+};
+
+
+/**
+ * To use the asynchronous library synchronously, objects of this
+ * type lock a mutex until enough calls have been made to the
+ * associated handler.
+ */
 class ana_connect_handler : public ana::connection_handler
 {
     public:
@@ -177,6 +225,8 @@ class ana_component : public send_stats_logger
          */
         ana::detail::read_buffer wait_for_element();
 
+        bool new_buffer_ready(); // non const due to mutex blockage
+
         /** Log an incoming buffer. */
         void update_receive_stats( size_t buffer_size );
 
@@ -274,7 +324,9 @@ class ana_network_manager : public ana::listener_handler,
         size_t send( network::connection connection_num , const config& cfg, bool zipped );
 
         /** Read a message from a given component. */
-        network::connection read_from( network::connection connection_num, ana::detail::read_buffer& buffer );
+        network::connection read_from( network::connection connection_num,
+                                       ana::detail::read_buffer& buffer,
+                                       size_t timeout_ms = 0 );
 
         /** Retrieve upload statistics on a given component. */
         network::statistics get_send_stats(network::connection handle);

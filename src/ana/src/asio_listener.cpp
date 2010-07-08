@@ -47,45 +47,44 @@ asio_listener::~asio_listener()
 {
 }
 
-void asio_listener::disconnect( ana::listener_handler* listener, boost::system::error_code error)
+void asio_listener::disconnect( boost::system::error_code error)
 {
     if ( ! disconnected_ )
     {
-        listener->handle_disconnect( error, id() );
+        listener_->handle_disconnect( error, id() );
         disconnected_ = true;
         disconnect_listener();
     }
 }
 
 
-void asio_listener::handle_body( ana::detail::read_buffer buf,
-                                 const boost::system::error_code& ec, ana::listener_handler* listener )
+void asio_listener::handle_body( ana::detail::read_buffer buf, const boost::system::error_code& ec)
 {
     try
     {
         if (ec)
-            disconnect(listener, ec);
+            disconnect( ec );
         else
         {
             log_receive( buf );
 
-            listener->handle_message( ec, id(), buf );
+            listener_->handle_message( ec, id(), buf );
 
             listen_one_message();
         }
     }
     catch(const std::exception& e)
     {
-        disconnect(listener, ec);
+        disconnect( ec);
     }
 }
 
-void asio_listener::handle_header(char* header, const boost::system::error_code& ec, ana::listener_handler* listener )
+void asio_listener::handle_header(char* header, const boost::system::error_code& ec)
 {
     try
     {
         if (ec)
-            disconnect(listener, ec);
+            disconnect( ec);
         else
         {
             ana::serializer::bistream input( std::string(header, ana::HEADER_LENGTH) );
@@ -101,8 +100,7 @@ void asio_listener::handle_header(char* header, const boost::system::error_code&
                 boost::asio::async_read(socket(), boost::asio::buffer( read_buf->base(), read_buf->size() ),
                                         boost::bind(&asio_listener::handle_body,
                                                     this, read_buf,
-                                                    boost::asio::placeholders::error,
-                                                    listener));
+                                                    boost::asio::placeholders::error ));
             }
             else
             {   // copy the header to a read_buffer
@@ -110,13 +108,13 @@ void asio_listener::handle_header(char* header, const boost::system::error_code&
                 for (size_t i(0); i< ana::HEADER_LENGTH; ++i)
                     static_cast<char*>(read_buf->base())[i] = header[i];
 
-                listener->handle_message( ec, id(), read_buf );
+                listener_->handle_message( ec, id(), read_buf );
             }
         }
     }
     catch(const std::exception& e)
     {
-        disconnect(listener, ec);
+        disconnect(ec);
     }
 }
 
@@ -124,25 +122,16 @@ void asio_listener::wait_raw_object(ana::serializer::bistream& bis, size_t size)
 {
     tcp::socket& sock = socket();
 
-//     sock.get_io_service().stop();
-
     char buf[ size ];
 
     size_t received;
 
-//     sock.get_io_service().reset(); // prepare to reset the io_service
     received = sock.receive( boost::asio::buffer( buf, size ) );
 
     if ( received != size )
         throw std::runtime_error("Read a different amount of bytes than what was expected.");
 
     bis.str( std::string( buf, size ) );
-
-    //restart normal (asynchronous) operation
-//     run_listener();
-//     sock.get_io_service().reset(); // prepare to reset the io_service
-
-//     boost::thread t( boost::bind( &boost::asio::io_service::run, &sock.get_io_service() ) );
 }
 
 
@@ -162,10 +151,10 @@ void asio_listener::listen_one_message()
     {
         boost::asio::async_read(socket(), boost::asio::buffer(header_, ana::HEADER_LENGTH),
                                 boost::bind(&asio_listener::handle_header, this,
-                                            header_, boost::asio::placeholders::error, listener_));
+                                            header_, boost::asio::placeholders::error));
     }
     catch(const std::exception& e)
     {
-        disconnect(listener_, boost::system::error_code(1,boost::system::system_category) );
+        disconnect( boost::system::error_code(1,boost::system::system_category) );
     }
 }

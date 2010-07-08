@@ -175,9 +175,24 @@ namespace ana
         public:
             /** Standard constructor. */
             timer() :
-                io_service_(),
+                holds_fresh_io_service_( true ),
+                io_service_(new boost::asio::io_service() ),
                 timer_thread_( NULL ),
-                timer_(io_service_)
+                timer_(*io_service_)
+            {
+            }
+
+            /**
+             * Construct a timer object using a running io_service object.
+             * The timer insures it won't stop the io_service.
+             *
+             * @Pre The io_service will be running during the timer's lifetime.
+             */
+            timer( boost::asio::io_service& io ) :
+                holds_fresh_io_service_( false ),
+                io_service_( &io ),
+                timer_thread_( NULL ),
+                timer_(*io_service_)
             {
             }
 
@@ -203,24 +218,32 @@ namespace ana
             {
                 timer_.expires_from_now( milliseconds / 1000.0); //conversion will use a double or float
                 timer_.async_wait(handler);
-                timer_thread_ = new boost::thread( boost::bind( &timer::run, this ) );
+
+                if ( holds_fresh_io_service_ )
+                    timer_thread_ = new boost::thread( boost::bind( &timer::run, this ) );
             }
 
             /** Standard destructor, cancels pending operations if handler wasn't called. */
             ~timer()
             {
-                io_service_.stop();
-                timer_thread_->join();
-                delete timer_thread_;
+                if ( holds_fresh_io_service_ )
+                {
+                    io_service_->stop();
+                    timer_thread_->join();
+                    delete timer_thread_;
+                }
             }
 
         private:
             void run()
             {
-                io_service_.run_one();
+                if ( holds_fresh_io_service_ )
+                    io_service_->run_one();
             }
 
-            boost::asio::io_service io_service_;
+            const bool holds_fresh_io_service_;
+
+            boost::asio::io_service* io_service_;
 
             boost::thread* timer_thread_;
 
@@ -266,14 +289,15 @@ namespace ana
                  * @returns : A pointer to a newly created timer object.
                  */
                 template<class Handler>
-                timer* start_timer( shared_buffer buffer, Handler handler ) const
+                timer* start_timer( shared_buffer buffer, Handler handler ) 
                 {
                     if ( (timeout_milliseconds_ == 0) || (timeout_type_ == NoTimeouts) )
                         return NULL;
                     else
                     {
-                        timer* t = new timer();
-                        switch ( timeout_type_ ) //this should be more OO looking
+                        timer* t = create_timer(); //this discards a const qualifier
+
+                        switch ( timeout_type_ )   //should be more OO looking
                         {
                             case TimePerKilobyte :
                                 t->wait( (buffer->size() / 1024.0) * timeout_milliseconds_, handler);
@@ -285,6 +309,12 @@ namespace ana
                         return t;
                     }
                 }
+
+                /**
+                 * Creates a timer using the current io_service of this component.
+                 * For efficiency reasons, always create timers this way when you have the chance.
+                 */
+                virtual timer* create_timer() = 0;
 
             protected:
                 /** Standard constructor. */

@@ -100,7 +100,7 @@ connection_map connections;
 
 static void check_error()
 {
-//     throw std::runtime_error("TODO:Not implemented");
+    std::cout << "DEBUG: check_error\n";
 }
 
 namespace {
@@ -143,10 +143,12 @@ namespace network {
     connection_stats::connection_stats(int sent, int received, int connected_at)
         : bytes_sent(sent), bytes_received(received), time_connected(0 - connected_at)
                                                         // TODO: s/SDLGetTicks/0/
-    {}
+    {
+    }
 
     connection_stats get_connection_stats(connection connection_num)
     {
+        std::cout << "DEBUG: get_connection_stats\n";
         const ana::stats* stats = ana_manager.get_stats( connection_num );
 
         return connection_stats( stats->bytes_out(),
@@ -156,6 +158,7 @@ namespace network {
 
     error::error(const std::string& msg, connection sock) : message(msg), socket(sock)
     {
+        std::cout << "DEBUG: error::error\n";
         if(socket) {
             bad_sockets.insert(socket);
         }
@@ -163,6 +166,7 @@ namespace network {
 
     void error::disconnect()
     {
+        std::cout << "DEBUG: error::disconnect\n";
         if(socket) network::disconnect(socket);
     }
 
@@ -183,11 +187,13 @@ namespace network {
 
     void set_raw_data_only()
     {
-    //     throw std::runtime_error("TODO:Not implemented");
+        std::cout << "DEBUG: error::disconnect\n";
+        //     throw std::runtime_error("TODO:Not implemented");
     }
 
     server_manager::server_manager(int port, CREATE_SERVER create_server) : free_(false), connection_(0)
     {
+        std::cout << "DEBUG: server_manager\n";
         if ( create_server != NO_SERVER )
         {
             ana::net_id server_id = ana_manager.create_server( );
@@ -223,11 +229,13 @@ namespace network {
 
     connection connect(const std::string& host, int port)
     {
+        std::cout << "DEBUG: connect\n";
         return ana_manager.create_client_and_connect( host, port );
     }
 
     connection connect(const std::string& host, int port, threading::waiter& /*waiter*/)
     {
+        std::cout << "DEBUG: connect2\n";
         return connect( host, port );
     }
 
@@ -251,24 +259,24 @@ namespace network {
         throw std::runtime_error("TODO:Not implemented disconnect");
     }
 
-    void queue_disconnect(network::connection sock)
+    void queue_disconnect(network::connection /*sock*/)
     {
-//         throw("TODO:Not implemented queue_disconnect");
-        disconnection_queue.push_back(sock);
+        throw("TODO:Not implemented queue_disconnect");
+//         disconnection_queue.push_back(sock);
     }
 
     connection receive_data(config&           cfg,
                             connection        connection_num,
-                            unsigned int      /*timeout*/,
+                            unsigned int      timeout,
                             bandwidth_in_ptr* /*bandwidth_in*/)
     {
-        ana::net_id id(connection_num);
-        std::cout << "DEBUG: Trying to read from connection " << connection_num << ":" << id << "\n";
+        // comment next debug msg: too much output
+//         std::cout << "DEBUG: Trying to read from connection in " << timeout << " milliseconds.\n";
         ana::detail::read_buffer buffer;
 
-        network::connection read_id = ana_manager.read_from( connection_num, buffer );
+        network::connection read_id = ana_manager.read_from( connection_num, buffer, timeout );
 
-        if ( buffer == NULL ) // check timeout and return 0, or throw if error occured
+        if ( buffer == NULL || read_id == 0) // check timeout and return 0, or throw if error occured
             return 0;
         else
         {
@@ -279,6 +287,7 @@ namespace network {
             read_gz(cfg, input);
 
             std::cout << cfg;
+
             cfg.debug();
 
             if (cfg.empty())
@@ -287,7 +296,6 @@ namespace network {
                 std::cout << "Buffer has something.\n";
 
             return read_id;
-//             return connection_num;
         }
     }
 
@@ -296,8 +304,7 @@ namespace network {
                             bool*             /*gzipped*/,
                             bandwidth_in_ptr* /*bandwidth_in*/)
     {
-        return receive_data(cfg,connection_num, size_t(0), NULL); // <- just call the previous version
-//         throw std::runtime_error("TODO:Not implemented receive_data1");
+        return receive_data(cfg,connection_num, size_t(0), NULL); // <- just call the previous version without timeouts
     }
 
     connection receive_data(std::vector<char>& /*buf*/, bandwidth_in_ptr* /*bandwidth_in*/)
@@ -478,20 +485,24 @@ namespace network {
                               const bool          /*gzipped*/,
                               const std::string&  /*packet_type*/)
     {
+        throw std::runtime_error("TODO:Not implemented send_data_all_except");
     }
 
     std::string ip_address(connection connection_num)
     {
+        std::cout << "DEBUG: ip_address\n";
         return ana_manager.ip_address( connection_num );
     }
 
     statistics get_send_stats(connection handle)
     {
+        std::cout << "DEBUG: get_send_stats\n";
         return ana_manager.get_send_stats( handle );
     }
 
     statistics get_receive_stats(connection handle)
     {
+        std::cout << "DEBUG: get_receive_stats\n";
         return ana_manager.get_receive_stats( handle );
     }
 

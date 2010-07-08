@@ -91,6 +91,8 @@ class asio_client : public ana::client,
 
         virtual ana::stats_collector* stats_collector() { return stats_collector_; }
 
+        virtual ana::timer* create_timer() { return new ana::timer( io_service_); }
+
         void handle_connect(const boost::system::error_code& ec,
                             tcp::resolver::iterator endpoint_iterator,
                             ana::connection_handler* );

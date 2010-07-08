@@ -78,6 +78,8 @@ class asio_server : public  ana::server,
 
                 virtual ana::stats_collector* stats_collector() { return stats_collector_; }
 
+                virtual ana::timer* create_timer() { return new ana::timer( socket_.get_io_service() ); }
+
                 virtual const ana::stats* get_stats( ana::stat_type type ) const;
 
                 tcp::socket           socket_;
@@ -120,6 +122,8 @@ class asio_server : public  ana::server,
         virtual void disconnect() {}
 
         virtual ana::stats_collector* stats_collector() { return stats_collector_; }
+
+        virtual ana::timer* create_timer() { return new ana::timer( io_service_); }
 
         void handle_accept (const boost::system::error_code& ec,asio_client_proxy* client, ana::connection_handler* );
 
