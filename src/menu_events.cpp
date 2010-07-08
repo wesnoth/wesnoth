@@ -2458,9 +2458,9 @@ class console_handler : public map_command_handler<console_handler>, private cha
 				_("Choose next scenario"), "", "D");
 			register_alias("choose_level", "cl");
 			register_command("turn", &console_handler::do_turn,
-				_("Change turn number (and time of day)"), _("[turn]"), "D");
+				_("Change turn number (and time of day), or increase by one if no number is specified."), _("[turn]"), "D");
 			register_command("turn_limit", &console_handler::do_turn_limit,
-				_("Change turn limit"), _("[limit]"), "D");
+				_("Change turn limit, or turn the turn limit off if no number is specified or it's -1."), _("[limit]"), "D");
 			register_command("debug", &console_handler::do_debug,
 				_("Turn debug mode on."));
 			register_command("nodebug", &console_handler::do_nodebug,
