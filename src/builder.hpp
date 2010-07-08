@@ -143,10 +143,9 @@ public:
 	 */
 	struct rule_image_variant {
 		/** Shorthand constructor for this structure */
-		rule_image_variant(const std::string &image_string, const std::string &tod) :
+		rule_image_variant(const std::string &image_string) :
 			image_string(image_string),
-			image(),
-			tod(tod)
+			image()
 			{};
 
 		/** A string representing either the filename for an image, or
@@ -173,11 +172,6 @@ public:
 		 * be returned to the user.
 		 */
 		animated<image::locator> image;
-		/**
-		 * The time-of-day to which this variant applies.
-		 * Set to the empty string, this variant applies to all TODs.
-		 */
-		std::string tod;
 	};
 
 	/**

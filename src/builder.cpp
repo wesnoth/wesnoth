@@ -622,7 +622,7 @@ void terrain_builder::add_images_from_config(rule_imagelist& images, const confi
 		images.push_back(rule_image(layer, basex - dx, basey - dy, global, center_x, center_y));
 
 		// Adds the main (default) variant of the image, if present
-		images.back().variants.insert(std::pair<std::string, rule_image_variant>("", rule_image_variant(name,"")));
+		images.back().variants.insert(std::make_pair("", rule_image_variant(name)));
 
 		// Adds the other variants of the image
 		foreach (const config &variant, img.child_range("variant"))
@@ -630,7 +630,7 @@ void terrain_builder::add_images_from_config(rule_imagelist& images, const confi
 			const std::string &name = variant["name"];
 			const std::string &tod = variant["tod"];
 
-			images.back().variants.insert(std::pair<std::string, rule_image_variant>(tod, rule_image_variant(name,tod)));
+			images.back().variants.insert(std::make_pair(tod, rule_image_variant(name)));
 
 		}
 	}
