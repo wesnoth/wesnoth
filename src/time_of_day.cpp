@@ -21,7 +21,6 @@
 
 time_of_day::time_of_day(const config& cfg):
 	lawful_bonus(cfg["lawful_bonus"]), bonus_modified(0),
-	local(false),
 	image(cfg["image"]), name(cfg["name"].t_str()), id(cfg["id"]),
 	image_mask(cfg["mask"]),
 	red(cfg["red"]), green(cfg["green"]), blue(cfg["blue"]),
@@ -32,7 +31,6 @@ time_of_day::time_of_day(const config& cfg):
 time_of_day::time_of_day()
 : lawful_bonus(0)
 , bonus_modified(0)
-, local(false)
 , image()
 , name("NULL_TOD")
 , id("nulltod")

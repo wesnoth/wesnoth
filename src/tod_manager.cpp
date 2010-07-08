@@ -129,7 +129,6 @@ time_of_day tod_manager::get_time_of_day(int illuminated, const map_location& lo
 				VALIDATE(i->times.size(), _("No time of day has been defined."));
 
 				res = i->times[(n_turn-1)%i->times.size()];
-				res.local = true;
 				break;
 			}
 		}

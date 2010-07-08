@@ -291,11 +291,6 @@ image::TYPE game_display::get_image_type(const map_location& loc) {
 			}
 		}
 	}
-	time_of_day tod = tod_manager_.get_time_of_day(0, loc);
-
-	if(tod.local)
-		return image::UNMASKED;
-
 	return image::SCALED_TO_HEX;
 }
 
