@@ -10,13 +10,14 @@ public class StringUtils
 {
 	public static boolean startsWith(String target, String sequence)
 	{
-		Pattern pattern = Pattern.compile("[\t| ]*" + Pattern.quote(sequence));
+		Pattern pattern = Pattern.compile("[\t ]*" + Pattern.quote(sequence));
 		Matcher matcher = pattern.matcher(target);
 		return (matcher.find() && matcher.start() == 0);
 	}
 
 	/**
 	 * Returns the number of 'character' characters in the target string
+	 * 
 	 * @param target
 	 * @param character
 	 * @return
@@ -37,6 +38,7 @@ public class StringUtils
 
 	/**
 	 * Returns the n-th occurrence index of the specified character
+	 * 
 	 * @param target
 	 * @param character
 	 * @param n
@@ -63,13 +65,15 @@ public class StringUtils
 	 * Removes all consecutive aparitions of a character in the specified string
 	 * so that only one appearance remains in each past duplications of that
 	 * string
+	 * 
 	 * @param target the string to process
 	 * @param character the character to remove
 	 * @param removeTrailing removes or not the trailing 'character' characters
 	 * @param removeTrailing removes or not the preceding 'character' characters
 	 * @return
 	 */
-	public static String removeIncorrectCharacters(String target, char character, boolean removeTrailing, boolean removePreceding)
+	public static String
+			removeIncorrectCharacters(String target, char character, boolean removeTrailing, boolean removePreceding)
 	{
 		StringBuilder resString = new StringBuilder();
 
@@ -99,15 +103,16 @@ public class StringUtils
 
 	public static String trimPathSeparators(String string)
 	{
-		while(string.charAt(string.length() - 1) == '/' ||
-			  string.charAt(string.length() - 1) == '\\')
-			string = string.substring(0,string.length() - 1);
+		while (string.charAt(string.length() - 1) == '/' ||
+				string.charAt(string.length() - 1) == '\\')
+			string = string.substring(0, string.length() - 1);
 		return string;
 	}
 
 	/**
 	 * Normalizez the path given by the string, removing repeated separators
 	 * and replacing them by '|'
+	 * 
 	 * @param path the string that represents the path to be normalized
 	 * @return
 	 */
@@ -132,5 +137,33 @@ public class StringUtils
 			sw = 0; // reset the switch when meeting non-separators
 		}
 		return sb.toString();
+	}
+
+	/**
+	 * Replaces the source with the target in the specified string,
+	 * adding the existing indentation (if any) to all lines (if any) in the target
+	 * 
+	 * @param string The string where to replace the source
+	 * @param source The source string to be replaced
+	 * @param target The target string to be replaced in the string
+	 * @return
+	 */
+	public static String replaceWithIndent(String string, String source, String target)
+	{
+		// get the current indentation
+		Pattern pattern = Pattern.compile("[\t ]*");
+		Matcher matcher = pattern.matcher(source);
+		String indent = "";
+		if (matcher.find())
+		{
+			int end = matcher.end();
+			indent = string.substring(matcher.start(), end);
+		}
+
+		String[] tmpTarget = getLines(target);
+		for (int i = 1; i < tmpTarget.length; i++)
+			tmpTarget[i] = indent + tmpTarget[i];
+
+		return string.replace(source, ListUtils.concatenateArray(tmpTarget, "\n"));
 	}
 }
