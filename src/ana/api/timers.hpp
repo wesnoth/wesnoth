@@ -43,7 +43,7 @@
 
 namespace ana
 {
-        /** @name Time duration functions. */
+    /** @name Time duration functions. */
     //@{
     /** @namespace time
      *
@@ -165,7 +165,11 @@ namespace ana
         };
     }
 
+    /** A boost::asio::basic_deadline_timer, can be used externally. */
     typedef boost::asio::basic_deadline_timer<std::time_t,detail::time_t_traits> boost_timer;
+
+    /** The default timeout error. */
+    const ana::error_code timeout_error = boost::asio::error::make_error_code( boost::asio::error::timed_out );
 
     /**
      * General purpose asynchronous timer.
@@ -173,7 +177,7 @@ namespace ana
     class timer
     {
         public:
-            /** Standard constructor. */
+            /** Standard constructor. Creates its own io_service object and runs in its own thread.*/
             timer() :
                 holds_fresh_io_service_( true ),
                 io_service_(new boost::asio::io_service() ),

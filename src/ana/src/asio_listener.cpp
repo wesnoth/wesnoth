@@ -91,7 +91,7 @@ void asio_listener::handle_header(char* header, const boost::system::error_code&
 
             ana::ana_uint32 size;
             input >> size;
-            ana::from_network_byte_order( size );
+            ana::network_to_host_long( size );
 
             if (size != 0)
             {

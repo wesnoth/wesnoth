@@ -93,15 +93,14 @@ ana_receive_handler::~ana_receive_handler()
     timeout_mutex_.unlock();
 }
 
-void ana_receive_handler::wait_completion(ana::client* client, size_t timeout_ms )
+void ana_receive_handler::wait_completion(ana::detail::timed_sender* component, size_t timeout_ms )
 {
     if (timeout_ms > 0)
     {
-        receive_timer_ = client->create_timer();
+        receive_timer_ = component->create_timer();
 
         receive_timer_->wait( ana::time::milliseconds(timeout_ms),
-                            boost::bind(&ana_receive_handler::handle_timeout, this,
-                                        boost::asio::error::make_error_code( boost::asio::error::timed_out ) ) );
+                            boost::bind(&ana_receive_handler::handle_timeout, this, ana::timeout_error ) );
     }
     mutex_.lock();
     mutex_.unlock();
@@ -403,8 +402,7 @@ network::connection ana_network_manager::create_client_and_connect(std::string h
         ana_connect_handler handler(connect_timer_);
 
         connect_timer_->wait( ana::time::seconds(10), // 10 seconds to connection timeout, will be configurable
-                            boost::bind(&ana_connect_handler::handle_timeout, &handler,
-                                        boost::asio::error::make_error_code( boost::asio::error::timed_out ) ) );
+                            boost::bind(&ana_connect_handler::handle_timeout, &handler, ana::timeout_error) );
 
         client->set_raw_data_mode();
         client->connect( &handler );
@@ -446,8 +444,7 @@ network::connection ana_network_manager::create_client_and_connect(std::string h
                 client->wait_raw_object(bis, sizeof(my_id) );
 
                 bis >> my_id;
-                // to network byte order ->
-                ana::from_network_byte_order( my_id );
+                ana::network_to_host_long( my_id );
                 std::cout << "DEBUG: Received id " << my_id << "\n";
 
                 new_component->set_wesnoth_id( my_id );

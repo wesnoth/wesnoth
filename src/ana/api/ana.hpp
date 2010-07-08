@@ -59,6 +59,7 @@
 #include <boost/system/error_code.hpp>
 #include <boost/asio.hpp>
 #include <boost/thread.hpp>
+#include <boost/asio/detail/socket_ops.hpp>
 
 #include <string>
 #include <cstdlib>
@@ -86,18 +87,25 @@ namespace ana
      * Functions for data conversions.
      */
     //@{
-
-    /** Converts a 32 bit number into a network byte order number. */
-    inline void to_network_byte_order( ana_uint32& number )
+    /** Converts a 32 bit number in network byte order to a local number. */
+    inline void network_to_host_long(ana_uint32& value)
     {
-        number =  ((number & 0xff) << 24 )   + ((number & 0xff00) << 16)
-                + ((number & 0xff0000) >> 8) + ((number & 0xff000000) >> 24);
+        value = ntohl(value);
     }
-
-    /** Reverts a 32 bit network byte order number. TODO: check host endianness.*/
-    inline void from_network_byte_order( ana_uint32& number )
+    /** Converts a 32 bit number into a network byte order number. */
+    inline void host_to_network_long(ana_uint32& value)
     {
-        to_network_byte_order( number );
+        value = htonl(value);
+    }
+    /** Converts a 16 bit number in network byte order to a local number. */
+    inline void network_to_host_short(ana_uint16& value)
+    {
+        value = ntohs(value);
+    }
+    /** Converts a 16 bit number into a network byte order number. */
+    inline void host_to_network_short(ana_uint16& value)
+    {
+        value = htons(value);
     }
     //@}
 

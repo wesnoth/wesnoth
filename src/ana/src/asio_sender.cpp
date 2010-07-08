@@ -56,7 +56,7 @@ void asio_sender::send(ana::detail::shared_buffer buffer,
         else
         {
             ana::ana_uint32 size( buffer->size() );
-            ana::to_network_byte_order( size );
+            ana::host_to_network_long( size );
 
             ana::serializer::bostream* output_stream = new ana::serializer::bostream();
             (*output_stream) << size;
@@ -121,6 +121,6 @@ void asio_sender::handle_send(const boost::system::error_code& ec,
 void asio_sender::handle_timeout(const boost::system::error_code& ec, ana::send_handler* handler)
 {
     if ( ec != boost::asio::error::operation_aborted) // The timer wasn't cancelled. So: inform this and disconnect
-        handler->handle_send( boost::asio::error::make_error_code( boost::asio::error::timed_out ) , id() );
+        handler->handle_send( ana::timeout_error , id() );
 }
 

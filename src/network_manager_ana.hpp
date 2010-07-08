@@ -81,24 +81,32 @@ class ana_receive_handler : public ana::listener_handler
 {
     public:
         /**
-         * Constructs a handler object.
-         * @param logger : A pointer to an object logging send statistics.
-         * @param buf_size : The size of the buffer being sent.
-         * @param calls [optional, default 1] : The amount of calls to the handler expected.
+         * Constructs a reader handler object.
          */
         ana_receive_handler( );
 
-        /** Destructor, checks that the necessary calls were made. */
+        /** Destructor. */
         ~ana_receive_handler();
 
-        /** Locks current thread until all the calls are made. */
-        void wait_completion(ana::client*, size_t timeout_ms = 0);
+        /**
+         * Attempts to read from those network components associated with this
+         * handler object up until timeout_ms milliseconds.
+         *
+         * If the timeout parameter is 0, it will lock the current thread until
+         * one of these components has received a message.
+         *
+         * @param component : A network component running an io_service which supports timeout capabilities.
+         * @param timeout_ms : Amount of milliseconds to timeout the operation.
+         */
+        void wait_completion(ana::detail::timed_sender* component, size_t timeout_ms = 0);
 
+        /** Returns the error_code from the operation. */
         const ana::error_code& error() const
         {
             return error_code_;
         }
 
+        /** Returns the buffer from the operation. */
         ana::detail::read_buffer buffer() const
         {
             return buffer_;

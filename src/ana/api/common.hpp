@@ -46,6 +46,9 @@ namespace ana
     //@{
         typedef boost::uint32_t ana_uint32  /** Standard unsigned int, with fixed size to 32 bits.  */ ;
         typedef boost::int32_t  ana_int32   /** Standard int, with fixed size to 32 bits.           */ ;
+        typedef boost::uint16_t ana_uint16  /** Standard unsigned int, with fixed size to 16 bits.  */ ;
+        typedef boost::int16_t  ana_int16   /** Standard int, with fixed size to 16 bits.           */ ;
+
 
         typedef ana_uint32  message_size       /** Message size type.                               */ ;
 
