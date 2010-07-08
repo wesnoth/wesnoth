@@ -20,6 +20,10 @@
 #include <iostream>
 
 #include <boost/bind.hpp>
+#include <boost/iostreams/filtering_stream.hpp>
+#include <boost/iostreams/filter/gzip.hpp>
+
+#include "serialization/parser.hpp"
 
 #include "network_manager_ana.hpp"
 #include "serialization/binary_or_text.hpp"
@@ -429,10 +433,15 @@ size_t ana_network_manager::number_of_connections() const
 
 size_t ana_network_manager::send_all( const config& cfg, bool zipped )
 {
-    std::cout << "DEBUG: Sending to everybody...\n";
-    std::stringstream out;
-    config_writer cfg_writer(out, zipped);
-    cfg_writer.write(cfg);
+    std::cout << "DEBUG: Sending to everybody. " << (zipped ? "Zipped":"Raw") << "\n";
+
+    std::ostringstream out;
+    {
+        boost::iostreams::filtering_stream<boost::iostreams::output> filter;
+        filter.push(boost::iostreams::gzip_compressor());
+        filter.push(out);
+        write(filter, cfg);
+    }
 
     std::set<ana_component*>::iterator it;
 
@@ -441,14 +450,20 @@ size_t ana_network_manager::send_all( const config& cfg, bool zipped )
         if ( (*it)->is_server() )
         {
             const size_t necessary_calls = server_manager_[ (*it)->server() ]->client_amount();
-
             ana_send_handler handler( *it, out.str().size(), necessary_calls );
 
             (*it)->server()->send_all( ana::buffer( out.str() ), &handler, ana::ZERO_COPY);
+            handler.wait_completion(); // the handler will release the mutex after necessary_calls calls
+        }
+        else
+        {
+            ana_send_handler handler( *it, out.str().size() );
 
+            (*it)->client()->send( ana::buffer( out.str() ), &handler, ana::ZERO_COPY );
             handler.wait_completion(); // the handler will release the mutex after necessary_calls calls
         }
     }
+    std::cout << "Sent data.\n";
     return out.str().size();
 }
 

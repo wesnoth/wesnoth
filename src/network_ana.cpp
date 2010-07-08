@@ -291,12 +291,13 @@ namespace network {
         }
     }
 
-    connection receive_data(config&           /*cfg*/,
-                            connection        /*connection_num*/,
+    connection receive_data(config&           cfg,
+                            connection        connection_num,
                             bool*             /*gzipped*/,
                             bandwidth_in_ptr* /*bandwidth_in*/)
     {
-        throw std::runtime_error("TODO:Not implemented receive_data1");
+        return receive_data(cfg,connection_num, size_t(0), NULL); // <- just call the previous version
+//         throw std::runtime_error("TODO:Not implemented receive_data1");
     }
 
     connection receive_data(std::vector<char>& /*buf*/, bandwidth_in_ptr* /*bandwidth_in*/)
@@ -449,6 +450,8 @@ namespace network {
     {
         if(cfg.empty())
             return 0;
+
+        std::cout << "DEBUG: Sending: " << cfg << "\n";
 
         if( connection_num == 0 )
             return ana_manager.send_all( cfg, gzipped );
