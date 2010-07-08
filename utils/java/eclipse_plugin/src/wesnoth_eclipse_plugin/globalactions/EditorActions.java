@@ -21,7 +21,7 @@ public class EditorActions
 		String workingDir = PreferenceInitializer.getString(PreferenceConstants.P_WESNOTH_WORKING_DIR);
 
 		if (workingDir.isEmpty())
-			workingDir = editorPath.substring(0,editorPath.lastIndexOf(new File(editorPath).getName()));
+			workingDir = editorPath.substring(0, editorPath.lastIndexOf(new File(editorPath).getName()));
 
 		if (editorPath.isEmpty())
 		{
@@ -30,7 +30,7 @@ public class EditorActions
 		}
 
 		System.out.printf("Running: [%s] with args: %s\n", editorPath, getLaunchEditorArguments(mapName, workingDir));
-		ExternalToolInvoker.launchTool(editorPath, getLaunchEditorArguments(mapName, workingDir),true,false, true,
+		ExternalToolInvoker.launchTool(editorPath, getLaunchEditorArguments(mapName, workingDir), true, false, true,
 									WorkspaceUtils.getWorkbenchWindow());
 	}
 
@@ -43,7 +43,7 @@ public class EditorActions
 
 		if (!workingDir.isEmpty())
 		{
-			args.add("-datadir");
+			args.add("--data-dir");
 			args.add(workingDir);
 		}
 
