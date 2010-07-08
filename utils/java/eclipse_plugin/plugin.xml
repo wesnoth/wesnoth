@@ -254,6 +254,17 @@
              Creates a new unit
           </description>
        </wizard>
+       <wizard
+             category="wesnoth.eclipse.newWizards"
+             class="wesnoth_eclipse_plugin.wizards.generator.WizardLauncher"
+             icon="icons/wesnoth-icon_16.png"
+             id="wesnoth_eclipse_plugin.wizard.wizardLauncher"
+             name="Wizard Launcher"
+             project="false">
+          <description>
+             Launches the wizard based on the selected tag.
+          </description>
+       </wizard>
    </extension>
    <extension
          point="org.eclipse.ui.commands">

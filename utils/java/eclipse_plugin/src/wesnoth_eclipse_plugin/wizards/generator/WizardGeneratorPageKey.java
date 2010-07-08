@@ -1,0 +1,56 @@
+/**
+ * @author Timotei Dolean
+ *
+ */
+package wesnoth_eclipse_plugin.wizards.generator;
+
+import java.util.List;
+
+import org.eclipse.jface.wizard.WizardPage;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Text;
+
+public class WizardGeneratorPageKey extends WizardPage
+{
+	private List<TagKey>	keys_;
+	private int				startIndex_, endIndex_;
+	private Composite		container_;
+
+	public WizardGeneratorPageKey(String tagName, List<TagKey> keys, int startIndex, int endIndex) {
+		super("wizardPageKey" + startIndex);
+		setTitle(tagName + " new wizard");
+		//setDescription(String.format("page %d to %d out of %d", startIndex, endIndex, keys.size()));
+
+		startIndex_ = startIndex;
+		endIndex_ = endIndex;
+		keys_ = keys;
+	}
+
+	@Override
+	public void createControl(Composite parent)
+	{
+		container_ = new Composite(parent, SWT.NULL);
+		setControl(container_);
+		container_.setLayout(new GridLayout(2, false));
+
+		for (int i = startIndex_; i <= endIndex_; i++)
+		{
+			TagKey key = keys_.get(i);
+			Label label = new Label(container_, SWT.NONE);
+			label.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
+			label.setText(key.Name);
+
+			Text textBox = new Text(container_, SWT.BORDER);
+			textBox.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+			//textBox.setText(key.Regex);
+			textBox.setData("name", key.Name);
+			textBox.setData("regex", key.Regex);
+			textBox.setData("card", key.Cardinality);
+		}
+		setPageComplete(true);
+	}
+}

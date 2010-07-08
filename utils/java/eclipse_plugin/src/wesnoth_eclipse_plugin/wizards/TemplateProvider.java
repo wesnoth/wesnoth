@@ -121,7 +121,6 @@ public class TemplateProvider
 							if (matcher.matches())
 							{
 								skipLine = true;
-								System.out.println("Skipping line");
 							}
 						}
 					}

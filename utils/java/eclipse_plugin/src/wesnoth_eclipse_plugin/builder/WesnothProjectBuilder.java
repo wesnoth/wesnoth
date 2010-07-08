@@ -32,22 +32,24 @@ import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
 
 public class WesnothProjectBuilder extends IncrementalProjectBuilder
 {
-	public static final String	BUILDER_ID	= "Wesnoth_Eclipse_Plugin.projectBuilder";
-	private static final String	MARKER_TYPE	= "Wesnoth_Eclipse_Plugin.configProblem";
+	public static final String									BUILDER_ID		= "Wesnoth_Eclipse_Plugin.projectBuilder";
+	private static final String									MARKER_TYPE		= "Wesnoth_Eclipse_Plugin.configProblem";
 
 	/**
 	 * The key is the project name
 	 * The value is: - the last modified date for the .ignore file
-	 * 				 - the list with ignored directories names
+	 * - the list with ignored directories names
 	 */
-	private static HashMap<String,Pair<Long,List<String>>> ignoreCache_ = new HashMap<String, Pair<Long,List<String>>>();
+	private static HashMap<String, Pair<Long, List<String>>>	ignoreCache_	= new HashMap<String, Pair<Long, List<String>>>();
 
 	class SampleDeltaVisitor implements IResourceDeltaVisitor
 	{
-		private IProgressMonitor monitor_;
-		public SampleDeltaVisitor(IProgressMonitor monitor){
+		private IProgressMonitor	monitor_;
+
+		public SampleDeltaVisitor(IProgressMonitor monitor) {
 			monitor_ = monitor;
 		}
+
 		@Override
 		public boolean visit(IResourceDelta delta) throws CoreException
 		{
@@ -73,10 +75,12 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 
 	class SampleResourceVisitor implements IResourceVisitor
 	{
-		private IProgressMonitor monitor_;
-		public SampleResourceVisitor(IProgressMonitor monitor){
+		private IProgressMonitor	monitor_;
+
+		public SampleResourceVisitor(IProgressMonitor monitor) {
 			monitor_ = monitor;
 		}
+
 		@Override
 		public boolean visit(IResource resource)
 		{
@@ -103,6 +107,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 		delta.accept(new SampleDeltaVisitor(monitor));
 	}
 
+	@SuppressWarnings("rawtypes")
 	@Override
 	protected IProject[] build(int kind, Map args, IProgressMonitor monitor) throws CoreException
 	{
@@ -127,22 +132,19 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 		monitor.worked(2);
 
 		// get the directories list to ignore
-		File ignoreFile = new File(getProject().getLocation().toOSString() +
-				Path.SEPARATOR + ".ignore");
-		if (!ignoreCache_.containsKey(getProject().getName()) ||
-			ignoreFile.lastModified() != ignoreCache_.get(getProject().getName()).First)
+		File ignoreFile = new File(getProject().getLocation().toOSString() + Path.SEPARATOR + ".ignore");
+		if (!ignoreCache_.containsKey(getProject().getName()) || ignoreFile.lastModified() != ignoreCache_.get(getProject().getName()).First)
 		{
 			String contents = ResourceUtils.getFileContents(ignoreFile);
-			if (contents != null )
+			if (contents != null)
 			{
-				List<String> list  = new ArrayList<String>();
+				List<String> list = new ArrayList<String>();
 				String[] lines = StringUtils.getLines(contents);
-				for(String line : lines)
+				for (String line : lines)
 					list.add(line);
 
 				ignoreCache_.remove(getProject().getName());
-				ignoreCache_.put(getProject().getName(),
-						new Pair<Long,List<String>>(ignoreFile.lastModified(), list));
+				ignoreCache_.put(getProject().getName(), new Pair<Long, List<String>>(ignoreFile.lastModified(), list));
 			}
 		}
 		monitor.worked(5);
@@ -257,13 +259,13 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 			List<String> ignoreList = ignoreCache_.get(getProject().getName()).Second;
 			for (String path : ignoreList)
 			{
-				if (StringUtils.normalizePath(WorkspaceUtils.getPathRelativeToUserDir(res)).contains(
-						StringUtils.normalizePath(path)))
+				if (StringUtils.normalizePath(WorkspaceUtils.getPathRelativeToUserDir(res)).contains(StringUtils.normalizePath(path)))
 					return true;
 			}
 		}
 		return false;
 	}
+
 	private void addMarker(IFile file, String message, int lineNumber, int severity)
 	{
 		try

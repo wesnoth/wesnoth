@@ -44,6 +44,7 @@ public class FactionPage0 extends WizardPage
 		super("factionPage0");
 		setTitle("New faction wizard");
 		setDescription("Create a new faction");
+		selection_ = selection;
 	}
 
 	/**
@@ -246,7 +247,9 @@ public class FactionPage0 extends WizardPage
 	 */
 	private void handleBrowse()
 	{
-		ContainerSelectionDialog dialog = new ContainerSelectionDialog(getShell(), ResourcesPlugin.getWorkspace().getRoot(), false, "Select a campaign project");
+		ContainerSelectionDialog dialog =
+				new ContainerSelectionDialog(getShell(), ResourcesPlugin.getWorkspace().getRoot(), false,
+						"Select a campaign project");
 		if (dialog.open() == ContainerSelectionDialog.OK)
 		{
 			Object[] result = dialog.getResult();
