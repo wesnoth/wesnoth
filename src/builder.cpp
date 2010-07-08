@@ -168,6 +168,8 @@ terrain_builder::terrain_builder(const config& level,
 	image::precache_file_existence("terrain/");
 
 	if(building_rules_.empty() && rules_cfg_){
+		//off_map first to prevent some default rule seems to block it
+		add_off_map_rule(offmap_image);
 		// parse global terrain rules
 		parse_global_config(*rules_cfg_);
 	} else {
@@ -177,7 +179,6 @@ terrain_builder::terrain_builder(const config& level,
 
 	// parse local rules
 	parse_config(level);
-	add_off_map_rule(offmap_image);
 
 	build_terrains();
 }
@@ -895,7 +896,7 @@ void terrain_builder::add_off_map_rule(const std::string& image)
 	item["set_flag"] = "base";
 
 	// Parse the object
-	parse_config(cfg);
+	parse_global_config(cfg);
 }
 
 bool terrain_builder::rule_matches(const terrain_builder::building_rule &rule,
