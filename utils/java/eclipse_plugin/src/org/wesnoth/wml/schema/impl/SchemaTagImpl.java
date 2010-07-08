@@ -1,53 +1,76 @@
 package org.wesnoth.wml.schema.impl;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.wesnoth.wml.schema.SchemaAttributeChild;
 import org.wesnoth.wml.schema.SchemaTag;
 import org.wesnoth.wml.schema.SchemaTagChild;
 
-public class SchemaTagImpl implements SchemaTag {
-	private List<SchemaAttributeChild> attributes = new ArrayList<SchemaAttributeChild>();
-	private List<SchemaTagChild> tags = new ArrayList<SchemaTagChild>();
-	private String name;
-	private String description;
+import java.util.ArrayList;
+import java.util.List;
 
-	public List<SchemaAttributeChild> getAttributes() {
+public class SchemaTagImpl implements SchemaTag
+{
+	private List<SchemaAttributeChild>	attributes	= new ArrayList<SchemaAttributeChild>();
+	private List<SchemaTagChild>		tags		= new ArrayList<SchemaTagChild>();
+	private String						name;
+	private String						description;
+
+	@Override
+	public List<SchemaAttributeChild> getAttributes()
+	{
 		return this.attributes;
 	}
-	public void setAttributes(List<SchemaAttributeChild> attributes) {
+
+	public void setAttributes(List<SchemaAttributeChild> attributes)
+	{
 		this.attributes = attributes;
 	}
-	public List<SchemaTagChild> getTags() {
+
+	@Override
+	public List<SchemaTagChild> getTags()
+	{
 		return this.tags;
 	}
-	public void setTags(List<SchemaTagChild> tags) {
+
+	public void setTags(List<SchemaTagChild> tags)
+	{
 		this.tags = tags;
 	}
-	public String getName() {
+
+	@Override
+	public String getName()
+	{
 		return this.name;
 	}
-	public void setName(String name) {
+
+	public void setName(String name)
+	{
 		this.name = name;
 	}
-	public String getDescription() {
+
+	@Override
+	public String getDescription()
+	{
 		return this.description;
 	}
-	public void setDescription(String description) {
+
+	public void setDescription(String description)
+	{
 		this.description = description;
 	}
 
 	@Override
-	public boolean isTag() {
+	public boolean isTag()
+	{
 		return true;
 	}
 
-	public void addAttribute(SchemaAttributeChild attribute) {
+	public void addAttribute(SchemaAttributeChild attribute)
+	{
 		this.attributes.add(attribute);
 	}
 
-	public void addTag(SchemaTagChild tag) {
+	public void addTag(SchemaTagChild tag)
+	{
 		this.tags.add(tag);
 	}
 

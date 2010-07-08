@@ -27,10 +27,11 @@ import wesnoth_eclipse_plugin.Activator;
  * be accessed directly via the preference store.
  */
 public class WesnothEditorPreferences
-	extends FieldEditorPreferencePage
-	implements IWorkbenchPreferencePage {
+		extends FieldEditorPreferencePage
+		implements IWorkbenchPreferencePage
+{
 
-	private DirectoryFieldEditor wmlToolsField;
+	private DirectoryFieldEditor	wmlToolsField;
 
 	public WesnothEditorPreferences() {
 		super(GRID);
@@ -45,20 +46,23 @@ public class WesnothEditorPreferences
 	 * restore itself.
 	 */
 	@Override
-	public void createFieldEditors() {
+	public void createFieldEditors()
+	{
 		addField(new FileFieldEditor(PreferenceConstants.P_WESNOTH_EXEC_PATH,
 				"Wesnoth executable path:", getFieldEditorParent()));
-		addField(new  DirectoryFieldEditor(PreferenceConstants.P_WESNOTH_WORKING_DIR,
+		addField(new DirectoryFieldEditor(PreferenceConstants.P_WESNOTH_WORKING_DIR,
 				"Working directory:", getFieldEditorParent()));
-		addField(new  DirectoryFieldEditor(PreferenceConstants.P_WESNOTH_USER_DIR,
+		addField(new DirectoryFieldEditor(PreferenceConstants.P_WESNOTH_USER_DIR,
 				"User data directory:", getFieldEditorParent()));
 
-		wmlToolsField = new  DirectoryFieldEditor(PreferenceConstants.P_WESNOTH_WMLTOOLS_DIR,
+		wmlToolsField = new DirectoryFieldEditor(PreferenceConstants.P_WESNOTH_WMLTOOLS_DIR,
 				"WML* tools directory:", getFieldEditorParent());
 		addField(wmlToolsField);
 	}
 
-	public void init(IWorkbench workbench) {
+	@Override
+	public void init(IWorkbench workbench)
+	{
 	}
 
 	@Override

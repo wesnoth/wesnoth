@@ -29,6 +29,6 @@ public class ImportMapHandler extends AbstractHandler
 					"You need to select a \"maps\" folder before importing anything");
 		}
 
-		return (selectedFolder != null && selectedFolder.getName().equals("maps"));
+		return (selectedFolder.getName().equals("maps"));
 	}
 }
