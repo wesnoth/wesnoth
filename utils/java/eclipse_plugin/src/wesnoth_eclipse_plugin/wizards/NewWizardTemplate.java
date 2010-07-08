@@ -4,7 +4,6 @@
  */
 package wesnoth_eclipse_plugin.wizards;
 
-import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.jface.wizard.Wizard;
@@ -13,8 +12,8 @@ import org.eclipse.ui.IWorkbench;
 
 public abstract class NewWizardTemplate extends Wizard implements INewWizard
 {
-	protected ISelection	selection_;
-	protected int			lastPageHashCode_	= 0;
+	protected IStructuredSelection	selection_;
+	protected int					lastPageHashCode_	= 0;
 
 	@Override
 	public void init(IWorkbench workbench, IStructuredSelection selection)
