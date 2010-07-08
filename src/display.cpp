@@ -1130,7 +1130,6 @@ bool display::draw_init()
 	}
 
 	if(benchmark) {
-		redraw_background_ = true;
 		invalidateAll_ = true;
 	}
 
