@@ -959,10 +959,11 @@ bool terrain_builder::rule_matches(const terrain_builder::building_rule &rule,
 
 void terrain_builder::apply_rule(const terrain_builder::building_rule &rule, const map_location &loc)
 {
+	int rand_seed = tile_map_.on_map(loc) ? tile_map_[loc].rand_seed : 0;
+
 	for(constraint_set::const_iterator constraint = rule.constraints.begin();
 			constraint != rule.constraints.end(); ++constraint) {
 
-		rule_imagelist::const_iterator img;
 		const map_location tloc = loc.legacy_sum(constraint->second.loc);
 		if(!tile_map_.on_map(tloc)) {
 			return;
@@ -970,25 +971,17 @@ void terrain_builder::apply_rule(const terrain_builder::building_rule &rule, con
 
 		tile& btile = tile_map_[tloc];
 
-		// We want to order the images by layer first and base-y second,
-		// so we sort by layer*BASE_Y_INTERVAL + BASE_Y_INTERVAL/2 + basey
-		// Thus, allowed values for basey are from -50000 to 49999
-		int rand_seed;
-		if(tile_map_.on_map(loc)){
-			rand_seed = tile_map_[loc].rand_seed;
-		} else {
-			rand_seed= 0;
-		}
-		for(img = constraint->second.images.begin(); img != constraint->second.images.end(); ++img) {
-			btile.images.insert(std::pair<int,std::pair<int, const rule_image*> >(
-									img->layer*BASE_Y_INTERVAL + BASE_Y_INTERVAL/2 + img->basey,
-								       	std::pair<int,const rule_image*>(rand_seed,&*img)));
+		foreach(const rule_image& img, constraint->second.images) {
+			// We want to order the images by layer first and base-y second,
+			// so we sort by layer*BASE_Y_INTERVAL + BASE_Y_INTERVAL/2 + basey
+			// Thus, allowed values for basey are from -50000 to 49999
+			int order = img.layer*BASE_Y_INTERVAL + BASE_Y_INTERVAL/2 + img.basey;
+			btile.images.insert(std::make_pair(order, std::make_pair(rand_seed, &img)));
 		}
 
 		// Sets flags
-		for(std::vector<std::string>::const_iterator itor = constraint->second.set_flag.begin();
-				itor != constraint->second.set_flag.end(); ++itor) {
-			btile.flags.insert(*itor);
+		foreach(const std::string& flag, constraint->second.set_flag) {
+			btile.flags.insert(flag);
 		}
 
 	}
