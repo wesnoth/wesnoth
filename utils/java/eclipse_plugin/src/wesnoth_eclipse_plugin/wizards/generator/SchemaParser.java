@@ -30,6 +30,7 @@ public class SchemaParser
 
 	public void parseSchema(boolean force)
 	{
+		//TODO: sort tags's keys by cardinality (required first) ??
 		if (parsingDone_ && !force)
 			return;
 

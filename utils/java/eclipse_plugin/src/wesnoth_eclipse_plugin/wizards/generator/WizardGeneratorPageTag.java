@@ -6,6 +6,7 @@ package wesnoth_eclipse_plugin.wizards.generator;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map.Entry;
 
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
@@ -19,6 +20,8 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.List;
 
 import wesnoth_eclipse_plugin.utils.GUIUtils;
+import wesnoth_eclipse_plugin.utils.ListUtils;
+import wesnoth_eclipse_plugin.utils.StringUtils;
 import wesnoth_eclipse_plugin.wizards.WizardUtils;
 
 public class WizardGeneratorPageTag extends WizardPage
@@ -27,11 +30,15 @@ public class WizardGeneratorPageTag extends WizardPage
 	private HashMap<String, java.util.List<String>>	content_;
 	private int										startIndex_, endIndex_;
 	private Composite								container_;
+	private byte									indent_;
 
-	public WizardGeneratorPageTag(String tagName, java.util.List<Tag> tags, int startIndex, int endIndex) {
+	public WizardGeneratorPageTag(String tagName, java.util.List<Tag> tags,
+			int startIndex, int endIndex, byte indent) {
 		super("wizardPageTag" + startIndex);
 		setTitle(tagName + " new wizard");
 		//setDescription(String.format("page %d to %d out of %d", startIndex, endIndex, tags.size()));
+
+		indent_ = indent;
 
 		startIndex_ = startIndex;
 		endIndex_ = endIndex;
@@ -102,7 +109,8 @@ public class WizardGeneratorPageTag extends WizardPage
 	private void addNewItem(List targetList, String tagName)
 	{
 		//TODO: check for multiple addings
-		WizardGenerator wizard = new WizardGenerator("Create a new " + tagName, tagName);
+		WizardGenerator wizard =
+				new WizardGenerator("Create a new " + tagName, tagName, (byte) (indent_ + 1));
 		WizardUtils.launchWizard(wizard, getShell(), null);
 		if (wizard.isFinished())
 		{
@@ -121,5 +129,17 @@ public class WizardGeneratorPageTag extends WizardPage
 
 		content_.get(tagName).remove(targetList.getSelectionIndex());
 		targetList.remove(targetList.getSelectionIndex());
+	}
+
+	public String getContent()
+	{
+		StringBuilder result = new StringBuilder();
+		for (Entry<String, java.util.List<String>> tag : content_.entrySet())
+		{
+			result.append(StringUtils.multiples("\t", indent_) + "[" + tag.getKey() + "]\n");
+			result.append(ListUtils.concatenateList(tag.getValue(), "\n\t"));
+			result.append(StringUtils.multiples("\t", indent_) + "[/" + tag.getKey() + "]\n");
+		}
+		return result.toString();
 	}
 }

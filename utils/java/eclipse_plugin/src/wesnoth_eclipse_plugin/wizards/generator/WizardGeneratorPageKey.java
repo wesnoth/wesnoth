@@ -11,19 +11,26 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
+
+import wesnoth_eclipse_plugin.utils.StringUtils;
 
 public class WizardGeneratorPageKey extends WizardPage
 {
 	private List<TagKey>	keys_;
 	private int				startIndex_, endIndex_;
 	private Composite		container_;
+	private byte			indent_;
 
-	public WizardGeneratorPageKey(String tagName, List<TagKey> keys, int startIndex, int endIndex) {
+	public WizardGeneratorPageKey(String tagName, List<TagKey> keys,
+			int startIndex, int endIndex, byte indent) {
 		super("wizardPageKey" + startIndex);
 		setTitle(tagName + " new wizard");
 		//setDescription(String.format("page %d to %d out of %d", startIndex, endIndex, keys.size()));
+
+		indent_ = indent;
 
 		startIndex_ = startIndex;
 		endIndex_ = endIndex;
@@ -55,5 +62,19 @@ public class WizardGeneratorPageKey extends WizardPage
 			//TODO: check for regex/cardinality
 		}
 		setPageComplete(true);
+	}
+
+	public String getContent()
+	{
+		StringBuilder result = new StringBuilder();
+		for (Control child : container_.getChildren())
+		{
+			if (!(child instanceof Text))
+				continue;
+
+			result.append(StringUtils.multiples("\t", indent_) +
+					child.getData("name") + "=" + ((Text) child).getText() + "\n");
+		}
+		return result.toString();
 	}
 }

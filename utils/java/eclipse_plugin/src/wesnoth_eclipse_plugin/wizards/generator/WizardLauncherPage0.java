@@ -21,9 +21,7 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
-import org.eclipse.ui.IEditorInput;
-import org.eclipse.ui.IEditorReference;
-import org.eclipse.ui.PartInitException;
+import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.dialogs.ContainerSelectionDialog;
 
 import wesnoth_eclipse_plugin.Activator;
@@ -201,32 +199,24 @@ public class WizardLauncherPage0 extends WizardPage
 		else
 		{
 			// current file checking
-			if (selection_ != null && selection_.isEmpty() == false &&
-					selection_ instanceof IStructuredSelection && selection_.size() > 0)
+			if (getEditedFile() != null)
 			{
-				try
-				{
-					IEditorReference[] references =
-							Activator.getDefault().getWorkbench().getActiveWorkbenchWindow().getPages()[0].getEditorReferences();
-					if (references.length > 0)
-					{
-						IEditorInput input = references[0].getEditorInput();
-						lblCurrentFileOpened.setText("File " + input.getName() + " opened.");
-					}
-					else
-					{
-						lblCurrentFileOpened.setText("No file opened.");
-						setErrorMessage("No file opened.");
-						return;
-					}
-				} catch (PartInitException e)
-				{
-					e.printStackTrace();
-				}
+				lblCurrentFileOpened.setText("File " + getEditedFile().getEditorInput().getName() + " opened.");
+			}
+			else
+			{
+				lblCurrentFileOpened.setText("No file opened.");
+				setErrorMessage("No file opened.");
+				return;
 			}
 		}
 		setPageComplete(true);
 		setErrorMessage(null);
+	}
+
+	public IEditorPart getEditedFile()
+	{
+		return Activator.getDefault().getWorkbench().getActiveWorkbenchWindow().getPages()[0].getActiveEditor();
 	}
 
 	public void updateEnabledStatus()
@@ -277,7 +267,7 @@ public class WizardLauncherPage0 extends WizardPage
 	{
 		ContainerSelectionDialog dialog =
 				new ContainerSelectionDialog(getShell(), ResourcesPlugin.getWorkspace().getRoot(), false,
-						"Select a campaign project");
+						"Select a directory");
 		if (dialog.open() == ContainerSelectionDialog.OK)
 		{
 			Object[] result = dialog.getResult();
@@ -290,11 +280,16 @@ public class WizardLauncherPage0 extends WizardPage
 
 	public String getFileName()
 	{
-		return radioNewFile.getSelection() == true ? txtFileName_.getText() : "";
+		return radioNewFile.getSelection() == true ? txtFileName_.getText() : getEditedFile().getEditorInput().getName();
 	}
 
 	public String getDirectoryName()
 	{
 		return radioNewFile.getSelection() == true ? txtDirectory_.getText() : "";
+	}
+
+	public boolean getIsTargetNewFile()
+	{
+		return radioNewFile.getSelection();
 	}
 }

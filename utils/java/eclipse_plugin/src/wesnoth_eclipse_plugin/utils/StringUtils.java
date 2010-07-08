@@ -169,4 +169,16 @@ public class StringUtils
 
 		return string.replace(source, ListUtils.concatenateArray(tmpTarget, "\n"));
 	}
+
+	public static String multiples(String sequence, int times)
+	{
+		if (sequence == null)
+			return null;
+		StringBuilder res = new StringBuilder(sequence.length() * times);
+		for (int i = 0; i < times; i++)
+		{
+			res.append(sequence);
+		}
+		return res.toString();
+	}
 }
