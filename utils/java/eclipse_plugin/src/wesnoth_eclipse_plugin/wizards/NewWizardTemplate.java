@@ -34,6 +34,8 @@ public abstract class NewWizardTemplate extends Wizard implements INewWizard
 	@Override
 	public void addPages()
 	{
+		if (getPageCount() == 0)
+			return;
 		lastPageHashCode_ = getPages()[getPageCount() - 1].hashCode();
 	}
 

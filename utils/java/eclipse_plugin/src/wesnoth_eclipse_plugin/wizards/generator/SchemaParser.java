@@ -75,7 +75,7 @@ public class SchemaParser
 						}
 						else
 						{
-							Tag tag = new Tag(simpleTagName, extendedTagName);
+							Tag tag = new Tag(simpleTagName, extendedTagName, '_');
 							currentTag = tag;
 							currentTag.NeedsExpanding = false;
 							tags_.put(simpleTagName, tag);
@@ -149,7 +149,7 @@ public class SchemaParser
 							else
 							// tag wasn't created yet
 							{
-								targetTag = new Tag(value[1]);
+								targetTag = new Tag(value[1], getCardinality(value[0]));
 								System.err.println("creating missing tag: " + value[1]);
 								tags_.put(value[1], targetTag);
 							}

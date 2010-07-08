@@ -4,41 +4,37 @@
  */
 package wesnoth_eclipse_plugin.wizards.generator;
 
-import org.eclipse.jface.wizard.WizardDialog;
-
-import wesnoth_eclipse_plugin.Activator;
 import wesnoth_eclipse_plugin.wizards.NewWizardTemplate;
+import wesnoth_eclipse_plugin.wizards.WizardUtils;
 
 public class WizardLauncher extends NewWizardTemplate
 {
 	WizardLauncherPage0	page0_;
+	WizardLauncherPage1	page1_;
 
 	public WizardLauncher() {
 		setWindowTitle("Wizard launcher");
-		page0_ = new WizardLauncherPage0();
-		addPage(page0_);
+		setNeedsProgressMonitor(true);
 	}
 
 	@Override
 	public void addPages()
 	{
+		page0_ = new WizardLauncherPage0(selection_);
+		addPage(page0_);
+
+		page1_ = new WizardLauncherPage1();
+		addPage(page1_);
+
 		super.addPages();
 	}
 
 	@Override
 	public boolean performFinish()
 	{
-		WizardGenerator wizard = new WizardGenerator(page0_.getTagDescription() + " new wizard", page0_.getTagName());
-		wizard.init(Activator.getDefault().getWorkbench(), selection_);
-		wizard.setForcePreviousAndNextButtons(true);
+		WizardGenerator wizard = new WizardGenerator(page1_.getTagDescription() + " new wizard", page1_.getTagName());
+		WizardUtils.launchWizard(wizard, getShell(), selection_);
 
-		WizardDialog wizardDialog = new WizardDialog(getShell(), wizard);
-		wizardDialog.create();
-		wizardDialog.getShell().setLocation(getShell().getBounds().x, getShell().getBounds().y);
-		Activator.getDefault().getWorkbench().getHelpSystem().setHelp(wizardDialog.getShell(),
-				"org.eclipse.ui.new_wizard_context");
-
-		wizardDialog.open();
 		return false;
 	}
 }

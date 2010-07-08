@@ -12,11 +12,13 @@ import wesnoth_eclipse_plugin.wizards.WizardsConstants;
 public class WizardGenerator extends NewWizardTemplate
 {
 	List<WizardGeneratorPageKey>	pagesList_;
+	private String					tagName_;
 
 	public WizardGenerator(String title, String tagName) {
 		SchemaParser.getInstance().parseSchema(false);
 		setWindowTitle(title);
 		Tag tagContent = SchemaParser.getInstance().getTags().get(tagName);
+		tagName_ = tagName;
 
 		// keys section
 		int keysNr = tagContent.KeyChildren.size();
@@ -51,6 +53,11 @@ public class WizardGenerator extends NewWizardTemplate
 			tempPageTag = new WizardGeneratorPageTag(tagName, tagContent.TagChildren, startTag, tagsNr - 1);
 			addPage(tempPageTag);
 		}
+
+		if (getPageCount() == 0)
+		{
+			addPage(new WizardGeneratorPage404(tagName));
+		}
 	}
 
 	@Override
@@ -64,7 +71,10 @@ public class WizardGenerator extends NewWizardTemplate
 	{
 		// logic
 
-		data_ = null;
+		data_ = "temp";
+
+		// for now let's just return tag's name
+		objectName_ = tagName_;
 		isFinished_ = true;
 		return true;
 	}

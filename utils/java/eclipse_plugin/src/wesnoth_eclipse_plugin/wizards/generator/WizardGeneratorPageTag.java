@@ -4,8 +4,13 @@
  */
 package wesnoth_eclipse_plugin.wizards.generator;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
@@ -13,11 +18,15 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.List;
 
+import wesnoth_eclipse_plugin.utils.GUIUtils;
+import wesnoth_eclipse_plugin.wizards.WizardUtils;
+
 public class WizardGeneratorPageTag extends WizardPage
 {
-	private java.util.List<Tag>	tags_;
-	private int					startIndex_, endIndex_;
-	private Composite			container_;
+	private java.util.List<Tag>						tags_;
+	private HashMap<String, java.util.List<String>>	content_;
+	private int										startIndex_, endIndex_;
+	private Composite								container_;
 
 	public WizardGeneratorPageTag(String tagName, java.util.List<Tag> tags, int startIndex, int endIndex) {
 		super("wizardPageTag" + startIndex);
@@ -27,6 +36,7 @@ public class WizardGeneratorPageTag extends WizardPage
 		startIndex_ = startIndex;
 		endIndex_ = endIndex;
 		tags_ = tags;
+		content_ = new HashMap<String, java.util.List<String>>();
 	}
 
 	@Override
@@ -38,7 +48,9 @@ public class WizardGeneratorPageTag extends WizardPage
 
 		for (int i = startIndex_; i <= endIndex_; i++)
 		{
-			Tag tag = tags_.get(i);
+			final Tag tag = tags_.get(i);
+			java.util.List<String> tmp = new ArrayList<String>();
+
 			Group tagGroup = new Group(container_, SWT.NONE);
 			tagGroup.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
 			tagGroup.setText("[" + tag.Name + "]");
@@ -55,11 +67,59 @@ public class WizardGeneratorPageTag extends WizardPage
 			gd_btnAdd.heightHint = 40;
 			btnAdd.setLayoutData(gd_btnAdd);
 			btnAdd.setText("Add");
+			btnAdd.setData("list", list);
+			btnAdd.addSelectionListener(new SelectionAdapter() {
+				@Override
+				public void widgetSelected(SelectionEvent e)
+				{
+					if (!(e.getSource() instanceof Button))
+						return;
+					addNewItem((List) ((Button) e.getSource()).getData("list"), tag.Name);
+				}
+			});
 
 			Button btnRemove = new Button(tagGroup, SWT.NONE);
 			btnRemove.setLayoutData(new GridData(SWT.FILL, SWT.FILL, false, false, 1, 1));
 			btnRemove.setText("Remove");
+			btnRemove.setData("list", list);
+			btnRemove.addSelectionListener(new SelectionAdapter() {
+				@Override
+				public void widgetSelected(SelectionEvent e)
+				{
+					if (!(e.getSource() instanceof Button))
+						return;
+					removeItem((List) ((Button) e.getSource()).getData("list"), tag.Name);
+				}
+			});
+
+			content_.put(tag.Name, tmp);
 		}
 		setPageComplete(true);
+
+		//TODO: add checks for list's count
+	}
+
+	private void addNewItem(List targetList, String tagName)
+	{
+		//TODO: check for multiple addings
+		WizardGenerator wizard = new WizardGenerator("Create a new " + tagName, tagName);
+		WizardUtils.launchWizard(wizard, getShell(), null);
+		if (wizard.isFinished())
+		{
+			targetList.add(wizard.getObjectName() + targetList.getItemCount());
+			content_.get(tagName).add(wizard.getData().toString());
+		}
+	}
+
+	private void removeItem(List targetList, String tagName)
+	{
+		if (targetList.getSelectionCount() == 0 || targetList.getItemCount() == 0)
+		{
+			GUIUtils.showMessageBox("Please select an item before removing it.");
+			return;
+		}
+
+		content_.get(tagName).remove(targetList.getSelectionIndex());
+		targetList.remove(targetList.getSelectionIndex());
 	}
 }

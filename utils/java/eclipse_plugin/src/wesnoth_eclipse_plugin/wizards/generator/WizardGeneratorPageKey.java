@@ -42,7 +42,8 @@ public class WizardGeneratorPageKey extends WizardPage
 			TagKey key = keys_.get(i);
 			Label label = new Label(container_, SWT.NONE);
 			label.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
-			label.setText(key.Name);
+			// add star to required items
+			label.setText(key.Name + (key.Cardinality == '1' ? "*" : "") + ":");
 
 			Text textBox = new Text(container_, SWT.BORDER);
 			textBox.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
@@ -50,6 +51,8 @@ public class WizardGeneratorPageKey extends WizardPage
 			textBox.setData("name", key.Name);
 			textBox.setData("regex", key.Regex);
 			textBox.setData("card", key.Cardinality);
+
+			//TODO: check for regex/cardinality
 		}
 		setPageComplete(true);
 	}
