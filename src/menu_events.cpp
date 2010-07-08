@@ -2369,6 +2369,7 @@ class console_handler : public map_command_handler<console_handler>, private cha
 		void do_nosaves();
 		void do_next_level();
 		void do_choose_level();
+		void do_turn();
 		void do_debug();
 		void do_nodebug();
 		void do_lua();
@@ -2452,10 +2453,11 @@ class console_handler : public map_command_handler<console_handler>, private cha
 				_("Disable autosaves."));
 			register_command("next_level", &console_handler::do_next_level,
 				_("Advance to the next scenario, or scenario identified by 'id'"), _("<id>"), "D");
-			register_alias("next_level", "n");
 			register_command("choose_level", &console_handler::do_choose_level,
 				_("Choose next scenario"), "", "D");
 			register_alias("choose_level", "cl");
+			register_command("turn", &console_handler::do_turn,
+				_("Change turn number (and time of day)"), _("[turn]"), "D");
 			register_command("debug", &console_handler::do_debug,
 				_("Turn debug mode on."));
 			register_command("nodebug", &console_handler::do_nodebug,
@@ -3170,6 +3172,18 @@ void console_handler::do_choose_level() {
 		e.linger_mode = false;
 		throw end_level_exception(VICTORY);
 	}
+}
+
+void console_handler::do_turn()
+{
+	if (!get_data().empty()) {
+		int turn = lexical_cast_default<int>(get_data(), 1);
+		resources::tod_manager->set_turn(turn);
+	} else {
+		resources::tod_manager->next_turn();
+	}
+	menu_handler_.gui_->new_turn();
+	menu_handler_.gui_->redraw_everything();
 }
 
 void console_handler::do_debug() {
