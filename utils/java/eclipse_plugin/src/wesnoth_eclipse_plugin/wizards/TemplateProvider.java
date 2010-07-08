@@ -9,6 +9,8 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import wesnoth_eclipse_plugin.Logger;
 import wesnoth_eclipse_plugin.utils.Pair;
@@ -43,7 +45,9 @@ public class TemplateProvider
 			Logger.print("reading templates...");
 
 			Logger.print(pluginFullPath_ + templatesFile);
-			BufferedReader reader = new BufferedReader(new FileReader(getClass().getProtectionDomain().getCodeSource().getLocation().getPath() + templatesFile));
+			BufferedReader reader =
+					new BufferedReader(new FileReader(getClass().getProtectionDomain().getCodeSource().getLocation().getPath()
+							+ templatesFile));
 			BufferedReader tmpReader;
 			String line, tmpLine, content;
 
@@ -93,30 +97,39 @@ public class TemplateProvider
 
 		String result = "";
 		String[] template = StringUtils.getLines(tmpTemplate);
+		boolean skipLine;
 
 		for (int i = 0; i < template.length; ++i)
 		{
-
+			skipLine = false;
 			for (ReplaceableParameter param : parameters)
 			{
 				if (template[i].contains(param.paramName))
 				{
-					template[i] = template[i].replace(param.paramName, param.paramValue);
+					template[i] = StringUtils.replaceWithIndent(template[i], param.paramName, param.paramValue);
 
 					if (!templateName.equals("build_xml") && (param.paramValue == null || param.paramValue.isEmpty()))
 					{
 						// we don't have any value supplied -
-						// let's comment that line (if it's not already
-						// commented)
+						// let's comment that line (if it's not already commented)
+						// or remove it if it's empty
 						if (!(StringUtils.startsWith(template[i], "#")))
 						{
 							template[i] = "#" + template[i];
+							Pattern pattern = Pattern.compile("#[\t ]*");
+							Matcher matcher = pattern.matcher(template[i]);
+							if (matcher.matches())
+							{
+								skipLine = true;
+								System.out.println("Skipping line");
+							}
 						}
 					}
 				}
 			}
 
-			result += template[i] + "\n";
+			if (skipLine == false)
+				result += template[i] + "\n";
 		}
 		return result;
 	}

@@ -72,8 +72,8 @@ public class StringUtils
 	 * @param removeTrailing removes or not the preceding 'character' characters
 	 * @return
 	 */
-	public static String
-			removeIncorrectCharacters(String target, char character, boolean removeTrailing, boolean removePreceding)
+	public static String removeIncorrectCharacters(String target, char character,
+			boolean removeTrailing, boolean removePreceding)
 	{
 		StringBuilder resString = new StringBuilder();
 
@@ -86,7 +86,8 @@ public class StringUtils
 				continue;
 			}
 
-			if (target.charAt(i) == character && ((removeTrailing && i == target.length()) || (removePreceding && i == 0)))
+			if (target.charAt(i) == character &&
+					((removeTrailing && i == target.length()) || (removePreceding && i == 0)))
 			{
 				continue;
 			}
@@ -152,7 +153,7 @@ public class StringUtils
 	{
 		// get the current indentation
 		Pattern pattern = Pattern.compile("[\t ]*");
-		Matcher matcher = pattern.matcher(source);
+		Matcher matcher = pattern.matcher(string);
 		String indent = "";
 		if (matcher.find())
 		{
