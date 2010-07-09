@@ -945,7 +945,7 @@ stringfixes = {
 # Convert straight apostrophes and quotation marks
 # conversion added in 1.9.0-svn
 ("What's happened? Oh Eloh, the craters are everywhere, everything is gone, ruined. I can hardly recognize our village. I didn't think it could be this bad.", "What’s happened? Oh Eloh, the craters are everywhere, everything is gone, ruined. I can hardly recognize our village. I didn’t think it could be this bad."),
-("C'mon", "C’mon"),
+("C'mon", "Come on"),
 ("Tanuil's", "Tanuil’s"),
 ("That's", "That’s"),
 ("Uria's", "Uria’s"),
