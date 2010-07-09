@@ -38,7 +38,7 @@ if(ZLIB_INCLUDE_DIR)
   include_directories( ${ZLIB_INCLUDE_DIR} )
 endif()
 
-option ( USE_ANA_NETWORK "Compile network module using ana" ON )
+option ( USE_ANA_NETWORK "Compile network module using ana" OFF )
 
 set( network_implementation_files network.cpp network_worker.cpp )
 
@@ -72,24 +72,33 @@ else(MSVC)
 	)
 endif(MSVC)
 
-set( game-external-libs
-    ${common-external-libs}
-    ${SDLIMAGE_LIBRARY}
-    ${SDLMIXER_LIBRARY}
-    ${SDLNET_LIBRARY}
-    ${SDLTTF_LIBRARY}
-    ${PANGOCAIRO_LIBRARIES}
-    ${FONTCONFIG_LIBRARIES}
-    ${LUA_LIBRARIES}
-    ${LIBDBUS_LIBRARIES}
-)
-
-if ( USE_ANA_NETWORK ) 
+if ( USE_ANA_NETWORK )
     add_subdirectory ( ana )
+
     set( game-external-libs
-        ${game-external-libs}
+        ${common-external-libs}
+        ${SDLIMAGE_LIBRARY}
+        ${SDLMIXER_LIBRARY}
+        ${SDLNET_LIBRARY}        # only to link to upload_log
         ana-static
-       )
+        ${SDLTTF_LIBRARY}
+        ${PANGOCAIRO_LIBRARIES}
+        ${FONTCONFIG_LIBRARIES}
+        ${LUA_LIBRARIES}
+        ${LIBDBUS_LIBRARIES}
+    )
+else ( USE_ANA_NETWORK )
+    set( game-external-libs
+        ${common-external-libs}
+        ${SDLIMAGE_LIBRARY}
+        ${SDLMIXER_LIBRARY}
+        ${SDLNET_LIBRARY}
+        ${SDLTTF_LIBRARY}
+        ${PANGOCAIRO_LIBRARIES}
+        ${FONTCONFIG_LIBRARIES}
+        ${LUA_LIBRARIES}
+        ${LIBDBUS_LIBRARIES}
+    )
 endif ( USE_ANA_NETWORK )
 
 if(MSVC)
@@ -107,11 +116,17 @@ else(MSVC)
     )
 endif(MSVC)
 
-
-set( server-external-libs
-    ${common-external-libs}
-    ${SDLNET_LIBRARY}
-)
+if ( USE_ANA_NETWORK )
+    set( server-external-libs
+        ${common-external-libs}
+        ana-static
+    )
+else ( USE_ANA_NETWORK )
+    set( server-external-libs
+        ${common-external-libs}
+        ${SDLNET_LIBRARY}
+    )
+endif ( USE_ANA_NETWORK )
 
 set( tools-external-libs
     ${common-external-libs}
@@ -638,8 +653,7 @@ SET(wesnothd_SRC
     server/user_handler.cpp
     server/forum_user_handler.cpp
     server/sample_user_handler.cpp
-    network.cpp
-    network_worker.cpp
+    ${network_implementation_files}
     loadscreen_empty.cpp 
 )
 
@@ -662,8 +676,7 @@ SET(campaignd_SRC
     addon/validation.cpp
     campaign_server/campaign_server.cpp
     server/input_stream.cpp
-    network.cpp
-    network_worker.cpp
+    ${network_implementation_files}
     loadscreen_empty.cpp
 )
 
