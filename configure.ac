@@ -265,7 +265,7 @@ AC_ARG_WITH([fribidi],
 AC_ARG_ENABLE([ana],
               AS_HELP_STRING([--enable-ana], [use the experimental ANA networking framework (work-in-progress)]),
 	      [ana=$enableval],
-	      [ana=yes])
+	      [ana=no])
 
 AC_ARG_ENABLE([pool-alloc],
               AS_HELP_STRING([--enable-pool-alloc], [enable the pool allocator]),
