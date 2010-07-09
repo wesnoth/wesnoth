@@ -49,8 +49,8 @@ class Tag
 		KeyChildren.add(key);
 	}
 
-	public void addKey(String name, String valueType, char cardinality)
+	public void addKey(String name, String valueType, char cardinality, boolean translat)
 	{
-		addKey(new TagKey(name, cardinality, valueType));
+		addKey(new TagKey(name, cardinality, valueType, translat));
 	}
 }

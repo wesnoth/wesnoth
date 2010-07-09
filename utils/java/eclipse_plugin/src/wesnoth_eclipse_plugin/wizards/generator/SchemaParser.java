@@ -173,7 +173,8 @@ public class SchemaParser
 								currentTag.NeedsExpanding = true;
 							if (primitives_.get(value[1]) == null)
 								System.err.println("Undefined primitive type in schema.cfg for: " + value[1]);
-							currentTag.addKey(tokens[0], primitives_.get(value[1]), getCardinality(value[0]));
+							currentTag.addKey(tokens[0], primitives_.get(value[1]),
+									getCardinality(value[0]), value[1].equals("tstring"));
 						}
 					}
 					else

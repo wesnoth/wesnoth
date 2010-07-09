@@ -74,6 +74,7 @@ public class WizardGeneratorPageKey extends WizardPage
 				textBox.setData("name", key.Name);
 				textBox.setData("valType", key.ValueType);
 				textBox.setData("card", key.Cardinality);
+				textBox.setData("trans", key.IsTranslatable);
 				if (key.Cardinality == '1')
 					textBox.setData("comp", false); // is textbox complete
 
@@ -140,7 +141,9 @@ public class WizardGeneratorPageKey extends WizardPage
 			else
 				text = ((Combo) child).getText();
 			result.append(StringUtils.multiples("\t", indent_) +
-					child.getData("name") + "=" + text + "\n");
+					child.getData("name") + "=" +
+					(child.getData("trans").toString().equals("true") == true ? "_" : "") // translatable flag
+					+ "\"" + text + "\"\n");
 		}
 		return result.toString();
 	}

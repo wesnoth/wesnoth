@@ -17,8 +17,9 @@ public class TagKey
 	public char		Cardinality;
 	public String	ValueType;
 	public boolean	IsEnum;
+	public boolean	IsTranslatable;
 
-	public TagKey(String name, char cardinality, String valueType) {
+	public TagKey(String name, char cardinality, String valueType, boolean trans) {
 		Name = name;
 		Cardinality = cardinality;
 
@@ -28,5 +29,6 @@ public class TagKey
 		}
 		IsEnum = valueType.substring(1, valueType.indexOf(" ")).equals("enum");
 		ValueType = valueType.substring(valueType.indexOf(" ") + 1, valueType.length() - 1); // remove the " "
+		IsTranslatable = trans;
 	}
 }
