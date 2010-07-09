@@ -480,12 +480,12 @@ namespace network {
     }
 
     /** @todo Note the gzipped parameter should be removed later. */
-    void send_data_all_except(const config&       /*cfg*/,
-                              connection          /*connection_num*/,
+    void send_data_all_except(const config&       cfg,
+                              connection          connection_num,
                               const bool          /*gzipped*/,
                               const std::string&  /*packet_type*/)
     {
-        throw std::runtime_error("TODO:Not implemented send_data_all_except");
+        ana_manager.send_all_except(cfg, connection_num);
     }
 
     std::string ip_address(connection connection_num)

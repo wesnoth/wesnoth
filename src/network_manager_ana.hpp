@@ -331,6 +331,8 @@ class ana_network_manager : public ana::listener_handler,
         /** Send data to the component with a given ID. */
         size_t send( network::connection connection_num , const config& cfg, bool zipped );
 
+        void send_all_except(const config& cfg, network::connection connection_num);
+
         /** Read a message from a given component. */
         network::connection read_from( network::connection connection_num,
                                        ana::detail::read_buffer& buffer,

@@ -225,6 +225,7 @@ ana_component::ana_component( ) :
     base_( ana::server::create() ),
     is_server_( true ),
     id_( server()->id() ),
+    wesnoth_id_( 0 ),
     send_stats_(),
     receive_stats_(),
     mutex_(),
@@ -237,6 +238,7 @@ ana_component::ana_component( const std::string& host, const std::string& port) 
     base_( ana::client::create(host,port) ),
     is_server_( false ),
     id_(  client()->id() ),
+    wesnoth_id_( 0 ),       // will change to the received id after connection
     send_stats_(),
     receive_stats_(),
     mutex_(),
@@ -444,7 +446,7 @@ network::connection ana_network_manager::create_client_and_connect(std::string h
 
             ana_send_handler send_handler( new_component, bos.str().size() );
 
-            client->send( ana::buffer( bos.str()), &send_handler );
+            client->send( ana::buffer( bos.str()), &send_handler, ana::ZERO_COPY );
 
             send_handler.wait_completion();
 
@@ -585,6 +587,33 @@ size_t ana_network_manager::send( network::connection connection_num , const con
         }
     }
     return out.str().size();
+}
+
+void ana_network_manager::send_all_except(const config& cfg, network::connection connection_num)
+{
+    std::cout << "DEBUG: send_all_except " << connection_num << "\n";
+
+    std::stringstream out;
+    config_writer cfg_writer(out, true);
+    cfg_writer.write(cfg);
+
+    std::set<ana_component*>::iterator it;
+
+    for (it = components_.begin(); it != components_.end(); ++it)
+    {
+        std::cout << "DEBUG: found component with wesnoth id " << (*it)->get_wesnoth_id() << "\n";
+        if ( (*it)->get_wesnoth_id() != connection_num )
+        {
+            ana_send_handler handler( *it, out.str().size() );
+
+            if ( (*it)->is_server() )
+                (*it)->server()->send_all( ana::buffer( out.str() ), &handler, ana::ZERO_COPY);
+            else
+                (*it)->client()->send( ana::buffer( out.str() ), &handler, ana::ZERO_COPY );
+
+            handler.wait_completion();
+        }
+    }
 }
 
 network::connection ana_network_manager::read_from( network::connection connection_num,
