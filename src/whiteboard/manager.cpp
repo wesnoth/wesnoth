@@ -52,7 +52,8 @@ manager::manager():
 		move_arrow_(),
 		fake_unit_(),
 		selected_unit_(NULL),
-		planned_unit_map_active_(false)
+		planned_unit_map_active_(false),
+		modifying_actions_(false)
 {
 	highlighter_.reset(new highlight_visitor(*resources::units, current_actions()));
 }
@@ -65,6 +66,7 @@ void manager::set_planned_unit_map()
 {
 	if (active_)
 	{
+		assert(!modifying_actions_);
 		if (!planned_unit_map_active_)
 		{
 			DBG_WB << "Building planned unit map.\n";
@@ -83,6 +85,7 @@ void manager::set_real_unit_map()
 {
 	if (active_)
 	{
+		assert(!modifying_actions_);
 		if (planned_unit_map_active_)
 		{
 			DBG_WB << "Restoring regular unit map.\n";
@@ -103,6 +106,9 @@ void manager::draw_hex(const map_location& hex)
 
 void manager::on_mouseover_change(const map_location& hex)
 {
+	if (!active_)
+		return;
+
 	//FIXME: Detect if a WML event is executing, and if so, avoid modifying the unit map during that time.
 	// Acting otherwise causes a crash.
 	if (active_ && !selected_unit_)
@@ -114,6 +120,9 @@ void manager::on_mouseover_change(const map_location& hex)
 
 void manager::on_unit_select(unit& unit)
 {
+	if (!active_)
+		return;
+
 	erase_temp_move();
 
 	selected_unit_ = &unit;
@@ -122,6 +131,9 @@ void manager::on_unit_select(unit& unit)
 
 void manager::on_unit_deselect()
 {
+	if (!active_)
+		return;
+
 	if (selected_unit_)
 	{
 		DBG_WB << "Deselecting unit " << selected_unit_->name() << " [" << selected_unit_->id() << "]\n";
@@ -132,6 +144,9 @@ void manager::on_unit_deselect()
 
 void manager::create_temp_move(const pathfind::marked_route &route)
 {
+	if (!active_)
+		return;
+
 	//TODO: properly handle turn end
 
 	if (selected_unit_ == NULL || route.steps.empty() || route.steps.size() < 2)
@@ -203,35 +218,47 @@ void manager::erase_temp_move()
 
 void manager::save_temp_move()
 {
-	std::vector<map_location> steps;
-	arrow_ptr move_arrow;
-	fake_unit_ptr fake_unit;
-	unit* target_unit;
+	if (!active_)
+		return;
 
-	//Temporary: Only keep as path the steps can be done this turn
-	steps = route_->steps;
-	move_arrow = arrow_ptr(move_arrow_);
-	fake_unit = fake_unit_ptr(fake_unit_);
-	target_unit = selected_unit_;
+	if (!modifying_actions_)
+	{
+		modifying_actions_ = true;
+		std::vector<map_location> steps;
+		arrow_ptr move_arrow;
+		fake_unit_ptr fake_unit;
+		unit* target_unit;
 
-	erase_temp_move();
-	selected_unit_ = NULL;
+		//Temporary: Only keep as path the steps can be done this turn
+		steps = route_->steps;
+		move_arrow = arrow_ptr(move_arrow_);
+		fake_unit = fake_unit_ptr(fake_unit_);
+		target_unit = selected_unit_;
 
-	LOG_WB << "Creating move for unit " << target_unit->name() << " [" << target_unit->id() << "]"
-			<< " from " << steps.front()
-			<< " to " << steps.back() << "\n";
+		erase_temp_move();
+		selected_unit_ = NULL;
 
-	assert(!has_planned_unit_map());
+		LOG_WB << "Creating move for unit " << target_unit->name() << " [" << target_unit->id() << "]"
+				<< " from " << steps.front()
+				<< " to " << steps.back() << "\n";
 
-	//unit_display::move_unit(steps, *fake_unit, *resources::teams, false);
-	fake_unit->set_disabled_ghosted(false);
-	current_actions()->queue_move(*target_unit, steps.front(), steps.back(), move_arrow, fake_unit);
+		assert(!has_planned_unit_map());
+
+		//unit_display::move_unit(steps, *fake_unit, *resources::teams, false);
+		fake_unit->set_disabled_ghosted(false);
+		current_actions()->queue_move(*target_unit, steps.front(), steps.back(), move_arrow, fake_unit);
+		modifying_actions_ = false;
+	}
 }
 
 void manager::contextual_execute()
 {
-	if (!current_actions()->empty())
+	if (!active_)
+		return;
+
+	if (!(modifying_actions_ || current_actions()->empty()))
 	{
+		modifying_actions_ = true;
 		erase_temp_move();
 
 		//TODO: catch end_turn_exception somewhere here?
@@ -249,13 +276,18 @@ void manager::contextual_execute()
 		{
 			current_actions()->execute_next();
 		}
+		modifying_actions_ = false;
 	}
 }
 
 void manager::contextual_delete()
 {
-	if (!current_actions()->empty())
+	if (!active_)
+		return;
+
+	if (!(modifying_actions_ || current_actions()->empty()))
 	{
+		modifying_actions_ = true;
 		erase_temp_move();
 
 		action_ptr action;
@@ -271,30 +303,41 @@ void manager::contextual_delete()
 		{
 			current_actions()->remove_action(current_actions()->end() - 1);
 		}
+		modifying_actions_ = false;
 	}
 }
 
 void manager::contextual_bump_up_action()
 {
-	if (!current_actions()->empty() && highlighter_)
+	if (!active_)
+		return;
+
+	if (!(modifying_actions_ || current_actions()->empty()) && highlighter_)
 	{
+		modifying_actions_ = true;
 		action_ptr action = highlighter_->get_bump_target();
 		if (action)
 		{
 			current_actions()->bump_earlier(current_actions()->get_position_of(action));
 		}
+		modifying_actions_ = false;
 	}
 }
 
 void manager::contextual_bump_down_action()
 {
-	if (!current_actions()->empty() && highlighter_)
+	if (!active_)
+		return;
+
+	if (!(modifying_actions_ || current_actions()->empty()) && highlighter_)
 	{
+		modifying_actions_ = true;
 		action_ptr action = highlighter_->get_bump_target();
 		if (action)
 		{
 			current_actions()->bump_later(current_actions()->get_position_of(action));
 		}
+		modifying_actions_ = false;
 	}
 }
 
