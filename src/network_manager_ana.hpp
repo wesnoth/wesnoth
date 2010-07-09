@@ -44,6 +44,8 @@ class ana_component : public send_stats_logger
         /** Constructs a server component. */
         ana_component( );
 
+        ~ana_component( );
+
         /**
          * Constructs a client component.
          *
@@ -377,6 +379,8 @@ class ana_network_manager : public ana::listener_handler,
          * @returns A pointer to an ana::stats object of the given component.
          */
         const ana::stats* get_stats( network::connection connection_num );
+
+        void close_connections_and_cleanup();
 
         /**
          * Start a server on a given port.

@@ -183,6 +183,8 @@ namespace network {
     manager::~manager()
     {
     //     throw std::runtime_error("TODO:Not implemented");
+        std::cout << "DEBUG: destroying the manager object.\n";
+        ana_manager.close_connections_and_cleanup();
     }
 
     void set_raw_data_only()

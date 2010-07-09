@@ -383,6 +383,14 @@ ana_component::ana_component( const std::string& host, const std::string& port) 
 {
 }
 
+ana_component::~ana_component( )
+{
+    if ( is_server() )
+        delete server();
+    else
+        delete client();
+}
+
 network::statistics ana_component::get_send_stats() const
 {
     std::cout << "Send stats.\n";
@@ -630,6 +638,17 @@ const ana::stats* ana_network_manager::get_stats( network::connection connection
     return NULL;
 }
 
+void ana_network_manager::close_connections_and_cleanup()
+{
+    ana_component_set::iterator it;
+
+    for (it = components_.begin(); it != components_.end(); ++it)
+        delete *it;
+
+    components_.clear();
+}
+
+
 void ana_network_manager::run_server(ana::net_id id, int port)
 {
     std::stringstream ss;
@@ -824,7 +843,18 @@ network::connection ana_network_manager::read_from( network::connection connecti
             handler.wait_completion( timeout_ms );
 
             if ( handler.error() )
+            {
+                // For concurrency reasons, this checks if the old handler was used before the wait operation
+                for (it = components_.begin(); it != components_.end(); ++it)
+                {
+                    if (  (*it)->new_buffer_ready() )
+                    {
+                        buffer = (*it)->wait_for_element();
+                        return (*it)->get_wesnoth_id();
+                    }
+                }
                 return 0;
+            }
             else
             {
                 buffer = handler.buffer();
