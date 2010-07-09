@@ -546,7 +546,7 @@ protected:
 
 	void scroll_to_xy(int screenxpos, int screenypos, SCROLL_TYPE scroll_type,bool force = true);
 
-	std::string fog_image(const map_location &loc);
+	const std::string& get_variant(const std::vector<std::string>& variants, const map_location &loc);
 
 	CVideo& screen_;
 	const gamemap* map_;
@@ -568,8 +568,6 @@ protected:
 	bool turbo_;
 	bool invalidateGameStatus_;
 	boost::scoped_ptr<map_labels> map_labels_;
-	std::string shroud_image_;
-	std::string fog_image_;
 
 	/** Event raised when the map is being scrolled */
 	mutable events::generic_event scroll_event_;

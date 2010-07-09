@@ -64,6 +64,11 @@ namespace game_config
 	std::string unreachable_image = "terrain/darken.png";    /**< overlay image for unreachable tiles. */
 	std::string linger_image = "terrain/darken-linger.png";  /**< overlay image for tiles in linger mode. */
 
+	std::string shroud_prefix;
+	std::string fog_prefix;
+	std::vector<std::string> fog_variants;
+	std::vector<std::string> shroud_variants;
+
 	std::string energy_image = "misc/bar-energy.png";
 	std::string moved_ball_image = "misc/ball-moved.png";
 	std::string unmoved_ball_image = "misc/ball-unmoved.png";
@@ -197,6 +202,11 @@ namespace game_config
 		grid_image_top = v["grid_image_top"].str();
 		grid_image_bottom = v["grid_image_bottom"].str();
 		unreachable_image = v["unreachable_image"].str();
+
+		shroud_prefix = v["shroud_prefix"].str();
+		fog_prefix  = v["fog_prefix"].str();
+		fog_variants = utils::split(v["fog_variants"].str());
+		shroud_variants = utils::split(v["shroud_variants"].str());
 
 		observer_image = v["observer_image"].str();
 		tod_bright_image = v["tod_bright_image"].str();

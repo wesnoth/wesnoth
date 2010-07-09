@@ -71,6 +71,7 @@ namespace game_config
 		terrain_mask_image,
 		grid_image_top, grid_image_bottom,
 		unreachable_image, linger_image,
+		shroud_prefix, fog_prefix,
 		observer_image, tod_bright_image, tod_dark_image,
 		checked_menu_image, unchecked_menu_image, wml_menu_image, level_image,
 		ellipsis_image, default_victory_music, default_defeat_music;
@@ -81,6 +82,7 @@ namespace game_config
 	extern std::vector<Uint32> red_green_scale;
 	extern std::vector<Uint32> red_green_scale_text;
 
+	extern std::vector<std::string> fog_variants, shroud_variants;
 	extern std::vector<std::string> foot_speed_prefix;
 	extern std::string foot_teleport_enter, foot_teleport_exit;
 

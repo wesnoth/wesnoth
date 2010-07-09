@@ -98,8 +98,6 @@ display::display(CVideo& video, const gamemap* map, const config& theme_cfg, con
 	turbo_(false),
 	invalidateGameStatus_(true),
 	map_labels_(new map_labels(*this, 0)),
-	shroud_image_("terrain/" + get_map().get_terrain_info(t_translation::VOID_TERRAIN).minimap_image() + ".png"),
-	fog_image_("terrain/" + get_map().get_terrain_info(t_translation::FOGGED).minimap_image()),
 	scroll_event_("scrolled"),
 	nextDraw_(0),
 	report_(),
@@ -142,13 +140,10 @@ display::~display()
 {
 }
 
-std::string display::fog_image(const map_location &loc)
+const std::string& display::get_variant(const std::vector<std::string>& variants, const map_location &loc)
 {
-	std::ostringstream tmp;
-	tmp << fog_image_;
-	tmp << abs(loc.x + loc.y) % 3 + 1;
-	tmp << ".png";
-	return tmp.str();
+	//TODO use better noise function
+	return variants[abs(loc.x + loc.y) % variants.size()];
 }
 
 void display::rebuild_all()
@@ -582,29 +577,29 @@ std::vector<std::string> display::get_fog_shroud_graphics(const map_location& lo
 
 	map_location adjacent[6];
 	get_adjacent_tiles(loc,adjacent);
-	t_translation::t_terrain tiles[6];
+	
+	enum visibility {FOG=0, SHROUD=1, CLEAR=2};
+	visibility tiles[6];
 
-	static const t_translation::t_terrain terrain_types[] =
-		{ t_translation::FOGGED, t_translation::VOID_TERRAIN, t_translation::NONE_TERRAIN };
+	const std::string* image_prefix[] =
+		{ &game_config::fog_prefix, &game_config::shroud_prefix};
 
 	for(int i = 0; i != 6; ++i) {
 		if(shrouded(adjacent[i])) {
-			tiles[i] = t_translation::VOID_TERRAIN;
+			tiles[i] = SHROUD;
 		} else if(!fogged(loc) && fogged(adjacent[i])) {
-			tiles[i] = t_translation::FOGGED;
+			tiles[i] = FOG;
 		} else {
-			tiles[i] = t_translation::NONE_TERRAIN;
+			tiles[i] = CLEAR;
 		}
 	}
 
 
-	for(const t_translation::t_terrain *terrain = terrain_types;
-			*terrain != t_translation::NONE_TERRAIN; terrain ++) {
-
+	for(int v = FOG; v != CLEAR; ++v) {
 		// Find somewhere that doesn't have overlap to use as a starting point
 		int start;
 		for(start = 0; start != 6; ++start) {
-			if(tiles[start] != *terrain) {
+			if(tiles[start] != v) {
 				break;
 			}
 		}
@@ -615,16 +610,12 @@ std::vector<std::string> display::get_fog_shroud_graphics(const map_location& lo
 
 		// Find all the directions overlap occurs from
 		for(int i = (start+1)%6, n = 0; i != start && n != 6; ++n) {
-			if(tiles[i] == *terrain) {
+			if(tiles[i] == v) {
 				std::ostringstream stream;
 				std::string name;
-				// if(*terrain == terrain_type::VOID_TERRAIN)
-				//	stream << "void";
-				//else
-				//	stream << "fog";
-				stream << "terrain/" << get_map().get_terrain_info(*terrain).minimap_image();
+				stream << *image_prefix[v];
 
-				for(int n = 0; *terrain == tiles[i] && n != 6; i = (i+1)%6, ++n) {
+				for(int n = 0; v == tiles[i] && n != 6; i = (i+1)%6, ++n) {
 					stream << get_direction(i);
 
 					if(!image::exists(stream.str() + ".png")) {
@@ -1976,11 +1967,13 @@ void display::draw_hex(const map_location& loc) {
 	if(shrouded(loc)) {
 		// We apply void also on off-map tiles
 		// to shroud the half-hexes too
+		const std::string& shroud_image = get_variant(game_config::shroud_variants, loc);
 		drawing_buffer_add(LAYER_FOG_SHROUD, loc, tblit(xpos, ypos,
-			image::get_image(shroud_image_, image_type)));
+			image::get_image(shroud_image, image_type)));
 	} else if(fogged(loc)) {
+		const std::string& fog_image = get_variant(game_config::fog_variants, loc);
 		drawing_buffer_add(LAYER_FOG_SHROUD, loc, tblit(xpos, ypos,
-			image::get_image(fog_image(loc), image_type)));
+			image::get_image(fog_image, image_type)));
 	}
 
 	if(!shrouded(loc)) {
