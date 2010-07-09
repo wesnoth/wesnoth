@@ -666,7 +666,7 @@ const frame_parameters unit_frame::merge_parameters(int current_time,const frame
 
 	/** engine provide a blend color for poisoned units */
 	result.blend_ratio = current_val.blend_ratio?current_val.blend_ratio:animation_val.blend_ratio;
-	if(primary && engine_val.blend_ratio) result.blend_ratio = std::min(result.blend_ratio + engine_val.blend_ratio,1.0);
+	if(primary && engine_val.blend_ratio) result.blend_ratio = std::min(result.blend_ratio + engine_val.blend_ratio, (double) 1.0);
 
 	/** engine provide a highlight ratio for selected units and visible "invisible" units */
 	result.highlight_ratio = current_val.highlight_ratio!=1.0?current_val.highlight_ratio:animation_val.highlight_ratio;

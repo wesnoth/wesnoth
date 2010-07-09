@@ -399,7 +399,7 @@ std::pair<map_location,map_location> testing_move_to_targets_phase::choose_move(
 			// but best_rating is too big for scout and support
 			// which give a too small locStopValue
 			// so keep costy A* for the moment.
-			//const double locStopValue = std::min(best_target->value / best_rating, 100.0);
+			//const double locStopValue = std::min(best_target->value / best_rating, (double) 100.0);
 
 			const double locStopValue = 500.0;
 			pathfind::plain_route cur_route = pathfind::a_star_search(u->get_location(), best_target->loc, locStopValue, &calc, map_.w(), map_.h());
