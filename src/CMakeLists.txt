@@ -38,7 +38,7 @@ if(ZLIB_INCLUDE_DIR)
   include_directories( ${ZLIB_INCLUDE_DIR} )
 endif()
 
-option ( USE_ANA_NETWORK "Compile network module using ana" OFF )
+option ( USE_ANA_NETWORK "Compile network module using ana" ON )
 
 set( network_implementation_files network.cpp network_worker.cpp )
 

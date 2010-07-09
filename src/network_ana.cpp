@@ -177,7 +177,7 @@ namespace network {
 
     manager::manager(size_t /*min_threads*/, size_t /*max_threads*/) : free_(true)
     {
-    //     throw std::runtime_error("TODO:Not implemented");
+        std::cout << "DEBUG: Creating a manager object.\n";
     }
 
     manager::~manager()
