@@ -400,7 +400,8 @@ void frame_parsed_parameters::override( int duration
 		, const std::string& blend_ratio
 		, Uint32 blend_color
 		, const std::string& offset
-		, const std::string& layer)
+		, const std::string& layer
+		, const std::string& modifiers)
 {
 
 	if(!highlight.empty()) {
@@ -423,6 +424,9 @@ void frame_parsed_parameters::override( int duration
 		drawing_layer_ = progressive_int(layer,duration);
 	} else  if(duration != duration_){
 		drawing_layer_=progressive_int(drawing_layer_.get_original(),duration);
+	}
+	if(!modifiers.empty()) {
+		image_mod_+=modifiers;	
 	}
 
 	if(duration != duration_) {

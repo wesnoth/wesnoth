@@ -108,7 +108,8 @@ class unit_animation
 					, const std::string& blend_ratio =""
 					, Uint32 blend_color = 0
 					, const std::string& offset = ""
-					, const std::string& layer = "");
+					, const std::string& layer = ""
+					, const std::string& modifiers = "");
 			void redraw( const frame_parameters& value,const map_location &src, const map_location &dst, const bool primary=false);
 			std::set<map_location> get_overlaped_hex(const frame_parameters& value,const map_location &src, const map_location &dst, const bool primary = false);
 			void start_animation(int start_time, bool cycles=false);

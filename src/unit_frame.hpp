@@ -145,7 +145,8 @@ class frame_parsed_parameters {
 				, const std::string& blend_ratio =""
 				, Uint32 blend_color = 0
 				, const std::string& offset = ""
-				, const std::string& layer = "");
+				, const std::string& layer = ""
+				, const std::string& modifiers = "");
 		/** getters for the different parameters */
 		const frame_parameters parameters(int current_time) const ;
 
