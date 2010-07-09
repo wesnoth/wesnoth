@@ -131,7 +131,6 @@ game_display::game_display(unit_map& units, CVideo& video, const gamemap& map,
 		flags_.back().start_animation(rand()%flags_.back().get_end_time(), true);
 	}
 	image::set_team_colors(&side_colors);
-	set_mouseover_hex_overlay(image::get_image(image::locator("misc/hover-hex.png")));
 	clear_screen();
 }
 
@@ -283,7 +282,7 @@ void game_display::pre_draw() {
 image::TYPE game_display::get_image_type(const map_location& loc) {
 	// We highlight hex under the mouse, or under a selected unit.
 	if (get_map().on_board(loc)) {
-		if ( loc == attack_indicator_src_) {
+		if (loc == mouseoverHex_ || loc == attack_indicator_src_) {
 			return image::BRIGHTENED;
 		} else if (loc == selectedHex_) {
 			const unit *un = get_visible_unit(loc, teams_[currentTeam_], !viewpoint_);
