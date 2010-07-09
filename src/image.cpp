@@ -976,13 +976,13 @@ static surface get_scaled_to_zoom(const locator& i_locator)
 static surface get_brightened(const locator& i_locator)
 {
 	surface image(get_image(i_locator, SCALED_TO_HEX));
-	return surface(brighten_image(image, ftofxp(1.5)));
+	return surface(brighten_image(image, ftofxp(game_config::hex_brightening)));
 }
 
 static surface get_semi_brightened(const locator& i_locator)
 {
 	surface image(get_image(i_locator, SCALED_TO_HEX));
-	return surface(brighten_image(image, ftofxp(1.25)));
+	return surface(brighten_image(image, ftofxp(game_config::hex_semi_brightening)));
 }
 
 surface get_image(const image::locator& i_locator, TYPE type)

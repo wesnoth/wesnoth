@@ -77,6 +77,8 @@ namespace game_config
 		ellipsis_image, default_victory_music, default_defeat_music;
 
 	extern double hp_bar_scaling, xp_bar_scaling;
+	extern double hex_brightening;
+	extern double hex_semi_brightening;
 
 	extern std::string flag_rgb;
 	extern std::vector<Uint32> red_green_scale;
