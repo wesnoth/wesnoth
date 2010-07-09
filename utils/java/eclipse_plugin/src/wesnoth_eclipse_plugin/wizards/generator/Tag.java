@@ -49,8 +49,8 @@ class Tag
 		KeyChildren.add(key);
 	}
 
-	public void addKey(String name, String regex, char cardinality)
+	public void addKey(String name, String valueType, char cardinality)
 	{
-		addKey(new TagKey(name, cardinality, regex));
+		addKey(new TagKey(name, cardinality, valueType));
 	}
 }

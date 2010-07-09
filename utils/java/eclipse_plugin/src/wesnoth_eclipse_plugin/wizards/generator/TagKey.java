@@ -15,11 +15,18 @@ public class TagKey
 	 * - = forbidden
 	 */
 	public char		Cardinality;
-	public String	Regex;
+	public String	ValueType;
+	public boolean	IsEnum;
 
-	public TagKey(String name, char cardinality, String regex) {
+	public TagKey(String name, char cardinality, String valueType) {
 		Name = name;
 		Cardinality = cardinality;
-		Regex = regex;
+
+		if (valueType == null)
+		{
+			return;
+		}
+		IsEnum = valueType.substring(1, valueType.indexOf(" ")).equals("enum");
+		ValueType = valueType.substring(valueType.indexOf(" ") + 1, valueType.length() - 1); // remove the " "
 	}
 }

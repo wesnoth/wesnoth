@@ -8,8 +8,11 @@ import java.util.List;
 
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
@@ -47,21 +50,81 @@ public class WizardGeneratorPageKey extends WizardPage
 		for (int i = startIndex_; i <= endIndex_; i++)
 		{
 			TagKey key = keys_.get(i);
+
 			Label label = new Label(container_, SWT.NONE);
 			label.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
 			// add star to required items
 			label.setText(key.Name + (key.Cardinality == '1' ? "*" : "") + ":");
 
-			Text textBox = new Text(container_, SWT.BORDER);
-			textBox.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
-			//textBox.setText(key.Regex);
-			textBox.setData("name", key.Name);
-			textBox.setData("regex", key.Regex);
-			textBox.setData("card", key.Cardinality);
+			// if the is an enum create a combobox instead of textbox
+			if (key.IsEnum)
+			{
+				Combo combo = new Combo(container_, SWT.READ_ONLY);
+				combo.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+				combo.setData("name", key.Name);
+				String[] items = key.ValueType.split(",");
+				combo.setItems(items);
+				combo.select(0);
+			}
+			else
+			{
+				Text textBox = new Text(container_, SWT.BORDER);
+				textBox.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 
-			//TODO: check for regex/cardinality
+				textBox.setData("name", key.Name);
+				textBox.setData("valType", key.ValueType);
+				textBox.setData("card", key.Cardinality);
+				if (key.Cardinality == '1')
+					textBox.setData("comp", false); // is textbox complete
+
+				textBox.addModifyListener(new ModifyListener() {
+					@Override
+					public void modifyText(ModifyEvent e)
+				{
+					if (!(e.getSource() instanceof Text))
+						return;
+
+					Text txt = ((Text) e.getSource());
+					if (txt.getData("comp") == null)
+						return;
+
+					if ((txt.getText().isEmpty() && (txt.getData("card").toString().equals("1"))) || // cardinality
+							!txt.getText().matches(txt.getData("valType").toString()) // regex
+					)
+						txt.setData("comp", false);
+					else
+						txt.setData("comp", true);
+					updatePageIsComplete();
+				}
+				});
+			}
 		}
+		updatePageIsComplete();
+	}
+
+	private void updatePageIsComplete()
+	{
+		setPageComplete(false);
+
+		for (Control child : container_.getChildren())
+		{
+			if (!(child instanceof Text)) // don't check comboboxes
+				continue;
+
+			if (child.getData("comp") == null)
+				continue;
+
+			if (child.getData("comp").toString().equals("false"))
+			{
+				setErrorMessage(child.getData("name") +
+						" is empty or does not match required value\n"
+						+ child.getData("valType"));
+				return;
+			}
+		}
+
 		setPageComplete(true);
+		setErrorMessage(null);
 	}
 
 	public String getContent()
@@ -69,11 +132,15 @@ public class WizardGeneratorPageKey extends WizardPage
 		StringBuilder result = new StringBuilder();
 		for (Control child : container_.getChildren())
 		{
-			if (!(child instanceof Text))
+			if (!(child instanceof Text || child instanceof Combo))
 				continue;
-
+			String text = "";
+			if (child instanceof Text)
+				text = ((Text) child).getText();
+			else
+				text = ((Combo) child).getText();
 			result.append(StringUtils.multiples("\t", indent_) +
-					child.getData("name") + "=" + ((Text) child).getText() + "\n");
+					child.getData("name") + "=" + text + "\n");
 		}
 		return result.toString();
 	}

@@ -8,6 +8,7 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Stack;
 
+import wesnoth_eclipse_plugin.Logger;
 import wesnoth_eclipse_plugin.preferences.PreferenceConstants;
 import wesnoth_eclipse_plugin.preferences.PreferenceInitializer;
 import wesnoth_eclipse_plugin.utils.ResourceUtils;
@@ -34,15 +35,19 @@ public class SchemaParser
 		if (parsingDone_ && !force)
 			return;
 
+		parsingDone_ = false;
+		if (force)
+		{
+			primitives_.clear();
+			tags_.clear();
+		}
+
+		Logger.print("parsing schema " + (force == true ? "forced" : ""));
 		File schemaFile = new File(PreferenceInitializer.getString(
 						PreferenceConstants.P_WESNOTH_WORKING_DIR) + "/data/schema.cfg");
 		String res = ResourceUtils.getFileContents(schemaFile);
 		String[] lines = StringUtils.getLines(res);
 		Stack<String> tagStack = new Stack<String>();
-
-		// temporarly add 'string' and 'tstring' primitives
-		primitives_.put("string", "\"[\\d\\w\\s]\"");
-		primitives_.put("tstring", "_\"[\\d\\w\\s]\"");
 
 		Tag currentTag = null;
 		for (int index = 0; index < lines.length; index++)
@@ -144,7 +149,7 @@ public class SchemaParser
 						continue; //return;
 					}
 
-					if (currentTag != null)//tags.containsKey(tagStack.peek()))
+					if (currentTag != null)
 					{
 						if (tokens[0].startsWith("_")) // reference to another tag
 						{
@@ -166,7 +171,9 @@ public class SchemaParser
 						{
 							if (!(primitives_.containsKey(value[1])))
 								currentTag.NeedsExpanding = true;
-							currentTag.addKey(tokens[0], value[1], getCardinality(value[0]));
+							if (primitives_.get(value[1]) == null)
+								System.err.println("Undefined primitive type in schema.cfg for: " + value[1]);
+							currentTag.addKey(tokens[0], primitives_.get(value[1]), getCardinality(value[0]));
 						}
 					}
 					else
@@ -214,7 +221,7 @@ public class SchemaParser
 		String res = indent + "[" + tag.Name + "]\n";
 		for (TagKey key : tag.KeyChildren)
 		{
-			res += (indent + "\t" + key.Name + "=" + key.Regex + "\n");
+			res += (indent + "\t" + key.Name + "=" + key.ValueType + "\n");
 		}
 		for (Tag tmpTag : tag.TagChildren)
 		{
