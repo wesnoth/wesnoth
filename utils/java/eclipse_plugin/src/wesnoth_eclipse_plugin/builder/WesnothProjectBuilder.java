@@ -19,10 +19,10 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Path;
 
+import wesnoth_eclipse_plugin.Constants;
 import wesnoth_eclipse_plugin.Logger;
 import wesnoth_eclipse_plugin.globalactions.PreprocessorActions;
-import wesnoth_eclipse_plugin.preferences.PreferenceConstants;
-import wesnoth_eclipse_plugin.preferences.PreferenceInitializer;
+import wesnoth_eclipse_plugin.preferences.Preferences;
 import wesnoth_eclipse_plugin.utils.AntUtils;
 import wesnoth_eclipse_plugin.utils.GUIUtils;
 import wesnoth_eclipse_plugin.utils.Pair;
@@ -115,7 +115,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 		monitor.beginTask("Building...", 100);
 
 		monitor.subTask("Checking conditions...");
-		if (PreferenceInitializer.getString(PreferenceConstants.P_WESNOTH_USER_DIR).isEmpty())
+		if (Preferences.getString(Constants.P_WESNOTH_USER_DIR).isEmpty())
 		{
 			GUIUtils.showMessageBox(WorkspaceUtils.getWorkbenchWindow(), "Please set the wesnoth user dir before creating the content");
 			return null;
@@ -152,7 +152,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 		// Ant copy
 		monitor.subTask("Copying resources...");
 		HashMap<String, String> properties = new HashMap<String, String>();
-		properties.put("wesnoth.user.dir", PreferenceInitializer.getString(PreferenceConstants.P_WESNOTH_USER_DIR) + Path.SEPARATOR);
+		properties.put("wesnoth.user.dir", Preferences.getString(Constants.P_WESNOTH_USER_DIR) + Path.SEPARATOR);
 		System.out.println("Ant result:");
 		String result = AntUtils.runAnt(getProject().getLocation().toOSString() + "/build.xml", properties, true);
 		System.out.println(result);

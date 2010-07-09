@@ -12,6 +12,7 @@ import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 
 import wesnoth_eclipse_plugin.Activator;
+import wesnoth_eclipse_plugin.Constants;
 
 /**
  * This class represents a preference page that
@@ -48,14 +49,14 @@ public class WesnothEditorPreferences
 	@Override
 	public void createFieldEditors()
 	{
-		addField(new FileFieldEditor(PreferenceConstants.P_WESNOTH_EXEC_PATH,
+		addField(new FileFieldEditor(Constants.P_WESNOTH_EXEC_PATH,
 				"Wesnoth executable path:", getFieldEditorParent()));
-		addField(new DirectoryFieldEditor(PreferenceConstants.P_WESNOTH_WORKING_DIR,
+		addField(new DirectoryFieldEditor(Constants.P_WESNOTH_WORKING_DIR,
 				"Working directory:", getFieldEditorParent()));
-		addField(new DirectoryFieldEditor(PreferenceConstants.P_WESNOTH_USER_DIR,
+		addField(new DirectoryFieldEditor(Constants.P_WESNOTH_USER_DIR,
 				"User data directory:", getFieldEditorParent()));
 
-		wmlToolsField = new DirectoryFieldEditor(PreferenceConstants.P_WESNOTH_WMLTOOLS_DIR,
+		wmlToolsField = new DirectoryFieldEditor(Constants.P_WESNOTH_WMLTOOLS_DIR,
 				"WML* tools directory:", getFieldEditorParent());
 		addField(wmlToolsField);
 	}

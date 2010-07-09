@@ -10,9 +10,9 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 
+import wesnoth_eclipse_plugin.Constants;
 import wesnoth_eclipse_plugin.builder.ExternalToolInvoker;
-import wesnoth_eclipse_plugin.preferences.PreferenceConstants;
-import wesnoth_eclipse_plugin.preferences.PreferenceInitializer;
+import wesnoth_eclipse_plugin.preferences.Preferences;
 import wesnoth_eclipse_plugin.utils.GUIUtils;
 import wesnoth_eclipse_plugin.utils.ProjectUtils;
 import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
@@ -59,14 +59,14 @@ public class OpenScenarioInGame implements IObjectActionDelegate
 			args.add(campaignId);
 			args.add(scenarioId);
 
-			String wesnothExec = PreferenceInitializer.getString(PreferenceConstants.P_WESNOTH_EXEC_PATH);
+			String wesnothExec = Preferences.getString(Constants.P_WESNOTH_EXEC_PATH);
 			if (wesnothExec.isEmpty())
 			{
 				GUIUtils.showMessageBox(WorkspaceUtils.getWorkbenchWindow(), "Please set the wesnoth's executable path first.");
 				return;
 			}
 
-			String workingDir = PreferenceInitializer.getString(PreferenceConstants.P_WESNOTH_WORKING_DIR);
+			String workingDir = Preferences.getString(Constants.P_WESNOTH_WORKING_DIR);
 
 			if (workingDir.isEmpty())
 				workingDir = wesnothExec.substring(0,wesnothExec.lastIndexOf(new File(wesnothExec).getName()));

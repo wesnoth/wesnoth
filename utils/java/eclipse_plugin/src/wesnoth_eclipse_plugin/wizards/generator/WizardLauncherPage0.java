@@ -21,10 +21,9 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
-import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.dialogs.ContainerSelectionDialog;
 
-import wesnoth_eclipse_plugin.Activator;
+import wesnoth_eclipse_plugin.utils.EditorUtils;
 
 public class WizardLauncherPage0 extends WizardPage
 {
@@ -199,9 +198,9 @@ public class WizardLauncherPage0 extends WizardPage
 		else
 		{
 			// current file checking
-			if (getEditedFile() != null)
+			if (EditorUtils.getEditedFile() != null)
 			{
-				lblCurrentFileOpened.setText("File " + getEditedFile().getEditorInput().getName() + " opened.");
+				lblCurrentFileOpened.setText("File " + EditorUtils.getEditedFile().getEditorInput().getName() + " opened.");
 			}
 			else
 			{
@@ -212,11 +211,6 @@ public class WizardLauncherPage0 extends WizardPage
 		}
 		setPageComplete(true);
 		setErrorMessage(null);
-	}
-
-	public IEditorPart getEditedFile()
-	{
-		return Activator.getDefault().getWorkbench().getActiveWorkbenchWindow().getPages()[0].getActiveEditor();
 	}
 
 	public void updateEnabledStatus()
@@ -280,7 +274,8 @@ public class WizardLauncherPage0 extends WizardPage
 
 	public String getFileName()
 	{
-		return radioNewFile.getSelection() == true ? txtFileName_.getText() : getEditedFile().getEditorInput().getName();
+		return radioNewFile.getSelection() == true ? txtFileName_.getText() :
+				EditorUtils.getEditedFile().getEditorInput().getName();
 	}
 
 	public String getDirectoryName()

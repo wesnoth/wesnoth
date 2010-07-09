@@ -10,20 +10,22 @@ import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
 
 public class ShowPreprocessedConfig implements IObjectActionDelegate
 {
-	public ShowPreprocessedConfig()	{ }
+	public ShowPreprocessedConfig() {
+	}
 
 	@Override
-	public void setActivePart(IAction action, IWorkbenchPart targetPart){
+	public void setActivePart(IAction action, IWorkbenchPart targetPart)
+	{
 	}
 
 	@Override
 	public void run(IAction action)
 	{
-		PreprocessorActions.openPreprocessedFileInEditor(WorkspaceUtils.getSelectedFile(WorkspaceUtils.getWorkbenchWindow()),
-				false);
+		PreprocessorActions.openPreprocessedFileInEditor(WorkspaceUtils.getSelectedFile(), false);
 	}
 
 	@Override
-	public void selectionChanged(IAction action, ISelection selection){
+	public void selectionChanged(IAction action, ISelection selection)
+	{
 	}
 }

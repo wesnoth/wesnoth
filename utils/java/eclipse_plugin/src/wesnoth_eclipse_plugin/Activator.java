@@ -8,8 +8,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
-import wesnoth_eclipse_plugin.preferences.PreferenceConstants;
-import wesnoth_eclipse_plugin.preferences.PreferenceInitializer;
+import wesnoth_eclipse_plugin.preferences.Preferences;
 import wesnoth_eclipse_plugin.utils.GUIUtils;
 import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
 import wesnoth_eclipse_plugin.wizards.generator.SchemaParser;
@@ -86,10 +85,10 @@ public class Activator extends AbstractUIPlugin
 	 */
 	private static void checkConditions()
 	{
-		String execDir = PreferenceInitializer.getString(PreferenceConstants.P_WESNOTH_EXEC_PATH);
-		String userDir = PreferenceInitializer.getString(PreferenceConstants.P_WESNOTH_USER_DIR);
-		String wmltoolsDir = PreferenceInitializer.getString(PreferenceConstants.P_WESNOTH_WMLTOOLS_DIR);
-		String workingDir = PreferenceInitializer.getString(PreferenceConstants.P_WESNOTH_WORKING_DIR);
+		String execDir = Preferences.getString(Constants.P_WESNOTH_EXEC_PATH);
+		String userDir = Preferences.getString(Constants.P_WESNOTH_USER_DIR);
+		String wmltoolsDir = Preferences.getString(Constants.P_WESNOTH_WMLTOOLS_DIR);
+		String workingDir = Preferences.getString(Constants.P_WESNOTH_WORKING_DIR);
 
 		if (!validPath(execDir) || !validPath(userDir) || !validPath(wmltoolsDir) || !validPath(workingDir))
 		{

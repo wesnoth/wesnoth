@@ -13,9 +13,9 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.ui.ide.IDE;
 
+import wesnoth_eclipse_plugin.Constants;
 import wesnoth_eclipse_plugin.builder.ExternalToolInvoker;
-import wesnoth_eclipse_plugin.preferences.PreferenceConstants;
-import wesnoth_eclipse_plugin.preferences.PreferenceInitializer;
+import wesnoth_eclipse_plugin.preferences.Preferences;
 import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
 
 public class PreprocessorActions
@@ -52,7 +52,7 @@ public class PreprocessorActions
 			arguments.add(targetDirectory);
 
 			ExternalToolInvoker wesnoth = new ExternalToolInvoker(
-					PreferenceInitializer.getString(PreferenceConstants.P_WESNOTH_EXEC_PATH),
+					Preferences.getString(Constants.P_WESNOTH_EXEC_PATH),
 					arguments, useThread);
 			System.out.printf("preprocessing : %s\n", arguments);
 			wesnoth.run();

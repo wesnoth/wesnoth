@@ -6,9 +6,9 @@ package wesnoth_eclipse_plugin.wizards.generator;
 
 import org.eclipse.jface.wizard.IWizardPage;
 
+import wesnoth_eclipse_plugin.Constants;
 import wesnoth_eclipse_plugin.utils.StringUtils;
 import wesnoth_eclipse_plugin.wizards.NewWizardTemplate;
-import wesnoth_eclipse_plugin.wizards.WizardsConstants;
 
 public class WizardGenerator extends NewWizardTemplate
 {
@@ -28,13 +28,13 @@ public class WizardGenerator extends NewWizardTemplate
 		{
 			// keys section
 			int keysNr = tagContent.KeyChildren.size();
-			int startKey = 0, pgsKey = (keysNr / WizardsConstants.MaxTextBoxesOnPage);
+			int startKey = 0, pgsKey = (keysNr / Constants.WIZ_MaxTextBoxesOnPage);
 			WizardGeneratorPageKey tempPageKey;
 			for (int i = 0; i < pgsKey; i++)
 			{
 				tempPageKey = new WizardGeneratorPageKey(tagName, tagContent.KeyChildren, startKey,
-												startKey + WizardsConstants.MaxTextBoxesOnPage, (byte) (indent_ + 1));
-				startKey += WizardsConstants.MaxTextBoxesOnPage;
+												startKey + Constants.WIZ_MaxTextBoxesOnPage, (byte) (indent_ + 1));
+				startKey += Constants.WIZ_MaxTextBoxesOnPage;
 				addPage(tempPageKey);
 			}
 			if (keysNr - 1 > 0)
@@ -46,13 +46,13 @@ public class WizardGenerator extends NewWizardTemplate
 
 			// tags section
 			int tagsNr = tagContent.TagChildren.size();
-			int startTag = 0, pgsTag = (tagsNr / WizardsConstants.MaxGroupsOnPage);
+			int startTag = 0, pgsTag = (tagsNr / Constants.WIZ_MaxGroupsOnPage);
 			WizardGeneratorPageTag tempPageTag;
 			for (int i = 0; i < pgsTag; i++)
 			{
 				tempPageTag = new WizardGeneratorPageTag(tagName, tagContent.TagChildren, startTag,
-											startTag + WizardsConstants.MaxGroupsOnPage, (byte) (indent_ + 1));
-				startTag += WizardsConstants.MaxTextBoxesOnPage;
+											startTag + Constants.WIZ_MaxGroupsOnPage, (byte) (indent_ + 1));
+				startTag += Constants.WIZ_MaxTextBoxesOnPage;
 				addPage(tempPageTag);
 			}
 			if (tagsNr - 1 > 0)

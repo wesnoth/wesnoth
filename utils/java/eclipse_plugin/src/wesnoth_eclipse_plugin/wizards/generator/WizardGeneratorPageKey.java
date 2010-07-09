@@ -137,13 +137,12 @@ public class WizardGeneratorPageKey extends WizardPage
 				continue;
 			String text = "";
 			if (child instanceof Text)
-				text = ((Text) child).getText();
+				text = (child.getData("trans").toString().equals("true") == true ? "_" : "") +
+						"\"" + ((Text) child).getText() + "\"";
 			else
 				text = ((Combo) child).getText();
 			result.append(StringUtils.multiples("\t", indent_) +
-					child.getData("name") + "=" +
-					(child.getData("trans").toString().equals("true") == true ? "_" : "") // translatable flag
-					+ "\"" + text + "\"\n");
+					child.getData("name") + "=" + text + "\n");
 		}
 		return result.toString();
 	}

@@ -7,9 +7,9 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import wesnoth_eclipse_plugin.Constants;
 import wesnoth_eclipse_plugin.builder.ExternalToolInvoker;
-import wesnoth_eclipse_plugin.preferences.PreferenceConstants;
-import wesnoth_eclipse_plugin.preferences.PreferenceInitializer;
+import wesnoth_eclipse_plugin.preferences.Preferences;
 import wesnoth_eclipse_plugin.utils.GUIUtils;
 import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
 
@@ -17,8 +17,8 @@ public class EditorActions
 {
 	public static void startEditor(String mapName)
 	{
-		String editorPath = PreferenceInitializer.getString(PreferenceConstants.P_WESNOTH_EXEC_PATH);
-		String workingDir = PreferenceInitializer.getString(PreferenceConstants.P_WESNOTH_WORKING_DIR);
+		String editorPath = Preferences.getString(Constants.P_WESNOTH_EXEC_PATH);
+		String workingDir = Preferences.getString(Constants.P_WESNOTH_WORKING_DIR);
 
 		if (workingDir.isEmpty())
 			workingDir = editorPath.substring(0, editorPath.lastIndexOf(new File(editorPath).getName()));

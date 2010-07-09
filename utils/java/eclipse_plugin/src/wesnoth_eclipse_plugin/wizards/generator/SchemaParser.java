@@ -8,9 +8,9 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Stack;
 
+import wesnoth_eclipse_plugin.Constants;
 import wesnoth_eclipse_plugin.Logger;
-import wesnoth_eclipse_plugin.preferences.PreferenceConstants;
-import wesnoth_eclipse_plugin.preferences.PreferenceInitializer;
+import wesnoth_eclipse_plugin.preferences.Preferences;
 import wesnoth_eclipse_plugin.utils.ResourceUtils;
 import wesnoth_eclipse_plugin.utils.StringUtils;
 
@@ -43,8 +43,8 @@ public class SchemaParser
 		}
 
 		Logger.print("parsing schema " + (force == true ? "forced" : ""));
-		File schemaFile = new File(PreferenceInitializer.getString(
-						PreferenceConstants.P_WESNOTH_WORKING_DIR) + "/data/schema.cfg");
+		File schemaFile = new File(Preferences.getString(
+						Constants.P_WESNOTH_WORKING_DIR) + "/data/schema.cfg");
 		String res = ResourceUtils.getFileContents(schemaFile);
 		String[] lines = StringUtils.getLines(res);
 		Stack<String> tagStack = new Stack<String>();

@@ -39,7 +39,7 @@ public class GUIUtils
 	 */
 	public static void showMessageBox(final IWorkbenchWindow window, final String message, final int style)
 	{
-		if (window == null || window.getShell() == null)
+		if (window == null || window.getShell() == null || message == null)
 			return;
 		try
 		{

@@ -47,6 +47,12 @@
                label="Wesnoth project report"
                menubarPath="_wesnoth">
          </action>
+         <action
+               class="wesnoth_eclipse_plugin.action.RunWMLIndentOnSelection"
+               id="Wesnoth Eclipse Plugin.action7"
+               label="Run &quot;wmlindent&quot; on the project this file"
+               menubarPath="_wesnoth">
+         </action>
       </objectContribution>
       <objectContribution
             adaptable="true"
@@ -132,7 +138,7 @@
                menubarPath="plugin.wmltoolsMenu/wmltoolsMenuMarker">
          </action>
          <action
-               class="wesnoth_eclipse_plugin.action.RunWMLIndentOnFile"
+               class="wesnoth_eclipse_plugin.action.RunWMLIndentOnSelection"
                id="Wesnoth Eclipse Plugin.action7"
                label="Run &quot;wmlindent&quot; on this file"
                menubarPath="plugin.wmltoolsMenu/wmltoolsMenuMarker">
@@ -291,16 +297,21 @@
             name="openMapInEditor">
       </command>
       <command
-            defaultHandler="wesnoth_eclipse_plugin.handlers.ReloadFiles"
+            defaultHandler="wesnoth_eclipse_plugin.handlers.ReloadFilesHandler"
             description="Setups the workspace"
             id="Wesnoth_Eclipse_Plugin.commands.setupWorkspace"
             name="setupWorkspace">
       </command>
       <command
-            defaultHandler="wesnoth_eclipse_plugin.handlers.ReloadFiles"
+            defaultHandler="wesnoth_eclipse_plugin.handlers.ReloadFilesHandler"
             description="Reloads all plugin related files"
             id="Wesnoth_Eclipse_Plugin.commands.reloadFiles"
             name="reloadFiles">
+      </command>
+      <command
+            defaultHandler="wesnoth_eclipse_plugin.handlers.TestHandler"
+            id="Wesnoth_Eclipse_Plugin.commands.test"
+            name="test command">
       </command>
    </extension>
    <extension
@@ -361,6 +372,11 @@
                      value="plugin_preferences">
                </parameter>
             </command>
+            <command
+                  commandId="Wesnoth_Eclipse_Plugin.commands.test"
+                  label="Test"
+                  style="push">
+            </command>
          </menu>
       </menuContribution>
    </extension>
@@ -375,7 +391,7 @@
    <extension
          point="org.eclipse.core.runtime.preferences">
       <initializer
-            class="wesnoth_eclipse_plugin.preferences.PreferenceInitializer">
+            class="wesnoth_eclipse_plugin.preferences.Preferences">
       </initializer>
    </extension>
 

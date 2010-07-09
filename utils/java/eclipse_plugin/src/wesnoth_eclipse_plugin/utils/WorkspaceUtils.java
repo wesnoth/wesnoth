@@ -18,9 +18,9 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.IWorkbenchWindow;
 
 import wesnoth_eclipse_plugin.Activator;
+import wesnoth_eclipse_plugin.Constants;
 import wesnoth_eclipse_plugin.builder.WesnothProjectNature;
-import wesnoth_eclipse_plugin.preferences.PreferenceConstants;
-import wesnoth_eclipse_plugin.preferences.PreferenceInitializer;
+import wesnoth_eclipse_plugin.preferences.Preferences;
 import wesnoth_eclipse_plugin.wizards.ReplaceableParameter;
 import wesnoth_eclipse_plugin.wizards.TemplateProvider;
 
@@ -88,10 +88,13 @@ public class WorkspaceUtils
 	/**
 	 * Returns the first WorkbenchWindow available. This is not always the same
 	 * with ActiveWorkbecnWindow
+	 * 
 	 * @return
 	 */
 	public static IWorkbenchWindow getWorkbenchWindow()
 	{
+		if (Activator.getDefault().getWorkbench().getActiveWorkbenchWindow() != null)
+			return Activator.getDefault().getWorkbench().getActiveWorkbenchWindow();
 		if (Activator.getDefault().getWorkbench().getWorkbenchWindowCount() == 0)
 			return null;
 		return Activator.getDefault().getWorkbench().getWorkbenchWindows()[0];
@@ -99,6 +102,7 @@ public class WorkspaceUtils
 
 	/**
 	 * Returns the temporary folder where the plugin can write resources
+	 * 
 	 * @return
 	 */
 	public static String getTemporaryFolder()
@@ -116,12 +120,13 @@ public class WorkspaceUtils
 
 	/**
 	 * Returns the resource path relative to the user directory
+	 * 
 	 * @param resource the resource to be computed
 	 * @return
 	 */
 	public static String getPathRelativeToUserDir(IResource resource)
 	{
-		String result = PreferenceInitializer.getString(PreferenceConstants.P_WESNOTH_USER_DIR) + Path.SEPARATOR + "data/add-ons/";
+		String result = Preferences.getString(Constants.P_WESNOTH_USER_DIR) + Path.SEPARATOR + "data/add-ons/";
 		if (!resource.getProject().getName().toLowerCase(new Locale("English")).equals("user addons"))
 			result += (resource.getProject().getName() + Path.SEPARATOR);
 		result += resource.getProjectRelativePath().toOSString();
@@ -132,7 +137,7 @@ public class WorkspaceUtils
 	{
 		// automatically import "WesnothUserDir/data/add-ons as a project
 		// container
-		String userDir = PreferenceInitializer.getString(PreferenceConstants.P_WESNOTH_USER_DIR);
+		String userDir = Preferences.getString(Constants.P_WESNOTH_USER_DIR);
 		if (userDir.isEmpty() || !new File(userDir).exists())
 		{
 			GUIUtils.showMessageBox(WorkspaceUtils.getWorkbenchWindow(),
@@ -166,7 +171,6 @@ public class WorkspaceUtils
 				ResourceUtils.createFile(proj, "build.xml",
 						TemplateProvider.getInstance().getProcessedTemplate("build_xml", param), true);
 
-
 				// we need to skip the already created projects (if any) in the addons directory
 				String skipList = "";
 				for (IProject project : ResourcesPlugin.getWorkspace().getRoot().getProjects())
@@ -176,7 +180,7 @@ public class WorkspaceUtils
 
 					skipList += (StringUtils.trimPathSeparators(getPathRelativeToUserDir(project)) + "\n");
 				}
-				ResourceUtils.createFile(proj, ".ignore",skipList, true);
+				ResourceUtils.createFile(proj, ".ignore", skipList, true);
 			}
 			GUIUtils.showMessageBox(WorkspaceUtils.getWorkbenchWindow(),
 					"Workspace was set up successfully.");

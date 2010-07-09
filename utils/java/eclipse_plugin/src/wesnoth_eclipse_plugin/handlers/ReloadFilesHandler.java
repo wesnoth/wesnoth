@@ -10,7 +10,7 @@ import org.eclipse.core.commands.ExecutionException;
 import wesnoth_eclipse_plugin.wizards.TemplateProvider;
 import wesnoth_eclipse_plugin.wizards.generator.SchemaParser;
 
-public class ReloadFiles extends AbstractHandler
+public class ReloadFilesHandler extends AbstractHandler
 {
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException
