@@ -61,6 +61,7 @@ namespace game_config
 	std::string terrain_mask_image = "terrain/alphamask.png";
 	std::string grid_image_top = "terrain/grid-top.png";
 	std::string grid_image_bottom = "terrain/grid-bottom.png";
+	std::string mouseover_image = "";
 	std::string unreachable_image = "terrain/darken.png";    /**< overlay image for unreachable tiles. */
 	std::string linger_image = "terrain/darken-linger.png";  /**< overlay image for tiles in linger mode. */
 
@@ -204,6 +205,7 @@ namespace game_config
 		terrain_mask_image = v["terrain_mask_image"].str();
 		grid_image_top = v["grid_image_top"].str();
 		grid_image_bottom = v["grid_image_bottom"].str();
+		mouseover_image = v["mouseover_image"].str();
 		unreachable_image = v["unreachable_image"].str();
 
 		shroud_prefix = v["shroud_prefix"].str();

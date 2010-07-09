@@ -387,6 +387,11 @@ void game_display::draw_hex(const map_location& loc)
 		blit.surf.clear();
 	}
 
+	if(on_map && loc == mouseoverHex_ && !game_config::mouseover_image.empty()) {
+		drawing_buffer_add(LAYER_MOVE_INFO, loc, tblit(xpos, ypos,
+			image::get_image(game_config::mouseover_image, image::UNMASKED)));
+	}
+
 	// Show def% and turn to reach infos
 	if(!is_shrouded && on_map) {
 		draw_movement_info(loc);

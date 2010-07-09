@@ -70,6 +70,7 @@ namespace game_config
 		flag_image, flag_icon_image,
 		terrain_mask_image,
 		grid_image_top, grid_image_bottom,
+		mouseover_image,
 		unreachable_image, linger_image,
 		shroud_prefix, fog_prefix,
 		observer_image, tod_bright_image, tod_dark_image,
