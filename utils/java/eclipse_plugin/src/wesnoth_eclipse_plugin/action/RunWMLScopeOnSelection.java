@@ -15,14 +15,12 @@ import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.progress.WorkbenchJob;
 
-import wesnoth_eclipse_plugin.utils.EditorUtils;
 import wesnoth_eclipse_plugin.utils.WMLTools;
 import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
 
-public class RunWMLIndentOnSelection implements IObjectActionDelegate
+public class RunWMLScopeOnSelection implements IObjectActionDelegate
 {
-
-	public RunWMLIndentOnSelection() {
+	public RunWMLScopeOnSelection() {
 	}
 
 	@Override
@@ -33,14 +31,15 @@ public class RunWMLIndentOnSelection implements IObjectActionDelegate
 	@Override
 	public void run(IAction action)
 	{
-		WorkbenchJob job = new WorkbenchJob("Running WMLIndent") {
+
+		WorkbenchJob job = new WorkbenchJob("Running WMLScope") {
 			@Override
 			public IStatus runInUIThread(IProgressMonitor monitor)
 			{
 				final IEditorReference[] files =
 						WorkspaceUtils.getWorkbenchWindow().getPages()[0].getEditorReferences();
 
-				monitor.beginTask("wmlindent", files.length * 5 + 50);
+				monitor.beginTask("wmlscope", files.length * 5 + 50);
 				monitor.subTask("saving files...");
 				for (IEditorReference file : files)
 				{
@@ -50,24 +49,23 @@ public class RunWMLIndentOnSelection implements IObjectActionDelegate
 				}
 
 				IFile selFile = WorkspaceUtils.getSelectedFile();
-				monitor.subTask("wmlindent");
+				monitor.subTask("wmlscope");
 				if (selFile != null)
 				{
-					EditorUtils.openEditor(selFile, true);
-					String stdin = EditorUtils.getEditorDocument().get();
-					EditorUtils.replaceEditorText(WMLTools.runWMLIndent(null, stdin, false, false, false));
+					WMLTools.runWMLScope(selFile.getLocation().toOSString(), false, true);
 				}
 				else
 				// project selection
 				{
-					// run wmlindent on project
+					// run wmlscope on project
 					IProject project = WorkspaceUtils.getSelectedProject();
-					WMLTools.runWMLIndent(project.getLocation().toOSString(), null, false, true, false);
+					WMLTools.runWMLScope(project.getLocation().toOSString(), true, true);
+
 				}
 				monitor.worked(50);
 				monitor.done();
 				return Status.OK_STATUS;
-			};
+			}
 		};
 		job.schedule();
 	}

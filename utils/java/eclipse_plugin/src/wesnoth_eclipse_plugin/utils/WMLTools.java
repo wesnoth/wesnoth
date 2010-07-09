@@ -22,20 +22,19 @@ import wesnoth_eclipse_plugin.preferences.Preferences;
 public class WMLTools
 {
 	/**
-	 * Runs "wmllint" on the specified file
+	 * Runs "wmllint" on the specified resource (directory/file)
 	 * 
-	 * @param filePath the full path of the target file where "wmllint" will be runned on
-	 * @param writeToConsole true to write the output of "wmllint" in console
+	 * @param resourcePath the full path of the target where "wmllint" will be runned on
+	 * @param writeToConsole true to write the output of "wmllint" in user's console
 	 * @param dryrun true to run "wmllint" in dry mode - i.e. no changes in the config file.
-	 * @param useThread whether the tool should be runned in a new thread
+	 * @param useThread whether the tool should be runned in a new thread or not
 	 */
-	public static String runWMLLint(String filePath, boolean dryrun, boolean writeToConsole, boolean useThread)
+	public static String runWMLLint(String resourcePath, boolean dryrun, boolean writeToConsole, boolean useThread)
 	{
-		if (!checkPrerequisites(filePath, "wmllint"))
+		if (!checkPrerequisites(resourcePath, "wmllint"))
 			return null;
 
-		File wmllintFile = new File(Preferences.getString(Constants.P_WESNOTH_WMLTOOLS_DIR) +
-				Path.SEPARATOR + "wmllint");
+		File wmllintFile = new File(Preferences.getString(Constants.P_WESNOTH_WMLTOOLS_DIR) + "wmllint");
 
 		List<String> arguments = new ArrayList<String>();
 
@@ -49,41 +48,67 @@ public class WMLTools
 		// add default core directory
 		arguments.add(Preferences.getString(Constants.P_WESNOTH_WORKING_DIR) +
 				Path.SEPARATOR + "data/core");
-		arguments.add(filePath);
+		arguments.add(resourcePath);
 
 		return runPythonScript(arguments, null, useThread, writeToConsole, "Wmllint result: ");
 	}
 
 	/**
-	 * Runs "wmlindent" on the specified file
+	 * Runs "wmlindent" on the specified resource (directory/file)
 	 * 
-	 * @param filePath the full path of the target file where "wmlindent" will be runned on
-	 * @param writeToConsole true to write the output of "wmlindent" in console
+	 * @param resourcePath the full path of the target where "wmlindent" will be runned on
+	 * @param writeToConsole true to write the output of "wmlindent" in user's console
+	 * @param stdin the standard input string to feed "wmlindent"
 	 * @param dryrun true to run "wmlindent" in dry mode - i.e. no changes in the config file.
-	 * @param useThread whether the tool should be runned in a new thread
+	 * @param useThread whether the tool should be runned in a new thread or not
 	 */
-	public static String runWMLIndent(String filePath, String stdin,
+	public static String runWMLIndent(String resourcePath, String stdin,
 						boolean dryrun, boolean writeToConsole, boolean useThread)
 	{
 		if (!checkPrerequisites(null, "wmlindent")) // wmlindent only check first
 			return null;
 
-		File wmllintFile = new File(Preferences.getString(Constants.P_WESNOTH_WMLTOOLS_DIR) +
-				Path.SEPARATOR + "wmlindent");
+		File wmllintFile = new File(Preferences.getString(Constants.P_WESNOTH_WMLTOOLS_DIR) + "/wmlindent");
 		List<String> arguments = new ArrayList<String>();
 		arguments.add(wmllintFile.getAbsolutePath());
 
-		if (filePath != null)
+		if (resourcePath != null)
 		{
-			if (!checkPrerequisites(filePath, null))
+			if (!checkPrerequisites(resourcePath, null))
 				return null;
 
 			if (dryrun)
 				arguments.add("--dryrun");
 			arguments.add("--verbose");
-			arguments.add(filePath);
+			arguments.add(resourcePath);
 		}
 		return runPythonScript(arguments, stdin, useThread, writeToConsole, "Wmlindent result: ");
+	}
+
+	/**
+	 * Runs "wmlscope" on the specified resource (directory/file)
+	 * 
+	 * @param resourcePath the full path of the target where "wmlindent" will be runned on
+	 * @param writeToConsole true to write the output of "wmlindent" in user's console
+	 * @param useThread whether the tool should be runned in a new thread or not
+	 * @return
+	 */
+	public static String runWMLScope(String resourcePath, boolean writeToConsole, boolean useThread)
+	{
+		if (!checkPrerequisites(resourcePath, "wmlscope"))
+			return null;
+
+		File wmlscopeFile = new File(Preferences.getString(Constants.P_WESNOTH_WMLTOOLS_DIR) + "/wmlscope");
+
+		List<String> arguments = new ArrayList<String>();
+
+		arguments.add(wmlscopeFile.getAbsolutePath());
+		// add default core directory
+		arguments.add(Preferences.getString(Constants.P_WESNOTH_WORKING_DIR) +
+				Path.SEPARATOR + "data/core");
+		arguments.add(resourcePath);
+
+		return runPythonScript(arguments, null, useThread, writeToConsole, "Wmlscope result: ");
 	}
 
 	/**
@@ -133,7 +158,7 @@ public class WMLTools
 			ExternalToolInvoker pyscript = new ExternalToolInvoker("python", arguments, useThread);
 			System.out.println(arguments);
 			pyscript.run();
-			if (stdin != null && !stdin.isEmpty())
+			if (stdin != null)
 			{
 				//pyscript.waitForThreadStart();
 				BufferedWriter stdinStream = new BufferedWriter(new OutputStreamWriter(pyscript.getOutputStream()));

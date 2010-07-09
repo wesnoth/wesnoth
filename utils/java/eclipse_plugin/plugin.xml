@@ -36,22 +36,37 @@
                class="wesnoth_eclipse_plugin.builder.ToggleNatureAction"
                enablesFor="+"
                icon="icons/wesnoth-icon_16.png"
-               id="actions.addRemoveNature"
+               id="action.proj.addRemoveNature"
                label="Add/Remove Sample Nature"
                menubarPath="_wesnoth">
          </action>
          <action
                class="wesnoth_eclipse_plugin.action.WesnothProjectReport"
                icon="icons/wesnoth-icon_16.png"
-               id="action.wesnothProjectReport"
+               id="action.proj.report"
                label="Wesnoth project report"
                menubarPath="_wesnoth">
          </action>
+         <menu
+               icon="icons/wesnoth-icon_16.png"
+               id="plugin.wmltoolsProjMenu"
+               label="WML Tools"
+               path="_wesnoth">
+            <groupMarker
+                  name="wmltoolsProjMenuMarker">
+            </groupMarker>
+         </menu>
+         <action
+               class="wesnoth_eclipse_plugin.action.RunWMLScopeOnSelection"
+               id="action.proj.wmlindent"
+               label="Run &quot;wmlindent&quot; on the project this file"
+               menubarPath="plugin.wmltoolsProjMenu/wmltoolsProjMenuMarker">
+         </action>
          <action
                class="wesnoth_eclipse_plugin.action.RunWMLIndentOnSelection"
-               id="Wesnoth Eclipse Plugin.action7"
-               label="Run &quot;wmlindent&quot; on the project this file"
-               menubarPath="_wesnoth">
+               id="action.proj.wmlscope"
+               label="Run &quot;wmlscope&quot; on the project"
+               menubarPath="plugin.wmltoolsProjMenu/wmltoolsProjMenuMarker">
          </action>
       </objectContribution>
       <objectContribution
@@ -63,7 +78,7 @@
                class="wesnoth_eclipse_plugin.action.ImportMap"
                enablesFor="1"
                icon="icons/wesnoth_editor-icon_16.png"
-               id="actions.importmap"
+               id="action.maps.importmap"
                label="Import map"
                menubarPath="_wesnoth">
          </action>
@@ -77,7 +92,7 @@
                class="wesnoth_eclipse_plugin.action.OpenMapInEditor"
                enablesFor="1"
                icon="icons/wesnoth_editor-icon_16.png"
-               id="actions.openMapInEditor"
+               id="action.map.openMapInEditor"
                label="Open map in editor"
                menubarPath="_wesnoth">
          </action>
@@ -91,7 +106,7 @@
                class="wesnoth_eclipse_plugin.action.OpenScenarioInGame"
                enablesFor="1"
                icon="icons/wesnoth-icon_16.png"
-               id="action.openScenarioInGame"
+               id="action.cfg.openScenarioInGame"
                label="Open Scenario in game"
                menubarPath="_wesnoth">
          </action>
@@ -106,42 +121,50 @@
          </menu>
          <action
                class="wesnoth_eclipse_plugin.action.ShowPreprocessedConfig"
-               id="action.preprocessedConfig"
+               id="action.cfg.preprocessedConfig"
                label="Show preprocessed file"
                menubarPath="plugin.preprocessorMenu/preprocessorMenuMarker">
          </action>
          <action
                class="wesnoth_eclipse_plugin.action.ShowPlainPreprocessedConfig"
-               id="action.plainPreprocessedconfig"
+               id="action.cfg.plainPreprocessedconfig"
                label="Show plain preprocessed file"
                menubarPath="plugin.preprocessorMenu/preprocessorMenuMarker">
          </action>
          <menu
                icon="icons/wesnoth-icon_16.png"
-               id="plugin.wmltoolsMenu"
+               id="plugin.wmltoolsCfgMenu"
                label="WML Tools"
                path="_wesnoth">
             <groupMarker
-                  name="wmltoolsMenuMarker">
+                  name="wmltoolsCfgMenuMarker">
             </groupMarker>
          </menu>
          <action
                class="wesnoth_eclipse_plugin.action.RunWMLLintOnFile"
-               id="Wesnoth Eclipse Plugin.action5"
+               id="action.cfg.wmllintOnFile"
                label="Run &quot;wmllint&quot; on this file"
-               menubarPath="plugin.wmltoolsMenu/wmltoolsMenuMarker">
+               menubarPath="plugin.wmltoolsCfgMenu/wmltoolsCfgMenuMarker">
          </action>
+         <!--
          <action
                class="wesnoth_eclipse_plugin.action.RunWMLLintOnPreprocFile"
-               id="Wesnoth Eclipse Plugin.action6"
+               id="action.cfg.wmllintOnPreprocFile"
                label="Run &quot;wmllint&quot; on preprocessed file"
-               menubarPath="plugin.wmltoolsMenu/wmltoolsMenuMarker">
+               menubarPath="plugin.wmltoolsCfgMenu/wmltoolsCfgMenuMarker">
+         </action>
+         -->
+         <action
+               class="wesnoth_eclipse_plugin.action.RunWMLScopeOnSelection"
+               id="action.cfg.wmlscope"
+               label="Run &quot;wmlscope&quot; on this file"
+               menubarPath="plugin.wmltoolsCfgMenu/wmltoolsCfgMenuMarker">
          </action>
          <action
                class="wesnoth_eclipse_plugin.action.RunWMLIndentOnSelection"
-               id="Wesnoth Eclipse Plugin.action7"
+               id="action.cfg.wmlindent"
                label="Run &quot;wmlindent&quot; on this file"
-               menubarPath="plugin.wmltoolsMenu/wmltoolsMenuMarker">
+               menubarPath="plugin.wmltoolsCfgMenu/wmltoolsCfgMenuMarker">
          </action>
       </objectContribution>
    </extension>
