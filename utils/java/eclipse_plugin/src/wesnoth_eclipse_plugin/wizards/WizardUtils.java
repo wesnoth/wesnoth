@@ -12,7 +12,7 @@ import wesnoth_eclipse_plugin.Activator;
 
 public class WizardUtils
 {
-	public static void launchWizard(NewWizardTemplate wizard, Shell shell, IStructuredSelection selection)
+	public static int launchWizard(NewWizardTemplate wizard, Shell shell, IStructuredSelection selection)
 	{
 		wizard.init(Activator.getDefault().getWorkbench(), selection);
 		wizard.setForcePreviousAndNextButtons(true);
@@ -23,6 +23,6 @@ public class WizardUtils
 		Activator.getDefault().getWorkbench().getHelpSystem().setHelp(wizardDialog.getShell(),
 				"org.eclipse.ui.new_wizard_context");
 
-		wizardDialog.open();
+		return wizardDialog.open();
 	}
 }

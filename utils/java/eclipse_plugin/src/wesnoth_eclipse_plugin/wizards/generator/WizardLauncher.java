@@ -60,6 +60,8 @@ public class WizardLauncher extends NewWizardTemplate
 	{
 		wizard_ = new WizardGenerator(page1_.getTagDescription() + " new wizard", page1_.getTagName(), (byte) 0);
 		WizardUtils.launchWizard(wizard_, getShell(), selection_);
+		if (!wizard_.isFinished())
+			return false;
 
 		IRunnableWithProgress op = new IRunnableWithProgress() {
 			@Override

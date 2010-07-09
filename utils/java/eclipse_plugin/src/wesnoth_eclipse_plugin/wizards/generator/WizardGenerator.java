@@ -19,48 +19,53 @@ public class WizardGenerator extends NewWizardTemplate
 		SchemaParser.getInstance().parseSchema(false);
 		setWindowTitle(title);
 		Tag tagContent = SchemaParser.getInstance().getTags().get(tagName);
+
 		tagName_ = tagName;
 		indent_ = indent;
-
-		// keys section
-		int keysNr = tagContent.KeyChildren.size();
-		int startKey = 0, pgsKey = (keysNr / WizardsConstants.MaxTextBoxesOnPage);
-		WizardGeneratorPageKey tempPageKey;
-		for (int i = 0; i < pgsKey; i++)
-		{
-			tempPageKey = new WizardGeneratorPageKey(tagName, tagContent.KeyChildren, startKey,
-												startKey + WizardsConstants.MaxTextBoxesOnPage, (byte) (indent_ + 1));
-			startKey += WizardsConstants.MaxTextBoxesOnPage;
-			addPage(tempPageKey);
-		}
-		if (keysNr - 1 > 0)
-		{
-			tempPageKey = new WizardGeneratorPageKey(tagName, tagContent.KeyChildren,
-												startKey, keysNr - 1, (byte) (indent_ + 1));
-			addPage(tempPageKey);
-		}
-
-		// tags section
-		int tagsNr = tagContent.TagChildren.size();
-		int startTag = 0, pgsTag = (tagsNr / WizardsConstants.MaxGroupsOnPage);
-		WizardGeneratorPageTag tempPageTag;
-		for (int i = 0; i < pgsTag; i++)
-		{
-			tempPageTag = new WizardGeneratorPageTag(tagName, tagContent.TagChildren, startTag,
-											startTag + WizardsConstants.MaxGroupsOnPage, (byte) (indent_ + 1));
-			startTag += WizardsConstants.MaxTextBoxesOnPage;
-			addPage(tempPageTag);
-		}
-		if (tagsNr - 1 > 0)
-		{
-			tempPageTag = new WizardGeneratorPageTag(tagName, tagContent.TagChildren,
-											startTag, tagsNr - 1, (byte) (indent_ + 1));
-			addPage(tempPageTag);
-		}
-
-		if (getPageCount() == 0)
-		{
+		if (tagContent == null)
 			addPage(new WizardGeneratorPage404(tagName));
+		else
+		{
+			// keys section
+			int keysNr = tagContent.KeyChildren.size();
+			int startKey = 0, pgsKey = (keysNr / WizardsConstants.MaxTextBoxesOnPage);
+			WizardGeneratorPageKey tempPageKey;
+			for (int i = 0; i < pgsKey; i++)
+			{
+				tempPageKey = new WizardGeneratorPageKey(tagName, tagContent.KeyChildren, startKey,
+												startKey + WizardsConstants.MaxTextBoxesOnPage, (byte) (indent_ + 1));
+				startKey += WizardsConstants.MaxTextBoxesOnPage;
+				addPage(tempPageKey);
+			}
+			if (keysNr - 1 > 0)
+			{
+				tempPageKey = new WizardGeneratorPageKey(tagName, tagContent.KeyChildren,
+												startKey, keysNr - 1, (byte) (indent_ + 1));
+				addPage(tempPageKey);
+			}
+
+			// tags section
+			int tagsNr = tagContent.TagChildren.size();
+			int startTag = 0, pgsTag = (tagsNr / WizardsConstants.MaxGroupsOnPage);
+			WizardGeneratorPageTag tempPageTag;
+			for (int i = 0; i < pgsTag; i++)
+			{
+				tempPageTag = new WizardGeneratorPageTag(tagName, tagContent.TagChildren, startTag,
+											startTag + WizardsConstants.MaxGroupsOnPage, (byte) (indent_ + 1));
+				startTag += WizardsConstants.MaxTextBoxesOnPage;
+				addPage(tempPageTag);
+			}
+			if (tagsNr - 1 > 0)
+			{
+				tempPageTag = new WizardGeneratorPageTag(tagName, tagContent.TagChildren,
+											startTag, tagsNr - 1, (byte) (indent_ + 1));
+				addPage(tempPageTag);
+			}
+
+			if (getPageCount() == 0)
+			{
+				addPage(new WizardGeneratorPage404(tagName));
+			}
 		}
 	}
 

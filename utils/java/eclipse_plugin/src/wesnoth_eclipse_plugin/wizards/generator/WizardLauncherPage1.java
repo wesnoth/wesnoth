@@ -8,26 +8,46 @@ import java.util.HashMap;
 
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.layout.GridData;
-import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Text;
+
+import wesnoth_eclipse_plugin.utils.StringUtils;
+import wesnoth_eclipse_plugin.wizards.TemplateProvider;
 
 public class WizardLauncherPage1 extends WizardPage
 {
 	private HashMap<String, String>	list_;
+	private Text					txtOtherTag_;
 	private Combo					cmbWizardName_;
+	private Group					grpCustomTag_;
 
 	public WizardLauncherPage1() {
 		super("wizardLauncherPage1");
 		setTitle("Wizard Launcher");
 		setDescription("Select wizard to launch");
+
 		list_ = new HashMap<String, String>();
-		list_.put("Campaign", "campaign");
-		list_.put("Game config", "game_config");
-		list_.put("AIs", "ais");
-		//TODO: read the list-tag from file!
+
+		String[] templates = StringUtils.getLines(TemplateProvider.getInstance().getTemplate("wizards"));
+
+		for (String line : templates)
+		{
+			if (StringUtils.startsWith(line, "#"))
+				continue;
+			String[] tokens = line.split(":");
+			if (tokens.length != 2)
+			{
+				System.err.println("Error on template 'wizards'.");
+				continue;
+			}
+			list_.put(tokens[0], tokens[1]);
+		}
+		list_.put("Other", "_");
 	}
 
 	@Override
@@ -36,45 +56,50 @@ public class WizardLauncherPage1 extends WizardPage
 		Composite container = new Composite(parent, SWT.NULL);
 
 		setControl(container);
-		container.setLayout(new GridLayout(3, false));
-		String[] items = new String[0];
-		new Label(container, SWT.NONE);
-		new Label(container, SWT.NONE);
-		new Label(container, SWT.NONE);
+		container.setLayout(null);
 
 		Label label = new Label(container, SWT.NONE);
-		GridData gd_label = new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1);
-		gd_label.widthHint = 141;
-		label.setLayoutData(gd_label);
+		label.setBounds(5, 25, 141, 15);
 		label.setText("    ");
-		new Label(container, SWT.NONE);
 
 		Label label_1 = new Label(container, SWT.NONE);
-		GridData gd_label_1 = new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1);
-		gd_label_1.widthHint = 146;
-		label_1.setLayoutData(gd_label_1);
+		label_1.setBounds(151, 25, 146, 15);
 		label_1.setText(" ");
-		new Label(container, SWT.NONE);
-		new Label(container, SWT.NONE);
-		new Label(container, SWT.NONE);
-		new Label(container, SWT.NONE);
+		Label label_2 = new Label(container, SWT.NONE);
+		label_2.setBounds(146, 85, 0, 15);
 
-		Label lblSelectAWizard = new Label(container, SWT.NONE);
-		lblSelectAWizard.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
-		lblSelectAWizard.setText("Select a Wizard and then press finish: ");
-		new Label(container, SWT.NONE);
-		new Label(container, SWT.NONE);
+		Label label_3 = new Label(container, SWT.NONE);
+		label_3.setText("Select a Wizard and then press finish: ");
+		label_3.setBounds(142, 63, 267, 15);
 
 		cmbWizardName_ = new Combo(container, SWT.READ_ONLY);
-		cmbWizardName_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+		cmbWizardName_.setBounds(142, 83, 267, 23);
+		String[] items = new String[0];
 		cmbWizardName_.setItems(list_.keySet().toArray(items));
-		cmbWizardName_.select(0);
-		new Label(container, SWT.NONE);
+		if (cmbWizardName_.getItemCount() > 1)
+			cmbWizardName_.select(1);
+		cmbWizardName_.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e)
+			{
+				if (!(e.getSource() instanceof Combo))
+					return;
+				grpCustomTag_.setVisible(((Combo) e.getSource()).getText().equals("Other"));
+			}
+		});
+
+		grpCustomTag_ = new Group(container, SWT.NONE);
+		grpCustomTag_.setText("Custom tag:");
+		grpCustomTag_.setBounds(142, 131, 267, 76);
+		grpCustomTag_.setVisible(false);
+
+		txtOtherTag_ = new Text(grpCustomTag_, SWT.BORDER);
+		txtOtherTag_.setBounds(12, 37, 245, 21);
 	}
 
 	public String getTagName()
 	{
-		return list_.get(cmbWizardName_.getText());
+		return cmbWizardName_.getText().equals("Other") == true ? txtOtherTag_.getText() : list_.get(cmbWizardName_.getText());
 	}
 
 	public String getTagDescription()
