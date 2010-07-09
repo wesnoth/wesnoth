@@ -36,6 +36,97 @@ struct send_stats_logger
 };
 
 /**
+ * A representative of a network component to the application.
+ */
+class ana_component : public send_stats_logger
+{
+    public:
+        /** Constructs a server component. */
+        ana_component( );
+
+        /**
+         * Constructs a client component.
+         *
+         * @param host : The hostname to which it is supposed to connect to.
+         * @param port : The port it is supposed to connect to.
+         */
+        ana_component( const std::string& host, const std::string& port);
+
+        /** Get network upload statistics for this component. */
+        network::statistics get_send_stats() const;
+
+        /** Get network download statistics for this component. */
+        network::statistics get_receive_stats() const;
+
+        /**
+         * Get the pointer to an ana::server object for this component.
+         *
+         * @Pre : This component is a server.
+         */
+        ana::server* server() const;
+
+        /**
+         * Get the pointer to an ana::client object for this component.
+         *
+         * @Pre : This component is a client.
+         */
+        ana::client* client() const;
+
+        /** Returns true iff this component is a server. */
+        bool is_server() const;
+
+        /** Returns true iff this component is a client. */
+        bool is_client() const;
+
+        /** Returns this component's id. */
+        ana::net_id get_id() const;
+
+        network::connection get_wesnoth_id() const;
+
+        void set_wesnoth_id( network::connection ) ;
+
+        /** Returns a pointer to the ana::stats object for accumulated network stats. */
+        const ana::stats* get_stats() const;
+
+        /** Push a buffer to the queue of incoming messages. */
+        void add_buffer(ana::detail::read_buffer buffer);
+
+        /**
+         * Blocking operation to wait for a message in a component.
+         *
+         * @returns The buffer that was received first from all pending buffers.
+         */
+        ana::detail::read_buffer wait_for_element();
+
+        bool new_buffer_ready(); // non const due to mutex blockage
+
+        /** Log an incoming buffer. */
+        void update_receive_stats( size_t buffer_size );
+
+    private:
+        virtual void update_send_stats( size_t buffer_size);
+
+        boost::variant<ana::server*, ana::client*> base_;
+
+        bool        is_server_;
+
+        ana::net_id         id_;
+        network::connection wesnoth_id_;
+
+        network::statistics send_stats_;
+        network::statistics receive_stats_;
+
+        //Buffer queue attributes
+        boost::mutex                   mutex_;
+        boost::condition_variable      condition_;
+
+        std::queue< ana::detail::read_buffer > buffers_;
+};
+
+typedef std::set<ana_component*> ana_component_set;
+
+
+/**
  * To use the asynchronous library synchronously, objects of this
  * type lock a mutex until enough calls have been made to the
  * associated handler.
@@ -127,6 +218,70 @@ class ana_receive_handler : public ana::listener_handler
         bool                     finished_;
 };
 
+/**
+ * To use the asynchronous library synchronously, objects of this
+ * type lock a mutex until enough calls have been made to the
+ * associated handler.
+ */
+class ana_multiple_receive_handler : public ana::listener_handler
+{
+    public:
+        /**
+         * Constructs a reader handler object.
+         */
+        ana_multiple_receive_handler( ana_component_set& components );
+
+        /** Destructor. */
+        ~ana_multiple_receive_handler();
+
+        /**
+         * Attempts to read from those network components associated with this
+         * handler object up until timeout_ms milliseconds.
+         *
+         * If the timeout parameter is 0, it will lock the current thread until
+         * one of these components has received a message.
+         *
+         * @param component : A network component running an io_service which supports timeout capabilities.
+         * @param timeout_ms : Amount of milliseconds to timeout the operation.
+         */
+        void wait_completion(size_t timeout_ms = 0);
+
+        /** Returns the error_code from the operation. */
+        const ana::error_code& error() const
+        {
+            return error_code_;
+        }
+
+        /** Returns the buffer from the operation. */
+        ana::detail::read_buffer buffer() const
+        {
+            return buffer_;
+        }
+
+        network::connection get_wesnoth_id() const
+        {
+            return wesnoth_id_;
+        }
+
+    private:
+        virtual void handle_message   (ana::error_code, ana::net_id, ana::detail::read_buffer);
+        virtual void handle_disconnect(ana::error_code, ana::net_id);
+
+        void handle_timeout(ana::error_code error_code);
+
+        ana_component_set& components_;
+
+        boost::mutex             mutex_;
+        boost::mutex             handler_mutex_;
+        boost::mutex             timeout_called_mutex_;
+        ana::error_code          error_code_;
+        ana::detail::read_buffer buffer_;
+        network::connection      wesnoth_id_;
+        ana::timer*              receive_timer_;
+        bool                     finished_;
+};
+
+
 
 /**
  * To use the asynchronous library synchronously, objects of this
@@ -168,94 +323,6 @@ class ana_connect_handler : public ana::connection_handler
         ana::timer*        timer_;
         ana::error_code    error_code_;
         bool               connected_;
-};
-
-/**
- * A representative of a network component to the application.
- */
-class ana_component : public send_stats_logger
-{
-    public:
-        /** Constructs a server component. */
-        ana_component( );
-
-        /**
-         * Constructs a client component. 
-         *
-         * @param host : The hostname to which it is supposed to connect to.
-         * @param port : The port it is supposed to connect to.
-         */
-        ana_component( const std::string& host, const std::string& port);
-
-        /** Get network upload statistics for this component. */
-        network::statistics get_send_stats() const;
-
-        /** Get network download statistics for this component. */
-        network::statistics get_receive_stats() const;
-
-        /**
-         * Get the pointer to an ana::server object for this component.
-         *
-         * @Pre : This component is a server.
-         */
-        ana::server* server() const;
-
-        /**
-         * Get the pointer to an ana::client object for this component.
-         *
-         * @Pre : This component is a client.
-         */
-        ana::client* client() const;
-
-        /** Returns true iff this component is a server. */
-        bool is_server() const;
-
-        /** Returns true iff this component is a client. */
-        bool is_client() const;
-
-        /** Returns this component's id. */
-        ana::net_id get_id() const;
-
-        network::connection get_wesnoth_id() const;
-
-        void set_wesnoth_id( network::connection ) ;
-
-        /** Returns a pointer to the ana::stats object for accumulated network stats. */
-        const ana::stats* get_stats() const;
-
-        /** Push a buffer to the queue of incoming messages. */
-        void add_buffer(ana::detail::read_buffer buffer);
-
-        /**
-         * Blocking operation to wait for a message in a component.
-         *
-         * @returns The buffer that was received first from all pending buffers.
-         */
-        ana::detail::read_buffer wait_for_element();
-
-        bool new_buffer_ready(); // non const due to mutex blockage
-
-        /** Log an incoming buffer. */
-        void update_receive_stats( size_t buffer_size );
-
-    private:
-        virtual void update_send_stats( size_t buffer_size);
-
-        boost::variant<ana::server*, ana::client*> base_;
-
-        bool        is_server_;
-
-        ana::net_id         id_;
-        network::connection wesnoth_id_;
-
-        network::statistics send_stats_;
-        network::statistics receive_stats_;
-
-        //Buffer queue attributes
-        boost::mutex                   mutex_;
-        boost::condition_variable      condition_;
-
-        std::queue< ana::detail::read_buffer > buffers_;
 };
 
 /**
@@ -354,7 +421,7 @@ class ana_network_manager : public ana::listener_handler,
         virtual void handle_disconnect(ana::error_code /*error_code*/, ana::net_id client);
 
         ana::timer*                connect_timer_;
-        std::set< ana_component* > components_;
+        ana_component_set          components_;
 
         std::map< ana::server*, const clients_manager* > server_manager_;
 };

@@ -164,6 +164,142 @@ void ana_receive_handler::handle_timeout(ana::error_code error_code)
     timeout_called_mutex_.unlock();
 }
 
+// Begin ana_multiple_receive_handler implementation ------------------------------------------------------------
+
+ana_multiple_receive_handler::ana_multiple_receive_handler( ana_component_set& components ) :
+    components_( components ),
+    mutex_(),
+    handler_mutex_(),
+    timeout_called_mutex_(),
+    error_code_(),
+    buffer_(),
+    wesnoth_id_(0),
+    receive_timer_( NULL ),
+    finished_( false )
+{
+    std::cout << "DEBUG: Constructing a new ana_multiple_receive_handler...\n";
+
+    ana_component_set::iterator it;
+
+    for (it = components_.begin(); it != components_.end(); ++it )
+    {
+        if ( (*it)->is_server() )
+            (*it)->server()->set_listener_handler( this );
+        else
+            (*it)->client()->set_listener_handler( this );
+    }
+
+    mutex_.lock();
+    timeout_called_mutex_.lock();
+}
+
+ana_multiple_receive_handler::~ana_multiple_receive_handler()
+{
+    timeout_called_mutex_.lock();
+    timeout_called_mutex_.unlock();
+    handler_mutex_.lock();
+    handler_mutex_.unlock();
+}
+
+void ana_multiple_receive_handler::wait_completion(size_t timeout_ms )
+{
+    ana_component_set::iterator it;
+    {
+        boost::mutex::scoped_lock lock( handler_mutex_);
+
+        it = components_.begin();
+
+        ana::detail::timed_sender* component;
+
+        if ( (*it)->is_server())
+            component = (*it)->server();
+        else
+            component = (*it)->client();
+
+        if ( finished_ )
+        {
+            mutex_.unlock();
+            timeout_called_mutex_.unlock();
+        }
+        else if ( timeout_ms > 0 )
+        {
+            receive_timer_ = component->create_timer();
+
+            receive_timer_->wait( ana::time::milliseconds(timeout_ms),
+                                boost::bind(&ana_multiple_receive_handler::handle_timeout, this, ana::timeout_error ) );
+        }
+    }
+    mutex_.lock();
+    mutex_.unlock();
+}
+
+void ana_multiple_receive_handler::handle_message(ana::error_code          error_c,
+                                                  ana::net_id              id,
+                                                  ana::detail::read_buffer read_buffer)
+{
+    boost::mutex::scoped_lock lock( handler_mutex_);
+
+    delete receive_timer_;
+    receive_timer_ = NULL;
+
+    buffer_ = read_buffer;
+    error_code_ = error_c;
+
+    ana_component_set::iterator it;
+    it = std::find_if( components_.begin(), components_.end(),
+                    boost::bind(&ana_component::get_id, _1) == id );
+
+    if ( it != components_.end())
+        wesnoth_id_ = (*it)->get_wesnoth_id();
+    else
+        throw std::runtime_error("Wrong read.");
+
+
+    if (! finished_ )
+    {
+        finished_ = true;
+        mutex_.unlock();
+    }
+}
+
+void ana_multiple_receive_handler::handle_disconnect(ana::error_code error_c, ana::net_id)
+{
+    boost::mutex::scoped_lock lock( handler_mutex_);
+
+    delete receive_timer_;
+    receive_timer_ = NULL;
+
+    error_code_ = error_c;
+    if (! finished_ )
+    {
+        finished_ = true;
+        mutex_.unlock();
+    }
+}
+
+void ana_multiple_receive_handler::handle_timeout(ana::error_code error_code)
+{
+    boost::mutex::scoped_lock lock( handler_mutex_ );
+
+    delete receive_timer_;
+    receive_timer_ = NULL;
+
+    if (! finished_ )
+    {
+        if (error_code)
+            std::cout << "DEBUG: Receive attempt timed out\n";
+        else
+            std::cout << "DEBUG: Shouldn't reach here\n";
+
+        error_code_ = error_code;
+        finished_ = true;
+        mutex_.unlock();
+    }
+
+    timeout_called_mutex_.unlock();
+}
+
+
 // Begin ana_connect_handler implementation ------------------------------------------------------------
 
 ana_connect_handler::ana_connect_handler( ana::timer* timer ) :
@@ -558,7 +694,7 @@ size_t ana_network_manager::send_all( const config& cfg, bool zipped )
             ana_send_handler handler( *it, out.str().size() );
 
             (*it)->client()->send( ana::buffer( out.str() ), &handler, ana::ZERO_COPY );
-            handler.wait_completion(); // the handler will release the mutex after necessary_calls calls
+            handler.wait_completion();
         }
     }
     std::cout << "Sent data.\n";
@@ -659,7 +795,43 @@ network::connection ana_network_manager::read_from( network::connection connecti
             }
         }
         else
-            throw std::runtime_error("Global Buffer Queue here?");
+        {
+            //Check first if there is an available buffer
+            for (it = components_.begin(); it != components_.end(); ++it)
+            {
+                if (  (*it)->new_buffer_ready() )
+                {
+                    buffer = (*it)->wait_for_element();
+                    return (*it)->get_wesnoth_id();
+                }
+            }
+
+            // If no timeout was requested, return
+            if (timeout_ms == 0 )
+                return 0;
+
+            // Wait timeout_ms milliseconds to see if any component will receive something
+            ana_multiple_receive_handler handler( components_ );
+
+            for (it = components_.begin(); it != components_.end(); ++it )
+            {
+                if ( (*it)->is_server() )
+                    (*it)->server()->set_listener_handler( this );
+                else
+                    (*it)->client()->set_listener_handler( this );
+            }
+
+            handler.wait_completion( timeout_ms );
+
+            if ( handler.error() )
+                return 0;
+            else
+            {
+                buffer = handler.buffer();
+                return handler.get_wesnoth_id();
+            }
+//             throw std::runtime_error("Global Buffer Queue here?");
+        }
     }
     else
     {
