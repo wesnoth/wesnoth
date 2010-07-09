@@ -390,7 +390,7 @@ std::pair<map_location,map_location> default_move_to_targets_phase::choose_move(
 			raise_user_interact();
 
 			const move_cost_calculator calc(u->second, map_, units_, enemy_dstsrc);
-			const double locStopValue = std::min(best_target->value / best_rating, 100.0);
+			const double locStopValue = std::min(best_target->value / best_rating, (double) 100.0);
 			pathfind::plain_route cur_route = pathfind::a_star_search(u->first, best_target->loc, locStopValue, &calc, map_.w(), map_.h());
 
 			if(cur_route.steps.empty()) {
