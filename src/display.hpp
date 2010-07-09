@@ -546,7 +546,9 @@ protected:
 
 	void scroll_to_xy(int screenxpos, int screenypos, SCROLL_TYPE scroll_type,bool force = true);
 
-	const std::string& get_variant(const std::vector<std::string>& variants, const map_location &loc);
+	void fill_images_list(const std::string& prefix, std::vector<std::string>& images);
+
+	const std::string& get_variant(const std::vector<std::string>& variants, const map_location &loc) const;
 
 	CVideo& screen_;
 	const gamemap* map_;
@@ -590,6 +592,8 @@ protected:
 	// If we're transitioning from one time of day to the next,
 	// then we will use these two masks on top of all hexes when we blit.
 	surface tod_hex_mask1, tod_hex_mask2;
+	std::vector<std::string> fog_images_;
+	std::vector<std::string> shroud_images_;
 
 	map_location selectedHex_;
 	map_location mouseoverHex_;

@@ -82,7 +82,6 @@ namespace game_config
 	extern std::vector<Uint32> red_green_scale;
 	extern std::vector<Uint32> red_green_scale_text;
 
-	extern std::vector<std::string> fog_variants, shroud_variants;
 	extern std::vector<std::string> foot_speed_prefix;
 	extern std::string foot_teleport_enter, foot_teleport_exit;
 

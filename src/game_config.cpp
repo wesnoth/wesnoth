@@ -66,8 +66,6 @@ namespace game_config
 
 	std::string shroud_prefix;
 	std::string fog_prefix;
-	std::vector<std::string> fog_variants;
-	std::vector<std::string> shroud_variants;
 
 	std::string energy_image = "misc/bar-energy.png";
 	std::string moved_ball_image = "misc/ball-moved.png";
@@ -205,8 +203,6 @@ namespace game_config
 
 		shroud_prefix = v["shroud_prefix"].str();
 		fog_prefix  = v["fog_prefix"].str();
-		fog_variants = utils::split(v["fog_variants"].str());
-		shroud_variants = utils::split(v["shroud_variants"].str());
 
 		observer_image = v["observer_image"].str();
 		tod_bright_image = v["tod_bright_image"].str();

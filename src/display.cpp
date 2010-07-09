@@ -107,6 +107,8 @@ display::display(CVideo& video, const gamemap* map, const config& theme_cfg, con
 	mouseover_hex_overlay_(NULL),
 	tod_hex_mask1(NULL),
 	tod_hex_mask2(NULL),
+	fog_images_(),
+	shroud_images_(),
 	selectedHex_(),
 	mouseoverHex_(),
 	keys_(),
@@ -129,6 +131,9 @@ display::display(CVideo& video, const gamemap* map, const config& theme_cfg, con
 		screen_.lock_updates(true);
 	}
 
+	fill_images_list(game_config::fog_prefix, fog_images_);
+	fill_images_list(game_config::shroud_prefix, shroud_images_);
+
 	set_idle_anim_rate(preferences::idle_anim_rate());
 
 	std::fill(reportRects_,reportRects_+reports::NUM_REPORTS,empty_rect);
@@ -140,7 +145,25 @@ display::~display()
 {
 }
 
-const std::string& display::get_variant(const std::vector<std::string>& variants, const map_location &loc)
+void display::fill_images_list(const std::string& prefix, std::vector<std::string>& images)
+{
+	// search prefix.png, prefix1.png, prefix2.png ...
+	for(int i=0; ; ++i){
+		std::ostringstream s;
+		s << prefix;
+		if(i != 0)
+			s << i;
+		s << ".png";
+		if(image::exists(s.str()))
+			images.push_back(s.str());
+		else if(i>0)
+			break;
+	}
+	if (images.empty())
+		images.push_back("");
+}
+
+const std::string& display::get_variant(const std::vector<std::string>& variants, const map_location &loc) const
 {
 	//TODO use better noise function
 	return variants[abs(loc.x + loc.y) % variants.size()];
@@ -1967,11 +1990,11 @@ void display::draw_hex(const map_location& loc) {
 	if(shrouded(loc)) {
 		// We apply void also on off-map tiles
 		// to shroud the half-hexes too
-		const std::string& shroud_image = get_variant(game_config::shroud_variants, loc);
+		const std::string& shroud_image = get_variant(shroud_images_, loc);
 		drawing_buffer_add(LAYER_FOG_SHROUD, loc, tblit(xpos, ypos,
 			image::get_image(shroud_image, image_type)));
 	} else if(fogged(loc)) {
-		const std::string& fog_image = get_variant(game_config::fog_variants, loc);
+		const std::string& fog_image = get_variant(fog_images_, loc);
 		drawing_buffer_add(LAYER_FOG_SHROUD, loc, tblit(xpos, ypos,
 			image::get_image(fog_image, image_type)));
 	}
