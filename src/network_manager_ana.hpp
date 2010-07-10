@@ -404,10 +404,41 @@ class ana_network_manager : public ana::listener_handler,
 
         void send_all_except(const config& cfg, network::connection connection_num);
 
-        /** Read a message from a given component. */
+        /**
+         * Read a message from a given component or from every one.
+         *
+         * @param connection_num : The id of the network component, 0 to read from every component.
+         * @param cfg : The config input to place the read data.
+         * @param timeout_ms : Amount of milliseconds to wait for the data.
+         *
+         * @returns The network::connection number of the component that read the data or 0 if an error occurred.
+         */
         network::connection read_from( network::connection connection_num,
-                                       ana::detail::read_buffer& buffer,
-                                       size_t timeout_ms = 0 );
+                                       config&             cfg,
+                                       size_t              timeout_ms = 0 );
+
+        /**
+         * Read a message from a given component or from every one.
+         *
+         * @param it : The ana component to read from.
+         * @param cfg : The config input to place the read data.
+         * @param timeout_ms : Amount of milliseconds to wait for the data.
+         *
+         * @returns The network::connection number of the component that read the data or 0 if an error occurred.
+         */
+        network::connection read_from( const ana_component_set::iterator& it,
+                                       config&             cfg,
+                                       size_t              timeout_ms = 0 );
+
+        /**
+         * Read a message from a given component or from every one.
+         *
+         * @param it : The ana component to read from.
+         * @param cfg : The config input to place the read data.
+         *
+         * @returns The network::connection number of the component that read the data or 0 if an error occurred.
+         */
+        network::connection read_from_ready_buffer( const ana_component_set::iterator& it, config& cfg);
 
         /** Retrieve upload statistics on a given component. */
         network::statistics get_send_stats(network::connection handle);
@@ -424,6 +455,23 @@ class ana_network_manager : public ana::listener_handler,
 
         virtual void handle_disconnect(ana::error_code /*error_code*/, ana::net_id client);
 
+        /**
+         * Pack a config object to an outpt stream using compression.
+         *
+         * @param cfg : The config object as input.
+         * @param out : The output stream as output.
+         */
+        void compress_config( const config& cfg, std::ostringstream& out);
+
+        /**
+         * Read a config object from an input buffer.
+         *
+         * @param buffer : The buffer with the compressed stream as input.
+         * @param cfg : The config object as output.
+         */
+        void read_config( const ana::detail::read_buffer& buffer, config& cfg);
+
+        // Attributes
         ana::timer*                connect_timer_;
         ana_component_set          components_;
 

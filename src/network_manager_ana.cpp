@@ -86,6 +86,8 @@ ana_receive_handler::~ana_receive_handler()
 {
     timeout_called_mutex_.lock();
     timeout_called_mutex_.unlock();
+    handler_mutex_.lock();
+    handler_mutex_.unlock();
 }
 
 void ana_receive_handler::wait_completion(ana::detail::timed_sender* component, size_t timeout_ms )
@@ -684,17 +686,28 @@ size_t ana_network_manager::number_of_connections() const
     return components_.size(); // TODO:check if this is the intention, guessing not
 }
 
+void ana_network_manager::compress_config( const config& cfg, std::ostringstream& out)
+{
+    boost::iostreams::filtering_stream<boost::iostreams::output> filter;
+    filter.push(boost::iostreams::gzip_compressor());
+    filter.push(out);
+    write(filter, cfg);
+}
+
+void ana_network_manager::read_config( const ana::detail::read_buffer& buffer, config& cfg)
+{
+    std::istringstream input( buffer->string() );
+
+    read_gz(cfg, input);
+}
+
 size_t ana_network_manager::send_all( const config& cfg, bool zipped )
 {
     std::cout << "DEBUG: Sending to everybody. " << (zipped ? "Zipped":"Raw") << "\n";
 
+
     std::ostringstream out;
-    {
-        boost::iostreams::filtering_stream<boost::iostreams::output> filter;
-        filter.push(boost::iostreams::gzip_compressor());
-        filter.push(out);
-        write(filter, cfg);
-    }
+    compress_config(cfg,out);
 
     std::set<ana_component*>::iterator it;
 
@@ -720,28 +733,36 @@ size_t ana_network_manager::send_all( const config& cfg, bool zipped )
     return out.str().size();
 }
 
-size_t ana_network_manager::send( network::connection connection_num , const config& cfg, bool zipped )
+size_t ana_network_manager::send( network::connection connection_num , const config& cfg, bool /*zipped*/ )
 {
     std::cout << "DEBUG: Single send...\n";
     ana::net_id id( connection_num );
 
-    std::stringstream out;
-    config_writer cfg_writer(out, zipped);
-    cfg_writer.write(cfg);
+    std::ostringstream out;
+    compress_config(cfg, out );
 
-    std::set<ana_component*>::iterator it;
+    ana_component_set::iterator it;
 
-    for (it = components_.begin(); it != components_.end(); ++it)
+    it = std::find_if( components_.begin(), components_.end(),
+                    boost::bind(&ana_component::get_id, _1) == id );
+
+    if ( it != components_.end())
     {
-        if ( (*it)->is_server() )
-        {
-            ana_send_handler handler( *it, out.str().size() );
-            (*it)->server()->send_one( id, ana::buffer( out.str() ), &handler, ana::ZERO_COPY);
+        ana_send_handler handler( *it, out.str().size() );
 
-            handler.wait_completion();
-        }
+        if ( (*it)->is_client() )
+            (*it)->client()->send( ana::buffer( out.str() ), &handler, ana::ZERO_COPY);
+        else
+            (*it)->server()->send_all( ana::buffer( out.str() ), &handler, ana::ZERO_COPY);
+        handler.wait_completion();
+
+        if ( handler.error() )
+            return 0;
+        else
+            return out.str().size();
     }
-    return out.str().size();
+    else
+        return 0;
 }
 
 void ana_network_manager::send_all_except(const config& cfg, network::connection connection_num)
@@ -770,60 +791,61 @@ void ana_network_manager::send_all_except(const config& cfg, network::connection
         }
     }
 }
+network::connection ana_network_manager::read_from_ready_buffer( const ana_component_set::iterator& it, config& cfg)
+{
+    read_config( (*it)->wait_for_element(), cfg);
+
+    return (*it)->get_wesnoth_id();
+}
+
+network::connection ana_network_manager::read_from( const ana_component_set::iterator& it,
+                                                    config&             cfg,
+                                                    size_t              timeout_ms)
+{
+    if (  (*it)->new_buffer_ready() )
+        return read_from_ready_buffer( it, cfg );
+    else if (timeout_ms == 0 )
+        return 0;
+    else
+    {
+        ana::client* const client = (*it)->client(); // TODO: server support
+
+        ana_receive_handler handler;
+        client->set_listener_handler( &handler );
+
+        handler.wait_completion( client, timeout_ms );
+
+        client->set_listener_handler( this );
+
+        if ( handler.error() )
+            return 0;
+        else
+        {
+            read_config( handler.buffer(), cfg);
+            return (*it)->get_wesnoth_id();
+        }
+    }
+}
 
 network::connection ana_network_manager::read_from( network::connection connection_num,
-                                                    ana::detail::read_buffer& buffer,
-                                                    size_t timeout_ms)
+                                                    config&             cfg,
+                                                    size_t              timeout_ms)
 {
-    std::set<ana_component*>::iterator it;
+    if ( components_.empty() )
+        throw std::runtime_error("Trying to read but nothing was running.");
+
+    ana_component_set::iterator it;
 
     if ( connection_num == 0 )
     {
-        if ( components_.empty() )
-            throw std::runtime_error("Trying to read but nothing was running.");
-
         if ( components_.size() == 1 )
-        {
-            it = components_.begin();
-
-            if (  (*it)->new_buffer_ready() )
-            {
-                buffer = (*it)->wait_for_element();
-                return (*it)->get_wesnoth_id();
-            }
-            else if (timeout_ms == 0 )
-                return 0;
-            else
-            {
-                ana::client* const client = (*it)->client();
-
-                ana_receive_handler handler;
-                client->set_listener_handler( &handler );
-
-                handler.wait_completion( client, timeout_ms );
-
-                client->set_listener_handler( this );
-
-                if ( handler.error() )
-                    return 0;
-                else
-                {
-                    buffer = handler.buffer();
-                    return (*it)->get_wesnoth_id();
-                }
-            }
-        }
+            return read_from( components_.begin(), cfg, timeout_ms );
         else
         {
             //Check first if there is an available buffer
             for (it = components_.begin(); it != components_.end(); ++it)
-            {
                 if (  (*it)->new_buffer_ready() )
-                {
-                    buffer = (*it)->wait_for_element();
-                    return (*it)->get_wesnoth_id();
-                }
-            }
+                    return read_from_ready_buffer( it, cfg );
 
             // If no timeout was requested, return
             if (timeout_ms == 0 )
@@ -846,21 +868,17 @@ network::connection ana_network_manager::read_from( network::connection connecti
             {
                 // For concurrency reasons, this checks if the old handler was used before the wait operation
                 for (it = components_.begin(); it != components_.end(); ++it)
-                {
                     if (  (*it)->new_buffer_ready() )
-                    {
-                        buffer = (*it)->wait_for_element();
-                        return (*it)->get_wesnoth_id();
-                    }
-                }
+                        return read_from_ready_buffer( it, cfg );
+
+                // So nothing was read:
                 return 0;
             }
             else
             {
-                buffer = handler.buffer();
+                read_config( handler.buffer(), cfg);
                 return handler.get_wesnoth_id();
             }
-//             throw std::runtime_error("Global Buffer Queue here?");
         }
     }
     else
@@ -874,10 +892,7 @@ network::connection ana_network_manager::read_from( network::connection connecti
                         boost::bind(&ana_component::get_id, _1) == id );
 
         if ( it != components_.end())
-        {
-            buffer = (*it)->wait_for_element();
-            return (*it)->get_wesnoth_id();
-        }
+            return read_from(it, cfg, timeout_ms);
         else
             throw std::runtime_error("Trying a network read from an invalid component id.");
     }

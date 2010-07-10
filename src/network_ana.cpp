@@ -274,23 +274,13 @@ namespace network {
     {
         // comment next debug msg: too much output
 //         std::cout << "DEBUG: Trying to read from connection in " << timeout << " milliseconds.\n";
-        ana::detail::read_buffer buffer;
+        network::connection read_id = ana_manager.read_from( connection_num, cfg, timeout );
 
-        network::connection read_id = ana_manager.read_from( connection_num, buffer, timeout );
-
-        if ( buffer == NULL || read_id == 0) // check timeout and return 0, or throw if error occured
+        if ( read_id == 0 ) // TODO: check timeout and return 0, or throw if error occured
             return 0;
         else
         {
-            std::cout << "DEBUG: Read a buffer of size " << buffer->size() << "\n";
-
-            std::istringstream input( buffer->string() );
-
-            read_gz(cfg, input);
-
             std::cout << cfg;
-
-            cfg.debug();
 
             if (cfg.empty())
                 std::cout << "Empty buffer.\n";
