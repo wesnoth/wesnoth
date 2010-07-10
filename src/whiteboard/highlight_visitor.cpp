@@ -146,10 +146,14 @@ action_ptr highlight_visitor::get_execute_target()
 }
 action_ptr highlight_visitor::get_delete_target()
 {
-	action_ptr action;
+	action_ptr action = action_ptr();
 	if (owner_unit_)
 	{
-		action = *side_actions_->find_last_action_of(*owner_unit_);
+		side_actions::iterator it = side_actions_->find_last_action_of(*owner_unit_);
+		if (it != side_actions_->end())
+		{
+			action = *it;
+		}
 	}
 	return action;
 }
