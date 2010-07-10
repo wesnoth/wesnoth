@@ -133,12 +133,12 @@ void manager::on_unit_select(unit& unit)
 		return;
 
 	erase_temp_move();
-
+	selected_unit_ = NULL;
 	if (unit.side() == resources::controller->current_side())
 	{
-			selected_unit_ = &unit;
+		selected_unit_ = &unit;
 	}
-	DBG_WB << "Selected unit " << selected_unit_->name() << " [" << selected_unit_->id() << "]\n";
+	LOG_WB << "Selected unit " << selected_unit_->name() << " [" << selected_unit_->id() << "]\n";
 }
 
 void manager::on_unit_deselect()
@@ -148,7 +148,7 @@ void manager::on_unit_deselect()
 
 	if (selected_unit_)
 	{
-		DBG_WB << "Deselecting unit " << selected_unit_->name() << " [" << selected_unit_->id() << "]\n";
+		LOG_WB << "Deselecting unit " << selected_unit_->name() << " [" << selected_unit_->id() << "]\n";
 		erase_temp_move();
 		selected_unit_ = NULL;
 	}
@@ -166,8 +166,6 @@ void manager::create_temp_move(const pathfind::marked_route &route)
 		erase_temp_move();
 		return;
 	}
-
-	assert(selected_unit_->side() == resources::controller->current_side());
 
 	//Temporary: Don't draw move arrow if move goes beyond range.
 	bool cancel = false;
@@ -191,6 +189,7 @@ void manager::create_temp_move(const pathfind::marked_route &route)
 	}
 	else
 	{
+		assert(selected_unit_->side() == resources::controller->current_side());
 		route_.reset(new pathfind::marked_route(route));
 		//NOTE: route_.steps.back() = dst, and route_.steps.front() = src
 

@@ -33,10 +33,10 @@
 #include "unit_display.hpp"
 
 
-std::ostream &operator<<(std::ostream &s, wb::move_const_ptr move)
+std::ostream &operator<<(std::ostream &s, wb::move const& move)
 {
-	s << "Move for unit " << move->get_unit().name() << " [" << move->get_unit().underlying_id() << "] "
-		<< "from (" << move->get_source_hex() << ") to (" << move->get_dest_hex() << ")";
+	s << "Move for unit " << move.get_unit().name() << " [" << move.get_unit().underlying_id() << "] "
+		<< "from (" << move.get_source_hex() << ") to (" << move.get_dest_hex() << ")";
 	return s;
 }
 
@@ -100,6 +100,8 @@ bool move::execute()
 
 	if (source_hex_ == dest_hex_)
 		return true; //zero-hex move, probably used by attack subclass
+
+	LOG_WB << "Executin: " << *this << "\n";
 
 	bool move_finished_completely = false;
 

@@ -55,6 +55,6 @@ private:
 } // end namespace wb
 
 /** Dumps an attack on a stream, for debug purposes. */
-std::ostream &operator<<(std::ostream &s, wb::attack_const_ptr attack);
+std::ostream &operator<<(std::ostream &s, wb::attack const& attack);
 
 #endif /* ATTACK_HPP_ */

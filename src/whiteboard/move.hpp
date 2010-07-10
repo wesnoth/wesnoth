@@ -91,6 +91,6 @@ protected:
 
 
 /** Dumps an move on a stream, for debug purposes. */
-std::ostream &operator<<(std::ostream &s, wb::move_const_ptr move);
+std::ostream &operator<<(std::ostream &s, wb::move const& move);
 
 #endif /* WB_MOVE_HPP_ */

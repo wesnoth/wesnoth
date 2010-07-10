@@ -361,7 +361,7 @@ void game_display::draw_hex(const map_location& loc)
 		resources::whiteboard->draw_hex(loc);
 	}
 
-	if (!resources::whiteboard->is_active())
+	if (!(resources::whiteboard->is_active() && resources::whiteboard->has_temp_move()))
 	{
 		// Footsteps indicating a movement path
 		const std::vector<surface>& footstepImages = footsteps_images(loc);

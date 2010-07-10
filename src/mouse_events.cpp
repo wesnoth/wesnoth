@@ -232,7 +232,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 
 				if(!browse) {
 					gui().set_route(&current_route_);
-					if (resources::whiteboard->is_active()) {
+					if (resources::whiteboard->is_active() && selected_unit->side() == side_num_) {
 						resources::whiteboard->create_temp_move(current_route_);
 					}
 				}
@@ -454,20 +454,20 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 
 	unit_map::iterator clicked_u = find_unit(hex);
 
-	resources::whiteboard->set_real_unit_map();
-
-
 	const map_location src = selected_hex_;
 	pathfind::paths orig_paths = current_paths_;
 	const map_location& attack_from = current_unit_attacks_from(hex);
 
+	resources::whiteboard->set_real_unit_map();
+
 	//see if we're trying to do a attack or move-and-attack
 	if(!browse && !commands_disabled && attack_from.valid()) {
 		if (resources::whiteboard->is_active()) {
-
-			resources::whiteboard->save_temp_attack(clicked_u->get_location());
+			if (resources::whiteboard->has_temp_move())
+			{
+				resources::whiteboard->save_temp_attack(clicked_u->get_location());
+			}
 			return false;
-
 		} else {
 			if (attack_from == selected_hex_) { //no move needed
 				int choice = show_attack_dialog(attack_from, clicked_u->get_location());
