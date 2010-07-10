@@ -92,7 +92,30 @@ class TagNode:
         return s
 
     def get_all(self, **kw):
+        """
+        This gets all child tags or child attributes of the tag.
+        For example:
         
+        [unit]
+            name=A
+            name=B
+            [attack]
+            [/attack]
+            [attack]
+            [/attack]
+        [/unit]
+        
+        unit.get_all(att = "name")
+        will return two nodes for "name=A" and "name=B"
+        
+        unit.get_all(tag = "attack")
+        will return two nodes for the two [attack] tags.
+
+        unit.get_all()
+        will return 4 nodes for all 4 sub-elements.
+        
+        If no elements are found an empty list is returned.
+        """
         if len(kw) == 1 and "tag" in kw:
             return self.speedy_tags.get(kw["tag"], [])
         
@@ -109,11 +132,22 @@ class TagNode:
             if ok:
                 r.append(sub)
         return r
-    
+
     def get_text_val(self, name, default = None, translation = None):
+        """
+        Returns the value of the specified attribute. If the attribute
+        is given multiple times, the last value is returned. If the
+        attribute is not found, the default parameter is returned.
+        
+        If a translation is specified, it should be a function which
+        when passed a unicode string and text-domain returns a
+        translation of the unicode string. The easiest way is to pass
+        it to gettext.translation if you have the binary message
+        catalogues loaded.
+        """
         x = self.get_all(att = name)
         if not x: return default
-        return x[0].get_text(translation)
+        return x[-1].get_text(translation)
     
     def append(self, node):
         self.data.append(node)
@@ -473,12 +507,12 @@ if __name__ == "__main__":
         p = Parser(options.wesnoth)
         
         only = None
-        def test(input, expected, note):
+        def test2(input, expected, note, function):
             if only and note != only: return
             input = input.strip()
             expected = expected.strip()
             p.parse_text(input)
-            output = p.root.debug().strip()
+            output = function(p).strip()
             if output != expected:
                 print("__________")
                 print("FAILED " + note)
@@ -491,6 +525,9 @@ if __name__ == "__main__":
                 print("__________")
             else:
                 print("PASSED " + note)
+        
+        def test(input, expected, note):
+            test2(input, expected, note, lambda p: p.root.debug())
         
         test(
 """
@@ -583,6 +620,19 @@ code = <<
     code='\\n    "quotes" here\\n    ""blah""\\n'
 [/test]
 """, "quoted2")
+
+        test2(
+"""
+[test]
+    a=1
+    b=2
+    a=3
+    b=4
+[/test]
+""", "3, 4", "multiatt",
+    lambda p:
+        p.get_all(tag = "test")[0].get_text_val("a") + ", " +
+        p.get_all(tag = "test")[0].get_text_val("b"))
         
         sys.exit(0)
 
