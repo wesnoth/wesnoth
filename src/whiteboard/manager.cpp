@@ -71,6 +71,7 @@ void manager::set_planned_unit_map()
 {
 	if (active_ && !modifying_actions_)
 	{
+		modifying_actions_ = true;
 		//TODO: enable back this assert, after modifying the mouse code that triggers it constantly
 		//assert(!modifying_actions_);
 		if (!planned_unit_map_active_)
@@ -84,6 +85,7 @@ void manager::set_planned_unit_map()
 		{
 			WRN_WB << "Attempt to set planned unit map when it was already set.\n";
 		}
+		modifying_actions_ = false;
 	}
 }
 
@@ -91,8 +93,7 @@ void manager::set_real_unit_map()
 {
 	if (active_ && !modifying_actions_)
 	{
-		//TODO: enable back this assert, after modifying the mouse code that triggers it constantly
-		//assert(!modifying_actions_);
+		modifying_actions_ = true;
 		if (planned_unit_map_active_)
 		{
 			DBG_WB << "Restoring regular unit map.\n";
@@ -103,6 +104,7 @@ void manager::set_real_unit_map()
 		{
 			WRN_WB << "Attempt to disable the planned unit map, when it was already disabled.\n";
 		}
+		modifying_actions_ = false;
 	}
 }
 
