@@ -65,7 +65,6 @@ public: //constants
 	virtual void draw_hex(const map_location& hex);
 
 	virtual bool is_numbering_hex(const map_location& hex) const;
-	virtual bool is_related_to(const unit& unit) const;
 
 	virtual void set_valid(bool valid);
 	virtual bool is_valid() { return valid_; }

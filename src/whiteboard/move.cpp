@@ -192,12 +192,6 @@ bool move::is_numbering_hex(const map_location& hex) const
 	return hex == dest_hex_;
 }
 
-bool move::is_related_to(const unit& unit) const
-{
-	bool is_related = &unit_ == &unit;
-	return is_related;
-}
-
 void move::set_valid(bool valid)
 {
 	valid_ = valid;

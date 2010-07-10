@@ -51,11 +51,6 @@ public:
 	virtual void draw_hex(const map_location& hex) = 0;
 
 	/**
-	 * Indicates whether this actions targets the specified unit.
-	 */
-	virtual bool is_related_to(const unit& unit) const = 0;
-
-	/**
 	 * Answers whether the specified hex is the main target of action for this action.
 	 */
 	virtual bool is_numbering_hex(const map_location& hex) const = 0;
