@@ -85,6 +85,22 @@ public class WorkspaceUtils
 		return getSelectedStructuredSelection(WorkspaceUtils.getWorkbenchWindow());
 	}
 
+	public static IResource getSelectedResource()
+	{
+		IResource res = getSelectedFile();
+		if (res != null)
+			return res;
+
+		res = getSelectedFolder();
+		if (res != null)
+			return res;
+
+		res = getSelectedProject();
+		if (res != null)
+			return res;
+		return null;
+	}
+
 	/**
 	 * Returns the first WorkbenchWindow available. This is not always the same
 	 * with ActiveWorkbecnWindow

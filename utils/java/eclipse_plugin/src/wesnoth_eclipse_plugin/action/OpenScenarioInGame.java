@@ -19,12 +19,12 @@ import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
 
 public class OpenScenarioInGame implements IObjectActionDelegate
 {
-	public OpenScenarioInGame()
-	{
+	public OpenScenarioInGame() {
 	}
 
 	@Override
-	public void setActivePart(IAction action, IWorkbenchPart targetPart){
+	public void setActivePart(IAction action, IWorkbenchPart targetPart)
+	{
 	}
 
 	@Override
@@ -35,7 +35,7 @@ public class OpenScenarioInGame implements IObjectActionDelegate
 				WorkspaceUtils.getSelectedFolder() == null)
 		{
 			GUIUtils.showMessageBox(WorkspaceUtils.getWorkbenchWindow(),
-			"Please select a campaign or a resource inside the campaign project before.");
+					"Please select a campaign or a resource inside the campaign project before.");
 			return;
 		}
 
@@ -50,7 +50,8 @@ public class OpenScenarioInGame implements IObjectActionDelegate
 			return;
 		}
 
-		try{
+		try
+		{
 			String campaignId = ProjectUtils.getCampaignID();
 			String scenarioId = ProjectUtils.getScenarioID(WorkspaceUtils.getPathRelativeToUserDir(selectedFile));
 
@@ -69,19 +70,20 @@ public class OpenScenarioInGame implements IObjectActionDelegate
 			String workingDir = Preferences.getString(Constants.P_WESNOTH_WORKING_DIR);
 
 			if (workingDir.isEmpty())
-				workingDir = wesnothExec.substring(0,wesnothExec.lastIndexOf(new File(wesnothExec).getName()));
+				workingDir = wesnothExec.substring(0, wesnothExec.lastIndexOf(new File(wesnothExec).getName()));
 
 			// we need to add the working dir (backward compatibility)
 			args.add(workingDir);
 			System.out.printf("Launching args: %s \n", args);
-			ExternalToolInvoker.launchTool(wesnothExec,	args, true, false,true, WorkspaceUtils.getWorkbenchWindow());
-		}
-		catch (Exception e) {
+			ExternalToolInvoker.launchTool(wesnothExec, args, Constants.TI_SHOW_OUTPUT | Constants.TI_SHOW_OUTPUT_USER, true);
+		} catch (Exception e)
+		{
 			e.printStackTrace();
 		}
 	}
 
 	@Override
-	public void selectionChanged(IAction action, ISelection selection){
+	public void selectionChanged(IAction action, ISelection selection)
+	{
 	}
 }

@@ -57,13 +57,13 @@
             </groupMarker>
          </menu>
          <action
-               class="wesnoth_eclipse_plugin.action.RunWMLScopeOnSelection"
+               class="wesnoth_eclipse_plugin.action.RunWMLIndentOnSelection"
                id="action.proj.wmlindent"
                label="Run &quot;wmlindent&quot; on the project this file"
                menubarPath="plugin.wmltoolsProjMenu/wmltoolsProjMenuMarker">
          </action>
          <action
-               class="wesnoth_eclipse_plugin.action.RunWMLIndentOnSelection"
+               class="wesnoth_eclipse_plugin.action.RunWMLScopeOnSelection"
                id="action.proj.wmlscope"
                label="Run &quot;wmlscope&quot; on the project"
                menubarPath="plugin.wmltoolsProjMenu/wmltoolsProjMenuMarker">

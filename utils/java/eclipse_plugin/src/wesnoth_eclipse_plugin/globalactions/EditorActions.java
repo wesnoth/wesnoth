@@ -30,8 +30,8 @@ public class EditorActions
 		}
 
 		System.out.printf("Running: [%s] with args: %s\n", editorPath, getLaunchEditorArguments(mapName, workingDir));
-		ExternalToolInvoker.launchTool(editorPath, getLaunchEditorArguments(mapName, workingDir), true, false, true,
-									WorkspaceUtils.getWorkbenchWindow());
+		ExternalToolInvoker.launchTool(editorPath, getLaunchEditorArguments(mapName, workingDir),
+				Constants.TI_SHOW_OUTPUT_USER | Constants.TI_SHOW_OUTPUT, true);
 	}
 
 	public static List<String> getLaunchEditorArguments(String mapName, String workingDir)

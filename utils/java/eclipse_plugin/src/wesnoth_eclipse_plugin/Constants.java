@@ -18,4 +18,9 @@ public class Constants
 	public static final int		WIZ_MaxGroupsOnPage		= 4;
 	public static final int		WIZ_MaxWizardPageHeight	= 220;
 
+	/** Tool invoker constants **/
+
+	public static final int		TI_SHOW_OUTPUT			= 1;
+	public static final int		TI_SHOW_OUTPUT_USER		= 2;
+	//public static final byte	SHOW_OUTPUT			= 4;
 }

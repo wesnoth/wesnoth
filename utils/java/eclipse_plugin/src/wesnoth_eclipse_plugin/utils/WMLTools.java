@@ -22,38 +22,6 @@ import wesnoth_eclipse_plugin.preferences.Preferences;
 public class WMLTools
 {
 	/**
-	 * Runs "wmllint" on the specified resource (directory/file)
-	 * 
-	 * @param resourcePath the full path of the target where "wmllint" will be runned on
-	 * @param writeToConsole true to write the output of "wmllint" in user's console
-	 * @param dryrun true to run "wmllint" in dry mode - i.e. no changes in the config file.
-	 * @param useThread whether the tool should be runned in a new thread or not
-	 */
-	public static String runWMLLint(String resourcePath, boolean dryrun, boolean writeToConsole, boolean useThread)
-	{
-		if (!checkPrerequisites(resourcePath, "wmllint"))
-			return null;
-
-		File wmllintFile = new File(Preferences.getString(Constants.P_WESNOTH_WMLTOOLS_DIR) + "wmllint");
-
-		List<String> arguments = new ArrayList<String>();
-
-		arguments.add(wmllintFile.getAbsolutePath());
-		if (dryrun)
-			arguments.add("--dryrun");
-		arguments.add("--verbose");
-		//arguments.add("-v");
-		//arguments.add("-v");
-		arguments.add("--nospellcheck");
-		// add default core directory
-		arguments.add(Preferences.getString(Constants.P_WESNOTH_WORKING_DIR) +
-				Path.SEPARATOR + "data/core");
-		arguments.add(resourcePath);
-
-		return runPythonScript(arguments, null, useThread, writeToConsole, "Wmllint result: ");
-	}
-
-	/**
 	 * Runs "wmlindent" on the specified resource (directory/file)
 	 * 
 	 * @param resourcePath the full path of the target where "wmlindent" will be runned on
@@ -86,6 +54,38 @@ public class WMLTools
 	}
 
 	/**
+	 * Runs "wmllint" on the specified resource (directory/file)
+	 * 
+	 * @param resourcePath the full path of the target where "wmllint" will be runned on
+	 * @param writeToConsole true to write the output of "wmllint" in user's console
+	 * @param dryrun true to run "wmllint" in dry mode - i.e. no changes in the config file.
+	 * @param useThread whether the tool should be runned in a new thread or not
+	 */
+	public static String runWMLLint(String resourcePath, boolean dryrun, boolean writeToConsole, boolean useThread)
+	{
+		if (!checkPrerequisites(resourcePath, "wmllint"))
+			return null;
+
+		File wmllintFile = new File(Preferences.getString(Constants.P_WESNOTH_WMLTOOLS_DIR) + "wmllint");
+
+		List<String> arguments = new ArrayList<String>();
+
+		arguments.add(wmllintFile.getAbsolutePath());
+		if (dryrun)
+			arguments.add("--dryrun");
+		arguments.add("--verbose");
+		//arguments.add("-v");
+		//arguments.add("-v");
+		arguments.add("--nospellcheck");
+		// add default core directory
+		arguments.add(Preferences.getString(Constants.P_WESNOTH_WORKING_DIR) +
+				Path.SEPARATOR + "data/core");
+		arguments.add(resourcePath);
+
+		return runPythonScript(arguments, null, useThread, writeToConsole, "Wmllint result: ");
+	}
+
+	/**
 	 * Runs "wmlscope" on the specified resource (directory/file)
 	 * 
 	 * @param resourcePath the full path of the target where "wmlindent" will be runned on
@@ -93,7 +93,7 @@ public class WMLTools
 	 * @param useThread whether the tool should be runned in a new thread or not
 	 * @return
 	 */
-	public static String runWMLScope(String resourcePath, boolean writeToConsole, boolean useThread)
+	public static ExternalToolInvoker runWMLScope(String resourcePath, boolean writeToConsole, boolean useThread)
 	{
 		if (!checkPrerequisites(resourcePath, "wmlscope"))
 			return null;
@@ -104,11 +104,14 @@ public class WMLTools
 
 		arguments.add(wmlscopeFile.getAbsolutePath());
 		// add default core directory
+		arguments.add("-w");
+		arguments.add("2");
 		arguments.add(Preferences.getString(Constants.P_WESNOTH_WORKING_DIR) +
 				Path.SEPARATOR + "data/core");
 		arguments.add(resourcePath);
 
-		return runPythonScript(arguments, null, useThread, writeToConsole, "Wmlscope result: ");
+		return ExternalToolInvoker.launchTool("python", arguments, Constants.TI_SHOW_OUTPUT | Constants.TI_SHOW_OUTPUT_USER,
+					useThread);
 	}
 
 	/**
@@ -170,7 +173,7 @@ public class WMLTools
 			if (writeToConsole)
 			{
 				MessageConsole console = new MessageConsole(consoleTitle, null);
-				console.activate();
+				//console.activate();
 				ConsolePlugin.getDefault().getConsoleManager().addConsoles(new IConsole[] { console });
 				stream = console.newMessageStream();
 			}

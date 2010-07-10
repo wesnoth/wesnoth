@@ -3,8 +3,7 @@
  */
 package wesnoth_eclipse_plugin.action;
 
-import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.WorkspaceJob;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
@@ -13,8 +12,8 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
-import org.eclipse.ui.progress.WorkbenchJob;
 
+import wesnoth_eclipse_plugin.builder.ExternalToolInvoker;
 import wesnoth_eclipse_plugin.utils.WMLTools;
 import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
 
@@ -32,37 +31,31 @@ public class RunWMLScopeOnSelection implements IObjectActionDelegate
 	public void run(IAction action)
 	{
 
-		WorkbenchJob job = new WorkbenchJob("Running WMLScope") {
+		IEditorReference[] files =
+				WorkspaceUtils.getWorkbenchWindow().getPages()[0].getEditorReferences();
+
+		for (IEditorReference file : files)
+		{
+			if (file.isDirty())
+				file.getEditor(false).doSave(null);
+		}
+
+		final String path = WorkspaceUtils.getSelectedResource().getLocation().toOSString();
+		WorkspaceJob job = new WorkspaceJob("Running WMLScope") {
+			private ExternalToolInvoker	tool	= WMLTools.runWMLScope(path, true, true);
+
 			@Override
-			public IStatus runInUIThread(IProgressMonitor monitor)
+			protected void canceling()
 			{
-				final IEditorReference[] files =
-						WorkspaceUtils.getWorkbenchWindow().getPages()[0].getEditorReferences();
+				tool.kill();
+			}
 
-				monitor.beginTask("wmlscope", files.length * 5 + 50);
-				monitor.subTask("saving files...");
-				for (IEditorReference file : files)
-				{
-					monitor.worked(5);
-					if (file.isDirty())
-						file.getEditor(false).doSave(null);
-				}
-
-				IFile selFile = WorkspaceUtils.getSelectedFile();
-				monitor.subTask("wmlscope");
-				if (selFile != null)
-				{
-					WMLTools.runWMLScope(selFile.getLocation().toOSString(), false, true);
-				}
-				else
-				// project selection
-				{
-					// run wmlscope on project
-					IProject project = WorkspaceUtils.getSelectedProject();
-					WMLTools.runWMLScope(project.getLocation().toOSString(), true, true);
-
-				}
-				monitor.worked(50);
+			@Override
+			public IStatus runInWorkspace(final IProgressMonitor monitor)
+			{
+				monitor.beginTask("wmlscope is running...", 50);
+				monitor.worked(10);
+				tool.waitForTool();
 				monitor.done();
 				return Status.OK_STATUS;
 			}

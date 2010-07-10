@@ -57,7 +57,7 @@ public class PreprocessorActions
 			System.out.printf("preprocessing : %s\n", arguments);
 			wesnoth.run();
 			if (waitForIt)
-				wesnoth.waitFor();
+				wesnoth.waitForTool();
 			return true;
 		}
 		catch (Exception e) {
