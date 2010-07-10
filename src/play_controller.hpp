@@ -133,12 +133,14 @@ public:
 
 	config to_config() const;
 
-	bool is_skipping_replay() const { return skip_replay_;};
+	bool is_skipping_replay() const { return skip_replay_;}
+
+	events::mouse_handler& get_mouse_handler_base();
+
 protected:
 	void slice_before_scroll();
 	void slice_end();
 
-	events::mouse_handler& get_mouse_handler_base();
 	game_display& get_display();
 	bool have_keyboard_focus();
 	void process_keydown_event(const SDL_Event& event);

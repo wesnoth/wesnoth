@@ -702,7 +702,7 @@ int mouse_handler::fill_weapon_choices(std::vector<battle_context>& bc_vector, u
 	for (unsigned int i = 0; i < attacker->attacks().size(); i++) {
 		// skip weapons with attack_weight=0
 		if (attacker->attacks()[i].attack_weight() > 0) {
-			battle_context bc(units_, attacker->get_location(), defender->get_location(), i);
+			battle_context bc(*resources::units, attacker->get_location(), defender->get_location(), i);
 			bc_vector.push_back(bc);
 			if (bc.better_attack(bc_vector[best], 0.5)) {
 				// as some weapons can be hidden, i is not a valid index into the resulting vector
@@ -730,7 +730,7 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 				, weapons
 				, best_weapon);
 
-		dlg.show(gui_->video());
+		dlg.show(resources::screen->video());
 
 		if(dlg.get_retval() == gui2::twindow::OK) {
 			return dlg.get_selected_weapon();

@@ -63,6 +63,13 @@ public:
 	void add_waypoint(const map_location& loc);
 
 	pathfind::marked_route get_route(unit_map::const_iterator un, map_location go_to, const std::vector<map_location>& waypoints, team &team);
+
+	// show the attack dialog and return the choice made
+	// which can be invalid if 'cancel' was used
+	int show_attack_dialog(const map_location& attacker_loc, const map_location& defender_loc);
+	// wrapper to catch bad_alloc so this should be called
+	void attack_enemy(const map_location& attacker_loc, const map_location& defender_loc, int choice);
+
 protected:
 	/**
 	 * Due to the way this class is constructed we can assume that the
@@ -89,11 +96,6 @@ protected:
 	// fill weapon choices into bc_vector
 	// return the best weapon choice
 	int fill_weapon_choices(std::vector<battle_context>& bc_vector, unit_map::iterator attacker, unit_map::iterator defender);
-	// show the attack dialog and return the choice made
-	// which can be invalid if 'cancel' was used
-	int show_attack_dialog(const map_location& attacker_loc, const map_location& defender_loc);
-	// wrapper to catch bad_alloc so this should be called
-	void attack_enemy(const map_location& attacker_loc, const map_location& defender_loc, int choice);
 	// the real function but can throw bad_alloc
 	// choice is the attack chosen in the attack dialog
 	void attack_enemy_(const map_location attacker_loc, const map_location defender_loc, int choice);
