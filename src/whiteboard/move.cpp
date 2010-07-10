@@ -76,6 +76,8 @@ move::move(unit& subject, const map_location& source_hex, const map_location& ta
 
 move::~move()
 {
+	//reminder: here we rely on the ~arrow destructor to invalidate
+	//its whole path.
 }
 
 void move::accept(visitor& v)

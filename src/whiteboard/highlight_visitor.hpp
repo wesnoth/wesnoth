@@ -39,7 +39,6 @@ public:
 	highlight_visitor(const unit_map& unit_map, side_actions_ptr side_actions);
 	virtual ~highlight_visitor();
 
-	void set_selected_unit(unit& unit);
 	void set_mouseover_hex(const map_location& hex);
 	const map_location& get_mouseover_hex() const {return mouseover_hex_; }
 
@@ -75,7 +74,6 @@ private:
 	const unit_map& unit_map_;
 	side_actions_ptr side_actions_;
 
-	unit* selected_unit_;
 	map_location mouseover_hex_;
 	unit* owner_unit_;
 

@@ -40,7 +40,8 @@ attack::~attack()
 {
 	if(resources::screen)
 	{
-		//invalidate target hex so attack indicator is properly cleared
+		//invalidate dest and target hex so attack indicator is properly cleared
+		resources::screen->invalidate(dest_hex_);
 		resources::screen->invalidate(target_hex_);
 	}
 }

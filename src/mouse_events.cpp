@@ -466,6 +466,7 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 		if (resources::whiteboard->is_active()) {
 
 			resources::whiteboard->save_temp_attack(clicked_u->get_location());
+			return false;
 
 		} else {
 			if (attack_from == selected_hex_) { //no move needed

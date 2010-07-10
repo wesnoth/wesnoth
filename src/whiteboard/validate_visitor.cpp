@@ -121,6 +121,7 @@ void validate_visitor::visit_move(move_ptr move)
 void validate_visitor::visit_attack(attack_ptr attack)
 {
 	//invalidate target hex to make sure attack indicators are updated
+	resources::screen->invalidate(attack->dest_hex_);
 	resources::screen->invalidate(attack->target_hex_);
 
 	visit_move(boost::static_pointer_cast<move>(attack));

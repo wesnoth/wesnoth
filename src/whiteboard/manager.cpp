@@ -165,6 +165,7 @@ void manager::create_temp_move(const pathfind::marked_route &route)
 		return;
 	}
 
+	assert(selected_unit_->side() == resources::controller->current_side());
 
 	//Temporary: Don't draw move arrow if move goes beyond range.
 	bool cancel = false;
