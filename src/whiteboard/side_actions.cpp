@@ -56,7 +56,7 @@ void side_actions::draw_hex(const map_location& hex)
 			size_t number = (it - begin()) + 1;
 			std::stringstream number_text;
 			number_text << number;
-			const size_t font_size = 12;
+			const size_t font_size = 15;
 			SDL_Color color; color.r = 255; color.g = 255; color.b = 0; //yellow
 			// position 0,0 in the hex is the upper left corner
 			const double x_in_hex = 0.80; // 0.80 = horizontal coord., close to the right side of the hex
@@ -221,7 +221,8 @@ side_actions::iterator side_actions::remove_action(side_actions::iterator positi
 		ERR_WB << "Modifying action queue while temp modifiers are applied!!!\n";
 	}
 
-	assert((!actions_.empty() && validate_iterator(position)));
+	assert(!actions_.empty());
+	assert(validate_iterator(position));
 	size_t distance = std::distance(begin(), position);
 	if (!actions_.empty() && validate_iterator(position))
 	{
