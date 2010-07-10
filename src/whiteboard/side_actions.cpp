@@ -18,6 +18,7 @@
 
 #include "side_actions.hpp"
 #include "action.hpp"
+#include "attack.hpp"
 #include "manager.hpp"
 #include "move.hpp"
 #include "validate_visitor.hpp"
@@ -113,10 +114,17 @@ side_actions::iterator side_actions::insert_move(unit& subject, const map_locati
 	return insert_action(position, action);
 }
 
-side_actions::iterator side_actions::queue_move(unit& subject, const map_location& source_hex, const map_location& target_hex,
-		arrow_ptr arrow, fake_unit_ptr fake_unit)
+side_actions::iterator side_actions::queue_move(unit& subject, const map_location& source_hex,
+		const map_location& target_hex,	arrow_ptr arrow, fake_unit_ptr fake_unit)
 {
 	action_ptr action(new move(subject, source_hex, target_hex, arrow, fake_unit));
+	return queue_action(action);
+}
+
+side_actions::iterator side_actions::queue_attack(unit& subject, unit& target, const map_location& source_hex,
+		const map_location& dest_hex, arrow_ptr arrow, fake_unit_ptr fake_unit)
+{
+	action_ptr action(new attack(subject, target, source_hex, dest_hex, arrow, fake_unit));
 	return queue_action(action);
 }
 

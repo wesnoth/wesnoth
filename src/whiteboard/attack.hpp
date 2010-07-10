@@ -31,7 +31,8 @@ namespace wb
 class attack: public move
 {
 public:
-	attack(unit& subject, unit& target, const map_location& source_hex, const map_location& dest_hex, arrow_ptr arrow);
+	attack(unit& subject, unit& target, const map_location& source_hex, const map_location& dest_hex,
+			arrow_ptr arrow, fake_unit_ptr fake_unit);
 	virtual ~attack();
 
 	virtual void accept(visitor& v);

@@ -26,8 +26,9 @@
 namespace wb
 {
 
-attack::attack(unit& subject, unit& target, const map_location& source_hex, const map_location& dest_hex, arrow_ptr arrow)
-	: move(subject, source_hex, dest_hex, arrow, fake_unit_ptr())
+attack::attack(unit& subject, unit& target, const map_location& source_hex, const map_location& dest_hex,
+		arrow_ptr arrow, fake_unit_ptr fake_unit)
+	: move(subject, source_hex, dest_hex, arrow, fake_unit)
 	, target_(target)
 {
 

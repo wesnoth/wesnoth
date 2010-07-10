@@ -92,6 +92,13 @@ public:
 			arrow_ptr arrow, fake_unit_ptr fake_unit);
 
 	/**
+	 * Queues an attack or attack-move to be executed last
+	 * @return The queued attack's position
+	 */
+	iterator queue_attack(unit& subject, unit& target, const map_location& source_hex, const map_location& dest_hex,
+			arrow_ptr arrow, fake_unit_ptr fake_unit);
+
+	/**
 	 * Inserts an action at the specified position. The begin() and end() functions might prove useful here.
 	 * @return The inserted action's position.
 	 */

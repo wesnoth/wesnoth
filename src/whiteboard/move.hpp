@@ -55,7 +55,7 @@ public:
 	virtual unit& get_unit() { return unit_; }
 
 	virtual arrow_ptr get_arrow() { return arrow_; }
-	fake_unit_ptr get_fake_unit() { return fake_unit_; }
+	virtual fake_unit_ptr get_fake_unit() { return fake_unit_; }
 
 	/** Applies temporarily the result of this action to the specified unit map. */
 	virtual void apply_temp_modifier(unit_map& unit_map);
