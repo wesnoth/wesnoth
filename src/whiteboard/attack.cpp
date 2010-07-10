@@ -24,6 +24,18 @@
 #include "play_controller.hpp"
 #include "resources.hpp"
 #include "unit.hpp"
+#include "unit_map.hpp"
+
+std::ostream &operator<<(std::ostream &s, wb::attack_const_ptr attack)
+{
+//	s << "Attack for unit " << attack->get_unit().name() << " [" << attack->get_unit().underlying_id() << "] "
+//			<< "moving from (" << attack->get_source_hex() << ") to (" << attack->get_dest_hex() << ") and attacking "
+//			<< attack->get_target_hex();
+
+	s << static_cast<wb::move_const_ptr>(attack) << " and attacking " << attack->get_target_hex();
+
+	return s;
+}
 
 namespace wb
 {
@@ -57,6 +69,8 @@ bool attack::execute()
 
 	if (!valid_)
 		execute_successful = false;
+
+	LOG_WB << "Executing: " << this << "\n";
 
 	if (execute_successful && arrow_->get_path().size() >= 2)
 	{
@@ -113,8 +127,6 @@ void attack::draw_hex(const map_location& hex)
 					image::get_image("misc/attack-indicator-dst-" + direction_text + ".png", image::UNMASKED)));
 		}
 	}
-
 }
-
 
 } // end namespace wb

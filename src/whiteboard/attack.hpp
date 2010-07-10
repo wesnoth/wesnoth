@@ -45,11 +45,16 @@ public:
 	/** Gets called by display when drawing a hex, to allow actions to draw to the screen. */
 	virtual void draw_hex(const map_location& hex);
 
+	map_location const& get_target_hex() const {return target_hex_; }
+
 private:
 		///the target of the attack
 		map_location target_hex_;
 };
 
-}
+} // end namespace wb
+
+/** Dumps an attack on a stream, for debug purposes. */
+std::ostream &operator<<(std::ostream &s, wb::attack_const_ptr attack);
 
 #endif /* ATTACK_HPP_ */

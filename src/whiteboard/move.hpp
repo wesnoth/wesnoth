@@ -25,6 +25,8 @@
 
 #include <boost/enable_shared_from_this.hpp>
 
+#include <ostream>
+
 namespace wb {
 
 /**
@@ -52,9 +54,13 @@ public: //constants
 	virtual bool execute();
 
 	virtual unit& get_unit() { return unit_; }
+	virtual unit const& get_unit() const { return unit_; }
+
 
 	virtual arrow_ptr get_arrow() { return arrow_; }
 	virtual fake_unit_ptr get_fake_unit() { return fake_unit_; }
+	virtual map_location const& get_source_hex() const { return source_hex_; }
+	virtual map_location const& get_dest_hex() const { return dest_hex_; }
 
 	/** Applies temporarily the result of this action to the specified unit map. */
 	virtual void apply_temp_modifier(unit_map& unit_map);
@@ -82,5 +88,9 @@ protected:
 };
 
 } // end namespace wb
+
+
+/** Dumps an move on a stream, for debug purposes. */
+std::ostream &operator<<(std::ostream &s, wb::move_const_ptr move);
 
 #endif /* WB_MOVE_HPP_ */

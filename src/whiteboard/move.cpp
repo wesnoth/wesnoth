@@ -32,6 +32,14 @@
 #include "unit.hpp"
 #include "unit_display.hpp"
 
+
+std::ostream &operator<<(std::ostream &s, wb::move_const_ptr move)
+{
+	s << "Move for unit " << move->get_unit().name() << " [" << move->get_unit().underlying_id() << "] "
+		<< "from (" << move->get_source_hex() << ") to (" << move->get_dest_hex() << ")";
+	return s;
+}
+
 namespace wb {
 
 const double move::ALPHA_HIGHLIGHT = 1.0;
@@ -157,8 +165,8 @@ void move::apply_temp_modifier(unit_map& unit_map)
 
 	// Move the unit
 	assert(unit_.get_location() == source_hex_);
-	DBG_WB << "Temporarily moving unit " << unit_.name() << " [" << unit_.underlying_id() << "] "
-			<< " from (" << source_hex_ << ") to (" << dest_hex_ <<")\n";
+	DBG_WB << "Temporarily moving unit " << unit_.name() << " [" << unit_.underlying_id()
+			<< "] from (" << source_hex_ << ") to (" << dest_hex_ <<")\n";
 	unit_map.move(source_hex_, dest_hex_);
 	assert(unit_.get_location() == dest_hex_);
 

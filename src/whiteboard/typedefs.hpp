@@ -48,13 +48,15 @@ typedef boost::shared_ptr<arrow> arrow_ptr;
 typedef boost::shared_ptr<unit> fake_unit_ptr;
 
 typedef boost::shared_ptr<action> action_ptr;
+typedef boost::shared_ptr<action const> action_const_ptr;
 typedef boost::weak_ptr<action> weak_action_ptr;
 typedef std::deque<action_ptr> action_queue;
 typedef boost::shared_ptr<side_actions> side_actions_ptr;
 
 typedef boost::shared_ptr<move> move_ptr;
+typedef boost::shared_ptr<move const> move_const_ptr;
 typedef boost::shared_ptr<attack> attack_ptr;
-
+typedef boost::shared_ptr<attack const> attack_const_ptr;
 
 } // end namespace wb
 
