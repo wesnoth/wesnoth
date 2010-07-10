@@ -285,6 +285,7 @@ wesnoth_source = \
 	variable.cpp \
 	variant.cpp \
 	whiteboard/action.cpp \
+	whiteboard/attack.cpp \
 	whiteboard/move.cpp \
 	whiteboard/manager.cpp \
 	whiteboard/highlight_visitor.cpp \

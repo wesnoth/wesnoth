@@ -481,6 +481,7 @@ set(wesnoth-main_SRC
     variable.cpp
     variant.cpp
     whiteboard/action.cpp
+    whiteboard/attack.cpp
     whiteboard/manager.cpp
     whiteboard/move.cpp
     whiteboard/highlight_visitor.cpp

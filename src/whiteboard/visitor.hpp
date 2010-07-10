@@ -33,6 +33,7 @@ public:
 	virtual ~visitor();
 
 	virtual void visit_move(move_ptr move) = 0;
+	virtual void visit_attack(attack_ptr attack) = 0;
 };
 
 }

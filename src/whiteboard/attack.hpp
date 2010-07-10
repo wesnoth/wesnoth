@@ -13,29 +13,34 @@
  */
 
 /**
- * @file validate_visitor.hpp
+ * @file attack.hpp
  */
 
-#ifndef WB_VALIDATE_VISITOR_HPP_
-#define WB_VALIDATE_VISITOR_HPP_
+#ifndef ATTACK_HPP_
+#define ATTACK_HPP_
 
-#include "mapbuilder_visitor.hpp"
+#include "move.hpp"
+
+#include "typedefs.hpp"
+
+#include <boost/enable_shared_from_this.hpp>
 
 namespace wb
 {
 
-class validate_visitor: public mapbuilder_visitor
+class attack: public move
 {
 public:
-	validate_visitor(unit_map& unit_map, side_actions_ptr side_actions);
-	virtual ~validate_visitor();
+	attack(unit& subject, unit& target, const map_location& source_hex, const map_location& dest_hex, arrow_ptr arrow);
+	virtual ~attack();
 
-	void validate_actions();
+	virtual void accept(visitor& v);
 
-	virtual void visit_move(move_ptr move);
-	virtual void visit_attack(attack_ptr attack) { (void) attack; } //TODO: implement
+private:
+		///the target of the attack
+		unit& target_;
 };
 
 }
 
-#endif /* WB_VALIDATE_VISITOR_HPP_ */
+#endif /* ATTACK_HPP_ */

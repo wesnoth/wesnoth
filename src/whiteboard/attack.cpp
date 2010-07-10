@@ -13,29 +13,33 @@
  */
 
 /**
- * @file validate_visitor.hpp
+ * @file attack.cpp
  */
 
-#ifndef WB_VALIDATE_VISITOR_HPP_
-#define WB_VALIDATE_VISITOR_HPP_
+#include "attack.hpp"
 
-#include "mapbuilder_visitor.hpp"
+#include "visitor.hpp"
+
+#include "arrow.hpp"
+#include "unit.hpp"
 
 namespace wb
 {
 
-class validate_visitor: public mapbuilder_visitor
+attack::attack(unit& subject, unit& target, const map_location& source_hex, const map_location& dest_hex, arrow_ptr arrow)
+	: move(subject, source_hex, dest_hex, arrow, fake_unit_ptr())
+	, target_(target)
 {
-public:
-	validate_visitor(unit_map& unit_map, side_actions_ptr side_actions);
-	virtual ~validate_visitor();
-
-	void validate_actions();
-
-	virtual void visit_move(move_ptr move);
-	virtual void visit_attack(attack_ptr attack) { (void) attack; } //TODO: implement
-};
 
 }
 
-#endif /* WB_VALIDATE_VISITOR_HPP_ */
+attack::~attack()
+{
+}
+
+void attack::accept(visitor& v)
+{
+	v.visit_attack(boost::static_pointer_cast<attack>(shared_from_this()));
+}
+
+} // end namespace wb
