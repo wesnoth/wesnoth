@@ -175,22 +175,40 @@ void highlight_visitor::visit_move(move_ptr move)
 		}
 		break;
 	case HIGHLIGHT_MAIN:
-		color_backup_ = move->arrow_->get_color();
-		move->arrow_->set_alpha(move::ALPHA_HIGHLIGHT);
-		move->arrow_->set_color("white");
-		move->fake_unit_->set_standing(false);
+		if (move->arrow_)
+		{
+			color_backup_ = move->arrow_->get_color();
+			move->arrow_->set_alpha(move::ALPHA_HIGHLIGHT);
+			move->arrow_->set_color("white");
+		}
+		if (move->fake_unit_)
+		{
+			move->fake_unit_->set_standing(false);
+		}
 		break;
 	case HIGHLIGHT_SECONDARY:
-		move->arrow_->set_alpha(move::ALPHA_HIGHLIGHT);
-		move->fake_unit_->set_ghosted(false);
+		if (move->arrow_)
+		{
+			move->arrow_->set_alpha(move::ALPHA_HIGHLIGHT);
+		}
+		if (move->fake_unit_)
+		{
+			move->fake_unit_->set_ghosted(false);
+		}
 		break;
 	case UNHIGHLIGHT:
-		if (move == main_highlight_.lock())
+		if (move->arrow_)
 		{
-			move->arrow_->set_color(color_backup_);
+			if (move == main_highlight_.lock())
+			{
+				move->arrow_->set_color(color_backup_);
+			}
+			move->arrow_->set_alpha(move::ALPHA_NORMAL);
 		}
-		move->arrow_->set_alpha(move::ALPHA_NORMAL);
-		move->fake_unit_->set_disabled_ghosted(false);
+		if (move->fake_unit_)
+		{
+			move->fake_unit_->set_disabled_ghosted(false);
+		}
 		break;
 	default:
 		assert (false);

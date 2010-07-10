@@ -47,6 +47,9 @@ void side_actions::draw_hex(const map_location& hex)
 	const_iterator it;
 	for(it = begin(); it != end(); ++it)
 	{
+		//call the action's own draw_hex method
+		(*it)->draw_hex(hex);
+
 		if((*it)->is_target_hex(hex))
 		{
 			//draw number corresponding to iterator's position + 1
@@ -60,7 +63,6 @@ void side_actions::draw_hex(const map_location& hex)
 			const double y_in_hex = 0.5; //0.5 = halfway in the hex vertically
 			resources::screen->draw_text_in_hex(hex, display::LAYER_ACTIONS_NUMBERING,
 					number_text.str(), font_size, color, x_in_hex, y_in_hex);
-			return; //since we found the appropriate hex
 		}
 	}
 }

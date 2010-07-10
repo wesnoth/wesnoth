@@ -34,6 +34,9 @@ public:
 
 	virtual void visit_move(move_ptr move);
 	virtual void visit_attack(attack_ptr attack);
+
+private:
+	std::deque<action_ptr> actions_to_erase_;
 };
 
 }

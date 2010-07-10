@@ -35,11 +35,16 @@
 namespace wb {
 
 
-static side_actions_ptr current_actions()
+static team& current_team()
 {
 	int current_side = resources::controller->current_side();
 	team& current_team = (*resources::teams)[current_side - 1];
-	side_actions_ptr side_actions = current_team.get_side_actions();
+	return current_team;
+}
+
+static side_actions_ptr current_actions()
+{
+	side_actions_ptr side_actions = current_team().get_side_actions();
 	return side_actions;
 }
 
@@ -127,7 +132,10 @@ void manager::on_unit_select(unit& unit)
 
 	erase_temp_move();
 
-	selected_unit_ = &unit;
+	if (unit.side() == resources::controller->current_side())
+	{
+			selected_unit_ = &unit;
+	}
 	DBG_WB << "Selected unit " << selected_unit_->name() << " [" << selected_unit_->id() << "]\n";
 }
 
@@ -151,7 +159,7 @@ void manager::create_temp_move(const pathfind::marked_route &route)
 
 	//TODO: properly handle turn end
 
-	if (selected_unit_ == NULL || route.steps.empty() || route.steps.size() < 2)
+	if (selected_unit_ == NULL)
 	{
 		erase_temp_move();
 		return;
@@ -174,32 +182,40 @@ void manager::create_temp_move(const pathfind::marked_route &route)
 		}
 	}
 
-	route_.reset(new pathfind::marked_route(route));
-	//NOTE: route_.steps.back() = dst, and route_.steps.front() = src
-
-	if (!move_arrow_)
+	if (route.steps.empty() || route.steps.size() < 2)
 	{
-		// Create temp arrow
-		move_arrow_.reset(new arrow());
-		int current_side = resources::controller->current_side();
-		move_arrow_->set_color(team::get_side_color_index(current_side));
-		move_arrow_->set_alpha(move::ALPHA_HIGHLIGHT);
-		resources::screen->add_arrow(*move_arrow_);
-
+		route_.reset(new pathfind::marked_route()); //empty route
 	}
-	if (!fake_unit_)
+	else
 	{
-		// Create temp ghost unit
-		fake_unit_.reset(new unit(*selected_unit_), wb::manager::fake_unit_deleter());
-		resources::screen->place_temporary_unit(fake_unit_.get());
+		route_.reset(new pathfind::marked_route(route));
+		//NOTE: route_.steps.back() = dst, and route_.steps.front() = src
+
+		if (!move_arrow_)
+		{
+			// Create temp arrow
+			move_arrow_.reset(new arrow());
+			int current_side = resources::controller->current_side();
+			move_arrow_->set_color(team::get_side_color_index(current_side));
+			move_arrow_->set_alpha(move::ALPHA_HIGHLIGHT);
+			resources::screen->add_arrow(*move_arrow_);
+
+		}
+		if (!fake_unit_)
+		{
+			// Create temp ghost unit
+			fake_unit_.reset(new unit(*selected_unit_), wb::manager::fake_unit_deleter());
+			resources::screen->place_temporary_unit(fake_unit_.get());
+			fake_unit_->set_ghosted(false);
+		}
+
+
+		move_arrow_->set_path(route_->steps);
+
+		unit_display::move_unit(route_->steps, *fake_unit_, *resources::teams, false); //get facing right
+		fake_unit_->set_location(route_->steps.back());
 		fake_unit_->set_ghosted(false);
 	}
-
-	move_arrow_->set_path(route_->steps);
-
-	unit_display::move_unit(route_->steps, *fake_unit_, *resources::teams, false); //get facing right
-	fake_unit_->set_location(route_->steps.back());
-	fake_unit_->set_ghosted(false);
 }
 
 void manager::erase_temp_move()
@@ -220,11 +236,10 @@ void manager::erase_temp_move()
 
 void manager::save_temp_move()
 {
-	if (!active_)
-		return;
-
-	if (!modifying_actions_)
+	if (active_ && !modifying_actions_)
 	{
+		assert(!has_planned_unit_map());
+
 		modifying_actions_ = true;
 		std::vector<map_location> steps;
 		arrow_ptr move_arrow;
@@ -243,8 +258,6 @@ void manager::save_temp_move()
 				<< " from " << steps.front()
 				<< " to " << steps.back() << "\n";
 
-		assert(!has_planned_unit_map());
-
 		fake_unit->set_disabled_ghosted(false);
 		current_actions()->queue_move(*subject_unit, steps.front(), steps.back(), move_arrow, fake_unit);
 		modifying_actions_ = false;
@@ -253,33 +266,48 @@ void manager::save_temp_move()
 
 void manager::save_temp_attack(const map_location& target_hex)
 {
-	if (!active_)
-		return;
-
-	if (!modifying_actions_)
+	if (active_ && !modifying_actions_)
 	{
+		assert(!has_planned_unit_map());
+
 		modifying_actions_ = true;
 		std::vector<map_location> steps;
 		arrow_ptr move_arrow;
 		fake_unit_ptr fake_unit;
 		unit* subject_unit;
 
-		steps = route_->steps;
-		move_arrow = arrow_ptr(move_arrow_);
-		fake_unit = fake_unit_ptr(fake_unit_);
 		subject_unit = selected_unit_;
+
+		map_location source_hex;
+		map_location dest_hex;
+		if (route_)
+		{
+			move_arrow = arrow_ptr(move_arrow_);
+			fake_unit = fake_unit_ptr(fake_unit_);
+
+			steps = route_->steps;
+			source_hex = steps.front();
+			dest_hex = steps.back();
+
+			fake_unit->set_disabled_ghosted(false);
+		}
+		else
+		{
+			move_arrow.reset(new arrow);
+
+			source_hex = selected_unit_->get_location();
+			dest_hex = selected_unit_->get_location();
+
+		}
 
 		erase_temp_move();
 		selected_unit_ = NULL;
 
 		LOG_WB << "Creating attack for unit " << subject_unit->name() << " [" << subject_unit->id()
-				<< "]: moving from " << steps.front() << " to " << steps.back()
+				<< "]: moving from " << source_hex << " to " << dest_hex
 				<< " and attacking " << target_hex << "\n";
 
-		assert(!has_planned_unit_map());
-
-		fake_unit->set_disabled_ghosted(false);
-		current_actions()->queue_attack(*subject_unit, target_hex, steps.front(), steps.back(), move_arrow, fake_unit);
+		current_actions()->queue_attack(*subject_unit, target_hex, source_hex, dest_hex, move_arrow, fake_unit);
 		modifying_actions_ = false;
 	}
 }

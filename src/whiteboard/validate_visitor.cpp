@@ -33,6 +33,7 @@ namespace wb
 
 validate_visitor::validate_visitor(unit_map& unit_map, side_actions_ptr side_actions)
 	: mapbuilder_visitor(unit_map, side_actions)
+	, actions_to_erase_()
 {
 }
 
@@ -54,6 +55,11 @@ void validate_visitor::validate_actions()
 	{
 		action->accept(*this);
 	}
+
+	foreach(action_ptr action, actions_to_erase_)
+	{
+		side_actions_->remove_action(side_actions_->get_position_of(action));
+	}
 }
 
 void validate_visitor::visit_move(move_ptr move)
@@ -71,62 +77,73 @@ void validate_visitor::visit_move(move_ptr move)
 	if (valid && resources::units->find(move->source_hex_) == resources::units->end())
 		valid = false;
 
-	pathfind::plain_route route;
-	if (valid)
+	if (move->source_hex_ != move->dest_hex_) //allow for zero-hex, move, in which case we skip pathfinding
 	{
-		pathfind::shortest_path_calculator path_calc(move->unit_, get_current_team(), *resources::units,
-				*resources::teams, *resources::game_map);
-		route = pathfind::a_star_search(move->source_hex_,
-				move->dest_hex_, 10000, &path_calc, resources::game_map->w(), resources::game_map->h());
-		if (route.move_cost >= path_calc.getNoPathValue())
+		pathfind::plain_route route;
+		if (valid)
 		{
-			valid = false;
+			pathfind::shortest_path_calculator path_calc(move->unit_, get_current_team(), *resources::units,
+					*resources::teams, *resources::game_map);
+			route = pathfind::a_star_search(move->source_hex_,
+					move->dest_hex_, 10000, &path_calc, resources::game_map->w(), resources::game_map->h());
+			if (route.move_cost >= path_calc.getNoPathValue())
+			{
+				valid = false;
+			}
 		}
-	}
 
-	if (valid)
-	{
-		if (!std::equal(route.steps.begin(), route.steps.end(), move->arrow_->get_path().begin()))
+		if (valid)
 		{
-			//new valid path differs from the previous one, replace
-			move->arrow_->set_path(route.steps);
-			move->movement_cost_ = route.move_cost;
+			if (!std::equal(route.steps.begin(), route.steps.end(), move->arrow_->get_path().begin()))
+			{
+				//new valid path differs from the previous one, replace
+				move->arrow_->set_path(route.steps);
+				move->movement_cost_ = route.move_cost;
 
-			//TODO: Since this might lengthen the path, we probably need a special conflict state
-			// to warn the player that the initial path is no longer possible.
+				//TODO: Since this might lengthen the path, we probably need a special conflict state
+				// to warn the player that the initial path is no longer possible.
 
+			}
+			// Now call the superclass to apply the result of this move to the unit map,
+			// so that further pathfinding takes it into account.
+			mapbuilder_visitor::visit_move(move);
 		}
-		// Now call the superclass to apply the result of this move to the unit map,
-		// so that further pathfinding takes it into account.
-		mapbuilder_visitor::visit_move(move);
-	}
-	else //path invalid
-	{
-		// Don't apply the move's results to the unit map
+		else //path invalid
+		{
+			// Don't apply the move's results to the unit map
 
-		// Mark the move as invalid
-		move->set_valid(false);
+			// Mark the move as invalid
+			move->set_valid(false);
+		}
 	}
 }
 
 void validate_visitor::visit_attack(attack_ptr attack)
 {
-	visit_move(boost::static_pointer_cast<move>(attack));
-	if (!attack->is_valid())
-		return;
+	//invalidate target hex to make sure attack indicators are updated
+	resources::screen->invalidate(attack->target_hex_);
 
-	if (attack->target_hex_.valid())
+	visit_move(boost::static_pointer_cast<move>(attack));
+	if (attack->is_valid())
 	{
-		//TODO: verify that the target hex contains the same unit that before,
-		// comparing for example the underlying unit ID
-		if (resources::units->find(attack->target_hex_) == resources::units->end())
+		if (attack->target_hex_.valid())
+		{
+			//TODO: verify that the target hex contains the same unit that before,
+			// comparing for example the underlying unit ID
+			if (resources::units->find(attack->target_hex_) == resources::units->end())
+			{
+				attack->set_valid(false);
+			}
+		}
+		else
 		{
 			attack->set_valid(false);
 		}
 	}
-	else
+
+	if (!attack->is_valid())
 	{
-		attack->set_valid(false);
+		actions_to_erase_.push_back(attack);
 	}
 }
 

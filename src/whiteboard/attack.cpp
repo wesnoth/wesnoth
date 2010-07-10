@@ -38,6 +38,11 @@ attack::attack(unit& subject, const map_location& target_hex, const map_location
 
 attack::~attack()
 {
+	if(resources::screen)
+	{
+		//invalidate target hex so attack indicator is properly cleared
+		resources::screen->invalidate(target_hex_);
+	}
 }
 
 void attack::accept(visitor& v)
@@ -47,23 +52,68 @@ void attack::accept(visitor& v)
 
 bool attack::execute()
 {
-	if (arrow_->get_path().size() >= 2)
+	bool execute_successful = true;
+
+	if (!valid_)
+		execute_successful = false;
+
+	if (execute_successful && arrow_->get_path().size() >= 2)
 	{
 		if (!move::execute())
 		{
 			//Move didn't complete for some reason, so we're not at
 			//the right hex to execute the attack.
-			return false;
+			execute_successful = false;
 		}
 	}
 
-	int choice = resources::controller->get_mouse_handler_base().show_attack_dialog(
-			unit_.get_location(), target_hex_);
-	if (choice >=0 ) {
-		resources::controller->get_mouse_handler_base().attack_enemy(unit_.get_location(), target_hex_, choice);
+	if (execute_successful)
+	{
+		int choice = resources::controller->get_mouse_handler_base().show_attack_dialog(
+				unit_.get_location(), target_hex_);
+		if (choice >= 0 ) {
+			resources::controller->get_mouse_handler_base().attack_enemy(unit_.get_location(), target_hex_, choice);
+			//only path that returns execute_successful = true
+		}
+		else
+		{
+			execute_successful = false;
+		}
+	}
+	return execute_successful;
+}
+
+void attack::draw_hex(const map_location& hex)
+{
+	if (hex == dest_hex_ || hex == target_hex_) //draw attack indicator
+	{
+		//TODO: replace this by either the use of transparency + LAYER_ATTACK_INDICATOR,
+		//or a dedicated layer
+		const display::tdrawing_layer layer = display::LAYER_FOOTSTEPS;
+
+		//calculate direction (valid for both hexes)
+		std::string direction_text = map_location::write_direction(
+				dest_hex_.get_relative_dir(target_hex_));
+
+		if (hex == dest_hex_) //add symbol to attacker hex
+		{
+			int xpos = resources::screen->get_location_x(dest_hex_);
+			int ypos = resources::screen->get_location_y(dest_hex_);
+
+			resources::screen->drawing_buffer_add(layer, dest_hex_, display::tblit(xpos, ypos,
+					image::get_image("misc/attack-indicator-src-" + direction_text + ".png", image::UNMASKED)));
+		}
+		else if (hex == target_hex_) //add symbol to defender hex
+		{
+			int xpos = resources::screen->get_location_x(target_hex_);
+			int ypos = resources::screen->get_location_y(target_hex_);
+
+			resources::screen->drawing_buffer_add(layer, target_hex_, display::tblit(xpos, ypos,
+					image::get_image("misc/attack-indicator-dst-" + direction_text + ".png", image::UNMASKED)));
+		}
 	}
 
-	return true;
 }
+
 
 } // end namespace wb

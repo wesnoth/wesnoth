@@ -57,18 +57,21 @@ move::move(unit& subject, const map_location& source_hex, const map_location& ta
   fake_unit_(fake_unit),
   valid_(true)
 {
-	// Calculate move cost
-	pathfind::shortest_path_calculator path_calc(unit_, get_current_team(), *resources::units,
-			*resources::teams, *resources::game_map);
+	if (source_hex_.valid() && dest_hex_.valid() && source_hex_ != dest_hex_)
+	{
+		// Calculate move cost
+		pathfind::shortest_path_calculator path_calc(unit_, get_current_team(), *resources::units,
+				*resources::teams, *resources::game_map);
 
-	pathfind::plain_route route = pathfind::a_star_search(source_hex_,
-			dest_hex_, 10000, &path_calc, resources::game_map->w(), resources::game_map->h());
+		pathfind::plain_route route = pathfind::a_star_search(source_hex_,
+				dest_hex_, 10000, &path_calc, resources::game_map->w(), resources::game_map->h());
 
-	assert(unit_.movement_left() - route.move_cost >= 0);
+		assert(unit_.movement_left() - route.move_cost >= 0);
 
-	//TODO: if unit finishes move in a village, set the move cost to unit_.movement_left()
+		//TODO: if unit finishes move in a village, set the move cost to unit_.movement_left()
 
-	movement_cost_ = route.move_cost;
+		movement_cost_ = route.move_cost;
+	}
 }
 
 move::~move()
@@ -82,6 +85,12 @@ void move::accept(visitor& v)
 
 bool move::execute()
 {
+	if (!valid_)
+		return false;
+
+	if (source_hex_ == dest_hex_)
+		return true; //zero-hex move, probably used by attack subclass
+
 	bool move_finished_completely = false;
 
 	arrow_->set_alpha(ALPHA_HIGHLIGHT);
@@ -141,6 +150,9 @@ bool move::execute()
 
 void move::apply_temp_modifier(unit_map& unit_map)
 {
+	if (source_hex_ == dest_hex_)
+		return; //zero-hex move, probably used by attack subclass
+
 	// Move the unit
 	assert(unit_.get_location() == source_hex_);
 	DBG_WB << "Temporarily moving unit " << unit_.name() << " [" << unit_.underlying_id() << "] "
@@ -158,6 +170,9 @@ void move::apply_temp_modifier(unit_map& unit_map)
 
 void move::remove_temp_modifier(unit_map& unit_map)
 {
+	if (source_hex_ == dest_hex_)
+		return; //zero-hex move, probably used by attack subclass
+
 	// Restore the unit to its original position
 	assert(unit_.get_location() == dest_hex_);
 	unit_map.move(dest_hex_, source_hex_);
