@@ -87,6 +87,8 @@ public:
      */
 	void save_temp_move();
 
+	void save_temp_attack(const map_location& target_hex);
+
 	/** Executes first action in the queue for current side */
 	void contextual_execute();
 	/** Deletes last action in the queue for current side */

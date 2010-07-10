@@ -26,10 +26,10 @@
 namespace wb
 {
 
-attack::attack(unit& subject, unit& target, const map_location& source_hex, const map_location& dest_hex,
+attack::attack(unit& subject, const map_location& target_hex, const map_location& source_hex, const map_location& dest_hex,
 		arrow_ptr arrow, fake_unit_ptr fake_unit)
 	: move(subject, source_hex, dest_hex, arrow, fake_unit)
-	, target_(target)
+	, target_hex_(target_hex)
 {
 
 }

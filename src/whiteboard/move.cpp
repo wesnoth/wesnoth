@@ -66,6 +66,8 @@ move::move(unit& subject, const map_location& source_hex, const map_location& ta
 
 	assert(unit_.movement_left() - route.move_cost >= 0);
 
+	//TODO: if unit finishes move in a village, set the move cost to unit_.movement_left()
+
 	movement_cost_ = route.move_cost;
 }
 

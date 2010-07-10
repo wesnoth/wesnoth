@@ -227,26 +227,57 @@ void manager::save_temp_move()
 		std::vector<map_location> steps;
 		arrow_ptr move_arrow;
 		fake_unit_ptr fake_unit;
-		unit* target_unit;
+		unit* subject_unit;
 
-		//Temporary: Only keep as path the steps can be done this turn
 		steps = route_->steps;
 		move_arrow = arrow_ptr(move_arrow_);
 		fake_unit = fake_unit_ptr(fake_unit_);
-		target_unit = selected_unit_;
+		subject_unit = selected_unit_;
 
 		erase_temp_move();
 		selected_unit_ = NULL;
 
-		LOG_WB << "Creating move for unit " << target_unit->name() << " [" << target_unit->id() << "]"
+		LOG_WB << "Creating move for unit " << subject_unit->name() << " [" << subject_unit->id() << "]"
 				<< " from " << steps.front()
 				<< " to " << steps.back() << "\n";
 
 		assert(!has_planned_unit_map());
 
-		//unit_display::move_unit(steps, *fake_unit, *resources::teams, false);
 		fake_unit->set_disabled_ghosted(false);
-		current_actions()->queue_move(*target_unit, steps.front(), steps.back(), move_arrow, fake_unit);
+		current_actions()->queue_move(*subject_unit, steps.front(), steps.back(), move_arrow, fake_unit);
+		modifying_actions_ = false;
+	}
+}
+
+void manager::save_temp_attack(const map_location& target_hex)
+{
+	if (!active_)
+		return;
+
+	if (!modifying_actions_)
+	{
+		modifying_actions_ = true;
+		std::vector<map_location> steps;
+		arrow_ptr move_arrow;
+		fake_unit_ptr fake_unit;
+		unit* subject_unit;
+
+		steps = route_->steps;
+		move_arrow = arrow_ptr(move_arrow_);
+		fake_unit = fake_unit_ptr(fake_unit_);
+		subject_unit = selected_unit_;
+
+		erase_temp_move();
+		selected_unit_ = NULL;
+
+		LOG_WB << "Creating attack for unit " << subject_unit->name() << " [" << subject_unit->id()
+				<< "]: moving from " << steps.front() << " to " << steps.back()
+				<< " and attacking " << target_hex << "\n";
+
+		assert(!has_planned_unit_map());
+
+		fake_unit->set_disabled_ghosted(false);
+		current_actions()->queue_attack(*subject_unit, target_hex, steps.front(), steps.back(), move_arrow, fake_unit);
 		modifying_actions_ = false;
 	}
 }

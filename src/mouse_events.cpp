@@ -465,7 +465,7 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 	if(!browse && !commands_disabled && attack_from.valid()) {
 		if (resources::whiteboard->has_temp_move()) {
 
-			//TODO: create attack action for whiteboard
+			resources::whiteboard->save_temp_attack(clicked_u->get_location());
 
 		} else {
 			if (attack_from == selected_hex_) { //no move needed
