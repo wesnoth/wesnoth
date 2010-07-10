@@ -43,7 +43,6 @@ public: //constants
 	static const std::string ARROW_STYLE_VALID;
 	static const std::string ARROW_STYLE_INVALID;
 
-public:
 	move(unit& subject, const map_location& source_hex, const map_location& target_hex, arrow_ptr arrow,
 			fake_unit_ptr fake_unit);
 	virtual ~move();
@@ -71,7 +70,7 @@ public:
 	virtual void set_valid(bool valid);
 	virtual bool is_valid() { return valid_; }
 
-private:
+protected:
 	unit & unit_;
 	map_location source_hex_;
 	map_location dest_hex_;

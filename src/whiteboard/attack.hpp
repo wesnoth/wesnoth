@@ -37,6 +37,8 @@ public:
 
 	virtual void accept(visitor& v);
 
+	virtual bool execute();
+
 private:
 		///the target of the attack
 		map_location target_hex_;

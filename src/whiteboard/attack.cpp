@@ -21,6 +21,8 @@
 #include "visitor.hpp"
 
 #include "arrow.hpp"
+#include "play_controller.hpp"
+#include "resources.hpp"
 #include "unit.hpp"
 
 namespace wb
@@ -41,6 +43,27 @@ attack::~attack()
 void attack::accept(visitor& v)
 {
 	v.visit_attack(boost::static_pointer_cast<attack>(shared_from_this()));
+}
+
+bool attack::execute()
+{
+	if (arrow_->get_path().size() >= 2)
+	{
+		if (!move::execute())
+		{
+			//Move didn't complete for some reason, so we're not at
+			//the right hex to execute the attack.
+			return false;
+		}
+	}
+
+	int choice = resources::controller->get_mouse_handler_base().show_attack_dialog(
+			unit_.get_location(), target_hex_);
+	if (choice >=0 ) {
+		resources::controller->get_mouse_handler_base().attack_enemy(unit_.get_location(), target_hex_, choice);
+	}
+
+	return true;
 }
 
 } // end namespace wb

@@ -64,9 +64,10 @@ manager::~manager()
 
 void manager::set_planned_unit_map()
 {
-	if (active_)
+	if (active_ && !modifying_actions_)
 	{
-		assert(!modifying_actions_);
+		//TODO: enable back this assert, after modifying the mouse code that triggers it constantly
+		//assert(!modifying_actions_);
 		if (!planned_unit_map_active_)
 		{
 			DBG_WB << "Building planned unit map.\n";
@@ -83,9 +84,10 @@ void manager::set_planned_unit_map()
 
 void manager::set_real_unit_map()
 {
-	if (active_)
+	if (active_ && !modifying_actions_)
 	{
-		assert(!modifying_actions_);
+		//TODO: enable back this assert, after modifying the mouse code that triggers it constantly
+		//assert(!modifying_actions_);
 		if (planned_unit_map_active_)
 		{
 			DBG_WB << "Restoring regular unit map.\n";
