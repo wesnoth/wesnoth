@@ -50,7 +50,7 @@ void side_actions::draw_hex(const map_location& hex)
 		//call the action's own draw_hex method
 		(*it)->draw_hex(hex);
 
-		if((*it)->is_target_hex(hex))
+		if((*it)->is_numbering_hex(hex))
 		{
 			//draw number corresponding to iterator's position + 1
 			size_t number = (it - begin()) + 1;

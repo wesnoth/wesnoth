@@ -64,7 +64,7 @@ public: //constants
 	/** Gets called by display when drawing a hex, to allow actions to draw to the screen. */
 	virtual void draw_hex(const map_location& hex);
 
-	virtual bool is_target_hex(const map_location& hex) const;
+	virtual bool is_numbering_hex(const map_location& hex) const;
 	virtual bool is_related_to(const unit& unit) const;
 
 	virtual void set_valid(bool valid);

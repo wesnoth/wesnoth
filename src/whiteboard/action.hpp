@@ -58,7 +58,7 @@ public:
 	/**
 	 * Answers whether the specified hex is the main target of action for this action.
 	 */
-	virtual bool is_target_hex(const map_location& hex) const = 0;
+	virtual bool is_numbering_hex(const map_location& hex) const = 0;
 
 	/** Return the unit targeted by this action. */
 	virtual unit& get_unit() = 0;

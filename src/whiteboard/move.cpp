@@ -187,10 +187,9 @@ void move::draw_hex(const map_location& hex)
 	(void) hex; //temporary to avoid unused param warning
 }
 
-bool move::is_target_hex(const map_location& hex) const
+bool move::is_numbering_hex(const map_location& hex) const
 {
-	bool is_related = hex == dest_hex_;
-	return is_related;
+	return hex == dest_hex_;
 }
 
 bool move::is_related_to(const unit& unit) const
