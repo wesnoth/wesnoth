@@ -74,6 +74,12 @@ class ana_component : public send_stats_logger
          */
         ana::client* client() const;
 
+        /**
+         * Get the pointer to an ana::listener object for this component.
+         * Both an ana::client an the ana::server are listeners.
+         */
+        ana::detail::listener* listener() const;
+
         /** Returns true iff this component is a server. */
         bool is_server() const;
 
@@ -339,12 +345,17 @@ class clients_manager : public ana::connection_handler
         /** Returns the amount of components connected to this server. */
         size_t client_amount() const;
 
+        bool has_connection_pending() const;
+
+        network::connection get_pending_connection_id();
+
     private:
         virtual void handle_connect(ana::error_code error, ana::net_id client);
 
         virtual void handle_disconnect(ana::error_code /*error*/, ana::net_id client);
 
-        std::set<ana::net_id> ids_;
+        std::set< ana::net_id >         ids_;
+        std::set< network::connection > pending_ids_;
 };
 
 /**
@@ -370,6 +381,8 @@ class ana_network_manager : public ana::listener_handler,
          * @returns The ID of the new created client, as a network::connection number.
          */
         network::connection create_client_and_connect(std::string host, int port);
+
+        network::connection new_connection_id( );
 
         /**
          * Get the associated stats of a given component.
@@ -475,7 +488,7 @@ class ana_network_manager : public ana::listener_handler,
         ana::timer*                connect_timer_;
         ana_component_set          components_;
 
-        std::map< ana::server*, const clients_manager* > server_manager_;
+        std::map< ana::server*, clients_manager* > server_manager_;
 };
 
 #endif

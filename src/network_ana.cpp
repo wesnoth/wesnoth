@@ -199,7 +199,6 @@ namespace network {
         if ( create_server != NO_SERVER )
         {
             ana::net_id server_id = ana_manager.create_server( );
-
             ana_manager.run_server( server_id, port);
         }
     }
@@ -253,7 +252,7 @@ namespace network {
 
     connection accept_connection()
     {
-        throw std::runtime_error("TODO:Not implemented accept_connection");
+        return ana_manager.new_connection_id();
     }
 
     bool disconnect(connection /*s*/)
@@ -299,8 +298,9 @@ namespace network {
         return receive_data(cfg,connection_num, size_t(0), NULL); // <- just call the previous version without timeouts
     }
 
-    connection receive_data(std::vector<char>& /*buf*/, bandwidth_in_ptr* /*bandwidth_in*/)
+    connection receive_data(std::vector<char>& buf, bandwidth_in_ptr* /*bandwidth_in*/)
     {
+        std::cout << "DEBUG: Trying to read to a buffer of size " << buf.size() <<".\n";
         throw std::runtime_error("TODO:Not implemented receive_data2");
     }
 

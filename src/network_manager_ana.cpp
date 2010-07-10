@@ -424,6 +424,14 @@ ana::client* ana_component::client() const
     return boost::get<ana::client*>(base_);
 }
 
+ana::detail::listener* ana_component::listener() const
+{
+    if( is_server_ )
+        return server();
+    else
+        return client();
+}
+
 bool ana_component::is_server() const
 {
     return is_server_;
@@ -498,7 +506,8 @@ void ana_component::update_send_stats( size_t buffer_size)
 // Begin clients_manager  implementation ---------------------------------------------------------------
 
 clients_manager::clients_manager() :
-    ids_()
+    ids_(),
+    pending_ids_()
 {
 }
 
@@ -510,12 +519,28 @@ size_t clients_manager::client_amount() const
 void clients_manager::handle_connect(ana::error_code error, ana::net_id client)
 {
     if (! error )
+    {
         ids_.insert(client);
+        pending_ids_.insert( network::connection( client ) );
+    }
 }
 
 void clients_manager::handle_disconnect(ana::error_code /*error*/, ana::net_id client)
 {
     ids_.erase(client);
+    pending_ids_.erase( network::connection( client ) );
+}
+
+bool clients_manager::has_connection_pending() const
+{
+    return ! pending_ids_.empty();
+}
+
+network::connection clients_manager::get_pending_connection_id()
+{
+    const network::connection result = *pending_ids_.begin();
+    pending_ids_.erase( pending_ids_.begin() );
+    return result;
 }
 
 // Begin ana_network_manager implementation ------------------------------------------------------------
@@ -625,6 +650,23 @@ network::connection ana_network_manager::create_client_and_connect(std::string h
     }
 }
 
+network::connection ana_network_manager::new_connection_id( )
+{
+    ana_component_set::iterator it;
+
+    for (it = components_.begin(); it != components_.end(); ++it)
+    {
+        if ( (*it)->is_server() )
+        {
+            clients_manager* clients_mgr = server_manager_[ (*it)->server() ];
+            if ( clients_mgr->has_connection_pending() )
+                return clients_mgr->get_pending_connection_id();
+        }
+    }
+
+    // No new connection
+    return 0;
+}
 const ana::stats* ana_network_manager::get_stats( network::connection connection_num )
 {
     ana::net_id id( connection_num );
@@ -656,13 +698,19 @@ void ana_network_manager::run_server(ana::net_id id, int port)
     std::stringstream ss;
     ss << port;
 
-    std::set<ana_component*>::iterator it;
+    ana_component_set::iterator it;
 
     it = std::find_if( components_.begin(), components_.end(),
                         boost::bind(&ana_component::get_id, _1) == id );
 
-    if ( it != components_.end())
-        return (*it)->server()->run( ss.str() );
+    if ( it == components_.end())
+        throw std::runtime_error("No server with this id.");
+    else
+        if ( (*it)->is_server() )
+            (*it)->server()->run( ss.str() );
+        else
+            throw std::runtime_error("Component is not a server.");
+
 }
 
 std::string ana_network_manager::ip_address( network::connection id )
@@ -808,14 +856,15 @@ network::connection ana_network_manager::read_from( const ana_component_set::ite
         return 0;
     else
     {
-        ana::client* const client = (*it)->client(); // TODO: server support
-
         ana_receive_handler handler;
-        client->set_listener_handler( &handler );
+        (*it)->listener()->set_listener_handler( &handler );
 
-        handler.wait_completion( client, timeout_ms );
+        if ( (*it)->is_server() )
+            handler.wait_completion( (*it)->server(), timeout_ms );
+        else
+            handler.wait_completion( (*it)->client(), timeout_ms );
 
-        client->set_listener_handler( this );
+        (*it)->listener()->set_listener_handler( this );
 
         if ( handler.error() )
             return 0;
