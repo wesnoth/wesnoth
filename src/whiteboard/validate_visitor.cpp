@@ -17,6 +17,7 @@
  */
 
 #include "validate_visitor.hpp"
+#include "attack.hpp"
 #include "move.hpp"
 #include "side_actions.hpp"
 
@@ -106,7 +107,27 @@ void validate_visitor::visit_move(move_ptr move)
 		// Mark the move as invalid
 		move->set_valid(false);
 	}
+}
 
+void validate_visitor::visit_attack(attack_ptr attack)
+{
+	visit_move(boost::static_pointer_cast<move>(attack));
+	if (!attack->is_valid())
+		return;
+
+	if (attack->target_hex_.valid())
+	{
+		//TODO: verify that the target hex contains the same unit that before,
+		// comparing for example the underlying unit ID
+		if (resources::units->find(attack->target_hex_) == resources::units->end())
+		{
+			attack->set_valid(false);
+		}
+	}
+	else
+	{
+		attack->set_valid(false);
+	}
 }
 
 }//end namespace wb

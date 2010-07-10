@@ -30,6 +30,9 @@ class visitor;
  */
 class action
 {
+	friend class validate_visitor;
+	friend class highlight_visitor;
+
 public:
 	action();
 	virtual ~action();

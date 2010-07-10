@@ -30,6 +30,9 @@ namespace wb
 
 class attack: public move
 {
+	friend class validate_visitor;
+	friend class highlight_visitor;
+
 public:
 	attack(unit& subject, const map_location& target_hex, const map_location& source_hex, const map_location& dest_hex,
 			arrow_ptr arrow, fake_unit_ptr fake_unit);

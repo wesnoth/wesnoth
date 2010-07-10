@@ -23,8 +23,6 @@
 
 #include "map_location.hpp"
 
-#include <boost/weak_ptr.hpp>
-
 static lg::log_domain log_whiteboard_highlight("whiteboard/highlight");
 #define ERR_WB_H LOG_STREAM(err, log_whiteboard_highlight)
 #define WRN_WB_H LOG_STREAM(warn, log_whiteboard_highlight)
@@ -53,7 +51,7 @@ public:
 	action_ptr get_bump_target();
 
 	virtual void visit_move(move_ptr move);
-	virtual void visit_attack(attack_ptr attack) { (void) attack; } //TODO: implement
+	virtual void visit_attack(attack_ptr attack);
 
 private:
 

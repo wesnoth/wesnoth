@@ -33,7 +33,7 @@ public:
 	void validate_actions();
 
 	virtual void visit_move(move_ptr move);
-	virtual void visit_attack(attack_ptr attack) { (void) attack; } //TODO: implement
+	virtual void visit_attack(attack_ptr attack);
 };
 
 }

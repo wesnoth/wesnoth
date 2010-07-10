@@ -18,6 +18,7 @@
 
 #include "mapbuilder_visitor.hpp"
 #include "action.hpp"
+#include "attack.hpp"
 #include "move.hpp"
 #include "side_actions.hpp"
 
@@ -77,6 +78,11 @@ void mapbuilder_visitor::visit_move(move_ptr move)
 			move->remove_temp_modifier(unit_map_);
 		}
 	}
+}
+
+void mapbuilder_visitor::visit_attack(attack_ptr attack)
+{
+	visit_move(boost::static_pointer_cast<move>(attack));
 }
 
 }

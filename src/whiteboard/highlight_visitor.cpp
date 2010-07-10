@@ -19,6 +19,7 @@
 #include "highlight_visitor.hpp"
 #include "manager.hpp"
 #include "action.hpp"
+#include "attack.hpp"
 #include "move.hpp"
 #include "side_actions.hpp"
 
@@ -194,6 +195,12 @@ void highlight_visitor::visit_move(move_ptr move)
 	default:
 		assert (false);
 	}
+}
+
+void highlight_visitor::visit_attack(attack_ptr attack)
+{
+	visit_move(boost::static_pointer_cast<move>(attack));
+	//TODO: highlight the attack indicator
 }
 
 void highlight_visitor::visit_all_actions()
