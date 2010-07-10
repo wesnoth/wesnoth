@@ -51,7 +51,7 @@ public:
 	virtual void draw_hex(const map_location& hex) = 0;
 
 	/**
-	 * Answers whether the specified hex is the main target of action for this action.
+	 * Indicates whether this hex is the preferred hex to draw the numbering for this action.
 	 */
 	virtual bool is_numbering_hex(const map_location& hex) const = 0;
 
