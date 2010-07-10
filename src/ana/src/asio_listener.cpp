@@ -39,7 +39,8 @@ using boost::asio::ip::tcp;
 
 asio_listener::asio_listener( ) :
     disconnected_( false ),
-    listener_( NULL )
+    listener_( NULL ),
+    raw_mode_buffer_size_( ana::INITIAL_RAW_MODE_BUFFER_SIZE )
 {
 }
 
@@ -57,6 +58,13 @@ void asio_listener::disconnect( boost::system::error_code error)
     }
 }
 
+void asio_listener::set_raw_buffer_max_size( size_t size )
+{
+    if ( size == 0 )
+        throw std::runtime_error("Can't set raw buffer size to 0.");
+
+    raw_mode_buffer_size_ = size;
+}
 
 void asio_listener::handle_body( ana::detail::read_buffer buf, const boost::system::error_code& ec)
 {
@@ -67,9 +75,7 @@ void asio_listener::handle_body( ana::detail::read_buffer buf, const boost::syst
         else
         {
             log_receive( buf );
-
             listener_->handle_message( ec, id(), buf );
-
             listen_one_message();
         }
     }
@@ -87,6 +93,7 @@ void asio_listener::handle_header(char* header, const boost::system::error_code&
             disconnect( ec);
         else
         {
+            log_receive( ana::HEADER_LENGTH );
             ana::serializer::bistream input( std::string(header, ana::HEADER_LENGTH) );
 
             ana::ana_uint32 size;
@@ -115,6 +122,26 @@ void asio_listener::handle_header(char* header, const boost::system::error_code&
     catch(const std::exception& e)
     {
         disconnect(ec);
+    }
+}
+
+void asio_listener::handle_raw_buffer( ana::detail::read_buffer buf, const boost::system::error_code& ec, size_t read_size)
+{
+    try
+    {
+        if (ec)
+            disconnect( ec );
+        else
+        {
+            buf->resize( read_size );
+            log_receive( buf );
+            listener_->handle_message( ec, id(), buf );
+            listen_one_message();
+        }
+    }
+    catch(const std::exception& e)
+    {
+        disconnect( ec);
     }
 }
 
@@ -149,9 +176,18 @@ void asio_listener::listen_one_message()
 {
     try
     {
-        boost::asio::async_read(socket(), boost::asio::buffer(header_, ana::HEADER_LENGTH),
-                                boost::bind(&asio_listener::handle_header, this,
-                                            header_, boost::asio::placeholders::error));
+        if ( header_mode() )
+            boost::asio::async_read(socket(), boost::asio::buffer(header_, ana::HEADER_LENGTH),
+                                    boost::bind(&asio_listener::handle_header, this,
+                                                header_, boost::asio::placeholders::error));
+        else
+        {
+            ana::detail::read_buffer raw_buffer( new ana::detail::read_buffer_implementation( raw_mode_buffer_size_ ) );
+
+            socket().async_read_some(boost::asio::buffer(raw_buffer->base(), raw_mode_buffer_size_ ),
+                                    boost::bind(&asio_listener::handle_raw_buffer, this,
+                                                raw_buffer, boost::asio::placeholders::error, _2));
+        }
     }
     catch(const std::exception& e)
     {

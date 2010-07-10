@@ -103,6 +103,7 @@ class asio_client : public ana::client,
 
         /*attr*/
         boost::asio::io_service       io_service_;
+        boost::thread                 io_thread_;
         boost::asio::io_service::work work_;
 
         tcp::socket               socket_;

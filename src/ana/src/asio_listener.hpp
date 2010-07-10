@@ -54,9 +54,11 @@ class asio_listener : public virtual ana::detail::listener
         virtual tcp::socket& socket() = 0;
 
     private:
-        virtual void disconnect_listener() {}
+        virtual void disconnect_listener()                   {}
+        virtual void log_receive( ana::detail::read_buffer ) {}
+        virtual void log_receive( size_t )                   {} // poor OO programming
 
-        virtual void log_receive( ana::detail::read_buffer /*buffer*/ ) {}
+        virtual void set_raw_buffer_max_size( size_t size );
 
         virtual void wait_raw_object(ana::serializer::bistream& bis, size_t size);
 
@@ -68,10 +70,13 @@ class asio_listener : public virtual ana::detail::listener
 
         void handle_body( ana::detail::read_buffer , const boost::system::error_code& );
 
+        void handle_raw_buffer( ana::detail::read_buffer, const boost::system::error_code&, size_t);
+
         /*attr*/
         bool                       disconnected_;
         ana::listener_handler*     listener_;
         char                       header_[ana::HEADER_LENGTH];
+        size_t                     raw_mode_buffer_size_;
 };
 
 #endif

@@ -64,7 +64,8 @@ namespace ana
         const send_type ZERO_COPY   = false     /** Don't copy the buffer. */ ;
         const send_type COPY_BUFFER = true      /** Copy the buffer.       */ ;
 
-        const message_size HEADER_LENGTH = sizeof(ana_uint32) /** Length of message header. */ ;
+        const message_size HEADER_LENGTH = sizeof(ana_uint32) /** Length of message header, 4 bytes.    */ ;
+        const message_size INITIAL_RAW_MODE_BUFFER_SIZE = 256 /** Initial length of raw message buffer. */ ;
     //@}
 }
 

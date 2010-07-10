@@ -566,6 +566,7 @@ ana::net_id ana_network_manager::create_server( )
 
     server->set_connection_handler( manager );
     server->set_listener_handler( this );
+    server->set_raw_data_mode();
 
     return server->id();
 }
@@ -684,12 +685,15 @@ const ana::stats* ana_network_manager::get_stats( network::connection connection
 
 void ana_network_manager::close_connections_and_cleanup()
 {
-    ana_component_set::iterator it;
-
-    for (it = components_.begin(); it != components_.end(); ++it)
+    for (ana_component_set::iterator it = components_.begin(); it != components_.end(); ++it)
         delete *it;
 
+    std::map< ana::server*, clients_manager* >::iterator it;
+    for ( it = server_manager_.begin(); it != server_manager_.end(); ++it)
+        delete it->second;
+
     components_.clear();
+    server_manager_.clear();
 }
 
 

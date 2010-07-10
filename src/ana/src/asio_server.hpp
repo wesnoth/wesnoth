@@ -117,9 +117,9 @@ class asio_server : public  ana::server,
 
         virtual const ana::stats* get_stats( ana::stat_type type ) const;
 
+        virtual void disconnect()                                          {}
         virtual void wait_raw_object(ana::serializer::bistream& , size_t ) {}
-
-        virtual void disconnect() {}
+        virtual void set_raw_buffer_max_size( size_t )                     {}
 
         virtual ana::stats_collector* stats_collector() { return stats_collector_; }
 

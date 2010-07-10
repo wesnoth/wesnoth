@@ -62,6 +62,20 @@ namespace ana
                 {
                 }
 
+                /**
+                 * Resize the buffer, this won't affect the amount of memory usage.
+                 * It is only possible to downsize the buffer.
+                 *
+                 * @Pre : The new size is smaller than the original size used to construct this object.
+                 */
+                void resize( size_t new_size )
+                {
+                    if ( new_size > size_ )
+                        throw std::runtime_error("Can't expand a read_buffer.");
+
+                    size_ = new_size;
+                }
+
                 /** Deletes the buffer from heap. */
                 ~read_buffer_implementation()
                 {

@@ -90,7 +90,12 @@ namespace ana
                 void log_receive( detail::read_buffer buffer )
                 {
                     ++packets_in_;
-                    bytes_in_ += buffer->size() + HEADER_LENGTH;
+                    bytes_in_ += buffer->size();
+                }
+
+                void log_receive( size_t size )
+                {
+                    bytes_in_ += size;
                 }
 
             private:

@@ -199,12 +199,41 @@ namespace ana
                  */
                 virtual ana::stats_collector* stats_collector() = 0;
 
+            public:
+                /**
+                 * Enter Raw Data mode, ana won't prefix your packets with header information.
+                 *
+                 * This is good for handshake procedures or every time you know how much you are
+                 * supposed to receive. Combine this mode with a listener that is reading things
+                 * the right way.
+                 *
+                 * \sa listener
+                 */
+                void set_raw_data_mode()     { raw_data_ = true;  }
+
+                /**
+                 * Enter header first mode, ana will prefix anything you send with size information
+                 * first, so the listener will inform a new packet has been received only after it
+                 * receives the whole packet.
+                 */
+                void set_header_first_mode() { raw_data_ = false; }
+
+                /** Returns true iff the sender is in raw data mode. */
+                bool raw_mode()    const {return raw_data_;   }
+
+                /** Returns false iff the sender is in raw data mode. */
+                bool header_mode() const {return ! raw_data_; }
+
             protected:
-                /** Initialize component, assign fres id. */
+                /** Initialize component, assign fresh id and sets header-first and async modes. */
                 ana_component() :
+                    raw_data_( false ),
                     id_(++last_net_id_)
                 {
                 }
+
+            private:
+                bool raw_data_   /** The component is in raw data mode.*/ ;
 
                 const net_id     id_ /** This component's net_id. */ ;
         };
@@ -227,6 +256,15 @@ namespace ana
                 virtual void set_listener_handler( listener_handler* listener ) = 0;
 
                 /**
+                 * Sets the size of raw buffer.
+                 *
+                 * @param size : The requested size for raw buffers.
+                 *
+                 * @Pre : Parameter should be positive.
+                 */
+                virtual void set_raw_buffer_max_size( size_t size ) = 0;
+
+                /**
                  * Switch to raw data mode and perform a blocking wait, only POD types should be used.
                  */
                 virtual void wait_raw_object(ana::serializer::bistream& bis, size_t size) = 0;
@@ -239,57 +277,9 @@ namespace ana
         };
 
         /** Provides send option setting to network components. */
-        class sender : public timed_sender,
-                       public virtual ana_component
+        struct sender : public timed_sender,
+                        public virtual ana_component
         {
-            public:
-                /**
-                 * Enter Raw Data mode, ana won't prefix your packets with header information.
-                 *
-                 * This is good for handshake procedures or every time you know how much you are
-                 * supposed to receive. Combine this mode with a listener that is reading things
-                 * the right way.
-                 *
-                 * \sa listener
-                 */
-                void set_raw_data_mode()     { raw_data_ = true;  }
-
-                /**
-                 * Enter header first mode, ana will prefix anything you send with size information
-                 * first, so the listener will inform a new packet has been received only after it
-                 * receives the whole packet.
-                 */
-                void set_header_first_mode() { raw_data_ = false; }
-
-                /** Enter asynchronous mode, default. */
-                void set_async_mode() { async_mode_ = true; }
-
-                /** Enter synchronous mode, not impemented ATM. */
-                void set_sync_mode() { async_mode_ = false; }
-
-                /** Returns true iff the sender is in raw data mode. */
-                bool raw_mode()    const {return raw_data_;   }
-
-                /** Returns false iff the sender is in raw data mode. */
-                bool header_mode() const {return ! raw_data_; }
-
-                /** Returns true iff the sender is in async mode. */
-                bool async_mode() const {return async_mode_;   }
-
-                /** Returns false iff the sender is in raw data mode. */
-                bool sync_mode()  const {return ! async_mode_; }
-
-            protected:
-                /** Initialize sender component in header-first and async modes. */
-                sender() :
-                    raw_data_( false ),
-                    async_mode_( true )
-                {
-                }
-
-            private:
-                bool raw_data_   /** The component is in raw data mode.*/ ;
-                bool async_mode_ /** The component is in async mode.   */ ;
         };
     } //namespace details
 

@@ -44,6 +44,7 @@ using boost::asio::ip::tcp;
 asio_client::asio_client(ana::address address, ana::port pt) :
     asio_listener(),
     io_service_(),
+    io_thread_(),
     work_( io_service_ ),
     socket_(io_service_),
     address_(address),
@@ -56,8 +57,10 @@ asio_client::asio_client(ana::address address, ana::port pt) :
 
 asio_client::~asio_client()
 {
+//     io_service_.stop();
     stop_logging();
     disconnect_listener();
+    io_thread_.join();
 }
 
 ana::client* ana::client::create(ana::address address, ana::port pt)
@@ -67,7 +70,7 @@ ana::client* ana::client::create(ana::address address, ana::port pt)
 
 void asio_client::run()
 {
-    boost::thread t( boost::bind( &boost::asio::io_service::run, &io_service_) );
+    io_thread_ = boost::thread( boost::bind( &boost::asio::io_service::run, &io_service_) );
 }
 
 void asio_client::handle_proxy_connection(const boost::system::error_code& ec, ana::connection_handler* handler)
