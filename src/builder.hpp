@@ -46,15 +46,15 @@ class terrain_builder
 {
 public:
 	/** Used as a parameter for the get_terrain_at function. */
-	enum ADJACENT_TERRAIN_TYPE {
-			ADJACENT_BACKGROUND,	/**<
-									 * Represents terrains which are to be
-									 * drawn behind unit sprites
-									 */
-			ADJACENT_FOREGROUND	    /**<
-									 * Represents terrains which are to be
-									 * drawn in front of them.
-									 */
+	enum TERRAIN_TYPE {
+			BACKGROUND,	/**<
+						* Represents terrains which are to be
+						* drawn behind unit sprites
+						*/
+			FOREGROUND	/**<
+						* Represents terrains which are to be
+						* drawn in front of them.
+						 */
 	};
 
 	/** A shorthand typedef for a list of animated image locators,
@@ -102,7 +102,7 @@ public:
 	 * @param tod   The string representing the current time-of day.
 	 *				Will be used if some images specify several
 	 *				time-of-day- related variants.
-	 * @param terrain_type ADJACENT_BACKGROUND or ADJACENT_FOREGROUND,
+	 * @param terrain_type BACKGROUND or FOREGROUND,
 	 *              depending on wheter we ask for the terrain which is
 	 *              before, or after the unit sprite.
 	 *
@@ -110,7 +110,7 @@ public:
 	 *              to the parameters, or NULL if there is none.
 	 */
 	const imagelist *get_terrain_at(const map_location &loc,
-			const std::string &tod, ADJACENT_TERRAIN_TYPE const terrain_type);
+			const std::string &tod, TERRAIN_TYPE const terrain_type);
 
 	/** Updates the animation at a given tile.
 	 * Returns true if something has changed, and must be redrawn.

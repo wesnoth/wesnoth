@@ -223,7 +223,7 @@ void terrain_builder::change_map(const gamemap* m)
 }
 
 const terrain_builder::imagelist *terrain_builder::get_terrain_at(const map_location &loc,
-		const std::string &tod, const ADJACENT_TERRAIN_TYPE terrain_type)
+		const std::string &tod, const TERRAIN_TYPE terrain_type)
 {
 	if(!tile_map_.on_map(loc))
 		return NULL;
@@ -235,12 +235,12 @@ const terrain_builder::imagelist *terrain_builder::get_terrain_at(const map_loca
 		tile_at.last_tod = tod;
 	}
 
-	if(terrain_type == ADJACENT_BACKGROUND) {
+	if(terrain_type == BACKGROUND) {
 		if(!tile_at.images_background.empty())
 			return &tile_at.images_background;
 	}
 
-	if(terrain_type == ADJACENT_FOREGROUND) {
+	if(terrain_type == FOREGROUND) {
 		if(!tile_at.images_foreground.empty())
 			return &tile_at.images_foreground;
 	}

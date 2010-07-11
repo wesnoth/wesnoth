@@ -676,13 +676,14 @@ std::vector<surface> display::get_fog_shroud_images(const map_location& loc, ima
 std::vector<surface> display::get_terrain_images(const map_location &loc,
 						     const std::string& timeid,
 		image::TYPE image_type,
-		ADJACENT_TERRAIN_TYPE terrain_type)
+		TERRAIN_TYPE terrain_type)
 {
 	std::vector<surface> res;
 
-	terrain_builder::ADJACENT_TERRAIN_TYPE builder_terrain_type =
-	      (terrain_type == ADJACENT_FOREGROUND ?
-		  terrain_builder::ADJACENT_FOREGROUND : terrain_builder::ADJACENT_BACKGROUND);
+	terrain_builder::TERRAIN_TYPE builder_terrain_type =
+	      (terrain_type == FOREGROUND ?
+		  terrain_builder::FOREGROUND : terrain_builder::BACKGROUND);
+
 	const terrain_builder::imagelist* const terrains = builder_->get_terrain_at(loc,
 			timeid, builder_terrain_type);
 
@@ -1939,10 +1940,10 @@ void display::draw_hex(const map_location& loc) {
 	if(!shrouded(loc)) {
 		// unshrouded terrain (the normal case)
 		drawing_buffer_add(LAYER_TERRAIN_BG, loc, tblit(xpos, ypos,
-			get_terrain_images(loc,tod.id, image_type, ADJACENT_BACKGROUND)));
+			get_terrain_images(loc,tod.id, image_type, BACKGROUND)));
 
 		 drawing_buffer_add(LAYER_TERRAIN_FG, loc, tblit(xpos, ypos,
-			get_terrain_images(loc,tod.id,image_type,ADJACENT_FOREGROUND)));
+			get_terrain_images(loc,tod.id,image_type, FOREGROUND)));
 
 	// Draw the grid, if that's been enabled
 		if(grid_ && on_map && !off_map_tile) {
