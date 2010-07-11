@@ -118,11 +118,15 @@ if(CMAKE_COMPILER_IS_GNUCXX)
 				CACHE STRING "Flags used by the C compiler during normal builds." FORCE)
 		set(CMAKE_C_FLAGS_DEBUG "-O0 -DDEBUG -ggdb3 -W -Wall -ansi $ENV{CFLAGS}"
 				CACHE STRING "Flags used by the C compiler during debug builds." FORCE)
+		set(CMAKE_C_FLAGS_RELEASE "-O3 -DNDEBUG -W -Wall -ansi $ENV{CFLAGS} -Wno-unused"
+				CACHE STRING "Flags used by the C compiler during release builds." FORCE)
 
 		set(CMAKE_CXX_FLAGS "-O2 -W -Wall -ansi ${STRICT_FLAGS} $ENV{CXXFLAGS}"
 				CACHE STRING "Flags used by the CXX compiler during normal builds." FORCE)
 		set(CMAKE_CXX_FLAGS_DEBUG "-O0 -DDEBUG -ggdb3 -W -Wall -ansi ${STRICT_FLAGS} $ENV{CXXFLAGS}"
 				CACHE STRING "Flags used by the CXX compiler during debug builds." FORCE)
+		set(CMAKE_CXX_FLAGS_RELEASE "-O3 -DNDEBUG -W -Wall -ansi ${STRICT_FLAGS} $ENV{CXXFLAGS} -Wno-unused"
+				CACHE STRING "Flags used by the CXX compiler during release builds." FORCE)
 
 	endif(NOT CONFIGURED)
 
