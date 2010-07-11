@@ -96,9 +96,11 @@ namespace ana
                     bytes_in_ += buffer->size();
                 }
 
-                void log_receive( size_t size )
+                void log_receive( size_t size, bool finished_packet = false )
                 {
                     bytes_in_ += size;
+                    if (finished_packet)
+                        ++packets_in_;
                 }
 
             private:
@@ -201,6 +203,15 @@ namespace ana
                 minutes_stats_.log_receive( buffer );
                 hours_stats_.log_receive  ( buffer );
                 days_stats_.log_receive   ( buffer );
+            }
+
+            void log_receive( size_t size, bool finished_packet = false )
+            {
+                accumulator_.log_receive  ( size, finished_packet );
+                seconds_stats_.log_receive( size, finished_packet );
+                minutes_stats_.log_receive( size, finished_packet );
+                hours_stats_.log_receive  ( size, finished_packet );
+                days_stats_.log_receive   ( size, finished_packet );
             }
 
             ~stats_collector()

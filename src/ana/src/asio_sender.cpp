@@ -107,8 +107,7 @@ void asio_sender::handle_send(const boost::system::error_code& ec,
 {
     delete running_timer;
 
-    if ( stats_collector() != NULL )
-        stats_collector()->log_send( buffer );
+    log_conditional_send( buffer );
 
     handler->handle_send( ec, id() );
 
@@ -124,3 +123,8 @@ void asio_sender::handle_timeout(const boost::system::error_code& ec, ana::send_
         handler->handle_send( ana::timeout_error , id() );
 }
 
+void asio_sender::log_conditional_send( const ana::detail::shared_buffer& buf )
+{
+    if (stats_collector() != NULL )
+        stats_collector()->log_send( buf );
+}

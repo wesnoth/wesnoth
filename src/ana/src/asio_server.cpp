@@ -273,7 +273,7 @@ tcp::socket& asio_server::asio_client_proxy::socket()
     return socket_;
 }
 
-void asio_server::asio_client_proxy::log_receive( ana::detail::read_buffer buffer )
+void asio_server::asio_client_proxy::log_conditional_receive( const ana::detail::read_buffer& buffer )
 {
     if ( stats_collector_ != NULL )
         stats_collector_->log_receive( buffer );
@@ -288,6 +288,7 @@ void asio_server::asio_client_proxy::start_logging()
 void asio_server::asio_client_proxy::stop_logging()
 {
     delete stats_collector_;
+    stats_collector_ = NULL;
 }
 
 const ana::stats* asio_server::asio_client_proxy::get_stats( ana::stat_type type ) const

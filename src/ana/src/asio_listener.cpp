@@ -74,7 +74,7 @@ void asio_listener::handle_body( ana::detail::read_buffer buf, const boost::syst
             disconnect( ec );
         else
         {
-            log_receive( buf );
+            log_conditional_receive( buf );
             listener_->handle_message( ec, id(), buf );
             listen_one_message();
         }
@@ -85,6 +85,19 @@ void asio_listener::handle_body( ana::detail::read_buffer buf, const boost::syst
     }
 }
 
+void asio_listener::log_conditional_receive( const ana::detail::read_buffer& buf )
+{
+    if ( stats_collector() != NULL )
+        stats_collector()->log_receive( buf );
+}
+
+void asio_listener::log_conditional_receive( size_t size, bool finished)
+{
+    if ( stats_collector() != NULL )
+        stats_collector()->log_receive( size, finished );
+}
+
+
 void asio_listener::handle_header(char* header, const boost::system::error_code& ec)
 {
     try
@@ -93,7 +106,7 @@ void asio_listener::handle_header(char* header, const boost::system::error_code&
             disconnect( ec);
         else
         {
-            log_receive( ana::HEADER_LENGTH );
+            log_conditional_receive( ana::HEADER_LENGTH );
             ana::serializer::bistream input( std::string(header, ana::HEADER_LENGTH) );
 
             ana::ana_uint32 size;
@@ -104,10 +117,10 @@ void asio_listener::handle_header(char* header, const boost::system::error_code&
             {
                 ana::detail::read_buffer read_buf( new ana::detail::read_buffer_implementation( size ) );
 
-                boost::asio::async_read(socket(), boost::asio::buffer( read_buf->base(), read_buf->size() ),
-                                        boost::bind(&asio_listener::handle_body,
+                socket().async_read_some(boost::asio::buffer(read_buf->base(), read_buf->size() ),
+                                        boost::bind(&asio_listener::handle_partial_body,
                                                     this, read_buf,
-                                                    boost::asio::placeholders::error ));
+                                                    boost::asio::placeholders::error, 0, _2 ));
             }
             else
             {   // copy the header to a read_buffer
@@ -125,6 +138,46 @@ void asio_listener::handle_header(char* header, const boost::system::error_code&
     }
 }
 
+void asio_listener::handle_partial_body( ana::detail::read_buffer         buffer,
+                                         const boost::system::error_code& ec,
+                                         size_t                           accumulated,
+                                         size_t                           last_msg_size)
+{
+    try
+    {
+        if (ec)
+            disconnect( ec );
+        else
+        {
+            accumulated += last_msg_size;
+
+            //2nd param to add a completed packet
+            log_conditional_receive( last_msg_size, accumulated == buffer->size() );
+
+
+            if ( accumulated > buffer->size() )
+                throw std::runtime_error("The read operation was too large.");
+
+            if ( accumulated == buffer->size() )
+            {
+                listener_->handle_message( ec, id(), buffer );
+                listen_one_message();
+            }
+            else
+                socket().async_read_some(boost::asio::buffer(buffer->base_char() + accumulated,
+                                                             buffer->size()      - accumulated),
+                                         boost::bind(&asio_listener::handle_partial_body,
+                                                     this, buffer,
+                                                     boost::asio::placeholders::error, accumulated, _2 ));
+        }
+    }
+    catch(const std::exception& e)
+    {
+        disconnect( ec);
+    }
+}
+
+
 void asio_listener::handle_raw_buffer( ana::detail::read_buffer buf, const boost::system::error_code& ec, size_t read_size)
 {
     try
@@ -134,7 +187,7 @@ void asio_listener::handle_raw_buffer( ana::detail::read_buffer buf, const boost
         else
         {
             buf->resize( read_size );
-            log_receive( buf );
+            log_conditional_receive( buf );
             listener_->handle_message( ec, id(), buf );
             listen_one_message();
         }

@@ -57,6 +57,7 @@ class asio_sender : private ana::detail::sender
 
         void handle_timeout(const boost::system::error_code& ec, ana::send_handler* handler);
 
+        void log_conditional_send( const ana::detail::shared_buffer& buf );
 };
 
 #endif
