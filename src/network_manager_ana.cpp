@@ -368,7 +368,8 @@ ana_component::ana_component( ) :
     receive_stats_(),
     mutex_(),
     condition_(),
-    buffers_()
+    buffers_(),
+    sender_ids_()
 {
 }
 
@@ -381,7 +382,8 @@ ana_component::ana_component( const std::string& host, const std::string& port) 
     receive_stats_(),
     mutex_(),
     condition_(),
-    buffers_()
+    buffers_(),
+    sender_ids_()
 {
 }
 
@@ -465,11 +467,14 @@ const ana::stats* ana_component::get_stats() const
         return client()->get_stats();
 }
 
-void ana_component::add_buffer(ana::detail::read_buffer buffer)
+void ana_component::add_buffer(ana::detail::read_buffer buffer, ana::net_id id)
 {
     {
         boost::lock_guard<boost::mutex> lock(mutex_);
         buffers_.push( buffer );
+
+        if ( is_server_ )
+            sender_ids_.push( id );
     }
     condition_.notify_all();
 }
@@ -487,6 +492,21 @@ ana::detail::read_buffer ana_component::wait_for_element()
 
     return buffer_ret;
 }
+
+network::connection ana_component::oldest_sender_id_still_pending()
+{
+    boost::unique_lock<boost::mutex> lock(mutex_);
+
+    if ( sender_ids_.empty())
+        throw std::runtime_error("No pending buffer.");
+
+    const network::connection id = sender_ids_.front();
+
+    sender_ids_.pop();
+
+    return id;
+}
+
 
 void ana_component::update_receive_stats( size_t buffer_size )
 {
@@ -788,11 +808,16 @@ size_t ana_network_manager::send_all( const config& cfg, bool zipped )
 size_t ana_network_manager::send( network::connection connection_num , const config& cfg, bool /*zipped*/ )
 {
     std::cout << "DEBUG: Single send...\n";
-    ana::net_id id( connection_num );
 
     std::ostringstream out;
     compress_config(cfg, out );
 
+    return send_raw_data( out.str().c_str(), out.str().size(), connection_num );
+}
+
+size_t ana_network_manager::send_raw_data( const char* base_char, size_t size, network::connection connection_num )
+{
+    ana::net_id id( connection_num );
     ana_component_set::iterator it;
 
     it = std::find_if( components_.begin(), components_.end(),
@@ -800,25 +825,42 @@ size_t ana_network_manager::send( network::connection connection_num , const con
 
     if ( it != components_.end())
     {
-        ana_send_handler handler( *it, out.str().size() );
+        if ( (*it)->is_server() )
+            throw std::runtime_error("Can't send to the server itself.");
 
-        if ( (*it)->is_client() )
-            (*it)->client()->send( ana::buffer( out.str() ), &handler, ana::ZERO_COPY);
-        else
-            (*it)->server()->send_all( ana::buffer( out.str() ), &handler, ana::ZERO_COPY);
+        ana_send_handler handler( *it, size );
+        (*it)->client()->send( ana::buffer( base_char, size ), &handler, ana::ZERO_COPY);
         handler.wait_completion();
 
         if ( handler.error() )
             return 0;
         else
-            return out.str().size();
+            return size;
     }
     else
-        return 0;
+    {
+        for (it = components_.begin(); it != components_.end(); ++it)
+        {
+            if ((*it)->is_server())
+            {
+                ana_send_handler handler( *it, size );
+                (*it)->server()->send_one( id, ana::buffer( base_char, size ), &handler, ana::ZERO_COPY);
+                handler.wait_completion();
+                if ( handler.error() )
+                    return 0;
+                else
+                    return size;
+            }
+        }
+    }
+
+    return 0;
 }
 
-void ana_network_manager::send_all_except(const config& cfg, network::connection connection_num)
+void ana_network_manager::send_all_except(const config& /*cfg*/, network::connection /*connection_num*/)
 {
+    throw std::runtime_error("send_all_except is not finished.");
+/*
     std::cout << "DEBUG: send_all_except " << connection_num << "\n";
 
     std::stringstream out;
@@ -842,7 +884,9 @@ void ana_network_manager::send_all_except(const config& cfg, network::connection
             handler.wait_completion();
         }
     }
+*/
 }
+
 network::connection ana_network_manager::read_from_ready_buffer( const ana_component_set::iterator& it, config& cfg)
 {
     read_config( (*it)->wait_for_element(), cfg);
@@ -938,9 +982,6 @@ network::connection ana_network_manager::read_from( network::connection connecti
     {
         ana::net_id id( connection_num );
 
-        // comment next debug msg: too much output due to being called constantly
-//         std::cout << "DEBUG: Trying to read something from (" << connection_num << " = " << id << ")\n";
-
         it = std::find_if( components_.begin(), components_.end(),
                         boost::bind(&ana_component::get_id, _1) == id );
 
@@ -949,6 +990,34 @@ network::connection ana_network_manager::read_from( network::connection connecti
         else
             throw std::runtime_error("Trying a network read from an invalid component id.");
     }
+}
+
+network::connection ana_network_manager::read_from_all( std::vector<char>& vec)
+{
+    ana_component_set::iterator it;
+
+    if ( components_.empty() )
+        return 0;
+
+    for (it = components_.begin(); it != components_.end(); ++it)
+    {
+        if (  (*it)->new_buffer_ready() )
+        {
+            ana::detail::read_buffer buffer = (*it)->wait_for_element();
+
+            char* ch = buffer->base_char();
+            for (size_t i = 0; i < buffer->size(); ++i)  // copy the buffer
+                vec.push_back( *(ch++) );
+
+            if ( (*it)->is_client() )
+                return (*it)->get_wesnoth_id();
+            else
+                return (*it)->oldest_sender_id_still_pending();
+        }
+    }
+
+    // there wasn't any buffer ready
+    return 0;
 }
 
 network::statistics ana_network_manager::get_send_stats(network::connection handle)
@@ -1026,7 +1095,7 @@ void ana_network_manager::handle_message( ana::error_code          error,
         if ( it != components_.end() )
         {
             (*it)->update_receive_stats( buffer->size() );
-            (*it)->add_buffer( buffer );
+            (*it)->add_buffer( buffer, client );
         }
         else
             throw std::runtime_error("Received message from a non connected component.");

@@ -97,7 +97,7 @@ class ana_component : public send_stats_logger
         const ana::stats* get_stats() const;
 
         /** Push a buffer to the queue of incoming messages. */
-        void add_buffer(ana::detail::read_buffer buffer);
+        void add_buffer(ana::detail::read_buffer buffer, ana::net_id id);
 
         /**
          * Blocking operation to wait for a message in a component.
@@ -105,6 +105,9 @@ class ana_component : public send_stats_logger
          * @returns The buffer that was received first from all pending buffers.
          */
         ana::detail::read_buffer wait_for_element();
+
+        /** Returns the network id of the oldest sender of a pending buffer. */
+        network::connection oldest_sender_id_still_pending();
 
         bool new_buffer_ready(); // non const due to mutex blockage
 
@@ -129,6 +132,7 @@ class ana_component : public send_stats_logger
         boost::condition_variable      condition_;
 
         std::queue< ana::detail::read_buffer > buffers_;
+        std::queue< network::connection >      sender_ids_;
 };
 
 typedef std::set<ana_component*> ana_component_set;
@@ -415,6 +419,8 @@ class ana_network_manager : public ana::listener_handler,
         /** Send data to the component with a given ID. */
         size_t send( network::connection connection_num , const config& cfg, bool zipped );
 
+        size_t send_raw_data( const char*, size_t, network::connection);
+
         void send_all_except(const config& cfg, network::connection connection_num);
 
         /**
@@ -442,6 +448,8 @@ class ana_network_manager : public ana::listener_handler,
         network::connection read_from( const ana_component_set::iterator& it,
                                        config&             cfg,
                                        size_t              timeout_ms = 0 );
+
+        network::connection read_from_all( std::vector<char>& );
 
         /**
          * Read a message from a given component or from every one.

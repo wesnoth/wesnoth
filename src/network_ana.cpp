@@ -100,7 +100,7 @@ connection_map connections;
 
 static void check_error()
 {
-    std::cout << "DEBUG: check_error\n";
+//     std::cout << "DEBUG: check_error\n";
 }
 
 namespace {
@@ -275,33 +275,23 @@ namespace network {
 //         std::cout << "DEBUG: Trying to read from connection in " << timeout << " milliseconds.\n";
         network::connection read_id = ana_manager.read_from( connection_num, cfg, timeout );
 
-        if ( read_id == 0 ) // TODO: check timeout and return 0, or throw if error occured
-            return 0;
-        else
-        {
-            std::cout << cfg;
+        // TODO: check timeout and return 0, or throw if error occured
 
-            if (cfg.empty())
-                std::cout << "Empty buffer.\n";
-            else
-                std::cout << "Buffer has something.\n";
-
-            return read_id;
-        }
+        return read_id;
     }
 
     connection receive_data(config&           cfg,
                             connection        connection_num,
                             bool*             /*gzipped*/,
-                            bandwidth_in_ptr* /*bandwidth_in*/)
+                            bandwidth_in_ptr* /*bandwidth_in*/) // TODO: use this pointer
     {
         return receive_data(cfg,connection_num, size_t(0), NULL); // <- just call the previous version without timeouts
     }
 
     connection receive_data(std::vector<char>& buf, bandwidth_in_ptr* /*bandwidth_in*/)
     {
-        std::cout << "DEBUG: Trying to read to a buffer of size " << buf.size() <<".\n";
-        throw std::runtime_error("TODO:Not implemented receive_data2");
+//         std::cout << "DEBUG: Trying to read to a vector<char>.\n";
+        return ana_manager.read_from_all( buf );
     }
 
     struct bandwidth_stats {
@@ -458,12 +448,13 @@ namespace network {
             return ana_manager.send( connection_num, cfg, gzipped );
     }
 
-    void send_raw_data(const char*        /*buf*/,
-                       int                /*len*/,
-                       connection         /*connection_num*/,
+    void send_raw_data(const char*        buf,
+                       int                len,
+                       connection         connection_num,
                        const std::string& /*packet_type*/)
     {
-        throw std::runtime_error("TODO:Not implemented send_raw_data");
+        ana_manager.send_raw_data( buf, size_t( len ), connection_num );
+//         throw std::runtime_error("TODO:Not implemented send_raw_data");
     }
 
     void process_send_queue(connection, size_t)
