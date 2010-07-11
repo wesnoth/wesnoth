@@ -80,6 +80,7 @@ if (UNIX AND NOT APPLE AND NOT CYGWIN)
 endif(UNIX AND NOT APPLE AND NOT CYGWIN)
 option(ENABLE_STRICT_COMPILATION "Sets the strict compilation mode" ON)
 option(ENABLE_DEBUG_WINDOW_LAYOUT "Add the debug option to allow the generation of debug layout files in dot format" OFF)
+option ( USE_ANA_NETWORK "Compile network module using ana" OFF )
 
 #misc options
 if(NOT MSVC)
@@ -220,6 +221,10 @@ if(ENABLE_GAME)
 	endif(ENABLE_NOTIFICATIONS)
 
 endif(ENABLE_GAME)
+
+if(USE_ANA_NETWORK)
+    find_package( Boost 1.35 REQUIRED COMPONENTS system )
+endif(USE_ANA_NETWORK)
 
 # get languages
 file(READ po/LINGUAS LINGUAS)
