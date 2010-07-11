@@ -2,6 +2,7 @@
  * <copyright>
  * </copyright>
  *
+
  */
 package org.wesnoth.wML.impl;
 
@@ -67,16 +68,12 @@ public class WMLFactoryImpl extends EFactoryImpl implements WMLFactory
   {
     switch (eClass.getClassifierID())
     {
-      case WMLPackage.ROOT: return createRoot();
-      case WMLPackage.TEXT_DOMAIN: return createTextDomain();
-      case WMLPackage.PREPROCESSOR: return createPreprocessor();
-      case WMLPackage.MACRO: return createMacro();
-      case WMLPackage.PATH_INCLUDE: return createPathInclude();
-      case WMLPackage.ROOT_TYPE: return createRootType();
-      case WMLPackage.ROOT_TAG: return createRootTag();
-      case WMLPackage.SIMPLE_TAG: return createSimpleTag();
-      case WMLPackage.ADDED_TAG: return createAddedTag();
-      case WMLPackage.ATTRIBUTES: return createAttributes();
+      case WMLPackage.WML_ROOT: return createWMLRoot();
+      case WMLPackage.WML_MACRO: return createWMLMacro();
+      case WMLPackage.WML_TAG: return createWMLTag();
+      case WMLPackage.WML_START_TAG: return createWMLStartTag();
+      case WMLPackage.WML_END_TAG: return createWMLEndTag();
+      case WMLPackage.WML_KEY: return createWMLKey();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -87,10 +84,10 @@ public class WMLFactoryImpl extends EFactoryImpl implements WMLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Root createRoot()
+  public WMLRoot createWMLRoot()
   {
-    RootImpl root = new RootImpl();
-    return root;
+    WMLRootImpl wmlRoot = new WMLRootImpl();
+    return wmlRoot;
   }
 
   /**
@@ -98,10 +95,10 @@ public class WMLFactoryImpl extends EFactoryImpl implements WMLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public TextDomain createTextDomain()
+  public WMLMacro createWMLMacro()
   {
-    TextDomainImpl textDomain = new TextDomainImpl();
-    return textDomain;
+    WMLMacroImpl wmlMacro = new WMLMacroImpl();
+    return wmlMacro;
   }
 
   /**
@@ -109,10 +106,10 @@ public class WMLFactoryImpl extends EFactoryImpl implements WMLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Preprocessor createPreprocessor()
+  public WMLTag createWMLTag()
   {
-    PreprocessorImpl preprocessor = new PreprocessorImpl();
-    return preprocessor;
+    WMLTagImpl wmlTag = new WMLTagImpl();
+    return wmlTag;
   }
 
   /**
@@ -120,10 +117,10 @@ public class WMLFactoryImpl extends EFactoryImpl implements WMLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Macro createMacro()
+  public WMLStartTag createWMLStartTag()
   {
-    MacroImpl macro = new MacroImpl();
-    return macro;
+    WMLStartTagImpl wmlStartTag = new WMLStartTagImpl();
+    return wmlStartTag;
   }
 
   /**
@@ -131,10 +128,10 @@ public class WMLFactoryImpl extends EFactoryImpl implements WMLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public PathInclude createPathInclude()
+  public WMLEndTag createWMLEndTag()
   {
-    PathIncludeImpl pathInclude = new PathIncludeImpl();
-    return pathInclude;
+    WMLEndTagImpl wmlEndTag = new WMLEndTagImpl();
+    return wmlEndTag;
   }
 
   /**
@@ -142,54 +139,10 @@ public class WMLFactoryImpl extends EFactoryImpl implements WMLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public RootType createRootType()
+  public WMLKey createWMLKey()
   {
-    RootTypeImpl rootType = new RootTypeImpl();
-    return rootType;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public RootTag createRootTag()
-  {
-    RootTagImpl rootTag = new RootTagImpl();
-    return rootTag;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public SimpleTag createSimpleTag()
-  {
-    SimpleTagImpl simpleTag = new SimpleTagImpl();
-    return simpleTag;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public AddedTag createAddedTag()
-  {
-    AddedTagImpl addedTag = new AddedTagImpl();
-    return addedTag;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Attributes createAttributes()
-  {
-    AttributesImpl attributes = new AttributesImpl();
-    return attributes;
+    WMLKeyImpl wmlKey = new WMLKeyImpl();
+    return wmlKey;
   }
 
   /**

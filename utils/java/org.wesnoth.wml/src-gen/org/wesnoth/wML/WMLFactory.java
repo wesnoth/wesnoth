@@ -2,6 +2,7 @@
  * <copyright>
  * </copyright>
  *
+
  */
 package org.wesnoth.wML;
 
@@ -32,25 +33,7 @@ public interface WMLFactory extends EFactory
    * @return a new object of class '<em>Root</em>'.
    * @generated
    */
-  Root createRoot();
-
-  /**
-   * Returns a new object of class '<em>Text Domain</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Text Domain</em>'.
-   * @generated
-   */
-  TextDomain createTextDomain();
-
-  /**
-   * Returns a new object of class '<em>Preprocessor</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Preprocessor</em>'.
-   * @generated
-   */
-  Preprocessor createPreprocessor();
+  WMLRoot createWMLRoot();
 
   /**
    * Returns a new object of class '<em>Macro</em>'.
@@ -59,61 +42,43 @@ public interface WMLFactory extends EFactory
    * @return a new object of class '<em>Macro</em>'.
    * @generated
    */
-  Macro createMacro();
+  WMLMacro createWMLMacro();
 
   /**
-   * Returns a new object of class '<em>Path Include</em>'.
+   * Returns a new object of class '<em>Tag</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Path Include</em>'.
+   * @return a new object of class '<em>Tag</em>'.
    * @generated
    */
-  PathInclude createPathInclude();
+  WMLTag createWMLTag();
 
   /**
-   * Returns a new object of class '<em>Root Type</em>'.
+   * Returns a new object of class '<em>Start Tag</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Root Type</em>'.
+   * @return a new object of class '<em>Start Tag</em>'.
    * @generated
    */
-  RootType createRootType();
+  WMLStartTag createWMLStartTag();
 
   /**
-   * Returns a new object of class '<em>Root Tag</em>'.
+   * Returns a new object of class '<em>End Tag</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Root Tag</em>'.
+   * @return a new object of class '<em>End Tag</em>'.
    * @generated
    */
-  RootTag createRootTag();
+  WMLEndTag createWMLEndTag();
 
   /**
-   * Returns a new object of class '<em>Simple Tag</em>'.
+   * Returns a new object of class '<em>Key</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Simple Tag</em>'.
+   * @return a new object of class '<em>Key</em>'.
    * @generated
    */
-  SimpleTag createSimpleTag();
-
-  /**
-   * Returns a new object of class '<em>Added Tag</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Added Tag</em>'.
-   * @generated
-   */
-  AddedTag createAddedTag();
-
-  /**
-   * Returns a new object of class '<em>Attributes</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Attributes</em>'.
-   * @generated
-   */
-  Attributes createAttributes();
+  WMLKey createWMLKey();
 
   /**
    * Returns the package supported by this factory.

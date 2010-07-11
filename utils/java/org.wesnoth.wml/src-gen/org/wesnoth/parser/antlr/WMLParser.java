@@ -42,7 +42,7 @@ public class WMLParser extends org.eclipse.xtext.parser.antlr.AbstractAntlrParse
 	
 	@Override 
 	protected String getDefaultRuleName() {
-		return "Root";
+		return "WMLRoot";
 	}
 	
 	public WMLGrammarAccess getGrammarAccess() {

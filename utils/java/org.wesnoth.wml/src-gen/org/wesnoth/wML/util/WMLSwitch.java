@@ -2,6 +2,7 @@
  * <copyright>
  * </copyright>
  *
+
  */
 package org.wesnoth.wML.util;
 
@@ -95,77 +96,45 @@ public class WMLSwitch<T>
   {
     switch (classifierID)
     {
-      case WMLPackage.ROOT:
+      case WMLPackage.WML_ROOT:
       {
-        Root root = (Root)theEObject;
-        T result = caseRoot(root);
+        WMLRoot wmlRoot = (WMLRoot)theEObject;
+        T result = caseWMLRoot(wmlRoot);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case WMLPackage.TEXT_DOMAIN:
+      case WMLPackage.WML_MACRO:
       {
-        TextDomain textDomain = (TextDomain)theEObject;
-        T result = caseTextDomain(textDomain);
+        WMLMacro wmlMacro = (WMLMacro)theEObject;
+        T result = caseWMLMacro(wmlMacro);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case WMLPackage.PREPROCESSOR:
+      case WMLPackage.WML_TAG:
       {
-        Preprocessor preprocessor = (Preprocessor)theEObject;
-        T result = casePreprocessor(preprocessor);
+        WMLTag wmlTag = (WMLTag)theEObject;
+        T result = caseWMLTag(wmlTag);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case WMLPackage.MACRO:
+      case WMLPackage.WML_START_TAG:
       {
-        Macro macro = (Macro)theEObject;
-        T result = caseMacro(macro);
-        if (result == null) result = casePreprocessor(macro);
+        WMLStartTag wmlStartTag = (WMLStartTag)theEObject;
+        T result = caseWMLStartTag(wmlStartTag);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case WMLPackage.PATH_INCLUDE:
+      case WMLPackage.WML_END_TAG:
       {
-        PathInclude pathInclude = (PathInclude)theEObject;
-        T result = casePathInclude(pathInclude);
-        if (result == null) result = casePreprocessor(pathInclude);
+        WMLEndTag wmlEndTag = (WMLEndTag)theEObject;
+        T result = caseWMLEndTag(wmlEndTag);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case WMLPackage.ROOT_TYPE:
+      case WMLPackage.WML_KEY:
       {
-        RootType rootType = (RootType)theEObject;
-        T result = caseRootType(rootType);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case WMLPackage.ROOT_TAG:
-      {
-        RootTag rootTag = (RootTag)theEObject;
-        T result = caseRootTag(rootTag);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case WMLPackage.SIMPLE_TAG:
-      {
-        SimpleTag simpleTag = (SimpleTag)theEObject;
-        T result = caseSimpleTag(simpleTag);
-        if (result == null) result = caseRootTag(simpleTag);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case WMLPackage.ADDED_TAG:
-      {
-        AddedTag addedTag = (AddedTag)theEObject;
-        T result = caseAddedTag(addedTag);
-        if (result == null) result = caseRootTag(addedTag);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case WMLPackage.ATTRIBUTES:
-      {
-        Attributes attributes = (Attributes)theEObject;
-        T result = caseAttributes(attributes);
+        WMLKey wmlKey = (WMLKey)theEObject;
+        T result = caseWMLKey(wmlKey);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -184,39 +153,7 @@ public class WMLSwitch<T>
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseRoot(Root object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Text Domain</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Text Domain</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseTextDomain(TextDomain object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Preprocessor</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Preprocessor</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T casePreprocessor(Preprocessor object)
+  public T caseWMLRoot(WMLRoot object)
   {
     return null;
   }
@@ -232,103 +169,71 @@ public class WMLSwitch<T>
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseMacro(Macro object)
+  public T caseWMLMacro(WMLMacro object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Path Include</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Tag</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Path Include</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Tag</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T casePathInclude(PathInclude object)
+  public T caseWMLTag(WMLTag object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Root Type</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Start Tag</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Root Type</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Start Tag</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseRootType(RootType object)
+  public T caseWMLStartTag(WMLStartTag object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Root Tag</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>End Tag</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Root Tag</em>'.
+   * @return the result of interpreting the object as an instance of '<em>End Tag</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseRootTag(RootTag object)
+  public T caseWMLEndTag(WMLEndTag object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Simple Tag</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Key</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Simple Tag</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Key</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseSimpleTag(SimpleTag object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Added Tag</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Added Tag</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseAddedTag(AddedTag object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Attributes</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Attributes</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseAttributes(Attributes object)
+  public T caseWMLKey(WMLKey object)
   {
     return null;
   }

@@ -2,6 +2,7 @@
  * <copyright>
  * </copyright>
  *
+
  */
 package org.wesnoth.wML.util;
 
@@ -78,54 +79,34 @@ public class WMLAdapterFactory extends AdapterFactoryImpl
     new WMLSwitch<Adapter>()
     {
       @Override
-      public Adapter caseRoot(Root object)
+      public Adapter caseWMLRoot(WMLRoot object)
       {
-        return createRootAdapter();
+        return createWMLRootAdapter();
       }
       @Override
-      public Adapter caseTextDomain(TextDomain object)
+      public Adapter caseWMLMacro(WMLMacro object)
       {
-        return createTextDomainAdapter();
+        return createWMLMacroAdapter();
       }
       @Override
-      public Adapter casePreprocessor(Preprocessor object)
+      public Adapter caseWMLTag(WMLTag object)
       {
-        return createPreprocessorAdapter();
+        return createWMLTagAdapter();
       }
       @Override
-      public Adapter caseMacro(Macro object)
+      public Adapter caseWMLStartTag(WMLStartTag object)
       {
-        return createMacroAdapter();
+        return createWMLStartTagAdapter();
       }
       @Override
-      public Adapter casePathInclude(PathInclude object)
+      public Adapter caseWMLEndTag(WMLEndTag object)
       {
-        return createPathIncludeAdapter();
+        return createWMLEndTagAdapter();
       }
       @Override
-      public Adapter caseRootType(RootType object)
+      public Adapter caseWMLKey(WMLKey object)
       {
-        return createRootTypeAdapter();
-      }
-      @Override
-      public Adapter caseRootTag(RootTag object)
-      {
-        return createRootTagAdapter();
-      }
-      @Override
-      public Adapter caseSimpleTag(SimpleTag object)
-      {
-        return createSimpleTagAdapter();
-      }
-      @Override
-      public Adapter caseAddedTag(AddedTag object)
-      {
-        return createAddedTagAdapter();
-      }
-      @Override
-      public Adapter caseAttributes(Attributes object)
-      {
-        return createAttributesAdapter();
+        return createWMLKeyAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -150,151 +131,91 @@ public class WMLAdapterFactory extends AdapterFactoryImpl
 
 
   /**
-   * Creates a new adapter for an object of class '{@link org.wesnoth.wML.Root <em>Root</em>}'.
+   * Creates a new adapter for an object of class '{@link org.wesnoth.wML.WMLRoot <em>Root</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.wesnoth.wML.Root
+   * @see org.wesnoth.wML.WMLRoot
    * @generated
    */
-  public Adapter createRootAdapter()
+  public Adapter createWMLRootAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.wesnoth.wML.TextDomain <em>Text Domain</em>}'.
+   * Creates a new adapter for an object of class '{@link org.wesnoth.wML.WMLMacro <em>Macro</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.wesnoth.wML.TextDomain
+   * @see org.wesnoth.wML.WMLMacro
    * @generated
    */
-  public Adapter createTextDomainAdapter()
+  public Adapter createWMLMacroAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.wesnoth.wML.Preprocessor <em>Preprocessor</em>}'.
+   * Creates a new adapter for an object of class '{@link org.wesnoth.wML.WMLTag <em>Tag</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.wesnoth.wML.Preprocessor
+   * @see org.wesnoth.wML.WMLTag
    * @generated
    */
-  public Adapter createPreprocessorAdapter()
+  public Adapter createWMLTagAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.wesnoth.wML.Macro <em>Macro</em>}'.
+   * Creates a new adapter for an object of class '{@link org.wesnoth.wML.WMLStartTag <em>Start Tag</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.wesnoth.wML.Macro
+   * @see org.wesnoth.wML.WMLStartTag
    * @generated
    */
-  public Adapter createMacroAdapter()
+  public Adapter createWMLStartTagAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.wesnoth.wML.PathInclude <em>Path Include</em>}'.
+   * Creates a new adapter for an object of class '{@link org.wesnoth.wML.WMLEndTag <em>End Tag</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.wesnoth.wML.PathInclude
+   * @see org.wesnoth.wML.WMLEndTag
    * @generated
    */
-  public Adapter createPathIncludeAdapter()
+  public Adapter createWMLEndTagAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.wesnoth.wML.RootType <em>Root Type</em>}'.
+   * Creates a new adapter for an object of class '{@link org.wesnoth.wML.WMLKey <em>Key</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.wesnoth.wML.RootType
+   * @see org.wesnoth.wML.WMLKey
    * @generated
    */
-  public Adapter createRootTypeAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.wesnoth.wML.RootTag <em>Root Tag</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.wesnoth.wML.RootTag
-   * @generated
-   */
-  public Adapter createRootTagAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.wesnoth.wML.SimpleTag <em>Simple Tag</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.wesnoth.wML.SimpleTag
-   * @generated
-   */
-  public Adapter createSimpleTagAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.wesnoth.wML.AddedTag <em>Added Tag</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.wesnoth.wML.AddedTag
-   * @generated
-   */
-  public Adapter createAddedTagAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.wesnoth.wML.Attributes <em>Attributes</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.wesnoth.wML.Attributes
-   * @generated
-   */
-  public Adapter createAttributesAdapter()
+  public Adapter createWMLKeyAdapter()
   {
     return null;
   }

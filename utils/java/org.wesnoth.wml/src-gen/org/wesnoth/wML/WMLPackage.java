@@ -2,6 +2,7 @@
  * <copyright>
  * </copyright>
  *
+
  */
 package org.wesnoth.wML;
 
@@ -60,41 +61,32 @@ public interface WMLPackage extends EPackage
   WMLPackage eINSTANCE = org.wesnoth.wML.impl.WMLPackageImpl.init();
 
   /**
-   * The meta object id for the '{@link org.wesnoth.wML.impl.RootImpl <em>Root</em>}' class.
+   * The meta object id for the '{@link org.wesnoth.wML.impl.WMLRootImpl <em>Root</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.wesnoth.wML.impl.RootImpl
-   * @see org.wesnoth.wML.impl.WMLPackageImpl#getRoot()
+   * @see org.wesnoth.wML.impl.WMLRootImpl
+   * @see org.wesnoth.wML.impl.WMLPackageImpl#getWMLRoot()
    * @generated
    */
-  int ROOT = 0;
+  int WML_ROOT = 0;
 
   /**
-   * The feature id for the '<em><b>Textdomains</b></em>' containment reference list.
+   * The feature id for the '<em><b>Rtags</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ROOT__TEXTDOMAINS = 0;
+  int WML_ROOT__RTAGS = 0;
 
   /**
-   * The feature id for the '<em><b>Preproc</b></em>' containment reference list.
+   * The feature id for the '<em><b>Rmacros</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ROOT__PREPROC = 1;
-
-  /**
-   * The feature id for the '<em><b>Roots</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ROOT__ROOTS = 2;
+  int WML_ROOT__RMACROS = 1;
 
   /**
    * The number of structural features of the '<em>Root</em>' class.
@@ -103,73 +95,26 @@ public interface WMLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ROOT_FEATURE_COUNT = 3;
+  int WML_ROOT_FEATURE_COUNT = 2;
 
   /**
-   * The meta object id for the '{@link org.wesnoth.wML.impl.TextDomainImpl <em>Text Domain</em>}' class.
+   * The meta object id for the '{@link org.wesnoth.wML.impl.WMLMacroImpl <em>Macro</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.wesnoth.wML.impl.TextDomainImpl
-   * @see org.wesnoth.wML.impl.WMLPackageImpl#getTextDomain()
+   * @see org.wesnoth.wML.impl.WMLMacroImpl
+   * @see org.wesnoth.wML.impl.WMLPackageImpl#getWMLMacro()
    * @generated
    */
-  int TEXT_DOMAIN = 1;
+  int WML_MACRO = 1;
 
   /**
-   * The feature id for the '<em><b>Domain Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TEXT_DOMAIN__DOMAIN_NAME = 0;
-
-  /**
-   * The number of structural features of the '<em>Text Domain</em>' class.
+   * The feature id for the '<em><b>Tagcontent</b></em>' attribute list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TEXT_DOMAIN_FEATURE_COUNT = 1;
-
-  /**
-   * The meta object id for the '{@link org.wesnoth.wML.impl.PreprocessorImpl <em>Preprocessor</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.wesnoth.wML.impl.PreprocessorImpl
-   * @see org.wesnoth.wML.impl.WMLPackageImpl#getPreprocessor()
-   * @generated
-   */
-  int PREPROCESSOR = 2;
-
-  /**
-   * The number of structural features of the '<em>Preprocessor</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PREPROCESSOR_FEATURE_COUNT = 0;
-
-  /**
-   * The meta object id for the '{@link org.wesnoth.wML.impl.MacroImpl <em>Macro</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.wesnoth.wML.impl.MacroImpl
-   * @see org.wesnoth.wML.impl.WMLPackageImpl#getMacro()
-   * @generated
-   */
-  int MACRO = 3;
-
-  /**
-   * The feature id for the '<em><b>Macro Content</b></em>' attribute list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MACRO__MACRO_CONTENT = PREPROCESSOR_FEATURE_COUNT + 0;
+  int WML_MACRO__TAGCONTENT = 0;
 
   /**
    * The number of structural features of the '<em>Macro</em>' class.
@@ -178,495 +123,357 @@ public interface WMLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MACRO_FEATURE_COUNT = PREPROCESSOR_FEATURE_COUNT + 1;
+  int WML_MACRO_FEATURE_COUNT = 1;
 
   /**
-   * The meta object id for the '{@link org.wesnoth.wML.impl.PathIncludeImpl <em>Path Include</em>}' class.
+   * The meta object id for the '{@link org.wesnoth.wML.impl.WMLTagImpl <em>Tag</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.wesnoth.wML.impl.PathIncludeImpl
-   * @see org.wesnoth.wML.impl.WMLPackageImpl#getPathInclude()
+   * @see org.wesnoth.wML.impl.WMLTagImpl
+   * @see org.wesnoth.wML.impl.WMLPackageImpl#getWMLTag()
    * @generated
    */
-  int PATH_INCLUDE = 4;
+  int WML_TAG = 2;
 
   /**
-   * The feature id for the '<em><b>Path</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PATH_INCLUDE__PATH = PREPROCESSOR_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>Path Include</em>' class.
+   * The feature id for the '<em><b>Start</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PATH_INCLUDE_FEATURE_COUNT = PREPROCESSOR_FEATURE_COUNT + 1;
+  int WML_TAG__START = 0;
 
   /**
-   * The meta object id for the '{@link org.wesnoth.wML.impl.RootTypeImpl <em>Root Type</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.wesnoth.wML.impl.RootTypeImpl
-   * @see org.wesnoth.wML.impl.WMLPackageImpl#getRootType()
-   * @generated
-   */
-  int ROOT_TYPE = 5;
-
-  /**
-   * The feature id for the '<em><b>Start Tag</b></em>' containment reference.
+   * The feature id for the '<em><b>Ttags</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ROOT_TYPE__START_TAG = 0;
+  int WML_TAG__TTAGS = 1;
 
   /**
-   * The feature id for the '<em><b>Sub Types</b></em>' containment reference list.
+   * The feature id for the '<em><b>Tkeys</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ROOT_TYPE__SUB_TYPES = 1;
+  int WML_TAG__TKEYS = 2;
 
   /**
-   * The feature id for the '<em><b>At</b></em>' containment reference list.
+   * The feature id for the '<em><b>Tmacros</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ROOT_TYPE__AT = 2;
+  int WML_TAG__TMACROS = 3;
 
   /**
-   * The feature id for the '<em><b>Okpreproc</b></em>' containment reference list.
+   * The feature id for the '<em><b>End</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ROOT_TYPE__OKPREPROC = 3;
+  int WML_TAG__END = 4;
 
   /**
-   * The feature id for the '<em><b>End Tag</b></em>' containment reference.
+   * The number of structural features of the '<em>Tag</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ROOT_TYPE__END_TAG = 4;
+  int WML_TAG_FEATURE_COUNT = 5;
 
   /**
-   * The number of structural features of the '<em>Root Type</em>' class.
+   * The meta object id for the '{@link org.wesnoth.wML.impl.WMLStartTagImpl <em>Start Tag</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.wesnoth.wML.impl.WMLStartTagImpl
+   * @see org.wesnoth.wML.impl.WMLPackageImpl#getWMLStartTag()
+   * @generated
+   */
+  int WML_START_TAG = 3;
+
+  /**
+   * The feature id for the '<em><b>Tagname</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ROOT_TYPE_FEATURE_COUNT = 5;
+  int WML_START_TAG__TAGNAME = 0;
 
   /**
-   * The meta object id for the '{@link org.wesnoth.wML.impl.RootTagImpl <em>Root Tag</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.wesnoth.wML.impl.RootTagImpl
-   * @see org.wesnoth.wML.impl.WMLPackageImpl#getRootTag()
-   * @generated
-   */
-  int ROOT_TAG = 6;
-
-  /**
-   * The feature id for the '<em><b>Tag Name</b></em>' attribute.
+   * The number of structural features of the '<em>Start Tag</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ROOT_TAG__TAG_NAME = 0;
+  int WML_START_TAG_FEATURE_COUNT = 1;
 
   /**
-   * The number of structural features of the '<em>Root Tag</em>' class.
+   * The meta object id for the '{@link org.wesnoth.wML.impl.WMLEndTagImpl <em>End Tag</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.wesnoth.wML.impl.WMLEndTagImpl
+   * @see org.wesnoth.wML.impl.WMLPackageImpl#getWMLEndTag()
+   * @generated
+   */
+  int WML_END_TAG = 4;
+
+  /**
+   * The feature id for the '<em><b>Tagname</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ROOT_TAG_FEATURE_COUNT = 1;
+  int WML_END_TAG__TAGNAME = 0;
 
   /**
-   * The meta object id for the '{@link org.wesnoth.wML.impl.SimpleTagImpl <em>Simple Tag</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.wesnoth.wML.impl.SimpleTagImpl
-   * @see org.wesnoth.wML.impl.WMLPackageImpl#getSimpleTag()
-   * @generated
-   */
-  int SIMPLE_TAG = 7;
-
-  /**
-   * The feature id for the '<em><b>Tag Name</b></em>' attribute.
+   * The number of structural features of the '<em>End Tag</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SIMPLE_TAG__TAG_NAME = ROOT_TAG__TAG_NAME;
+  int WML_END_TAG_FEATURE_COUNT = 1;
 
   /**
-   * The feature id for the '<em><b>End Tag</b></em>' attribute.
+   * The meta object id for the '{@link org.wesnoth.wML.impl.WMLKeyImpl <em>Key</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.wesnoth.wML.impl.WMLKeyImpl
+   * @see org.wesnoth.wML.impl.WMLPackageImpl#getWMLKey()
+   * @generated
+   */
+  int WML_KEY = 5;
+
+  /**
+   * The feature id for the '<em><b>Key Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SIMPLE_TAG__END_TAG = ROOT_TAG_FEATURE_COUNT + 0;
+  int WML_KEY__KEY_NAME = 0;
 
   /**
-   * The number of structural features of the '<em>Simple Tag</em>' class.
+   * The feature id for the '<em><b>Key Value</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SIMPLE_TAG_FEATURE_COUNT = ROOT_TAG_FEATURE_COUNT + 1;
+  int WML_KEY__KEY_VALUE = 1;
 
   /**
-   * The meta object id for the '{@link org.wesnoth.wML.impl.AddedTagImpl <em>Added Tag</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.wesnoth.wML.impl.AddedTagImpl
-   * @see org.wesnoth.wML.impl.WMLPackageImpl#getAddedTag()
-   * @generated
-   */
-  int ADDED_TAG = 8;
-
-  /**
-   * The feature id for the '<em><b>Tag Name</b></em>' attribute.
+   * The number of structural features of the '<em>Key</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ADDED_TAG__TAG_NAME = ROOT_TAG__TAG_NAME;
-
-  /**
-   * The number of structural features of the '<em>Added Tag</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ADDED_TAG_FEATURE_COUNT = ROOT_TAG_FEATURE_COUNT + 0;
-
-  /**
-   * The meta object id for the '{@link org.wesnoth.wML.impl.AttributesImpl <em>Attributes</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.wesnoth.wML.impl.AttributesImpl
-   * @see org.wesnoth.wML.impl.WMLPackageImpl#getAttributes()
-   * @generated
-   */
-  int ATTRIBUTES = 9;
-
-  /**
-   * The feature id for the '<em><b>Attr Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ATTRIBUTES__ATTR_NAME = 0;
-
-  /**
-   * The feature id for the '<em><b>Attr Value</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ATTRIBUTES__ATTR_VALUE = 1;
-
-  /**
-   * The number of structural features of the '<em>Attributes</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ATTRIBUTES_FEATURE_COUNT = 2;
+  int WML_KEY_FEATURE_COUNT = 2;
 
 
   /**
-   * Returns the meta object for class '{@link org.wesnoth.wML.Root <em>Root</em>}'.
+   * Returns the meta object for class '{@link org.wesnoth.wML.WMLRoot <em>Root</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Root</em>'.
-   * @see org.wesnoth.wML.Root
+   * @see org.wesnoth.wML.WMLRoot
    * @generated
    */
-  EClass getRoot();
+  EClass getWMLRoot();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.wesnoth.wML.Root#getTextdomains <em>Textdomains</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.wesnoth.wML.WMLRoot#getRtags <em>Rtags</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Textdomains</em>'.
-   * @see org.wesnoth.wML.Root#getTextdomains()
-   * @see #getRoot()
+   * @return the meta object for the containment reference list '<em>Rtags</em>'.
+   * @see org.wesnoth.wML.WMLRoot#getRtags()
+   * @see #getWMLRoot()
    * @generated
    */
-  EReference getRoot_Textdomains();
+  EReference getWMLRoot_Rtags();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.wesnoth.wML.Root#getPreproc <em>Preproc</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.wesnoth.wML.WMLRoot#getRmacros <em>Rmacros</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Preproc</em>'.
-   * @see org.wesnoth.wML.Root#getPreproc()
-   * @see #getRoot()
+   * @return the meta object for the containment reference list '<em>Rmacros</em>'.
+   * @see org.wesnoth.wML.WMLRoot#getRmacros()
+   * @see #getWMLRoot()
    * @generated
    */
-  EReference getRoot_Preproc();
+  EReference getWMLRoot_Rmacros();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.wesnoth.wML.Root#getRoots <em>Roots</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Roots</em>'.
-   * @see org.wesnoth.wML.Root#getRoots()
-   * @see #getRoot()
-   * @generated
-   */
-  EReference getRoot_Roots();
-
-  /**
-   * Returns the meta object for class '{@link org.wesnoth.wML.TextDomain <em>Text Domain</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Text Domain</em>'.
-   * @see org.wesnoth.wML.TextDomain
-   * @generated
-   */
-  EClass getTextDomain();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.wesnoth.wML.TextDomain#getDomainName <em>Domain Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Domain Name</em>'.
-   * @see org.wesnoth.wML.TextDomain#getDomainName()
-   * @see #getTextDomain()
-   * @generated
-   */
-  EAttribute getTextDomain_DomainName();
-
-  /**
-   * Returns the meta object for class '{@link org.wesnoth.wML.Preprocessor <em>Preprocessor</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Preprocessor</em>'.
-   * @see org.wesnoth.wML.Preprocessor
-   * @generated
-   */
-  EClass getPreprocessor();
-
-  /**
-   * Returns the meta object for class '{@link org.wesnoth.wML.Macro <em>Macro</em>}'.
+   * Returns the meta object for class '{@link org.wesnoth.wML.WMLMacro <em>Macro</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for class '<em>Macro</em>'.
-   * @see org.wesnoth.wML.Macro
+   * @see org.wesnoth.wML.WMLMacro
    * @generated
    */
-  EClass getMacro();
+  EClass getWMLMacro();
 
   /**
-   * Returns the meta object for the attribute list '{@link org.wesnoth.wML.Macro#getMacroContent <em>Macro Content</em>}'.
+   * Returns the meta object for the attribute list '{@link org.wesnoth.wML.WMLMacro#getTagcontent <em>Tagcontent</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute list '<em>Macro Content</em>'.
-   * @see org.wesnoth.wML.Macro#getMacroContent()
-   * @see #getMacro()
+   * @return the meta object for the attribute list '<em>Tagcontent</em>'.
+   * @see org.wesnoth.wML.WMLMacro#getTagcontent()
+   * @see #getWMLMacro()
    * @generated
    */
-  EAttribute getMacro_MacroContent();
+  EAttribute getWMLMacro_Tagcontent();
 
   /**
-   * Returns the meta object for class '{@link org.wesnoth.wML.PathInclude <em>Path Include</em>}'.
+   * Returns the meta object for class '{@link org.wesnoth.wML.WMLTag <em>Tag</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Path Include</em>'.
-   * @see org.wesnoth.wML.PathInclude
+   * @return the meta object for class '<em>Tag</em>'.
+   * @see org.wesnoth.wML.WMLTag
    * @generated
    */
-  EClass getPathInclude();
+  EClass getWMLTag();
 
   /**
-   * Returns the meta object for the attribute '{@link org.wesnoth.wML.PathInclude#getPath <em>Path</em>}'.
+   * Returns the meta object for the containment reference '{@link org.wesnoth.wML.WMLTag#getStart <em>Start</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Path</em>'.
-   * @see org.wesnoth.wML.PathInclude#getPath()
-   * @see #getPathInclude()
+   * @return the meta object for the containment reference '<em>Start</em>'.
+   * @see org.wesnoth.wML.WMLTag#getStart()
+   * @see #getWMLTag()
    * @generated
    */
-  EAttribute getPathInclude_Path();
+  EReference getWMLTag_Start();
 
   /**
-   * Returns the meta object for class '{@link org.wesnoth.wML.RootType <em>Root Type</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.wesnoth.wML.WMLTag#getTtags <em>Ttags</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Root Type</em>'.
-   * @see org.wesnoth.wML.RootType
+   * @return the meta object for the containment reference list '<em>Ttags</em>'.
+   * @see org.wesnoth.wML.WMLTag#getTtags()
+   * @see #getWMLTag()
    * @generated
    */
-  EClass getRootType();
+  EReference getWMLTag_Ttags();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.wesnoth.wML.RootType#getStartTag <em>Start Tag</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.wesnoth.wML.WMLTag#getTkeys <em>Tkeys</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Start Tag</em>'.
-   * @see org.wesnoth.wML.RootType#getStartTag()
-   * @see #getRootType()
+   * @return the meta object for the containment reference list '<em>Tkeys</em>'.
+   * @see org.wesnoth.wML.WMLTag#getTkeys()
+   * @see #getWMLTag()
    * @generated
    */
-  EReference getRootType_StartTag();
+  EReference getWMLTag_Tkeys();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.wesnoth.wML.RootType#getSubTypes <em>Sub Types</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.wesnoth.wML.WMLTag#getTmacros <em>Tmacros</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Sub Types</em>'.
-   * @see org.wesnoth.wML.RootType#getSubTypes()
-   * @see #getRootType()
+   * @return the meta object for the containment reference list '<em>Tmacros</em>'.
+   * @see org.wesnoth.wML.WMLTag#getTmacros()
+   * @see #getWMLTag()
    * @generated
    */
-  EReference getRootType_SubTypes();
+  EReference getWMLTag_Tmacros();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.wesnoth.wML.RootType#getAt <em>At</em>}'.
+   * Returns the meta object for the containment reference '{@link org.wesnoth.wML.WMLTag#getEnd <em>End</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>At</em>'.
-   * @see org.wesnoth.wML.RootType#getAt()
-   * @see #getRootType()
+   * @return the meta object for the containment reference '<em>End</em>'.
+   * @see org.wesnoth.wML.WMLTag#getEnd()
+   * @see #getWMLTag()
    * @generated
    */
-  EReference getRootType_At();
+  EReference getWMLTag_End();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.wesnoth.wML.RootType#getOkpreproc <em>Okpreproc</em>}'.
+   * Returns the meta object for class '{@link org.wesnoth.wML.WMLStartTag <em>Start Tag</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Okpreproc</em>'.
-   * @see org.wesnoth.wML.RootType#getOkpreproc()
-   * @see #getRootType()
+   * @return the meta object for class '<em>Start Tag</em>'.
+   * @see org.wesnoth.wML.WMLStartTag
    * @generated
    */
-  EReference getRootType_Okpreproc();
+  EClass getWMLStartTag();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.wesnoth.wML.RootType#getEndTag <em>End Tag</em>}'.
+   * Returns the meta object for the attribute '{@link org.wesnoth.wML.WMLStartTag#getTagname <em>Tagname</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>End Tag</em>'.
-   * @see org.wesnoth.wML.RootType#getEndTag()
-   * @see #getRootType()
+   * @return the meta object for the attribute '<em>Tagname</em>'.
+   * @see org.wesnoth.wML.WMLStartTag#getTagname()
+   * @see #getWMLStartTag()
    * @generated
    */
-  EReference getRootType_EndTag();
+  EAttribute getWMLStartTag_Tagname();
 
   /**
-   * Returns the meta object for class '{@link org.wesnoth.wML.RootTag <em>Root Tag</em>}'.
+   * Returns the meta object for class '{@link org.wesnoth.wML.WMLEndTag <em>End Tag</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Root Tag</em>'.
-   * @see org.wesnoth.wML.RootTag
+   * @return the meta object for class '<em>End Tag</em>'.
+   * @see org.wesnoth.wML.WMLEndTag
    * @generated
    */
-  EClass getRootTag();
+  EClass getWMLEndTag();
 
   /**
-   * Returns the meta object for the attribute '{@link org.wesnoth.wML.RootTag#getTagName <em>Tag Name</em>}'.
+   * Returns the meta object for the attribute '{@link org.wesnoth.wML.WMLEndTag#getTagname <em>Tagname</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Tag Name</em>'.
-   * @see org.wesnoth.wML.RootTag#getTagName()
-   * @see #getRootTag()
+   * @return the meta object for the attribute '<em>Tagname</em>'.
+   * @see org.wesnoth.wML.WMLEndTag#getTagname()
+   * @see #getWMLEndTag()
    * @generated
    */
-  EAttribute getRootTag_TagName();
+  EAttribute getWMLEndTag_Tagname();
 
   /**
-   * Returns the meta object for class '{@link org.wesnoth.wML.SimpleTag <em>Simple Tag</em>}'.
+   * Returns the meta object for class '{@link org.wesnoth.wML.WMLKey <em>Key</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Simple Tag</em>'.
-   * @see org.wesnoth.wML.SimpleTag
+   * @return the meta object for class '<em>Key</em>'.
+   * @see org.wesnoth.wML.WMLKey
    * @generated
    */
-  EClass getSimpleTag();
+  EClass getWMLKey();
 
   /**
-   * Returns the meta object for the attribute '{@link org.wesnoth.wML.SimpleTag#isEndTag <em>End Tag</em>}'.
+   * Returns the meta object for the attribute '{@link org.wesnoth.wML.WMLKey#getKeyName <em>Key Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>End Tag</em>'.
-   * @see org.wesnoth.wML.SimpleTag#isEndTag()
-   * @see #getSimpleTag()
+   * @return the meta object for the attribute '<em>Key Name</em>'.
+   * @see org.wesnoth.wML.WMLKey#getKeyName()
+   * @see #getWMLKey()
    * @generated
    */
-  EAttribute getSimpleTag_EndTag();
+  EAttribute getWMLKey_KeyName();
 
   /**
-   * Returns the meta object for class '{@link org.wesnoth.wML.AddedTag <em>Added Tag</em>}'.
+   * Returns the meta object for the attribute '{@link org.wesnoth.wML.WMLKey#getKeyValue <em>Key Value</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Added Tag</em>'.
-   * @see org.wesnoth.wML.AddedTag
+   * @return the meta object for the attribute '<em>Key Value</em>'.
+   * @see org.wesnoth.wML.WMLKey#getKeyValue()
+   * @see #getWMLKey()
    * @generated
    */
-  EClass getAddedTag();
-
-  /**
-   * Returns the meta object for class '{@link org.wesnoth.wML.Attributes <em>Attributes</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Attributes</em>'.
-   * @see org.wesnoth.wML.Attributes
-   * @generated
-   */
-  EClass getAttributes();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.wesnoth.wML.Attributes#getAttrName <em>Attr Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Attr Name</em>'.
-   * @see org.wesnoth.wML.Attributes#getAttrName()
-   * @see #getAttributes()
-   * @generated
-   */
-  EAttribute getAttributes_AttrName();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.wesnoth.wML.Attributes#getAttrValue <em>Attr Value</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Attr Value</em>'.
-   * @see org.wesnoth.wML.Attributes#getAttrValue()
-   * @see #getAttributes()
-   * @generated
-   */
-  EAttribute getAttributes_AttrValue();
+  EAttribute getWMLKey_KeyValue();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -692,224 +499,160 @@ public interface WMLPackage extends EPackage
   interface Literals
   {
     /**
-     * The meta object literal for the '{@link org.wesnoth.wML.impl.RootImpl <em>Root</em>}' class.
+     * The meta object literal for the '{@link org.wesnoth.wML.impl.WMLRootImpl <em>Root</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.wesnoth.wML.impl.RootImpl
-     * @see org.wesnoth.wML.impl.WMLPackageImpl#getRoot()
+     * @see org.wesnoth.wML.impl.WMLRootImpl
+     * @see org.wesnoth.wML.impl.WMLPackageImpl#getWMLRoot()
      * @generated
      */
-    EClass ROOT = eINSTANCE.getRoot();
+    EClass WML_ROOT = eINSTANCE.getWMLRoot();
 
     /**
-     * The meta object literal for the '<em><b>Textdomains</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Rtags</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference ROOT__TEXTDOMAINS = eINSTANCE.getRoot_Textdomains();
+    EReference WML_ROOT__RTAGS = eINSTANCE.getWMLRoot_Rtags();
 
     /**
-     * The meta object literal for the '<em><b>Preproc</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Rmacros</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference ROOT__PREPROC = eINSTANCE.getRoot_Preproc();
+    EReference WML_ROOT__RMACROS = eINSTANCE.getWMLRoot_Rmacros();
 
     /**
-     * The meta object literal for the '<em><b>Roots</b></em>' containment reference list feature.
+     * The meta object literal for the '{@link org.wesnoth.wML.impl.WMLMacroImpl <em>Macro</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * @see org.wesnoth.wML.impl.WMLMacroImpl
+     * @see org.wesnoth.wML.impl.WMLPackageImpl#getWMLMacro()
      * @generated
      */
-    EReference ROOT__ROOTS = eINSTANCE.getRoot_Roots();
+    EClass WML_MACRO = eINSTANCE.getWMLMacro();
 
     /**
-     * The meta object literal for the '{@link org.wesnoth.wML.impl.TextDomainImpl <em>Text Domain</em>}' class.
+     * The meta object literal for the '<em><b>Tagcontent</b></em>' attribute list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.wesnoth.wML.impl.TextDomainImpl
-     * @see org.wesnoth.wML.impl.WMLPackageImpl#getTextDomain()
      * @generated
      */
-    EClass TEXT_DOMAIN = eINSTANCE.getTextDomain();
+    EAttribute WML_MACRO__TAGCONTENT = eINSTANCE.getWMLMacro_Tagcontent();
 
     /**
-     * The meta object literal for the '<em><b>Domain Name</b></em>' attribute feature.
+     * The meta object literal for the '{@link org.wesnoth.wML.impl.WMLTagImpl <em>Tag</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * @see org.wesnoth.wML.impl.WMLTagImpl
+     * @see org.wesnoth.wML.impl.WMLPackageImpl#getWMLTag()
      * @generated
      */
-    EAttribute TEXT_DOMAIN__DOMAIN_NAME = eINSTANCE.getTextDomain_DomainName();
+    EClass WML_TAG = eINSTANCE.getWMLTag();
 
     /**
-     * The meta object literal for the '{@link org.wesnoth.wML.impl.PreprocessorImpl <em>Preprocessor</em>}' class.
+     * The meta object literal for the '<em><b>Start</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.wesnoth.wML.impl.PreprocessorImpl
-     * @see org.wesnoth.wML.impl.WMLPackageImpl#getPreprocessor()
      * @generated
      */
-    EClass PREPROCESSOR = eINSTANCE.getPreprocessor();
+    EReference WML_TAG__START = eINSTANCE.getWMLTag_Start();
 
     /**
-     * The meta object literal for the '{@link org.wesnoth.wML.impl.MacroImpl <em>Macro</em>}' class.
+     * The meta object literal for the '<em><b>Ttags</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.wesnoth.wML.impl.MacroImpl
-     * @see org.wesnoth.wML.impl.WMLPackageImpl#getMacro()
      * @generated
      */
-    EClass MACRO = eINSTANCE.getMacro();
+    EReference WML_TAG__TTAGS = eINSTANCE.getWMLTag_Ttags();
 
     /**
-     * The meta object literal for the '<em><b>Macro Content</b></em>' attribute list feature.
+     * The meta object literal for the '<em><b>Tkeys</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute MACRO__MACRO_CONTENT = eINSTANCE.getMacro_MacroContent();
+    EReference WML_TAG__TKEYS = eINSTANCE.getWMLTag_Tkeys();
 
     /**
-     * The meta object literal for the '{@link org.wesnoth.wML.impl.PathIncludeImpl <em>Path Include</em>}' class.
+     * The meta object literal for the '<em><b>Tmacros</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.wesnoth.wML.impl.PathIncludeImpl
-     * @see org.wesnoth.wML.impl.WMLPackageImpl#getPathInclude()
      * @generated
      */
-    EClass PATH_INCLUDE = eINSTANCE.getPathInclude();
+    EReference WML_TAG__TMACROS = eINSTANCE.getWMLTag_Tmacros();
 
     /**
-     * The meta object literal for the '<em><b>Path</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>End</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute PATH_INCLUDE__PATH = eINSTANCE.getPathInclude_Path();
+    EReference WML_TAG__END = eINSTANCE.getWMLTag_End();
 
     /**
-     * The meta object literal for the '{@link org.wesnoth.wML.impl.RootTypeImpl <em>Root Type</em>}' class.
+     * The meta object literal for the '{@link org.wesnoth.wML.impl.WMLStartTagImpl <em>Start Tag</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.wesnoth.wML.impl.RootTypeImpl
-     * @see org.wesnoth.wML.impl.WMLPackageImpl#getRootType()
+     * @see org.wesnoth.wML.impl.WMLStartTagImpl
+     * @see org.wesnoth.wML.impl.WMLPackageImpl#getWMLStartTag()
      * @generated
      */
-    EClass ROOT_TYPE = eINSTANCE.getRootType();
+    EClass WML_START_TAG = eINSTANCE.getWMLStartTag();
 
     /**
-     * The meta object literal for the '<em><b>Start Tag</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Tagname</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference ROOT_TYPE__START_TAG = eINSTANCE.getRootType_StartTag();
+    EAttribute WML_START_TAG__TAGNAME = eINSTANCE.getWMLStartTag_Tagname();
 
     /**
-     * The meta object literal for the '<em><b>Sub Types</b></em>' containment reference list feature.
+     * The meta object literal for the '{@link org.wesnoth.wML.impl.WMLEndTagImpl <em>End Tag</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * @see org.wesnoth.wML.impl.WMLEndTagImpl
+     * @see org.wesnoth.wML.impl.WMLPackageImpl#getWMLEndTag()
      * @generated
      */
-    EReference ROOT_TYPE__SUB_TYPES = eINSTANCE.getRootType_SubTypes();
+    EClass WML_END_TAG = eINSTANCE.getWMLEndTag();
 
     /**
-     * The meta object literal for the '<em><b>At</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Tagname</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference ROOT_TYPE__AT = eINSTANCE.getRootType_At();
+    EAttribute WML_END_TAG__TAGNAME = eINSTANCE.getWMLEndTag_Tagname();
 
     /**
-     * The meta object literal for the '<em><b>Okpreproc</b></em>' containment reference list feature.
+     * The meta object literal for the '{@link org.wesnoth.wML.impl.WMLKeyImpl <em>Key</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * @see org.wesnoth.wML.impl.WMLKeyImpl
+     * @see org.wesnoth.wML.impl.WMLPackageImpl#getWMLKey()
      * @generated
      */
-    EReference ROOT_TYPE__OKPREPROC = eINSTANCE.getRootType_Okpreproc();
+    EClass WML_KEY = eINSTANCE.getWMLKey();
 
     /**
-     * The meta object literal for the '<em><b>End Tag</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Key Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference ROOT_TYPE__END_TAG = eINSTANCE.getRootType_EndTag();
+    EAttribute WML_KEY__KEY_NAME = eINSTANCE.getWMLKey_KeyName();
 
     /**
-     * The meta object literal for the '{@link org.wesnoth.wML.impl.RootTagImpl <em>Root Tag</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.wesnoth.wML.impl.RootTagImpl
-     * @see org.wesnoth.wML.impl.WMLPackageImpl#getRootTag()
-     * @generated
-     */
-    EClass ROOT_TAG = eINSTANCE.getRootTag();
-
-    /**
-     * The meta object literal for the '<em><b>Tag Name</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Key Value</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute ROOT_TAG__TAG_NAME = eINSTANCE.getRootTag_TagName();
-
-    /**
-     * The meta object literal for the '{@link org.wesnoth.wML.impl.SimpleTagImpl <em>Simple Tag</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.wesnoth.wML.impl.SimpleTagImpl
-     * @see org.wesnoth.wML.impl.WMLPackageImpl#getSimpleTag()
-     * @generated
-     */
-    EClass SIMPLE_TAG = eINSTANCE.getSimpleTag();
-
-    /**
-     * The meta object literal for the '<em><b>End Tag</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute SIMPLE_TAG__END_TAG = eINSTANCE.getSimpleTag_EndTag();
-
-    /**
-     * The meta object literal for the '{@link org.wesnoth.wML.impl.AddedTagImpl <em>Added Tag</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.wesnoth.wML.impl.AddedTagImpl
-     * @see org.wesnoth.wML.impl.WMLPackageImpl#getAddedTag()
-     * @generated
-     */
-    EClass ADDED_TAG = eINSTANCE.getAddedTag();
-
-    /**
-     * The meta object literal for the '{@link org.wesnoth.wML.impl.AttributesImpl <em>Attributes</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.wesnoth.wML.impl.AttributesImpl
-     * @see org.wesnoth.wML.impl.WMLPackageImpl#getAttributes()
-     * @generated
-     */
-    EClass ATTRIBUTES = eINSTANCE.getAttributes();
-
-    /**
-     * The meta object literal for the '<em><b>Attr Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute ATTRIBUTES__ATTR_NAME = eINSTANCE.getAttributes_AttrName();
-
-    /**
-     * The meta object literal for the '<em><b>Attr Value</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute ATTRIBUTES__ATTR_VALUE = eINSTANCE.getAttributes_AttrValue();
+    EAttribute WML_KEY__KEY_VALUE = eINSTANCE.getWMLKey_KeyValue();
 
   }
 

@@ -37,36 +37,27 @@ public class WMLParser extends AbstractContentAssistParser {
 			nameMappings = new HashMap<AbstractElement, String>() {
 				private static final long serialVersionUID = 1L;
 				{
-					put(grammarAccess.getPreprocessorAccess().getAlternatives(), "rule__Preprocessor__Alternatives");
-					put(grammarAccess.getPathIncludeAccess().getPathAlternatives_1_0(), "rule__PathInclude__PathAlternatives_1_0");
-					put(grammarAccess.getRootTagAccess().getAlternatives(), "rule__RootTag__Alternatives");
-					put(grammarAccess.getAttributesAccess().getAttrValueAlternatives_2_0(), "rule__Attributes__AttrValueAlternatives_2_0");
-					put(grammarAccess.getRootAccess().getGroup(), "rule__Root__Group__0");
-					put(grammarAccess.getTextDomainAccess().getGroup(), "rule__TextDomain__Group__0");
-					put(grammarAccess.getMacroAccess().getGroup(), "rule__Macro__Group__0");
-					put(grammarAccess.getPathIncludeAccess().getGroup(), "rule__PathInclude__Group__0");
-					put(grammarAccess.getRootTypeAccess().getGroup(), "rule__RootType__Group__0");
-					put(grammarAccess.getSimpleTagAccess().getGroup(), "rule__SimpleTag__Group__0");
-					put(grammarAccess.getAddedTagAccess().getGroup(), "rule__AddedTag__Group__0");
-					put(grammarAccess.getAttributesAccess().getGroup(), "rule__Attributes__Group__0");
-					put(grammarAccess.getTSTRINGAccess().getGroup(), "rule__TSTRING__Group__0");
-					put(grammarAccess.getHOMEPATHAccess().getGroup(), "rule__HOMEPATH__Group__0");
-					put(grammarAccess.getRootAccess().getTextdomainsAssignment_0(), "rule__Root__TextdomainsAssignment_0");
-					put(grammarAccess.getRootAccess().getPreprocAssignment_1(), "rule__Root__PreprocAssignment_1");
-					put(grammarAccess.getRootAccess().getRootsAssignment_2(), "rule__Root__RootsAssignment_2");
-					put(grammarAccess.getTextDomainAccess().getDomainNameAssignment_1(), "rule__TextDomain__DomainNameAssignment_1");
-					put(grammarAccess.getMacroAccess().getMacroContentAssignment_1(), "rule__Macro__MacroContentAssignment_1");
-					put(grammarAccess.getPathIncludeAccess().getPathAssignment_1(), "rule__PathInclude__PathAssignment_1");
-					put(grammarAccess.getRootTypeAccess().getStartTagAssignment_1(), "rule__RootType__StartTagAssignment_1");
-					put(grammarAccess.getRootTypeAccess().getSubTypesAssignment_3(), "rule__RootType__SubTypesAssignment_3");
-					put(grammarAccess.getRootTypeAccess().getAtAssignment_4(), "rule__RootType__AtAssignment_4");
-					put(grammarAccess.getRootTypeAccess().getOkpreprocAssignment_5(), "rule__RootType__OkpreprocAssignment_5");
-					put(grammarAccess.getRootTypeAccess().getEndTagAssignment_8(), "rule__RootType__EndTagAssignment_8");
-					put(grammarAccess.getSimpleTagAccess().getEndTagAssignment_0(), "rule__SimpleTag__EndTagAssignment_0");
-					put(grammarAccess.getSimpleTagAccess().getTagNameAssignment_1(), "rule__SimpleTag__TagNameAssignment_1");
-					put(grammarAccess.getAddedTagAccess().getTagNameAssignment_1(), "rule__AddedTag__TagNameAssignment_1");
-					put(grammarAccess.getAttributesAccess().getAttrNameAssignment_0(), "rule__Attributes__AttrNameAssignment_0");
-					put(grammarAccess.getAttributesAccess().getAttrValueAssignment_2(), "rule__Attributes__AttrValueAssignment_2");
+					put(grammarAccess.getWMLRootAccess().getAlternatives(), "rule__WMLRoot__Alternatives");
+					put(grammarAccess.getWMLTagAccess().getAlternatives_1(), "rule__WMLTag__Alternatives_1");
+					put(grammarAccess.getWMLKeyAccess().getKeyValueAlternatives_2_0(), "rule__WMLKey__KeyValueAlternatives_2_0");
+					put(grammarAccess.getWMLMacroAccess().getGroup(), "rule__WMLMacro__Group__0");
+					put(grammarAccess.getWMLTagAccess().getGroup(), "rule__WMLTag__Group__0");
+					put(grammarAccess.getWMLStartTagAccess().getGroup(), "rule__WMLStartTag__Group__0");
+					put(grammarAccess.getWMLEndTagAccess().getGroup(), "rule__WMLEndTag__Group__0");
+					put(grammarAccess.getWMLKeyAccess().getGroup(), "rule__WMLKey__Group__0");
+					put(grammarAccess.getFLOATAccess().getGroup(), "rule__FLOAT__Group__0");
+					put(grammarAccess.getWMLRootAccess().getRtagsAssignment_0(), "rule__WMLRoot__RtagsAssignment_0");
+					put(grammarAccess.getWMLRootAccess().getRmacrosAssignment_1(), "rule__WMLRoot__RmacrosAssignment_1");
+					put(grammarAccess.getWMLMacroAccess().getTagcontentAssignment_1(), "rule__WMLMacro__TagcontentAssignment_1");
+					put(grammarAccess.getWMLTagAccess().getStartAssignment_0(), "rule__WMLTag__StartAssignment_0");
+					put(grammarAccess.getWMLTagAccess().getTtagsAssignment_1_0(), "rule__WMLTag__TtagsAssignment_1_0");
+					put(grammarAccess.getWMLTagAccess().getTkeysAssignment_1_1(), "rule__WMLTag__TkeysAssignment_1_1");
+					put(grammarAccess.getWMLTagAccess().getTmacrosAssignment_1_2(), "rule__WMLTag__TmacrosAssignment_1_2");
+					put(grammarAccess.getWMLTagAccess().getEndAssignment_2(), "rule__WMLTag__EndAssignment_2");
+					put(grammarAccess.getWMLStartTagAccess().getTagnameAssignment_1(), "rule__WMLStartTag__TagnameAssignment_1");
+					put(grammarAccess.getWMLEndTagAccess().getTagnameAssignment_1(), "rule__WMLEndTag__TagnameAssignment_1");
+					put(grammarAccess.getWMLKeyAccess().getKeyNameAssignment_0(), "rule__WMLKey__KeyNameAssignment_0");
+					put(grammarAccess.getWMLKeyAccess().getKeyValueAssignment_2(), "rule__WMLKey__KeyValueAssignment_2");
 				}
 			};
 		}
@@ -77,7 +68,7 @@ public class WMLParser extends AbstractContentAssistParser {
 	protected Collection<FollowElement> getFollowElements(AbstractInternalContentAssistParser parser) {
 		try {
 			org.wesnoth.ui.contentassist.antlr.internal.InternalWMLParser typedParser = (org.wesnoth.ui.contentassist.antlr.internal.InternalWMLParser) parser;
-			typedParser.entryRuleRoot();
+			typedParser.entryRuleWMLRoot();
 			return typedParser.getFollowElements();
 		} catch(RecognitionException ex) {
 			throw new RuntimeException(ex);

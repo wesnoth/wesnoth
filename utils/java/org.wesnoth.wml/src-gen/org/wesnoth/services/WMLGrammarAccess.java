@@ -16,421 +16,256 @@ import org.eclipse.xtext.service.AbstractElementFinder.*;
 public class WMLGrammarAccess extends AbstractGrammarElementFinder {
 	
 	
-	public class RootElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Root");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cTextdomainsAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cTextdomainsTextDomainParserRuleCall_0_0 = (RuleCall)cTextdomainsAssignment_0.eContents().get(0);
-		private final Assignment cPreprocAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cPreprocPreprocessorParserRuleCall_1_0 = (RuleCall)cPreprocAssignment_1.eContents().get(0);
-		private final Assignment cRootsAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cRootsRootTypeParserRuleCall_2_0 = (RuleCall)cRootsAssignment_2.eContents().get(0);
-		
-		//Root:
-		//	textdomains+=TextDomain* preproc+=Preprocessor* roots+=RootType*;
-		public ParserRule getRule() { return rule; }
-
-		//textdomains+=TextDomain* preproc+=Preprocessor* roots+=RootType*
-		public Group getGroup() { return cGroup; }
-
-		//textdomains+=TextDomain*
-		public Assignment getTextdomainsAssignment_0() { return cTextdomainsAssignment_0; }
-
-		//TextDomain
-		public RuleCall getTextdomainsTextDomainParserRuleCall_0_0() { return cTextdomainsTextDomainParserRuleCall_0_0; }
-
-		//preproc+=Preprocessor*
-		public Assignment getPreprocAssignment_1() { return cPreprocAssignment_1; }
-
-		//Preprocessor
-		public RuleCall getPreprocPreprocessorParserRuleCall_1_0() { return cPreprocPreprocessorParserRuleCall_1_0; }
-
-		//roots+=RootType*
-		public Assignment getRootsAssignment_2() { return cRootsAssignment_2; }
-
-		//RootType
-		public RuleCall getRootsRootTypeParserRuleCall_2_0() { return cRootsRootTypeParserRuleCall_2_0; }
-	}
-
-	public class TextDomainElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "TextDomain");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cTextdomainKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cDomainNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cDomainNameIDTerminalRuleCall_1_0 = (RuleCall)cDomainNameAssignment_1.eContents().get(0);
-		
-		//TextDomain:
-		//	"#textdomain " DomainName=ID;
-		public ParserRule getRule() { return rule; }
-
-		//"#textdomain " DomainName=ID
-		public Group getGroup() { return cGroup; }
-
-		//"#textdomain "
-		public Keyword getTextdomainKeyword_0() { return cTextdomainKeyword_0; }
-
-		//DomainName=ID
-		public Assignment getDomainNameAssignment_1() { return cDomainNameAssignment_1; }
-
-		//ID
-		public RuleCall getDomainNameIDTerminalRuleCall_1_0() { return cDomainNameIDTerminalRuleCall_1_0; }
-	}
-
-	public class PreprocessorElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Preprocessor");
+	public class WMLRootElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "WMLRoot");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cMacroParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cPathIncludeParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final Assignment cRtagsAssignment_0 = (Assignment)cAlternatives.eContents().get(0);
+		private final RuleCall cRtagsWMLTagParserRuleCall_0_0 = (RuleCall)cRtagsAssignment_0.eContents().get(0);
+		private final Assignment cRmacrosAssignment_1 = (Assignment)cAlternatives.eContents().get(1);
+		private final RuleCall cRmacrosWMLMacroParserRuleCall_1_0 = (RuleCall)cRmacrosAssignment_1.eContents().get(0);
 		
-		//Preprocessor:
-		//	Macro | PathInclude;
+		//WMLRoot:
+		//	(Rtags+=WMLTag | Rmacros+=WMLMacro)*;
 		public ParserRule getRule() { return rule; }
 
-		//Macro | PathInclude
+		//(Rtags+=WMLTag | Rmacros+=WMLMacro)*
 		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//Macro
-		public RuleCall getMacroParserRuleCall_0() { return cMacroParserRuleCall_0; }
+		//Rtags+=WMLTag
+		public Assignment getRtagsAssignment_0() { return cRtagsAssignment_0; }
 
-		//PathInclude
-		public RuleCall getPathIncludeParserRuleCall_1() { return cPathIncludeParserRuleCall_1; }
+		//WMLTag
+		public RuleCall getRtagsWMLTagParserRuleCall_0_0() { return cRtagsWMLTagParserRuleCall_0_0; }
+
+		//Rmacros+=WMLMacro
+		public Assignment getRmacrosAssignment_1() { return cRmacrosAssignment_1; }
+
+		//WMLMacro
+		public RuleCall getRmacrosWMLMacroParserRuleCall_1_0() { return cRmacrosWMLMacroParserRuleCall_1_0; }
 	}
 
-	public class MacroElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Macro");
+	public class WMLMacroElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "WMLMacro");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cLeftCurlyBracketKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cMacroContentAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cMacroContentIDTerminalRuleCall_1_0 = (RuleCall)cMacroContentAssignment_1.eContents().get(0);
+		private final Assignment cTagcontentAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cTagcontentIDTerminalRuleCall_1_0 = (RuleCall)cTagcontentAssignment_1.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		
-		//Macro:
-		//	"{" macroContent+=ID+ "}";
+		//WMLMacro:
+		//	"{" tagcontent+=ID+ "}";
 		public ParserRule getRule() { return rule; }
 
-		//"{" macroContent+=ID+ "}"
+		//"{" tagcontent+=ID+ "}"
 		public Group getGroup() { return cGroup; }
 
 		//"{"
 		public Keyword getLeftCurlyBracketKeyword_0() { return cLeftCurlyBracketKeyword_0; }
 
-		//macroContent+=ID+
-		public Assignment getMacroContentAssignment_1() { return cMacroContentAssignment_1; }
+		//tagcontent+=ID+
+		public Assignment getTagcontentAssignment_1() { return cTagcontentAssignment_1; }
 
 		//ID
-		public RuleCall getMacroContentIDTerminalRuleCall_1_0() { return cMacroContentIDTerminalRuleCall_1_0; }
+		public RuleCall getTagcontentIDTerminalRuleCall_1_0() { return cTagcontentIDTerminalRuleCall_1_0; }
 
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_2() { return cRightCurlyBracketKeyword_2; }
 	}
 
-	public class PathIncludeElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "PathInclude");
+	public class WMLTagElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "WMLTag");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cLeftCurlyBracketKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cPathAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final Alternatives cPathAlternatives_1_0 = (Alternatives)cPathAssignment_1.eContents().get(0);
-		private final RuleCall cPathHOMEPATHParserRuleCall_1_0_0 = (RuleCall)cPathAlternatives_1_0.eContents().get(0);
-		private final RuleCall cPathPATHTerminalRuleCall_1_0_1 = (RuleCall)cPathAlternatives_1_0.eContents().get(1);
-		private final Keyword cRightCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cStartAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cStartWMLStartTagParserRuleCall_0_0 = (RuleCall)cStartAssignment_0.eContents().get(0);
+		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
+		private final Assignment cTtagsAssignment_1_0 = (Assignment)cAlternatives_1.eContents().get(0);
+		private final RuleCall cTtagsWMLTagParserRuleCall_1_0_0 = (RuleCall)cTtagsAssignment_1_0.eContents().get(0);
+		private final Assignment cTkeysAssignment_1_1 = (Assignment)cAlternatives_1.eContents().get(1);
+		private final RuleCall cTkeysWMLKeyParserRuleCall_1_1_0 = (RuleCall)cTkeysAssignment_1_1.eContents().get(0);
+		private final Assignment cTmacrosAssignment_1_2 = (Assignment)cAlternatives_1.eContents().get(2);
+		private final RuleCall cTmacrosWMLMacroParserRuleCall_1_2_0 = (RuleCall)cTmacrosAssignment_1_2.eContents().get(0);
+		private final Assignment cEndAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cEndWMLEndTagParserRuleCall_2_0 = (RuleCall)cEndAssignment_2.eContents().get(0);
 		
-		//PathInclude:
-		//	"{" path=(HOMEPATH | PATH) "}";
+		//WMLTag:
+		//	start=WMLStartTag (Ttags+=WMLTag | Tkeys+=WMLKey | Tmacros+=WMLMacro)* end=WMLEndTag;
 		public ParserRule getRule() { return rule; }
 
-		//"{" path=(HOMEPATH | PATH) "}"
+		//start=WMLStartTag (Ttags+=WMLTag | Tkeys+=WMLKey | Tmacros+=WMLMacro)* end=WMLEndTag
 		public Group getGroup() { return cGroup; }
 
-		//"{"
-		public Keyword getLeftCurlyBracketKeyword_0() { return cLeftCurlyBracketKeyword_0; }
+		//start=WMLStartTag
+		public Assignment getStartAssignment_0() { return cStartAssignment_0; }
 
-		//path=(HOMEPATH | PATH)
-		public Assignment getPathAssignment_1() { return cPathAssignment_1; }
+		//WMLStartTag
+		public RuleCall getStartWMLStartTagParserRuleCall_0_0() { return cStartWMLStartTagParserRuleCall_0_0; }
 
-		//HOMEPATH | PATH
-		public Alternatives getPathAlternatives_1_0() { return cPathAlternatives_1_0; }
+		//(Ttags+=WMLTag | Tkeys+=WMLKey | Tmacros+=WMLMacro)*
+		public Alternatives getAlternatives_1() { return cAlternatives_1; }
 
-		//HOMEPATH
-		public RuleCall getPathHOMEPATHParserRuleCall_1_0_0() { return cPathHOMEPATHParserRuleCall_1_0_0; }
+		//Ttags+=WMLTag
+		public Assignment getTtagsAssignment_1_0() { return cTtagsAssignment_1_0; }
 
-		//PATH
-		public RuleCall getPathPATHTerminalRuleCall_1_0_1() { return cPathPATHTerminalRuleCall_1_0_1; }
+		//WMLTag
+		public RuleCall getTtagsWMLTagParserRuleCall_1_0_0() { return cTtagsWMLTagParserRuleCall_1_0_0; }
 
-		//"}"
-		public Keyword getRightCurlyBracketKeyword_2() { return cRightCurlyBracketKeyword_2; }
+		//Tkeys+=WMLKey
+		public Assignment getTkeysAssignment_1_1() { return cTkeysAssignment_1_1; }
+
+		//WMLKey
+		public RuleCall getTkeysWMLKeyParserRuleCall_1_1_0() { return cTkeysWMLKeyParserRuleCall_1_1_0; }
+
+		//Tmacros+=WMLMacro
+		public Assignment getTmacrosAssignment_1_2() { return cTmacrosAssignment_1_2; }
+
+		//WMLMacro
+		public RuleCall getTmacrosWMLMacroParserRuleCall_1_2_0() { return cTmacrosWMLMacroParserRuleCall_1_2_0; }
+
+		//end=WMLEndTag
+		public Assignment getEndAssignment_2() { return cEndAssignment_2; }
+
+		//WMLEndTag
+		public RuleCall getEndWMLEndTagParserRuleCall_2_0() { return cEndWMLEndTagParserRuleCall_2_0; }
 	}
 
-	public class RootTypeElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "RootType");
+	public class WMLStartTagElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "WMLStartTag");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cLeftSquareBracketKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cStartTagAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cStartTagRootTagParserRuleCall_1_0 = (RuleCall)cStartTagAssignment_1.eContents().get(0);
+		private final Assignment cTagnameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cTagnameIDTerminalRuleCall_1_0 = (RuleCall)cTagnameAssignment_1.eContents().get(0);
 		private final Keyword cRightSquareBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cSubTypesAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cSubTypesRootTypeParserRuleCall_3_0 = (RuleCall)cSubTypesAssignment_3.eContents().get(0);
-		private final Assignment cAtAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cAtAttributesParserRuleCall_4_0 = (RuleCall)cAtAssignment_4.eContents().get(0);
-		private final Assignment cOkpreprocAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cOkpreprocPreprocessorParserRuleCall_5_0 = (RuleCall)cOkpreprocAssignment_5.eContents().get(0);
-		private final Keyword cLeftSquareBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
-		private final Keyword cSolidusKeyword_7 = (Keyword)cGroup.eContents().get(7);
-		private final Assignment cEndTagAssignment_8 = (Assignment)cGroup.eContents().get(8);
-		private final RuleCall cEndTagRootTagParserRuleCall_8_0 = (RuleCall)cEndTagAssignment_8.eContents().get(0);
-		private final Keyword cRightSquareBracketKeyword_9 = (Keyword)cGroup.eContents().get(9);
 		
-		//RootType:
-		//	"[" startTag=RootTag "]" subTypes+=RootType* at+=Attributes* okpreproc+=Preprocessor* "[" "/" endTag=RootTag "]";
+		//WMLStartTag:
+		//	"[" tagname=ID "]";
 		public ParserRule getRule() { return rule; }
 
-		//"[" startTag=RootTag "]" subTypes+=RootType* at+=Attributes* okpreproc+=Preprocessor* "[" "/" endTag=RootTag "]"
+		//"[" tagname=ID "]"
 		public Group getGroup() { return cGroup; }
 
 		//"["
 		public Keyword getLeftSquareBracketKeyword_0() { return cLeftSquareBracketKeyword_0; }
 
-		//startTag=RootTag
-		public Assignment getStartTagAssignment_1() { return cStartTagAssignment_1; }
+		//tagname=ID
+		public Assignment getTagnameAssignment_1() { return cTagnameAssignment_1; }
 
-		//RootTag
-		public RuleCall getStartTagRootTagParserRuleCall_1_0() { return cStartTagRootTagParserRuleCall_1_0; }
+		//ID
+		public RuleCall getTagnameIDTerminalRuleCall_1_0() { return cTagnameIDTerminalRuleCall_1_0; }
 
 		//"]"
 		public Keyword getRightSquareBracketKeyword_2() { return cRightSquareBracketKeyword_2; }
+	}
 
-		//subTypes+=RootType*
-		public Assignment getSubTypesAssignment_3() { return cSubTypesAssignment_3; }
+	public class WMLEndTagElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "WMLEndTag");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cLeftSquareBracketSolidusKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cTagnameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cTagnameIDTerminalRuleCall_1_0 = (RuleCall)cTagnameAssignment_1.eContents().get(0);
+		private final Keyword cRightSquareBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		
+		//WMLEndTag:
+		//	"[/" tagname=ID "]";
+		public ParserRule getRule() { return rule; }
 
-		//RootType
-		public RuleCall getSubTypesRootTypeParserRuleCall_3_0() { return cSubTypesRootTypeParserRuleCall_3_0; }
+		//"[/" tagname=ID "]"
+		public Group getGroup() { return cGroup; }
 
-		//at+=Attributes*
-		public Assignment getAtAssignment_4() { return cAtAssignment_4; }
+		//"[/"
+		public Keyword getLeftSquareBracketSolidusKeyword_0() { return cLeftSquareBracketSolidusKeyword_0; }
 
-		//Attributes
-		public RuleCall getAtAttributesParserRuleCall_4_0() { return cAtAttributesParserRuleCall_4_0; }
+		//tagname=ID
+		public Assignment getTagnameAssignment_1() { return cTagnameAssignment_1; }
 
-		//okpreproc+=Preprocessor*
-		public Assignment getOkpreprocAssignment_5() { return cOkpreprocAssignment_5; }
-
-		//Preprocessor
-		public RuleCall getOkpreprocPreprocessorParserRuleCall_5_0() { return cOkpreprocPreprocessorParserRuleCall_5_0; }
-
-		//"["
-		public Keyword getLeftSquareBracketKeyword_6() { return cLeftSquareBracketKeyword_6; }
-
-		//"/"
-		public Keyword getSolidusKeyword_7() { return cSolidusKeyword_7; }
-
-		//endTag=RootTag
-		public Assignment getEndTagAssignment_8() { return cEndTagAssignment_8; }
-
-		//RootTag
-		public RuleCall getEndTagRootTagParserRuleCall_8_0() { return cEndTagRootTagParserRuleCall_8_0; }
+		//ID
+		public RuleCall getTagnameIDTerminalRuleCall_1_0() { return cTagnameIDTerminalRuleCall_1_0; }
 
 		//"]"
-		public Keyword getRightSquareBracketKeyword_9() { return cRightSquareBracketKeyword_9; }
+		public Keyword getRightSquareBracketKeyword_2() { return cRightSquareBracketKeyword_2; }
 	}
 
-	public class RootTagElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "RootTag");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cSimpleTagParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cAddedTagParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		
-		//RootTag:
-		//	SimpleTag | AddedTag;
-		public ParserRule getRule() { return rule; }
-
-		//SimpleTag | AddedTag
-		public Alternatives getAlternatives() { return cAlternatives; }
-
-		//SimpleTag
-		public RuleCall getSimpleTagParserRuleCall_0() { return cSimpleTagParserRuleCall_0; }
-
-		//AddedTag
-		public RuleCall getAddedTagParserRuleCall_1() { return cAddedTagParserRuleCall_1; }
-	}
-
-	public class SimpleTagElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "SimpleTag");
+	public class WMLKeyElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "WMLKey");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cEndTagAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final Keyword cEndTagSolidusKeyword_0_0 = (Keyword)cEndTagAssignment_0.eContents().get(0);
-		private final Assignment cTagNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cTagNameRootTagsListParserRuleCall_1_0 = (RuleCall)cTagNameAssignment_1.eContents().get(0);
-		
-		//SimpleTag:
-		//	endTag?="/"? tagName=RootTagsList;
-		public ParserRule getRule() { return rule; }
-
-		//endTag?="/"? tagName=RootTagsList
-		public Group getGroup() { return cGroup; }
-
-		//endTag?="/"?
-		public Assignment getEndTagAssignment_0() { return cEndTagAssignment_0; }
-
-		//"/"
-		public Keyword getEndTagSolidusKeyword_0_0() { return cEndTagSolidusKeyword_0_0; }
-
-		//tagName=RootTagsList
-		public Assignment getTagNameAssignment_1() { return cTagNameAssignment_1; }
-
-		//RootTagsList
-		public RuleCall getTagNameRootTagsListParserRuleCall_1_0() { return cTagNameRootTagsListParserRuleCall_1_0; }
-	}
-
-	public class AddedTagElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "AddedTag");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cPlusSignKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cTagNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cTagNameRootTagsListParserRuleCall_1_0 = (RuleCall)cTagNameAssignment_1.eContents().get(0);
-		
-		//AddedTag:
-		//	"+" tagName=RootTagsList;
-		public ParserRule getRule() { return rule; }
-
-		//"+" tagName=RootTagsList
-		public Group getGroup() { return cGroup; }
-
-		//"+"
-		public Keyword getPlusSignKeyword_0() { return cPlusSignKeyword_0; }
-
-		//tagName=RootTagsList
-		public Assignment getTagNameAssignment_1() { return cTagNameAssignment_1; }
-
-		//RootTagsList
-		public RuleCall getTagNameRootTagsListParserRuleCall_1_0() { return cTagNameRootTagsListParserRuleCall_1_0; }
-	}
-
-	public class RootTagsListElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "RootTagsList");
-		private final RuleCall cIDTerminalRuleCall = (RuleCall)rule.eContents().get(1);
-		
-		////'about'  | 'binary_path' | 'campaign' | 'textdomain' | 'units';
-		//RootTagsList returns ecore::EString:
-		//	ID;
-		public ParserRule getRule() { return rule; }
-
-		//ID
-		public RuleCall getIDTerminalRuleCall() { return cIDTerminalRuleCall; }
-	}
-
-	public class AttributesElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Attributes");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cAttrNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cAttrNameIDTerminalRuleCall_0_0 = (RuleCall)cAttrNameAssignment_0.eContents().get(0);
+		private final Assignment cKeyNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cKeyNameIDTerminalRuleCall_0_0 = (RuleCall)cKeyNameAssignment_0.eContents().get(0);
 		private final Keyword cEqualsSignKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cAttrValueAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final Alternatives cAttrValueAlternatives_2_0 = (Alternatives)cAttrValueAssignment_2.eContents().get(0);
-		private final RuleCall cAttrValueTSTRINGParserRuleCall_2_0_0 = (RuleCall)cAttrValueAlternatives_2_0.eContents().get(0);
-		private final RuleCall cAttrValueSTRINGTerminalRuleCall_2_0_1 = (RuleCall)cAttrValueAlternatives_2_0.eContents().get(1);
-		private final RuleCall cAttrValuePATHTerminalRuleCall_2_0_2 = (RuleCall)cAttrValueAlternatives_2_0.eContents().get(2);
-		private final RuleCall cAttrValueIDTerminalRuleCall_2_0_3 = (RuleCall)cAttrValueAlternatives_2_0.eContents().get(3);
-		private final RuleCall cAttrValueIDLISTTerminalRuleCall_2_0_4 = (RuleCall)cAttrValueAlternatives_2_0.eContents().get(4);
+		private final Assignment cKeyValueAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final Alternatives cKeyValueAlternatives_2_0 = (Alternatives)cKeyValueAssignment_2.eContents().get(0);
+		private final RuleCall cKeyValueIDTerminalRuleCall_2_0_0 = (RuleCall)cKeyValueAlternatives_2_0.eContents().get(0);
+		private final RuleCall cKeyValueSTRINGTerminalRuleCall_2_0_1 = (RuleCall)cKeyValueAlternatives_2_0.eContents().get(1);
+		private final RuleCall cKeyValueFLOATParserRuleCall_2_0_2 = (RuleCall)cKeyValueAlternatives_2_0.eContents().get(2);
 		
-		//Attributes:
-		//	attrName=ID "=" attrValue=(TSTRING | STRING | PATH | ID | IDLIST);
+		//WMLKey:
+		//	keyName=ID "=" keyValue=(ID | STRING | FLOAT);
 		public ParserRule getRule() { return rule; }
 
-		//attrName=ID "=" attrValue=(TSTRING | STRING | PATH | ID | IDLIST)
+		//keyName=ID "=" keyValue=(ID | STRING | FLOAT)
 		public Group getGroup() { return cGroup; }
 
-		//attrName=ID
-		public Assignment getAttrNameAssignment_0() { return cAttrNameAssignment_0; }
+		//keyName=ID
+		public Assignment getKeyNameAssignment_0() { return cKeyNameAssignment_0; }
 
 		//ID
-		public RuleCall getAttrNameIDTerminalRuleCall_0_0() { return cAttrNameIDTerminalRuleCall_0_0; }
+		public RuleCall getKeyNameIDTerminalRuleCall_0_0() { return cKeyNameIDTerminalRuleCall_0_0; }
 
 		//"="
 		public Keyword getEqualsSignKeyword_1() { return cEqualsSignKeyword_1; }
 
-		//attrValue=(TSTRING | STRING | PATH | ID | IDLIST)
-		public Assignment getAttrValueAssignment_2() { return cAttrValueAssignment_2; }
+		//keyValue=(ID | STRING | FLOAT)
+		public Assignment getKeyValueAssignment_2() { return cKeyValueAssignment_2; }
 
-		//TSTRING | STRING | PATH | ID | IDLIST
-		public Alternatives getAttrValueAlternatives_2_0() { return cAttrValueAlternatives_2_0; }
-
-		//TSTRING
-		public RuleCall getAttrValueTSTRINGParserRuleCall_2_0_0() { return cAttrValueTSTRINGParserRuleCall_2_0_0; }
-
-		//STRING
-		public RuleCall getAttrValueSTRINGTerminalRuleCall_2_0_1() { return cAttrValueSTRINGTerminalRuleCall_2_0_1; }
-
-		//PATH
-		public RuleCall getAttrValuePATHTerminalRuleCall_2_0_2() { return cAttrValuePATHTerminalRuleCall_2_0_2; }
+		//ID | STRING | FLOAT
+		public Alternatives getKeyValueAlternatives_2_0() { return cKeyValueAlternatives_2_0; }
 
 		//ID
-		public RuleCall getAttrValueIDTerminalRuleCall_2_0_3() { return cAttrValueIDTerminalRuleCall_2_0_3; }
-
-		//IDLIST
-		public RuleCall getAttrValueIDLISTTerminalRuleCall_2_0_4() { return cAttrValueIDLISTTerminalRuleCall_2_0_4; }
-	}
-
-	public class TSTRINGElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "TSTRING");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword c_Keyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final RuleCall cSTRINGTerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
-		
-		//// translatable string
-		//TSTRING returns ecore::EString:
-		//	"_" STRING;
-		public ParserRule getRule() { return rule; }
-
-		//"_" STRING
-		public Group getGroup() { return cGroup; }
-
-		//"_"
-		public Keyword get_Keyword_0() { return c_Keyword_0; }
+		public RuleCall getKeyValueIDTerminalRuleCall_2_0_0() { return cKeyValueIDTerminalRuleCall_2_0_0; }
 
 		//STRING
-		public RuleCall getSTRINGTerminalRuleCall_1() { return cSTRINGTerminalRuleCall_1; }
+		public RuleCall getKeyValueSTRINGTerminalRuleCall_2_0_1() { return cKeyValueSTRINGTerminalRuleCall_2_0_1; }
+
+		//FLOAT
+		public RuleCall getKeyValueFLOATParserRuleCall_2_0_2() { return cKeyValueFLOATParserRuleCall_2_0_2; }
 	}
 
-	public class HOMEPATHElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "HOMEPATH");
+	public class FLOATElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "FLOAT");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cTildeKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final RuleCall cPATHTerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
+		private final RuleCall cINTTerminalRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Keyword cFullStopKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final RuleCall cINTTerminalRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
 		
-		//HOMEPATH returns ecore::EString:
-		//	"~" PATH;
+		//FLOAT returns ecore::EString hidden():
+		//	INT "." INT+;
 		public ParserRule getRule() { return rule; }
 
-		//"~" PATH
+		//INT "." INT+
 		public Group getGroup() { return cGroup; }
 
-		//"~"
-		public Keyword getTildeKeyword_0() { return cTildeKeyword_0; }
+		//INT
+		public RuleCall getINTTerminalRuleCall_0() { return cINTTerminalRuleCall_0; }
 
-		//PATH
-		public RuleCall getPATHTerminalRuleCall_1() { return cPATHTerminalRuleCall_1; }
+		//"."
+		public Keyword getFullStopKeyword_1() { return cFullStopKeyword_1; }
+
+		//INT+
+		public RuleCall getINTTerminalRuleCall_2() { return cINTTerminalRuleCall_2; }
 	}
 	
 	
-	private RootElements pRoot;
-	private TextDomainElements pTextDomain;
-	private PreprocessorElements pPreprocessor;
-	private MacroElements pMacro;
-	private PathIncludeElements pPathInclude;
-	private RootTypeElements pRootType;
-	private RootTagElements pRootTag;
-	private SimpleTagElements pSimpleTag;
-	private AddedTagElements pAddedTag;
-	private RootTagsListElements pRootTagsList;
-	private AttributesElements pAttributes;
-	private TSTRINGElements pTSTRING;
-	private HOMEPATHElements pHOMEPATH;
+	private WMLRootElements pWMLRoot;
+	private WMLMacroElements pWMLMacro;
+	private WMLTagElements pWMLTag;
+	private WMLStartTagElements pWMLStartTag;
+	private WMLEndTagElements pWMLEndTag;
+	private WMLKeyElements pWMLKey;
+	private FLOATElements pFLOAT;
 	private TerminalRule tSL_COMMENT;
 	private TerminalRule tWS;
 	private TerminalRule tID;
-	private TerminalRule tIDLIST;
+	private TerminalRule tIDENH;
+	private TerminalRule tINT;
 	private TerminalRule tSTRING;
-	private TerminalRule tANY_OTHER;
-	private TerminalRule tPATH;
 	
 	private final GrammarProvider grammarProvider;
 
@@ -445,139 +280,76 @@ public class WMLGrammarAccess extends AbstractGrammarElementFinder {
 	
 
 	
-	//Root:
-	//	textdomains+=TextDomain* preproc+=Preprocessor* roots+=RootType*;
-	public RootElements getRootAccess() {
-		return (pRoot != null) ? pRoot : (pRoot = new RootElements());
+	//WMLRoot:
+	//	(Rtags+=WMLTag | Rmacros+=WMLMacro)*;
+	public WMLRootElements getWMLRootAccess() {
+		return (pWMLRoot != null) ? pWMLRoot : (pWMLRoot = new WMLRootElements());
 	}
 	
-	public ParserRule getRootRule() {
-		return getRootAccess().getRule();
+	public ParserRule getWMLRootRule() {
+		return getWMLRootAccess().getRule();
 	}
 
-	//TextDomain:
-	//	"#textdomain " DomainName=ID;
-	public TextDomainElements getTextDomainAccess() {
-		return (pTextDomain != null) ? pTextDomain : (pTextDomain = new TextDomainElements());
+	//WMLMacro:
+	//	"{" tagcontent+=ID+ "}";
+	public WMLMacroElements getWMLMacroAccess() {
+		return (pWMLMacro != null) ? pWMLMacro : (pWMLMacro = new WMLMacroElements());
 	}
 	
-	public ParserRule getTextDomainRule() {
-		return getTextDomainAccess().getRule();
+	public ParserRule getWMLMacroRule() {
+		return getWMLMacroAccess().getRule();
 	}
 
-	//Preprocessor:
-	//	Macro | PathInclude;
-	public PreprocessorElements getPreprocessorAccess() {
-		return (pPreprocessor != null) ? pPreprocessor : (pPreprocessor = new PreprocessorElements());
+	//WMLTag:
+	//	start=WMLStartTag (Ttags+=WMLTag | Tkeys+=WMLKey | Tmacros+=WMLMacro)* end=WMLEndTag;
+	public WMLTagElements getWMLTagAccess() {
+		return (pWMLTag != null) ? pWMLTag : (pWMLTag = new WMLTagElements());
 	}
 	
-	public ParserRule getPreprocessorRule() {
-		return getPreprocessorAccess().getRule();
+	public ParserRule getWMLTagRule() {
+		return getWMLTagAccess().getRule();
 	}
 
-	//Macro:
-	//	"{" macroContent+=ID+ "}";
-	public MacroElements getMacroAccess() {
-		return (pMacro != null) ? pMacro : (pMacro = new MacroElements());
+	//WMLStartTag:
+	//	"[" tagname=ID "]";
+	public WMLStartTagElements getWMLStartTagAccess() {
+		return (pWMLStartTag != null) ? pWMLStartTag : (pWMLStartTag = new WMLStartTagElements());
 	}
 	
-	public ParserRule getMacroRule() {
-		return getMacroAccess().getRule();
+	public ParserRule getWMLStartTagRule() {
+		return getWMLStartTagAccess().getRule();
 	}
 
-	//PathInclude:
-	//	"{" path=(HOMEPATH | PATH) "}";
-	public PathIncludeElements getPathIncludeAccess() {
-		return (pPathInclude != null) ? pPathInclude : (pPathInclude = new PathIncludeElements());
+	//WMLEndTag:
+	//	"[/" tagname=ID "]";
+	public WMLEndTagElements getWMLEndTagAccess() {
+		return (pWMLEndTag != null) ? pWMLEndTag : (pWMLEndTag = new WMLEndTagElements());
 	}
 	
-	public ParserRule getPathIncludeRule() {
-		return getPathIncludeAccess().getRule();
+	public ParserRule getWMLEndTagRule() {
+		return getWMLEndTagAccess().getRule();
 	}
 
-	//RootType:
-	//	"[" startTag=RootTag "]" subTypes+=RootType* at+=Attributes* okpreproc+=Preprocessor* "[" "/" endTag=RootTag "]";
-	public RootTypeElements getRootTypeAccess() {
-		return (pRootType != null) ? pRootType : (pRootType = new RootTypeElements());
+	//WMLKey:
+	//	keyName=ID "=" keyValue=(ID | STRING | FLOAT);
+	public WMLKeyElements getWMLKeyAccess() {
+		return (pWMLKey != null) ? pWMLKey : (pWMLKey = new WMLKeyElements());
 	}
 	
-	public ParserRule getRootTypeRule() {
-		return getRootTypeAccess().getRule();
+	public ParserRule getWMLKeyRule() {
+		return getWMLKeyAccess().getRule();
 	}
 
-	//RootTag:
-	//	SimpleTag | AddedTag;
-	public RootTagElements getRootTagAccess() {
-		return (pRootTag != null) ? pRootTag : (pRootTag = new RootTagElements());
+	//FLOAT returns ecore::EString hidden():
+	//	INT "." INT+;
+	public FLOATElements getFLOATAccess() {
+		return (pFLOAT != null) ? pFLOAT : (pFLOAT = new FLOATElements());
 	}
 	
-	public ParserRule getRootTagRule() {
-		return getRootTagAccess().getRule();
+	public ParserRule getFLOATRule() {
+		return getFLOATAccess().getRule();
 	}
 
-	//SimpleTag:
-	//	endTag?="/"? tagName=RootTagsList;
-	public SimpleTagElements getSimpleTagAccess() {
-		return (pSimpleTag != null) ? pSimpleTag : (pSimpleTag = new SimpleTagElements());
-	}
-	
-	public ParserRule getSimpleTagRule() {
-		return getSimpleTagAccess().getRule();
-	}
-
-	//AddedTag:
-	//	"+" tagName=RootTagsList;
-	public AddedTagElements getAddedTagAccess() {
-		return (pAddedTag != null) ? pAddedTag : (pAddedTag = new AddedTagElements());
-	}
-	
-	public ParserRule getAddedTagRule() {
-		return getAddedTagAccess().getRule();
-	}
-
-	////'about'  | 'binary_path' | 'campaign' | 'textdomain' | 'units';
-	//RootTagsList returns ecore::EString:
-	//	ID;
-	public RootTagsListElements getRootTagsListAccess() {
-		return (pRootTagsList != null) ? pRootTagsList : (pRootTagsList = new RootTagsListElements());
-	}
-	
-	public ParserRule getRootTagsListRule() {
-		return getRootTagsListAccess().getRule();
-	}
-
-	//Attributes:
-	//	attrName=ID "=" attrValue=(TSTRING | STRING | PATH | ID | IDLIST);
-	public AttributesElements getAttributesAccess() {
-		return (pAttributes != null) ? pAttributes : (pAttributes = new AttributesElements());
-	}
-	
-	public ParserRule getAttributesRule() {
-		return getAttributesAccess().getRule();
-	}
-
-	//// translatable string
-	//TSTRING returns ecore::EString:
-	//	"_" STRING;
-	public TSTRINGElements getTSTRINGAccess() {
-		return (pTSTRING != null) ? pTSTRING : (pTSTRING = new TSTRINGElements());
-	}
-	
-	public ParserRule getTSTRINGRule() {
-		return getTSTRINGAccess().getRule();
-	}
-
-	//HOMEPATH returns ecore::EString:
-	//	"~" PATH;
-	public HOMEPATHElements getHOMEPATHAccess() {
-		return (pHOMEPATH != null) ? pHOMEPATH : (pHOMEPATH = new HOMEPATHElements());
-	}
-	
-	public ParserRule getHOMEPATHRule() {
-		return getHOMEPATHAccess().getRule();
-	}
-
-	//// ==== TERMINAL RULES ====
 	//terminal SL_COMMENT:
 	//	"#" !("\n" | "\r")* ("\r"? "\n")?;
 	public TerminalRule getSL_COMMENTRule() {
@@ -590,42 +362,99 @@ public class WMLGrammarAccess extends AbstractGrammarElementFinder {
 		return (tWS != null) ? tWS : (tWS = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "WS"));
 	} 
 
-	//// no multiline comment defined on WML, 
-	//// terminal ML_COMMENT: '#' !('\n'|'\r')* ('\r'? '\n')?;
 	//terminal ID:
-	//	("a".."z" | "A".."Z" | "_" | "-" | " " | "0".."9")+;
+	//	("a".."z" | "A".."Z" | "_" | " " | "0".."9")*;
 	public TerminalRule getIDRule() {
 		return (tID != null) ? tID : (tID = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "ID"));
 	} 
 
-	//terminal IDLIST:
-	//	(ID ",")* ID;
-	public TerminalRule getIDLISTRule() {
-		return (tIDLIST != null) ? tIDLIST : (tIDLIST = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "IDLIST"));
+	//terminal IDENH:
+	//	("a".."z" | "A".."Z" | "_") (" " | "a".."z" | "A".."Z" | "_" | "0".."9")* ("a".."z" | "A".."Z");
+	public TerminalRule getIDENHRule() {
+		return (tIDENH != null) ? tIDENH : (tIDENH = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "IDENH"));
 	} 
 
-	////terminal INT returns ecore::EInt: ('0'..'9')+;
+	//terminal INT:
+	//	"0".."9"+;
+	public TerminalRule getINTRule() {
+		return (tINT != null) ? tINT : (tINT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "INT"));
+	} 
+
+	//// ---------------
+	////					  import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+	////
+	////terminal ML_COMMENT	: '/ *' -> '* /';
+	////terminal SL_COMMENT 	: '//' !('\n'|'\r')* ('\r'? '\n')?;
+	////
+	////terminal WS			: (' '|'\t'|'\r'|'\n')+;
+	////
+	////terminal ANY_OTHER: .;
+	//// -----------------
+	////
+	////Root:
+	////	textdomains += TextDomain*
+	//// 	preproc += Preprocessor*
+	////	roots += RootType*
+	////	;
+	////
+	////TextDomain:
+	////	'#textdomain ' DomainName=ID;
+	////
+	////Preprocessor:
+	////	Macro | PathInclude;
+	////Macro:
+	////	'{' macroContent += ID+'}';
+	////PathInclude:
+	////	'{' path = (HOMEPATH |PATH) '}';
+	////	
+	////RootType:
+	////	'[' startTag = RootTag ']'
+	////		subTypes += RootType* 
+	////		at += Attributes*
+	////		okpreproc += Preprocessor*
+	////	'[' '/' endTag = RootTag ']';
+	////
+	////RootTag:
+	////	SimpleTag | AddedTag; 
+	////SimpleTag:
+	////	(endTag?='/')?  tagName=RootTagsList;
+	////AddedTag:
+	////	'+' tagName = RootTagsList; 
+	////
+	////RootTagsList:
+	////	ID; //'about'  | 'binary_path' | 'campaign' | 'textdomain' | 'units';
+	////
+	////Attributes:
+	////	attrName=ID '=' attrValue=(TSTRING|STRING|PATH|ID|IDLIST);
+	////
+	////// translatable string
+	////TSTRING:
+	////	'_' STRING;
+	////HOMEPATH:
+	////	'~' PATH;
+	////// ==== TERMINAL RULES ====
+	////terminal SL_COMMENT: '#' !('\n'|'\r')* ('\r'? '\n')?;
+	////terminal WS		: (' '|'\t'|'\r'|'\n')+;
+	////// no multiline comment defined on WML, 
+	////// terminal ML_COMMENT: '#' !('\n'|'\r')* ('\r'? '\n')?;
+	////terminal ID  		: ('a'..'z'|'A'..'Z'|'_'|'-'|' '|'0'..'9')+;
+	////terminal IDLIST	: (ID ',')* ID;
+	//////terminal INT returns ecore::EInt: ('0'..'9')+;
+	////terminal STRING	: 
+	////			'"' ( '\\' ('b'|'t'|'n'|'f'|'r'|'"'|"'"|'\\') | !('\\'|'"') )* '"' |
+	////			"'" ( '\\' ('b'|'t'|'n'|'f'|'r'|'"'|"'"|'\\') | !('\\'|"'") )* "'";
+	////terminal ANY_OTHER: .;
+	//////terminal WORD_START: ' ' | '=';
+	//////terminal WORD_END	: '#' | ' ';
+	////// line end
+	////terminal PATH		: //('"')? 
+	////					  (('a'..'z'|'A'..'Z'|'_'|'.'|'-'|'0'..'9')+ '/')*
+	////					   ('a'..'z'|'A'..'Z'|'_'|'.'|'-'|'0'..'9')+ '/'? 
+	////					  //('"')?
+	////					  ;
 	//terminal STRING:
-	//	"\"" ("\\" ("b" | "t" | "n" | "f" | "r" | "\"" | "\'" | "\\") | !("\\" | "\""))* "\"" | "\'" ("\\" ("b" | "t" | "n" |
-	//	"f" | "r" | "\"" | "\'" | "\\") | !("\\" | "\'"))* "\'";
+	//	"\"" ("\\" ("b" | "t" | "n" | "f" | "r" | "\"" | "\'" | "\\") | !("\\" | "\""))* "\"";
 	public TerminalRule getSTRINGRule() {
 		return (tSTRING != null) ? tSTRING : (tSTRING = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "STRING"));
-	} 
-
-	//terminal ANY_OTHER:
-	//	.;
-	public TerminalRule getANY_OTHERRule() {
-		return (tANY_OTHER != null) ? tANY_OTHER : (tANY_OTHER = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "ANY_OTHER"));
-	} 
-
-	////terminal WORD_START: ' ' | '=';
-	////terminal WORD_END	: '#' | ' ';
-	//// line end
-	////('"')? 
-	////('"')?
-	//terminal PATH:
-	//	(("a".."z" | "A".."Z" | "_" | "." | "-" | "0".."9")+ "/")* ("a".."z" | "A".."Z" | "_" | "." | "-" | "0".."9")+ "/"?;
-	public TerminalRule getPATHRule() {
-		return (tPATH != null) ? tPATH : (tPATH = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "PATH"));
 	} 
 }
