@@ -2340,6 +2340,7 @@ bool display::invalidate_locations_in_rect(const SDL_Rect& rect)
 
 void display::invalidate_animations()
 {
+	new_animation_frame();
 	if (!preferences::animate_map()) {
 		return;
 	}

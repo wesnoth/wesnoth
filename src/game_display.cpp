@@ -892,7 +892,6 @@ void game_display::invalidate_animations_location(const map_location& loc) {
 
 void game_display::invalidate_animations()
 {
-	new_animation_frame();
 	display::invalidate_animations();
 	foreach (unit& u, units_) {
 		u.refresh();
