@@ -44,6 +44,10 @@ set( network_implementation_files network.cpp network_worker.cpp )
 if( USE_ANA_NETWORK )
     set( network_implementation_files network_ana.cpp network_manager_ana.cpp)
     message( STATUS "Compiling network module with ana: ${network_implementation_files}" )
+
+	set(ANA_LIBRARIES ana-static)
+
+    add_subdirectory ( ana/src )
 endif ( USE_ANA_NETWORK )
 
 # needed to get include paths in the subfolders correct
@@ -70,34 +74,18 @@ else(MSVC)
 	)
 endif(MSVC)
 
-if ( USE_ANA_NETWORK )
-    add_subdirectory ( ana/src )
-
-    set( game-external-libs
-        ${common-external-libs}
-        ${SDLIMAGE_LIBRARY}
-        ${SDLMIXER_LIBRARY}
-        ${SDLNET_LIBRARY}        # only to link to upload_log
-        ana-static
-        ${SDLTTF_LIBRARY}
-        ${PANGOCAIRO_LIBRARIES}
-        ${FONTCONFIG_LIBRARIES}
-        ${LUA_LIBRARIES}
-        ${LIBDBUS_LIBRARIES}
-    )
-else ( USE_ANA_NETWORK )
-    set( game-external-libs
-        ${common-external-libs}
-        ${SDLIMAGE_LIBRARY}
-        ${SDLMIXER_LIBRARY}
-        ${SDLNET_LIBRARY}
-        ${SDLTTF_LIBRARY}
-        ${PANGOCAIRO_LIBRARIES}
-        ${FONTCONFIG_LIBRARIES}
-        ${LUA_LIBRARIES}
-        ${LIBDBUS_LIBRARIES}
-    )
-endif ( USE_ANA_NETWORK )
+set( game-external-libs
+	${common-external-libs}
+	${SDLIMAGE_LIBRARY}
+	${SDLMIXER_LIBRARY}
+	${SDLNET_LIBRARY}        # only to link to upload_log when using ANA
+	${ANA_LIBRARIES}
+	${SDLTTF_LIBRARY}
+	${PANGOCAIRO_LIBRARIES}
+	${FONTCONFIG_LIBRARIES}
+	${LUA_LIBRARIES}
+	${LIBDBUS_LIBRARIES}
+)
 
 if(MSVC)
 	set( game-external-libs
@@ -117,7 +105,7 @@ endif(MSVC)
 if ( USE_ANA_NETWORK )
     set( server-external-libs
         ${common-external-libs}
-        ana-static
+        ${ANA_LIBRARIES}
     )
 else ( USE_ANA_NETWORK )
     set( server-external-libs
