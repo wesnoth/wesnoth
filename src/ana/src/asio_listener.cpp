@@ -113,6 +113,9 @@ void asio_listener::handle_header(char* header, const boost::system::error_code&
             input >> size;
             ana::network_to_host_long( size );
 
+            if ( stats_collector() != NULL )
+                stats_collector()->start_receive_packet( size );
+
             if (size != 0)
             {
                 ana::detail::read_buffer read_buf( new ana::detail::read_buffer_implementation( size ) );

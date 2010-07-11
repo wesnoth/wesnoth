@@ -43,7 +43,7 @@ namespace ana
 {
     enum stat_type
     {
-        ACCUMULATED, 
+        ACCUMULATED,
         SECONDS,
         MINUTES,
         HOURS,
@@ -187,6 +187,17 @@ namespace ana
                 throw std::runtime_error("Wrong stat stype requested.");
             }
 
+            size_t current_packet_in_size()   const { return current_packet_in_size_;   }
+            size_t current_packet_out_size()  const { return current_packet_out_size_;  }
+
+            size_t current_packet_in_last()   const { return current_packet_in_;        }
+            size_t current_packet_in_max()    const { return current_packet_in_max_;    }
+            size_t current_packet_in_total()  const { return current_packet_in_total_;  }
+
+            size_t current_packet_out_last()  const { return current_packet_out_;       }
+            size_t current_packet_out_max()   const { return current_packet_out_max_;   }
+            size_t current_packet_out_total() const { return current_packet_out_total_; }
+
             void log_send( detail::shared_buffer buffer )
             {
                 accumulator_.log_send  ( buffer );
@@ -194,6 +205,8 @@ namespace ana
                 minutes_stats_.log_send( buffer );
                 hours_stats_.log_send  ( buffer );
                 days_stats_.log_send   ( buffer );
+
+                log_current_packet_out(buffer->size(), true);
             }
 
             void log_receive( detail::read_buffer buffer )
@@ -203,6 +216,8 @@ namespace ana
                 minutes_stats_.log_receive( buffer );
                 hours_stats_.log_receive  ( buffer );
                 days_stats_.log_receive   ( buffer );
+
+                log_current_packet_in(buffer->size(), true);
             }
 
             void log_receive( size_t size, bool finished_packet = false )
@@ -212,7 +227,12 @@ namespace ana
                 minutes_stats_.log_receive( size, finished_packet );
                 hours_stats_.log_receive  ( size, finished_packet );
                 days_stats_.log_receive   ( size, finished_packet );
+
+                log_current_packet_in(size, finished_packet);
             }
+
+            void start_send_packet( size_t size )    { current_packet_out_size_ = size; }
+            void start_receive_packet( size_t size ) { current_packet_in_size_  = size; }
 
             ~stats_collector()
             {
@@ -222,6 +242,39 @@ namespace ana
             }
 
         private:
+            void log_current_packet_in(size_t size,bool finished_packet)
+            {
+                if (finished_packet)
+                {
+                    current_packet_in_       = 0;
+                    current_packet_in_max_   = 0;
+                    current_packet_in_total_ = 0;
+                }
+                else
+                {
+                    current_packet_in_        = size;
+                    current_packet_in_max_    = std::max(size, current_packet_in_max_);
+                    current_packet_in_total_ += size;
+                }
+            }
+
+            void log_current_packet_out(size_t size, bool finished_packet)
+            {
+                if (finished_packet)
+                {
+                    current_packet_out_       = 0;
+                    current_packet_out_max_   = 0;
+                    current_packet_out_total_ = 0;
+                }
+                else
+                {
+                    current_packet_out_        = size;
+                    current_packet_out_max_    = std::max(size, current_packet_out_max_);
+                    current_packet_out_total_ += size;
+                }
+            }
+
+
             boost::asio::io_service io_service_;
 
             boost::thread*       collector_thread_;
@@ -231,6 +284,16 @@ namespace ana
             detail::stats_logger minutes_stats_;
             detail::stats_logger hours_stats_;
             detail::stats_logger days_stats_;
+
+            size_t               current_packet_in_size_;
+            size_t               current_packet_out_size_;
+
+            size_t               current_packet_in_;
+            size_t               current_packet_out_;
+            size_t               current_packet_in_max_;
+            size_t               current_packet_out_max_;
+            size_t               current_packet_in_total_;
+            size_t               current_packet_out_total_;
     };
 }
 

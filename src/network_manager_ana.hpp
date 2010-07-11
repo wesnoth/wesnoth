@@ -29,18 +29,10 @@
 #ifndef NETWORK_MANAGER_ANA_HPP_INCLUDED
 #define NETWORK_MANAGER_ANA_HPP_INCLUDED
 
-/** Interface for objects that log send statistics. */
-struct send_stats_logger
-{
-	virtual ~send_stats_logger() {}
-
-    virtual void update_send_stats( size_t ) = 0;
-};
-
 /**
  * A representative of a network component to the application.
  */
-class ana_component : public send_stats_logger
+class ana_component
 {
     public:
         /** Constructs a server component. */
@@ -113,21 +105,13 @@ class ana_component : public send_stats_logger
 
         bool new_buffer_ready(); // non const due to mutex blockage
 
-        /** Log an incoming buffer. */
-        void update_receive_stats( size_t buffer_size );
-
     private:
-        virtual void update_send_stats( size_t buffer_size);
-
         boost::variant<ana::server*, ana::client*> base_;
 
         bool        is_server_;
 
         ana::net_id         id_;
         network::connection wesnoth_id_;
-
-        network::statistics send_stats_;
-        network::statistics receive_stats_;
 
         //Buffer queue attributes
         boost::mutex                   mutex_;
@@ -150,11 +134,10 @@ class ana_send_handler : public ana::send_handler
     public:
         /**
          * Constructs a handler object.
-         * @param logger : A pointer to an object logging send statistics.
          * @param buf_size : The size of the buffer being sent.
          * @param calls [optional, default 1] : The amount of calls to the handler expected.
          */
-        ana_send_handler( send_stats_logger* logger, size_t buf_size, size_t calls = 1 );
+        ana_send_handler( size_t buf_size, size_t calls = 1 );
 
         /** Destructor, checks that the necessary calls were made. */
         ~ana_send_handler();
@@ -173,7 +156,6 @@ class ana_send_handler : public ana::send_handler
         boost::mutex       mutex_;
         size_t             target_calls_;
         ana::error_code    error_code_;
-        send_stats_logger* logger_;
         size_t             buf_size_;
 };
 

@@ -48,6 +48,9 @@ void asio_sender::send(ana::detail::shared_buffer buffer,
 
         if ( sender->raw_mode() )
         {
+            if ( stats_collector() != NULL )
+                stats_collector()->start_send_packet( buffer->size() );
+
             boost::asio::async_write(socket, boost::asio::buffer(buffer->base(), buffer->size() ),
                                      boost::bind(&asio_sender::handle_send,this,
                                                  boost::asio::placeholders::error,
@@ -55,6 +58,9 @@ void asio_sender::send(ana::detail::shared_buffer buffer,
         }
         else
         {
+            if ( stats_collector() != NULL )
+                stats_collector()->start_send_packet( buffer->size() + ana::HEADER_LENGTH);
+
             ana::ana_uint32 size( buffer->size() );
             ana::host_to_network_long( size );
 

@@ -30,11 +30,10 @@
 
 // Begin ana_send_handler implementation ---------------------------------------------------------------
 
-ana_send_handler::ana_send_handler( send_stats_logger* logger, size_t buf_size, size_t calls) :
+ana_send_handler::ana_send_handler( size_t buf_size, size_t calls) :
     mutex_(),
     target_calls_( calls ),
     error_code_(),
-    logger_( logger ),
     buf_size_( buf_size )
 {
     std::cout << "DEBUG: Constructing a new ana_send_handler...\n";
@@ -51,9 +50,6 @@ ana_send_handler::~ana_send_handler()
 
 void ana_send_handler::handle_send(ana::error_code error_code, ana::net_id /*client*/)
 {
-    if ( ! error_code )
-        logger_->update_send_stats( buf_size_ );
-
     error_code_ = error_code;
 
     if ( --target_calls_ == 0 )
@@ -364,8 +360,6 @@ ana_component::ana_component( ) :
     is_server_( true ),
     id_( server()->id() ),
     wesnoth_id_( 0 ),
-    send_stats_(),
-    receive_stats_(),
     mutex_(),
     condition_(),
     buffers_(),
@@ -378,8 +372,6 @@ ana_component::ana_component( const std::string& host, const std::string& port) 
     is_server_( false ),
     id_(  client()->id() ),
     wesnoth_id_( 0 ),       // will change to the received id after connection
-    send_stats_(),
-    receive_stats_(),
     mutex_(),
     condition_(),
     buffers_(),
@@ -397,17 +389,34 @@ ana_component::~ana_component( )
 
 network::statistics ana_component::get_send_stats() const
 {
-    std::cout << "Send stats.\n";
-    return send_stats_;
+    ana::stats_collector* stats = listener()->stats_collector();
+
+    network::statistics result;
+
+    if ( stats != NULL )
+    {
+        result.current     = stats->current_packet_out_total();
+        result.current_max = stats->current_packet_out_size();
+        result.total       = stats->get_stats( ana::ACCUMULATED )->bytes_out();
+    }
+
+    return result;
 }
 
 network::statistics ana_component::get_receive_stats() const
 {
-    std::cout << "Receive stats: " << receive_stats_.current <<
-                 "," << receive_stats_.current_max << "," <<
-                 receive_stats_.total << "\n";
+    ana::stats_collector* stats = listener()->stats_collector();
 
-    return receive_stats_;
+    network::statistics result;
+
+    if ( stats != NULL )
+    {
+        result.current     = stats->current_packet_in_total();
+        result.current_max = stats->current_packet_in_size();
+        result.total       = stats->get_stats( ana::ACCUMULATED )->bytes_in();
+    }
+
+    return result;
 }
 
 ana::server* ana_component::server() const
@@ -505,22 +514,6 @@ network::connection ana_component::oldest_sender_id_still_pending()
     sender_ids_.pop();
 
     return id;
-}
-
-
-void ana_component::update_receive_stats( size_t buffer_size )
-{
-    // The current field doesn't hold the relevant information, but the size of the last received buffer.
-    receive_stats_.current_max = ( buffer_size > receive_stats_.current_max) ? buffer_size : receive_stats_.current_max;
-    receive_stats_.total      += buffer_size;
-    receive_stats_.current     = buffer_size;
-}
-
-void ana_component::update_send_stats( size_t buffer_size)
-{
-    send_stats_.current_max = ( buffer_size > send_stats_.current_max) ? buffer_size : send_stats_.current_max;
-    send_stats_.total      += buffer_size;
-    send_stats_.current     = buffer_size;
 }
 
 // Begin clients_manager  implementation ---------------------------------------------------------------
@@ -636,7 +629,7 @@ network::connection ana_network_manager::create_client_and_connect(std::string h
             uint32_t handshake( 0 );
             bos << handshake;
 
-            ana_send_handler send_handler( new_component, bos.str().size() );
+            ana_send_handler send_handler( bos.str().size() );
 
             client->send( ana::buffer( bos.str()), &send_handler, ana::ZERO_COPY );
 
@@ -788,14 +781,14 @@ size_t ana_network_manager::send_all( const config& cfg, bool zipped )
         if ( (*it)->is_server() )
         {
             const size_t necessary_calls = server_manager_[ (*it)->server() ]->client_amount();
-            ana_send_handler handler( *it, out.str().size(), necessary_calls );
+            ana_send_handler handler( out.str().size(), necessary_calls );
 
             (*it)->server()->send_all( ana::buffer( out.str() ), &handler, ana::ZERO_COPY);
             handler.wait_completion(); // the handler will release the mutex after necessary_calls calls
         }
         else
         {
-            ana_send_handler handler( *it, out.str().size() );
+            ana_send_handler handler( out.str().size() );
 
             (*it)->client()->send( ana::buffer( out.str() ), &handler, ana::ZERO_COPY );
             handler.wait_completion();
@@ -828,7 +821,7 @@ size_t ana_network_manager::send_raw_data( const char* base_char, size_t size, n
         if ( (*it)->is_server() )
             throw std::runtime_error("Can't send to the server itself.");
 
-        ana_send_handler handler( *it, size );
+        ana_send_handler handler( size );
         (*it)->client()->send( ana::buffer( base_char, size ), &handler, ana::ZERO_COPY);
         handler.wait_completion();
 
@@ -843,7 +836,7 @@ size_t ana_network_manager::send_raw_data( const char* base_char, size_t size, n
         {
             if ((*it)->is_server())
             {
-                ana_send_handler handler( *it, size );
+                ana_send_handler handler( size );
                 (*it)->server()->send_one( id, ana::buffer( base_char, size ), &handler, ana::ZERO_COPY);
                 handler.wait_completion();
                 if ( handler.error() )
@@ -1093,10 +1086,7 @@ void ana_network_manager::handle_message( ana::error_code          error,
                             boost::bind(&ana_component::get_id, _1) == client );
 
         if ( it != components_.end() )
-        {
-            (*it)->update_receive_stats( buffer->size() );
             (*it)->add_buffer( buffer, client );
-        }
         else
             throw std::runtime_error("Received message from a non connected component.");
     }
