@@ -285,7 +285,7 @@ namespace network {
                             bool*             /*gzipped*/,
                             bandwidth_in_ptr* /*bandwidth_in*/) // TODO: use this pointer
     {
-        return receive_data(cfg,connection_num, size_t(0), NULL); // <- just call the previous version without timeouts
+        return receive_data(cfg,connection_num, static_cast<unsigned>(0), NULL); // <- just call the previous version without timeouts
     }
 
     connection receive_data(std::vector<char>& buf, bandwidth_in_ptr* /*bandwidth_in*/)
