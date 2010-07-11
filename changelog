@@ -30,6 +30,7 @@ Version 1.9.0-svn:
      and Flameheart, Dwarf Lord ranged attack, Dwarf guard melee attack.
    * Items & scenery: New anvil, and revised trash and lighthouse
    * Two new flag styles.
+   * Animate terrain in editor
  * Language and i18n:
    * Updated translations: British English, Catalan, Chinese (Simplified),
      Chinese (Traditional), Czech, Dutch, Finnish, French, Galician, German,
@@ -140,6 +141,8 @@ Version 1.9.0-svn:
    * Add first, last, play and back buttons to storyscreens
    * Remember recall list sorting order (FR #16149)
    * accelerated movment speed to 200ms per hex
+   * --logdomains accepts a filter argument and uses multiline output
+   * New mouseover image instead of simply highlighting the hex
  * Units:
    * Giant Rat moved from DiD to core.
  * WML Engine:
@@ -169,6 +172,10 @@ Version 1.9.0-svn:
    * Rename all "colour" keys to "color" (in [side] and [label]), same for
      "colour_lock"
    * Allow a [case] value to take comma-separated values
+   * Allow to use local ToD terrain variants in [time_area]
+   * Move fog/shroud image definition into game_config.cfg
+   * Add new game_config keys "hex_brightening", "hex_semi_brightening",
+     "mouseover_image" and "selected_image" to tune mouse interface
  * Miscellaneous and bug fixes:
    * Added help entry when new unit is created directly in the recall list
    * Defaulted log level to warning again
@@ -205,6 +212,10 @@ Version 1.9.0-svn:
    * Added ":turn_limit" to change the turn limit for a scenario in debug mode
    * Fix a crash when a sighted event killed a unit just before a fight
    * Fixed bug #16171: Disable commands during [animate_unit]
+   * Fixed bugs when a waypoint is unreachable
+   * Fixed attacker still getting resting bonus after attack using movement_used=0
+   * Fixed [store_time_of_day] for earlier turn
+   * Fixed _off^_usr not using the tile_image of theme.
 
 Version 1.8.0:
  * AI:
