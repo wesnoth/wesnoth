@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="ASCII"?>
 <xtext:Grammar xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:xtext="http://www.eclipse.org/2008/Xtext" name="org.wesnoth.WML" definesHiddenTokens="true" hiddenTokens="//@rules.8 //@rules.7">
-  <metamodelDeclarations xsi:type="xtext:ReferencedMetamodel" alias="ecore">
-    <ePackage href="http://www.eclipse.org/emf/2002/Ecore#/"/>
-  </metamodelDeclarations>
   <metamodelDeclarations xsi:type="xtext:GeneratedMetamodel" name="wML">
     <ePackage href="http://www.wesnoth.org/WML#/"/>
   </metamodelDeclarations>
+  <metamodelDeclarations xsi:type="xtext:ReferencedMetamodel" alias="ecore">
+    <ePackage href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+  </metamodelDeclarations>
   <rules xsi:type="xtext:ParserRule" name="WMLRoot">
-    <type metamodel="//@metamodelDeclarations.1">
+    <type metamodel="//@metamodelDeclarations.0">
       <classifier xsi:type="ecore:EClass" href="http://www.wesnoth.org/WML#//WMLRoot"/>
     </type>
     <alternatives xsi:type="xtext:Alternatives" cardinality="*">
@@ -20,7 +20,7 @@
     </alternatives>
   </rules>
   <rules xsi:type="xtext:ParserRule" name="WMLMacro">
-    <type metamodel="//@metamodelDeclarations.1">
+    <type metamodel="//@metamodelDeclarations.0">
       <classifier xsi:type="ecore:EClass" href="http://www.wesnoth.org/WML#//WMLMacro"/>
     </type>
     <alternatives xsi:type="xtext:Group">
@@ -32,7 +32,7 @@
     </alternatives>
   </rules>
   <rules xsi:type="xtext:ParserRule" name="WMLTag">
-    <type metamodel="//@metamodelDeclarations.1">
+    <type metamodel="//@metamodelDeclarations.0">
       <classifier xsi:type="ecore:EClass" href="http://www.wesnoth.org/WML#//WMLTag"/>
     </type>
     <alternatives xsi:type="xtext:Group">
@@ -56,7 +56,7 @@
     </alternatives>
   </rules>
   <rules xsi:type="xtext:ParserRule" name="WMLStartTag">
-    <type metamodel="//@metamodelDeclarations.1">
+    <type metamodel="//@metamodelDeclarations.0">
       <classifier xsi:type="ecore:EClass" href="http://www.wesnoth.org/WML#//WMLStartTag"/>
     </type>
     <alternatives xsi:type="xtext:Group">
@@ -68,7 +68,7 @@
     </alternatives>
   </rules>
   <rules xsi:type="xtext:ParserRule" name="WMLEndTag">
-    <type metamodel="//@metamodelDeclarations.1">
+    <type metamodel="//@metamodelDeclarations.0">
       <classifier xsi:type="ecore:EClass" href="http://www.wesnoth.org/WML#//WMLEndTag"/>
     </type>
     <alternatives xsi:type="xtext:Group">
@@ -80,7 +80,7 @@
     </alternatives>
   </rules>
   <rules xsi:type="xtext:ParserRule" name="WMLKey">
-    <type metamodel="//@metamodelDeclarations.1">
+    <type metamodel="//@metamodelDeclarations.0">
       <classifier xsi:type="ecore:EClass" href="http://www.wesnoth.org/WML#//WMLKey"/>
     </type>
     <alternatives xsi:type="xtext:Group">
@@ -98,7 +98,7 @@
     </alternatives>
   </rules>
   <rules xsi:type="xtext:ParserRule" name="FLOAT" definesHiddenTokens="true">
-    <type metamodel="//@metamodelDeclarations.0">
+    <type metamodel="//@metamodelDeclarations.1">
       <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </type>
     <alternatives xsi:type="xtext:Group">
@@ -108,7 +108,7 @@
     </alternatives>
   </rules>
   <rules xsi:type="xtext:TerminalRule" name="SL_COMMENT">
-    <type metamodel="//@metamodelDeclarations.0">
+    <type metamodel="//@metamodelDeclarations.1">
       <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </type>
     <alternatives xsi:type="xtext:Group">
@@ -126,7 +126,7 @@
     </alternatives>
   </rules>
   <rules xsi:type="xtext:TerminalRule" name="WS">
-    <type metamodel="//@metamodelDeclarations.0">
+    <type metamodel="//@metamodelDeclarations.1">
       <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </type>
     <alternatives xsi:type="xtext:Alternatives" cardinality="+">
@@ -137,7 +137,7 @@
     </alternatives>
   </rules>
   <rules xsi:type="xtext:TerminalRule" name="ID">
-    <type metamodel="//@metamodelDeclarations.0">
+    <type metamodel="//@metamodelDeclarations.1">
       <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </type>
     <alternatives xsi:type="xtext:Alternatives" cardinality="*">
@@ -158,7 +158,7 @@
     </alternatives>
   </rules>
   <rules xsi:type="xtext:TerminalRule" name="IDENH">
-    <type metamodel="//@metamodelDeclarations.0">
+    <type metamodel="//@metamodelDeclarations.1">
       <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </type>
     <alternatives xsi:type="xtext:Group">
@@ -202,7 +202,7 @@
     </alternatives>
   </rules>
   <rules xsi:type="xtext:TerminalRule" name="INT">
-    <type metamodel="//@metamodelDeclarations.0">
+    <type metamodel="//@metamodelDeclarations.1">
       <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </type>
     <alternatives xsi:type="xtext:CharacterRange" cardinality="+">
@@ -211,7 +211,7 @@
     </alternatives>
   </rules>
   <rules xsi:type="xtext:TerminalRule" name="STRING">
-    <type metamodel="//@metamodelDeclarations.0">
+    <type metamodel="//@metamodelDeclarations.1">
       <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </type>
     <alternatives xsi:type="xtext:Group">

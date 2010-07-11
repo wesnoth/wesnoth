@@ -12,7 +12,8 @@ Require-Bundle: org.wesnoth.wml;visibility:=reexport,
  org.eclipse.xtext.ui.shared,
  org.eclipse.ui,
  org.eclipse.xtext.builder,
- org.antlr.runtime
+ org.antlr.runtime,
+ org.eclipse.xtext.xtext.ui;bundle-version="1.0.0"
 Import-Package: org.apache.log4j
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: org.wesnoth.ui.contentassist.antlr

@@ -3,13 +3,45 @@
  */
 package org.wesnoth.ui;
 
+import org.wesnoth.ui.outline.WMLTransformer;
+import org.wesnoth.ui.syntax.WMLAntlrTokenToAttributeIdMapper;
+import org.wesnoth.ui.syntax.WMLHighlightingConfiguration;
+import org.wesnoth.ui.syntax.WMLSemanticHighlightingCalculator;
+
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.eclipse.xtext.ui.editor.outline.transformer.ISemanticModelTransformer;
+import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration;
+import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculator;
+import org.eclipse.xtext.ui.editor.syntaxcoloring.antlr.AbstractAntlrTokenToAttributeIdMapper;
 
 /**
  * Use this class to register components to be used within the IDE.
  */
-public class WMLUiModule extends org.wesnoth.ui.AbstractWMLUiModule {
+@SuppressWarnings("all")
+public class WMLUiModule extends org.wesnoth.ui.AbstractWMLUiModule
+{
 	public WMLUiModule(AbstractUIPlugin plugin) {
 		super(plugin);
+	}
+
+	@Override
+	public Class<? extends ISemanticModelTransformer> bindISemanticModelTransformer()
+	{
+		return WMLTransformer.class;
+	}
+
+	public Class<? extends IHighlightingConfiguration> bindIHighlightingConfiguration()
+	{
+		return WMLHighlightingConfiguration.class;
+	}
+
+	public Class<? extends AbstractAntlrTokenToAttributeIdMapper> bindTokenToAttributeIdMapper()
+	{
+		return WMLAntlrTokenToAttributeIdMapper.class;
+	}
+
+	public Class<? extends ISemanticHighlightingCalculator> bindISemanticHighlightingCalculator()
+	{
+		return WMLSemanticHighlightingCalculator.class;
 	}
 }
