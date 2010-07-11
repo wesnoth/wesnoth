@@ -67,8 +67,7 @@ terrain_builder::tile::tile() :
 	images(),
 	images_foreground(),
 	images_background(),
-	last_tod("invalid_tod"),
-	rand_seed(rand())
+	last_tod("invalid_tod")
 {}
 
 void terrain_builder::tile::add_image_to_cache(const std::string &tod, ordered_ri_list::const_iterator itor)
@@ -114,10 +113,17 @@ void terrain_builder::tile::clear()
 {
 	flags.clear();
 	images.clear();
-	rand_seed=rand();
 	images_foreground.clear();
 	images_background.clear();
 	last_tod = "invalid_tod";
+}
+
+static unsigned int get_noise(const map_location& loc, unsigned int index){
+	unsigned int a = (loc.x + 92872973) ^ 918273;
+	unsigned int b = (loc.y + 1672517) ^ 128123;
+	unsigned int c = (index + 127390) ^ 13923787;
+	unsigned int abc = a*b*c + a*b + b*c + a*c + a + b + c;
+	return abc*abc;
 }
 
 void terrain_builder::tilemap::reset()
@@ -907,12 +913,7 @@ bool terrain_builder::rule_matches(const terrain_builder::building_rule &rule,
 	}
 
 	if(rule.probability != -1) {
-		unsigned int a = (loc.x + 92872973) ^ 918273;
-		unsigned int b = (loc.y + 1672517) ^ 128123;
-		unsigned int c = (rule_index + 127390) ^ 13923787;
-		unsigned int abc = a*b*c + a*b + b*c + a*c + a + b + c;
-		unsigned int random = (abc*abc) % 100;
-
+		unsigned int random = get_noise(loc, rule_index) % 100;
 		if(random > static_cast<unsigned int>(rule.probability)) {
 			return false;
 		}
@@ -958,9 +959,9 @@ bool terrain_builder::rule_matches(const terrain_builder::building_rule &rule,
 	return true;
 }
 
-void terrain_builder::apply_rule(const terrain_builder::building_rule &rule, const map_location &loc)
+void terrain_builder::apply_rule(const terrain_builder::building_rule &rule, const map_location &loc, const int rule_index)
 {
-	int rand_seed = tile_map_.on_map(loc) ? tile_map_[loc].rand_seed : 0;
+	unsigned int rand_seed = get_noise(loc, rule_index);
 
 	for(constraint_set::const_iterator constraint = rule.constraints.begin();
 			constraint != rule.constraints.end(); ++constraint) {
@@ -1060,7 +1061,7 @@ void terrain_builder::build_terrains()
 				const map_location loc = itor->legacy_difference(min_constraint->second.loc);
 
 				if(rule_matches(rule, loc, rule_index, min_constraint)) {
-					apply_rule(rule, loc);
+					apply_rule(rule, loc, rule_index);
 				}
 			}
 		}

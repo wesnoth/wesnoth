@@ -257,7 +257,7 @@ public:
 	struct tile
 	{
 		/** An ordered rule_image list */
-		typedef std::multimap<int,std::pair<int, const rule_image*> > ordered_ri_list;
+		typedef std::multimap<int,std::pair<unsigned int, const rule_image*> > ordered_ri_list;
 
 		/** Contructor for the tile() structure */
 		tile();
@@ -306,10 +306,6 @@ public:
 		 * The time-of-day to which the image caches correspond.
 		 */
 		std::string last_tod;
-		/**
-		  * Unique random number used to start all animations originating from this tile
-		  */
-		int rand_seed;
 
 	};
 
@@ -720,8 +716,9 @@ private:
 	 *
 	 * @param rule      The rule to apply
 	 * @param loc       The location to which to apply the rule.
+	 * @param rule_index The index of the rule used for seed generation
 	 */
-	void apply_rule(const building_rule &rule, const map_location &loc);
+	void apply_rule(const building_rule &rule, const map_location &loc, const int rule_index);
 
 	/**
 	 * Calculates the list of terrains, and fills the tile_map_ member,
