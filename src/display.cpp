@@ -594,9 +594,9 @@ static const std::string& get_direction(size_t n)
 	return dirs[n >= sizeof(dirs)/sizeof(*dirs) ? 0 : n];
 }
 
-std::vector<std::string> display::get_fog_shroud_graphics(const map_location& loc)
+std::vector<surface> display::get_fog_shroud_images(const map_location& loc, image::TYPE image_type)
 {
-	std::vector<std::string> res;
+	std::vector<std::string> names;
 
 	map_location adjacent[6];
 	get_adjacent_tiles(loc,adjacent);
@@ -616,7 +616,6 @@ std::vector<std::string> display::get_fog_shroud_graphics(const map_location& lo
 			tiles[i] = CLEAR;
 		}
 	}
-
 
 	for(int v = FOG; v != CLEAR; ++v) {
 		// Find somewhere that doesn't have overlap to use as a starting point
@@ -654,12 +653,21 @@ std::vector<std::string> display::get_fog_shroud_graphics(const map_location& lo
 				}
 
 				if(!name.empty()) {
-					res.push_back(name + ".png");
+					names.push_back(name + ".png");
 				}
 			} else {
 				i = (i+1)%6;
 			}
 		}
+	}
+
+	// now get the surfaces
+	std::vector<surface> res;
+
+	foreach(std::string& name, names) {
+		const surface surf(image::get_image(name, image_type));
+		if (surf)
+			res.push_back(surf);
 	}
 
 	return res;
@@ -671,24 +679,6 @@ std::vector<surface> display::get_terrain_images(const map_location &loc,
 		ADJACENT_TERRAIN_TYPE terrain_type)
 {
 	std::vector<surface> res;
-
-	if(terrain_type == ADJACENT_FOGSHROUD) {
-		const std::vector<std::string> fog_shroud = get_fog_shroud_graphics(loc);
-
-		if(!fog_shroud.empty()) {
-			for(std::vector<std::string>::const_iterator it = fog_shroud.begin(); it != fog_shroud.end(); ++it) {
-				image::locator image(*it);
-
-				const surface surface(image::get_image(image, image_type));
-				if (!surface.null()) {
-					res.push_back(surface);
-				}
-			}
-
-		}
-
-		return res;
-	}
 
 	terrain_builder::ADJACENT_TERRAIN_TYPE builder_terrain_type =
 	      (terrain_type == ADJACENT_FOREGROUND ?
@@ -713,11 +703,11 @@ std::vector<surface> display::get_terrain_images(const map_location &loc,
 			// not the location, since the transitions are rendered
 			// over the offmap-terrain and these need a ToD coloring.
 			const bool off_map = (image.get_filename() == off_map_name);
-			const surface surface(image::get_image(image,
+			const surface surf(image::get_image(image,
 				off_map ? image::UNMASKED : image_type));
 
-			if (!surface.null()) {
-				res.push_back(surface);
+			if (!surf.null()) {
+				res.push_back(surf);
 			}
 		}
 	}
@@ -2001,7 +1991,7 @@ void display::draw_hex(const map_location& loc) {
 
 	if(!shrouded(loc)) {
 		drawing_buffer_add(LAYER_FOG_SHROUD, loc, tblit(xpos, ypos,
-			get_terrain_images(loc, tod.id, image_type, ADJACENT_FOGSHROUD)));
+			get_fog_shroud_images(loc, image_type)));
 	}
 	if (on_map) {
 		if (draw_coordinates_) {

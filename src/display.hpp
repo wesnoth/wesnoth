@@ -533,14 +533,14 @@ protected:
 
 	void draw_minimap();
 
-	enum ADJACENT_TERRAIN_TYPE { ADJACENT_BACKGROUND, ADJACENT_FOREGROUND, ADJACENT_FOGSHROUD };
+	enum ADJACENT_TERRAIN_TYPE { ADJACENT_BACKGROUND, ADJACENT_FOREGROUND};
 
 	std::vector<surface> get_terrain_images(const map_location &loc,
 					const std::string& timeid,
 					image::TYPE type,
 					ADJACENT_TERRAIN_TYPE terrain_type);
 
-	std::vector<std::string> get_fog_shroud_graphics(const map_location& loc);
+	std::vector<surface> get_fog_shroud_images(const map_location& loc, image::TYPE image_type);
 
 	void draw_image_for_report(surface& img, SDL_Rect& rect);
 
