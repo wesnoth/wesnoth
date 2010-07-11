@@ -198,8 +198,7 @@ void thorizontal_list::set_visible_area(const SDL_Rect& area)
 twidget* thorizontal_list::find_at(
 		const tpoint& coordinate, const bool must_be_active)
 {
-	twindow* window = get_window();
-	assert(window); (void) window /* avoids unused parameter warning */;
+	assert(get_window());
 
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
@@ -221,8 +220,7 @@ twidget* thorizontal_list::find_at(
 const twidget* thorizontal_list::find_at(const tpoint& coordinate,
 		const bool must_be_active) const
 {
-	const twindow* window = get_window();
-	assert(window); (void) window /* avoids unused parameter warning */;
+	assert(get_window());
 
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
@@ -393,8 +391,7 @@ void tvertical_list::set_visible_area(const SDL_Rect& area)
 twidget* tvertical_list::find_at(
 		const tpoint& coordinate, const bool must_be_active)
 {
-	twindow* window = get_window();
-	assert(window); (void) window /* avoids unused parameter warning */;
+	assert(get_window());
 
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
@@ -417,8 +414,7 @@ twidget* tvertical_list::find_at(
 const twidget* tvertical_list::find_at(const tpoint& coordinate,
 		const bool must_be_active) const
 {
-	const twindow* window = get_window();
-	assert(window); (void) window /* avoids unused parameter warning */;
+	assert(get_window());
 
 	for(size_t i = 0; i < get_item_count(); ++i) {
 
@@ -555,8 +551,7 @@ void tindependant::set_origin(const tpoint& origin)
 twidget* tindependant::find_at(const tpoint& coordinate
 		, const bool must_be_active)
 {
-	const twindow* window = get_window();
-	assert(window); (void) window /* avoids unused parameter warning */;
+	assert(get_window());
 
 	const int selected_item = get_selected_item();
 	if(selected_item < 0) {
@@ -570,8 +565,7 @@ twidget* tindependant::find_at(const tpoint& coordinate
 const twidget* tindependant::find_at(const tpoint& coordinate
 		, const bool must_be_active) const
 {
-	const twindow* window = get_window();
-	assert(window); (void) window /* avoids unused parameter warning */;
+	assert(get_window());
 
 	const int selected_item = get_selected_item();
 	if(selected_item < 0) {
@@ -681,7 +675,7 @@ void tshow::init(tgrid* grid
 		, const std::map<std::string /* widget id */, string_map>& data
 		, void (*callback)(twidget*))
 {
-	assert(!callback); (void) callback /* avoids unused parameter warning */;
+	assert(!callback);
 
 	typedef std::pair<std::string, string_map> hack;
 	foreach(const hack& item, data) {
