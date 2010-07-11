@@ -13,6 +13,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLRoot/Rmacros"/>
     </genClasses>
     <genClasses ecoreClass="WML.ecore#//WMLMacro">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//WMLMacro/macroName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//WMLMacro/tagcontent"/>
     </genClasses>
     <genClasses ecoreClass="WML.ecore#//WMLTag">
@@ -30,7 +31,11 @@
     </genClasses>
     <genClasses ecoreClass="WML.ecore#//WMLKey">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//WMLKey/keyName"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//WMLKey/keyValue"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLKey/value"/>
+    </genClasses>
+    <genClasses ecoreClass="WML.ecore#//WMLKeyValue">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//WMLKeyValue/key1Value"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLKeyValue/key2Value"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

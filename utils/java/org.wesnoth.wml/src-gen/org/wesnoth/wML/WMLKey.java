@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.wesnoth.wML.WMLKey#getKeyName <em>Key Name</em>}</li>
- *   <li>{@link org.wesnoth.wML.WMLKey#getKeyValue <em>Key Value</em>}</li>
+ *   <li>{@link org.wesnoth.wML.WMLKey#getValue <em>Value</em>}</li>
  * </ul>
  * </p>
  *
@@ -54,29 +54,29 @@ public interface WMLKey extends EObject
   void setKeyName(String value);
 
   /**
-   * Returns the value of the '<em><b>Key Value</b></em>' attribute.
+   * Returns the value of the '<em><b>Value</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Key Value</em>' attribute isn't clear,
+   * If the meaning of the '<em>Value</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Key Value</em>' attribute.
-   * @see #setKeyValue(String)
-   * @see org.wesnoth.wML.WMLPackage#getWMLKey_KeyValue()
-   * @model
+   * @return the value of the '<em>Value</em>' containment reference.
+   * @see #setValue(WMLKeyValue)
+   * @see org.wesnoth.wML.WMLPackage#getWMLKey_Value()
+   * @model containment="true"
    * @generated
    */
-  String getKeyValue();
+  WMLKeyValue getValue();
 
   /**
-   * Sets the value of the '{@link org.wesnoth.wML.WMLKey#getKeyValue <em>Key Value</em>}' attribute.
+   * Sets the value of the '{@link org.wesnoth.wML.WMLKey#getValue <em>Value</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Key Value</em>' attribute.
-   * @see #getKeyValue()
+   * @param value the new value of the '<em>Value</em>' containment reference.
+   * @see #getValue()
    * @generated
    */
-  void setKeyValue(String value);
+  void setValue(WMLKeyValue value);
 
 } // WMLKey

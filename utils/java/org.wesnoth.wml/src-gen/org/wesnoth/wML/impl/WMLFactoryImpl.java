@@ -74,6 +74,7 @@ public class WMLFactoryImpl extends EFactoryImpl implements WMLFactory
       case WMLPackage.WML_START_TAG: return createWMLStartTag();
       case WMLPackage.WML_END_TAG: return createWMLEndTag();
       case WMLPackage.WML_KEY: return createWMLKey();
+      case WMLPackage.WML_KEY_VALUE: return createWMLKeyValue();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -143,6 +144,17 @@ public class WMLFactoryImpl extends EFactoryImpl implements WMLFactory
   {
     WMLKeyImpl wmlKey = new WMLKeyImpl();
     return wmlKey;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public WMLKeyValue createWMLKeyValue()
+  {
+    WMLKeyValueImpl wmlKeyValue = new WMLKeyValueImpl();
+    return wmlKeyValue;
   }
 
   /**

@@ -8,10 +8,13 @@ package org.wesnoth.wML.impl;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EDataTypeEList;
@@ -26,6 +29,7 @@ import org.wesnoth.wML.WMLPackage;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.wesnoth.wML.impl.WMLMacroImpl#getMacroName <em>Macro Name</em>}</li>
  *   <li>{@link org.wesnoth.wML.impl.WMLMacroImpl#getTagcontent <em>Tagcontent</em>}</li>
  * </ul>
  * </p>
@@ -34,6 +38,26 @@ import org.wesnoth.wML.WMLPackage;
  */
 public class WMLMacroImpl extends MinimalEObjectImpl.Container implements WMLMacro
 {
+  /**
+   * The default value of the '{@link #getMacroName() <em>Macro Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMacroName()
+   * @generated
+   * @ordered
+   */
+  protected static final String MACRO_NAME_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getMacroName() <em>Macro Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMacroName()
+   * @generated
+   * @ordered
+   */
+  protected String macroName = MACRO_NAME_EDEFAULT;
+
   /**
    * The cached value of the '{@link #getTagcontent() <em>Tagcontent</em>}' attribute list.
    * <!-- begin-user-doc -->
@@ -70,6 +94,29 @@ public class WMLMacroImpl extends MinimalEObjectImpl.Container implements WMLMac
    * <!-- end-user-doc -->
    * @generated
    */
+  public String getMacroName()
+  {
+    return macroName;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setMacroName(String newMacroName)
+  {
+    String oldMacroName = macroName;
+    macroName = newMacroName;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, WMLPackage.WML_MACRO__MACRO_NAME, oldMacroName, macroName));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EList<String> getTagcontent()
   {
     if (tagcontent == null)
@@ -89,6 +136,8 @@ public class WMLMacroImpl extends MinimalEObjectImpl.Container implements WMLMac
   {
     switch (featureID)
     {
+      case WMLPackage.WML_MACRO__MACRO_NAME:
+        return getMacroName();
       case WMLPackage.WML_MACRO__TAGCONTENT:
         return getTagcontent();
     }
@@ -106,6 +155,9 @@ public class WMLMacroImpl extends MinimalEObjectImpl.Container implements WMLMac
   {
     switch (featureID)
     {
+      case WMLPackage.WML_MACRO__MACRO_NAME:
+        setMacroName((String)newValue);
+        return;
       case WMLPackage.WML_MACRO__TAGCONTENT:
         getTagcontent().clear();
         getTagcontent().addAll((Collection<? extends String>)newValue);
@@ -124,6 +176,9 @@ public class WMLMacroImpl extends MinimalEObjectImpl.Container implements WMLMac
   {
     switch (featureID)
     {
+      case WMLPackage.WML_MACRO__MACRO_NAME:
+        setMacroName(MACRO_NAME_EDEFAULT);
+        return;
       case WMLPackage.WML_MACRO__TAGCONTENT:
         getTagcontent().clear();
         return;
@@ -141,6 +196,8 @@ public class WMLMacroImpl extends MinimalEObjectImpl.Container implements WMLMac
   {
     switch (featureID)
     {
+      case WMLPackage.WML_MACRO__MACRO_NAME:
+        return MACRO_NAME_EDEFAULT == null ? macroName != null : !MACRO_NAME_EDEFAULT.equals(macroName);
       case WMLPackage.WML_MACRO__TAGCONTENT:
         return tagcontent != null && !tagcontent.isEmpty();
     }
@@ -158,7 +215,9 @@ public class WMLMacroImpl extends MinimalEObjectImpl.Container implements WMLMac
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (tagcontent: ");
+    result.append(" (macroName: ");
+    result.append(macroName);
+    result.append(", tagcontent: ");
     result.append(tagcontent);
     result.append(')');
     return result.toString();

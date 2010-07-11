@@ -7,30 +7,44 @@ package org.wesnoth.ui.contentassist.antlr.internal;
 import org.eclipse.xtext.ui.editor.contentassist.antlr.internal.Lexer;
 }
 
-T10 : '{' ;
-T11 : '}' ;
-T12 : '[' ;
-T13 : ']' ;
-T14 : '[/' ;
+T9 : '_' ;
+T10 : ':' ;
+T11 : '-' ;
+T12 : '.' ;
+T13 : '(' ;
+T14 : ')' ;
 T15 : '=' ;
-T16 : '.' ;
+T16 : '/' ;
+T17 : 'n' ;
+T18 : 's' ;
+T19 : 'w' ;
+T20 : 'e' ;
+T21 : 'sw' ;
+T22 : 'se' ;
+T23 : 'ne' ;
+T24 : 'nw' ;
+T25 : '{' ;
+T26 : '}' ;
+T27 : '[' ;
+T28 : ']' ;
+T29 : '[/' ;
+T30 : ' ' ;
+T31 : ',' ;
+T32 : '~' ;
 
-// $ANTLR src "../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g" 1110
+// $ANTLR src "../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g" 2754
 RULE_SL_COMMENT : '#' ~(('\n'|'\r'))* ('\r'? '\n')?;
 
-// $ANTLR src "../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g" 1112
+// $ANTLR src "../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g" 2756
 RULE_WS : (' '|'\t'|'\r'|'\n')+;
 
-// $ANTLR src "../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g" 1114
-RULE_ID : ('a'..'z'|'A'..'Z'|'_'|' '|'0'..'9')*;
+// $ANTLR src "../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g" 2758
+RULE_ID : ('a'..'z'|'A'..'Z'|'0'..'9') ('a'..'z'|'A'..'Z'|'_'|' '|'0'..'9')*;
 
-// $ANTLR src "../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g" 1116
-RULE_IDENH : ('a'..'z'|'A'..'Z'|'_') (' '|'a'..'z'|'A'..'Z'|'_'|'0'..'9')* ('a'..'z'|'A'..'Z');
+// $ANTLR src "../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g" 2760
+RULE_IINT : ('-'|'+')? ('0'..'9')+;
 
-// $ANTLR src "../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g" 1118
-RULE_INT : ('0'..'9')+;
-
-// $ANTLR src "../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g" 1120
+// $ANTLR src "../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g" 2762
 RULE_STRING : '"' ('\\' ('b'|'t'|'n'|'f'|'r'|'"'|'\''|'\\')|~(('\\'|'"')))* '"';
 
 

@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.wesnoth.wML.WMLEndTag;
 import org.wesnoth.wML.WMLFactory;
 import org.wesnoth.wML.WMLKey;
+import org.wesnoth.wML.WMLKeyValue;
 import org.wesnoth.wML.WMLMacro;
 import org.wesnoth.wML.WMLPackage;
 import org.wesnoth.wML.WMLRoot;
@@ -71,6 +72,13 @@ public class WMLPackageImpl extends EPackageImpl implements WMLPackage
    * @generated
    */
   private EClass wmlKeyEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass wmlKeyValueEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -180,9 +188,19 @@ public class WMLPackageImpl extends EPackageImpl implements WMLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getWMLMacro_Tagcontent()
+  public EAttribute getWMLMacro_MacroName()
   {
     return (EAttribute)wmlMacroEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getWMLMacro_Tagcontent()
+  {
+    return (EAttribute)wmlMacroEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -310,9 +328,39 @@ public class WMLPackageImpl extends EPackageImpl implements WMLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getWMLKey_KeyValue()
+  public EReference getWMLKey_Value()
   {
-    return (EAttribute)wmlKeyEClass.getEStructuralFeatures().get(1);
+    return (EReference)wmlKeyEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getWMLKeyValue()
+  {
+    return wmlKeyValueEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getWMLKeyValue_Key1Value()
+  {
+    return (EAttribute)wmlKeyValueEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getWMLKeyValue_Key2Value()
+  {
+    return (EReference)wmlKeyValueEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -350,6 +398,7 @@ public class WMLPackageImpl extends EPackageImpl implements WMLPackage
     createEReference(wmlRootEClass, WML_ROOT__RMACROS);
 
     wmlMacroEClass = createEClass(WML_MACRO);
+    createEAttribute(wmlMacroEClass, WML_MACRO__MACRO_NAME);
     createEAttribute(wmlMacroEClass, WML_MACRO__TAGCONTENT);
 
     wmlTagEClass = createEClass(WML_TAG);
@@ -367,7 +416,11 @@ public class WMLPackageImpl extends EPackageImpl implements WMLPackage
 
     wmlKeyEClass = createEClass(WML_KEY);
     createEAttribute(wmlKeyEClass, WML_KEY__KEY_NAME);
-    createEAttribute(wmlKeyEClass, WML_KEY__KEY_VALUE);
+    createEReference(wmlKeyEClass, WML_KEY__VALUE);
+
+    wmlKeyValueEClass = createEClass(WML_KEY_VALUE);
+    createEAttribute(wmlKeyValueEClass, WML_KEY_VALUE__KEY1_VALUE);
+    createEReference(wmlKeyValueEClass, WML_KEY_VALUE__KEY2_VALUE);
   }
 
   /**
@@ -406,6 +459,7 @@ public class WMLPackageImpl extends EPackageImpl implements WMLPackage
     initEReference(getWMLRoot_Rmacros(), this.getWMLMacro(), null, "Rmacros", null, 0, -1, WMLRoot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(wmlMacroEClass, WMLMacro.class, "WMLMacro", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getWMLMacro_MacroName(), ecorePackage.getEString(), "macroName", null, 0, 1, WMLMacro.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getWMLMacro_Tagcontent(), ecorePackage.getEString(), "tagcontent", null, 0, -1, WMLMacro.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(wmlTagEClass, WMLTag.class, "WMLTag", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -423,7 +477,11 @@ public class WMLPackageImpl extends EPackageImpl implements WMLPackage
 
     initEClass(wmlKeyEClass, WMLKey.class, "WMLKey", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getWMLKey_KeyName(), ecorePackage.getEString(), "keyName", null, 0, 1, WMLKey.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getWMLKey_KeyValue(), ecorePackage.getEString(), "keyValue", null, 0, 1, WMLKey.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getWMLKey_Value(), this.getWMLKeyValue(), null, "value", null, 0, 1, WMLKey.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(wmlKeyValueEClass, WMLKeyValue.class, "WMLKeyValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getWMLKeyValue_Key1Value(), ecorePackage.getEString(), "key1Value", null, 0, 1, WMLKeyValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getWMLKeyValue_Key2Value(), this.getWMLMacro(), null, "key2Value", null, 0, 1, WMLKeyValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

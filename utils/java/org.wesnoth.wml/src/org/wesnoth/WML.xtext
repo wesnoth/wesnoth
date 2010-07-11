@@ -2,7 +2,7 @@
  * @author Timotei Dolean
  */
 grammar org.wesnoth.WML hidden(WS, SL_COMMENT)
-//grammar org.wesnoth.Wml with org.eclipse.xtext.common.Terminals
+//grammar org.wesnoth.WML with org.eclipse.xtext.common.Terminals
 generate wML "http://www.wesnoth.org/WML"
 
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
@@ -12,9 +12,10 @@ WMLRoot:
 	| (Rmacros += WMLMacro) 
 	)*
 	;
-	
+
 WMLMacro:
-	'{' tagcontent += ID+ '}';
+	'{' macroName = ID (tagcontent +=(ID|STRING|'_'|':'|'-'|'.'|'('|')'|'='|'/')+)* '}';
+
 WMLTag:
 	start = WMLStartTag
 		( (Ttags += WMLTag)
@@ -30,93 +31,34 @@ WMLEndTag:
 	'[/' tagname = ID ']'
 	;
 WMLKey:
-	(keyName = ID) '=' (keyValue = (ID | STRING | FLOAT))
+	(keyName = ID) '=' 
+	(value = WMLKeyValue)
 	;
+WMLKeyValue:
+	( (key1Value = (ID | STRING | TSTRING | FLOAT | IINT | PATH | DIRECTION | LIST | PROGRESSIVE))
+	| (key2Value = WMLMacro)	
+	);
+
 FLOAT hidden():
-	INT '.' INT+;
-
-terminal SL_COMMENT: '#' !('\n'|'\r')* ('\r'? '\n')?;
-terminal WS		: (' '|'\t'|'\r'|'\n')+;
-terminal ID  	: ('a'..'z'|'A'..'Z'|'_'|' '|'0'..'9')*;
-terminal IDENH 	: ('a'..'z'|'A'..'Z'|'_') (' '|'a'..'z'|'A'..'Z'|'_'|'0'..'9')* ('a'..'z'|'A'..'Z');
-terminal INT: ('0'..'9')+;
-terminal STRING	: 
-				'"' ( '\\' ('b'|'t'|'n'|'f'|'r'|'"'|"'"|'\\') | !('\\'|'"') )* '"' 
-				; 
-
-// ---------------
-//					  import "http://www.eclipse.org/emf/2002/Ecore" as ecore
-//
-//terminal ML_COMMENT	: '/*' -> '*/';
-//terminal SL_COMMENT 	: '//' !('\n'|'\r')* ('\r'? '\n')?;
-//
-//terminal WS			: (' '|'\t'|'\r'|'\n')+;
-//
-//terminal ANY_OTHER: .;
-// -----------------
+	IINT '.' IINT+;
+TSTRING:
+	((' '+)? '_' (' '+)?) STRING;
+PATH:
+	(ID+ ('-'|'/'))* ID+ '.' ID+;
+DIRECTION:
+	( ('n'|'s'|'w'|'e'|'sw'|'se'|'ne'|'nw') ','?)+;
+LIST:
+	ID (',' ID)+;
+PROGRESSIVE:
+	(IINT|FLOAT) ('~' (IINT|FLOAT))? (':' IINT)? (',' (IINT|FLOAT) ('~' (IINT|FLOAT))? (':' IINT)?)+;
 
 
-//
-//Root:
-//	textdomains += TextDomain*
-// 	preproc += Preprocessor*
-//	roots += RootType*
-//	;
-//
-//TextDomain:
-//	'#textdomain ' DomainName=ID;
-//
-//Preprocessor:
-//	Macro | PathInclude;
-//Macro:
-//	'{' macroContent += ID+'}';
-//PathInclude:
-//	'{' path = (HOMEPATH |PATH) '}';
-//	
-//RootType:
-//	'[' startTag = RootTag ']'
-//		subTypes += RootType* 
-//		at += Attributes*
-//		okpreproc += Preprocessor*
-//	'[' '/' endTag = RootTag ']';
-//
-//RootTag:
-//	SimpleTag | AddedTag; 
-//SimpleTag:
-//	(endTag?='/')?  tagName=RootTagsList;
-//AddedTag:
-//	'+' tagName = RootTagsList; 
-//
-//RootTagsList:
-//	ID; //'about'  | 'binary_path' | 'campaign' | 'textdomain' | 'units';
-//
-//Attributes:
-//	attrName=ID '=' attrValue=(TSTRING|STRING|PATH|ID|IDLIST);
-//
-//// translatable string
-//TSTRING:
-//	'_' STRING;
-//HOMEPATH:
-//	'~' PATH;
-//// ==== TERMINAL RULES ====
-//terminal SL_COMMENT: '#' !('\n'|'\r')* ('\r'? '\n')?;
-//terminal WS		: (' '|'\t'|'\r'|'\n')+;
-//// no multiline comment defined on WML, 
-//// terminal ML_COMMENT: '#' !('\n'|'\r')* ('\r'? '\n')?;
-//terminal ID  		: ('a'..'z'|'A'..'Z'|'_'|'-'|' '|'0'..'9')+;
-//terminal IDLIST	: (ID ',')* ID;
-////terminal INT returns ecore::EInt: ('0'..'9')+;
-//terminal STRING	: 
-//			'"' ( '\\' ('b'|'t'|'n'|'f'|'r'|'"'|"'"|'\\') | !('\\'|'"') )* '"' |
-//			"'" ( '\\' ('b'|'t'|'n'|'f'|'r'|'"'|"'"|'\\') | !('\\'|"'") )* "'";
-//terminal ANY_OTHER: .;
-////terminal WORD_START: ' ' | '=';
-////terminal WORD_END	: '#' | ' ';
-//// line end
-//terminal PATH		: //('"')? 
-//					  (('a'..'z'|'A'..'Z'|'_'|'.'|'-'|'0'..'9')+ '/')*
-//					   ('a'..'z'|'A'..'Z'|'_'|'.'|'-'|'0'..'9')+ '/'? 
-//					  //('"')?
-//					  ;
-
-					  
+terminal SL_COMMENT	: '#' !('\n'|'\r')* ('\r'? '\n')?;
+//terminal MACRO		: '{'->'}';
+//terminal STRINT		: ('a'..'z'|'A'..'Z'|'_'|'.'|'0'..'9')+;
+terminal WS			: (' '|'\t'|'\r'|'\n')+;
+//terminal ID  		: ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|' '|'_'|'0'..'9')*;
+terminal ID  		: ('a'..'z'|'A'..'Z'|'0'..'9') ('a'..'z'|'A'..'Z'|'_'|' '|'0'..'9')*;
+terminal IINT		: ('-'|'+')? ('0'..'9')+;
+terminal STRING		: '"' ( '\\' ('b'|'t'|'n'|'f'|'r'|'"'|"'"|'\\') | !('\\'|'"') )* '"';
+//terminal SSTRING	: ( '\\' ('b'|'t'|'n'|'f'|'r'|'"'|"'"|'\\') | !('\\'|'"') )*;

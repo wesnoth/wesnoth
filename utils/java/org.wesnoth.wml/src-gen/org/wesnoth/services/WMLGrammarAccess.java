@@ -48,28 +48,76 @@ public class WMLGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "WMLMacro");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cLeftCurlyBracketKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cTagcontentAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cTagcontentIDTerminalRuleCall_1_0 = (RuleCall)cTagcontentAssignment_1.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cMacroNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cMacroNameIDTerminalRuleCall_1_0 = (RuleCall)cMacroNameAssignment_1.eContents().get(0);
+		private final Assignment cTagcontentAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final Alternatives cTagcontentAlternatives_2_0 = (Alternatives)cTagcontentAssignment_2.eContents().get(0);
+		private final RuleCall cTagcontentIDTerminalRuleCall_2_0_0 = (RuleCall)cTagcontentAlternatives_2_0.eContents().get(0);
+		private final RuleCall cTagcontentSTRINGTerminalRuleCall_2_0_1 = (RuleCall)cTagcontentAlternatives_2_0.eContents().get(1);
+		private final Keyword cTagcontent_Keyword_2_0_2 = (Keyword)cTagcontentAlternatives_2_0.eContents().get(2);
+		private final Keyword cTagcontentColonKeyword_2_0_3 = (Keyword)cTagcontentAlternatives_2_0.eContents().get(3);
+		private final Keyword cTagcontentHyphenMinusKeyword_2_0_4 = (Keyword)cTagcontentAlternatives_2_0.eContents().get(4);
+		private final Keyword cTagcontentFullStopKeyword_2_0_5 = (Keyword)cTagcontentAlternatives_2_0.eContents().get(5);
+		private final Keyword cTagcontentLeftParenthesisKeyword_2_0_6 = (Keyword)cTagcontentAlternatives_2_0.eContents().get(6);
+		private final Keyword cTagcontentRightParenthesisKeyword_2_0_7 = (Keyword)cTagcontentAlternatives_2_0.eContents().get(7);
+		private final Keyword cTagcontentEqualsSignKeyword_2_0_8 = (Keyword)cTagcontentAlternatives_2_0.eContents().get(8);
+		private final Keyword cTagcontentSolidusKeyword_2_0_9 = (Keyword)cTagcontentAlternatives_2_0.eContents().get(9);
+		private final Keyword cRightCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
 		//WMLMacro:
-		//	"{" tagcontent+=ID+ "}";
+		//	"{" macroName=ID tagcontent+=(ID | STRING | "_" | ":" | "-" | "." | "(" | ")" | "=" | "/")* "}";
 		public ParserRule getRule() { return rule; }
 
-		//"{" tagcontent+=ID+ "}"
+		//"{" macroName=ID tagcontent+=(ID | STRING | "_" | ":" | "-" | "." | "(" | ")" | "=" | "/")* "}"
 		public Group getGroup() { return cGroup; }
 
 		//"{"
 		public Keyword getLeftCurlyBracketKeyword_0() { return cLeftCurlyBracketKeyword_0; }
 
-		//tagcontent+=ID+
-		public Assignment getTagcontentAssignment_1() { return cTagcontentAssignment_1; }
+		//macroName=ID
+		public Assignment getMacroNameAssignment_1() { return cMacroNameAssignment_1; }
 
 		//ID
-		public RuleCall getTagcontentIDTerminalRuleCall_1_0() { return cTagcontentIDTerminalRuleCall_1_0; }
+		public RuleCall getMacroNameIDTerminalRuleCall_1_0() { return cMacroNameIDTerminalRuleCall_1_0; }
+
+		//tagcontent+=(ID | STRING | "_" | ":" | "-" | "." | "(" | ")" | "=" | "/")*
+		public Assignment getTagcontentAssignment_2() { return cTagcontentAssignment_2; }
+
+		//ID | STRING | "_" | ":" | "-" | "." | "(" | ")" | "=" | "/"
+		public Alternatives getTagcontentAlternatives_2_0() { return cTagcontentAlternatives_2_0; }
+
+		//ID
+		public RuleCall getTagcontentIDTerminalRuleCall_2_0_0() { return cTagcontentIDTerminalRuleCall_2_0_0; }
+
+		//STRING
+		public RuleCall getTagcontentSTRINGTerminalRuleCall_2_0_1() { return cTagcontentSTRINGTerminalRuleCall_2_0_1; }
+
+		//"_"
+		public Keyword getTagcontent_Keyword_2_0_2() { return cTagcontent_Keyword_2_0_2; }
+
+		//":"
+		public Keyword getTagcontentColonKeyword_2_0_3() { return cTagcontentColonKeyword_2_0_3; }
+
+		//"-"
+		public Keyword getTagcontentHyphenMinusKeyword_2_0_4() { return cTagcontentHyphenMinusKeyword_2_0_4; }
+
+		//"."
+		public Keyword getTagcontentFullStopKeyword_2_0_5() { return cTagcontentFullStopKeyword_2_0_5; }
+
+		//"("
+		public Keyword getTagcontentLeftParenthesisKeyword_2_0_6() { return cTagcontentLeftParenthesisKeyword_2_0_6; }
+
+		//")"
+		public Keyword getTagcontentRightParenthesisKeyword_2_0_7() { return cTagcontentRightParenthesisKeyword_2_0_7; }
+
+		//"="
+		public Keyword getTagcontentEqualsSignKeyword_2_0_8() { return cTagcontentEqualsSignKeyword_2_0_8; }
+
+		//"/"
+		public Keyword getTagcontentSolidusKeyword_2_0_9() { return cTagcontentSolidusKeyword_2_0_9; }
 
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_2() { return cRightCurlyBracketKeyword_2; }
+		public Keyword getRightCurlyBracketKeyword_3() { return cRightCurlyBracketKeyword_3; }
 	}
 
 	public class WMLTagElements extends AbstractParserRuleElementFinder {
@@ -190,17 +238,14 @@ public class WMLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cKeyNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final RuleCall cKeyNameIDTerminalRuleCall_0_0 = (RuleCall)cKeyNameAssignment_0.eContents().get(0);
 		private final Keyword cEqualsSignKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cKeyValueAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final Alternatives cKeyValueAlternatives_2_0 = (Alternatives)cKeyValueAssignment_2.eContents().get(0);
-		private final RuleCall cKeyValueIDTerminalRuleCall_2_0_0 = (RuleCall)cKeyValueAlternatives_2_0.eContents().get(0);
-		private final RuleCall cKeyValueSTRINGTerminalRuleCall_2_0_1 = (RuleCall)cKeyValueAlternatives_2_0.eContents().get(1);
-		private final RuleCall cKeyValueFLOATParserRuleCall_2_0_2 = (RuleCall)cKeyValueAlternatives_2_0.eContents().get(2);
+		private final Assignment cValueAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cValueWMLKeyValueParserRuleCall_2_0 = (RuleCall)cValueAssignment_2.eContents().get(0);
 		
 		//WMLKey:
-		//	keyName=ID "=" keyValue=(ID | STRING | FLOAT);
+		//	keyName=ID "=" value=WMLKeyValue;
 		public ParserRule getRule() { return rule; }
 
-		//keyName=ID "=" keyValue=(ID | STRING | FLOAT)
+		//keyName=ID "=" value=WMLKeyValue
 		public Group getGroup() { return cGroup; }
 
 		//keyName=ID
@@ -212,44 +257,363 @@ public class WMLGrammarAccess extends AbstractGrammarElementFinder {
 		//"="
 		public Keyword getEqualsSignKeyword_1() { return cEqualsSignKeyword_1; }
 
-		//keyValue=(ID | STRING | FLOAT)
-		public Assignment getKeyValueAssignment_2() { return cKeyValueAssignment_2; }
+		//value=WMLKeyValue
+		public Assignment getValueAssignment_2() { return cValueAssignment_2; }
 
-		//ID | STRING | FLOAT
-		public Alternatives getKeyValueAlternatives_2_0() { return cKeyValueAlternatives_2_0; }
+		//WMLKeyValue
+		public RuleCall getValueWMLKeyValueParserRuleCall_2_0() { return cValueWMLKeyValueParserRuleCall_2_0; }
+	}
+
+	public class WMLKeyValueElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "WMLKeyValue");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Assignment cKey1ValueAssignment_0 = (Assignment)cAlternatives.eContents().get(0);
+		private final Alternatives cKey1ValueAlternatives_0_0 = (Alternatives)cKey1ValueAssignment_0.eContents().get(0);
+		private final RuleCall cKey1ValueIDTerminalRuleCall_0_0_0 = (RuleCall)cKey1ValueAlternatives_0_0.eContents().get(0);
+		private final RuleCall cKey1ValueSTRINGTerminalRuleCall_0_0_1 = (RuleCall)cKey1ValueAlternatives_0_0.eContents().get(1);
+		private final RuleCall cKey1ValueTSTRINGParserRuleCall_0_0_2 = (RuleCall)cKey1ValueAlternatives_0_0.eContents().get(2);
+		private final RuleCall cKey1ValueFLOATParserRuleCall_0_0_3 = (RuleCall)cKey1ValueAlternatives_0_0.eContents().get(3);
+		private final RuleCall cKey1ValueIINTTerminalRuleCall_0_0_4 = (RuleCall)cKey1ValueAlternatives_0_0.eContents().get(4);
+		private final RuleCall cKey1ValuePATHParserRuleCall_0_0_5 = (RuleCall)cKey1ValueAlternatives_0_0.eContents().get(5);
+		private final RuleCall cKey1ValueDIRECTIONParserRuleCall_0_0_6 = (RuleCall)cKey1ValueAlternatives_0_0.eContents().get(6);
+		private final RuleCall cKey1ValueLISTParserRuleCall_0_0_7 = (RuleCall)cKey1ValueAlternatives_0_0.eContents().get(7);
+		private final RuleCall cKey1ValuePROGRESSIVEParserRuleCall_0_0_8 = (RuleCall)cKey1ValueAlternatives_0_0.eContents().get(8);
+		private final Assignment cKey2ValueAssignment_1 = (Assignment)cAlternatives.eContents().get(1);
+		private final RuleCall cKey2ValueWMLMacroParserRuleCall_1_0 = (RuleCall)cKey2ValueAssignment_1.eContents().get(0);
+		
+		//WMLKeyValue:
+		//	key1Value=(ID | STRING | TSTRING | FLOAT | IINT | PATH | DIRECTION | LIST | PROGRESSIVE) | key2Value=WMLMacro;
+		public ParserRule getRule() { return rule; }
+
+		//key1Value=(ID | STRING | TSTRING | FLOAT | IINT | PATH | DIRECTION | LIST | PROGRESSIVE) | key2Value=WMLMacro
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//key1Value=(ID | STRING | TSTRING | FLOAT | IINT | PATH | DIRECTION | LIST | PROGRESSIVE)
+		public Assignment getKey1ValueAssignment_0() { return cKey1ValueAssignment_0; }
+
+		//ID | STRING | TSTRING | FLOAT | IINT | PATH | DIRECTION | LIST | PROGRESSIVE
+		public Alternatives getKey1ValueAlternatives_0_0() { return cKey1ValueAlternatives_0_0; }
 
 		//ID
-		public RuleCall getKeyValueIDTerminalRuleCall_2_0_0() { return cKeyValueIDTerminalRuleCall_2_0_0; }
+		public RuleCall getKey1ValueIDTerminalRuleCall_0_0_0() { return cKey1ValueIDTerminalRuleCall_0_0_0; }
 
 		//STRING
-		public RuleCall getKeyValueSTRINGTerminalRuleCall_2_0_1() { return cKeyValueSTRINGTerminalRuleCall_2_0_1; }
+		public RuleCall getKey1ValueSTRINGTerminalRuleCall_0_0_1() { return cKey1ValueSTRINGTerminalRuleCall_0_0_1; }
+
+		//TSTRING
+		public RuleCall getKey1ValueTSTRINGParserRuleCall_0_0_2() { return cKey1ValueTSTRINGParserRuleCall_0_0_2; }
 
 		//FLOAT
-		public RuleCall getKeyValueFLOATParserRuleCall_2_0_2() { return cKeyValueFLOATParserRuleCall_2_0_2; }
+		public RuleCall getKey1ValueFLOATParserRuleCall_0_0_3() { return cKey1ValueFLOATParserRuleCall_0_0_3; }
+
+		//IINT
+		public RuleCall getKey1ValueIINTTerminalRuleCall_0_0_4() { return cKey1ValueIINTTerminalRuleCall_0_0_4; }
+
+		//PATH
+		public RuleCall getKey1ValuePATHParserRuleCall_0_0_5() { return cKey1ValuePATHParserRuleCall_0_0_5; }
+
+		//DIRECTION
+		public RuleCall getKey1ValueDIRECTIONParserRuleCall_0_0_6() { return cKey1ValueDIRECTIONParserRuleCall_0_0_6; }
+
+		//LIST
+		public RuleCall getKey1ValueLISTParserRuleCall_0_0_7() { return cKey1ValueLISTParserRuleCall_0_0_7; }
+
+		//PROGRESSIVE
+		public RuleCall getKey1ValuePROGRESSIVEParserRuleCall_0_0_8() { return cKey1ValuePROGRESSIVEParserRuleCall_0_0_8; }
+
+		//key2Value=WMLMacro
+		public Assignment getKey2ValueAssignment_1() { return cKey2ValueAssignment_1; }
+
+		//WMLMacro
+		public RuleCall getKey2ValueWMLMacroParserRuleCall_1_0() { return cKey2ValueWMLMacroParserRuleCall_1_0; }
 	}
 
 	public class FLOATElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "FLOAT");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final RuleCall cINTTerminalRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final RuleCall cIINTTerminalRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
 		private final Keyword cFullStopKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final RuleCall cINTTerminalRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
+		private final RuleCall cIINTTerminalRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
 		
 		//FLOAT returns ecore::EString hidden():
-		//	INT "." INT+;
+		//	IINT "." IINT+;
 		public ParserRule getRule() { return rule; }
 
-		//INT "." INT+
+		//IINT "." IINT+
 		public Group getGroup() { return cGroup; }
 
-		//INT
-		public RuleCall getINTTerminalRuleCall_0() { return cINTTerminalRuleCall_0; }
+		//IINT
+		public RuleCall getIINTTerminalRuleCall_0() { return cIINTTerminalRuleCall_0; }
 
 		//"."
 		public Keyword getFullStopKeyword_1() { return cFullStopKeyword_1; }
 
-		//INT+
-		public RuleCall getINTTerminalRuleCall_2() { return cINTTerminalRuleCall_2; }
+		//IINT+
+		public RuleCall getIINTTerminalRuleCall_2() { return cIINTTerminalRuleCall_2; }
+	}
+
+	public class TSTRINGElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "TSTRING");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Group cGroup_0 = (Group)cGroup.eContents().get(0);
+		private final Keyword cSpaceKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
+		private final Keyword c_Keyword_0_1 = (Keyword)cGroup_0.eContents().get(1);
+		private final Keyword cSpaceKeyword_0_2 = (Keyword)cGroup_0.eContents().get(2);
+		private final RuleCall cSTRINGTerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
+		
+		//TSTRING returns ecore::EString:
+		//	(" "? "_" " "?) STRING;
+		public ParserRule getRule() { return rule; }
+
+		//(" "? "_" " "?) STRING
+		public Group getGroup() { return cGroup; }
+
+		//" "? "_" " "?
+		public Group getGroup_0() { return cGroup_0; }
+
+		//" "?
+		public Keyword getSpaceKeyword_0_0() { return cSpaceKeyword_0_0; }
+
+		//"_"
+		public Keyword get_Keyword_0_1() { return c_Keyword_0_1; }
+
+		//" "?
+		public Keyword getSpaceKeyword_0_2() { return cSpaceKeyword_0_2; }
+
+		//STRING
+		public RuleCall getSTRINGTerminalRuleCall_1() { return cSTRINGTerminalRuleCall_1; }
+	}
+
+	public class PATHElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "PATH");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Group cGroup_0 = (Group)cGroup.eContents().get(0);
+		private final RuleCall cIDTerminalRuleCall_0_0 = (RuleCall)cGroup_0.eContents().get(0);
+		private final Alternatives cAlternatives_0_1 = (Alternatives)cGroup_0.eContents().get(1);
+		private final Keyword cHyphenMinusKeyword_0_1_0 = (Keyword)cAlternatives_0_1.eContents().get(0);
+		private final Keyword cSolidusKeyword_0_1_1 = (Keyword)cAlternatives_0_1.eContents().get(1);
+		private final RuleCall cIDTerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
+		private final Keyword cFullStopKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final RuleCall cIDTerminalRuleCall_3 = (RuleCall)cGroup.eContents().get(3);
+		
+		//PATH returns ecore::EString:
+		//	(ID+ ("-" | "/"))* ID+ "." ID+;
+		public ParserRule getRule() { return rule; }
+
+		//(ID+ ("-" | "/"))* ID+ "." ID+
+		public Group getGroup() { return cGroup; }
+
+		//(ID+ ("-" | "/"))*
+		public Group getGroup_0() { return cGroup_0; }
+
+		//ID+
+		public RuleCall getIDTerminalRuleCall_0_0() { return cIDTerminalRuleCall_0_0; }
+
+		//"-" | "/"
+		public Alternatives getAlternatives_0_1() { return cAlternatives_0_1; }
+
+		//"-"
+		public Keyword getHyphenMinusKeyword_0_1_0() { return cHyphenMinusKeyword_0_1_0; }
+
+		//"/"
+		public Keyword getSolidusKeyword_0_1_1() { return cSolidusKeyword_0_1_1; }
+
+		//ID+
+		public RuleCall getIDTerminalRuleCall_1() { return cIDTerminalRuleCall_1; }
+
+		//"."
+		public Keyword getFullStopKeyword_2() { return cFullStopKeyword_2; }
+
+		//ID+
+		public RuleCall getIDTerminalRuleCall_3() { return cIDTerminalRuleCall_3; }
+	}
+
+	public class DIRECTIONElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "DIRECTION");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Alternatives cAlternatives_0 = (Alternatives)cGroup.eContents().get(0);
+		private final Keyword cNKeyword_0_0 = (Keyword)cAlternatives_0.eContents().get(0);
+		private final Keyword cSKeyword_0_1 = (Keyword)cAlternatives_0.eContents().get(1);
+		private final Keyword cWKeyword_0_2 = (Keyword)cAlternatives_0.eContents().get(2);
+		private final Keyword cEKeyword_0_3 = (Keyword)cAlternatives_0.eContents().get(3);
+		private final Keyword cSwKeyword_0_4 = (Keyword)cAlternatives_0.eContents().get(4);
+		private final Keyword cSeKeyword_0_5 = (Keyword)cAlternatives_0.eContents().get(5);
+		private final Keyword cNeKeyword_0_6 = (Keyword)cAlternatives_0.eContents().get(6);
+		private final Keyword cNwKeyword_0_7 = (Keyword)cAlternatives_0.eContents().get(7);
+		private final Keyword cCommaKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		
+		//DIRECTION returns ecore::EString:
+		//	(("n" | "s" | "w" | "e" | "sw" | "se" | "ne" | "nw") ","?)+;
+		public ParserRule getRule() { return rule; }
+
+		//(("n" | "s" | "w" | "e" | "sw" | "se" | "ne" | "nw") ","?)+
+		public Group getGroup() { return cGroup; }
+
+		//"n" | "s" | "w" | "e" | "sw" | "se" | "ne" | "nw"
+		public Alternatives getAlternatives_0() { return cAlternatives_0; }
+
+		//"n"
+		public Keyword getNKeyword_0_0() { return cNKeyword_0_0; }
+
+		//"s"
+		public Keyword getSKeyword_0_1() { return cSKeyword_0_1; }
+
+		//"w"
+		public Keyword getWKeyword_0_2() { return cWKeyword_0_2; }
+
+		//"e"
+		public Keyword getEKeyword_0_3() { return cEKeyword_0_3; }
+
+		//"sw"
+		public Keyword getSwKeyword_0_4() { return cSwKeyword_0_4; }
+
+		//"se"
+		public Keyword getSeKeyword_0_5() { return cSeKeyword_0_5; }
+
+		//"ne"
+		public Keyword getNeKeyword_0_6() { return cNeKeyword_0_6; }
+
+		//"nw"
+		public Keyword getNwKeyword_0_7() { return cNwKeyword_0_7; }
+
+		//","?
+		public Keyword getCommaKeyword_1() { return cCommaKeyword_1; }
+	}
+
+	public class LISTElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "LIST");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final RuleCall cIDTerminalRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Keyword cCommaKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final RuleCall cIDTerminalRuleCall_1_1 = (RuleCall)cGroup_1.eContents().get(1);
+		
+		//LIST returns ecore::EString:
+		//	ID ("," ID)+;
+		public ParserRule getRule() { return rule; }
+
+		//ID ("," ID)+
+		public Group getGroup() { return cGroup; }
+
+		//ID
+		public RuleCall getIDTerminalRuleCall_0() { return cIDTerminalRuleCall_0; }
+
+		//("," ID)+
+		public Group getGroup_1() { return cGroup_1; }
+
+		//","
+		public Keyword getCommaKeyword_1_0() { return cCommaKeyword_1_0; }
+
+		//ID
+		public RuleCall getIDTerminalRuleCall_1_1() { return cIDTerminalRuleCall_1_1; }
+	}
+
+	public class PROGRESSIVEElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "PROGRESSIVE");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Alternatives cAlternatives_0 = (Alternatives)cGroup.eContents().get(0);
+		private final RuleCall cIINTTerminalRuleCall_0_0 = (RuleCall)cAlternatives_0.eContents().get(0);
+		private final RuleCall cFLOATParserRuleCall_0_1 = (RuleCall)cAlternatives_0.eContents().get(1);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Keyword cTildeKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final Alternatives cAlternatives_1_1 = (Alternatives)cGroup_1.eContents().get(1);
+		private final RuleCall cIINTTerminalRuleCall_1_1_0 = (RuleCall)cAlternatives_1_1.eContents().get(0);
+		private final RuleCall cFLOATParserRuleCall_1_1_1 = (RuleCall)cAlternatives_1_1.eContents().get(1);
+		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
+		private final Keyword cColonKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
+		private final RuleCall cIINTTerminalRuleCall_2_1 = (RuleCall)cGroup_2.eContents().get(1);
+		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
+		private final Keyword cCommaKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Alternatives cAlternatives_3_1 = (Alternatives)cGroup_3.eContents().get(1);
+		private final RuleCall cIINTTerminalRuleCall_3_1_0 = (RuleCall)cAlternatives_3_1.eContents().get(0);
+		private final RuleCall cFLOATParserRuleCall_3_1_1 = (RuleCall)cAlternatives_3_1.eContents().get(1);
+		private final Group cGroup_3_2 = (Group)cGroup_3.eContents().get(2);
+		private final Keyword cTildeKeyword_3_2_0 = (Keyword)cGroup_3_2.eContents().get(0);
+		private final Alternatives cAlternatives_3_2_1 = (Alternatives)cGroup_3_2.eContents().get(1);
+		private final RuleCall cIINTTerminalRuleCall_3_2_1_0 = (RuleCall)cAlternatives_3_2_1.eContents().get(0);
+		private final RuleCall cFLOATParserRuleCall_3_2_1_1 = (RuleCall)cAlternatives_3_2_1.eContents().get(1);
+		private final Group cGroup_3_3 = (Group)cGroup_3.eContents().get(3);
+		private final Keyword cColonKeyword_3_3_0 = (Keyword)cGroup_3_3.eContents().get(0);
+		private final RuleCall cIINTTerminalRuleCall_3_3_1 = (RuleCall)cGroup_3_3.eContents().get(1);
+		
+		//PROGRESSIVE returns ecore::EString:
+		//	(IINT | FLOAT) ("~" (IINT | FLOAT))? (":" IINT)? ("," (IINT | FLOAT) ("~" (IINT | FLOAT))? (":" IINT)?)+;
+		public ParserRule getRule() { return rule; }
+
+		//(IINT | FLOAT) ("~" (IINT | FLOAT))? (":" IINT)? ("," (IINT | FLOAT) ("~" (IINT | FLOAT))? (":" IINT)?)+
+		public Group getGroup() { return cGroup; }
+
+		//IINT | FLOAT
+		public Alternatives getAlternatives_0() { return cAlternatives_0; }
+
+		//IINT
+		public RuleCall getIINTTerminalRuleCall_0_0() { return cIINTTerminalRuleCall_0_0; }
+
+		//FLOAT
+		public RuleCall getFLOATParserRuleCall_0_1() { return cFLOATParserRuleCall_0_1; }
+
+		//("~" (IINT | FLOAT))?
+		public Group getGroup_1() { return cGroup_1; }
+
+		//"~"
+		public Keyword getTildeKeyword_1_0() { return cTildeKeyword_1_0; }
+
+		//IINT | FLOAT
+		public Alternatives getAlternatives_1_1() { return cAlternatives_1_1; }
+
+		//IINT
+		public RuleCall getIINTTerminalRuleCall_1_1_0() { return cIINTTerminalRuleCall_1_1_0; }
+
+		//FLOAT
+		public RuleCall getFLOATParserRuleCall_1_1_1() { return cFLOATParserRuleCall_1_1_1; }
+
+		//(":" IINT)?
+		public Group getGroup_2() { return cGroup_2; }
+
+		//":"
+		public Keyword getColonKeyword_2_0() { return cColonKeyword_2_0; }
+
+		//IINT
+		public RuleCall getIINTTerminalRuleCall_2_1() { return cIINTTerminalRuleCall_2_1; }
+
+		//("," (IINT | FLOAT) ("~" (IINT | FLOAT))? (":" IINT)?)+
+		public Group getGroup_3() { return cGroup_3; }
+
+		//","
+		public Keyword getCommaKeyword_3_0() { return cCommaKeyword_3_0; }
+
+		//IINT | FLOAT
+		public Alternatives getAlternatives_3_1() { return cAlternatives_3_1; }
+
+		//IINT
+		public RuleCall getIINTTerminalRuleCall_3_1_0() { return cIINTTerminalRuleCall_3_1_0; }
+
+		//FLOAT
+		public RuleCall getFLOATParserRuleCall_3_1_1() { return cFLOATParserRuleCall_3_1_1; }
+
+		//("~" (IINT | FLOAT))?
+		public Group getGroup_3_2() { return cGroup_3_2; }
+
+		//"~"
+		public Keyword getTildeKeyword_3_2_0() { return cTildeKeyword_3_2_0; }
+
+		//IINT | FLOAT
+		public Alternatives getAlternatives_3_2_1() { return cAlternatives_3_2_1; }
+
+		//IINT
+		public RuleCall getIINTTerminalRuleCall_3_2_1_0() { return cIINTTerminalRuleCall_3_2_1_0; }
+
+		//FLOAT
+		public RuleCall getFLOATParserRuleCall_3_2_1_1() { return cFLOATParserRuleCall_3_2_1_1; }
+
+		//(":" IINT)?
+		public Group getGroup_3_3() { return cGroup_3_3; }
+
+		//":"
+		public Keyword getColonKeyword_3_3_0() { return cColonKeyword_3_3_0; }
+
+		//IINT
+		public RuleCall getIINTTerminalRuleCall_3_3_1() { return cIINTTerminalRuleCall_3_3_1; }
 	}
 	
 	
@@ -259,12 +623,17 @@ public class WMLGrammarAccess extends AbstractGrammarElementFinder {
 	private WMLStartTagElements pWMLStartTag;
 	private WMLEndTagElements pWMLEndTag;
 	private WMLKeyElements pWMLKey;
+	private WMLKeyValueElements pWMLKeyValue;
 	private FLOATElements pFLOAT;
+	private TSTRINGElements pTSTRING;
+	private PATHElements pPATH;
+	private DIRECTIONElements pDIRECTION;
+	private LISTElements pLIST;
+	private PROGRESSIVEElements pPROGRESSIVE;
 	private TerminalRule tSL_COMMENT;
 	private TerminalRule tWS;
 	private TerminalRule tID;
-	private TerminalRule tIDENH;
-	private TerminalRule tINT;
+	private TerminalRule tIINT;
 	private TerminalRule tSTRING;
 	
 	private final GrammarProvider grammarProvider;
@@ -291,7 +660,7 @@ public class WMLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//WMLMacro:
-	//	"{" tagcontent+=ID+ "}";
+	//	"{" macroName=ID tagcontent+=(ID | STRING | "_" | ":" | "-" | "." | "(" | ")" | "=" | "/")* "}";
 	public WMLMacroElements getWMLMacroAccess() {
 		return (pWMLMacro != null) ? pWMLMacro : (pWMLMacro = new WMLMacroElements());
 	}
@@ -331,7 +700,7 @@ public class WMLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//WMLKey:
-	//	keyName=ID "=" keyValue=(ID | STRING | FLOAT);
+	//	keyName=ID "=" value=WMLKeyValue;
 	public WMLKeyElements getWMLKeyAccess() {
 		return (pWMLKey != null) ? pWMLKey : (pWMLKey = new WMLKeyElements());
 	}
@@ -340,8 +709,18 @@ public class WMLGrammarAccess extends AbstractGrammarElementFinder {
 		return getWMLKeyAccess().getRule();
 	}
 
+	//WMLKeyValue:
+	//	key1Value=(ID | STRING | TSTRING | FLOAT | IINT | PATH | DIRECTION | LIST | PROGRESSIVE) | key2Value=WMLMacro;
+	public WMLKeyValueElements getWMLKeyValueAccess() {
+		return (pWMLKeyValue != null) ? pWMLKeyValue : (pWMLKeyValue = new WMLKeyValueElements());
+	}
+	
+	public ParserRule getWMLKeyValueRule() {
+		return getWMLKeyValueAccess().getRule();
+	}
+
 	//FLOAT returns ecore::EString hidden():
-	//	INT "." INT+;
+	//	IINT "." IINT+;
 	public FLOATElements getFLOATAccess() {
 		return (pFLOAT != null) ? pFLOAT : (pFLOAT = new FLOATElements());
 	}
@@ -350,108 +729,84 @@ public class WMLGrammarAccess extends AbstractGrammarElementFinder {
 		return getFLOATAccess().getRule();
 	}
 
+	//TSTRING returns ecore::EString:
+	//	(" "? "_" " "?) STRING;
+	public TSTRINGElements getTSTRINGAccess() {
+		return (pTSTRING != null) ? pTSTRING : (pTSTRING = new TSTRINGElements());
+	}
+	
+	public ParserRule getTSTRINGRule() {
+		return getTSTRINGAccess().getRule();
+	}
+
+	//PATH returns ecore::EString:
+	//	(ID+ ("-" | "/"))* ID+ "." ID+;
+	public PATHElements getPATHAccess() {
+		return (pPATH != null) ? pPATH : (pPATH = new PATHElements());
+	}
+	
+	public ParserRule getPATHRule() {
+		return getPATHAccess().getRule();
+	}
+
+	//DIRECTION returns ecore::EString:
+	//	(("n" | "s" | "w" | "e" | "sw" | "se" | "ne" | "nw") ","?)+;
+	public DIRECTIONElements getDIRECTIONAccess() {
+		return (pDIRECTION != null) ? pDIRECTION : (pDIRECTION = new DIRECTIONElements());
+	}
+	
+	public ParserRule getDIRECTIONRule() {
+		return getDIRECTIONAccess().getRule();
+	}
+
+	//LIST returns ecore::EString:
+	//	ID ("," ID)+;
+	public LISTElements getLISTAccess() {
+		return (pLIST != null) ? pLIST : (pLIST = new LISTElements());
+	}
+	
+	public ParserRule getLISTRule() {
+		return getLISTAccess().getRule();
+	}
+
+	//PROGRESSIVE returns ecore::EString:
+	//	(IINT | FLOAT) ("~" (IINT | FLOAT))? (":" IINT)? ("," (IINT | FLOAT) ("~" (IINT | FLOAT))? (":" IINT)?)+;
+	public PROGRESSIVEElements getPROGRESSIVEAccess() {
+		return (pPROGRESSIVE != null) ? pPROGRESSIVE : (pPROGRESSIVE = new PROGRESSIVEElements());
+	}
+	
+	public ParserRule getPROGRESSIVERule() {
+		return getPROGRESSIVEAccess().getRule();
+	}
+
 	//terminal SL_COMMENT:
 	//	"#" !("\n" | "\r")* ("\r"? "\n")?;
 	public TerminalRule getSL_COMMENTRule() {
 		return (tSL_COMMENT != null) ? tSL_COMMENT : (tSL_COMMENT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "SL_COMMENT"));
 	} 
 
+	////terminal MACRO		: '{'->'}';
+	////terminal STRINT		: ('a'..'z'|'A'..'Z'|'_'|'.'|'0'..'9')+;
 	//terminal WS:
 	//	(" " | "\t" | "\r" | "\n")+;
 	public TerminalRule getWSRule() {
 		return (tWS != null) ? tWS : (tWS = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "WS"));
 	} 
 
+	////terminal ID  		: ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|' '|'_'|'0'..'9')*;
 	//terminal ID:
-	//	("a".."z" | "A".."Z" | "_" | " " | "0".."9")*;
+	//	("a".."z" | "A".."Z" | "0".."9") ("a".."z" | "A".."Z" | "_" | " " | "0".."9")*;
 	public TerminalRule getIDRule() {
 		return (tID != null) ? tID : (tID = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "ID"));
 	} 
 
-	//terminal IDENH:
-	//	("a".."z" | "A".."Z" | "_") (" " | "a".."z" | "A".."Z" | "_" | "0".."9")* ("a".."z" | "A".."Z");
-	public TerminalRule getIDENHRule() {
-		return (tIDENH != null) ? tIDENH : (tIDENH = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "IDENH"));
+	//terminal IINT:
+	//	("-" | "+")? "0".."9"+;
+	public TerminalRule getIINTRule() {
+		return (tIINT != null) ? tIINT : (tIINT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "IINT"));
 	} 
 
-	//terminal INT:
-	//	"0".."9"+;
-	public TerminalRule getINTRule() {
-		return (tINT != null) ? tINT : (tINT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "INT"));
-	} 
-
-	//// ---------------
-	////					  import "http://www.eclipse.org/emf/2002/Ecore" as ecore
-	////
-	////terminal ML_COMMENT	: '/ *' -> '* /';
-	////terminal SL_COMMENT 	: '//' !('\n'|'\r')* ('\r'? '\n')?;
-	////
-	////terminal WS			: (' '|'\t'|'\r'|'\n')+;
-	////
-	////terminal ANY_OTHER: .;
-	//// -----------------
-	////
-	////Root:
-	////	textdomains += TextDomain*
-	//// 	preproc += Preprocessor*
-	////	roots += RootType*
-	////	;
-	////
-	////TextDomain:
-	////	'#textdomain ' DomainName=ID;
-	////
-	////Preprocessor:
-	////	Macro | PathInclude;
-	////Macro:
-	////	'{' macroContent += ID+'}';
-	////PathInclude:
-	////	'{' path = (HOMEPATH |PATH) '}';
-	////	
-	////RootType:
-	////	'[' startTag = RootTag ']'
-	////		subTypes += RootType* 
-	////		at += Attributes*
-	////		okpreproc += Preprocessor*
-	////	'[' '/' endTag = RootTag ']';
-	////
-	////RootTag:
-	////	SimpleTag | AddedTag; 
-	////SimpleTag:
-	////	(endTag?='/')?  tagName=RootTagsList;
-	////AddedTag:
-	////	'+' tagName = RootTagsList; 
-	////
-	////RootTagsList:
-	////	ID; //'about'  | 'binary_path' | 'campaign' | 'textdomain' | 'units';
-	////
-	////Attributes:
-	////	attrName=ID '=' attrValue=(TSTRING|STRING|PATH|ID|IDLIST);
-	////
-	////// translatable string
-	////TSTRING:
-	////	'_' STRING;
-	////HOMEPATH:
-	////	'~' PATH;
-	////// ==== TERMINAL RULES ====
-	////terminal SL_COMMENT: '#' !('\n'|'\r')* ('\r'? '\n')?;
-	////terminal WS		: (' '|'\t'|'\r'|'\n')+;
-	////// no multiline comment defined on WML, 
-	////// terminal ML_COMMENT: '#' !('\n'|'\r')* ('\r'? '\n')?;
-	////terminal ID  		: ('a'..'z'|'A'..'Z'|'_'|'-'|' '|'0'..'9')+;
-	////terminal IDLIST	: (ID ',')* ID;
-	//////terminal INT returns ecore::EInt: ('0'..'9')+;
-	////terminal STRING	: 
-	////			'"' ( '\\' ('b'|'t'|'n'|'f'|'r'|'"'|"'"|'\\') | !('\\'|'"') )* '"' |
-	////			"'" ( '\\' ('b'|'t'|'n'|'f'|'r'|'"'|"'"|'\\') | !('\\'|"'") )* "'";
-	////terminal ANY_OTHER: .;
-	//////terminal WORD_START: ' ' | '=';
-	//////terminal WORD_END	: '#' | ' ';
-	////// line end
-	////terminal PATH		: //('"')? 
-	////					  (('a'..'z'|'A'..'Z'|'_'|'.'|'-'|'0'..'9')+ '/')*
-	////					   ('a'..'z'|'A'..'Z'|'_'|'.'|'-'|'0'..'9')+ '/'? 
-	////					  //('"')?
-	////					  ;
+	////terminal SSTRING	: ( '\\' ('b'|'t'|'n'|'f'|'r'|'"'|"'"|'\\') | !('\\'|'"') )*;
 	//terminal STRING:
 	//	"\"" ("\\" ("b" | "t" | "n" | "f" | "r" | "\"" | "\'" | "\\") | !("\\" | "\""))* "\"";
 	public TerminalRule getSTRINGRule() {

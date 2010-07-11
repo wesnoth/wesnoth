@@ -15,62 +15,62 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.wesnoth.wML.WMLKey;
 import org.wesnoth.wML.WMLKeyValue;
+import org.wesnoth.wML.WMLMacro;
 import org.wesnoth.wML.WMLPackage;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Key</b></em>'.
+ * An implementation of the model object '<em><b>Key Value</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.wesnoth.wML.impl.WMLKeyImpl#getKeyName <em>Key Name</em>}</li>
- *   <li>{@link org.wesnoth.wML.impl.WMLKeyImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link org.wesnoth.wML.impl.WMLKeyValueImpl#getKey1Value <em>Key1 Value</em>}</li>
+ *   <li>{@link org.wesnoth.wML.impl.WMLKeyValueImpl#getKey2Value <em>Key2 Value</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class WMLKeyImpl extends MinimalEObjectImpl.Container implements WMLKey
+public class WMLKeyValueImpl extends MinimalEObjectImpl.Container implements WMLKeyValue
 {
   /**
-   * The default value of the '{@link #getKeyName() <em>Key Name</em>}' attribute.
+   * The default value of the '{@link #getKey1Value() <em>Key1 Value</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getKeyName()
+   * @see #getKey1Value()
    * @generated
    * @ordered
    */
-  protected static final String KEY_NAME_EDEFAULT = null;
+  protected static final String KEY1_VALUE_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getKeyName() <em>Key Name</em>}' attribute.
+   * The cached value of the '{@link #getKey1Value() <em>Key1 Value</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getKeyName()
+   * @see #getKey1Value()
    * @generated
    * @ordered
    */
-  protected String keyName = KEY_NAME_EDEFAULT;
+  protected String key1Value = KEY1_VALUE_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getValue() <em>Value</em>}' containment reference.
+   * The cached value of the '{@link #getKey2Value() <em>Key2 Value</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getValue()
+   * @see #getKey2Value()
    * @generated
    * @ordered
    */
-  protected WMLKeyValue value;
+  protected WMLMacro key2Value;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected WMLKeyImpl()
+  protected WMLKeyValueImpl()
   {
     super();
   }
@@ -83,7 +83,7 @@ public class WMLKeyImpl extends MinimalEObjectImpl.Container implements WMLKey
   @Override
   protected EClass eStaticClass()
   {
-    return WMLPackage.Literals.WML_KEY;
+    return WMLPackage.Literals.WML_KEY_VALUE;
   }
 
   /**
@@ -91,9 +91,9 @@ public class WMLKeyImpl extends MinimalEObjectImpl.Container implements WMLKey
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getKeyName()
+  public String getKey1Value()
   {
-    return keyName;
+    return key1Value;
   }
 
   /**
@@ -101,12 +101,12 @@ public class WMLKeyImpl extends MinimalEObjectImpl.Container implements WMLKey
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setKeyName(String newKeyName)
+  public void setKey1Value(String newKey1Value)
   {
-    String oldKeyName = keyName;
-    keyName = newKeyName;
+    String oldKey1Value = key1Value;
+    key1Value = newKey1Value;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, WMLPackage.WML_KEY__KEY_NAME, oldKeyName, keyName));
+      eNotify(new ENotificationImpl(this, Notification.SET, WMLPackage.WML_KEY_VALUE__KEY1_VALUE, oldKey1Value, key1Value));
   }
 
   /**
@@ -114,9 +114,9 @@ public class WMLKeyImpl extends MinimalEObjectImpl.Container implements WMLKey
    * <!-- end-user-doc -->
    * @generated
    */
-  public WMLKeyValue getValue()
+  public WMLMacro getKey2Value()
   {
-    return value;
+    return key2Value;
   }
 
   /**
@@ -124,13 +124,13 @@ public class WMLKeyImpl extends MinimalEObjectImpl.Container implements WMLKey
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetValue(WMLKeyValue newValue, NotificationChain msgs)
+  public NotificationChain basicSetKey2Value(WMLMacro newKey2Value, NotificationChain msgs)
   {
-    WMLKeyValue oldValue = value;
-    value = newValue;
+    WMLMacro oldKey2Value = key2Value;
+    key2Value = newKey2Value;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, WMLPackage.WML_KEY__VALUE, oldValue, newValue);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, WMLPackage.WML_KEY_VALUE__KEY2_VALUE, oldKey2Value, newKey2Value);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -141,20 +141,20 @@ public class WMLKeyImpl extends MinimalEObjectImpl.Container implements WMLKey
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setValue(WMLKeyValue newValue)
+  public void setKey2Value(WMLMacro newKey2Value)
   {
-    if (newValue != value)
+    if (newKey2Value != key2Value)
     {
       NotificationChain msgs = null;
-      if (value != null)
-        msgs = ((InternalEObject)value).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - WMLPackage.WML_KEY__VALUE, null, msgs);
-      if (newValue != null)
-        msgs = ((InternalEObject)newValue).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - WMLPackage.WML_KEY__VALUE, null, msgs);
-      msgs = basicSetValue(newValue, msgs);
+      if (key2Value != null)
+        msgs = ((InternalEObject)key2Value).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - WMLPackage.WML_KEY_VALUE__KEY2_VALUE, null, msgs);
+      if (newKey2Value != null)
+        msgs = ((InternalEObject)newKey2Value).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - WMLPackage.WML_KEY_VALUE__KEY2_VALUE, null, msgs);
+      msgs = basicSetKey2Value(newKey2Value, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, WMLPackage.WML_KEY__VALUE, newValue, newValue));
+      eNotify(new ENotificationImpl(this, Notification.SET, WMLPackage.WML_KEY_VALUE__KEY2_VALUE, newKey2Value, newKey2Value));
   }
 
   /**
@@ -167,8 +167,8 @@ public class WMLKeyImpl extends MinimalEObjectImpl.Container implements WMLKey
   {
     switch (featureID)
     {
-      case WMLPackage.WML_KEY__VALUE:
-        return basicSetValue(null, msgs);
+      case WMLPackage.WML_KEY_VALUE__KEY2_VALUE:
+        return basicSetKey2Value(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -183,10 +183,10 @@ public class WMLKeyImpl extends MinimalEObjectImpl.Container implements WMLKey
   {
     switch (featureID)
     {
-      case WMLPackage.WML_KEY__KEY_NAME:
-        return getKeyName();
-      case WMLPackage.WML_KEY__VALUE:
-        return getValue();
+      case WMLPackage.WML_KEY_VALUE__KEY1_VALUE:
+        return getKey1Value();
+      case WMLPackage.WML_KEY_VALUE__KEY2_VALUE:
+        return getKey2Value();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -201,11 +201,11 @@ public class WMLKeyImpl extends MinimalEObjectImpl.Container implements WMLKey
   {
     switch (featureID)
     {
-      case WMLPackage.WML_KEY__KEY_NAME:
-        setKeyName((String)newValue);
+      case WMLPackage.WML_KEY_VALUE__KEY1_VALUE:
+        setKey1Value((String)newValue);
         return;
-      case WMLPackage.WML_KEY__VALUE:
-        setValue((WMLKeyValue)newValue);
+      case WMLPackage.WML_KEY_VALUE__KEY2_VALUE:
+        setKey2Value((WMLMacro)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -221,11 +221,11 @@ public class WMLKeyImpl extends MinimalEObjectImpl.Container implements WMLKey
   {
     switch (featureID)
     {
-      case WMLPackage.WML_KEY__KEY_NAME:
-        setKeyName(KEY_NAME_EDEFAULT);
+      case WMLPackage.WML_KEY_VALUE__KEY1_VALUE:
+        setKey1Value(KEY1_VALUE_EDEFAULT);
         return;
-      case WMLPackage.WML_KEY__VALUE:
-        setValue((WMLKeyValue)null);
+      case WMLPackage.WML_KEY_VALUE__KEY2_VALUE:
+        setKey2Value((WMLMacro)null);
         return;
     }
     super.eUnset(featureID);
@@ -241,10 +241,10 @@ public class WMLKeyImpl extends MinimalEObjectImpl.Container implements WMLKey
   {
     switch (featureID)
     {
-      case WMLPackage.WML_KEY__KEY_NAME:
-        return KEY_NAME_EDEFAULT == null ? keyName != null : !KEY_NAME_EDEFAULT.equals(keyName);
-      case WMLPackage.WML_KEY__VALUE:
-        return value != null;
+      case WMLPackage.WML_KEY_VALUE__KEY1_VALUE:
+        return KEY1_VALUE_EDEFAULT == null ? key1Value != null : !KEY1_VALUE_EDEFAULT.equals(key1Value);
+      case WMLPackage.WML_KEY_VALUE__KEY2_VALUE:
+        return key2Value != null;
     }
     return super.eIsSet(featureID);
   }
@@ -260,10 +260,10 @@ public class WMLKeyImpl extends MinimalEObjectImpl.Container implements WMLKey
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (keyName: ");
-    result.append(keyName);
+    result.append(" (key1Value: ");
+    result.append(key1Value);
     result.append(')');
     return result.toString();
   }
 
-} //WMLKeyImpl
+} //WMLKeyValueImpl

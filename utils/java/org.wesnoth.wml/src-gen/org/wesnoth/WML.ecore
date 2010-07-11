@@ -10,6 +10,7 @@
         eType="#//WMLMacro" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WMLMacro">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="macroName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="tagcontent" unique="false"
         upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
@@ -33,6 +34,12 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WMLKey">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="keyName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="keyValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//WMLKeyValue"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="WMLKeyValue">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="key1Value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="key2Value" eType="#//WMLMacro"
+        containment="true"/>
   </eClassifiers>
 </ecore:EPackage>

@@ -7,30 +7,44 @@ package org.wesnoth.parser.antlr.internal;
 import org.eclipse.xtext.parser.antlr.Lexer;
 }
 
-T10 : '{' ;
-T11 : '}' ;
-T12 : '[' ;
-T13 : ']' ;
-T14 : '[/' ;
-T15 : '=' ;
-T16 : '.' ;
+T9 : '{' ;
+T10 : '_' ;
+T11 : ':' ;
+T12 : '-' ;
+T13 : '.' ;
+T14 : '(' ;
+T15 : ')' ;
+T16 : '=' ;
+T17 : '/' ;
+T18 : '}' ;
+T19 : '[' ;
+T20 : ']' ;
+T21 : '[/' ;
+T22 : ' ' ;
+T23 : 'n' ;
+T24 : 's' ;
+T25 : 'w' ;
+T26 : 'e' ;
+T27 : 'sw' ;
+T28 : 'se' ;
+T29 : 'ne' ;
+T30 : 'nw' ;
+T31 : ',' ;
+T32 : '~' ;
 
-// $ANTLR src "../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g" 631
+// $ANTLR src "../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g" 1402
 RULE_SL_COMMENT : '#' ~(('\n'|'\r'))* ('\r'? '\n')?;
 
-// $ANTLR src "../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g" 633
+// $ANTLR src "../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g" 1404
 RULE_WS : (' '|'\t'|'\r'|'\n')+;
 
-// $ANTLR src "../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g" 635
-RULE_ID : ('a'..'z'|'A'..'Z'|'_'|' '|'0'..'9')*;
+// $ANTLR src "../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g" 1406
+RULE_ID : ('a'..'z'|'A'..'Z'|'0'..'9') ('a'..'z'|'A'..'Z'|'_'|' '|'0'..'9')*;
 
-// $ANTLR src "../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g" 637
-RULE_IDENH : ('a'..'z'|'A'..'Z'|'_') (' '|'a'..'z'|'A'..'Z'|'_'|'0'..'9')* ('a'..'z'|'A'..'Z');
+// $ANTLR src "../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g" 1408
+RULE_IINT : ('-'|'+')? ('0'..'9')+;
 
-// $ANTLR src "../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g" 639
-RULE_INT : ('0'..'9')+;
-
-// $ANTLR src "../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g" 641
+// $ANTLR src "../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g" 1410
 RULE_STRING : '"' ('\\' ('b'|'t'|'n'|'f'|'r'|'"'|'\''|'\\')|~(('\\'|'"')))* '"';
 
 
