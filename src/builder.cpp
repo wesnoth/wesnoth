@@ -88,13 +88,12 @@ void terrain_builder::tile::add_image_to_cache(const std::string &tod, ordered_r
 		else
 			basey -= BASE_Y_INTERVAL/2;
 
-		if(layer < 0 || (layer == 0 && basey < UNITPOS)) {
-			images_background.push_back(tod_variant->second.image);
-			images_background.back().set_animation_time(itor->second.first%images_background.back().get_animation_duration());
-		} else {
-			images_foreground.push_back(tod_variant->second.image);
-			images_foreground.back().set_animation_time(itor->second.first%images_foreground.back().get_animation_duration());
-		}
+		bool is_background = layer < 0 || (layer == 0 && basey < UNITPOS);
+		imagelist& img_list =
+				is_background ? images_background : images_foreground;
+	
+		img_list.push_back(tod_variant->second.image);
+		img_list.back().set_animation_time(itor->second.first % img_list.back().get_animation_duration());
 	}
 }
 
@@ -235,14 +234,11 @@ const terrain_builder::imagelist *terrain_builder::get_terrain_at(const map_loca
 		tile_at.last_tod = tod;
 	}
 
-	if(terrain_type == BACKGROUND) {
-		if(!tile_at.images_background.empty())
-			return &tile_at.images_background;
-	}
+	const imagelist& img_list = (terrain_type == BACKGROUND) ?
+			tile_at.images_background : tile_at.images_foreground;
 
-	if(terrain_type == FOREGROUND) {
-		if(!tile_at.images_foreground.empty())
-			return &tile_at.images_foreground;
+	if(!img_list.empty()) {
+		return &img_list;
 	}
 
 	return NULL;
@@ -253,22 +249,19 @@ bool terrain_builder::update_animation(const map_location &loc)
 	if(!tile_map_.on_map(loc))
 		return false;
 
-	imagelist& bg = tile_map_[loc].images_background;
-	imagelist& fg = tile_map_[loc].images_foreground;
 	bool changed = false;
 
-	imagelist::iterator itor = bg.begin();
-	for(; itor != bg.end(); ++itor) {
-		if(itor->need_update())
-			changed = true;
-		itor->update_last_draw_time();
-	}
+	tile& btile = tile_map_[loc];
 
-	itor = fg.begin();
-	for(; itor != fg.end(); ++itor) {
-		if(itor->need_update())
+	foreach(animated<image::locator>& a, btile.images_background) {
+		if(a.need_update())
 			changed = true;
-		itor->update_last_draw_time();
+		a.update_last_draw_time();
+	}
+	foreach(animated<image::locator>& a, btile.images_foreground) {
+		if(a.need_update())
+			changed = true;
+		a.update_last_draw_time();
 	}
 
 	return changed;
