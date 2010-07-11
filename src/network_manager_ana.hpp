@@ -32,6 +32,8 @@
 /** Interface for objects that log send statistics. */
 struct send_stats_logger
 {
+	virtual ~send_stats_logger() {}
+
     virtual void update_send_stats( size_t ) = 0;
 };
 

@@ -59,8 +59,9 @@ class asio_client : public ana::client,
          */
         asio_client(std::string address, ana::port port);
 
-    private:
         virtual ~asio_client();
+
+    private:
 
         virtual void connect( ana::connection_handler* );
 

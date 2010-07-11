@@ -262,6 +262,9 @@ namespace ana
         class timed_sender
         {
             public:
+
+				virtual ~timed_sender() {}
+
                 /**
                  * Set the policy for timed operations (such as send.)
                  *

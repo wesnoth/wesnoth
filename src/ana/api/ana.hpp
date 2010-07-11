@@ -119,6 +119,8 @@ namespace ana
      */
     struct listener_handler
     {
+		virtual ~listener_handler() {}
+
         /**
          * Handle an incoming message event.
          *
@@ -149,6 +151,8 @@ namespace ana
 
     struct network_stats_logger
     {
+		virtual ~network_stats_logger() {}
+
         /** Start logging network events for statistics collection. */
         virtual void start_logging() = 0;
 
@@ -178,6 +182,9 @@ namespace ana
         class ana_component
         {
             public:
+
+				virtual ~ana_component() {}
+
                 /**
                  * Get the ID of this component.
                  *
@@ -288,6 +295,8 @@ namespace ana
      */
     struct connection_handler
     {
+		virtual ~connection_handler() {}
+
         /**
           * Handle new connection event.
           *
@@ -306,6 +315,8 @@ namespace ana
      */
     struct send_handler
     {
+		virtual ~send_handler() {}
+
         /**
          * Handle send completion event.
          *

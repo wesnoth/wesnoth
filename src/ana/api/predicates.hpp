@@ -48,6 +48,8 @@ namespace ana
         /** A boolean predicate of client IDs. Used for conditional send operations. */
         struct client_predicate
         {
+			virtual ~client_predicate() {}
+
             /**
             * Decides if a given condition applies to a client.
             *

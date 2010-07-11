@@ -52,6 +52,7 @@ namespace ana
 
     struct stats
     {
+		virtual ~stats() {}
         virtual size_t uptime()       const = 0;
         virtual size_t packets_in()   const = 0;
         virtual size_t packets_out()  const = 0;
@@ -80,6 +81,8 @@ namespace ana
                         timer_.async_wait(boost::bind( &stats_logger::reset, this, boost::asio::placeholders::error ) );
                     }
                 }
+
+				virtual ~stats_logger() {}
 
                 void log_send( detail::shared_buffer buffer )
                 {

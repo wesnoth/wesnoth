@@ -43,6 +43,8 @@ using boost::asio::ip::tcp;
 
 struct proxy_connection_manager
 {
+	virtual ~proxy_connection_manager() {}
+
     virtual void handle_proxy_connection(const boost::system::error_code&, ana::connection_handler* ) = 0;
 };
 

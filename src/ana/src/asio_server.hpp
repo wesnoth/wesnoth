@@ -45,6 +45,8 @@ using boost::asio::ip::tcp;
 
 struct asio_proxy_manager
 {
+	virtual ~asio_proxy_manager() {}
+
     virtual void deregister_client(ana::server::client_proxy* client) = 0;
 };
 
