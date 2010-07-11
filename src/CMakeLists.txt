@@ -660,6 +660,7 @@ ENDIF(ENABLE_SERVER)
 IF(ENABLE_CAMPAIGN_SERVER)
 
 SET(campaignd_SRC
+	network_worker.cpp # NEEDED when compiling with ANA support
     addon/validation.cpp
     campaign_server/campaign_server.cpp
     server/input_stream.cpp
@@ -668,7 +669,11 @@ SET(campaignd_SRC
 )
 
 add_executable(campaignd ${campaignd_SRC})
-target_link_libraries(campaignd wesnoth-core ${server-external-libs})
+target_link_libraries(campaignd
+	wesnoth-core
+	${server-external-libs}
+	${SDLNET_LIBRARY} 				# NEEDED with ANA
+	)
 set_target_properties(campaignd PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}campaignd${BINARY_SUFFIX})
 
 install(TARGETS campaignd DESTINATION ${BINDIR})
@@ -719,6 +724,7 @@ if(ENABLE_TESTS)
 	add_definitions(-DBOOST_TEST_DYN_LINK)
 
 	set(test_SRC
+		network_worker.cpp # NEEDED when compiling with ANA support
 		tests/main.cpp
 		tests/utils/fake_display.cpp 
 		tests/utils/fake_event_source.cpp 
