@@ -17,16 +17,16 @@ WMLMacro:
 	'{' macroName = ID (tagcontent +=(ID|STRING|'_'|':'|'-'|'.'|'('|')'|'='|'/')+)* '}';
 
 WMLTag:
-	start = WMLStartTag
+	'[' name = ID ']'
 		( (Ttags += WMLTag)
 		| (Tkeys += WMLKey)
 		| (Tmacros += WMLMacro)
 		)*
 	end = WMLEndTag
 	;
-WMLStartTag:
-	'[' tagname = ID ']'
-	;
+//WMLStartTag:
+//	'[' name = ID ']'
+//	;
 WMLEndTag:
 	'[/' tagname = ID ']'
 	;

@@ -17,14 +17,11 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//WMLMacro/tagcontent"/>
     </genClasses>
     <genClasses ecoreClass="WML.ecore#//WMLTag">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLTag/start"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//WMLTag/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLTag/Ttags"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLTag/Tkeys"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLTag/Tmacros"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLTag/end"/>
-    </genClasses>
-    <genClasses ecoreClass="WML.ecore#//WMLStartTag">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//WMLStartTag/tagname"/>
     </genClasses>
     <genClasses ecoreClass="WML.ecore#//WMLEndTag">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//WMLEndTag/tagname"/>

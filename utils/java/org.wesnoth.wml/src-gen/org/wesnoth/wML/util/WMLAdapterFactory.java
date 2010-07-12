@@ -94,11 +94,6 @@ public class WMLAdapterFactory extends AdapterFactoryImpl
         return createWMLTagAdapter();
       }
       @Override
-      public Adapter caseWMLStartTag(WMLStartTag object)
-      {
-        return createWMLStartTagAdapter();
-      }
-      @Override
       public Adapter caseWMLEndTag(WMLEndTag object)
       {
         return createWMLEndTagAdapter();
@@ -176,21 +171,6 @@ public class WMLAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createWMLTagAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.wesnoth.wML.WMLStartTag <em>Start Tag</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.wesnoth.wML.WMLStartTag
-   * @generated
-   */
-  public Adapter createWMLStartTagAdapter()
   {
     return null;
   }

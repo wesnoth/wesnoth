@@ -408,36 +408,44 @@ ruleWMLTag returns [EObject current=null]
     @after { resetLookahead(); 
     	lastConsumedNode = currentNode;
     }:
-((
+(	'[' 
+    {
+        createLeafNode(grammarAccess.getWMLTagAccess().getLeftSquareBracketKeyword_0(), null); 
+    }
 (
-		{ 
-	        currentNode=createCompositeNode(grammarAccess.getWMLTagAccess().getStartWMLStartTagParserRuleCall_0_0(), currentNode); 
-	    }
-		lv_start_0_0=ruleWMLStartTag		{
+(
+		lv_name_1_0=RULE_ID
+		{
+			createLeafNode(grammarAccess.getWMLTagAccess().getNameIDTerminalRuleCall_1_0(), "name"); 
+		}
+		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getWMLTagRule().getType().getClassifier());
-	            associateNodeWithAstElement(currentNode.getParent(), $current);
+	            associateNodeWithAstElement(currentNode, $current);
 	        }
 	        try {
 	       		set(
 	       			$current, 
-	       			"start",
-	        		lv_start_0_0, 
-	        		"WMLStartTag", 
-	        		currentNode);
+	       			"name",
+	        		lv_name_1_0, 
+	        		"ID", 
+	        		lastConsumedNode);
 	        } catch (ValueConverterException vce) {
 				handleValueConverterException(vce);
 	        }
-	        currentNode = currentNode.getParent();
 	    }
 
 )
-)((
+)	']' 
+    {
+        createLeafNode(grammarAccess.getWMLTagAccess().getRightSquareBracketKeyword_2(), null); 
+    }
+((
 (
 		{ 
-	        currentNode=createCompositeNode(grammarAccess.getWMLTagAccess().getTtagsWMLTagParserRuleCall_1_0_0(), currentNode); 
+	        currentNode=createCompositeNode(grammarAccess.getWMLTagAccess().getTtagsWMLTagParserRuleCall_3_0_0(), currentNode); 
 	    }
-		lv_Ttags_1_0=ruleWMLTag		{
+		lv_Ttags_3_0=ruleWMLTag		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getWMLTagRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -446,7 +454,7 @@ ruleWMLTag returns [EObject current=null]
 	       		add(
 	       			$current, 
 	       			"Ttags",
-	        		lv_Ttags_1_0, 
+	        		lv_Ttags_3_0, 
 	        		"WMLTag", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -460,9 +468,9 @@ ruleWMLTag returns [EObject current=null]
     |(
 (
 		{ 
-	        currentNode=createCompositeNode(grammarAccess.getWMLTagAccess().getTkeysWMLKeyParserRuleCall_1_1_0(), currentNode); 
+	        currentNode=createCompositeNode(grammarAccess.getWMLTagAccess().getTkeysWMLKeyParserRuleCall_3_1_0(), currentNode); 
 	    }
-		lv_Tkeys_2_0=ruleWMLKey		{
+		lv_Tkeys_4_0=ruleWMLKey		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getWMLTagRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -471,7 +479,7 @@ ruleWMLTag returns [EObject current=null]
 	       		add(
 	       			$current, 
 	       			"Tkeys",
-	        		lv_Tkeys_2_0, 
+	        		lv_Tkeys_4_0, 
 	        		"WMLKey", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -485,9 +493,9 @@ ruleWMLTag returns [EObject current=null]
     |(
 (
 		{ 
-	        currentNode=createCompositeNode(grammarAccess.getWMLTagAccess().getTmacrosWMLMacroParserRuleCall_1_2_0(), currentNode); 
+	        currentNode=createCompositeNode(grammarAccess.getWMLTagAccess().getTmacrosWMLMacroParserRuleCall_3_2_0(), currentNode); 
 	    }
-		lv_Tmacros_3_0=ruleWMLMacro		{
+		lv_Tmacros_5_0=ruleWMLMacro		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getWMLTagRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -496,7 +504,7 @@ ruleWMLTag returns [EObject current=null]
 	       		add(
 	       			$current, 
 	       			"Tmacros",
-	        		lv_Tmacros_3_0, 
+	        		lv_Tmacros_5_0, 
 	        		"WMLMacro", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -509,9 +517,9 @@ ruleWMLTag returns [EObject current=null]
 ))*(
 (
 		{ 
-	        currentNode=createCompositeNode(grammarAccess.getWMLTagAccess().getEndWMLEndTagParserRuleCall_2_0(), currentNode); 
+	        currentNode=createCompositeNode(grammarAccess.getWMLTagAccess().getEndWMLEndTagParserRuleCall_4_0(), currentNode); 
 	    }
-		lv_end_4_0=ruleWMLEndTag		{
+		lv_end_6_0=ruleWMLEndTag		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getWMLTagRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -520,7 +528,7 @@ ruleWMLTag returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"end",
-	        		lv_end_4_0, 
+	        		lv_end_6_0, 
 	        		"WMLEndTag", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -531,61 +539,6 @@ ruleWMLTag returns [EObject current=null]
 
 )
 ))
-;
-
-
-
-
-
-// Entry rule entryRuleWMLStartTag
-entryRuleWMLStartTag returns [EObject current=null] 
-	:
-	{ currentNode = createCompositeNode(grammarAccess.getWMLStartTagRule(), currentNode); }
-	 iv_ruleWMLStartTag=ruleWMLStartTag 
-	 { $current=$iv_ruleWMLStartTag.current; } 
-	 EOF 
-;
-
-// Rule WMLStartTag
-ruleWMLStartTag returns [EObject current=null] 
-    @init { EObject temp=null; setCurrentLookahead(); resetLookahead(); 
-    }
-    @after { resetLookahead(); 
-    	lastConsumedNode = currentNode;
-    }:
-(	'[' 
-    {
-        createLeafNode(grammarAccess.getWMLStartTagAccess().getLeftSquareBracketKeyword_0(), null); 
-    }
-(
-(
-		lv_tagname_1_0=RULE_ID
-		{
-			createLeafNode(grammarAccess.getWMLStartTagAccess().getTagnameIDTerminalRuleCall_1_0(), "tagname"); 
-		}
-		{
-	        if ($current==null) {
-	            $current = factory.create(grammarAccess.getWMLStartTagRule().getType().getClassifier());
-	            associateNodeWithAstElement(currentNode, $current);
-	        }
-	        try {
-	       		set(
-	       			$current, 
-	       			"tagname",
-	        		lv_tagname_1_0, 
-	        		"ID", 
-	        		lastConsumedNode);
-	        } catch (ValueConverterException vce) {
-				handleValueConverterException(vce);
-	        }
-	    }
-
-)
-)	']' 
-    {
-        createLeafNode(grammarAccess.getWMLStartTagAccess().getRightSquareBracketKeyword_2(), null); 
-    }
-)
 ;
 
 

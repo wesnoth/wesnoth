@@ -7,7 +7,7 @@ package org.wesnoth.ui.syntax;
 import org.wesnoth.wML.WMLEndTag;
 import org.wesnoth.wML.WMLKey;
 import org.wesnoth.wML.WMLPackage;
-import org.wesnoth.wML.WMLStartTag;
+import org.wesnoth.wML.WMLTag;
 
 import java.util.Iterator;
 
@@ -34,9 +34,9 @@ public class WMLSemanticHighlightingCalculator extends SemanticHighlightingCalcu
 		while (iter.hasNext())
 		{
 			EObject current = iter.next();
-			if (current instanceof WMLStartTag)
+			if (current instanceof WMLTag)
 			{
-				AbstractNode begin = getFirstFeatureNode(current, WMLPackage.Literals.WML_START_TAG__TAGNAME.getName());
+				AbstractNode begin = getFirstFeatureNode(current, WMLPackage.Literals.WML_TAG__NAME.getName());
 				highlightNode(begin, WMLHighlightingConfiguration.RULE_WML_TAG, acceptor);
 			}
 			else if (current instanceof WMLEndTag)

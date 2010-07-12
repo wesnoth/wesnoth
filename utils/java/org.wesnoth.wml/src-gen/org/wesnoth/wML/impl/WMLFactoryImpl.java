@@ -71,7 +71,6 @@ public class WMLFactoryImpl extends EFactoryImpl implements WMLFactory
       case WMLPackage.WML_ROOT: return createWMLRoot();
       case WMLPackage.WML_MACRO: return createWMLMacro();
       case WMLPackage.WML_TAG: return createWMLTag();
-      case WMLPackage.WML_START_TAG: return createWMLStartTag();
       case WMLPackage.WML_END_TAG: return createWMLEndTag();
       case WMLPackage.WML_KEY: return createWMLKey();
       case WMLPackage.WML_KEY_VALUE: return createWMLKeyValue();
@@ -111,17 +110,6 @@ public class WMLFactoryImpl extends EFactoryImpl implements WMLFactory
   {
     WMLTagImpl wmlTag = new WMLTagImpl();
     return wmlTag;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public WMLStartTag createWMLStartTag()
-  {
-    WMLStartTagImpl wmlStartTag = new WMLStartTagImpl();
-    return wmlStartTag;
   }
 
   /**

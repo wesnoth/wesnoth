@@ -18,7 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.wesnoth.wML.WMLTag#getStart <em>Start</em>}</li>
+ *   <li>{@link org.wesnoth.wML.WMLTag#getName <em>Name</em>}</li>
  *   <li>{@link org.wesnoth.wML.WMLTag#getTtags <em>Ttags</em>}</li>
  *   <li>{@link org.wesnoth.wML.WMLTag#getTkeys <em>Tkeys</em>}</li>
  *   <li>{@link org.wesnoth.wML.WMLTag#getTmacros <em>Tmacros</em>}</li>
@@ -33,30 +33,30 @@ import org.eclipse.emf.ecore.EObject;
 public interface WMLTag extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Start</b></em>' containment reference.
+   * Returns the value of the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Start</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Name</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Start</em>' containment reference.
-   * @see #setStart(WMLStartTag)
-   * @see org.wesnoth.wML.WMLPackage#getWMLTag_Start()
-   * @model containment="true"
+   * @return the value of the '<em>Name</em>' attribute.
+   * @see #setName(String)
+   * @see org.wesnoth.wML.WMLPackage#getWMLTag_Name()
+   * @model
    * @generated
    */
-  WMLStartTag getStart();
+  String getName();
 
   /**
-   * Sets the value of the '{@link org.wesnoth.wML.WMLTag#getStart <em>Start</em>}' containment reference.
+   * Sets the value of the '{@link org.wesnoth.wML.WMLTag#getName <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Start</em>' containment reference.
-   * @see #getStart()
+   * @param value the new value of the '<em>Name</em>' attribute.
+   * @see #getName()
    * @generated
    */
-  void setStart(WMLStartTag value);
+  void setName(String value);
 
   /**
    * Returns the value of the '<em><b>Ttags</b></em>' containment reference list.
