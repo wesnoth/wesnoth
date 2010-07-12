@@ -531,9 +531,9 @@ def validate_on_pop(tagstack, closer, filename, lineno):
     if "units" not in filename and closer == "unit" and "race" in attributes:
         print '"%s", line %d: [unit] needs hand fixup to [unit_type]' % \
               (filename, lineno)
-    if closer == "campaign" and "id" not in attributes:
-        print '"%s", line %d: campaign has no ID' % \
-              (filename, lineno)
+    if closer in ["campaign" or "race"] and "id" not in attributes:
+        print '"%s", line %d: %s requires an ID field but has none' % \
+              (filename, lineno, closer)
     if closer == "terrain" and attributes.get("heals") in ("true", "false"):
         print '"%s", line %d: heals attribute no longer takes a boolean' % \
               (filename, lineno)
