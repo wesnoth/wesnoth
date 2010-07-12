@@ -247,9 +247,9 @@ struct statistics
 	{
 		return !operator==(stats);
 	}
-	size_t total;       // The accumulated bytes of the session
-	size_t current;     // The current buffer accumulated bytes (sent/received)
-	size_t current_max; // The current buffer size (i.e. being received/sent)
+	size_t total        /** The accumulated bytes of the session.                   */ ;
+	size_t current      /** The current buffer accumulated bytes (sent/received.)   */ ;
+	size_t current_max  /** The current buffer size (i.e. being received/sent.)     */ ;
 };
 
 /** Function to see the number of bytes being processed on the current socket. */
