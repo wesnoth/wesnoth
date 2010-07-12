@@ -13,8 +13,8 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLRoot/Rmacros"/>
     </genClasses>
     <genClasses ecoreClass="WML.ecore#//WMLMacro">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//WMLMacro/macroName"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//WMLMacro/tagcontent"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//WMLMacro/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//WMLMacro/value"/>
     </genClasses>
     <genClasses ecoreClass="WML.ecore#//WMLTag">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//WMLTag/name"/>

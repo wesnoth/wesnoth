@@ -29,8 +29,8 @@ import org.wesnoth.wML.WMLPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.wesnoth.wML.impl.WMLMacroImpl#getMacroName <em>Macro Name</em>}</li>
- *   <li>{@link org.wesnoth.wML.impl.WMLMacroImpl#getTagcontent <em>Tagcontent</em>}</li>
+ *   <li>{@link org.wesnoth.wML.impl.WMLMacroImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.wesnoth.wML.impl.WMLMacroImpl#getValue <em>Value</em>}</li>
  * </ul>
  * </p>
  *
@@ -39,34 +39,34 @@ import org.wesnoth.wML.WMLPackage;
 public class WMLMacroImpl extends MinimalEObjectImpl.Container implements WMLMacro
 {
   /**
-   * The default value of the '{@link #getMacroName() <em>Macro Name</em>}' attribute.
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getMacroName()
+   * @see #getName()
    * @generated
    * @ordered
    */
-  protected static final String MACRO_NAME_EDEFAULT = null;
+  protected static final String NAME_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getMacroName() <em>Macro Name</em>}' attribute.
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getMacroName()
+   * @see #getName()
    * @generated
    * @ordered
    */
-  protected String macroName = MACRO_NAME_EDEFAULT;
+  protected String name = NAME_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getTagcontent() <em>Tagcontent</em>}' attribute list.
+   * The cached value of the '{@link #getValue() <em>Value</em>}' attribute list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getTagcontent()
+   * @see #getValue()
    * @generated
    * @ordered
    */
-  protected EList<String> tagcontent;
+  protected EList<String> value;
 
   /**
    * <!-- begin-user-doc -->
@@ -94,9 +94,9 @@ public class WMLMacroImpl extends MinimalEObjectImpl.Container implements WMLMac
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getMacroName()
+  public String getName()
   {
-    return macroName;
+    return name;
   }
 
   /**
@@ -104,12 +104,12 @@ public class WMLMacroImpl extends MinimalEObjectImpl.Container implements WMLMac
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setMacroName(String newMacroName)
+  public void setName(String newName)
   {
-    String oldMacroName = macroName;
-    macroName = newMacroName;
+    String oldName = name;
+    name = newName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, WMLPackage.WML_MACRO__MACRO_NAME, oldMacroName, macroName));
+      eNotify(new ENotificationImpl(this, Notification.SET, WMLPackage.WML_MACRO__NAME, oldName, name));
   }
 
   /**
@@ -117,13 +117,13 @@ public class WMLMacroImpl extends MinimalEObjectImpl.Container implements WMLMac
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<String> getTagcontent()
+  public EList<String> getValue()
   {
-    if (tagcontent == null)
+    if (value == null)
     {
-      tagcontent = new EDataTypeEList<String>(String.class, this, WMLPackage.WML_MACRO__TAGCONTENT);
+      value = new EDataTypeEList<String>(String.class, this, WMLPackage.WML_MACRO__VALUE);
     }
-    return tagcontent;
+    return value;
   }
 
   /**
@@ -136,10 +136,10 @@ public class WMLMacroImpl extends MinimalEObjectImpl.Container implements WMLMac
   {
     switch (featureID)
     {
-      case WMLPackage.WML_MACRO__MACRO_NAME:
-        return getMacroName();
-      case WMLPackage.WML_MACRO__TAGCONTENT:
-        return getTagcontent();
+      case WMLPackage.WML_MACRO__NAME:
+        return getName();
+      case WMLPackage.WML_MACRO__VALUE:
+        return getValue();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -155,12 +155,12 @@ public class WMLMacroImpl extends MinimalEObjectImpl.Container implements WMLMac
   {
     switch (featureID)
     {
-      case WMLPackage.WML_MACRO__MACRO_NAME:
-        setMacroName((String)newValue);
+      case WMLPackage.WML_MACRO__NAME:
+        setName((String)newValue);
         return;
-      case WMLPackage.WML_MACRO__TAGCONTENT:
-        getTagcontent().clear();
-        getTagcontent().addAll((Collection<? extends String>)newValue);
+      case WMLPackage.WML_MACRO__VALUE:
+        getValue().clear();
+        getValue().addAll((Collection<? extends String>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -176,11 +176,11 @@ public class WMLMacroImpl extends MinimalEObjectImpl.Container implements WMLMac
   {
     switch (featureID)
     {
-      case WMLPackage.WML_MACRO__MACRO_NAME:
-        setMacroName(MACRO_NAME_EDEFAULT);
+      case WMLPackage.WML_MACRO__NAME:
+        setName(NAME_EDEFAULT);
         return;
-      case WMLPackage.WML_MACRO__TAGCONTENT:
-        getTagcontent().clear();
+      case WMLPackage.WML_MACRO__VALUE:
+        getValue().clear();
         return;
     }
     super.eUnset(featureID);
@@ -196,10 +196,10 @@ public class WMLMacroImpl extends MinimalEObjectImpl.Container implements WMLMac
   {
     switch (featureID)
     {
-      case WMLPackage.WML_MACRO__MACRO_NAME:
-        return MACRO_NAME_EDEFAULT == null ? macroName != null : !MACRO_NAME_EDEFAULT.equals(macroName);
-      case WMLPackage.WML_MACRO__TAGCONTENT:
-        return tagcontent != null && !tagcontent.isEmpty();
+      case WMLPackage.WML_MACRO__NAME:
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case WMLPackage.WML_MACRO__VALUE:
+        return value != null && !value.isEmpty();
     }
     return super.eIsSet(featureID);
   }
@@ -215,10 +215,10 @@ public class WMLMacroImpl extends MinimalEObjectImpl.Container implements WMLMac
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (macroName: ");
-    result.append(macroName);
-    result.append(", tagcontent: ");
-    result.append(tagcontent);
+    result.append(" (name: ");
+    result.append(name);
+    result.append(", value: ");
+    result.append(value);
     result.append(')');
     return result.toString();
   }

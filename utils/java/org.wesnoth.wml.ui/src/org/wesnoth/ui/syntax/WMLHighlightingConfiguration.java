@@ -14,6 +14,7 @@ public class WMLHighlightingConfiguration extends DefaultHighlightingConfigurati
 {
 	public static final String	RULE_WML_TAG	= "wmlTag";
 	public static final String	RULE_WML_KEY	= "wmlKey";
+	public static final String	RULE_WML_MACRO	= "wmlMacro";
 
 	@Override
 	public void configure(IHighlightingConfigurationAcceptor acceptor)
@@ -21,6 +22,15 @@ public class WMLHighlightingConfiguration extends DefaultHighlightingConfigurati
 		super.configure(acceptor);
 		acceptor.acceptDefaultHighlighting(RULE_WML_TAG, "WML Tag", tagTextStyle());
 		acceptor.acceptDefaultHighlighting(RULE_WML_KEY, "WML Key", keyTextStyle());
+		acceptor.acceptDefaultHighlighting(RULE_WML_MACRO, "WML Macro", macroTextStyle());
+	}
+
+	public TextStyle macroTextStyle()
+	{
+		TextStyle textStyle = defaultTextStyle().copy();
+		textStyle.setColor(new RGB(197, 137, 23));
+		textStyle.setStyle(SWT.ITALIC);
+		return textStyle;
 	}
 
 	public TextStyle tagTextStyle()

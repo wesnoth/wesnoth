@@ -108,22 +108,22 @@ public interface WMLPackage extends EPackage
   int WML_MACRO = 1;
 
   /**
-   * The feature id for the '<em><b>Macro Name</b></em>' attribute.
+   * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int WML_MACRO__MACRO_NAME = 0;
+  int WML_MACRO__NAME = 0;
 
   /**
-   * The feature id for the '<em><b>Tagcontent</b></em>' attribute list.
+   * The feature id for the '<em><b>Value</b></em>' attribute list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int WML_MACRO__TAGCONTENT = 1;
+  int WML_MACRO__VALUE = 1;
 
   /**
    * The number of structural features of the '<em>Macro</em>' class.
@@ -344,26 +344,26 @@ public interface WMLPackage extends EPackage
   EClass getWMLMacro();
 
   /**
-   * Returns the meta object for the attribute '{@link org.wesnoth.wML.WMLMacro#getMacroName <em>Macro Name</em>}'.
+   * Returns the meta object for the attribute '{@link org.wesnoth.wML.WMLMacro#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Macro Name</em>'.
-   * @see org.wesnoth.wML.WMLMacro#getMacroName()
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see org.wesnoth.wML.WMLMacro#getName()
    * @see #getWMLMacro()
    * @generated
    */
-  EAttribute getWMLMacro_MacroName();
+  EAttribute getWMLMacro_Name();
 
   /**
-   * Returns the meta object for the attribute list '{@link org.wesnoth.wML.WMLMacro#getTagcontent <em>Tagcontent</em>}'.
+   * Returns the meta object for the attribute list '{@link org.wesnoth.wML.WMLMacro#getValue <em>Value</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute list '<em>Tagcontent</em>'.
-   * @see org.wesnoth.wML.WMLMacro#getTagcontent()
+   * @return the meta object for the attribute list '<em>Value</em>'.
+   * @see org.wesnoth.wML.WMLMacro#getValue()
    * @see #getWMLMacro()
    * @generated
    */
-  EAttribute getWMLMacro_Tagcontent();
+  EAttribute getWMLMacro_Value();
 
   /**
    * Returns the meta object for class '{@link org.wesnoth.wML.WMLTag <em>Tag</em>}'.
@@ -575,20 +575,20 @@ public interface WMLPackage extends EPackage
     EClass WML_MACRO = eINSTANCE.getWMLMacro();
 
     /**
-     * The meta object literal for the '<em><b>Macro Name</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute WML_MACRO__MACRO_NAME = eINSTANCE.getWMLMacro_MacroName();
+    EAttribute WML_MACRO__NAME = eINSTANCE.getWMLMacro_Name();
 
     /**
-     * The meta object literal for the '<em><b>Tagcontent</b></em>' attribute list feature.
+     * The meta object literal for the '<em><b>Value</b></em>' attribute list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute WML_MACRO__TAGCONTENT = eINSTANCE.getWMLMacro_Tagcontent();
+    EAttribute WML_MACRO__VALUE = eINSTANCE.getWMLMacro_Value();
 
     /**
      * The meta object literal for the '{@link org.wesnoth.wML.impl.WMLTagImpl <em>Tag</em>}' class.

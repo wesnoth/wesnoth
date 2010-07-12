@@ -14,7 +14,7 @@ WMLRoot:
 	;
 
 WMLMacro:
-	'{' macroName = ID (tagcontent +=(ID|STRING|'_'|':'|'-'|'.'|'('|')'|'='|'/')+)* '}';
+	'{' name = ID (value +=(ID|STRING|'_'|':'|'-'|'.'|'('|')'|'='|'/')+)* '}';
 
 WMLTag:
 	'[' name = ID ']'

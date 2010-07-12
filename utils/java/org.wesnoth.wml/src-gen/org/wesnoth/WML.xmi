@@ -25,10 +25,10 @@
     </type>
     <alternatives xsi:type="xtext:Group">
       <elements xsi:type="xtext:Keyword" value="{"/>
-      <elements xsi:type="xtext:Assignment" feature="macroName" operator="=">
+      <elements xsi:type="xtext:Assignment" feature="name" operator="=">
         <terminal xsi:type="xtext:RuleCall" rule="//@rules.14"/>
       </elements>
-      <elements xsi:type="xtext:Assignment" cardinality="*" feature="tagcontent" operator="+=">
+      <elements xsi:type="xtext:Assignment" cardinality="*" feature="value" operator="+=">
         <terminal xsi:type="xtext:Alternatives">
           <elements xsi:type="xtext:RuleCall" rule="//@rules.14"/>
           <elements xsi:type="xtext:RuleCall" rule="//@rules.16"/>

@@ -180,7 +180,7 @@ public class WMLPackageImpl extends EPackageImpl implements WMLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getWMLMacro_MacroName()
+  public EAttribute getWMLMacro_Name()
   {
     return (EAttribute)wmlMacroEClass.getEStructuralFeatures().get(0);
   }
@@ -190,7 +190,7 @@ public class WMLPackageImpl extends EPackageImpl implements WMLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getWMLMacro_Tagcontent()
+  public EAttribute getWMLMacro_Value()
   {
     return (EAttribute)wmlMacroEClass.getEStructuralFeatures().get(1);
   }
@@ -370,8 +370,8 @@ public class WMLPackageImpl extends EPackageImpl implements WMLPackage
     createEReference(wmlRootEClass, WML_ROOT__RMACROS);
 
     wmlMacroEClass = createEClass(WML_MACRO);
-    createEAttribute(wmlMacroEClass, WML_MACRO__MACRO_NAME);
-    createEAttribute(wmlMacroEClass, WML_MACRO__TAGCONTENT);
+    createEAttribute(wmlMacroEClass, WML_MACRO__NAME);
+    createEAttribute(wmlMacroEClass, WML_MACRO__VALUE);
 
     wmlTagEClass = createEClass(WML_TAG);
     createEAttribute(wmlTagEClass, WML_TAG__NAME);
@@ -428,8 +428,8 @@ public class WMLPackageImpl extends EPackageImpl implements WMLPackage
     initEReference(getWMLRoot_Rmacros(), this.getWMLMacro(), null, "Rmacros", null, 0, -1, WMLRoot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(wmlMacroEClass, WMLMacro.class, "WMLMacro", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getWMLMacro_MacroName(), ecorePackage.getEString(), "macroName", null, 0, 1, WMLMacro.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getWMLMacro_Tagcontent(), ecorePackage.getEString(), "tagcontent", null, 0, -1, WMLMacro.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getWMLMacro_Name(), ecorePackage.getEString(), "name", null, 0, 1, WMLMacro.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getWMLMacro_Value(), ecorePackage.getEString(), "value", null, 0, -1, WMLMacro.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(wmlTagEClass, WMLTag.class, "WMLTag", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getWMLTag_Name(), ecorePackage.getEString(), "name", null, 0, 1, WMLTag.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

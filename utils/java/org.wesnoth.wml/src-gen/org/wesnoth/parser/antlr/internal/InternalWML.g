@@ -167,9 +167,9 @@ ruleWMLMacro returns [EObject current=null]
     }
 (
 (
-		lv_macroName_1_0=RULE_ID
+		lv_name_1_0=RULE_ID
 		{
-			createLeafNode(grammarAccess.getWMLMacroAccess().getMacroNameIDTerminalRuleCall_1_0(), "macroName"); 
+			createLeafNode(grammarAccess.getWMLMacroAccess().getNameIDTerminalRuleCall_1_0(), "name"); 
 		}
 		{
 	        if ($current==null) {
@@ -179,8 +179,8 @@ ruleWMLMacro returns [EObject current=null]
 	        try {
 	       		set(
 	       			$current, 
-	       			"macroName",
-	        		lv_macroName_1_0, 
+	       			"name",
+	        		lv_name_1_0, 
 	        		"ID", 
 	        		lastConsumedNode);
 	        } catch (ValueConverterException vce) {
@@ -192,9 +192,9 @@ ruleWMLMacro returns [EObject current=null]
 )(
 (
 (
-		lv_tagcontent_2_1=RULE_ID
+		lv_value_2_1=RULE_ID
 		{
-			createLeafNode(grammarAccess.getWMLMacroAccess().getTagcontentIDTerminalRuleCall_2_0_0(), "tagcontent"); 
+			createLeafNode(grammarAccess.getWMLMacroAccess().getValueIDTerminalRuleCall_2_0_0(), "value"); 
 		}
 		{
 	        if ($current==null) {
@@ -204,8 +204,8 @@ ruleWMLMacro returns [EObject current=null]
 	        try {
 	       		add(
 	       			$current, 
-	       			"tagcontent",
-	        		lv_tagcontent_2_1, 
+	       			"value",
+	        		lv_value_2_1, 
 	        		"ID", 
 	        		lastConsumedNode);
 	        } catch (ValueConverterException vce) {
@@ -213,9 +213,9 @@ ruleWMLMacro returns [EObject current=null]
 	        }
 	    }
 
-    |		lv_tagcontent_2_2=RULE_STRING
+    |		lv_value_2_2=RULE_STRING
 		{
-			createLeafNode(grammarAccess.getWMLMacroAccess().getTagcontentSTRINGTerminalRuleCall_2_0_1(), "tagcontent"); 
+			createLeafNode(grammarAccess.getWMLMacroAccess().getValueSTRINGTerminalRuleCall_2_0_1(), "value"); 
 		}
 		{
 	        if ($current==null) {
@@ -225,8 +225,8 @@ ruleWMLMacro returns [EObject current=null]
 	        try {
 	       		add(
 	       			$current, 
-	       			"tagcontent",
-	        		lv_tagcontent_2_2, 
+	       			"value",
+	        		lv_value_2_2, 
 	        		"STRING", 
 	        		lastConsumedNode);
 	        } catch (ValueConverterException vce) {
@@ -234,9 +234,9 @@ ruleWMLMacro returns [EObject current=null]
 	        }
 	    }
 
-    |		lv_tagcontent_2_3=	'_' 
+    |		lv_value_2_3=	'_' 
     {
-        createLeafNode(grammarAccess.getWMLMacroAccess().getTagcontent_Keyword_2_0_2(), "tagcontent"); 
+        createLeafNode(grammarAccess.getWMLMacroAccess().getValue_Keyword_2_0_2(), "value"); 
     }
  
 	    {
@@ -246,15 +246,15 @@ ruleWMLMacro returns [EObject current=null]
 	        }
 	        
 	        try {
-	       		add($current, "tagcontent", lv_tagcontent_2_3, null, lastConsumedNode);
+	       		add($current, "value", lv_value_2_3, null, lastConsumedNode);
 	        } catch (ValueConverterException vce) {
 				handleValueConverterException(vce);
 	        }
 	    }
 
-    |		lv_tagcontent_2_4=	':' 
+    |		lv_value_2_4=	':' 
     {
-        createLeafNode(grammarAccess.getWMLMacroAccess().getTagcontentColonKeyword_2_0_3(), "tagcontent"); 
+        createLeafNode(grammarAccess.getWMLMacroAccess().getValueColonKeyword_2_0_3(), "value"); 
     }
  
 	    {
@@ -264,15 +264,15 @@ ruleWMLMacro returns [EObject current=null]
 	        }
 	        
 	        try {
-	       		add($current, "tagcontent", lv_tagcontent_2_4, null, lastConsumedNode);
+	       		add($current, "value", lv_value_2_4, null, lastConsumedNode);
 	        } catch (ValueConverterException vce) {
 				handleValueConverterException(vce);
 	        }
 	    }
 
-    |		lv_tagcontent_2_5=	'-' 
+    |		lv_value_2_5=	'-' 
     {
-        createLeafNode(grammarAccess.getWMLMacroAccess().getTagcontentHyphenMinusKeyword_2_0_4(), "tagcontent"); 
+        createLeafNode(grammarAccess.getWMLMacroAccess().getValueHyphenMinusKeyword_2_0_4(), "value"); 
     }
  
 	    {
@@ -282,15 +282,15 @@ ruleWMLMacro returns [EObject current=null]
 	        }
 	        
 	        try {
-	       		add($current, "tagcontent", lv_tagcontent_2_5, null, lastConsumedNode);
+	       		add($current, "value", lv_value_2_5, null, lastConsumedNode);
 	        } catch (ValueConverterException vce) {
 				handleValueConverterException(vce);
 	        }
 	    }
 
-    |		lv_tagcontent_2_6=	'.' 
+    |		lv_value_2_6=	'.' 
     {
-        createLeafNode(grammarAccess.getWMLMacroAccess().getTagcontentFullStopKeyword_2_0_5(), "tagcontent"); 
+        createLeafNode(grammarAccess.getWMLMacroAccess().getValueFullStopKeyword_2_0_5(), "value"); 
     }
  
 	    {
@@ -300,15 +300,15 @@ ruleWMLMacro returns [EObject current=null]
 	        }
 	        
 	        try {
-	       		add($current, "tagcontent", lv_tagcontent_2_6, null, lastConsumedNode);
+	       		add($current, "value", lv_value_2_6, null, lastConsumedNode);
 	        } catch (ValueConverterException vce) {
 				handleValueConverterException(vce);
 	        }
 	    }
 
-    |		lv_tagcontent_2_7=	'(' 
+    |		lv_value_2_7=	'(' 
     {
-        createLeafNode(grammarAccess.getWMLMacroAccess().getTagcontentLeftParenthesisKeyword_2_0_6(), "tagcontent"); 
+        createLeafNode(grammarAccess.getWMLMacroAccess().getValueLeftParenthesisKeyword_2_0_6(), "value"); 
     }
  
 	    {
@@ -318,15 +318,15 @@ ruleWMLMacro returns [EObject current=null]
 	        }
 	        
 	        try {
-	       		add($current, "tagcontent", lv_tagcontent_2_7, null, lastConsumedNode);
+	       		add($current, "value", lv_value_2_7, null, lastConsumedNode);
 	        } catch (ValueConverterException vce) {
 				handleValueConverterException(vce);
 	        }
 	    }
 
-    |		lv_tagcontent_2_8=	')' 
+    |		lv_value_2_8=	')' 
     {
-        createLeafNode(grammarAccess.getWMLMacroAccess().getTagcontentRightParenthesisKeyword_2_0_7(), "tagcontent"); 
+        createLeafNode(grammarAccess.getWMLMacroAccess().getValueRightParenthesisKeyword_2_0_7(), "value"); 
     }
  
 	    {
@@ -336,15 +336,15 @@ ruleWMLMacro returns [EObject current=null]
 	        }
 	        
 	        try {
-	       		add($current, "tagcontent", lv_tagcontent_2_8, null, lastConsumedNode);
+	       		add($current, "value", lv_value_2_8, null, lastConsumedNode);
 	        } catch (ValueConverterException vce) {
 				handleValueConverterException(vce);
 	        }
 	    }
 
-    |		lv_tagcontent_2_9=	'=' 
+    |		lv_value_2_9=	'=' 
     {
-        createLeafNode(grammarAccess.getWMLMacroAccess().getTagcontentEqualsSignKeyword_2_0_8(), "tagcontent"); 
+        createLeafNode(grammarAccess.getWMLMacroAccess().getValueEqualsSignKeyword_2_0_8(), "value"); 
     }
  
 	    {
@@ -354,15 +354,15 @@ ruleWMLMacro returns [EObject current=null]
 	        }
 	        
 	        try {
-	       		add($current, "tagcontent", lv_tagcontent_2_9, null, lastConsumedNode);
+	       		add($current, "value", lv_value_2_9, null, lastConsumedNode);
 	        } catch (ValueConverterException vce) {
 				handleValueConverterException(vce);
 	        }
 	    }
 
-    |		lv_tagcontent_2_10=	'/' 
+    |		lv_value_2_10=	'/' 
     {
-        createLeafNode(grammarAccess.getWMLMacroAccess().getTagcontentSolidusKeyword_2_0_9(), "tagcontent"); 
+        createLeafNode(grammarAccess.getWMLMacroAccess().getValueSolidusKeyword_2_0_9(), "value"); 
     }
  
 	    {
@@ -372,7 +372,7 @@ ruleWMLMacro returns [EObject current=null]
 	        }
 	        
 	        try {
-	       		add($current, "tagcontent", lv_tagcontent_2_10, null, lastConsumedNode);
+	       		add($current, "value", lv_value_2_10, null, lastConsumedNode);
 	        } catch (ValueConverterException vce) {
 				handleValueConverterException(vce);
 	        }
