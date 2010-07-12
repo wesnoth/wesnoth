@@ -119,9 +119,13 @@ class asio_server : public  ana::server,
 
         virtual const ana::stats* get_stats( ana::stat_type type ) const;
 
-        virtual void disconnect()                                          {}
+        virtual void disconnect( ana::net_id );
+
+        virtual void disconnect();
+        virtual void set_raw_buffer_max_size( size_t );
+
+        // TODO: implement this, or improve OO design with 2nd param (vote for 2)
         virtual void wait_raw_object(ana::serializer::bistream& , size_t ) {}
-        virtual void set_raw_buffer_max_size( size_t )                     {}
 
         virtual ana::stats_collector* stats_collector() { return stats_collector_; }
 

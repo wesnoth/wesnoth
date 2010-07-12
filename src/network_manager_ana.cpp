@@ -473,7 +473,7 @@ const ana::stats* ana_component::get_stats() const
     if ( is_server_)
         return server()->get_stats();
     else
-        return client()->get_stats();
+        return client()->get_stats(); // TODO: listener()->get_stats(); ?
 }
 
 void ana_component::add_buffer(ana::detail::read_buffer buffer, ana::net_id id)
@@ -518,9 +518,11 @@ network::connection ana_component::oldest_sender_id_still_pending()
 
 // Begin clients_manager  implementation ---------------------------------------------------------------
 
-clients_manager::clients_manager() :
+clients_manager::clients_manager( ana::server* server) :
+    server_( server ),
     ids_(),
-    pending_ids_()
+    pending_ids_(),
+    pending_handshakes_()
 {
 }
 
@@ -531,10 +533,12 @@ size_t clients_manager::client_amount() const
 
 void clients_manager::handle_connect(ana::error_code error, ana::net_id client)
 {
+    std::cout << "New client connected with id " << client << "\n";
+
     if (! error )
     {
-        ids_.insert(client);
-        pending_ids_.insert( network::connection( client ) );
+        ids_.insert( client );
+        pending_handshakes_.insert( client );
     }
 }
 
@@ -544,9 +548,19 @@ void clients_manager::handle_disconnect(ana::error_code /*error*/, ana::net_id c
     pending_ids_.erase( network::connection( client ) );
 }
 
+void clients_manager::has_connected( network::connection id )
+{
+    pending_ids_.insert( id );
+}
+
 bool clients_manager::has_connection_pending() const
 {
     return ! pending_ids_.empty();
+}
+
+bool clients_manager::is_pending_handshake( ana::net_id id ) const
+{
+    return pending_handshakes_.find( id ) != pending_handshakes_.end();
 }
 
 network::connection clients_manager::get_pending_connection_id()
@@ -574,7 +588,7 @@ ana::net_id ana_network_manager::create_server( )
 
     ana::server* server = new_component->server();
 
-    clients_manager* manager = new clients_manager();
+    clients_manager* manager = new clients_manager( server );
     server_manager_[ server ] = manager;
 
     server->set_connection_handler( manager );
@@ -602,7 +616,7 @@ network::connection ana_network_manager::create_client_and_connect(std::string h
 
         ana_connect_handler handler(connect_timer_);
 
-        connect_timer_->wait( ana::time::seconds(10), // 10 seconds to connection timeout, will be configurable
+        connect_timer_->wait( ana::time::seconds(10), // 10 seconds to connection timeout, TODO: configurable
                             boost::bind(&ana_connect_handler::handle_timeout, &handler, ana::timeout_error) );
 
         client->set_raw_data_mode();
@@ -850,34 +864,29 @@ size_t ana_network_manager::send_raw_data( const char* base_char, size_t size, n
     return 0;
 }
 
-void ana_network_manager::send_all_except(const config& /*cfg*/, network::connection /*connection_num*/)
+void ana_network_manager::send_all_except(const config& cfg, network::connection connection_num)
 {
-    throw std::runtime_error("send_all_except is not finished.");
-/*
     std::cout << "DEBUG: send_all_except " << connection_num << "\n";
 
-    std::stringstream out;
-    config_writer cfg_writer(out, true);
-    cfg_writer.write(cfg);
+    std::ostringstream out;
+    compress_config(cfg, out );
 
-    std::set<ana_component*>::iterator it;
+    ana_component_set::iterator it;
 
-    for (it = components_.begin(); it != components_.end(); ++it)
+    ana::net_id id_to_avoid( connection_num ); //I should have issued this id earlier
+
+    for ( it = components_.begin(); it != components_.end(); ++it)
     {
-        std::cout << "DEBUG: found component with wesnoth id " << (*it)->get_wesnoth_id() << "\n";
-        if ( (*it)->get_wesnoth_id() != connection_num )
-        {
-            ana_send_handler handler( *it, out.str().size() );
+         (*it)->get_id();
 
-            if ( (*it)->is_server() )
-                (*it)->server()->send_all( ana::buffer( out.str() ), &handler, ana::ZERO_COPY);
-            else
-                (*it)->client()->send( ana::buffer( out.str() ), &handler, ana::ZERO_COPY );
+         if ((*it)->is_client())
+             throw std::runtime_error("send_all_except shouldn't be used on clients.");
 
-            handler.wait_completion();
-        }
+         ana_send_handler handler( out.str().size() );
+         (*it)->server()->send_all_except( id_to_avoid, ana::buffer( out.str() ), &handler, ana::ZERO_COPY);
+
+         handler.wait_completion();
     }
-*/
 }
 
 network::connection ana_network_manager::read_from_ready_buffer( const ana_component_set::iterator& it, config& cfg)
@@ -1079,16 +1088,54 @@ void ana_network_manager::handle_message( ana::error_code          error,
 
         std::set< ana_component* >::iterator it;
 
-        for (it = components_.begin(); it != components_.end(); ++it)
-            std::cout << "DEBUG: Component id : " << (*it)->get_id() << "\n";
-
         it = std::find_if( components_.begin(), components_.end(),
                             boost::bind(&ana_component::get_id, _1) == client );
 
         if ( it != components_.end() )
             (*it)->add_buffer( buffer, client );
         else
-            throw std::runtime_error("Received message from a non connected component.");
+        {
+            // I received info from something not directly in components_, it must be the id of a client in a server
+            it = components_.begin();
+
+            if ( ( ! components_.empty() ) && (*it)->is_server() )
+            {
+                clients_manager* clients_mgr = server_manager_[ (*it)->server() ];
+
+                if ( clients_mgr->is_pending_handshake( client ) )
+                {
+                    if ( buffer->size() != sizeof(uint32_t) ) // all handshakes are 4 bytes long
+                        (*it)->server()->disconnect( client );
+
+                    uint32_t handshake;
+                    {
+                        ana::serializer::bistream bis( buffer->string() );
+
+                        bis >> handshake;
+                        ana::network_to_host_long( handshake ); //not necessary since I'm expecting a 0 anyway
+                    }
+
+                    if ( handshake != 0 )
+                        (*it)->server()->disconnect( client );
+                    else
+                    {
+                        clients_mgr->has_connected( network::connection( client ) );
+
+                        //send back it's id
+                        ana::serializer::bostream bos;
+
+                        uint32_t network_byte_order_id = client;
+
+                        ana::host_to_network_long( network_byte_order_id );
+                        bos << network_byte_order_id;
+
+                        send_raw_data( bos.str().c_str(), bos.str().size(), client );
+                    }
+                }
+                else
+                    (*it)->add_buffer( buffer, client );
+            }
+        }
     }
 }
 

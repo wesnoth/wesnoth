@@ -386,7 +386,7 @@ namespace ana
          * \sa send_handler
          */
         virtual void send_if(boost::asio::const_buffer,
-                                send_handler*, const client_predicate&, send_type = COPY_BUFFER )               = 0;
+                                send_handler*, const client_predicate&, send_type = COPY_BUFFER )             = 0;
 
         /**
          * Send a buffer to every connected client except one. Equals a send_all if the client doesn't exist.
@@ -434,6 +434,15 @@ namespace ana
          *               currently occupied.
          */
         virtual void run(port pt)                                  = 0;
+
+        /**
+         * Disconnect a connected client by force.
+         *
+         * @param id : The net_id of the connected client.
+         *
+         * \sa net_id
+         */
+        virtual void disconnect( net_id id )                       = 0;
 
         /** Returns the string representing the ip address of the connected client with id net_id. */
         virtual std::string ip_address( net_id ) const = 0;

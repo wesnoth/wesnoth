@@ -103,6 +103,7 @@ class ana_component
         /** Returns the network id of the oldest sender of a pending buffer. */
         network::connection oldest_sender_id_still_pending();
 
+        /** Returns true iff. the component has a read buffer ready that hasn't been returned. */
         bool new_buffer_ready(); // non const due to mutex blockage
 
     private:
@@ -328,12 +329,16 @@ class clients_manager : public ana::connection_handler
 {
     public:
         /** Constructor. */
-        clients_manager();
+        clients_manager( ana::server* );
 
         /** Returns the amount of components connected to this server. */
         size_t client_amount() const;
 
+        void has_connected( network::connection id );
+
         bool has_connection_pending() const;
+
+        bool is_pending_handshake( ana::net_id ) const;
 
         network::connection get_pending_connection_id();
 
@@ -342,8 +347,11 @@ class clients_manager : public ana::connection_handler
 
         virtual void handle_disconnect(ana::error_code /*error*/, ana::net_id client);
 
+        ana::server*                    server_; // the server managing these clients
+
         std::set< ana::net_id >         ids_;
         std::set< network::connection > pending_ids_;
+        std::set< ana::net_id >         pending_handshakes_;
 };
 
 /**
