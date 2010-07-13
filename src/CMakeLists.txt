@@ -139,7 +139,7 @@ if(SVNVERSION_EXECUTABLE)
   execute_process(COMMAND ${SVNVERSION_EXECUTABLE} -n ${CMAKE_SOURCE_DIR}
                   OUTPUT_VARIABLE SVN_VERSION)
   if(SVN_VERSION MATCHES [0-9]+.*)
-    add_custom_target(revision-stamp ALL
+    add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/revision-stamp
                       COMMAND ${CMAKE_COMMAND}
                       -DSVNVERSION_EXECUTABLE="${SVNVERSION_EXECUTABLE}" -DSRC_DIR="${CMAKE_SOURCE_DIR}"
                       -P "${CMAKE_MODULE_PATH}/revision.cmake"
