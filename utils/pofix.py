@@ -422,6 +422,8 @@ stringfixes = {
 ),
 
 "wesnoth-l" : (
+# Typo fix at r44124
+("devestating", "devastating"),
 # Convert makeshift dashes and other stuff:
 # conversion added in 1.9.0-svn
 ("are on the hunt - and", "are on the hunt — and"),
@@ -508,6 +510,8 @@ stringfixes = {
 ),
 
 "wesnoth-low" : (
+# Spelling fixes required at r44124
+("engaged wit the defenders", "engaged with the defenders"),
 # Convert makeshift dashes:
 # conversion added in 1.9.0-svn
 ("follow you, Kalenz - but", "follow you, Kalenz — but"),
@@ -534,6 +538,8 @@ stringfixes = {
 ),
 
 "wesnoth-multiplayer" : (
+# Spelling fix required at r44124.
+("helps alot", "helps a lot"),
 # Convert makeshift dashes
 # conversion added in 1.9.0-svn
 ("2p -", "2p —"),
@@ -562,6 +568,9 @@ stringfixes = {
 "wesnoth-nr" : (
 # Correct some English usage at revision 44124
 ("fortifications and siege them", "fortifications and besiege them"),
+("Form, up men!", "Form up, men!"),
+("the sunlit word", "the sunlit world"),
+("bows and a cudgels", "bows and cudgels"),
 # Convert makeshift dashes:
 # conversion added in 1.9.0-svn
 ("afar -- hence they kept their weapons sharp, and reckoned themselves well ", "afar — hence they kept their weapons sharp, and reckoned themselves well "),
@@ -781,6 +790,8 @@ stringfixes = {
 ),
 
 "wesnoth-sof" : (
+# Typo fixes required at r44124.
+("going to back to the mines", "going back to the mines"),
 # Convert makeshift dashes:
 # conversion added in 1.9.0-svn
 ("So now I tell from whence it came -", "So now I tell from whence it came —"),
@@ -913,6 +924,8 @@ stringfixes = {
 ),
 
 "wesnoth-units" : (
+# Spelling fixes required at r44124
+("diminuitive", "diminutive"),
 # Convert makeshift dashes:
 # conversion added in 1.9.0-svn
 ("allowed - grudgingly - to", "allowed — grudgingly — to"),
