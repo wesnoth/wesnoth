@@ -194,6 +194,8 @@ Version 1.9.0-svn:
    * Fixed a bug in scoring of AI recall list. Patch by billynux.
    * Strip whitespace characters from .ign patterns (bug #15902)
    * Fixed wesnoth_addon_manager's support for .ign files (bug #15846)
+   * Never allow uploading *.pbl files (case-insensitive) to the add-ons
+     server from the regular game client.
    * When warning the player about installing add-ons with missing dependencies,
      make 'OK' and 'Cancel' work as expected (bug #15960)
    * Fixed tab completion not working in the new lobby (bug #14730)
