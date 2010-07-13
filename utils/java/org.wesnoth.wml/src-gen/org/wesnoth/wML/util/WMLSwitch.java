@@ -117,13 +117,6 @@ public class WMLSwitch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case WMLPackage.WML_END_TAG:
-      {
-        WMLEndTag wmlEndTag = (WMLEndTag)theEObject;
-        T result = caseWMLEndTag(wmlEndTag);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case WMLPackage.WML_KEY:
       {
         WMLKey wmlKey = (WMLKey)theEObject;
@@ -186,22 +179,6 @@ public class WMLSwitch<T>
    * @generated
    */
   public T caseWMLTag(WMLTag object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>End Tag</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>End Tag</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseWMLEndTag(WMLEndTag object)
   {
     return null;
   }

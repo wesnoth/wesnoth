@@ -21,10 +21,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLTag/Ttags"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLTag/Tkeys"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLTag/Tmacros"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLTag/end"/>
-    </genClasses>
-    <genClasses ecoreClass="WML.ecore#//WMLEndTag">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//WMLEndTag/tagname"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//WMLTag/endName"/>
     </genClasses>
     <genClasses ecoreClass="WML.ecore#//WMLKey">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//WMLKey/keyName"/>

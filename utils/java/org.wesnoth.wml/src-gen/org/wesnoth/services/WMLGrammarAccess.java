@@ -134,14 +134,16 @@ public class WMLGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cTkeysWMLKeyParserRuleCall_3_1_0 = (RuleCall)cTkeysAssignment_3_1.eContents().get(0);
 		private final Assignment cTmacrosAssignment_3_2 = (Assignment)cAlternatives_3.eContents().get(2);
 		private final RuleCall cTmacrosWMLMacroParserRuleCall_3_2_0 = (RuleCall)cTmacrosAssignment_3_2.eContents().get(0);
-		private final Assignment cEndAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cEndWMLEndTagParserRuleCall_4_0 = (RuleCall)cEndAssignment_4.eContents().get(0);
+		private final Keyword cLeftSquareBracketSolidusKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Assignment cEndNameAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cEndNameIDTerminalRuleCall_5_0 = (RuleCall)cEndNameAssignment_5.eContents().get(0);
+		private final Keyword cRightSquareBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
 		//WMLTag:
-		//	"[" name=ID "]" (Ttags+=WMLTag | Tkeys+=WMLKey | Tmacros+=WMLMacro)* end=WMLEndTag;
+		//	"[" name=ID "]" (Ttags+=WMLTag | Tkeys+=WMLKey | Tmacros+=WMLMacro)* "[/" endName=ID "]";
 		public ParserRule getRule() { return rule; }
 
-		//"[" name=ID "]" (Ttags+=WMLTag | Tkeys+=WMLKey | Tmacros+=WMLMacro)* end=WMLEndTag
+		//"[" name=ID "]" (Ttags+=WMLTag | Tkeys+=WMLKey | Tmacros+=WMLMacro)* "[/" endName=ID "]"
 		public Group getGroup() { return cGroup; }
 
 		//"["
@@ -177,42 +179,17 @@ public class WMLGrammarAccess extends AbstractGrammarElementFinder {
 		//WMLMacro
 		public RuleCall getTmacrosWMLMacroParserRuleCall_3_2_0() { return cTmacrosWMLMacroParserRuleCall_3_2_0; }
 
-		//end=WMLEndTag
-		public Assignment getEndAssignment_4() { return cEndAssignment_4; }
-
-		//WMLEndTag
-		public RuleCall getEndWMLEndTagParserRuleCall_4_0() { return cEndWMLEndTagParserRuleCall_4_0; }
-	}
-
-	public class WMLEndTagElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "WMLEndTag");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cLeftSquareBracketSolidusKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cTagnameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cTagnameIDTerminalRuleCall_1_0 = (RuleCall)cTagnameAssignment_1.eContents().get(0);
-		private final Keyword cRightSquareBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		
-		////WMLStartTag:
-		////	'[' name = ID ']'
-		////	;
-		//WMLEndTag:
-		//	"[/" tagname=ID "]";
-		public ParserRule getRule() { return rule; }
-
-		//"[/" tagname=ID "]"
-		public Group getGroup() { return cGroup; }
-
 		//"[/"
-		public Keyword getLeftSquareBracketSolidusKeyword_0() { return cLeftSquareBracketSolidusKeyword_0; }
+		public Keyword getLeftSquareBracketSolidusKeyword_4() { return cLeftSquareBracketSolidusKeyword_4; }
 
-		//tagname=ID
-		public Assignment getTagnameAssignment_1() { return cTagnameAssignment_1; }
+		//endName=ID
+		public Assignment getEndNameAssignment_5() { return cEndNameAssignment_5; }
 
 		//ID
-		public RuleCall getTagnameIDTerminalRuleCall_1_0() { return cTagnameIDTerminalRuleCall_1_0; }
+		public RuleCall getEndNameIDTerminalRuleCall_5_0() { return cEndNameIDTerminalRuleCall_5_0; }
 
 		//"]"
-		public Keyword getRightSquareBracketKeyword_2() { return cRightSquareBracketKeyword_2; }
+		public Keyword getRightSquareBracketKeyword_6() { return cRightSquareBracketKeyword_6; }
 	}
 
 	public class WMLKeyElements extends AbstractParserRuleElementFinder {
@@ -224,6 +201,12 @@ public class WMLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cValueAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cValueWMLKeyValueParserRuleCall_2_0 = (RuleCall)cValueAssignment_2.eContents().get(0);
 		
+		////WMLStartTag:
+		////	'[' name = ID ']'
+		////	;
+		////WMLEndTag:
+		////	'[/' tagname = ID ']'
+		////	;
 		//WMLKey:
 		//	keyName=ID "=" value=WMLKeyValue;
 		public ParserRule getRule() { return rule; }
@@ -603,7 +586,6 @@ public class WMLGrammarAccess extends AbstractGrammarElementFinder {
 	private WMLRootElements pWMLRoot;
 	private WMLMacroElements pWMLMacro;
 	private WMLTagElements pWMLTag;
-	private WMLEndTagElements pWMLEndTag;
 	private WMLKeyElements pWMLKey;
 	private WMLKeyValueElements pWMLKeyValue;
 	private FLOATElements pFLOAT;
@@ -652,7 +634,7 @@ public class WMLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//WMLTag:
-	//	"[" name=ID "]" (Ttags+=WMLTag | Tkeys+=WMLKey | Tmacros+=WMLMacro)* end=WMLEndTag;
+	//	"[" name=ID "]" (Ttags+=WMLTag | Tkeys+=WMLKey | Tmacros+=WMLMacro)* "[/" endName=ID "]";
 	public WMLTagElements getWMLTagAccess() {
 		return (pWMLTag != null) ? pWMLTag : (pWMLTag = new WMLTagElements());
 	}
@@ -664,16 +646,9 @@ public class WMLGrammarAccess extends AbstractGrammarElementFinder {
 	////WMLStartTag:
 	////	'[' name = ID ']'
 	////	;
-	//WMLEndTag:
-	//	"[/" tagname=ID "]";
-	public WMLEndTagElements getWMLEndTagAccess() {
-		return (pWMLEndTag != null) ? pWMLEndTag : (pWMLEndTag = new WMLEndTagElements());
-	}
-	
-	public ParserRule getWMLEndTagRule() {
-		return getWMLEndTagAccess().getRule();
-	}
-
+	////WMLEndTag:
+	////	'[/' tagname = ID ']'
+	////	;
 	//WMLKey:
 	//	keyName=ID "=" value=WMLKeyValue;
 	public WMLKeyElements getWMLKeyAccess() {

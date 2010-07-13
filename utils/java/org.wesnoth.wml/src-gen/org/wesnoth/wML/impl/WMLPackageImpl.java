@@ -13,7 +13,6 @@ import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
-import org.wesnoth.wML.WMLEndTag;
 import org.wesnoth.wML.WMLFactory;
 import org.wesnoth.wML.WMLKey;
 import org.wesnoth.wML.WMLKeyValue;
@@ -50,13 +49,6 @@ public class WMLPackageImpl extends EPackageImpl implements WMLPackage
    * @generated
    */
   private EClass wmlTagEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass wmlEndTagEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -250,29 +242,9 @@ public class WMLPackageImpl extends EPackageImpl implements WMLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getWMLTag_End()
+  public EAttribute getWMLTag_EndName()
   {
-    return (EReference)wmlTagEClass.getEStructuralFeatures().get(4);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getWMLEndTag()
-  {
-    return wmlEndTagEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getWMLEndTag_Tagname()
-  {
-    return (EAttribute)wmlEndTagEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)wmlTagEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -378,10 +350,7 @@ public class WMLPackageImpl extends EPackageImpl implements WMLPackage
     createEReference(wmlTagEClass, WML_TAG__TTAGS);
     createEReference(wmlTagEClass, WML_TAG__TKEYS);
     createEReference(wmlTagEClass, WML_TAG__TMACROS);
-    createEReference(wmlTagEClass, WML_TAG__END);
-
-    wmlEndTagEClass = createEClass(WML_END_TAG);
-    createEAttribute(wmlEndTagEClass, WML_END_TAG__TAGNAME);
+    createEAttribute(wmlTagEClass, WML_TAG__END_NAME);
 
     wmlKeyEClass = createEClass(WML_KEY);
     createEAttribute(wmlKeyEClass, WML_KEY__KEY_NAME);
@@ -436,10 +405,7 @@ public class WMLPackageImpl extends EPackageImpl implements WMLPackage
     initEReference(getWMLTag_Ttags(), this.getWMLTag(), null, "Ttags", null, 0, -1, WMLTag.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getWMLTag_Tkeys(), this.getWMLKey(), null, "Tkeys", null, 0, -1, WMLTag.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getWMLTag_Tmacros(), this.getWMLMacro(), null, "Tmacros", null, 0, -1, WMLTag.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getWMLTag_End(), this.getWMLEndTag(), null, "end", null, 0, 1, WMLTag.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(wmlEndTagEClass, WMLEndTag.class, "WMLEndTag", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getWMLEndTag_Tagname(), ecorePackage.getEString(), "tagname", null, 0, 1, WMLEndTag.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getWMLTag_EndName(), ecorePackage.getEString(), "endName", null, 0, 1, WMLTag.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(wmlKeyEClass, WMLKey.class, "WMLKey", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getWMLKey_KeyName(), ecorePackage.getEString(), "keyName", null, 0, 1, WMLKey.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

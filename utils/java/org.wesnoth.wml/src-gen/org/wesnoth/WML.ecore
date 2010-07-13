@@ -22,11 +22,7 @@
         eType="#//WMLKey" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="Tmacros" upperBound="-1"
         eType="#//WMLMacro" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="end" eType="#//WMLEndTag"
-        containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="WMLEndTag">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tagname" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="endName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WMLKey">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="keyName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

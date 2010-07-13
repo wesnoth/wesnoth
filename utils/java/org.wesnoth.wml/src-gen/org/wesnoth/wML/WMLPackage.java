@@ -181,13 +181,13 @@ public interface WMLPackage extends EPackage
   int WML_TAG__TMACROS = 3;
 
   /**
-   * The feature id for the '<em><b>End</b></em>' containment reference.
+   * The feature id for the '<em><b>End Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int WML_TAG__END = 4;
+  int WML_TAG__END_NAME = 4;
 
   /**
    * The number of structural features of the '<em>Tag</em>' class.
@@ -199,34 +199,6 @@ public interface WMLPackage extends EPackage
   int WML_TAG_FEATURE_COUNT = 5;
 
   /**
-   * The meta object id for the '{@link org.wesnoth.wML.impl.WMLEndTagImpl <em>End Tag</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.wesnoth.wML.impl.WMLEndTagImpl
-   * @see org.wesnoth.wML.impl.WMLPackageImpl#getWMLEndTag()
-   * @generated
-   */
-  int WML_END_TAG = 3;
-
-  /**
-   * The feature id for the '<em><b>Tagname</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int WML_END_TAG__TAGNAME = 0;
-
-  /**
-   * The number of structural features of the '<em>End Tag</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int WML_END_TAG_FEATURE_COUNT = 1;
-
-  /**
    * The meta object id for the '{@link org.wesnoth.wML.impl.WMLKeyImpl <em>Key</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -234,7 +206,7 @@ public interface WMLPackage extends EPackage
    * @see org.wesnoth.wML.impl.WMLPackageImpl#getWMLKey()
    * @generated
    */
-  int WML_KEY = 4;
+  int WML_KEY = 3;
 
   /**
    * The feature id for the '<em><b>Key Name</b></em>' attribute.
@@ -271,7 +243,7 @@ public interface WMLPackage extends EPackage
    * @see org.wesnoth.wML.impl.WMLPackageImpl#getWMLKeyValue()
    * @generated
    */
-  int WML_KEY_VALUE = 5;
+  int WML_KEY_VALUE = 4;
 
   /**
    * The feature id for the '<em><b>Key1 Value</b></em>' attribute.
@@ -420,36 +392,15 @@ public interface WMLPackage extends EPackage
   EReference getWMLTag_Tmacros();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.wesnoth.wML.WMLTag#getEnd <em>End</em>}'.
+   * Returns the meta object for the attribute '{@link org.wesnoth.wML.WMLTag#getEndName <em>End Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>End</em>'.
-   * @see org.wesnoth.wML.WMLTag#getEnd()
+   * @return the meta object for the attribute '<em>End Name</em>'.
+   * @see org.wesnoth.wML.WMLTag#getEndName()
    * @see #getWMLTag()
    * @generated
    */
-  EReference getWMLTag_End();
-
-  /**
-   * Returns the meta object for class '{@link org.wesnoth.wML.WMLEndTag <em>End Tag</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>End Tag</em>'.
-   * @see org.wesnoth.wML.WMLEndTag
-   * @generated
-   */
-  EClass getWMLEndTag();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.wesnoth.wML.WMLEndTag#getTagname <em>Tagname</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Tagname</em>'.
-   * @see org.wesnoth.wML.WMLEndTag#getTagname()
-   * @see #getWMLEndTag()
-   * @generated
-   */
-  EAttribute getWMLEndTag_Tagname();
+  EAttribute getWMLTag_EndName();
 
   /**
    * Returns the meta object for class '{@link org.wesnoth.wML.WMLKey <em>Key</em>}'.
@@ -633,30 +584,12 @@ public interface WMLPackage extends EPackage
     EReference WML_TAG__TMACROS = eINSTANCE.getWMLTag_Tmacros();
 
     /**
-     * The meta object literal for the '<em><b>End</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>End Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference WML_TAG__END = eINSTANCE.getWMLTag_End();
-
-    /**
-     * The meta object literal for the '{@link org.wesnoth.wML.impl.WMLEndTagImpl <em>End Tag</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.wesnoth.wML.impl.WMLEndTagImpl
-     * @see org.wesnoth.wML.impl.WMLPackageImpl#getWMLEndTag()
-     * @generated
-     */
-    EClass WML_END_TAG = eINSTANCE.getWMLEndTag();
-
-    /**
-     * The meta object literal for the '<em><b>Tagname</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute WML_END_TAG__TAGNAME = eINSTANCE.getWMLEndTag_Tagname();
+    EAttribute WML_TAG__END_NAME = eINSTANCE.getWMLTag_EndName();
 
     /**
      * The meta object literal for the '{@link org.wesnoth.wML.impl.WMLKeyImpl <em>Key</em>}' class.

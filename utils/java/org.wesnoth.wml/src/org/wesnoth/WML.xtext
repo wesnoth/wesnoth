@@ -22,14 +22,14 @@ WMLTag:
 		| (Tkeys += WMLKey)
 		| (Tmacros += WMLMacro)
 		)*
-	end = WMLEndTag
+	'[/' endName = ID ']'
 	;
 //WMLStartTag:
 //	'[' name = ID ']'
 //	;
-WMLEndTag:
-	'[/' tagname = ID ']'
-	;
+//WMLEndTag:
+//	'[/' tagname = ID ']'
+//	;
 WMLKey:
 	(keyName = ID) '=' 
 	(value = WMLKeyValue)

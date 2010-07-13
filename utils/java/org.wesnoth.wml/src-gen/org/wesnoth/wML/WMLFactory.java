@@ -54,15 +54,6 @@ public interface WMLFactory extends EFactory
   WMLTag createWMLTag();
 
   /**
-   * Returns a new object of class '<em>End Tag</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>End Tag</em>'.
-   * @generated
-   */
-  WMLEndTag createWMLEndTag();
-
-  /**
    * Returns a new object of class '<em>Key</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

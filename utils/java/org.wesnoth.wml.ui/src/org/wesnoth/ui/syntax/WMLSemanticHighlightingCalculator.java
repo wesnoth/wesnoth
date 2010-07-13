@@ -4,7 +4,6 @@
  */
 package org.wesnoth.ui.syntax;
 
-import org.wesnoth.wML.WMLEndTag;
 import org.wesnoth.wML.WMLKey;
 import org.wesnoth.wML.WMLMacro;
 import org.wesnoth.wML.WMLPackage;
@@ -39,11 +38,9 @@ public class WMLSemanticHighlightingCalculator extends SemanticHighlightingCalcu
 			{
 				AbstractNode begin = getFirstFeatureNode(current, WMLPackage.Literals.WML_TAG__NAME.getName());
 				highlightNode(begin, WMLHighlightingConfiguration.RULE_WML_TAG, acceptor);
-			}
-			else if (current instanceof WMLEndTag)
-			{
-				AbstractNode begin = getFirstFeatureNode(current, WMLPackage.Literals.WML_END_TAG__TAGNAME.getName());
-				highlightNode(begin, WMLHighlightingConfiguration.RULE_WML_TAG, acceptor);
+
+				AbstractNode end = getFirstFeatureNode(current, WMLPackage.Literals.WML_TAG__END_NAME.getName());
+				highlightNode(end, WMLHighlightingConfiguration.RULE_WML_TAG, acceptor);
 			}
 			else if (current instanceof WMLKey)
 			{

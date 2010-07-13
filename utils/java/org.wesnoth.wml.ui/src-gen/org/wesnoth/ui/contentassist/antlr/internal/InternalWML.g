@@ -141,34 +141,6 @@ finally {
 
 
 
-// Entry rule entryRuleWMLEndTag
-entryRuleWMLEndTag 
-:
-{ before(grammarAccess.getWMLEndTagRule()); }
-	 ruleWMLEndTag
-{ after(grammarAccess.getWMLEndTagRule()); } 
-	 EOF 
-;
-
-// Rule WMLEndTag
-ruleWMLEndTag
-    @init {
-		int stackSize = keepStackSize();
-    }
-	:
-(
-{ before(grammarAccess.getWMLEndTagAccess().getGroup()); }
-(rule__WMLEndTag__Group__0)
-{ after(grammarAccess.getWMLEndTagAccess().getGroup()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-
 // Entry rule entryRuleWMLKey
 entryRuleWMLKey 
 :
@@ -1074,6 +1046,7 @@ rule__WMLTag__Group__4
     }
 :
 	rule__WMLTag__Group__4__Impl
+	rule__WMLTag__Group__5
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -1085,50 +1058,11 @@ rule__WMLTag__Group__4__Impl
     }
 :
 (
-{ before(grammarAccess.getWMLTagAccess().getEndAssignment_4()); }
-(rule__WMLTag__EndAssignment_4)
-{ after(grammarAccess.getWMLTagAccess().getEndAssignment_4()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-
-
-
-
-
-
-
-
-
-
-rule__WMLEndTag__Group__0
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-	rule__WMLEndTag__Group__0__Impl
-	rule__WMLEndTag__Group__1
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__WMLEndTag__Group__0__Impl
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getWMLEndTagAccess().getLeftSquareBracketSolidusKeyword_0()); }
+{ before(grammarAccess.getWMLTagAccess().getLeftSquareBracketSolidusKeyword_4()); }
 
 	'[/' 
 
-{ after(grammarAccess.getWMLEndTagAccess().getLeftSquareBracketSolidusKeyword_0()); }
+{ after(grammarAccess.getWMLTagAccess().getLeftSquareBracketSolidusKeyword_4()); }
 )
 
 ;
@@ -1137,27 +1071,27 @@ finally {
 }
 
 
-rule__WMLEndTag__Group__1
+rule__WMLTag__Group__5
     @init {
 		int stackSize = keepStackSize();
     }
 :
-	rule__WMLEndTag__Group__1__Impl
-	rule__WMLEndTag__Group__2
+	rule__WMLTag__Group__5__Impl
+	rule__WMLTag__Group__6
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__WMLEndTag__Group__1__Impl
+rule__WMLTag__Group__5__Impl
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getWMLEndTagAccess().getTagnameAssignment_1()); }
-(rule__WMLEndTag__TagnameAssignment_1)
-{ after(grammarAccess.getWMLEndTagAccess().getTagnameAssignment_1()); }
+{ before(grammarAccess.getWMLTagAccess().getEndNameAssignment_5()); }
+(rule__WMLTag__EndNameAssignment_5)
+{ after(grammarAccess.getWMLTagAccess().getEndNameAssignment_5()); }
 )
 
 ;
@@ -1166,34 +1100,42 @@ finally {
 }
 
 
-rule__WMLEndTag__Group__2
+rule__WMLTag__Group__6
     @init {
 		int stackSize = keepStackSize();
     }
 :
-	rule__WMLEndTag__Group__2__Impl
+	rule__WMLTag__Group__6__Impl
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__WMLEndTag__Group__2__Impl
+rule__WMLTag__Group__6__Impl
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getWMLEndTagAccess().getRightSquareBracketKeyword_2()); }
+{ before(grammarAccess.getWMLTagAccess().getRightSquareBracketKeyword_6()); }
 
 	']' 
 
-{ after(grammarAccess.getWMLEndTagAccess().getRightSquareBracketKeyword_2()); }
+{ after(grammarAccess.getWMLTagAccess().getRightSquareBracketKeyword_6()); }
 )
 
 ;
 finally {
 	restoreStackSize(stackSize);
 }
+
+
+
+
+
+
+
+
 
 
 
@@ -2586,29 +2528,14 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__WMLTag__EndAssignment_4
+rule__WMLTag__EndNameAssignment_5
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getWMLTagAccess().getEndWMLEndTagParserRuleCall_4_0()); }
-	ruleWMLEndTag{ after(grammarAccess.getWMLTagAccess().getEndWMLEndTagParserRuleCall_4_0()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__WMLEndTag__TagnameAssignment_1
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getWMLEndTagAccess().getTagnameIDTerminalRuleCall_1_0()); }
-	RULE_ID{ after(grammarAccess.getWMLEndTagAccess().getTagnameIDTerminalRuleCall_1_0()); }
+{ before(grammarAccess.getWMLTagAccess().getEndNameIDTerminalRuleCall_5_0()); }
+	RULE_ID{ after(grammarAccess.getWMLTagAccess().getEndNameIDTerminalRuleCall_5_0()); }
 )
 
 ;

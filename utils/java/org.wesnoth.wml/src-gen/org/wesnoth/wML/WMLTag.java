@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.wesnoth.wML.WMLTag#getTtags <em>Ttags</em>}</li>
  *   <li>{@link org.wesnoth.wML.WMLTag#getTkeys <em>Tkeys</em>}</li>
  *   <li>{@link org.wesnoth.wML.WMLTag#getTmacros <em>Tmacros</em>}</li>
- *   <li>{@link org.wesnoth.wML.WMLTag#getEnd <em>End</em>}</li>
+ *   <li>{@link org.wesnoth.wML.WMLTag#getEndName <em>End Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -107,29 +107,29 @@ public interface WMLTag extends EObject
   EList<WMLMacro> getTmacros();
 
   /**
-   * Returns the value of the '<em><b>End</b></em>' containment reference.
+   * Returns the value of the '<em><b>End Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>End</em>' containment reference isn't clear,
+   * If the meaning of the '<em>End Name</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>End</em>' containment reference.
-   * @see #setEnd(WMLEndTag)
-   * @see org.wesnoth.wML.WMLPackage#getWMLTag_End()
-   * @model containment="true"
+   * @return the value of the '<em>End Name</em>' attribute.
+   * @see #setEndName(String)
+   * @see org.wesnoth.wML.WMLPackage#getWMLTag_EndName()
+   * @model
    * @generated
    */
-  WMLEndTag getEnd();
+  String getEndName();
 
   /**
-   * Sets the value of the '{@link org.wesnoth.wML.WMLTag#getEnd <em>End</em>}' containment reference.
+   * Sets the value of the '{@link org.wesnoth.wML.WMLTag#getEndName <em>End Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>End</em>' containment reference.
-   * @see #getEnd()
+   * @param value the new value of the '<em>End Name</em>' attribute.
+   * @see #getEndName()
    * @generated
    */
-  void setEnd(WMLEndTag value);
+  void setEndName(String value);
 
 } // WMLTag

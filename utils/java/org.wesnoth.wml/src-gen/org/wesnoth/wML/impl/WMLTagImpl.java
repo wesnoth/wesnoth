@@ -22,7 +22,6 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.wesnoth.wML.WMLEndTag;
 import org.wesnoth.wML.WMLKey;
 import org.wesnoth.wML.WMLMacro;
 import org.wesnoth.wML.WMLPackage;
@@ -39,7 +38,7 @@ import org.wesnoth.wML.WMLTag;
  *   <li>{@link org.wesnoth.wML.impl.WMLTagImpl#getTtags <em>Ttags</em>}</li>
  *   <li>{@link org.wesnoth.wML.impl.WMLTagImpl#getTkeys <em>Tkeys</em>}</li>
  *   <li>{@link org.wesnoth.wML.impl.WMLTagImpl#getTmacros <em>Tmacros</em>}</li>
- *   <li>{@link org.wesnoth.wML.impl.WMLTagImpl#getEnd <em>End</em>}</li>
+ *   <li>{@link org.wesnoth.wML.impl.WMLTagImpl#getEndName <em>End Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -98,14 +97,24 @@ public class WMLTagImpl extends MinimalEObjectImpl.Container implements WMLTag
   protected EList<WMLMacro> tmacros;
 
   /**
-   * The cached value of the '{@link #getEnd() <em>End</em>}' containment reference.
+   * The default value of the '{@link #getEndName() <em>End Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getEnd()
+   * @see #getEndName()
    * @generated
    * @ordered
    */
-  protected WMLEndTag end;
+  protected static final String END_NAME_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getEndName() <em>End Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getEndName()
+   * @generated
+   * @ordered
+   */
+  protected String endName = END_NAME_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -198,9 +207,9 @@ public class WMLTagImpl extends MinimalEObjectImpl.Container implements WMLTag
    * <!-- end-user-doc -->
    * @generated
    */
-  public WMLEndTag getEnd()
+  public String getEndName()
   {
-    return end;
+    return endName;
   }
 
   /**
@@ -208,37 +217,12 @@ public class WMLTagImpl extends MinimalEObjectImpl.Container implements WMLTag
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetEnd(WMLEndTag newEnd, NotificationChain msgs)
+  public void setEndName(String newEndName)
   {
-    WMLEndTag oldEnd = end;
-    end = newEnd;
+    String oldEndName = endName;
+    endName = newEndName;
     if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, WMLPackage.WML_TAG__END, oldEnd, newEnd);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setEnd(WMLEndTag newEnd)
-  {
-    if (newEnd != end)
-    {
-      NotificationChain msgs = null;
-      if (end != null)
-        msgs = ((InternalEObject)end).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - WMLPackage.WML_TAG__END, null, msgs);
-      if (newEnd != null)
-        msgs = ((InternalEObject)newEnd).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - WMLPackage.WML_TAG__END, null, msgs);
-      msgs = basicSetEnd(newEnd, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, WMLPackage.WML_TAG__END, newEnd, newEnd));
+      eNotify(new ENotificationImpl(this, Notification.SET, WMLPackage.WML_TAG__END_NAME, oldEndName, endName));
   }
 
   /**
@@ -257,8 +241,6 @@ public class WMLTagImpl extends MinimalEObjectImpl.Container implements WMLTag
         return ((InternalEList<?>)getTkeys()).basicRemove(otherEnd, msgs);
       case WMLPackage.WML_TAG__TMACROS:
         return ((InternalEList<?>)getTmacros()).basicRemove(otherEnd, msgs);
-      case WMLPackage.WML_TAG__END:
-        return basicSetEnd(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -281,8 +263,8 @@ public class WMLTagImpl extends MinimalEObjectImpl.Container implements WMLTag
         return getTkeys();
       case WMLPackage.WML_TAG__TMACROS:
         return getTmacros();
-      case WMLPackage.WML_TAG__END:
-        return getEnd();
+      case WMLPackage.WML_TAG__END_NAME:
+        return getEndName();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -313,8 +295,8 @@ public class WMLTagImpl extends MinimalEObjectImpl.Container implements WMLTag
         getTmacros().clear();
         getTmacros().addAll((Collection<? extends WMLMacro>)newValue);
         return;
-      case WMLPackage.WML_TAG__END:
-        setEnd((WMLEndTag)newValue);
+      case WMLPackage.WML_TAG__END_NAME:
+        setEndName((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -342,8 +324,8 @@ public class WMLTagImpl extends MinimalEObjectImpl.Container implements WMLTag
       case WMLPackage.WML_TAG__TMACROS:
         getTmacros().clear();
         return;
-      case WMLPackage.WML_TAG__END:
-        setEnd((WMLEndTag)null);
+      case WMLPackage.WML_TAG__END_NAME:
+        setEndName(END_NAME_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -367,8 +349,8 @@ public class WMLTagImpl extends MinimalEObjectImpl.Container implements WMLTag
         return tkeys != null && !tkeys.isEmpty();
       case WMLPackage.WML_TAG__TMACROS:
         return tmacros != null && !tmacros.isEmpty();
-      case WMLPackage.WML_TAG__END:
-        return end != null;
+      case WMLPackage.WML_TAG__END_NAME:
+        return END_NAME_EDEFAULT == null ? endName != null : !END_NAME_EDEFAULT.equals(endName);
     }
     return super.eIsSet(featureID);
   }
@@ -386,6 +368,8 @@ public class WMLTagImpl extends MinimalEObjectImpl.Container implements WMLTag
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (name: ");
     result.append(name);
+    result.append(", endName: ");
+    result.append(endName);
     result.append(')');
     return result.toString();
   }

@@ -514,73 +514,26 @@ ruleWMLTag returns [EObject current=null]
 	    }
 
 )
-))*(
-(
-		{ 
-	        currentNode=createCompositeNode(grammarAccess.getWMLTagAccess().getEndWMLEndTagParserRuleCall_4_0(), currentNode); 
-	    }
-		lv_end_6_0=ruleWMLEndTag		{
-	        if ($current==null) {
-	            $current = factory.create(grammarAccess.getWMLTagRule().getType().getClassifier());
-	            associateNodeWithAstElement(currentNode.getParent(), $current);
-	        }
-	        try {
-	       		set(
-	       			$current, 
-	       			"end",
-	        		lv_end_6_0, 
-	        		"WMLEndTag", 
-	        		currentNode);
-	        } catch (ValueConverterException vce) {
-				handleValueConverterException(vce);
-	        }
-	        currentNode = currentNode.getParent();
-	    }
-
-)
-))
-;
-
-
-
-
-
-// Entry rule entryRuleWMLEndTag
-entryRuleWMLEndTag returns [EObject current=null] 
-	:
-	{ currentNode = createCompositeNode(grammarAccess.getWMLEndTagRule(), currentNode); }
-	 iv_ruleWMLEndTag=ruleWMLEndTag 
-	 { $current=$iv_ruleWMLEndTag.current; } 
-	 EOF 
-;
-
-// Rule WMLEndTag
-ruleWMLEndTag returns [EObject current=null] 
-    @init { EObject temp=null; setCurrentLookahead(); resetLookahead(); 
-    }
-    @after { resetLookahead(); 
-    	lastConsumedNode = currentNode;
-    }:
-(	'[/' 
+))*	'[/' 
     {
-        createLeafNode(grammarAccess.getWMLEndTagAccess().getLeftSquareBracketSolidusKeyword_0(), null); 
+        createLeafNode(grammarAccess.getWMLTagAccess().getLeftSquareBracketSolidusKeyword_4(), null); 
     }
 (
 (
-		lv_tagname_1_0=RULE_ID
+		lv_endName_7_0=RULE_ID
 		{
-			createLeafNode(grammarAccess.getWMLEndTagAccess().getTagnameIDTerminalRuleCall_1_0(), "tagname"); 
+			createLeafNode(grammarAccess.getWMLTagAccess().getEndNameIDTerminalRuleCall_5_0(), "endName"); 
 		}
 		{
 	        if ($current==null) {
-	            $current = factory.create(grammarAccess.getWMLEndTagRule().getType().getClassifier());
+	            $current = factory.create(grammarAccess.getWMLTagRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode, $current);
 	        }
 	        try {
 	       		set(
 	       			$current, 
-	       			"tagname",
-	        		lv_tagname_1_0, 
+	       			"endName",
+	        		lv_endName_7_0, 
 	        		"ID", 
 	        		lastConsumedNode);
 	        } catch (ValueConverterException vce) {
@@ -591,7 +544,7 @@ ruleWMLEndTag returns [EObject current=null]
 )
 )	']' 
     {
-        createLeafNode(grammarAccess.getWMLEndTagAccess().getRightSquareBracketKeyword_2(), null); 
+        createLeafNode(grammarAccess.getWMLTagAccess().getRightSquareBracketKeyword_6(), null); 
     }
 )
 ;
