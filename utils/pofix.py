@@ -560,6 +560,8 @@ stringfixes = {
 ),
 
 "wesnoth-nr" : (
+# Correct some English usage at revision 44124
+("fortifications and siege them", "fortifications and besiege them"),
 # Convert makeshift dashes:
 # conversion added in 1.9.0-svn
 ("afar -- hence they kept their weapons sharp, and reckoned themselves well ", "afar — hence they kept their weapons sharp, and reckoned themselves well "),
@@ -1033,7 +1035,7 @@ stringfixes = {
 # Speak, if all argument files are newer than this timestamp
 # Try to use UTC here
 # date --utc "+%s  # %c"
-timecheck = 1275358384  # Tue 01 Jun 2010 02:13:04 AM UTC
+timecheck = 1278989211  # Tue 13 Jul 2010 02:46:51 AM UTC
 
 import os, sys, time, stat, re
 
