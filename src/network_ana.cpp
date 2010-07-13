@@ -454,7 +454,6 @@ namespace network {
                        const std::string& /*packet_type*/)
     {
         ana_manager.send_raw_data( buf, size_t( len ), connection_num );
-//         throw std::runtime_error("TODO:Not implemented send_raw_data");
     }
 
     void process_send_queue(connection, size_t)
@@ -485,7 +484,7 @@ namespace network {
 
     statistics get_receive_stats(connection handle)
     {
-        std::cout << "DEBUG: get_receive_stats\n";
+//         std::cout << "DEBUG: get_receive_stats\n"; // too much output
         return ana_manager.get_receive_stats( handle );
     }
 

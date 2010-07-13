@@ -57,7 +57,6 @@ asio_client::asio_client(ana::address address, ana::port pt) :
 
 asio_client::~asio_client()
 {
-//     io_service_.stop();
     stop_logging();
     disconnect_listener();
     io_thread_.join();

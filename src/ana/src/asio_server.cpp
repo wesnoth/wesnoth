@@ -296,13 +296,16 @@ void asio_server::asio_client_proxy::stop_logging()
 
 void asio_server::disconnect( ana::net_id id )
 {
-    std::list<ana::server::client_proxy*>::const_iterator it;
+    std::list<ana::server::client_proxy*>::iterator it;
 
     it = std::find_if( client_proxies_.begin(), client_proxies_.end(),
                        boost::bind( &client_proxy::id, _1) == id );
 
     if ( it != client_proxies_.end() )
+    {
         delete *it;
+        client_proxies_.erase(it);
+    }
 }
 
 void asio_server::disconnect()
@@ -322,6 +325,28 @@ void asio_server::set_raw_buffer_max_size( size_t size)
 {
     for (std::list<client_proxy*>::iterator it = client_proxies_.begin(); it != client_proxies_.end(); ++it)
         (*it)->set_raw_buffer_max_size( size );
+}
+
+void asio_server::set_header_first_mode( ana::net_id id )
+{
+    std::list<ana::server::client_proxy*>::const_iterator it;
+
+    it = std::find_if( client_proxies_.begin(), client_proxies_.end(),
+                       boost::bind( &client_proxy::id, _1) == id );
+
+    if ( it != client_proxies_.end() )
+        (*it)->set_header_first_mode();
+}
+
+void asio_server::set_raw_data_mode( ana::net_id id )
+{
+    std::list<ana::server::client_proxy*>::const_iterator it;
+
+    it = std::find_if( client_proxies_.begin(), client_proxies_.end(),
+                       boost::bind( &client_proxy::id, _1) == id );
+
+    if ( it != client_proxies_.end() )
+        (*it)->set_raw_data_mode();
 }
 
 const ana::stats* asio_server::asio_client_proxy::get_stats( ana::stat_type type ) const

@@ -46,7 +46,7 @@ void asio_sender::send(ana::detail::shared_buffer buffer,
                                              boost::bind(&asio_sender::handle_timeout, this,
                                                          boost::asio::placeholders::error, handler ) );
 
-        if ( sender->raw_mode() )
+        if ( raw_mode() )
         {
             if ( stats_collector() != NULL )
                 stats_collector()->start_send_packet( buffer->size() );

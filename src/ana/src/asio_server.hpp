@@ -131,6 +131,10 @@ class asio_server : public  ana::server,
 
         virtual ana::timer* create_timer() { return new ana::timer( io_service_); }
 
+        virtual void set_header_first_mode( ana::net_id id );
+
+        virtual void set_raw_data_mode( ana::net_id id );
+
         void handle_accept (const boost::system::error_code& ec,asio_client_proxy* client, ana::connection_handler* );
 
         void register_client(client_proxy* client);

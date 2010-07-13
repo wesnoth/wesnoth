@@ -206,7 +206,6 @@ namespace ana
                  */
                 virtual ana::stats_collector* stats_collector() = 0;
 
-            public:
                 /**
                  * Enter Raw Data mode, ana won't prefix your packets with header information.
                  *
@@ -288,7 +287,7 @@ namespace ana
                         public virtual ana_component
         {
         };
-    } //namespace details
+    } //namespace detail
 
     /**
      * Class that should be implemented to handle new connection events.
@@ -444,6 +443,18 @@ namespace ana
          */
         virtual void disconnect( net_id id )                       = 0;
 
+        /** Set a client to header-first mode. */
+        virtual void set_header_first_mode( net_id id )            = 0;
+
+        /** Allow external object to call set_header_first_mode() directly. */
+        using ana::detail::ana_component::set_header_first_mode;
+
+        /** Set a client to raw-data mode.     */
+        virtual void set_raw_data_mode( net_id id )                = 0;
+
+        /** Allow external object to call set_raw_data_mode() directly. */
+        using ana::detail::ana_component::set_raw_data_mode;
+
         /** Returns the string representing the ip address of the connected client with id net_id. */
         virtual std::string ip_address( net_id ) const = 0;
 
@@ -481,6 +492,12 @@ namespace ana
 
             // Allow server objects to invoke run_listener directly.
             using detail::listener::run_listener;
+
+            /** Allow external object to call set_header_first_mode() directly. */
+            using ana::detail::ana_component::set_header_first_mode;
+
+            /** Allow external object to call set_raw_data_mode() directly. */
+            using ana::detail::ana_component::set_raw_data_mode;
         };
     };
 

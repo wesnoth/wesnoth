@@ -317,6 +317,7 @@ class ana_connect_handler : public ana::connection_handler
         virtual void handle_connect(ana::error_code error_code, ana::net_id /*client*/);
 
         boost::mutex       mutex_;
+        boost::mutex       handler_mutex_;
         ana::timer*        timer_;
         ana::error_code    error_code_;
         bool               connected_;
@@ -334,7 +335,7 @@ class clients_manager : public ana::connection_handler
         /** Returns the amount of components connected to this server. */
         size_t client_amount() const;
 
-        void has_connected( network::connection id );
+        void has_connected( ana::net_id id );
 
         bool has_connection_pending() const;
 
