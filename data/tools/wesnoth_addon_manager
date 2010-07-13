@@ -274,6 +274,9 @@ if __name__ == "__main__":
     elif options.upload:
         cs = CampaignClient(address)
         if os.path.isdir(options.upload):
+            # else basename returns an empty string
+            options.upload = options.upload.rstrip("/")
+
             # New style with _server.pbl
             pblfile = os.path.join(options.upload, "_server.pbl")
             name = os.path.basename(options.upload)
