@@ -48,16 +48,26 @@ class asio_sender : private ana::detail::sender
     private:
         void handle_sent_header(const boost::system::error_code& ec,
                                 ana::serializer::bostream*,
-                                tcp::socket*,               // for some reason noncopyable complains if it's a ref.
+                                tcp::socket*,
                                 ana::detail::shared_buffer,
                                 ana::send_handler*,
                                 ana::timer*);
 
-        void handle_send(const boost::system::error_code& ec, ana::detail::shared_buffer, ana::send_handler*, ana::timer*);
+        void handle_partial_send( ana::detail::shared_buffer,
+                                  const boost::system::error_code&,
+                                  tcp::socket*,
+                                  ana::send_handler*,
+                                  ana::timer*,
+                                  size_t accumulated,
+                                  size_t last_msg_size);
+
+        void handle_send(const boost::system::error_code&,
+                         ana::send_handler*,
+                         ana::timer*);
 
         void handle_timeout(const boost::system::error_code& ec, ana::send_handler* handler);
 
-        void log_conditional_send( const ana::detail::shared_buffer& buf );
+        void log_conditional_send( size_t size, bool finished );
 };
 
 #endif

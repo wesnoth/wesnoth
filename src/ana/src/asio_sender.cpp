@@ -48,13 +48,10 @@ void asio_sender::send(ana::detail::shared_buffer buffer,
 
         if ( raw_mode() )
         {
-            if ( stats_collector() != NULL )
-                stats_collector()->start_send_packet( buffer->size() );
-
-            boost::asio::async_write(socket, boost::asio::buffer(buffer->base(), buffer->size() ),
-                                     boost::bind(&asio_sender::handle_send,this,
-                                                 boost::asio::placeholders::error,
-                                                 buffer, handler, running_timer));
+            socket.async_write_some( boost::asio::buffer(buffer->base(), buffer->size() ),
+                                     boost::bind(&asio_sender::handle_partial_send,this,
+                                                 buffer, boost::asio::placeholders::error,
+                                                 &socket, handler, running_timer, 0, _2 ));
         }
         else
         {
@@ -91,29 +88,59 @@ void asio_sender::handle_sent_header(const boost::system::error_code& ec,
 {
     delete bos;
 
-    if ( ! ec )
-    {
-        boost::asio::async_write(*socket, boost::asio::buffer(buffer->base(), buffer->size() ),
-                                 boost::bind(&asio_sender::handle_send,this,
-                                             boost::asio::placeholders::error,
-                                             buffer, handler, running_timer));
-
-    }
+    if ( ec )
+        handle_send(ec, handler, running_timer);
     else
     {
-        disconnect();
-        delete running_timer;
+        socket->async_write_some( boost::asio::buffer(buffer->base(), buffer->size() ),
+                                  boost::bind(&asio_sender::handle_partial_send,this,
+                                              buffer, boost::asio::placeholders::error,
+                                              socket, handler, running_timer, 0, _2 ));
+    }
+}
+
+void asio_sender::handle_partial_send( ana::detail::shared_buffer       buffer,
+                                       const boost::system::error_code& ec,
+                                       tcp::socket*                     socket,
+                                       ana::send_handler*               handler,
+                                       ana::timer*                      timer,
+                                       size_t                           accumulated,
+                                       size_t                           last_msg_size)
+{
+    try
+    {
+        if (ec)
+            handle_send(ec, handler, timer);
+        else
+        {
+            accumulated += last_msg_size;
+
+            log_conditional_send( last_msg_size, accumulated == buffer->size() );
+
+            if ( accumulated > buffer->size() )
+                throw std::runtime_error("The send operation was too large.");
+
+            if ( accumulated == buffer->size() )
+                handle_send( ec, handler, timer );
+            else
+                socket->async_write_some(boost::asio::buffer(buffer->base_char() + accumulated,
+                                                             buffer->size()      - accumulated),
+                                         boost::bind(&asio_sender::handle_partial_send, this,
+                                                     buffer, boost::asio::placeholders::error,
+                                                     socket, handler, timer, accumulated, _2 ));
+        }
+    }
+    catch(const std::exception& e)
+    {
+        disconnect( );
     }
 }
 
 void asio_sender::handle_send(const boost::system::error_code& ec,
-                              ana::detail::shared_buffer       buffer,
                               ana::send_handler*               handler,
                               ana::timer*                      running_timer)
 {
     delete running_timer;
-
-    log_conditional_send( buffer );
 
     handler->handle_send( ec, id() );
 
@@ -121,16 +148,15 @@ void asio_sender::handle_send(const boost::system::error_code& ec,
         disconnect();
 }
 
-
-
 void asio_sender::handle_timeout(const boost::system::error_code& ec, ana::send_handler* handler)
 {
+    //TODO: check if I shouldn't just call handle_send here
     if ( ec != boost::asio::error::operation_aborted) // The timer wasn't cancelled. So: inform this and disconnect
         handler->handle_send( ana::timeout_error , id() );
 }
 
-void asio_sender::log_conditional_send( const ana::detail::shared_buffer& buf )
+void asio_sender::log_conditional_send( size_t size, bool finished )
 {
     if (stats_collector() != NULL )
-        stats_collector()->log_send( buf );
+        stats_collector()->log_send( size, finished );
 }

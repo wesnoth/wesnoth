@@ -154,7 +154,7 @@ namespace ana
 
                 inline void*  base() const { return base_; }
 
-                inline void*  base_char() const { return reinterpret_cast<char*>(base_); }
+                inline char*  base_char() const { return reinterpret_cast<char*>(base_); }
 
                 ~copying_buffer()
                 {

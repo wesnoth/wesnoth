@@ -871,9 +871,10 @@ size_t ana_network_manager::send_raw_data( const char* base_char, size_t size, n
             if ((*it)->is_server())
             {
                 // TODO: The next lines shouldn't be commented, no way the handler isn't called
-//                 ana_send_handler handler( size );
-                (*it)->server()->send_one( id, ana::buffer( base_char, size ), this, ana::ZERO_COPY);
-//                 handler.wait_completion();
+                ana_send_handler handler( size );
+//                 (*it)->server()->send_one( id, ana::buffer( base_char, size ), this, ana::ZERO_COPY);
+                (*it)->server()->send_one( id, ana::buffer( base_char, size ), &handler, ana::ZERO_COPY);
+                handler.wait_completion();
 //                 if ( handler.error() )
 //                     return 0;
 //                 else

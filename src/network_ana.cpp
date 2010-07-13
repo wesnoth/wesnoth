@@ -275,6 +275,9 @@ namespace network {
 //         std::cout << "DEBUG: Trying to read from connection in " << timeout << " milliseconds.\n";
         network::connection read_id = ana_manager.read_from( connection_num, cfg, timeout );
 
+        if ( read_id != 0 )
+            std::cout << "Read: " << cfg << "\n";
+
         // TODO: check timeout and return 0, or throw if error occured
 
         return read_id;
@@ -453,6 +456,7 @@ namespace network {
                        connection         connection_num,
                        const std::string& /*packet_type*/)
     {
+        std::cout << "DEBUG: Sending Raw: " << std::string( buf, len ) << "\n";
         ana_manager.send_raw_data( buf, size_t( len ), connection_num );
     }
 
@@ -467,6 +471,7 @@ namespace network {
                               const bool          /*gzipped*/,
                               const std::string&  /*packet_type*/)
     {
+        std::cout << "DEBUG: Sending all except " << connection_num << " - " << cfg << "\n";
         ana_manager.send_all_except(cfg, connection_num);
     }
 

@@ -90,6 +90,13 @@ namespace ana
                     bytes_out_ += buffer->size() + HEADER_LENGTH;
                 }
 
+                void log_send( size_t size, bool finished_packet = false )
+                {
+                    bytes_out_ += size;
+                    if (finished_packet)
+                        ++packets_out_;
+                }
+
                 void log_receive( detail::read_buffer buffer )
                 {
                     ++packets_in_;
@@ -209,6 +216,18 @@ namespace ana
                 log_current_packet_out(buffer->size(), true);
             }
 
+            void log_send( size_t size, bool finished_packet = false )
+            {
+                accumulator_.log_send  ( size, finished_packet );
+                seconds_stats_.log_send( size, finished_packet );
+                minutes_stats_.log_send( size, finished_packet );
+                hours_stats_.log_send  ( size, finished_packet );
+                days_stats_.log_send   ( size, finished_packet );
+
+                log_current_packet_out(size, finished_packet);
+            }
+
+
             void log_receive( detail::read_buffer buffer )
             {
                 accumulator_.log_receive  ( buffer );
@@ -257,7 +276,6 @@ namespace ana
                     current_packet_in_total_ += size;
                 }
             }
-
             void log_current_packet_out(size_t size, bool finished_packet)
             {
                 if (finished_packet)
