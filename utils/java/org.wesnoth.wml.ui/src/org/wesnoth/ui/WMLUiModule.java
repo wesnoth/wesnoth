@@ -7,8 +7,11 @@ import org.wesnoth.ui.outline.WMLTransformer;
 import org.wesnoth.ui.syntax.WMLAntlrTokenToAttributeIdMapper;
 import org.wesnoth.ui.syntax.WMLHighlightingConfiguration;
 import org.wesnoth.ui.syntax.WMLSemanticHighlightingCalculator;
+import org.wesnoth.ui.syntax.bracketmatching.WMLBracketMatching;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.eclipse.xtext.ui.editor.XtextEditor;
+import org.eclipse.xtext.ui.editor.bracketmatching.IBracketMatcher;
 import org.eclipse.xtext.ui.editor.outline.transformer.ISemanticModelTransformer;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculator;
@@ -43,5 +46,16 @@ public class WMLUiModule extends org.wesnoth.ui.AbstractWMLUiModule
 	public Class<? extends ISemanticHighlightingCalculator> bindISemanticHighlightingCalculator()
 	{
 		return WMLSemanticHighlightingCalculator.class;
+	}
+
+	public Class<? extends IBracketMatcher> bindIBracketMatcher()
+	{
+		// XtextGrammarBracketMatcher
+		return WMLBracketMatching.class;
+	}
+
+	public Class<? extends XtextEditor> bindEditor()
+	{
+		return WMLEditor.class;
 	}
 }
