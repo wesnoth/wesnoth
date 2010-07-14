@@ -2509,7 +2509,7 @@ class console_handler : public map_command_handler<console_handler>, private cha
 				_("Toggle overlaying of terrain codes on hexes."));
 			register_alias("show_terrain_codes", "tc");
 			register_command("whiteboard", &console_handler::do_toggle_whiteboard,
-				_("Toggle planning mode."), "", "D");
+				_("Toggle planning mode."));
 			register_alias("whiteboard", "wb");
 
 			if (const config &alias_list = preferences::get_alias())
