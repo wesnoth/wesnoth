@@ -73,6 +73,8 @@ namespace {
 	size_t sunset_timer = 0;
 
 	bool benchmark = false;
+
+	bool debug_foreground = false;
 }
 
 int display::last_zoom_ = SmallZoom;
@@ -800,6 +802,11 @@ void display::sunset(const size_t delay)
 void display::toggle_benchmark()
 {
 	benchmark = !benchmark;
+}
+
+void display::toggle_debug_foreground()
+{
+	debug_foreground = !debug_foreground;
 }
 
 void display::flip()
@@ -1978,6 +1985,7 @@ void display::draw_hex(const map_location& loc) {
 	}
 
 	// Apply shroud, fog and linger overlay
+		
 	if(shrouded(loc)) {
 		// We apply void also on off-map tiles
 		// to shroud the half-hexes too
@@ -2026,6 +2034,12 @@ void display::draw_hex(const map_location& loc) {
 			drawing_buffer_add(LAYER_FOG_SHROUD, loc, tblit(off_x, off_y, text));
 		}
 	}
+
+	if(debug_foreground) {
+		drawing_buffer_add(LAYER_UNIT_DEFAULT, loc, tblit(xpos, ypos,
+			image::get_image("terrain/foreground.png", image_type)));
+	}
+
 }
 
 image::TYPE display::get_image_type(const map_location& /*loc*/) {

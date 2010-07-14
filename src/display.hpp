@@ -334,8 +334,15 @@ public:
 	 */
 	static void sunset(const size_t delay = 0);
 
-	/** Toogle to continuously redraw the screen. */
+	/** Toggle to continuously redraw the screen. */
 	static void toggle_benchmark();
+
+	/**
+	 * Toggle to debug foreground terrain.
+	 * Separate background and foreground layer
+	 * to better spot any error there.
+	 */
+	static void toggle_debug_foreground();
 
 	void flip();
 
