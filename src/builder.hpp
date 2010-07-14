@@ -256,22 +256,8 @@ public:
 	 */
 	struct tile
 	{
-		/** An ordered rule_image list */
-		typedef std::multimap<int,std::pair<unsigned int, const rule_image*> > ordered_ri_list;
-
 		/** Contructor for the tile() structure */
 		tile();
-
-		/** Adds an image, extracted from an ordered rule_image list,
-		 * to the background or foreground image cache.
-		 *
-		 * @param tod    The current time-of-day, to select between
-		 *               images presenting several variants.
-		 * @param itor   An iterator pointing to the rule_image where
-		 *               to extract the image we wish to add to the
-		 *               cache.
-		 */
-		void add_image_to_cache(const std::string &tod, ordered_ri_list::const_iterator itor);
 
 		/** Rebuilds the whole image cache, for a given time-of-day.
 		 * Must be called when the time-of-day has changed,
@@ -287,10 +273,23 @@ public:
 		/** The list of flags present in this tile */
 		std::set<std::string> flags;
 
-		/** The list of images associated to this tile, ordered by
-		 * their layer first and base-y position second.
+		/** Represent a rule_image applied with a random seed.*/
+		struct rule_image_rand{
+			rule_image_rand(const rule_image* r_i, unsigned int rnd) : ri(r_i), rand(rnd) {}
+
+			const rule_image* operator->() const {return ri;}
+			/** sort by layer first then by basey */
+			bool operator<(const rule_image_rand& o) const {
+				return ri->layer < o.ri->layer ||
+						(ri->layer == o.ri->layer && ri->basey < o.ri->basey);}
+
+			const rule_image* ri;
+			unsigned int rand;
+		};
+
+		/** The list of rule_images and random seeds associated to this tile.
 		 */
-		ordered_ri_list images;
+		std::vector<rule_image_rand> images;
 
 		/** The list of images which are in front of the unit sprites,
 		 * attached to this tile. This member is considered a cache:
@@ -307,6 +306,8 @@ public:
 		 */
 		std::string last_tod;
 
+		/** Indicates if 'images' is sorted */
+		bool sorted_images;
 	};
 
 private:

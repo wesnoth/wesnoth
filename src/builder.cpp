@@ -44,10 +44,6 @@ static const int TILEWIDTH = 72;
  * considered foreground.
  */
 static const int UNITPOS = 36 + 18;
-/** The allowed interval for the base-y position. The possible values are from
- * -BASE_Y_INTERVAL to BASE_Y_INTERVAL-1
- */
-static const int BASE_Y_INTERVAL = 100000;
 
 terrain_builder::building_ruleset terrain_builder::building_rules_;
 const config* terrain_builder::rules_cfg_ = NULL;
@@ -67,38 +63,38 @@ terrain_builder::tile::tile() :
 	images(),
 	images_foreground(),
 	images_background(),
-	last_tod("invalid_tod")
+	last_tod("invalid_tod"),
+	sorted_images(false)
 {}
 
-void terrain_builder::tile::add_image_to_cache(const std::string &tod, ordered_ri_list::const_iterator itor)
-{
-	rule_image_variantlist::const_iterator tod_variant =
-		itor->second.second->variants.find(tod);
-
-	if(tod_variant == itor->second.second->variants.end())
-		tod_variant = itor->second.second->variants.find("");
-
-	if(tod_variant != itor->second.second->variants.end()) {
-		int layer = itor->second.second->layer;
-		int basey = itor->second.second->basey;
-
-		bool is_background = layer < 0 || (layer == 0 && basey < UNITPOS);
-		imagelist& img_list =
-				is_background ? images_background : images_foreground;
-	
-		img_list.push_back(tod_variant->second.image);
-		img_list.back().set_animation_time(itor->second.first % img_list.back().get_animation_duration());
-	}
-}
-
-void terrain_builder::tile::rebuild_cache(const std::string &tod)
+void terrain_builder::tile::rebuild_cache(const std::string& tod)
 {
 	images_background.clear();
 	images_foreground.clear();
 
-	ordered_ri_list::const_iterator itor;
-	for(itor = images.begin(); itor != images.end(); ++itor) {
-		add_image_to_cache(tod, itor);
+	if(!sorted_images){
+		//sort images by their layer (and basey)
+		//but use stable to keep the insertion order in equal cases
+		std::stable_sort(images.begin(), images.end());
+		sorted_images = true;
+	}
+
+	foreach(const rule_image_rand& ri, images){
+		rule_image_variantlist::const_iterator tod_variant =
+				ri->variants.find(tod);
+		
+		if(tod_variant == ri->variants.end())
+			tod_variant = ri->variants.find("");
+
+		if(tod_variant == ri->variants.end())
+			continue;
+			
+		bool is_background = ri->layer < 0 || (ri->layer == 0 && ri->basey < UNITPOS);
+
+		imagelist& img_list = is_background ? images_background : images_foreground;
+
+		img_list.push_back(tod_variant->second.image);
+		img_list.back().set_animation_time(ri.rand % img_list.back().get_animation_duration());
 	}
 }
 
@@ -961,11 +957,7 @@ void terrain_builder::apply_rule(const terrain_builder::building_rule &rule, con
 		tile& btile = tile_map_[tloc];
 
 		foreach(const rule_image& img, constraint->second.images) {
-			// We want to order the images by layer first and base-y second,
-			// so we sort by layer*BASE_Y_INTERVAL + BASE_Y_INTERVAL/2 + basey
-			// Thus, allowed values for basey are from -50000 to 49999
-			int order = img.layer*BASE_Y_INTERVAL + BASE_Y_INTERVAL/2 + img.basey;
-			btile.images.insert(std::make_pair(order, std::make_pair(rand_seed, &img)));
+			btile.images.push_back(tile::rule_image_rand(&img, rand_seed));
 		}
 
 		// Sets flags
