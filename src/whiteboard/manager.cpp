@@ -266,7 +266,7 @@ void manager::save_temp_move()
 	}
 }
 
-void manager::save_temp_attack(const map_location& target_hex)
+void manager::save_temp_attack(const map_location& attack_from, const map_location& target_hex)
 {
 	if (active_ && !modifying_actions_)
 	{
@@ -296,10 +296,7 @@ void manager::save_temp_attack(const map_location& target_hex)
 		else
 		{
 			move_arrow.reset(new arrow);
-
-			source_hex = selected_unit_->get_location();
-			dest_hex = selected_unit_->get_location();
-
+			dest_hex = source_hex = attack_from;
 		}
 
 		erase_temp_move();
@@ -311,6 +308,8 @@ void manager::save_temp_attack(const map_location& target_hex)
 
 		current_actions()->queue_attack(*subject_unit, target_hex, source_hex, dest_hex, move_arrow, fake_unit);
 		modifying_actions_ = false;
+
+		resources::screen->invalidate(target_hex);
 	}
 }
 

@@ -463,9 +463,9 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 	//see if we're trying to do a attack or move-and-attack
 	if(!browse && !commands_disabled && attack_from.valid()) {
 		if (resources::whiteboard->is_active()) {
-			if (resources::whiteboard->has_temp_move())
+			if (resources::whiteboard->has_selected_unit())
 			{
-				resources::whiteboard->save_temp_attack(clicked_u->get_location());
+				resources::whiteboard->save_temp_attack(attack_from, clicked_u->get_location());
 			}
 			return false;
 		} else {

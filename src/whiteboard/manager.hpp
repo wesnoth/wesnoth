@@ -77,6 +77,8 @@ public:
 	void create_temp_move(const pathfind::marked_route &route);
 	/** Informs whether an arrow is being displayed for move creation purposes */
 	bool has_temp_move() const { return route_; }
+	/** Informs whether the whiteboard tracks a selected unit */
+	bool has_selected_unit() const { return selected_unit_ != NULL; }
 
 	void erase_temp_move();
 
@@ -87,7 +89,7 @@ public:
      */
 	void save_temp_move();
 
-	void save_temp_attack(const map_location& target_hex);
+	void save_temp_attack(const map_location& attack_from, const map_location& target_hex);
 
 	/** Executes first action in the queue for current side */
 	void contextual_execute();
