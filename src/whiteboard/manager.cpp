@@ -67,6 +67,14 @@ manager::~manager()
 {
 }
 
+void manager::set_active(bool active)
+{
+	active_ = active;
+
+	if (active_)
+		current_actions()->validate_actions();
+}
+
 void manager::set_planned_unit_map()
 {
 	if (active_ && !modifying_actions_)

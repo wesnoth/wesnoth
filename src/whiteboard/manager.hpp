@@ -51,7 +51,7 @@ public:
 	 * Determine whether the whiteboard is activated.
 	 */
 	bool is_active() const { return active_; }
-	void set_active(bool active){ active_ = active; }
+	void set_active(bool active);
 
 	/**
 	 * Temporarily apply the effects of the current team's

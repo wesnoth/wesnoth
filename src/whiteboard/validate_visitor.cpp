@@ -74,6 +74,8 @@ void validate_visitor::visit_move(move_ptr move)
 	if (!(move->source_hex_.valid() && move->dest_hex_.valid()))
 		valid = false;
 
+	//TODO: need to check if the unit in the source hex has the same underlying unit id as before,
+	//i.e. that it's the same unit
 	if (valid && resources::units->find(move->source_hex_) == resources::units->end())
 		valid = false;
 
