@@ -333,6 +333,8 @@ ana_connect_handler::~ana_connect_handler()
     std::cout << "DEBUG: Terminating an ana_connect_handler...\n";
     mutex_.lock();
     mutex_.unlock();
+    handler_mutex_.lock();
+    handler_mutex_.unlock();
 }
 
 const ana::error_code& ana_connect_handler::error() const
@@ -348,7 +350,7 @@ void ana_connect_handler::handle_connect(ana::error_code error_code, ana::net_id
     if (! error_code)
         std::cout << "DEBUG: Connected.\n";
     else
-        std::cout << "DEBUG: Can't connect.\n";
+        std::cout << "DEBUG: Can't connect. " << error_code << "\n";
 
     error_code_ = error_code;
     mutex_.unlock();
@@ -960,7 +962,7 @@ network::connection ana_network_manager::read_from( network::connection connecti
                                                     size_t              timeout_ms)
 {
     if ( components_.empty() )
-        throw std::runtime_error("Trying to read but nothing was running.");
+        return 0;
 
     ana_component_set::iterator it;
 
@@ -983,14 +985,12 @@ network::connection ana_network_manager::read_from( network::connection connecti
             ana_multiple_receive_handler handler( components_ );
 
             for (it = components_.begin(); it != components_.end(); ++it )
-            {
-                if ( (*it)->is_server() )
-                    (*it)->server()->set_listener_handler( this );
-                else
-                    (*it)->client()->set_listener_handler( this );
-            }
+                (*it)->listener()->set_listener_handler( &handler );
 
             handler.wait_completion( timeout_ms );
+
+            for (it = components_.begin(); it != components_.end(); ++it )
+                (*it)->listener()->set_listener_handler( this );
 
             if ( handler.error() )
             {
