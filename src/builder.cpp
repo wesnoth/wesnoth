@@ -79,14 +79,8 @@ void terrain_builder::tile::add_image_to_cache(const std::string &tod, ordered_r
 		tod_variant = itor->second.second->variants.find("");
 
 	if(tod_variant != itor->second.second->variants.end()) {
-		//calculate original y-value and layer from list index
-		int layer = itor->first / BASE_Y_INTERVAL;
-		int basey = itor->first % BASE_Y_INTERVAL;
-
-		if (basey < 0)
-			basey += BASE_Y_INTERVAL/2;
-		else
-			basey -= BASE_Y_INTERVAL/2;
+		int layer = itor->second.second->layer;
+		int basey = itor->second.second->basey;
 
 		bool is_background = layer < 0 || (layer == 0 && basey < UNITPOS);
 		imagelist& img_list =
