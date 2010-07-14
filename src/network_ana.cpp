@@ -269,10 +269,11 @@ namespace network {
     connection receive_data(config&           cfg,
                             connection        connection_num,
                             unsigned int      timeout,
-                            bandwidth_in_ptr* /*bandwidth_in*/)
+                            bandwidth_in_ptr* bandwidth_in)
     {
-        // comment next debug msg: too much output
-//         std::cout << "DEBUG: Trying to read from connection in " << timeout << " milliseconds.\n";
+        //TODO: temporary fix
+        *bandwidth_in = bandwidth_in_ptr( new network::bandwidth_in(4) );
+
         network::connection read_id = ana_manager.read_from( connection_num, cfg, timeout );
 
         if ( read_id != 0 )
@@ -286,14 +287,17 @@ namespace network {
     connection receive_data(config&           cfg,
                             connection        connection_num,
                             bool*             /*gzipped*/,
-                            bandwidth_in_ptr* /*bandwidth_in*/) // TODO: use this pointer
+                            bandwidth_in_ptr* bandwidth_in) // TODO: use this pointer
     {
-        return receive_data(cfg,connection_num, static_cast<unsigned>(0), NULL); // <- just call the previous version without timeouts
+        // <- just call the previous version without timeouts
+        return receive_data(cfg,connection_num, static_cast<unsigned>(0), bandwidth_in);
     }
 
-    connection receive_data(std::vector<char>& buf, bandwidth_in_ptr* /*bandwidth_in*/)
+    connection receive_data(std::vector<char>& buf, bandwidth_in_ptr* bandwidth_in)
     {
-//         std::cout << "DEBUG: Trying to read to a vector<char>.\n";
+        //TODO: temporary fix
+        *bandwidth_in = bandwidth_in_ptr( new network::bandwidth_in(4) );
+
         return ana_manager.read_from_all( buf );
     }
 

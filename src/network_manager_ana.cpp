@@ -46,6 +46,8 @@ ana_send_handler::~ana_send_handler()
     std::cout << "DEBUG: Terminating an ana_send_handler...\n";
     if ( target_calls_ > 0 )
         throw std::runtime_error("Handler wasn't called enough times.");
+    mutex_.lock();
+    mutex_.unlock();
 }
 
 void ana_send_handler::handle_send(ana::error_code error_code, ana::net_id /*client*/)
@@ -566,6 +568,11 @@ bool clients_manager::is_pending_handshake( ana::net_id id ) const
     return pending_handshakes_.find( id ) != pending_handshakes_.end();
 }
 
+bool clients_manager::is_a_client( ana::net_id id ) const
+{
+    return ids_.find( id ) != ids_.end();
+}
+
 network::connection clients_manager::get_pending_connection_id()
 {
     const network::connection result = *pending_ids_.begin();
@@ -856,7 +863,7 @@ size_t ana_network_manager::send_raw_data( const char* base_char, size_t size, n
             throw std::runtime_error("Can't send to the server itself.");
 
         ana_send_handler handler( size );
-        (*it)->client()->send( ana::buffer( base_char, size ), &handler, ana::ZERO_COPY);
+        (*it)->client()->send( ana::buffer( base_char, size ), &handler); //, ana::ZERO_COPY);
         handler.wait_completion();
 
         if ( handler.error() )
@@ -873,11 +880,11 @@ size_t ana_network_manager::send_raw_data( const char* base_char, size_t size, n
                 // TODO: The next lines shouldn't be commented, no way the handler isn't called
                 ana_send_handler handler( size );
 //                 (*it)->server()->send_one( id, ana::buffer( base_char, size ), this, ana::ZERO_COPY);
-                (*it)->server()->send_one( id, ana::buffer( base_char, size ), &handler, ana::ZERO_COPY);
+                (*it)->server()->send_one( id, ana::buffer( base_char, size ), &handler); //, ana::ZERO_COPY);
                 handler.wait_completion();
-//                 if ( handler.error() )
-//                     return 0;
-//                 else
+                if ( handler.error() )
+                    return 0;
+                else
                     return size;
             }
         }
@@ -1120,32 +1127,28 @@ void ana_network_manager::handle_message( ana::error_code          error,
             if (components_.empty() )
                 throw std::runtime_error("Received a message while no component was running.\n");
 
-            it = components_.begin();
+            std::map< ana::server*, clients_manager* >::iterator mgrs;
 
-            if ( (*it)->is_client() )
-                throw std::runtime_error("Received a message from a client with a wrong id.\n");
-            else
+            for ( mgrs = server_manager_.begin(); mgrs != server_manager_.end(); ++mgrs)
             {
-                // I received info from something not directly in components_, it must be the id of a client in a server
-                clients_manager* clients_mgr = server_manager_[ (*it)->server() ];
-
-                if ( clients_mgr->is_pending_handshake( client ) )
+                if (mgrs->second->is_a_client( client ) ) // Is this your client?
                 {
-                    if ( buffer->size() != sizeof(uint32_t) ) // all handshakes are 4 bytes long
-                        (*it)->server()->disconnect( client );
-
-                    uint32_t handshake;
+                    if ( mgrs->second->is_pending_handshake( client ) ) // Did he login already?
                     {
-                        ana::serializer::bistream bis( buffer->string() );
+                        if ( buffer->size() != sizeof(uint32_t) ) // all handshakes are 4 bytes long
+                            mgrs->first->disconnect( client );
 
-                        bis >> handshake;
-                        ana::network_to_host_long( handshake ); //not necessary since I'm expecting a 0 anyway
-                    }
+                        uint32_t handshake;
+                        {
+                            ana::serializer::bistream bis( buffer->string() );
 
-                    if ( handshake != 0 )
-                        (*it)->server()->disconnect( client );
-                    else
-                    {
+                            bis >> handshake;
+                            ana::network_to_host_long( handshake ); //not necessary since I'm expecting a 0 anyway
+                        }
+
+                        if ( handshake != 0 )
+                            mgrs->first->disconnect( client );
+
                         //send back it's id
                         ana::serializer::bostream bos;
 
@@ -1154,15 +1157,22 @@ void ana_network_manager::handle_message( ana::error_code          error,
                         ana::host_to_network_long( network_byte_order_id );
                         bos << network_byte_order_id;
 
-                        const size_t bytes_sent = send_raw_data( bos.str().c_str(), bos.str().size(), client );
+                        //TODO: I should check if this operation was successful
+                        mgrs->first->send_one(client, ana::buffer( bos.str() ), this );
+                        mgrs->first->set_header_first_mode( client );
+                        mgrs->second->has_connected( client );
+                    }
+                    else // just add the buffer to the associated clients_manager
+                    {
+                        ana::net_id server_id = mgrs->first->id();
 
-                        if ( bytes_sent != sizeof( uint32_t ) ) // couldn't send id to the client, disconnect
-                            (*it)->server()->disconnect( client );
-                        else
-                        {
-                            (*it)->server()->set_header_first_mode( client );
-                            clients_mgr->has_connected( client );
-                        }
+                        it = std::find_if( components_.begin(), components_.end(),
+                                        boost::bind(&ana_component::get_id, _1) == server_id );
+
+                        if ( (*it)->is_client() )
+                            throw std::runtime_error("Wrong id to receive from.");
+
+                        (*it)->add_buffer( buffer, client );
                     }
                 }
             }

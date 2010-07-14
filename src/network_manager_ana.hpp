@@ -341,6 +341,8 @@ class clients_manager : public ana::connection_handler
 
         bool is_pending_handshake( ana::net_id ) const;
 
+        bool is_a_client( ana::net_id id ) const;
+
         network::connection get_pending_connection_id();
 
     private:

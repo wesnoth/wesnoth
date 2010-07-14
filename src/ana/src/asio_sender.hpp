@@ -51,15 +51,16 @@ class asio_sender : private ana::detail::sender
                                 tcp::socket*,
                                 ana::detail::shared_buffer,
                                 ana::send_handler*,
-                                ana::timer*);
+                                ana::timer*,
+                                size_t);
 
         void handle_partial_send( ana::detail::shared_buffer,
                                   const boost::system::error_code&,
                                   tcp::socket*,
                                   ana::send_handler*,
                                   ana::timer*,
-                                  size_t accumulated,
-                                  size_t last_msg_size);
+                                  size_t,
+                                  size_t);
 
         void handle_send(const boost::system::error_code&,
                          ana::send_handler*,

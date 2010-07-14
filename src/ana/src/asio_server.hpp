@@ -143,16 +143,17 @@ class asio_server : public  ana::server,
 
         void async_accept( ana::connection_handler* );
 
-        boost::asio::io_service      io_service_;
-        boost::thread                io_thread_;
-        std::auto_ptr<tcp::acceptor> acceptor_;
-        std::list<client_proxy*>     client_proxies_;
-        bool                         listening_;
-        ana::listener_handler*       listener_;
-        ana::connection_handler*     connection_handler_;
-        asio_client_proxy*           last_client_proxy_;
+        boost::asio::io_service       io_service_;
+        boost::asio::io_service::work work_;
+        boost::thread                 io_thread_;
+        std::auto_ptr<tcp::acceptor>  acceptor_;
+        std::list<client_proxy*>      client_proxies_;
+        bool                          listening_;
+        ana::listener_handler*        listener_;
+        ana::connection_handler*      connection_handler_;
+        asio_client_proxy*            last_client_proxy_;
 
-        ana::stats_collector*        stats_collector_;
+        ana::stats_collector*         stats_collector_;
 };
 
 #endif

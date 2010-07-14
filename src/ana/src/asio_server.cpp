@@ -45,6 +45,7 @@ using boost::asio::ip::tcp;
 
 asio_server::asio_server() :
     io_service_(),
+    work_( io_service_ ),
     io_thread_(),
     acceptor_( NULL ),
     client_proxies_(),
@@ -171,6 +172,8 @@ void asio_server::set_listener_handler( listener_handler* listener )
 {
     listening_ = true;
     listener_  = listener;
+    for (std::list<client_proxy*>::iterator it( client_proxies_.begin() ); it != client_proxies_.end(); ++it)
+        (*it)->set_listener_handler( listener_ );
 }
 
 void asio_server::send_one(net_id id,boost::asio::const_buffer buffer, send_handler* handler, send_type copy_buffer)

@@ -65,10 +65,15 @@ void asio_sender::send(ana::detail::shared_buffer buffer,
             (*output_stream) << size;
 
             //write the header first in a separate operation, then send the full buffer
-            boost::asio::async_write(socket, boost::asio::buffer( output_stream->str() ),
+            socket.async_write_some( boost::asio::buffer( output_stream->str() ),
+                                     boost::bind(&asio_sender::handle_sent_header,this,
+                                                 boost::asio::placeholders::error, output_stream,
+                                                 &socket, buffer, handler, running_timer, _2 ));
+
+/*            boost::asio::async_write(socket, boost::asio::buffer( output_stream->str() ),
                                         boost::bind(&asio_sender::handle_sent_header,this,
                                                     boost::asio::placeholders::error, output_stream,
-                                                    &socket, buffer, handler, running_timer));
+                                                    &socket, buffer, handler, running_timer));*/
         }
     }
     catch(std::exception& e)
@@ -84,9 +89,13 @@ void asio_sender::handle_sent_header(const boost::system::error_code& ec,
                                      tcp::socket*                     socket,
                                      ana::detail::shared_buffer       buffer,
                                      ana::send_handler*               handler,
-                                     ana::timer*                      running_timer)
+                                     ana::timer*                      running_timer,
+                                     size_t                           bytes_sent)
 {
     delete bos;
+
+    if (bytes_sent != sizeof(uint32_t) )
+        throw std::runtime_error("Couldn't send header.");
 
     if ( ec )
         handle_send(ec, handler, running_timer);
