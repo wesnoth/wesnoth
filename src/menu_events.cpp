@@ -1245,6 +1245,8 @@ void menu_handler::clear_undo_stack(int side_num)
 // Highlights squares that an enemy could move to on their turn, showing how many can reach each square.
 void menu_handler::show_enemy_moves(bool ignore_units, int side_num)
 {
+	wb::scoped_planned_unit_map wb_modifiers;
+
 	gui_->unhighlight_reach();
 
 	// Compute enemy movement positions
