@@ -253,8 +253,7 @@ void manager::save_temp_move()
 		fake_unit = fake_unit_ptr(fake_unit_);
 		subject_unit = selected_unit_;
 
-		erase_temp_move();
-		selected_unit_ = NULL;
+		on_unit_deselect();
 
 		LOG_WB << "Creating move for unit " << subject_unit->name() << " [" << subject_unit->id() << "]"
 				<< " from " << steps.front()
@@ -299,8 +298,7 @@ void manager::save_temp_attack(const map_location& attack_from, const map_locati
 			dest_hex = source_hex = attack_from;
 		}
 
-		erase_temp_move();
-		selected_unit_ = NULL;
+		on_unit_deselect();
 
 		LOG_WB << "Creating attack for unit " << subject_unit->name() << " [" << subject_unit->id()
 				<< "]: moving from " << source_hex << " to " << dest_hex

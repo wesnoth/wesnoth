@@ -465,6 +465,16 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 		if (resources::whiteboard->is_active()) {
 			if (resources::whiteboard->has_selected_unit())
 			{
+				// Unselect the current hex, and create planned attack for whiteboard
+				selected_hex_ = map_location();
+				gui().select_hex(map_location());
+				gui().clear_attack_indicator();
+				gui().set_route(NULL);
+				waypoints_.clear();
+				show_partial_move_ = false;
+				gui().unhighlight_reach();
+				current_paths_ = pathfind::paths();
+				current_route_.steps.clear();
 				resources::whiteboard->save_temp_attack(attack_from, clicked_u->get_location());
 			}
 			return false;
