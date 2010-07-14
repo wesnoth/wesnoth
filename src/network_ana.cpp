@@ -66,7 +66,9 @@ static lg::log_domain log_network("network");
 // Only warnings and not errors to avoid DoS by log flooding
 namespace
 {
-    ana_network_manager ana_manager;
+    ana_network_manager        ana_manager;
+    network::bandwidth_in_ptr  global_bandwidth_in_ptr( new network::bandwidth_in(4) );
+    //TODO: no global bandwidth
 }
 
 namespace {
@@ -272,7 +274,8 @@ namespace network {
                             bandwidth_in_ptr* bandwidth_in)
     {
         //TODO: temporary fix
-        *bandwidth_in = bandwidth_in_ptr( new network::bandwidth_in(4) );
+        if ( bandwidth_in != NULL )
+            *bandwidth_in = global_bandwidth_in_ptr;
 
         network::connection read_id = ana_manager.read_from( connection_num, cfg, timeout );
 
@@ -296,7 +299,8 @@ namespace network {
     connection receive_data(std::vector<char>& buf, bandwidth_in_ptr* bandwidth_in)
     {
         //TODO: temporary fix
-        *bandwidth_in = bandwidth_in_ptr( new network::bandwidth_in(4) );
+        if ( bandwidth_in != NULL )
+            *bandwidth_in = global_bandwidth_in_ptr;
 
         return ana_manager.read_from_all( buf );
     }
