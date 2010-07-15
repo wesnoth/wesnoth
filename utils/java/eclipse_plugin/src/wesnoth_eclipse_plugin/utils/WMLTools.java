@@ -1,6 +1,11 @@
-/**
- * @author Timotei Dolean
- */
+/*******************************************************************************
+ * Copyright (c) 2010 by Timotei Dolean <timotei21@gmail.com>
+ *
+ * This program and the accompanying materials are made available
+ * under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *******************************************************************************/
 package wesnoth_eclipse_plugin.utils;
 
 import java.io.BufferedWriter;
@@ -23,7 +28,7 @@ public class WMLTools
 {
 	/**
 	 * Runs "wmlindent" on the specified resource (directory/file)
-	 * 
+	 *
 	 * @param resourcePath the full path of the target where "wmlindent" will be runned on
 	 * @param writeToConsole true to write the output of "wmlindent" in user's console
 	 * @param stdin the standard input string to feed "wmlindent"
@@ -55,7 +60,7 @@ public class WMLTools
 
 	/**
 	 * Runs "wmllint" on the specified resource (directory/file)
-	 * 
+	 *
 	 * @param resourcePath the full path of the target where "wmllint" will be runned on
 	 * @param writeToConsole true to write the output of "wmllint" in user's console
 	 * @param dryrun true to run "wmllint" in dry mode - i.e. no changes in the config file.
@@ -87,7 +92,7 @@ public class WMLTools
 
 	/**
 	 * Runs "wmlscope" on the specified resource (directory/file)
-	 * 
+	 *
 	 * @param resourcePath the full path of the target where "wmlindent" will be runned on
 	 * @param writeToConsole true to write the output of "wmlindent" in user's console
 	 * @param useThread whether the tool should be runned in a new thread or not
@@ -117,7 +122,7 @@ public class WMLTools
 	/**
 	 * Checks if a wmlTool (that is in the wml tools directory) and
 	 * an additional file that is target of the tool exist / are valid.
-	 * 
+	 *
 	 * @param filePath the file to be processed by the wml tool
 	 * @param wmlTool the wml tool file
 	 * @return
@@ -153,7 +158,7 @@ public class WMLTools
 
 	/**
 	 * Runs a specified python script with the specified arguments
-	 * 
+	 *
 	 * @param arguments the arguments of the "python" executable.
 	 *        The first argument should be the script file name
 	 * @param useThread

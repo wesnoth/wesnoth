@@ -1,12 +1,17 @@
+/*******************************************************************************
+ * Copyright (c) 2010 by Timotei Dolean <timotei21@gmail.com>
+ *
+ * This program and the accompanying materials are made available
+ * under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *******************************************************************************/
 package wesnoth_eclipse_plugin.builder;
 
 import java.util.StringTokenizer;
 
 import org.eclipse.core.resources.IMarker;
 
-/**
- * @author Timotei Dolean
- */
 public class MarkerToken{
 	private MarkerTokenType type_ = MarkerTokenType.INFO;
 	private String message_ = "";
@@ -34,7 +39,7 @@ public class MarkerToken{
 		// severity#Line{:columnStart-columnEnd}#message
 		StringTokenizer tokenizer = new StringTokenizer(line,"#");
 		try{
-			int lineIndex=1,columnIndexStart=0,columnIndexEnd=0; 
+			int lineIndex=1,columnIndexStart=0,columnIndexEnd=0;
 			MarkerTokenType type = MarkerTokenType.valueOf(tokenizer.nextToken().toUpperCase());
 
 			if (tokenizer.countTokens() > 1) // we have the line+column indexes
@@ -100,7 +105,7 @@ enum MarkerTokenType
 			return IMarker.SEVERITY_ERROR;
 		else if (this == WARNING)
 			return IMarker.SEVERITY_WARNING;
-		
+
 		return IMarker.SEVERITY_INFO;
 	}
 }

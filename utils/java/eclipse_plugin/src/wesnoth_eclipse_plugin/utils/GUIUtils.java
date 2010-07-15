@@ -1,6 +1,11 @@
-/**
- * @author Timotei Dolean
- */
+/*******************************************************************************
+ * Copyright (c) 2010 by Timotei Dolean <timotei21@gmail.com>
+ *
+ * This program and the accompanying materials are made available
+ * under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *******************************************************************************/
 package wesnoth_eclipse_plugin.utils;
 
 import org.eclipse.swt.SWT;
@@ -11,7 +16,7 @@ public class GUIUtils
 {
 	/**
 	 * Shows a message box with the specified message (thread-safe)
-	 * 
+	 *
 	 * @param window the window where to show the message box
 	 * @param message the message to print
 	 */
@@ -22,7 +27,7 @@ public class GUIUtils
 
 	/**
 	 * Shows a message box with the specified message (thread-safe)
-	 * 
+	 *
 	 * @param window the window where to show the message box
 	 * @param message the message to print
 	 */
@@ -33,7 +38,7 @@ public class GUIUtils
 
 	/**
 	 * Shows a message box with the specified message (thread-safe)
-	 * 
+	 *
 	 * @param window the window where to show the message box
 	 * @param message the message to print
 	 */

@@ -1,6 +1,11 @@
-/**
- * @author Timotei Dolean
- */
+/*******************************************************************************
+ * Copyright (c) 2010 by Timotei Dolean <timotei21@gmail.com>
+ *
+ * This program and the accompanying materials are made available
+ * under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *******************************************************************************/
 package wesnoth_eclipse_plugin.utils;
 
 import java.io.ByteArrayOutputStream;
@@ -18,7 +23,7 @@ public class AntUtils
 {
 	/**
 	 * Runs the specified ant file, and returns the output of the runned file
-	 * 
+	 *
 	 * @param antFile
 	 * @param properties the hasmap with userproperties to be added to the ant file
 	 * @param recordOutput true if the output of the runned file should be recorded and returned

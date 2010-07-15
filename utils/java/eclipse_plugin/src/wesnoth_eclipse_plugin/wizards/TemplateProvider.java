@@ -1,6 +1,11 @@
-/**
- * @author Timotei Dolean
- */
+/*******************************************************************************
+ * Copyright (c) 2010 by Timotei Dolean <timotei21@gmail.com>
+ *
+ * This program and the accompanying materials are made available
+ * under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *******************************************************************************/
 package wesnoth_eclipse_plugin.wizards;
 
 import java.io.BufferedReader;
@@ -145,7 +150,7 @@ public class TemplateProvider
 	 * value is a list of <String, String> that consist of <Filename, Template
 	 * used for file contents> and the second return value is a list of String
 	 * with directories names
-	 * 
+	 *
 	 * @param structureTemplate the template
 	 * @return
 	 */

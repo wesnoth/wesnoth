@@ -1,6 +1,11 @@
-/**
- * @author Timotei Dolean
- */
+/*******************************************************************************
+ * Copyright (c) 2010 by Timotei Dolean <timotei21@gmail.com>
+ *
+ * This program and the accompanying materials are made available
+ * under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *******************************************************************************/
 package wesnoth_eclipse_plugin.utils;
 
 import java.io.File;
@@ -104,7 +109,7 @@ public class WorkspaceUtils
 	/**
 	 * Returns the first WorkbenchWindow available. This is not always the same
 	 * with ActiveWorkbecnWindow
-	 * 
+	 *
 	 * @return
 	 */
 	public static IWorkbenchWindow getWorkbenchWindow()
@@ -118,7 +123,7 @@ public class WorkspaceUtils
 
 	/**
 	 * Returns the temporary folder where the plugin can write resources
-	 * 
+	 *
 	 * @return
 	 */
 	public static String getTemporaryFolder()
@@ -136,7 +141,7 @@ public class WorkspaceUtils
 
 	/**
 	 * Returns the resource path relative to the user directory
-	 * 
+	 *
 	 * @param resource the resource to be computed
 	 * @return
 	 */

@@ -1,6 +1,11 @@
-/**
- * @author Timotei Dolean
- */
+/*******************************************************************************
+ * Copyright (c) 2010 by Timotei Dolean <timotei21@gmail.com>
+ *
+ * This program and the accompanying materials are made available
+ * under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *******************************************************************************/
 package wesnoth_eclipse_plugin.utils;
 
 import java.util.regex.Matcher;
@@ -17,7 +22,7 @@ public class StringUtils
 
 	/**
 	 * Returns the number of 'character' characters in the target string
-	 * 
+	 *
 	 * @param target
 	 * @param character
 	 * @return
@@ -38,7 +43,7 @@ public class StringUtils
 
 	/**
 	 * Returns the n-th occurrence index of the specified character
-	 * 
+	 *
 	 * @param target
 	 * @param character
 	 * @param n
@@ -65,7 +70,7 @@ public class StringUtils
 	 * Removes all consecutive aparitions of a character in the specified string
 	 * so that only one appearance remains in each past duplications of that
 	 * string
-	 * 
+	 *
 	 * @param target the string to process
 	 * @param character the character to remove
 	 * @param removeTrailing removes or not the trailing 'character' characters
@@ -115,7 +120,7 @@ public class StringUtils
 	/**
 	 * Normalizez the path given by the string, removing repeated separators
 	 * and replacing them by '|'
-	 * 
+	 *
 	 * @param path the string that represents the path to be normalized
 	 * @return
 	 */
@@ -145,7 +150,7 @@ public class StringUtils
 	/**
 	 * Replaces the source with the target in the specified string,
 	 * adding the existing indentation (if any) to all lines (if any) in the target
-	 * 
+	 *
 	 * @param string The string where to replace the source
 	 * @param source The source string to be replaced
 	 * @param target The target string to be replaced in the string
