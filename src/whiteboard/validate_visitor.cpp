@@ -51,7 +51,7 @@ static team& get_current_team()
 
 void validate_visitor::validate_actions()
 {
-	foreach(action_ptr action, side_actions_->actions())
+	foreach(action_ptr action, *side_actions_)
 	{
 		action->accept(*this);
 	}

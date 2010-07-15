@@ -55,8 +55,7 @@ mapbuilder_visitor::~mapbuilder_visitor()
 void mapbuilder_visitor::build_map()
 {
 	mode_ = BUILD_PLANNED_MAP;
-	const action_queue& actions = side_actions_->actions();
-	foreach(action_ptr action, actions)
+	foreach(action_ptr action, *side_actions_)
 	{
 		if (action->is_valid())
 		{
