@@ -68,21 +68,18 @@ void validate_visitor::visit_move(move_ptr move)
 	resources::screen->invalidate(move->source_hex_);
 	resources::screen->invalidate(move->dest_hex_);
 
-	//validation proper
-	bool valid = true;
-
 	if (!(move->source_hex_.valid() && move->dest_hex_.valid()))
-		valid = false;
+		move->set_valid(false);
 
 	//TODO: need to check if the unit in the source hex has the same underlying unit id as before,
 	//i.e. that it's the same unit
-	if (valid && resources::units->find(move->source_hex_) == resources::units->end())
-		valid = false;
+	if (move->valid_ && resources::units->find(move->source_hex_) == resources::units->end())
+		move->set_valid(false);
 
 	if (move->source_hex_ != move->dest_hex_) //allow for zero-hex, move, in which case we skip pathfinding
 	{
 		pathfind::plain_route route;
-		if (valid)
+		if (move->valid_)
 		{
 			pathfind::shortest_path_calculator path_calc(move->unit_, get_current_team(), *resources::units,
 					*resources::teams, *resources::game_map);
@@ -90,11 +87,11 @@ void validate_visitor::visit_move(move_ptr move)
 					move->dest_hex_, 10000, &path_calc, resources::game_map->w(), resources::game_map->h());
 			if (route.move_cost >= path_calc.getNoPathValue())
 			{
-				valid = false;
+				move->set_valid(false);
 			}
 		}
 
-		if (valid)
+		if (move->valid_)
 		{
 			if (!std::equal(route.steps.begin(), route.steps.end(), move->arrow_->get_path().begin()))
 			{
@@ -110,13 +107,6 @@ void validate_visitor::visit_move(move_ptr move)
 			// so that further pathfinding takes it into account.
 			mapbuilder_visitor::visit_move(move);
 		}
-		else //path invalid
-		{
-			// Don't apply the move's results to the unit map
-
-			// Mark the move as invalid
-			move->set_valid(false);
-		}
 	}
 }
 
@@ -126,22 +116,22 @@ void validate_visitor::visit_attack(attack_ptr attack)
 	resources::screen->invalidate(attack->dest_hex_);
 	resources::screen->invalidate(attack->target_hex_);
 
-	visit_move(boost::static_pointer_cast<move>(attack));
-	if (attack->is_valid())
+	if (attack->target_hex_.valid())
 	{
-		if (attack->target_hex_.valid())
-		{
-			//TODO: verify that the target hex contains the same unit that before,
-			// comparing for example the underlying unit ID
-			if (resources::units->find(attack->target_hex_) == resources::units->end())
-			{
-				attack->set_valid(false);
-			}
-		}
-		else
+		//TODO: verify that the target hex contains the same unit that before,
+		// comparing for example the underlying unit ID
+		if (resources::units->find(attack->target_hex_) == resources::units->end())
 		{
 			attack->set_valid(false);
 		}
+		else
+		{
+			visit_move(boost::static_pointer_cast<move>(attack));
+		}
+	}
+	else
+	{
+		attack->set_valid(false);
 	}
 
 	if (!attack->is_valid())

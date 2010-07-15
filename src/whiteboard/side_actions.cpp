@@ -227,6 +227,7 @@ side_actions::iterator side_actions::remove_action(side_actions::iterator positi
 	if (!actions_.empty() && validate_iterator(position))
 	{
 		actions_.erase(position);
+		//FIXME: causes infinite recursive call
 		validate_actions();
 	}
 	return begin() + distance;
