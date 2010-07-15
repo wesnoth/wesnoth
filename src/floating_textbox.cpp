@@ -19,6 +19,7 @@
 #include "game_display.hpp"
 #include "game_preferences.hpp"
 #include "log.hpp"
+#include "resources.hpp"
 
 #include <ctime>
 
@@ -120,7 +121,7 @@ namespace gui{
 		update_location(gui);
 	}
 
-	void floating_textbox::tab(std::vector<team>& teams, const unit_map& /*units*/, game_display& gui)
+	void floating_textbox::tab()
 	{
 		if(active() == false) {
 			return;
@@ -134,12 +135,14 @@ namespace gui{
 			std::string text = box_->text();
 			std::vector<std::string> matches;
 			// Add players
+			const std::vector<team>& teams = *resources::teams;
+			
 			for(size_t n = 0; n != teams.size(); ++n) {
 				if(teams[n].is_empty()) continue;
 				matches.push_back(teams[n].current_player());
 			}
 			// Add observers
-			const std::set<std::string>& observers = gui.observers();
+			const std::set<std::string>& observers = resources::screen->observers();
 			for(std::set<std::string>::const_iterator i = observers.begin();
 					i != observers.end(); ++i)
 			{
@@ -159,9 +162,9 @@ namespace gui{
 			if (matches.empty()) return;
 			if (matches.size() == 1 && mode_ == gui::TEXTBOX_MESSAGE) {
 				text.append(line_start ? ": " : " ");
-			} else {
+			} else if (matches.size() > 1) {
 				std::string completion_list = utils::join(matches, " ");
-				gui.add_chat_message(time(NULL), "", 0, completion_list,
+				resources::screen->add_chat_message(time(NULL), "", 0, completion_list,
 						events::chat_handler::MESSAGE_PRIVATE, false);
 			}
 			box_->set_text(text);

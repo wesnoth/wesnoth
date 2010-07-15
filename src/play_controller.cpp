@@ -922,7 +922,7 @@ void play_controller::process_keydown_event(const SDL_Event& event) {
 	if(event.key.keysym.sym == SDLK_ESCAPE) {
 		menu_handler_.get_textbox().close(*gui_);
 	} else if(event.key.keysym.sym == SDLK_TAB) {
-		menu_handler_.get_textbox().tab(teams_, units_, *gui_);
+		menu_handler_.get_textbox().tab();
 	} else if(event.key.keysym.sym == SDLK_RETURN || event.key.keysym.sym == SDLK_KP_ENTER) {
 		enter_textbox();
 	}
