@@ -81,7 +81,7 @@ void terrain_builder::tile::rebuild_cache(const std::string& tod)
 
 	foreach(const rule_image_rand& ri, images){
 		foreach(const rule_image_variant& variant, ri->variants){
-			if(!variant.tod.empty() && variant.tod != tod)
+			if(!variant.tods.empty() && variant.tods.find(tod) == variant.tods.end())
 				continue;
 		
 			bool is_background = ri->layer < 0 || (ri->layer == 0 && ri->basey < UNITPOS);
@@ -573,11 +573,21 @@ terrain_builder::building_rule terrain_builder::rotate_rule(const terrain_builde
 	return ret;
 }
 
+terrain_builder::rule_image_variant::rule_image_variant(const std::string &image_string, const std::string& tod) :
+		image_string(image_string),
+		image(),
+		tods()
+{
+	if(!tod.empty()) {
+		const std::vector<std::string> tod_list = utils::split(tod);
+		tods.insert(tod_list.begin(), tod_list.end());
+	}
+};
+
 void terrain_builder::add_images_from_config(rule_imagelist& images, const config &cfg, bool global, int dx, int dy)
 {
 	foreach (const config &img, cfg.child_range("image"))
 	{
-		const std::string &name = img["name"];
 		int layer = img["layer"];
 
 		int basex = 0, basey = 0;
@@ -616,8 +626,8 @@ void terrain_builder::add_images_from_config(rule_imagelist& images, const confi
 
 		// Adds the main (default) variant of the image at the end,
 		// (will be used only if previous variants don't match)
-		images.back().variants.push_back(rule_image_variant(name,""));
-
+		const std::string &name = img["name"];
+		images.back().variants.push_back(rule_image_variant(name));
 	}
 }
 

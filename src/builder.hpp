@@ -142,12 +142,15 @@ public:
 	 * the [variant] tag may be omitted.
 	 */
 	struct rule_image_variant {
-		/** Shorthand constructor for this structure */
-		rule_image_variant(const std::string &image_string, const std::string& tod = "") :
+		/** Constructor for the normal defaut case */
+		rule_image_variant(const std::string &image_string) :
 			image_string(image_string),
 			image(),
-			tod(tod)
+			tods()
 			{};
+
+		/** Constructor for true [variant] cases */
+		rule_image_variant(const std::string &image_string, const std::string& tod);
 
 		/** A string representing either the filename for an image, or
 		 *  a list of images, with an optional timing for each image.
@@ -175,7 +178,7 @@ public:
 		animated<image::locator> image;
 
 		/** The Time of Day associated to this variant (if any)*/
-		std::string tod;
+		std::set<std::string> tods;
 	};
 
 	/**
