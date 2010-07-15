@@ -351,7 +351,7 @@
             name="openMapInEditor">
       </command>
       <command
-            defaultHandler="wesnoth_eclipse_plugin.handlers.ReloadFilesHandler"
+            defaultHandler="wesnoth_eclipse_plugin.handlers.SetupWorkspaceHandler"
             description="Setups the workspace"
             id="Wesnoth_Eclipse_Plugin.commands.setupWorkspace"
             name="setupWorkspace">
@@ -428,7 +428,7 @@
             </command>
             <command
                   commandId="Wesnoth_Eclipse_Plugin.commands.test"
-                  label="Test"
+                  label="Test (FOR DEBUG ONLY!!)"
                   style="push">
             </command>
          </menu>
