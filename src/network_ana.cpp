@@ -73,68 +73,6 @@ namespace
     size_t instances_using_the_network_module( 0 );
 }
 
-namespace {
-
-// We store the details of a connection in a map that must be looked up by its handle.
-// This allows a connection to be disconnected and then recovered,
-// but the handle remains the same, so it's all seamless to the user.
-struct connection_details {
-    connection_details(TCPsocket sock, const std::string& host, int port)
-        : sock(sock), host(host), port(port), remote_handle(0),
-          connected_at( 0 ) // TODO: connected_at(SDL_GetTicks())
-    {}
-
-    TCPsocket sock;
-    std::string host;
-    int port;
-
-    // The remote handle is the handle assigned to this connection by the remote host.
-    // Is 0 before a handle has been assigned.
-    int remote_handle;
-
-    int connected_at;
-};
-
-typedef std::map<network::connection,connection_details> connection_map;
-connection_map connections;
-
-
-} // end anon namespace
-
-
-static void check_error()
-{
-//     std::cout << "DEBUG: check_error\n";
-}
-
-namespace {
-
-// SDLNet_SocketSet socket_set = 0;
-typedef std::set<TCPsocket> socket_set_type;
-socket_set_type socket_set;
-std::set<network::connection> waiting_sockets;
-typedef std::vector<network::connection> sockets_list;
-sockets_list sockets;
-
-
-struct partial_buffer {
-    partial_buffer() :
-        buf(),
-        upto(0)
-    {
-    }
-
-    std::vector<char> buf;
-    size_t upto;
-};
-
-std::deque<network::connection> disconnection_queue;
-std::set<network::connection> bad_sockets;
-
-// network_worker_pool::manager* worker_pool_man = NULL;
-
-} // end anon namespace
-
 namespace network {
 
     /**
@@ -163,15 +101,11 @@ namespace network {
     error::error(const std::string& msg, connection sock) : message(msg), socket(sock)
     {
         std::cout << "DEBUG: error::error\n";
-        if(socket) {
-            bad_sockets.insert(socket);
-        }
     }
 
     void error::disconnect()
     {
         std::cout << "DEBUG: error::disconnect\n";
-        if(socket) network::disconnect(socket);
     }
 
     pending_statistics get_pending_stats()
@@ -195,8 +129,6 @@ namespace network {
 
     void set_raw_data_only()
     {
-        std::cout << "DEBUG: error::disconnect\n";
-        //     throw std::runtime_error("TODO:Not implemented");
     }
 
     server_manager::server_manager(int port, CREATE_SERVER create_server) : free_(false), connection_(0)
@@ -211,7 +143,6 @@ namespace network {
 
     server_manager::~server_manager()
     {
-        stop();
     }
 
     void server_manager::stop()
@@ -246,16 +177,6 @@ namespace network {
         return connect( host, port );
     }
 
-    namespace {
-
-    connection accept_connection_pending(std::vector<TCPsocket>& /*pending_sockets*/,
-                                        socket_set_type&        /*pending_socket_set*/)
-    {
-        throw std::runtime_error("TODO:Not implemented accept_connection_pending");
-    }
-
-    } //anon namespace
-
     connection accept_connection()
     {
         return ana_manager.new_connection_id();
@@ -269,7 +190,6 @@ namespace network {
     void queue_disconnect(network::connection /*sock*/)
     {
         throw("TODO:Not implemented queue_disconnect");
-//         disconnection_queue.push_back(sock);
     }
 
     connection receive_data(config&           cfg,
@@ -309,132 +229,24 @@ namespace network {
         return ana_manager.read_from_all( buf );
     }
 
-    struct bandwidth_stats {
-        int out_packets;
-        int out_bytes;
-        int in_packets;
-        int in_bytes;
-        int day;
-        const static size_t type_width = 16;
-        const static size_t packet_width = 7;
-        const static size_t bytes_width = 10;
-        bandwidth_stats& operator+=(const bandwidth_stats& a)
-        {
-            out_packets += a.out_packets;
-            out_bytes += a.out_bytes;
-            in_packets += a.in_packets;
-            in_bytes += a.in_bytes;
-
-            return *this;
-        }
-    };
-
-    typedef std::map<const std::string, bandwidth_stats> bandwidth_map;
-    typedef std::vector<bandwidth_map> hour_stats_vector;
-    hour_stats_vector hour_stats(24);
-
-    static bandwidth_map::iterator add_bandwidth_entry(const std::string& packet_type)
-    {
-        time_t now = time(0);
-        struct tm * timeinfo = localtime(&now);
-        int hour = timeinfo->tm_hour;
-        int day = timeinfo->tm_mday;
-        assert(hour < 24 && hour >= 0);
-        std::pair<bandwidth_map::iterator,bool> insertion = hour_stats[hour].insert(std::make_pair(packet_type, bandwidth_stats()));
-        bandwidth_map::iterator inserted = insertion.first;
-        if (!insertion.second && day != inserted->second.day)
-        {
-            // clear previuos day stats
-            hour_stats[hour].clear();
-            //insert again to cleared map
-            insertion = hour_stats[hour].insert(std::make_pair(packet_type, bandwidth_stats()));
-            inserted = insertion.first;
-        }
-
-        inserted->second.day = day;
-        return inserted;
-    }
-
-    typedef boost::shared_ptr<bandwidth_stats> bandwidth_stats_ptr;
-
-
-    struct bandwidth_stats_output {
-        bandwidth_stats_output(std::stringstream& ss) : ss_(ss), totals_(new bandwidth_stats())
-        {}
-        void operator()(const bandwidth_map::value_type& stats)
-        {
-            // name
-            ss_ << " " << std::setw(bandwidth_stats::type_width) <<  stats.first << "| "
-                << std::setw(bandwidth_stats::packet_width)<< stats.second.out_packets << "| "
-                << std::setw(bandwidth_stats::bytes_width) << stats.second.out_bytes/1024 << "| "
-                << std::setw(bandwidth_stats::packet_width)<< stats.second.in_packets << "| "
-                << std::setw(bandwidth_stats::bytes_width) << stats.second.in_bytes/1024 << "\n";
-            *totals_ += stats.second;
-        }
-        void output_totals()
-        {
-            (*this)(std::make_pair(std::string("total"), *totals_));
-        }
-        private:
-        std::stringstream& ss_;
-        bandwidth_stats_ptr totals_;
-    };
 
     std::string get_bandwidth_stats_all()
     {
-        std::string result;
-        for (int hour = 0; hour < 24; ++hour)
-        {
-            result += get_bandwidth_stats(hour);
-        }
-        return result;
+        return std::string(""); //TODO: implement
     }
 
     std::string get_bandwidth_stats()
     {
-        time_t now = time(0);
-        struct tm * timeinfo = localtime(&now);
-        int hour = timeinfo->tm_hour - 1;
-        if (hour < 0)
-            hour = 23;
-        return get_bandwidth_stats(hour);
+        return std::string(""); //TODO: implement
     }
 
-    std::string get_bandwidth_stats(int hour)
+    std::string get_bandwidth_stats(int /*hour*/)
     {
-        assert(hour < 24 && hour >= 0);
-        std::stringstream ss;
-
-        ss << "Hour stat starting from " << hour << "\n " << std::left << std::setw(bandwidth_stats::type_width) <<  "Type of packet" << "| "
-            << std::setw(bandwidth_stats::packet_width)<< "out #"  << "| "
-            << std::setw(bandwidth_stats::bytes_width) << "out kb" << "| " /* Are these bytes or bits? base10 or base2? */
-            << std::setw(bandwidth_stats::packet_width)<< "in #"  << "| "
-            << std::setw(bandwidth_stats::bytes_width) << "in kb" << "\n";
-
-        bandwidth_stats_output outputer(ss);
-        std::for_each(hour_stats[hour].begin(), hour_stats[hour].end(), outputer);
-
-        outputer.output_totals();
-        return ss.str();
-    }
-
-    void add_bandwidth_out(const std::string& packet_type, size_t len)
-    {
-        bandwidth_map::iterator itor = add_bandwidth_entry(packet_type);
-        itor->second.out_bytes += len;
-        ++(itor->second.out_packets);
-    }
-
-    void add_bandwidth_in(const std::string& packet_type, size_t len)
-    {
-        bandwidth_map::iterator itor = add_bandwidth_entry(packet_type);
-        itor->second.in_bytes += len;
-        ++(itor->second.in_packets);
+        return std::string(""); //TODO: implement
     }
 
     bandwidth_in::~bandwidth_in()
     {
-        add_bandwidth_in(type_, len_);
     }
 
     void send_file(const std::string& /*filename*/, connection /*connection_num*/, const std::string& /*packet_type*/)
@@ -474,7 +286,7 @@ namespace network {
 
     void process_send_queue(connection, size_t)
     {
-        check_error();
+//         check_error();
     }
 
     /** @todo Note the gzipped parameter should be removed later. */
@@ -501,8 +313,6 @@ namespace network {
 
     statistics get_receive_stats(connection handle)
     {
-//         std::cout << "DEBUG: get_receive_stats\n"; // too much output
         return ana_manager.get_receive_stats( handle );
     }
-
 }// end namespace network
