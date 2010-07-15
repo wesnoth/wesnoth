@@ -902,16 +902,19 @@ void ana_network_manager::send_all_except(const config& cfg, network::connection
 
     for ( it = components_.begin(); it != components_.end(); ++it)
     {
-         if ((*it)->is_server())
-         {
-            ana_send_handler handler;
+        if ((*it)->is_server())
+        {
+            const size_t clients_receiving_number = server_manager_[ (*it)->server() ]->client_amount() - 1;
+            ana_send_handler handler( clients_receiving_number );
             (*it)->server()->send_all_except( id_to_avoid, ana::buffer( out.str() ), &handler, ana::ZERO_COPY);
-
+            handler.wait_completion();
+        }
+        else
+        {
+            ana_send_handler handler;
+            (*it)->client()->send( ana::buffer( out.str() ), &handler, ana::ZERO_COPY);
             handler.wait_completion();
          }
-         else
-            std::cout << "DEBUG: Why was send_all_except used on a client component?"
-                         "Components size: " << components_.size() << "\n";
     }
 }
 
