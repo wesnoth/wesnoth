@@ -80,21 +80,19 @@ void terrain_builder::tile::rebuild_cache(const std::string& tod)
 	}
 
 	foreach(const rule_image_rand& ri, images){
-		rule_image_variantlist::const_iterator tod_variant =
-				ri->variants.find(tod);
+		foreach(const rule_image_variant& variant, ri->variants){
+			if(!variant.tod.empty() && variant.tod != tod)
+				continue;
 		
-		if(tod_variant == ri->variants.end())
-			tod_variant = ri->variants.find("");
+			bool is_background = ri->layer < 0 || (ri->layer == 0 && ri->basey < UNITPOS);
 
-		if(tod_variant == ri->variants.end())
-			continue;
-			
-		bool is_background = ri->layer < 0 || (ri->layer == 0 && ri->basey < UNITPOS);
+			imagelist& img_list = is_background ? images_background : images_foreground;
 
-		imagelist& img_list = is_background ? images_background : images_foreground;
+			img_list.push_back(variant.image);
+			img_list.back().set_animation_time(ri.rand % img_list.back().get_animation_duration());
 
-		img_list.push_back(tod_variant->second.image);
-		img_list.back().set_animation_time(ri.rand % img_list.back().get_animation_duration());
+			break; // found a matching variant 
+		}
 	}
 }
 
@@ -301,7 +299,6 @@ bool terrain_builder::rule_valid(const building_rule &rule) const
 	// If not, this rule will not match.
 	rule_imagelist::const_iterator image;
 	constraint_set::const_iterator constraint;
-	rule_image_variantlist::const_iterator variant;
 
 	for(constraint = rule.constraints.begin();
 			constraint != rule.constraints.end(); ++constraint) {
@@ -309,8 +306,8 @@ bool terrain_builder::rule_valid(const building_rule &rule) const
 				image != constraint->second.images.end();
 				++image) {
 
-			for(variant = image->variants.begin(); variant != image->variants.end(); ++variant) {
-				std::string s = variant->second.image_string;
+			foreach(const rule_image_variant& variant, image->variants) {
+				std::string s = variant.image_string;
 				s = s.substr(0, s.find_first_of(",:~"));
 				// we already precached file existence in the constructor
 				// but only for filenames not using ".."
@@ -339,7 +336,6 @@ bool terrain_builder::start_animation(building_rule &rule)
 {
 	rule_imagelist::iterator image;
 	constraint_set::iterator constraint;
-	rule_image_variantlist::iterator variant;
 
 	for(constraint = rule.constraints.begin();
 			constraint != rule.constraints.end(); ++constraint) {
@@ -348,10 +344,10 @@ bool terrain_builder::start_animation(building_rule &rule)
 				image != constraint->second.images.end();
 				++image) {
 
-			for(variant = image->variants.begin(); variant != image->variants.end(); ++variant) {
+			foreach(rule_image_variant& variant, image->variants) {
 
 				animated<image::locator>::anim_description image_vector;
-				std::vector<std::string> items = utils::parenthetical_split(variant->second.image_string,',');
+				std::vector<std::string> items = utils::parenthetical_split(variant.image_string,',');
 				std::vector<std::string>::const_iterator itor = items.begin();
 				for(; itor != items.end(); ++itor) {
 					const std::vector<std::string>& items = utils::split(*itor, ':');
@@ -382,8 +378,8 @@ bool terrain_builder::start_animation(building_rule &rule)
 
 				animated<image::locator> th(image_vector);
 
-				variant->second.image = th;
-				variant->second.image.start_animation(0, true);
+				variant.image = th;
+				variant.image.start_animation(0, true);
 			}
 		}
 	}
@@ -489,10 +485,8 @@ void terrain_builder::replace_token(std::string &s, const std::string &token, co
 
 void terrain_builder::replace_token(terrain_builder::rule_image &image, const std::string &token, const std::string &replacement)
 {
-	rule_image_variantlist::iterator itor;
-
-	for(itor = image.variants.begin(); itor != image.variants.end(); ++itor) {
-		replace_token(itor->second, token, replacement);
+	foreach(rule_image_variant& variant, image.variants) {
+		replace_token(variant, token, replacement);
 	}
 }
 
@@ -611,18 +605,19 @@ void terrain_builder::add_images_from_config(rule_imagelist& images, const confi
 
 		images.push_back(rule_image(layer, basex - dx, basey - dy, global, center_x, center_y));
 
-		// Adds the main (default) variant of the image, if present
-		images.back().variants.insert(std::make_pair("", rule_image_variant(name)));
-
 		// Adds the other variants of the image
 		foreach (const config &variant, img.child_range("variant"))
 		{
 			const std::string &name = variant["name"];
 			const std::string &tod = variant["tod"];
 
-			images.back().variants.insert(std::make_pair(tod, rule_image_variant(name)));
-
+			images.back().variants.push_back(rule_image_variant(name, tod));
 		}
+
+		// Adds the main (default) variant of the image at the end,
+		// (will be used only if previous variants don't match)
+		images.back().variants.push_back(rule_image_variant(name,""));
+
 	}
 }
 

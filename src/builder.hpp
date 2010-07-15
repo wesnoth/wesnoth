@@ -143,9 +143,10 @@ public:
 	 */
 	struct rule_image_variant {
 		/** Shorthand constructor for this structure */
-		rule_image_variant(const std::string &image_string) :
+		rule_image_variant(const std::string &image_string, const std::string& tod = "") :
 			image_string(image_string),
-			image()
+			image(),
+			tod(tod)
 			{};
 
 		/** A string representing either the filename for an image, or
@@ -172,13 +173,10 @@ public:
 		 * be returned to the user.
 		 */
 		animated<image::locator> image;
-	};
 
-	/**
-	 * A map associating a rule_image_variant to a string representing
-	 * the time of day.
-	 */
-	typedef std::map<std::string, rule_image_variant> rule_image_variantlist;
+		/** The Time of Day associated to this variant (if any)*/
+		std::string tod;
+	};
 
 	/**
 	 * Each terrain_graphics rule is associated a set of images, which are
@@ -197,9 +195,8 @@ public:
 		 */
 		int basex, basey;
 
-		/** A list of Time-Of-Day-related variants for this image
-		 */
-		rule_image_variantlist variants;
+		/** A list of variants for this image */
+		std::vector<rule_image_variant> variants;
 
 		/** Set to true if the image was defined as a child of the
 		 * [terrain_graphics] tag, set to false if it was defined as a
