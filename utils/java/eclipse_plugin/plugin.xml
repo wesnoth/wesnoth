@@ -218,6 +218,7 @@
    </extension>
    <extension
          point="org.eclipse.ui.views">
+       <!-- 
       <category
             name="Sample Category"
             id="Wesnoth_Eclipse_Plugin">
@@ -229,9 +230,11 @@
             class="wesnoth_eclipse_plugin.views.SampleView"
             id="wesnoth_eclipse_plugin.views.SampleView">
       </view>
+      -->
    </extension>
    <extension
          point="org.eclipse.ui.perspectiveExtensions">
+         <!--
       <perspectiveExtension
             targetID="org.eclipse.jdt.ui.JavaPerspective">
          <view
@@ -241,6 +244,7 @@
                id="wesnoth_eclipse_plugin.views.SampleView">
          </view>
       </perspectiveExtension>
+      -->
    </extension>
    <extension
          point="org.eclipse.help.contexts">
