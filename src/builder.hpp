@@ -146,11 +146,12 @@ public:
 		rule_image_variant(const std::string &image_string) :
 			image_string(image_string),
 			image(),
-			tods()
+			tods(),
+			probability(100)
 			{};
 
 		/** Constructor for true [variant] cases */
-		rule_image_variant(const std::string &image_string, const std::string& tod);
+		rule_image_variant(const std::string &image_string, const std::string& tod, int prob);
 
 		/** A string representing either the filename for an image, or
 		 *  a list of images, with an optional timing for each image.
@@ -179,6 +180,9 @@ public:
 
 		/** The Time of Day associated to this variant (if any)*/
 		std::set<std::string> tods;
+
+		/** The probability to use this variant if it has the proper ToD. */
+		int probability;
 	};
 
 	/**
