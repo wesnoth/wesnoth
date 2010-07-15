@@ -7,9 +7,9 @@ import org.eclipse.ui.IWorkbenchPart;
 
 import wesnoth_eclipse_plugin.utils.GameUtils;
 
-public class OpenScenarioInGame implements IObjectActionDelegate
+public class OpenCampaignInGame implements IObjectActionDelegate
 {
-	public OpenScenarioInGame() {
+	public OpenCampaignInGame() {
 	}
 
 	@Override

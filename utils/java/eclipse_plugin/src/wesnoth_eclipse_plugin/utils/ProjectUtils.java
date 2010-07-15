@@ -17,6 +17,8 @@ public class ProjectUtils
 			return null;
 
 		String fileContents = ResourceUtils.getFileContents(file);
+		if (fileContents == null)
+			return null;
 		int index = fileContents.indexOf(propertyName + "=");
 		if (index == -1)
 			return null;
@@ -38,9 +40,7 @@ public class ProjectUtils
 	}
 	public static String getCampaignID() throws Exception
 	{
-		if (WorkspaceUtils.getSelectedProject() == null &&
-				WorkspaceUtils.getSelectedFile() == null &&
-				WorkspaceUtils.getSelectedFolder() == null)
+		if (WorkspaceUtils.getSelectedResource() == null)
 		{
 			return null;
 		}
@@ -62,12 +62,14 @@ public class ProjectUtils
 	public static boolean isCampaignFile(String fileName)
 	{
 		//TODO: replace this with a better checking
+		//TODO: check extension
 		String fileContentString = ResourceUtils.getFileContents(new File(fileName));
 		return (fileContentString.contains("[campaign]") && fileContentString.contains("[/campaign]"));
 	}
 	public static boolean isScenarioFile(String fileName)
 	{
 		//TODO: replace this with a better checking
+		//TODO: check extension
 		String fileContentString = ResourceUtils.getFileContents(new File(fileName));
 		return (fileContentString.contains("[scenario]") && fileContentString.contains("[/scenario]"));
 	}

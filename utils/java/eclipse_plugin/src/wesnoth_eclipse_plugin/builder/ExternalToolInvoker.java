@@ -35,7 +35,7 @@ public class ExternalToolInvoker
 
 	/**
 	 * Creates an external tool invoker with specified options
-	 * 
+	 *
 	 * @param fileName the file name to be invoked
 	 * @param arguments the arguments passed to the file
 	 * @param useThread true if the process will run in a thread
@@ -89,7 +89,7 @@ public class ExternalToolInvoker
 
 	/**
 	 * Waits for the current tool, and returns the return value
-	 * 
+	 *
 	 * @return the return value of the tool
 	 */
 	public int waitForTool()
@@ -197,7 +197,7 @@ public class ExternalToolInvoker
 	/**
 	 * Gets the owned thread used to run the process.
 	 * This is non-null if the tool was invoked with "useThread=true"
-	 * 
+	 *
 	 * @return
 	 */
 	public Thread getOwnThread()
@@ -207,7 +207,7 @@ public class ExternalToolInvoker
 
 	/**
 	 * Gets the attached thread, usually when someone runs this tool in another thread
-	 * 
+	 *
 	 * @return
 	 */
 	public Thread getAttachedThread()
@@ -217,7 +217,7 @@ public class ExternalToolInvoker
 
 	/**
 	 * Sets the attached thread
-	 * 
+	 *
 	 * @param thread
 	 */
 	public void setAttachedThread(Thread thread)
@@ -227,7 +227,7 @@ public class ExternalToolInvoker
 
 	/**
 	 * Launches the specified tool, with the specified argument list
-	 * 
+	 *
 	 * @param fileName the full path to the executable to be launched
 	 * @param args the arguments list
 	 * @param outputFlags a composition of flags used for output
@@ -242,11 +242,13 @@ public class ExternalToolInvoker
 	{
 		final ExternalToolInvoker toolInvoker = new ExternalToolInvoker(fileName, args, useThread);
 
+		System.out.println("Tool args: " + args);
+
 		MessageConsoleStream stream = null;
 		if ((outputFlags & Constants.TI_SHOW_OUTPUT_USER) == Constants.TI_SHOW_OUTPUT_USER)
 		{
 			MessageConsole console = new MessageConsole("", null);
-			//console.activate();
+			console.activate();
 			ConsolePlugin.getDefault().getConsoleManager().addConsoles(new IConsole[] { console });
 			stream = console.newMessageStream();
 		}

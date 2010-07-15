@@ -8,6 +8,7 @@ import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
@@ -54,7 +55,7 @@ public class ResourceUtils
 
 	public static String getFileContents(File file)
 	{
-		if (!file.exists())
+		if (!file.exists() || !file.isFile())
 			return null;
 
 		String contentsString = "";
@@ -67,14 +68,14 @@ public class ResourceUtils
 			{
 				contentsString += (line + "\n");
 			}
-		} catch (Exception e)
+		} catch (IOException e)
 		{
 			e.printStackTrace();
-			return null;
 		} finally
 		{
 			try
 			{
+				if (reader!= null)
 				reader.close();
 			} catch (Exception e)
 			{
