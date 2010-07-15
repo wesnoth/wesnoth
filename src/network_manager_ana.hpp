@@ -124,6 +124,41 @@ class ana_component
 
 typedef std::set<ana_component*> ana_component_set;
 
+/**
+ * Manages connected client ids for a given server.
+ */
+class clients_manager : public ana::connection_handler
+{
+    public:
+        /** Constructor. */
+        clients_manager( ana::server* );
+
+        /** Returns the amount of components connected to this server. */
+        size_t client_amount() const;
+
+        void connected( ana::net_id id );
+
+        void handshaked( ana::net_id id );
+
+        bool has_connection_pending() const;
+
+        bool is_pending_handshake( ana::net_id ) const;
+
+        bool is_a_client( ana::net_id id ) const;
+
+        network::connection get_pending_connection_id();
+
+    private:
+        virtual void handle_connect(ana::error_code error, ana::net_id client);
+
+        virtual void handle_disconnect(ana::error_code /*error*/, ana::net_id client);
+
+        ana::server*                    server_; // the server managing these clients
+
+        std::set< ana::net_id >         ids_;
+        std::set< network::connection > pending_ids_;
+        std::set< ana::net_id >         pending_handshakes_;
+};
 
 /**
  * To use the asynchronous library synchronously, objects of this
@@ -135,10 +170,9 @@ class ana_send_handler : public ana::send_handler
     public:
         /**
          * Constructs a handler object.
-         * @param buf_size : The size of the buffer being sent.
          * @param calls [optional, default 1] : The amount of calls to the handler expected.
          */
-        ana_send_handler( size_t buf_size, size_t calls = 1 );
+        ana_send_handler( size_t calls = 1 );
 
         /** Destructor, checks that the necessary calls were made. */
         ~ana_send_handler();
@@ -157,8 +191,22 @@ class ana_send_handler : public ana::send_handler
         boost::mutex       mutex_;
         size_t             target_calls_;
         ana::error_code    error_code_;
-        size_t             buf_size_;
 };
+
+class ana_handshake_finisher_handler : public ana::send_handler
+{
+    public:
+        ana_handshake_finisher_handler( ana::server*, clients_manager* );
+
+    private:
+        ~ana_handshake_finisher_handler();
+
+        virtual void handle_send(ana::error_code, ana::net_id);
+
+        ana::server*       server_;
+        clients_manager*   manager_;
+};
+
 
 /**
  * To use the asynchronous library synchronously, objects of this
@@ -293,12 +341,7 @@ class ana_connect_handler : public ana::connection_handler
          *
          * @param timer : A pointer to a running timer dealing with the timeout of this connect operation.
          */
-        ana_connect_handler( ana::timer* timer);
-
-        /**
-         * Handler of the timeout operation of the timer.
-         */
-        void handle_timeout(ana::error_code error_code);
+        ana_connect_handler( );
 
         /** Destructor. */
         ~ana_connect_handler();
@@ -317,44 +360,7 @@ class ana_connect_handler : public ana::connection_handler
         virtual void handle_connect(ana::error_code error_code, ana::net_id /*client*/);
 
         boost::mutex       mutex_;
-        boost::mutex       handler_mutex_;
-        ana::timer*        timer_;
         ana::error_code    error_code_;
-        bool               connected_;
-};
-
-/**
- * Manages connected client ids for a given server.
- */
-class clients_manager : public ana::connection_handler
-{
-    public:
-        /** Constructor. */
-        clients_manager( ana::server* );
-
-        /** Returns the amount of components connected to this server. */
-        size_t client_amount() const;
-
-        void has_connected( ana::net_id id );
-
-        bool has_connection_pending() const;
-
-        bool is_pending_handshake( ana::net_id ) const;
-
-        bool is_a_client( ana::net_id id ) const;
-
-        network::connection get_pending_connection_id();
-
-    private:
-        virtual void handle_connect(ana::error_code error, ana::net_id client);
-
-        virtual void handle_disconnect(ana::error_code /*error*/, ana::net_id client);
-
-        ana::server*                    server_; // the server managing these clients
-
-        std::set< ana::net_id >         ids_;
-        std::set< network::connection > pending_ids_;
-        std::set< ana::net_id >         pending_handshakes_;
 };
 
 /**

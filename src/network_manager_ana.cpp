@@ -30,11 +30,10 @@
 
 // Begin ana_send_handler implementation ---------------------------------------------------------------
 
-ana_send_handler::ana_send_handler( size_t buf_size, size_t calls) :
+ana_send_handler::ana_send_handler( size_t calls ) :
     mutex_(),
     target_calls_( calls ),
-    error_code_(),
-    buf_size_( buf_size )
+    error_code_()
 {
     std::cout << "DEBUG: Constructing a new ana_send_handler...\n";
     if ( calls > 0 )
@@ -62,6 +61,29 @@ void ana_send_handler::wait_completion()
 {
     mutex_.lock();
     mutex_.unlock();
+}
+
+// Begin ana_handshake_finisher_handler implementation ------------------------------------------------------------
+
+ana_handshake_finisher_handler::ana_handshake_finisher_handler( ana::server*     server,
+                                                                clients_manager* mgr)
+    : server_( server ),
+      manager_( mgr )
+{
+}
+
+ana_handshake_finisher_handler::~ana_handshake_finisher_handler()
+{
+}
+
+void ana_handshake_finisher_handler::handle_send(ana::error_code ec,
+                                                 ana::net_id     client)
+{
+    if ( ec )
+        server_->disconnect( client );
+    else
+        manager_->connected( client );
+    delete this;
 }
 
 // Begin ana_receive_handler implementation ------------------------------------------------------------
@@ -302,30 +324,12 @@ void ana_multiple_receive_handler::handle_timeout(ana::error_code error_code)
 
 // Begin ana_connect_handler implementation ------------------------------------------------------------
 
-ana_connect_handler::ana_connect_handler( ana::timer* timer ) :
+ana_connect_handler::ana_connect_handler( ) :
     mutex_( ),
-    timer_(timer),
-    error_code_(),
-    connected_(false)
+    error_code_()
 {
     std::cout << "DEBUG: Constructing a new ana_connect_handler...\n";
     mutex_.lock();
-}
-
-void ana_connect_handler::handle_timeout(ana::error_code error_code)
-{
-    boost::mutex::scoped_lock lock(handler_mutex_);
-
-    if ( ! connected_ ) // disregard this call after a connect termination (regardless of result)
-    {
-        if (error_code)
-            std::cout << "DEBUG: Connection attempt timed out\n";
-        else
-            std::cout << "DEBUG: Shouldn't reach here\n";
-
-        error_code_ = error_code;
-        mutex_.unlock();
-    }
 }
 
 ana_connect_handler::~ana_connect_handler()
@@ -333,8 +337,6 @@ ana_connect_handler::~ana_connect_handler()
     std::cout << "DEBUG: Terminating an ana_connect_handler...\n";
     mutex_.lock();
     mutex_.unlock();
-    handler_mutex_.lock();
-    handler_mutex_.unlock();
 }
 
 const ana::error_code& ana_connect_handler::error() const
@@ -344,9 +346,6 @@ const ana::error_code& ana_connect_handler::error() const
 
 void ana_connect_handler::handle_connect(ana::error_code error_code, ana::net_id /*client*/)
 {
-    boost::mutex::scoped_lock lock(handler_mutex_);
-    connected_ = true;
-
     if (! error_code)
         std::cout << "DEBUG: Connected.\n";
     else
@@ -554,9 +553,13 @@ void clients_manager::handle_disconnect(ana::error_code /*error*/, ana::net_id c
     pending_ids_.erase( network::connection( client ) );
 }
 
-void clients_manager::has_connected( ana::net_id id )
+void clients_manager::connected( ana::net_id id )
 {
     pending_ids_.insert( network::connection( id ) );
+}
+
+void clients_manager::handshaked( ana::net_id id )
+{
     pending_handshakes_.erase( id );
 }
 
@@ -624,12 +627,7 @@ network::connection ana_network_manager::create_client_and_connect(std::string h
 
         ana::client* const client = new_component->client();
 
-        connect_timer_ = client->create_timer();
-
-        ana_connect_handler handler(connect_timer_);
-
-        connect_timer_->wait( ana::time::seconds(10), // 10 seconds to connection timeout, TODO: configurable
-                            boost::bind(&ana_connect_handler::handle_timeout, &handler, ana::timeout_error) );
+        ana_connect_handler handler;
 
         client->set_raw_data_mode();
         client->connect( &handler );
@@ -639,8 +637,6 @@ network::connection ana_network_manager::create_client_and_connect(std::string h
         client->start_logging();
 
         handler.wait_completion(); // just wait for handler to finish
-
-        delete connect_timer_;
 
         if( handler.error() )
         {
@@ -655,7 +651,7 @@ network::connection ana_network_manager::create_client_and_connect(std::string h
             uint32_t handshake( 0 );
             bos << handshake;
 
-            ana_send_handler send_handler( bos.str().size() );
+            ana_send_handler send_handler;
 
             client->send( ana::buffer( bos.str()), &send_handler, ana::ZERO_COPY );
 
@@ -824,14 +820,14 @@ size_t ana_network_manager::send_all( const config& cfg, bool zipped )
         if ( (*it)->is_server() )
         {
             const size_t necessary_calls = server_manager_[ (*it)->server() ]->client_amount();
-            ana_send_handler handler( out.str().size(), necessary_calls );
+            ana_send_handler handler( necessary_calls );
 
             (*it)->server()->send_all( ana::buffer( out.str() ), &handler, ana::ZERO_COPY);
             handler.wait_completion(); // the handler will release the mutex after necessary_calls calls
         }
         else
         {
-            ana_send_handler handler( out.str().size() );
+            ana_send_handler handler;
 
             (*it)->client()->send( ana::buffer( out.str() ), &handler, ana::ZERO_COPY );
             handler.wait_completion();
@@ -864,8 +860,8 @@ size_t ana_network_manager::send_raw_data( const char* base_char, size_t size, n
         if ( (*it)->is_server() )
             throw std::runtime_error("Can't send to the server itself.");
 
-        ana_send_handler handler( size );
-        (*it)->client()->send( ana::buffer( base_char, size ), &handler); //, ana::ZERO_COPY);
+        ana_send_handler handler;
+        (*it)->client()->send( ana::buffer( base_char, size ), &handler, ana::ZERO_COPY);
         handler.wait_completion();
 
         if ( handler.error() )
@@ -879,10 +875,8 @@ size_t ana_network_manager::send_raw_data( const char* base_char, size_t size, n
         {
             if ((*it)->is_server())
             {
-                // TODO: The next lines shouldn't be commented, no way the handler isn't called
-                ana_send_handler handler( size );
-//                 (*it)->server()->send_one( id, ana::buffer( base_char, size ), this, ana::ZERO_COPY);
-                (*it)->server()->send_one( id, ana::buffer( base_char, size ), &handler); //, ana::ZERO_COPY);
+                ana_send_handler handler;
+                (*it)->server()->send_one( id, ana::buffer( base_char, size ), &handler, ana::ZERO_COPY);
                 handler.wait_completion();
                 if ( handler.error() )
                     return 0;
@@ -908,15 +902,16 @@ void ana_network_manager::send_all_except(const config& cfg, network::connection
 
     for ( it = components_.begin(); it != components_.end(); ++it)
     {
-         (*it)->get_id();
+         if ((*it)->is_server())
+         {
+            ana_send_handler handler;
+            (*it)->server()->send_all_except( id_to_avoid, ana::buffer( out.str() ), &handler, ana::ZERO_COPY);
 
-         if ((*it)->is_client())
-             throw std::runtime_error("send_all_except shouldn't be used on clients.");
-
-         ana_send_handler handler( out.str().size() );
-         (*it)->server()->send_all_except( id_to_avoid, ana::buffer( out.str() ), &handler, ana::ZERO_COPY);
-
-         handler.wait_completion();
+            handler.wait_completion();
+         }
+         else
+            std::cout << "DEBUG: Why was send_all_except used on a client component?"
+                         "Components size: " << components_.size() << "\n";
     }
 }
 
@@ -1148,19 +1143,22 @@ void ana_network_manager::handle_message( ana::error_code          error,
 
                         if ( handshake != 0 )
                             mgrs->first->disconnect( client );
+                        else
+                        {
+                            mgrs->second->handshaked( client );
+                            //send back it's id
+                            ana::serializer::bostream bos;
+                            uint32_t network_byte_order_id = client;
+                            ana::host_to_network_long( network_byte_order_id );
+                            bos << network_byte_order_id;
 
-                        //send back it's id
-                        ana::serializer::bostream bos;
+                            ana_handshake_finisher_handler* handler
+                                = new ana_handshake_finisher_handler( mgrs->first,
+                                                                      mgrs->second);
 
-                        uint32_t network_byte_order_id = client;
-
-                        ana::host_to_network_long( network_byte_order_id );
-                        bos << network_byte_order_id;
-
-                        //TODO: I should check if this operation was successful
-                        mgrs->first->send_one(client, ana::buffer( bos.str() ), this );
-                        mgrs->first->set_header_first_mode( client );
-                        mgrs->second->has_connected( client );
+                            mgrs->first->send_one(client, ana::buffer( bos.str() ), handler );
+                            mgrs->first->set_header_first_mode( client );
+                        }
                     }
                     else // just add the buffer to the associated clients_manager
                     {
