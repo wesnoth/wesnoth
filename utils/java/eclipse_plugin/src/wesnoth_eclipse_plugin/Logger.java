@@ -50,6 +50,7 @@ public class Logger {
 				WorkspaceUtils.getTemporaryFolder(), WorkspaceUtils.getRandomFileName());
 
 			logWriter_ = new BufferedWriter(new FileWriter(logFilePath));
+			log("Logging started.");
 		} catch (IOException e)
 		{
 			GUIUtils.showMessageBox("There was an error trying to open the log." +
@@ -67,6 +68,7 @@ public class Logger {
 			return;
 		try
 		{
+			log("Logging ended.");
 			logWriter_.close();
 		} catch (IOException e)
 		{
