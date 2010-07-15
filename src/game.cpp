@@ -1082,7 +1082,7 @@ bool game_controller::new_campaign()
 
 	int campaign_num = -1;
 	// No campaign selected from command line
-	if (jump_to_campaign_.campaign_id_.empty())
+	if (!jump_to_campaign_.jump_)
 	{
 		gui2::tcampaign_selection dlg(campaigns);
 
@@ -1205,10 +1205,11 @@ std::string game_controller::jump_to_campaign_id() const
 bool game_controller::goto_campaign()
 {
 	if(jump_to_campaign_.jump_){
-		jump_to_campaign_.jump_ = false;
 		if(new_campaign()) {
+			jump_to_campaign_.jump_ = false;
 			launch_game(game_controller::RELOAD_DATA);
 		}else{
+			jump_to_campaign_.jump_ = false;
 			return false;
 		}
 	}
