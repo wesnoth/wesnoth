@@ -23,6 +23,7 @@ import org.eclipse.swt.widgets.List;
 import wesnoth_eclipse_plugin.utils.GUIUtils;
 import wesnoth_eclipse_plugin.utils.ListUtils;
 
+@Deprecated
 public class UnitTypePage1 extends WizardPage
 {
 	private List			lstAttack_;

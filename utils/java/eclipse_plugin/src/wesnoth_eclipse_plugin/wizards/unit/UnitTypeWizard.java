@@ -16,6 +16,7 @@ import wesnoth_eclipse_plugin.wizards.NewWizardTemplate;
 import wesnoth_eclipse_plugin.wizards.ReplaceableParameter;
 import wesnoth_eclipse_plugin.wizards.TemplateProvider;
 
+@Deprecated
 public class UnitTypeWizard extends NewWizardTemplate
 {
 

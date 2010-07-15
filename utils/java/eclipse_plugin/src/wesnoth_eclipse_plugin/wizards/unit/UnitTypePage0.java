@@ -18,6 +18,7 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Spinner;
 import org.eclipse.swt.widgets.Text;
 
+@Deprecated
 public class UnitTypePage0 extends WizardPage
 {
 	private Text	txtId_;

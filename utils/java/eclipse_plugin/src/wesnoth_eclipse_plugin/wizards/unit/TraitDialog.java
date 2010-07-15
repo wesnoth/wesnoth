@@ -28,6 +28,7 @@ import org.eclipse.swt.widgets.List;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
+@Deprecated
 public class TraitDialog extends TitleAreaDialog
 {
 	private Text			txtId_;

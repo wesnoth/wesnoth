@@ -37,6 +37,7 @@ import wesnoth_eclipse_plugin.utils.GUIUtils;
 import wesnoth_eclipse_plugin.utils.ListUtils;
 import wesnoth_eclipse_plugin.wizards.NewWizardTemplate;
 
+@Deprecated
 public class UnitsPage0 extends WizardPage
 {
 	private IStructuredSelection	selection_;
