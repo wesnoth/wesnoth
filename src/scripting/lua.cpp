@@ -1674,11 +1674,11 @@ static int intf_eval_conditional(lua_State *L)
 		return luaL_typerror(L, 1, "WML table");
 	}
 
-	config cond;
-	if (!luaW_toconfig(L, 1, cond))
+	vconfig cond = vconfig::unconstructed_vconfig();
+	if (!luaW_tovconfig(L, 1, cond, false))
 		goto error_call_destructors;
 
-	bool b = game_events::conditional_passed(vconfig(cond));
+	bool b = game_events::conditional_passed(cond);
 	lua_pushboolean(L, b);
 	return 1;
 }
