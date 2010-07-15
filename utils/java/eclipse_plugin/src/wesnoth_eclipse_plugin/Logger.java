@@ -128,6 +128,7 @@ public class Logger {
 				logWriter_.write(String.format("%s | %d | %s\n",
 						new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()),
 						severity,  message));
+				logWriter_.flush();
 			} catch (IOException e)
 			{
 				e.printStackTrace();
