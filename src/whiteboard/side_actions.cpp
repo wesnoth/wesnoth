@@ -168,7 +168,7 @@ side_actions::iterator side_actions::bump_earlier(side_actions::iterator positio
 
 	//Verify we're not moving an action out-of-order compared to other action of the same unit
 	side_actions::iterator previous = position - 1;
-	if (&(*previous)->get_unit() == &(*position)->get_unit())
+	if ((*previous)->get_unit() == (*position)->get_unit())
 		return end();
 
 	action_ptr action = *position;
@@ -199,7 +199,7 @@ side_actions::iterator side_actions::bump_later(side_actions::iterator position)
 
 	//Verify we're not moving an action out-of-order compared to other action of the same unit
 	side_actions::iterator previous = position + 1;
-	if (&(*previous)->get_unit() == &(*position)->get_unit())
+	if ((*previous)->get_unit() == (*position)->get_unit())
 		return end();
 
 	action_ptr action = *position;
@@ -262,7 +262,7 @@ side_actions::iterator side_actions::find_first_action_of(const unit& unit, side
 		for (position = start_position; position != end(); ++position)
 		{
 			action_ptr action = *position;
-			if (&action->get_unit() == &unit)
+			if (action->get_unit() == &unit)
 			{
 				return position;
 			}
@@ -284,7 +284,7 @@ side_actions::iterator side_actions::find_last_action_of(const unit& unit, side_
 		for (position = start_position; position != begin() - 1; --position)
 		{
 			action_ptr action = *position;
-			if (&action->get_unit() == &unit)
+			if (action->get_unit() == &unit)
 			{
 				return position;
 			}

@@ -67,7 +67,7 @@ void mapbuilder_visitor::build_map()
 
 void mapbuilder_visitor::visit_move(move_ptr move)
 {
-	if (excluded_units_.find(&move->get_unit()) == excluded_units_.end())
+	if (excluded_units_.find(move->get_unit()) == excluded_units_.end())
 	{
 		if(mode_ == BUILD_PLANNED_MAP)
 		{

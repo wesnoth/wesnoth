@@ -31,11 +31,12 @@
 #include "team.hpp"
 #include "unit.hpp"
 #include "unit_display.hpp"
+#include "unit_map.hpp"
 
 
 std::ostream &operator<<(std::ostream &s, wb::move const& move)
 {
-	s << "Move for unit " << move.get_unit().name() << " [" << move.get_unit().underlying_id() << "] "
+	s << "Move for unit " << move.get_unit()->name() << " [" << move.get_unit()->underlying_id() << "] "
 		<< "from (" << move.get_source_hex() << ") to (" << move.get_dest_hex() << ")";
 	return s;
 }
@@ -158,6 +159,19 @@ bool move::execute()
 
 	arrow_->set_alpha(ALPHA_NORMAL);
 	return move_finished_completely;
+}
+
+unit* move::get_unit()
+{
+	unit_map::iterator it = resources::units->find(source_hex_);
+	if (it != resources::units->end())
+		return &*it;
+	else
+		return NULL;
+}
+unit const* move::get_unit() const
+{
+	return get_unit();
 }
 
 void move::apply_temp_modifier(unit_map& unit_map)

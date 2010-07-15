@@ -53,8 +53,9 @@ public: //constants
 
 	virtual bool execute();
 
-	virtual unit& get_unit() { return unit_; }
-	virtual unit const& get_unit() const { return unit_; }
+	/** Return the unit targeted by this action. Null if unit doesn't exist. */
+	virtual unit* get_unit();
+	virtual unit const* get_unit() const;
 
 
 	virtual arrow_ptr get_arrow() { return arrow_; }

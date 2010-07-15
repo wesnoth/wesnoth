@@ -246,7 +246,7 @@ void highlight_visitor::find_main_highlight()
 		action->accept(*this);
 		if (action_ptr main = main_highlight_.lock())
 		{
-			owner_unit_ = &main->get_unit();
+			owner_unit_ = main->get_unit();
 			break;
 		}
 	}
