@@ -2310,9 +2310,9 @@ class console_handler : public map_command_handler<console_handler>, private cha
 		//convenience typedef
 		typedef map_command_handler<console_handler> chmap;
 		console_handler(menu_handler& menu_handler,
-			mouse_handler& mouse_handler, const unsigned int team_num)
+			mouse_handler& mouse_handler)
 		: chmap(), chat_command_handler(menu_handler, true), menu_handler_(menu_handler), mouse_handler_(mouse_handler)
-			, team_num_(team_num)
+			, team_num_(resources::controller->current_side())
 		{
 		}
 		using chmap::dispatch; //disambiguate
@@ -3001,9 +3001,9 @@ void menu_handler::do_search(const std::string& new_search)
 }
 
 void menu_handler::do_command(const std::string& str,
-		int side_num, mouse_handler &mousehandler)
+		mouse_handler &mousehandler)
 {
-	console_handler ch(*this, mousehandler, side_num);
+	console_handler ch(*this, mousehandler);
 	ch.dispatch(str);
 }
 
@@ -3449,12 +3449,12 @@ void menu_handler::user_command()
 	textbox_info_.show(gui::TEXTBOX_COMMAND,sgettext("prompt^Command:"), "", false, *gui_);
 }
 
-void menu_handler::custom_command(mouse_handler &mousehandler, int side_num)
+void menu_handler::custom_command(mouse_handler &mousehandler)
 {
 	std::vector<std::string> commands = utils::split(preferences::custom_command(), ';');
 	std::vector<std::string>::iterator c = commands.begin();
 	for (; c != commands.end() ; ++c) {
-		do_command(*c, side_num, mousehandler);
+		do_command(*c, mousehandler);
 	}
 }
 
