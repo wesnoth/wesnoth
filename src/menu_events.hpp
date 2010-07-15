@@ -65,8 +65,8 @@ public:
 	void update_shroud_now(int side_num);
 	bool end_turn(int side_num);
 	void goto_leader(int side_num);
-	void unit_description(mouse_handler& mousehandler);
-	void rename_unit(mouse_handler& mousehandler);
+	void unit_description();
+	void rename_unit();
 	void create_unit(mouse_handler& mousehandler);
 	void create_unit_2(mouse_handler& mousehandler); // TODO: replace create_unit when complete
 	void change_side(mouse_handler& mousehandler);
@@ -88,9 +88,9 @@ public:
 	void user_command_3();
 #endif
 
-	unit_map::iterator current_unit(mouse_handler& mousehandler);
-	unit_map::const_iterator current_unit(const mouse_handler &mousehandler) const
-	{ return const_cast<menu_handler *>(this)->current_unit(const_cast<mouse_handler &>(mousehandler)); }
+	unit_map::iterator current_unit();
+	unit_map::const_iterator current_unit() const
+	{ return const_cast<menu_handler *>(this)->current_unit(); }
 	void move_unit_to_loc(const unit_map::const_iterator& ui, const map_location& target,
 		bool continue_move, int side_num, mouse_handler &mousehandler);
 	void do_speak();

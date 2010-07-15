@@ -432,7 +432,7 @@ void play_controller::goto_leader(){
 }
 
 void play_controller::unit_description(){
-	menu_handler_.unit_description(mouse_handler_);
+	menu_handler_.unit_description();
 }
 
 void play_controller::toggle_ellipses(){
@@ -784,14 +784,14 @@ bool play_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int in
 		return !linger_ && !undo_stack_.empty() && !events::commands_disabled && !browse_;
 
 	case hotkey::HOTKEY_UNIT_DESCRIPTION:
-		return menu_handler_.current_unit(mouse_handler_) != units_.end();
+		return menu_handler_.current_unit() != units_.end();
 
 	case hotkey::HOTKEY_RENAME_UNIT:
 		return !events::commands_disabled &&
-			menu_handler_.current_unit(mouse_handler_) != units_.end() &&
-			!(menu_handler_.current_unit(mouse_handler_)->unrenamable()) &&
-			menu_handler_.current_unit(mouse_handler_)->side() == gui_->viewing_side() &&
-			teams_[menu_handler_.current_unit(mouse_handler_)->side() - 1].is_human();
+			menu_handler_.current_unit() != units_.end() &&
+			!(menu_handler_.current_unit()->unrenamable()) &&
+			menu_handler_.current_unit()->side() == gui_->viewing_side() &&
+			teams_[menu_handler_.current_unit()->side() - 1].is_human();
 
 	case hotkey::HOTKEY_WB_EXECUTE_ACTION:
 	case hotkey::HOTKEY_WB_DELETE_ACTION:

@@ -1334,17 +1334,17 @@ void menu_handler::goto_leader(int side_num)
 	}
 }
 
-void menu_handler::unit_description(mouse_handler& mousehandler)
+void menu_handler::unit_description()
 {
-	const unit_map::const_iterator un = current_unit(mousehandler);
+	const unit_map::const_iterator un = current_unit();
 	if(un != units_.end()) {
 		dialogs::show_unit_description(*un);
 	}
 }
 
-void menu_handler::rename_unit(mouse_handler& mousehandler)
+void menu_handler::rename_unit()
 {
-	const unit_map::iterator un = current_unit(mousehandler);
+	const unit_map::iterator un = current_unit();
 	if (un == units_.end() || gui_->viewing_side() != un->side())
 		return;
 	if (un->unrenamable())
@@ -1359,8 +1359,10 @@ void menu_handler::rename_unit(mouse_handler& mousehandler)
 	}
 }
 
-unit_map::iterator menu_handler::current_unit(mouse_handler& mousehandler)
+unit_map::iterator menu_handler::current_unit()
 {
+	const mouse_handler& mousehandler = resources::controller->get_mouse_handler_base();
+
 	unit_map::iterator res = find_visible_unit(mousehandler.get_last_hex(),
 		teams_[gui_->viewing_team()]);
 	if(res != units_.end()) {
@@ -1586,7 +1588,7 @@ void menu_handler::clear_labels()
 
 void menu_handler::continue_move(mouse_handler &mousehandler, int side_num)
 {
-	unit_map::iterator i = current_unit(mousehandler);
+	unit_map::iterator i = current_unit();
 	if (i == units_.end() || !i->move_interrupted()) {
 		i = units_.find(mousehandler.get_selected_hex());
 		if (i == units_.end() || !i->move_interrupted()) return;
@@ -3298,7 +3300,7 @@ void console_handler::do_unit() {
 	// prevent SIGSEGV due to attempt to set HP during a fight
 	if (events::commands_disabled > 0)
 		return;
-	const unit_map::iterator i = menu_handler_.current_unit(mouse_handler_);
+	const unit_map::iterator i = menu_handler_.current_unit();
 	if (i == menu_handler_.units_.end()) return;
 	const std::string data = get_data(1);
 	std::vector<std::string> parameters = utils::split(data, '=', utils::STRIP_SPACES);
@@ -3342,7 +3344,7 @@ void console_handler::do_unit() {
 }
 /*void console_handler::do_buff() {
 	print(get_cmd(), _("Debug mode activated!"));
-	const unit_map::iterator i = menu_handler_.current_unit(mouse_handler_);
+	const unit_map::iterator i = menu_handler_.current_unit();
 	if(i != menu_handler_.units_.end()) {
 		//i->second.add_trait(get_data());
 		menu_handler_.gui_->invalidate(i->first);
@@ -3352,7 +3354,7 @@ void console_handler::do_unit() {
 	}
 }
 void console_handler::do_unbuff() {
-	const unit_map::iterator i = menu_handler_.current_unit(mouse_handler_);
+	const unit_map::iterator i = menu_handler_.current_unit();
 	if(i != menu_handler_.units_.end()) {
 		// FIXME: 'data_' is the trait.  Clear it.
 

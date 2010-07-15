@@ -148,7 +148,7 @@ void playsingle_controller::check_end_level()
 }
 
 void playsingle_controller::rename_unit(){
-	menu_handler_.rename_unit(mouse_handler_);
+	menu_handler_.rename_unit();
 }
 
 void playsingle_controller::create_unit(){
@@ -994,8 +994,8 @@ bool playsingle_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, 
 			if(browse_ || events::commands_disabled)
 				return false;
 
-			if( (menu_handler_.current_unit(mouse_handler_) != units_.end())
-				&& (menu_handler_.current_unit(mouse_handler_)->move_interrupted()))
+			if( (menu_handler_.current_unit() != units_.end())
+				&& (menu_handler_.current_unit()->move_interrupted()))
 				return true;
 			const unit_map::const_iterator i = units_.find(mouse_handler_.get_selected_hex());
 			if (i == units_.end()) return false;
