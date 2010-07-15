@@ -128,7 +128,7 @@ public:
 	 * Deletes the action at the specified position.
 	 * @return The position of the element after the one deleted, or end() if the queue is empty.
 	 */
-	iterator remove_action(iterator position);
+	iterator remove_action(iterator position, bool validate_after_delete = true);
 
 	/**
 	 * @param action The action whose position you're looking for

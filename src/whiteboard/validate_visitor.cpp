@@ -56,9 +56,14 @@ void validate_visitor::validate_actions()
 		action->accept(*this);
 	}
 
-	foreach(action_ptr action, actions_to_erase_)
+	if (!actions_to_erase_.empty())
 	{
-		side_actions_->remove_action(side_actions_->get_position_of(action));
+		foreach(action_ptr action, actions_to_erase_)
+		{
+			side_actions_->remove_action(side_actions_->get_position_of(action), false);
+		}
+		actions_to_erase_.clear();
+		validate_actions();
 	}
 }
 

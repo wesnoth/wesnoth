@@ -214,7 +214,7 @@ side_actions::iterator side_actions::bump_later(side_actions::iterator position)
 	return valid_position;
 }
 
-side_actions::iterator side_actions::remove_action(side_actions::iterator position)
+side_actions::iterator side_actions::remove_action(side_actions::iterator position, bool validate_after_delete)
 {
 	if (resources::whiteboard->has_planned_unit_map())
 	{
@@ -227,8 +227,10 @@ side_actions::iterator side_actions::remove_action(side_actions::iterator positi
 	if (!actions_.empty() && validate_iterator(position))
 	{
 		actions_.erase(position);
-		//FIXME: causes infinite recursive call
-		validate_actions();
+		if (validate_after_delete)
+		{
+			validate_actions();
+		}
 	}
 	return begin() + distance;
 }
