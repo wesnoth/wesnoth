@@ -28,7 +28,7 @@
    <extension
          point="org.eclipse.ui.popupMenus">
       <objectContribution
-            adaptable="true"
+            adaptable="false"
             objectClass="org.eclipse.core.resources.IProject"
             nameFilter="*"
             id="plugin.projectContributions">
@@ -70,7 +70,7 @@
          </action>
       </objectContribution>
       <objectContribution
-            adaptable="true"
+            adaptable="false"
             id="plugin.mapContributions"
             nameFilter="*maps*"
             objectClass="org.eclipse.core.resources.IFolder">
@@ -165,6 +165,19 @@
                id="action.cfg.wmlindent"
                label="Run &quot;wmlindent&quot; on this file"
                menubarPath="plugin.wmltoolsCfgMenu/wmltoolsCfgMenuMarker">
+         </action>
+      </objectContribution>
+      <objectContribution
+            adaptable="false"
+            id="plugin.containerContributions"
+            nameFilter="*"
+            objectClass="org.eclipse.core.resources.IContainer">
+         <action
+               class="wesnoth_eclipse_plugin.action.UploadAddon"
+               icon="icons/wesnoth-icon_16.png"
+               id="action.container.addonUpload"
+               label="Upload Add-on"
+               menubarPath="_wesnoth">
          </action>
       </objectContribution>
    </extension>

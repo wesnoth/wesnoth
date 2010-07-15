@@ -31,7 +31,7 @@ public class WMLTools
 	 * @param useThread whether the tool should be runned in a new thread or not
 	 */
 	public static String runWMLIndent(String resourcePath, String stdin,
-						boolean dryrun, boolean writeToConsole, boolean useThread)
+			boolean dryrun, boolean writeToConsole, boolean useThread)
 	{
 		if (!checkPrerequisites(null, "wmlindent")) // wmlindent only check first
 			return null;
@@ -111,7 +111,7 @@ public class WMLTools
 		arguments.add(resourcePath);
 
 		return ExternalToolInvoker.launchTool("python", arguments, Constants.TI_SHOW_OUTPUT | Constants.TI_SHOW_OUTPUT_USER,
-					useThread);
+				useThread);
 	}
 
 	/**
@@ -126,19 +126,27 @@ public class WMLTools
 	{
 		if (wmlTool != null)
 		{
+			if (Preferences.getString(Constants.P_WESNOTH_WMLTOOLS_DIR).equals(""))
+			{
+				GUIUtils.showMessageBox("Please set the wmltools directory in the " +
+						"preferences before you use this feature.");
+				return false;
+			}
 			File wmlToolFile = new File(Preferences.getString(Constants.P_WESNOTH_WMLTOOLS_DIR) +
 					Path.SEPARATOR + wmlTool);
 
 			if (!wmlToolFile.exists())
 			{
-				GUIUtils.showMessageBox(WorkspaceUtils.getWorkbenchWindow(),
-						"Please set the wmltools directory in the preferences before you use this feature.");
+				GUIUtils.showMessageBox(String.format("The file %s was not found",
+						wmlToolFile));
 				return false;
 			}
 		}
-		if (filePath != null &&
-				(filePath.isEmpty() || !new File(filePath).exists()))
+		if (filePath != null && (filePath.isEmpty() || !new File(filePath).exists()))
+		{
+			GUIUtils.showMessageBox("");
 			return false;
+		}
 
 		return true;
 	}
@@ -197,5 +205,21 @@ public class WMLTools
 			e.printStackTrace();
 		}
 		return result;
+	}
+
+	public static String runWesnothAddonManager(String containerPath,
+			boolean writeToConsole, boolean useThread)
+	{
+		if (!checkPrerequisites(containerPath, "wesnoth_addon_manager"))
+			return null;
+
+		File wmllintFile = new File(Preferences.getString(Constants.P_WESNOTH_WMLTOOLS_DIR)
+				+ "/wesnoth_addon_manager");
+		List<String> arguments = new ArrayList<String>();
+		arguments.add(wmllintFile.getAbsolutePath());
+
+		arguments.add("-u");
+		arguments.add(containerPath);
+		return runPythonScript(arguments, null, useThread, writeToConsole, "Uploading result: ");
 	}
 }
