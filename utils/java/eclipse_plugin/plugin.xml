@@ -235,13 +235,7 @@
            project="true">
            <description>Create a Wesnoth campaign.</description>
        </wizard>
-  <!-- </extension> -->
-
- <!-- <extension
-       point="org.eclipse.ui.newWizards">
-       <category name="Wesnoth"
-             id="wesnoth.eclipse.newWizards">
-       </category> -->
+       
        <wizard name="Wesnoth Scenario"
            icon="icons/wesnoth-icon_16.png"
 		   category="wesnoth.eclipse.newWizards"
@@ -272,6 +266,7 @@
              Create a new Wesnoth faction.
           </description>
        </wizard>
+       <!--
        <wizard
              category="wesnoth.eclipse.newWizards"
              class="wesnoth_eclipse_plugin.wizards.unit.UnitsNewWizard"
@@ -282,7 +277,8 @@
           <description>
              Creates a new unit
           </description>
-       </wizard>
+       </wizard> 
+       -->
        <wizard
              category="wesnoth.eclipse.newWizards"
              class="wesnoth_eclipse_plugin.wizards.generator.WizardLauncher"
@@ -293,6 +289,14 @@
           <description>
              Launches the wizard based on the selected tag.
           </description>
+       </wizard>
+       <wizard
+             category="wesnoth.eclipse.newWizards"
+             class="wesnoth_eclipse_plugin.wizards.emptyproject.EmptyProjectNewWizard"
+             icon="icons/wesnoth-icon_16.png"
+             id="wesnoth_eclipse_plugin.wizard.emptyProjectWizard"
+             name="Empty project"
+             project="true">
        </wizard>
    </extension>
    <extension

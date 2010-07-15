@@ -1,4 +1,4 @@
-package wesnoth_eclipse_plugin.wizards.campaign;
+package wesnoth_eclipse_plugin.wizards.emptyproject;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
@@ -18,30 +18,33 @@ import wesnoth_eclipse_plugin.wizards.NewWizardTemplate;
 import wesnoth_eclipse_plugin.wizards.ReplaceableParameter;
 import wesnoth_eclipse_plugin.wizards.TemplateProvider;
 
-public class CampaignNewWizard extends NewWizardTemplate
+public class EmptyProjectNewWizard extends NewWizardTemplate
 {
-	protected CampaignPage0 page0_;
-	protected CampaignPage1 page1_;
-	protected CampaignPage2 page2_;
+	protected EmptyProjectPage0 page0_;
+	protected EmptyProjectPage1 page1_;
 
 	@Override
 	public void addPages()
 	{
-		page0_ = new CampaignPage0();
+		page0_ = new EmptyProjectPage0();
 		addPage(page0_);
 
-		page1_ = new CampaignPage1();
+		page1_ = new EmptyProjectPage1();
 		addPage(page1_);
-
-		page2_ = new CampaignPage2();
-		addPage(page2_);
 
 		super.addPages();
 	}
 
-	public CampaignNewWizard() {
-		setWindowTitle("Create a new Campaign");
+	public EmptyProjectNewWizard() {
+		setWindowTitle("Create a new empty project");
 		setNeedsProgressMonitor(true);
+	}
+
+	@Override
+	public boolean canFinish()
+	{
+		// pbl information is not necessary
+		return page0_.isPageComplete();
 	}
 
 	@Override
@@ -52,7 +55,8 @@ public class CampaignNewWizard extends NewWizardTemplate
 			// let's create the project
 			getContainer().run(false, false, new IRunnableWithProgress() {
 				@Override
-				public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException
+				public void run(IProgressMonitor monitor)
+						throws InvocationTargetException, InterruptedException
 				{
 					createProject(monitor);
 					monitor.done();
@@ -84,13 +88,14 @@ public class CampaignNewWizard extends NewWizardTemplate
 			description.setNatureIds(new String[] { WesnothProjectNature.NATURE_ID });
 			currentProject.setDescription(description, null);
 
-			String campaignStructure = prepareTemplate("campaign_structure");
-			if (campaignStructure == null)
+			String emptyProjectStructure = prepareTemplate("empty_project");
+			if (emptyProjectStructure == null)
 				return;
 
 			List<Pair<String, String>> files;
 			List<String> dirs;
-			Pair<List<Pair<String, String>>, List<String>> tmp = TemplateProvider.getInstance().getFilesDirectories(campaignStructure);
+			Pair<List<Pair<String, String>>, List<String>> tmp =
+					TemplateProvider.getInstance().getFilesDirectories(emptyProjectStructure);
 			files = tmp.First;
 			dirs = tmp.Second;
 
@@ -126,15 +131,9 @@ public class CampaignNewWizard extends NewWizardTemplate
 		params.add(new ReplaceableParameter("$$passphrase", page1_.getPassphrase()));
 		params.add(new ReplaceableParameter("$$translations_dir", page1_.getTranslationDir()));
 
-		params.add(new ReplaceableParameter("$$campaign_id", page2_.getCampaignId()));
-		params.add(new ReplaceableParameter("$$abrev", page2_.getAbbrev()));
-		params.add(new ReplaceableParameter("$$define", page2_.getDefine()));
-		params.add(new ReplaceableParameter("$$difficulties", page2_.getDifficulties()));
-		params.add(new ReplaceableParameter("$$first_scenario", page2_.getFirstScenario()));
-
 		params.add(new ReplaceableParameter("$$project_name", page0_.getProjectName()));
 		params.add(new ReplaceableParameter("$$project_dir_name", page0_.getProjectName()));
-		params.add(new ReplaceableParameter("$$type", page1_.isMultiplayer() ? "campaign_mp" : "campaign"));
+		params.add(new ReplaceableParameter("$$type", page1_.getType()));
 
 		return TemplateProvider.getInstance().getProcessedTemplate(templateName, params);
 	}

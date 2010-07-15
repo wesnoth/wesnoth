@@ -32,19 +32,25 @@ import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
 
 public class WesnothProjectBuilder extends IncrementalProjectBuilder
 {
-	public static final String									BUILDER_ID		= "Wesnoth_Eclipse_Plugin.projectBuilder";
-	private static final String									MARKER_TYPE		= "Wesnoth_Eclipse_Plugin.configProblem";
+	public static final String BUILDER_ID = "Wesnoth_Eclipse_Plugin.projectBuilder";
+	private static final String MARKER_TYPE = "Wesnoth_Eclipse_Plugin.configProblem";
 
 	/**
 	 * The key is the project name
-	 * The value is: - the last modified date for the .ignore file
+	 * The value is:
+	 * - the last modified date for the .ignore file
 	 * - the list with ignored directories names
 	 */
-	private static HashMap<String, Pair<Long, List<String>>>	ignoreCache_	= new HashMap<String, Pair<Long, List<String>>>();
+	private static HashMap<String, Pair<Long, List<String>>> ignoreCache_;
+
+	public WesnothProjectBuilder() {
+		if (ignoreCache_ == null)
+			ignoreCache_ = new HashMap<String, Pair<Long, List<String>>>();
+	}
 
 	class SampleDeltaVisitor implements IResourceDeltaVisitor
 	{
-		private IProgressMonitor	monitor_;
+		private IProgressMonitor monitor_;
 
 		public SampleDeltaVisitor(IProgressMonitor monitor) {
 			monitor_ = monitor;
@@ -75,7 +81,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 
 	class SampleResourceVisitor implements IResourceVisitor
 	{
-		private IProgressMonitor	monitor_;
+		private IProgressMonitor monitor_;
 
 		public SampleResourceVisitor(IProgressMonitor monitor) {
 			monitor_ = monitor;
