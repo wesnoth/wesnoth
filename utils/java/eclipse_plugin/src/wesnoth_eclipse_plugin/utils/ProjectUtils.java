@@ -10,12 +10,19 @@ package wesnoth_eclipse_plugin.utils;
 
 import java.io.File;
 
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IResource;
+import org.eclipse.core.runtime.Path;
 
 public class ProjectUtils
 {
 	public static String getPropertyValue(String fileName, String propertyName)
 	{
+		if (fileName == null || propertyName.isEmpty())
+			return null;
+
 		String value = "";
 		File file = new File(fileName);
 		if (!file.exists())
@@ -43,22 +50,44 @@ public class ProjectUtils
 
 		return value;
 	}
-	public static String getCampaignID() throws Exception
+
+	/**
+	 * Returns "_main.cfg" location from the specified resource or null if it isn't any
+	 * If the resource is a file it won't check for it's name
+	 * @param resource The resource where to search for '_main.cfg'
+	 * @return
+	 */
+	public static String getMainConfigLocation(IResource resource)
 	{
-		if (WorkspaceUtils.getSelectedResource() == null)
-		{
+		if (resource == null)
 			return null;
+
+		IResource targetResource = null;
+		if (resource instanceof IProject)
+		{
+			IProject project = (IProject)resource;
+			if (project.getFile("_main.cfg").exists())
+				targetResource = project.getFile("_main.cfg");
 		}
 
-		IProject project = WorkspaceUtils.getSelectedProject();
-		if (project == null)
-			project = WorkspaceUtils.getSelectedFile().getProject();
-		if (project == null)
-			project = WorkspaceUtils.getSelectedFolder().getProject();
+		if (targetResource == null && resource instanceof IFolder)
+		{
+			IFolder folder = (IFolder)resource;
+			if (folder.getFile(new Path("_main.cfg")).exists())
+				targetResource = folder.getFile(new Path("_main.cfg"));
+		}
 
-		return getPropertyValue(WorkspaceUtils.getPathRelativeToUserDir(project.getFile("_main.cfg")),"id");
+		if (targetResource == null && resource instanceof IFile)
+		{
+			targetResource = resource;
+		}
+		return WorkspaceUtils.getPathRelativeToUserDir(targetResource);
 	}
 
+	public static String getCampaignID(IResource resource)
+	{
+		return getPropertyValue(getMainConfigLocation(resource),"id");
+	}
 	public static String getScenarioID(String fileName)
 	{
 		return getPropertyValue(fileName,"id");

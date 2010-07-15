@@ -12,7 +12,6 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
 
 import wesnoth_eclipse_plugin.Constants;
@@ -21,11 +20,21 @@ import wesnoth_eclipse_plugin.preferences.Preferences;
 
 public class GameUtils
 {
-	public static void runCampaignScenario()
+	public static void runCampaign()
+	{
+		runCampaignScenario(false);
+	}
+
+	public static void runScenario()
+	{
+		runCampaignScenario(true);
+	}
+
+	protected static void runCampaignScenario(boolean scenario)
 	{
 		if (WorkspaceUtils.getSelectedResource() == null)
 		{
-			GUIUtils.showMessageBox("Please select a campaign or a resource inside the " +
+			GUIUtils.showMessageBox("Please select a directory or a resource inside the " +
 					"campaign project before.");
 			return;
 		}
@@ -33,7 +42,7 @@ public class GameUtils
 		IResource selectedResource = WorkspaceUtils.getSelectedResource();
 
 		//TODO: optimize this by checking if file really is a scenario
-		if (selectedResource instanceof IFile &&
+		if (scenario &&
 			!ProjectUtils.isScenarioFile(WorkspaceUtils.getPathRelativeToUserDir(selectedResource)))
 		{
 			GUIUtils.showMessageBox("This is not a valid scenario file.");
@@ -42,14 +51,14 @@ public class GameUtils
 
 		try
 		{
-			String campaignId = ProjectUtils.getCampaignID();
+			String campaignId = ProjectUtils.getCampaignID(selectedResource);
 			String scenarioId = ProjectUtils.getScenarioID(
 					WorkspaceUtils.getPathRelativeToUserDir(selectedResource));
 
 			if (campaignId == null)
 			{
-				GUIUtils.showMessageBox("You need to have a valid _main.cfg campaign file" +
-						" in your directory");
+				GUIUtils.showMessageBox("You need to have a valid campaign file" +
+						" in your directory (_main.cfg) or selected.");
 				return;
 			}
 

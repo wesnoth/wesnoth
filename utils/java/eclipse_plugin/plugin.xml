@@ -103,11 +103,18 @@
             nameFilter="*.cfg"
             objectClass="org.eclipse.core.resources.IFile">
          <action
+               class="wesnoth_eclipse_plugin.action.OpenCampaignInGame"
+               icon="icons/wesnoth-icon_16.png"
+               id="action.cfg.openCampaignInGame"
+               label="Open campaign in game"
+               menubarPath="_wesnoth">
+         </action>
+         <action
                class="wesnoth_eclipse_plugin.action.OpenScenarioInGame"
                enablesFor="1"
                icon="icons/wesnoth-icon_16.png"
                id="action.cfg.openScenarioInGame"
-               label="Open Scenario in game"
+               label="Open scenario in game"
                menubarPath="_wesnoth">
          </action>
          <menu

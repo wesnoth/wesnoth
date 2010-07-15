@@ -28,7 +28,7 @@ public class OpenCampaignInGame implements IObjectActionDelegate
 	@Override
 	public void run(IAction action)
 	{
-		GameUtils.runCampaignScenario();
+		GameUtils.runCampaign();
 	}
 
 	@Override

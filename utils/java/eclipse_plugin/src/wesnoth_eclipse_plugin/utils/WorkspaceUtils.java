@@ -147,6 +147,9 @@ public class WorkspaceUtils
 	 */
 	public static String getPathRelativeToUserDir(IResource resource)
 	{
+		if (resource == null)
+			return null;
+
 		String result = Preferences.getString(Constants.P_WESNOTH_USER_DIR) + Path.SEPARATOR + "data/add-ons/";
 		if (!resource.getProject().getName().toLowerCase(new Locale("English")).equals("user addons"))
 			result += (resource.getProject().getName() + Path.SEPARATOR);

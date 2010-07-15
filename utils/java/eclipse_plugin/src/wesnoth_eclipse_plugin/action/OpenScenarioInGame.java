@@ -28,7 +28,7 @@ public class OpenScenarioInGame implements IObjectActionDelegate
 	@Override
 	public void run(IAction action)
 	{
-		GameUtils.runCampaignScenario();
+		GameUtils.runScenario();
 	}
 
 	@Override
