@@ -1354,6 +1354,13 @@ void unit_type_data::add_advancement(unit_type& to_unit) const
 
         unit_type_data::unit_type_map::iterator from_unit = types_.find(from);
 
+		if (from_unit == types_.end()) {
+			std::ostringstream msg;
+			msg << "unit type '" << from << "' not found when resolving [advancefrom] tag for '"
+				<< to_unit.id() << "'";
+			throw config::error(msg.str());
+		}
+
         // Fix up advance_from references
         from_unit->second.add_advancement(to_unit, xp);
 
