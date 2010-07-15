@@ -69,6 +69,8 @@ namespace
     ana_network_manager        ana_manager;
     network::bandwidth_in_ptr  global_bandwidth_in_ptr( new network::bandwidth_in(4) );
     //TODO: no global bandwidth
+
+    size_t instances_using_the_network_module( 0 );
 }
 
 namespace {
@@ -179,14 +181,16 @@ namespace network {
 
     manager::manager(size_t /*min_threads*/, size_t /*max_threads*/) : free_(true)
     {
+        ++instances_using_the_network_module;
         std::cout << "DEBUG: Creating a manager object.\n";
     }
 
     manager::~manager()
     {
-    //     throw std::runtime_error("TODO:Not implemented");
         std::cout << "DEBUG: destroying the manager object.\n";
-        ana_manager.close_connections_and_cleanup();
+
+        if ( --instances_using_the_network_module == 0 )
+            ana_manager.close_connections_and_cleanup();
     }
 
     void set_raw_data_only()
