@@ -50,6 +50,7 @@ static side_actions_ptr current_actions()
 
 manager::manager():
 		active_(false),
+		wait_for_side_init_(true),
 		mapbuilder_(),
 		highlighter_(),
 		route_(),
@@ -75,9 +76,29 @@ void manager::set_active(bool active)
 		current_actions()->validate_actions();
 }
 
+void manager::init_side()
+{
+	if (active_)
+	{
+			current_actions()->validate_actions();
+			highlighter_.reset(new highlight_visitor(*resources::units, current_actions()));
+	}
+
+	wait_for_side_init_ = false;
+}
+
+void manager::finish_side_turn()
+{
+	wait_for_side_init_ = true;
+
+	highlighter_.reset();
+	erase_temp_move();
+
+}
+
 void manager::set_planned_unit_map()
 {
-	if (active_ && !modifying_actions_)
+	if (active_ && !modifying_actions_ && !wait_for_side_init_)
 	{
 		modifying_actions_ = true;
 		//TODO: enable back this assert, after modifying the mouse code that triggers it constantly
@@ -99,7 +120,7 @@ void manager::set_planned_unit_map()
 
 void manager::set_real_unit_map()
 {
-	if (active_ && !modifying_actions_)
+	if (active_ && !modifying_actions_ && !wait_for_side_init_)
 	{
 		modifying_actions_ = true;
 		if (planned_unit_map_active_)
@@ -118,17 +139,15 @@ void manager::set_real_unit_map()
 
 void manager::draw_hex(const map_location& hex)
 {
-	current_actions()->draw_hex(hex);
+	if (active_ && !wait_for_side_init_)
+		current_actions()->draw_hex(hex);
 }
 
 void manager::on_mouseover_change(const map_location& hex)
 {
-	if (!active_)
-		return;
-
 	//FIXME: Detect if a WML event is executing, and if so, avoid modifying the unit map during that time.
 	// Acting otherwise causes a crash.
-	if (active_ && !selected_unit_)
+	if (active_ && !selected_unit_ && highlighter_)
 	{
 		highlighter_->set_mouseover_hex(hex);
 		highlighter_->highlight();

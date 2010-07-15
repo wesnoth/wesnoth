@@ -53,6 +53,9 @@ public:
 	bool is_active() const { return active_; }
 	void set_active(bool active);
 
+	void init_side();
+	void finish_side_turn();
+
 	/**
 	 * Temporarily apply the effects of the current team's
 	 * planned moves to the unit map.
@@ -112,6 +115,7 @@ private:
 	 * Tracks whether the whiteboard is active.
 	 */
 	bool active_;
+	bool wait_for_side_init_;
 
 	boost::scoped_ptr<mapbuilder_visitor> mapbuilder_;
 	boost::scoped_ptr<highlight_visitor> highlighter_;
