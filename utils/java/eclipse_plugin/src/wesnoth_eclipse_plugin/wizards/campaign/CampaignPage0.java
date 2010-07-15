@@ -13,14 +13,10 @@ import org.eclipse.ui.dialogs.WizardNewProjectCreationPage;
 
 public class CampaignPage0 extends WizardNewProjectCreationPage
 {
-
 	public CampaignPage0() {
 		super("campaignPage0");
 	}
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.ui.dialogs.WizardNewProjectCreationPage#createControl(org.eclipse.swt.widgets.Composite)
-	 */
 	@Override
 	public void createControl(Composite parent)
 	{
@@ -28,9 +24,6 @@ public class CampaignPage0 extends WizardNewProjectCreationPage
 		setMessage("Specify the name of the campaign project.");
 	}
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.jface.wizard.WizardPage#canFlipToNextPage()
-	 */
 	@Override
 	public boolean canFlipToNextPage()
 	{

@@ -19,6 +19,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 
+import wesnoth_eclipse_plugin.Logger;
 import wesnoth_eclipse_plugin.builder.WesnothProjectNature;
 import wesnoth_eclipse_plugin.utils.Pair;
 import wesnoth_eclipse_plugin.utils.ResourceUtils;
@@ -68,7 +69,7 @@ public class CampaignNewWizard extends NewWizardTemplate
 			});
 		} catch (Exception e)
 		{
-			e.printStackTrace();
+			Logger.getInstance().logException(e);
 			return false;
 		}
 		return true;
@@ -115,7 +116,7 @@ public class CampaignNewWizard extends NewWizardTemplate
 
 		} catch (CoreException e)
 		{
-			e.printStackTrace();
+			Logger.getInstance().logException(e);
 		}
 
 		monitor.done();
@@ -128,7 +129,7 @@ public class CampaignNewWizard extends NewWizardTemplate
 		params.add(new ReplaceableParameter("$$campaign_name", page1_.getCampaignName()));
 		params.add(new ReplaceableParameter("$$author", page1_.getAuthor()));
 		params.add(new ReplaceableParameter("$$version", page1_.getVersion()));
-		params.add(new ReplaceableParameter("$$description", page1_.getDescription()));
+		params.add(new ReplaceableParameter("$$description", page1_.getCampaignDescription()));
 		params.add(new ReplaceableParameter("$$icon", page1_.getIconPath()));
 		params.add(new ReplaceableParameter("$$email", page1_.getEmail()));
 		params.add(new ReplaceableParameter("$$passphrase", page1_.getPassphrase()));

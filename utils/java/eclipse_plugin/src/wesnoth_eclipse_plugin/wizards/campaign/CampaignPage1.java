@@ -31,9 +31,6 @@ public class CampaignPage1 extends WizardPage
 	private Text	txtIcon_;
 	private Button	chkMultiCampaign_;
 
-	/**
-	 * Create the wizard.
-	 */
 	public CampaignPage1() {
 		super("campaignPage1");
 		setTitle("Create New Campaign");
@@ -41,11 +38,6 @@ public class CampaignPage1 extends WizardPage
 		setPageComplete(false);
 	}
 
-	/**
-	 * Create contents of the wizard.
-	 *
-	 * @param parent
-	 */
 	@Override
 	public void createControl(Composite parent)
 	{
@@ -146,15 +138,6 @@ public class CampaignPage1 extends WizardPage
 		updateIsPageComplete();
 	}
 
-	/* (non-Javadoc)
-	 * @see org.eclipse.jface.wizard.WizardPage#canFlipToNextPage()
-	 */
-	@Override
-	public boolean canFlipToNextPage()
-	{
-		return (isPageComplete() && getNextPage() != null);
-	}
-
 	/**
 	 * Checks the mandatory fields and updates the isPageComplete status
 	 */
@@ -205,8 +188,7 @@ public class CampaignPage1 extends WizardPage
 	/**
 	 * @return the description
 	 */
-	@Override
-	public String getDescription()
+	public String getCampaignDescription()
 	{
 		return txtDescription_.getText();
 	}
