@@ -1190,7 +1190,6 @@ void unit_type_data::set_config(config &cfg)
         // we insert an empty unit_type and build it after the copy (for performance)
         std::pair<unit_type_map::iterator,bool> insertion =
             insert(std::pair<const std::string,unit_type>(id,unit_type()));
-        unit_type_map::iterator itor = types_.find(id);
         //	if (!insertion.second)
         // TODO: else { warning for multiple units with same id}
         LOG_CONFIG << "added " << id << " to unit_type list (unit_type_data.unit_types)\n";
