@@ -80,7 +80,7 @@ public:
 	void end_unit_turn(mouse_handler &mousehandler, int side_num);
 	void search();
 	void user_command();
-	void custom_command(mouse_handler& mousehandler);
+	void custom_command();
 	void ai_formula();
 	void clear_messages();
 #ifdef USRCMD2
@@ -95,7 +95,7 @@ public:
 		bool continue_move, int side_num, mouse_handler &mousehandler);
 	void do_speak();
 	void do_search(const std::string& new_search);
-	void do_command(const std::string &str, mouse_handler &mousehandler);
+	void do_command(const std::string &str);
 	void do_ai_formula(const std::string &str, int side_num, mouse_handler &mousehandler);
 	void clear_undo_stack(int side_num);
 protected:

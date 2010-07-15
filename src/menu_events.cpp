@@ -2311,12 +2311,9 @@ class console_handler : public map_command_handler<console_handler>, private cha
 	public:
 		//convenience typedef
 		typedef map_command_handler<console_handler> chmap;
-		console_handler(menu_handler& menu_handler,
-			mouse_handler& mouse_handler)
-		: chmap(), chat_command_handler(menu_handler, true), menu_handler_(menu_handler), mouse_handler_(mouse_handler)
-			, team_num_(resources::controller->current_side())
-		{
-		}
+		console_handler(menu_handler& menu_handler)
+		: chmap(), chat_command_handler(menu_handler, true), menu_handler_(menu_handler), team_num_(resources::controller->current_side())
+		{}
 		using chmap::dispatch; //disambiguate
 
 	protected:
@@ -2528,7 +2525,6 @@ class console_handler : public map_command_handler<console_handler>, private cha
 		}
 	private:
 		menu_handler& menu_handler_;
-		mouse_handler& mouse_handler_;
 		const unsigned int team_num_;
 };
 
@@ -3002,10 +2998,9 @@ void menu_handler::do_search(const std::string& new_search)
 	}
 }
 
-void menu_handler::do_command(const std::string& str,
-		mouse_handler &mousehandler)
+void menu_handler::do_command(const std::string& str)
 {
-	console_handler ch(*this, mousehandler);
+	console_handler ch(*this);
 	ch.dispatch(str);
 }
 
@@ -3376,7 +3371,8 @@ void console_handler::do_undiscover() {
 	}
 }
 void console_handler::do_create() {
-	const map_location &loc = mouse_handler_.get_last_hex();
+	const mouse_handler& mousehandler = resources::controller->get_mouse_handler_base();
+	const map_location &loc = mousehandler.get_last_hex();
 	if (menu_handler_.map_.on_board(loc)) {
 		const unit_type *ut = unit_types.find(get_data());
 		if (!ut) {
@@ -3451,12 +3447,12 @@ void menu_handler::user_command()
 	textbox_info_.show(gui::TEXTBOX_COMMAND,sgettext("prompt^Command:"), "", false, *gui_);
 }
 
-void menu_handler::custom_command(mouse_handler &mousehandler)
+void menu_handler::custom_command()
 {
 	std::vector<std::string> commands = utils::split(preferences::custom_command(), ';');
 	std::vector<std::string>::iterator c = commands.begin();
 	for (; c != commands.end() ; ++c) {
-		do_command(*c, mousehandler);
+		do_command(*c);
 	}
 }
 

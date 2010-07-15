@@ -825,7 +825,7 @@ void play_controller::enter_textbox()
 		break;
 	case gui::TEXTBOX_COMMAND:
 		menu_handler_.get_textbox().close(*gui_);
-		menu_handler_.do_command(str, mousehandler);
+		menu_handler_.do_command(str);
 		break;
 	case gui::TEXTBOX_AI:
 		menu_handler_.get_textbox().close(*gui_);

@@ -191,7 +191,7 @@ void playsingle_controller::user_command(){
 }
 
 void playsingle_controller::custom_command(){
-	menu_handler_.custom_command(mouse_handler_);
+	menu_handler_.custom_command();
 }
 
 void playsingle_controller::ai_formula(){
