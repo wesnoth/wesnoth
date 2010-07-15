@@ -22,15 +22,13 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Path;
-import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
 
-import wesnoth_eclipse_plugin.utils.GUIUtils;
-import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
+import wesnoth_eclipse_plugin.Logger;
 import wesnoth_eclipse_plugin.wizards.NewWizardTemplate;
 import wesnoth_eclipse_plugin.wizards.ReplaceableParameter;
 import wesnoth_eclipse_plugin.wizards.TemplateProvider;
@@ -60,14 +58,14 @@ public class EraNewWizard extends NewWizardTemplate
 		final String fileName = page0_.getFileName();
 		IRunnableWithProgress op = new IRunnableWithProgress() {
 			@Override
-			public void run(IProgressMonitor monitor) throws InvocationTargetException
+			public void run(IProgressMonitor monitor)
 			{
 				try
 				{
 					doFinish(containerName, fileName, monitor);
 				} catch (CoreException e)
 				{
-					throw new InvocationTargetException(e);
+					Logger.getInstance().logException(e);
 				} finally
 				{
 					monitor.done();
@@ -82,9 +80,7 @@ public class EraNewWizard extends NewWizardTemplate
 			return false;
 		} catch (InvocationTargetException e)
 		{
-			Throwable realException = e.getTargetException();
-			MessageDialog.openError(getShell(), "Error", realException.getMessage());
-			return false;
+			Logger.getInstance().logException(e);
 		}
 		return true;
 	}
@@ -118,7 +114,7 @@ public class EraNewWizard extends NewWizardTemplate
 			stream.close();
 		} catch (IOException e)
 		{
-			e.printStackTrace();
+			Logger.getInstance().logException(e);
 		}
 
 		monitor.worked(5);
@@ -151,7 +147,8 @@ public class EraNewWizard extends NewWizardTemplate
 
 		if (template == null)
 		{
-			GUIUtils.showMessageBox(WorkspaceUtils.getWorkbenchWindow(), "Template for \"era\" not found.");
+			Logger.getInstance().log("'era' template not found",
+					"Template for \"era\" not found.");
 			return null;
 		}
 

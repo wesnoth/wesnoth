@@ -19,17 +19,13 @@ import wesnoth_eclipse_plugin.Constants;
  */
 public class Preferences extends AbstractPreferenceInitializer {
 
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer#initializeDefaultPreferences()
-	 */
 	@Override
 	public void initializeDefaultPreferences() {
 		IPreferenceStore store = Activator.getDefault().getPreferenceStore();
 		store.setDefault(Constants.P_WESNOTH_EXEC_PATH, "");
 		store.setDefault(Constants.P_WESNOTH_WORKING_DIR, "");
 		store.setDefault(Constants.P_WESNOTH_USER_DIR, "");
+		store.setDefault(Constants.P_WESNOTH_WMLTOOLS_DIR, "");
 	}
 
 	/**

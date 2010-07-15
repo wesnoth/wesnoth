@@ -10,18 +10,20 @@ package wesnoth_eclipse_plugin.handlers;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
-import org.eclipse.core.commands.ExecutionException;
 
+import wesnoth_eclipse_plugin.utils.GUIUtils;
 import wesnoth_eclipse_plugin.wizards.TemplateProvider;
 import wesnoth_eclipse_plugin.wizards.generator.SchemaParser;
 
 public class ReloadFilesHandler extends AbstractHandler
 {
 	@Override
-	public Object execute(ExecutionEvent event) throws ExecutionException
+	public Object execute(ExecutionEvent event)
 	{
 		SchemaParser.getInstance().parseSchema(true);
 		TemplateProvider.getInstance().loadTemplates();
+
+		GUIUtils.showMessageBox("Files reloaded.");
 		return null;
 	}
 }

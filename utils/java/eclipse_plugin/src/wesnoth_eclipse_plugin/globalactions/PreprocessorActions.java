@@ -19,6 +19,7 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.ui.ide.IDE;
 
 import wesnoth_eclipse_plugin.Constants;
+import wesnoth_eclipse_plugin.Logger;
 import wesnoth_eclipse_plugin.builder.ExternalToolInvoker;
 import wesnoth_eclipse_plugin.preferences.Preferences;
 import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
@@ -34,8 +35,8 @@ public class PreprocessorActions
 	 * @param waitForIt true to wait for the preprocessing to finish
 	 * @return
 	 */
-	public static boolean preprocessFile(String fileName,String targetDirectory,List<String> defines,
-			boolean useThread, boolean waitForIt)
+	public static boolean preprocessFile(String fileName, String targetDirectory,
+			List<String> defines, boolean useThread, boolean waitForIt)
 	{
 		try{
 			List<String> arguments = new ArrayList<String>();
@@ -66,7 +67,7 @@ public class PreprocessorActions
 			return true;
 		}
 		catch (Exception e) {
-			e.printStackTrace();
+			Logger.getInstance().logException(e);
 			return false;
 		}
 	}
@@ -79,19 +80,26 @@ public class PreprocessorActions
 	 */
 	public static void openPreprocessedFileInEditor(IFile file, boolean openPlain)
 	{
-		if (file == null)
+		if (file == null || !file.exists())
+		{
+			Logger.getInstance().log("file null or non existent.",
+					"The file is null or does not exist");
 			return;
+		}
 
-		IFileStore preprocFile = EFS.getLocalFileSystem().getStore(new Path(WorkspaceUtils.getTemporaryFolder()));
-		preprocFile = preprocFile.getChild(file.getName() + (openPlain == true? ".plain" : "") );
+		IFileStore preprocFile =
+			EFS.getLocalFileSystem().getStore(new Path(WorkspaceUtils.getTemporaryFolder()));
+		preprocFile = preprocFile.getChild(file.getName() +
+				(openPlain == true? ".plain" : ""));
 
 		try
 		{
-			IDE.openEditorOnFileStore(WorkspaceUtils.getWorkbenchWindow().getActivePage(), preprocFile);
+			IDE.openEditorOnFileStore(WorkspaceUtils.getWorkbenchWindow().getActivePage(),
+					preprocFile);
 		}
 		catch (Exception e)
 		{
-			e.printStackTrace();
+			Logger.getInstance().logException(e);
 		}
 	}
 
@@ -102,7 +110,7 @@ public class PreprocessorActions
 		return preprocFile.toString();
 	}
 
-	public static void preprocessIfNotExists(IFile file,boolean useThread, boolean waitForIt)
+	public static void preprocessIfNotExists(IFile file, boolean useThread, boolean waitForIt)
 	{
 		if (new File(WorkspaceUtils.getTemporaryFolder() + file.getName()).exists())
 			return;

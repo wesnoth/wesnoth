@@ -9,6 +9,8 @@
 package wesnoth_eclipse_plugin.preferences;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.preference.DirectoryFieldEditor;
@@ -35,17 +37,23 @@ import wesnoth_eclipse_plugin.Constants;
  * the main plug-in class. That way, preferences can
  * be accessed directly via the preference store.
  */
-public class WesnothEditorPreferences
-		extends FieldEditorPreferencePage
+public class WesnothEditorPreferences extends FieldEditorPreferencePage
 		implements IWorkbenchPreferencePage
 {
 
-	private DirectoryFieldEditor	wmlToolsField;
+	private DirectoryFieldEditor	wmlToolsField_;
+	private List<String> 			wmlToolsList_;
 
 	public WesnothEditorPreferences() {
 		super(GRID);
 		setPreferenceStore(Activator.getDefault().getPreferenceStore());
 		setDescription("Wesnoth User-Made-Content Plugin preferences");
+
+		wmlToolsList_ = new ArrayList<String>();
+		wmlToolsList_.add("wmllint");
+		wmlToolsList_.add("wmlindent");
+		wmlToolsList_.add("wmlscope");
+		wmlToolsList_.add("wesnoth_addon_manager");
 	}
 
 	/**
@@ -64,9 +72,9 @@ public class WesnothEditorPreferences
 		addField(new DirectoryFieldEditor(Constants.P_WESNOTH_USER_DIR,
 				"User data directory:", getFieldEditorParent()));
 
-		wmlToolsField = new DirectoryFieldEditor(Constants.P_WESNOTH_WMLTOOLS_DIR,
+		wmlToolsField_ = new DirectoryFieldEditor(Constants.P_WESNOTH_WMLTOOLS_DIR,
 				"WML* tools directory:", getFieldEditorParent());
-		addField(wmlToolsField);
+		addField(wmlToolsField_);
 	}
 
 	@Override
@@ -80,10 +88,14 @@ public class WesnothEditorPreferences
 		super.checkState();
 		setValid(false);
 
-		if (!(new File(wmlToolsField.getStringValue() + Path.SEPARATOR + "wmllint").exists()))
+		for(String tool : wmlToolsList_)
 		{
-			setErrorMessage("wmllint cannot be found in the wml tools path");
-			return;
+			if (!(new File(wmlToolsField_.getStringValue() + Path.SEPARATOR + tool).exists()))
+			{
+				setErrorMessage(String.format("'%s' cannot be found in the wml tools path",
+						tool));
+				return;
+			}
 		}
 
 		setErrorMessage(null);

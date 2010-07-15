@@ -19,9 +19,9 @@ import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Path;
-import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 
+import wesnoth_eclipse_plugin.Logger;
 import wesnoth_eclipse_plugin.utils.EditorUtils;
 import wesnoth_eclipse_plugin.wizards.NewWizardTemplate;
 import wesnoth_eclipse_plugin.wizards.WizardUtils;
@@ -52,7 +52,8 @@ public class WizardLauncher extends NewWizardTemplate
 	@Override
 	public boolean performFinish()
 	{
-		wizard_ = new WizardGenerator(page1_.getTagDescription() + " new wizard", page1_.getTagName(), (byte) 0);
+		wizard_ = new WizardGenerator(page1_.getTagDescription() +
+							" new wizard", page1_.getTagName(), (byte) 0);
 		WizardUtils.launchWizard(wizard_, getShell(), selection_);
 		if (!wizard_.isFinished())
 			return false;
@@ -73,8 +74,7 @@ public class WizardLauncher extends NewWizardTemplate
 			return false;
 		} catch (InvocationTargetException e)
 		{
-			Throwable realException = e.getTargetException();
-			MessageDialog.openError(getShell(), "Error", realException.getMessage());
+			Logger.getInstance().logException(e);
 			return false;
 		}
 		return true;
@@ -126,7 +126,7 @@ public class WizardLauncher extends NewWizardTemplate
 			monitor.worked(5);
 		} catch (Exception e)
 		{
-			e.printStackTrace();
+			Logger.getInstance().logException(e);
 		}
 	}
 }

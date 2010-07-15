@@ -17,6 +17,8 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 
+import wesnoth_eclipse_plugin.Logger;
+
 public class TestHandler extends AbstractHandler
 {
 	@Override
@@ -45,17 +47,17 @@ public class TestHandler extends AbstractHandler
 		//						Thread.sleep(2000);
 		//					} catch (InterruptedException e)
 		//					{
-		//						e.printStackTrace();
+		//						Logger.getInstance().logException(e);
 		//					}
 		//					monitor.done();
 		//				}
 		//			});
 		//		} catch (InvocationTargetException e)
 		//		{
-		//			e.printStackTrace();
+		//			Logger.getInstance().logException(e);
 		//		} catch (InterruptedException e)
 		//		{
-		//			e.printStackTrace();
+		//			Logger.getInstance().logException(e);
 		//		}
 		//		UIJob job1 = new UIJob("My the job") {
 		//
@@ -69,7 +71,7 @@ public class TestHandler extends AbstractHandler
 		//					Thread.sleep(2000);
 		//				} catch (InterruptedException e)
 		//				{
-		//					e.printStackTrace();
+		//					Logger.getInstance().logException(e);
 		//				}
 		//				monitor.done();
 		//				return Status.OK_STATUS;
@@ -88,7 +90,7 @@ public class TestHandler extends AbstractHandler
 		//					Thread.sleep(2000);
 		//				} catch (InterruptedException e)
 		//				{
-		//					e.printStackTrace();
+		//					Logger.getInstance().logException(e);
 		//				}
 		//				monitor.done();
 		//				return Status.OK_STATUS;
@@ -106,7 +108,7 @@ public class TestHandler extends AbstractHandler
 					Thread.sleep(2000);
 				} catch (InterruptedException e)
 				{
-					e.printStackTrace();
+					Logger.getInstance().logException(e);
 				}
 				monitor.done();
 				return Status.OK_STATUS;

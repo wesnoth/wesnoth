@@ -12,7 +12,6 @@ import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.Path;
-import org.eclipse.jface.dialogs.IDialogPage;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.WizardPage;
@@ -71,9 +70,6 @@ public class ScenarioPage0 extends WizardPage
 		this.selection = selection;
 	}
 
-	/**
-	 * @see IDialogPage#createControl(Composite)
-	 */
 	@Override
 	public void createControl(Composite parent)
 	{
@@ -162,52 +158,6 @@ public class ScenarioPage0 extends WizardPage
 	}
 
 	/**
-	 * Tests if the current workbench selection is a suitable campaign to use.
-	 */
-	private void initialize()
-	{
-		if (selection != null && selection.isEmpty() == false && selection instanceof IStructuredSelection)
-		{
-			IStructuredSelection ssel = (IStructuredSelection) selection;
-			if (ssel.size() > 1)
-			{
-				return;
-			}
-			Object obj = ssel.getFirstElement();
-			if (obj instanceof IResource)
-			{
-				IContainer container;
-				if (obj instanceof IContainer)
-				{
-					container = (IContainer) obj;
-				}
-				else
-				{
-					container = ((IResource) obj).getParent();
-				}
-				txtProject_.setText(container.getFullPath().toString());
-			}
-		}
-	}
-
-	/**
-	 * Uses the standard container selection dialog to choose the new value for
-	 * the project field.
-	 */
-	private void handleBrowse()
-	{
-		ContainerSelectionDialog dialog = new ContainerSelectionDialog(getShell(), ResourcesPlugin.getWorkspace().getRoot(), false, "Select a campaign project");
-		if (dialog.open() == ContainerSelectionDialog.OK)
-		{
-			Object[] result = dialog.getResult();
-			if (result.length == 1)
-			{
-				txtProject_.setText(((Path) result[0]).toString());
-			}
-		}
-	}
-
-	/**
 	 * Checks the mandatory fields and updates the isPageComplete status
 	 */
 	private void updatePageIsComplete()
@@ -267,6 +217,52 @@ public class ScenarioPage0 extends WizardPage
 		setErrorMessage(null);
 		setMessage(warningMessage.isEmpty() ? null : warningMessage, WARNING);
 		setPageComplete(true);
+	}
+
+	/**
+	 * Tests if the current workbench selection is a suitable campaign to use.
+	 */
+	private void initialize()
+	{
+		if (selection != null && selection.isEmpty() == false && selection instanceof IStructuredSelection)
+		{
+			IStructuredSelection ssel = (IStructuredSelection) selection;
+			if (ssel.size() > 1)
+			{
+				return;
+			}
+			Object obj = ssel.getFirstElement();
+			if (obj instanceof IResource)
+			{
+				IContainer container;
+				if (obj instanceof IContainer)
+				{
+					container = (IContainer) obj;
+				}
+				else
+				{
+					container = ((IResource) obj).getParent();
+				}
+				txtProject_.setText(container.getFullPath().toString());
+			}
+		}
+	}
+
+	/**
+	 * Uses the standard container selection dialog to choose the new value for
+	 * the project field.
+	 */
+	private void handleBrowse()
+	{
+		ContainerSelectionDialog dialog = new ContainerSelectionDialog(getShell(), ResourcesPlugin.getWorkspace().getRoot(), false, "Select a campaign project");
+		if (dialog.open() == ContainerSelectionDialog.OK)
+		{
+			Object[] result = dialog.getResult();
+			if (result.length == 1)
+			{
+				txtProject_.setText(((Path) result[0]).toString());
+			}
+		}
 	}
 
 	/**

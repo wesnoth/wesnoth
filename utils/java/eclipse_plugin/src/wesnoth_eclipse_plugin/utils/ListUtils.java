@@ -21,13 +21,14 @@ public class ListUtils
 	 */
 	public static String concatenateList(List<String> list, String separator)
 	{
+		if (list == null || list.isEmpty())
+			return "";
 		String result = "";
 		for (int i = 0; i < list.size() - 1; i++)
 		{
 			result += (list.get(i) + separator);
 		}
-		if (!list.isEmpty())
-			result += list.get(list.size() - 1);
+		result += list.get(list.size() - 1);
 		return result;
 	}
 
@@ -40,13 +41,15 @@ public class ListUtils
 	 */
 	public static String concatenateArray(String[] array, String separator)
 	{
+		if (array == null || array.length == 0)
+			return "";
+
 		String result = "";
 		for (int i = 0; i < array.length - 1; i++)
 		{
 			result += (array[i] + separator);
 		}
-		if (array.length > 0)
-			result += array[array.length - 1];
+		result += array[array.length - 1];
 		return result;
 	}
 }

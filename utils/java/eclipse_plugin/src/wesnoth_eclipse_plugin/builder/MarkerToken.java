@@ -12,6 +12,8 @@ import java.util.StringTokenizer;
 
 import org.eclipse.core.resources.IMarker;
 
+import wesnoth_eclipse_plugin.Logger;
+
 public class MarkerToken{
 	private MarkerTokenType type_ = MarkerTokenType.INFO;
 	private String message_ = "";
@@ -60,7 +62,7 @@ public class MarkerToken{
 			return new MarkerToken(type, tokenizer.nextToken(), lineIndex,columnIndexStart,columnIndexEnd);
 		}
 		catch (Exception e) {
-			e.printStackTrace();
+			Logger.getInstance().logException(e);
 			return null;
 		}
 	}

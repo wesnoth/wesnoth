@@ -25,10 +25,8 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.core.runtime.Status;
-import org.eclipse.jface.dialogs.ErrorDialog;
+import org.eclipse.swt.SWT;
 
-import wesnoth_eclipse_plugin.Activator;
 import wesnoth_eclipse_plugin.Logger;
 
 public class ResourceUtils
@@ -37,9 +35,9 @@ public class ResourceUtils
 	 * Copies a file from source to target
 	 * @param source
 	 * @param target
-	 * @throws Exception
+	 * @throws IOException
 	 */
-	public static void copyTo(File source, File target) throws Exception
+	public static void copyTo(File source, File target) throws IOException
 	{
 		if (source == null || target == null)
 			return;
@@ -61,7 +59,7 @@ public class ResourceUtils
 	public static String getFileContents(File file)
 	{
 		if (!file.exists() || !file.isFile())
-			return null;
+			return "";
 
 		String contentsString = "";
 		BufferedReader reader = null;
@@ -75,16 +73,16 @@ public class ResourceUtils
 			}
 		} catch (IOException e)
 		{
-			e.printStackTrace();
+			Logger.getInstance().logException(e);
 		} finally
 		{
 			try
 			{
 				if (reader!= null)
-				reader.close();
+					reader.close();
 			} catch (Exception e)
 			{
-				e.printStackTrace();
+				Logger.getInstance().logException(e);
 			}
 		}
 		return contentsString;
@@ -98,7 +96,8 @@ public class ResourceUtils
 	 * @param resourceName the name of the resource
 	 * @param input the contents of the resource or null if no contents needed
 	 */
-	public static void createResource(IResource resource, IProject project, String resourceName, InputStream input)
+	public static void createResource(IResource resource, IProject project,
+						String resourceName, InputStream input)
 	{
 		try
 		{
@@ -120,11 +119,9 @@ public class ResourceUtils
 
 		} catch (CoreException e)
 		{
-			Logger.print("Error creating the resource" + resourceName, IStatus.ERROR);
-			ErrorDialog dlgDialog = new ErrorDialog(Activator.getShell(), "Error creating the file", "There was an error creating the resource: " + resourceName,
-					new Status(IStatus.ERROR, "wesnoth_plugin", "error"), 0);
-			dlgDialog.open();
-			e.printStackTrace();
+			Logger.getInstance().log("Error creating the resource" + resourceName, IStatus.ERROR);
+			GUIUtils.showMessageBox("Error creating the resource" + resourceName, SWT.ICON_ERROR);
+			Logger.getInstance().logException(e);
 		}
 	}
 
@@ -153,17 +150,19 @@ public class ResourceUtils
 		if (fileContentsString == null)
 		{
 			fileContentsString = "";
-			Logger.print("file contents are null", 2);
+			Logger.getInstance().log("file contents are null", IStatus.WARNING);
 		}
 
 		if (file.exists() && overwrite)
+		{
 			try
 			{
 				file.delete(true, null);
 			} catch (CoreException e)
 			{
-				e.printStackTrace();
+				Logger.getInstance().logException(e);
 			}
+		}
 
 		ByteArrayInputStream inputStream = new ByteArrayInputStream(fileContentsString.getBytes());
 		createResource(file, project, fileName, inputStream);

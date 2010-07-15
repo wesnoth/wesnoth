@@ -106,6 +106,8 @@ public class Logger {
 	 */
 	public void logException(Exception e)
 	{
+		if (e == null)
+			return;
 		e.printStackTrace();
 		log(e.getLocalizedMessage(),IStatus.ERROR);
 	}

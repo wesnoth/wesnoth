@@ -9,8 +9,11 @@
 package wesnoth_eclipse_plugin.utils;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Locale;
+import java.util.Random;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
@@ -24,6 +27,7 @@ import org.eclipse.ui.IWorkbenchWindow;
 
 import wesnoth_eclipse_plugin.Activator;
 import wesnoth_eclipse_plugin.Constants;
+import wesnoth_eclipse_plugin.Logger;
 import wesnoth_eclipse_plugin.builder.WesnothProjectNature;
 import wesnoth_eclipse_plugin.preferences.Preferences;
 import wesnoth_eclipse_plugin.wizards.ReplaceableParameter;
@@ -130,13 +134,27 @@ public class WorkspaceUtils
 	{
 		if (temporaryFolder_.isEmpty())
 		{
-			temporaryFolder_ = System.getProperty("java.io.tmpdir") + Path.SEPARATOR + "wesnoth_plugin" + Path.SEPARATOR;
+			temporaryFolder_ = System.getProperty("java.io.tmpdir") +
+						Path.SEPARATOR + "wesnoth_plugin" + Path.SEPARATOR;
 
 			File tmpFile = new File(temporaryFolder_);
 			if (!tmpFile.exists())
 				tmpFile.mkdirs();
 		}
 		return temporaryFolder_;
+	}
+
+	/**
+	 * Returns a random fileName generated from current time
+	 * @return
+	 */
+	public static String getRandomFileName()
+	{
+		String result = "";
+		SimpleDateFormat date = new SimpleDateFormat("yyyyMMddHHmm");
+		result += date.format(new Date());
+		result += String.valueOf(new Random().nextInt());
+		return result;
 	}
 
 	/**
@@ -150,7 +168,8 @@ public class WorkspaceUtils
 		if (resource == null)
 			return null;
 
-		String result = Preferences.getString(Constants.P_WESNOTH_USER_DIR) + Path.SEPARATOR + "data/add-ons/";
+		String result = Preferences.getString(Constants.P_WESNOTH_USER_DIR) +
+							Path.SEPARATOR + "data/add-ons/";
 		if (!resource.getProject().getName().toLowerCase(new Locale("English")).equals("user addons"))
 			result += (resource.getProject().getName() + Path.SEPARATOR);
 		result += resource.getProjectRelativePath().toOSString();
@@ -174,7 +193,8 @@ public class WorkspaceUtils
 			IProject proj = ResourcesPlugin.getWorkspace().getRoot().getProject("User Addons");
 			if (!proj.exists())
 			{
-				IProjectDescription description = ResourcesPlugin.getWorkspace().newProjectDescription("User Addons");
+				IProjectDescription description =
+						ResourcesPlugin.getWorkspace().newProjectDescription("User Addons");
 
 				// cleanup any strictly-project related files if any.
 				if (new File(userDir + Path.SEPARATOR + "data/add-ons/.project").exists())
@@ -206,11 +226,12 @@ public class WorkspaceUtils
 				}
 				ResourceUtils.createFile(proj, ".ignore", skipList, true);
 			}
-			GUIUtils.showMessageBox(WorkspaceUtils.getWorkbenchWindow(),
+
+			Logger.getInstance().log("setupWorkspace was successful",
 					"Workspace was set up successfully.");
 		} catch (Exception e)
 		{
-			e.printStackTrace();
+			Logger.getInstance().logException(e);
 		}
 	}
 }

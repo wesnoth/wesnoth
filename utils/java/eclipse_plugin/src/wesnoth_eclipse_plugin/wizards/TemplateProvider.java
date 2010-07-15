@@ -47,9 +47,8 @@ public class TemplateProvider
 	{
 		try
 		{
-			Logger.print("reading templates...");
+			Logger.getInstance().log("reading templates from: " + pluginFullPath_ + templatesFile);
 
-			Logger.print(pluginFullPath_ + templatesFile);
 			BufferedReader reader =
 					new BufferedReader(new FileReader(getClass().getProtectionDomain().getCodeSource().getLocation().getPath()
 							+ templatesFile));
@@ -61,17 +60,13 @@ public class TemplateProvider
 			{
 				// comment
 				if (line.startsWith("#"))
-				{
 					continue;
-				}
 
 				// 0 - template name | 1 - template file
 				String[] tokensStrings = line.split(" ");
 
 				if (tokensStrings.length != 2)
-				{
 					continue;
-				}
 
 				content = "";
 
@@ -90,7 +85,7 @@ public class TemplateProvider
 			reader.close();
 		} catch (Exception e)
 		{
-			e.printStackTrace();
+			Logger.getInstance().logException(e);
 		}
 	}
 
@@ -111,9 +106,11 @@ public class TemplateProvider
 			{
 				if (template[i].contains(param.paramName))
 				{
-					template[i] = StringUtils.replaceWithIndent(template[i], param.paramName, param.paramValue);
+					template[i] = StringUtils.replaceWithIndent(template[i],
+									param.paramName, param.paramValue);
 
-					if (!templateName.equals("build_xml") && (param.paramValue == null || param.paramValue.isEmpty()))
+					if (!templateName.equals("build_xml") &&
+						(param.paramValue == null || param.paramValue.isEmpty()))
 					{
 						// we don't have any value supplied -
 						// let's comment that line (if it's not already commented)
@@ -170,7 +167,12 @@ public class TemplateProvider
 
 				// oops. error
 				if (tmpLine.length != 2)
+				{
+					Logger.getInstance().logError(
+							String.format("error parsing 'structure template' (%s) on line %s",
+									structureTemplate, line));
 					continue;
+				}
 
 				files.add(new Pair<String, String>(tmpLine[0].trim(), tmpLine[1].trim()));
 			}

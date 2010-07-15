@@ -37,7 +37,10 @@ public class SchemaParser
 	{
 		//TODO: sort tags's keys by cardinality (required first) ??
 		if (parsingDone_ && !force)
+		{
+			Logger.getInstance().log("schema not parsed since there is already in cache.");
 			return;
+		}
 
 		parsingDone_ = false;
 		if (force)
@@ -46,7 +49,7 @@ public class SchemaParser
 			tags_.clear();
 		}
 
-		Logger.print("parsing schema " + (force == true ? "forced" : ""));
+		Logger.getInstance().log("parsing schema " + (force == true ? "forced" : ""));
 		File schemaFile = new File(Preferences.getString(
 						Constants.P_WESNOTH_WORKING_DIR) + "/data/schema.cfg");
 		String res = ResourceUtils.getFileContents(schemaFile);
@@ -149,7 +152,8 @@ public class SchemaParser
 					String[] value = tokens[1].substring(1, tokens[1].length() - 1).split(" ");
 					if (value.length != 2)
 					{
-						System.err.println("Error. invalid line :" + index);
+						Logger.getInstance().logError(
+								"Error. invalid line on 'schema.cfg' :" + index);
 						continue; //return;
 					}
 
@@ -175,18 +179,22 @@ public class SchemaParser
 						{
 							if (!(primitives_.containsKey(value[1])))
 								currentTag.NeedsExpanding = true;
+
 							if (primitives_.get(value[1]) == null)
-								System.err.println("Undefined primitive type in schema.cfg for: " + value[1]);
+								Logger.getInstance().logError("Undefined primitive type in schema.cfg for: " + value[1]);
+
 							currentTag.addKey(tokens[0], primitives_.get(value[1]),
 									getCardinality(value[0]), value[1].equals("tstring"));
 						}
 					}
 					else
-						System.err.println("can't find entry for: " + tagStack.peek());
+					{
+						//System.err.println("can't find entry for: " + tagStack.peek());
+					}
 				}
 			}
 		}
-		//System.out.println("End parsing");
+		Logger.getInstance().log("parsing done");
 		parsingDone_ = true;
 		//
 		//		try
@@ -206,7 +214,7 @@ public class SchemaParser
 		//			bw.close();
 		//		} catch (Exception e)
 		//		{
-		//			e.printStackTrace();
+		//			Logger.getInstance().logException(e);
 		//		}
 		//		System.out.println("End writing result");
 	}

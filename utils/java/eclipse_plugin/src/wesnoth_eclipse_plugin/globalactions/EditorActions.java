@@ -12,14 +12,27 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.core.resources.IFile;
+
 import wesnoth_eclipse_plugin.Constants;
+import wesnoth_eclipse_plugin.Logger;
 import wesnoth_eclipse_plugin.builder.ExternalToolInvoker;
 import wesnoth_eclipse_plugin.preferences.Preferences;
-import wesnoth_eclipse_plugin.utils.GUIUtils;
-import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
 
 public class EditorActions
 {
+	public static void startEditor(IFile file)
+	{
+		if (file == null || file.exists())
+		{
+			Logger.getInstance().log("non-existing map file",
+					"Please select an existing map file before opening it.");
+			return;
+		}
+
+		startEditor(file.getLocation().toOSString());
+	}
+
 	public static void startEditor(String mapName)
 	{
 		String editorPath = Preferences.getString(Constants.P_WESNOTH_EXEC_PATH);
@@ -30,11 +43,13 @@ public class EditorActions
 
 		if (editorPath.isEmpty())
 		{
-			GUIUtils.showMessageBox(WorkspaceUtils.getWorkbenchWindow(), "Please set the wesnoth's executable path first.");
+			Logger.getInstance().log("wesnoth executable not set (startEditor)",
+					"Please set the wesnoth's executable path first.");
 			return;
 		}
 
-		System.out.printf("Running: [%s] with args: %s\n", editorPath, getLaunchEditorArguments(mapName, workingDir));
+		Logger.getInstance().log(String.format("Running: [%s] with args: %s\n",
+				editorPath, getLaunchEditorArguments(mapName, workingDir)));
 		ExternalToolInvoker.launchTool(editorPath, getLaunchEditorArguments(mapName, workingDir),
 				Constants.TI_SHOW_OUTPUT_USER | Constants.TI_SHOW_OUTPUT, true);
 	}

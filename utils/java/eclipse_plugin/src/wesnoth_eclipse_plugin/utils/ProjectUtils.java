@@ -16,6 +16,8 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.Path;
 
+import wesnoth_eclipse_plugin.Logger;
+
 public class ProjectUtils
 {
 	public static String getPropertyValue(String fileName, String propertyName)
@@ -31,9 +33,14 @@ public class ProjectUtils
 		String fileContents = ResourceUtils.getFileContents(file);
 		if (fileContents == null)
 			return null;
+
 		int index = fileContents.indexOf(propertyName + "=");
 		if (index == -1)
+		{
+			Logger.getInstance().log(String.format("property %s not found in file %s",
+					propertyName, fileName));
 			return null;
+		}
 		index += (propertyName.length() + 1); // jump over the property name characters
 
 		// skipp spaces between the property name and value (if any)

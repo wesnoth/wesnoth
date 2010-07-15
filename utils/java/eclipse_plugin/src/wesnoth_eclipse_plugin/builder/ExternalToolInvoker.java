@@ -22,8 +22,10 @@ import org.eclipse.ui.console.MessageConsole;
 import org.eclipse.ui.console.MessageConsoleStream;
 
 import wesnoth_eclipse_plugin.Constants;
+import wesnoth_eclipse_plugin.Logger;
 import wesnoth_eclipse_plugin.utils.MyRunnable;
 
+//TODO: needs REWRITE !! -> use streams rather than a hundred of parameters
 public class ExternalToolInvoker
 {
 	private Process			process_;
@@ -66,7 +68,7 @@ public class ExternalToolInvoker
 						bufferedReaderError_ = new BufferedReader(new InputStreamReader(process_.getErrorStream()));
 					} catch (IOException e)
 					{
-						e.printStackTrace();
+						Logger.getInstance().logException(e);
 					}
 				}
 			});
@@ -88,7 +90,7 @@ public class ExternalToolInvoker
 				processThread_.start();
 		} catch (IOException e)
 		{
-			e.printStackTrace();
+			Logger.getInstance().logException(e);
 		}
 	}
 
@@ -126,7 +128,7 @@ public class ExternalToolInvoker
 			return bufferedReaderOutput_.readLine();
 		} catch (IOException e)
 		{
-			e.printStackTrace();
+			Logger.getInstance().logException(e);
 			return null;
 		}
 	}
@@ -146,7 +148,7 @@ public class ExternalToolInvoker
 			return bufferedReaderError_.readLine();
 		} catch (IOException e)
 		{
-			e.printStackTrace();
+			Logger.getInstance().logException(e);
 			return null;
 		}
 	}
@@ -278,7 +280,7 @@ public class ExternalToolInvoker
 						}
 					} catch (IOException e)
 					{
-						e.printStackTrace();
+						Logger.getInstance().logException(e);
 					}
 				}
 			});
@@ -307,7 +309,7 @@ public class ExternalToolInvoker
 						//}
 					} catch (IOException e)
 					{
-						e.printStackTrace();
+						Logger.getInstance().logException(e);
 					}
 				}
 			});
@@ -337,7 +339,7 @@ public class ExternalToolInvoker
 				}
 			} catch (IOException e)
 			{
-				e.printStackTrace();
+				Logger.getInstance().logException(e);
 			}
 		}
 		return toolInvoker;

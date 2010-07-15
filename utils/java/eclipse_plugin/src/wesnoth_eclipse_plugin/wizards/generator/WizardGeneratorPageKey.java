@@ -94,7 +94,7 @@ public class WizardGeneratorPageKey extends WizardPage
 						return;
 
 					if ((txt.getText().isEmpty() && (txt.getData("card").toString().equals("1"))) || // cardinality
-							!txt.getText().matches(txt.getData("valType").toString()) // regex
+						!txt.getText().matches(txt.getData("valType").toString()) // regex
 					)
 						txt.setData("comp", false);
 					else
@@ -146,7 +146,7 @@ public class WizardGeneratorPageKey extends WizardPage
 			else
 				text = ((Combo) child).getText();
 			result.append(StringUtils.multiples("\t", indent_) +
-					child.getData("name") + "=" + text + "\n");
+								child.getData("name") + "=" + text + "\n");
 		}
 		return result.toString();
 	}

@@ -32,12 +32,12 @@ import wesnoth_eclipse_plugin.Logger;
 import wesnoth_eclipse_plugin.globalactions.PreprocessorActions;
 import wesnoth_eclipse_plugin.preferences.Preferences;
 import wesnoth_eclipse_plugin.utils.AntUtils;
-import wesnoth_eclipse_plugin.utils.GUIUtils;
 import wesnoth_eclipse_plugin.utils.Pair;
 import wesnoth_eclipse_plugin.utils.ResourceUtils;
 import wesnoth_eclipse_plugin.utils.StringUtils;
 import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
 
+//TODO: rewrite and use a ".wesnoth" file to store additional infos instead of just ".ignore"
 public class WesnothProjectBuilder extends IncrementalProjectBuilder
 {
 	public static final String BUILDER_ID = "Wesnoth_Eclipse_Plugin.projectBuilder";
@@ -111,7 +111,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 			getProject().accept(new SampleResourceVisitor(monitor));
 		} catch (CoreException e)
 		{
-			e.printStackTrace();
+			Logger.getInstance().logException(e);
 		}
 	}
 
@@ -125,13 +125,14 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 	@Override
 	protected IProject[] build(int kind, Map args, IProgressMonitor monitor) throws CoreException
 	{
-		System.out.println("building");
+		Logger.getInstance().log("building...");
 		monitor.beginTask("Building...", 100);
 
 		monitor.subTask("Checking conditions...");
 		if (Preferences.getString(Constants.P_WESNOTH_USER_DIR).isEmpty())
 		{
-			GUIUtils.showMessageBox(WorkspaceUtils.getWorkbenchWindow(), "Please set the wesnoth user dir before creating the content");
+			Logger.getInstance().log("no preferences set (project builder)",
+					"Please set the wesnoth user dir before creating the content");
 			return null;
 		}
 
@@ -139,7 +140,8 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 		// in the user add-ons directory (incremental)
 		if (!(new File(getProject().getLocation().toOSString() + "/build.xml").exists()))
 		{
-			GUIUtils.showMessageBox(WorkspaceUtils.getWorkbenchWindow(), "The 'build.xml' file is missing. The building cannot continue.");
+			Logger.getInstance().log("build.xml is missing",
+					"The 'build.xml' file is missing. The building cannot continue.");
 			// TODO: better way of handling this - maybe regenerating?
 			return null;
 		}
@@ -167,15 +169,17 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 		monitor.subTask("Copying resources...");
 		HashMap<String, String> properties = new HashMap<String, String>();
 		properties.put("wesnoth.user.dir", Preferences.getString(Constants.P_WESNOTH_USER_DIR) + Path.SEPARATOR);
-		System.out.println("Ant result:");
-		String result = AntUtils.runAnt(getProject().getLocation().toOSString() + "/build.xml", properties, true);
-		System.out.println(result);
+		Logger.getInstance().log("Ant result:");
+		String result = AntUtils.runAnt(getProject().getLocation().toOSString() + "/build.xml",
+				properties, true);
+		Logger.getInstance().log(result);
+
 		monitor.worked(10);
 
 		if (result == null)
 		{
-			Logger.print("There was an error running the ant job.");
-			GUIUtils.showMessageBox(WorkspaceUtils.getWorkbenchWindow(), "There was an error running the ant job.");
+			Logger.getInstance().log("error running the ant job",
+					"There was an error running the ant job.");
 			return null;
 		}
 
@@ -260,7 +264,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 
 			} catch (Exception e)
 			{
-				e.printStackTrace();
+				Logger.getInstance().logException(e);
 			}
 		}
 	}
@@ -273,7 +277,8 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 			List<String> ignoreList = ignoreCache_.get(getProject().getName()).Second;
 			for (String path : ignoreList)
 			{
-				if (StringUtils.normalizePath(WorkspaceUtils.getPathRelativeToUserDir(res)).contains(StringUtils.normalizePath(path)))
+				if (StringUtils.normalizePath(WorkspaceUtils.getPathRelativeToUserDir(res))
+						.contains(StringUtils.normalizePath(path)))
 					return true;
 			}
 		}
@@ -294,7 +299,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 			marker.setAttribute(IMarker.LINE_NUMBER, lineNumber);
 		} catch (CoreException e)
 		{
-			e.printStackTrace();
+			Logger.getInstance().logException(e);
 		}
 	}
 
@@ -305,7 +310,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 			file.deleteMarkers(MARKER_TYPE, false, IResource.DEPTH_ZERO);
 		} catch (CoreException e)
 		{
-			e.printStackTrace();
+			Logger.getInstance().logException(e);
 		}
 	}
 }

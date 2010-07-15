@@ -37,7 +37,7 @@ public class WizardGenerator extends NewWizardTemplate
 			for (int i = 0; i < pgsKey; i++)
 			{
 				tempPageKey = new WizardGeneratorPageKey(tagName, tagContent.KeyChildren, startKey,
-												startKey + Constants.WIZ_MaxTextBoxesOnPage, (byte) (indent_ + 1));
+									startKey + Constants.WIZ_MaxTextBoxesOnPage, (byte) (indent_ + 1));
 				startKey += Constants.WIZ_MaxTextBoxesOnPage;
 				addPage(tempPageKey);
 			}
@@ -55,7 +55,7 @@ public class WizardGenerator extends NewWizardTemplate
 			for (int i = 0; i < pgsTag; i++)
 			{
 				tempPageTag = new WizardGeneratorPageTag(tagName, tagContent.TagChildren, startTag,
-											startTag + Constants.WIZ_MaxGroupsOnPage, (byte) (indent_ + 1));
+										startTag + Constants.WIZ_MaxGroupsOnPage, (byte) (indent_ + 1));
 				startTag += Constants.WIZ_MaxTextBoxesOnPage;
 				addPage(tempPageTag);
 			}

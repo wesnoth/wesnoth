@@ -15,6 +15,9 @@ public class StringUtils
 {
 	public static boolean startsWith(String target, String sequence)
 	{
+		if (target == null || sequence == null)
+			return false;
+
 		Pattern pattern = Pattern.compile("[\t ]*" + Pattern.quote(sequence));
 		Matcher matcher = pattern.matcher(target);
 		return (matcher.find() && matcher.start() == 0);
@@ -29,8 +32,12 @@ public class StringUtils
 	 */
 	public static int countOf(String target, char character)
 	{
+		if (target == null)
+			return 0;
+
 		if (target.indexOf(character) == -1)
 			return 0;
+
 		int cnt = 0;
 		String tmpString = target;
 		while (tmpString.contains(new String(new char[] { character })))
@@ -51,6 +58,9 @@ public class StringUtils
 	 */
 	public static int indexOfNth(String target, char character, int n)
 	{
+		if (target == null)
+			return -1;
+
 		if (countOf(target, character) < n)
 			return -1;
 
@@ -80,6 +90,9 @@ public class StringUtils
 	public static String removeIncorrectCharacters(String target, char character,
 			boolean removeTrailing, boolean removePreceding)
 	{
+		if (target == null)
+			return "";
+
 		StringBuilder resString = new StringBuilder();
 
 		for (int i = 0; i < target.length(); i++)
@@ -92,7 +105,7 @@ public class StringUtils
 			}
 
 			if (target.charAt(i) == character &&
-					((removeTrailing && i == target.length()) || (removePreceding && i == 0)))
+				((removeTrailing && i == target.length()) || (removePreceding && i == 0)))
 			{
 				continue;
 			}
@@ -111,6 +124,9 @@ public class StringUtils
 
 	public static String trimPathSeparators(String string)
 	{
+		if (string == null)
+			return "";
+
 		while (string.charAt(string.length() - 1) == '/' ||
 				string.charAt(string.length() - 1) == '\\')
 			string = string.substring(0, string.length() - 1);
@@ -126,6 +142,9 @@ public class StringUtils
 	 */
 	public static String normalizePath(String path)
 	{
+		if (path == null)
+			return "";
+
 		String str = StringUtils.trimPathSeparators(path);
 		StringBuilder sb = new StringBuilder(str.length());
 
@@ -158,6 +177,9 @@ public class StringUtils
 	 */
 	public static String replaceWithIndent(String string, String source, String target)
 	{
+		if (string == null)
+			return "";
+
 		// get the current indentation
 		Pattern pattern = Pattern.compile("[\t ]*");
 		Matcher matcher = pattern.matcher(string);
@@ -178,7 +200,8 @@ public class StringUtils
 	public static String multiples(String sequence, int times)
 	{
 		if (sequence == null)
-			return null;
+			return "";
+
 		StringBuilder res = new StringBuilder(sequence.length() * times);
 		for (int i = 0; i < times; i++)
 		{

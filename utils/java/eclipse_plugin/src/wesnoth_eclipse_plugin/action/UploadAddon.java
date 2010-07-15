@@ -19,6 +19,7 @@ import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 
 import wesnoth_eclipse_plugin.Activator;
+import wesnoth_eclipse_plugin.Logger;
 import wesnoth_eclipse_plugin.utils.WMLTools;
 import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
 
@@ -48,7 +49,7 @@ public class UploadAddon implements IObjectActionDelegate
 			});
 		} catch (InvocationTargetException e)
 		{
-			e.printStackTrace();
+			Logger.getInstance().logException(e);
 		} catch (InterruptedException e)
 		{
 		}

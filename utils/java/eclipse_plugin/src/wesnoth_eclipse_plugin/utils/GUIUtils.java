@@ -12,6 +12,8 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.ui.IWorkbenchWindow;
 
+import wesnoth_eclipse_plugin.Logger;
+
 public class GUIUtils
 {
 	/**
@@ -23,6 +25,17 @@ public class GUIUtils
 	public static void showMessageBox(final String message)
 	{
 		showMessageBox(WorkspaceUtils.getWorkbenchWindow(), message, SWT.DEFAULT);
+	}
+
+	/**
+	 * Shows a message box with the specified message and style(thread-safe)
+	 *
+	 * @param window the window where to show the message box
+	 * @param style the style of the messageBox
+	 */
+	public static void showMessageBox(final String message, final int style)
+	{
+		showMessageBox(WorkspaceUtils.getWorkbenchWindow(), message, style);
 	}
 
 	/**
@@ -42,7 +55,8 @@ public class GUIUtils
 	 * @param window the window where to show the message box
 	 * @param message the message to print
 	 */
-	public static void showMessageBox(final IWorkbenchWindow window, final String message, final int style)
+	public static void showMessageBox(final IWorkbenchWindow window,
+				final String message, final int style)
 	{
 		if (window == null || window.getShell() == null || message == null)
 			return;
@@ -59,7 +73,7 @@ public class GUIUtils
 			});
 		} catch (Exception e)
 		{
-			e.printStackTrace();
+			Logger.getInstance().logException(e);
 		}
 	}
 }

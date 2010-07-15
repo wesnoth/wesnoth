@@ -29,6 +29,7 @@ import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
 
+import wesnoth_eclipse_plugin.Logger;
 import wesnoth_eclipse_plugin.utils.GUIUtils;
 import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
 import wesnoth_eclipse_plugin.wizards.NewWizardTemplate;
@@ -116,7 +117,7 @@ public class UnitsNewWizard extends NewWizardTemplate
 			stream.close();
 		} catch (IOException e)
 		{
-			e.printStackTrace();
+			Logger.getInstance().logException(e);
 		}
 
 		monitor.worked(5);

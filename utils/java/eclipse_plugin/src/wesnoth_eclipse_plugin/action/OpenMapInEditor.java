@@ -8,7 +8,6 @@
  *******************************************************************************/
 package wesnoth_eclipse_plugin.action;
 
-import org.eclipse.core.resources.IFile;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.ui.IObjectActionDelegate;
@@ -29,8 +28,7 @@ public class OpenMapInEditor implements IObjectActionDelegate
 	@Override
 	public void run(IAction action)
 	{
-		IFile selectedFile = WorkspaceUtils.getSelectedFile(WorkspaceUtils.getWorkbenchWindow());
-		EditorActions.startEditor(selectedFile.getLocation().toOSString());
+		EditorActions.startEditor(WorkspaceUtils.getSelectedFile());
 	}
 
 	@Override

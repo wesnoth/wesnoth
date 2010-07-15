@@ -15,6 +15,7 @@ import java.util.List;
 import org.eclipse.core.resources.IResource;
 
 import wesnoth_eclipse_plugin.Constants;
+import wesnoth_eclipse_plugin.Logger;
 import wesnoth_eclipse_plugin.builder.ExternalToolInvoker;
 import wesnoth_eclipse_plugin.preferences.Preferences;
 
@@ -88,12 +89,12 @@ public class GameUtils
 			// we need to add the working dir (backward compatibility)
 			args.add(workingDir);
 
-			System.out.printf("Launching args: %s \n", args);
+			Logger.getInstance().log(String.format("Launching game with args: %s \n", args));
 			ExternalToolInvoker.launchTool(wesnothExec, args,
 					Constants.TI_SHOW_OUTPUT | Constants.TI_SHOW_OUTPUT_USER, true);
 		} catch (Exception e)
 		{
-			e.printStackTrace();
+			Logger.getInstance().logException(e);
 		}
 	}
 }

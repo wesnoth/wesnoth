@@ -21,6 +21,7 @@ import org.eclipse.ui.console.MessageConsole;
 import org.eclipse.ui.console.MessageConsoleStream;
 
 import wesnoth_eclipse_plugin.Constants;
+import wesnoth_eclipse_plugin.Logger;
 import wesnoth_eclipse_plugin.builder.ExternalToolInvoker;
 import wesnoth_eclipse_plugin.preferences.Preferences;
 
@@ -207,7 +208,7 @@ public class WMLTools
 		} catch (Exception e)
 		{
 			GUIUtils.showMessageBox(e.getMessage());
-			e.printStackTrace();
+			Logger.getInstance().logException(e);
 		}
 		return result;
 	}

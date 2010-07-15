@@ -24,13 +24,13 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
 
+import wesnoth_eclipse_plugin.Logger;
 import wesnoth_eclipse_plugin.utils.GUIUtils;
 import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
 import wesnoth_eclipse_plugin.wizards.NewWizardTemplate;
@@ -93,7 +93,7 @@ public class ScenarioNewWizard extends NewWizardTemplate
 					doFinish(containerName, fileName, monitor);
 				} catch (CoreException e)
 				{
-					throw new InvocationTargetException(e);
+					Logger.getInstance().logException(e);
 				} finally
 				{
 					monitor.done();
@@ -108,8 +108,7 @@ public class ScenarioNewWizard extends NewWizardTemplate
 			return false;
 		} catch (InvocationTargetException e)
 		{
-			Throwable realException = e.getTargetException();
-			MessageDialog.openError(getShell(), "Error", realException.getMessage());
+			Logger.getInstance().logException(e);
 			return false;
 		}
 		return true;
@@ -154,7 +153,7 @@ public class ScenarioNewWizard extends NewWizardTemplate
 			stream.close();
 		} catch (IOException e)
 		{
-			e.printStackTrace();
+			Logger.getInstance().logException(e);
 		}
 
 		monitor.worked(1);

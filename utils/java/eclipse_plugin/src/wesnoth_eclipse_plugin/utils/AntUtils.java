@@ -19,6 +19,8 @@ import org.apache.tools.ant.DefaultLogger;
 import org.apache.tools.ant.Project;
 import org.apache.tools.ant.ProjectHelper;
 
+import wesnoth_eclipse_plugin.Logger;
+
 public class AntUtils
 {
 	/**
@@ -29,7 +31,8 @@ public class AntUtils
 	 * @param recordOutput true if the output of the runned file should be recorded and returned
 	 * @return null if the build didn't success
 	 */
-	public static String runAnt(String antFile, HashMap<String, String> properties, boolean recordOutput)
+	public static String runAnt(String antFile, HashMap<String, String> properties,
+			boolean recordOutput)
 	{
 		Project project = new Project();
 		ByteArrayOutputStream out = null;
@@ -53,9 +56,9 @@ public class AntUtils
 			project.executeTarget(project.getDefaultTarget());
 
 			return out.toString();
-		} catch (Exception exc)
+		} catch (Exception e)
 		{
-			exc.printStackTrace();
+			Logger.getInstance().logException(e);
 			return null;
 		}
 	}

@@ -20,6 +20,7 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
+import wesnoth_eclipse_plugin.Logger;
 import wesnoth_eclipse_plugin.utils.StringUtils;
 import wesnoth_eclipse_plugin.wizards.TemplateProvider;
 
@@ -46,7 +47,7 @@ public class WizardLauncherPage1 extends WizardPage
 			String[] tokens = line.split(":");
 			if (tokens.length != 2)
 			{
-				System.err.println("Error on template 'wizards'.");
+				Logger.getInstance().logError("Error in template 'wizards' on line:" + line);
 				continue;
 			}
 			list_.put(tokens[0], tokens[1]);
@@ -103,7 +104,8 @@ public class WizardLauncherPage1 extends WizardPage
 
 	public String getTagName()
 	{
-		return cmbWizardName_.getText().equals("Other") == true ? txtOtherTag_.getText() : list_.get(cmbWizardName_.getText());
+		return cmbWizardName_.getText().equals("Other") == true ?
+					txtOtherTag_.getText() : list_.get(cmbWizardName_.getText());
 	}
 
 	public String getTagDescription()

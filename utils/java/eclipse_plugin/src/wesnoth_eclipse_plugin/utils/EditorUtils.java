@@ -22,6 +22,7 @@ import org.eclipse.ui.texteditor.IDocumentProvider;
 import org.eclipse.ui.texteditor.ITextEditor;
 
 import wesnoth_eclipse_plugin.Activator;
+import wesnoth_eclipse_plugin.Logger;
 
 public class EditorUtils
 {
@@ -47,7 +48,8 @@ public class EditorUtils
 
 	public static IEditorPart getEditedFile()
 	{
-		return Activator.getDefault().getWorkbench().getActiveWorkbenchWindow().getPages()[0].getActiveEditor();
+		return Activator.getDefault().getWorkbench().
+					getActiveWorkbenchWindow().getPages()[0].getActiveEditor();
 	}
 
 	public static void openEditor(IFile file, boolean activatePage)
@@ -58,11 +60,15 @@ public class EditorUtils
 			IDE.openEditor(page, file, activatePage);
 		} catch (PartInitException e)
 		{
+			Logger.getInstance().logException(e);
 		}
 	}
 
 	public static IDocument getEditorDocument(IEditorPart targetEditor)
 	{
+		if (targetEditor == null)
+			return null;
+
 		IDocumentProvider dp = getTextEditor(targetEditor).getDocumentProvider();
 		return dp.getDocument(targetEditor.getEditorInput());
 	}
@@ -80,8 +86,8 @@ public class EditorUtils
 
 	public static void writeInEditor(IEditorPart targetEditor, String content)
 	{
-
-		int offset = ((ITextSelection) getTextEditor(targetEditor).getSelectionProvider().getSelection()).getOffset();
+		int offset = ((ITextSelection) getTextEditor(targetEditor).
+						getSelectionProvider().getSelection()).getOffset();
 		try
 		{
 			getEditorDocument(targetEditor).replace(offset, 0, content);
@@ -96,7 +102,8 @@ public class EditorUtils
 			return;
 		try
 		{
-			getEditorDocument(targetEditor).replace(0, getEditorDocument(targetEditor).getLength(), content);
+			getEditorDocument(targetEditor).
+				replace(0, getEditorDocument(targetEditor).getLength(), content);
 		} catch (BadLocationException e)
 		{
 		}

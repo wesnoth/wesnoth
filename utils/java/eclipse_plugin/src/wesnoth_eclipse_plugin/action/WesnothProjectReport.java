@@ -32,17 +32,31 @@ public class WesnothProjectReport implements IObjectActionDelegate
 	@Override
 	public void run(IAction action)
 	{
-		IProject project = WorkspaceUtils.getSelectedProject(WorkspaceUtils.getWorkbenchWindow());
+		IProject project = WorkspaceUtils.getSelectedProject();
+		if (project == null)
+		{
+			GUIUtils.showMessageBox("Please select a project first.");
+			return;
+		}
+
+		int[] statistics = new int[3];
 		IFolder scenariosFolder = project.getFolder("scenarios");
+		if (scenariosFolder.exists())
+			statistics[0] = new File(scenariosFolder.getLocation().toOSString()).listFiles().length;
+
 		IFolder mapsFolder = project.getFolder("maps");
+		if (mapsFolder.exists())
+			statistics[1] = new File(mapsFolder.getLocation().toOSString()).listFiles().length;
+
 		IFolder unitsFolder = project.getFolder("units");
+		if (unitsFolder.exists())
+			statistics[2] = new File(unitsFolder.getLocation().toOSString()).listFiles().length;
 
 		String simpleReport = String.format("Scenarios: %d \nMaps: %d \nUnits: %d",
-				 new File(scenariosFolder.getLocation().toOSString()).listFiles().length,
-				 new File(mapsFolder.getLocation().toOSString()).listFiles().length,
-				 new File(unitsFolder.getLocation().toOSString()).listFiles().length);
+				 statistics[0],statistics[1], statistics[2]);
 
-		GUIUtils.showMessageBox(WorkspaceUtils.getWorkbenchWindow(), simpleReport,SWT.ICON_INFORMATION);
+		GUIUtils.showMessageBox(WorkspaceUtils.getWorkbenchWindow(), simpleReport,
+				SWT.ICON_INFORMATION);
 	}
 
 	@Override

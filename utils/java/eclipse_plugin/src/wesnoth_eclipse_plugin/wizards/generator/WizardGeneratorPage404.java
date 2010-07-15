@@ -36,6 +36,6 @@ public class WizardGeneratorPage404 extends WizardPage
 		Label lblThisIsSooo = new Label(container, SWT.WRAP);
 		lblThisIsSooo.setFont(font);
 		lblThisIsSooo.setBounds(10, 89, 554, 137);
-		lblThisIsSooo.setText("This is embarassing. It shouldn't happen. \r\nIt seems something is missing from schema.cfg");
+		lblThisIsSooo.setText("It seems something is missing from schema.cfg.");
 	}
 }

@@ -201,8 +201,7 @@ public class EmptyProjectPage1 extends WizardPage
 	/**
 	 * @return the description
 	 */
-	@Override
-	public String getDescription()
+	public String getPBLDescription()
 	{
 		return txtDescription_.getText();
 	}
