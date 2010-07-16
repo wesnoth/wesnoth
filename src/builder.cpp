@@ -112,6 +112,7 @@ void terrain_builder::tile::clear()
 {
 	flags.clear();
 	images.clear();
+	sorted_images = false;
 	images_foreground.clear();
 	images_background.clear();
 	last_tod = "invalid_tod";
