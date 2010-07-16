@@ -2372,6 +2372,7 @@ class console_handler : public map_command_handler<console_handler>, private cha
 		void do_clear();
 		void do_sunset();
 		void do_foreground();
+		void do_layers();
 		void do_fps();
 		void do_benchmark();
 		void do_save();
@@ -2452,6 +2453,8 @@ class console_handler : public map_command_handler<console_handler>, private cha
 				_("Visualize the screen refresh procedure."), "", "D");
 			register_command("foreground", &console_handler::do_foreground,
 				_("Debug foreground terrain."), "", "D");
+			register_command("layers", &console_handler::do_layers,
+				_("Debug layers from terrain under the mouse."), "", "D");
 			register_command("fps", &console_handler::do_fps, _("Show fps."));
 			register_command("benchmark", &console_handler::do_benchmark);
 			register_command("save", &console_handler::do_save, _("Save game."));
@@ -3110,6 +3113,34 @@ void console_handler::do_sunset() {
 }
 void console_handler::do_foreground() {
 	menu_handler_.gui_->toggle_debug_foreground();
+}
+
+void console_handler::do_layers() {
+	const mouse_handler& mousehandler = resources::controller->get_mouse_handler_base();
+	const map_location &loc = mousehandler.get_last_hex();
+
+
+	std::vector<std::string> layers;
+	//FIXME: translate columns
+	std::string heading = std::string(1,HEADING_PREFIX) +
+								"Image"          + COLUMN_SEPARATOR + // 0
+								"Loc"         + COLUMN_SEPARATOR + // 1
+								"Layer"        + COLUMN_SEPARATOR + // 2
+								"Base.x"            + COLUMN_SEPARATOR + // 3
+								"Base.y"     // 4
+;
+	layers.push_back(heading);
+
+	std::vector<std::string> info =
+			menu_handler_.gui_->get_tile_info(loc);
+	layers.insert(layers.end(), info.begin(), info.end());
+
+	int choice = 0;
+ 	{
+ 		gui::dialog menu(*menu_handler_.gui_, _("Layers"), "", gui::OK_CANCEL);
+		menu.set_menu(layers);
+		choice = menu.show();
+	}
 }
 void console_handler::do_fps() {
 	preferences::set_show_fps(!preferences::show_fps());

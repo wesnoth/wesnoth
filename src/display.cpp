@@ -602,7 +602,7 @@ std::vector<surface> display::get_fog_shroud_images(const map_location& loc, ima
 
 	map_location adjacent[6];
 	get_adjacent_tiles(loc,adjacent);
-	
+
 	enum visibility {FOG=0, SHROUD=1, CLEAR=2};
 	visibility tiles[6];
 
@@ -807,6 +807,11 @@ void display::toggle_benchmark()
 void display::toggle_debug_foreground()
 {
 	debug_foreground = !debug_foreground;
+}
+
+std::vector<std::string> display::get_tile_info(const map_location &loc)
+{
+	return builder_->get_tile_info(loc);
 }
 
 void display::flip()
@@ -1985,7 +1990,7 @@ void display::draw_hex(const map_location& loc) {
 	}
 
 	// Apply shroud, fog and linger overlay
-		
+
 	if(shrouded(loc)) {
 		// We apply void also on off-map tiles
 		// to shroud the half-hexes too

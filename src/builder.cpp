@@ -103,10 +103,41 @@ void terrain_builder::tile::rebuild_cache(const std::string& tod)
 			img_list.push_back(variant.image);
 			img_list.back().set_animation_time(ri.rand % img_list.back().get_animation_duration());
 
-			break; // found a matching variant 
+			break; // found a matching variant
 		}
 	}
 }
+
+std::vector<std::string> terrain_builder::tile::get_info() const
+{
+	std::vector<std::string> res;
+	//TODO sort images if needed
+	foreach(const rule_image_rand& ri, images){
+		//TODO: read all variants
+		const rule_image_variant& variant = ri->variants.back();
+
+		std::ostringstream info;
+
+		const image::locator& img = variant.image.get_first_frame();
+		const std::string& name = img.get_filename();
+		//const std::string& modif = img.get_modifications();
+		std::string img_sep(char(1), 1);
+		const map_location& loc = img.get_loc();
+		info << "&" << name << "~LOC("
+			<<loc.x << "," << loc.y << ","
+			<< img.get_center_x() << "," << img.get_center_y()
+			<< ")"
+			<< img_sep << name
+			<< "=" << img.get_loc()
+			<< "=" << ri->layer
+			<< "=" << ri->basex
+			<< "=" << ri->basey;
+		res.push_back(info.str());
+	}
+
+	return res;
+}
+
 
 void terrain_builder::tile::clear()
 {
@@ -243,6 +274,14 @@ const terrain_builder::imagelist *terrain_builder::get_terrain_at(const map_loca
 	}
 
 	return NULL;
+}
+
+std::vector<std::string> terrain_builder::get_tile_info(const map_location &loc) const
+{
+	if(tile_map_.on_map(loc))
+		return tile_map_[loc].get_info();
+	else
+		return std::vector<std::string>();
 }
 
 bool terrain_builder::update_animation(const map_location &loc)

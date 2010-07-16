@@ -112,6 +112,8 @@ public:
 	const imagelist *get_terrain_at(const map_location &loc,
 			const std::string &tod, TERRAIN_TYPE const terrain_type);
 
+	std::vector<std::string> get_tile_info(const map_location &loc) const;
+
 	/** Updates the animation at a given tile.
 	 * Returns true if something has changed, and must be redrawn.
 	 *
@@ -270,6 +272,8 @@ public:
 		 * @param tod    The current time-of-day
 		 */
 		void rebuild_cache(const std::string &tod);
+
+		std::vector<std::string> get_info() const;
 
 		/** Clears all data in this tile, and resets the cache */
 		void clear();

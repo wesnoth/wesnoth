@@ -344,6 +344,8 @@ public:
 	 */
 	static void toggle_debug_foreground();
 
+	std::vector<std::string> get_tile_info(const map_location &loc);
+
 	void flip();
 
 	/** Copy the backbuffer to the framebuffer. */
