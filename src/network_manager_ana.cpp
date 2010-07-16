@@ -558,6 +558,14 @@ void clients_manager::connected( ana::net_id id )
     pending_ids_.insert( network::connection( id ) );
 }
 
+void clients_manager::remove( ana::net_id id )
+{
+    ids_.erase( id );
+    pending_ids_.erase( network::connection( id ) );
+    pending_handshakes_.erase( id );
+}
+
+
 void clients_manager::handshaked( ana::net_id id )
 {
     pending_handshakes_.erase( id );
@@ -904,17 +912,26 @@ void ana_network_manager::send_all_except(const config& cfg, network::connection
     {
         if ((*it)->is_server())
         {
-            const size_t clients_receiving_number = server_manager_[ (*it)->server() ]->client_amount() - 1;
-            ana_send_handler handler( clients_receiving_number );
-            (*it)->server()->send_all_except( id_to_avoid, ana::buffer( out.str() ), &handler, ana::ZERO_COPY);
-            handler.wait_completion();
+            if ( (*it)->get_id() != id_to_avoid )
+            {
+                if ( server_manager_[ (*it)->server() ]->is_a_client( id_to_avoid ) )
+                {
+                    const size_t clients_receiving_number = server_manager_[ (*it)->server() ]->client_amount() - 1;
+                    ana_send_handler handler( clients_receiving_number );
+                    (*it)->server()->send_all_except( id_to_avoid, ana::buffer( out.str() ), &handler, ana::ZERO_COPY);
+                    handler.wait_completion();
+                }
+            }
         }
         else
         {
-            ana_send_handler handler;
-            (*it)->client()->send( ana::buffer( out.str() ), &handler, ana::ZERO_COPY);
-            handler.wait_completion();
-         }
+            if ( (*it)->get_wesnoth_id() != connection_num )
+            {
+                ana_send_handler handler;
+                (*it)->client()->send( ana::buffer( out.str() ), &handler, ana::ZERO_COPY);
+                handler.wait_completion();
+            }
+        }
     }
 }
 
@@ -1109,7 +1126,9 @@ void ana_network_manager::handle_message( ana::error_code          error,
                                           ana::net_id              client,
                                           ana::detail::read_buffer buffer)
 {
-    if (! error)
+    if (error)
+        network::disconnect( client );
+    else
     {
         std::cout << "DEBUG: Buffer received with size " << buffer->size() << " from " << client << "\n";
 
@@ -1203,5 +1222,12 @@ void ana_network_manager::handle_disconnect(ana::error_code /*error_code*/, ana:
         std::cout << "DEBUG: Removing bad component.\n";
         delete *it;
         components_.erase(it);
+    }
+    else
+    {
+        for (it = components_.begin(); it != components_.end(); it++ )
+            if ( (*it)->is_server() )
+                if ( server_manager_[ (*it)->server() ]->is_a_client( client ) )
+                    server_manager_[ (*it)->server() ]->remove( client );
     }
 }

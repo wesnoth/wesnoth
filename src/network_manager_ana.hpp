@@ -138,6 +138,8 @@ class clients_manager : public ana::connection_handler
 
         void connected( ana::net_id id );
 
+        void remove( ana::net_id id );
+
         void handshaked( ana::net_id id );
 
         bool has_connection_pending() const;

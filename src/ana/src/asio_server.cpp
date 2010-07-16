@@ -305,10 +305,7 @@ void asio_server::disconnect( ana::net_id id )
                        boost::bind( &client_proxy::id, _1) == id );
 
     if ( it != client_proxies_.end() )
-    {
-        delete *it;
-        client_proxies_.erase(it);
-    }
+        delete *it;                     // it will erase it from client_proxies_
 }
 
 void asio_server::disconnect()

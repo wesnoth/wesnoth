@@ -296,25 +296,25 @@ namespace ana
                  * @returns : A pointer to a newly created timer object.
                  */
                 template<class Handler>
-                timer* start_timer( shared_buffer buffer, Handler handler ) 
+                void start_timer( timer* timer, shared_buffer buffer, Handler handler ) const
                 {
-                    if ( (timeout_milliseconds_ == 0) || (timeout_type_ == NoTimeouts) )
-                        return NULL;
+                    if ( ! timeouts_enabled() )
+                        delete timer;
                     else
                     {
-                        timer* t = create_timer(); //this discards a const qualifier
-
-                        switch ( timeout_type_ )   //should be more OO looking
+                        if ( timer != NULL )
                         {
-                            case TimePerKilobyte :
-                                t->wait( (buffer->size() / 1024.0) * timeout_milliseconds_, handler);
-                                break;
-                            default :
-                                t->wait( timeout_milliseconds_, handler);
-                                break;
+                            if ( timeout_type_ == TimePerKilobyte)
+                                timer->wait( (buffer->size() / 1024.0) * timeout_milliseconds_, handler);
+                            else
+                                timer->wait( timeout_milliseconds_, handler);
                         }
-                        return t;
                     }
+                }
+
+                bool timeouts_enabled() const
+                {
+                    return (timeout_milliseconds_ != 0) && (timeout_type_ != NoTimeouts);
                 }
 
                 /**

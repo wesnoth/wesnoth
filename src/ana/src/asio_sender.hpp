@@ -43,7 +43,10 @@ class asio_sender : private ana::detail::sender
 {
 
     public:
-        void send( ana::detail::shared_buffer , tcp::socket& , ana::send_handler* , ana::detail::sender* );
+        void send( ana::detail::shared_buffer,
+                   tcp::socket&,
+                   ana::send_handler*,
+                   ana::detail::sender* );
 
     private:
         void handle_sent_header(const boost::system::error_code& ec,
@@ -64,9 +67,8 @@ class asio_sender : private ana::detail::sender
 
         void handle_send(const boost::system::error_code&,
                          ana::send_handler*,
-                         ana::timer*);
-
-        void handle_timeout(const boost::system::error_code& ec, ana::send_handler* handler);
+                         ana::timer*,
+                         bool from_timeout = false);
 
         void log_conditional_send( size_t size, bool finished );
 };
