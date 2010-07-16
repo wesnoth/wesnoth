@@ -846,7 +846,8 @@ void play_controller::tab()
 	switch(mode) {
 	case gui::TEXTBOX_COMMAND:
 	{
-		//TODO List commands
+		std::vector<std::string> commands = menu_handler_.get_commands_list();
+		dictionary.insert(commands.begin(), commands.end());
 		break;
 	}
 	case gui::TEXTBOX_SEARCH:

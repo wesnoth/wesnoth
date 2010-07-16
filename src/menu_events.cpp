@@ -1945,6 +1945,16 @@ class map_command_handler
 					"for a list of available commands.", symbols));
 			}
 		}
+
+		std::vector<std::string> get_commands_list() const
+		{
+			std::vector<std::string> res;
+			foreach(typename command_map::value_type i, command_map_) {
+				res.push_back(i.first);
+			}
+			return res;
+		}
+
 	protected:
 		void init_map_default()
 		{
@@ -2315,6 +2325,7 @@ class console_handler : public map_command_handler<console_handler>, private cha
 		: chmap(), chat_command_handler(menu_handler, true), menu_handler_(menu_handler), team_num_(resources::controller->current_side())
 		{}
 		using chmap::dispatch; //disambiguate
+		using chmap::get_commands_list;
 
 	protected:
 		//chat_command_handler's init_map() and hanlers will end up calling these.
@@ -3002,6 +3013,12 @@ void menu_handler::do_command(const std::string& str)
 {
 	console_handler ch(*this);
 	ch.dispatch(str);
+}
+
+std::vector<std::string> menu_handler::get_commands_list()
+{
+	console_handler ch(*this);
+	return ch.get_commands_list();
 }
 
 void console_handler::do_refresh() {

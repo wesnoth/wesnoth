@@ -87,6 +87,7 @@ public:
 	void user_command_2();
 	void user_command_3();
 #endif
+	std::vector<std::string> get_commands_list();
 
 	unit_map::iterator current_unit();
 	unit_map::const_iterator current_unit() const
