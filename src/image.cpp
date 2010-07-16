@@ -721,6 +721,16 @@ surface locator::load_image_sub_file() const
 						ERR_DP << "no arguments passed to the ~CROP() function\n";
 					}
 				}
+				else if("LOC" == function) {
+					//FIXME: WIP, don't use it yet
+					std::vector<std::string> const& params = utils::split(field);
+					int x = lexical_cast<int>(params[0]);
+					int y = lexical_cast<int>(params[1]);
+					int cx = lexical_cast<int>(params[2]);
+					int cy = lexical_cast<int>(params[3]);
+					image::locator new_loc(val_.filename_, map_location(x,y), cx, cy, "");//TODO remove only ~LOC
+					surf = get_image(new_loc, SCALED_TO_HEX);
+				}
 				// Scale (SCALE)
 				else if("SCALE" == function) {
 					std::vector<std::string> const& scale_params = utils::split(field, ',', utils::STRIP_SPACES);
