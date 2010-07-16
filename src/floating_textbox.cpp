@@ -121,57 +121,24 @@ namespace gui{
 		update_location(gui);
 	}
 
-	void floating_textbox::tab()
+	void floating_textbox::tab(const std::set<std::string>& dictionary)
 	{
 		if(active() == false) {
 			return;
 		}
 
-		switch(mode_) {
-		case gui::TEXTBOX_SEARCH:
-		case gui::TEXTBOX_COMMAND:
-		case gui::TEXTBOX_MESSAGE:
-		{
-			std::string text = box_->text();
-			std::vector<std::string> matches;
-			// Add players
-			const std::vector<team>& teams = *resources::teams;
-			
-			for(size_t n = 0; n != teams.size(); ++n) {
-				if(teams[n].is_empty()) continue;
-				matches.push_back(teams[n].current_player());
-			}
-			// Add observers
-			const std::set<std::string>& observers = resources::screen->observers();
-			for(std::set<std::string>::const_iterator i = observers.begin();
-					i != observers.end(); ++i)
-			{
-					matches.push_back(*i);
-			}
-			// Remove duplicates.
-			std::sort<std::vector<std::string>::iterator>
-					(matches.begin(), matches.end());
-			matches.erase(std::unique(matches.begin(), matches.end()), matches.end());
-			// Exclude own nick from tab-completion.
-			if (mode_ == gui::TEXTBOX_MESSAGE) {
-				matches.erase(std::remove(matches.begin(), matches.end(),
-						preferences::login()), matches.end());
-			}
-			const bool line_start = utils::word_completion(text, matches);
+		std::string text = box_->text();
+		std::vector<std::string> matches(dictionary.begin(), dictionary.end());
+		const bool line_start = utils::word_completion(text, matches);
 
-			if (matches.empty()) return;
-			if (matches.size() == 1 && mode_ == gui::TEXTBOX_MESSAGE) {
-				text.append(line_start ? ": " : " ");
-			} else if (matches.size() > 1) {
-				std::string completion_list = utils::join(matches, " ");
-				resources::screen->add_chat_message(time(NULL), "", 0, completion_list,
-						events::chat_handler::MESSAGE_PRIVATE, false);
-			}
-			box_->set_text(text);
-			break;
+		if (matches.empty()) return;
+		if (matches.size() == 1 && mode_ == gui::TEXTBOX_MESSAGE) {
+			text.append(line_start ? ": " : " ");
+		} else if (matches.size() > 1) {
+			std::string completion_list = utils::join(matches, " ");
+			resources::screen->add_chat_message(time(NULL), "", 0, completion_list,
+					events::chat_handler::MESSAGE_PRIVATE, false);
 		}
-		default:
-			ERR_DP << "unknown textbox mode\n";
-		}
+		box_->set_text(text);
 	}
 }

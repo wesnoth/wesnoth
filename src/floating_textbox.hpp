@@ -24,6 +24,7 @@
 
 #include <string>
 #include <vector>
+#include <set>
 
 class game_display;
 class team;
@@ -48,7 +49,7 @@ namespace gui{
 		void update_location(game_display& gui);
 		void show(gui::TEXTBOX_MODE mode, const std::string& label,
 			const std::string& check_label, bool checked, game_display& gui);
-		void tab();
+		void tab(const std::set<std::string>& dictionary);
 		bool active() const { return box_.get() != NULL; }
 
 	private:

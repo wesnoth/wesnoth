@@ -838,6 +838,53 @@ void play_controller::enter_textbox()
 
 }
 
+void play_controller::tab()
+{
+	gui::TEXTBOX_MODE mode = menu_handler_.get_textbox().mode();
+
+	std::set<std::string> dictionary;
+	switch(mode) {
+	case gui::TEXTBOX_COMMAND:
+	{
+		//TODO List commands
+		break;
+	}
+	case gui::TEXTBOX_SEARCH:
+	{
+		foreach (const unit &u, units_){
+			const map_location& loc = u.get_location();
+			if(!gui_->fogged(loc) &&
+					!(teams_[gui_->viewing_team()].is_enemy(u.side()) && u.invisible(loc)))
+				dictionary.insert(u.name());
+		}
+		//TODO List map labels
+		break;
+	}
+	case gui::TEXTBOX_MESSAGE:
+	{
+		foreach(const team& t, teams_) {
+			if(!t.is_empty())
+				dictionary.insert(t.current_player());
+		}
+
+		// Add observers
+		foreach(const std::string& o, gui_->observers()){
+			dictionary.insert(o);
+		}
+		//Exclude own nick from tab-completion.
+		//NOTE why ?
+		dictionary.erase(preferences::login());
+
+		break;
+	}
+	default:
+		ERR_DP << "unknown textbox mode\n";
+	} //switch(mode)
+
+	menu_handler_.get_textbox().tab(dictionary);
+}
+
+
 std::string play_controller::get_unique_saveid(const config& cfg, std::set<std::string>& seen_save_ids)
 {
 	std::string save_id = cfg["save_id"];
@@ -922,7 +969,7 @@ void play_controller::process_keydown_event(const SDL_Event& event) {
 	if(event.key.keysym.sym == SDLK_ESCAPE) {
 		menu_handler_.get_textbox().close(*gui_);
 	} else if(event.key.keysym.sym == SDLK_TAB) {
-		menu_handler_.get_textbox().tab();
+		tab();
 	} else if(event.key.keysym.sym == SDLK_RETURN || event.key.keysym.sym == SDLK_KP_ENTER) {
 		enter_textbox();
 	}
