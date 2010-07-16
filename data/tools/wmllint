@@ -2096,12 +2096,13 @@ Usage: wmllint [options] [dir]
 
 if __name__ == '__main__':
     try:
-        (options, arguments) = getopt.getopt(sys.argv[1:], "cdDfhnrsvSZ", [
+        (options, arguments) = getopt.getopt(sys.argv[1:], "cdDfhnprsvSZ", [
             "clean",
             "diffs",
             "dryrun",
             "future",
             "help",
+            "progress",
             "revert",
             "stripcr",
             "verbose",
@@ -2119,6 +2120,7 @@ if __name__ == '__main__':
     stripcr = False
     verbose = 0
     dospellcheck = True
+    progress = False 
     for (switch, val) in options:
         if switch in ('-h', '--help'):
             help()
@@ -2132,6 +2134,8 @@ if __name__ == '__main__':
             diffs = True
         elif switch in ('-f', '--future'):
             future = True
+        elif switch in ('-p', '--progress'):
+            progress = True
         elif switch in ('-r', '--revert'):
             revert = True
         elif switch in ('-s', '--stripcr'):
@@ -2222,6 +2226,8 @@ if __name__ == '__main__':
             for fn in allcfgfiles(dir):
                 if verbose >= 2:
                     print fn + ":"
+                if progress:
+                    print fn
                 backup = fn + "-bak"
                 if clean or revert:
                     # Do housekeeping
