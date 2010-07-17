@@ -32,12 +32,13 @@ tokenizer::tokenizer(std::istream& in) :
 {
 	for (int c = 0; c < 128; ++c)
 	{
-		int t = TOK_IS_OTHER;
-		if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') ||
-		    (c >= '0' && c <= '9') || c == '_') {
-			t = TOK_IS_ALNUM;
+		int t = 0;
+		if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || c == '_') {
+			t = TOK_ALPHA;
+		} else if (c >= '0' && c <= '9') {
+			t = TOK_NUMERIC;
 		} else if (c == ' ' || c == '\t') {
-			t = TOK_IS_SPACE;
+			t = TOK_SPACE;
 		}
 		char_types_[c] = t;
 	}
@@ -159,68 +160,50 @@ const token &tokenizer::next_token()
 	return token_;
 }
 
+bool tokenizer::skip_command(char const *cmd)
+{
+	for (; *cmd; ++cmd) {
+		next_char_fast();
+		if (current_ != *cmd) return false;
+	}
+	next_char_fast();
+	if (!is_space(current_)) return false;
+	next_char_fast();
+	return true;
+}
+
 void tokenizer::skip_comment()
 {
 	next_char_fast();
 	if (current_ == '\n' || current_ == EOF) return;
+	std::string *dst = NULL;
 
 	if (current_ == 't')
 	{
-		// When the string 'textdomain[ |\t] is matched the rest of the line is
-		// the textdomain to switch to. If we at any point fail to match we break
-		// out of the loop and eat the rest of the line without testing.
-		size_t i = 0;
-		static const std::string match = "extdomain";
-		next_char_fast();
-		while (current_ != '\n' && current_ != EOF) {
-			if (i < 9) {
-				if (current_ != match[i]) break;
-				++i;
-			} else if (i == 9) {
-				if (current_ != ' ' && current_ != '\t') break;
-				++i;
-				textdomain_.clear();
-			} else {
-				textdomain_ += current_;
-			}
-			next_char_fast();
-		}
+		if (!skip_command("extdomain")) goto fail;
+		dst = &textdomain_;
 	}
 	else if (current_ == 'l')
 	{
-		// Basically the same as textdomain but we match 'line[ |\t]d*[ |\t]s*
-		// d* is the line number
-		// s* is the file name
-		// It inherited the * instead of + from the previous implementation.
-		size_t i = 0;
-		static const std::string match = "ine";
-		next_char_fast();
-		bool found = false;
-		std::string lineno;
-		while (current_ != '\n' && current_ != EOF) {
-			if (i < 3) {
-				if (current_ != match[i]) break;
-				++i;
-			} else if(i == 3) {
-				if (current_ != ' ' && current_ != '\t') break;
-				++i;
-			} else {
-				if (!found) {
-					if (current_ == ' ' || current_ == '\t') {
-						found = true;
-						lineno_ = lexical_cast<int>(lineno);
-						file_.clear();
-					} else {
-						lineno += current_;
-					}
-				} else {
-					file_ += current_;
-				}
-			}
+		if (!skip_command("ine")) goto fail;
+		lineno_ = 0;
+		while (is_num(current_)) {
+			lineno_ = lineno_ * 10 + (current_ - '0');
 			next_char_fast();
 		}
+		if (!is_space(current_)) goto fail;
+		next_char_fast();
+		dst = &file_;
 	}
 
+	dst->clear();
+	while (current_ != '\n' && current_ != EOF) {
+		*dst += current_;
+		next_char_fast();
+	}
+	return;
+
+fail:
 	while (current_ != '\n' && current_ != EOF) {
 		next_char_fast();
 	}

@@ -148,27 +148,38 @@ private:
 
 	enum
 	{
-		TOK_IS_OTHER = 0,
-		TOK_IS_SPACE = 1,
-		TOK_IS_ALNUM = 2
+		TOK_SPACE = 1,
+		TOK_NUMERIC = 2,
+		TOK_ALPHA = 4
 	};
 
 	int char_type(unsigned c) const
 	{
-		return c < 128 ? char_types_[c] : int(TOK_IS_OTHER);
+		return c < 128 ? char_types_[c] : 0;
 	}
 
 	bool is_space(int c) const
 	{
-		return char_type(c) == TOK_IS_SPACE;
+		return char_type(c) & TOK_SPACE;
+	}
+
+	bool is_num(int c) const
+	{
+		return char_type(c) & TOK_NUMERIC;
 	}
 
 	bool is_alnum(int c) const
 	{
-		return char_type(c) == TOK_IS_ALNUM;
+		return char_type(c) & (TOK_ALPHA | TOK_NUMERIC);
 	}
 
 	void skip_comment();
+
+	/**
+	 * Returns true if the next characters are the one from @a cmd
+	 * followed by a space. Skips all the matching characters.
+	 */
+	bool skip_command(char const *cmd);
 
 	std::string textdomain_;
 	std::string file_;
