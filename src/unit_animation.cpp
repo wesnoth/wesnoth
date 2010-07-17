@@ -654,7 +654,7 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 			if (anim["missile_offset"].empty()) anim["missile_offset"] = "0~0.8";
 			if (anim["missile_layer"].empty()) anim["missile_layer"] = missile_layer;
 			config tmp;
-			tmp["duration"]="1";
+			tmp["duration"] = 1;
 			anim.add_child("missile_frame", tmp);
 			anim.add_child_at("missile_frame", tmp, 0);
 		}
