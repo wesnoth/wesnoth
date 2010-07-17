@@ -202,13 +202,13 @@ static server_type open_connection(game_display& disp, const std::string& origin
 				// If ping_timeout has a non-zero value, do not enable
 				// selective pings as this will cause clients to falsely
 				// believe the server has died and disconnect.
-				if( preferences::get_ping_timeout() ) {
-				  // Pings required so disable selective pings
-				  sp["selective_ping"] = "0" ;
+				if (preferences::get_ping_timeout()) {
+					// Pings required so disable selective pings
+					sp["selective_ping"] = false;
 				} else {
-				  // Client is bandwidth friendly so allow
-				  // server to optimize ping frequency as needed.
-				  sp["selective_ping"] = "1" ;
+					// Client is bandwidth friendly so allow
+					// server to optimize ping frequency as needed.
+					sp["selective_ping"] = true;
 				}
 				network::send_data(response, 0, true);
 
