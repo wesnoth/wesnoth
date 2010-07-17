@@ -44,6 +44,8 @@ public class Logger {
 	 */
 	public void startLogger()
 	{
+		if (logWriter_ != null)
+			return;
 		try
 		{
 			String logFilePath = String.format("%s/log%s.txt",
