@@ -172,7 +172,7 @@ class preprocessor_streambuf: public streambuf
 	preprocessor_streambuf(preprocessor_streambuf const &);
 public:
 	preprocessor_streambuf(preproc_map *, std::string *);
-	void error(const std::string &, const std::string &);
+	void error(const std::string &, int);
 };
 
 preprocessor_streambuf::preprocessor_streambuf(preproc_map *def, std::string *err_log) :
@@ -276,14 +276,16 @@ std::string lineno_string(const std::string &lineno)
 	return res;
 }
 
-void preprocessor_streambuf::error(const std::string& error_type, const std::string &pos)
+void preprocessor_streambuf::error(const std::string& error_type, int l)
 {
 	utils::string_map i18n_symbols;
 	std::string position, error;
-	position = lineno_string(pos);
+	std::ostringstream pos;
+	pos << l << ' ' << location_;
+	position = lineno_string(pos.str());
 	error = error_type + " at " + position;
 	ERR_CF << error << '\n';
-	if(error_log!=NULL)
+	if (error_log)
 		*error_log += error + '\n';
 
 	throw preproc_config::error(error);
@@ -648,12 +650,7 @@ bool preprocessor_data::get_chunk()
 		case '(': s = "Macro argument"; break;
 		default: s = "???";
 		}
-		std::ostringstream error;
-		error << s << " not terminated";
-		std::ostringstream location;
-		location << token.linenum << ' ' << target_.location_;
-		pop_token();
-		target_.error(error.str(), location.str());
+		target_.error(std::string(s) + " not terminated", token.linenum);
 	}
 	if (c == '\n')
 		++linenum_;
@@ -701,10 +698,7 @@ bool preprocessor_data::get_chunk()
 			push_token('"');
 			put(c);
 		} else {
-			std::string error="Nested quoted string";
-	        std::ostringstream location;
-			location<<linenum_<<' '<<target_.location_;
-			target_.error(error, location.str());
+			target_.error("Nested quoted string" , linenum_);
 		}
 	} else if (c == '{') {
 		if (token.type == '{')
@@ -722,10 +716,7 @@ bool preprocessor_data::get_chunk()
 			int linenum = linenum_;
 			std::vector< std::string > items = utils::split(read_line(), ' ');
 			if (items.empty()) {
-				std::string error="No macro name found after #define directive";
-				std::ostringstream location;
-				location << linenum << ' ' << target_.location_;
-				target_.error(error, location.str());
+				target_.error("No macro name found after #define directive", linenum);
 			}
 			std::string symbol = items.front();
 			items.erase(items.begin());
@@ -749,9 +740,7 @@ bool preprocessor_data::get_chunk()
 					}
 			}
 			if (found_enddef != 7) {
-				std::ostringstream location;
-				location << linenum_ << ' ' << target_.location_;
-				target_.error("Unterminated preprocessor definition", location.str());
+				target_.error("Unterminated preprocessor definition", linenum_);
 			}
 			if (!skipping_) {
 				buffer.erase(buffer.end() - 7, buffer.end());
@@ -798,9 +787,7 @@ bool preprocessor_data::get_chunk()
 				++skipping_;
 				push_token('I');
 			} else {
-				std::ostringstream location;
-				location << linenum_ << ' ' << target_.location_;
-				target_.error("Unexpected #else", location.str());
+				target_.error("Unexpected #else", linenum_);
 			}
 		} else if (command == "endif") {
 			switch (token.type) {
@@ -809,9 +796,7 @@ bool preprocessor_data::get_chunk()
 			case 'i':
 			case 'j': break;
 			default:
-				std::ostringstream location;
-				location << linenum_ << ' ' << target_.location_;
-				target_.error("Unexpected #endif", location.str());
+				target_.error("Unexpected #endif", linenum_);
 			}
 			pop_token();
 		} else if (command == "textdomain") {
@@ -824,9 +809,7 @@ bool preprocessor_data::get_chunk()
 			}
 			comment = true;
 		} else if (command == "enddef") {
-			std::ostringstream location;
-			location << linenum_ << ' ' << target_.location_;
-			target_.error("Unexpected #enddef", location.str());
+			target_.error("Unexpected #enddef", linenum_);
 		} else if (command == "undef") {
 			skip_spaces();
 			std::string const &symbol = read_word();
@@ -835,12 +818,9 @@ bool preprocessor_data::get_chunk()
 		} else if (command == "error") {
 			if (!skipping_) {
 				skip_spaces();
-				std::string message = read_rest_of_line();
 				std::ostringstream error;
-				std::ostringstream location;
-				error << "#error: \"" << message << '"';
-				location << linenum_ << ' ' << target_.location_;
-				target_.error(error.str(), location.str());
+				error << "#error: \"" << read_rest_of_line() << '"';
+				target_.error(error.str(), linenum_);
 			} else
 				DBG_CF << "Skipped an error\n";
 		} else if (command == "warning") {
@@ -876,11 +856,7 @@ bool preprocessor_data::get_chunk()
 			}
 			if (token.type == '{') {
 				if (!strings_.back().empty()) {
-					std::ostringstream error;
-					std::ostringstream location;
-					error << "Can't parse new macro parameter with a macro call scope open";
-					location<<linenum_<<' '<<target_.location_;
-					target_.error(error.str(), location.str());
+					target_.error("Can't parse new macro parameter with a macro call scope open", linenum_);
 				}
 				strings_.pop_back();
 			}
@@ -903,9 +879,7 @@ bool preprocessor_data::get_chunk()
 					std::ostringstream error;
 					error << "macro argument '" << symbol
 					      << "' does not expect any argument";
-					std::ostringstream location;
-					location << linenum_ << ' ' << target_.location_;
-					target_.error(error.str(), location.str());
+					target_.error(error.str(), linenum_);
 				}
 				std::ostringstream v;
 				v << arg->second << "\376line " << linenum_ << ' ' << target_.location_
@@ -923,9 +897,7 @@ bool preprocessor_data::get_chunk()
 					error << "preprocessor symbol '" << symbol << "' expects "
 					      << val.arguments.size() << " arguments, but has "
 					      << nb_arg << " arguments";
-					std::ostringstream location;
-					location << linenum_ << ' ' << target_.location_;
-					target_.error(error.str(), location.str());
+					target_.error(error.str(), linenum_);
 				}
 				std::istringstream *buffer = new std::istringstream(val.value);
 				std::map<std::string, std::string> *defines =
@@ -975,14 +947,10 @@ bool preprocessor_data::get_chunk()
 				{
 					std::ostringstream error;
 					error << "Macro/file '" << symbol << "' is missing";
-					std::ostringstream location;
-					location << linenum_ << ' ' << target_.location_;
-					target_.error(error.str(), location.str());
+					target_.error(error.str(), linenum_);
 				}
 			} else {
-				ERR_CF << "Too much nested preprocessing inclusions at "
-				       << linenum_ << ' ' << target_.location_
-				       << ". Aborting.\n";
+				target_.error("Too much nested preprocessing inclusions", linenum_);
 				pop_token();
 			}
 		} else {
