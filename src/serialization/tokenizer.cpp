@@ -195,16 +195,18 @@ void tokenizer::skip_comment()
 		next_char_fast();
 		dst = &file_;
 	}
+	else
+	{
+		fail:
+		while (current_ != '\n' && current_ != EOF) {
+			next_char_fast();
+		}
+		return;
+	}
 
 	dst->clear();
 	while (current_ != '\n' && current_ != EOF) {
 		*dst += current_;
-		next_char_fast();
-	}
-	return;
-
-fail:
-	while (current_ != '\n' && current_ != EOF) {
 		next_char_fast();
 	}
 }
