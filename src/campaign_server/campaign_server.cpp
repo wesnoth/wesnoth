@@ -598,7 +598,7 @@ namespace {
 							(*campaign)["email"] = upload["email"];
 
 							if((*campaign)["downloads"].empty()) {
-								(*campaign)["downloads"] = "0";
+								(*campaign)["downloads"] = 0;
 							}
 							(*campaign)["timestamp"] = lexical_cast<std::string>(time(NULL));
 
