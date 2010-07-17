@@ -11,6 +11,8 @@ package wesnoth_eclipse_plugin;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -113,7 +115,14 @@ public class Logger {
 		if (e == null)
 			return;
 		e.printStackTrace();
-		log(e.getLocalizedMessage(),IStatus.ERROR);
+
+		// put the stack trace in a string
+		StringWriter sw = new StringWriter();
+		PrintWriter pw = new PrintWriter(sw);
+		e.printStackTrace(pw);
+
+		log(e.getLocalizedMessage(), IStatus.ERROR);
+		log(sw.toString(), IStatus.ERROR);
 	}
 
 	/**

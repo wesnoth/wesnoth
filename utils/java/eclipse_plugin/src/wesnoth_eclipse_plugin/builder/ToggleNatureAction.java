@@ -19,6 +19,9 @@ import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
+import org.eclipse.xtext.ui.XtextProjectHelper;
+
+import wesnoth_eclipse_plugin.Logger;
 
 public class ToggleNatureAction implements IObjectActionDelegate
 {
@@ -67,16 +70,17 @@ public class ToggleNatureAction implements IObjectActionDelegate
 	 * @param project
 	 *        to have sample nature added or removed
 	 */
-	private void toggleNature(IProject project)
+	public void toggleNature(IProject project)
 	{
 		try
 		{
 			IProjectDescription description = project.getDescription();
 			String[] natures = description.getNatureIds();
 
+			boolean removed = false;
 			for (int i = 0; i < natures.length; ++i)
 			{
-				if (WesnothProjectNature.NATURE_ID.equals(natures[i]))
+				if (WesnothProjectNature.WESNOTH_NATURE_ID.equals(natures[i]))
 				{
 					// Remove the nature
 					String[] newNatures = new String[natures.length - 1];
@@ -84,18 +88,33 @@ public class ToggleNatureAction implements IObjectActionDelegate
 					System.arraycopy(natures, i + 1, newNatures, i, natures.length - i - 1);
 					description.setNatureIds(newNatures);
 					project.setDescription(description, null);
-					return;
+					removed = true;
+				}
+				if (XtextProjectHelper.NATURE_ID.equals(natures[i]))
+				{
+					// Remove the nature
+					String[] newNatures = new String[natures.length - 1];
+					System.arraycopy(natures, 0, newNatures, 0, i);
+					System.arraycopy(natures, i + 1, newNatures, i, natures.length - i - 1);
+					description.setNatureIds(newNatures);
+					project.setDescription(description, null);
+					removed = true;
 				}
 			}
 
-			// Add the nature
-			String[] newNatures = new String[natures.length + 1];
+			if (removed == true)
+				return;
+
+			// Add the natures
+			String[] newNatures = new String[natures.length + 2];
 			System.arraycopy(natures, 0, newNatures, 0, natures.length);
-			newNatures[natures.length] = WesnothProjectNature.NATURE_ID;
+			newNatures[natures.length] = WesnothProjectNature.WESNOTH_NATURE_ID;
+			newNatures[natures.length + 1] = XtextProjectHelper.NATURE_ID;
 			description.setNatureIds(newNatures);
 			project.setDescription(description, null);
 		} catch (CoreException e)
 		{
+			Logger.getInstance().logException(e);
 		}
 	}
 

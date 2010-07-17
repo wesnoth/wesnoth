@@ -21,6 +21,7 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.preference.PreferenceDialog;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -199,9 +200,9 @@ public class WorkspaceUtils
 		// automatically import "WesnothUserDir/data/add-ons as a project
 		// container
 		String userDir = Preferences.getString(Constants.P_WESNOTH_USER_DIR);
+		IProject proj = ResourcesPlugin.getWorkspace().getRoot().getProject("User Addons");
 		try
 		{
-			IProject proj = ResourcesPlugin.getWorkspace().getRoot().getProject("User Addons");
 			if (!proj.exists())
 			{
 				IProjectDescription description =
@@ -216,7 +217,8 @@ public class WorkspaceUtils
 				proj.open(null);
 
 				// the nature isn't set on creation so the nature adds the builder aswell
-				description.setNatureIds(new String[] { WesnothProjectNature.NATURE_ID });
+				description.setNatureIds(new String[] { WesnothProjectNature.WESNOTH_NATURE_ID,
+						WesnothProjectNature.XTEXT_NATURE_ID });
 				proj.setDescription(description, null);
 
 				// add the build.xml file
@@ -244,6 +246,15 @@ public class WorkspaceUtils
 		{
 			Logger.getInstance().logException(e);
 			GUIUtils.showMessageBox("There was an error trying to setup the workspace.");
+
+			// let's remove the corrupted project
+			try
+			{
+				proj.delete(true, null);
+			}
+			catch (CoreException e1)
+			{
+			}
 		}
 	}
 
@@ -262,8 +273,7 @@ public class WorkspaceUtils
 		String workingDir = Preferences.getString(Constants.P_WESNOTH_WORKING_DIR);
 
 		if (!validPath(execDir) || !validPath(userDir) ||
-			!validPath(wmltoolsDir) || !validPath(workingDir) ||
-			!ResourcesPlugin.getWorkspace().getRoot().getProject("User Addons").exists())
+			!validPath(wmltoolsDir) || !validPath(workingDir))
 		{
 			if (displayWarning)
 				GUIUtils.showMessageBox("Please set all plugin's preferences before using it.");

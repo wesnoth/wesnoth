@@ -22,6 +22,7 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
+import wesnoth_eclipse_plugin.schema.TagKey;
 import wesnoth_eclipse_plugin.utils.StringUtils;
 
 public class WizardGeneratorPageKey extends WizardPage

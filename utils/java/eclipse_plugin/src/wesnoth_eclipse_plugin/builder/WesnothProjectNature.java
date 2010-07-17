@@ -7,19 +7,21 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
 package wesnoth_eclipse_plugin.builder;
+
 import org.eclipse.core.resources.ICommand;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.resources.IProjectNature;
 import org.eclipse.core.runtime.CoreException;
-
+import org.eclipse.xtext.ui.XtextProjectHelper;
 
 public class WesnothProjectNature implements IProjectNature
 {
 	/**
 	 * ID of this project nature
 	 */
-	public static final String	NATURE_ID	= "Wesnoth_Eclipse_Plugin.sampleNature";
+	public static final String	WESNOTH_NATURE_ID		= "Wesnoth_Eclipse_Plugin.wesnothNature";
+	public static final String	XTEXT_NATURE_ID			= XtextProjectHelper.NATURE_ID;
 
 	private IProject			project;
 
@@ -29,19 +31,39 @@ public class WesnothProjectNature implements IProjectNature
 		IProjectDescription desc = project.getDescription();
 		ICommand[] commands = desc.getBuildSpec();
 
+		boolean wesnothConfigured = false;
+		boolean xtextConfigured = false;
+		int configured = 0;
 		for (int i = 0; i < commands.length; ++i)
 		{
-			if (commands[i].getBuilderName().equals(WesnothProjectBuilder.BUILDER_ID))
+			if (commands[i].getBuilderName().equals(WesnothProjectBuilder.WESNOTH_BUILDER_ID))
 			{
-				return;
+				wesnothConfigured = true;
+				configured++;
+			}
+			if (commands[i].getBuilderName().equals(WesnothProjectBuilder.XTEXT_BUILDER_ID))
+			{
+				xtextConfigured = true;
+				configured++;
 			}
 		}
+		if (configured == 2)
+			return;
 
-		ICommand[] newCommands = new ICommand[commands.length + 1];
+		ICommand[] newCommands = new ICommand[commands.length + (2 - configured)];
 		System.arraycopy(commands, 0, newCommands, 0, commands.length);
-		ICommand command = desc.newCommand();
-		command.setBuilderName(WesnothProjectBuilder.BUILDER_ID);
-		newCommands[newCommands.length - 1] = command;
+		if (wesnothConfigured == false)
+		{
+			ICommand command = desc.newCommand();
+			command.setBuilderName(WesnothProjectBuilder.WESNOTH_BUILDER_ID);
+			newCommands[newCommands.length - 1] = command;
+		}
+		if (xtextConfigured == false)
+		{
+			ICommand command = desc.newCommand();
+			command.setBuilderName(WesnothProjectBuilder.XTEXT_BUILDER_ID);
+			newCommands[newCommands.length - (2 - configured)] = command;
+		}
 		desc.setBuildSpec(newCommands);
 		project.setDescription(desc, null);
 	}
@@ -53,7 +75,8 @@ public class WesnothProjectNature implements IProjectNature
 		ICommand[] commands = description.getBuildSpec();
 		for (int i = 0; i < commands.length; ++i)
 		{
-			if (commands[i].getBuilderName().equals(WesnothProjectBuilder.BUILDER_ID))
+			if (commands[i].getBuilderName().equals(WesnothProjectBuilder.WESNOTH_BUILDER_ID) ||
+				commands[i].getBuilderName().equals(WesnothProjectBuilder.XTEXT_BUILDER_ID))
 			{
 				ICommand[] newCommands = new ICommand[commands.length - 1];
 				System.arraycopy(commands, 0, newCommands, 0, i);
@@ -61,7 +84,6 @@ public class WesnothProjectNature implements IProjectNature
 						commands.length - i - 1);
 				description.setBuildSpec(newCommands);
 				project.setDescription(description, null);
-				return;
 			}
 		}
 	}

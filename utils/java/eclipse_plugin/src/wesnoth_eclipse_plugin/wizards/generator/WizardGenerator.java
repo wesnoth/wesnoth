@@ -11,6 +11,8 @@ package wesnoth_eclipse_plugin.wizards.generator;
 import org.eclipse.jface.wizard.IWizardPage;
 
 import wesnoth_eclipse_plugin.Constants;
+import wesnoth_eclipse_plugin.schema.SchemaParser;
+import wesnoth_eclipse_plugin.schema.Tag;
 import wesnoth_eclipse_plugin.utils.StringUtils;
 import wesnoth_eclipse_plugin.wizards.NewWizardTemplate;
 

@@ -6,12 +6,12 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
-package wesnoth_eclipse_plugin.wizards.generator;
+package wesnoth_eclipse_plugin.schema;
 
 import java.util.ArrayList;
 import java.util.List;
 
-class Tag
+public class Tag
 {
 	public String		Name;
 	public String		ExtendedTagName	= "";

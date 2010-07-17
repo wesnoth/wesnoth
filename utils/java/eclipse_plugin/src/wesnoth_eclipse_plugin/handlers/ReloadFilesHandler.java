@@ -11,9 +11,9 @@ package wesnoth_eclipse_plugin.handlers;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 
+import wesnoth_eclipse_plugin.schema.SchemaParser;
 import wesnoth_eclipse_plugin.utils.GUIUtils;
 import wesnoth_eclipse_plugin.wizards.TemplateProvider;
-import wesnoth_eclipse_plugin.wizards.generator.SchemaParser;
 
 public class ReloadFilesHandler extends AbstractHandler
 {

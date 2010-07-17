@@ -26,6 +26,7 @@ import org.eclipse.core.resources.IncrementalProjectBuilder;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.xtext.ui.XtextProjectHelper;
 
 import wesnoth_eclipse_plugin.Constants;
 import wesnoth_eclipse_plugin.Logger;
@@ -40,7 +41,9 @@ import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
 //TODO: rewrite and use a ".wesnoth" file to store additional infos instead of just ".ignore"
 public class WesnothProjectBuilder extends IncrementalProjectBuilder
 {
-	public static final String BUILDER_ID = "Wesnoth_Eclipse_Plugin.projectBuilder";
+	public static final String WESNOTH_BUILDER_ID = "Wesnoth_Eclipse_Plugin.projectBuilder";
+	public static final String XTEXT_BUILDER_ID = XtextProjectHelper.BUILDER_ID;
+
 	private static final String MARKER_TYPE = "Wesnoth_Eclipse_Plugin.configProblem";
 
 	/**

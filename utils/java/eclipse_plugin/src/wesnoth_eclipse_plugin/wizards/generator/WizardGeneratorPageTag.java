@@ -23,6 +23,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.List;
 
+import wesnoth_eclipse_plugin.schema.Tag;
 import wesnoth_eclipse_plugin.utils.GUIUtils;
 import wesnoth_eclipse_plugin.utils.ListUtils;
 import wesnoth_eclipse_plugin.utils.StringUtils;
