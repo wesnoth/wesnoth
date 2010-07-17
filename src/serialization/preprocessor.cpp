@@ -314,16 +314,16 @@ preprocessor::preprocessor(preprocessor_streambuf &t) :
 preprocessor::~preprocessor()
 {
 	assert(target_.current_ == this);
+	if (!old_location_.empty()) {
+		target_.buffer_ << "\376line " << old_linenum_ << ' ' << old_location_ << '\n';
+	}
+	if (!old_textdomain_.empty() && target_.textdomain_ != old_textdomain_) {
+		target_.buffer_ << "\376textdomain " << old_textdomain_ << '\n';
+	}
 	target_.current_  = old_preprocessor_;
 	target_.location_ = old_location_;
 	target_.linenum_  = old_linenum_;
 	target_.textdomain_ = old_textdomain_;
-	if (!old_location_.empty()) {
-		target_.buffer_ << "\376line " << old_linenum_ << ' ' << old_location_ << '\n';
-    }
-	if (!old_textdomain_.empty()) {
-		target_.buffer_ << "\376textdomain " << old_textdomain_ << '\n';
-    }
 	--target_.depth_;
 }
 
@@ -487,10 +487,12 @@ preprocessor_data::preprocessor_data(preprocessor_streambuf &t,
 		s << ' ' << t.linenum_ << ' ' << t.location_;*/
 	t.location_ = s.str();
 	t.linenum_ = linenum;
-	t.textdomain_ = domain;
 
-	t.buffer_ << "\376line " << linenum
-		<< ' ' << t.location_ << "\n\376textdomain " << domain << '\n';
+	t.buffer_ << "\376line " << linenum << ' ' << t.location_ << '\n';
+	if (t.textdomain_ != domain) {
+		t.buffer_ << "\376textdomain " << domain << '\n';
+		t.textdomain_ = domain;
+	}
 
 	push_token('*');
 }
