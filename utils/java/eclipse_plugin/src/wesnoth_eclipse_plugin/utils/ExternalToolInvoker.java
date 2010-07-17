@@ -6,7 +6,7 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
-package wesnoth_eclipse_plugin.builder;
+package wesnoth_eclipse_plugin.utils;
 
 import java.io.BufferedReader;
 import java.io.IOException;

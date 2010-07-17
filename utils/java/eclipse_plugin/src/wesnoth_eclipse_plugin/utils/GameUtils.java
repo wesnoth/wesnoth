@@ -18,7 +18,6 @@ import org.eclipse.core.resources.IResource;
 
 import wesnoth_eclipse_plugin.Constants;
 import wesnoth_eclipse_plugin.Logger;
-import wesnoth_eclipse_plugin.builder.ExternalToolInvoker;
 import wesnoth_eclipse_plugin.preferences.Preferences;
 
 public class GameUtils

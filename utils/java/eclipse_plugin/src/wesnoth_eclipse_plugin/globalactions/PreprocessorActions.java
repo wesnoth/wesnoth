@@ -20,8 +20,8 @@ import org.eclipse.ui.ide.IDE;
 
 import wesnoth_eclipse_plugin.Constants;
 import wesnoth_eclipse_plugin.Logger;
-import wesnoth_eclipse_plugin.builder.ExternalToolInvoker;
 import wesnoth_eclipse_plugin.preferences.Preferences;
+import wesnoth_eclipse_plugin.utils.ExternalToolInvoker;
 import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
 
 public class PreprocessorActions
