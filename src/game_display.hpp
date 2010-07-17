@@ -143,6 +143,8 @@ public:
 	/** Same as invalidate_unit() if moving the displayed unit. */
 	void invalidate_unit_after_move(const map_location& src, const map_location& dst);
 
+	const time_of_day get_time_of_day(const map_location& loc) const;
+
 protected:
 	/**
 	 * game_display pre_draw does specific things related e.g. to unit rendering
@@ -159,8 +161,6 @@ protected:
 	void post_commit();
 
 	void draw_hex(const map_location& loc);
-
-	const time_of_day get_time_of_day(const map_location& loc);
 
 	/**
 	 * Animated hex invalidation specific to gameplay

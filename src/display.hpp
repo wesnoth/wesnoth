@@ -478,6 +478,8 @@ public:
 	void set_report_content(const reports::TYPE which_report, const std::string &content);
 	std::map<reports::TYPE, std::string> get_report_contents() const {return report_;};
 
+	virtual const time_of_day get_time_of_day(const map_location& /*loc*/) const {return time_of_day();}
+
 protected:
 	/** Clear the screen contents */
 	void clear_screen();
@@ -514,7 +516,6 @@ protected:
 	 */
 	virtual void draw_hex(const map_location& loc);
 
-	virtual const time_of_day get_time_of_day(const map_location& /*loc*/) {return time_of_day();}
 	/**
 	 * @returns the image type to be used for the passed hex
 	 * (mostly to do with brightening like for mouseover)
