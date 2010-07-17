@@ -344,7 +344,7 @@ public:
 	 */
 	static void toggle_debug_foreground();
 
-	std::vector<std::string> get_tile_info(const map_location &loc);
+	terrain_builder& get_builder() {return *builder_;};
 
 	void flip();
 

@@ -67,7 +67,7 @@ terrain_builder::tile::tile() :
 	sorted_images(false)
 {}
 
-void terrain_builder::tile::rebuild_cache(const std::string& tod)
+void terrain_builder::tile::rebuild_cache(const std::string& tod, logs* log)
 {
 	images_background.clear();
 	images_foreground.clear();
@@ -102,6 +102,10 @@ void terrain_builder::tile::rebuild_cache(const std::string& tod)
 
 			img_list.push_back(variant.image);
 			img_list.back().set_animation_time(ri.rand % img_list.back().get_animation_duration());
+
+			if(log) {
+				log->push_back(std::make_pair(&ri, &variant));
+			}
 
 			break; // found a matching variant
 		}
@@ -274,14 +278,6 @@ const terrain_builder::imagelist *terrain_builder::get_terrain_at(const map_loca
 	}
 
 	return NULL;
-}
-
-std::vector<std::string> terrain_builder::get_tile_info(const map_location &loc) const
-{
-	if(tile_map_.on_map(loc))
-		return tile_map_[loc].get_info();
-	else
-		return std::vector<std::string>();
 }
 
 bool terrain_builder::update_animation(const map_location &loc)
@@ -1106,4 +1102,11 @@ void terrain_builder::build_terrains()
 
 		++rule_index;
 	}
+}
+
+terrain_builder::tile* terrain_builder::get_tile(const map_location &loc)
+{
+	if(tile_map_.on_map(loc))
+		return &(tile_map_[loc]);
+	return NULL;
 }

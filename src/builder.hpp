@@ -112,8 +112,6 @@ public:
 	const imagelist *get_terrain_at(const map_location &loc,
 			const std::string &tod, TERRAIN_TYPE const terrain_type);
 
-	std::vector<std::string> get_tile_info(const map_location &loc) const;
-
 	/** Updates the animation at a given tile.
 	 * Returns true if something has changed, and must be redrawn.
 	 *
@@ -265,13 +263,16 @@ public:
 		/** Contructor for the tile() structure */
 		tile();
 
+		struct rule_image_rand;
+		typedef std::pair<const rule_image_rand*, const rule_image_variant*> log_details;
+		typedef std::vector<log_details> logs;
 		/** Rebuilds the whole image cache, for a given time-of-day.
 		 * Must be called when the time-of-day has changed,
 		 * to select the correct images.
 		 *
 		 * @param tod    The current time-of-day
 		 */
-		void rebuild_cache(const std::string &tod);
+		void rebuild_cache(const std::string &tod, logs* log = NULL);
 
 		std::vector<std::string> get_info() const;
 
@@ -317,6 +318,8 @@ public:
 		/** Indicates if 'images' is sorted */
 		bool sorted_images;
 	};
+
+	tile* get_tile(const map_location &loc);
 
 private:
 	/**

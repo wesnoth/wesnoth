@@ -21,6 +21,7 @@
 
 #include "global.hpp"
 
+#include "builder.hpp"
 #include "ai/manager.hpp"
 #include "dialogs.hpp"
 #include "formatter.hpp"
@@ -3119,21 +3120,55 @@ void console_handler::do_layers() {
 	const mouse_handler& mousehandler = resources::controller->get_mouse_handler_base();
 	const map_location &loc = mousehandler.get_last_hex();
 
-
 	std::vector<std::string> layers;
-	//FIXME: translate columns
+	//NOTE: columns reflect WML keys, don't translate them
 	std::string heading = std::string(1,HEADING_PREFIX) +
-								"Image"          + COLUMN_SEPARATOR + // 0
-								"Loc"         + COLUMN_SEPARATOR + // 1
-								"Layer"        + COLUMN_SEPARATOR + // 2
-								"Base.x"            + COLUMN_SEPARATOR + // 3
-								"Base.y"     // 4
-;
+		"Image"   + COLUMN_SEPARATOR + // 0
+		"Name"    + COLUMN_SEPARATOR + // 1
+		"Loc"     + COLUMN_SEPARATOR + // 2
+		"Layer"   + COLUMN_SEPARATOR + // 3
+		"Base.x"  + COLUMN_SEPARATOR + // 4
+		"Base.y"  + COLUMN_SEPARATOR + // 5
+		"Center.x"+ COLUMN_SEPARATOR + // 6
+		"Center.y"                     // 7
+	;
 	layers.push_back(heading);
 
-	std::vector<std::string> info =
-			menu_handler_.gui_->get_tile_info(loc);
-	layers.insert(layers.end(), info.begin(), info.end());
+	display& disp = *(menu_handler_.gui_);
+	terrain_builder& builder = disp.get_builder();
+	terrain_builder::tile* tile = builder.get_tile(loc);
+
+	const std::string& tod_id = disp.get_time_of_day(loc).id;
+	terrain_builder::tile::logs tile_logs;
+	tile->rebuild_cache(tod_id, &tile_logs);
+
+	foreach(const terrain_builder::tile::log_details det, tile_logs) {
+		const terrain_builder::tile::rule_image_rand& ri = *det.first;
+		const terrain_builder::rule_image_variant& variant = *det.second;
+
+		const image::locator& img = variant.image.get_first_frame();
+		const std::string& name = img.get_filename();
+		//TODO deal with (rarely used) ~modifications
+		//const std::string& modif = img.get_modifications();
+		const map_location& loc = img.get_loc();
+
+		std::ostringstream info;
+		info << IMAGE_PREFIX << name
+			<< "~LOC("
+				<< loc.x << "," << loc.y << ","
+				<< img.get_center_x() << "," << img.get_center_y()
+			<< ")"
+			<< COLUMN_SEPARATOR
+			<< IMAGE_PREFIX  << name << "~SCALE(72,72)"
+			<< IMG_TEXT_SEPARATOR << name
+			<< COLUMN_SEPARATOR << img.get_loc()
+			<< COLUMN_SEPARATOR << ri->layer
+			<< COLUMN_SEPARATOR << ri->basex
+			<< COLUMN_SEPARATOR << ri->basey
+			<< COLUMN_SEPARATOR << ri->center_x
+			<< COLUMN_SEPARATOR << ri->center_y;
+		layers.push_back(info.str());
+	}
 
 	int choice = 0;
  	{

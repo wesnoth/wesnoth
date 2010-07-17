@@ -809,11 +809,6 @@ void display::toggle_debug_foreground()
 	debug_foreground = !debug_foreground;
 }
 
-std::vector<std::string> display::get_tile_info(const map_location &loc)
-{
-	return builder_->get_tile_info(loc);
-}
-
 void display::flip()
 {
 	if(video().faked()) {
