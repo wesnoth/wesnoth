@@ -57,10 +57,10 @@ public class PreprocessorActions
 			arguments.add(fileName);
 			arguments.add(targetDirectory);
 
+			Logger.getInstance().log("preprocessing file: "+fileName);
 			ExternalToolInvoker wesnoth = new ExternalToolInvoker(
 					Preferences.getString(Constants.P_WESNOTH_EXEC_PATH),
 					arguments);
-			System.out.printf("preprocessing : %s\n", arguments);
 			wesnoth.runTool();
 			if (waitForIt)
 				wesnoth.waitForTool();

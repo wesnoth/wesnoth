@@ -16,14 +16,7 @@ import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.ui.console.ConsolePlugin;
-import org.eclipse.ui.console.IConsole;
-import org.eclipse.ui.console.MessageConsole;
-import org.eclipse.ui.console.MessageConsoleStream;
-
-import wesnoth_eclipse_plugin.Constants;
 import wesnoth_eclipse_plugin.Logger;
-import wesnoth_eclipse_plugin.utils.MyRunnable;
 
 public class ExternalToolInvoker
 {
@@ -279,124 +272,63 @@ public class ExternalToolInvoker
 		}
 	}
 
-	public static ExternalToolInvoker launchTool(final String fileName, final List<String> args)
-			//final OutputStream )
-	{
-		final ExternalToolInvoker toolInvoker = new ExternalToolInvoker(fileName, args);
-
-		return toolInvoker;
-	}
-
 	/**
-	 * Launches the specified tool, with the specified argument list
+	 * Launches the specified tool, with the specified argument list.
+	 * The caller returns immediatelly
 	 *
 	 * @param fileName the full path to the executable to be launched
 	 * @param args the arguments list
-	 * @param outputFlags a composition of flags used for output
-	 * @param useThread true to launch the tool on a separate thread.
-	 *        If this is false the method will wait for the tool to end
-	 * @param workbenchWindow the workbench window used to show messages
-	 *        (if null no messages will be triggered)
+	 * @param stdout An array of outputstreams where the stdout from the tool will be written
+	 * @param stderr An array of outputstreams where the stderr from the tool will be written
 	 * @return
 	 */
 	public static ExternalToolInvoker launchTool(final String fileName, final List<String> args,
-			final int outputFlags, final boolean useThread)
+			final OutputStream[] stdout, final OutputStream[] stderr)
 	{
 		final ExternalToolInvoker toolInvoker = new ExternalToolInvoker(fileName, args);
-
-		System.out.println("Tool args: " + args);
-
-		MessageConsoleStream stream = null;
-		if ((outputFlags & Constants.TI_SHOW_OUTPUT_USER) == Constants.TI_SHOW_OUTPUT_USER)
-		{
-			MessageConsole console = new MessageConsole("", null);
-			console.activate();
-			ConsolePlugin.getDefault().getConsoleManager().addConsoles(new IConsole[] { console });
-			stream = console.newMessageStream();
-		}
-		if (useThread)
-		{
-			toolInvoker.runTool();
-			Thread outputStreamThread = new Thread(new MyRunnable<MessageConsoleStream>(stream) {
-				@Override
-				public void run()
-				{
-					try
-					{
-						String line = "";
-						while (!toolInvoker.processEnded())
-						{
-							if ((line = toolInvoker.readOutputLine()) != null)
-							{
-								System.out.println(line);
-								if (runnableObject_ != null)
-									runnableObject_.write(line + "\n");
-							}
-						}
-					} catch (IOException e)
-					{
-						Logger.getInstance().logException(e);
-					}
-				}
-			});
-			Thread errorStreamThread = new Thread(new MyRunnable<MessageConsoleStream>(stream) {
-				@Override
-				public void run()
-				{
-					try
-					{
-						String line = "";
-						while (!toolInvoker.processEnded())
-						{
-							if ((line = toolInvoker.readErrorLine()) != null)
-							{
-								System.out.println(line);
-								if (runnableObject_ != null)
-									runnableObject_.write(line + "\n");
-							}
-						}
-						System.out.println("tool exited.");
-
-						//if (toolInvoker.waitFor() != 0)
-						//{
-						//	GUIUtils.showMessageBox(WorkspaceUtils.getWorkbenchWindow(),
-						//			"The tool returned a non-zero value.");
-						//}
-					} catch (IOException e)
-					{
-						Logger.getInstance().logException(e);
-					}
-				}
-			});
-			outputStreamThread.start();
-			errorStreamThread.start();
-		}
-		else
-		{
-			try
+		toolInvoker.runTool();
+		Thread outputStreamThread = new Thread(new Runnable(){
+			@Override
+			public void run()
 			{
-				if ((outputFlags & Constants.TI_SHOW_OUTPUT) == Constants.TI_SHOW_OUTPUT)
+				try
 				{
 					String line = "";
-					while ((line = toolInvoker.readOutputLine()) != null)
+					while((line = toolInvoker.readOutputLine()) != null)
 					{
-						if (stream != null)
-							stream.write(line + "\n");
-						System.out.println(line);
+						for (OutputStream outputStream : stdout)
+						{
+							outputStream.write((line + "\n").getBytes());
+						}
 					}
-					while ((line = toolInvoker.readErrorLine()) != null)
-					{
-						if (stream != null)
-							stream.write(line + "\n");
-						System.out.println(line);
-					}
-					System.out.println("tool exited.");
+				} catch (IOException e)
+				{
+					Logger.getInstance().logException(e);
 				}
-			} catch (IOException e)
-			{
-				Logger.getInstance().logException(e);
 			}
-		}
+		});
+		Thread errorStreamThread = new Thread(new Runnable(){
+			@Override
+			public void run()
+			{
+				try
+				{
+					String line = "";
+					while((line = toolInvoker.readOutputLine()) != null)
+					{
+						for (OutputStream outputStream : stderr)
+						{
+							outputStream.write((line + "\n").getBytes());
+						}
+					}
+				} catch (IOException e)
+				{
+					Logger.getInstance().logException(e);
+				}
+			}
+		});
+		outputStreamThread.start();
+		errorStreamThread.start();
 		return toolInvoker;
 	}
 }

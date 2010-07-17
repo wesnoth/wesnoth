@@ -13,10 +13,10 @@ import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.resources.IFile;
 
 import wesnoth_eclipse_plugin.Logger;
-import wesnoth_eclipse_plugin.globalactions.EditorActions;
+import wesnoth_eclipse_plugin.utils.GameUtils;
 import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
 
-public class OpenMapHandler extends AbstractHandler
+public class OpenMapInEditorHandler extends AbstractHandler
 {
 	@Override
 	public Object execute(ExecutionEvent event)
@@ -36,7 +36,7 @@ public class OpenMapHandler extends AbstractHandler
 			return null;
 		}
 
-		EditorActions.startEditor(selectedFile.getLocation().toOSString());
+		GameUtils.startEditor(selectedFile.getLocation().toOSString());
 		return null;
 	}
 }

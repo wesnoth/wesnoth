@@ -9,9 +9,11 @@
 package wesnoth_eclipse_plugin.utils;
 
 import java.io.File;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
 
 import wesnoth_eclipse_plugin.Constants;
@@ -68,33 +70,96 @@ public class GameUtils
 			args.add(campaignId);
 			if (scenarioId != null)
 				args.add(scenarioId);
-
-			String wesnothExec = Preferences.getString(Constants.P_WESNOTH_EXEC_PATH);
-			if (wesnothExec.isEmpty())
-			{
-				GUIUtils.showMessageBox("Please set the wesnoth's executable path first.");
-				return;
-			}
-
-			String workingDir = Preferences.getString(Constants.P_WESNOTH_WORKING_DIR);
-
-			args.add("--config-dir");
-			// add the user's data directory path
-			args.add(Preferences.getString(Constants.P_WESNOTH_USER_DIR));
-
-			if (workingDir.isEmpty())
-				workingDir = wesnothExec.substring(0,
-						wesnothExec.lastIndexOf(new File(wesnothExec).getName()));
-
-			// we need to add the working dir (backward compatibility)
-			args.add(workingDir);
-
-			Logger.getInstance().log(String.format("Launching game with args: %s \n", args));
-			ExternalToolInvoker.launchTool(wesnothExec, args,
-					Constants.TI_SHOW_OUTPUT | Constants.TI_SHOW_OUTPUT_USER, true);
+			startGame(args);
 		} catch (Exception e)
 		{
 			Logger.getInstance().logException(e);
 		}
+	}
+
+
+	public static void startGame(List<String> extraArgs)
+	{
+		List<String> args = new ArrayList<String>();
+		String wesnothExec = Preferences.getString(Constants.P_WESNOTH_EXEC_PATH);
+		if (wesnothExec.isEmpty())
+		{
+			GUIUtils.showMessageBox("Please set the wesnoth's executable path first.");
+			return;
+		}
+
+		String workingDir = Preferences.getString(Constants.P_WESNOTH_WORKING_DIR);
+
+		args.addAll(extraArgs);
+
+		// add the user's data directory path
+		args.add("--config-dir");
+		args.add(Preferences.getString(Constants.P_WESNOTH_USER_DIR));
+
+		if (workingDir.isEmpty())
+			workingDir = wesnothExec.substring(0,
+					wesnothExec.lastIndexOf(new File(wesnothExec).getName()));
+
+		// we need to add the working dir (backward compatibility)
+		args.add(workingDir);
+
+		OutputStream[] stream = new OutputStream[] {
+				GUIUtils.createConsole("Wesnoth game:", null, true).newMessageStream()
+			};
+		ExternalToolInvoker.launchTool(wesnothExec, args, stream, stream);
+	}
+	public static void startGame()
+	{
+		startGame(new ArrayList<String>());
+	}
+
+	public static void startEditor(IFile file)
+	{
+		if (file == null || !file.exists())
+		{
+			Logger.getInstance().log("non-existing map file",
+					"Please select an existing map file before opening it.");
+			return;
+		}
+
+		startEditor(file.getLocation().toOSString());
+	}
+
+	public static void startEditor(String mapName)
+	{
+		String editorPath = Preferences.getString(Constants.P_WESNOTH_EXEC_PATH);
+		String workingDir = Preferences.getString(Constants.P_WESNOTH_WORKING_DIR);
+
+		if (workingDir.isEmpty())
+			workingDir = editorPath.substring(0, editorPath.lastIndexOf(new File(editorPath).getName()));
+
+		if (editorPath.isEmpty())
+		{
+			Logger.getInstance().log("wesnoth executable not set (startEditor)",
+					"Please set the wesnoth's executable path first.");
+			return;
+		}
+
+		OutputStream[] stream = new OutputStream[] {
+				GUIUtils.createConsole("Wesnoth editor:", null, true).newMessageStream()
+			};
+		ExternalToolInvoker.launchTool(editorPath, getEditorLaunchArguments(mapName, workingDir),
+				stream, stream);
+	}
+
+	public static List<String> getEditorLaunchArguments(String mapName, String workingDir)
+	{
+		List<String> args = new ArrayList<String>(3);
+
+		args.add("-e");
+		args.add(mapName);
+
+		if (!workingDir.isEmpty())
+		{
+			args.add("--data-dir");
+			args.add(workingDir);
+		}
+
+		return args;
 	}
 }

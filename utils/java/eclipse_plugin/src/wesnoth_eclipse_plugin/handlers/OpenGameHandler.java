@@ -13,13 +13,12 @@ import org.eclipse.core.commands.ExecutionEvent;
 
 import wesnoth_eclipse_plugin.utils.GameUtils;
 
-public class OpenEditorHandler extends AbstractHandler
+public class OpenGameHandler extends AbstractHandler
 {
 	@Override
 	public Object execute(ExecutionEvent event)
 	{
-		// no map selected
-		GameUtils.startEditor("");
+		GameUtils.startGame();
 		return null;
 	}
 }

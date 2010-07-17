@@ -11,10 +11,8 @@ package wesnoth_eclipse_plugin.handlers;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.ui.console.MessageConsole;
 
 import wesnoth_eclipse_plugin.builder.ExternalToolInvoker;
-import wesnoth_eclipse_plugin.utils.GUIUtils;
 
 /**
  * Here it goes testing stuff in the plugin ( For DEBUG ONLY!)
@@ -26,8 +24,7 @@ public class TestHandler extends AbstractHandler
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException
 	{
-		MessageConsole con = GUIUtils.createConsole("TIMO", null, true);
-		//con.
+//		MessageConsole con = GUIUtils.createConsole("TIMO", null, true);
 //		List<String> arguments = new ArrayList<String>();
 //		arguments.add(Preferences.getString(Constants.P_WESNOTH_WORKING_DIR));
 //		if (tool == null)

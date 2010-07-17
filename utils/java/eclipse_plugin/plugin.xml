@@ -349,7 +349,13 @@
             name="importMap">
       </command>
       <command
-            defaultHandler="wesnoth_eclipse_plugin.handlers.OpenMapHandler"
+            defaultHandler="wesnoth_eclipse_plugin.handlers.OpenGameHandler"
+            description="Opens the game"
+            id="Wesnoth_Eclipse_Plugin.commands.openGame"
+            name="openGame">
+      </command>
+      <command
+            defaultHandler="wesnoth_eclipse_plugin.handlers.OpenMapInEditorHandler"
             description="Opens the selected map in the map editor"
             id="Wesnoth_Eclipse_Plugin.commands.openMapInEditor"
             name="openMapInEditor">
@@ -387,6 +393,13 @@
                   id="Wesnoth_Eclipse_Plugin.menus.openEditor"
                   label="Open editor"
                   mnemonic="e">
+            </command>
+            <command
+                  commandId="Wesnoth_Eclipse_Plugin.commands.openGame"
+                  icon="icons/wesnoth-icon_16.png"
+                  id="Wesnoth_Eclipse_Plugin.menus.openGame"
+                  label="Open game"
+                  mnemonic="g">
             </command>
             <separator
                   name="separator1"
