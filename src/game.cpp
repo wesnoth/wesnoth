@@ -1033,8 +1033,8 @@ bool game_controller::load_game()
 			if (side["controller"] != "human") continue;
 			foreach (config &unit, side.child_range("unit"))
 			{
-				unit["goto_x"] = "-999";
-				unit["goto_y"] = "-999";
+				unit["goto_x"] = -999;
+				unit["goto_y"] = -999;
 			}
 		}
 	}
@@ -1053,13 +1053,10 @@ void game_controller::set_tutorial()
 
 }
 
-void game_controller::mark_completed_campaigns(std::vector<config>& campaigns) {
-	foreach(config &campaign, campaigns) {
-		if(preferences::is_campaign_completed(campaign["id"])) {
-			campaign["completed"] = "true";
-		} else {
-			campaign["completed"] = "false";
-		}
+void game_controller::mark_completed_campaigns(std::vector<config> &campaigns)
+{
+	foreach (config &campaign, campaigns) {
+		campaign["completed"] = preferences::is_campaign_completed(campaign["id"]);
 	}
 }
 
