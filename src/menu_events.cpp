@@ -3152,8 +3152,8 @@ void console_handler::do_layers() {
 		//const std::string& modif = img.get_modifications();
 		const map_location& loc = img.get_loc();
 
-		std::ostringstream info;
-		info << IMAGE_PREFIX << name
+		std::ostringstream str;
+		str << IMAGE_PREFIX << name
 			<< "~LOC("
 				<< loc.x << "," << loc.y << ","
 				<< img.get_center_x() << "," << img.get_center_y()
@@ -3167,12 +3167,16 @@ void console_handler::do_layers() {
 			<< COLUMN_SEPARATOR << ri->basey
 			<< COLUMN_SEPARATOR << ri->center_x
 			<< COLUMN_SEPARATOR << ri->center_y;
-		layers.push_back(info.str());
+		layers.push_back(str.str());
 	}
 
+	std::vector<std::string> flags(tile->flags.begin(),tile->flags.end());
+	std::ostringstream info;
+	// NOTE using ", " also allows better word wrapping
+	info << "Flags :" << utils::join(flags, ", ");
 	int choice = 0;
  	{
- 		gui::dialog menu(*menu_handler_.gui_, _("Layers"), "", gui::OK_CANCEL);
+ 		gui::dialog menu(*menu_handler_.gui_, _("Layers"), info.str(), gui::OK_CANCEL);
 		menu.set_menu(layers);
 		choice = menu.show();
 	}
