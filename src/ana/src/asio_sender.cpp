@@ -169,3 +169,4 @@ void asio_sender::log_conditional_send( size_t size, bool finished )
     if (stats_collector() != NULL )
         stats_collector()->log_send( size, finished );
 }
+
