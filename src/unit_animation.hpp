@@ -68,6 +68,7 @@ class unit_animation
                 void restart_animation();
 		int get_current_frame_begin_time() const{ return unit_anim_.get_current_frame_begin_time() ; };
 		void redraw(const frame_parameters& value);
+		void clear_haloes();
 		bool invalidate(const frame_parameters& value );
 
 	friend class unit;
@@ -114,6 +115,7 @@ class unit_animation
 			std::set<map_location> get_overlaped_hex(const frame_parameters& value,const map_location &src, const map_location &dst, const bool primary = false);
 			void start_animation(int start_time, bool cycles=false);
 			const frame_parameters parameters(const frame_parameters & default_val,bool primary) const { return get_current_frame().merge_parameters(get_current_frame_time(),parameters_.parameters(get_animation_time()-get_begin_time()),default_val,primary); };
+			void clear_halo();
 			bool accelerate;
 		private:
 

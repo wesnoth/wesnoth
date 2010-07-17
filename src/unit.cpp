@@ -1973,6 +1973,7 @@ void unit::clear_haloes()
 		halo::remove(unit_halo_);
 		unit_halo_ = halo::NO_HALO;
 	}
+	if(anim_ ) anim_->clear_haloes();
 }
 bool unit::invalidate(const map_location &loc)
 {

@@ -311,6 +311,7 @@ void game_display::draw_invalidated()
 		if (u_it != units_.end())
 			u_it->redraw_unit();
 	}
+	halo::unrender(invalidated_);
 }
 
 void game_display::post_commit()

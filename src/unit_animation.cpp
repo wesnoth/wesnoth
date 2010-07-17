@@ -904,6 +904,15 @@ void unit_animation::redraw(const frame_parameters& value)
 		anim_itor->second.redraw( value,src_,dst_);
 	}
 }
+void unit_animation::clear_haloes()
+{
+
+	std::map<std::string,particule>::iterator anim_itor =sub_anims_.begin();
+	unit_anim_.clear_halo();
+	for( /*null*/; anim_itor != sub_anims_.end() ; ++anim_itor) {
+		anim_itor->second.clear_halo();
+	}
+}
 bool unit_animation::invalidate(const frame_parameters& value)
 {
 	if(invalidated_) return false;
@@ -955,6 +964,13 @@ void unit_animation::particule::redraw(const frame_parameters& value,const map_l
 		current_frame.redraw(get_current_frame_time(),true,src,dst,&halo_id_,default_val,value,primary);
 	} else {
 		current_frame.redraw(get_current_frame_time(),false,src,dst,&halo_id_,default_val,value,primary);
+	}
+}
+void unit_animation::particule::clear_halo()
+{
+	if(halo_id_ != halo::NO_HALO) {
+		halo::remove(halo_id_);
+		halo_id_ = halo::NO_HALO;
 	}
 }
 std::set<map_location> unit_animation::particule::get_overlaped_hex(const frame_parameters& value,const map_location &src, const map_location &dst, const bool primary )
