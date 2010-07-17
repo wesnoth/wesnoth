@@ -749,10 +749,9 @@ bool preprocessor_data::get_chunk()
 					}
 			}
 			if (found_enddef != 7) {
-				std::string error="Unterminated preprocessor definition at";
-		        std::ostringstream location;
-				location<<linenum_<<' '<<target_.location_;
-				target_.error(error, location.str());
+				std::ostringstream location;
+				location << linenum_ << ' ' << target_.location_;
+				target_.error("Unterminated preprocessor definition", location.str());
 			}
 			if (!skipping_) {
 				buffer.erase(buffer.end() - 7, buffer.end());
@@ -799,10 +798,9 @@ bool preprocessor_data::get_chunk()
 				++skipping_;
 				push_token('I');
 			} else {
-				std::string error="Unexpected #else at";
-		        std::ostringstream location;
-				location<<linenum_<<' '<<target_.location_;
-				target_.error(error, location.str());
+				std::ostringstream location;
+				location << linenum_ << ' ' << target_.location_;
+				target_.error("Unexpected #else", location.str());
 			}
 		} else if (command == "endif") {
 			switch (token.type) {
@@ -811,10 +809,9 @@ bool preprocessor_data::get_chunk()
 			case 'i':
 			case 'j': break;
 			default:
-				std::string error="Unexpected #endif at";
-		        std::ostringstream location;
-				location<<linenum_<<' '<<target_.location_;
-				target_.error(error, location.str());
+				std::ostringstream location;
+				location << linenum_ << ' ' << target_.location_;
+				target_.error("Unexpected #endif", location.str());
 			}
 			pop_token();
 		} else if (command == "textdomain") {
@@ -827,36 +824,33 @@ bool preprocessor_data::get_chunk()
 			}
 			comment = true;
 		} else if (command == "enddef") {
-			std::string error="Unexpected #enddef at";
 			std::ostringstream location;
-			location<<linenum_<<' '<<target_.location_;
-			target_.error(error, location.str());
+			location << linenum_ << ' ' << target_.location_;
+			target_.error("Unexpected #enddef", location.str());
 		} else if (command == "undef") {
 			skip_spaces();
 			std::string const &symbol = read_word();
 			target_.defines_->erase(symbol);
 			LOG_CF << "undefine macro " << symbol << " (location " << target_.location_ << ")\n";
 		} else if (command == "error") {
-			DBG_CF << "Encountered an #error, we are currently at skipping_ level: " << skipping_ << '\n';
-			if(skipping_ == 0) {
+			if (!skipping_) {
 				skip_spaces();
 				std::string message = read_rest_of_line();
 				std::ostringstream error;
 				std::ostringstream location;
 				error << "#error: \"" << message << '"';
-				location<<linenum_<<' '<<target_.location_;
+				location << linenum_ << ' ' << target_.location_;
 				target_.error(error.str(), location.str());
 			} else
-				LOG_CF << "Skipped an error\n";
+				DBG_CF << "Skipped an error\n";
 		} else if (command == "warning") {
-			DBG_CF << "Encountered a #warning, we are currently at skipping_ level: " << skipping_ << '\n';
-			if(skipping_ == 0) {
+			if (!skipping_) {
 				skip_spaces();
 				std::string message = read_rest_of_line();
 				WRN_CF << "#warning: \"" << message << "\" at "
 					<< linenum_ << ' ' << target_.location_ << '\n';
 			} else
-				LOG_CF << "Skipped a warning\n";
+				DBG_CF << "Skipped a warning\n";
 		} else
 			comment = token.type != '{';
 		skip_eol();
@@ -980,7 +974,7 @@ bool preprocessor_data::get_chunk()
 				else
 				{
 					std::ostringstream error;
-					error << "macro/file '" << symbol << "' is missing";
+					error << "Macro/file '" << symbol << "' is missing";
 					std::ostringstream location;
 					location << linenum_ << ' ' << target_.location_;
 					target_.error(error.str(), location.str());
