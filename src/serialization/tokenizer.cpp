@@ -30,6 +30,17 @@ tokenizer::tokenizer(std::istream& in) :
 	token_(),
 	in_(in)
 {
+	for (int c = 0; c < 128; ++c)
+	{
+		int t = TOK_IS_OTHER;
+		if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') ||
+		    (c >= '0' && c <= '9') || c == '_') {
+			t = TOK_IS_ALNUM;
+		} else if (c == ' ' || c == '\t') {
+			t = TOK_IS_SPACE;
+		}
+		char_types_[c] = t;
+	}
 	in_.exceptions(std::ios_base::badbit);
 	next_char_fast();
 }

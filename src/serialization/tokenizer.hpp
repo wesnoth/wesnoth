@@ -146,15 +146,26 @@ private:
 		return in_.peek();
 	}
 
-	bool is_space(const int c) const
+	enum
 	{
-		return c == ' ' || c == '\t';
+		TOK_IS_OTHER = 0,
+		TOK_IS_SPACE = 1,
+		TOK_IS_ALNUM = 2
+	};
+
+	int char_type(unsigned c) const
+	{
+		return c < 128 ? char_types_[c] : int(TOK_IS_OTHER);
 	}
 
-	bool is_alnum(const int c) const
+	bool is_space(int c) const
 	{
-		return (c >= 'a' && c <= 'z')
-			|| (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9') || c == '_';
+		return char_type(c) == TOK_IS_SPACE;
+	}
+
+	bool is_alnum(int c) const
+	{
+		return char_type(c) == TOK_IS_ALNUM;
 	}
 
 	void skip_comment();
@@ -166,6 +177,7 @@ private:
 	token previous_token_;
 #endif
 	std::istream &in_;
+	char char_types_[128];
 };
 
 #endif
