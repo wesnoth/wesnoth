@@ -80,6 +80,10 @@ void terrain_builder::tile::rebuild_cache(const std::string& tod)
 	}
 
 	foreach(const rule_image_rand& ri, images){
+		bool is_background = ri->layer < 0 || (ri->layer == 0 && ri->basey < UNITPOS);
+
+		imagelist& img_list = is_background ? images_background : images_foreground;
+
 		int rnd = (ri.rand % 100) + 1;
 		foreach(const rule_image_variant& variant, ri->variants){
 			if(!variant.tods.empty() && variant.tods.find(tod) == variant.tods.end())
@@ -95,10 +99,6 @@ void terrain_builder::tile::rebuild_cache(const std::string& tod)
 				rnd -= variant.probability;
 				continue;
 			}
-
-			bool is_background = ri->layer < 0 || (ri->layer == 0 && ri->basey < UNITPOS);
-
-			imagelist& img_list = is_background ? images_background : images_foreground;
 
 			img_list.push_back(variant.image);
 			img_list.back().set_animation_time(ri.rand % img_list.back().get_animation_duration());
