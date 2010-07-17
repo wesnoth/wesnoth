@@ -8,14 +8,16 @@
  *******************************************************************************/
 package wesnoth_eclipse_plugin;
 
-import java.io.File;
-
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
+import wesnoth_eclipse_plugin.handlers.SetupWorkspaceHandler;
 import wesnoth_eclipse_plugin.preferences.Preferences;
+import wesnoth_eclipse_plugin.preferences.WesnothEditorPreferences;
+import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
 
 /**
  * The activator class controls the plug-in life cycle
@@ -41,7 +43,6 @@ public class Activator extends AbstractUIPlugin
 		super.start(context);
 		plugin = this;
 		Logger.getInstance().startLogger();
-		checkConditions();
 	}
 
 	@Override
@@ -59,6 +60,9 @@ public class Activator extends AbstractUIPlugin
 	 */
 	public static Activator getDefault()
 	{
+		if (!SetupWorkspaceHandler.WorkspaceSetupStarted &&
+			!WesnothEditorPreferences.EditorPreferencesStarted)
+			checkConditions();
 		return plugin;
 	}
 
@@ -95,32 +99,14 @@ public class Activator extends AbstractUIPlugin
 		String wmltoolsDir = Preferences.getString(Constants.P_WESNOTH_WMLTOOLS_DIR);
 		String workingDir = Preferences.getString(Constants.P_WESNOTH_WORKING_DIR);
 
-		if (!validPath(execDir) || !validPath(userDir) ||
-			!validPath(wmltoolsDir) || !validPath(workingDir))
+		if (!WorkspaceUtils.validPath(execDir) || !WorkspaceUtils.validPath(userDir) ||
+			!WorkspaceUtils.validPath(wmltoolsDir) || !WorkspaceUtils.validPath(workingDir) ||
+			!ResourcesPlugin.getWorkspace().getRoot().getProject("User Addons").exists())
 		{
-			Logger.getInstance().log("checkConditions: preferences not set",
-					"Please set all plugin's preferences before using it.");
+			Logger.getInstance().log("checkConditions: workspace not setup",
+				"Please setup the workspace before using the plugin. Go to \"Wesnoth\" menu," +
+				" and then click on the \"Setup Workspace\" entry following the instructions on the screen.");
 			return;
 		}
-
-		// check if workspace is setup - the "userdir addons" directory created
-		// as a project
-//		if (!ResourcesPlugin.getWorkspace().getRoot().getProject("User Addons").exists())
-//		{
-//			Logger.getInstance().log("checkConditions: workspace not setup",
-//				"Please setup the workspace before using the plugin. Go to \"Wesnoth\" menu," +
-//				" and then click on the \"Setup Workspace\" entry following the instructions on the screen.");
-//			return;
-//		}
-	}
-
-	/**
-	 * Checks if the path is valid and the specified path's resource exists
-	 * @param path the path to check
-	 * @return
-	 */
-	private static boolean validPath(String path)
-	{
-		return !path.isEmpty() && new File(path).exists();
 	}
 }

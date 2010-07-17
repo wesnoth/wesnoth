@@ -13,11 +13,15 @@ import org.eclipse.core.commands.ExecutionEvent;
 
 import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
 
-public class SetupWorkspaceHandler extends AbstractHandler {
+public class SetupWorkspaceHandler extends AbstractHandler
+{
+	public static boolean WorkspaceSetupStarted = false;
 
 	@Override
 	public Object execute(ExecutionEvent event) {
+		WorkspaceSetupStarted = true;
 		WorkspaceUtils.setupWorkspace();
+		WorkspaceSetupStarted = false;
 		return null;
 	}
 

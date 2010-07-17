@@ -22,8 +22,11 @@ import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.jface.preference.PreferenceDialog;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.window.Window;
 import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.dialogs.PreferencesUtil;
 
 import wesnoth_eclipse_plugin.Activator;
 import wesnoth_eclipse_plugin.Constants;
@@ -176,18 +179,26 @@ public class WorkspaceUtils
 		return result;
 	}
 
+	/**
+	 * Setups the workspace, by checking:
+	 * 1) The user has set all plugin's preferences
+	 * 2) The project "User addons" exists. If not, it will be created
+	 */
 	public static void setupWorkspace()
 	{
+		if (!checkConditions(false))
+		{
+			PreferenceDialog pref = PreferencesUtil.createPreferenceDialogOn(
+					Activator.getShell(), "plugin_preferences", new String[0], null);
+			if (pref.open() == Window.CANCEL || !checkConditions(true))
+			{
+				GUIUtils.showMessageBox("The workspace was not setup");
+				return;
+			}
+		}
 		// automatically import "WesnothUserDir/data/add-ons as a project
 		// container
 		String userDir = Preferences.getString(Constants.P_WESNOTH_USER_DIR);
-		if (userDir.isEmpty() || !new File(userDir).exists())
-		{
-			GUIUtils.showMessageBox(WorkspaceUtils.getWorkbenchWindow(),
-					"Please set all plugin's preferences before using it.");
-			return;
-		}
-
 		try
 		{
 			IProject proj = ResourcesPlugin.getWorkspace().getRoot().getProject("User Addons");
@@ -232,6 +243,42 @@ public class WorkspaceUtils
 		} catch (Exception e)
 		{
 			Logger.getInstance().logException(e);
+			GUIUtils.showMessageBox("There was an error trying to setup the workspace.");
 		}
+	}
+
+	/**
+	 * Checks if the user has set some needed preferences and if the workspace
+	 * is setup (there exists the "User Addons" project)
+	 *
+	 * @param displayWarning true to display a messagebox warning
+	 * 		  the user if conditions are not met
+	 */
+	private static boolean checkConditions(boolean displayWarning)
+	{
+		String execDir = Preferences.getString(Constants.P_WESNOTH_EXEC_PATH);
+		String userDir = Preferences.getString(Constants.P_WESNOTH_USER_DIR);
+		String wmltoolsDir = Preferences.getString(Constants.P_WESNOTH_WMLTOOLS_DIR);
+		String workingDir = Preferences.getString(Constants.P_WESNOTH_WORKING_DIR);
+
+		if (!validPath(execDir) || !validPath(userDir) ||
+			!validPath(wmltoolsDir) || !validPath(workingDir) ||
+			!ResourcesPlugin.getWorkspace().getRoot().getProject("User Addons").exists())
+		{
+			if (displayWarning)
+				GUIUtils.showMessageBox("Please set all plugin's preferences before using it.");
+			return false;
+		}
+		return true;
+	}
+
+	/**
+	 * Checks if the path is valid and the specified path's resource exists
+	 * @param path the path to check
+	 * @return
+	 */
+	public static boolean validPath(String path)
+	{
+		return !path.isEmpty() && new File(path).exists();
 	}
 }
