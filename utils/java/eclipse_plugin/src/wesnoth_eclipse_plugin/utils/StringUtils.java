@@ -124,7 +124,7 @@ public class StringUtils
 
 	public static String trimPathSeparators(String string)
 	{
-		if (string == null)
+		if (string == null || string.isEmpty())
 			return "";
 
 		while (string.charAt(string.length() - 1) == '/' ||

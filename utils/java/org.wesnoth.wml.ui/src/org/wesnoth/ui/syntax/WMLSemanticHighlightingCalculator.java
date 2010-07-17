@@ -4,6 +4,9 @@
  */
 package org.wesnoth.ui.syntax;
 
+import org.wesnoth.ui.WMLEditor;
+import org.wesnoth.ui.WMLHighlightingReconciler;
+import org.wesnoth.ui.WMLMergingHighlightedPositionAcceptor;
 import org.wesnoth.wML.WMLKey;
 import org.wesnoth.wML.WMLMacro;
 import org.wesnoth.wML.WMLPackage;
@@ -30,10 +33,17 @@ public class WMLSemanticHighlightingCalculator extends SemanticHighlightingCalcu
 		if (resource == null)
 			return;
 
+		// we skip xtext's default acceptor since we want only ours
+		if (!(acceptor instanceof WMLMergingHighlightedPositionAcceptor))
+			return;
+
 		Iterator<EObject> iter = EcoreUtil.getAllContents(resource, true);
 		while (iter.hasNext())
 		{
 			EObject current = iter.next();
+			if (skipNode(acceptor, current))
+				continue;
+
 			if (current instanceof WMLTag)
 			{
 				AbstractNode begin = getFirstFeatureNode(current, WMLPackage.Literals.WML_TAG__NAME.getName());
@@ -56,6 +66,30 @@ public class WMLSemanticHighlightingCalculator extends SemanticHighlightingCalcu
 				highlightNode(end, WMLHighlightingConfiguration.RULE_WML_MACRO, acceptor);
 			}
 		}
+	}
+
+	/**
+	 * We have this auxilliar function to know when to skip a node from being highlighted
+	 * This is usually case of "highlighting start/end tags" and we don't want
+	 * highlighting going over.
+	 * 
+	 * @param acceptor
+	 * @param node
+	 * @return
+	 */
+	private boolean skipNode(IHighlightedPositionAcceptor acceptor, EObject node)
+	{
+		if (!(node instanceof WMLTag))
+			return false;
+
+		WMLTag tag = (WMLTag) node;
+		WMLMergingHighlightedPositionAcceptor acceptor2 =
+						(WMLMergingHighlightedPositionAcceptor) acceptor;
+		WMLEditor editor = ((WMLHighlightingReconciler) acceptor2.getHighlightingReconciler()).getEditor();
+
+		if (editor == null || editor.getCurrentHighlightedNode() == null)
+			return false;
+		return (tag.getName().equals(editor.getCurrentHighlightedNode().getText()));
 	}
 
 	private void highlightNode(AbstractNode node, String id, IHighlightedPositionAcceptor acceptor)

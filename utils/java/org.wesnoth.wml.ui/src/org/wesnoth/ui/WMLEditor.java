@@ -4,11 +4,20 @@
  */
 package org.wesnoth.ui;
 
+import org.wesnoth.ui.syntax.WMLHighlightingHelper;
+
+import org.eclipse.jface.text.source.ISourceViewer;
+import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.xtext.parsetree.LeafNode;
 import org.eclipse.xtext.ui.editor.XtextEditor;
+import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingHelper;
 
 public class WMLEditor extends XtextEditor
 {
+	protected IHighlightingHelper highlightingHelper_;
+	protected LeafNode currentHighlightedNode_;
+
 	@Override
 	public void createPartControl(Composite parent)
 	{
@@ -17,10 +26,33 @@ public class WMLEditor extends XtextEditor
 		//		listener_.install(getSelectionProvider());
 	}
 
-	@Override
-	public void dispose()
+	public StyledText getTextWidget()
 	{
-		//listener_.uninstall(getSelectionProvider());
-		super.dispose();
+		return getSourceViewer().getTextWidget();
+	}
+
+	public ISourceViewer getSourceViewer_()
+	{
+		return getSourceViewer();
+	}
+
+	public WMLHighlightingHelper getHighlightingHelper()
+	{
+		return (WMLHighlightingHelper) highlightingHelper_;
+	}
+
+	public void setHighlightHelper(IHighlightingHelper helper)
+	{
+		highlightingHelper_ = helper;
+	}
+
+	public LeafNode getCurrentHighlightedNode()
+	{
+		return currentHighlightedNode_;
+	}
+
+	public void setCurrentHighlightedNode(LeafNode leaf)
+	{
+		currentHighlightedNode_ = leaf;
 	}
 }

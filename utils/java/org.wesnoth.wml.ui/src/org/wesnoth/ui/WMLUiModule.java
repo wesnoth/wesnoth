@@ -6,14 +6,19 @@ package org.wesnoth.ui;
 import org.wesnoth.ui.outline.WMLTransformer;
 import org.wesnoth.ui.syntax.WMLAntlrTokenToAttributeIdMapper;
 import org.wesnoth.ui.syntax.WMLHighlightingConfiguration;
+import org.wesnoth.ui.syntax.WMLHighlightingHelper;
 import org.wesnoth.ui.syntax.WMLSemanticHighlightingCalculator;
 import org.wesnoth.ui.syntax.bracketmatching.WMLBracketMatching;
+
+import com.google.inject.Binder;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtext.ui.editor.XtextEditor;
 import org.eclipse.xtext.ui.editor.bracketmatching.IBracketMatcher;
 import org.eclipse.xtext.ui.editor.outline.transformer.ISemanticModelTransformer;
+import org.eclipse.xtext.ui.editor.syntaxcoloring.HighlightingReconciler;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration;
+import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingHelper;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculator;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.antlr.AbstractAntlrTokenToAttributeIdMapper;
 
@@ -25,6 +30,12 @@ public class WMLUiModule extends org.wesnoth.ui.AbstractWMLUiModule
 {
 	public WMLUiModule(AbstractUIPlugin plugin) {
 		super(plugin);
+	}
+
+	@Override
+	public void configure(Binder binder)
+	{
+		super.configure(binder);
 	}
 
 	@Override
@@ -57,5 +68,20 @@ public class WMLUiModule extends org.wesnoth.ui.AbstractWMLUiModule
 	public Class<? extends XtextEditor> bindEditor()
 	{
 		return WMLEditor.class;
+	}
+
+	public Class<? extends IHighlightingHelper> bindIHighlightingHelper()
+	{
+		return WMLHighlightingHelper.class;
+	}
+
+	//	public Class<? extends MergingHighlightedPositionAcceptor> bindMergingHighlightedPositionAcceptor()
+	//	{
+	//		return WMLMergingHighlightedPositionAcceptor.class;
+	//	}
+
+	public Class<? extends HighlightingReconciler> bindHighlightingReconciler()
+	{
+		return WMLHighlightingReconciler.class;
 	}
 }

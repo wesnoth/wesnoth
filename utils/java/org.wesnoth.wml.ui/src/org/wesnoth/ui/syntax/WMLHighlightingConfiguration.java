@@ -12,9 +12,11 @@ import org.eclipse.xtext.ui.editor.utils.TextStyle;
 
 public class WMLHighlightingConfiguration extends DefaultHighlightingConfiguration
 {
-	public static final String	RULE_WML_TAG	= "wmlTag";
-	public static final String	RULE_WML_KEY	= "wmlKey";
-	public static final String	RULE_WML_MACRO	= "wmlMacro";
+	public static final String RULE_WML_TAG = "wmlTag";
+	public static final String RULE_WML_KEY = "wmlKey";
+	public static final String RULE_WML_MACRO = "wmlMacro";
+
+	public static final String RULE_START_END_TAG = "wmlStartEnd";
 
 	@Override
 	public void configure(IHighlightingConfigurationAcceptor acceptor)
@@ -23,6 +25,8 @@ public class WMLHighlightingConfiguration extends DefaultHighlightingConfigurati
 		acceptor.acceptDefaultHighlighting(RULE_WML_TAG, "WML Tag", tagTextStyle());
 		acceptor.acceptDefaultHighlighting(RULE_WML_KEY, "WML Key", keyTextStyle());
 		acceptor.acceptDefaultHighlighting(RULE_WML_MACRO, "WML Macro", macroTextStyle());
+		acceptor.acceptDefaultHighlighting(RULE_START_END_TAG,
+				"WML Start/End Tag Highlight", startEndTextStyle());
 	}
 
 	public TextStyle macroTextStyle()
@@ -30,6 +34,15 @@ public class WMLHighlightingConfiguration extends DefaultHighlightingConfigurati
 		TextStyle textStyle = defaultTextStyle().copy();
 		textStyle.setColor(new RGB(197, 137, 23));
 		textStyle.setStyle(SWT.ITALIC);
+		return textStyle;
+	}
+
+	public TextStyle startEndTextStyle()
+	{
+		TextStyle textStyle = defaultTextStyle().copy();
+		textStyle.setColor(new RGB(128, 128, 128));
+		textStyle.setBackgroundColor(new RGB(128, 0, 0));
+		textStyle.setStyle(SWT.BOLD | SWT.ITALIC);
 		return textStyle;
 	}
 

@@ -5,6 +5,8 @@
 package org.wesnoth.ui.syntax.bracketmatching;
 
 import org.wesnoth.services.WMLGrammarAccess;
+import org.wesnoth.ui.WMLEditor;
+import org.wesnoth.ui.syntax.WMLHighlightingConfiguration;
 import org.wesnoth.wML.WMLTag;
 
 import com.google.inject.Inject;
@@ -21,18 +23,18 @@ import org.eclipse.xtext.parsetree.LeafNode;
 import org.eclipse.xtext.parsetree.NodeUtil;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.bracketmatching.DefaultBracketMatcher;
+import org.eclipse.xtext.ui.editor.syntaxcoloring.HighlightingReconciler;
+import org.eclipse.xtext.ui.editor.utils.EditorUtils;
 import org.eclipse.xtext.util.Pair;
 
 public class WMLBracketMatching extends DefaultBracketMatcher
 {
 	@Inject
-	private WMLGrammarAccess	grammarAccess;
+	private WMLGrammarAccess grammarAccess;
 
 	@Override
 	public void configure(IBracketPairAcceptor acceptor)
 	{
-		//TODO: fix highlighting multiple characters
-		// look into: MatchingCharacterPainter : private void handleDrawRequest(GC gc)  -> length
 		List<Pair<Keyword, Keyword>> pairs2 = grammarAccess.findKeywordPairs("[/", "]");
 		for (Pair<Keyword, Keyword> pair : pairs2)
 		{
@@ -70,6 +72,14 @@ public class WMLBracketMatching extends DefaultBracketMatcher
 			}
 		}
 
+		WMLEditor editor = (WMLEditor) EditorUtils.getActiveXtextEditor();
+		if (editor == null || editor.getHighlightingHelper() == null)
+			return null;
+		HighlightingReconciler reconcilier = editor.getHighlightingHelper().getReconciler();
+		if (reconcilier == null)
+			return null;
+		editor.setCurrentHighlightedNode(null);
+		reconcilier.refresh();
 		/* -- WML Related -- */
 		// search for opened/closed tag
 
@@ -82,18 +92,27 @@ public class WMLBracketMatching extends DefaultBracketMatcher
 		if (wmlNode != null)
 		{
 			AbstractNode correspondingTag = null;
-			for (AbstractNode tmpNode : wmlNode.getParent().getChildren())
+			for (int i = 0; i < wmlNode.getParent().getChildren().size(); i++)
+			//AbstractNode tmpNode : wmlNode.getParent().getChildren())
 			{
+				AbstractNode tmpNode = wmlNode.getParent().getChildren().get(i);
 				if (!(tmpNode instanceof LeafNode))
 					continue;
-				if (((LeafNode) tmpNode).getText().equals(wmlNode.getText()) && tmpNode != wmlNode)
+				if (((LeafNode) tmpNode).getText().equals(wmlNode.getText()) &&
+						tmpNode != wmlNode)
 				{
 					correspondingTag = tmpNode;
 				}
 			}
+
 			if (correspondingTag != null)
 			{
-				return new Region(correspondingTag.getOffset(), correspondingTag.getLength());
+				editor.setCurrentHighlightedNode((LeafNode) correspondingTag);
+				reconcilier.addPosition(
+						correspondingTag.getOffset() - 2,
+						correspondingTag.getLength() + 3,
+						WMLHighlightingConfiguration.RULE_START_END_TAG);
+				reconcilier.refresh();
 			}
 		}
 
