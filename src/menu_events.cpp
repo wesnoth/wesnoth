@@ -3150,13 +3150,14 @@ void console_handler::do_layers() {
 		const std::string& name = img.get_filename();
 		//TODO deal with (rarely used) ~modifications
 		//const std::string& modif = img.get_modifications();
-		const map_location& loc = img.get_loc();
+		const map_location& loc_cut = img.get_loc();
 
 		std::ostringstream str;
-		str << IMAGE_PREFIX << name
-			<< "~LOC("
-				<< loc.x << "," << loc.y << ","
-				<< img.get_center_x() << "," << img.get_center_y()
+		str << IMAGE_PREFIX << "terrain/foreground.png"
+			<< "~BLIT("
+				<< name << "~LOC("
+				<< loc_cut.x << "," << loc_cut.y << ","
+				<< img.get_center_x() << "," << img.get_center_y() << ")"
 			<< ")"
 			<< COLUMN_SEPARATOR
 			<< IMAGE_PREFIX  << name << "~SCALE(72,72)"
