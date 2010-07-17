@@ -129,6 +129,24 @@ private:
 };
 
 /**
+ * Scale (BLIT) function.
+ */
+
+class blit_function : public function_base
+{
+public:
+	blit_function(const surface& surf, int x, int y)
+		: surf_(surf), x_(x), y_(y)
+	{}
+	virtual surface operator()(const surface& src) const;
+
+private:
+	surface surf_;
+	int x_;
+	int y_;
+};
+
+/**
  * Scale (SCALE) function.
  */
 class scale_function : public function_base

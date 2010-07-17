@@ -721,6 +721,7 @@ surface locator::load_image_sub_file() const
 						ERR_DP << "no arguments passed to the ~CROP() function\n";
 					}
 				}
+				// LOC function
 				else if("LOC" == function) {
 					//FIXME: WIP, don't use it yet
 					std::vector<std::string> const& params = utils::split(field);
@@ -730,6 +731,26 @@ surface locator::load_image_sub_file() const
 					int cy = lexical_cast<int>(params[3]);
 					image::locator new_loc(val_.filename_, map_location(x,y), cx, cy, "");//TODO remove only ~LOC
 					surf = get_image(new_loc, SCALED_TO_HEX);
+				}
+				// BLIT function
+				else if("BLIT" == function) {
+					std::vector<std::string> param = utils::parenthetical_split(field, ',');
+					const size_t s = param.size();
+					if(s > 0){
+						int x = 0, y = 0;
+						if(s == 3) {
+							x = lexical_cast_default<int>(param[1]);
+							y = lexical_cast_default<int>(param[2]);
+						}
+						if(x >= 0 && y >= 0) { //required by blit_surface
+							surface surf = get_image(param[0]);
+							functor_queue.push_back(new blit_function(surf, x, y));
+						} else {
+							ERR_DP << "negative position arguments in ~BLIT() function\n";
+						}
+					} else {
+						ERR_DP << "no arguments passed to the ~BLIT() function\n";
+					}
 				}
 				// Scale (SCALE)
 				else if("SCALE" == function) {

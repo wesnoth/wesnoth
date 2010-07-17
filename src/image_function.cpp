@@ -71,6 +71,16 @@ surface crop_function::operator()(const surface& src) const
 	return cut_surface(src, area);
 }
 
+surface blit_function::operator()(const surface& src) const
+{
+	//blit_surface want neutral surfaces
+	surface nsrc = make_neutral_surface(src);
+	surface nsurf = make_neutral_surface(surf_);
+	SDL_Rect r = create_rect(x_, y_, 0, 0);
+	blit_surface(nsurf, NULL, nsrc, &r);
+	return nsrc;
+}
+
 surface scale_function::operator()(const surface& src) const
 {
 	const int old_w = src->w;
