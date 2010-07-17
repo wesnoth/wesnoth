@@ -120,7 +120,7 @@ public class UnitTypePage1 extends WizardPage
 	{
 		if (targetList.getItemCount() == 0 || targetList.getSelectionCount() == 0)
 		{
-			GUIUtils.showMessageBox("Please select an item before trying to remove it.");
+			GUIUtils.showWarnMessageBox("Please select an item before trying to remove it.");
 			return;
 		}
 		((java.util.List<String>) targetList.getData()).remove(targetList.getSelectionIndex());

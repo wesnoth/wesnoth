@@ -35,7 +35,7 @@ public class WesnothProjectReport implements IObjectActionDelegate
 		IProject project = WorkspaceUtils.getSelectedProject();
 		if (project == null)
 		{
-			GUIUtils.showMessageBox("Please select a project first.");
+			GUIUtils.showWarnMessageBox("Please select a project first.");
 			return;
 		}
 

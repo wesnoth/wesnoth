@@ -193,7 +193,7 @@ public class WorkspaceUtils
 					Activator.getShell(), "plugin_preferences", new String[0], null);
 			if (pref.open() == Window.CANCEL || !checkConditions(true))
 			{
-				GUIUtils.showMessageBox("The workspace was not setup");
+				GUIUtils.showErrorMessageBox("The workspace was not setup");
 				return;
 			}
 		}
@@ -245,7 +245,7 @@ public class WorkspaceUtils
 		} catch (Exception e)
 		{
 			Logger.getInstance().logException(e);
-			GUIUtils.showMessageBox("There was an error trying to setup the workspace.");
+			GUIUtils.showErrorMessageBox("There was an error trying to setup the workspace.");
 
 			// let's remove the corrupted project
 			try
@@ -276,7 +276,7 @@ public class WorkspaceUtils
 			!validPath(wmltoolsDir) || !validPath(workingDir))
 		{
 			if (displayWarning)
-				GUIUtils.showMessageBox("Please set all plugin's preferences before using it.");
+				GUIUtils.showWarnMessageBox("Please set all plugin's preferences before using it.");
 			return false;
 		}
 		return true;

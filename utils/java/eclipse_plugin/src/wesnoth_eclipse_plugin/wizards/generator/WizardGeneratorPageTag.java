@@ -128,7 +128,7 @@ public class WizardGeneratorPageTag extends WizardPage
 	{
 		if (targetList.getSelectionCount() == 0 || targetList.getItemCount() == 0)
 		{
-			GUIUtils.showMessageBox("Please select an item before removing it.");
+			GUIUtils.showWarnMessageBox("Please select an item before removing it.");
 			return;
 		}
 

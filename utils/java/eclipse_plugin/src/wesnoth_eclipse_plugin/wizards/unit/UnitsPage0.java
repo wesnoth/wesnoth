@@ -207,7 +207,7 @@ public class UnitsPage0 extends WizardPage
 	{
 		if (selectedList_ == null || selectedList_.getSelection().length == 0)
 		{
-			GUIUtils.showMessageBox("Please select an item from a list first.");
+			GUIUtils.showWarnMessageBox("Please select an item from a list first.");
 			return;
 		}
 		if (selectedList_.getData() != null && selectedList_.getData() instanceof java.util.List<?>)
@@ -220,7 +220,7 @@ public class UnitsPage0 extends WizardPage
 	{
 		if (selectedList_ == null)
 		{
-			GUIUtils.showMessageBox("Please select a list first.");
+			GUIUtils.showWarnMessageBox("Please select a list first.");
 			return;
 		}
 
@@ -236,7 +236,7 @@ public class UnitsPage0 extends WizardPage
 		else if (selectedList_.hashCode() == lstTraits_.hashCode())
 		{
 			//wizard = new TraitWizard();
-			GUIUtils.showMessageBox("Not implemented yet");
+			GUIUtils.showWarnMessageBox("Not implemented yet");
 			return;
 		}
 		else if (selectedList_.hashCode() == lstUnitTypes_.hashCode())

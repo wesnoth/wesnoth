@@ -249,7 +249,7 @@ public class RaceWizard extends NewWizardTemplate
 				return;
 			if (lstTrait_.getSelectionCount() == 0 || lstTrait_.getItems().length == 0)
 			{
-				GUIUtils.showMessageBox("Please select a trait before deleting it.");
+				GUIUtils.showWarnMessageBox("Please select a trait before deleting it.");
 				return;
 			}
 			traitsList_.remove(lstTrait_.getSelectionIndex());

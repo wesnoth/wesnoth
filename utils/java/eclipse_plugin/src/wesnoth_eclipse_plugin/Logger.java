@@ -57,7 +57,7 @@ public class Logger {
 			log("Logging started.");
 		} catch (IOException e)
 		{
-			GUIUtils.showMessageBox("There was an error trying to open the log." +
+			GUIUtils.showErrorMessageBox("There was an error trying to open the log." +
 					e.getMessage());
 			e.printStackTrace();
 		}
@@ -157,6 +157,6 @@ public class Logger {
 	public void log(String message, String guiMessage)
 	{
 		log(message,IStatus.INFO);
-		GUIUtils.showMessageBox(guiMessage);
+		GUIUtils.showInfoMessageBox(guiMessage);
 	}
 }

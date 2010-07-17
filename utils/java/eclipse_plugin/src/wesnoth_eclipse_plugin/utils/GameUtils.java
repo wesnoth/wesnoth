@@ -36,7 +36,7 @@ public class GameUtils
 	{
 		if (WorkspaceUtils.getSelectedResource() == null)
 		{
-			GUIUtils.showMessageBox("Please select a directory or a resource inside the " +
+			GUIUtils.showWarnMessageBox("Please select a directory or a resource inside the " +
 					"campaign project before.");
 			return;
 		}
@@ -47,7 +47,7 @@ public class GameUtils
 		if (scenario &&
 			!ProjectUtils.isScenarioFile(WorkspaceUtils.getPathRelativeToUserDir(selectedResource)))
 		{
-			GUIUtils.showMessageBox("This is not a valid scenario file.");
+			GUIUtils.showErrorMessageBox("This is not a valid scenario file.");
 			return;
 		}
 
@@ -59,7 +59,7 @@ public class GameUtils
 
 			if (campaignId == null)
 			{
-				GUIUtils.showMessageBox("You need to have a valid campaign file" +
+				GUIUtils.showErrorMessageBox("You need to have a valid campaign file" +
 						" in your directory (_main.cfg) or selected.");
 				return;
 			}
@@ -83,7 +83,7 @@ public class GameUtils
 		String wesnothExec = Preferences.getString(Constants.P_WESNOTH_EXEC_PATH);
 		if (wesnothExec.isEmpty())
 		{
-			GUIUtils.showMessageBox("Please set the wesnoth's executable path first.");
+			GUIUtils.showErrorMessageBox("Please set the wesnoth's executable path first.");
 			return;
 		}
 
@@ -151,7 +151,8 @@ public class GameUtils
 		List<String> args = new ArrayList<String>(3);
 
 		args.add("-e");
-		args.add(mapName);
+		if (!(mapName.isEmpty()))
+			args.add(mapName);
 
 		if (!workingDir.isEmpty())
 		{

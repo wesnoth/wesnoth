@@ -252,7 +252,7 @@ public class MoveTypeWizard extends NewWizardTemplate
 				return;
 			if (targetList.getSelectionCount() == 0)
 			{
-				GUIUtils.showMessageBox("Please select an item before deleting it.");
+				GUIUtils.showWarnMessageBox("Please select an item before deleting it.");
 				return;
 			}
 			targetList.remove(targetList.getSelectionIndex());

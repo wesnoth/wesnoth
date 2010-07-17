@@ -246,7 +246,7 @@ public class WMLTools
 		{
 			if (Preferences.getString(Constants.P_WESNOTH_WMLTOOLS_DIR).equals(""))
 			{
-				GUIUtils.showMessageBox("Please set the wmltools directory in the " +
+				GUIUtils.showWarnMessageBox("Please set the wmltools directory in the " +
 						"preferences before you use this feature.");
 				return false;
 			}
@@ -255,14 +255,14 @@ public class WMLTools
 
 			if (!wmlToolFile.exists())
 			{
-				GUIUtils.showMessageBox(String.format("The file %s was not found",
+				GUIUtils.showErrorMessageBox(String.format("The file %s was not found",
 						wmlToolFile));
 				return false;
 			}
 		}
 		if (filePath != null && (filePath.isEmpty() || !new File(filePath).exists()))
 		{
-			GUIUtils.showMessageBox("The file does not exist or is null");
+			GUIUtils.showErrorMessageBox("The file does not exist or is null");
 			return false;
 		}
 

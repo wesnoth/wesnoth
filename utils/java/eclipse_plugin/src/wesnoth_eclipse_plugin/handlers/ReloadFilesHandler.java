@@ -23,7 +23,7 @@ public class ReloadFilesHandler extends AbstractHandler
 		SchemaParser.getInstance().parseSchema(true);
 		TemplateProvider.getInstance().loadTemplates();
 
-		GUIUtils.showMessageBox("Files reloaded.");
+		GUIUtils.showInfoMessageBox("Files reloaded.");
 		return null;
 	}
 }

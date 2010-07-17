@@ -21,14 +21,36 @@ import wesnoth_eclipse_plugin.Logger;
 public class GUIUtils
 {
 	/**
-	 * Shows a message box with the specified message (thread-safe)
+	 * Shows an information message box with the specified message (thread-safe)
 	 *
 	 * @param window the window where to show the message box
 	 * @param message the message to print
 	 */
-	public static void showMessageBox(final String message)
+	public static void showInfoMessageBox(final String message)
 	{
-		showMessageBox(WorkspaceUtils.getWorkbenchWindow(), message, SWT.DEFAULT);
+		showMessageBox(WorkspaceUtils.getWorkbenchWindow(), message, SWT.ICON_INFORMATION);
+	}
+
+	/**
+	 * Shows an information message box with the specified message (thread-safe)
+	 *
+	 * @param window the window where to show the message box
+	 * @param message the message to print
+	 */
+	public static void showWarnMessageBox(final String message)
+	{
+		showMessageBox(WorkspaceUtils.getWorkbenchWindow(), message, SWT.ICON_WARNING);
+	}
+
+	/**
+	 * Shows an error message box with the specified message (thread-safe)
+	 *
+	 * @param window the window where to show the message box
+	 * @param message the message to print
+	 */
+	public static void showErrorMessageBox(final String message)
+	{
+		showMessageBox(WorkspaceUtils.getWorkbenchWindow(), message, SWT.ICON_ERROR);
 	}
 
 	/**
@@ -50,7 +72,7 @@ public class GUIUtils
 	 */
 	public static void showMessageBox(final IWorkbenchWindow window, final String message)
 	{
-		showMessageBox(window, message, SWT.DEFAULT);
+		showMessageBox(window, message, SWT.ICON_INFORMATION);
 	}
 
 	/**
