@@ -174,9 +174,6 @@ void tokenizer::skip_comment()
 			}
 			next_char_fast();
 		}
-		while (current_ != '\n' && current_ != EOF) {
-			next_char_fast();
-		}
 	}
 	else if (current_ == 'l')
 	{
@@ -211,15 +208,9 @@ void tokenizer::skip_comment()
 			}
 			next_char_fast();
 		}
-		while (current_ != '\n' && current_ != EOF) {
-			next_char_fast();
-		}
 	}
-	else
-	{
-		// Neither a textdomain or line comment skip it.
-		while (current_ != '\n' && current_ != EOF) {
-			next_char_fast();
-		}
+
+	while (current_ != '\n' && current_ != EOF) {
+		next_char_fast();
 	}
 }
