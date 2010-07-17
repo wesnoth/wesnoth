@@ -146,5 +146,6 @@ public class Logger {
 	public void log(String message, String guiMessage)
 	{
 		log(message,IStatus.INFO);
+		GUIUtils.showMessageBox(guiMessage);
 	}
 }
