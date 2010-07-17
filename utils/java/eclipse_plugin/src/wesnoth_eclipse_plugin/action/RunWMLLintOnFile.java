@@ -14,7 +14,7 @@ import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 
 import wesnoth_eclipse_plugin.utils.WMLTools;
-import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
+import wesnoth_eclipse_plugin.utils.WMLTools.Tools;
 
 public class RunWMLLintOnFile implements IObjectActionDelegate
 {
@@ -29,8 +29,7 @@ public class RunWMLLintOnFile implements IObjectActionDelegate
 	@Override
 	public void run(IAction action)
 	{
-		WMLTools.runWMLLint(WorkspaceUtils.getPathRelativeToUserDir(WorkspaceUtils.getSelectedFile()),
-				true, true, true);
+		WMLTools.runWMLToolAsWorkspaceJob(Tools.WMLLINT, null);
 	}
 
 	@Override

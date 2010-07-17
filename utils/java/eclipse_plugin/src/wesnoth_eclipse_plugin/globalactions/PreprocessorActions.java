@@ -36,7 +36,7 @@ public class PreprocessorActions
 	 * @return
 	 */
 	public static boolean preprocessFile(String fileName, String targetDirectory,
-			List<String> defines, boolean useThread, boolean waitForIt)
+			List<String> defines, boolean waitForIt)
 	{
 		try{
 			List<String> arguments = new ArrayList<String>();
@@ -59,9 +59,9 @@ public class PreprocessorActions
 
 			ExternalToolInvoker wesnoth = new ExternalToolInvoker(
 					Preferences.getString(Constants.P_WESNOTH_EXEC_PATH),
-					arguments, useThread);
+					arguments);
 			System.out.printf("preprocessing : %s\n", arguments);
-			wesnoth.run();
+			wesnoth.runTool();
 			if (waitForIt)
 				wesnoth.waitForTool();
 			return true;
@@ -116,6 +116,6 @@ public class PreprocessorActions
 			return;
 
 		PreprocessorActions.preprocessFile(WorkspaceUtils.getPathRelativeToUserDir(file),
-				WorkspaceUtils.getTemporaryFolder(), null,useThread, waitForIt);
+				WorkspaceUtils.getTemporaryFolder(), null, waitForIt);
 	}
 }

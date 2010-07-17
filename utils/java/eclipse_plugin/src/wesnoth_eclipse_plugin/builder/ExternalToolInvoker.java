@@ -25,69 +25,50 @@ import wesnoth_eclipse_plugin.Constants;
 import wesnoth_eclipse_plugin.Logger;
 import wesnoth_eclipse_plugin.utils.MyRunnable;
 
-//TODO: needs REWRITE !! -> use streams rather than a hundred of parameters
 public class ExternalToolInvoker
 {
-	private Process			process_;
-	private ProcessBuilder	processBuilder_;
+	private Process process_;
+	private ProcessBuilder processBuilder_;
 
-	private Thread			processThread_;
-	private Thread			attachedThread_;
+	private BufferedReader bufferedReaderOutput_;
+	private BufferedReader bufferedReaderError_;
 
-	private BufferedReader	bufferedReaderOutput_;
-	private BufferedReader	bufferedReaderError_;
+	// Thread for monitoring stdout
+	private Thread monitorOutputThread_;
+	private String outputContent_ 		= "";
 
-	private String			outputContent_;
-	private String			errorContent_;
+	// Thread for monitoring stderr
+	private Thread monitorErrorThread_;
+	private String errorContent_ 		= "";
 
 	/**
 	 * Creates an external tool invoker with specified options
 	 *
 	 * @param fileName the file name to be invoked
 	 * @param arguments the arguments passed to the file
-	 * @param useThread true if the process will run in a thread
 	 */
-	public ExternalToolInvoker(String fileName, List<String> arguments, boolean useThread) {
+	public ExternalToolInvoker(String fileName, List<String> arguments) {
 		List<String> commandline = new ArrayList<String>();
 		commandline.add(fileName);
 		if (arguments != null)
 			commandline.addAll(arguments);
 
 		processBuilder_ = new ProcessBuilder(commandline);
-		if (useThread)
-		{
-			processThread_ = new Thread(new Runnable() {
-				@Override
-				public void run()
-				{
-					try
-					{
-						process_ = processBuilder_.start();
-
-						bufferedReaderOutput_ = new BufferedReader(new InputStreamReader(process_.getInputStream()));
-						bufferedReaderError_ = new BufferedReader(new InputStreamReader(process_.getErrorStream()));
-					} catch (IOException e)
-					{
-						Logger.getInstance().logException(e);
-					}
-				}
-			});
-		}
+		Logger.getInstance().log(String.format("Invoking tool %s with args: %s\n",
+				fileName, arguments));
 	}
 
-	public void run()
+	/**
+	 * Runs the current tool
+	 */
+	public void runTool()
 	{
 		try
 		{
-			if (processThread_ == null)
-			{
-				process_ = processBuilder_.start();
+			process_ = processBuilder_.start();
 
-				bufferedReaderOutput_ = new BufferedReader(new InputStreamReader(process_.getInputStream()));
-				bufferedReaderError_ = new BufferedReader(new InputStreamReader(process_.getErrorStream()));
-			}
-			else
-				processThread_.start();
+			bufferedReaderOutput_ = new BufferedReader(new InputStreamReader(process_.getInputStream()));
+			bufferedReaderError_ = new BufferedReader(new InputStreamReader(process_.getErrorStream()));
 		} catch (IOException e)
 		{
 			Logger.getInstance().logException(e);
@@ -97,15 +78,17 @@ public class ExternalToolInvoker
 	/**
 	 * Waits for the current tool, and returns the return value
 	 *
+	 * if the process is null (not started) => 0
+	 * if there was an error => -1
+	 *
 	 * @return the return value of the tool
 	 */
 	public int waitForTool()
 	{
-		if (process_ == null)
-			return 0;
-
 		try
 		{
+			if (process_ == null)
+				return 0;
 			return process_.waitFor();
 		} catch (InterruptedException e)
 		{
@@ -113,11 +96,12 @@ public class ExternalToolInvoker
 		}
 	}
 
-	public String getOutputContent()
-	{
-		return outputContent_;
-	}
-
+	/**
+	 * Reads a line from the stdout.
+	 * Returns null if process wasn't started or an exception was thrown
+	 *
+	 * @return
+	 */
 	public String readOutputLine()
 	{
 		if (process_ == null || bufferedReaderOutput_ == null)
@@ -133,11 +117,12 @@ public class ExternalToolInvoker
 		}
 	}
 
-	public String getErrorContent()
-	{
-		return errorContent_;
-	}
-
+	/**
+	 * Reads a line from the stderr.
+	 * Returns null if process wasn't started or an exception was thrown
+	 *
+	 * @return
+	 */
 	public String readErrorLine()
 	{
 		if (process_ == null || bufferedReaderError_ == null)
@@ -153,7 +138,71 @@ public class ExternalToolInvoker
 		}
 	}
 
-	public OutputStream getOutputStream()
+	/**
+	 * Starts a new thread monitoring stderr.
+	 * All "Error" output will be available to be read from <code>getErrorContent()</code>
+	 */
+	public void startErrorMonitor()
+	{
+		monitorErrorThread_ = new Thread(new Runnable() {
+			@Override
+			public void run()
+			{
+				String line = "";
+				while((line = readErrorLine()) != null)
+				{
+					errorContent_ += (line + "\n");
+				}
+			}
+		});
+		monitorErrorThread_.start();
+	}
+
+	/**
+	 * Starts a new thread monitoring stdout.
+	 * All "Output" output will be available to be read from <code>getOutputContent()</code>
+	 */
+	public void startOutputMonitor()
+	{
+		monitorOutputThread_ = new Thread(new Runnable() {
+			@Override
+			public void run()
+			{
+				String line = "";
+				while((line = readOutputLine()) != null)
+				{
+					outputContent_ += (line + "\n");
+				}
+			}
+		});
+		monitorOutputThread_.start();
+	}
+
+	/**
+	 * Gets the content (as String) of the stderr,
+	 * if the caller started "startErrorMonitor"
+	 * @return
+	 */
+	public String getErrorContent()
+	{
+		return errorContent_;
+	}
+
+	/**
+	 * Gets the content (as String) of the stdout,
+	 * if the caller started "startOutputMonitor"
+	 * @return
+	 */
+	public String getOutputContent()
+	{
+		return outputContent_;
+	}
+
+	/**
+	 * Returns the OutputStream
+	 * @return
+	 */
+	public OutputStream getStdin()
 	{
 		if (process_ == null)
 			return null;
@@ -161,7 +210,11 @@ public class ExternalToolInvoker
 		return process_.getOutputStream();
 	}
 
-	public InputStream getInputStream()
+	/**
+	 * Returns the InputStream
+	 * @return
+	 */
+	public InputStream getStdout()
 	{
 		if (process_ == null)
 			return null;
@@ -169,7 +222,11 @@ public class ExternalToolInvoker
 		return process_.getInputStream();
 	}
 
-	public InputStream getErrorStream()
+	/**
+	 * Returns the ErrorStream
+	 * @return
+	 */
+	public InputStream getStderr()
 	{
 		if (process_ == null)
 			return null;
@@ -177,6 +234,10 @@ public class ExternalToolInvoker
 		return process_.getErrorStream();
 	}
 
+	/**
+	 * Returns true if the process ended
+	 * @return
+	 */
 	public boolean processEnded()
 	{
 		try
@@ -193,43 +254,37 @@ public class ExternalToolInvoker
 		return true;
 	}
 
-	public void kill()
+	/**
+	 * Kills the current opened tool. No effect is tool is already killed
+	 *
+	 * @param waitForKilling true to wait until the process is killed, so when the call
+	 * returns the process will be already finished (it has "exitValue")
+	 */
+	public void kill(boolean waitForKilling)
 	{
 		if (process_ != null)
+		{
 			process_.destroy();
-		if (processThread_ != null)
-			processThread_.interrupt();
+			if (waitForKilling)
+			{
+				try
+				{
+					process_.waitFor();
+				} catch (InterruptedException e)
+				{
+				}
+			}
+			monitorErrorThread_.interrupt();
+			monitorOutputThread_.interrupt();
+		}
 	}
 
-	/**
-	 * Gets the owned thread used to run the process.
-	 * This is non-null if the tool was invoked with "useThread=true"
-	 *
-	 * @return
-	 */
-	public Thread getOwnThread()
+	public static ExternalToolInvoker launchTool(final String fileName, final List<String> args)
+			//final OutputStream )
 	{
-		return processThread_;
-	}
+		final ExternalToolInvoker toolInvoker = new ExternalToolInvoker(fileName, args);
 
-	/**
-	 * Gets the attached thread, usually when someone runs this tool in another thread
-	 *
-	 * @return
-	 */
-	public Thread getAttachedThread()
-	{
-		return attachedThread_;
-	}
-
-	/**
-	 * Sets the attached thread
-	 *
-	 * @param thread
-	 */
-	public void setAttachedThread(Thread thread)
-	{
-		attachedThread_ = thread;
+		return toolInvoker;
 	}
 
 	/**
@@ -247,7 +302,7 @@ public class ExternalToolInvoker
 	public static ExternalToolInvoker launchTool(final String fileName, final List<String> args,
 			final int outputFlags, final boolean useThread)
 	{
-		final ExternalToolInvoker toolInvoker = new ExternalToolInvoker(fileName, args, useThread);
+		final ExternalToolInvoker toolInvoker = new ExternalToolInvoker(fileName, args);
 
 		System.out.println("Tool args: " + args);
 
@@ -261,7 +316,7 @@ public class ExternalToolInvoker
 		}
 		if (useThread)
 		{
-			toolInvoker.run();
+			toolInvoker.runTool();
 			Thread outputStreamThread = new Thread(new MyRunnable<MessageConsoleStream>(stream) {
 				@Override
 				public void run()

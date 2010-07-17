@@ -11,19 +11,41 @@ package wesnoth_eclipse_plugin.handlers;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.core.resources.WorkspaceJob;
-import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Status;
+import org.eclipse.ui.console.MessageConsole;
 
-import wesnoth_eclipse_plugin.Logger;
+import wesnoth_eclipse_plugin.builder.ExternalToolInvoker;
+import wesnoth_eclipse_plugin.utils.GUIUtils;
 
+/**
+ * Here it goes testing stuff in the plugin ( For DEBUG ONLY!)
+ */
+@Deprecated
 public class TestHandler extends AbstractHandler
 {
+	public static ExternalToolInvoker tool;
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException
 	{
+		MessageConsole con = GUIUtils.createConsole("TIMO", null, true);
+		//con.
+//		List<String> arguments = new ArrayList<String>();
+//		arguments.add(Preferences.getString(Constants.P_WESNOTH_WORKING_DIR));
+//		if (tool == null)
+//		{
+//			tool = new ExternalToolInvoker("D:/timo/conapp.exe", arguments);
+//			tool.runTool();
+//			tool.startErrorMonitor();
+//			tool.startOutputMonitor();
+//			tool.waitForTool();
+//			System.out.println(tool.getErrorContent());
+//			System.out.println(tool.getOutputContent());
+//		}
+//		else
+//		{
+//			tool.kill(true);
+//		}
+		//tool.waitForTool();
+		System.out.println("Exitt");
 		//String stdin = EditorUtils.getEditorDocument().get();
 		//EditorUtils.replaceEditorText(WMLTools.runWMLIndent(null, stdin, false, false, false));
 		//		IEditorReference[] files =
@@ -97,23 +119,23 @@ public class TestHandler extends AbstractHandler
 		//			}
 		//		};
 		//		job2.schedule();
-		new WorkspaceJob("My new job") {
-			@Override
-			public IStatus runInWorkspace(IProgressMonitor monitor) throws CoreException
-			{
-				monitor.beginTask("Some nice progress message here ...", 100);
-				// execute the task ...try
-				try
-				{
-					Thread.sleep(2000);
-				} catch (InterruptedException e)
-				{
-					Logger.getInstance().logException(e);
-				}
-				monitor.done();
-				return Status.OK_STATUS;
-			}
-		}.schedule();
+		//		new WorkspaceJob("My new job") {
+		//			@Override
+		//			public IStatus runInWorkspace(IProgressMonitor monitor) throws CoreException
+		//			{
+		//				monitor.beginTask("Some nice progress message here ...", 100);
+		//				// execute the task ...try
+		//				try
+		//				{
+		//					Thread.sleep(2000);
+		//				} catch (InterruptedException e)
+		//				{
+		//					Logger.getInstance().logException(e);
+		//				}
+		//				monitor.done();
+		//				return Status.OK_STATUS;
+		//			}
+		//		}.schedule();
 		//job.schedule();
 		return null;
 	}

@@ -8,9 +8,13 @@
  *******************************************************************************/
 package wesnoth_eclipse_plugin.utils;
 
+import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.console.ConsolePlugin;
+import org.eclipse.ui.console.IConsole;
+import org.eclipse.ui.console.MessageConsole;
 
 import wesnoth_eclipse_plugin.Logger;
 
@@ -75,5 +79,17 @@ public class GUIUtils
 		{
 			Logger.getInstance().logException(e);
 		}
+	}
+
+	public static MessageConsole createConsole(String consoleTitle,
+				ImageDescriptor imageDescriptor, boolean activate)
+	{
+		MessageConsole console = new MessageConsole(consoleTitle, imageDescriptor);
+		if (activate)
+			console.activate();
+		ConsolePlugin.getDefault().getConsoleManager().addConsoles(new IConsole[] { console });
+		//TODO: create a single console and add pages instead?
+		//MessageConsoleStream stream = console.newMessageStream();
+		return console;
 	}
 }

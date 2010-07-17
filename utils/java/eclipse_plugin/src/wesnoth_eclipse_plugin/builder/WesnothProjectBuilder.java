@@ -224,7 +224,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 				deleteMarkers(file);
 
 				monitor.subTask("Preprocessing...");
-				PreprocessorActions.preprocessFile(WorkspaceUtils.getPathRelativeToUserDir(file), WorkspaceUtils.getTemporaryFolder(), null, true, false);
+				PreprocessorActions.preprocessFile(WorkspaceUtils.getPathRelativeToUserDir(file), WorkspaceUtils.getTemporaryFolder(), null, false);
 				monitor.worked(5);
 
 				// TODO: here be dragons
