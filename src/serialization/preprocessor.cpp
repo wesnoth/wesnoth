@@ -820,9 +820,11 @@ bool preprocessor_data::get_chunk()
 		} else if (command == "textdomain") {
 			skip_spaces();
 			std::string const &s = read_word();
-			put("#textdomain ");
-			put(s);
-			target_.textdomain_ = s;
+			if (s != target_.textdomain_) {
+				put("#textdomain ");
+				put(s);
+				target_.textdomain_ = s;
+			}
 			comment = true;
 		} else if (command == "enddef") {
 			std::string error="Unexpected #enddef at";
