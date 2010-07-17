@@ -592,15 +592,19 @@ void preprocessor_data::put(char c)
 		strings_.back() += c;
 		return;
 	}
-	if ((linenum_ != target_.linenum_ && c != '\n') ||
-	    (linenum_ != target_.linenum_ + 1 && c == '\n')) {
-		target_.linenum_ = linenum_;
-		if (c == '\n')
-			--target_.linenum_;
 
-		target_.buffer_ << "\376line " << target_.linenum_
-			<< ' ' << target_.location_ << '\n';
+	int cond_linenum = c == '\n' ? linenum_ - 1 : linenum_;
+	if (unsigned diff = cond_linenum - target_.linenum_)
+	{
+		target_.linenum_ = cond_linenum;
+		if (diff <= target_.location_.size() + 11) {
+			target_.buffer_ << std::string(diff, '\n');
+		} else {
+			target_.buffer_ << "\376line " << target_.linenum_
+				<< ' ' << target_.location_ << '\n';
+		}
 	}
+
 	if (c == '\n')
 		++target_.linenum_;
 	target_.buffer_ << c;
