@@ -1979,6 +1979,26 @@ static int intf_simulate_combat(lua_State *L)
 	return 2;
 }
 
+/**
+ * Creates a vconfig containing the WML table.
+ * - Arg 1: WML table.
+ * - Ret 1: vconfig userdata.
+ */
+int intf_tovconfig(lua_State *L)
+{
+	if (false) {
+		error_call_destructors:
+		return luaL_typerror(L, 1, "WML table");
+	}
+
+	vconfig vcfg = vconfig::unconstructed_vconfig();
+	if (!luaW_tovconfig(L, 1, vcfg))
+		goto error_call_destructors;
+
+	luaW_pushvconfig(L, vcfg);
+	return 1;
+}
+
 LuaKernel::LuaKernel()
 	: mState(luaL_newstate())
 {
@@ -2027,6 +2047,7 @@ LuaKernel::LuaKernel()
 		{ "set_village_owner",        &intf_set_village_owner        },
 		{ "simulate_combat",          &intf_simulate_combat          },
 		{ "textdomain",               &intf_textdomain               },
+		{ "tovconfig",                &intf_tovconfig                },
 		{ "unit_defense",             &intf_unit_defense             },
 		{ "unit_movement_cost",       &intf_unit_movement_cost       },
 		{ "unit_resistance",          &intf_unit_resistance          },
