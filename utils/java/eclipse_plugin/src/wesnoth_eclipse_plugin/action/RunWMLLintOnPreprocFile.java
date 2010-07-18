@@ -30,7 +30,7 @@ public class RunWMLLintOnPreprocFile implements IObjectActionDelegate
 	{
 		PreprocessorActions.preprocessIfNotExists(
 				WorkspaceUtils.getSelectedFile(WorkspaceUtils.getWorkbenchWindow()),
-				false,true);
+				true);
 
 		WMLTools.runWMLToolAsWorkspaceJob(Tools.WMLLINT,
 				PreprocessorActions.getPreprocessedFilePath(

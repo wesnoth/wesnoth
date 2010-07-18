@@ -87,6 +87,8 @@ public class PreprocessorActions
 			return;
 		}
 
+		preprocessIfNotExists(file, true);
+
 		IFileStore preprocFile =
 			EFS.getLocalFileSystem().getStore(new Path(WorkspaceUtils.getTemporaryFolder()));
 		preprocFile = preprocFile.getChild(file.getName() +
@@ -110,7 +112,7 @@ public class PreprocessorActions
 		return preprocFile.toString();
 	}
 
-	public static void preprocessIfNotExists(IFile file, boolean useThread, boolean waitForIt)
+	public static void preprocessIfNotExists(IFile file, boolean waitForIt)
 	{
 		if (new File(WorkspaceUtils.getTemporaryFolder() + file.getName()).exists())
 			return;
