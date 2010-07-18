@@ -1418,20 +1418,14 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context &stats)
 		game_events::fire("die", death_loc, attacker_loc, dat);
 		refresh_bc();
 
-		if (!defender.valid()) {
+		if (!defender.valid() || defender.get_unit().hitpoints() > 0) {
 			// WML has invalidated the dying unit, abort
 			return false;
 		}
-		if (defender.get_unit().hitpoints() <= 0) {
-			units_.erase(defender.loc_);
-		}
 
-		if (!attacker.valid()) {
-			// WML has invalidated the killing unit, abort
-			return false;
-		}
+		units_.erase(defender.loc_);
 
-		if (attacker_stats->plagues)
+		if (attacker.valid() && attacker_stats->plagues)
 		{
 			// plague units make new units on the target hex
 			LOG_NG << "trying to reanimate " << attacker_stats->plague_type << '\n';
