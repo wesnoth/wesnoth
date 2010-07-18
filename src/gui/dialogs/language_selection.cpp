@@ -77,8 +77,6 @@ void tlanguage_selection::post_show(twindow& window)
 		const std::vector<language_def>& languages = get_languages();
 		::set_language(languages[res]);
 		preferences::set_language(languages[res].localename);
-
-		t_string::reset_translations();
 	}
 }
 
