@@ -21,7 +21,6 @@ import org.eclipse.ui.texteditor.AbstractTextEditor;
 import org.eclipse.ui.texteditor.IDocumentProvider;
 import org.eclipse.ui.texteditor.ITextEditor;
 
-import wesnoth_eclipse_plugin.Activator;
 import wesnoth_eclipse_plugin.Logger;
 
 public class EditorUtils
@@ -48,8 +47,7 @@ public class EditorUtils
 
 	public static IEditorPart getEditedFile()
 	{
-		return Activator.getDefault().getWorkbench().
-					getActiveWorkbenchWindow().getPages()[0].getActiveEditor();
+		return WorkspaceUtils.getWorkbenchWindow().getPages()[0].getActiveEditor();
 	}
 
 	public static void openEditor(IFile file, boolean activatePage)
