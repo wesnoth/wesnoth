@@ -178,6 +178,8 @@ Version 1.9.0-svn:
    * Move fog/shroud image definition into game_config.cfg
    * Add new game_config keys "hex_brightening", "hex_semi_brightening",
      "mouseover_image" and "selected_image" to tune mouse interface
+   * Fixed bug #16219: Handled ToD areas in a LIFO way, so that it is possible
+     to override them without first removing them
  * Miscellaneous and bug fixes:
    * Added help entry when new unit is created directly in the recall list
    * Defaulted log level to warning again
@@ -216,6 +218,10 @@ Version 1.9.0-svn:
    * Added ":turn_limit" to change the turn limit for a scenario in debug mode
    * Fix a crash when a sighted event killed a unit just before a fight
    * Fixed bug #16171: Disable commands during [animate_unit]
+   * Fixed bug #16235: Avoided displaying an empty menu and therefore choosing
+     a random weapon, when there is none
+   * Fixed bug #16261: Added test for invalidated death due to positive hp
+     after the 'die' event
    * Fixed bugs when a waypoint is unreachable
    * Fixed attacker still getting resting bonus after attack using movement_used=0
    * Fixed [store_time_of_day] for earlier turn
