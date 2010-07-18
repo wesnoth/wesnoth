@@ -98,7 +98,9 @@ protected:
 	int fill_weapon_choices(std::vector<battle_context>& bc_vector, unit_map::iterator attacker, unit_map::iterator defender);
 	// the real function but can throw bad_alloc
 	// choice is the attack chosen in the attack dialog
-	void attack_enemy_(const map_location attacker_loc, const map_location defender_loc, int choice);
+	void attack_enemy_(const map_location& attacker_loc
+			, const map_location& defender_loc
+			, int choice);
 
 	// the perform attack function called after a random seed is obtained
 	void perform_attack(map_location attacker_loc, map_location defender_loc,

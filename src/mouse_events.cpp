@@ -861,7 +861,9 @@ void mouse_handler::attack_enemy(const map_location& attacker_loc, const map_loc
 	}
 }
 
-void mouse_handler::attack_enemy_(const map_location attacker_loc, const map_location defender_loc, int choice)
+void mouse_handler::attack_enemy_(const map_location& attacker_loc
+		, const map_location& defender_loc
+		, int choice)
 {
 	//we must get locations by value instead of by references,
 	//because unit_map changes may affect them if from unit_map::iterator
