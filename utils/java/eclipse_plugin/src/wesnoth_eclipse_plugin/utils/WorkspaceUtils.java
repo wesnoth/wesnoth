@@ -26,6 +26,7 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.preference.PreferenceDialog;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.window.Window;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.dialogs.PreferencesUtil;
 
@@ -64,18 +65,30 @@ public class WorkspaceUtils
 		IStructuredSelection selection = getSelectedStructuredSelection(window);
 		if (selection == null || !(selection.getFirstElement() instanceof IFile))
 			return null;
-
 		return (IFile) selection.getFirstElement();
 	}
 
-	public static IStructuredSelection getSelectedStructuredSelection(IWorkbenchWindow window)
+	public static IStructuredSelection getSelectedStructuredSelection(final IWorkbenchWindow window)
 	{
 		if (window == null)
 			return null;
-
-		if (!(window.getSelectionService().getSelection() instanceof IStructuredSelection))
-			return null;
-		return (IStructuredSelection) window.getSelectionService().getSelection();
+		MyRunnable<IStructuredSelection> runnable = new MyRunnable<IStructuredSelection>(null){
+			@Override
+			public void run()
+			{
+				try{
+					runnableObject_ = null;
+					if (!(window.getSelectionService().getSelection() instanceof IStructuredSelection))
+						return;
+					runnableObject_ = (IStructuredSelection) window.getSelectionService().getSelection();
+				}
+				catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		};
+		Display.getDefault().syncExec(runnable);
+		return runnable.runnableObject_;
 	}
 
 	public static IProject getSelectedProject()
