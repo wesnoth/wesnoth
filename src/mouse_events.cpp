@@ -195,7 +195,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 		}
 
 		// show (or cancel) the attack direction indicator
-		if (attack_from.valid() && !browse) {
+		if (attack_from.valid() && (!browse || resources::whiteboard->is_active())) {
 			gui().set_attack_indicator(attack_from, new_hex);
 		} else {
 			gui().clear_attack_indicator();
@@ -229,10 +229,10 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 						selected_unit->side() != side_num_);
 
 				current_route_ = get_route(selected_unit, dest, waypoints_, viewing_team());
+				resources::whiteboard->create_temp_move(dest);
 
 				if(!browse) {
 					gui().set_route(&current_route_);
-					resources::whiteboard->create_temp_move(current_route_);
 				}
 			}
 		}
@@ -459,10 +459,9 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 	resources::whiteboard->set_real_unit_map();
 
 	//see if we're trying to do a attack or move-and-attack
-	if(!browse && !commands_disabled && attack_from.valid()) {
+	if((!browse || resources::whiteboard->is_active()) && !commands_disabled && attack_from.valid()) {
 		if (resources::whiteboard->is_active()) {
-			if (resources::whiteboard->has_selected_unit())
-			{
+			if  (resources::whiteboard->has_selected_hex()) {
 				// Unselect the current hex, and create planned attack for whiteboard
 				selected_hex_ = map_location();
 				gui().select_hex(map_location());
@@ -475,7 +474,7 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 				current_route_.steps.clear();
 				resources::whiteboard->save_temp_attack(attack_from, clicked_u->get_location());
 			}
-			return false;
+		return false;
 		} else {
 			if (attack_from == selected_hex_) { //no move needed
 				int choice = show_attack_dialog(attack_from, clicked_u->get_location());
@@ -531,9 +530,9 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 			}
 		}
 	}
-
 	//otherwise we're trying to move to a hex
-	else if(!commands_disabled && !browse && selected_hex_.valid() && selected_hex_ != hex &&
+	else if(!commands_disabled && (!browse || resources::whiteboard->is_active()) &&
+			selected_hex_.valid() && selected_hex_ != hex &&
 	         u != units_.end() && u->side() == side_num_ &&
 		     clicked_u == units_.end() && !current_route_.steps.empty() &&
 		     current_route_.steps.front() == selected_hex_) {
@@ -617,26 +616,24 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse) {
 		resources::whiteboard->set_real_unit_map();
 
 		// selection have impact only if we are not observing and it's our unit
-		if (!browse && !commands_disabled && u->side() == gui().viewing_side()) {
-			sound::play_UI_sound("select-unit.wav");
+		if (!commands_disabled && u->side() == gui().viewing_side()) {
+			if (!browse)
+			{
+				sound::play_UI_sound("select-unit.wav");
 
-			if (!(resources::whiteboard->is_active() && resources::whiteboard->unit_has_actions(*u))) {
-				u->set_selecting();
-				game_events::fire("select", hex);
+				if (!(resources::whiteboard->is_active() && resources::whiteboard->unit_has_actions(*u))) {
+					u->set_selecting();
+					game_events::fire("select", hex);
+				}
 			}
-
-			if (resources::whiteboard->is_active()) {
-				resources::whiteboard->on_unit_select(*u);
-			}
+			resources::whiteboard->on_select_hex(hex);
 		}
 
 	} else {
 		gui().unhighlight_reach();
 		current_paths_ = pathfind::paths();
 		current_route_.steps.clear();
-		if (resources::whiteboard->is_active()) {
-			resources::whiteboard->on_unit_deselect();
-		}
+		resources::whiteboard->on_deselect_hex();
 	}
 }
 

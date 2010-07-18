@@ -34,17 +34,10 @@
 
 namespace wb {
 
-
-static team& current_team()
+static side_actions_ptr viewer_actions()
 {
-	int current_side = resources::controller->current_side();
-	team& current_team = (*resources::teams)[current_side - 1];
-	return current_team;
-}
-
-static side_actions_ptr current_actions()
-{
-	side_actions_ptr side_actions = current_team().get_side_actions();
+	side_actions_ptr side_actions =
+			(*resources::teams)[resources::screen->viewing_team()].get_side_actions();
 	return side_actions;
 }
 
@@ -58,11 +51,11 @@ manager::manager():
 		steps_(),
 		move_arrow_(),
 		fake_unit_(),
-		selected_unit_(NULL),
+		selected_hex_(),
 		planned_unit_map_active_(false),
 		modifying_actions_(false)
 {
-	highlighter_.reset(new highlight_visitor(*resources::units, current_actions()));
+	highlighter_.reset(new highlight_visitor(*resources::units, viewer_actions()));
 }
 
 manager::~manager()
@@ -76,18 +69,27 @@ void manager::set_active(bool active)
 	erase_temp_move();
 
 	if (active_)
-		current_actions()->validate_actions();
+		viewer_actions()->validate_actions();
 }
 
 void manager::set_invert_behavior(bool invert)
 {
-	bool change_active_status = false;
+	log_scope("set_invert_behavior");
 	if (invert)
 	{
 		if (!inverted_behavior_)
 		{
 			inverted_behavior_ = true;
-			change_active_status = true;
+			if (active_)
+			{
+				LOG_WB << "Whiteboard deactivated temporarily.\n";
+				set_active(false);
+			}
+			else // active_ == false
+			{
+				LOG_WB << "Whiteboard activated temporarily.\n";
+				set_active(true);
+			}
 		}
 	}
 	else
@@ -95,34 +97,31 @@ void manager::set_invert_behavior(bool invert)
 		if (inverted_behavior_)
 		{
 			inverted_behavior_ = false;
-			change_active_status = true;
-		}
-	}
-
-	if (change_active_status)
-	{
-		if (active_)
-		{
-			set_active(false);
-		}
-		else // active_ == false
-		{
-			set_active(true);
+			if (active_)
+			{
+				LOG_WB << "Whiteboard set back to deactivated status.\n";
+				set_active(false);
+			}
+			else // active_ == false
+			{
+				LOG_WB << "Whiteboard set back to activated status.\n";
+				set_active(true);
+			}
 		}
 	}
 }
 
 bool manager::can_execute_hotkey() const
 {
-	return !current_actions()->empty();
+	return !viewer_actions()->empty();
 }
 
 void manager::on_init_side()
 {
 	if (active_)
 	{
-			current_actions()->validate_actions();
-			highlighter_.reset(new highlight_visitor(*resources::units, current_actions()));
+			viewer_actions()->validate_actions();
+			highlighter_.reset(new highlight_visitor(*resources::units, viewer_actions()));
 	}
 
 	wait_for_side_init_ = false;
@@ -142,12 +141,11 @@ void manager::set_planned_unit_map()
 	if (active_ && !modifying_actions_ && !wait_for_side_init_)
 	{
 		modifying_actions_ = true;
-		//TODO: enable back this assert, after modifying the mouse code that triggers it constantly
-		//assert(!modifying_actions_);
 		if (!planned_unit_map_active_)
 		{
+			viewer_actions()->validate_actions();
 			DBG_WB << "Building planned unit map.\n";
-			mapbuilder_.reset(new mapbuilder_visitor(*resources::units, current_actions()));
+			mapbuilder_.reset(new mapbuilder_visitor(*resources::units, viewer_actions()));
 			mapbuilder_->build_map();
 			planned_unit_map_active_ = true;
 		}
@@ -161,8 +159,6 @@ void manager::set_planned_unit_map()
 
 void manager::set_real_unit_map()
 {
-	if (active_ && !modifying_actions_ && !wait_for_side_init_)
-	{
 		modifying_actions_ = true;
 		if (planned_unit_map_active_)
 		{
@@ -172,68 +168,74 @@ void manager::set_real_unit_map()
 		}
 		else
 		{
-			WRN_WB << "Attempt to disable the planned unit map, when it was already disabled.\n";
+			DBG_WB << "Attempt to disable the planned unit map, when it was already disabled.\n";
 		}
 		modifying_actions_ = false;
-	}
 }
 
 void manager::draw_hex(const map_location& hex)
 {
 	if (!wait_for_side_init_)
-		current_actions()->draw_hex(hex);
+		viewer_actions()->draw_hex(hex);
 }
 
 void manager::on_mouseover_change(const map_location& hex)
 {
 	//FIXME: Detect if a WML event is executing, and if so, avoid modifying the unit map during that time.
 	// Acting otherwise causes a crash.
-	if (active_ && !selected_unit_ && highlighter_)
+	if (active_ && !selected_unit() && highlighter_)
 	{
 		highlighter_->set_mouseover_hex(hex);
 		highlighter_->highlight();
 	}
 }
 
-void manager::on_unit_select(unit& unit)
+void manager::on_select_hex(const map_location& hex)
 {
 	if (!active_)
 		return;
 
+	selected_hex_ = hex;
+	unit* selected_unit = this->selected_unit();
 	erase_temp_move();
-	selected_unit_ = NULL;
-	if (unit.side() == resources::controller->current_side())
+	if (!(selected_unit && selected_unit->side() == resources::screen->viewing_side()))
 	{
-		selected_unit_ = &unit;
+		selected_hex_ = map_location();
 	}
-	LOG_WB << "Selected unit " << selected_unit_->name() << " [" << selected_unit_->id() << "]\n";
+	else
+	{
+		LOG_WB << "Selected unit " << selected_unit->name() << " [" << selected_unit->id() << "]\n";
+	}
 }
 
-void manager::on_unit_deselect()
+void manager::on_deselect_hex()
+{
+	erase_temp_move();
+	selected_hex_ = map_location();
+
+	if (unit* unit = selected_unit())
+	{
+		LOG_WB << "Deselecting unit " << unit->name() << " [" << unit->id() << "]\n";
+
+	}
+}
+
+void manager::create_temp_move(const map_location& destination_hex)
 {
 	if (!active_)
 		return;
 
-	if (selected_unit_)
-	{
-		LOG_WB << "Deselecting unit " << selected_unit_->name() << " [" << selected_unit_->id() << "]\n";
-		erase_temp_move();
-		selected_unit_ = NULL;
-	}
-}
-
-void manager::create_temp_move(const pathfind::marked_route &route)
-{
-	if (!active_)
+	unit_map::iterator unit_iterator = resources::units->find(selected_hex_);
+	if (unit_iterator == resources::units->end())
 		return;
 
-	//TODO: properly handle turn end
-
-	if (selected_unit_ == NULL)
-	{
-		erase_temp_move();
-		return;
-	}
+	unit_iterator->set_state(unit::STATE_NOT_MOVED,true);
+	pathfind::marked_route route =
+			resources::controller->get_mouse_handler_base().get_route(
+					unit_iterator,
+					destination_hex, std::vector<map_location>()/*waypoints*/,
+					(*resources::teams)[resources::screen->viewing_team()]);
+	unit_iterator->set_state(unit::STATE_NOT_MOVED,false);
 
 	//Temporary: Don't draw move arrow if move goes beyond range.
 	bool cancel = false;
@@ -257,7 +259,7 @@ void manager::create_temp_move(const pathfind::marked_route &route)
 	}
 	else
 	{
-		assert(selected_unit_->side() == resources::controller->current_side());
+		assert(selected_unit()->side() == resources::screen->viewing_side());
 		route_.reset(new pathfind::marked_route(route));
 		//NOTE: route_.steps.back() = dst, and route_.steps.front() = src
 
@@ -265,8 +267,8 @@ void manager::create_temp_move(const pathfind::marked_route &route)
 		{
 			// Create temp arrow
 			move_arrow_.reset(new arrow());
-			int current_side = resources::controller->current_side();
-			move_arrow_->set_color(team::get_side_color_index(current_side));
+			move_arrow_->set_color(team::get_side_color_index(
+				resources::screen->viewing_side()));
 			move_arrow_->set_alpha(move::ALPHA_HIGHLIGHT);
 			resources::screen->add_arrow(*move_arrow_);
 
@@ -274,7 +276,7 @@ void manager::create_temp_move(const pathfind::marked_route &route)
 		if (!fake_unit_)
 		{
 			// Create temp ghost unit
-			fake_unit_.reset(new unit(*selected_unit_), wb::manager::fake_unit_deleter());
+			fake_unit_.reset(new unit(*selected_unit()), wb::manager::fake_unit_deleter());
 			resources::screen->place_temporary_unit(fake_unit_.get());
 			fake_unit_->set_ghosted(false);
 		}
@@ -306,7 +308,7 @@ void manager::erase_temp_move()
 
 void manager::save_temp_move()
 {
-	if (active_ && !modifying_actions_)
+	if (has_temp_move() && !modifying_actions_)
 	{
 		assert(!has_planned_unit_map());
 
@@ -319,16 +321,16 @@ void manager::save_temp_move()
 		steps = route_->steps;
 		move_arrow = arrow_ptr(move_arrow_);
 		fake_unit = fake_unit_ptr(fake_unit_);
-		subject_unit = selected_unit_;
+		subject_unit = selected_unit();
 
-		on_unit_deselect();
+		on_deselect_hex();
 
 		LOG_WB << "Creating move for unit " << subject_unit->name() << " [" << subject_unit->id() << "]"
 				<< " from " << steps.front()
 				<< " to " << steps.back() << "\n";
 
 		fake_unit->set_disabled_ghosted(false);
-		current_actions()->queue_move(*subject_unit, steps.front(), steps.back(), move_arrow, fake_unit);
+		viewer_actions()->queue_move(*subject_unit, steps.front(), steps.back(), move_arrow, fake_unit);
 		modifying_actions_ = false;
 	}
 }
@@ -345,7 +347,7 @@ void manager::save_temp_attack(const map_location& attack_from, const map_locati
 		fake_unit_ptr fake_unit;
 		unit* subject_unit;
 
-		subject_unit = selected_unit_;
+		subject_unit = selected_unit();
 
 		map_location source_hex;
 		map_location dest_hex;
@@ -366,7 +368,7 @@ void manager::save_temp_attack(const map_location& attack_from, const map_locati
 			dest_hex = source_hex = attack_from;
 		}
 
-		on_unit_deselect();
+		on_deselect_hex();
 
 		int weapon_choice = resources::controller->get_mouse_handler_base().show_attack_dialog(
 				subject_unit->get_location(), target_hex);
@@ -377,7 +379,7 @@ void manager::save_temp_attack(const map_location& attack_from, const map_locati
 					<< "]: moving from " << source_hex << " to " << dest_hex
 					<< " and attacking " << target_hex << "\n";
 
-			current_actions()->queue_attack(*subject_unit, target_hex, weapon_choice, source_hex, dest_hex, move_arrow, fake_unit);
+			viewer_actions()->queue_attack(*subject_unit, target_hex, weapon_choice, source_hex, dest_hex, move_arrow, fake_unit);
 			modifying_actions_ = false;
 		}
 
@@ -387,7 +389,7 @@ void manager::save_temp_attack(const map_location& attack_from, const map_locati
 
 void manager::contextual_execute()
 {
-	if (!(modifying_actions_ || current_actions()->empty()))
+	if (!(modifying_actions_ || viewer_actions()->empty()))
 	{
 		modifying_actions_ = true;
 		erase_temp_move();
@@ -395,19 +397,19 @@ void manager::contextual_execute()
 		{
 			action_ptr action;
 			side_actions::iterator it;
-			if (selected_unit_ &&
-					(it = current_actions()->find_first_action_of(*selected_unit_)) != current_actions()->end())
+			if (selected_unit() &&
+					(it = viewer_actions()->find_first_action_of(*selected_unit())) != viewer_actions()->end())
 			{
-					current_actions()->execute(it);
+					viewer_actions()->execute(it);
 			}
 			else if (highlighter_ && (action = highlighter_->get_execute_target()) &&
-					 (it = current_actions()->get_position_of(action)) != current_actions()->end())
+					 (it = viewer_actions()->get_position_of(action)) != viewer_actions()->end())
 			{
-				current_actions()->execute(it);
+				viewer_actions()->execute(it);
 			}
-			else //we already check above for current_actions()->empty()
+			else //we already check above for viewer_actions()->empty()
 			{
-				current_actions()->execute_next();
+				viewer_actions()->execute_next();
 			}
 		}
 		modifying_actions_ = false;
@@ -416,7 +418,7 @@ void manager::contextual_execute()
 
 void manager::contextual_delete()
 {
-	if (!(modifying_actions_ || current_actions()->empty()))
+	if (!(modifying_actions_ || viewer_actions()->empty()))
 	{
 		modifying_actions_ = true;
 		erase_temp_move();
@@ -424,19 +426,19 @@ void manager::contextual_delete()
 		{
 			action_ptr action;
 			side_actions::iterator it;
-			if (selected_unit_ &&
-					(it = current_actions()->find_first_action_of(*selected_unit_)) != current_actions()->end())
+			if (selected_unit() &&
+					(it = viewer_actions()->find_first_action_of(*selected_unit())) != viewer_actions()->end())
 			{
-				current_actions()->remove_action(it);
+				viewer_actions()->remove_action(it);
 			}
 			else if (highlighter_ && (action = highlighter_->get_delete_target()) &&
-					(it = current_actions()->get_position_of(action)) != current_actions()->end())
+					(it = viewer_actions()->get_position_of(action)) != viewer_actions()->end())
 			{
-				current_actions()->remove_action(it);
+				viewer_actions()->remove_action(it);
 			}
-			else //we already check above for current_actions()->empty()
+			else //we already check above for viewer_actions()->empty()
 			{
-				current_actions()->remove_action(current_actions()->end() - 1);
+				viewer_actions()->remove_action(viewer_actions()->end() - 1);
 			}
 		}
 		modifying_actions_ = false;
@@ -445,13 +447,13 @@ void manager::contextual_delete()
 
 void manager::contextual_bump_up_action()
 {
-	if (!(modifying_actions_ || current_actions()->empty()) && highlighter_)
+	if (!(modifying_actions_ || viewer_actions()->empty()) && highlighter_)
 	{
 		modifying_actions_ = true;
 		action_ptr action = highlighter_->get_bump_target();
 		if (action)
 		{
-			current_actions()->bump_earlier(current_actions()->get_position_of(action));
+			viewer_actions()->bump_earlier(viewer_actions()->get_position_of(action));
 		}
 		modifying_actions_ = false;
 	}
@@ -459,13 +461,13 @@ void manager::contextual_bump_up_action()
 
 void manager::contextual_bump_down_action()
 {
-	if (!(modifying_actions_ || current_actions()->empty()) && highlighter_)
+	if (!(modifying_actions_ || viewer_actions()->empty()) && highlighter_)
 	{
 		modifying_actions_ = true;
 		action_ptr action = highlighter_->get_bump_target();
 		if (action)
 		{
-			current_actions()->bump_later(current_actions()->get_position_of(action));
+			viewer_actions()->bump_later(viewer_actions()->get_position_of(action));
 		}
 		modifying_actions_ = false;
 	}
@@ -473,8 +475,8 @@ void manager::contextual_bump_down_action()
 
 bool manager::unit_has_actions(const unit& unit) const
 {
-	return current_actions()->find_first_action_of(unit)
-			!= current_actions()->end();
+	return viewer_actions()->find_first_action_of(unit)
+			!= viewer_actions()->end();
 }
 
 void manager::fake_unit_deleter::operator() (unit*& fake_unit)
@@ -488,6 +490,15 @@ void manager::fake_unit_deleter::operator() (unit*& fake_unit)
         DBG_WB << "Erasing temporary unit " << fake_unit->name() << " [ " << fake_unit->underlying_id() << "]\n";
         delete fake_unit;
     }
+}
+
+unit* manager::selected_unit()
+{
+	unit_map::iterator it;
+	if ((it = resources::units->find(selected_hex_)) != resources::units->end())
+		return &*it;
+	else
+		return NULL;
 }
 
 scoped_planned_unit_map::scoped_planned_unit_map()

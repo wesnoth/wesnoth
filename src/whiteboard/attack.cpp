@@ -32,7 +32,7 @@ std::ostream &operator<<(std::ostream &s, wb::attack const& attack)
 //			<< "moving from (" << attack->get_source_hex() << ") to (" << attack->get_dest_hex() << ") and attacking "
 //			<< attack->get_target_hex();
 
-	s << static_cast<wb::move const&>(attack) << " and attacking " << attack.get_target_hex();
+	s << static_cast<wb::move const&>(attack) << " and attacking (" << attack.get_target_hex() << ")";
 
 	return s;
 }

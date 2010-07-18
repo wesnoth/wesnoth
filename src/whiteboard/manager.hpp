@@ -76,15 +76,15 @@ public:
 
 	void on_mouseover_change(const map_location& hex);
 	/** Choose the target unit for action creation */
-	void on_unit_select(unit& unit);
-	void on_unit_deselect();
+	void on_select_hex(const map_location& hex);
+	void on_deselect_hex();
 
 	/** Creates a temporary visual arrow, that follows the cursor, for move creation purposes */
-	void create_temp_move(const pathfind::marked_route &route);
+	void create_temp_move(const map_location& hex);
 	/** Informs whether an arrow is being displayed for move creation purposes */
 	bool has_temp_move() const { return route_; }
 	/** Informs whether the whiteboard tracks a selected unit */
-	bool has_selected_unit() const { return selected_unit_ != NULL; }
+	bool has_selected_hex() const { return selected_hex_.valid(); }
 
 	void erase_temp_move();
 
@@ -114,9 +114,10 @@ public:
 	};
 
 private:
-	/**
-	 * Tracks whether the whiteboard is active.
-	 */
+
+	unit* selected_unit();
+
+	///Tracks whether the whiteboard is active.
 	bool active_;
 	bool inverted_behavior_;
 	bool wait_for_side_init_;
@@ -130,7 +131,7 @@ private:
 	arrow_ptr move_arrow_;
 	fake_unit_ptr fake_unit_;
 
-	unit* selected_unit_;
+	map_location selected_hex_;
 
 	bool planned_unit_map_active_;
 	/** Track whenever we're modifying actions, to avoid dual execution etc. */

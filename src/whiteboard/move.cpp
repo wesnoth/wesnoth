@@ -68,9 +68,13 @@ move::move(unit& subject, const map_location& source_hex, const map_location& ta
 {
 	if (source_hex_.valid() && dest_hex_.valid() && source_hex_ != dest_hex_)
 	{
+
 		// Calculate move cost
-		pathfind::shortest_path_calculator path_calc(unit_, get_current_team(), *resources::units,
-				*resources::teams, *resources::game_map);
+		pathfind::shortest_path_calculator path_calc(*get_unit(),
+				(*resources::teams)[get_unit()->side() - 1],
+				*resources::units,
+				*resources::teams,
+				*resources::game_map);
 
 		pathfind::plain_route route = pathfind::a_star_search(source_hex_,
 				dest_hex_, 10000, &path_calc, resources::game_map->w(), resources::game_map->h());
@@ -102,7 +106,7 @@ bool move::execute()
 	if (source_hex_ == dest_hex_)
 		return true; //zero-hex move, probably used by attack subclass
 
-	LOG_WB << "Executin: " << *this << "\n";
+	LOG_WB << "Executing: " << *this << "\n";
 
 	bool move_finished_completely = false;
 
