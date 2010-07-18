@@ -232,9 +232,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 
 				if(!browse) {
 					gui().set_route(&current_route_);
-					if (resources::whiteboard->is_active() && selected_unit->side() == side_num_) {
-						resources::whiteboard->create_temp_move(current_route_);
-					}
+					resources::whiteboard->create_temp_move(current_route_);
 				}
 			}
 		}

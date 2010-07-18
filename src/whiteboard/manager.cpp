@@ -50,6 +50,7 @@ static side_actions_ptr current_actions()
 
 manager::manager():
 		active_(false),
+		inverted_behavior_(false),
 		wait_for_side_init_(true),
 		mapbuilder_(),
 		highlighter_(),
@@ -72,11 +73,51 @@ void manager::set_active(bool active)
 {
 	active_ = active;
 
+	erase_temp_move();
+
 	if (active_)
 		current_actions()->validate_actions();
 }
 
-void manager::init_side()
+void manager::set_invert_behavior(bool invert)
+{
+	bool change_active_status = false;
+	if (invert)
+	{
+		if (!inverted_behavior_)
+		{
+			inverted_behavior_ = true;
+			change_active_status = true;
+		}
+	}
+	else
+	{
+		if (inverted_behavior_)
+		{
+			inverted_behavior_ = false;
+			change_active_status = true;
+		}
+	}
+
+	if (change_active_status)
+	{
+		if (active_)
+		{
+			set_active(false);
+		}
+		else // active_ == false
+		{
+			set_active(true);
+		}
+	}
+}
+
+bool manager::can_execute_hotkey() const
+{
+	return !current_actions()->empty();
+}
+
+void manager::on_init_side()
 {
 	if (active_)
 	{
@@ -87,7 +128,7 @@ void manager::init_side()
 	wait_for_side_init_ = false;
 }
 
-void manager::finish_side_turn()
+void manager::on_finish_side_turn()
 {
 	wait_for_side_init_ = true;
 
@@ -139,7 +180,7 @@ void manager::set_real_unit_map()
 
 void manager::draw_hex(const map_location& hex)
 {
-	if (active_ && !wait_for_side_init_)
+	if (!wait_for_side_init_)
 		current_actions()->draw_hex(hex);
 }
 
@@ -346,9 +387,6 @@ void manager::save_temp_attack(const map_location& attack_from, const map_locati
 
 void manager::contextual_execute()
 {
-	if (!active_)
-		return;
-
 	if (!(modifying_actions_ || current_actions()->empty()))
 	{
 		modifying_actions_ = true;
@@ -378,9 +416,6 @@ void manager::contextual_execute()
 
 void manager::contextual_delete()
 {
-	if (!active_)
-		return;
-
 	if (!(modifying_actions_ || current_actions()->empty()))
 	{
 		modifying_actions_ = true;
@@ -410,9 +445,6 @@ void manager::contextual_delete()
 
 void manager::contextual_bump_up_action()
 {
-	if (!active_)
-		return;
-
 	if (!(modifying_actions_ || current_actions()->empty()) && highlighter_)
 	{
 		modifying_actions_ = true;
@@ -427,9 +459,6 @@ void manager::contextual_bump_up_action()
 
 void manager::contextual_bump_down_action()
 {
-	if (!active_)
-		return;
-
 	if (!(modifying_actions_ || current_actions()->empty()) && highlighter_)
 	{
 		modifying_actions_ = true;

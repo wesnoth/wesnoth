@@ -357,10 +357,7 @@ void game_display::draw_hex(const map_location& loc)
 			image::get_image(game_config::unreachable_image,image::UNMASKED)));
 	}
 
-	if (resources::whiteboard->is_active())
-	{
-		resources::whiteboard->draw_hex(loc);
-	}
+	resources::whiteboard->draw_hex(loc);
 
 	if (!(resources::whiteboard->is_active() && resources::whiteboard->has_temp_move()))
 	{

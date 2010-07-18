@@ -517,7 +517,7 @@ void play_controller::init_side(const unsigned int team_index, bool is_replay){
 	gamestate_.get_variable("side_number") = player_number_;
 	gamestate_.last_selected = map_location::null_location;
 
-	resources::whiteboard->init_side();
+	resources::whiteboard->on_init_side();
 
 	/**
 	 * We do this only for local side when we are not replaying.
@@ -652,7 +652,7 @@ config play_controller::to_config() const
 
 void play_controller::finish_side_turn(){
 
-	resources::whiteboard->finish_side_turn();
+	resources::whiteboard->on_finish_side_turn();
 
 	for(unit_map::iterator uit = units_.begin(); uit != units_.end(); ++uit) {
 		if (uit->side() == player_number_)
@@ -797,7 +797,7 @@ bool play_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int in
 	case hotkey::HOTKEY_WB_DELETE_ACTION:
 	case hotkey::HOTKEY_WB_BUMP_UP_ACTION:
 	case hotkey::HOTKEY_WB_BUMP_DOWN_ACTION:
-		return resources::whiteboard->is_active();
+		return resources::whiteboard->can_execute_hotkey();
 
 	default:
 		return false;
@@ -977,8 +977,10 @@ void play_controller::process_focus_keydown_event(const SDL_Event& event)
 	}
 }
 
-void play_controller::process_keydown_event(const SDL_Event& ) {
-
+void play_controller::process_keydown_event(const SDL_Event& event) {
+	if (event.key.keysym.sym == SDLK_LCTRL || event.key.keysym.sym == SDLK_RCTRL) {
+		whiteboard_manager_->set_invert_behavior(true);
+	}
 }
 
 void play_controller::process_keyup_event(const SDL_Event& event) {
@@ -1005,6 +1007,11 @@ void play_controller::process_keyup_event(const SDL_Event& event) {
 
 				gui_->highlight_reach(mouse_handler_.current_paths());
 			}
+		}
+	} else if (event.key.keysym.sym == SDLK_LCTRL || event.key.keysym.sym == SDLK_RCTRL) {
+		static CKey keys;
+		if (!(keys[SDLK_LCTRL] || keys[SDLK_RCTRL])) {
+			whiteboard_manager_->set_invert_behavior(false);
 		}
 	}
 }

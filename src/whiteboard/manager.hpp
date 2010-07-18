@@ -53,8 +53,11 @@ public:
 	bool is_active() const { return active_; }
 	void set_active(bool active);
 
-	void init_side();
-	void finish_side_turn();
+	void set_invert_behavior(bool invert);
+	bool can_execute_hotkey() const;
+
+	void on_init_side();
+	void on_finish_side_turn();
 
 	/**
 	 * Temporarily apply the effects of the current team's
@@ -115,6 +118,7 @@ private:
 	 * Tracks whether the whiteboard is active.
 	 */
 	bool active_;
+	bool inverted_behavior_;
 	bool wait_for_side_init_;
 
 	boost::scoped_ptr<mapbuilder_visitor> mapbuilder_;
