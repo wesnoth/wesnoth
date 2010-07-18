@@ -1288,18 +1288,6 @@ static int intf_register_wml_action(lua_State *L)
 	return 1;
 }
 
-
-/**
- * - Ret 1: the number of sides
- */
-
-static int intf_get_side_count(lua_State *L){
-        std::vector<team> &teams = *resources::teams;
-        lua_pushinteger(L, teams.size());
-        return 1;
-}
-
-
 /**
  * Gets 2 parameters
  * - Arg 1: side number of the first team
@@ -1399,32 +1387,6 @@ static int impl_side_set(lua_State *L)
 	}
 
 	return luaL_argerror(L, 2, "unknown modifiable property");
-}
-
-/**
- * Gets a proxy userdata for a side.
- * - Arg 1: integer for the side.
- * - Ret 1: full userdata with __index pointing to lua_side_get
- *          and __newindex pointing to lua_side_set.
- */
-static int intf_get_side(lua_State *L)
-{
-	int s = luaL_checkint(L, 1);
-
-	size_t t = s - 1;
-	std::vector<team> &teams = *resources::teams;
-	if (t >= teams.size()) return 0;
-
-	// Create a full userdata containing a pointer to the team.
-	team **p = static_cast<team **>(lua_newuserdata(L, sizeof(team *)));
-	*p = &teams[t];
-
-	// Get the metatable from the registry and set it.
-	lua_pushlightuserdata(L, (void *)&getsideKey);
-	lua_rawget(L, LUA_REGISTRYINDEX);
-	lua_setmetatable(L, 2);
-
-	return 1;
 }
 
 /**
@@ -2291,8 +2253,6 @@ LuaKernel::LuaKernel()
 		{ "float_label",              &intf_float_label              },
 		{ "get_map_size",             &intf_get_map_size             },
 		{ "get_selected_tile",        &intf_get_selected_tile        },
-		{ "get_side",                 &intf_get_side                 },
-		{ "get_side_count",           &intf_get_side_count           },
 		{ "get_terrain",              &intf_get_terrain              },
 		{ "get_terrain_info",         &intf_get_terrain_info         },
 		{ "get_unit_type",            &intf_get_unit_type            },
@@ -2457,6 +2417,27 @@ LuaKernel::LuaKernel()
 
 void LuaKernel::initialize()
 {
+	lua_State *L = mState;
+
+	// Create the sides table.
+	std::vector<team> &teams = *resources::teams;
+	lua_getglobal(L, "wesnoth");
+	lua_pushlightuserdata(L, (void *)&getsideKey);
+	lua_rawget(L, LUA_REGISTRYINDEX);
+	lua_createtable(L, teams.size(), 0);
+	for (unsigned i = 0; i != teams.size(); ++i)
+	{
+		// Create a full userdata containing a pointer to the team.
+		team **p = static_cast<team **>(lua_newuserdata(L, sizeof(team *)));
+		*p = &teams[i];
+		lua_pushvalue(L, -3);
+		lua_setmetatable(L, -2);
+		lua_rawseti(L, -2, i + 1);
+	}
+	lua_setfield(L, -3, "sides");
+	lua_pop(L, 2);
+
+	// Execute the preload scripts.
 	foreach (const config &cfg, preload_scripts) {
 		execute(cfg["code"].str().c_str(), 0, 0);
 	}
