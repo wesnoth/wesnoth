@@ -122,15 +122,14 @@ time_of_day tod_manager::get_time_of_day(int illuminated, const map_location& lo
 {
 	time_of_day res = get_time_of_day_turn(n_turn);
 
-	if(loc.valid()) {
-		for(std::vector<area_time_of_day>::const_iterator i = areas_.begin(); i != areas_.end(); ++i) {
-			if(i->hexes.count(loc) == 1) {
-
-				VALIDATE(i->times.size(), _("No time of day has been defined."));
-
-				res = i->times[(n_turn-1)%i->times.size()];
-				break;
-			}
+	if (loc.valid()) {
+		for (std::vector<area_time_of_day>::const_reverse_iterator
+		     i = areas_.rbegin(), i_end = areas_.rend(); i != i_end; ++i)
+		{
+			if (i->hexes.count(loc) != 1) continue;
+			VALIDATE(i->times.size(), _("No time of day has been defined."));
+			res = i->times[(n_turn - 1) % i->times.size()];
+			break;
 		}
 	}
 
