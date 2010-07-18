@@ -1429,15 +1429,13 @@ bool game_controller::play_multiplayer()
 bool game_controller::change_language()
 {
 	gui2::tlanguage_selection dlg;
-
 	dlg.show(disp().video());
+	if (dlg.get_retval() != gui2::twindow::OK) return false;
 
-	if(dlg.get_retval() == gui2::twindow::OK) {
-		if(!no_gui_) {
-			std::string wm_title_string = _("The Battle for Wesnoth");
-			wm_title_string += " - " + game_config::revision;
-			SDL_WM_SetCaption(wm_title_string.c_str(), NULL);
-		}
+	if (!no_gui_) {
+		std::string wm_title_string = _("The Battle for Wesnoth");
+		wm_title_string += " - " + game_config::revision;
+		SDL_WM_SetCaption(wm_title_string.c_str(), NULL);
 	}
 
 	return true;
@@ -2235,7 +2233,7 @@ static int do_gameloop(int argc, char** argv)
 				continue;
 			}
 		} else if(res == gui::CHANGE_LANGUAGE) {
-			if(game.change_language() == true) {
+			if (game.change_language()) {
 				tips_of_day.clear();
 				t_string::reset_translations();
 				image::flush_cache();
