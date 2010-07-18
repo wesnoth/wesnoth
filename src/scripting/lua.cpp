@@ -1253,23 +1253,18 @@ static int intf_register_wml_action(lua_State *L)
 }
 
 /**
- * Gets 2 parameters
- * - Arg 1: side number of the first team
- * - Arg 2: side number of the second team
- * - Ret 1: true, if these two teams are enemies
+ * Returns whether the first side is an enemy of the second one.
+ * - Args 1,2: side numbers.
+ * - Ret 1: bool.
  */
-
-static int intf_is_enemy(lua_State *L){
-
-        size_t side_1 = luaL_checkint(L, 1)-1;
-        size_t side_2 = luaL_checkint(L, 2)-1;
-        std::vector<team> &teams = *resources::teams;
-
-        if( side_1 >= teams.size() || side_2 >= teams.size()){
-                return 0;
-        }
-        lua_pushboolean(L, teams[side_1].is_enemy(side_2));
-        return 1;
+static int intf_is_enemy(lua_State *L)
+{
+	unsigned side_1 = luaL_checkint(L, 1) - 1;
+	unsigned side_2 = luaL_checkint(L, 2) - 1;
+	std::vector<team> &teams = *resources::teams;
+	if (side_1 >= teams.size() || side_2 >= teams.size()) return 0;
+	lua_pushboolean(L, teams[side_1].is_enemy(side_2));
+	return 1;
 }
 
 /**
