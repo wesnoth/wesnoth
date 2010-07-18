@@ -105,9 +105,7 @@ static char const gettextKey = 0;
 static char const gettypeKey = 0;
 static char const getunitKey = 0;
 static char const tstringKey = 0;
-static char const uactionKey = 0;
 static char const vconfigKey = 0;
-static char const wactionKey = 0;
 
 /* Global definition so that it does not leak on longjmp. */
 static std::string error_buffer;
@@ -122,11 +120,11 @@ static void chat_message(std::string const &caption, std::string const &msg)
 }
 
 /**
- * Pushes a config as a volatile vconfig on the top of the stack.
+ * Pushes a vconfig on the top of the stack.
  */
-static void luaW_pushvconfig(lua_State *L, config const &cfg)
+static void luaW_pushvconfig(lua_State *L, vconfig const &cfg)
 {
-	new(lua_newuserdata(L, sizeof(vconfig))) vconfig(cfg, true);
+	new(lua_newuserdata(L, sizeof(vconfig))) vconfig(cfg);
 	lua_pushlightuserdata(L, (void *)&vconfigKey);
 	lua_rawget(L, LUA_REGISTRYINDEX);
 	lua_setmetatable(L, -2);
@@ -858,28 +856,6 @@ static int intf_get_units(lua_State *L)
 }
 
 /**
- * Fires a WML event handler.
- * - Arg 1: string containing the handler name.
- * - Arg 2: optional WML config.
- */
-static int intf_fire(lua_State *L)
-{
-	if (false) {
-		error_call_destructors:
-		return luaL_typerror(L, 2, "WML table");
-	}
-
-	char const *m = luaL_checkstring(L, 1);
-
-	vconfig vcfg = vconfig::unconstructed_vconfig();
-	if (!luaW_tovconfig(L, 2, vcfg))
-		goto error_call_destructors;
-
-	game_events::handle_event_command(m, queued_event_context::get(), vcfg);
-	return 0;
-}
-
-/**
  * Fires an event.
  * - Arg 1: string containing the event name.
  * - Arg 2,3: optional first location.
@@ -1075,180 +1051,6 @@ static int intf_require(lua_State *L)
 	lua_pushvalue(L, 1);
 	lua_pushvalue(L, -2);
 	lua_settable(L, -4);
-	return 1;
-}
-
-/**
- * Calls a WML action handler (__call metamethod).
- * - Arg 1: userdata containing the handler.
- * - Arg 2: optional WML config.
- */
-static int impl_wml_action_call(lua_State *L)
-{
-	if (false) {
-		error_call_destructors:
-		return luaL_typerror(L, 2, "WML table");
-	}
-
-	vconfig vcfg = vconfig::unconstructed_vconfig();
-	if (!luaW_tovconfig(L, 2, vcfg))
-		goto error_call_destructors;
-
-	game_events::action_handler **h =
-		static_cast<game_events::action_handler **>(lua_touserdata(L, 1));
-	// Hidden metamethod, so h has to be an action handler.
-	(*h)->handle(queued_event_context::get(), vcfg);
-	return 0;
-}
-
-/**
- * Destroys a WML action handler before its pointer is collected (__gc metamethod).
- * - Arg 1: userdata containing the handler.
- */
-static int impl_wml_action_collect(lua_State *L)
-{
-	game_events::action_handler **h =
-		static_cast<game_events::action_handler **>(lua_touserdata(L, 1));
-	// Hidden metamethod, so h has to be an action handler.
-	delete *h;
-	return 0;
-}
-
-/**
- * Calls the first upvalue and passes the first argument.
- * - Arg 1: optional WML config.
- */
-static int cfun_wml_action_proxy(lua_State *L)
-{
-	if (false) {
-		error_call_destructors:
-		return luaL_typerror(L, 1, "WML table");
-	}
-
-	lua_pushvalue(L, lua_upvalueindex(1));
-
-	switch (lua_type(L, 1))
-	{
-		case LUA_TTABLE:
-		{
-			config cfg;
-			if (!luaW_toconfig(L, 1, cfg))
-				goto error_call_destructors;
-			luaW_pushvconfig(L, cfg);
-			break;
-		}
-		case LUA_TUSERDATA:
-		{
-			if (!luaW_hasmetatable(L, 1, vconfigKey))
-				goto error_call_destructors;
-			lua_pushvalue(L, 1);
-			break;
-		}
-		case LUA_TNONE:
-		case LUA_TNIL:
-			lua_createtable(L, 0, 0);
-			break;
-		default:
-			goto error_call_destructors;
-	}
-
-	lua_call(L, 1, 0);
-	return 0;
-}
-
-/**
- * Proxy class for calling WML action handlers defined in Lua.
- */
-struct lua_action_handler : game_events::action_handler
-{
-	lua_State *L;
-	int num;
-
-	lua_action_handler(lua_State *l, int n) : L(l), num(n) {}
-	void handle(const game_events::queued_event &, const vconfig &);
-	~lua_action_handler();
-};
-
-void lua_action_handler::handle(const game_events::queued_event &ev, const vconfig &cfg)
-{
-	// Load the user function from the registry.
-	lua_pushlightuserdata(L, (void *)&uactionKey);
-	lua_rawget(L, LUA_REGISTRYINDEX);
-	lua_rawgeti(L, -1, num);
-	lua_remove(L, -2);
-
-	// Push the WML table argument.
-	new(lua_newuserdata(L, sizeof(vconfig))) vconfig(cfg);
-	lua_pushlightuserdata(L, (void *)&vconfigKey);
-	lua_rawget(L, LUA_REGISTRYINDEX);
-	lua_setmetatable(L, -2);
-
-	queued_event_context dummy(&ev);
-	luaW_pcall(L, 1, 0, true);
-}
-
-lua_action_handler::~lua_action_handler()
-{
-	// Remove the function from the registry, so that it can be collected.
-	lua_pushlightuserdata(L, (void *)&uactionKey);
-	lua_rawget(L, LUA_REGISTRYINDEX);
-	lua_pushnil(L);
-	lua_rawseti(L, -2, num);
-	lua_pop(L, 1);
-}
-
-/**
- * Registers a function as WML action handler.
- * - Arg 1: string containing the WML tag.
- * - Arg 2: optional function taking a WML table as argument.
- * - Ret 1: previous action handler, if any.
- */
-static int intf_register_wml_action(lua_State *L)
-{
-	char const *m = luaL_checkstring(L, 1);
-	bool enable = !lua_isnoneornil(L, 2);
-
-	// Retrieve the user action table from the registry.
-	lua_pushlightuserdata(L, (void *)&uactionKey);
-	lua_rawget(L, LUA_REGISTRYINDEX);
-
-	lua_action_handler *h = NULL;
-	if (enable)
-	{
-		// Push the function in the table so that it is not collected.
-		size_t length = lua_objlen(L, -1);
-		lua_pushvalue(L, 2);
-		lua_rawseti(L, -2, length + 1);
-
-		// Create the proxy C++ action handler.
-		h = new lua_action_handler(L, length + 1);
-	}
-
-	// Register the new handler and retrieve the previous one.
-	game_events::action_handler *previous;
-	game_events::register_action_handler(m, h, &previous);
-	if (!previous) return 0;
-
-	// Detect if the previous handler was already from Lua.
-	lua_action_handler *lua_prev = dynamic_cast<lua_action_handler *>(previous);
-	if (lua_prev)
-	{
-		// Extract the function from the table,
-		// and put a lightweight wrapper around it.
-		lua_rawgeti(L, -1, lua_prev->num);
-		lua_pushcclosure(L, cfun_wml_action_proxy, 1);
-
-		// Delete the old heavyweight wraper.
-		delete lua_prev;
-		return 1;
-	}
-
-	// Wrap and return the previous handler.
-	void *p = lua_newuserdata(L, sizeof(game_events::action_handler *));
-	*static_cast<game_events::action_handler **>(p) = previous;
-	lua_pushlightuserdata(L, (void *)&wactionKey);
-	lua_rawget(L, LUA_REGISTRYINDEX);
-	lua_setmetatable(L, -2);
 	return 1;
 }
 
@@ -2207,7 +2009,6 @@ LuaKernel::LuaKernel()
 		{ "find_path",                &intf_find_path                },
 		{ "find_reach",               &intf_find_reach               },
 		{ "find_vacant_tile",         &intf_find_vacant_tile         },
-		{ "fire",                     &intf_fire                     },
 		{ "fire_event",               &intf_fire_event               },
 		{ "float_label",              &intf_float_label              },
 		{ "get_map_size",             &intf_get_map_size             },
@@ -2220,7 +2021,6 @@ LuaKernel::LuaKernel()
 		{ "is_enemy",                 &intf_is_enemy                 },
 		{ "message",                  &intf_message                  },
 		{ "put_unit",                 &intf_put_unit                 },
-		{ "register_wml_action",      &intf_register_wml_action      },
 		{ "require",                  &intf_require                  },
 		{ "set_terrain",              &intf_set_terrain              },
 		{ "set_variable",             &intf_set_variable             },
@@ -2302,18 +2102,6 @@ LuaKernel::LuaKernel()
 	lua_setfield(L, -2, "__metatable");
 	lua_rawset(L, LUA_REGISTRYINDEX);
 
-	// Create the wml action metatable.
-	lua_pushlightuserdata(L, (void *)&wactionKey);
-	lua_createtable(L, 0, 3);
-	lua_pushcfunction(L, impl_wml_action_call);
-	lua_setfield(L, -2, "__call");
-	lua_pushcfunction(L, impl_wml_action_collect);
-	lua_setfield(L, -2, "__gc");
-	lua_pushstring(L, "wml action handler");
-	lua_setfield(L, -2, "__metatable");
-	lua_rawset(L, LUA_REGISTRYINDEX);
-
-
 	// Create the ai elements table.
 	ai::lua_ai_context::init(L);
 
@@ -2322,11 +2110,6 @@ LuaKernel::LuaKernel()
 	lua_setglobal(L, "dofile");
 	lua_pushnil(L);
 	lua_setglobal(L, "loadfile");
-
-	// Create the user action table.
-	lua_pushlightuserdata(L, (void *)&uactionKey);
-	lua_newtable(L);
-	lua_rawset(L, LUA_REGISTRYINDEX);
 
 	// Create the game_config variable with its metatable.
 	lua_getglobal(L, "wesnoth");
@@ -2358,6 +2141,12 @@ LuaKernel::LuaKernel()
 	lua_getglobal(L, "wesnoth");
 	lua_newtable(L);
 	lua_setfield(L, -2, "package");
+	lua_pop(L, 1);
+
+	// Create the wml_actions table.
+	lua_getglobal(L, "wesnoth");
+	lua_newtable(L);
+	lua_setfield(L, -2, "wml_actions");
 	lua_pop(L, 1);
 
 	// Store the error handler, then close debug.
@@ -2422,40 +2211,69 @@ LuaKernel::~LuaKernel()
 }
 
 /**
- * Runs a script from an event handler.
+ * Executes its upvalue as a wml action.
  */
-void LuaKernel::run_event(vconfig const &cfg, game_events::queued_event const &ev)
+int cfun_wml_action(lua_State *L)
+{
+	if (false) {
+		error_call_destructors:
+		return luaL_typerror(L, 1, "WML table");
+	}
+
+	game_events::action_handler h = reinterpret_cast<game_events::action_handler>
+		(lua_touserdata(L, lua_upvalueindex(1)));
+	vconfig vcfg = vconfig::unconstructed_vconfig();
+	if (!luaW_tovconfig(L, 1, vcfg))
+		goto error_call_destructors;
+
+	h(queued_event_context::get(), vcfg);
+	return 0;
+}
+
+/**
+ * Registers a function for use as an action handler.
+ */
+void LuaKernel::set_wml_action(std::string const &cmd, game_events::action_handler h)
 {
 	lua_State *L = mState;
 
-	// Get user-defined arguments; append locations and weapons to it.
-	config args;
-	vconfig vargs = cfg.child("args");
-	if (!vargs.null()) {
-		args = vargs.get_config();
-	}
-	if (const config &weapon = ev.data.child("first")) {
-		args.add_child("weapon", weapon);
-	}
-	if (const config &weapon = ev.data.child("second")) {
-		args.add_child("second_weapon", weapon);
-	}
-	if (ev.loc1.valid()) {
-		args["x1"] = ev.loc1.x + 1;
-		args["y1"] = ev.loc1.y + 1;
-	}
-	if (ev.loc2.valid()) {
-		args["x2"] = ev.loc2.x + 1;
-		args["y2"] = ev.loc2.y + 1;
-	}
+	lua_getglobal(L, "wesnoth");
+	lua_pushstring(L, "wml_actions");
+	lua_rawget(L, -2);
+	lua_pushstring(L, cmd.c_str());
+	lua_pushlightuserdata(L, (void *)h);
+	lua_pushcclosure(L, cfun_wml_action, 1);
+	lua_rawset(L, -3);
+	lua_pop(L, 2);
+}
 
-	// Get the code from the uninterpolated config object, so that $ symbols
-	// are not messed with.
-	const std::string &prog = cfg.get_config()["code"];
+/**
+ * Runs a command from an event handler.
+ * @return true if there is a handler for the command.
+ * @note @a cfg should be either volatile or long-lived since the Lua
+ *       code may grab it for an arbitrary long time.
+ */
+bool LuaKernel::run_wml_action(std::string const &cmd, vconfig const &cfg,
+	game_events::queued_event const &ev)
+{
+	lua_State *L = mState;
+
+	lua_getglobal(L, "wesnoth");
+	lua_pushstring(L, "wml_actions");
+	lua_rawget(L, -2);
+	lua_remove(L, -2);
+	lua_pushstring(L, cmd.c_str());
+	lua_rawget(L, -2);
+
+	if (lua_isnil(L, -1)) {
+		lua_pop(L, 1);
+		return false;
+	}
 
 	queued_event_context dummy(&ev);
-	luaW_pushvconfig(L, args);
-	execute(prog.c_str(), 1, 0);
+	luaW_pushvconfig(L, cfg);
+	luaW_pcall(L, 1, 0, true);
+	return true;
 }
 
 /**

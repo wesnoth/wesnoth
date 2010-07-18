@@ -150,23 +150,7 @@ namespace game_events
 
 	bool pump();
 
-	/**
-	 * Abstract class for a WML action handler.
-	 */
-	struct action_handler
-	{
-		virtual void handle(const queued_event &event_info, const vconfig &cfg) = 0;
-		virtual ~action_handler() {}
-	};
-
-	/**
-	 * Registers a WML action_handler for the lifetime of the current event manager.
-	 * The handler is automatically destroyed at the end, if still registered.
-	 * The previous handler is stored at the memory pointed by @a previous if
-	 * nonnull, deleted otherwise.
-	 */
-	void register_action_handler(const std::string &tag, action_handler *handler,
-		action_handler **previous = NULL);
+	typedef void (*action_handler)(const game_events::queued_event &, const vconfig &);
 
 } // end namespace game_events
 

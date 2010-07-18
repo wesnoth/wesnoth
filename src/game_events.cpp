@@ -311,21 +311,6 @@ typedef std::map<std::string, game_events::action_handler *> dynamic_wml_action_
 static dynamic_wml_action_map dynamic_wml_actions;
 
 /**
- * Calls registered WML action handler.
- * @return false if none was found.
- */
-static bool call_wml_action_handler(const std::string &cmd,
-	const game_events::queued_event &event_info,
-	const vconfig& cfg)
-{
-	dynamic_wml_action_map::iterator itor = dynamic_wml_actions.find(cmd);
-	if (itor == dynamic_wml_actions.end()) return false;
-
-	itor->second->handle(event_info, cfg);
-	return true;
-}
-
-/**
  * WML_HANDLER_FUNCTION macro handles auto registeration for wml handlers
  *
  * @param pname wml tag name
@@ -367,21 +352,6 @@ static bool call_wml_action_handler(const std::string &cmd,
 	static void wml_func_##pname(const game_events::queued_event& pei, const vconfig& pcfg)
 
 namespace game_events {
-
-	void register_action_handler(const std::string &tag, action_handler *h,
-		action_handler **previous)
-	{
-		dynamic_wml_action_map::iterator itor = dynamic_wml_actions.find(tag);
-		if (itor != dynamic_wml_actions.end()) {
-			if (previous) *previous = itor->second;
-			else delete itor->second;
-			if (h) itor->second = h;
-			else dynamic_wml_actions.erase(itor);
-		} else {
-			if (previous) *previous = NULL;
-			if (h) dynamic_wml_actions[tag] = h;
-		}
-	}
 
 	static bool matches_special_filter(const config &cfg, const vconfig& filter);
 
@@ -623,11 +593,6 @@ static void toggle_shroud(const bool remove, const vconfig& cfg)
 	resources::screen->labels().recalculate_shroud();
 	resources::screen->recalculate_minimap();
 	resources::screen->invalidate_all();
-}
-
-WML_HANDLER_FUNCTION(lua, ev, cfg)
-{
-	resources::lua_kernel->run_event(cfg, ev);
 }
 
 WML_HANDLER_FUNCTION(remove_shroud, /*event_info*/, cfg)
@@ -3374,7 +3339,7 @@ namespace game_events {
 			<< reinterpret_cast<uintptr_t>(&cfg.get_config()) << std::dec << "\n";
 
 		scoped_dummy_context dummy;
-		if (!call_wml_action_handler(cmd, event_info, cfg))
+		if (!resources::lua_kernel->run_wml_action(cmd, cfg, event_info))
 		{
 			ERR_NG << "Couldn't find function for wml tag: "<< cmd <<"\n";
 		}
@@ -3487,16 +3452,6 @@ namespace game_events {
 
 	static std::set<std::string> unit_wml_ids;
 
-	struct static_action_handler : action_handler
-	{
-		wml_handler_function f_;
-		static_action_handler(wml_handler_function f): f_(f) {}
-		void handle(const queued_event &event_info, const vconfig &cfg)
-		{
-			f_(event_info, cfg);
-		}
-	};
-
 	manager::manager(const config& cfg)
 		: variable_manager()
 	{
@@ -3512,7 +3467,7 @@ namespace game_events {
 		manager_running = true;
 
 		foreach (static_wml_action_map::value_type &action, static_wml_actions) {
-			register_action_handler(action.first, new static_action_handler(action.second));
+			resources::lua_kernel->set_wml_action(action.first, action.second);
 		}
 
 		const std::string used = cfg["used_items"];

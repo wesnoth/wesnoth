@@ -21,3 +21,13 @@ end
 function wesnoth.get_unit_type(t)
 	return wesnoth.unit_types[t]
 end
+
+function wesnoth.register_wml_action(name, handler)
+	local old = wesnoth.wml_actions[name]
+	wesnoth.wml_actions[name] = handler
+	return old
+end
+
+function wesnoth.fire(name, cfg)
+	wesnoth.wml_actions[name](cfg)
+end
