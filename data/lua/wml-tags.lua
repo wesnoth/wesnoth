@@ -64,7 +64,7 @@ local function generate_objectives(cfg)
 end
 
 function wesnoth.wml_actions.objectives(cfg)
-	cfg = cfg.__parsed
+	cfg = helper.parsed(cfg)
 	local side = cfg.side or 0
 	local silent = cfg.silent
 
@@ -260,7 +260,7 @@ function wesnoth.wml_actions.wml_action_tag(cfg)
 end
 
 function wesnoth.wml_actions.lua(cfg)
-	local cfg = cfg.__literal
+	local cfg = helper.literal(cfg)
 	local args = helper.get_child(cfg, "args") or {}
 	local ev = wesnoth.current.event_context
 	args.x1 = ev.x1
