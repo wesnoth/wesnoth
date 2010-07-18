@@ -45,7 +45,8 @@ public class GameUtils
 
 		//TODO: optimize this by checking if file really is a scenario
 		if (scenario &&
-			!ProjectUtils.isScenarioFile(WorkspaceUtils.getPathRelativeToUserDir(selectedResource)))
+			!ProjectUtils.isScenarioFile(
+					WorkspaceUtils.getPathRelativeToUserDir(selectedResource)))
 		{
 			GUIUtils.showErrorMessageBox("This is not a valid scenario file.");
 			return;
@@ -54,7 +55,9 @@ public class GameUtils
 		try
 		{
 			String campaignId = ProjectUtils.getCampaignID(selectedResource);
-			String scenarioId = ProjectUtils.getScenarioID(
+			String scenarioId = null;
+			if (scenario == true)
+				ProjectUtils.getScenarioID(
 					WorkspaceUtils.getPathRelativeToUserDir(selectedResource));
 
 			if (campaignId == null)
@@ -67,7 +70,7 @@ public class GameUtils
 			List<String> args = new ArrayList<String>();
 			args.add("-c");
 			args.add(campaignId);
-			if (scenarioId != null)
+			if (scenario == true)
 				args.add(scenarioId);
 			startGame(args);
 		} catch (Exception e)

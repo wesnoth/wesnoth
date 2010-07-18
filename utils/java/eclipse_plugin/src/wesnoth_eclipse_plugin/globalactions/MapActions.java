@@ -14,10 +14,10 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.FileDialog;
-import org.eclipse.swt.widgets.MessageBox;
 
 import wesnoth_eclipse_plugin.Activator;
 import wesnoth_eclipse_plugin.Logger;
+import wesnoth_eclipse_plugin.utils.GUIUtils;
 import wesnoth_eclipse_plugin.utils.ResourceUtils;
 import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
 
@@ -51,11 +51,8 @@ public class MapActions
 
 			if (target.exists())
 			{
-				MessageBox confirmBox = new MessageBox(Activator.getShell(),
-						SWT.ICON_QUESTION | SWT.YES | SWT.NO);
-				confirmBox.setMessage("There is already an existing map with the same name. Overwrite?");
-
-				if (confirmBox.open() == SWT.NO)
+				if (GUIUtils.showMessageBox("There is already an existing map with the same name. Overwrite?",
+						SWT.ICON_QUESTION | SWT.YES | SWT.NO) == SWT.NO)
 					return;
 			}
 

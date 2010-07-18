@@ -15,11 +15,13 @@ import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.swt.SWT;
 
 import wesnoth_eclipse_plugin.Logger;
 
 public class ProjectUtils
 {
+	//TODO: create a simple java wmlparsers in order to get the right values
 	public static String getPropertyValue(String fileName, String propertyName)
 	{
 		if (fileName == null || propertyName.isEmpty())
@@ -59,8 +61,10 @@ public class ProjectUtils
 	}
 
 	/**
-	 * Returns "_main.cfg" location from the specified resource or null if it isn't any
+	 * Returns "_main.cfg" location relative to user's directory
+	 * from the specified resource or null if it isn't any
 	 * If the resource is a file it won't check for it's name
+	 * but will question the user if he really wants to use that file
 	 * @param resource The resource where to search for '_main.cfg'
 	 * @return
 	 */
@@ -86,7 +90,12 @@ public class ProjectUtils
 
 		if (targetResource == null && resource instanceof IFile)
 		{
-			targetResource = resource;
+			if (resource.getName().equals("_main.cfg") ||
+				(!resource.getName().equals("_main.cfg") &&
+				  GUIUtils.showMessageBox("The file isn't named '_main.cfg'. " +
+				  		"Do you still want to open it as a campaign file?",
+						SWT.YES | SWT.NO | SWT.ICON_QUESTION) == SWT.YES))
+					targetResource = resource;
 		}
 		return WorkspaceUtils.getPathRelativeToUserDir(targetResource);
 	}

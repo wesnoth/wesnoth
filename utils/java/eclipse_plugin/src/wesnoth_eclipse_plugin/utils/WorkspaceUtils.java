@@ -72,7 +72,7 @@ public class WorkspaceUtils
 	{
 		if (window == null)
 			return null;
-		MyRunnable<IStructuredSelection> runnable = new MyRunnable<IStructuredSelection>(null){
+		MyRunnable<IStructuredSelection> runnable = new MyRunnable<IStructuredSelection>(){
 			@Override
 			public void run()
 			{

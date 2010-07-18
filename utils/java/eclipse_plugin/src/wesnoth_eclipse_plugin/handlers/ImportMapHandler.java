@@ -12,11 +12,10 @@ import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.widgets.MessageBox;
 
-import wesnoth_eclipse_plugin.Activator;
 import wesnoth_eclipse_plugin.Logger;
 import wesnoth_eclipse_plugin.globalactions.MapActions;
+import wesnoth_eclipse_plugin.utils.GUIUtils;
 import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
 
 public class ImportMapHandler extends AbstractHandler
@@ -40,12 +39,10 @@ public class ImportMapHandler extends AbstractHandler
 
 		if (!selectedFolder.getName().equals("maps"))
 		{
-			MessageBox confirmBox = new MessageBox(Activator.getShell(),
-					SWT.ICON_QUESTION | SWT.YES | SWT.NO);
-			confirmBox.setMessage("A map should be imported into a 'maps' folder. Do you want to proceed?");
-
-			if (confirmBox.open() == SWT.NO)
-				return false;
+			if (GUIUtils.showMessageBox("A map should be imported into a 'maps' folder. " +
+					"Do you want to proceed?",
+					SWT.ICON_QUESTION | SWT.YES | SWT.NO) == SWT.NO)
+			return false;
 		}
 
 		return (selectedFolder.getName().equals("maps"));
