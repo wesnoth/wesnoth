@@ -183,7 +183,7 @@ public:
 	bool clear_var(std::string &);
 	config get_var(const std::string &) const;
 	bool set_var(const std::string &, const config &);
-	std::string get_node();
+	std::string get_node() const;
 	void set_node(const std::string &);
 	bool valid() const { return valid_; };
 	bool dirty() const {

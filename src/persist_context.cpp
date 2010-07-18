@@ -133,7 +133,9 @@ void persist_context::set_node(const std::string &name) {
 	active_ = &(root_node_.child(name));
 	namespace_ = name_space(namespace_.namespace_ + "." + name);
 }
-std::string persist_context::get_node() {
+
+std::string persist_context::get_node() const
+{
 	return namespace_.namespace_;
 }
 
