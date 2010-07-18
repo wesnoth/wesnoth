@@ -1,5 +1,10 @@
 --! #textdomain wesnoth
 
+-- Backward-compatibility hack to avoid executing the file twice due to
+-- old preload events. (To be removed in 1.11.) The hack assumes this
+-- file is the first one to be executed.
+if wesnoth.package["lua/helper.lua"] then return end
+
 local helper = wesnoth.require "lua/helper.lua"
 
 local function trim(s)
