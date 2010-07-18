@@ -271,4 +271,26 @@ function helper.distance_between(x1, y1, x2, y2)
 	return math.max(hdist, vdist + math.floor(hdist / 2))
 end
 
+function helper.literal(cfg)
+	local t = type(cfg)
+	if t == "table" then
+		return cfg
+	elseif t == "userdata" then
+		return cfg.__literal
+	else
+		return cfg or {}
+	end
+end
+
+function helper.parsed(cfg)
+	local t = type(cfg)
+	if t == "table" then
+		return tovconfig(cfg).__parsed
+	elseif t == "userdata" then
+		return cfg.__parsed
+	else
+		return cfg or {}
+	end
+end
+
 return helper
