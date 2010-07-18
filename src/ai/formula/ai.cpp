@@ -297,7 +297,7 @@ variant formula_ai::execute_variant(const variant& var, ai_context &ai_, bool co
 	variant error;
 
 	unit_map& units = *resources::units;
-	
+
 	while( !vars.empty() ) {
 
 		if(vars.top().is_null()) {

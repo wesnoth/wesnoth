@@ -177,7 +177,7 @@ namespace ana
     /** Used for implementation purposes. */
     namespace detail
     {
-        /** Last issued net_id.  */ 
+        /** Last issued net_id.  */
         static net_id last_net_id_ = 0;
 
         /** Base class of network components. */

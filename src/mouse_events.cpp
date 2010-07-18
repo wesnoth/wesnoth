@@ -875,7 +875,7 @@ void mouse_handler::attack_enemy_(const map_location attacker_loc, const map_loc
 			|| attacker->side() != side_num_
 			|| attacker->incapacitated())
 		return;
-	
+
 	unit_map::iterator defender = find_unit(defender_loc);
 	if(defender == units_.end()
 			|| current_team().is_enemy(defender->side()) == false

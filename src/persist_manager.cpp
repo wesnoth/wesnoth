@@ -70,7 +70,7 @@ bool persist_manager::load_data(const std::string &name_space, config &cfg, cons
 	}
 	return success;
 }
-persist_context &persist_manager::get_context(const std::string &ns) 
+persist_context &persist_manager::get_context(const std::string &ns)
 {
 	persist_context::name_space name(ns,true);
 	std::string key(name.root_);

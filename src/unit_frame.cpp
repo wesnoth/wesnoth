@@ -426,7 +426,7 @@ void frame_parsed_parameters::override( int duration
 		drawing_layer_=progressive_int(drawing_layer_.get_original(),duration);
 	}
 	if(!modifiers.empty()) {
-		image_mod_+=modifiers;	
+		image_mod_+=modifiers;
 	}
 
 	if(duration != duration_) {

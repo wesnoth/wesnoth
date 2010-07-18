@@ -246,7 +246,7 @@ namespace ana
         return boost::asio::buffer(data);
     }
 
-    template<typename PodType, std::size_t N> 
+    template<typename PodType, std::size_t N>
     inline boost::asio::mutable_buffers_1 buffer(boost::array< PodType, N > & data,
                                                  std::size_t max_size_in_bytes)
     {
@@ -292,7 +292,7 @@ namespace ana
         return boost::asio::buffer(data, max_size_in_bytes);
     }
 
-    template<typename PodType, typename Allocator> 
+    template<typename PodType, typename Allocator>
     inline boost::asio::const_buffers_1 buffer(const std::vector< PodType, Allocator > & data)
     {
         return boost::asio::buffer(data);

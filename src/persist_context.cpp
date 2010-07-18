@@ -35,7 +35,7 @@ void persist_context::load() {
 	resources::persist->load_data(namespace_.root_,cfg_,false);
 }
 
-persist_context::persist_context(const std::string &name_space) 
+persist_context::persist_context(const std::string &name_space)
 	: cfg_()
 	, namespace_(name_space,true)
 	, root_node_(namespace_.root_,this,cfg_)

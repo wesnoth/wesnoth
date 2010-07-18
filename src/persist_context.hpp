@@ -186,7 +186,7 @@ public:
 	std::string get_node();
 	void set_node(const std::string &);
 	bool valid() const { return valid_; };
-	bool dirty() const { 
+	bool dirty() const {
 		return true;
 	};
 	operator bool() { return valid_; }
