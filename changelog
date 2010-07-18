@@ -42,6 +42,7 @@ Version 1.9.0-svn:
    * Updated DejaVuSans to 2.31
    * Fixed bug #15653: Made untranslateable strings translateable.
    * Fixed bug #15843: Made untranslateable strings translateable.
+   * Fixed bug #15934: Flushed image cache when changing language
    * Fixed bug #15937: Made untranslateable strings translateable.
    * Make map labels store translatable strings, so when the language changes,
      the labels also use the new translation.
@@ -224,6 +225,8 @@ Version 1.9.0-svn:
    * Fixed bug #16171: Disable commands during [animate_unit]
    * Fixed bug #16235: Avoided displaying an empty menu and therefore choosing
      a random weapon, when there is none
+   * Fixed bug #16243: Added detection for server replays, as they are missing
+     the core [lua] tags
    * Fixed bug #16261: Added test for invalidated death due to positive hp
      after the 'die' event
    * Fixed bugs when a waypoint is unreachable
