@@ -19,9 +19,9 @@
 
 	#ifdef $$define
 		# add here custom code
-		{campaigns/$$project_name/scenarios}
+		{~add-ons/$$project_name/scenarios}
 		[+units]
-			{campaigns/$$project_name/units}
+			{~add-ons/$$project_name/units}
 		[/units]
 	#endif
 [/campaign]
