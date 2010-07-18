@@ -86,6 +86,7 @@ namespace game_config
 
 	double hex_brightening = 1.5;
 	double hex_semi_brightening = 1.25;
+	bool local_light = false;
 
 	std::vector<std::string> foot_speed_prefix;
 	std::string foot_teleport_enter = "footsteps/teleport-in.png";
@@ -198,6 +199,7 @@ namespace game_config
 		xp_bar_scaling = v["xp_bar_scaling"].to_double(0.5);
 		hex_brightening = v["hex_brightening"].to_double(1.5);
 		hex_semi_brightening = v["hex_semi_brightening"].to_double(1.25);
+		local_light = v["local_light"].to_bool(false);
 
 		foot_speed_prefix = utils::split(v["footprint_prefix"]);
 		foot_teleport_enter = v["footprint_teleport_enter"].str();

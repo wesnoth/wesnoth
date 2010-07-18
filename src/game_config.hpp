@@ -80,6 +80,7 @@ namespace game_config
 	extern double hp_bar_scaling, xp_bar_scaling;
 	extern double hex_brightening;
 	extern double hex_semi_brightening;
+	extern bool local_light;
 
 	extern std::string flag_rgb;
 	extern std::vector<Uint32> red_green_scale;

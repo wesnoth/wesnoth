@@ -689,6 +689,14 @@ std::vector<surface> display::get_terrain_images(const map_location &loc,
 	const terrain_builder::imagelist* const terrains = builder_->get_terrain_at(loc,
 			timeid, builder_terrain_type);
 
+	std::string color_mod;
+	if(game_config::local_light){
+		const time_of_day tod = get_time_of_day(loc);
+		std::ostringstream mod;
+		mod << "~CS(" << tod.red << "," << tod.green << "," <<tod.blue << ")";
+		color_mod = mod.str();
+	}
+
 	if(terrains != NULL) {
 		// Cache the offmap name.
 		// Since it is themabel it can change,
@@ -705,9 +713,17 @@ std::vector<surface> display::get_terrain_images(const map_location &loc,
 			// We need to test for the tile to be rendered and
 			// not the location, since the transitions are rendered
 			// over the offmap-terrain and these need a ToD coloring.
-			const bool off_map = (image.get_filename() == off_map_name);
-			const surface surf(image::get_image(image,
-				off_map ? image::UNMASKED : image_type));
+
+			surface surf;
+
+			if(!game_config::local_light) {
+				const bool off_map = (image.get_filename() == off_map_name);
+				surf = image::get_image(image, off_map ? image::UNMASKED : image_type);
+			} else {
+				std::string mod = image.get_modifications() + color_mod;
+				image::locator colored_image(image.get_filename(), image.get_loc(), image.get_center_x(), image.get_center_y(), mod);
+				surf = image::get_image(colored_image, image::UNMASKED);
+			}
 
 			if (!surf.null()) {
 				res.push_back(surf);
