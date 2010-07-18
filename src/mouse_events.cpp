@@ -754,6 +754,21 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 	std::vector<battle_context> bc_vector;
 	int best = fill_weapon_choices(bc_vector, attacker, defender);
 
+	if (bc_vector.empty())
+	{
+		dialogs::units_list_preview_pane attacker_preview(*attacker, dialogs::unit_preview_pane::SHOW_BASIC, true);
+		dialogs::units_list_preview_pane defender_preview(*defender, dialogs::unit_preview_pane::SHOW_BASIC, false);
+		std::vector<gui::preview_pane*> preview_panes;
+		preview_panes.push_back(&attacker_preview);
+		preview_panes.push_back(&defender_preview);
+
+		gui::show_dialog(gui(), NULL, _("Attack Enemy"),
+			_("No usable weapon"), gui::CANCEL_ONLY, NULL,
+			&preview_panes, "", NULL, -1, NULL, -1, -1, NULL, NULL);
+		return -1;
+	}
+
+
 	std::vector<std::string> items;
 
 	for (unsigned int i = 0; i < bc_vector.size(); i++) {
