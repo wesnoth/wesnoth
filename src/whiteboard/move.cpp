@@ -161,17 +161,13 @@ bool move::execute()
 	return move_finished_completely;
 }
 
-unit* move::get_unit()
+unit* move::get_unit() const
 {
 	unit_map::iterator it = resources::units->find(source_hex_);
 	if (it != resources::units->end())
 		return &*it;
 	else
 		return NULL;
-}
-unit const* move::get_unit() const
-{
-	return get_unit();
 }
 
 void move::apply_temp_modifier(unit_map& unit_map)

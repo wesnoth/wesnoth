@@ -56,8 +56,7 @@ public:
 	virtual bool is_numbering_hex(const map_location& hex) const = 0;
 
 	/** Return the unit targeted by this action. Null if unit doesn't exist. */
-	virtual unit* get_unit() = 0;
-	virtual unit const* get_unit() const = 0;
+	virtual unit* get_unit() const = 0;
 
 	/**
 	 * Indicates to an action whether its status is invalid, and whether it should change its
