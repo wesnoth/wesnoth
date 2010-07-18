@@ -33,18 +33,6 @@ static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
 #define WRN_NG LOG_STREAM(warn, log_engine)
 
-/** The tile width used when using basex and basey. This is not,
- * necessarily, the tile width in pixels, this is totally
- * arbitrary. However, it will be set to 72 for convenience.
- */
-static const int TILEWIDTH = 72;
-/** The position of unit graphics in a tile. Graphics whose y
- * position is below this value are considered background for
- * this tile; graphics whose y position is above this value are
- * considered foreground.
- */
-static const int UNITPOS = 36 + 18;
-
 terrain_builder::building_ruleset terrain_builder::building_rules_;
 const config* terrain_builder::rules_cfg_ = NULL;
 
@@ -80,7 +68,7 @@ void terrain_builder::tile::rebuild_cache(const std::string& tod, logs* log)
 	}
 
 	foreach(const rule_image_rand& ri, images){
-		bool is_background = ri->layer < 0 || (ri->layer == 0 && ri->basey < UNITPOS);
+		bool is_background = ri->is_background();
 
 		imagelist& img_list = is_background ? images_background : images_foreground;
 
@@ -111,37 +99,6 @@ void terrain_builder::tile::rebuild_cache(const std::string& tod, logs* log)
 		}
 	}
 }
-
-std::vector<std::string> terrain_builder::tile::get_info() const
-{
-	std::vector<std::string> res;
-	//TODO sort images if needed
-	foreach(const rule_image_rand& ri, images){
-		//TODO: read all variants
-		const rule_image_variant& variant = ri->variants.back();
-
-		std::ostringstream info;
-
-		const image::locator& img = variant.image.get_first_frame();
-		const std::string& name = img.get_filename();
-		//const std::string& modif = img.get_modifications();
-		std::string img_sep(char(1), 1);
-		const map_location& loc = img.get_loc();
-		info << "&" << name << "~LOC("
-			<<loc.x << "," << loc.y << ","
-			<< img.get_center_x() << "," << img.get_center_y()
-			<< ")"
-			<< img_sep << name
-			<< "=" << img.get_loc()
-			<< "=" << ri->layer
-			<< "=" << ri->basex
-			<< "=" << ri->basey;
-		res.push_back(info.str());
-	}
-
-	return res;
-}
-
 
 void terrain_builder::tile::clear()
 {

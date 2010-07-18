@@ -57,6 +57,19 @@ public:
 						 */
 	};
 
+	/** The tile width used when using basex and basey. This is not,
+	 * necessarily, the tile width in pixels, this is totally
+	 * arbitrary. However, it will be set to 72 for convenience.
+	 */
+	static const int TILEWIDTH = 72;
+
+	/** The position of unit graphics in a tile. Graphics whose y
+	 * position is below this value are considered background for
+	 * this tile; graphics whose y position is above this value are
+	 * considered foreground.
+	 */
+	static const int UNITPOS = 36 + 18;
+
 	/** A shorthand typedef for a list of animated image locators,
 	 * the base data type returned by the get_terrain_at method.
 	 */
@@ -195,6 +208,10 @@ public:
 	struct rule_image {
 		rule_image(int layer, int x, int y, bool global_image=false, int center_x=-1, int center_y=-1);
 
+		bool is_background() const {
+		return layer < 0 || (layer == 0 && basey < UNITPOS);
+		}
+
 		/** The layer of the image for horizontal layering */
 		int layer;
 		/** The position of the image base (that is, the point where
@@ -273,8 +290,6 @@ public:
 		 * @param tod    The current time-of-day
 		 */
 		void rebuild_cache(const std::string &tod, logs* log = NULL);
-
-		std::vector<std::string> get_info() const;
 
 		/** Clears all data in this tile, and resets the cache */
 		void clear();

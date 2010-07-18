@@ -3123,14 +3123,15 @@ void console_handler::do_layers() {
 	std::vector<std::string> layers;
 	//NOTE: columns reflect WML keys, don't translate them
 	std::string heading = std::string(1,HEADING_PREFIX) +
-		"Image"   + COLUMN_SEPARATOR + // 0
-		"Name"    + COLUMN_SEPARATOR + // 1
-		"Loc"     + COLUMN_SEPARATOR + // 2
-		"Layer"   + COLUMN_SEPARATOR + // 3
-		"Base.x"  + COLUMN_SEPARATOR + // 4
-		"Base.y"  + COLUMN_SEPARATOR + // 5
-		"Center.x"+ COLUMN_SEPARATOR + // 6
-		"Center.y"                     // 7
+		"^#"      + COLUMN_SEPARATOR + // 0
+		"Image"   + COLUMN_SEPARATOR + // 1
+		"Name"    + COLUMN_SEPARATOR + // 2
+		"Loc"     + COLUMN_SEPARATOR + // 3
+		"Layer"   + COLUMN_SEPARATOR + // 4
+		"Base.x"  + COLUMN_SEPARATOR + // 5
+		"Base.y"  + COLUMN_SEPARATOR + // 6
+		"Center"                       // 7
+
 	;
 	layers.push_back(heading);
 
@@ -3142,6 +3143,7 @@ void console_handler::do_layers() {
 	terrain_builder::tile::logs tile_logs;
 	tile->rebuild_cache(tod_id, &tile_logs);
 
+	int order = 1;
 	foreach(const terrain_builder::tile::log_details det, tile_logs) {
 		const terrain_builder::tile::rule_image_rand& ri = *det.first;
 		const terrain_builder::rule_image_variant& variant = *det.second;
@@ -3153,7 +3155,9 @@ void console_handler::do_layers() {
 		const map_location& loc_cut = img.get_loc();
 
 		std::ostringstream str;
-		str << IMAGE_PREFIX << "terrain/foreground.png"
+		str << (ri->is_background() ? "B ": "F ") << order
+			<< COLUMN_SEPARATOR
+			<< IMAGE_PREFIX << "terrain/foreground.png"
 			<< "~BLIT("
 				<< name << "~LOC("
 				<< loc_cut.x << "," << loc_cut.y << ","
@@ -3166,9 +3170,10 @@ void console_handler::do_layers() {
 			<< COLUMN_SEPARATOR << ri->layer
 			<< COLUMN_SEPARATOR << ri->basex
 			<< COLUMN_SEPARATOR << ri->basey
-			<< COLUMN_SEPARATOR << ri->center_x
-			<< COLUMN_SEPARATOR << ri->center_y;
+			<< COLUMN_SEPARATOR
+			<< ri->center_x << ", " << ri->center_y;
 		layers.push_back(str.str());
+		++order;
 	}
 
 	std::vector<std::string> flags(tile->flags.begin(),tile->flags.end());
@@ -3176,8 +3181,8 @@ void console_handler::do_layers() {
 	// NOTE using ", " also allows better word wrapping
 	info << "Flags :" << utils::join(flags, ", ");
 	int choice = 0;
- 	{
- 		gui::dialog menu(*menu_handler_.gui_, _("Layers"), info.str(), gui::OK_CANCEL);
+	{
+		gui::dialog menu(*menu_handler_.gui_, _("Layers"), info.str(), gui::OK_CANCEL);
 		menu.set_menu(layers);
 		choice = menu.show();
 	}
