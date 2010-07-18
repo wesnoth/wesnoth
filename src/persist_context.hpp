@@ -189,6 +189,6 @@ public:
 	bool dirty() const {
 		return true;
 	};
-	operator bool() { return valid_; }
+	operator bool() const { return valid_; }
 };
 #endif
