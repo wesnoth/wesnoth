@@ -3,6 +3,13 @@ Version 1.8.3+svn:
    * Updated translations: Chinese (Simplified), Galician, Japanese, Serbian,
      Vietnamese
  * Miscellaneous and bug fixes:
+   * Ensured graceful failure when encountering broken [advancefrom] tag.
+   * Fixed bug #16219: Handled ToD areas in a LIFO way, so that it is possible
+     to override them without first removing them
+   * Fixed bug #16235: Avoided displaying an empty menu and therefore choosing
+     a random weapon, when there is none
+   * Fixed bug #16261: Added test for invalidated death due to positive hp
+     after the 'die' event
    * Never allow uploading *.pbl files (case-insensitive) to the add-ons
      server from the regular game client.
    * Patch #1727: Fixed revision.hpp generation with cmake 1.8(.2)
