@@ -126,39 +126,16 @@ public class GameUtils
 
 	public static void startEditor(String mapName)
 	{
-		String editorPath = Preferences.getString(Constants.P_WESNOTH_EXEC_PATH);
-		String workingDir = Preferences.getString(Constants.P_WESNOTH_WORKING_DIR);
-
-		if (workingDir.isEmpty())
-			workingDir = editorPath.substring(0, editorPath.lastIndexOf(new File(editorPath).getName()));
-
-		if (editorPath.isEmpty())
-		{
-			Logger.getInstance().log("wesnoth executable not set (startEditor)",
-					"Please set the wesnoth's executable path first.");
-			return;
-		}
-
-		OutputStream[] stream = new OutputStream[] {
-				GUIUtils.createConsole("Wesnoth editor:", null, true).newMessageStream()
-			};
-		ExternalToolInvoker.launchTool(editorPath, getEditorLaunchArguments(mapName, workingDir),
-				stream, stream);
+		startGame(getEditorLaunchArguments(mapName));
 	}
 
-	public static List<String> getEditorLaunchArguments(String mapName, String workingDir)
+	public static List<String> getEditorLaunchArguments(String mapName)
 	{
 		List<String> args = new ArrayList<String>(3);
 
 		args.add("-e");
 		if (!(mapName.isEmpty()))
 			args.add(mapName);
-
-		if (!workingDir.isEmpty())
-		{
-			args.add("--data-dir");
-			args.add(workingDir);
-		}
 
 		return args;
 	}
