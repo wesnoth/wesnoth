@@ -16,6 +16,9 @@ public class MyRunnable<T> implements Runnable
 		this.runnableObject_ = t;
 	}
 
+	public MyRunnable(){
+
+	}
 	@Override
 	public void run()
 	{

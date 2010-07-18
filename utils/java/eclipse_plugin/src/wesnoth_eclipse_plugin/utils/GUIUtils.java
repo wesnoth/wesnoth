@@ -26,9 +26,9 @@ public class GUIUtils
 	 * @param window the window where to show the message box
 	 * @param message the message to print
 	 */
-	public static void showInfoMessageBox(final String message)
+	public static int showInfoMessageBox(final String message)
 	{
-		showMessageBox(WorkspaceUtils.getWorkbenchWindow(), message, SWT.ICON_INFORMATION);
+		return showMessageBox(WorkspaceUtils.getWorkbenchWindow(), message, SWT.ICON_INFORMATION);
 	}
 
 	/**
@@ -37,9 +37,9 @@ public class GUIUtils
 	 * @param window the window where to show the message box
 	 * @param message the message to print
 	 */
-	public static void showWarnMessageBox(final String message)
+	public static int showWarnMessageBox(final String message)
 	{
-		showMessageBox(WorkspaceUtils.getWorkbenchWindow(), message, SWT.ICON_WARNING);
+		return showMessageBox(WorkspaceUtils.getWorkbenchWindow(), message, SWT.ICON_WARNING);
 	}
 
 	/**
@@ -48,9 +48,9 @@ public class GUIUtils
 	 * @param window the window where to show the message box
 	 * @param message the message to print
 	 */
-	public static void showErrorMessageBox(final String message)
+	public static int showErrorMessageBox(final String message)
 	{
-		showMessageBox(WorkspaceUtils.getWorkbenchWindow(), message, SWT.ICON_ERROR);
+		return showMessageBox(WorkspaceUtils.getWorkbenchWindow(), message, SWT.ICON_ERROR);
 	}
 
 	/**
@@ -59,9 +59,9 @@ public class GUIUtils
 	 * @param window the window where to show the message box
 	 * @param style the style of the messageBox
 	 */
-	public static void showMessageBox(final String message, final int style)
+	public static int showMessageBox(final String message, final int style)
 	{
-		showMessageBox(WorkspaceUtils.getWorkbenchWindow(), message, style);
+		return showMessageBox(WorkspaceUtils.getWorkbenchWindow(), message, style);
 	}
 
 	/**
@@ -70,9 +70,9 @@ public class GUIUtils
 	 * @param window the window where to show the message box
 	 * @param message the message to print
 	 */
-	public static void showMessageBox(final IWorkbenchWindow window, final String message)
+	public static int showMessageBox(final IWorkbenchWindow window, final String message)
 	{
-		showMessageBox(window, message, SWT.ICON_INFORMATION);
+		return showMessageBox(window, message, SWT.ICON_INFORMATION);
 	}
 
 	/**
@@ -81,25 +81,28 @@ public class GUIUtils
 	 * @param window the window where to show the message box
 	 * @param message the message to print
 	 */
-	public static void showMessageBox(final IWorkbenchWindow window,
+	public static int showMessageBox(final IWorkbenchWindow window,
 				final String message, final int style)
 	{
 		if (window == null || window.getShell() == null || message == null)
-			return;
+			return -1;
+		MyRunnable<Integer> runnable = new MyRunnable<Integer>() {
+			@Override
+			public void run()
+			{
+				MessageBox box = new MessageBox(window.getShell(), style);
+				box.setMessage(message);
+				runnableObject_ =  box.open();
+			}
+		} ;
 		try
 		{
-			window.getShell().getDisplay().asyncExec(new Runnable() {
-				@Override
-				public void run()
-				{
-					MessageBox box = new MessageBox(window.getShell(), style);
-					box.setMessage(message);
-					box.open();
-				}
-			});
+			window.getShell().getDisplay().syncExec(runnable);
+			return runnable.runnableObject_;
 		} catch (Exception e)
 		{
 			Logger.getInstance().logException(e);
+			return -1;
 		}
 	}
 
