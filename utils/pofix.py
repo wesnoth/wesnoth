@@ -747,6 +747,7 @@ stringfixes = {
 ("Ithelden's", "Ithelden’s"),
 ("We won't be able", "We won’t be able"),
 ("Mal M'Brin", "Mal M’Brin"),
+("Brin's", "Brin’s"),
 ("Gerrick's", "Gerrick’s"),
 ("men's", "men’s"),
 ("I prepare the city's defenses", "I prepare the city’s defenses"),
@@ -787,6 +788,8 @@ stringfixes = {
 ("Deoran's", "Deoran’s"),
 ("the capital of Wesnoth's", "the capital of Wesnoth’s"),
 ("Haldiel's", "Haldiel’s"),
+("'Stop! Enough blood has", "“Stop! Enough blood has"),
+("your service also was worthy.'", "your service also was worthy.”"),
 ),
 
 "wesnoth-sof" : (
