@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.5.7+svn\n"
-"POT-Creation-Date: 2010-05-30 18:23+0300\n"
+"POT-Creation-Date: 2010-07-19 00:41+0300\n"
 "PO-Revision-Date: 2010-06-15 11:21+0700\n"
 "Last-Translator: Huynh Yen Loc <walkingcorpse13@gmail.com>\n"
 "Language-Team: none <>\n"
@@ -178,7 +178,7 @@ msgstr "in đường dẫn của thư mục chứa thiết lập người dùng 
 #. type: TP
 #: ../../doc/man/wesnoth.6:62
 #, no-wrap
-msgid "B<-datadir E<lt>directoryE<gt>>"
+msgid "B<--data-dir E<lt>directoryE<gt>>"
 msgstr ""
 
 #. type: Plain text
@@ -214,9 +214,10 @@ msgstr "B<-e,\\ --editor>I<\\ tập tin>"
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:75
+#, fuzzy
 msgid ""
 "start the in-game map editor directly. If I<file> is specified, equivalent "
-"to B<-e --load>"
+"to B<-l --load>"
 msgstr ""
 "chạy trực tiếp trình sửa bản đồ trong trò chơi. Nếu I<file> được chỉ định, "
 "tương đương với B<-e --load>"
@@ -864,11 +865,12 @@ msgstr ""
 msgid "SEE ALSO"
 msgstr "Cũng xem"
 
-# type: Plain text
+# type: TH
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:277
-msgid "B<wesnoth_editor>(6), B<wesnothd>(6)"
-msgstr "B<wesnoth_editor>(6), B<wesnothd>(6)"
+#: ../../doc/man/wesnoth.6:276
+#, fuzzy
+msgid "B<wesnothd>(6)."
+msgstr "wesnothd"
 
 # type: TH
 #. type: TH
@@ -1760,11 +1762,20 @@ msgstr ""
 "baumhauer@gmail.comE<gt>.  Trang hướng dẫn này vốn được viết bởi Cyril "
 "Bouthors E<lt>cyril@bouthors.orgE<gt>."
 
-# type: Plain text
+# type: TH
 #. type: Plain text
-#: ../../doc/man/wesnothd.6:287
-msgid "B<wesnoth>(6), B<wesnoth_editor>(6)"
-msgstr "B<wesnoth>(6), B<wesnoth_editor>(6)"
+#: ../../doc/man/wesnothd.6:286
+#, fuzzy
+msgid "B<wesnoth>(6)."
+msgstr "wesnoth"
+
+# type: Plain text
+#~ msgid "B<wesnoth_editor>(6), B<wesnothd>(6)"
+#~ msgstr "B<wesnoth_editor>(6), B<wesnothd>(6)"
+
+# type: Plain text
+#~ msgid "B<wesnoth>(6), B<wesnoth_editor>(6)"
+#~ msgstr "B<wesnoth>(6), B<wesnoth_editor>(6)"
 
 # type: TP
 #~ msgid "B<-c, --campaign>"
