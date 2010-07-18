@@ -21,6 +21,8 @@
 
 #include "mapbuilder_visitor.hpp"
 
+#include <set>
+
 namespace wb
 {
 
@@ -36,7 +38,7 @@ public:
 	virtual void visit_attack(attack_ptr attack);
 
 private:
-	std::deque<action_ptr> actions_to_erase_;
+	std::set<action_ptr> actions_to_erase_;
 };
 
 }

@@ -217,14 +217,14 @@ bool move::is_numbering_hex(const map_location& hex) const
 void move::set_valid(bool valid)
 {
 	valid_ = valid;
-	if (valid_)
-	{
-		arrow_->set_style(ARROW_STYLE_VALID);
-	}
-	else
-	{
-		arrow_->set_style(ARROW_STYLE_INVALID);
-	}
+//	if (valid_)
+//	{
+//		arrow_->set_style(ARROW_STYLE_VALID);
+//	}
+//	else
+//	{
+//		arrow_->set_style(ARROW_STYLE_INVALID);
+//	}
 }
 
 } // end namespace wb

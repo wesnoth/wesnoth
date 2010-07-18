@@ -112,6 +112,12 @@ void validate_visitor::visit_move(move_ptr move)
 			// so that further pathfinding takes it into account.
 			mapbuilder_visitor::visit_move(move);
 		}
+
+		//FIXME: temporary until invalid arrow styles are in: delete invalid moves
+		if (!move->valid_)
+		{
+			actions_to_erase_.insert(move);
+		}
 	}
 }
 
@@ -141,7 +147,7 @@ void validate_visitor::visit_attack(attack_ptr attack)
 
 	if (!attack->is_valid())
 	{
-		actions_to_erase_.push_back(attack);
+		actions_to_erase_.insert(attack);
 	}
 }
 
