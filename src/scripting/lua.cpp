@@ -1371,7 +1371,7 @@ static int intf_get_side(lua_State *L)
 	// Get the metatable from the registry and set it.
 	lua_pushlightuserdata(L, (void *)&getsideKey);
 	lua_rawget(L, LUA_REGISTRYINDEX);
-	lua_setmetatable(L, 2);
+	lua_setmetatable(L, -2);
 
 	return 1;
 }
