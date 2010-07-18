@@ -33,7 +33,7 @@ public:
 	int refcount() const { return count_; }
 
 protected:
-	void turn_reference_counting_off() { count_ = 1000000; }
+	void turn_reference_counting_off() const { count_ = 1000000; }
 private:
 	mutable int count_;
 };
