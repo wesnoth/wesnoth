@@ -966,7 +966,8 @@ bool play_controller::have_keyboard_focus()
 	return !menu_handler_.get_textbox().active();
 }
 
-void play_controller::process_keydown_event(const SDL_Event& event) {
+void play_controller::process_focus_keydown_event(const SDL_Event& event)
+{
 	if(event.key.keysym.sym == SDLK_ESCAPE) {
 		menu_handler_.get_textbox().close(*gui_);
 	} else if(event.key.keysym.sym == SDLK_TAB) {
@@ -974,6 +975,10 @@ void play_controller::process_keydown_event(const SDL_Event& event) {
 	} else if(event.key.keysym.sym == SDLK_RETURN || event.key.keysym.sym == SDLK_KP_ENTER) {
 		enter_textbox();
 	}
+}
+
+void play_controller::process_keydown_event(const SDL_Event& ) {
+
 }
 
 void play_controller::process_keyup_event(const SDL_Event& event) {

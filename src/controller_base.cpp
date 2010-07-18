@@ -60,9 +60,10 @@ void controller_base::handle_event(const SDL_Event& event)
 		// Detect key press events, unless there something that has keyboard focus
 		// in which case the key press events should go only to it.
 		if(have_keyboard_focus()) {
+			process_keydown_event(event);
 			hotkey::key_event(get_display(),event.key,this);
 		} else {
-			process_keydown_event(event);
+			process_focus_keydown_event(event);
 			break;
 		}
 		// intentionally fall-through
@@ -120,8 +121,11 @@ bool controller_base::have_keyboard_focus()
 	return true;
 }
 
-void controller_base::process_keydown_event(const SDL_Event& /*event*/)
-{
+void controller_base::process_focus_keydown_event(const SDL_Event& /*event*/) {
+	//no action by default
+}
+
+void controller_base::process_keydown_event(const SDL_Event& /*event*/) {
 	//no action by default
 }
 

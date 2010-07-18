@@ -143,6 +143,7 @@ protected:
 
 	game_display& get_display();
 	bool have_keyboard_focus();
+	void process_focus_keydown_event(const SDL_Event& event);
 	void process_keydown_event(const SDL_Event& event);
 	void process_keyup_event(const SDL_Event& event);
 	void post_mouse_press(const SDL_Event& event);

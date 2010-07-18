@@ -90,6 +90,11 @@ protected:
 
 	/**
 	 * Process keydown (only when the general map display does not have focus).
+	 */
+	virtual void process_focus_keydown_event(const SDL_Event& event);
+
+	/**
+	 * Process keydown (always).
 	 * Overriden in derived classes
 	 */
 	virtual void process_keydown_event(const SDL_Event& event);
