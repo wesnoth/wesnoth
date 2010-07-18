@@ -1306,8 +1306,6 @@ bool game_controller::change_language()
 			wm_title_string += " - " + game_config::revision;
 			SDL_WM_SetCaption(wm_title_string.c_str(), NULL);
 		}
-
-		t_string::reset_translations();
 	}
 
 	return true;
@@ -2018,6 +2016,9 @@ static int do_gameloop(int argc, char** argv)
 		} else if(res == gui::CHANGE_LANGUAGE) {
 			if(game.change_language() == true) {
 				tips_of_day.clear();
+				t_string::reset_translations();
+				image::flush_cache();
+				gui::set_background_dirty();
 			}
 			continue;
 		} else if(res == gui::EDIT_PREFERENCES) {
