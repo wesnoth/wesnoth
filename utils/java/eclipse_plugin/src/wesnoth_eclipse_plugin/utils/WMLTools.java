@@ -22,7 +22,6 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.console.MessageConsole;
 
@@ -143,7 +142,7 @@ public class WMLTools
 		}
 
 		if (targetPath == null && WorkspaceUtils.getSelectedFile() != null)
-			EditorUtils.openEditor(WorkspaceUtils.getSelectedFile(), true);
+			EditorUtils.openEditor(WorkspaceUtils.getSelectedFile(), false);
 		final String toolName = tool.toString();
 
 		WorkspaceJob job = new WorkspaceJob("Running " + toolName) {
@@ -158,57 +157,57 @@ public class WMLTools
 			@Override
 			public IStatus runInWorkspace(final IProgressMonitor monitor)
 			{
-				Display.getDefault().asyncExec(new Runnable() {
-					@Override
-					public void run()
+				try{
+					monitor.beginTask(toolName, 50);
+					monitor.beginTask(tool.toString(), 50);
+					MessageConsole console = GUIUtils.createConsole(toolName + " result:", null, true);
+					OutputStream messageStream = console.newMessageStream();
+					//TODO: multiple streams? - check performance
+					OutputStream[] stream = new OutputStream[]{ messageStream};
+
+					String location;
+					String stdin = EditorUtils.getEditorDocument().get();
+
+					IFile selFile = WorkspaceUtils.getSelectedFile();
+					if (targetPath != null)
+						location = targetPath;
+					else
 					{
-						monitor.beginTask(toolName, 50);
-						monitor.beginTask(tool.toString(), 50);
-						MessageConsole console = GUIUtils.createConsole(toolName + " result:", null, true);
-						OutputStream messageStream = console.newMessageStream();
-						//TODO: multiple streams? - check performance
-						OutputStream[] stream = new OutputStream[]{ messageStream};
+						if (selFile != null)
+							location = selFile.getLocation().toOSString();
+						else //TODO: add container instead of project?
+							location = WorkspaceUtils.getSelectedProject().getLocation().toOSString();
+					}
 
-						String stdin = EditorUtils.getEditorDocument().get();
-
-						String location;
-						IFile selFile = WorkspaceUtils.getSelectedFile();
-						if (targetPath != null)
-							location = targetPath;
-						else
-						{
-							if (selFile != null)
-								location = selFile.getLocation().toOSString();
-							else //TODO: add container instead of project?
-								location = WorkspaceUtils.getSelectedProject().getLocation().toOSString();
-						}
-
-						switch(tool)
-						{
-							case WMLINDENT:
-								if (selFile != null && targetPath == null)
-									toolInvoker = WMLTools.runWMLIndent(null, stdin, false,
-											null, stream);
-								else
-									toolInvoker = WMLTools.runWMLIndent(location, null, false,
-											stream, stream);
-								break;
-							case WMLLINT:
-								toolInvoker = WMLTools.runWMLLint(location, true, stream, stream);
-								break;
-							case WMLSCOPE:
-								toolInvoker = WMLTools.runWMLScope(location, stream, stream);
-								break;
-						}
-						toolInvoker.waitForTool();
-						if (selFile != null && targetPath == null)
-						{
-							EditorUtils.replaceEditorText(toolInvoker.getOutputContent());
-						}
-						monitor.worked(50);
-						monitor.done();
-					};
-				});
+					switch(tool)
+					{
+						case WMLINDENT:
+							if (selFile != null && targetPath == null)
+								toolInvoker = WMLTools.runWMLIndent(null, stdin, false,
+										null, stream);
+							else
+								toolInvoker = WMLTools.runWMLIndent(location, null, false,
+										stream, stream);
+							break;
+						case WMLLINT:
+							toolInvoker = WMLTools.runWMLLint(location, true, stream, stream);
+							break;
+						case WMLSCOPE:
+							toolInvoker = WMLTools.runWMLScope(location, stream, stream);
+							break;
+					}
+					toolInvoker.waitForTool();
+					if (selFile != null && targetPath == null)
+					{
+						EditorUtils.replaceEditorText(toolInvoker.getOutputContent());
+					}
+					monitor.worked(50);
+					monitor.done();
+				}
+				catch(Exception e)
+				{
+					Logger.getInstance().logException(e);
+				}
 				return Status.OK_STATUS;
 			}
 		};
