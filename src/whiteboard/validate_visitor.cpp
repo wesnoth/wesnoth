@@ -49,7 +49,7 @@ static team& get_current_team()
 	return current_team;
 }
 
-void validate_visitor::validate_actions()
+bool validate_visitor::validate_actions()
 {
 	foreach(action_ptr action, *side_actions_)
 	{
@@ -63,7 +63,11 @@ void validate_visitor::validate_actions()
 			side_actions_->remove_action(side_actions_->get_position_of(action), false);
 		}
 		actions_to_erase_.clear();
-		validate_actions();
+		return false;
+	}
+	else
+	{
+		return true;
 	}
 }
 

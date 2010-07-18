@@ -32,7 +32,9 @@ public:
 	validate_visitor(unit_map& unit_map, side_actions_ptr side_actions);
 	virtual ~validate_visitor();
 
-	void validate_actions();
+	/// @return false some actions had to be deleted during validation,
+	/// which may warrant a second validation
+	bool validate_actions();
 
 	virtual void visit_move(move_ptr move);
 	virtual void visit_attack(attack_ptr attack);

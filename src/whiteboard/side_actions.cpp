@@ -303,8 +303,11 @@ void side_actions::validate_actions()
 		ERR_WB << "Validating action queue while temp modifiers are applied!!!\n";
 	}
 
-	validate_visitor validator(*resources::units, shared_from_this());
-	validator.validate_actions();
+	bool validation_finished = false;
+	while(!validation_finished){
+		validate_visitor validator(*resources::units, shared_from_this());
+		validation_finished = validator.validate_actions();
+	}
 }
 
 } //end namespace wb

@@ -39,17 +39,7 @@ mapbuilder_visitor::mapbuilder_visitor(unit_map& unit_map, side_actions_ptr side
 
 mapbuilder_visitor::~mapbuilder_visitor()
 {
-	mode_ = RESTORE_NORMAL_MAP;
-	const action_queue& actions = side_actions_->actions();
-	action_queue::const_reverse_iterator rit;
-	for (rit = actions.rbegin(); rit != actions.rend(); ++rit)
-	{
-		if ((*rit)->is_valid())
-		{
-			(*rit)->accept(*this);
-		}
-	}
-
+	restore_normal_map();
 }
 
 void mapbuilder_visitor::build_map()
@@ -84,4 +74,19 @@ void mapbuilder_visitor::visit_attack(attack_ptr attack)
 	visit_move(boost::static_pointer_cast<move>(attack));
 }
 
+
+void mapbuilder_visitor::restore_normal_map()
+{
+	mode_ = RESTORE_NORMAL_MAP;
+	const action_queue& actions = side_actions_->actions();
+	action_queue::const_reverse_iterator rit;
+	for (rit = actions.rbegin(); rit != actions.rend(); ++rit)
+	{
+		if ((*rit)->is_valid())
+		{
+			(*rit)->accept(*this);
+		}
+	}
 }
+
+} // end namespace wb

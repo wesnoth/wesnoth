@@ -56,6 +56,9 @@ public:
 
 
 protected:
+
+	virtual void restore_normal_map();
+
 	unit_map& unit_map_;
 
 	std::set<unit const*> excluded_units_;
