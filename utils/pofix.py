@@ -382,6 +382,8 @@ stringfixes = {
 # conversion added in 1.9.0-svn
 ("I ain't charging gold —", "I ain’t charging gold —"),
 ("'T'ain't safe", "’T’ain’t safe"),
+),
+
 
 "wesnoth-httt" : (
 # Convert makeshift dashes:
