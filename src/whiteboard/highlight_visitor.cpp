@@ -61,7 +61,8 @@ void highlight_visitor::set_mouseover_hex(const map_location& hex)
 	//if we're right over a unit, just highlight all of this unit's actions
 	unit_map::const_iterator it = unit_map_.find(hex);
 	if (it != unit_map_.end()
-			&& (it->side() == resources::controller->current_side()))
+			&& resources::whiteboard->unit_has_actions(*it)
+			/*&& (it->side() == resources::controller->current_side())*/)
 	{
 		owner_unit_ = &(*it);
 

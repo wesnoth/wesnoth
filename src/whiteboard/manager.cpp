@@ -354,20 +354,23 @@ void manager::contextual_execute()
 		modifying_actions_ = true;
 		erase_temp_move();
 
-		//TODO: catch end_turn_exception somewhere here?
-		action_ptr action;
-		if (selected_unit_)
 		{
-				current_actions()->execute(current_actions()->find_first_action_of(*selected_unit_));
-		}
-		else if (highlighter_
-				&& (action = highlighter_->get_execute_target())) //intentional assignment of action with '='
-		{
-			current_actions()->execute(current_actions()->get_position_of(action));
-		}
-		else
-		{
-			current_actions()->execute_next();
+			action_ptr action;
+			side_actions::iterator it;
+			if (selected_unit_ &&
+					(it = current_actions()->find_first_action_of(*selected_unit_)) != current_actions()->end())
+			{
+					current_actions()->execute(it);
+			}
+			else if (highlighter_ && (action = highlighter_->get_execute_target()) &&
+					 (it = current_actions()->get_position_of(action)) != current_actions()->end())
+			{
+				current_actions()->execute(it);
+			}
+			else //we already check above for current_actions()->empty()
+			{
+				current_actions()->execute_next();
+			}
 		}
 		modifying_actions_ = false;
 	}
@@ -383,18 +386,23 @@ void manager::contextual_delete()
 		modifying_actions_ = true;
 		erase_temp_move();
 
-		action_ptr action;
-		if (selected_unit_)
 		{
-			current_actions()->remove_action(current_actions()->find_first_action_of(*selected_unit_));
-		}
-		else if (highlighter_ && (action = highlighter_->get_delete_target()))
-		{
-			current_actions()->remove_action(current_actions()->get_position_of(action));
-		}
-		else
-		{
-			current_actions()->remove_action(current_actions()->end() - 1);
+			action_ptr action;
+			side_actions::iterator it;
+			if (selected_unit_ &&
+					(it = current_actions()->find_first_action_of(*selected_unit_)) != current_actions()->end())
+			{
+				current_actions()->remove_action(it);
+			}
+			else if (highlighter_ && (action = highlighter_->get_delete_target()) &&
+					(it = current_actions()->get_position_of(action)) != current_actions()->end())
+			{
+				current_actions()->remove_action(it);
+			}
+			else //we already check above for current_actions()->empty()
+			{
+				current_actions()->remove_action(current_actions()->end() - 1);
+			}
 		}
 		modifying_actions_ = false;
 	}
