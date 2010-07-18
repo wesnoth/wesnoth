@@ -27,6 +27,8 @@ class engine_lua;
 
 namespace lua {
 
+void extract_preload_scripts(config const &);
+
 class LuaKernel
 {
 	lua_State *mState;
@@ -34,6 +36,7 @@ class LuaKernel
 public:
 	LuaKernel();
 	~LuaKernel();
+	void initialize();
 	void run_event(vconfig const &, game_events::queued_event const &);
 	bool run_filter(char const *name, unit const &u);
 	/** Runs a plain script. */

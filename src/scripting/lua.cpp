@@ -62,6 +62,16 @@ static lg::log_domain log_scripting_lua("scripting/lua");
 
 namespace lua {
 
+static std::vector<config> preload_scripts;
+
+void extract_preload_scripts(config const &game_config)
+{
+	preload_scripts.clear();
+	foreach (config const &cfg, game_config.child_range("lua")) {
+		preload_scripts.push_back(cfg);
+	}
+}
+
 /**
  * Stack storing the queued_event objects needed for calling WML actions.
  */
@@ -2443,6 +2453,13 @@ LuaKernel::LuaKernel()
 	lua_setglobal(L, "debug");
 
 	lua_settop(L, 0);
+}
+
+void LuaKernel::initialize()
+{
+	foreach (const config &cfg, preload_scripts) {
+		execute(cfg["code"].str().c_str(), 0, 0);
+	}
 }
 
 LuaKernel::~LuaKernel()

@@ -42,6 +42,7 @@
 #include "ai/manager.hpp"
 #include "ai/testing.hpp"
 #include "whiteboard/manager.hpp"
+#include "scripting/lua.hpp"
 
 static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
@@ -467,6 +468,7 @@ void play_controller::whiteboard_bump_down_action()
 
 void play_controller::fire_prestart(bool execute){
 	// Run initialization scripts, even if loading from a snapshot.
+	resources::lua_kernel->initialize();
 	game_events::fire("preload");
 
 	// pre-start events must be executed before any GUI operation,

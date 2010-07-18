@@ -67,6 +67,7 @@
 #include "addon/manager.hpp"
 #include "replay.hpp"
 #include "savegame.hpp"
+#include "scripting/lua.hpp"
 #include "sound.hpp"
 #include "statistics.hpp"
 #include "thread.hpp"
@@ -1571,6 +1572,10 @@ void game_controller::load_game_cfg(const bool force)
 				gui2::show_error_message(disp().video(),msg.str());
 			}
 		}
+
+		// Extract the Lua scripts at toplevel.
+		lua::extract_preload_scripts(game_config_);
+		game_config_.clear_children("lua");
 
 		game_config_.merge_children("units");
 		game_config_.append(core_terrain_rules);

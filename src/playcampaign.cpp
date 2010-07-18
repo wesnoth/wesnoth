@@ -65,18 +65,6 @@ typedef std::map<std::string, player_controller> controller_map;
 
 } // end anon namespace
 
-/** Marks all the toplevel [lua] tag as preload events. */
-static void preload_lua_tags(const config &game_config, config &target)
-{
-	foreach (const config &cfg, game_config.child_range("lua"))
-	{
-		config &ev = target.add_child("event");
-		ev["name"] = "preload";
-		ev["first_time_only"] = false;
-		ev.add_child("lua", cfg);
-	}
-}
-
 void play_replay(display& disp, game_state& gamestate, const config& game_config,
 		CVideo& video)
 {
@@ -93,21 +81,6 @@ void play_replay(display& disp, game_state& gamestate, const config& game_config
 		assert(scenario);
 		gamestate.starting_pos = scenario;
 	}
-
-	// Detect replays stored by the server, since they are missing core lua tags.
-	if (const config &core = game_config.child("lua"))
-	{
-		bool found_core = false;
-		foreach (const config &cfg, gamestate.starting_pos.child_range("lua")) {
-			if (cfg["code"] == core["code"]) {
-				found_core = true;
-				break;
-			}
-		}
-		if (!found_core)
-			preload_lua_tags(game_config, gamestate.starting_pos);
-	}
-
 	starting_pos = gamestate.starting_pos;
 
 	//for replays, use the variables specified in starting_pos
@@ -245,7 +218,6 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 		// Otherwise this is the start of a campaign scenario.
 		if(gamestate.starting_pos["id"].empty() == false) {
 			LOG_G << "loading starting position...\n";
-			preload_lua_tags(game_config, gamestate.starting_pos);
 			starting_pos = gamestate.starting_pos;
 			scenario = &starting_pos;
 		} else {
@@ -254,7 +226,6 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 			scenario = &game_config.find_child(type, "id", gamestate.classification().scenario);
 			if (*scenario) {
 				starting_pos = *scenario;
-				preload_lua_tags(game_config, starting_pos);
 				config temp(starting_pos);
 				write_players(gamestate, temp, false, true);
 				gamestate.starting_pos = temp;
@@ -343,7 +314,6 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				static config scenario2;
 				scenario2 = random_generate_scenario((*scenario)["scenario_generation"], scenario->child("generator"));
 				//level_ = scenario;
-				preload_lua_tags(game_config, scenario2);
 				//merge carryover information into the newly generated scenario
 				config temp(scenario2);
 				write_players(gamestate, temp, false, true);
@@ -492,7 +462,6 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 			else
 			{
 				starting_pos = *scenario;
-				preload_lua_tags(game_config, starting_pos);
 				scenario = &starting_pos;
 			}
 
@@ -529,7 +498,6 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 					static config scenario2;
 					scenario2 = random_generate_scenario((*scenario)["scenario_generation"], scenario->child("generator"));
 					//level_ = scenario;
-					preload_lua_tags(game_config, scenario2);
 					gamestate.starting_pos = scenario2;
 					scenario = &scenario2;
 				}
