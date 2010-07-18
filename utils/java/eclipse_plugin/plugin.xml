@@ -440,7 +440,7 @@
                   style="push">
                <parameter
                      name="preferencePageId"
-                     value="plugin_preferences">
+                     value="wml_plugin_preferences">
                </parameter>
             </command>
             <command
@@ -455,7 +455,7 @@
          point="org.eclipse.ui.preferencePages">
       <page
             class="wesnoth_eclipse_plugin.preferences.WesnothEditorPreferences"
-            id="plugin_preferences"
+            id="wml_plugin_preferences"
             name="Wesnoth UMC">
       </page>
    </extension>
