@@ -43,8 +43,8 @@ namespace game_logic {
 typedef std::pair< unit_map::unit_iterator, int> unit_formula_pair;
 
 struct unit_formula_compare {
-        bool operator() (const unit_formula_pair left,
-                        const unit_formula_pair right) const
+        bool operator() (const unit_formula_pair& left,
+                        const unit_formula_pair& right) const
         {
                 return left.second > right.second;
         }
