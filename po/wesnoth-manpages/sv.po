@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
-"POT-Creation-Date: 2010-05-30 18:23+0300\n"
+"POT-Creation-Date: 2010-07-19 00:41+0300\n"
 "PO-Revision-Date: 2007-12-12 00:03+0100\n"
 "Last-Translator: Stefan Bergström (tephlon) <stefan DOT bergstrom AT gmail "
 "DOT com>\n"
@@ -178,7 +178,7 @@ msgstr "visar namnet på speldatamappen."
 #. type: TP
 #: ../../doc/man/wesnoth.6:62
 #, no-wrap
-msgid "B<-datadir E<lt>directoryE<gt>>"
+msgid "B<--data-dir E<lt>directoryE<gt>>"
 msgstr ""
 
 # type: Plain text
@@ -214,12 +214,11 @@ msgstr ""
 msgid "B<-e,\\ --editor>I<\\ file>"
 msgstr "B<-t, --test>"
 
-# type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:75
 msgid ""
 "start the in-game map editor directly. If I<file> is specified, equivalent "
-"to B<-e --load>"
+"to B<-l --load>"
 msgstr ""
 
 # type: TP
@@ -857,11 +856,13 @@ msgstr ""
 msgid "SEE ALSO"
 msgstr "SE ÄVEN"
 
-# type: Plain text
+# type: TH
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:277
-msgid "B<wesnoth_editor>(6), B<wesnothd>(6)"
-msgstr "B<wesnoth_editor>(6), B<wesnothd>(6)"
+#: ../../doc/man/wesnoth.6:276
+#, fuzzy
+#| msgid "wesnothd"
+msgid "B<wesnothd>(6)."
+msgstr "wesnothd"
 
 # type: TH
 #. type: TH
@@ -1697,11 +1698,21 @@ msgstr ""
 "Soliton E<lt>soliton.de@gmail.comE<gt>. Denna manualsida skrevs "
 "ursprungligen av Cyril Bouthors E<lt>cyril@bouthors.orgE<gt>."
 
-# type: Plain text
+# type: TH
 #. type: Plain text
-#: ../../doc/man/wesnothd.6:287
-msgid "B<wesnoth>(6), B<wesnoth_editor>(6)"
-msgstr "B<wesnoth>(6), B<wesnoth_editor>(6)"
+#: ../../doc/man/wesnothd.6:286
+#, fuzzy
+#| msgid "wesnoth"
+msgid "B<wesnoth>(6)."
+msgstr "wesnoth"
+
+# type: Plain text
+#~ msgid "B<wesnoth_editor>(6), B<wesnothd>(6)"
+#~ msgstr "B<wesnoth_editor>(6), B<wesnothd>(6)"
+
+# type: Plain text
+#~ msgid "B<wesnoth>(6), B<wesnoth_editor>(6)"
+#~ msgstr "B<wesnoth>(6), B<wesnoth_editor>(6)"
 
 # type: TP
 #, fuzzy

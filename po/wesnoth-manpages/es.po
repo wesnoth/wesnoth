@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
-"POT-Creation-Date: 2010-05-30 18:23+0300\n"
+"POT-Creation-Date: 2010-07-19 00:41+0300\n"
 "PO-Revision-Date: 2009-04-05 12:11-0400\n"
 "Last-Translator: Ignacio R. Morelle <shikadilord@users.sourceforge.net>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -182,7 +182,7 @@ msgstr ""
 #. type: TP
 #: ../../doc/man/wesnoth.6:62
 #, no-wrap
-msgid "B<-datadir E<lt>directoryE<gt>>"
+msgid "B<--data-dir E<lt>directoryE<gt>>"
 msgstr ""
 
 #. type: Plain text
@@ -215,12 +215,11 @@ msgstr ""
 msgid "B<-e,\\ --editor>I<\\ file>"
 msgstr "B<-e, --editor>"
 
-# type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:75
 msgid ""
 "start the in-game map editor directly. If I<file> is specified, equivalent "
-"to B<-e --load>"
+"to B<-l --load>"
 msgstr ""
 
 # type: TP
@@ -876,11 +875,13 @@ msgstr ""
 msgid "SEE ALSO"
 msgstr "VÉASE TAMBIÉN"
 
-# type: Plain text
+# type: TH
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:277
-msgid "B<wesnoth_editor>(6), B<wesnothd>(6)"
-msgstr "B<wesnoth_editor>(6), B<wesnothd>(6)"
+#: ../../doc/man/wesnoth.6:276
+#, fuzzy
+#| msgid "wesnothd"
+msgid "B<wesnothd>(6)."
+msgstr "wesnothd"
 
 # type: TH
 #. type: TH
@@ -1776,11 +1777,21 @@ msgstr ""
 "baumhauer@gmail.comE<gt>.  Esta página de manual fue originalmente escrita "
 "por Cyril Bouthors E<lt>cyril@bouthors.orgE<gt>."
 
-# type: Plain text
+# type: TH
 #. type: Plain text
-#: ../../doc/man/wesnothd.6:287
-msgid "B<wesnoth>(6), B<wesnoth_editor>(6)"
-msgstr "B<wesnoth>(6), B<wesnoth_editor>(6)"
+#: ../../doc/man/wesnothd.6:286
+#, fuzzy
+#| msgid "wesnoth"
+msgid "B<wesnoth>(6)."
+msgstr "wesnoth"
+
+# type: Plain text
+#~ msgid "B<wesnoth_editor>(6), B<wesnothd>(6)"
+#~ msgstr "B<wesnoth_editor>(6), B<wesnothd>(6)"
+
+# type: Plain text
+#~ msgid "B<wesnoth>(6), B<wesnoth_editor>(6)"
+#~ msgstr "B<wesnoth>(6), B<wesnoth_editor>(6)"
 
 # type: TP
 #~ msgid "B<-c, --campaign>"

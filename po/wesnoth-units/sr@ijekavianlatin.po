@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-units\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-07-03 09:51+0200\n"
+"POT-Creation-Date: 2010-07-19 00:25+0200\n"
 "PO-Revision-Date: 2010-03-02 11:21+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -184,7 +184,7 @@ msgid "Armageddon Drake"
 msgstr "zmago-sudnjičas"
 
 #. [unit_type]: id=Armageddon Drake, race=drake
-#: data/core/units/drakes/Armageddon.cfg:27
+#: data/core/units/drakes/Armageddon.cfg:28
 msgid ""
 "Were it not for the armor they wear, certain drakes might be "
 "indistinguishable from true dragons, at least to the lesser races for whom "
@@ -197,13 +197,13 @@ msgstr ""
 "neizmijernom vatrom tako i neosjetljiva na nju."
 
 #. [attack]: type=blade
-#: data/core/units/drakes/Armageddon.cfg:86 data/core/units/drakes/Fire.cfg:42
+#: data/core/units/drakes/Armageddon.cfg:43 data/core/units/drakes/Fire.cfg:42
 #: data/core/units/drakes/Inferno.cfg:44
 msgid "battle claws"
 msgstr "bojne kandže"
 
 #. [attack]: type=fire
-#: data/core/units/drakes/Armageddon.cfg:95
+#: data/core/units/drakes/Armageddon.cfg:52
 #: data/core/units/drakes/Blademaster.cfg:50
 #: data/core/units/drakes/Burner.cfg:49 data/core/units/drakes/Fighter.cfg:48
 #: data/core/units/drakes/Fire.cfg:51 data/core/units/drakes/Flameheart.cfg:44
@@ -696,8 +696,8 @@ msgstr ""
 #: data/core/units/humans/Woodsman_Trapper.cfg:82
 #: data/core/units/orcs/Archer.cfg:41 data/core/units/orcs/Assassin.cfg:40
 #: data/core/units/orcs/Slayer.cfg:39
-#: data/core/units/undead/Skele_Banebow.cfg:31
-#: data/core/units/undead/Skele_Bone_Shooter.cfg:29
+#: data/core/units/undead/Skele_Banebow.cfg:44
+#: data/core/units/undead/Skele_Bone_Shooter.cfg:42
 msgid "dagger"
 msgstr "bodež"
 
@@ -1088,9 +1088,9 @@ msgstr "mač"
 #: data/core/units/humans/Woodsman_Trapper.cfg:91
 #: data/core/units/orcs/Archer.cfg:50 data/core/units/orcs/Archer.cfg:59
 #: data/core/units/orcs/Warlord.cfg:46
-#: data/core/units/undead/Skele_Banebow.cfg:40
-#: data/core/units/undead/Skele_Bone_Shooter.cfg:38
-#: data/core/units/undead/Skeleton_Archer.cfg:41
+#: data/core/units/undead/Skele_Banebow.cfg:53
+#: data/core/units/undead/Skele_Bone_Shooter.cfg:51
+#: data/core/units/undead/Skeleton_Archer.cfg:54
 msgid "bow"
 msgstr "luk"
 
@@ -1555,11 +1555,12 @@ msgstr "vilin-šejda"
 
 #. [unit_type]: id=Elvish Shyde, race=elf
 #: data/core/units/elves/Shyde.cfg:22
+#, fuzzy
 msgid ""
-"Devotion to the path of faerie may will eventually transform an elf maiden "
-"into a creature of both worlds. Guided by a nature which is little "
-"understood, these beautiful stewards of the elven forests epitomize the "
-"grace and mystery of their people."
+"Devotion to the path of faerie may eventually transform an elf maiden into a "
+"creature of both worlds. Guided by a power which is little understood, these "
+"beautiful stewards of the elven forests epitomize the grace and mystery of "
+"their people."
 msgstr ""
 "Posvećenost putu vilinstva može preobraziti vilenjačku djevojku u stvorenje "
 "od oba svijeta. Vođene prirodom koja je slabo razjašnjena, ove predivne "
@@ -2019,7 +2020,7 @@ msgstr ""
 
 #. [attack]: type=blade
 #: data/core/units/humans/Loyalist_Bowman.cfg:37
-#: data/core/units/orcs/Crossbowman.cfg:24 data/core/units/orcs/Slurbow.cfg:29
+#: data/core/units/orcs/Crossbowman.cfg:37 data/core/units/orcs/Slurbow.cfg:42
 msgid "short sword"
 msgstr "kratki mač"
 
@@ -2051,10 +2052,10 @@ msgstr ""
 #: data/core/units/humans/Loyalist_Lieutenant.cfg:55
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:53
 #: data/core/units/humans/Loyalist_Sergeant.cfg:56
-#: data/core/units/orcs/Crossbowman.cfg:33
-#: data/core/units/orcs/Crossbowman.cfg:42 data/core/units/orcs/Leader.cfg:37
-#: data/core/units/orcs/Ruler.cfg:36 data/core/units/orcs/Slurbow.cfg:38
-#: data/core/units/orcs/Slurbow.cfg:47 data/core/units/orcs/Sovereign.cfg:37
+#: data/core/units/orcs/Crossbowman.cfg:46
+#: data/core/units/orcs/Crossbowman.cfg:55 data/core/units/orcs/Leader.cfg:37
+#: data/core/units/orcs/Ruler.cfg:36 data/core/units/orcs/Slurbow.cfg:51
+#: data/core/units/orcs/Slurbow.cfg:60 data/core/units/orcs/Sovereign.cfg:37
 #: data/core/units/undead/Skele_Death_Knight.cfg:54
 msgid "crossbow"
 msgstr "samostrijel"
@@ -3700,7 +3701,7 @@ msgid "Giant Mudcrawler"
 msgstr "džinovski muljogmiz"
 
 #. [unit_type]: id=Giant Mudcrawler, race=monster
-#: data/core/units/monsters/Giant_Mudcrawler.cfg:18
+#: data/core/units/monsters/Giant_Mudcrawler.cfg:19
 msgid ""
 "Giant Mudcrawlers are a larger kind of Mudcrawler, and are magical "
 "constructs of soil and water. They attack by belching lumps of mud at their "
@@ -3711,18 +3712,18 @@ msgstr ""
 "pljuskavši svojim pesnicama."
 
 #. [attack]: type=impact
-#: data/core/units/monsters/Giant_Mudcrawler.cfg:47
+#: data/core/units/monsters/Giant_Mudcrawler.cfg:60
 #: data/core/units/monsters/Yeti.cfg:36
 #: data/core/units/trolls/Rocklobber.cfg:27
 #: data/core/units/trolls/Troll_Shaman.cfg:31
 #: data/core/units/trolls/Whelp.cfg:39
-#: data/core/units/undead/Skeleton_Archer.cfg:32
+#: data/core/units/undead/Skeleton_Archer.cfg:45
 msgid "fist"
 msgstr "pesnica"
 
 #. [attack]: type=impact
-#: data/core/units/monsters/Giant_Mudcrawler.cfg:56
-#: data/core/units/monsters/Mudcrawler.cfg:46
+#: data/core/units/monsters/Giant_Mudcrawler.cfg:69
+#: data/core/units/monsters/Mudcrawler.cfg:59
 msgid "mud glob"
 msgstr "muljogruda"
 
@@ -3789,7 +3790,7 @@ msgid "Mudcrawler"
 msgstr "muljogmiz"
 
 #. [unit_type]: id=Mudcrawler, race=monster
-#: data/core/units/monsters/Mudcrawler.cfg:19
+#: data/core/units/monsters/Mudcrawler.cfg:20
 msgid ""
 "Mudcrawlers are magical constructs of soil and water. They attack by "
 "belching lumps of mud at their foes."
@@ -4093,7 +4094,7 @@ msgid "Orcish Crossbowman"
 msgstr "orko-samostrijelac"
 
 #. [unit_type]: id=Orcish Crossbowman, race=orc
-#: data/core/units/orcs/Crossbowman.cfg:18
+#: data/core/units/orcs/Crossbowman.cfg:19
 msgid ""
 "Orcish crossbows are crude imitations of human or dwarvish design; a "
 "crossbow of any make, though, is a fairly potent device. The orcs privileged "
@@ -4191,7 +4192,7 @@ msgid "Orcish Slurbow"
 msgstr "orko-ljigaluk"
 
 #. [unit_type]: id=Orcish Slurbow, race=orc
-#: data/core/units/orcs/Slurbow.cfg:23
+#: data/core/units/orcs/Slurbow.cfg:24
 msgid ""
 "The basic design of a crossbow gives rise to the arbalest or 'slurbow'; a "
 "much more intricate device, complete with a hand-turned cranequin to re-cock "
@@ -4854,7 +4855,7 @@ msgid "Banebow"
 msgstr "krvoluk"
 
 #. [unit_type]: id=Banebow, race=undead
-#: data/core/units/undead/Skele_Banebow.cfg:18
+#: data/core/units/undead/Skele_Banebow.cfg:19
 msgid ""
 "The most powerful of the undead archers invariably end up being those who "
 "were themselves archers in their previous life. They wander the fields of "
@@ -4874,7 +4875,7 @@ msgid "Bone Shooter"
 msgstr "koskotrg"
 
 #. [unit_type]: id=Bone Shooter, race=undead
-#: data/core/units/undead/Skele_Bone_Shooter.cfg:16
+#: data/core/units/undead/Skele_Bone_Shooter.cfg:17
 msgid ""
 "Of a dark sorcerer's creations, some take more strongly to the false life "
 "given them. The potency of their un-life is given equipment to match; "
@@ -4969,10 +4970,11 @@ msgstr "vraćenik"
 
 #. [unit_type]: id=Revenant, race=undead
 #: data/core/units/undead/Skele_Revenant.cfg:19
+#, fuzzy
 msgid ""
 "Given false life to do battle once more, the creatures known as Revenants "
 "were clearly great warriors in their time, though the memory of that time is "
-"allmost wholly lost to their undead selves. Even the sorcerers who raised "
+"almost wholly lost to their undead selves. Even the sorcerers who raised "
 "them can only speculate on their past. Such questions aside, a Revenant is a "
 "powerful tool in combat: a fearless warrior that feels no pain and will "
 "fight to the bitter end."
@@ -5008,7 +5010,7 @@ msgid "Skeleton Archer"
 msgstr "ćele-strijelac"
 
 #. [unit_type]: id=Skeleton Archer, race=undead
-#: data/core/units/undead/Skeleton_Archer.cfg:17
+#: data/core/units/undead/Skeleton_Archer.cfg:18
 msgid ""
 "A skeleton archer is little different from the 'skeletons' which often "
 "accompany it — it is a sin against nature, a warrior raised from the dead to "

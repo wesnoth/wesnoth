@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.8\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-07-03 09:51+0200\n"
+"POT-Creation-Date: 2010-07-19 00:25+0200\n"
 "PO-Revision-Date: 2010-07-05 15:33+0700\n"
 "Last-Translator: Huynh Yen Loc <walkingcorpse13@gmail.com>\n"
 "Language-Team: hhyloc <walkingcorpse13@gmail.com>\n"
@@ -688,8 +688,9 @@ msgstr ""
 
 #. [message]: speaker=Leollyn
 #: data/campaigns/Delfadors_Memoirs/scenarios/04_Leollyn.cfg:146
+#, fuzzy
 msgid ""
-"Hail, strangers to the west! I crave your aid; hurry, for we are sorely "
+"Hail, strangers on the road! I crave your aid; hurry, for we are sorely "
 "besieged!"
 msgstr ""
 "Chào, những người lạ mặt ở phía đông! Tôi khẩn cầu sự trợ giúp của các cậu, "
@@ -1130,8 +1131,8 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Delfadors_Memoirs/scenarios/07_Night_in_the_Swamp.cfg:97
-msgid "Survive 12 turns"
-msgstr "Sống sót qua 12 lượt"
+msgid "Survive until daybreak."
+msgstr ""
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/07_Night_in_the_Swamp.cfg:118
@@ -4936,15 +4937,10 @@ msgstr ""
 "sư, và không ai trong số họ đạt được sức mạnh và khả năng như của Delfador, "
 "pháp sư vĩ đại nhất từng làm vinh dự cho vương triều Wesnoth."
 
-#. [terrain_type]: id=abyss-ethereal
-#: data/campaigns/Delfadors_Memoirs/terrain.cfg:12
-msgid "Ethereal Abyss"
-msgstr "Vực thẳm siêu trần"
-
 #. [terrain_type]: id=milestone1
 #. [terrain_type]: id=milestone2
+#: data/campaigns/Delfadors_Memoirs/terrain.cfg:16
 #: data/campaigns/Delfadors_Memoirs/terrain.cfg:25
-#: data/campaigns/Delfadors_Memoirs/terrain.cfg:34
 #, fuzzy
 msgid "Milestone"
 msgstr "Mốc 1"
@@ -5209,6 +5205,12 @@ msgstr "Droni"
 #: data/campaigns/Delfadors_Memoirs/utils/sides.cfg:285
 msgid "Artor"
 msgstr "Artor"
+
+#~ msgid "Survive 12 turns"
+#~ msgstr "Sống sót qua 12 lượt"
+
+#~ msgid "Ethereal Abyss"
+#~ msgstr "Vực thẳm siêu trần"
 
 #~ msgid "Milestone2"
 #~ msgstr "Mốc 2"

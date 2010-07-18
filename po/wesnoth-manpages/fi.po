@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
-"POT-Creation-Date: 2010-05-30 18:23+0300\n"
+"POT-Creation-Date: 2010-07-19 00:41+0300\n"
 "PO-Revision-Date: 2010-02-20 14:40+0200\n"
 "Last-Translator: Samu Voutilainen <smar@smar.fi>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
@@ -174,7 +174,7 @@ msgstr "Näyttää käyttäjän asetushakemiston polun ja lopettaa."
 #. type: TP
 #: ../../doc/man/wesnoth.6:62
 #, no-wrap
-msgid "B<-datadir E<lt>directoryE<gt>>"
+msgid "B<--data-dir E<lt>directoryE<gt>>"
 msgstr ""
 
 #. type: Plain text
@@ -209,9 +209,13 @@ msgstr "B<-e,\\ --editor>I<\\ tiedosto>"
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:75
+#, fuzzy
+#| msgid ""
+#| "start the in-game map editor directly. If I<file> is specified, "
+#| "equivalent to B<-e --load>"
 msgid ""
 "start the in-game map editor directly. If I<file> is specified, equivalent "
-"to B<-e --load>"
+"to B<-l --load>"
 msgstr ""
 "Käynnistää pelinsisäisen karttaeditorin suoraan. Jos I<tiedosto> on "
 "syötetty, komento vastaa B<-e --load>:a"
@@ -860,11 +864,13 @@ msgstr ""
 msgid "SEE ALSO"
 msgstr "KATSO MYÖS"
 
-# type: Plain text
+# type: TH
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:277
-msgid "B<wesnoth_editor>(6), B<wesnothd>(6)"
-msgstr "B<wesnoth_editor>(6), B<wesnothd>(6)"
+#: ../../doc/man/wesnoth.6:276
+#, fuzzy
+#| msgid "wesnothd"
+msgid "B<wesnothd>(6)."
+msgstr "wesnothd"
 
 # type: TH
 #. type: TH
@@ -1752,11 +1758,21 @@ msgstr ""
 "Suomentanut Wesnothin suomennosryhmä (http://www.wesnoth.org/wiki/"
 "FinnishTranslation)."
 
-# type: Plain text
+# type: TH
 #. type: Plain text
-#: ../../doc/man/wesnothd.6:287
-msgid "B<wesnoth>(6), B<wesnoth_editor>(6)"
-msgstr "B<wesnoth>(6), B<wesnoth_editor>(6)"
+#: ../../doc/man/wesnothd.6:286
+#, fuzzy
+#| msgid "wesnoth"
+msgid "B<wesnoth>(6)."
+msgstr "wesnoth"
+
+# type: Plain text
+#~ msgid "B<wesnoth_editor>(6), B<wesnothd>(6)"
+#~ msgstr "B<wesnoth_editor>(6), B<wesnothd>(6)"
+
+# type: Plain text
+#~ msgid "B<wesnoth>(6), B<wesnoth_editor>(6)"
+#~ msgstr "B<wesnoth>(6), B<wesnoth_editor>(6)"
 
 # type: TP
 #~ msgid "B<-c, --campaign>"

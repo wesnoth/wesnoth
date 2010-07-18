@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle of Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-06-25 11:25+0200\n"
+"POT-Creation-Date: 2010-07-19 00:25+0200\n"
 "PO-Revision-Date: 2010-03-17 20:21+0100\n"
 "Last-Translator: VladimírSlávik <slavik.vladimir@nospam@seznam.cz>\n"
 "Language-Team: Český <wesnoth-cs-l@buchtovi.cz>\n"
@@ -677,8 +677,9 @@ msgstr "Hele, další lidský červ se objevil... paráda, další maso pro tlup
 
 #. [message]: speaker=Leollyn
 #: data/campaigns/Delfadors_Memoirs/scenarios/04_Leollyn.cfg:146
+#, fuzzy
 msgid ""
-"Hail, strangers to the west! I crave your aid; hurry, for we are sorely "
+"Hail, strangers on the road! I crave your aid; hurry, for we are sorely "
 "besieged!"
 msgstr ""
 "Vítejte, cizinci na západě! Prosím, rychle nám pomozte, jsme obleženi skřety!"
@@ -1105,8 +1106,8 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Delfadors_Memoirs/scenarios/07_Night_in_the_Swamp.cfg:97
-msgid "Survive 12 turns"
-msgstr "Přečkej 12 kol."
+msgid "Survive until daybreak."
+msgstr ""
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/07_Night_in_the_Swamp.cfg:118
@@ -4818,15 +4819,10 @@ msgstr ""
 "mágů zabito a moc žádného z nich nebyla souměřitelná s mocí Delfadora, "
 "největšího mága, který se kde procházel po síních paláce králů Wesnothu."
 
-#. [terrain_type]: id=abyss-ethereal
-#: data/campaigns/Delfadors_Memoirs/terrain.cfg:12
-msgid "Ethereal Abyss"
-msgstr "Nezemská hlubina"
-
 #. [terrain_type]: id=milestone1
 #. [terrain_type]: id=milestone2
+#: data/campaigns/Delfadors_Memoirs/terrain.cfg:16
 #: data/campaigns/Delfadors_Memoirs/terrain.cfg:25
-#: data/campaigns/Delfadors_Memoirs/terrain.cfg:34
 #, fuzzy
 msgid "Milestone"
 msgstr "Kromlech1"
@@ -5086,6 +5082,12 @@ msgstr "Droni"
 #: data/campaigns/Delfadors_Memoirs/utils/sides.cfg:285
 msgid "Artor"
 msgstr "Artor"
+
+#~ msgid "Survive 12 turns"
+#~ msgstr "Přečkej 12 kol."
+
+#~ msgid "Ethereal Abyss"
+#~ msgstr "Nezemská hlubina"
 
 #~ msgid "Milestone2"
 #~ msgstr "Kromlech2"

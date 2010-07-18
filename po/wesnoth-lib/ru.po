@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-lib.po\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-07-03 09:51+0200\n"
+"POT-Creation-Date: 2010-07-19 00:25+0200\n"
 "PO-Revision-Date: 2010-04-30 12:03+0400\n"
 "Last-Translator: Fedor Khod'kov <fedor76@istra.ru>\n"
 "Language-Team:  <http://bugs.wesnoth.org>\n"
@@ -87,11 +87,6 @@ msgstr "Болото"
 #: data/core/terrain.cfg:130 data/core/terrain.cfg:167
 msgid "Grassland"
 msgstr "Луг"
-
-#. [terrain_type]: id=grassland_flowers
-#: data/core/terrain.cfg:140
-msgid "Depreciated. Use and Embellihsment Overaly"
-msgstr ""
 
 #. [terrain_type]: id=savanna
 #: data/core/terrain.cfg:149
@@ -372,84 +367,87 @@ msgstr "Освещённая пещера"
 msgid "Cave"
 msgstr "Пещера"
 
+#. [terrain_type]: id=flagstones_dark
 #. [terrain_type]: id=cave_path
-#: data/core/terrain.cfg:728
-msgid "Cave path"
-msgstr "Тропа в пещере"
+#. [terrain_type]: id=flat
+#: data/core/terrain.cfg:728 data/core/terrain.cfg:737
+#: data/core/terrain.cfg:1808
+msgid "Flat"
+msgstr "Равнина"
 
 #. [terrain_type]: id=fungus
-#: data/core/terrain.cfg:737
+#: data/core/terrain.cfg:746
 msgid "Mushroom Grove"
 msgstr "Грибная роща"
 
 #. [terrain_type]: id=fungus_beam
-#: data/core/terrain.cfg:746
+#: data/core/terrain.cfg:755
 msgid "Mushroom Grove Lit"
 msgstr "Освещённая грибная роща"
 
 #. [terrain_type]: id=rocky_cave
-#: data/core/terrain.cfg:757
+#: data/core/terrain.cfg:766
 msgid "Rockbound Cave"
 msgstr "Каменистая пещера"
 
 #. [terrain_type]: id=rails
 #. [terrain_type]: id=railsdiag1
 #. [terrain_type]: id=railsdiag2
-#: data/core/terrain.cfg:780 data/core/terrain.cfg:792
-#: data/core/terrain.cfg:804
+#: data/core/terrain.cfg:789 data/core/terrain.cfg:801
+#: data/core/terrain.cfg:813
 msgid "Mine Rail"
 msgstr ""
 
 #. [terrain_type]: id=canyon
-#: data/core/terrain.cfg:821
+#: data/core/terrain.cfg:830
 msgid "Chasm"
 msgstr "Пропасть"
 
 #. [terrain_type]: id=abyss
-#: data/core/terrain.cfg:830
+#: data/core/terrain.cfg:849
 msgid "Ethereal Abyss"
 msgstr ""
 
 #. [terrain_type]: id=lava_chasm
-#: data/core/terrain.cfg:839
+#: data/core/terrain.cfg:858
 msgid "Lava chasm"
 msgstr "Расщелина с лавой"
 
 #. [terrain_type]: id=lava
-#: data/core/terrain.cfg:849
+#: data/core/terrain.cfg:868
 msgid "Lava"
 msgstr "Лава"
 
 #. [terrain_type]: id=cloud
 #. [terrain_type]: id=cloud_snow
-#: data/core/terrain.cfg:864 data/core/terrain.cfg:882
+#: data/core/terrain.cfg:883 data/core/terrain.cfg:901
 msgid "Impassable Mountains"
 msgstr "Непроходимые горы"
 
 #. [terrain_type]: id=clouddesert
-#: data/core/terrain.cfg:873
+#: data/core/terrain.cfg:892
 msgid "Impassable Desert Mountains"
 msgstr "Непроходимые пустынные горы"
 
 #. [terrain_type]: id=cavewall
-#: data/core/terrain.cfg:891
+#: data/core/terrain.cfg:910
 msgid "Cave Wall"
 msgstr "Стена пещеры"
 
 #. [terrain_type]: id=wall_stone
 #. [terrain_type]: id=wall_stone_lit
-#: data/core/terrain.cfg:900 data/core/terrain.cfg:909
+#: data/core/terrain.cfg:919 data/core/terrain.cfg:928
 msgid "Wall"
 msgstr "Стена"
 
 #. [terrain_type]: id=impassable_overlay
 #. [terrain_type]: id=impassable
-#: data/core/terrain.cfg:919 data/core/terrain.cfg:1810
+#: data/core/terrain.cfg:938 data/core/terrain.cfg:1829
 msgid "Impassable"
 msgstr "Непроходимая местность"
 
 #. [terrain_type]: id=void
-#: data/core/terrain.cfg:930
+#: data/core/terrain.cfg:949
 msgid "Void"
 msgstr "пусто"
 
@@ -483,37 +481,37 @@ msgstr "пусто"
 #. [terrain_type]: id=mermen_village
 #. [terrain_type]: id=swamp_merfolk-village
 #. [terrain_type]: id=village
-#: data/core/terrain.cfg:946 data/core/terrain.cfg:958
-#: data/core/terrain.cfg:972 data/core/terrain.cfg:984
-#: data/core/terrain.cfg:996 data/core/terrain.cfg:1008
-#: data/core/terrain.cfg:1022 data/core/terrain.cfg:1034
-#: data/core/terrain.cfg:1048 data/core/terrain.cfg:1060
-#: data/core/terrain.cfg:1072 data/core/terrain.cfg:1084
-#: data/core/terrain.cfg:1096 data/core/terrain.cfg:1108
-#: data/core/terrain.cfg:1120 data/core/terrain.cfg:1132
-#: data/core/terrain.cfg:1144 data/core/terrain.cfg:1156
-#: data/core/terrain.cfg:1170 data/core/terrain.cfg:1182
-#: data/core/terrain.cfg:1194 data/core/terrain.cfg:1206
-#: data/core/terrain.cfg:1218 data/core/terrain.cfg:1230
-#: data/core/terrain.cfg:1242 data/core/terrain.cfg:1254
-#: data/core/terrain.cfg:1266 data/core/terrain.cfg:1280
-#: data/core/terrain.cfg:1291 data/core/terrain.cfg:1304
-#: data/core/terrain.cfg:1803
+#: data/core/terrain.cfg:965 data/core/terrain.cfg:977
+#: data/core/terrain.cfg:991 data/core/terrain.cfg:1003
+#: data/core/terrain.cfg:1015 data/core/terrain.cfg:1027
+#: data/core/terrain.cfg:1041 data/core/terrain.cfg:1053
+#: data/core/terrain.cfg:1067 data/core/terrain.cfg:1079
+#: data/core/terrain.cfg:1091 data/core/terrain.cfg:1103
+#: data/core/terrain.cfg:1115 data/core/terrain.cfg:1127
+#: data/core/terrain.cfg:1139 data/core/terrain.cfg:1151
+#: data/core/terrain.cfg:1163 data/core/terrain.cfg:1175
+#: data/core/terrain.cfg:1189 data/core/terrain.cfg:1201
+#: data/core/terrain.cfg:1213 data/core/terrain.cfg:1225
+#: data/core/terrain.cfg:1237 data/core/terrain.cfg:1249
+#: data/core/terrain.cfg:1261 data/core/terrain.cfg:1273
+#: data/core/terrain.cfg:1285 data/core/terrain.cfg:1299
+#: data/core/terrain.cfg:1310 data/core/terrain.cfg:1323
+#: data/core/terrain.cfg:1822
 msgid "Village"
 msgstr "Деревня"
 
 #. [terrain_type]: id=encampment
-#: data/core/terrain.cfg:1320
+#: data/core/terrain.cfg:1339
 msgid "Encampment"
 msgstr "Лагерь"
 
 #. [terrain_type]: id=orcish_fort
-#: data/core/terrain.cfg:1331
+#: data/core/terrain.cfg:1350
 msgid "Fort"
 msgstr "Форт"
 
 #. [terrain_type]: id=snow_orcish_fort
-#: data/core/terrain.cfg:1342
+#: data/core/terrain.cfg:1361
 #, fuzzy
 msgid "Snowy Fort"
 msgstr "Снежный лес"
@@ -522,34 +520,34 @@ msgstr "Снежный лес"
 #. [terrain_type]: id=elven_castle
 #. [terrain_type]: id=dwarven_castle
 #. [terrain_type]: id=castle_overlay
-#: data/core/terrain.cfg:1353 data/core/terrain.cfg:1373
-#: data/core/terrain.cfg:1384 data/core/terrain.cfg:1587
+#: data/core/terrain.cfg:1372 data/core/terrain.cfg:1392
+#: data/core/terrain.cfg:1403 data/core/terrain.cfg:1606
 msgid "Castle"
 msgstr "Замок"
 
 #. [terrain_type]: id=snow_castle
-#: data/core/terrain.cfg:1363
+#: data/core/terrain.cfg:1382
 #, fuzzy
 msgid "Snowy Castle"
 msgstr "Замок"
 
 #. [terrain_type]: id=ruin
-#: data/core/terrain.cfg:1395
+#: data/core/terrain.cfg:1414
 msgid "Ruin"
 msgstr "Руины"
 
 #. [terrain_type]: id=sunkenruin
-#: data/core/terrain.cfg:1406
+#: data/core/terrain.cfg:1425
 msgid "Sunken Ruin"
 msgstr "Затопленные руины"
 
 #. [terrain_type]: id=swampruin
-#: data/core/terrain.cfg:1418
+#: data/core/terrain.cfg:1437
 msgid "Swamp Ruin"
 msgstr "Болотные руины"
 
 #. [terrain_type]: id=sand_castle
-#: data/core/terrain.cfg:1430
+#: data/core/terrain.cfg:1449
 #, fuzzy
 msgid "Desert Castle"
 msgstr "Замок гномов"
@@ -565,27 +563,27 @@ msgstr "Замок гномов"
 #. [terrain_type]: id=sunken_keep
 #. [terrain_type]: id=swamp_keep
 #. [terrain_type]: id=keep_overlay
-#: data/core/terrain.cfg:1446 data/core/terrain.cfg:1459
-#: data/core/terrain.cfg:1472 data/core/terrain.cfg:1485
-#: data/core/terrain.cfg:1498 data/core/terrain.cfg:1509
-#: data/core/terrain.cfg:1522 data/core/terrain.cfg:1535
-#: data/core/terrain.cfg:1548 data/core/terrain.cfg:1561
-#: data/core/terrain.cfg:1575
+#: data/core/terrain.cfg:1465 data/core/terrain.cfg:1478
+#: data/core/terrain.cfg:1491 data/core/terrain.cfg:1504
+#: data/core/terrain.cfg:1517 data/core/terrain.cfg:1528
+#: data/core/terrain.cfg:1541 data/core/terrain.cfg:1554
+#: data/core/terrain.cfg:1567 data/core/terrain.cfg:1580
+#: data/core/terrain.cfg:1594
 msgid "Keep"
 msgstr "Укрытие"
 
 #. [terrain_type]: id=encampment_keep
-#: data/core/terrain.cfg:1447
+#: data/core/terrain.cfg:1466
 msgid "Encampment Keep"
 msgstr "Штаб лагеря"
 
 #. [terrain_type]: id=orcish_keep
-#: data/core/terrain.cfg:1460
+#: data/core/terrain.cfg:1479
 msgid "Fort Keep"
 msgstr "Цитадель форта"
 
 #. [terrain_type]: id=snow_orcish_keep
-#: data/core/terrain.cfg:1473
+#: data/core/terrain.cfg:1492
 #, fuzzy
 msgid "Snowy Fort Keep"
 msgstr "Цитадель форта"
@@ -593,28 +591,28 @@ msgstr "Цитадель форта"
 #. [terrain_type]: id=human_keep
 #. [terrain_type]: id=dwarven_keep
 #. [terrain_type]: id=swamp_keep
-#: data/core/terrain.cfg:1486 data/core/terrain.cfg:1523
-#: data/core/terrain.cfg:1562
+#: data/core/terrain.cfg:1505 data/core/terrain.cfg:1542
+#: data/core/terrain.cfg:1581
 msgid "Castle Keep"
 msgstr "Цитадель замка"
 
 #. [terrain_type]: id=elven_keep
-#: data/core/terrain.cfg:1510
+#: data/core/terrain.cfg:1529
 msgid "Elven Keep"
 msgstr "Укрытие эльфов"
 
 #. [terrain_type]: id=ruined_keep
-#: data/core/terrain.cfg:1536
+#: data/core/terrain.cfg:1555
 msgid "Ruined Castle Keep"
 msgstr "Цитадель разрушенного замка"
 
 #. [terrain_type]: id=sunken_keep
-#: data/core/terrain.cfg:1549
+#: data/core/terrain.cfg:1568
 msgid "Sunken Castle Keep"
 msgstr "Цитадель затопленного замка"
 
 #. [terrain_type]: id=desert_keep
-#: data/core/terrain.cfg:1597 data/core/terrain.cfg:1598
+#: data/core/terrain.cfg:1616 data/core/terrain.cfg:1617
 #, fuzzy
 msgid "Desert Keep"
 msgstr "Пустыня"
@@ -629,43 +627,38 @@ msgstr "Пустыня"
 #. [terrain_type]: id=bridgelava
 #. [terrain_type]: id=bridgelavadiag1
 #. [terrain_type]: id=bridglavadiag2
-#: data/core/terrain.cfg:1617 data/core/terrain.cfg:1628
-#: data/core/terrain.cfg:1639 data/core/terrain.cfg:1652
-#: data/core/terrain.cfg:1663 data/core/terrain.cfg:1674
-#: data/core/terrain.cfg:1687 data/core/terrain.cfg:1696
-#: data/core/terrain.cfg:1706 data/core/terrain.cfg:1718
-#: data/core/terrain.cfg:1728 data/core/terrain.cfg:1739
+#: data/core/terrain.cfg:1636 data/core/terrain.cfg:1647
+#: data/core/terrain.cfg:1658 data/core/terrain.cfg:1671
+#: data/core/terrain.cfg:1682 data/core/terrain.cfg:1693
+#: data/core/terrain.cfg:1706 data/core/terrain.cfg:1715
+#: data/core/terrain.cfg:1725 data/core/terrain.cfg:1737
+#: data/core/terrain.cfg:1747 data/core/terrain.cfg:1758
 msgid "Bridge"
 msgstr "Мост"
 
 #. [terrain_type]: id=off_map
-#: data/core/terrain.cfg:1757
+#: data/core/terrain.cfg:1776
 msgid "None"
 msgstr "Ничего"
 
 #. [toggle_button]: id=shroud
 #. [terrain_type]: id=shroud
-#: data/core/terrain.cfg:1766 data/gui/default/window/mp_create_game.cfg:471
+#: data/core/terrain.cfg:1785 data/gui/default/window/mp_create_game.cfg:471
 msgid "Shroud"
 msgstr "Пелена"
 
 #. [terrain_type]: id=fog
-#: data/core/terrain.cfg:1775
+#: data/core/terrain.cfg:1794
 msgid "Fog"
 msgstr "Туман"
 
-#. [terrain_type]: id=flat
-#: data/core/terrain.cfg:1789
-msgid "Flat"
-msgstr "Равнина"
-
 #. [terrain_type]: id=frozen
-#: data/core/terrain.cfg:1796
+#: data/core/terrain.cfg:1815
 msgid "Frozen"
 msgstr "Мерзлота"
 
 #. [terrain_type]: id=unwalkable
-#: data/core/terrain.cfg:1817
+#: data/core/terrain.cfg:1836
 msgid "Unwalkable"
 msgstr "Непроходимая местность"
 
@@ -834,7 +827,7 @@ msgstr "Создать"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_new_map.cfg:27 src/hotkeys.cpp:113
+#: data/gui/default/window/editor_new_map.cfg:27 src/hotkeys.cpp:115
 msgid "New Map"
 msgstr "Новая карта"
 
@@ -858,7 +851,7 @@ msgstr "Создать новую карту"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_resize_map.cfg:27 src/hotkeys.cpp:158
+#: data/gui/default/window/editor_resize_map.cfg:27 src/hotkeys.cpp:160
 msgid "Resize Map"
 msgstr "Изменить размер карты"
 
@@ -900,7 +893,7 @@ msgstr "Изменить размер карты"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_settings.cfg:38 src/hotkeys.cpp:111
+#: data/gui/default/window/editor_settings.cfg:38 src/hotkeys.cpp:113
 msgid "Editor Settings"
 msgstr "Настройки редактора"
 
@@ -1011,8 +1004,8 @@ msgstr "Трейс выполнения"
 #. [grid]
 #: data/gui/default/window/formula_debugger.cfg:226
 #: data/gui/default/window/lobby_main.cfg:660
-#: data/gui/default/window/title_screen.cfg:235 src/hotkeys.cpp:649
-#: src/hotkeys.cpp:946
+#: data/gui/default/window/title_screen.cfg:235 src/hotkeys.cpp:651
+#: src/hotkeys.cpp:954
 msgid "Quit"
 msgstr "Выйти"
 
@@ -1656,7 +1649,7 @@ msgstr "Выбрать"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=help
-#: data/gui/default/window/title_screen.cfg:149 src/hotkeys.cpp:189
+#: data/gui/default/window/title_screen.cfg:149 src/hotkeys.cpp:191
 msgid "Help"
 msgstr "Помощь"
 
@@ -1742,7 +1735,7 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:232 src/hotkeys.cpp:191
+#: data/gui/default/window/title_screen.cfg:232 src/hotkeys.cpp:193
 msgid "Change the language"
 msgstr "Изменить язык игры"
 
@@ -2477,20 +2470,16 @@ msgstr "Версия"
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "Обязательный виджет '$id' не определён"
 
-#: src/gui/widgets/settings.cpp:283
-msgid "Window not defined."
-msgstr "Окно не определено."
-
-#: src/gui/widgets/settings.cpp:386
+#: src/gui/widgets/settings.cpp:389
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr "Описание виджетов '$definition' не содержит описания для '$id'."
 
-#: src/gui/widgets/settings.cpp:442
+#: src/gui/widgets/settings.cpp:445
 msgid "No default gui defined."
 msgstr "GUI по умолчанию не определён."
 
-#: src/gui/widgets/settings.cpp:469
+#: src/gui/widgets/settings.cpp:472
 msgid "No state or draw section defined."
 msgstr "Не определёно состояние или секция отрисовки"
 
@@ -2555,7 +2544,7 @@ msgstr "Масштаб по умолчанию"
 msgid "Toggle Full Screen"
 msgstr "На весь экран"
 
-#: src/hotkeys.cpp:58 src/hotkeys.cpp:901
+#: src/hotkeys.cpp:58 src/hotkeys.cpp:909
 msgid "Screenshot"
 msgstr "Сделать скриншот"
 
@@ -2579,7 +2568,7 @@ msgstr "Переименовать бойца"
 msgid "Save Replay"
 msgstr "Сохранить повтор"
 
-#: src/hotkeys.cpp:65 src/hotkeys.cpp:115
+#: src/hotkeys.cpp:65 src/hotkeys.cpp:117
 msgid "Save Map"
 msgstr "Сохранить карту"
 
@@ -2703,239 +2692,247 @@ msgstr ""
 msgid "Delete last planned action"
 msgstr ""
 
-#: src/hotkeys.cpp:108
+#: src/hotkeys.cpp:106
+msgid "Move planned action toward queue beginning"
+msgstr ""
+
+#: src/hotkeys.cpp:107
+msgid "Move planned action toward queue end"
+msgstr ""
+
+#: src/hotkeys.cpp:110
 msgid "Quit to Desktop"
 msgstr "Выйти в ОС"
 
-#: src/hotkeys.cpp:109
+#: src/hotkeys.cpp:111
 msgid "Close Map"
 msgstr "Закрыть карту"
 
-#: src/hotkeys.cpp:110
+#: src/hotkeys.cpp:112
 msgid "Switch Map"
 msgstr "Сменить карту"
 
-#: src/hotkeys.cpp:112
+#: src/hotkeys.cpp:114
 msgid "Partial Undo"
 msgstr "Частичная отмена"
 
-#: src/hotkeys.cpp:114
+#: src/hotkeys.cpp:116
 msgid "Load Map"
 msgstr "Загрузить карту"
 
-#: src/hotkeys.cpp:116
+#: src/hotkeys.cpp:118
 msgid "Save Map As"
 msgstr "Сохранить карту как"
 
-#: src/hotkeys.cpp:117
+#: src/hotkeys.cpp:119
 msgid "Revert All Changes"
 msgstr "Просмотреть все изменения"
 
-#: src/hotkeys.cpp:118
+#: src/hotkeys.cpp:120
 msgid "Map Information"
 msgstr "Информация о карте"
 
-#: src/hotkeys.cpp:120
+#: src/hotkeys.cpp:122
 msgid "Swap fore- and background terrains"
 msgstr "Поменять местами основной и фоновой ландшафты"
 
-#: src/hotkeys.cpp:121
+#: src/hotkeys.cpp:123
 msgid "Next Tool"
 msgstr "Следующий инструмент"
 
-#: src/hotkeys.cpp:122
+#: src/hotkeys.cpp:124
 msgid "Paint Tool"
 msgstr "Инструмент «Кисть»"
 
-#: src/hotkeys.cpp:123
+#: src/hotkeys.cpp:125
 msgid "Fill Tool"
 msgstr "Инструмент «Заливка»"
 
-#: src/hotkeys.cpp:124
+#: src/hotkeys.cpp:126
 msgid "Selection Tool"
 msgstr "Инструмент выбора"
 
-#: src/hotkeys.cpp:126
+#: src/hotkeys.cpp:128
 msgid "Set Starting Positions Tool"
 msgstr "Инструмент «Начальная позиция»"
 
-#: src/hotkeys.cpp:127
+#: src/hotkeys.cpp:129
 msgid "Next Brush"
 msgstr "Следующая кисть"
 
-#: src/hotkeys.cpp:128
+#: src/hotkeys.cpp:130
 msgid "Default Brush"
 msgstr "Кисть по умолчанию"
 
-#: src/hotkeys.cpp:129
+#: src/hotkeys.cpp:131
 msgid "Cut"
 msgstr "Вырезать"
 
-#: src/hotkeys.cpp:130
+#: src/hotkeys.cpp:132
 msgid "Copy"
 msgstr "Копировать"
 
-#: src/hotkeys.cpp:131
+#: src/hotkeys.cpp:133
 msgid "Paste"
 msgstr "Вставить"
 
-#: src/hotkeys.cpp:132
+#: src/hotkeys.cpp:134
 msgid "Export selected coordinates to system clipboard"
 msgstr "Экспортировать координаты выбора в буфер обмена"
 
-#: src/hotkeys.cpp:134
+#: src/hotkeys.cpp:136
 msgid "Select All"
 msgstr "Выбрать всё"
 
-#: src/hotkeys.cpp:136
+#: src/hotkeys.cpp:138
 msgid "Select Inverse"
 msgstr "Выбрать инверсно"
 
-#: src/hotkeys.cpp:138
+#: src/hotkeys.cpp:140
 msgid "Select None"
 msgstr "Сбросить выбор"
 
-#: src/hotkeys.cpp:140
+#: src/hotkeys.cpp:142
 msgid "Rotate Clipboard Clockwise"
 msgstr "Повернуть буфер обмена по часовой"
 
-#: src/hotkeys.cpp:142
+#: src/hotkeys.cpp:144
 msgid "Rotate Clipboard Counter-Clockwise"
 msgstr "Повернуть буфер обмена против часовой"
 
-#: src/hotkeys.cpp:144
+#: src/hotkeys.cpp:146
 msgid "Flip Clipboard Horizontally"
 msgstr "Перевернуть буфер обмена по горизонтали"
 
-#: src/hotkeys.cpp:146
+#: src/hotkeys.cpp:148
 msgid "Flip Clipboard Vertically"
 msgstr "Перевернуть буфер обмена по вертикали"
 
-#: src/hotkeys.cpp:148
+#: src/hotkeys.cpp:150
 msgid "Rotate Selection"
 msgstr "Повернуть выделение"
 
-#: src/hotkeys.cpp:150
+#: src/hotkeys.cpp:152
 msgid "Flip Selection"
 msgstr "Отразить выбранное"
 
-#: src/hotkeys.cpp:152
+#: src/hotkeys.cpp:154
 msgid "Fill Selection"
 msgstr "Заполнить выделение"
 
-#: src/hotkeys.cpp:154
+#: src/hotkeys.cpp:156
 msgid "Generate Tiles In Selection"
 msgstr "Сгенерировать тайлы в выбранном"
 
-#: src/hotkeys.cpp:156
+#: src/hotkeys.cpp:158
 msgid "Randomize Tiles In Selection"
 msgstr "Случайные тайлы в выбранном"
 
-#: src/hotkeys.cpp:160
+#: src/hotkeys.cpp:162
 msgid "Rotate Map"
 msgstr "Повернуть карту"
 
-#: src/hotkeys.cpp:162
+#: src/hotkeys.cpp:164
 msgid "Generate Map"
 msgstr "Создать карту"
 
-#: src/hotkeys.cpp:164
+#: src/hotkeys.cpp:166
 msgid "Apply a Mask"
 msgstr "Применить маску"
 
-#: src/hotkeys.cpp:166
+#: src/hotkeys.cpp:168
 msgid "Create Mask"
 msgstr "Создать маску"
 
-#: src/hotkeys.cpp:168
+#: src/hotkeys.cpp:170
 msgid "Refresh Display"
 msgstr "Обновить экран"
 
-#: src/hotkeys.cpp:170
+#: src/hotkeys.cpp:172
 msgid "Update Terrain Transitions"
 msgstr "Обновить переходы тайлов"
 
-#: src/hotkeys.cpp:172
+#: src/hotkeys.cpp:174
 msgid "Auto-update Terrain Transitions"
 msgstr "Автоматически обновлять переходы тайлов"
 
-#: src/hotkeys.cpp:174
+#: src/hotkeys.cpp:176
 msgid "Refresh Image Cache"
 msgstr "Обновить кэш изображений"
 
-#: src/hotkeys.cpp:176
+#: src/hotkeys.cpp:178
 msgid "Draw Hex Coordinates"
 msgstr "Показывать координаты полей"
 
-#: src/hotkeys.cpp:178
+#: src/hotkeys.cpp:180
 msgid "Draw Terrain Codes"
 msgstr "Рисовать коды местностей"
 
-#: src/hotkeys.cpp:183
+#: src/hotkeys.cpp:185
 msgid "Delay Shroud Updates"
 msgstr "Задержать обновление пелены"
 
-#: src/hotkeys.cpp:184
+#: src/hotkeys.cpp:186
 msgid "Update Shroud Now"
 msgstr "Обновить пелену"
 
-#: src/hotkeys.cpp:185
+#: src/hotkeys.cpp:187
 msgid "Continue Move"
 msgstr "Продолжить движение"
 
-#: src/hotkeys.cpp:186
+#: src/hotkeys.cpp:188
 msgid "Find Label or Unit"
 msgstr "Найти метку или бойца"
 
-#: src/hotkeys.cpp:187
+#: src/hotkeys.cpp:189
 msgid "Speak to Ally"
 msgstr "Сказать союзникам"
 
-#: src/hotkeys.cpp:188
+#: src/hotkeys.cpp:190
 msgid "Speak to All"
 msgstr "Сказать всем"
 
-#: src/hotkeys.cpp:190
+#: src/hotkeys.cpp:192
 msgid "View Chat Log"
 msgstr "Смотреть лог чата"
 
-#: src/hotkeys.cpp:193
+#: src/hotkeys.cpp:195
 msgid "Enter user command"
 msgstr "Ввести команду пользователя"
 
-#: src/hotkeys.cpp:194
+#: src/hotkeys.cpp:196
 msgid "Custom command"
 msgstr "Пользовательская команда"
 
-#: src/hotkeys.cpp:195
+#: src/hotkeys.cpp:197
 msgid "Run AI formula"
 msgstr "Запустить формулу AI"
 
-#: src/hotkeys.cpp:196
+#: src/hotkeys.cpp:198
 msgid "Clear messages"
 msgstr "Очистить сообщения"
 
-#: src/hotkeys.cpp:198
+#: src/hotkeys.cpp:200
 msgid "User-Command#2"
 msgstr "Команда пользователя №2"
 
-#: src/hotkeys.cpp:199
+#: src/hotkeys.cpp:201
 msgid "User-Command#3"
 msgstr "Команда пользователя №3"
 
-#: src/hotkeys.cpp:649 src/hotkeys.cpp:946
+#: src/hotkeys.cpp:651 src/hotkeys.cpp:954
 msgid "Do you really want to quit?"
 msgstr "Вы действительно хотите выйти?"
 
-#: src/hotkeys.cpp:901
+#: src/hotkeys.cpp:909
 msgid "Map-Screenshot"
 msgstr "Скриншот карты"
 
-#: src/hotkeys.cpp:908
+#: src/hotkeys.cpp:916
 msgid "Screenshot done"
 msgstr "Скриншот готов"
 
-#: src/hotkeys.cpp:910
+#: src/hotkeys.cpp:918
 msgid "Screenshot failed"
 msgstr "Скриншот не удался"
 
@@ -3108,6 +3105,12 @@ msgstr ""
 #: src/wml_exception.cpp:76
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "В разделе '[$section|]' не задан обязательный параметр '$key|' ."
+
+#~ msgid "Cave path"
+#~ msgstr "Тропа в пещере"
+
+#~ msgid "Window not defined."
+#~ msgstr "Окно не определено."
 
 #~ msgid "River Ford"
 #~ msgstr "Брод"

@@ -279,7 +279,7 @@ v menu „Nastavení“.</p><div class="table"><a id="id311905"></a><p class="ti
     </td></tr><tr><td style="" align="left">
     Pravé („druhé“) tlačítko myši
     </td><td style="" align="left">
-    Hlavní menu, zrušení akce
+    Context menu, cancel action
     </td></tr><tr><td style="" align="left">
     Prostřední tlačítko myši
     </td><td style="" align="left">
@@ -496,7 +496,7 @@ chaotickou. Příslušnost ovlivňuje, jak dobře jednotka bojuje v různé denn
 doby. Na neutrální nemá vliv, zákonné zvýhodňuje ve den a znevýhodňuje v
 noci, pro chaotické platí opak.</p><p>Fáze „den“ a „noc“ označují dopoledne + odpoledne a první + druhou hlídku;
 jsou rozlišeny pozicemi slunce a měsíce v obrázku denní doby.</p><p>Tabulka ukazuje efekt různé denní doby na zranění způsobené zákonnými a
-chaotickými jednotkami:</p><div class="table"><a id="id312652"></a><p class="title"><b>Tabulka 2.2. Denní doba a síla útoků</b></p><div class="table-contents"><table summary="Denní doba a síla útoků" cellpadding="4px" style="border-collapse: collapse;border-top: 2px solid #527bbd; border-bottom: 2px solid #527bbd; "><colgroup><col align="left" /><col align="left" /><col align="left" /><col align="left" /><col align="left" /></colgroup><thead><tr><th style="" align="left">
+chaotickými jednotkami:</p><div class="table"><a id="id312651"></a><p class="title"><b>Tabulka 2.2. Denní doba a síla útoků</b></p><div class="table-contents"><table summary="Denní doba a síla útoků" cellpadding="4px" style="border-collapse: collapse;border-top: 2px solid #527bbd; border-bottom: 2px solid #527bbd; "><colgroup><col align="left" /><col align="left" /><col align="left" /><col align="left" /><col align="left" /></colgroup><thead><tr><th style="" align="left">
     Kolo
     </th><th style="" align="left">
     Obrázek
@@ -901,7 +901,7 @@ schopností „průbojnost“, které nepřátelské oblasti kontroly ignorují 
 se jimi pohybovat bez omezení. Jednotky nulté úrovně nejsou dost silné na
 vytváření oblasti kontroly, takže nepředstavují pro ostatní jednotky velkou
 překážku v pohybu.</p></div><div class="section" title="2.4.2. Koule"><div class="titlepage"><div><div><h3 class="title"><a id="orbs"></a>2.4.2. Koule</h3></div></div></div><p>Nahoře na ukazateli energie každé vámi ovládané jednotky je umístěna
-koule. Tato koule může nabývat různých barev:</p><div class="table"><a id="id314018"></a><p class="title"><b>Tabulka 2.4. Koule</b></p><div class="table-contents"><table summary="Koule" cellpadding="4px" style="border-collapse: collapse;border-top: 2px solid #527bbd; border-bottom: 2px solid #527bbd; "><colgroup><col align="left" /><col align="left" /><col align="left" /></colgroup><thead><tr><th style="" align="left">
+koule. Tato koule může nabývat různých barev:</p><div class="table"><a id="id314017"></a><p class="title"><b>Tabulka 2.4. Koule</b></p><div class="table-contents"><table summary="Koule" cellpadding="4px" style="border-collapse: collapse;border-top: 2px solid #527bbd; border-bottom: 2px solid #527bbd; "><colgroup><col align="left" /><col align="left" /><col align="left" /></colgroup><thead><tr><th style="" align="left">
     Koule
     </th><th style="" align="left">
     Obrázek
@@ -952,10 +952,11 @@ hrdiny. Zda a jak budou hrdinové odlišeni je volbou tvůrce tažení.</p></div
 jednotku a potom na nepřátelskou, na niž zamýšlíte útočit. Objeví se okno,
 které obsahuje další volby pro boj. Každá jednotky může bojovat nejméně
 jednou zbraní. Obecně lze zbraně rozlišit na dálkové (jako např. luky, praky
-a magii) a na blízko (meče, kopí, kyje...).</p><p>Pokud zaútočíte zbraní na blízko, nepřítel odpoví rovněž zbraní na blízko;
-stejně tak pro zbraně působící na dálku. Pokud však nemá žádnou zbraň
-odpovídajícího druhu, nebude moci odpovědět a útok je tak proveden prakticky
-beztrestně.</p><p>Různé druhy útoků způsobují při zásahu různé zranění. Každá zbraň použita
+a magii) a na blízko (meče, kopí, kyje...).</p><p>If you attack with a melee weapon, the enemy you attack will be able to
+strike back at you with a melee weapon. If you attack with a ranged weapon,
+the enemy will be able to strike back with a ranged weapon. If an enemy does
+not have a weapon of the same type as the one you attack with, they will be
+unable to strike back and do any damage to you in that fight.</p><p>Různé druhy útoků způsobují při zásahu různé zranění. Každá zbraň použita
 při útoku několikrát - tento počet je rovněž přesně určen. Například elfí
 bojovník způsobuje mečem poškození 5 životů při úspěšném zásahu a udeří
 4krát za jeden útok. To je psáno jako 5-4, tzn. 5 životů za zásah a 4 údery.</p><p>Každá jednotka má určitou šanci být zasažena v závislosti na terénu, na němž
@@ -1147,9 +1148,9 @@ představu než autoři, a tak dělejte to, co Vás bude nejvíce bavit! Pokud V
 baví načítat hru po každé chybě při pokusu o <span class="emphasis"><em>dokonalou</em></span>
 hru, v níž nepřijdete o žádné jednotky, není důvod tak neučinit!
 </li></ul></div><div class="section" title="3.2.1. Na začátku scénáře"><div class="titlepage"><div><div><h3 class="title"><a id="_at_the_start_of_a_scenario"></a>3.2.1. Na začátku scénáře</h3></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
-Nejdříve si přečtěte cíle scénáře. Někdy není nutné pobít všechny
-nepřátelské vůdce, stačí přežít po stanovený počet kol nebo získat určitý
-předmět.
+First, read the scenario objectives. Sometimes you do not have to kill enemy
+leaders; instead it is enough that you survive for a certain number of
+turns, or pick up a particular object.
 </li><li class="listitem">
 Prohlédněte si mapu: terén, pozice vůdců včetně Vašeho.
 </li><li class="listitem">
@@ -1209,9 +1210,9 @@ zbývající kola.
 </li><li class="listitem">
 Pobití všech nepřátelských vůdců obvykle znamená vítězství.
 </li></ul></div></div><div class="section" title="3.2.5. Obecnější rady"><div class="titlepage"><div><div><h3 class="title"><a id="_more_general_tips"></a>3.2.5. Obecnější rady</h3></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
-Po scénářích, sestávajících se ze strašlivé řeže (kde pořádně „dostáváte na
-frak“), obvykle následují volnější scénáře určené k opětovnému nashromáždění
-peněz a zkušených jednotek.
+After slaughtering scenarios (where you take lots of punishment) there are
+usually "breathing room" scenarios where you can rather easily gain some
+gold and experience (advanced units).
 </li><li class="listitem">
 Povýšené jednotky vyžadují vyšší žold, než na základní úrovni (1 zlatý na
 úroveň), výjimkou jsou věrné jednotky.

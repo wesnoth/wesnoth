@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.7.x-SVN\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-07-03 09:51+0200\n"
+"POT-Creation-Date: 2010-07-19 00:25+0200\n"
 "PO-Revision-Date: 2010-04-29 09:23+0900\n"
 "Last-Translator: IWAI, Masaharu <iwaim.sub@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
@@ -78,11 +78,6 @@ msgstr "沼地"
 #: data/core/terrain.cfg:130 data/core/terrain.cfg:167
 msgid "Grassland"
 msgstr "平原"
-
-#. [terrain_type]: id=grassland_flowers
-#: data/core/terrain.cfg:140
-msgid "Depreciated. Use and Embellihsment Overaly"
-msgstr ""
 
 #. [terrain_type]: id=savanna
 #: data/core/terrain.cfg:149
@@ -363,84 +358,87 @@ msgstr "照らされた場所"
 msgid "Cave"
 msgstr "洞窟"
 
+#. [terrain_type]: id=flagstones_dark
 #. [terrain_type]: id=cave_path
-#: data/core/terrain.cfg:728
-msgid "Cave path"
-msgstr "洞窟の通路"
+#. [terrain_type]: id=flat
+#: data/core/terrain.cfg:728 data/core/terrain.cfg:737
+#: data/core/terrain.cfg:1808
+msgid "Flat"
+msgstr "平地"
 
 #. [terrain_type]: id=fungus
-#: data/core/terrain.cfg:737
+#: data/core/terrain.cfg:746
 msgid "Mushroom Grove"
 msgstr "キノコの森"
 
 #. [terrain_type]: id=fungus_beam
-#: data/core/terrain.cfg:746
+#: data/core/terrain.cfg:755
 msgid "Mushroom Grove Lit"
 msgstr "照らされたキノコの森"
 
 #. [terrain_type]: id=rocky_cave
-#: data/core/terrain.cfg:757
+#: data/core/terrain.cfg:766
 msgid "Rockbound Cave"
 msgstr "岩に囲まれた洞窟"
 
 #. [terrain_type]: id=rails
 #. [terrain_type]: id=railsdiag1
 #. [terrain_type]: id=railsdiag2
-#: data/core/terrain.cfg:780 data/core/terrain.cfg:792
-#: data/core/terrain.cfg:804
+#: data/core/terrain.cfg:789 data/core/terrain.cfg:801
+#: data/core/terrain.cfg:813
 msgid "Mine Rail"
 msgstr ""
 
 #. [terrain_type]: id=canyon
-#: data/core/terrain.cfg:821
+#: data/core/terrain.cfg:830
 msgid "Chasm"
 msgstr "深い割目"
 
 #. [terrain_type]: id=abyss
-#: data/core/terrain.cfg:830
+#: data/core/terrain.cfg:849
 msgid "Ethereal Abyss"
 msgstr ""
 
 #. [terrain_type]: id=lava_chasm
-#: data/core/terrain.cfg:839
+#: data/core/terrain.cfg:858
 msgid "Lava chasm"
 msgstr "溶岩の深い割目"
 
 #. [terrain_type]: id=lava
-#: data/core/terrain.cfg:849
+#: data/core/terrain.cfg:868
 msgid "Lava"
 msgstr "溶岩"
 
 #. [terrain_type]: id=cloud
 #. [terrain_type]: id=cloud_snow
-#: data/core/terrain.cfg:864 data/core/terrain.cfg:882
+#: data/core/terrain.cfg:883 data/core/terrain.cfg:901
 msgid "Impassable Mountains"
 msgstr "通れない山"
 
 #. [terrain_type]: id=clouddesert
-#: data/core/terrain.cfg:873
+#: data/core/terrain.cfg:892
 msgid "Impassable Desert Mountains"
 msgstr "通れない砂漠の山"
 
 #. [terrain_type]: id=cavewall
-#: data/core/terrain.cfg:891
+#: data/core/terrain.cfg:910
 msgid "Cave Wall"
 msgstr "洞窟の壁"
 
 #. [terrain_type]: id=wall_stone
 #. [terrain_type]: id=wall_stone_lit
-#: data/core/terrain.cfg:900 data/core/terrain.cfg:909
+#: data/core/terrain.cfg:919 data/core/terrain.cfg:928
 msgid "Wall"
 msgstr "壁"
 
 #. [terrain_type]: id=impassable_overlay
 #. [terrain_type]: id=impassable
-#: data/core/terrain.cfg:919 data/core/terrain.cfg:1810
+#: data/core/terrain.cfg:938 data/core/terrain.cfg:1829
 msgid "Impassable"
 msgstr "通行不能"
 
 #. [terrain_type]: id=void
-#: data/core/terrain.cfg:930
+#: data/core/terrain.cfg:949
 msgid "Void"
 msgstr "空洞"
 
@@ -474,37 +472,37 @@ msgstr "空洞"
 #. [terrain_type]: id=mermen_village
 #. [terrain_type]: id=swamp_merfolk-village
 #. [terrain_type]: id=village
-#: data/core/terrain.cfg:946 data/core/terrain.cfg:958
-#: data/core/terrain.cfg:972 data/core/terrain.cfg:984
-#: data/core/terrain.cfg:996 data/core/terrain.cfg:1008
-#: data/core/terrain.cfg:1022 data/core/terrain.cfg:1034
-#: data/core/terrain.cfg:1048 data/core/terrain.cfg:1060
-#: data/core/terrain.cfg:1072 data/core/terrain.cfg:1084
-#: data/core/terrain.cfg:1096 data/core/terrain.cfg:1108
-#: data/core/terrain.cfg:1120 data/core/terrain.cfg:1132
-#: data/core/terrain.cfg:1144 data/core/terrain.cfg:1156
-#: data/core/terrain.cfg:1170 data/core/terrain.cfg:1182
-#: data/core/terrain.cfg:1194 data/core/terrain.cfg:1206
-#: data/core/terrain.cfg:1218 data/core/terrain.cfg:1230
-#: data/core/terrain.cfg:1242 data/core/terrain.cfg:1254
-#: data/core/terrain.cfg:1266 data/core/terrain.cfg:1280
-#: data/core/terrain.cfg:1291 data/core/terrain.cfg:1304
-#: data/core/terrain.cfg:1803
+#: data/core/terrain.cfg:965 data/core/terrain.cfg:977
+#: data/core/terrain.cfg:991 data/core/terrain.cfg:1003
+#: data/core/terrain.cfg:1015 data/core/terrain.cfg:1027
+#: data/core/terrain.cfg:1041 data/core/terrain.cfg:1053
+#: data/core/terrain.cfg:1067 data/core/terrain.cfg:1079
+#: data/core/terrain.cfg:1091 data/core/terrain.cfg:1103
+#: data/core/terrain.cfg:1115 data/core/terrain.cfg:1127
+#: data/core/terrain.cfg:1139 data/core/terrain.cfg:1151
+#: data/core/terrain.cfg:1163 data/core/terrain.cfg:1175
+#: data/core/terrain.cfg:1189 data/core/terrain.cfg:1201
+#: data/core/terrain.cfg:1213 data/core/terrain.cfg:1225
+#: data/core/terrain.cfg:1237 data/core/terrain.cfg:1249
+#: data/core/terrain.cfg:1261 data/core/terrain.cfg:1273
+#: data/core/terrain.cfg:1285 data/core/terrain.cfg:1299
+#: data/core/terrain.cfg:1310 data/core/terrain.cfg:1323
+#: data/core/terrain.cfg:1822
 msgid "Village"
 msgstr "村"
 
 #. [terrain_type]: id=encampment
-#: data/core/terrain.cfg:1320
+#: data/core/terrain.cfg:1339
 msgid "Encampment"
 msgstr "野営地"
 
 #. [terrain_type]: id=orcish_fort
-#: data/core/terrain.cfg:1331
+#: data/core/terrain.cfg:1350
 msgid "Fort"
 msgstr "砦"
 
 #. [terrain_type]: id=snow_orcish_fort
-#: data/core/terrain.cfg:1342
+#: data/core/terrain.cfg:1361
 #, fuzzy
 msgid "Snowy Fort"
 msgstr "雪の森"
@@ -513,34 +511,34 @@ msgstr "雪の森"
 #. [terrain_type]: id=elven_castle
 #. [terrain_type]: id=dwarven_castle
 #. [terrain_type]: id=castle_overlay
-#: data/core/terrain.cfg:1353 data/core/terrain.cfg:1373
-#: data/core/terrain.cfg:1384 data/core/terrain.cfg:1587
+#: data/core/terrain.cfg:1372 data/core/terrain.cfg:1392
+#: data/core/terrain.cfg:1403 data/core/terrain.cfg:1606
 msgid "Castle"
 msgstr "城"
 
 #. [terrain_type]: id=snow_castle
-#: data/core/terrain.cfg:1363
+#: data/core/terrain.cfg:1382
 #, fuzzy
 msgid "Snowy Castle"
 msgstr "城"
 
 #. [terrain_type]: id=ruin
-#: data/core/terrain.cfg:1395
+#: data/core/terrain.cfg:1414
 msgid "Ruin"
 msgstr "廃墟"
 
 #. [terrain_type]: id=sunkenruin
-#: data/core/terrain.cfg:1406
+#: data/core/terrain.cfg:1425
 msgid "Sunken Ruin"
 msgstr "水中の廃墟"
 
 #. [terrain_type]: id=swampruin
-#: data/core/terrain.cfg:1418
+#: data/core/terrain.cfg:1437
 msgid "Swamp Ruin"
 msgstr "沼の廃墟"
 
 #. [terrain_type]: id=sand_castle
-#: data/core/terrain.cfg:1430
+#: data/core/terrain.cfg:1449
 #, fuzzy
 msgid "Desert Castle"
 msgstr "城"
@@ -556,27 +554,27 @@ msgstr "城"
 #. [terrain_type]: id=sunken_keep
 #. [terrain_type]: id=swamp_keep
 #. [terrain_type]: id=keep_overlay
-#: data/core/terrain.cfg:1446 data/core/terrain.cfg:1459
-#: data/core/terrain.cfg:1472 data/core/terrain.cfg:1485
-#: data/core/terrain.cfg:1498 data/core/terrain.cfg:1509
-#: data/core/terrain.cfg:1522 data/core/terrain.cfg:1535
-#: data/core/terrain.cfg:1548 data/core/terrain.cfg:1561
-#: data/core/terrain.cfg:1575
+#: data/core/terrain.cfg:1465 data/core/terrain.cfg:1478
+#: data/core/terrain.cfg:1491 data/core/terrain.cfg:1504
+#: data/core/terrain.cfg:1517 data/core/terrain.cfg:1528
+#: data/core/terrain.cfg:1541 data/core/terrain.cfg:1554
+#: data/core/terrain.cfg:1567 data/core/terrain.cfg:1580
+#: data/core/terrain.cfg:1594
 msgid "Keep"
 msgstr "主塔"
 
 #. [terrain_type]: id=encampment_keep
-#: data/core/terrain.cfg:1447
+#: data/core/terrain.cfg:1466
 msgid "Encampment Keep"
 msgstr "野営地の主塔"
 
 #. [terrain_type]: id=orcish_keep
-#: data/core/terrain.cfg:1460
+#: data/core/terrain.cfg:1479
 msgid "Fort Keep"
 msgstr "砦の主塔"
 
 #. [terrain_type]: id=snow_orcish_keep
-#: data/core/terrain.cfg:1473
+#: data/core/terrain.cfg:1492
 #, fuzzy
 msgid "Snowy Fort Keep"
 msgstr "砦の主塔"
@@ -584,28 +582,28 @@ msgstr "砦の主塔"
 #. [terrain_type]: id=human_keep
 #. [terrain_type]: id=dwarven_keep
 #. [terrain_type]: id=swamp_keep
-#: data/core/terrain.cfg:1486 data/core/terrain.cfg:1523
-#: data/core/terrain.cfg:1562
+#: data/core/terrain.cfg:1505 data/core/terrain.cfg:1542
+#: data/core/terrain.cfg:1581
 msgid "Castle Keep"
 msgstr "城の主塔"
 
 #. [terrain_type]: id=elven_keep
-#: data/core/terrain.cfg:1510
+#: data/core/terrain.cfg:1529
 msgid "Elven Keep"
 msgstr "エルフの主塔"
 
 #. [terrain_type]: id=ruined_keep
-#: data/core/terrain.cfg:1536
+#: data/core/terrain.cfg:1555
 msgid "Ruined Castle Keep"
 msgstr "廃墟の城の主塔"
 
 #. [terrain_type]: id=sunken_keep
-#: data/core/terrain.cfg:1549
+#: data/core/terrain.cfg:1568
 msgid "Sunken Castle Keep"
 msgstr "水中の城の主塔"
 
 #. [terrain_type]: id=desert_keep
-#: data/core/terrain.cfg:1597 data/core/terrain.cfg:1598
+#: data/core/terrain.cfg:1616 data/core/terrain.cfg:1617
 #, fuzzy
 msgid "Desert Keep"
 msgstr "砂漠"
@@ -620,43 +618,38 @@ msgstr "砂漠"
 #. [terrain_type]: id=bridgelava
 #. [terrain_type]: id=bridgelavadiag1
 #. [terrain_type]: id=bridglavadiag2
-#: data/core/terrain.cfg:1617 data/core/terrain.cfg:1628
-#: data/core/terrain.cfg:1639 data/core/terrain.cfg:1652
-#: data/core/terrain.cfg:1663 data/core/terrain.cfg:1674
-#: data/core/terrain.cfg:1687 data/core/terrain.cfg:1696
-#: data/core/terrain.cfg:1706 data/core/terrain.cfg:1718
-#: data/core/terrain.cfg:1728 data/core/terrain.cfg:1739
+#: data/core/terrain.cfg:1636 data/core/terrain.cfg:1647
+#: data/core/terrain.cfg:1658 data/core/terrain.cfg:1671
+#: data/core/terrain.cfg:1682 data/core/terrain.cfg:1693
+#: data/core/terrain.cfg:1706 data/core/terrain.cfg:1715
+#: data/core/terrain.cfg:1725 data/core/terrain.cfg:1737
+#: data/core/terrain.cfg:1747 data/core/terrain.cfg:1758
 msgid "Bridge"
 msgstr "橋"
 
 #. [terrain_type]: id=off_map
-#: data/core/terrain.cfg:1757
+#: data/core/terrain.cfg:1776
 msgid "None"
 msgstr "なし"
 
 #. [toggle_button]: id=shroud
 #. [terrain_type]: id=shroud
-#: data/core/terrain.cfg:1766 data/gui/default/window/mp_create_game.cfg:471
+#: data/core/terrain.cfg:1785 data/gui/default/window/mp_create_game.cfg:471
 msgid "Shroud"
 msgstr "幕"
 
 #. [terrain_type]: id=fog
-#: data/core/terrain.cfg:1775
+#: data/core/terrain.cfg:1794
 msgid "Fog"
 msgstr "霧"
 
-#. [terrain_type]: id=flat
-#: data/core/terrain.cfg:1789
-msgid "Flat"
-msgstr "平地"
-
 #. [terrain_type]: id=frozen
-#: data/core/terrain.cfg:1796
+#: data/core/terrain.cfg:1815
 msgid "Frozen"
 msgstr "凍土"
 
 #. [terrain_type]: id=unwalkable
-#: data/core/terrain.cfg:1817
+#: data/core/terrain.cfg:1836
 msgid "Unwalkable"
 msgstr "歩行不能"
 
@@ -825,7 +818,7 @@ msgstr "生成"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_new_map.cfg:27 src/hotkeys.cpp:113
+#: data/gui/default/window/editor_new_map.cfg:27 src/hotkeys.cpp:115
 msgid "New Map"
 msgstr "新規マップ"
 
@@ -849,7 +842,7 @@ msgstr "新しいマップの作成"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_resize_map.cfg:27 src/hotkeys.cpp:158
+#: data/gui/default/window/editor_resize_map.cfg:27 src/hotkeys.cpp:160
 msgid "Resize Map"
 msgstr "マップのサイズを変更する"
 
@@ -891,7 +884,7 @@ msgstr "マップのサイズを変更"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_settings.cfg:38 src/hotkeys.cpp:111
+#: data/gui/default/window/editor_settings.cfg:38 src/hotkeys.cpp:113
 msgid "Editor Settings"
 msgstr "エディタの設定"
 
@@ -1002,8 +995,8 @@ msgstr "実行トレース"
 #. [grid]
 #: data/gui/default/window/formula_debugger.cfg:226
 #: data/gui/default/window/lobby_main.cfg:660
-#: data/gui/default/window/title_screen.cfg:235 src/hotkeys.cpp:649
-#: src/hotkeys.cpp:946
+#: data/gui/default/window/title_screen.cfg:235 src/hotkeys.cpp:651
+#: src/hotkeys.cpp:954
 msgid "Quit"
 msgstr "終了"
 
@@ -1648,7 +1641,7 @@ msgstr "選択"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=help
-#: data/gui/default/window/title_screen.cfg:149 src/hotkeys.cpp:189
+#: data/gui/default/window/title_screen.cfg:149 src/hotkeys.cpp:191
 msgid "Help"
 msgstr "ヘルプ"
 
@@ -1734,7 +1727,7 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:232 src/hotkeys.cpp:191
+#: data/gui/default/window/title_screen.cfg:232 src/hotkeys.cpp:193
 msgid "Change the language"
 msgstr "言語を変更します"
 
@@ -2468,20 +2461,16 @@ msgstr "バージョン"
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "委任ウィジェット「 $id 」がひとつも設定されていません。"
 
-#: src/gui/widgets/settings.cpp:283
-msgid "Window not defined."
-msgstr "ウィンドウが定義されていません。"
-
-#: src/gui/widgets/settings.cpp:386
+#: src/gui/widgets/settings.cpp:389
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr "ウィジェット定義「 $definition 」が「 $id 」の定義を含んでいません。"
 
-#: src/gui/widgets/settings.cpp:442
+#: src/gui/widgets/settings.cpp:445
 msgid "No default gui defined."
 msgstr "デフォルトの GUI がひとつも設定されていません。"
 
-#: src/gui/widgets/settings.cpp:469
+#: src/gui/widgets/settings.cpp:472
 msgid "No state or draw section defined."
 msgstr "状態もしくは描画セクションがひとつも設定されていません。"
 
@@ -2546,7 +2535,7 @@ msgstr "ズームを初期値に戻す"
 msgid "Toggle Full Screen"
 msgstr "フルスクリーン切り換え"
 
-#: src/hotkeys.cpp:58 src/hotkeys.cpp:901
+#: src/hotkeys.cpp:58 src/hotkeys.cpp:909
 msgid "Screenshot"
 msgstr "スクリーンショット"
 
@@ -2570,7 +2559,7 @@ msgstr "ユニット名を変更"
 msgid "Save Replay"
 msgstr "リプレイを保存"
 
-#: src/hotkeys.cpp:65 src/hotkeys.cpp:115
+#: src/hotkeys.cpp:65 src/hotkeys.cpp:117
 msgid "Save Map"
 msgstr "マップを保存"
 
@@ -2694,239 +2683,247 @@ msgstr ""
 msgid "Delete last planned action"
 msgstr ""
 
-#: src/hotkeys.cpp:108
+#: src/hotkeys.cpp:106
+msgid "Move planned action toward queue beginning"
+msgstr ""
+
+#: src/hotkeys.cpp:107
+msgid "Move planned action toward queue end"
+msgstr ""
+
+#: src/hotkeys.cpp:110
 msgid "Quit to Desktop"
 msgstr "デスクトップに戻る"
 
-#: src/hotkeys.cpp:109
+#: src/hotkeys.cpp:111
 msgid "Close Map"
 msgstr "マップを閉じる"
 
-#: src/hotkeys.cpp:110
+#: src/hotkeys.cpp:112
 msgid "Switch Map"
 msgstr "マップを切り替える"
 
-#: src/hotkeys.cpp:112
+#: src/hotkeys.cpp:114
 msgid "Partial Undo"
 msgstr "一部をアンドゥ"
 
-#: src/hotkeys.cpp:114
+#: src/hotkeys.cpp:116
 msgid "Load Map"
 msgstr "マップ読み込み"
 
-#: src/hotkeys.cpp:116
+#: src/hotkeys.cpp:118
 msgid "Save Map As"
 msgstr "名前をつけてマップを保存"
 
-#: src/hotkeys.cpp:117
+#: src/hotkeys.cpp:119
 msgid "Revert All Changes"
 msgstr "全ての変更を取り消す"
 
-#: src/hotkeys.cpp:118
+#: src/hotkeys.cpp:120
 msgid "Map Information"
 msgstr "マップ情報"
 
-#: src/hotkeys.cpp:120
+#: src/hotkeys.cpp:122
 msgid "Swap fore- and background terrains"
 msgstr "左右に割り当てられた地形を交換"
 
-#: src/hotkeys.cpp:121
+#: src/hotkeys.cpp:123
 msgid "Next Tool"
 msgstr "次のツール"
 
-#: src/hotkeys.cpp:122
+#: src/hotkeys.cpp:124
 msgid "Paint Tool"
 msgstr "ペイントツール"
 
-#: src/hotkeys.cpp:123
+#: src/hotkeys.cpp:125
 msgid "Fill Tool"
 msgstr "塗り潰しツール"
 
-#: src/hotkeys.cpp:124
+#: src/hotkeys.cpp:126
 msgid "Selection Tool"
 msgstr "選択ツール"
 
-#: src/hotkeys.cpp:126
+#: src/hotkeys.cpp:128
 msgid "Set Starting Positions Tool"
 msgstr "開始位置ツールを設定する"
 
-#: src/hotkeys.cpp:127
+#: src/hotkeys.cpp:129
 msgid "Next Brush"
 msgstr "次の筆"
 
-#: src/hotkeys.cpp:128
+#: src/hotkeys.cpp:130
 msgid "Default Brush"
 msgstr "デフォルトの筆"
 
-#: src/hotkeys.cpp:129
+#: src/hotkeys.cpp:131
 msgid "Cut"
 msgstr "切り取り"
 
-#: src/hotkeys.cpp:130
+#: src/hotkeys.cpp:132
 msgid "Copy"
 msgstr "コピー"
 
-#: src/hotkeys.cpp:131
+#: src/hotkeys.cpp:133
 msgid "Paste"
 msgstr "貼り付け"
 
-#: src/hotkeys.cpp:132
+#: src/hotkeys.cpp:134
 msgid "Export selected coordinates to system clipboard"
 msgstr "選択した座標をクリップボードにコピー"
 
-#: src/hotkeys.cpp:134
+#: src/hotkeys.cpp:136
 msgid "Select All"
 msgstr "全て選択"
 
-#: src/hotkeys.cpp:136
+#: src/hotkeys.cpp:138
 msgid "Select Inverse"
 msgstr "選択領域を反転"
 
-#: src/hotkeys.cpp:138
+#: src/hotkeys.cpp:140
 msgid "Select None"
 msgstr "選択領域を解除"
 
-#: src/hotkeys.cpp:140
+#: src/hotkeys.cpp:142
 msgid "Rotate Clipboard Clockwise"
 msgstr "クリップボードを時計回りに回転"
 
-#: src/hotkeys.cpp:142
+#: src/hotkeys.cpp:144
 msgid "Rotate Clipboard Counter-Clockwise"
 msgstr "クリップボードを反時計回りに回転"
 
-#: src/hotkeys.cpp:144
+#: src/hotkeys.cpp:146
 msgid "Flip Clipboard Horizontally"
 msgstr "クリップボードを水平反転"
 
-#: src/hotkeys.cpp:146
+#: src/hotkeys.cpp:148
 msgid "Flip Clipboard Vertically"
 msgstr "クリップボードを垂直反転"
 
-#: src/hotkeys.cpp:148
+#: src/hotkeys.cpp:150
 msgid "Rotate Selection"
 msgstr "選択領域を反転させる"
 
-#: src/hotkeys.cpp:150
+#: src/hotkeys.cpp:152
 msgid "Flip Selection"
 msgstr "選択領域を反転する"
 
-#: src/hotkeys.cpp:152
+#: src/hotkeys.cpp:154
 msgid "Fill Selection"
 msgstr "選択領域を塗りつぶす"
 
-#: src/hotkeys.cpp:154
+#: src/hotkeys.cpp:156
 msgid "Generate Tiles In Selection"
 msgstr "選択領域のタイルを生成する"
 
-#: src/hotkeys.cpp:156
+#: src/hotkeys.cpp:158
 msgid "Randomize Tiles In Selection"
 msgstr "選択領域のタイルをランダム化"
 
-#: src/hotkeys.cpp:160
+#: src/hotkeys.cpp:162
 msgid "Rotate Map"
 msgstr "マップを回転"
 
-#: src/hotkeys.cpp:162
+#: src/hotkeys.cpp:164
 msgid "Generate Map"
 msgstr "マップを生成"
 
-#: src/hotkeys.cpp:164
+#: src/hotkeys.cpp:166
 msgid "Apply a Mask"
 msgstr "マスクを適用"
 
-#: src/hotkeys.cpp:166
+#: src/hotkeys.cpp:168
 msgid "Create Mask"
 msgstr "マスクを作成"
 
-#: src/hotkeys.cpp:168
+#: src/hotkeys.cpp:170
 msgid "Refresh Display"
 msgstr "画面を再描画"
 
-#: src/hotkeys.cpp:170
+#: src/hotkeys.cpp:172
 msgid "Update Terrain Transitions"
 msgstr "地形のつながりを更新"
 
-#: src/hotkeys.cpp:172
+#: src/hotkeys.cpp:174
 msgid "Auto-update Terrain Transitions"
 msgstr "地形のつながりを自動的に更新"
 
-#: src/hotkeys.cpp:174
+#: src/hotkeys.cpp:176
 msgid "Refresh Image Cache"
 msgstr "イメージキャッシュを更新"
 
-#: src/hotkeys.cpp:176
+#: src/hotkeys.cpp:178
 msgid "Draw Hex Coordinates"
 msgstr "ヘクスの座標を描画"
 
-#: src/hotkeys.cpp:178
+#: src/hotkeys.cpp:180
 msgid "Draw Terrain Codes"
 msgstr "地形コードを描画"
 
-#: src/hotkeys.cpp:183
+#: src/hotkeys.cpp:185
 msgid "Delay Shroud Updates"
 msgstr "幕の更新を遅らせる"
 
-#: src/hotkeys.cpp:184
+#: src/hotkeys.cpp:186
 msgid "Update Shroud Now"
 msgstr "幕を今すぐ更新する"
 
-#: src/hotkeys.cpp:185
+#: src/hotkeys.cpp:187
 msgid "Continue Move"
 msgstr "移動を続ける"
 
-#: src/hotkeys.cpp:186
+#: src/hotkeys.cpp:188
 msgid "Find Label or Unit"
 msgstr "ラベルとユニットの検索"
 
-#: src/hotkeys.cpp:187
+#: src/hotkeys.cpp:189
 msgid "Speak to Ally"
 msgstr "同盟軍に話す"
 
-#: src/hotkeys.cpp:188
+#: src/hotkeys.cpp:190
 msgid "Speak to All"
 msgstr "全員に話す"
 
-#: src/hotkeys.cpp:190
+#: src/hotkeys.cpp:192
 msgid "View Chat Log"
 msgstr "チャットログ表示"
 
-#: src/hotkeys.cpp:193
+#: src/hotkeys.cpp:195
 msgid "Enter user command"
 msgstr "ユーザーコマンドを入力"
 
-#: src/hotkeys.cpp:194
+#: src/hotkeys.cpp:196
 msgid "Custom command"
 msgstr "カスタムコマンド"
 
-#: src/hotkeys.cpp:195
+#: src/hotkeys.cpp:197
 msgid "Run AI formula"
 msgstr "AI の構文を走らせる"
 
-#: src/hotkeys.cpp:196
+#: src/hotkeys.cpp:198
 msgid "Clear messages"
 msgstr "メッセージを消去"
 
-#: src/hotkeys.cpp:198
+#: src/hotkeys.cpp:200
 msgid "User-Command#2"
 msgstr "ユーザーコマンド#2"
 
-#: src/hotkeys.cpp:199
+#: src/hotkeys.cpp:201
 msgid "User-Command#3"
 msgstr "ユーザーコマンド#3"
 
-#: src/hotkeys.cpp:649 src/hotkeys.cpp:946
+#: src/hotkeys.cpp:651 src/hotkeys.cpp:954
 msgid "Do you really want to quit?"
 msgstr "本当に終了しますか？"
 
-#: src/hotkeys.cpp:901
+#: src/hotkeys.cpp:909
 msgid "Map-Screenshot"
 msgstr "マップのスクリーンショット"
 
-#: src/hotkeys.cpp:908
+#: src/hotkeys.cpp:916
 msgid "Screenshot done"
 msgstr "スクリーンショット取得"
 
-#: src/hotkeys.cpp:910
+#: src/hotkeys.cpp:918
 msgid "Screenshot failed"
 msgstr "スクリーンショット取得失敗"
 
@@ -3100,6 +3097,12 @@ msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr ""
 "「 [$section|] 」セクションにおいて必須のキー「 $key| 」が設定されていませ"
 "ん。"
+
+#~ msgid "Cave path"
+#~ msgstr "洞窟の通路"
+
+#~ msgid "Window not defined."
+#~ msgstr "ウィンドウが定義されていません。"
 
 #~ msgid "River Ford"
 #~ msgstr "川の浅瀬"

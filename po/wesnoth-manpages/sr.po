@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-manpages\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-05-30 18:23+0300\n"
+"POT-Creation-Date: 2010-07-19 00:41+0300\n"
 "PO-Revision-Date: 2010-02-22 23:54+0100\n"
 "Last-Translator: Dalibor Djuric <dalibor.djuric@mozilla-srbija.org>\n"
 "Language-Team: Serbian\n"
@@ -160,7 +160,7 @@ msgstr "исписује путању корисничког поставног 
 #. type: TP
 #: ../../doc/man/wesnoth.6:62
 #, no-wrap
-msgid "B<-datadir E<lt>directoryE<gt>>"
+msgid "B<--data-dir E<lt>directoryE<gt>>"
 msgstr ""
 
 #. type: Plain text
@@ -191,9 +191,13 @@ msgstr "B<-e, --editor \\ датотека>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:75
+#, fuzzy
+#| msgid ""
+#| "start the in-game map editor directly. If I<file> is specified, "
+#| "equivalent to B<-e --load>"
 msgid ""
 "start the in-game map editor directly. If I<file> is specified, equivalent "
-"to B<-e --load>"
+"to B<-l --load>"
 msgstr ""
 "директно покреће уређивач мапа у игри. Ако је задата I<датотека>, истоветно "
 "са B<-e --load>."
@@ -761,9 +765,11 @@ msgid "SEE ALSO"
 msgstr "ПОГЛЕДАТИ ЈОШ"
 
 #. type: Plain text
-#: ../../doc/man/wesnoth.6:277
-msgid "B<wesnoth_editor>(6), B<wesnothd>(6)"
-msgstr "B<wesnoth_editor>(6), B<wesnothd>(6)"
+#: ../../doc/man/wesnoth.6:276
+#, fuzzy
+#| msgid "wesnothd"
+msgid "B<wesnothd>(6)."
+msgstr "wesnothd"
 
 #. type: TH
 #: ../../doc/man/wesnothd.6:16
@@ -1547,9 +1553,17 @@ msgstr ""
 "E<lt>cyril@bouthors.orgE<gt>."
 
 #. type: Plain text
-#: ../../doc/man/wesnothd.6:287
-msgid "B<wesnoth>(6), B<wesnoth_editor>(6)"
-msgstr "B<wesnoth>(6), B<wesnoth_editor>(6)"
+#: ../../doc/man/wesnothd.6:286
+#, fuzzy
+#| msgid "wesnoth"
+msgid "B<wesnoth>(6)."
+msgstr "wesnoth"
+
+#~ msgid "B<wesnoth_editor>(6), B<wesnothd>(6)"
+#~ msgstr "B<wesnoth_editor>(6), B<wesnothd>(6)"
+
+#~ msgid "B<wesnoth>(6), B<wesnoth_editor>(6)"
+#~ msgstr "B<wesnoth>(6), B<wesnoth_editor>(6)"
 
 #~ msgid "B<-c, --campaign>"
 #~ msgstr "B<-c, --campaign>"

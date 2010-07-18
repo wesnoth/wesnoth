@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-07-03 09:51+0200\n"
+"POT-Creation-Date: 2010-07-19 00:25+0200\n"
 "PO-Revision-Date: 2008-03-01 17:08+0200\n"
 "Last-Translator: Aleksej Korgenkov <grimpanto@mail.ru>\n"
 "Language-Team: none\n"
@@ -74,11 +74,6 @@ msgstr "Marĉo"
 #: data/core/terrain.cfg:130 data/core/terrain.cfg:167
 msgid "Grassland"
 msgstr "Herbejo"
-
-#. [terrain_type]: id=grassland_flowers
-#: data/core/terrain.cfg:140
-msgid "Depreciated. Use and Embellihsment Overaly"
-msgstr ""
 
 #. [terrain_type]: id=savanna
 #: data/core/terrain.cfg:149
@@ -374,87 +369,89 @@ msgstr ""
 msgid "Cave"
 msgstr "Kaverno"
 
+#. [terrain_type]: id=flagstones_dark
 #. [terrain_type]: id=cave_path
-#: data/core/terrain.cfg:728
-#, fuzzy
-msgid "Cave path"
-msgstr "Lumigita Kaverno"
+#. [terrain_type]: id=flat
+#: data/core/terrain.cfg:728 data/core/terrain.cfg:737
+#: data/core/terrain.cfg:1808
+msgid "Flat"
+msgstr ""
 
 #. [terrain_type]: id=fungus
-#: data/core/terrain.cfg:737
+#: data/core/terrain.cfg:746
 msgid "Mushroom Grove"
 msgstr "Funga Bosko"
 
 #. [terrain_type]: id=fungus_beam
-#: data/core/terrain.cfg:746
+#: data/core/terrain.cfg:755
 msgid "Mushroom Grove Lit"
 msgstr "Lumigita Funga Bosko"
 
 #. [terrain_type]: id=rocky_cave
-#: data/core/terrain.cfg:757
+#: data/core/terrain.cfg:766
 msgid "Rockbound Cave"
 msgstr "Ŝtona kaverno"
 
 #. [terrain_type]: id=rails
 #. [terrain_type]: id=railsdiag1
 #. [terrain_type]: id=railsdiag2
-#: data/core/terrain.cfg:780 data/core/terrain.cfg:792
-#: data/core/terrain.cfg:804
+#: data/core/terrain.cfg:789 data/core/terrain.cfg:801
+#: data/core/terrain.cfg:813
 msgid "Mine Rail"
 msgstr ""
 
 #. [terrain_type]: id=canyon
-#: data/core/terrain.cfg:821
+#: data/core/terrain.cfg:830
 msgid "Chasm"
 msgstr "Abismo"
 
 #. [terrain_type]: id=abyss
-#: data/core/terrain.cfg:830
+#: data/core/terrain.cfg:849
 msgid "Ethereal Abyss"
 msgstr ""
 
 #. [terrain_type]: id=lava_chasm
-#: data/core/terrain.cfg:839
+#: data/core/terrain.cfg:858
 msgid "Lava chasm"
 msgstr "Lafa abismo"
 
 #. [terrain_type]: id=lava
-#: data/core/terrain.cfg:849
+#: data/core/terrain.cfg:868
 msgid "Lava"
 msgstr "Lafo"
 
 #. [terrain_type]: id=cloud
 #. [terrain_type]: id=cloud_snow
-#: data/core/terrain.cfg:864 data/core/terrain.cfg:882
+#: data/core/terrain.cfg:883 data/core/terrain.cfg:901
 msgid "Impassable Mountains"
 msgstr "Netrapaseblaj Montoj"
 
 #. [terrain_type]: id=clouddesert
-#: data/core/terrain.cfg:873
+#: data/core/terrain.cfg:892
 msgid "Impassable Desert Mountains"
 msgstr "Netrapaseblaj Dezertaj Montoj"
 
 #. [terrain_type]: id=cavewall
-#: data/core/terrain.cfg:891
+#: data/core/terrain.cfg:910
 msgid "Cave Wall"
 msgstr "Muro de Kaverno"
 
 #. [terrain_type]: id=wall_stone
 #. [terrain_type]: id=wall_stone_lit
-#: data/core/terrain.cfg:900 data/core/terrain.cfg:909
+#: data/core/terrain.cfg:919 data/core/terrain.cfg:928
 #, fuzzy
 msgid "Wall"
 msgstr "Muro de Kaverno"
 
 #. [terrain_type]: id=impassable_overlay
 #. [terrain_type]: id=impassable
-#: data/core/terrain.cfg:919 data/core/terrain.cfg:1810
+#: data/core/terrain.cfg:938 data/core/terrain.cfg:1829
 #, fuzzy
 msgid "Impassable"
 msgstr "Netrapaseblaj Montoj"
 
 #. [terrain_type]: id=void
-#: data/core/terrain.cfg:930
+#: data/core/terrain.cfg:949
 msgid "Void"
 msgstr "Vaka"
 
@@ -488,38 +485,38 @@ msgstr "Vaka"
 #. [terrain_type]: id=mermen_village
 #. [terrain_type]: id=swamp_merfolk-village
 #. [terrain_type]: id=village
-#: data/core/terrain.cfg:946 data/core/terrain.cfg:958
-#: data/core/terrain.cfg:972 data/core/terrain.cfg:984
-#: data/core/terrain.cfg:996 data/core/terrain.cfg:1008
-#: data/core/terrain.cfg:1022 data/core/terrain.cfg:1034
-#: data/core/terrain.cfg:1048 data/core/terrain.cfg:1060
-#: data/core/terrain.cfg:1072 data/core/terrain.cfg:1084
-#: data/core/terrain.cfg:1096 data/core/terrain.cfg:1108
-#: data/core/terrain.cfg:1120 data/core/terrain.cfg:1132
-#: data/core/terrain.cfg:1144 data/core/terrain.cfg:1156
-#: data/core/terrain.cfg:1170 data/core/terrain.cfg:1182
-#: data/core/terrain.cfg:1194 data/core/terrain.cfg:1206
-#: data/core/terrain.cfg:1218 data/core/terrain.cfg:1230
-#: data/core/terrain.cfg:1242 data/core/terrain.cfg:1254
-#: data/core/terrain.cfg:1266 data/core/terrain.cfg:1280
-#: data/core/terrain.cfg:1291 data/core/terrain.cfg:1304
-#: data/core/terrain.cfg:1803
+#: data/core/terrain.cfg:965 data/core/terrain.cfg:977
+#: data/core/terrain.cfg:991 data/core/terrain.cfg:1003
+#: data/core/terrain.cfg:1015 data/core/terrain.cfg:1027
+#: data/core/terrain.cfg:1041 data/core/terrain.cfg:1053
+#: data/core/terrain.cfg:1067 data/core/terrain.cfg:1079
+#: data/core/terrain.cfg:1091 data/core/terrain.cfg:1103
+#: data/core/terrain.cfg:1115 data/core/terrain.cfg:1127
+#: data/core/terrain.cfg:1139 data/core/terrain.cfg:1151
+#: data/core/terrain.cfg:1163 data/core/terrain.cfg:1175
+#: data/core/terrain.cfg:1189 data/core/terrain.cfg:1201
+#: data/core/terrain.cfg:1213 data/core/terrain.cfg:1225
+#: data/core/terrain.cfg:1237 data/core/terrain.cfg:1249
+#: data/core/terrain.cfg:1261 data/core/terrain.cfg:1273
+#: data/core/terrain.cfg:1285 data/core/terrain.cfg:1299
+#: data/core/terrain.cfg:1310 data/core/terrain.cfg:1323
+#: data/core/terrain.cfg:1822
 msgid "Village"
 msgstr "Vilaĝo"
 
 #. [terrain_type]: id=encampment
-#: data/core/terrain.cfg:1320
+#: data/core/terrain.cfg:1339
 msgid "Encampment"
 msgstr "Tendaro"
 
 #. [terrain_type]: id=orcish_fort
-#: data/core/terrain.cfg:1331
+#: data/core/terrain.cfg:1350
 #, fuzzy
 msgid "Fort"
 msgstr "Arbaro"
 
 #. [terrain_type]: id=snow_orcish_fort
-#: data/core/terrain.cfg:1342
+#: data/core/terrain.cfg:1361
 #, fuzzy
 msgid "Snowy Fort"
 msgstr "Neĝa Arbaro"
@@ -528,34 +525,34 @@ msgstr "Neĝa Arbaro"
 #. [terrain_type]: id=elven_castle
 #. [terrain_type]: id=dwarven_castle
 #. [terrain_type]: id=castle_overlay
-#: data/core/terrain.cfg:1353 data/core/terrain.cfg:1373
-#: data/core/terrain.cfg:1384 data/core/terrain.cfg:1587
+#: data/core/terrain.cfg:1372 data/core/terrain.cfg:1392
+#: data/core/terrain.cfg:1403 data/core/terrain.cfg:1606
 msgid "Castle"
 msgstr "Kastelo"
 
 #. [terrain_type]: id=snow_castle
-#: data/core/terrain.cfg:1363
+#: data/core/terrain.cfg:1382
 #, fuzzy
 msgid "Snowy Castle"
 msgstr "Kastelo"
 
 #. [terrain_type]: id=ruin
-#: data/core/terrain.cfg:1395
+#: data/core/terrain.cfg:1414
 msgid "Ruin"
 msgstr "Ruino"
 
 #. [terrain_type]: id=sunkenruin
-#: data/core/terrain.cfg:1406
+#: data/core/terrain.cfg:1425
 msgid "Sunken Ruin"
 msgstr "Subakvigita Ruino"
 
 #. [terrain_type]: id=swampruin
-#: data/core/terrain.cfg:1418
+#: data/core/terrain.cfg:1437
 msgid "Swamp Ruin"
 msgstr "Marĉa Ruino"
 
 #. [terrain_type]: id=sand_castle
-#: data/core/terrain.cfg:1430
+#: data/core/terrain.cfg:1449
 #, fuzzy
 msgid "Desert Castle"
 msgstr "Kastelo"
@@ -571,29 +568,29 @@ msgstr "Kastelo"
 #. [terrain_type]: id=sunken_keep
 #. [terrain_type]: id=swamp_keep
 #. [terrain_type]: id=keep_overlay
-#: data/core/terrain.cfg:1446 data/core/terrain.cfg:1459
-#: data/core/terrain.cfg:1472 data/core/terrain.cfg:1485
-#: data/core/terrain.cfg:1498 data/core/terrain.cfg:1509
-#: data/core/terrain.cfg:1522 data/core/terrain.cfg:1535
-#: data/core/terrain.cfg:1548 data/core/terrain.cfg:1561
-#: data/core/terrain.cfg:1575
+#: data/core/terrain.cfg:1465 data/core/terrain.cfg:1478
+#: data/core/terrain.cfg:1491 data/core/terrain.cfg:1504
+#: data/core/terrain.cfg:1517 data/core/terrain.cfg:1528
+#: data/core/terrain.cfg:1541 data/core/terrain.cfg:1554
+#: data/core/terrain.cfg:1567 data/core/terrain.cfg:1580
+#: data/core/terrain.cfg:1594
 msgid "Keep"
 msgstr "Defendejo"
 
 #. [terrain_type]: id=encampment_keep
-#: data/core/terrain.cfg:1447
+#: data/core/terrain.cfg:1466
 #, fuzzy
 msgid "Encampment Keep"
 msgstr "Tendaro"
 
 #. [terrain_type]: id=orcish_keep
-#: data/core/terrain.cfg:1460
+#: data/core/terrain.cfg:1479
 #, fuzzy
 msgid "Fort Keep"
 msgstr "Defendejo"
 
 #. [terrain_type]: id=snow_orcish_keep
-#: data/core/terrain.cfg:1473
+#: data/core/terrain.cfg:1492
 #, fuzzy
 msgid "Snowy Fort Keep"
 msgstr "Defendejo"
@@ -601,29 +598,29 @@ msgstr "Defendejo"
 #. [terrain_type]: id=human_keep
 #. [terrain_type]: id=dwarven_keep
 #. [terrain_type]: id=swamp_keep
-#: data/core/terrain.cfg:1486 data/core/terrain.cfg:1523
-#: data/core/terrain.cfg:1562
+#: data/core/terrain.cfg:1505 data/core/terrain.cfg:1542
+#: data/core/terrain.cfg:1581
 #, fuzzy
 msgid "Castle Keep"
 msgstr "Kastelo"
 
 #. [terrain_type]: id=elven_keep
-#: data/core/terrain.cfg:1510
+#: data/core/terrain.cfg:1529
 msgid "Elven Keep"
 msgstr ""
 
 #. [terrain_type]: id=ruined_keep
-#: data/core/terrain.cfg:1536
+#: data/core/terrain.cfg:1555
 msgid "Ruined Castle Keep"
 msgstr ""
 
 #. [terrain_type]: id=sunken_keep
-#: data/core/terrain.cfg:1549
+#: data/core/terrain.cfg:1568
 msgid "Sunken Castle Keep"
 msgstr ""
 
 #. [terrain_type]: id=desert_keep
-#: data/core/terrain.cfg:1597 data/core/terrain.cfg:1598
+#: data/core/terrain.cfg:1616 data/core/terrain.cfg:1617
 #, fuzzy
 msgid "Desert Keep"
 msgstr "Dezerto"
@@ -638,43 +635,38 @@ msgstr "Dezerto"
 #. [terrain_type]: id=bridgelava
 #. [terrain_type]: id=bridgelavadiag1
 #. [terrain_type]: id=bridglavadiag2
-#: data/core/terrain.cfg:1617 data/core/terrain.cfg:1628
-#: data/core/terrain.cfg:1639 data/core/terrain.cfg:1652
-#: data/core/terrain.cfg:1663 data/core/terrain.cfg:1674
-#: data/core/terrain.cfg:1687 data/core/terrain.cfg:1696
-#: data/core/terrain.cfg:1706 data/core/terrain.cfg:1718
-#: data/core/terrain.cfg:1728 data/core/terrain.cfg:1739
+#: data/core/terrain.cfg:1636 data/core/terrain.cfg:1647
+#: data/core/terrain.cfg:1658 data/core/terrain.cfg:1671
+#: data/core/terrain.cfg:1682 data/core/terrain.cfg:1693
+#: data/core/terrain.cfg:1706 data/core/terrain.cfg:1715
+#: data/core/terrain.cfg:1725 data/core/terrain.cfg:1737
+#: data/core/terrain.cfg:1747 data/core/terrain.cfg:1758
 msgid "Bridge"
 msgstr "Ponto"
 
 #. [terrain_type]: id=off_map
-#: data/core/terrain.cfg:1757
+#: data/core/terrain.cfg:1776
 msgid "None"
 msgstr "Neniu"
 
 #. [toggle_button]: id=shroud
 #. [terrain_type]: id=shroud
-#: data/core/terrain.cfg:1766 data/gui/default/window/mp_create_game.cfg:471
+#: data/core/terrain.cfg:1785 data/gui/default/window/mp_create_game.cfg:471
 msgid "Shroud"
 msgstr "Vualo"
 
 #. [terrain_type]: id=fog
-#: data/core/terrain.cfg:1775
+#: data/core/terrain.cfg:1794
 msgid "Fog"
 msgstr "Nebulo"
 
-#. [terrain_type]: id=flat
-#: data/core/terrain.cfg:1789
-msgid "Flat"
-msgstr ""
-
 #. [terrain_type]: id=frozen
-#: data/core/terrain.cfg:1796
+#: data/core/terrain.cfg:1815
 msgid "Frozen"
 msgstr ""
 
 #. [terrain_type]: id=unwalkable
-#: data/core/terrain.cfg:1817
+#: data/core/terrain.cfg:1836
 msgid "Unwalkable"
 msgstr ""
 
@@ -852,7 +844,7 @@ msgstr "Generi Novan Mapon"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_new_map.cfg:27 src/hotkeys.cpp:113
+#: data/gui/default/window/editor_new_map.cfg:27 src/hotkeys.cpp:115
 msgid "New Map"
 msgstr "Nova mapo"
 
@@ -877,7 +869,7 @@ msgstr "Krei Novan Mapon"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_resize_map.cfg:27 src/hotkeys.cpp:158
+#: data/gui/default/window/editor_resize_map.cfg:27 src/hotkeys.cpp:160
 msgid "Resize Map"
 msgstr "Ŝanĝi grandecon de mapo"
 
@@ -924,7 +916,7 @@ msgstr "Ŝanĝi grandecon de mapo"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_settings.cfg:38 src/hotkeys.cpp:111
+#: data/gui/default/window/editor_settings.cfg:38 src/hotkeys.cpp:113
 #, fuzzy
 msgid "Editor Settings"
 msgstr "Klavkomandaj preferoj"
@@ -1044,8 +1036,8 @@ msgstr ""
 #. [grid]
 #: data/gui/default/window/formula_debugger.cfg:226
 #: data/gui/default/window/lobby_main.cfg:660
-#: data/gui/default/window/title_screen.cfg:235 src/hotkeys.cpp:649
-#: src/hotkeys.cpp:946
+#: data/gui/default/window/title_screen.cfg:235 src/hotkeys.cpp:651
+#: src/hotkeys.cpp:954
 msgid "Quit"
 msgstr "Finu ludon"
 
@@ -1725,7 +1717,7 @@ msgstr "Elekti ĉiiujn"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=help
-#: data/gui/default/window/title_screen.cfg:149 src/hotkeys.cpp:189
+#: data/gui/default/window/title_screen.cfg:149 src/hotkeys.cpp:191
 msgid "Help"
 msgstr "Helpo"
 
@@ -1815,7 +1807,7 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:232 src/hotkeys.cpp:191
+#: data/gui/default/window/title_screen.cfg:232 src/hotkeys.cpp:193
 msgid "Change the language"
 msgstr "Ŝanghi lingvon"
 
@@ -2558,21 +2550,17 @@ msgstr ""
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "Neniu servilo estis difinita."
 
-#: src/gui/widgets/settings.cpp:283
-msgid "Window not defined."
-msgstr ""
-
-#: src/gui/widgets/settings.cpp:386
+#: src/gui/widgets/settings.cpp:389
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr ""
 
-#: src/gui/widgets/settings.cpp:442
+#: src/gui/widgets/settings.cpp:445
 #, fuzzy
 msgid "No default gui defined."
 msgstr "Neniu servilo estis difinita."
 
-#: src/gui/widgets/settings.cpp:469
+#: src/gui/widgets/settings.cpp:472
 #, fuzzy
 msgid "No state or draw section defined."
 msgstr "Neniu servilo estis difinita."
@@ -2638,7 +2626,7 @@ msgstr "Defaŭlta zomo"
 msgid "Toggle Full Screen"
 msgstr "Tuta ekrano"
 
-#: src/hotkeys.cpp:58 src/hotkeys.cpp:901
+#: src/hotkeys.cpp:58 src/hotkeys.cpp:909
 msgid "Screenshot"
 msgstr "Ekrankopio"
 
@@ -2663,7 +2651,7 @@ msgstr "Renomu milit-unuon"
 msgid "Save Replay"
 msgstr "Konservi ripeton"
 
-#: src/hotkeys.cpp:65 src/hotkeys.cpp:115
+#: src/hotkeys.cpp:65 src/hotkeys.cpp:117
 msgid "Save Map"
 msgstr "Konservi mapon"
 
@@ -2789,259 +2777,267 @@ msgstr ""
 msgid "Delete last planned action"
 msgstr ""
 
-#: src/hotkeys.cpp:108
+#: src/hotkeys.cpp:106
+msgid "Move planned action toward queue beginning"
+msgstr ""
+
+#: src/hotkeys.cpp:107
+msgid "Move planned action toward queue end"
+msgstr ""
+
+#: src/hotkeys.cpp:110
 msgid "Quit to Desktop"
 msgstr ""
 
-#: src/hotkeys.cpp:109
+#: src/hotkeys.cpp:111
 #, fuzzy
 msgid "Close Map"
 msgstr "Fermi"
 
-#: src/hotkeys.cpp:110
+#: src/hotkeys.cpp:112
 msgid "Switch Map"
 msgstr ""
 
-#: src/hotkeys.cpp:112
+#: src/hotkeys.cpp:114
 msgid "Partial Undo"
 msgstr ""
 
-#: src/hotkeys.cpp:114
+#: src/hotkeys.cpp:116
 msgid "Load Map"
 msgstr "Legi mapon"
 
-#: src/hotkeys.cpp:116
+#: src/hotkeys.cpp:118
 #, fuzzy
 msgid "Save Map As"
 msgstr "Konservi mapon"
 
-#: src/hotkeys.cpp:117
+#: src/hotkeys.cpp:119
 msgid "Revert All Changes"
 msgstr ""
 
-#: src/hotkeys.cpp:118
+#: src/hotkeys.cpp:120
 #, fuzzy
 msgid "Map Information"
 msgstr "Generatoro de mapoj"
 
-#: src/hotkeys.cpp:120
+#: src/hotkeys.cpp:122
 msgid "Swap fore- and background terrains"
 msgstr ""
 
-#: src/hotkeys.cpp:121
+#: src/hotkeys.cpp:123
 #, fuzzy
 msgid "Next Tool"
 msgstr "Plua movo"
 
-#: src/hotkeys.cpp:122
+#: src/hotkeys.cpp:124
 msgid "Paint Tool"
 msgstr ""
 
-#: src/hotkeys.cpp:123
+#: src/hotkeys.cpp:125
 msgid "Fill Tool"
 msgstr ""
 
-#: src/hotkeys.cpp:124
+#: src/hotkeys.cpp:126
 #, fuzzy
 msgid "Selection Tool"
 msgstr "Elekti ĉiiujn"
 
-#: src/hotkeys.cpp:126
+#: src/hotkeys.cpp:128
 msgid "Set Starting Positions Tool"
 msgstr ""
 
-#: src/hotkeys.cpp:127
+#: src/hotkeys.cpp:129
 #, fuzzy
 msgid "Next Brush"
 msgstr "Plua movo"
 
-#: src/hotkeys.cpp:128
+#: src/hotkeys.cpp:130
 #, fuzzy
 msgid "Default Brush"
 msgstr "Defaŭlta zomo"
 
-#: src/hotkeys.cpp:129
+#: src/hotkeys.cpp:131
 msgid "Cut"
 msgstr "Eltondi"
 
-#: src/hotkeys.cpp:130
+#: src/hotkeys.cpp:132
 msgid "Copy"
 msgstr "Kopii"
 
-#: src/hotkeys.cpp:131
+#: src/hotkeys.cpp:133
 msgid "Paste"
 msgstr "Enmeti"
 
-#: src/hotkeys.cpp:132
+#: src/hotkeys.cpp:134
 msgid "Export selected coordinates to system clipboard"
 msgstr ""
 
-#: src/hotkeys.cpp:134
+#: src/hotkeys.cpp:136
 msgid "Select All"
 msgstr "Elekti ĉiiujn"
 
-#: src/hotkeys.cpp:136
+#: src/hotkeys.cpp:138
 msgid "Select Inverse"
 msgstr ""
 
-#: src/hotkeys.cpp:138
+#: src/hotkeys.cpp:140
 #, fuzzy
 msgid "Select None"
 msgstr "Elekti ĉiiujn"
 
-#: src/hotkeys.cpp:140
+#: src/hotkeys.cpp:142
 msgid "Rotate Clipboard Clockwise"
 msgstr ""
 
-#: src/hotkeys.cpp:142
+#: src/hotkeys.cpp:144
 msgid "Rotate Clipboard Counter-Clockwise"
 msgstr ""
 
-#: src/hotkeys.cpp:144
+#: src/hotkeys.cpp:146
 msgid "Flip Clipboard Horizontally"
 msgstr ""
 
-#: src/hotkeys.cpp:146
+#: src/hotkeys.cpp:148
 msgid "Flip Clipboard Vertically"
 msgstr ""
 
-#: src/hotkeys.cpp:148
+#: src/hotkeys.cpp:150
 msgid "Rotate Selection"
 msgstr "Turni markitan"
 
-#: src/hotkeys.cpp:150
+#: src/hotkeys.cpp:152
 #, fuzzy
 msgid "Flip Selection"
 msgstr "Plenigi markitan"
 
-#: src/hotkeys.cpp:152
+#: src/hotkeys.cpp:154
 msgid "Fill Selection"
 msgstr "Plenigi markitan"
 
-#: src/hotkeys.cpp:154
+#: src/hotkeys.cpp:156
 #, fuzzy
 msgid "Generate Tiles In Selection"
 msgstr "Turni markitan"
 
-#: src/hotkeys.cpp:156
+#: src/hotkeys.cpp:158
 msgid "Randomize Tiles In Selection"
 msgstr ""
 
-#: src/hotkeys.cpp:160
+#: src/hotkeys.cpp:162
 #, fuzzy
 msgid "Rotate Map"
 msgstr "Legi mapon"
 
-#: src/hotkeys.cpp:162
+#: src/hotkeys.cpp:164
 #, fuzzy
 msgid "Generate Map"
 msgstr "Generi Novan Mapon"
 
-#: src/hotkeys.cpp:164
+#: src/hotkeys.cpp:166
 msgid "Apply a Mask"
 msgstr ""
 
-#: src/hotkeys.cpp:166
+#: src/hotkeys.cpp:168
 #, fuzzy
 msgid "Create Mask"
 msgstr "Konservi la ludon"
 
-#: src/hotkeys.cpp:168
+#: src/hotkeys.cpp:170
 #, fuzzy
 msgid "Refresh Display"
 msgstr "Ekrano"
 
-#: src/hotkeys.cpp:170
+#: src/hotkeys.cpp:172
 #, fuzzy
 msgid "Update Terrain Transitions"
 msgstr "Ĝisdatigi trapasojn"
 
-#: src/hotkeys.cpp:172
+#: src/hotkeys.cpp:174
 #, fuzzy
 msgid "Auto-update Terrain Transitions"
 msgstr "Ĝisdatigi trapasojn"
 
-#: src/hotkeys.cpp:174
+#: src/hotkeys.cpp:176
 msgid "Refresh Image Cache"
 msgstr "Refreŝigi Memorkaŝon de Bildoj"
 
-#: src/hotkeys.cpp:176
+#: src/hotkeys.cpp:178
 msgid "Draw Hex Coordinates"
 msgstr ""
 
-#: src/hotkeys.cpp:178
+#: src/hotkeys.cpp:180
 #, fuzzy
 msgid "Draw Terrain Codes"
 msgstr "Bildigi terenon"
 
-#: src/hotkeys.cpp:183
+#: src/hotkeys.cpp:185
 msgid "Delay Shroud Updates"
 msgstr "Haltigi Aktualigon de Vualo"
 
-#: src/hotkeys.cpp:184
+#: src/hotkeys.cpp:186
 msgid "Update Shroud Now"
 msgstr "Aktualigi Vualon Nun"
 
-#: src/hotkeys.cpp:185
+#: src/hotkeys.cpp:187
 msgid "Continue Move"
 msgstr "Daŭri movon"
 
-#: src/hotkeys.cpp:186
+#: src/hotkeys.cpp:188
 msgid "Find Label or Unit"
 msgstr "Trovi markon aŭ batalunuon "
 
-#: src/hotkeys.cpp:187
+#: src/hotkeys.cpp:189
 msgid "Speak to Ally"
 msgstr "Diri al la aliancano"
 
-#: src/hotkeys.cpp:188
+#: src/hotkeys.cpp:190
 msgid "Speak to All"
 msgstr "Diri al ĉiuj"
 
-#: src/hotkeys.cpp:190
+#: src/hotkeys.cpp:192
 msgid "View Chat Log"
 msgstr "Montri babil-protokolo"
 
-#: src/hotkeys.cpp:193
+#: src/hotkeys.cpp:195
 msgid "Enter user command"
 msgstr "Enmeti uzantordono"
 
-#: src/hotkeys.cpp:194
+#: src/hotkeys.cpp:196
 #, fuzzy
 msgid "Custom command"
 msgstr "Enmeti uzantordono"
 
-#: src/hotkeys.cpp:195
+#: src/hotkeys.cpp:197
 msgid "Run AI formula"
 msgstr ""
 
-#: src/hotkeys.cpp:196
+#: src/hotkeys.cpp:198
 msgid "Clear messages"
 msgstr "Forigi mesaĝojn"
 
-#: src/hotkeys.cpp:198
+#: src/hotkeys.cpp:200
 msgid "User-Command#2"
 msgstr "Uzant-Komando#2"
 
-#: src/hotkeys.cpp:199
+#: src/hotkeys.cpp:201
 msgid "User-Command#3"
 msgstr "Uzant-Komando#3"
 
-#: src/hotkeys.cpp:649 src/hotkeys.cpp:946
+#: src/hotkeys.cpp:651 src/hotkeys.cpp:954
 msgid "Do you really want to quit?"
 msgstr "Ĉu vi vere volas fini ludon?"
 
-#: src/hotkeys.cpp:901
+#: src/hotkeys.cpp:909
 #, fuzzy
 msgid "Map-Screenshot"
 msgstr "Ekrankopio"
 
-#: src/hotkeys.cpp:908
+#: src/hotkeys.cpp:916
 #, fuzzy
 msgid "Screenshot done"
 msgstr "Ekrankopio"
 
-#: src/hotkeys.cpp:910
+#: src/hotkeys.cpp:918
 #, fuzzy
 msgid "Screenshot failed"
 msgstr "Ekrankopio"
@@ -3210,6 +3206,10 @@ msgstr ""
 #: src/wml_exception.cpp:76
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr ""
+
+#, fuzzy
+#~ msgid "Cave path"
+#~ msgstr "Lumigita Kaverno"
 
 #~ msgid "River Ford"
 #~ msgstr "Travadejo"

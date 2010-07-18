@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.8\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-06-25 11:25+0200\n"
+"POT-Creation-Date: 2010-07-19 00:25+0200\n"
 "PO-Revision-Date: 2010-03-14 15:11+0100\n"
 "Last-Translator: Christoph Berg <Christoph.Berg@kpm-sport.de>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de <>\n"
@@ -697,8 +697,9 @@ msgstr ""
 
 #. [message]: speaker=Leollyn
 #: data/campaigns/Delfadors_Memoirs/scenarios/04_Leollyn.cfg:146
+#, fuzzy
 msgid ""
-"Hail, strangers to the west! I crave your aid; hurry, for we are sorely "
+"Hail, strangers on the road! I crave your aid; hurry, for we are sorely "
 "besieged!"
 msgstr ""
 "Seid gegrüßt, Fremde aus dem Westen! Eilt euch, denn dringend bedürfen wir "
@@ -1148,8 +1149,8 @@ msgstr ""
 
 #. [objective]: condition=win
 #: data/campaigns/Delfadors_Memoirs/scenarios/07_Night_in_the_Swamp.cfg:97
-msgid "Survive 12 turns"
-msgstr "Überlebt 12 Runden"
+msgid "Survive until daybreak."
+msgstr ""
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/07_Night_in_the_Swamp.cfg:118
@@ -5046,15 +5047,10 @@ msgstr ""
 "noch Magier und keiner kam an Macht und an Können Delfador gleich - dem "
 "größten Magier, der jemals am Hofe von Wesnoth gewirkt hat."
 
-#. [terrain_type]: id=abyss-ethereal
-#: data/campaigns/Delfadors_Memoirs/terrain.cfg:12
-msgid "Ethereal Abyss"
-msgstr "Ätherischer Abgrund"
-
 #. [terrain_type]: id=milestone1
 #. [terrain_type]: id=milestone2
+#: data/campaigns/Delfadors_Memoirs/terrain.cfg:16
 #: data/campaigns/Delfadors_Memoirs/terrain.cfg:25
-#: data/campaigns/Delfadors_Memoirs/terrain.cfg:34
 #, fuzzy
 msgid "Milestone"
 msgstr "Meilenstein 1"
@@ -5320,6 +5316,12 @@ msgstr "Droni"
 #: data/campaigns/Delfadors_Memoirs/utils/sides.cfg:285
 msgid "Artor"
 msgstr "Artor"
+
+#~ msgid "Survive 12 turns"
+#~ msgstr "Überlebt 12 Runden"
+
+#~ msgid "Ethereal Abyss"
+#~ msgstr "Ätherischer Abgrund"
 
 #~ msgid "Milestone2"
 #~ msgstr "Meilenstein 2"

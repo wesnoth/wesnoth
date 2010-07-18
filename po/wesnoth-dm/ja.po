@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: The Battle for Wesnoth 1.7.14+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-07-03 09:51+0200\n"
+"POT-Creation-Date: 2010-07-19 00:25+0200\n"
 "PO-Revision-Date: 2010-06-05 18:50+0900\n"
 "Last-Translator: IWAI, Masaharu <iwaim.sub@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
@@ -677,8 +677,9 @@ msgstr "ああ、別の人間が近づいてくる……うむ……戦時にお
 
 #. [message]: speaker=Leollyn
 #: data/campaigns/Delfadors_Memoirs/scenarios/04_Leollyn.cfg:146
+#, fuzzy
 msgid ""
-"Hail, strangers to the west! I crave your aid; hurry, for we are sorely "
+"Hail, strangers on the road! I crave your aid; hurry, for we are sorely "
 "besieged!"
 msgstr ""
 "やあ、西へ向かっている見知らぬ人よ。援助を切望する。我々はひどく包囲されてい"
@@ -1105,12 +1106,10 @@ msgid ""
 msgstr ""
 "これがすべてだろう！移動した方がいい――この湿地帯で過ごす時間は短い方がいい。"
 
-# % プログラムミス　実際には13ターン
-# 12ターン生き延びる
 #. [objective]: condition=win
 #: data/campaigns/Delfadors_Memoirs/scenarios/07_Night_in_the_Swamp.cfg:97
-msgid "Survive 12 turns"
-msgstr "ターンが尽きるまで生き延びる"
+msgid "Survive until daybreak."
+msgstr ""
 
 #. [message]: speaker=Delfador
 #: data/campaigns/Delfadors_Memoirs/scenarios/07_Night_in_the_Swamp.cfg:118
@@ -4877,15 +4876,10 @@ msgstr ""
 "か生き残らず、そして彼らのいずれもDelfador に力と技能において及びませんでし"
 "た。今までに Wesnoth の宮廷を飾った最も偉大なる魔術師――Delfador"
 
-#. [terrain_type]: id=abyss-ethereal
-#: data/campaigns/Delfadors_Memoirs/terrain.cfg:12
-msgid "Ethereal Abyss"
-msgstr "Ethereal Abyss"
-
 #. [terrain_type]: id=milestone1
 #. [terrain_type]: id=milestone2
+#: data/campaigns/Delfadors_Memoirs/terrain.cfg:16
 #: data/campaigns/Delfadors_Memoirs/terrain.cfg:25
-#: data/campaigns/Delfadors_Memoirs/terrain.cfg:34
 #, fuzzy
 msgid "Milestone"
 msgstr "Milestone1"
@@ -5144,6 +5138,14 @@ msgstr "Droni"
 #: data/campaigns/Delfadors_Memoirs/utils/sides.cfg:285
 msgid "Artor"
 msgstr "Artor"
+
+# % プログラムミス　実際には13ターン
+# 12ターン生き延びる
+#~ msgid "Survive 12 turns"
+#~ msgstr "ターンが尽きるまで生き延びる"
+
+#~ msgid "Ethereal Abyss"
+#~ msgstr "Ethereal Abyss"
 
 #~ msgid "Milestone2"
 #~ msgstr "Milestone2"

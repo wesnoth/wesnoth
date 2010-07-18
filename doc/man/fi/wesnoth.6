@@ -59,7 +59,7 @@ kansiossa ”Omat tiedostot\eOmat pelit”.
 \fB\-\-config\-path\fP
 Näyttää käyttäjän asetushakemiston polun ja lopettaa.
 .TP 
-\fB\-datadir <directory>\fP
+\fB\-\-data\-dir <directory>\fP
 overrides the data directory with the one specified
 .TP 
 \fB\-d, \-\-debug\fP
@@ -67,8 +67,8 @@ Mahdollistaa ylimääräisiä komentotila\-asetuksia pelissä. (Katso wiki\-sivu
 http://www.wesnoth.org/wiki/CommandMode lisätietoja komentotilasta.)
 .TP 
 \fB\-e,\ \-\-editor\fP\fI\ tiedosto\fP
-Käynnistää pelinsisäisen karttaeditorin suoraan. Jos \fItiedosto\fP on
-syötetty, komento vastaa \fB\-e \-\-load\fP:a
+start the in\-game map editor directly. If \fIfile\fP is specified, equivalent
+to \fB\-l \-\-load\fP
 .TP 
 \fB\-\-fps\fP
 Näyttää pelin kuvanpäivitysnopeuden (frames per second, päivityksiä
@@ -242,4 +242,4 @@ for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 .
 .SH "KATSO MYÖS"
 .
-\fBwesnoth_editor\fP(6), \fBwesnothd\fP(6)
+\fBwesnothd\fP(6).
