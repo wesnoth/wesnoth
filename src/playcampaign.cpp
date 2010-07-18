@@ -65,6 +65,18 @@ typedef std::map<std::string, player_controller> controller_map;
 
 } // end anon namespace
 
+/** Marks all the toplevel [lua] tag as preload events. */
+static void preload_lua_tags(const config &game_config, config &target)
+{
+	foreach (const config &cfg, game_config.child_range("lua"))
+	{
+		config &ev = target.add_child("event");
+		ev["name"] = "preload";
+		ev["first_time_only"] = false;
+		ev.add_child("lua", cfg);
+	}
+}
+
 void play_replay(display& disp, game_state& gamestate, const config& game_config,
 		CVideo& video)
 {
@@ -81,6 +93,21 @@ void play_replay(display& disp, game_state& gamestate, const config& game_config
 		assert(scenario);
 		gamestate.starting_pos = scenario;
 	}
+
+	// Detect replays stored by the server, since they are missing core lua tags.
+	if (const config &core = game_config.child("lua"))
+	{
+		bool found_core = false;
+		foreach (const config &cfg, gamestate.starting_pos.child_range("lua")) {
+			if (cfg["code"] == core["code"]) {
+				found_core = true;
+				break;
+			}
+		}
+		if (!found_core)
+			preload_lua_tags(game_config, gamestate.starting_pos);
+	}
+
 	starting_pos = gamestate.starting_pos;
 
 	//for replays, use the variables specified in starting_pos
@@ -193,18 +220,6 @@ static LEVEL_RESULT playmp_scenario(const config& game_config,
 	}
 
 	return res;
-}
-
-/** Marks all the toplevel [lua] tag as preload events. */
-static void preload_lua_tags(const config &game_config, config &target)
-{
-	foreach (const config &cfg, game_config.child_range("lua"))
-	{
-		config &ev = target.add_child("event");
-		ev["name"] = "preload";
-		ev["first_time_only"] = false;
-		ev.add_child("lua", cfg);
-	}
 }
 
 LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_config,
