@@ -32,6 +32,7 @@
  *
  */
 
+#ifdef DOXYGEN_ENABLE_ANA_MAINPAGE
 /**
  * @mainpage ana: Asynchronous Network API
  *
@@ -53,6 +54,7 @@
  * To compile ana, you need:
  *  - Boost, version 1.35 or newer
  */
+#endif
 
 #include <boost/cstdint.hpp>
 #include <boost/noncopyable.hpp>
