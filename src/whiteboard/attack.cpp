@@ -40,10 +40,10 @@ std::ostream &operator<<(std::ostream &s, wb::attack const& attack)
 namespace wb
 {
 
-attack::attack(unit& subject, const map_location& target_hex, const map_location& source_hex, const map_location& dest_hex,
+attack::attack(unit& subject, const map_location& target_hex, int weapon_choice, const map_location& source_hex, const map_location& dest_hex,
 		arrow_ptr arrow, fake_unit_ptr fake_unit)
 	: move(subject, source_hex, dest_hex, arrow, fake_unit)
-	, target_hex_(target_hex)
+	, target_hex_(target_hex), weapon_choice_(weapon_choice)
 {
 
 }
@@ -84,16 +84,8 @@ bool attack::execute()
 
 	if (execute_successful)
 	{
-		int choice = resources::controller->get_mouse_handler_base().show_attack_dialog(
-				unit_.get_location(), target_hex_);
-		if (choice >= 0 ) {
-			resources::controller->get_mouse_handler_base().attack_enemy(unit_.get_location(), target_hex_, choice);
-			//only path that returns execute_successful = true
-		}
-		else
-		{
-			execute_successful = false;
-		}
+		resources::controller->get_mouse_handler_base().attack_enemy(unit_.get_location(), target_hex_, weapon_choice_);
+		//only path that returns execute_successful = true
 	}
 	return execute_successful;
 }

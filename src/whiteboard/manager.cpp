@@ -327,12 +327,18 @@ void manager::save_temp_attack(const map_location& attack_from, const map_locati
 
 		on_unit_deselect();
 
-		LOG_WB << "Creating attack for unit " << subject_unit->name() << " [" << subject_unit->id()
-				<< "]: moving from " << source_hex << " to " << dest_hex
-				<< " and attacking " << target_hex << "\n";
+		int weapon_choice = resources::controller->get_mouse_handler_base().show_attack_dialog(
+				subject_unit->get_location(), target_hex);
 
-		current_actions()->queue_attack(*subject_unit, target_hex, source_hex, dest_hex, move_arrow, fake_unit);
-		modifying_actions_ = false;
+		if (weapon_choice >= 0)
+		{
+			LOG_WB << "Creating attack for unit " << subject_unit->name() << " [" << subject_unit->id()
+					<< "]: moving from " << source_hex << " to " << dest_hex
+					<< " and attacking " << target_hex << "\n";
+
+			current_actions()->queue_attack(*subject_unit, target_hex, weapon_choice, source_hex, dest_hex, move_arrow, fake_unit);
+			modifying_actions_ = false;
+		}
 
 		resources::screen->invalidate(target_hex);
 	}

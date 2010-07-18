@@ -34,7 +34,7 @@ class attack: public move
 	friend class highlight_visitor;
 
 public:
-	attack(unit& subject, const map_location& target_hex, const map_location& source_hex, const map_location& dest_hex,
+	attack(unit& subject, const map_location& target_hex, int weapon_choice, const map_location& source_hex, const map_location& dest_hex,
 			arrow_ptr arrow, fake_unit_ptr fake_unit);
 	virtual ~attack();
 
@@ -50,6 +50,8 @@ public:
 private:
 		///the target of the attack
 		map_location target_hex_;
+
+		int weapon_choice_;
 };
 
 } // end namespace wb

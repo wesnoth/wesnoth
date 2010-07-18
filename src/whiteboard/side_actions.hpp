@@ -95,7 +95,7 @@ public:
 	 * Queues an attack or attack-move to be executed last
 	 * @return The queued attack's position
 	 */
-	iterator queue_attack(unit& subject, const map_location& target_hex, const map_location& source_hex, const map_location& dest_hex,
+	iterator queue_attack(unit& subject, const map_location& target_hex, int weapon_choice, const map_location& source_hex, const map_location& dest_hex,
 			arrow_ptr arrow, fake_unit_ptr fake_unit);
 
 	/**
