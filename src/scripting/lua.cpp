@@ -732,42 +732,6 @@ static int impl_unit_type_get(lua_State *L)
 }
 
 /**
- * Gets the unit type corresponding to an id.
- * - Arg 1: string containing the unit type id.
- * - Ret 1: table with an "id" field and with __index pointing to lua_unit_type_get.
- */
-static int intf_get_unit_type(lua_State *L)
-{
-	char const *m = luaL_checkstring(L, 1);
-	if (!unit_types.unit_type_exists(m)) return 0;
-
-	lua_createtable(L, 0, 1);
-	lua_pushvalue(L, 1);
-	lua_setfield(L, -2, "id");
-	lua_pushlightuserdata(L, (void *)&gettypeKey);
-	lua_rawget(L, LUA_REGISTRYINDEX);
-	lua_setmetatable(L, -2);
-	return 1;
-}
-
-/**
- * Gets the ids of all the unit types.
- * - Ret 1: table containing the ids.
- */
-static int intf_get_unit_type_ids(lua_State *L)
-{
-	lua_newtable(L);
-	int i = 1;
-	foreach (const unit_type_data::unit_type_map::value_type &ut, unit_types.types())
-	{
-		lua_pushstring(L, ut.first.c_str());
-		lua_rawseti(L, -2, i);
-		++i;
-	}
-	return 1;
-}
-
-/**
  * Destroys a unit object before it is collected (__gc metamethod).
  */
 static int impl_unit_collect(lua_State *L)
@@ -2255,8 +2219,6 @@ LuaKernel::LuaKernel()
 		{ "get_selected_tile",        &intf_get_selected_tile        },
 		{ "get_terrain",              &intf_get_terrain              },
 		{ "get_terrain_info",         &intf_get_terrain_info         },
-		{ "get_unit_type",            &intf_get_unit_type            },
-		{ "get_unit_type_ids",        &intf_get_unit_type_ids        },
 		{ "get_units",                &intf_get_units                },
 		{ "get_variable",             &intf_get_variable             },
 		{ "get_village_owner",        &intf_get_village_owner        },
@@ -2418,10 +2380,10 @@ LuaKernel::LuaKernel()
 void LuaKernel::initialize()
 {
 	lua_State *L = mState;
+	lua_getglobal(L, "wesnoth");
 
 	// Create the sides table.
 	std::vector<team> &teams = *resources::teams;
-	lua_getglobal(L, "wesnoth");
 	lua_pushlightuserdata(L, (void *)&getsideKey);
 	lua_rawget(L, LUA_REGISTRYINDEX);
 	lua_createtable(L, teams.size(), 0);
@@ -2435,6 +2397,22 @@ void LuaKernel::initialize()
 		lua_rawseti(L, -2, i + 1);
 	}
 	lua_setfield(L, -3, "sides");
+	lua_pop(L, 1);
+
+	// Create the unit_types table.
+	lua_pushlightuserdata(L, (void *)&gettypeKey);
+	lua_rawget(L, LUA_REGISTRYINDEX);
+	lua_newtable(L);
+	foreach (const unit_type_data::unit_type_map::value_type &ut, unit_types.types())
+	{
+		lua_createtable(L, 0, 1);
+		lua_pushstring(L, ut.first.c_str());
+		lua_setfield(L, -2, "id");
+		lua_pushvalue(L, -3);
+		lua_setmetatable(L, -2);
+		lua_setfield(L, -2, ut.first.c_str());
+	}
+	lua_setfield(L, -3, "unit_types");
 	lua_pop(L, 2);
 
 	// Execute the preload scripts.
