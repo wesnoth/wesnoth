@@ -1,8 +1,8 @@
 --! #textdomain wesnoth-low
 
-local replace_map
-replace_map = wesnoth.register_wml_action("replace_map",
-  function(cfg)
+local replace_map = wesnoth.wml_actions.replace_map
+
+function wesnoth.wml_actions.replace_map(cfg)
     if not cfg.x and not cfg.y then
        return replace_map(cfg)
     end
@@ -31,4 +31,4 @@ replace_map = wesnoth.register_wml_action("replace_map",
     local s = table.concat(t, '\n')
     local new_map = string.format("border_size=%d\nusage=map\n\n%s", b, s)
     replace_map { map = new_map, expand = true, shrink = true }
-  end)
+end

@@ -1,16 +1,14 @@
 --! #textdomain wesnoth-low
 
 local labels = {}
-local wml_label
+local wml_label = wesnoth.wml_actions.label
 
-wml_label = wesnoth.register_wml_action("label",
-  function(cfg)
+function wesnoth.wml_actions.label(cfg)
     table.insert(labels, cfg.__parsed)
     wml_label(cfg)
-  end)
+end
 
-wesnoth.register_wml_action("shift_labels",
-  function(cfg)
+function wesnoth.wml_actions.shift_labels(cfg)
     for k, v in ipairs(labels) do
       wml_label { x = v.x, y = v.y }
     end
@@ -19,4 +17,4 @@ wesnoth.register_wml_action("shift_labels",
       v.y = v.y + cfg.y
       wml_label(v)
     end
-  end)
+end

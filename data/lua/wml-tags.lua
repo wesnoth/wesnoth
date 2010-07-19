@@ -95,7 +95,7 @@ function wesnoth.wml_actions.objectives(cfg)
 			vars = vars .. ",__scenario_objectives_" .. side
 			side = side + 1
 		end
-		wesnoth.fire("event", { name="victory", { "clear_variable", { name = vars }}})
+		wesnoth.wml_actions.event { name="victory", { "clear_variable", { name = vars }}}
 	end
 end
 
