@@ -389,7 +389,8 @@ void manager::save_temp_attack(const map_location& attack_from, const map_locati
 
 void manager::contextual_execute()
 {
-	if (!(modifying_actions_ || viewer_actions()->empty()))
+	if (!(modifying_actions_ || viewer_actions()->empty())
+			&& resources::controller->current_side() == resources::screen->viewing_side())
 	{
 		modifying_actions_ = true;
 		erase_temp_move();
