@@ -24,6 +24,7 @@ public class TestHandler extends AbstractHandler
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException
 	{
+		//System.out.println(WorkspaceUtils.getSelectedContainer());
 //		MessageConsole con = GUIUtils.createConsole("TIMO", null, true);
 //		List<String> arguments = new ArrayList<String>();
 //		arguments.add(Preferences.getString(Constants.P_WESNOTH_WORKING_DIR));
@@ -42,7 +43,7 @@ public class TestHandler extends AbstractHandler
 //			tool.kill(true);
 //		}
 		//tool.waitForTool();
-		System.out.println("Exitt");
+		//System.out.println("Exitt");
 		//String stdin = EditorUtils.getEditorDocument().get();
 		//EditorUtils.replaceEditorText(WMLTools.runWMLIndent(null, stdin, false, false, false));
 		//		IEditorReference[] files =

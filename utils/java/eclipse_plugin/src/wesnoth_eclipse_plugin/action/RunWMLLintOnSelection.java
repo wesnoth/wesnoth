@@ -16,9 +16,9 @@ import org.eclipse.ui.IWorkbenchPart;
 import wesnoth_eclipse_plugin.utils.WMLTools;
 import wesnoth_eclipse_plugin.utils.WMLTools.Tools;
 
-public class RunWMLLintOnFile implements IObjectActionDelegate
+public class RunWMLLintOnSelection implements IObjectActionDelegate
 {
-	public RunWMLLintOnFile() {
+	public RunWMLLintOnSelection() {
 	}
 
 	@Override

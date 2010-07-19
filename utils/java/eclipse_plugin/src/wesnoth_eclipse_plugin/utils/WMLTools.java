@@ -175,8 +175,8 @@ public class WMLTools
 					{
 						if (selFile != null)
 							location = selFile.getLocation().toOSString();
-						else //TODO: add container instead of project?
-							location = WorkspaceUtils.getSelectedProject().getLocation().toOSString();
+						else
+							location = WorkspaceUtils.getSelectedContainer().getLocation().toOSString();
 					}
 
 					switch(tool)

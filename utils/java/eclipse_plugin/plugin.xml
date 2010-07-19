@@ -47,27 +47,6 @@
                label="Wesnoth project report"
                menubarPath="_wesnoth">
          </action>
-         <menu
-               icon="icons/wesnoth-icon_16.png"
-               id="plugin.wmltoolsProjMenu"
-               label="WML Tools"
-               path="_wesnoth">
-            <groupMarker
-                  name="wmltoolsProjMenuMarker">
-            </groupMarker>
-         </menu>
-         <action
-               class="wesnoth_eclipse_plugin.action.RunWMLIndentOnSelection"
-               id="action.proj.wmlindent"
-               label="Run &quot;wmlindent&quot; on the project this file"
-               menubarPath="plugin.wmltoolsProjMenu/wmltoolsProjMenuMarker">
-         </action>
-         <action
-               class="wesnoth_eclipse_plugin.action.RunWMLScopeOnSelection"
-               id="action.proj.wmlscope"
-               label="Run &quot;wmlscope&quot; on the project"
-               menubarPath="plugin.wmltoolsProjMenu/wmltoolsProjMenuMarker">
-         </action>
       </objectContribution>
       <objectContribution
             adaptable="false"
@@ -141,7 +120,7 @@
             </groupMarker>
          </menu>
          <action
-               class="wesnoth_eclipse_plugin.action.RunWMLLintOnFile"
+               class="wesnoth_eclipse_plugin.action.RunWMLLintOnSelection"
                id="action.cfg.wmllintOnFile"
                label="Run &quot;wmllint&quot; on this file"
                menubarPath="plugin.wmltoolsCfgMenu/wmltoolsCfgMenuMarker">
@@ -185,6 +164,33 @@
                id="action.container.startCampaign"
                label="Open campaign in game"
                menubarPath="_wesnoth">
+         </action>
+         <menu
+               icon="icons/wesnoth-icon_16.png"
+               id="plugin.wmltoolsContainerMenu"
+               label="WML Tools"
+               path="_wesnoth">
+            <groupMarker
+                  name="wmltoolsContainerMenuMarker">
+            </groupMarker>
+         </menu>
+         <action
+               class="wesnoth_eclipse_plugin.action.RunWMLScopeOnSelection"
+               id="action.container.wmlscope"
+               label="Run &quot;wmlscope&quot; on the container"
+               menubarPath="plugin.wmltoolsContainerMenu/wmltoolsContainerMenuMarker">
+         </action>
+         <action
+               class="wesnoth_eclipse_plugin.action.RunWMLIndentOnSelection"
+               id="action.container.wmlindent"
+               label="Run &quot;wmlindent&quot; on the container"
+               menubarPath="plugin.wmltoolsContainerMenu/wmltoolsContainerMenuMarker">
+         </action>
+         <action
+               class="wesnoth_eclipse_plugin.action.RunWMLLintOnSelection"
+               id="action.container.wmllintOnFile"
+               label="Run &quot;wmllint&quot; on the container"
+               menubarPath="plugin.wmltoolsContainerMenu/wmltoolsContainerMenuMarker">
          </action>
       </objectContribution>
    </extension>

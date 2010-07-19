@@ -16,6 +16,7 @@ import java.util.Locale;
 import java.util.Random;
 
 import org.eclipse.core.resources.FileInfoMatcherDescription;
+import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
@@ -112,6 +113,17 @@ public class WorkspaceUtils
 	public static IStructuredSelection getSelectedStructuredSelection()
 	{
 		return getSelectedStructuredSelection(WorkspaceUtils.getWorkbenchWindow());
+	}
+
+	public static IContainer getSelectedContainer()
+	{
+		IStructuredSelection selection = getSelectedStructuredSelection();
+		if (selection == null ||
+			!(selection.getFirstElement() instanceof IFolder ||
+			  selection.getFirstElement() instanceof IProject))
+			return null;
+
+		return (IContainer) selection.getFirstElement();
 	}
 
 	public static IResource getSelectedResource()
