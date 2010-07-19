@@ -36,7 +36,7 @@
 
 std::ostream &operator<<(std::ostream &s, wb::move const& move)
 {
-	s << "Move for unit " << move.get_unit()->name() << " [" << move.get_unit()->underlying_id() << "] "
+	s << "Move for unit " << move.get_unit()->name() << " [" << move.get_unit()->id() << "] "
 		<< "from (" << move.get_source_hex() << ") to (" << move.get_dest_hex() << ")";
 	return s;
 }

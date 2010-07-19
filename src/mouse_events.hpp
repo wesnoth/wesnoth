@@ -64,6 +64,8 @@ public:
 
 	pathfind::marked_route get_route(unit_map::const_iterator un, map_location go_to, const std::vector<map_location>& waypoints, team &team);
 
+	const pathfind::marked_route& get_current_route() { return current_route_; }
+
 	// show the attack dialog and return the choice made
 	// which can be invalid if 'cancel' was used
 	int show_attack_dialog(const map_location& attacker_loc, const map_location& defender_loc);

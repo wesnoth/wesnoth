@@ -55,6 +55,7 @@ manager::manager():
 		planned_unit_map_active_(false),
 		modifying_actions_(false)
 {
+	LOG_WB << "Manager initialized.\n";
 	highlighter_.reset(new highlight_visitor(*resources::units, viewer_actions()));
 }
 
@@ -69,7 +70,10 @@ void manager::set_active(bool active)
 	erase_temp_move();
 
 	if (active_)
+	{
 		viewer_actions()->validate_actions();
+		create_temp_move();
+	}
 }
 
 void manager::set_invert_behavior(bool invert)
@@ -138,7 +142,7 @@ void manager::on_finish_side_turn()
 
 void manager::set_planned_unit_map()
 {
-	if (active_ && !modifying_actions_ && !wait_for_side_init_)
+	if (!modifying_actions_ && !wait_for_side_init_)
 	{
 		modifying_actions_ = true;
 		if (!planned_unit_map_active_)
@@ -192,8 +196,8 @@ void manager::on_mouseover_change(const map_location& hex)
 
 void manager::on_select_hex(const map_location& hex)
 {
-	if (!active_)
-		return;
+//	if (!active_)
+//		return;
 
 	selected_hex_ = hex;
 	unit* selected_unit = this->selected_unit();
@@ -220,24 +224,14 @@ void manager::on_deselect_hex()
 	}
 }
 
-void manager::create_temp_move(const map_location& destination_hex)
+void manager::create_temp_move()
 {
 	if (!active_)
 		return;
 
-	unit_map::iterator unit_iterator = resources::units->find(selected_hex_);
-	if (unit_iterator == resources::units->end())
-		return;
+	pathfind::marked_route const& route = resources::controller->get_mouse_handler_base().get_current_route();
 
-	unit_iterator->set_state(unit::STATE_NOT_MOVED,true);
-	pathfind::marked_route route =
-			resources::controller->get_mouse_handler_base().get_route(
-					unit_iterator,
-					destination_hex, std::vector<map_location>()/*waypoints*/,
-					(*resources::teams)[resources::screen->viewing_team()]);
-	unit_iterator->set_state(unit::STATE_NOT_MOVED,false);
-
-	//Temporary: Don't draw move arrow if move goes beyond range.
+	//FIXME: Temporary: Don't draw move arrow if move goes beyond range.
 	bool cancel = false;
 	foreach (const map_location& hex, route.steps)
 	{
@@ -257,9 +251,9 @@ void manager::create_temp_move(const map_location& destination_hex)
 	{
 		route_.reset(new pathfind::marked_route()); //empty route
 	}
-	else
+	else if (unit* subject_unit = selected_unit())
 	{
-		assert(selected_unit()->side() == resources::screen->viewing_side());
+		assert(subject_unit->side() == resources::screen->viewing_side());
 		route_.reset(new pathfind::marked_route(route));
 		//NOTE: route_.steps.back() = dst, and route_.steps.front() = src
 
@@ -276,7 +270,7 @@ void manager::create_temp_move(const map_location& destination_hex)
 		if (!fake_unit_)
 		{
 			// Create temp ghost unit
-			fake_unit_.reset(new unit(*selected_unit()), wb::manager::fake_unit_deleter());
+			fake_unit_.reset(new unit(*subject_unit), wb::manager::fake_unit_deleter());
 			resources::screen->place_temporary_unit(fake_unit_.get());
 			fake_unit_->set_ghosted(false);
 		}

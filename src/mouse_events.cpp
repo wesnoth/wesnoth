@@ -229,7 +229,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 						selected_unit->side() != side_num_);
 
 				current_route_ = get_route(selected_unit, dest, waypoints_, viewing_team());
-				resources::whiteboard->create_temp_move(dest);
+				resources::whiteboard->create_temp_move();
 
 				if(!browse) {
 					gui().set_route(&current_route_);

@@ -80,7 +80,7 @@ public:
 	void on_deselect_hex();
 
 	/** Creates a temporary visual arrow, that follows the cursor, for move creation purposes */
-	void create_temp_move(const map_location& hex);
+	void create_temp_move();
 	/** Informs whether an arrow is being displayed for move creation purposes */
 	bool has_temp_move() const { return route_; }
 	/** Informs whether the whiteboard tracks a selected unit */
