@@ -293,4 +293,26 @@ function helper.parsed(cfg)
 	end
 end
 
+function helper.shallow_literal(cfg)
+	local t = type(cfg)
+	if t == "table" then
+		return cfg
+	elseif t == "userdata" then
+		return cfg.__shallow_literal
+	else
+		return cfg or {}
+	end
+end
+
+function helper.shallow_parsed(cfg)
+	local t = type(cfg)
+	if t == "table" then
+		return tovconfig(cfg).__shallow_parsed
+	elseif t == "userdata" then
+		return cfg.__shallow_parsed
+	else
+		return cfg or {}
+	end
+end
+
 return helper

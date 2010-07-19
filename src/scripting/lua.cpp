@@ -544,7 +544,8 @@ static int impl_tstring_tostring(lua_State *L)
 
 /**
  * Gets the parsed field of a vconfig object (_index metamethod).
- * Special fields __literal and __parsed return Lua tables.
+ * Special fields __literal, __shallow_literal, __parsed, and
+ * __shallow_parsed, return Lua tables.
  */
 static int impl_vconfig_get(lua_State *L)
 {
@@ -578,6 +579,35 @@ static int impl_vconfig_get(lua_State *L)
 		lua_newtable(L);
 		table_of_wml_config(L, v->get_parsed_config());
 		return 1;
+	}
+	if (strcmp(m, "__shallow_literal") == 0) {
+		lua_newtable(L);
+		foreach (const config::attribute &a, v->get_config().attribute_range()) {
+			luaW_pushscalar(L, a.second);
+			lua_setfield(L, -2, a.first.c_str());
+		}
+		copy_children:
+		int j = 1;
+		for (vconfig::all_children_iterator i = v->ordered_begin(),
+		     i_end = v->ordered_end(); i != i_end; ++i)
+		{
+			lua_createtable(L, 2, 0);
+			lua_pushstring(L, i.get_key().c_str());
+			lua_rawseti(L, -2, 1);
+			luaW_pushvconfig(L, i.get_child());
+			lua_rawseti(L, -2, 2);
+			lua_rawseti(L, -2, j);
+			++j;
+		}
+		return 1;
+	}
+	if (strcmp(m, "__shallow_parsed") == 0) {
+		lua_newtable(L);
+		foreach (const config::attribute &a, v->get_config().attribute_range()) {
+			luaW_pushscalar(L, v->expand(a.first));
+			lua_setfield(L, -2, a.first.c_str());
+		}
+		goto copy_children;
 	}
 
 	if (v->null() || !v->has_attribute(m)) return 0;
