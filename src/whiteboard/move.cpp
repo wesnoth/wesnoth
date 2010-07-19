@@ -79,7 +79,11 @@ move::move(unit& subject, const map_location& source_hex, const map_location& ta
 		pathfind::plain_route route = pathfind::a_star_search(source_hex_,
 				dest_hex_, 10000, &path_calc, resources::game_map->w(), resources::game_map->h());
 
-		assert(unit_.movement_left() - route.move_cost >= 0);
+		// TODO: find a better treatment of movement points when defining moves out-of-turn
+		if(unit_.movement_left() - route.move_cost < 0
+				&& resources::controller->current_side() == resources::screen->viewing_side()) {
+			WRN_WB << "Move defined with insufficient movement left.\n";
+		}
 
 		//TODO: if unit finishes move in a village, set the move cost to unit_.movement_left()
 

@@ -533,7 +533,8 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 	//otherwise we're trying to move to a hex
 	else if(!commands_disabled && (!browse || resources::whiteboard->is_active()) &&
 			selected_hex_.valid() && selected_hex_ != hex &&
-	         u != units_.end() && u->side() == side_num_ &&
+	         u != units_.end() &&
+	         (u->side() == side_num_ || resources::whiteboard->is_active()) &&
 		     clicked_u == units_.end() && !current_route_.steps.empty() &&
 		     current_route_.steps.front() == selected_hex_) {
 
