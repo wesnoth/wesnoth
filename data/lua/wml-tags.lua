@@ -274,3 +274,7 @@ function wml_actions.lua(cfg)
 	table.insert(args, ev[2])
 	assert(loadstring(cfg.code or ""))(args)
 end
+
+function wml_actions.music(cfg)
+	wesnoth.set_music(cfg)
+end

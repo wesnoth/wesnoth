@@ -691,11 +691,6 @@ WML_HANDLER_FUNCTION(allow_recruit, /*event_info*/, cfg)
 	}
 }
 
-WML_HANDLER_FUNCTION(music, /*event_info*/, cfg)
-{
-	sound::play_music_config(cfg.get_parsed_config());
-}
-
 WML_HANDLER_FUNCTION(volume, /*event_info*/, cfg)
 {
 
