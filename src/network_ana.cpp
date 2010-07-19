@@ -197,6 +197,8 @@ namespace network {
                             unsigned int      timeout,
                             bandwidth_in_ptr* bandwidth_in)
     {
+        ana_manager.throw_if_pending_disconnection();
+
         //TODO: temporary fix
         if ( bandwidth_in != NULL )
             *bandwidth_in = global_bandwidth_in_ptr;
@@ -222,6 +224,8 @@ namespace network {
 
     connection receive_data(std::vector<char>& buf, bandwidth_in_ptr* bandwidth_in)
     {
+        ana_manager.throw_if_pending_disconnection();
+
         //TODO: temporary fix
         if ( bandwidth_in != NULL )
             *bandwidth_in = global_bandwidth_in_ptr;
@@ -286,7 +290,7 @@ namespace network {
 
     void process_send_queue(connection, size_t)
     {
-//         check_error();
+        ana_manager.throw_if_pending_disconnection();
     }
 
     /** @todo Note the gzipped parameter should be removed later. */

@@ -400,7 +400,11 @@ class ana_network_manager : public ana::listener_handler,
          */
         const ana::stats* get_stats( network::connection connection_num );
 
+        /** Close all connections and clean up memory. */
         void close_connections_and_cleanup();
+
+        /** Throw a Client Disconnected network::error if a disconnection hasn't been informed. */
+        void throw_if_pending_disconnection();
 
         /**
          * Start a server on a given port.
@@ -500,6 +504,8 @@ class ana_network_manager : public ana::listener_handler,
         ana_component_set          components_;
 
         std::map< ana::server*, clients_manager* > server_manager_;
+
+        std::queue< ana::net_id > disconnected_ids_;
 };
 
 #endif

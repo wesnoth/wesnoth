@@ -28,6 +28,8 @@
 #include "network_manager_ana.hpp"
 #include "serialization/binary_or_text.hpp"
 
+#include "gettext.hpp"
+
 // Begin ana_send_handler implementation ---------------------------------------------------------------
 
 ana_send_handler::ana_send_handler( size_t calls ) :
@@ -598,7 +600,8 @@ network::connection clients_manager::get_pending_connection_id()
 ana_network_manager::ana_network_manager() :
     connect_timer_( NULL ),
     components_(),
-    server_manager_()
+    server_manager_(),
+    disconnected_ids_()
 {
 }
 
@@ -739,6 +742,15 @@ void ana_network_manager::close_connections_and_cleanup()
     server_manager_.clear();
 }
 
+void ana_network_manager::throw_if_pending_disconnection()
+{
+    if ( ! disconnected_ids_.empty() )
+    {
+        const ana::net_id id = disconnected_ids_.front();
+        disconnected_ids_.pop();
+        throw network::error(_("Client disconnected"),id);
+    }
+}
 
 void ana_network_manager::run_server(ana::net_id id, int port)
 {
@@ -1228,6 +1240,9 @@ void ana_network_manager::handle_disconnect(ana::error_code /*error_code*/, ana:
         for (it = components_.begin(); it != components_.end(); it++ )
             if ( (*it)->is_server() )
                 if ( server_manager_[ (*it)->server() ]->is_a_client( client ) )
+                {
                     server_manager_[ (*it)->server() ]->remove( client );
+                    disconnected_ids_.push( client );
+                }
     }
 }

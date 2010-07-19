@@ -272,6 +272,7 @@ asio_server::asio_client_proxy::asio_client_proxy(boost::asio::io_service& io_se
 asio_server::asio_client_proxy::~asio_client_proxy()
 {
     manager_->deregister_client( this );
+    socket_.close();
 }
 
 tcp::socket& asio_server::asio_client_proxy::socket()
