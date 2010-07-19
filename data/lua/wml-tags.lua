@@ -337,3 +337,13 @@ function wml_actions.switch(cfg)
 		end
 	end
 end
+
+function wml_actions.scroll_to(cfg)
+	wesnoth.scroll_to_tile(cfg.x, cfg.y, cfg.check_fogged)
+end
+
+function wml_actions.scroll_to_unit(cfg)
+	local u = wesnoth.get_units(cfg)[1]
+	if not u then return end
+	wesnoth.scroll_to_tile(u.x, u.y, cfg.check_fogged)
+end

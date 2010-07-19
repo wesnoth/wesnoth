@@ -776,27 +776,6 @@ WML_HANDLER_FUNCTION(scroll, /*event_info*/, cfg)
 	screen.draw(true,true);
 }
 
-WML_HANDLER_FUNCTION(scroll_to, /*event_info*/, cfg)
-{
-	game_display &screen = *resources::screen;
-	const map_location loc = cfg_to_loc(cfg);
-	std::string check_fogged = cfg["check_fogged"];
-	screen.scroll_to_tile(loc, game_display::SCROLL, utils::string_bool(check_fogged, false));
-}
-
-WML_HANDLER_FUNCTION(scroll_to_unit, /*event_info*/, cfg)
-{
-	unit_map::const_iterator u;
-	for (u = resources::units->begin(); u != resources::units->end(); ++u){
-		if (game_events::unit_matches_filter(*u, cfg))
-			break;
-	}
-	std::string check_fogged = cfg["check_fogged"];
-	if (u != resources::units->end()) {
-		resources::screen->scroll_to_tile(u->get_location(), game_display::SCROLL, utils::string_bool(check_fogged, false));
-	}
-}
-
 // store time of day config in a WML variable; useful for those who
 // are too lazy to calculate the corresponding time of day for a given turn,
 // or if the turn / time-of-day sequence mutates in a scenario.
