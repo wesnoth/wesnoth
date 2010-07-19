@@ -6,6 +6,7 @@
 if wesnoth.package["lua/helper.lua"] then return end
 
 local helper = wesnoth.require "lua/helper.lua"
+local wml_actions = wesnoth.wml_actions
 
 local function trim(s)
 	local r = string.gsub(s, "^%s*(.-)%s*$", "%1")
@@ -63,7 +64,7 @@ local function generate_objectives(cfg)
 	return string.sub(tostring(objectives), 1, -2)
 end
 
-function wesnoth.wml_actions.objectives(cfg)
+function wml_actions.objectives(cfg)
 	cfg = helper.parsed(cfg)
 	local side = cfg.side or 0
 	local silent = cfg.silent
@@ -76,12 +77,12 @@ function wesnoth.wml_actions.objectives(cfg)
 	-- Generate objectives for the given sides
 	local objectives = generate_objectives(cfg)
 	if side == 0 then
-		for team in helper.all_teams() do
+		for side, team in ipairs(wesnoth.sides) do
 			team.objectives = objectives
 			if not silent then team.objectives_changed = true end
 		end
 	else
-		local team = wesnoth.get_side(side)
+		local team = wesnoth.sides[side]
 		team.objectives = objectives
 		if not silent then team.objectives_changed = true end
 	end
@@ -90,29 +91,26 @@ function wesnoth.wml_actions.objectives(cfg)
 	if not wesnoth.get_variable("__scenario_objectives_gc") then
 		wesnoth.set_variable("__scenario_objectives_gc", true)
 		local vars = "__scenario_objectives_gc,__scenario_objectives_0"
-		local side = 1
-		for team in helper.all_teams() do
+		for side = 1, #wesnoth.sides do
 			vars = vars .. ",__scenario_objectives_" .. side
-			side = side + 1
 		end
-		wesnoth.wml_actions.event { name="victory", { "clear_variable", { name = vars }}}
+		wml_actions.event { name="victory", { "clear_variable", { name = vars }}}
 	end
 end
 
-function wesnoth.wml_actions.show_objectives(cfg)
+function wml_actions.show_objectives(cfg)
 	local side = cfg.side or 0
 	local cfg0 = wesnoth.get_variable("__scenario_objectives_0")
 	if side == 0 then
 		local objectives0 = cfg0 and generate_objectives(cfg0)
-		for team in helper.all_teams() do
-			side = side + 1
+		for side, team in ipairs(wesnoth.sides) do
 			cfg = wesnoth.get_variable("__scenario_objectives_" .. side)
 			local objectives = (cfg and generate_objectives(cfg)) or objectives0
 			if objectives then team.objectives = objectives end
 			team.objectives_changed = true
 		end
 	else
-		local team = wesnoth.get_side(side)
+		local team = wesnoth.sides[side]
 		cfg = wesnoth.get_variable("__scenario_objectives_" .. side) or cfg0
 		local objectives = cfg and generate_objectives(cfg)
 		if objectives then team.objectives = objectives end
@@ -120,9 +118,9 @@ function wesnoth.wml_actions.show_objectives(cfg)
 	end
 end
 
-local engine_message = wesnoth.wml_actions.message
+local engine_message = wml_actions.message
 
-function wesnoth.wml_actions.message(cfg)
+function wml_actions.message(cfg)
 	local show_if = helper.get_child(cfg, "show_if")
 	if not show_if or wesnoth.eval_conditional(show_if) then
 		engine_message(cfg)
@@ -132,51 +130,56 @@ end
 local function get_team(cfg, tag)
 	local side = tonumber(cfg.side or 1) or
 		helper.wml_error(tag .. " given a noninteger side= attribute.")
-	local team = wesnoth.get_side(side) or
+	local team = wesnoth.sides[side] or
 		helper.wml_error(tag .. " given an invalid side= attribute.")
 	return team
 end
 
-function wesnoth.wml_actions.gold(cfg)
+function wml_actions.gold(cfg)
 	local team = get_team(cfg, "[gold]")
 	local amount = tonumber(cfg.amount) or
-		helper.wml_error("[gold] missing required amount= attribute.")
+		helper.wml_error "[gold] missing required amount= attribute."
 	team.gold = team.gold + amount
 end
 
-function wesnoth.wml_actions.store_gold(cfg)
+function wml_actions.store_gold(cfg)
 	local team = get_team(cfg, "[store_gold]")
 	wesnoth.set_variable(cfg.variable or "gold", team.gold)
 end
 
-function wesnoth.wml_actions.clear_variable(cfg)
+function wml_actions.clear_variable(cfg)
 	local names = cfg.name or
-		helper.wml_error("[clear_variable] missing required name= attribute.")
+		helper.wml_error "[clear_variable] missing required name= attribute."
 	for w in string.gmatch(names, "[^%s,][^,]*") do
 		wesnoth.set_variable(trim(w))
 	end
 end
 
-function wesnoth.wml_actions.store_unit_type_ids(cfg)
-	local types = table.concat(wesnoth.get_unit_type_ids(), ',')
+function wml_actions.store_unit_type_ids(cfg)
+	local types = {}
+	for k,v in pairs(wesnoth.unit_types) do
+		table.insert(types, k)
+	end
+	table.sort(types)
+	types = table.concat(types, ',')
 	wesnoth.set_variable(cfg.variable or "unit_type_ids", types)
 end
 
-function wesnoth.wml_actions.store_unit_type(cfg)
+function wml_actions.store_unit_type(cfg)
 	local var = cfg.variable or "unit_type"
 	local types = cfg.type or
-		helper.wml_error("[store_unit_type] missing required type= attribute.")
+		helper.wml_error "[store_unit_type] missing required type= attribute."
 	wesnoth.set_variable(var)
 	local i = 0
 	for w in string.gmatch(types, "[^%s,][^,]*") do
-		local unit_type = wesnoth.get_unit_type(w) or
-			helper.wml_error("Attempt to store nonexistent unit type '" .. w .. "'.")
-		wesnoth.set_variable(var .. '[' .. i .. ']', unit_type.__cfg)
+		local unit_type = wesnoth.unit_types[w] or
+			helper.wml_error(string.format("Attempt to store nonexistent unit type '%s'.", w))
+		wesnoth.set_variable(string.format("%s[%d]", var, i), unit_type.__cfg)
 		i = i + 1
 	end
 end
 
-function wesnoth.wml_actions.fire_event(cfg)
+function wml_actions.fire_event(cfg)
 	local u1 = helper.get_child(cfg, "primary_unit")
 	u1 = u1 and wesnoth.get_units(u1)[1]
 	local x1, y1 = 0, 0
@@ -194,7 +197,7 @@ function wesnoth.wml_actions.fire_event(cfg)
 	wesnoth.fire_event(cfg.name, x1, y1, x2, y2, w1, w2)
 end
 
-function wesnoth.wml_actions.disallow_recruit(cfg)
+function wml_actions.disallow_recruit(cfg)
 	local team = get_team(cfg, "[disallow_recruit]")
 	local v = team.recruit
 	for w in string.gmatch(cfg.type, "[^%s,][^,]*") do
@@ -208,7 +211,7 @@ function wesnoth.wml_actions.disallow_recruit(cfg)
 	team.recruit = v
 end
 
-function wesnoth.wml_actions.set_recruit(cfg)
+function wml_actions.set_recruit(cfg)
 	local team = get_team(cfg, "[set_recruit]")
 	local v = {}
 	for w in string.gmatch(cfg.recruit, "[^%s,][^,]*") do
@@ -217,7 +220,7 @@ function wesnoth.wml_actions.set_recruit(cfg)
 	team.recruit = v
 end
 
-function wesnoth.wml_actions.store_map_dimensions(cfg)
+function wml_actions.store_map_dimensions(cfg)
 	local var = cfg.variable or "map_size"
 	local w, h, b = wesnoth.get_map_size()
 	wesnoth.set_variable(var .. ".width", w)
@@ -225,16 +228,16 @@ function wesnoth.wml_actions.store_map_dimensions(cfg)
 	wesnoth.set_variable(var .. ".border_size", b)
 end
 
-function wesnoth.wml_actions.unit_worth(cfg)
-	local u = wesnoth.get_units(cfg)[1]
-	if not u then helper.wml_error "[unit_worth]'s filter didn't match any units" end
-	local ut = wesnoth.get_unit_type(u.__cfg.type)
+function wml_actions.unit_worth(cfg)
+	local u = wesnoth.get_units(cfg)[1] or
+		helper.wml_error "[unit_worth]'s filter didn't match any unit"
+	local ut = wesnoth.unit_types[u.type]
 	local hp = u.hitpoints / u.max_hitpoints
 	local xp = u.experience / u.max_experience
 	local best_adv = ut.cost
 	for w in string.gmatch(ut.__cfg.advances_to, "[^%s,][^,]*") do
-		local uta = wesnoth.get_unit_type(w)
-		if uta ~= nil and uta.cost > best_adv then best_adv = uta.cost end
+		local uta = wesnoth.unit_types[w]
+		if uta and uta.cost > best_adv then best_adv = uta.cost end
 	end
 	wesnoth.set_variable("cost", ut.cost)
 	wesnoth.set_variable("next_cost", best_adv)
@@ -243,23 +246,23 @@ function wesnoth.wml_actions.unit_worth(cfg)
 	wesnoth.set_variable("unit_worth", math.floor(math.max(ut.cost * hp, best_adv * xp)))
 end
 
-function wesnoth.wml_actions.wml_action_tag(cfg)
+function wml_actions.wml_action(cfg)
 	-- The new tag's name
 	local name = cfg.name or
-		helper.wml_error("[wml_action] missing required name= attribute.")
+		helper.wml_error "[wml_action] missing required name= attribute."
 	local code = cfg.lua_function or
-		helper.wml_error("[wml_action] missing required lua_function= attribute.")
+		helper.wml_error "[wml_action] missing required lua_function= attribute."
 	local bytecode, message = loadstring(code)
 	if not bytecode then
 		helper.wml_error("[wml_action] failed to compile Lua code: " .. message)
 	end
 	-- The lua function that is executed when the tag is called
 	local lua_function = bytecode() or
-		helper.wml_error("[wml_action] expects a Lua code returning a function.")
-	wesnoth.wml_actions[name] = lua_function
+		helper.wml_error "[wml_action] expects a Lua code returning a function."
+	wml_actions[name] = lua_function
 end
 
-function wesnoth.wml_actions.lua(cfg)
+function wml_actions.lua(cfg)
 	local cfg = helper.literal(cfg)
 	local args = helper.get_child(cfg, "args") or {}
 	local ev = wesnoth.current.event_context
