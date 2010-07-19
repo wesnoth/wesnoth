@@ -258,7 +258,6 @@ public class WorkspaceUtils
 
 				skipList += "end_ignore\n";
 				ResourceUtils.createFile(projectToCreate, ".wesnoth", skipList, true);
-				// hide existing projects
 			}
 
 			Logger.getInstance().log("setupWorkspace was successful",

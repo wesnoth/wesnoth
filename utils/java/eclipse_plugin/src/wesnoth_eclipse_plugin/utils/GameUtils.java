@@ -57,13 +57,19 @@ public class GameUtils
 			String campaignId = ProjectUtils.getCampaignID(selectedResource);
 			String scenarioId = null;
 			if (scenario == true)
-				ProjectUtils.getScenarioID(
+				scenarioId = ProjectUtils.getScenarioID(
 					WorkspaceUtils.getPathRelativeToUserDir(selectedResource));
 
 			if (campaignId == null)
 			{
-				GUIUtils.showErrorMessageBox("You need to have a valid campaign file" +
-						" in your directory (_main.cfg) or selected.");
+				GUIUtils.showErrorMessageBox("You need to have a valid campaign file (_main.cfg)" +
+						" in your directory or selected.");
+				return;
+			}
+
+			if (scenarioId == null)
+			{
+				GUIUtils.showErrorMessageBox("I couldn't get the scenario's ID");
 				return;
 			}
 

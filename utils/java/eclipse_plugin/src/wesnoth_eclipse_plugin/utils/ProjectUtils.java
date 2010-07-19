@@ -14,12 +14,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map.Entry;
 
+import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.Path;
-import org.eclipse.swt.SWT;
 
 import wesnoth_eclipse_plugin.Logger;
 
@@ -107,8 +107,6 @@ public class ProjectUtils
 	/**
 	 * Returns "_main.cfg" location relative to user's directory
 	 * from the specified resource or null if it isn't any
-	 * If the resource is a file it won't check for it's name
-	 * but will question the user if he really wants to use that file
 	 * @param resource The resource where to search for '_main.cfg'
 	 * @return
 	 */
@@ -134,12 +132,32 @@ public class ProjectUtils
 
 		if (targetResource == null && resource instanceof IFile)
 		{
-			if (resource.getName().equals("_main.cfg") ||
-				(!resource.getName().equals("_main.cfg") &&
-				  GUIUtils.showMessageBox("The file isn't named '_main.cfg'. " +
-				  		"Do you still want to open it as a campaign file?",
-						SWT.YES | SWT.NO | SWT.ICON_QUESTION) == SWT.YES))
+			if (resource.getName().equals("_main.cfg"))
 					targetResource = resource;
+			else
+			{
+				IProject project = resource.getProject();
+				if (project.getFile("_main.cfg").exists())
+					targetResource = project.getFile("_main.cfg");
+				else
+				{
+					// this might be the case of "user addon's" project
+					// we're going to the first subdirectory under the project
+					IContainer container = resource.getParent();
+					if (container != null)
+					{
+						while(container.getParent() != null &&
+								container.getParent() != resource.getProject())
+						{
+							container = container.getParent();
+						}
+						IFile file = project.getFile(
+								container.getProjectRelativePath().toOSString() + "/_main.cfg");
+						if (file.exists())
+							targetResource = file;
+					}
+				}
+			}
 		}
 		return WorkspaceUtils.getPathRelativeToUserDir(targetResource);
 	}
@@ -155,15 +173,17 @@ public class ProjectUtils
 
 	public static boolean isCampaignFile(String fileName)
 	{
+		if (!fileName.endsWith(".cfg"))
+			return false;
 		//TODO: replace this with a better checking
-		//TODO: check extension
 		String fileContentString = ResourceUtils.getFileContents(new File(fileName));
 		return (fileContentString.contains("[campaign]") && fileContentString.contains("[/campaign]"));
 	}
 	public static boolean isScenarioFile(String fileName)
 	{
-		//TODO: replace this with a better checking
-		//TODO: check extension
+		if (!fileName.endsWith(".cfg"))
+			return false;
+		//TODO: replace this with a better checkings
 		String fileContentString = ResourceUtils.getFileContents(new File(fileName));
 		return (fileContentString.contains("[scenario]") && fileContentString.contains("[/scenario]"));
 	}
