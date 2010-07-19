@@ -53,6 +53,7 @@ extern "C" {
 #include "play_controller.hpp"
 #include "resources.hpp"
 #include "terrain_translation.hpp"
+#include "sound.hpp"
 #include "unit.hpp"
 #include "ai/lua/core.hpp"
 
@@ -2029,6 +2030,29 @@ int intf_tovconfig(lua_State *L)
 	return 1;
 }
 
+/**
+ * Modifies the music playlist.
+ * - Arg 1: WML table, or nil to force changes.
+ */
+int intf_set_music(lua_State *L)
+{
+	if (false) {
+		error_call_destructors:
+		return luaL_typerror(L, 1, "WML table");
+	}
+
+	if (lua_isnoneornil(L, 1)) {
+		sound::commit_music_changes();
+		return 0;
+	}
+
+	config cfg;
+	if (!luaW_toconfig(L, 1, cfg))
+		goto error_call_destructors;
+	sound::play_music_config(cfg);
+	return 0;
+}
+
 LuaKernel::LuaKernel()
 	: mState(luaL_newstate())
 {
@@ -2072,6 +2096,7 @@ LuaKernel::LuaKernel()
 		{ "message",                  &intf_message                  },
 		{ "put_unit",                 &intf_put_unit                 },
 		{ "require",                  &intf_require                  },
+		{ "set_music",                &intf_set_music                },
 		{ "set_terrain",              &intf_set_terrain              },
 		{ "set_variable",             &intf_set_variable             },
 		{ "set_village_owner",        &intf_set_village_owner        },
