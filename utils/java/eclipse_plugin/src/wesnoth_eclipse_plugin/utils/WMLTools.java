@@ -15,6 +15,7 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.WorkspaceJob;
@@ -84,10 +85,9 @@ public class WMLTools
 		arguments.add(wmllintFile.getAbsolutePath());
 		if (dryrun)
 			arguments.add("--dryrun");
-		arguments.add("--verbose");
-		//arguments.add("-v");
-		//arguments.add("-v");
+		arguments.add("--progress");
 		arguments.add("--nospellcheck");
+
 		// add default core directory
 		arguments.add(Preferences.getString(Constants.P_WESNOTH_WORKING_DIR) +
 				Path.SEPARATOR + "data/core");
@@ -115,8 +115,9 @@ public class WMLTools
 		List<String> arguments = new ArrayList<String>();
 
 		arguments.add(wmlscopeFile.getAbsolutePath());
-		arguments.add("-w");
-		arguments.add("2");
+		//arguments.add("-w");
+		//arguments.add("2");
+		arguments.add("--progress");
 
 		// add default core directory
 		arguments.add(Preferences.getString(Constants.P_WESNOTH_WORKING_DIR) +
@@ -147,6 +148,8 @@ public class WMLTools
 
 		WorkspaceJob job = new WorkspaceJob("Running " + toolName) {
 			private ExternalToolInvoker toolInvoker;
+			private AtomicInteger workReporter = new AtomicInteger();
+
 			@Override
 			protected void canceling()
 			{
@@ -158,8 +161,7 @@ public class WMLTools
 			public IStatus runInWorkspace(final IProgressMonitor monitor)
 			{
 				try{
-					monitor.beginTask(toolName, 50);
-					monitor.beginTask(tool.toString(), 50);
+					monitor.beginTask(toolName, 1050);
 					MessageConsole console = GUIUtils.createConsole(toolName + " result:", null, true);
 					OutputStream messageStream = console.newMessageStream();
 					//TODO: multiple streams? - check performance
@@ -196,6 +198,43 @@ public class WMLTools
 							toolInvoker = WMLTools.runWMLScope(location, stream, stream);
 							break;
 					}
+					monitor.worked(50);
+					// need to fill up to '1000' worked
+					// we will add 1 for each 2 lines of output (for each file)
+					Thread stdoutWatcher = new Thread(new Runnable(){
+						@Override
+						public void run()
+						{
+							int nr;
+							while (toolInvoker.readOutputLine() != null)
+							{
+								nr = workReporter.incrementAndGet();
+								if (nr % 2 == 0)
+									synchronized (monitor)
+									{
+										monitor.worked(1);
+									}
+							}
+						}
+					});
+					Thread stderrWatcher = new Thread(new Runnable(){
+						@Override
+						public void run()
+						{
+							int nr;
+							while (toolInvoker.readErrorLine() != null)
+							{
+								nr = workReporter.incrementAndGet();
+								if (nr % 2 == 0)
+									synchronized (monitor)
+									{
+										monitor.worked(1);
+									}
+							}
+						}
+					});
+					stderrWatcher.start();
+					stdoutWatcher.start();
 					toolInvoker.waitForTool();
 					if (selFile != null && targetPath == null)
 					{
