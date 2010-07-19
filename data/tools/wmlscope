@@ -364,7 +364,7 @@ Usage: macroscope [options] dirpath
 
     try:
         # Process options
-        (options, arguments) = getopt.getopt(sys.argv[1:], "cCdhe:f:lr:t:uw:",
+        (options, arguments) = getopt.getopt(sys.argv[1:], "cCdhe:f:lpr:t:uw:",
                                              [
                                               'crossreference',
                                               'collisions',
@@ -375,6 +375,7 @@ Usage: macroscope [options] dirpath
                                               'from=',
                                               'help',
                                               'listfiles',
+                                              'progress',
                                               'refcount=',
                                               'typelist=',
                                               'unchecked',
@@ -390,6 +391,7 @@ Usage: macroscope [options] dirpath
         collisions = False
         typelist = None
         unchecked = False
+        progress = False
         for (switch, val) in options:
             if switch in ('-h', '--help'):
                 help()
@@ -411,6 +413,8 @@ Usage: macroscope [options] dirpath
                 forceused.append(val)
             elif switch in ('-l', '--listfiles'):
                 listfiles = True
+            elif switch in ('-d', '--progress'):
+                progress = True
             elif switch in ('-r', '--refcount'):
                 refcount_restrict = int(val)
             elif switch == '--unchecked':
@@ -432,7 +436,7 @@ Usage: macroscope [options] dirpath
             print "# Invocation: %s" % " ".join(sys.argv)
             print "# Working directory: %s" % os.getcwd()
             starttime = time.time()
-        xref = CrossRefLister(dirpath, "|".join(exclude), warnlevel)
+        xref = CrossRefLister(dirpath, "|".join(exclude), warnlevel, progress)
         if not extracthelp:
             print "#Cross-reference time: %d seconds" % (time.time()-starttime)
         if extracthelp:

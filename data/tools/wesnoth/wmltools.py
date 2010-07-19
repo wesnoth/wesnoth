@@ -476,7 +476,7 @@ class CrossRef:
                         self.unit_ids[uid].append(Reference(namespace, filename, n+1))
                         latch_unit= False
         dfp.close()
-    def __init__(self, dirpath=[], exclude="", warnlevel=0):
+    def __init__(self, dirpath=[], exclude="", warnlevel=0, progress=False):
         "Build cross-reference object from the specified filelist."
         self.filelist = Forest(dirpath, exclude)
         self.dirpath = filter(lambda x: not re.search(exclude, x), dirpath)
@@ -487,12 +487,14 @@ class CrossRef:
         self.properties = {}
         self.unit_ids = {}
         all_in = []
-        if self.warnlevel >=2:
+        if self.warnlevel >=2 or progress:
             print "*** Beginning definition-gathering pass..."
         for (namespace, filename) in self.filelist.generator():
             all_in.append((namespace, filename))
             if self.warnlevel > 1:
                 print filename + ":"
+            if progress:
+                print filename
             if isresource(filename):
                 self.fileref[filename] = Reference(namespace, filename)
             elif iswml(filename):
@@ -510,9 +512,11 @@ class CrossRef:
         self.missing = []
         formals = []
         state = "outside"
-        if self.warnlevel >=2:
+        if self.warnlevel >=2 or progress:
             print "*** Beginning reference-gathering pass..."
         for (ns, fn) in all_in:
+            if progress:
+                print filename
             if iswml(fn):
                 rfp = open(fn)
                 attack_name = None
