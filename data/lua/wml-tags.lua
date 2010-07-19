@@ -282,9 +282,12 @@ end
 local function handle_event_commands(cfg)
 	for i = 1, #cfg do
 		local v = cfg[i]
-		local cmd = wml_actions[v[1]] or
-			helper.wml_error(string.format("[%s] not supported", v[1]))
-		cmd(v[2])
+		local cmd = v[1]
+		if not string.find(cmd, "^filter") then
+			cmd = wml_actions[cmd] or
+				helper.wml_error(string.format("[%s] not supported", cmd))
+			cmd(v[2])
+		end
 	end
 	-- Apply music alterations once all the commands have been processed.
 	wesnoth.set_music()
