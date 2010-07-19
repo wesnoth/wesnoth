@@ -744,7 +744,7 @@ std::vector<surface> display::get_terrain_images(const map_location &loc,
 				surf = image::get_image(image, off_map ? image::UNMASKED : image_type);
 			} else {
 				image::locator colored_image(
-						image.get_filename(),
+						"terrain/foreground.png",
 						image.get_loc(),
 						image.get_center_x(), image.get_center_y(),
 						image.get_modifications() + color_mod

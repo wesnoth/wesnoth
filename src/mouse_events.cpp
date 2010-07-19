@@ -858,13 +858,17 @@ void mouse_handler::attack_enemy(const map_location& attacker_loc, const map_loc
 	}
 }
 
-void mouse_handler::attack_enemy_(const map_location& attacker_loc
-		, const map_location& defender_loc
+void mouse_handler::attack_enemy_(const map_location& att_loc
+		, const map_location& def_loc
 		, int choice)
 {
-	//we must get locations by value instead of by references,
-	//because unit_map changes may affect them if from unit_map::iterator
+	//NOTE: copy the values because the const reference may change!
+	//(WML events and mouse inputs during animations may modify
+	// the data of the caller)
+	const map_location attacker_loc = att_loc;
+	const map_location defender_loc = def_loc;
 
+	//may fire event and modify things
 	apply_shroud_changes(*resources::undo_stack, side_num_);
 	resources::undo_stack->clear();
 	resources::redo_stack->clear();
