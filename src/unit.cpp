@@ -2329,7 +2329,7 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 					const std::string &set_total = effect["set_total"];
 
 					// If the hitpoints are allowed to end up greater than max hitpoints
-					const std::string &violate_max = effect["violate_maximum"];
+					const bool violate_max = effect["violate_maximum"].to_bool();
 
 					if(set_hp.empty() == false) {
 						if(set_hp[set_hp.size()-1] == '%') {
@@ -2367,7 +2367,7 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 					}
 
 					LOG_UT << "modded to " << hit_points_ << "/" << max_hit_points_ << "\n";
-					if(hit_points_ > max_hit_points_ && violate_max.empty()) {
+					if(hit_points_ > max_hit_points_ && !violate_max) {
 						LOG_UT << "resetting hp to max\n";
 						hit_points_ = max_hit_points_;
 					}

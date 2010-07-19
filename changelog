@@ -186,6 +186,8 @@ Version 1.9.0-svn:
      "mouseover_image" and "selected_image" to tune mouse interface
    * Fixed bug #16219: Handled ToD areas in a LIFO way, so that it is possible
      to override them without first removing them
+   * [effect] violate_maximum= (for use when increasing HP) takes a real boolean
+     value now instead of taking any non-empty value as "true".
  * Miscellaneous and bug fixes:
    * Added help entry when new unit is created directly in the recall list
    * Defaulted log level to warning again
