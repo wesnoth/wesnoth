@@ -194,9 +194,8 @@ static bool track_ok(const std::string& id)
 
 	// If we've played this twice, must have played every other track.
 	if (num_played == 2 && played.size() != current_track_list.size() - 1) {
-		LOG_AUDIO << "Played twice with only "
-				  << lexical_cast<std::string>(played.size())
-				  << " tracks between\n";
+		LOG_AUDIO << "Played twice with only " << played.size()
+			<< " tracks between\n";
 		return false;
 	}
 
@@ -445,14 +444,14 @@ void stop_UI_sound() {
 void play_music_once(const std::string &file)
 {
 	// Clear list so it's not replayed.
-	current_track_list = std::vector<music_track>();
+	current_track_list.clear();
 	current_track = music_track(file);
 	play_music();
 }
 
 void empty_playlist()
 {
-    current_track_list = std::vector<music_track>();
+	current_track_list.clear();
 }
 
 void play_music()
@@ -509,7 +508,8 @@ void play_music_repeatedly(const std::string &id)
 	if (id.empty())
 		return;
 
-	current_track_list = std::vector<music_track>(1, music_track(id));
+	current_track_list.clear();
+	current_track_list.push_back(music_track(id));
 
 	// If we're already playing it, don't interrupt.
 	if (current_track != id) {
@@ -531,7 +531,7 @@ void play_music_config(const config &music_node)
 
 	// Clear play list unless they specify append.
 	if (!track.append()) {
-		current_track_list = std::vector<music_track>();
+		current_track_list.clear();
 	}
 
 	if(track.valid()) {
@@ -586,18 +586,15 @@ void music_thinker::process(events::pump_info &info) {
 
 void commit_music_changes()
 {
-	std::vector<music_track>::iterator i;
-
-	// Clear list of tracks played before.
-	played_before = std::vector<std::string>();
+	played_before.clear();
 
 	// Play-once is OK if still playing.
 	if (current_track.play_once())
 		return;
 
 	// If current track no longer on playlist, change it.
-	for (i = current_track_list.begin(); i != current_track_list.end(); ++i) {
-		if (current_track == *i)
+	foreach (const music_track &m, current_track_list) {
+		if (current_track == m)
 			return;
 	}
 
@@ -612,12 +609,10 @@ void commit_music_changes()
 
 void write_music_play_list(config& snapshot)
 {
-	std::vector<music_track>::iterator i;
-	bool append = false;
-
 	// First entry clears playlist, others append to it.
-	for (i = current_track_list.begin(); i != current_track_list.end(); ++i) {
-		i->write(snapshot, append);
+	bool append = false;
+	foreach (music_track &m, current_track_list) {
+		m.write(snapshot, append);
 		append = true;
 	}
 }
@@ -625,15 +620,13 @@ void write_music_play_list(config& snapshot)
 void reposition_sound(int id, unsigned int distance)
 {
 	audio_lock lock;
-	for(unsigned int ch = 0; ch < channel_ids.size(); ++ch) {
-		int& ch_id = channel_ids[ch];
-		if(ch_id == id) {
-			if(distance >= DISTANCE_SILENT) {
-				Mix_FadeOutChannel(ch, 100);
-			}
-			else {
-				Mix_SetDistance(ch, distance);
-			}
+	for (unsigned ch = 0; ch < channel_ids.size(); ++ch)
+	{
+		if (channel_ids[ch] != id) continue;
+		if (distance >= DISTANCE_SILENT) {
+			Mix_FadeOutChannel(ch, 100);
+		} else {
+			Mix_SetDistance(ch, distance);
 		}
 	}
 }
