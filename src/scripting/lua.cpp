@@ -2015,7 +2015,7 @@ static int intf_simulate_combat(lua_State *L)
  * - Arg 1: WML table.
  * - Ret 1: vconfig userdata.
  */
-int intf_tovconfig(lua_State *L)
+static int intf_tovconfig(lua_State *L)
 {
 	if (false) {
 		error_call_destructors:
@@ -2034,7 +2034,7 @@ int intf_tovconfig(lua_State *L)
  * Modifies the music playlist.
  * - Arg 1: WML table, or nil to force changes.
  */
-int intf_set_music(lua_State *L)
+static int intf_set_music(lua_State *L)
 {
 	if (false) {
 		error_call_destructors:
