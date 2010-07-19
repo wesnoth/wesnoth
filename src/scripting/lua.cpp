@@ -2053,6 +2053,21 @@ int intf_set_music(lua_State *L)
 	return 0;
 }
 
+/**
+ * Scrolls to given tile.
+ * - Args 1,2: location.
+ * - Arg 3: boolean preventing scroll to fog.
+ */
+static int intf_scroll_to_tile(lua_State *L)
+{
+	int x = luaL_checkinteger(L, 1) - 1;
+	int y = luaL_checkinteger(L, 2) - 1;
+	bool check_fogged = lua_toboolean(L, 3);
+	resources::screen->scroll_to_tile(map_location(x, y),
+		game_display::SCROLL, check_fogged);
+	return 0;
+}
+
 LuaKernel::LuaKernel()
 	: mState(luaL_newstate())
 {
@@ -2096,6 +2111,7 @@ LuaKernel::LuaKernel()
 		{ "message",                  &intf_message                  },
 		{ "put_unit",                 &intf_put_unit                 },
 		{ "require",                  &intf_require                  },
+		{ "scroll_to_tile",           &intf_scroll_to_tile           },
 		{ "set_music",                &intf_set_music                },
 		{ "set_terrain",              &intf_set_terrain              },
 		{ "set_variable",             &intf_set_variable             },
