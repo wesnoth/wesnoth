@@ -80,6 +80,10 @@ void validate_visitor::visit_move(move_ptr move)
 	if (!(move->source_hex_.valid() && move->dest_hex_.valid()))
 		move->set_valid(false);
 
+	//verify that the destination hex is free
+	if (move->valid_ && (resources::units->find(move->dest_hex_) != resources::units->end()))
+		move->set_valid(false);
+
 	//TODO: need to check if the unit in the source hex has the same underlying unit id as before,
 	//i.e. that it's the same unit
 	if (move->valid_ && resources::units->find(move->source_hex_) == resources::units->end())
