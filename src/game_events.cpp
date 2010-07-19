@@ -2603,13 +2603,6 @@ WML_HANDLER_FUNCTION(heal_unit, event_info, cfg)
 	resources::state_of_game->get_variable("heal_amount") = real_amount;
 }
 
-// Sub commands that need to be handled in a guaranteed ordering
-WML_HANDLER_FUNCTION(command, event_info, cfg)
-{
-	handle_event_commands(event_info, cfg);
-}
-
-
 // Allow undo sets the flag saying whether the event has mutated the game to false
 WML_HANDLER_FUNCTION(allow_undo,/*event_info*/,/*cfg*/)
 {

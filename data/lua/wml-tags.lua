@@ -278,3 +278,14 @@ end
 function wml_actions.music(cfg)
 	wesnoth.set_music(cfg)
 end
+
+local function handle_event_commands(cfg)
+	for i = 1, #cfg do
+		local v = cfg[i]
+		wml_actions[v[1]](v[2])
+	end
+	-- Apply music alterations once all the commands have been processed.
+	wesnoth.set_music()
+end
+
+wml_actions.command = handle_event_commands
