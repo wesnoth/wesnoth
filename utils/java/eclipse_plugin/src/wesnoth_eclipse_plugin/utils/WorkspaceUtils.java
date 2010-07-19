@@ -15,13 +15,16 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.Random;
 
+import org.eclipse.core.resources.FileInfoMatcherDescription;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.IResourceFilterDescription;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.preference.PreferenceDialog;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -203,20 +206,20 @@ public class WorkspaceUtils
 		if (!checkConditions(false))
 		{
 			PreferenceDialog pref = PreferencesUtil.createPreferenceDialogOn(
-					Activator.getShell(), "plugin_preferences", new String[0], null);
+					Activator.getShell(), "plugin_preferences", null, null);
 			if (pref.open() == Window.CANCEL || !checkConditions(true))
 			{
 				GUIUtils.showErrorMessageBox("The workspace was not setup");
 				return;
 			}
 		}
-		// automatically import "WesnothUserDir/data/add-ons as a project
-		// container
+
+		// automatically import "WesnothUserDir/data/add-ons as a project container
 		String userDir = Preferences.getString(Constants.P_WESNOTH_USER_DIR);
-		IProject proj = ResourcesPlugin.getWorkspace().getRoot().getProject("User Addons");
+		IProject projectToCreate = ResourcesPlugin.getWorkspace().getRoot().getProject("User Addons");
 		try
 		{
-			if (!proj.exists())
+			if (!projectToCreate.exists())
 			{
 				IProjectDescription description =
 						ResourcesPlugin.getWorkspace().newProjectDescription("User Addons");
@@ -226,19 +229,19 @@ public class WorkspaceUtils
 					new File(userDir + Path.SEPARATOR + "data/add-ons/.project").delete();
 
 				description.setLocation(new Path(userDir + Path.SEPARATOR + "data/add-ons/"));
-				proj.create(description, null);
-				proj.open(null);
+				projectToCreate.create(description, null);
+				projectToCreate.open(null);
 
 				// the nature isn't set on creation so the nature adds the builder aswell
 				description.setNatureIds(new String[] { WesnothProjectNature.WESNOTH_NATURE_ID,
 						WesnothProjectNature.XTEXT_NATURE_ID });
-				proj.setDescription(description, null);
+				projectToCreate.setDescription(description, null);
 
 				// add the build.xml file
 				ArrayList<ReplaceableParameter> param = new ArrayList<ReplaceableParameter>();
 				param.add(new ReplaceableParameter("$$project_name", "User Addons"));
 				param.add(new ReplaceableParameter("$$project_dir_name", ""));
-				ResourceUtils.createFile(proj, "build.xml",
+				ResourceUtils.createFile(projectToCreate, "build.xml",
 						TemplateProvider.getInstance().getProcessedTemplate("build_xml", param), true);
 
 				// we need to skip the already created projects (if any) in the addons directory
@@ -247,11 +250,15 @@ public class WorkspaceUtils
 				{
 					if (project.getName().equals("User Addons"))
 						continue;
-
 					skipList += (StringUtils.trimPathSeparators(getPathRelativeToUserDir(project)) + "\n");
+
+					// hide the existing projects
+					createIgnoreFilter(projectToCreate, project.getName());
 				}
+
 				skipList += "end_ignore\n";
-				ResourceUtils.createFile(proj, ".wesnoth", skipList, true);
+				ResourceUtils.createFile(projectToCreate, ".wesnoth", skipList, true);
+				// hide existing projects
 			}
 
 			Logger.getInstance().log("setupWorkspace was successful",
@@ -264,12 +271,26 @@ public class WorkspaceUtils
 			// let's remove the corrupted project
 			try
 			{
-				proj.delete(true, null);
+				projectToCreate.delete(true, null);
 			}
 			catch (CoreException e1)
 			{
 			}
 		}
+	}
+
+	private static void createIgnoreFilter(IProject project, String folderName)
+		throws CoreException
+	{
+		// For details regarding the description see:
+		// 	FileInfoAttributesMatcher.encodeArguments()
+
+		// id = org.eclipse.ui.ide.multiFilter
+		// args = 1.0-name-matches-false-false-Love_to_death
+		project.createFilter(IResourceFilterDescription.EXCLUDE_ALL | IResourceFilterDescription.FOLDERS,
+				new FileInfoMatcherDescription("org.eclipse.ui.ide.multiFilter",
+						"1.0-name-matches-false-false-" + folderName),
+				IResource.BACKGROUND_REFRESH, new NullProgressMonitor());
 	}
 
 	/**
