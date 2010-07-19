@@ -4,13 +4,6 @@
  */
 package org.wesnoth.ui.syntax.bracketmatching;
 
-import org.wesnoth.services.WMLGrammarAccess;
-import org.wesnoth.ui.WMLEditor;
-import org.wesnoth.ui.syntax.WMLHighlightingConfiguration;
-import org.wesnoth.wML.WMLTag;
-
-import com.google.inject.Inject;
-
 import java.util.List;
 
 import org.eclipse.jface.text.IRegion;
@@ -26,6 +19,12 @@ import org.eclipse.xtext.ui.editor.bracketmatching.DefaultBracketMatcher;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.HighlightingReconciler;
 import org.eclipse.xtext.ui.editor.utils.EditorUtils;
 import org.eclipse.xtext.util.Pair;
+import org.wesnoth.services.WMLGrammarAccess;
+import org.wesnoth.ui.WMLEditor;
+import org.wesnoth.ui.syntax.WMLHighlightingConfiguration;
+import org.wesnoth.wML.WMLTag;
+
+import com.google.inject.Inject;
 
 public class WMLBracketMatching extends DefaultBracketMatcher
 {
@@ -79,6 +78,7 @@ public class WMLBracketMatching extends DefaultBracketMatcher
 		if (reconcilier == null)
 			return null;
 		editor.setCurrentHighlightedNode(null);
+		// clear any highlighted nodes
 		reconcilier.refresh();
 		/* -- WML Related -- */
 		// search for opened/closed tag
@@ -91,26 +91,45 @@ public class WMLBracketMatching extends DefaultBracketMatcher
 		}
 		if (wmlNode != null)
 		{
-			AbstractNode correspondingTag = null;
+			LeafNode tmp = null;
+			LeafNode correspondingTag = null;
+			boolean correspondingIsClosed = false;
 			for (int i = 0; i < wmlNode.getParent().getChildren().size(); i++)
-			//AbstractNode tmpNode : wmlNode.getParent().getChildren())
 			{
-				AbstractNode tmpNode = wmlNode.getParent().getChildren().get(i);
-				if (!(tmpNode instanceof LeafNode))
+				if (!(wmlNode.getParent().getChildren().get(i) instanceof LeafNode))
 					continue;
-				if (((LeafNode) tmpNode).getText().equals(wmlNode.getText()) &&
-						tmpNode != wmlNode)
+
+				if (i > 0 && wmlNode.getParent().getChildren().get(i-1) instanceof LeafNode)
+					tmp = (LeafNode)wmlNode.getParent().getChildren().get(i-1);
+
+				LeafNode tmpNode = (LeafNode)wmlNode.getParent().getChildren().get(i);
+
+				if ((tmpNode).getText().equals(wmlNode.getText()) &&
+						tmpNode != wmlNode && !tmpNode.isHidden())
 				{
 					correspondingTag = tmpNode;
+					if (tmp != null && tmp.getText().equals("[/"))
+						correspondingIsClosed = true;
+					break;
 				}
 			}
 
 			if (correspondingTag != null)
 			{
-				editor.setCurrentHighlightedNode((LeafNode) correspondingTag);
-				reconcilier.addPosition(
-						correspondingTag.getOffset() - 2,
-						correspondingTag.getLength() + 3,
+				int tagOffset = correspondingTag.getTotalOffset();
+				int length = correspondingTag.getLength();
+				tagOffset--; // we need to color the '['
+				length += 2;
+
+				// we need to color the auxilliary '/'
+				if (correspondingIsClosed)
+				{
+					tagOffset--;
+					length++;
+				}
+
+				editor.setCurrentHighlightedNode(correspondingTag);
+				reconcilier.addPosition(tagOffset, length,
 						WMLHighlightingConfiguration.RULE_START_END_TAG);
 				reconcilier.refresh();
 			}
