@@ -752,6 +752,14 @@ surface locator::load_image_sub_file() const
 						ERR_DP << "no arguments passed to the ~BLIT() function\n";
 					}
 				}
+				else if("L" == function) {
+					if(!field.empty()){
+						surface surf = get_image(field);
+						functor_queue.push_back(new light_function(surf));
+					} else {
+						ERR_DP << "no arguments passed to the ~L() function\n";
+					}
+				}
 				// Scale (SCALE)
 				else if("SCALE" == function) {
 					std::vector<std::string> const& scale_params = utils::split(field, ',', utils::STRIP_SPACES);

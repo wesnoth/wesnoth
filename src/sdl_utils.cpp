@@ -1015,6 +1015,69 @@ bool in_mask_surface(const surface &surf, const surface &mask)
 	return true;
 }
 
+surface light_surface(const surface &surf, const surface &lightmap, bool optimize)
+{
+	if(surf == NULL) {
+		return NULL;
+	}
+	if(lightmap == NULL) {
+		return surf;
+	}
+
+	surface nsurf = make_neutral_surface(surf);
+	surface nlightmap = make_neutral_surface(lightmap);
+
+	if(nsurf == NULL || nlightmap == NULL) {
+		std::cerr << "could not make neutral surface...\n";
+		return NULL;
+	}
+	if (nsurf->w != nlightmap->w) {
+		// we don't support efficiently different width.
+		// (different height is not a real problem)
+		// This function is used on all hexes and usually only for that
+		// so better keep it simple and efficient for the normal case
+		std::cerr << "Detected an image with bad dimensions :" << nsurf->w << "x" << nsurf->h << "\n";
+		std::cerr << "It will not be lighted, please use :"<< nlightmap->w << "x" << nlightmap->h << "\n";
+		return nsurf;
+	}
+	{
+		surface_lock lock(nsurf);
+		surface_lock llock(nlightmap);
+
+		Uint32* beg = lock.pixels();
+		Uint32* end = beg + nsurf->w * nsurf->h;
+		Uint32* lbeg = llock.pixels();
+		Uint32* lend = lbeg + nlightmap->w * nlightmap->h;
+
+		while(beg != end && lbeg != lend) {
+			Uint8 alpha = (*beg) >> 24;
+ 			if(alpha) {
+				Uint8 lr, lg, lb;
+
+				lr = (*lbeg) >> 16;
+				lg = (*lbeg) >> 8;
+				lb = (*lbeg);
+
+				Uint8 r, g, b;
+				r = (*beg) >> 16;
+				g = (*beg) >> 8;
+				b = (*beg);
+
+				r = std::max<int>(0,std::min<int>(255,int(r) + lr - 128));
+				g = std::max<int>(0,std::min<int>(255,int(g) + lg - 128));
+				b = std::max<int>(0,std::min<int>(255,int(b) + lb - 128));
+
+				*beg = (alpha << 24) + (r << 16) + (g << 8) + b;
+			}
+			++beg;
+			++lbeg;
+		}
+	}
+
+	return optimize ? create_optimized_surface(nsurf) : nsurf;
+}
+
+
 surface blur_surface(const surface &surf, int depth, bool optimize)
 {
 	if(surf == NULL) {

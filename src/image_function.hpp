@@ -147,6 +147,22 @@ private:
 };
 
 /**
+ * LIGHT (L) function.
+ */
+
+class light_function : public function_base
+{
+public:
+	light_function(const surface& surf)
+		: surf_(surf)
+	{}
+	virtual surface operator()(const surface& src) const;
+
+private:
+	surface surf_;
+};
+
+/**
  * Scale (SCALE) function.
  */
 class scale_function : public function_base

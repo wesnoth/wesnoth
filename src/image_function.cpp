@@ -81,6 +81,11 @@ surface blit_function::operator()(const surface& src) const
 	return nsrc;
 }
 
+surface light_function::operator()(const surface& src) const
+{
+	return light_surface(src, surf_);;
+}
+
 surface scale_function::operator()(const surface& src) const
 {
 	const int old_w = src->w;

@@ -249,6 +249,9 @@ surface mask_surface(const surface &surf, const surface &mask);
 /** Check if a surface fit into a mask */
 bool in_mask_surface(const surface &surf, const surface &mask);
 
+/** Light surf using lightmap (RGB=128,128,128 means no change) */
+surface light_surface(const surface &surf, const surface &lightmap, bool optimize=true);
+
 /** Cross-fades a surface. */
 surface blur_surface(const surface &surf, int depth = 1, bool optimize=true);
 
