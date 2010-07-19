@@ -33,12 +33,11 @@ import wesnoth_eclipse_plugin.Logger;
 import wesnoth_eclipse_plugin.globalactions.PreprocessorActions;
 import wesnoth_eclipse_plugin.preferences.Preferences;
 import wesnoth_eclipse_plugin.utils.AntUtils;
-import wesnoth_eclipse_plugin.utils.Pair;
+import wesnoth_eclipse_plugin.utils.ProjectUtils;
 import wesnoth_eclipse_plugin.utils.ResourceUtils;
 import wesnoth_eclipse_plugin.utils.StringUtils;
 import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
 
-//TODO: rewrite and use a ".wesnoth" file to store additional infos instead of just ".ignore"
 public class WesnothProjectBuilder extends IncrementalProjectBuilder
 {
 	public static final String WESNOTH_BUILDER_ID = "Wesnoth_Eclipse_Plugin.projectBuilder";
@@ -47,65 +46,9 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 	private static final String MARKER_TYPE = "Wesnoth_Eclipse_Plugin.configProblem";
 
 	/**
-	 * The key is the project name
-	 * The value is:
-	 * - the last modified date for the .ignore file
-	 * - the list with ignored directories names
+	 * The 'last modified' timestamp of the '.wesnoth' file
 	 */
-	private static HashMap<String, Pair<Long, List<String>>> ignoreCache_;
-
-	public WesnothProjectBuilder() {
-		if (ignoreCache_ == null)
-			ignoreCache_ = new HashMap<String, Pair<Long, List<String>>>();
-	}
-
-	class SampleDeltaVisitor implements IResourceDeltaVisitor
-	{
-		private IProgressMonitor monitor_;
-
-		public SampleDeltaVisitor(IProgressMonitor monitor) {
-			monitor_ = monitor;
-		}
-
-		@Override
-		public boolean visit(IResourceDelta delta) throws CoreException
-		{
-			IResource resource = delta.getResource();
-			switch (delta.getKind())
-			{
-			case IResourceDelta.ADDED:
-				// handle added resource
-				checkResource(resource, monitor_);
-				break;
-			case IResourceDelta.REMOVED:
-				// handle removed resource
-				break;
-			case IResourceDelta.CHANGED:
-				// handle changed resource
-				checkResource(resource, monitor_);
-				break;
-			}
-			// return true to continue visiting children.
-			return true;
-		}
-	}
-
-	class SampleResourceVisitor implements IResourceVisitor
-	{
-		private IProgressMonitor monitor_;
-
-		public SampleResourceVisitor(IProgressMonitor monitor) {
-			monitor_ = monitor;
-		}
-
-		@Override
-		public boolean visit(IResource resource)
-		{
-			checkResource(resource, monitor_);
-			// return true to continue visiting children.
-			return true;
-		}
-	}
+	private long wesnothFileLastModified_ = 0;
 
 	protected void fullBuild(final IProgressMonitor monitor) throws CoreException
 	{
@@ -150,22 +93,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 		}
 		monitor.worked(2);
 
-		// get the directories list to ignore
-		File ignoreFile = new File(getProject().getLocation().toOSString() + Path.SEPARATOR + ".ignore");
-		if (!ignoreCache_.containsKey(getProject().getName()) || ignoreFile.lastModified() != ignoreCache_.get(getProject().getName()).First)
-		{
-			String contents = ResourceUtils.getFileContents(ignoreFile);
-			if (contents != null)
-			{
-				List<String> list = new ArrayList<String>();
-				String[] lines = StringUtils.getLines(contents);
-				for (String line : lines)
-					list.add(line);
-
-				ignoreCache_.remove(getProject().getName());
-				ignoreCache_.put(getProject().getName(), new Pair<Long, List<String>>(ignoreFile.lastModified(), list));
-			}
-		}
+		readWesnothFile();
 		monitor.worked(5);
 
 		// Ant copy
@@ -272,18 +200,65 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 		}
 	}
 
+	/**
+	 * Reads the .wesnoth file and memorizes the information
+	 */
+	private void readWesnothFile()
+	{
+		File wesnothFile = new File(getProject().getLocation().toOSString() + Path.SEPARATOR + ".wesnoth");
+		if (!wesnothFile.exists() || wesnothFile.lastModified() == wesnothFileLastModified_)
+			return;
+
+		HashMap<String, List<String>> preferences = new HashMap<String, List<String>>();
+
+		String contents = ResourceUtils.getFileContents(wesnothFile);
+		if (contents != null)
+		{
+			List<String> ignoreList = new ArrayList<String>();
+			List<String> projSettings = new ArrayList<String>();
+			String[] lines = StringUtils.getLines(contents);
+			// 1 - ignore list | 2 - project settings
+			int step = 0;
+			for (String line : lines)
+			{
+				if (StringUtils.startsWith(line, "#") || line.matches("^[\t ]*$"))
+					continue;
+
+				if (line.startsWith("ignore"))
+				{
+					step = 1; continue;
+				}
+				else if (line.startsWith("settings"))
+				{
+					step = 2; continue;
+				}
+				else if (line.startsWith("end_"))
+				{
+					step = 0; continue;
+				}
+
+				if (step == 1)
+					ignoreList.add(line);
+				if (step == 2)
+					projSettings.add(line);
+			}
+
+			preferences.put("ignore", ignoreList);
+			preferences.put("settings", projSettings);
+		}
+		ProjectUtils.setPreferencesForProject(getProject(), preferences);
+	}
+
 	private boolean isResourceIgnored(IResource res)
 	{
-		// we have an ignore cache
-		if (ignoreCache_.containsKey(getProject().getName()))
+		if (ProjectUtils.getPreferencesForProject(getProject()) == null)
+			return false;
+		List<String> ignoredFiles = ProjectUtils.getPreferencesForProject(getProject()).get("ignore");
+		for (String path : ignoredFiles)
 		{
-			List<String> ignoreList = ignoreCache_.get(getProject().getName()).Second;
-			for (String path : ignoreList)
-			{
-				if (StringUtils.normalizePath(WorkspaceUtils.getPathRelativeToUserDir(res))
-						.contains(StringUtils.normalizePath(path)))
-					return true;
-			}
+			if (StringUtils.normalizePath(WorkspaceUtils.getPathRelativeToUserDir(res))
+					.contains(StringUtils.normalizePath(path)))
+				return true;
 		}
 		return false;
 	}
@@ -314,6 +289,55 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 		} catch (CoreException e)
 		{
 			Logger.getInstance().logException(e);
+		}
+	}
+
+
+	class SampleDeltaVisitor implements IResourceDeltaVisitor
+	{
+		private IProgressMonitor monitor_;
+
+		public SampleDeltaVisitor(IProgressMonitor monitor) {
+			monitor_ = monitor;
+		}
+
+		@Override
+		public boolean visit(IResourceDelta delta) throws CoreException
+		{
+			IResource resource = delta.getResource();
+			switch (delta.getKind())
+			{
+			case IResourceDelta.ADDED:
+				// handle added resource
+				checkResource(resource, monitor_);
+				break;
+			case IResourceDelta.REMOVED:
+				// handle removed resource
+				break;
+			case IResourceDelta.CHANGED:
+				// handle changed resource
+				checkResource(resource, monitor_);
+				break;
+			}
+			// return true to continue visiting children.
+			return true;
+		}
+	}
+
+	class SampleResourceVisitor implements IResourceVisitor
+	{
+		private IProgressMonitor monitor_;
+
+		public SampleResourceVisitor(IProgressMonitor monitor) {
+			monitor_ = monitor;
+		}
+
+		@Override
+		public boolean visit(IResource resource)
+		{
+			checkResource(resource, monitor_);
+			// return true to continue visiting children.
+			return true;
 		}
 	}
 }

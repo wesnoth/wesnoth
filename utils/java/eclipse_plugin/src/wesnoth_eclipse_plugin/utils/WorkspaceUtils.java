@@ -242,7 +242,7 @@ public class WorkspaceUtils
 						TemplateProvider.getInstance().getProcessedTemplate("build_xml", param), true);
 
 				// we need to skip the already created projects (if any) in the addons directory
-				String skipList = "";
+				String skipList = "ignore\n";
 				for (IProject project : ResourcesPlugin.getWorkspace().getRoot().getProjects())
 				{
 					if (project.getName().equals("User Addons"))
@@ -250,7 +250,8 @@ public class WorkspaceUtils
 
 					skipList += (StringUtils.trimPathSeparators(getPathRelativeToUserDir(project)) + "\n");
 				}
-				ResourceUtils.createFile(proj, ".ignore", skipList, true);
+				skipList += "end_ignore\n";
+				ResourceUtils.createFile(proj, ".wesnoth", skipList, true);
 			}
 
 			Logger.getInstance().log("setupWorkspace was successful",

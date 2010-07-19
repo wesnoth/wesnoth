@@ -9,6 +9,10 @@
 package wesnoth_eclipse_plugin.utils;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map.Entry;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
@@ -21,8 +25,48 @@ import wesnoth_eclipse_plugin.Logger;
 
 public class ProjectUtils
 {
+	private static HashMap<IProject, HashMap<String, List<String>>> projectPreferences_ =
+		new HashMap<IProject, HashMap<String, List<String>>>();
+
+	public static HashMap<String, List<String>> getPreferencesForProject(IProject project)
+	{
+		return projectPreferences_.get(project);
+	}
+
+	public static void setPreferencesForProject(IProject project, HashMap<String,
+			List<String>> prefs)
+	{
+		projectPreferences_.put(project, prefs);
+	}
+
+	public static HashMap<String, String> getSettingsForProject(IProject project)
+	{
+		HashMap<String, List<String>> pref = getPreferencesForProject(project);
+		if (pref == null)
+			return null;
+		List<String> settingsList = pref.get("settings");
+		HashMap<String, String> settings = new HashMap<String, String>();
+		for (String string : settingsList)
+		{
+			settings.put(string.split("=")[0], string.split("=")[1]);
+		}
+		return settings;
+	}
+
+	public static void setSettingsForProject(IProject project,HashMap<String, String> settings)
+	{
+		List<String> settingsList = new ArrayList<String>();
+		for (Entry<String,String> key : settings.entrySet())
+		{
+			settingsList.add(key.getKey() + "=" + key.getValue());
+		}
+		HashMap<String, List<String>> prefs = getPreferencesForProject(project);
+		prefs.put("settings",settingsList);
+		setPreferencesForProject(project, prefs);
+	}
+
 	//TODO: create a simple java wmlparsers in order to get the right values
-	public static String getPropertyValue(String fileName, String propertyName)
+	public static String getConfigKeyValue(String fileName, String propertyName)
 	{
 		if (fileName == null || propertyName.isEmpty())
 			return null;
@@ -102,11 +146,11 @@ public class ProjectUtils
 
 	public static String getCampaignID(IResource resource)
 	{
-		return getPropertyValue(getMainConfigLocation(resource),"id");
+		return getConfigKeyValue(getMainConfigLocation(resource),"id");
 	}
 	public static String getScenarioID(String fileName)
 	{
-		return getPropertyValue(fileName,"id");
+		return getConfigKeyValue(fileName,"id");
 	}
 
 	public static boolean isCampaignFile(String fileName)
@@ -123,4 +167,6 @@ public class ProjectUtils
 		String fileContentString = ResourceUtils.getFileContents(new File(fileName));
 		return (fileContentString.contains("[scenario]") && fileContentString.contains("[/scenario]"));
 	}
+
+
 }
