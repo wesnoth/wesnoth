@@ -2305,7 +2305,7 @@ LuaKernel::~LuaKernel()
 /**
  * Executes its upvalue as a wml action.
  */
-int cfun_wml_action(lua_State *L)
+static int cfun_wml_action(lua_State *L)
 {
 	if (false) {
 		error_call_destructors:
