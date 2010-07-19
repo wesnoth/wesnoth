@@ -692,9 +692,32 @@ std::vector<surface> display::get_terrain_images(const map_location &loc,
 	std::string color_mod;
 	if(game_config::local_light){
 		const time_of_day tod = get_time_of_day(loc);
-		std::ostringstream mod;
-		mod << "~CS(" << tod.red << "," << tod.green << "," <<tod.blue << ")";
-		color_mod = mod.str();
+		std::ostringstream lightmap;
+		//generate the base of the lightmap
+		lightmap
+			<< "terrain/light.png"
+			<< "~CS("
+				<< tod.red << "," << tod.green << "," <<tod.blue
+			<< ")"; // CS
+
+		map_location adjs[6];
+		get_adjacent_tiles(loc,adjs);
+		static const std::string dir[6] ={"n","ne","se","s","sw","nw"};
+		//add all the light transitions
+		for(int d=0; d<6; ++d){
+			const time_of_day atod = get_time_of_day(adjs[d]);
+			if(atod.red == tod.red && atod.green == tod.green && atod.blue == tod.blue)
+				continue;
+			lightmap
+				<< "~BLIT("
+					<< "terrain/light-" << dir[d] << ".png"
+					<< "~CS("
+						<< atod.red << "," << atod.green << "," << atod.blue
+					<< ")" // CS
+				<< ")"; //BLIT
+		}
+
+		color_mod = "~L(" + lightmap.str() + ")";
 	}
 
 	if(terrains != NULL) {
@@ -720,8 +743,13 @@ std::vector<surface> display::get_terrain_images(const map_location &loc,
 				const bool off_map = (image.get_filename() == off_map_name);
 				surf = image::get_image(image, off_map ? image::UNMASKED : image_type);
 			} else {
-				std::string mod = image.get_modifications() + color_mod;
-				image::locator colored_image(image.get_filename(), image.get_loc(), image.get_center_x(), image.get_center_y(), mod);
+				image::locator colored_image(
+						image.get_filename(),
+						image.get_loc(),
+						image.get_center_x(), image.get_center_y(),
+						image.get_modifications() + color_mod
+					);
+
 				surf = image::get_image(colored_image, image::UNMASKED);
 			}
 
