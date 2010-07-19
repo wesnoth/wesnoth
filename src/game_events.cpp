@@ -3246,19 +3246,8 @@ namespace game_events {
 
 	void handle_event_commands(const game_events::queued_event& event_info, const vconfig &cfg)
 	{
-		for (vconfig::all_children_iterator i = cfg.ordered_begin(),
-		     i_end = cfg.ordered_end(); i != i_end; ++i)
-		{
-			const std::string &cmd = i.get_key();
-			// Skip if this is a /^filter.*/ tag
-			if (cmd.compare(0, 6, "filter") == 0)
-				continue;
-
-			handle_event_command(cmd, event_info, i.get_child());
-		}
-
-		// We do this once the event has completed any music alterations
-		sound::commit_music_changes();
+		scoped_dummy_context dummy;
+		resources::lua_kernel->run_wml_action("command", cfg, event_info);
 	}
 
 	void handle_event_command(const std::string &cmd,
