@@ -2241,6 +2241,12 @@ LuaKernel::LuaKernel()
 	lua_setfield(L, -2, "wml_actions");
 	lua_pop(L, 1);
 
+	// Remove the math.random function, since it is not OoS-proof.
+	lua_getglobal(L, "math");
+	lua_pushnil(L);
+	lua_setfield(L, -2, "random");
+	lua_pop(L, 1);
+
 	// Store the error handler, then close debug.
 	lua_pushlightuserdata(L, (void *)&executeKey);
 	lua_getglobal(L, "debug");
