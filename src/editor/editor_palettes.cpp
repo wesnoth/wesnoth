@@ -532,12 +532,14 @@ int terrain_palette::tile_selected(const int x, const int y) const {
 	return -1;
 }
 
-void terrain_palette::update_report() {
-	const std::string msg = std::string(_("FG")) + ": "
-		+ get_terrain_string(selected_fg_terrain()) + "\n"
-		+ std::string(_("BG")) +
-		": " + get_terrain_string(selected_bg_terrain());
-	gui_.set_report_content(reports::SELECTED_TERRAIN, msg);
+std::string selected_terrain;
+
+void terrain_palette::update_report()
+{
+	std::ostringstream msg;
+	msg << _("FG: ") << get_terrain_string(selected_fg_terrain())
+		<< '\n' << _("BG: ") << get_terrain_string(selected_bg_terrain());
+	selected_terrain = msg.str();
 }
 
 void terrain_palette::load_tooltips()

@@ -36,6 +36,10 @@
 #include <iostream>
 #include <ctime>
 
+namespace editor {
+extern std::string selected_terrain, left_button_function;
+}
+
 namespace reports {
 
 static void add_status(report &r,
@@ -56,7 +60,6 @@ static std::string flush(std::ostringstream &s)
 static char const *naps = "</span>";
 
 report generate_report(TYPE type,
-	const std::map<reports::TYPE, std::string> &report_contents,
                        const team &current_team, int current_side, int playing_side,
                        const map_location& loc, const map_location& mouseover, const map_location& displayed_unit_hex,
                        const std::set<std::string> &observers,
@@ -688,25 +691,17 @@ report generate_report(TYPE type,
 
 		return report("",game_config::observer_image,str.str());
 	}
-	case SELECTED_TERRAIN: {
-		std::map<TYPE, std::string>::const_iterator it =
-			report_contents.find(SELECTED_TERRAIN);
-		if (it != report_contents.end()) {
-			return report(it->second);
-		}
-		else {
+	case EDITOR_SELECTED_TERRAIN: {
+		if (editor::selected_terrain.empty())
 			return report();
-		}
+		else
+			return report(editor::selected_terrain);
 	}
-	case EDIT_LEFT_BUTTON_FUNCTION: {
-		std::map<TYPE, std::string>::const_iterator it =
-			report_contents.find(EDIT_LEFT_BUTTON_FUNCTION);
-		if (it != report_contents.end()) {
-			return report(it->second);
-		}
-		else {
+	case EDITOR_LEFT_BUTTON_FUNCTION: {
+		if (editor::left_button_function.empty())
 			return report();
-		}
+		else
+			return report(editor::left_button_function);
 	}
 	case REPORT_COUNTDOWN: {
 		int min;

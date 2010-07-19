@@ -33,8 +33,9 @@ namespace reports {
 		    UNIT_IMAGE, UNIT_PROFILE, TIME_OF_DAY,
 		    TURN, GOLD, VILLAGES, NUM_UNITS, UPKEEP, EXPENSES,
 		    INCOME, TERRAIN, POSITION, SIDE_PLAYING, OBSERVERS,
-		    REPORT_COUNTDOWN, REPORT_CLOCK, SELECTED_TERRAIN,
-		    EDIT_LEFT_BUTTON_FUNCTION, EDITOR_TOOL_HINT, NUM_REPORTS};
+		REPORT_COUNTDOWN, REPORT_CLOCK, EDITOR_SELECTED_TERRAIN,
+		EDITOR_LEFT_BUTTON_FUNCTION, EDITOR_TOOL_HINT, NUM_REPORTS
+	};
 
 	enum { UNIT_REPORTS_BEGIN=UNIT_NAME, UNIT_REPORTS_END=UNIT_PROFILE+1 };
 	enum { STATUS_REPORTS_BEGIN=TIME_OF_DAY, STATUS_REPORTS_END=EDITOR_TOOL_HINT };
@@ -94,7 +95,6 @@ namespace reports {
 	};
 
 	report generate_report(TYPE type,
-		const std::map<reports::TYPE, std::string> &report_contents,
 		const team &current_team,
 			       int current_side, int active_side,
 			       const map_location& loc, const map_location& mouseover, const map_location& displayed_unit_hex,

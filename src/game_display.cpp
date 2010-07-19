@@ -420,10 +420,9 @@ void game_display::draw_report(reports::TYPE report_num)
 		return;
 	}
 
-	reports::report report = reports::generate_report(report_num, report_,
-							  teams_[viewing_team()],
-							  size_t(currentTeam_+1),size_t(activeTeam_+1),
-							  selectedHex_, mouseoverHex_, displayedUnitHex_,
+	reports::report report = reports::generate_report(report_num,
+		teams_[viewing_team()], currentTeam_ + 1, activeTeam_ + 1,
+		selectedHex_, mouseoverHex_, displayedUnitHex_,
 		observers_, level_, !viewpoint_);
 
 	refresh_report(report_num, report);

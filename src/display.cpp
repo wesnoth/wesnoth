@@ -102,7 +102,6 @@ display::display(CVideo& video, const gamemap* map, const config& theme_cfg, con
 	map_labels_(new map_labels(*this, 0)),
 	scroll_event_("scrolled"),
 	nextDraw_(0),
-	report_(),
 	buttons_(),
 	invalidated_(),
 	previous_invalidated_(),
@@ -2126,10 +2125,6 @@ void display::draw_image_for_report(surface& img, SDL_Rect& rect)
 
 		SDL_BlitSurface(img,NULL,screen_.getSurface(),&target);
 	}
-}
-
-void display:: set_report_content(const reports::TYPE which_report, const std::string &content) {
-	report_[which_report] = content;
 }
 
 void display::refresh_report(reports::TYPE report_num, reports::report report)

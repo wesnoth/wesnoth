@@ -468,16 +468,6 @@ public:
 	 */
 	void redraw_minimap() { redrawMinimap_ = true; }
 
-	/**
-	 * Set what will be shown for the report with type which_report.
-	 * Note that this only works for some reports,
-	 * i.e. reports that can not be deducted
-	 * from the supplied arguments to generate_report,
-	 * currently: SELECTED_TERRAIN, EDIT_LEFT_BUTTON_FUNCTION
-	 */
-	void set_report_content(const reports::TYPE which_report, const std::string &content);
-	std::map<reports::TYPE, std::string> get_report_contents() const {return report_;};
-
 	virtual const time_of_day get_time_of_day(const map_location& /*loc*/) const {return time_of_day();}
 
 protected:
@@ -594,7 +584,6 @@ protected:
 	SDL_Rect reportRects_[reports::NUM_REPORTS];
 	surface reportSurfaces_[reports::NUM_REPORTS];
 	reports::report reports_[reports::NUM_REPORTS];
-	std::map<reports::TYPE, std::string> report_;
 	std::vector<gui::button> buttons_;
 	std::set<map_location> invalidated_;
 	std::set<map_location> previous_invalidated_;

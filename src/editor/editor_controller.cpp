@@ -1184,6 +1184,8 @@ void editor_controller::fill_selection()
 	perform_refresh(editor_action_paint_area(get_map().selection(), foreground_terrain_));
 }
 
+std::string left_button_function;
+
 void editor_controller::hotkey_set_mouse_action(hotkey::HOTKEY_COMMAND command)
 {
 	std::map<hotkey::HOTKEY_COMMAND, mouse_action*>::iterator i = mouse_actions_.find(command);
@@ -1191,8 +1193,7 @@ void editor_controller::hotkey_set_mouse_action(hotkey::HOTKEY_COMMAND command)
 		mouse_action_ = i->second;
 		set_mouseover_overlay();
 		redraw_toolbar();
-		gui().set_report_content(reports::EDIT_LEFT_BUTTON_FUNCTION,
-				hotkey::get_hotkey(command).get_description());
+		left_button_function = hotkey::get_hotkey(command).get_description();
 		gui().invalidate_game_status();
 	} else {
 		ERR_ED << "Invalid hotkey command ("
