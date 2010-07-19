@@ -289,3 +289,24 @@ local function handle_event_commands(cfg)
 end
 
 wml_actions.command = handle_event_commands
+
+local function if_while_handler(max_iter, pass, fail, cfg)
+	for i = 1, max_iter do
+		local t = wesnoth.eval_conditional(cfg) and pass or fail
+		if not t then return end
+		for v in helper.child_range(cfg, t) do
+			handle_event_commands(v)
+		end
+	end
+end
+
+local function if_handler(cfg)
+	if_while_handler(1, "then", "else", cfg)
+end
+
+local function while_handler(cfg)
+	if_while_handler(65536, "do", nil, cfg)
+end
+
+wml_actions["if"] = if_handler
+wml_actions["while"] = while_handler

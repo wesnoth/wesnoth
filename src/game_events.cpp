@@ -2609,40 +2609,6 @@ WML_HANDLER_FUNCTION(allow_undo,/*event_info*/,/*cfg*/)
 	current_context->mutated = false;
 }
 
-// Conditional statements
-static void if_while_handler(bool is_if,
-	const game_events::queued_event &event_info, const vconfig &cfg)
-{
-	const size_t max_iterations = (is_if ? 1 : game_config::max_loop);
-	const std::string pass = (is_if ? "then" : "do");
-	const std::string fail = (is_if ? "else" : "");
-	for(size_t i = 0; i != max_iterations; ++i) {
-		const std::string type = game_events::conditional_passed(cfg) ? pass : fail;
-
-		if(type == "") {
-			break;
-		}
-
-		// If the if statement passed, then execute all 'then' statements,
-		// otherwise execute 'else' statements
-		foreach (const vconfig &cmd, cfg.get_children(type)) {
-			handle_event_commands(event_info, cmd);
-		}
-	}
-}
-
-WML_HANDLER_FUNCTION(if, event_info, cfg)
-{
-	log_scope("if");
-	if_while_handler(true, event_info, cfg);
-}
-
-WML_HANDLER_FUNCTION(while, event_info, cfg)
-{
-	log_scope("while");
-	if_while_handler(false, event_info, cfg);
-}
-
 WML_HANDLER_FUNCTION(switch, event_info, cfg)
 {
 	const std::string var_name = cfg["variable"];
