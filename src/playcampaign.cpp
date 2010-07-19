@@ -71,7 +71,7 @@ static void preload_lua_tags(const config &game_config, config &target)
 	{
 		config &ev = target.add_child("event");
 		ev["name"] = "preload";
-		ev["first_time_only"] = false;
+		ev["first_time_only"] = "no";
 		ev.add_child("lua", cfg);
 	}
 }
