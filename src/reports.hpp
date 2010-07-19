@@ -94,7 +94,7 @@ namespace reports {
 	};
 
 	report generate_report(TYPE type,
-			       std::map<reports::TYPE, std::string> report_contents,
+		const std::map<reports::TYPE, std::string> &report_contents,
 		const team &current_team,
 			       int current_side, int active_side,
 			       const map_location& loc, const map_location& mouseover, const map_location& displayed_unit_hex,
