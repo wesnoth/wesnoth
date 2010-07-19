@@ -2340,6 +2340,7 @@ bool LuaKernel::run_wml_action(std::string const &cmd, vconfig const &cfg,
 	lua_remove(L, -2);
 	lua_pushstring(L, cmd.c_str());
 	lua_rawget(L, -2);
+	lua_remove(L, -2);
 
 	if (lua_isnil(L, -1)) {
 		lua_pop(L, 1);
