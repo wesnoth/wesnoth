@@ -33,15 +33,19 @@
 #include "unit_display.hpp"
 #include "unit_map.hpp"
 
+namespace wb {
 
-std::ostream &operator<<(std::ostream &s, wb::move const& move)
+std::ostream& operator<<(std::ostream &s, wb::move const& move)
 {
-	s << "Move for unit " << move.get_unit()->name() << " [" << move.get_unit()->id() << "] "
-		<< "from (" << move.get_source_hex() << ") to (" << move.get_dest_hex() << ")";
-	return s;
+	return move.print(s);
 }
 
-namespace wb {
+std::ostream& move::print(std::ostream &s) const
+{
+	s << "Move for unit " << get_unit()->name() << " [" << get_unit()->id() << "] "
+			<< "from (" << get_source_hex() << ") to (" << get_dest_hex() << ")";
+	return s;
+}
 
 const double move::ALPHA_HIGHLIGHT = 1.0;
 const double move::ALPHA_NORMAL = 0.6;

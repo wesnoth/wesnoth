@@ -30,12 +30,15 @@ class visitor;
  */
 class action
 {
+public:
 	friend class validate_visitor;
 	friend class highlight_visitor;
+	friend std::ostream& operator<<(std::ostream& s, action const& action);
 
-public:
 	action();
 	virtual ~action();
+
+	virtual std::ostream& print(std::ostream& s) const = 0;
 
 	virtual void accept(visitor& v) = 0;
 
@@ -65,6 +68,8 @@ public:
 	virtual void set_valid(bool valid) = 0;
 	virtual bool is_valid() = 0;
 };
+
+std::ostream& operator<<(std::ostream& s, wb::action const& action);
 
 } // end namespace wb
 

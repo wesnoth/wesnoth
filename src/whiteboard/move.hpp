@@ -25,8 +25,6 @@
 
 #include <boost/enable_shared_from_this.hpp>
 
-#include <ostream>
-
 namespace wb {
 
 /**
@@ -35,11 +33,11 @@ namespace wb {
  */
 class move : public action, public boost::enable_shared_from_this<move>
 {
-
+public:
 	friend class validate_visitor;
 	friend class highlight_visitor;
+	friend std::ostream& operator<<(std::ostream& s, move const& move);
 
-public: //constants
 	static const double ALPHA_HIGHLIGHT;
 	static const double ALPHA_NORMAL;
 	static const std::string ARROW_STYLE_VALID;
@@ -48,6 +46,8 @@ public: //constants
 	move(unit& subject, const map_location& source_hex, const map_location& target_hex, arrow_ptr arrow,
 			fake_unit_ptr fake_unit);
 	virtual ~move();
+
+	virtual std::ostream& print(std::ostream& s) const;
 
 	virtual void accept(visitor& v);
 
@@ -86,10 +86,9 @@ protected:
 	bool valid_;
 };
 
-} // end namespace wb
-
-
 /** Dumps an move on a stream, for debug purposes. */
 std::ostream &operator<<(std::ostream &s, wb::move const& move);
+
+} // end namespace wb
 
 #endif /* WB_MOVE_HPP_ */

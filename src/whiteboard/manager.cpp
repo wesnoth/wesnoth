@@ -72,6 +72,7 @@ void manager::set_active(bool active)
 	if (active_)
 	{
 		viewer_actions()->validate_actions();
+		LOG_WB << *viewer_actions() << "\n";
 		create_temp_move();
 	}
 }

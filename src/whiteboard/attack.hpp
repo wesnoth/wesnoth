@@ -30,13 +30,16 @@ namespace wb
 
 class attack: public move
 {
+public:
 	friend class validate_visitor;
 	friend class highlight_visitor;
+	friend std::ostream& operator<<(std::ostream& s, attack const& attack);
 
-public:
 	attack(unit& subject, const map_location& target_hex, int weapon_choice, const map_location& source_hex, const map_location& dest_hex,
 			arrow_ptr arrow, fake_unit_ptr fake_unit);
 	virtual ~attack();
+
+	virtual std::ostream& print(std::ostream& s) const;
 
 	virtual void accept(visitor& v);
 
@@ -54,9 +57,9 @@ private:
 		int weapon_choice_;
 };
 
-} // end namespace wb
-
 /** Dumps an attack on a stream, for debug purposes. */
-std::ostream &operator<<(std::ostream &s, wb::attack const& attack);
+std::ostream& operator<<(std::ostream &s, wb::attack const& attack);
+
+} // end namespace wb
 
 #endif /* ATTACK_HPP_ */

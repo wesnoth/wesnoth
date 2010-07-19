@@ -31,6 +31,7 @@ static lg::log_domain log_whiteboard("whiteboard");
 #include <boost/shared_ptr.hpp>
 #include <boost/weak_ptr.hpp>
 #include <deque>
+#include <ostream> //used for << operators
 
 class arrow;
 struct map_location; //not used in the typedefs, saves a few forward declarations

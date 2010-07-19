@@ -157,6 +157,9 @@ private:
 	action_queue actions_;
 };
 
+/** Dumps side_actions on a stream, for debug purposes. */
+std::ostream &operator<<(std::ostream &s, wb::side_actions const& side_actions);
+
 }
 
 #endif /* WB_SIDE_ACTIONS_HPP_ */

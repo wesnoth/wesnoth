@@ -33,6 +33,20 @@
 namespace wb
 {
 
+/** Dumps side_actions on a stream, for debug purposes. */
+std::ostream &operator<<(std::ostream &s, wb::side_actions const& side_actions)
+{
+	s << "Content of side_actions:";
+	int count = 1;
+	foreach(action_ptr action, side_actions.actions())
+	{
+		s << "\n" << "(" << count << ") " << *action;
+		count++;
+	}
+	if (count == 1) s << "(empty)";
+	return s;
+}
+
 side_actions::side_actions()
 	: actions_()
 {

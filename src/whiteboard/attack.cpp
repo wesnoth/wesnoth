@@ -26,19 +26,23 @@
 #include "unit.hpp"
 #include "unit_map.hpp"
 
+namespace wb
+{
+
 std::ostream &operator<<(std::ostream &s, wb::attack const& attack)
 {
 //	s << "Attack for unit " << attack->get_unit().name() << " [" << attack->get_unit().underlying_id() << "] "
 //			<< "moving from (" << attack->get_source_hex() << ") to (" << attack->get_dest_hex() << ") and attacking "
 //			<< attack->get_target_hex();
 
-	s << static_cast<wb::move const&>(attack) << " and attacking (" << attack.get_target_hex() << ")";
-
-	return s;
+	return attack.print(s);
 }
 
-namespace wb
+std::ostream& attack::print(std::ostream& s) const
 {
+	s << static_cast<wb::move>(*this) << " and attacking (" << get_target_hex() << ")";
+	return s;
+}
 
 attack::attack(unit& subject, const map_location& target_hex, int weapon_choice, const map_location& source_hex, const map_location& dest_hex,
 		arrow_ptr arrow, fake_unit_ptr fake_unit)
