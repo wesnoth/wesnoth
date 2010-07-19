@@ -312,3 +312,25 @@ end
 
 wml_actions["if"] = if_handler
 wml_actions["while"] = while_handler
+
+function wml_actions.switch(cfg)
+	local value = wesnoth.get_variable(cfg.variable)
+	local found = false
+	-- Execute all the [case]s where the value matches.
+	for v in helper.child_range(cfg, "case") do
+		local match =  false
+		for w in string.gmatch(v.value, "[^%s,][^,]*") do
+			if w == value then match = true end
+		end
+		if match then
+			handle_event_commands(v)
+			found = true
+		end
+	end
+	-- Otherwise execute [else] statements.
+	if not found then
+		for v in helper.child_range(cfg, "else") do
+			handle_event_commands(v)
+		end
+	end
+end

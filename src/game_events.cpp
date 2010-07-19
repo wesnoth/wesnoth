@@ -2609,28 +2609,6 @@ WML_HANDLER_FUNCTION(allow_undo,/*event_info*/,/*cfg*/)
 	current_context->mutated = false;
 }
 
-WML_HANDLER_FUNCTION(switch, event_info, cfg)
-{
-	const std::string var_name = cfg["variable"];
-	std::string var = resources::state_of_game->get_variable_const(var_name);
-
-	bool not_found = true;
-	// execute all cases where the value matches
-	foreach (const vconfig &c, cfg.get_children("case")) {
-		std::vector<std::string> vals = utils::split(c["value"]);
-		if (std::find(vals.begin(), vals.end(), var) != vals.end()) {
-			not_found = false;
-			handle_event_commands(event_info, c);
-		}
-	}
-	if (not_found) {
-		// otherwise execute 'else' statements
-		foreach (const vconfig &e, cfg.get_children("else")) {
-			handle_event_commands(event_info, e);
-		}
-	}
-}
-
 WML_HANDLER_FUNCTION(open_help,  /*event_info*/, cfg)
 {
 	game_display &screen = *resources::screen;
