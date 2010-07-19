@@ -36,9 +36,11 @@
 #include <iostream>
 #include <ctime>
 
+#ifndef DISABLE_EDITOR
 namespace editor {
 extern std::string selected_terrain, left_button_function;
 }
+#endif
 
 namespace reports {
 
@@ -691,6 +693,11 @@ report generate_report(TYPE type,
 
 		return report("",game_config::observer_image,str.str());
 	}
+#ifdef DISABLE_EDITOR
+	case EDITOR_SELECTED_TERRAIN:
+	case EDITOR_LEFT_BUTTON_FUNCTION:
+		return report();
+#else
 	case EDITOR_SELECTED_TERRAIN: {
 		if (editor::selected_terrain.empty())
 			return report();
@@ -703,6 +710,7 @@ report generate_report(TYPE type,
 		else
 			return report(editor::left_button_function);
 	}
+#endif
 	case REPORT_COUNTDOWN: {
 		int min;
 		int sec;
