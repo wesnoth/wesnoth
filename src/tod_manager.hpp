@@ -39,14 +39,14 @@ class tod_manager : public savegame::savegame_config
 		/** Returns time of day object for current turn. */
 		const time_of_day& get_time_of_day() const;
 		const time_of_day& get_previous_time_of_day() const;
-		time_of_day get_time_of_day(int illuminated, const map_location& loc) const;
+		time_of_day get_time_of_day(const map_location& loc) const;
 		/**
 		 * Returns time of day object in the turn.
 		 *
 		 * It first tries to look for specified. If no area time specified in
 		 * location, it returns global time.
 		 */
-		time_of_day get_time_of_day(int illuminated, const map_location& loc, int n_turn) const;
+		time_of_day get_time_of_day(const map_location& loc, int n_turn) const;
 		/**
 		 * Sets global time of day in this turn.
 		 */
