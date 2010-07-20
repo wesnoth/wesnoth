@@ -164,7 +164,6 @@ void manager::set_planned_unit_map()
 	{
 		if (!planned_unit_map_active_)
 		{
-			validate_viewer_actions();
 			DBG_WB << "Building planned unit map.\n";
 			mapbuilder_.reset(new mapbuilder_visitor(*resources::units, viewer_actions()));
 			mapbuilder_->build_map();

@@ -64,6 +64,7 @@ protected:
 	std::set<unit const*> excluded_units_;
 
 	side_actions_ptr side_actions_;
+	action_queue applied_actions_;
 
 	enum mapbuilder_mode {
 		BUILD_PLANNED_MAP,

@@ -186,8 +186,9 @@ void move::apply_temp_modifier(unit_map& unit_map)
 		return; //zero-hex move, probably used by attack subclass
 
 	// Move the unit
-	unit* unit = get_unit();
-	assert(unit);
+	unit_map::iterator unit_it = resources::units->find(source_hex_);
+	assert(unit_it != resources::units->end());
+	unit* unit = &*unit_it;
 	DBG_WB << "Temporarily moving unit " << unit->name() << " [" << unit->underlying_id()
 			<< "] from (" << source_hex_ << ") to (" << dest_hex_ <<")\n";
 	unit_map.move(source_hex_, dest_hex_);

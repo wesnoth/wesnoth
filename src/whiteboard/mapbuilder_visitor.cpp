@@ -33,6 +33,7 @@ mapbuilder_visitor::mapbuilder_visitor(unit_map& unit_map, side_actions_ptr side
 	: unit_map_(unit_map)
     , excluded_units_()
 	, side_actions_(side_actions)
+	, applied_actions_()
 	, mode_(BUILD_PLANNED_MAP)
 {
 }
@@ -61,6 +62,8 @@ void mapbuilder_visitor::visit_move(move_ptr move)
 		if(mode_ == BUILD_PLANNED_MAP)
 		{
 			move->apply_temp_modifier(unit_map_);
+			//remember which actions we applied, so we can unapply them later
+			applied_actions_.push_back(move);
 		}
 		else if (mode_ == RESTORE_NORMAL_MAP)
 		{
@@ -78,9 +81,9 @@ void mapbuilder_visitor::visit_attack(attack_ptr attack)
 void mapbuilder_visitor::restore_normal_map()
 {
 	mode_ = RESTORE_NORMAL_MAP;
-	const action_queue& actions = side_actions_->actions();
 	action_queue::const_reverse_iterator rit;
-	for (rit = actions.rbegin(); rit != actions.rend(); ++rit)
+	//applied_actions_ contain only the actions that we applied to the unit map
+	for (rit = applied_actions_.rbegin(); rit != applied_actions_.rend(); ++rit)
 	{
 		if ((*rit)->is_valid())
 		{
