@@ -200,8 +200,8 @@ class ana_handshake_finisher_handler : public ana::send_handler
     public:
         ana_handshake_finisher_handler( ana::server*, clients_manager* );
 
-    private:
         ~ana_handshake_finisher_handler();
+    private:
 
         virtual void handle_send(ana::error_code, ana::net_id);
 
