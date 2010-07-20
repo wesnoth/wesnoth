@@ -689,34 +689,55 @@ std::vector<surface> display::get_terrain_images(const map_location &loc,
 			timeid, builder_terrain_type);
 
 	std::string color_mod;
+	bool use_lightmap = false;
 	if(game_config::local_light){
 		const time_of_day tod = get_time_of_day(loc);
-		std::ostringstream lightmap;
-		//generate the base of the lightmap
-		lightmap
-			<< "terrain/light.png"
-			<< "~CS("
-				<< tod.red << "," << tod.green << "," <<tod.blue
-			<< ")"; // CS
 
 		map_location adjs[6];
 		get_adjacent_tiles(loc,adjs);
-		static const std::string dir[6] ={"n","ne","se","s","sw","nw"};
-		//add all the light transitions
+		static const std::string dir[6] = {"n","ne","se","s","sw","nw"};
+
+		//get all the light transitions
+		std::ostringstream light_trans;
 		for(int d=0; d<6; ++d){
 			const time_of_day atod = get_time_of_day(adjs[d]);
 			if(atod.red == tod.red && atod.green == tod.green && atod.blue == tod.blue)
 				continue;
-			lightmap
+
+			light_trans
 				<< "~BLIT("
 					<< "terrain/light-" << dir[d] << ".png"
 					<< "~CS("
-						<< atod.red << "," << atod.green << "," << atod.blue
+						<< atod.red << ","
+						<< atod.green << ","
+						<< atod.blue
 					<< ")" // CS
 				<< ")"; //BLIT
+			use_lightmap = true;
 		}
 
-		color_mod = "~L(" + lightmap.str() + ")";
+		std::ostringstream mod;
+		if(use_lightmap) {
+			//generate the base of the lightmap
+			//and add light transitions on it
+			mod	<< "~L("
+					<< "terrain/light.png"
+					<< "~CS("
+						<< tod.red << ","
+						<< tod.green << ","
+						<< tod.blue
+					<< ")" // CS
+					<< light_trans.str()
+				<< ")"; // L
+		} else {
+			// simply color it
+			mod << "~CS("
+					<< tod.red << ","
+					<< tod.green << ","
+					<< tod.blue
+				<< ")"; // CS
+		}
+		color_mod = mod.str();
 	}
 
 	if(terrains != NULL) {
