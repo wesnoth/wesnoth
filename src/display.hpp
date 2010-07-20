@@ -468,7 +468,7 @@ public:
 	 */
 	void redraw_minimap() { redrawMinimap_ = true; }
 
-	virtual const time_of_day get_time_of_day(const map_location& /*loc*/) const {return time_of_day();}
+	virtual const time_of_day& get_time_of_day(const map_location& /*loc*/) const;
 
 protected:
 	/** Clear the screen contents */
