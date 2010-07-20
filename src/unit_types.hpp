@@ -344,7 +344,6 @@ public:
 	const race_map &races() const { return races_; }
 	void set_config(config &cfg);
 
-	bool unit_type_exists(const std::string &key) const;
 	const unit_type *find(const std::string &key, unit_type::BUILD_STATUS status = unit_type::FULL) const;
 	const unit_race *find_race(const std::string &) const;
 

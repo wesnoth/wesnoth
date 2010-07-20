@@ -1203,16 +1203,6 @@ void unit_type_data::set_config(config &cfg)
 	}
 }
 
-bool unit_type_data::unit_type_exists(const std::string& key) const
-{
-    if (key.empty() || (key == "random"))
-        return false;
-
-    unit_type_map::iterator itor = types_.find(key);
-
-	return itor != types_.end();
-}
-
 const unit_type *unit_type_data::find(const std::string& key, unit_type::BUILD_STATUS status) const
 {
 	if (key.empty() || key == "random") return NULL;
