@@ -60,10 +60,14 @@ void highlight_visitor::set_mouseover_hex(const map_location& hex)
 	mouseover_hex_ = hex;
 	//if we're right over a unit, just highlight all of this unit's actions
 	unit_map::const_iterator it = unit_map_.find(hex);
-	if (it != unit_map_.end()
-			&& resources::whiteboard->unit_has_actions(*it))
+	if (it != unit_map_.end())
 	{
-		owner_unit_ = &(*it);
+		selection_candidate_ = &(*it);
+
+		if(resources::whiteboard->unit_has_actions(*it))
+		{
+			owner_unit_ = &(*it);
+		}
 
 		//commented code below is to also select the first action of this unit as
 		//the main highlight; it doesn't fit too well in the UI
@@ -165,13 +169,10 @@ action_ptr highlight_visitor::get_bump_target()
 
 unit* highlight_visitor::get_selection_target()
 {
-//	unit* unit = NULL;
-//	if(action_ptr action = main_highlight_.lock())
-//	{
-//		unit = action->get_unit();
-//	}
-//	return unit;
-	return owner_unit_;
+	if (owner_unit_)
+		return owner_unit_;
+	else
+		return selection_candidate_;
 }
 
 void highlight_visitor::visit_move(move_ptr move)

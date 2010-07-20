@@ -77,6 +77,7 @@ private:
 
 	map_location mouseover_hex_;
 	unit* owner_unit_;
+	unit* selection_candidate_;
 
 	weak_action_ptr main_highlight_;
 	std::deque<weak_action_ptr> secondary_highlights_;

@@ -176,7 +176,7 @@ void manager::set_planned_unit_map()
 	}
 	else if (executing_actions_)
 	{
-		LOG_WB << "Attempt to set planned_unit_map during action execution.";
+		LOG_WB << "Attempt to set planned_unit_map during action execution.\n";
 	}
 }
 
@@ -197,7 +197,7 @@ void manager::set_real_unit_map()
 	}
 	else //executing_actions_
 	{
-		LOG_WB << "Attempt to set planned_unit_map during action execution.";
+		LOG_WB << "Attempt to set planned_unit_map during action execution.\n";
 	}
 
 }
@@ -233,12 +233,7 @@ void manager::on_select_hex(const map_location& /*TODO remove this parameter if 
 void manager::on_deselect_hex()
 {
 	erase_temp_move();
-	if (selected_unit_)
-	{
-		LOG_WB << "Deselecting unit" << selected_unit_->name() << " [" << selected_unit_->id() << "]\n";
-	}
 	selected_unit_ = NULL;
-
 }
 
 void manager::create_temp_move()
