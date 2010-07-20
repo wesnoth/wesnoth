@@ -221,7 +221,7 @@ class ana_receive_handler : public ana::listener_handler
         /**
          * Constructs a reader handler object.
          */
-        ana_receive_handler( );
+        ana_receive_handler( ana_component_set::iterator );
 
         /** Destructor. */
         ~ana_receive_handler();
@@ -244,23 +244,18 @@ class ana_receive_handler : public ana::listener_handler
             return error_code_;
         }
 
-        /** Returns the buffer from the operation. */
-        ana::detail::read_buffer buffer() const
-        {
-            return buffer_;
-        }
-
     private:
         virtual void handle_message   (ana::error_code, ana::net_id, ana::detail::read_buffer);
         virtual void handle_disconnect(ana::error_code, ana::net_id);
 
         void handle_timeout(ana::error_code error_code);
 
+        ana_component_set::iterator iterator_;
+
         boost::mutex             mutex_;
         boost::mutex             handler_mutex_;
         boost::mutex             timeout_called_mutex_;
         ana::error_code          error_code_;
-        ana::detail::read_buffer buffer_;
         ana::timer*              receive_timer_;
         bool                     finished_;
 };

@@ -90,12 +90,12 @@ void ana_handshake_finisher_handler::handle_send(ana::error_code ec,
 
 // Begin ana_receive_handler implementation ------------------------------------------------------------
 
-ana_receive_handler::ana_receive_handler( ) :
+ana_receive_handler::ana_receive_handler( ana_component_set::iterator iterator ) :
+    iterator_( iterator ),
     mutex_(),
     handler_mutex_(),
     timeout_called_mutex_(),
     error_code_(),
-    buffer_(),
     receive_timer_( NULL ),
     finished_( false )
 {
@@ -134,18 +134,21 @@ void ana_receive_handler::wait_completion(ana::detail::timed_sender* component, 
     mutex_.unlock();
 }
 
-void ana_receive_handler::handle_message(ana::error_code error_c, ana::net_id, ana::detail::read_buffer read_buffer)
+void ana_receive_handler::handle_message(ana::error_code          error_c,
+                                         ana::net_id              client,
+                                         ana::detail::read_buffer read_buffer)
 {
     boost::mutex::scoped_lock lock( handler_mutex_);
 
-    delete receive_timer_;
-    receive_timer_ = NULL;
-
-    buffer_ = read_buffer;
-    error_code_ = error_c;
-
     if (! finished_ )
     {
+        delete receive_timer_;
+        receive_timer_ = NULL;
+
+        (*iterator_)->add_buffer( read_buffer, client );
+
+        error_code_ = error_c;
+
         finished_ = true;
         mutex_.unlock();
     }
@@ -155,12 +158,13 @@ void ana_receive_handler::handle_disconnect(ana::error_code error_c, ana::net_id
 {
     boost::mutex::scoped_lock lock( handler_mutex_);
 
-    delete receive_timer_;
-    receive_timer_ = NULL;
-
-    error_code_ = error_c;
     if (! finished_ )
     {
+        delete receive_timer_;
+        receive_timer_ = NULL;
+
+        error_code_ = error_c;
+
         finished_ = true;
         mutex_.unlock();
     }
@@ -170,15 +174,10 @@ void ana_receive_handler::handle_timeout(ana::error_code error_code)
 {
     boost::mutex::scoped_lock lock( handler_mutex_ );
 
-    delete receive_timer_;
-    receive_timer_ = NULL;
-
     if (! finished_ )
     {
-//         if (error_code)
-//             std::cout << "DEBUG: Receive attempt timed out\n";
-//         else
-//             std::cout << "DEBUG: Shouldn't reach here\n";
+        delete receive_timer_;
+        receive_timer_ = NULL;
 
         error_code_ = error_code;
         finished_ = true;
@@ -201,6 +200,7 @@ ana_multiple_receive_handler::ana_multiple_receive_handler( ana_component_set& c
     receive_timer_( NULL ),
     finished_( false )
 {
+    throw std::runtime_error("Multiple receive handler constructed");
     std::cout << "DEBUG: Constructing a new ana_multiple_receive_handler...\n";
 
     ana_component_set::iterator it;
@@ -964,7 +964,7 @@ network::connection ana_network_manager::read_from( const ana_component_set::ite
         return 0;
     else
     {
-        ana_receive_handler handler;
+        ana_receive_handler handler(it);
         (*it)->listener()->set_listener_handler( &handler );
 
         if ( (*it)->is_server() )
@@ -978,7 +978,7 @@ network::connection ana_network_manager::read_from( const ana_component_set::ite
             return 0;
         else
         {
-            read_config( handler.buffer(), cfg);
+            read_config( (*it)->wait_for_element(), cfg );
             return (*it)->get_wesnoth_id();
         }
     }
