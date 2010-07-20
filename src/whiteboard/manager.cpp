@@ -34,13 +34,6 @@
 
 namespace wb {
 
-static side_actions_ptr viewer_actions()
-{
-	side_actions_ptr side_actions =
-			(*resources::teams)[resources::screen->viewing_team()].get_side_actions();
-	return side_actions;
-}
-
 unit* manager::find_future_unit(map_location hex)
 {
 	scoped_planned_unit_map planned_unit_map;
@@ -159,6 +152,25 @@ void manager::on_finish_side_turn()
 	highlighter_.reset();
 	erase_temp_move();
 	LOG_WB << "on_finish_side_turn()\n";
+}
+
+side_actions_ptr manager::viewer_actions() const
+{
+	side_actions_ptr side_actions =
+			(*resources::teams)[resources::screen->viewing_team()].get_side_actions();
+	return side_actions;
+}
+
+side_actions_ptr manager::current_side_actions() const
+{
+	side_actions_ptr side_actions =
+			(*resources::teams)[resources::controller->current_side() - 1].get_side_actions();
+	return side_actions;
+}
+
+bool manager::current_side_has_actions() const
+{
+	return !current_side_actions()->empty();
 }
 
 void manager::validate_viewer_actions()

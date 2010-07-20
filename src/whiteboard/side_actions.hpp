@@ -75,7 +75,7 @@ public:
 	/**
 	 * Indicates whether the action queue is empty.
 	 */
-	bool empty() { return actions_.empty(); }
+	bool empty() const { return actions_.empty(); }
 
 //	/**
 //	 * Inserts a move at the specified position. The begin() and end() functions might prove useful here.

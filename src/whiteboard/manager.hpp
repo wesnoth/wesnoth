@@ -59,7 +59,11 @@ public:
 	void on_init_side();
 	void on_finish_side_turn();
 
+	side_actions_ptr viewer_actions() const;
+	side_actions_ptr current_side_actions() const;
+	bool current_side_has_actions() const;
 	void validate_viewer_actions();
+
 
 	/**
 	 * Temporarily apply the effects of the current team's
