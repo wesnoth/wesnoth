@@ -155,6 +155,8 @@ public class ScenarioPage0 extends NewWizardPageTemplate
 		lblNumberOfTurns.setText("Number of turns:");
 
 		txtTurns_ = new Spinner(container, SWT.BORDER);
+		txtTurns_.setMinimum(-1);
+		txtTurns_.setSelection(-1);
 		GridData gd_txtTurns_ = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
 		gd_txtTurns_.widthHint = 60;
 		txtTurns_.setLayoutData(gd_txtTurns_);
