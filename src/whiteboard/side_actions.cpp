@@ -163,10 +163,6 @@ side_actions::iterator side_actions::insert_action(iterator position, action_ptr
 
 side_actions::iterator side_actions::queue_action(action_ptr action)
 {
-	if (resources::whiteboard->has_planned_unit_map())
-	{
-		ERR_WB << "Modifying action queue while temp modifiers are applied!!!\n";
-	}
 	actions_.push_back(action);
 	// Contrary to insert_action, no need to validate actions here since we're adding to the end of the queue
 	return end() - 1;

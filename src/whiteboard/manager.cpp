@@ -76,23 +76,30 @@ manager::~manager()
 
 void manager::set_active(bool active)
 {
-	active_ = active;
-
-	erase_temp_move();
-	on_deselect_hex();
-
-	if (active_)
+	if(is_observer())
 	{
-		validate_viewer_actions();
-		LOG_WB << *viewer_actions() << "\n";
-		create_temp_move();
+		active_ = false;
+	}
+	else
+	{
+		active_ = active;
+		erase_temp_move();
+		on_deselect_hex();
+
+		if (active_)
+		{
+			validate_viewer_actions();
+			LOG_WB << *viewer_actions() << "\n";
+			create_temp_move();
+		}
 	}
 }
 
 void manager::set_invert_behavior(bool invert)
 {
 	if(wait_for_side_init_
-			|| executing_actions_)
+			|| executing_actions_
+			|| is_observer())
 		return;
 
 	log_scope("set_invert_behavior");

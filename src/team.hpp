@@ -331,6 +331,8 @@ namespace player_teams {
 	int village_owner(const map_location& loc);
 }
 
+//FIXME: this global method really needs to be moved into play_controller,
+//or somewhere else that makes sense.
 bool is_observer();
 
 //function which will validate a side. Trows game::game_error

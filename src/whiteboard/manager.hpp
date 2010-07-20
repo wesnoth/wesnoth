@@ -86,7 +86,7 @@ public:
 	/** Creates a temporary visual arrow, that follows the cursor, for move creation purposes */
 	void create_temp_move();
 	/** Informs whether an arrow is being displayed for move creation purposes */
-	bool has_temp_move() const { return route_; }
+	bool has_temp_move() const { return route_ && fake_unit_ && move_arrow_; }
 	/** Informs whether the whiteboard tracks a selected unit */
 	bool has_selected_unit() const { return selected_unit_; }
 
