@@ -338,7 +338,7 @@ vconfig vconfig::child(const std::string& key) const
 			return vconfig(cp, cp);
 		}
 	}
-	return empty_vconfig();
+	return unconstructed_vconfig();
 }
 
 bool vconfig::has_child(const std::string& key) const
