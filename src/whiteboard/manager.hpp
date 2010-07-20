@@ -68,6 +68,8 @@ public:
 	void set_planned_unit_map();
 	void set_real_unit_map();
 	bool has_planned_unit_map() const { return planned_unit_map_active_; }
+	///Applies the future unit map and returns a pointer to the unit at hex, NULL if none
+	unit* find_future_unit(map_location hex);
 
 	/**
 	 * Callback from the display when drawing hexes, to allow the whiteboard to

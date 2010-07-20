@@ -41,9 +41,10 @@ static side_actions_ptr viewer_actions()
 	return side_actions;
 }
 
-static unit* find_unit(map_location hex)
+unit* manager::find_future_unit(map_location hex)
 {
 	scoped_planned_unit_map planned_unit_map;
+	assert(has_planned_unit_map());
 	unit_map::iterator it;
 		if ((it = resources::units->find(hex)) != resources::units->end())
 			return &*it;
@@ -153,9 +154,8 @@ void manager::on_finish_side_turn()
 
 void manager::validate_viewer_actions()
 {
-	executing_actions_ = true;
+	assert(!executing_actions_);
 	viewer_actions()->validate_actions();
-	executing_actions_ = false;
 }
 
 void manager::set_planned_unit_map()
@@ -331,7 +331,7 @@ void manager::save_temp_move()
 {
 	if (has_temp_move() && !executing_actions_)
 	{
-		assert(!has_planned_unit_map());
+		scoped_planned_unit_map planned_unit_map;
 
 		std::vector<map_location> steps;
 		arrow_ptr move_arrow;
@@ -352,8 +352,6 @@ void manager::save_temp_attack(const map_location& attack_from, const map_locati
 {
 	if (active_ && !executing_actions_)
 	{
-		assert(!has_planned_unit_map());
-
 		std::vector<map_location> steps;
 		arrow_ptr move_arrow;
 		fake_unit_ptr fake_unit;
@@ -378,12 +376,9 @@ void manager::save_temp_attack(const map_location& attack_from, const map_locati
 
 		on_deselect_hex();
 
-		unit* attacking_unit;
-		{
-			scoped_planned_unit_map planned_unit_map;
-			attacking_unit = find_unit(source_hex);
-			assert(attacking_unit);
-		}
+		unit* attacking_unit = find_future_unit(source_hex);
+		assert(attacking_unit);
+
 
 		int weapon_choice = resources::controller->get_mouse_handler_base().show_attack_dialog(
 					attacking_unit->get_location(), target_hex);
@@ -506,7 +501,7 @@ void manager::fake_unit_deleter::operator() (unit*& fake_unit)
 
 unit* manager::selected_unit()
 {
-	return find_unit(selected_hex_);
+	return find_future_unit(selected_hex_);
 }
 
 scoped_planned_unit_map::scoped_planned_unit_map()

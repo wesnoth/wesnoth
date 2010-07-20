@@ -43,6 +43,7 @@ public:
 	static const std::string ARROW_STYLE_VALID;
 	static const std::string ARROW_STYLE_INVALID;
 
+	///Future unit map must be valid during construction, so that move can find its unit
 	move(const map_location& source_hex, const map_location& target_hex, arrow_ptr arrow,
 			fake_unit_ptr fake_unit);
 	virtual ~move();
@@ -54,7 +55,7 @@ public:
 	virtual bool execute();
 
 	/** Return the unit targeted by this action. Null if unit doesn't exist. */
-	virtual unit* get_unit() const;
+	virtual unit* get_unit() const { return unit_; }
 
 	virtual arrow_ptr get_arrow() { return arrow_; }
 	virtual fake_unit_ptr get_fake_unit() { return fake_unit_; }
@@ -75,7 +76,8 @@ public:
 	virtual bool is_valid() { return valid_; }
 
 protected:
-	int underlying_unit_id_;
+	unit* unit_;
+	std::string unit_id_;
 	map_location source_hex_;
 	map_location dest_hex_;
 	int movement_cost_;

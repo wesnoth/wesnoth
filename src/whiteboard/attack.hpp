@@ -35,6 +35,7 @@ public:
 	friend class highlight_visitor;
 	friend std::ostream& operator<<(std::ostream& s, attack const& attack);
 
+	///Future unit map must be valid during construction, so that attack can find its units
 	attack(const map_location& target_hex, int weapon_choice, const map_location& source_hex, const map_location& dest_hex,
 			arrow_ptr arrow, fake_unit_ptr fake_unit);
 	virtual ~attack();

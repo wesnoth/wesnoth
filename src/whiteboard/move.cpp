@@ -19,6 +19,7 @@
 #include "move.hpp"
 
 #include "visitor.hpp"
+#include "manager.hpp"
 
 #include "actions.hpp"
 #include "arrow.hpp"
@@ -62,7 +63,8 @@ static team& get_current_team()
 
 move::move(const map_location& source_hex, const map_location& target_hex,
 		arrow_ptr arrow, fake_unit_ptr fake_unit)
-: underlying_unit_id_(-1),
+: unit_(NULL),
+  unit_id_(),
   source_hex_(source_hex),
   dest_hex_(target_hex),
   movement_cost_(0),
@@ -70,7 +72,12 @@ move::move(const map_location& source_hex, const map_location& target_hex,
   fake_unit_(fake_unit),
   valid_(true)
 {
-	if (source_hex_.valid() && dest_hex_.valid() && source_hex_ != dest_hex_ && get_unit())
+
+	unit_ = resources::whiteboard->find_future_unit(source_hex_);
+	assert(unit_);
+	unit_id_ = unit_->id();
+
+	if (source_hex_.valid() && dest_hex_.valid() && source_hex_ != dest_hex_)
 	{
 
 		// Calculate move cost
@@ -171,15 +178,6 @@ bool move::execute()
 
 	arrow_->set_alpha(ALPHA_NORMAL);
 	return move_finished_completely;
-}
-
-unit* move::get_unit() const
-{
-	unit_map::iterator it = resources::units->find(source_hex_);
-	if (it != resources::units->end())
-		return &*it;
-	else
-		return NULL;
 }
 
 void move::apply_temp_modifier(unit_map& unit_map)
