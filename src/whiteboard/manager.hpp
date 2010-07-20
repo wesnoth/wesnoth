@@ -88,7 +88,7 @@ public:
 	/** Informs whether an arrow is being displayed for move creation purposes */
 	bool has_temp_move() const { return route_; }
 	/** Informs whether the whiteboard tracks a selected unit */
-	bool has_selected_hex() const { return selected_hex_.valid(); }
+	bool has_selected_unit() const { return selected_unit_; }
 
 	void erase_temp_move();
 
@@ -118,8 +118,6 @@ public:
 	};
 
 private:
-	unit* selected_unit();
-
 	///Tracks whether the whiteboard is active.
 	bool active_;
 	bool inverted_behavior_;
@@ -134,7 +132,7 @@ private:
 	arrow_ptr move_arrow_;
 	fake_unit_ptr fake_unit_;
 
-	map_location selected_hex_;
+	unit* selected_unit_;
 
 	bool planned_unit_map_active_;
 	/** Track whenever we're modifying actions, to avoid dual execution etc. */

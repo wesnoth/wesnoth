@@ -163,6 +163,17 @@ action_ptr highlight_visitor::get_bump_target()
 	return main_highlight_.lock();
 }
 
+unit* highlight_visitor::get_selection_target()
+{
+//	unit* unit = NULL;
+//	if(action_ptr action = main_highlight_.lock())
+//	{
+//		unit = action->get_unit();
+//	}
+//	return unit;
+	return owner_unit_;
+}
+
 void highlight_visitor::visit_move(move_ptr move)
 {
 	switch (mode_)

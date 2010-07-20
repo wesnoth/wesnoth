@@ -461,7 +461,7 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 	//see if we're trying to do a attack or move-and-attack
 	if((!browse || resources::whiteboard->is_active()) && !commands_disabled && attack_from.valid()) {
 		if (resources::whiteboard->is_active()) {
-			if  (resources::whiteboard->has_selected_hex()) {
+			if  (resources::whiteboard->has_selected_unit()) {
 				// Unselect the current hex, and create planned attack for whiteboard
 				selected_hex_ = map_location();
 				gui().select_hex(map_location());

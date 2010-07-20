@@ -48,6 +48,7 @@ public:
 	action_ptr get_execute_target();
 	action_ptr get_delete_target();
 	action_ptr get_bump_target();
+	unit* get_selection_target();
 
 	virtual void visit_move(move_ptr move);
 	virtual void visit_attack(attack_ptr attack);

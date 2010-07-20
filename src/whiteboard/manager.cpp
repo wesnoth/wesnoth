@@ -62,7 +62,7 @@ manager::manager():
 		steps_(),
 		move_arrow_(),
 		fake_unit_(),
-		selected_hex_(),
+		selected_unit_(NULL),
 		planned_unit_map_active_(false),
 		executing_actions_(false)
 {
@@ -212,37 +212,33 @@ void manager::on_mouseover_change(const map_location& hex)
 {
 	//FIXME: Detect if a WML event is executing, and if so, avoid modifying the unit map during that time.
 	// Acting otherwise causes a crash.
-	if (!selected_hex_.valid() && highlighter_)
+	if (!selected_unit_ && highlighter_)
 	{
 		highlighter_->set_mouseover_hex(hex);
 		highlighter_->highlight();
 	}
 }
 
-void manager::on_select_hex(const map_location& hex)
+void manager::on_select_hex(const map_location& /*TODO remove this parameter if proves useless */)
 {
-	selected_hex_ = hex;
-	unit* selected_unit;
-	{
-		scoped_planned_unit_map planned_unit_map;
-		selected_unit = this->selected_unit();
-	}
 	erase_temp_move();
-	if (!(selected_unit && selected_unit->side() == resources::screen->viewing_side()))
+	selected_unit_ = highlighter_->get_selection_target();
+	if (selected_unit_)
 	{
-		selected_hex_ = map_location();
+		LOG_WB << "Selected unit " << selected_unit_->name() << " [" << selected_unit_->id() << "]\n";
 	}
-	else
-	{
-		LOG_WB << "Selected unit " << selected_unit->name() << " [" << selected_unit->id() << "]\n";
-	}
+	//assert(selected_unit_->side() != resources::screen->viewing_side());
 }
 
 void manager::on_deselect_hex()
 {
 	erase_temp_move();
-	selected_hex_ = map_location();
-	LOG_WB << "Deselecting unit\n";
+	if (selected_unit_)
+	{
+		LOG_WB << "Deselecting unit" << selected_unit_->name() << " [" << selected_unit_->id() << "]\n";
+	}
+	selected_unit_ = NULL;
+
 }
 
 void manager::create_temp_move()
@@ -272,9 +268,9 @@ void manager::create_temp_move()
 	{
 		route_.reset(new pathfind::marked_route()); //empty route
 	}
-	else if (unit* subject_unit = selected_unit())
+	else if (selected_unit_)
 	{
-		assert(subject_unit->side() == resources::screen->viewing_side());
+		assert(selected_unit_->side() == resources::screen->viewing_side());
 		route_.reset(new pathfind::marked_route(route));
 		//NOTE: route_.steps.back() = dst, and route_.steps.front() = src
 
@@ -291,7 +287,7 @@ void manager::create_temp_move()
 		if (!fake_unit_)
 		{
 			// Create temp ghost unit
-			fake_unit_.reset(new unit(*subject_unit), wb::manager::fake_unit_deleter());
+			fake_unit_.reset(new unit(*selected_unit_), wb::manager::fake_unit_deleter());
 			resources::screen->place_temporary_unit(fake_unit_.get());
 			fake_unit_->set_ghosted(false);
 		}
@@ -396,8 +392,8 @@ void manager::contextual_execute()
 
 		action_ptr action;
 		side_actions::iterator it;
-		if (selected_unit() &&
-				(it = viewer_actions()->find_first_action_of(*selected_unit())) != viewer_actions()->end())
+		if (selected_unit_ &&
+				(it = viewer_actions()->find_first_action_of(*selected_unit_)) != viewer_actions()->end())
 		{
 			executing_actions_ = true;
 			viewer_actions()->execute(it);
@@ -428,8 +424,8 @@ void manager::contextual_delete()
 
 		action_ptr action;
 		side_actions::iterator it;
-		if (selected_unit() &&
-				(it = viewer_actions()->find_first_action_of(*selected_unit())) != viewer_actions()->end())
+		if (selected_unit_ &&
+				(it = viewer_actions()->find_first_action_of(*selected_unit_)) != viewer_actions()->end())
 		{
 			viewer_actions()->remove_action(it);
 		}
@@ -491,11 +487,6 @@ void manager::fake_unit_deleter::operator() (unit*& fake_unit)
         DBG_WB << "Erasing temporary unit " << fake_unit->name() << " [ " << fake_unit->underlying_id() << "]\n";
         delete fake_unit;
     }
-}
-
-unit* manager::selected_unit()
-{
-	return find_future_unit(selected_hex_);
 }
 
 scoped_planned_unit_map::scoped_planned_unit_map()
