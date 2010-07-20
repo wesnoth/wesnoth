@@ -79,6 +79,7 @@ void manager::set_active(bool active)
 	active_ = active;
 
 	erase_temp_move();
+	on_deselect_hex();
 
 	if (active_)
 	{
@@ -141,6 +142,7 @@ void manager::on_init_side()
 	validate_viewer_actions();
 	highlighter_.reset(new highlight_visitor(*resources::units, viewer_actions()));
 	wait_for_side_init_ = false;
+	LOG_WB << "on_init_side()\n";
 }
 
 void manager::on_finish_side_turn()
@@ -149,7 +151,7 @@ void manager::on_finish_side_turn()
 
 	highlighter_.reset();
 	erase_temp_move();
-
+	LOG_WB << "on_finish_side_turn()\n";
 }
 
 void manager::validate_viewer_actions()
