@@ -409,7 +409,7 @@ void game_display::draw_hex(const map_location& loc)
 	//simulate_delay += 1;
 }
 
-const time_of_day game_display::get_time_of_day(const map_location& loc) const
+const time_of_day& game_display::get_time_of_day(const map_location& loc) const
 {
 	return tod_manager_.get_time_of_day(loc);
 }

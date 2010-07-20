@@ -143,7 +143,7 @@ public:
 	/** Same as invalidate_unit() if moving the displayed unit. */
 	void invalidate_unit_after_move(const map_location& src, const map_location& dst);
 
-	const time_of_day get_time_of_day(const map_location& loc) const;
+	const time_of_day& get_time_of_day(const map_location& loc) const;
 
 protected:
 	/**

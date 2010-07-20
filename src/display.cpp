@@ -38,6 +38,7 @@
 #include "preferences.hpp"
 #include "sdl_utils.hpp"
 #include "text.hpp"
+#include "time_of_day.hpp"
 #include "tooltips.hpp"
 #include "arrow.hpp"
 
@@ -144,6 +145,12 @@ display::display(CVideo& video, const gamemap* map, const config& theme_cfg, con
 
 display::~display()
 {
+}
+
+const time_of_day& display::get_time_of_day(const map_location& /*loc*/) const
+{
+	static const time_of_day tod;
+	return tod;
 }
 
 void display::fill_images_list(const std::string& prefix, std::vector<std::string>& images)
@@ -691,7 +698,7 @@ std::vector<surface> display::get_terrain_images(const map_location &loc,
 	std::string color_mod;
 	bool use_lightmap = false;
 	if(game_config::local_light){
-		const time_of_day tod = get_time_of_day(loc);
+		const time_of_day& tod = get_time_of_day(loc);
 
 		map_location adjs[6];
 		get_adjacent_tiles(loc,adjs);
@@ -700,7 +707,7 @@ std::vector<surface> display::get_terrain_images(const map_location &loc,
 		//get all the light transitions
 		std::ostringstream light_trans;
 		for(int d=0; d<6; ++d){
-			const time_of_day atod = get_time_of_day(adjs[d]);
+			const time_of_day& atod = get_time_of_day(adjs[d]);
 			if(atod.red == tod.red && atod.green == tod.green && atod.blue == tod.blue)
 				continue;
 

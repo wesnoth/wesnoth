@@ -35,6 +35,7 @@
 
 class config;
 class terrain_builder;
+struct time_of_day;
 class map_labels;
 class arrow;
 
@@ -45,7 +46,6 @@ class arrow;
 #include "map_location.hpp"
 #include "reports.hpp"
 #include "team.hpp"
-#include "time_of_day.hpp"
 #include "theme.hpp"
 #include "video.hpp"
 #include "widgets/button.hpp"
