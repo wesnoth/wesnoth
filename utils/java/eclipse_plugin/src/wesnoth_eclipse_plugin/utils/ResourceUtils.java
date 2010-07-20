@@ -185,6 +185,7 @@ public class ResourceUtils
 
 	/**
 	 * Creates the '.wesnoth' file with the specified path
+	 * only if it doesn't exist already
 	 * @param path The path of '.wesnoth' file
 	 */
 	public static void createWesnothFile(String path)

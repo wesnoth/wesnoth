@@ -70,6 +70,18 @@ public class WorkspaceUtils
 	}
 
 	/**
+	 * Gets the 'user addons' project from the workspace, or null if none existing
+	 * @return
+	 */
+	public static IProject getUserAddonsProject()
+	{
+		IProject proj = ResourcesPlugin.getWorkspace().getRoot().getProject("User Addons");
+		if (proj.exists())
+			return proj;
+		return null;
+	}
+
+	/**
 	 * Gets the selected folder or null if none selected
 	 * @return
 	 */
@@ -344,7 +356,7 @@ public class WorkspaceUtils
 	 * @param folderName The foldername to ignore
 	 * @throws CoreException
 	 */
-	private static void createIgnoreFilter(IProject project, String folderName)
+	public static void createIgnoreFilter(IProject project, String folderName)
 		throws CoreException
 	{
 		// For details regarding the description see:

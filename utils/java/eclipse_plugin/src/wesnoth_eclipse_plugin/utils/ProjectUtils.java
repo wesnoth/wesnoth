@@ -86,6 +86,34 @@ public class ProjectUtils
 				new Pair<Long, Properties>(wesnothFile.lastModified(), props));
 	}
 
+	/**
+	 * Saves the current properties of the specified project on the filesystem.
+	 * If the file/properties don't exist they will be created
+	 * @param project
+	 */
+	public static void savePropertiesForProject(IProject project)
+	{
+		File wesnothFile = new File(project.getLocation().toOSString()  +
+				"/.wesnoth");
+
+		if (!(projectProperties_.containsKey(project)))
+		{
+			ResourceUtils.createWesnothFile(wesnothFile.getAbsolutePath());
+			projectProperties_.put(project,
+					new Pair<Long, Properties>(wesnothFile.lastModified(), new Properties()));
+		}
+
+		try
+		{
+			projectProperties_.get(project).Second.
+				storeToXML(new FileOutputStream(wesnothFile), null);
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+
 	//TODO: create a simple java wmlparsers in order to get the right values
 	public static String getConfigKeyValue(String fileName, String propertyName)
 	{
