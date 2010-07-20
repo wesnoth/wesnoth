@@ -59,6 +59,8 @@ public:
 	void on_init_side();
 	void on_finish_side_turn();
 
+	void validate_viewer_actions();
+
 	/**
 	 * Temporarily apply the effects of the current team's
 	 * planned moves to the unit map.

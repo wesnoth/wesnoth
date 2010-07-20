@@ -81,7 +81,7 @@ void manager::set_active(bool active)
 
 	if (active_)
 	{
-		viewer_actions()->validate_actions();
+		validate_viewer_actions();
 		LOG_WB << *viewer_actions() << "\n";
 		create_temp_move();
 	}
@@ -135,7 +135,7 @@ void manager::on_init_side()
 {
 	if (active_)
 	{
-			viewer_actions()->validate_actions();
+			validate_viewer_actions();
 			highlighter_.reset(new highlight_visitor(*resources::units, viewer_actions()));
 	}
 
@@ -151,6 +151,13 @@ void manager::on_finish_side_turn()
 
 }
 
+void manager::validate_viewer_actions()
+{
+	modifying_actions_ = true;
+	viewer_actions()->validate_actions();
+	modifying_actions_ = false;
+}
+
 void manager::set_planned_unit_map()
 {
 	if (!modifying_actions_ && !wait_for_side_init_)
@@ -158,7 +165,7 @@ void manager::set_planned_unit_map()
 		modifying_actions_ = true;
 		if (!planned_unit_map_active_)
 		{
-			viewer_actions()->validate_actions();
+			validate_viewer_actions();
 			DBG_WB << "Building planned unit map.\n";
 			mapbuilder_.reset(new mapbuilder_visitor(*resources::units, viewer_actions()));
 			mapbuilder_->build_map();
@@ -396,7 +403,7 @@ void manager::contextual_execute()
 			&& resources::controller->current_side() == resources::screen->viewing_side())
 	{
 		erase_temp_move();
-		viewer_actions()->validate_actions();
+		validate_viewer_actions();
 
 		action_ptr action;
 		side_actions::iterator it;
@@ -428,7 +435,7 @@ void manager::contextual_delete()
 	if (!(modifying_actions_ || viewer_actions()->empty()))
 	{
 		erase_temp_move();
-		viewer_actions()->validate_actions();
+		validate_viewer_actions();
 
 		action_ptr action;
 		side_actions::iterator it;
@@ -460,7 +467,7 @@ void manager::contextual_bump_up_action()
 	if (!(modifying_actions_ || viewer_actions()->empty()) && highlighter_)
 	{
 
-		viewer_actions()->validate_actions();
+		validate_viewer_actions();
 		action_ptr action = highlighter_->get_bump_target();
 		if (action)
 		{
@@ -476,7 +483,7 @@ void manager::contextual_bump_down_action()
 	if (!(modifying_actions_ || viewer_actions()->empty()) && highlighter_)
 	{
 
-		viewer_actions()->validate_actions();
+		validate_viewer_actions();
 
 		action_ptr action = highlighter_->get_bump_target();
 		if (action)
