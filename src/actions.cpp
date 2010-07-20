@@ -907,7 +907,7 @@ battle_context_unit_stats::battle_context_unit_stats(const unit &u, const map_lo
 		int damage_multiplier = 100;
 
 		// Time of day bonus.
-		damage_multiplier += combat_modifier(units, u_loc, u.alignment(), u.is_fearless());
+		damage_multiplier += combat_modifier(u_loc, u.alignment(), u.is_fearless());
 
 		// Leadership bonus.
 		int leader_bonus = 0;
@@ -1971,7 +1971,7 @@ void advance_unit(map_location loc, const std::string &advance_to)
 	game_events::fire("post_advance",loc);
 }
 
-int combat_modifier(const unit_map& /*units*/, const map_location &loc,
+int combat_modifier(const map_location &loc,
 	unit_type::ALIGNMENT alignment, bool is_fearless)
 {
 	const time_of_day &tod = resources::tod_manager->time_of_day_at(loc);

@@ -314,7 +314,7 @@ map_location under_leadership(const unit_map& units,
  * Returns the amount that a unit's damage should be multiplied by
  * due to the current time of day.
  */
-int combat_modifier(const unit_map &units, const map_location &loc,
+int combat_modifier(const map_location &loc,
 	unit_type::ALIGNMENT alignment, bool is_fearless);
 
 /** Records information to be able to undo a movement. */

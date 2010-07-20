@@ -194,7 +194,7 @@ report generate_report(TYPE type,
 	case UNIT_ALIGNMENT: {
 		const std::string &align = unit_type::alignment_description(u->alignment(), u->gender());
 		const std::string &align_id = unit_type::alignment_id(u->alignment());
-		int cm = combat_modifier(units, displayed_unit_hex, u->alignment(), u->is_fearless());
+		int cm = combat_modifier(displayed_unit_hex, u->alignment(), u->is_fearless());
 
 		str << align << " (" << signed_percent(cm) << ")";
 		tooltip << _("Alignement: ")
@@ -342,7 +342,7 @@ report generate_report(TYPE type,
 			int damage_multiplier = 100;
 
 			// Time of day bonus.
-			int tod_bonus = combat_modifier(units, displayed_unit_hex, u->alignment(), u->is_fearless());
+			int tod_bonus = combat_modifier(displayed_unit_hex, u->alignment(), u->is_fearless());
 			damage_multiplier += tod_bonus;
 
 			// Leadership bonus.

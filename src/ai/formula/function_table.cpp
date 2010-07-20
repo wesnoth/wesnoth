@@ -605,7 +605,7 @@ private:
 			loc = &u_call->get_location();
 		}
 
-		return variant(combat_modifier(*resources::units, *loc, un.alignment(), un.is_fearless()));
+		return variant(combat_modifier(*loc, un.alignment(), un.is_fearless()));
 	}
 
 	const formula_ai& ai_;
