@@ -697,7 +697,8 @@ std::vector<surface> display::get_terrain_images(const map_location &loc,
 
 	std::string color_mod;
 	bool use_lightmap = false;
-	if(game_config::local_light){
+	bool use_local_light = game_config::local_light;
+	if(use_local_light){
 		const time_of_day& tod = get_time_of_day(loc);
 
 		map_location adjs[6];
@@ -737,12 +738,20 @@ std::vector<surface> display::get_terrain_images(const map_location &loc,
 					<< light_trans.str()
 				<< ")"; // L
 		} else {
-			// simply color it
-			mod << "~CS("
-					<< tod.red << ","
-					<< tod.green << ","
-					<< tod.blue
-				<< ")"; // CS
+			// no light map needed, but still need to color the hex
+			const time_of_day& global_tod =
+				get_time_of_day(map_location::null_location);
+			if(tod.red == global_tod.red && tod.green == global_tod.green && tod.blue == global_tod.blue) {
+				// It's the same as global ToD, don't use local light
+				use_local_light = false;
+			} else if (tod.red != 0 && tod.green != 0 && tod.blue != 0) {
+				// simply color it if needed
+				mod << "~CS("
+						<< tod.red << ","
+						<< tod.green << ","
+						<< tod.blue
+					<< ")"; // CS
+			}
 		}
 		color_mod = mod.str();
 	}
@@ -766,9 +775,11 @@ std::vector<surface> display::get_terrain_images(const map_location &loc,
 
 			surface surf;
 
-			if(!game_config::local_light) {
+			if(!use_local_light) {
 				const bool off_map = (image.get_filename() == off_map_name);
 				surf = image::get_image(image, off_map ? image::UNMASKED : image_type);
+			} else if(color_mod.empty()) {
+				surf = image::get_image(image, image::UNMASKED);
 			} else {
 				image::locator colored_image(
 						image.get_filename(),
