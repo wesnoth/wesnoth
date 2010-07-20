@@ -228,46 +228,6 @@ std::set<map_location> formula_ai::get_allowed_teleports(unit_map::iterator& uni
   return pathfind::get_teleport_locations(*unit_it, current_team(), true);
 }
 
-map_location formula_ai::path_calculator(const map_location& src, const map_location& dst, unit_map::iterator& unit_it) const{
-	std::map<map_location,pathfind::paths>::const_iterator path = get_possible_moves().find(src);
-
-	map_location destination = dst;
-
-	//check if destination is within unit's reach, if not, calculate where to move
-	if (!path->second.destinations.contains(dst))
-	{
-		std::set<map_location> allowed_teleports = get_allowed_teleports(unit_it);
-		//destination is too far, check where unit can go
-		pathfind::plain_route route = shortest_path_calculator( src, dst, unit_it, allowed_teleports );
-
-		if( route.steps.size() == 0 ) {
-			pathfind::emergency_path_calculator em_calc(*unit_it, *resources::game_map);
-			route = pathfind::a_star_search(src, dst, 1000.0, &em_calc, resources::game_map->w(), resources::game_map->h(), &allowed_teleports);
-			if( route.steps.size() < 2 ) {
-				return map_location();
-			}
-		}
-		destination = map_location();
-		for (std::vector<map_location>::const_iterator loc_iter = route.steps.begin() + 1 ; loc_iter !=route.steps.end(); ++loc_iter) {
-			typedef move_map::const_iterator Itor;
-			std::pair<Itor,Itor> range = get_srcdst().equal_range(src);
-			bool found = false;
-			for(Itor i = range.first; i != range.second; ++i) {
-				if (i->second == *loc_iter ) {
-					found = true;
-					break;
-				}
-			}
-			if ( !found ) {
-				continue;
-			}
-			destination = *loc_iter;
-		}
-		return destination;
-	}
-	return destination;
-}
-
 //commandline=true when we evaluate formula from commandline, false otherwise (default)
 variant formula_ai::execute_variant(const variant& var, ai_context &ai_, bool commandline)
 {

@@ -146,7 +146,6 @@ private:
 	virtual variant get_value(const std::string& key) const;
 	virtual void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
 
-        map_location path_calculator(const map_location& src, const map_location& dst, unit_map::iterator& unit_it) const;
 	mutable variant keeps_cache_;
 
 	gamestate_change_observer infinite_loop_guardian_;
