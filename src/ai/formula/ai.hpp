@@ -113,8 +113,6 @@ public:
         std::set<map_location> get_allowed_teleports(unit_map::iterator& unit_it) const;
 	pathfind::plain_route shortest_path_calculator(const map_location& src, const map_location& dst, unit_map::iterator& unit_it, std::set<map_location>& allowed_teleports) const;
 
-        void store_outcome_position(const variant& var);
-
 	/** Create a new formula from the string, using the symbol table which is stored in the AI.
 	*
 	*   @param formula_string the string from which a formula should be created
@@ -147,7 +145,6 @@ private:
 	variant execute_variant(const variant& var, ai_context &ai_, bool commandline=false);
 	virtual variant get_value(const std::string& key) const;
 	virtual void get_inputs(std::vector<game_logic::formula_input>* inputs) const;
-	std::vector<variant> outcome_positions_;
 
         map_location path_calculator(const map_location& src, const map_location& dst, unit_map::iterator& unit_it) const;
 	mutable variant keeps_cache_;

@@ -68,7 +68,6 @@ formula_ai::formula_ai(readonly_context &context, const config &cfg)
 	ai_ptr_(NULL),
 	cfg_(cfg),
 	recursion_counter_(context.get_recursion_count()),
-	outcome_positions_(),
 	keeps_cache_(),
 	infinite_loop_guardian_(),
 	vars_(),
@@ -135,8 +134,6 @@ std::string formula_ai::evaluate(const std::string& formula_str)
 		//formula_debugger fdb;
 		const variant v = f.evaluate(callable,NULL);
 
-                outcome_positions_.clear();
-
 		if (ai_ptr_) {
 			variant var = execute_variant(v, *ai_ptr_, true );
 
@@ -154,12 +151,6 @@ std::string formula_ai::evaluate(const std::string& formula_str)
 	}
 }
 
-void formula_ai::store_outcome_position(const variant& var)
-{
-    outcome_positions_.push_back(var);
-}
-
-
 variant formula_ai::make_action(game_logic::const_formula_ptr formula_, const game_logic::formula_callable& variables)
 {
 	if (!formula_) {
@@ -174,9 +165,6 @@ variant formula_ai::make_action(game_logic::const_formula_ptr formula_, const ga
 	} else {
 		ERR_AI << "skipped execution of action because ai context is not set correctly" << std::endl;
 	}
-
-        //remove outcome_positions
-        outcome_positions_.clear();
 
 	return res;
 }
