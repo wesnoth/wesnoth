@@ -144,6 +144,8 @@ public class FactionNewWizard extends NewWizardTemplate
 			}
 		});
 		monitor.worked(5);
+
+		monitor.done();
 	}
 
 	private InputStream getFactionStream()

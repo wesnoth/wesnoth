@@ -133,6 +133,8 @@ public class EraNewWizard extends NewWizardTemplate
 			}
 		});
 		monitor.worked(5);
+
+		monitor.done();
 	}
 
 	private InputStream getEraStream()

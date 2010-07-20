@@ -185,6 +185,8 @@ public class ScenarioNewWizard extends NewWizardTemplate
 			}
 		});
 		monitor.worked(1);
+
+		monitor.done();
 	}
 
 	/**

@@ -125,6 +125,8 @@ public class WizardLauncher extends NewWizardTemplate
 					}
 			});
 			monitor.worked(5);
+
+			monitor.done();
 		} catch (Exception e)
 		{
 			Logger.getInstance().logException(e);
