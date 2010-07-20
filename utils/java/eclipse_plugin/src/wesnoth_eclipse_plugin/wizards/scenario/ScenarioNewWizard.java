@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+import java.util.Properties;
 
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
@@ -31,6 +32,7 @@ import org.eclipse.ui.ide.IDE;
 
 import wesnoth_eclipse_plugin.Logger;
 import wesnoth_eclipse_plugin.utils.GUIUtils;
+import wesnoth_eclipse_plugin.utils.ProjectUtils;
 import wesnoth_eclipse_plugin.utils.ResourceUtils;
 import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
 import wesnoth_eclipse_plugin.wizards.NewWizardTemplate;
@@ -69,8 +71,15 @@ public class ScenarioNewWizard extends NewWizardTemplate
 		page0_ = new ScenarioPage0();
 		addPage(page0_);
 
-		page1_ = new ScenarioPage1();
-		addPage(page1_);
+		if (selectionContainer_ != null)
+		{
+			Properties props = ProjectUtils.getPropertiesForProject(selectionContainer_.getProject());
+			if (props != null && props.getProperty("difficulties") != null)
+			{
+				page1_ = new ScenarioPage1();
+				addPage(page1_);
+			}
+		}
 
 		page2_ = new ScenarioPage2();
 		addPage(page2_);
@@ -212,9 +221,13 @@ public class ScenarioNewWizard extends NewWizardTemplate
 		params.add(new ReplaceableParameter("$$map_data", mapData));
 		params.add(new ReplaceableParameter("$$turns_number", String.valueOf(page0_.getTurnsNumber())));
 
-		String startingGold = page1_.getStartingGoldByDifficulties();
-		if (startingGold == null)
-			throw new Exception("incorrenct argument");
+		String startingGold = "";
+		if (page1_ != null)
+		{
+			startingGold = page1_.getStartingGoldByDifficulties();
+			if (startingGold == null)
+				throw new Exception("incorrect arguments");
+		}
 		params.add(new ReplaceableParameter("$$starting_gold", startingGold));
 
 		// multiplayer only variables
