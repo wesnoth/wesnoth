@@ -43,7 +43,7 @@ public:
 	static const std::string ARROW_STYLE_VALID;
 	static const std::string ARROW_STYLE_INVALID;
 
-	move(unit& subject, const map_location& source_hex, const map_location& target_hex, arrow_ptr arrow,
+	move(const map_location& source_hex, const map_location& target_hex, arrow_ptr arrow,
 			fake_unit_ptr fake_unit);
 	virtual ~move();
 
@@ -75,7 +75,7 @@ public:
 	virtual bool is_valid() { return valid_; }
 
 protected:
-	unit & unit_;
+	int underlying_unit_id_;
 	map_location source_hex_;
 	map_location dest_hex_;
 	int movement_cost_;

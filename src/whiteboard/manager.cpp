@@ -41,6 +41,16 @@ static side_actions_ptr viewer_actions()
 	return side_actions;
 }
 
+static unit* find_unit(map_location hex)
+{
+	scoped_planned_unit_map planned_unit_map;
+	unit_map::iterator it;
+		if ((it = resources::units->find(hex)) != resources::units->end())
+			return &*it;
+		else
+			return NULL;
+}
+
 manager::manager():
 		active_(false),
 		inverted_behavior_(false),
@@ -201,7 +211,11 @@ void manager::on_select_hex(const map_location& hex)
 //		return;
 
 	selected_hex_ = hex;
-	unit* selected_unit = this->selected_unit();
+	unit* selected_unit;
+	{
+		scoped_planned_unit_map planned_unit_map;
+		selected_unit = this->selected_unit();
+	}
 	erase_temp_move();
 	if (!(selected_unit && selected_unit->side() == resources::screen->viewing_side()))
 	{
@@ -310,22 +324,16 @@ void manager::save_temp_move()
 		std::vector<map_location> steps;
 		arrow_ptr move_arrow;
 		fake_unit_ptr fake_unit;
-		unit* subject_unit;
 
 		steps = route_->steps;
 		move_arrow = arrow_ptr(move_arrow_);
 		fake_unit = fake_unit_ptr(fake_unit_);
-		subject_unit = selected_unit();
 
 		on_deselect_hex();
 
-		LOG_WB << "Creating move for unit " << subject_unit->name() << " [" << subject_unit->id() << "]"
-				<< " from " << steps.front()
-				<< " to " << steps.back() << "\n";
-
 		fake_unit->set_disabled_ghosted(false);
 		modifying_actions_ = true;
-		viewer_actions()->queue_move(*subject_unit, steps.front(), steps.back(), move_arrow, fake_unit);
+		viewer_actions()->queue_move(steps.front(), steps.back(), move_arrow, fake_unit);
 		modifying_actions_ = false;
 	}
 }
@@ -339,42 +347,42 @@ void manager::save_temp_attack(const map_location& attack_from, const map_locati
 		std::vector<map_location> steps;
 		arrow_ptr move_arrow;
 		fake_unit_ptr fake_unit;
-		unit* subject_unit;
-
-		subject_unit = selected_unit();
 
 		map_location source_hex;
-		map_location dest_hex;
 		if (route_)
 		{
 			move_arrow = arrow_ptr(move_arrow_);
 			fake_unit = fake_unit_ptr(fake_unit_);
 
 			steps = route_->steps;
+			assert(steps.back() == attack_from);
 			source_hex = steps.front();
-			dest_hex = steps.back();
 
 			fake_unit->set_disabled_ghosted(false);
 		}
 		else
 		{
 			move_arrow.reset(new arrow);
-			dest_hex = source_hex = attack_from;
+			source_hex = attack_from;
 		}
 
 		on_deselect_hex();
 
+		unit* attacking_unit;
+		{
+			scoped_planned_unit_map planned_unit_map;
+			attacking_unit = find_unit(source_hex);
+			assert(attacking_unit);
+		}
+
 		int weapon_choice = resources::controller->get_mouse_handler_base().show_attack_dialog(
-				subject_unit->get_location(), target_hex);
+					attacking_unit->get_location(), target_hex);
 
 		if (weapon_choice >= 0)
 		{
-			LOG_WB << "Creating attack for unit " << subject_unit->name() << " [" << subject_unit->id()
-					<< "]: moving from " << source_hex << " to " << dest_hex
-					<< " and attacking " << target_hex << "\n";
 
 			modifying_actions_ = true;
-			viewer_actions()->queue_attack(*subject_unit, target_hex, weapon_choice, source_hex, dest_hex, move_arrow, fake_unit);
+			viewer_actions()->queue_attack(target_hex, weapon_choice, source_hex, attack_from, move_arrow, fake_unit);
 			modifying_actions_ = false;
 		}
 
@@ -388,29 +396,29 @@ void manager::contextual_execute()
 			&& resources::controller->current_side() == resources::screen->viewing_side())
 	{
 		erase_temp_move();
+		viewer_actions()->validate_actions();
+
+		action_ptr action;
+		side_actions::iterator it;
+		if (selected_unit() &&
+				(it = viewer_actions()->find_first_action_of(*selected_unit())) != viewer_actions()->end())
 		{
-			action_ptr action;
-			side_actions::iterator it;
-			if (selected_unit() &&
-					(it = viewer_actions()->find_first_action_of(*selected_unit())) != viewer_actions()->end())
-			{
-				modifying_actions_ = true;
-				viewer_actions()->execute(it);
-				modifying_actions_ = false;
-			}
-			else if (highlighter_ && (action = highlighter_->get_execute_target()) &&
-					 (it = viewer_actions()->get_position_of(action)) != viewer_actions()->end())
-			{
-				modifying_actions_ = true;
-				viewer_actions()->execute(it);
-				modifying_actions_ = false;
-			}
-			else //we already check above for viewer_actions()->empty()
-			{
-				modifying_actions_ = true;
-				viewer_actions()->execute_next();
-				modifying_actions_ = false;
-			}
+			modifying_actions_ = true;
+			viewer_actions()->execute(it);
+			modifying_actions_ = false;
+		}
+		else if (highlighter_ && (action = highlighter_->get_execute_target()) &&
+				 (it = viewer_actions()->get_position_of(action)) != viewer_actions()->end())
+		{
+			modifying_actions_ = true;
+			viewer_actions()->execute(it);
+			modifying_actions_ = false;
+		}
+		else //we already check above for viewer_actions()->empty()
+		{
+			modifying_actions_ = true;
+			viewer_actions()->execute_next();
+			modifying_actions_ = false;
 		}
 	}
 }
@@ -420,29 +428,29 @@ void manager::contextual_delete()
 	if (!(modifying_actions_ || viewer_actions()->empty()))
 	{
 		erase_temp_move();
+		viewer_actions()->validate_actions();
+
+		action_ptr action;
+		side_actions::iterator it;
+		if (selected_unit() &&
+				(it = viewer_actions()->find_first_action_of(*selected_unit())) != viewer_actions()->end())
 		{
-			action_ptr action;
-			side_actions::iterator it;
-			if (selected_unit() &&
-					(it = viewer_actions()->find_first_action_of(*selected_unit())) != viewer_actions()->end())
-			{
-				modifying_actions_ = true;
-				viewer_actions()->remove_action(it);
-				modifying_actions_ = false;
-			}
-			else if (highlighter_ && (action = highlighter_->get_delete_target()) &&
-					(it = viewer_actions()->get_position_of(action)) != viewer_actions()->end())
-			{
-				modifying_actions_ = true;
-				viewer_actions()->remove_action(it);
-				modifying_actions_ = false;
-			}
-			else //we already check above for viewer_actions()->empty()
-			{
-				modifying_actions_ = true;
-				viewer_actions()->remove_action(viewer_actions()->end() - 1);
-				modifying_actions_ = false;
-			}
+			modifying_actions_ = true;
+			viewer_actions()->remove_action(it);
+			modifying_actions_ = false;
+		}
+		else if (highlighter_ && (action = highlighter_->get_delete_target()) &&
+				(it = viewer_actions()->get_position_of(action)) != viewer_actions()->end())
+		{
+			modifying_actions_ = true;
+			viewer_actions()->remove_action(it);
+			modifying_actions_ = false;
+		}
+		else //we already check above for viewer_actions()->empty()
+		{
+			modifying_actions_ = true;
+			viewer_actions()->remove_action(viewer_actions()->end() - 1);
+			modifying_actions_ = false;
 		}
 	}
 }
@@ -451,6 +459,8 @@ void manager::contextual_bump_up_action()
 {
 	if (!(modifying_actions_ || viewer_actions()->empty()) && highlighter_)
 	{
+
+		viewer_actions()->validate_actions();
 		action_ptr action = highlighter_->get_bump_target();
 		if (action)
 		{
@@ -465,6 +475,9 @@ void manager::contextual_bump_down_action()
 {
 	if (!(modifying_actions_ || viewer_actions()->empty()) && highlighter_)
 	{
+
+		viewer_actions()->validate_actions();
+
 		action_ptr action = highlighter_->get_bump_target();
 		if (action)
 		{
@@ -496,12 +509,7 @@ void manager::fake_unit_deleter::operator() (unit*& fake_unit)
 
 unit* manager::selected_unit()
 {
-	scoped_planned_unit_map planned_unit_map;
-	unit_map::iterator it;
-	if ((it = resources::units->find(selected_hex_)) != resources::units->end())
-		return &*it;
-	else
-		return NULL;
+	return find_unit(selected_hex_);
 }
 
 scoped_planned_unit_map::scoped_planned_unit_map()

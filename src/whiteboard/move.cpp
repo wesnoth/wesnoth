@@ -60,9 +60,9 @@ static team& get_current_team()
 	return current_team;
 }
 
-move::move(unit& subject, const map_location& source_hex, const map_location& target_hex,
+move::move(const map_location& source_hex, const map_location& target_hex,
 		arrow_ptr arrow, fake_unit_ptr fake_unit)
-: unit_(subject),
+: underlying_unit_id_(-1),
   source_hex_(source_hex),
   dest_hex_(target_hex),
   movement_cost_(0),
@@ -70,7 +70,7 @@ move::move(unit& subject, const map_location& source_hex, const map_location& ta
   fake_unit_(fake_unit),
   valid_(true)
 {
-	if (source_hex_.valid() && dest_hex_.valid() && source_hex_ != dest_hex_)
+	if (source_hex_.valid() && dest_hex_.valid() && source_hex_ != dest_hex_ && get_unit())
 	{
 
 		// Calculate move cost
@@ -84,7 +84,7 @@ move::move(unit& subject, const map_location& source_hex, const map_location& ta
 				dest_hex_, 10000, &path_calc, resources::game_map->w(), resources::game_map->h());
 
 		// TODO: find a better treatment of movement points when defining moves out-of-turn
-		if(unit_.movement_left() - route.move_cost < 0
+		if(get_unit()->movement_left() - route.move_cost < 0
 				&& resources::controller->current_side() == resources::screen->viewing_side()) {
 			WRN_WB << "Move defined with insufficient movement left.\n";
 		}
@@ -188,17 +188,17 @@ void move::apply_temp_modifier(unit_map& unit_map)
 		return; //zero-hex move, probably used by attack subclass
 
 	// Move the unit
-	assert(unit_.get_location() == source_hex_);
-	DBG_WB << "Temporarily moving unit " << unit_.name() << " [" << unit_.underlying_id()
+	unit* unit = get_unit();
+	assert(unit);
+	DBG_WB << "Temporarily moving unit " << unit->name() << " [" << unit->underlying_id()
 			<< "] from (" << source_hex_ << ") to (" << dest_hex_ <<")\n";
 	unit_map.move(source_hex_, dest_hex_);
-	assert(unit_.get_location() == dest_hex_);
 
 	//Modify movement points accordingly
-	DBG_WB <<"Changing movement points for unit " << unit_.name() << " [" << unit_.underlying_id()
-			<< "] from " << unit_.movement_left() <<" to "
-			<< unit_.movement_left() - movement_cost_ << ".\n";
-	unit_.set_movement(unit_.movement_left() - movement_cost_);
+	DBG_WB <<"Changing movement points for unit " << unit->name() << " [" << unit->underlying_id()
+			<< "] from " << unit->movement_left() <<" to "
+			<< unit->movement_left() - movement_cost_ << ".\n";
+	unit->set_movement(unit->movement_left() - movement_cost_);
 
 }
 
@@ -207,13 +207,15 @@ void move::remove_temp_modifier(unit_map& unit_map)
 	if (source_hex_ == dest_hex_)
 		return; //zero-hex move, probably used by attack subclass
 
+	unit_map::iterator unit_it = resources::units->find(dest_hex_);
+	assert(unit_it != resources::units->end());
+	unit& unit = *unit_it;
+
 	// Restore the unit to its original position
-	assert(unit_.get_location() == dest_hex_);
 	unit_map.move(dest_hex_, source_hex_);
-	assert(unit_.get_location() == source_hex_);
 
 	// Restore movement points
-	unit_.set_movement(unit_.movement_left() + movement_cost_);
+	unit.set_movement(unit.movement_left() + movement_cost_);
 }
 
 void move::draw_hex(const map_location& hex)
@@ -229,6 +231,9 @@ bool move::is_numbering_hex(const map_location& hex) const
 void move::set_valid(bool valid)
 {
 	valid_ = valid;
+
+	//TODO: restore this once we have artwork for invalid arrows,
+	// and if we decide not to delete them after all.
 //	if (valid_)
 //	{
 //		arrow_->set_style(ARROW_STYLE_VALID);

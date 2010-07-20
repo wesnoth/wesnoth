@@ -77,25 +77,25 @@ public:
 	 */
 	bool empty() { return actions_.empty(); }
 
-	/**
-	 * Inserts a move at the specified position. The begin() and end() functions might prove useful here.
-	 * @return The inserted move's position.
-	 */
-	iterator insert_move(unit& subject, const map_location& source_hex, const map_location& target_hex,
-			iterator position, arrow_ptr arrow, fake_unit_ptr fake_unit);
+//	/**
+//	 * Inserts a move at the specified position. The begin() and end() functions might prove useful here.
+//	 * @return The inserted move's position.
+//	 */
+//	iterator insert_move(const map_location& source_hex, const map_location& target_hex,
+//			iterator position, arrow_ptr arrow, fake_unit_ptr fake_unit);
 
 	/**
 	 * Queues a move to be executed last
 	 * @return The queued move's position
 	 */
-	iterator queue_move(unit& subject, const map_location& source_hex, const map_location& target_hex,
+	iterator queue_move(const map_location& source_hex, const map_location& target_hex,
 			arrow_ptr arrow, fake_unit_ptr fake_unit);
 
 	/**
 	 * Queues an attack or attack-move to be executed last
 	 * @return The queued attack's position
 	 */
-	iterator queue_attack(unit& subject, const map_location& target_hex, int weapon_choice, const map_location& source_hex, const map_location& dest_hex,
+	iterator queue_attack(const map_location& target_hex, int weapon_choice, const map_location& source_hex, const map_location& dest_hex,
 			arrow_ptr arrow, fake_unit_ptr fake_unit);
 
 	/**

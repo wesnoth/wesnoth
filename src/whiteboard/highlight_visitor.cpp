@@ -61,8 +61,7 @@ void highlight_visitor::set_mouseover_hex(const map_location& hex)
 	//if we're right over a unit, just highlight all of this unit's actions
 	unit_map::const_iterator it = unit_map_.find(hex);
 	if (it != unit_map_.end()
-			&& resources::whiteboard->unit_has_actions(*it)
-			/*&& (it->side() == resources::controller->current_side())*/)
+			&& resources::whiteboard->unit_has_actions(*it))
 	{
 		owner_unit_ = &(*it);
 
@@ -175,7 +174,7 @@ void highlight_visitor::visit_move(move_ptr move)
 		}
 		break;
 	case FIND_SECONDARY_HIGHLIGHTS:
-		if (&move->unit_ == owner_unit_
+		if (move->get_unit() == owner_unit_
 				&& move != main_highlight_.lock())
 		{
 			secondary_highlights_.push_back(move);

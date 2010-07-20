@@ -44,9 +44,9 @@ std::ostream& attack::print(std::ostream& s) const
 	return s;
 }
 
-attack::attack(unit& subject, const map_location& target_hex, int weapon_choice, const map_location& source_hex, const map_location& dest_hex,
+attack::attack(const map_location& target_hex, int weapon_choice, const map_location& source_hex, const map_location& dest_hex,
 		arrow_ptr arrow, fake_unit_ptr fake_unit)
-	: move(subject, source_hex, dest_hex, arrow, fake_unit)
+	: move(source_hex, dest_hex, arrow, fake_unit)
 	, target_hex_(target_hex), weapon_choice_(weapon_choice)
 {
 
@@ -88,7 +88,7 @@ bool attack::execute()
 
 	if (execute_successful)
 	{
-		resources::controller->get_mouse_handler_base().attack_enemy(unit_.get_location(), target_hex_, weapon_choice_);
+		resources::controller->get_mouse_handler_base().attack_enemy(dest_hex_, target_hex_, weapon_choice_);
 		//only path that returns execute_successful = true
 	}
 	return execute_successful;
@@ -111,6 +111,7 @@ void attack::draw_hex(const map_location& hex)
 			int xpos = resources::screen->get_location_x(dest_hex_);
 			int ypos = resources::screen->get_location_y(dest_hex_);
 
+			//TODO: Give the whiteboard its own copy of the attack indicator, so it can have a different look.
 			resources::screen->drawing_buffer_add(layer, dest_hex_, display::tblit(xpos, ypos,
 					image::get_image("misc/attack-indicator-src-" + direction_text + ".png", image::UNMASKED)));
 		}

@@ -35,7 +35,7 @@ public:
 	friend class highlight_visitor;
 	friend std::ostream& operator<<(std::ostream& s, attack const& attack);
 
-	attack(unit& subject, const map_location& target_hex, int weapon_choice, const map_location& source_hex, const map_location& dest_hex,
+	attack(const map_location& target_hex, int weapon_choice, const map_location& source_hex, const map_location& dest_hex,
 			arrow_ptr arrow, fake_unit_ptr fake_unit);
 	virtual ~attack();
 

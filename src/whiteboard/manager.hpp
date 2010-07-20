@@ -114,7 +114,6 @@ public:
 	};
 
 private:
-
 	unit* selected_unit();
 
 	///Tracks whether the whiteboard is active.

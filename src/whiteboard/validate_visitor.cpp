@@ -94,7 +94,7 @@ void validate_visitor::visit_move(move_ptr move)
 		pathfind::plain_route route;
 		if (move->valid_)
 		{
-			pathfind::shortest_path_calculator path_calc(move->unit_, get_current_team(), *resources::units,
+			pathfind::shortest_path_calculator path_calc(*move->get_unit(), get_current_team(), *resources::units,
 					*resources::teams, *resources::game_map);
 			route = pathfind::a_star_search(move->source_hex_,
 					move->dest_hex_, 10000, &path_calc, resources::game_map->w(), resources::game_map->h());
