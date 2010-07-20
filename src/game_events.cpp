@@ -783,7 +783,8 @@ WML_HANDLER_FUNCTION(store_time_of_day, /*event_info*/, cfg)
 {
 	const map_location loc = cfg_to_loc(cfg, -999, -999);
 	const size_t turn = lexical_cast_default<size_t>(cfg["turn"], 0);
-	const time_of_day tod = turn ? resources::tod_manager->get_time_of_day(loc,turn) : resources::tod_manager->get_time_of_day(loc);
+	// using 0 will use the current turn
+	const time_of_day& tod = resources::tod_manager->get_time_of_day(loc,turn);
 
 	std::string variable = cfg["variable"];
 	if(variable.empty()) {
