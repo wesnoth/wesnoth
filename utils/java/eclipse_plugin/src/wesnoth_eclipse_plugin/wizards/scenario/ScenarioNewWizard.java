@@ -66,7 +66,7 @@ public class ScenarioNewWizard extends NewWizardTemplate
 	@Override
 	public void addPages()
 	{
-		page0_ = new ScenarioPage0(selection_);
+		page0_ = new ScenarioPage0();
 		addPage(page0_);
 
 		page1_ = new ScenarioPage1();

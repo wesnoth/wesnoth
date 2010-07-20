@@ -13,7 +13,6 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
@@ -28,8 +27,9 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.dialogs.ContainerSelectionDialog;
 
 import wesnoth_eclipse_plugin.utils.EditorUtils;
+import wesnoth_eclipse_plugin.wizards.NewWizardPageTemplate;
 
-public class WizardLauncherPage0 extends WizardPage
+public class WizardLauncherPage0 extends NewWizardPageTemplate
 {
 	private IStructuredSelection	selection_;
 

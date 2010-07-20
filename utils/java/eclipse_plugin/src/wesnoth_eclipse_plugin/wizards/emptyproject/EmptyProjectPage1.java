@@ -8,7 +8,6 @@
  *******************************************************************************/
 package wesnoth_eclipse_plugin.wizards.emptyproject;
 
-import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
@@ -18,7 +17,9 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
-public class EmptyProjectPage1 extends WizardPage
+import wesnoth_eclipse_plugin.wizards.NewWizardPageTemplate;
+
+public class EmptyProjectPage1 extends NewWizardPageTemplate
 {
 	private Text txtTitle_;
 	private Text txtVersion_;

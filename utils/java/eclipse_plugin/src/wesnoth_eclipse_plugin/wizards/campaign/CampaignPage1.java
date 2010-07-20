@@ -8,7 +8,6 @@
  *******************************************************************************/
 package wesnoth_eclipse_plugin.wizards.campaign;
 
-import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
@@ -19,7 +18,9 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
-public class CampaignPage1 extends WizardPage
+import wesnoth_eclipse_plugin.wizards.NewWizardPageTemplate;
+
+public class CampaignPage1 extends NewWizardPageTemplate
 {
 	private Text	txtCampaignName_;
 	private Text	txtVersion_;

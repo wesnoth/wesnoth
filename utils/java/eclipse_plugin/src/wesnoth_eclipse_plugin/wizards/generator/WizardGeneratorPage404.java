@@ -8,14 +8,15 @@
  *******************************************************************************/
 package wesnoth_eclipse_plugin.wizards.generator;
 
-import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 
-public class WizardGeneratorPage404 extends WizardPage
+import wesnoth_eclipse_plugin.wizards.NewWizardPageTemplate;
+
+public class WizardGeneratorPage404 extends NewWizardPageTemplate
 {
 	public WizardGeneratorPage404(String tag) {
 		super("wizardGeneratorPage404");

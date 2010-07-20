@@ -14,9 +14,6 @@ import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.Path;
-import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
@@ -32,6 +29,7 @@ import org.eclipse.swt.widgets.Spinner;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.dialogs.ContainerSelectionDialog;
 
+import wesnoth_eclipse_plugin.wizards.NewWizardPageTemplate;
 import wesnoth_eclipse_plugin.wizards.NewWizardTemplate;
 
 /**
@@ -39,7 +37,7 @@ import wesnoth_eclipse_plugin.wizards.NewWizardTemplate;
  * as the file name. The page will only accept file name without the extension
  * OR with the extension that matches the expected one (cfg).
  */
-public class ScenarioPage0 extends WizardPage
+public class ScenarioPage0 extends NewWizardPageTemplate
 {
 	private Text		txtProject_;
 
@@ -47,7 +45,6 @@ public class ScenarioPage0 extends WizardPage
 	private Text		txtScenarioId_;
 	private Text		txtScenarioName_;
 
-	private ISelection	selection;
 	private GridData	gd_txtProject_;
 	private Label		lblproject;
 	private GridData	gd_txtFileName_;
@@ -73,11 +70,10 @@ public class ScenarioPage0 extends WizardPage
 	 *
 	 * @param pageName
 	 */
-	public ScenarioPage0(ISelection selection) {
+	public ScenarioPage0() {
 		super("scenarioPage0");
 		setTitle("Scenario File");
 		setDescription("Create a new scenario file.");
-		this.selection = selection;
 	}
 
 	@Override
@@ -137,7 +133,8 @@ public class ScenarioPage0 extends WizardPage
 		txtScenarioId_.setLayoutData(gd_txtScenarioId_);
 		txtScenarioId_.addModifyListener(modifyListener);
 
-		initialize();
+		txtProject_.setText(((NewWizardTemplate)getWizard()).
+				getSelectionContainer().getFullPath().toString());
 		setControl(container);
 		new Label(container, SWT.NONE);
 
@@ -248,37 +245,6 @@ public class ScenarioPage0 extends WizardPage
 		setErrorMessage(null);
 		setMessage(warningMessage.isEmpty() ? null : warningMessage, WARNING);
 		setPageComplete(true);
-	}
-
-	/**
-	 * Tests if the current workbench selection is a suitable campaign to use.
-	 */
-	private void initialize()
-	{
-		if (selection != null && selection.isEmpty() == false && selection instanceof IStructuredSelection)
-		{
-			IStructuredSelection ssel = (IStructuredSelection) selection;
-			if (ssel.size() > 1)
-			{
-				return;
-			}
-			Object obj = ssel.getFirstElement();
-			if (obj instanceof IResource)
-			{
-				IContainer container;
-				if (obj instanceof IContainer)
-				{
-					container = (IContainer) obj;
-				}
-				else
-				{
-					container = ((IResource) obj).getParent();
-				}
-				container_ = container;
-				((NewWizardTemplate)getWizard()).setSelectionContainer(container_);
-				txtProject_.setText(container.getFullPath().toString());
-			}
-		}
 	}
 
 	private void updateMapPath()

@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
-import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -27,9 +26,10 @@ import wesnoth_eclipse_plugin.schema.Tag;
 import wesnoth_eclipse_plugin.utils.GUIUtils;
 import wesnoth_eclipse_plugin.utils.ListUtils;
 import wesnoth_eclipse_plugin.utils.StringUtils;
+import wesnoth_eclipse_plugin.wizards.NewWizardPageTemplate;
 import wesnoth_eclipse_plugin.wizards.WizardUtils;
 
-public class WizardGeneratorPageTag extends WizardPage
+public class WizardGeneratorPageTag extends NewWizardPageTemplate
 {
 	private java.util.List<Tag>						tags_;
 	private HashMap<String, java.util.List<String>>	content_;

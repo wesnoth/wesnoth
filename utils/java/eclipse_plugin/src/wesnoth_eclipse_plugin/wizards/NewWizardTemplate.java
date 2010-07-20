@@ -9,6 +9,7 @@
 package wesnoth_eclipse_plugin.wizards;
 
 import org.eclipse.core.resources.IContainer;
+import org.eclipse.core.resources.IResource;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.jface.wizard.Wizard;
@@ -28,8 +29,38 @@ public abstract class NewWizardTemplate extends Wizard implements INewWizard
 	public void init(IWorkbench workbench, IStructuredSelection selection)
 	{
 		this.selection_ = selection;
+		initialize();
 	}
 
+	/**
+	 * Tests if the current workbench selection is a suitable campaign to use.
+	 */
+	public void initialize()
+	{
+		if (selection_ != null && selection_.isEmpty() == false &&
+			selection_ instanceof IStructuredSelection)
+		{
+			IStructuredSelection ssel = selection_;
+			if (ssel.size() > 1)
+			{
+				return;
+			}
+			Object obj = ssel.getFirstElement();
+			if (obj instanceof IResource)
+			{
+				IContainer container;
+				if (obj instanceof IContainer)
+				{
+					container = (IContainer) obj;
+				}
+				else
+				{
+					container = ((IResource) obj).getParent();
+				}
+				selectionContainer_ = container;
+			}
+		}
+	}
 	@Override
 	public boolean canFinish()
 	{

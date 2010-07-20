@@ -11,7 +11,6 @@ package wesnoth_eclipse_plugin.wizards.scenario;
 import java.util.Properties;
 
 import org.eclipse.core.resources.IContainer;
-import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -21,9 +20,9 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
 import wesnoth_eclipse_plugin.utils.ProjectUtils;
-import wesnoth_eclipse_plugin.wizards.NewWizardTemplate;
+import wesnoth_eclipse_plugin.wizards.NewWizardPageTemplate;
 
-public class ScenarioPage1 extends WizardPage
+public class ScenarioPage1 extends NewWizardPageTemplate
 {
 	private Composite container_;
 
@@ -45,7 +44,7 @@ public class ScenarioPage1 extends WizardPage
 		lblSpecifyTheGold.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false, 4, 1));
 		lblSpecifyTheGold.setText("Specify the gold for each difficulty:");
 
-		IContainer selContainer = ((NewWizardTemplate)getWizard()).getSelectionContainer();
+		IContainer selContainer = getWizard().getSelectionContainer();
 		if (selContainer != null)
 		{
 			Properties prefs =

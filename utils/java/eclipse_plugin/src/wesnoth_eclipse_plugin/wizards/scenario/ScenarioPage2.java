@@ -8,7 +8,6 @@
  *******************************************************************************/
 package wesnoth_eclipse_plugin.wizards.scenario;
 
-import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -17,7 +16,9 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 
-public class ScenarioPage2 extends WizardPage
+import wesnoth_eclipse_plugin.wizards.NewWizardPageTemplate;
+
+public class ScenarioPage2 extends NewWizardPageTemplate
 {
 	Button	chkIsMultiplayerScenario_;
 	Button	chkAllowNewGame_;

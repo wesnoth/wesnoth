@@ -10,7 +10,6 @@ package wesnoth_eclipse_plugin.wizards.generator;
 
 import java.util.HashMap;
 
-import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
@@ -22,9 +21,10 @@ import org.eclipse.swt.widgets.Text;
 
 import wesnoth_eclipse_plugin.Logger;
 import wesnoth_eclipse_plugin.utils.StringUtils;
+import wesnoth_eclipse_plugin.wizards.NewWizardPageTemplate;
 import wesnoth_eclipse_plugin.wizards.TemplateProvider;
 
-public class WizardLauncherPage1 extends WizardPage
+public class WizardLauncherPage1 extends NewWizardPageTemplate
 {
 	private HashMap<String, String>	list_;
 	private Text					txtOtherTag_;
