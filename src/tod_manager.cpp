@@ -119,22 +119,19 @@ const time_of_day& tod_manager::get_previous_time_of_day() const
 	return get_time_of_day_turn(turn_ - 1);
 }
 
-time_of_day tod_manager::get_time_of_day(const map_location& loc, int n_turn) const
+const time_of_day& tod_manager::get_time_of_day(const map_location& loc, int n_turn) const
 {
-	time_of_day res = get_time_of_day_turn(n_turn ? n_turn : turn_);
-
 	if (loc.valid()) {
 		for (std::vector<area_time_of_day>::const_reverse_iterator
 		     i = areas_.rbegin(), i_end = areas_.rend(); i != i_end; ++i)
 		{
 			if (i->hexes.count(loc) != 1) continue;
 			VALIDATE(i->times.size(), _("No time of day has been defined."));
-			res = i->times[(n_turn - 1) % i->times.size()];
-			break;
+			return i->times[(n_turn - 1) % i->times.size()];
 		}
 	}
 
-	return res;
+	return get_time_of_day_turn(n_turn ? n_turn : turn_);
 }
 
 bool tod_manager::is_start_ToD(const std::string& random_start_time)
