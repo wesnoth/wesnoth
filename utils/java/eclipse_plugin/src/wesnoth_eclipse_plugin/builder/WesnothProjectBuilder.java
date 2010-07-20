@@ -9,9 +9,7 @@
 package wesnoth_eclipse_plugin.builder;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -34,7 +32,6 @@ import wesnoth_eclipse_plugin.globalactions.PreprocessorActions;
 import wesnoth_eclipse_plugin.preferences.Preferences;
 import wesnoth_eclipse_plugin.utils.AntUtils;
 import wesnoth_eclipse_plugin.utils.ProjectUtils;
-import wesnoth_eclipse_plugin.utils.ResourceUtils;
 import wesnoth_eclipse_plugin.utils.StringUtils;
 import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
 
@@ -44,11 +41,6 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 	public static final String XTEXT_BUILDER_ID = XtextProjectHelper.BUILDER_ID;
 
 	private static final String MARKER_TYPE = "Wesnoth_Eclipse_Plugin.configProblem";
-
-	/**
-	 * The 'last modified' timestamp of the '.wesnoth' file
-	 */
-	private long wesnothFileLastModified_ = 0;
 
 	protected void fullBuild(final IProgressMonitor monitor) throws CoreException
 	{
@@ -92,9 +84,6 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 			return null;
 		}
 		monitor.worked(2);
-
-		readWesnothFile();
-		monitor.worked(5);
 
 		// Ant copy
 		monitor.subTask("Copying resources...");
@@ -200,62 +189,22 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 		}
 	}
 
-	/**
-	 * Reads the .wesnoth file and memorizes the information
-	 */
-	private void readWesnothFile()
-	{
-		File wesnothFile = new File(getProject().getLocation().toOSString() + Path.SEPARATOR + ".wesnoth");
-		if (!wesnothFile.exists() || wesnothFile.lastModified() == wesnothFileLastModified_)
-			return;
-
-		HashMap<String, List<String>> preferences = new HashMap<String, List<String>>();
-
-		String contents = ResourceUtils.getFileContents(wesnothFile);
-		if (contents != null)
-		{
-			List<String> ignoreList = new ArrayList<String>();
-			List<String> projSettings = new ArrayList<String>();
-			String[] lines = StringUtils.getLines(contents);
-			// 1 - ignore list | 2 - project settings
-			int step = 0;
-			for (String line : lines)
-			{
-				if (StringUtils.startsWith(line, "#") || line.matches("^[\t ]*$"))
-					continue;
-
-				if (line.startsWith("ignore"))
-				{
-					step = 1; continue;
-				}
-				else if (line.startsWith("settings"))
-				{
-					step = 2; continue;
-				}
-				else if (line.startsWith("end_"))
-				{
-					step = 0; continue;
-				}
-
-				if (step == 1)
-					ignoreList.add(line);
-				if (step == 2)
-					projSettings.add(line);
-			}
-
-			preferences.put("ignore", ignoreList);
-			preferences.put("settings", projSettings);
-		}
-		ProjectUtils.setPreferencesForProject(getProject(), preferences);
-	}
-
 	private boolean isResourceIgnored(IResource res)
 	{
-		if (ProjectUtils.getPreferencesForProject(getProject()) == null)
+		if (ProjectUtils.getPropertiesForProject(getProject()) == null)
 			return false;
-		List<String> ignoredFiles = ProjectUtils.getPreferencesForProject(getProject()).get("ignore");
+
+		String ignored = ProjectUtils.getPropertiesForProject(getProject()).getProperty("ignored");
+		if (ignored == null)
+			return false;
+
+		String[] ignoredFiles = ignored.split(",");
+
 		for (String path : ignoredFiles)
 		{
+			if (path.isEmpty())
+				continue;
+
 			if (StringUtils.normalizePath(WorkspaceUtils.getPathRelativeToUserDir(res))
 					.contains(StringUtils.normalizePath(path)))
 				return true;

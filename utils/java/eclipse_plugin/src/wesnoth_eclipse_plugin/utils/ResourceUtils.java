@@ -13,6 +13,7 @@ import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -175,5 +176,25 @@ public class ResourceUtils
 
 		ByteArrayInputStream inputStream = new ByteArrayInputStream(fileContentsString.getBytes());
 		createResource(file, project, fileName, inputStream);
+	}
+
+	public static void createWesnothFile(String path)
+	{
+		File wesnothFile = new File(path);
+		try
+		{
+			if (!(wesnothFile.exists()))
+			{
+				wesnothFile.createNewFile();
+				FileWriter writer = new FileWriter(wesnothFile);
+				writer.write("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n");
+				writer.write("<!DOCTYPE properties SYSTEM \"http://java.sun.com/dtd/properties.dtd\">\n");
+				writer.write("<properties>\n</properties>\n");
+				writer.close();
+			}
+		}
+		catch (Exception e) {
+			Logger.getInstance().logException(e);
+		}
 	}
 }

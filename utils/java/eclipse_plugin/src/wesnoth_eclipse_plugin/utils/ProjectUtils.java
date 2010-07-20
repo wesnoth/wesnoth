@@ -9,10 +9,10 @@
 package wesnoth_eclipse_plugin.utils;
 
 import java.io.File;
-import java.util.ArrayList;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map.Entry;
+import java.util.Properties;
 
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
@@ -25,44 +25,65 @@ import wesnoth_eclipse_plugin.Logger;
 
 public class ProjectUtils
 {
-	private static HashMap<IProject, HashMap<String, List<String>>> projectPreferences_ =
-		new HashMap<IProject, HashMap<String, List<String>>>();
+	/**
+	 * A map which stores the properties for each project.
+	 * The properties are stored in '.wesnoth' file
+	 * The first element in the pair is 'last modified' .wenoth file attribute
+	 */
+	private static HashMap<IProject, Pair<Long, Properties>> projectProperties_ =
+		new HashMap<IProject, Pair<Long, Properties>>();
 
-	public static HashMap<String, List<String>> getPreferencesForProject(IProject project)
+	/**
+	 * Gets the properties store for specified project.
+	 * If the store doesn't exist it will be created.
+	 * This will return null if it has been an exception
+	 * This method ensures it will get the latest up-to-date '.wesnoth' file
+	 * @param project the project
+	 */
+	public static Properties getPropertiesForProject(IProject project)
 	{
-		return projectPreferences_.get(project);
-	}
-
-	public static void setPreferencesForProject(IProject project, HashMap<String,
-			List<String>> prefs)
-	{
-		projectPreferences_.put(project, prefs);
-	}
-
-	public static HashMap<String, String> getSettingsForProject(IProject project)
-	{
-		HashMap<String, List<String>> pref = getPreferencesForProject(project);
-		if (pref == null)
-			return null;
-		List<String> settingsList = pref.get("settings");
-		HashMap<String, String> settings = new HashMap<String, String>();
-		for (String string : settingsList)
+		Pair<Long, Properties> pair = projectProperties_.get(project);
+		File wesnothFile = new File(project.getLocation().toOSString()  +
+				"/.wesnoth");
+		try
 		{
-			settings.put(string.split("=")[0], string.split("=")[1]);
+			ResourceUtils.createWesnothFile(wesnothFile.getAbsolutePath());
+
+			if (pair == null || wesnothFile.lastModified() > pair.First)
+			{
+				pair = new Pair<Long, Properties>(wesnothFile.lastModified(), null);
+				pair.Second = new Properties();
+				pair.Second.loadFromXML(new FileInputStream(wesnothFile));
+				projectProperties_.put(project, pair);
+			}
 		}
-		return settings;
+		catch (Exception e)
+		{
+			Logger.getInstance().logException(e);
+		}
+		return pair.Second;
 	}
 
-	public static void setSettingsForProject(IProject project,HashMap<String, String> settings)
+	/**
+	 * Sets the properties store for the specified project and saves the file
+	 * If the '.wesnoth' file doesn't exist it will be created
+	 */
+	public static void setPropertiesForProject(IProject project, Properties props)
 	{
-		List<String> settingsList = new ArrayList<String>();
-		for (Entry<String,String> key : settings.entrySet())
+		File wesnothFile = new File(project.getLocation().toOSString()  +
+				"/.wesnoth");
+
+		ResourceUtils.createWesnothFile(wesnothFile.getAbsolutePath());
+		try
 		{
-			settingsList.add(key.getKey() + "=" + key.getValue());
+			props.storeToXML(new FileOutputStream(wesnothFile), null);
 		}
-		HashMap<String, List<String>> prefs = getPreferencesForProject(project);
-		prefs.put("settings",settingsList);
-		setPreferencesForProject(project, prefs);
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		projectProperties_.put(project,
+				new Pair<Long, Properties>(wesnothFile.lastModified(), props));
 	}
 
 	//TODO: create a simple java wmlparsers in order to get the right values

@@ -11,6 +11,7 @@ package wesnoth_eclipse_plugin.wizards.campaign;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
@@ -22,6 +23,7 @@ import org.eclipse.jface.operation.IRunnableWithProgress;
 import wesnoth_eclipse_plugin.Logger;
 import wesnoth_eclipse_plugin.builder.WesnothProjectNature;
 import wesnoth_eclipse_plugin.utils.Pair;
+import wesnoth_eclipse_plugin.utils.ProjectUtils;
 import wesnoth_eclipse_plugin.utils.ResourceUtils;
 import wesnoth_eclipse_plugin.wizards.NewWizardTemplate;
 import wesnoth_eclipse_plugin.wizards.ReplaceableParameter;
@@ -115,13 +117,10 @@ public class CampaignNewWizard extends NewWizardTemplate
 				monitor.worked(1);
 			}
 
-			// create the '.wesnoth' file to store some campaign related info
-			String wesnothFile = "";
-			wesnothFile += "settings\n";
-			wesnothFile += "difficulties=" + page2_.getDifficulties() + "\n";
-			wesnothFile += "end_settings\n";
-
-			ResourceUtils.createFile(currentProject, ".wesnoth", wesnothFile, true);
+			// store some campaign-related info
+			Properties props = new Properties();
+			props.setProperty("difficulties", page2_.getDifficulties());
+			ProjectUtils.setPropertiesForProject(currentProject, props);
 		} catch (CoreException e)
 		{
 			Logger.getInstance().logException(e);

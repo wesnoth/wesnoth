@@ -13,6 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Properties;
 import java.util.Random;
 
 import org.eclipse.core.resources.FileInfoMatcherDescription;
@@ -257,19 +258,21 @@ public class WorkspaceUtils
 						TemplateProvider.getInstance().getProcessedTemplate("build_xml", param), true);
 
 				// we need to skip the already created projects (if any) in the addons directory
-				String skipList = "ignore\n";
+				StringBuilder skipList = new StringBuilder();
 				for (IProject project : ResourcesPlugin.getWorkspace().getRoot().getProjects())
 				{
 					if (project.getName().equals("User Addons"))
 						continue;
-					skipList += (StringUtils.trimPathSeparators(getPathRelativeToUserDir(project)) + "\n");
+					if (skipList.length() > 0)
+						skipList.append(",");
+					skipList.append(StringUtils.trimPathSeparators(getPathRelativeToUserDir(project)));
 
 					// hide the existing projects
 					createIgnoreFilter(projectToCreate, project.getName());
 				}
-
-				skipList += "end_ignore\n";
-				ResourceUtils.createFile(projectToCreate, ".wesnoth", skipList, true);
+				Properties props = new Properties();
+				props.setProperty("ignored", skipList.toString());
+				ProjectUtils.setPropertiesForProject(projectToCreate, props);
 			}
 
 			Logger.getInstance().log("setupWorkspace was successful",

@@ -8,7 +8,7 @@
  *******************************************************************************/
 package wesnoth_eclipse_plugin.wizards.scenario;
 
-import java.util.HashMap;
+import java.util.Properties;
 
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.jface.wizard.WizardPage;
@@ -48,11 +48,11 @@ public class ScenarioPage1 extends WizardPage
 		IContainer selContainer = ((NewWizardTemplate)getWizard()).getSelectionContainer();
 		if (selContainer != null)
 		{
-			HashMap<String, String> prefs =
-				ProjectUtils.getSettingsForProject(selContainer.getProject());
-			if (prefs != null && prefs.get("difficulties") != null)
+			Properties prefs =
+				ProjectUtils.getPropertiesForProject(selContainer.getProject());
+			if (prefs != null && prefs.getProperty("difficulties") != null)
 			{
-				String[] difficulties = prefs.get("difficulties").split(",");
+				String[] difficulties = prefs.getProperty("difficulties").split(",");
 				for (String diff : difficulties)
 				{
 					if (diff.isEmpty())
