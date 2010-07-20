@@ -496,6 +496,7 @@ void manager::fake_unit_deleter::operator() (unit*& fake_unit)
 
 unit* manager::selected_unit()
 {
+	scoped_planned_unit_map planned_unit_map;
 	unit_map::iterator it;
 	if ((it = resources::units->find(selected_hex_)) != resources::units->end())
 		return &*it;
