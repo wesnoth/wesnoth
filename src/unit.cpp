@@ -66,22 +66,6 @@ namespace {
 	static std::vector<const unit *> units_with_cache;
 }
 
-static bool compare_unit_values(unit const &a, unit const &b)
-{
-	const int lvla = a.level();
-	const int lvlb = b.level();
-
-	const int xpa = a.max_experience() - a.experience();
-	const int xpb = b.max_experience() - b.experience();
-
-	return lvla > lvlb || (lvla == lvlb && xpa < xpb);
-}
-
-void sort_units(std::vector< unit > &units)
-{
-	std::sort(units.begin(), units.end(), compare_unit_values);
-}
-
 static const unit_type &get_unit_type(const std::string &type_id)
 {
 	const unit_type *i = unit_types.find(type_id);

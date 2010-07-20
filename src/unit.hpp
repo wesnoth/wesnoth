@@ -466,8 +466,6 @@ private:
 	int moves_;
 };
 
-void sort_units(std::vector< unit > &);
-
 /** Returns the number of units of the side @a side_num. */
 int side_units(int side_num);
 
