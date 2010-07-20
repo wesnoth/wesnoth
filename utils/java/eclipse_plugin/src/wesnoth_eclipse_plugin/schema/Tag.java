@@ -11,18 +11,22 @@ package wesnoth_eclipse_plugin.schema;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This represents a wml tag parsed by the schema.
+ */
 public class Tag
 {
 	public String		Name;
-	public String		ExtendedTagName	= "";
+	public String		ExtendedTagName;
 	public List<Tag>	TagChildren;
 	public List<TagKey>	KeyChildren;
-	public char			Cardinality;
+	public char		Cardinality;
 
-	public boolean		NeedsExpanding	= false;
+	public boolean		NeedsExpanding;
 
 	public Tag(String name, List<Tag> tagChildren, List<TagKey> keyChildren, char cardinality) {
 		Name = name;
+		ExtendedTagName = "";
 		TagChildren = tagChildren;
 		KeyChildren = keyChildren;
 		Cardinality = cardinality;
@@ -30,6 +34,7 @@ public class Tag
 
 	public Tag(String name, char cardinality) {
 		Name = name;
+		ExtendedTagName = "";
 		TagChildren = new ArrayList<Tag>();
 		KeyChildren = new ArrayList<TagKey>();
 		Cardinality = cardinality;
@@ -43,18 +48,34 @@ public class Tag
 		Cardinality = cardinality;
 	}
 
+	/**
+	 * Ads a child tag
+	 * @param tag the Tag to add
+	 */
 	public void addTag(Tag tag)
 	{
 		TagChildren.add(tag);
 	}
 
+	/**
+	 * Adds a child key
+	 * @param key the TagKey to add
+	 */
 	public void addKey(TagKey key)
 	{
 		KeyChildren.add(key);
 	}
 
-	public void addKey(String name, String valueType, char cardinality, boolean translat)
+	/**
+	 * Adds a child key
+	 * @param name the name of the key
+	 * @param valueType the valuetype of the key
+	 * @param cardinality the cardinality
+	 * @param translate true if it's translatable
+	 */
+	public void addKey(String name, String valueType, char cardinality,
+			boolean translatable)
 	{
-		addKey(new TagKey(name, cardinality, valueType, translat));
+		addKey(new TagKey(name, cardinality, valueType, translatable));
 	}
 }

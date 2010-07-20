@@ -66,6 +66,11 @@ public class ResourceUtils
 		}
 	}
 
+	/**
+	 * Gets the contents as string of the specified file
+	 * @param file The file
+	 * @return
+	 */
 	public static String getFileContents(File file)
 	{
 		if (!file.exists() || !file.isFile())
@@ -178,6 +183,10 @@ public class ResourceUtils
 		createResource(file, project, fileName, inputStream);
 	}
 
+	/**
+	 * Creates the '.wesnoth' file with the specified path
+	 * @param path The path of '.wesnoth' file
+	 */
 	public static void createWesnothFile(String path)
 	{
 		File wesnothFile = new File(path);

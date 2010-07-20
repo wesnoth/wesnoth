@@ -385,7 +385,9 @@ public class WMLTools
 		return pyscript;
 	}
 
-
+	/**
+	 * The available tools enum
+	 */
 	public enum Tools
 	{
 		WMLLINT, WMLINDENT, WMLSCOPE, WESNOTH_ADDON_MANAGER;

@@ -40,15 +40,11 @@ import wesnoth_eclipse_plugin.Constants;
 public class WesnothEditorPreferencesPage extends FieldEditorPreferencePage
 		implements IWorkbenchPreferencePage
 {
-	public static boolean EditorPreferencesStarted = false;
-
 	private DirectoryFieldEditor	wmlToolsField_;
 	private List<String> 			wmlToolsList_;
 
 	public WesnothEditorPreferencesPage() {
 		super(GRID);
-
-		EditorPreferencesStarted = true;
 
 		setPreferenceStore(Activator.getDefault().getPreferenceStore());
 		setDescription("Wesnoth User-Made-Content Plugin preferences");
@@ -80,18 +76,7 @@ public class WesnothEditorPreferencesPage extends FieldEditorPreferencePage
 				"WML* tools directory:", getFieldEditorParent());
 		addField(wmlToolsField_);
 	}
-	@Override
-	public boolean performOk()
-	{
-		EditorPreferencesStarted = false;
-		return super.performOk();
-	}
-	@Override
-	public boolean performCancel()
-	{
-		EditorPreferencesStarted = false;
-		return super.performCancel();
-	}
+
 	@Override
 	public void init(IWorkbench workbench)
 	{

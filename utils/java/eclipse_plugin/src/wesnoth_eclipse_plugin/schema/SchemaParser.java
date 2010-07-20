@@ -18,6 +18,9 @@ import wesnoth_eclipse_plugin.preferences.Preferences;
 import wesnoth_eclipse_plugin.utils.ResourceUtils;
 import wesnoth_eclipse_plugin.utils.StringUtils;
 
+/**
+ * This is a 'schema.cfg' parser.
+ */
 public class SchemaParser
 {
 	private static SchemaParser	instance_;
@@ -29,10 +32,14 @@ public class SchemaParser
 		return instance_;
 	}
 
-	private HashMap<String, String>	primitives_		= new HashMap<String, String>();
-	private HashMap<String, Tag>	tags_			= new HashMap<String, Tag>();
-	private boolean					parsingDone_	= false;
+	private HashMap<String, String> primitives_	    = new HashMap<String, String>();
+	private HashMap<String, Tag>    tags_          = new HashMap<String, Tag>();
+	private boolean                parsingDone_   = false;
 
+	/**
+	 * Parses the schema
+	 * @param force True to force parsing the schema, skipping the existing cache
+	 */
 	public void parseSchema(boolean force)
 	{
 		//TODO: sort tags's keys by cardinality (required first) ??
@@ -219,16 +226,27 @@ public class SchemaParser
 		//		System.out.println("End writing result");
 	}
 
+	/**
+	 * Gets the hasmap with parsed tags
+	 */
 	public HashMap<String, Tag> getTags()
 	{
 		return tags_;
 	}
 
+	/**
+	 * Gets the hasmap with the parsed primitives
+	 */
 	public HashMap<String, String> getPrimitives()
 	{
 		return primitives_;
 	}
 
+	/**
+	 * Returns the 'wmlwise' output of a specified tag using the specified indent
+	 * @param tag The tag which contents to output
+	 * @param indent The indentation space
+	 */
 	public String getOutput(Tag tag, String indent)
 	{
 		String res = indent + "[" + tag.Name + "]\n";
@@ -244,6 +262,10 @@ public class SchemaParser
 		return res;
 	}
 
+	/**
+	 * Returns the cardinality as a character of the specified value
+	 * @param value The value
+	 */
 	public char getCardinality(String value)
 	{
 		if (value.equals("required"))

@@ -36,10 +36,19 @@ public class Preferences extends AbstractPreferenceInitializer {
 		return Activator.getDefault().getPreferenceStore();
 	}
 
+	/**
+	 * Returns the contents of the specified preference as a string
+	 * or empty string ("") if there is no such preference set
+	 */
 	public static String getString(String prefName)
 	{
 		return getPreferences().getString(prefName);
 	}
+
+	/**
+	 * Returns the contents of the specified preference as an int
+	 * or zero (0) if there is no such preference set
+	 */
 	public static int getInt(String prefName)
 	{
 		return getPreferences().getInt(prefName);

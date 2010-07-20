@@ -22,11 +22,17 @@ import wesnoth_eclipse_plugin.preferences.Preferences;
 
 public class GameUtils
 {
+	/**
+	 * Runs campaign from the selected project
+	 */
 	public static void runCampaign()
 	{
 		runCampaignScenario(false);
 	}
 
+	/**
+	 * Runs a scenario from the selected file
+	 */
 	public static void runScenario()
 	{
 		runCampaignScenario(true);
@@ -85,7 +91,18 @@ public class GameUtils
 		}
 	}
 
+	/**
+	 * Starts the game
+	 */
+	public static void startGame()
+	{
+		startGame(null);
+	}
 
+	/**
+	 * Starts the wesnoth game with the specified extraArguments
+	 * @param extraArgs Extra arguments given to the game, or null.
+	 */
 	public static void startGame(List<String> extraArgs)
 	{
 		List<String> args = new ArrayList<String>();
@@ -98,7 +115,8 @@ public class GameUtils
 
 		String workingDir = Preferences.getString(Constants.P_WESNOTH_WORKING_DIR);
 
-		args.addAll(extraArgs);
+		if (extraArgs != null)
+			args.addAll(extraArgs);
 
 		// add the user's data directory path
 		args.add("--config-dir");
@@ -116,11 +134,19 @@ public class GameUtils
 			};
 		ExternalToolInvoker.launchTool(wesnothExec, args, stream, stream);
 	}
-	public static void startGame()
+
+	/**
+	 * Starts editor
+	 */
+	public static void startEditor()
 	{
-		startGame(new ArrayList<String>());
+		startEditor("");
 	}
 
+	/**
+	 * Starts the game editor on the specified file
+	 * @param file The file to be edited
+	 */
 	public static void startEditor(IFile file)
 	{
 		if (file == null || !file.exists())
@@ -133,17 +159,27 @@ public class GameUtils
 		startEditor(file.getLocation().toOSString());
 	}
 
+	/**
+	 * Starts the editor
+	 * @param mapName
+	 */
 	public static void startEditor(String mapName)
 	{
 		startGame(getEditorLaunchArguments(mapName));
 	}
 
+	/**
+	 * Gets a list of parameters for the game editor
+	 * @param mapName the map to launch
+	 * @return
+	 */
 	public static List<String> getEditorLaunchArguments(String mapName)
 	{
+
 		List<String> args = new ArrayList<String>(3);
 
 		args.add("-e");
-		if (!(mapName.isEmpty()))
+		if (mapName != null && !(mapName.isEmpty()))
 			args.add(mapName);
 
 		return args;

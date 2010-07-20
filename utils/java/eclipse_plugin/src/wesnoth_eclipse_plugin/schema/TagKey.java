@@ -8,9 +8,12 @@
  *******************************************************************************/
 package wesnoth_eclipse_plugin.schema;
 
+/**
+ * This class represents a tag's key parsed by the schema
+ */
 public class TagKey
 {
-	public String	Name;
+	public String	 Name;
 	/**
 	 * Cardinality can be:
 	 * 1 = required
@@ -18,10 +21,10 @@ public class TagKey
 	 * * = repeated
 	 * - = forbidden
 	 */
-	public char		Cardinality;
-	public String	ValueType;
-	public boolean	IsEnum;
-	public boolean	IsTranslatable;
+	public char	 Cardinality;
+	public String	 ValueType;
+	public boolean IsEnum;
+	public boolean IsTranslatable;
 
 	public TagKey(String name, char cardinality, String valueType, boolean trans) {
 		Name = name;
@@ -29,10 +32,17 @@ public class TagKey
 
 		if (valueType == null)
 		{
-			return;
+			ValueType = "";
+			IsEnum = false;
+			IsTranslatable = false;
 		}
-		IsEnum = valueType.substring(1, valueType.indexOf(" ")).equals("enum");
-		ValueType = valueType.substring(valueType.indexOf(" ") + 1, valueType.length() - 1); // remove the " "
-		IsTranslatable = trans;
+		else
+		{
+			IsEnum = valueType.substring(1, valueType.indexOf(" ")).equals("enum");
+
+			 // remove the " "
+			ValueType = valueType.substring(valueType.indexOf(" ") + 1, valueType.length() - 1);
+			IsTranslatable = trans;
+		}
 	}
 }

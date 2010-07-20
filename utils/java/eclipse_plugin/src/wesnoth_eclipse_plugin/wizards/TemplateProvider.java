@@ -89,6 +89,12 @@ public class TemplateProvider
 		}
 	}
 
+	/**
+	 * Gets a string of the processed specified template
+	 * @param templateName The name of the template to process
+	 * @param parameters The parameters to replace into the template
+	 * @return
+	 */
 	public String getProcessedTemplate(String templateName, ArrayList<ReplaceableParameter> parameters)
 	{
 		String tmpTemplate = TemplateProvider.getInstance().getTemplate(templateName);
@@ -135,6 +141,11 @@ public class TemplateProvider
 		return result;
 	}
 
+	/**
+	 * Returns the template with the specified name or empty string if none
+	 * @param name
+	 * @return
+	 */
 	public String getTemplate(String name)
 	{
 		if (templates_.get(name) == null)

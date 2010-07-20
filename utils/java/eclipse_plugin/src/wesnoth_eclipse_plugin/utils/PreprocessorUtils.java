@@ -103,13 +103,25 @@ public class PreprocessorUtils
 		}
 	}
 
+	/**
+	 * Returns the path of the preprocessed file of the specified file
+	 * @param file The file whom preprocessed file to get
+	 * @param plain True to return the plain version file's file
+	 * @return
+	 */
 	public static String getPreprocessedFilePath(IFile file, boolean plain)
 	{
-		IFileStore preprocFile = EFS.getLocalFileSystem().getStore(new Path(WorkspaceUtils.getTemporaryFolder()));
+		IFileStore preprocFile =
+			EFS.getLocalFileSystem().getStore(new Path(WorkspaceUtils.getTemporaryFolder()));
 		preprocFile = preprocFile.getChild(file.getName() + (plain == true? ".plain" : "") );
 		return preprocFile.toString();
 	}
 
+	/**
+	 * Preprocesses the specified file if it doesn't exist
+	 * @param file The file to preprocess
+	 * @param waitForIt True to wait until the preprocessing is finished
+	 */
 	public static void preprocessIfNotExists(IFile file, boolean waitForIt)
 	{
 		if (new File(WorkspaceUtils.getTemporaryFolder() + file.getName()).exists())

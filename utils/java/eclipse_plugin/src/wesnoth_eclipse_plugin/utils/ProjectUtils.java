@@ -128,6 +128,10 @@ public class ProjectUtils
 	/**
 	 * Returns "_main.cfg" location relative to user's directory
 	 * from the specified resource or null if it isn't any
+	 * It will start searching upwards starting from curren
+	 * resource's directory, until it finds a '_main.cfg' but it will
+	 * stop when encounters a project
+	 *
 	 * @param resource The resource where to search for '_main.cfg'
 	 * @return
 	 */
@@ -183,10 +187,23 @@ public class ProjectUtils
 		return WorkspaceUtils.getPathRelativeToUserDir(targetResource);
 	}
 
+	/**
+	 * Gets the campaign id from the specified resource, or null
+	 * If the resource is not a '_main.cfg' it will search for it
+	 * with {@link ProjectUtils#getMainConfigLocation(IResource)}
+	 * @param resource The resource where to search the id
+	 * @return
+	 */
 	public static String getCampaignID(IResource resource)
 	{
 		return getConfigKeyValue(getMainConfigLocation(resource),"id");
 	}
+
+	/**
+	 * Gets the campaign id
+	 * @param fileName
+	 * @return
+	 */
 	public static String getScenarioID(String fileName)
 	{
 		return getConfigKeyValue(fileName,"id");

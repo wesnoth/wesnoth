@@ -15,7 +15,6 @@ import org.eclipse.jface.text.ITextSelection;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
-import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
 import org.eclipse.ui.texteditor.AbstractTextEditor;
 import org.eclipse.ui.texteditor.IDocumentProvider;
@@ -23,65 +22,24 @@ import org.eclipse.ui.texteditor.ITextEditor;
 
 import wesnoth_eclipse_plugin.Logger;
 
+/**
+ * An utils class that handles Eclipse's editor
+ */
 public class EditorUtils
 {
+	/**
+	 * Writes the specified content in current opened editor
+	 * @param content the string content to write
+	 */
 	public static void writeInEditor(String content)
 	{
 		writeInEditor(getEditedFile(), content);
 	}
 
-	public static void replaceEditorText(String content)
-	{
-		replaceEditorText(getEditedFile(), content);
-	}
-
-	public static IDocument getEditorDocument()
-	{
-		return getEditorDocument(getEditedFile());
-	}
-
-	public static ITextEditor getTextEditor()
-	{
-		return getTextEditor(getEditedFile());
-	}
-
-	public static IEditorPart getEditedFile()
-	{
-		return WorkspaceUtils.getWorkbenchWindow().getPages()[0].getActiveEditor();
-	}
-
-	public static void openEditor(IFile file, boolean activatePage)
-	{
-		IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
-		try
-		{
-			IDE.openEditor(page, file, activatePage);
-		} catch (PartInitException e)
-		{
-			Logger.getInstance().logException(e);
-		}
-	}
-
-	public static IDocument getEditorDocument(IEditorPart targetEditor)
-	{
-		if (targetEditor == null)
-			return null;
-
-		IDocumentProvider dp = getTextEditor(targetEditor).getDocumentProvider();
-		return dp.getDocument(targetEditor.getEditorInput());
-	}
-
-	public static ITextEditor getTextEditor(IEditorPart targetEditor)
-	{
-		if (targetEditor == null)
-			return null;
-
-		IEditorPart part = targetEditor;
-		if (!(part instanceof AbstractTextEditor))
-			return null;
-		return (ITextEditor) part;
-	}
-
+	/**
+	 * Writes the specified content in the specified editor
+	 * @param content the string content to write
+	 */
 	public static void writeInEditor(IEditorPart targetEditor, String content)
 	{
 		int offset = ((ITextSelection) getTextEditor(targetEditor).
@@ -93,7 +51,19 @@ public class EditorUtils
 		{
 		}
 	}
+	/**
+	 * Replaces the text in current opened editor with the specified one
+	 * @param content the string to replace the current content
+	 */
+	public static void replaceEditorText(String content)
+	{
+		replaceEditorText(getEditedFile(), content);
+	}
 
+	/**
+	 * Replaces the text in the specified editor with the specified one
+	 * @param content the string to replace the current content
+	 */
 	public static void replaceEditorText(IEditorPart targetEditor, String content)
 	{
 		if (targetEditor == null)
@@ -104,6 +74,78 @@ public class EditorUtils
 				replace(0, getEditorDocument(targetEditor).getLength(), content);
 		} catch (BadLocationException e)
 		{
+		}
+	}
+
+	/**
+	 * Gets the current opened editor's document
+	 * @return
+	 */
+	public static IDocument getEditorDocument()
+	{
+		return getEditorDocument(getEditedFile());
+	}
+
+	/**
+	 * Gets the specified editor's document
+	 * @return
+	 */
+	public static IDocument getEditorDocument(IEditorPart targetEditor)
+	{
+		if (targetEditor == null)
+			return null;
+
+		IDocumentProvider dp = getTextEditor(targetEditor).getDocumentProvider();
+		return dp.getDocument(targetEditor.getEditorInput());
+	}
+
+	/**
+	 * Gets the text editor of the current opened editor
+	 * @return
+	 */
+	public static ITextEditor getTextEditor()
+	{
+		return getTextEditor(getEditedFile());
+	}
+
+	/**
+	 * Gets the text editor of the specified editor
+	 * @return
+	 */
+	public static ITextEditor getTextEditor(IEditorPart targetEditor)
+	{
+		if (targetEditor == null)
+			return null;
+
+		IEditorPart part = targetEditor;
+		if (!(part instanceof AbstractTextEditor))
+			return null;
+		return (ITextEditor) part;
+	}
+
+	/**
+	 * Gets the editor part of the current edited file
+	 * @return
+	 */
+	public static IEditorPart getEditedFile()
+	{
+		return WorkspaceUtils.getWorkbenchWindow().getPages()[0].getActiveEditor();
+	}
+
+	/**
+	 * Opens the editor on the specified file
+	 * @param file The file to open
+	 * @param activatePage True to activate the opened file
+	 */
+	public static void openEditor(IFile file, boolean activatePage)
+	{
+		IWorkbenchPage page = WorkspaceUtils.getWorkbenchWindow().getActivePage();
+		try
+		{
+			IDE.openEditor(page, file, activatePage);
+		} catch (PartInitException e)
+		{
+			Logger.getInstance().logException(e);
 		}
 	}
 }

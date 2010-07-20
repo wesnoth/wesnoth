@@ -23,14 +23,7 @@ public class ImportMapHandler extends AbstractHandler
 	@Override
 	public Object execute(ExecutionEvent event)
 	{
-		MapUtils.importMap();
-		return null;
-	}
-
-	@Override
-	public boolean isHandled()
-	{
-		IFolder selectedFolder = WorkspaceUtils.getSelectedFolder(WorkspaceUtils.getWorkbenchWindow());
+		IFolder selectedFolder = WorkspaceUtils.getSelectedFolder();
 		if (selectedFolder == null)
 		{
 			Logger.getInstance().log("no directory selected (importMapHandler)",
@@ -41,7 +34,9 @@ public class ImportMapHandler extends AbstractHandler
 				GUIUtils.showMessageBox("A map should be imported into a 'maps' folder. " +
 						"Do you want to proceed?",
 						SWT.ICON_QUESTION | SWT.YES | SWT.NO) == SWT.NO)
-			return false;
-		return true;
+			return null;
+
+		MapUtils.importMap();
+		return null;
 	}
 }

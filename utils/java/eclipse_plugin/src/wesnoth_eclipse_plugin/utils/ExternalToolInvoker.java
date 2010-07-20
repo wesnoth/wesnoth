@@ -19,6 +19,9 @@ import java.util.List;
 import wesnoth_eclipse_plugin.Logger;
 
 //TODO: add tail on windows for wesnoth.exe
+/**
+ * A tools to invoke an external tool/executable
+ */
 public class ExternalToolInvoker
 {
 	private Process process_;

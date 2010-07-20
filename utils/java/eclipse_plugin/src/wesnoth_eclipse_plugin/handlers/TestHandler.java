@@ -12,15 +12,12 @@ import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 
-import wesnoth_eclipse_plugin.utils.ExternalToolInvoker;
-
 /**
  * Here it goes testing stuff in the plugin ( For DEBUG ONLY!)
  */
 @Deprecated
 public class TestHandler extends AbstractHandler
 {
-	public static ExternalToolInvoker tool;
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException
 	{

@@ -46,6 +46,20 @@ public class WorkspaceUtils
 {
 	private static String	temporaryFolder_	= "";
 
+	/**
+	 * Gets the selected project or or null if none selected
+	 * @return
+	 */
+	public static IProject getSelectedProject()
+	{
+		return getSelectedProject(WorkspaceUtils.getWorkbenchWindow());
+	}
+
+	/**
+	 * Gets the selected project or null if none selected
+	 * @param window The workbench windows from where to get the current selection
+	 * @return
+	 */
 	public static IProject getSelectedProject(IWorkbenchWindow window)
 	{
 		IStructuredSelection selection = getSelectedStructuredSelection(window);
@@ -55,6 +69,20 @@ public class WorkspaceUtils
 		return (IProject) selection.getFirstElement();
 	}
 
+	/**
+	 * Gets the selected folder or null if none selected
+	 * @return
+	 */
+	public static IFolder getSelectedFolder()
+	{
+		return getSelectedFolder(WorkspaceUtils.getWorkbenchWindow());
+	}
+
+	/**
+	 * Gets the selected project or null if none selected
+	 * @param window The workbench window from where to get the current selection
+	 * @return
+	 */
 	public static IFolder getSelectedFolder(IWorkbenchWindow window)
 	{
 		IStructuredSelection selection = getSelectedStructuredSelection(window);
@@ -64,6 +92,20 @@ public class WorkspaceUtils
 		return (IFolder) selection.getFirstElement();
 	}
 
+	/**
+	 * Gets the selected file or null if none selected
+	 * @return
+	 */
+	public static IFile getSelectedFile()
+	{
+		return getSelectedFile(WorkspaceUtils.getWorkbenchWindow());
+	}
+
+	/**
+	 * Gets the file selected or null if none selected
+	 * @param window The workbench window from where to get the current selection
+	 * @return
+	 */
 	public static IFile getSelectedFile(IWorkbenchWindow window)
 	{
 		IStructuredSelection selection = getSelectedStructuredSelection(window);
@@ -72,6 +114,19 @@ public class WorkspaceUtils
 		return (IFile) selection.getFirstElement();
 	}
 
+	/**
+	 * Gets the selected StructuredSelection or null if none selected
+	 * @return
+	 */
+	public static IStructuredSelection getSelectedStructuredSelection()
+	{
+		return getSelectedStructuredSelection(WorkspaceUtils.getWorkbenchWindow());
+	}
+	/**
+	 * Gets the selected StructuredSelection or null if none selected
+	 * @param window The workbench windows from where to get the current selection
+	 * @return
+	 */
 	public static IStructuredSelection getSelectedStructuredSelection(final IWorkbenchWindow window)
 	{
 		if (window == null)
@@ -95,26 +150,10 @@ public class WorkspaceUtils
 		return runnable.runnableObject_;
 	}
 
-	public static IProject getSelectedProject()
-	{
-		return getSelectedProject(WorkspaceUtils.getWorkbenchWindow());
-	}
-
-	public static IFolder getSelectedFolder()
-	{
-		return getSelectedFolder(WorkspaceUtils.getWorkbenchWindow());
-	}
-
-	public static IFile getSelectedFile()
-	{
-		return getSelectedFile(WorkspaceUtils.getWorkbenchWindow());
-	}
-
-	public static IStructuredSelection getSelectedStructuredSelection()
-	{
-		return getSelectedStructuredSelection(WorkspaceUtils.getWorkbenchWindow());
-	}
-
+	/**
+	 * Gets the selected container (folder/project) or null if none selected
+	 * @return
+	 */
 	public static IContainer getSelectedContainer()
 	{
 		IStructuredSelection selection = getSelectedStructuredSelection();
@@ -126,6 +165,10 @@ public class WorkspaceUtils
 		return (IContainer) selection.getFirstElement();
 	}
 
+	/**
+	 * Gets the selected resource(file/folder/project) or null if none selected
+	 * @return
+	 */
 	public static IResource getSelectedResource()
 	{
 		IResource res = getSelectedFile();
@@ -210,7 +253,8 @@ public class WorkspaceUtils
 
 	/**
 	 * Setups the workspace, by checking:
-	 * 1) The user has set all plugin's preferences
+	 * 1) The user has set all plugin's preferences.
+	 * 	If not, the preferences window will open
 	 * 2) The project "User addons" exists. If not, it will be created
 	 */
 	public static void setupWorkspace()
@@ -292,6 +336,14 @@ public class WorkspaceUtils
 		}
 	}
 
+	/**
+	 * Creates and adds an ignore filter on the specified project
+	 * for folders matching the specified name. The specified folder won't appear
+	 * in any views of the current project's structure
+	 * @param project The project where to create the filter
+	 * @param folderName The foldername to ignore
+	 * @throws CoreException
+	 */
 	private static void createIgnoreFilter(IProject project, String folderName)
 		throws CoreException
 	{

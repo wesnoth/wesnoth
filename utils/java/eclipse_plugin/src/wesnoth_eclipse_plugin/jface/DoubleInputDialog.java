@@ -20,6 +20,9 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
+/**
+ * This is an input dialog which has 2 textboxes.
+ */
 public class DoubleInputDialog extends Dialog
 {
 	private Text	txtValue1_;
@@ -84,11 +87,17 @@ public class DoubleInputDialog extends Dialog
 		return new Point(385, 155);
 	}
 
+	/**
+	 * Gets the value in the first textbox
+	 */
 	public String getFirstValue()
 	{
 		return resStr1;
 	}
 
+	/**
+	 * Gets the value in the second textbox
+	 */
 	public String getSecondValue()
 	{
 		return resStr2;

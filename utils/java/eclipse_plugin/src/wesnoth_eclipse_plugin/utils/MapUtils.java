@@ -21,7 +21,7 @@ import wesnoth_eclipse_plugin.Logger;
 public class MapUtils
 {
 	/**
-	 * Import a map file into the current directory
+	 * Import a map file into the currently selected directory
 	 */
 	public static void importMap()
 	{

@@ -18,7 +18,15 @@ import wesnoth_eclipse_plugin.wizards.NewWizardTemplate;
 
 public class WizardUtils
 {
-	public static int launchWizard(NewWizardTemplate wizard, Shell shell, IStructuredSelection selection)
+	/**
+	 * Launches a new wizard
+	 * @param wizard The wizard to launch
+	 * @param shell The shell
+	 * @param selection The current selection
+	 * @return
+	 */
+	public static int launchWizard(NewWizardTemplate wizard, Shell shell,
+					IStructuredSelection selection)
 	{
 		if (wizard == null)
 			return Window.CANCEL;

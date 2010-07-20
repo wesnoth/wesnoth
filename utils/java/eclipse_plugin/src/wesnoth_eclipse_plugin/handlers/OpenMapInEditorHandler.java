@@ -32,7 +32,7 @@ public class OpenMapInEditorHandler extends AbstractHandler
 		if (!selectedFile.getName().endsWith(".map"))
 		{
 			Logger.getInstance().log("non-map file selected: "+selectedFile.getName(),
-					"Please select a .map file");
+					"Please select a '.map' file");
 			return null;
 		}
 

@@ -106,6 +106,13 @@ public class GUIUtils
 		}
 	}
 
+	/**
+	 * Creates and returns a console with the specified parameters
+	 * @param consoleTitle The title of the console
+	 * @param imageDescriptor The image Descriptor
+	 * @param activate True to activate the console
+	 * @return
+	 */
 	public static MessageConsole createConsole(String consoleTitle,
 				ImageDescriptor imageDescriptor, boolean activate)
 	{

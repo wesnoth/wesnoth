@@ -21,6 +21,9 @@ import org.apache.tools.ant.ProjectHelper;
 
 import wesnoth_eclipse_plugin.Logger;
 
+/**
+ * An util class that handles with ant files
+ */
 public class AntUtils
 {
 	/**
@@ -42,6 +45,7 @@ public class AntUtils
 			out = new ByteArrayOutputStream();
 			if (recordOutput)
 				project.addBuildListener(AntUtils.createLogger(out));
+
 			project.init();
 			File buildFile = new File(antFile);
 			ProjectHelper.configureProject(project, buildFile);

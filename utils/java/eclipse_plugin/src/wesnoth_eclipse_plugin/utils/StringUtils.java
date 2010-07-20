@@ -13,6 +13,13 @@ import java.util.regex.Pattern;
 
 public class StringUtils
 {
+	/**
+	 * Returns true if the 'target' starts with 'sequence'.
+	 * The tabs or spaces in front are skipped when checking for the 'sequence'
+	 * @param target
+	 * @param sequence
+	 * @return
+	 */
 	public static boolean startsWith(String target, String sequence)
 	{
 		if (target == null || sequence == null)
@@ -115,6 +122,11 @@ public class StringUtils
 		return resString.toString();
 	}
 
+	/**
+	 * Gets an array of the lines (without line breakes) which compund the string
+	 * @param string The string
+	 * @return
+	 */
 	public static String[] getLines(String string)
 	{
 		if (string == null)
@@ -122,6 +134,11 @@ public class StringUtils
 		return string.split("\\r?\\n");
 	}
 
+	/**
+	 * Removes all path separators from the string
+	 * @param string
+	 * @return
+	 */
 	public static String trimPathSeparators(String string)
 	{
 		if (string == null || string.isEmpty())
@@ -197,6 +214,12 @@ public class StringUtils
 		return string.replace(source, ListUtils.concatenateArray(tmpTarget, "\n"));
 	}
 
+	/**
+	 * Returns a sequence multiplied by the specified number of times
+	 * @param sequence The sequence to multiply
+	 * @param times The number of times to multiply
+	 * @return
+	 */
 	public static String multiples(String sequence, int times)
 	{
 		if (sequence == null)

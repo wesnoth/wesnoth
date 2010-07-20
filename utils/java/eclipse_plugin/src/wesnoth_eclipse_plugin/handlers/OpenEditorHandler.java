@@ -18,8 +18,7 @@ public class OpenEditorHandler extends AbstractHandler
 	@Override
 	public Object execute(ExecutionEvent event)
 	{
-		// no map selected
-		GameUtils.startEditor("");
+		GameUtils.startEditor();
 		return null;
 	}
 }
