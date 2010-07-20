@@ -16,11 +16,13 @@ import java.util.ArrayList;
 
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.ui.IWorkbenchPage;
@@ -29,6 +31,7 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
 
 import wesnoth_eclipse_plugin.Logger;
+import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
 import wesnoth_eclipse_plugin.wizards.NewWizardTemplate;
 import wesnoth_eclipse_plugin.wizards.ReplaceableParameter;
 import wesnoth_eclipse_plugin.wizards.TemplateProvider;
@@ -144,6 +147,13 @@ public class FactionNewWizard extends NewWizardTemplate
 			}
 		});
 		monitor.worked(5);
+
+		// refresh the addons project
+		IProject uaproj = WorkspaceUtils.getUserAddonsProject();
+		if (uaproj != null)
+		{
+			uaproj.refreshLocal(IResource.DEPTH_ONE, new NullProgressMonitor());
+		}
 
 		monitor.done();
 	}

@@ -14,16 +14,19 @@ import java.lang.reflect.InvocationTargetException;
 
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 
 import wesnoth_eclipse_plugin.Logger;
 import wesnoth_eclipse_plugin.utils.EditorUtils;
 import wesnoth_eclipse_plugin.utils.WizardUtils;
+import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
 import wesnoth_eclipse_plugin.wizards.NewWizardTemplate;
 
 public class WizardLauncher extends NewWizardTemplate
@@ -125,6 +128,13 @@ public class WizardLauncher extends NewWizardTemplate
 					}
 			});
 			monitor.worked(5);
+
+			// refresh the addons project
+			IProject uaproj = WorkspaceUtils.getUserAddonsProject();
+			if (uaproj != null)
+			{
+				uaproj.refreshLocal(IResource.DEPTH_ONE, new NullProgressMonitor());
+			}
 
 			monitor.done();
 		} catch (Exception e)
