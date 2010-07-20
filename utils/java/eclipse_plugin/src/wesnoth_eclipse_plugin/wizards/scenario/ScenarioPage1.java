@@ -91,5 +91,4 @@ public class ScenarioPage1 extends NewWizardPageTemplate
 		}
 		return result.toString();
 	}
-
 }

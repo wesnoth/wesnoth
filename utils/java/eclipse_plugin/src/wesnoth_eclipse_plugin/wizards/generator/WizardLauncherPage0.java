@@ -12,7 +12,6 @@ import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.Path;
-import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
@@ -24,15 +23,12 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
-import org.eclipse.ui.dialogs.ContainerSelectionDialog;
 
 import wesnoth_eclipse_plugin.utils.EditorUtils;
 import wesnoth_eclipse_plugin.wizards.NewWizardPageTemplate;
 
 public class WizardLauncherPage0 extends NewWizardPageTemplate
 {
-	private IStructuredSelection	selection_;
-
 	private Text					txtDirectory_;
 	private Text					txtFileName_;
 	private Button					radioNewFile;
@@ -41,11 +37,10 @@ public class WizardLauncherPage0 extends NewWizardPageTemplate
 	private Button					btnBrowse;
 	private Label					lblFileName;
 
-	public WizardLauncherPage0(IStructuredSelection selection) {
+	public WizardLauncherPage0() {
 		super("wizardLauncherPage0");
 		setTitle("Wizard launcher");
 		setDescription("Select destination");
-		selection_ = selection;
 	}
 
 	@Override
@@ -84,15 +79,19 @@ public class WizardLauncherPage0 extends NewWizardPageTemplate
 			}
 		});
 		txtDirectory_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+		txtDirectory_.setEditable(false);
 
 		btnBrowse = new Button(container, SWT.NONE);
 		btnBrowse.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e)
 			{
-				handleBrowse();
+				Path path = handleBrowseContainer();
+				if (path != null)
+					txtDirectory_.setText(path.toString());
 			}
 		});
+
 		btnBrowse.setText("Browse...");
 		new Label(container, SWT.NONE);
 
@@ -156,7 +155,8 @@ public class WizardLauncherPage0 extends NewWizardPageTemplate
 		new Label(container, SWT.NONE);
 		new Label(container, SWT.NONE);
 		new Label(container, SWT.NONE);
-		initialize();
+
+		txtDirectory_.setText(getWizard().getSelectionContainer().getFullPath().toString());
 		updatePageIsComplete();
 	}
 
@@ -229,51 +229,8 @@ public class WizardLauncherPage0 extends NewWizardPageTemplate
 		// opened file
 		lblCurrentFileOpened.setEnabled(!radioNewFile.getSelection());
 
+		txtDirectory_.setText(getWizard().getSelectionContainer().getFullPath().toString());
 		updatePageIsComplete();
-	}
-
-	/**
-	 * Tests if the current workbench selection is a suitable directory to use.
-	 */
-	private void initialize()
-	{
-		if (selection_ != null && selection_.isEmpty() == false &&
-				selection_ instanceof IStructuredSelection && selection_.size() > 0)
-		{
-			Object obj = selection_.getFirstElement();
-			if (obj instanceof IResource)
-			{
-				IContainer container;
-				if (obj instanceof IContainer)
-				{
-					container = (IContainer) obj;
-				}
-				else
-				{
-					container = ((IResource) obj).getParent();
-				}
-				txtDirectory_.setText(container.getFullPath().toString());
-			}
-		}
-	}
-
-	/**
-	 * Uses the standard container selection dialog to choose the new value for
-	 * the the directory field.
-	 */
-	private void handleBrowse()
-	{
-		ContainerSelectionDialog dialog =
-				new ContainerSelectionDialog(getShell(), ResourcesPlugin.getWorkspace().getRoot(), false,
-						"Select a directory");
-		if (dialog.open() == ContainerSelectionDialog.OK)
-		{
-			Object[] result = dialog.getResult();
-			if (result.length == 1)
-			{
-				txtDirectory_.setText(((Path) result[0]).toString());
-			}
-		}
 	}
 
 	public String getFileName()

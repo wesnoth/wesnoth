@@ -27,10 +27,8 @@ import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Spinner;
 import org.eclipse.swt.widgets.Text;
-import org.eclipse.ui.dialogs.ContainerSelectionDialog;
 
 import wesnoth_eclipse_plugin.wizards.NewWizardPageTemplate;
-import wesnoth_eclipse_plugin.wizards.NewWizardTemplate;
 
 /**
  * The "New" wizard page allows setting the container for the new file as well
@@ -114,7 +112,9 @@ public class ScenarioPage0 extends NewWizardPageTemplate
 			@Override
 			public void widgetSelected(SelectionEvent e)
 			{
-				handleBrowseContainer();
+				Path path = handleBrowseContainer();
+				if (path != null)
+					txtProject_.setText(path.toString());
 			}
 		});
 
@@ -133,7 +133,7 @@ public class ScenarioPage0 extends NewWizardPageTemplate
 		txtScenarioId_.setLayoutData(gd_txtScenarioId_);
 		txtScenarioId_.addModifyListener(modifyListener);
 
-		txtProject_.setText(((NewWizardTemplate)getWizard()).
+		txtProject_.setText((getWizard()).
 				getSelectionContainer().getFullPath().toString());
 		setControl(container);
 		new Label(container, SWT.NONE);
@@ -281,31 +281,6 @@ public class ScenarioPage0 extends NewWizardPageTemplate
 		dialog.setFilterExtensions(new String[] { "*.map" });
 		rawMapPath_ = dialog.open();
 		updateMapPath();
-	}
-
-	/**
-	 * Uses the standard container selection dialog to choose the new value for
-	 * the project field.
-	 */
-	private void handleBrowseContainer()
-	{
-		ContainerSelectionDialog dialog = new ContainerSelectionDialog(getShell(),
-				ResourcesPlugin.getWorkspace().getRoot(), false, "Select a campaign project");
-		if (dialog.open() == ContainerSelectionDialog.OK)
-		{
-			Object[] result = dialog.getResult();
-			if (result.length == 1)
-			{
-				try{
-					container_ = ResourcesPlugin.getWorkspace().getRoot().getFolder((Path)result[0]);
-				}catch (IllegalArgumentException e) {
-					// the path is a project
-					container_ = ResourcesPlugin.getWorkspace().getRoot().getProject(result[0].toString());
-				}
-				((NewWizardTemplate)getWizard()).setSelectionContainer(container_);
-				txtProject_.setText(((Path) result[0]).toString());
-			}
-		}
 	}
 
 	/**

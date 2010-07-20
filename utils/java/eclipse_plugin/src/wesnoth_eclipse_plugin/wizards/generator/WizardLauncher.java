@@ -23,8 +23,8 @@ import org.eclipse.jface.operation.IRunnableWithProgress;
 
 import wesnoth_eclipse_plugin.Logger;
 import wesnoth_eclipse_plugin.utils.EditorUtils;
+import wesnoth_eclipse_plugin.utils.WizardUtils;
 import wesnoth_eclipse_plugin.wizards.NewWizardTemplate;
-import wesnoth_eclipse_plugin.wizards.WizardUtils;
 
 public class WizardLauncher extends NewWizardTemplate
 {
@@ -40,7 +40,7 @@ public class WizardLauncher extends NewWizardTemplate
 	@Override
 	public void addPages()
 	{
-		page0_ = new WizardLauncherPage0(selection_);
+		page0_ = new WizardLauncherPage0();
 		addPage(page0_);
 
 		page1_ = new WizardLauncherPage1();
@@ -90,6 +90,7 @@ public class WizardLauncher extends NewWizardTemplate
 				EditorUtils.writeInEditor(EditorUtils.getEditedFile(), wizard_.getData().toString());
 				return;
 			}
+
 			final String containerName = page0_.getDirectoryName();
 			final String fileName = page0_.getFileName();
 

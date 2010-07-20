@@ -46,7 +46,7 @@ public class FactionNewWizard extends NewWizardTemplate
 	@Override
 	public void addPages()
 	{
-		page0_ = new FactionPage0(selection_);
+		page0_ = new FactionPage0();
 		addPage(page0_);
 
 		page1_ = new FactionPage1();

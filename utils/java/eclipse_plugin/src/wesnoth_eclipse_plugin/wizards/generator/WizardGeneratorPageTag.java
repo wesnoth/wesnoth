@@ -26,8 +26,8 @@ import wesnoth_eclipse_plugin.schema.Tag;
 import wesnoth_eclipse_plugin.utils.GUIUtils;
 import wesnoth_eclipse_plugin.utils.ListUtils;
 import wesnoth_eclipse_plugin.utils.StringUtils;
+import wesnoth_eclipse_plugin.utils.WizardUtils;
 import wesnoth_eclipse_plugin.wizards.NewWizardPageTemplate;
-import wesnoth_eclipse_plugin.wizards.WizardUtils;
 
 public class WizardGeneratorPageTag extends NewWizardPageTemplate
 {

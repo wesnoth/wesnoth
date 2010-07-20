@@ -45,7 +45,7 @@ public class EraNewWizard extends NewWizardTemplate
 	@Override
 	public void addPages()
 	{
-		page0_ = new EraPage0(selection_);
+		page0_ = new EraPage0();
 		addPage(page0_);
 
 		super.addPages();

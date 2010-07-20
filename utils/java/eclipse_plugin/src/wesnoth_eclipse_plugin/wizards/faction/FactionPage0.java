@@ -12,8 +12,6 @@ import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.Path;
-import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
@@ -25,13 +23,11 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
-import org.eclipse.ui.dialogs.ContainerSelectionDialog;
 
 import wesnoth_eclipse_plugin.wizards.NewWizardPageTemplate;
 
 public class FactionPage0 extends NewWizardPageTemplate
 {
-	private ISelection	selection_;
 	private Text		txtFileName_;
 	private Text		txtDirectory_;
 	private Text		txtFactionId_;
@@ -45,11 +41,10 @@ public class FactionPage0 extends NewWizardPageTemplate
 	/**
 	 * Create the wizard.
 	 */
-	public FactionPage0(ISelection selection) {
+	public FactionPage0() {
 		super("factionPage0");
 		setTitle("New faction wizard");
 		setDescription("Create a new faction");
-		selection_ = selection;
 	}
 
 	/**
@@ -82,6 +77,7 @@ public class FactionPage0 extends NewWizardPageTemplate
 		txtDirectory_ = new Text(container, SWT.BORDER);
 		txtDirectory_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 		txtDirectory_.addModifyListener(modifyListener);
+		txtDirectory_.setEditable(false);
 
 		Button button = new Button(container, SWT.NONE);
 		button.setText("Browse...");
@@ -89,7 +85,9 @@ public class FactionPage0 extends NewWizardPageTemplate
 			@Override
 			public void widgetSelected(SelectionEvent e)
 			{
-				handleBrowse();
+				Path path = handleBrowseContainer();
+				if (path != null)
+					txtDirectory_.setText(path.toString());
 			}
 		});
 
@@ -159,7 +157,8 @@ public class FactionPage0 extends NewWizardPageTemplate
 		text = new Text(container, SWT.BORDER);
 		text.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 		new Label(container, SWT.NONE);
-		initialize();
+
+		txtDirectory_.setText(getWizard().getSelectionContainer().getFullPath().toString());
 		updatePageIsComplete();
 	}
 
@@ -214,55 +213,6 @@ public class FactionPage0 extends NewWizardPageTemplate
 
 		setErrorMessage(null);
 		setPageComplete(true);
-	}
-
-	/**
-	 * Tests if the current workbench selection is a suitable campaign to use.
-	 */
-	private void initialize()
-	{
-		setPageComplete(true);
-		if (selection_ != null && selection_.isEmpty() == false && selection_ instanceof IStructuredSelection)
-		{
-			IStructuredSelection ssel = (IStructuredSelection) selection_;
-			if (ssel.size() > 1)
-			{
-				return;
-			}
-			Object obj = ssel.getFirstElement();
-			if (obj instanceof IResource)
-			{
-				IContainer container;
-				if (obj instanceof IContainer)
-				{
-					container = (IContainer) obj;
-				}
-				else
-				{
-					container = ((IResource) obj).getParent();
-				}
-				txtDirectory_.setText(container.getFullPath().toString());
-			}
-		}
-	}
-
-	/**
-	 * Uses the standard container selection dialog to choose the new value for
-	 * the directory field.
-	 */
-	private void handleBrowse()
-	{
-		ContainerSelectionDialog dialog =
-				new ContainerSelectionDialog(getShell(), ResourcesPlugin.getWorkspace().getRoot(), false,
-						"Select a campaign project");
-		if (dialog.open() == ContainerSelectionDialog.OK)
-		{
-			Object[] result = dialog.getResult();
-			if (result.length == 1)
-			{
-				txtDirectory_.setText(((Path) result[0]).toString());
-			}
-		}
 	}
 
 	public String getDirectoryName()

@@ -6,7 +6,7 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
-package wesnoth_eclipse_plugin.wizards;
+package wesnoth_eclipse_plugin.utils;
 
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.window.Window;
@@ -14,6 +14,7 @@ import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.swt.widgets.Shell;
 
 import wesnoth_eclipse_plugin.Activator;
+import wesnoth_eclipse_plugin.wizards.NewWizardTemplate;
 
 public class WizardUtils
 {
