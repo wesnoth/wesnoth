@@ -85,10 +85,12 @@ side_actions::iterator side_actions::execute_next()
 {
 	if (!actions_.empty())
 	{
-		execute(begin());
-		return begin();
+		return execute(begin());
 	}
-	return end();
+	else
+	{
+		return end();
+	}
 }
 
 side_actions::iterator side_actions::execute(side_actions::iterator position)
