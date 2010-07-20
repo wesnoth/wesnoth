@@ -250,11 +250,11 @@ time_of_day tod_manager::time_of_day_at(const map_location& loc) const
 	const gamemap& map = *resources::game_map;
 	const unit_map& units = *resources::units;
 	int light_modif =  map.get_terrain_info(map.get_terrain(loc)).light_modification();
-	int lighten = std::max<int>(light_modif, 0);
-	int darken = std::min<int>(light_modif, 0);
-	int illumination = lighten + darken;
 
-	time_of_day tod = get_time_of_day(illumination, loc);
+	time_of_day tod = get_time_of_day(0,loc);
+
+	int light = tod.lawful_bonus + light_modif;
+	int illum_light = light;
 
 	if(loc.valid()) {
 		map_location locs[7];
@@ -268,22 +268,25 @@ time_of_day tod_manager::time_of_day_at(const map_location& loc) const
 			    !itor->incapacitated())
 			{
 				unit_ability_list illum = itor->get_abilities("illuminates");
-				unit_abilities::effect illum_effect(illum,lighten,false);
-				int mod = illum_effect.get_composite_value();
-				if(mod + tod.lawful_bonus > illum.highest("max_value").first) {
-					mod = illum.highest("max_value").first - tod.lawful_bonus;
-				} else if(mod + tod.lawful_bonus < illum.lowest("min_value").first) {
-					mod = illum.lowest("min_value").first - tod.lawful_bonus;
+				unit_abilities::effect illum_effect(illum, light, false);
+
+				illum_light = light + illum_effect.get_composite_value();
+				//max_value and min_value control the final result
+				//unless ToD + terrain effect is stronger
+				int max = std::max(light, illum.highest("max_value").first);
+				int min = std::min(light, illum.lowest("min_value").first);
+				if(illum_light > max) {
+					illum_light = max;
+				} else if (illum_light < min) {
+					illum_light = min;
 				}
-				lighten = std::max<int>(mod, lighten);
-				darken = std::min<int>(mod, darken);
+
 			}
 		}
-		if(lighten + darken != illumination) {
-			//update tod with the corrected  illumination
-			tod = get_time_of_day(lighten + darken,loc);
-		}
 	}
+
+	tod.bonus_modified = illum_light - tod.lawful_bonus;
+	tod.lawful_bonus = illum_light;
 
 	return tod;
 }
