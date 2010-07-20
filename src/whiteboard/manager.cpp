@@ -77,7 +77,6 @@ void manager::set_active(bool active)
 	{
 		active_ = active;
 		erase_temp_move();
-		on_deselect_hex();
 
 		if (active_)
 		{
