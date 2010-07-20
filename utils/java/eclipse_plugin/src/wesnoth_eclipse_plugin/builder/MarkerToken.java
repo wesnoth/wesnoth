@@ -14,14 +14,16 @@ import org.eclipse.core.resources.IMarker;
 
 import wesnoth_eclipse_plugin.Logger;
 
-public class MarkerToken{
+public class MarkerToken
+{
 	private MarkerTokenType type_ = MarkerTokenType.INFO;
 	private String message_ = "";
 	private int line_ ;
 	private int columnStart_;
 	private int columnEnd_;
 
-	public MarkerToken(MarkerTokenType type,String message,int line, int columnStart,int columnEnd)
+	public MarkerToken(MarkerTokenType type,String message,int line,
+							int columnStart,int columnEnd)
 	{
 		type_  = type;
 		message_ = message;
@@ -42,7 +44,8 @@ public class MarkerToken{
 		StringTokenizer tokenizer = new StringTokenizer(line,"#");
 		try{
 			int lineIndex=1,columnIndexStart=0,columnIndexEnd=0;
-			MarkerTokenType type = MarkerTokenType.valueOf(tokenizer.nextToken().toUpperCase());
+			MarkerTokenType type =
+					MarkerTokenType.valueOf(tokenizer.nextToken().toUpperCase());
 
 			if (tokenizer.countTokens() > 1) // we have the line+column indexes
 			{
@@ -59,7 +62,8 @@ public class MarkerToken{
 						columnIndexEnd = Integer.parseInt(colTmp[1]);
 				}
 			}
-			return new MarkerToken(type, tokenizer.nextToken(), lineIndex,columnIndexStart,columnIndexEnd);
+			return new MarkerToken(type, tokenizer.nextToken(), lineIndex,
+					 columnIndexStart,columnIndexEnd);
 		}
 		catch (Exception e) {
 			Logger.getInstance().logException(e);

@@ -20,8 +20,8 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 
+import wesnoth_eclipse_plugin.Constants;
 import wesnoth_eclipse_plugin.Logger;
-import wesnoth_eclipse_plugin.builder.WesnothProjectNature;
 import wesnoth_eclipse_plugin.utils.Pair;
 import wesnoth_eclipse_plugin.utils.ProjectUtils;
 import wesnoth_eclipse_plugin.utils.ResourceUtils;
@@ -92,8 +92,8 @@ public class CampaignNewWizard extends NewWizardTemplate
 
 			// add the nature to the project
 			IProjectDescription description = currentProject.getDescription();
-			description.setNatureIds(new String[] { WesnothProjectNature.WESNOTH_NATURE_ID,
-					WesnothProjectNature.XTEXT_NATURE_ID});
+			description.setNatureIds(new String[] { Constants.NATURE_WESNOTH,
+					Constants.NATURE_XTEXT });
 			currentProject.setDescription(description, null);
 
 			String campaignStructure = prepareTemplate("campaign_structure");

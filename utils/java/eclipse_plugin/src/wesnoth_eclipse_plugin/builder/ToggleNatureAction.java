@@ -16,8 +16,8 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.xtext.ui.XtextProjectHelper;
 
+import wesnoth_eclipse_plugin.Constants;
 import wesnoth_eclipse_plugin.Logger;
 import wesnoth_eclipse_plugin.action.ObjectActionDelegate;
 
@@ -64,7 +64,7 @@ public class ToggleNatureAction extends ObjectActionDelegate
 			boolean removed = false;
 			for (int i = 0; i < natures.length; ++i)
 			{
-				if (WesnothProjectNature.WESNOTH_NATURE_ID.equals(natures[i]))
+				if (Constants.NATURE_WESNOTH.equals(natures[i]))
 				{
 					// Remove the nature
 					String[] newNatures = new String[natures.length - 1];
@@ -74,7 +74,7 @@ public class ToggleNatureAction extends ObjectActionDelegate
 					project.setDescription(description, null);
 					removed = true;
 				}
-				if (XtextProjectHelper.NATURE_ID.equals(natures[i]))
+				if (Constants.NATURE_XTEXT.equals(natures[i]))
 				{
 					// Remove the nature
 					String[] newNatures = new String[natures.length - 1];
@@ -92,8 +92,8 @@ public class ToggleNatureAction extends ObjectActionDelegate
 			// Add the natures
 			String[] newNatures = new String[natures.length + 2];
 			System.arraycopy(natures, 0, newNatures, 0, natures.length);
-			newNatures[natures.length] = WesnothProjectNature.WESNOTH_NATURE_ID;
-			newNatures[natures.length + 1] = XtextProjectHelper.NATURE_ID;
+			newNatures[natures.length] = Constants.NATURE_WESNOTH;
+			newNatures[natures.length + 1] = Constants.NATURE_XTEXT;
 			description.setNatureIds(newNatures);
 			project.setDescription(description, null);
 		} catch (CoreException e)

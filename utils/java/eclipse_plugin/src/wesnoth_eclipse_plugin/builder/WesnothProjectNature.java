@@ -13,16 +13,11 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.resources.IProjectNature;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.xtext.ui.XtextProjectHelper;
+
+import wesnoth_eclipse_plugin.Constants;
 
 public class WesnothProjectNature implements IProjectNature
 {
-	/**
-	 * ID of this project nature
-	 */
-	public static final String	WESNOTH_NATURE_ID		= "Wesnoth_Eclipse_Plugin.wesnothNature";
-	public static final String	XTEXT_NATURE_ID			= XtextProjectHelper.NATURE_ID;
-
 	private IProject			project;
 
 	@Override
@@ -36,12 +31,12 @@ public class WesnothProjectNature implements IProjectNature
 		int configured = 0;
 		for (int i = 0; i < commands.length; ++i)
 		{
-			if (commands[i].getBuilderName().equals(WesnothProjectBuilder.WESNOTH_BUILDER_ID))
+			if (commands[i].getBuilderName().equals(Constants.BUIILDER_WESNOTH))
 			{
 				wesnothConfigured = true;
 				configured++;
 			}
-			if (commands[i].getBuilderName().equals(WesnothProjectBuilder.XTEXT_BUILDER_ID))
+			if (commands[i].getBuilderName().equals(Constants.BUILDER_XTEXT))
 			{
 				xtextConfigured = true;
 				configured++;
@@ -55,13 +50,13 @@ public class WesnothProjectNature implements IProjectNature
 		if (wesnothConfigured == false)
 		{
 			ICommand command = desc.newCommand();
-			command.setBuilderName(WesnothProjectBuilder.WESNOTH_BUILDER_ID);
+			command.setBuilderName(Constants.BUIILDER_WESNOTH);
 			newCommands[newCommands.length - 1] = command;
 		}
 		if (xtextConfigured == false)
 		{
 			ICommand command = desc.newCommand();
-			command.setBuilderName(WesnothProjectBuilder.XTEXT_BUILDER_ID);
+			command.setBuilderName(Constants.BUILDER_XTEXT);
 			newCommands[newCommands.length - (2 - configured)] = command;
 		}
 		desc.setBuildSpec(newCommands);
@@ -75,8 +70,8 @@ public class WesnothProjectNature implements IProjectNature
 		ICommand[] commands = description.getBuildSpec();
 		for (int i = 0; i < commands.length; ++i)
 		{
-			if (commands[i].getBuilderName().equals(WesnothProjectBuilder.WESNOTH_BUILDER_ID) ||
-				commands[i].getBuilderName().equals(WesnothProjectBuilder.XTEXT_BUILDER_ID))
+			if (commands[i].getBuilderName().equals(Constants.BUIILDER_WESNOTH) ||
+				commands[i].getBuilderName().equals(Constants.BUILDER_XTEXT))
 			{
 				ICommand[] newCommands = new ICommand[commands.length - 1];
 				System.arraycopy(commands, 0, newCommands, 0, i);

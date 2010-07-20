@@ -24,7 +24,6 @@ import org.eclipse.core.resources.IncrementalProjectBuilder;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Path;
-import org.eclipse.xtext.ui.XtextProjectHelper;
 
 import wesnoth_eclipse_plugin.Constants;
 import wesnoth_eclipse_plugin.Logger;
@@ -37,11 +36,6 @@ import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
 
 public class WesnothProjectBuilder extends IncrementalProjectBuilder
 {
-	public static final String WESNOTH_BUILDER_ID = "Wesnoth_Eclipse_Plugin.projectBuilder";
-	public static final String XTEXT_BUILDER_ID = XtextProjectHelper.BUILDER_ID;
-
-	private static final String MARKER_TYPE = "Wesnoth_Eclipse_Plugin.configProblem";
-
 	protected void fullBuild(final IProgressMonitor monitor) throws CoreException
 	{
 		try
@@ -53,7 +47,8 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 		}
 	}
 
-	protected void incrementalBuild(IResourceDelta delta, IProgressMonitor monitor) throws CoreException
+	protected void incrementalBuild(IResourceDelta delta, IProgressMonitor monitor)
+			throws CoreException
 	{
 		// the visitor does the work.
 		delta.accept(new SampleDeltaVisitor(monitor));
@@ -61,7 +56,8 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 
 	@SuppressWarnings("rawtypes")
 	@Override
-	protected IProject[] build(int kind, Map args, IProgressMonitor monitor) throws CoreException
+	protected IProject[] build(int kind, Map args, IProgressMonitor monitor)
+			throws CoreException
 	{
 		Logger.getInstance().log("building...");
 		monitor.beginTask("Building...", 100);
@@ -88,9 +84,12 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 		// Ant copy
 		monitor.subTask("Copying resources...");
 		HashMap<String, String> properties = new HashMap<String, String>();
-		properties.put("wesnoth.user.dir", Preferences.getString(Constants.P_WESNOTH_USER_DIR) + Path.SEPARATOR);
+		properties.put("wesnoth.user.dir",
+				Preferences.getString(Constants.P_WESNOTH_USER_DIR) + Path.SEPARATOR);
 		Logger.getInstance().log("Ant result:");
-		String result = AntUtils.runAnt(getProject().getLocation().toOSString() + "/build.xml",
+
+		String result = AntUtils.runAnt(
+				getProject().getLocation().toOSString() + "/build.xml",
 				properties, true);
 		Logger.getInstance().log(result);
 
@@ -129,14 +128,15 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 		return null;
 	}
 
-	void checkResource(IResource resource, IProgressMonitor monitor)
+	protected void checkResource(IResource resource, IProgressMonitor monitor)
 	{
 		monitor.worked(5);
 		if (isResourceIgnored(resource))
 			return;
 
 		// config files
-		if (resource instanceof IFile && (resource.getName().toLowerCase(Locale.ENGLISH).endsWith(".cfg")))
+		if (resource instanceof IFile &&
+			(resource.getName().toLowerCase(Locale.ENGLISH).endsWith(".cfg")))
 		{
 			try
 			{
@@ -216,7 +216,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 	{
 		try
 		{
-			IMarker marker = file.createMarker(MARKER_TYPE);
+			IMarker marker = file.createMarker(Constants.BUILDER_MARKER_TYPE);
 			marker.setAttribute(IMarker.MESSAGE, message);
 			marker.setAttribute(IMarker.SEVERITY, severity);
 			if (lineNumber == -1)
@@ -234,7 +234,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 	{
 		try
 		{
-			file.deleteMarkers(MARKER_TYPE, false, IResource.DEPTH_ZERO);
+			file.deleteMarkers(Constants.BUILDER_MARKER_TYPE, false, IResource.DEPTH_ZERO);
 		} catch (CoreException e)
 		{
 			Logger.getInstance().logException(e);

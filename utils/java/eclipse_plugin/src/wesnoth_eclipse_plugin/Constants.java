@@ -8,6 +8,8 @@
  *******************************************************************************/
 package wesnoth_eclipse_plugin;
 
+import org.eclipse.xtext.ui.XtextProjectHelper;
+
 /**
  * Constant definitions for plug-in
  */
@@ -26,4 +28,12 @@ public class Constants
 	public static final int		WIZ_MaxGroupsOnPage		= 4;
 	public static final int		WIZ_MaxWizardPageHeight	= 220;
 
+	/** Builder Constants **/
+	public static final String BUIILDER_WESNOTH 	= "Wesnoth_Eclipse_Plugin.projectBuilder";
+	public static final String BUILDER_XTEXT 		= XtextProjectHelper.BUILDER_ID;
+	public static final String BUILDER_MARKER_TYPE= "Wesnoth_Eclipse_Plugin.configProblem";
+
+	/** Nature Constants **/
+	public static final String NATURE_WESNOTH		= "Wesnoth_Eclipse_Plugin.wesnothNature";
+	public static final String NATURE_XTEXT		= XtextProjectHelper.NATURE_ID;
 }

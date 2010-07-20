@@ -38,7 +38,6 @@ import org.eclipse.ui.dialogs.PreferencesUtil;
 import wesnoth_eclipse_plugin.Activator;
 import wesnoth_eclipse_plugin.Constants;
 import wesnoth_eclipse_plugin.Logger;
-import wesnoth_eclipse_plugin.builder.WesnothProjectNature;
 import wesnoth_eclipse_plugin.preferences.Preferences;
 import wesnoth_eclipse_plugin.wizards.ReplaceableParameter;
 import wesnoth_eclipse_plugin.wizards.TemplateProvider;
@@ -246,8 +245,8 @@ public class WorkspaceUtils
 				projectToCreate.open(null);
 
 				// the nature isn't set on creation so the nature adds the builder aswell
-				description.setNatureIds(new String[] { WesnothProjectNature.WESNOTH_NATURE_ID,
-						WesnothProjectNature.XTEXT_NATURE_ID });
+				description.setNatureIds(new String[] { Constants.NATURE_WESNOTH,
+						Constants.NATURE_XTEXT });
 				projectToCreate.setDescription(description, null);
 
 				// add the build.xml file
