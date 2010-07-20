@@ -90,6 +90,10 @@ void manager::set_active(bool active)
 
 void manager::set_invert_behavior(bool invert)
 {
+	if(wait_for_side_init_
+			|| executing_actions_)
+		return;
+
 	log_scope("set_invert_behavior");
 	if (invert)
 	{
@@ -134,12 +138,8 @@ bool manager::can_execute_hotkey() const
 
 void manager::on_init_side()
 {
-	if (active_)
-	{
-			validate_viewer_actions();
-			highlighter_.reset(new highlight_visitor(*resources::units, viewer_actions()));
-	}
-
+	validate_viewer_actions();
+	highlighter_.reset(new highlight_visitor(*resources::units, viewer_actions()));
 	wait_for_side_init_ = false;
 }
 
@@ -212,7 +212,7 @@ void manager::on_mouseover_change(const map_location& hex)
 {
 	//FIXME: Detect if a WML event is executing, and if so, avoid modifying the unit map during that time.
 	// Acting otherwise causes a crash.
-	if (!selected_unit() && highlighter_)
+	if (!selected_hex_.valid() && highlighter_)
 	{
 		highlighter_->set_mouseover_hex(hex);
 		highlighter_->highlight();
@@ -242,12 +242,7 @@ void manager::on_deselect_hex()
 {
 	erase_temp_move();
 	selected_hex_ = map_location();
-
-	if (unit* unit = selected_unit())
-	{
-		LOG_WB << "Deselecting unit " << unit->name() << " [" << unit->id() << "]\n";
-
-	}
+	LOG_WB << "Deselecting unit\n";
 }
 
 void manager::create_temp_move()
