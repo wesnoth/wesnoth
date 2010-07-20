@@ -8,73 +8,89 @@
  *******************************************************************************/
 package wesnoth_eclipse_plugin.wizards.scenario;
 
+import java.util.HashMap;
+
+import org.eclipse.core.resources.IContainer;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.SelectionAdapter;
-import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
-import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Text;
+
+import wesnoth_eclipse_plugin.utils.ProjectUtils;
+import wesnoth_eclipse_plugin.wizards.NewWizardTemplate;
 
 public class ScenarioPage1 extends WizardPage
 {
-	Button	chkIsMultiplayerScenario_;
-	Button	chkAllowNewGame_;
+	private Composite container_;
 
-	/**
-	 * Create the wizard.
-	 */
 	public ScenarioPage1() {
 		super("scenarioPage1");
 		setTitle("Scenario file");
-		setDescription("Set multiplayer scenario details");
+		setDescription("Set scenario details");
 	}
 
-	/**
-	 * Create contents of the wizard.
-	 *
-	 * @param parent
-	 */
 	@Override
 	public void createControl(Composite parent)
 	{
-		Composite container = new Composite(parent, SWT.NULL);
+		container_ = new Composite(parent, SWT.NULL);
 
-		setControl(container);
-		container.setLayout(new GridLayout(1, false));
+		setControl(container_);
+		container_.setLayout(new GridLayout(4, false));
 
-		chkIsMultiplayerScenario_ = new Button(container, SWT.CHECK);
-		chkIsMultiplayerScenario_.setText("This is a multiplayer scenario");
-		new Label(container, SWT.NONE);
-		chkIsMultiplayerScenario_.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e)
+		Label lblSpecifyTheGold = new Label(container_, SWT.NONE);
+		lblSpecifyTheGold.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false, 4, 1));
+		lblSpecifyTheGold.setText("Specify the gold for each difficulty:");
+
+		IContainer selContainer = ((NewWizardTemplate)getWizard()).getSelectionContainer();
+		if (selContainer != null)
+		{
+			HashMap<String, String> prefs =
+				ProjectUtils.getSettingsForProject(selContainer.getProject());
+			if (prefs != null && prefs.get("difficulties") != null)
 			{
-				if (!(e.getSource() instanceof Button))
-					return;
-				setMPSettings(((Button) e.getSource()).getSelection());
+				String[] difficulties = prefs.get("difficulties").split(",");
+				for (String diff : difficulties)
+				{
+					if (diff.isEmpty())
+						continue;
+
+					Label label = new Label(container_, SWT.NONE);
+					label.setText("    ");
+
+					Label lblDiff = new Label(container_, SWT.NONE);
+					lblDiff.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
+					lblDiff.setText(diff + ":");
+
+					Text textBox = new Text(container_, SWT.BORDER);
+					GridData gd_text = new GridData(SWT.LEFT, SWT.CENTER, true, false, 1, 1);
+					gd_text.widthHint = 77;
+					textBox.setData("diff",diff);
+					textBox.setLayoutData(gd_text);
+					new Label(container_, SWT.NONE);
+				}
 			}
-		});
-
-		chkAllowNewGame_ = new Button(container, SWT.CHECK);
-		chkAllowNewGame_.setSelection(true);
-		chkAllowNewGame_.setEnabled(false);
-		chkAllowNewGame_.setText("Allow new game");
+		}
 	}
 
-	private void setMPSettings(boolean status)
+	/**
+	 * Gets the starting gold as #ifdef based on difficulties
+	 */
+	public String getStartingGoldByDifficulties()
 	{
-		chkAllowNewGame_.setEnabled(status);
+		StringBuilder result = new StringBuilder();
+		for(Control control: container_.getChildren())
+		{
+			if (!(control instanceof Text))
+				continue;
+			Text textBox = (Text)control;
+			result.append(String.format("#ifdef %s\n\tgold=%s\n#endif\n",
+					textBox.getData("diff").toString(), textBox.getText()));
+		}
+		return result.toString();
 	}
 
-	public String getAllowNewGame()
-	{
-		return isMultiplayerScenario() ? String.valueOf(chkAllowNewGame_.getSelection()) : "";
-	}
-
-	public boolean isMultiplayerScenario()
-	{
-		return chkIsMultiplayerScenario_.getSelection();
-	}
 }

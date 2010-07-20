@@ -8,6 +8,7 @@
  *******************************************************************************/
 package wesnoth_eclipse_plugin.wizards;
 
+import org.eclipse.core.resources.IContainer;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.jface.wizard.Wizard;
@@ -17,6 +18,7 @@ import org.eclipse.ui.IWorkbench;
 public abstract class NewWizardTemplate extends Wizard implements INewWizard
 {
 	protected IStructuredSelection	selection_;
+	protected IContainer			selectionContainer_;
 	protected int					lastPageHashCode_	= 0;
 	protected boolean				isFinished_			= false;
 	protected Object				data_				= null;
@@ -72,5 +74,21 @@ public abstract class NewWizardTemplate extends Wizard implements INewWizard
 	public String getObjectName()
 	{
 		return objectName_;
+	}
+
+	/**
+	 * Gets the container of the selection
+	 */
+	public IContainer getSelectionContainer()
+	{
+		return selectionContainer_;
+	}
+
+	/**
+	 * Sets the container of the selection
+	 */
+	public void setSelectionContainer(IContainer container)
+	{
+		this.selectionContainer_ = container;
 	}
 }

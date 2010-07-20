@@ -24,6 +24,34 @@ public class TestHandler extends AbstractHandler
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException
 	{
+//		try
+//		{
+//			IProject proj = WorkspaceUtils.getSelectedProject();
+//			String path = proj.getLocation().toOSString() + "/.wesnoth";
+//			Properties config = new Properties();
+//			config.setProperty("diff", "val");
+//			config.storeToXML(new FileOutputStream(path), null);
+//			GUIUtils.showInfoMessageBox(config.getProperty("diff"));
+////			if (proj != null)
+////			{
+////				int go = GUIUtils.showMessageBox("a", SWT.YES | SWT.NO);
+////				if (go == SWT.YES)
+////				{
+////					//org.eclipse.core.resources.textmarkerIMarker.TEXT
+////					IMarker mark = proj.createMarker("sett");
+////					mark.setAttribute("diff", "VAL");
+////				}
+////				else
+////				{
+////					IMarker[] marks = proj.findMarkers("sett", true, IResource.DEPTH_INFINITE);
+////					System.out.println(marks.length);
+////				}
+////			}
+//		}
+//		catch (Exception e)
+//		{
+//			e.printStackTrace();
+//		}
 		//System.out.println(WorkspaceUtils.getSelectedContainer());
 //		MessageConsole con = GUIUtils.createConsole("TIMO", null, true);
 //		List<String> arguments = new ArrayList<String>();

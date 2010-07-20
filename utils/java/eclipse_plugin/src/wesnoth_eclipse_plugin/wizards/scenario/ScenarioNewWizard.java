@@ -48,7 +48,8 @@ import wesnoth_eclipse_plugin.wizards.TemplateProvider;
 public class ScenarioNewWizard extends NewWizardTemplate
 {
 	private ScenarioPage0	page0_;
-	private ScenarioPage1	page1_;
+	private ScenarioPage1 	page1_;
+	private ScenarioPage2	page2_;
 
 	/**
 	 * Constructor for ScenarioNewWizard.
@@ -70,6 +71,9 @@ public class ScenarioNewWizard extends NewWizardTemplate
 
 		page1_ = new ScenarioPage1();
 		addPage(page1_);
+
+		page2_ = new ScenarioPage2();
+		addPage(page2_);
 
 		super.addPages();
 	}
@@ -208,16 +212,16 @@ public class ScenarioNewWizard extends NewWizardTemplate
 		params.add(new ReplaceableParameter("$$map_data", mapData));
 		params.add(new ReplaceableParameter("$$turns_number", String.valueOf(page0_.getTurnsNumber())));
 
-		String startingGold = page0_.getStartingGoldByDifficulties();
+		String startingGold = page1_.getStartingGoldByDifficulties();
 		if (startingGold == null)
 			throw new Exception("incorrenct argument");
 		params.add(new ReplaceableParameter("$$starting_gold", startingGold));
 
 		// multiplayer only variables
-		params.add(new ReplaceableParameter("$$allow_new_game", page1_.getAllowNewGame()));
+		params.add(new ReplaceableParameter("$$allow_new_game", page2_.getAllowNewGame()));
 
 		String template = TemplateProvider.getInstance().getProcessedTemplate(
-				page1_.isMultiplayerScenario() ? "multiplayer" : "scenario", params);
+				page2_.isMultiplayerScenario() ? "multiplayer" : "scenario", params);
 
 		if (template == null)
 		{
