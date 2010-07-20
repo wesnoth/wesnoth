@@ -10,7 +10,7 @@ package wesnoth_eclipse_plugin.action;
 
 import org.eclipse.jface.action.IAction;
 
-import wesnoth_eclipse_plugin.globalactions.PreprocessorActions;
+import wesnoth_eclipse_plugin.utils.PreprocessorUtils;
 import wesnoth_eclipse_plugin.utils.WMLTools;
 import wesnoth_eclipse_plugin.utils.WMLTools.Tools;
 import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
@@ -20,12 +20,12 @@ public class RunWMLLintOnPreprocFile extends ObjectActionDelegate
 	@Override
 	public void run(IAction action)
 	{
-		PreprocessorActions.preprocessIfNotExists(
+		PreprocessorUtils.preprocessIfNotExists(
 				WorkspaceUtils.getSelectedFile(WorkspaceUtils.getWorkbenchWindow()),
 				true);
 
 		WMLTools.runWMLToolAsWorkspaceJob(Tools.WMLLINT,
-				PreprocessorActions.getPreprocessedFilePath(
+				PreprocessorUtils.getPreprocessedFilePath(
 						WorkspaceUtils.getSelectedFile(WorkspaceUtils.getWorkbenchWindow()),
 						false
 					)

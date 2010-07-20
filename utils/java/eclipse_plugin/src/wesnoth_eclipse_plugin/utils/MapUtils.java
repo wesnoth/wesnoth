@@ -6,7 +6,7 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
-package wesnoth_eclipse_plugin.globalactions;
+package wesnoth_eclipse_plugin.utils;
 
 import java.io.File;
 
@@ -17,11 +17,8 @@ import org.eclipse.swt.widgets.FileDialog;
 
 import wesnoth_eclipse_plugin.Activator;
 import wesnoth_eclipse_plugin.Logger;
-import wesnoth_eclipse_plugin.utils.GUIUtils;
-import wesnoth_eclipse_plugin.utils.ResourceUtils;
-import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
 
-public class MapActions
+public class MapUtils
 {
 	/**
 	 * Import a map file into the current directory

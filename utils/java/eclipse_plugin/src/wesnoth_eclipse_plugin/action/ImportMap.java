@@ -10,7 +10,7 @@ package wesnoth_eclipse_plugin.action;
 
 import org.eclipse.jface.action.IAction;
 
-import wesnoth_eclipse_plugin.globalactions.MapActions;
+import wesnoth_eclipse_plugin.utils.MapUtils;
 
 public class ImportMap extends ObjectActionDelegate
 {
@@ -20,6 +20,6 @@ public class ImportMap extends ObjectActionDelegate
 	@Override
 	public void run(IAction action)
 	{
-		MapActions.importMap();
+		MapUtils.importMap();
 	}
 }

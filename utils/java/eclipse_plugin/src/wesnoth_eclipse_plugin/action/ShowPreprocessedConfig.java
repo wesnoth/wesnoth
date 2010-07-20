@@ -10,7 +10,7 @@ package wesnoth_eclipse_plugin.action;
 
 import org.eclipse.jface.action.IAction;
 
-import wesnoth_eclipse_plugin.globalactions.PreprocessorActions;
+import wesnoth_eclipse_plugin.utils.PreprocessorUtils;
 import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
 
 public class ShowPreprocessedConfig extends ObjectActionDelegate
@@ -18,6 +18,6 @@ public class ShowPreprocessedConfig extends ObjectActionDelegate
 	@Override
 	public void run(IAction action)
 	{
-		PreprocessorActions.openPreprocessedFileInEditor(WorkspaceUtils.getSelectedFile(), false);
+		PreprocessorUtils.openPreprocessedFileInEditor(WorkspaceUtils.getSelectedFile(), false);
 	}
 }

@@ -27,9 +27,9 @@ import org.eclipse.core.runtime.Path;
 
 import wesnoth_eclipse_plugin.Constants;
 import wesnoth_eclipse_plugin.Logger;
-import wesnoth_eclipse_plugin.globalactions.PreprocessorActions;
 import wesnoth_eclipse_plugin.preferences.Preferences;
 import wesnoth_eclipse_plugin.utils.AntUtils;
+import wesnoth_eclipse_plugin.utils.PreprocessorUtils;
 import wesnoth_eclipse_plugin.utils.ProjectUtils;
 import wesnoth_eclipse_plugin.utils.StringUtils;
 import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
@@ -144,7 +144,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 				deleteMarkers(file);
 
 				monitor.subTask("Preprocessing...");
-				PreprocessorActions.preprocessFile(WorkspaceUtils.getPathRelativeToUserDir(file), WorkspaceUtils.getTemporaryFolder(), null, false);
+				PreprocessorUtils.preprocessFile(WorkspaceUtils.getPathRelativeToUserDir(file), WorkspaceUtils.getTemporaryFolder(), null, false);
 				monitor.worked(5);
 
 				// TODO: here be dragons

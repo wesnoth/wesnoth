@@ -14,8 +14,8 @@ import org.eclipse.core.resources.IFolder;
 import org.eclipse.swt.SWT;
 
 import wesnoth_eclipse_plugin.Logger;
-import wesnoth_eclipse_plugin.globalactions.MapActions;
 import wesnoth_eclipse_plugin.utils.GUIUtils;
+import wesnoth_eclipse_plugin.utils.MapUtils;
 import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
 
 public class ImportMapHandler extends AbstractHandler
@@ -23,7 +23,7 @@ public class ImportMapHandler extends AbstractHandler
 	@Override
 	public Object execute(ExecutionEvent event)
 	{
-		MapActions.importMap();
+		MapUtils.importMap();
 		return null;
 	}
 

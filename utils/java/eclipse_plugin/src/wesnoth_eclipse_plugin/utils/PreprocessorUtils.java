@@ -6,7 +6,7 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
-package wesnoth_eclipse_plugin.globalactions;
+package wesnoth_eclipse_plugin.utils;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -21,10 +21,8 @@ import org.eclipse.ui.ide.IDE;
 import wesnoth_eclipse_plugin.Constants;
 import wesnoth_eclipse_plugin.Logger;
 import wesnoth_eclipse_plugin.preferences.Preferences;
-import wesnoth_eclipse_plugin.utils.ExternalToolInvoker;
-import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
 
-public class PreprocessorActions
+public class PreprocessorUtils
 {
 	/**
 	 * preprocesses a file using the wesnoth's executable
@@ -117,7 +115,7 @@ public class PreprocessorActions
 		if (new File(WorkspaceUtils.getTemporaryFolder() + file.getName()).exists())
 			return;
 
-		PreprocessorActions.preprocessFile(WorkspaceUtils.getPathRelativeToUserDir(file),
+		PreprocessorUtils.preprocessFile(WorkspaceUtils.getPathRelativeToUserDir(file),
 				WorkspaceUtils.getTemporaryFolder(), null, waitForIt);
 	}
 }
