@@ -36,8 +36,10 @@ public class WizardUtils
 
 		WizardDialog wizardDialog = new WizardDialog(shell, wizard);
 		wizardDialog.create();
-		//TODO: center wizard?
-		wizardDialog.getShell().setLocation(shell.getBounds().x, shell.getBounds().y);
+		int x = shell.getBounds().x, y = shell.getBounds().y;
+		x += ((shell.getBounds().width - wizardDialog.getShell().getBounds().width)/2);
+		y += ((shell.getBounds().height - wizardDialog.getShell().getBounds().height)/2);
+		wizardDialog.getShell().setLocation(x, y);
 		Activator.getDefault().getWorkbench().getHelpSystem().setHelp(wizardDialog.getShell(),
 				"org.eclipse.ui.new_wizard_context");
 
