@@ -53,18 +53,6 @@ size_t t_string_base::hash_value() const {
 	return seed;
 }
 
-t_string_base::walker::walker(const t_string& string) :
-	string_(string.get().value_),
-	begin_(0),
-	end_(string_.size()),
-	textdomain_(),
-	translatable_(false)
-{
-	if(string.get().translatable_) {
-		update();
-	}
-}
-
 t_string_base::walker::walker(const t_string_base& string) :
 	string_(string.value_),
 	begin_(0),
@@ -75,16 +63,6 @@ t_string_base::walker::walker(const t_string_base& string) :
 	if(string.translatable_) {
 		update();
 	}
-}
-
-t_string_base::walker::walker(const std::string& string) :
-	string_(string),
-	begin_(0),
-	end_(string_.size()),
-	textdomain_(),
-	translatable_(false)
-{
-	update();
 }
 
 void t_string_base::walker::update()
