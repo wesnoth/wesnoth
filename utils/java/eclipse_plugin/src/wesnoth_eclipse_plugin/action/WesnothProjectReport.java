@@ -10,10 +10,9 @@ package wesnoth_eclipse_plugin.action;
 
 import java.io.File;
 
-import org.eclipse.core.resources.IFolder;
+import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.jface.action.IAction;
-import org.eclipse.swt.SWT;
 
 import wesnoth_eclipse_plugin.utils.GUIUtils;
 import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
@@ -23,7 +22,6 @@ public class WesnothProjectReport extends ObjectActionDelegate
 	@Override
 	public void run(IAction action)
 	{
-		//TODO: store project specific info in the '.wesnoth' file
 		IProject project = WorkspaceUtils.getSelectedProject();
 		if (project == null)
 		{
@@ -31,23 +29,45 @@ public class WesnothProjectReport extends ObjectActionDelegate
 			return;
 		}
 
+		String simpleReport = "";
+		if (project.getName().equals("User Addons"))
+		{
+			File projRoot = new File(project.getLocation().toOSString());
+			for (File container : projRoot.listFiles())
+			{
+				if (!(container.isDirectory()))
+					continue;
+				simpleReport += container.getName() + ":\n";
+				simpleReport += getReportForContainer(project.getFolder(container.getName()));
+			}
+		}
+		else
+			simpleReport = getReportForContainer(project);
+		GUIUtils.showInfoMessageBox(simpleReport);
+	}
+
+	/**
+	 * Gets the report for specified container (sceanarios, maps, units)
+	 * @param container
+	 * @return
+	 */
+	private String getReportForContainer(IContainer container)
+	{
 		int[] statistics = new int[3];
-		IFolder scenariosFolder = project.getFolder("scenarios");
+
+		File scenariosFolder = new File(container.getLocation().toOSString() + "/scenarios");
 		if (scenariosFolder.exists())
-			statistics[0] = new File(scenariosFolder.getLocation().toOSString()).listFiles().length;
+			statistics[0] = scenariosFolder.listFiles().length;
 
-		IFolder mapsFolder = project.getFolder("maps");
+		File mapsFolder =  new File(container.getLocation().toOSString() + "/maps");
 		if (mapsFolder.exists())
-			statistics[1] = new File(mapsFolder.getLocation().toOSString()).listFiles().length;
+			statistics[1] = mapsFolder.listFiles().length;
 
-		IFolder unitsFolder = project.getFolder("units");
+		File unitsFolder =  new File(container.getLocation().toOSString() + "/units");
 		if (unitsFolder.exists())
-			statistics[2] = new File(unitsFolder.getLocation().toOSString()).listFiles().length;
+			statistics[2] = unitsFolder.listFiles().length;
 
-		String simpleReport = String.format("Scenarios: %d \nMaps: %d \nUnits: %d",
-				 statistics[0],statistics[1], statistics[2]);
-
-		GUIUtils.showMessageBox(WorkspaceUtils.getWorkbenchWindow(), simpleReport,
-				SWT.ICON_INFORMATION);
+		return String.format(" - Scenarios: %d \n - Maps: %d \n - Units: %d\n",
+				statistics[0],statistics[1], statistics[2]);
 	}
 }
