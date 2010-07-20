@@ -158,7 +158,8 @@ public class FactionPage0 extends NewWizardPageTemplate
 		text.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 		new Label(container, SWT.NONE);
 
-		txtDirectory_.setText(getWizard().getSelectionContainer().getFullPath().toString());
+		if (getWizard().getSelectionContainer() != null)
+			txtDirectory_.setText(getWizard().getSelectionContainer().getFullPath().toString());
 		updatePageIsComplete();
 	}
 

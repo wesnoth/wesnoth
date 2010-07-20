@@ -133,8 +133,6 @@ public class ScenarioPage0 extends NewWizardPageTemplate
 		txtScenarioId_.setLayoutData(gd_txtScenarioId_);
 		txtScenarioId_.addModifyListener(modifyListener);
 
-		txtProject_.setText((getWizard()).
-				getSelectionContainer().getFullPath().toString());
 		setControl(container);
 		new Label(container, SWT.NONE);
 
@@ -182,6 +180,8 @@ public class ScenarioPage0 extends NewWizardPageTemplate
 		chkEmbeddedMap_.setText("Embedded map");
 		new Label(container, SWT.NONE);
 
+		if (getWizard().getSelectionContainer() != null)
+			txtProject_.setText(getWizard().getSelectionContainer().getFullPath().toString());
 		updatePageIsComplete();
 	}
 

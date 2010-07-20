@@ -156,7 +156,8 @@ public class WizardLauncherPage0 extends NewWizardPageTemplate
 		new Label(container, SWT.NONE);
 		new Label(container, SWT.NONE);
 
-		txtDirectory_.setText(getWizard().getSelectionContainer().getFullPath().toString());
+		if (getWizard().getSelectionContainer() != null)
+			txtDirectory_.setText(getWizard().getSelectionContainer().getFullPath().toString());
 		updatePageIsComplete();
 	}
 
