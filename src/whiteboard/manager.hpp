@@ -136,7 +136,7 @@ private:
 
 	bool planned_unit_map_active_;
 	/** Track whenever we're modifying actions, to avoid dual execution etc. */
-	bool modifying_actions_;
+	bool executing_actions_;
 };
 
 /** Applies the planned unit map for the duration of the struct's life.
