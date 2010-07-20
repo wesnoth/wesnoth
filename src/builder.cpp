@@ -589,7 +589,7 @@ terrain_builder::rule_image_variant::rule_image_variant(const std::string &image
 		const std::vector<std::string> tod_list = utils::split(tod);
 		tods.insert(tod_list.begin(), tod_list.end());
 	}
-};
+}
 
 void terrain_builder::add_images_from_config(rule_imagelist& images, const config &cfg, bool global, int dx, int dy)
 {
