@@ -115,6 +115,13 @@ public class CampaignNewWizard extends NewWizardTemplate
 				monitor.worked(1);
 			}
 
+			// create the '.wesnoth' file to store some campaign related info
+			String wesnothFile = "";
+			wesnothFile += "settings\n";
+			wesnothFile += "difficulties=" + page2_.getDifficulties() + "\n";
+			wesnothFile += "end_settings\n";
+
+			ResourceUtils.createFile(currentProject, ".wesnoth", wesnothFile, true);
 		} catch (CoreException e)
 		{
 			Logger.getInstance().logException(e);

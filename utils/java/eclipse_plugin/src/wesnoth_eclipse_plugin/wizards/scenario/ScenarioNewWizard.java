@@ -20,12 +20,9 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
-import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
@@ -93,9 +90,9 @@ public class ScenarioNewWizard extends NewWizardTemplate
 				try
 				{
 					doFinish(containerName, fileName, monitor);
-				} catch (CoreException e)
+				} catch (Exception e)
 				{
-					Logger.getInstance().logException(e);
+					throw new InvocationTargetException(e);
 				} finally
 				{
 					monitor.done();
@@ -121,7 +118,8 @@ public class ScenarioNewWizard extends NewWizardTemplate
 	 * or just replace its contents, and open the editor on the newly created
 	 * file.
 	 */
-	private void doFinish(String containerName, String fileName, IProgressMonitor monitor) throws CoreException
+	private void doFinish(String containerName, String fileName, IProgressMonitor monitor)
+			throws Exception
 	{
 		monitor.beginTask("Creating " + fileName, 2);
 		IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
@@ -129,16 +127,16 @@ public class ScenarioNewWizard extends NewWizardTemplate
 
 		if (!resource.exists() || !(resource instanceof IContainer))
 		{
-			throwCoreException("Container \"" + containerName + "\" does not exist.");
+			throw new Exception("Container \"" + containerName + "\" does not exist.");
 		}
 
 		final IContainer container = (IContainer) resource;
 		final IFile file = container.getFile(new Path(fileName));
 
+		InputStream stream = getScenarioStream(container);
+
 		try
 		{
-			InputStream stream = getScenarioStream(container);
-
 			if (stream == null)
 				return;
 
@@ -178,8 +176,9 @@ public class ScenarioNewWizard extends NewWizardTemplate
 
 	/**
 	 * Returns the scenario file contents as an InputStream
+	 * @throws Exception
 	 */
-	private InputStream getScenarioStream(IContainer container)
+	private InputStream getScenarioStream(IContainer container) throws Exception
 	{
 		ArrayList<ReplaceableParameter> params = new ArrayList<ReplaceableParameter>();
 
@@ -188,43 +187,45 @@ public class ScenarioNewWizard extends NewWizardTemplate
 		params.add(new ReplaceableParameter("$$next_scenario_id", page0_.getNextScenarioId()));
 		params.add(new ReplaceableParameter("$$scenario_name", page0_.getScenarioName()));
 
-		String userMapPath = page0_.getMapData().replace("~add-ons",
-				container.getParent().getLocation().toOSString() + "/");
-
-		// trim the '{' and '}'
-		userMapPath  = userMapPath.substring(1,userMapPath.length() - 1);
-
-		if (!page0_.getIsMapEmbedded())
+		String mapData = "";
+		if (!page0_.getMapData().isEmpty())
 		{
-			params.add(new ReplaceableParameter("$$map_data", page0_.getMapData()));
-			ResourceUtils.copyTo(new File(page0_.getRawMapPath()),
-					new File(userMapPath));
-		}
-		else
-		{
-			params.add(new ReplaceableParameter("$$map_data", ResourceUtils.getFileContents(
-								new File(userMapPath))));
-		}
+			String userMapPath = page0_.getMapData().replace("~add-ons",
+					container.getParent().getLocation().toOSString() + "/");
+			// trim the '{' and '}'
+			userMapPath  = userMapPath.substring(1,userMapPath.length() - 1);
 
+			if (!page0_.getIsMapEmbedded())
+			{
+				mapData = page0_.getMapData();
+				ResourceUtils.copyTo(new File(page0_.getRawMapPath()), new File(userMapPath));
+			}
+			else
+			{
+				mapData = ResourceUtils.getFileContents(new File(userMapPath));
+			}
+		}
+		params.add(new ReplaceableParameter("$$map_data", mapData));
 		params.add(new ReplaceableParameter("$$turns_number", String.valueOf(page0_.getTurnsNumber())));
+
+		String startingGold = page0_.getStartingGoldByDifficulties();
+		if (startingGold == null)
+			throw new Exception("incorrenct argument");
+		params.add(new ReplaceableParameter("$$starting_gold", startingGold));
 
 		// multiplayer only variables
 		params.add(new ReplaceableParameter("$$allow_new_game", page1_.getAllowNewGame()));
 
-		String template = TemplateProvider.getInstance().getProcessedTemplate(page1_.isMultiplayerScenario() ? "multiplayer" : "scenario", params);
+		String template = TemplateProvider.getInstance().getProcessedTemplate(
+				page1_.isMultiplayerScenario() ? "multiplayer" : "scenario", params);
 
 		if (template == null)
 		{
-			GUIUtils.showMessageBox(WorkspaceUtils.getWorkbenchWindow(), "Template for \"scenario\" not found.");
+			GUIUtils.showMessageBox(WorkspaceUtils.getWorkbenchWindow(),
+					"Template for \"scenario\" not found.");
 			return null;
 		}
 
 		return new ByteArrayInputStream(template.getBytes());
-	}
-
-	private void throwCoreException(String message) throws CoreException
-	{
-		IStatus status = new Status(IStatus.ERROR, "Wesnoth_Eclipse_Plugin", IStatus.OK, message, null);
-		throw new CoreException(status);
 	}
 }

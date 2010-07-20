@@ -9,6 +9,8 @@
 package wesnoth_eclipse_plugin.wizards.scenario;
 
 import java.io.File;
+import java.util.HashMap;
+import java.util.List;
 
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IResource;
@@ -31,6 +33,9 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Spinner;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.dialogs.ContainerSelectionDialog;
+
+import wesnoth_eclipse_plugin.utils.GUIUtils;
+import wesnoth_eclipse_plugin.utils.ProjectUtils;
 
 /**
  * The "New" wizard page allows setting the container for the new file as well
@@ -65,6 +70,9 @@ public class ScenarioPage0 extends WizardPage
 
 	private IContainer container_;
 	private String rawMapPath_;
+	private Label lblDifficulty;
+	private Label lblDifficulties;
+	private Text txtStartingGold_;
 
 	/**
 	 * Constructor for SampleNewWizardPage.
@@ -98,6 +106,7 @@ public class ScenarioPage0 extends WizardPage
 		lblproject = new Label(container, SWT.NULL);
 		lblproject.setText("Project* :");
 		txtProject_ = new Text(container, SWT.BORDER | SWT.SINGLE);
+		txtProject_.setEditable(false);
 		gd_txtProject_ = new GridData(GridData.FILL_HORIZONTAL);
 		txtProject_.setLayoutData(gd_txtProject_);
 		txtProject_.addModifyListener(new ModifyListener() {
@@ -161,6 +170,42 @@ public class ScenarioPage0 extends WizardPage
 		gd_txtTurns_.widthHint = 60;
 		txtTurns_.setLayoutData(gd_txtTurns_);
 		new Label(container, SWT.NONE);
+
+		if (container_ != null)
+		{
+			HashMap<String, List<String>> prefs =
+				ProjectUtils.getPreferencesForProject(container_.getProject());
+			if (prefs != null && !prefs.get("settings").isEmpty())
+			{
+				lblDifficulty = new Label(container, SWT.NONE);
+				lblDifficulty.setText("Difficulty:");
+
+				lblDifficulties = new Label(container, SWT.NONE);
+				lblDifficulties.setText("difficulties");
+
+				List<String> settings = prefs.get("settings");
+				for (String setting : settings)
+				{
+					if (setting.startsWith("difficulties"))
+					{
+						lblDifficulties.setData("difficulties", setting.split("=")[1]);
+						lblDifficulties.setText(setting.split("=")[1] +
+								"  Specify the gold for each difficulty (separated with space):");
+						break;
+					}
+				}
+
+				new Label(container, SWT.NONE);
+
+				Label label_2 = new Label(container, SWT.NONE);
+				label_2.setText("Starting gold:");
+				label_2.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
+
+				txtStartingGold_ = new Text(container, SWT.BORDER);
+				txtStartingGold_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+				new Label(container, SWT.NONE);
+			}
+		}
 
 		lblMapData = new Label(container, SWT.NONE);
 		lblMapData.setText("Map data:");
@@ -401,5 +446,25 @@ public class ScenarioPage0 extends WizardPage
 	public boolean getIsMapEmbedded()
 	{
 		return chkEmbeddedMap_.getSelection();
+	}
+
+	public String getStartingGoldByDifficulties()
+	{
+		if (lblDifficulties == null)
+			return "";
+		StringBuilder result = new StringBuilder();
+		String[] difficulties = lblDifficulties.getData("difficulties").toString().split(",");
+		String[] gold = txtStartingGold_.getText().split(" ");
+		if (difficulties.length != gold.length)
+		{
+			GUIUtils.showErrorMessageBox("Incomplete gold specifications.");
+			return null;
+		}
+		for (int i=0;i<difficulties.length;i++)
+		{
+			result.append(String.format("#ifdef %s\n\tgold=%s\n#endif\n",
+					difficulties[i],gold[i]));
+		}
+		return result.toString();
 	}
 }
