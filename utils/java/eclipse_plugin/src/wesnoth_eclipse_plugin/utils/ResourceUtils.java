@@ -37,23 +37,32 @@ public class ResourceUtils
 	 * @param target
 	 * @throws IOException
 	 */
-	public static void copyTo(File source, File target) throws IOException
+	public static boolean copyTo(File source, File target)
 	{
 		if (source == null || target == null)
-			return;
+			return false;
 
-		InputStream in = new FileInputStream(source);
-		OutputStream out = new FileOutputStream(target);
+		try{
+			InputStream in = new FileInputStream(source);
+			OutputStream out = new FileOutputStream(target);
 
-		// Transfer bytes from in to out
-		byte[] buf = new byte[1024];
-		int len;
-		while ((len = in.read(buf)) > 0)
-		{
-			out.write(buf, 0, len);
+			// Transfer bytes from in to out
+			byte[] buf = new byte[1024];
+			int len;
+			while ((len = in.read(buf)) > 0)
+			{
+				out.write(buf, 0, len);
+			}
+			in.close();
+			out.close();
+
+			return true;
 		}
-		in.close();
-		out.close();
+		catch(IOException e)
+		{
+			Logger.getInstance().logException(e);
+			return false;
+		}
 	}
 
 	public static String getFileContents(File file)

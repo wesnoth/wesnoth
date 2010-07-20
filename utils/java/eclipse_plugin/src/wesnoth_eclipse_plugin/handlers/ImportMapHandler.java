@@ -34,17 +34,14 @@ public class ImportMapHandler extends AbstractHandler
 		if (selectedFolder == null)
 		{
 			Logger.getInstance().log("no directory selected (importMapHandler)",
-					"Please select a folder before proceeding.");
+				"Please select a folder before proceeding.");
 		}
 
-		if (!selectedFolder.getName().equals("maps"))
-		{
-			if (GUIUtils.showMessageBox("A map should be imported into a 'maps' folder. " +
-					"Do you want to proceed?",
-					SWT.ICON_QUESTION | SWT.YES | SWT.NO) == SWT.NO)
+		if (!selectedFolder.getName().equals("maps") &&
+				GUIUtils.showMessageBox("A map should be imported into a 'maps' folder. " +
+						"Do you want to proceed?",
+						SWT.ICON_QUESTION | SWT.YES | SWT.NO) == SWT.NO)
 			return false;
-		}
-
-		return (selectedFolder.getName().equals("maps"));
+		return true;
 	}
 }

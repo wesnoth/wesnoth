@@ -31,7 +31,7 @@ public class MapActions
 		if (WorkspaceUtils.getSelectedFolder() == null)
 		{
 			Logger.getInstance().log("no directory selected (importMap)",
-			"Please select a directory before importing a map");
+				"Please select a directory before importing a map");
 			return;
 		}
 

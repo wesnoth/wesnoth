@@ -9,6 +9,7 @@
 package wesnoth_eclipse_plugin.wizards.scenario;
 
 import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
@@ -22,6 +23,7 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.operation.IRunnableWithProgress;
@@ -32,6 +34,7 @@ import org.eclipse.ui.ide.IDE;
 
 import wesnoth_eclipse_plugin.Logger;
 import wesnoth_eclipse_plugin.utils.GUIUtils;
+import wesnoth_eclipse_plugin.utils.ResourceUtils;
 import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
 import wesnoth_eclipse_plugin.wizards.NewWizardTemplate;
 import wesnoth_eclipse_plugin.wizards.ReplaceableParameter;
@@ -45,7 +48,6 @@ import wesnoth_eclipse_plugin.wizards.TemplateProvider;
  * sample multi-page editor (also available as a template) is registered for the
  * same extension, it will be able to open it.
  */
-
 public class ScenarioNewWizard extends NewWizardTemplate
 {
 	private ScenarioPage0	page0_;
@@ -121,7 +123,6 @@ public class ScenarioNewWizard extends NewWizardTemplate
 	 */
 	private void doFinish(String containerName, String fileName, IProgressMonitor monitor) throws CoreException
 	{
-		// create a sample file
 		monitor.beginTask("Creating " + fileName, 2);
 		IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
 		IResource resource = root.findMember(new Path(containerName));
@@ -131,12 +132,12 @@ public class ScenarioNewWizard extends NewWizardTemplate
 			throwCoreException("Container \"" + containerName + "\" does not exist.");
 		}
 
-		IContainer container = (IContainer) resource;
+		final IContainer container = (IContainer) resource;
 		final IFile file = container.getFile(new Path(fileName));
 
 		try
 		{
-			InputStream stream = getScenarioStream();
+			InputStream stream = getScenarioStream(container);
 
 			if (stream == null)
 				return;
@@ -151,6 +152,7 @@ public class ScenarioNewWizard extends NewWizardTemplate
 			}
 
 			stream.close();
+			container.refreshLocal(IContainer.DEPTH_INFINITE, new NullProgressMonitor());
 		} catch (IOException e)
 		{
 			Logger.getInstance().logException(e);
@@ -177,7 +179,7 @@ public class ScenarioNewWizard extends NewWizardTemplate
 	/**
 	 * Returns the scenario file contents as an InputStream
 	 */
-	private InputStream getScenarioStream()
+	private InputStream getScenarioStream(IContainer container)
 	{
 		ArrayList<ReplaceableParameter> params = new ArrayList<ReplaceableParameter>();
 
@@ -185,7 +187,24 @@ public class ScenarioNewWizard extends NewWizardTemplate
 		params.add(new ReplaceableParameter("$$scenario_id", page0_.getScenarioId()));
 		params.add(new ReplaceableParameter("$$next_scenario_id", page0_.getNextScenarioId()));
 		params.add(new ReplaceableParameter("$$scenario_name", page0_.getScenarioName()));
-		params.add(new ReplaceableParameter("$$map_data", page0_.getMapData()));
+
+		String userMapPath = page0_.getMapData().replace("~add-ons",
+				container.getParent().getLocation().toOSString() + "/");
+
+		// trim the '{' and '}'
+		userMapPath  = userMapPath.substring(1,userMapPath.length() - 1);
+
+		if (!page0_.getIsMapEmbedded())
+		{
+			params.add(new ReplaceableParameter("$$map_data", page0_.getMapData()));
+			ResourceUtils.copyTo(new File(page0_.getRawMapPath()),
+					new File(userMapPath));
+		}
+		else
+		{
+			params.add(new ReplaceableParameter("$$map_data", ResourceUtils.getFileContents(
+								new File(userMapPath))));
+		}
 
 		params.add(new ReplaceableParameter("$$turns_number", String.valueOf(page0_.getTurnsNumber())));
 

@@ -8,6 +8,8 @@
  *******************************************************************************/
 package wesnoth_eclipse_plugin.wizards.scenario;
 
+import java.io.File;
+
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
@@ -24,6 +26,7 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Spinner;
 import org.eclipse.swt.widgets.Text;
@@ -57,6 +60,11 @@ public class ScenarioPage0 extends WizardPage
 	private Spinner		txtTurns_;
 	private Label		lblMapData;
 	private Text		txtMapData_;
+	private Button btnBrowseMap;
+	private Button chkEmbeddedMap_;
+
+	private IContainer container_;
+	private String rawMapPath_;
 
 	/**
 	 * Constructor for SampleNewWizardPage.
@@ -92,7 +100,14 @@ public class ScenarioPage0 extends WizardPage
 		txtProject_ = new Text(container, SWT.BORDER | SWT.SINGLE);
 		gd_txtProject_ = new GridData(GridData.FILL_HORIZONTAL);
 		txtProject_.setLayoutData(gd_txtProject_);
-		txtProject_.addModifyListener(modifyListener);
+		txtProject_.addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e)
+			{
+				updatePageIsComplete();
+				updateMapPath();
+			}
+		});
 
 		Button btnBrowse_ = new Button(container, SWT.PUSH);
 		btnBrowse_.setText("Browse...");
@@ -100,7 +115,7 @@ public class ScenarioPage0 extends WizardPage
 			@Override
 			public void widgetSelected(SelectionEvent e)
 			{
-				handleBrowse();
+				handleBrowseContainer();
 			}
 		});
 
@@ -152,6 +167,19 @@ public class ScenarioPage0 extends WizardPage
 
 		txtMapData_ = new Text(container, SWT.BORDER);
 		txtMapData_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+
+		btnBrowseMap = new Button(container, SWT.NONE);
+		btnBrowseMap.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				handleBrowseMap();
+			}
+		});
+		btnBrowseMap.setText("Browse...");
+		new Label(container, SWT.NONE);
+
+		chkEmbeddedMap_ = new Button(container, SWT.CHECK);
+		chkEmbeddedMap_.setText("Embedded map");
 		new Label(container, SWT.NONE);
 
 		updatePageIsComplete();
@@ -243,23 +271,67 @@ public class ScenarioPage0 extends WizardPage
 				{
 					container = ((IResource) obj).getParent();
 				}
+				container_ = container;
 				txtProject_.setText(container.getFullPath().toString());
 			}
 		}
+	}
+
+	private void updateMapPath()
+	{
+		if (txtMapData_ == null)
+			return;
+
+		if (rawMapPath_ == null)
+		{
+			txtMapData_.setText("");
+			return;
+		}
+
+		// make the map path to be relative to the ~addons directory
+
+		String homePath = txtProject_.getText();
+		if (homePath.startsWith("/User Addons"))
+		{
+			homePath = homePath.substring(("/User Addons").length());
+		}
+		if (!homePath.isEmpty() && homePath.charAt(0) == '/')
+			homePath = homePath.substring(1);
+
+		txtMapData_.setText(String.format("{~add-ons/%s/maps/%s}",
+				homePath, new File(rawMapPath_).getName()));
+	}
+
+	private void handleBrowseMap()
+	{
+		FileDialog dialog = new FileDialog(getShell());
+		dialog.setText("Select a map file");
+		if (container_ != null)
+			dialog.setFilterPath(container_.getLocation().toOSString());
+		dialog.setFilterExtensions(new String[] { "*.map" });
+		rawMapPath_ = dialog.open();
+		updateMapPath();
 	}
 
 	/**
 	 * Uses the standard container selection dialog to choose the new value for
 	 * the project field.
 	 */
-	private void handleBrowse()
+	private void handleBrowseContainer()
 	{
-		ContainerSelectionDialog dialog = new ContainerSelectionDialog(getShell(), ResourcesPlugin.getWorkspace().getRoot(), false, "Select a campaign project");
+		ContainerSelectionDialog dialog = new ContainerSelectionDialog(getShell(),
+				ResourcesPlugin.getWorkspace().getRoot(), false, "Select a campaign project");
 		if (dialog.open() == ContainerSelectionDialog.OK)
 		{
 			Object[] result = dialog.getResult();
 			if (result.length == 1)
 			{
+				try{
+					container_ = ResourcesPlugin.getWorkspace().getRoot().getFolder((Path)result[0]);
+				}catch (IllegalArgumentException e) {
+					// the path is a project
+					container_ = ResourcesPlugin.getWorkspace().getRoot().getProject(result[0].toString());
+				}
 				txtProject_.setText(((Path) result[0]).toString());
 			}
 		}
@@ -319,5 +391,15 @@ public class ScenarioPage0 extends WizardPage
 	public String getMapData()
 	{
 		return txtMapData_.getText();
+	}
+
+	public String getRawMapPath()
+	{
+		return rawMapPath_;
+	}
+
+	public boolean getIsMapEmbedded()
+	{
+		return chkEmbeddedMap_.getSelection();
 	}
 }
