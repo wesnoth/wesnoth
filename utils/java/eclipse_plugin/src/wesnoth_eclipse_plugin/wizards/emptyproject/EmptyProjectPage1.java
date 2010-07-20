@@ -8,6 +8,7 @@
  *******************************************************************************/
 package wesnoth_eclipse_plugin.wizards.emptyproject;
 
+import org.eclipse.jface.dialogs.DialogPage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
@@ -55,14 +56,16 @@ public class EmptyProjectPage1 extends NewWizardPageTemplate
 		container.setLayout(new GridLayout(3, false));
 
 		Label _lblTitle = new Label(container, SWT.NONE);
-		_lblTitle.setText("Title:");
+		_lblTitle.setText("Project title*:");
 
 		txtTitle_ = new Text(container, SWT.BORDER);
 		GridData gd_txtTitle_ = new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1);
 		gd_txtTitle_.heightHint = 15;
 		txtTitle_.setLayoutData(gd_txtTitle_);
 		txtTitle_.addModifyListener(updatePageCompleteListener);
-		new Label(container, SWT.NONE);
+
+		Label lblThisIsThe = new Label(container, SWT.NONE);
+		lblThisIsThe.setText("This is the title shown in the addons list");
 
 		Label lblVersion = new Label(container, SWT.NONE);
 		lblVersion.setText("Version* :");
@@ -159,7 +162,7 @@ public class EmptyProjectPage1 extends NewWizardPageTemplate
 		setPageComplete(false);
 		if (txtTitle_.getText().isEmpty())
 		{
-			setErrorMessage("Project name is mandatory");
+			setMessage("Project name is mandatory", DialogPage.WARNING);
 			return;
 		}
 
@@ -167,11 +170,11 @@ public class EmptyProjectPage1 extends NewWizardPageTemplate
 		if (txtVersion_.getText().isEmpty() ||
 				!(txtVersion_.getText().matches("[\\d]+\\.[\\d]+\\.\\d[\\w\\W\\d\\D\\s\\S]*")))
 		{
-			setErrorMessage("The version must have the format: x.y.z");
+			setMessage("The version must have the format: x.y.z", DialogPage.WARNING);
 			return;
 		}
 
-		setErrorMessage(null);
+		setMessage(null);
 		setPageComplete(true);
 	}
 
