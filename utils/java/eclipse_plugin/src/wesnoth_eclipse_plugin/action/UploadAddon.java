@@ -15,9 +15,6 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
-import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.ui.IObjectActionDelegate;
-import org.eclipse.ui.IWorkbenchPart;
 
 import wesnoth_eclipse_plugin.Activator;
 import wesnoth_eclipse_plugin.Logger;
@@ -25,11 +22,8 @@ import wesnoth_eclipse_plugin.utils.GUIUtils;
 import wesnoth_eclipse_plugin.utils.WMLTools;
 import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
 
-public class UploadAddon implements IObjectActionDelegate
+public class UploadAddon extends ObjectActionDelegate
 {
-	public UploadAddon() {
-	}
-
 	@Override
 	public void run(IAction action)
 	{
@@ -58,15 +52,5 @@ public class UploadAddon implements IObjectActionDelegate
 		} catch (InterruptedException e)
 		{
 		}
-	}
-
-	@Override
-	public void selectionChanged(IAction action, ISelection selection)
-	{
-	}
-
-	@Override
-	public void setActivePart(IAction action, IWorkbenchPart targetPart)
-	{
 	}
 }

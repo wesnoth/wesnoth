@@ -9,31 +9,15 @@
 package wesnoth_eclipse_plugin.action;
 
 import org.eclipse.jface.action.IAction;
-import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.ui.IObjectActionDelegate;
-import org.eclipse.ui.IWorkbenchPart;
 
 import wesnoth_eclipse_plugin.utils.WMLTools;
 import wesnoth_eclipse_plugin.utils.WMLTools.Tools;
 
-public class RunWMLLintOnSelection implements IObjectActionDelegate
+public class RunWMLLintOnSelection extends ObjectActionDelegate
 {
-	public RunWMLLintOnSelection() {
-	}
-
-	@Override
-	public void setActivePart(IAction action, IWorkbenchPart targetPart)
-	{
-	}
-
 	@Override
 	public void run(IAction action)
 	{
 		WMLTools.runWMLToolAsWorkspaceJob(Tools.WMLLINT, null);
-	}
-
-	@Override
-	public void selectionChanged(IAction action, ISelection selection)
-	{
 	}
 }

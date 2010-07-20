@@ -15,18 +15,14 @@ import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.jface.action.IAction;
-import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.ui.IObjectActionDelegate;
-import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.xtext.ui.XtextProjectHelper;
 
 import wesnoth_eclipse_plugin.Logger;
+import wesnoth_eclipse_plugin.action.ObjectActionDelegate;
 
-public class ToggleNatureAction implements IObjectActionDelegate
+public class ToggleNatureAction extends ObjectActionDelegate
 {
-	private ISelection	selection_;
-
 	@Override
 	@SuppressWarnings("rawtypes")
 	public void run(IAction action)
@@ -53,22 +49,10 @@ public class ToggleNatureAction implements IObjectActionDelegate
 		}
 	}
 
-	@Override
-	public void selectionChanged(IAction action, ISelection selection)
-	{
-		this.selection_ = selection;
-	}
-
-	@Override
-	public void setActivePart(IAction action, IWorkbenchPart targetPart)
-	{
-	}
-
 	/**
 	 * Toggles sample nature on a project
 	 *
-	 * @param project
-	 *        to have sample nature added or removed
+	 * @param project to have sample nature added or removed
 	 */
 	public void toggleNature(IProject project)
 	{

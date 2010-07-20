@@ -22,8 +22,7 @@ import wesnoth_eclipse_plugin.utils.GUIUtils;
 import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
 
 /**
- * @author Timotei Dolean
- *
+ * A class that logs activities in a file
  */
 public class Logger {
 

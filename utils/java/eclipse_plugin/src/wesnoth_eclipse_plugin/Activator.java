@@ -77,26 +77,4 @@ public class Activator extends AbstractUIPlugin
 	{
 		return plugin.getWorkbench().getDisplay().getActiveShell();
 	}
-
-//	/**
-//	 * Checks if the user has set some needed preferences and if the workspace
-//	 * is setup (there exists the "User Addons" project)
-//	 */
-//	private static void checkConditions()
-//	{
-//		String execDir = Preferences.getString(Constants.P_WESNOTH_EXEC_PATH);
-//		String userDir = Preferences.getString(Constants.P_WESNOTH_USER_DIR);
-//		String wmltoolsDir = Preferences.getString(Constants.P_WESNOTH_WMLTOOLS_DIR);
-//		String workingDir = Preferences.getString(Constants.P_WESNOTH_WORKING_DIR);
-//
-//		if (!WorkspaceUtils.validPath(execDir) || !WorkspaceUtils.validPath(userDir) ||
-//			!WorkspaceUtils.validPath(wmltoolsDir) || !WorkspaceUtils.validPath(workingDir) ||
-//			!ResourcesPlugin.getWorkspace().getRoot().getProject("User Addons").exists())
-//		{
-//			Logger.getInstance().log("checkConditions: workspace not setup",
-//				"Please setup the workspace before using the plugin. Go to \"Wesnoth\" menu," +
-//				" and then click on the \"Setup Workspace\" entry following the instructions on the screen.");
-//			return;
-//		}
-//	}
 }
