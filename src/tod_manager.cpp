@@ -98,7 +98,7 @@ config tod_manager::to_config() const
 	return cfg;
 }
 
-time_of_day tod_manager::get_time_of_day() const
+const time_of_day& tod_manager::get_time_of_day() const
 {
 	return times_[currentTime_];
 }
@@ -113,7 +113,7 @@ void tod_manager::set_time_of_day(int newTime)
 	currentTime_ = newTime;
 }
 
-time_of_day tod_manager::get_previous_time_of_day() const
+const time_of_day& tod_manager::get_previous_time_of_day() const
 {
 	return get_time_of_day_turn(turn_ - 1);
 }
@@ -233,7 +233,7 @@ void tod_manager::set_start_ToD(config &level, int current_turn)
 
 }
 
-time_of_day tod_manager::get_time_of_day_turn(int nturn) const
+const time_of_day& tod_manager::get_time_of_day_turn(int nturn) const
 {
 	int time = (currentTime_ + nturn  - turn_) % times_.size();
 

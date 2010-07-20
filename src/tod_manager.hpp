@@ -37,8 +37,8 @@ class tod_manager : public savegame::savegame_config
 		config to_config() const;
 
 		/** Returns time of day object for current turn. */
-		time_of_day get_time_of_day() const;
-		time_of_day get_previous_time_of_day() const;
+		const time_of_day& get_time_of_day() const;
+		const time_of_day& get_previous_time_of_day() const;
 		time_of_day get_time_of_day(int illuminated, const map_location& loc) const;
 		/**
 		 * Returns time of day object in the turn.
@@ -124,7 +124,7 @@ class tod_manager : public savegame::savegame_config
 		 *
 		 * Correct time is calculated from current time.
 		 */
-		time_of_day get_time_of_day_turn(int nturn) const;
+		const time_of_day& get_time_of_day_turn(int nturn) const;
 
 		struct area_time_of_day {
 			area_time_of_day() :
