@@ -37,7 +37,7 @@ import wesnoth_eclipse_plugin.Constants;
  * the main plug-in class. That way, preferences can
  * be accessed directly via the preference store.
  */
-public class WesnothEditorPreferences extends FieldEditorPreferencePage
+public class WesnothEditorPreferencesPage extends FieldEditorPreferencePage
 		implements IWorkbenchPreferencePage
 {
 	public static boolean EditorPreferencesStarted = false;
@@ -45,7 +45,7 @@ public class WesnothEditorPreferences extends FieldEditorPreferencePage
 	private DirectoryFieldEditor	wmlToolsField_;
 	private List<String> 			wmlToolsList_;
 
-	public WesnothEditorPreferences() {
+	public WesnothEditorPreferencesPage() {
 		super(GRID);
 
 		EditorPreferencesStarted = true;
