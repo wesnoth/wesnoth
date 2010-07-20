@@ -92,7 +92,7 @@ class tod_manager : public savegame::savegame_config
 		const std::vector<time_of_day> times() const {return times_;}
 
 		//consider tod modifying units (e.g. illuminates)
-		time_of_day time_of_day_at(const unit_map& units,const map_location& loc, const gamemap& map) const;
+		time_of_day time_of_day_at(const map_location& loc) const;
 
 		//turn functions
 		size_t turn() const {return turn_;}

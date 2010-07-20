@@ -213,7 +213,7 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 		if(flat_) {
 			tod = resources::tod_manager->get_time_of_day(0, loc);
 		} else {
-			tod = resources::tod_manager->time_of_day_at(units_, loc, *resources::game_map);
+			tod = resources::tod_manager->time_of_day_at(loc);
 		}
 	}
 	if(!tod_type.empty()) {

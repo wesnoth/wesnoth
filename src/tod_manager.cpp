@@ -19,6 +19,7 @@
 #include "gamestatus.hpp"
 #include "log.hpp"
 #include "map.hpp"
+#include "resources.hpp"
 #include "unit.hpp"
 #include "unit_abilities.hpp"
 
@@ -244,8 +245,10 @@ const time_of_day& tod_manager::get_time_of_day_turn(int nturn) const
 	return times_[time];
 }
 
-time_of_day tod_manager::time_of_day_at(const unit_map& units,const map_location& loc, const gamemap& map) const
+time_of_day tod_manager::time_of_day_at(const map_location& loc) const
 {
+	const gamemap& map = *resources::game_map;
+	const unit_map& units = *resources::units;
 	int light_modif =  map.get_terrain_info(map.get_terrain(loc)).light_modification();
 	int lighten = std::max<int>(light_modif, 0);
 	int darken = std::min<int>(light_modif, 0);

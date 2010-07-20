@@ -1971,11 +1971,10 @@ void advance_unit(map_location loc, const std::string &advance_to)
 	game_events::fire("post_advance",loc);
 }
 
-int combat_modifier(const unit_map &units, const map_location &loc,
+int combat_modifier(const unit_map& /*units*/, const map_location &loc,
 	unit_type::ALIGNMENT alignment, bool is_fearless)
 {
-	const time_of_day &tod = resources::tod_manager->time_of_day_at
-		(units, loc, *resources::game_map);
+	const time_of_day &tod = resources::tod_manager->time_of_day_at(loc);
 
 	int bonus = tod.lawful_bonus;
 

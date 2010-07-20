@@ -499,7 +499,7 @@ report generate_report(TYPE type,
 			// Don't show illuminated time on fogged tiles.
 			tod = resources::tod_manager->get_time_of_day(0, mouseover);
 		} else {
-			tod = resources::tod_manager->time_of_day_at(units, mouseover, *resources::game_map);
+			tod = resources::tod_manager->time_of_day_at(mouseover);
 		}
 
 		int b = tod.lawful_bonus;
