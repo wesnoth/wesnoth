@@ -43,6 +43,7 @@ public class FactionPage1 extends NewWizardPageTemplate
 	@Override
 	public void createControl(Composite parent)
 	{
+		super.createControl(parent);
 		Composite container = new Composite(parent, SWT.NULL);
 
 		// the page doesn't have any requirements, so it's complete by default

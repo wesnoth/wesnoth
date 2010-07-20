@@ -9,6 +9,8 @@ import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.dialogs.ContainerSelectionDialog;
 
+import wesnoth_eclipse_plugin.Activator;
+
 public class NewWizardPageTemplate extends WizardPage
 {
 	protected NewWizardPageTemplate(String pageName)
@@ -19,6 +21,8 @@ public class NewWizardPageTemplate extends WizardPage
 	@Override
 	public void createControl(Composite parent)
 	{
+		Activator.getDefault().getWorkbench().getHelpSystem().setHelp(getShell(),
+				"Wesnoth_Eclipse_Plugin.wizardHelp");
 	}
 
 	@Override
@@ -52,5 +56,12 @@ public class NewWizardPageTemplate extends WizardPage
 			}
 		}
 		return null;
+	}
+
+	@Override
+	public void performHelp()
+	{
+		//TODO: create all helps in 'contextHelp.xml'
+		//PlatformUI.getWorkbench().getHelpSystem().displayHelp(" .wizardHelp");
 	}
 }

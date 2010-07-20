@@ -40,6 +40,7 @@ public class WizardUtils
 		x += ((shell.getBounds().width - wizardDialog.getShell().getBounds().width)/2);
 		y += ((shell.getBounds().height - wizardDialog.getShell().getBounds().height)/2);
 		wizardDialog.getShell().setLocation(x, y);
+		wizardDialog.setHelpAvailable(true);
 		Activator.getDefault().getWorkbench().getHelpSystem().setHelp(wizardDialog.getShell(),
 				"org.eclipse.ui.new_wizard_context");
 

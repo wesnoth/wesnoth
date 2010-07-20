@@ -51,6 +51,7 @@ public class EraPage0 extends NewWizardPageTemplate
 	@Override
 	public void createControl(Composite parent)
 	{
+		super.createControl(parent);
 		ModifyListener modifyListener = new ModifyListener() {
 			@Override
 			public void modifyText(ModifyEvent e)

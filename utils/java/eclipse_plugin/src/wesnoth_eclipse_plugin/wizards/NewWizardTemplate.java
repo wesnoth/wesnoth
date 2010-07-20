@@ -28,6 +28,7 @@ public abstract class NewWizardTemplate extends Wizard implements INewWizard
 	@Override
 	public void init(IWorkbench workbench, IStructuredSelection selection)
 	{
+		setHelpAvailable(true);
 		this.selection_ = selection;
 		initialize();
 	}
@@ -61,6 +62,7 @@ public abstract class NewWizardTemplate extends Wizard implements INewWizard
 			}
 		}
 	}
+
 	@Override
 	public boolean canFinish()
 	{

@@ -35,6 +35,7 @@ public class ScenarioPage1 extends NewWizardPageTemplate
 	@Override
 	public void createControl(Composite parent)
 	{
+		super.createControl(parent);
 		container_ = new Composite(parent, SWT.NULL);
 
 		setControl(container_);

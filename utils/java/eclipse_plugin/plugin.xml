@@ -206,6 +206,7 @@
       </persistent>
    </extension>
    <extension
+         id="Wesnoth_Eclipse_Plugin.help"
          point="org.eclipse.help.toc">
       <toc
             file="toc.xml"
@@ -219,9 +220,6 @@
       </toc>
       <toc
             file="tocreference.xml">
-      </toc>
-      <toc
-            file="tocsamples.xml">
       </toc>
    </extension>
    <extension
@@ -255,7 +253,12 @@
       -->
    </extension>
    <extension
+         id="Wesnoth_Eclipse_Plugin.contexts"
          point="org.eclipse.help.contexts">
+      <contexts
+            file="contextHelp.xml"
+            plugin="Wesnoth_Eclipse_Plugin">
+      </contexts>
    </extension>
 
    <extension

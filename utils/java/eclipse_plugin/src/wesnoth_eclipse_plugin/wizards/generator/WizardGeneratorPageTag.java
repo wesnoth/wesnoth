@@ -54,6 +54,7 @@ public class WizardGeneratorPageTag extends NewWizardPageTemplate
 	@Override
 	public void createControl(Composite parent)
 	{
+		super.createControl(parent);
 		container_ = new Composite(parent, SWT.NULL);
 		setControl(container_);
 		container_.setLayout(new GridLayout(2, false));
