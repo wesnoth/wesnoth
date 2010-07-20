@@ -207,6 +207,22 @@
    </extension>
    <extension
          point="org.eclipse.help.toc">
+      <toc
+            file="toc.xml"
+            primary="true">
+      </toc>
+      <toc
+            file="tocfeatures.xml">
+      </toc>
+      <toc
+            file="tocgettingstarted.xml">
+      </toc>
+      <toc
+            file="tocreference.xml">
+      </toc>
+      <toc
+            file="tocsamples.xml">
+      </toc>
    </extension>
    <extension
          point="org.eclipse.ui.views">
@@ -240,9 +256,6 @@
    </extension>
    <extension
          point="org.eclipse.help.contexts">
-      <contexts
-            file="contexts.xml">
-      </contexts>
    </extension>
 
    <extension
