@@ -9,7 +9,9 @@
 package wesnoth_eclipse_plugin.builder;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -23,14 +25,17 @@ import org.eclipse.core.resources.IResourceVisitor;
 import org.eclipse.core.resources.IncrementalProjectBuilder;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 
 import wesnoth_eclipse_plugin.Constants;
 import wesnoth_eclipse_plugin.Logger;
 import wesnoth_eclipse_plugin.preferences.Preferences;
+import wesnoth_eclipse_plugin.templates.ReplaceableParameter;
 import wesnoth_eclipse_plugin.utils.AntUtils;
 import wesnoth_eclipse_plugin.utils.PreprocessorUtils;
 import wesnoth_eclipse_plugin.utils.ProjectUtils;
+import wesnoth_eclipse_plugin.utils.ResourceUtils;
 import wesnoth_eclipse_plugin.utils.StringUtils;
 import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
 
@@ -74,10 +79,19 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 		// in the user add-ons directory (incremental)
 		if (!(new File(getProject().getLocation().toOSString() + "/build.xml").exists()))
 		{
-			Logger.getInstance().log("build.xml is missing",
-					"The 'build.xml' file is missing. The building cannot continue.");
-			// TODO: better way of handling this - maybe regenerating?
-			return null;
+			Logger.getInstance().log("build.xml is missing. regenerating",
+					"The 'build.xml' file is missing. It will be regenerated.");
+
+			List<ReplaceableParameter> params = new ArrayList<ReplaceableParameter>();
+			params.add(new ReplaceableParameter("$$project_name", getProject().getName()));
+			params.add(new ReplaceableParameter("$$project_dir_name",
+					getProject().getName().equals("User Addons")? "" : getProject().getName()));
+			ResourceUtils.createBuildXMLFile(
+					getProject().getLocation().toOSString() + "/build.xml", params);
+
+			getProject().refreshLocal(IResource.DEPTH_ONE, new NullProgressMonitor());
+			Logger.getInstance().log("build.xml regenerated",
+					"The 'build.xml' file was successfully regenerated.");
 		}
 		monitor.worked(2);
 

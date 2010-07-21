@@ -30,11 +30,11 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
 
 import wesnoth_eclipse_plugin.Logger;
+import wesnoth_eclipse_plugin.templates.ReplaceableParameter;
+import wesnoth_eclipse_plugin.templates.TemplateProvider;
 import wesnoth_eclipse_plugin.utils.GUIUtils;
 import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
 import wesnoth_eclipse_plugin.wizards.NewWizardTemplate;
-import wesnoth_eclipse_plugin.wizards.ReplaceableParameter;
-import wesnoth_eclipse_plugin.wizards.TemplateProvider;
 
 @Deprecated
 public class UnitsNewWizard extends NewWizardTemplate

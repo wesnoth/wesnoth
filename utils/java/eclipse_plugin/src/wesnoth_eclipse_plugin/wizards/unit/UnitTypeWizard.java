@@ -10,11 +10,11 @@ package wesnoth_eclipse_plugin.wizards.unit;
 
 import java.util.ArrayList;
 
+import wesnoth_eclipse_plugin.templates.ReplaceableParameter;
+import wesnoth_eclipse_plugin.templates.TemplateProvider;
 import wesnoth_eclipse_plugin.utils.GUIUtils;
 import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
 import wesnoth_eclipse_plugin.wizards.NewWizardTemplate;
-import wesnoth_eclipse_plugin.wizards.ReplaceableParameter;
-import wesnoth_eclipse_plugin.wizards.TemplateProvider;
 
 @Deprecated
 public class UnitTypeWizard extends NewWizardTemplate

@@ -18,9 +18,6 @@ import org.osgi.framework.BundleContext;
  */
 public class Activator extends AbstractUIPlugin
 {
-	// The plug-in ID
-	public static final String	PLUGIN_ID	= "Wesnoth_Eclipse_Plugin";
-
 	// The shared instance
 	private static Activator	plugin;
 
@@ -65,7 +62,7 @@ public class Activator extends AbstractUIPlugin
 	 */
 	public static ImageDescriptor getImageDescriptor(String path)
 	{
-		return imageDescriptorFromPlugin(PLUGIN_ID, path);
+		return imageDescriptorFromPlugin(Constants.PLUGIN_ID, path);
 	}
 
 	/**

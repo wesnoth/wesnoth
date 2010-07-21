@@ -39,8 +39,8 @@ import wesnoth_eclipse_plugin.Activator;
 import wesnoth_eclipse_plugin.Constants;
 import wesnoth_eclipse_plugin.Logger;
 import wesnoth_eclipse_plugin.preferences.Preferences;
-import wesnoth_eclipse_plugin.wizards.ReplaceableParameter;
-import wesnoth_eclipse_plugin.wizards.TemplateProvider;
+import wesnoth_eclipse_plugin.templates.ReplaceableParameter;
+import wesnoth_eclipse_plugin.templates.TemplateProvider;
 
 public class WorkspaceUtils
 {

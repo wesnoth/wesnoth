@@ -20,9 +20,9 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
 import wesnoth_eclipse_plugin.Logger;
+import wesnoth_eclipse_plugin.templates.TemplateProvider;
 import wesnoth_eclipse_plugin.utils.StringUtils;
 import wesnoth_eclipse_plugin.wizards.NewWizardPageTemplate;
-import wesnoth_eclipse_plugin.wizards.TemplateProvider;
 
 public class WizardLauncherPage1 extends NewWizardPageTemplate
 {

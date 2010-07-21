@@ -6,7 +6,7 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
-package wesnoth_eclipse_plugin.wizards;
+package wesnoth_eclipse_plugin.templates;
 
 public class ReplaceableParameter{
 	public String paramName;

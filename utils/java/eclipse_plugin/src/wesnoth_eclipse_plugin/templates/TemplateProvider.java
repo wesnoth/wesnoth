@@ -6,7 +6,7 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *******************************************************************************/
-package wesnoth_eclipse_plugin.wizards;
+package wesnoth_eclipse_plugin.templates;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -17,13 +17,14 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import wesnoth_eclipse_plugin.Constants;
 import wesnoth_eclipse_plugin.Logger;
 import wesnoth_eclipse_plugin.utils.Pair;
 import wesnoth_eclipse_plugin.utils.StringUtils;
 
 public class TemplateProvider
 {
-	private static TemplateProvider			instance_;
+	private static TemplateProvider		instance_;
 	private final HashMap<String, String>	templates_	= new HashMap<String, String>();
 
 	public static TemplateProvider getInstance()
@@ -36,10 +37,6 @@ public class TemplateProvider
 		return instance_;
 	}
 
-	public final String		templatesFile	= "templatesIndex.txt";
-
-	private final String	pluginFullPath_	= getClass().getProtectionDomain().getCodeSource().getLocation().getPath();
-
 	/**
 	 * Loads the templates from the file system
 	 */
@@ -47,11 +44,11 @@ public class TemplateProvider
 	{
 		try
 		{
-			Logger.getInstance().log("reading templates from: " + pluginFullPath_ + templatesFile);
+			Logger.getInstance().log("reading templates from: " +
+					Constants.PLUGIN_FULL_PATH + Constants.TEMPLATES_FILENAME);
 
-			BufferedReader reader =
-					new BufferedReader(new FileReader(getClass().getProtectionDomain().getCodeSource().getLocation().getPath()
-							+ templatesFile));
+			BufferedReader reader = new BufferedReader(
+					new FileReader(Constants.PLUGIN_FULL_PATH + Constants.TEMPLATES_FILENAME));
 			BufferedReader tmpReader;
 			String line, tmpLine, content;
 
@@ -70,15 +67,15 @@ public class TemplateProvider
 
 				content = "";
 
-				if (new File(pluginFullPath_ + tokensStrings[1]).exists())
+				if (new File(Constants.PLUGIN_FULL_PATH + tokensStrings[1]).exists())
 				{
-					tmpReader = new BufferedReader(new FileReader(pluginFullPath_ + tokensStrings[1]));
+					tmpReader = new BufferedReader(
+							new FileReader(Constants.PLUGIN_FULL_PATH + tokensStrings[1]));
 					while ((tmpLine = tmpReader.readLine()) != null)
 					{
 						content += tmpLine + '\n';
 					}
 					templates_.put(tokensStrings[0], content);
-					// System.out.println(String.format("read %s with content: %s\n",tokensStrings[0],content));
 					tmpReader.close();
 				}
 			}
@@ -95,10 +92,11 @@ public class TemplateProvider
 	 * @param parameters The parameters to replace into the template
 	 * @return
 	 */
-	public String getProcessedTemplate(String templateName, ArrayList<ReplaceableParameter> parameters)
+	public String getProcessedTemplate(String templateName,
+			List<ReplaceableParameter> parameters)
 	{
 		String tmpTemplate = TemplateProvider.getInstance().getTemplate(templateName);
-		if (tmpTemplate == null)
+		if (tmpTemplate == null || parameters == null)
 			return null;
 
 		String result = "";

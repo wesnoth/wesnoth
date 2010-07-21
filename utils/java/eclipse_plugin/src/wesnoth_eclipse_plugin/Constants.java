@@ -15,6 +15,11 @@ import org.eclipse.xtext.ui.XtextProjectHelper;
  */
 public class Constants
 {
+	/** Plugin related */
+	public static final String PLUGIN_FULL_PATH =
+		Constants.class.getProtectionDomain().getCodeSource().getLocation().getPath() + "/";
+	public static final String PLUGIN_ID  = "Wesnoth_Eclipse_Plugin";
+
 	/** Preferences Constants **/
 	public static final String	P_WESNOTH_EXEC_PATH		= "wesnoth_exec_path";
 	public static final String	P_WESNOTH_WORKING_DIR	= "wesnoth_working_dir";
@@ -36,4 +41,7 @@ public class Constants
 	/** Nature Constants **/
 	public static final String NATURE_WESNOTH		= "Wesnoth_Eclipse_Plugin.wesnothNature";
 	public static final String NATURE_XTEXT		= XtextProjectHelper.NATURE_ID;
+
+	/** Templates related */
+	public static final String TEMPLATES_FILENAME  = "templatesIndex.txt";
 }

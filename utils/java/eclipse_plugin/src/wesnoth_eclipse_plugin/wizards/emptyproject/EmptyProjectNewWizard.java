@@ -23,13 +23,13 @@ import org.eclipse.jface.operation.IRunnableWithProgress;
 
 import wesnoth_eclipse_plugin.Constants;
 import wesnoth_eclipse_plugin.Logger;
+import wesnoth_eclipse_plugin.templates.ReplaceableParameter;
+import wesnoth_eclipse_plugin.templates.TemplateProvider;
 import wesnoth_eclipse_plugin.utils.Pair;
 import wesnoth_eclipse_plugin.utils.ProjectUtils;
 import wesnoth_eclipse_plugin.utils.ResourceUtils;
 import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
 import wesnoth_eclipse_plugin.wizards.NewWizardTemplate;
-import wesnoth_eclipse_plugin.wizards.ReplaceableParameter;
-import wesnoth_eclipse_plugin.wizards.TemplateProvider;
 
 public class EmptyProjectNewWizard extends NewWizardTemplate
 {

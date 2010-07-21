@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.util.List;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
@@ -29,6 +30,8 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.swt.SWT;
 
 import wesnoth_eclipse_plugin.Logger;
+import wesnoth_eclipse_plugin.templates.ReplaceableParameter;
+import wesnoth_eclipse_plugin.templates.TemplateProvider;
 
 public class ResourceUtils
 {
@@ -202,6 +205,27 @@ public class ResourceUtils
 				writer.write("<properties>\n</properties>\n");
 				writer.close();
 			}
+		}
+		catch (Exception e) {
+			Logger.getInstance().logException(e);
+		}
+	}
+
+	/**
+	 * Creates the 'build.xml' with the specified path
+	 * @param path The full path to the 'build.xml' file
+	 * @param params The parameters list to replace in the template of 'build.xml'
+	 */
+	public static void createBuildXMLFile(String path,
+			List<ReplaceableParameter> params)
+	{
+		try{
+			File antFile = new File(path);
+			antFile.createNewFile();
+			FileWriter writer = new FileWriter(antFile);
+			writer.write(
+					TemplateProvider.getInstance().getProcessedTemplate("build_xml", params));
+			writer.close();
 		}
 		catch (Exception e) {
 			Logger.getInstance().logException(e);
