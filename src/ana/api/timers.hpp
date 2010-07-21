@@ -30,10 +30,12 @@
  *
  */
 
-#include "buffers.hpp"
-
 #ifndef ANA_TIMERS_HPP
 #define ANA_TIMERS_HPP
+
+#include "buffers.hpp"
+
+#include <boost/bind.hpp>
 
 #ifndef ANA_DETAIL_INTERNAL_HPP
 #error "Private file, do not include directly."
