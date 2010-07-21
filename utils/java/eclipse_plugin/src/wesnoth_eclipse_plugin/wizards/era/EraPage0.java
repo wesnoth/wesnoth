@@ -39,7 +39,7 @@ public class EraPage0 extends NewWizardPageTemplate
 	 */
 	public EraPage0() {
 		super("eraPage0");
-		setTitle("New era wizard");
+		setTitle("Era wizard");
 		setDescription("Create a new era");
 	}
 

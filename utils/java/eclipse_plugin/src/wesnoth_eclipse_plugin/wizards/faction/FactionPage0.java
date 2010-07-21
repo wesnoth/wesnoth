@@ -43,7 +43,7 @@ public class FactionPage0 extends NewWizardPageTemplate
 	 */
 	public FactionPage0() {
 		super("factionPage0");
-		setTitle("New faction wizard");
+		setTitle("Faction wizard");
 		setDescription("Create a new faction");
 	}
 

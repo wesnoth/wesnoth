@@ -11,6 +11,8 @@ package wesnoth_eclipse_plugin.wizards.campaign;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.dialogs.WizardNewProjectCreationPage;
 
+import wesnoth_eclipse_plugin.Activator;
+
 public class CampaignPage0 extends WizardNewProjectCreationPage
 {
 	public CampaignPage0() {
@@ -21,7 +23,11 @@ public class CampaignPage0 extends WizardNewProjectCreationPage
 	public void createControl(Composite parent)
 	{
 		super.createControl(parent);
+		setTitle("Campaign wizard");
 		setMessage("Specify the name of the campaign project.");
+
+		Activator.getDefault().getWorkbench().getHelpSystem().setHelp(getShell(),
+			"Wesnoth_Eclipse_Plugin.wizardHelp");
 	}
 
 	@Override

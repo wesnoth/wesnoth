@@ -266,12 +266,25 @@
        <category name="Wesnoth"
              id="wesnoth.eclipse.newWizards">
        </category>
-       <wizard name="Wesnoth Campaign"
-           icon="icons/wesnoth-icon_16.png"
-		   category="wesnoth.eclipse.newWizards"
-           class="wesnoth_eclipse_plugin.wizards.campaign.CampaignNewWizard"
-           id="wesnoth_eclipse_plugin.wizards.CampaignNewWizard"
-           project="true">
+       <wizard
+             category="wesnoth.eclipse.newWizards"
+             class="wesnoth_eclipse_plugin.wizards.emptyproject.EmptyProjectNewWizard"
+             icon="icons/wesnoth-icon_16.png"
+             id="wesnoth_eclipse_plugin.wizard.emptyProjectWizard"
+             name="Empty project"
+             project="true">
+          <description>
+             Creates a new empty project
+          </description>
+       </wizard>
+       <wizard
+             category="wesnoth.eclipse.newWizards"
+             class="wesnoth_eclipse_plugin.wizards.campaign.CampaignNewWizard"
+             helpHref="Wesnoth Eclipse Plugin/html/gettingstarted/wizards/campaign.html"
+             icon="icons/wesnoth-icon_16.png"
+             id="wesnoth_eclipse_plugin.wizards.CampaignNewWizard"
+             name="Wesnoth Campaign"
+             project="true">
            <description>Create a Wesnoth campaign.</description>
        </wizard>
        
@@ -328,14 +341,6 @@
           <description>
              Launches the wizard based on the selected tag.
           </description>
-       </wizard>
-       <wizard
-             category="wesnoth.eclipse.newWizards"
-             class="wesnoth_eclipse_plugin.wizards.emptyproject.EmptyProjectNewWizard"
-             icon="icons/wesnoth-icon_16.png"
-             id="wesnoth_eclipse_plugin.wizard.emptyProjectWizard"
-             name="Empty project"
-             project="true">
        </wizard>
    </extension>
    <extension

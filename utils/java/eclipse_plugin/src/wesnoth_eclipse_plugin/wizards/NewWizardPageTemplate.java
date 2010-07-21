@@ -57,11 +57,4 @@ public class NewWizardPageTemplate extends WizardPage
 		}
 		return null;
 	}
-
-	@Override
-	public void performHelp()
-	{
-		//TODO: create all helps in 'contextHelp.xml'
-		//PlatformUI.getWorkbench().getHelpSystem().displayHelp(" .wizardHelp");
-	}
 }
