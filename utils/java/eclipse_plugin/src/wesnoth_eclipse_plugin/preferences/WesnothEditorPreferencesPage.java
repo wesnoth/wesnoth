@@ -23,7 +23,7 @@ import org.eclipse.ui.IWorkbenchPreferencePage;
 
 import wesnoth_eclipse_plugin.Activator;
 import wesnoth_eclipse_plugin.Constants;
-
+//TODO: add more preferences: wmltools, arguments for various tools
 /**
  * This class represents a preference page that
  * is contributed to the Preferences dialog. By

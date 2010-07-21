@@ -36,10 +36,10 @@ public class WMLTools
 	 * Runs "wmlindent" on the specified resource (directory/file)
 	 *
 	 * @param resourcePath the full path of the target where "wmlindent" will be runned on
-	 * @param writeToConsole true to write the output of "wmlindent" in user's console
 	 * @param stdin the standard input string to feed "wmlindent"
 	 * @param dryrun true to run "wmlindent" in dry mode - i.e. no changes in the config file.
-	 * @param useThread whether the tool should be runned in a new thread or not
+	 * @param stdout The array of streams where to output the stdout content
+	 * @param stderr The array of streams where to output the stderr content
 	 */
 	public static ExternalToolInvoker runWMLIndent(String resourcePath, String stdin,
 			boolean dryrun, OutputStream[] stdout, OutputStream[] stderr)
@@ -68,9 +68,20 @@ public class WMLTools
 	 * Runs "wmllint" on the specified resource (directory/file)
 	 *
 	 * @param resourcePath the full path of the target where "wmllint" will be runned on
-	 * @param writeToConsole true to write the output of "wmllint" in user's console
 	 * @param dryrun true to run "wmllint" in dry mode - i.e. no changes in the config file.
-	 * @param useThread whether the tool should be runned in a new thread or not
+	 */
+	public static ExternalToolInvoker runWMLLint(String resourcePath, boolean dryrun)
+	{
+		return runWMLLint(resourcePath, dryrun, new OutputStream[0], new OutputStream[0]);
+	}
+
+	/**
+	 * Runs "wmllint" on the specified resource (directory/file)
+	 *
+	 * @param resourcePath the full path of the target where "wmllint" will be runned on
+	 * @param dryrun true to run "wmllint" in dry mode - i.e. no changes in the config file.
+	 * @param stdout The array of streams where to output the stdout content
+	 * @param stderr The array of streams where to output the stderr content
 	 */
 	public static ExternalToolInvoker runWMLLint(String resourcePath, boolean dryrun,
 				OutputStream[] stdout, OutputStream[] stderr)
@@ -100,8 +111,19 @@ public class WMLTools
 	 * Runs "wmlscope" on the specified resource (directory/file)
 	 *
 	 * @param resourcePath the full path of the target where "wmlindent" will be runned on
-	 * @param writeToConsole true to write the output of "wmlindent" in user's console
-	 * @param useThread whether the tool should be runned in a new thread or not
+	 * @return
+	 */
+	public static ExternalToolInvoker runWMLScope(String resourcePath)
+	{
+		return runWMLScope(resourcePath, new OutputStream[0], new OutputStream[0]);
+	}
+
+	/**
+	 * Runs "wmlscope" on the specified resource (directory/file)
+	 *
+	 * @param resourcePath the full path of the target where "wmlindent" will be runned on
+	 * @param stdout The array of streams where to output the stdout content
+	 * @param stderr The array of streams where to output the stderr content
 	 * @return
 	 */
 	public static ExternalToolInvoker runWMLScope(String resourcePath,
@@ -127,6 +149,13 @@ public class WMLTools
 		return runPythonScript(arguments, null, stdout, stderr);
 	}
 
+	/**
+	 * Runs the specified WMLTools as a workspace job
+	 * @param tool The tool to run.
+	 * Currently only the following tools are supported: WMLLINT, WMLSCOPE, WMLINDENT
+	 * @param targetPath If this is not null if will use the targetpath as the
+	 * argument for launching the tool
+	 */
 	public static void runWMLToolAsWorkspaceJob(final Tools tool, final String targetPath)
 	{
 		if (tool == Tools.WESNOTH_ADDON_MANAGER)
@@ -253,7 +282,13 @@ public class WMLTools
 		job.schedule();
 	}
 
-
+	/**
+	 * Runs the wesnoth addon manager for uploading the specified container
+	 * @param containerPath The container to upload
+	 * @param stdout The array of streams where to output the stdout content
+	 * @param stderr The array of streams where to output the stderr content
+	 * @return
+	 */
 	public static ExternalToolInvoker runWesnothAddonManager(String containerPath,
 			OutputStream[] stdout, OutputStream[] stderr)
 	{
@@ -314,8 +349,8 @@ public class WMLTools
 	 * @param arguments the arguments of the "python" executable.
 	 *        The first argument should be the script file name
 	 * @param stdin A string that will be written to stdin of the python script
-	 * @param stdout An array of writers where to write the stderr from the script
-	 * @param stderr An array of writers where to write the stderr from the script
+	 * @param stdout An array of streams where to write the stdout from the script
+	 * @param stderr An array of streams where to write the stderr from the script
 	 * @return
 	 */
 	public static ExternalToolInvoker runPythonScript(List<String> arguments, String stdin,

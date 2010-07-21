@@ -27,16 +27,21 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.jface.text.IDocument;
+import org.eclipse.ui.editors.text.TextFileDocumentProvider;
+import org.eclipse.ui.texteditor.IDocumentProvider;
 
 import wesnoth_eclipse_plugin.Constants;
 import wesnoth_eclipse_plugin.Logger;
 import wesnoth_eclipse_plugin.preferences.Preferences;
 import wesnoth_eclipse_plugin.templates.ReplaceableParameter;
 import wesnoth_eclipse_plugin.utils.AntUtils;
+import wesnoth_eclipse_plugin.utils.ExternalToolInvoker;
 import wesnoth_eclipse_plugin.utils.PreprocessorUtils;
 import wesnoth_eclipse_plugin.utils.ProjectUtils;
 import wesnoth_eclipse_plugin.utils.ResourceUtils;
 import wesnoth_eclipse_plugin.utils.StringUtils;
+import wesnoth_eclipse_plugin.utils.WMLTools;
 import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
 
 public class WesnothProjectBuilder extends IncrementalProjectBuilder
@@ -74,13 +79,13 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 					"Please set the wesnoth user dir before creating the content");
 			return null;
 		}
+		monitor.worked(5);
 
-		// run the ant job to copy the whole project
-		// in the user add-ons directory (incremental)
+		// check for 'build.xml' existance
 		if (!(new File(getProject().getLocation().toOSString() + "/build.xml").exists()))
 		{
 			Logger.getInstance().log("build.xml is missing. regenerating",
-					"The 'build.xml' file is missing. It will be regenerated.");
+					"The 'build.xml' file is missing. The file will be regenerated.");
 
 			List<ReplaceableParameter> params = new ArrayList<ReplaceableParameter>();
 			params.add(new ReplaceableParameter("$$project_name", getProject().getName()));
@@ -90,12 +95,14 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 					getProject().getLocation().toOSString() + "/build.xml", params);
 
 			getProject().refreshLocal(IResource.DEPTH_ONE, new NullProgressMonitor());
+
 			Logger.getInstance().log("build.xml regenerated",
 					"The 'build.xml' file was successfully regenerated.");
 		}
 		monitor.worked(2);
 
-		// Ant copy
+		// run the ant job to copy the whole project
+		// in the user add-ons directory (incremental)
 		monitor.subTask("Copying resources...");
 		HashMap<String, String> properties = new HashMap<String, String>();
 		properties.put("wesnoth.user.dir",
@@ -106,7 +113,6 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 				getProject().getLocation().toOSString() + "/build.xml",
 				properties, true);
 		Logger.getInstance().log(result);
-
 		monitor.worked(10);
 
 		if (result == null)
@@ -158,21 +164,10 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 				deleteMarkers(file);
 
 				monitor.subTask("Preprocessing...");
-				PreprocessorUtils.preprocessFile(WorkspaceUtils.getPathRelativeToUserDir(file), WorkspaceUtils.getTemporaryFolder(), null, false);
+				PreprocessorUtils.preprocessFile(
+						WorkspaceUtils.getPathRelativeToUserDir(file),
+						WorkspaceUtils.getTemporaryFolder(), null, false);
 				monitor.worked(5);
-
-				// TODO: here be dragons
-				// - add markers for wmllint, wmlscope
-				// - need a better output from wmltools
-
-				/*
-				IMarker[] resIMarkers = file.findMarkers(MARKER_TYPE, false, IResource.DEPTH_ZERO);
-				Logger.print("found markers: " + resIMarkers.length);
-
-				ExternalToolInvoker invoker = new ExternalToolInvoker(TOOL_PATH, resource.getFullPath().toOSString(), true);
-				Logger.print("Tool: "+TOOL_PATH+ " checking file: "+resource.getFullPath().toOSString());
-				invoker.run();
-				invoker.waitFor();
 
 				// we need to find the correct column start/end based on the current document
 				// (or get that from the tool)
@@ -180,21 +175,35 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 				provider.connect(file);
 				IDocument document = provider.getDocument(file);
 
-				String line;MarkerToken token;
-				while((line  = invoker.readOutputLine()) != null)
+				// wmllint
+				monitor.subTask("WMLLint pass...");
+				ExternalToolInvoker tool = WMLTools.runWMLLint(file.getLocation().toOSString(), true);
+				tool.waitForTool();
+
+				String[] output = StringUtils.getLines(tool.getErrorContent());
+				MarkerToken token;
+				for(String line : output)
 				{
 					token = MarkerToken.parseToken(line);
-					IMarker marker = file.createMarker(MARKER_TYPE);
-					marker.setAttribute(IMarker.MESSAGE, token.getMessage());
-					if (token.getColumnEnd() != 0)
-					{
-						marker.setAttribute(IMarker.CHAR_START,document.getLineOffset(token.getLine()-1) + token.getColumnStart());
-						marker.setAttribute(IMarker.CHAR_END, document.getLineOffset(token.getLine()-1) + token.getColumnEnd());
-					}
-					marker.setAttribute(IMarker.LINE_NUMBER, token.getLine());
-					marker.setAttribute(IMarker.SEVERITY,token.getType().toMarkerSeverity());
+					if (token == null)
+						continue;
+					addMarker(file, token, document);
 				}
-				*/
+				monitor.worked(20);
+
+				// wmlscope
+				monitor.subTask("WMLScope pass...");
+				tool = WMLTools.runWMLScope(file.getLocation().toOSString());
+				tool.waitForTool();
+				output = StringUtils.getLines(tool.getErrorContent());
+				for(String line : output)
+				{
+					token = MarkerToken.parseToken(line);
+					if (token == null)
+						continue;
+					addMarker(file, token, document);
+				}
+				monitor.worked(20);
 
 			} catch (Exception e)
 			{
@@ -203,6 +212,11 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 		}
 	}
 
+	/**
+	 * Returns true if the specified resource should be skipped by the builder
+	 * @param res
+	 * @return
+	 */
 	private boolean isResourceIgnored(IResource res)
 	{
 		if (ProjectUtils.getPropertiesForProject(getProject()) == null)
@@ -226,19 +240,28 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 		return false;
 	}
 
-	private void addMarker(IFile file, String message, int lineNumber, int severity)
+	/**
+	 * Adds the specified MarkerToken in the selected file
+	 * @param file
+	 * @param token
+	 * @param document
+	 */
+	private void addMarker(IFile file, MarkerToken token, IDocument document)
 	{
 		try
 		{
 			IMarker marker = file.createMarker(Constants.BUILDER_MARKER_TYPE);
-			marker.setAttribute(IMarker.MESSAGE, message);
-			marker.setAttribute(IMarker.SEVERITY, severity);
-			if (lineNumber == -1)
+			marker.setAttribute(IMarker.MESSAGE, token.getMessage());
+			if (token.getColumnEnd() != 0)
 			{
-				lineNumber = 1;
+				marker.setAttribute(IMarker.CHAR_START,
+					document.getLineOffset(token.getLine() - 1) + token.getColumnStart());
+				marker.setAttribute(IMarker.CHAR_END,
+					document.getLineOffset(token.getLine() - 1) + token.getColumnEnd());
 			}
-			marker.setAttribute(IMarker.LINE_NUMBER, lineNumber);
-		} catch (CoreException e)
+			marker.setAttribute(IMarker.LINE_NUMBER, token.getLine());
+			marker.setAttribute(IMarker.SEVERITY,token.getType().toMarkerSeverity());
+		} catch (Exception e)
 		{
 			Logger.getInstance().logException(e);
 		}
@@ -254,7 +277,6 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 			Logger.getInstance().logException(e);
 		}
 	}
-
 
 	class SampleDeltaVisitor implements IResourceDeltaVisitor
 	{

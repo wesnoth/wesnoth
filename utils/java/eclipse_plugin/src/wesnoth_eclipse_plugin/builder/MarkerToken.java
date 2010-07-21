@@ -41,8 +41,12 @@ public class MarkerToken
 	public static MarkerToken parseToken(String line)
 	{
 		// severity#Line{:columnStart-columnEnd}#message
+		//TODO: speak with esr about the error format
 		StringTokenizer tokenizer = new StringTokenizer(line,"#");
-		try{
+		if (tokenizer.countTokens() < 3)
+			return null;
+		try
+		{
 			int lineIndex=1,columnIndexStart=0,columnIndexEnd=0;
 			MarkerTokenType type =
 					MarkerTokenType.valueOf(tokenizer.nextToken().toUpperCase());
