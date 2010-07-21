@@ -206,9 +206,7 @@ class Parser:
         If this is not called then the .parse method will assume the
         WML is already preprocessed.
         """
-        output = tempfile.NamedTemporaryFile(prefix = "wmlparser_",
-            suffix = ".cfg").name
-        if not os.path.exists(output): os.mkdir(output)
+        output = tempfile.mkdtemp(prefix="wmlparser_")
         p_option = "-p=" + defines if defines else "-p "
         commandline = [self.wesnoth_exe, p_option, self.path,
             output]
