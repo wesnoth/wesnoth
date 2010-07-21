@@ -485,7 +485,8 @@ class ana_network_manager : public ana::listener_handler,
          * @param out : The output stream as output.
          */
         void compress_config( const config& cfg, std::ostringstream& out);
-//         std::string compress_config( const config& cfg);
+
+        std::string compress_config( const config& cfg);
 
         /**
          * Read a config object from an input buffer.

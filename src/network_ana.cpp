@@ -234,6 +234,17 @@ namespace network {
     }
 
 
+    void add_bandwidth_out(const std::string& /*packet_type*/, size_t /*len*/)
+    {
+        //TODO: implement? (apparently called from network_worker only
+    }
+
+    void add_bandwidth_in(const std::string& /*packet_type*/, size_t /*len*/)
+    {
+        //TODO: implement? (apparently called from network_worker only
+    }
+
+
     std::string get_bandwidth_stats_all()
     {
         return std::string(""); //TODO: implement

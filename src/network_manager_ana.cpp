@@ -811,18 +811,14 @@ size_t ana_network_manager::number_of_connections() const
     return total;
 }
 
-/*
-std::string ana_network_manager::compress_config( const config& cfg)
+
+std::string ana_network_manager::compress_config( const config& cfg )
 {
-    std::stringstream out;
-    boost::iostreams::filtering_stream<boost::iostreams::output> filter;
-    filter.push(boost::iostreams::gzip_compressor());
-    filter.push(out);
-    write(filter, cfg);
-    out.flush();
+    std::ostringstream out;
+    compress_config( cfg, out );
     return out.str( );
 }
-*/
+
 
 void ana_network_manager::compress_config( const config& cfg, std::ostringstream& out)
 {
@@ -845,11 +841,7 @@ size_t ana_network_manager::send_all( const config& cfg, bool zipped )
 {
     std::cout << "DEBUG: Sending to everybody. " << (zipped ? "Zipped":"Raw") << "\n";
 
-    std::ostringstream out;
-    compress_config( cfg, out);
-
-    const std::string output_string = out.str();
-//     const std::string output_string = compress_config(cfg);
+    const std::string output_string = compress_config(cfg);
 
     std::set<ana_component*>::iterator it;
 
@@ -882,11 +874,7 @@ size_t ana_network_manager::send( network::connection connection_num , const con
 
     std::cout << "DEBUG: Single send...\n";
 
-    std::ostringstream out;
-    compress_config( cfg, out);
-
-    const std::string output_string = out.str();
-//     const std::string output_string = compress_config(cfg);
+    const std::string output_string = compress_config(cfg);
 
 
     return send_raw_data( output_string.c_str(), output_string.size(), connection_num );
@@ -938,11 +926,7 @@ void ana_network_manager::send_all_except(const config& cfg, network::connection
 {
     std::cout << "DEBUG: send_all_except " << connection_num << "\n";
 
-    std::ostringstream out;
-    compress_config( cfg, out);
-
-    const std::string output_string = out.str();
-//     const std::string output_string = compress_config(cfg);
+    const std::string output_string = compress_config(cfg);
 
 
     ana_component_set::iterator it;

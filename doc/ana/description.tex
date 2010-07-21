@@ -72,10 +72,11 @@ whatsoever.
 \section{Introduction}
 
 \textbf{Ana} (stands for Asynchronous  Network API) is an API designed
-to  help   you  develop  server  and  client   applications  using  an
-asynchronous model  (i.e.  non-blocking operations .) By  using it the
-progammer doesn't need  to pay too much attention  to the network code
-itself but can concentrate on other features relevant to the program.
+to help you develop network applications with server and client parts.
+To implement  this functionality, the  API uses an  asynchronous model
+(i.e.  non-blocking operations .) This way, the progammer doesn't need
+to  pay  too  much  attention  to  the network  code  itself  but  can
+concentrate on other features relevant to the program.
 
 Also, \ana \ comes with  an accompanying implementation.  Hence, it is
 also a library that implements  the API features.  For example, MPI is
@@ -225,6 +226,8 @@ The main classes to be used from the \ana \ API are:
   connect to  a running server.  To create a  pointer to an  object of
   this type use the \ana::\texttt{create\_client} function.
 
+\item[ana::timer] :  An asynchronous deadline  timer that can  be used
+  for general  purposes.
 \end{description}
 
 \subsection{Main Interfaces}
@@ -268,6 +271,16 @@ Here are a few examples of how to construct time durations:
   \hline
 \end{tabular}
 \end{center}
+
+There are  two ways  of creating  timers, via an  \ana \  component or
+using the type directly. You should always try to use ana's server and
+client     objects    to    create     them    via     the    function
+\ana::\texttt{create\_timer}.
+
+The easy way is using  the type directly to declare regular variables.
+However, this  burdens the  memory greatly in  comparison of  using an
+\ana \  component (either  server or client)  to create the  timer for
+you.
 
 \section{Using the API}
 
