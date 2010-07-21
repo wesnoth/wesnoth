@@ -19,6 +19,7 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.List;
 
@@ -33,7 +34,7 @@ public class WizardGeneratorPageTag extends NewWizardPageTemplate
 {
 	private java.util.List<Tag>						tags_;
 	private HashMap<String, java.util.List<String>>	content_;
-	private int										startIndex_, endIndex_;
+	private int									startIndex_, endIndex_;
 	private Composite								container_;
 	private byte									indent_;
 
@@ -62,7 +63,8 @@ public class WizardGeneratorPageTag extends NewWizardPageTemplate
 		for (int i = startIndex_; i <= endIndex_; i++)
 		{
 			final Tag tag = tags_.get(i);
-			java.util.List<String> tmp = new ArrayList<String>();
+			if (tag.Cardinality == '-')
+				continue;
 
 			Group tagGroup = new Group(container_, SWT.NONE);
 			tagGroup.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
@@ -87,7 +89,7 @@ public class WizardGeneratorPageTag extends NewWizardPageTemplate
 				{
 					if (!(e.getSource() instanceof Button))
 						return;
-					addNewItem((List) ((Button) e.getSource()).getData("list"), tag.Name);
+					addNewItem((List) ((Button) e.getSource()).getData("list"), tag);
 				}
 			});
 
@@ -105,24 +107,31 @@ public class WizardGeneratorPageTag extends NewWizardPageTemplate
 				}
 			});
 
-			content_.put(tag.Name, tmp);
+			tagGroup.setData("list", list);
+			tagGroup.setData("tag", tag);
+			content_.put(tag.Name, new ArrayList<String>());
 		}
-		setPageComplete(true);
-
-		//TODO: add checks for list's count
+		updatePageIsComplete();
 	}
 
-	private void addNewItem(List targetList, String tagName)
+	private void addNewItem(List targetList, Tag tag)
 	{
-		//TODO: check for multiple addings
+		if ((tag.Cardinality == '1' || tag.Cardinality == '?') &&
+			targetList.getItemCount() == 1)
+		{
+			GUIUtils.showWarnMessageBox("You can't add more than one item.");
+			return;
+		}
+
 		WizardGenerator wizard =
-				new WizardGenerator("Create a new " + tagName, tagName, (byte) (indent_ + 1));
+				new WizardGenerator("Create a new " + tag.Name, tag.Name, (byte) (indent_ + 1));
 		WizardUtils.launchWizard(wizard, getShell(), null);
 		if (wizard.isFinished())
 		{
 			targetList.add(wizard.getObjectName() + targetList.getItemCount());
-			content_.get(tagName).add(wizard.getData().toString());
+			content_.get(tag.Name).add(wizard.getData().toString());
 		}
+		updatePageIsComplete();
 	}
 
 	private void removeItem(List targetList, String tagName)
@@ -135,6 +144,28 @@ public class WizardGeneratorPageTag extends NewWizardPageTemplate
 
 		content_.get(tagName).remove(targetList.getSelectionIndex());
 		targetList.remove(targetList.getSelectionIndex());
+		updatePageIsComplete();
+	}
+
+	private void updatePageIsComplete()
+	{
+		setPageComplete(false);
+		for(Control control : container_.getChildren())
+		{
+			if (!(control instanceof Group))
+				continue;
+
+			int cnt = ((List)control.getData("list")).getItemCount();
+			Tag tag = (Tag)control.getData("tag");
+			if (cnt == 0 && tag.Cardinality == '1')
+			{
+				setErrorMessage("You need to have a [" + tag.Name + "] defined.");
+				return;
+			}
+		}
+
+		setPageComplete(true);
+		setErrorMessage(null);
 	}
 
 	public String getContent()
