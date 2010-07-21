@@ -809,7 +809,7 @@ timage::timage(const config& cfg)
 
 		if(!tmp) {
 			ERR_GUI_D << "Image: '" << cfg["name"]
-					<< "'not found and won't be drawn.\n";
+					<< "' not found and won't be drawn.\n";
 			return;
 		}
 
