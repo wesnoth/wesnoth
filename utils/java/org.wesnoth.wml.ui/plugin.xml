@@ -6,12 +6,13 @@
     <extension
             point="org.eclipse.ui.editors">
         <editor
-            class="org.wesnoth.ui.WMLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
-            contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
-            default="true"
-            extensions="cfg"
-            id="org.wesnoth.WML"
-            name="WML Editor">
+              class="org.wesnoth.ui.WMLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
+              contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
+              default="true"
+              extensions="cfg, map"
+              icon="icons/wesnoth-icon_16.png"
+              id="org.wesnoth.WML"
+              name="WML Editor">
         </editor>
     </extension>
     <extension

@@ -280,7 +280,6 @@
        <wizard
              category="wesnoth.eclipse.newWizards"
              class="wesnoth_eclipse_plugin.wizards.campaign.CampaignNewWizard"
-             helpHref="Wesnoth Eclipse Plugin/html/gettingstarted/wizards/campaign.html"
              icon="icons/wesnoth-icon_16.png"
              id="wesnoth_eclipse_plugin.wizards.CampaignNewWizard"
              name="Wesnoth Campaign"
@@ -440,13 +439,9 @@
             </command>
             <command
                   commandId="Wesnoth_Eclipse_Plugin.commands.reloadFiles"
-                  label="Reload files"
+                  label="Reload cache"
                   style="push">
             </command>
-            <separator
-                  name="separator3"
-                  visible="true">
-            </separator>
             <command
                   commandId="org.eclipse.ui.window.preferences"
                   label="Open plugin&apos;s preferences"
@@ -456,6 +451,10 @@
                      value="wml_plugin_preferences">
                </parameter>
             </command>
+            <separator
+                  name="separator3"
+                  visible="true">
+            </separator>
             <command
                   commandId="Wesnoth_Eclipse_Plugin.commands.test"
                   label="Test (FOR DEBUG ONLY!!)"
@@ -477,6 +476,22 @@
       <initializer
             class="wesnoth_eclipse_plugin.preferences.Preferences">
       </initializer>
+   </extension>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            default="true"
+            extensions="map"
+            icon="icons/wesnoth_editor-icon_16.png"
+            id="Wesnoth_Eclipse_Plugin.mapFileEditor"
+            launcher="wesnoth_eclipse_plugin.editors.MapFileEditor"
+            name="Map files editor">
+      </editor>
+      <editor
+            default="false"
+            id="Wesnoth Eclipse Plugin.editor2"
+            name="name">
+      </editor>
    </extension>
 
 </plugin>
