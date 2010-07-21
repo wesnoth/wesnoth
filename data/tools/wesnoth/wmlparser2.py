@@ -190,11 +190,11 @@ class Parser:
         self.parse()
 
     def parse_text(self, text, defines = ""):
-        self.file = tempfile.NamedTemporaryFile(prefix = "wmlparser_",
+        temp = tempfile.NamedTemporaryFile(prefix = "wmlparser_",
             suffix = ".cfg")
-        self.file.write(text)
-        self.file.flush()
-        self.path = self.file.name
+        temp.write(text)
+        temp.flush()
+        self.path = temp.name
         self.preprocess(defines)
         self.parse()
 
@@ -206,7 +206,8 @@ class Parser:
         If this is not called then the .parse method will assume the
         WML is already preprocessed.
         """
-        output = "/tmp/wmlparser"
+        output = tempfile.NamedTemporaryFile(prefix = "wmlparser_",
+            suffix = ".cfg").name
         if not os.path.exists(output): os.mkdir(output)
         p_option = "-p=" + defines if defines else "-p "
         commandline = [self.wesnoth_exe, p_option, self.path,
