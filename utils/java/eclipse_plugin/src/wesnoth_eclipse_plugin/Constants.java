@@ -8,6 +8,8 @@
  *******************************************************************************/
 package wesnoth_eclipse_plugin;
 
+import java.util.Locale;
+
 import org.eclipse.xtext.ui.XtextProjectHelper;
 
 /**
@@ -19,6 +21,12 @@ public class Constants
 	public static final String PLUGIN_FULL_PATH =
 		Constants.class.getProtectionDomain().getCodeSource().getLocation().getPath() + "/";
 	public static final String PLUGIN_ID  = "Wesnoth_Eclipse_Plugin";
+
+	/**
+	 * The boolean value whether this machine is running windows or not
+	 */
+	public static boolean IS_WINDOWS_MACHINE =
+		System.getProperty("os.name").toLowerCase(Locale.ENGLISH).contains("windows");
 
 	/** Preferences Constants **/
 	public static final String	P_WESNOTH_EXEC_PATH		= "wesnoth_exec_path";

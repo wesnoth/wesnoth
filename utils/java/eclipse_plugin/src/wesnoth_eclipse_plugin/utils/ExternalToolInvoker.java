@@ -9,16 +9,19 @@
 package wesnoth_eclipse_plugin.utils;
 
 import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
+import wesnoth_eclipse_plugin.Constants;
 import wesnoth_eclipse_plugin.Logger;
 
-//TODO: add tail on windows for wesnoth.exe
 /**
  * A tools to invoke an external tool/executable
  */
@@ -38,6 +41,8 @@ public class ExternalToolInvoker
 	private Thread monitorErrorThread_;
 	private String errorContent_ 		= "";
 
+	private List<String> arguments_;
+
 	/**
 	 * Creates an external tool invoker with specified options
 	 *
@@ -49,6 +54,8 @@ public class ExternalToolInvoker
 		commandline.add(fileName);
 		if (arguments != null)
 			commandline.addAll(arguments);
+
+		arguments_ = commandline;
 
 		processBuilder_ = new ProcessBuilder(commandline);
 		Logger.getInstance().log(String.format("Invoking tool %s with args: %s\n",
@@ -63,9 +70,24 @@ public class ExternalToolInvoker
 		try
 		{
 			process_ = processBuilder_.start();
+			Reader stdoutReader = null;
+			Reader stderrReader = null;
 
-			bufferedReaderOutput_ = new BufferedReader(new InputStreamReader(process_.getInputStream()));
-			bufferedReaderError_ = new BufferedReader(new InputStreamReader(process_.getErrorStream()));
+			if (arguments_.get(0).toLowerCase(Locale.ENGLISH).contains("wesnoth.exe")  &&
+				Constants.IS_WINDOWS_MACHINE)
+			{
+				String wesnothParent = new File(arguments_.get(0)).getParent() + "/";
+				stdoutReader = new FileReader(wesnothParent + "stdout.txt");
+				stderrReader = new FileReader(wesnothParent + "stderr.txt");
+			}
+			else
+			{
+				stdoutReader = new InputStreamReader(process_.getInputStream());
+				stderrReader = new InputStreamReader(process_.getErrorStream());
+			}
+
+			bufferedReaderOutput_ = new BufferedReader(stdoutReader);
+			bufferedReaderError_ = new BufferedReader(stderrReader);
 		} catch (IOException e)
 		{
 			Logger.getInstance().logException(e);
