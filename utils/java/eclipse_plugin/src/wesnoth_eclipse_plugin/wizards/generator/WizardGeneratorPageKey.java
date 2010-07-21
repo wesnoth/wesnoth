@@ -57,6 +57,9 @@ public class WizardGeneratorPageKey extends NewWizardPageTemplate
 		{
 			TagKey key = keys_.get(i);
 
+			if (key.Cardinality == '-')
+				continue;
+
 			Label label = new Label(container_, SWT.NONE);
 			label.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
 			// add star to required items
