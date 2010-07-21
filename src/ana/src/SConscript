@@ -8,5 +8,6 @@ ana = env.Library("ana", Split("""
     asio_server.cpp
     asio_client.cpp
     asio_proxy_connection.cpp
+    asio_timers.cpp
     """))
 Return("ana")

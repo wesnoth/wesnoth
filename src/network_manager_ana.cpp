@@ -1265,9 +1265,10 @@ void ana_network_manager::handle_disconnect(ana::error_code /*error_code*/, ana:
     if ( it != components_.end() )
     {
         std::cout << "DEBUG: Removing bad component.\n";
-        close_connections_and_cleanup();
-//         delete *it;
-//         components_.erase(it);
+//         close_connections_and_cleanup();
+        delete *it;
+        components_.erase(it);
+        disconnected_ids_.push( client );
     }
     else
     {

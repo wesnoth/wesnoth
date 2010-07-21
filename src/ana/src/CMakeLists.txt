@@ -6,7 +6,7 @@ find_package( Boost 1.35 REQUIRED COMPONENTS thread system)
 
 set ( CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -ggdb3" )
 
-set ( common_srcs asio_listener.cpp asio_sender.cpp )
+set ( common_srcs asio_listener.cpp asio_sender.cpp asio_timers.cpp )
 
 set ( server_srcs asio_server.cpp  )
 

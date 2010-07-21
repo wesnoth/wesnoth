@@ -205,8 +205,8 @@ namespace network {
 
         network::connection read_id = ana_manager.read_from( connection_num, cfg, timeout );
 
-        if ( read_id != 0 )
-            std::cout << "Read: " << cfg << "\n";
+//         if ( read_id != 0 )
+//             std::cout << "Read: " << cfg << "\n";
 
         // TODO: check timeout and return 0, or throw if error occured
 
@@ -271,7 +271,7 @@ namespace network {
         if(cfg.empty())
             return 0;
 
-        std::cout << "DEBUG: Sending: " << cfg << "\n";
+//         std::cout << "DEBUG: Sending: " << cfg << "\n";
 
         if( connection_num == 0 )
             return ana_manager.send_all( cfg, gzipped );
@@ -299,7 +299,7 @@ namespace network {
                               const bool          /*gzipped*/,
                               const std::string&  /*packet_type*/)
     {
-        std::cout << "DEBUG: Sending all except " << connection_num << " - " << cfg << "\n";
+//         std::cout << "DEBUG: Sending all except " << connection_num << " - " << cfg << "\n";
         ana_manager.send_all_except(cfg, connection_num);
     }
 

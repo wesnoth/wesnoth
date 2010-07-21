@@ -31,8 +31,6 @@
  */
 
 #include "buffers.hpp"
-#include <boost/bind.hpp>
-#include <boost/thread.hpp>
 
 #ifndef ANA_TIMERS_HPP
 #define ANA_TIMERS_HPP
@@ -134,34 +132,19 @@ namespace ana
             };
 
             // Get the current time.
-            static time_type now()
-            {
-                return std::time(0);
-            }
+            static time_type now();
 
             // Add a duration to a time.
-            static time_type add(const time_type& t, const duration_type& d)
-            {
-                return t + d.value;
-            }
+            static time_type add(const time_type& t, const duration_type& d);
 
             // Subtract one time from another.
-            static duration_type subtract(const time_type& t1, const time_type& t2)
-            {
-                return duration_type(t1 - t2);
-            }
+            static duration_type subtract(const time_type& t1, const time_type& t2);
 
             // Test whether one time is less than another.
-            static bool less_than(const time_type& t1, const time_type& t2)
-            {
-                return t1 < t2;
-            }
+            static bool less_than(const time_type& t1, const time_type& t2);
 
             // Convert to POSIX duration type.
-            static boost::posix_time::time_duration to_posix_duration(const duration_type& d)
-            {
-                return boost::posix_time::seconds(d.value);
-            }
+            static boost::posix_time::time_duration to_posix_duration(const duration_type& d);
         };
     }
 
@@ -178,13 +161,7 @@ namespace ana
     {
         public:
             /** Standard constructor. Creates its own io_service object and runs in its own thread.*/
-            timer() :
-                holds_fresh_io_service_( true ),
-                io_service_(new boost::asio::io_service() ),
-                timer_thread_( NULL ),
-                timer_(*io_service_)
-            {
-            }
+            timer();
 
             /**
              * Construct a timer object using a running io_service object.
@@ -192,13 +169,7 @@ namespace ana
              *
              * @Pre The io_service will be running during the timer's lifetime.
              */
-            timer( boost::asio::io_service& io ) :
-                holds_fresh_io_service_( false ),
-                io_service_( &io ),
-                timer_thread_( NULL ),
-                timer_(*io_service_)
-            {
-            }
+            timer( boost::asio::io_service& io );
 
             /**
              * Wait in background a given amount of milliseconds.
@@ -228,22 +199,10 @@ namespace ana
             }
 
             /** Standard destructor, cancels pending operations if handler wasn't called. */
-            ~timer()
-            {
-                if ( holds_fresh_io_service_ )
-                {
-                    io_service_->stop();
-                    timer_thread_->join();
-                    delete timer_thread_;
-                }
-            }
+            ~timer();
 
         private:
-            void run()
-            {
-                if ( holds_fresh_io_service_ )
-                    io_service_->run_one();
-            }
+            void run();
 
             const bool holds_fresh_io_service_;
 
@@ -278,14 +237,7 @@ namespace ana
                  * \sa timeout_policy
                  * \sa ana::time
                  */
-                void set_timeouts(timeout_policy type, size_t ms = 0)
-                {
-                    timeout_milliseconds_ = ms;
-                    if (ms > 0)
-                        timeout_type_     = type;
-                    else
-                        timeout_type_     = NoTimeouts;
-                }
+                void set_timeouts(timeout_policy type, size_t ms = 0);
 
                 /**
                  * Start a timer given the current configuration.
@@ -312,10 +264,7 @@ namespace ana
                     }
                 }
 
-                bool timeouts_enabled() const
-                {
-                    return (timeout_milliseconds_ != 0) && (timeout_type_ != NoTimeouts);
-                }
+                bool timeouts_enabled() const;
 
                 /**
                  * Creates a timer using the current io_service of this component.
@@ -325,11 +274,7 @@ namespace ana
 
             protected:
                 /** Standard constructor. */
-                timed_sender() :
-                    timeout_type_( NoTimeouts ),
-                    timeout_milliseconds_( 0 )
-                {
-                }
+                timed_sender();
 
                 timeout_policy timeout_type_            /** Type of timer policy.                 */ ;
                 size_t         timeout_milliseconds_    /** Amount of ms relevant to this policy. */ ;

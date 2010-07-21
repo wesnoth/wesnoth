@@ -544,7 +544,8 @@ libana_a_SOURCES = \
 	ana/src/asio_listener.cpp \
 	ana/src/asio_sender.cpp \
 	ana/src/asio_proxy_connection.cpp \
-	ana/src/asio_server.cpp
+	ana/src/asio_server.cpp \
+	ana/src/asio_timers.cpp
 CXXFLAGS += -Iana/api
 endif
 
