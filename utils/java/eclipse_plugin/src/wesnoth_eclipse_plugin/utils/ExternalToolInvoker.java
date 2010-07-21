@@ -9,6 +9,7 @@
 package wesnoth_eclipse_plugin.utils;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -322,9 +323,9 @@ public class ExternalToolInvoker
 					String line = "";
 					while((line = toolInvoker.readOutputLine()) != null)
 					{
-						for (OutputStream outputStream : stdout)
+						for (OutputStream out : stdout)
 						{
-							outputStream.write((line + "\n").getBytes());
+							out.write((line + "\n").getBytes());
 						}
 					}
 				} catch (IOException e)
@@ -340,11 +341,11 @@ public class ExternalToolInvoker
 				try
 				{
 					String line = "";
-					while((line = toolInvoker.readOutputLine()) != null)
+					while((line = toolInvoker.readErrorLine()) != null)
 					{
-						for (OutputStream outputStream : stderr)
+						for (OutputStream err : stderr)
 						{
-							outputStream.write((line + "\n").getBytes());
+							err.write((line + "\n").getBytes());
 						}
 					}
 				} catch (IOException e)
