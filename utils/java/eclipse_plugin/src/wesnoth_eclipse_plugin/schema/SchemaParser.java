@@ -9,6 +9,7 @@
 package wesnoth_eclipse_plugin.schema;
 
 import java.io.File;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Stack;
 
@@ -42,7 +43,6 @@ public class SchemaParser
 	 */
 	public void parseSchema(boolean force)
 	{
-		//TODO: sort tags's keys by cardinality (required first) ??
 		if (parsingDone_ && !force)
 		{
 			Logger.getInstance().log("schema not parsed since there is already in cache.");
@@ -201,29 +201,36 @@ public class SchemaParser
 				}
 			}
 		}
+
+		sortTags();
 		Logger.getInstance().log("parsing done");
 		parsingDone_ = true;
-		//
-		//		try
-		//		{
-		//			BufferedWriter bw = new BufferedWriter(new PrintWriter(new File("D:\\timo\\gw\\data\\schema-out.cfg")));
-		//			// print primitives
-		//			for (Entry<String, String> primitive : primitives.entrySet())
-		//			{
-		//				bw.write(primitive.getKey() + ": " + primitive.getValue() + "\n");
-		//			}
-		//			// print tags
-		//			Tag root = tags.get("root");
-		//			for (Tag tag : root.TagChildren)
-		//			{
-		//				bw.write(getOutput(tag, ""));
-		//			}
-		//			bw.close();
-		//		} catch (Exception e)
-		//		{
-		//			Logger.getInstance().logException(e);
-		//		}
-		//		System.out.println("End writing result");
+	}
+
+	/**
+	 * Sorts the tags in the hashmap
+	 */
+	private void sortTags()
+	{
+		for(Tag tag : tags_.values())
+		{
+			sortChildren(tag);
+		}
+	}
+
+	/**
+	 * Sorts all tag's children by using the cardinality comparator
+	 * @param tag
+	 */
+	private void sortChildren(Tag tag)
+	{
+		Collections.sort(tag.TagChildren, new Tag.CardinalityComparator());
+		Collections.sort(tag.KeyChildren, new TagKey.CardinalityComparator());
+
+		for (Tag childTag : tag.TagChildren)
+		{
+			sortChildren(childTag);
+		}
 	}
 
 	/**

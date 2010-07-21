@@ -8,6 +8,8 @@
  *******************************************************************************/
 package wesnoth_eclipse_plugin.schema;
 
+import java.util.Comparator;
+
 /**
  * This class represents a tag's key parsed by the schema
  */
@@ -43,6 +45,23 @@ public class TagKey
 			 // remove the " "
 			ValueType = valueType.substring(valueType.indexOf(" ") + 1, valueType.length() - 1);
 			IsTranslatable = trans;
+		}
+	}
+	/**
+	 * A tag comparator that sorts just after required cardinality.
+	 */
+	public static class CardinalityComparator implements Comparator<TagKey>
+	{
+		@Override
+		public int compare(TagKey o1, TagKey o2)
+		{
+			if (o1.Cardinality == o2.Cardinality)
+				return 0;
+			if (o1.Cardinality == '1')
+				return -1;
+			else if (o2.Cardinality == '1')
+				return 1;
+			return 0;
 		}
 	}
 }

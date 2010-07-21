@@ -9,6 +9,7 @@
 package wesnoth_eclipse_plugin.schema;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -30,6 +31,7 @@ public class Tag
 		TagChildren = tagChildren;
 		KeyChildren = keyChildren;
 		Cardinality = cardinality;
+		safeInit();
 	}
 
 	public Tag(String name, char cardinality) {
@@ -38,6 +40,7 @@ public class Tag
 		TagChildren = new ArrayList<Tag>();
 		KeyChildren = new ArrayList<TagKey>();
 		Cardinality = cardinality;
+		safeInit();
 	}
 
 	public Tag(String name, String extendedTagName, char cardinality) {
@@ -46,6 +49,15 @@ public class Tag
 		TagChildren = new ArrayList<Tag>();
 		KeyChildren = new ArrayList<TagKey>();
 		Cardinality = cardinality;
+		safeInit();
+	}
+
+	private void safeInit()
+	{
+		if (TagChildren == null)
+			TagChildren = new ArrayList<Tag>();
+		if (KeyChildren == null)
+			KeyChildren = new ArrayList<TagKey>();
 	}
 
 	/**
@@ -77,5 +89,23 @@ public class Tag
 			boolean translatable)
 	{
 		addKey(new TagKey(name, cardinality, valueType, translatable));
+	}
+
+	/**
+	 * A tag comparator that sorts just after required cardinality.
+	 */
+	public static class CardinalityComparator implements Comparator<Tag>
+	{
+		@Override
+		public int compare(Tag o1, Tag o2)
+		{
+			if (o1.Cardinality == o2.Cardinality)
+				return 0;
+			if (o1.Cardinality == '1')
+				return 1;
+			else if (o2.Cardinality == '1')
+				return -1;
+			return 0;
+		}
 	}
 }
