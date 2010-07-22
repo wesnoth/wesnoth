@@ -43,7 +43,7 @@ std::ostream &operator<<(std::ostream &s, wb::side_actions const& side_actions)
 		s << "\n" << "(" << count << ") " << action;
 		count++;
 	}
-	if (count == 1) s << "(empty)";
+	if (count == 1) s << " (empty)";
 	return s;
 }
 
@@ -135,7 +135,7 @@ side_actions::iterator side_actions::execute(side_actions::iterator position)
 side_actions::iterator side_actions::queue_move(const pathfind::marked_route& route, arrow_ptr arrow, fake_unit_ptr fake_unit)
 {
 	action_ptr action(new move(route, arrow, fake_unit));
-	LOG_WB << "Created: " << action <<"\n";
+	LOG_WB << "Queued: " << action <<"\n";
 	return queue_action(action);
 }
 
@@ -144,7 +144,7 @@ side_actions::iterator side_actions::queue_attack(const map_location& target_hex
 		arrow_ptr arrow, fake_unit_ptr fake_unit)
 {
 	action_ptr action(new attack(target_hex, weapon_choice, route, arrow, fake_unit));
-	LOG_WB << "Created: " << action <<"\n";
+	LOG_WB << "Queued: " << action <<"\n";
 	return queue_action(action);
 }
 
@@ -185,6 +185,11 @@ side_actions::iterator side_actions::bump_earlier(side_actions::iterator positio
 	if ((*previous)->get_unit() == (*position)->get_unit())
 		return end();
 
+	int action_number = std::distance(begin(), position) + 1;
+	int last_position = actions_.size() + 1;
+	LOG_WB << "Bumping action #" << action_number << "/" << last_position
+			<< " to position #" << action_number - 1  << "/" << last_position << ".\n";
+
 	action_ptr action = *position;
 	action_queue::iterator after = actions_.erase(position);
 	//be careful, previous iterators have just been invalidated by erase()
@@ -199,8 +204,6 @@ side_actions::iterator side_actions::bump_earlier(side_actions::iterator positio
 //move action toward back of queue
 side_actions::iterator side_actions::bump_later(side_actions::iterator position)
 {
-	DBG_WB << "Bump requested for action from pos. " << position - begin() << "/" << actions_.size()
-			<< " to pos. " << (position + 1) - begin()  << "/" << actions_.size() << ".\n";
 	if (resources::whiteboard->has_planned_unit_map())
 	{
 		ERR_WB << "Modifying action queue while temp modifiers are applied!!!\n";
@@ -212,14 +215,19 @@ side_actions::iterator side_actions::bump_later(side_actions::iterator position)
 		return end();
 
 	//Verify we're not moving an action out-of-order compared to other action of the same unit
-	side_actions::iterator previous = position + 1;
-	if ((*previous)->get_unit() == (*position)->get_unit())
+	side_actions::iterator next = position + 1;
+	if ((*next)->get_unit() == (*position)->get_unit())
 		return end();
+
+	int action_number = std::distance(begin(), position) + 1;
+	int last_position = actions_.size() + 1;
+	LOG_WB << "Bumping action #" << action_number << "/" << last_position
+			<< " to position #" << action_number + 1  << "/" << last_position << ".\n";
 
 	action_ptr action = *position;
 	action_queue::iterator after = actions_.erase(position);
 	//be careful, previous iterators have just been invalidated by erase()
-	DBG_WB << "Action temp. removed, position after is " << after - begin()  << "/" << actions_.size() << ".\n";
+	DBG_WB << "Action temp. removed, position after is #" << after - begin() + 1  << "/" << actions_.size() + 1 << ".\n";
 	action_queue::iterator destination = after + 1;
 	assert(destination >= begin() && destination <= end());
 	action_queue::iterator valid_position = actions_.insert(destination, action);
@@ -240,6 +248,7 @@ side_actions::iterator side_actions::remove_action(side_actions::iterator positi
 	size_t distance = std::distance(begin(), position);
 	if (!actions_.empty() && validate_iterator(position))
 	{
+		LOG_WB << "Erasing action at position #" << distance + 1 << "\n";
 		actions_.erase(position);
 		if (validate_after_delete)
 		{
