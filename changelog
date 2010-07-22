@@ -188,6 +188,7 @@ Version 1.9.0-svn:
      to override them without first removing them
    * [effect] violate_maximum= (for use when increasing HP) takes a real boolean
      value now instead of taking any non-empty value as "true".
+   * Allow checking out terrain defense for units when it's not your turn.
  * Miscellaneous and bug fixes:
    * Added help entry when new unit is created directly in the recall list
    * Defaulted log level to warning again
