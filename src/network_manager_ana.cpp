@@ -479,9 +479,9 @@ void ana_component::set_wesnoth_id( network::connection id )
     wesnoth_id_ = id;
 }
 
-const ana::stats* ana_component::get_stats() const
+const ana::stats* ana_component::get_stats( ana::stat_type type ) const
 {
-    return listener()->get_stats();
+    return listener()->get_stats( type );
 }
 
 void ana_component::add_buffer(ana::detail::read_buffer buffer, ana::net_id id)
@@ -715,7 +715,8 @@ network::connection ana_network_manager::new_connection_id( )
     // No new connection
     return 0;
 }
-const ana::stats* ana_network_manager::get_stats( network::connection connection_num )
+const ana::stats* ana_network_manager::get_stats( network::connection connection_num,
+                                                  ana::stat_type      type)
 {
     ana::net_id id( connection_num );
     std::set<ana_component*>::iterator it;
@@ -725,7 +726,7 @@ const ana::stats* ana_network_manager::get_stats( network::connection connection
         if ( components_.size() > 0 )
         {
             it = components_.begin();
-            return (*it)->get_stats();
+            return (*it)->get_stats( type );
         }
         else
             return NULL;
@@ -736,7 +737,7 @@ const ana::stats* ana_network_manager::get_stats( network::connection connection
                             boost::bind(&ana_component::get_id, _1) == id );
 
         if ( it != components_.end())
-            return (*it)->get_stats();
+            return (*it)->get_stats( type );
 
         return NULL;
     }

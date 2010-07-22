@@ -88,7 +88,7 @@ class ana_component
         void set_wesnoth_id( network::connection ) ;
 
         /** Returns a pointer to the ana::stats object for accumulated network stats. */
-        const ana::stats* get_stats() const;
+        const ana::stats* get_stats( ana::stat_type type = ana::ACCUMULATED ) const;
 
         /** Push a buffer to the queue of incoming messages. */
         void add_buffer(ana::detail::read_buffer buffer, ana::net_id id);
@@ -393,7 +393,8 @@ class ana_network_manager : public ana::listener_handler,
          *
          * @returns A pointer to an ana::stats object of the given component.
          */
-        const ana::stats* get_stats( network::connection connection_num = 0);
+        const ana::stats* get_stats( network::connection connection_num = 0,
+                                     ana::stat_type type = ana::ACCUMULATED);
 
         /** Close all connections and clean up memory. */
         void close_connections_and_cleanup();
