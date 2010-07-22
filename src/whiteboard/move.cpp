@@ -211,19 +211,21 @@ void move::apply_temp_modifier(unit_map& unit_map)
 
 	//TODO: we may need to change unit status here and change it back in remove_temp_modifier
 
-	// Move the unit
 	unit_map::iterator unit_it = resources::units->find(get_source_hex());
 	assert(unit_it != resources::units->end());
-	unit* unit = &*unit_it;
-	DBG_WB << "Temporarily moving unit " << unit->name() << " [" << unit->underlying_id()
+
+	unit& unit = *unit_it;
+	//Modify movement points
+	DBG_WB <<"Changing movement points for unit " << unit.name() << " [" << unit.underlying_id()
+			<< "] from " << unit.movement_left() << " to "
+			<< unit.movement_left() - movement_cost_ << ".\n";
+	unit.set_movement(unit.movement_left() - movement_cost_);
+
+	// Move the unit
+	DBG_WB << "Temporarily moving unit " << unit.name() << " [" << unit.underlying_id()
 			<< "] from (" << get_source_hex() << ") to (" << get_dest_hex() <<")\n";
 	unit_map.move(get_source_hex(), get_dest_hex());
 
-	//Modify movement points accordingly
-	DBG_WB <<"Changing movement points for unit " << unit->name() << " [" << unit->underlying_id()
-			<< "] from " << unit->movement_left() << " to "
-			<< unit->movement_left() - movement_cost_ << ".\n";
-	unit->set_movement(unit->movement_left() - movement_cost_);
 }
 
 void move::remove_temp_modifier(unit_map& unit_map)
@@ -233,13 +235,13 @@ void move::remove_temp_modifier(unit_map& unit_map)
 
 	unit_map::iterator unit_it = resources::units->find(get_dest_hex());
 	assert(unit_it != resources::units->end());
-	unit& unit = *unit_it;
+
+	// Restore movement points
+	unit_it->set_movement(unit_it->movement_left() + movement_cost_);
 
 	// Restore the unit to its original position
 	unit_map.move(get_dest_hex(), get_source_hex());
 
-	// Restore movement points
-	unit.set_movement(unit.movement_left() + movement_cost_);
 }
 
 void move::draw_hex(const map_location& hex)
