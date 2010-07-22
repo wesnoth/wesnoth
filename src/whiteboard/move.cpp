@@ -195,6 +195,12 @@ map_location move::get_dest_hex() const
 	return route_->steps.back();
 }
 
+void move::set_route(const pathfind::marked_route& route)
+{
+	route_.reset(new pathfind::marked_route(route));
+	arrow_->set_path(route_->steps);
+}
+
 void move::apply_temp_modifier(unit_map& unit_map)
 {
 	if (get_source_hex() == get_dest_hex())

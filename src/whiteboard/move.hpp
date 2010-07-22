@@ -57,6 +57,8 @@ public:
 	virtual map_location get_source_hex() const;
 	virtual map_location get_dest_hex() const;
 
+	virtual void set_route(const pathfind::marked_route& route);
+
 	virtual arrow_ptr get_arrow() { return arrow_; }
 	virtual fake_unit_ptr get_fake_unit() { return fake_unit_; }
 
