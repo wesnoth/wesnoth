@@ -247,16 +247,40 @@ namespace network {
 
     std::string get_bandwidth_stats_all()
     {
-        return std::string(""); //TODO: implement
+        std::cout << "DEBUG: get_bandwidth_stats_all() for "
+                  << ana_manager.number_of_connections() << " components.\n";
+
+
+
+        //TODO: packet_type and widths should be modifiable
+        const char*  packet_type  = "network";
+
+        const size_t field_width  = 8;
+        const size_t packet_width = 8;
+        const size_t bytes_width  = 8;
+
+        const ana::stats* stats = ana_manager.get_stats( );
+
+
+        std::stringstream ss;
+        ss  << " " << std::setw(field_width) <<  packet_type << "| "
+            << std::setw(packet_width)<< stats->packets_out()<< "| "
+            << std::setw(bytes_width) << stats->bytes_out() /1024 << "| "
+            << std::setw(packet_width)<< stats->packets_in()<< "| "
+            << std::setw(bytes_width) << stats->bytes_in() /1024 << "\n";
+
+        return ss.str();
     }
 
     std::string get_bandwidth_stats()
     {
-        return std::string(""); //TODO: implement
+        //TODO: check if this is the intention
+        return get_bandwidth_stats_all();
     }
 
-    std::string get_bandwidth_stats(int /*hour*/)
+    std::string get_bandwidth_stats(int hour)
     {
+        std::cout << "DEBUG: get_bandwidth_stats with hour " << hour << "\n";
         return std::string(""); //TODO: implement
     }
 
@@ -295,7 +319,7 @@ namespace network {
                        connection         connection_num,
                        const std::string& /*packet_type*/)
     {
-        std::cout << "DEBUG: Sending Raw: " << std::string( buf, len ) << "\n";
+//         std::cout << "DEBUG: Sending Raw: " << std::string( buf, len ) << "\n";
         ana_manager.send_raw_data( buf, size_t( len ), connection_num );
     }
 

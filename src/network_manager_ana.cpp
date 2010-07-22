@@ -718,16 +718,28 @@ network::connection ana_network_manager::new_connection_id( )
 const ana::stats* ana_network_manager::get_stats( network::connection connection_num )
 {
     ana::net_id id( connection_num );
-
     std::set<ana_component*>::iterator it;
 
-    it = std::find_if( components_.begin(), components_.end(),
-                        boost::bind(&ana_component::get_id, _1) == id );
+    if ( id == 0 )
+    {
+        if ( components_.size() > 0 )
+        {
+            it = components_.begin();
+            return (*it)->get_stats();
+        }
+        else
+            return NULL;
+    }
+    else
+    {
+        it = std::find_if( components_.begin(), components_.end(),
+                            boost::bind(&ana_component::get_id, _1) == id );
 
-    if ( it != components_.end())
-        return (*it)->get_stats();
+        if ( it != components_.end())
+            return (*it)->get_stats();
 
-    return NULL;
+        return NULL;
+    }
 }
 
 void ana_network_manager::close_connections_and_cleanup()

@@ -393,7 +393,7 @@ class ana_network_manager : public ana::listener_handler,
          *
          * @returns A pointer to an ana::stats object of the given component.
          */
-        const ana::stats* get_stats( network::connection connection_num );
+        const ana::stats* get_stats( network::connection connection_num = 0);
 
         /** Close all connections and clean up memory. */
         void close_connections_and_cleanup();
