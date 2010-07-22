@@ -205,7 +205,7 @@ side_actions::iterator side_actions::bump_earlier(side_actions::iterator positio
 	LOG_WB << "Before bumping earlier, " << *this << "\n";
 
 	int action_number = std::distance(begin(), position) + 1;
-	int last_position = actions_.size() + 1;
+	int last_position = actions_.size();
 	LOG_WB << "Bumping action #" << action_number << "/" << last_position
 			<< " to position #" << action_number - 1  << "/" << last_position << ".\n";
 
@@ -254,14 +254,14 @@ side_actions::iterator side_actions::bump_later(side_actions::iterator position)
 	LOG_WB << "Before bumping later, " << *this << "\n";
 
 	int action_number = std::distance(begin(), position) + 1;
-	int last_position = actions_.size() + 1;
+	int last_position = actions_.size();
 	LOG_WB << "Bumping action #" << action_number << "/" << last_position
 			<< " to position #" << action_number + 1  << "/" << last_position << ".\n";
 
 	action_ptr action = *position;
 	action_queue::iterator after = actions_.erase(position);
 	//be careful, previous iterators have just been invalidated by erase()
-	DBG_WB << "Action temp. removed, position after is #" << after - begin() + 1  << "/" << actions_.size() + 1 << ".\n";
+	DBG_WB << "Action temp. removed, position after is #" << after - begin() + 1  << "/" << actions_.size() << ".\n";
 	action_queue::iterator destination = after + 1;
 	assert(destination >= begin() && destination <= end());
 	action_queue::iterator valid_position = actions_.insert(destination, action);
