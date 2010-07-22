@@ -59,8 +59,9 @@ void manager::set_active(bool active)
 	if(is_observer())
 	{
 		active_ = false;
+		LOG_WB << "Whiteboard can't be activated by observers.\n";
 	}
-	else
+	else if (active != active_)
 	{
 		active_ = active;
 		erase_temp_move();
@@ -68,8 +69,10 @@ void manager::set_active(bool active)
 		if (active_)
 		{
 			validate_viewer_actions();
-			LOG_WB << *viewer_actions() << "\n";
+			LOG_WB << "Whiteboard activated! " << *viewer_actions() << "\n";
 			create_temp_move();
+		} else {
+			LOG_WB << "Whiteboard deactivated!\n";
 		}
 	}
 }
@@ -89,12 +92,12 @@ void manager::set_invert_behavior(bool invert)
 			inverted_behavior_ = true;
 			if (active_)
 			{
-				LOG_WB << "Whiteboard deactivated temporarily.\n";
+				DBG_WB << "Whiteboard deactivated temporarily.\n";
 				set_active(false);
 			}
 			else // active_ == false
 			{
-				LOG_WB << "Whiteboard activated temporarily.\n";
+				DBG_WB << "Whiteboard activated temporarily.\n";
 				set_active(true);
 			}
 		}
@@ -106,12 +109,12 @@ void manager::set_invert_behavior(bool invert)
 			inverted_behavior_ = false;
 			if (active_)
 			{
-				LOG_WB << "Whiteboard set back to deactivated status.\n";
+				DBG_WB << "Whiteboard set back to deactivated status.\n";
 				set_active(false);
 			}
 			else // active_ == false
 			{
-				LOG_WB << "Whiteboard set back to activated status.\n";
+				DBG_WB << "Whiteboard set back to activated status.\n";
 				set_active(true);
 			}
 		}
