@@ -1621,26 +1621,6 @@ WML_HANDLER_FUNCTION(removeitem, event_info, cfg)
 	}
 }
 
-WML_HANDLER_FUNCTION(unit_overlay, /*event_info*/, cfg)
-{
-	foreach (unit &u, *resources::units) {
-		if (game_events::unit_matches_filter(u, cfg)) {
-			u.add_overlay(cfg["image"]);
-			break;
-		}
-	}
-}
-
-WML_HANDLER_FUNCTION(remove_unit_overlay, /*event_info*/, cfg)
-{
-	foreach (unit &u, *resources::units) {
-		if (game_events::unit_matches_filter(u, cfg)) {
-			u.remove_overlay(cfg["image"]);
-			break;
-		}
-	}
-}
-
 WML_HANDLER_FUNCTION(hide_unit, /*event_info*/, cfg)
 {
 	// Hiding units

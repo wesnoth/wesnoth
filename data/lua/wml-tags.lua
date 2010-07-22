@@ -347,3 +347,30 @@ function wml_actions.scroll_to_unit(cfg)
 	if not u then return end
 	wesnoth.scroll_to_tile(u.x, u.y, cfg.check_fogged)
 end
+
+function wml_actions.unit_overlay(cfg)
+	local img = cfg.image
+	for i,u in ipairs(wesnoth.get_units(cfg)) do
+		local ucfg = u.__cfg
+		for w in string.gmatch(ucfg.overlays, "[^%s,][^,]*") do
+			if w == img then ucfg = nil end
+		end
+		if ucfg then
+			ucfg.overlays = ucfg.overlays .. ',' .. img
+			wesnoth.put_unit(ucfg)
+		end
+	end
+end
+
+function wml_actions.remove_unit_overlay(cfg)
+	local img = cfg.image
+	for i,u in ipairs(wesnoth.get_units(cfg)) do
+		local ucfg = u.__cfg
+		local t = {}
+		for w in string.gmatch(ucfg.overlays, "[^%s,][^,]*") do
+			if w ~= img then table.insert(t, w) end
+		end
+		ucfg.overlays = table.concat(t, ',')
+		wesnoth.put_unit(ucfg)
+	end
+end

@@ -173,8 +173,6 @@ public:
 	bool matches_id(const std::string& unit_id) const;
 	/* cfg: standard unit filter */
 	bool matches_filter(const vconfig& cfg,const map_location& loc,bool use_flat_tod=false) const;
-	void add_overlay(const std::string& overlay) { overlays_.push_back(overlay); }
-	void remove_overlay(const std::string& overlay) { overlays_.erase(std::remove(overlays_.begin(),overlays_.end(),overlay),overlays_.end()); }
 	const std::vector<std::string>& overlays() const { return overlays_; }
 
 	void write(config& cfg) const;
