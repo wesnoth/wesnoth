@@ -69,15 +69,9 @@ tod_manager& tod_manager::operator=(const tod_manager& manager)
 config tod_manager::to_config() const
 {
 	config cfg;
-	std::stringstream buf;
-	buf << turn_;
-	cfg["turn_at"] = buf.str();
-	buf.str(std::string());
-	buf << num_turns_;
-	cfg["turns"] = buf.str();
-	buf.str(std::string());
-	buf << currentTime_;
-	cfg["current_tod"] = buf.str();
+	cfg["turn_at"] = turn_;
+	cfg["turns"] = num_turns_;
+	cfg["current_tod"] = currentTime_;
 
 	std::vector<time_of_day>::const_iterator t;
 	for(t = times_.begin(); t != times_.end(); ++t) {
@@ -216,9 +210,7 @@ void tod_manager::set_start_ToD(config &level, int current_turn)
 	}
 	// Setting ToD to level data
 
-	std::stringstream buf;
-	buf << currentTime_;
-	level["current_tod"] = buf.str();
+	level["current_tod"] = currentTime_;
 
 }
 
@@ -316,5 +308,5 @@ bool tod_manager::next_turn()
 
 bool tod_manager::is_time_left()
 {
-	return num_turns_ == -1 || turn_ <= size_t(num_turns_);
+	return num_turns_ == -1 || turn_ <= num_turns_;
 }

@@ -92,7 +92,7 @@ class tod_manager : public savegame::savegame_config
 		time_of_day time_of_day_at(const map_location& loc) const;
 
 		//turn functions
-		size_t turn() const {return turn_;}
+		int turn() const { return turn_; }
 		int number_of_turns() const {return num_turns_;}
 		void modify_turns(const std::string& mod);
 		void set_number_of_turns(int num);
@@ -142,7 +142,7 @@ class tod_manager : public savegame::savegame_config
 		std::vector<time_of_day> times_;
 		std::vector<area_time_of_day> areas_;
 
-		size_t turn_;
+		int turn_;
 		int num_turns_;
 };
 #endif
