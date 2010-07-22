@@ -84,25 +84,25 @@ move::move(const pathfind::marked_route& route,
 	if (source_hex_.valid() && dest_hex_.valid() && source_hex_ != dest_hex_)
 	{
 
-		// Calculate move cost
-		pathfind::shortest_path_calculator path_calc(*get_unit(),
-				(*resources::teams)[get_unit()->side() - 1],
-				*resources::units,
-				*resources::teams,
-				*resources::game_map);
-
-		pathfind::plain_route route = pathfind::a_star_search(source_hex_,
-				dest_hex_, 10000, &path_calc, resources::game_map->w(), resources::game_map->h());
+//		// Calculate move cost
+//		pathfind::shortest_path_calculator path_calc(*get_unit(),
+//				(*resources::teams)[get_unit()->side() - 1],
+//				*resources::units,
+//				*resources::teams,
+//				*resources::game_map);
+//
+//		pathfind::plain_route route = pathfind::a_star_search(source_hex_,
+//				dest_hex_, 10000, &path_calc, resources::game_map->w(), resources::game_map->h());
 
 		// TODO: find a better treatment of movement points when defining moves out-of-turn
-		if(get_unit()->movement_left() - route.move_cost < 0
+		if(get_unit()->movement_left() - route_->move_cost < 0
 				&& resources::controller->current_side() == resources::screen->viewing_side()) {
 			WRN_WB << "Move defined with insufficient movement left.\n";
 		}
 
 		//TODO: if unit finishes move in a village, set the move cost to unit_.movement_left()
 
-		movement_cost_ = route.move_cost;
+		movement_cost_ = route_->move_cost;
 	}
 }
 
