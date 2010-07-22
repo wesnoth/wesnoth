@@ -1311,7 +1311,7 @@ bool menu_handler::end_turn(int side_num)
 	}
 
 	// Ask for confirmation if units still have planned moves from the whiteboard
-	if(resources::whiteboard->current_side_has_actions()) {
+	if(!is_observer() && resources::whiteboard->current_side_has_actions()) {
 		const int res = gui::dialog(*gui_,"",_("Some units have planned actions left. Do you really want to end your turn?"),gui::YES_NO).show();
 		if (res != 0) {
 			return false;
