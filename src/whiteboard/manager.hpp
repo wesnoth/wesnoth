@@ -58,6 +58,7 @@ public:
 
 	void on_init_side();
 	void on_finish_side_turn();
+	void on_mouseover_change(const map_location& hex);
 	void on_select_hex(){}
 	void on_deselect_hex(){}
 
@@ -82,15 +83,12 @@ public:
 	///If there's a unit of the current viewing team capable of actions in the selected hex, returns it.
 	unit* find_selected_actor_future();
 
-
 	/**
 	 * Callback from the display when drawing hexes, to allow the whiteboard to
 	 * add visual elements. Some visual elements such as arrows and fake units
 	 * are not handled through this function, but separately registered with the display.
 	 */
 	void draw_hex(const map_location& hex);
-
-	void on_mouseover_change(const map_location& hex);
 
 	/** Creates a temporary visual arrow, that follows the cursor, for move creation purposes */
 	void create_temp_move();
