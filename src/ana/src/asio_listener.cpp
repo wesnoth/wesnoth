@@ -205,16 +205,16 @@ void asio_listener::wait_raw_object(ana::serializer::bistream& bis, size_t size)
 {
     tcp::socket& sock = socket();
 
-    char buf[ size ];
+    std::vector<char> buf(size);
 
     size_t received;
 
-    received = sock.receive( boost::asio::buffer( buf, size ) );
+    received = sock.receive( boost::asio::buffer( &buf[0], size ) );
 
     if ( received != size )
         throw std::runtime_error("Read a different amount of bytes than what was expected.");
 
-    bis.str( std::string( buf, size ) );
+    bis.str( std::string( &buf[0], size ) );
 }
 
 
