@@ -29,7 +29,7 @@
 namespace wb
 {
 
-std::ostream &operator<<(std::ostream &s, attack_const_ptr attack)
+std::ostream &operator<<(std::ostream &s, attack_ptr attack)
 {
 //	s << "Attack for unit " << attack->get_unit().name() << " [" << attack->get_unit().underlying_id() << "] "
 //			<< "moving from (" << attack->get_source_hex() << ") to (" << attack->get_dest_hex() << ") and attacking "

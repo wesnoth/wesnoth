@@ -344,10 +344,9 @@ void manager::save_temp_move()
 		move_arrow = arrow_ptr(move_arrow_);
 		fake_unit = fake_unit_ptr(fake_unit_);
 
-		on_deselect_hex();
-
 		fake_unit->set_disabled_ghosted(false);
 		viewer_actions()->queue_move(*route_, move_arrow, fake_unit);
+		on_deselect_hex();
 	}
 }
 
@@ -355,7 +354,6 @@ void manager::save_temp_attack(const map_location& attack_from, const map_locati
 {
 	if (active_ && !executing_actions_)
 	{
-		std::vector<map_location> steps;
 		arrow_ptr move_arrow;
 		fake_unit_ptr fake_unit;
 
@@ -376,8 +374,6 @@ void manager::save_temp_attack(const map_location& attack_from, const map_locati
 			source_hex = attack_from;
 		}
 
-		on_deselect_hex();
-
 		unit* attacking_unit = find_future_unit(source_hex);
 		assert(attacking_unit);
 
@@ -391,6 +387,7 @@ void manager::save_temp_attack(const map_location& attack_from, const map_locati
 		}
 
 		resources::screen->invalidate(target_hex);
+		on_deselect_hex();
 	}
 }
 

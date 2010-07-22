@@ -33,7 +33,7 @@ class action
 public:
 	friend class validate_visitor;
 	friend class highlight_visitor;
-	friend std::ostream& operator<<(std::ostream& s, action_const_ptr action);
+	friend std::ostream& operator<<(std::ostream& s, action_ptr action);
 
 	action();
 	virtual ~action();
@@ -69,7 +69,7 @@ public:
 	virtual bool is_valid() = 0;
 };
 
-std::ostream& operator<<(std::ostream& s, wb::action const& action);
+std::ostream& operator<<(std::ostream& s, action_ptr action);
 
 } // end namespace wb
 

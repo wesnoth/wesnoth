@@ -34,7 +34,7 @@ class move : public action, public boost::enable_shared_from_this<move>
 public:
 	friend class validate_visitor;
 	friend class highlight_visitor;
-	friend std::ostream& operator<<(std::ostream& s, move_const_ptr move);
+	friend std::ostream& operator<<(std::ostream& s, move_ptr move);
 
 	static const double ALPHA_HIGHLIGHT;
 	static const double ALPHA_NORMAL;
@@ -88,7 +88,7 @@ protected:
 };
 
 /** Dumps an move on a stream, for debug purposes. */
-std::ostream &operator<<(std::ostream &s, wb::move const& move);
+std::ostream &operator<<(std::ostream &s, move_ptr move);
 
 } // end namespace wb
 

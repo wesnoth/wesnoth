@@ -36,7 +36,7 @@
 
 namespace wb {
 
-std::ostream& operator<<(std::ostream &s, move_const_ptr move)
+std::ostream& operator<<(std::ostream &s, move_ptr move)
 {
 	return move->print(s);
 }

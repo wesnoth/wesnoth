@@ -33,7 +33,7 @@ class attack: public move
 public:
 	friend class validate_visitor;
 	friend class highlight_visitor;
-	friend std::ostream& operator<<(std::ostream& s, attack_const_ptr attack);
+	friend std::ostream& operator<<(std::ostream& s, attack_ptr attack);
 
 	///Future unit map must be valid during construction, so that attack can find its units
 	attack(const map_location& target_hex, int weapon_choice, const pathfind::marked_route& route,
@@ -59,7 +59,7 @@ private:
 };
 
 /** Dumps an attack on a stream, for debug purposes. */
-std::ostream& operator<<(std::ostream &s, wb::attack const& attack);
+std::ostream& operator<<(std::ostream &s, attack_ptr attack);
 
 } // end namespace wb
 
