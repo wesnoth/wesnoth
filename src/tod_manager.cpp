@@ -283,9 +283,9 @@ void tod_manager::modify_turns(const std::string& mod)
 {
 	num_turns_ = std::max<int>(utils::apply_modifier(num_turns_,mod,0),-1);
 }
-void tod_manager::add_turns(int num)
+void tod_manager::set_number_of_turns(int num)
 {
-	num_turns_ = std::max<int>(num_turns_ + num,-1);
+	num_turns_ = std::max<int>(num, -1);
 }
 
 void tod_manager::set_turn(unsigned int num)
@@ -299,7 +299,7 @@ void tod_manager::set_turn(unsigned int num)
 	set_time_of_day(current_time);
 
 	if(static_cast<int>(num) > num_turns_ && num_turns_ != -1) {
-		add_turns(num - num_turns_);
+		set_number_of_turns(num);
 	}
 	turn_ = num;
 

@@ -966,8 +966,7 @@ WML_HANDLER_FUNCTION(modify_turns, /*event_info*/, cfg)
 	if(!add.empty()) {
 		tod_man.modify_turns(add);
 	} else if(!value.empty()) {
-		tod_man.add_turns(-tod_man.number_of_turns());
-		tod_man.add_turns(lexical_cast_default<int>(value,-1));
+		tod_man.set_number_of_turns(lexical_cast_default<int>(value,-1));
 	}
 	// change current turn only after applying mods
 	if(!current.empty()) {

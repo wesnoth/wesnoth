@@ -95,7 +95,7 @@ class tod_manager : public savegame::savegame_config
 		size_t turn() const {return turn_;}
 		int number_of_turns() const {return num_turns_;}
 		void modify_turns(const std::string& mod);
-		void add_turns(int num);
+		void set_number_of_turns(int num);
 
 		/** Dynamically change the current turn number. */
 		void set_turn(unsigned int num);

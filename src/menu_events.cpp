@@ -3299,8 +3299,7 @@ void console_handler::do_turn_limit()
 	tod_manager& tod_man = *resources::tod_manager;
 	int limit =
 		get_data().empty() ? -1 : lexical_cast_default<int>(get_data(), 1);
-	tod_man.add_turns(-tod_man.number_of_turns());
-	tod_man.add_turns(lexical_cast_default<int>(limit,-1));
+	tod_man.set_number_of_turns(limit);
 	menu_handler_.gui_->redraw_everything();
 }
 
