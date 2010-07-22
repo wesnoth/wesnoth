@@ -52,7 +52,6 @@ manager::manager():
 		mapbuilder_(),
 		highlighter_(),
 		route_(),
-		steps_(),
 		move_arrow_(),
 		fake_unit_(),
 		selected_unit_(NULL),

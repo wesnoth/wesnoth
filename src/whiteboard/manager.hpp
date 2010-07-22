@@ -131,7 +131,6 @@ private:
 	boost::scoped_ptr<highlight_visitor> highlighter_;
 
 	boost::scoped_ptr<pathfind::marked_route> route_;
-	std::vector<map_location> steps_;
 
 	arrow_ptr move_arrow_;
 	fake_unit_ptr fake_unit_;
