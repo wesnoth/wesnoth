@@ -15,6 +15,7 @@ import java.util.List;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
+import org.eclipse.ui.console.MessageConsole;
 
 import wesnoth_eclipse_plugin.Constants;
 import wesnoth_eclipse_plugin.Logger;
@@ -129,10 +130,10 @@ public class GameUtils
 		// we need to add the working dir (backward compatibility)
 		args.add(workingDir);
 
-		OutputStream[] stream = new OutputStream[] {
-				GUIUtils.createConsole("Wesnoth game:", null, true).newMessageStream()
-			};
-		ExternalToolInvoker.launchTool(wesnothExec, args, stream, stream);
+		MessageConsole console = GUIUtils.createConsole("Wesnoth game:", null, true);
+		ExternalToolInvoker.launchTool(wesnothExec, args,
+				new OutputStream[] { console.newMessageStream() },
+				new OutputStream[] { console.newMessageStream() });
 	}
 
 	/**

@@ -192,9 +192,8 @@ public class WMLTools
 				try{
 					monitor.beginTask(toolName, 1050);
 					MessageConsole console = GUIUtils.createConsole(toolName + " result:", null, true);
-					OutputStream messageStream = console.newMessageStream();
-					//TODO: multiple streams? - check performance
-					OutputStream[] stream = new OutputStream[]{ messageStream};
+					OutputStream[] stdout = new OutputStream[]{ console.newMessageStream() };
+					OutputStream[] stderr = new OutputStream[]{ console.newMessageStream() };
 
 					String location;
 					String stdin = EditorUtils.getEditorDocument().get();
@@ -215,16 +214,16 @@ public class WMLTools
 						case WMLINDENT:
 							if (selFile != null && targetPath == null)
 								toolInvoker = WMLTools.runWMLIndent(null, stdin, false,
-										null, stream);
+										null, stdout);
 							else
 								toolInvoker = WMLTools.runWMLIndent(location, null, false,
-										stream, stream);
+										stdout, stderr);
 							break;
 						case WMLLINT:
-							toolInvoker = WMLTools.runWMLLint(location, true, stream, stream);
+							toolInvoker = WMLTools.runWMLLint(location, true, stdout, stderr);
 							break;
 						case WMLSCOPE:
-							toolInvoker = WMLTools.runWMLScope(location, stream, stream);
+							toolInvoker = WMLTools.runWMLScope(location, stdout, stderr);
 							break;
 					}
 					monitor.worked(50);
