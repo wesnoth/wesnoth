@@ -36,12 +36,10 @@ import wesnoth_eclipse_plugin.Logger;
 import wesnoth_eclipse_plugin.preferences.Preferences;
 import wesnoth_eclipse_plugin.templates.ReplaceableParameter;
 import wesnoth_eclipse_plugin.utils.AntUtils;
-import wesnoth_eclipse_plugin.utils.ExternalToolInvoker;
 import wesnoth_eclipse_plugin.utils.PreprocessorUtils;
 import wesnoth_eclipse_plugin.utils.ProjectUtils;
 import wesnoth_eclipse_plugin.utils.ResourceUtils;
 import wesnoth_eclipse_plugin.utils.StringUtils;
-import wesnoth_eclipse_plugin.utils.WMLTools;
 import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
 
 public class WesnothProjectBuilder extends IncrementalProjectBuilder
@@ -177,32 +175,32 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 
 				// wmllint
 				monitor.subTask("WMLLint pass...");
-				ExternalToolInvoker tool = WMLTools.runWMLLint(file.getLocation().toOSString(), true);
-				tool.waitForTool();
-
-				String[] output = StringUtils.getLines(tool.getErrorContent());
-				MarkerToken token;
-				for(String line : output)
-				{
-					token = MarkerToken.parseToken(line);
-					if (token == null)
-						continue;
-					addMarker(file, token, document);
-				}
+//				ExternalToolInvoker tool = WMLTools.runWMLLint(file.getLocation().toOSString(), true);
+//				tool.waitForTool();
+//
+//				String[] output = StringUtils.getLines(tool.getErrorContent());
+//				MarkerToken token;
+//				for(String line : output)
+//				{
+//					token = MarkerToken.parseToken(line);
+//					if (token == null)
+//						continue;
+//					addMarker(file, token, document);
+//				}
 				monitor.worked(20);
 
 				// wmlscope
 				monitor.subTask("WMLScope pass...");
-				tool = WMLTools.runWMLScope(file.getLocation().toOSString());
-				tool.waitForTool();
-				output = StringUtils.getLines(tool.getErrorContent());
-				for(String line : output)
-				{
-					token = MarkerToken.parseToken(line);
-					if (token == null)
-						continue;
-					addMarker(file, token, document);
-				}
+//				tool = WMLTools.runWMLScope(file.getLocation().toOSString());
+//				tool.waitForTool();
+//				output = StringUtils.getLines(tool.getErrorContent());
+//				for(String line : output)
+//				{
+//					token = MarkerToken.parseToken(line);
+//					if (token == null)
+//						continue;
+//					addMarker(file, token, document);
+//				}
 				monitor.worked(20);
 
 			} catch (Exception e)
