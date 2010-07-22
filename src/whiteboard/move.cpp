@@ -113,28 +113,31 @@ bool move::execute()
 
 	arrow_->set_alpha(ALPHA_HIGHLIGHT);
 
-	const arrow_path_t& arrow_path = arrow_->get_path();
 	static const bool show_move = true;
 	map_location final_location;
-	int steps_done = ::move_unit(NULL, arrow_path, &recorder, resources::undo_stack, show_move, &final_location,
+	int steps_done = ::move_unit(NULL, route_->steps, &recorder, resources::undo_stack, show_move, &final_location,
 			false, get_current_team().auto_shroud_updates());
 	// final_location now contains the final unit location
 	// if that isn't needed, pass NULL rather than &final_location
 
-	if (arrow_path.back() == final_location)
+	unit_map::const_iterator unit_it;
+
+	if (route_->steps.back() == final_location)
 	{
 		move_finished_completely = true;
 	}
 	else if (steps_done == 0)
 	{
-		DBG_WB << "Move execution resulted in zero movement.\n";
+		LOG_WB << "Move execution resulted in zero movement.\n";
 	}
-	else if (final_location.valid())
+	else if (final_location.valid() &&
+			(unit_it = resources::units->find(final_location)) != resources::units->end()
+			&& unit_it->id() == unit_id_)
 	{
-		LOG_WB << "Move finished at (" << final_location << ") instead of at (" << get_dest_hex() << "), analysing\n";
-		arrow_path_t::const_iterator start_new_path;
+		LOG_WB << "Move finished at (" << final_location << ") instead of at (" << get_dest_hex() << "), analyzing\n";
+		std::vector<map_location>::iterator start_new_path;
 		bool found = false;
-		for (start_new_path = arrow_path.begin(); ((start_new_path != arrow_path.end()) && !found); ++start_new_path)
+		for (start_new_path = route_->steps.begin(); ((start_new_path != route_->steps.end()) && !found); ++start_new_path)
 		{
 			if (*start_new_path == final_location)
 			{
@@ -145,21 +148,22 @@ bool move::execute()
 		{
 			get_source_hex() = final_location;
 			--start_new_path; //since the for loop incremented the iterator once after we found the right one.
-			arrow_path_t new_path(start_new_path, arrow_path.end());
+			std::vector<map_location> new_path(start_new_path, route_->steps.end());
 			LOG_WB << "Setting new path for this move from (" << new_path.front()
 					<< ") to (" << new_path.back() << ").\n";
-			arrow_->set_path(new_path);
+			//FIXME: probably better to use the new calculate_new_route instead of doing this
+			route_->steps = new_path;
 		}
-		else //Unit ended up in location outside path, , likely due to a WML event
+		else //Unit ended up in location outside path, likely due to a WML event
 		{
-			//TODO: handle unit ending up in unexpected location
-			WRN_WB << "Unit ended up in location outside path during move execution; Case unhandled as yet.\n";
+			move_finished_completely = true;
+			LOG_WB << "Unit ended up in location outside path during move execution.\n";
 		}
 	}
 	else //Unit disappeared from the map, likely due to a WML event
 	{
-		//TODO: handle unit disappearing from map
-		WRN_WB << "Unit disappeared from map during move execution; Case unhandled as yet.\n";
+		move_finished_completely = true;
+		LOG_WB << "Unit disappeared from map during move execution.\n";
 	}
 
 	arrow_->set_alpha(ALPHA_NORMAL);

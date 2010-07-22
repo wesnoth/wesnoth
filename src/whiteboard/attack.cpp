@@ -80,7 +80,7 @@ bool attack::execute()
 
 	LOG_WB << "Executing: " << shared_from_this() << "\n";
 
-	if (execute_successful && arrow_->get_path().size() >= 2)
+	if (execute_successful && route_->steps.size() >= 2)
 	{
 		if (!move::execute())
 		{
