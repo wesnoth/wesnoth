@@ -34,17 +34,6 @@
 
 namespace wb {
 
-unit* manager::find_future_unit(map_location hex)
-{
-	scoped_planned_unit_map planned_unit_map;
-	assert(has_planned_unit_map());
-	unit_map::iterator it;
-		if ((it = resources::units->find(hex)) != resources::units->end())
-			return &*it;
-		else
-			return NULL;
-}
-
 manager::manager():
 		active_(false),
 		inverted_behavior_(false),
@@ -54,7 +43,6 @@ manager::manager():
 		route_(),
 		move_arrow_(),
 		fake_unit_(),
-		selected_unit_(NULL),
 		planned_unit_map_active_(false),
 		executing_actions_(false)
 {
@@ -221,6 +209,31 @@ void manager::set_real_unit_map()
 
 }
 
+unit* manager::find_unit_future(map_location hex)
+{
+	scoped_planned_unit_map planned_unit_map;
+	assert(has_planned_unit_map());
+	unit_map::iterator it;
+		if ((it = resources::units->find(hex)) != resources::units->end())
+			return &*it;
+		else
+			return NULL;
+}
+
+unit* manager::find_selected_future()
+{
+	return find_unit_future(resources::screen->selected_hex());
+}
+
+unit* manager::find_selected_actor_future()
+{
+	unit* unit = find_selected_future();
+	if (unit && unit->side() == resources::screen->viewing_side())
+		return unit;
+	else
+		return NULL;
+}
+
 void manager::draw_hex(const map_location& hex)
 {
 	if (!wait_for_side_init_)
@@ -231,28 +244,12 @@ void manager::on_mouseover_change(const map_location& hex)
 {
 	//FIXME: Detect if a WML event is executing, and if so, avoid modifying the unit map during that time.
 	// Acting otherwise causes a crash.
-	if (!selected_unit_ && highlighter_)
+	if (!resources::screen->selected_hex().valid() && highlighter_)
+
 	{
 		highlighter_->set_mouseover_hex(hex);
 		highlighter_->highlight();
 	}
-}
-
-void manager::on_select_hex(const map_location& /*TODO remove this parameter if proves useless */)
-{
-	erase_temp_move();
-	selected_unit_ = highlighter_->get_selection_target();
-	if (selected_unit_)
-	{
-		LOG_WB << "Selected unit " << selected_unit_->name() << " [" << selected_unit_->id() << "]\n";
-	}
-	//assert(selected_unit_->side() != resources::screen->viewing_side());
-}
-
-void manager::on_deselect_hex()
-{
-	erase_temp_move();
-	selected_unit_ = NULL;
 }
 
 void manager::create_temp_move()
@@ -375,7 +372,7 @@ void manager::save_temp_attack(const map_location& attack_from, const map_locati
 			route_->steps.push_back(attack_from);
 		}
 
-		unit* attacking_unit = find_future_unit(source_hex);
+		unit* attacking_unit = find_unit_future(source_hex);
 		assert(attacking_unit);
 
 		int weapon_choice = resources::controller->get_mouse_handler_base().show_attack_dialog(
@@ -401,8 +398,9 @@ void manager::contextual_execute()
 
 		action_ptr action;
 		side_actions::iterator it;
-		if (selected_unit_ &&
-				(it = viewer_actions()->find_first_action_of(*selected_unit_)) != viewer_actions()->end())
+		unit* selected_unit = this->find_selected_actor_future();
+		if (selected_unit &&
+				(it = viewer_actions()->find_first_action_of(*selected_unit)) != viewer_actions()->end())
 		{
 			executing_actions_ = true;
 			viewer_actions()->execute(it);
@@ -433,8 +431,9 @@ void manager::contextual_delete()
 
 		action_ptr action;
 		side_actions::iterator it;
-		if (selected_unit_ &&
-				(it = viewer_actions()->find_first_action_of(*selected_unit_)) != viewer_actions()->end())
+		unit* selected_unit = this->find_selected_actor_future();
+		if (selected_unit &&
+				(it = viewer_actions()->find_first_action_of(*selected_unit)) != viewer_actions()->end())
 		{
 			viewer_actions()->remove_action(it);
 		}

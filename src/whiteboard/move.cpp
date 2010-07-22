@@ -80,7 +80,7 @@ move::move(const pathfind::marked_route& route,
 {
 	assert(!route_->steps.empty());
 
-	unit_ = resources::whiteboard->find_future_unit(get_source_hex());
+	unit_ = resources::whiteboard->find_unit_future(get_source_hex());
 	assert(unit_);
 	unit_id_ = unit_->id();
 

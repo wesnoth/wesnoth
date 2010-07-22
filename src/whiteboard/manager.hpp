@@ -58,6 +58,8 @@ public:
 
 	void on_init_side();
 	void on_finish_side_turn();
+	void on_select_hex(){}
+	void on_deselect_hex(){}
 
 	side_actions_ptr viewer_actions() const;
 	side_actions_ptr current_side_actions() const;
@@ -72,8 +74,14 @@ public:
 	void set_planned_unit_map();
 	void set_real_unit_map();
 	bool has_planned_unit_map() const { return planned_unit_map_active_; }
+
 	///Applies the future unit map and returns a pointer to the unit at hex, NULL if none
-	unit* find_future_unit(map_location hex);
+	unit* find_unit_future(map_location hex);
+	///Returns the unit (if any) located in the current selected hex on the future unit map.
+	unit* find_selected_future();
+	///If there's a unit of the current viewing team capable of actions in the selected hex, returns it.
+	unit* find_selected_actor_future();
+
 
 	/**
 	 * Callback from the display when drawing hexes, to allow the whiteboard to
@@ -83,19 +91,12 @@ public:
 	void draw_hex(const map_location& hex);
 
 	void on_mouseover_change(const map_location& hex);
-	/** Choose the target unit for action creation */
-	void on_select_hex(const map_location& hex);
-	void on_deselect_hex();
 
 	/** Creates a temporary visual arrow, that follows the cursor, for move creation purposes */
 	void create_temp_move();
 	/** Informs whether an arrow is being displayed for move creation purposes */
 	bool has_temp_move() const { return route_ && fake_unit_ && move_arrow_; }
-	/** Informs whether the whiteboard tracks a selected unit */
-	bool has_selected_unit() const { return selected_unit_; }
-
 	void erase_temp_move();
-
 	/**
 	 * Creates a move action for the current side,
 	 * and erases the temp move. The move action is inserted
@@ -134,8 +135,6 @@ private:
 
 	arrow_ptr move_arrow_;
 	fake_unit_ptr fake_unit_;
-
-	unit* selected_unit_;
 
 	bool planned_unit_map_active_;
 	/** Track whenever we're modifying actions, to avoid dual execution etc. */

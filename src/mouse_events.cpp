@@ -462,7 +462,7 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 	//see if we're trying to do a attack or move-and-attack
 	if((!browse || resources::whiteboard->is_active()) && !commands_disabled && attack_from.valid()) {
 		if (resources::whiteboard->is_active()) {
-			if  (resources::whiteboard->has_selected_unit()) {
+			//if  (resources::whiteboard->has_selected_unit()) {
 				// Unselect the current hex, and create planned attack for whiteboard
 				selected_hex_ = map_location();
 				gui().select_hex(map_location());
@@ -474,7 +474,7 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 				current_paths_ = pathfind::paths();
 				current_route_.steps.clear();
 				resources::whiteboard->save_temp_attack(attack_from, clicked_u->get_location());
-			}
+			//}
 		return false;
 		} else {
 			if (attack_from == selected_hex_) { //no move needed
@@ -628,7 +628,7 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse) {
 					game_events::fire("select", hex);
 				}
 			}
-			resources::whiteboard->on_select_hex(hex);
+			resources::whiteboard->on_select_hex();
 		}
 
 	} else {
