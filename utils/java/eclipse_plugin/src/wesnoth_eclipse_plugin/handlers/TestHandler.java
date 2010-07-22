@@ -8,9 +8,15 @@
  *******************************************************************************/
 package wesnoth_eclipse_plugin.handlers;
 
+import java.io.IOException;
+import java.io.OutputStream;
+
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
+import org.eclipse.ui.console.MessageConsole;
+
+import wesnoth_eclipse_plugin.utils.GUIUtils;
 
 /**
  * Here it goes testing stuff in the plugin ( For DEBUG ONLY!)
@@ -21,6 +27,16 @@ public class TestHandler extends AbstractHandler
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException
 	{
+		try
+		{
+			MessageConsole con = GUIUtils.createConsole("BB", null, true);
+			OutputStream s =  con.newMessageStream();
+			s.write("AAAAAAAAAAAAAA".getBytes());
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
 //		try
 //		{
 //			IProject proj = WorkspaceUtils.getSelectedProject();

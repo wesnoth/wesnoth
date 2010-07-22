@@ -14,6 +14,7 @@ import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.console.ConsolePlugin;
 import org.eclipse.ui.console.IConsole;
+import org.eclipse.ui.console.IConsoleManager;
 import org.eclipse.ui.console.MessageConsole;
 
 import wesnoth_eclipse_plugin.Logger;
@@ -116,12 +117,24 @@ public class GUIUtils
 	public static MessageConsole createConsole(String consoleTitle,
 				ImageDescriptor imageDescriptor, boolean activate)
 	{
-		MessageConsole console = new MessageConsole(consoleTitle, imageDescriptor);
+		MessageConsole console = null;
+		IConsoleManager conMan = ConsolePlugin.getDefault().getConsoleManager();
+		IConsole[] existing = conMan.getConsoles();
+		for (int i = 0; i < existing.length; i++)
+			if (consoleTitle.equals(existing[i].getName()))
+			{
+				console = (MessageConsole) existing[i];
+				console.clearConsole();
+				break;
+			}
+
+		if (console == null) // console not found
+		{
+			console = new MessageConsole(consoleTitle, imageDescriptor);
+			conMan.addConsoles(new IConsole[] { console });
+		}
 		if (activate)
 			console.activate();
-		ConsolePlugin.getDefault().getConsoleManager().addConsoles(new IConsole[] { console });
-		//TODO: create a single console and add pages instead?
-		//MessageConsoleStream stream = console.newMessageStream();
 		return console;
 	}
 }
