@@ -102,12 +102,14 @@ side_actions::iterator side_actions::execute(side_actions::iterator position)
 
 	if (!actions_.empty() && validate_iterator(position))
 	{
+		LOG_WB << "Before execution, " << *this << "\n";
 		size_t distance = std::distance(begin(), position);
 		action_ptr action = *position;
 		bool finished = action->execute();
 		if (finished)
 		{
 			actions_.erase(position);
+			LOG_WB << "After execution and deletion, " << *this << "\n";
 			validate_actions();
 			return begin() + distance;
 		}
@@ -115,6 +117,7 @@ side_actions::iterator side_actions::execute(side_actions::iterator position)
 		{
 			actions_.erase(position);
 			actions_.insert(end(), action);
+			LOG_WB << "After execution *without* deletion, " << *this << "\n";
 			validate_actions();
 			return end() - 1;
 		}
@@ -135,7 +138,6 @@ side_actions::iterator side_actions::execute(side_actions::iterator position)
 side_actions::iterator side_actions::queue_move(const pathfind::marked_route& route, arrow_ptr arrow, fake_unit_ptr fake_unit)
 {
 	action_ptr action(new move(route, arrow, fake_unit));
-	LOG_WB << "Queued: " << action <<"\n";
 	return queue_action(action);
 }
 
@@ -144,7 +146,6 @@ side_actions::iterator side_actions::queue_attack(const map_location& target_hex
 		arrow_ptr arrow, fake_unit_ptr fake_unit)
 {
 	action_ptr action(new attack(target_hex, weapon_choice, route, arrow, fake_unit));
-	LOG_WB << "Queued: " << action <<"\n";
 	return queue_action(action);
 }
 
@@ -156,6 +157,8 @@ side_actions::iterator side_actions::insert_action(iterator position, action_ptr
 	}
 	assert(position >= begin() && position < end());
 	iterator valid_position = actions_.insert(position, action);
+	LOG_WB << "Inserted at position #" << std::distance(begin(), valid_position) + 1
+		   << " : " << action <<"\n";
 	validate_actions();
 	return valid_position;
 }
@@ -164,6 +167,7 @@ side_actions::iterator side_actions::queue_action(action_ptr action)
 {
 	actions_.push_back(action);
 	// Contrary to insert_action, no need to validate actions here since we're adding to the end of the queue
+	LOG_WB << "Queued: " << action <<"\n";
 	return end() - 1;
 }
 
@@ -185,6 +189,8 @@ side_actions::iterator side_actions::bump_earlier(side_actions::iterator positio
 	if ((*previous)->get_unit() == (*position)->get_unit())
 		return end();
 
+	LOG_WB << "Before bumping earlier, " << *this << "\n";
+
 	int action_number = std::distance(begin(), position) + 1;
 	int last_position = actions_.size() + 1;
 	LOG_WB << "Bumping action #" << action_number << "/" << last_position
@@ -198,6 +204,7 @@ side_actions::iterator side_actions::bump_earlier(side_actions::iterator positio
 	action_queue::iterator valid_position = actions_.insert(destination, action);
 	assert(validate_iterator(valid_position));
 	validate_actions();
+	LOG_WB << "After bumping earlier, " << *this << "\n";
 	return valid_position;
 }
 
@@ -219,6 +226,8 @@ side_actions::iterator side_actions::bump_later(side_actions::iterator position)
 	if ((*next)->get_unit() == (*position)->get_unit())
 		return end();
 
+	LOG_WB << "Before bumping later, " << *this << "\n";
+
 	int action_number = std::distance(begin(), position) + 1;
 	int last_position = actions_.size() + 1;
 	LOG_WB << "Bumping action #" << action_number << "/" << last_position
@@ -233,6 +242,7 @@ side_actions::iterator side_actions::bump_later(side_actions::iterator position)
 	action_queue::iterator valid_position = actions_.insert(destination, action);
 	assert(validate_iterator(valid_position));
 	validate_actions();
+	LOG_WB << "After bumping later, " << *this << "\n";
 	return valid_position;
 }
 
