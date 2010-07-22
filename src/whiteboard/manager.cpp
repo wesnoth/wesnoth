@@ -254,61 +254,80 @@ void manager::on_mouseover_change(const map_location& hex)
 
 void manager::create_temp_move()
 {
-	if (!active_)
-		return;
+	route_.reset();
 
-	pathfind::marked_route const& route = resources::controller->get_mouse_handler_base().get_current_route();
+	if (!active_) return;
+
+	/*
+	 * CHECK PRE-CONDITIONS
+	 * (This section has multiple return paths.)
+	 */
+
+	pathfind::marked_route const& route =
+			resources::controller->get_mouse_handler_base().get_current_route();
+
+	if (!route.steps.size() >= 2) return;
+
+	unit const* selected_unit = this->find_selected_actor_future();
+	if (!selected_unit) return;
+	if (selected_unit->side() != resources::screen->viewing_side()) return;
 
 	//FIXME: Temporary: Don't draw move arrow if move goes beyond range.
 	bool cancel = false;
 	foreach (const map_location& hex, route.steps)
-	{
-		if (cancel)
-		{
-			erase_temp_move();
-			return;
-		}
-		pathfind::marked_route::mark_map::const_iterator w = route.marks.find(hex);
-		//We only accept an end-of-first-turn or a capture mark if this is the move's last hex.
-		if(w != route.marks.end() && (w->second.turns == 1 || w->second.capture))
-		{
-			cancel = true;
-		}
-	}
+				{
+					if (cancel)
+					{
+						erase_temp_move();
+						return;
+					}
+					pathfind::marked_route::mark_map::const_iterator w =
+							route.marks.find(hex);
+					//We only accept an end-of-first-turn or a capture mark if this is the move's last hex.
+					if (w != route.marks.end() && (w->second.turns == 1
+							|| w->second.capture))
+					{
+						cancel = true;
+					}
+				}
+
+	/*
+	 * DONE CHECKING PRE-CONDITIONS, CREATE THE TEMP MOVE
+	 * (This section has only one return path.)
+	 */
+
+	//TODO: May be appropriate to replace these separate components by a temporary
+	//      wb::move object
 
 	route_.reset(new pathfind::marked_route(route));
+	//NOTE: route_.steps.back() = dst, and route_.steps.front() = src
 
-	if (route_->steps.size() >= 2 && selected_unit_)
+	if (!move_arrow_)
 	{
-		assert(selected_unit_->side() == resources::screen->viewing_side());
-
-		//NOTE: route_.steps.back() = dst, and route_.steps.front() = src
-
-		if (!move_arrow_)
-		{
-			// Create temp arrow
-			move_arrow_.reset(new arrow());
-			move_arrow_->set_color(team::get_side_color_index(
+		// Create temp arrow
+		move_arrow_.reset(new arrow());
+		move_arrow_->set_color(team::get_side_color_index(
 				resources::screen->viewing_side()));
-			move_arrow_->set_alpha(move::ALPHA_HIGHLIGHT);
-			resources::screen->add_arrow(*move_arrow_);
+		move_arrow_->set_alpha(move::ALPHA_HIGHLIGHT);
+		resources::screen->add_arrow(*move_arrow_);
 
-		}
-		if (!fake_unit_)
-		{
-			// Create temp ghost unit
-			fake_unit_.reset(new unit(*selected_unit_), wb::manager::fake_unit_deleter());
-			resources::screen->place_temporary_unit(fake_unit_.get());
-			fake_unit_->set_ghosted(false);
-		}
-
-
-		move_arrow_->set_path(route_->steps);
-
-		unit_display::move_unit(route_->steps, *fake_unit_, *resources::teams, false); //get facing right
-		fake_unit_->set_location(route_->steps.back());
+	}
+	if (!fake_unit_)
+	{
+		// Create temp ghost unit
+		fake_unit_.reset(new unit(*selected_unit),
+				wb::manager::fake_unit_deleter());
+		resources::screen->place_temporary_unit(fake_unit_.get());
 		fake_unit_->set_ghosted(false);
 	}
+
+	move_arrow_->set_path(route_->steps);
+
+	unit_display::move_unit(route_->steps, *fake_unit_, *resources::teams,
+			false); //get facing right
+	fake_unit_->set_location(route_->steps.back());
+	fake_unit_->set_ghosted(false);
+
 }
 
 void manager::erase_temp_move()
@@ -341,7 +360,7 @@ void manager::save_temp_move()
 
 		fake_unit->set_disabled_ghosted(false);
 		viewer_actions()->queue_move(*route_, move_arrow, fake_unit);
-		on_deselect_hex();
+		erase_temp_move();
 	}
 }
 
@@ -384,7 +403,7 @@ void manager::save_temp_attack(const map_location& attack_from, const map_locati
 		}
 
 		resources::screen->invalidate(target_hex);
-		on_deselect_hex();
+		erase_temp_move();
 	}
 }
 
