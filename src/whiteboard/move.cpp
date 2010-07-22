@@ -185,6 +185,19 @@ void move::set_route(const pathfind::marked_route& route)
 	arrow_->set_path(route_->steps);
 }
 
+bool move::calculate_new_route(const map_location& source_hex, const map_location& dest_hex)
+{
+	pathfind::plain_route new_plain_route;
+	pathfind::shortest_path_calculator path_calc(*get_unit(), get_current_team(), *resources::units,
+						*resources::teams, *resources::game_map);
+	new_plain_route = pathfind::a_star_search(source_hex,
+						dest_hex, 10000, &path_calc, resources::game_map->w(), resources::game_map->h());
+	if (new_plain_route.move_cost >= path_calc.getNoPathValue()) return false;
+	route_.reset(new pathfind::marked_route(pathfind::mark_route(new_plain_route, std::vector<map_location>())));
+	calculate_move_cost();
+	return true;
+}
+
 void move::apply_temp_modifier(unit_map& unit_map)
 {
 	if (get_source_hex() == get_dest_hex())

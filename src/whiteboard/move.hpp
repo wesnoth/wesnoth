@@ -59,6 +59,9 @@ public:
 
 	virtual void set_route(const pathfind::marked_route& route);
 	virtual const pathfind::marked_route& get_route() const { assert(route_); return *route_; }
+	/// attempts to pathfind a new marked route for this path between these two hexes;
+	/// returns true and assigns it to the internal route if successful.
+	virtual bool calculate_new_route(const map_location& source_hex, const map_location& dest_hex);
 
 	virtual arrow_ptr get_arrow() { return arrow_; }
 	virtual fake_unit_ptr get_fake_unit() { return fake_unit_; }
