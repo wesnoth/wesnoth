@@ -541,6 +541,7 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 
 		gui().unhighlight_reach();
 
+		// If the whiteboard is active, it intercepts any unit movement
 		if (resources::whiteboard->is_active()) {
 				// Unselect the current hex, and create planned move for whiteboard
 				selected_hex_ = map_location();
@@ -556,7 +557,9 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 				{
 					resources::whiteboard->save_temp_move();
 				}
-		} else {
+		// Otherwise proceed to normal unit movement, unless the selected unit already has actions
+		// from the whiteboard.
+		} else if (!resources::whiteboard->unit_has_actions(*u)) {
 			//register the mouse-UI waypoints into the unit's waypoints
 			u->waypoints() = waypoints_;
 
