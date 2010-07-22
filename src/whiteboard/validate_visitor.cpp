@@ -106,7 +106,8 @@ void validate_visitor::visit_move(move_ptr move)
 
 		if (move->valid_)
 		{
-			if (!std::equal(route.steps.begin(), route.steps.end(), move->arrow_->get_path().begin()))
+			if ((!std::equal(route.steps.begin(), route.steps.end(), move->get_route().steps.begin()))
+				|| route.move_cost != move->get_route().move_cost)
 			{
 				//new valid path differs from the previous one, replace
 
