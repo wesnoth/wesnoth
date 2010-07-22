@@ -91,14 +91,14 @@ void validate_visitor::visit_move(move_ptr move)
 		if (move->valid_ && (resources::units->find(move->get_dest_hex()) != resources::units->end()))
 			move->set_valid(false);
 
-		pathfind::plain_route route;
+		pathfind::plain_route new_plain_route;
 		if (move->valid_)
 		{
 			pathfind::shortest_path_calculator path_calc(*move->get_unit(), get_current_team(), *resources::units,
 					*resources::teams, *resources::game_map);
-			route = pathfind::a_star_search(move->get_source_hex(),
+			new_plain_route = pathfind::a_star_search(move->get_source_hex(),
 					move->get_dest_hex(), 10000, &path_calc, resources::game_map->w(), resources::game_map->h());
-			if (route.move_cost >= path_calc.getNoPathValue())
+			if (new_plain_route.move_cost >= path_calc.getNoPathValue())
 			{
 				move->set_valid(false);
 			}
@@ -106,14 +106,15 @@ void validate_visitor::visit_move(move_ptr move)
 
 		if (move->valid_)
 		{
-			if ((!std::equal(route.steps.begin(), route.steps.end(), move->get_route().steps.begin()))
-				|| route.move_cost != move->get_route().move_cost)
+			if ((!std::equal(new_plain_route.steps.begin(), new_plain_route.steps.end(), move->get_route().steps.begin()))
+				|| new_plain_route.move_cost != move->get_route().move_cost)
 			{
 				//new valid path differs from the previous one, replace
+				//TODO: use something else than empty vector for waypoints?
+				pathfind::marked_route new_marked_route =
+						pathfind::mark_route(new_plain_route, std::vector<map_location>());
 
-				//FIXME ASAP: assign this through a new move->set_route(const marked_route&) method!!!!!!!!
-				move->arrow_->set_path(route.steps);
-				move->movement_cost_ = route.move_cost;
+				move->set_route(new_marked_route);
 
 				//TODO: Since this might lengthen the path, we probably need a special conflict state
 				// to warn the player that the initial path is no longer possible.

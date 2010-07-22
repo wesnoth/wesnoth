@@ -84,25 +84,7 @@ move::move(const pathfind::marked_route& route,
 	assert(unit_);
 	unit_id_ = unit_->id();
 
-	if (get_source_hex().valid() && get_dest_hex().valid() && get_source_hex() != get_dest_hex())
-	{
-
-		// TODO: find a better treatment of movement points when defining moves out-of-turn
-		if(get_unit()->movement_left() - route_->move_cost < 0
-				&& resources::controller->current_side() == resources::screen->viewing_side()) {
-			WRN_WB << "Move defined with insufficient movement left.\n";
-		}
-
-		// If unit finishes move in a village it captures, set the move cost to unit_.movement_left()
-		 if (route_->marks[get_dest_hex()].capture)
-		 {
-			 movement_cost_ = get_unit()->movement_left();
-		 }
-		 else
-		 {
-			 movement_cost_ = route_->move_cost;
-		 }
-	}
+	this->calculate_move_cost();
 }
 
 move::~move()
@@ -110,6 +92,7 @@ move::~move()
 	//reminder: here we rely on the ~arrow destructor to invalidate
 	//its whole path.
 }
+
 
 void move::accept(visitor& v)
 {
@@ -198,6 +181,7 @@ map_location move::get_dest_hex() const
 void move::set_route(const pathfind::marked_route& route)
 {
 	route_.reset(new pathfind::marked_route(route));
+	this->calculate_move_cost();
 	arrow_->set_path(route_->steps);
 }
 
@@ -268,6 +252,31 @@ void move::set_valid(bool valid)
 //	{
 //		arrow_->set_style(ARROW_STYLE_INVALID);
 //	}
+}
+
+void move::calculate_move_cost()
+{
+	assert(unit_);
+	assert(route_);
+	if (get_source_hex().valid() && get_dest_hex().valid() && get_source_hex() != get_dest_hex())
+	{
+
+		// TODO: find a better treatment of movement points when defining moves out-of-turn
+		if(get_unit()->movement_left() - route_->move_cost < 0
+				&& resources::controller->current_side() == resources::screen->viewing_side()) {
+			WRN_WB << "Move defined with insufficient movement left.\n";
+		}
+
+		// If unit finishes move in a village it captures, set the move cost to unit_.movement_left()
+		 if (route_->marks[get_dest_hex()].capture)
+		 {
+			 movement_cost_ = get_unit()->movement_left();
+		 }
+		 else
+		 {
+			 movement_cost_ = route_->move_cost;
+		 }
+	}
 }
 
 } // end namespace wb

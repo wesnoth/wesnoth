@@ -77,6 +77,9 @@ public:
 	virtual bool is_valid() { return valid_; }
 
 protected:
+
+	void calculate_move_cost();
+
 	unit* unit_;
 	std::string unit_id_;
 	boost::scoped_ptr<pathfind::marked_route> route_;
