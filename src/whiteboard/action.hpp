@@ -33,7 +33,7 @@ class action
 public:
 	friend class validate_visitor;
 	friend class highlight_visitor;
-	friend std::ostream& operator<<(std::ostream& s, action const& action);
+	friend std::ostream& operator<<(std::ostream& s, action_const_ptr action);
 
 	action();
 	virtual ~action();

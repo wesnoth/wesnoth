@@ -40,7 +40,7 @@ std::ostream &operator<<(std::ostream &s, wb::side_actions const& side_actions)
 	int count = 1;
 	foreach(action_ptr action, side_actions.actions())
 	{
-		s << "\n" << "(" << count << ") " << *action;
+		s << "\n" << "(" << count << ") " << action;
 		count++;
 	}
 	if (count == 1) s << "(empty)";
@@ -135,7 +135,7 @@ side_actions::iterator side_actions::execute(side_actions::iterator position)
 side_actions::iterator side_actions::queue_move(const pathfind::marked_route& route, arrow_ptr arrow, fake_unit_ptr fake_unit)
 {
 	action_ptr action(new move(route, arrow, fake_unit));
-	LOG_WB << "Created: " << *action <<"\n";
+	LOG_WB << "Created: " << action <<"\n";
 	return queue_action(action);
 }
 
@@ -144,7 +144,7 @@ side_actions::iterator side_actions::queue_attack(const map_location& target_hex
 		arrow_ptr arrow, fake_unit_ptr fake_unit)
 {
 	action_ptr action(new attack(target_hex, weapon_choice, route, arrow, fake_unit));
-	LOG_WB << "Created: " << *action <<"\n";
+	LOG_WB << "Created: " << action <<"\n";
 	return queue_action(action);
 }
 

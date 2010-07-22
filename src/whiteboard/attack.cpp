@@ -29,18 +29,18 @@
 namespace wb
 {
 
-std::ostream &operator<<(std::ostream &s, wb::attack const& attack)
+std::ostream &operator<<(std::ostream &s, attack_const_ptr attack)
 {
 //	s << "Attack for unit " << attack->get_unit().name() << " [" << attack->get_unit().underlying_id() << "] "
 //			<< "moving from (" << attack->get_source_hex() << ") to (" << attack->get_dest_hex() << ") and attacking "
 //			<< attack->get_target_hex();
 
-	return attack.print(s);
+	return attack->print(s);
 }
 
 std::ostream& attack::print(std::ostream& s) const
 {
-	s << static_cast<wb::move>(*this) << " and attacking (" << get_target_hex() << ")";
+	s << boost::static_pointer_cast<wb::move const>(shared_from_this()) << " and attacking (" << get_target_hex() << ")";
 	return s;
 }
 
@@ -74,7 +74,7 @@ bool attack::execute()
 	if (!valid_)
 		execute_successful = false;
 
-	LOG_WB << "Executing: " << *this << "\n";
+	LOG_WB << "Executing: " << shared_from_this() << "\n";
 
 	if (execute_successful && arrow_->get_path().size() >= 2)
 	{

@@ -20,9 +20,9 @@
 
 namespace wb {
 
-std::ostream& operator<<(std::ostream& s, wb::action const& action)
+std::ostream& operator<<(std::ostream& s, action_const_ptr action)
 {
-	return action.print(s);
+	return action->print(s);
 }
 
 std::ostream& action::print(std::ostream& s) const

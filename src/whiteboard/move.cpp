@@ -36,9 +36,9 @@
 
 namespace wb {
 
-std::ostream& operator<<(std::ostream &s, wb::move const& move)
+std::ostream& operator<<(std::ostream &s, move_const_ptr move)
 {
-	return move.print(s);
+	return move->print(s);
 }
 
 std::ostream& move::print(std::ostream &s) const
@@ -125,7 +125,7 @@ bool move::execute()
 	if (source_hex_ == dest_hex_)
 		return true; //zero-hex move, probably used by attack subclass
 
-	LOG_WB << "Executing: " << *this << "\n";
+	LOG_WB << "Executing: " << shared_from_this() << "\n";
 
 	bool move_finished_completely = false;
 
