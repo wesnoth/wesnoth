@@ -220,12 +220,13 @@ void map_labels::clear(const std::string& team_name, bool force)
 
 void map_labels::clear_map(label_map &m, bool force)
 {
-	foreach (label_map::value_type &v, m)
+	label_map::iterator i = m.begin();
+	while (i != m.end())
 	{
-		if (!v.second->immutable() || force) {
-			delete v.second;
-			m.erase(v.first);
-		}
+		if (!i->second->immutable() || force) {
+			delete i->second;
+			m.erase(i++);
+		} else ++i;
 	}
 }
 
