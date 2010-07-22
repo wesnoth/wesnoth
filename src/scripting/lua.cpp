@@ -1336,6 +1336,7 @@ static int impl_game_config_get(lua_State *L)
 	return_int_attrib("rest_heal_amount", game_config::rest_heal_amount);
 	return_int_attrib("recall_cost", game_config::recall_cost);
 	return_int_attrib("kill_experience", game_config::kill_experience);
+	return_int_attrib("last_turn", resources::tod_manager->number_of_turns());
 	return_string_attrib("version", game_config::version);
 	return_bool_attrib("debug", game_config::debug);
 	return 0;
@@ -1363,6 +1364,7 @@ static int impl_game_config_set(lua_State *L)
 	modify_int_attrib("rest_heal_amount", game_config::rest_heal_amount = value);
 	modify_int_attrib("recall_cost", game_config::recall_cost = value);
 	modify_int_attrib("kill_experience", game_config::kill_experience = value);
+	modify_int_attrib("last_turn", resources::tod_manager->set_number_of_turns(value));
 	return luaL_argerror(L, 2, "unknown modifiable property");
 }
 
