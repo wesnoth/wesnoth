@@ -374,3 +374,8 @@ function wml_actions.remove_unit_overlay(cfg)
 		wesnoth.put_unit(ucfg)
 	end
 end
+
+function wml_actions.store_turns(cfg)
+	local var = cfg.variable or "turns"
+	wesnoth.set_variable(var, wesnoth.game_config.last_turn)
+end

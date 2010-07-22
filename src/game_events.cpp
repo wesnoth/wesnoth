@@ -983,16 +983,6 @@ WML_HANDLER_FUNCTION(modify_turns, /*event_info*/, cfg)
 	}
 }
 
-WML_HANDLER_FUNCTION(store_turns, /*event_info*/, cfg)
-{
-	std::string var_name = cfg["variable"];
-	if(var_name.empty()) {
-		var_name = "turns";
-	}
-	int turns = resources::tod_manager->number_of_turns();
-	resources::state_of_game->get_variable(var_name) = turns;
-}
-
 namespace {
 
 std::auto_ptr<unit> create_fake_unit(const vconfig& cfg)
