@@ -361,6 +361,7 @@ void manager::save_temp_move()
 		fake_unit->set_disabled_ghosted(false);
 		viewer_actions()->queue_move(*route_, move_arrow, fake_unit);
 		erase_temp_move();
+		LOG_WB << *viewer_actions() << "\n";
 	}
 }
 
@@ -404,6 +405,7 @@ void manager::save_temp_attack(const map_location& attack_from, const map_locati
 
 		resources::screen->invalidate(target_hex);
 		erase_temp_move();
+		LOG_WB << *viewer_actions() << "\n";
 	}
 }
 
@@ -414,6 +416,7 @@ void manager::contextual_execute()
 	{
 		erase_temp_move();
 		validate_viewer_actions();
+		LOG_WB << *viewer_actions() << "\n";
 
 		action_ptr action;
 		side_actions::iterator it;
@@ -438,6 +441,7 @@ void manager::contextual_execute()
 			viewer_actions()->execute_next();
 			executing_actions_ = false;
 		}
+		LOG_WB << *viewer_actions() << "\n";
 	}
 }
 
@@ -447,6 +451,7 @@ void manager::contextual_delete()
 	{
 		erase_temp_move();
 		validate_viewer_actions();
+		LOG_WB << *viewer_actions() << "\n";
 
 		action_ptr action;
 		side_actions::iterator it;
@@ -465,6 +470,7 @@ void manager::contextual_delete()
 		{
 			viewer_actions()->remove_action(viewer_actions()->end() - 1);
 		}
+		LOG_WB << *viewer_actions() << "\n";
 	}
 }
 
@@ -474,10 +480,12 @@ void manager::contextual_bump_up_action()
 	{
 
 		validate_viewer_actions();
+		LOG_WB << *viewer_actions() << "\n";
 		action_ptr action = highlighter_->get_bump_target();
 		if (action)
 		{
 			viewer_actions()->bump_earlier(viewer_actions()->get_position_of(action));
+			LOG_WB << *viewer_actions() << "\n";
 		}
 	}
 }
@@ -488,11 +496,12 @@ void manager::contextual_bump_down_action()
 	{
 
 		validate_viewer_actions();
-
+		LOG_WB << *viewer_actions() << "\n";
 		action_ptr action = highlighter_->get_bump_target();
 		if (action)
 		{
 			viewer_actions()->bump_later(viewer_actions()->get_position_of(action));
+			LOG_WB << *viewer_actions() << "\n";
 		}
 	}
 }
