@@ -266,7 +266,7 @@ void manager::create_temp_move()
 	pathfind::marked_route const& route =
 			resources::controller->get_mouse_handler_base().get_current_route();
 
-	if (!route.steps.size() >= 2) return;
+	if (route.steps.empty() || route.steps.size() < 2) return;
 
 	unit const* selected_unit = this->find_selected_actor_future();
 	if (!selected_unit) return;
@@ -275,21 +275,21 @@ void manager::create_temp_move()
 	//FIXME: Temporary: Don't draw move arrow if move goes beyond range.
 	bool cancel = false;
 	foreach (const map_location& hex, route.steps)
-				{
-					if (cancel)
-					{
-						erase_temp_move();
-						return;
-					}
-					pathfind::marked_route::mark_map::const_iterator w =
-							route.marks.find(hex);
-					//We only accept an end-of-first-turn or a capture mark if this is the move's last hex.
-					if (w != route.marks.end() && (w->second.turns == 1
-							|| w->second.capture))
-					{
-						cancel = true;
-					}
-				}
+	{
+		if (cancel)
+		{
+			erase_temp_move();
+			return;
+		}
+		pathfind::marked_route::mark_map::const_iterator w =
+				route.marks.find(hex);
+		//We only accept an end-of-first-turn or a capture mark if this is the move's last hex.
+		if (w != route.marks.end() && (w->second.turns == 1
+				|| w->second.capture))
+		{
+			cancel = true;
+		}
+	}
 
 	/*
 	 * DONE CHECKING PRE-CONDITIONS, CREATE THE TEMP MOVE
