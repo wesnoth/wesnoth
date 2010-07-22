@@ -299,7 +299,7 @@ void tod_manager::set_turn(unsigned int num)
 	set_time_of_day(current_time);
 
 	if(static_cast<int>(num) > num_turns_ && num_turns_ != -1) {
-		this->add_turns(num_turns_ - num);
+		add_turns(num - num_turns_);
 	}
 	turn_ = num;
 
