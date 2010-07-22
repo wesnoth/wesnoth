@@ -117,7 +117,7 @@ bool move::execute()
 	static const bool show_move = true;
 	map_location final_location;
 	int steps_done = ::move_unit(NULL, arrow_path, &recorder, resources::undo_stack, show_move, &final_location,
-			get_current_team().auto_shroud_updates());
+			false, get_current_team().auto_shroud_updates());
 	// final_location now contains the final unit location
 	// if that isn't needed, pass NULL rather than &final_location
 
