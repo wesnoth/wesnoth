@@ -161,14 +161,12 @@ public class WMLTools
 		if (tool == Tools.WESNOTH_ADDON_MANAGER)
 			return;
 
-		IEditorReference[] files = WorkspaceUtils.getWorkbenchWindow().getPages()[0].getEditorReferences();
-		//TODO: do more checks and see if the files really need to be saved
-		// maybe they are out of current scope
+		IEditorReference[] editors = WorkspaceUtils.getWorkbenchWindow().getPages()[0].getEditorReferences();
 
-		for (IEditorReference file : files)
+		for (IEditorReference editor : editors)
 		{
-			if (file.isDirty())
-				file.getEditor(false).doSave(null);
+			if (editor.isDirty())
+				editor.getEditor(false).doSave(null);
 		}
 
 		if (targetPath == null && WorkspaceUtils.getSelectedFile() != null)
@@ -196,7 +194,6 @@ public class WMLTools
 					OutputStream[] stderr = new OutputStream[]{ console.newMessageStream() };
 
 					String location;
-					String stdin = EditorUtils.getEditorDocument().get();
 
 					IFile selFile = WorkspaceUtils.getSelectedFile();
 					if (targetPath != null)
@@ -213,8 +210,12 @@ public class WMLTools
 					{
 						case WMLINDENT:
 							if (selFile != null && targetPath == null)
+							{
+								String stdin = EditorUtils.getEditorDocument().get();
+								// don't output to stdout as we will put that in the editor
 								toolInvoker = WMLTools.runWMLIndent(null, stdin, false,
 										null, stdout);
+							}
 							else
 								toolInvoker = WMLTools.runWMLIndent(location, null, false,
 										stdout, stderr);

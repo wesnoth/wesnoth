@@ -50,7 +50,6 @@ public class GameUtils
 
 		IResource selectedResource = WorkspaceUtils.getSelectedResource();
 
-		//TODO: optimize this by checking if file really is a scenario
 		if (scenario &&
 			!ProjectUtils.isScenarioFile(
 					WorkspaceUtils.getPathRelativeToUserDir(selectedResource)))
