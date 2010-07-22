@@ -201,69 +201,70 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 			gui().clear_attack_indicator();
 		}
 
-		resources::whiteboard->set_planned_unit_map();
-		// the destination is the pointed hex or the adjacent hex
-		// used to attack it
-		map_location dest;
-		unit_map::const_iterator dest_un;
-		if (attack_from.valid()) {
-			dest = attack_from;
-			dest_un = find_unit(dest);
-		}	else {
-			dest = new_hex;
-			dest_un = mouseover_unit;
-		}
+		{ //start planned unit map scope
+			wb::scoped_planned_unit_map planned_unit_map;
+			// the destination is the pointed hex or the adjacent hex
+			// used to attack it
+			map_location dest;
+			unit_map::const_iterator dest_un;
+			if (attack_from.valid()) {
+				dest = attack_from;
+				dest_un = find_unit(dest);
+			}	else {
+				dest = new_hex;
+				dest_un = mouseover_unit;
+			}
 
-		if(dest == selected_hex_ || dest_un != units_.end()) {
-			current_route_.steps.clear();
-			gui().set_route(NULL);
-			resources::whiteboard->erase_temp_move();
-		}
-		else if (!current_paths_.destinations.empty() &&
-		         map_.on_board(selected_hex_) && map_.on_board(new_hex))
-		{
-			if (selected_unit != units_.end() && !selected_unit->incapacitated()) {
-				// Show the route from selected unit to mouseover hex
-				// the movement_reset is active only if it's not the unit's turn
-				unit_movement_resetter move_reset(*selected_unit,
-						selected_unit->side() != side_num_);
+			if(dest == selected_hex_ || dest_un != units_.end()) {
+				current_route_.steps.clear();
+				gui().set_route(NULL);
+				resources::whiteboard->erase_temp_move();
+			}
+			else if (!current_paths_.destinations.empty() &&
+					 map_.on_board(selected_hex_) && map_.on_board(new_hex))
+			{
+				if (selected_unit != units_.end() && !selected_unit->incapacitated()) {
+					// Show the route from selected unit to mouseover hex
+					// the movement_reset is active only if it's not the unit's turn
+					unit_movement_resetter move_reset(*selected_unit,
+							selected_unit->side() != side_num_);
 
-				current_route_ = get_route(selected_unit, dest, waypoints_, viewing_team());
-				resources::whiteboard->create_temp_move();
+					current_route_ = get_route(selected_unit, dest, waypoints_, viewing_team());
+					resources::whiteboard->create_temp_move();
 
-				if(!browse) {
-					gui().set_route(&current_route_);
+					if(!browse) {
+						gui().set_route(&current_route_);
+					}
 				}
 			}
-		}
 
-		unit_map::iterator un = mouseover_unit;
+			unit_map::iterator un = mouseover_unit;
 
-		if (un != units_.end() && current_paths_.destinations.empty() &&
-		    !gui().fogged(un->get_location()))
-		{
-			if (un->side() != side_num_) {
-				//unit under cursor is not on our team, highlight reach
-				unit_movement_resetter move_reset(*un);
+			if (un != units_.end() && current_paths_.destinations.empty() &&
+				!gui().fogged(un->get_location()))
+			{
+				if (un->side() != side_num_) {
+					//unit under cursor is not on our team, highlight reach
+					unit_movement_resetter move_reset(*un);
 
-				bool teleport = un->get_ability_bool("teleport");
+					bool teleport = un->get_ability_bool("teleport");
 
-				current_paths_ = pathfind::paths(map_,units_,new_hex,teams_,
-													false,teleport,viewing_team(),path_turns_);
+					current_paths_ = pathfind::paths(map_,units_,new_hex,teams_,
+														false,teleport,viewing_team(),path_turns_);
 
-				gui().highlight_reach(current_paths_);
-				enemy_paths_ = true;
-			} else {
-				//unit is on our team, show path if the unit has one
-				const map_location go_to = un->get_goto();
-				if(map_.on_board(go_to)) {
-					pathfind::marked_route route = get_route(un, go_to, un->waypoints(), current_team());
-					gui().set_route(&route);
+					gui().highlight_reach(current_paths_);
+					enemy_paths_ = true;
+				} else {
+					//unit is on our team, show path if the unit has one
+					const map_location go_to = un->get_goto();
+					if(map_.on_board(go_to)) {
+						pathfind::marked_route route = get_route(un, go_to, un->waypoints(), current_team());
+						gui().set_route(&route);
+					}
+					over_route_ = true;
 				}
-				over_route_ = true;
 			}
-		}
-		resources::whiteboard->set_real_unit_map();
+		} //end planned unit map scope
 	}
 }
 
