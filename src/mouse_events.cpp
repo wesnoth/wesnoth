@@ -397,7 +397,7 @@ pathfind::marked_route mouse_handler::get_route(unit_map::const_iterator un, map
 		}
 	}
 
-	return mark_route(route, waypoints, *un, viewing_team(), units_,teams_,map_);
+	return mark_route(route, waypoints);
 }
 
 void mouse_handler::mouse_press(const SDL_MouseButtonEvent& event, const bool browse)

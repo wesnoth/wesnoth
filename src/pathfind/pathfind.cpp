@@ -23,6 +23,7 @@
 #include "pathfind/pathfind.hpp"
 
 #include "foreach.hpp"
+#include "game_display.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
 #include "map.hpp"
@@ -381,18 +382,20 @@ pathfind::paths::paths(gamemap const &map, unit_map const &units,
 }
 
 pathfind::marked_route pathfind::mark_route(const plain_route &rt,
-	const std::vector<map_location>& waypoints, const unit &u,
-	const team &viewing_team, const unit_map & /*units*/,
-	const std::vector<team> &teams, const gamemap &map)
+		const std::vector<map_location>& waypoints)
 {
 	marked_route res;
 
-	if (rt.steps.empty()) return res;
+	if (rt.steps.empty()) return marked_route();
 	res.route = rt;
+
+	unit_map::const_iterator it = resources::units->find(rt.steps.front());
+	if (it == resources::units->end()) return marked_route();
+	unit const& u = *it;
 
 	int turns = 0;
 	int movement = u.movement_left();
-	const team& unit_team = teams[u.side()-1];
+	const team& unit_team = (*resources::teams)[u.side()-1];
 	bool zoc = false;
 
 	std::vector<map_location>::const_iterator i = rt.steps.begin(),
@@ -402,8 +405,8 @@ pathfind::marked_route pathfind::mark_route(const plain_route &rt,
 		bool last_step = (i+1 == rt.steps.end());
 
 		// move_cost of the next step is irrelevant for the last step
-		assert(last_step || map.on_board(*(i+1)));
-		const int move_cost = last_step ? 0 : u.movement_cost(map[*(i+1)]);
+		assert(last_step || resources::game_map->on_board(*(i+1)));
+		const int move_cost = last_step ? 0 : u.movement_cost((*resources::game_map)[*(i+1)]);
 		bool capture = false;
 		bool pass_here = false;
 		if (w != waypoints.end() && *i == *w) {
@@ -411,12 +414,14 @@ pathfind::marked_route pathfind::mark_route(const plain_route &rt,
 			pass_here = true;
 		}
 
+		team const& viewing_team = (*resources::teams)[resources::screen->viewing_team()];
+
 		if (last_step || zoc || move_cost > movement) {
 			// check if we stop an a village and so maybe capture it
 			// if it's an enemy unit and a fogged village, we assume a capture
 			// (if he already owns it, we can't know that)
 			// if it's not an enemy, we can always know if he owns the village
-			bool capture = map.is_village(*i) && ( !unit_team.owns_village(*i)
+			bool capture = resources::game_map->is_village(*i) && ( !unit_team.owns_village(*i)
 				 || (viewing_team.is_enemy(u.side()) && viewing_team.fogged(*i)) );
 
 			++turns;
@@ -436,7 +441,7 @@ pathfind::marked_route pathfind::mark_route(const plain_route &rt,
 			res.marks[*i] = marked_route::mark(0, pass_here, zoc, false, invisible);
 		}
 
-		zoc = enemy_zoc(teams, *(i + 1), viewing_team,u.side())
+		zoc = enemy_zoc((*resources::teams), *(i + 1), viewing_team,u.side())
 					&& !u.get_ability_bool("skirmisher", *(i+1));
 
 		if (zoc || capture) {

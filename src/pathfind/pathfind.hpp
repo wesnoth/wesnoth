@@ -177,12 +177,11 @@ plain_route a_star_search(map_location const &src, map_location const &dst,
                            std::set<map_location> const *teleports = NULL);
 
 /**
- * Add marks on a route @a rt assuming that a @unit u travels along it.
+ * Add marks on a route @a rt assuming that the unit located at the first hex of
+ * rt travels along it.
  */
 marked_route mark_route(const plain_route &rt,
-	const std::vector<map_location>& waypoints, const unit &u,
-	const team &viewing_team, const unit_map &units,
-	const std::vector<team> &teams, const gamemap &map);
+		const std::vector<map_location>& waypoints);
 
 struct shortest_path_calculator : cost_calculator
 {
