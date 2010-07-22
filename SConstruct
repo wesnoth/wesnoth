@@ -339,13 +339,6 @@ if env["prereqs"]:
     if not have_test_prereqs and "test" in env["default_targets"]:
         env["default_targets"].remove("test")
 
-#    have_boost_asio = \
-#        conf.CheckBoost("system", require_version = "1.35.0") and \
-#        conf.CheckBoost("asio", require_version = "1.35.0", header_only = True) or \
-#        Warning("Boost 1.35 not found using old networking code.i")
-#    
-#    env["have_boost_asio"] = have_boost_asio;
-
     print env.subst("If any config checks fail, look in $build_dir/config.log for details")
     print "If a check fails spuriously due to caching, use --config=force to force its rerun"
 
