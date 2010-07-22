@@ -134,30 +134,38 @@ bool move::execute()
 			(unit_it = resources::units->find(final_location)) != resources::units->end()
 			&& unit_it->id() == unit_id_)
 	{
-		LOG_WB << "Move finished at (" << final_location << ") instead of at (" << get_dest_hex() << "), analyzing\n";
-		std::vector<map_location>::iterator start_new_path;
-		bool found = false;
-		for (start_new_path = route_->steps.begin(); ((start_new_path != route_->steps.end()) && !found); ++start_new_path)
+		if(unit_it->move_interrupted())
 		{
-			if (*start_new_path == final_location)
-			{
-				found = true;
-			}
-		}
-		if (found)
-		{
-			get_source_hex() = final_location;
-			--start_new_path; //since the for loop incremented the iterator once after we found the right one.
-			std::vector<map_location> new_path(start_new_path, route_->steps.end());
-			LOG_WB << "Setting new path for this move from (" << new_path.front()
-					<< ") to (" << new_path.back() << ").\n";
-			//FIXME: probably better to use the new calculate_new_route instead of doing this
-			route_->steps = new_path;
-		}
-		else //Unit ended up in location outside path, likely due to a WML event
-		{
+			// Move was interrupted, probably by enemy unit sighted: let the game take care of it
 			move_finished_completely = true;
-			LOG_WB << "Unit ended up in location outside path during move execution.\n";
+		}
+		else // TODO: Verify this code path is possible...
+		{
+			LOG_WB << "Move finished at (" << final_location << ") instead of at (" << get_dest_hex() << "), analyzing\n";
+			std::vector<map_location>::iterator start_new_path;
+			bool found = false;
+			for (start_new_path = route_->steps.begin(); ((start_new_path != route_->steps.end()) && !found); ++start_new_path)
+			{
+				if (*start_new_path == final_location)
+				{
+					found = true;
+				}
+			}
+			if (found)
+			{
+				get_source_hex() = final_location;
+				--start_new_path; //since the for loop incremented the iterator once after we found the right one.
+				std::vector<map_location> new_path(start_new_path, route_->steps.end());
+				LOG_WB << "Setting new path for this move from (" << new_path.front()
+						<< ") to (" << new_path.back() << ").\n";
+				//FIXME: probably better to use the new calculate_new_route instead of doing this
+				route_->steps = new_path;
+			}
+			else //Unit ended up in location outside path, likely due to a WML event
+			{
+				move_finished_completely = true;
+				LOG_WB << "Unit ended up in location outside path during move execution.\n";
+			}
 		}
 	}
 	else //Unit disappeared from the map, likely due to a WML event
