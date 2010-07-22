@@ -293,6 +293,8 @@ if env["prereqs"]:
         conf.CheckSDL(require_version = '1.2.7') and \
         conf.CheckSDL('SDL_net') or Warning("Base prerequisites are not met.")
     if have_server_prereqs and env["use_network_ana"]:
+        if env["PLATFORM"] == 'win32':
+            env.Append(LIBS = ["libws2_32"])
         have_server_prereqs = \
             conf.CheckBoost("system") and \
             conf.CheckBoost("thread") and \
