@@ -273,20 +273,19 @@ void manager::create_temp_move()
 			return;
 		}
 		pathfind::marked_route::mark_map::const_iterator w = route.marks.find(hex);
-		if(w != route.marks.end() && w->second.turns == 1)
+		//We only accept an end-of-first-turn or a capture mark if this is the move's last hex.
+		if(w != route.marks.end() && (w->second.turns == 1 || w->second.capture))
 		{
 			cancel = true;
 		}
 	}
 
-	if (route.steps.empty() || route.steps.size() < 2)
-	{
-		route_.reset(new pathfind::marked_route()); //empty route
-	}
-	else if (selected_unit_)
+	route_.reset(new pathfind::marked_route(route));
+
+	if (route_->steps.size() >= 2 && selected_unit_)
 	{
 		assert(selected_unit_->side() == resources::screen->viewing_side());
-		route_.reset(new pathfind::marked_route(route));
+
 		//NOTE: route_.steps.back() = dst, and route_.steps.front() = src
 
 		if (!move_arrow_)
@@ -358,7 +357,7 @@ void manager::save_temp_attack(const map_location& attack_from, const map_locati
 		fake_unit_ptr fake_unit;
 
 		map_location source_hex;
-		if (route_)
+		if (route_ && !route_->steps.empty())
 		{
 			move_arrow = arrow_ptr(move_arrow_);
 			fake_unit = fake_unit_ptr(fake_unit_);
@@ -372,11 +371,13 @@ void manager::save_temp_attack(const map_location& attack_from, const map_locati
 		{
 			move_arrow.reset(new arrow);
 			source_hex = attack_from;
+			route_.reset(new pathfind::marked_route);
+			// We'll pass as parameter a one-hex route with no marks.
+			route_->steps.push_back(attack_from);
 		}
 
 		unit* attacking_unit = find_future_unit(source_hex);
 		assert(attacking_unit);
-
 
 		int weapon_choice = resources::controller->get_mouse_handler_base().show_attack_dialog(
 					attacking_unit->get_location(), target_hex);

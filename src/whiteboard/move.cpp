@@ -73,9 +73,11 @@ move::move(const pathfind::marked_route& route,
   fake_unit_(fake_unit),
   valid_(true)
 {
-	assert(!route_->steps.empty());
-	source_hex_ = route_->steps.front();
-	dest_hex_ = route_->steps.back();
+	if(!route_->steps.empty())
+	{
+		source_hex_ = route_->steps.front();
+		dest_hex_ = route_->steps.back();
+	}
 
 	unit_ = resources::whiteboard->find_future_unit(source_hex_);
 	assert(unit_);

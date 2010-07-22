@@ -40,7 +40,7 @@ std::ostream &operator<<(std::ostream &s, attack_ptr attack)
 
 std::ostream& attack::print(std::ostream& s) const
 {
-	s << boost::static_pointer_cast<wb::move const>(shared_from_this()) << " and attacking (" << get_target_hex() << ")";
+	s << boost::static_pointer_cast<wb::move>(shared_from_this()) << " and attacking (" << get_target_hex() << ")";
 	return s;
 }
 
