@@ -31,16 +31,20 @@ namespace wb
 
 std::ostream &operator<<(std::ostream &s, attack_ptr attack)
 {
-//	s << "Attack for unit " << attack->get_unit().name() << " [" << attack->get_unit().underlying_id() << "] "
-//			<< "moving from (" << attack->get_source_hex() << ") to (" << attack->get_dest_hex() << ") and attacking "
-//			<< attack->get_target_hex();
+	assert(attack);
+	return attack->print(s);
+}
 
+std::ostream &operator<<(std::ostream &s, attack_const_ptr attack)
+{
+	assert(attack);
 	return attack->print(s);
 }
 
 std::ostream& attack::print(std::ostream& s) const
 {
-	s << boost::static_pointer_cast<wb::move>(shared_from_this()) << " and attacking (" << get_target_hex() << ")";
+	s << "Attack on (" << get_target_hex() << ") preceded by ";
+	move::print(s);
 	return s;
 }
 
@@ -57,7 +61,7 @@ attack::~attack()
 	if(resources::screen)
 	{
 		//invalidate dest and target hex so attack indicator is properly cleared
-		resources::screen->invalidate(dest_hex_);
+		resources::screen->invalidate(get_dest_hex());
 		resources::screen->invalidate(target_hex_);
 	}
 }
@@ -88,7 +92,7 @@ bool attack::execute()
 
 	if (execute_successful)
 	{
-		resources::controller->get_mouse_handler_base().attack_enemy(dest_hex_, target_hex_, weapon_choice_);
+		resources::controller->get_mouse_handler_base().attack_enemy(get_dest_hex(), target_hex_, weapon_choice_);
 		//only path that returns execute_successful = true
 	}
 	return execute_successful;
@@ -96,7 +100,7 @@ bool attack::execute()
 
 void attack::draw_hex(const map_location& hex)
 {
-	if (hex == dest_hex_ || hex == target_hex_) //draw attack indicator
+	if (hex == get_dest_hex() || hex == target_hex_) //draw attack indicator
 	{
 		//TODO: replace this by either the use of transparency + LAYER_ATTACK_INDICATOR,
 		//or a dedicated layer
@@ -104,15 +108,15 @@ void attack::draw_hex(const map_location& hex)
 
 		//calculate direction (valid for both hexes)
 		std::string direction_text = map_location::write_direction(
-				dest_hex_.get_relative_dir(target_hex_));
+				get_dest_hex().get_relative_dir(target_hex_));
 
-		if (hex == dest_hex_) //add symbol to attacker hex
+		if (hex == get_dest_hex()) //add symbol to attacker hex
 		{
-			int xpos = resources::screen->get_location_x(dest_hex_);
-			int ypos = resources::screen->get_location_y(dest_hex_);
+			int xpos = resources::screen->get_location_x(get_dest_hex());
+			int ypos = resources::screen->get_location_y(get_dest_hex());
 
 			//TODO: Give the whiteboard its own copy of the attack indicator, so it can have a different look.
-			resources::screen->drawing_buffer_add(layer, dest_hex_, display::tblit(xpos, ypos,
+			resources::screen->drawing_buffer_add(layer, get_dest_hex(), display::tblit(xpos, ypos,
 					image::get_image("misc/attack-indicator-src-" + direction_text + ".png", image::UNMASKED)));
 		}
 		else if (hex == target_hex_) //add symbol to defender hex

@@ -38,6 +38,13 @@ namespace wb {
 
 std::ostream& operator<<(std::ostream &s, move_ptr move)
 {
+	assert(move);
+	return move->print(s);
+}
+
+std::ostream& operator<<(std::ostream &s, move_const_ptr move)
+{
+	assert(move);
 	return move->print(s);
 }
 
@@ -66,35 +73,19 @@ move::move(const pathfind::marked_route& route,
 : unit_(NULL),
   unit_id_(),
   route_(new pathfind::marked_route(route)),
-  source_hex_(),
-  dest_hex_(),
   movement_cost_(0),
   arrow_(arrow),
   fake_unit_(fake_unit),
   valid_(true)
 {
-	if(!route_->steps.empty())
-	{
-		source_hex_ = route_->steps.front();
-		dest_hex_ = route_->steps.back();
-	}
+	assert(!route_->steps.empty());
 
-	unit_ = resources::whiteboard->find_future_unit(source_hex_);
+	unit_ = resources::whiteboard->find_future_unit(get_source_hex());
 	assert(unit_);
 	unit_id_ = unit_->id();
 
-	if (source_hex_.valid() && dest_hex_.valid() && source_hex_ != dest_hex_)
+	if (get_source_hex().valid() && get_dest_hex().valid() && get_source_hex() != get_dest_hex())
 	{
-
-//		// Calculate move cost
-//		pathfind::shortest_path_calculator path_calc(*get_unit(),
-//				(*resources::teams)[get_unit()->side() - 1],
-//				*resources::units,
-//				*resources::teams,
-//				*resources::game_map);
-//
-//		pathfind::plain_route route = pathfind::a_star_search(source_hex_,
-//				dest_hex_, 10000, &path_calc, resources::game_map->w(), resources::game_map->h());
 
 		// TODO: find a better treatment of movement points when defining moves out-of-turn
 		if(get_unit()->movement_left() - route_->move_cost < 0
@@ -103,7 +94,7 @@ move::move(const pathfind::marked_route& route,
 		}
 
 		// If unit finishes move in a village it captures, set the move cost to unit_.movement_left()
-		 if (route_->marks[dest_hex_].capture)
+		 if (route_->marks[get_dest_hex()].capture)
 		 {
 			 movement_cost_ = get_unit()->movement_left();
 		 }
@@ -130,7 +121,7 @@ bool move::execute()
 	if (!valid_)
 		return false;
 
-	if (source_hex_ == dest_hex_)
+	if (get_source_hex() == get_dest_hex())
 		return true; //zero-hex move, probably used by attack subclass
 
 	LOG_WB << "Executing: " << shared_from_this() << "\n";
@@ -157,7 +148,7 @@ bool move::execute()
 	}
 	else if (final_location.valid())
 	{
-		LOG_WB << "Move finished at (" << final_location << ") instead of at (" << dest_hex_ << "), analysing\n";
+		LOG_WB << "Move finished at (" << final_location << ") instead of at (" << get_dest_hex() << "), analysing\n";
 		arrow_path_t::const_iterator start_new_path;
 		bool found = false;
 		for (start_new_path = arrow_path.begin(); ((start_new_path != arrow_path.end()) && !found); ++start_new_path)
@@ -169,7 +160,7 @@ bool move::execute()
 		}
 		if (found)
 		{
-			source_hex_ = final_location;
+			get_source_hex() = final_location;
 			--start_new_path; //since the for loop incremented the iterator once after we found the right one.
 			arrow_path_t new_path(start_new_path, arrow_path.end());
 			LOG_WB << "Setting new path for this move from (" << new_path.front()
@@ -192,9 +183,21 @@ bool move::execute()
 	return move_finished_completely;
 }
 
+map_location move::get_source_hex() const
+{
+	assert(route_ && !route_->steps.empty());
+	return route_->steps.front();
+}
+
+map_location move::get_dest_hex() const
+{
+	assert(route_ && !route_->steps.empty());
+	return route_->steps.back();
+}
+
 void move::apply_temp_modifier(unit_map& unit_map)
 {
-	if (source_hex_ == dest_hex_)
+	if (get_source_hex() == get_dest_hex())
 		return; //zero-hex move, probably used by attack subclass
 
 	//TODO: deal with multi-turn moves, which may for instance end their first turn
@@ -203,12 +206,12 @@ void move::apply_temp_modifier(unit_map& unit_map)
 	//TODO: we may need to change unit status here and change it back in remove_temp_modifier
 
 	// Move the unit
-	unit_map::iterator unit_it = resources::units->find(source_hex_);
+	unit_map::iterator unit_it = resources::units->find(get_source_hex());
 	assert(unit_it != resources::units->end());
 	unit* unit = &*unit_it;
 	DBG_WB << "Temporarily moving unit " << unit->name() << " [" << unit->underlying_id()
-			<< "] from (" << source_hex_ << ") to (" << dest_hex_ <<")\n";
-	unit_map.move(source_hex_, dest_hex_);
+			<< "] from (" << get_source_hex() << ") to (" << get_dest_hex() <<")\n";
+	unit_map.move(get_source_hex(), get_dest_hex());
 
 	//Modify movement points accordingly
 	DBG_WB <<"Changing movement points for unit " << unit->name() << " [" << unit->underlying_id()
@@ -219,15 +222,15 @@ void move::apply_temp_modifier(unit_map& unit_map)
 
 void move::remove_temp_modifier(unit_map& unit_map)
 {
-	if (source_hex_ == dest_hex_)
+	if (get_source_hex() == get_dest_hex())
 		return; //zero-hex move, probably used by attack subclass
 
-	unit_map::iterator unit_it = resources::units->find(dest_hex_);
+	unit_map::iterator unit_it = resources::units->find(get_dest_hex());
 	assert(unit_it != resources::units->end());
 	unit& unit = *unit_it;
 
 	// Restore the unit to its original position
-	unit_map.move(dest_hex_, source_hex_);
+	unit_map.move(get_dest_hex(), get_source_hex());
 
 	// Restore movement points
 	unit.set_movement(unit.movement_left() + movement_cost_);
@@ -240,7 +243,7 @@ void move::draw_hex(const map_location& hex)
 
 bool move::is_numbering_hex(const map_location& hex) const
 {
-	return hex == dest_hex_;
+	return hex == get_dest_hex();
 }
 
 void move::set_valid(bool valid)

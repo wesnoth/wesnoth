@@ -74,21 +74,21 @@ bool validate_visitor::validate_actions()
 void validate_visitor::visit_move(move_ptr move)
 {
 	//invalidate start and end hexes so number display is updated properly
-	resources::screen->invalidate(move->source_hex_);
-	resources::screen->invalidate(move->dest_hex_);
+	resources::screen->invalidate(move->get_source_hex());
+	resources::screen->invalidate(move->get_dest_hex());
 
-	if (!(move->source_hex_.valid() && move->dest_hex_.valid()))
+	if (!(move->get_source_hex().valid() && move->get_dest_hex().valid()))
 		move->set_valid(false);
 
 	//TODO: need to check if the unit in the source hex has the same underlying unit id as before,
 	//i.e. that it's the same unit
-	if (move->valid_ && resources::units->find(move->source_hex_) == resources::units->end())
+	if (move->valid_ && resources::units->find(move->get_source_hex()) == resources::units->end())
 		move->set_valid(false);
 
-	if (move->source_hex_ != move->dest_hex_) //allow for zero-hex, move, in which case we skip pathfinding
+	if (move->get_source_hex() != move->get_dest_hex()) //allow for zero-hex, move, in which case we skip pathfinding
 	{
 		//verify that the destination hex is free
-		if (move->valid_ && (resources::units->find(move->dest_hex_) != resources::units->end()))
+		if (move->valid_ && (resources::units->find(move->get_dest_hex()) != resources::units->end()))
 			move->set_valid(false);
 
 		pathfind::plain_route route;
@@ -96,8 +96,8 @@ void validate_visitor::visit_move(move_ptr move)
 		{
 			pathfind::shortest_path_calculator path_calc(*move->get_unit(), get_current_team(), *resources::units,
 					*resources::teams, *resources::game_map);
-			route = pathfind::a_star_search(move->source_hex_,
-					move->dest_hex_, 10000, &path_calc, resources::game_map->w(), resources::game_map->h());
+			route = pathfind::a_star_search(move->get_source_hex(),
+					move->get_dest_hex(), 10000, &path_calc, resources::game_map->w(), resources::game_map->h());
 			if (route.move_cost >= path_calc.getNoPathValue())
 			{
 				move->set_valid(false);
@@ -109,6 +109,8 @@ void validate_visitor::visit_move(move_ptr move)
 			if (!std::equal(route.steps.begin(), route.steps.end(), move->arrow_->get_path().begin()))
 			{
 				//new valid path differs from the previous one, replace
+
+				//FIXME ASAP: assign this through a new move->set_route(const marked_route&) method!!!!!!!!
 				move->arrow_->set_path(route.steps);
 				move->movement_cost_ = route.move_cost;
 
@@ -132,7 +134,7 @@ void validate_visitor::visit_move(move_ptr move)
 void validate_visitor::visit_attack(attack_ptr attack)
 {
 	//invalidate target hex to make sure attack indicators are updated
-	resources::screen->invalidate(attack->dest_hex_);
+	resources::screen->invalidate(attack->get_dest_hex());
 	resources::screen->invalidate(attack->target_hex_);
 
 	if (attack->target_hex_.valid())

@@ -34,7 +34,6 @@ class move : public action, public boost::enable_shared_from_this<move>
 public:
 	friend class validate_visitor;
 	friend class highlight_visitor;
-	friend std::ostream& operator<<(std::ostream& s, move_ptr move);
 
 	static const double ALPHA_HIGHLIGHT;
 	static const double ALPHA_NORMAL;
@@ -55,10 +54,11 @@ public:
 	/** Return the unit targeted by this action. Null if unit doesn't exist. */
 	virtual unit* get_unit() const { return unit_; }
 
+	virtual map_location get_source_hex() const;
+	virtual map_location get_dest_hex() const;
+
 	virtual arrow_ptr get_arrow() { return arrow_; }
 	virtual fake_unit_ptr get_fake_unit() { return fake_unit_; }
-	virtual map_location const& get_source_hex() const { return source_hex_; }
-	virtual map_location const& get_dest_hex() const { return dest_hex_; }
 
 	/** Applies temporarily the result of this action to the specified unit map. */
 	virtual void apply_temp_modifier(unit_map& unit_map);
@@ -77,8 +77,6 @@ protected:
 	unit* unit_;
 	std::string unit_id_;
 	boost::scoped_ptr<pathfind::marked_route> route_;
-	map_location source_hex_;
-	map_location dest_hex_;
 	int movement_cost_;
 
 	arrow_ptr arrow_;
@@ -89,6 +87,7 @@ protected:
 
 /** Dumps an move on a stream, for debug purposes. */
 std::ostream &operator<<(std::ostream &s, move_ptr move);
+std::ostream &operator<<(std::ostream &s, move_const_ptr move);
 
 } // end namespace wb
 

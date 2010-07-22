@@ -181,7 +181,7 @@ void highlight_visitor::visit_move(move_ptr move)
 	switch (mode_)
 	{
 	case FIND_MAIN_HIGHLIGHT:
-		if (move->dest_hex_ == mouseover_hex_)
+		if (move->get_dest_hex() == mouseover_hex_)
 		{
 			main_highlight_ = move;
 		}
