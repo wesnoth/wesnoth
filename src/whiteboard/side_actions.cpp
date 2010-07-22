@@ -184,10 +184,23 @@ side_actions::iterator side_actions::bump_earlier(side_actions::iterator positio
 	if(!validate_iterator(position - 1))
 		return end();
 
-	//Verify we're not moving an action out-of-order compared to other action of the same unit
+
 	side_actions::iterator previous = position - 1;
+	//Verify we're not moving an action out-of-order compared to other action of the same unit
 	if ((*previous)->get_unit() == (*position)->get_unit())
 		return end();
+
+	//If this is a move, verify that it doesn't depend on a previous move for freeing its destination
+	{
+		using boost::dynamic_pointer_cast;
+		if (move_ptr bump_earlier = dynamic_pointer_cast<move>(*position)) {
+			if (move_ptr previous_move = dynamic_pointer_cast<move>(*previous))	{
+				if (bump_earlier->get_dest_hex() == previous_move->get_source_hex()) {
+					return end();
+				}
+			}
+		}
+	}
 
 	LOG_WB << "Before bumping earlier, " << *this << "\n";
 
@@ -221,10 +234,22 @@ side_actions::iterator side_actions::bump_later(side_actions::iterator position)
 	if(!validate_iterator(position + 1))
 		return end();
 
-	//Verify we're not moving an action out-of-order compared to other action of the same unit
 	side_actions::iterator next = position + 1;
+	//Verify we're not moving an action out-of-order compared to other action of the same unit
 	if ((*next)->get_unit() == (*position)->get_unit())
 		return end();
+
+	//If this is a move, verify that an earlier move doesn't depend on it for freeing its destination
+	{
+		using boost::dynamic_pointer_cast;
+		if (move_ptr bump_later = dynamic_pointer_cast<move>(*position)) {
+			if (move_ptr next_move = dynamic_pointer_cast<move>(*next))	{
+				if (next_move->get_dest_hex() == bump_later->get_source_hex()) {
+					return end();
+				}
+			}
+		}
+	}
 
 	LOG_WB << "Before bumping later, " << *this << "\n";
 
