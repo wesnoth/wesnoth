@@ -100,9 +100,15 @@ move::move(const pathfind::marked_route& route,
 			WRN_WB << "Move defined with insufficient movement left.\n";
 		}
 
-		//TODO: if unit finishes move in a village, set the move cost to unit_.movement_left()
-
-		movement_cost_ = route_->move_cost;
+		// If unit finishes move in a village it captures, set the move cost to unit_.movement_left()
+		 if (route_->marks[dest_hex_].capture)
+		 {
+			 movement_cost_ = get_unit()->movement_left();
+		 }
+		 else
+		 {
+			 movement_cost_ = route_->move_cost;
+		 }
 	}
 }
 
@@ -189,6 +195,11 @@ void move::apply_temp_modifier(unit_map& unit_map)
 	if (source_hex_ == dest_hex_)
 		return; //zero-hex move, probably used by attack subclass
 
+	//TODO: deal with multi-turn moves, which may for instance end their first turn
+	// by capturing a village
+
+	//TODO: we may need to change unit status here and change it back in remove_temp_modifier
+
 	// Move the unit
 	unit_map::iterator unit_it = resources::units->find(source_hex_);
 	assert(unit_it != resources::units->end());
@@ -199,10 +210,9 @@ void move::apply_temp_modifier(unit_map& unit_map)
 
 	//Modify movement points accordingly
 	DBG_WB <<"Changing movement points for unit " << unit->name() << " [" << unit->underlying_id()
-			<< "] from " << unit->movement_left() <<" to "
+			<< "] from " << unit->movement_left() << " to "
 			<< unit->movement_left() - movement_cost_ << ".\n";
 	unit->set_movement(unit->movement_left() - movement_cost_);
-
 }
 
 void move::remove_temp_modifier(unit_map& unit_map)
