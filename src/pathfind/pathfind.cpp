@@ -388,7 +388,7 @@ pathfind::marked_route pathfind::mark_route(const plain_route &rt,
 	marked_route res;
 
 	if (rt.steps.empty()) return res;
-	res.steps = rt.steps;
+	res.route = rt;
 
 	int turns = 0;
 	int movement = u.movement_left();

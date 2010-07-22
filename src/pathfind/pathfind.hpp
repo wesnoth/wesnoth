@@ -112,13 +112,41 @@ struct paths
 	dest_vect destinations;
 };
 
+/** Structure which holds a single route between one location and another. */
+struct plain_route
+{
+	plain_route() : steps(), move_cost(0) {}
+	std::vector<map_location> steps;
+	/** Movement cost for reaching the end of the route. */
+	int move_cost;
+};
+
 /** Structure which holds a single route and marks for special events. */
 struct marked_route
 {
 	marked_route()
-		: steps()
+		: route()
+		, steps(route.steps)
+		, move_cost(route.move_cost)
 		, marks()
 	{
+	}
+
+	marked_route(const marked_route& rhs)
+		: route(rhs.route)
+		, steps(route.steps)
+		, move_cost(route.move_cost)
+		, marks(rhs.marks)
+	{
+	}
+
+	marked_route& operator=(const marked_route& rhs)
+	{
+		this->route = rhs.route;
+		this->steps = this->route.steps;
+		this->move_cost = this->route.move_cost;
+		this->marks = rhs.marks;
+		return *this;
 	}
 
 	struct mark
@@ -134,17 +162,13 @@ struct marked_route
 		bool invisible;
 	};
 	typedef std::map<map_location, mark> mark_map;
-	std::vector<map_location> steps;
-	mark_map marks;
-};
+	plain_route route;
 
-/** Structure which holds a single route between one location and another. */
-struct plain_route
-{
-	plain_route() : steps(), move_cost(0) {}
-	std::vector<map_location> steps;
-	/** Movement cost for reaching the end of the route. */
-	int move_cost;
+	//make steps and move_cost of the underlying plain_route directly accessible
+	std::vector<map_location>& steps;
+	int& move_cost;
+
+	mark_map marks;
 };
 
 plain_route a_star_search(map_location const &src, map_location const &dst,
