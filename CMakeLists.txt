@@ -80,7 +80,7 @@ if (UNIX AND NOT APPLE AND NOT CYGWIN)
 endif(UNIX AND NOT APPLE AND NOT CYGWIN)
 option(ENABLE_STRICT_COMPILATION "Sets the strict compilation mode" ON)
 option(ENABLE_DEBUG_WINDOW_LAYOUT "Add the debug option to allow the generation of debug layout files in dot format" OFF)
-option ( USE_ANA_NETWORK "Compile network module using ana" OFF )
+option ( USE_ANA_NETWORK "Compile network module using ana" ON )
 
 #misc options
 if(NOT MSVC)
