@@ -240,6 +240,7 @@
    </extension>
    <extension
          point="org.eclipse.ui.perspectiveExtensions">
+              
          <!--
       <perspectiveExtension
             targetID="org.eclipse.jdt.ui.JavaPerspective">
@@ -492,6 +493,44 @@
             id="Wesnoth Eclipse Plugin.editor2"
             name="name">
       </editor>
+   </extension>
+   <extension
+         id="Wesnoth_Eclipse_Plugin.application"
+         point="org.eclipse.core.runtime.applications">
+      <application
+            icon="icons/wesnoth-icon_16.png"
+            thread="main"
+            visible="true">
+         <run
+               class="wesnoth_eclipse_plugin.product.Application">
+         </run>
+      </application>
+   </extension>
+   <extension
+         id="product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="Wesnoth_Eclipse_Plugin.application"
+            name="Wesnoth User Made Content IDE">
+         <property
+               name="appName"
+               value="Wesnoth User Made Content IDE">
+         </property>
+         <property
+               name="preferenceCustomization"
+               value="plugin_customization.ini">
+         </property>
+      </product>
+   </extension>
+   <extension
+         id="Wesnoth_Eclipse_Plugin.perspectives"
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="wesnoth_eclipse_plugin.product.WMLPerspective"
+            icon="icons/wesnoth_editor-icon_16.png"
+            id="Wesnoth_Eclipse_Plugin.product.perspective"
+            name="Default Perspective">
+      </perspective>
    </extension>
 
 </plugin>
