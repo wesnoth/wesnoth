@@ -61,17 +61,21 @@ static team& get_current_team()
 	return current_team;
 }
 
-move::move(const map_location& source_hex, const map_location& target_hex,
+move::move(const pathfind::marked_route& route,
 		arrow_ptr arrow, fake_unit_ptr fake_unit)
 : unit_(NULL),
   unit_id_(),
-  source_hex_(source_hex),
-  dest_hex_(target_hex),
+  route_(new pathfind::marked_route(route)),
+  source_hex_(),
+  dest_hex_(),
   movement_cost_(0),
   arrow_(arrow),
   fake_unit_(fake_unit),
   valid_(true)
 {
+	assert(!route_->steps.empty());
+	source_hex_ = route_->steps.front();
+	dest_hex_ = route_->steps.back();
 
 	unit_ = resources::whiteboard->find_future_unit(source_hex_);
 	assert(unit_);

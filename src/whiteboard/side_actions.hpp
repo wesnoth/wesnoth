@@ -88,14 +88,14 @@ public:
 	 * Queues a move to be executed last
 	 * @return The queued move's position
 	 */
-	iterator queue_move(const map_location& source_hex, const map_location& target_hex,
+	iterator queue_move(const pathfind::marked_route& route,
 			arrow_ptr arrow, fake_unit_ptr fake_unit);
 
 	/**
 	 * Queues an attack or attack-move to be executed last
 	 * @return The queued attack's position
 	 */
-	iterator queue_attack(const map_location& target_hex, int weapon_choice, const map_location& source_hex, const map_location& dest_hex,
+	iterator queue_attack(const map_location& target_hex, int weapon_choice, const pathfind::marked_route& route,
 			arrow_ptr arrow, fake_unit_ptr fake_unit);
 
 	/**

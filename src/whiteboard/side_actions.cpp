@@ -132,19 +132,18 @@ side_actions::iterator side_actions::execute(side_actions::iterator position)
 //	return insert_action(position, action);
 //}
 
-side_actions::iterator side_actions::queue_move(const map_location& source_hex,
-		const map_location& target_hex,	arrow_ptr arrow, fake_unit_ptr fake_unit)
+side_actions::iterator side_actions::queue_move(const pathfind::marked_route& route, arrow_ptr arrow, fake_unit_ptr fake_unit)
 {
-	action_ptr action(new move(source_hex, target_hex, arrow, fake_unit));
+	action_ptr action(new move(route, arrow, fake_unit));
 	LOG_WB << "Created: " << *action <<"\n";
 	return queue_action(action);
 }
 
 side_actions::iterator side_actions::queue_attack(const map_location& target_hex, int weapon_choice,
-		const map_location& source_hex,	const map_location& dest_hex,
+		const pathfind::marked_route& route,
 		arrow_ptr arrow, fake_unit_ptr fake_unit)
 {
-	action_ptr action(new attack(target_hex, weapon_choice, source_hex, dest_hex, arrow, fake_unit));
+	action_ptr action(new attack(target_hex, weapon_choice, route, arrow, fake_unit));
 	LOG_WB << "Created: " << *action <<"\n";
 	return queue_action(action);
 }

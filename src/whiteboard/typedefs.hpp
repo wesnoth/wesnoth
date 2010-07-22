@@ -28,8 +28,10 @@ static lg::log_domain log_whiteboard("whiteboard");
 #define LOG_WB LOG_STREAM(info, log_whiteboard)
 #define DBG_WB LOG_STREAM(debug, log_whiteboard)
 
+#include <boost/scoped_ptr.hpp>
 #include <boost/shared_ptr.hpp>
 #include <boost/weak_ptr.hpp>
+#include <boost/enable_shared_from_this.hpp>
 #include <deque>
 #include <ostream> //used for << operators
 
@@ -37,6 +39,11 @@ class arrow;
 struct map_location; //not used in the typedefs, saves a few forward declarations
 class unit;
 class unit_map; //not used in the typedefs, saves a few forward declarations
+
+namespace pathfind {
+	struct plain_route;
+	struct marked_route;
+}
 
 namespace wb {
 

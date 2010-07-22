@@ -338,18 +338,16 @@ void manager::save_temp_move()
 	{
 		scoped_planned_unit_map planned_unit_map;
 
-		std::vector<map_location> steps;
 		arrow_ptr move_arrow;
 		fake_unit_ptr fake_unit;
 
-		steps = route_->steps;
 		move_arrow = arrow_ptr(move_arrow_);
 		fake_unit = fake_unit_ptr(fake_unit_);
 
 		on_deselect_hex();
 
 		fake_unit->set_disabled_ghosted(false);
-		viewer_actions()->queue_move(steps.front(), steps.back(), move_arrow, fake_unit);
+		viewer_actions()->queue_move(*route_, move_arrow, fake_unit);
 	}
 }
 
@@ -367,9 +365,8 @@ void manager::save_temp_attack(const map_location& attack_from, const map_locati
 			move_arrow = arrow_ptr(move_arrow_);
 			fake_unit = fake_unit_ptr(fake_unit_);
 
-			steps = route_->steps;
-			assert(steps.back() == attack_from);
-			source_hex = steps.front();
+			assert(route_->steps.back() == attack_from);
+			source_hex = route_->steps.front();
 
 			fake_unit->set_disabled_ghosted(false);
 		}
@@ -390,7 +387,7 @@ void manager::save_temp_attack(const map_location& attack_from, const map_locati
 
 		if (weapon_choice >= 0)
 		{
-			viewer_actions()->queue_attack(target_hex, weapon_choice, source_hex, attack_from, move_arrow, fake_unit);
+			viewer_actions()->queue_attack(target_hex, weapon_choice, *route_, move_arrow, fake_unit);
 		}
 
 		resources::screen->invalidate(target_hex);

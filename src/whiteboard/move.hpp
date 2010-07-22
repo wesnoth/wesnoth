@@ -23,8 +23,6 @@
 #include "map_location.hpp"
 #include "typedefs.hpp"
 
-#include <boost/enable_shared_from_this.hpp>
-
 namespace wb {
 
 /**
@@ -44,7 +42,7 @@ public:
 	static const std::string ARROW_STYLE_INVALID;
 
 	///Future unit map must be valid during construction, so that move can find its unit
-	move(const map_location& source_hex, const map_location& target_hex, arrow_ptr arrow,
+	move(const pathfind::marked_route& route, arrow_ptr arrow,
 			fake_unit_ptr fake_unit);
 	virtual ~move();
 
@@ -78,6 +76,7 @@ public:
 protected:
 	unit* unit_;
 	std::string unit_id_;
+	boost::scoped_ptr<pathfind::marked_route> route_;
 	map_location source_hex_;
 	map_location dest_hex_;
 	int movement_cost_;

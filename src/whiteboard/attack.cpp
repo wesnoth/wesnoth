@@ -44,9 +44,9 @@ std::ostream& attack::print(std::ostream& s) const
 	return s;
 }
 
-attack::attack(const map_location& target_hex, int weapon_choice, const map_location& source_hex, const map_location& dest_hex,
+attack::attack(const map_location& target_hex, int weapon_choice, const pathfind::marked_route& route,
 		arrow_ptr arrow, fake_unit_ptr fake_unit)
-	: move(source_hex, dest_hex, arrow, fake_unit)
+	: move(route, arrow, fake_unit)
 	, target_hex_(target_hex), weapon_choice_(weapon_choice)
 {
 
