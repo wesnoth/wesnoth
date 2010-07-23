@@ -349,11 +349,11 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 		animations.back().play_offscreen_ = false;
 
 		animations.push_back(*itor);
-		animations.back().unit_anim_.override(0,300,"0.9","",0,"","","~GS()");
+		animations.back().unit_anim_.override(0,animations.back().unit_anim_.get_animation_duration(),"0.9","",0,"","","~GS()");
 		animations.back().event_ = utils::split("ghosted");
 
 		animations.push_back(*itor);
-		animations.back().unit_anim_.override(0,300,"0.4","",0,"","","~GS()");
+		animations.back().unit_anim_.override(0,1,"0.4","",0,"","","~GS()");
 		animations.back().event_ = utils::split("disabled_ghosted");
 
 		animations.push_back(*itor);
