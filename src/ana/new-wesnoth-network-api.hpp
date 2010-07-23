@@ -42,9 +42,9 @@ Feature Requests:
 
 */
 
-//Code that needs to create clients will implement this interface
+//Code that needs to create a network component will implement this interface
 
-struct wesnoth_client_interface
+struct wesnoth_network_handler
 {
     // Called by the implementation when a client has connected to the server
     void handle_connect(ana::error_code, ana::net_id);
@@ -59,24 +59,7 @@ struct wesnoth_client_interface
     void handle_send(ana::error_code, ana::net_id, operation_id);
 };
 
-//Code that needs to create servers will implement this interface
-
-struct wesnoth_server_interface
-{
-    // Called by the implementation when a client has connected to the server
-    void handle_connect(ana::error_code, ana::net_id);
-
-    // Called by the implementation when the server has received a message from a client
-    void handle_receive(ana::error_code, ana::net_id, operation_id, config&);
-
-    // Called by the implementation when a client has disconnected from the server
-    void handle_disconnect(ana::error_code, ana::net_id);
-
-    // Called by the implementation when a client async send operation has completed
-    void handle_send(ana::error_code, ana::net_id, operation_id);
-};
-
-//Code that needs to create clients will USE this API
+//Code that needs to create network components will USE these objects
 
 namespace network
 {
