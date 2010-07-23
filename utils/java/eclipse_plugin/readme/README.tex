@@ -22,17 +22,24 @@ otherwise the plugin will not work.
   in the bottom of the page.
 \item Insert the link \textbf{http://download.eclipse.org/releases/helios} in the textbox in the top and press Enter.
   The list will be populated with some items.
-\item From there select from the ``Modelling" category, \textbf{Xtext SDK}.
+\item From there select in the ``Modelling" category, \textbf{Xtext SDK}.
   Press next and finish the install.\\
   \textit{Note:} If you are prompted for any license agreements or certificates press Yes on all (if you agree).
+\end{enumerate}
+
+\section{User}
+\subsection{Installing the plugin}
+\begin{enumerate}
+\item Install the plugin from (\textbf{http://eclipse.wesnoth.org/}), using the same sequence as in ``1.2 and 1.3"
+\item Select \textbf{``Wesnoth UMC Plugin"} and press finish.
 \end{enumerate}
 
 \section{Developer}
 \subsection{Setup the environment}
 \begin{enumerate}
 \item Checkout plugin's folder from the svn (http://svn.gna.org/svn/wesnoth/trunk/utils/java/) and select the following folders: ``eclipse\_plugin", ``org.wesnoth.wml'', ``org.wesnoth.wml.ui"
-\item In Eclipse, right click in Package Explorer/Project Navigator and then select
-  Import - General- Existing projects into Workspace
+\item In Eclipse, right click in \textbf{Package Explorer/Project Navigator} and then select
+ \textbf{Import - General - Existing projects into Workspace}
 \item Select the path where you downloaded the java folder, and check all the 3 projects: ``eclipse\_plugin", ``org.wesnoth.wml'', ``org.wesnoth.wml.ui".
 \item Build the projects.
 \end{enumerate}
@@ -45,19 +52,11 @@ After you've setup the environment and built the plugin you can run it.
   (non-debug/debug mode).
 \end{enumerate}
 
-\section{User}
-\subsection{Installing the plugin}
-\begin{enumerate}
-\item Install the plugin from (\textbf{http://eclipse.wesnoth.org/}
-\item Select \textbf{``Wesnoth UMC Plugin"} and press finish.
-\end{enumerate}
-
-
 \section{Everybody}
 \subsection{Using the plugin}
-Ok. So, after you have your plugin installed(user) or running(developer), you can use its features.
-But before of all, you must update the preferences. For this, go in ``Window - Preferences - Wesnoth UMC Plugin".
-Here you should set all options. Should the working directory be empty, it will be computed automatically
+After you have your plugin installed(user) or running(developer), you can use its features.
+But before of all, you must ``Setup the workspace". For this, go in the ``Wesnoth" menu and from 	
+Should the working directory be empty, it will be computed automatically
 based on wesnoth's executable
 
 \subsubsection{Wizards}
