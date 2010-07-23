@@ -542,12 +542,12 @@ void set_preferences_dir(std::string path)
 static void setup_user_data_dir()
 {
 #ifdef _WIN32
-	_mkdir((game_config::preferences_dir).c_str());
-	_mkdir((game_config::preferences_dir + "/editor").c_str());
-	_mkdir((game_config::preferences_dir + "/editor/maps").c_str());
-	_mkdir((game_config::preferences_dir + "/data").c_str());
-	_mkdir((game_config::preferences_dir + "/data/add-ons").c_str());
-	_mkdir((game_config::preferences_dir + "/saves").c_str());
+	_mkdir(user_data_dir.c_str());
+	_mkdir((user_data_dir + "/editor").c_str());
+	_mkdir((user_data_dir + "/editor/maps").c_str());
+	_mkdir((user_data_dir + "/data").c_str());
+	_mkdir((user_data_dir + "/data/add-ons").c_str());
+	_mkdir((user_data_dir + "/saves").c_str());
 #elif defined(__BEOS__)
 	BPath tpath;
 	#define BEOS_CREATE_PREFERENCES_SUBDIR(subdir) \
@@ -562,7 +562,7 @@ static void setup_user_data_dir()
 	BEOS_CREATE_PREFERENCES_SUBDIR("saves");
 	#undef BEOS_CREATE_PREFERENCES_SUBDIR
 #else
-	const std::string& dir_path = game_config::preferences_dir;
+	const std::string& dir_path = user_data_dir;
 
 	const bool res = create_directory_if_missing(dir_path);
 	// probe read permissions (if we could make the directory)
