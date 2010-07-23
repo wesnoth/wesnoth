@@ -476,7 +476,7 @@ bool create_directory_if_missing_recursive(const std::string& dirname)
 
 static std::string user_data_dir, user_config_dir, cache_dir;
 
-static std::string setup_user_data_dir();
+static void setup_user_data_dir();
 
 void set_preferences_dir(std::string path)
 {
@@ -535,11 +535,11 @@ void set_preferences_dir(std::string path)
 #endif
 
 #endif /*_WIN32*/
-	user_data_dir = setup_user_data_dir();
+	user_data_dir = game_config::preferences_dir;
+	setup_user_data_dir();
 }
 
-
-static std::string setup_user_data_dir()
+static void setup_user_data_dir()
 {
 	if (game_config::preferences_dir.empty())
 		set_preferences_dir(std::string());
@@ -550,8 +550,6 @@ static std::string setup_user_data_dir()
 	_mkdir((game_config::preferences_dir + "/data").c_str());
 	_mkdir((game_config::preferences_dir + "/data/add-ons").c_str());
 	_mkdir((game_config::preferences_dir + "/saves").c_str());
-
-	return game_config::preferences_dir;
 #elif defined(__BEOS__)
 	BPath tpath;
 	#define BEOS_CREATE_PREFERENCES_SUBDIR(subdir) \
@@ -565,7 +563,6 @@ static std::string setup_user_data_dir()
 	BEOS_CREATE_PREFERENCES_SUBDIR("data/add-ons");
 	BEOS_CREATE_PREFERENCES_SUBDIR("saves");
 	#undef BEOS_CREATE_PREFERENCES_SUBDIR
-	return game_config::preferences_dir;
 #else
 	const std::string& dir_path = game_config::preferences_dir;
 
@@ -574,7 +571,7 @@ static std::string setup_user_data_dir()
 	DIR* const dir = res ? opendir(dir_path.c_str()) : NULL;
 	if(dir == NULL) {
 		ERR_FS << "could not open or create preferences directory at " << dir_path << '\n';
-		return "";
+		return;
 	}
 	closedir(dir);
 
@@ -584,8 +581,6 @@ static std::string setup_user_data_dir()
 	create_directory_if_missing(dir_path + "/data");
 	create_directory_if_missing(dir_path + "/data/add-ons");
 	create_directory_if_missing(dir_path + "/saves");
-
-	return dir_path;
 #endif
 }
 
@@ -596,7 +591,8 @@ const std::string& get_user_data_dir()
 	// if the user deletes a dir while we are running?
 	if (user_data_dir.empty())
 	{
-		user_data_dir = setup_user_data_dir();
+		setup_user_data_dir();
+		user_data_dir = game_config::preferences_dir;
 	}
 	return user_data_dir;
 }
