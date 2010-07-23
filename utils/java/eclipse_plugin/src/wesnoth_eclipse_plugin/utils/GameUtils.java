@@ -8,7 +8,6 @@
  *******************************************************************************/
 package wesnoth_eclipse_plugin.utils;
 
-import java.io.File;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -107,13 +106,13 @@ public class GameUtils
 	{
 		List<String> args = new ArrayList<String>();
 		String wesnothExec = Preferences.getString(Constants.P_WESNOTH_EXEC_PATH);
-		if (wesnothExec.isEmpty())
+		String workingDir = Preferences.getString(Constants.P_WESNOTH_WORKING_DIR);
+		if (wesnothExec.isEmpty() || workingDir.isEmpty())
 		{
 			GUIUtils.showErrorMessageBox("Please set the wesnoth's executable path first.");
 			return;
 		}
 
-		String workingDir = Preferences.getString(Constants.P_WESNOTH_WORKING_DIR);
 
 		if (extraArgs != null)
 			args.addAll(extraArgs);
@@ -121,10 +120,6 @@ public class GameUtils
 		// add the user's data directory path
 		args.add("--config-dir");
 		args.add(Preferences.getString(Constants.P_WESNOTH_USER_DIR));
-
-		if (workingDir.isEmpty())
-			workingDir = wesnothExec.substring(0,
-					wesnothExec.lastIndexOf(new File(wesnothExec).getName()));
 
 		// we need to add the working dir (backward compatibility)
 		args.add(workingDir);

@@ -18,6 +18,8 @@ import org.eclipse.jface.preference.FieldEditor;
 import org.eclipse.jface.preference.FieldEditorPreferencePage;
 import org.eclipse.jface.preference.FileFieldEditor;
 import org.eclipse.jface.util.PropertyChangeEvent;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPreferencePage;
 
@@ -41,6 +43,9 @@ public class WesnothEditorPreferencesPage extends FieldEditorPreferencePage
 		implements IWorkbenchPreferencePage
 {
 	private DirectoryFieldEditor	wmlToolsField_;
+	private DirectoryFieldEditor	wesnothWorkingDirField_;
+	private DirectoryFieldEditor	wesnothUserDirField_;
+	private FileFieldEditor			wesnothExecutableField_;
 	private List<String> 			wmlToolsList_;
 
 	public WesnothEditorPreferencesPage() {
@@ -65,15 +70,49 @@ public class WesnothEditorPreferencesPage extends FieldEditorPreferencePage
 	@Override
 	public void createFieldEditors()
 	{
-		addField(new FileFieldEditor(Constants.P_WESNOTH_EXEC_PATH,
-				"Wesnoth executable path:", getFieldEditorParent()));
-		addField(new DirectoryFieldEditor(Constants.P_WESNOTH_WORKING_DIR,
-				"Working directory:", getFieldEditorParent()));
-		addField(new DirectoryFieldEditor(Constants.P_WESNOTH_USER_DIR,
-				"User data directory:", getFieldEditorParent()));
+		wesnothExecutableField_ = new FileFieldEditor(Constants.P_WESNOTH_EXEC_PATH,
+				"Wesnoth executable path:", getFieldEditorParent());
+		wesnothExecutableField_.getTextControl(getFieldEditorParent()).addModifyListener(new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e)
+			{
+				checkState();
+				if (wesnothWorkingDirField_.getTextControl(
+						getFieldEditorParent()).getText().isEmpty())
+				{
+					String wesnothExec = wesnothExecutableField_.getTextControl(getFieldEditorParent()).getText();
+					if (!wesnothExec.isEmpty())
+					{
+						wesnothWorkingDirField_.getTextControl(getFieldEditorParent()).
+								setText(wesnothExec.substring(0,
+										wesnothExec.lastIndexOf(new File(wesnothExec).getName()))
+								);
+					}
+				}
+			}
+		});
+		addField(wesnothExecutableField_);
+
+		ModifyListener stateChecker = new ModifyListener() {
+			@Override
+			public void modifyText(ModifyEvent e)
+			{
+				checkState();
+			}
+		};
+
+		wesnothWorkingDirField_ = new DirectoryFieldEditor(Constants.P_WESNOTH_WORKING_DIR,
+				"Working directory:", getFieldEditorParent());
+		addField(wesnothWorkingDirField_);
+
+		wesnothUserDirField_ = new DirectoryFieldEditor(Constants.P_WESNOTH_USER_DIR,
+				"User data directory:", getFieldEditorParent());
+		addField(wesnothUserDirField_);
 
 		wmlToolsField_ = new DirectoryFieldEditor(Constants.P_WESNOTH_WMLTOOLS_DIR,
 				"WML* tools directory:", getFieldEditorParent());
+		wmlToolsField_.getTextControl(getFieldEditorParent()).
+					addModifyListener(stateChecker);
 		addField(wmlToolsField_);
 	}
 
