@@ -1,7 +1,4 @@
-makereadme: README.tex
-	texi2dvi README.tex
-	dvipdf README.dvi
+makereadme:
+	cd readme; pdflatex README.tex
 	# cleanup non-needed files
-	rm README.log
-	rm README.dvi
-	rm README.aux
+	cd readme; rm README.log; rm README.aux;
