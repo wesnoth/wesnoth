@@ -518,6 +518,16 @@ void set_preferences_dir(std::string path)
 	}
 #ifdef __AMIGAOS4__
 	game_config::preferences_dir = "PROGDIR:" + path;
+#elif defined(__BEOS__)
+	if (be_path.InitCheck() != B_OK) {
+		BPath tpath;
+		if (find_directory(B_USER_SETTINGS_DIRECTORY, &be_path, true) == B_OK) {
+			be_path.Append("wesnoth");
+		} else {
+			be_path.SetTo("/boot/home/config/settings/wesnoth");
+		}
+		game_config::preferences_dir = be_path.Path();
+	}
 #else
 	const char* home_str = getenv("HOME");
 	std::string home = home_str ? home_str : ".";
@@ -543,26 +553,19 @@ static std::string setup_user_data_dir()
 
 	return game_config::preferences_dir;
 #elif defined(__BEOS__)
-	if (be_path.InitCheck() != B_OK) {
-		BPath tpath;
-		if (find_directory(B_USER_SETTINGS_DIRECTORY, &be_path, true) == B_OK) {
-			be_path.Append("wesnoth");
-		} else {
-			be_path.SetTo("/boot/home/config/settings/wesnoth");
-		}
+	BPath tpath;
 	#define BEOS_CREATE_PREFERENCES_SUBDIR(subdir) \
-			tpath = be_path;                       \
-			tpath.Append(subdir);                  \
-			create_directory(tpath.Path(), 0775);
+		tpath = be_path;                       \
+		tpath.Append(subdir);                  \
+		create_directory(tpath.Path(), 0775);
 
-		BEOS_CREATE_PREFERENCES_SUBDIR("editor");
-		BEOS_CREATE_PREFERENCES_SUBDIR("editor/maps");
-		BEOS_CREATE_PREFERENCES_SUBDIR("data");
-		BEOS_CREATE_PREFERENCES_SUBDIR("data/add-ons");
-		BEOS_CREATE_PREFERENCES_SUBDIR("saves");
+	BEOS_CREATE_PREFERENCES_SUBDIR("editor");
+	BEOS_CREATE_PREFERENCES_SUBDIR("editor/maps");
+	BEOS_CREATE_PREFERENCES_SUBDIR("data");
+	BEOS_CREATE_PREFERENCES_SUBDIR("data/add-ons");
+	BEOS_CREATE_PREFERENCES_SUBDIR("saves");
 	#undef BEOS_CREATE_PREFERENCES_SUBDIR
-	}
-	return be_path.Path();
+	return game_config::preferences_dir;
 #else
 	const std::string& dir_path = game_config::preferences_dir;
 
