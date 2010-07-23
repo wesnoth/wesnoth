@@ -148,7 +148,7 @@ class asio_server : public  ana::server,
 
         virtual ana::stats_collector* stats_collector() { return stats_collector_; }
 
-        virtual ana::timer* create_timer() { return new ana::timer( io_service_); }
+        virtual ana::timer* create_timer();
 
         virtual void set_header_first_mode( ana::net_id id );
 

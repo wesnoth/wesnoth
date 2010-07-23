@@ -305,7 +305,7 @@ void asio_server::stop_logging()
 
 ana::timer* asio_server::create_timer()
 {
-    return new ana::timer( socket_.get_io_service() );
+    return new ana::timer( io_service_ );
 }
 
 const ana::stats* asio_server::get_stats( ana::stat_type type ) const
@@ -446,4 +446,9 @@ void asio_server::asio_client_proxy::disconnect_listener()
 std::string asio_server::asio_client_proxy::ip_address() const
 {
     return socket_.remote_endpoint().address().to_string();
+}
+
+ana::timer* asio_server::asio_client_proxy::create_timer()
+{
+    return new ana::timer( socket_.get_io_service() );
 }
