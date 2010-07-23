@@ -629,7 +629,7 @@ const std::string &get_user_config_dir()
 {
 	if (user_config_dir.empty())
 	{
-#ifdef _X11
+#if defined(_X11) && !defined(PREFERENCES_DIR)
 		char const *xdg_config = getenv("XDG_CONFIG_HOME");
 		if (!xdg_config || xdg_config[0] == '\0') {
 			xdg_config = getenv("HOME");
@@ -640,7 +640,8 @@ const std::string &get_user_config_dir()
 			user_config_dir = xdg_config;
 			user_config_dir += "/.config";
 		} else user_config_dir = xdg_config;
-		user_config_dir = get_dir(user_config_dir + "/wesnoth");
+		user_config_dir += "/wesnoth";
+		create_directory_if_missing_recursive(user_config_dir);
 #else
 		user_config_dir = get_user_data_dir();
 #endif
@@ -652,7 +653,7 @@ const std::string &get_cache_dir()
 {
 	if (cache_dir.empty())
 	{
-#ifdef _X11
+#if defined(_X11) && !defined(PREFERENCES_DIR)
 		char const *xdg_cache = getenv("XDG_CACHE_HOME");
 		if (!xdg_cache || xdg_cache[0] == '\0') {
 			xdg_cache = getenv("HOME");
@@ -663,7 +664,8 @@ const std::string &get_cache_dir()
 			cache_dir = xdg_cache;
 			cache_dir += "/.cache";
 		} else cache_dir = xdg_cache;
-		cache_dir = get_dir(cache_dir + "/wesnoth");
+		cache_dir += "/wesnoth";
+		create_directory_if_missing_recursive(cache_dir);
 #else
 		cache_dir = get_dir(get_user_data_dir() + "/cache");
 #endif
