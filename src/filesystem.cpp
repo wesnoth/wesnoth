@@ -509,13 +509,38 @@ void set_preferences_dir(std::string path)
 	}
 
 #else /*_WIN32*/
-	if (path.empty()) {
+
 #ifdef PREFERENCES_DIR
-		path = PREFERENCES_DIR;
-#else
-		path = ".wesnoth" + game_config::version.substr(0,3);
+	if (path.empty()) path = PREFERENCES_DIR;
 #endif
+
+	std::string path2 = ".wesnoth" + game_config::version.substr(0,3);
+
+#ifdef _X11
+	const char *home_str = getenv("HOME");
+
+	if (path.empty()) {
+		char const *xdg_data = getenv("XDG_DATA_HOME");
+		if (!xdg_data || xdg_data[0] == '\0') {
+			if (!home_str) {
+				path = path2;
+				goto other;
+			}
+			user_data_dir = home_str;
+			user_data_dir += "/.local/share";
+		} else user_data_dir = xdg_data;
+		user_data_dir += "/wesnoth/";
+		user_data_dir += game_config::version.substr(0,3);
+		create_directory_if_missing_recursive(user_data_dir);
+		game_config::preferences_dir = user_data_dir;
+	} else {
+		other:
+		std::string home = home_str ? home_str : ".";
+		game_config::preferences_dir = home + "/" + path;
 	}
+#else
+	if (path.empty()) path = path2;
+
 #ifdef __AMIGAOS4__
 	game_config::preferences_dir = "PROGDIR:" + path;
 #elif defined(__BEOS__)
@@ -532,6 +557,7 @@ void set_preferences_dir(std::string path)
 	const char* home_str = getenv("HOME");
 	std::string home = home_str ? home_str : ".";
 	game_config::preferences_dir = home + std::string("/") + path;
+#endif
 #endif
 
 #endif /*_WIN32*/
