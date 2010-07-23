@@ -79,7 +79,8 @@ std::string get_addon_campaigns_dir();
 std::string get_next_filename(const std::string& name, const std::string& extension);
 std::string get_upload_dir();
 void set_preferences_dir(std::string path);
-const std::string& get_user_data_dir();
+const std::string &get_user_config_dir();
+const std::string &get_user_data_dir();
 
 std::string get_cwd();
 std::string get_exe_dir();

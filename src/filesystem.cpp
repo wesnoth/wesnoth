@@ -260,7 +260,7 @@ void get_files_in_dir(const std::string directory,
 
 std::string get_prefs_file()
 {
-	return get_user_data_dir() + "/preferences";
+	return get_user_config_dir() + "/preferences";
 }
 
 std::string get_save_index_file()
@@ -613,6 +613,11 @@ const std::string& get_user_data_dir()
 		user_data_dir = setup_user_data_dir();
 	}
 	return user_data_dir;
+}
+
+const std::string &get_user_config_dir()
+{
+	return get_user_data_dir();
 }
 
 static std::string read_stream(std::istream& s)

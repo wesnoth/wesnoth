@@ -524,9 +524,11 @@ game_controller::game_controller(int argc, char** argv) :
 		}
 	}
 	std::cerr << '\n';
-	std::cerr << "Data directory: " << game_config::path << '\n'
-	          << "User configuration directory: " << get_user_data_dir() << '\n'
-	          << '\n';
+	std::cerr << "Data directory: " << game_config::path
+		<< "\nUser configuration directory: " << get_user_config_dir()
+		<< "\nUser data directory: " << get_user_data_dir()
+		<< "\nCache directory: " << get_cache_dir()
+		<< '\n';
 
 	// disable sound in nosound mode, or when sound engine failed to initialize
 	if (no_sound || ((preferences::sound_on() || preferences::music_on() ||
@@ -1263,7 +1265,7 @@ void game_controller::start_wesnothd()
 		preferences::get_mp_server_program_name().empty() ?
 		get_program_invocation("wesnothd") : preferences::get_mp_server_program_name();
 
-	std::string config = get_user_data_dir() + "/lan_server.cfg";
+	std::string config = get_user_config_dir() + "/lan_server.cfg";
 	if (!file_exists(config)) {
 		// copy file if it isn't created yet
 		write_file(config, read_file(get_wml_location("lan_server.cfg")));
