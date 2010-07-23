@@ -679,7 +679,7 @@ bool config::empty() const
 	return children.empty() && values.empty();
 }
 
-config::any_child config::all_children_iterator::operator*() const
+config::all_children_iterator::reference config::all_children_iterator::operator*() const
 {
 	return any_child(&i_->pos->first, i_->pos->second[i_->index]);
 }

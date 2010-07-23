@@ -75,22 +75,23 @@ public:
 	bool has_attribute(const std::string& key) const { return cfg_->has_attribute(key); }
 	bool empty() const { return (null() || cfg_->empty()); }
 
-	struct all_children_iterator {
+	struct all_children_iterator
+	{
+		struct pointer_proxy;
+
 		typedef std::pair<const std::string, const vconfig> value_type;
 		typedef std::forward_iterator_tag iterator_category;
 		typedef int difference_type;
-		typedef const value_type *pointer;
-		typedef value_type& reference;
+		typedef const pointer_proxy pointer;
+		typedef const value_type reference;
 		typedef config::all_children_iterator Itor;
 		explicit all_children_iterator(const Itor &i, const config *cache_key = NULL);
 
 		all_children_iterator& operator++();
 		all_children_iterator  operator++(int);
 
-		struct pointer_proxy;
-
-		value_type operator*() const;
-		pointer_proxy operator->() const;
+		reference operator*() const;
+		pointer operator->() const;
 
 		std::string get_key() const;
 		const vconfig get_child() const;
@@ -121,7 +122,7 @@ private:
 struct vconfig::all_children_iterator::pointer_proxy
 {
 	value_type p;
-	pointer operator->() const { return &p; }
+	const value_type *operator->() const { return &p; }
 };
 
 namespace variable

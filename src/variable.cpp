@@ -394,12 +394,12 @@ vconfig::all_children_iterator vconfig::all_children_iterator::operator++(int)
 	return i;
 }
 
-std::pair<const std::string,const vconfig> vconfig::all_children_iterator::operator*() const
+vconfig::all_children_iterator::reference vconfig::all_children_iterator::operator*() const
 {
-	return std::make_pair<const std::string, const vconfig>(get_key(), get_child());
+	return value_type(get_key(), get_child());
 }
 
-vconfig::all_children_iterator::pointer_proxy vconfig::all_children_iterator::operator->() const
+vconfig::all_children_iterator::pointer vconfig::all_children_iterator::operator->() const
 {
 	pointer_proxy p = { value_type(get_key(), get_child()) };
 	return p;

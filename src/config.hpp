@@ -341,26 +341,26 @@ public:
 
 	struct all_children_iterator
 	{
+		struct arrow_helper
+		{
+			any_child data;
+			arrow_helper(const all_children_iterator &i): data(*i) {}
+			const any_child *operator->() const { return &data; }
+		};
+
 		typedef any_child value_type;
 		typedef std::forward_iterator_tag iterator_category;
 		typedef int difference_type;
-		typedef any_child *pointer;
-		typedef any_child reference;
+		typedef const arrow_helper pointer;
+		typedef const any_child reference;
 		typedef std::vector<child_pos>::const_iterator Itor;
 		explicit all_children_iterator(const Itor &i): i_(i) {}
 
 		all_children_iterator &operator++() { ++i_; return *this; }
 		all_children_iterator operator++(int) { return all_children_iterator(i_++); }
 
-		struct arrow_helper
-		{
-			any_child data;
-			arrow_helper(const all_children_iterator &i): data(*i) {}
-			any_child *operator->() { return &data; }
-		};
-
-		any_child operator*() const;
-		arrow_helper operator->() const { return *this; }
+		reference operator*() const;
+		pointer operator->() const { return *this; }
 
 		bool operator==(const all_children_iterator &i) const { return i_ == i.i_; }
 		bool operator!=(const all_children_iterator &i) const { return i_ != i.i_; }
