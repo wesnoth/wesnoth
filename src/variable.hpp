@@ -79,7 +79,7 @@ public:
 		typedef std::pair<const std::string, const vconfig> value_type;
 		typedef std::forward_iterator_tag iterator_category;
 		typedef int difference_type;
-		typedef std::auto_ptr<value_type> pointer;
+		typedef const value_type *pointer;
 		typedef value_type& reference;
 		typedef config::all_children_iterator Itor;
 		explicit all_children_iterator(const Itor &i, const config *cache_key = NULL);
@@ -87,8 +87,10 @@ public:
 		all_children_iterator& operator++();
 		all_children_iterator  operator++(int);
 
+		struct pointer_proxy;
+
 		value_type operator*() const;
-		pointer operator->() const;
+		pointer_proxy operator->() const;
 
 		std::string get_key() const;
 		const vconfig get_child() const;
@@ -114,6 +116,12 @@ public:
 private:
 	const config* cfg_;
 	const config* cache_key_;
+};
+
+struct vconfig::all_children_iterator::pointer_proxy
+{
+	value_type p;
+	pointer operator->() const { return &p; }
 };
 
 namespace variable
