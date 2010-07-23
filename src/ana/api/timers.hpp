@@ -154,7 +154,8 @@ namespace ana
     typedef boost::asio::basic_deadline_timer<std::time_t,detail::time_t_traits> boost_timer;
 
     /** The default timeout error. */
-    const ana::error_code timeout_error = boost::asio::error::make_error_code( boost::asio::error::timed_out );
+    const ana::error_code timeout_error =
+                boost::asio::error::make_error_code( boost::asio::error::timed_out );
 
     /**
      * General purpose asynchronous timer.
@@ -162,7 +163,10 @@ namespace ana
     class timer
     {
         public:
-            /** Standard constructor. Creates its own io_service object and runs in its own thread.*/
+            /**
+             * Standard constructor.
+             * Creates its own io_service object and runs in its own thread.
+             */
             timer();
 
             /**
@@ -193,7 +197,8 @@ namespace ana
             template<class Handler>
             void wait(size_t milliseconds, Handler handler)
             {
-                timer_.expires_from_now( milliseconds / 1000.0); //conversion will use a double or float
+                //conversion will use a double or float
+                timer_.expires_from_now( milliseconds / 1000.0);
                 timer_.async_wait(handler);
 
                 if ( holds_fresh_io_service_ )
@@ -259,7 +264,8 @@ namespace ana
                         if ( timer != NULL )
                         {
                             if ( timeout_type_ == TimePerKilobyte)
-                                timer->wait( (buffer->size() / 1024.0) * timeout_milliseconds_, handler);
+                                timer->wait( (buffer->size() / 1024.0) * timeout_milliseconds_,
+                                             handler);
                             else
                                 timer->wait( timeout_milliseconds_, handler);
                         }
@@ -278,8 +284,11 @@ namespace ana
                 /** Standard constructor. */
                 timed_sender();
 
-                timeout_policy timeout_type_            /** Type of timer policy.                 */ ;
-                size_t         timeout_milliseconds_    /** Amount of ms relevant to this policy. */ ;
+                /** Type of timer policy.                 */
+                timeout_policy timeout_type_         ;
+
+                /** Amount of ms relevant to this policy. */
+                size_t         timeout_milliseconds_ ;
         };
     }
 }

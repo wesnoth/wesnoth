@@ -30,7 +30,7 @@
 
 #include "gettext.hpp"
 
-// Begin ana_send_handler implementation ---------------------------------------------------------------
+// Begin ana_send_handler implementation ----------------------------------------------------------
 
 ana_send_handler::ana_send_handler( size_t calls ) :
     mutex_(),
@@ -67,7 +67,7 @@ void ana_send_handler::wait_completion()
     mutex_.unlock();
 }
 
-// Begin ana_handshake_finisher_handler implementation ------------------------------------------------------------
+// Begin ana_handshake_finisher_handler implementation --------------------------------------------
 
 ana_handshake_finisher_handler::ana_handshake_finisher_handler( ana::server*     server,
                                                                 clients_manager* mgr)
@@ -92,7 +92,7 @@ void ana_handshake_finisher_handler::handle_send(ana::error_code   ec,
     delete this;
 }
 
-// Begin ana_receive_handler implementation ------------------------------------------------------------
+// Begin ana_receive_handler implementation -------------------------------------------------------
 
 ana_receive_handler::ana_receive_handler( ana_component_set::iterator iterator ) :
     iterator_( iterator ),
@@ -130,7 +130,9 @@ void ana_receive_handler::wait_completion(ana::detail::timed_sender* component, 
             receive_timer_ = component->create_timer();
 
             receive_timer_->wait( ana::time::milliseconds(timeout_ms),
-                                boost::bind(&ana_receive_handler::handle_timeout, this, ana::timeout_error ) );
+                                boost::bind(&ana_receive_handler::handle_timeout,
+                                            this,
+                                            ana::timeout_error ) );
         }
     }
 
@@ -192,7 +194,7 @@ void ana_receive_handler::handle_timeout(ana::error_code error_code)
     timeout_called_mutex_.unlock();
 }
 
-// Begin ana_multiple_receive_handler implementation ------------------------------------------------------------
+// Begin ana_multiple_receive_handler implementation ----------------------------------------------
 
 ana_multiple_receive_handler::ana_multiple_receive_handler( ana_component_set& components ) :
     components_( components ),
@@ -255,7 +257,9 @@ void ana_multiple_receive_handler::wait_completion(size_t timeout_ms )
             receive_timer_ = component->create_timer();
 
             receive_timer_->wait( ana::time::milliseconds(timeout_ms),
-                                boost::bind(&ana_multiple_receive_handler::handle_timeout, this, ana::timeout_error ) );
+                                boost::bind(&ana_multiple_receive_handler::handle_timeout,
+                                            this,
+                                            ana::timeout_error ) );
         }
     }
     mutex_.lock();
@@ -329,7 +333,7 @@ void ana_multiple_receive_handler::handle_timeout(ana::error_code error_code)
 }
 
 
-// Begin ana_connect_handler implementation ------------------------------------------------------------
+// Begin ana_connect_handler implementation -------------------------------------------------------
 
 ana_connect_handler::ana_connect_handler( ) :
     mutex_( ),
@@ -368,7 +372,7 @@ void ana_connect_handler::wait_completion()
     mutex_.unlock();
 }
 
-// Begin ana_component implementation ------------------------------------------------------------------
+// Begin ana_component implementation -------------------------------------------------------------
 
 ana_component::ana_component( ) :
     base_( ana::server::create() ),
@@ -528,7 +532,7 @@ network::connection ana_component::oldest_sender_id_still_pending()
     return id;
 }
 
-// Begin clients_manager  implementation ---------------------------------------------------------------
+// Begin clients_manager  implementation ----------------------------------------------------------
 
 clients_manager::clients_manager( ana::server* server) :
     server_( server ),
@@ -600,7 +604,7 @@ network::connection clients_manager::get_pending_connection_id()
     return result;
 }
 
-// Begin ana_network_manager implementation ------------------------------------------------------------
+// Begin ana_network_manager implementation -------------------------------------------------------
 
 ana_network_manager::ana_network_manager() :
     connect_timer_( NULL ),
@@ -884,7 +888,9 @@ size_t ana_network_manager::send_all( const config& cfg, bool zipped )
     return output_string.size();
 }
 
-size_t ana_network_manager::send( network::connection connection_num , const config& cfg, bool zipped )
+size_t ana_network_manager::send( network::connection connection_num ,
+                                  const config&       cfg,
+                                  bool                zipped )
 {
     if ( ! zipped )
         throw std::runtime_error("All send operations should be zipped");
@@ -897,7 +903,9 @@ size_t ana_network_manager::send( network::connection connection_num , const con
     return send_raw_data( output_string.c_str(), output_string.size(), connection_num );
 }
 
-size_t ana_network_manager::send_raw_data( const char* base_char, size_t size, network::connection connection_num )
+size_t ana_network_manager::send_raw_data( const char*         base_char,
+                                           size_t              size,
+                                           network::connection connection_num )
 {
     ana::net_id id( connection_num );
     ana_component_set::iterator it;
@@ -925,8 +933,8 @@ size_t ana_network_manager::send_raw_data( const char* base_char, size_t size, n
         {
             if ((*it)->is_server())
             {
-                ana_send_handler handler;
-                (*it)->server()->send_one( id, ana::buffer( base_char, size ), &handler); //, ana::ZERO_COPY);
+                ana_send_handler handler;                   //, ana::ZERO_COPY);
+                (*it)->server()->send_one( id, ana::buffer( base_char, size ), &handler);
                 handler.wait_completion();
                 if ( handler.error() )
                     return 0;
@@ -958,7 +966,9 @@ void ana_network_manager::send_all_except(const config& cfg, network::connection
             {
                 if ( server_manager_[ (*it)->server() ]->is_a_client( id_to_avoid ) )
                 {
-                    const size_t clients_receiving_number = server_manager_[ (*it)->server() ]->client_amount() - 1;
+                    const size_t clients_receiving_number
+                                = server_manager_[ (*it)->server() ]->client_amount() - 1;
+
                     ana_send_handler handler( clients_receiving_number );
                     (*it)->server()->send_all_except( id_to_avoid,
                                                       ana::buffer( output_string ),
@@ -979,7 +989,8 @@ void ana_network_manager::send_all_except(const config& cfg, network::connection
     }
 }
 
-network::connection ana_network_manager::read_from_ready_buffer( const ana_component_set::iterator& it, config& cfg)
+network::connection ana_network_manager::read_from_ready_buffer(
+                                         const ana_component_set::iterator& it, config& cfg)
 {
     read_config( (*it)->wait_for_element(), cfg);
 
@@ -1055,7 +1066,6 @@ network::connection ana_network_manager::read_from( network::connection connecti
 
             if ( handler.error() )
             {
-                // For concurrency reasons, this checks if the old handler was used before the wait operation
                 for (it = components_.begin(); it != components_.end(); ++it)
                     if (  (*it)->new_buffer_ready() )
                         return read_from_ready_buffer( it, cfg );
@@ -1178,7 +1188,8 @@ void ana_network_manager::handle_message( ana::error_code          error,
         network::disconnect( client );
     else
     {
-        std::cout << "DEBUG: Buffer received with size " << buffer->size() << " from " << client << "\n";
+        std::cout << "DEBUG: Buffer received with size " << buffer->size()
+                  << " from " << client << "\n";
 
         std::set< ana_component* >::iterator it;
 
@@ -1208,7 +1219,7 @@ void ana_network_manager::handle_message( ana::error_code          error,
                             ana::serializer::bistream bis( buffer->string() );
 
                             bis >> handshake;
-                            ana::network_to_host_long( handshake ); //not necessary since I'm expecting a 0 anyway
+                            ana::network_to_host_long( handshake ); //I'm expecting a 0 anyway
                         }
 
                         if ( handshake != 0 )

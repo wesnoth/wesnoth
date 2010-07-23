@@ -78,7 +78,8 @@ namespace ana
                     if (secs_to_reset_ > 0 )
                     {
                         timer_.expires_from_now( secs_to_reset_ );
-                        timer_.async_wait(boost::bind( &stats_logger::reset, this, boost::asio::placeholders::error ) );
+                        timer_.async_wait(boost::bind( &stats_logger::reset, this,
+                                                       boost::asio::placeholders::error ) );
                     }
                 }
 
@@ -121,7 +122,8 @@ namespace ana
                     if (secs_to_reset_ > 0 )
                     {
                         timer_.expires_from_now( secs_to_reset_ );
-                        timer_.async_wait(boost::bind( &stats_logger::reset, this, boost::asio::placeholders::error ) );
+                        timer_.async_wait(boost::bind( &stats_logger::reset, this,
+                                                       boost::asio::placeholders::error ) );
                     }
                 }
 
@@ -178,7 +180,8 @@ namespace ana
                 hours_stats_( time::hours(1), io_service_ ),
                 days_stats_( time::days(1), io_service_ )
             {
-                collector_thread_ = new boost::thread( boost::bind(&boost::asio::io_service::run, &io_service_) );
+                collector_thread_ = new boost::thread( boost::bind(&boost::asio::io_service::run,
+                                                                   &io_service_) );
             }
 
             const stats* get_stats( stat_type type ) const

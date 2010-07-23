@@ -233,7 +233,8 @@ class ana_receive_handler : public ana::listener_handler
          * If the timeout parameter is 0, it will lock the current thread until
          * one of these components has received a message.
          *
-         * @param component : A network component running an io_service which supports timeout capabilities.
+         * @param component : A network component running an io_service which
+         *                    supports timeout capabilities.
          * @param timeout_ms : Amount of milliseconds to timeout the operation.
          */
         void wait_completion(ana::detail::timed_sender* component, size_t timeout_ms = 0);
@@ -283,7 +284,8 @@ class ana_multiple_receive_handler : public ana::listener_handler
          * If the timeout parameter is 0, it will lock the current thread until
          * one of these components has received a message.
          *
-         * @param component : A network component running an io_service which supports timeout capabilities.
+         * @param component : A network component running an io_service
+         *                    which supports timeout capabilities.
          * @param timeout_ms : Amount of milliseconds to timeout the operation.
          */
         void wait_completion(size_t timeout_ms = 0);
@@ -336,7 +338,8 @@ class ana_connect_handler : public ana::connection_handler
         /**
          * Constructs a connection handler.
          *
-         * @param timer : A pointer to a running timer dealing with the timeout of this connect operation.
+         * @param timer : A pointer to a running timer dealing with the timeout
+         *                of this connect operation.
          */
         ana_connect_handler( );
 
@@ -433,7 +436,8 @@ class ana_network_manager : public ana::listener_handler,
          * @param cfg : The config input to place the read data.
          * @param timeout_ms : Amount of milliseconds to wait for the data.
          *
-         * @returns The network::connection number of the component that read the data or 0 if an error occurred.
+         * @returns The network::connection number of the component that read
+         *          the data or 0 if an error occurred.
          */
         network::connection read_from( network::connection connection_num,
                                        config&             cfg,
@@ -446,7 +450,8 @@ class ana_network_manager : public ana::listener_handler,
          * @param cfg : The config input to place the read data.
          * @param timeout_ms : Amount of milliseconds to wait for the data.
          *
-         * @returns The network::connection number of the component that read the data or 0 if an error occurred.
+         * @returns The network::connection number of the component that read
+         *          the data or 0 if an error occurred.
          */
         network::connection read_from( const ana_component_set::iterator& it,
                                        config&             cfg,
@@ -460,9 +465,11 @@ class ana_network_manager : public ana::listener_handler,
          * @param it : The ana component to read from.
          * @param cfg : The config input to place the read data.
          *
-         * @returns The network::connection number of the component that read the data or 0 if an error occurred.
+         * @returns The network::connection number of the component that read
+         *          the data or 0 if an error occurred.
          */
-        network::connection read_from_ready_buffer( const ana_component_set::iterator& it, config& cfg);
+        network::connection read_from_ready_buffer( const ana_component_set::iterator& it,
+                                                    config&                            cfg);
 
         /** Retrieve upload statistics on a given component. */
         network::statistics get_send_stats(network::connection handle);

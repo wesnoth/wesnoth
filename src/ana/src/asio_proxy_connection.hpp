@@ -45,7 +45,8 @@ struct proxy_connection_manager
 {
 	virtual ~proxy_connection_manager() {}
 
-    virtual void handle_proxy_connection(const boost::system::error_code&, ana::connection_handler* ) = 0;
+    virtual void handle_proxy_connection(const boost::system::error_code&,
+                                         ana::connection_handler* )        = 0;
 };
 
 struct proxy_information
@@ -80,11 +81,14 @@ class proxy_connection
 
         void do_connect( );
 
-        void handle_connect(const boost::system::error_code& ec, tcp::resolver::iterator endpoint_iterator);
+        void handle_connect(const boost::system::error_code& ec,
+                            tcp::resolver::iterator endpoint_iterator);
 
         void handle_sent_request(const boost::system::error_code& ec, std::string* request);
 
-        void handle_response( boost::asio::streambuf* buf , const boost::system::error_code&, size_t );
+        void handle_response( boost::asio::streambuf* buf,
+                              const boost::system::error_code&,
+                              size_t );
 
         bool finds( const std::string& source, char const* pattern );
 

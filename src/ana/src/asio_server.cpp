@@ -162,7 +162,9 @@ void asio_server::handle_accept(const boost::system::error_code& ec,
 
 void asio_server::run_listener( )
 {
-    for (std::list<client_proxy*>::iterator it( client_proxies_.begin() ); it != client_proxies_.end(); ++it)
+    for (std::list<client_proxy*>::iterator it( client_proxies_.begin() );
+         it != client_proxies_.end();
+         ++it)
     {
         (*it)->set_listener_handler( listener_ );
         (*it)->run_listener( );
@@ -301,6 +303,11 @@ void asio_server::stop_logging()
     stats_collector_ = NULL;
 }
 
+ana::timer* asio_server::create_timer()
+{
+    return new ana::timer( socket_.get_io_service() );
+}
+
 const ana::stats* asio_server::get_stats( ana::stat_type type ) const
 {
     if (stats_collector_ != NULL )
@@ -310,7 +317,8 @@ const ana::stats* asio_server::get_stats( ana::stat_type type ) const
 }
 
 
-asio_server::asio_client_proxy::asio_client_proxy(boost::asio::io_service& io_service, asio_proxy_manager* server) :
+asio_server::asio_client_proxy::asio_client_proxy(boost::asio::io_service& io_service,
+                                                  asio_proxy_manager* server) :
     client_proxy(),
     asio_listener(),
     socket_(io_service),
@@ -330,10 +338,10 @@ tcp::socket& asio_server::asio_client_proxy::socket()
     return socket_;
 }
 
-void asio_server::asio_client_proxy::log_conditional_receive( const ana::detail::read_buffer& buffer )
+void asio_server::asio_client_proxy::log_conditional_receive( const ana::detail::read_buffer& buf )
 {
     if ( stats_collector_ != NULL )
-        stats_collector_->log_receive( buffer );
+        stats_collector_->log_receive( buf );
 }
 
 void asio_server::asio_client_proxy::start_logging()
@@ -364,8 +372,12 @@ void asio_server::disconnect()
     io_service_.stop();
     io_thread_.join();
 
-    for (std::list<client_proxy*>::iterator it = client_proxies_.begin(); it != client_proxies_.end(); ++it)
+    for (std::list<client_proxy*>::iterator it = client_proxies_.begin();
+         it != client_proxies_.end();
+         ++it)
+    {
         delete *it;
+    }
 
     client_proxies_.clear();
 
@@ -374,8 +386,12 @@ void asio_server::disconnect()
 
 void asio_server::set_raw_buffer_max_size( size_t size)
 {
-    for (std::list<client_proxy*>::iterator it = client_proxies_.begin(); it != client_proxies_.end(); ++it)
+    for (std::list<client_proxy*>::iterator it = client_proxies_.begin();
+         it != client_proxies_.end();
+         ++it)
+    {
         (*it)->set_raw_buffer_max_size( size );
+    }
 }
 
 void asio_server::set_header_first_mode( ana::net_id id )

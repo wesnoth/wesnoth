@@ -118,7 +118,8 @@ void asio_listener::handle_header(char* header, const boost::system::error_code&
 
             if (size != 0)
             {
-                ana::detail::read_buffer read_buf( new ana::detail::read_buffer_implementation( size ) );
+                ana::detail::read_buffer read_buf(
+                        new ana::detail::read_buffer_implementation( size ) );
 
                 socket().async_read_some(boost::asio::buffer(read_buf->base(), read_buf->size() ),
                                         boost::bind(&asio_listener::handle_partial_body,
@@ -127,7 +128,9 @@ void asio_listener::handle_header(char* header, const boost::system::error_code&
             }
             else
             {   // copy the header to a read_buffer
-                ana::detail::read_buffer read_buf ( new ana::detail::read_buffer_implementation( ana::HEADER_LENGTH ) );
+                ana::detail::read_buffer read_buf ( new ana::detail::read_buffer_implementation(
+                                                        ana::HEADER_LENGTH ) );
+
                 for (size_t i(0); i< ana::HEADER_LENGTH; ++i)
                     static_cast<char*>(read_buf->base())[i] = header[i];
 
@@ -171,7 +174,8 @@ void asio_listener::handle_partial_body( ana::detail::read_buffer         buffer
                                                              buffer->size()      - accumulated),
                                          boost::bind(&asio_listener::handle_partial_body,
                                                      this, buffer,
-                                                     boost::asio::placeholders::error, accumulated, _2 ));
+                                                     boost::asio::placeholders::error,
+                                                     accumulated, _2 ));
         }
     }
     catch(const std::exception& e)
@@ -181,7 +185,9 @@ void asio_listener::handle_partial_body( ana::detail::read_buffer         buffer
 }
 
 
-void asio_listener::handle_raw_buffer( ana::detail::read_buffer buf, const boost::system::error_code& ec, size_t read_size)
+void asio_listener::handle_raw_buffer( ana::detail::read_buffer buf,
+                                       const boost::system::error_code& ec,
+                                       size_t read_size)
 {
     try
     {
@@ -238,9 +244,11 @@ void asio_listener::listen_one_message()
                                                 header_, boost::asio::placeholders::error));
         else
         {
-            ana::detail::read_buffer raw_buffer( new ana::detail::read_buffer_implementation( raw_mode_buffer_size_ ) );
+            ana::detail::read_buffer raw_buffer(
+                         new ana::detail::read_buffer_implementation( raw_mode_buffer_size_ ) );
 
-            socket().async_read_some(boost::asio::buffer(raw_buffer->base(), raw_mode_buffer_size_ ),
+            socket().async_read_some(boost::asio::buffer(raw_buffer->base(),
+                                                         raw_mode_buffer_size_ ),
                                     boost::bind(&asio_listener::handle_raw_buffer, this,
                                                 raw_buffer, boost::asio::placeholders::error, _2));
         }

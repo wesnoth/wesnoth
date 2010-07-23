@@ -66,7 +66,7 @@ namespace ana
                  * Resize the buffer, this won't affect the amount of memory usage.
                  * It is only possible to downsize the buffer.
                  *
-                 * @Pre : The new size is smaller than the original size used to construct this object.
+                 * @Pre : The new size is smaller than the original size used to construct this.
                  */
                 void resize( size_t new_size )
                 {
@@ -126,7 +126,7 @@ namespace ana
                 size_t size_;
         };
 
-        /** A shared pointer to a read_buffer, self destructs when no one is left referencing it. */
+        /** A shared pointer to a read_buffer, self destructs when no one is referencing it. */
         typedef boost::shared_ptr<read_buffer_implementation> read_buffer;
 
         /**
@@ -182,7 +182,8 @@ namespace ana
      * The ana::buffer function is used to create a buffer object to represent raw memory,
      * an array of POD elements, a vector of POD elements, or a std::string.
      *
-     * Check <http://think-async.com/Asio/boost_asio_1_3_1/doc/html/boost_asio/reference/buffer.html>
+     * Check:
+     * <http://think-async.com/Asio/boost_asio_1_3_1/doc/html/boost_asio/reference/buffer.html>
      */
     //@{
 
@@ -191,7 +192,8 @@ namespace ana
         return boost::asio::buffer(b);
     }
 
-    inline boost::asio::mutable_buffers_1 buffer(const boost::asio::mutable_buffer & b, std::size_t max_size_in_bytes)
+    inline boost::asio::mutable_buffers_1 buffer(const boost::asio::mutable_buffer & b,
+                                                 std::size_t max_size_in_bytes)
     {
         return boost::asio::buffer(b, max_size_in_bytes);
     }
@@ -201,7 +203,8 @@ namespace ana
         return boost::asio::buffer(b);
     }
 
-    inline boost::asio::const_buffers_1 buffer(const boost::asio::const_buffer & b, std::size_t max_size_in_bytes)
+    inline boost::asio::const_buffers_1 buffer(const boost::asio::const_buffer & b,
+                                               std::size_t max_size_in_bytes)
     {
         return boost::asio::buffer(b, max_size_in_bytes);
     }
@@ -300,7 +303,7 @@ namespace ana
 
     template<typename PodType, typename Allocator>
     inline boost::asio::const_buffers_1 buffer(const std::vector< PodType, Allocator > & data,
-                                                                          std::size_t max_size_in_bytes)
+                                               std::size_t max_size_in_bytes)
     {
         return boost::asio::buffer(data, max_size_in_bytes);
     }
@@ -310,7 +313,8 @@ namespace ana
         return boost::asio::buffer(data);
     }
 
-    inline boost::asio::const_buffers_1 buffer(const std::string & data, std::size_t max_size_in_bytes)
+    inline boost::asio::const_buffers_1 buffer(const std::string & data,
+                                               std::size_t max_size_in_bytes)
     {
         return boost::asio::buffer(data, max_size_in_bytes);
     }

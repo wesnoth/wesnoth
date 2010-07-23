@@ -51,13 +51,15 @@ namespace ana
         }
 
         // Subtract one time from another.
-        time_t_traits::duration_type time_t_traits::subtract(const time_type& t1, const time_type& t2)
+        time_t_traits::duration_type time_t_traits::subtract(const time_type& t1,
+                                                             const time_type& t2)
         {
             return duration_type(t1 - t2);
         }
 
         // Test whether one time is less than another.
-        bool time_t_traits::less_than(const time_t_traits::time_type& t1, const time_t_traits::time_type& t2)
+        bool time_t_traits::less_than(const time_t_traits::time_type& t1,
+                                      const time_t_traits::time_type& t2)
         {
             return t1 < t2;
         }

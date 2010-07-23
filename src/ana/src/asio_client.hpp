@@ -81,7 +81,8 @@ class asio_client : public ana::client,
 
         virtual void disconnect_listener();
 
-        virtual void handle_proxy_connection(const boost::system::error_code&, ana::connection_handler*);
+        virtual void handle_proxy_connection(const boost::system::error_code&,
+                                             ana::connection_handler*);
 
         virtual tcp::socket& socket();
 

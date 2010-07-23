@@ -69,7 +69,8 @@ namespace network
         client( wesnoth_client_interface* handler );
 
         // Example, set_timeout( network::SEND_OPERATIONS, ana::time::seconds( 10 ) );
-        //          set_timeout( network::SEND_OPERATIONS, ana::KILOBYTES(1), ana::time::seconds( 1 ) ); (?)
+        //          set_timeout( network::SEND_OPERATIONS, ana::KILOBYTES(1),
+        //                                                 ana::time::seconds( 1 ) ); (?)
         //          set_timeout( network::CONNECT_OPERATIONS, ana::time::seconds( 30 ) );
         void set_timeout( ... );
 
@@ -110,7 +111,8 @@ namespace network
 
         // Set timeouts for a given client
         // Example, set_timeout( 1, network::SEND_OPERATIONS, ana::time::seconds( 10 ) );
-        //          set_timeout( 2, network::SEND_OPERATIONS, ana::KILOBYTES(1), ana::time::seconds( 1 ) ); (?)
+        //          set_timeout( 2, network::SEND_OPERATIONS, ana::KILOBYTES(1),
+        //                                                    ana::time::seconds( 1 ) ); (?)
         void set_timeout( ana::net_id, ... );
 
         // Attempt to send a WML config to a client

@@ -44,31 +44,53 @@ namespace ana
      * Definitions of main types and relevant constants.
      */
     //@{
-        typedef boost::uint32_t ana_uint32  /** Standard unsigned int, with fixed size to 32 bits.  */ ;
-        typedef boost::int32_t  ana_int32   /** Standard int, with fixed size to 32 bits.           */ ;
-        typedef boost::uint16_t ana_uint16  /** Standard unsigned int, with fixed size to 16 bits.  */ ;
-        typedef boost::int16_t  ana_int16   /** Standard int, with fixed size to 16 bits.           */ ;
+        /** Standard unsigned int, with fixed size to 32 bits.  */
+        typedef boost::uint32_t ana_uint32 ;
 
+        /** Standard int, with fixed size to 32 bits.           */
+        typedef boost::int32_t  ana_int32  ;
 
-        typedef ana_uint32  message_size       /** Message size type.                               */ ;
+        /** Standard unsigned int, with fixed size to 16 bits.  */
+        typedef boost::uint16_t ana_uint16 ;
 
-        typedef size_t      net_id             /** IDs of connected components, unique, non zero.   */ ;
-        typedef size_t      operation_id       /** IDs of network operations, unique, zero = no-op. */ ;
+        /** Standard int, with fixed size to 16 bits.           */
+        typedef boost::int16_t  ana_int16  ;
 
-        typedef std::string port               /** Port type, a std::string (instead of a short.)   */ ;
-        typedef std::string address            /** Address type, a string. Either IP of hostname.   */ ;
+        /** Message size type.                                  */
+        typedef ana_uint32  message_size   ;
 
-        typedef bool        send_type          /** Send operation type, true to copy the buffer.    */ ;
+        /** IDs of connected components, unique, non zero.      */
+        typedef size_t      net_id         ;
 
-        typedef boost::system::error_code error_code /** Standard error code, can evaluate to bool. */ ;
+        /** IDs of network operations, unique, zero = no-op.    */
+        typedef size_t      operation_id   ;
 
-        const operation_id no_operation = 0    /** A network operation that didn't do anything.     */ ;
+        /** Port type, a std::string (instead of a short.)      */
+        typedef std::string port           ;
 
-        const send_type ZERO_COPY   = false     /** Don't copy the buffer. */ ;
-        const send_type COPY_BUFFER = true      /** Copy the buffer.       */ ;
+        /** Address type, a string. Either IP of hostname.      */
+        typedef std::string address        ;
 
-        const message_size HEADER_LENGTH = sizeof(ana_uint32) /** Length of message header, 4 bytes.    */ ;
-        const message_size INITIAL_RAW_MODE_BUFFER_SIZE = 256 /** Initial length of raw message buffer. */ ;
+        /** Send operation type, true to copy the buffer.       */
+        typedef bool        send_type      ;
+
+        /** Standard error code, can evaluate to bool.          */
+        typedef boost::system::error_code error_code ;
+
+        /** A network operation that didn't do anything.        */
+        const operation_id no_operation = 0;
+
+        /** Don't copy the buffer. */
+        const send_type ZERO_COPY   = false;
+
+        /** Copy the buffer.       */
+        const send_type COPY_BUFFER = true ;
+
+        /** Length of message header, 4 bytes.    */
+        const message_size HEADER_LENGTH = sizeof(ana_uint32);
+
+        /** Initial length of raw message buffer. */
+        const message_size INITIAL_RAW_MODE_BUFFER_SIZE = 256 ;
     //@}
 }
 

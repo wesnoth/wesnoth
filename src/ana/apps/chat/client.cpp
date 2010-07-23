@@ -57,7 +57,7 @@ void show_help(char* const command)
         "\t" << command << " billy localhost 12345\n" <<
         "\t\tConnect to a local server on port 12345 with nick billy.\n" <<
         "\t" << command << " billy X.K.C.D 12345 localhost 3128 foo bar\n" <<
-        "\t\tConnect to a remote server at X.K.C.D:12345 using a local proxy with credentials foo:bar.\n\n";
+        "\t\tConnect to a remote server at X.K.C.D:12345 with proxy credentials foo:bar.\n\n";
         ;
 }
 
@@ -121,37 +121,37 @@ class ChatClient : public ana::listener_handler,
                 const ana::stats* day_stats  = client_->get_stats( ana::DAYS );
 
                 std::cout << "                  Network  Statistics\n\n"
-                          << "Uptime : " << acum_stats->uptime() << " seconds.\n\n"
-                          << "+-----------------+-----------------+-----------------+\n"
-                          << "|                 |     Packets     |      Bytes      |\n"
-                          << "|                 +-----------------+--------+--------+\n"
-                          << "|                 |   In   |  Out   |   In   |   Out  |\n"
-                          << "+-----------------+--------+--------+--------+--------+\n"
-                          << "|   Accumulated   |" << std::setw(8) << acum_stats->packets_in() <<"|"
-                                                   << std::setw(8) << acum_stats->packets_out() <<"|"
-                                                   << std::setw(8) << acum_stats->bytes_in() <<"|"
-                                                   << std::setw(8) << acum_stats->bytes_out() <<"|\n"
-                          << "+-----------------+-----------------+-----------------+\n"
-                          << "|   Last second   |" << std::setw(8) << sec_stats->packets_in() <<"|"
-                                                   << std::setw(8) << sec_stats->packets_out() <<"|"
-                                                   << std::setw(8) << sec_stats->bytes_in() <<"|"
-                                                   << std::setw(8) << sec_stats->bytes_out() <<"|\n"
-                          << "+-----------------+-----------------+-----------------+\n"
-                          << "|   Last minute   |" << std::setw(8) << min_stats->packets_in() <<"|"
-                                                   << std::setw(8) << min_stats->packets_out() <<"|"
-                                                   << std::setw(8) << min_stats->bytes_in() <<"|"
-                                                   << std::setw(8) << min_stats->bytes_out() <<"|\n"
-                          << "+-----------------+-----------------+-----------------+\n"
-                          << "|    Last hour    |" << std::setw(8) << hour_stats->packets_in() <<"|"
-                                                   << std::setw(8) << hour_stats->packets_out() <<"|"
-                                                   << std::setw(8) << hour_stats->bytes_in() <<"|"
-                                                   << std::setw(8) << hour_stats->bytes_out() <<"|\n"
-                          << "+-----------------+-----------------+-----------------+\n"
-                          << "|    Last  day    |" << std::setw(8) << day_stats->packets_in() <<"|"
-                                                   << std::setw(8) << day_stats->packets_out() <<"|"
-                                                   << std::setw(8) << day_stats->bytes_in() <<"|"
-                                                   << std::setw(8) << day_stats->bytes_out() <<"|\n"
-                          << "+-----------------+-----------------+-----------------+\n";
+                    << "Uptime : " << acum_stats->uptime() << " seconds.\n\n"
+                    << "+-----------------+-----------------+-----------------+\n"
+                    << "|                 |     Packets     |      Bytes      |\n"
+                    << "|                 +-----------------+--------+--------+\n"
+                    << "|                 |   In   |  Out   |   In   |   Out  |\n"
+                    << "+-----------------+--------+--------+--------+--------+\n"
+                    << "|   Accumulated   |" << std::setw(8) << acum_stats->packets_in() <<"|"
+                                            << std::setw(8) << acum_stats->packets_out() <<"|"
+                                            << std::setw(8) << acum_stats->bytes_in() <<"|"
+                                            << std::setw(8) << acum_stats->bytes_out() <<"|\n"
+                    << "+-----------------+-----------------+-----------------+\n"
+                    << "|   Last second   |" << std::setw(8) << sec_stats->packets_in() <<"|"
+                                            << std::setw(8) << sec_stats->packets_out() <<"|"
+                                            << std::setw(8) << sec_stats->bytes_in() <<"|"
+                                            << std::setw(8) << sec_stats->bytes_out() <<"|\n"
+                    << "+-----------------+-----------------+-----------------+\n"
+                    << "|   Last minute   |" << std::setw(8) << min_stats->packets_in() <<"|"
+                                            << std::setw(8) << min_stats->packets_out() <<"|"
+                                            << std::setw(8) << min_stats->bytes_in() <<"|"
+                                            << std::setw(8) << min_stats->bytes_out() <<"|\n"
+                    << "+-----------------+-----------------+-----------------+\n"
+                    << "|    Last hour    |" << std::setw(8) << hour_stats->packets_in() <<"|"
+                                            << std::setw(8) << hour_stats->packets_out() <<"|"
+                                            << std::setw(8) << hour_stats->bytes_in() <<"|"
+                                            << std::setw(8) << hour_stats->bytes_out() <<"|\n"
+                    << "+-----------------+-----------------+-----------------+\n"
+                    << "|    Last  day    |" << std::setw(8) << day_stats->packets_in() <<"|"
+                                            << std::setw(8) << day_stats->packets_out() <<"|"
+                                            << std::setw(8) << day_stats->bytes_in() <<"|"
+                                            << std::setw(8) << day_stats->bytes_out() <<"|\n"
+                    << "+-----------------+-----------------+-----------------+\n";
             }
         }
 

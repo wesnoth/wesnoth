@@ -34,7 +34,10 @@
 
 #include "asio_proxy_connection.hpp"
 
-proxy_connection::proxy_connection(tcp::socket& socket, proxy_information pi, ana::address address, ana::port port) :
+proxy_connection::proxy_connection(tcp::socket& socket,
+                                   proxy_information pi,
+                                   ana::address address,
+                                   ana::port port) :
     socket_(socket),
     proxy_info_(pi),
     address_(address),
@@ -63,7 +66,8 @@ std::string* proxy_connection::generate_base64_credentials() const
         "CONNECT " + address_ + ":" + port_ + " HTTP/1.0\n"
         "User-agent: ana 0.1 \n"
         "Proxy-Connection: keep-alive\n"
-        "Proxy-Authorization: Basic " + base64_encode(user_and_pass.c_str(), user_and_pass.size() ) + "\n"
+        "Proxy-Authorization: Basic " + base64_encode(user_and_pass.c_str(),
+                                                      user_and_pass.size() ) + "\n"
         "\n"
     );
 }
@@ -75,7 +79,8 @@ std::string proxy_connection::base64_encode(char const* bytes_to_encode, unsigne
     int j = 0;
     unsigned char char_array_3[3];
     unsigned char char_array_4[4];
-    const char base64_chars[(1 << 6) + 2] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
+    const char base64_chars[(1 << 6) + 2]
+               = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
 
     while (in_len--) {
         char_array_3[i++] = *(bytes_to_encode++);
@@ -150,7 +155,7 @@ void proxy_connection::handle_response(boost::asio::streambuf*          buf,
                         conn_handler_);
 
             }
-            else //Couldn't connect, wrong password or wasn't offered the possibility to authenticate
+            else //Can't connect, wrong password or wasn't offered the possibility to authenticate
                 manager_->handle_proxy_connection(
                     boost::system::error_code(1,boost::system::system_category ),
                     conn_handler_);
@@ -210,7 +215,8 @@ void proxy_connection::do_connect()
     try
     {
         tcp::resolver resolver( socket_.get_io_service() );
-        tcp::resolver::query query(proxy_info_.proxy_address.c_str(), proxy_info_.proxy_port.c_str() );
+        tcp::resolver::query query(proxy_info_.proxy_address.c_str(),
+                                   proxy_info_.proxy_port.c_str() );
         tcp::resolver::iterator endpoint_iterator = resolver.resolve(query);
 
         tcp::endpoint endpoint = *endpoint_iterator;
@@ -227,7 +233,8 @@ void proxy_connection::do_connect()
     }
 }
 
-void proxy_connection::connect( proxy_connection_manager* manager, ana::connection_handler* handler )
+void proxy_connection::connect( proxy_connection_manager* manager,
+                                ana::connection_handler* handler )
 {
     manager_        = manager;
     conn_handler_   = handler;

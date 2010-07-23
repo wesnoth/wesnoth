@@ -202,7 +202,8 @@ namespace ana
                 /**
                  * Get associated stats_collector object.
                  *
-                 * @returns A pointer to the associated stats_collector object, NULL if not keeping stats.
+                 * @returns A pointer to the associated stats_collector object,
+                 *          NULL if not keeping stats.
                  *
                  * \sa stats_collector.
                  */
@@ -273,7 +274,8 @@ namespace ana
                 virtual void set_raw_buffer_max_size( size_t size ) = 0;
 
                 /**
-                 * Switch to raw data mode and perform a blocking wait, only POD types should be used.
+                 * Switch to raw data mode and perform a blocking wait.
+                 * Only POD types should be used.
                  */
                 virtual void wait_raw_object(ana::serializer::bistream& bis, size_t size) = 0;
 
@@ -355,9 +357,11 @@ namespace ana
          * Send a buffer to every connected client.
          *
          * @param buffer : Buffer to be sent. Should be constucted with the buffer function.
-         * @param handler : Handler of events resulting from this operation. It will be called with _each_
-         *                  event, meaning that it will be called exactly once for every connected client.
-         * @param send_type : Optional, type of the send operation. Defaults to a value of CopyBufer.
+         * @param handler : Handler of events resulting from this operation. It will be called
+         *                  with _each_ event, meaning that it will be called exactly once
+         *                  for every connected client.
+         * @param send_type : Optional, type of the send operation.
+         *                    Defaults to a value of COPY_BUFFER.
          *
          * Examples:
          *    - server_->send_all( ana::buffer( str ), this );
@@ -377,13 +381,13 @@ namespace ana
          * Send a buffer to every connected client that satisfies a given condition/property.
          *
          * @param buffer : Buffer to be sent. Should be constucted with the buffer function.
-         * @param handler : Handler of events resulting from this operation. It will be called exactly
-         *                  once for every client that holds the property.
-         * @param send_type : Optional, type of the send operation. Defaults to a value of CopyBufer.
+         * @param handler : Handler of events resulting from this operation. It will be called
+         *                  exactly once for every client that holds the property.
+         * @param send_type : Optional, type of the send operation. Defaults to COPY_BUFFER.
          *
          * Examples:
-         *    - server_->send_if( ana::buffer( str() ), this,
-         *                        create_predicate( boost::bind( std::not_equal_to<net_id>(), client, _1) ) );
+         *  - server_->send_if( ana::buffer( str() ), this,
+         *             create_predicate( boost::bind( std::not_equal_to<net_id>(), client, _1) ) );
          *
          * @returns : The unique operation id of the send operation.
          *
@@ -398,11 +402,12 @@ namespace ana
                                      send_type                 type = COPY_BUFFER ) = 0;
 
         /**
-         * Send a buffer to every connected client except one. Equals a send_all if the client doesn't exist.
+         * Send a buffer to every connected client except one.
+         * Equals a send_all if the client doesn't exist.
          *
          * @param buffer : Buffer to be sent. Should be constucted with the buffer function.
          * @param handler : Handler of a possible event resulting from this operation.
-         * @param send_type : Optional, type of the send operation. Defaults to a value of CopyBufer.
+         * @param send_type : Optional, type of the send operation. Defaults to COPY_BUFFER.
          *
          * Examples:
          *    - server_->send_all_except( client, ana::buffer( str ), this, ana::ZERO_COPY);
@@ -419,11 +424,12 @@ namespace ana
                                              send_type                 type = COPY_BUFFER ) = 0;
 
         /**
-         * Send a buffer to a connected client with a given net_id. Does nothing if no such client exists.
+         * Send a buffer to a connected client with a given net_id.
+         * Does nothing if no such client exists.
          *
          * @param buffer : Buffer to be sent. Should be constucted with the buffer function.
          * @param handler : Handler of a possible event resulting from this operation.
-         * @param send_type : Optional, type of the send operation. Defaults to a value of CopyBufer.
+         * @param send_type : Optional, type of the send operation. Defaults to COPY_BUFFER.
          *
          * Examples:
          *    - server_->send_one( client, ana::buffer( str ), this, ana::ZERO_COPY);
@@ -449,8 +455,8 @@ namespace ana
         /**
          * Start the server on a given port.
          *
-         * @param port : The port to be used for the server incoming connections. The port shouldn't be
-         *               currently occupied.
+         * @param port : The port to be used for the server incoming connections.
+         *               The port shouldn't be currently occupied.
          */
         virtual void run(port pt)                                  = 0;
 
@@ -479,10 +485,13 @@ namespace ana
         virtual void cancel( operation_id operation )              = 0;
 
         /* Allow external object to call set_raw_data_mode() directly. */
-        /** Set the server to raw data mode, every time a client connects it will use the current mode. */
+        /**
+         * Set the server to raw data mode, every time a client connects
+         * it will use the current mode.
+         */
         using ana::detail::ana_component::set_raw_data_mode;
 
-        /** Returns the string representing the ip address of the connected client with id net_id. */
+        /** Returns the string representing the ip address of a connected client. */
         virtual std::string ip_address( net_id ) const = 0;
 
         /** Returns a pointer to an ana::stats object of a connected client. */
@@ -583,7 +592,7 @@ namespace ana
          *
          * @param buffer : The buffer being sent.
          * @param handler : Handler of events resulting from this operation.
-         * @param send_type : Optional, type of the send operation. Defaults to a value of CopyBufer.
+         * @param send_type : Optional, type of the send operation. Defaults to COPY_BUFFER.
          *
          * @returns : The unique operation id of the send operation.
          *

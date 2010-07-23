@@ -131,7 +131,9 @@ namespace network {
     {
     }
 
-    server_manager::server_manager(int port, CREATE_SERVER create_server) : free_(false), connection_(0)
+    server_manager::server_manager(int port, CREATE_SERVER create_server)
+        : free_(false),
+          connection_(0)
     {
         std::cout << "DEBUG: server_manager\n";
         if ( create_server != NO_SERVER )
@@ -307,7 +309,9 @@ namespace network {
     {
     }
 
-    void send_file(const std::string& /*filename*/, connection /*connection_num*/, const std::string& /*packet_type*/)
+    void send_file(const std::string& /*filename*/,
+                   connection /*connection_num*/,
+                   const std::string& /*packet_type*/)
     {
         throw std::runtime_error("TODO:Not implemented send_file");
     }

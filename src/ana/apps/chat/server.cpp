@@ -77,7 +77,8 @@ class ChatServer : public listener_handler,
             if (! error)
             {
                 std::stringstream ss;
-                ss << "Server: User " << client << " has joined from " << server_->ip_address( client ) << ".";
+                ss << "Server: User " << client << " has joined from "
+                   << server_->ip_address( client ) << ".";
                 server_->send_all_except(client, ana::buffer( ss.str() ), this);
             }
         }
@@ -123,7 +124,9 @@ class ChatServer : public listener_handler,
             }
         }
 
-        virtual void handle_message( ana::error_code error, net_id client, ana::detail::read_buffer buffer)
+        virtual void handle_message( ana::error_code          error,
+                                     net_id                   client,
+                                     ana::detail::read_buffer buffer)
         {
             if (! error)
             {

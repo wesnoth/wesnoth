@@ -75,7 +75,8 @@ void asio_sender::send(ana::detail::shared_buffer buffer ,
             socket.async_write_some( boost::asio::buffer( output_stream->str() ),
                                      boost::bind(&asio_sender::handle_sent_header,this,
                                                  boost::asio::placeholders::error, output_stream,
-                                                 &socket, buffer, handler, running_timer, _2, op_id ));
+                                                 &socket, buffer,
+                                                 handler, running_timer, _2, op_id ));
         }
     }
     catch(std::exception& e)
@@ -140,7 +141,8 @@ void asio_sender::handle_partial_send( ana::detail::shared_buffer  buffer,
                                                              buffer->size()      - accumulated),
                                          boost::bind(&asio_sender::handle_partial_send, this,
                                                      buffer, boost::asio::placeholders::error,
-                                                     socket, handler, timer, accumulated, _2, op_id ));
+                                                     socket, handler, timer,
+                                                     accumulated, _2, op_id ));
         }
     }
     catch(const std::exception& e)
