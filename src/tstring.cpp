@@ -53,6 +53,7 @@ size_t t_string_base::hash_value() const {
 	return seed;
 }
 
+#ifdef _MSC_VER
 t_string_base::walker::walker(const t_string& string) :
 	string_(string.get().value_),
 	begin_(0),
@@ -64,6 +65,7 @@ t_string_base::walker::walker(const t_string& string) :
 		update();
 	}
 }
+#endif
 
 t_string_base::walker::walker(const t_string_base& string) :
 	string_(string.value_),
@@ -77,6 +79,7 @@ t_string_base::walker::walker(const t_string_base& string) :
 	}
 }
 
+#ifdef _MSC_VER
 t_string_base::walker::walker(const std::string& string) :
 	string_(string),
 	begin_(0),
@@ -86,6 +89,7 @@ t_string_base::walker::walker(const std::string& string) :
 {
 	update();
 }
+#endif
 
 void t_string_base::walker::update()
 {

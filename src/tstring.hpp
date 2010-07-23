@@ -30,8 +30,11 @@ public:
 	{
 	public:
 		walker(const t_string_base& string);
+#ifdef _MSC_VER
+		// Work around a compiler bug in MSVC 9.
 		explicit walker(const std::string&);
 		walker(const t_string& string);
+#endif
 		void next()                               { begin_ = end_; update(); }
 		bool eos() const                          { return begin_ == string_.size(); }
 		bool last() const                         { return end_ == string_.size(); }
