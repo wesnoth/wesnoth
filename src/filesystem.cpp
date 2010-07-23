@@ -480,9 +480,6 @@ static std::string setup_user_data_dir();
 
 void set_preferences_dir(std::string path)
 {
-#ifndef PREFERENCES_DIR
-const std::string PREFERENCES_DIR = ".wesnoth" + std::string(game_config::version).substr(0,3);
-#endif
 #ifdef _WIN32
 	if(path.empty()) {
 		game_config::preferences_dir = get_cwd() + "/userdata";
@@ -513,24 +510,18 @@ const std::string PREFERENCES_DIR = ".wesnoth" + std::string(game_config::versio
 
 #else /*_WIN32*/
 	if (path.empty()) {
+#ifdef PREFERENCES_DIR
 		path = PREFERENCES_DIR;
-	}
-#ifndef __AMIGAOS4__
-	const char* const current_dir = ".";
-	const char* home_str = getenv("HOME");
 #else
-	const char* const current_dir = " ";
-	const char* home_str = "PROGDIR:";
+		path = ".wesnoth" + game_config::version.substr(0,3);
 #endif
-	if(home_str == NULL)
-		home_str = current_dir;
-
-	const std::string home(home_str);
-
-#ifndef __AMIGAOS4__
-	game_config::preferences_dir = home + std::string("/") + path;
+	}
+#ifdef __AMIGAOS4__
+	game_config::preferences_dir = "PROGDIR:" + path;
 #else
-	game_config::preferences_dir = home + path;
+	const char* home_str = getenv("HOME");
+	std::string home = home_str ? home_str : ".";
+	game_config::preferences_dir = home + std::string("/") + path;
 #endif
 
 #endif /*_WIN32*/
