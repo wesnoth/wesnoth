@@ -948,10 +948,12 @@ bool config::matches(const config &filter) const
 {
 	check_valid(filter);
 
-	// First match values. all values should match.
-	if (values != filter.values) return false;
+	foreach (const attribute &i, filter.attribute_range())
+	{
+		const attribute_value *v = get(i.first);
+		if (!v || *v != i.second) return false;
+	}
 
-	// Now, match the kids
 	foreach (const any_child &i, filter.all_children_range())
 	{
 		if (i.key == "not") {
