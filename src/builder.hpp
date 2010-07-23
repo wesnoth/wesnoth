@@ -443,15 +443,15 @@ private:
 	typedef std::multimap<int, building_rule> building_ruleset;
 
 	/**
-	 * Tests for validity of a rule. A rule is considered valid if all its
-	 * images are present. This method is used, when building the ruleset,
-	 * to only add rules which are valid to the ruleset.
+	 * Load images and tests for validity of a rule. A rule is considered
+	 * valid if all its images are present. This method is used, when building
+	 * the ruleset, to only add rules which are valid to the ruleset.
 	 *
 	 * @param rule  The rule to test for validity
 	 *
 	 * @return		true if the rule is valid, false if it is not.
 	 */
-	bool rule_valid(const building_rule &rule) const;
+	bool load_images(building_rule &rule);
 
 	/**
 	 * Starts the animation on a rule.

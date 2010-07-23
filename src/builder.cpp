@@ -294,95 +294,69 @@ void terrain_builder::rebuild_all()
 	build_terrains();
 }
 
-bool terrain_builder::rule_valid(const building_rule &rule) const
+static bool image_exists(const std::string& name)
+{
+	bool precached = name.find("..") == std::string::npos;
+
+	if(precached) {
+		if(image::precached_file_exists(name))
+			return true;
+	} else if (image::exists(name)){
+		return true;
+	}
+	// This warning can be removed after 1.9.2
+	if(name.find(".png") == std::string::npos && image::precached_file_exists(name + ".png")){
+		lg::wml_error << "Terrain image '" << name << "' misses the '.png' extension\n";
+	}
+	return false;
+}
+
+bool terrain_builder::load_images(building_rule &rule)
 {
 	// If the rule has no constraints, it is invalid
 	if(rule.constraints.empty())
 		return false;
 
-	// Checks if all the images referenced by the current rule are valid.
-	// If not, this rule will not match.
-	rule_imagelist::const_iterator image;
-	constraint_set::const_iterator constraint;
+	// Parse images and animations data
+	// If one is not valid, return false.
+	foreach(constraint_set::value_type& constraint, rule.constraints) {
+		foreach(rule_image& ri, constraint.second.images) {
+			foreach(rule_image_variant& variant, ri.variants) {
+				typedef animated<image::locator>::frame_description frame_info;
+				std::vector<frame_info> frame_info_vector;
 
-	for(constraint = rule.constraints.begin();
-			constraint != rule.constraints.end(); ++constraint) {
-		for(image = constraint->second.images.begin();
-				image != constraint->second.images.end();
-				++image) {
+				//TODO: improve this, 99% of terrains are not animated.
+				std::vector<std::string> frames = utils::parenthetical_split(variant.image_string,',');
+				foreach(const std::string& frame, frames) {
+					const std::vector<std::string> items = utils::split(frame, ':');
+					const std::string& str = items.front();
 
-			foreach(const rule_image_variant& variant, image->variants) {
-				std::string s = variant.image_string;
-				s = s.substr(0, s.find_first_of(",:~"));
-				// we already precached file existence in the constructor
-				// but only for filenames not using ".."
-				bool precached = s.find("..") == std::string::npos;
-				s = "terrain/" + s;
-
-				if(precached) {
-					if(image::precached_file_exists(s))
-						continue;
-				} else if (image::exists(s)){
-					continue;
-				}
-				// This warning can be removed after 1.9.2
-				if(s.find(".png") == std::string::npos && image::precached_file_exists(s + ".png")){
-					lg::wml_error << "Terrain image '" << s << "' misses the '.png' extension\n";
-				}
-				//printf("not found %s\n",s.c_str());
-				return false;
-			}
-		}
-	}
-
-	return true;
-}
-
-bool terrain_builder::start_animation(building_rule &rule)
-{
-	rule_imagelist::iterator image;
-	constraint_set::iterator constraint;
-
-	for(constraint = rule.constraints.begin();
-			constraint != rule.constraints.end(); ++constraint) {
-
-		for(image = constraint->second.images.begin();
-				image != constraint->second.images.end();
-				++image) {
-
-			foreach(rule_image_variant& variant, image->variants) {
-
-				animated<image::locator>::anim_description image_vector;
-				std::vector<std::string> items = utils::parenthetical_split(variant.image_string,',');
-				std::vector<std::string>::const_iterator itor = items.begin();
-				for(; itor != items.end(); ++itor) {
-					const std::vector<std::string>& items = utils::split(*itor, ':');
-					std::string str;
-					int time;
-
-					if(items.size() > 1) {
-						str = items.front();
-						time = atoi(items.back().c_str());
-					} else {
-						str = *itor;
-						time = 100;
-					}
 					const size_t tilde = str.find('~');
 					bool has_tilde = tilde != std::string::npos;
 					const std::string filename = "terrain/" + (has_tilde ? str.substr(0,tilde) : str);
+
+					if(!image_exists(filename))
+						return false;
+
 					const std::string modif = (has_tilde ? str.substr(1,tilde) : "");
 
+					int time = 100;
+					if(items.size() > 1) {
+						time = atoi(items.back().c_str());
+					}
 					image::locator locator;
-					if(image->global_image) {
-						locator = image::locator(filename, constraint->second.loc, image->center_x, image->center_y, modif);
+					if(ri.global_image) {
+						locator = image::locator(filename, constraint.second.loc, ri.center_x, ri.center_y, modif);
 					} else {
 						locator = image::locator(filename, modif);
 					}
-
-					image_vector.push_back(animated<image::locator>::frame_description(time,locator));
+					frame_info_vector.push_back(frame_info(time,locator));
 				}
 
-				animated<image::locator> th(image_vector);
+				if(frame_info_vector.empty())
+					return false;
+
+				animated<image::locator> th(frame_info_vector);
 
 				variant.image = th;
 				variant.image.start_animation(0, true);
@@ -730,8 +704,7 @@ void terrain_builder::parse_mapstring(const std::string &mapstring,
 
 void terrain_builder::add_rule(building_ruleset& rules, building_rule &rule, int precedence)
 {
-	if(rule_valid(rule)) {
-		start_animation(rule);
+	if(load_images(rule)) {
 		rules.insert(std::pair<int, building_rule>(precedence, rule));
 	}
 }
