@@ -1,6 +1,6 @@
 \documentclass[10pt]{article}
 \usepackage[top=1cm, bottom=1cm, left=1cm, right=1cm]{geometry}
-
+\usepackage{graphicx}
 %opening
 \title{Eclipse UMC Plugin Readme}
 \author{Timotei Dolean}
@@ -11,6 +11,19 @@
 
 \newcounter{cnt}
 \newcommand{\icnt}{ \stepcounter{cnt} \thecnt }
+
+\section{Foreword} \hskip\parindent
+Through this readme the following terms with the specified meaning will be used:
+\begin{enumerate}
+\item Project - a directory on the harddrive that is represented as a top directory in the navigator.
+\item Container - this is a directory or a project. Basically it can contain any file or directory children.
+\item Navigator - an Eclipse view that shows the projects in the workspace
+\item Userdata directory - the default directory where wesnoth stores information (addons, preferences, etc)
+\end{enumerate}
+
+The following image will highlight the terms used: 1 - Navigator, 2 - Project, 3 - Containers, 4 - Map files, 5 - Config files that contain WML code, 6 - User Addons project.
+
+\includegraphics{definitions.png}
 
 \section{Common prerequisites}
 \begin{enumerate}
@@ -44,7 +57,7 @@ otherwise the plugin will not work.
 \item Build the projects.
 \end{enumerate}
 
-\subsection{Running the plugin}
+\subsection{Running the plugin} \hskip\parindent
 After you've setup the environment and built the plugin you can run it.
 \begin{enumerate}
 \item Open the file plugin.xml
@@ -53,33 +66,67 @@ After you've setup the environment and built the plugin you can run it.
 \end{enumerate}
 
 \section{Everybody}
-\subsection{Using the plugin}
+\subsection{Using the plugin} \hskip\parindent
 After you have your plugin installed(user) or running(developer), you can use its features.
-But before of all, you must ``Setup the workspace". For this, go in the ``Wesnoth" menu and from 	
-Should the working directory be empty, it will be computed automatically
-based on wesnoth's executable
 
-\subsubsection{Wizards}
-To create a new \textbf{Campaign}, open the ``New..." menu (either from File - New menu, or right click in the
-project navigator and select ``New..." ). After that select ``Wesnoth Campaign". Fill in the information needed,
-and press finish. Your campaign project is created in the workspace. \\
-To create a new \textbf{Scenario}, open the ``New..." menu, and select ``Wesnoth scenario".
-Complete the information needed and press finish.
+But before of all, you must ``Setup the workspace". For this, go in the ``Wesnoth" menu and select ``Setup the workspace". The preferences page for the plugin will pop up, and you must fill them all, so the plugin will work as intended. After you completed the fields, press \textbf{Apply} and then \textbf{OK}. Then the plugin will create a project named ``User addons" in your workspace, which will represent the \textbf{userdata/data/add-ons} directory. 
 
-\subsubsection{Menus}
-There are currently 2 types of menus: the context menus for different file/folder types and the toolbar menus.
+If there were no errors a message window will open saying: \textbf{Workspace was setup successfully}.\\
+
+\textit{Note:} If you encounter any errors, the plugin logs them in the: \textbf{\textless your temporary directory\textgreater /wesnoth\_plugin}. 
+That is usually on linux:\\
+\indent \textbf{/tmp/wesnoth\_plugin}\\
+or on windows:\\ 
+\indent \textbf{C:/Documents and settings/\textless your username\textgreater/Local Settings/Temp/wesnoth\_plugin} \\ 
+or\\ 
+\indent \textbf{C:/Users/\textless your username\textgreater/Local Settings/Temp/wesnoth\_plugin}
+
+\subsubsection{Wizards} \hskip\parindent
+There are some wizards available in the plugin, that will create either projects or config files, based on the specified input. This wizards are available by going to the ``File" menu - New - Other... , and from that list selecting the ``Wesnoth" category.
+
+There are 3 wizards categories:
+\begin{enumerate}
+\item Project wizards - ``Empty project" and ``Campaign" wizards create new projects in the workspace. The former will create a basic addon directory structure. The latter will create a campaign and it's directory structure.
+\item File wizards - ``Scenario", ``Era" and ``Faction" wizards create a new file in a selected container.
+\item Wizard launcher - This is a special wizard. It takes a wml tag as input, and generate subsequent needed tags and key inputs. This is generated on the wml schema, so if the schema is incomplete some tags won't be available. This wizard can create a new file or copy the resulted WML into the current edited file.
+\end{enumerate}
+
+\subsubsection{Menus} \hskip\parindent
+There are currently 2 types of menus: the context menus for different file/container types and the main menu. For a better distinction the menus have the wenoth icon near each item.
+
 \begin{description}
-\item{\textbf{Project context menus}} - right click on the campaign projects created with the plugin\\
-   {\it Wesnoth project report} - will show a simple report with the numer of maps, scenarios and units.
+\item{\textbf{Project context menus}} - right click on the projects created with the plugin
 
-\item{\textbf{.cfg files context menus}} - right click on any .cfg file\\
-   {\it Open scenario in game} - opens the selected file's scenario (if it contains one) in wesnoth \\
-   {\it WML Tools} - provides some options for using the wmltools with the specified file
-   (e.g. run wmllint against the file and see the output in the console) \\
-   {\it Preprocessor} - provides ways of preprocessing and showing the result in an editor inside eclipse.
+   \textit{Wesnoth project report} - will show a simple report with the numer of maps, scenarios and units.\\
+   \textit{Upload addon} - will upload the specified directory on the wesnoth addon server. The status will be outputed to the console.
 
-\item{\textbf{``maps" folder}} - right click on the "maps" folder\\
-   {\it Import map} - Shows a file selection window that let's you select a .map file that will be copied in your campaign project.
+\item{\textbf{Container context menus}} - right click on any container
 
+   \textit{Open campaign in game} - will start the current project's campaign (if any) in wesnoth. For this to work, you must have a ``\_main.cfg" file defined, and a campaign in it.\\
+    \textit{WML Tools} - provides some options for using the wmltools with the specified project.
+
+\item{\textbf{``maps" folder context menu}} - right click on the ``maps" directory
+
+   \textit{Import map} - Shows a file selection window that will ley you select a .map file that will be copied in your maps directory.
+
+\item{\textbf{.cfg files context menu}} - right click on any .cfg file
+
+   \textit{Open scenario in game} - opens the selected file's scenario (if it contains one) in wesnoth.\\
+   \textit{WML Tools} - provides some options for using the wmltools with the specified file. (e.g. run wmllint against the file and see the output in the console) \\
+   \textit{Preprocessor} - provides ways of preprocessing and showing the result in an editor inside eclipse.
+
+\item{\textbf{.map files context menu}} - right click on any .map file\\
+
+   \textit{Open map in editor} - will open the selected map in the wesnoth map editor.
+
+\item{\textbf{Main menu}} - This is a menu near the ``Window" menu bar
+
+   \textit{Open editor} - Will open the game editor with a blank map.\\
+   \textit{Open game} - Will open the game.\\
+   \textit{Import map} - It will import a map in selected container.\\
+   \textit{Open editor} - Open the selected map in the game editor.\\
+   \textit{Setup workspace} - Will setup the workspace if it's not setup. This will open the preferences page if any preferences is missing, and then it will create the ``User Addons" project.\\
+   \textit{Reload cache} - Reloads the internal cached files. Usefull when the schema or other files have modified and you don't want to restart the plugin.\\
+   \textit{Open plugin's preferences} - Opens the plugin preferences page.\\
 \end{description}
 \end{document}
