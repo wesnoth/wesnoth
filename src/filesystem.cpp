@@ -274,12 +274,6 @@ std::string get_saves_dir()
 	return get_dir(dir_path);
 }
 
-std::string get_cache_dir()
-{
-	const std::string dir_path = get_user_data_dir() + "/cache";
-	return get_dir(dir_path);
-}
-
 std::string get_addon_campaigns_dir()
 {
 	const std::string dir_path = get_user_data_dir() + "/data/add-ons";
@@ -480,9 +474,7 @@ bool create_directory_if_missing_recursive(const std::string& dirname)
 	return create_directory_if_missing(dirname);
 }
 
-namespace {
-	std::string user_data_dir;
-}
+static std::string user_data_dir, user_config_dir, cache_dir;
 
 static std::string setup_user_data_dir();
 
@@ -617,7 +609,20 @@ const std::string& get_user_data_dir()
 
 const std::string &get_user_config_dir()
 {
-	return get_user_data_dir();
+	if (user_config_dir.empty())
+	{
+		user_config_dir = get_user_data_dir();
+	}
+	return user_config_dir;
+}
+
+const std::string &get_cache_dir()
+{
+	if (cache_dir.empty())
+	{
+		cache_dir = get_dir(get_user_data_dir() + "/cache");
+	}
+	return cache_dir;
 }
 
 static std::string read_stream(std::istream& s)
