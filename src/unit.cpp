@@ -1696,7 +1696,7 @@ void unit::set_idling()
 void unit::set_selecting()
 {
 	const game_display *disp =  game_display::get_singleton();
-	if (preferences::show_standing_animations()) {
+	if (preferences::show_standing_animations() && !get_state(STATE_PETRIFIED)) {
 		start_animation(INT_MAX, choose_animation(*disp, loc_, "selected"),
 			true, false, "", 0, STATE_FORGET);
 	} else {
