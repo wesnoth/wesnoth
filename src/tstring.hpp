@@ -30,6 +30,8 @@ public:
 	{
 	public:
 		walker(const t_string_base& string);
+		explicit walker(const std::string&);
+		walker(const t_string& string);
 		void next()                               { begin_ = end_; update(); }
 		bool eos() const                          { return begin_ == string_.size(); }
 		bool last() const                         { return end_ == string_.size(); }
