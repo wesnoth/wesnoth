@@ -415,7 +415,7 @@ std::string vconfig::all_children_iterator::get_key() const
 	return key;
 }
 
-const vconfig vconfig::all_children_iterator::get_child() const
+vconfig vconfig::all_children_iterator::get_child() const
 {
 	if (i_->key == "insert_tag")
 	{
@@ -435,14 +435,9 @@ const vconfig vconfig::all_children_iterator::get_child() const
 	return vconfig(&i_->cfg, cache_key_);
 }
 
-bool vconfig::all_children_iterator::operator==(all_children_iterator i) const
+bool vconfig::all_children_iterator::operator==(const all_children_iterator &i) const
 {
-	return (i_ == i.i_ && inner_index_ == i.inner_index_);
-}
-
-bool vconfig::all_children_iterator::operator!=(all_children_iterator i) const
-{
-	return (i_ != i.i_ || inner_index_ != i.inner_index_);
+	return i_ == i.i_ && inner_index_ == i.inner_index_;
 }
 
 vconfig::all_children_iterator vconfig::ordered_begin() const

@@ -79,7 +79,7 @@ public:
 	{
 		struct pointer_proxy;
 
-		typedef std::pair<const std::string, const vconfig> value_type;
+		typedef std::pair<std::string, vconfig> value_type;
 		typedef std::forward_iterator_tag iterator_category;
 		typedef int difference_type;
 		typedef const pointer_proxy pointer;
@@ -94,10 +94,11 @@ public:
 		pointer operator->() const;
 
 		std::string get_key() const;
-		const vconfig get_child() const;
+		vconfig get_child() const;
 
-		bool operator==(all_children_iterator i) const;
-		bool operator!=(all_children_iterator i) const;
+		bool operator==(const all_children_iterator &i) const;
+		bool operator!=(const all_children_iterator &i) const
+		{ return !operator==(i); }
 
 	private:
 		Itor i_;
