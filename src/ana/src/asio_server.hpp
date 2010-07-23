@@ -69,7 +69,10 @@ class asio_server : public  ana::server,
 
                 virtual void disconnect_listener();
 
-                virtual void send(ana::detail::shared_buffer, ana::send_handler*, ana::detail::sender* );
+                virtual void send(ana::detail::shared_buffer,
+                                  ana::send_handler*,
+                                  ana::detail::sender*,
+                                  ana::operation_id);
 
                 virtual std::string ip_address( ) const;
 
@@ -97,10 +100,24 @@ class asio_server : public  ana::server,
     private:
         virtual void set_connection_handler( ana::connection_handler* );
 
-        virtual void send_all(boost::asio::const_buffer, ana::send_handler*, ana::send_type );
-        virtual void send_if (boost::asio::const_buffer, ana::send_handler*, const ana::client_predicate&, ana::send_type );
-        virtual void send_one(ana::net_id, boost::asio::const_buffer, ana::send_handler*, ana::send_type );
-        virtual void send_all_except(ana::net_id, boost::asio::const_buffer, ana::send_handler*, ana::send_type );
+        virtual ana::operation_id send_all(boost::asio::const_buffer,
+                                           ana::send_handler*,
+                                           ana::send_type );
+
+        virtual ana::operation_id send_if (boost::asio::const_buffer,
+                                           ana::send_handler*,
+                                           const ana::client_predicate&,
+                                           ana::send_type );
+
+        virtual ana::operation_id send_one(ana::net_id,
+                                           boost::asio::const_buffer,
+                                           ana::send_handler*,
+                                           ana::send_type );
+
+        virtual ana::operation_id send_all_except(ana::net_id,
+                                                  boost::asio::const_buffer,
+                                                  ana::send_handler*,
+                                                  ana::send_type );
 
         virtual void set_listener_handler( ana::listener_handler* );
         virtual void run_listener();
@@ -118,6 +135,8 @@ class asio_server : public  ana::server,
         virtual void stop_logging();
 
         virtual const ana::stats* get_stats( ana::stat_type type ) const;
+
+        virtual void cancel( ana::operation_id operation );
 
         virtual void disconnect( ana::net_id );
 
@@ -154,6 +173,8 @@ class asio_server : public  ana::server,
         asio_client_proxy*            last_client_proxy_;
 
         ana::stats_collector*         stats_collector_;
+
+        ana::operation_id             last_valid_operation_id_; //0 means no operation performed
 };
 
 #endif

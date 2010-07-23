@@ -51,7 +51,8 @@ asio_client::asio_client(ana::address address, ana::port pt) :
     port_(pt),
     proxy_( NULL ),
     use_proxy_( false ),
-    stats_collector_( NULL )
+    stats_collector_( NULL ),
+    last_valid_operation_id_( ana::no_operation )
 {
 }
 
@@ -88,8 +89,8 @@ tcp::socket& asio_client::socket()
 }
 
 void asio_client::handle_connect(const boost::system::error_code& ec,
-                                 tcp::resolver::iterator endpoint_iterator,
-                                 ana::connection_handler* handler )
+                                 tcp::resolver::iterator          endpoint_iterator,
+                                 ana::connection_handler*         handler )
 {
     if ( ! ec )
     {
@@ -109,14 +110,14 @@ void asio_client::handle_connect(const boost::system::error_code& ec,
 
             tcp::endpoint endpoint = *endpoint_iterator;
             socket_.async_connect(endpoint,
-                                boost::bind(&asio_client::handle_connect, this,
-                                            boost::asio::placeholders::error, ++endpoint_iterator,
-                                            handler));
+                                  boost::bind(&asio_client::handle_connect, this,
+                                              boost::asio::placeholders::error, ++endpoint_iterator,
+                                              handler));
         }
     }
 }
 
-void asio_client::connect( ana::connection_handler* handler )
+ana::operation_id asio_client::connect( ana::connection_handler* handler )
 {
     try
     {
@@ -134,13 +135,15 @@ void asio_client::connect( ana::connection_handler* handler )
     {
         handler->handle_connect( boost::system::error_code(1,boost::system::system_category ), 0 );
     }
+
+    return ++last_valid_operation_id_;
 }
 
-void asio_client::connect_through_proxy(std::string                     proxy_address,
-                                        std::string                     proxy_port,
-                                        ana::connection_handler*        handler,
-                                        std::string                     user_name,
-                                        std::string                     password)
+ana::operation_id asio_client::connect_through_proxy(std::string              proxy_address,
+                                                     std::string              proxy_port,
+                                                     ana::connection_handler* handler,
+                                                     std::string              user_name,
+                                                     std::string              password)
 {
     use_proxy_ = true;
 
@@ -154,13 +157,23 @@ void asio_client::connect_through_proxy(std::string                     proxy_ad
     proxy_ = new proxy_connection( socket_, proxy_info, address_, port_);
 
     proxy_->connect( this, handler );
+
+    return ++last_valid_operation_id_;
 }
 
-void asio_client::send(boost::asio::const_buffer buffer, ana::send_handler* handler, ana::send_type copy_buffer )
+ana::operation_id asio_client::send(boost::asio::const_buffer buffer,
+                               ana::send_handler*        handler,
+                               ana::send_type            copy_buffer )
 {
     ana::detail::shared_buffer s_buf(new ana::detail::copying_buffer(buffer, copy_buffer ) );
 
-    asio_sender::send(s_buf, socket_, handler, static_cast<ana::client*>(this));
+    asio_sender::send(s_buf,
+                      socket_,
+                      handler,
+                      static_cast<ana::client*>(this),
+                      ++last_valid_operation_id_     );
+
+    return last_valid_operation_id_;
 }
 
 void asio_client::log_receive( ana::detail::read_buffer buffer )
@@ -188,6 +201,12 @@ const ana::stats* asio_client::get_stats( ana::stat_type type ) const
     else
         throw std::runtime_error("Logging is disabled. Use start_logging first.");
 }
+
+void asio_client::cancel( ana::operation_id /*operation */)
+{
+    // TODO: implement
+}
+
 
 void asio_client::disconnect_listener()
 {

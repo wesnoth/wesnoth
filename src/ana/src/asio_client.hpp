@@ -63,17 +63,19 @@ class asio_client : public ana::client,
 
     private:
 
-        virtual void connect( ana::connection_handler* );
+        virtual ana::operation_id connect( ana::connection_handler* );
 
-        virtual void connect_through_proxy(std::string                     proxy_address,
-                                           std::string                     proxy_port,
-                                           ana::connection_handler*        handler,
-                                           std::string                     user_name = "",
-                                           std::string                     password = "");
+        virtual ana::operation_id connect_through_proxy(std::string              proxy_address,
+                                                        std::string              proxy_port,
+                                                        ana::connection_handler* handler,
+                                                        std::string              user_name = "",
+                                                        std::string              password = "");
 
         virtual void run();
 
-        virtual void send( boost::asio::const_buffer, ana::send_handler*, ana::send_type );
+        virtual ana::operation_id send( boost::asio::const_buffer,
+                                        ana::send_handler*,
+                                        ana::send_type );
 
         virtual void disconnect() { disconnect_listener(); }
 
@@ -93,6 +95,8 @@ class asio_client : public ana::client,
         virtual ana::stats_collector* stats_collector() { return stats_collector_; }
 
         virtual ana::timer* create_timer() { return new ana::timer( io_service_); }
+
+        virtual void cancel( ana::operation_id operation );
 
         void handle_connect(const boost::system::error_code& ec,
                             tcp::resolver::iterator endpoint_iterator,
@@ -116,6 +120,7 @@ class asio_client : public ana::client,
         bool                      use_proxy_;
 
         ana::stats_collector*     stats_collector_;
+        ana::operation_id         last_valid_operation_id_;
 };
 
 #endif

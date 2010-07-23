@@ -34,10 +34,11 @@
 
 #include "asio_sender.hpp"
 
-void asio_sender::send(ana::detail::shared_buffer buffer,
-                       tcp::socket&               socket,
+void asio_sender::send(ana::detail::shared_buffer buffer ,
+                       tcp::socket&               socket ,
                        ana::send_handler*         handler,
-                       ana::detail::sender*       sender)
+                       ana::detail::sender*       sender ,
+                       ana::operation_id          op_id  )
 {
     ana::timer* running_timer( NULL );
     try
@@ -48,7 +49,8 @@ void asio_sender::send(ana::detail::shared_buffer buffer,
 
             sender->start_timer( running_timer, buffer,
                                 boost::bind(&asio_sender::handle_send, this,
-                                            boost::asio::placeholders::error, handler, running_timer, true ) );
+                                            boost::asio::placeholders::error, handler,
+                                            running_timer, op_id, true ) );
         }
 
         if ( raw_mode() )
@@ -56,7 +58,7 @@ void asio_sender::send(ana::detail::shared_buffer buffer,
             socket.async_write_some( boost::asio::buffer(buffer->base(), buffer->size() ),
                                      boost::bind(&asio_sender::handle_partial_send,this,
                                                  buffer, boost::asio::placeholders::error,
-                                                 &socket, handler, running_timer, 0, _2 ));
+                                                 &socket, handler, running_timer, 0, _2, op_id ));
         }
         else
         {
@@ -73,7 +75,7 @@ void asio_sender::send(ana::detail::shared_buffer buffer,
             socket.async_write_some( boost::asio::buffer( output_stream->str() ),
                                      boost::bind(&asio_sender::handle_sent_header,this,
                                                  boost::asio::placeholders::error, output_stream,
-                                                 &socket, buffer, handler, running_timer, _2 ));
+                                                 &socket, buffer, handler, running_timer, _2, op_id ));
         }
     }
     catch(std::exception& e)
@@ -90,7 +92,8 @@ void asio_sender::handle_sent_header(const ana::error_code&      ec,
                                      ana::detail::shared_buffer  buffer,
                                      ana::send_handler*          handler,
                                      ana::timer*                 running_timer,
-                                     size_t                      bytes_sent)
+                                     size_t                      bytes_sent,
+                                     ana::operation_id           op_id)
 {
     delete bos;
 
@@ -98,13 +101,13 @@ void asio_sender::handle_sent_header(const ana::error_code&      ec,
         throw std::runtime_error("Couldn't send header.");
 
     if ( ec )
-        handle_send(ec, handler, running_timer);
+        handle_send(ec, handler, running_timer, op_id);
     else
     {
         socket->async_write_some( boost::asio::buffer(buffer->base(), buffer->size() ),
                                   boost::bind(&asio_sender::handle_partial_send,this,
                                               buffer, boost::asio::placeholders::error,
-                                              socket, handler, running_timer, 0, _2 ));
+                                              socket, handler, running_timer, 0, _2, op_id ));
     }
 }
 
@@ -114,12 +117,13 @@ void asio_sender::handle_partial_send( ana::detail::shared_buffer  buffer,
                                        ana::send_handler*          handler,
                                        ana::timer*                 timer,
                                        size_t                      accumulated,
-                                       size_t                      last_msg_size)
+                                       size_t                      last_msg_size,
+                                       ana::operation_id           op_id)
 {
     try
     {
         if (ec)
-            handle_send(ec, handler, timer);
+            handle_send(ec, handler, timer, op_id);
         else
         {
             accumulated += last_msg_size;
@@ -130,13 +134,13 @@ void asio_sender::handle_partial_send( ana::detail::shared_buffer  buffer,
                 throw std::runtime_error("The send operation was too large.");
 
             if ( accumulated == buffer->size() )
-                handle_send( ec, handler, timer );
+                handle_send( ec, handler, timer, op_id );
             else
                 socket->async_write_some(boost::asio::buffer(buffer->base_char() + accumulated,
                                                              buffer->size()      - accumulated),
                                          boost::bind(&asio_sender::handle_partial_send, this,
                                                      buffer, boost::asio::placeholders::error,
-                                                     socket, handler, timer, accumulated, _2 ));
+                                                     socket, handler, timer, accumulated, _2, op_id ));
         }
     }
     catch(const std::exception& e)
@@ -148,6 +152,7 @@ void asio_sender::handle_partial_send( ana::detail::shared_buffer  buffer,
 void asio_sender::handle_send(const ana::error_code& ec,
                               ana::send_handler*     handler,
                               ana::timer*            running_timer,
+                              ana::operation_id      op_id,
                               bool                   from_timeout)
 {
     if ( ec != boost::asio::error::operation_aborted ) // equals only after cancellation
@@ -155,9 +160,9 @@ void asio_sender::handle_send(const ana::error_code& ec,
         delete running_timer;
 
         if ( ec && from_timeout )
-            handler->handle_send( ana::timeout_error , id() );
+            handler->handle_send( ana::timeout_error , id(), op_id );
         else
-            handler->handle_send( ec, id() );
+            handler->handle_send( ec, id(), op_id );
 
         if ( ec )
             disconnect();

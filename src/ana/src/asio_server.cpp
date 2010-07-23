@@ -53,7 +53,8 @@ asio_server::asio_server() :
     listener_( NULL ),
     connection_handler_( NULL ),
     last_client_proxy_( NULL ),
-    stats_collector_( NULL )
+    stats_collector_( NULL ),
+    last_valid_operation_id_( ana::no_operation )
 {
 }
 
@@ -172,39 +173,88 @@ void asio_server::set_listener_handler( listener_handler* listener )
 {
     listening_ = true;
     listener_  = listener;
-    for (std::list<client_proxy*>::iterator it( client_proxies_.begin() ); it != client_proxies_.end(); ++it)
+
+    for (std::list<client_proxy*>::iterator it( client_proxies_.begin() );
+         it != client_proxies_.end();
+         ++it)
+    {
         (*it)->set_listener_handler( listener_ );
+    }
 }
 
-void asio_server::send_one(net_id id,boost::asio::const_buffer buffer, send_handler* handler, send_type copy_buffer)
+ana::operation_id asio_server::send_one(net_id                    id,
+                                        boost::asio::const_buffer buffer,
+                                        send_handler*             handler,
+                                        send_type                 copy_buffer)
 {
-    send_if(buffer, handler, create_predicate ( boost::bind( std::equal_to<net_id>(), id, _1) ), copy_buffer );
+    return send_if(buffer,
+                   handler,
+                   create_predicate( boost::bind( std::equal_to<net_id>(), id, _1) ),
+                   copy_buffer );
 }
 
-void asio_server::send_all_except(net_id id,boost::asio::const_buffer buffer, send_handler* handler, send_type copy_buffer)
+ana::operation_id asio_server::send_all_except(net_id                    id,
+                                               boost::asio::const_buffer buffer,
+                                               send_handler*             handler,
+                                               send_type                 copy_buffer)
 {
-    send_if(buffer, handler, create_predicate ( boost::bind( std::not_equal_to<net_id>(), id, _1) ), copy_buffer );
+    return send_if(buffer,
+                   handler,
+                   create_predicate ( boost::bind( std::not_equal_to<net_id>(), id, _1) ),
+                   copy_buffer );
 }
 
 
-void asio_server::send_if(boost::asio::const_buffer buffer, send_handler* handler,
-                          const client_predicate&  predicate, send_type copy_buffer)
+ana::operation_id asio_server::send_if(boost::asio::const_buffer buffer,
+                                       send_handler*             handler,
+                                       const client_predicate&   predicate,
+                                       send_type                 copy_buffer)
 {
     // This allows me to copy the buffer only once for many send operations
-    ana::detail::shared_buffer s_buf( new ana::detail::copying_buffer( buffer, copy_buffer ) ); // it's a boost::shared_ptr
+    ana::detail::shared_buffer s_buf( new ana::detail::copying_buffer( buffer, copy_buffer ) );
+    // it's a boost::shared_ptr
 
-    for (std::list<client_proxy*>::iterator it(client_proxies_.begin()); it != client_proxies_.end(); ++it)
+    bool at_least_one_holds_the_condition( false );
+
+    ana::operation_id this_operation_id = ana::no_operation;
+
+    for (std::list<client_proxy*>::iterator it(client_proxies_.begin());
+         it != client_proxies_.end();
+         ++it)
+    {
         if ( predicate.selects( (*it)->id() ) )
-            (*it)->send(s_buf, handler, this);
+        {
+            if ( ! at_least_one_holds_the_condition )
+                this_operation_id = ++last_valid_operation_id_;
+
+            (*it)->send(s_buf, handler, this, this_operation_id);
+            at_least_one_holds_the_condition = true;
+        }
+    }
+
+    return this_operation_id;
 }
 
-void asio_server::send_all(boost::asio::const_buffer buffer, send_handler* handler, send_type copy_buffer )
+ana::operation_id asio_server::send_all(boost::asio::const_buffer buffer,
+                                        send_handler*             handler,
+                                        send_type                 copy_buffer )
 {
     // This allows me to copy the buffer only once for many send operations
-    ana::detail::shared_buffer s_buf(new ana::detail::copying_buffer( buffer, copy_buffer ) ); // it's a boost::shared_ptr
+    ana::detail::shared_buffer s_buf(new ana::detail::copying_buffer( buffer, copy_buffer ) );
+    // it's a boost::shared_ptr
 
-    std::for_each(client_proxies_.begin(), client_proxies_.end(), boost::bind(&client_proxy::send, _1,
-                                                                              s_buf, handler, this));
+
+    if ( client_proxies_.empty() )
+        return ana::no_operation;
+
+    ++last_valid_operation_id_;
+
+    std::for_each(client_proxies_.begin(),
+                  client_proxies_.end(),
+                  boost::bind(&client_proxy::send, _1,
+                              s_buf, handler, this, last_valid_operation_id_));
+
+    return last_valid_operation_id_;
 }
 
 std::string asio_server::ip_address( net_id id ) const
@@ -358,11 +408,17 @@ const ana::stats* asio_server::asio_client_proxy::get_stats( ana::stat_type type
         throw std::runtime_error("Logging is disabled. Use start_logging first.");
 }
 
-void asio_server::asio_client_proxy::send(ana::detail::shared_buffer buffer,
-                                          send_handler* handler,
-                                          ana::detail::sender* sender)
+void asio_server::cancel( ana::operation_id /*operation */)
 {
-    asio_sender::send( buffer, socket_, handler, sender );
+    // TODO: implement
+}
+
+void asio_server::asio_client_proxy::send(ana::detail::shared_buffer buffer,
+                                          send_handler*              handler,
+                                          ana::detail::sender*       sender,
+                                          ana::operation_id          op_id)
+{
+    asio_sender::send( buffer, socket_, handler, sender, op_id );
 }
 
 void asio_server::asio_client_proxy::disconnect_listener()

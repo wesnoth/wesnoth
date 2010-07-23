@@ -328,7 +328,7 @@ namespace ana
          * \sa error_code
          * \sa net_id
          */
-        virtual void handle_send( error_code, net_id ) = 0;
+        virtual void handle_send( error_code, net_id, operation_id ) = 0;
     };
     //@}
 
@@ -363,11 +363,15 @@ namespace ana
          *    - server_->send_all( ana::buffer( str ), this );
          *    - server_->send_all( ana::buffer( large_pod_array ), handler_object, ana::ZERO_COPY );
          *
+         * @returns : The unique operation id of the send operation.
+         *
          * \sa send_type
          * \sa buffer
          * \sa send_handler
          */
-        virtual void send_all(boost::asio::const_buffer, send_handler*, send_type = COPY_BUFFER )            = 0;
+        virtual operation_id send_all(boost::asio::const_buffer buffer,
+                                      send_handler*             handler,
+                                      send_type                 type = COPY_BUFFER ) = 0;
 
         /**
          * Send a buffer to every connected client that satisfies a given condition/property.
@@ -381,13 +385,17 @@ namespace ana
          *    - server_->send_if( ana::buffer( str() ), this,
          *                        create_predicate( boost::bind( std::not_equal_to<net_id>(), client, _1) ) );
          *
+         * @returns : The unique operation id of the send operation.
+         *
          * \sa client_predicate
          * \sa send_type
          * \sa buffer
          * \sa send_handler
          */
-        virtual void send_if(boost::asio::const_buffer,
-                                send_handler*, const client_predicate&, send_type = COPY_BUFFER )             = 0;
+        virtual operation_id send_if(boost::asio::const_buffer buffer,
+                                     send_handler*             handler,
+                                     const client_predicate&   predicate,
+                                     send_type                 type = COPY_BUFFER ) = 0;
 
         /**
          * Send a buffer to every connected client except one. Equals a send_all if the client doesn't exist.
@@ -399,11 +407,16 @@ namespace ana
          * Examples:
          *    - server_->send_all_except( client, ana::buffer( str ), this, ana::ZERO_COPY);
          *
+         * @returns : The unique operation id of the send operation.
+         *
          * \sa send_type
          * \sa buffer
          * \sa send_handler
          */
-        virtual void send_all_except(net_id, boost::asio::const_buffer, send_handler*, send_type = COPY_BUFFER ) = 0;
+        virtual operation_id send_all_except(net_id                    except_id,
+                                             boost::asio::const_buffer buffer,
+                                             send_handler*             handler,
+                                             send_type                 type = COPY_BUFFER ) = 0;
 
         /**
          * Send a buffer to a connected client with a given net_id. Does nothing if no such client exists.
@@ -415,11 +428,16 @@ namespace ana
          * Examples:
          *    - server_->send_one( client, ana::buffer( str ), this, ana::ZERO_COPY);
          *
+         * @returns : The unique operation id of the send operation.
+         *
          * \sa send_type
          * \sa buffer
          * \sa send_handler
          */
-        virtual void send_one(net_id, boost::asio::const_buffer, send_handler*, send_type = COPY_BUFFER ) = 0;
+        virtual operation_id send_one(net_id                    id,
+                                      boost::asio::const_buffer buffer,
+                                      send_handler*             handler,
+                                      send_type                 type = COPY_BUFFER ) = 0;
 
         /**
          * Set the handler for new connection events.
@@ -454,7 +472,14 @@ namespace ana
         /** Set a client to raw-data mode.     */
         virtual void set_raw_data_mode( net_id id )                = 0;
 
-        /** Allow external object to call set_raw_data_mode() directly. */
+        /**
+         * Cancel a network operation.
+         * Does nothing if the operation already completed or is an ivalid operation id.
+         */
+        virtual void cancel( operation_id operation )              = 0;
+
+        /* Allow external object to call set_raw_data_mode() directly. */
+        /** Set the server to raw data mode, every time a client connects it will use the current mode. */
         using ana::detail::ana_component::set_raw_data_mode;
 
         /** Returns the string representing the ip address of the connected client with id net_id. */
@@ -484,7 +509,7 @@ namespace ana
              * \sa send_handler
              * \sa sender
              */
-            virtual void send(detail::shared_buffer, send_handler*, sender* ) = 0;
+            virtual void send(detail::shared_buffer, send_handler*, sender*, operation_id ) = 0;
 
             /** Standard destructor. */
             virtual ~client_proxy() {}
@@ -525,22 +550,26 @@ namespace ana
          *
          * @param handler : The handler of the connection event.
          *
+         * @returns : The unique operation id of the connect operation.
+         *
          * \sa connection_handler
          */
-        virtual void connect( connection_handler* ) = 0;
+        virtual operation_id connect( connection_handler* ) = 0;
 
         /**
          * Attempt a connection to the server through a proxy.
          *
          * @param handler : The handler of the connection event.
          *
+         * @returns : The unique operation id of the connect operation.
+         *
          * \sa connection_handler
          */
-        virtual void connect_through_proxy(std::string proxy_address,
-                                           std::string proxy_port,
-                                           connection_handler* handler,
-                                           std::string user_name = "",
-                                           std::string password = "") = 0;
+        virtual operation_id connect_through_proxy(std::string proxy_address,
+                                                   std::string proxy_port,
+                                                   connection_handler* handler,
+                                                   std::string user_name = "",
+                                                   std::string password = "") = 0;
 
         /** Run the client listener, starts listening for incoming messages. */
         virtual void run() = 0;
@@ -556,11 +585,21 @@ namespace ana
          * @param handler : Handler of events resulting from this operation.
          * @param send_type : Optional, type of the send operation. Defaults to a value of CopyBufer.
          *
+         * @returns : The unique operation id of the send operation.
+         *
          * \sa send_type
          * \sa buffer
          * \sa send_handler
          */
-        virtual void send(boost::asio::const_buffer buffer, send_handler* handler, send_type type = COPY_BUFFER ) = 0;
+        virtual operation_id send(boost::asio::const_buffer buffer,
+                                  send_handler*             handler,
+                                  send_type                 type = COPY_BUFFER ) = 0;
+
+        /**
+         * Cancel a network operation.
+         * Does nothing if the operation already completed or is an ivalid operation id.
+         */
+        virtual void cancel( operation_id operation ) = 0;
 
         /** Standard destructor. */
         virtual ~client() {}

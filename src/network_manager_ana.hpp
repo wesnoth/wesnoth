@@ -188,7 +188,7 @@ class ana_send_handler : public ana::send_handler
         }
 
     private:
-        virtual void handle_send(ana::error_code error_code, ana::net_id /*client*/);
+        virtual void handle_send(ana::error_code, ana::net_id, ana::operation_id);
 
         boost::mutex       mutex_;
         size_t             target_calls_;
@@ -203,7 +203,7 @@ class ana_handshake_finisher_handler : public ana::send_handler
         ~ana_handshake_finisher_handler();
     private:
 
-        virtual void handle_send(ana::error_code, ana::net_id);
+        virtual void handle_send(ana::error_code, ana::net_id, ana::operation_id);
 
         ana::server*       server_;
         clients_manager*   manager_;
@@ -471,7 +471,7 @@ class ana_network_manager : public ana::listener_handler,
         network::statistics get_receive_stats(network::connection handle);
 
     private:
-        virtual void handle_send(ana::error_code error_code, ana::net_id client);
+        virtual void handle_send(ana::error_code, ana::net_id, ana::operation_id);
 
         virtual void handle_message( ana::error_code          error,
                                      ana::net_id              client,

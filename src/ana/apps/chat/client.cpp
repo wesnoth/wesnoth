@@ -247,7 +247,7 @@ class ChatClient : public ana::listener_handler,
             }
         }
 
-        virtual void handle_send( ana::error_code error, net_id client)
+        virtual void handle_send( ana::error_code error, net_id client, ana::operation_id op_id)
         {
             if ( error )
                 std::cout << "Error. Timeout?" << std::endl;

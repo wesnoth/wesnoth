@@ -90,7 +90,7 @@ class ChatServer : public listener_handler,
             names_.erase(client);
         }
 
-        virtual void handle_send(ana::error_code error, net_id client)
+        virtual void handle_send(ana::error_code error, net_id client, ana::operation_id id)
         {
             if ( error )
                 std::cerr << "Error sending to client " << client << ". Timeout?" << std::endl;

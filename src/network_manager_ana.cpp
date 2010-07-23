@@ -51,7 +51,9 @@ ana_send_handler::~ana_send_handler()
     mutex_.unlock();
 }
 
-void ana_send_handler::handle_send(ana::error_code error_code, ana::net_id /*client*/)
+void ana_send_handler::handle_send(ana::error_code   error_code,
+                                   ana::net_id       /*client*/,
+                                   ana::operation_id /*op_id*/)
 {
     error_code_ = error_code;
 
@@ -78,13 +80,15 @@ ana_handshake_finisher_handler::~ana_handshake_finisher_handler()
 {
 }
 
-void ana_handshake_finisher_handler::handle_send(ana::error_code ec,
-                                                 ana::net_id     client)
+void ana_handshake_finisher_handler::handle_send(ana::error_code   ec,
+                                                 ana::net_id       client,
+                                                 ana::operation_id /*op_id*/)
 {
     if ( ec )
         server_->disconnect( client );
     else
         manager_->connected( client );
+
     delete this;
 }
 
@@ -1158,7 +1162,9 @@ network::statistics ana_network_manager::get_receive_stats(network::connection h
         return network::statistics();
 }
 
-void ana_network_manager::handle_send(ana::error_code error_code, ana::net_id client)
+void ana_network_manager::handle_send(ana::error_code error_code,
+                                      ana::net_id client,
+                                      ana::operation_id /*op_id*/)
 {
     if ( error_code )
         network::disconnect( client );
