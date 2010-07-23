@@ -603,7 +603,21 @@ const std::string &get_user_config_dir()
 {
 	if (user_config_dir.empty())
 	{
+#ifdef _X11
+		char const *xdg_config = getenv("XDG_CONFIG_HOME");
+		if (!xdg_config || xdg_config[0] == '\0') {
+			xdg_config = getenv("HOME");
+			if (!xdg_config) {
+				user_config_dir = get_user_data_dir();
+				return user_config_dir;
+			}
+			user_config_dir = xdg_config;
+			user_config_dir += "/.config";
+		} else user_config_dir = xdg_config;
+		user_config_dir = get_dir(user_config_dir + "/wesnoth");
+#else
 		user_config_dir = get_user_data_dir();
+#endif
 	}
 	return user_config_dir;
 }
