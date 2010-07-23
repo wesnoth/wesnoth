@@ -1,7 +1,8 @@
 \documentclass[10pt]{article}
 \usepackage[top=1cm, bottom=1cm, left=1cm, right=1cm]{geometry}
 \usepackage{graphicx}
-%opening
+\usepackage{hyperref}
+
 \title{Eclipse UMC Plugin Readme}
 \author{Timotei Dolean}
 
@@ -27,9 +28,15 @@ The following image will highlight the terms used: 1 - Navigator, 2 - Project, 3
 
 \section{Common prerequisites}
 \begin{enumerate}
-\item Download and install ``Eclipse for RCP and RAP Developers" (\textbf{http://eclipse.org/downloads/packages/eclipse-rcp-and-rap-developers/heliosr}) -
+\item Download and install Sun's Java:
+\begin{enumerate}
+\item If you are going just use it (User): \href{https://cds.sun.com/is-bin/INTERSHOP.enfinity/WFS/CDS-CDS_Developer-Site/en_US/-/USD/ViewProductDetail-Start?ProductRef=jre-6u21-oth-JPR@CDS-CDS_Developer}{Download JRE}
+\item If you are going to modify it (Developer): \href{http://java.sun.com/javase/downloads/widget/jdk6.jsp}{Download JDK}
+\end{enumerate}
+\item Download the  `Eclipse for RCP and RAP Developers" (\href{http://eclipse.org/downloads/packages/eclipse-rcp-and-rap-developers/heliosr}{Download Eclipse}) -
 The download links are in the right. Please ensure you are downloading the \textbf{3.6} version,
 otherwise the plugin will not work.
+\item Extract the downloaded archive in a known location and launch the executable (eclipse / eclipse.exe)
 \item After launching Eclipse, go to the ``Help'' menu - Install new Software. \\
   Then, please check ``Group items by category" and ``Contact all update sites during install to find required software",
   in the bottom of the page.
