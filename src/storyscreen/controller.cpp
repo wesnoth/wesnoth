@@ -54,7 +54,7 @@ controller::controller(display& disp, const vconfig& data, const std::string& sc
 	, parts_()
 {
 	ASSERT_LOG(resources::state_of_game != NULL, "Ouch: gamestate is NULL when initializing storyscreen controller");
-	build_parts();
+	resolve_wml(data_);
 }
 
 void controller::resolve_wml(const vconfig& cfg)

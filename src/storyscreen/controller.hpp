@@ -54,12 +54,6 @@ private:
 
 	// Executes WML flow instructions and inserts parts.
 	void resolve_wml(const vconfig& cfg);
-	// Used by ctor.
-	void build_parts() {
-		resolve_wml(data_);
-	}
-	// Used by dtor.
-	void clear_parts();
 
 	display& disp_;
 	const resize_lock disp_resize_lock_;
