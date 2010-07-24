@@ -172,13 +172,14 @@ class RootNode(TagNode):
         return s
 
 class Parser:
-    def __init__(self, wesnoth_exe):
+    def __init__(self, wesnoth_exe, config_dir):
         """
         path - Path to the file to parse.
         wesnoth_exe - Wesnoth executable to use. This should have been
             configured to use the desired data and config directories.
         """
         self.wesnoth_exe = wesnoth_exe
+        self.config_dir = config_dir
         self.preprocessed = None
 
         self.last_wml_line = "?"
@@ -208,7 +209,10 @@ class Parser:
         """
         output = tempfile.mkdtemp(prefix="wmlparser_")
         p_option = "-p=" + defines if defines else "-p "
-        commandline = [self.wesnoth_exe, p_option, self.path,
+        commandline = [self.wesnoth_exe]
+        if self.config_dir:
+            commandline += ["--config_dir='%s'" % self.config_dir]
+        commandline += [p_option, self.path,
             output]
         p = subprocess.Popen(commandline,
             stdout = subprocess.PIPE, stderr = subprocess.PIPE)
@@ -484,10 +488,11 @@ if __name__ == "__main__":
     # Hack to make us not crash when we encounter characters that aren't ASCII
     sys.stdout = __import__("codecs").getwriter('utf-8')(sys.stdout)
     opt = optparse.OptionParser()
-    opt.add_option("-i", "--input")
-    opt.add_option("-t", "--text")
-    opt.add_option("-w", "--wesnoth")
-    opt.add_option("-d", "--defines")
+    opt.add_option("-c", "--config-dir", help = "directly passed on to wesnoth.exe")
+    opt.add_option("-i", "--input", help = "a WML file to parse")
+    opt.add_option("-t", "--text", help = "WML text to parse")
+    opt.add_option("-w", "--wesnoth", help = "path to wesnoth.exe")
+    opt.add_option("-d", "--defines", help = "comma separated list of WML defines")
     opt.add_option("-T", "--test", action = "store_true")
     opt.add_option("-j", "--to-json", action = "store_true")
     opt.add_option("-x", "--to-xml", action = "store_true")
@@ -635,7 +640,7 @@ code = <<
 
         sys.exit(0)
 
-    p = Parser(options.wesnoth)
+    p = Parser(options.wesnoth, options.config_dir)
     if options.input: p.parse_file(options.input, options.defines)
     elif options.text: p.parse_text(options.text, options.defines)
     if options.to_json:
