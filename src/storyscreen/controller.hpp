@@ -22,14 +22,13 @@
 
 #include "events.hpp"
 #include "interface.hpp"
-#include "variable.hpp"
 #include "video.hpp"
 
 #include <boost/shared_ptr.hpp>
 
 class display;
 class game_state;
-// class vconfig;
+class vconfig;
 
 namespace storyscreen {
 
@@ -59,7 +58,6 @@ private:
 	const resize_lock disp_resize_lock_;
 	const events::event_context evt_context_;
 
-	vconfig data_;
 	std::string scenario_name_;
 	int segment_index_;
 	int total_segments_;

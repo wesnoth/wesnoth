@@ -47,14 +47,13 @@ controller::controller(display& disp, const vconfig& data, const std::string& sc
 	: disp_(disp)
 	, disp_resize_lock_()
 	, evt_context_()
-	, data_(data)
 	, scenario_name_(scenario_name)
 	, segment_index_(segment_index)
 	, total_segments_(total_segments)
 	, parts_()
 {
 	ASSERT_LOG(resources::state_of_game != NULL, "Ouch: gamestate is NULL when initializing storyscreen controller");
-	resolve_wml(data_);
+	resolve_wml(data);
 }
 
 void controller::resolve_wml(const vconfig& cfg)
