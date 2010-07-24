@@ -42,11 +42,17 @@ static lg::log_domain log_preprocessor("preprocessor");
 
 using std::streambuf;
 
+// map associating each filename encountered to a number
 static std::map<std::string, int> file_number_map;
+// current number of encountered filename
 static int current_file_number = 0;
 
 static std::string get_filename(const std::string& num){
-	int n = lexical_cast_default<int>(num,0);
+	int n = 0;
+	// num is encoded in hexadecimal, translate it
+	std::stringstream s;
+	s << num;
+	s >> std::hex >> n;
 	typedef std::map<std::string, int> t_file_number_map;
 	foreach(const t_file_number_map::value_type& p, file_number_map){
 		if(p.second == n)
@@ -54,7 +60,6 @@ static std::string get_filename(const std::string& num){
 	}
 	return "<unknown>";
 }
-
 
 bool preproc_define::operator==(preproc_define const &v) const {
 	return value == v.value && arguments == v.arguments;
@@ -494,15 +499,18 @@ preprocessor_data::preprocessor_data(preprocessor_streambuf &t,
 
 	s << history;
 	if (!name.empty()) {
+		// get number associated to this file
 		int& fnum = file_number_map[utils::escape(name, " \\")];
 		if(fnum == 0)
 			fnum = ++current_file_number;
 
 		if (!history.empty())
 			s << ' ';
-		//TODO using hexadecimal number is faster
-		//s << std::hex << current_fnum;
-		s << current_file_number;
+
+		// save the file number hexadecimal
+		std::ostringstream shex;
+		shex << std::hex << current_file_number;
+		s << shex.str();
 	}
 
 	if (!t.location_.empty())
