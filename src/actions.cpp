@@ -1485,7 +1485,7 @@ bool attack::perform_hit(bool attacker_turn, statistics::attack_context &stats)
 			defender_unit.set_state(unit::STATE_PETRIFIED, true);
 			update_fog = true;
 			attacker.n_attacks_ = 0;
-			defender.n_attacks_ = 0;
+			defender.n_attacks_ = -1; // Petrified.
 			game_events::fire("petrified", defender.loc_, attacker.loc_);
 			refresh_bc();
 		}
@@ -1598,7 +1598,8 @@ void attack::perform()
 			--rounds;
 			defender_strikes_first = (d_stats_->firststrike && ! a_stats_->firststrike);
 		}
-		if(a_.n_attacks_ <= 0 && d_.n_attacks_ <= 0) {
+
+		if (a_.n_attacks_ <= 0 && d_.n_attacks_ <= 0) {
 			fire_event("attack_end");
 			refresh_bc();
 			break;
