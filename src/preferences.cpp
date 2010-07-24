@@ -102,6 +102,11 @@ void set(const std::string &key, bool value)
 	prefs[key] = value;
 }
 
+void set(const std::string &key, int value)
+{
+	prefs[key] = value;
+}
+
 void set(const std::string &key, char const *value)
 {
 	prefs[key] = value;

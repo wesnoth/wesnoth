@@ -41,6 +41,7 @@ namespace preferences {
 	void set(const std::string& key, const std::string &value);
 	void set(const std::string& key, char const *value);
 	void set(const std::string &key, bool value);
+	void set(const std::string &key, int value);
 	void clear(const std::string& key);
 	void set_child(const std::string& key, const config& val);
 	const config &get_child(const std::string &key);
