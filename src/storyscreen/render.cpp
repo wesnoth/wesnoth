@@ -213,7 +213,7 @@ bool part_ui::render_floating_images()
 		if(skip == false) {
 			for(unsigned i = 0; i != 50; ++i) {
 				const bool next_keydown = keys_[SDLK_SPACE] || keys_[SDLK_RETURN] || keys_[SDLK_KP_ENTER] || keys_[SDLK_RIGHT];
-				const bool play_keydown = keys_[SDLK_ESCAPE] && !play_button_.hidden();
+				bool play_keydown = keys_[SDLK_ESCAPE];
 				const bool back_keydown = keys_[SDLK_BACKSPACE] || keys_[SDLK_LEFT];
 
 				if (((next_keydown || play_keydown) && !last_key) || next_button_.pressed() || play_button_.pressed()) {
@@ -448,10 +448,6 @@ void part_ui::render_story_box()
 		// by the buttons being hidden and unhidden in this scope.
 		update_locker locker(video_);
 
-		const bool next_hidden = next_button_.hidden();
-		const bool back_hidden = back_button_.hidden();
-		const bool play_hidden = play_button_.hidden();
-
 		next_button_.hide();
 		back_button_.hide();
 		play_button_.hide();
@@ -469,13 +465,9 @@ void part_ui::render_story_box()
 
 		render_story_box_borders(update_area); // no-op if LOW_MEM is defined
 
-		// Make GUI1 buttons aware of background modifications
-		next_button_.set_location(next_button_.location());
-		next_button_.hide(next_hidden);
-		back_button_.set_location(back_button_.location());
-		back_button_.hide(back_hidden);
-		play_button_.set_location(play_button_.location());
-		play_button_.hide(play_hidden);
+		next_button_.hide(false);
+		back_button_.hide(false);
+		play_button_.hide(false);
 	}
 
 	if(imgs_.empty()) {
@@ -505,7 +497,7 @@ void part_ui::render_story_box()
 
 		const bool next_keydown  = keys_[SDLK_SPACE] || keys_[SDLK_RETURN] || keys_[SDLK_KP_ENTER] || keys_[SDLK_RIGHT];
 		const bool back_keydown  = keys_[SDLK_BACKSPACE] || keys_[SDLK_LEFT];
-		const bool play_keydown  = keys_[SDLK_ESCAPE] && !play_button_.hidden();
+		bool play_keydown  = keys_[SDLK_ESCAPE];
 
 		if((next_keydown && !last_key) || next_button_.pressed()) {
 			if(skip == true || scan_finished) {
@@ -551,7 +543,7 @@ void part_ui::wait_for_input()
 	bool last_key = true;
 	while(true) {
 		const bool next_keydown = keys_[SDLK_SPACE] || keys_[SDLK_RETURN] || keys_[SDLK_KP_ENTER] || keys_[SDLK_RIGHT];
-		const bool play_keydown = keys_[SDLK_ESCAPE] && !play_button_.hidden();
+		bool play_keydown = keys_[SDLK_ESCAPE];
 		const bool back_keydown = keys_[SDLK_BACKSPACE] || keys_[SDLK_LEFT];
 
 		if(((next_keydown || play_keydown) && !last_key) || next_button_.pressed() || play_button_.pressed()) {
