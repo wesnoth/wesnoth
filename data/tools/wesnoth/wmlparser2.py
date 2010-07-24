@@ -172,7 +172,8 @@ class RootNode(TagNode):
         return s
 
 class Parser:
-    def __init__(self, wesnoth_exe, config_dir, data_dir):
+    def __init__(self, wesnoth_exe, config_dir, data_dir,
+        no_preprocess):
         """
         path - Path to the file to parse.
         wesnoth_exe - Wesnoth executable to use. This should have been
@@ -181,6 +182,7 @@ class Parser:
         self.wesnoth_exe = wesnoth_exe
         self.config_dir = config_dir
         self.data_dir = data_dir
+        self.no_preprocess = no_preprocess
         self.preprocessed = None
 
         self.last_wml_line = "?"
@@ -188,7 +190,8 @@ class Parser:
 
     def parse_file(self, path, defines = ""):
         self.path = path
-        self.preprocess(defines)
+        if not self.no_preprocess:
+            self.preprocess(defines)
         self.parse()
 
     def parse_text(self, text, defines = ""):
@@ -197,7 +200,8 @@ class Parser:
         temp.write(text)
         temp.flush()
         self.path = temp.name
-        self.preprocess(defines)
+        if not self.no_preprocess:
+            self.preprocess(defines)
         self.parse()
 
     def preprocess(self, defines):
@@ -499,6 +503,7 @@ if __name__ == "__main__":
     opt.add_option("-d", "--defines", help = "comma separated list of WML defines")
     opt.add_option("-T", "--test", action = "store_true")
     opt.add_option("-j", "--to-json", action = "store_true")
+    opt.add_option("-n", "--no-preprocess", action = "store_true")
     opt.add_option("-x", "--to-xml", action = "store_true")
     options, args = opt.parse_args()
 
@@ -506,13 +511,15 @@ if __name__ == "__main__":
         sys.stderr.write("No input given. Use -h for help.\n")
         sys.exit(1)
 
-    if not options.wesnoth or not os.path.exists(options.wesnoth):
+    if not options.no_preprocess and (not options.wesnoth or not
+        os.path.exists(options.wesnoth)):
         sys.stderr.write("Wesnoth executable not found.\n")
         sys.exit(1)
 
     if options.test:
         print("Running tests")
-        p = Parser(options.wesnoth)
+        p = Parser(options.wesnoth, options.config_dir,
+            options.data_dir, options.no_preprocess)
 
         only = None
         def test2(input, expected, note, function):
@@ -644,7 +651,8 @@ code = <<
 
         sys.exit(0)
 
-    p = Parser(options.wesnoth, options.config_dir, options.data_dir)
+    p = Parser(options.wesnoth, options.config_dir, options.data_dir,
+        options.no_preprocess)
     if options.input: p.parse_file(options.input, options.defines)
     elif options.text: p.parse_text(options.text, options.defines)
     if options.to_json:
