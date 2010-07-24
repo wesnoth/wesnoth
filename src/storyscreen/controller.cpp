@@ -171,11 +171,10 @@ STORY_RESULT controller::show(START_POSITION startpos)
 		const bool first_page = (segment_index_ == 0) && (k == 0);
 		const bool last_page  = (segment_index_ == total_segments_ - 1) && (k == parts_.size() - 1);
 
-		first_button.hide(first_page);
-		back_button.hide(first_page);
-		last_button.hide(last_page);
-		next_button.hide(false);
-		play_button.hide(!last_page);
+		first_button.enable(!first_page);
+		back_button.enable(!first_page);
+		last_button.enable(!last_page);
+		play_button.enable(last_page);
 
 		switch(render_interface.show()) {
 		case part_ui::NEXT:
