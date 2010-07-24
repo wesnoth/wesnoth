@@ -83,6 +83,23 @@ static std::string get_file_code(const std::string& filename){
 	return shex.str();
 }
 
+// decode the filenames placed in a location
+static std::string get_location(const std::string& loc)
+{
+	std::vector< std::string > pos = utils::quoted_split(loc, ' ');
+	std::vector< std::string >::const_iterator i = pos.begin(), end = pos.end();
+	std::string res;
+	while (true) {
+		res += get_filename(*(i++));
+		if(i == end) break;
+		res += ' ';
+		res += *(i++);
+		if(i == end) break;
+		res += ' ';
+	}
+	return res;
+}
+
 bool preproc_define::operator==(preproc_define const &v) const {
 	return value == v.value && arguments == v.arguments;
 }
@@ -116,7 +133,7 @@ void preproc_define::write(config_writer& writer, const std::string& name) const
 	writer.write_key_val("value", value);
 	writer.write_key_val("textdomain", textdomain);
 	writer.write_key_val("linenum", lexical_cast<std::string>(linenum));
-	writer.write_key_val("location", location);
+	writer.write_key_val("location", get_location(location));
 
 	foreach (const std::string &arg, arguments)
 		write_argument(writer, arg);
