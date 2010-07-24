@@ -141,8 +141,8 @@ void part_ui::prepare_geometry()
 	buttons_x_ = video_.getx() - 50;
 	buttons_y_ = base_rect_.y + base_rect_.h - 20;
 
-	next_button_.set_location(buttons_x_, buttons_y_ - 40);
 	back_button_.set_location(buttons_x_, buttons_y_ - 20);
+	next_button_.set_location(buttons_x_ + play_button_.width() - next_button_.width(), buttons_y_ - 20);
 	play_button_.set_location(buttons_x_, buttons_y_);
 
 #else // elif !defined(USE_TINY_GUI)
@@ -166,8 +166,9 @@ void part_ui::prepare_geometry()
 		buttons_y_ = video_.gety() - 40;
 		break;
 	}
-	next_button_.set_location(buttons_x_, buttons_y_ - 60);
+
 	back_button_.set_location(buttons_x_, buttons_y_ - 30);
+	next_button_.set_location(buttons_x_ + play_button_.width() - next_button_.width(), buttons_y_ - 30);
 	play_button_.set_location(buttons_x_, buttons_y_);
 #endif
 

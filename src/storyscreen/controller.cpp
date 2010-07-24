@@ -129,8 +129,8 @@ STORY_RESULT controller::show(START_POSITION startpos)
 		return NEXT;
 	}
 
-	gui::button back_button (disp_.video(), std::string("← ")+ _("Back"));
-	gui::button next_button (disp_.video(), _("Next") + std::string(" →"));
+	gui::button back_button (disp_.video(), "", gui::button::TYPE_PRESS, "left_arrow-button");
+	gui::button next_button (disp_.video(), "", gui::button::TYPE_PRESS, "right_arrow-button");
 	gui::button play_button (disp_.video(), _("Skip") + std::string(" ↠"));
 
 	// Build renderer cache unless built for a low-memory environment;
