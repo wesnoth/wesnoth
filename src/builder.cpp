@@ -652,6 +652,13 @@ void terrain_builder::add_constraints(terrain_builder::constraint_set &constrain
 	constraint.no_flag.insert(constraint.no_flag.end(),
 			item_string.begin(), item_string.end());
 
+	item_string = utils::split(cfg["set_no_flag"]);
+	constraint.set_flag.insert(constraint.set_flag.end(),
+			item_string.begin(), item_string.end());
+	constraint.no_flag.insert(constraint.no_flag.end(),
+			item_string.begin(), item_string.end());
+
+
 	add_images_from_config(constraint.images, cfg, false);
 }
 
@@ -791,6 +798,7 @@ void terrain_builder::parse_config(const config &cfg, bool local)
 		const std::vector<std::string> global_set_flag = utils::split(br["set_flag"]);
 		const std::vector<std::string> global_no_flag = utils::split(br["no_flag"]);
 		const std::vector<std::string> global_has_flag = utils::split(br["has_flag"]);
+		const std::vector<std::string> global_set_no_flag = utils::split(br["set_no_flag"]);
 
 		for(constraint_set::iterator constraint = pbr.constraints.begin(); constraint != pbr.constraints.end();
 		    ++constraint) {
@@ -807,6 +815,13 @@ void terrain_builder::parse_config(const config &cfg, bool local)
 				constraint->second.has_flag.insert(constraint->second.has_flag.end(),
 						global_has_flag.begin(), global_has_flag.end());
 
+			if(!global_set_no_flag.empty()) {
+				constraint->second.set_flag.insert(constraint->second.set_flag.end(),
+						global_set_no_flag.begin(), global_set_no_flag.end());
+
+				constraint->second.no_flag.insert(constraint->second.no_flag.end(),
+						global_set_no_flag.begin(), global_set_no_flag.end());
+			}
 		}
 
 		// Handles rotations
