@@ -89,6 +89,14 @@ public class WMLTools
 		arguments.add("-w");
 		arguments.add(Preferences.getString(Constants.P_WESNOTH_EXEC_PATH));
 
+		// add user data directory
+		arguments.add("-c");
+		arguments.add(Preferences.getString(Constants.P_WESNOTH_USER_DIR));
+
+		// add the working data directory
+		arguments.add("-a");
+		arguments.add(Preferences.getString(Constants.P_WESNOTH_WORKING_DIR));
+
 		// input file
 		arguments.add("-i");
 		arguments.add(resourcePath);

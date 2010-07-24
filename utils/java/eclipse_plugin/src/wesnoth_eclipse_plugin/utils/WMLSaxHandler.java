@@ -19,8 +19,8 @@ import org.xml.sax.helpers.DefaultHandler;
  */
 public class WMLSaxHandler extends DefaultHandler
 {
-	public String CampaignId;
-	public String ScenarioId;
+	public String CampaignId = null;
+	public String ScenarioId = null;
 
 	private static Stack<String> stack;
 	public WMLSaxHandler()
@@ -41,9 +41,9 @@ public class WMLSaxHandler extends DefaultHandler
     {
     	if (stack.peek().equals("id"))
     	{
-    		 if (stack.contains("campaign"))
+    		 if (stack.get(stack.size() - 2).equals("campaign"))
     			 CampaignId = new String(ch, start, length);
-    		 else if (stack.contains("scenario"))
+    		 else if (stack.get(stack.size() - 2).equals("scenario"))
     			 ScenarioId = new String(ch, start, length);
     	}
     	super.characters(ch, start, length);

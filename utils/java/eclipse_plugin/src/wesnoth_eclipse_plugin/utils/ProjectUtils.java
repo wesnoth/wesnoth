@@ -244,11 +244,10 @@ public class ProjectUtils
 	 */
 	public static String getScenarioID(IResource resource)
 	{
-		return getConfigKeyValue(resource.getLocation().toOSString(), "id");
-//		WMLSaxHandler handler = getWMLHandlerFromResource(resource.getLocation().toOSString());
-//		if (handler == null)
-//			return null;
-//		return handler.ScenarioId;
+		WMLSaxHandler handler = getWMLHandlerFromResource(resource.getLocation().toOSString());
+		if (handler == null)
+			return null;
+		return handler.ScenarioId;
 	}
 
 	private static WMLSaxHandler getWMLHandlerFromResource(String resourcePath)

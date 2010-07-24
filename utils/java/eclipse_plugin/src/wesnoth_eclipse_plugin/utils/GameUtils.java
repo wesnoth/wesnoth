@@ -27,7 +27,14 @@ public class GameUtils
 	 */
 	public static void runCampaign()
 	{
-		runCampaignScenario(false);
+		Thread gameThread = new Thread(new Runnable() {
+			@Override
+			public void run()
+			{
+				runCampaignScenario(false);
+			}
+		});
+		gameThread.start();
 	}
 
 	/**
@@ -35,7 +42,14 @@ public class GameUtils
 	 */
 	public static void runScenario()
 	{
-		runCampaignScenario(true);
+		Thread gameThread = new Thread(new Runnable() {
+			@Override
+			public void run()
+			{
+				runCampaignScenario(true);
+			}
+		});
+		gameThread.start();
 	}
 
 	protected static void runCampaignScenario(boolean scenario)
@@ -111,7 +125,6 @@ public class GameUtils
 			GUIUtils.showErrorMessageBox("Please set the wesnoth's executable path first.");
 			return;
 		}
-
 
 		if (extraArgs != null)
 			args.addAll(extraArgs);
