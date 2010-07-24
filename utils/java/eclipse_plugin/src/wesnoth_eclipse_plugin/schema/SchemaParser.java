@@ -43,6 +43,17 @@ public class SchemaParser
 	 */
 	public void parseSchema(boolean force)
 	{
+		parseSchema(force, Preferences.getString(
+				Constants.P_WESNOTH_WORKING_DIR) + "/data/schema.cfg");
+	}
+
+	/**
+	 * Parses the schema
+	 * @param force True to force parsing the schema, skipping the existing cache
+	 * @param schemaPath The path to the 'schema.cfg' file
+	 */
+	public void parseSchema(boolean force, String schemaPath)
+	{
 		if (parsingDone_ && !force)
 		{
 			Logger.getInstance().log("schema not parsed since there is already in cache.");
@@ -57,8 +68,7 @@ public class SchemaParser
 		}
 
 		Logger.getInstance().log("parsing schema " + (force == true ? "forced" : ""));
-		File schemaFile = new File(Preferences.getString(
-						Constants.P_WESNOTH_WORKING_DIR) + "/data/schema.cfg");
+		File schemaFile = new File(schemaPath);
 		String res = ResourceUtils.getFileContents(schemaFile);
 		String[] lines = StringUtils.getLines(res);
 		Stack<String> tagStack = new Stack<String>();
