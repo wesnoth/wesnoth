@@ -131,7 +131,7 @@ STORY_RESULT controller::show(START_POSITION startpos)
 
 	gui::button back_button (disp_.video(), "", gui::button::TYPE_PRESS, "left_arrow-button");
 	gui::button next_button (disp_.video(), "", gui::button::TYPE_PRESS, "right_arrow-button");
-	gui::button play_button (disp_.video(), _("Skip") + std::string(" ↠"));
+	gui::button play_button (disp_.video(), _("Skip"));
 
 	// Build renderer cache unless built for a low-memory environment;
 	// caching the scaled backgrounds can take over a decent amount of memory.
