@@ -42,23 +42,37 @@ static lg::log_domain log_preprocessor("preprocessor");
 
 using std::streambuf;
 
-// map associating each filename encountered to a number
-static std::map<std::string, int> file_number_map;
-// current number of encountered filename
-static int current_file_number = 0;
 
-static std::string get_filename(const std::string& num){
-	int n = 0;
-	// num is encoded in hexadecimal, translate it
+// map associating each filename encountered to a number
+typedef std::map<std::string, int> t_file_number_map;
+static t_file_number_map file_number_map;
+
+// get filename associated to this hexadecimal number
+static std::string get_filename(const std::string& hex_num){
 	std::stringstream s;
-	s << num;
+	s << hex_num;
+	int n = 0;
 	s >> std::hex >> n;
-	typedef std::map<std::string, int> t_file_number_map;
+
 	foreach(const t_file_number_map::value_type& p, file_number_map){
 		if(p.second == n)
 			return p.first;
 	}
 	return "<unknown>";
+}
+
+// get hexadecimal number associated to this file
+static std::string get_file_number(const std::string& filename){
+	// current number of encountered filenames
+	static int current_file_number = 0;
+
+	int& fnum = file_number_map[utils::escape(filename, " \\")];
+	if(fnum == 0)
+		fnum = ++current_file_number;
+
+	std::ostringstream shex;
+	shex << std::hex << fnum;
+	return shex.str();
 }
 
 bool preproc_define::operator==(preproc_define const &v) const {
@@ -499,18 +513,10 @@ preprocessor_data::preprocessor_data(preprocessor_streambuf &t,
 
 	s << history;
 	if (!name.empty()) {
-		// get number associated to this file
-		int& fnum = file_number_map[utils::escape(name, " \\")];
-		if(fnum == 0)
-			fnum = ++current_file_number;
-
 		if (!history.empty())
 			s << ' ';
 
-		// save the hexadecimal number associated to this filename
-		std::ostringstream shex;
-		shex << std::hex << fnum;
-		s << shex.str();
+		s << get_file_number(name);
 	}
 
 	if (!t.location_.empty())
