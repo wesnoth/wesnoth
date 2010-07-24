@@ -161,9 +161,9 @@ STORY_RESULT controller::show(START_POSITION startpos)
 
 	while(k < parts_.size()) {
 #ifndef LOW_MEM
-		render_reference_type render_interface = *uis_[k];
+		part_ui &render_interface = *uis_[k];
 #else
-		render_value_type render_interface(*parts_[k], disp_, next_button, back_button, first_button, last_button, play_button);
+		part_ui render_interface(*parts_[k], disp_, next_button, back_button, first_button, last_button, play_button);
 #endif
 
 		LOG_NG << "displaying storyscreen part " << k+1 << " of " << parts_.size() << '\n';

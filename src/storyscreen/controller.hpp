@@ -51,8 +51,6 @@ public:
 private:
 	typedef boost::shared_ptr< part    > part_pointer_type;
 	typedef boost::shared_ptr< part_ui > render_pointer_type;
-	typedef part_ui                      render_value_type;
-	typedef part_ui&                     render_reference_type;
 
 	// Executes WML flow instructions and inserts parts.
 	void resolve_wml(const vconfig& cfg);
