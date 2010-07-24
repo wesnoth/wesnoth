@@ -47,6 +47,8 @@ public:
 	manager();
 	~manager();
 
+	void print_help();
+
 	/**
 	 * Determine whether the whiteboard is activated.
 	 */
@@ -112,6 +114,8 @@ public:
 	void contextual_bump_up_action();
 	/** Moves the action determined by the UI toward the beginning of the queue  */
 	void contextual_bump_down_action();
+	/** Deletes all planned actions for all teams */
+	void erase_all_actions();
 
 	/** Checks whether the specified unit has at least one planned action */
 	bool unit_has_actions(const unit& unit) const;

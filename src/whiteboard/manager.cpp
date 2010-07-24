@@ -25,6 +25,7 @@
 #include "side_actions.hpp"
 
 #include "arrow.hpp"
+#include "chat_events.hpp"
 #include "foreach.hpp"
 #include "pathfind/pathfind.hpp"
 #include "play_controller.hpp"
@@ -52,6 +53,33 @@ manager::manager():
 
 manager::~manager()
 {
+}
+
+static void print_to_chat(const std::string& title, const std::string& message)
+{
+	resources::screen->add_chat_message(time(NULL), title, 0, message,
+			events::chat_handler::MESSAGE_PRIVATE, false);
+}
+
+void manager::print_help()
+{
+	print_to_chat("-------------",  "List of whiteboard hotkeys:");
+	const hotkey::hotkey_item& hk_execute = hotkey::get_hotkey(hotkey::HOTKEY_WB_EXECUTE_ACTION);
+	if(!hk_execute.null()) {
+		print_to_chat("[execute action]", "'" + hk_execute.get_name() + "'");
+	}
+	const hotkey::hotkey_item& hk_delete = hotkey::get_hotkey(hotkey::HOTKEY_WB_DELETE_ACTION);
+	if(!hk_delete.null()) {
+		print_to_chat("[delete action]", "'" + hk_delete.get_name() + "'");
+	}
+	const hotkey::hotkey_item& hk_bump_up = hotkey::get_hotkey(hotkey::HOTKEY_WB_BUMP_UP_ACTION);
+	if(!hk_bump_up.null()) {
+		print_to_chat("[move action earlier in queue]", "'" + hk_bump_up.get_name() + "'");
+	}
+	const hotkey::hotkey_item& hk_bump_down = hotkey::get_hotkey(hotkey::HOTKEY_WB_BUMP_DOWN_ACTION);
+	if(!hk_bump_down.null()) {
+		print_to_chat("[move action later in queue]", "'" + hk_bump_down.get_name() + "'");
+	}
 }
 
 void manager::set_active(bool active)
@@ -83,6 +111,15 @@ void manager::set_invert_behavior(bool invert)
 			|| executing_actions_
 			|| is_observer())
 		return;
+
+	static bool print_once = true;
+	if (print_once)
+	{
+		print_once = false;
+		print_to_chat("whiteboard", std::string("Hold the ctrl key to temporarily activate the whiteboard.")
+			+ " Type :wb twice in a row to erase all actions.");
+		print_help();
+	}
 
 	log_scope("set_invert_behavior");
 	if (invert)
@@ -498,6 +535,16 @@ void manager::contextual_bump_down_action()
 		{
 			viewer_actions()->bump_later(viewer_actions()->get_position_of(action));
 		}
+	}
+}
+
+void manager::erase_all_actions()
+{
+	on_deselect_hex();
+	set_real_unit_map();
+	foreach(team& team, *resources::teams)
+	{
+		team.get_side_actions()->clear();
 	}
 }
 

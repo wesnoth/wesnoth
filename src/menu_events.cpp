@@ -3524,9 +3524,11 @@ void console_handler::do_toggle_draw_terrain_codes() {
 void console_handler::do_toggle_whiteboard() {
 	resources::whiteboard->set_active(!resources::whiteboard->is_active());
 	if (resources::whiteboard->is_active()) {
-		print(get_cmd(), _("Whiteboard activated."));
+		print(get_cmd(), _("Whiteboard activated!"));
+		resources::whiteboard->print_help();
 	} else {
-		print(get_cmd(), _("Whiteboard deactivated."));
+		print(get_cmd(), _("Whiteboard deactivated! Erasing all planned actions."));
+		resources::whiteboard->erase_all_actions();
 	}
 }
 

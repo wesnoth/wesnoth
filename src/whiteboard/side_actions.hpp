@@ -77,6 +77,11 @@ public:
 	 */
 	bool empty() const { return actions_.empty(); }
 
+	/**
+	 * Empties the action queue.
+	 */
+	void clear() { actions_.clear(); }
+
 //	/**
 //	 * Inserts a move at the specified position. The begin() and end() functions might prove useful here.
 //	 * @return The inserted move's position.
