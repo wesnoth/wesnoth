@@ -554,7 +554,7 @@ bool manager::unit_has_actions(const unit& unit) const
 		return false;
 	else
 		return viewer_actions()->find_first_action_of(unit)
-				!= viewer_actions()->end();
+				!= viewer_actions()->actions().end();
 }
 
 void manager::fake_unit_deleter::operator() (unit*& fake_unit)
