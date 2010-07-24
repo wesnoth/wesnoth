@@ -172,7 +172,7 @@ class RootNode(TagNode):
         return s
 
 class Parser:
-    def __init__(self, wesnoth_exe, config_dir):
+    def __init__(self, wesnoth_exe, config_dir, data_dir):
         """
         path - Path to the file to parse.
         wesnoth_exe - Wesnoth executable to use. This should have been
@@ -180,6 +180,7 @@ class Parser:
         """
         self.wesnoth_exe = wesnoth_exe
         self.config_dir = config_dir
+        self.data_dir = data_dir
         self.preprocessed = None
 
         self.last_wml_line = "?"
@@ -210,8 +211,10 @@ class Parser:
         output = tempfile.mkdtemp(prefix="wmlparser_")
         p_option = "-p=" + defines if defines else "-p "
         commandline = [self.wesnoth_exe]
+        if self.data_dir:
+            commandline += ["--data-dir", self.data_dir]
         if self.config_dir:
-            commandline += ["--config_dir='%s'" % self.config_dir]
+            commandline += ["--config-dir", self.config_dir]
         commandline += [p_option, self.path,
             output]
         p = subprocess.Popen(commandline,
@@ -488,6 +491,7 @@ if __name__ == "__main__":
     # Hack to make us not crash when we encounter characters that aren't ASCII
     sys.stdout = __import__("codecs").getwriter('utf-8')(sys.stdout)
     opt = optparse.OptionParser()
+    opt.add_option("-a", "--data-dir", help = "directly passed on to wesnoth.exe")
     opt.add_option("-c", "--config-dir", help = "directly passed on to wesnoth.exe")
     opt.add_option("-i", "--input", help = "a WML file to parse")
     opt.add_option("-t", "--text", help = "WML text to parse")
@@ -640,7 +644,7 @@ code = <<
 
         sys.exit(0)
 
-    p = Parser(options.wesnoth, options.config_dir)
+    p = Parser(options.wesnoth, options.config_dir, options.data_dir)
     if options.input: p.parse_file(options.input, options.defines)
     elif options.text: p.parse_text(options.text, options.defines)
     if options.to_json:
