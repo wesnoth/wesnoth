@@ -23,7 +23,7 @@ public class Tag
 	public List<TagKey>	KeyChildren;
 	public char		Cardinality;
 
-	public boolean		NeedsExpanding;
+	public boolean		NeedsExpanding = false;
 
 	public Tag(String name, List<Tag> tagChildren, List<TagKey> keyChildren, char cardinality) {
 		Name = name;
@@ -107,5 +107,11 @@ public class Tag
 				return -1;
 			return 0;
 		}
+	}
+
+	@Override
+	public String toString()
+	{
+		return new String(Name + " " + ExtendedTagName);
 	}
 }

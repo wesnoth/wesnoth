@@ -85,7 +85,18 @@ public class SchemaParser
 			{
 				if (line.charAt(line.indexOf("[") + 1) == '/')
 				{
+					// propagate the 'needsexpanding' property to upper levels
+					boolean expand = false;
+					if (!tagStack.isEmpty() &&
+						tags_.containsKey(tagStack.peek()))
+						expand = tags_.get(tagStack.peek()).NeedsExpanding;
+
 					tagStack.pop();
+
+					if (!tagStack.isEmpty() &&
+						tags_.containsKey(tagStack.peek()) &&
+						expand == true)
+						tags_.get(tagStack.peek()).NeedsExpanding = expand;
 				}
 				else
 				{
@@ -96,22 +107,25 @@ public class SchemaParser
 					{
 						simpleTagName = tagName.split(":")[0];
 						extendedTagName = tagName.split(":")[1];
+//						System.out.println(tagName);
 					}
 					tagStack.push(simpleTagName);
 
 					if (!tagName.equals("description"))
 					{
-						//System.out.println(simpleTagName);
 						if (tags_.containsKey(simpleTagName))
 						{
+							// this tags was already refered in the schema
+							// before they were declared
 							currentTag = tags_.get(simpleTagName);
 							currentTag.ExtendedTagName = extendedTagName;
+							currentTag.NeedsExpanding = !extendedTagName.isEmpty();
 						}
 						else
 						{
 							Tag tag = new Tag(simpleTagName, extendedTagName, '_');
 							currentTag = tag;
-							currentTag.NeedsExpanding = false;
+							currentTag.NeedsExpanding = !extendedTagName.isEmpty();
 							tags_.put(simpleTagName, tag);
 						}
 					}
@@ -190,13 +204,9 @@ public class SchemaParser
 							}
 
 							currentTag.addTag(targetTag);
-							currentTag.NeedsExpanding = true;
 						}
 						else
 						{
-							if (!(primitives_.containsKey(value[1])))
-								currentTag.NeedsExpanding = true;
-
 							if (primitives_.get(value[1]) == null)
 								Logger.getInstance().logError("Undefined primitive type in schema.cfg for: " + value[1]);
 
@@ -213,8 +223,35 @@ public class SchemaParser
 		}
 
 		sortTags();
+
+		for (Tag tag : tags_.values())
+		{
+			expandTag(tag,0);
+		}
+
 		Logger.getInstance().log("parsing done");
 		parsingDone_ = true;
+	}
+
+	/**
+	 * Expands the tags that need to (the ones based on inheritance)
+	 */
+	private void expandTag(Tag tag, int ind)
+	{
+		if (tag.NeedsExpanding)
+		{
+			tag.NeedsExpanding = false;
+			for (Tag child : tag.TagChildren)
+			{
+				expandTag(child,ind+1);
+			}
+
+			if (tags_.containsKey(tag.ExtendedTagName))
+			{
+				tag.KeyChildren.addAll(tags_.get(tag.ExtendedTagName).KeyChildren);
+				tag.TagChildren.addAll(tags_.get(tag.ExtendedTagName).TagChildren);
+			}
+		}
 	}
 
 	/**
@@ -266,6 +303,7 @@ public class SchemaParser
 	 */
 	public String getOutput(Tag tag, String indent)
 	{
+		System.out.println(tag);
 		String res = indent + "[" + tag.Name + "]\n";
 		for (TagKey key : tag.KeyChildren)
 		{
@@ -273,6 +311,9 @@ public class SchemaParser
 		}
 		for (Tag tmpTag : tag.TagChildren)
 		{
+			// skip recursive calls
+			if (tmpTag.TagChildren.contains(tag))
+				continue;
 			res += (getOutput(tmpTag, indent + "\t"));
 		}
 		res += (indent + "[/" + tag.Name + "]\n");
