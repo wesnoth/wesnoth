@@ -18,7 +18,7 @@ class WMLError(Exception):
         self.wml_line = parser.last_wml_line
         self.message = message
         self.preprocessed = parser.preprocessed
-    
+
     def __str__(self):
         r = "WMLError:\n"
         r += "    " + str(self.line) + " " + self.preprocessed + "\n"
@@ -35,7 +35,7 @@ class StringNode:
     def __init__(self, data):
         self.textdomain = None # non-translatable by default
         self.data = data
-    
+
     def debug(self):
         if self.textdomain:
             return "_<" + self.textdomain + ">" +\
@@ -53,11 +53,11 @@ class AttributeNode:
     def __init__(self, name):
         self.name = name
         self.value = [] # List of StringNode
-    
+
     def debug(self):
         return self.name + "=" + " .. ".join(
             [v.debug() for v in self.value])
-        
+
     def get_text(self, translation = None):
         r = u""
         for s in self.value:
@@ -79,9 +79,9 @@ class TagNode:
         # List of child elements, which are either of type TagNode or
         # AttributeNode.
         self.data = []
-        
+
         self.speedy_tags = {}
-    
+
     def debug(self):
         s = ""
         s += "[" + self.name + "]\n"
@@ -95,7 +95,7 @@ class TagNode:
         """
         This gets all child tags or child attributes of the tag.
         For example:
-        
+
         [unit]
             name=A
             name=B
@@ -104,21 +104,21 @@ class TagNode:
             [attack]
             [/attack]
         [/unit]
-        
+
         unit.get_all(att = "name")
         will return two nodes for "name=A" and "name=B"
-        
+
         unit.get_all(tag = "attack")
         will return two nodes for the two [attack] tags.
 
         unit.get_all()
         will return 4 nodes for all 4 sub-elements.
-        
+
         If no elements are found an empty list is returned.
         """
         if len(kw) == 1 and "tag" in kw:
             return self.speedy_tags.get(kw["tag"], [])
-        
+
         r = []
         for sub in self.data:
             ok = True
@@ -138,7 +138,7 @@ class TagNode:
         Returns the value of the specified attribute. If the attribute
         is given multiple times, the last value is returned. If the
         attribute is not found, the default parameter is returned.
-        
+
         If a translation is specified, it should be a function which
         when passed a unicode string and text-domain returns a
         translation of the unicode string. The easiest way is to pass
@@ -148,10 +148,10 @@ class TagNode:
         x = self.get_all(att = name)
         if not x: return default
         return x[-1].get_text(translation)
-    
+
     def append(self, node):
         self.data.append(node)
-        
+
         if isinstance(node, TagNode):
             if node.name not in self.speedy_tags:
                 self.speedy_tags[node.name] =[]
@@ -180,10 +180,10 @@ class Parser:
         """
         self.wesnoth_exe = wesnoth_exe
         self.preprocessed = None
-        
+
         self.last_wml_line = "?"
         self.parser_line = 0
-    
+
     def parse_file(self, path, defines = ""):
         self.path = path
         self.preprocess(defines)
@@ -202,7 +202,7 @@ class Parser:
         """
         Call wesnoth --preprocess to get preprocessed WML which we
         can subsequently parse.
-        
+
         If this is not called then the .parse method will assume the
         WML is already preprocessed.
         """
@@ -227,7 +227,7 @@ class Parser:
         this.
         """
         if not line: return
-        
+
         if self.in_arrows:
             arrows = line.find('>>')
             if arrows >= 0:
@@ -245,7 +245,7 @@ class Parser:
 
         arrows = line.find('<<')
         quote = line.find('"')
-        
+
         if arrows >= 0 and (quote < 0 or quote > arrows):
             self.parse_line_without_commands(line[:arrows])
             self.in_arrows = True
@@ -267,10 +267,10 @@ class Parser:
                 self.temp_string = ""
                 if not self.temp_key_nodes:
                     raise WMLError(self, "Unexpected string value.")
-                
+
                 self.temp_key_nodes[self.commas].value.append(
                     self.temp_string_node)
-                
+
                 self.in_string = False
                 self.parse_line_without_commands(line[quote + 1:])
             else:
@@ -295,7 +295,7 @@ class Parser:
             if line.startswith("#textdomain "):
                 self.textdomain = line[12:].strip()
                 return
-            
+
             # Is it a tag?
             if line[0] == "[":
                 self.handle_tag(line)
@@ -313,7 +313,7 @@ class Parser:
                     if not segment: continue
 
                 self.handle_value(segment, i == 0)
-    
+
     def handle_tag(self, line):
         end = line.find("]")
         if end <= 0:
@@ -333,7 +333,7 @@ class Parser:
         if assign >= 0:
             remainder = line[assign + 1:]
             line = line[:assign]
-        
+
         self.commas = 0
         self.temp_key_nodes = []
         for att in line.split(","):
@@ -346,7 +346,7 @@ class Parser:
             self.parse_outside_strings(remainder)
 
     def handle_value(self, segment, is_first):
-        
+
         def add_text(segment):
             n = len(self.temp_key_nodes)
             maxsplit = n - self.commas - 1
@@ -376,7 +376,7 @@ class Parser:
         """
         Parse preprocessed WML into a tree of tags and attributes.
         """
-        
+
         # parsing state
         self.temp_string = ""
         self.temp_string_node = None
@@ -390,7 +390,7 @@ class Parser:
         self.parent_node = [self.root]
 
         command_marker_byte = chr(254)
-        
+
         input = self.preprocessed
         if not input: input = self.path
 
@@ -403,7 +403,7 @@ class Parser:
                 self.handle_command(rawline[compos + 1:-1])
             else:
                 self.parse_line_without_commands(rawline)
-                    
+
     def handle_command(self, com):
         if com.startswith("line "):
             self.last_wml_line = com[5:]
@@ -414,13 +414,13 @@ class Parser:
 
     def get_all(self, **kw):
         return self.root.get_all(**kw)
-    
+
     def get_text_val(self, name, default = None, translation = None):
         return self.root.get_text_val(name, default, translation)
 
 
 ########################################################################
-#                                                                      # 
+#                                                                      #
 # EVERYTHING BELOW IS ONLY TESTING STUFF AND CAN BE SAFELY IGNORED OR  #
 # REMOVED.                                                             #
 #                                                                      #
@@ -496,15 +496,15 @@ if __name__ == "__main__":
     if not options.input and not options.text and not options.test:
         sys.stderr.write("No input given. Use -h for help.\n")
         sys.exit(1)
-    
+
     if not options.wesnoth or not os.path.exists(options.wesnoth):
         sys.stderr.write("Wesnoth executable not found.\n")
         sys.exit(1)
-    
+
     if options.test:
         print("Running tests")
         p = Parser(options.wesnoth)
-        
+
         only = None
         def test2(input, expected, note, function):
             if only and note != only: return
@@ -524,10 +524,10 @@ if __name__ == "__main__":
                 print("__________")
             else:
                 print("PASSED " + note)
-        
+
         def test(input, expected, note):
             test2(input, expected, note, lambda p: p.root.debug())
-        
+
         test(
 """
 [test]
@@ -632,7 +632,7 @@ code = <<
     lambda p:
         p.get_all(tag = "test")[0].get_text_val("a") + ", " +
         p.get_all(tag = "test")[0].get_text_val("b"))
-        
+
         sys.exit(0)
 
     p = Parser(options.wesnoth)
@@ -642,7 +642,9 @@ code = <<
         jsonify(p.root, True)
         print
     elif options.to_xml:
-        xmlify(p.root, True)
+        print '<root>'
+        xmlify(p.root, True, 1)
+        print '</root>';
     else:
         print(p.root.debug())
 
