@@ -145,13 +145,17 @@ public:
 	 * Finds the first action that belongs to this unit, starting the search at the specified position.
 	 * @return The position, or end() if not found.
 	 */
-	iterator find_first_action_of(const unit& unit, iterator start_position = iterator());
+	iterator find_first_action_of(const unit& unit, iterator start_position);
+	///Variant of this method that always start searching at begin()
+	iterator find_first_action_of(const unit& unit);
 
 	/**
 	 * Finds the last action that belongs to this unit, starting the search backwards from the specified position.
 	 * @return The position, or end() if not found.
 	 */
-	iterator find_last_action_of(const unit& unit, iterator start_position = iterator());
+	iterator find_last_action_of(const unit& unit, iterator start_position);
+	///Variant of this method that always start searching at end() - 1
+	iterator find_last_action_of(const unit& unit);
 
 	void validate_actions();
 
