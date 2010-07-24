@@ -42,6 +42,20 @@ static lg::log_domain log_preprocessor("preprocessor");
 
 using std::streambuf;
 
+static std::map<std::string, int> file_number_map;
+static int current_file_number = 0;
+
+static std::string get_filename(const std::string& num){
+	int n = lexical_cast_default<int>(num,0);
+	typedef std::map<std::string, int> t_file_number_map;
+	foreach(const t_file_number_map::value_type& p, file_number_map){
+		if(p.second == n)
+			return p.first;
+	}
+	return "<unknown>";
+}
+
+
 bool preproc_define::operator==(preproc_define const &v) const {
 	return value == v.value && arguments == v.arguments;
 }
@@ -267,7 +281,7 @@ std::string lineno_string(const std::string &lineno)
 		if (!res.empty())
 			res += included_from;
 		if (i != end)
-			res += *(i++);
+			res += get_filename(*(i++));
 		else
 			res += "<unknown>";
 		res += ':' + line;
@@ -480,13 +494,19 @@ preprocessor_data::preprocessor_data(preprocessor_streambuf &t,
 
 	s << history;
 	if (!name.empty()) {
+		int& fnum = file_number_map[utils::escape(name, " \\")];
+		if(fnum == 0)
+			fnum = ++current_file_number;
+
 		if (!history.empty())
 			s << ' ';
-		s << utils::escape(name, " \\");
+		//TODO using hexadecimal number is faster
+		//s << std::hex << current_fnum;
+		s << current_file_number;
 	}
-	//FIXME: temporary ignore the inclusion chain
-/*	if (!t.location_.empty())
-		s << ' ' << t.linenum_ << ' ' << t.location_;*/
+
+	if (!t.location_.empty())
+		s << ' ' << t.linenum_ << ' ' << t.location_;
 	t.location_ = s.str();
 	t.linenum_ = linenum;
 
