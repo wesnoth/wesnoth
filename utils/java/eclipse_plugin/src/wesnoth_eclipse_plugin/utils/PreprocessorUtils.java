@@ -39,6 +39,12 @@ public class PreprocessorUtils
 		try{
 			List<String> arguments = new ArrayList<String>();
 
+			arguments.add("--config-dir");
+			arguments.add(Preferences.getString(Constants.P_WESNOTH_USER_DIR));
+
+			arguments.add("--data-dir");
+			arguments.add(Preferences.getString(Constants.P_WESNOTH_WORKING_DIR));
+
 			if (defines != null && !defines.isEmpty())
 			{
 				String argument = "-p=";
