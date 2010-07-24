@@ -507,9 +507,9 @@ preprocessor_data::preprocessor_data(preprocessor_streambuf &t,
 		if (!history.empty())
 			s << ' ';
 
-		// save the file number hexadecimal
+		// save the hexadecimal number associated to this filename
 		std::ostringstream shex;
-		shex << std::hex << current_file_number;
+		shex << std::hex << fnum;
 		s << shex.str();
 	}
 
