@@ -488,15 +488,14 @@ bool part_ui::handle_interface()
 {
 	bool result = false;
 
-	int mouse_x, mouse_y;
 	bool next_keydown = keys_[SDLK_SPACE] || keys_[SDLK_RETURN] ||
-		keys_[SDLK_KP_ENTER] || keys_[SDLK_RIGHT] ||
-		SDL_GetMouseState(&mouse_x, &mouse_y);
+		keys_[SDLK_KP_ENTER] || keys_[SDLK_RIGHT];
 	bool back_keydown = keys_[SDLK_BACKSPACE] || keys_[SDLK_LEFT];
 	bool play_keydown = keys_[SDLK_ESCAPE];
 
 	if ((next_keydown && !last_key_) || next_button_.pressed())
 	{
+		next_button_.release();
 		if (skip_) {
 			ret_ = NEXT;
 			result = true;
@@ -506,11 +505,13 @@ bool part_ui::handle_interface()
 	}
 
 	if ((play_keydown && !last_key_) || play_button_.pressed()) {
+		play_button_.release();
 		ret_ = QUIT;
 		result = true;
 	}
 
 	if ((back_keydown && !last_key_) || back_button_.pressed()) {
+		back_button_.release();
 		ret_ = BACK;
 		result = true;
 	}
