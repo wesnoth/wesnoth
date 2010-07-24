@@ -181,9 +181,6 @@ STORY_RESULT controller::show(START_POSITION startpos)
 			break;
 		case part_ui::QUIT:
 			return QUIT;
-		default:
-			assert(false);
-			return QUIT;
 		}
 	}
 	return NEXT;

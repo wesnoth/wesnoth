@@ -32,6 +32,12 @@ class vconfig;
 
 namespace storyscreen {
 
+enum STORY_RESULT {
+	NEXT,
+	BACK,
+	QUIT
+};
+
 class part;
 class part_ui;
 class floating_image;

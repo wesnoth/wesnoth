@@ -58,17 +58,19 @@ namespace {
 	}
 } // end anonymous namespace
 
-
-storyscreen::STORY_RESULT show_story(display& disp,
-				     const std::string& scenario_name,
-				     const config::const_child_itors &story) {
+void show_story(display &disp, const std::string &scenario_name,
+	const config::const_child_itors &story)
+{
 	const int total_segments = count_segments(story);
 	int segment_count = 0;
 	config::const_child_iterator itor = story.first;
 	storyscreen::START_POSITION startpos = storyscreen::START_BEGINNING;
-	while(itor != story.second) {
-		storyscreen::STORY_RESULT result = show_storyscreen(disp, vconfig(*itor, true), scenario_name,
-								    startpos, segment_count, total_segments);
+	while (itor != story.second)
+	{
+		storyscreen::controller ctl(disp, vconfig(*itor, true),
+			scenario_name, segment_count, total_segments);
+		storyscreen::STORY_RESULT result = ctl.show(startpos);
+
 		switch(result) {
 		case storyscreen::NEXT:
 			if(itor != story.second) {
@@ -85,30 +87,10 @@ storyscreen::STORY_RESULT show_story(display& disp,
 			}
 			break;
 		case storyscreen::QUIT:
-			return storyscreen::QUIT;
-		default:
-			assert(false);
-			itor = story.second;
-			break;
+			return;
 		}
 	}
-	return storyscreen::NEXT;
-}
-
-storyscreen::STORY_RESULT show_storyscreen(display& disp, const vconfig& story_cfg,
-					   const std::string& scenario_name,
-					   storyscreen::START_POSITION startpos,
-					   int segment_index, int total_segments)
-{
-	LOG_NG << "entering storyscreen procedure...\n";
-
-	storyscreen::controller ctl(disp, story_cfg, scenario_name, segment_index, total_segments);
-
-	storyscreen::STORY_RESULT ret = ctl.show(startpos);
-
-	LOG_NG << "leaving storyscreen procedure...\n";
-
-	return ret;
+	return;
 }
 
 void show_endscreen(display& /*disp*/, const t_string& /*text*/, unsigned int /*duration*/)
