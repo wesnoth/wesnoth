@@ -72,9 +72,6 @@ private:
 
 	// The part cache.
 	std::vector< part_pointer_type > parts_;
-
-public:
-	struct no_parts {};
 };
 
 } // end namespace storyscreen
