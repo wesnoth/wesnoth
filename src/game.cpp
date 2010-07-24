@@ -474,31 +474,6 @@ game_controller::game_controller(int argc, char** argv) :
 				}
 			}
 #endif
-		} else if(val == "--data-dir") {
-			if(arg_+1 != argc_) {
-				++arg_;
-				const std::string datadir(argv_[arg_]);
-				std::cerr << "Overriding data directory with " << datadir << std::endl;
-#ifdef _WIN32
-				// use c_str to ensure that index 1 points to valid element since c_str() returns null-terminated string
-				if(datadir.c_str()[1] == ':') {
-#else
-				if(datadir[0] == '/') {
-#endif
-					game_config::path = datadir;
-				} else {
-					game_config::path = get_cwd() + '/' + datadir;
-				}
-
-				if(!is_directory(game_config::path)) {
-					std::cerr << "Could not find directory '" << game_config::path << "'\n";
-					throw config::error("directory not found");
-				}
-
-				font_manager_.update_font_path();
-			}
-			else
-				std::cerr << "please specify a data directory\n";
 		} else if(val[0] == '-') {
 			std::cerr << "unknown option: " << val << std::endl;
 			throw config::error("unknown option");
@@ -1912,6 +1887,31 @@ static int process_command_args(int argc, char** argv) {
 			if (argc <= ++arg)
 				break;
 			set_preferences_dir(argv[arg]);
+		} else if(val == "--data-dir") {
+			if(arg +1 != argc) {
+				++arg;
+				const std::string datadir(argv[arg]);
+				std::cerr << "Overriding data directory with " << datadir << std::endl;
+#ifdef _WIN32
+				// use c_str to ensure that index 1 points to valid element since c_str() returns null-terminated string
+				if(datadir.c_str()[1] == ':') {
+#else
+				if(datadir[0] == '/') {
+#endif
+					game_config::path = datadir;
+				} else {
+					game_config::path = get_cwd() + '/' + datadir;
+				}
+
+				if(!is_directory(game_config::path)) {
+					std::cerr << "Could not find directory '" << game_config::path << "'\n";
+					throw config::error("directory not found");
+				}
+
+				// don't update font as we already updating it in game ctor
+			}
+			else
+				std::cerr << "please specify a data directory\n";
 		} else if (val.substr(0, 6) == "--log-") {
 			size_t p = val.find('=');
 			if (p == std::string::npos) {
