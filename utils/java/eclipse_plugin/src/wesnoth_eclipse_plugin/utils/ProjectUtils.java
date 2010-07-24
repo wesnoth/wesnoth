@@ -11,8 +11,12 @@ package wesnoth_eclipse_plugin.utils;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.StringReader;
 import java.util.HashMap;
 import java.util.Properties;
+
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
 
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
@@ -20,6 +24,7 @@ import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.Path;
+import org.xml.sax.InputSource;
 
 import wesnoth_eclipse_plugin.Logger;
 
@@ -154,7 +159,7 @@ public class ProjectUtils
 	}
 
 	/**
-	 * Returns "_main.cfg" location relative to user's directory
+	 * Returns "_main.cfg" location
 	 * from the specified resource or null if it isn't any
 	 * It will start searching upwards starting from curren
 	 * resource's directory, until it finds a '_main.cfg' but it will
@@ -212,7 +217,9 @@ public class ProjectUtils
 				}
 			}
 		}
-		return WorkspaceUtils.getPathRelativeToUserDir(targetResource);
+		if (targetResource == null)
+			return "";
+		return targetResource.getLocation().toOSString();
 	}
 
 	/**
@@ -224,7 +231,10 @@ public class ProjectUtils
 	 */
 	public static String getCampaignID(IResource resource)
 	{
-		return getConfigKeyValue(getMainConfigLocation(resource),"id");
+		WMLSaxHandler handler = getWMLHandlerFromResource(getMainConfigLocation(resource));
+		if (handler == null)
+			return null;
+		return handler.CampaignId;
 	}
 
 	/**
@@ -232,9 +242,33 @@ public class ProjectUtils
 	 * @param fileName
 	 * @return
 	 */
-	public static String getScenarioID(String fileName)
+	public static String getScenarioID(IResource resource)
 	{
-		return getConfigKeyValue(fileName,"id");
+		return getConfigKeyValue(resource.getLocation().toOSString(), "id");
+//		WMLSaxHandler handler = getWMLHandlerFromResource(resource.getLocation().toOSString());
+//		if (handler == null)
+//			return null;
+//		return handler.ScenarioId;
+	}
+
+	private static WMLSaxHandler getWMLHandlerFromResource(String resourcePath)
+	{
+		try{
+			ExternalToolInvoker parser =
+				WMLTools.runWMLParser2(resourcePath);
+			parser.waitForTool();
+			SAXParser saxparser;
+			saxparser = SAXParserFactory.newInstance().newSAXParser();
+
+			WMLSaxHandler handler = new WMLSaxHandler();
+			saxparser.parse(new InputSource(new StringReader(parser.getOutputContent())), handler);
+			return handler;
+		}
+		catch (Exception e)
+		{
+			Logger.getInstance().logException(e);
+			return null;
+		}
 	}
 
 	public static boolean isCampaignFile(String fileName)

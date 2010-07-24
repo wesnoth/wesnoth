@@ -47,7 +47,8 @@ public class WMLTools
 		if (!checkPrerequisites(null, "wmlindent")) // wmlindent only check first
 			return null;
 
-		File wmllintFile = new File(Preferences.getString(Constants.P_WESNOTH_WMLTOOLS_DIR) + "/wmlindent");
+		File wmllintFile = new File(Preferences.getString(
+				Constants.P_WESNOTH_WMLTOOLS_DIR) + "/wmlindent");
 		List<String> arguments = new ArrayList<String>();
 		arguments.add(wmllintFile.getAbsolutePath());
 
@@ -62,6 +63,37 @@ public class WMLTools
 			arguments.add(resourcePath);
 		}
 		return runPythonScript(arguments, stdin,stdout,stderr);
+	}
+
+	/**
+	 * Runs a wmlparser on the target resource
+	 * @param resourcePath
+	 * @return
+	 */
+	public static ExternalToolInvoker runWMLParser2(String resourcePath)
+	{
+		if (!checkPrerequisites(resourcePath, "wesnoth/wmlparser2.py"))
+			return null;
+
+		File wmlparserFile = new File(Preferences.getString(
+				Constants.P_WESNOTH_WMLTOOLS_DIR) +	"/wesnoth/wmlparser2.py");
+
+		List<String> arguments = new ArrayList<String>();
+
+		arguments.add(wmlparserFile.getAbsolutePath());
+
+		// xml output
+		arguments.add("-x");
+
+		// wesnoth executable's path
+		arguments.add("-w");
+		arguments.add(Preferences.getString(Constants.P_WESNOTH_EXEC_PATH));
+
+		// input file
+		arguments.add("-i");
+		arguments.add(resourcePath);
+
+		return runPythonScript(arguments, null, null, null);
 	}
 
 	/**
@@ -89,7 +121,8 @@ public class WMLTools
 		if (!checkPrerequisites(resourcePath, "wmllint"))
 			return null;
 
-		File wmllintFile = new File(Preferences.getString(Constants.P_WESNOTH_WMLTOOLS_DIR) + "wmllint");
+		File wmllintFile = new File(Preferences.getString(
+				Constants.P_WESNOTH_WMLTOOLS_DIR) + "/wmllint");
 
 		List<String> arguments = new ArrayList<String>();
 
@@ -132,7 +165,8 @@ public class WMLTools
 		if (!checkPrerequisites(resourcePath, "wmlscope"))
 			return null;
 
-		File wmlscopeFile = new File(Preferences.getString(Constants.P_WESNOTH_WMLTOOLS_DIR) + "/wmlscope");
+		File wmlscopeFile = new File(Preferences.getString(
+				Constants.P_WESNOTH_WMLTOOLS_DIR) + "/wmlscope");
 
 		List<String> arguments = new ArrayList<String>();
 
@@ -365,7 +399,8 @@ public class WMLTools
 		{
 			try
 			{
-				BufferedWriter stdinStream = new BufferedWriter(new OutputStreamWriter(pyscript.getStdin()));
+				BufferedWriter stdinStream = new BufferedWriter(
+						new OutputStreamWriter(pyscript.getStdin()));
 				stdinStream.write(stdin);
 				stdinStream.close();
 			}
@@ -379,14 +414,13 @@ public class WMLTools
 			public void run()
 			{
 				try{
+					if (stdout == null || stdout.length == 0)
+						return;
 					String line = "";
 					while ((line = pyscript.readOutputLine()) != null)
 					{
-						if (stdout != null)
-						{
-							for(OutputStream stream : stdout)
-								stream.write((line + "\n").getBytes());
-						}
+						for(OutputStream stream : stdout)
+							stream.write((line + "\n").getBytes());
 					}
 				}
 				catch (IOException e) {
@@ -400,14 +434,13 @@ public class WMLTools
 			{
 				try
 				{
+					if (stderr == null || stderr.length == 0)
+						return;
 					String line = "";
 					while ((line = pyscript.readErrorLine()) != null)
 					{
-						if (stderr != null)
-						{
-							for(OutputStream stream : stderr)
-								stream.write((line + "\n").getBytes());
-						}
+						for(OutputStream stream : stderr)
+							stream.write((line + "\n").getBytes());
 					}
 				} catch (IOException e)
 				{

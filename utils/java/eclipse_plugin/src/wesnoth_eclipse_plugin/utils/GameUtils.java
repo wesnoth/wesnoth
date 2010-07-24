@@ -62,8 +62,7 @@ public class GameUtils
 			String campaignId = ProjectUtils.getCampaignID(selectedResource);
 			String scenarioId = null;
 			if (scenario == true)
-				scenarioId = ProjectUtils.getScenarioID(
-					WorkspaceUtils.getPathRelativeToUserDir(selectedResource));
+				scenarioId = ProjectUtils.getScenarioID(selectedResource);
 
 			if (campaignId == null)
 			{
@@ -72,7 +71,7 @@ public class GameUtils
 				return;
 			}
 
-			if (scenarioId == null)
+			if (scenario == true &&scenarioId == null)
 			{
 				GUIUtils.showErrorMessageBox("I couldn't get the scenario's ID");
 				return;
