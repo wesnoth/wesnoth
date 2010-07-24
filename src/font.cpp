@@ -1104,7 +1104,7 @@ void move_floating_label(int handle, double xmove, double ymove)
 void scroll_floating_labels(double xmove, double ymove)
 {
 	for(label_map::iterator i = labels.begin(); i != labels.end(); ++i) {
-		if(i->second.scroll()) {
+		if(i->second.scroll() == ANCHOR_LABEL_MAP) {
 			i->second.move(xmove,ymove);
 		}
 	}

@@ -175,7 +175,7 @@ public:
 
 	void show(const bool value) { visible_ = value; }
 
-	bool scroll() const { return scroll_; }
+	LABEL_SCROLL_MODE scroll() const { return scroll_; }
 
 private:
 
@@ -194,7 +194,8 @@ private:
 	bool visible_;
 	font::ALIGN align_;
 	int border_;
-	bool scroll_, use_markup_;
+	LABEL_SCROLL_MODE scroll_;
+	bool use_markup_;
 };
 
 
