@@ -47,10 +47,15 @@ using std::streambuf;
 typedef std::map<std::string, int> t_file_number_map;
 static t_file_number_map file_number_map;
 
-// get filename associated to this hexadecimal number
-static std::string get_filename(const std::string& hex_num){
+static bool encode_filename = true;
+
+// get filename associated to this code
+static std::string get_filename(const std::string& file_code){
+	if(!encode_filename)
+		return file_code;
+
 	std::stringstream s;
-	s << hex_num;
+	s << file_code;
 	int n = 0;
 	s >> std::hex >> n;
 
@@ -61,8 +66,11 @@ static std::string get_filename(const std::string& hex_num){
 	return "<unknown>";
 }
 
-// get hexadecimal number associated to this file
-static std::string get_file_number(const std::string& filename){
+// get code associated to this filename
+static std::string get_file_code(const std::string& filename){
+	if(!encode_filename)
+		return filename;
+
 	// current number of encountered filenames
 	static int current_file_number = 0;
 
@@ -516,7 +524,7 @@ preprocessor_data::preprocessor_data(preprocessor_streambuf &t,
 		if (!history.empty())
 			s << ' ';
 
-		s << get_file_number(name);
+		s << get_file_code(name);
 	}
 
 	if (!t.location_.empty())
@@ -1071,6 +1079,9 @@ void preprocess_resource(const std::string& res_name, preproc_map *defines_map,
 		return;
 
 	LOG_PREPROC<<"processing resource: "<<res_name<<'\n';
+
+	//disable filename encoding to get clear #line in cfg.plain
+	encode_filename = false;
 
 	std::string error_log;
 	scoped_istream stream = preprocess_file(res_name, defines_map, &error_log);
