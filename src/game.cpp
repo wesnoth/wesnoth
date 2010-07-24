@@ -1082,7 +1082,7 @@ bool game_controller::new_campaign()
 
 	int campaign_num = -1;
 	// No campaign selected from command line
-	if (!jump_to_campaign_.jump_)
+	if (jump_to_campaign_.campaign_id_.empty() == true)
 	{
 		gui2::tcampaign_selection dlg(campaigns);
 
@@ -1165,6 +1165,10 @@ bool game_controller::new_campaign()
 				_("Select difficulty level:"), gui::OK_CANCEL);
 			dlg.set_menu(difficulty_options);
 			if(dlg.show() == -1) {
+				if (jump_to_campaign_.campaign_id_.empty() == false)
+				{
+					jump_to_campaign_.campaign_id_ = "";
+				}
 				// canceled difficulty dialog, relaunch the campaign selection dialog
 				return new_campaign();
 			}
@@ -1175,7 +1179,9 @@ bool game_controller::new_campaign()
 			if (jump_to_campaign_.difficulty_
 					> static_cast<int>(difficulties.size()))
 			{
-				std::cerr<<"incorrect difficulty number: ["<<jump_to_campaign_.difficulty_<<"]. maximum is ["<<difficulties.size()<<"].\n";
+				std::cerr << "incorrect difficulty number: [" << 
+					jump_to_campaign_.difficulty_ << "]. maximum is [" << 
+					difficulties.size() << "].\n";
 				return false;
 			}
 			else
