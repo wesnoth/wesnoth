@@ -90,7 +90,7 @@ part_ui::part_ui(part &p, display &disp, gui::button &next_button,
 	, next_button_(next_button)
 	, back_button_(back_button)
 	, play_button_(play_button)
-	, ret_(NEXT)
+	, ret_(NEXT), skip_(false), last_key_(false)
 	, scale_factor_(1.0)
 	, base_rect_()
 	, background_(NULL)
@@ -198,8 +198,8 @@ bool part_ui::render_floating_images()
 	events::raise_draw_event();
 	update_whole_screen();
 
-	bool skip = false;
-	bool last_key = true;
+	skip_ = false;
+	last_key_ = true;
 
 	size_t fi_n = 0;
 	foreach(floating_image::render_input& ri, imgs_) {
@@ -210,53 +210,15 @@ bool part_ui::render_floating_images()
 			update_rect(ri.rect);
 		}
 
-		if(skip == false) {
-			for(unsigned i = 0; i != 50; ++i) {
-				const bool next_keydown = keys_[SDLK_SPACE] || keys_[SDLK_RETURN] || keys_[SDLK_KP_ENTER] || keys_[SDLK_RIGHT];
-				bool play_keydown = keys_[SDLK_ESCAPE];
-				const bool back_keydown = keys_[SDLK_BACKSPACE] || keys_[SDLK_LEFT];
-
-				if (((next_keydown || play_keydown) && !last_key) || next_button_.pressed() || play_button_.pressed()) {
-					ret_ = NEXT;
-					return false;
-				}
-				else if((back_keydown && !last_key) || back_button_.pressed()) {
-					ret_ = BACK;
-					return false;
-				}
-
-				last_key = next_keydown || play_keydown || back_keydown;
-
+		if (!skip_) {
+			for (unsigned i = 0; i != 50; ++i)
+			{
+				if (handle_interface()) return false;
+				if (skip_) break;
 				disp_.delay(fi.display_delay() / 50);
-
-				events::pump();
-				events::raise_process_event();
-				events::raise_draw_event();
-
-				int mouse_x, mouse_y;
-				const int mouse_state = SDL_GetMouseState(&mouse_x, &mouse_y);
-				if(keys_[SDLK_RETURN] || keys_[SDLK_KP_ENTER] || keys_[SDLK_SPACE] || mouse_state) {
-					skip = true;
-					++fi_n;
-					continue;
-				}
-
-				// Update display only if there's a slideshow going on.
-				// This prevents the textbox from flickering in the most
-				// common scenario.
-				if(p_.get_floating_images().size() > 1 && fi.display_delay() > 0) {
-					disp_.flip();
-				}
 			}
 		}
 
-		if(keys_[SDLK_ESCAPE] ||
-		   next_button_.pressed()  || back_button_.pressed() ||
-		   play_button_.pressed()) {
-			skip = true;
-			++fi_n;
-			continue;
-		}
 		++fi_n;
 	}
 
@@ -398,7 +360,8 @@ void part_ui::render_story_box()
 	const int max_width = buttons_x_ - storybox_padding - text_x_;
 	const int max_height = screen_area().h - storybox_padding;
 
-	bool skip = false, last_key = true;
+	skip_ = false;
+	last_key_ = true;
 
 	font::ttext t;
 	if(!t.set_text(p_.text(), true)) {
@@ -495,37 +458,9 @@ void part_ui::render_story_box()
 			++scan.y;
 		}
 
-		const bool next_keydown  = keys_[SDLK_SPACE] || keys_[SDLK_RETURN] || keys_[SDLK_KP_ENTER] || keys_[SDLK_RIGHT];
-		const bool back_keydown  = keys_[SDLK_BACKSPACE] || keys_[SDLK_LEFT];
-		bool play_keydown  = keys_[SDLK_ESCAPE];
+		if (handle_interface()) break;
 
-		if((next_keydown && !last_key) || next_button_.pressed()) {
-			if(skip == true || scan_finished) {
-				ret_ = NEXT;
-				break;
-			} else {
-				skip = true;
-			}
-		}
-
-		if((play_keydown && !last_key) || play_button_.pressed()) {
-			ret_ = NEXT;
-			break;
-		}
-
-		if((back_keydown && !last_key) || back_button_.pressed()) {
-			ret_ = BACK;
-			break;
-		}
-
-		last_key = next_keydown || back_keydown || play_keydown;
-
-		events::pump();
-		events::raise_process_event();
-		events::raise_draw_event();
-		disp_.flip();
-
-		if(!skip || scan_finished) {
+		if (!skip_ || scan_finished) {
 			disp_.delay(20);
 		}
 	}
@@ -540,30 +475,50 @@ void part_ui::wait_for_input()
 {
 	LOG_NG << "ENTER part_ui()::wait_for_input()\n";
 
-	bool last_key = true;
-	while(true) {
-		const bool next_keydown = keys_[SDLK_SPACE] || keys_[SDLK_RETURN] || keys_[SDLK_KP_ENTER] || keys_[SDLK_RIGHT];
-		bool play_keydown = keys_[SDLK_ESCAPE];
-		const bool back_keydown = keys_[SDLK_BACKSPACE] || keys_[SDLK_LEFT];
+	last_key_ = true;
+	skip_ = true;
+	while (!handle_interface()) {}
+}
 
-		if(((next_keydown || play_keydown) && !last_key) || next_button_.pressed() || play_button_.pressed()) {
+bool part_ui::handle_interface()
+{
+	bool result = false;
+
+	int mouse_x, mouse_y;
+	bool next_keydown = keys_[SDLK_SPACE] || keys_[SDLK_RETURN] ||
+		keys_[SDLK_KP_ENTER] || keys_[SDLK_RIGHT] ||
+		SDL_GetMouseState(&mouse_x, &mouse_y);
+	bool back_keydown = keys_[SDLK_BACKSPACE] || keys_[SDLK_LEFT];
+	bool play_keydown = keys_[SDLK_ESCAPE];
+
+	if ((next_keydown && !last_key_) || next_button_.pressed())
+	{
+		if (skip_) {
 			ret_ = NEXT;
-			break;
+			result = true;
+		} else {
+			skip_ = true;
 		}
-
-		if((back_keydown && !last_key) || back_button_.pressed()) {
-			ret_ = BACK;
-			break;
-		}
-
-		last_key = next_keydown || back_keydown || play_keydown;
-
-		events::pump();
-		events::raise_process_event();
-		events::raise_draw_event();
-		disp_.flip();
-		disp_.delay(20);
 	}
+
+	if ((play_keydown && !last_key_) || play_button_.pressed()) {
+		ret_ = NEXT;
+		result = true;
+	}
+
+	if ((back_keydown && !last_key_) || back_button_.pressed()) {
+		ret_ = BACK;
+		result = true;
+	}
+
+	last_key_ = next_keydown || back_keydown || play_keydown;
+
+	events::pump();
+	events::raise_process_event();
+	events::raise_draw_event();
+	disp_.flip();
+
+	return result;
 }
 
 part_ui::RESULT part_ui::show()

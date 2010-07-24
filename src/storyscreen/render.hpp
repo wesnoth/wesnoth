@@ -75,6 +75,7 @@ private:
 	gui::button& play_button_;
 
 	RESULT ret_;
+	bool skip_, last_key_;
 
 	double scale_factor_;
 
@@ -99,6 +100,13 @@ private:
 	void render_title_box();
 	void render_story_box();
 	void render_story_box_borders(SDL_Rect&);
+
+	/**
+	 * Returns true if the user did an action. Modifies #ret_, #skip_,
+	 * and #last_key_ accordingly.
+	 */
+	bool handle_interface();
+
 	/**
 	 * Renders all floating images in sequence.
 	 * @return 'true' if the user interrupted the operation; 'false' otherwise.
