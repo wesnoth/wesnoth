@@ -446,7 +446,9 @@ void part_ui::render_story_box()
 	surface scan_dst = video_.getSurface();
 	bool scan_finished = false;
 	while(true) {
-		if(!(scan_finished = scan.y >= txtsurf->h)) {
+		scan_finished = scan.y >= txtsurf->h;
+		if (!scan_finished)
+		{
 			//dstrect.x = text_x_;
 			dstrect.y = fix_text_y + scan.y + storybox_padding;
 			// NOTE: ::blit_surface() screws up with antialiasing and hinting when
@@ -457,6 +459,7 @@ void part_ui::render_story_box()
 			update_rect(dstrect);
 			++scan.y;
 		}
+		else skip_ = true;
 
 		if (handle_interface()) break;
 
