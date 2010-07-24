@@ -129,9 +129,9 @@ STORY_RESULT controller::show(START_POSITION startpos)
 		return NEXT;
 	}
 
-	gui::button back_button (disp_.video(),std::string("← ")+ _("Back"));
-	gui::button next_button (disp_.video(),_("Next") + std::string(" →"));
-	gui::button play_button (disp_.video(),_("Play") + std::string(" ↠"));
+	gui::button back_button (disp_.video(), std::string("← ")+ _("Back"));
+	gui::button next_button (disp_.video(), _("Next") + std::string(" →"));
+	gui::button play_button (disp_.video(), _("Skip") + std::string(" ↠"));
 
 	// Build renderer cache unless built for a low-memory environment;
 	// caching the scaled backgrounds can take over a decent amount of memory.
@@ -165,11 +165,7 @@ STORY_RESULT controller::show(START_POSITION startpos)
 
 		LOG_NG << "displaying storyscreen part " << k+1 << " of " << parts_.size() << '\n';
 
-		const bool first_page = (segment_index_ == 0) && (k == 0);
-		const bool last_page  = (segment_index_ == total_segments_ - 1) && (k == parts_.size() - 1);
-
-		back_button.enable(!first_page);
-		play_button.enable(last_page);
+		back_button.enable(segment_index_ != 0 || k != 0);
 
 		switch(render_interface.show()) {
 		case part_ui::NEXT:

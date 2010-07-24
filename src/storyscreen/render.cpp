@@ -502,7 +502,7 @@ bool part_ui::handle_interface()
 	}
 
 	if ((play_keydown && !last_key_) || play_button_.pressed()) {
-		ret_ = NEXT;
+		ret_ = QUIT;
 		result = true;
 	}
 
