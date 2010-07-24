@@ -129,11 +129,9 @@ STORY_RESULT controller::show(START_POSITION startpos)
 		return NEXT;
 	}
 
-	gui::button first_button(disp_.video(),_("First") + std::string(" ↞"));
-	gui::button last_button (disp_.video(),std::string("↠ ") + _("Last"));
 	gui::button back_button (disp_.video(),std::string("← ")+ _("Back"));
 	gui::button next_button (disp_.video(),_("Next") + std::string(" →"));
-	gui::button play_button (disp_.video(),_("Play") + std::string(" →"));
+	gui::button play_button (disp_.video(),_("Play") + std::string(" ↠"));
 
 	// Build renderer cache unless built for a low-memory environment;
 	// caching the scaled backgrounds can take over a decent amount of memory.
@@ -141,7 +139,7 @@ STORY_RESULT controller::show(START_POSITION startpos)
 	std::vector< render_pointer_type > uis_;
 	foreach(part_pointer_type p, parts_) {
 		ASSERT_LOG( p != NULL, "Ouch: hit NULL storyscreen part in collection" );
-		render_pointer_type const rpt(new part_ui(*p, disp_, next_button, back_button, first_button, last_button, play_button));
+		render_pointer_type const rpt(new part_ui(*p, disp_, next_button, back_button, play_button));
 		uis_.push_back(rpt);
 	}
 #endif
@@ -162,7 +160,7 @@ STORY_RESULT controller::show(START_POSITION startpos)
 #ifndef LOW_MEM
 		part_ui &render_interface = *uis_[k];
 #else
-		part_ui render_interface(*parts_[k], disp_, next_button, back_button, first_button, last_button, play_button);
+		part_ui render_interface(*parts_[k], disp_, next_button, back_button, play_button);
 #endif
 
 		LOG_NG << "displaying storyscreen part " << k+1 << " of " << parts_.size() << '\n';
@@ -170,9 +168,7 @@ STORY_RESULT controller::show(START_POSITION startpos)
 		const bool first_page = (segment_index_ == 0) && (k == 0);
 		const bool last_page  = (segment_index_ == total_segments_ - 1) && (k == parts_.size() - 1);
 
-		first_button.enable(!first_page);
 		back_button.enable(!first_page);
-		last_button.enable(!last_page);
 		play_button.enable(last_page);
 
 		switch(render_interface.show()) {
@@ -185,28 +181,6 @@ STORY_RESULT controller::show(START_POSITION startpos)
 			}
 			else if(segment_index_ > 0) {
 				return BACK;
-			}
-			break;
-		case part_ui::FIRST:
-			if(segment_index_ == 0) {
-				// this is the first segment
-				k = 0;
-			}
-			else {
-				// we want to rewind all the way
-				// to the last segment
-				return FIRST;
-			}
-			break;
-		case part_ui::LAST:
-			if(segment_index_ == total_segments_ - 1) {
-				// not at the end of this segment
-				k = parts_.size() - 1;
-			}
-			else {
-				// we want to fast forward all the way
-				// to the last segment
-				return LAST;
 			}
 			break;
 		case part_ui::QUIT:

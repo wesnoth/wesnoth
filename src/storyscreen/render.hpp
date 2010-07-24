@@ -46,8 +46,6 @@ public:
 	enum RESULT {
 		NEXT,	/**< The user pressed the go-next button. */
 		BACK,	/**< The user pressed the go-back button. */
-		FIRST,	/**< The user pressed the go-first button. */
-		LAST,	/**< The user pressed the go-last button. */
 		QUIT	/**< The user selected quit. */
 	};
 
@@ -58,10 +56,8 @@ public:
 	 * @param next_button Next button. Shouldn't be destroyed before the part_ui object.
 	 * @param skip_button Skip button. Shouldn't be destroyed before the part_ui object.
 	 */
-        part_ui(part& p, display& disp,
-                gui::button& next_button,  gui::button& back_button,
-                gui::button& first_button, gui::button& last_button,
-		gui::button& play_button);
+	part_ui(part &p, display &disp, gui::button &next_button,
+		gui::button &back_button, gui::button& play_button);
 
 	/**
 	 * Render and display the storyscreen, process and return user input.
@@ -76,8 +72,6 @@ private:
 
 	gui::button& next_button_;
 	gui::button& back_button_;
-	gui::button& first_button_;
-	gui::button& last_button_;
 	gui::button& play_button_;
 
 	RESULT ret_;

@@ -84,17 +84,6 @@ storyscreen::STORY_RESULT show_story(display& disp,
 				startpos = storyscreen::START_END;
 			}
 			break;
-		case storyscreen::LAST:
-			itor = story.second;
-			--itor;
-			segment_count = total_segments - 1;
-			startpos = storyscreen::START_END;
-			break;
-		case storyscreen::FIRST:
-			itor = story.first;
-			segment_count = 0;
-			startpos = storyscreen::START_BEGINNING;
-			break;
 		case storyscreen::QUIT:
 			return storyscreen::QUIT;
 		default:

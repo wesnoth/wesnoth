@@ -33,8 +33,6 @@ namespace storyscreen {
 enum STORY_RESULT {
 	NEXT,
 	BACK,
-	FIRST,
-	LAST,
 	QUIT
 };
 
@@ -60,7 +58,6 @@ enum START_POSITION {
  * be displayed in turn, with the user able to go to the next part, or skip
  * it entirely.
  * @return is NEXT if the segment played to the end, BACK if the segment played to the beginning,
- * FIRST if a skip to the first segment is requested, LAST if a skip to the last segment is requested,
  * and QUIT if the story was quit
  */
 storyscreen::STORY_RESULT show_storyscreen(display& disp, const vconfig& story_cfg,
