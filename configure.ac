@@ -419,8 +419,8 @@ fi
 
 # fribidi-config
 
-if test "x$fribidi" != "xno"; then
-	PKG_CHECK_MODULES([FRIBIDI2], [fribidi >= 0.19.0],
+AS_IF([test "x$fribidi" != "xno"],
+	[PKG_CHECK_MODULES([FRIBIDI2], [fribidi >= 0.19.0],
 		[
 			fribidifound=yes
 		],
@@ -435,10 +435,9 @@ if test "x$fribidi" != "xno"; then
 					fribidifound=no
 					AC_MSG_RESULT(no)
 				])
-		])
-	AM_CONDITIONAL([FRIBIDI], [test "x$fribidifound" = xyes])
-	AM_CONDITIONAL([OLD_FRIBIDI], [test "x$oldfribidi" = xyes])
-fi
+		])])
+AM_CONDITIONAL([FRIBIDI], [test "x$fribidifound" = xyes])
+AM_CONDITIONAL([OLD_FRIBIDI], [test "x$oldfribidi" = xyes])
 
 # python
 AC_PATH_PROG(PYTHON, python, none)
