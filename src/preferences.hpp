@@ -38,8 +38,8 @@ namespace preferences {
 
 	void write_preferences();
 
-	// Low-level, should be seen only by preferences_display ?
 	void set(const std::string& key, const std::string &value);
+	void set(const std::string& key, char const *value);
 	void set(const std::string &key, bool value);
 	void clear(const std::string& key);
 	void set_child(const std::string& key, const config& val);
