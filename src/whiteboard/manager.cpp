@@ -116,8 +116,8 @@ void manager::set_invert_behavior(bool invert)
 	if (print_once)
 	{
 		print_once = false;
-		print_to_chat("whiteboard", std::string("Hold the ctrl key to temporarily activate the whiteboard.")
-			+ " Type :wb twice in a row to erase all actions.");
+		print_to_chat("whiteboard", std::string("Hold the ctrl key to temporarily toggle the whiteboard.")
+			+ " (Activate and then) Deactivate the whiteboard with the :wb command to erase all actions.");
 		print_help();
 	}
 
