@@ -319,7 +319,7 @@ unsigned int get_ping_timeout()
 void set_ping_timeout(unsigned int timeout)
 {
 	network::ping_timeout = timeout;
-	preferences::set("ping_timeout", lexical_cast<std::string>(timeout));
+	preferences::set("ping_timeout", int(timeout));
 }
 
 std::string campaign_server()
@@ -442,7 +442,7 @@ int mp_server_warning_disabled()
 
 void set_mp_server_warning_disabled(int value)
 {
-	preferences::set("mp_server_warning_disabled", lexical_cast<std::string>(value));
+	preferences::set("mp_server_warning_disabled", value);
 }
 
 void set_mp_server_program_name(const std::string& path)
@@ -499,7 +499,7 @@ int turns()
 
 void set_turns(int value)
 {
-	preferences::set("mp_turns", lexical_cast<std::string>(value));
+	preferences::set("mp_turns", value);
 }
 
 bool skip_mp_replay()
@@ -530,7 +530,7 @@ int countdown_init_time()
 
 void set_countdown_init_time(int value)
 {
-	preferences::set("mp_countdown_init_time", lexical_cast<std::string>(value));
+	preferences::set("mp_countdown_init_time", value);
 }
 
 int countdown_reservoir_time()
@@ -541,7 +541,7 @@ int countdown_reservoir_time()
 
 void set_countdown_reservoir_time(int value)
 {
-	preferences::set("mp_countdown_reservoir_time", lexical_cast<std::string>(value));
+	preferences::set("mp_countdown_reservoir_time", value);
 }
 
 int countdown_turn_bonus()
@@ -552,7 +552,7 @@ int countdown_turn_bonus()
 
 void set_countdown_turn_bonus(int value)
 {
-	preferences::set("mp_countdown_turn_bonus", lexical_cast<std::string>(value));
+	preferences::set("mp_countdown_turn_bonus", value);
 }
 
 int countdown_action_bonus()
@@ -563,7 +563,7 @@ int countdown_action_bonus()
 
 void set_countdown_action_bonus(int value)
 {
-	preferences::set("mp_countdown_action_bonus", lexical_cast<std::string>(value));
+	preferences::set("mp_countdown_action_bonus", value);
 }
 
 int village_gold()
@@ -573,7 +573,7 @@ int village_gold()
 
 void set_village_gold(int value)
 {
-	preferences::set("mp_village_gold", lexical_cast<std::string>(value));
+	preferences::set("mp_village_gold", value);
 }
 
 int xp_modifier()
@@ -583,7 +583,7 @@ int xp_modifier()
 
 void set_xp_modifier(int value)
 {
-	preferences::set("mp_xp_modifier", lexical_cast<std::string>(value));
+	preferences::set("mp_xp_modifier", value);
 }
 
 int era()
@@ -593,7 +593,7 @@ int era()
 
 void set_era(int value)
 {
-	preferences::set("mp_era", lexical_cast<std::string>(value));
+	preferences::set("mp_era", value);
 }
 
 int map()
@@ -603,7 +603,7 @@ int map()
 
 void set_map(int value)
 {
-	preferences::set("mp_map", lexical_cast<std::string>(value));
+	preferences::set("mp_map", value);
 }
 
 bool show_ai_moves()
@@ -673,7 +673,7 @@ int autosavemax()
 
 void set_autosavemax(int value)
 {
-	preferences::set("auto_save_max", lexical_cast<std::string>(value));
+	preferences::set("auto_save_max", value);
 }
 
 std::string client_type()
@@ -813,7 +813,7 @@ int chat_lines()
 
 void set_chat_lines(int lines)
 {
-	preferences::set("chat_lines", lexical_cast<std::string>(lines));
+	preferences::set("chat_lines", lines);
 }
 
 std::set<std::string> &encountered_units() {
