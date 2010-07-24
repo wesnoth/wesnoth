@@ -536,7 +536,11 @@ void set_preferences_dir(std::string path)
 	} else {
 		other:
 		std::string home = home_str ? home_str : ".";
-		game_config::preferences_dir = home + "/" + path;
+
+		if (path[0] == '/')
+			game_config::preferences_dir = path;
+		else
+			game_config::preferences_dir = home + "/" + path;
 	}
 #else
 	if (path.empty()) path = path2;
@@ -556,7 +560,11 @@ void set_preferences_dir(std::string path)
 #else
 	const char* home_str = getenv("HOME");
 	std::string home = home_str ? home_str : ".";
-	game_config::preferences_dir = home + std::string("/") + path;
+
+	if (path[0] == '/')
+		game_config::preferences_dir = path;
+	else
+		game_config::preferences_dir = home + std::string("/") + path;
 #endif
 #endif
 
