@@ -1572,7 +1572,9 @@ void attack::perform()
 
 	// Play the pre-fight animation
 	unit_display::unit_draw_weapon(a_.loc_,a_.get_unit(),a_stats_->weapon,d_stats_->weapon,d_.loc_,&d_.get_unit());
-	while(a_.n_attacks_ > 0 || d_.n_attacks_ > 0) {
+
+	for (;;)
+	{
 		DBG_NG << "start of attack loop...\n";
 		++abs_n_attack_;
 
@@ -1599,6 +1601,7 @@ void attack::perform()
 		if(a_.n_attacks_ <= 0 && d_.n_attacks_ <= 0) {
 			fire_event("attack_end");
 			refresh_bc();
+			break;
 		}
 	}
 
