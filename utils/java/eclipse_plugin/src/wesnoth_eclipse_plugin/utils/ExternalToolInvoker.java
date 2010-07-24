@@ -78,6 +78,7 @@ public class ExternalToolInvoker
 				Constants.IS_WINDOWS_MACHINE)
 			{
 				String wesnothParent = new File(arguments_.get(0)).getParent() + "/";
+				Thread.sleep(100);
 				stdoutReader = new FileReader(wesnothParent + "stdout.txt");
 				stderrReader = new FileReader(wesnothParent + "stderr.txt");
 			}
@@ -92,6 +93,9 @@ public class ExternalToolInvoker
 		} catch (IOException e)
 		{
 			Logger.getInstance().logException(e);
+		}
+		catch (InterruptedException e)
+		{
 		}
 	}
 
