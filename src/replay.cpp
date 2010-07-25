@@ -423,6 +423,7 @@ void replay::add_advancement(const map_location& loc)
 	(*cmd)["undo"] = false;
 	loc.write(val);
 	cmd->add_child("advance_unit",val);
+	DBG_REPLAY << "added an explicit advance\n";
 }
 
 void replay::add_chat_message_location()
@@ -807,11 +808,19 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 				dialogs::animate_unit_advancement(loc, val);
 				get_replay_source().pop_expected_advancement();
 
+				DBG_REPLAY << "advanced unit " << val << " at " << loc << '\n';
+
 				//if there are no more advancing units, then we check for victory,
 				//in case the battle that led to advancement caused the end of scenario
 				if(advancing_units.empty()) {
 					resources::controller->check_victory();
 				}
+
+				if (do_untill == "choose") {
+					get_replay_source().revert_action();
+					return false;
+				}
+
 				continue;
 			}
 		}
@@ -1154,6 +1163,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 		{
 			const map_location loc(child, resources::state_of_game);
 			get_replay_source().add_expected_advancement(loc);
+			DBG_REPLAY << "got an explicit advance\n";
 
 		} else {
 			if(! cfg->child("checksum")) {

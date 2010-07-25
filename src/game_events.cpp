@@ -42,6 +42,7 @@
 #include "soundsource.hpp"
 #include "terrain_filter.hpp"
 #include "unit_display.hpp"
+#include "unit_helper.hpp"
 #include "wml_exception.hpp"
 #include "play_controller.hpp"
 #include "persist_var.hpp"
@@ -309,6 +310,133 @@ static static_wml_action_map static_wml_actions;
 typedef std::map<std::string, game_events::action_handler *> dynamic_wml_action_map;
 /** Map of the action handlers either provided by the engine or added by the current scenario. */
 static dynamic_wml_action_map dynamic_wml_actions;
+
+/**
+ * Functions for dealing with synchronizing WML events across multiplayer,
+ * and enabling replays. Any event handler which allows user options should
+ * make use of these functions.
+ */
+namespace complex_sync {
+
+/**
+ * A CHOICE encapsulates a kind of synchronized choice:
+ * - LOCAL_MASTER means that we can decide any way we like, but we must
+ *   register our decision using send_local_master_choice.
+ * - REMOTE_MASTER means that the choice was already made by someone else,
+ *   and we can find out what it was with retrieve_remote_master_choice.
+ * - SYNCED means that we all have to agree on the choice and there is no
+ *   scope for communication or user input. synchronized_choice will return
+ *   the same value on all hosts.
+ */
+enum CHOICE
+{
+	LOCAL_MASTER,
+	REMOTE_MASTER,
+	SYNCED
+};
+
+/**
+ * A simple helper function: are we able to communicate with the player
+ * and store their responses for future replays?
+ * @return true if the game is playing, false otherwise.
+ */
+static bool game_is_playing()
+{
+	return resources::state_of_game->phase() == game_state::PLAY;
+}
+
+/**
+ * Tells what kind of logic needs to be implemented.
+ * @see CHOICE
+ */
+static CHOICE classify_interactive_choice()
+{
+	if (game_is_playing())
+	{
+		/* A decision will be made on one host and shared amongst
+		   all of them. */
+		int active_side = resources::controller->current_side();
+		if ((*resources::teams)[active_side - 1].is_local() &&
+		    get_replay_source().at_end()) {
+			/* The decision is ours, and it will be
+			   inserted into the replay. */
+			return LOCAL_MASTER;
+		} else {
+			/* The decision has already been made, and must
+			   be extracted from the replay. */
+			return REMOTE_MASTER;
+		}
+	}
+	else
+	{
+		/* A decision will be made at all hosts simultaneously,
+		   therefore the player cannot be consulted.
+		   There is no gui or network if the game hasn't started. */
+		return SYNCED;
+	}
+}
+
+/**
+ * Saves a choice from an arbitrary source for the replay so that it can
+ * be shared between clients. It must not be used for choices made via a
+ * synchronized RNG. It must only be used for choices from the LOCAL_MASTER
+ * context.
+ */
+static void send_local_master_choice(int value)
+{
+	recorder.choose_option(value);
+}
+
+/**
+ * Gets the same choice as was made in the replay.
+ * It must be used in for choices in the REMOTE_MASTER context.
+ * @return the integer value of the choice made.
+ */
+static int retrieve_remote_master_choice()
+{
+	int active_side = resources::controller->current_side();
+	do_replay_handle(active_side, "choose");
+	const config* action = get_replay_source().get_next_action();
+	if (!action || !*(action = &action->child("choose"))) {
+		replay::process_error("\"choose\" expected but none found\n");
+		return 0;
+	}
+
+	const std::string &val = (*action)["value"];
+	return atol(val.c_str());
+}
+
+/**
+ * Makes a choice in the SYNCED context, when neither the user nor a replay
+ * can be consulted.
+ * @param num_options the number of possible options.
+ * @return the integer value of the choice made.
+  */
+static int synchronized_choice(int num_options)
+{
+	return resources::state_of_game->rng().get_next_random() % num_options;
+}
+
+/**
+ * Provides a string name for the choice enum.
+ * @return a constant string for that type.
+ */
+static const char *choice_string(CHOICE choice)
+{
+	switch(choice) {
+	case LOCAL_MASTER:
+		return "LOCAL MASTER";
+	case REMOTE_MASTER:
+		return "REMOTE MASTER";
+	case SYNCED:
+		return "SYNCED";
+	}
+	assert(false);
+	return "";
+}
+
+}
+
 
 /**
  * WML_HANDLER_FUNCTION macro handles auto registeration for wml handlers
@@ -2145,17 +2273,39 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 			}
 
 			const int side = controller->current_side();
-			if (utils::string_bool(cfg["advance"], true) && get_replay_source().at_end()
-			&& (*resources::teams)[side-1].is_local()) {
-				// Try to advance the unit
-				// Select advancement if it is on the playing side and the player is a human
-				const bool sel = (side == static_cast<int>(u.side())
-						&& (*resources::teams)[side-1].is_human());
+			if (utils::string_bool(cfg["advance"], true) &&
+			    unit_helper::will_certainly_advance(resources::units->find(loc)))
+			{
+				int total_advancement_options = unit_helper::number_of_possible_advances(u);
+				complex_sync::CHOICE choice = complex_sync::classify_interactive_choice();
+				int selected = 0;
 
-				// The code in dialogs::advance_unit tests whether the unit can advance
-				dialogs::advance_unit(loc, !sel, true);
+				DBG_NG << "unstore_unit interactive choice has type "<< complex_sync::choice_string(choice) <<"\n";
+
+				switch(choice) {
+				case complex_sync::LOCAL_MASTER:
+				{
+					bool use_dialog = side == u.side() &&
+						(*resources::teams)[side - 1].is_human();
+					if (use_dialog) {
+						DBG_NG << "dialog requested\n";
+						selected = dialogs::advance_unit_dialog(loc);
+					} else {
+						// VITAL this is NOT done using the synced RNG
+						selected = rand() % total_advancement_options;
+					}
+					complex_sync::send_local_master_choice(selected);
+					break;
+				}
+				case complex_sync::REMOTE_MASTER:
+					selected = complex_sync::retrieve_remote_master_choice();
+					break;
+				case complex_sync::SYNCED:
+					selected = complex_sync::synchronized_choice(total_advancement_options);
+					break;
+				}
+				dialogs::animate_unit_advancement(loc, selected);
 			}
-
 		} else {
 			team& t = (*resources::teams)[u.side()-1];
 

@@ -39,6 +39,7 @@
 #include "resources.hpp"
 #include "savegame.hpp"
 #include "thread.hpp"
+#include "unit_helper.hpp"
 #include "wml_separators.hpp"
 #include "widgets/progressbar.hpp"
 #include "wml_exception.hpp"
@@ -68,13 +69,9 @@ static lg::log_domain log_config("config");
 namespace dialogs
 {
 
-void advance_unit(const map_location &loc, bool random_choice, bool add_replay_event)
+int advance_unit_dialog(const map_location &loc)
 {
 	unit_map::iterator u = resources::units->find(loc);
-	if (u == resources::units->end() || !u->advances())
-		return;
-
-	LOG_DP << "advance_unit: " << u->type_id() << "\n";
 
 	const std::vector<std::string>& options = u->advances_to();
 
@@ -111,16 +108,10 @@ void advance_unit(const map_location &loc, bool random_choice, bool add_replay_e
 		}
 	}
 
-	LOG_DP << "options: " << options.size() << "\n";
+	assert(!lang_options.empty());
 
-	int res = 0;
-
-	if(lang_options.empty()) {
-		return;
-	} else if(random_choice) {
-		res = rand()%lang_options.size();
-	} else if(lang_options.size() > 1 || always_display) {
-
+	if (lang_options.size() > 1 || always_display)
+	{
 		units_list_preview_pane unit_preview(sample_units);
 		std::vector<gui::preview_pane*> preview_panes;
 		preview_panes.push_back(&unit_preview);
@@ -131,7 +122,28 @@ void advance_unit(const map_location &loc, bool random_choice, bool add_replay_e
 		                      gui::OK_ONLY);
 		advances.set_menu(lang_options);
 		advances.set_panes(preview_panes);
-		res = advances.show();
+		return advances.show();
+	}
+	return 0;
+}
+
+void advance_unit(const map_location &loc, bool random_choice, bool add_replay_event)
+{
+	unit_map::iterator u = resources::units->find(loc);
+	if(!unit_helper::will_certainly_advance(u)) {
+		return;
+	}
+
+	LOG_DP << "advance_unit: " << u->type_id() << " (advances: " << u->advances()
+		<< " XP: " <<u->experience() << '/' << u->max_experience() << ")\n";
+
+	int res;
+
+	if (random_choice) {
+		const std::vector<std::string>& options = u->advances_to();
+		res = rand() % options.size();
+	} else {
+		res = advance_unit_dialog(loc);
 	}
 
 	if(add_replay_event) {
@@ -167,7 +179,11 @@ bool animate_unit_advancement(const map_location &loc, size_t choice)
 	const events::command_disabler cmd_disabler;
 
 	unit_map::iterator u = resources::units->find(loc);
-	if (u == resources::units->end() || !u->advances()) {
+	if (u == resources::units->end()) {
+		LOG_DP << "animate_unit_advancement suppressed: invalid unit\n";
+		return false;
+	} else if (!u->advances()) {
+		LOG_DP << "animate_unit_advancement suppressed: unit does not advance\n";
 		return false;
 	}
 
@@ -175,6 +191,7 @@ bool animate_unit_advancement(const map_location &loc, size_t choice)
 	std::vector<config> mod_options = u->get_modification_advances();
 
 	if(choice >= options.size() + mod_options.size()) {
+		LOG_DP << "animate_unit_advancement suppressed: invalid option\n";
 		return false;
 	}
 

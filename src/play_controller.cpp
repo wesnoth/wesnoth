@@ -466,8 +466,10 @@ void play_controller::whiteboard_bump_down_action()
 	whiteboard_manager_->contextual_bump_down_action();
 }
 
-void play_controller::fire_prestart(bool execute){
+void play_controller::fire_prestart(bool execute)
+{
 	// Run initialization scripts, even if loading from a snapshot.
+	resources::state_of_game->set_phase(game_state::PRELOAD);
 	resources::lua_kernel->initialize();
 	game_events::fire("preload");
 
@@ -475,6 +477,7 @@ void play_controller::fire_prestart(bool execute){
 	// as those may cause the display to be refreshed.
 	if (execute){
 		update_locker lock_display(gui_->video());
+		resources::state_of_game->set_phase(game_state::PRESTART);
 		game_events::fire("prestart");
 		check_end_level();
 		// prestart event may modify start turn with WML, reflect any changes.
@@ -484,6 +487,7 @@ void play_controller::fire_prestart(bool execute){
 
 void play_controller::fire_start(bool execute){
 	if(execute) {
+		resources::state_of_game->set_phase(game_state::START);
 		game_events::fire("start");
 		check_end_level();
 		// start event may modify start turn with WML, reflect any changes.
@@ -492,6 +496,7 @@ void play_controller::fire_start(bool execute){
 	} else {
 		previous_turn_ = turn();
 	}
+	resources::state_of_game->set_phase(game_state::PLAY);
 }
 
 void play_controller::init_gui(){

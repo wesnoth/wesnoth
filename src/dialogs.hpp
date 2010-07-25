@@ -42,11 +42,23 @@ namespace dialogs {
  * invalidate the reference.
  *
  * The game only expects an advancement to be triggered by a fight, if the
- * cause for advancement is different (eg unstore_unit) the add_replay_event
- * should be set.
+ * cause for advancement is different (eg unstore_unit) this routine
+ * should _not_ be used.
  */
 void advance_unit(const map_location &loc, bool random_choice = false, bool add_replay_event = false);
 
+/**
+ * Lets the user to select a unit advancement. This should always be used
+ * from WML events, advance_unit can only be used safely for normal levels.
+ */
+int advance_unit_dialog(const map_location &loc);
+
+/**
+ * Actually levels a unit up. This is the other part of the low-level
+ * interface to the advancing code (along with advance_unit_dialog). This needs
+ * to be used to implement advances from any nonstandard situation. It does
+ * not add a replay.
+ */
 bool animate_unit_advancement(const map_location &loc, size_t choice);
 
 void show_objectives(const config &level, const std::string &objectives);

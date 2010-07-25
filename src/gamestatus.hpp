@@ -115,6 +115,16 @@ public:
 	const rand_rng::simple_rng& rng() const { return rng_; }
 	rand_rng::simple_rng& rng() { return rng_; }
 
+	enum PHASE {
+		INITIAL,
+		PRELOAD,
+		PRESTART,
+		START,
+		PLAY
+	};
+	PHASE phase() const { return phase_; }
+	void set_phase(PHASE phase) { phase_ = phase; }
+
 	//create and populate a team from a config
 	void build_team(const config& side_cfg, std::string save_id
 			, std::vector<team>& teams, const config& level, gamemap& map
@@ -160,6 +170,7 @@ private:
 	friend struct variable_info;
 	game_classification classification_;
 	mp_game_settings mp_settings_;
+	PHASE phase_;
 };
 
 

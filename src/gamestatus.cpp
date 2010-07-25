@@ -163,7 +163,8 @@ game_state::game_state()  :
 		temporaries(),
 		generator_setter(&recorder),
 		classification_(),
-		mp_settings_()
+		mp_settings_(),
+		phase_(INITIAL)
 		{}
 
 void write_players(game_state& gamestate, config& cfg, const bool use_snapshot, const bool merge_side)
@@ -262,7 +263,8 @@ game_state::game_state(const config& cfg, bool show_replay) :
 		temporaries(),
 		generator_setter(&recorder),
 		classification_(cfg),
-		mp_settings_(cfg)
+		mp_settings_(cfg),
+		phase_(INITIAL)
 {
 	n_unit::id_manager::instance().set_save_id(cfg["next_underlying_unit_id"]);
 	log_scope("read_game");
@@ -547,7 +549,8 @@ game_state::game_state(const game_state& state) :
 	temporaries(),
 	generator_setter(&recorder),
 	classification_(),
-	mp_settings_()
+	mp_settings_(),
+	phase_(INITIAL)
 {
 	*this = state;
 }
