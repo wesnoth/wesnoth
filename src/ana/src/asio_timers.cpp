@@ -30,7 +30,7 @@
  *
  */
 
-#include "ana.hpp"
+#include "../api/ana.hpp"
 #include <boost/bind.hpp>
 #include <boost/thread.hpp>
 

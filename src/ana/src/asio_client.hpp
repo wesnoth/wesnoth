@@ -38,7 +38,7 @@
 
 using boost::asio::ip::tcp;
 
-#include "ana.hpp"
+#include "../api/ana.hpp"
 
 #include "asio_proxy_connection.hpp"
 #include "asio_listener.hpp"
