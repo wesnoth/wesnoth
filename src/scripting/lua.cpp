@@ -1835,6 +1835,43 @@ static int intf_put_unit(lua_State *L)
 }
 
 /**
+ * Extracts a unit from the map or a recall list and gives it to Lua.
+ * - Arg 1: unit userdata.
+ */
+static int intf_extract_unit(lua_State *L)
+{
+	if (false) {
+		error_call_destructors_1:
+		return luaL_typerror(L, 1, "unit");
+		error_call_destructors_2:
+		return luaL_argerror(L, 1, "unit not found");
+	}
+
+	if (!luaW_hasmetatable(L, 1, getunitKey))
+		goto error_call_destructors_1;
+	lua_unit *lu = static_cast<lua_unit *>(lua_touserdata(L, 1));
+	unit *u = lu->get();
+	if (!u) goto error_call_destructors_2;
+
+	if (lu->on_map()) {
+		u = resources::units->extract(u->get_location());
+		assert(u);
+	} else if (int side = lu->on_recall_list()) {
+		team &t = (*resources::teams)[side - 1];
+		unit *v = new unit(*u);
+		std::vector<unit> &rl = t.recall_list();
+		rl.erase(rl.begin() + (u - &rl[0]));
+		u = v;
+	} else {
+		return 0;
+	}
+
+	lu->lua_unit::~lua_unit();
+	new(lu) lua_unit(u);
+	return 0;
+}
+
+/**
  * Finds a vacant tile.
  * - Args 1,2: location.
  * - Arg 3: optional unit for checking movement type.
@@ -2148,6 +2185,7 @@ LuaKernel::LuaKernel()
 		{ "create_unit",              &intf_create_unit              },
 		{ "dofile",                   &intf_dofile                   },
 		{ "eval_conditional",         &intf_eval_conditional         },
+		{ "extract_unit",             &intf_extract_unit             },
 		{ "find_path",                &intf_find_path                },
 		{ "find_reach",               &intf_find_reach               },
 		{ "find_vacant_tile",         &intf_find_vacant_tile         },
