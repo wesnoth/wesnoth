@@ -338,7 +338,7 @@ bool terrain_builder::load_images(building_rule &rule)
 					if(!image_exists(filename))
 						return false;
 
-					const std::string modif = (has_tilde ? str.substr(1,tilde) : "");
+					const std::string modif = (has_tilde ? str.substr(tilde+1) : "");
 
 					int time = 100;
 					if(items.size() > 1) {
