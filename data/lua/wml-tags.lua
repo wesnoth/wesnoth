@@ -272,7 +272,9 @@ function wml_actions.lua(cfg)
 	args.y2 = ev.y2
 	table.insert(args, ev[1])
 	table.insert(args, ev[2])
-	assert(loadstring(cfg.code or ""))(args)
+	local bytecode, message = loadstring(cfg.code or "")
+	if not bytecode then error("~lua:" .. message, 0) end
+	bytecode(args)
 end
 
 function wml_actions.music(cfg)

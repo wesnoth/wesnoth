@@ -392,6 +392,12 @@ bool luaW_pcall(lua_State *L
 			m += 5;
 			char const *e = strstr(m, "stack traceback");
 			lg::wml_error << std::string(m, e ? e - m : strlen(m));
+		} else if (allow_wml_error && strncmp(m, "~lua:", 5) == 0) {
+			m += 5;
+			char const *e = NULL, *em = m;
+			while (em[0] && ((em = strstr(em + 1, "stack traceback"))))
+				e = em;
+			chat_message("Lua error", std::string(m, e ? e - m : strlen(m)));
 		} else {
 			chat_message("Lua error", m);
 			ERR_LUA << m << '\n';
