@@ -596,7 +596,7 @@ bool game_controller::init_config(const bool force)
 		cache_.add_define("EDITOR");
 
 	if (!multiplayer_mode_ && !test_mode_ && !jump_to_editor_)
-		cache_.add_define("MAIN_MENU");
+		cache_.add_define("TITLE_SCREEN");
 
 	load_game_cfg(force);
 
