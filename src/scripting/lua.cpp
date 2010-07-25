@@ -432,14 +432,6 @@ unit *lua_unit::get()
 	return &*ui;
 }
 
-void lua_unit::reload()
-{
-	assert(ptr);
-	uid = ptr->underlying_id();
-	delete ptr;
-	ptr= NULL;
-}
-
 /**
  * Converts a Lua value to a unit pointer.
  */
@@ -1833,8 +1825,12 @@ static int intf_put_unit(lua_State *L)
 	resources::units->erase(loc);
 	if (u) {
 		resources::units->add(loc, *u);
-		if (!lu) delete u;
-		else lu->reload();
+		if (lu) {
+			size_t uid = u->underlying_id();
+			lu->lua_unit::~lua_unit();
+			new(lu) lua_unit(uid);
+		} else
+			delete u;
 	}
 
 	return 0;

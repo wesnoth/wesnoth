@@ -49,7 +49,6 @@ public:
 	~lua_unit();
 	bool on_map() const { return !ptr && side == 0; }
 	int on_recall_list() const { return side; }
-	void reload();
 	unit *get();
 };
 
