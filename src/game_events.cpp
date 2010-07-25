@@ -2108,77 +2108,7 @@ WML_HANDLER_FUNCTION(set_menu_item, /*event_info*/, cfg)
 	}
 }
 
-// Unit serialization to and from variables
-/** @todo FIXME: Check that store is automove bug safe */
-WML_HANDLER_FUNCTION(store_unit, /*event_info*/, cfg)
-{
-	const config empty_filter;
-	vconfig filter = cfg.child("filter");
-	if(filter.null()) {
-		filter = empty_filter;
-		lg::wml_error << "[store_unit] missing required [filter] tag\n";
-	}
-
-	std::string variable = cfg["variable"];
-	if(variable.empty()) {
-		variable="unit";
-	}
-	const std::string mode = cfg["mode"];
-	config to_store;
-	variable_info varinfo(variable, true, variable_info::TYPE_ARRAY);
-
-	const bool kill_units = utils::string_bool(cfg["kill"]);
-
-	for(unit_map::iterator i = resources::units->begin(); i != resources::units->end();) {
-		if (!game_events::unit_matches_filter(*i, filter)) {
-			++i;
-			continue;
-		}
-
-		config& data = to_store.add_child(varinfo.key);
-		i->get_location().write(data);
-		i->write(data);
-
-		if(kill_units) {
-			resources::units->erase(i++);
-		} else {
-			++i;
-		}
-	}
-
-	t_string const& filter_x = filter["x"];
-	t_string const& filter_y = filter["y"];
-	if((filter_x.empty() || filter_x == "recall")
-	&& (filter_y.empty() || filter_y == "recall"))
-	{
-		for(std::vector<team>::iterator pi = resources::teams->begin();
-				pi != resources::teams->end(); ++pi) {
-			std::vector<unit>& avail_units = pi->recall_list();
-			for(std::vector<unit>::iterator j = avail_units.begin(); j != avail_units.end();) {
-				scoped_recall_unit auto_store("this_unit", pi->save_id(), j - avail_units.begin());
-				if (!j->matches_filter(filter, map_location())) {
-					++j;
-					continue;
-				}
-				config& data = to_store.add_child(varinfo.key);
-				j->write(data);
-				data["x"] = "recall";
-				data["y"] = "recall";
-
-				if(kill_units) {
-					j = avail_units.erase(j);
-				} else {
-					++j;
-				}
-			}
-		}
-	}
-	if(mode != "append") {
-		varinfo.vars->clear_children(varinfo.key);
-	}
-	varinfo.vars->append(to_store);
-}
-
+// Unit serialization to variables
 WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 {
 	const config &var = resources::state_of_game->get_variable_cfg(cfg["variable"]);

@@ -381,3 +381,34 @@ function wml_actions.store_turns(cfg)
 	local var = cfg.variable or "turns"
 	wesnoth.set_variable(var, wesnoth.game_config.last_turn)
 end
+
+function wml_actions.store_unit(cfg)
+	local filter = helper.get_child(cfg, "filter") or
+		helper.wml_error "[store_unit] missing required [filter] tag"
+	local kill_units = cfg.kill
+
+	local var = cfg.variable or "unit"
+	local idx = 0
+	if cfg.mode == "append" then
+		index = wesnoth.get_variable(var .. ".length")
+	else
+		wesnoth.set_variable(var)
+	end
+
+	for i,u in ipairs(wesnoth.get_units(filter)) do
+		wesnoth.set_variable(string.format("%s[%d]", var, idx), u.__cfg)
+		idx = idx + 1
+		if kill_units then wesnoth.put_unit(u.x, u.y) end
+	end
+
+	if (not cfg.x or cfg.x == "recall") and (not cfg.y or cfg.y == "recall") then
+		for i,u in ipairs(wesnoth.get_recall_units(filter)) do
+			local ucfg = u.__cfg
+			ucfg.x = "recall"
+			ucfg.y = "recall"
+			wesnoth.set_variable(string.format("%s[%d]", var, idx), ucfg)
+			idx = idx + 1
+			if kill_units then wesnoth.extract_unit(u) end
+		end
+	end
+end
