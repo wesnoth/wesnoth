@@ -592,6 +592,9 @@ bool game_controller::init_config(const bool force)
 	if (test_mode_)
 		cache_.add_define("TEST");
 
+	if (jump_to_editor_)
+		cache_.add_define("EDITOR");
+
 	load_game_cfg(force);
 
 	const config &cfg = game_config().child("game_config");
