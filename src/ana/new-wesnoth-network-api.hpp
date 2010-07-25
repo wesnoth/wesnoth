@@ -94,8 +94,8 @@ namespace network
         // See the stats interface in ana/api/stats.hpp:53
         ana::stats* get_stats( ana::stat_type = ana::ACCUMULATED );
 
-        // Cancel an operation
-        void cancel( operation_id );
+        // Cancel all pending asynchronous operations
+        void cancel_pending( );
 
         // Force disconnect
         void disconnect();
@@ -145,8 +145,12 @@ namespace network
         // See the stats interface in ana/api/stats.hpp:53
         ana::stats* get_stats( ana::net_id, ana::stat_type = ana::ACCUMULATED );
 
-        // Cancel an operation
-        void cancel( operation_id );
+        // Cancels all pending async operations
+        void cancel_pending( );
+
+        // Cancel all pending asynchronous operations for a given connected client.
+        // Will do nothing if the ID doesn't belong to a connected client.
+        void cancel_pending( ana::net_id  client_id );
 
         // Force disconnect on the server, will disconnect every connected client
         void disconnect();
