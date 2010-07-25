@@ -447,6 +447,11 @@ test_SOURCES =  \
 
 test_LDADD = $(INTERNALLIBS) $(THELIBS) $(BOOST_UNIT_TEST_FRAMEWORK_LIBS) $(PANGO_LIBS) $(FONTCONFIG_LIBS)
 test_DEPENDENCIES=libwesnoth-core.a libwesnoth.a
+if ANA
+test_LDADD += $(BOOST_SYSTEM_LIBS) $(BOOST_THREAD_LIBS) -lana
+test_DEPENDENCIES += libana.a
+test_SOURCES += network_worker.cpp
+endif
 
 #############################################################################
 #    Headers                                                                #
