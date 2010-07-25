@@ -421,6 +421,12 @@ lua_unit::~lua_unit()
 unit *lua_unit::get()
 {
 	if (ptr) return ptr;
+	if (side) {
+		foreach (unit &u, (*resources::teams)[side - 1].recall_list()) {
+			if (u.underlying_id() == uid) return &u;
+		}
+		return NULL;
+	}
 	unit_map::unit_iterator ui = resources::units->find(uid);
 	if (!ui.valid()) return NULL;
 	return &*ui;
