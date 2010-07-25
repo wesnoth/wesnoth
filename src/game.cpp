@@ -595,6 +595,9 @@ bool game_controller::init_config(const bool force)
 	if (jump_to_editor_)
 		cache_.add_define("EDITOR");
 
+	if (!multiplayer_mode_ && !test_mode_ && !jump_to_editor_)
+		cache_.add_define("MAIN_MENU");
+
 	load_game_cfg(force);
 
 	const config &cfg = game_config().child("game_config");
