@@ -854,7 +854,7 @@ static int impl_unit_set(lua_State *L)
 }
 
 /**
- * Gets the numeric ids of all the units.
+ * Gets the numeric ids of all the units matching a given filter.
  * - Arg 1: optional table containing a filter
  * - Ret 1: table containing full userdata with __index pointing to
  *          impl_unit_get and __newindex pointing to impl_unit_set.
@@ -888,6 +888,51 @@ static int intf_get_units(lua_State *L)
 		lua_setmetatable(L, 3);
 		lua_rawseti(L, 2, i);
 		++i;
+	}
+	return 1;
+}
+
+/**
+ * Gets the numeric ids of all the units matching a given filter on the recall lists.
+ * - Arg 1: optional table containing a filter
+ * - Ret 1: table containing full userdata with __index pointing to
+ *          impl_unit_get and __newindex pointing to impl_unit_set.
+ */
+static int intf_get_recall_units(lua_State *L)
+{
+	if (false) {
+		error_call_destructors:
+		return luaL_typerror(L, 1, "WML table");
+	}
+
+	vconfig filter = vconfig::unconstructed_vconfig();
+	if (!luaW_tovconfig(L, 1, filter, false))
+		goto error_call_destructors;
+
+	// Go through all the units while keeping the following stack:
+	// 1: metatable, 2: return table, 3: userdata, 4: metatable copy
+	lua_settop(L, 0);
+	lua_pushlightuserdata(L, (void *)&getunitKey);
+	lua_rawget(L, LUA_REGISTRYINDEX);
+	lua_newtable(L);
+	int i = 1, s = 1;
+	foreach (team &t, *resources::teams)
+	{
+		foreach (unit &u, t.recall_list())
+		{
+			if (!filter.null()) {
+				scoped_recall_unit auto_store("this_unit",
+					t.save_id(), &u - &t.recall_list()[0]);
+				if (!u.matches_filter(filter, map_location()))
+					continue;
+			}
+			new(lua_newuserdata(L, sizeof(lua_unit))) lua_unit(s, u.underlying_id());
+			lua_pushvalue(L, 1);
+			lua_setmetatable(L, 3);
+			lua_rawseti(L, 2, i);
+			++i;
+		}
+		++s;
 	}
 	return 1;
 }
@@ -2109,6 +2154,7 @@ LuaKernel::LuaKernel()
 		{ "fire_event",               &intf_fire_event               },
 		{ "float_label",              &intf_float_label              },
 		{ "get_map_size",             &intf_get_map_size             },
+		{ "get_recall_units",         &intf_get_recall_units         },
 		{ "get_selected_tile",        &intf_get_selected_tile        },
 		{ "get_terrain",              &intf_get_terrain              },
 		{ "get_terrain_info",         &intf_get_terrain_info         },
