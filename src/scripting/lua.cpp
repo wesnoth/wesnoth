@@ -1841,6 +1841,76 @@ static int intf_put_unit(lua_State *L)
 }
 
 /**
+ * Puts a unit on a recall list.
+ * - Arg 1: WML table or unit.
+ * - Arg 2: (optional) side.
+ */
+static int intf_put_recall_unit(lua_State *L)
+{
+	if (false) {
+		error_call_destructors_1:
+		return luaL_typerror(L, 1, "WML table or unit");
+		error_call_destructors_2:
+		return luaL_argerror(L, 1, error_buffer.c_str());
+		error_call_destructors_3:
+		return luaL_argerror(L, 1, "unit not found");
+		error_call_destructors_4:
+		return luaL_argerror(L, 2, "nonpersistent side");
+	}
+
+	lua_unit *lu = NULL;
+	unit *u = NULL;
+	int side = lua_tointeger(L, 2);
+	if (unsigned(side) > resources::teams->size()) side = 0;
+
+	if (luaW_hasmetatable(L, 1, getunitKey))
+	{
+		lu = static_cast<lua_unit *>(lua_touserdata(L, 1));
+		u = lu->get();
+		if (!u) goto error_call_destructors_3;
+		if (lu->on_recall_list())
+			goto error_call_destructors_3;
+	}
+	else
+	{
+		config cfg;
+		if (!luaW_toconfig(L, 1, cfg))
+			goto error_call_destructors_1;
+		try {
+			u = new unit(cfg, true, resources::state_of_game);
+		} catch (const game::error &e) {
+			error_buffer = "broken unit WML [" + e.message + "]";
+			goto error_call_destructors_2;
+		}
+	}
+
+	if (!side) side = u->side();
+	team &t = (*resources::teams)[side - 1];
+	if (!t.persistent())
+		goto error_call_destructors_4;
+	std::vector<unit> &rl = t.recall_list();
+
+	// Avoid duplicates in the recall list.
+	size_t uid = u->underlying_id();
+	std::vector<unit>::iterator i = rl.begin();
+	while (i != rl.end()) {
+		if (i->underlying_id() == u->underlying_id()) {
+			i = rl.erase(i);
+		} else ++i;
+	}
+
+	rl.push_back(*u);
+	if (lu) {
+		if (lu->on_map())
+			resources::units->erase(u->get_location());
+		lu->lua_unit::~lua_unit();
+		new(lu) lua_unit(side, uid);
+	}
+
+	return 0;
+}
+
+/**
  * Extracts a unit from the map or a recall list and gives it to Lua.
  * - Arg 1: unit userdata.
  */
@@ -2207,6 +2277,7 @@ LuaKernel::LuaKernel()
 		{ "get_village_owner",        &intf_get_village_owner        },
 		{ "is_enemy",                 &intf_is_enemy                 },
 		{ "message",                  &intf_message                  },
+		{ "put_recall_unit",          &intf_put_recall_unit          },
 		{ "put_unit",                 &intf_put_unit                 },
 		{ "require",                  &intf_require                  },
 		{ "scroll_to_tile",           &intf_scroll_to_tile           },
