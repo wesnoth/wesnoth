@@ -392,6 +392,7 @@ campaignd_DEPENDENCIES=libwesnoth-core.a
 if ANA
 campaignd_LDADD += $(BOOST_SYSTEM_LIBS) $(BOOST_THREAD_LIBS) -lana
 campaignd_DEPENDENCIES += libana.a
+campaignd_SOURCES += network_worker.cpp
 endif
 
 #############################################################################
