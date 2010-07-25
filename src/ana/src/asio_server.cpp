@@ -424,10 +424,23 @@ const ana::stats* asio_server::asio_client_proxy::get_stats( ana::stat_type type
         throw std::runtime_error("Logging is disabled. Use start_logging first.");
 }
 
-void asio_server::cancel( ana::operation_id /*operation */)
+void asio_server::cancel_pending( )
 {
-    // TODO: implement
+    std::for_each( client_proxies_.begin(), client_proxies_.end(),
+                   boost::bind(&ana::server::client_proxy::cancel_pending, _1 ) );
 }
+
+void asio_server::cancel_pending( ana::net_id client_id )
+{
+    std::list<ana::server::client_proxy*>::const_iterator it;
+
+    it = std::find_if( client_proxies_.begin(), client_proxies_.end(),
+                       boost::bind( &client_proxy::id, _1) == client_id );
+
+    if ( it != client_proxies_.end() )
+        (*it)->cancel_pending();
+}
+
 
 void asio_server::asio_client_proxy::send(ana::detail::shared_buffer buffer,
                                           send_handler*              handler,
@@ -439,9 +452,15 @@ void asio_server::asio_client_proxy::send(ana::detail::shared_buffer buffer,
 
 void asio_server::asio_client_proxy::disconnect_listener()
 {
-    socket_.cancel();
+    cancel_pending();
     delete this;
 }
+
+void asio_server::asio_client_proxy::cancel_pending()
+{
+    socket_.cancel();
+}
+
 
 std::string asio_server::asio_client_proxy::ip_address() const
 {

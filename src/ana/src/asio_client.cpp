@@ -203,9 +203,9 @@ const ana::stats* asio_client::get_stats( ana::stat_type type ) const
         throw std::runtime_error("Logging is disabled. Use start_logging first.");
 }
 
-void asio_client::cancel( ana::operation_id /*operation */)
+void asio_client::cancel_pending()
 {
-    // TODO: implement
+    socket_.cancel();
 }
 
 

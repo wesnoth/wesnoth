@@ -69,6 +69,8 @@ class asio_server : public  ana::server,
 
                 virtual void disconnect_listener();
 
+                virtual void cancel_pending();
+
                 virtual void send(ana::detail::shared_buffer,
                                   ana::send_handler*,
                                   ana::detail::sender*,
@@ -136,7 +138,8 @@ class asio_server : public  ana::server,
 
         virtual const ana::stats* get_stats( ana::stat_type type ) const;
 
-        virtual void cancel( ana::operation_id operation );
+        virtual void cancel_pending( );
+        virtual void cancel_pending( ana::net_id client_id );
 
         virtual void disconnect( ana::net_id );
 

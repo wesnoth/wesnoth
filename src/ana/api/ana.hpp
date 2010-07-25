@@ -479,10 +479,21 @@ namespace ana
         virtual void set_raw_data_mode( net_id id )                = 0;
 
         /**
-         * Cancel a network operation.
-         * Does nothing if the operation already completed or is an ivalid operation id.
+         * Cancel all pending network operations.
+         * Every pending operation handler will be invoked with ana::operation_aborted
+         * as the corresponding error_code.
          */
-        virtual void cancel( operation_id operation )              = 0;
+        virtual void cancel_pending( )                             = 0;
+
+        /**
+         * Cancel all pending network operations for a given client.
+         * Does nothing if the client_id doesn't belong to a connected client.
+         * Every pending operation handler will be invoked with ana::operation_aborted
+         * as the corresponding error_code.
+         *
+         * @param client_id : Network ID of the client.
+         */
+        virtual void cancel_pending( ana::net_id client_id )       = 0;
 
         /* Allow external object to call set_raw_data_mode() directly. */
         /**
@@ -522,6 +533,13 @@ namespace ana
 
             /** Standard destructor. */
             virtual ~client_proxy() {}
+
+            /**
+             * Cancel all pending network operations.
+             * Every pending operation handler will be invoked with ana::operation_aborted
+             * as the corresponding error_code.
+             */
+            virtual void cancel_pending() = 0;
 
             /** Returns the string representing the ip address of the connected client. */
             virtual std::string ip_address() const = 0;
@@ -605,10 +623,11 @@ namespace ana
                                   send_type                 type = COPY_BUFFER ) = 0;
 
         /**
-         * Cancel a network operation.
-         * Does nothing if the operation already completed or is an ivalid operation id.
+         * Cancel all pending network operations.
+         * Every pending operation handler will be invoked with ana::operation_aborted
+         * as the corresponding error_code.
          */
-        virtual void cancel( operation_id operation ) = 0;
+        virtual void cancel_pending( )                             = 0;
 
         /** Standard destructor. */
         virtual ~client() {}

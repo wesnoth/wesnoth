@@ -97,7 +97,8 @@ class asio_client : public ana::client,
 
         virtual ana::timer* create_timer() { return new ana::timer( io_service_); }
 
-        virtual void cancel( ana::operation_id operation );
+        virtual void cancel_pending( );
+
 
         void handle_connect(const boost::system::error_code& ec,
                             tcp::resolver::iterator endpoint_iterator,
