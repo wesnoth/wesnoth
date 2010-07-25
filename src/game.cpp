@@ -589,6 +589,9 @@ bool game_controller::init_config(const bool force)
 	if (multiplayer_mode_)
 		cache_.add_define("MULTIPLAYER");
 
+	if (test_mode_)
+		cache_.add_define("TEST");
+
 	load_game_cfg(force);
 
 	const config &cfg = game_config().child("game_config");
@@ -1154,8 +1157,8 @@ bool game_controller::new_campaign()
 			if (jump_to_campaign_.difficulty_
 					> static_cast<int>(difficulties.size()))
 			{
-				std::cerr << "incorrect difficulty number: [" << 
-					jump_to_campaign_.difficulty_ << "]. maximum is [" << 
+				std::cerr << "incorrect difficulty number: [" <<
+					jump_to_campaign_.difficulty_ << "]. maximum is [" <<
 					difficulties.size() << "].\n";
 				return false;
 			}
