@@ -54,8 +54,7 @@ public:
 		const std::string& defender_type_id, int attacker_lvl,
 		int defender_lvl, const size_t turn, const time_of_day &t);
 	void add_seed(const char* child_name, rand_rng::seed_t seed);
-	void choose_option(int index);
-	void user_input(const config &);
+	void user_input(const std::string &, const config &);
 	void add_label(const terrain_label*);
 	void clear_labels(const std::string&, bool);
 	void add_rename(const std::string& name, const map_location& loc);

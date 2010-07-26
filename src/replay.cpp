@@ -284,14 +284,9 @@ void replay::add_pos(const std::string& type,
 	cmd->add_child(type,move);
 }
 
-void replay::choose_option(int value)
+void replay::user_input(const std::string &name, const config &input)
 {
-	add_command()->add_child("choose")["value"] = value;
-}
-
-void replay::user_input(const config &input)
-{
-	add_command()->add_child("input", input);
+	add_command()->add_child(name, input);
 }
 
 void replay::add_label(const terrain_label* label)

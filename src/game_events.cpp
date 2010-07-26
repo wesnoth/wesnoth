@@ -384,7 +384,9 @@ static CHOICE classify_interactive_choice()
  */
 static void send_local_master_choice(int value)
 {
-	recorder.choose_option(value);
+	config cfg;
+	cfg["value"] = value;
+	recorder.user_input("choose", cfg);
 }
 
 /**
@@ -2956,7 +2958,7 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 					cfg["text"] = text_input_content;
 					text_input_result = text_input_content;
 				}
-				recorder.user_input(cfg);
+				recorder.user_input("input", cfg);
 			}
 
 			if(dlg_result == gui2::twindow::CANCEL) {

@@ -150,7 +150,9 @@ void advance_unit(const map_location &loc, bool random_choice, bool add_replay_e
 		recorder.add_advancement(loc);
 	}
 
-	recorder.choose_option(res);
+	config choice_cfg;
+	choice_cfg["value"] = res;
+	recorder.user_input("choose", choice_cfg);
 
 	LOG_DP << "animating advancement...\n";
 	animate_unit_advancement(loc, size_t(res));
