@@ -320,7 +320,7 @@ void terrain_label::read(const config &cfg)
 	loc_ = map_location(cfg, &vs);
 	SDL_Color color = font::LABEL_COLOR;
 
-	///@todo 1.9.2
+	///@deprecated 1.9.2 'colour' in [label]
 	const std::string colour_error = "Usage of 'colour' in [label] is deprecated, support will be removed in 1.9.2.\n";
 	std::string tmp_color = cfg.get_old_attribute("color","colour", colour_error);
 

@@ -795,6 +795,7 @@ timage::timage(const config& cfg)
  */
 
 	if(!cfg["stretch"].empty()) {
+		///@deprecated 1.9.2 field 'stretch instead or 'resize_mode'
 		ERR_GUI_D << "Image: The field 'stretch' is deprecated and "
 				"will be removed in 1.9.2. Use 'resize_mode' instead.\n";
 	}

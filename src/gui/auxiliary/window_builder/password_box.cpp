@@ -41,6 +41,7 @@ twidget* tbuilder_password_box::build() const
 	widget->set_value(label);
 
 	if(!history_.empty()) {
+		///@deprecated 1.9.2 history field for a password box
 		ERR_GUI_G << "A history field for a password box is deprecated "
 				" and will be removed in 1.9.2.\n";
 		widget->set_history(history_);

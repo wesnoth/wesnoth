@@ -42,7 +42,7 @@ fallback_to_other_ai::fallback_to_other_ai( ai_context &context, const config &c
 void fallback_to_other_ai::on_create()
 {
 	config ai_cfg = cfg_.child_or_empty("ai");
-	///@todo 1.9.3 backward-compatability hack - try to update the old default ai config. remove in 1.9.3
+	///@deprecated 1.9.3 backward-compatability hack - try to update the old default ai config.
 	std::string ai_algorithm = ai_cfg["ai_algorithm"];
 	if ((ai_algorithm.empty()) || (ai_algorithm=="default_ai")) {
 		if (configuration::parse_side_config(get_side(),cfg_,ai_cfg)) {

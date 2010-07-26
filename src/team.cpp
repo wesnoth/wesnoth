@@ -80,7 +80,7 @@ team::team_info::team_info(const config& cfg) :
 		side(cfg["side"].to_int(1)),
 		persistent(false)
 {
-	///@todo 1.9.2
+	///@deprecated 1.9.2 Usage of 'colour' in [side]
 	const std::string colour_error = "Usage of 'colour' in [side] is deprecated, support will be removed in 1.9.2.\n";
 	if(cfg.has_old_attribute("color","colour",colour_error))
 		color = cfg.get_old_attribute("color","colour").str();

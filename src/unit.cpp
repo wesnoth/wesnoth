@@ -417,6 +417,7 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 	{
 		foreach (const config::attribute &st, status_flags.attribute_range()) {
 			if (st.first == "healable") {
+				///@deprecated 1.9.2 'healable' instead of 'unhealable'
 				ERR_UT << "Usage of 'healable' is deprecated, use 'unhealable' instead, "
 					"support will be removed in 1.9.2.\n";
 				if (!st.second.to_bool(true))

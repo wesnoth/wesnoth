@@ -1298,6 +1298,7 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 
 	const t_string format = cfg["format"];
 	if(format.empty() == false) {
+		///@deprecated 1.9.2 Usage of 'format' instead or 'rand'
 		lg::wml_error << "Usage of 'format' is deprecated, use 'rand' instead, "
 			"support will be removed in 1.9.2.\n";
 		var = format;
@@ -1413,6 +1414,7 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 	const std::string random = cfg["random"];
 	std::string rand = cfg["rand"];
 	if(random.empty() == false) {
+		///@deprecated 1.9.2 Usage of 'format' instead or 'rand'
 		lg::wml_error << "Usage of 'random' is deprecated, use 'rand' instead, "
 			"support will be removed in 1.9.2.\n";
 		if(rand.empty()) {
@@ -2411,7 +2413,7 @@ WML_HANDLER_FUNCTION(store_villages, /*event_info*/, cfg)
 
 	for(std::vector<map_location>::const_iterator j = locs.begin(); j != locs.end(); ++j) {
 		bool matches = false;
-		if(cfg.has_attribute("side")) { 	/** @deprecated, use owner_side instead */
+		if(cfg.has_attribute("side")) { 	/** @deprecated use owner_side instead */
 			lg::wml_error << "side key is no longer accepted in [store_villages],"
 				<< " use owner_side instead.\n";
 			config temp_cfg(cfg.get_config());
@@ -2526,6 +2528,7 @@ WML_HANDLER_FUNCTION(endlevel, /*event_info*/, cfg)
 	if (result.empty() || result == "victory") {
 		resources::controller->force_end_level(VICTORY);
 	} else if (result == "continue") {
+		///@deprecated 1.9.2 continue as result in [endlevel]
 		lg::wml_error << "continue is deprecated as result in [endlevel]"
 			" and will be removed in 1.9.2,"
 			" use the new attributes instead.\n";
@@ -2535,6 +2538,7 @@ WML_HANDLER_FUNCTION(endlevel, /*event_info*/, cfg)
 		data.linger_mode = false;
 		resources::controller->force_end_level(VICTORY);
 	} else if (result == "continue_no_save") {
+		///@deprecated 1.9.2 continue as result in [endlevel]
 		lg::wml_error << "continue_no_save is deprecated as result in [endlevel]"
 			" and will be removed in 1.9.2,"
 			" use the new attributes instead.\n";
