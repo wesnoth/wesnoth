@@ -38,6 +38,7 @@
 		@li <a href="hierarchy.html">Classes</a>
 		@li <a href="files.html">Source Files</a>
 		@li <a href="todo.html">Todo</a>
+		@li <a href="deprecated.html">Deprecated</a>
 	</td>
 	</tr>
 	</table>
