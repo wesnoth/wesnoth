@@ -68,7 +68,7 @@ namespace network
          *
          * @sa ana::error_code
          */
-        virtual void handle_connect(ana::error_code, ana::net_id) =  0;
+        virtual void handle_connect(ana::error_code, ana::net_id) {}
 
         /**
          * A message has been received in the form of a WML document.
@@ -80,7 +80,7 @@ namespace network
          *
          * @sa ana::error_code
          */
-        virtual void handle_receive(ana::error_code, ana::net_id, const config&) = 0;
+        virtual void handle_receive(ana::error_code, ana::net_id, const config&) {}
 
         /**
          * A component has disconnected.
@@ -92,7 +92,7 @@ namespace network
          *
          * @sa ana::error_code
          */
-        virtual void handle_disconnect(ana::error_code, ana::net_id) = 0;
+        virtual void handle_disconnect(ana::error_code, ana::net_id) {}
 
         /**
          * An asynchronous send operation has completed.
@@ -107,7 +107,7 @@ namespace network
          * @sa ana::error_code
          * @sa ana::operation_id
          */
-        virtual void handle_send(ana::error_code, ana::net_id, operation_id) = 0;
+        virtual void handle_send(ana::error_code, ana::net_id, operation_id) {}
     };
 
     //Code that needs to create network components will USE these objects
@@ -135,7 +135,7 @@ namespace network
             //                                                 ana::time::seconds( 1 ) ); (?)
             //          set_timeout( network::CONNECT_OPERATIONS, ana::time::seconds( 30 ) );
             /**
-             * 
+             *
              */
             void set_timeout( ... );
 
@@ -145,14 +145,28 @@ namespace network
             /**
              * Attempt an asynchronous connection to a server, it will call the corresponding
              * handle_connect with the results eventually.
+             *
+             * @param address : The address of the server you are trying to connect to. Defaults
+             *                  to Wesnoth's official server.
+             * @param port : The port you are trying to connect to. Defaults to Wesnoth's default.
              */
-            void async_connect( ... );
+            void async_connect( const std::string& address = "server.wesnoth.org",
+                                const std::string& port    = "15000"  );
 
             /**
-             * Attempt async connection through proxy, will call handle_connect
+             * Attempt an asynchronous connection through proxy, will call handle_connect
              * with results eventually.
+             *
+             * @param address : The address of the server you are trying to connect to. Defaults
+             *                  to Wesnoth's official server.
+             * @param port : The port you are trying to connect to. Defaults to Wesnoth's default.
+             * @param user_name : The proxy's user name used for credentials.
+             * @param password : The proxy's password used for credentials.
              */
-            void async_connect_through_proxy( ... );
+            void async_connect_through_proxy( const std::string& proxy_addr  = "server.wesnoth.org",
+                                              const std::string& proxy_port  = "15000",
+                                              const std::string& user_name   = "",
+                                              const std::string& password    = "");
 
             /**
              * Attempt to send a WML document to the server.
@@ -198,6 +212,8 @@ namespace network
 
         private:
             //Attributes
+
+            ana::client*  client_;
     };
 
     /**
@@ -299,5 +315,7 @@ namespace network
 
         private:
             //Attributes:
+
+            ana::server*  server_;
     };
 }
