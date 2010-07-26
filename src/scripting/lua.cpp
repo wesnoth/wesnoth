@@ -57,6 +57,8 @@ extern "C" {
 #include "sound.hpp"
 #include "unit.hpp"
 #include "ai/lua/core.hpp"
+#include "gui/widgets/settings.hpp"
+#include "gui/widgets/window.hpp"
 
 static lg::log_domain log_scripting_lua("scripting/lua");
 #define LOG_LUA LOG_STREAM(info, log_scripting_lua)
@@ -2284,6 +2286,34 @@ static int intf_synchronize_choice(lua_State *L)
 	return 1;
 }
 
+/**
+ * Displays a window.
+ * - Arg 1: WML table describing the window.
+ * - Ret 1: integer.
+ */
+static int intf_show_dialog(lua_State *L)
+{
+	if (false) {
+		error_call_destructors:
+		return luaL_argerror(L, 1, error_buffer.c_str());
+	}
+
+	int v;
+	try {
+		config def_cfg;
+		luaW_toconfig(L, 1, def_cfg);
+		gui2::twindow_builder::tresolution def(def_cfg);
+		std::auto_ptr<gui2::twindow> w(gui2::build(resources::screen->video(), &def));
+		v = w->show(true, 0);
+	} catch(twml_exception &e) {
+		error_buffer = e.dev_message;
+		goto error_call_destructors;
+	}
+
+	lua_pushinteger(L, v);
+	return 1;
+}
+
 LuaKernel::LuaKernel()
 	: mState(luaL_newstate())
 {
@@ -2336,6 +2366,7 @@ LuaKernel::LuaKernel()
 		{ "set_terrain",              &intf_set_terrain              },
 		{ "set_variable",             &intf_set_variable             },
 		{ "set_village_owner",        &intf_set_village_owner        },
+		{ "show_dialog",              &intf_show_dialog              },
 		{ "simulate_combat",          &intf_simulate_combat          },
 		{ "synchronize_choice",       &intf_synchronize_choice       },
 		{ "textdomain",               &intf_textdomain               },
