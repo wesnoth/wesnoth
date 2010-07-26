@@ -366,6 +366,21 @@ public class WMLTools
 		List<String> arguments = new ArrayList<String>();
 		arguments.add(wmllintFile.getAbsolutePath());
 
+		if (!Preferences.getString(Constants.P_WAU_PASSWORD).isEmpty())
+		{
+			arguments.add("-P");
+			arguments.add(Preferences.getString(Constants.P_WAU_PASSWORD));
+		}
+
+		if (Preferences.getBool(Constants.P_WAU_VERBOSE) == true)
+			arguments.add("-V");
+
+		arguments.add("-a");
+		arguments.add(Preferences.getString(Constants.P_WAU_ADDRESS));
+
+		arguments.add("-p");
+		arguments.add(Preferences.getString(Constants.P_WAU_PORT));
+
 		arguments.add("-u");
 		arguments.add(containerPath);
 		return runPythonScript(arguments, null, stdout,stderr);

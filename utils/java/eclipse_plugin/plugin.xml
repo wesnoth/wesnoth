@@ -477,6 +477,12 @@
             id="wml_plugin_preferences.wmltools"
             name="WML Tools">
       </page>
+      <page
+            category="wml_plugin_preferences"
+            class="wesnoth_eclipse_plugin.preferences.AddonUploadPreferencePage"
+            id="wml_plugin_preferences.addon_upload"
+            name="Addon Uploader">
+      </page>
    </extension>
    <extension
          point="org.eclipse.core.runtime.preferences">

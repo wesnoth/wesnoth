@@ -37,6 +37,12 @@ public class Preferences extends AbstractPreferenceInitializer {
 
 		store.setDefault(Constants.P_WMLSCOPE_VERBOSE_LEVEL, 0);
 		store.setDefault(Constants.P_WMLSCOPE_COLLISIONS, true);
+
+		// upload manager
+		store.setDefault(Constants.P_WAU_PASSWORD, "");
+		store.setDefault(Constants.P_WAU_VERBOSE, false);
+		store.setDefault(Constants.P_WAU_ADDRESS, "add-ons.wesnoth.org");
+		store.setDefault(Constants.P_WAU_PORT, 15002);
 	}
 
 	/**
