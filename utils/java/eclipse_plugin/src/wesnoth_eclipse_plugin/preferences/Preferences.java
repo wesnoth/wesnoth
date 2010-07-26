@@ -22,10 +22,21 @@ public class Preferences extends AbstractPreferenceInitializer {
 	@Override
 	public void initializeDefaultPreferences() {
 		IPreferenceStore store = Activator.getDefault().getPreferenceStore();
+		// general settings
 		store.setDefault(Constants.P_WESNOTH_EXEC_PATH, "");
 		store.setDefault(Constants.P_WESNOTH_WORKING_DIR, "");
 		store.setDefault(Constants.P_WESNOTH_USER_DIR, "");
 		store.setDefault(Constants.P_WESNOTH_WMLTOOLS_DIR, "");
+
+		// wml tools
+		store.setDefault(Constants.P_WMLINDENT_VERBOSE, true);
+
+		store.setDefault(Constants.P_WMLLINT_DRYRUN, true);
+		store.setDefault(Constants.P_WMLLINT_SPELL_CHECK, false);
+		store.setDefault(Constants.P_WMLLINT_VERBOSE_LEVEL, 0);
+
+		store.setDefault(Constants.P_WMLSCOPE_VERBOSE_LEVEL, 0);
+		store.setDefault(Constants.P_WMLSCOPE_COLLISIONS, true);
 	}
 
 	/**
@@ -52,5 +63,13 @@ public class Preferences extends AbstractPreferenceInitializer {
 	public static int getInt(String prefName)
 	{
 		return getPreferences().getInt(prefName);
+	}
+	/**
+	 * Returns the contents of the specified preference as a boolean
+	 * or false if there is no such preference set
+	 */
+	public static boolean getBool(String prefName)
+	{
+		return getPreferences().getBoolean(prefName);
 	}
 }

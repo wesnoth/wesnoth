@@ -471,6 +471,12 @@
             id="wml_plugin_preferences"
             name="Wesnoth UMC">
       </page>
+      <page
+            category="wml_plugin_preferences"
+            class="wesnoth_eclipse_plugin.preferences.WMLToolsPreferencePage"
+            id="wml_plugin_preferences.wmltools"
+            name="WML Tools">
+      </page>
    </extension>
    <extension
          point="org.eclipse.core.runtime.preferences">

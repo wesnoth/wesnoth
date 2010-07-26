@@ -59,7 +59,11 @@ public class WMLTools
 
 			if (dryrun)
 				arguments.add("--dryrun");
-			arguments.add("--verbose");
+			if (Preferences.getBool(Constants.P_WMLINDENT_VERBOSE))
+			{
+				arguments.add("-v");
+				arguments.add("-v");
+			}
 			arguments.add(resourcePath);
 		}
 		return runPythonScript(arguments, stdin,stdout,stderr);
@@ -135,10 +139,19 @@ public class WMLTools
 		List<String> arguments = new ArrayList<String>();
 
 		arguments.add(wmllintFile.getAbsolutePath());
-		if (dryrun)
+
+		int verboseLevel = Preferences.getInt(Constants.P_WMLLINT_VERBOSE_LEVEL);
+		for(int i=1; i <= verboseLevel; i++)
+			arguments.add("-v");
+
+		if (verboseLevel <= 1)
+			arguments.add("--progress");
+
+		if (dryrun || Preferences.getBool(Constants.P_WMLLINT_DRYRUN) == true)
 			arguments.add("--dryrun");
-		arguments.add("--progress");
-		arguments.add("--nospellcheck");
+
+		if (Preferences.getBool(Constants.P_WMLLINT_SPELL_CHECK) == false)
+			arguments.add("--nospellcheck");
 
 		// add default core directory
 		arguments.add(Preferences.getString(Constants.P_WESNOTH_WORKING_DIR) +
@@ -179,9 +192,20 @@ public class WMLTools
 		List<String> arguments = new ArrayList<String>();
 
 		arguments.add(wmlscopeFile.getAbsolutePath());
-		//arguments.add("-w");
-		//arguments.add("2");
-		arguments.add("--progress");
+		int verboseLevel = Preferences.getInt(Constants.P_WMLSCOPE_VERBOSE_LEVEL);
+
+		if (verboseLevel == 0)
+			arguments.add("--progress");
+		else
+		{
+			arguments.add("-w");
+			arguments.add(String.valueOf(verboseLevel));
+		}
+
+		if (Preferences.getBool(Constants.P_WMLSCOPE_COLLISIONS) == true)
+			arguments.add("--collisions");
+
+		arguments.add("--crossreference");
 
 		// add default core directory
 		arguments.add(Preferences.getString(Constants.P_WESNOTH_WORKING_DIR) +

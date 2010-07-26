@@ -8,21 +8,9 @@
  *******************************************************************************/
 package wesnoth_eclipse_plugin.handlers;
 
-import java.io.StringReader;
-
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
-
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
-import org.eclipse.core.resources.IFile;
-import org.xml.sax.InputSource;
-
-import wesnoth_eclipse_plugin.utils.ExternalToolInvoker;
-import wesnoth_eclipse_plugin.utils.WMLSaxHandler;
-import wesnoth_eclipse_plugin.utils.WMLTools;
-import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
 
 /**
  * Here it goes testing stuff in the plugin ( For DEBUG ONLY!)
@@ -33,24 +21,24 @@ public class TestHandler extends AbstractHandler
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException
 	{
-		IFile sel = WorkspaceUtils.getSelectedFile();
-		if (sel == null)
-			return null;
-		ExternalToolInvoker parser = WMLTools.runWMLParser2(sel.getLocation().toOSString());
-		parser.waitForTool();
-		///System.out.println(parser.getOutputContent());
-		try
-		{
-			SAXParser saxparser = SAXParserFactory.newInstance().newSAXParser();
-			WMLSaxHandler handler = new WMLSaxHandler();
-			saxparser.parse(new InputSource(new StringReader(parser.getOutputContent())), handler);
-
-//			GUIUtils.showInfoMessageBox("AA: ");
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-		}
+//		IFile sel = WorkspaceUtils.getSelectedFile();
+//		if (sel == null)
+//			return null;
+//		ExternalToolInvoker parser = WMLTools.runWMLParser2(sel.getLocation().toOSString());
+//		parser.waitForTool();
+//		///System.out.println(parser.getOutputContent());
+//		try
+//		{
+//			SAXParser saxparser = SAXParserFactory.newInstance().newSAXParser();
+//			WMLSaxHandler handler = new WMLSaxHandler();
+//			saxparser.parse(new InputSource(new StringReader(parser.getOutputContent())), handler);
+//
+////			GUIUtils.showInfoMessageBox("AA: ");
+//		}
+//		catch (Exception e)
+//		{
+//			e.printStackTrace();
+//		}
 //		try
 //		{
 //			MessageConsole con = GUIUtils.createConsole("BB", null, true);

@@ -35,6 +35,16 @@ public class Constants
 
 	public static final String	P_WESNOTH_USER_DIR		= "wesnoth_user_dir";
 
+	/** WML Tools preferences constants **/
+	public static final String	P_WMLINDENT_VERBOSE		= "wmlindent_verbose";
+
+	public static final String	P_WMLLINT_DRYRUN		= "wmllint_dry_run";
+	public static final String	P_WMLLINT_SPELL_CHECK	= "wmllint_spell_check";
+	public static final String	P_WMLLINT_VERBOSE_LEVEL	= "wmllint_verbose_level";
+
+	public static final String	P_WMLSCOPE_VERBOSE_LEVEL= "wmlscope_verbose_level";
+	public static final String	P_WMLSCOPE_COLLISIONS	= "wmlscope_collisions";
+
 	/** Wizards Constants **/
 	public static final int		WIZ_TextBoxHeight		= 21;
 	public static final int		WIZ_MaxTextBoxesOnPage	= 10;
