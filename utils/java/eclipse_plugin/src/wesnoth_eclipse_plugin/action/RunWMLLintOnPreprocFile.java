@@ -8,6 +8,7 @@
  *******************************************************************************/
 package wesnoth_eclipse_plugin.action;
 
+import org.eclipse.core.resources.IFile;
 import org.eclipse.jface.action.IAction;
 
 import wesnoth_eclipse_plugin.utils.PreprocessorUtils;
@@ -20,15 +21,10 @@ public class RunWMLLintOnPreprocFile extends ObjectActionDelegate
 	@Override
 	public void run(IAction action)
 	{
-		PreprocessorUtils.preprocessIfNotExists(
-				WorkspaceUtils.getSelectedFile(WorkspaceUtils.getWorkbenchWindow()),
-				true);
+		IFile file = WorkspaceUtils.getSelectedFile(WorkspaceUtils.getWorkbenchWindow());
+		PreprocessorUtils.preprocessFile(file, null);
 
 		WMLTools.runWMLToolAsWorkspaceJob(Tools.WMLLINT,
-				PreprocessorUtils.getPreprocessedFilePath(
-						WorkspaceUtils.getSelectedFile(WorkspaceUtils.getWorkbenchWindow()),
-						false
-					)
-			);
+				PreprocessorUtils.getPreprocessedFilePath(file,	false));
 	}
 }

@@ -162,9 +162,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 				deleteMarkers(file);
 
 				monitor.subTask("Preprocessing...");
-				PreprocessorUtils.preprocessFile(
-						WorkspaceUtils.getPathRelativeToUserDir(file),
-						WorkspaceUtils.getTemporaryFolder(), null, false);
+				PreprocessorUtils.preprocessFile(file, null);
 				monitor.worked(5);
 
 				// we need to find the correct column start/end based on the current document

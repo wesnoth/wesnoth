@@ -10,6 +10,7 @@ package wesnoth_eclipse_plugin.utils;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.eclipse.core.filesystem.EFS;
@@ -24,18 +25,46 @@ import wesnoth_eclipse_plugin.preferences.Preferences;
 
 public class PreprocessorUtils
 {
+	private static HashMap<String, Long> filesTimeStamps_ = new HashMap<String, Long>();
+
 	/**
-	 * preprocesses a file using the wesnoth's executable
-	 * @param fileName the file to process
+	 * preprocesses a file using the wesnoth's executable, only
+	 * if the file was modified since last time checked.
+	 * The target directory is the temporary directory + files's path relative to project
+	 * @param file the file to process
+	 * @param defines the list of additional defines to be added when preprocessing the file
+	 * @return
+	 */
+	public static boolean preprocessFile(IFile file, List<String> defines)
+	{
+		String targetDirectory = WorkspaceUtils.getTemporaryFolder();
+		targetDirectory += file.getProject().getName() + "/";
+		targetDirectory += file.getParent().getProjectRelativePath().toOSString();
+		return preprocessFile(file, targetDirectory, defines, true);
+	}
+
+	/**
+	 * preprocesses a file using the wesnoth's executable, only
+	 * if the file was modified since last time checked.
+	 * @param file the file to process
 	 * @param targetDirectory target directory where should be put the results
 	 * @param defines the list of additional defines to be added when preprocessing the file
-	 * @param useThread true if the preprocessing should use a thread
 	 * @param waitForIt true to wait for the preprocessing to finish
 	 * @return
 	 */
-	public static boolean preprocessFile(String fileName, String targetDirectory,
+	public static boolean preprocessFile(IFile file, String targetDirectory,
 			List<String> defines, boolean waitForIt)
 	{
+		String filePath = file.getLocation().toOSString();
+		if (filesTimeStamps_.containsKey(filePath) &&
+				filesTimeStamps_.get(filePath) >= new File(filePath).lastModified())
+		{
+			Logger.getInstance().log("skipped preprocessing a non-modified file: " + filePath);
+			return true;
+		}
+
+		filesTimeStamps_.put(filePath, new File(filePath).lastModified());
+
 		try{
 			List<String> arguments = new ArrayList<String>();
 
@@ -58,10 +87,10 @@ public class PreprocessorUtils
 			{
 				arguments.add("-p");
 			}
-			arguments.add(fileName);
+			arguments.add(filePath);
 			arguments.add(targetDirectory);
 
-			Logger.getInstance().log("preprocessing file: "+fileName);
+			Logger.getInstance().log("preprocessing file: " + filePath);
 			ExternalToolInvoker wesnoth = new ExternalToolInvoker(
 					Preferences.getString(Constants.P_WESNOTH_EXEC_PATH),
 					arguments);
@@ -91,7 +120,7 @@ public class PreprocessorUtils
 			return;
 		}
 
-		preprocessIfNotExists(file, true);
+		preprocessFile(file, null);
 
 		IFileStore preprocFile =
 			EFS.getLocalFileSystem().getStore(new Path(WorkspaceUtils.getTemporaryFolder()));
@@ -121,19 +150,5 @@ public class PreprocessorUtils
 			EFS.getLocalFileSystem().getStore(new Path(WorkspaceUtils.getTemporaryFolder()));
 		preprocFile = preprocFile.getChild(file.getName() + (plain == true? ".plain" : "") );
 		return preprocFile.toString();
-	}
-
-	/**
-	 * Preprocesses the specified file if it doesn't exist
-	 * @param file The file to preprocess
-	 * @param waitForIt True to wait until the preprocessing is finished
-	 */
-	public static void preprocessIfNotExists(IFile file, boolean waitForIt)
-	{
-		if (new File(WorkspaceUtils.getTemporaryFolder() + file.getName()).exists())
-			return;
-
-		PreprocessorUtils.preprocessFile(WorkspaceUtils.getPathRelativeToUserDir(file),
-				WorkspaceUtils.getTemporaryFolder(), null, waitForIt);
 	}
 }
