@@ -412,3 +412,7 @@ function wml_actions.store_unit(cfg)
 		end
 	end
 end
+
+function wml_actions.sound(cfg)
+	wesnoth.play_sound(cfg.name, cfg["repeat"])
+end

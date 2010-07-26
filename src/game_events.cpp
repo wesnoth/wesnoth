@@ -720,17 +720,6 @@ WML_HANDLER_FUNCTION(volume, /*event_info*/, cfg)
 
 }
 
-WML_HANDLER_FUNCTION(sound, /*event_info*/, cfg)
-{
-	play_controller *controller = resources::controller;
-	if(controller->is_skipping_replay()) {
-		return;
-	}
-	std::string sound = cfg["name"];
-	const int repeats = lexical_cast_default<int>(cfg["repeat"], 0);
-	sound::play_sound(sound, sound::SOUND_FX, repeats);
-}
-
 static void color_adjust(const vconfig& cfg)
 {
 	game_display &screen = *resources::screen;
