@@ -1199,3 +1199,45 @@ void replay_network_sender::commit_and_sync()
 		upto_ = obj_.ncommands();
 	}
 }
+
+config mp_sync::get_user_choice(const std::string &name, const user_choice &uch)
+{
+	if (resources::state_of_game->phase() == game_state::PLAY)
+	{
+		/* We have to communicate with the player and store the
+		   choices in the replay. So a decision will be made on
+		   one host and shared amongst all of them. */
+		int active_side = resources::controller->current_side();
+		if ((*resources::teams)[active_side - 1].is_local() &&
+		    get_replay_source().at_end())
+		{
+			/* The decision is ours, and it will be inserted
+			   into the replay. */
+			DBG_REPLAY << "MP synchronization: local choice\n";
+			config cfg = uch.query_user();
+			recorder.user_input(name, cfg);
+			return cfg;
+
+		} else {
+			/* The decision has already been made, and must
+			   be extracted from the replay. */
+			DBG_REPLAY << "MP synchronization: remote choice\n";
+			do_replay_handle(active_side, name);
+			const config *action = get_replay_source().get_next_action();
+			if (!action || !*(action = &action->child(name))) {
+				replay::process_error("[" + name + "] expected but none found\n");
+				return config();
+			}
+			return *action;
+		}
+	}
+	else
+	{
+		/* Neither the user nor a replay can be consulted, so a
+		   decision will be made at all hosts simultaneously.
+		   The result is not stored in the replay, since the
+		   other clients have already taken the same decision. */
+		DBG_REPLAY << "MP synchronization: synchronized choice\n";
+		return uch.random_choice(resources::state_of_game->rng());
+	}
+}

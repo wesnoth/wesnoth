@@ -197,4 +197,29 @@ private:
 	int upto_;
 };
 
+namespace mp_sync {
+
+/**
+ * Interface for querying local choices.
+ * It has to support querying the user and making a random choice from a
+ * preseeded random generator.
+ */
+struct user_choice
+{
+	virtual ~user_choice() {}
+	virtual config query_user() const = 0;
+	virtual config random_choice(rand_rng::simple_rng &) const = 0;
+};
+
+/**
+ * Performs a choice for WML events.
+ * The choice is synchronized across all the multiplayer clients and
+ * stored into the replay. The function object is called if the local
+ * client is responsible for making the choice.
+ * @param name tag used for storing the choice into the replay.
+ */
+config get_user_choice(const std::string &name, const user_choice &uch);
+
+}
+
 #endif
