@@ -284,32 +284,14 @@ void replay::add_pos(const std::string& type,
 	cmd->add_child(type,move);
 }
 
-void replay::add_value(const std::string& type, int value)
+void replay::choose_option(int value)
 {
-	config* const cmd = add_command();
-
-	config val;
-
-	char buf[100];
-	snprintf(buf,sizeof(buf),"%d",value);
-	val["value"] = buf;
-
-	cmd->add_child(type,val);
+	add_command()->add_child("choose")["value"] = value;
 }
 
-void replay::choose_option(int index)
+void replay::user_input(const config &input)
 {
-	add_value("choose",index);
-}
-
-void replay::text_input(std::string input)
-{
-	config* const cmd = add_command();
-
-	config val;
-	val["text"] = input;
-
-	cmd->add_child("input",val);
+	add_command()->add_child("input", input);
 }
 
 void replay::add_label(const terrain_label* label)

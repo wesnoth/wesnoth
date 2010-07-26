@@ -2951,7 +2951,9 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 				recorder.choose_option(option_chosen);
 			}
 			if(has_text_input) {
-				recorder.text_input(text_input_content);
+				config cfg;
+				cfg["text"] = text_input_content;
+				recorder.user_input(cfg);
 				text_input_result = text_input_content;
 			}
 			if(dlg_result == gui2::twindow::CANCEL) {

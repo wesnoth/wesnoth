@@ -55,7 +55,7 @@ public:
 		int defender_lvl, const size_t turn, const time_of_day &t);
 	void add_seed(const char* child_name, rand_rng::seed_t seed);
 	void choose_option(int index);
-	void text_input(std::string input);
+	void user_input(const config &);
 	void add_label(const terrain_label*);
 	void clear_labels(const std::string&, bool);
 	void add_rename(const std::string& name, const map_location& loc);
@@ -130,8 +130,6 @@ private:
 	//generic for add_movement and add_attack
 	void add_pos(const std::string& type,
 	             const map_location& a, const map_location& b);
-
-	void add_value(const std::string& type, int value);
 
 	void add_chat_log_entry(const config &speak, std::ostream &str) const;
 
