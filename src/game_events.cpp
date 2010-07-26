@@ -319,82 +319,6 @@ static dynamic_wml_action_map dynamic_wml_actions;
 namespace mp_sync {
 
 /**
- * A CHOICE encapsulates a kind of synchronized choice:
- * - LOCAL_MASTER means that we can decide any way we like, but we must
- *   register our decision using send_local_master_choice.
- * - REMOTE_MASTER means that the choice was already made by someone else,
- *   and we can find out what it was with retrieve_remote_master_choice.
- * - SYNCED means that we all have to agree on the choice and there is no
- *   scope for communication or user input. synchronized_choice will return
- *   the same value on all hosts.
- */
-enum CHOICE
-{
-	LOCAL_MASTER,
-	REMOTE_MASTER,
-	SYNCED
-};
-
-/**
- * A simple helper function: are we able to communicate with the player
- * and store their responses for future replays?
- * @return true if the game is playing, false otherwise.
- */
-static bool game_is_playing()
-{
-	return resources::state_of_game->phase() == game_state::PLAY;
-}
-
-/**
- * Tells what kind of logic needs to be implemented.
- * @see CHOICE
- */
-static CHOICE classify_interactive_choice()
-{
-	if (game_is_playing())
-	{
-		/* A decision will be made on one host and shared amongst
-		   all of them. */
-		int active_side = resources::controller->current_side();
-		if ((*resources::teams)[active_side - 1].is_local() &&
-		    get_replay_source().at_end()) {
-			/* The decision is ours, and it will be
-			   inserted into the replay. */
-			return LOCAL_MASTER;
-		} else {
-			/* The decision has already been made, and must
-			   be extracted from the replay. */
-			return REMOTE_MASTER;
-		}
-	}
-	else
-	{
-		/* A decision will be made at all hosts simultaneously,
-		   therefore the player cannot be consulted.
-		   There is no gui or network if the game hasn't started. */
-		return SYNCED;
-	}
-}
-
-/**
- * Provides a string name for the choice enum.
- * @return a constant string for that type.
- */
-static const char *choice_string(CHOICE choice)
-{
-	switch(choice) {
-	case LOCAL_MASTER:
-		return "LOCAL MASTER";
-	case REMOTE_MASTER:
-		return "REMOTE MASTER";
-	case SYNCED:
-		return "SYNCED";
-	}
-	assert(false);
-	return "";
-}
-
-/**
  * Function class for local choices.
  */
 struct user_choice
@@ -409,37 +333,44 @@ struct user_choice
  */
 config get_user_choice(const std::string &name, const user_choice &uch)
 {
-	CHOICE choice = classify_interactive_choice();
-	DBG_NG << "MP choice has type " << choice_string(choice) << '\n';
-
-	switch(choice) {
-	case LOCAL_MASTER:
+	if (resources::state_of_game->phase() == game_state::PLAY)
 	{
-		/* Query the user and store the result in the replay,
-		   so that it can be shared between clients. */
-		config cfg = uch.query_user();
-		recorder.user_input(name, cfg);
-		return cfg;
-	}
-	case REMOTE_MASTER:
-	{
-		// Get the choice from the replay.
+		/* We are to communicate with the player and store the
+		   choices in the replay. So a decision will be made on
+		   one host and shared amongst all of them. */
 		int active_side = resources::controller->current_side();
-		do_replay_handle(active_side, name);
-		const config *action = get_replay_source().get_next_action();
-		if (!action || !*(action = &action->child(name))) {
-			replay::process_error("[" + name + "] expected but none found\n");
-			break;
+		if ((*resources::teams)[active_side - 1].is_local() &&
+		    get_replay_source().at_end())
+		{
+			/* The decision is ours, and it will be inserted
+			   into the replay. */
+			DBG_NG << "MP synchronization: local choice\n";
+			config cfg = uch.query_user();
+			recorder.user_input(name, cfg);
+			return cfg;
+
+		} else {
+			/* The decision has already been made, and must
+			   be extracted from the replay. */
+			DBG_NG << "MP synchronization: remote choice\n";
+			do_replay_handle(active_side, name);
+			const config *action = get_replay_source().get_next_action();
+			if (!action || !*(action = &action->child(name))) {
+				replay::process_error("[" + name + "] expected but none found\n");
+				return config();
+			}
+			return *action;
 		}
-		return *action;
 	}
-	case SYNCED:
-		/* Neither the user nor a replay can be consulted.
+	else
+	{
+		/* Neither the user nor a replay can be consulted, so a
+		   decision will be made at all hosts simultaneously.
 		   The result is not stored in the replay, since the
 		   other clients have already taken the same decision. */
+		DBG_NG << "MP synchronization: synchronized choice\n";
 		return uch.random_choice(resources::state_of_game->rng());
 	}
-	return config();
 }
 
 }
