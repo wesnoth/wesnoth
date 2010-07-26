@@ -1171,8 +1171,8 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 
 	const t_string format = cfg["format"];
 	if(format.empty() == false) {
-		///@deprecated 1.9.2 Usage of 'format' instead or 'rand'
-		lg::wml_error << "Usage of 'format' is deprecated, use 'rand' instead, "
+		///@deprecated 1.9.2 Usage of 'format' instead of 'value'
+		lg::wml_error << "Usage of 'format' is deprecated, use 'value' instead, "
 			"support will be removed in 1.9.2.\n";
 		var = format;
 	}
