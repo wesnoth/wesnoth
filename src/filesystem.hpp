@@ -53,7 +53,7 @@ enum file_reorder_option { DONT_REORDER, DO_REORDER };
  * reorder: triggers the special handling of _main.cfg and _final.cfg
  * checksum: can be used to store checksum info
  */
-void get_files_in_dir(const std::string dir,
+void get_files_in_dir(const std::string &dir,
                       std::vector<std::string>* files,
                       std::vector<std::string>* dirs=NULL,
                       file_name_option mode = FILE_NAME_ONLY,
