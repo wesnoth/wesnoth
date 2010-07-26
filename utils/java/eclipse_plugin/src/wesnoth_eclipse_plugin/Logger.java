@@ -49,7 +49,7 @@ public class Logger {
 			return;
 		try
 		{
-			String logFilePath = String.format("%s/log%s.txt",
+			String logFilePath = String.format("%s/logs/log%s.txt",
 				WorkspaceUtils.getTemporaryFolder(), WorkspaceUtils.getRandomFileName());
 
 			logWriter_ = new BufferedWriter(new FileWriter(logFilePath));
