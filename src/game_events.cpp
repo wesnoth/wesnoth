@@ -2898,13 +2898,14 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 
 	int option_chosen = 0;
 	std::string text_input_result;
+	has_input = !options.empty() || has_text_input;
 
 	DBG_DP << "showing dialog...\n";
 
 	// If we're not replaying, or if we are replaying
 	// and there is no input to be made, show the dialog.
-	if(get_replay_source().at_end() || (options.empty() && !has_text_input) ) {
-
+	if (get_replay_source().at_end() || !has_input)
+	{
 		if (side_for_show && !get_replay_source().is_skipping())
 		{
 
@@ -2947,15 +2948,17 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 			resources::screen->invalidate_all();
 			resources::screen->draw(true,true);
 
-			if(!options.empty()) {
-				recorder.choose_option(option_chosen);
-			}
-			if(has_text_input) {
+			if (has_input) {
 				config cfg;
-				cfg["text"] = text_input_content;
+				if (!options.empty())
+					cfg["value"] = option_chosen;
+				if (has_text_input) {
+					cfg["text"] = text_input_content;
+					text_input_result = text_input_content;
+				}
 				recorder.user_input(cfg);
-				text_input_result = text_input_content;
 			}
+
 			if(dlg_result == gui2::twindow::CANCEL) {
 				current_context->skip_messages = true;
 			}
@@ -2982,30 +2985,18 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 #endif
 
 		}
-
+	}
+	else if (has_input)
+	{
 		// Otherwise if an input has to be made, get it from the replay data
-	} else {
-		const int side = controller->current_side();
-
-		if(!options.empty()) {
-			do_replay_handle(side, "choose");
-			const config* action = get_replay_source().get_next_action();
-			if (!action || !*(action = &action->child("choose"))) {
-				replay::process_error("choice expected but none found\n");
-				return;
-			}
-			const std::string &val = (*action)["value"];
-			option_chosen = atol(val.c_str());
+		do_replay_handle(controller->current_side(), "input");
+		const config *action = get_replay_source().get_next_action();
+		if (!action || !*(action = &action->child("input"))) {
+			replay::process_error("input expected but none found\n");
+			return;
 		}
-		if(has_text_input) {
-			do_replay_handle(side, "input");
-			const config* action = get_replay_source().get_next_action();
-			if (!action || !*(action = &action->child("input"))) {
-				replay::process_error("input expected but none found\n");
-				return;
-			}
-			text_input_result = (*action)["text"].str();
-		}
+		option_chosen = (*action)["value"];
+		text_input_result = (*action)["text"].str();
 	}
 
 	// Implement the consequences of the choice
