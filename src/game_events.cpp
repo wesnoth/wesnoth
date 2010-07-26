@@ -2723,6 +2723,72 @@ std::string get_caption(const vconfig& cfg, unit_map::iterator speaker)
 
 } // namespace
 
+struct message_user_choice : mp_sync::user_choice
+{
+	vconfig cfg;
+	unit_map::iterator speaker;
+	vconfig text_input_element;
+	bool has_text_input;
+	const std::vector<std::string> &options;
+
+	message_user_choice(const vconfig &c, const unit_map::iterator &s,
+		const vconfig &t, bool ht, const std::vector<std::string> &o)
+		: cfg(c), speaker(s), text_input_element(t)
+		, has_text_input(ht), options(o)
+	{}
+
+	virtual config query_user() const
+	{
+		std::string image = get_image(cfg, speaker);
+		std::string caption = get_caption(cfg, speaker);
+
+		size_t right_offset = image.find("~RIGHT()");
+		bool left_side = right_offset == std::string::npos;
+		if (!left_side) {
+			image.erase(right_offset);
+		}
+
+		// Parse input text, if not available all fields are empty
+		std::string text_input_label = text_input_element["label"];
+		std::string text_input_content = text_input_element["text"];
+		unsigned input_max_size = lexical_cast_default<unsigned>(
+			text_input_element["max_length"], 256);
+		if (input_max_size > 1024 || input_max_size < 1) {
+			lg::wml_error << "invalid maximum size for input "
+				<< input_max_size << '\n';
+			input_max_size = 256;
+		}
+
+		int option_chosen;
+		int dlg_result = gui2::show_wml_message(left_side,
+			resources::screen->video(), caption, cfg["message"],
+			image, false, has_text_input, text_input_label,
+			&text_input_content, input_max_size, options,
+			&option_chosen);
+
+		/* Since gui2::show_wml_message needs to do undrawing the
+		   chatlines can get garbled and look dirty on screen. Force a
+		   redraw to fix it. */
+		/** @todo This hack can be removed once gui2 is finished. */
+		resources::screen->invalidate_all();
+		resources::screen->draw(true,true);
+
+		if (dlg_result == gui2::twindow::CANCEL) {
+			current_context->skip_messages = true;
+		}
+
+		config cfg;
+		if (!options.empty()) cfg["value"] = option_chosen;
+		if (has_text_input) cfg["text"] = text_input_content;
+		return cfg;
+	}
+
+	virtual config random_choice(rand_rng::simple_rng &) const
+	{
+		return config();
+	}
+};
+
 // Display a message dialog
 WML_HANDLER_FUNCTION(message, event_info, cfg)
 {
@@ -2807,9 +2873,6 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 		sound::play_sound(cfg["sound"]);
 	}
 
-	std::string image = get_image(cfg, speaker);
-	std::string caption = get_caption(cfg, speaker);
-
 	if(text_input_elements.size()>1) {
 		lg::wml_error << "too many text_input tags, only one accepted\n";
 	}
@@ -2822,96 +2885,19 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 
 	DBG_DP << "showing dialog...\n";
 
-	// If we're not replaying, or if we are replaying
-	// and there is no input to be made, show the dialog.
-	if (get_replay_source().at_end() || !has_input)
+	message_user_choice msg(cfg, speaker, text_input_element, has_text_input,
+		options);
+	if (!has_input)
 	{
-			const size_t right_offset = image.find("~RIGHT()");
-			const bool left_side = (right_offset == std::string::npos);
-			if(!left_side) {
-				image.erase(right_offset);
-			}
-
-			// Parse input text, if not available all fields are empty
-			const std::string text_input_label =
-					text_input_element["label"];
-			std::string text_input_content = text_input_element["text"];
-			unsigned input_max_size = lexical_cast_default<unsigned>(
-						text_input_element["max_length"], 256);
-			if(input_max_size > 1024 || input_max_size < 1){
-				lg::wml_error << "invalid maximum size for input "
-						<< input_max_size<<"\n";
-				input_max_size=256;
-			}
-
-			const int dlg_result = gui2::show_wml_message(
-					left_side,
-					resources::screen->video(),
-					caption,
-					cfg["message"],
-					image,
-					false,
-					has_text_input,
-					text_input_label,
-					&text_input_content,
-					input_max_size,
-					options,
-					&option_chosen);
-
-			// Since gui2::show_wml_message needs to do undrawing the
-			// chatlines can get garbled and look dirty on screen. Force a
-			// redraw to fix it.
-			/** @todo This hack can be removed once gui2 is finished. */
-			resources::screen->invalidate_all();
-			resources::screen->draw(true,true);
-
-			if (has_input) {
-				config cfg;
-				if (!options.empty())
-					cfg["value"] = option_chosen;
-				if (has_text_input) {
-					cfg["text"] = text_input_content;
-					text_input_result = text_input_content;
-				}
-				recorder.user_input("input", cfg);
-			}
-
-			if(dlg_result == gui2::twindow::CANCEL) {
-				current_context->skip_messages = true;
-			}
-
-			/**
-			 * @todo enable portrait code in 1.7 and write a clean api.
-			 */
-#if 0
-			const tportrait* portrait =
-				speaker->second.portrait(400, tportrait::LEFT);
-			if(portrait) {
-				gui2::twml_message_left dlg(
-						caption,
-						cfg["message"],
-						portrait->image,
-						portrait->mirror);
-
-				dlg.show(screen->video());
-				if(dlg.get_retval() == gui2::twindow::CANCEL) {
-					handler.skip_messages(true);
-				}
-				return;
-			}
-#endif
+		/* Always show the dialog if it has no input, whether we are
+		   replaying or not. */
+		msg.query_user();
 	}
-	else if (has_input)
+	else
 	{
-		// Otherwise if an input has to be made, get it from the replay data
-		do_replay_handle(controller->current_side(), "input");
-		const config *action = get_replay_source().get_next_action();
-		if (!action || !*(action = &action->child("input"))) {
-			replay::process_error("input expected but none found\n");
-			return;
-		}
-		option_chosen = (*action)["value"];
-		text_input_result = (*action)["text"].str();
+		config choice = mp_sync::get_user_choice("input", msg);
+		option_chosen = choice["value"];
+		text_input_result = choice["text"].str();
 	}
 
 	// Implement the consequences of the choice
