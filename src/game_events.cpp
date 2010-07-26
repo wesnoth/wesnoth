@@ -316,7 +316,7 @@ static dynamic_wml_action_map dynamic_wml_actions;
  * and enabling replays. Any event handler which allows user options should
  * make use of these functions.
  */
-namespace complex_sync {
+namespace mp_sync {
 
 /**
  * A CHOICE encapsulates a kind of synchronized choice:
@@ -402,8 +402,7 @@ static int retrieve_remote_master_choice()
 		return 0;
 	}
 
-	const std::string &val = (*action)["value"];
-	return atol(val.c_str());
+	return (*action)["value"];
 }
 
 /**
@@ -433,6 +432,42 @@ static const char *choice_string(CHOICE choice)
 	}
 	assert(false);
 	return "";
+}
+
+/**
+ * Function class for local choices.
+ */
+struct int_choice
+{
+	int nb_options;
+	int_choice(int o): nb_options(o) {}
+	virtual ~int_choice() {}
+	virtual int operator()() const = 0;
+};
+
+/**
+ * Performs a choice and calls the function object if local.
+ */
+int get_int_choice(const int_choice &fch)
+{
+	int selected = 0;
+	CHOICE choice = classify_interactive_choice();
+
+	DBG_NG << "MP choice has type " << choice_string(choice) << '\n';
+
+	switch(choice) {
+	case LOCAL_MASTER:
+		selected = fch();
+		send_local_master_choice(selected);
+		break;
+	case REMOTE_MASTER:
+		selected = retrieve_remote_master_choice();
+		break;
+	case SYNCED:
+		selected = synchronized_choice(fch.nb_options);
+		break;
+	}
+	return 0;
 }
 
 }
@@ -2238,6 +2273,25 @@ WML_HANDLER_FUNCTION(set_menu_item, /*event_info*/, cfg)
 	}
 }
 
+struct unstore_unit_advance_choice: mp_sync::int_choice
+{
+	map_location loc;
+	bool use_dialog;
+	unstore_unit_advance_choice(int o, const map_location &l, bool d)
+		: int_choice(o), loc(l), use_dialog(d)
+	{}
+	virtual int operator()() const
+	{
+		if (use_dialog) {
+			DBG_NG << "dialog requested\n";
+			return dialogs::advance_unit_dialog(loc);
+		} else {
+			// VITAL this is NOT done using the synced RNG
+			return rand() % nb_options;
+		}
+	}
+};
+
 // Unit serialization to variables
 WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 {
@@ -2279,33 +2333,9 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 			    unit_helper::will_certainly_advance(resources::units->find(loc)))
 			{
 				int total_advancement_options = unit_helper::number_of_possible_advances(u);
-				complex_sync::CHOICE choice = complex_sync::classify_interactive_choice();
-				int selected = 0;
-
-				DBG_NG << "unstore_unit interactive choice has type "<< complex_sync::choice_string(choice) <<"\n";
-
-				switch(choice) {
-				case complex_sync::LOCAL_MASTER:
-				{
-					bool use_dialog = side == u.side() &&
-						(*resources::teams)[side - 1].is_human();
-					if (use_dialog) {
-						DBG_NG << "dialog requested\n";
-						selected = dialogs::advance_unit_dialog(loc);
-					} else {
-						// VITAL this is NOT done using the synced RNG
-						selected = rand() % total_advancement_options;
-					}
-					complex_sync::send_local_master_choice(selected);
-					break;
-				}
-				case complex_sync::REMOTE_MASTER:
-					selected = complex_sync::retrieve_remote_master_choice();
-					break;
-				case complex_sync::SYNCED:
-					selected = complex_sync::synchronized_choice(total_advancement_options);
-					break;
-				}
+				bool use_dialog = side == u.side() &&
+					(*resources::teams)[side - 1].is_human();
+				int selected = mp_sync::get_int_choice(unstore_unit_advance_choice(total_advancement_options, loc, use_dialog));
 				dialogs::animate_unit_advancement(loc, selected);
 			}
 		} else {
