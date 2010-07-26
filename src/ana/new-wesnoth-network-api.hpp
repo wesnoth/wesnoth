@@ -51,7 +51,7 @@ namespace network
      * Code that needs to create network servers or clients (components) will implement this
      * interface. Each method then corresponds to a particular network event.
      */
-    struct wesnoth_network_handler
+    struct handler
     {
         /**
          * Signal the successful connection of a component after a handshake.
@@ -127,7 +127,7 @@ namespace network
              *
              * Note: The parameter is a reference because it can't be a NULL pointer.
              */
-            client( wesnoth_network_handler& handler );
+            client( handler& handler );
             // Idea: Add a set_handler method to change handlers during execution.
 
             // Example, set_timeout( network::SEND_OPERATIONS, ana::time::seconds( 10 ) );
@@ -139,95 +139,165 @@ namespace network
              */
             void set_timeout( ... );
 
-            // Attempt async connection, will call handle_connect with results eventually
+            // Possibilities: Either use set_timeout to set general timeouts for groups of
+            // operations or have a timeout parameter for each time you call a method.
+
+            /**
+             * Attempt an asynchronous connection to a server, it will call the corresponding
+             * handle_connect with the results eventually.
+             */
             void async_connect( ... );
 
-            // Attempt async connection through proxy, will call handle_connect 
-            // with results eventually
-            operation_id async_connect_through_proxy( ... );
+            /**
+             * Attempt async connection through proxy, will call handle_connect
+             * with results eventually.
+             */
+            void async_connect_through_proxy( ... );
 
-            // Attempt to send a WML config to the server
-            operation_id async_send( const cfg&, ana::SEND_TYPE );
+            /**
+             * Attempt to send a WML document to the server.
+             *
+             * @param config : The WML document to send.
+             * @param send_type : The type of send operation, use ana::DONT_COPY to avoid
+             *                    unnecessary memory duplication. However, you must ensure that
+             *                    the config object used will be alive until the call of
+             *                    the handle_send with the returned operation_id. The default
+             *                    value will be ana::COPY_BUFFER.
+             *
+             * @returns the ana::operation_id corresponding to this operation.
+             *
+             * @sa ana::operation_id
+             * @sa ana::send_type
+             */
+            operation_id async_send( const config&, ana::send_type = ana::COPY_BUFFER);
 
-            // Signal the client that you are waiting for a message from the server
-            // The time parameter indicates how long you are willing to wait
-            // If a message is received before this time period the appropiate call to
-            // handle_receive will be made with this returning operation_id, otherwise
-            // handle_receive will be called with ana::timeout_error
-            operation_id waiting_for_message( time );
+            /**
+             * Signal the client that you are waiting for a message from the server
+             * The time parameter indicates how long you are willing to wait
+             * If a message is received before this time period the appropiate call to
+             * handle_receive will be made with ana::timeout_error.
+             */
+            void waiting_for_message( time );
 
-            // Get network stats for the client, the parameter indicates the time period
-            // See the stats interface in ana/api/stats.hpp:53
+            /**
+             * Get network stats for the client, the parameter indicates the time period
+             * See the stats interface in ana/api/stats.hpp:53
+             */
             ana::stats* get_stats( ana::stat_type = ana::ACCUMULATED );
 
-            // Cancel all pending asynchronous operations
+            /** Cancel all pending asynchronous operations. */
             void cancel_pending( );
 
-            // Force disconnect
+            /** Force disconnect. */
             void disconnect();
 
-            // Returns the string representing the IP address of the remote endpoint (server)
+            /**
+             * Returns the string representing the IP address of the remote endpoint (server).
+             */
             std::string ip_address_of_server() const;
 
         private:
             //Attributes
     };
 
-    struct server
+    /**
+     * A Wesnoth network server component. Supports the connection of many clients.
+     *
+     */
+    class server
     {
-        // Create a server, and associate a handler object to it, throws if can't open port(?)
-        server( wesnoth_server_interface* handler, port );
+        public:
+            /**
+             * Create a server, and associate a handler object to it.
+             *
+             * @param port : The port to associate the server to.
+             * @param handler : A reference to the object handling network events.
+             *
+             * @throws runtime_error if can't open port.
+             */
+            server( port, handler& );
 
-        // Set timeouts for a given client
-        // Example, set_timeout( 1, network::SEND_OPERATIONS, ana::time::seconds( 10 ) );
-        //          set_timeout( 2, network::SEND_OPERATIONS, ana::KILOBYTES(1),
-        //                                                    ana::time::seconds( 1 ) ); (?)
-        void set_timeout( ana::net_id, ... );
+            // Set timeouts for a given client
+            // Example, set_timeout( 1, network::SEND_OPERATIONS, ana::time::seconds( 10 ) );
+            //          set_timeout( 2, network::SEND_OPERATIONS, ana::KILOBYTES(1),
+            //                                                    ana::time::seconds( 1 ) ); (?)
+            /**
+             *
+             */
+            void set_timeout( ana::net_id, ... );
 
-        // Attempt to send a WML config to a client
-        operation_id async_send( ana::net_id, const cfg&, ana::SEND_TYPE );
+            /**
+             * Attempt to send a WML document to a client.
+             */
+            operation_id async_send( ana::net_id, const cfg&, ana::SEND_TYPE );
 
-        // Attempt to send a WML config to every connected client
-        operation_id async_send( const cfg&, ana::SEND_TYPE );
+            /**
+             * Attempt to send a WML document to every connected client.
+             */
+            operation_id async_send( const cfg&, ana::SEND_TYPE );
 
-        // Attempt to send a WML config to every connected client in the container
-        operation_id async_send( container_of_ids,  const cfg&, ana::SEND_TYPE );
+            /**
+             * Attempt to send a WML document to every connected client in the container.
+             */
+            operation_id async_send( container_of_ids,  const cfg&, ana::SEND_TYPE );
 
-        // Attempt to send a WML config to every connected client except one
-        operation_id async_send_except( ana::net_id,  const cfg&, ana::SEND_TYPE );
+            /**
+             * Attempt to send a WML document to every connected client except one.
+             */
+            operation_id async_send_except( ana::net_id,  const cfg&, ana::SEND_TYPE );
 
-        // Attempt to send a WML config to every connected client except those in the container
-        operation_id async_send_except( container_of_ids,  const cfg&, ana::SEND_TYPE );
+            /**
+             * Attempt to send a WML document to every connected client except those in the
+             * container.
+             */
+            operation_id async_send_except( container_of_ids,  const cfg&, ana::SEND_TYPE );
 
-        // Signal the server that you are waiting for a message from a given client
-        // The time parameter indicates how long you are willing to wait
-        // If a message is received before this time period the appropiate call to
-        // handle_receive will be made with this returning operation_id, otherwise
-        // handle_receive will be called with ana::timeout_error
-        operation_id waiting_for_message( ana::net_id, time );
+            /**
+             * Signal the server that you are waiting for a message from a given client
+             * The time parameter indicates how long you are willing to wait
+             * If a message is received before this time period the appropiate call to
+             * handle_receive will be made with ana::timeout_error.
+             */
+            void waiting_for_message( ana::net_id, time );
 
-        // Get network stats for the server, the parameter indicates the time period
-        // See the stats interface in ana/api/stats.hpp:53
-        ana::stats* get_stats( ana::stat_type = ana::ACCUMULATED );
+            /**
+             * Get network stats for the server, the parameter indicates the time period
+             * See the stats interface in ana/api/stats.hpp:53
+             */
+            ana::stats* get_stats( ana::stat_type = ana::ACCUMULATED );
 
-        // Get network stats for a given client, the parameter indicates the time period
-        // See the stats interface in ana/api/stats.hpp:53
-        ana::stats* get_stats( ana::net_id, ana::stat_type = ana::ACCUMULATED );
+            // Get network stats for a given client, the parameter indicates the time period
+            // See the stats interface in ana/api/stats.hpp:53
+            /**
+             * Get network stats for a connected client, the parameter indicates the time period.
+             * See the stats interface in ana/api/stats.hpp:53
+             */
+            ana::stats* get_stats( ana::net_id, ana::stat_type = ana::ACCUMULATED );
 
-        // Cancels all pending async operations
-        void cancel_pending( );
+            /** Cancels all pending asynchronous operations. */
+            void cancel_pending( );
 
-        // Cancel all pending asynchronous operations for a given connected client.
-        // Will do nothing if the ID doesn't belong to a connected client.
-        void cancel_pending( ana::net_id  client_id );
+            /**
+             * Cancel all pending asynchronous operations for a given connected client.
+             * Will do nothing if the ID doesn't belong to a connected client.
+             */
+            void cancel_pending( ana::net_id  client_id );
 
-        // Force disconnect on the server, will disconnect every connected client
-        void disconnect();
+            /**
+             * Force disconnect on the server.
+             * Will disconnect every connected client.
+             */
+            void disconnect();
 
-        // Force the disconnection of a client
-        void disconnect(ana::net_id);
+            /**
+             * Force the disconnection of a client.
+             */
+            void disconnect(ana::net_id);
 
-        // Returns the string representing the IP address of a connected client
-        std::string ip_address( ana::net_id ) const;
+            /** Returns the string representing the IP address of a connected client. */
+            std::string ip_address( ana::net_id ) const;
+
+        private:
+            //Attributes:
     };
 }
