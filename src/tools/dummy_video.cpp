@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-/** @file tools/dummy_video.cpp */
+/** @file */
 
 #include "../video.hpp"
 #include "../sdl_utils.hpp"

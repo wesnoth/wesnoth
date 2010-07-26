@@ -19,7 +19,7 @@
 #include <vector>
 
 /**
- * @file version.hpp
+ * @file
  * Interfaces for manipulating version numbers of engine,
  * add-ons, etc.
  *

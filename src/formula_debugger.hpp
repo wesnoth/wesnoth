@@ -13,7 +13,7 @@
 */
 
 /**
- * @file src/formula_debugger.hpp
+ * @file
  * Formula AI debugger
  *
  */

@@ -14,7 +14,7 @@
 
 /**
  * FAI AI Support engine - creating specific ai components from config
- * @file ai/composite/engine_fai.hpp
+ * @file
  */
 
 #ifndef AI_COMPOSITE_ENGINE_FAI_HPP_INCLUDED

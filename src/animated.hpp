@@ -13,7 +13,7 @@
 */
 
 /**
- * @file animated.hpp
+ * @file
  * Animate units.
  */
 

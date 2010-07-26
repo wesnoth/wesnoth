@@ -13,7 +13,7 @@
 */
 
 /**
- *  @file preferences_display.cpp
+ *  @file
  *  Manage display-related preferences, e.g. screen-size, etc.
  */
 

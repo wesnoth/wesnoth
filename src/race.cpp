@@ -13,7 +13,7 @@
 */
 
 /**
- *  @file race.cpp
+ *  @file
  *  Generate race-specific unit-names.
  */
 

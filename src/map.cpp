@@ -13,7 +13,7 @@
 */
 
 /**
- * @file map.cpp
+ * @file
  * Routines related to game-maps, terrain, locations, directions. etc.
  */
 

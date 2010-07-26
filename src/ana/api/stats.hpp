@@ -1,7 +1,7 @@
 /* $Id$ */
 
 /**
- * @file stats.hpp
+ * @file
  * @brief Implementation details for the ana project dealing with network statistics.
  *
  * ana: Asynchronous Network API.

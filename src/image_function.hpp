@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-/** @file image_function.hpp */
+/** @file */
 
 #ifndef IMAGE_FUNCTION_HPP_INCLUDED
 #define IMAGE_FUNCTION_HPP_INCLUDED

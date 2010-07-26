@@ -13,7 +13,7 @@
  */
 
 /**
- * @file validate_visitor.cpp
+ * @file
  */
 
 #include "validate_visitor.hpp"

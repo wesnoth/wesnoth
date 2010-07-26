@@ -13,7 +13,7 @@
    See the COPYING file for more details.
 */
 
-/** @file playcampaign.hpp */
+/** @file */
 
 #ifndef PLAYCAMPAIGN_H_INCLUDED
 #define PLAYCAMPAIGN_H_INCLUDED

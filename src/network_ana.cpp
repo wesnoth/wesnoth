@@ -1,7 +1,7 @@
 /* $Id$ */
 
 /**
- * @file network_ana.cpp
+ * @file
  * @brief Network API implementation using ana.
  *
  * Copyright (C) 2010 Guillermo Biset.

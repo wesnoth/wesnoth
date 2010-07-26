@@ -14,7 +14,7 @@
 
 /**
  * Managing the AIs configuration - headers
- * @file ai/configuration.hpp
+ * @file
  * */
 
 #ifndef AI_CONFIGURATION_HPP_INCLUDED

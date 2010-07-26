@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-/** @file clipboard.hpp */
+/** @file */
 
 #ifndef CLIPBOARD_HPP_INCLUDED
 #define CLIPBOARD_HPP_INCLUDED

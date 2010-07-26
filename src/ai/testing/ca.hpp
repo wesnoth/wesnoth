@@ -15,7 +15,7 @@
 
 /**
  * Default AI (Testing)
- * @file ai/testing/ca.hpp
+ * @file
  */
 
 #ifndef AI_TESTING_CA_HPP_INCLUDED

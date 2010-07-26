@@ -13,7 +13,7 @@
    */
 
 /**
- * @file campaign_server/campaign_server.cpp
+ * @file
  * Wesnoth addon server.
  * Expects a "server.cfg" config file in the current directory
  * and saves addons under data/.

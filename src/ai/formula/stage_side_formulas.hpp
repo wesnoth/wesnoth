@@ -13,7 +13,7 @@
 */
 
 /**
- * @file ai/formula/stage_side_formulas.hpp
+ * @file
  * Stage which executes side formulas
  * */
 

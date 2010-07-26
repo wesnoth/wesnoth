@@ -13,7 +13,7 @@
 */
 
 /**
- * @file  multiplayer_error_codes.hpp
+ * @file
  * Define the errors the server may send during the login procedure
  */
 

@@ -13,7 +13,7 @@
  */
 
 /**
- * @file move.cpp
+ * @file
  */
 
 #include "move.hpp"

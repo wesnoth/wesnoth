@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-/** @file halo.hpp  */
+/** @file */
 
 #ifndef HALO_HPP_INCLUDED
 #define HALO_HPP_INCLUDED

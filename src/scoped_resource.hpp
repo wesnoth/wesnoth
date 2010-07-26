@@ -13,7 +13,7 @@
 */
 
 /**
- *  @file scoped_resource.hpp
+ *  @file
  *  scoped_resource: class template, functions, helper policies etc.\ for
  *  resource management.
  */

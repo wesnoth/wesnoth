@@ -13,7 +13,7 @@
 */
 
 /**
- * @file field.hpp
+ * @file
  * Implements some helper classes to ease adding fields to a dialog and hide
  * the synchronization needed. Since some templates are used all is stored in
  * the header.

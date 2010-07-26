@@ -15,7 +15,7 @@
 */
 
 /**
- *  @file playsingle_controller.cpp
+ *  @file
  *  Logic for single-player game.
  */
 

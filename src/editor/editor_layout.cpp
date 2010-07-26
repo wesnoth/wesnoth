@@ -15,7 +15,7 @@
 #define GETTEXT_DOMAIN "wesnoth-editor"
 
 /**
- * @file editor/editor_layout.cpp
+ * @file
  * Set various sizes for the screen-layout of the map editor.
  */
 

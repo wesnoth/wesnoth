@@ -13,7 +13,7 @@
 */
 
 /**
- * @file generate_report.cpp
+ * @file
  * Formatted output of various stats about units and the game.
  * Used for the right sidebar and the top line of the main game-display.
  */

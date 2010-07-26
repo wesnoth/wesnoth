@@ -13,7 +13,7 @@
 */
 
 /**
- * @file scripting/lua.cpp
+ * @file
  * Provides a Lua interpreter.
  *
  * @warning Lua's error handling is done by setjmp/longjmp, so be careful

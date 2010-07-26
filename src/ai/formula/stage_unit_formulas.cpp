@@ -13,7 +13,7 @@
 */
 
 /**
- * @file ai/formula/stage_unit_formulas.cpp
+ * @file
  * Defines formula ai unit formulas stage
  * */
 

@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-/** @file statistics.hpp */
+/** @file */
 
 #ifndef STATISTICS_HPP_INCLUDED
 #define STATISTICS_HPP_INCLUDED

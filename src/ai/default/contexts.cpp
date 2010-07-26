@@ -15,7 +15,7 @@
 /**
  * Helper functions for the object which operates in the context of AI for specific side
  * This is part of AI interface
- * @file ai/default/contexts.cpp
+ * @file
  */
 
 #include "contexts.hpp"

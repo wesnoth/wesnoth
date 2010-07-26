@@ -13,7 +13,7 @@
 */
 
 /**
- * @file tools/cutter.cpp
+ * @file
  * Standalone-Utility for images / tiles
  */
 

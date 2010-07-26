@@ -13,7 +13,7 @@
 */
 
 /**
- * @file config.hpp
+ * @file
  * Definitions for the interface to Wesnoth Markup Language (WML).
  *
  * This module defines the interface to Wesnoth Markup Language (WML).  WML is

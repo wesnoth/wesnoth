@@ -13,7 +13,7 @@
 */
 
 /**
- * @file src/actions.hpp
+ * @file
  * Various functions which implement in-game events and commands.
  */
 

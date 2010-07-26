@@ -13,7 +13,7 @@
 */
 
 /**
- * @file ai/testing.hpp
+ * @file
  * Gather statistics important for AI testing and output them
  */
 

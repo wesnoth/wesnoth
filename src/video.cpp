@@ -13,7 +13,7 @@
 */
 
 /**
- *  @file video.cpp
+ *  @file
  *  Video-testprogram, standalone
  */
 

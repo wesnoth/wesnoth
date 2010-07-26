@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-/** @file widgets/scrollarea.hpp */
+/** @file */
 
 #ifndef SCROLLAREA_HPP_INCLUDED
 #define SCROLLAREA_HPP_INCLUDED

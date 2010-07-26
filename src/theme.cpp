@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-/** @file theme.cpp */
+/** @file */
 
 #include "global.hpp"
 

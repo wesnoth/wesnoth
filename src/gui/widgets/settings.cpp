@@ -13,7 +13,7 @@
 */
 
 /**
- * @file src/gui/widgets/settings.cpp
+ * @file
  * Implementation of settings.hpp.
  */
 

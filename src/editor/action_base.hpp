@@ -13,7 +13,7 @@
 */
 
 /**
- * @file action_base.hpp
+ * @file
  * Base class for editor actions
  *
  * An action is constructed in response to a user command, then executed on

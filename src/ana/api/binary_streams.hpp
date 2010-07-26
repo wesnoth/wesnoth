@@ -1,7 +1,7 @@
 /* $Id$ */
 
 /**
- * @file binary_streams.hpp
+ * @file
  * @brief Minimal serialization library.
  *
  * This file is part of the MiLi Minimalistic Library :

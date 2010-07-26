@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-/** @file network.hpp */
+/** @file */
 
 #ifndef NETWORK_HPP_INCLUDED
 #define NETWORK_HPP_INCLUDED

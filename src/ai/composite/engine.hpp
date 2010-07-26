@@ -15,7 +15,7 @@
 
 /**
  * AI Support engine - creating specific ai components from config
- * @file ai/composite/engine.hpp
+ * @file
  */
 
 #ifndef AI_COMPOSITE_ENGINE_HPP_INCLUDED

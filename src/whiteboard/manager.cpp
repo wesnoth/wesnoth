@@ -13,7 +13,7 @@
  */
 
 /**
- * @file manager.cpp
+ * @file
  */
 
 #include "manager.hpp"

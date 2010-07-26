@@ -13,7 +13,7 @@
 */
 
 /**
- * @file ai/testing/ca_testing_move_to_targets.hpp
+ * @file
  * Strategic movement routine, for experimentation
  */
 

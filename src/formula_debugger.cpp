@@ -13,7 +13,7 @@
 */
 
 /**
- * @file src/formula_debugger.cpp
+ * @file
  * Formula debugger - implementation
  * */
 

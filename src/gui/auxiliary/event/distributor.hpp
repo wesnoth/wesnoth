@@ -16,7 +16,7 @@
 #define GUI_WIDGETS_AUXILIARY_EVENT_DISTRIBUTOR_HPP_INCLUDED
 
 /**
- * @file gui/auxiliary/event/distributor.hpp
+ * @file
  * Contains the event distributor.
  *
  * The event distributor exists of several classes which are combined in one

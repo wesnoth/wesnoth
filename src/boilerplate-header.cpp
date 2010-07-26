@@ -13,7 +13,7 @@
 */
 
 /**
- * @file  boilerplate-header.cpp
+ * @file
  * Template for new cpp-files.
  */
 

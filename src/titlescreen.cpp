@@ -13,7 +13,7 @@
 */
 
 /**
- *  @file titlescreen.cpp
+ *  @file
  *  Shows the titlescreen, with main-menu and tip-of-the-day.
  *
  *  The menu consists of buttons, such als Start-Tutorial, Start-Campaign,

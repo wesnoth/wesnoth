@@ -13,7 +13,7 @@
 */
 
 /**
- *  @file util.cpp
+ *  @file
  *  String-routines - Templates for lexical_cast & lexical_cast_default.
  */
 

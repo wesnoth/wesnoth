@@ -13,7 +13,7 @@
 */
 
 /**
- * @file wml_exception.hpp
+ * @file
  * Add a special kind of assert to validate whether the input from WML
  * doesn't contain any problems that might crash the game.
  */

@@ -13,7 +13,7 @@
 */
 
 /**
- * @file ai/contexts.hpp
+ * @file
  * Helper functions for the object which operates in the context of AI for specific side
  * this is part of AI interface
  */

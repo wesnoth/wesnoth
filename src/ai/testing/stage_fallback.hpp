@@ -14,7 +14,7 @@
 
 /**
  * Stage: fallback to other AI
- * @file ai/testing/stage_fallback.hpp
+ * @file
  */
 
 #ifndef AI_TESTING_STAGE_FALLBACK_HPP_INCLUDED

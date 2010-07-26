@@ -13,7 +13,7 @@
    See the COPYING file for more details.
 */
 /**
- *  @file random.cpp
+ *  @file
  *  Generate random numbers.
  *
  *  There are various ways to get a random number.

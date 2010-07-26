@@ -13,7 +13,7 @@
 */
 
 /**
- * @file animated_game.cpp
+ * @file
  * Template instantiations for wesnoth-game.
  */
 

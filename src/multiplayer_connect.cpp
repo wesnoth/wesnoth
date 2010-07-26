@@ -13,7 +13,7 @@
 */
 
 /**
- * @file multiplayer_connect.cpp
+ * @file
  * Prepare to join a multiplayer-game.
  */
 

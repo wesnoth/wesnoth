@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-/** @file preferences.hpp */
+/** @file */
 
 #ifndef PREFERENCES_HPP_INCLUDED
 #define PREFERENCES_HPP_INCLUDED

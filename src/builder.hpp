@@ -13,7 +13,7 @@
 */
 
 /**
- * @file builder.hpp
+ * @file
  * Definitions for the terrain builder.
  */
 

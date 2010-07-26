@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-/** @file map_exception.hpp  */
+/** @file */
 
 #ifndef MAP_EXCEPTION_H_INCLUDED
 #define MAP_EXCEPTION_H_INCLUDED

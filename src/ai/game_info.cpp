@@ -14,7 +14,7 @@
 
 /**
  * Base class for the AI and AI-ai::manager contract.
- * @file ai/game_info.cpp
+ * @file
  */
 
 #include "game_info.hpp"

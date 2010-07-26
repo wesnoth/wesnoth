@@ -14,7 +14,7 @@
 
 /**
  * Composite AI component
- * @file ai/composite/component.cpp
+ * @file
  */
 
 #include "component.hpp"

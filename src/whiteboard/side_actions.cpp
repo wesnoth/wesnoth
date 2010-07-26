@@ -13,7 +13,7 @@
  */
 
 /**
- * @file side_actions.cpp
+ * @file
  */
 
 #include "side_actions.hpp"

@@ -16,7 +16,7 @@
 #define GUI_WIDGETS_WINDOW_PRIVATE_HPP_INCLUDED
 
 /**
- * @file gui/widgets/window_private.hpp
+ * @file
  * Helper for header for the window.
  *
  * @note This file should only be included by window.cpp.

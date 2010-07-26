@@ -13,7 +13,7 @@
 */
 
 /**
- * @file server/server.cpp
+ * @file
  * Wesnoth-Server, for multiplayer-games.
  */
 

@@ -13,7 +13,7 @@
 */
 
 /**
- * @file storyscreen/interface.hpp
+ * @file
  * Storyscreen controller (wrapper interface).
  */
 

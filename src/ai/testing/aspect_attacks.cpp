@@ -14,7 +14,7 @@
 
 /**
  * Stage: fallback to other AI
- * @file ai/testing/aspect_attacks.cpp
+ * @file
  */
 
 #include "aspect_attacks.hpp"

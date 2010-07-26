@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-/** @file widgets/scrollarea.cpp */
+/** @file */
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 

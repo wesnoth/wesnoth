@@ -13,7 +13,7 @@
 */
 
 /**
- *  @file unit_display.hpp
+ *  @file
  *  Display units performing various actions: moving, attacking, and dying.
  */
 

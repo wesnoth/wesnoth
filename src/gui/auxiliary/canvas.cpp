@@ -13,7 +13,7 @@
 */
 
 /**
- * @file canvas.cpp
+ * @file
  * Implementation of canvas.hpp.
  */
 

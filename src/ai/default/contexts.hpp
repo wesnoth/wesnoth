@@ -13,7 +13,7 @@
 */
 
 /**
- * @file ai/default/contexts.hpp
+ * @file
  * Default AI contexts
  */
 

@@ -13,7 +13,7 @@
 */
 
 /**
- *  @file preferences.cpp
+ *  @file
  *  Get and set user-preferences.
  */
 

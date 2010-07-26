@@ -1,7 +1,7 @@
 /* $Id$*/
 
 /**
- * @file asio_timers.cpp
+ * @file
  * @brief Implementation details for the ana project dealing with timers.
  *
  * ana: Asynchronous Network API.

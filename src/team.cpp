@@ -13,7 +13,7 @@
 */
 
 /**
- *  @file team.cpp
+ *  @file
  *  Team-management, allies, setup at start of scenario.
  */
 

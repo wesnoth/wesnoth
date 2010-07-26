@@ -13,7 +13,7 @@
 */
 
 /**
- *  @file sdl_utils.cpp
+ *  @file
  *  Support-routines for the SDL-graphics-library.
  */
 

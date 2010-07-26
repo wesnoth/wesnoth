@@ -1,7 +1,7 @@
 /* $Id$ */
 
 /**
- * @file buffers.hpp
+ * @file
  * @brief Implementation details for the ana project dealing with buffers.
  *
  * ana: Asynchronous Network API.

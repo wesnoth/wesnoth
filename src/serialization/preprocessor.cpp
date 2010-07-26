@@ -14,7 +14,7 @@
 */
 
 /**
- * @file serialization/preprocessor.cpp
+ * @file
  * WML preprocessor.
  */
 

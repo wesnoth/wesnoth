@@ -13,7 +13,7 @@
    See the COPYING file for more details.
 */
 
-/** @file unit_map.hpp */
+/** @file */
 
 #ifndef UNIT_MAP_H_INCLUDED
 #define UNIT_MAP_H_INCLUDED

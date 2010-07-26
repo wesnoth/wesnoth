@@ -14,7 +14,7 @@
 
 /**
  * Managing the AI lifecycle and interface for the rest of Wesnoth
- * @file ai/manager.cpp
+ * @file
  */
 
 #include "composite/ai.hpp"

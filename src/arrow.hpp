@@ -13,7 +13,7 @@
  */
 
 /**
- * @file arrow.hpp
+ * @file
  * Arrows destined to be drawn on the map. Created for the whiteboard project.
  */
 

@@ -13,7 +13,7 @@
  */
 
 /**
- * @file visitor.hpp
+ * @file
  */
 
 #ifndef WB_VISITOR_HPP_

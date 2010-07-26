@@ -15,7 +15,7 @@
 */
 
 /**
- * @file serialization/parser.cpp
+ * @file
  * Read/Write & analyse WML- and config-files.
  */
 

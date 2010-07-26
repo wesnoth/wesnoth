@@ -13,7 +13,7 @@
 */
 
 /**
- * @file game_display.cpp
+ * @file
  * During a game, show map & info-panels at top+right.
  */
 

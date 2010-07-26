@@ -13,7 +13,7 @@
 */
 
 /**
- * @file formula_debugger_fwd.cpp
+ * @file
  * Formula debugger - forward declaration and add_debug_info static function
  * */
 

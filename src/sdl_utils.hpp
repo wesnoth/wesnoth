@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-/** @file sdl_utils.hpp */
+/** @file */
 
 #ifndef SDL_UTILS_INCLUDED
 #define SDL_UTILS_INCLUDED

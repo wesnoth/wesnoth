@@ -13,7 +13,7 @@
 */
 
 /**
- * @file halo.cpp
+ * @file
  * Maintain halo-effects for units and items.
  * Examples: white mage, lighthouse.
  */

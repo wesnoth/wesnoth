@@ -13,7 +13,7 @@
 */
 
 /**
- * @file ai/default/ai.cpp
+ * @file
  * Artificial intelligence - The computer commands the enemy.
  */
 

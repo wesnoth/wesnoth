@@ -13,7 +13,7 @@
 */
 
 /**
- * @file storyscreen/part.hpp
+ * @file
  * Storyscreen parts and floating images representation.
  */
 

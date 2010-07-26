@@ -14,7 +14,7 @@
 */
 
 /**
- *  @file mp_game_settings.cpp
+ *  @file
  *  Container for multiplayer game-creation parameters.
  */
 

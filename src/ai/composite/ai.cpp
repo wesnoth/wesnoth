@@ -15,7 +15,7 @@
 
 /**
  * Composite AI with turn sequence which is a vector of stages
- * @file ai/composite/ai.cpp
+ * @file
  */
 
 #include "ai.hpp"

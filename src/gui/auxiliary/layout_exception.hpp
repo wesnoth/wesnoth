@@ -13,7 +13,7 @@
 */
 
 /**
- * @file gui/auxiliary/layout_exception.cpp
+ * @file
  * Defines the exception classes for the layout algorithm.
  */
 

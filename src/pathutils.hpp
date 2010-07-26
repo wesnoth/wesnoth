@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-/** @file pathutils.hpp */
+/** @file */
 
 #ifndef PATHUTILS_H_INCLUDED
 #define PATHUTILS_H_INCLUDED

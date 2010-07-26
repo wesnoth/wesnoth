@@ -15,7 +15,7 @@
 /**
  * Base gamestate observer - useful to see if the gamestate has changed
  * between two points of time
- * @file ai/gamestate_observer.cpp
+ * @file
  */
 
 #include "manager.hpp"

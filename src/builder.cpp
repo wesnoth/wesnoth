@@ -13,7 +13,7 @@
 */
 
 /**
- * @file builder.cpp
+ * @file
  * Terrain builder.
  */
 

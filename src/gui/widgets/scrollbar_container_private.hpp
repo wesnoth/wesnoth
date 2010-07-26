@@ -18,7 +18,7 @@
 #include "gui/widgets/scrollbar_container.hpp"
 
 /**
- * @file gui/widgets/scrollbar_container_private.hpp
+ * @file
  * Helper for header for the scrollbar_container.
  *
  * @note This file should only be included by scrollbar_container.cpp.

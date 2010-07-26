@@ -13,7 +13,7 @@
  */
 
 /**
- * @file highlight_visitor.cpp
+ * @file
  */
 
 #include "highlight_visitor.hpp"

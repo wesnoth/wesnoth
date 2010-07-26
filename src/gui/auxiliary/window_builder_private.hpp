@@ -13,7 +13,7 @@
 */
 
 /**
- * @file window_builder_private.hpp
+ * @file
  * This file contains all classes used privately in window_builder.cpp and
  * should only be included by window_builder.cpp.
  */

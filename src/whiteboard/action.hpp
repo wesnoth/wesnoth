@@ -13,7 +13,7 @@
  */
 
 /**
- * @file action.hpp
+ * @file
  */
 
 #ifndef WB_ACTION_HPP_

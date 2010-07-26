@@ -1,7 +1,7 @@
 /* $Id$ */
 
 /**
- * @file predicates.hpp
+ * @file
  * @brief Implementation details for the ana project dealing with client predicates.
  *
  * ana: Asynchronous Network API.

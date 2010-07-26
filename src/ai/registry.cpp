@@ -14,7 +14,7 @@
 
 /**
  * All known c++ AI parts. Workaround to a linker feature of not including all symbols from files, and including only actually referenced stuff. this is not good for 'static registry' pattern. (other workarounds such as --whole-archive for ld are possible, but require messing with all buildsystems)
- * @file ai/registry.cpp
+ * @file
  */
 
 #include "composite/ai.hpp"

@@ -1,7 +1,7 @@
 /* $Id$ */
 
 /**
- * @file network_manager_ana.hpp
+ * @file
  * @brief Header file for network features using ana.
  *
  * Copyright (C) 2010 Guillermo Biset.

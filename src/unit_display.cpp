@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-/** @file unit_display.cpp */
+/** @file */
 
 #include "global.hpp"
 #include "unit_display.hpp"

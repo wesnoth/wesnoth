@@ -13,7 +13,7 @@
    See the COPYING file for more details.
 */
 
-/** @file random.hpp */
+/** @file */
 
 #ifndef RANDOM_HPP_INCLUDED
 #define RANDOM_HPP_INCLUDED

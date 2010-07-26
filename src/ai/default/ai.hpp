@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-/** @file ai/default/ai.hpp */
+/** @file */
 
 #ifndef AI_DEFAULT_AI_HPP_INCLUDED
 #define AI_DEFAULT_AI_HPP_INCLUDED

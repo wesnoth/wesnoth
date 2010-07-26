@@ -13,7 +13,7 @@
 */
 
 /**
- *  @file window.cpp
+ *  @file
  *  Implementation of window.hpp.
  */
 

@@ -13,7 +13,7 @@
 */
 
 /**
- * @file pathfind.hpp
+ * @file
  * This module contains various pathfinding functions and utilities.
  */
 

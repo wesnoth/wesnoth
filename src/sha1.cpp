@@ -13,7 +13,7 @@
 */
 
 /**
- *  @file sha1.cpp
+ *  @file
  *  Secure Hash Algorithm 1 (SHA-1).
  *  Used to checksum the game-config / cache.
  */

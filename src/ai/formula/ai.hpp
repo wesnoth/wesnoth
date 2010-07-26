@@ -13,7 +13,7 @@
 */
 
 /**
- * @file ai/formula/ai.hpp
+ * @file
  * Defines formula ai
  * */
 

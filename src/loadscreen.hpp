@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-/** @file loadscreen.hpp */
+/** @file */
 
 #ifndef JM_LOADSCREEN_HPP
 #define JM_LOADSCREEN_HPP

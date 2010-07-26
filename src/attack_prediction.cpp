@@ -18,7 +18,7 @@
 */
 
 /**
- * @file attack_prediction.cpp
+ * @file
  * Simulate combat to calculate attacks. Standalone program, benchmark.
  */
 

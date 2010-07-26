@@ -13,7 +13,7 @@
 */
 
 /**
- * @file copy_policy.hpp
+ * @file
  * Defines the copy policies for classes.
  *
  * When a class can have multiple copy policies these templates can be used.

@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-/** @file time_of_day.cpp */
+/** @file */
 
 #include "global.hpp"
 

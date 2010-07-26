@@ -13,7 +13,7 @@
 */
 
 /**
- * @file action.cpp
+ * @file
  * Editor action classes
  */
 #define GETTEXT_DOMAIN "wesnoth-editor"

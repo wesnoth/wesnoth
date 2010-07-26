@@ -1,7 +1,7 @@
 /* $Id$ */
 
 /**
- * @file client.cpp
+ * @file
  * @brief Client side chat application. Example for the ana project.
  *
  * ana: Asynchronous Network API.

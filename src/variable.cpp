@@ -15,7 +15,7 @@
 */
 
 /**
- *  @file variable.cpp
+ *  @file
  *  Manage WML-variables.
  */
 

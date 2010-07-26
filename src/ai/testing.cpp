@@ -14,7 +14,7 @@
 
 /**
  * Gather statistics important for AI testing and output them
- * @file ai/testing.cpp
+ * @file
  */
 #include "manager.hpp"
 #include "testing.hpp"

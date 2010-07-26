@@ -14,7 +14,7 @@
 */
 
 /**
- * @file game_end_exceptions.hpp
+ * @file
  * Contains the exception interfaces used to signal
  * completion of a scenario, campaign or turn.
  */

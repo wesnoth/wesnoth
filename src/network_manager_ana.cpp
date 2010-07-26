@@ -1,7 +1,7 @@
 /* $Id$ */
 
 /**
- * @file network_manager_ana.cpp
+ * @file
  * @brief Implementation file for network features using ana.
  *
  * Copyright (C) 2010 Guillermo Biset.

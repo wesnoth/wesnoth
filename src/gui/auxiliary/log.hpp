@@ -13,7 +13,7 @@
 */
 
 /**
- * @file gui/auxiliary/log.hpp
+ * @file
  * Define the common log macros for the gui toolkit.
  */
 

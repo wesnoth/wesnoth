@@ -14,7 +14,7 @@
 
 /**
  * Candidate actions framework
- * @file ai/composite/rca.cpp
+ * @file
  */
 
 #include "ai.hpp"

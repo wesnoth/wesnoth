@@ -13,7 +13,7 @@
 */
 
 /**
- * @file ai/composite/aspect.cpp
+ * @file
  */
 
 #include "aspect.hpp"

@@ -13,7 +13,7 @@
  */
 
 /**
- * @file mapbuilder_visitor.h
+ * @file
  */
 
 #ifndef WB_MAPBUILDER_VISITOR_HPP_

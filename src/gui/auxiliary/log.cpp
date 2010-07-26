@@ -13,7 +13,7 @@
 */
 
 /**
- * @file gui/auxiliary/log.cpp
+ * @file
  * Define the loggers for the gui toolkit.
  */
 

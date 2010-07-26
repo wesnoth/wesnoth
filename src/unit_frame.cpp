@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-/** @file unit_frame.cpp */
+/** @file */
 
 #include "global.hpp"
 

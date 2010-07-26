@@ -14,7 +14,7 @@
 
 /**
  * Candidate actions evaluator
- * @file ai/testing/stage_rca.cpp
+ * @file
  */
 
 #include "stage_rca.hpp"

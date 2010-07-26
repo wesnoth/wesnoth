@@ -13,7 +13,7 @@
  */
 
 /**
- * @file move.hpp
+ * @file
  */
 
 #ifndef WB_MOVE_HPP_

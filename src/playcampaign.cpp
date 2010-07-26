@@ -14,7 +14,7 @@
 */
 
 /**
- *  @file playcampaign.cpp
+ *  @file
  *  Controls setup, play, (auto)save and replay of campaigns.
  */
 

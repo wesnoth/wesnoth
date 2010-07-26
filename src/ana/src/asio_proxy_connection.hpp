@@ -1,7 +1,7 @@
 /* $Id$ */
 
 /**
- * @file asio_proxy_connection.hpp
+ * @file
  * @brief Header file of the client side proxy connection for the ana project.
  *
  * ana: Asynchronous Network API.

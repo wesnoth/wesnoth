@@ -13,7 +13,7 @@
 */
 
 /**
- * @file ai/composite/goal.hpp
+ * @file
  */
 
 #ifndef AI_COMPOSITE_GOAL_HPP_INCLUDED

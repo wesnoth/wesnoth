@@ -14,7 +14,7 @@
 
 /**
  * Managing the AI-Game interaction - AI actions and their results
- * @file ai/actions.cpp
+ * @file
  */
 
 /**

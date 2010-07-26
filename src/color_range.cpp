@@ -13,7 +13,7 @@
 */
 
 /**
- * @file color_range.cpp
+ * @file
  * Generate ranges of colors, and color palettes.
  * Used e.g. to color HP, XP.
  */

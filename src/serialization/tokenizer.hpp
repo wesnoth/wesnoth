@@ -13,7 +13,7 @@
    See the COPYING file for more details.
 */
 
-/** @file serialization/tokenizer.hpp */
+/** @file */
 
 #ifndef TOKENIZER_H_INCLUDED
 #define TOKENIZER_H_INCLUDED

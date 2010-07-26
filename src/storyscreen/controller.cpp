@@ -14,7 +14,7 @@
 */
 
 /**
- * @file storyscreen/controller.cpp
+ * @file
  * Storyscreen controller (implementation).
  */
 

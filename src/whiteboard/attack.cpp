@@ -13,7 +13,7 @@
  */
 
 /**
- * @file attack.cpp
+ * @file
  */
 
 #include "attack.hpp"

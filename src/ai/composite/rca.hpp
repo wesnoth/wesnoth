@@ -13,7 +13,7 @@
 */
 
 /**
- * @file ai/composite/rca.hpp
+ * @file
  * candidate action framework
  */
 

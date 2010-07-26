@@ -13,7 +13,7 @@
 */
 
 /**
- * @file ai/lua/core.cpp
+ * @file
  * Provides core classes for the Lua AI.
  *
  */

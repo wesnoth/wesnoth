@@ -14,7 +14,7 @@
 */
 
 /**
- * @file menu_events.cpp
+ * @file
  * Operations activated from menus/hotkeys while playing a game.
  * E.g. Unitlist, status_table, save_game, save_map, chat, show_help, etc.
  */

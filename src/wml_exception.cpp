@@ -13,7 +13,7 @@
 */
 
 /**
- *  @file wml_exception.cpp
+ *  @file
  *  Implementation for wml_exception.hpp.
  */
 

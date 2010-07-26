@@ -12,7 +12,7 @@
 */
 
 /**
- * @file ai/formula/candidates.cpp
+ * @file
  * Defines formula ai candidate actions
  * */
 

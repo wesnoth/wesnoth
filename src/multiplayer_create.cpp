@@ -13,7 +13,7 @@
 */
 
 /**
- * @file multiplayer_create.cpp
+ * @file
  * Create a multiplayer-game: select map, players, options etc.
  */
 

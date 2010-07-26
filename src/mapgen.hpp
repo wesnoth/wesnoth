@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-/** @file mapgen.hpp */
+/** @file */
 
 #ifndef MAP_GEN_HPP_INCLUDED
 #define MAP_GEN_HPP_INCLUDED

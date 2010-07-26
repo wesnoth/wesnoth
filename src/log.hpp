@@ -14,7 +14,7 @@
 */
 
 /**
- * @file src/log.hpp
+ * @file
  * Standard logging facilities (interface).
  */
 

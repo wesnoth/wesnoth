@@ -13,7 +13,7 @@
 */
 
 /**
- * @file src/actions.cpp
+ * @file
  * Recruiting, Fighting.
  */
 

@@ -13,7 +13,7 @@
 */
 
 /**
- *  @file replay.cpp
+ *  @file
  *  Replay control code.
  *
  *  See http://www.wesnoth.org/wiki/ReplayWML for more info.

@@ -13,7 +13,7 @@
 */
 
 /**
- *  @file src/settings.cpp
+ *  @file
  *  General settings and defaults for scenarios.
  */
 

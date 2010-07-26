@@ -13,7 +13,7 @@
 */
 
 /**
- * @file ai/gamestate_observer.hpp
+ * @file
  * A helper class to observe the game state
  */
 

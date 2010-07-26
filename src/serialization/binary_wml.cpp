@@ -14,7 +14,7 @@
 */
 
 /**
- * @file serialization/binary_wml.cpp
+ * @file
  * Data compression, designed for network traffic.
  */
 

@@ -23,7 +23,7 @@
 #include <map>
 
 /**
- * @file game_events.hpp
+ * @file
  * Define the game's events mechanism.
  *
  * Events might be units moving or fighting, or when victory or defeat occurs.

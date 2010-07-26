@@ -1,7 +1,7 @@
 /* $Id$ */
 
 /**
- * @file server.hpp
+ * @file
  * @brief Server side chat application. Example for the ana project.
  *
  * ana: Asynchronous Network API.

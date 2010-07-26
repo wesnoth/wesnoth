@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-/** @file game_display.hpp */
+/** @file */
 
 #ifndef GAME_DISPLAY_H_INCLUDED
 #define GAME_DISPLAY_H_INCLUDED

@@ -13,7 +13,7 @@
 */
 
 /**
- * @file about.cpp
+ * @file
  * Show screen with scrolling credits.
  */
 

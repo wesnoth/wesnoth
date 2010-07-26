@@ -13,7 +13,7 @@
  */
 
 /**
- * @file mapbuilder_visitor.cpp
+ * @file
  */
 
 #include "mapbuilder_visitor.hpp"

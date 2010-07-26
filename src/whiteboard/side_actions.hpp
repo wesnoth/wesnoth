@@ -13,7 +13,7 @@
  */
 
 /**
- * @file side_actions.hpp
+ * @file
  */
 
 #ifndef WB_SIDE_ACTIONS_HPP_

@@ -13,7 +13,7 @@
    See the COPYING file for more details.
 */
 
-/** @file src/widgets/scrollbar.hpp */
+/** @file */
 
 #ifndef SCROLLBAR_HPP_INCLUDED
 #define SCROLLBAR_HPP_INCLUDED

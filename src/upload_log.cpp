@@ -14,7 +14,7 @@
 */
 
 /**
- *  @file upload_log.cpp
+ *  @file
  *  Manage logfiles for uploading as feedback, e.g.\ for campaign-balancing.
  */
 

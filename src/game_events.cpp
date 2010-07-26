@@ -13,7 +13,7 @@
 */
 
 /**
- * @file game_events.cpp
+ * @file
  * Processing of WML-events.
  */
 

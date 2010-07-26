@@ -13,7 +13,7 @@
 */
 
 /**
- * @file leader_list.cpp
+ * @file
  * Manage the selection of a leader, and select his/her gender.
  */
 

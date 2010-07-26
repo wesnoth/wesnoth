@@ -13,7 +13,7 @@
 */
 
 /**
- * @file tools/key_test.cpp
+ * @file
  * Keyboard-test - Standalone-Utility
  */
 

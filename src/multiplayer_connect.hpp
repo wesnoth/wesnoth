@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-/** @file multiplayer_connect.hpp */
+/** @file */
 
 #ifndef MULTIPLAYER_CONNECT_H_INCLUDED
 #define MULTIPLAYER_CONNECT_H_INCLUDED

@@ -1,7 +1,7 @@
 /* $Id$ */
 
 /**
- * @file asio_listener.hpp
+ * @file
  * @brief Header file of a listener for the ana project.
  *
  * ana: Asynchronous Network API.

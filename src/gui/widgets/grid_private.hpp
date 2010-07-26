@@ -16,7 +16,7 @@
 #define GUI_WIDGETS_GRID_PRIVATE_HPP_INCLUDED
 
 /**
- * @file gui/widgets/grid_private.hpp
+ * @file
  * Helper for header for the grid.
  *
  * @note This file should only be included by grid.cpp.

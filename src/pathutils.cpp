@@ -13,7 +13,7 @@
 */
 
 /**
- * @file pathutils.cpp
+ * @file
  * Various pathfinding functions and utilities.
  */
 

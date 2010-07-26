@@ -13,7 +13,7 @@
 */
 
 /**
- * @file ai/testing/ca_testing_move_to_targets.cpp
+ * @file
  * Strategic movement routine, taken from default AI
  */
 

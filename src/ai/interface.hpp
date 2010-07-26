@@ -13,7 +13,7 @@
 */
 
 /**
- * @file ai/interface.hpp
+ * @file
  * Interface to the AI.
  */
 

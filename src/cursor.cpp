@@ -13,7 +13,7 @@
 */
 
 /**
- * @file cursor.cpp
+ * @file
  * Support for different cursors-shapes.
  */
 

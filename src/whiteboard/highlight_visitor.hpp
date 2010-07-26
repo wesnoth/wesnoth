@@ -13,7 +13,7 @@
  */
 
 /**
- * @file highlight_visitor.hpp
+ * @file
  */
 
 #ifndef WB_HIGHLIGHT_VISITOR_HPP_

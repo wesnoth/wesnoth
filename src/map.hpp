@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-/** @file map.hpp  */
+/** @file */
 
 #ifndef MAP_H_INCLUDED
 #define MAP_H_INCLUDED

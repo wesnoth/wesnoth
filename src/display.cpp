@@ -13,7 +13,7 @@
 */
 
 /**
- * @file display.cpp
+ * @file
  * Routines to set up the display, scroll and zoom the map.
  */
 

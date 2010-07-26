@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-/** @file mp_game_settings.hpp */
+/** @file */
 
 #ifndef MP_GAME_SETTINGS_HPP_INCLUDED
 #define MP_GAME_SETTINGS_HPP_INCLUDED

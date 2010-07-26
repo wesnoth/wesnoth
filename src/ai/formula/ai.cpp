@@ -13,7 +13,7 @@
 */
 
 /**
- * @file ai/formula/ai.cpp
+ * @file
  * Defines formula ai candidate actions - headers
  */
 

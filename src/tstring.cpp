@@ -14,7 +14,7 @@
 */
 
 /**
- *  @file tstring.cpp
+ *  @file
  *  Routines for translatable strings.
  */
 

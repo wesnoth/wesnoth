@@ -13,7 +13,7 @@
  */
 
 /**
- * @file attack.hpp
+ * @file
  */
 
 #ifndef ATTACK_HPP_

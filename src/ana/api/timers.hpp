@@ -1,7 +1,7 @@
 /* $Id$ */
 
 /**
- * @file timers.hpp
+ * @file
  * @brief Implementation details for the ana project dealing with timers.
  *
  * ana: Asynchronous Network API.

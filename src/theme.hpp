@@ -13,7 +13,7 @@
 */
 
 /**
- *  @file theme.hpp
+ *  @file
  *  Definitions related to theme-support.
  */
 

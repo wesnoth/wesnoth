@@ -13,7 +13,7 @@
 */
 
 /**
- * @file editor_common.hpp
+ * @file
  * Main (common) editor header. Contains forward declarations for most classes,
  * logging macro definitions and base exception declarations
  */

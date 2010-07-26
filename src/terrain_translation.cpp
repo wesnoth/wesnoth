@@ -13,7 +13,7 @@
 */
 
 /**
- *  @file terrain_translation.cpp
+ *  @file
  *  Routines for terrain-conversion.
  */
 

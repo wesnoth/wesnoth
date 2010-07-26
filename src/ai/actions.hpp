@@ -14,7 +14,7 @@
 
 /**
  * Managing the AI-Game interaction - AI actions and their results
- * @file ai/actions.hpp
+ * @file
  * */
 
 #ifndef AI_ACTIONS_HPP_INCLUDED

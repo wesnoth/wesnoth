@@ -15,7 +15,7 @@
 */
 
 /**
- * @file serialization/string_utils.cpp
+ * @file
  * Various string-routines.
  */
 

@@ -14,7 +14,7 @@
 */
 
 /**
- * @file serialization/binary_or_text.cpp
+ * @file
  * Read/Write file in binary (compressed) or text-format (uncompressed).
  */
 

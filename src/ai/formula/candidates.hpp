@@ -12,7 +12,7 @@
 */
 
 /**
- * @file ai/formula/candidates.hpp
+ * @file
  * Defines formula ai candidate actions - headers
  * */
 

@@ -13,7 +13,7 @@
 */
 
 /**
- * @file gui/auxiliary/timer.hpp
+ * @file
  * Contains the gui2 timer routines.
  *
  * This code avoids the following problems with the sdl timers:

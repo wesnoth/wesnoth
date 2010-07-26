@@ -13,7 +13,7 @@
 */
 
 /**
- *  @file util.hpp
+ *  @file
  *  Templates and utility-routines for strings and numbers.
  */
 

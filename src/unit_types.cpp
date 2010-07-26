@@ -13,7 +13,7 @@
 */
 
 /**
- *  @file unit_types.cpp
+ *  @file
  *  Handle unit-type specific attributes, animations, advancement.
  */
 

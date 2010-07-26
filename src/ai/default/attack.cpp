@@ -13,7 +13,7 @@
 */
 
 /**
- * @file ai/default/attack.cpp
+ * @file
  * Calculate & analyse attacks of the default ai
  */
 

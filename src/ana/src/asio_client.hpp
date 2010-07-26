@@ -1,7 +1,7 @@
 /* $Id$ */
 
 /**
- * @file asio_client.hpp
+ * @file
  * @brief Header file of the client side of the ana project.
  *
  * ana: Asynchronous Network API.

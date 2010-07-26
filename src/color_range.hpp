@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-/** @file color_range.hpp */
+/** @file */
 
 #ifndef COLOR_RANGE_H_INCLUDED
 #define COLOR_RANGE_H_INCLUDED

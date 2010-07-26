@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-/** @file terrain_translation.hpp */
+/** @file */
 
 #ifndef TERRAIN_TRANSLATION_H_INCLUDED
 #define TERRAIN_TRANSLATION_H_INCLUDED

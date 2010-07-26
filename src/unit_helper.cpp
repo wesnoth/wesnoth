@@ -13,7 +13,7 @@
 */
 
 /**
- * @file unit_helper.cpp
+ * @file
  * Support functions for dealing with units.
  */
 

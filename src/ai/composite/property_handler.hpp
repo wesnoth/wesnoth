@@ -14,7 +14,7 @@
 
 /**
  * Composite AI component
- * @file ai/composite/property_handler.hpp
+ * @file
  */
 
 

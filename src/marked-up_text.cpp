@@ -13,7 +13,7 @@
 */
 
 /**
- * @file marked-up_text.cpp
+ * @file
  * Support for simple markup in text (fonts, colors, images).
  * E.g. "@Victory" will be shown in green.
  */

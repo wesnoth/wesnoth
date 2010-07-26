@@ -13,7 +13,7 @@
 */
 
 /**
- * @file dialogs.cpp
+ * @file
  * Various dialogs: advance_unit, show_objectives, save+load game, network::connection.
  */
 

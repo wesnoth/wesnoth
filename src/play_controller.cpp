@@ -14,7 +14,7 @@
 */
 
 /**
- *  @file play_controller.cpp
+ *  @file
  *  Handle input via mouse & keyboard, events, schedule commands.
  */
 

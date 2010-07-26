@@ -14,7 +14,7 @@
 
 /**
  * Stage of a composite AI
- * @file ai/composite/stage.cpp
+ * @file
  */
 
 #include "ai.hpp"

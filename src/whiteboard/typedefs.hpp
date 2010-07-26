@@ -13,7 +13,7 @@
  */
 
 /**
- * @file typedefs.hpp
+ * @file
  * Contains typedefs for the whiteboard.
  */
 

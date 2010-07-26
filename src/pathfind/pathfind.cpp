@@ -14,7 +14,7 @@
 */
 
 /**
- * @file pathfind.cpp
+ * @file
  * Various pathfinding functions and utilities.
  */
 

@@ -13,7 +13,7 @@
 */
 
 /**
- * @file ai/composite/component.hpp
+ * @file
  * A component of the AI framework
  */
 

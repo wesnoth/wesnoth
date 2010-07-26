@@ -13,7 +13,7 @@
 */
 
 /**
- * @file mapgen.cpp
+ * @file
  * Map-generator, with standalone testprogram.
  */
 

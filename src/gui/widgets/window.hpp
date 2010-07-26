@@ -13,7 +13,7 @@
 */
 
 /**
- *  @file window.hpp
+ *  @file
  *  This file contains the window object, this object is a top level container
  *  which has the event management as well.
  */

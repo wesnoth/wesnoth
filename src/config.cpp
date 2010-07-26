@@ -14,7 +14,7 @@
 */
 
 /**
- * @file config.cpp
+ * @file
  * Routines related to configuration-files / WML.
  */
 

@@ -13,7 +13,7 @@
    See the COPYING file for more details.
 */
 
-/** @file serialization/binary_or_text.hpp */
+/** @file */
 
 #ifndef SERIALIZATION_BINARY_OR_TEXT_HPP_INCLUDED
 #define SERIALIZATION_BINARY_OR_TEXT_HPP_INCLUDED

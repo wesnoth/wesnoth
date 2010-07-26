@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-/** @file unit_helper.hpp */
+/** @file */
 
 #ifndef UNIT_HELPER_HPP_INCLUDED
 #define UNIT_HELPER_HPP_INCLUDED

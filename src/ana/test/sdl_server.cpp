@@ -1,7 +1,7 @@
 /* $Id$ */
 
 /**
- * @file sdl_server.cpp
+ * @file
  * @brief Server application using SDL_net to test compatibility with ana.
  *
  * Language : C

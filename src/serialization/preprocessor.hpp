@@ -13,7 +13,7 @@
    See the COPYING file for more details.
 */
 
-/** @file serialization/preprocessor.hpp */
+/** @file */
 
 #ifndef SERIALIZATION_PREPROCESSOR_HPP_INCLUDED
 #define SERIALIZATION_PREPROCESSOR_HPP_INCLUDED

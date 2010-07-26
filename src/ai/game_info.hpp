@@ -13,7 +13,7 @@
 */
 
 /**
- * @file ai/game_info.hpp
+ * @file
  * Game information for the AI
  */
 

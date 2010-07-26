@@ -13,7 +13,7 @@
 */
 
 /**
- * @file ai/composite/aspect.hpp
+ * @file
  */
 
 #ifndef AI_COMPOSITE_ASPECT_HPP_INCLUDED

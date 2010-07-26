@@ -13,7 +13,7 @@
 */
 
 /**
- * @file gamestatus.cpp
+ * @file
  * Maintain status of a game, load&save games.
  */
 

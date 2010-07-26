@@ -14,7 +14,7 @@
 */
 
 /**
- * @file storyscreen/render.cpp
+ * @file
  * Storyscreen parts renderer.
  * @todo Translate relevant parts to GUI2.
  */

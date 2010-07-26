@@ -13,7 +13,7 @@
 */
 
 /**
- *  @file unit_abilities.cpp
+ *  @file
  *  Manage unit-abilities, like heal, cure, and weapon_specials.
  */
 

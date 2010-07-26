@@ -13,7 +13,7 @@
 */
 
 /**
- * @file ai/composite/stage.hpp
+ * @file
  * Composite AI stages
  */
 

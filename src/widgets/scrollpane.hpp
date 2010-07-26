@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-/** @file widgets/scrollpane.hpp */
+/** @file */
 
 #ifndef SCROLLPANE_HPP_INCLUDED
 #define SCROLLPANE_HPP_INCLUDED

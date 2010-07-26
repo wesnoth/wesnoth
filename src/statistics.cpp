@@ -13,7 +13,7 @@
 */
 
 /**
- *  @file statistics.cpp
+ *  @file
  *  Manage statistics: recruitments, recalls, kills, losses, etc.
  */
 

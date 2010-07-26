@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-/** @file attack_prediction.hpp */
+/** @file */
 
 #ifndef ATTACK_PREDICTION_H_INCLUDED
 #define ATTACK_PREDICTION_H_INCLUDED

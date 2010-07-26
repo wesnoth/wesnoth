@@ -13,7 +13,7 @@
  */
 
 /**
- * @file manager.hpp
+ * @file
  */
 
 #ifndef WB_MANAGER_HPP_

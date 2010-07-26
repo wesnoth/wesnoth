@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-/** @file server/metrics.hpp */
+/** @file */
 
 #ifndef METRICS_HPP_INCLUDED
 #define METRICS_HPP_INCLUDED

@@ -13,7 +13,7 @@
 */
 
 /**
- * @file display.hpp
+ * @file
  *
  * map_display and display: classes which take care of
  * displaying the map and game-data on the screen.

@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-/** @file gamestatus.hpp */
+/** @file */
 
 #ifndef GAME_STATUS_HPP_INCLUDED
 #define GAME_STATUS_HPP_INCLUDED

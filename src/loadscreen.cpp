@@ -13,7 +13,7 @@
 */
 
 /**
- * @file loadscreen.cpp
+ * @file
  * Screen with logo and "Loading ..."-progressbar during program-startup.
  */
 

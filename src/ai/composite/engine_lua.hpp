@@ -14,7 +14,7 @@
 
 /**
  * LUA AI Support engine - creating specific ai components from config
- * @file ai/composite/engine_lua.hpp
+ * @file
  */
 
 #ifndef AI_COMPOSITE_ENGINE_LUA_HPP_INCLUDED

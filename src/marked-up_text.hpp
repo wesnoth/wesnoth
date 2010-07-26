@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-/** @file marked-up_text.hpp  */
+/** @file */
 
 #ifndef MARKED_UP_TEXT_HPP_INCLUDED
 #define MARKED_UP_TEXT_HPP_INCLUDED

@@ -13,7 +13,7 @@
 */
 
 /**
- * @file cavegen.cpp
+ * @file
  * Map-generator for caves.
  */
 

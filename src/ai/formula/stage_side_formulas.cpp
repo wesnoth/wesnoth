@@ -13,7 +13,7 @@
 */
 
 /**
- * @file ai/formula/stage_side_formulas.cpp
+ * @file
  * Defines formula ai side formulas stage
  */
 

@@ -13,7 +13,7 @@
  */
 
 /**
- * @file action.cpp
+ * @file
  */
 
 #include "action.hpp"

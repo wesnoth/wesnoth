@@ -13,7 +13,7 @@
 */
 
 /**
- * @file array.hpp
+ * @file
  * Template for arrays.
  */
 

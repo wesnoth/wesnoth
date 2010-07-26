@@ -15,7 +15,7 @@
 
 /**
  * Managing the AI configuration
- * @file ai/configuration.cpp
+ * @file
  */
 
 #include "configuration.hpp"

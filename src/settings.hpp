@@ -13,7 +13,7 @@
 */
 
 /**
- *  @file src/settings.hpp
+ *  @file
  *  General settings and defaults for scenarios.
  */
 

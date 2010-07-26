@@ -13,7 +13,7 @@
 */
 
 /**
- * @file ai/composite/goal.cpp
+ * @file
  */
 
 #include "goal.hpp"

@@ -13,7 +13,7 @@
 */
 
 /**
- *  @file unit_frame.hpp
+ *  @file
  *  Frame for unit's animation sequence.
  */
 

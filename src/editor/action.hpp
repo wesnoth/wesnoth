@@ -13,7 +13,7 @@
 */
 
 /**
- * @file action.hpp
+ * @file
  * Editor action classes. Some important points:
  * - This is a polymorphic hierarchy of classes, so actions are usually passed around
  *   as editor_action pointers

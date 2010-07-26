@@ -13,7 +13,7 @@
 */
 
 /**
- * @file server/metrics.cpp
+ * @file
  * Various server-statistics.
  */
 

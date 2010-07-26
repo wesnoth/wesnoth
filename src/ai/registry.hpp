@@ -13,7 +13,7 @@
 */
 
 /**
- * @file ai/registry.hpp
+ * @file
  * All known AI parts
  */
 

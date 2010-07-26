@@ -12,7 +12,7 @@
    See the COPYING file for more details.
 */
 
-/** @file widgets/scrollpane.cpp */
+/** @file */
 
 #define GETTEXT_DOMAIN "wesnoth-lib"
 

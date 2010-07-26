@@ -1,7 +1,7 @@
 /* $Id$ */
 
 /**
- * @file ana.hpp
+ * @file
  * @brief Main include file for application developers that wish to use ana.
  *
  * ana: Asynchronous Network API.

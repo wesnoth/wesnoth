@@ -13,7 +13,7 @@
 */
 
 /**
- * @file storyscreen/render.hpp
+ * @file
  * Storyscreen parts rendering interface.
  * @todo Translate relevant parts to GUI2.
  */

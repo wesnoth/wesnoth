@@ -13,7 +13,7 @@
 */
 
 /**
- * @file intro.cpp
+ * @file
  * Introduction sequence at start of a scenario, End-screen after end of
  * campaign.
  */

@@ -13,7 +13,7 @@
 */
 
 /**
- * @file ai/composite/ai.hpp
+ * @file
  * Composite AI with turn sequence which is a vector of stages
  */
 

@@ -14,7 +14,7 @@
 
 /**
  * Aspect: attacks
- * @file ai/testing/aspect_attacks.hpp
+ * @file
  */
 
 #ifndef AI_TESTING_ASPECT_ATTACKS_HPP_INCLUDED

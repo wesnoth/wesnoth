@@ -1,7 +1,7 @@
 /* $Id$ */
 
 /**
- * @file asio_sender.hpp
+ * @file
  * @brief Implementation file providing send capability to ana.
  *
  * ana: Asynchronous Network API.

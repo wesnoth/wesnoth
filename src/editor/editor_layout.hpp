@@ -12,7 +12,7 @@
   See the COPYING file for more details.
 */
 
-/** @file editor/editor_layout.hpp */
+/** @file */
 
 #ifndef EDITOR_LAYOUT_H_INCLUDED
 #define EDITOR_LAYOUT_H_INCLUDED

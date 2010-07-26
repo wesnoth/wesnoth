@@ -13,7 +13,7 @@
 */
 
 /**
- * @file canvas.hpp
+ * @file
  * This file contains the canvas object which is the part where the widgets
  * draw (tempory) images on.
  */

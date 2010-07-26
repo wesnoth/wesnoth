@@ -13,7 +13,7 @@
 */
 
 /**
- * @file lexical_cast.hpp
+ * @file
  * New lexcical_cast header.
  *
  * For debugging you can include this header _in_ a namespace (to honour ODR)

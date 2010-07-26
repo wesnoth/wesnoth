@@ -13,7 +13,7 @@
 */
 
 /**
- *  @file replay.hpp
+ *  @file
  *  Replay control code.
  */
 

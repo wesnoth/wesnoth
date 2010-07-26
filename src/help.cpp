@@ -13,7 +13,7 @@
 */
 
 /**
- * @file help.cpp
+ * @file
  * Routines for showing the help-dialog.
  */
 
