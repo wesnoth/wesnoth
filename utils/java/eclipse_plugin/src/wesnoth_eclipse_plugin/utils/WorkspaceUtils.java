@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Properties;
-import java.util.Random;
 
 import org.eclipse.core.resources.FileInfoMatcherDescription;
 import org.eclipse.core.resources.IContainer;
@@ -238,9 +237,8 @@ public class WorkspaceUtils
 	public static String getRandomFileName()
 	{
 		String result = "";
-		SimpleDateFormat date = new SimpleDateFormat("yyyyMMddHHmm");
+		SimpleDateFormat date = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss");
 		result += date.format(new Date());
-		result += String.valueOf(new Random().nextInt());
 		return result;
 	}
 
