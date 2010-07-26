@@ -2746,11 +2746,9 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 
 	// Check if this message is for this side
 	std::string side_for_raw = cfg["side_for"];
-	bool side_for_show = true;
 	if (!side_for_raw.empty())
 	{
-
-		side_for_show = false;
+		bool side_for_show = false;
 
 		std::vector<std::string> side_for =
 			utils::split(side_for_raw, ',', utils::STRIP_SPACES | utils::REMOVE_EMPTY);
@@ -2773,6 +2771,7 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 		if (!side_for_show)
 		{
 			DBG_NG << "player isn't controlling side which should get message\n";
+			return;
 		}
 	}
 
@@ -2783,15 +2782,6 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 		WRN_NG << "cannot show message\n";
 		return;
 	}
-
-	std::string sfx = cfg["sound"];
-	if(sfx != "") {
-		sound::play_sound(sfx);
-	}
-
-	std::string image = get_image(cfg, speaker);
-	std::string caption = get_caption(cfg, speaker);
-
 
 	std::vector<std::string> options;
 	std::vector<vconfig::child_list> option_events;
@@ -2807,6 +2797,19 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 		}
 	}
 
+	has_input = !options.empty() || has_text_input;
+	if (!has_input && get_replay_source().is_skipping()) {
+		// No input to get and the user is not interested either.
+		return;
+	}
+
+	if (cfg.has_attribute("sound")) {
+		sound::play_sound(cfg["sound"]);
+	}
+
+	std::string image = get_image(cfg, speaker);
+	std::string caption = get_caption(cfg, speaker);
+
 	if(text_input_elements.size()>1) {
 		lg::wml_error << "too many text_input tags, only one accepted\n";
 	}
@@ -2816,7 +2819,6 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 
 	int option_chosen = 0;
 	std::string text_input_result;
-	has_input = !options.empty() || has_text_input;
 
 	DBG_DP << "showing dialog...\n";
 
@@ -2824,9 +2826,6 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 	// and there is no input to be made, show the dialog.
 	if (get_replay_source().at_end() || !has_input)
 	{
-		if (side_for_show && !get_replay_source().is_skipping())
-		{
-
 			const size_t right_offset = image.find("~RIGHT()");
 			const bool left_side = (right_offset == std::string::npos);
 			if(!left_side) {
@@ -2901,8 +2900,6 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 				return;
 			}
 #endif
-
-		}
 	}
 	else if (has_input)
 	{
