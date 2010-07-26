@@ -9,6 +9,7 @@
 package wesnoth_eclipse_plugin;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -51,6 +52,8 @@ public class Logger {
 		{
 			String logFilePath = String.format("%s/logs/log%s.txt",
 				WorkspaceUtils.getTemporaryFolder(), WorkspaceUtils.getRandomFileName());
+
+			new File(WorkspaceUtils.getTemporaryFolder() + "/logs/").mkdirs();
 
 			logWriter_ = new BufferedWriter(new FileWriter(logFilePath));
 			log("Logging started.");
