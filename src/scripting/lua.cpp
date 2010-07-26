@@ -2223,6 +2223,20 @@ static int intf_set_music(lua_State *L)
 }
 
 /**
+ * Plays a sound, possibly repeated.
+ * - Arg 1: string.
+ * - Arg 2: optional integer.
+ */
+static int intf_play_sound(lua_State *L)
+{
+	char const *m = luaL_checkstring(L, 1);
+	if (resources::controller->is_skipping_replay()) return 0;
+	int repeats = lua_tointeger(L, 2);
+	sound::play_sound(m, sound::SOUND_FX, repeats);
+	return 0;
+}
+
+/**
  * Scrolls to given tile.
  * - Args 1,2: location.
  * - Arg 3: boolean preventing scroll to fog.
@@ -2313,6 +2327,7 @@ LuaKernel::LuaKernel()
 		{ "get_village_owner",        &intf_get_village_owner        },
 		{ "is_enemy",                 &intf_is_enemy                 },
 		{ "message",                  &intf_message                  },
+		{ "play_sound",               &intf_play_sound               },
 		{ "put_recall_unit",          &intf_put_recall_unit          },
 		{ "put_unit",                 &intf_put_unit                 },
 		{ "require",                  &intf_require                  },
