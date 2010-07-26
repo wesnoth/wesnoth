@@ -135,11 +135,8 @@ tbuilder_widget_ptr create_builder_widget(const config& cfg)
  * be tuned. This page will describe what can be tuned.
  *
  */
-twindow* build(CVideo& video, const std::string& type)
+twindow *build(CVideo &video, const twindow_builder::tresolution *definition)
 {
-	std::vector<twindow_builder::tresolution>::const_iterator
-		definition = get_window_builder(type);
-
 	// We set the values from the definition since we can only determine the
 	// best size (if needed) after all widgets have been placed.
 	twindow* window = new twindow(video
@@ -154,7 +151,6 @@ twindow* build(CVideo& video, const std::string& type)
 			, definition->maximum_height
 			, definition->definition);
 	assert(window);
-	window->set_id(type);
 
 	foreach(const twindow_builder::tresolution::tlinked_group& lg,
 			definition->linked_groups) {
@@ -189,6 +185,15 @@ twindow* build(CVideo& video, const std::string& type)
 
 	window->add_to_keyboard_chain(window);
 
+	return window;
+}
+
+twindow *build(CVideo &video, const std::string &type)
+{
+	std::vector<twindow_builder::tresolution>::const_iterator
+		definition = get_window_builder(type);
+	twindow *window = build(video, &*definition);
+	window->set_id(type);
 	return window;
 }
 

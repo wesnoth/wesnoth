@@ -171,6 +171,11 @@ private:
 	std::string description_;
 };
 
+/**
+ * Builds a window.
+ */
+twindow *build(CVideo &video, const twindow_builder::tresolution *res);
+
 } // namespace gui2
 
 #endif
