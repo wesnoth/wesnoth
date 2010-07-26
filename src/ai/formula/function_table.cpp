@@ -136,7 +136,7 @@ private:
 
 static unsigned search_counter;
 
-//@todo 1.8: document
+///@todo 1.8: document
 class calculate_map_ownership_function : public function_expression {
 public:
 	calculate_map_ownership_function(const args_list& args, const formula_ai& ai)

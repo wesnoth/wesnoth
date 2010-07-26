@@ -84,7 +84,7 @@ seed_t get_last_seed();
 /**
  * Set the callback for a fuction that will be called on subsequent set_seed
  * calls.
- * @TODO needs a reliable way of clearing the callback when things don't go as
+ * @todo needs a reliable way of clearing the callback when things don't go as
  * normal (e.g. player quit the game while the callback is set)
  */
 void set_new_seed_callback(boost::function<void (seed_t)> f);

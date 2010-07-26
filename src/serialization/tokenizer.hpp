@@ -123,7 +123,7 @@ private:
 			}
 		} while (UNLIKELY(current_ == '\r'));
 #if 0
-			// @todo: disabled untill campaign server is fixed
+			/// @todo disabled untill campaign server is fixed
 			if(LIKELY(in_.good())) {
 				current_ = in_.get();
 				if (UNLIKELY(current_ == '\r'))

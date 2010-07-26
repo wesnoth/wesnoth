@@ -575,7 +575,7 @@ void ai_default_recruitment_stage::analyze_potential_recruit_movements()
 		}
 
 		const unit_type &ut = *info;
-		//@todo 1.9: we give max movement, but recruited will get 0? Seems inaccurate
+		///@todo 1.9: we give max movement, but recruited will get 0? Seems inaccurate
 		//but keep it like that for now
 		// pathfinding ignoring other units and terrain defense
 		const pathfind::move_type_path_calculator calc(ut.movement_type(), ut.movement(), ut.movement(), current_team(),map_);

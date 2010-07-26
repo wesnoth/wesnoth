@@ -279,7 +279,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				if (side["current_player"] == preferences::login()) {
 					side["controller"] = preferences::client_type();
 				} else if (side["controller"] != "null") {
-					// @todo: Fix logic to use network_ai controller
+					/// @todo Fix logic to use network_ai controller
 					// if it is networked ai
 					side["controller"] = "network";
 				}

@@ -141,7 +141,7 @@ struct file_tree_checksum
 	explicit file_tree_checksum(const class config& cfg);
 	void write(class config& cfg) const;
 	void reset() {nfiles = 0;modified = 0;sum_size=0;};
-	// @todo: make variables private!
+	// @todo make variables private!
 	size_t nfiles, sum_size;
 	time_t modified;
 };

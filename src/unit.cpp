@@ -1483,7 +1483,7 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 	if(cfg.has_attribute("formula")) {
 		const unit_callable callable(std::pair<map_location, unit>(loc,*this));
 		const game_logic::formula form(cfg["formula"]);
-		if(!form.evaluate(callable).as_bool()) {//@todo: use formula_ai
+		if(!form.evaluate(callable).as_bool()) {///@todo use formula_ai
 			return false;
 		}
 	}

@@ -855,7 +855,7 @@ void get_villages_phase::execute()
 					//25.0* current_team().caution() * power_projection(loc,enemy_dstsrc) / new_unit->second.hitpoints()
 					//Is this an improvement?
 
-					//@todo 1.7 check if this an improvement
+					///@todo 1.7 check if this an improvement
 					//add_target(target(new_unit->first,1.0,target::SUPPORT));
 				}
 			}

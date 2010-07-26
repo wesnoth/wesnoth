@@ -904,7 +904,7 @@ bool game::end_turn() {
 	return true;
 }
 
-//@todo differentiate between "observers not allowed" and "player already in the game" errors.
+///@todo differentiate between "observers not allowed" and "player already in the game" errors.
 //      maybe return a string with an error message.
 bool game::add_player(const network::connection player, bool observer) {
 	if(is_member(player)) {

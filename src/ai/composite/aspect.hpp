@@ -300,7 +300,7 @@ public:
 
 	virtual void recalculate() const
 	{
-		//@todo 1.9 optimize in case of an aspect which returns variant
+		///@todo 1.9 optimize in case of an aspect which returns variant
 		foreach (const typename aspect_type<T>::typesafe_ptr &f, make_pair(facets_.rbegin(),facets_.rend())) {
 			if (f->active()) {
 				this->value_ = boost::shared_ptr<T>(f->get_ptr());

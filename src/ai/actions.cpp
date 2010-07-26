@@ -288,7 +288,7 @@ void attack_result::do_execute()
 	const unit_map::const_iterator a_ = resources::units->find(attacker_loc_);
 	const unit_map::const_iterator d_ = resources::units->find(defender_loc_);
 
-	//@todo 1.9: change ToD to be location specific for the defender unit
+	///@todo 1.9: change ToD to be location specific for the defender unit
 	recorder.add_attack(attacker_loc_, defender_loc_, attacker_weapon, defender_weapon, a_->type_id(),
 		d_->type_id(), a_->level(), d_->level(), resources::tod_manager->turn(),
 		resources::tod_manager->get_time_of_day());
@@ -390,7 +390,7 @@ bool move_result::test_route(const unit &un)
 	const pathfind::shortest_path_calculator calc(un, my_team, *resources::units, *resources::teams, *resources::game_map);
 
 	//allowed teleports
-	std::set<map_location> allowed_teleports = pathfind::get_teleport_locations(un, my_team, true);//@todo 1.9: see_all -> false
+	std::set<map_location> allowed_teleports = pathfind::get_teleport_locations(un, my_team, true);///@todo 1.9: see_all -> false
 
 	//do an A*-search
 	route_ = boost::shared_ptr<pathfind::plain_route>( new pathfind::plain_route(pathfind::a_star_search(un.get_location(), to_, 10000.0, &calc, resources::game_map->w(), resources::game_map->h(), &allowed_teleports)));
@@ -435,7 +435,7 @@ void move_result::do_check_after()
 		set_error(E_FAILED_TELEPORT);
 		return;
 	}
-	//@todo 1.9 add 'new units spotted' failure mode
+	///@todo 1.9 add 'new units spotted' failure mode
 
 	if (unit_location_!=to_) {
 		set_error(E_NOT_REACHED_DESTINATION);
@@ -475,7 +475,7 @@ void move_result::do_execute()
 			/*undo_list* undo_stack*/ NULL,
 			/*bool show_move*/ preferences::show_ai_moves(),
 			/*map_location *next_unit*/ NULL,
-			/*bool continue_move*/ true, //@todo: 1.9 set to false after implemeting interrupt awareness
+			/*bool continue_move*/ true, ///@todo 1.9 set to false after implemeting interrupt awareness
 			/*bool should_clear_shroud*/ true,
 			/*bool is_replay*/ false);
 

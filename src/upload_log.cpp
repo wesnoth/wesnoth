@@ -181,7 +181,7 @@ void upload_log::read_replay()
 		return;
 	}
 
-	//@TODO: check if game_ is always there
+	///@todo check if game_ is always there
 	if( !game_ ) {
 		game_ = new config();
 	}

@@ -395,7 +395,7 @@ std::pair<map_location,map_location> testing_move_to_targets_phase::choose_move(
 
 			const move_cost_calculator calc(*u, map_, units_, enemy_dstsrc);
 
-			//@todo 1.9: lower this value for perf,
+			///@todo 1.9: lower this value for perf,
 			// but best_rating is too big for scout and support
 			// which give a too small locStopValue
 			// so keep costy A* for the moment.

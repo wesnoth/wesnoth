@@ -16,7 +16,7 @@
  * Network worker handles data transfers in threads
  * Remember to use mutexs as little as possible
  * All global vars should be used in mutex
- * FIXME: @todo: All code which holds a mutex should run O(1) time
+ * FIXME: @todo All code which holds a mutex should run O(1) time
  * for scalability. Implement read/write locks.
  *  (postponed for 1.5)
  */

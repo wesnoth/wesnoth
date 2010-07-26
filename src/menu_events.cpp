@@ -1434,7 +1434,7 @@ void menu_handler::create_unit_2(mouse_handler& mousehandler)
 
 void menu_handler::create_unit(mouse_handler& mousehandler)
 {
-	/** @todo: reenable after releasing 1.7.4; as-is causes memory corruption */
+	/** @todo reenable after releasing 1.7.4; as-is causes memory corruption */
 	if(gui2::new_widgets) {
 		create_unit_2(mousehandler);
 		return;

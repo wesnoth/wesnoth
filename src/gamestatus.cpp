@@ -233,7 +233,7 @@ void write_players(game_state& gamestate, config& cfg, const bool use_snapshot, 
 				(*scenario_side)["name"] = carryover_side["name"];
 				(*scenario_side)["current_player"] = carryover_side["current_player"];
 
-				//@todo 1.9.2
+				///@todo 1.9.2
 				const std::string colour_error = "Usage of 'colour' in [side] is deprecated, support will be removed in 1.9.2.\n";
 				(*scenario_side)["color"] = carryover_side.get_old_attribute("color","colour",colour_error);
 

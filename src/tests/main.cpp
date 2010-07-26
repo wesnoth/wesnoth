@@ -34,7 +34,7 @@
 
 #include "tests/utils/fake_display.hpp"
 /**
- * @todo: add all others exception handlers too
+ * @todo add all others exception handlers too
  **/
 
 static void exception_translator_config(const config::error& e)

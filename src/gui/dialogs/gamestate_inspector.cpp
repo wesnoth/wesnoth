@@ -191,7 +191,7 @@ public:
 			return;
 		}
 
-		int i = 0;//@todo: replace with precached data
+		int i = 0;///@todo replace with precached data
 		const config &vars = resources::state_of_game->get_variables();
 
 		foreach( const config::attribute &a, vars.attribute_range()) {
@@ -264,7 +264,7 @@ public:
 			return;
 		}
 
-		int i = 0;//@todo: replace with precached data
+		int i = 0;///@todo replace with precached data
 		for(unit_map::iterator u = resources::units->begin(); u != resources::units->end(); ++u) {
 			if (selected==i) {
 				config c_unit;

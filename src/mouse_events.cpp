@@ -913,7 +913,7 @@ void mouse_handler::attack_enemy_(const map_location& att_loc
 	gui().unhighlight_reach();
 	gui().draw();
 
-	//@TODO: change ToD to be location specific for the defender
+	///@todo change ToD to be location specific for the defender
 	recorder.add_attack(attacker_loc, defender_loc, att.attack_num, def.attack_num,
 		attacker->type_id(), defender->type_id(), att.level,
 		def.level, resources::tod_manager->turn(), resources::tod_manager->get_time_of_day());

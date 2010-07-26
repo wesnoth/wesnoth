@@ -1142,7 +1142,7 @@ void ttext::draw(surface& canvas
 		<< " text width " << surf->w
 		<< " text height " << surf->h;
 */
-	//@todo formulas are now recalculated every draw cycle which is a
+	///@todo formulas are now recalculated every draw cycle which is a
 	// bit silly unless there has been a resize. So to optimize we should
 	// use an extra flag or do the calculation in a separate routine.
 

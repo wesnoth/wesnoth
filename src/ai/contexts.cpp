@@ -488,7 +488,7 @@ double readonly_context_impl::get_aggression() const
 int readonly_context_impl::get_attack_depth() const
 {
 	if (attack_depth_) {
-		return std::max<int>(1,attack_depth_->get()); //@todo 1.9: add validators, such as minmax filters to aspects
+		return std::max<int>(1,attack_depth_->get()); ///@todo 1.9: add validators, such as minmax filters to aspects
 	}
 	return 1;
 }
@@ -521,7 +521,7 @@ const variant& readonly_context_impl::get_attacks_as_variant() const
 	if (attacks_) {
 		return attacks_->get_variant();
 	}
-	static variant v;//@todo 1.9: replace with variant::null_variant;
+	static variant v;///@todo 1.9: replace with variant::null_variant;
 	return v;
 }
 
@@ -718,7 +718,7 @@ const moves_map& readonly_context_impl::get_possible_moves() const
 const std::vector<unit>& readonly_context_impl::get_recall_list() const
 {
 	static std::vector<unit> dummy_units;
-	//@todo 1.9: check for (level_["disallow_recall"]))
+	///@todo 1.9: check for (level_["disallow_recall"]))
 	if(!current_team().persistent()) {
 		return dummy_units;
 	}
@@ -1071,7 +1071,7 @@ void readonly_context_impl::recalculate_move_maps() const
 					++i;
 				}
 			}
-		//@todo 1.9: shall possible moves be modified as well ?
+		///@todo 1.9: shall possible moves be modified as well ?
 		}
 	}
 	move_maps_valid_ = true;

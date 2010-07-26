@@ -45,7 +45,7 @@ struct target {
 	double value;
 
 	TYPE type;
-	//@todo 1.7: ai goals: this is a 'target' marker class which should be expanded with additional information which is generic enough to apply to all targets.
+	///@todo 1.7: ai goals: this is a 'target' marker class which should be expanded with additional information which is generic enough to apply to all targets.
 };
 
 
@@ -286,7 +286,7 @@ public:
 
 private:
 	recursion_counter recursion_counter_;
-	mutable std::vector<target> additional_targets_;//@todo 1.9 refactor this
+	mutable std::vector<target> additional_targets_;///@todo 1.9 refactor this
 
 
 };
