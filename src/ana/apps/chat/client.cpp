@@ -237,7 +237,7 @@ class ChatClient : public ana::listener_handler,
             continue_ = false;
         }
 
-        virtual void handle_message( ana::error_code error, net_id, ana::detail::read_buffer msg)
+        virtual void handle_receive( ana::error_code error, net_id, ana::detail::read_buffer msg)
         {
             if (! error)
             {

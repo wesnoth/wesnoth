@@ -75,7 +75,7 @@ void asio_listener::handle_body( ana::detail::read_buffer buf, const boost::syst
         else
         {
             log_conditional_receive( buf );
-            listener_->handle_message( ec, id(), buf );
+            listener_->handle_receive( ec, id(), buf );
             listen_one_message();
         }
     }
@@ -134,7 +134,7 @@ void asio_listener::handle_header(char* header, const boost::system::error_code&
                 for (size_t i(0); i< ana::HEADER_LENGTH; ++i)
                     static_cast<char*>(read_buf->base())[i] = header[i];
 
-                listener_->handle_message( ec, id(), read_buf );
+                listener_->handle_receive( ec, id(), read_buf );
             }
         }
     }
@@ -166,7 +166,7 @@ void asio_listener::handle_partial_body( ana::detail::read_buffer         buffer
 
             if ( accumulated == buffer->size() )
             {
-                listener_->handle_message( ec, id(), buffer );
+                listener_->handle_receive( ec, id(), buffer );
                 listen_one_message();
             }
             else
@@ -197,7 +197,7 @@ void asio_listener::handle_raw_buffer( ana::detail::read_buffer buf,
         {
             buf->resize( read_size );
             log_conditional_receive( buf );
-            listener_->handle_message( ec, id(), buf );
+            listener_->handle_receive( ec, id(), buf );
             listen_one_message();
         }
     }

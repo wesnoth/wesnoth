@@ -135,7 +135,7 @@ namespace ana
          * \sa error_code
          * \sa net_id
          */
-        virtual void handle_message   (error_code, net_id, detail::read_buffer) = 0;
+        virtual void handle_receive   (error_code, net_id, detail::read_buffer) = 0;
 
         /**
          * Handle a disconnect event.

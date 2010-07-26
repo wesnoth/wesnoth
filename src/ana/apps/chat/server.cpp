@@ -124,7 +124,7 @@ class ChatServer : public listener_handler,
             }
         }
 
-        virtual void handle_message( ana::error_code          error,
+        virtual void handle_receive( ana::error_code          error,
                                      net_id                   client,
                                      ana::detail::read_buffer buffer)
         {

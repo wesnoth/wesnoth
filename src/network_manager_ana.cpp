@@ -140,7 +140,7 @@ void ana_receive_handler::wait_completion(ana::detail::timed_sender* component, 
     mutex_.unlock();
 }
 
-void ana_receive_handler::handle_message(ana::error_code          error_c,
+void ana_receive_handler::handle_receive(ana::error_code          error_c,
                                          ana::net_id              client,
                                          ana::detail::read_buffer read_buffer)
 {
@@ -266,7 +266,7 @@ void ana_multiple_receive_handler::wait_completion(size_t timeout_ms )
     mutex_.unlock();
 }
 
-void ana_multiple_receive_handler::handle_message(ana::error_code          error_c,
+void ana_multiple_receive_handler::handle_receive(ana::error_code          error_c,
                                                   ana::net_id              id,
                                                   ana::detail::read_buffer read_buffer)
 {
@@ -1180,7 +1180,7 @@ void ana_network_manager::handle_send(ana::error_code error_code,
         network::disconnect( client );
 }
 
-void ana_network_manager::handle_message( ana::error_code          error,
+void ana_network_manager::handle_receive( ana::error_code          error,
                                           ana::net_id              client,
                                           ana::detail::read_buffer buffer)
 {

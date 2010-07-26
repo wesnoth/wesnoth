@@ -246,7 +246,7 @@ class ana_receive_handler : public ana::listener_handler
         }
 
     private:
-        virtual void handle_message   (ana::error_code, ana::net_id, ana::detail::read_buffer);
+        virtual void handle_receive   (ana::error_code, ana::net_id, ana::detail::read_buffer);
         virtual void handle_disconnect(ana::error_code, ana::net_id);
 
         void handle_timeout(ana::error_code error_code);
@@ -308,7 +308,7 @@ class ana_multiple_receive_handler : public ana::listener_handler
         }
 
     private:
-        virtual void handle_message   (ana::error_code, ana::net_id, ana::detail::read_buffer);
+        virtual void handle_receive   (ana::error_code, ana::net_id, ana::detail::read_buffer);
         virtual void handle_disconnect(ana::error_code, ana::net_id);
 
         void handle_timeout(ana::error_code error_code);
@@ -480,7 +480,7 @@ class ana_network_manager : public ana::listener_handler,
     private:
         virtual void handle_send(ana::error_code, ana::net_id, ana::operation_id);
 
-        virtual void handle_message( ana::error_code          error,
+        virtual void handle_receive( ana::error_code          error,
                                      ana::net_id              client,
                                      ana::detail::read_buffer buffer);
 
