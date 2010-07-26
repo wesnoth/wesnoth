@@ -77,6 +77,16 @@ namespace ana
         /** Standard error code, can evaluate to bool.          */
         typedef boost::system::error_code error_code ;
 
+        /** The default timeout error. */
+        const ana::error_code operation_aborted =
+                    boost::asio::error::make_error_code( boost::asio::error::operation_aborted );
+
+        /** The default timeout error. */
+        const ana::error_code timeout_error =
+                    boost::asio::error::make_error_code( boost::asio::error::timed_out );
+
+
+
         /** A network operation that didn't do anything.        */
         const operation_id no_operation = 0;
 

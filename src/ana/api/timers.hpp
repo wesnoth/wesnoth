@@ -153,10 +153,6 @@ namespace ana
     /** A boost::asio::basic_deadline_timer, can be used externally. */
     typedef boost::asio::basic_deadline_timer<std::time_t,detail::time_t_traits> boost_timer;
 
-    /** The default timeout error. */
-    const ana::error_code timeout_error =
-                boost::asio::error::make_error_code( boost::asio::error::timed_out );
-
     /**
      * General purpose asynchronous timer.
      */

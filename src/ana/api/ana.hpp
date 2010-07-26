@@ -480,8 +480,12 @@ namespace ana
 
         /**
          * Cancel all pending network operations.
+         *
          * Every pending operation handler will be invoked with ana::operation_aborted
-         * as the corresponding error_code.
+         * as the corresponding error_code, except that the error code will be
+         * boost::asio::error::operation_not_supported when run on Windows XP,
+         * Windows Server 2003, and earlier versions of Windows,
+         * unless BOOST_ASIO_ENABLE_CANCELIO is defined.
          */
         virtual void cancel_pending( )                             = 0;
 
@@ -536,8 +540,12 @@ namespace ana
 
             /**
              * Cancel all pending network operations.
+             *
              * Every pending operation handler will be invoked with ana::operation_aborted
-             * as the corresponding error_code.
+             * as the corresponding error_code, except that the error code will be
+             * boost::asio::error::operation_not_supported when run on Windows XP,
+             * Windows Server 2003, and earlier versions of Windows,
+             * unless BOOST_ASIO_ENABLE_CANCELIO is defined.
              */
             virtual void cancel_pending() = 0;
 
@@ -624,8 +632,12 @@ namespace ana
 
         /**
          * Cancel all pending network operations.
+         *
          * Every pending operation handler will be invoked with ana::operation_aborted
-         * as the corresponding error_code.
+         * as the corresponding error_code, except that the error code will be
+         * boost::asio::error::operation_not_supported when run on Windows XP,
+         * Windows Server 2003, and earlier versions of Windows,
+         * unless BOOST_ASIO_ENABLE_CANCELIO is defined.
          */
         virtual void cancel_pending( )                             = 0;
 
