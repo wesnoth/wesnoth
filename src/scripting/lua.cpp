@@ -51,6 +51,7 @@ extern "C" {
 #include "map.hpp"
 #include "pathfind/pathfind.hpp"
 #include "play_controller.hpp"
+#include "replay.hpp"
 #include "resources.hpp"
 #include "terrain_translation.hpp"
 #include "sound.hpp"
@@ -2236,6 +2237,39 @@ static int intf_scroll_to_tile(lua_State *L)
 	return 0;
 }
 
+struct lua_synchronize : mp_sync::user_choice
+{
+	lua_State *L;
+	lua_synchronize(lua_State *l): L(l) {}
+
+	virtual config query_user() const
+	{
+		config cfg;
+		if (luaW_pcall(L, 0, 1, false))
+			luaW_toconfig(L, -1, cfg);
+		return cfg;
+	}
+
+	virtual config random_choice(rand_rng::simple_rng &) const
+	{
+		return config();
+	}
+};
+
+/**
+ * Ensures a value is synchronized among all the clients.
+ * - Arg 1: function to compute the value, called if the client is the master.
+ * - Ret 1: WML table returned by the function.
+ */
+static int intf_synchronize_choice(lua_State *L)
+{
+	lua_settop(L, 1);
+	config cfg = mp_sync::get_user_choice("input", lua_synchronize(L));
+	lua_newtable(L);
+	table_of_wml_config(L, cfg);
+	return 1;
+}
+
 LuaKernel::LuaKernel()
 	: mState(luaL_newstate())
 {
@@ -2288,6 +2322,7 @@ LuaKernel::LuaKernel()
 		{ "set_variable",             &intf_set_variable             },
 		{ "set_village_owner",        &intf_set_village_owner        },
 		{ "simulate_combat",          &intf_simulate_combat          },
+		{ "synchronize_choice",       &intf_synchronize_choice       },
 		{ "textdomain",               &intf_textdomain               },
 		{ "tovconfig",                &intf_tovconfig                },
 		{ "unit_defense",             &intf_unit_defense             },
