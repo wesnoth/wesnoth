@@ -25,6 +25,8 @@ public class WMLToolsPreferencePage extends FieldEditorPreferencePage implements
 	protected void createFieldEditors()
 	{
 		addField(new LabelFieldEditor("WMLINDENT:", getFieldEditorParent()));
+		addField(new BooleanFieldEditor(Constants.P_WMLINDENT_DRYRUN, "Dry run", 1,
+				getFieldEditorParent()));
 		addField(new BooleanFieldEditor(Constants.P_WMLINDENT_VERBOSE, "Verbose Output", 1,
 				getFieldEditorParent()));
 		addField(new LabelFieldEditor("", getFieldEditorParent()));

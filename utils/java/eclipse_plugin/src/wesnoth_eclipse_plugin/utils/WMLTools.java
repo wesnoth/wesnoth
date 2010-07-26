@@ -57,8 +57,9 @@ public class WMLTools
 			if (!checkPrerequisites(resourcePath, null))
 				return null;
 
-			if (dryrun)
+			if (dryrun || Preferences.getBool(Constants.P_WMLINDENT_DRYRUN) == true)
 				arguments.add("--dryrun");
+
 			if (Preferences.getBool(Constants.P_WMLINDENT_VERBOSE))
 			{
 				arguments.add("-v");

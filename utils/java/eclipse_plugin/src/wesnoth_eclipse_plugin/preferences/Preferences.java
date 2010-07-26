@@ -30,6 +30,7 @@ public class Preferences extends AbstractPreferenceInitializer {
 
 		// wml tools
 		store.setDefault(Constants.P_WMLINDENT_VERBOSE, true);
+		store.setDefault(Constants.P_WMLINDENT_DRYRUN, true);
 
 		store.setDefault(Constants.P_WMLLINT_DRYRUN, true);
 		store.setDefault(Constants.P_WMLLINT_SPELL_CHECK, false);

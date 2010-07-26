@@ -37,6 +37,7 @@ public class Constants
 
 	/** WML Tools preferences constants **/
 	public static final String	P_WMLINDENT_VERBOSE     = "wmlindent_verbose";
+	public static final String	P_WMLINDENT_DRYRUN      = "wmlindent_dry_run";
 
 	public static final String	P_WMLLINT_DRYRUN        = "wmllint_dry_run";
 	public static final String	P_WMLLINT_SPELL_CHECK   = "wmllint_spell_check";
