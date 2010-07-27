@@ -504,6 +504,7 @@ namespace game_events {
 		// Check for deprecated [or] syntax
 		if(matches && or_count > 1 && allow_backwards_compat)
 		{
+			///@deprecated r18803 [or] syntax
 			lg::wml_error << "possible deprecated [or] syntax: now forcing re-interpretation\n";
 			/**
 			 * @todo For now we will re-interpret it according to the old
