@@ -137,6 +137,7 @@ private:
  */
 engine_lua::engine_lua( readonly_context &context, const config &cfg )
 	: engine(context,cfg)
+	, code_(cfg["code"])
 	, lua_ai_context_(resources::lua_kernel->create_lua_ai_context(
 		cfg["code"].str().c_str(), this))
 {
@@ -198,7 +199,8 @@ void engine_lua::set_ai_context(ai_context * /*context*/)
 config engine_lua::to_config() const
 {
 	config cfg = engine::to_config();
-	//we can modify the cfg here
+	cfg["id"] = get_id();
+	cfg["code"] = this->code_;
 	return cfg;
 }
 
