@@ -105,10 +105,17 @@ namespace ana
      */
     enum timeout_policy
     {
-        NoTimeouts       /** Don't use timers in any operation.                */,
-        FixedTime        /** Use timers with a fixed time for every operation. */,
-        TimePerKilobyte  /** Use timers, calculating the necessary time from
-        the size of the buffer that is to be sent.        */
+        /** Don't use timers in any operation.                */
+        NoTimeouts,
+
+        /** Use timers with a fixed time for every operation. */
+        FixedTime,
+
+        /**
+         * Use timers, calculating the necessary time from
+         * the size of the buffer that is to be sent.
+         */
+        TimePerKilobyte
     };
 
     /** @name Timers

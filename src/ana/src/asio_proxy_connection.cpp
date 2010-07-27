@@ -34,16 +34,19 @@
 
 #include "asio_proxy_connection.hpp"
 
-proxy_connection::proxy_connection(tcp::socket& socket,
+proxy_connection::proxy_connection(tcp::socket&      socket,
                                    proxy_information pi,
-                                   ana::address address,
-                                   ana::port port) :
+                                   ana::address      address,
+                                   ana::port         port,
+                                   ana::timer*       timer) :
     socket_(socket),
     proxy_info_(pi),
     address_(address),
     port_(port),
     manager_( NULL ),
-    conn_handler_( NULL )
+    conn_handler_( NULL ),
+    authenticating_( false ),
+    timer_( timer )
 {
 }
 
@@ -133,11 +136,11 @@ void proxy_connection::handle_response(boost::asio::streambuf*          buf,
     delete buf;
 
     if ( ec )
-        manager_->handle_proxy_connection( ec, conn_handler_ );
+        manager_->handle_proxy_connection( ec, conn_handler_, timer_ );
     else
     {
         if ( finds( ss.str(), "200 Connection established" ) )
-            manager_->handle_proxy_connection( ec, conn_handler_ );
+            manager_->handle_proxy_connection( ec, conn_handler_, timer_ );
         else
         {
             if ( ( ! authenticating_ ) && finds( ss.str(), "407 Proxy Authentication Required" ) )
@@ -151,14 +154,14 @@ void proxy_connection::handle_response(boost::asio::streambuf*          buf,
                 }
                 else //TODO: digest authentication support here
                     manager_->handle_proxy_connection(
-                        boost::system::error_code(1,boost::system::system_category ),
-                        conn_handler_);
+                              boost::system::error_code(1,boost::system::system_category ),
+                                                      conn_handler_, timer_);
 
             }
             else //Can't connect, wrong password or wasn't offered the possibility to authenticate
                 manager_->handle_proxy_connection(
                     boost::system::error_code(1,boost::system::system_category ),
-                    conn_handler_);
+                    conn_handler_, timer_);
         }
     }
 }
@@ -196,7 +199,7 @@ void proxy_connection::handle_connect(const boost::system::error_code& ec,
     else
     {
         if ( endpoint_iterator == tcp::resolver::iterator() ) // could not connect to proxy
-            manager_->handle_proxy_connection( ec, conn_handler_ );
+            manager_->handle_proxy_connection( ec, conn_handler_, timer_ );
         else
         {
             //retry
@@ -229,7 +232,7 @@ void proxy_connection::do_connect()
     {
         manager_->handle_proxy_connection(
             boost::system::error_code(1,boost::system::system_category),
-            conn_handler_ );
+            conn_handler_, timer_ );
     }
 }
 

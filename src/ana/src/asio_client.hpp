@@ -63,13 +63,13 @@ class asio_client : public ana::client,
 
     private:
 
-        virtual ana::operation_id connect( ana::connection_handler* );
+        virtual void connect( ana::connection_handler* );
 
-        virtual ana::operation_id connect_through_proxy(std::string              proxy_address,
-                                                        std::string              proxy_port,
-                                                        ana::connection_handler* handler,
-                                                        std::string              user_name = "",
-                                                        std::string              password = "");
+        virtual void connect_through_proxy(std::string              proxy_address,
+                                           std::string              proxy_port,
+                                           ana::connection_handler* handler,
+                                           std::string              user_name = "",
+                                           std::string              password  = "");
 
         virtual void run();
 
@@ -82,7 +82,8 @@ class asio_client : public ana::client,
         virtual void disconnect_listener();
 
         virtual void handle_proxy_connection(const boost::system::error_code&,
-                                             ana::connection_handler*);
+                                             ana::connection_handler*,
+                                             ana::timer*);
 
         virtual tcp::socket& socket();
 
@@ -99,10 +100,18 @@ class asio_client : public ana::client,
 
         virtual void cancel_pending( );
 
+        virtual void set_connect_timeout( size_t ms );
 
         void handle_connect(const boost::system::error_code& ec,
                             tcp::resolver::iterator endpoint_iterator,
-                            ana::connection_handler* );
+                            ana::connection_handler*,
+                            ana::timer*);
+
+        void handle_timeout(const boost::system::error_code& ec,
+                            ana::connection_handler*,
+                            ana::timer*);
+
+        ana::timer* start_connection_timer(ana::connection_handler*);
 
         /* Override, as per -Weffc++ */
         asio_client(const asio_client& other);
@@ -117,6 +126,8 @@ class asio_client : public ana::client,
 
         std::string               address_;
         ana::port                 port_;
+
+        size_t                    connect_timeout_ms_;
 
         proxy_connection*         proxy_;
         bool                      use_proxy_;

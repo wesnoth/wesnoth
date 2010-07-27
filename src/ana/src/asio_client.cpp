@@ -49,6 +49,7 @@ asio_client::asio_client(ana::address address, ana::port pt) :
     socket_(io_service_),
     address_(address),
     port_(pt),
+    connect_timeout_ms_( 0 ),
     proxy_( NULL ),
     use_proxy_( false ),
     stats_collector_( NULL ),
@@ -74,8 +75,11 @@ void asio_client::run()
 }
 
 void asio_client::handle_proxy_connection(const boost::system::error_code& ec,
-                                          ana::connection_handler* handler)
+                                          ana::connection_handler*         handler,
+                                          ana::timer*                      timer)
 {
+    delete timer;
+
     handler->handle_connect( ec, 0 );
 
     if ( ! ec )
@@ -91,10 +95,13 @@ tcp::socket& asio_client::socket()
 
 void asio_client::handle_connect(const boost::system::error_code& ec,
                                  tcp::resolver::iterator          endpoint_iterator,
-                                 ana::connection_handler*         handler )
+                                 ana::connection_handler*         handler,
+                                 ana::timer*                      timer)
 {
     if ( ! ec )
     {
+        delete timer; // will call handle_timeout with ana::operation_aborted
+
         handler->handle_connect( ec, 0 );
 
         if ( ana::client::header_mode() )
@@ -113,13 +120,46 @@ void asio_client::handle_connect(const boost::system::error_code& ec,
             socket_.async_connect(endpoint,
                                   boost::bind(&asio_client::handle_connect, this,
                                               boost::asio::placeholders::error, ++endpoint_iterator,
-                                              handler));
+                                              handler, timer));
         }
     }
 }
 
-ana::operation_id asio_client::connect( ana::connection_handler* handler )
+void asio_client::handle_timeout(const boost::system::error_code& ec,
+                                 ana::connection_handler*         handler,
+                                 ana::timer*                      timer)
 {
+    if ( ec != ana::operation_aborted ) // Timed out before canceling
+    {
+        handler->handle_connect( ana::timeout_error, 0 );
+        cancel_pending();
+    }
+}
+
+ana::timer* asio_client::start_connection_timer(ana::connection_handler* handler)
+{
+    if ( connect_timeout_ms_ == 0 )
+        return NULL;
+    else
+    {
+        ana::timer* running_timer( NULL );
+
+        ana::client* sender = static_cast<ana::client*>(this);
+
+        running_timer = sender->create_timer();
+
+        running_timer->wait( connect_timeout_ms_,
+                            boost::bind(&asio_client::handle_timeout, this,
+                                        boost::asio::placeholders::error, handler,
+                                        running_timer ) );
+        return running_timer;
+    }
+}
+
+void asio_client::connect( ana::connection_handler* handler )
+{
+    ana::timer* running_timer = start_connection_timer(handler);
+
     try
     {
         tcp::resolver resolver(io_service_);
@@ -130,22 +170,22 @@ ana::operation_id asio_client::connect( ana::connection_handler* handler )
         socket_.async_connect(endpoint,
                               boost::bind(&asio_client::handle_connect, this,
                                           boost::asio::placeholders::error, ++endpoint_iterator,
-                                          handler));
+                                          handler, running_timer));
     }
     catch (const std::exception& e)
     {
         handler->handle_connect( boost::system::error_code(1,boost::system::system_category ), 0 );
     }
-
-    return ++last_valid_operation_id_;
 }
 
-ana::operation_id asio_client::connect_through_proxy(std::string              proxy_address,
-                                                     std::string              proxy_port,
-                                                     ana::connection_handler* handler,
-                                                     std::string              user_name,
-                                                     std::string              password)
+void asio_client::connect_through_proxy(std::string              proxy_address,
+                                        std::string              proxy_port,
+                                        ana::connection_handler* handler,
+                                        std::string              user_name,
+                                        std::string              password)
 {
+    ana::timer* running_timer = start_connection_timer(handler);
+
     use_proxy_ = true;
 
     proxy_information proxy_info;
@@ -155,11 +195,9 @@ ana::operation_id asio_client::connect_through_proxy(std::string              pr
     proxy_info.user_name     = user_name;
     proxy_info.password      = password;
 
-    proxy_ = new proxy_connection( socket_, proxy_info, address_, port_);
+    proxy_ = new proxy_connection( socket_, proxy_info, address_, port_, running_timer);
 
     proxy_->connect( this, handler );
-
-    return ++last_valid_operation_id_;
 }
 
 ana::operation_id asio_client::send(boost::asio::const_buffer buffer,
@@ -208,6 +246,10 @@ void asio_client::cancel_pending()
     socket_.cancel();
 }
 
+void asio_client::set_connect_timeout( size_t ms )
+{
+    connect_timeout_ms_ = ms;
+}
 
 void asio_client::disconnect_listener()
 {

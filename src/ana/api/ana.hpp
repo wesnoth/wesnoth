@@ -589,7 +589,7 @@ namespace ana
          *
          * \sa connection_handler
          */
-        virtual operation_id connect( connection_handler* ) = 0;
+        virtual void connect( connection_handler* ) = 0;
 
         /**
          * Attempt a connection to the server through a proxy.
@@ -600,11 +600,11 @@ namespace ana
          *
          * \sa connection_handler
          */
-        virtual operation_id connect_through_proxy(std::string proxy_address,
-                                                   std::string proxy_port,
-                                                   connection_handler* handler,
-                                                   std::string user_name = "",
-                                                   std::string password = "") = 0;
+        virtual void connect_through_proxy(std::string proxy_address,
+                                           std::string proxy_port,
+                                           connection_handler* handler,
+                                           std::string user_name = "",
+                                           std::string password = "") = 0;
 
         /** Run the client listener, starts listening for incoming messages. */
         virtual void run() = 0;
@@ -640,6 +640,18 @@ namespace ana
          * unless BOOST_ASIO_ENABLE_CANCELIO is defined.
          */
         virtual void cancel_pending( )                             = 0;
+
+        /**
+         * Set a timeout value for connection attempts. If attempting to connect through a proxy
+         * this value will be used once for the whole connection attempt.
+         *
+         * You should use the time lapse constructors in namespace ana::time:
+         *      - ana::time::seconds(10)
+         *      - ana::time::minutes(1)
+         *
+         * @sa ana::time
+         */
+        virtual void set_connect_timeout( size_t ms ) = 0;
 
         /** Standard destructor. */
         virtual ~client() {}

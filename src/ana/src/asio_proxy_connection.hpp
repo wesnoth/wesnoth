@@ -46,7 +46,8 @@ struct proxy_connection_manager
 	virtual ~proxy_connection_manager() {}
 
     virtual void handle_proxy_connection(const boost::system::error_code&,
-                                         ana::connection_handler* )        = 0;
+                                         ana::connection_handler*,
+                                         ana::timer*)                      = 0;
 };
 
 struct proxy_information
@@ -71,7 +72,8 @@ class proxy_connection
         proxy_connection(tcp::socket&      socket,
                          proxy_information pi,
                          ana::address      address,
-                         ana::port         port);
+                         ana::port         port,
+                         ana::timer*       timer);
 
         void connect( proxy_connection_manager* manager, ana::connection_handler* handler );
 
@@ -106,6 +108,7 @@ class proxy_connection
         ana::connection_handler*  conn_handler_;
 
         bool                      authenticating_;
+        ana::timer*               timer_;
 };
 
 #endif
