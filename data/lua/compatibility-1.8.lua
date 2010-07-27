@@ -1,3 +1,5 @@
+--! #textdomain wesnoth
+
 -- This file provides an implementation of all the Lua functions removed
 -- from the engine between 1.8 and 1.10.
 
