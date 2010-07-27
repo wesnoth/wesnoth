@@ -18,6 +18,7 @@ class WMLError(Exception):
         self.wml_line = parser.last_wml_line
         self.message = message
         self.preprocessed = parser.preprocessed
+        self.tempdir = None
 
     def __str__(self):
         r = "WMLError:\n"
@@ -184,6 +185,7 @@ class Parser:
         self.data_dir = data_dir
         self.no_preprocess = no_preprocess
         self.preprocessed = None
+        self.verbose = False
 
         self.last_wml_line = "?"
         self.parser_line = 0
@@ -212,7 +214,10 @@ class Parser:
         If this is not called then the .parse method will assume the
         WML is already preprocessed.
         """
-        output = tempfile.mkdtemp(prefix="wmlparser_")
+        if self.tempdir:
+            output = self.tempdir
+        else:
+            output = tempfile.mkdtemp(prefix="wmlparser_")
         p_option = "-p=" + defines if defines else "-p "
         commandline = [self.wesnoth_exe]
         if self.data_dir:
@@ -221,9 +226,13 @@ class Parser:
             commandline += ["--config-dir", self.config_dir]
         commandline += [p_option, self.path,
             output]
+        if self.verbose:
+            print(" ".join(commandline))
         p = subprocess.Popen(commandline,
             stdout = subprocess.PIPE, stderr = subprocess.PIPE)
         out, err = p.communicate()
+        if self.verbose:
+            print(out + err)
         self.preprocessed = output + "/" + os.path.basename(self.path) +\
             ".plain"
         if not os.path.exists(self.preprocessed):
@@ -498,12 +507,14 @@ if __name__ == "__main__":
     opt.add_option("-a", "--data-dir", help = "directly passed on to wesnoth.exe")
     opt.add_option("-c", "--config-dir", help = "directly passed on to wesnoth.exe")
     opt.add_option("-i", "--input", help = "a WML file to parse")
+    opt.add_option("-k", "--keep-temp", help = "specify directory where to keep temp files")
     opt.add_option("-t", "--text", help = "WML text to parse")
     opt.add_option("-w", "--wesnoth", help = "path to wesnoth.exe")
     opt.add_option("-d", "--defines", help = "comma separated list of WML defines")
     opt.add_option("-T", "--test", action = "store_true")
     opt.add_option("-j", "--to-json", action = "store_true")
     opt.add_option("-n", "--no-preprocess", action = "store_true")
+    opt.add_option("-v", "--verbose", action = "store_true")
     opt.add_option("-x", "--to-xml", action = "store_true")
     options, args = opt.parse_args()
 
@@ -653,6 +664,8 @@ code = <<
 
     p = Parser(options.wesnoth, options.config_dir, options.data_dir,
         options.no_preprocess)
+    if options.keep_temp: p.tempdir = options.keep_temp
+    if options.verbose: p.verbose = True
     if options.input: p.parse_file(options.input, options.defines)
     elif options.text: p.parse_text(options.text, options.defines)
     if options.to_json:
