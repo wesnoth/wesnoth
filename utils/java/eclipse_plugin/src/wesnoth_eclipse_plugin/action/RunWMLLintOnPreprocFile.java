@@ -25,6 +25,6 @@ public class RunWMLLintOnPreprocFile extends ObjectActionDelegate
 		PreprocessorUtils.preprocessFile(file, null);
 
 		WMLTools.runWMLToolAsWorkspaceJob(Tools.WMLLINT,
-				PreprocessorUtils.getPreprocessedFilePath(file,	false));
+				PreprocessorUtils.getPreprocessedFilePath(file,	false, false).toString());
 	}
 }

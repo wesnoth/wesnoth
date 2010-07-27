@@ -37,10 +37,7 @@ public class PreprocessorUtils
 	 */
 	public static boolean preprocessFile(IFile file, List<String> defines)
 	{
-		String targetDirectory = WorkspaceUtils.getTemporaryFolder();
-		targetDirectory += file.getProject().getName() + "/";
-		targetDirectory += file.getParent().getProjectRelativePath().toOSString();
-		return preprocessFile(file, targetDirectory, defines, true);
+		return preprocessFile(file, getTemporaryLocation(file), defines, true);
 	}
 
 	/**
@@ -120,17 +117,10 @@ public class PreprocessorUtils
 			return;
 		}
 
-		preprocessFile(file, null);
-
-		IFileStore preprocFile =
-			EFS.getLocalFileSystem().getStore(new Path(WorkspaceUtils.getTemporaryFolder()));
-		preprocFile = preprocFile.getChild(file.getName() +
-				(openPlain == true? ".plain" : ""));
-
 		try
 		{
 			IDE.openEditorOnFileStore(WorkspaceUtils.getWorkbenchWindow().getActivePage(),
-					preprocFile);
+					getPreprocessedFilePath(file, openPlain, true));
 		}
 		catch (Exception e)
 		{
@@ -142,13 +132,31 @@ public class PreprocessorUtils
 	 * Returns the path of the preprocessed file of the specified file
 	 * @param file The file whom preprocessed file to get
 	 * @param plain True to return the plain version file's file
+	 * @param create if this is true, if the target preprocessed file
+	 * doesn't exist it will be created.
 	 * @return
 	 */
-	public static String getPreprocessedFilePath(IFile file, boolean plain)
+	public static IFileStore getPreprocessedFilePath(IFile file, boolean plain,
+			boolean create)
 	{
 		IFileStore preprocFile =
-			EFS.getLocalFileSystem().getStore(new Path(WorkspaceUtils.getTemporaryFolder()));
+			EFS.getLocalFileSystem().getStore(new Path(getTemporaryLocation(file)));
 		preprocFile = preprocFile.getChild(file.getName() + (plain == true? ".plain" : "") );
-		return preprocFile.toString();
+		if (create && !preprocFile.fetchInfo().exists())
+			preprocessFile(file, null);
+		return preprocFile;
+	}
+
+	/**
+	 * Gets the temporary location where that file should be preprcessed
+	 * @param file
+	 * @return
+	 */
+	public static String getTemporaryLocation(IFile file)
+	{
+		String targetDirectory = WorkspaceUtils.getTemporaryFolder();
+		targetDirectory += file.getProject().getName() + "/";
+		targetDirectory += file.getParent().getProjectRelativePath().toOSString() + "/";
+		return targetDirectory;
 	}
 }

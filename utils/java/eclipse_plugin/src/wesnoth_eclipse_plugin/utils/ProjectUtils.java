@@ -159,7 +159,7 @@ public class ProjectUtils
 	}
 
 	/**
-	 * Returns "_main.cfg" location
+	 * Returns "_main.cfg" file
 	 * from the specified resource or null if it isn't any
 	 * It will start searching upwards starting from curren
 	 * resource's directory, until it finds a '_main.cfg' but it will
@@ -168,12 +168,12 @@ public class ProjectUtils
 	 * @param resource The resource where to search for '_main.cfg'
 	 * @return
 	 */
-	public static String getMainConfigLocation(IResource resource)
+	public static IFile getMainConfigLocation(IResource resource)
 	{
 		if (resource == null)
 			return null;
 
-		IResource targetResource = null;
+		IFile targetResource = null;
 		if (resource instanceof IProject)
 		{
 			IProject project = (IProject)resource;
@@ -191,7 +191,7 @@ public class ProjectUtils
 		if (targetResource == null && resource instanceof IFile)
 		{
 			if (resource.getName().equals("_main.cfg"))
-					targetResource = resource;
+					targetResource = (IFile) resource;
 			else
 			{
 				IProject project = resource.getProject();
@@ -218,8 +218,8 @@ public class ProjectUtils
 			}
 		}
 		if (targetResource == null)
-			return "";
-		return targetResource.getLocation().toOSString();
+			return null;
+		return targetResource;
 	}
 
 	/**
@@ -231,7 +231,9 @@ public class ProjectUtils
 	 */
 	public static String getCampaignID(IResource resource)
 	{
-		WMLSaxHandler handler = getWMLHandlerFromResource(getMainConfigLocation(resource));
+		WMLSaxHandler handler = getWMLHandlerFromResource(
+					PreprocessorUtils.getPreprocessedFilePath(
+						getMainConfigLocation(resource), false, true).toString());
 		if (handler == null)
 			return null;
 		return handler.CampaignId;
@@ -242,9 +244,10 @@ public class ProjectUtils
 	 * @param fileName
 	 * @return
 	 */
-	public static String getScenarioID(IResource resource)
+	public static String getScenarioID(IFile file)
 	{
-		WMLSaxHandler handler = getWMLHandlerFromResource(resource.getLocation().toOSString());
+		WMLSaxHandler handler = getWMLHandlerFromResource(
+				PreprocessorUtils.getPreprocessedFilePath(file, false, true).toString());
 		if (handler == null)
 			return null;
 		return handler.ScenarioId;

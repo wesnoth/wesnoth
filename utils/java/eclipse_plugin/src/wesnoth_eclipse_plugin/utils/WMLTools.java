@@ -90,6 +90,9 @@ public class WMLTools
 		// xml output
 		arguments.add("-x");
 
+		// no preprocess
+		arguments.add("-n");
+
 		// wesnoth executable's path
 		arguments.add("-w");
 		arguments.add(Preferences.getString(Constants.P_WESNOTH_EXEC_PATH));
