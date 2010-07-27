@@ -78,6 +78,7 @@ connect::side::side(connect& parent, const config& cfg, int index) :
 	gold_lock_(cfg["gold_lock"].to_bool()),
 	income_lock_(cfg["income_lock"].to_bool()),
 	team_lock_(cfg["team_lock"].to_bool()),
+	///@deprecated "colour_lock" instead of "color_lock" in [side]
 	color_lock_(cfg.get_old_attribute("color_lock","colour_lock").to_bool()),
 	player_number_(parent.video(), str_cast(index + 1), font::SIZE_LARGE, font::LOBBY_COLOR),
 	combo_controller_(new gui::combo_drag(parent.disp(), parent.player_types_, parent.combo_control_group_)),
