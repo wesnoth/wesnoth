@@ -139,11 +139,11 @@ void proxy_connection::handle_response(boost::asio::streambuf*          buf,
         manager_->handle_proxy_connection( ec, conn_handler_, timer_ );
     else
     {
-        if ( finds( ss.str(), "200 Connection established" ) )
+        if ( finds( ss.str(), "200" ) )
             manager_->handle_proxy_connection( ec, conn_handler_, timer_ );
         else
         {
-            if ( ( ! authenticating_ ) && finds( ss.str(), "407 Proxy Authentication Required" ) )
+            if ( ( ! authenticating_ ) && finds( ss.str(), "407" ) )
             {
                 if ( finds( ss.str(), "Proxy-Authenticate: Basic" ) )
                 {
