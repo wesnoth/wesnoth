@@ -589,7 +589,7 @@ engine_ptr readonly_context_impl::get_engine_by_cfg(const config& cfg)
 	}
 
 	std::vector<engine_ptr>::iterator en = engines_.begin();
-	while (en!=engines_.end() && ((*en)->get_name()!=engine_name)) {
+	while (en!=engines_.end() && ((*en)->get_name()!=engine_name) && ((*en)->get_id()!=engine_name)) {
 		++en;
 	}
 
