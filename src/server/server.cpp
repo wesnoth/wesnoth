@@ -2120,6 +2120,7 @@ void server::process_data_game(const network::connection sock,
 		g->start_game(pl);
 		return;
 	// If a player advances to the next scenario of a mp campaign. (deprecated)
+	///@deprecated r22619 a player advances to the next scenario of a mp campaign (notify_next_scenario)
 	} else if(data.child("notify_next_scenario")) {
 		//g->send_data(g->construct_server_message(pl->second.name()
 		//		+ " advanced to the next scenario."), sock);
