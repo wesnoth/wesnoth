@@ -1,23 +1,32 @@
 Eclipse plugin changelog
 
-26 June 2010
-* updated the editor to xtext 1.0.0
+0.2.1
+	* The workspace setup is done automatically on plugin start (first usage of it's features)
+	* Faster launching of campaign/scenario due to some enhancement in the wmlparser
+	* The plugin will autocomplete the paths for wesnoth if it's installed on its default location
+	* The logs will be placed in <temp>/wesnoth_plugin/logs and will have the name based only on current time
+	* New preferences pages for 'Addon uploader' and 'WML Tools' were added
+	* Fix collision between files with the same name by preprocessing them in separate directories
 
-* Misc
-- created the TemplateProvider that manages the templates
-for various file types
-- created the Preferences page for plugin related preferences
-- added the update site for the plugin (http://eclipse.wesnoth.org)
+0.2.0
+	26 June 2010
+	* updated the editor to xtext 1.0.0
 
-* Wizards
-- campaign
-- scenario
+	* Misc
+	- created the TemplateProvider that manages the templates
+	for various file types
+	- created the Preferences page for plugin related preferences
+	- added the update site for the plugin (http://eclipse.wesnoth.org)
 
-* Menus
-- Opening the editor
-- Importing wesnoth map
-- Open selected map in the map editor
-- Open selected scenario in game
-- Run wmllint on different files and see the output
-- See preprocessor output for different files
+	* Wizards
+	- campaign
+	- scenario
+
+	* Menus
+	- Opening the editor
+	- Importing wesnoth map
+	- Open selected map in the map editor
+	- Open selected scenario in game
+	- Run wmllint on different files and see the output
+	- See preprocessor output for different files
 
