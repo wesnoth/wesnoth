@@ -2284,17 +2284,7 @@ WML_HANDLER_FUNCTION(store_villages, /*event_info*/, cfg)
 	std::vector<map_location> locs = resources::game_map->villages();
 
 	for(std::vector<map_location>::const_iterator j = locs.begin(); j != locs.end(); ++j) {
-		bool matches = false;
-		if(cfg.has_attribute("side")) { 	/** @deprecated use owner_side instead */
-			lg::wml_error << "side key is no longer accepted in [store_villages],"
-				<< " use owner_side instead.\n";
-			config temp_cfg(cfg.get_config());
-			temp_cfg["owner_side"] = temp_cfg["side"];
-			temp_cfg["side"] = "";
-			matches = terrain_filter(vconfig(temp_cfg), *resources::units).match(*j);
-		} else {
-			matches = terrain_filter(cfg, *resources::units).match(*j);
-		}
+		bool matches = terrain_filter(cfg, *resources::units).match(*j);
 		if(matches) {
 			config &loc_store = to_store.add_child(varinfo.key);
 			j->write(loc_store);
