@@ -78,9 +78,10 @@ public class ExternalToolInvoker
 				Constants.IS_WINDOWS_MACHINE)
 			{
 				String wesnothParent = new File(arguments_.get(0)).getParent() + "/";
-				Thread.sleep(100);
-				stdoutReader = new FileReader(wesnothParent + "stdout.txt");
-				stderrReader = new FileReader(wesnothParent + "stderr.txt");
+				if (new File(wesnothParent + "stdout.txt").exists())
+					stdoutReader = new FileReader(wesnothParent + "stdout.txt");
+				if (new File(wesnothParent + "stderr.txt").exists())
+					stderrReader = new FileReader(wesnothParent + "stderr.txt");
 			}
 			else
 			{
@@ -88,14 +89,18 @@ public class ExternalToolInvoker
 				stderrReader = new InputStreamReader(process_.getErrorStream());
 			}
 
-			bufferedReaderOutput_ = new BufferedReader(stdoutReader);
-			bufferedReaderError_ = new BufferedReader(stderrReader);
+			if (stdoutReader != null)
+				bufferedReaderOutput_ = new BufferedReader(stdoutReader);
+			else
+				Logger.getInstance().logWarn("couldn't attach output reader.");
+
+			if (stderrReader != null)
+				bufferedReaderError_ = new BufferedReader(stderrReader);
+			else
+				Logger.getInstance().logWarn("couldn't attach err reader.");
 		} catch (IOException e)
 		{
 			Logger.getInstance().logException(e);
-		}
-		catch (InterruptedException e)
-		{
 		}
 	}
 
