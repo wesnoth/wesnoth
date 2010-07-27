@@ -8,12 +8,9 @@
  *******************************************************************************/
 package wesnoth_eclipse_plugin.schema;
 
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.PrintWriter;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.Map.Entry;
 import java.util.Stack;
 
 import wesnoth_eclipse_plugin.Constants;
@@ -243,27 +240,26 @@ public class SchemaParser
 		Logger.getInstance().log("parsing done");
 		parsingDone_ = true;
 
-		try
-		{
-			BufferedWriter bw = new BufferedWriter(new PrintWriter(new File("E:/work/gw/data/schema-out.cfg")));
-			// print primitives
-			for (Entry<String, String> primitive : primitives_.entrySet())
-			{
-				bw.write(primitive.getKey() + ": " + primitive.getValue() + "\n");
-			}
-			// print tags
-			Tag root = tags_.get("root");
-			for (Tag tag : root.getTagChildren())
-			{
-				bw.write(getOutput(tag, ""));
-			}
-			bw.close();
-		} catch (Exception e)
-		{
-			Logger.getInstance().logException(e);
-		}
-		System.out.println("End writing result");
-
+//		try
+//		{
+//			BufferedWriter bw = new BufferedWriter(new PrintWriter(new File("E:/work/gw/data/schema-out.cfg")));
+//			// print primitives
+//			for (Entry<String, String> primitive : primitives_.entrySet())
+//			{
+//				bw.write(primitive.getKey() + ": " + primitive.getValue() + "\n");
+//			}
+//			// print tags
+//			Tag root = tags_.get("root");
+//			for (Tag tag : root.getTagChildren())
+//			{
+//				bw.write(getOutput(tag, 0));
+//			}
+//			bw.close();
+//		} catch (Exception e)
+//		{
+//			Logger.getInstance().logException(e);
+//		}
+//		System.out.println("End writing result");
 	}
 
 	/**
@@ -334,15 +330,20 @@ public class SchemaParser
 	 * @param tag The tag which contents to output
 	 * @param indent The indentation space
 	 */
-	public String getOutput(Tag tag, String indent)
+	public String getOutput(Tag tag, int indent)
 	{
 		if (tag == null)
 			return "";
-		String res = indent + "[" + tag.getName() + "]\n";
-		res += getOutput(tag.getDescription(), indent + "\t");
+		StringBuilder res = new StringBuilder();
+		// tag name
+		res.append(StringUtils.multiples("\t", indent) + "[" + tag.getName() + "]\n");
+		// tag description (if any)
+		res.append(getOutput(tag.getDescription(), indent + 1));
+
 		for (TagKey key : tag.getKeyChildren())
 		{
-			res += (indent + "\t" + key.getName() + "=" +
+			res.append(StringUtils.multiples("\t", indent) +
+					"\t" + key.getName() + "=" +
 					(tag.getName().equals("description") ?
 							key.getValue() : key.getValueType())
 					+ "\n");
@@ -352,10 +353,13 @@ public class SchemaParser
 			// skip recursive calls
 			if (tmpTag.getTagChildren().contains(tag))
 				continue;
-			res += (getOutput(tmpTag, indent + "\t"));
+			res.append(getOutput(tmpTag, indent + 1));
 		}
-		res += (indent + "[/" + tag.getName() + "]\n");
-		return res;
+
+		// closing tag
+		res.append(StringUtils.multiples("\t", indent) +
+				"[/" + tag.getName() + "]\n");
+		return res.toString();
 	}
 
 	/**

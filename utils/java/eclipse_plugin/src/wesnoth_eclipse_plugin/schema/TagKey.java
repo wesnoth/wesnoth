@@ -15,7 +15,7 @@ import java.util.Comparator;
  */
 public class TagKey
 {
-	private String	 Name;
+	private String name_;
 	/**
 	 * Cardinality can be:
 	 * 1 = required
@@ -23,30 +23,30 @@ public class TagKey
 	 * * = repeated
 	 * - = forbidden
 	 */
-	private char	 Cardinality;
-	private String	 ValueType;
-	private String   Value;
-	private boolean IsEnum;
-	private boolean IsTranslatable;
+	private char cardinality_;
+	private String	valueType_;
+	private String value_;
+	private boolean isEnum_;
+	private boolean isTranslatable_;
 
 	public TagKey(String name, char cardinality, String valueType, boolean trans) {
-		Name = name;
-		Cardinality = cardinality;
-		Value = "";
+		name_ = name;
+		cardinality_ = cardinality;
+		value_ = "";
 
 		if (valueType == null || valueType.isEmpty())
 		{
-			ValueType = "";
-			IsEnum = false;
-			IsTranslatable = false;
+			valueType_ = "";
+			isEnum_ = false;
+			isTranslatable_ = false;
 		}
 		else
 		{
-			IsEnum = valueType.substring(1, valueType.indexOf(" ")).equals("enum");
+			isEnum_ = valueType.substring(1, valueType.indexOf(" ")).equals("enum");
 
 			 // remove the " "
-			ValueType = valueType.substring(valueType.indexOf(" ") + 1, valueType.length() - 1);
-			IsTranslatable = trans;
+			valueType_ = valueType.substring(valueType.indexOf(" ") + 1, valueType.length() - 1);
+			isTranslatable_ = trans;
 		}
 	}
 
@@ -54,7 +54,7 @@ public class TagKey
 			String defaultValue, boolean trans)
 	{
 		this(name, cardinality, valueType, trans);
-		Value = defaultValue;
+		value_ = defaultValue;
 	}
 
 	/**
@@ -65,11 +65,11 @@ public class TagKey
 		@Override
 		public int compare(TagKey o1, TagKey o2)
 		{
-			if (o1.Cardinality == o2.Cardinality)
+			if (o1.cardinality_ == o2.cardinality_)
 				return 0;
-			if (o1.Cardinality == '1')
+			if (o1.cardinality_ == '1')
 				return -1;
-			else if (o2.Cardinality == '1')
+			else if (o2.cardinality_ == '1')
 				return 1;
 			return 0;
 		}
@@ -77,40 +77,40 @@ public class TagKey
 
 	public char getCardinality()
 	{
-		return Cardinality;
+		return cardinality_;
 	}
 	public void setCardinality(char cardinality)
 	{
-		Cardinality = cardinality;
+		cardinality_ = cardinality;
 	}
 
 	public String getValue()
 	{
-		return Value;
+		return value_;
 	}
 
 	public void setDefaultValue(String defaultValue)
 	{
-		Value = defaultValue;
+		value_ = defaultValue;
 	}
 
 	public String getName()
 	{
-		return Name;
+		return name_;
 	}
 
 	public String getValueType()
 	{
-		return ValueType;
+		return valueType_;
 	}
 
 	public boolean getIsTranslatable()
 	{
-		return IsTranslatable;
+		return isTranslatable_;
 	}
 
 	public boolean getIsEnum()
 	{
-		return IsEnum;
+		return isEnum_;
 	}
 }

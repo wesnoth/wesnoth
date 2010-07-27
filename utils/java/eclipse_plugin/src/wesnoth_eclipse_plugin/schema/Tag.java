@@ -17,31 +17,31 @@ import java.util.List;
  */
 public class Tag
 {
-	private String		Name = "";
-	private String		ExtendedTagName = "";
-	private List<Tag>	TagChildren;
-	private List<TagKey>	KeyChildren;
-	private Tag          Description;
-	private char		    Cardinality = ' ';
+	private String name_ = "";
+	private String extendedTagName_ = "";
+	private List<Tag> tagChildren_;
+	private List<TagKey> keyChildren_;
+	private Tag description_;
+	private char cardinality_ = ' ';
 
-	private boolean		NeedsExpanding = false;
+	private boolean needsExpanding_ = false;
 
 	public Tag(String name, List<Tag> tagChildren, List<TagKey> keyChildren, char cardinality) {
-		Name = name;
-		TagChildren = tagChildren;
-		KeyChildren = keyChildren;
-		Cardinality = cardinality;
+		name_ = name;
+		tagChildren_ = tagChildren;
+		keyChildren_ = keyChildren;
+		cardinality_ = cardinality;
 	}
 
 	public Tag(String name, char cardinality) {
-		Name = name;
-		Cardinality = cardinality;
+		name_ = name;
+		cardinality_ = cardinality;
 	}
 
 	public Tag(String name, String extendedTagName, char cardinality) {
-		Name = name;
-		ExtendedTagName = extendedTagName;
-		Cardinality = cardinality;
+		name_ = name;
+		extendedTagName_ = extendedTagName;
+		cardinality_ = cardinality;
 	}
 
 	/**
@@ -50,9 +50,9 @@ public class Tag
 	 */
 	public void addTag(Tag tag)
 	{
-		if (TagChildren == null)
-			TagChildren = new ArrayList<Tag>();
-		TagChildren.add(tag);
+		if (tagChildren_ == null)
+			tagChildren_ = new ArrayList<Tag>();
+		tagChildren_.add(tag);
 	}
 
 	/**
@@ -61,9 +61,9 @@ public class Tag
 	 */
 	public void addKey(TagKey key)
 	{
-		if (KeyChildren == null)
-			KeyChildren = new ArrayList<TagKey>();
-		KeyChildren.add(key);
+		if (keyChildren_ == null)
+			keyChildren_ = new ArrayList<TagKey>();
+		keyChildren_.add(key);
 	}
 
 	/**
@@ -82,58 +82,58 @@ public class Tag
 	@Override
 	public String toString()
 	{
-		return new String(Name + " " + ExtendedTagName);
+		return new String(name_ + " " + extendedTagName_);
 	}
 
 	public String getName()
 	{
-		return Name;
+		return name_;
 	}
 
 	public char getCardinality()
 	{
-		return Cardinality;
+		return cardinality_;
 	}
 
 	public void setDescription(Tag description)
 	{
-		Description = description;
+		description_ = description;
 	}
 	public Tag getDescription()
 	{
-		return Description;
+		return description_;
 	}
 
 	public String getExtendedTagName()
 	{
-		return ExtendedTagName;
+		return extendedTagName_;
 	}
 	public void setExtendedTagName(String extendedTagName)
 	{
-		ExtendedTagName = extendedTagName;
+		extendedTagName_ = extendedTagName;
 	}
 
 	public void setNeedsExpanding(boolean needsExpanding)
 	{
-		NeedsExpanding = needsExpanding;
+		needsExpanding_ = needsExpanding;
 	}
 	public boolean getNeedsExpanding()
 	{
-		return NeedsExpanding;
+		return needsExpanding_;
 	}
 
 	public List<TagKey> getKeyChildren()
 	{
-		if (KeyChildren == null)
-			KeyChildren = new ArrayList<TagKey>();
-		return KeyChildren;
+		if (keyChildren_ == null)
+			keyChildren_ = new ArrayList<TagKey>();
+		return keyChildren_;
 	}
 
 	public List<Tag> getTagChildren()
 	{
-		if (TagChildren == null)
-			TagChildren = new ArrayList<Tag>();
-		return TagChildren;
+		if (tagChildren_ == null)
+			tagChildren_ = new ArrayList<Tag>();
+		return tagChildren_;
 	}
 
 
@@ -145,11 +145,11 @@ public class Tag
 		@Override
 		public int compare(Tag o1, Tag o2)
 		{
-			if (o1.Cardinality == o2.Cardinality)
+			if (o1.cardinality_ == o2.cardinality_)
 				return 0;
-			if (o1.Cardinality == '1')
+			if (o1.cardinality_ == '1')
 				return 1;
-			else if (o2.Cardinality == '1')
+			else if (o2.cardinality_ == '1')
 				return -1;
 			return 0;
 		}
