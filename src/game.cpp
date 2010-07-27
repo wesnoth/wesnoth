@@ -1764,6 +1764,8 @@ static int process_command_args(int argc, char** argv) {
 			<< "                                       specified campaign\n"
 			<< "  --config-dir <name>          sets the path of the user config directory to\n"
 			<< "                               $HOME/<name> or My Documents\\My Games\\<name> for windows.\n"
+			<< "                               You can specify also an absolute path outside the\n"
+			<< "                               $HOME or My Documents\\My Games directory."
 			<< "  --config-path                prints the path of the user config directory and\n"
 			<< "                               exits.\n"
 			<< "  --data-dir <directory>       overrides the data directory with the one specified.\n"

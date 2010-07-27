@@ -30,14 +30,14 @@ Battle for
 .B Wesnoth
 is a turn-based fantasy strategy game.
 
-Defeat all enemy leaders using a well-chosen cadre of troops, taking 
-care to manage your resources of gold and villages. All units have 
-their own strengths and weaknesses; to win, deploy your forces to 
-their best advantage while denying your foes the chance to do the 
-same. As units gain experience, they acquire new abilities and 
-become more powerful. Play in your own language and test your skill 
-against a smart computer opponent, or join Wesnoth's large community 
-of on-line players. Create your own custom units, scenarios or 
+Defeat all enemy leaders using a well-chosen cadre of troops, taking
+care to manage your resources of gold and villages. All units have
+their own strengths and weaknesses; to win, deploy your forces to
+their best advantage while denying your foes the chance to do the
+same. As units gain experience, they acquire new abilities and
+become more powerful. Play in your own language and test your skill
+against a smart computer opponent, or join Wesnoth's large community
+of on-line players. Create your own custom units, scenarios or
 campaigns, and share them with others.
 .
 .SH OPTIONS
@@ -48,7 +48,7 @@ sets BitsPerPixel value. Example:
 .B --bpp 32
 .TP
 .B -c, --campaign[[<difficulty>] <id_campaign> [<id_scenario>]]
-goes directly to the campaign based on the parameters. 
+goes directly to the campaign based on the parameters.
 The difficulty is a number between 1 and current campaign's difficulties number.  The default difficulty is 1.
 The scenario must be one of the campaign's child scenarios. The default scenario is campaign's first scenario.
 .TP
@@ -56,6 +56,8 @@ The scenario must be one of the campaign's child scenarios. The default scenario
 sets the user configuration directory to
 .I name
 under $HOME or "My Documents\\My Games" for windows.
+You can also specify an absolute path for the configuration directory outside
+the $HOME or "My Documents\\My Games"
 .TP
 .B --config-path
 prints the path of the user configuration directory and exits.
@@ -68,9 +70,9 @@ enables additional command mode options in-game
 (see the wiki page at http://www.wesnoth.org/wiki/CommandMode for more information about command mode).
 .TP
 .BI -e,\ --editor \ file
-start the in-game map editor directly. If 
+start the in-game map editor directly. If
 .I file
-is specified, equivalent to 
+is specified, equivalent to
 .B -l --load
 .TP
 .B --fps
@@ -81,13 +83,13 @@ at, in a corner of the screen.
 runs the game in full screen mode.
 .TP
 .BI --gunzip \ infile.gz
-decompresses a file which should be in gzip format and stores it 
+decompresses a file which should be in gzip format and stores it
 without the .gz suffix. The
 .I infile.gz
 will be removed.
 .TP
 .BI --gzip \ infile
-compresses a file in gzip format, stores it as 
+compresses a file in gzip format, stores it as
 .IR infile .gz
 and removes
 .IR infile .
@@ -99,7 +101,7 @@ displays a summary of command line options to standard output, and exits.
 loads the savegame
 .I file
 from the standard save game directory.
-If the 
+If the
 .B -e
 or
 .B --editor
@@ -122,7 +124,7 @@ Dumps a list of all log domains and exits.
 .B --max-fps
 the number of frames per second the game can show, the value should be between
 the 1 and 1000, the default is
-.BR 50 . 
+.BR 50 .
 .TP
 .B -m, --multiplayer
 runs a multiplayer game. There are additional options that can be used
@@ -205,13 +207,13 @@ this side. Available values:
 .B idle_ai
 and
 .BR sample_ai .
-.TP 
+.TP
 .BI --controller number = value
 selects the controller for this side. Available values:
 .B human
 and
 .BR ai .
-.TP 
+.TP
 .BI --era= value
 use this option to play in the selected era instead of the
 .B Default
