@@ -57,6 +57,7 @@ extern "C" {
 #include "sound.hpp"
 #include "unit.hpp"
 #include "ai/lua/core.hpp"
+#include "gui/widgets/listbox.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 
@@ -2345,6 +2346,77 @@ static int intf_show_dialog(lua_State *L)
 	return 1;
 }
 
+/**
+ * Sets the value of a widget on the current dialog.
+ * - Arg 1: scalar.
+ * - Args 2..n: path of strings and integers.
+ */
+static int intf_set_dialog_value(lua_State *L)
+{
+	if (!scoped_dialog::current)
+		return luaL_error(L, "no visible dialog");
+
+	int i = 2;
+	if (false) {
+		error_call_destructors_1:
+		return luaL_typerror(L, i, "integer");
+		error_call_destructors_2:
+		return luaL_typerror(L, i, "string");
+		error_call_destructors_3:
+		return luaL_argerror(L, i, "widget not found");
+		error_call_destructors_4:
+		return luaL_typerror(L, 1, "translatable string");
+		error_call_destructors_5:
+		return luaL_argerror(L, 1, error_buffer.c_str());
+	}
+
+	gui2::twidget *w = scoped_dialog::current;
+	gui2::tlistbox *l = NULL;
+	for (; !lua_isnoneornil(L, i); ++i)
+	{
+		if (l) {
+			int v = lua_tointeger(L, i);
+			if (v < 1)
+				goto error_call_destructors_1;
+			int n = l->get_item_count();
+			if (n < v) {
+				string_map dummy;
+				for (; n < v; ++n)
+					l->add_row(dummy);
+			}
+			w = l->get_row_grid(v - 1);
+		} else {
+			char const *m = lua_tostring(L, i);
+			if (!m) goto error_call_destructors_2;
+			w = gui2::find_widget<gui2::twidget>(w, m, false, false);
+		}
+		if (!w) goto error_call_destructors_3;
+		l = dynamic_cast<gui2::tlistbox *>(w);
+	}
+
+	try {
+		if (l) {
+			int v = lua_tointeger(L, 1);
+			int n = l->get_item_count();
+			if (1 <= v && v <= n)
+				l->select_row(v - 1);
+		} else {
+			t_string v;
+			if (!luaW_totstring(L, 1, v))
+				goto error_call_destructors_4;
+			gui2::tcontrol *c = dynamic_cast<gui2::tcontrol *>(w);
+			if (!c) goto error_call_destructors_3;
+			c->set_label(v);
+		}
+	} catch(twml_exception &e) {
+		error_buffer = e.user_message;
+		ERR_LUA << "failed to set dialog value: " << e.dev_message << '\n';
+		goto error_call_destructors_5;
+	}
+
+	return 0;
+}
+
 LuaKernel::LuaKernel()
 	: mState(luaL_newstate())
 {
@@ -2393,6 +2465,7 @@ LuaKernel::LuaKernel()
 		{ "put_unit",                 &intf_put_unit                 },
 		{ "require",                  &intf_require                  },
 		{ "scroll_to_tile",           &intf_scroll_to_tile           },
+		{ "set_dialog_value",         &intf_set_dialog_value         },
 		{ "set_music",                &intf_set_music                },
 		{ "set_terrain",              &intf_set_terrain              },
 		{ "set_variable",             &intf_set_variable             },
