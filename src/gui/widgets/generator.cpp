@@ -664,8 +664,7 @@ void tselect::init(tgrid* grid
 			} else if(child_grid) {
 				init(child_grid, data, callback);
 			} else {
-				ERROR_LOG("Widget type '"
-						<< typeid(*widget).name() << "'.");
+				VALIDATE(false, "Only toggle buttons and panels are allowed as the cells of a list definition.");
 			}
 		}
 	}
