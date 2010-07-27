@@ -129,6 +129,8 @@ void asio_client::handle_timeout(const boost::system::error_code& ec,
                                  ana::connection_handler*         handler,
                                  ana::timer*                      timer)
 {
+    delete timer;
+
     if ( ec != ana::operation_aborted ) // Timed out before canceling
     {
         handler->handle_connect( ana::timeout_error, 0 );
