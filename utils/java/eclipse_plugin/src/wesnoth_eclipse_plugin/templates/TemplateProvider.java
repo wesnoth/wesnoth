@@ -56,7 +56,7 @@ public class TemplateProvider
 			while ((line = reader.readLine()) != null)
 			{
 				// comment
-				if (line.startsWith("#"))
+				if (line.startsWith("#") || line.matches("^[\t ]*$"))
 					continue;
 
 				// 0 - template name | 1 - template file
