@@ -26,9 +26,11 @@ local function generate_objectives(cfg)
 	local objectives = ""
 	local win_objectives = ""
 	local lose_objectives = ""
+	local gold_carryover = ""
 
 	local win_string = cfg.victory_string or _ "Victory:"
 	local lose_string = cfg.defeat_string or _ "Defeat:"
+	local gold_carryover_string = cfg.gold_carryover_string or _ "Gold carryover:"
 
 	for obj in helper.child_range(cfg, "objective") do
 		local show_if = helper.get_child(obj, "show_if")
@@ -46,6 +48,20 @@ local function generate_objectives(cfg)
 		end
 	end
 
+	for obj in helper.child_range(cfg, "gold_carryover") do
+		if obj.bonus ~= nil then
+			if obj.bonus then
+				gold_carryover = color_prefix(255, 255, 192) .. "<small>" .. _"Early finish bonus." .. "</small></span>\n"
+			else
+				gold_carryover = color_prefix(255, 255, 192) .. "<small>" .. _"No early finish bonus." .. "</small></span>\n"
+			end
+		end
+
+		if obj.carryover_percentage then
+			gold_carryover = gold_carryover .. color_prefix(255, 255, 192) .. "<small>" .. string.format(tostring(_ "%d%% of gold carried over to the next scenario."), obj.carryover_percentage) .. "</small></span>\n"
+		end
+	end
+
 	local summary = cfg.summary
 	if summary then
 		objectives = "<big>" .. insert_before_nl(summary, "</big>") .. "\n"
@@ -55,6 +71,9 @@ local function generate_objectives(cfg)
 	end
 	if lose_objectives ~= "" then
 		objectives = objectives .. "<big>" .. lose_string .. "</big>\n" .. lose_objectives
+	end
+	if gold_carryover ~= "" then
+		objectives = objectives .. gold_carryover_string .. "\n" .. gold_carryover
 	end
 	local note = cfg.note
 	if note then
