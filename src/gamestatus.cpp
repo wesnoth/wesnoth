@@ -700,6 +700,7 @@ protected:
 
 			//if we have a snapshot, level contains team information
 			//else, we look for [side] or [player] (deprecated) tags in starting_pos
+			///@deprecated r37519 [player] instead of [side] in starting_pos
 			if (snapshot_) {
 				if (const config &c = level_.find_child("player","save_id",save_id_))  {
 					player_cfg_ = &c;
