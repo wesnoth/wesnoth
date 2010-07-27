@@ -2306,7 +2306,8 @@ static int intf_show_dialog(lua_State *L)
 		std::auto_ptr<gui2::twindow> w(gui2::build(resources::screen->video(), &def));
 		v = w->show(true, 0);
 	} catch(twml_exception &e) {
-		error_buffer = e.dev_message;
+		error_buffer = e.user_message;
+		ERR_LUA << "failed to generate dialog: " << e.dev_message << '\n';
 		goto error_call_destructors;
 	}
 
