@@ -740,7 +740,7 @@ WML_HANDLER_FUNCTION(color_adjust, /*event_info*/, cfg)
 }
 
 //Function handling old name
-//TODO: remove it when deprecated (should be 1.9.2)
+///@deprecated 1.9.2 'colour_adjust' instead of 'color_adjust'
 WML_HANDLER_FUNCTION(colour_adjust, /*event_info*/, cfg)
 {
 	color_adjust(cfg);
@@ -1276,7 +1276,7 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 	const std::string random = cfg["random"];
 	std::string rand = cfg["rand"];
 	if(random.empty() == false) {
-		///@deprecated 1.9.2 Usage of 'format' instead or 'rand'
+		///@deprecated 1.9.2 Usage of 'random' instead or 'rand'
 		lg::wml_error << "Usage of 'random' is deprecated, use 'rand' instead, "
 			"support will be removed in 1.9.2.\n";
 		if(rand.empty()) {
