@@ -627,7 +627,7 @@ surface locator::load_image_sub_file() const
 						}
 					}
 					else {
-						// Deprecated 1.6 palette switch syntax
+						///@Deprecated 1.6 palette switch syntax
 						if(field.find('=') != std::string::npos) {
 							lg::wml_error << "the ~RC() image function cannot be used for palette switch (A=B) in 1.7.x; use ~PAL(A>B) instead\n";
 						}
