@@ -2286,9 +2286,31 @@ static int intf_synchronize_choice(lua_State *L)
 	return 1;
 }
 
+struct scoped_dialog
+{
+	gui2::twindow *prev;
+	static gui2::twindow *current;
+	scoped_dialog(gui2::twindow *w)
+	{
+		prev = current;
+		current = w;
+	}
+	~scoped_dialog()
+	{
+		delete current;
+		current = prev;
+	}
+private:
+	scoped_dialog(const scoped_dialog &);
+};
+
+gui2::twindow *scoped_dialog::current = NULL;
+
 /**
  * Displays a window.
  * - Arg 1: WML table describing the window.
+ * - Arg 2: function called at pre-show.
+ * - Arg 3: function called at post-show.
  * - Ret 1: integer.
  */
 static int intf_show_dialog(lua_State *L)
@@ -2303,8 +2325,16 @@ static int intf_show_dialog(lua_State *L)
 		config def_cfg;
 		luaW_toconfig(L, 1, def_cfg);
 		gui2::twindow_builder::tresolution def(def_cfg);
-		std::auto_ptr<gui2::twindow> w(gui2::build(resources::screen->video(), &def));
-		v = w->show(true, 0);
+		scoped_dialog w(gui2::build(resources::screen->video(), &def));
+		if (!lua_isnoneornil(L, 2)) {
+			lua_pushvalue(L, 2);
+			if (!luaW_pcall(L, 0, 0)) return 0;
+		}
+		v = scoped_dialog::current->show(true, 0);
+		if (!lua_isnoneornil(L, 3)) {
+			lua_pushvalue(L, 3);
+			if (!luaW_pcall(L, 0, 0)) return 0;
+		}
 	} catch(twml_exception &e) {
 		error_buffer = e.user_message;
 		ERR_LUA << "failed to generate dialog: " << e.dev_message << '\n';
