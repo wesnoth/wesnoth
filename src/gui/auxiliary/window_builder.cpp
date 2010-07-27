@@ -57,13 +57,7 @@ tbuilder_widget_ptr create_builder_widget(const config& cfg)
 {
 	config::all_children_itors children = cfg.all_children_range();
 	size_t nb_children = std::distance(children.first, children.second);
-	if (nb_children != 1) {
-		ERR_GUI_P << "Grid cell has " << nb_children
-			<< " children instead of 1, aborting. Config :\n"
-			<< cfg;
-		assert(false);
-	}
-
+	VALIDATE(nb_children == 1, "Grid cell does not have exactly 1 child.");
 
 	typedef
 			std::pair<
