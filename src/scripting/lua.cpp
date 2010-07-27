@@ -59,6 +59,7 @@ extern "C" {
 #include "ai/lua/core.hpp"
 #include "gui/widgets/listbox.hpp"
 #include "gui/widgets/settings.hpp"
+#include "gui/widgets/text_box.hpp"
 #include "gui/widgets/window.hpp"
 
 static lg::log_domain log_scripting_lua("scripting/lua");
@@ -2388,7 +2389,7 @@ static int intf_set_dialog_value(lua_State *L)
 		} else {
 			char const *m = lua_tostring(L, i);
 			if (!m) goto error_call_destructors_2;
-			w = gui2::find_widget<gui2::twidget>(w, m, false, false);
+			w = w->find(m, false);
 		}
 		if (!w) goto error_call_destructors_3;
 		l = dynamic_cast<gui2::tlistbox *>(w);
@@ -2415,6 +2416,63 @@ static int intf_set_dialog_value(lua_State *L)
 	}
 
 	return 0;
+}
+
+/**
+ * Gets the value of a widget on the current dialog.
+ * - Args 1..n: path of strings and integers.
+ * - Ret 1: scalar.
+ */
+static int intf_get_dialog_value(lua_State *L)
+{
+	if (!scoped_dialog::current)
+		return luaL_error(L, "no visible dialog");
+
+	int i = 1;
+	if (false) {
+		error_call_destructors_1:
+		return luaL_typerror(L, i, "integer");
+		error_call_destructors_2:
+		return luaL_typerror(L, i, "string");
+		error_call_destructors_3:
+		return luaL_argerror(L, i, "widget not found");
+		error_call_destructors_4:
+		return luaL_argerror(L, 1, error_buffer.c_str());
+	}
+
+	gui2::twidget *w = scoped_dialog::current;
+	gui2::tlistbox *l = NULL;
+	for (; !lua_isnoneornil(L, i); ++i)
+	{
+		if (l) {
+			int v = lua_tointeger(L, i);
+			int n = l->get_item_count();
+			if (v < 1 || v > n)
+				goto error_call_destructors_1;
+			w = l->get_row_grid(v - 1);
+		} else {
+			char const *m = lua_tostring(L, i);
+			if (!m) goto error_call_destructors_2;
+			w = w->find(m, false);
+		}
+		if (!w) goto error_call_destructors_3;
+		l = dynamic_cast<gui2::tlistbox *>(w);
+	}
+
+	try {
+		if (l) {
+			lua_pushinteger(L, l->get_selected_row() + 1);
+		} else if (gui2::ttext_box *t = dynamic_cast<gui2::ttext_box *>(w)) {
+			lua_pushstring(L, t->get_value().c_str());
+		} else
+			goto error_call_destructors_3;
+	} catch(twml_exception &e) {
+		error_buffer = e.user_message;
+		ERR_LUA << "failed to get dialog value: " << e.dev_message << '\n';
+		goto error_call_destructors_4;
+	}
+
+	return 1;
 }
 
 LuaKernel::LuaKernel()
@@ -2450,6 +2508,7 @@ LuaKernel::LuaKernel()
 		{ "find_vacant_tile",         &intf_find_vacant_tile         },
 		{ "fire_event",               &intf_fire_event               },
 		{ "float_label",              &intf_float_label              },
+		{ "get_dialog_value",         &intf_get_dialog_value         },
 		{ "get_map_size",             &intf_get_map_size             },
 		{ "get_recall_units",         &intf_get_recall_units         },
 		{ "get_selected_tile",        &intf_get_selected_tile        },
