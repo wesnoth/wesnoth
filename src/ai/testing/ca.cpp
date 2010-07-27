@@ -597,9 +597,14 @@ void combat_phase::execute()
 		}
 	}
 
-	attack_result_ptr attack_res = execute_attack_action(to, target_loc, -1);
+	attack_result_ptr attack_res = check_attack_action(to, target_loc, -1);
 	if (!attack_res->is_ok()) {
-		LOG_AI_TESTING_AI_DEFAULT << get_name() << "::execute not ok, attack failed" << std::endl;
+		LOG_AI_TESTING_AI_DEFAULT << get_name() << "::execute not ok, attack cancelled" << std::endl;
+	} else {
+		attack_res->execute();
+		if (!attack_res->is_ok()) {
+			LOG_AI_TESTING_AI_DEFAULT << get_name() << "::execute not ok, attack failed" << std::endl;
+		}
 	}
 
 }
