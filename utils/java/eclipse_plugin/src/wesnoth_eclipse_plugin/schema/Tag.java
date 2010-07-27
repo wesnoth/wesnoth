@@ -17,47 +17,31 @@ import java.util.List;
  */
 public class Tag
 {
-	public String		Name;
-	public String		ExtendedTagName;
-	public List<Tag>	TagChildren;
-	public List<TagKey>	KeyChildren;
-	public char		Cardinality;
+	private String		Name = "";
+	private String		ExtendedTagName = "";
+	private List<Tag>	TagChildren;
+	private List<TagKey>	KeyChildren;
+	private Tag          Description;
+	private char		    Cardinality = ' ';
 
-	public boolean		NeedsExpanding = false;
+	private boolean		NeedsExpanding = false;
 
 	public Tag(String name, List<Tag> tagChildren, List<TagKey> keyChildren, char cardinality) {
 		Name = name;
-		ExtendedTagName = "";
 		TagChildren = tagChildren;
 		KeyChildren = keyChildren;
 		Cardinality = cardinality;
-		safeInit();
 	}
 
 	public Tag(String name, char cardinality) {
 		Name = name;
-		ExtendedTagName = "";
-		TagChildren = new ArrayList<Tag>();
-		KeyChildren = new ArrayList<TagKey>();
 		Cardinality = cardinality;
-		safeInit();
 	}
 
 	public Tag(String name, String extendedTagName, char cardinality) {
 		Name = name;
 		ExtendedTagName = extendedTagName;
-		TagChildren = new ArrayList<Tag>();
-		KeyChildren = new ArrayList<TagKey>();
 		Cardinality = cardinality;
-		safeInit();
-	}
-
-	private void safeInit()
-	{
-		if (TagChildren == null)
-			TagChildren = new ArrayList<Tag>();
-		if (KeyChildren == null)
-			KeyChildren = new ArrayList<TagKey>();
 	}
 
 	/**
@@ -66,6 +50,8 @@ public class Tag
 	 */
 	public void addTag(Tag tag)
 	{
+		if (TagChildren == null)
+			TagChildren = new ArrayList<Tag>();
 		TagChildren.add(tag);
 	}
 
@@ -75,6 +61,8 @@ public class Tag
 	 */
 	public void addKey(TagKey key)
 	{
+		if (KeyChildren == null)
+			KeyChildren = new ArrayList<TagKey>();
 		KeyChildren.add(key);
 	}
 
@@ -90,6 +78,64 @@ public class Tag
 	{
 		addKey(new TagKey(name, cardinality, valueType, translatable));
 	}
+
+	@Override
+	public String toString()
+	{
+		return new String(Name + " " + ExtendedTagName);
+	}
+
+	public String getName()
+	{
+		return Name;
+	}
+
+	public char getCardinality()
+	{
+		return Cardinality;
+	}
+
+	public void setDescription(Tag description)
+	{
+		Description = description;
+	}
+	public Tag getDescription()
+	{
+		return Description;
+	}
+
+	public String getExtendedTagName()
+	{
+		return ExtendedTagName;
+	}
+	public void setExtendedTagName(String extendedTagName)
+	{
+		ExtendedTagName = extendedTagName;
+	}
+
+	public void setNeedsExpanding(boolean needsExpanding)
+	{
+		NeedsExpanding = needsExpanding;
+	}
+	public boolean getNeedsExpanding()
+	{
+		return NeedsExpanding;
+	}
+
+	public List<TagKey> getKeyChildren()
+	{
+		if (KeyChildren == null)
+			KeyChildren = new ArrayList<TagKey>();
+		return KeyChildren;
+	}
+
+	public List<Tag> getTagChildren()
+	{
+		if (TagChildren == null)
+			TagChildren = new ArrayList<Tag>();
+		return TagChildren;
+	}
+
 
 	/**
 	 * A tag comparator that sorts just after required cardinality.
@@ -109,9 +155,4 @@ public class Tag
 		}
 	}
 
-	@Override
-	public String toString()
-	{
-		return new String(Name + " " + ExtendedTagName);
-	}
 }

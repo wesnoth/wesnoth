@@ -33,37 +33,37 @@ public class WizardGenerator extends NewWizardTemplate
 		else
 		{
 			// keys section
-			int keysNr = tagContent.KeyChildren.size();
+			int keysNr = tagContent.getKeyChildren().size();
 			int startKey = 0, pgsKey = (keysNr / Constants.WIZ_MaxTextBoxesOnPage);
 			WizardGeneratorPageKey tempPageKey;
 			for (int i = 0; i < pgsKey; i++)
 			{
-				tempPageKey = new WizardGeneratorPageKey(tagName, tagContent.KeyChildren, startKey,
+				tempPageKey = new WizardGeneratorPageKey(tagName, tagContent.getKeyChildren(), startKey,
 									startKey + Constants.WIZ_MaxTextBoxesOnPage, (byte) (indent_ + 1));
 				startKey += Constants.WIZ_MaxTextBoxesOnPage;
 				addPage(tempPageKey);
 			}
 			if (keysNr - 1 > 0)
 			{
-				tempPageKey = new WizardGeneratorPageKey(tagName, tagContent.KeyChildren,
+				tempPageKey = new WizardGeneratorPageKey(tagName, tagContent.getKeyChildren(),
 												startKey, keysNr - 1, (byte) (indent_ + 1));
 				addPage(tempPageKey);
 			}
 
 			// tags section
-			int tagsNr = tagContent.TagChildren.size();
+			int tagsNr = tagContent.getTagChildren().size();
 			int startTag = 0, pgsTag = (tagsNr / Constants.WIZ_MaxGroupsOnPage);
 			WizardGeneratorPageTag tempPageTag;
 			for (int i = 0; i < pgsTag; i++)
 			{
-				tempPageTag = new WizardGeneratorPageTag(tagName, tagContent.TagChildren, startTag,
+				tempPageTag = new WizardGeneratorPageTag(tagName, tagContent.getTagChildren(), startTag,
 										startTag + Constants.WIZ_MaxGroupsOnPage, (byte) (indent_ + 1));
 				startTag += Constants.WIZ_MaxTextBoxesOnPage;
 				addPage(tempPageTag);
 			}
 			if (tagsNr - 1 > 0)
 			{
-				tempPageTag = new WizardGeneratorPageTag(tagName, tagContent.TagChildren,
+				tempPageTag = new WizardGeneratorPageTag(tagName, tagContent.getTagChildren(),
 											startTag, tagsNr - 1, (byte) (indent_ + 1));
 				addPage(tempPageTag);
 			}

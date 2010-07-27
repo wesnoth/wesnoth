@@ -8,9 +8,12 @@
  *******************************************************************************/
 package wesnoth_eclipse_plugin.schema;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.PrintWriter;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Map.Entry;
 import java.util.Stack;
 
 import wesnoth_eclipse_plugin.Constants;
@@ -83,21 +86,23 @@ public class SchemaParser
 
 			if (StringUtils.startsWith(line, "["))
 			{
+				// closing tag
 				if (line.charAt(line.indexOf("[") + 1) == '/')
 				{
 					// propagate the 'needsexpanding' property to upper levels
 					boolean expand = false;
 					if (!tagStack.isEmpty() &&
 						tags_.containsKey(tagStack.peek()))
-						expand = tags_.get(tagStack.peek()).NeedsExpanding;
+						expand = tags_.get(tagStack.peek()).getNeedsExpanding();
 
 					tagStack.pop();
 
 					if (!tagStack.isEmpty() &&
 						tags_.containsKey(tagStack.peek()) &&
 						expand == true)
-						tags_.get(tagStack.peek()).NeedsExpanding = expand;
+						tags_.get(tagStack.peek()).setNeedsExpanding(expand);
 				}
+				// opening tag
 				else
 				{
 					String tagName = line.substring(line.indexOf("[") + 1, line.indexOf("]"));
@@ -107,7 +112,6 @@ public class SchemaParser
 					{
 						simpleTagName = tagName.split(":")[0];
 						extendedTagName = tagName.split(":")[1];
-//						System.out.println(tagName);
 					}
 					tagStack.push(simpleTagName);
 
@@ -118,14 +122,14 @@ public class SchemaParser
 							// this tags was already refered in the schema
 							// before they were declared
 							currentTag = tags_.get(simpleTagName);
-							currentTag.ExtendedTagName = extendedTagName;
-							currentTag.NeedsExpanding = !extendedTagName.isEmpty();
+							currentTag.setExtendedTagName(extendedTagName);
+							currentTag.setNeedsExpanding(!extendedTagName.isEmpty());
 						}
 						else
 						{
 							Tag tag = new Tag(simpleTagName, extendedTagName, '_');
 							currentTag = tag;
-							currentTag.NeedsExpanding = !extendedTagName.isEmpty();
+							currentTag.setNeedsExpanding(!extendedTagName.isEmpty());
 							tags_.put(simpleTagName, tag);
 						}
 					}
@@ -133,23 +137,45 @@ public class SchemaParser
 			}
 			else
 			{
-				// skip descriptions for now
-				if (tagStack.peek().equals("description"))
-				{
-					continue;
-				}
-
 				// top level - primitives defined
 				if (tagStack.peek().equals("schema"))
 				{
 					String[] tokens = line.split("=");
 					if (tokens.length != 2)
 					{
-						System.err.println("Error. invalid line :" + index);
-						continue; //return;
+						Logger.getInstance().logError(
+								"Error. invalid primitive on line :" + index);
+						continue;
 					}
 					primitives_.put(tokens[0].trim(), tokens[1].trim());
-					//System.out.printf("[%s][%s]\n", tokens[0].trim(), tokens[1].trim());
+				}
+				else if (tagStack.peek().equals("description"))
+				{
+					String[] tokens = line.trim().split("=");
+					String value = "";
+					// this *should* happen only in [description]
+					// multi-line string
+					if (StringUtils.countOf(tokens[1], '"') % 2 != 0)
+					{
+						value = tokens[1] + "\n";
+						++index;
+						while (StringUtils.countOf(lines[index], '"') % 2 == 0 &&
+								!StringUtils.startsWith(lines[index], "#") &&
+								index < lines.length)
+						{
+							value += (lines[index] + "\n");
+							++index;
+						}
+						value += lines[index];
+					}
+					else
+					{
+						value = tokens[1];
+					}
+
+					currentTag.setDescription(new Tag("description", '?'));
+					currentTag.getDescription().getKeyChildren().add(
+							new TagKey(tokens[0], '?', "", value, true));
 				}
 				else
 				{
@@ -160,32 +186,17 @@ public class SchemaParser
 
 					if (tokens.length != 2)
 					{
-						System.err.println("Error. invalid line :" + index);
-						continue; //return;
+						Logger.getInstance().logError(
+								"Error. invalid attribute on line :" + index);
+						continue;
 					}
-
-					//						// this *should* happen only in [description]
-					//						// multi-line string
-					//						String value = tokens[1];
-					//						if (StringUtils.countOf(value, '"') % 2 != 0)
-					//						{
-					//							++index;
-					//							while (StringUtils.countOf(lines[index], '"') % 2 == 0 &&
-					//									!StringUtils.startsWith(lines[index], "#") &&
-					//									index < lines.length)
-					//							{
-					//								value += (lines[index] + "\n");
-					//								++index;
-					//							}
-					//							value += lines[index];
-					//						}
 
 					String[] value = tokens[1].substring(1, tokens[1].length() - 1).split(" ");
 					if (value.length != 2)
 					{
 						Logger.getInstance().logError(
-								"Error. invalid line on 'schema.cfg' :" + index);
-						continue; //return;
+								"Error. invalid attribute value on line:" + index);
+						continue;
 					}
 
 					if (currentTag != null)
@@ -199,7 +210,6 @@ public class SchemaParser
 							// tag wasn't created yet
 							{
 								targetTag = new Tag(value[1], getCardinality(value[0]));
-								//System.err.println("creating missing tag: " + value[1]);
 								tags_.put(value[1], targetTag);
 							}
 
@@ -208,7 +218,8 @@ public class SchemaParser
 						else
 						{
 							if (primitives_.get(value[1]) == null)
-								Logger.getInstance().logError("Undefined primitive type in schema.cfg for: " + value[1]);
+								Logger.getInstance().logError(
+								"Undefined primitive type in schema.cfg for: " + value[1]);
 
 							currentTag.addKey(tokens[0], primitives_.get(value[1]),
 									getCardinality(value[0]), value[1].equals("tstring"));
@@ -231,6 +242,28 @@ public class SchemaParser
 
 		Logger.getInstance().log("parsing done");
 		parsingDone_ = true;
+
+		try
+		{
+			BufferedWriter bw = new BufferedWriter(new PrintWriter(new File("E:/work/gw/data/schema-out.cfg")));
+			// print primitives
+			for (Entry<String, String> primitive : primitives_.entrySet())
+			{
+				bw.write(primitive.getKey() + ": " + primitive.getValue() + "\n");
+			}
+			// print tags
+			Tag root = tags_.get("root");
+			for (Tag tag : root.getTagChildren())
+			{
+				bw.write(getOutput(tag, ""));
+			}
+			bw.close();
+		} catch (Exception e)
+		{
+			Logger.getInstance().logException(e);
+		}
+		System.out.println("End writing result");
+
 	}
 
 	/**
@@ -238,18 +271,18 @@ public class SchemaParser
 	 */
 	private void expandTag(Tag tag, int ind)
 	{
-		if (tag.NeedsExpanding)
+		if (tag.getNeedsExpanding())
 		{
-			tag.NeedsExpanding = false;
-			for (Tag child : tag.TagChildren)
+			tag.setNeedsExpanding(false);
+			for (Tag child : tag.getTagChildren())
 			{
 				expandTag(child,ind+1);
 			}
 
-			if (tags_.containsKey(tag.ExtendedTagName))
+			if (tags_.containsKey(tag.getExtendedTagName()))
 			{
-				tag.KeyChildren.addAll(tags_.get(tag.ExtendedTagName).KeyChildren);
-				tag.TagChildren.addAll(tags_.get(tag.ExtendedTagName).TagChildren);
+				tag.getKeyChildren().addAll(tags_.get(tag.getExtendedTagName()).getKeyChildren());
+				tag.getTagChildren().addAll(tags_.get(tag.getExtendedTagName()).getTagChildren());
 			}
 		}
 	}
@@ -271,10 +304,10 @@ public class SchemaParser
 	 */
 	private void sortChildren(Tag tag)
 	{
-		Collections.sort(tag.TagChildren, new Tag.CardinalityComparator());
-		Collections.sort(tag.KeyChildren, new TagKey.CardinalityComparator());
+		Collections.sort(tag.getTagChildren(), new Tag.CardinalityComparator());
+		Collections.sort(tag.getKeyChildren(), new TagKey.CardinalityComparator());
 
-		for (Tag childTag : tag.TagChildren)
+		for (Tag childTag : tag.getTagChildren())
 		{
 			sortChildren(childTag);
 		}
@@ -303,20 +336,25 @@ public class SchemaParser
 	 */
 	public String getOutput(Tag tag, String indent)
 	{
-		System.out.println(tag);
-		String res = indent + "[" + tag.Name + "]\n";
-		for (TagKey key : tag.KeyChildren)
+		if (tag == null)
+			return "";
+		String res = indent + "[" + tag.getName() + "]\n";
+		res += getOutput(tag.getDescription(), indent + "\t");
+		for (TagKey key : tag.getKeyChildren())
 		{
-			res += (indent + "\t" + key.Name + "=" + key.ValueType + "\n");
+			res += (indent + "\t" + key.getName() + "=" +
+					(tag.getName().equals("description") ?
+							key.getValue() : key.getValueType())
+					+ "\n");
 		}
-		for (Tag tmpTag : tag.TagChildren)
+		for (Tag tmpTag : tag.getTagChildren())
 		{
 			// skip recursive calls
-			if (tmpTag.TagChildren.contains(tag))
+			if (tmpTag.getTagChildren().contains(tag))
 				continue;
 			res += (getOutput(tmpTag, indent + "\t"));
 		}
-		res += (indent + "[/" + tag.Name + "]\n");
+		res += (indent + "[/" + tag.getName() + "]\n");
 		return res;
 	}
 

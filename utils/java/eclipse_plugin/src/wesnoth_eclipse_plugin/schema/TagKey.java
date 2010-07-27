@@ -15,7 +15,7 @@ import java.util.Comparator;
  */
 public class TagKey
 {
-	public String	 Name;
+	private String	 Name;
 	/**
 	 * Cardinality can be:
 	 * 1 = required
@@ -23,16 +23,18 @@ public class TagKey
 	 * * = repeated
 	 * - = forbidden
 	 */
-	public char	 Cardinality;
-	public String	 ValueType;
-	public boolean IsEnum;
-	public boolean IsTranslatable;
+	private char	 Cardinality;
+	private String	 ValueType;
+	private String   Value;
+	private boolean IsEnum;
+	private boolean IsTranslatable;
 
 	public TagKey(String name, char cardinality, String valueType, boolean trans) {
 		Name = name;
 		Cardinality = cardinality;
+		Value = "";
 
-		if (valueType == null)
+		if (valueType == null || valueType.isEmpty())
 		{
 			ValueType = "";
 			IsEnum = false;
@@ -47,6 +49,14 @@ public class TagKey
 			IsTranslatable = trans;
 		}
 	}
+
+	public TagKey(String name, char cardinality, String valueType,
+			String defaultValue, boolean trans)
+	{
+		this(name, cardinality, valueType, trans);
+		Value = defaultValue;
+	}
+
 	/**
 	 * A tag comparator that sorts just after required cardinality.
 	 */
@@ -63,5 +73,44 @@ public class TagKey
 				return 1;
 			return 0;
 		}
+	}
+
+	public char getCardinality()
+	{
+		return Cardinality;
+	}
+	public void setCardinality(char cardinality)
+	{
+		Cardinality = cardinality;
+	}
+
+	public String getValue()
+	{
+		return Value;
+	}
+
+	public void setDefaultValue(String defaultValue)
+	{
+		Value = defaultValue;
+	}
+
+	public String getName()
+	{
+		return Name;
+	}
+
+	public String getValueType()
+	{
+		return ValueType;
+	}
+
+	public boolean getIsTranslatable()
+	{
+		return IsTranslatable;
+	}
+
+	public boolean getIsEnum()
+	{
+		return IsEnum;
 	}
 }

@@ -57,21 +57,21 @@ public class WizardGeneratorPageKey extends NewWizardPageTemplate
 		{
 			TagKey key = keys_.get(i);
 
-			if (key.Cardinality == '-')
+			if (key.getCardinality() == '-')
 				continue;
 
 			Label label = new Label(container_, SWT.NONE);
 			label.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
 			// add star to required items
-			label.setText(key.Name + (key.Cardinality == '1' ? "*" : "") + ":");
+			label.setText(key.getName() + (key.getCardinality()== '1' ? "*" : "") + ":");
 
 			// if the is an enum create a combobox instead of textbox
-			if (key.IsEnum)
+			if (key.getIsEnum())
 			{
 				Combo combo = new Combo(container_, SWT.READ_ONLY);
 				combo.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
-				combo.setData("name", key.Name);
-				String[] items = key.ValueType.split(",");
+				combo.setData("name", key.getName());
+				String[] items = key.getValueType().split(",");
 				combo.setItems(items);
 				combo.select(0);
 			}
@@ -80,11 +80,11 @@ public class WizardGeneratorPageKey extends NewWizardPageTemplate
 				Text textBox = new Text(container_, SWT.BORDER);
 				textBox.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 
-				textBox.setData("name", key.Name);
-				textBox.setData("valType", key.ValueType);
-				textBox.setData("card", key.Cardinality);
-				textBox.setData("trans", key.IsTranslatable);
-				if (key.Cardinality == '1')
+				textBox.setData("name", key.getName());
+				textBox.setData("valType", key.getValueType());
+				textBox.setData("card", key.getCardinality());
+				textBox.setData("trans", key.getIsTranslatable());
+				if (key.getCardinality() == '1')
 					textBox.setData("comp", false); // is textbox complete
 
 				textBox.addModifyListener(new ModifyListener() {

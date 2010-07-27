@@ -63,12 +63,12 @@ public class WizardGeneratorPageTag extends NewWizardPageTemplate
 		for (int i = startIndex_; i <= endIndex_; i++)
 		{
 			final Tag tag = tags_.get(i);
-			if (tag.Cardinality == '-')
+			if (tag.getCardinality() == '-')
 				continue;
 
 			Group tagGroup = new Group(container_, SWT.NONE);
 			tagGroup.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
-			tagGroup.setText("[" + tag.Name + "]");
+			tagGroup.setText("[" + tag.getName() + "]");
 			tagGroup.setLayout(new GridLayout(2, false));
 
 			List list = new List(tagGroup, SWT.BORDER);
@@ -103,20 +103,20 @@ public class WizardGeneratorPageTag extends NewWizardPageTemplate
 				{
 					if (!(e.getSource() instanceof Button))
 						return;
-					removeItem((List) ((Button) e.getSource()).getData("list"), tag.Name);
+					removeItem((List) ((Button) e.getSource()).getData("list"), tag.getName());
 				}
 			});
 
 			tagGroup.setData("list", list);
 			tagGroup.setData("tag", tag);
-			content_.put(tag.Name, new ArrayList<String>());
+			content_.put(tag.getName(), new ArrayList<String>());
 		}
 		updatePageIsComplete();
 	}
 
 	private void addNewItem(List targetList, Tag tag)
 	{
-		if ((tag.Cardinality == '1' || tag.Cardinality == '?') &&
+		if ((tag.getCardinality() == '1' || tag.getCardinality() == '?') &&
 			targetList.getItemCount() == 1)
 		{
 			GUIUtils.showWarnMessageBox("You can't add more than one item.");
@@ -124,12 +124,13 @@ public class WizardGeneratorPageTag extends NewWizardPageTemplate
 		}
 
 		WizardGenerator wizard =
-				new WizardGenerator("Create a new " + tag.Name, tag.Name, (byte) (indent_ + 1));
+				new WizardGenerator("Create a new " + tag.getName(), tag.getName(),
+						(byte) (indent_ + 1));
 		WizardUtils.launchWizard(wizard, getShell(), null);
 		if (wizard.isFinished())
 		{
 			targetList.add(wizard.getObjectName() + targetList.getItemCount());
-			content_.get(tag.Name).add(wizard.getData().toString());
+			content_.get(tag.getName()).add(wizard.getData().toString());
 		}
 		updatePageIsComplete();
 	}
@@ -157,9 +158,9 @@ public class WizardGeneratorPageTag extends NewWizardPageTemplate
 
 			int cnt = ((List)control.getData("list")).getItemCount();
 			Tag tag = (Tag)control.getData("tag");
-			if (cnt == 0 && tag.Cardinality == '1')
+			if (cnt == 0 && tag.getCardinality() == '1')
 			{
-				setErrorMessage("You need to have a [" + tag.Name + "] defined.");
+				setErrorMessage("You need to have a [" + tag.getName() + "] defined.");
 				return;
 			}
 		}
