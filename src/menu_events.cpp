@@ -2480,6 +2480,7 @@ class console_handler : public map_command_handler<console_handler>, private cha
 				_("Disable autosaves."));
 			register_command("next_level", &console_handler::do_next_level,
 				_("Advance to the next scenario, or scenario identified by 'id'"), _("<id>"), "D");
+			register_alias("next_level", "n");
 			register_command("choose_level", &console_handler::do_choose_level,
 				_("Choose next scenario"), "", "D");
 			register_alias("choose_level", "cl");
