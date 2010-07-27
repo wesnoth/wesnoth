@@ -17,7 +17,7 @@ public class SetupWorkspaceHandler extends AbstractHandler
 {
 	@Override
 	public Object execute(ExecutionEvent event) {
-		WorkspaceUtils.setupWorkspace();
+		WorkspaceUtils.setupWorkspace(false);
 		return null;
 	}
 }

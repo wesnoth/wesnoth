@@ -267,7 +267,7 @@ public class WorkspaceUtils
 	 * 	If not, the preferences window will open
 	 * 2) The project "User addons" exists. If not, it will be created
 	 */
-	public static void setupWorkspace()
+	public static void setupWorkspace(boolean guided)
 	{
 		if (!checkConditions(false))
 		{
@@ -275,8 +275,20 @@ public class WorkspaceUtils
 					Activator.getShell(), "plugin_preferences", null, null);
 			if (pref.open() == Window.CANCEL || !checkConditions(true))
 			{
-				GUIUtils.showErrorMessageBox("The workspace was not setup");
+				GUIUtils.showErrorMessageBox("The workspace was not setup. " +
+						"Please check the logs for errors.");
 				return;
+			}
+
+			if (guided)
+			{
+				GUIUtils.showInfoMessageBox(
+						"Good. The preferences were set.\n" +
+						"Now, I'll make a simple project which will " +
+						"correspond to\n" +
+						"'<your wesnoth user directory>/data/addons' directory " +
+						"where the addons will be stored.\n" +
+						"Press OK to continue.");
 			}
 		}
 
@@ -328,8 +340,18 @@ public class WorkspaceUtils
 				ProjectUtils.setPropertiesForProject(projectToCreate, props);
 			}
 
-			Logger.getInstance().log("setupWorkspace was successful",
-					"Workspace was set up successfully.");
+			if (guided)
+			{
+				GUIUtils.showInfoMessageBox(
+						"Congrats!\n" +
+						"Everything is set up. Now you can use the plugin.\n\n" +
+						"Good luck and have fun!");
+			}
+			else
+			{
+				Logger.getInstance().log("setupWorkspace was successful",
+						"Workspace was set up successfully.");
+			}
 		} catch (Exception e)
 		{
 			Logger.getInstance().logException(e);
