@@ -658,11 +658,11 @@ namespace ana
          *
          * \sa connection_handler
          */
-        virtual void connect_through_proxy(std::string proxy_address,
-                                           std::string proxy_port,
+        virtual void connect_through_proxy(std::string         proxy_address,
+                                           std::string         proxy_port,
                                            connection_handler* handler,
-                                           std::string user_name = "",
-                                           std::string password = "") = 0;
+                                           std::string         user_name = "",
+                                           std::string         password  = "") = 0;
 
         /**
          * Run the client listener, starts listening for incoming messages.

@@ -85,8 +85,6 @@ namespace ana
         const ana::error_code timeout_error =
                     boost::asio::error::make_error_code( boost::asio::error::timed_out );
 
-
-
         /** A network operation that didn't do anything.        */
         const operation_id no_operation = 0;
 

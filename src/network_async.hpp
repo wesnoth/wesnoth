@@ -1,5 +1,23 @@
 /* $Id$ */
 
+/**
+ * @file
+ * @brief New network API using ana.
+ *
+ * Copyright (C) 2010 Guillermo Biset.
+ *
+ * Part of the Battle for Wesnoth Project http://www.wesnoth.org/
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License version 2
+ * or at your option any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY.
+ *
+ * See the COPYING file for more details.
+ */
+
+
 /*
 Hello reader, welcome:
 
@@ -42,7 +60,12 @@ Feature Requests:
 
 */
 
-/** Namespace of the network API. */
+#ifndef NETWORK_ASYNC_HPP_INCLUDED
+#define NETWORK_ASYNC_HPP_INCLUDED
+
+#include "ana/api/ana.hpp"
+
+/** Namespace of the asynchronous network API. */
 namespace network
 {
     /**
@@ -50,6 +73,9 @@ namespace network
      *
      * Code that needs to create network servers or clients (components) will implement this
      * interface. Each method then corresponds to a particular network event.
+     *
+     * There already is a default (dummy) implementation for the event handlers, so you may inherit
+     * from the interface and selectively implement only some of the handler methods.
      */
     struct handler
     {
@@ -110,8 +136,6 @@ namespace network
         virtual void handle_send(ana::error_code, ana::net_id, operation_id) {}
     };
 
-    //Code that needs to create network components will USE these objects
-
     /**
      * A network client. Can connect to at most one network server at a time. It will handshake to
      * servers using a procedure described in:
@@ -119,7 +143,9 @@ namespace network
      *
      * After a successful connection it can send and receive WML documents to and from the server.
      */
-    class client
+    class client :  public ana::send_handler,
+                    public ana::connection_handler,
+                    public ana::listener_handler
     {
         public:
             /**
@@ -130,14 +156,23 @@ namespace network
             client( handler& handler );
             // Idea: Add a set_handler method to change handlers during execution.
 
-            // Example, set_timeout( network::SEND_OPERATIONS, ana::time::seconds( 10 ) );
-            //          set_timeout( network::SEND_OPERATIONS, ana::KILOBYTES(1),
-            //                                                 ana::time::seconds( 1 ) ); (?)
-            //          set_timeout( network::CONNECT_OPERATIONS, ana::time::seconds( 30 ) );
             /**
+             * Set timeouts for send operations for a given client.
              *
+             * Examples:
+             *     - set_send_timeout( ana::NoTimeouts );
+             *     - set_send_timeout( ana::FixedTime, ana::time::minutes( 1 ) );
              */
-            void set_timeout( ... );
+            void set_send_timeout( ana::timeout_policy type, size_t ms = 0 );
+
+            /**
+             * Set timeouts for connect operations for the client.
+             *
+             * Examples:
+             *     - set_connect_timeout( ana::time::seconds( 10 ) );
+             */
+            void set_connect_timeout( size_t ms = 0 );
+
 
             // Possibilities: Either use set_timeout to set general timeouts for groups of
             // operations or have a timeout parameter for each time you call a method.
@@ -211,8 +246,24 @@ namespace network
             std::string ip_address_of_server() const;
 
         private:
-            //Attributes
+            /* ------------------------ Inhereted handler methods -------------------------*/
 
+            virtual void handle_connect( ana::error_code error, net_id server_id );
+
+            virtual void handle_disconnect( ana::error_code error, net_id server_id);
+
+            virtual void handle_receive( ana::error_code error,
+                                         net_id,
+                                         ana::detail::read_buffer);
+
+            virtual void handle_send( ana::error_code error,
+                                      net_id client,
+                                      ana::operation_id op_id);
+
+
+            /* -------------------------------- Attributes --------------------------------*/
+
+            /** The ana::client object representing this client. @sa ana::client */
             ana::client*  client_;
     };
 
@@ -220,7 +271,9 @@ namespace network
      * A Wesnoth network server component. Supports the connection of many clients.
      *
      */
-    class server
+    class server :  public ana::send_handler,
+                    public ana::connection_handler,
+                    public ana::listener_handler
     {
         public:
             /**
@@ -233,40 +286,40 @@ namespace network
              */
             server( port, handler& );
 
-            // Set timeouts for a given client
-            // Example, set_timeout( 1, network::SEND_OPERATIONS, ana::time::seconds( 10 ) );
-            //          set_timeout( 2, network::SEND_OPERATIONS, ana::KILOBYTES(1),
-            //                                                    ana::time::seconds( 1 ) ); (?)
             /**
+             * Set timeouts for send operations for a given client.
              *
+             * Examples:
+             *     - set_timeout( id, ana::NoTimeouts );
+             *     - set_timeout( id, ana::FixedTime, ana::time::minutes( 1 ) );
              */
-            void set_timeout( ana::net_id, ... );
+            void set_timeout( ana::net_id, ana::timeout_policy type, size_t ms = 0 );
 
             /**
              * Attempt to send a WML document to a client.
              */
-            operation_id async_send( ana::net_id, const cfg&, ana::SEND_TYPE );
+            operation_id async_send( ana::net_id, const cfg&, ana::send_type );
 
             /**
              * Attempt to send a WML document to every connected client.
              */
-            operation_id async_send( const cfg&, ana::SEND_TYPE );
+            operation_id async_send( const cfg&, ana::send_type );
 
             /**
              * Attempt to send a WML document to every connected client in the container.
              */
-            operation_id async_send( container_of_ids,  const cfg&, ana::SEND_TYPE );
+            operation_id async_send( container_of_ids,  const cfg&, ana::send_type );
 
             /**
              * Attempt to send a WML document to every connected client except one.
              */
-            operation_id async_send_except( ana::net_id,  const cfg&, ana::SEND_TYPE );
+            operation_id async_send_except( ana::net_id,  const cfg&, ana::send_type );
 
             /**
              * Attempt to send a WML document to every connected client except those in the
              * container.
              */
-            operation_id async_send_except( container_of_ids,  const cfg&, ana::SEND_TYPE );
+            operation_id async_send_except( container_of_ids,  const cfg&, ana::send_type );
 
             /**
              * Signal the server that you are waiting for a message from a given client
@@ -314,8 +367,26 @@ namespace network
             std::string ip_address( ana::net_id ) const;
 
         private:
-            //Attributes:
+            /* ------------------------ Inhereted handler methods -------------------------*/
 
+            virtual void handle_connect( ana::error_code error, net_id server_id );
+
+            virtual void handle_disconnect( ana::error_code error, net_id server_id);
+
+            virtual void handle_receive( ana::error_code error,
+                                         net_id,
+                                         ana::detail::read_buffer);
+
+            virtual void handle_send( ana::error_code error,
+                                      net_id client,
+                                      ana::operation_id op_id);
+
+
+            /* -------------------------------- Attributes --------------------------------*/
+
+            /** The ana::server object representing this server. @sa ana::server */
             ana::server*  server_;
     };
 }
+
+#endif
