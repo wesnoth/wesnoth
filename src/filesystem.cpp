@@ -89,9 +89,7 @@ bool ends_with(const std::string& str, const std::string& suffix)
 	return str.size() >= suffix.size() && std::equal(suffix.begin(),suffix.end(),str.end()-suffix.size());
 }
 
-// Don't pass directory as reference, it seems to break on
-// arklinux with GCC-4.3.
-void get_files_in_dir(const std::string directory,
+void get_files_in_dir(const std::string &directory,
 					  std::vector<std::string>* files,
 					  std::vector<std::string>* dirs,
 					  file_name_option mode,
@@ -104,7 +102,7 @@ void get_files_in_dir(const std::string directory,
 	// on the wesnoth path
 #ifndef __AMIGAOS4__
 	if(!directory.empty() && directory[0] != '/' && !game_config::path.empty()){
-		const std::string& dir = game_config::path + "/" + directory;
+		std::string dir = game_config::path + "/" + directory;
 		if(is_directory(dir)) {
 			get_files_in_dir(dir,files,dirs,mode,filter,reorder,checksum);
 			return;
