@@ -107,14 +107,15 @@ game_events::queued_event queued_event_context::default_qe
 	("_from_lua", map_location(), map_location(), config());
 
 /* Dummy pointer for getting unique keys for Lua's registry. */
+static char const dlgclbkKey = 0;
 static char const executeKey = 0;
 static char const getsideKey = 0;
 static char const gettextKey = 0;
 static char const gettypeKey = 0;
 static char const getunitKey = 0;
 static char const tstringKey = 0;
+static char const ustatusKey = 0;
 static char const vconfigKey = 0;
-static char const dlgclbkKey = 0;
 
 /* Global definition so that it does not leak on longjmp. */
 static std::string error_buffer;
@@ -425,12 +426,10 @@ bool luaW_pcall(lua_State *L
 	return true;
 }
 
-
 lua_unit::~lua_unit()
 {
 	delete ptr;
 }
-
 
 unit *lua_unit::get()
 {
@@ -814,6 +813,15 @@ static int impl_unit_get(lua_State *L)
 	return_int_attrib("max_moves", u.total_movement());
 	return_tstring_attrib("name", u.name());
 	return_bool_attrib("canrecruit", u.can_recruit());
+	if (strcmp(m, "status") == 0) {
+		lua_createtable(L, 1, 0);
+		lua_pushvalue(L, 1);
+		lua_rawseti(L, -2, 1);
+		lua_pushlightuserdata(L, (void *)&ustatusKey);
+		lua_rawget(L, LUA_REGISTRYINDEX);
+		lua_setmetatable(L, -2);
+		return 1;
+	}
 	return_bool_attrib("petrified", u.incapacitated());
 	return_bool_attrib("resting", u.resting());
 	return_string_attrib("role", u.get_role());
@@ -859,6 +867,43 @@ static int impl_unit_set(lua_State *L)
 	}
 	goto error_call_destructors_2;
 }
+
+/**
+ * Gets the status of a unit (__index metamethod).
+ * - Arg 1: table containing the userdata containing the unit id.
+ * - Arg 2: string containing the name of the status.
+ * - Ret 1: boolean.
+ */
+static int impl_unit_status_get(lua_State *L)
+{
+	if (!lua_istable(L, 1))
+		return luaL_typerror(L, 1, "unit status");
+	lua_rawgeti(L, 1, 1);
+	unit const *u = luaW_tounit(L, -1);
+	if (!u) return luaL_argerror(L, 1, "unknown unit");
+	char const *m = luaL_checkstring(L, 2);
+	lua_pushboolean(L, u->get_state(m));
+	return 1;
+}
+
+/**
+ * Sets the status of a unit (__newindex metamethod).
+ * - Arg 1: table containing the userdata containing the unit id.
+ * - Arg 2: string containing the name of the status.
+ * - Arg 3: boolean.
+ */
+static int impl_unit_status_set(lua_State *L)
+{
+	if (!lua_istable(L, 1))
+		return luaL_typerror(L, 1, "unit status");
+	lua_rawgeti(L, 1, 1);
+	unit *u = luaW_tounit(L, -1);
+	if (!u) return luaL_argerror(L, 1, "unknown unit");
+	char const *m = luaL_checkstring(L, 2);
+	u->set_state(m, lua_toboolean(L, 3));
+	return 0;
+}
+
 /**
  * Gets the unit at the given location or with the given id.
  * - Arg 1: integer.
@@ -2788,6 +2833,17 @@ LuaKernel::LuaKernel()
 	lua_pushcfunction(L, impl_tstring_tostring);
 	lua_setfield(L, -2, "__tostring");
 	lua_pushstring(L, "translatable string");
+	lua_setfield(L, -2, "__metatable");
+	lua_rawset(L, LUA_REGISTRYINDEX);
+
+	// Create the unit status metatable.
+	lua_pushlightuserdata(L, (void *)&ustatusKey);
+	lua_createtable(L, 0, 3);
+	lua_pushcfunction(L, impl_unit_status_get);
+	lua_setfield(L, -2, "__index");
+	lua_pushcfunction(L, impl_unit_status_set);
+	lua_setfield(L, -2, "__newindex");
+	lua_pushstring(L, "unit status");
 	lua_setfield(L, -2, "__metatable");
 	lua_rawset(L, LUA_REGISTRYINDEX);
 
