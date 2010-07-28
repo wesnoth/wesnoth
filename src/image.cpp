@@ -1032,10 +1032,16 @@ surface get_image(const image::locator& i_locator, TYPE type)
 	if(i_locator.is_void())
 		return surface(NULL);
 
-	bool is_unscaled = false;
-
 	//translate type to a simpler one when possible
 	switch(type) {
+	case SCALED_TO_ZOOM:
+		if(zoom == tile_size)
+			type = UNSCALED;
+		break;
+	case UNMASKED:
+		if(zoom == tile_size)
+			type = HEXED;
+		break;
 	case BRIGHTENED:
 		if(ftofxp(game_config::hex_brightening) == ftofxp(1.0))
 			type = SCALED_TO_HEX;
@@ -1048,33 +1054,22 @@ surface get_image(const image::locator& i_locator, TYPE type)
 		break;
 	}
 
+	// select associated cache
 	switch(type) {
 	case UNSCALED:
-		is_unscaled = true;
 		imap = &images_;
 		break;
 	case SCALED_TO_HEX:
 		imap = &scaled_to_hex_images_;
 		break;
 	case SCALED_TO_ZOOM:
-		// Only use separate cache if scaled
-		if(zoom != tile_size) {
-			imap = &scaled_to_zoom_;
-		} else {
-			is_unscaled = true;
-			imap = &images_;
-		}
+		imap = &scaled_to_zoom_;
 		break;
 	case HEXED:
 		imap = &hexed_images_;
 		break;
 	case UNMASKED:
-		// Only use separate cache if scaled
-		if(zoom != tile_size) {
-			imap = &unmasked_images_;
-		} else {
-			imap = &hexed_images_;
-		}
+		imap = &unmasked_images_;
 		break;
 	case BRIGHTENED:
 		imap = &brightened_images_;
@@ -1086,49 +1081,43 @@ surface get_image(const image::locator& i_locator, TYPE type)
 		return surface(NULL);
 	}
 
+	// return the image if already cached
 	if(i_locator.in_cache(*imap))
 		return i_locator.locate_in_cache(*imap);
 
-	// If type is unscaled, directly load the image from the disk.
-	// Else, create it from the unscaled image.
-	if(is_unscaled) {
+	// not cached, generate it
+	switch(type) {
+	case UNSCALED:
+		// If type is unscaled, directly load the image from the disk.
 		res = i_locator.load_from_disk();
-
-		if(res == NULL) {
-			 i_locator.add_to_cache(*imap, surface(NULL));
-			return surface(NULL);
-		}
-	} else {
-
-		// surface base_image(get_image(i_locator, UNSCALED));
-
-		switch(type) {
-		case SCALED_TO_HEX:
-			res = get_scaled_to_hex(i_locator);
-			break;
-		case SCALED_TO_ZOOM:
-			res = get_scaled_to_zoom(i_locator);
-			break;
-		case HEXED:
-			res = get_hexed(i_locator);
-			break;
-		case UNMASKED:
-			res = get_unmasked(i_locator);
-			break;
-		case BRIGHTENED:
-			res = get_brightened(i_locator);
-			break;
-		case SEMI_BRIGHTENED:
-			res = get_semi_brightened(i_locator);
-			break;
-		default:
-			return surface(NULL);
-		}
+		break;
+	case SCALED_TO_HEX:
+		res = get_scaled_to_hex(i_locator);
+		break;
+	case SCALED_TO_ZOOM:
+		res = get_scaled_to_zoom(i_locator);
+		break;
+	case HEXED:
+		res = get_hexed(i_locator);
+		break;
+	case UNMASKED:
+		res = get_unmasked(i_locator);
+		break;
+	case BRIGHTENED:
+		res = get_brightened(i_locator);
+		break;
+	case SEMI_BRIGHTENED:
+		res = get_semi_brightened(i_locator);
+		break;
+	default:
+		return surface(NULL);
 	}
 
 	// Optimizes surface before storing it
-	res = create_optimized_surface(res);
-	 i_locator.add_to_cache(*imap, res);
+	if(res)
+		res = create_optimized_surface(res);
+
+	i_locator.add_to_cache(*imap, res);
 
 	return res;
 }
