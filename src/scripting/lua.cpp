@@ -928,6 +928,47 @@ static int intf_get_units(lua_State *L)
 }
 
 /**
+ * Matches a unit against the given filter.
+ * - Arg 1: full userdata.
+ * - Arg 2: table containing a filter
+ * - Ret 1: boolean.
+ */
+static int intf_match_unit(lua_State *L)
+{
+	if (!luaW_hasmetatable(L, 1, getunitKey)) {
+		return luaL_typerror(L, 1, "unit");
+		error_call_destructors_1:
+		return luaL_argerror(L, 1, "unit not found");
+		error_call_destructors_2:
+		return luaL_typerror(L, 2, "WML table");
+	}
+
+	lua_unit *lu = static_cast<lua_unit *>(lua_touserdata(L, 1));
+	unit *u = lu->get();
+	if (!u) goto error_call_destructors_1;
+
+	vconfig filter = vconfig::unconstructed_vconfig();
+	if (!luaW_tovconfig(L, 2, filter, false))
+		goto error_call_destructors_2;
+
+	if (filter.null()) {
+		lua_pushboolean(L, true);
+		return 1;
+	}
+
+	if (int side = lu->on_recall_list()) {
+		team &t = (*resources::teams)[side - 1];
+		scoped_recall_unit auto_store("this_unit",
+			t.save_id(), u - &t.recall_list()[0]);
+		lua_pushboolean(L, u->matches_filter(filter, map_location()));
+		return 1;
+	}
+
+	lua_pushboolean(L, u->matches_filter(filter, u->get_location()));
+	return 1;
+}
+
+/**
  * Gets the numeric ids of all the units matching a given filter on the recall lists.
  * - Arg 1: optional table containing a filter
  * - Ret 1: table containing full userdata with __index pointing to
@@ -2669,6 +2710,7 @@ LuaKernel::LuaKernel()
 		{ "get_variable",             &intf_get_variable             },
 		{ "get_village_owner",        &intf_get_village_owner        },
 		{ "is_enemy",                 &intf_is_enemy                 },
+		{ "match_unit",               &intf_match_unit               },
 		{ "message",                  &intf_message                  },
 		{ "play_sound",               &intf_play_sound               },
 		{ "put_recall_unit",          &intf_put_recall_unit          },
