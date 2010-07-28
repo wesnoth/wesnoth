@@ -165,6 +165,7 @@ public:
 	void reload_changed_game_config();
 
 	bool is_loading() const;
+	void clear_loaded_game() {loaded_game_.clear();};
 	bool load_game();
 	void set_tutorial();
 
@@ -2238,6 +2239,7 @@ static int do_gameloop(int argc, char** argv)
 			return 0;
 		} else if(res == gui::LOAD_GAME) {
 			if(game.load_game() == false) {
+				game.clear_loaded_game();
 				res = gui::NOTHING;
 				continue;
 			}
