@@ -161,15 +161,11 @@ ruleWMLMacro returns [EObject current=null]
     @after { resetLookahead(); 
     	lastConsumedNode = currentNode;
     }:
-(	'{' 
-    {
-        createLeafNode(grammarAccess.getWMLMacroAccess().getLeftCurlyBracketKeyword_0(), null); 
-    }
 (
 (
-		lv_name_1_0=RULE_ID
+		lv_name_0_0=RULE_MACRO
 		{
-			createLeafNode(grammarAccess.getWMLMacroAccess().getNameIDTerminalRuleCall_1_0(), "name"); 
+			createLeafNode(grammarAccess.getWMLMacroAccess().getNameMACROTerminalRuleCall_0(), "name"); 
 		}
 		{
 	        if ($current==null) {
@@ -180,8 +176,8 @@ ruleWMLMacro returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"name",
-	        		lv_name_1_0, 
-	        		"ID", 
+	        		lv_name_0_0, 
+	        		"MACRO", 
 	        		lastConsumedNode);
 	        } catch (ValueConverterException vce) {
 				handleValueConverterException(vce);
@@ -189,202 +185,6 @@ ruleWMLMacro returns [EObject current=null]
 	    }
 
 )
-)(
-(
-(
-		lv_value_2_1=RULE_ID
-		{
-			createLeafNode(grammarAccess.getWMLMacroAccess().getValueIDTerminalRuleCall_2_0_0(), "value"); 
-		}
-		{
-	        if ($current==null) {
-	            $current = factory.create(grammarAccess.getWMLMacroRule().getType().getClassifier());
-	            associateNodeWithAstElement(currentNode, $current);
-	        }
-	        try {
-	       		add(
-	       			$current, 
-	       			"value",
-	        		lv_value_2_1, 
-	        		"ID", 
-	        		lastConsumedNode);
-	        } catch (ValueConverterException vce) {
-				handleValueConverterException(vce);
-	        }
-	    }
-
-    |		lv_value_2_2=RULE_STRING
-		{
-			createLeafNode(grammarAccess.getWMLMacroAccess().getValueSTRINGTerminalRuleCall_2_0_1(), "value"); 
-		}
-		{
-	        if ($current==null) {
-	            $current = factory.create(grammarAccess.getWMLMacroRule().getType().getClassifier());
-	            associateNodeWithAstElement(currentNode, $current);
-	        }
-	        try {
-	       		add(
-	       			$current, 
-	       			"value",
-	        		lv_value_2_2, 
-	        		"STRING", 
-	        		lastConsumedNode);
-	        } catch (ValueConverterException vce) {
-				handleValueConverterException(vce);
-	        }
-	    }
-
-    |		lv_value_2_3=	'_' 
-    {
-        createLeafNode(grammarAccess.getWMLMacroAccess().getValue_Keyword_2_0_2(), "value"); 
-    }
- 
-	    {
-	        if ($current==null) {
-	            $current = factory.create(grammarAccess.getWMLMacroRule().getType().getClassifier());
-	            associateNodeWithAstElement(currentNode, $current);
-	        }
-	        
-	        try {
-	       		add($current, "value", lv_value_2_3, null, lastConsumedNode);
-	        } catch (ValueConverterException vce) {
-				handleValueConverterException(vce);
-	        }
-	    }
-
-    |		lv_value_2_4=	':' 
-    {
-        createLeafNode(grammarAccess.getWMLMacroAccess().getValueColonKeyword_2_0_3(), "value"); 
-    }
- 
-	    {
-	        if ($current==null) {
-	            $current = factory.create(grammarAccess.getWMLMacroRule().getType().getClassifier());
-	            associateNodeWithAstElement(currentNode, $current);
-	        }
-	        
-	        try {
-	       		add($current, "value", lv_value_2_4, null, lastConsumedNode);
-	        } catch (ValueConverterException vce) {
-				handleValueConverterException(vce);
-	        }
-	    }
-
-    |		lv_value_2_5=	'-' 
-    {
-        createLeafNode(grammarAccess.getWMLMacroAccess().getValueHyphenMinusKeyword_2_0_4(), "value"); 
-    }
- 
-	    {
-	        if ($current==null) {
-	            $current = factory.create(grammarAccess.getWMLMacroRule().getType().getClassifier());
-	            associateNodeWithAstElement(currentNode, $current);
-	        }
-	        
-	        try {
-	       		add($current, "value", lv_value_2_5, null, lastConsumedNode);
-	        } catch (ValueConverterException vce) {
-				handleValueConverterException(vce);
-	        }
-	    }
-
-    |		lv_value_2_6=	'.' 
-    {
-        createLeafNode(grammarAccess.getWMLMacroAccess().getValueFullStopKeyword_2_0_5(), "value"); 
-    }
- 
-	    {
-	        if ($current==null) {
-	            $current = factory.create(grammarAccess.getWMLMacroRule().getType().getClassifier());
-	            associateNodeWithAstElement(currentNode, $current);
-	        }
-	        
-	        try {
-	       		add($current, "value", lv_value_2_6, null, lastConsumedNode);
-	        } catch (ValueConverterException vce) {
-				handleValueConverterException(vce);
-	        }
-	    }
-
-    |		lv_value_2_7=	'(' 
-    {
-        createLeafNode(grammarAccess.getWMLMacroAccess().getValueLeftParenthesisKeyword_2_0_6(), "value"); 
-    }
- 
-	    {
-	        if ($current==null) {
-	            $current = factory.create(grammarAccess.getWMLMacroRule().getType().getClassifier());
-	            associateNodeWithAstElement(currentNode, $current);
-	        }
-	        
-	        try {
-	       		add($current, "value", lv_value_2_7, null, lastConsumedNode);
-	        } catch (ValueConverterException vce) {
-				handleValueConverterException(vce);
-	        }
-	    }
-
-    |		lv_value_2_8=	')' 
-    {
-        createLeafNode(grammarAccess.getWMLMacroAccess().getValueRightParenthesisKeyword_2_0_7(), "value"); 
-    }
- 
-	    {
-	        if ($current==null) {
-	            $current = factory.create(grammarAccess.getWMLMacroRule().getType().getClassifier());
-	            associateNodeWithAstElement(currentNode, $current);
-	        }
-	        
-	        try {
-	       		add($current, "value", lv_value_2_8, null, lastConsumedNode);
-	        } catch (ValueConverterException vce) {
-				handleValueConverterException(vce);
-	        }
-	    }
-
-    |		lv_value_2_9=	'=' 
-    {
-        createLeafNode(grammarAccess.getWMLMacroAccess().getValueEqualsSignKeyword_2_0_8(), "value"); 
-    }
- 
-	    {
-	        if ($current==null) {
-	            $current = factory.create(grammarAccess.getWMLMacroRule().getType().getClassifier());
-	            associateNodeWithAstElement(currentNode, $current);
-	        }
-	        
-	        try {
-	       		add($current, "value", lv_value_2_9, null, lastConsumedNode);
-	        } catch (ValueConverterException vce) {
-				handleValueConverterException(vce);
-	        }
-	    }
-
-    |		lv_value_2_10=	'/' 
-    {
-        createLeafNode(grammarAccess.getWMLMacroAccess().getValueSolidusKeyword_2_0_9(), "value"); 
-    }
- 
-	    {
-	        if ($current==null) {
-	            $current = factory.create(grammarAccess.getWMLMacroRule().getType().getClassifier());
-	            associateNodeWithAstElement(currentNode, $current);
-	        }
-	        
-	        try {
-	       		add($current, "value", lv_value_2_10, null, lastConsumedNode);
-	        } catch (ValueConverterException vce) {
-				handleValueConverterException(vce);
-	        }
-	    }
-
-)
-
-)
-)*	'}' 
-    {
-        createLeafNode(grammarAccess.getWMLMacroAccess().getRightCurlyBracketKeyword_3(), null); 
-    }
 )
 ;
 
@@ -1306,6 +1106,8 @@ rulePROGRESSIVE returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleTok
 
 
 RULE_SL_COMMENT : '#' ~(('\n'|'\r'))* ('\r'? '\n')?;
+
+RULE_MACRO : '{' ( options {greedy=false;} : . )*'}';
 
 RULE_WS : (' '|'\t'|'\r'|'\n')+;
 

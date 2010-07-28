@@ -63,8 +63,8 @@ public class WMLSemanticHighlightingCalculator extends SemanticHighlightingCalcu
 				AbstractNode begin = getFirstFeatureNode(current, WMLPackage.Literals.WML_MACRO__NAME.getName());
 				highlightNode(begin, WMLHighlightingConfiguration.RULE_WML_MACRO, acceptor);
 
-				AbstractNode end = getFirstFeatureNode(current, WMLPackage.Literals.WML_MACRO__VALUE.getName());
-				highlightNode(end, WMLHighlightingConfiguration.RULE_WML_MACRO, acceptor);
+//				AbstractNode end = getFirstFeatureNode(current, WMLPackage.Literals.WML_MACRO__VALUE.getName());
+//				highlightNode(end, WMLHighlightingConfiguration.RULE_WML_MACRO, acceptor);
 			}
 		}
 	}

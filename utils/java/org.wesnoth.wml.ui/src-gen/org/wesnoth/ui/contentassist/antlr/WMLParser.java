@@ -38,7 +38,6 @@ public class WMLParser extends AbstractContentAssistParser {
 				private static final long serialVersionUID = 1L;
 				{
 					put(grammarAccess.getWMLRootAccess().getAlternatives(), "rule__WMLRoot__Alternatives");
-					put(grammarAccess.getWMLMacroAccess().getValueAlternatives_2_0(), "rule__WMLMacro__ValueAlternatives_2_0");
 					put(grammarAccess.getWMLTagAccess().getAlternatives_3(), "rule__WMLTag__Alternatives_3");
 					put(grammarAccess.getWMLKeyValueAccess().getAlternatives(), "rule__WMLKeyValue__Alternatives");
 					put(grammarAccess.getWMLKeyValueAccess().getKey1ValueAlternatives_0_0(), "rule__WMLKeyValue__Key1ValueAlternatives_0_0");
@@ -48,7 +47,6 @@ public class WMLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getPROGRESSIVEAccess().getAlternatives_1_1(), "rule__PROGRESSIVE__Alternatives_1_1");
 					put(grammarAccess.getPROGRESSIVEAccess().getAlternatives_3_1(), "rule__PROGRESSIVE__Alternatives_3_1");
 					put(grammarAccess.getPROGRESSIVEAccess().getAlternatives_3_2_1(), "rule__PROGRESSIVE__Alternatives_3_2_1");
-					put(grammarAccess.getWMLMacroAccess().getGroup(), "rule__WMLMacro__Group__0");
 					put(grammarAccess.getWMLTagAccess().getGroup(), "rule__WMLTag__Group__0");
 					put(grammarAccess.getWMLKeyAccess().getGroup(), "rule__WMLKey__Group__0");
 					put(grammarAccess.getFLOATAccess().getGroup(), "rule__FLOAT__Group__0");
@@ -67,8 +65,7 @@ public class WMLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getPROGRESSIVEAccess().getGroup_3_3(), "rule__PROGRESSIVE__Group_3_3__0");
 					put(grammarAccess.getWMLRootAccess().getRtagsAssignment_0(), "rule__WMLRoot__RtagsAssignment_0");
 					put(grammarAccess.getWMLRootAccess().getRmacrosAssignment_1(), "rule__WMLRoot__RmacrosAssignment_1");
-					put(grammarAccess.getWMLMacroAccess().getNameAssignment_1(), "rule__WMLMacro__NameAssignment_1");
-					put(grammarAccess.getWMLMacroAccess().getValueAssignment_2(), "rule__WMLMacro__ValueAssignment_2");
+					put(grammarAccess.getWMLMacroAccess().getNameAssignment(), "rule__WMLMacro__NameAssignment");
 					put(grammarAccess.getWMLTagAccess().getNameAssignment_1(), "rule__WMLTag__NameAssignment_1");
 					put(grammarAccess.getWMLTagAccess().getTtagsAssignment_3_0(), "rule__WMLTag__TtagsAssignment_3_0");
 					put(grammarAccess.getWMLTagAccess().getTkeysAssignment_3_1(), "rule__WMLTag__TkeysAssignment_3_1");

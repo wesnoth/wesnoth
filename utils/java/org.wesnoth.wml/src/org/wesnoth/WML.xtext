@@ -14,7 +14,7 @@ WMLRoot:
 	;
 
 WMLMacro:
-	'{' name = ID (value +=(ID|STRING|'_'|':'|'-'|'.'|'('|')'|'='|'/')+)* '}';
+	name = MACRO; // '{' name = ID (value +=(ID|STRING|'_'|':'|'-'|'.'|'('|')'|'='|'/')+)* '}';
 
 WMLTag:
 	'[' name = ID ']'
@@ -24,12 +24,6 @@ WMLTag:
 		)*
 	'[/' endName = ID ']'
 	;
-//WMLStartTag:
-//	'[' name = ID ']'
-//	;
-//WMLEndTag:
-//	'[/' tagname = ID ']'
-//	;
 WMLKey:
 	(keyName = ID) '=' 
 	(value = WMLKeyValue)
@@ -54,7 +48,7 @@ PROGRESSIVE:
 
 
 terminal SL_COMMENT	: '#' !('\n'|'\r')* ('\r'? '\n')?;
-//terminal MACRO		: '{'->'}';
+terminal MACRO		: '{'->'}';
 //terminal STRINT		: ('a'..'z'|'A'..'Z'|'_'|'.'|'0'..'9')+;
 terminal WS			: (' '|'\t'|'\r'|'\n')+;
 //terminal ID  		: ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|' '|'_'|'0'..'9')*;

@@ -117,22 +117,13 @@ public interface WMLPackage extends EPackage
   int WML_MACRO__NAME = 0;
 
   /**
-   * The feature id for the '<em><b>Value</b></em>' attribute list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int WML_MACRO__VALUE = 1;
-
-  /**
    * The number of structural features of the '<em>Macro</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int WML_MACRO_FEATURE_COUNT = 2;
+  int WML_MACRO_FEATURE_COUNT = 1;
 
   /**
    * The meta object id for the '{@link org.wesnoth.wML.impl.WMLTagImpl <em>Tag</em>}' class.
@@ -325,17 +316,6 @@ public interface WMLPackage extends EPackage
    * @generated
    */
   EAttribute getWMLMacro_Name();
-
-  /**
-   * Returns the meta object for the attribute list '{@link org.wesnoth.wML.WMLMacro#getValue <em>Value</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute list '<em>Value</em>'.
-   * @see org.wesnoth.wML.WMLMacro#getValue()
-   * @see #getWMLMacro()
-   * @generated
-   */
-  EAttribute getWMLMacro_Value();
 
   /**
    * Returns the meta object for class '{@link org.wesnoth.wML.WMLTag <em>Tag</em>}'.
@@ -532,14 +512,6 @@ public interface WMLPackage extends EPackage
      * @generated
      */
     EAttribute WML_MACRO__NAME = eINSTANCE.getWMLMacro_Name();
-
-    /**
-     * The meta object literal for the '<em><b>Value</b></em>' attribute list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute WML_MACRO__VALUE = eINSTANCE.getWMLMacro_Value();
 
     /**
      * The meta object literal for the '{@link org.wesnoth.wML.impl.WMLTagImpl <em>Tag</em>}' class.
