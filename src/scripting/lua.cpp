@@ -847,6 +847,7 @@ static int impl_unit_set(lua_State *L)
 	// Find the corresponding attribute.
 	modify_int_attrib("side", u.set_side(value));
 	modify_int_attrib("moves", u.set_movement(value));
+	modify_int_attrib("hitpoints", u.set_hitpoints(value));
 	modify_bool_attrib("resting", u.set_resting(value != 0));
 	modify_tstring_attrib("name", u.set_name(value));
 	modify_string_attrib("role", u.set_role(value));
