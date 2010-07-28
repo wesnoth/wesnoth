@@ -53,6 +53,7 @@ manager::manager():
 
 manager::~manager()
 {
+	LOG_WB << "Manager destroyed.\n";
 }
 
 static void print_to_chat(const std::string& title, const std::string& message)
@@ -107,35 +108,40 @@ void manager::set_active(bool active)
 
 void manager::set_invert_behavior(bool invert)
 {
+	bool block_whiteboard_activation = false;
 	if(wait_for_side_init_
 			|| executing_actions_
 			|| is_observer())
-		return;
-
-	static bool print_once = true;
-	if (print_once)
 	{
-		print_once = false;
-		print_to_chat("whiteboard", std::string("Hold the ctrl key to temporarily toggle the whiteboard.")
-			+ " (Activate and then) Deactivate the whiteboard with the :wb command to erase all actions.");
-		print_help();
+		 block_whiteboard_activation = true;
 	}
+
+
 
 	log_scope("set_invert_behavior");
 	if (invert)
 	{
 		if (!inverted_behavior_)
 		{
-			inverted_behavior_ = true;
 			if (active_)
 			{
 				DBG_WB << "Whiteboard deactivated temporarily.\n";
+				inverted_behavior_ = true;
 				set_active(false);
 			}
-			else // active_ == false
+			else if (!block_whiteboard_activation)
 			{
 				DBG_WB << "Whiteboard activated temporarily.\n";
+				inverted_behavior_ = true;
 				set_active(true);
+				static bool print_once = true;
+				if (print_once)
+				{
+					print_once = false;
+					print_to_chat("whiteboard", std::string("Hold the ctrl key to temporarily toggle the whiteboard.")
+						+ " (Activate and then) Deactivate the whiteboard with the :wb command to erase all actions.");
+					print_help();
+				}
 			}
 		}
 	}
@@ -143,15 +149,16 @@ void manager::set_invert_behavior(bool invert)
 	{
 		if (inverted_behavior_)
 		{
-			inverted_behavior_ = false;
 			if (active_)
 			{
 				DBG_WB << "Whiteboard set back to deactivated status.\n";
+				inverted_behavior_ = false;
 				set_active(false);
 			}
-			else // active_ == false
+			else if (!block_whiteboard_activation)
 			{
 				DBG_WB << "Whiteboard set back to activated status.\n";
+				inverted_behavior_ = false;
 				set_active(true);
 			}
 		}
