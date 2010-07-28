@@ -1034,6 +1034,20 @@ surface get_image(const image::locator& i_locator, TYPE type)
 
 	bool is_unscaled = false;
 
+	//translate type to a simpler one when possible
+	switch(type) {
+	case BRIGHTENED:
+		if(ftofxp(game_config::hex_brightening) == ftofxp(1.0))
+			type = SCALED_TO_HEX;
+		break;
+	case SEMI_BRIGHTENED:
+		if(ftofxp(game_config::hex_semi_brightening) == ftofxp(1.0))
+			type = SCALED_TO_HEX;
+		break;
+	default:
+		break;
+	}
+
 	switch(type) {
 	case UNSCALED:
 		is_unscaled = true;
