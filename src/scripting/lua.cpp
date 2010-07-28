@@ -858,9 +858,38 @@ static int impl_unit_set(lua_State *L)
 	}
 	goto error_call_destructors_2;
 }
+/**
+ * Gets the unit at the given location or with the given id.
+ * - Arg 1: integer.
+ * - Args 1, 2: location.
+ * - Ret 1: full userdata with __index pointing to impl_unit_get and
+ *          __newindex pointing to impl_unit_set.
+ */
+static int intf_get_unit(lua_State *L)
+{
+	int x = luaL_checkinteger(L, 1) - 1;
+	int y = luaL_optint(L, 2, 0) - 1;
+
+	unit_map &units = *resources::units;
+	unit_map::const_iterator ui;
+
+	if (lua_isnoneornil(L, 2)) {
+		ui = units.find(x + 1);
+	} else {
+		ui = units.find(map_location(x, y));
+	}
+
+	if (!ui.valid()) return 0;
+
+	new(lua_newuserdata(L, sizeof(lua_unit))) lua_unit(ui->underlying_id());
+	lua_pushlightuserdata(L, (void *)&getunitKey);
+	lua_rawget(L, LUA_REGISTRYINDEX);
+	lua_setmetatable(L, -2);
+	return 1;
+}
 
 /**
- * Gets the numeric ids of all the units matching a given filter.
+ * Gets all the units matching a given filter.
  * - Arg 1: optional table containing a filter
  * - Ret 1: table containing full userdata with __index pointing to
  *          impl_unit_get and __newindex pointing to impl_unit_set.
@@ -2635,6 +2664,7 @@ LuaKernel::LuaKernel()
 		{ "get_selected_tile",        &intf_get_selected_tile        },
 		{ "get_terrain",              &intf_get_terrain              },
 		{ "get_terrain_info",         &intf_get_terrain_info         },
+		{ "get_unit",                 &intf_get_unit                 },
 		{ "get_units",                &intf_get_units                },
 		{ "get_variable",             &intf_get_variable             },
 		{ "get_village_owner",        &intf_get_village_owner        },
