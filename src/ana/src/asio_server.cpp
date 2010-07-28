@@ -46,7 +46,7 @@ using boost::asio::ip::tcp;
 asio_server::asio_server() :
     io_service_(),
     work_( io_service_ ),
-    io_thread_(),
+    io_threads_(),
     acceptor_( NULL ),
     client_proxies_(),
     listening_(false),
@@ -61,7 +61,16 @@ asio_server::asio_server() :
 asio_server::~asio_server()
 {
     io_service_.stop();
-    io_thread_.join();
+
+    std::list< boost::thread* >::iterator it;
+
+    it = io_threads_.begin();
+
+    while (it != io_threads_.end())
+    {
+        (*it)->join();
+        it = io_threads_.erase( it );
+    }
 
     /* Since the asio_client_proxy destuctor removes the client from client_proxies_
        I'll just delete every proxy from a different list. */
@@ -100,7 +109,8 @@ void asio_server::run(port pt)
 
     run_listener( );
 
-    io_thread_ = boost::thread( boost::bind( &boost::asio::io_service::run, &io_service_) );
+    io_threads_.push_back(
+            new boost::thread( boost::bind( &boost::asio::io_service::run, &io_service_) ) );
 }
 
 void asio_server::async_accept( connection_handler* handler )
@@ -370,7 +380,16 @@ void asio_server::disconnect( ana::net_id id )
 void asio_server::disconnect()
 {
     io_service_.stop();
-    io_thread_.join();
+
+    std::list< boost::thread* >::iterator it;
+
+    it = io_threads_.begin();
+
+    while (it != io_threads_.end())
+    {
+        (*it)->join();
+        it = io_threads_.erase( it );
+    }
 
     for (std::list<client_proxy*>::iterator it = client_proxies_.begin();
          it != client_proxies_.end();

@@ -457,6 +457,18 @@ namespace ana
         /**
          * Start the server on a given port.
          *
+         * Each time you call this method, a new thread will be started on the io_service object
+         * from asio. This means that it is possible to have multiple threads running the service,
+         * thus more threads will be able to run the handlers you implement.
+         *
+         * The drawback is, however, that if you run the service on multiple threads, then you must
+         * be aware that the execution of your handlers may occur concurrently and thus you have to
+         * prevent all of the troubles arising from this concurrency.
+         *
+         * Note that if you just call this method once, then you ensure mutual exclusion between
+         * your handlers, just make sure you don't block waiting for a call to a handler from one
+         * of your handlers, otherwise you'll always get a deadlock.
+         *
          * @param port : The port to be used for the server incoming connections.
          *               The port shouldn't be currently occupied.
          */
@@ -652,7 +664,21 @@ namespace ana
                                            std::string user_name = "",
                                            std::string password = "") = 0;
 
-        /** Run the client listener, starts listening for incoming messages. */
+        /**
+         * Run the client listener, starts listening for incoming messages.
+         *
+         * Each time you call this method, a new thread will be started on the io_service object
+         * from asio. This means that it is possible to have multiple threads running the service,
+         * thus more threads will be able to run the handlers you implement.
+         *
+         * The drawback is, however, that if you run the service on multiple threads, then you must
+         * be aware that the execution of your handlers may occur concurrently and thus you have to
+         * prevent all of the troubles arising from this concurrency.
+         *
+         * Note that if you just call this method once, then you ensure mutual exclusion between
+         * your handlers, just make sure you don't block waiting for a call to a handler from one
+         * of your handlers, otherwise you'll always get a deadlock.
+         */
         virtual void run() = 0;
 
         /**

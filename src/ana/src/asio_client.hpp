@@ -33,6 +33,8 @@
 #ifndef ASIO_CLIENT_HPP
 #define ASIO_CLIENT_HPP
 
+#include <list>
+
 #include <boost/asio.hpp>
 #include <memory>
 
@@ -121,7 +123,7 @@ class asio_client : public ana::client,
 
         /*attr*/
         boost::asio::io_service       io_service_;
-        boost::thread                 io_thread_;
+        std::list<boost::thread*>     io_threads_;
         boost::asio::io_service::work work_;
 
         tcp::socket               socket_;
