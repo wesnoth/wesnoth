@@ -274,7 +274,7 @@ namespace network
              * If a message is received before this time period the appropiate call to
              * handle_receive will be made with ana::timeout_error.
              */
-            void waiting_for_message( ana::net_id, time );
+            void waiting_for_message( ana::net_id, size_t ms_until_timeout );
 
             /**
              * Get network stats for the server, the parameter indicates the time period

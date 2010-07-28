@@ -87,6 +87,8 @@ class asio_server : public  ana::server,
 
                 virtual const ana::stats* get_stats( ana::stat_type type ) const;
 
+                virtual void expecting_message( size_t ms_until_timeout );
+
                 void log_conditional_receive( const ana::detail::read_buffer& buffer );
 
                 tcp::socket           socket_;
@@ -156,6 +158,8 @@ class asio_server : public  ana::server,
         virtual void set_header_first_mode( ana::net_id id );
 
         virtual void set_raw_data_mode( ana::net_id id );
+
+        virtual void expecting_message( ana::net_id, size_t ms_until_timeout );
 
         void handle_accept (const boost::system::error_code& ec,
                             asio_client_proxy*               client,

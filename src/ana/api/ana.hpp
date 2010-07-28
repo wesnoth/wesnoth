@@ -242,9 +242,11 @@ namespace ana
                 }
 
             private:
-                bool raw_data_   /** The component is in raw data mode.*/ ;
+                /** The component is in raw data mode.*/
+                bool raw_data_;
 
-                const net_id     id_ /** This component's net_id. */ ;
+                /** This component's net_id. */
+                const net_id     id_;
         };
 
         /**
@@ -512,6 +514,30 @@ namespace ana
         /** Returns a pointer to an ana::stats object of a connected client. */
         virtual const stats* get_client_stats( net_id, stat_type ) const = 0;
 
+        /**
+         * Signal the server that you are waiting for a message from a given client in a certain
+         * period of time.
+         *
+         * The time parameter indicates how long you are willing to wait.
+         *
+         * If a message is received before this time period then this call will be insignificant.
+         * However, if no such message is received, the appropiate call to handle_receive will be
+         * made with ana::timeout_error as the error_code parameter.
+         *
+         * @param id : The ana::net_id of the client you are expecting the message from. If the
+         *             id is invalid, this call will have no effect.
+         * @param time : The amount of time you are willing to wait.
+         *
+         * Use the methods described in the ana::time namespace to create time lapses.
+         *
+         * Examples:
+         *     - client->waiting_for_message( ana::time::seconds( 5 ) );
+         *
+         * @sa error_code
+         * @sa ana::time
+         */
+        virtual void expecting_message( net_id, size_t ms_until_timeout ) = 0;
+
         /** Standard destructor. */
         virtual ~server() {}
 
@@ -551,6 +577,26 @@ namespace ana
 
             /** Returns the string representing the ip address of the connected client. */
             virtual std::string ip_address() const = 0;
+
+            /**
+             * Signal the client proxy that you are waiting for a message from the actual client
+             * before a given time.
+             *
+             * The time parameter indicates how long you are willing to wait.
+             *
+             * If a message is received before this time period then this call will be
+             * insignificant.
+             * However, if no such message is received, the appropiate call to handle_receive will
+             * be made with ana::timeout_error as the error_code parameter.
+             *
+             * Use the methods described in the ana::time namespace to create time lapses.
+             *
+             * Examples:
+             *     - client->waiting_for_message( ana::time::seconds( 5 ) );
+             *
+             * @sa error_code
+             */
+            virtual void expecting_message( size_t ms_until_timeout ) = 0;
 
             // Allow server objects to invoke run_listener directly.
             using detail::listener::run_listener;
@@ -640,6 +686,24 @@ namespace ana
          * unless BOOST_ASIO_ENABLE_CANCELIO is defined.
          */
         virtual void cancel_pending( )                             = 0;
+
+        /**
+         * Signal the client that you are waiting for a message from the server before a given time.
+         *
+         * The time parameter indicates how long you are willing to wait.
+         *
+         * If a message is received before this time period then this call will be insignificant.
+         * However, if no such message is received, the appropiate call to handle_receive will be
+         * made with ana::timeout_error as the error_code parameter.
+         *
+         * Use the methods described in the ana::time namespace to create time lapses.
+         *
+         * Examples:
+         *     - client->waiting_for_message( ana::time::seconds( 5 ) );
+         *
+         * @sa error_code
+         */
+        virtual void expecting_message( size_t ms_until_timeout ) = 0;
 
         /**
          * Set a timeout value for connection attempts. If attempting to connect through a proxy

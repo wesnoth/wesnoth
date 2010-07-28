@@ -394,6 +394,17 @@ void asio_server::set_raw_buffer_max_size( size_t size)
     }
 }
 
+void asio_server::expecting_message( net_id id, size_t ms_until_timeout )
+{
+    std::list<ana::server::client_proxy*>::iterator it;
+
+    it = std::find_if( client_proxies_.begin(), client_proxies_.end(),
+                       boost::bind( &client_proxy::id, _1) == id );
+
+    if ( it != client_proxies_.end() )
+        (*it)->expecting_message( ms_until_timeout );
+}
+
 void asio_server::set_header_first_mode( ana::net_id id )
 {
     std::list<ana::server::client_proxy*>::const_iterator it;
@@ -470,4 +481,9 @@ std::string asio_server::asio_client_proxy::ip_address() const
 ana::timer* asio_server::asio_client_proxy::create_timer()
 {
     return new ana::timer( socket_.get_io_service() );
+}
+
+void asio_server::asio_client_proxy::expecting_message( size_t ms_until_timeout )
+{
+    wait_for_incoming_message( ms_until_timeout, id() );
 }

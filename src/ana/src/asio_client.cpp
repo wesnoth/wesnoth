@@ -253,6 +253,11 @@ void asio_client::set_connect_timeout( size_t ms )
     connect_timeout_ms_ = ms;
 }
 
+void asio_client::expecting_message( size_t ms_until_timeout )
+{
+    wait_for_incoming_message( ms_until_timeout );
+}
+
 void asio_client::disconnect_listener()
 {
     io_service_.stop();

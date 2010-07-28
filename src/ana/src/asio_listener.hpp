@@ -53,6 +53,8 @@ class asio_listener : public virtual ana::detail::listener
     protected:
         virtual tcp::socket& socket() = 0;
 
+        void wait_for_incoming_message( size_t ms_to_timeout, ana::net_id id = 0  );
+
     private:
         virtual void disconnect_listener()                   {}
 
@@ -76,6 +78,8 @@ class asio_listener : public virtual ana::detail::listener
                                   size_t accumulated,
                                   size_t last_msg_size);
 
+        void handle_timeout( const boost::system::error_code&, ana::net_id);
+
         void handle_raw_buffer( ana::detail::read_buffer, const boost::system::error_code&, size_t);
 
         /*attr*/
@@ -83,6 +87,8 @@ class asio_listener : public virtual ana::detail::listener
         ana::listener_handler*     listener_;
         char                       header_[ana::HEADER_LENGTH];
         size_t                     raw_mode_buffer_size_;
+
+        ana::timer*                next_message_timer_;
 };
 
 #endif

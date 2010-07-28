@@ -108,6 +108,20 @@ class ChatClient : public ana::listener_handler,
             return msg.substr(pos+1);
         }
 
+        double get_seconds(const std::string& msg)
+        {
+            size_t pos = msg.find(" ");
+
+            std::stringstream ss( msg.substr(pos+1) );
+
+            double result;
+
+            ss >> result;
+
+            return result;
+        }
+
+
         void parse_command(const std::string& msg)
         {
             if (msg[1] == 'n') //Lame: assume name command
@@ -152,6 +166,11 @@ class ChatClient : public ana::listener_handler,
                                             << std::setw(8) << day_stats->bytes_in() <<"|"
                                             << std::setw(8) << day_stats->bytes_out() <<"|\n"
                     << "+-----------------+-----------------+-----------------+\n";
+            }
+            else if ( msg[1] == 'h' )
+            {
+                double seconds = get_seconds( msg );
+                client_->expecting_message( ana::time::seconds( seconds ) );
             }
         }
 
@@ -205,6 +224,7 @@ class ChatClient : public ana::listener_handler,
                              "    '/quit'      : Quit. \n"
                              "    '/who'       : List connected users. \n" <<
                              "    '/stats'     : Print full network stats. \n" <<
+                             "    '/hold secs' : Wait secs for a new message. \n" <<
                              "    '/name name' : Change name." << std::endl;
 
                 run_input();
@@ -245,6 +265,8 @@ class ChatClient : public ana::listener_handler,
                           << std::endl << name_ << " : ";
                 std::cout.flush();
             }
+            else if ( error == ana::timeout_error )
+                std::cerr << "\nTimeout for waiting message.\n";
         }
 
         virtual void handle_send( ana::error_code error, net_id client, ana::operation_id op_id)

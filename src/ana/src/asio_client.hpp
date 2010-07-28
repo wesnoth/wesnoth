@@ -102,6 +102,8 @@ class asio_client : public ana::client,
 
         virtual void set_connect_timeout( size_t ms );
 
+        virtual void expecting_message( size_t ms_until_timeout );
+
         void handle_connect(const boost::system::error_code& ec,
                             tcp::resolver::iterator endpoint_iterator,
                             ana::connection_handler*,

@@ -40,12 +40,26 @@ using boost::asio::ip::tcp;
 asio_listener::asio_listener( ) :
     disconnected_( false ),
     listener_( NULL ),
-    raw_mode_buffer_size_( ana::INITIAL_RAW_MODE_BUFFER_SIZE )
+    raw_mode_buffer_size_( ana::INITIAL_RAW_MODE_BUFFER_SIZE ),
+    next_message_timer_( NULL )
 {
 }
 
 asio_listener::~asio_listener()
 {
+    delete next_message_timer_;
+}
+
+void asio_listener::wait_for_incoming_message( size_t ms_to_timeout, ana::net_id id )
+{
+    if ( (next_message_timer_ == NULL) && ( ms_to_timeout > 0 ) )
+    {
+        next_message_timer_ = new ana::timer( socket().get_io_service() );
+
+        next_message_timer_->wait(  ms_to_timeout,
+                                    boost::bind(&asio_listener::handle_timeout, this,
+                                                boost::asio::placeholders::error, id) );
+    }
 }
 
 void asio_listener::disconnect( boost::system::error_code error)
@@ -167,6 +181,8 @@ void asio_listener::handle_partial_body( ana::detail::read_buffer         buffer
             if ( accumulated == buffer->size() )
             {
                 listener_->handle_receive( ec, id(), buffer );
+                delete next_message_timer_;
+                next_message_timer_ = NULL;
                 listen_one_message();
             }
             else
@@ -184,6 +200,14 @@ void asio_listener::handle_partial_body( ana::detail::read_buffer         buffer
     }
 }
 
+void asio_listener::handle_timeout( const boost::system::error_code& error_code, ana::net_id id)
+{
+    delete next_message_timer_;
+    next_message_timer_ = NULL;
+
+    if ( error_code != ana::operation_aborted )
+        listener_->handle_receive( ana::timeout_error, id, ana::detail::read_buffer() );
+}
 
 void asio_listener::handle_raw_buffer( ana::detail::read_buffer buf,
                                        const boost::system::error_code& ec,
@@ -198,6 +222,8 @@ void asio_listener::handle_raw_buffer( ana::detail::read_buffer buf,
             buf->resize( read_size );
             log_conditional_receive( buf );
             listener_->handle_receive( ec, id(), buf );
+            delete next_message_timer_;
+            next_message_timer_ = NULL;
             listen_one_message();
         }
     }
