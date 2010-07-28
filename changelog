@@ -154,6 +154,7 @@ Version 1.9.0-svn:
    * accelerated movment speed to 200ms per hex
    * --logdomains accepts a filter argument and uses multiline output
    * New mouseover image instead of simply highlighting the hex
+   * Tab completion for :commands and units search function
  * WML Engine:
    * Deprecated [set_variable]'s random key, use rand instead
    * Renamed [unit][status] healable to unhealable so it can default to 'no'
@@ -190,6 +191,13 @@ Version 1.9.0-svn:
    * [effect] violate_maximum= (for use when increasing HP) takes a real boolean
      value now instead of taking any non-empty value as "true".
    * Allow checking out terrain defense for units when it's not your turn.
+   * ToD key in terrain [variant] now accept a list of ToD
+   * New image path function: dst~BLIT(src[, x, y]) blitting src image on dst
+     image at coordinates (x,y)
+   * Fix bugs in 'illuminates' when using non-standard values. Now max and
+     min_value only clamps the effect of the illuminates bonus, but ToD and
+     terrain effect can pass them.
+   * New key 'set_no_flag' in [tile] which combines 'set_flag' and 'no_flag'
  * Miscellaneous and bug fixes:
    * Added help entry when new unit is created directly in the recall list
    * Defaulted log level to warning again
@@ -240,6 +248,10 @@ Version 1.9.0-svn:
    * Fixed [store_time_of_day] for earlier turn
    * Fixed _off^_usr not using the tile_image of theme.
    * Patch #1727: Fixed revision.hpp generation with cmake 1.8(.2)
+   * Added debug command ":foreground" to better visualize foreground terrains
+   * Added debug command ":layers" displaying various layer info from the hex under
+     the mouse.
+   * Reducing cache loading for title screen, --test, --editor and --load
 
 Version 1.8.0:
  * AI:
