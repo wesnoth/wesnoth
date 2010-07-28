@@ -271,7 +271,7 @@ namespace ana
                  *
                  * @param size : The requested size for raw buffers.
                  *
-                 * @Pre : Parameter should be positive.
+                 * @pre : Parameter should be positive.
                  */
                 virtual void set_raw_buffer_max_size( size_t size ) = 0;
 

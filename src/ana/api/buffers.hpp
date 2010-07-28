@@ -66,7 +66,7 @@ namespace ana
                  * Resize the buffer, this won't affect the amount of memory usage.
                  * It is only possible to downsize the buffer.
                  *
-                 * @Pre : The new size is smaller than the original size used to construct this.
+                 * @pre : The new size is smaller than the original size used to construct this.
                  */
                 void resize( size_t new_size )
                 {

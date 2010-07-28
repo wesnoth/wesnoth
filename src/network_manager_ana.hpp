@@ -57,14 +57,14 @@ class ana_component
         /**
          * Get the pointer to an ana::server object for this component.
          *
-         * @Pre : This component is a server.
+         * @pre : This component is a server.
          */
         ana::server* server() const;
 
         /**
          * Get the pointer to an ana::client object for this component.
          *
-         * @Pre : This component is a client.
+         * @pre : This component is a client.
          */
         ana::client* client() const;
 

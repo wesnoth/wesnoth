@@ -176,7 +176,7 @@ namespace ana
              * Construct a timer object using a running io_service object.
              * The timer insures it won't stop the io_service.
              *
-             * @Pre The io_service will be running during the timer's lifetime.
+             * @pre The io_service will be running during the timer's lifetime.
              */
             timer( boost::asio::io_service& io );
 
