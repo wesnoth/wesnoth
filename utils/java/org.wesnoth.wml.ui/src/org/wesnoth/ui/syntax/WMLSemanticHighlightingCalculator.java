@@ -1,16 +1,12 @@
-/**
- * @author Timotei Dolean
+/*******************************************************************************
+ * Copyright (c) 2010 by Timotei Dolean <timotei21@gmail.com>
  *
- */
+ * This program and the accompanying materials are made available
+ * under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *******************************************************************************/
 package org.wesnoth.ui.syntax;
-
-import org.wesnoth.ui.WMLEditor;
-import org.wesnoth.ui.WMLHighlightingReconciler;
-import org.wesnoth.ui.WMLMergingHighlightedPositionAcceptor;
-import org.wesnoth.wML.WMLKey;
-import org.wesnoth.wML.WMLMacro;
-import org.wesnoth.wML.WMLPackage;
-import org.wesnoth.wML.WMLTag;
 
 import java.util.Iterator;
 
@@ -24,6 +20,11 @@ import org.eclipse.xtext.parsetree.NodeUtil;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightedPositionAcceptor;
 import org.eclipse.xtext.xtext.ui.editor.syntaxcoloring.SemanticHighlightingCalculator;
+import org.wesnoth.ui.WMLEditor;
+import org.wesnoth.wML.WMLKey;
+import org.wesnoth.wML.WMLMacro;
+import org.wesnoth.wML.WMLPackage;
+import org.wesnoth.wML.WMLTag;
 
 public class WMLSemanticHighlightingCalculator extends SemanticHighlightingCalculator
 {
@@ -72,7 +73,7 @@ public class WMLSemanticHighlightingCalculator extends SemanticHighlightingCalcu
 	 * We have this auxilliar function to know when to skip a node from being highlighted
 	 * This is usually case of "highlighting start/end tags" and we don't want
 	 * highlighting going over.
-	 * 
+	 *
 	 * @param acceptor
 	 * @param node
 	 * @return
