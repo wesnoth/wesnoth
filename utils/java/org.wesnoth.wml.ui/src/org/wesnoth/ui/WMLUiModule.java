@@ -8,16 +8,21 @@
  *******************************************************************************/
 package org.wesnoth.ui;
 
+import org.eclipse.jface.text.hyperlink.IHyperlinkDetector;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.eclipse.xtext.resource.ILocationInFileProvider;
 import org.eclipse.xtext.ui.editor.XtextEditor;
 import org.eclipse.xtext.ui.editor.bracketmatching.IBracketMatcher;
+import org.eclipse.xtext.ui.editor.hyperlinking.HyperlinkHelper;
 import org.eclipse.xtext.ui.editor.outline.transformer.ISemanticModelTransformer;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.HighlightingReconciler;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingHelper;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculator;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.antlr.AbstractAntlrTokenToAttributeIdMapper;
+import org.wesnoth.ui.navigation.WMLHyperlinkHelper;
 import org.wesnoth.ui.outline.WMLTransformer;
+import org.wesnoth.ui.resource.WMLLocationInFileProvider;
 import org.wesnoth.ui.syntax.WMLAntlrTokenToAttributeIdMapper;
 import org.wesnoth.ui.syntax.WMLHighlightingConfiguration;
 import org.wesnoth.ui.syntax.WMLHighlightingHelper;
@@ -80,13 +85,23 @@ public class WMLUiModule extends org.wesnoth.ui.AbstractWMLUiModule
 		return WMLHighlightingHelper.class;
 	}
 
-	//	public Class<? extends MergingHighlightedPositionAcceptor> bindMergingHighlightedPositionAcceptor()
-	//	{
-	//		return WMLMergingHighlightedPositionAcceptor.class;
-	//	}
-
 	public Class<? extends HighlightingReconciler> bindHighlightingReconciler()
 	{
 		return WMLHighlightingReconciler.class;
+	}
+
+	public Class<? extends ILocationInFileProvider> bindILocationInFileProvider()
+	{
+		return WMLLocationInFileProvider.class;
+	}
+	@Override
+	public Class<? extends IHyperlinkDetector> bindIHyperlinkDetector()
+	{
+		return super.bindIHyperlinkDetector();
+	}
+
+	public Class<? extends HyperlinkHelper> bindHyperlinkHelper()
+	{
+		return WMLHyperlinkHelper.class;
 	}
 }
