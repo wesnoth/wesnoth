@@ -2309,6 +2309,48 @@ private:
 
 scoped_dialog *scoped_dialog::current = NULL;
 
+static gui2::twidget *find_widget(lua_State *L, int i, bool readonly)
+{
+	if (!scoped_dialog::current) {
+		luaL_error(L, "no visible dialog");
+		error_call_destructors_1:
+		luaL_argerror(L, i, "out of bounds");
+		error_call_destructors_2:
+		luaL_typerror(L, i, "string");
+		error_call_destructors_3:
+		luaL_argerror(L, i, "widget not found");
+		return NULL;
+	}
+
+	gui2::twidget *w = scoped_dialog::current->window;
+	gui2::tlistbox *l = NULL;
+	for (; !lua_isnoneornil(L, i); ++i)
+	{
+		if (l) {
+			int v = lua_tointeger(L, i);
+			if (v < 1)
+				goto error_call_destructors_1;
+			int n = l->get_item_count();
+			if (v > n) {
+				if (readonly)
+					goto error_call_destructors_1;
+				string_map dummy;
+				for (; n < v; ++n)
+					l->add_row(dummy);
+			}
+			w = l->get_row_grid(v - 1);
+		} else {
+			char const *m = lua_tostring(L, i);
+			if (!m) goto error_call_destructors_2;
+			w = w->find(m, false);
+		}
+		if (!w) goto error_call_destructors_3;
+		l = dynamic_cast<gui2::tlistbox *>(w);
+	}
+
+	return w;
+}
+
 /**
  * Displays a window.
  * - Arg 1: WML table describing the window.
@@ -2355,57 +2397,31 @@ static int intf_show_dialog(lua_State *L)
  */
 static int intf_set_dialog_value(lua_State *L)
 {
-	if (!scoped_dialog::current)
-		return luaL_error(L, "no visible dialog");
-
-	int i = 2;
 	if (false) {
 		error_call_destructors_1:
-		return luaL_typerror(L, i, "integer");
+		return luaL_argerror(L, 1, "out of bounds");
 		error_call_destructors_2:
-		return luaL_typerror(L, i, "string");
-		error_call_destructors_3:
-		return luaL_argerror(L, i, "widget not found");
-		error_call_destructors_4:
 		return luaL_typerror(L, 1, "translatable string");
-		error_call_destructors_5:
+		error_call_destructors_3:
+		return luaL_argerror(L, lua_gettop(L), "unsupported widget");
+		error_call_destructors_4:
 		return luaL_argerror(L, 1, error_buffer.c_str());
 	}
 
-	gui2::twidget *w = scoped_dialog::current->window;
-	gui2::tlistbox *l = NULL;
-	for (; !lua_isnoneornil(L, i); ++i)
-	{
-		if (l) {
-			int v = lua_tointeger(L, i);
-			if (v < 1)
-				goto error_call_destructors_1;
-			int n = l->get_item_count();
-			if (n < v) {
-				string_map dummy;
-				for (; n < v; ++n)
-					l->add_row(dummy);
-			}
-			w = l->get_row_grid(v - 1);
-		} else {
-			char const *m = lua_tostring(L, i);
-			if (!m) goto error_call_destructors_2;
-			w = w->find(m, false);
-		}
-		if (!w) goto error_call_destructors_3;
-		l = dynamic_cast<gui2::tlistbox *>(w);
-	}
+	gui2::twidget *w = find_widget(L, 2, false);
 
 	try {
-		if (l) {
+		if (gui2::tlistbox *l = dynamic_cast<gui2::tlistbox *>(w)) {
 			int v = lua_tointeger(L, 1);
 			int n = l->get_item_count();
 			if (1 <= v && v <= n)
 				l->select_row(v - 1);
+			else
+				goto error_call_destructors_1;
 		} else {
 			t_string v;
 			if (!luaW_totstring(L, 1, v))
-				goto error_call_destructors_4;
+				goto error_call_destructors_2;
 			gui2::tcontrol *c = dynamic_cast<gui2::tcontrol *>(w);
 			if (!c) goto error_call_destructors_3;
 			c->set_label(v);
@@ -2413,7 +2429,7 @@ static int intf_set_dialog_value(lua_State *L)
 	} catch(twml_exception &e) {
 		error_buffer = e.user_message;
 		ERR_LUA << "failed to set dialog value: " << e.dev_message << '\n';
-		goto error_call_destructors_5;
+		goto error_call_destructors_4;
 	}
 
 	return 0;
@@ -2426,51 +2442,26 @@ static int intf_set_dialog_value(lua_State *L)
  */
 static int intf_get_dialog_value(lua_State *L)
 {
-	if (!scoped_dialog::current)
-		return luaL_error(L, "no visible dialog");
-
-	int i = 1;
 	if (false) {
 		error_call_destructors_1:
-		return luaL_typerror(L, i, "integer");
+		return luaL_argerror(L, lua_gettop(L), "unsupported widget");
 		error_call_destructors_2:
-		return luaL_typerror(L, i, "string");
-		error_call_destructors_3:
-		return luaL_argerror(L, i, "widget not found");
-		error_call_destructors_4:
 		return luaL_argerror(L, 1, error_buffer.c_str());
 	}
 
-	gui2::twidget *w = scoped_dialog::current->window;
-	gui2::tlistbox *l = NULL;
-	for (; !lua_isnoneornil(L, i); ++i)
-	{
-		if (l) {
-			int v = lua_tointeger(L, i);
-			int n = l->get_item_count();
-			if (v < 1 || v > n)
-				goto error_call_destructors_1;
-			w = l->get_row_grid(v - 1);
-		} else {
-			char const *m = lua_tostring(L, i);
-			if (!m) goto error_call_destructors_2;
-			w = w->find(m, false);
-		}
-		if (!w) goto error_call_destructors_3;
-		l = dynamic_cast<gui2::tlistbox *>(w);
-	}
+	gui2::twidget *w = find_widget(L, 1, true);
 
 	try {
-		if (l) {
+		if (gui2::tlistbox *l = dynamic_cast<gui2::tlistbox *>(w)) {
 			lua_pushinteger(L, l->get_selected_row() + 1);
 		} else if (gui2::ttext_box *t = dynamic_cast<gui2::ttext_box *>(w)) {
 			lua_pushstring(L, t->get_value().c_str());
 		} else
-			goto error_call_destructors_3;
+			goto error_call_destructors_1;
 	} catch(twml_exception &e) {
 		error_buffer = e.user_message;
 		ERR_LUA << "failed to get dialog value: " << e.dev_message << '\n';
-		goto error_call_destructors_4;
+		goto error_call_destructors_2;
 	}
 
 	return 1;
