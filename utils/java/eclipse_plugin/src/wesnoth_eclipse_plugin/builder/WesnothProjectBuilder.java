@@ -152,6 +152,9 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 		if (isResourceIgnored(resource))
 			return;
 
+		if (monitor.isCanceled())
+			return;
+
 		// config files
 		if (resource instanceof IFile &&
 			(resource.getName().toLowerCase(Locale.ENGLISH).endsWith(".cfg")))
