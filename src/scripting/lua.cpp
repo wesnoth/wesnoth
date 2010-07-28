@@ -2290,23 +2290,24 @@ static int intf_synchronize_choice(lua_State *L)
 
 struct scoped_dialog
 {
-	gui2::twindow *prev;
-	static gui2::twindow *current;
+	scoped_dialog *prev;
+	static scoped_dialog *current;
+	gui2::twindow *window;
 	scoped_dialog(gui2::twindow *w)
+		: prev(current), window(w)
 	{
-		prev = current;
-		current = w;
+		current = this;
 	}
 	~scoped_dialog()
 	{
-		delete current;
+		delete window;
 		current = prev;
 	}
 private:
 	scoped_dialog(const scoped_dialog &);
 };
 
-gui2::twindow *scoped_dialog::current = NULL;
+scoped_dialog *scoped_dialog::current = NULL;
 
 /**
  * Displays a window.
@@ -2332,7 +2333,7 @@ static int intf_show_dialog(lua_State *L)
 			lua_pushvalue(L, 2);
 			if (!luaW_pcall(L, 0, 0)) return 0;
 		}
-		v = scoped_dialog::current->show(true, 0);
+		v = scoped_dialog::current->window->show(true, 0);
 		if (!lua_isnoneornil(L, 3)) {
 			lua_pushvalue(L, 3);
 			if (!luaW_pcall(L, 0, 0)) return 0;
@@ -2371,7 +2372,7 @@ static int intf_set_dialog_value(lua_State *L)
 		return luaL_argerror(L, 1, error_buffer.c_str());
 	}
 
-	gui2::twidget *w = scoped_dialog::current;
+	gui2::twidget *w = scoped_dialog::current->window;
 	gui2::tlistbox *l = NULL;
 	for (; !lua_isnoneornil(L, i); ++i)
 	{
@@ -2440,7 +2441,7 @@ static int intf_get_dialog_value(lua_State *L)
 		return luaL_argerror(L, 1, error_buffer.c_str());
 	}
 
-	gui2::twidget *w = scoped_dialog::current;
+	gui2::twidget *w = scoped_dialog::current->window;
 	gui2::tlistbox *l = NULL;
 	for (; !lua_isnoneornil(L, i); ++i)
 	{
