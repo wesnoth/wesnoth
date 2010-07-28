@@ -28,6 +28,11 @@ client::client( handler& handler ) :
 {
 }
 
+client::~client()
+{
+    delete client_;
+}
+
 void client::set_send_timeout( ana::timeout_policy type, size_t ms )
 {
 }
@@ -96,6 +101,12 @@ server::server( port, handler& ) :
     server_( )
 {
 }
+
+server::~server()
+{
+    delete server_;
+}
+
 
 void server::set_timeout( ana::net_id, ana::timeout_policy type, size_t ms )
 {

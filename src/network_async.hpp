@@ -156,6 +156,8 @@ namespace network
             client( handler& handler );
             // Idea: Add a set_handler method to change handlers during execution.
 
+            ~client();
+
             /**
              * Set timeouts for send operations for a given client.
              *
@@ -285,6 +287,8 @@ namespace network
              * @throws runtime_error if can't open port.
              */
             server( port, handler& );
+
+            ~server();
 
             /**
              * Set timeouts for send operations for a given client.
