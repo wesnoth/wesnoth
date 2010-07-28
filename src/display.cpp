@@ -744,7 +744,7 @@ std::vector<surface> display::get_terrain_images(const map_location &loc,
 			if(tod.red == global_tod.red && tod.green == global_tod.green && tod.blue == global_tod.blue) {
 				// It's the same as global ToD, don't use local light
 				use_local_light = false;
-			} else if (tod.red != 0 && tod.green != 0 && tod.blue != 0) {
+			} else if (tod.red != 0 || tod.green != 0 || tod.blue != 0) {
 				// simply color it if needed
 				mod << "~CS("
 						<< tod.red << ","
