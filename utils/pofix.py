@@ -115,11 +115,24 @@ stringfixes = {
 ("turn's", "turn’s"),
 ("it's best to click the", "it’s best to click the"),
 ("Don't send", "Don’t send"),
+#("RACV's", "RACV’s"),
+#("hasn't", "hasn’t"),
+#("If you don't", "If you don’t"),
+#("you don't already own", "you don’t already own"),
+#("aren't quite as tough", "aren’t quite as tough"),
+#("units don't incur", "units don’t incur"),
+#("plague doesn't", "plague doesn’t"),
+#("mechanical units don't", "mechanical units don’t"),
+#("I'm Ready", "I’m Ready"),
+#("an odd width aren't", "an odd width aren't"),
 
 # Fix capitalization
 # conversion added in 1.9.0-svn
 ("Icelandic translation", "Icelandic Translation"),
 ("Miscellaneous contributors", "Miscellaneous Contributors"),
+
+# 'Can not' -> 'cannot'
+("directory name and can not be installed", "directory name and cannot be installed"),
 ),
 
 "wesnoth-anl" : (
@@ -407,6 +420,10 @@ stringfixes = {
 ("Look - you can", "Look — you can"),
 ("century - a generation", "century — a generation"),
 ("vast human army - his", "vast human army — his"),
+#("mother's", "mother’s"),
+#("'Fight no one great", "“Fight no one great"),
+#("from his shoulders.'", "from his shoulders.”"),
+#("You'd", "You’d"),
 
 # Fix screw up
 # conversion added in 1.9.0-svn
@@ -415,6 +432,20 @@ stringfixes = {
 ("— Delfador's insistence", "— Delfador’s insistence"),
 ("don't try to fight us — you", "don’t try to fight us — you"),
 ("Princess Li'sar — here?", "Princess Li’sar — here?"),
+
+# Convert straight apostrophes and quotation marks
+#("\"Li'sar\"", "\"Li’sar\""),
+#("I can't believe it should end like this!", "I can’t believe it should end like this!"),
+#("reach it, Li'sar", "reach it, Li’sar"),
+#("I know what I'm doing", "I know what I’m doing"),
+#("Eldred's", "Eldred’s"),
+#("Garard's", "Garard’s"),
+#("as Asheviere's reign", "as Asheviere’s reign"),
+#("news of Asheviere's orders", "news of Asheviere’s orders"),
+#("In the end Delfador's men", "In the end Delfador’s men"),
+#("husband's", "husband’s"),
+#("son's lifeless body", "son’s lifeless body"),
+#("great mage's staff", "great mage’s staff"),
 ),
 
 "wesnoth-l" : (

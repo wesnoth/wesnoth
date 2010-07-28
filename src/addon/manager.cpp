@@ -604,7 +604,7 @@ namespace {
 		}
 
 		if(!check_names_legal(cfg)) {
-			gui2::show_error_message(disp.video(), _("The add-on has an invalid file or directory name and can not be installed."));
+			gui2::show_error_message(disp.video(), _("The add-on has an invalid file or directory name and cannot be installed."));
 			return false;
 		}
 
