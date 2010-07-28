@@ -272,7 +272,7 @@ public class WorkspaceUtils
 		if (!checkConditions(false))
 		{
 			PreferenceDialog pref = PreferencesUtil.createPreferenceDialogOn(
-					Activator.getShell(), "plugin_preferences", null, null);
+					Activator.getShell(), "wml_plugin_preferences", null, null);
 			if (pref.open() == Window.CANCEL || !checkConditions(true))
 			{
 				GUIUtils.showErrorMessageBox("The workspace was not setup. " +
