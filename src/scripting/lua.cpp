@@ -112,6 +112,7 @@ static char const gettypeKey = 0;
 static char const getunitKey = 0;
 static char const tstringKey = 0;
 static char const vconfigKey = 0;
+static char const dlgclbkKey = 0;
 
 /* Global definition so that it does not leak on longjmp. */
 static std::string error_buffer;
@@ -2290,24 +2291,43 @@ static int intf_synchronize_choice(lua_State *L)
 
 struct scoped_dialog
 {
+	lua_State *L;
 	scoped_dialog *prev;
 	static scoped_dialog *current;
 	gui2::twindow *window;
-	scoped_dialog(gui2::twindow *w)
-		: prev(current), window(w)
-	{
-		current = this;
-	}
-	~scoped_dialog()
-	{
-		delete window;
-		current = prev;
-	}
+	typedef std::map<gui2::twidget *, int> callback_map;
+	callback_map callbacks;
+
+	scoped_dialog(lua_State *l, gui2::twindow *w);
+	~scoped_dialog();
 private:
 	scoped_dialog(const scoped_dialog &);
 };
 
 scoped_dialog *scoped_dialog::current = NULL;
+
+scoped_dialog::scoped_dialog(lua_State *l, gui2::twindow *w)
+	: L(l), prev(current), window(w)
+{
+	lua_pushlightuserdata(L, (void *)&dlgclbkKey);
+	lua_createtable(L, 1, 0);
+	lua_pushvalue(L, -2);
+	lua_rawget(L, LUA_REGISTRYINDEX);
+	lua_rawseti(L, -2, 1);
+	lua_rawset(L, LUA_REGISTRYINDEX);
+	current = this;
+}
+
+scoped_dialog::~scoped_dialog()
+{
+	delete window;
+	current = prev;
+	lua_pushlightuserdata(L, (void *)&dlgclbkKey);
+	lua_pushvalue(L, -1);
+	lua_rawget(L, LUA_REGISTRYINDEX);
+	lua_rawgeti(L, -1, 1);
+	lua_rawset(L, LUA_REGISTRYINDEX);
+}
 
 static gui2::twidget *find_widget(lua_State *L, int i, bool readonly)
 {
@@ -2370,7 +2390,7 @@ static int intf_show_dialog(lua_State *L)
 		config def_cfg;
 		luaW_toconfig(L, 1, def_cfg);
 		gui2::twindow_builder::tresolution def(def_cfg);
-		scoped_dialog w(gui2::build(resources::screen->video(), &def));
+		scoped_dialog w(L, gui2::build(resources::screen->video(), &def));
 		if (!lua_isnoneornil(L, 2)) {
 			lua_pushvalue(L, 2);
 			if (!luaW_pcall(L, 0, 0)) return 0;
@@ -2467,6 +2487,75 @@ static int intf_get_dialog_value(lua_State *L)
 	return 1;
 }
 
+static void dialog_callback(gui2::twidget *w)
+{
+	int cb;
+	{
+		scoped_dialog::callback_map &m = scoped_dialog::current->callbacks;
+		scoped_dialog::callback_map::const_iterator i = m.find(w);
+		if (i == m.end()) return;
+		cb = i->second;
+	}
+	lua_State *L = scoped_dialog::current->L;
+	lua_pushlightuserdata(L, (void *)&dlgclbkKey);
+	lua_rawget(L, LUA_REGISTRYINDEX);
+	lua_rawgeti(L, -1, cb);
+	lua_remove(L, -2);
+	lua_call(L, 0, 0);
+}
+
+/**
+ * Sets a callback on a widget of the current dialog.
+ * - Arg 1: function.
+ * - Args 2..n: path of strings and integers.
+ */
+static int intf_set_dialog_callback(lua_State *L)
+{
+	if (false) {
+		error_call_destructors_1:
+		return luaL_argerror(L, lua_gettop(L), "unsupported widget");
+		error_call_destructors_2:
+		return luaL_argerror(L, 1, error_buffer.c_str());
+	}
+
+	gui2::twidget *w = find_widget(L, 2, true);
+
+	scoped_dialog::callback_map &m = scoped_dialog::current->callbacks;
+	scoped_dialog::callback_map::iterator i = m.find(w);
+	if (i != m.end())
+	{
+		lua_pushlightuserdata(L, (void *)&dlgclbkKey);
+		lua_rawget(L, LUA_REGISTRYINDEX);
+		lua_pushnil(L);
+		lua_rawseti(L, -2, i->second);
+		lua_pop(L, 1);
+		m.erase(i);
+	}
+
+	if (lua_isnil(L, 1)) return 0;
+
+	try {
+		if (gui2::tlistbox *l = dynamic_cast<gui2::tlistbox *>(w)) {
+			l->set_callback_value_change(&dialog_callback);
+		} else
+			goto error_call_destructors_1;
+	} catch(twml_exception &e) {
+		error_buffer = e.user_message;
+		ERR_LUA << "failed to get dialog value: " << e.dev_message << '\n';
+		goto error_call_destructors_2;
+	}
+
+	lua_pushlightuserdata(L, (void *)&dlgclbkKey);
+	lua_rawget(L, LUA_REGISTRYINDEX);
+	int n = lua_objlen(L, -1) + 1;
+	m[w] = n;
+	lua_pushvalue(L, 1);
+	lua_rawseti(L, -2, n);
+	lua_pop(L, 1);
+
+	return 0;
+}
+
 LuaKernel::LuaKernel()
 	: mState(luaL_newstate())
 {
@@ -2516,6 +2605,7 @@ LuaKernel::LuaKernel()
 		{ "put_unit",                 &intf_put_unit                 },
 		{ "require",                  &intf_require                  },
 		{ "scroll_to_tile",           &intf_scroll_to_tile           },
+		{ "set_dialog_callback",      &intf_set_dialog_callback      },
 		{ "set_dialog_value",         &intf_set_dialog_value         },
 		{ "set_music",                &intf_set_music                },
 		{ "set_terrain",              &intf_set_terrain              },
