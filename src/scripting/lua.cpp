@@ -61,6 +61,7 @@ extern "C" {
 #include "gui/widgets/multi_page.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/text_box.hpp"
+#include "gui/widgets/toggle_button.hpp"
 #include "gui/widgets/window.hpp"
 
 static lg::log_domain log_scripting_lua("scripting/lua");
@@ -2466,6 +2467,10 @@ static int intf_set_dialog_value(lua_State *L)
 			else
 				goto error_call_destructors_1;
 		}
+		else if (gui2::ttoggle_button *b = dynamic_cast<gui2::ttoggle_button *>(w))
+		{
+			b->set_value(lua_toboolean(L, 1));
+		}
 		else
 		{
 			t_string v;
@@ -2505,6 +2510,8 @@ static int intf_get_dialog_value(lua_State *L)
 			lua_pushinteger(L, l->get_selected_row() + 1);
 		} else if (gui2::tmulti_page *l = dynamic_cast<gui2::tmulti_page *>(w)) {
 			lua_pushinteger(L, l->get_selected_page() + 1);
+		} else if (gui2::ttoggle_button *b = dynamic_cast<gui2::ttoggle_button *>(w)) {
+			lua_pushboolean(L, b->get_value());
 		} else if (gui2::ttext_box *t = dynamic_cast<gui2::ttext_box *>(w)) {
 			lua_pushstring(L, t->get_value().c_str());
 		} else
@@ -2568,6 +2575,8 @@ static int intf_set_dialog_callback(lua_State *L)
 	try {
 		if (gui2::tlistbox *l = dynamic_cast<gui2::tlistbox *>(w)) {
 			l->set_callback_value_change(&dialog_callback);
+		} else if (gui2::ttoggle_button *b = dynamic_cast<gui2::ttoggle_button *>(w)) {
+			b->set_callback_state_change(&dialog_callback);
 		} else
 			goto error_call_destructors_1;
 	} catch(twml_exception &e) {
