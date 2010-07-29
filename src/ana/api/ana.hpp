@@ -743,6 +743,9 @@ namespace ana
          */
         virtual void set_connect_timeout( size_t ms ) = 0;
 
+        /** Returns the string representing the ip address of the connected client. */
+        virtual std::string ip_address() const = 0;
+
         /** Standard destructor. */
         virtual ~client() {}
     };

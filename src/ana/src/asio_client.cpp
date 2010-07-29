@@ -268,6 +268,11 @@ void asio_client::expecting_message( size_t ms_until_timeout )
     wait_for_incoming_message( ms_until_timeout );
 }
 
+std::string asio_client::ip_address() const
+{
+    return socket_.remote_endpoint().address().to_string();
+}
+
 void asio_client::disconnect_listener()
 {
     io_service_.stop();

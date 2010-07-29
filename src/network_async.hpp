@@ -68,6 +68,14 @@ Feature Requests:
 /** Namespace of the asynchronous network API. */
 namespace network
 {
+
+    /**
+     * A wesnoth ID of a network component.
+     * For instance, when a client connects to a server, it is a assigned a server side
+     * wesnoth_id from the server.
+     */
+    typedef uint32_t wesnoth_id;
+
     /**
      * Main interface for handlers of Wesnoth network events.
      *
@@ -151,11 +159,19 @@ namespace network
             /**
              * Create a client, and associate a handler object to it.
              *
-             * Note: The parameter is a reference because it can't be a NULL pointer.
+             * @param handler : The handler of the network events of this client.
+             * @param address : The address of the server you are trying to connect to. Defaults
+             *                  to Wesnoth's official server.
+             * @param port : The port you are trying to connect to. Defaults to Wesnoth's default.
+             *
+             * Note: The handler parameter is a reference because it can't be a NULL pointer.
              */
-            client( handler& handler );
+            client( handler& handler,
+                    const std::string& address = "server.wesnoth.org",
+                    const std::string& port    = "15000"  );
             // Idea: Add a set_handler method to change handlers during execution.
 
+            /** Standard destructor. */
             ~client();
 
             /**
@@ -167,14 +183,6 @@ namespace network
              */
             void set_send_timeout( ana::timeout_policy type, size_t ms = 0 );
 
-            /**
-             * Set timeouts for connect operations for the client.
-             *
-             * Examples:
-             *     - set_connect_timeout( ana::time::seconds( 10 ) );
-             */
-            void set_connect_timeout( size_t ms = 0 );
-
 
             // Possibilities: Either use set_timeout to set general timeouts for groups of
             // operations or have a timeout parameter for each time you call a method.
@@ -183,24 +191,25 @@ namespace network
              * Attempt an asynchronous connection to a server, it will call the corresponding
              * handle_connect with the results eventually.
              *
-             * @param address : The address of the server you are trying to connect to. Defaults
-             *                  to Wesnoth's official server.
-             * @param port : The port you are trying to connect to. Defaults to Wesnoth's default.
+             * @param time : Time to connection attempt timeout, e.g. ana::time::seconds( 10 ).
+             *               Default: no timeout.
              */
-            void async_connect( const std::string& address = "server.wesnoth.org",
-                                const std::string& port    = "15000"  );
+            void async_connect( size_t timeout = 0 );
 
             /**
              * Attempt an asynchronous connection through proxy, will call handle_connect
              * with results eventually.
              *
+             * @param time : Time to connection attempt timeout, e.g. ana::time::seconds( 10 ).
+             *               Default: no timeout.
              * @param address : The address of the server you are trying to connect to. Defaults
              *                  to Wesnoth's official server.
              * @param port : The port you are trying to connect to. Defaults to Wesnoth's default.
              * @param user_name : The proxy's user name used for credentials.
              * @param password : The proxy's password used for credentials.
              */
-            void async_connect_through_proxy( const std::string& proxy_addr  = "server.wesnoth.org",
+            void async_connect_through_proxy( size_t           timeout     = 0,
+                                              const std::string& proxy_addr  = "server.wesnoth.org",
                                               const std::string& proxy_port  = "15000",
                                               const std::string& user_name   = "",
                                               const std::string& password    = "");
@@ -209,26 +218,27 @@ namespace network
              * Attempt to send a WML document to the server.
              *
              * @param config : The WML document to send.
-             * @param send_type : The type of send operation, use ana::DONT_COPY to avoid
-             *                    unnecessary memory duplication. However, you must ensure that
-             *                    the config object used will be alive until the call of
-             *                    the handle_send with the returned operation_id. The default
-             *                    value will be ana::COPY_BUFFER.
              *
              * @returns the ana::operation_id corresponding to this operation.
              *
              * @sa ana::operation_id
              * @sa ana::send_type
              */
-            operation_id async_send( const config&, ana::send_type = ana::COPY_BUFFER);
+            operation_id async_send( const config& );
 
             /**
              * Signal the client that you are waiting for a message from the server
-             * The time parameter indicates how long you are willing to wait
-             * If a message is received before this time period the appropiate call to
-             * handle_receive will be made with ana::timeout_error.
+             * @param time: Indicates how long you are willing to wait. If a message
+             *              is received before this time period the appropiate call to
+             *              handle_receive will be made with ana::timeout_error. To create a time
+             *              duration, use the functions declared in the ana::time namespace.
+             *
+             * Example :
+             *   - client.waiting_for_message( ana::time::seconds( 5 ) );
+             *
+             * @sa ana::time
              */
-            void waiting_for_message( time );
+            void waiting_for_message( size_t time );
 
             /**
              * Get network stats for the client, the parameter indicates the time period
@@ -247,7 +257,23 @@ namespace network
              */
             std::string ip_address_of_server() const;
 
+            /**
+             * Returns the wesnoth_id of this client.
+             *
+             * @sa wesnoth_id
+             */
+            wesnoth_id get_wesnoth_id() const;
+
         private:
+            /* ------------------------------ Private methods -----------------------------*/
+
+            /**
+             * Sets the wesnoth_id of this client.
+             *
+             * @sa wesnoth_id
+             */
+            void set_wesnoth_id( wesnoth_id );
+
             /* ------------------------ Inhereted handler methods -------------------------*/
 
             virtual void handle_connect( ana::error_code error, net_id server_id );
@@ -262,11 +288,33 @@ namespace network
                                       net_id client,
                                       ana::operation_id op_id);
 
+            /* ------------------------------- Private Types ------------------------------*/
+
+            /** Connection status. */
+            enum client_status
+            {
+                /** Not connected to the server.      */
+                DISCONNECTED,
+
+                /** Waiting for handshake completion. */
+                PENDING_HANDSHAKE,
+
+                /** Connected to the server.          */
+                CONNECTED
+            };
 
             /* -------------------------------- Attributes --------------------------------*/
 
+            client_status status_;
+
             /** The ana::client object representing this client. @sa ana::client */
             ana::client*  client_;
+
+            /** The object handling the network events for this client. */
+            handler&      handler_;
+
+            /** The wesnoth_id assigned by the server. */
+            wesnoth_id    wesnoth_id_;
     };
 
     /**

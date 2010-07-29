@@ -106,6 +106,8 @@ class asio_client : public ana::client,
 
         virtual void expecting_message( size_t ms_until_timeout );
 
+        virtual std::string ip_address() const;
+
         void handle_connect(const boost::system::error_code& ec,
                             tcp::resolver::iterator endpoint_iterator,
                             ana::connection_handler*,
