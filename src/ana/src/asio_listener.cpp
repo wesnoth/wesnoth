@@ -215,6 +215,9 @@ void asio_listener::handle_raw_buffer( ana::detail::read_buffer buf,
 {
     try
     {
+        delete next_message_timer_;
+        next_message_timer_ = NULL;
+
         if (ec)
             disconnect( ec );
         else
@@ -222,8 +225,6 @@ void asio_listener::handle_raw_buffer( ana::detail::read_buffer buf,
             buf->resize( read_size );
             log_conditional_receive( buf );
             listener_->handle_receive( ec, id(), buf );
-            delete next_message_timer_;
-            next_message_timer_ = NULL;
             listen_one_message();
         }
     }

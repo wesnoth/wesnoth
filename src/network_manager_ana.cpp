@@ -37,14 +37,12 @@ ana_send_handler::ana_send_handler( size_t calls ) :
     target_calls_( calls ),
     error_code_()
 {
-    std::cout << "DEBUG: Constructing a new ana_send_handler...\n";
     if ( calls > 0 )
         mutex_.lock();
 }
 
 ana_send_handler::~ana_send_handler()
 {
-    std::cout << "DEBUG: Terminating an ana_send_handler...\n";
     if ( target_calls_ > 0 )
         throw std::runtime_error("Handler wasn't called enough times.");
     mutex_.lock();
@@ -103,7 +101,6 @@ ana_receive_handler::ana_receive_handler( ana_component_set::iterator iterator )
     receive_timer_( NULL ),
     finished_( false )
 {
-//     std::cout << "DEBUG: Constructing a new ana_receive_handler...\n"; // too much output
     mutex_.lock();
     timeout_called_mutex_.lock();
 }
@@ -208,7 +205,6 @@ ana_multiple_receive_handler::ana_multiple_receive_handler( ana_component_set& c
     finished_( false )
 {
     throw std::runtime_error("Multiple receive handler constructed");
-    std::cout << "DEBUG: Constructing a new ana_multiple_receive_handler...\n";
 
     ana_component_set::iterator it;
 
@@ -319,11 +315,6 @@ void ana_multiple_receive_handler::handle_timeout(ana::error_code error_code)
 
     if (! finished_ )
     {
-        if (error_code)
-            std::cout << "DEBUG: Receive attempt timed out\n";
-        else
-            std::cout << "DEBUG: Shouldn't reach here\n";
-
         error_code_ = error_code;
         finished_ = true;
         mutex_.unlock();
@@ -339,13 +330,11 @@ ana_connect_handler::ana_connect_handler( ) :
     mutex_( ),
     error_code_()
 {
-    std::cout << "DEBUG: Constructing a new ana_connect_handler...\n";
     mutex_.lock();
 }
 
 ana_connect_handler::~ana_connect_handler()
 {
-    std::cout << "DEBUG: Terminating an ana_connect_handler...\n";
     mutex_.lock();
     mutex_.unlock();
 }
@@ -357,11 +346,6 @@ const ana::error_code& ana_connect_handler::error() const
 
 void ana_connect_handler::handle_connect(ana::error_code error_code, ana::net_id /*client*/)
 {
-    if (! error_code)
-        std::cout << "DEBUG: Connected.\n";
-    else
-        std::cout << "DEBUG: Can't connect. " << error_code << "\n";
-
     error_code_ = error_code;
     mutex_.unlock();
 }
@@ -549,8 +533,6 @@ size_t clients_manager::client_amount() const
 
 void clients_manager::handle_connect(ana::error_code error, ana::net_id client)
 {
-    std::cout << "New client connected with id " << client << "\n";
-
     if (! error )
     {
         ids_.insert( client );
@@ -616,8 +598,6 @@ ana_network_manager::ana_network_manager() :
 
 ana::net_id ana_network_manager::create_server( )
 {
-    std::cout << "DEBUG: Creating server.\n";
-
     ana_component* new_component = new ana_component( );
     components_.insert( new_component );
 
@@ -635,8 +615,6 @@ ana::net_id ana_network_manager::create_server( )
 
 network::connection ana_network_manager::create_client_and_connect(std::string host, int port)
 {
-    std::cout << "DEBUG: Creating client and connecting...\n";
-
     try
     {
         std::stringstream ss;
@@ -688,7 +666,6 @@ network::connection ana_network_manager::create_client_and_connect(std::string h
 
                 bis >> my_id;
                 ana::network_to_host_long( my_id );
-                std::cout << "DEBUG: Received id " << my_id << "\n";
 
                 new_component->set_wesnoth_id( my_id );
 
@@ -701,7 +678,6 @@ network::connection ana_network_manager::create_client_and_connect(std::string h
     }
     catch( const std::exception& e )
     {
-        std::cout << "DEBUG: Caught an exception while trying to connect.\n";
         return 0;
     }
 }
@@ -860,8 +836,6 @@ void ana_network_manager::read_config( const ana::detail::read_buffer& buffer, c
 
 size_t ana_network_manager::send_all( const config& cfg, bool zipped )
 {
-    std::cout << "DEBUG: Sending to everybody. " << (zipped ? "Zipped":"Raw") << "\n";
-
     const std::string output_string = compress_config(cfg);
 
     std::set<ana_component*>::iterator it;
@@ -884,7 +858,6 @@ size_t ana_network_manager::send_all( const config& cfg, bool zipped )
             handler.wait_completion();
         }
     }
-    std::cout << "Sent data.\n";
     return output_string.size();
 }
 
@@ -894,8 +867,6 @@ size_t ana_network_manager::send( network::connection connection_num ,
 {
     if ( ! zipped )
         throw std::runtime_error("All send operations should be zipped");
-
-    std::cout << "DEBUG: Single send...\n";
 
     const std::string output_string = compress_config(cfg);
 
@@ -949,8 +920,6 @@ size_t ana_network_manager::send_raw_data( const char*         base_char,
 
 void ana_network_manager::send_all_except(const config& cfg, network::connection connection_num)
 {
-    std::cout << "DEBUG: send_all_except " << connection_num << "\n";
-
     const std::string output_string = compress_config(cfg);
 
 
@@ -1124,8 +1093,6 @@ network::connection ana_network_manager::read_from_all( std::vector<char>& vec)
 
 network::statistics ana_network_manager::get_send_stats(network::connection handle)
 {
-    std::cout << "DEBUG: in get_send_stats to " << handle << "\n";
-
     if ( handle != 0 )
     {
         ana::net_id id( handle );
@@ -1188,9 +1155,6 @@ void ana_network_manager::handle_receive( ana::error_code          error,
         network::disconnect( client );
     else
     {
-        std::cout << "DEBUG: Buffer received with size " << buffer->size()
-                  << " from " << client << "\n";
-
         std::set< ana_component* >::iterator it;
 
         it = std::find_if( components_.begin(), components_.end(),
@@ -1269,8 +1233,6 @@ bool ana_component::new_buffer_ready() // non const due to mutex block
 
 void ana_network_manager::handle_disconnect(ana::error_code /*error_code*/, ana::net_id client)
 {
-    std::cout << "DEBUG: Disconnected from server.\n";
-
     std::set< ana_component* >::iterator it;
 
     it = std::find_if( components_.begin(), components_.end(),
@@ -1278,7 +1240,6 @@ void ana_network_manager::handle_disconnect(ana::error_code /*error_code*/, ana:
 
     if ( it != components_.end() )
     {
-        std::cout << "DEBUG: Removing bad component.\n";
 //         close_connections_and_cleanup();
         delete *it;
         components_.erase(it);

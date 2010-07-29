@@ -166,6 +166,7 @@ void client::handle_connect( ana::error_code error, net_id server_id )
 
     client_->send( ana::buffer( bos.str()), this );
 
+    client_->expecting_message( ana::time::seconds( 10 ) );
     status_ = PENDING_HANDSHAKE;
 }
 

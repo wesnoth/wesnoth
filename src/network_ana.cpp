@@ -90,7 +90,6 @@ namespace network {
 
     connection_stats get_connection_stats(connection connection_num)
     {
-        std::cout << "DEBUG: get_connection_stats\n";
         const ana::stats* stats = ana_manager.get_stats( connection_num );
 
         return connection_stats( stats->bytes_out(),
@@ -100,12 +99,10 @@ namespace network {
 
     error::error(const std::string& msg, connection sock) : message(msg), socket(sock)
     {
-        std::cout << "DEBUG: error::error\n";
     }
 
     void error::disconnect()
     {
-        std::cout << "DEBUG: error::disconnect\n";
     }
 
     pending_statistics get_pending_stats()
@@ -116,13 +113,10 @@ namespace network {
     manager::manager(size_t /*min_threads*/, size_t /*max_threads*/) : free_(true)
     {
         ++instances_using_the_network_module;
-        std::cout << "DEBUG: Creating a manager object.\n";
     }
 
     manager::~manager()
     {
-        std::cout << "DEBUG: destroying the manager object.\n";
-
         if ( --instances_using_the_network_module == 0 )
             ana_manager.close_connections_and_cleanup();
     }
@@ -135,7 +129,6 @@ namespace network {
         : free_(false),
           connection_(0)
     {
-        std::cout << "DEBUG: server_manager\n";
         if ( create_server != NO_SERVER )
         {
             ana::net_id server_id = ana_manager.create_server( );
@@ -169,13 +162,11 @@ namespace network {
 
     connection connect(const std::string& host, int port)
     {
-        std::cout << "DEBUG: connect\n";
         return ana_manager.create_client_and_connect( host, port );
     }
 
     connection connect(const std::string& host, int port, threading::waiter& /*waiter*/)
     {
-        std::cout << "DEBUG: connect2\n";
         return connect( host, port );
     }
 
@@ -206,9 +197,6 @@ namespace network {
             *bandwidth_in = global_bandwidth_in_ptr;
 
         network::connection read_id = ana_manager.read_from( connection_num, cfg, timeout );
-
-//         if ( read_id != 0 )
-//             std::cout << "Read: " << cfg << "\n";
 
         // TODO: check timeout and return 0, or throw if error occured
 
@@ -249,11 +237,6 @@ namespace network {
 
     std::string get_bandwidth_stats_all()
     {
-        std::cout << "DEBUG: get_bandwidth_stats_all() for "
-                  << ana_manager.number_of_connections() << " components.\n";
-
-
-
         //TODO: packet_type and widths should be modifiable
         const char*  packet_type  = "network";
 
@@ -276,9 +259,6 @@ namespace network {
 
     std::string get_bandwidth_stats()
     {
-        std::cout << "DEBUG: get_bandwidth_stats() for "
-                  << ana_manager.number_of_connections() << " components.\n";
-
         //TODO: packet_type and widths should be modifiable
         const char*  packet_type  = "network";
 
@@ -301,7 +281,6 @@ namespace network {
 
     std::string get_bandwidth_stats(int hour)
     {
-        std::cout << "DEBUG: get_bandwidth_stats with hour " << hour << "\n";
         return std::string(""); //TODO: implement
     }
 
@@ -329,8 +308,6 @@ namespace network {
         if(cfg.empty())
             return 0;
 
-//         std::cout << "DEBUG: Sending: " << cfg << "\n";
-
         if( connection_num == 0 )
             return ana_manager.send_all( cfg, gzipped );
         else
@@ -342,7 +319,6 @@ namespace network {
                        connection         connection_num,
                        const std::string& /*packet_type*/)
     {
-//         std::cout << "DEBUG: Sending Raw: " << std::string( buf, len ) << "\n";
         ana_manager.send_raw_data( buf, size_t( len ), connection_num );
     }
 
@@ -357,19 +333,16 @@ namespace network {
                               const bool          /*gzipped*/,
                               const std::string&  /*packet_type*/)
     {
-//         std::cout << "DEBUG: Sending all except " << connection_num << " - " << cfg << "\n";
         ana_manager.send_all_except(cfg, connection_num);
     }
 
     std::string ip_address(connection connection_num)
     {
-        std::cout << "DEBUG: ip_address\n";
         return ana_manager.ip_address( connection_num );
     }
 
     statistics get_send_stats(connection handle)
     {
-        std::cout << "DEBUG: get_send_stats\n";
         return ana_manager.get_send_stats( handle );
     }
 
