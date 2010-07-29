@@ -20,6 +20,7 @@
 #include "action.hpp"
 #include "attack.hpp"
 #include "move.hpp"
+#include "recruit.hpp"
 #include "side_actions.hpp"
 
 #include "foreach.hpp"
@@ -77,6 +78,19 @@ void mapbuilder_visitor::visit_attack(attack_ptr attack)
 	visit_move(boost::static_pointer_cast<move>(attack));
 }
 
+void mapbuilder_visitor::visit_recruit(recruit_ptr recruit)
+{
+	if(mode_ == BUILD_PLANNED_MAP)
+	{
+		recruit->apply_temp_modifier(unit_map_);
+		//remember which actions we applied, so we can unapply them later
+		applied_actions_.push_back(recruit);
+	}
+	else if (mode_ == RESTORE_NORMAL_MAP)
+	{
+		recruit->remove_temp_modifier(unit_map_);
+	}
+}
 
 void mapbuilder_visitor::restore_normal_map()
 {
