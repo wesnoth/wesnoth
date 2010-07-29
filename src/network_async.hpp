@@ -17,6 +17,7 @@
  * See the COPYING file for more details.
  */
 
+#include <set>
 
 /*
 Hello reader, welcome:
@@ -329,12 +330,12 @@ namespace network
             /**
              * Create a server, and associate a handler object to it.
              *
-             * @param port : The port to associate the server to.
              * @param handler : A reference to the object handling network events.
+             * @param port : The port to associate the server to.
              *
              * @throws runtime_error if can't open port.
              */
-            server( port, handler& );
+            server( handler& handler, int port );
 
             ~server();
 
@@ -350,28 +351,17 @@ namespace network
             /**
              * Attempt to send a WML document to a client.
              */
-            operation_id async_send( ana::net_id, const cfg&, ana::send_type );
+            operation_id async_send( ana::net_id, const config& );
 
             /**
              * Attempt to send a WML document to every connected client.
              */
-            operation_id async_send( const cfg&, ana::send_type );
-
-            /**
-             * Attempt to send a WML document to every connected client in the container.
-             */
-            operation_id async_send( container_of_ids,  const cfg&, ana::send_type );
+            operation_id async_send( const config& );
 
             /**
              * Attempt to send a WML document to every connected client except one.
              */
-            operation_id async_send_except( ana::net_id,  const cfg&, ana::send_type );
-
-            /**
-             * Attempt to send a WML document to every connected client except those in the
-             * container.
-             */
-            operation_id async_send_except( container_of_ids,  const cfg&, ana::send_type );
+            operation_id async_send_except( ana::net_id,  const config& );
 
             /**
              * Signal the server that you are waiting for a message from a given client
@@ -438,6 +428,12 @@ namespace network
 
             /** The ana::server object representing this server. @sa ana::server */
             ana::server*  server_;
+
+            /** The object handling the network events for this server. */
+            handler&      handler_;
+
+            /** Set of IDs that haven't finished handshaking but are connected. */
+            std::set< ana::net_id > pending_ids_;
     };
 }
 

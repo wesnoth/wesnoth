@@ -74,7 +74,7 @@ client::client( handler& handler,
                 const std::string& port    = "15000" )
   :
     status_( DISCONNECTED ),
-    client_( address, port ),
+    client_( ana::client::create( address, port) ),
     handler_( handler ),
     wesnoth_id_( 0 )
 {
@@ -115,7 +115,7 @@ void client::async_connect_through_proxy( size_t             timeout,
 
 operation_id client::async_send( const config& )
 {
-    return client_->send( ana::buffer( compress_config( config ) ) );
+    return client_->send( ana::buffer( compress_config( config ) ), this );
 }
 
 void client::waiting_for_message( size_t time )
@@ -166,6 +166,7 @@ void client::handle_connect( ana::error_code error, net_id server_id )
 
     client_->send( ana::buffer( bos.str()), this );
 
+    //10 seconds to receive the ID or disconnect.
     client_->expecting_message( ana::time::seconds( 10 ) );
     status_ = PENDING_HANDSHAKE;
 }
@@ -182,7 +183,7 @@ void client::handle_receive( ana::error_code error, ana::net_id id, ana::detail:
         config cfg;
 
         if ( ! error )
-            read_config( buf, cfg)
+            read_config( buf, cfg )
 
         handler_.handle_receive( error, id, cfg );
     }
@@ -199,22 +200,30 @@ void client::handle_receive( ana::error_code error, ana::net_id id, ana::detail:
         set_wesnoth_id( my_id );
 
         client_->set_header_first_mode();
+        client_->cancel_pending(); //cancel pending listen operations in raw mode
         client_->run_listener();
+
+        status_ = CONNECTED;
     }
-    else
+    else if ( ! error )
         throw std::runtime_error("Can't receive a message while disconnected.");
 }
 
 void client::handle_send( ana::error_code error, ana::net_id client, ana::operation_id op_id)
 {
-    handler_.handle_receive( error, client, op_id );
+    handler_.handle_send( error, client, op_id );
 }
 
 /* --------------------------------- Server Implementation --------------------------------- */
 
-server::server( port, handler& ) :
-    server_( )
+server::server( handler& handler, int port ) :
+    server_( ana::server::create() ),
+    handler_( handler )
 {
+    std::stringstream ss;
+    ss << port;
+
+    server_->run( ss.str() );
 }
 
 server::~server()
@@ -223,66 +232,77 @@ server::~server()
 }
 
 
-void server::set_timeout( ana::net_id, ana::timeout_policy type, size_t ms )
+void server::set_timeout( ana::net_id id, ana::timeout_policy type, size_t ms )
 {
+    server_->set_timeouts( id, type, ms);
 }
 
-operation_id server::async_send( ana::net_id, const cfg&, ana::send_type )
+operation_id server::async_send( ana::net_id id, const config& cfg )
 {
+    server_->send_one( id, ana::buffer( compress_config( config ) ), this );
 }
 
-operation_id server::async_send( const cfg&, ana::send_type )
+operation_id server::async_send( const config& cfg )
 {
+    server_->send_all( ana::buffer( compress_config( cfg ) ), this );
 }
 
-operation_id server::async_send( container_of_ids,  const cfg&, ana::send_type )
+operation_id server::async_send_except( ana::net_id id,  const config& cfg )
 {
+    server_->send_all_except( id, ana::buffer( compress_config( cfg ) ), this );
 }
 
-operation_id server::async_send_except( ana::net_id,  const cfg&, ana::send_type )
+void server::waiting_for_message( ana::net_id id, size_t ms_until_timeout )
 {
+    server_->expecting_message( id, ms_until_timeout );
 }
 
-operation_id server::async_send_except( container_of_ids,  const cfg&, ana::send_type )
+ana::stats* server::get_stats( ana::stat_type type )
 {
+    return server_->get_stats( type );
 }
 
-void server::waiting_for_message( ana::net_id, size_t ms_until_timeout )
+ana::stats* server::get_stats( ana::net_id id , ana::stat_type type )
 {
-}
-
-ana::stats* server::get_stats( ana::stat_type = ana::ACCUMULATED )
-{
-}
-
-ana::stats* server::get_stats( ana::net_id, ana::stat_type = ana::ACCUMULATED )
-{
+    return server_->get_stats( id, type );
 }
 
 void server::cancel_pending( )
 {
+    server_->cancel_pending();
 }
 
 void server::cancel_pending( ana::net_id  client_id )
 {
+    server_->cancel_pending( client_id );
 }
 
 void server::disconnect()
 {
+    server_->disconnect();
 }
 
-void server::disconnect(ana::net_id)
+void server::disconnect(ana::net_id client_id )
 {
+    server_->disconnect( client_id );
 }
 
-std::string server::ip_address( ana::net_id ) const
+std::string server::ip_address( ana::net_id client_id ) const
 {
+    return server_->ip_address( client_id );
 }
 
 /*------- Server handlers for ANA's network events. -------*/
 
-void server::handle_connect( ana::error_code error, net_id server_id )
+void server::handle_connect( ana::error_code error, net_id new_client_id )
 {
+    if ( ! error )
+    {
+        pending_ids_.insert( new_client_id );
+
+        //Wait for handshake
+        server_->expecting_message( new_client_id, ana::time::seconds(10) );
+    }
 }
 
 void server::handle_disconnect( ana::error_code error, net_id server_id)
@@ -291,8 +311,54 @@ void server::handle_disconnect( ana::error_code error, net_id server_id)
 
 void server::handle_receive( ana::error_code error, ana::net_id id, ana::detail::read_buffer buf)
 {
+    std::set< ana::net_id >::iteartor it;
+
+    it = pending_ids_.find( id );
+
+    if ( it != pending_ids_.end() ) //It's pending handshake
+    {
+        if ( buf->size() != sizeof( wesnoth_id ) )
+            server_->disconnect( id );
+        else
+        {
+            wesnoth_id handshake;
+            {
+                ana::serializer::bistream bis( buffer->string() );
+
+                bis >> handshake;
+                ana::network_to_host_long( handshake ); //I'm expecting a 0 anyway
+            }
+
+            if ( handshake != 0 )
+                server_->disconnect( id );
+            else
+            {
+                //send back it's id
+                wesnoth_id network_byte_order_id = id;
+
+                ana::serializer::bostream bos;
+                ana::host_to_network_long( network_byte_order_id );
+                bos << network_byte_order_id;
+
+                server_->send_one( id, ana::buffer( bos.str() ), handler );
+                server_->set_header_first_mode( id );
+
+                pending_ids_.erase( id );
+            }
+        }
+    }
+    else
+    {
+        config cfg;
+
+        if ( ! error )
+            read_config( buf, cfg )
+
+        handler_.handle_receive( error, id, cfg );
+    }
 }
 
 void server::handle_send( ana::error_code error, ana::net_id client, ana::operation_id op_id)
 {
+    handler_.handle_send( error, client, op_id );
 }
