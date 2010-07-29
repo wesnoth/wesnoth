@@ -39,6 +39,7 @@ highlight_visitor::highlight_visitor(const unit_map& unit_map, side_actions_ptr 
 	, side_actions_(side_actions)
 	, mouseover_hex_()
 	, owner_unit_(NULL)
+	, selection_candidate_(NULL)
 	, main_highlight_()
 	, secondary_highlights_()
 	, color_backup_()
