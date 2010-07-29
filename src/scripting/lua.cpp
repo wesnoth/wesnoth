@@ -2425,7 +2425,7 @@ private:
 scoped_dialog *scoped_dialog::current = NULL;
 
 scoped_dialog::scoped_dialog(lua_State *l, gui2::twindow *w)
-	: L(l), prev(current), window(w)
+	: L(l), prev(current), window(w), callbacks()
 {
 	lua_pushlightuserdata(L, (void *)&dlgclbkKey);
 	lua_createtable(L, 1, 0);
