@@ -43,6 +43,12 @@ std::ostream& operator<<(std::ostream& s, recruit_const_ptr recruit)
 	return recruit->print(s);
 }
 
+std::ostream& recruit::print(std::ostream &s) const
+{
+	s << "Recruiting " << unit_name_ << " on hex " << recruit_hex_ << "\n";
+	return s;
+}
+
 recruit::recruit(const std::string& unit_name, const map_location& recruit_hex):
 		unit_name_(unit_name),
 		recruit_hex_(recruit_hex),
