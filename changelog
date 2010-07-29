@@ -1,4 +1,12 @@
 Version 1.8.3+svn:
+ * Campaigns:
+   * Delfadors Memoirs:
+     * Fixed bug #16295: Make Lionel's portrait in Delfador's Memoirs story
+       screens the same as his unit portrait since there doesn't seem to be a
+       current higher-res version available
+   * Legend of Wesmere:
+     * Fixed bug #16140: removed gold overlay when defeating both leaders
+       (patch #1755 by Anonymissimus)
  * Language and i18n:
    * Updated translations: Chinese (Simplified), Galician, Japanese, Serbian,
      Vietnamese
@@ -11,11 +19,20 @@ Version 1.8.3+svn:
      a random weapon, when there is none
    * Fixed bug #16243: Added detection for server replays, as they are missing
      the core [lua] tags
+   * Fixed bug #16260: Fixed attack_end event not raised for uncommon swarm
+     attacks (patch #1758 by Anonymissimus)
    * Fixed bug #16261: Added test for invalidated death due to positive hp
      after the 'die' event
+   * Fixed bug #16283: 1.9 syntax creeped into 1.8.x causing segfaults
+   * Fixed petrifying in multiround combats
+   * Fixed reference binded to a temporary, possibly the cause of the failure
+     on arklinux
    * Never allow uploading *.pbl files (case-insensitive) to the add-ons
-     server from the regular game client.
+     server from the regular game client
    * Patch #1727: Fixed revision.hpp generation with cmake 1.8(.2)
+   * Patch #1757: Fixed usage of first PKG_CHECK_MODULES inside a shell
+     conditional
+   * Patch #1779: Fixed broken attack animation
 
 Version 1.8.3:
  * Campaigns:
