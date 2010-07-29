@@ -75,9 +75,12 @@ public:
 
 
 protected:
+	virtual unit* create_corresponding_unit();
+
 	std::string unit_name_;
 	map_location recruit_hex_;
 	bool valid_;
+	fake_unit_ptr fake_unit_;
 
 	int temp_cost_;
 };

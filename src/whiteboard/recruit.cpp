@@ -46,12 +46,17 @@ recruit::recruit(const std::string& unit_name, const map_location& recruit_hex):
 		unit_name_(unit_name),
 		recruit_hex_(recruit_hex),
 		valid_(true),
+		fake_unit_(),
 		temp_cost_()
 {
+	fake_unit_.reset(create_corresponding_unit());
+	resources::screen->place_temporary_unit(fake_unit_.get());
 }
 
 recruit::~recruit()
 {
+	assert(resources::screen);
+	resources::screen->remove_temporary_unit(fake_unit_.get());
 }
 
 void recruit::accept(visitor& v)
@@ -78,15 +83,12 @@ bool recruit::execute()
 void recruit::apply_temp_modifier(unit_map& unit_map)
 {
 	assert(valid_);
-	unit_type const* type = unit_types.find(unit_name_);
-	assert(type);
-	int side_num = resources::screen->viewing_side();
-	unit* temp_unit = new unit(type, side_num, true);
+	unit* temp_unit = create_corresponding_unit();
 
 	unit_map.add(recruit_hex_, *temp_unit);
 	//unit map takes ownership of temp_unit
 
-	temp_cost_ = type->cost();
+	temp_cost_ = temp_unit->type()->cost();
 	//TODO: add cost to money spent on recruits, need variable in side_actions to track this.
 }
 
@@ -95,6 +97,14 @@ void recruit::remove_temp_modifier(unit_map& unit_map)
 	unit_map.extract(recruit_hex_);
 
 	//TODO: remove cost from money spent on recruits, need variable in side_actions to track this.
+}
+
+unit* recruit::create_corresponding_unit()
+{
+	unit_type const* type = unit_types.find(unit_name_);
+	assert(type);
+	int side_num = resources::screen->viewing_side();
+	return new unit(type, side_num, true);
 }
 
 }
