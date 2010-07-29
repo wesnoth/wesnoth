@@ -39,14 +39,15 @@ namespace wb {
 manager::manager():
 		active_(false),
 		inverted_behavior_(false),
+		print_help_once_(true),
 		wait_for_side_init_(true),
+		planned_unit_map_active_(false),
+		executing_actions_(false),
 		mapbuilder_(),
 		highlighter_(new highlight_visitor(*resources::units, viewer_actions())),
 		route_(),
 		move_arrow_(),
 		fake_unit_(),
-		planned_unit_map_active_(false),
-		executing_actions_(false),
 		key_poller_(new CKey)
 {
 	LOG_WB << "Manager initialized.\n";
@@ -65,6 +66,8 @@ static void print_to_chat(const std::string& title, const std::string& message)
 
 void manager::print_help()
 {
+	print_to_chat("whiteboard", std::string("Type :wb to activate/deactivate the whiteboard.")
+		+ "  Hold CTRL to temporarily deactivate/activate it.");
 	print_to_chat("-------------",  "List of whiteboard hotkeys:");
 	const hotkey::hotkey_item& hk_execute = hotkey::get_hotkey(hotkey::HOTKEY_WB_EXECUTE_ACTION);
 	if(!hk_execute.null()) {
@@ -135,14 +138,6 @@ void manager::set_invert_behavior(bool invert)
 				DBG_WB << "Whiteboard activated temporarily.\n";
 				inverted_behavior_ = true;
 				set_active(true);
-				static bool print_once = true;
-				if (print_once)
-				{
-					print_once = false;
-					print_to_chat("whiteboard", std::string("Hold the ctrl key to temporarily toggle the whiteboard.")
-						+ " (Activate and then) Deactivate the whiteboard with the :wb command to erase all actions.");
-					print_help();
-				}
 			}
 		}
 	}
@@ -420,6 +415,11 @@ void manager::save_temp_move()
 		viewer_actions()->queue_move(*route_, move_arrow, fake_unit);
 		erase_temp_move();
 		LOG_WB << *viewer_actions() << "\n";
+		if (print_help_once_)
+		{
+			print_help_once_ = false;
+			print_help();
+		}
 	}
 }
 
@@ -459,6 +459,11 @@ void manager::save_temp_attack(const map_location& attack_from, const map_locati
 		if (weapon_choice >= 0)
 		{
 			viewer_actions()->queue_attack(target_hex, weapon_choice, *route_, move_arrow, fake_unit);
+			if (print_help_once_)
+			{
+				print_help_once_ = false;
+				print_help();
+			}
 		}
 
 		resources::screen->invalidate(target_hex);
@@ -481,6 +486,11 @@ bool manager::save_recruit(const std::string& name, int side_num, const map_loca
 		{
 			viewer_actions()->queue_recruit(name, recruit_hex);
 			created_planned_recruit = true;
+			if (print_help_once_)
+			{
+				print_help_once_ = false;
+				print_help();
+			}
 		}
 	}
 

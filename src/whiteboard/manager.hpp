@@ -133,7 +133,11 @@ private:
 	///Tracks whether the whiteboard is active.
 	bool active_;
 	bool inverted_behavior_;
+	bool print_help_once_;
 	bool wait_for_side_init_;
+	bool planned_unit_map_active_;
+	/** Track whenever we're modifying actions, to avoid dual execution etc. */
+	bool executing_actions_;
 
 	boost::scoped_ptr<mapbuilder_visitor> mapbuilder_;
 	boost::scoped_ptr<highlight_visitor> highlighter_;
@@ -143,9 +147,6 @@ private:
 	arrow_ptr move_arrow_;
 	fake_unit_ptr fake_unit_;
 
-	bool planned_unit_map_active_;
-	/** Track whenever we're modifying actions, to avoid dual execution etc. */
-	bool executing_actions_;
 
 	boost::scoped_ptr<CKey> key_poller_;
 };
