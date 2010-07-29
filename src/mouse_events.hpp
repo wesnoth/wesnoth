@@ -108,6 +108,9 @@ protected:
 	void perform_attack(map_location attacker_loc, map_location defender_loc,
 		int attacker_weapon, int defender_weapon, rand_rng::seed_t seed);
 
+	//get visible ajacent enemies of 1-based side around location loc
+	std::set<map_location> get_adj_enemies(const map_location& loc, int side) const;
+
 	void show_attack_options(const unit_map::const_iterator &u);
 	map_location current_unit_attacks_from(const map_location& loc);
 	unit_map::const_iterator find_unit(const map_location& hex) const;

@@ -517,6 +517,11 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 				//register the mouse-UI waypoints into the unit's waypoints
 				u->waypoints() = waypoints_;
 
+				// store side, since u may be invalidated later
+				int side = u->side();
+				//record visible enemies adjacent to destination
+				std::set<map_location> adj_enemies = get_adj_enemies(attack_from, side);
+
 				// move the unit without clearing fog (to avoid interruption)
 				//TODO: clear fog and interrupt+resume move
 				if(!move_unit_along_current_route(false, true)) {
@@ -525,6 +530,10 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 					// (update shroud/fog, clear undo if needed)
 					return false;
 				}
+
+				//check if new enemies are now visible
+				if(get_adj_enemies(attack_from, side) != adj_enemies)
+					return false; //ambush, interrupt attack
 
 				attack_enemy(attack_from, hex, choice); // Fight !!
 				return false;
@@ -966,11 +975,24 @@ void mouse_handler::perform_attack(
 	gui().draw();
 }
 
+std::set<map_location> mouse_handler::get_adj_enemies(const map_location& loc, int side) const
+{
+	std::set<map_location> res;
+
+	const team& uteam = teams_[side-1];
+
+	map_location adj[6];
+	get_adjacent_tiles(loc, adj);
+	foreach (const map_location &aloc, adj) {
+		unit_map::const_iterator i = find_unit(aloc);
+		if (i != units_.end() && uteam.is_enemy(i->side()))
+			res.insert(aloc);
+	}
+	return res;
+}
+
 void mouse_handler::show_attack_options(const unit_map::const_iterator &u)
 {
-	if (u == units_.end() || u->attacks_left() == 0)
-		return;
-
 	map_location adj[6];
 	get_adjacent_tiles(u->get_location(), adj);
 	foreach (const map_location &loc, adj)
