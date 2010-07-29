@@ -164,6 +164,23 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 		const unit_map::iterator selected_unit = find_unit(selected_hex_);
 		const unit_map::iterator mouseover_unit = find_unit(new_hex);
 
+		if (!selected_unit.valid()) {
+			DBG_WB << "mouse_handler::mouse_motion() : selected_unit iterator invalid.\n";
+		}
+		else
+		{
+			DBG_WB << "mouse_handler::mouse_motion() : "
+					<< selected_unit->name() << " [" << selected_unit->id() << "] is selected.\n";
+		}
+		if (!mouseover_unit.valid()) {
+			DBG_WB << "mouse_handler::mouse_motion() : mouseover_unit iterator invalid.\n";
+		}
+		else
+		{
+			DBG_WB << "mouse_handler::mouse_motion() : "
+					<< mouseover_unit->name() << " [" << mouseover_unit->id() << "] is mouseovered.\n";
+		}
+
 		// we search if there is an attack possibility and where
 		map_location attack_from = current_unit_attacks_from(new_hex);
 		resources::whiteboard->set_real_unit_map();
