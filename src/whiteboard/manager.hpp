@@ -28,6 +28,8 @@
 
 #include <vector>
 
+class CKey;
+
 namespace pathfind {
 	struct marked_route;
 }
@@ -144,6 +146,8 @@ private:
 	bool planned_unit_map_active_;
 	/** Track whenever we're modifying actions, to avoid dual execution etc. */
 	bool executing_actions_;
+
+	boost::scoped_ptr<CKey> key_poller_;
 };
 
 /** Applies the planned unit map for the duration of the struct's life.

@@ -27,6 +27,7 @@
 #include "arrow.hpp"
 #include "chat_events.hpp"
 #include "foreach.hpp"
+#include "key.hpp"
 #include "pathfind/pathfind.hpp"
 #include "play_controller.hpp"
 #include "resources.hpp"
@@ -40,15 +41,15 @@ manager::manager():
 		inverted_behavior_(false),
 		wait_for_side_init_(true),
 		mapbuilder_(),
-		highlighter_(),
+		highlighter_(new highlight_visitor(*resources::units, viewer_actions())),
 		route_(),
 		move_arrow_(),
 		fake_unit_(),
 		planned_unit_map_active_(false),
-		executing_actions_(false)
+		executing_actions_(false),
+		key_poller_(new CKey)
 {
 	LOG_WB << "Manager initialized.\n";
-	highlighter_.reset(new highlight_visitor(*resources::units, viewer_actions()));
 }
 
 manager::~manager()
@@ -284,7 +285,17 @@ unit* manager::find_selected_actor_future()
 void manager::draw_hex(const map_location& hex)
 {
 	if (!wait_for_side_init_)
+	{
 		viewer_actions()->draw_hex(hex);
+	}
+
+	//Little hack to make the CTRL key work properly: check at every draw if it's pressed,
+	//to compensate for faulty detection of the "up" key event
+	if(!((*key_poller_)[SDLK_RCTRL] || (*key_poller_)[SDLK_LCTRL]))
+	{
+		set_invert_behavior(false);
+	}
+
 }
 
 void manager::on_mouseover_change(const map_location& hex)
