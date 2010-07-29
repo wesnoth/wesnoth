@@ -18,6 +18,7 @@
 
 #include "recruit.hpp"
 
+#include "manager.hpp"
 #include "visitor.hpp"
 
 #include "game_display.hpp"
@@ -49,14 +50,14 @@ recruit::recruit(const std::string& unit_name, const map_location& recruit_hex):
 		fake_unit_(),
 		temp_cost_()
 {
-	fake_unit_.reset(create_corresponding_unit());
+	fake_unit_.reset(create_corresponding_unit(), wb::manager::fake_unit_deleter());
+	fake_unit_->set_location(recruit_hex_);
+	fake_unit_->set_ghosted(false);
 	resources::screen->place_temporary_unit(fake_unit_.get());
 }
 
 recruit::~recruit()
 {
-	assert(resources::screen);
-	resources::screen->remove_temporary_unit(fake_unit_.get());
 }
 
 void recruit::accept(visitor& v)
