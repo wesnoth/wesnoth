@@ -985,7 +985,7 @@ void play_controller::process_focus_keydown_event(const SDL_Event& event)
 }
 
 void play_controller::process_keydown_event(const SDL_Event& event) {
-	if (event.key.keysym.sym == SDLK_LCTRL || event.key.keysym.sym == SDLK_RCTRL) {
+	if (event.key.keysym.sym == SDLK_TAB) {
 		whiteboard_manager_->set_invert_behavior(true);
 	}
 }
@@ -1015,9 +1015,9 @@ void play_controller::process_keyup_event(const SDL_Event& event) {
 				gui_->highlight_reach(mouse_handler_.current_paths());
 			}
 		}
-	} else if (event.key.keysym.sym == SDLK_LCTRL || event.key.keysym.sym == SDLK_RCTRL) {
+	} else if (event.key.keysym.sym == SDLK_TAB) {
 		static CKey keys;
-		if (!(keys[SDLK_LCTRL] || keys[SDLK_RCTRL])) {
+		if (!keys[SDLK_TAB]) {
 			whiteboard_manager_->set_invert_behavior(false);
 		}
 	}
