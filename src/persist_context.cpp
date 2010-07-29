@@ -14,10 +14,11 @@
 
 #include "global.hpp"
 
+#include "filesystem.hpp"
 #include "log.hpp"
 #include "persist_context.hpp"
 #include "persist_manager.hpp"
-#include "resources.hpp"
+#include "serialization/binary_or_text.hpp"
 #include "util.hpp"
 
 config pack_scalar(const std::string &name, const t_string &val)
@@ -31,23 +32,37 @@ persist_context &persist_context::add_child(const std::string& /*key*/)  {
 //	children_[key]->cfg_.child_or_add(key);
 	return *this;//(children_[key]);
 }
-void persist_context::load() {
-	resources::persist->load_data(namespace_.root_,cfg_,false);
+
+static std::string get_persist_cfg_name(const std::string &name_space) {
+	return (get_dir(get_user_data_dir() + "/persist/") + name_space + ".cfg");
 }
 
-persist_context::persist_context(const std::string &name_space)
-	: cfg_()
-	, namespace_(name_space,true)
-	, root_node_(namespace_.root_,this,cfg_)
-	, active_(&root_node_)
-	, valid_(namespace_.valid())
+void persist_file_context::load() {
+	std::string cfg_dir = get_dir(get_user_data_dir() + "/persist");
+	create_directory_if_missing(cfg_dir);
+
+	std::string cfg_name = get_persist_cfg_name(namespace_.root_);
+	if (!cfg_name.empty()) {
+		scoped_istream file_stream = istream_file(cfg_name);
+		if (!(file_stream->fail())) {
+			try {
+				detect_format_and_read(cfg_,*file_stream);
+			} catch (config::error &err) {
+				LOG_SAVE << err.message;
+			}
+		}
+	}
+}
+
+persist_file_context::persist_file_context(const std::string &name_space)
+	: persist_context(name_space)
 {
 	load();
 	root_node_.init();
 	active_ = &(root_node_.child(namespace_.next()));
 }
 
-bool persist_context::clear_var(std::string &global)
+bool persist_file_context::clear_var(std::string &global)
 {
 //	if (cfg_.empty()) {
 //		load_persist_data(namespace_.root(),cfg_);
@@ -92,7 +107,7 @@ bool persist_context::clear_var(std::string &global)
 	return ret;
 }
 
-config persist_context::get_var(const std::string &global) const
+config persist_file_context::get_var(const std::string &global) const
 {
 	config ret;
 //	if (cfg_.empty()) {
@@ -111,10 +126,31 @@ config persist_context::get_var(const std::string &global) const
 	}
 	return ret;
 }
-bool persist_context::save_context() {
-	return resources::persist->save_data(namespace_.root_,cfg_);
+bool persist_file_context::save_context() {
+	bool success = false;
+
+	std::string cfg_name = get_persist_cfg_name(namespace_.root_);
+	if (!cfg_name.empty()) {
+		if (cfg_.empty()) {
+			success = delete_directory(cfg_name);
+		} else {
+			scoped_ostream out = ostream_file(cfg_name);
+			if (!out->fail())
+			{
+				config_writer writer(*out,false);
+				try {
+					writer.write(cfg_);
+					success = true;
+				} catch(config::error &err) {
+					LOG_SAVE << err.message;
+					success = false;
+				}
+			}
+		}
+	}
+	return success;
 }
-bool persist_context::set_var(const std::string &global,const config &val)
+bool persist_file_context::set_var(const std::string &global,const config &val)
 {
 //	if (cfg_.empty()) {
 //		load_persist_data(namespace_,cfg_);

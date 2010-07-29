@@ -95,7 +95,7 @@ public:
 				descendants_ = namespace_.substr(namespace_.find_first_of(".") + 1);
 		}
 	};
-private:
+protected:
 	struct node {
 		typedef std::map<std::string,node*> child_map;
 
@@ -164,10 +164,6 @@ private:
 	node *active_;
 	bool valid_;
 
-	// TODO: transaction support (needed for MP)
-	void load();
-	void init();
-	bool save_context();
 	persist_context()
 		: cfg_()
 		, namespace_()
@@ -176,13 +172,23 @@ private:
 		, valid_(false)
 	{};
 
+	persist_context(const std::string &name_space)
+		: cfg_()
+		, namespace_(name_space,true)
+		, root_node_(namespace_.root_,this,cfg_)
+		, active_(&root_node_)
+		, valid_(namespace_.valid())
+	{};
+
 	static persist_context invalid;
 	persist_context &add_child(const std::string &key);
 public:
-	persist_context(const std::string &name_space);
-	bool clear_var(std::string &);
-	config get_var(const std::string &) const;
-	bool set_var(const std::string &, const config &);
+	virtual bool clear_var(std::string &) = 0;
+	virtual config get_var(const std::string &) const = 0;
+	virtual bool set_var(const std::string &, const config &) = 0;
+	virtual bool start_transaction () = 0;
+	virtual bool end_transaction () = 0;
+	virtual bool cancel_transaction () = 0;
 	std::string get_node() const;
 	void set_node(const std::string &);
 	bool valid() const { return valid_; };
@@ -190,5 +196,29 @@ public:
 		return true;
 	};
 	operator bool() const { return valid_; }
+};
+
+class persist_file_context : public persist_context { 
+private:
+	void load();
+	void init();
+	bool save_context();
+
+public:
+	persist_file_context(const std::string &name_space);
+	bool clear_var(std::string &);
+	config get_var(const std::string &) const;
+	bool set_var(const std::string &, const config &);
+
+	// TODO: transaction support (needed for MP)
+	bool start_transaction () {
+		return false;
+	}
+	bool end_transaction () {
+		return false;
+	}
+	bool cancel_transaction () {
+		return false;
+	}
 };
 #endif

@@ -32,10 +32,6 @@ class persist_manager {
 		}
 		persist_context &get_context(const std::string &ns);
 
-		//Allow for derived types to save/load from other types of storage
-		virtual bool save_data(const std::string &name_space, config &cfg);
-		virtual bool load_data(const std::string &name_space, config &cfg, const bool create_if_missing = true);
-
 		//TODO - Transactions
 		bool start_transaction();
 		bool end_transaction();
