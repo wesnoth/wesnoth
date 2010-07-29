@@ -89,7 +89,7 @@ void recruit::apply_temp_modifier(unit_map& unit_map)
 
 void recruit::remove_temp_modifier(unit_map& unit_map)
 {
-	unit_map.extract(recruit_hex_);
+	delete unit_map.extract(recruit_hex_);
 
 	//TODO: remove cost from money spent on recruits, need variable in side_actions to track this.
 }
