@@ -45,7 +45,7 @@ std::ostream& operator<<(std::ostream& s, recruit_const_ptr recruit)
 
 std::ostream& recruit::print(std::ostream &s) const
 {
-	s << "Recruiting " << unit_name_ << " on hex " << recruit_hex_ << "\n";
+	s << "Recruiting " << unit_name_ << " on hex " << recruit_hex_;
 	return s;
 }
 
