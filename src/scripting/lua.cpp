@@ -2697,7 +2697,7 @@ static int intf_set_dialog_callback(lua_State *L)
 			goto error_call_destructors_1;
 	} catch(twml_exception &e) {
 		error_buffer = e.user_message;
-		ERR_LUA << "failed to get dialog value: " << e.dev_message << '\n';
+		ERR_LUA << "failed to set dialog callback: " << e.dev_message << '\n';
 		goto error_call_destructors_2;
 	}
 
@@ -2709,6 +2709,47 @@ static int intf_set_dialog_callback(lua_State *L)
 	lua_rawseti(L, -2, n);
 	lua_pop(L, 1);
 
+	return 0;
+}
+
+/**
+ * Sets a canvas on a widget of the current dialog.
+ * - Arg 1: integer.
+ * - Arg 2: WML table.
+ * - Args 3..n: path of strings and integers.
+ */
+static int intf_set_dialog_canvas(lua_State *L)
+{
+	if (false) {
+		error_call_destructors_1:
+		return luaL_argerror(L, lua_gettop(L), "unsupported widget");
+		error_call_destructors_2:
+		return luaL_argerror(L, 1, "out of bounds");
+		error_call_destructors_3:
+		return luaL_typerror(L, 2, "WML table");
+		error_call_destructors_4:
+		return luaL_argerror(L, 2, error_buffer.c_str());
+	}
+
+	int i = luaL_checkinteger(L, 1);
+	gui2::twidget *w = find_widget(L, 3, true);
+	gui2::tcontrol *c = dynamic_cast<gui2::tcontrol *>(w);
+	if (!c) goto error_call_destructors_1;
+	config cfg;
+	if (!luaW_toconfig(L, 2, cfg))
+		goto error_call_destructors_3;
+
+	std::vector<gui2::tcanvas> &cv = c->canvas();
+	if (i < 1 || unsigned(i) > cv.size())
+		goto error_call_destructors_2;
+
+	try {
+		cv[i - 1].set_cfg(cfg);
+	} catch(twml_exception &e) {
+		error_buffer = e.user_message;
+		ERR_LUA << "failed to set dialog canvas: " << e.dev_message << '\n';
+		goto error_call_destructors_4;
+	}
 	return 0;
 }
 
@@ -2764,6 +2805,7 @@ LuaKernel::LuaKernel()
 		{ "require",                  &intf_require                  },
 		{ "scroll_to_tile",           &intf_scroll_to_tile           },
 		{ "set_dialog_callback",      &intf_set_dialog_callback      },
+		{ "set_dialog_canvas",        &intf_set_dialog_canvas        },
 		{ "set_dialog_value",         &intf_set_dialog_value         },
 		{ "set_music",                &intf_set_music                },
 		{ "set_terrain",              &intf_set_terrain              },
