@@ -19,6 +19,7 @@
 #include "validate_visitor.hpp"
 #include "attack.hpp"
 #include "move.hpp"
+#include "recruit.hpp"
 #include "side_actions.hpp"
 
 #include "arrow.hpp"
@@ -160,6 +161,26 @@ void validate_visitor::visit_attack(attack_ptr attack)
 	if (!attack->is_valid())
 	{
 		actions_to_erase_.insert(attack);
+	}
+}
+
+void validate_visitor::visit_recruit(recruit_ptr recruit)
+{
+	//Check that destination hex is still free
+	if(resources::units->find(recruit->recruit_hex_) != resources::units->end())
+	{
+		recruit->set_valid(false);
+	}
+	//Check that unit to recruit is still in side's recruit list
+	if (recruit->is_valid())
+	{
+		int team_index = resources::screen->viewing_team();
+		const std::set<std::string>& recruits = (*resources::teams)[team_index].recruits();
+		if (recruits.find(recruit->unit_name_) == recruits.end())
+		{
+			recruit->set_valid(false);
+			LOG_WB << " Validate visitor: Planned recruit invalid since unit is not in recruit list anymore.\n";
+		}
 	}
 }
 

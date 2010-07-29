@@ -69,15 +69,7 @@ bool recruit::execute()
 {
 	assert(valid_);
 	int side_num = resources::screen->viewing_side();
-	const std::set<std::string>& recruits = (*resources::teams)[side_num - 1].recruits();
-	if (recruits.find(unit_name_) != recruits.end())
-	{
-		resources::controller->get_menu_handler().do_recruit(unit_name_, side_num, recruit_hex_);
-	}
-	else
-	{
-		LOG_WB << "Planned recruit impossible to execute since unit is not in recruit list anymore.\n";
-	}
+	resources::controller->get_menu_handler().do_recruit(unit_name_, side_num, recruit_hex_);
 	return true;
 }
 

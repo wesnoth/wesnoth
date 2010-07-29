@@ -38,7 +38,7 @@ public:
 
 	virtual void visit_move(move_ptr move);
 	virtual void visit_attack(attack_ptr attack);
-	virtual void visit_recruit(recruit_ptr) {}
+	virtual void visit_recruit(recruit_ptr recruit);
 
 private:
 	std::set<action_ptr> actions_to_erase_;
