@@ -21,6 +21,7 @@
 #include "action.hpp"
 #include "attack.hpp"
 #include "move.hpp"
+#include "recruit.hpp"
 #include "side_actions.hpp"
 
 #include "arrow.hpp"
@@ -65,7 +66,7 @@ void highlight_visitor::set_mouseover_hex(const map_location& hex)
 	{
 		selection_candidate_ = &(*it);
 
-		if(resources::whiteboard->unit_has_actions(*it))
+		if(side_actions_->unit_has_actions(*it))
 		{
 			owner_unit_ = &(*it);
 		}
@@ -143,22 +144,28 @@ void highlight_visitor::unhighlight()
 action_ptr highlight_visitor::get_execute_target()
 {
 	action_ptr action;
-	if (owner_unit_)
+
+	if (owner_unit_ && side_actions_->unit_has_actions(*owner_unit_))
 	{
 		action = *side_actions_->find_first_action_of(*owner_unit_);
 	}
+	else
+	{
+		action = main_highlight_.lock();
+	}
+
 	return action;
 }
 action_ptr highlight_visitor::get_delete_target()
 {
-	action_ptr action = action_ptr();
-	if (owner_unit_)
+	action_ptr action;
+	if (owner_unit_ && side_actions_->unit_has_actions(*owner_unit_))
 	{
-		side_actions::iterator it = side_actions_->find_last_action_of(*owner_unit_);
-		if (it != side_actions_->end())
-		{
-			action = *it;
-		}
+		action = *side_actions_->find_last_action_of(*owner_unit_);
+	}
+	else
+	{
+		action = main_highlight_.lock();
 	}
 	return action;
 }
@@ -238,6 +245,37 @@ void highlight_visitor::visit_attack(attack_ptr attack)
 {
 	visit_move(boost::static_pointer_cast<move>(attack));
 	//TODO: highlight the attack indicator
+}
+
+void highlight_visitor::visit_recruit(recruit_ptr recruit)
+{
+	switch (mode_)
+	{
+	case FIND_MAIN_HIGHLIGHT:
+		if (recruit->recruit_hex_ == mouseover_hex_)
+		{
+			main_highlight_ = recruit;
+		}
+		break;
+	case FIND_SECONDARY_HIGHLIGHTS:
+		break;
+	case HIGHLIGHT_MAIN:
+		if (recruit->fake_unit_)
+		{
+			//TODO: find some suitable effect for mouseover on planned recruit.
+		}
+		break;
+	case HIGHLIGHT_SECONDARY:
+		break;
+	case UNHIGHLIGHT:
+		if (recruit->fake_unit_)
+		{
+			//TODO: find some suitable effect for mouseover on planned recruit.
+		}
+		break;
+	default:
+		assert (false);
+	}
 }
 
 void highlight_visitor::visit_all_actions()

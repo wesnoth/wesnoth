@@ -577,11 +577,7 @@ void manager::erase_all_actions()
 
 bool manager::unit_has_actions(const unit& unit) const
 {
-	if (viewer_actions()->empty())
-		return false;
-	else
-		return viewer_actions()->find_first_action_of(unit)
-				!= viewer_actions()->end();
+	return viewer_actions()->unit_has_actions(unit);
 }
 
 void manager::fake_unit_deleter::operator() (unit*& fake_unit)

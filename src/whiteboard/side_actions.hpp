@@ -163,6 +163,9 @@ public:
 	///Variant of this method that always start searching at end() - 1
 	iterator find_last_action_of(const unit& unit);
 
+	bool unit_has_actions(const unit& unit);
+	size_t count_actions_of(const unit& unit);
+
 	void validate_actions();
 
 private:

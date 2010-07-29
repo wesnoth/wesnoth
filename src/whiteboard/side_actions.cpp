@@ -363,6 +363,28 @@ side_actions::iterator side_actions::find_last_action_of(const unit& unit)
 	return find_last_action_of(unit, end() - 1);
 }
 
+bool side_actions::unit_has_actions(const unit& unit)
+{
+	if (empty())
+		return false;
+	else
+		return find_first_action_of(unit) != end();
+}
+
+size_t side_actions::count_actions_of(const unit& unit)
+{
+	size_t count = 0;
+	foreach(action_ptr action, *this)
+	{
+		if (action->get_unit() == &unit)
+		{
+			++count;
+		}
+	}
+	return count;
+}
+
+
 void side_actions::validate_actions()
 {
 	if (resources::whiteboard->has_planned_unit_map())
