@@ -178,7 +178,15 @@ namespace ana
                 seconds_stats_( time::seconds(1), io_service_ ),
                 minutes_stats_( time::minutes(1), io_service_ ),
                 hours_stats_( time::hours(1), io_service_ ),
-                days_stats_( time::days(1), io_service_ )
+                days_stats_( time::days(1), io_service_ ),
+				current_packet_in_size_(0),
+				current_packet_out_size_(0),
+				current_packet_in_(0),
+				current_packet_out_(0),
+				current_packet_in_max_(0),
+				current_packet_out_max_(0),
+				current_packet_in_total_(0),
+				current_packet_out_total_(0)
             {
                 collector_thread_ = new boost::thread( boost::bind(&boost::asio::io_service::run,
                                                                    &io_service_) );
