@@ -2444,6 +2444,7 @@ scoped_dialog::~scoped_dialog()
 	lua_pushvalue(L, -1);
 	lua_rawget(L, LUA_REGISTRYINDEX);
 	lua_rawgeti(L, -1, 1);
+	lua_remove(L, -2);
 	lua_rawset(L, LUA_REGISTRYINDEX);
 }
 
