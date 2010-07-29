@@ -79,6 +79,8 @@ protected:
 
 	std::string unit_name_;
 	map_location recruit_hex_;
+	//Temp unit to insert in the future unit map when needed
+	unit* temp_unit_;
 	bool valid_;
 	fake_unit_ptr fake_unit_;
 

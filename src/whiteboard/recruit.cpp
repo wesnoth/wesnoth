@@ -52,10 +52,12 @@ std::ostream& recruit::print(std::ostream &s) const
 recruit::recruit(const std::string& unit_name, const map_location& recruit_hex):
 		unit_name_(unit_name),
 		recruit_hex_(recruit_hex),
+		temp_unit_(create_corresponding_unit()),
 		valid_(true),
 		fake_unit_(),
 		temp_cost_()
 {
+	//Create fake unit for the visual effect
 	fake_unit_.reset(create_corresponding_unit(), wb::manager::fake_unit_deleter());
 	fake_unit_->set_location(recruit_hex_);
 	fake_unit_->set_movement(0);
@@ -84,19 +86,20 @@ bool recruit::execute()
 void recruit::apply_temp_modifier(unit_map& unit_map)
 {
 	assert(valid_);
-	unit* temp_unit = create_corresponding_unit();
-	temp_unit->set_location(recruit_hex_);
+	temp_unit_->set_location(recruit_hex_);
 
-	unit_map.insert(temp_unit);
+	unit_map.insert(temp_unit_);
 	//unit map takes ownership of temp_unit
 
-	temp_cost_ = temp_unit->type()->cost();
+	temp_cost_ = temp_unit_->type()->cost();
 	//TODO: add cost to money spent on recruits, need variable in side_actions to track this.
+
+	temp_unit_ = NULL;
 }
 
 void recruit::remove_temp_modifier(unit_map& unit_map)
 {
-	delete unit_map.extract(recruit_hex_);
+	temp_unit_ = unit_map.extract(recruit_hex_);
 
 	//TODO: remove cost from money spent on recruits, need variable in side_actions to track this.
 }
