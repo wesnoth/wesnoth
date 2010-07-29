@@ -94,6 +94,7 @@ public:
 	{ return const_cast<menu_handler *>(this)->current_unit(); }
 	void move_unit_to_loc(const unit_map::const_iterator& ui, const map_location& target,
 		bool continue_move, int side_num, mouse_handler &mousehandler);
+	void do_recruit(const std::string& name, int side_num, const map_location& last_hex);
 	void do_speak();
 	void do_search(const std::string& new_search);
 	void do_command(const std::string &str);
@@ -110,7 +111,6 @@ private:
 	friend class console_handler;
 
 	//void do_speak(const std::string& message, bool allies_only);
-	void do_recruit(const std::string& name, int side_num, const map_location& last_hex);
 //	std::vector<std::string> create_unit_table(const statistics::stats::str_int_map& m,unsigned int team);
 	bool has_friends() const;
 	bool clear_shroud(int side_num);

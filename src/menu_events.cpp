@@ -723,7 +723,9 @@ void menu_handler::recruit(int side_num, const map_location &last_hex)
 	}
 
 	if(recruit_res != -1) {
-		do_recruit(item_keys[recruit_res], side_num, last_hex);
+		if (!resources::whiteboard->save_recruit(item_keys[recruit_res], side_num, last_hex)) {
+			do_recruit(item_keys[recruit_res], side_num, last_hex);
+		}
 	}
 }
 

@@ -21,6 +21,7 @@
 #include "attack.hpp"
 #include "manager.hpp"
 #include "move.hpp"
+#include "recruit.hpp"
 #include "validate_visitor.hpp"
 
 #include "foreach.hpp"
@@ -137,16 +138,25 @@ side_actions::iterator side_actions::execute(side_actions::iterator position)
 
 side_actions::iterator side_actions::queue_move(const pathfind::marked_route& route, arrow_ptr arrow, fake_unit_ptr fake_unit)
 {
-	action_ptr action(new move(route, arrow, fake_unit));
-	return queue_action(action);
+	move_ptr new_move;
+	new_move.reset(new move(route, arrow, fake_unit));
+	return queue_action(new_move);
 }
 
 side_actions::iterator side_actions::queue_attack(const map_location& target_hex, int weapon_choice,
 		const pathfind::marked_route& route,
 		arrow_ptr arrow, fake_unit_ptr fake_unit)
 {
-	action_ptr action(new attack(target_hex, weapon_choice, route, arrow, fake_unit));
-	return queue_action(action);
+	attack_ptr new_attack;
+	new_attack.reset(new attack(target_hex, weapon_choice, route, arrow, fake_unit));
+	return queue_action(new_attack);
+}
+
+side_actions::iterator side_actions::queue_recruit(const std::string& unit_name, const map_location& recruit_hex)
+{
+	recruit_ptr new_recruit;
+	new_recruit.reset(new recruit(unit_name, recruit_hex));
+	return queue_action(new_recruit);
 }
 
 side_actions::iterator side_actions::insert_action(iterator position, action_ptr action)

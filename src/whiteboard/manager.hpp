@@ -106,6 +106,9 @@ public:
 
 	void save_temp_attack(const map_location& attack_from, const map_location& target_hex);
 
+	/// returns true if manager has saved a planned recruit
+	bool save_recruit(const std::string& name, int side_num, const map_location& recruit_hex);
+
 	/** Executes first action in the queue for current side */
 	void contextual_execute();
 	/** Deletes last action in the queue for current side */

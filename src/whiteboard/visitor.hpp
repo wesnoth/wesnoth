@@ -34,6 +34,7 @@ public:
 
 	virtual void visit_move(move_ptr move) = 0;
 	virtual void visit_attack(attack_ptr attack) = 0;
+	virtual void visit_recruit(recruit_ptr recruit) = 0;
 };
 
 }

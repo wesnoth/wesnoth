@@ -104,6 +104,12 @@ public:
 			arrow_ptr arrow, fake_unit_ptr fake_unit);
 
 	/**
+	 * Queues a recruit to be executed last
+	 * @return The queued recruit's position
+	 */
+	iterator queue_recruit(const std::string& unit_name, const map_location& recruit_hex);
+
+	/**
 	 * Inserts an action at the specified position. The begin() and end() functions might prove useful here.
 	 * @return The inserted action's position.
 	 */

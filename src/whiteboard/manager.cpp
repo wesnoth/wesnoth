@@ -456,6 +456,26 @@ void manager::save_temp_attack(const map_location& attack_from, const map_locati
 	}
 }
 
+bool manager::save_recruit(const std::string& name, int side_num, const map_location& recruit_hex)
+{
+	bool created_planned_recruit = false;
+
+	if (active_) {
+		if (side_num != resources::screen->viewing_side())
+		{
+			LOG_WB <<"manager::save_recruit called for a different side than viewing side.\n";
+			created_planned_recruit = false;
+		}
+		else
+		{
+			viewer_actions()->queue_recruit(name, recruit_hex);
+			created_planned_recruit = true;
+		}
+	}
+
+	return created_planned_recruit;
+}
+
 void manager::contextual_execute()
 {
 	if (!(executing_actions_ || viewer_actions()->empty())
