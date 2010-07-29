@@ -180,7 +180,7 @@ protected:
 		, valid_(namespace_.valid())
 	{};
 
-	static persist_context invalid;
+	//static persist_context invalid;
 	persist_context &add_child(const std::string &key);
 public:
 	virtual bool clear_var(std::string &) = 0;
@@ -198,7 +198,7 @@ public:
 	operator bool() const { return valid_; }
 };
 
-class persist_file_context : public persist_context { 
+class persist_file_context : public persist_context {
 private:
 	void load();
 	void init();
