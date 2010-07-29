@@ -79,8 +79,9 @@ void recruit::apply_temp_modifier(unit_map& unit_map)
 {
 	assert(valid_);
 	unit* temp_unit = create_corresponding_unit();
+	temp_unit->set_location(recruit_hex_);
 
-	unit_map.add(recruit_hex_, *temp_unit);
+	unit_map.insert(temp_unit);
 	//unit map takes ownership of temp_unit
 
 	temp_cost_ = temp_unit->type()->cost();
