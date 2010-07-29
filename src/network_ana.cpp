@@ -279,7 +279,7 @@ namespace network {
         return ss.str();
     }
 
-    std::string get_bandwidth_stats(int hour)
+    std::string get_bandwidth_stats(int /*hour*/)
     {
         return std::string(""); //TODO: implement
     }
