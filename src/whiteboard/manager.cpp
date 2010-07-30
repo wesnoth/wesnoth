@@ -43,6 +43,7 @@ manager::manager():
 		wait_for_side_init_(true),
 		planned_unit_map_active_(false),
 		executing_actions_(false),
+		gamestate_mutated_(false),
 		mapbuilder_(),
 		highlighter_(new highlight_visitor(*resources::units, viewer_actions())),
 		route_(),
@@ -214,6 +215,7 @@ void manager::set_planned_unit_map(bool include_recruits)
 	{
 		if (!planned_unit_map_active_)
 		{
+			validate_actions_if_needed();
 			DBG_WB << "Building planned unit map.\n";
 			mapbuilder_.reset(new mapbuilder_visitor(*resources::units, viewer_actions(), include_recruits));
 			mapbuilder_->build_map();
@@ -307,8 +309,8 @@ void manager::on_mouseover_change(const map_location& hex)
 
 void manager::on_gamestate_change()
 {
-	DBG_WB << "Manager received gamestate change notification, validating actions.\n";
-	validate_viewer_actions();
+	DBG_WB << "Manager received gamestate change notification.\n";
+	gamestate_mutated_ = true;
 }
 
 void manager::create_temp_move()
@@ -618,6 +620,16 @@ void manager::fake_unit_deleter::operator() (unit*& fake_unit)
         DBG_WB << "Erasing temporary unit " << fake_unit->name() << " [ " << fake_unit->underlying_id() << "]\n";
         delete fake_unit;
     }
+}
+
+void manager::validate_actions_if_needed()
+{
+	if (gamestate_mutated_)
+	{
+		LOG_WB << "'gamestate_mutated_' flag dirty, validating actions.\n";
+		validate_viewer_actions();
+	}
+	gamestate_mutated_ = false;
 }
 
 scoped_planned_unit_map::scoped_planned_unit_map()

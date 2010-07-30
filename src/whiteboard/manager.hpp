@@ -131,6 +131,8 @@ public:
 	};
 
 private:
+	void validate_actions_if_needed();
+
 	///Tracks whether the whiteboard is active.
 	bool active_;
 	bool inverted_behavior_;
@@ -139,6 +141,8 @@ private:
 	bool planned_unit_map_active_;
 	/** Track whenever we're modifying actions, to avoid dual execution etc. */
 	bool executing_actions_;
+	/** Track whether the gamestate changed and we need to validate actions. */
+	bool gamestate_mutated_;
 
 	boost::scoped_ptr<mapbuilder_visitor> mapbuilder_;
 	boost::scoped_ptr<highlight_visitor> highlighter_;
