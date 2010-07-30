@@ -609,7 +609,10 @@ union luai_Cast { double l_d; long l_l; };
 #if defined(__cplusplus)
 /* C++ exceptions */
 #define LUAI_THROW(L,c)	throw(c)
-#define LUAI_TRY(L,c,a)	try { a } catch(...) \
+#define LUAI_TRY(L,c,a)	try { \
+	try { a } catch(const std::exception &e) \
+	{ lua_pushstring(L, e.what()); luaG_errormsg(L); throw; } \
+	} catch(...) \
 	{ if ((c)->status == 0) (c)->status = -1; }
 #define luai_jmpbuf	int  /* dummy variable */
 

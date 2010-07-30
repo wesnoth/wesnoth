@@ -9,6 +9,10 @@
 #include <stdlib.h>
 #include <string.h>
 
+#if defined(__cplusplus)
+#include<exception>
+#endif
+
 #define ldo_c
 #define LUA_CORE
 
