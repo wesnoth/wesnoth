@@ -610,6 +610,8 @@ ana::net_id ana_network_manager::create_server( )
     server->set_listener_handler( this );
     server->set_raw_data_mode();
 
+    server->start_logging();
+
     return server->id();
 }
 
