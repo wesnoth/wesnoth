@@ -46,6 +46,7 @@
 #include "wml_exception.hpp"
 #include "play_controller.hpp"
 #include "persist_var.hpp"
+#include "whiteboard/manager.hpp"
 
 #include <boost/scoped_ptr.hpp>
 #include <boost/lexical_cast.hpp>
@@ -3427,6 +3428,7 @@ namespace game_events {
 			commit();
 		}
 
+		resources::whiteboard->on_gamestate_change();
 		return result;
 	}
 
