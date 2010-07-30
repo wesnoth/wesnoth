@@ -478,19 +478,17 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 	//see if we're trying to do a attack or move-and-attack
 	if((!browse || resources::whiteboard->is_active()) && !commands_disabled && attack_from.valid()) {
 		if (resources::whiteboard->is_active() && clicked_u.valid()) {
-			//if  (resources::whiteboard->has_selected_unit()) {
-				// Unselect the current hex, and create planned attack for whiteboard
-				selected_hex_ = map_location();
-				gui().select_hex(map_location());
-				gui().clear_attack_indicator();
-				gui().set_route(NULL);
-				waypoints_.clear();
-				show_partial_move_ = false;
-				gui().unhighlight_reach();
-				current_paths_ = pathfind::paths();
-				current_route_.steps.clear();
-				resources::whiteboard->save_temp_attack(attack_from, clicked_u->get_location());
-			//}
+			// Unselect the current hex, and create planned attack for whiteboard
+			selected_hex_ = map_location();
+			gui().select_hex(map_location());
+			gui().clear_attack_indicator();
+			gui().set_route(NULL);
+			waypoints_.clear();
+			show_partial_move_ = false;
+			gui().unhighlight_reach();
+			current_paths_ = pathfind::paths();
+			current_route_.steps.clear();
+			resources::whiteboard->save_temp_attack(attack_from, clicked_u->get_location());
 		return false;
 		} else if (u.valid() && clicked_u.valid()) {
 			if (attack_from == selected_hex_) { //no move needed
@@ -579,10 +577,9 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 				gui().unhighlight_reach();
 				current_paths_ = pathfind::paths();
 				current_route_.steps.clear();
-				if (resources::whiteboard->has_temp_move())
-				{
-					resources::whiteboard->save_temp_move();
-				}
+
+				resources::whiteboard->save_temp_move();
+
 		// Otherwise proceed to normal unit movement, unless the selected unit already has actions
 		// from the whiteboard.
 		} else if (!resources::whiteboard->unit_has_actions(*u)) {
