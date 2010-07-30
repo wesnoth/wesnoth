@@ -2513,30 +2513,23 @@ static gui2::twidget *find_widget(lua_State *L, int i, bool readonly)
  */
 static int intf_show_dialog(lua_State *L)
 {
-	if (false) {
-		error_call_destructors:
-		return luaL_argerror(L, 1, error_buffer.c_str());
+	config def_cfg;
+	if (!luaW_toconfig(L, 1, def_cfg))
+		return luaL_typerror(L, 1, "WML table");
+
+	gui2::twindow_builder::tresolution def(def_cfg);
+	scoped_dialog w(L, gui2::build(resources::screen->video(), &def));
+
+	if (!lua_isnoneornil(L, 2)) {
+		lua_pushvalue(L, 2);
+		lua_call(L, 0, 0);
 	}
 
-	int v;
-	try {
-		config def_cfg;
-		luaW_toconfig(L, 1, def_cfg);
-		gui2::twindow_builder::tresolution def(def_cfg);
-		scoped_dialog w(L, gui2::build(resources::screen->video(), &def));
-		if (!lua_isnoneornil(L, 2)) {
-			lua_pushvalue(L, 2);
-			if (!luaW_pcall(L, 0, 0)) return 0;
-		}
-		v = scoped_dialog::current->window->show(true, 0);
-		if (!lua_isnoneornil(L, 3)) {
-			lua_pushvalue(L, 3);
-			if (!luaW_pcall(L, 0, 0)) return 0;
-		}
-	} catch(twml_exception &e) {
-		error_buffer = e.user_message;
-		ERR_LUA << "failed to generate dialog: " << e.dev_message << '\n';
-		goto error_call_destructors;
+	int v = scoped_dialog::current->window->show(true, 0);
+
+	if (!lua_isnoneornil(L, 3)) {
+		lua_pushvalue(L, 3);
+		lua_call(L, 0, 0);
 	}
 
 	lua_pushinteger(L, v);
@@ -2557,48 +2550,40 @@ static int intf_set_dialog_value(lua_State *L)
 		return luaL_typerror(L, 1, "translatable string");
 		error_call_destructors_3:
 		return luaL_argerror(L, lua_gettop(L), "unsupported widget");
-		error_call_destructors_4:
-		return luaL_argerror(L, 1, error_buffer.c_str());
 	}
 
 	gui2::twidget *w = find_widget(L, 2, false);
 
-	try {
-		if (gui2::tlistbox *l = dynamic_cast<gui2::tlistbox *>(w))
-		{
-			int v = lua_tointeger(L, 1);
-			int n = l->get_item_count();
-			if (1 <= v && v <= n)
-				l->select_row(v - 1);
-			else
-				goto error_call_destructors_1;
-		}
-		else if (gui2::tmulti_page *l = dynamic_cast<gui2::tmulti_page *>(w))
-		{
-			int v = lua_tointeger(L, 1);
-			int n = l->get_page_count();
-			if (1 <= v && v <= n)
-				l->select_page(v - 1);
-			else
-				goto error_call_destructors_1;
-		}
-		else if (gui2::ttoggle_button *b = dynamic_cast<gui2::ttoggle_button *>(w))
-		{
-			b->set_value(lua_toboolean(L, 1));
-		}
+	if (gui2::tlistbox *l = dynamic_cast<gui2::tlistbox *>(w))
+	{
+		int v = lua_tointeger(L, 1);
+		int n = l->get_item_count();
+		if (1 <= v && v <= n)
+			l->select_row(v - 1);
 		else
-		{
-			t_string v;
-			if (!luaW_totstring(L, 1, v))
-				goto error_call_destructors_2;
-			gui2::tcontrol *c = dynamic_cast<gui2::tcontrol *>(w);
-			if (!c) goto error_call_destructors_3;
-			c->set_label(v);
-		}
-	} catch(twml_exception &e) {
-		error_buffer = e.user_message;
-		ERR_LUA << "failed to set dialog value: " << e.dev_message << '\n';
-		goto error_call_destructors_4;
+			goto error_call_destructors_1;
+	}
+	else if (gui2::tmulti_page *l = dynamic_cast<gui2::tmulti_page *>(w))
+	{
+		int v = lua_tointeger(L, 1);
+		int n = l->get_page_count();
+		if (1 <= v && v <= n)
+			l->select_page(v - 1);
+		else
+			goto error_call_destructors_1;
+	}
+	else if (gui2::ttoggle_button *b = dynamic_cast<gui2::ttoggle_button *>(w))
+	{
+		b->set_value(lua_toboolean(L, 1));
+	}
+	else
+	{
+		t_string v;
+		if (!luaW_totstring(L, 1, v))
+			goto error_call_destructors_2;
+		gui2::tcontrol *c = dynamic_cast<gui2::tcontrol *>(w);
+		if (!c) goto error_call_destructors_3;
+		c->set_label(v);
 	}
 
 	return 0;
@@ -2614,28 +2599,20 @@ static int intf_get_dialog_value(lua_State *L)
 	if (false) {
 		error_call_destructors_1:
 		return luaL_argerror(L, lua_gettop(L), "unsupported widget");
-		error_call_destructors_2:
-		return luaL_argerror(L, 1, error_buffer.c_str());
 	}
 
 	gui2::twidget *w = find_widget(L, 1, true);
 
-	try {
-		if (gui2::tlistbox *l = dynamic_cast<gui2::tlistbox *>(w)) {
-			lua_pushinteger(L, l->get_selected_row() + 1);
-		} else if (gui2::tmulti_page *l = dynamic_cast<gui2::tmulti_page *>(w)) {
-			lua_pushinteger(L, l->get_selected_page() + 1);
-		} else if (gui2::ttoggle_button *b = dynamic_cast<gui2::ttoggle_button *>(w)) {
-			lua_pushboolean(L, b->get_value());
-		} else if (gui2::ttext_box *t = dynamic_cast<gui2::ttext_box *>(w)) {
-			lua_pushstring(L, t->get_value().c_str());
-		} else
-			goto error_call_destructors_1;
-	} catch(twml_exception &e) {
-		error_buffer = e.user_message;
-		ERR_LUA << "failed to get dialog value: " << e.dev_message << '\n';
-		goto error_call_destructors_2;
-	}
+	if (gui2::tlistbox *l = dynamic_cast<gui2::tlistbox *>(w)) {
+		lua_pushinteger(L, l->get_selected_row() + 1);
+	} else if (gui2::tmulti_page *l = dynamic_cast<gui2::tmulti_page *>(w)) {
+		lua_pushinteger(L, l->get_selected_page() + 1);
+	} else if (gui2::ttoggle_button *b = dynamic_cast<gui2::ttoggle_button *>(w)) {
+		lua_pushboolean(L, b->get_value());
+	} else if (gui2::ttext_box *t = dynamic_cast<gui2::ttext_box *>(w)) {
+		lua_pushstring(L, t->get_value().c_str());
+	} else
+		goto error_call_destructors_1;
 
 	return 1;
 }
@@ -2667,8 +2644,6 @@ static int intf_set_dialog_callback(lua_State *L)
 	if (false) {
 		error_call_destructors_1:
 		return luaL_argerror(L, lua_gettop(L), "unsupported widget");
-		error_call_destructors_2:
-		return luaL_argerror(L, 1, error_buffer.c_str());
 	}
 
 	gui2::twidget *w = find_widget(L, 2, true);
@@ -2687,18 +2662,12 @@ static int intf_set_dialog_callback(lua_State *L)
 
 	if (lua_isnil(L, 1)) return 0;
 
-	try {
-		if (gui2::tlistbox *l = dynamic_cast<gui2::tlistbox *>(w)) {
-			l->set_callback_value_change(&dialog_callback);
-		} else if (gui2::ttoggle_button *b = dynamic_cast<gui2::ttoggle_button *>(w)) {
-			b->set_callback_state_change(&dialog_callback);
-		} else
-			goto error_call_destructors_1;
-	} catch(twml_exception &e) {
-		error_buffer = e.user_message;
-		ERR_LUA << "failed to set dialog callback: " << e.dev_message << '\n';
-		goto error_call_destructors_2;
-	}
+	if (gui2::tlistbox *l = dynamic_cast<gui2::tlistbox *>(w)) {
+		l->set_callback_value_change(&dialog_callback);
+	} else if (gui2::ttoggle_button *b = dynamic_cast<gui2::ttoggle_button *>(w)) {
+		b->set_callback_state_change(&dialog_callback);
+	} else
+		goto error_call_destructors_1;
 
 	lua_pushlightuserdata(L, (void *)&dlgclbkKey);
 	lua_rawget(L, LUA_REGISTRYINDEX);
@@ -2726,8 +2695,6 @@ static int intf_set_dialog_canvas(lua_State *L)
 		return luaL_argerror(L, 1, "out of bounds");
 		error_call_destructors_3:
 		return luaL_typerror(L, 2, "WML table");
-		error_call_destructors_4:
-		return luaL_argerror(L, 2, error_buffer.c_str());
 	}
 
 	int i = luaL_checkinteger(L, 1);
@@ -2742,13 +2709,7 @@ static int intf_set_dialog_canvas(lua_State *L)
 	if (i < 1 || unsigned(i) > cv.size())
 		goto error_call_destructors_2;
 
-	try {
-		cv[i - 1].set_cfg(cfg);
-	} catch(twml_exception &e) {
-		error_buffer = e.user_message;
-		ERR_LUA << "failed to set dialog canvas: " << e.dev_message << '\n';
-		goto error_call_destructors_4;
-	}
+	cv[i - 1].set_cfg(cfg);
 	return 0;
 }
 
