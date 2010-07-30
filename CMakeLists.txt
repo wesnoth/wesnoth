@@ -196,8 +196,6 @@ if(ENABLE_TESTS)
 	find_package( Boost 1.35 REQUIRED COMPONENTS unit_test_framework )
 endif(ENABLE_TESTS)
 if(ENABLE_GAME)
-	find_package( Lua51 REQUIRED)
-
 	if(NOT MSVC)
 		find_package( PkgConfig REQUIRED )
 		pkg_check_modules( PANGOCAIRO REQUIRED pangocairo>=1.14.8 )

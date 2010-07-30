@@ -15,7 +15,6 @@ else(MSVC)
 endif(MSVC)
 
 
-include_directories( ${LUA_INCLUDE_DIR} )
 include_directories( ${SDL_INCLUDE_DIR} )
 include_directories( ${PANGOCAIRO_INCLUDE_DIRS} )
 include_directories( ${GETTEXT_INCLUDE_DIR} )
@@ -83,7 +82,6 @@ set( game-external-libs
 	${SDLTTF_LIBRARY}
 	${PANGOCAIRO_LIBRARIES}
 	${FONTCONFIG_LIBRARIES}
-	${LUA_LIBRARIES}
 	${LIBDBUS_LIBRARIES}
 )
 
@@ -174,6 +172,7 @@ if(MSVC)
 	SOURCE_GROUP("src gui auxiliary window_builder" REGULAR_EXPRESSION "gui/auxiliary/window_builder/.*")
 	SOURCE_GROUP("src gui dialogs" REGULAR_EXPRESSION "gui/dialogs/.*")
 	SOURCE_GROUP("src gui dialogs lobby" REGULAR_EXPRESSION "gui/dialogs/lobby/.*")
+	SOURCE_GROUP("src lua" REGULAR_EXPRESSION "lua/.*")
 	SOURCE_GROUP("src widgets" REGULAR_EXPRESSION "widgets/.*")
 	SOURCE_GROUP("src gui widgets" REGULAR_EXPRESSION "gui/widgets/.*")
 	SOURCE_GROUP("src pathfind" REGULAR_EXPRESSION "pathfind/.*")
@@ -189,6 +188,7 @@ if(MSVC)
 	SOURCE_GROUP("src whiteboard" REGULAR_EXPRESSION "whiteboard/.*")
 
 endif(MSVC)
+
 
 ########### libwesnoth-core ###############
 
@@ -227,6 +227,48 @@ endif(ENABLE_POOL_ALLOC AND NOT WIN32)
 # a 'lib' is automatically set in front when creating the library (as in the filename)
 # internal reference is the name given here
 add_library(wesnoth-core STATIC EXCLUDE_FROM_ALL ${libwesnoth-core_STAT_SRC})
+
+
+########### libwesnoth-lua ###############
+
+SET(libwesnoth-lua_STAT_SRC
+    lua/lapi.c                                               
+    lua/lcode.c                                             
+    lua/ldebug.c
+    lua/ldo.c
+    lua/ldump.c
+    lua/lfunc.c
+    lua/lgc.c
+    lua/llex.c
+    lua/lmem.c
+    lua/lobject.c
+    lua/lopcodes.c
+    lua/lparser.c
+    lua/lstate.c
+    lua/lstring.c
+    lua/ltable.c
+    lua/ltm.c
+    lua/lundump.c
+    lua/lvm.c
+    lua/lzio.c
+    lua/lauxlib.c
+    lua/lbaselib.c
+    lua/ldblib.c
+    lua/liolib.c
+    lua/lmathlib.c
+    lua/loslib.c
+    lua/ltablib.c
+    lua/lstrlib.c
+    lua/loadlib.c
+    lua/linit.c
+)
+# We explicitly want lua compiled as C++ version, so this line is required:
+set_source_files_properties(${libwesnoth-lua_STAT_SRC} PROPERTIES LANGUAGE CXX)
+
+# a 'lib' is automatically set in front when creating the library (as in the filename)
+# internal reference is the name given here
+add_library(wesnoth-lua STATIC EXCLUDE_FROM_ALL ${libwesnoth-lua_STAT_SRC})
+
 
 ########### Wesnoth main source files ###############
 
@@ -565,10 +607,10 @@ SET(libwesnoth-game_STAT_SRC
     wml_exception.cpp
 )
 
-    SET(libwesnoth-game_STAT_SRC
-        ${libwesnoth-game_STAT_SRC}
-        pathfind/pathfind.cpp
-    )
+SET(libwesnoth-game_STAT_SRC
+    ${libwesnoth-game_STAT_SRC}
+    pathfind/pathfind.cpp
+)
 
 if(ENABLE_GAME AND ENABLE_TESTS)
 	set(libwesnoth-game_STAT_SRC
@@ -584,6 +626,7 @@ add_library(wesnoth-game STATIC EXCLUDE_FROM_ALL ${libwesnoth-game_STAT_SRC})
 if(ENABLE_GAME AND ENABLE_TESTS)
 	target_link_libraries(wesnoth-game
 		wesnoth-core
+		wesnoth-lua
 	)
 endif(ENABLE_GAME AND ENABLE_TESTS)
 
@@ -604,6 +647,7 @@ if(ENABLE_GAME)
 		)
 		set(wesnoth_LIB
 			wesnoth-core
+			wesnoth-lua
 			wesnoth-game
 		)
 	endif(ENABLE_TESTS)
