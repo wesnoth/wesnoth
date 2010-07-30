@@ -53,20 +53,6 @@ size_t t_string_base::hash_value() const {
 	return seed;
 }
 
-#ifdef _MSC_VER
-t_string_base::walker::walker(const t_string& string) :
-	string_(string.get().value_),
-	begin_(0),
-	end_(string_.size()),
-	textdomain_(),
-	translatable_(false)
-{
-	if(string.get().translatable_) {
-		update();
-	}
-}
-#endif
-
 t_string_base::walker::walker(const t_string_base& string) :
 	string_(string.value_),
 	begin_(0),
@@ -80,6 +66,43 @@ t_string_base::walker::walker(const t_string_base& string) :
 }
 
 #ifdef _MSC_VER
+/*
+ * From the IRC log of 23.07.2010
+ * 07:52 <silene> Upth: what did it break?
+ * 07:53 <Upth> silene: since that revision, the windows executable crashes
+ * immediately before loading the main menu
+ * 07:54 <silene> what kind of crash?
+ * 07:54 <Upth> assertion failed in the std::string library
+ * 07:54 <Upth> then "fatal error"
+ * 07:54 <Upth> and abnormal termination
+ * 07:54 <silene> which assertion?
+ * 07:55 <Upth> Expression: ("_Myptr + _Off <= (((_Mystring
+ * *)this->_Mycont)->_Myptr() + ((_Mystring *)this->_Mycont)->_Mysize) &&
+ * _Myptr + _Off >= ((_Mystring *)this->_Mycont)->_Myptr()", 0)
+ * 07:56 <shadowmaster> ugly.
+ * 07:57 <Upth> in the iterator += overload, called from the iterator +
+ * overload, called from std::basic_string::end(), called from line 409 of
+ * parser.cpp in write_key_val
+ * 07:58 <Upth> err std::basic_string::end() is called from
+ * t_string::walker::end(), which is called on line 409 of parser.cpp
+ * 07:58 <silene> that doesn't make sense; as far as i can tell it's a compiler
+ * bug
+ * 07:58 <silene> which compiler is that so that the code is made conditional
+ * on it?
+ * 07:58 <Upth> MSVC9
+ */
+t_string_base::walker::walker(const t_string& string) :
+	string_(string.get().value_),
+	begin_(0),
+	end_(string_.size()),
+	textdomain_(),
+	translatable_(false)
+{
+	if(string.get().translatable_) {
+		update();
+	}
+}
+
 t_string_base::walker::walker(const std::string& string) :
 	string_(string),
 	begin_(0),

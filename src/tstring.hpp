@@ -31,7 +31,10 @@ public:
 	public:
 		walker(const t_string_base& string);
 #ifdef _MSC_VER
-		// Work around a compiler bug in MSVC 9.
+		/*
+		 * Work around a compiler bug in MSVC 9 see definition for more
+		 * information.
+		 */
 		explicit walker(const std::string&);
 		walker(const t_string& string);
 #endif
