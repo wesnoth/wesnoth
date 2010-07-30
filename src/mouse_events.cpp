@@ -317,13 +317,21 @@ unit_map::const_iterator mouse_handler::find_unit(const map_location& hex) const
 map_location mouse_handler::current_unit_attacks_from(const map_location& loc)
 {
 	const unit_map::const_iterator current = find_unit(selected_hex_);
-	if (current == units_.end() || current->side() != side_num_ ||
+	if (current == units_.end() ||
+			(current->side() != side_num_ &&
+					!(resources::whiteboard->is_active())
+					&& current->side() != resources::screen->viewing_side()) ||
 	    current->attacks_left()==0) {
 		return map_location();
 	}
 
 	const unit_map::const_iterator enemy = find_unit(loc);
-	if (enemy == units_.end() || !current_team().is_enemy(enemy->side()) ||
+	bool show_for_whiteboard =
+			enemy != units_.end() &&
+			resources::whiteboard->is_active() &&
+			(*resources::teams)[resources::screen->viewing_team()].is_enemy(enemy->side());
+	if (enemy == units_.end() ||
+			!(current_team().is_enemy(enemy->side()) ||	show_for_whiteboard) ||
 	    enemy->incapacitated())
 	{
 		return map_location();
@@ -486,7 +494,7 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 
 
 	//see if we're trying to do a attack or move-and-attack
-	if((!browse || resources::whiteboard->is_active()) && !commands_disabled && attack_from.valid()) {
+	if(((!browse && !commands_disabled) || resources::whiteboard->is_active()) && attack_from.valid()) {
 		if (resources::whiteboard->is_active() && clicked_u.valid()) {
 			// Unselect the current hex, and create planned attack for whiteboard
 			selected_hex_ = map_location();
@@ -565,7 +573,7 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 		}
 	}
 	//otherwise we're trying to move to a hex
-	else if(!commands_disabled && (!browse || resources::whiteboard->is_active()) &&
+	else if(((!commands_disabled && !browse) || resources::whiteboard->is_active()) &&
 			selected_hex_.valid() && selected_hex_ != hex &&
 	         u != units_.end() && u.valid() &&
 	         (u->side() == side_num_ || resources::whiteboard->is_active()) &&
@@ -647,7 +655,7 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse) {
 		gui().set_route(NULL);
 
 		// selection have impact only if we are not observing and it's our unit
-		if (!commands_disabled && u->side() == gui().viewing_side()) {
+		if ((!commands_disabled || resources::whiteboard->is_active()) && u->side() == gui().viewing_side()) {
 			if (!browse)
 			{
 				sound::play_UI_sound("select-unit.wav");
