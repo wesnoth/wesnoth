@@ -92,7 +92,11 @@ void recruit::apply_temp_modifier(unit_map& unit_map)
 	//unit map takes ownership of temp_unit
 
 	temp_cost_ = temp_unit_->type()->cost();
-	//TODO: add cost to money spent on recruits, need variable in side_actions to track this.
+
+	/**
+	 * @todo: add cost to money spent on recruits, need variable in
+	 * side_actions to track this.
+	 */
 
 	temp_unit_ = NULL;
 }
@@ -101,12 +105,15 @@ void recruit::remove_temp_modifier(unit_map& unit_map)
 {
 	temp_unit_ = unit_map.extract(recruit_hex_);
 
-	//TODO: remove cost from money spent on recruits, need variable in side_actions to track this.
+	/**
+	 * @todo: remove cost from money spent on recruits, need variable in
+	 * side_actions to track this.
+	 */
 }
 
 unit* recruit::create_corresponding_unit()
 {
-	//TODO: find some way of generating the unit without random traits
+	/** @todo: find some way of generating the unit without random traits */
 	unit_type const* type = unit_types.find(unit_name_);
 	assert(type);
 	int side_num = resources::screen->viewing_side();
