@@ -160,56 +160,49 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 		gui().highlight_hex(new_hex);
 		resources::whiteboard->on_mouseover_change(new_hex);
 
-		resources::whiteboard->set_planned_unit_map();
-		const unit_map::iterator selected_unit = find_unit(selected_hex_);
-		const unit_map::iterator mouseover_unit = find_unit(new_hex);
+		unit_map::iterator selected_unit;
+		unit_map::iterator mouseover_unit;
+		map_location attack_from;
 
-		if (!selected_unit.valid()) {
-			DBG_WB << "mouse_handler::mouse_motion() : selected_unit iterator invalid.\n";
-		}
-		else
-		{
-			DBG_WB << "mouse_handler::mouse_motion() : "
-					<< selected_unit->name() << " [" << selected_unit->id() << "] is selected.\n";
-		}
-		if (!mouseover_unit.valid()) {
-			DBG_WB << "mouse_handler::mouse_motion() : mouseover_unit iterator invalid.\n";
-		}
-		else
-		{
-			DBG_WB << "mouse_handler::mouse_motion() : "
-					<< mouseover_unit->name() << " [" << mouseover_unit->id() << "] is mouseovered.\n";
-		}
+		{ // start planned unit map scope
+			wb::scoped_planned_unit_map planned_unit_map;
+			selected_unit = find_unit(selected_hex_);
+			mouseover_unit = find_unit(new_hex);
 
-		// we search if there is an attack possibility and where
-		map_location attack_from = current_unit_attacks_from(new_hex);
-		resources::whiteboard->set_real_unit_map();
+			// we search if there is an attack possibility and where
+			attack_from = current_unit_attacks_from(new_hex);
+		} // end planned unit map scope
 
-		//see if we should show the normal cursor, the movement cursor, or
-		//the attack cursor
-		//If the cursor is on WAIT, we don't change it and let the setter
-		//of this state end it
-		if (cursor::get() != cursor::WAIT) {
-			if (selected_unit != units_.end() &&
-			    selected_unit->side() == side_num_ &&
-			    !selected_unit->incapacitated() && !browse)
-			{
-				if (attack_from.valid()) {
-					cursor::set(dragging_started_ ? cursor::ATTACK_DRAG : cursor::ATTACK);
-				}
-				else if (mouseover_unit==units_.end() &&
-				         current_paths_.destinations.contains(new_hex))
+		{ // start planned unit map scope
+			wb::scoped_planned_unit_map planned_unit_map;
+			selected_unit = find_unit(selected_hex_);
+			mouseover_unit = find_unit(new_hex);
+			//see if we should show the normal cursor, the movement cursor, or
+			//the attack cursor
+			//If the cursor is on WAIT, we don't change it and let the setter
+			//of this state end it
+			if (cursor::get() != cursor::WAIT) {
+				if (selected_unit != units_.end() &&
+					selected_unit->side() == side_num_ &&
+					!selected_unit->incapacitated() && !browse)
 				{
-					cursor::set(dragging_started_ ? cursor::MOVE_DRAG : cursor::MOVE);
+					if (attack_from.valid()) {
+						cursor::set(dragging_started_ ? cursor::ATTACK_DRAG : cursor::ATTACK);
+					}
+					else if (mouseover_unit==units_.end() &&
+							 current_paths_.destinations.contains(new_hex))
+					{
+						cursor::set(dragging_started_ ? cursor::MOVE_DRAG : cursor::MOVE);
+					} else {
+						// selected unit can't attack or move there
+						cursor::set(cursor::NORMAL);
+					}
 				} else {
-					// selected unit can't attack or move there
+					// no selected unit or we can't move it
 					cursor::set(cursor::NORMAL);
 				}
-			} else {
-				// no selected unit or we can't move it
-				cursor::set(cursor::NORMAL);
 			}
-		}
+		} // end planned unit map scope
 
 		// show (or cancel) the attack direction indicator
 		if (attack_from.valid() && (!browse || resources::whiteboard->is_active())) {
@@ -220,6 +213,8 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 
 		{ //start planned unit map scope
 			wb::scoped_planned_unit_map planned_unit_map;
+			selected_unit = find_unit(selected_hex_);
+			mouseover_unit = find_unit(new_hex);
 			// the destination is the pointed hex or the adjacent hex
 			// used to attack it
 			map_location dest;
@@ -297,7 +292,11 @@ unit_map::iterator mouse_handler::selected_unit()
 
 unit_map::iterator mouse_handler::find_unit(const map_location& hex)
 {
-	return find_visible_unit(hex, viewing_team());
+	unit_map::iterator it = find_visible_unit(hex, viewing_team());
+	if (it.valid())
+		return it;
+	else
+		return resources::units->end();
 }
 
 unit_map::const_iterator mouse_handler::find_unit(const map_location& hex) const
