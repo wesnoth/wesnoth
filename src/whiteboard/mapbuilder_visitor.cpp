@@ -30,9 +30,10 @@
 namespace wb
 {
 
-mapbuilder_visitor::mapbuilder_visitor(unit_map& unit_map, side_actions_ptr side_actions)
+mapbuilder_visitor::mapbuilder_visitor(unit_map& unit_map, side_actions_ptr side_actions, bool include_recruits)
 	: unit_map_(unit_map)
     , excluded_units_()
+	, include_recruits_(include_recruits)
 	, side_actions_(side_actions)
 	, applied_actions_()
 	, mode_(BUILD_PLANNED_MAP)
@@ -80,11 +81,15 @@ void mapbuilder_visitor::visit_attack(attack_ptr attack)
 
 void mapbuilder_visitor::visit_recruit(recruit_ptr recruit)
 {
+
 	if(mode_ == BUILD_PLANNED_MAP)
 	{
-		recruit->apply_temp_modifier(unit_map_);
-		//remember which actions we applied, so we can unapply them later
-		applied_actions_.push_back(recruit);
+		if (include_recruits_)
+		{
+			recruit->apply_temp_modifier(unit_map_);
+			//remember which actions we applied, so we can unapply them later
+			applied_actions_.push_back(recruit);
+		}
 	}
 	else if (mode_ == RESTORE_NORMAL_MAP)
 	{

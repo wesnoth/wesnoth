@@ -37,7 +37,7 @@ class mapbuilder_visitor: public visitor
 {
 
 public:
-	mapbuilder_visitor(unit_map& unit_map, side_actions_ptr side_actions);
+	mapbuilder_visitor(unit_map& unit_map, side_actions_ptr side_actions, bool include_recruits = false);
 	virtual ~mapbuilder_visitor();
 
 	/**
@@ -63,6 +63,7 @@ protected:
 	unit_map& unit_map_;
 
 	std::set<unit const*> excluded_units_;
+	bool include_recruits_;
 
 	side_actions_ptr side_actions_;
 	action_queue applied_actions_;

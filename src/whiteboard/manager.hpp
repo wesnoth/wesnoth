@@ -76,7 +76,7 @@ public:
 	 * Temporarily apply the effects of the current team's
 	 * planned moves to the unit map.
 	 */
-	void set_planned_unit_map();
+	void set_planned_unit_map(bool include_recruits = false);
 	void set_real_unit_map();
 	bool has_planned_unit_map() const { return planned_unit_map_active_; }
 

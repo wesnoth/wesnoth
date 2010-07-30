@@ -33,7 +33,7 @@ namespace wb
 {
 
 validate_visitor::validate_visitor(unit_map& unit_map, side_actions_ptr side_actions)
-	: mapbuilder_visitor(unit_map, side_actions)
+	: mapbuilder_visitor(unit_map, side_actions, true)
 	, actions_to_erase_()
 {
 }
