@@ -194,6 +194,11 @@ void validate_visitor::visit_recruit(recruit_ptr recruit)
 		LOG_WB << "Recruit set as invalid, team doesn't have enough gold.\n";
 		recruit->set_valid(false);
 	}
+
+	if (!recruit->is_valid())
+	{
+		actions_to_erase_.insert(recruit);
+	}
 }
 
 }//end namespace wb
