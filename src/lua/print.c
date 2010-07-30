@@ -84,7 +84,7 @@ static void PrintCode(const Proto* f)
   int c=GETARG_C(i);
   int bx=GETARG_Bx(i);
   int sbx=GETARG_sBx(i);
-  int line=getline(f,pc);
+  int line=lua_getline(f,pc);
   printf("\t%d\t",pc+1);
   if (line>0) printf("[%d]\t",line); else printf("[-]\t");
   printf("%-9s\t",luaP_opnames[o]);

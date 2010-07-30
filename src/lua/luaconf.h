@@ -11,6 +11,9 @@
 #include <limits.h>
 #include <stddef.h>
 
+#if !defined(__cplusplus)
+#error "Exception support requires a C++ compiler."
+#endif
 
 /*
 ** ==================================================================
