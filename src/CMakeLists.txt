@@ -38,16 +38,16 @@ if(ZLIB_INCLUDE_DIR)
 endif()
 
 
-set( network_implementation_files network.cpp network_worker.cpp )
+set(network_implementation_files network.cpp network_worker.cpp)
 
-if( USE_ANA_NETWORK )
-    set( network_implementation_files network_ana.cpp network_manager_ana.cpp)
-    message( STATUS "Compiling network module with ana: ${network_implementation_files}" )
+if(USE_ANA_NETWORK)
+    set(network_implementation_files network_ana.cpp network_manager_ana.cpp)
+    message(STATUS "Compiling network module with ana: ${network_implementation_files}")
 
 	set(ANA_LIBRARIES ana-static)
 
-    add_subdirectory ( ana/src )
-endif ( USE_ANA_NETWORK )
+    add_subdirectory(ana/src)
+endif(USE_ANA_NETWORK)
 
 # needed to get include paths in the subfolders correct
 include_directories( ${CMAKE_SOURCE_DIR}/src/ )
@@ -59,21 +59,21 @@ link_directories(${Boost_LIBRARY_DIRS})
 if(MSVC)
 	# Since MSVC does autolinking of boost adding those files will duplicate
 	# the includes and cause build errors.
-	set( common-external-libs
+	set(common-external-libs
 		${SDL_LIBRARY}
 		${SDLMAIN_LIBRARY}
 		${LIBINTL_LIBRARY}
 		ws2_32.lib
 	)
 else(MSVC)
-	set( common-external-libs
+	set(common-external-libs
 		${SDL_LIBRARY}
 		${Boost_IOSTREAMS_LIBRARY}
 		${Boost_REGEX_LIBRARY}
 	)
 endif(MSVC)
 
-set( game-external-libs
+set(game-external-libs
 	${common-external-libs}
 	${SDLIMAGE_LIBRARY}
 	${SDLMIXER_LIBRARY}
@@ -86,7 +86,7 @@ set( game-external-libs
 )
 
 if(MSVC)
-	set( game-external-libs
+	set(game-external-libs
 		${game-external-libs}
 		${PANGO_LIBRARY}
 		${PANGOCAIRO_LIBRARY}
@@ -94,25 +94,25 @@ if(MSVC)
 		${GOBJECT_LIBRARY}
 	)
 else(MSVC)
-    set( game-external-libs
+    set(game-external-libs
         ${game-external-libs}
         ${Boost_SYSTEM_LIBRARIES}
     )
 endif(MSVC)
 
-if ( USE_ANA_NETWORK )
-    set( server-external-libs
+if(USE_ANA_NETWORK)
+    set(server-external-libs
         ${common-external-libs}
         ${ANA_LIBRARIES}
     )
-else ( USE_ANA_NETWORK )
-    set( server-external-libs
+else(USE_ANA_NETWORK)
+    set(server-external-libs
         ${common-external-libs}
         ${SDLNET_LIBRARY}
     )
-endif ( USE_ANA_NETWORK )
+endif(USE_ANA_NETWORK)
 
-set( tools-external-libs
+set(tools-external-libs
     ${common-external-libs}
     ${SDLIMAGE_LIBRARY}
 )
@@ -192,7 +192,7 @@ endif(MSVC)
 
 ########### libwesnoth-core ###############
 
-SET(libwesnoth-core_STAT_SRC
+set(libwesnoth-core_STAT_SRC
     color_range.cpp
     config.cpp
     filesystem.cpp
@@ -217,7 +217,7 @@ SET(libwesnoth-core_STAT_SRC
 )
 
 if(ENABLE_POOL_ALLOC AND NOT WIN32)
-  SET(libwesnoth-core_STAT_SRC
+  set(libwesnoth-core_STAT_SRC
       ${libwesnoth-core_STAT_SRC}
       malloc.c
       poolalloc.c
@@ -231,7 +231,7 @@ add_library(wesnoth-core STATIC EXCLUDE_FROM_ALL ${libwesnoth-core_STAT_SRC})
 
 ########### libwesnoth-lua ###############
 
-SET(libwesnoth-lua_STAT_SRC
+set(libwesnoth-lua_STAT_SRC
     lua/lapi.c                                               
     lua/lcode.c                                             
     lua/ldebug.c
@@ -551,7 +551,7 @@ endif(ENABLE_EDITOR)
 ########### libwesnoth-game ###############
 # rename libwesnoth.a to libwesnoth-game.a to have clearer targets
 
-SET(libwesnoth-game_STAT_SRC
+set(libwesnoth-game_STAT_SRC
     arrow.cpp
     builder.cpp
     cavegen.cpp
@@ -607,7 +607,7 @@ SET(libwesnoth-game_STAT_SRC
     wml_exception.cpp
 )
 
-SET(libwesnoth-game_STAT_SRC
+set(libwesnoth-game_STAT_SRC
     ${libwesnoth-game_STAT_SRC}
     pathfind/pathfind.cpp
 )
@@ -669,9 +669,9 @@ endif(ENABLE_GAME)
 
 ########### Wesnothd Server ###############
 
-IF(ENABLE_SERVER)
+if(ENABLE_SERVER)
 
-SET(wesnothd_SRC
+set(wesnothd_SRC
 	server/ban.cpp
     server/game.cpp
     server/input_stream.cpp
@@ -699,13 +699,13 @@ set_target_properties(wesnothd PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}wesnothd${
 
 install(TARGETS wesnothd DESTINATION ${BINDIR})
 
-ENDIF(ENABLE_SERVER)
+endif(ENABLE_SERVER)
 
 ########### Campaign Server ###############
 
-IF(ENABLE_CAMPAIGN_SERVER)
+if(ENABLE_CAMPAIGN_SERVER)
 
-SET(campaignd_SRC
+set(campaignd_SRC
 	network_worker.cpp # NEEDED when compiling with ANA support
     addon/validation.cpp
     campaign_server/campaign_server.cpp
@@ -724,13 +724,13 @@ set_target_properties(campaignd PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}campaignd
 
 install(TARGETS campaignd DESTINATION ${BINDIR})
 
-ENDIF(ENABLE_CAMPAIGN_SERVER)
+endif(ENABLE_CAMPAIGN_SERVER)
 
 ########### Castle building helpers ###############
 
-IF(ENABLE_TOOLS)
+if(ENABLE_TOOLS)
 
-SET(exploder_SRC
+set(exploder_SRC
     tools/exploder.cpp
     tools/exploder_utils.cpp
     tools/exploder_cutter.cpp
@@ -746,7 +746,7 @@ set_target_properties(exploder PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}exploder${
 
 install(TARGETS exploder DESTINATION ${BINDIR})
 
-SET(cutter_SRC
+set(cutter_SRC
     tools/cutter.cpp
     tools/exploder_utils.cpp
     tools/exploder_cutter.cpp
@@ -761,7 +761,7 @@ set_target_properties(cutter PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}cutter${BINA
 
 install(TARGETS cutter DESTINATION ${BINDIR})
 
-ENDIF(ENABLE_TOOLS)
+endif(ENABLE_TOOLS)
 
 ########### Unit tests ###############
 
