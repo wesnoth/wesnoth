@@ -21,13 +21,13 @@ set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS true)
 # use our own version of FindBoost.cmake and other Find* scripts
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
 
-find_package( SDL 1.2.7 REQUIRED )
-find_package( Boost 1.35 REQUIRED COMPONENTS iostreams regex )
+find_package(SDL 1.2.7 REQUIRED)
+find_package(Boost 1.35 REQUIRED COMPONENTS iostreams regex)
 # yes, gettext is *required* even when NLS is deactivated (this is to compile
 # src/gettext.cpp since it includes libintl.h)
-find_package( Gettext REQUIRED )
+find_package(Gettext REQUIRED)
 
-find_package( X11 )
+find_package(X11)
 
 if(NOT MSVC)
 	#needed to get some SDL defines in... (as of rev31694 -D_GNU_SOURCE=1 is required!)
@@ -38,7 +38,7 @@ endif(NOT MSVC)
 
 
 #check for some compiler/arch specific things and export defines accordingly...
-INCLUDE (SearchForStuff)
+include(SearchForStuff)
 
 #
 # Options
@@ -73,11 +73,13 @@ option(ENABLE_TESTS "Build unit tests")
 option(ENABLE_NLS "Enable building of translations" ON)
 option(ENABLE_POOL_ALLOC "Enable custom pool malloc" OFF)
 option(ENABLE_LOW_MEM "Reduce memory usage by removing extra functionality" OFF)
-if (UNIX AND NOT APPLE AND NOT CYGWIN)
+
+if(UNIX AND NOT APPLE AND NOT CYGWIN)
   option(ENABLE_DESKTOP_ENTRY "enable installation of desktop entry files" ON)
   set(ICONDIR "${DATAROOTDIR}/pixmaps" CACHE STRING "Sets the icon directory for desktop entry to a non-default location.")
   set(DESKTOPDIR "${DATAROOTDIR}/applications/" CACHE STRING "Sets the desktop file directory for desktop entry to a non-default location.")
 endif(UNIX AND NOT APPLE AND NOT CYGWIN)
+
 option(ENABLE_STRICT_COMPILATION "Sets the strict compilation mode" ON)
 option(ENABLE_DEBUG_WINDOW_LAYOUT "Add the debug option to allow the generation of debug layout files in dot format" OFF)
 option ( USE_ANA_NETWORK "Compile network module using ana" ON )
@@ -99,8 +101,6 @@ set(BINARY_PREFIX "" CACHE STRING "Prefix in front of all binaries")
 # Handle options (set paths/definitions/etc...)
 #
 
-
-
 if(CMAKE_COMPILER_IS_GNUCXX)
 	# Set our own default flags at first run.
 	if(NOT CONFIGURED)
@@ -112,7 +112,6 @@ if(CMAKE_COMPILER_IS_GNUCXX)
 		else(ENABLE_STRICT_COMPILATION)
 			set(STRICT_FLAGS "")
 		endif(ENABLE_STRICT_COMPILATION)
-
 
 		# Strict compilation for C files is disabled until somebody wants to clean them.
 		set(CMAKE_C_FLAGS "-O2 -W -Wall -ansi $ENV{CFLAGS}" 
@@ -235,9 +234,10 @@ separate_arguments(LINGUAS)
 
 add_subdirectory(doc)
 
-if (GETTEXT_FOUND AND ENABLE_NLS)
+if(GETTEXT_FOUND AND ENABLE_NLS)
   add_subdirectory(po)
 endif (GETTEXT_FOUND AND ENABLE_NLS)
+
 add_subdirectory(src)
 
 #
@@ -272,14 +272,14 @@ if(GUI STREQUAL "tiny")
           PATTERN "*.png" EXCLUDE
           PATTERN "*.jpg" EXCLUDE
           PATTERN ".svn" EXCLUDE )
-else()
+else(GUI STREQUAL "tiny")
 
   #
   # Install files
   #
   install(DIRECTORY data fonts images sounds DESTINATION ${DATADIR} USE_SOURCE_PERMISSIONS PATTERN ".svn" EXCLUDE )
 
-endif()
+endif(GUI STREQUAL "tiny")
 
 #
 # Install desktop file so wesnoth appears in the application start menu with an icon
