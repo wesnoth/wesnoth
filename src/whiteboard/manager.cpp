@@ -208,14 +208,14 @@ void manager::validate_viewer_actions()
 	viewer_actions()->validate_actions();
 }
 
-void manager::set_planned_unit_map()
+void manager::set_planned_unit_map(bool include_recruits)
 {
 	if (!executing_actions_ && !wait_for_side_init_)
 	{
 		if (!planned_unit_map_active_)
 		{
 			DBG_WB << "Building planned unit map.\n";
-			mapbuilder_.reset(new mapbuilder_visitor(*resources::units, viewer_actions()));
+			mapbuilder_.reset(new mapbuilder_visitor(*resources::units, viewer_actions(), include_recruits));
 			mapbuilder_->build_map();
 			planned_unit_map_active_ = true;
 		}
@@ -637,6 +637,23 @@ scoped_real_unit_map::scoped_real_unit_map()
 scoped_real_unit_map::~scoped_real_unit_map()
 {
 	if (has_planned_unit_map_ && !resources::whiteboard->has_planned_unit_map())
+		resources::whiteboard->set_planned_unit_map();
+}
+
+scoped_planned_pathfind_map::scoped_planned_pathfind_map()
+:has_planned_unit_map_(resources::whiteboard->has_planned_unit_map())
+{
+	if (has_planned_unit_map_)
+		resources::whiteboard->set_real_unit_map();
+
+	resources::whiteboard->set_planned_unit_map(true);
+}
+
+scoped_planned_pathfind_map::~scoped_planned_pathfind_map()
+{
+	resources::whiteboard->set_real_unit_map();
+
+	if (has_planned_unit_map_)
 		resources::whiteboard->set_planned_unit_map();
 }
 

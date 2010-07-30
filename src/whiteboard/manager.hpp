@@ -169,6 +169,17 @@ struct scoped_real_unit_map
 	bool has_planned_unit_map_;
 };
 
+/** A variant on the regular planned unit map, that includes units only useful for pathfinding,
+ * such as those from planned recruits and recalls.
+ * It replaces any the regular planned unit map, and rebuilds it afterwards if needed.
+ *  */
+struct scoped_planned_pathfind_map
+{
+	scoped_planned_pathfind_map();
+	~scoped_planned_pathfind_map();
+	bool has_planned_unit_map_;
+};
+
 } // end namespace wb
 
 #endif /* WB_MANAGER_HPP_ */
