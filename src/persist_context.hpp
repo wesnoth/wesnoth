@@ -23,6 +23,9 @@ static lg::log_domain log_persist("engine/persistence");
 config pack_scalar(const std::string &,const t_string &);
 class persist_context {
 public:
+
+	virtual ~persist_context() {}
+
 	struct name_space {
 		std::string namespace_;
 		std::string root_;
