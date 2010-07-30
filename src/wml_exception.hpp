@@ -21,8 +21,6 @@
 #ifndef WML_EXCEPTION_HPP_INCLUDED
 #define WML_EXCEPTION_HPP_INCLUDED
 
-#include "tstring.hpp"
-
 #include <exception>
 #include <string>
 
@@ -55,36 +53,23 @@ class display;
  *  @param file         The file in which the test failed.
  *  @param line         The line at which the test failed.
  *  @param function     The funtion in which the test failed.
- *  @param message      The translatable message to show the user.
+ *  @param message      The translated message to show the user.
  */
 void wml_exception(const char* cond, const char* file,
-	const int line, const char* function, const t_string& message);
-
-/** Helper function, don't call this directly. */
-inline void wml_exception(const char* cond, const char* file,
-	const int line, const char* function, const char* message)
-{
-	wml_exception(cond, file, line, function, t_string(message));
-}
-
-/** Helper function, don't call this directly. */
-inline void wml_exception(const char* cond, const char* file,
-	const int line, const char* function, const std::string& message)
-{
-	wml_exception(cond, file, line, function, t_string(message));
-}
+	int line, const char *function, const std::string &message);
 
 /** Helper class, don't construct this directly. */
 struct twml_exception: std::exception
 {
-	twml_exception(const t_string& user_msg, const std::string& dev_msg);
+	twml_exception(const std::string &user_msg, const std::string &dev_msg)
+		: user_message(user_msg), dev_message(dev_msg) {}
 	~twml_exception() throw() {}
 
 	/**
 	 *  The message for the user explaining what went wrong. This message can
 	 *  be translated so the user gets a explanation in his/her native tongue.
 	 */
-	t_string user_message;
+	std::string user_message;
 
 	/**
 	 *  The message for developers telling which problem was triggered, this
@@ -115,7 +100,7 @@ struct twml_exception: std::exception
  *
  *  @return             The error message.
  */
-t_string missing_mandatory_wml_key(const std::string& section, const std::string& key,
+std::string missing_mandatory_wml_key(const std::string& section, const std::string& key,
 		const std::string& primary_key = "", const std::string& primary_value = "");
 
 #endif
