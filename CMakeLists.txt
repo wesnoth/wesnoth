@@ -13,7 +13,7 @@
 cmake_minimum_required(VERSION 2.6.0)
 
 if(COMMAND cmake_policy)
-    cmake_policy(SET CMP0005 OLD)
+	cmake_policy(SET CMP0005 OLD)
 endif(COMMAND cmake_policy)
 
 set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS true)
@@ -75,9 +75,9 @@ option(ENABLE_POOL_ALLOC "Enable custom pool malloc" OFF)
 option(ENABLE_LOW_MEM "Reduce memory usage by removing extra functionality" OFF)
 
 if(UNIX AND NOT APPLE AND NOT CYGWIN)
-  option(ENABLE_DESKTOP_ENTRY "enable installation of desktop entry files" ON)
-  set(ICONDIR "${DATAROOTDIR}/pixmaps" CACHE STRING "Sets the icon directory for desktop entry to a non-default location.")
-  set(DESKTOPDIR "${DATAROOTDIR}/applications/" CACHE STRING "Sets the desktop file directory for desktop entry to a non-default location.")
+	option(ENABLE_DESKTOP_ENTRY "enable installation of desktop entry files" ON)
+	set(ICONDIR "${DATAROOTDIR}/pixmaps" CACHE STRING "Sets the icon directory for desktop entry to a non-default location.")
+	set(DESKTOPDIR "${DATAROOTDIR}/applications/" CACHE STRING "Sets the desktop file directory for desktop entry to a non-default location.")
 endif(UNIX AND NOT APPLE AND NOT CYGWIN)
 
 option(ENABLE_STRICT_COMPILATION "Sets the strict compilation mode" ON)
@@ -87,7 +87,7 @@ option ( USE_ANA_NETWORK "Compile network module using ana" ON )
 #misc options
 if(NOT MSVC)
 	# Pot updates don't work at Windows so no reason to even try
-    option(ENABLE_POT_UPDATE_TARGET "Enables the tools to update the pot files and manuals. This target has extra dependencies." OFF)
+	option(ENABLE_POT_UPDATE_TARGET "Enables the tools to update the pot files and manuals. This target has extra dependencies." OFF)
 endif(NOT MSVC)
 
 if(UNIX AND NOT APPLE AND NOT CYGWIN)
@@ -136,19 +136,19 @@ endif(CMAKE_COMPILER_IS_GNUCXX)
 set(DATADIR ${DATAROOTDIR}/${DATADIRNAME})
 
 if(NOT WIN32)
-  add_definitions(-DWESNOTH_PATH=\\\"${DATADIR}\\\")
+	add_definitions(-DWESNOTH_PATH=\\\"${DATADIR}\\\")
 endif(NOT WIN32)
 
 if(NOT ENABLE_POOL_ALLOC OR WIN32)
-  add_definitions(-DDISABLE_POOL_ALLOC)
+	add_definitions(-DDISABLE_POOL_ALLOC)
 endif(NOT ENABLE_POOL_ALLOC OR WIN32)
 
 if(NOT ENABLE_EDITOR)
-  add_definitions(-DDISABLE_EDITOR)
+	add_definitions(-DDISABLE_EDITOR)
 endif(NOT ENABLE_EDITOR)
 
 if(X11_FOUND)
-  add_definitions(-D_X11)
+	add_definitions(-D_X11)
 endif(X11_FOUND)
 
 add_definitions(-DHAS_RELATIVE_LOCALEDIR=1)
@@ -158,15 +158,15 @@ set(LOCALE_INSTALL ${DATADIR}/${LOCALEDIR})
 add_definitions(-DFIFODIR=\\\"${FIFO_DIR}\\\")
 
 if(PREFERENCES_DIR)
-  add_definitions(-DPREFERENCES_DIR=\\\"${PREFERENCES_DIR}\\\")
+	add_definitions(-DPREFERENCES_DIR=\\\"${PREFERENCES_DIR}\\\")
 endif(PREFERENCES_DIR)
 
 if(GUI STREQUAL "tiny")
-  add_definitions(-DUSE_TINY_GUI)
+	add_definitions(-DUSE_TINY_GUI)
 endif(GUI STREQUAL "tiny")
 
 if(ENABLE_LOW_MEM)
-  add_definitions(-DLOW_MEM)
+	add_definitions(-DLOW_MEM)
 endif(ENABLE_LOW_MEM)
 
 if(ENABLE_DEBUG_WINDOW_LAYOUT)
@@ -178,18 +178,18 @@ endif(ENABLE_DEBUG_WINDOW_LAYOUT)
 #
 
 if(ENABLE_TOOLS OR ENABLE_GAME OR ENABLE_TESTS)
-  find_package( SDL_image 1.2 REQUIRED )
+	find_package( SDL_image 1.2 REQUIRED )
 endif(ENABLE_TOOLS OR ENABLE_GAME OR ENABLE_TESTS)
 if(ENABLE_GAME OR ENABLE_TESTS)
-  find_package( SDL_mixer 1.2 REQUIRED )
-  find_package( SDL_ttf 2.0.8 REQUIRED )
+	find_package( SDL_mixer 1.2 REQUIRED )
+	find_package( SDL_ttf 2.0.8 REQUIRED )
 endif(ENABLE_GAME OR ENABLE_TESTS)
 if(ENABLE_GAME OR ENABLE_SERVER OR ENABLE_CAMPAIGN_SERVER OR ENABLE_TESTS)
-  find_package( SDL_net REQUIRED )
+	find_package( SDL_net REQUIRED )
 endif(ENABLE_GAME OR ENABLE_SERVER OR ENABLE_CAMPAIGN_SERVER OR ENABLE_TESTS)
 if(ENABLE_TOOLS)
-  find_package( ZLIB REQUIRED )
-  find_package( PNG REQUIRED )
+	find_package( ZLIB REQUIRED )
+	find_package( PNG REQUIRED )
 endif(ENABLE_TOOLS)
 if(ENABLE_TESTS)
 	find_package( Boost 1.35 REQUIRED COMPONENTS unit_test_framework )
@@ -203,15 +203,15 @@ if(ENABLE_GAME)
 
 	find_package( FriBiDi )
 	if(ENABLE_FRIBIDI AND FRIBIDI_LIBRARIES)
-	  add_definitions(-DHAVE_FRIBIDI)
+		add_definitions(-DHAVE_FRIBIDI)
 	elseif(ENABLE_FRIBIDI AND NOT FRIBIDI_LIBRARIES)
-	  message("Could not find FriBiDi. Disabling FriBiDi support.")
+		message("Could not find FriBiDi. Disabling FriBiDi support.")
 	endif()
 
 	if(ENABLE_NOTIFICATIONS)
 		pkg_check_modules(LIBDBUS dbus-1)
 		if(LIBDBUS_FOUND)
-		  	add_definitions(-DHAVE_LIBDBUS)
+			add_definitions(-DHAVE_LIBDBUS)
 		else(LIBDBUS_FOUND)
 			message("Could not find dbus-1, Disabling notification support.")
 		endif(LIBDBUS_FOUND)
@@ -220,7 +220,7 @@ if(ENABLE_GAME)
 endif(ENABLE_GAME)
 
 if(USE_ANA_NETWORK)
-    find_package( Boost 1.35 REQUIRED COMPONENTS system )
+	find_package( Boost 1.35 REQUIRED COMPONENTS system )
 endif(USE_ANA_NETWORK)
 
 # get languages
@@ -235,7 +235,7 @@ separate_arguments(LINGUAS)
 add_subdirectory(doc)
 
 if(GETTEXT_FOUND AND ENABLE_NLS)
-  add_subdirectory(po)
+	add_subdirectory(po)
 endif (GETTEXT_FOUND AND ENABLE_NLS)
 
 add_subdirectory(src)
@@ -245,39 +245,41 @@ add_subdirectory(src)
 #
 
 if(GUI STREQUAL "tiny")
-  FIND_PACKAGE( ImageMagick REQUIRED )
+	FIND_PACKAGE( ImageMagick REQUIRED )
 
-  if(${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_BINARY_DIR})
-    set(IMAGE_BUILD_DIR ${CMAKE_SOURCE_DIR}/tiny_images)
-  else()
-    set(IMAGE_BUILD_DIR ${CMAKE_BINARY_DIR})
-  endif()
+	if(${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_BINARY_DIR})
+		set(IMAGE_BUILD_DIR ${CMAKE_SOURCE_DIR}/tiny_images)
+	else()
+		set(IMAGE_BUILD_DIR ${CMAKE_BINARY_DIR})
+	endif()
 
-  set(IMAGE_FILES data/*.jpg data/*.png images/*.jpg images/*.png)
+	set(IMAGE_FILES data/*.jpg data/*.png images/*.jpg images/*.png)
 
-  add_custom_target(shrink-images ALL 
-                    COMMAND ${CMAKE_COMMAND}
-                    ARGS -DIMAGE_FILES="${IMAGE_FILES}" -DIMAGE_BUILD_DIR="${IMAGE_BUILD_DIR}" -DIMAGEMAGICK_IDENTIFY_EXECUTABLE="${IMAGEMAGICK_IDENTIFY_EXECUTABLE}" -DIMAGEMAGICK_CONVERT_EXECUTABLE="${IMAGEMAGICK_CONVERT_EXECUTABLE}" -P "${CMAKE_MODULE_PATH}/ShrinkImages.cmake"
-                    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-                    COMMENT "Creating resized images for tinygui.")
+	add_custom_target(shrink-images ALL 
+		COMMAND ${CMAKE_COMMAND}
+		ARGS -DIMAGE_FILES="${IMAGE_FILES}" -DIMAGE_BUILD_DIR="${IMAGE_BUILD_DIR}" -DIMAGEMAGICK_IDENTIFY_EXECUTABLE="${IMAGEMAGICK_IDENTIFY_EXECUTABLE}" -DIMAGEMAGICK_CONVERT_EXECUTABLE="${IMAGEMAGICK_CONVERT_EXECUTABLE}" -P "${CMAKE_MODULE_PATH}/ShrinkImages.cmake"
+		WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+		COMMENT "Creating resized images for tinygui.")
 
-  #
-  # Install files (exclude images from data-dir, we install them from our build dir)
-  #
+	#
+	# Install files (exclude images from data-dir, we install them from our build dir)
+	#
 
-  # this is a workaround for a bug in 2.4-7
-  file(MAKE_DIRECTORY ${IMAGE_BUILD_DIR}/data ${IMAGE_BUILD_DIR}/images)
-  install(DIRECTORY ${IMAGE_BUILD_DIR}/data ${IMAGE_BUILD_DIR}/images DESTINATION ${DATADIR} USE_SOURCE_PERMISSIONS)
-  install(DIRECTORY data fonts sounds DESTINATION ${DATADIR} USE_SOURCE_PERMISSIONS
-          PATTERN "*.png" EXCLUDE
-          PATTERN "*.jpg" EXCLUDE
-          PATTERN ".svn" EXCLUDE )
+	# this is a workaround for a bug in 2.4-7
+	file(MAKE_DIRECTORY ${IMAGE_BUILD_DIR}/data ${IMAGE_BUILD_DIR}/images)
+	install(DIRECTORY ${IMAGE_BUILD_DIR}/data ${IMAGE_BUILD_DIR}/images DESTINATION ${DATADIR} USE_SOURCE_PERMISSIONS)
+	install(DIRECTORY data fonts sounds DESTINATION ${DATADIR} USE_SOURCE_PERMISSIONS
+		PATTERN "*.png" EXCLUDE
+		PATTERN "*.jpg" EXCLUDE
+		PATTERN ".svn" EXCLUDE
+	 )
+
 else(GUI STREQUAL "tiny")
 
-  #
-  # Install files
-  #
-  install(DIRECTORY data fonts images sounds DESTINATION ${DATADIR} USE_SOURCE_PERMISSIONS PATTERN ".svn" EXCLUDE )
+	#
+	# Install files
+	#
+	install(DIRECTORY data fonts images sounds DESTINATION ${DATADIR} USE_SOURCE_PERMISSIONS PATTERN ".svn" EXCLUDE )
 
 endif(GUI STREQUAL "tiny")
 
@@ -286,37 +288,37 @@ endif(GUI STREQUAL "tiny")
 # TODO: string replacement to have the real binary name in does not work atm, because in the Categories= block semicolons are lost...
 #
 if(ENABLE_DESKTOP_ENTRY AND ENABLE_GAME)
-  # do some crude string replacing to have the real binary name in the .desktop file (read in original .desktop file, replace the Exec= line with the correct value and output the generated file)
-#  file(READ icons/wesnoth.desktop wesnoth-desktop-orig)
-  #string(REGEX REPLACE "(\nName.*=.*)\n" "\\1 (${BINARY_SUFFIX})\n" wesnoth-desktop-modified ${wesnoth-desktop-orig} )
-#  string(REPLACE "Exec=wesnoth" "Exec=${BINARY_PREFIX}wesnoth${BINARY_SUFFIX}" wesnoth-desktop-modified ${wesnoth-desktop-orig} )
-#  file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/${BINARY_PREFIX}wesnoth${BINARY_SUFFIX}.desktop ${wesnoth-desktop-modified} )
-  
-  #execute_process(COMMAND sed "-i" "'s/^\(Name.*=.*\)$/\1TEST/g'" ${CMAKE_CURRENT_BINARY_DIR}/${BINARY_PREFIX}wesnoth${BINARY_SUFFIX}.desktop )
-  #exec_program(sed ARGS "-i" "'s/^\(Name.*=.*\)$/\1TEST/g'" ${CMAKE_CURRENT_BINARY_DIR}/${BINARY_PREFIX}wesnoth${BINARY_SUFFIX}.desktop )
-  # install the generated .desktop file
-#  install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${BINARY_PREFIX}wesnoth${BINARY_SUFFIX}.desktop DESTINATION ${DESKTOPDIR} )
-  install(FILES icons/wesnoth.desktop DESTINATION ${DESKTOPDIR} )
-  install(FILES icons/wesnoth-icon.png DESTINATION ${ICONDIR} )
-  
-  if(ENABLE_EDITOR)
-    # do some crude string replacing to have the real binary name in the .desktop file (read in original .desktop file, replace the Exec= line with the correct value and output the generated file)
-#    file(READ icons/wesnoth_editor.desktop wesnoth-editor-desktop-orig)
-#    string(REPLACE "Exec=wesnoth -e" "Exec=${BINARY_PREFIX}wesnoth${BINARY_SUFFIX} -e" wesnoth-editor-desktop-modified ${wesnoth-editor-desktop-orig} )
-#    file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/${BINARY_PREFIX}wesnoth_editor${BINARY_SUFFIX}.desktop ${wesnoth-editor-desktop-modified} )
-    # install the generated .desktop file
-#    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${BINARY_PREFIX}wesnoth_editor${BINARY_SUFFIX}.desktop DESTINATION ${DESKTOPDIR} )
-    install(FILES icons/wesnoth_editor.desktop DESTINATION ${DESKTOPDIR} )
-    install(FILES icons/wesnoth_editor-icon.png DESTINATION ${ICONDIR} )
-  endif(ENABLE_EDITOR)
+	# do some crude string replacing to have the real binary name in the .desktop file (read in original .desktop file, replace the Exec= line with the correct value and output the generated file)
+	#  file(READ icons/wesnoth.desktop wesnoth-desktop-orig)
+	#string(REGEX REPLACE "(\nName.*=.*)\n" "\\1 (${BINARY_SUFFIX})\n" wesnoth-desktop-modified ${wesnoth-desktop-orig} )
+	#  string(REPLACE "Exec=wesnoth" "Exec=${BINARY_PREFIX}wesnoth${BINARY_SUFFIX}" wesnoth-desktop-modified ${wesnoth-desktop-orig} )
+	#  file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/${BINARY_PREFIX}wesnoth${BINARY_SUFFIX}.desktop ${wesnoth-desktop-modified} )
+ 
+	#execute_process(COMMAND sed "-i" "'s/^\(Name.*=.*\)$/\1TEST/g'" ${CMAKE_CURRENT_BINARY_DIR}/${BINARY_PREFIX}wesnoth${BINARY_SUFFIX}.desktop )
+	#exec_program(sed ARGS "-i" "'s/^\(Name.*=.*\)$/\1TEST/g'" ${CMAKE_CURRENT_BINARY_DIR}/${BINARY_PREFIX}wesnoth${BINARY_SUFFIX}.desktop )
+	# install the generated .desktop file
+	#  install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${BINARY_PREFIX}wesnoth${BINARY_SUFFIX}.desktop DESTINATION ${DESKTOPDIR} )
+	install(FILES icons/wesnoth.desktop DESTINATION ${DESKTOPDIR} )
+	install(FILES icons/wesnoth-icon.png DESTINATION ${ICONDIR} )
+ 
+	if(ENABLE_EDITOR)
+		# do some crude string replacing to have the real binary name in the .desktop file (read in original .desktop file, replace the Exec= line with the correct value and output the generated file)
+		#    file(READ icons/wesnoth_editor.desktop wesnoth-editor-desktop-orig)
+		#    string(REPLACE "Exec=wesnoth -e" "Exec=${BINARY_PREFIX}wesnoth${BINARY_SUFFIX} -e" wesnoth-editor-desktop-modified ${wesnoth-editor-desktop-orig} )
+		#    file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/${BINARY_PREFIX}wesnoth_editor${BINARY_SUFFIX}.desktop ${wesnoth-editor-desktop-modified} )
+		# install the generated .desktop file
+		#    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${BINARY_PREFIX}wesnoth_editor${BINARY_SUFFIX}.desktop DESTINATION ${DESKTOPDIR} )
+		install(FILES icons/wesnoth_editor.desktop DESTINATION ${DESKTOPDIR} )
+		install(FILES icons/wesnoth_editor-icon.png DESTINATION ${ICONDIR} )
+	endif(ENABLE_EDITOR)
 endif(ENABLE_DESKTOP_ENTRY AND ENABLE_GAME)
 
 
 if(ENABLE_SERVER AND FIFO_DIR)
-  install(CODE "execute_process(COMMAND ${CMAKE_COMMAND} -E make_directory \$ENV{DESTDIR}/${FIFO_DIR})")
-  if(SERVER_UID AND SERVER_GID)
-    install(CODE "execute_process(COMMAND chown ${SERVER_UID}:${SERVER_GID} \$ENV{DESTDIR}/${FIFO_DIR})")
-  endif()
+	install(CODE "execute_process(COMMAND ${CMAKE_COMMAND} -E make_directory \$ENV{DESTDIR}/${FIFO_DIR})")
+	if(SERVER_UID AND SERVER_GID)
+		install(CODE "execute_process(COMMAND chown ${SERVER_UID}:${SERVER_GID} \$ENV{DESTDIR}/${FIFO_DIR})")
+	endif()
 endif()
 
 # Index for checking states of localized images at runtime.
@@ -327,12 +329,14 @@ install(FILES l10n-track DESTINATION ${DATADIR})
 #
 
 configure_file(
-  "${CMAKE_MODULE_PATH}/uninstall.cmake.in"
-  "${CMAKE_CURRENT_BINARY_DIR}/uninstall.cmake"
-  IMMEDIATE @ONLY)
+	"${CMAKE_MODULE_PATH}/uninstall.cmake.in"
+	"${CMAKE_CURRENT_BINARY_DIR}/uninstall.cmake"
+	IMMEDIATE @ONLY
+)
 
 add_custom_target(uninstall
-  "${CMAKE_COMMAND}" -P "${CMAKE_CURRENT_BINARY_DIR}/uninstall.cmake")
+	"${CMAKE_COMMAND}" -P "${CMAKE_CURRENT_BINARY_DIR}/uninstall.cmake"
+)
 
 #
 # Packaging stuff
