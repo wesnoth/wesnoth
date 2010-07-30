@@ -22,31 +22,31 @@ include_directories( ${LIBDBUS_INCLUDE_DIRS} )
 
 #optional dependencies
 if(SDLIMAGE_INCLUDE_DIR)
-  include_directories( ${SDLIMAGE_INCLUDE_DIR} )
+	include_directories( ${SDLIMAGE_INCLUDE_DIR} )
 endif()
 if(SDLMIXER_INCLUDE_DIR)
-  include_directories( ${SDLMIXER_INCLUDE_DIR} )
+	include_directories( ${SDLMIXER_INCLUDE_DIR} )
 endif()
 if(SDLNET_INCLUDE_DIR)
-  include_directories( ${SDLNET_INCLUDE_DIR} )
+	include_directories( ${SDLNET_INCLUDE_DIR} )
 endif()
 if(SDLTTF_INCLUDE_DIR)
-  include_directories( ${SDLTTF_INCLUDE_DIR} )
+	include_directories( ${SDLTTF_INCLUDE_DIR} )
 endif()
 if(ZLIB_INCLUDE_DIR)
-  include_directories( ${ZLIB_INCLUDE_DIR} )
+	include_directories( ${ZLIB_INCLUDE_DIR} )
 endif()
 
 
 set(network_implementation_files network.cpp network_worker.cpp)
 
 if(USE_ANA_NETWORK)
-    set(network_implementation_files network_ana.cpp network_manager_ana.cpp)
-    message(STATUS "Compiling network module with ana: ${network_implementation_files}")
+	set(network_implementation_files network_ana.cpp network_manager_ana.cpp)
+	message(STATUS "Compiling network module with ana: ${network_implementation_files}")
 
 	set(ANA_LIBRARIES ana-static)
 
-    add_subdirectory(ana/src)
+	add_subdirectory(ana/src)
 endif(USE_ANA_NETWORK)
 
 # needed to get include paths in the subfolders correct
@@ -94,37 +94,37 @@ if(MSVC)
 		${GOBJECT_LIBRARY}
 	)
 else(MSVC)
-    set(game-external-libs
-        ${game-external-libs}
-        ${Boost_SYSTEM_LIBRARIES}
-    )
+	set(game-external-libs
+		${game-external-libs}
+		${Boost_SYSTEM_LIBRARIES}
+	)
 endif(MSVC)
 
 if(USE_ANA_NETWORK)
-    set(server-external-libs
-        ${common-external-libs}
-        ${ANA_LIBRARIES}
-    )
+	set(server-external-libs
+		${common-external-libs}
+		${ANA_LIBRARIES}
+	)
 else(USE_ANA_NETWORK)
-    set(server-external-libs
-        ${common-external-libs}
-        ${SDLNET_LIBRARY}
-    )
+	set(server-external-libs
+		${common-external-libs}
+		${SDLNET_LIBRARY}
+	)
 endif(USE_ANA_NETWORK)
 
 set(tools-external-libs
-    ${common-external-libs}
-    ${SDLIMAGE_LIBRARY}
+	${common-external-libs}
+	${SDLIMAGE_LIBRARY}
 )
 
 if(ENABLE_FRIBIDI AND FRIBIDI_LIBRARIES)
-  include_directories( ${FRIBIDI_INCLUDE_DIR} )
-  set(game-external-libs ${game-external-libs} ${FRIBIDI_LIBRARIES})
+	include_directories( ${FRIBIDI_INCLUDE_DIR} )
+	set(game-external-libs ${game-external-libs} ${FRIBIDI_LIBRARIES})
 endif(ENABLE_FRIBIDI AND FRIBIDI_LIBRARIES)
 
 if(X11_FOUND)
-  include_directories( ${X11_INCLUDE_DIR} )
-  set(game-external-libs ${game-external-libs} ${X11_LIBRARIES})
+	include_directories( ${X11_INCLUDE_DIR} )
+	set(game-external-libs ${game-external-libs} ${X11_LIBRARIES})
 endif(X11_FOUND)
 #
 # Create targets for revision.hpp
@@ -134,25 +134,24 @@ find_program(SVNVERSION_EXECUTABLE "svnversion")
 
 set(REVISION_FILE)
 if(SVNVERSION_EXECUTABLE)
-  execute_process(COMMAND ${SVNVERSION_EXECUTABLE} -n ${CMAKE_SOURCE_DIR}
-                  OUTPUT_VARIABLE SVN_VERSION)
-  if(SVN_VERSION MATCHES [0-9]+.*)
-    add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/revision-stamp
-                      COMMAND ${CMAKE_COMMAND}
-                      -DSVNVERSION_EXECUTABLE="${SVNVERSION_EXECUTABLE}" -DSRC_DIR="${CMAKE_SOURCE_DIR}"
-                      -P "${CMAKE_MODULE_PATH}/revision.cmake"
-                      WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-                      COMMENT "Updating revision")
+	execute_process(COMMAND ${SVNVERSION_EXECUTABLE} -n ${CMAKE_SOURCE_DIR}
+		OUTPUT_VARIABLE SVN_VERSION)
+	if(SVN_VERSION MATCHES [0-9]+.*)
+		add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/revision-stamp
+			COMMAND ${CMAKE_COMMAND}
+			-DSVNVERSION_EXECUTABLE="${SVNVERSION_EXECUTABLE}" -DSRC_DIR="${CMAKE_SOURCE_DIR}"
+			-P "${CMAKE_MODULE_PATH}/revision.cmake"
+			WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+			COMMENT "Updating revision")
 
-    add_custom_command(OUTPUT revision.hpp
-                       COMMAND ${CMAKE_COMMAND}
-                       -E copy ${CMAKE_CURRENT_BINARY_DIR}/revision-stamp ${CMAKE_CURRENT_SOURCE_DIR}/revision.hpp
-                       DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/revision-stamp)
+		add_custom_command(OUTPUT revision.hpp
+			COMMAND ${CMAKE_COMMAND}
+			-E copy ${CMAKE_CURRENT_BINARY_DIR}/revision-stamp ${CMAKE_CURRENT_SOURCE_DIR}/revision.hpp
+			DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/revision-stamp)
 
-    set(REVISION_FILE revision.hpp)
-    add_definitions(-DHAVE_REVISION)
-  endif(SVN_VERSION MATCHES [0-9]+.*)
-  
+		set(REVISION_FILE revision.hpp)
+		add_definitions(-DHAVE_REVISION)
+	endif(SVN_VERSION MATCHES [0-9]+.*)
 endif(SVNVERSION_EXECUTABLE)
 
 if(MSVC)
@@ -193,35 +192,35 @@ endif(MSVC)
 ########### libwesnoth-core ###############
 
 set(libwesnoth-core_STAT_SRC
-    color_range.cpp
-    config.cpp
-    filesystem.cpp
-    game_config.cpp
-    gettext.cpp
-    hash.cpp
-    log.cpp
-    map.cpp
-    map_location.cpp
-    md5.cpp
-    thread.cpp
-    tstring.cpp
-    util.cpp
-    version.cpp
-    serialization/binary_or_text.cpp
-    serialization/binary_wml.cpp
-    serialization/parser.cpp
-    serialization/preprocessor.cpp
-    serialization/string_utils.cpp
-    serialization/tokenizer.cpp
-    ${REVISION_FILE}
+	color_range.cpp
+	config.cpp
+	filesystem.cpp
+	game_config.cpp
+	gettext.cpp
+	hash.cpp
+	log.cpp
+	map.cpp
+	map_location.cpp
+	md5.cpp
+	thread.cpp
+	tstring.cpp
+	util.cpp
+	version.cpp
+	serialization/binary_or_text.cpp
+	serialization/binary_wml.cpp
+	serialization/parser.cpp
+	serialization/preprocessor.cpp
+	serialization/string_utils.cpp
+	serialization/tokenizer.cpp
+	${REVISION_FILE}
 )
 
 if(ENABLE_POOL_ALLOC AND NOT WIN32)
-  set(libwesnoth-core_STAT_SRC
-      ${libwesnoth-core_STAT_SRC}
-      malloc.c
-      poolalloc.c
-  )
+	set(libwesnoth-core_STAT_SRC
+		${libwesnoth-core_STAT_SRC}
+		malloc.c
+		poolalloc.c
+	)
 endif(ENABLE_POOL_ALLOC AND NOT WIN32)
 
 # a 'lib' is automatically set in front when creating the library (as in the filename)
@@ -232,35 +231,35 @@ add_library(wesnoth-core STATIC EXCLUDE_FROM_ALL ${libwesnoth-core_STAT_SRC})
 ########### libwesnoth-lua ###############
 
 set(libwesnoth-lua_STAT_SRC
-    lua/lapi.c                                               
-    lua/lcode.c                                             
-    lua/ldebug.c
-    lua/ldo.c
-    lua/ldump.c
-    lua/lfunc.c
-    lua/lgc.c
-    lua/llex.c
-    lua/lmem.c
-    lua/lobject.c
-    lua/lopcodes.c
-    lua/lparser.c
-    lua/lstate.c
-    lua/lstring.c
-    lua/ltable.c
-    lua/ltm.c
-    lua/lundump.c
-    lua/lvm.c
-    lua/lzio.c
-    lua/lauxlib.c
-    lua/lbaselib.c
-    lua/ldblib.c
-    lua/liolib.c
-    lua/lmathlib.c
-    lua/loslib.c
-    lua/ltablib.c
-    lua/lstrlib.c
-    lua/loadlib.c
-    lua/linit.c
+	lua/lapi.c                                               
+	lua/lcode.c                                             
+	lua/ldebug.c
+	lua/ldo.c
+	lua/ldump.c
+	lua/lfunc.c
+	lua/lgc.c
+	lua/llex.c
+	lua/lmem.c
+	lua/lobject.c
+	lua/lopcodes.c
+	lua/lparser.c
+	lua/lstate.c
+	lua/lstring.c
+	lua/ltable.c
+	lua/ltm.c
+	lua/lundump.c
+	lua/lvm.c
+	lua/lzio.c
+	lua/lauxlib.c
+	lua/lbaselib.c
+	lua/ldblib.c
+	lua/liolib.c
+	lua/lmathlib.c
+	lua/loslib.c
+	lua/ltablib.c
+	lua/lstrlib.c
+	lua/loadlib.c
+	lua/linit.c
 )
 # We explicitly want lua compiled as C++ version, so this line is required:
 set_source_files_properties(${libwesnoth-lua_STAT_SRC} PROPERTIES LANGUAGE CXX)
@@ -279,250 +278,250 @@ add_library(wesnoth-lua STATIC EXCLUDE_FROM_ALL ${libwesnoth-lua_STAT_SRC})
 # something similar)).
 
 set(wesnoth-main_SRC
-    about.cpp
-    actions.cpp
-    addon/manager.cpp
-    addon/validation.cpp
-    ai/actions.cpp
-    ai/composite/ai.cpp
-    ai/composite/aspect.cpp
-    ai/composite/component.cpp
-    ai/composite/contexts.cpp
-    ai/composite/engine.cpp
-    ai/composite/engine_default.cpp
-    ai/composite/engine_fai.cpp
-    ai/composite/engine_lua.cpp
-    ai/composite/goal.cpp
-    ai/composite/rca.cpp
-    ai/composite/stage.cpp
-    ai/configuration.cpp
-    ai/contexts.cpp
-    ai/default/ai.cpp
-    ai/default/attack.cpp
-    ai/default/contexts.cpp
-    ai/formula/ai.cpp
-    ai/formula/callable_objects.cpp
-    ai/formula/candidates.cpp
-    ai/formula/function_table.cpp
-    ai/formula/stage_side_formulas.cpp
-    ai/formula/stage_unit_formulas.cpp
-    ai/game_info.cpp
-    ai/gamestate_observer.cpp
-    ai/interface.cpp
-    ai/lua/core.cpp
-    ai/manager.cpp
-    ai/registry.cpp
-    ai/testing/aspect_attacks.cpp
-    ai/testing/ca.cpp
-    ai/testing/ca_testing_move_to_targets.cpp
-    ai/testing/stage_rca.cpp
-    ai/testing/stage_fallback.cpp
-    ai/testing.cpp
-    animated_game.cpp
-    attack_prediction.cpp
-    attack_prediction_display.cpp
-    callable_objects.cpp
-    config_cache.cpp
-    controller_base.cpp
-    dialogs.cpp
-    floating_textbox.cpp
-    formula.cpp
-    formula_debugger.cpp
-    formula_debugger_fwd.cpp
-    formula_function.cpp
-    formula_tokenizer.cpp
-    formula_string_utils.cpp
-    game_display.cpp
-    game_events.cpp
-    game_preferences.cpp
-    game_preferences_display.cpp
-    gamestatus.cpp
-    generate_report.cpp
-    generic_event.cpp
-    gui/auxiliary/canvas.cpp
-    gui/auxiliary/event/dispatcher.cpp
-    gui/auxiliary/event/distributor.cpp
-    gui/auxiliary/event/handler.cpp
-    gui/auxiliary/log.cpp
-    gui/auxiliary/timer.cpp
-    gui/auxiliary/widget_definition.cpp
-    gui/auxiliary/widget_definition/button.cpp
-    gui/auxiliary/widget_definition/horizontal_scrollbar.cpp
-    gui/auxiliary/widget_definition/image.cpp
-    gui/auxiliary/widget_definition/label.cpp
-    gui/auxiliary/widget_definition/listbox.cpp
-    gui/auxiliary/widget_definition/minimap.cpp
-    gui/auxiliary/widget_definition/multi_page.cpp
-    gui/auxiliary/widget_definition/panel.cpp
-    gui/auxiliary/widget_definition/progress_bar.cpp
-    gui/auxiliary/widget_definition/repeating_button.cpp
-    gui/auxiliary/widget_definition/scroll_label.cpp
-    gui/auxiliary/widget_definition/scrollbar_panel.cpp
-    gui/auxiliary/widget_definition/slider.cpp
-    gui/auxiliary/widget_definition/spacer.cpp
-    gui/auxiliary/widget_definition/stacked_widget.cpp
-    gui/auxiliary/widget_definition/text_box.cpp
-    gui/auxiliary/widget_definition/toggle_button.cpp
-    gui/auxiliary/widget_definition/toggle_panel.cpp
-    gui/auxiliary/widget_definition/tooltip.cpp
-    gui/auxiliary/widget_definition/tree_view.cpp
-    gui/auxiliary/widget_definition/vertical_scrollbar.cpp
-    gui/auxiliary/widget_definition/window.cpp
-    gui/auxiliary/window_builder/button.cpp
-    gui/auxiliary/window_builder/control.cpp
-    gui/auxiliary/window_builder/helper.cpp
-    gui/auxiliary/window_builder/horizontal_listbox.cpp
-    gui/auxiliary/window_builder/horizontal_scrollbar.cpp
-    gui/auxiliary/window_builder/image.cpp
-    gui/auxiliary/window_builder/label.cpp
-    gui/auxiliary/window_builder/listbox.cpp
-    gui/auxiliary/window_builder/minimap.cpp
-    gui/auxiliary/window_builder/multi_page.cpp
-    gui/auxiliary/window_builder/repeating_button.cpp
-    gui/auxiliary/window_builder/scroll_label.cpp
-    gui/auxiliary/window_builder/scrollbar_panel.cpp
-    gui/auxiliary/window_builder/slider.cpp
-    gui/auxiliary/window_builder/spacer.cpp
-    gui/auxiliary/window_builder/stacked_widget.cpp
-    gui/auxiliary/window_builder/text_box.cpp
-    gui/auxiliary/window_builder/toggle_button.cpp
-    gui/auxiliary/window_builder/vertical_scrollbar.cpp
-    gui/auxiliary/window_builder/panel.cpp
-    gui/auxiliary/window_builder/progress_bar.cpp
-    gui/auxiliary/window_builder/password_box.cpp
-    gui/auxiliary/window_builder/toggle_panel.cpp
-    gui/auxiliary/window_builder/tree_view.cpp
-    gui/auxiliary/window_builder.cpp
-    gui/dialogs/addon_connect.cpp
-    gui/dialogs/addon_list.cpp
-    gui/dialogs/campaign_selection.cpp
-    gui/dialogs/data_manage.cpp
-    gui/dialogs/dialog.cpp
-    gui/dialogs/formula_debugger.cpp
-    gui/dialogs/game_load.cpp
-    gui/dialogs/game_delete.cpp
-    gui/dialogs/game_save.cpp
-    gui/dialogs/gamestate_inspector.cpp
-    gui/dialogs/language_selection.cpp
-    gui/dialogs/lobby/lobby_data.cpp
-    gui/dialogs/lobby/lobby_info.cpp
-    gui/dialogs/lobby_main.cpp
-    gui/dialogs/lobby_player_info.cpp
-    gui/dialogs/message.cpp
-    gui/dialogs/mp_connect.cpp
-    gui/dialogs/mp_create_game.cpp
-    gui/dialogs/mp_method_selection.cpp
-    gui/dialogs/mp_cmd_wrapper.cpp
-    gui/dialogs/title_screen.cpp
-    gui/dialogs/transient_message.cpp
-    gui/dialogs/unit_attack.cpp
-    gui/dialogs/unit_create.cpp
-    gui/dialogs/wml_message.cpp
-    gui/widgets/button.cpp
-    gui/widgets/control.cpp
-    gui/widgets/container.cpp
-    gui/widgets/debug.cpp
-    gui/widgets/generator.cpp
-    gui/widgets/grid.cpp
-    gui/widgets/helper.cpp
-    gui/widgets/horizontal_scrollbar.cpp
-    gui/widgets/image.cpp
-    gui/widgets/label.cpp
-    gui/widgets/list.cpp
-    gui/widgets/listbox.cpp
-    gui/widgets/minimap.cpp
-    gui/widgets/multi_page.cpp
-    gui/widgets/panel.cpp
-    gui/widgets/progress_bar.cpp
-    gui/widgets/password_box.cpp
-    gui/widgets/repeating_button.cpp
-    gui/widgets/settings.cpp
-    gui/widgets/scroll_label.cpp
-    gui/widgets/scrollbar_container.cpp
-    gui/widgets/scrollbar_panel.cpp
-    gui/widgets/scrollbar.cpp
-    gui/widgets/slider.cpp 
-    gui/widgets/spacer.cpp
-    gui/widgets/stacked_widget.cpp
-    gui/widgets/text.cpp
-    gui/widgets/text_box.cpp
-    gui/widgets/toggle_button.cpp 
-    gui/widgets/toggle_panel.cpp 
-    gui/widgets/tooltip.cpp
-    gui/widgets/tree_view.cpp
-    gui/widgets/tree_view_node.cpp
-    gui/widgets/vertical_scrollbar.cpp
-    gui/widgets/widget.cpp
-    gui/widgets/window.cpp
-    halo.cpp
-    help.cpp
-    intro.cpp
-    leader_list.cpp
-    menu_events.cpp
-    mouse_events.cpp
-    mouse_handler_base.cpp
+	about.cpp
+	actions.cpp
+	addon/manager.cpp
+	addon/validation.cpp
+	ai/actions.cpp
+	ai/composite/ai.cpp
+	ai/composite/aspect.cpp
+	ai/composite/component.cpp
+	ai/composite/contexts.cpp
+	ai/composite/engine.cpp
+	ai/composite/engine_default.cpp
+	ai/composite/engine_fai.cpp
+	ai/composite/engine_lua.cpp
+	ai/composite/goal.cpp
+	ai/composite/rca.cpp
+	ai/composite/stage.cpp
+	ai/configuration.cpp
+	ai/contexts.cpp
+	ai/default/ai.cpp
+	ai/default/attack.cpp
+	ai/default/contexts.cpp
+	ai/formula/ai.cpp
+	ai/formula/callable_objects.cpp
+	ai/formula/candidates.cpp
+	ai/formula/function_table.cpp
+	ai/formula/stage_side_formulas.cpp
+	ai/formula/stage_unit_formulas.cpp
+	ai/game_info.cpp
+	ai/gamestate_observer.cpp
+	ai/interface.cpp
+	ai/lua/core.cpp
+	ai/manager.cpp
+	ai/registry.cpp
+	ai/testing/aspect_attacks.cpp
+	ai/testing/ca.cpp
+	ai/testing/ca_testing_move_to_targets.cpp
+	ai/testing/stage_rca.cpp
+	ai/testing/stage_fallback.cpp
+	ai/testing.cpp
+	animated_game.cpp
+	attack_prediction.cpp
+	attack_prediction_display.cpp
+	callable_objects.cpp
+	config_cache.cpp
+	controller_base.cpp
+	dialogs.cpp
+	floating_textbox.cpp
+	formula.cpp
+	formula_debugger.cpp
+	formula_debugger_fwd.cpp
+	formula_function.cpp
+	formula_tokenizer.cpp
+	formula_string_utils.cpp
+	game_display.cpp
+	game_events.cpp
+	game_preferences.cpp
+	game_preferences_display.cpp
+	gamestatus.cpp
+	generate_report.cpp
+	generic_event.cpp
+	gui/auxiliary/canvas.cpp
+	gui/auxiliary/event/dispatcher.cpp
+	gui/auxiliary/event/distributor.cpp
+	gui/auxiliary/event/handler.cpp
+	gui/auxiliary/log.cpp
+	gui/auxiliary/timer.cpp
+	gui/auxiliary/widget_definition.cpp
+	gui/auxiliary/widget_definition/button.cpp
+	gui/auxiliary/widget_definition/horizontal_scrollbar.cpp
+	gui/auxiliary/widget_definition/image.cpp
+	gui/auxiliary/widget_definition/label.cpp
+	gui/auxiliary/widget_definition/listbox.cpp
+	gui/auxiliary/widget_definition/minimap.cpp
+	gui/auxiliary/widget_definition/multi_page.cpp
+	gui/auxiliary/widget_definition/panel.cpp
+	gui/auxiliary/widget_definition/progress_bar.cpp
+	gui/auxiliary/widget_definition/repeating_button.cpp
+	gui/auxiliary/widget_definition/scroll_label.cpp
+	gui/auxiliary/widget_definition/scrollbar_panel.cpp
+	gui/auxiliary/widget_definition/slider.cpp
+	gui/auxiliary/widget_definition/spacer.cpp
+	gui/auxiliary/widget_definition/stacked_widget.cpp
+	gui/auxiliary/widget_definition/text_box.cpp
+	gui/auxiliary/widget_definition/toggle_button.cpp
+	gui/auxiliary/widget_definition/toggle_panel.cpp
+	gui/auxiliary/widget_definition/tooltip.cpp
+	gui/auxiliary/widget_definition/tree_view.cpp
+	gui/auxiliary/widget_definition/vertical_scrollbar.cpp
+	gui/auxiliary/widget_definition/window.cpp
+	gui/auxiliary/window_builder/button.cpp
+	gui/auxiliary/window_builder/control.cpp
+	gui/auxiliary/window_builder/helper.cpp
+	gui/auxiliary/window_builder/horizontal_listbox.cpp
+	gui/auxiliary/window_builder/horizontal_scrollbar.cpp
+	gui/auxiliary/window_builder/image.cpp
+	gui/auxiliary/window_builder/label.cpp
+	gui/auxiliary/window_builder/listbox.cpp
+	gui/auxiliary/window_builder/minimap.cpp
+	gui/auxiliary/window_builder/multi_page.cpp
+	gui/auxiliary/window_builder/repeating_button.cpp
+	gui/auxiliary/window_builder/scroll_label.cpp
+	gui/auxiliary/window_builder/scrollbar_panel.cpp
+	gui/auxiliary/window_builder/slider.cpp
+	gui/auxiliary/window_builder/spacer.cpp
+	gui/auxiliary/window_builder/stacked_widget.cpp
+	gui/auxiliary/window_builder/text_box.cpp
+	gui/auxiliary/window_builder/toggle_button.cpp
+	gui/auxiliary/window_builder/vertical_scrollbar.cpp
+	gui/auxiliary/window_builder/panel.cpp
+	gui/auxiliary/window_builder/progress_bar.cpp
+	gui/auxiliary/window_builder/password_box.cpp
+	gui/auxiliary/window_builder/toggle_panel.cpp
+	gui/auxiliary/window_builder/tree_view.cpp
+	gui/auxiliary/window_builder.cpp
+	gui/dialogs/addon_connect.cpp
+	gui/dialogs/addon_list.cpp
+	gui/dialogs/campaign_selection.cpp
+	gui/dialogs/data_manage.cpp
+	gui/dialogs/dialog.cpp
+	gui/dialogs/formula_debugger.cpp
+	gui/dialogs/game_load.cpp
+	gui/dialogs/game_delete.cpp
+	gui/dialogs/game_save.cpp
+	gui/dialogs/gamestate_inspector.cpp
+	gui/dialogs/language_selection.cpp
+	gui/dialogs/lobby/lobby_data.cpp
+	gui/dialogs/lobby/lobby_info.cpp
+	gui/dialogs/lobby_main.cpp
+	gui/dialogs/lobby_player_info.cpp
+	gui/dialogs/message.cpp
+	gui/dialogs/mp_connect.cpp
+	gui/dialogs/mp_create_game.cpp
+	gui/dialogs/mp_method_selection.cpp
+	gui/dialogs/mp_cmd_wrapper.cpp
+	gui/dialogs/title_screen.cpp
+	gui/dialogs/transient_message.cpp
+	gui/dialogs/unit_attack.cpp
+	gui/dialogs/unit_create.cpp
+	gui/dialogs/wml_message.cpp
+	gui/widgets/button.cpp
+	gui/widgets/control.cpp
+	gui/widgets/container.cpp
+	gui/widgets/debug.cpp
+	gui/widgets/generator.cpp
+	gui/widgets/grid.cpp
+	gui/widgets/helper.cpp
+	gui/widgets/horizontal_scrollbar.cpp
+	gui/widgets/image.cpp
+	gui/widgets/label.cpp
+	gui/widgets/list.cpp
+	gui/widgets/listbox.cpp
+	gui/widgets/minimap.cpp
+	gui/widgets/multi_page.cpp
+	gui/widgets/panel.cpp
+	gui/widgets/progress_bar.cpp
+	gui/widgets/password_box.cpp
+	gui/widgets/repeating_button.cpp
+	gui/widgets/settings.cpp
+	gui/widgets/scroll_label.cpp
+	gui/widgets/scrollbar_container.cpp
+	gui/widgets/scrollbar_panel.cpp
+	gui/widgets/scrollbar.cpp
+	gui/widgets/slider.cpp 
+	gui/widgets/spacer.cpp
+	gui/widgets/stacked_widget.cpp
+	gui/widgets/text.cpp
+	gui/widgets/text_box.cpp
+	gui/widgets/toggle_button.cpp 
+	gui/widgets/toggle_panel.cpp 
+	gui/widgets/tooltip.cpp
+	gui/widgets/tree_view.cpp
+	gui/widgets/tree_view_node.cpp
+	gui/widgets/vertical_scrollbar.cpp
+	gui/widgets/widget.cpp
+	gui/widgets/window.cpp
+	halo.cpp
+	help.cpp
+	intro.cpp
+	leader_list.cpp
+	menu_events.cpp
+	mouse_events.cpp
+	mouse_handler_base.cpp
 	mp_game_settings.cpp
-    multiplayer.cpp
-    multiplayer_ui.cpp
-    multiplayer_wait.cpp
-    multiplayer_connect.cpp
-    multiplayer_create.cpp
-    ${network_implementation_files} # network.cpp and network_worker.cpp are included by default (without USE_ANA_NETWORK)
-    persist_context.cpp
-    persist_manager.cpp
-    persist_var.cpp
-    playcampaign.cpp
-    play_controller.cpp
-    playmp_controller.cpp
-    playsingle_controller.cpp
-    playturn.cpp
-    portrait.cpp
-    replay.cpp
-    replay_controller.cpp
-    resources.cpp
-    save_blocker.cpp
-    savegame.cpp
-    savegame_config.cpp
-    scripting/lua.cpp
-    sha1.cpp
-    settings.cpp
-    statistics.cpp
-    statistics_dialog.cpp
-    storyscreen/interface.cpp
-    storyscreen/controller.cpp
-    storyscreen/part.cpp
-    storyscreen/render.cpp
-    team.cpp
-    terrain_filter.cpp
-    titlescreen.cpp
-    tod_manager.cpp
-    tooltips.cpp
-    unit.cpp
-    unit_abilities.cpp
-    unit_animation.cpp
-    unit_display.cpp
-    unit_frame.cpp
-    unit_helper.cpp
-    unit_id.cpp
-    unit_map.cpp
-    unit_types.cpp
-    upload_log.cpp
-    variable.cpp
-    variant.cpp
-    whiteboard/action.cpp
-    whiteboard/attack.cpp
-    whiteboard/manager.cpp
-    whiteboard/move.cpp
-    whiteboard/highlight_visitor.cpp
-    whiteboard/mapbuilder_visitor.cpp
-    whiteboard/recruit.cpp
-    whiteboard/side_actions.cpp
-    whiteboard/validate_visitor.cpp
-    whiteboard/visitor.cpp
-    widgets/combo.cpp
-    widgets/combo_drag.cpp
-    widgets/drop_target.cpp
-    widgets/scrollpane.cpp
+	multiplayer.cpp
+	multiplayer_ui.cpp
+	multiplayer_wait.cpp
+	multiplayer_connect.cpp
+	multiplayer_create.cpp
+	${network_implementation_files} # network.cpp and network_worker.cpp are included by default (without USE_ANA_NETWORK)
+	persist_context.cpp
+	persist_manager.cpp
+	persist_var.cpp
+	playcampaign.cpp
+	play_controller.cpp
+	playmp_controller.cpp
+	playsingle_controller.cpp
+	playturn.cpp
+	portrait.cpp
+	replay.cpp
+	replay_controller.cpp
+	resources.cpp
+	save_blocker.cpp
+	savegame.cpp
+	savegame_config.cpp
+	scripting/lua.cpp
+	sha1.cpp
+	settings.cpp
+	statistics.cpp
+	statistics_dialog.cpp
+	storyscreen/interface.cpp
+	storyscreen/controller.cpp
+	storyscreen/part.cpp
+	storyscreen/render.cpp
+	team.cpp
+	terrain_filter.cpp
+	titlescreen.cpp
+	tod_manager.cpp
+	tooltips.cpp
+	unit.cpp
+	unit_abilities.cpp
+	unit_animation.cpp
+	unit_display.cpp
+	unit_frame.cpp
+	unit_helper.cpp
+	unit_id.cpp
+	unit_map.cpp
+	unit_types.cpp
+	upload_log.cpp
+	variable.cpp
+	variant.cpp
+	whiteboard/action.cpp
+	whiteboard/attack.cpp
+	whiteboard/manager.cpp
+	whiteboard/move.cpp
+	whiteboard/highlight_visitor.cpp
+	whiteboard/mapbuilder_visitor.cpp
+	whiteboard/recruit.cpp
+	whiteboard/side_actions.cpp
+	whiteboard/validate_visitor.cpp
+	whiteboard/visitor.cpp
+	widgets/combo.cpp
+	widgets/combo_drag.cpp
+	widgets/drop_target.cpp
+	widgets/scrollpane.cpp
 )
 
 
@@ -552,64 +551,64 @@ endif(ENABLE_EDITOR)
 # rename libwesnoth.a to libwesnoth-game.a to have clearer targets
 
 set(libwesnoth-game_STAT_SRC
-    arrow.cpp
-    builder.cpp
-    cavegen.cpp
-    clipboard.cpp
-    construct_dialog.cpp
-    cursor.cpp
-    display.cpp
-    events.cpp
-    filechooser.cpp
-    font.cpp
-    hotkeys.cpp
-    image.cpp
-    image_function.cpp
-    key.cpp
-    language.cpp
-    loadscreen.cpp
-    lobby_preferences.cpp
-    map_create.cpp
-    map_label.cpp
-    mapgen.cpp
-    mapgen_dialog.cpp
-    marked-up_text.cpp
-    minimap.cpp
-    pathfind/astarsearch.cpp
-    pathutils.cpp
-    preferences.cpp
-    preferences_display.cpp
-    race.cpp
-    random.cpp
-    reports.cpp
-    sdl_utils.cpp
-    show_dialog.cpp
-    sound.cpp
-    soundsource.cpp
-    sound_music_track.cpp
-    terrain.cpp
-    terrain_translation.cpp
-    text.cpp
-    time_of_day.cpp
-    video.cpp
-    theme.cpp
-    widgets/button.cpp
-    widgets/file_menu.cpp
-    widgets/label.cpp
-    widgets/menu.cpp
-    widgets/menu_style.cpp
-    widgets/progressbar.cpp
-    widgets/scrollarea.cpp
-    widgets/scrollbar.cpp
-    widgets/slider.cpp
-    widgets/textbox.cpp
-    widgets/widget.cpp
-    wml_exception.cpp
+	arrow.cpp
+	builder.cpp
+	cavegen.cpp
+	clipboard.cpp
+	construct_dialog.cpp
+	cursor.cpp
+	display.cpp
+	events.cpp
+	filechooser.cpp
+	font.cpp
+	hotkeys.cpp
+	image.cpp
+	image_function.cpp
+	key.cpp
+	language.cpp
+	loadscreen.cpp
+	lobby_preferences.cpp
+	map_create.cpp
+	map_label.cpp
+	mapgen.cpp
+	mapgen_dialog.cpp
+	marked-up_text.cpp
+	minimap.cpp
+	pathfind/astarsearch.cpp
+	pathutils.cpp
+	preferences.cpp
+	preferences_display.cpp
+	race.cpp
+	random.cpp
+	reports.cpp
+	sdl_utils.cpp
+	show_dialog.cpp
+	sound.cpp
+	soundsource.cpp
+	sound_music_track.cpp
+	terrain.cpp
+	terrain_translation.cpp
+	text.cpp
+	time_of_day.cpp
+	video.cpp
+	theme.cpp
+	widgets/button.cpp
+	widgets/file_menu.cpp
+	widgets/label.cpp
+	widgets/menu.cpp
+	widgets/menu_style.cpp
+	widgets/progressbar.cpp
+	widgets/scrollarea.cpp
+	widgets/scrollbar.cpp
+	widgets/slider.cpp
+	widgets/textbox.cpp
+	widgets/widget.cpp
+	wml_exception.cpp
 )
 
 set(libwesnoth-game_STAT_SRC
-    ${libwesnoth-game_STAT_SRC}
-    pathfind/pathfind.cpp
+	${libwesnoth-game_STAT_SRC}
+	pathfind/pathfind.cpp
 )
 
 if(ENABLE_GAME AND ENABLE_TESTS)
@@ -673,21 +672,21 @@ if(ENABLE_SERVER)
 
 set(wesnothd_SRC
 	server/ban.cpp
-    server/game.cpp
-    server/input_stream.cpp
-    server/metrics.cpp
-    server/player.cpp
-    server/player_network.cpp
-    server/proxy.cpp
-    server/room.cpp
-    server/room_manager.cpp
-    server/server.cpp
-    server/simple_wml.cpp
-    server/user_handler.cpp
-    server/forum_user_handler.cpp
-    server/sample_user_handler.cpp
-    ${network_implementation_files}
-    loadscreen_empty.cpp 
+	server/game.cpp
+	server/input_stream.cpp
+	server/metrics.cpp
+	server/player.cpp
+	server/player_network.cpp
+	server/proxy.cpp
+	server/room.cpp
+	server/room_manager.cpp
+	server/server.cpp
+	server/simple_wml.cpp
+	server/user_handler.cpp
+	server/forum_user_handler.cpp
+	server/sample_user_handler.cpp
+	${network_implementation_files}
+	loadscreen_empty.cpp 
 )
 
 add_executable(wesnothd WIN32
@@ -707,11 +706,11 @@ if(ENABLE_CAMPAIGN_SERVER)
 
 set(campaignd_SRC
 	network_worker.cpp # NEEDED when compiling with ANA support
-    addon/validation.cpp
-    campaign_server/campaign_server.cpp
-    server/input_stream.cpp
-    ${network_implementation_files}
-    loadscreen_empty.cpp
+	addon/validation.cpp
+	campaign_server/campaign_server.cpp
+	server/input_stream.cpp
+	${network_implementation_files}
+	loadscreen_empty.cpp
 )
 
 add_executable(campaignd ${campaignd_SRC})
@@ -731,13 +730,13 @@ endif(ENABLE_CAMPAIGN_SERVER)
 if(ENABLE_TOOLS)
 
 set(exploder_SRC
-    tools/exploder.cpp
-    tools/exploder_utils.cpp
-    tools/exploder_cutter.cpp
-    tools/exploder_composer.cpp
-    tools/dummy_video.cpp
-    sdl_utils.cpp
-    loadscreen_empty.cpp
+	tools/exploder.cpp
+	tools/exploder_utils.cpp
+	tools/exploder_cutter.cpp
+	tools/exploder_composer.cpp
+	tools/dummy_video.cpp
+	sdl_utils.cpp
+	loadscreen_empty.cpp
 )
 
 add_executable(exploder ${exploder_SRC})
@@ -747,12 +746,12 @@ set_target_properties(exploder PROPERTIES OUTPUT_NAME ${BINARY_PREFIX}exploder${
 install(TARGETS exploder DESTINATION ${BINDIR})
 
 set(cutter_SRC
-    tools/cutter.cpp
-    tools/exploder_utils.cpp
-    tools/exploder_cutter.cpp
-    tools/dummy_video.cpp
-    sdl_utils.cpp
-    loadscreen_empty.cpp
+	tools/cutter.cpp
+	tools/exploder_utils.cpp
+	tools/exploder_cutter.cpp
+	tools/dummy_video.cpp
+	sdl_utils.cpp
+	loadscreen_empty.cpp
 )
 
 add_executable(cutter ${cutter_SRC})
