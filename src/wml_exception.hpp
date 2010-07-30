@@ -23,6 +23,7 @@
 
 #include "tstring.hpp"
 
+#include <exception>
 #include <string>
 
 class display;
@@ -74,9 +75,10 @@ inline void wml_exception(const char* cond, const char* file,
 }
 
 /** Helper class, don't construct this directly. */
-struct twml_exception
+struct twml_exception: std::exception
 {
 	twml_exception(const t_string& user_msg, const std::string& dev_msg);
+	~twml_exception() throw() {}
 
 	/**
 	 *  The message for the user explaining what went wrong. This message can
@@ -96,6 +98,9 @@ struct twml_exception
 	 *  @param disp         The display object to show the message on.
 	 */
 	void show(display &disp);
+
+	const char *what() const throw()
+	{ return user_message.c_str(); }
 };
 
 /**
