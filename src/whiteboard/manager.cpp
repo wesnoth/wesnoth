@@ -305,6 +305,12 @@ void manager::on_mouseover_change(const map_location& hex)
 	}
 }
 
+void manager::on_gamestate_change()
+{
+	DBG_WB << "Manager received gamestate change notification, validating actions.\n";
+	validate_viewer_actions();
+}
+
 void manager::create_temp_move()
 {
 	route_.reset();

@@ -39,6 +39,7 @@
 #include "wml_exception.hpp"
 #include "formula_string_utils.hpp"
 #include "tod_manager.hpp"
+#include "whiteboard/manager.hpp"
 
 
 #include <boost/bind.hpp>
@@ -485,6 +486,8 @@ void place_recruit(const unit &u, const map_location &recruit_location,
 		cfg["checksum"] = checksum;
 		set_random_results(cfg);
 	}
+
+	resources::whiteboard->on_gamestate_change();
 }
 
 map_location under_leadership(const unit_map& units,
@@ -1181,6 +1184,7 @@ void attack_unit(const map_location &attacker, const map_location &defender,
 {
 	attack dummy(attacker, defender, attack_with, defend_with, update_display);
 	dummy.perform();
+	resources::whiteboard->on_gamestate_change();
 }
 
 attack::attack(const map_location &attacker, const map_location &defender,
@@ -1973,6 +1977,8 @@ void advance_unit(map_location loc, const std::string &advance_to)
 	resources::units->replace(loc, new_unit);
 	LOG_NG << "firing post_advance event at " << loc << "\n";
 	game_events::fire("post_advance",loc);
+
+	resources::whiteboard->on_gamestate_change();
 }
 
 int combat_modifier(const map_location &loc,
@@ -2557,6 +2563,8 @@ size_t move_unit(move_unit_spectator *move_spectator,
 	disp.recalculate_minimap();
 
 	assert(steps.size() <= route.size());
+
+	resources::whiteboard->on_gamestate_change();
 
 	return steps.size();
 }

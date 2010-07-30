@@ -65,6 +65,7 @@ public:
 	void on_mouseover_change(const map_location& hex);
 	void on_select_hex(){}
 	void on_deselect_hex(){ erase_temp_move();}
+	void on_gamestate_change();
 
 	side_actions_ptr viewer_actions() const;
 	side_actions_ptr current_side_actions() const;
