@@ -13,7 +13,7 @@
  */
 
 /**
- * @file recruit.hpp
+ * @file
  */
 
 #ifndef WB_RECRUIT_HPP_
