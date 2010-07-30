@@ -614,16 +614,11 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse) {
 	waypoints_.clear();
 	show_partial_move_ = false;
 
-	resources::whiteboard->set_planned_unit_map();
+	wb::scoped_planned_unit_map planned_unit_map; //lasts for whole method
 
 	unit_map::iterator u = find_unit(hex);
 
-	resources::whiteboard->set_real_unit_map();
-
-
-	if (hex.valid() && u != units_.end() && !u->get_hidden()) {
-
-		resources::whiteboard->set_planned_unit_map();
+	if (hex.valid() && u != units_.end() && u.valid() && !u->get_hidden()) {
 
 		next_unit_ = u->get_location();
 
@@ -642,8 +637,6 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse) {
 		// and not from the mouseover on an enemy
 		enemy_paths_ = false;
 		gui().set_route(NULL);
-
-		resources::whiteboard->set_real_unit_map();
 
 		// selection have impact only if we are not observing and it's our unit
 		if (!commands_disabled && u->side() == gui().viewing_side()) {
