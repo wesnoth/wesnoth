@@ -98,13 +98,17 @@
 
 #else
 #define LUA_ROOT	"/usr/local/"
+#define LUA_ROOT2	"/usr/"
 #define LUA_LDIR	LUA_ROOT "share/lua/5.1/"
+#define LUA_LDIR2	LUA_ROOT2 "share/lua/5.1/"
 #define LUA_CDIR	LUA_ROOT "lib/lua/5.1/"
+#define LUA_CDIR2	LUA_ROOT2 "lib/lua/5.1/"
 #define LUA_PATH_DEFAULT  \
 		"./?.lua;"  LUA_LDIR"?.lua;"  LUA_LDIR"?/init.lua;" \
-		            LUA_CDIR"?.lua;"  LUA_CDIR"?/init.lua"
+		            LUA_CDIR"?.lua;"  LUA_CDIR"?/init.lua;" \
+		            LUA_LDIR2"?.lua;"  LUA_LDIR2"?/init.lua"
 #define LUA_CPATH_DEFAULT \
-	"./?.so;"  LUA_CDIR"?.so;" LUA_CDIR"loadall.so"
+	"./?.so;" LUA_CDIR"?.so;" LUA_CDIR2"?.so;" LUA_CDIR"loadall.so"
 #endif
 
 
