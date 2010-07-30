@@ -166,24 +166,33 @@ void validate_visitor::visit_attack(attack_ptr attack)
 
 void validate_visitor::visit_recruit(recruit_ptr recruit)
 {
+	log_scope("validate_visitor::visit_recruit");
 	//invalidate recruit hex so number display is updated properly
 	resources::screen->invalidate(recruit->recruit_hex_);
+
+	int team_index = resources::screen->viewing_team();
 
 	//Check that destination hex is still free
 	if(resources::units->find(recruit->recruit_hex_) != resources::units->end())
 	{
+		LOG_WB << "Recruit set as invalid because target hex is occupied.\n";
 		recruit->set_valid(false);
 	}
 	//Check that unit to recruit is still in side's recruit list
 	if (recruit->is_valid())
 	{
-		int team_index = resources::screen->viewing_team();
 		const std::set<std::string>& recruits = (*resources::teams)[team_index].recruits();
 		if (recruits.find(recruit->unit_name_) == recruits.end())
 		{
 			recruit->set_valid(false);
 			LOG_WB << " Validate visitor: Planned recruit invalid since unit is not in recruit list anymore.\n";
 		}
+	}
+	//Check that there is still enough gold to recruit this unit
+	if (recruit->is_valid() && recruit->temp_unit_->cost() > (*resources::teams)[team_index].gold())
+	{
+		LOG_WB << "Recruit set as invalid, team doesn't have enough gold.\n";
+		recruit->set_valid(false);
 	}
 }
 
