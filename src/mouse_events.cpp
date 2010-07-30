@@ -241,7 +241,10 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 					unit_movement_resetter move_reset(*selected_unit,
 							selected_unit->side() != side_num_);
 
-					current_route_ = get_route(selected_unit, dest, waypoints_, viewing_team());
+					{ // start planned unit map scope
+						wb::scoped_planned_pathfind_map planned_pathfind_map;
+						current_route_ = get_route(selected_unit, dest, waypoints_, viewing_team());
+					} // end planned unit map scope
 					resources::whiteboard->create_temp_move();
 
 					if(!browse) {
@@ -261,8 +264,11 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 
 					bool teleport = un->get_ability_bool("teleport");
 
-					current_paths_ = pathfind::paths(map_,units_,new_hex,teams_,
-														false,teleport,viewing_team(),path_turns_);
+					{ // start planned unit map scope
+						wb::scoped_planned_pathfind_map planned_pathfind_map;
+						current_paths_ = pathfind::paths(map_,units_,new_hex,teams_,
+															false,teleport,viewing_team(),path_turns_);
+					} // end planned unit map scope
 
 					gui().highlight_reach(current_paths_);
 					enemy_paths_ = true;
@@ -270,7 +276,11 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 					//unit is on our team, show path if the unit has one
 					const map_location go_to = un->get_goto();
 					if(map_.on_board(go_to)) {
-						pathfind::marked_route route = get_route(un, go_to, un->waypoints(), current_team());
+						pathfind::marked_route route;
+						{ // start planned unit map scope
+							wb::scoped_planned_pathfind_map planned_pathfind_map;
+							route = get_route(un, go_to, un->waypoints(), current_team());
+						} // end planned unit map scope
 						gui().set_route(&route);
 					}
 					over_route_ = true;
