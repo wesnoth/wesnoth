@@ -18,10 +18,8 @@
  *
  */
 
-extern "C" {
-#include <lualib.h>
-#include <lauxlib.h>
-}
+#include "lua/lualib.h"
+#include "lua/lauxlib.h"
 
 #include <cassert>
 #include <cstring>

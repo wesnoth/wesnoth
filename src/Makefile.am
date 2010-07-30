@@ -340,8 +340,8 @@ wesnoth_SOURCES = \
 	game.cpp \
 	$(wesnoth_source)
 
-wesnoth_LDADD = $(INTERNALLIBS) $(THELIBS) $(PANGO_LIBS) $(FONTCONFIG_LIBS)
-wesnoth_DEPENDENCIES=libwesnoth-core.a libwesnoth.a
+wesnoth_LDADD = $(INTERNALLIBS) $(THELIBS) $(PANGO_LIBS) $(FONTCONFIG_LIBS) lua/liblua.a
+wesnoth_DEPENDENCIES=libwesnoth-core.a libwesnoth.a lua/liblua.a
 if ANA
 wesnoth_LDADD += $(BOOST_SYSTEM_LIBS) $(BOOST_THREAD_LIBS) -lana
 wesnoth_DEPENDENCIES += libana.a
@@ -556,6 +556,9 @@ libana_a_SOURCES = \
 	ana/src/asio_timers.cpp
 CXXFLAGS += -Iana/api
 endif
+
+lua/liblua.a:
+	$(MAKE) -C lua/ a CC="$(CXX)"
 
 # Until game_config.cpp is removed, this will be needed to ensure that the
 # REVISION constant gets updated correctly.  If and when that definition is
