@@ -139,23 +139,26 @@ void validate_visitor::visit_attack(attack_ptr attack)
 	//invalidate target hex to make sure attack indicators are updated
 	resources::screen->invalidate(attack->get_dest_hex());
 	resources::screen->invalidate(attack->target_hex_);
-
-	if (attack->target_hex_.valid())
-	{
-		//TODO: verify that the target hex contains the same unit that before,
-		// comparing for example the underlying unit ID
-		if (resources::units->find(attack->target_hex_) == resources::units->end())
-		{
-			attack->set_valid(false);
-		}
-		else
-		{
-			visit_move(boost::static_pointer_cast<move>(attack));
-		}
-	}
-	else
+	//Verify that the target hex is still valid
+	if (!attack->target_hex_.valid())
 	{
 		attack->set_valid(false);
+	}
+	//Verify that the target hex isn't empty
+	if (attack->is_valid() && resources::units->find(attack->target_hex_) == resources::units->end())
+	{
+		attack->set_valid(false);
+	}
+
+	//TODO: verify that the target hex contains the same unit that before,
+	// comparing for example the underlying unit ID
+
+	//TODO: Verify that the target unit is our enemy
+
+	//If all checks pass, then call the visitor on the superclass
+	if (attack->is_valid())
+	{
+		visit_move(boost::static_pointer_cast<move>(attack));
 	}
 
 	if (!attack->is_valid())
