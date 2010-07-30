@@ -306,7 +306,6 @@ if env["prereqs"]:
     have_client_prereqs = have_server_prereqs and \
         conf.CheckPango("cairo") and \
         conf.CheckPKG("fontconfig") and \
-        conf.CheckLua(require_version = "5.1") and \
         conf.CheckBoost("regex", require_version = "1.35.0") and \
         conf.CheckSDL("SDL_ttf", require_version = "2.0.8") and \
         conf.CheckSDL("SDL_mixer", require_version = '1.2.0') and \

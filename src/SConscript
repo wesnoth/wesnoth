@@ -421,6 +421,9 @@ if env["editor"]:
     wesnoth_sources += wesnoth_editor_sources
 
 libwesnoth_extras = client_env.Library("wesnoth_extras", wesnoth_sources)
+
+lua = SConscript("lua/SConscript")
+
 #
 # Target declarations
 #
@@ -447,7 +450,7 @@ for env in [test_env, client_env, env]:
 
 game_cpp = client_env.Object("game.cpp", EXTRA_DEFINE = not env["pool_alloc"] and "DISABLE_POOL_ALLOC" or None);
 
-client_env.WesnothProgram("wesnoth", [game_cpp] + [libwesnoth_extras, libwesnoth_core, libwesnoth_sdl, libwesnoth, env["wesnoth_res"]], have_client_prereqs)
+client_env.WesnothProgram("wesnoth", [game_cpp] + [libwesnoth_extras, libwesnoth_core, libwesnoth_sdl, libwesnoth, lua, env["wesnoth_res"]], have_client_prereqs)
 
 campaignd_sources = Split("""
     server/input_stream.cpp

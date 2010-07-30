@@ -1,0 +1,35 @@
+# vi: syntax=python:et:ts=4
+Import("env")
+lua_sources = Split("""
+lapi.c                                               
+lcode.c                                             
+ldebug.c
+ldo.c
+ldump.c
+lfunc.c
+lgc.c
+llex.c
+lmem.c
+lobject.c
+lopcodes.c
+lparser.c
+lstate.c
+lstring.c
+ltable.c
+ltm.c
+lundump.c
+lvm.c
+lzio.c
+lauxlib.c
+lbaselib.c
+ldblib.c
+liolib.c
+lmathlib.c
+loslib.c
+ltablib.c
+lstrlib.c
+loadlib.c
+linit.c
+""")
+liblua = env.Library("lua", lua_sources, CCCOM = env["CXXCOM"], CPPPATH = [Dir(".").srcnode()])
+Return("liblua")
