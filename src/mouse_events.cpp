@@ -316,25 +316,33 @@ unit_map::const_iterator mouse_handler::find_unit(const map_location& hex) const
 
 map_location mouse_handler::current_unit_attacks_from(const map_location& loc)
 {
-	const unit_map::const_iterator current = find_unit(selected_hex_);
-	if (current == units_.end() ||
-			(current->side() != side_num_ &&
-					!(resources::whiteboard->is_active())
-					&& current->side() != resources::screen->viewing_side()) ||
-	    current->attacks_left()==0) {
+	log_scope("current_unit_attacks_from");
+	if(loc == selected_hex_)
 		return map_location();
+
+	{
+		const unit_map::const_iterator current = find_unit(selected_hex_);
+		bool eligible = current != units_.end();
+		if (!eligible) return map_location();
+
+		eligible &= current->side() == side_num_ || (resources::whiteboard->is_active()
+													&& current->side() == resources::screen->viewing_side());
+		eligible &= current->attacks_left() != 0;
+		if (!eligible) return map_location();
 	}
 
-	const unit_map::const_iterator enemy = find_unit(loc);
-	bool show_for_whiteboard =
-			enemy != units_.end() &&
-			resources::whiteboard->is_active() &&
-			(*resources::teams)[resources::screen->viewing_team()].is_enemy(enemy->side());
-	if (enemy == units_.end() ||
-			!(current_team().is_enemy(enemy->side()) ||	show_for_whiteboard) ||
-	    enemy->incapacitated())
 	{
-		return map_location();
+		team viewing_team = (*resources::teams)[resources::screen->viewing_team()];
+
+		const unit_map::const_iterator enemy = find_unit(loc);
+		bool eligible = enemy != units_.end();
+		if (!eligible) return map_location();
+
+		bool show_for_whiteboard = resources::whiteboard->is_active() &&
+				viewing_team.is_enemy(enemy->side());
+		eligible &= show_for_whiteboard || current_team().is_enemy(enemy->side());
+		eligible &= !enemy->incapacitated();
+		if (!eligible) return map_location();
 	}
 
 	const map_location::DIRECTION preferred = loc.get_relative_dir(previous_hex_);
@@ -508,7 +516,7 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 			current_route_.steps.clear();
 			resources::whiteboard->save_temp_attack(attack_from, clicked_u->get_location());
 		return false;
-		} else if (u.valid() && clicked_u.valid()) {
+		} else if (u.valid() && clicked_u.valid() && u->side() == side_num_) {
 			if (attack_from == selected_hex_) { //no move needed
 				int choice = show_attack_dialog(attack_from, clicked_u->get_location());
 				if (choice >=0 ) {
