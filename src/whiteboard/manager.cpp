@@ -68,7 +68,7 @@ static void print_to_chat(const std::string& title, const std::string& message)
 void manager::print_help()
 {
 	print_to_chat("whiteboard", std::string("Type :wb to activate/deactivate the whiteboard.")
-		+ "  Hold CTRL to temporarily deactivate/activate it.");
+		+ "  Hold TAB to temporarily deactivate/activate it.");
 	print_to_chat("-------------",  "List of whiteboard hotkeys:");
 	const hotkey::hotkey_item& hk_execute = hotkey::get_hotkey(hotkey::HOTKEY_WB_EXECUTE_ACTION);
 	if(!hk_execute.null()) {
