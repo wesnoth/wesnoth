@@ -164,7 +164,7 @@ void manager::set_invert_behavior(bool invert)
 
 bool manager::can_execute_hotkey() const
 {
-	return !viewer_actions()->empty();
+	return !resources::controller->is_linger_mode() && !viewer_actions()->empty();
 }
 
 void manager::on_init_side()
@@ -317,7 +317,7 @@ void manager::create_temp_move()
 {
 	route_.reset();
 
-	if (!active_) return;
+	if (!active_ || resources::controller->is_linger_mode()) return;
 
 	/*
 	 * CHECK PRE-CONDITIONS
@@ -409,7 +409,7 @@ void manager::erase_temp_move()
 
 void manager::save_temp_move()
 {
-	if (has_temp_move() && !executing_actions_)
+	if (has_temp_move() && !executing_actions_ && !resources::controller->is_linger_mode())
 	{
 		scoped_planned_unit_map planned_unit_map;
 
@@ -433,7 +433,7 @@ void manager::save_temp_move()
 
 void manager::save_temp_attack(const map_location& attack_from, const map_location& target_hex)
 {
-	if (active_ && !executing_actions_)
+	if (active_ && !executing_actions_ && !resources::controller->is_linger_mode())
 	{
 		arrow_ptr move_arrow;
 		fake_unit_ptr fake_unit;
@@ -484,7 +484,7 @@ bool manager::save_recruit(const std::string& name, int side_num, const map_loca
 {
 	bool created_planned_recruit = false;
 
-	if (active_) {
+	if (active_ && !resources::controller->is_linger_mode()) {
 		if (side_num != resources::screen->viewing_side())
 		{
 			LOG_WB <<"manager::save_recruit called for a different side than viewing side.\n";
@@ -507,7 +507,7 @@ bool manager::save_recruit(const std::string& name, int side_num, const map_loca
 
 void manager::contextual_execute()
 {
-	if (!(executing_actions_ || viewer_actions()->empty())
+	if (!(executing_actions_ || viewer_actions()->empty() || resources::controller->is_linger_mode())
 			&& resources::controller->current_side() == resources::screen->viewing_side())
 	{
 		erase_temp_move();
@@ -541,7 +541,7 @@ void manager::contextual_execute()
 
 void manager::contextual_delete()
 {
-	if (!(executing_actions_ || viewer_actions()->empty()))
+	if (!(executing_actions_ || viewer_actions()->empty() || resources::controller->is_linger_mode()))
 	{
 		erase_temp_move();
 		validate_viewer_actions();
@@ -568,7 +568,8 @@ void manager::contextual_delete()
 
 void manager::contextual_bump_up_action()
 {
-	if (!(executing_actions_ || viewer_actions()->empty()) && highlighter_)
+	if (!(executing_actions_ || viewer_actions()->empty() || resources::controller->is_linger_mode())
+			&& highlighter_)
 	{
 
 		validate_viewer_actions();
@@ -582,7 +583,8 @@ void manager::contextual_bump_up_action()
 
 void manager::contextual_bump_down_action()
 {
-	if (!(executing_actions_ || viewer_actions()->empty()) && highlighter_)
+	if (!(executing_actions_ || viewer_actions()->empty() || resources::controller->is_linger_mode())
+			&& highlighter_)
 	{
 
 		validate_viewer_actions();

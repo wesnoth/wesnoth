@@ -134,6 +134,7 @@ public:
 	config to_config() const;
 
 	bool is_skipping_replay() const { return skip_replay_;}
+	bool is_linger_mode() const { return linger_; }
 
 	events::mouse_handler& get_mouse_handler_base();
 	events::menu_handler& get_menu_handler() { return menu_handler_; }
