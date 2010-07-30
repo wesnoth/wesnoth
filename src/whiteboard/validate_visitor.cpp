@@ -166,6 +166,9 @@ void validate_visitor::visit_attack(attack_ptr attack)
 
 void validate_visitor::visit_recruit(recruit_ptr recruit)
 {
+	//invalidate recruit hex so number display is updated properly
+	resources::screen->invalidate(recruit->recruit_hex_);
+
 	//Check that destination hex is still free
 	if(resources::units->find(recruit->recruit_hex_) != resources::units->end())
 	{
