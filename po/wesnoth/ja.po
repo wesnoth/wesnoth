@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-07-19 00:25+0200\n"
-"PO-Revision-Date: 2010-04-29 09:37+0900\n"
+"POT-Creation-Date: 2010-07-19 00:46+0200\n"
+"PO-Revision-Date: 2010-07-12 04:43+0900\n"
 "Last-Translator: IWAI, Masaharu <iwaim.sub@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
 "Language: \n"
@@ -3517,7 +3517,8 @@ msgstr ""
 #: data/core/macros/ai.cfg:495
 msgid "Ask $ally_leader.name (leader of side $ally_leader.side) to move here"
 msgstr ""
-"$ally_leader.name （$ally_leader.side のリーダー）にここに移動するか訊ねる"
+"$ally_leader.name （$ally_leader.side のリーダー）にここに移動するように依頼"
+"する"
 
 #: data/core/macros/ai_controller.cfg:5
 #, fuzzy
@@ -6690,7 +6691,6 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:116
-#, fuzzy
 msgid "― Meneldur, 123YW"
 msgstr "― Meneldur, 123YW"
 
@@ -8024,7 +8024,7 @@ msgstr ""
 #: src/generate_report.cpp:396
 #, fuzzy
 msgid "Swarm: "
-msgstr "沼地"
+msgstr "群れ"
 
 #: src/generate_report.cpp:408
 #, fuzzy
@@ -8657,12 +8657,10 @@ msgid "aliases:"
 msgstr "エイリアス:"
 
 #: src/menu_events.cpp:2211
-#, fuzzy
 msgid "(A) - admin command"
 msgstr "(A) - 管理者コマンド"
 
 #: src/menu_events.cpp:2218 src/menu_events.cpp:2421
-#, fuzzy
 msgid "(admin only)"
 msgstr "（管理者のみ）"
 
@@ -8830,7 +8828,6 @@ msgid "Room query."
 msgstr "部屋の問い合わせ。"
 
 #: src/menu_events.cpp:2413
-#, fuzzy
 msgid "(D) - debug only, (N) - network only, (A) - admin only"
 msgstr "(D) - デバッグのみ, (N) - ネットワークのみ, (A) - 管理者のみ"
 
@@ -8839,7 +8836,6 @@ msgid "(debug command)"
 msgstr "（デバッグコマンド）"
 
 #: src/menu_events.cpp:2420
-#, fuzzy
 msgid "(network only)"
 msgstr "（ネットワークのみ）"
 
@@ -10345,18 +10341,11 @@ msgstr "Wesnoth をもっとよくするために協力してください！"
 msgid "Enable summary uploads"
 msgstr "サマリのアップロードを有効にする"
 
-#~ msgid "— Handbook of Tactical Analysis Volume II — Haldric II, 43YW"
+#~ msgid "Multiplayer_AI^Default AI"
+#~ msgstr "デフォルト AI"
+
+#~ msgid "- Handbook of Tactical Analysis Volume II - Haldric II, 43YW"
 #~ msgstr "- 戦術分析のハンドブック 第 2 巻 - Haldric II 世, 43YW"
-
-#, fuzzy
-#~ msgid "Chance to be hit: "
-#~ msgstr "無傷でいられる可能性"
-
-#~ msgid "Skip"
-#~ msgstr "スキップ"
-
-#~ msgid "$trait_name|: $trait_description "
-#~ msgstr "$trait_name|: $trait_description "
 
 #~ msgid ""
 #~ "$addon_title depends upon the following add-on which you have not "
@@ -10389,13 +10378,6 @@ msgstr "サマリのアップロードを有効にする"
 
 #~ msgid "tooltip^% parry"
 #~ msgstr "% 回避"
-
-#, fuzzy
-#~ msgid " (auth only)"
-#~ msgstr "（管理者のみ）"
-
-#~ msgid "Multiplayer_AI^Default AI"
-#~ msgstr "デフォルト AI"
 
 #~ msgid "--no games open--"
 #~ msgstr "＜公開中のゲームはありません＞"
@@ -10435,6 +10417,12 @@ msgstr "サマリのアップロードを有効にする"
 
 #~ msgid "Joining this game requires a password."
 #~ msgstr "ゲームに参加するにはパスワードが必要です。"
+
+#~ msgid "Skip"
+#~ msgstr "スキップ"
+
+#~ msgid "$trait_name|: $trait_description "
+#~ msgstr "$trait_name|: $trait_description "
 
 #~ msgid "Unknown unit type '$type|'"
 #~ msgstr "不明なユニットタイプ「 $type| 」"
