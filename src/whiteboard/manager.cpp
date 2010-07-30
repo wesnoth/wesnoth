@@ -34,6 +34,8 @@
 #include "team.hpp"
 #include "unit_display.hpp"
 
+#include <sstream>
+
 namespace wb {
 
 manager::manager():
@@ -69,23 +71,28 @@ void manager::print_help()
 {
 	print_to_chat("whiteboard", std::string("Type :wb to activate/deactivate the whiteboard.")
 		+ "  Hold TAB to temporarily deactivate/activate it.");
-	print_to_chat("-------------",  "List of whiteboard hotkeys:");
+	std::stringstream hotkeys;
 	const hotkey::hotkey_item& hk_execute = hotkey::get_hotkey(hotkey::HOTKEY_WB_EXECUTE_ACTION);
 	if(!hk_execute.null()) {
-		print_to_chat("[execute action]", "'" + hk_execute.get_name() + "'");
+		//print_to_chat("[execute action]", "'" + hk_execute.get_name() + "'");
+		hotkeys << "Execute: " << hk_execute.get_name() << ", ";
 	}
 	const hotkey::hotkey_item& hk_delete = hotkey::get_hotkey(hotkey::HOTKEY_WB_DELETE_ACTION);
 	if(!hk_delete.null()) {
-		print_to_chat("[delete action]", "'" + hk_delete.get_name() + "'");
+		//print_to_chat("[delete action]", "'" + hk_delete.get_name() + "'");
+		hotkeys << "Delete: " << hk_delete.get_name() << ", ";
 	}
 	const hotkey::hotkey_item& hk_bump_up = hotkey::get_hotkey(hotkey::HOTKEY_WB_BUMP_UP_ACTION);
 	if(!hk_bump_up.null()) {
-		print_to_chat("[move action earlier in queue]", "'" + hk_bump_up.get_name() + "'");
+		//print_to_chat("[move action earlier in queue]", "'" + hk_bump_up.get_name() + "'");
+		hotkeys << "Move earlier: " << hk_bump_up.get_name() << ", ";
 	}
 	const hotkey::hotkey_item& hk_bump_down = hotkey::get_hotkey(hotkey::HOTKEY_WB_BUMP_DOWN_ACTION);
 	if(!hk_bump_down.null()) {
-		print_to_chat("[move action later in queue]", "'" + hk_bump_down.get_name() + "'");
+		//print_to_chat("[move action later in queue]", "'" + hk_bump_down.get_name() + "'");
+		hotkeys << "Move later: " << hk_bump_down.get_name() << ", ";
 	}
+	print_to_chat("HOTKEYS:", hotkeys.str() + "\n");
 }
 
 void manager::set_active(bool active)
