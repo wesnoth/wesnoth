@@ -450,34 +450,34 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 	//since it's what update our global state
 	map_location hex = last_hex_;
 
-	resources::whiteboard->set_planned_unit_map();
+	unit_map::iterator u;
+	unit_map::iterator clicked_u;
+	map_location src;
+	pathfind::paths orig_paths;
+	map_location attack_from;
+	{ // start planned unit map scope
+		wb::scoped_planned_unit_map planned_unit_map;
+		u = find_unit(selected_hex_);
 
-	unit_map::iterator u = find_unit(selected_hex_);
+		//if the unit is selected and then itself clicked on,
+		//any goto command and waypoints are cancelled
+		if (u != units_.end() && !browse && selected_hex_ == hex && u->side() == side_num_) {
+			u->set_goto(map_location());
+			u->waypoints().clear();
+			waypoints_.clear();
+		}
 
-	resources::whiteboard->set_real_unit_map();
+		clicked_u = find_unit(hex);
 
-	//if the unit is selected and then itself clicked on,
-	//any goto command and waypoints are cancelled
-	if (u != units_.end() && !browse && selected_hex_ == hex && u->side() == side_num_) {
-		u->set_goto(map_location());
-		u->waypoints().clear();
-		waypoints_.clear();
-	}
+		src = selected_hex_;
+		orig_paths = current_paths_;
+		attack_from = current_unit_attacks_from(hex);
+	} // end planned unit map scope
 
-
-	resources::whiteboard->set_planned_unit_map();
-
-	unit_map::iterator clicked_u = find_unit(hex);
-
-	const map_location src = selected_hex_;
-	pathfind::paths orig_paths = current_paths_;
-	const map_location& attack_from = current_unit_attacks_from(hex);
-
-	resources::whiteboard->set_real_unit_map();
 
 	//see if we're trying to do a attack or move-and-attack
 	if((!browse || resources::whiteboard->is_active()) && !commands_disabled && attack_from.valid()) {
-		if (resources::whiteboard->is_active()) {
+		if (resources::whiteboard->is_active() && clicked_u.valid()) {
 			//if  (resources::whiteboard->has_selected_unit()) {
 				// Unselect the current hex, and create planned attack for whiteboard
 				selected_hex_ = map_location();
@@ -492,7 +492,7 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 				resources::whiteboard->save_temp_attack(attack_from, clicked_u->get_location());
 			//}
 		return false;
-		} else {
+		} else if (u.valid() && clicked_u.valid()) {
 			if (attack_from == selected_hex_) { //no move needed
 				int choice = show_attack_dialog(attack_from, clicked_u->get_location());
 				if (choice >=0 ) {
@@ -559,9 +559,10 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 	//otherwise we're trying to move to a hex
 	else if(!commands_disabled && (!browse || resources::whiteboard->is_active()) &&
 			selected_hex_.valid() && selected_hex_ != hex &&
-	         u != units_.end() &&
+	         u != units_.end() && u.valid() &&
 	         (u->side() == side_num_ || resources::whiteboard->is_active()) &&
-		     clicked_u == units_.end() && !current_route_.steps.empty() &&
+		     clicked_u == units_.end() &&
+		     !current_route_.steps.empty() &&
 		     current_route_.steps.front() == selected_hex_) {
 
 		gui().unhighlight_reach();
