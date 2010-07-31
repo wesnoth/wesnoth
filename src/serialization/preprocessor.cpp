@@ -78,9 +78,11 @@ static std::string get_file_code(const std::string& filename){
 // decode the filenames placed in a location
 static std::string get_location(const std::string& loc)
 {
-	std::vector< std::string > pos = utils::quoted_split(loc, ' ');
-	std::vector< std::string >::const_iterator i = pos.begin(), end = pos.end();
 	std::string res;
+	std::vector< std::string > pos = utils::quoted_split(loc, ' ');
+	if(pos.empty())
+		return res;
+	std::vector< std::string >::const_iterator i = pos.begin(), end = pos.end();
 	while (true) {
 		res += get_filename(*(i++));
 		if(i == end) break;
