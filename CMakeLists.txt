@@ -1,12 +1,9 @@
-# most stuff should be implemented so far, mgoe should know the details (he has done all the work...)
-# what is not working so far:
+# most stuff should be implemented so far, what is not working so far:
 # * some other smaller stuff
 # * nice INSTALL howto
 # * Detect Python and install Python tools
-# * Rewrite the pot-update
+# * Rewrite the po4a-update
 # * Test everything
-# * Fix tiny gui with processing the data directory
-# * Make translations work without installation
 # * install .desktop files taking binary prefix and suffix into account
 
 # set minimum version
