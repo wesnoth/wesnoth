@@ -93,7 +93,7 @@ protected:
 	bool right_click_show_menu(int x, int y, const bool browse);
 	bool left_click(int x, int y, const bool browse);
 	void select_hex(const map_location& hex, const bool browse);
-	bool move_unit_along_current_route(bool check_shroud, bool attackmove=false);
+	bool move_unit_along_current_route(bool check_shroud);
 
 	// fill weapon choices into bc_vector
 	// return the best weapon choice
@@ -138,7 +138,6 @@ private:
 
 	bool undo_;
 	bool over_route_;
-	bool attackmove_;
 	bool reachmap_invalid_;
 	bool show_partial_move_;
 

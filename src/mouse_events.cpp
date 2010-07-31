@@ -69,7 +69,6 @@ mouse_handler::mouse_handler(game_display* gui, std::vector<team>& teams,
 	side_num_(1),
 	undo_(false),
 	over_route_(false),
-	attackmove_(false),
 	reachmap_invalid_(false),
 	show_partial_move_(false)
 {
@@ -94,8 +93,6 @@ int mouse_handler::drag_threshold() const
 
 void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 {
-	if (attackmove_) return;
-
 	// we ignore the position coming from event handler
 	// because it's always a little obsolete and we don't need
 	// to hightlight all the hexes where the mouse passed.
@@ -564,7 +561,7 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 
 				// move the unit without clearing fog (to avoid interruption)
 				//TODO: clear fog and interrupt+resume move
-				if(!move_unit_along_current_route(false, true)) {
+				if(!move_unit_along_current_route(false)) {
 					// interrupted move
 					// we assume that move_unit() did the cleaning
 					// (update shroud/fog, clear undo if needed)
@@ -621,7 +618,7 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 			}
 		}
 		return false;
-	} else if (!attackmove_) {
+	} else {
 		// we select a (maybe empty) hex
 		// we block selection during attack+move (because motion is blocked)
 		select_hex(hex, browse);
@@ -688,7 +685,7 @@ void mouse_handler::deselect_hex() {
 	select_hex(map_location(), true);
 }
 
-bool mouse_handler::move_unit_along_current_route(bool check_shroud, bool attackmove)
+bool mouse_handler::move_unit_along_current_route(bool check_shroud)
 {
 	const std::vector<map_location> steps = current_route_.steps;
 	if(steps.empty()) {
@@ -706,17 +703,14 @@ bool mouse_handler::move_unit_along_current_route(bool check_shroud, bool attack
 	current_paths_ = pathfind::paths();
 	current_route_.steps.clear();
 
-	attackmove_ = attackmove;
 	size_t moves = 0;
 	try {
 			moves = ::move_unit(NULL, steps, &recorder, resources::undo_stack, true, &next_unit_, false, check_shroud);
 	} catch(end_turn_exception&) {
-		attackmove_ = false;
 		cursor::set(cursor::NORMAL);
 		gui().invalidate_game_status();
 		throw;
 	}
-	attackmove_ = false;
 
 	cursor::set(cursor::NORMAL);
 
