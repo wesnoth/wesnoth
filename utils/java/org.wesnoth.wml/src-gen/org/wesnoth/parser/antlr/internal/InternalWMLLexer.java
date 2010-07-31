@@ -17,9 +17,11 @@ public class InternalWMLLexer extends Lexer {
     public static final int RULE_ANY_OTHER=11;
     public static final int RULE_EOL=5;
     public static final int RULE_TEXTDOMAIN=9;
-    public static final int Tokens=21;
+    public static final int Tokens=23;
     public static final int EOF=-1;
     public static final int RULE_SL_COMMENT=6;
+    public static final int T22=22;
+    public static final int T21=21;
     public static final int T20=20;
     public static final int RULE_STRING=10;
     public static final int RULE_DEFINE=8;
@@ -182,16 +184,52 @@ public class InternalWMLLexer extends Lexer {
     }
     // $ANTLR end T20
 
+    // $ANTLR start T21
+    public final void mT21() throws RecognitionException {
+        try {
+            int _type = T21;
+            // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:18:5: ( '(' )
+            // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:18:7: '('
+            {
+            match('('); 
+
+            }
+
+            this.type = _type;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end T21
+
+    // $ANTLR start T22
+    public final void mT22() throws RecognitionException {
+        try {
+            int _type = T22;
+            // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:19:5: ( ')' )
+            // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:19:7: ')'
+            {
+            match(')'); 
+
+            }
+
+            this.type = _type;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end T22
+
     // $ANTLR start RULE_LUA_CODE
     public final void mRULE_LUA_CODE() throws RecognitionException {
         try {
             int _type = RULE_LUA_CODE;
-            // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1019:15: ( '<<' ( options {greedy=false; } : . )* '>>' )
-            // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1019:17: '<<' ( options {greedy=false; } : . )* '>>'
+            // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1219:15: ( '<<' ( options {greedy=false; } : . )* '>>' )
+            // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1219:17: '<<' ( options {greedy=false; } : . )* '>>'
             {
             match("<<"); 
 
-            // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1019:22: ( options {greedy=false; } : . )*
+            // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1219:22: ( options {greedy=false; } : . )*
             loop1:
             do {
                 int alt1=2;
@@ -216,7 +254,7 @@ public class InternalWMLLexer extends Lexer {
 
                 switch (alt1) {
             	case 1 :
-            	    // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1019:50: .
+            	    // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1219:50: .
             	    {
             	    matchAny(); 
 
@@ -244,12 +282,12 @@ public class InternalWMLLexer extends Lexer {
     public final void mRULE_DEFINE() throws RecognitionException {
         try {
             int _type = RULE_DEFINE;
-            // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1021:13: ( '#define' ( options {greedy=false; } : . )* '#enddef' )
-            // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1021:15: '#define' ( options {greedy=false; } : . )* '#enddef'
+            // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1221:13: ( '#define' ( options {greedy=false; } : . )* '#enddef' )
+            // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1221:15: '#define' ( options {greedy=false; } : . )* '#enddef'
             {
             match("#define"); 
 
-            // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1021:25: ( options {greedy=false; } : . )*
+            // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1221:25: ( options {greedy=false; } : . )*
             loop2:
             do {
                 int alt2=2;
@@ -319,7 +357,7 @@ public class InternalWMLLexer extends Lexer {
 
                 switch (alt2) {
             	case 1 :
-            	    // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1021:53: .
+            	    // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1221:53: .
             	    {
             	    matchAny(); 
 
@@ -347,12 +385,12 @@ public class InternalWMLLexer extends Lexer {
     public final void mRULE_TEXTDOMAIN() throws RecognitionException {
         try {
             int _type = RULE_TEXTDOMAIN;
-            // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1023:17: ( '#textdomain' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1023:19: '#textdomain' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1223:17: ( '#textdomain' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1223:19: '#textdomain' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("#textdomain"); 
 
-            // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1023:33: (~ ( ( '\\n' | '\\r' ) ) )*
+            // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1223:33: (~ ( ( '\\n' | '\\r' ) ) )*
             loop3:
             do {
                 int alt3=2;
@@ -365,7 +403,7 @@ public class InternalWMLLexer extends Lexer {
 
                 switch (alt3) {
             	case 1 :
-            	    // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1023:33: ~ ( ( '\\n' | '\\r' ) )
+            	    // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1223:33: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFE') ) {
             	        input.consume();
@@ -386,7 +424,7 @@ public class InternalWMLLexer extends Lexer {
                 }
             } while (true);
 
-            // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1023:49: ( ( '\\r' )? '\\n' )?
+            // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1223:49: ( ( '\\r' )? '\\n' )?
             int alt5=2;
             int LA5_0 = input.LA(1);
 
@@ -395,9 +433,9 @@ public class InternalWMLLexer extends Lexer {
             }
             switch (alt5) {
                 case 1 :
-                    // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1023:50: ( '\\r' )? '\\n'
+                    // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1223:50: ( '\\r' )? '\\n'
                     {
-                    // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1023:50: ( '\\r' )?
+                    // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1223:50: ( '\\r' )?
                     int alt4=2;
                     int LA4_0 = input.LA(1);
 
@@ -406,7 +444,7 @@ public class InternalWMLLexer extends Lexer {
                     }
                     switch (alt4) {
                         case 1 :
-                            // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1023:50: '\\r'
+                            // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1223:50: '\\r'
                             {
                             match('\r'); 
 
@@ -436,11 +474,11 @@ public class InternalWMLLexer extends Lexer {
     public final void mRULE_STRING() throws RecognitionException {
         try {
             int _type = RULE_STRING;
-            // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1025:13: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' )
-            // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1025:15: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+            // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1225:13: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' )
+            // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1225:15: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
             {
             match('\"'); 
-            // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1025:19: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
+            // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1225:19: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
             loop6:
             do {
                 int alt6=3;
@@ -456,7 +494,7 @@ public class InternalWMLLexer extends Lexer {
 
                 switch (alt6) {
             	case 1 :
-            	    // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1025:20: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' )
+            	    // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1225:20: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | '\"' | '\\'' | '\\\\' )
             	    {
             	    match('\\'); 
             	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||input.LA(1)=='t' ) {
@@ -473,7 +511,7 @@ public class InternalWMLLexer extends Lexer {
             	    }
             	    break;
             	case 2 :
-            	    // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1025:61: ~ ( ( '\\\\' | '\"' ) )
+            	    // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1225:61: ~ ( ( '\\\\' | '\"' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFE') ) {
             	        input.consume();
@@ -509,10 +547,10 @@ public class InternalWMLLexer extends Lexer {
     public final void mRULE_ID() throws RecognitionException {
         try {
             int _type = RULE_ID;
-            // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1027:9: ( ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' | ',' )+ )
-            // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1027:11: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' | ',' )+
+            // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1227:9: ( ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' | ',' )+ )
+            // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1227:11: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' | ',' )+
             {
-            // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1027:11: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' | ',' )+
+            // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1227:11: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' | ',' )+
             int cnt7=0;
             loop7:
             do {
@@ -565,10 +603,10 @@ public class InternalWMLLexer extends Lexer {
     public final void mRULE_EOL() throws RecognitionException {
         try {
             int _type = RULE_EOL;
-            // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1029:10: ( ( '\\r' | '\\n' )+ )
-            // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1029:12: ( '\\r' | '\\n' )+
+            // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1229:10: ( ( '\\r' | '\\n' )+ )
+            // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1229:12: ( '\\r' | '\\n' )+
             {
-            // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1029:12: ( '\\r' | '\\n' )+
+            // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1229:12: ( '\\r' | '\\n' )+
             int cnt8=0;
             loop8:
             do {
@@ -621,10 +659,10 @@ public class InternalWMLLexer extends Lexer {
     public final void mRULE_WS() throws RecognitionException {
         try {
             int _type = RULE_WS;
-            // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1031:9: ( ( ' ' | '\\t' )+ )
-            // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1031:11: ( ' ' | '\\t' )+
+            // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1231:9: ( ( ' ' | '\\t' )+ )
+            // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1231:11: ( ' ' | '\\t' )+
             {
-            // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1031:11: ( ' ' | '\\t' )+
+            // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1231:11: ( ' ' | '\\t' )+
             int cnt9=0;
             loop9:
             do {
@@ -677,8 +715,8 @@ public class InternalWMLLexer extends Lexer {
     public final void mRULE_ANY_OTHER() throws RecognitionException {
         try {
             int _type = RULE_ANY_OTHER;
-            // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1033:16: ( . )
-            // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1033:18: .
+            // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1233:16: ( . )
+            // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1233:18: .
             {
             matchAny(); 
 
@@ -695,11 +733,11 @@ public class InternalWMLLexer extends Lexer {
     public final void mRULE_SL_COMMENT() throws RecognitionException {
         try {
             int _type = RULE_SL_COMMENT;
-            // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1035:17: ( '#' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1035:19: '#' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1235:17: ( '#' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1235:19: '#' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match('#'); 
-            // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1035:23: (~ ( ( '\\n' | '\\r' ) ) )*
+            // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1235:23: (~ ( ( '\\n' | '\\r' ) ) )*
             loop10:
             do {
                 int alt10=2;
@@ -712,7 +750,7 @@ public class InternalWMLLexer extends Lexer {
 
                 switch (alt10) {
             	case 1 :
-            	    // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1035:23: ~ ( ( '\\n' | '\\r' ) )
+            	    // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1235:23: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFE') ) {
             	        input.consume();
@@ -733,7 +771,7 @@ public class InternalWMLLexer extends Lexer {
                 }
             } while (true);
 
-            // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1035:39: ( ( '\\r' )? '\\n' )?
+            // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1235:39: ( ( '\\r' )? '\\n' )?
             int alt12=2;
             int LA12_0 = input.LA(1);
 
@@ -742,9 +780,9 @@ public class InternalWMLLexer extends Lexer {
             }
             switch (alt12) {
                 case 1 :
-                    // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1035:40: ( '\\r' )? '\\n'
+                    // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1235:40: ( '\\r' )? '\\n'
                     {
-                    // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1035:40: ( '\\r' )?
+                    // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1235:40: ( '\\r' )?
                     int alt11=2;
                     int LA11_0 = input.LA(1);
 
@@ -753,7 +791,7 @@ public class InternalWMLLexer extends Lexer {
                     }
                     switch (alt11) {
                         case 1 :
-                            // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1035:40: '\\r'
+                            // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1235:40: '\\r'
                             {
                             match('\r'); 
 
@@ -780,8 +818,8 @@ public class InternalWMLLexer extends Lexer {
     // $ANTLR end RULE_SL_COMMENT
 
     public void mTokens() throws RecognitionException {
-        // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1:8: ( T13 | T14 | T15 | T16 | T17 | T18 | T19 | T20 | RULE_LUA_CODE | RULE_DEFINE | RULE_TEXTDOMAIN | RULE_STRING | RULE_ID | RULE_EOL | RULE_WS | RULE_ANY_OTHER | RULE_SL_COMMENT )
-        int alt13=17;
+        // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1:8: ( T13 | T14 | T15 | T16 | T17 | T18 | T19 | T20 | T21 | T22 | RULE_LUA_CODE | RULE_DEFINE | RULE_TEXTDOMAIN | RULE_STRING | RULE_ID | RULE_EOL | RULE_WS | RULE_ANY_OTHER | RULE_SL_COMMENT )
+        int alt13=19;
         alt13 = dfa13.predict(input);
         switch (alt13) {
             case 1 :
@@ -841,63 +879,77 @@ public class InternalWMLLexer extends Lexer {
                 }
                 break;
             case 9 :
-                // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1:42: RULE_LUA_CODE
+                // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1:42: T21
+                {
+                mT21(); 
+
+                }
+                break;
+            case 10 :
+                // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1:46: T22
+                {
+                mT22(); 
+
+                }
+                break;
+            case 11 :
+                // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1:50: RULE_LUA_CODE
                 {
                 mRULE_LUA_CODE(); 
 
                 }
                 break;
-            case 10 :
-                // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1:56: RULE_DEFINE
+            case 12 :
+                // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1:64: RULE_DEFINE
                 {
                 mRULE_DEFINE(); 
 
                 }
                 break;
-            case 11 :
-                // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1:68: RULE_TEXTDOMAIN
+            case 13 :
+                // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1:76: RULE_TEXTDOMAIN
                 {
                 mRULE_TEXTDOMAIN(); 
 
                 }
                 break;
-            case 12 :
-                // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1:84: RULE_STRING
+            case 14 :
+                // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1:92: RULE_STRING
                 {
                 mRULE_STRING(); 
 
                 }
                 break;
-            case 13 :
-                // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1:96: RULE_ID
+            case 15 :
+                // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1:104: RULE_ID
                 {
                 mRULE_ID(); 
 
                 }
                 break;
-            case 14 :
-                // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1:104: RULE_EOL
+            case 16 :
+                // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1:112: RULE_EOL
                 {
                 mRULE_EOL(); 
 
                 }
                 break;
-            case 15 :
-                // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1:113: RULE_WS
+            case 17 :
+                // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1:121: RULE_WS
                 {
                 mRULE_WS(); 
 
                 }
                 break;
-            case 16 :
-                // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1:121: RULE_ANY_OTHER
+            case 18 :
+                // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1:129: RULE_ANY_OTHER
                 {
                 mRULE_ANY_OTHER(); 
 
                 }
                 break;
-            case 17 :
-                // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1:136: RULE_SL_COMMENT
+            case 19 :
+                // ../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g:1:144: RULE_SL_COMMENT
                 {
                 mRULE_SL_COMMENT(); 
 
@@ -911,39 +963,29 @@ public class InternalWMLLexer extends Lexer {
 
     protected DFA13 dfa13 = new DFA13(this);
     static final String DFA13_eotS =
-        "\1\uffff\1\20\6\uffff\3\16\15\uffff\2\32\5\uffff\13\32\1\uffff\4"+
-        "\32\1\uffff\4\32\1\71\1\32\1\71\3\uffff\1\32\1\57";
+        "\1\uffff\1\22\10\uffff\3\20\17\uffff\2\36\5\uffff\14\36\1\uffff"+
+        "\4\36\1\uffff\2\36\1\74\1\36\1\74\3\uffff\2\36\1\64";
     static final String DFA13_eofS =
-        "\74\uffff";
+        "\100\uffff";
     static final String DFA13_minS =
-        "\1\0\1\57\6\uffff\1\74\2\0\15\uffff\2\145\5\uffff\1\146\1\170\1"+
-        "\151\1\164\1\156\1\144\1\145\1\157\1\0\1\155\4\0\1\141\1\0\1\uffff"+
-        "\1\151\1\0\1\156\4\0\1\12\2\uffff\2\0";
+        "\1\0\1\57\10\uffff\1\74\2\0\17\uffff\2\145\5\uffff\1\170\1\146\1"+
+        "\164\1\151\1\144\1\156\1\157\1\145\1\155\1\0\1\141\4\0\1\151\1\0"+
+        "\1\uffff\1\156\4\0\1\12\2\uffff\3\0";
     static final String DFA13_maxS =
-        "\1\ufffe\1\57\6\uffff\1\74\2\ufffe\15\uffff\2\145\5\uffff\1\146"+
-        "\1\170\1\151\1\164\1\156\1\144\1\145\1\157\1\ufffe\1\155\4\ufffe"+
-        "\1\141\1\ufffe\1\uffff\1\151\1\ufffe\1\156\4\ufffe\1\12\2\uffff"+
-        "\2\ufffe";
+        "\1\ufffe\1\57\10\uffff\1\74\2\ufffe\17\uffff\2\145\5\uffff\1\170"+
+        "\1\146\1\164\1\151\1\144\1\156\1\157\1\145\1\155\1\ufffe\1\141\4"+
+        "\ufffe\1\151\1\ufffe\1\uffff\1\156\4\ufffe\1\12\2\uffff\3\ufffe";
     static final String DFA13_acceptS =
-        "\2\uffff\1\2\1\3\1\5\1\6\1\7\1\10\3\uffff\1\15\1\16\1\17\1\20\1"+
-        "\4\1\1\1\2\1\3\1\5\1\6\1\7\1\10\1\11\2\uffff\1\21\1\14\1\15\1\16"+
-        "\1\17\20\uffff\1\12\10\uffff\2\13\2\uffff";
+        "\2\uffff\1\2\1\3\1\5\1\6\1\7\1\10\1\11\1\12\3\uffff\1\17\1\20\1"+
+        "\21\1\22\1\4\1\1\1\2\1\3\1\5\1\6\1\7\1\10\1\11\1\12\1\13\2\uffff"+
+        "\1\23\1\16\1\17\1\20\1\21\21\uffff\1\14\6\uffff\2\15\3\uffff";
     static final String DFA13_specialS =
-        "\74\uffff}>";
+        "\100\uffff}>";
     static final String[] DFA13_transitionS = {
-            "\11\16\1\15\1\14\2\16\1\14\22\16\1\15\1\16\1\12\1\11\7\16\1"+
-            "\2\1\13\3\16\12\13\2\16\1\10\1\4\3\16\32\13\1\1\1\16\1\3\1\16"+
-            "\1\13\1\16\32\13\1\5\1\16\1\7\1\6\uff80\16",
-            "\1\17",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "\1\27",
-            "\144\32\1\30\17\32\1\31\uff8a\32",
-            "\uffff\33",
+            "\11\20\1\17\1\16\2\20\1\16\22\20\1\17\1\20\1\14\1\13\4\20\1"+
+            "\10\1\11\1\20\1\2\1\15\3\20\12\15\2\20\1\12\1\4\3\20\32\15\1"+
+            "\1\1\20\1\3\1\20\1\15\1\20\32\15\1\5\1\20\1\7\1\6\uff80\20",
+            "\1\21",
             "",
             "",
             "",
@@ -952,47 +994,60 @@ public class InternalWMLLexer extends Lexer {
             "",
             "",
             "",
+            "\1\33",
+            "\144\36\1\35\17\36\1\34\uff8a\36",
+            "\uffff\37",
             "",
             "",
             "",
             "",
             "",
-            "\1\37",
-            "\1\40",
             "",
             "",
             "",
             "",
             "",
-            "\1\41",
-            "\1\42",
+            "",
+            "",
+            "",
+            "",
+            "",
             "\1\43",
             "\1\44",
+            "",
+            "",
+            "",
+            "",
+            "",
             "\1\45",
             "\1\46",
             "\1\47",
             "\1\50",
-            "\12\54\1\53\2\54\1\52\25\54\1\51\uffdb\54",
+            "\1\51",
+            "\1\52",
+            "\1\53",
+            "\1\54",
             "\1\55",
-            "\12\54\1\53\2\54\1\52\25\54\1\51\101\54\1\56\uff99\54",
-            "\12\57\1\53\ufff4\57",
-            "\uffff\57",
-            "\12\54\1\53\2\54\1\52\25\54\1\51\uffdb\54",
-            "\1\60",
-            "\12\54\1\53\2\54\1\52\25\54\1\51\112\54\1\61\uff90\54",
-            "",
+            "\12\61\1\60\2\61\1\57\25\61\1\56\uffdb\61",
             "\1\62",
-            "\12\54\1\53\2\54\1\52\25\54\1\51\100\54\1\63\uff9a\54",
-            "\1\64",
-            "\12\54\1\53\2\54\1\52\25\54\1\51\100\54\1\65\uff9a\54",
-            "\12\66\1\70\2\66\1\67\ufff1\66",
-            "\12\54\1\53\2\54\1\52\25\54\1\51\101\54\1\72\uff99\54",
-            "\12\66\1\70\2\66\1\67\ufff1\66",
-            "\1\70",
+            "\12\61\1\60\2\61\1\57\25\61\1\56\101\61\1\63\uff99\61",
+            "\12\64\1\60\ufff4\64",
+            "\uffff\64",
+            "\12\61\1\60\2\61\1\57\25\61\1\56\uffdb\61",
+            "\1\65",
+            "\12\61\1\60\2\61\1\57\25\61\1\56\112\61\1\66\uff90\61",
+            "",
+            "\1\67",
+            "\12\61\1\60\2\61\1\57\25\61\1\56\100\61\1\70\uff9a\61",
+            "\12\71\1\73\2\71\1\72\ufff1\71",
+            "\12\61\1\60\2\61\1\57\25\61\1\56\100\61\1\75\uff9a\61",
+            "\12\71\1\73\2\71\1\72\ufff1\71",
+            "\1\73",
             "",
             "",
-            "\12\54\1\53\2\54\1\52\25\54\1\51\102\54\1\73\uff98\54",
-            "\12\54\1\53\2\54\1\52\25\54\1\51\uffdb\54"
+            "\12\61\1\60\2\61\1\57\25\61\1\56\101\61\1\76\uff99\61",
+            "\12\61\1\60\2\61\1\57\25\61\1\56\102\61\1\77\uff98\61",
+            "\12\61\1\60\2\61\1\57\25\61\1\56\uffdb\61"
     };
 
     static final short[] DFA13_eot = DFA.unpackEncodedString(DFA13_eotS);
@@ -1025,7 +1080,7 @@ public class InternalWMLLexer extends Lexer {
             this.transition = DFA13_transition;
         }
         public String getDescription() {
-            return "1:1: Tokens : ( T13 | T14 | T15 | T16 | T17 | T18 | T19 | T20 | RULE_LUA_CODE | RULE_DEFINE | RULE_TEXTDOMAIN | RULE_STRING | RULE_ID | RULE_EOL | RULE_WS | RULE_ANY_OTHER | RULE_SL_COMMENT );";
+            return "1:1: Tokens : ( T13 | T14 | T15 | T16 | T17 | T18 | T19 | T20 | T21 | T22 | RULE_LUA_CODE | RULE_DEFINE | RULE_TEXTDOMAIN | RULE_STRING | RULE_ID | RULE_EOL | RULE_WS | RULE_ANY_OTHER | RULE_SL_COMMENT );";
         }
     }
  

@@ -74,9 +74,11 @@
       <elements xsi:type="xtext:Assignment" cardinality="+" feature="value" operator="+=">
         <terminal xsi:type="xtext:RuleCall" rule="//@rules.3"/>
       </elements>
-      <elements xsi:type="xtext:Alternatives">
-        <elements xsi:type="xtext:RuleCall" rule="//@rules.16"/>
-        <elements xsi:type="xtext:RuleCall" rule="//@rules.19"/>
+      <elements xsi:type="xtext:Assignment" feature="eol" operator="=">
+        <terminal xsi:type="xtext:Alternatives">
+          <elements xsi:type="xtext:RuleCall" rule="//@rules.16"/>
+          <elements xsi:type="xtext:RuleCall" rule="//@rules.19"/>
+        </terminal>
       </elements>
     </alternatives>
   </rules>
@@ -105,7 +107,10 @@
       </elements>
       <elements xsi:type="xtext:Alternatives" cardinality="*">
         <elements xsi:type="xtext:Assignment" feature="params" operator="+=">
-          <terminal xsi:type="xtext:RuleCall" rule="//@rules.10"/>
+          <terminal xsi:type="xtext:Alternatives">
+            <elements xsi:type="xtext:RuleCall" rule="//@rules.10"/>
+            <elements xsi:type="xtext:RuleCall" rule="//@rules.5"/>
+          </terminal>
         </elements>
         <elements xsi:type="xtext:Assignment" feature="extraMacros" operator="+=">
           <terminal xsi:type="xtext:RuleCall" rule="//@rules.4"/>
@@ -122,9 +127,9 @@
       <elements xsi:type="xtext:Keyword" value="("/>
       <elements xsi:type="xtext:Assignment" cardinality="+" feature="param" operator="+=">
         <terminal xsi:type="xtext:Alternatives">
+          <elements xsi:type="xtext:RuleCall" rule="//@rules.10"/>
           <elements xsi:type="xtext:RuleCall" rule="//@rules.1"/>
           <elements xsi:type="xtext:RuleCall" rule="//@rules.4"/>
-          <elements xsi:type="xtext:RuleCall" rule="//@rules.10"/>
           <elements xsi:type="xtext:RuleCall" rule="//@rules.2"/>
         </terminal>
       </elements>
@@ -175,8 +180,9 @@
       <terminal xsi:type="xtext:Alternatives">
         <elements xsi:type="xtext:RuleCall" rule="//@rules.15"/>
         <elements xsi:type="xtext:RuleCall" rule="//@rules.14"/>
-        <elements xsi:type="xtext:RuleCall" rule="//@rules.18"/>
         <elements xsi:type="xtext:Keyword" value="+"/>
+        <elements xsi:type="xtext:Keyword" value="~"/>
+        <elements xsi:type="xtext:RuleCall" rule="//@rules.18"/>
       </terminal>
     </alternatives>
   </rules>

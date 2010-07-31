@@ -350,6 +350,16 @@ public class WMLPackageImpl extends EPackageImpl implements WMLPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getWMLKey_Eol()
+  {
+    return (EAttribute)wmlKeyEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getWMLKeyValue()
   {
     return wmlKeyValueEClass;
@@ -574,6 +584,7 @@ public class WMLPackageImpl extends EPackageImpl implements WMLPackage
     wmlKeyEClass = createEClass(WML_KEY);
     createEAttribute(wmlKeyEClass, WML_KEY__NAME);
     createEReference(wmlKeyEClass, WML_KEY__VALUE);
+    createEAttribute(wmlKeyEClass, WML_KEY__EOL);
 
     wmlKeyValueEClass = createEClass(WML_KEY_VALUE);
 
@@ -656,13 +667,14 @@ public class WMLPackageImpl extends EPackageImpl implements WMLPackage
     initEClass(wmlKeyEClass, WMLKey.class, "WMLKey", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getWMLKey_Name(), ecorePackage.getEString(), "name", null, 0, 1, WMLKey.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getWMLKey_Value(), this.getWMLKeyValue(), null, "value", null, 0, -1, WMLKey.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getWMLKey_Eol(), ecorePackage.getEString(), "eol", null, 0, 1, WMLKey.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(wmlKeyValueEClass, WMLKeyValue.class, "WMLKeyValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(wmlMacroCallEClass, WMLMacroCall.class, "WMLMacroCall", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getWMLMacroCall_Relative(), ecorePackage.getEBoolean(), "relative", null, 0, 1, WMLMacroCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getWMLMacroCall_Name(), ecorePackage.getEString(), "name", null, 0, 1, WMLMacroCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getWMLMacroCall_Params(), this.getWMLValue(), null, "params", null, 0, -1, WMLMacroCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getWMLMacroCall_Params(), ecorePackage.getEObject(), null, "params", null, 0, -1, WMLMacroCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getWMLMacroCall_ExtraMacros(), this.getWMLMacroCall(), null, "extraMacros", null, 0, -1, WMLMacroCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(wmlMacroParameterEClass, WMLMacroParameter.class, "WMLMacroParameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

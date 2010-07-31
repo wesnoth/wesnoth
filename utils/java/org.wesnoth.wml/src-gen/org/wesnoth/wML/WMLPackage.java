@@ -235,13 +235,22 @@ public interface WMLPackage extends EPackage
   int WML_KEY__VALUE = 1;
 
   /**
+   * The feature id for the '<em><b>Eol</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WML_KEY__EOL = 2;
+
+  /**
    * The number of structural features of the '<em>Key</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int WML_KEY_FEATURE_COUNT = 2;
+  int WML_KEY_FEATURE_COUNT = 3;
 
   /**
    * The meta object id for the '{@link org.wesnoth.wML.impl.WMLKeyValueImpl <em>Key Value</em>}' class.
@@ -671,6 +680,17 @@ public interface WMLPackage extends EPackage
   EReference getWMLKey_Value();
 
   /**
+   * Returns the meta object for the attribute '{@link org.wesnoth.wML.WMLKey#getEol <em>Eol</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Eol</em>'.
+   * @see org.wesnoth.wML.WMLKey#getEol()
+   * @see #getWMLKey()
+   * @generated
+   */
+  EAttribute getWMLKey_Eol();
+
+  /**
    * Returns the meta object for class '{@link org.wesnoth.wML.WMLKeyValue <em>Key Value</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1024,6 +1044,14 @@ public interface WMLPackage extends EPackage
      * @generated
      */
     EReference WML_KEY__VALUE = eINSTANCE.getWMLKey_Value();
+
+    /**
+     * The meta object literal for the '<em><b>Eol</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute WML_KEY__EOL = eINSTANCE.getWMLKey_Eol();
 
     /**
      * The meta object literal for the '{@link org.wesnoth.wML.impl.WMLKeyValueImpl <em>Key Value</em>}' class.

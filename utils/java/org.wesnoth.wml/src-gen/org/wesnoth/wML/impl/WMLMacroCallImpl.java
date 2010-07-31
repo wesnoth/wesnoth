@@ -14,6 +14,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -23,7 +24,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.wesnoth.wML.WMLMacroCall;
 import org.wesnoth.wML.WMLPackage;
-import org.wesnoth.wML.WMLValue;
 
 /**
  * <!-- begin-user-doc -->
@@ -91,7 +91,7 @@ public class WMLMacroCallImpl extends WMLKeyValueImpl implements WMLMacroCall
    * @generated
    * @ordered
    */
-  protected EList<WMLValue> params;
+  protected EList<EObject> params;
 
   /**
    * The cached value of the '{@link #getExtraMacros() <em>Extra Macros</em>}' containment reference list.
@@ -175,11 +175,11 @@ public class WMLMacroCallImpl extends WMLKeyValueImpl implements WMLMacroCall
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<WMLValue> getParams()
+  public EList<EObject> getParams()
   {
     if (params == null)
     {
-      params = new EObjectContainmentEList<WMLValue>(WMLValue.class, this, WMLPackage.WML_MACRO_CALL__PARAMS);
+      params = new EObjectContainmentEList<EObject>(EObject.class, this, WMLPackage.WML_MACRO_CALL__PARAMS);
     }
     return params;
   }
@@ -257,7 +257,7 @@ public class WMLMacroCallImpl extends WMLKeyValueImpl implements WMLMacroCall
         return;
       case WMLPackage.WML_MACRO_CALL__PARAMS:
         getParams().clear();
-        getParams().addAll((Collection<? extends WMLValue>)newValue);
+        getParams().addAll((Collection<? extends EObject>)newValue);
         return;
       case WMLPackage.WML_MACRO_CALL__EXTRA_MACROS:
         getExtraMacros().clear();

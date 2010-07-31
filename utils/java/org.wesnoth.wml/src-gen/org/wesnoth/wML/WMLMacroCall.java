@@ -8,6 +8,8 @@ package org.wesnoth.wML;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EObject;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Macro Call</b></em>'.
@@ -83,7 +85,7 @@ public interface WMLMacroCall extends WMLKeyValue
 
   /**
    * Returns the value of the '<em><b>Params</b></em>' containment reference list.
-   * The list contents are of type {@link org.wesnoth.wML.WMLValue}.
+   * The list contents are of type {@link org.eclipse.emf.ecore.EObject}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Params</em>' containment reference list isn't clear,
@@ -95,7 +97,7 @@ public interface WMLMacroCall extends WMLKeyValue
    * @model containment="true"
    * @generated
    */
-  EList<WMLValue> getParams();
+  EList<EObject> getParams();
 
   /**
    * Returns the value of the '<em><b>Extra Macros</b></em>' containment reference list.

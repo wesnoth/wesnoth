@@ -32,13 +32,14 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="value" upperBound="-1"
         eType="#//WMLKeyValue" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="eol" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WMLKeyValue"/>
   <eClassifiers xsi:type="ecore:EClass" name="WMLMacroCall" eSuperTypes="#//WMLKeyValue">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="relative" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="params" upperBound="-1"
-        eType="#//WMLValue" containment="true"/>
+        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="extraMacros" upperBound="-1"
         eType="#//WMLMacroCall" containment="true"/>
   </eClassifiers>

@@ -31,20 +31,20 @@ WMLTag:
 	;
 
 WMLKey hidden(WS):
-	(name = ID) '=' value += WMLKeyValue+ (EOL|SL_COMMENT);
+	(name = ID) '=' value += WMLKeyValue+ eol=(EOL|SL_COMMENT);
 
 WMLKeyValue:
 	WMLValue | WMLMacroCall | WMLLuaCode | WMLArrayCall;
 	
 WMLMacroCall:
 	'{' (relative?='~')? name=ID
-		( params += (WMLValue)// | WMLMacroParameter)
+		( params += (WMLValue | WMLMacroParameter)
 		| extraMacros += WMLMacroCall
 		)*
 	'}';
 	
 WMLMacroParameter:
-	'(' param += (WMLTag | WMLMacroCall | WMLValue | WMLKey)+ ')';
+	'(' param += (WMLValue | WMLTag | WMLMacroCall | WMLKey)+ ')';
 WMLLuaCode:
 	value = LUA_CODE;
 WMLArrayCall:
@@ -63,7 +63,7 @@ WMLTextdomain:
 	name = TEXTDOMAIN;
 
 WMLValue:
-	value = (ID | STRING | ANY_OTHER | '+');
+	value = (ID | STRING |'+'|'~'| ANY_OTHER	);
 
 terminal LUA_CODE   : '<<' -> '>>';
 terminal DEFINE     : '#define' -> '#enddef';//!('\n'|'\r')* ('\r'? '\n')?;
