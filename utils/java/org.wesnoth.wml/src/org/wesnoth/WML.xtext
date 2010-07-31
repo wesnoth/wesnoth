@@ -9,10 +9,14 @@ import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 //TODO: add cross-reference for variables
 //handles TODO:
 // - arrays [ ]
+// - preprocessor commands: #define, #enddef, etc
+// - fix: { { } }
 
 WMLRoot:
 	( Tags += WMLTag
-	| Macros += WMLMacro
+	| MacroCalls += WMLMacroCall
+	| MacroDefines += WMLMacroDefine
+	| Textdomains += WMLTextdomain
 	)*
 	;
 
@@ -20,7 +24,9 @@ WMLTag:
 	'[' (plus?='+')? name=ID ']'
 		( Tags += WMLTag
 		| Keys += WMLKey
-		| Macros += WMLMacro // this generates multiple alternatives
+		| MacroCalls += WMLMacroCall // this generates multiple alternatives
+		| MacroDefines += WMLMacroDefine
+		| Textdomains += WMLTextdomain
 		)*
 	'[/' endName = ID ']'
 	;
@@ -30,18 +36,35 @@ WMLKey:
 	value += WMLKeyValueRule+;
 
 WMLKeyValueRule:
-	WMLKeyValue | WMLMacro | WMLLuaCode;
-
-WMLKeyValue:
-	value = (ID | STRING | ANY_OTHER | '+');
+	WMLValue | WMLMacroCall | WMLLuaCode;
 	
-WMLMacro:
+WMLMacroCall:
 	name = MACRO;
+
 WMLLuaCode:
 	value = LUA_CODE;
 
+WMLMacroDefine:
+	name = DEFINE;
+//		( Tags += WMLTag
+//		| Keys += WMLKey
+//		| MacroCalls += WMLMacroCall
+//		| MacroDefines += WMLMacroDefine
+//		| Textdomains += WMLTextdomain
+//		)*;
+//		ENDDEF;
+	
+WMLTextdomain:
+	name = TEXTDOMAIN;
+
+WMLValue:
+	value = (ID | STRING | ANY_OTHER | '+');
+
 terminal LUA_CODE   : '<<' -> '>>';
-terminal MACRO      : '{' -> '}';
+terminal MACRO      : '{' -> '}';	
+terminal DEFINE     : '#define' -> '#enddef';//!('\n'|'\r')* ('\r'? '\n')?;
+//terminal ENDDEF     : '#enddef' !('\n'|'\r')* ('\r'? '\n')?;
+terminal TEXTDOMAIN : '#textdomain' !('\n'|'\r')* ('\r'? '\n')?;
 terminal SL_COMMENT : '#' !('\n'|'\r')* ('\r'? '\n')?;
 terminal ID         : ('a'..'z'|'A'..'Z'|'0'..'9'|'_'|',')+;
 terminal STRING     : '"' ( '\\' ('b'|'t'|'n'|'f'|'r'|'"'|"'"|'\\') | !('\\'|'"') )* '"';

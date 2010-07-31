@@ -72,9 +72,11 @@ public class WMLFactoryImpl extends EFactoryImpl implements WMLFactory
       case WMLPackage.WML_TAG: return createWMLTag();
       case WMLPackage.WML_KEY: return createWMLKey();
       case WMLPackage.WML_KEY_VALUE_RULE: return createWMLKeyValueRule();
-      case WMLPackage.WML_KEY_VALUE: return createWMLKeyValue();
-      case WMLPackage.WML_MACRO: return createWMLMacro();
+      case WMLPackage.WML_MACRO_CALL: return createWMLMacroCall();
       case WMLPackage.WML_LUA_CODE: return createWMLLuaCode();
+      case WMLPackage.WML_MACRO_DEFINE: return createWMLMacroDefine();
+      case WMLPackage.WML_TEXTDOMAIN: return createWMLTextdomain();
+      case WMLPackage.WML_VALUE: return createWMLValue();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -129,21 +131,10 @@ public class WMLFactoryImpl extends EFactoryImpl implements WMLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public WMLKeyValue createWMLKeyValue()
+  public WMLMacroCall createWMLMacroCall()
   {
-    WMLKeyValueImpl wmlKeyValue = new WMLKeyValueImpl();
-    return wmlKeyValue;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public WMLMacro createWMLMacro()
-  {
-    WMLMacroImpl wmlMacro = new WMLMacroImpl();
-    return wmlMacro;
+    WMLMacroCallImpl wmlMacroCall = new WMLMacroCallImpl();
+    return wmlMacroCall;
   }
 
   /**
@@ -155,6 +146,39 @@ public class WMLFactoryImpl extends EFactoryImpl implements WMLFactory
   {
     WMLLuaCodeImpl wmlLuaCode = new WMLLuaCodeImpl();
     return wmlLuaCode;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public WMLMacroDefine createWMLMacroDefine()
+  {
+    WMLMacroDefineImpl wmlMacroDefine = new WMLMacroDefineImpl();
+    return wmlMacroDefine;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public WMLTextdomain createWMLTextdomain()
+  {
+    WMLTextdomainImpl wmlTextdomain = new WMLTextdomainImpl();
+    return wmlTextdomain;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public WMLValue createWMLValue()
+  {
+    WMLValueImpl wmlValue = new WMLValueImpl();
+    return wmlValue;
   }
 
   /**

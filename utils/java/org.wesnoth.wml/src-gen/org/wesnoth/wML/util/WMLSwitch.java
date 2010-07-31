@@ -124,19 +124,11 @@ public class WMLSwitch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case WMLPackage.WML_KEY_VALUE:
+      case WMLPackage.WML_MACRO_CALL:
       {
-        WMLKeyValue wmlKeyValue = (WMLKeyValue)theEObject;
-        T result = caseWMLKeyValue(wmlKeyValue);
-        if (result == null) result = caseWMLKeyValueRule(wmlKeyValue);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case WMLPackage.WML_MACRO:
-      {
-        WMLMacro wmlMacro = (WMLMacro)theEObject;
-        T result = caseWMLMacro(wmlMacro);
-        if (result == null) result = caseWMLKeyValueRule(wmlMacro);
+        WMLMacroCall wmlMacroCall = (WMLMacroCall)theEObject;
+        T result = caseWMLMacroCall(wmlMacroCall);
+        if (result == null) result = caseWMLKeyValueRule(wmlMacroCall);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -145,6 +137,28 @@ public class WMLSwitch<T>
         WMLLuaCode wmlLuaCode = (WMLLuaCode)theEObject;
         T result = caseWMLLuaCode(wmlLuaCode);
         if (result == null) result = caseWMLKeyValueRule(wmlLuaCode);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case WMLPackage.WML_MACRO_DEFINE:
+      {
+        WMLMacroDefine wmlMacroDefine = (WMLMacroDefine)theEObject;
+        T result = caseWMLMacroDefine(wmlMacroDefine);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case WMLPackage.WML_TEXTDOMAIN:
+      {
+        WMLTextdomain wmlTextdomain = (WMLTextdomain)theEObject;
+        T result = caseWMLTextdomain(wmlTextdomain);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case WMLPackage.WML_VALUE:
+      {
+        WMLValue wmlValue = (WMLValue)theEObject;
+        T result = caseWMLValue(wmlValue);
+        if (result == null) result = caseWMLKeyValueRule(wmlValue);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -217,33 +231,17 @@ public class WMLSwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Key Value</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Macro Call</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Key Value</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Macro Call</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseWMLKeyValue(WMLKeyValue object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Macro</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Macro</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseWMLMacro(WMLMacro object)
+  public T caseWMLMacroCall(WMLMacroCall object)
   {
     return null;
   }
@@ -260,6 +258,54 @@ public class WMLSwitch<T>
    * @generated
    */
   public T caseWMLLuaCode(WMLLuaCode object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Macro Define</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Macro Define</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseWMLMacroDefine(WMLMacroDefine object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Textdomain</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Textdomain</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseWMLTextdomain(WMLTextdomain object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Value</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Value</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseWMLValue(WMLValue object)
   {
     return null;
   }

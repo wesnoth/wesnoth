@@ -63,22 +63,13 @@ public interface WMLFactory extends EFactory
   WMLKeyValueRule createWMLKeyValueRule();
 
   /**
-   * Returns a new object of class '<em>Key Value</em>'.
+   * Returns a new object of class '<em>Macro Call</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Key Value</em>'.
+   * @return a new object of class '<em>Macro Call</em>'.
    * @generated
    */
-  WMLKeyValue createWMLKeyValue();
-
-  /**
-   * Returns a new object of class '<em>Macro</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Macro</em>'.
-   * @generated
-   */
-  WMLMacro createWMLMacro();
+  WMLMacroCall createWMLMacroCall();
 
   /**
    * Returns a new object of class '<em>Lua Code</em>'.
@@ -88,6 +79,33 @@ public interface WMLFactory extends EFactory
    * @generated
    */
   WMLLuaCode createWMLLuaCode();
+
+  /**
+   * Returns a new object of class '<em>Macro Define</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Macro Define</em>'.
+   * @generated
+   */
+  WMLMacroDefine createWMLMacroDefine();
+
+  /**
+   * Returns a new object of class '<em>Textdomain</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Textdomain</em>'.
+   * @generated
+   */
+  WMLTextdomain createWMLTextdomain();
+
+  /**
+   * Returns a new object of class '<em>Value</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Value</em>'.
+   * @generated
+   */
+  WMLValue createWMLValue();
 
   /**
    * Returns the package supported by this factory.

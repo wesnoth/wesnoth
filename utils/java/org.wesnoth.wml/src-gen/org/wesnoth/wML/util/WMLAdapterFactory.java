@@ -99,19 +99,29 @@ public class WMLAdapterFactory extends AdapterFactoryImpl
         return createWMLKeyValueRuleAdapter();
       }
       @Override
-      public Adapter caseWMLKeyValue(WMLKeyValue object)
+      public Adapter caseWMLMacroCall(WMLMacroCall object)
       {
-        return createWMLKeyValueAdapter();
-      }
-      @Override
-      public Adapter caseWMLMacro(WMLMacro object)
-      {
-        return createWMLMacroAdapter();
+        return createWMLMacroCallAdapter();
       }
       @Override
       public Adapter caseWMLLuaCode(WMLLuaCode object)
       {
         return createWMLLuaCodeAdapter();
+      }
+      @Override
+      public Adapter caseWMLMacroDefine(WMLMacroDefine object)
+      {
+        return createWMLMacroDefineAdapter();
+      }
+      @Override
+      public Adapter caseWMLTextdomain(WMLTextdomain object)
+      {
+        return createWMLTextdomainAdapter();
+      }
+      @Override
+      public Adapter caseWMLValue(WMLValue object)
+      {
+        return createWMLValueAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -196,31 +206,16 @@ public class WMLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.wesnoth.wML.WMLKeyValue <em>Key Value</em>}'.
+   * Creates a new adapter for an object of class '{@link org.wesnoth.wML.WMLMacroCall <em>Macro Call</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.wesnoth.wML.WMLKeyValue
+   * @see org.wesnoth.wML.WMLMacroCall
    * @generated
    */
-  public Adapter createWMLKeyValueAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.wesnoth.wML.WMLMacro <em>Macro</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.wesnoth.wML.WMLMacro
-   * @generated
-   */
-  public Adapter createWMLMacroAdapter()
+  public Adapter createWMLMacroCallAdapter()
   {
     return null;
   }
@@ -236,6 +231,51 @@ public class WMLAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createWMLLuaCodeAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.wesnoth.wML.WMLMacroDefine <em>Macro Define</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.wesnoth.wML.WMLMacroDefine
+   * @generated
+   */
+  public Adapter createWMLMacroDefineAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.wesnoth.wML.WMLTextdomain <em>Textdomain</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.wesnoth.wML.WMLTextdomain
+   * @generated
+   */
+  public Adapter createWMLTextdomainAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.wesnoth.wML.WMLValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.wesnoth.wML.WMLValue
+   * @generated
+   */
+  public Adapter createWMLValueAdapter()
   {
     return null;
   }

@@ -22,7 +22,7 @@ import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightedPositionAcceptor;
 import org.eclipse.xtext.xtext.ui.editor.syntaxcoloring.SemanticHighlightingCalculator;
 import org.wesnoth.ui.WMLEditor;
 import org.wesnoth.wML.WMLKey;
-import org.wesnoth.wML.WMLMacro;
+import org.wesnoth.wML.WMLMacroCall;
 import org.wesnoth.wML.WMLPackage;
 import org.wesnoth.wML.WMLTag;
 
@@ -58,9 +58,9 @@ public class WMLSemanticHighlightingCalculator extends SemanticHighlightingCalcu
 				AbstractNode begin = getFirstFeatureNode(current, WMLPackage.Literals.WML_KEY__NAME.getName());
 				highlightNode(begin, WMLHighlightingConfiguration.RULE_WML_KEY, acceptor);
 			}
-			else if (current instanceof WMLMacro)
+			else if (current instanceof WMLMacroCall)
 			{
-				AbstractNode begin = getFirstFeatureNode(current, WMLPackage.Literals.WML_MACRO__NAME.getName());
+				AbstractNode begin = getFirstFeatureNode(current, WMLPackage.Literals.WML_MACRO_CALL__NAME.getName());
 				highlightNode(begin, WMLHighlightingConfiguration.RULE_WML_MACRO, acceptor);
 
 //				AbstractNode end = getFirstFeatureNode(current, WMLPackage.Literals.WML_MACRO__VALUE.getName());

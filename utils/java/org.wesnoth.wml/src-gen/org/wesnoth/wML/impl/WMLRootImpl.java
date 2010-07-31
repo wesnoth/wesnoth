@@ -20,10 +20,12 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.wesnoth.wML.WMLMacro;
+import org.wesnoth.wML.WMLMacroCall;
+import org.wesnoth.wML.WMLMacroDefine;
 import org.wesnoth.wML.WMLPackage;
 import org.wesnoth.wML.WMLRoot;
 import org.wesnoth.wML.WMLTag;
+import org.wesnoth.wML.WMLTextdomain;
 
 /**
  * <!-- begin-user-doc -->
@@ -33,7 +35,9 @@ import org.wesnoth.wML.WMLTag;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.wesnoth.wML.impl.WMLRootImpl#getTags <em>Tags</em>}</li>
- *   <li>{@link org.wesnoth.wML.impl.WMLRootImpl#getMacros <em>Macros</em>}</li>
+ *   <li>{@link org.wesnoth.wML.impl.WMLRootImpl#getMacroCalls <em>Macro Calls</em>}</li>
+ *   <li>{@link org.wesnoth.wML.impl.WMLRootImpl#getMacroDefines <em>Macro Defines</em>}</li>
+ *   <li>{@link org.wesnoth.wML.impl.WMLRootImpl#getTextdomains <em>Textdomains</em>}</li>
  * </ul>
  * </p>
  *
@@ -52,14 +56,34 @@ public class WMLRootImpl extends MinimalEObjectImpl.Container implements WMLRoot
   protected EList<WMLTag> tags;
 
   /**
-   * The cached value of the '{@link #getMacros() <em>Macros</em>}' containment reference list.
+   * The cached value of the '{@link #getMacroCalls() <em>Macro Calls</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getMacros()
+   * @see #getMacroCalls()
    * @generated
    * @ordered
    */
-  protected EList<WMLMacro> macros;
+  protected EList<WMLMacroCall> macroCalls;
+
+  /**
+   * The cached value of the '{@link #getMacroDefines() <em>Macro Defines</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMacroDefines()
+   * @generated
+   * @ordered
+   */
+  protected EList<WMLMacroDefine> macroDefines;
+
+  /**
+   * The cached value of the '{@link #getTextdomains() <em>Textdomains</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getTextdomains()
+   * @generated
+   * @ordered
+   */
+  protected EList<WMLTextdomain> textdomains;
 
   /**
    * <!-- begin-user-doc -->
@@ -101,13 +125,41 @@ public class WMLRootImpl extends MinimalEObjectImpl.Container implements WMLRoot
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<WMLMacro> getMacros()
+  public EList<WMLMacroCall> getMacroCalls()
   {
-    if (macros == null)
+    if (macroCalls == null)
     {
-      macros = new EObjectContainmentEList<WMLMacro>(WMLMacro.class, this, WMLPackage.WML_ROOT__MACROS);
+      macroCalls = new EObjectContainmentEList<WMLMacroCall>(WMLMacroCall.class, this, WMLPackage.WML_ROOT__MACRO_CALLS);
     }
-    return macros;
+    return macroCalls;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<WMLMacroDefine> getMacroDefines()
+  {
+    if (macroDefines == null)
+    {
+      macroDefines = new EObjectContainmentEList<WMLMacroDefine>(WMLMacroDefine.class, this, WMLPackage.WML_ROOT__MACRO_DEFINES);
+    }
+    return macroDefines;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<WMLTextdomain> getTextdomains()
+  {
+    if (textdomains == null)
+    {
+      textdomains = new EObjectContainmentEList<WMLTextdomain>(WMLTextdomain.class, this, WMLPackage.WML_ROOT__TEXTDOMAINS);
+    }
+    return textdomains;
   }
 
   /**
@@ -122,8 +174,12 @@ public class WMLRootImpl extends MinimalEObjectImpl.Container implements WMLRoot
     {
       case WMLPackage.WML_ROOT__TAGS:
         return ((InternalEList<?>)getTags()).basicRemove(otherEnd, msgs);
-      case WMLPackage.WML_ROOT__MACROS:
-        return ((InternalEList<?>)getMacros()).basicRemove(otherEnd, msgs);
+      case WMLPackage.WML_ROOT__MACRO_CALLS:
+        return ((InternalEList<?>)getMacroCalls()).basicRemove(otherEnd, msgs);
+      case WMLPackage.WML_ROOT__MACRO_DEFINES:
+        return ((InternalEList<?>)getMacroDefines()).basicRemove(otherEnd, msgs);
+      case WMLPackage.WML_ROOT__TEXTDOMAINS:
+        return ((InternalEList<?>)getTextdomains()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -140,8 +196,12 @@ public class WMLRootImpl extends MinimalEObjectImpl.Container implements WMLRoot
     {
       case WMLPackage.WML_ROOT__TAGS:
         return getTags();
-      case WMLPackage.WML_ROOT__MACROS:
-        return getMacros();
+      case WMLPackage.WML_ROOT__MACRO_CALLS:
+        return getMacroCalls();
+      case WMLPackage.WML_ROOT__MACRO_DEFINES:
+        return getMacroDefines();
+      case WMLPackage.WML_ROOT__TEXTDOMAINS:
+        return getTextdomains();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -161,9 +221,17 @@ public class WMLRootImpl extends MinimalEObjectImpl.Container implements WMLRoot
         getTags().clear();
         getTags().addAll((Collection<? extends WMLTag>)newValue);
         return;
-      case WMLPackage.WML_ROOT__MACROS:
-        getMacros().clear();
-        getMacros().addAll((Collection<? extends WMLMacro>)newValue);
+      case WMLPackage.WML_ROOT__MACRO_CALLS:
+        getMacroCalls().clear();
+        getMacroCalls().addAll((Collection<? extends WMLMacroCall>)newValue);
+        return;
+      case WMLPackage.WML_ROOT__MACRO_DEFINES:
+        getMacroDefines().clear();
+        getMacroDefines().addAll((Collection<? extends WMLMacroDefine>)newValue);
+        return;
+      case WMLPackage.WML_ROOT__TEXTDOMAINS:
+        getTextdomains().clear();
+        getTextdomains().addAll((Collection<? extends WMLTextdomain>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -182,8 +250,14 @@ public class WMLRootImpl extends MinimalEObjectImpl.Container implements WMLRoot
       case WMLPackage.WML_ROOT__TAGS:
         getTags().clear();
         return;
-      case WMLPackage.WML_ROOT__MACROS:
-        getMacros().clear();
+      case WMLPackage.WML_ROOT__MACRO_CALLS:
+        getMacroCalls().clear();
+        return;
+      case WMLPackage.WML_ROOT__MACRO_DEFINES:
+        getMacroDefines().clear();
+        return;
+      case WMLPackage.WML_ROOT__TEXTDOMAINS:
+        getTextdomains().clear();
         return;
     }
     super.eUnset(featureID);
@@ -201,8 +275,12 @@ public class WMLRootImpl extends MinimalEObjectImpl.Container implements WMLRoot
     {
       case WMLPackage.WML_ROOT__TAGS:
         return tags != null && !tags.isEmpty();
-      case WMLPackage.WML_ROOT__MACROS:
-        return macros != null && !macros.isEmpty();
+      case WMLPackage.WML_ROOT__MACRO_CALLS:
+        return macroCalls != null && !macroCalls.isEmpty();
+      case WMLPackage.WML_ROOT__MACRO_DEFINES:
+        return macroDefines != null && !macroDefines.isEmpty();
+      case WMLPackage.WML_ROOT__TEXTDOMAINS:
+        return textdomains != null && !textdomains.isEmpty();
     }
     return super.eIsSet(featureID);
   }

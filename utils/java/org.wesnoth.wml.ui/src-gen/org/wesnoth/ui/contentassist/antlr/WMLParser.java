@@ -40,22 +40,28 @@ public class WMLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getWMLRootAccess().getAlternatives(), "rule__WMLRoot__Alternatives");
 					put(grammarAccess.getWMLTagAccess().getAlternatives_4(), "rule__WMLTag__Alternatives_4");
 					put(grammarAccess.getWMLKeyValueRuleAccess().getAlternatives(), "rule__WMLKeyValueRule__Alternatives");
-					put(grammarAccess.getWMLKeyValueAccess().getValueAlternatives_0(), "rule__WMLKeyValue__ValueAlternatives_0");
+					put(grammarAccess.getWMLValueAccess().getValueAlternatives_0(), "rule__WMLValue__ValueAlternatives_0");
 					put(grammarAccess.getWMLTagAccess().getGroup(), "rule__WMLTag__Group__0");
 					put(grammarAccess.getWMLKeyAccess().getGroup(), "rule__WMLKey__Group__0");
 					put(grammarAccess.getWMLRootAccess().getTagsAssignment_0(), "rule__WMLRoot__TagsAssignment_0");
-					put(grammarAccess.getWMLRootAccess().getMacrosAssignment_1(), "rule__WMLRoot__MacrosAssignment_1");
+					put(grammarAccess.getWMLRootAccess().getMacroCallsAssignment_1(), "rule__WMLRoot__MacroCallsAssignment_1");
+					put(grammarAccess.getWMLRootAccess().getMacroDefinesAssignment_2(), "rule__WMLRoot__MacroDefinesAssignment_2");
+					put(grammarAccess.getWMLRootAccess().getTextdomainsAssignment_3(), "rule__WMLRoot__TextdomainsAssignment_3");
 					put(grammarAccess.getWMLTagAccess().getPlusAssignment_1(), "rule__WMLTag__PlusAssignment_1");
 					put(grammarAccess.getWMLTagAccess().getNameAssignment_2(), "rule__WMLTag__NameAssignment_2");
 					put(grammarAccess.getWMLTagAccess().getTagsAssignment_4_0(), "rule__WMLTag__TagsAssignment_4_0");
 					put(grammarAccess.getWMLTagAccess().getKeysAssignment_4_1(), "rule__WMLTag__KeysAssignment_4_1");
-					put(grammarAccess.getWMLTagAccess().getMacrosAssignment_4_2(), "rule__WMLTag__MacrosAssignment_4_2");
+					put(grammarAccess.getWMLTagAccess().getMacroCallsAssignment_4_2(), "rule__WMLTag__MacroCallsAssignment_4_2");
+					put(grammarAccess.getWMLTagAccess().getMacroDefinesAssignment_4_3(), "rule__WMLTag__MacroDefinesAssignment_4_3");
+					put(grammarAccess.getWMLTagAccess().getTextdomainsAssignment_4_4(), "rule__WMLTag__TextdomainsAssignment_4_4");
 					put(grammarAccess.getWMLTagAccess().getEndNameAssignment_6(), "rule__WMLTag__EndNameAssignment_6");
 					put(grammarAccess.getWMLKeyAccess().getNameAssignment_0(), "rule__WMLKey__NameAssignment_0");
 					put(grammarAccess.getWMLKeyAccess().getValueAssignment_2(), "rule__WMLKey__ValueAssignment_2");
-					put(grammarAccess.getWMLKeyValueAccess().getValueAssignment(), "rule__WMLKeyValue__ValueAssignment");
-					put(grammarAccess.getWMLMacroAccess().getNameAssignment(), "rule__WMLMacro__NameAssignment");
+					put(grammarAccess.getWMLMacroCallAccess().getNameAssignment(), "rule__WMLMacroCall__NameAssignment");
 					put(grammarAccess.getWMLLuaCodeAccess().getValueAssignment(), "rule__WMLLuaCode__ValueAssignment");
+					put(grammarAccess.getWMLMacroDefineAccess().getNameAssignment(), "rule__WMLMacroDefine__NameAssignment");
+					put(grammarAccess.getWMLTextdomainAccess().getNameAssignment(), "rule__WMLTextdomain__NameAssignment");
+					put(grammarAccess.getWMLValueAccess().getValueAssignment(), "rule__WMLValue__ValueAssignment");
 				}
 			};
 		}
