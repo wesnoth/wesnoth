@@ -850,7 +850,7 @@ size_t ana_network_manager::send_all( const config& cfg, bool /*zipped*/ )
             ana_send_handler handler( necessary_calls );
 
             (*it)->server()->send_all( ana::buffer( output_string ), &handler); //, ana::ZERO_COPY);
-            handler.wait_completion(); // the handler will release the mutex after 
+            handler.wait_completion(); // the handler will release the mutex after
                                        // necessary_calls calls
         }
         else
