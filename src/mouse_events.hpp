@@ -66,6 +66,9 @@ public:
 
 	const pathfind::marked_route& get_current_route() { return current_route_; }
 
+	//get visible ajacent enemies of 1-based side around location loc
+	std::set<map_location> get_adj_enemies(const map_location& loc, int side) const;
+
 	// show the attack dialog and return the choice made
 	// which can be invalid if 'cancel' was used
 	int show_attack_dialog(const map_location& attacker_loc, const map_location& defender_loc);
@@ -109,9 +112,6 @@ protected:
 	// the perform attack function called after a random seed is obtained
 	void perform_attack(map_location attacker_loc, map_location defender_loc,
 		int attacker_weapon, int defender_weapon, rand_rng::seed_t seed);
-
-	//get visible ajacent enemies of 1-based side around location loc
-	std::set<map_location> get_adj_enemies(const map_location& loc, int side) const;
 
 	void show_attack_options(const unit_map::const_iterator &u);
 	map_location current_unit_attacks_from(const map_location& loc);
