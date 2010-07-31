@@ -169,7 +169,6 @@ void validate_visitor::visit_attack(attack_ptr attack)
 
 void validate_visitor::visit_recruit(recruit_ptr recruit)
 {
-	log_scope("validate_visitor::visit_recruit");
 	//invalidate recruit hex so number display is updated properly
 	resources::screen->invalidate(recruit->recruit_hex_);
 

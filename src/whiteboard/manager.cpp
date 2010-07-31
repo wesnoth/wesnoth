@@ -133,9 +133,6 @@ void manager::set_invert_behavior(bool invert)
 		 block_whiteboard_activation = true;
 	}
 
-
-
-	log_scope("set_invert_behavior");
 	if (invert)
 	{
 		if (!inverted_behavior_)
@@ -190,7 +187,6 @@ void manager::on_init_side()
 void manager::on_finish_side_turn()
 {
 	wait_for_side_init_ = true;
-
 	highlighter_.reset();
 	erase_temp_move();
 	LOG_WB << "on_finish_side_turn()\n";
@@ -263,7 +259,6 @@ void manager::set_real_unit_map()
 	{
 		LOG_WB << "Attempt to set planned_unit_map during action execution.\n";
 	}
-
 }
 
 unit* manager::find_unit_future(map_location hex)
@@ -298,7 +293,7 @@ void manager::draw_hex(const map_location& hex)
 		viewer_actions()->draw_hex(hex);
 	}
 
-//	//Little hack to make the CTRL key work properly: check at every draw if it's pressed,
+//	//Little hack to make the TAB key work properly: check at every draw if it's pressed,
 //	//to compensate for faulty detection of the "up" key event
 //	if(!(*key_poller_)[SDLK_TAB])
 //	{
@@ -369,7 +364,7 @@ void manager::create_temp_move()
 	 * (This section has only one return path.)
 	 */
 
-	//TODO: May be appropriate to replace these separate components by a temporary
+	//@todo: May be appropriate to replace these separate components by a temporary
 	//      wb::move object
 
 	route_.reset(new pathfind::marked_route(route));
@@ -400,7 +395,6 @@ void manager::create_temp_move()
 			false); //get facing right
 	fake_unit_->set_location(route_->steps.back());
 	fake_unit_->set_ghosted(false);
-
 }
 
 void manager::erase_temp_move()
@@ -504,7 +498,6 @@ bool manager::save_recruit(const std::string& name, int side_num, const map_loca
 			print_help_once();
 		}
 	}
-
 	return created_planned_recruit;
 }
 
@@ -574,7 +567,6 @@ void manager::contextual_bump_up_action()
 	if (!(executing_actions_ || viewer_actions()->empty() || resources::controller->is_linger_mode())
 			&& highlighter_)
 	{
-
 		validate_viewer_actions();
 		action_ptr action = highlighter_->get_bump_target();
 		if (action)
@@ -589,7 +581,6 @@ void manager::contextual_bump_down_action()
 	if (!(executing_actions_ || viewer_actions()->empty() || resources::controller->is_linger_mode())
 			&& highlighter_)
 	{
-
 		validate_viewer_actions();
 		action_ptr action = highlighter_->get_bump_target();
 		if (action)
