@@ -80,6 +80,10 @@ bool attack::execute()
 
 	LOG_WB << "Executing: " << shared_from_this() << "\n";
 
+	events::mouse_handler const& mouse_handler = resources::controller->get_mouse_handler_base();
+
+	std::set<map_location> adj_enemies = mouse_handler.get_adj_enemies(get_dest_hex(), resources::screen->viewing_side());
+
 	if (execute_successful && route_->steps.size() >= 2)
 	{
 		if (!move::execute())
@@ -88,11 +92,16 @@ bool attack::execute()
 			//the right hex to execute the attack.
 			execute_successful = false;
 		}
+		//check if new enemies are now visible
+		else if(mouse_handler.get_adj_enemies(get_dest_hex(), resources::screen->viewing_side()) != adj_enemies)
+		{
+			execute_successful = false; //ambush, interrupt attack
+		}
 	}
 
 	if (execute_successful)
 	{
-		resources::controller->get_mouse_handler_base().attack_enemy(get_dest_hex(), target_hex_, weapon_choice_);
+		resources::controller->get_mouse_handler_base().attack_enemy(get_dest_hex(), get_target_hex(), weapon_choice_);
 		//only path that returns execute_successful = true
 	}
 	return execute_successful;
