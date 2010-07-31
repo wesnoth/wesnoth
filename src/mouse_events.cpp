@@ -603,6 +603,8 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 
 		// Otherwise proceed to normal unit movement, unless the selected unit already has actions
 		// from the whiteboard.
+		/** @todo If we're about to move the leader away from the keep and there are planned recruits
+		  * remaining, display a warning. */
 		} else if (!resources::whiteboard->unit_has_actions(*u)) {
 			//register the mouse-UI waypoints into the unit's waypoints
 			u->waypoints() = waypoints_;
