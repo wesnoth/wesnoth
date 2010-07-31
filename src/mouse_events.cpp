@@ -685,11 +685,6 @@ void mouse_handler::deselect_hex() {
 
 bool mouse_handler::move_unit_along_current_route(bool check_shroud)
 {
-	const std::vector<map_location> steps = current_route_.steps;
-	if(steps.empty()) {
-		return false;
-	}
-
 	// do not show footsteps during movement
 	gui().set_route(NULL);
 
@@ -697,13 +692,25 @@ bool mouse_handler::move_unit_along_current_route(bool check_shroud)
 	selected_hex_ = map_location();
 	gui().select_hex(map_location());
 
-	// will be invalid after the move
+	bool finished_moves = move_unit_along_route(current_route_, &next_unit_, check_shroud);
+
+	// invalid after the move
 	current_paths_ = pathfind::paths();
 	current_route_.steps.clear();
 
+	return finished_moves;
+}
+
+bool mouse_handler::move_unit_along_route(pathfind::marked_route const& route, map_location* next_unit, bool check_shroud)
+{
+	const std::vector<map_location> steps = route.steps;
+	if(steps.empty()) {
+		return false;
+	}
+
 	size_t moves = 0;
 	try {
-			moves = ::move_unit(NULL, steps, &recorder, resources::undo_stack, true, &next_unit_, false, check_shroud);
+			moves = ::move_unit(NULL, steps, &recorder, resources::undo_stack, true, next_unit, false, check_shroud);
 	} catch(end_turn_exception&) {
 		cursor::set(cursor::NORMAL);
 		gui().invalidate_game_status();
@@ -711,7 +718,6 @@ bool mouse_handler::move_unit_along_current_route(bool check_shroud)
 	}
 
 	cursor::set(cursor::NORMAL);
-
 	gui().invalidate_game_status();
 
 	if(moves == 0)
@@ -739,7 +745,6 @@ bool mouse_handler::move_unit_along_current_route(bool check_shroud)
 
 	return moves == steps.size();
 }
-
 
 int mouse_handler::fill_weapon_choices(std::vector<battle_context>& bc_vector, unit_map::iterator attacker, unit_map::iterator defender)
 {

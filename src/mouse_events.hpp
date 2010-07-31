@@ -72,6 +72,8 @@ public:
 	// wrapper to catch bad_alloc so this should be called
 	void attack_enemy(const map_location& attacker_loc, const map_location& defender_loc, int choice);
 
+	bool move_unit_along_route(pathfind::marked_route const& route, map_location* next_unit, bool check_shroud);
+
 protected:
 	/**
 	 * Due to the way this class is constructed we can assume that the
