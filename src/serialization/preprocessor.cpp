@@ -798,7 +798,7 @@ bool preprocessor_data::get_chunk()
 				target_.defines_->insert(std::make_pair(
 					symbol, preproc_define(buffer, items, target_.textdomain_,
 					                       linenum + 1, target_.location_)));
-				LOG_CF << "defining macro " << symbol << " (location " << target_.location_ << ")\n";
+				LOG_CF << "defining macro " << symbol << " (location " << get_location(target_.location_) << ")\n";
 			}
 		} else if (command == "ifdef") {
 			skip_spaces();
@@ -865,7 +865,7 @@ bool preprocessor_data::get_chunk()
 			skip_spaces();
 			std::string const &symbol = read_word();
 			target_.defines_->erase(symbol);
-			LOG_CF << "undefine macro " << symbol << " (location " << target_.location_ << ")\n";
+			LOG_CF << "undefine macro " << symbol << " (location " << get_location(target_.location_) << ")\n";
 		} else if (command == "error") {
 			if (!skipping_) {
 				skip_spaces();
@@ -879,7 +879,7 @@ bool preprocessor_data::get_chunk()
 				skip_spaces();
 				std::string message = read_rest_of_line();
 				WRN_CF << "#warning: \"" << message << "\" at "
-					<< linenum_ << ' ' << target_.location_ << '\n';
+					<< linenum_ << ' ' << get_location(target_.location_) << '\n';
 			} else
 				DBG_CF << "Skipped a warning\n";
 		} else
