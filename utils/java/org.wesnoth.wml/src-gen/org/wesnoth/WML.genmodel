@@ -30,7 +30,13 @@
     </genClasses>
     <genClasses ecoreClass="WML.ecore#//WMLKeyValue"/>
     <genClasses ecoreClass="WML.ecore#//WMLMacroCall">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//WMLMacroCall/relative"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//WMLMacroCall/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLMacroCall/params"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLMacroCall/extraMacros"/>
+    </genClasses>
+    <genClasses ecoreClass="WML.ecore#//WMLMacroParameter">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLMacroParameter/param"/>
     </genClasses>
     <genClasses ecoreClass="WML.ecore#//WMLLuaCode">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//WMLLuaCode/value"/>

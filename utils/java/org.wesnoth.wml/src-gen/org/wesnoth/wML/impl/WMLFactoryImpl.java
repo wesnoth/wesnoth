@@ -73,6 +73,7 @@ public class WMLFactoryImpl extends EFactoryImpl implements WMLFactory
       case WMLPackage.WML_KEY: return createWMLKey();
       case WMLPackage.WML_KEY_VALUE: return createWMLKeyValue();
       case WMLPackage.WML_MACRO_CALL: return createWMLMacroCall();
+      case WMLPackage.WML_MACRO_PARAMETER: return createWMLMacroParameter();
       case WMLPackage.WML_LUA_CODE: return createWMLLuaCode();
       case WMLPackage.WML_ARRAY_CALL: return createWMLArrayCall();
       case WMLPackage.WML_MACRO_DEFINE: return createWMLMacroDefine();
@@ -136,6 +137,17 @@ public class WMLFactoryImpl extends EFactoryImpl implements WMLFactory
   {
     WMLMacroCallImpl wmlMacroCall = new WMLMacroCallImpl();
     return wmlMacroCall;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public WMLMacroParameter createWMLMacroParameter()
+  {
+    WMLMacroParameterImpl wmlMacroParameter = new WMLMacroParameterImpl();
+    return wmlMacroParameter;
   }
 
   /**

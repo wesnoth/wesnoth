@@ -273,13 +273,40 @@ public interface WMLPackage extends EPackage
   int WML_MACRO_CALL = 4;
 
   /**
+   * The feature id for the '<em><b>Relative</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WML_MACRO_CALL__RELATIVE = WML_KEY_VALUE_FEATURE_COUNT + 0;
+
+  /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int WML_MACRO_CALL__NAME = WML_KEY_VALUE_FEATURE_COUNT + 0;
+  int WML_MACRO_CALL__NAME = WML_KEY_VALUE_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Params</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WML_MACRO_CALL__PARAMS = WML_KEY_VALUE_FEATURE_COUNT + 2;
+
+  /**
+   * The feature id for the '<em><b>Extra Macros</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WML_MACRO_CALL__EXTRA_MACROS = WML_KEY_VALUE_FEATURE_COUNT + 3;
 
   /**
    * The number of structural features of the '<em>Macro Call</em>' class.
@@ -288,7 +315,35 @@ public interface WMLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int WML_MACRO_CALL_FEATURE_COUNT = WML_KEY_VALUE_FEATURE_COUNT + 1;
+  int WML_MACRO_CALL_FEATURE_COUNT = WML_KEY_VALUE_FEATURE_COUNT + 4;
+
+  /**
+   * The meta object id for the '{@link org.wesnoth.wML.impl.WMLMacroParameterImpl <em>Macro Parameter</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.wesnoth.wML.impl.WMLMacroParameterImpl
+   * @see org.wesnoth.wML.impl.WMLPackageImpl#getWMLMacroParameter()
+   * @generated
+   */
+  int WML_MACRO_PARAMETER = 5;
+
+  /**
+   * The feature id for the '<em><b>Param</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WML_MACRO_PARAMETER__PARAM = 0;
+
+  /**
+   * The number of structural features of the '<em>Macro Parameter</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WML_MACRO_PARAMETER_FEATURE_COUNT = 1;
 
   /**
    * The meta object id for the '{@link org.wesnoth.wML.impl.WMLLuaCodeImpl <em>Lua Code</em>}' class.
@@ -298,7 +353,7 @@ public interface WMLPackage extends EPackage
    * @see org.wesnoth.wML.impl.WMLPackageImpl#getWMLLuaCode()
    * @generated
    */
-  int WML_LUA_CODE = 5;
+  int WML_LUA_CODE = 6;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -326,7 +381,7 @@ public interface WMLPackage extends EPackage
    * @see org.wesnoth.wML.impl.WMLPackageImpl#getWMLArrayCall()
    * @generated
    */
-  int WML_ARRAY_CALL = 6;
+  int WML_ARRAY_CALL = 7;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference list.
@@ -354,7 +409,7 @@ public interface WMLPackage extends EPackage
    * @see org.wesnoth.wML.impl.WMLPackageImpl#getWMLMacroDefine()
    * @generated
    */
-  int WML_MACRO_DEFINE = 7;
+  int WML_MACRO_DEFINE = 8;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -382,7 +437,7 @@ public interface WMLPackage extends EPackage
    * @see org.wesnoth.wML.impl.WMLPackageImpl#getWMLTextdomain()
    * @generated
    */
-  int WML_TEXTDOMAIN = 8;
+  int WML_TEXTDOMAIN = 9;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -410,7 +465,7 @@ public interface WMLPackage extends EPackage
    * @see org.wesnoth.wML.impl.WMLPackageImpl#getWMLValue()
    * @generated
    */
-  int WML_VALUE = 9;
+  int WML_VALUE = 10;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -636,6 +691,17 @@ public interface WMLPackage extends EPackage
   EClass getWMLMacroCall();
 
   /**
+   * Returns the meta object for the attribute '{@link org.wesnoth.wML.WMLMacroCall#isRelative <em>Relative</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Relative</em>'.
+   * @see org.wesnoth.wML.WMLMacroCall#isRelative()
+   * @see #getWMLMacroCall()
+   * @generated
+   */
+  EAttribute getWMLMacroCall_Relative();
+
+  /**
    * Returns the meta object for the attribute '{@link org.wesnoth.wML.WMLMacroCall#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -645,6 +711,49 @@ public interface WMLPackage extends EPackage
    * @generated
    */
   EAttribute getWMLMacroCall_Name();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.wesnoth.wML.WMLMacroCall#getParams <em>Params</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Params</em>'.
+   * @see org.wesnoth.wML.WMLMacroCall#getParams()
+   * @see #getWMLMacroCall()
+   * @generated
+   */
+  EReference getWMLMacroCall_Params();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.wesnoth.wML.WMLMacroCall#getExtraMacros <em>Extra Macros</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Extra Macros</em>'.
+   * @see org.wesnoth.wML.WMLMacroCall#getExtraMacros()
+   * @see #getWMLMacroCall()
+   * @generated
+   */
+  EReference getWMLMacroCall_ExtraMacros();
+
+  /**
+   * Returns the meta object for class '{@link org.wesnoth.wML.WMLMacroParameter <em>Macro Parameter</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Macro Parameter</em>'.
+   * @see org.wesnoth.wML.WMLMacroParameter
+   * @generated
+   */
+  EClass getWMLMacroParameter();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.wesnoth.wML.WMLMacroParameter#getParam <em>Param</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Param</em>'.
+   * @see org.wesnoth.wML.WMLMacroParameter#getParam()
+   * @see #getWMLMacroParameter()
+   * @generated
+   */
+  EReference getWMLMacroParameter_Param();
 
   /**
    * Returns the meta object for class '{@link org.wesnoth.wML.WMLLuaCode <em>Lua Code</em>}'.
@@ -937,12 +1046,54 @@ public interface WMLPackage extends EPackage
     EClass WML_MACRO_CALL = eINSTANCE.getWMLMacroCall();
 
     /**
+     * The meta object literal for the '<em><b>Relative</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute WML_MACRO_CALL__RELATIVE = eINSTANCE.getWMLMacroCall_Relative();
+
+    /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     EAttribute WML_MACRO_CALL__NAME = eINSTANCE.getWMLMacroCall_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Params</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference WML_MACRO_CALL__PARAMS = eINSTANCE.getWMLMacroCall_Params();
+
+    /**
+     * The meta object literal for the '<em><b>Extra Macros</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference WML_MACRO_CALL__EXTRA_MACROS = eINSTANCE.getWMLMacroCall_ExtraMacros();
+
+    /**
+     * The meta object literal for the '{@link org.wesnoth.wML.impl.WMLMacroParameterImpl <em>Macro Parameter</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.wesnoth.wML.impl.WMLMacroParameterImpl
+     * @see org.wesnoth.wML.impl.WMLPackageImpl#getWMLMacroParameter()
+     * @generated
+     */
+    EClass WML_MACRO_PARAMETER = eINSTANCE.getWMLMacroParameter();
+
+    /**
+     * The meta object literal for the '<em><b>Param</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference WML_MACRO_PARAMETER__PARAM = eINSTANCE.getWMLMacroParameter_Param();
 
     /**
      * The meta object literal for the '{@link org.wesnoth.wML.impl.WMLLuaCodeImpl <em>Lua Code</em>}' class.

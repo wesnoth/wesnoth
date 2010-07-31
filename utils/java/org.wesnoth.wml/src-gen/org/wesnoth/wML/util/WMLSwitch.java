@@ -132,6 +132,13 @@ public class WMLSwitch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case WMLPackage.WML_MACRO_PARAMETER:
+      {
+        WMLMacroParameter wmlMacroParameter = (WMLMacroParameter)theEObject;
+        T result = caseWMLMacroParameter(wmlMacroParameter);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case WMLPackage.WML_LUA_CODE:
       {
         WMLLuaCode wmlLuaCode = (WMLLuaCode)theEObject;
@@ -250,6 +257,22 @@ public class WMLSwitch<T>
    * @generated
    */
   public T caseWMLMacroCall(WMLMacroCall object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Macro Parameter</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Macro Parameter</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseWMLMacroParameter(WMLMacroParameter object)
   {
     return null;
   }

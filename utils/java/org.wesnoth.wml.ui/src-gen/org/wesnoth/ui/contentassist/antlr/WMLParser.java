@@ -41,9 +41,13 @@ public class WMLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getWMLTagAccess().getAlternatives_4(), "rule__WMLTag__Alternatives_4");
 					put(grammarAccess.getWMLKeyAccess().getAlternatives_3(), "rule__WMLKey__Alternatives_3");
 					put(grammarAccess.getWMLKeyValueAccess().getAlternatives(), "rule__WMLKeyValue__Alternatives");
+					put(grammarAccess.getWMLMacroCallAccess().getAlternatives_3(), "rule__WMLMacroCall__Alternatives_3");
+					put(grammarAccess.getWMLMacroParameterAccess().getParamAlternatives_1_0(), "rule__WMLMacroParameter__ParamAlternatives_1_0");
 					put(grammarAccess.getWMLValueAccess().getValueAlternatives_0(), "rule__WMLValue__ValueAlternatives_0");
 					put(grammarAccess.getWMLTagAccess().getGroup(), "rule__WMLTag__Group__0");
 					put(grammarAccess.getWMLKeyAccess().getGroup(), "rule__WMLKey__Group__0");
+					put(grammarAccess.getWMLMacroCallAccess().getGroup(), "rule__WMLMacroCall__Group__0");
+					put(grammarAccess.getWMLMacroParameterAccess().getGroup(), "rule__WMLMacroParameter__Group__0");
 					put(grammarAccess.getWMLArrayCallAccess().getGroup(), "rule__WMLArrayCall__Group__0");
 					put(grammarAccess.getWMLRootAccess().getTagsAssignment_0(), "rule__WMLRoot__TagsAssignment_0");
 					put(grammarAccess.getWMLRootAccess().getMacroCallsAssignment_1(), "rule__WMLRoot__MacroCallsAssignment_1");
@@ -59,7 +63,11 @@ public class WMLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getWMLTagAccess().getEndNameAssignment_6(), "rule__WMLTag__EndNameAssignment_6");
 					put(grammarAccess.getWMLKeyAccess().getNameAssignment_0(), "rule__WMLKey__NameAssignment_0");
 					put(grammarAccess.getWMLKeyAccess().getValueAssignment_2(), "rule__WMLKey__ValueAssignment_2");
-					put(grammarAccess.getWMLMacroCallAccess().getNameAssignment(), "rule__WMLMacroCall__NameAssignment");
+					put(grammarAccess.getWMLMacroCallAccess().getRelativeAssignment_1(), "rule__WMLMacroCall__RelativeAssignment_1");
+					put(grammarAccess.getWMLMacroCallAccess().getNameAssignment_2(), "rule__WMLMacroCall__NameAssignment_2");
+					put(grammarAccess.getWMLMacroCallAccess().getParamsAssignment_3_0(), "rule__WMLMacroCall__ParamsAssignment_3_0");
+					put(grammarAccess.getWMLMacroCallAccess().getExtraMacrosAssignment_3_1(), "rule__WMLMacroCall__ExtraMacrosAssignment_3_1");
+					put(grammarAccess.getWMLMacroParameterAccess().getParamAssignment_1(), "rule__WMLMacroParameter__ParamAssignment_1");
 					put(grammarAccess.getWMLLuaCodeAccess().getValueAssignment(), "rule__WMLLuaCode__ValueAssignment");
 					put(grammarAccess.getWMLArrayCallAccess().getValueAssignment_1(), "rule__WMLArrayCall__ValueAssignment_1");
 					put(grammarAccess.getWMLMacroDefineAccess().getNameAssignment(), "rule__WMLMacroDefine__NameAssignment");
