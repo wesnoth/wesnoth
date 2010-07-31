@@ -12,6 +12,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "wesnothd", "wesnothd.vcproj
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "wesnothlib", "wesnothlib.vcproj", "{4A16638B-127B-4AE8-8E0B-4B211B96F976}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "liblua", "liblua.vcproj", "{01AE7104-A4B1-428E-BA7C-460FE656AE5C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug (fast)|Win32 = Debug (fast)|Win32
@@ -37,6 +39,12 @@ Global
 		{4A16638B-127B-4AE8-8E0B-4B211B96F976}.Debug|Win32.Build.0 = Debug|Win32
 		{4A16638B-127B-4AE8-8E0B-4B211B96F976}.Release|Win32.ActiveCfg = Release|Win32
 		{4A16638B-127B-4AE8-8E0B-4B211B96F976}.Release|Win32.Build.0 = Release|Win32
+		{01AE7104-A4B1-428E-BA7C-460FE656AE5C}.Debug (fast)|Win32.ActiveCfg = Debug|Win32
+		{01AE7104-A4B1-428E-BA7C-460FE656AE5C}.Debug (fast)|Win32.Build.0 = Debug|Win32
+		{01AE7104-A4B1-428E-BA7C-460FE656AE5C}.Debug|Win32.ActiveCfg = Debug|Win32
+		{01AE7104-A4B1-428E-BA7C-460FE656AE5C}.Debug|Win32.Build.0 = Debug|Win32
+		{01AE7104-A4B1-428E-BA7C-460FE656AE5C}.Release|Win32.ActiveCfg = Release|Win32
+		{01AE7104-A4B1-428E-BA7C-460FE656AE5C}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
