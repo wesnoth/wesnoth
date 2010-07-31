@@ -47,13 +47,8 @@ using std::streambuf;
 typedef std::map<std::string, int> t_file_number_map;
 static t_file_number_map file_number_map;
 
-static bool encode_filename = true;
-
 // get filename associated to this code
 static std::string get_filename(const std::string& file_code){
-	if(!encode_filename)
-		return file_code;
-
 	std::stringstream s;
 	s << file_code;
 	int n = 0;
@@ -68,9 +63,6 @@ static std::string get_filename(const std::string& file_code){
 
 // get code associated to this filename
 static std::string get_file_code(const std::string& filename){
-	if(!encode_filename)
-		return filename;
-
 	// current number of encountered filenames
 	static int current_file_number = 0;
 
@@ -1087,9 +1079,6 @@ void preprocess_resource(const std::string& res_name, preproc_map *defines_map,
 		return;
 
 	LOG_PREPROC<<"processing resource: "<<res_name<<'\n';
-
-	//disable filename encoding to get clear #line in cfg.plain
-	encode_filename = false;
 
 	std::string error_log;
 	scoped_istream stream = preprocess_file(res_name, defines_map, &error_log);
