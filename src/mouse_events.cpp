@@ -313,7 +313,6 @@ unit_map::const_iterator mouse_handler::find_unit(const map_location& hex) const
 
 map_location mouse_handler::current_unit_attacks_from(const map_location& loc)
 {
-	log_scope("current_unit_attacks_from");
 	if(loc == selected_hex_)
 		return map_location();
 

@@ -225,13 +225,13 @@ void move::apply_temp_modifier(unit_map& unit_map)
 
 	unit& unit = *unit_it;
 	//Modify movement points
-	DBG_WB <<"Changing movement points for unit " << unit.name() << " [" << unit.underlying_id()
+	DBG_WB <<"Changing movement points for unit " << unit.name() << " [" << unit.id()
 			<< "] from " << unit.movement_left() << " to "
 			<< unit.movement_left() - movement_cost_ << ".\n";
 	unit.set_movement(unit.movement_left() - movement_cost_);
 
 	// Move the unit
-	DBG_WB << "Temporarily moving unit " << unit.name() << " [" << unit.underlying_id()
+	DBG_WB << "Temporarily moving unit " << unit.name() << " [" << unit.id()
 			<< "] from (" << get_source_hex() << ") to (" << get_dest_hex() <<")\n";
 	unit_map.move(get_source_hex(), get_dest_hex());
 
