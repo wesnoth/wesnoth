@@ -468,8 +468,6 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 	undo_ = false;
 	if (mouse_handler_base::left_click(x, y, browse)) return false;
 
-	bool check_shroud = current_team().auto_shroud_updates();
-
 	//we use the last registered highlighted hex
 	//since it's what update our global state
 	map_location hex = last_hex_;
@@ -497,7 +495,6 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 		orig_paths = current_paths_;
 		attack_from = current_unit_attacks_from(hex);
 	} // end planned unit map scope
-
 
 	//see if we're trying to do a attack or move-and-attack
 	if(((!browse && !commands_disabled) || resources::whiteboard->is_active()) && attack_from.valid()) {
@@ -610,7 +607,7 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 			//register the mouse-UI waypoints into the unit's waypoints
 			u->waypoints() = waypoints_;
 
-			move_unit_along_current_route(check_shroud);
+			move_unit_along_current_route(current_team().auto_shroud_updates());
 			// during the move, we may have selected another unit
 			// (but without triggering a select event (command was disabled)
 			// in that case reselect it now to fire the event (+ anim & sound)
