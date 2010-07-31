@@ -49,7 +49,7 @@ public:
 	manager();
 	~manager();
 
-	void print_help();
+	void print_help_once();
 
 	/**
 	 * Determine whether the whiteboard is activated.

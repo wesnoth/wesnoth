@@ -67,9 +67,14 @@ static void print_to_chat(const std::string& title, const std::string& message)
 			events::chat_handler::MESSAGE_PRIVATE, false);
 }
 
-void manager::print_help()
+void manager::print_help_once()
 {
-	print_to_chat("whiteboard", std::string("Type :wb to activate/deactivate the whiteboard.")
+	if (!print_help_once_)
+		return;
+	else
+		print_help_once_ = false;
+
+	print_to_chat("whiteboard", std::string("Type :wb to activate/deactivate planning mode.")
 		+ "  Hold TAB to temporarily deactivate/activate it.");
 	std::stringstream hotkeys;
 	const hotkey::hotkey_item& hk_execute = hotkey::get_hotkey(hotkey::HOTKEY_WB_EXECUTE_ACTION);
@@ -430,11 +435,8 @@ void manager::save_temp_move()
 		viewer_actions()->queue_move(*route_, move_arrow, fake_unit);
 		erase_temp_move();
 		LOG_WB << *viewer_actions() << "\n";
-		if (print_help_once_)
-		{
-			print_help_once_ = false;
-			print_help();
-		}
+
+		print_help_once();
 	}
 }
 
@@ -474,11 +476,8 @@ void manager::save_temp_attack(const map_location& attack_from, const map_locati
 		if (weapon_choice >= 0)
 		{
 			viewer_actions()->queue_attack(target_hex, weapon_choice, *route_, move_arrow, fake_unit);
-			if (print_help_once_)
-			{
-				print_help_once_ = false;
-				print_help();
-			}
+
+			print_help_once();
 		}
 
 		resources::screen->invalidate(target_hex);
@@ -501,11 +500,8 @@ bool manager::save_recruit(const std::string& name, int side_num, const map_loca
 		{
 			viewer_actions()->queue_recruit(name, recruit_hex);
 			created_planned_recruit = true;
-			if (print_help_once_)
-			{
-				print_help_once_ = false;
-				print_help();
-			}
+
+			print_help_once();
 		}
 	}
 
