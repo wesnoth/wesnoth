@@ -374,9 +374,6 @@ preprocessor::preprocessor(preprocessor_streambuf &t) :
 preprocessor::~preprocessor()
 {
 	assert(target_.current_ == this);
-	if (!old_location_.empty()) {
-		target_.buffer_ << "\376line " << old_linenum_ << ' ' << old_location_ << '\n';
-	}
 	if (!old_textdomain_.empty() && target_.textdomain_ != old_textdomain_) {
 		target_.buffer_ << "\376textdomain " << old_textdomain_ << '\n';
 	}
@@ -549,7 +546,6 @@ preprocessor_data::preprocessor_data(preprocessor_streambuf &t,
 	t.location_ = s.str();
 	t.linenum_ = linenum;
 
-	t.buffer_ << "\376line " << linenum << ' ' << t.location_ << '\n';
 	if (t.textdomain_ != domain) {
 		t.buffer_ << "\376textdomain " << domain << '\n';
 		t.textdomain_ = domain;
@@ -569,8 +565,7 @@ void preprocessor_data::push_token(char t)
 	tokens_.push_back(token);
 	std::ostringstream s;
 	if (!skipping_ && slowpath_) {
-		s << "\376line " << linenum_ << ' ' << target_.location_
-		  << "\n\376textdomain " << target_.textdomain_ << '\n';
+		s << "\376textdomain " << target_.textdomain_ << '\n';
 	}
 	strings_.push_back(s.str());
 }
@@ -660,9 +655,6 @@ void preprocessor_data::put(char c)
 		target_.linenum_ = cond_linenum;
 		if (diff <= target_.location_.size() + 11) {
 			target_.buffer_ << std::string(diff, '\n');
-		} else {
-			target_.buffer_ << "\376line " << target_.linenum_
-				<< ' ' << target_.location_ << '\n';
 		}
 	}
 
@@ -941,8 +933,7 @@ bool preprocessor_data::get_chunk()
 					target_.error(error.str(), linenum_);
 				}
 				std::ostringstream v;
-				v << arg->second << "\376line " << linenum_ << ' ' << target_.location_
-				  << "\n\376textdomain " << target_.textdomain_ << '\n';
+				v << arg->second << "\376textdomain " << target_.textdomain_ << '\n';
 				pop_token();
 				put(v.str());
 			}
