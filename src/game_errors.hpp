@@ -15,57 +15,59 @@
 #ifndef GAME_ERRORS_HPP_INCLUDED
 #define GAME_ERRORS_HPP_INCLUDED
 
-#include <exception>
-#include <string>
+#include "exceptions.hpp"
 
 namespace game {
-
-struct error : std::exception
-{
-	std::string message;
-
-	error() :
-		message()
-		{}
-	error(const std::string& msg) : message(msg)
-	{}
-	~error() throw() {}
-
-	const char *what() const throw()
-	{
-		return message.c_str();
-	}
-};
 
 struct mp_server_error : public error {
 	mp_server_error(const std::string& msg) : error("MP server error: " + msg) {}
 };
-//an exception object used when loading a game fails.
+
+/**
+ * Error used when game loading fails.
+ */
 struct load_game_failed : public error {
 	load_game_failed() {}
 	load_game_failed(const std::string& msg) : error("load_game_failed: " + msg) {}
 };
 
-//an exception object used when saving a game fails.
+/**
+ * Error used when game saving fails.
+ */
 struct save_game_failed : public error {
 	save_game_failed() {}
 	save_game_failed(const std::string& msg) : error("save_game_failed: " + msg) {}
 };
 
-//an exception object used for any general game error.
-//e.g. data files are corrupt.
+/**
+ * Error used for any general game error, e.g. data files are corrupt.
+ */
 struct game_error : public error {
 	game_error(const std::string& msg) : error("game_error: " + msg) {}
 };
 
-//an exception object used to signal that the user has decided to abort
-//a game, and load another game instead
-struct load_game_exception {
-	load_game_exception(const std::string& game, bool show_replay, bool cancel_orders)
-	: game(game), show_replay(show_replay), cancel_orders(cancel_orders) {}
-	std::string game;
-	bool show_replay;
-	bool cancel_orders;
+/**
+ * Exception used to signal that the user has decided to abort a game,
+ * and to load another game instead.
+ */
+struct load_game_exception : exception
+{
+	load_game_exception()
+		: exception("Abort the current game and load a new one", "load game")
+	{
+	}
+
+	load_game_exception(const std::string &game_, bool show_replay_, bool cancel_orders_)
+		: exception("Abort the current game and load a new one", "load game")
+	{
+		game = game_;
+		show_replay = show_replay_;
+		cancel_orders = cancel_orders_;
+	}
+
+	static std::string game;
+	static bool show_replay;
+	static bool cancel_orders;
 };
 }
 

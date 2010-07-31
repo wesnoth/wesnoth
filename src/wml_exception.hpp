@@ -21,8 +21,7 @@
 #ifndef WML_EXCEPTION_HPP_INCLUDED
 #define WML_EXCEPTION_HPP_INCLUDED
 
-#include <exception>
-#include <string>
+#include "exceptions.hpp"
 
 class display;
 
@@ -59,17 +58,12 @@ void wml_exception(const char* cond, const char* file,
 	int line, const char *function, const std::string &message);
 
 /** Helper class, don't construct this directly. */
-struct twml_exception: std::exception
+struct twml_exception: game::error
 {
 	twml_exception(const std::string &user_msg, const std::string &dev_msg)
-		: user_message(user_msg), dev_message(dev_msg) {}
-	~twml_exception() throw() {}
+		: game::error(user_msg), dev_message(dev_msg) {}
 
-	/**
-	 *  The message for the user explaining what went wrong. This message can
-	 *  be translated so the user gets a explanation in his/her native tongue.
-	 */
-	std::string user_message;
+	~twml_exception() throw() {}
 
 	/**
 	 *  The message for developers telling which problem was triggered, this
@@ -83,9 +77,6 @@ struct twml_exception: std::exception
 	 *  @param disp         The display object to show the message on.
 	 */
 	void show(display &disp);
-
-	const char *what() const throw()
-	{ return user_message.c_str(); }
 };
 
 /**

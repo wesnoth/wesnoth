@@ -15,6 +15,7 @@
 #define VIDEO_HPP_INCLUDED
 
 #include "events.hpp"
+#include "exceptions.hpp"
 #include "SDL.h"
 
 #include <boost/utility.hpp>
@@ -66,9 +67,15 @@ class CVideo : private boost::noncopyable {
 
 	bool isFullScreen() const;
 
-	struct error {};
+	struct error : game::error
+	{
+		error() : game::error("Video initialization failed") {}
+	};
 
-	struct quit {};
+	struct quit : game::exception
+	{
+		quit() : game::exception("Exit game", "quit") {}
+	};
 
 	//functions to allow changing video modes when 16BPP is emulated
 	void setBpp( int bpp );

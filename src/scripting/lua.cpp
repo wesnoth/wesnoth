@@ -413,6 +413,8 @@ bool luaW_pcall(lua_State *L
 
 	// Call the function.
 	int res = lua_pcall(L, nArgs, nRets, -2 - nArgs);
+	game::exception::rethrow();
+
 	if (res)
 	{
 		char const *m = lua_tostring(L, -1);

@@ -132,6 +132,21 @@ static bool less_campaigns_rank(const config &a, const config &b) {
 	return a["rank"].to_int(1000) < b["rank"].to_int(1000);
 }
 
+char const *game::exception::sticky;
+
+void game::exception::rethrow()
+{
+	if (!sticky) return;
+	if (strcmp(sticky, "quit") == 0) throw CVideo::quit();
+	if (strcmp(sticky, "load game") == 0) throw game::load_game_exception();
+	if (strcmp(sticky, "end level") == 0) throw end_level_exception(QUIT);
+	throw game::exception("Unknown exception", "unknown");
+}
+
+std::string game::load_game_exception::game;
+bool game::load_game_exception::show_replay;
+bool game::load_game_exception::cancel_orders;
+
 namespace {
 struct jump_to_campaign_info
 {
@@ -165,7 +180,7 @@ public:
 	void reload_changed_game_config();
 
 	bool is_loading() const;
-	void clear_loaded_game() {loaded_game_.clear();};
+	void clear_loaded_game() { game::load_game_exception::game.clear(); }
 	bool load_game();
 	void set_tutorial();
 
@@ -233,10 +248,6 @@ private:
 
 	game_state state_;
 
-	std::string loaded_game_;
-	bool loaded_game_show_replay_;
-	bool loaded_game_cancel_orders_;
-
 	std::string multiplayer_server_;
 	bool jump_to_multiplayer_;
 	jump_to_campaign_info jump_to_campaign_;
@@ -273,9 +284,6 @@ game_controller::game_controller(int argc, char** argv) :
 	old_defines_map_(),
 	disp_(NULL),
 	state_(),
-	loaded_game_(),
-	loaded_game_show_replay_(false),
-	loaded_game_cancel_orders_(false),
 	multiplayer_server_(),
 	jump_to_multiplayer_(false),
 	jump_to_campaign_(false,-1,"","")
@@ -353,10 +361,10 @@ game_controller::game_controller(int argc, char** argv) :
 		} else if(val == "--load" || val == "-l") {
 			if(arg_+1 != argc_) {
 				++arg_;
-				loaded_game_ = argv_[arg_];
+				game::load_game_exception::game = argv_[arg_];
 			}
 		} else if(val == "--with-replay") {
-			loaded_game_show_replay_ = true;
+			game::load_game_exception::show_replay = true;
 
 		} else if(val == "--nogui") {
 			no_gui_ = true;
@@ -471,7 +479,7 @@ game_controller::game_controller(int argc, char** argv) :
 			if(arg_+1 != argc_) {
 				if (argv_[arg_ + 1][0] != '-') {
 					++arg_;
-					loaded_game_ = argv_[arg_];
+					game::load_game_exception::game = argv_[arg_];
 				}
 			}
 #endif
@@ -660,9 +668,6 @@ bool game_controller::play_test()
 		upload_log nolog(false);
 		play_game(disp(),state_,game_config(),nolog);
 	} catch(game::load_game_exception& e) {
-		loaded_game_ = e.game;
-		loaded_game_show_replay_ = e.show_replay;
-		loaded_game_cancel_orders_ = e.cancel_orders;
 		test_mode_ = false;
 		return true;
 	}
@@ -892,13 +897,8 @@ bool game_controller::play_multiplayer_mode()
 
 		state_.snapshot = level;
 		play_game(disp(), state_, game_config(), log);
-	} catch(game::error& e) {
-		std::cerr << "caught error: '" << e.message << "'\n";
 	} catch(game::load_game_exception& e) {
 		//the user's trying to load a game, so go into the normal title screen loop and load one
-		loaded_game_ = e.game;
-		loaded_game_show_replay_ = e.show_replay;
-		loaded_game_cancel_orders_ = e.cancel_orders;
 		return true;
 	} catch(twml_exception& e) {
 		e.show(disp());
@@ -914,7 +914,7 @@ bool game_controller::play_multiplayer_mode()
 
 bool game_controller::is_loading() const
 {
-	return loaded_game_.empty() == false;
+	return !game::load_game_exception::game.empty();
 }
 
 bool game_controller::load_game()
@@ -922,7 +922,7 @@ bool game_controller::load_game()
 	savegame::loadgame load(disp(), game_config(), state_);
 
 	try {
-		load.load_game(loaded_game_, loaded_game_show_replay_, loaded_game_cancel_orders_);
+		load.load_game(game::load_game_exception::game, game::load_game_exception::show_replay, game::load_game_exception::cancel_orders);
 
 		cache_.clear_defines();
 		game_config::scoped_preproc_define dificulty_def(state_.classification().difficulty);
@@ -950,7 +950,7 @@ bool game_controller::load_game()
 		load.set_gamestate();
 
 	} catch(load_game_cancelled_exception&) {
-		loaded_game_ = "";
+		clear_loaded_game();
 		return false;
 	} catch(config::error& e) {
 		if(e.message.empty()) {
@@ -959,6 +959,9 @@ bool game_controller::load_game()
 		else {
 			gui2::show_error_message(disp().video(), _("The file you have tried to load is corrupt: '") + e.message + '\'');
 		}
+		return false;
+	} catch(twml_exception& e) {
+		e.show(disp());
 		return false;
 	} catch(game::error& e) {
 		if(e.message.empty()) {
@@ -970,9 +973,6 @@ bool game_controller::load_game()
 		return false;
 	} catch(io_exception&) {
 		gui2::show_error_message(disp().video(), _("File I/O Error while reading the game"));
-		return false;
-	} catch(twml_exception& e) {
-		e.show(disp());
 		return false;
 	}
 	recorder = replay(state_.replay_data);
@@ -1225,12 +1225,12 @@ bool game_controller::goto_editor()
 {
 	if(jump_to_editor_){
 		jump_to_editor_ = false;
-		if (start_editor(normalize_path(loaded_game_)) ==
+		if (start_editor(normalize_path(game::load_game_exception::game)) ==
 		    editor::EXIT_QUIT_TO_DESKTOP)
 		{
 			return false;
 		}
-		loaded_game_ = "";
+		clear_loaded_game();
 	}
 	return true;
 }
@@ -1410,9 +1410,6 @@ bool game_controller::play_multiplayer()
 		gui2::show_error_message(disp().video(), std::string(_("The game map could not be loaded: ")) + e.msg_);
 	} catch(game::load_game_exception& e) {
 		//this will make it so next time through the title screen loop, this game is loaded
-		loaded_game_ = e.game;
-		loaded_game_show_replay_ = e.show_replay;
-		loaded_game_cancel_orders_ = e.cancel_orders;
 	} catch(twml_exception& e) {
 		e.show(disp());
 	}
@@ -1632,16 +1629,9 @@ void game_controller::launch_game(RELOAD_GAME_DATA reload)
 			about::show_about(disp(),state_.classification().campaign);
 		}
 
-		loaded_game_ = "";
-		loaded_game_show_replay_ = false;
-		loaded_game_cancel_orders_ = false;
-	} catch(game::load_game_exception& e) {
-
+		clear_loaded_game();
+	} catch (game::load_game_exception &) {
 		//this will make it so next time through the title screen loop, this game is loaded
-		loaded_game_ = e.game;
-		loaded_game_show_replay_ = e.show_replay;
-		loaded_game_cancel_orders_ = e.cancel_orders;
-
 	} catch(twml_exception& e) {
 		e.show(disp());
 	}
@@ -1656,16 +1646,9 @@ void game_controller::play_replay()
 	try {
 		::play_replay(disp(),state_,game_config(),video_);
 
-		loaded_game_ = "";
-		loaded_game_show_replay_ = false;
-		loaded_game_cancel_orders_ = false;
-	} catch(game::load_game_exception& e) {
-
+		clear_loaded_game();
+	} catch (game::load_game_exception &) {
 		//this will make it so next time through the title screen loop, this game is loaded
-		loaded_game_ = e.game;
-		loaded_game_show_replay_ = e.show_replay;
-		loaded_game_cancel_orders_ = e.cancel_orders;
-
 	} catch(twml_exception& e) {
 		e.show(disp());
 	}
@@ -2152,7 +2135,9 @@ static int do_gameloop(int argc, char** argv)
 
 	LOG_CONFIG << "time elapsed: "<<  (SDL_GetTicks() - start_ticks) << " ms\n";
 
-	for(;;){
+	for (;;)
+	{
+		game::exception::sticky = NULL;
 
 		// reset the TC, since a game can modify it, and it may be used
 		// by images in add-ons or campaigns dialogs
@@ -2361,14 +2346,14 @@ int main(int argc, char** argv)
 		//just means the game should quit
 	} catch(end_level_exception&) {
 		std::cerr << "caught end_level_exception (quitting)\n";
+	} catch(twml_exception& e) {
+		std::cerr << "WML exception:\nUser message: "
+			<< e.message << "\nDev message: " << e.dev_message << '\n';
 	} catch(game::error &) {
 		// A message has already been displayed.
 	} catch(std::bad_alloc&) {
 		std::cerr << "Ran out of memory. Aborted.\n";
 		return ENOMEM;
-	} catch(twml_exception& e) {
-		std::cerr << "WML exception:\nUser message: "
-			<< e.user_message << "\nDev message: " << e.dev_message << '\n';
 	} catch(game_logic::formula_error& e) {
 		std::cerr << "Formula error found in " << e.filename << ":" << e.line
 			<< "\nIn formula " << e.formula

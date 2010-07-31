@@ -22,7 +22,7 @@
 #ifndef GAME_END_EXCEPTIONS_HPP_INCLUDED
 #define GAME_END_EXCEPTIONS_HPP_INCLUDED
 
-#include <string>
+#include "exceptions.hpp"
 
 enum LEVEL_RESULT {
 	NONE,
@@ -36,18 +36,21 @@ enum LEVEL_RESULT {
 /**
  * Exception used to signal the end of a player turn.
  */
-struct end_turn_exception
+struct end_turn_exception : game::exception
 {
-	end_turn_exception(unsigned r = 0): redo(r) {}
+	end_turn_exception(unsigned r = 0)
+		: game::exception("End turn"), redo(r) {}
 	unsigned redo;
 };
 
 /**
  * Exception used to signal the end of a scenario.
  */
-struct end_level_exception
+struct end_level_exception : game::exception
 {
-	end_level_exception(LEVEL_RESULT res): result(res) {}
+	end_level_exception(LEVEL_RESULT res)
+		: game::exception("End level", res == QUIT ? "end level" : NULL)
+		, result(res) {}
 	LEVEL_RESULT result;
 };
 
