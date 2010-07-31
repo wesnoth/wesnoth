@@ -47,8 +47,13 @@ using std::streambuf;
 typedef std::map<std::string, int> t_file_number_map;
 static t_file_number_map file_number_map;
 
+static bool encode_filename = true;
+
 // get filename associated to this code
 static std::string get_filename(const std::string& file_code){
+	if(!encode_filename)
+		return file_code;
+
 	std::stringstream s;
 	s << file_code;
 	int n = 0;
@@ -63,6 +68,9 @@ static std::string get_filename(const std::string& file_code){
 
 // get code associated to this filename
 static std::string get_file_code(const std::string& filename){
+	if(!encode_filename)
+		return filename;
+
 	// current number of encountered filenames
 	static int current_file_number = 0;
 
@@ -368,6 +376,9 @@ preprocessor::preprocessor(preprocessor_streambuf &t) :
 preprocessor::~preprocessor()
 {
 	assert(target_.current_ == this);
+	if (!old_location_.empty()) {
+		target_.buffer_ << "\376line " << old_linenum_ << ' ' << old_location_ << '\n';
+	}
 	if (!old_textdomain_.empty() && target_.textdomain_ != old_textdomain_) {
 		target_.buffer_ << "\376textdomain " << old_textdomain_ << '\n';
 	}
@@ -540,6 +551,7 @@ preprocessor_data::preprocessor_data(preprocessor_streambuf &t,
 	t.location_ = s.str();
 	t.linenum_ = linenum;
 
+	t.buffer_ << "\376line " << linenum << ' ' << t.location_ << '\n';
 	if (t.textdomain_ != domain) {
 		t.buffer_ << "\376textdomain " << domain << '\n';
 		t.textdomain_ = domain;
@@ -559,7 +571,8 @@ void preprocessor_data::push_token(char t)
 	tokens_.push_back(token);
 	std::ostringstream s;
 	if (!skipping_ && slowpath_) {
-		s << "\376textdomain " << target_.textdomain_ << '\n';
+		s << "\376line " << linenum_ << ' ' << target_.location_
+		  << "\n\376textdomain " << target_.textdomain_ << '\n';
 	}
 	strings_.push_back(s.str());
 }
@@ -649,6 +662,9 @@ void preprocessor_data::put(char c)
 		target_.linenum_ = cond_linenum;
 		if (diff <= target_.location_.size() + 11) {
 			target_.buffer_ << std::string(diff, '\n');
+		} else {
+			target_.buffer_ << "\376line " << target_.linenum_
+				<< ' ' << target_.location_ << '\n';
 		}
 	}
 
@@ -927,7 +943,8 @@ bool preprocessor_data::get_chunk()
 					target_.error(error.str(), linenum_);
 				}
 				std::ostringstream v;
-				v << arg->second << "\376textdomain " << target_.textdomain_ << '\n';
+				v << arg->second << "\376line " << linenum_ << ' ' << target_.location_
+				  << "\n\376textdomain " << target_.textdomain_ << '\n';
 				pop_token();
 				put(v.str());
 			}
@@ -1081,6 +1098,9 @@ void preprocess_resource(const std::string& res_name, preproc_map *defines_map,
 		return;
 
 	LOG_PREPROC<<"processing resource: "<<res_name<<'\n';
+
+	//disable filename encoding to get clear #line in cfg.plain
+	encode_filename = false;
 
 	std::string error_log;
 	scoped_istream stream = preprocess_file(res_name, defines_map, &error_log);
