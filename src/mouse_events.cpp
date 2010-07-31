@@ -317,13 +317,15 @@ map_location mouse_handler::current_unit_attacks_from(const map_location& loc)
 	if(loc == selected_hex_)
 		return map_location();
 
+	bool wb_active = resources::whiteboard->is_active();
+
 	{
 		const unit_map::const_iterator current = find_unit(selected_hex_);
 		bool eligible = current != units_.end();
 		if (!eligible) return map_location();
 
-		eligible &= current->side() == side_num_ || (resources::whiteboard->is_active()
-													&& current->side() == resources::screen->viewing_side());
+		eligible &= current->side() == side_num_ ||
+				(wb_active && current->side() == resources::screen->viewing_side());
 		eligible &= current->attacks_left() != 0;
 		if (!eligible) return map_location();
 	}
@@ -335,7 +337,7 @@ map_location mouse_handler::current_unit_attacks_from(const map_location& loc)
 		bool eligible = enemy != units_.end();
 		if (!eligible) return map_location();
 
-		bool show_for_whiteboard = resources::whiteboard->is_active() &&
+		bool show_for_whiteboard = wb_active &&
 				viewing_team.is_enemy(enemy->side());
 		eligible &= show_for_whiteboard || current_team().is_enemy(enemy->side());
 		eligible &= !enemy->incapacitated();
