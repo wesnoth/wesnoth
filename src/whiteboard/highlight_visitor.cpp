@@ -245,7 +245,7 @@ void highlight_visitor::visit_move(move_ptr move)
 void highlight_visitor::visit_attack(attack_ptr attack)
 {
 	visit_move(boost::static_pointer_cast<move>(attack));
-	//TODO: highlight the attack indicator
+	//@todo: highlight the attack indicator
 }
 
 void highlight_visitor::visit_recruit(recruit_ptr recruit)
@@ -263,7 +263,7 @@ void highlight_visitor::visit_recruit(recruit_ptr recruit)
 	case HIGHLIGHT_MAIN:
 		if (recruit->fake_unit_)
 		{
-			//TODO: find some suitable effect for mouseover on planned recruit.
+			//@todo: find some suitable effect for mouseover on planned recruit.
 		}
 		break;
 	case HIGHLIGHT_SECONDARY:
@@ -271,7 +271,7 @@ void highlight_visitor::visit_recruit(recruit_ptr recruit)
 	case UNHIGHLIGHT:
 		if (recruit->fake_unit_)
 		{
-			//TODO: find some suitable effect for mouseover on planned recruit.
+			//@todo: find some suitable effect for mouseover on planned recruit.
 		}
 		break;
 	default:

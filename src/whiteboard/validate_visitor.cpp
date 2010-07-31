@@ -81,7 +81,7 @@ void validate_visitor::visit_move(move_ptr move)
 	if (!(move->get_source_hex().valid() && move->get_dest_hex().valid()))
 		move->set_valid(false);
 
-	//TODO: need to check if the unit in the source hex has the same underlying unit id as before,
+	//@todo: need to check if the unit in the source hex has the same unit id as before,
 	//i.e. that it's the same unit
 	if (move->valid_ && resources::units->find(move->get_source_hex()) == resources::units->end())
 		move->set_valid(false);
@@ -111,13 +111,13 @@ void validate_visitor::visit_move(move_ptr move)
 				|| new_plain_route.move_cost != move->get_route().move_cost)
 			{
 				//new valid path differs from the previous one, replace
-				//TODO: use something else than empty vector for waypoints?
+				//@todo: use something else than empty vector for waypoints?
 				pathfind::marked_route new_marked_route =
 						pathfind::mark_route(new_plain_route, std::vector<map_location>());
 
 				move->set_route(new_marked_route);
 
-				//TODO: Since this might lengthen the path, we probably need a special conflict state
+				//@todo: Since this might lengthen the path, we probably need a special conflict state
 				// to warn the player that the initial path is no longer possible.
 
 			}
@@ -150,10 +150,10 @@ void validate_visitor::visit_attack(attack_ptr attack)
 		attack->set_valid(false);
 	}
 
-	//TODO: verify that the target hex contains the same unit that before,
-	// comparing for example the underlying unit ID
+	//@todo: verify that the target hex contains the same unit that before,
+	// comparing for example the unit ID
 
-	//TODO: Verify that the target unit is our enemy
+	//@todo: Verify that the target unit is our enemy
 
 	//If all checks pass, then call the visitor on the superclass
 	if (attack->is_valid())
