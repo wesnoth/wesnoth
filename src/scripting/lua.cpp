@@ -16,13 +16,6 @@
  * @file
  * Provides a Lua interpreter.
  *
- * @warning Lua's error handling is done by setjmp/longjmp, so be careful
- *   never to call a Lua error function that will jump while in the scope
- *   of a C++ object with a destructor. This is why this file uses goto-s
- *   to force object unscoping before erroring out. This is also why
- *   lua_getglobal, lua_setglobal, lua_gettable, lua_settable, lua_getfield,
- *   and lua_setfield, should not be called in tainted context.
- *
  * @note Naming conventions:
  *   - intf_ functions are exported in the wesnoth domain,
  *   - impl_ functions are hidden inside metatables,
@@ -114,9 +107,6 @@ static char const getunitKey = 0;
 static char const tstringKey = 0;
 static char const ustatusKey = 0;
 static char const vconfigKey = 0;
-
-/* Global definition so that it does not leak on longjmp. */
-static std::string error_buffer;
 
 /**
  * Displays a message in the chat window.
@@ -214,6 +204,17 @@ static bool luaW_totstring(lua_State *L, int index, t_string &str)
 			return false;
 	}
 	return true;
+}
+
+/**
+ * Converts a scalar to a translatable string.
+ */
+static t_string luaW_checktstring(lua_State *L, int index)
+{
+	t_string result;
+	if (!luaW_totstring(L, index, result))
+		luaL_typerror(L, index, "translatable string");
+	return result;
 }
 
 /**
@@ -344,11 +345,21 @@ bool luaW_toconfig(lua_State *L, int index, config &cfg, int tstring_meta)
 #undef return_misformed
 
 /**
+ * Converts an optional table or vconfig to a config object.
+ */
+config luaW_checkconfig(lua_State *L, int index)
+{
+	config result;
+	if (!luaW_toconfig(L, index, result))
+		luaL_typerror(L, index, "WML table");
+	return result;
+}
+
+/**
  * Gets an optional vconfig from either a table or a userdata.
- * @param def true if an empty config should be created for a missing value.
  * @return false in case of failure.
  */
-static bool luaW_tovconfig(lua_State *L, int index, vconfig &vcfg, bool def = true)
+static bool luaW_tovconfig(lua_State *L, int index, vconfig &vcfg)
 {
 	switch (lua_type(L, index))
 	{
@@ -367,13 +378,23 @@ static bool luaW_tovconfig(lua_State *L, int index, vconfig &vcfg, bool def = tr
 			break;
 		case LUA_TNONE:
 		case LUA_TNIL:
-			if (def)
-				vcfg = vconfig::empty_vconfig();
 			break;
 		default:
 			return false;
 	}
 	return true;
+}
+
+/**
+ * Gets an optional vconfig from either a table or a userdata.
+ * @param def true if an empty config should be created for a missing value.
+ */
+static vconfig luaW_checkvconfig(lua_State *L, int index, bool def = false)
+{
+	vconfig result = def ? vconfig::empty_vconfig() : vconfig::unconstructed_vconfig();
+	if (!luaW_tovconfig(L, index, result))
+		luaL_typerror(L, index, "WML table");
+	return result;
 }
 
 /**
@@ -694,51 +715,28 @@ static int impl_vconfig_collect(lua_State *L)
 
 #define modify_tstring_attrib(name, accessor) \
 	if (strcmp(m, name) == 0) { \
-		if (lua_type(L, -1) == LUA_TUSERDATA) { \
-			lua_pushlightuserdata(L, (void *)&tstringKey); \
-			lua_rawget(L, LUA_REGISTRYINDEX); \
-			if (!lua_getmetatable(L, -2) || !lua_rawequal(L, -1, -2)) { \
-				error_buffer = "(translatable) string"; \
-				goto error_call_destructors_modify; \
-			} \
-			const t_string &value = *static_cast<t_string *>(lua_touserdata(L, -3)); \
-			accessor; \
-		} else { \
-			const char *value = lua_tostring(L, -1); \
-			if (!value) { \
-				error_buffer = "(translatable) string"; \
-				goto error_call_destructors_modify; \
-			} \
-			accessor; \
-		} \
+		t_string value = luaW_checktstring(L, 3); \
+		accessor; \
 		return 0; \
 	}
 
 #define modify_string_attrib(name, accessor) \
 	if (strcmp(m, name) == 0) { \
-		const char *value = lua_tostring(L, -1); \
-		if (!value) { \
-			error_buffer = "string"; \
-			goto error_call_destructors_modify; \
-		} \
+		const char *value = luaL_checkstring(L, 3); \
 		accessor; \
 		return 0; \
 	}
 
 #define modify_int_attrib(name, accessor) \
 	if (strcmp(m, name) == 0) { \
-		if (!lua_isnumber(L, -1)) { \
-			error_buffer = "integer"; \
-			goto error_call_destructors_modify; \
-		} \
-		int value = lua_tointeger(L, -1); \
+		int value = luaL_checkinteger(L, 3); \
 		accessor; \
 		return 0; \
 	}
 
 #define modify_bool_attrib(name, accessor) \
 	if (strcmp(m, name) == 0) { \
-		int value = lua_toboolean(L, -1); \
+		int value = lua_toboolean(L, 3); \
 		accessor; \
 		return 0; \
 	}
@@ -836,16 +834,8 @@ static int impl_unit_get(lua_State *L)
  */
 static int impl_unit_set(lua_State *L)
 {
-	if (false) {
-		error_call_destructors_2:
-		return luaL_argerror(L, 2, "unknown modifiable property");
-		error_call_destructors_modify:
-		return luaL_typerror(L, 3, error_buffer.c_str());
-	}
-
 	lua_unit *lu = static_cast<lua_unit *>(lua_touserdata(L, 1));
 	char const *m = luaL_checkstring(L, 2);
-	lua_settop(L, 3);
 	unit *pu = lu->get();
 	if (!pu) return luaL_argerror(L, 1, "unknown unit");
 	unit &u = *pu;
@@ -863,7 +853,8 @@ static int impl_unit_set(lua_State *L)
 		modify_int_attrib("x", loc.x = value - 1; u.set_location(loc));
 		modify_int_attrib("y", loc.y = value - 1; u.set_location(loc));
 	}
-	goto error_call_destructors_2;
+
+	return luaL_argerror(L, 2, "unknown modifiable property");
 }
 
 /**
@@ -940,14 +931,7 @@ static int intf_get_unit(lua_State *L)
  */
 static int intf_get_units(lua_State *L)
 {
-	if (false) {
-		error_call_destructors:
-		return luaL_typerror(L, 1, "WML table");
-	}
-
-	vconfig filter = vconfig::unconstructed_vconfig();
-	if (!luaW_tovconfig(L, 1, filter, false))
-		goto error_call_destructors;
+	vconfig filter = luaW_checkvconfig(L, 1);
 
 	// Go through all the units while keeping the following stack:
 	// 1: metatable, 2: return table, 3: userdata, 4: metatable copy
@@ -979,21 +963,14 @@ static int intf_get_units(lua_State *L)
  */
 static int intf_match_unit(lua_State *L)
 {
-	if (!luaW_hasmetatable(L, 1, getunitKey)) {
+	if (!luaW_hasmetatable(L, 1, getunitKey))
 		return luaL_typerror(L, 1, "unit");
-		error_call_destructors_1:
-		return luaL_argerror(L, 1, "unit not found");
-		error_call_destructors_2:
-		return luaL_typerror(L, 2, "WML table");
-	}
 
 	lua_unit *lu = static_cast<lua_unit *>(lua_touserdata(L, 1));
 	unit *u = lu->get();
-	if (!u) goto error_call_destructors_1;
+	if (!u) return luaL_argerror(L, 1, "unit not found");
 
-	vconfig filter = vconfig::unconstructed_vconfig();
-	if (!luaW_tovconfig(L, 2, filter, false))
-		goto error_call_destructors_2;
+	vconfig filter = luaW_checkvconfig(L, 2);
 
 	if (filter.null()) {
 		lua_pushboolean(L, true);
@@ -1020,14 +997,7 @@ static int intf_match_unit(lua_State *L)
  */
 static int intf_get_recall_units(lua_State *L)
 {
-	if (false) {
-		error_call_destructors:
-		return luaL_typerror(L, 1, "WML table");
-	}
-
-	vconfig filter = vconfig::unconstructed_vconfig();
-	if (!luaW_tovconfig(L, 1, filter, false))
-		goto error_call_destructors;
+	vconfig filter = luaW_checkvconfig(L, 1);
 
 	// Go through all the units while keeping the following stack:
 	// 1: metatable, 2: return table, 3: userdata, 4: metatable copy
@@ -1071,30 +1041,25 @@ static int intf_fire_event(lua_State *L)
 	char const *m = luaL_checkstring(L, 1);
 
 	int pos = 2;
-	if (false) {
-		error_call_destructors:
-		return luaL_typerror(L, pos, "WML table");
-	}
-
 	map_location l1, l2;
 	config data;
 
 	if (lua_isnumber(L, 2)) {
-		l1 = map_location(lua_tointeger(L, 2) - 1, lua_tointeger(L, 3) - 1);
+		l1.x = lua_tointeger(L, 2) - 1;
+		l1.y = luaL_checkinteger(L, 3) - 1;
 		if (lua_isnumber(L, 4)) {
-			l2 = map_location(lua_tointeger(L, 4) - 1, lua_tointeger(L, 5) - 1);
+			l2.x = lua_tointeger(L, 4) - 1;
+			l2.y = luaL_checkinteger(L, 5) - 1;
 			pos = 6;
 		} else pos = 4;
 	}
 
 	if (!lua_isnoneornil(L, pos)) {
-		if (!luaW_toconfig(L, pos, data.add_child("first")))
-			goto error_call_destructors;
+		data.add_child("first", luaW_checkconfig(L, pos));
 	}
 	++pos;
 	if (!lua_isnoneornil(L, pos)) {
-		if (!luaW_toconfig(L, pos, data.add_child("second")))
-			goto error_call_destructors;
+		data.add_child("second", luaW_checkconfig(L, pos));
 	}
 
 	bool b = game_events::fire(m, l1, l2, data);
@@ -1135,11 +1100,6 @@ static int intf_get_variable(lua_State *L)
 static int intf_set_variable(lua_State *L)
 {
 	char const *m = luaL_checkstring(L, 1);
-	if (false) {
-		error_call_destructors:
-		return luaL_typerror(L, 2, "WML table or scalar");
-	}
-
 	if (lua_isnoneornil(L, 2)) {
 		resources::state_of_game->clear_variable(m);
 		return 0;
@@ -1170,12 +1130,12 @@ static int intf_set_variable(lua_State *L)
 		{
 			config &cfg = v.as_container();
 			cfg.clear();
-			if (!luaW_toconfig(L, 2, cfg))
-				goto error_call_destructors;
-			break;
+			if (luaW_toconfig(L, 2, cfg))
+				break;
+			// no break
 		}
 		default:
-			goto error_call_destructors;
+			return luaL_typerror(L, 2, "WML table or scalar");
 	}
 	return 0;
 }
@@ -1188,24 +1148,16 @@ static int intf_set_variable(lua_State *L)
 static int intf_dofile(lua_State *L)
 {
 	char const *m = luaL_checkstring(L, 1);
-	if (false) {
-		error_call_destructors_1:
-		return luaL_argerror(L, 1, "file not found");
-		error_call_destructors_2:
-		return lua_error(L);
-		continue_call_destructor:
-		lua_call(L, 0, LUA_MULTRET);
-		return lua_gettop(L);
-	}
 	std::string p = get_wml_location(m);
 	if (p.empty())
-		goto error_call_destructors_1;
+		return luaL_argerror(L, 1, "file not found");
 
 	lua_settop(L, 0);
 	if (luaL_loadfile(L, p.c_str()))
-		goto error_call_destructors_2;
+		return lua_error(L);
 
-	goto continue_call_destructor;
+	lua_call(L, 0, LUA_MULTRET);
+	return lua_gettop(L);
 }
 
 /**
@@ -1217,10 +1169,6 @@ static int intf_dofile(lua_State *L)
 static int intf_require(lua_State *L)
 {
 	char const *m = luaL_checkstring(L, 1);
-	if (false) {
-		error_call_destructors_1:
-		return luaL_argerror(L, 1, "file not found");
-	}
 
 	// Check if there is already an entry.
 	lua_pushstring(L, "wesnoth");
@@ -1234,7 +1182,7 @@ static int intf_require(lua_State *L)
 
 	std::string p = get_wml_location(m);
 	if (p.empty())
-		goto error_call_destructors_1;
+		return luaL_argerror(L, 1, "file not found");
 
 	// Compile the file.
 	int res = luaL_loadfile(L, p.c_str());
@@ -1317,15 +1265,9 @@ static int impl_side_get(lua_State *L)
  */
 static int impl_side_set(lua_State *L)
 {
-	if (false) {
-		error_call_destructors_modify:
-		return luaL_typerror(L, 3, error_buffer.c_str());
-	}
-
 	// Hidden metamethod, so arg1 has to be a pointer to a team.
 	team &t = **static_cast<team **>(lua_touserdata(L, 1));
 	char const *m = luaL_checkstring(L, 2);
-	lua_settop(L, 3);
 
 	// Find the corresponding attribute.
 	modify_int_attrib("gold", t.set_gold(value));
@@ -1521,12 +1463,7 @@ static int impl_game_config_get(lua_State *L)
  */
 static int impl_game_config_set(lua_State *L)
 {
-	if (false) {
-		error_call_destructors_modify:
-		return luaL_typerror(L, 3, error_buffer.c_str());
-	}
 	char const *m = luaL_checkstring(L, 2);
-	lua_settop(L, 3);
 
 	// Find the corresponding attribute.
 	modify_int_attrib("base_income", game_config::base_income = value);
@@ -1606,15 +1543,7 @@ static int intf_message(lua_State *L)
  */
 static int intf_eval_conditional(lua_State *L)
 {
-	if (lua_isnoneornil(L, 1)) {
-		error_call_destructors:
-		return luaL_typerror(L, 1, "WML table");
-	}
-
-	vconfig cond = vconfig::unconstructed_vconfig();
-	if (!luaW_tovconfig(L, 1, cond, false))
-		goto error_call_destructors;
-
+	vconfig cond = luaW_checkvconfig(L, 1);
 	bool b = game_events::conditional_passed(cond);
 	lua_pushboolean(L, b);
 	return 1;
@@ -1663,15 +1592,6 @@ double lua_calculator::cost(const map_location &loc, double so_far) const
 static int intf_find_path(lua_State *L)
 {
 	int arg = 1;
-	if (false) {
-		error_call_destructors_1:
-		return luaL_typerror(L, 1, "unit");
-		error_call_destructors_2:
-		return luaL_typerror(L, arg, "number");
-		error_call_destructors_3:
-		return luaL_argerror(L, 1, "no unit found");
-	}
-
 	map_location src, dst;
 	unit_map &units = *resources::units;
 	const unit *u = NULL;
@@ -1679,31 +1599,23 @@ static int intf_find_path(lua_State *L)
 	if (lua_isuserdata(L, arg))
 	{
 		u = luaW_tounit(L, 1);
-		if (!u) goto error_call_destructors_1;
+		if (!u) return luaL_typerror(L, 1, "unit");
 		src = u->get_location();
 		++arg;
 	}
 	else
 	{
-		if (!lua_isnumber(L, arg))
-			goto error_call_destructors_2;
-		src.x = lua_tointeger(L, arg) - 1;
+		src.x = luaL_checkinteger(L, arg) - 1;
 		++arg;
-		if (!lua_isnumber(L, arg))
-			goto error_call_destructors_2;
-		src.y = lua_tointeger(L, arg) - 1;
+		src.y = luaL_checkinteger(L, arg) - 1;
 		unit_map::const_unit_iterator ui = units.find(src);
 		if (ui.valid()) u = &*ui;
 		++arg;
 	}
 
-	if (!lua_isnumber(L, arg))
-		goto error_call_destructors_2;
-	dst.x = lua_tointeger(L, arg) - 1;
+	dst.x = luaL_checkinteger(L, arg) - 1;
 	++arg;
-	if (!lua_isnumber(L, arg))
-		goto error_call_destructors_2;
-	dst.y = lua_tointeger(L, arg) - 1;
+	dst.y = luaL_checkinteger(L, arg) - 1;
 	++arg;
 
 	std::vector<team> &teams = *resources::teams;
@@ -1728,13 +1640,13 @@ static int intf_find_path(lua_State *L)
 		lua_pushstring(L, "max_cost");
 		lua_rawget(L, arg);
 		if (!lua_isnil(L, -1))
-			stop_at = lua_tonumber(L, -1);
+			stop_at = luaL_checknumber(L, -1);
 		lua_pop(L, 1);
 
 		lua_pushstring(L, "viewing_side");
 		lua_rawget(L, arg);
 		if (!lua_isnil(L, -1)) {
-			int i = lua_tointeger(L, -1);
+			int i = luaL_checkinteger(L, -1);
 			if (i >= 1 && i <= int(teams.size())) viewing_side = i;
 			else see_all = true;
 		}
@@ -1748,7 +1660,7 @@ static int intf_find_path(lua_State *L)
 	pathfind::teleport_map teleport_locations;
 
 	if (!calc) {
-		if (!u) goto error_call_destructors_3;
+		if (!u) return luaL_argerror(L, 1, "unit not found");
 
 		team &viewing_team = teams[(viewing_side ? viewing_side : u->side()) - 1];
 		if (!ignore_teleport) {
@@ -1788,15 +1700,6 @@ static int intf_find_path(lua_State *L)
 static int intf_find_reach(lua_State *L)
 {
 	int arg = 1;
-	if (false) {
-		error_call_destructors_1:
-		return luaL_typerror(L, 1, "unit");
-		error_call_destructors_2:
-		return luaL_typerror(L, arg, "number");
-		error_call_destructors_3:
-		return luaL_argerror(L, 1, "no unit found");
-	}
-
 	map_location src;
 	unit_map &units = *resources::units;
 	const unit *u = NULL;
@@ -1804,22 +1707,18 @@ static int intf_find_reach(lua_State *L)
 	if (lua_isuserdata(L, arg))
 	{
 		u = luaW_tounit(L, 1);
-		if (!u) goto error_call_destructors_1;
+		if (!u) return luaL_typerror(L, 1, "unit");
 		src = u->get_location();
 		++arg;
 	}
 	else
 	{
-		if (!lua_isnumber(L, arg))
-			goto error_call_destructors_2;
-		src.x = lua_tointeger(L, arg) - 1;
+		src.x = luaL_checkinteger(L, arg) - 1;
 		++arg;
-		if (!lua_isnumber(L, arg))
-			goto error_call_destructors_2;
-		src.y = lua_tointeger(L, arg) - 1;
+		src.y = luaL_checkinteger(L, arg) - 1;
 		unit_map::const_unit_iterator ui = units.find(src);
 		if (!ui.valid())
-			goto error_call_destructors_3;
+			return luaL_argerror(L, 1, "unit not found");
 		u = &*ui;
 		++arg;
 	}
@@ -1850,7 +1749,7 @@ static int intf_find_reach(lua_State *L)
 		lua_pushstring(L, "viewing_side");
 		lua_rawget(L, arg);
 		if (!lua_isnil(L, -1)) {
-			int i = lua_tointeger(L, -1);
+			int i = luaL_checkinteger(L, -1);
 			if (i >= 1 && i <= int(teams.size())) viewing_side = i;
 			else see_all = true;
 		}
@@ -1887,16 +1786,6 @@ static int intf_find_reach(lua_State *L)
 static int intf_put_unit(lua_State *L)
 {
 	int unit_arg = 1;
-	if (false) {
-		error_call_destructors_1:
-		return luaL_typerror(L, unit_arg, "WML table or unit");
-		error_call_destructors_2:
-		return luaL_argerror(L, unit_arg, error_buffer.c_str());
-		error_call_destructors_3:
-		return luaL_argerror(L, 1, "invalid location");
-		error_call_destructors_4:
-		return luaL_argerror(L, unit_arg, "unit not found");
-	}
 
 	lua_unit *lu = NULL;
 	unit *u = NULL;
@@ -1904,16 +1793,16 @@ static int intf_put_unit(lua_State *L)
 	if (lua_isnumber(L, 1)) {
 		unit_arg = 3;
 		loc.x = lua_tointeger(L, 1) - 1;
-		loc.y = lua_tointeger(L, 2) - 1;
+		loc.y = luaL_checkinteger(L, 2) - 1;
 		if (!resources::game_map->on_board(loc))
-			goto error_call_destructors_3;
+			return luaL_argerror(L, 1, "invalid location");
 	}
 
 	if (luaW_hasmetatable(L, unit_arg, getunitKey))
 	{
 		lu = static_cast<lua_unit *>(lua_touserdata(L, unit_arg));
 		u = lu->get();
-		if (!u) goto error_call_destructors_4;
+		if (!u) return luaL_argerror(L, unit_arg, "unit not found");
 		if (lu->on_map()) {
 			if (unit_arg == 1) return 0;
 			resources::units->move(u->get_location(), loc);
@@ -1928,26 +1817,19 @@ static int intf_put_unit(lua_State *L)
 		if (unit_arg == 1) {
 			loc = u->get_location();
 			if (!resources::game_map->on_board(loc))
-				goto error_call_destructors_3;
+				return luaL_argerror(L, 1, "invalid location");
 		}
 	}
 	else if (!lua_isnoneornil(L, unit_arg))
 	{
-		config cfg;
-		if (!luaW_toconfig(L, unit_arg, cfg))
-			goto error_call_destructors_1;
+		config cfg = luaW_checkconfig(L, unit_arg);
 		if (unit_arg == 1) {
-			loc.x = lexical_cast_default(cfg["x"], 0) - 1;
-			loc.y = lexical_cast_default(cfg["y"], 0) - 1;
+			loc.x = cfg["x"] - 1;
+			loc.y = cfg["y"] - 1;
 			if (!resources::game_map->on_board(loc))
-				goto error_call_destructors_3;
+				return luaL_argerror(L, 1, "invalid location");
 		}
-		try {
-			u = new unit(cfg, true, resources::state_of_game);
-		} catch (const game::error &e) {
-			error_buffer = "broken unit WML [" + e.message + "]";
-			goto error_call_destructors_2;
-		}
+		u = new unit(cfg, true, resources::state_of_game);
 	}
 
 	resources::units->erase(loc);
@@ -1971,17 +1853,6 @@ static int intf_put_unit(lua_State *L)
  */
 static int intf_put_recall_unit(lua_State *L)
 {
-	if (false) {
-		error_call_destructors_1:
-		return luaL_typerror(L, 1, "WML table or unit");
-		error_call_destructors_2:
-		return luaL_argerror(L, 1, error_buffer.c_str());
-		error_call_destructors_3:
-		return luaL_argerror(L, 1, "unit not found");
-		error_call_destructors_4:
-		return luaL_argerror(L, 2, "nonpersistent side");
-	}
-
 	lua_unit *lu = NULL;
 	unit *u = NULL;
 	int side = lua_tointeger(L, 2);
@@ -1991,27 +1862,19 @@ static int intf_put_recall_unit(lua_State *L)
 	{
 		lu = static_cast<lua_unit *>(lua_touserdata(L, 1));
 		u = lu->get();
-		if (!u) goto error_call_destructors_3;
-		if (lu->on_recall_list())
-			goto error_call_destructors_3;
+		if (!u || lu->on_recall_list())
+			return luaL_argerror(L, 1, "unit not found");
 	}
 	else
 	{
-		config cfg;
-		if (!luaW_toconfig(L, 1, cfg))
-			goto error_call_destructors_1;
-		try {
-			u = new unit(cfg, true, resources::state_of_game);
-		} catch (const game::error &e) {
-			error_buffer = "broken unit WML [" + e.message + "]";
-			goto error_call_destructors_2;
-		}
+		config cfg = luaW_checkconfig(L, 1);
+		u = new unit(cfg, true, resources::state_of_game);
 	}
 
 	if (!side) side = u->side();
 	team &t = (*resources::teams)[side - 1];
 	if (!t.persistent())
-		goto error_call_destructors_4;
+		return luaL_argerror(L, 2, "nonpersistent side");
 	std::vector<unit> &rl = t.recall_list();
 
 	// Avoid duplicates in the recall list.
@@ -2040,18 +1903,11 @@ static int intf_put_recall_unit(lua_State *L)
  */
 static int intf_extract_unit(lua_State *L)
 {
-	if (false) {
-		error_call_destructors_1:
-		return luaL_typerror(L, 1, "unit");
-		error_call_destructors_2:
-		return luaL_argerror(L, 1, "unit not found");
-	}
-
 	if (!luaW_hasmetatable(L, 1, getunitKey))
-		goto error_call_destructors_1;
+		return luaL_typerror(L, 1, "unit");
 	lua_unit *lu = static_cast<lua_unit *>(lua_touserdata(L, 1));
 	unit *u = lu->get();
-	if (!u) goto error_call_destructors_2;
+	if (!u) return luaL_argerror(L, 1, "unit not found");
 
 	if (lu->on_map()) {
 		u = resources::units->extract(u->get_location());
@@ -2078,11 +1934,6 @@ static int intf_extract_unit(lua_State *L)
  */
 static int intf_find_vacant_tile(lua_State *L)
 {
-	if (false) {
-		error_call_destructors:
-		return luaL_typerror(L, 3, "unit");
-	}
-
 	int x = luaL_checkint(L, 1) - 1, y = luaL_checkint(L, 2) - 1;
 
 	const unit *u = NULL;
@@ -2091,14 +1942,8 @@ static int intf_find_vacant_tile(lua_State *L)
 		if (luaW_hasmetatable(L, 3, getunitKey)) {
 			u = static_cast<lua_unit *>(lua_touserdata(L, 3))->get();
 		} else {
-			config cfg;
-			if (!luaW_toconfig(L, 3, cfg))
-				goto error_call_destructors;
-			try {
-				u = new unit(cfg, false, resources::state_of_game);
-			} catch (const game::error &) {
-				goto error_call_destructors;
-			}
+			config cfg = luaW_checkconfig(L, 3);
+			u = new unit(cfg, false, resources::state_of_game);
 			fake_unit = true;
 		}
 	}
@@ -2121,17 +1966,11 @@ static int intf_find_vacant_tile(lua_State *L)
  */
 static int intf_float_label(lua_State *L)
 {
-	if (false) {
-		error_call_destructors_1:
-		return luaL_argerror(L, 3, "invalid string");
-	}
-
 	map_location loc;
-	loc.x = lua_tointeger(L, 1) - 1;
-	loc.y = lua_tointeger(L, 2) - 1;
+	loc.x = luaL_checkinteger(L, 1) - 1;
+	loc.y = luaL_checkinteger(L, 2) - 1;
 
-	t_string text;
-	if (!luaW_totstring(L, 3, text)) goto error_call_destructors_1;
+	t_string text = luaW_checktstring(L, 3);
 	resources::screen->float_label(loc, text, font::LABEL_COLOR.r,
 		font::LABEL_COLOR.g, font::LABEL_COLOR.b);
 	return 0;
@@ -2143,27 +1982,13 @@ static int intf_float_label(lua_State *L)
  */
 static int intf_create_unit(lua_State *L)
 {
-	if (false) {
-		error_call_destructors_1:
-		return luaL_argerror(L, 1, "WML table");
-		error_call_destructors_2:
-		return luaL_argerror(L, 1, error_buffer.c_str());
-	}
-
-	config cfg;
-	if (!luaW_toconfig(L, 1, cfg))
-		goto error_call_destructors_1;
-	try {
-		unit *u = new unit(cfg, true, resources::state_of_game);
-		new(lua_newuserdata(L, sizeof(lua_unit))) lua_unit(u);
-		lua_pushlightuserdata(L, (void *)&getunitKey);
-		lua_rawget(L, LUA_REGISTRYINDEX);
-		lua_setmetatable(L, -2);
-		return 1;
-	} catch (const game::error &e) {
-		error_buffer = "broken unit WML [" + e.message + "]";
-		goto error_call_destructors_2;
-	}
+	config cfg = luaW_checkconfig(L, 1);
+	unit *u = new unit(cfg, true, resources::state_of_game);
+	new(lua_newuserdata(L, sizeof(lua_unit))) lua_unit(u);
+	lua_pushlightuserdata(L, (void *)&getunitKey);
+	lua_rawget(L, LUA_REGISTRYINDEX);
+	lua_setmetatable(L, -2);
+	return 1;
 }
 
 /**
@@ -2198,8 +2023,8 @@ static int intf_unit_resistance(lua_State *L)
 
 	map_location loc = u->get_location();
 	if (!lua_isnoneornil(L, 4)) {
-		loc.x = lua_tointeger(L, 4) - 1;
-		loc.y = lua_tointeger(L, 5) - 1;
+		loc.x = luaL_checkinteger(L, 4) - 1;
+		loc.y = luaL_checkinteger(L, 5) - 1;
 	}
 
 	lua_pushinteger(L, u->resistance_against(m, a, loc));
@@ -2307,15 +2132,7 @@ static int intf_simulate_combat(lua_State *L)
  */
 static int intf_tovconfig(lua_State *L)
 {
-	if (false) {
-		error_call_destructors:
-		return luaL_typerror(L, 1, "WML table");
-	}
-
-	vconfig vcfg = vconfig::unconstructed_vconfig();
-	if (!luaW_tovconfig(L, 1, vcfg))
-		goto error_call_destructors;
-
+	vconfig vcfg = luaW_checkvconfig(L, 1, true);
 	luaW_pushvconfig(L, vcfg);
 	return 1;
 }
@@ -2326,19 +2143,12 @@ static int intf_tovconfig(lua_State *L)
  */
 static int intf_set_music(lua_State *L)
 {
-	if (false) {
-		error_call_destructors:
-		return luaL_typerror(L, 1, "WML table");
-	}
-
 	if (lua_isnoneornil(L, 1)) {
 		sound::commit_music_changes();
 		return 0;
 	}
 
-	config cfg;
-	if (!luaW_toconfig(L, 1, cfg))
-		goto error_call_destructors;
+	config cfg = luaW_checkconfig(L, 1);
 	sound::play_music_config(cfg);
 	return 0;
 }
@@ -2513,9 +2323,7 @@ static gui2::twidget *find_widget(lua_State *L, int i, bool readonly)
  */
 static int intf_show_dialog(lua_State *L)
 {
-	config def_cfg;
-	if (!luaW_toconfig(L, 1, def_cfg))
-		return luaL_typerror(L, 1, "WML table");
+	config def_cfg = luaW_checkconfig(L, 1);
 
 	gui2::twindow_builder::tresolution def(def_cfg);
 	scoped_dialog w(L, gui2::build(resources::screen->video(), &def));
@@ -2543,34 +2351,25 @@ static int intf_show_dialog(lua_State *L)
  */
 static int intf_set_dialog_value(lua_State *L)
 {
-	if (false) {
-		error_call_destructors_1:
-		return luaL_argerror(L, 1, "out of bounds");
-		error_call_destructors_2:
-		return luaL_typerror(L, 1, "translatable string");
-		error_call_destructors_3:
-		return luaL_argerror(L, lua_gettop(L), "unsupported widget");
-	}
-
 	gui2::twidget *w = find_widget(L, 2, false);
 
 	if (gui2::tlistbox *l = dynamic_cast<gui2::tlistbox *>(w))
 	{
-		int v = lua_tointeger(L, 1);
+		int v = luaL_checkinteger(L, 1);
 		int n = l->get_item_count();
 		if (1 <= v && v <= n)
 			l->select_row(v - 1);
 		else
-			goto error_call_destructors_1;
+			return luaL_argerror(L, 1, "out of bounds");
 	}
 	else if (gui2::tmulti_page *l = dynamic_cast<gui2::tmulti_page *>(w))
 	{
-		int v = lua_tointeger(L, 1);
+		int v = luaL_checkinteger(L, 1);
 		int n = l->get_page_count();
 		if (1 <= v && v <= n)
 			l->select_page(v - 1);
 		else
-			goto error_call_destructors_1;
+			return luaL_argerror(L, 1, "out of bounds");
 	}
 	else if (gui2::ttoggle_button *b = dynamic_cast<gui2::ttoggle_button *>(w))
 	{
@@ -2578,11 +2377,9 @@ static int intf_set_dialog_value(lua_State *L)
 	}
 	else
 	{
-		t_string v;
-		if (!luaW_totstring(L, 1, v))
-			goto error_call_destructors_2;
+		t_string v = luaW_checktstring(L, 1);
 		gui2::tcontrol *c = dynamic_cast<gui2::tcontrol *>(w);
-		if (!c) goto error_call_destructors_3;
+		if (!c) return luaL_argerror(L, lua_gettop(L), "unsupported widget");
 		c->set_label(v);
 	}
 
@@ -2596,11 +2393,6 @@ static int intf_set_dialog_value(lua_State *L)
  */
 static int intf_get_dialog_value(lua_State *L)
 {
-	if (false) {
-		error_call_destructors_1:
-		return luaL_argerror(L, lua_gettop(L), "unsupported widget");
-	}
-
 	gui2::twidget *w = find_widget(L, 1, true);
 
 	if (gui2::tlistbox *l = dynamic_cast<gui2::tlistbox *>(w)) {
@@ -2612,7 +2404,7 @@ static int intf_get_dialog_value(lua_State *L)
 	} else if (gui2::ttext_box *t = dynamic_cast<gui2::ttext_box *>(w)) {
 		lua_pushstring(L, t->get_value().c_str());
 	} else
-		goto error_call_destructors_1;
+		return luaL_argerror(L, lua_gettop(L), "unsupported widget");
 
 	return 1;
 }
@@ -2641,11 +2433,6 @@ static void dialog_callback(gui2::twidget *w)
  */
 static int intf_set_dialog_callback(lua_State *L)
 {
-	if (false) {
-		error_call_destructors_1:
-		return luaL_argerror(L, lua_gettop(L), "unsupported widget");
-	}
-
 	gui2::twidget *w = find_widget(L, 2, true);
 
 	scoped_dialog::callback_map &m = scoped_dialog::current->callbacks;
@@ -2667,7 +2454,7 @@ static int intf_set_dialog_callback(lua_State *L)
 	} else if (gui2::ttoggle_button *b = dynamic_cast<gui2::ttoggle_button *>(w)) {
 		b->set_callback_state_change(&dialog_callback);
 	} else
-		goto error_call_destructors_1;
+		return luaL_argerror(L, lua_gettop(L), "unsupported widget");
 
 	lua_pushlightuserdata(L, (void *)&dlgclbkKey);
 	lua_rawget(L, LUA_REGISTRYINDEX);
@@ -2688,27 +2475,16 @@ static int intf_set_dialog_callback(lua_State *L)
  */
 static int intf_set_dialog_canvas(lua_State *L)
 {
-	if (false) {
-		error_call_destructors_1:
-		return luaL_argerror(L, lua_gettop(L), "unsupported widget");
-		error_call_destructors_2:
-		return luaL_argerror(L, 1, "out of bounds");
-		error_call_destructors_3:
-		return luaL_typerror(L, 2, "WML table");
-	}
-
 	int i = luaL_checkinteger(L, 1);
 	gui2::twidget *w = find_widget(L, 3, true);
 	gui2::tcontrol *c = dynamic_cast<gui2::tcontrol *>(w);
-	if (!c) goto error_call_destructors_1;
-	config cfg;
-	if (!luaW_toconfig(L, 2, cfg))
-		goto error_call_destructors_3;
+	if (!c) return luaL_argerror(L, lua_gettop(L), "unsupported widget");
 
 	std::vector<gui2::tcanvas> &cv = c->canvas();
 	if (i < 1 || unsigned(i) > cv.size())
-		goto error_call_destructors_2;
+		return luaL_argerror(L, 1, "out of bounds");
 
+	config cfg = luaW_checkconfig(L, 2);
 	cv[i - 1].set_cfg(cfg);
 	return 0;
 }
@@ -2981,17 +2757,10 @@ LuaKernel::~LuaKernel()
  */
 static int cfun_wml_action(lua_State *L)
 {
-	if (false) {
-		error_call_destructors:
-		return luaL_typerror(L, 1, "WML table");
-	}
-
 	game_events::action_handler h = reinterpret_cast<game_events::action_handler>
 		(lua_touserdata(L, lua_upvalueindex(1)));
-	vconfig vcfg = vconfig::unconstructed_vconfig();
-	if (!luaW_tovconfig(L, 1, vcfg))
-		goto error_call_destructors;
 
+	vconfig vcfg = luaW_checkvconfig(L, 1);
 	h(queued_event_context::get(), vcfg);
 	return 0;
 }
