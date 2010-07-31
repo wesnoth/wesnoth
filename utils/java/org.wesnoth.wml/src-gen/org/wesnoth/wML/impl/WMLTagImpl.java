@@ -34,10 +34,11 @@ import org.wesnoth.wML.WMLTag;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.wesnoth.wML.impl.WMLTagImpl#isPlus <em>Plus</em>}</li>
  *   <li>{@link org.wesnoth.wML.impl.WMLTagImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.wesnoth.wML.impl.WMLTagImpl#getTtags <em>Ttags</em>}</li>
- *   <li>{@link org.wesnoth.wML.impl.WMLTagImpl#getTkeys <em>Tkeys</em>}</li>
- *   <li>{@link org.wesnoth.wML.impl.WMLTagImpl#getTmacros <em>Tmacros</em>}</li>
+ *   <li>{@link org.wesnoth.wML.impl.WMLTagImpl#getTags <em>Tags</em>}</li>
+ *   <li>{@link org.wesnoth.wML.impl.WMLTagImpl#getKeys <em>Keys</em>}</li>
+ *   <li>{@link org.wesnoth.wML.impl.WMLTagImpl#getMacros <em>Macros</em>}</li>
  *   <li>{@link org.wesnoth.wML.impl.WMLTagImpl#getEndName <em>End Name</em>}</li>
  * </ul>
  * </p>
@@ -46,6 +47,26 @@ import org.wesnoth.wML.WMLTag;
  */
 public class WMLTagImpl extends MinimalEObjectImpl.Container implements WMLTag
 {
+  /**
+   * The default value of the '{@link #isPlus() <em>Plus</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isPlus()
+   * @generated
+   * @ordered
+   */
+  protected static final boolean PLUS_EDEFAULT = false;
+
+  /**
+   * The cached value of the '{@link #isPlus() <em>Plus</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isPlus()
+   * @generated
+   * @ordered
+   */
+  protected boolean plus = PLUS_EDEFAULT;
+
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -67,34 +88,34 @@ public class WMLTagImpl extends MinimalEObjectImpl.Container implements WMLTag
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getTtags() <em>Ttags</em>}' containment reference list.
+   * The cached value of the '{@link #getTags() <em>Tags</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getTtags()
+   * @see #getTags()
    * @generated
    * @ordered
    */
-  protected EList<WMLTag> ttags;
+  protected EList<WMLTag> tags;
 
   /**
-   * The cached value of the '{@link #getTkeys() <em>Tkeys</em>}' containment reference list.
+   * The cached value of the '{@link #getKeys() <em>Keys</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getTkeys()
+   * @see #getKeys()
    * @generated
    * @ordered
    */
-  protected EList<WMLKey> tkeys;
+  protected EList<WMLKey> keys;
 
   /**
-   * The cached value of the '{@link #getTmacros() <em>Tmacros</em>}' containment reference list.
+   * The cached value of the '{@link #getMacros() <em>Macros</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getTmacros()
+   * @see #getMacros()
    * @generated
    * @ordered
    */
-  protected EList<WMLMacro> tmacros;
+  protected EList<WMLMacro> macros;
 
   /**
    * The default value of the '{@link #getEndName() <em>End Name</em>}' attribute.
@@ -142,6 +163,29 @@ public class WMLTagImpl extends MinimalEObjectImpl.Container implements WMLTag
    * <!-- end-user-doc -->
    * @generated
    */
+  public boolean isPlus()
+  {
+    return plus;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setPlus(boolean newPlus)
+  {
+    boolean oldPlus = plus;
+    plus = newPlus;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, WMLPackage.WML_TAG__PLUS, oldPlus, plus));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public String getName()
   {
     return name;
@@ -165,13 +209,13 @@ public class WMLTagImpl extends MinimalEObjectImpl.Container implements WMLTag
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<WMLTag> getTtags()
+  public EList<WMLTag> getTags()
   {
-    if (ttags == null)
+    if (tags == null)
     {
-      ttags = new EObjectContainmentEList<WMLTag>(WMLTag.class, this, WMLPackage.WML_TAG__TTAGS);
+      tags = new EObjectContainmentEList<WMLTag>(WMLTag.class, this, WMLPackage.WML_TAG__TAGS);
     }
-    return ttags;
+    return tags;
   }
 
   /**
@@ -179,13 +223,13 @@ public class WMLTagImpl extends MinimalEObjectImpl.Container implements WMLTag
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<WMLKey> getTkeys()
+  public EList<WMLKey> getKeys()
   {
-    if (tkeys == null)
+    if (keys == null)
     {
-      tkeys = new EObjectContainmentEList<WMLKey>(WMLKey.class, this, WMLPackage.WML_TAG__TKEYS);
+      keys = new EObjectContainmentEList<WMLKey>(WMLKey.class, this, WMLPackage.WML_TAG__KEYS);
     }
-    return tkeys;
+    return keys;
   }
 
   /**
@@ -193,13 +237,13 @@ public class WMLTagImpl extends MinimalEObjectImpl.Container implements WMLTag
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<WMLMacro> getTmacros()
+  public EList<WMLMacro> getMacros()
   {
-    if (tmacros == null)
+    if (macros == null)
     {
-      tmacros = new EObjectContainmentEList<WMLMacro>(WMLMacro.class, this, WMLPackage.WML_TAG__TMACROS);
+      macros = new EObjectContainmentEList<WMLMacro>(WMLMacro.class, this, WMLPackage.WML_TAG__MACROS);
     }
-    return tmacros;
+    return macros;
   }
 
   /**
@@ -235,12 +279,12 @@ public class WMLTagImpl extends MinimalEObjectImpl.Container implements WMLTag
   {
     switch (featureID)
     {
-      case WMLPackage.WML_TAG__TTAGS:
-        return ((InternalEList<?>)getTtags()).basicRemove(otherEnd, msgs);
-      case WMLPackage.WML_TAG__TKEYS:
-        return ((InternalEList<?>)getTkeys()).basicRemove(otherEnd, msgs);
-      case WMLPackage.WML_TAG__TMACROS:
-        return ((InternalEList<?>)getTmacros()).basicRemove(otherEnd, msgs);
+      case WMLPackage.WML_TAG__TAGS:
+        return ((InternalEList<?>)getTags()).basicRemove(otherEnd, msgs);
+      case WMLPackage.WML_TAG__KEYS:
+        return ((InternalEList<?>)getKeys()).basicRemove(otherEnd, msgs);
+      case WMLPackage.WML_TAG__MACROS:
+        return ((InternalEList<?>)getMacros()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -255,14 +299,16 @@ public class WMLTagImpl extends MinimalEObjectImpl.Container implements WMLTag
   {
     switch (featureID)
     {
+      case WMLPackage.WML_TAG__PLUS:
+        return isPlus();
       case WMLPackage.WML_TAG__NAME:
         return getName();
-      case WMLPackage.WML_TAG__TTAGS:
-        return getTtags();
-      case WMLPackage.WML_TAG__TKEYS:
-        return getTkeys();
-      case WMLPackage.WML_TAG__TMACROS:
-        return getTmacros();
+      case WMLPackage.WML_TAG__TAGS:
+        return getTags();
+      case WMLPackage.WML_TAG__KEYS:
+        return getKeys();
+      case WMLPackage.WML_TAG__MACROS:
+        return getMacros();
       case WMLPackage.WML_TAG__END_NAME:
         return getEndName();
     }
@@ -280,20 +326,23 @@ public class WMLTagImpl extends MinimalEObjectImpl.Container implements WMLTag
   {
     switch (featureID)
     {
+      case WMLPackage.WML_TAG__PLUS:
+        setPlus((Boolean)newValue);
+        return;
       case WMLPackage.WML_TAG__NAME:
         setName((String)newValue);
         return;
-      case WMLPackage.WML_TAG__TTAGS:
-        getTtags().clear();
-        getTtags().addAll((Collection<? extends WMLTag>)newValue);
+      case WMLPackage.WML_TAG__TAGS:
+        getTags().clear();
+        getTags().addAll((Collection<? extends WMLTag>)newValue);
         return;
-      case WMLPackage.WML_TAG__TKEYS:
-        getTkeys().clear();
-        getTkeys().addAll((Collection<? extends WMLKey>)newValue);
+      case WMLPackage.WML_TAG__KEYS:
+        getKeys().clear();
+        getKeys().addAll((Collection<? extends WMLKey>)newValue);
         return;
-      case WMLPackage.WML_TAG__TMACROS:
-        getTmacros().clear();
-        getTmacros().addAll((Collection<? extends WMLMacro>)newValue);
+      case WMLPackage.WML_TAG__MACROS:
+        getMacros().clear();
+        getMacros().addAll((Collection<? extends WMLMacro>)newValue);
         return;
       case WMLPackage.WML_TAG__END_NAME:
         setEndName((String)newValue);
@@ -312,17 +361,20 @@ public class WMLTagImpl extends MinimalEObjectImpl.Container implements WMLTag
   {
     switch (featureID)
     {
+      case WMLPackage.WML_TAG__PLUS:
+        setPlus(PLUS_EDEFAULT);
+        return;
       case WMLPackage.WML_TAG__NAME:
         setName(NAME_EDEFAULT);
         return;
-      case WMLPackage.WML_TAG__TTAGS:
-        getTtags().clear();
+      case WMLPackage.WML_TAG__TAGS:
+        getTags().clear();
         return;
-      case WMLPackage.WML_TAG__TKEYS:
-        getTkeys().clear();
+      case WMLPackage.WML_TAG__KEYS:
+        getKeys().clear();
         return;
-      case WMLPackage.WML_TAG__TMACROS:
-        getTmacros().clear();
+      case WMLPackage.WML_TAG__MACROS:
+        getMacros().clear();
         return;
       case WMLPackage.WML_TAG__END_NAME:
         setEndName(END_NAME_EDEFAULT);
@@ -341,14 +393,16 @@ public class WMLTagImpl extends MinimalEObjectImpl.Container implements WMLTag
   {
     switch (featureID)
     {
+      case WMLPackage.WML_TAG__PLUS:
+        return plus != PLUS_EDEFAULT;
       case WMLPackage.WML_TAG__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case WMLPackage.WML_TAG__TTAGS:
-        return ttags != null && !ttags.isEmpty();
-      case WMLPackage.WML_TAG__TKEYS:
-        return tkeys != null && !tkeys.isEmpty();
-      case WMLPackage.WML_TAG__TMACROS:
-        return tmacros != null && !tmacros.isEmpty();
+      case WMLPackage.WML_TAG__TAGS:
+        return tags != null && !tags.isEmpty();
+      case WMLPackage.WML_TAG__KEYS:
+        return keys != null && !keys.isEmpty();
+      case WMLPackage.WML_TAG__MACROS:
+        return macros != null && !macros.isEmpty();
       case WMLPackage.WML_TAG__END_NAME:
         return END_NAME_EDEFAULT == null ? endName != null : !END_NAME_EDEFAULT.equals(endName);
     }
@@ -366,7 +420,9 @@ public class WMLTagImpl extends MinimalEObjectImpl.Container implements WMLTag
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (name: ");
+    result.append(" (plus: ");
+    result.append(plus);
+    result.append(", name: ");
     result.append(name);
     result.append(", endName: ");
     result.append(endName);

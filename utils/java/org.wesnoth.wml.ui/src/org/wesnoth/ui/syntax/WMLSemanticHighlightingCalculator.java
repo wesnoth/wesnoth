@@ -55,7 +55,7 @@ public class WMLSemanticHighlightingCalculator extends SemanticHighlightingCalcu
 			}
 			else if (current instanceof WMLKey)
 			{
-				AbstractNode begin = getFirstFeatureNode(current, WMLPackage.Literals.WML_KEY__KEY_NAME.getName());
+				AbstractNode begin = getFirstFeatureNode(current, WMLPackage.Literals.WML_KEY__NAME.getName());
 				highlightNode(begin, WMLHighlightingConfiguration.RULE_WML_KEY, acceptor);
 			}
 			else if (current instanceof WMLMacro)
@@ -66,6 +66,12 @@ public class WMLSemanticHighlightingCalculator extends SemanticHighlightingCalcu
 //				AbstractNode end = getFirstFeatureNode(current, WMLPackage.Literals.WML_MACRO__VALUE.getName());
 //				highlightNode(end, WMLHighlightingConfiguration.RULE_WML_MACRO, acceptor);
 			}
+//			else if (current instanceof WMLKeyValue)
+//			{
+//				AbstractNode begin = getFirstFeatureNode(current, WMLPackage.Literals.WML_KEY_VALUE__VALUE.getName());
+//				highlightNode(begin, WMLHighlightingConfiguration.RULE_START_END_TAG, acceptor);
+//			}
+//			else if (current instanceof WML)
 		}
 	}
 

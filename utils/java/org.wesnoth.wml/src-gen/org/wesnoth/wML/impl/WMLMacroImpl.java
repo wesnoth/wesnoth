@@ -11,7 +11,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.wesnoth.wML.WMLMacro;
 import org.wesnoth.wML.WMLPackage;
@@ -29,7 +28,7 @@ import org.wesnoth.wML.WMLPackage;
  *
  * @generated
  */
-public class WMLMacroImpl extends MinimalEObjectImpl.Container implements WMLMacro
+public class WMLMacroImpl extends WMLKeyValueRuleImpl implements WMLMacro
 {
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.

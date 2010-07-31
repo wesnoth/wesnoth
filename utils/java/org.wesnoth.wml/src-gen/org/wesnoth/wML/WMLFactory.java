@@ -36,15 +36,6 @@ public interface WMLFactory extends EFactory
   WMLRoot createWMLRoot();
 
   /**
-   * Returns a new object of class '<em>Macro</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Macro</em>'.
-   * @generated
-   */
-  WMLMacro createWMLMacro();
-
-  /**
    * Returns a new object of class '<em>Tag</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -63,6 +54,15 @@ public interface WMLFactory extends EFactory
   WMLKey createWMLKey();
 
   /**
+   * Returns a new object of class '<em>Key Value Rule</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Key Value Rule</em>'.
+   * @generated
+   */
+  WMLKeyValueRule createWMLKeyValueRule();
+
+  /**
    * Returns a new object of class '<em>Key Value</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -70,6 +70,24 @@ public interface WMLFactory extends EFactory
    * @generated
    */
   WMLKeyValue createWMLKeyValue();
+
+  /**
+   * Returns a new object of class '<em>Macro</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Macro</em>'.
+   * @generated
+   */
+  WMLMacro createWMLMacro();
+
+  /**
+   * Returns a new object of class '<em>Lua Code</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Lua Code</em>'.
+   * @generated
+   */
+  WMLLuaCode createWMLLuaCode();
 
   /**
    * Returns the package supported by this factory.

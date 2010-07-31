@@ -69,10 +69,12 @@ public class WMLFactoryImpl extends EFactoryImpl implements WMLFactory
     switch (eClass.getClassifierID())
     {
       case WMLPackage.WML_ROOT: return createWMLRoot();
-      case WMLPackage.WML_MACRO: return createWMLMacro();
       case WMLPackage.WML_TAG: return createWMLTag();
       case WMLPackage.WML_KEY: return createWMLKey();
+      case WMLPackage.WML_KEY_VALUE_RULE: return createWMLKeyValueRule();
       case WMLPackage.WML_KEY_VALUE: return createWMLKeyValue();
+      case WMLPackage.WML_MACRO: return createWMLMacro();
+      case WMLPackage.WML_LUA_CODE: return createWMLLuaCode();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -87,17 +89,6 @@ public class WMLFactoryImpl extends EFactoryImpl implements WMLFactory
   {
     WMLRootImpl wmlRoot = new WMLRootImpl();
     return wmlRoot;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public WMLMacro createWMLMacro()
-  {
-    WMLMacroImpl wmlMacro = new WMLMacroImpl();
-    return wmlMacro;
   }
 
   /**
@@ -127,10 +118,43 @@ public class WMLFactoryImpl extends EFactoryImpl implements WMLFactory
    * <!-- end-user-doc -->
    * @generated
    */
+  public WMLKeyValueRule createWMLKeyValueRule()
+  {
+    WMLKeyValueRuleImpl wmlKeyValueRule = new WMLKeyValueRuleImpl();
+    return wmlKeyValueRule;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public WMLKeyValue createWMLKeyValue()
   {
     WMLKeyValueImpl wmlKeyValue = new WMLKeyValueImpl();
     return wmlKeyValue;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public WMLMacro createWMLMacro()
+  {
+    WMLMacroImpl wmlMacro = new WMLMacroImpl();
+    return wmlMacro;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public WMLLuaCode createWMLLuaCode()
+  {
+    WMLLuaCodeImpl wmlLuaCode = new WMLLuaCodeImpl();
+    return wmlLuaCode;
   }
 
   /**

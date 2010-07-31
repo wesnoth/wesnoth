@@ -18,10 +18,11 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link org.wesnoth.wML.WMLTag#isPlus <em>Plus</em>}</li>
  *   <li>{@link org.wesnoth.wML.WMLTag#getName <em>Name</em>}</li>
- *   <li>{@link org.wesnoth.wML.WMLTag#getTtags <em>Ttags</em>}</li>
- *   <li>{@link org.wesnoth.wML.WMLTag#getTkeys <em>Tkeys</em>}</li>
- *   <li>{@link org.wesnoth.wML.WMLTag#getTmacros <em>Tmacros</em>}</li>
+ *   <li>{@link org.wesnoth.wML.WMLTag#getTags <em>Tags</em>}</li>
+ *   <li>{@link org.wesnoth.wML.WMLTag#getKeys <em>Keys</em>}</li>
+ *   <li>{@link org.wesnoth.wML.WMLTag#getMacros <em>Macros</em>}</li>
  *   <li>{@link org.wesnoth.wML.WMLTag#getEndName <em>End Name</em>}</li>
  * </ul>
  * </p>
@@ -32,6 +33,32 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface WMLTag extends EObject
 {
+  /**
+   * Returns the value of the '<em><b>Plus</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Plus</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Plus</em>' attribute.
+   * @see #setPlus(boolean)
+   * @see org.wesnoth.wML.WMLPackage#getWMLTag_Plus()
+   * @model
+   * @generated
+   */
+  boolean isPlus();
+
+  /**
+   * Sets the value of the '{@link org.wesnoth.wML.WMLTag#isPlus <em>Plus</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Plus</em>' attribute.
+   * @see #isPlus()
+   * @generated
+   */
+  void setPlus(boolean value);
+
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
@@ -59,52 +86,52 @@ public interface WMLTag extends EObject
   void setName(String value);
 
   /**
-   * Returns the value of the '<em><b>Ttags</b></em>' containment reference list.
+   * Returns the value of the '<em><b>Tags</b></em>' containment reference list.
    * The list contents are of type {@link org.wesnoth.wML.WMLTag}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Ttags</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Tags</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Ttags</em>' containment reference list.
-   * @see org.wesnoth.wML.WMLPackage#getWMLTag_Ttags()
+   * @return the value of the '<em>Tags</em>' containment reference list.
+   * @see org.wesnoth.wML.WMLPackage#getWMLTag_Tags()
    * @model containment="true"
    * @generated
    */
-  EList<WMLTag> getTtags();
+  EList<WMLTag> getTags();
 
   /**
-   * Returns the value of the '<em><b>Tkeys</b></em>' containment reference list.
+   * Returns the value of the '<em><b>Keys</b></em>' containment reference list.
    * The list contents are of type {@link org.wesnoth.wML.WMLKey}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Tkeys</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Keys</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Tkeys</em>' containment reference list.
-   * @see org.wesnoth.wML.WMLPackage#getWMLTag_Tkeys()
+   * @return the value of the '<em>Keys</em>' containment reference list.
+   * @see org.wesnoth.wML.WMLPackage#getWMLTag_Keys()
    * @model containment="true"
    * @generated
    */
-  EList<WMLKey> getTkeys();
+  EList<WMLKey> getKeys();
 
   /**
-   * Returns the value of the '<em><b>Tmacros</b></em>' containment reference list.
+   * Returns the value of the '<em><b>Macros</b></em>' containment reference list.
    * The list contents are of type {@link org.wesnoth.wML.WMLMacro}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Tmacros</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Macros</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Tmacros</em>' containment reference list.
-   * @see org.wesnoth.wML.WMLPackage#getWMLTag_Tmacros()
+   * @return the value of the '<em>Macros</em>' containment reference list.
+   * @see org.wesnoth.wML.WMLPackage#getWMLTag_Macros()
    * @model containment="true"
    * @generated
    */
-  EList<WMLMacro> getTmacros();
+  EList<WMLMacro> getMacros();
 
   /**
    * Returns the value of the '<em><b>End Name</b></em>' attribute.

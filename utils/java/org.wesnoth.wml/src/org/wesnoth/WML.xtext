@@ -1,58 +1,50 @@
 /**
  * @author Timotei Dolean
  */
+ //grammar org.wesnoth.WML with org.eclipse.xtext.common.Terminals
 grammar org.wesnoth.WML hidden(WS, SL_COMMENT)
-//grammar org.wesnoth.WML with org.eclipse.xtext.common.Terminals
 generate wML "http://www.wesnoth.org/WML"
-
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 
+//TODO: add cross-reference for variables
+
+
+//handles TODO:
+
 WMLRoot:
-	( (Rtags += WMLTag)
-	| (Rmacros += WMLMacro) 
+	( Tags += WMLTag
+	| Macros += WMLMacro
 	)*
 	;
 
-WMLMacro:
-	name = MACRO; // '{' name = ID (value +=(ID|STRING|'_'|':'|'-'|'.'|'('|')'|'='|'/')+)* '}';
-
 WMLTag:
-	'[' name = ID ']'
-		( (Ttags += WMLTag)
-		| (Tkeys += WMLKey)
-		| (Tmacros += WMLMacro)
+	'[' (plus?='+')? name=ID ']'
+		( Tags += WMLTag
+		| Keys += WMLKey
+		| Macros += WMLMacro
 		)*
 	'[/' endName = ID ']'
 	;
-WMLKey:
-	(keyName = ID) '=' 
-	(value = WMLKeyValue)
-	;
+
+WMLKey: // (',' name += ID)*
+	(name = ID) '=' (value += WMLKeyValueRule)+ ('+' extraMacros+=WMLMacro)*; 
+WMLKeyValueRule:
+	WMLKeyValue | WMLMacro | WMLLuaCode;
+
 WMLKeyValue:
-	( (key1Value = (ID | STRING | TSTRING | FLOAT | IINT | PATH | DIRECTION | LIST | PROGRESSIVE))
-	| (key2Value = WMLMacro)	
-	);
+	value = (ID | STRING | ANY_OTHER | T_STRING);
 
-FLOAT hidden():
-	IINT '.' IINT+;
-TSTRING:
-	((' '+)? '_' (' '+)?) STRING;
-PATH:
-	(ID+ ('-'|'/'))* ID+ '.' ID+;
-DIRECTION:
-	( ('n'|'s'|'w'|'e'|'sw'|'se'|'ne'|'nw') ','?)+;
-LIST:
-	ID (',' ID)+;
-PROGRESSIVE:
-	(IINT|FLOAT) ('~' (IINT|FLOAT))? (':' IINT)? (',' (IINT|FLOAT) ('~' (IINT|FLOAT))? (':' IINT)?)+;
+WMLMacro:
+	name = RULE_MACRO;
+WMLLuaCode:
+	code = RULE_LUA_CODE;
+T_STRING:
+	'_' STRING;
 
-
-terminal SL_COMMENT	: '#' !('\n'|'\r')* ('\r'? '\n')?;
-terminal MACRO		: '{'->'}';
-//terminal STRINT		: ('a'..'z'|'A'..'Z'|'_'|'.'|'0'..'9')+;
-terminal WS			: (' '|'\t'|'\r'|'\n')+;
-//terminal ID  		: ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|' '|'_'|'0'..'9')*;
-terminal ID  		: ('a'..'z'|'A'..'Z'|'0'..'9') ('a'..'z'|'A'..'Z'|'_'|' '|'0'..'9')*;
-terminal IINT		: ('-'|'+')? ('0'..'9')+;
-terminal STRING		: '"' ( '\\' ('b'|'t'|'n'|'f'|'r'|'"'|"'"|'\\') | !('\\'|'"') )* '"';
-//terminal SSTRING	: ( '\\' ('b'|'t'|'n'|'f'|'r'|'"'|"'"|'\\') | !('\\'|'"') )*;
+terminal RULE_LUA_CODE: '<<' -> '>>';
+terminal RULE_MACRO : '{' -> '}';
+terminal SL_COMMENT : '#' !('\n'|'\r')* ('\r'? '\n')?;
+terminal ID         : ('a'..'z'|'A'..'Z'|'0'..'9'|'_')+;
+terminal STRING     : '"' ( '\\' ('b'|'t'|'n'|'f'|'r'|'"'|"'"|'\\') | !('\\'|'"') )* '"'; 
+terminal WS         : (' '|'\t'|'\r'|'\n')+;
+terminal ANY_OTHER  : .;

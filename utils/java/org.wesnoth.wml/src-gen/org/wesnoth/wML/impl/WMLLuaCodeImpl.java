@@ -12,50 +12,50 @@ import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.wesnoth.wML.WMLKeyValue;
+import org.wesnoth.wML.WMLLuaCode;
 import org.wesnoth.wML.WMLPackage;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Key Value</b></em>'.
+ * An implementation of the model object '<em><b>Lua Code</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.wesnoth.wML.impl.WMLKeyValueImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link org.wesnoth.wML.impl.WMLLuaCodeImpl#getCode <em>Code</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class WMLKeyValueImpl extends WMLKeyValueRuleImpl implements WMLKeyValue
+public class WMLLuaCodeImpl extends WMLKeyValueRuleImpl implements WMLLuaCode
 {
   /**
-   * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
+   * The default value of the '{@link #getCode() <em>Code</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getValue()
+   * @see #getCode()
    * @generated
    * @ordered
    */
-  protected static final String VALUE_EDEFAULT = null;
+  protected static final String CODE_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
+   * The cached value of the '{@link #getCode() <em>Code</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getValue()
+   * @see #getCode()
    * @generated
    * @ordered
    */
-  protected String value = VALUE_EDEFAULT;
+  protected String code = CODE_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected WMLKeyValueImpl()
+  protected WMLLuaCodeImpl()
   {
     super();
   }
@@ -68,7 +68,7 @@ public class WMLKeyValueImpl extends WMLKeyValueRuleImpl implements WMLKeyValue
   @Override
   protected EClass eStaticClass()
   {
-    return WMLPackage.Literals.WML_KEY_VALUE;
+    return WMLPackage.Literals.WML_LUA_CODE;
   }
 
   /**
@@ -76,9 +76,9 @@ public class WMLKeyValueImpl extends WMLKeyValueRuleImpl implements WMLKeyValue
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getValue()
+  public String getCode()
   {
-    return value;
+    return code;
   }
 
   /**
@@ -86,12 +86,12 @@ public class WMLKeyValueImpl extends WMLKeyValueRuleImpl implements WMLKeyValue
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setValue(String newValue)
+  public void setCode(String newCode)
   {
-    String oldValue = value;
-    value = newValue;
+    String oldCode = code;
+    code = newCode;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, WMLPackage.WML_KEY_VALUE__VALUE, oldValue, value));
+      eNotify(new ENotificationImpl(this, Notification.SET, WMLPackage.WML_LUA_CODE__CODE, oldCode, code));
   }
 
   /**
@@ -104,8 +104,8 @@ public class WMLKeyValueImpl extends WMLKeyValueRuleImpl implements WMLKeyValue
   {
     switch (featureID)
     {
-      case WMLPackage.WML_KEY_VALUE__VALUE:
-        return getValue();
+      case WMLPackage.WML_LUA_CODE__CODE:
+        return getCode();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -120,8 +120,8 @@ public class WMLKeyValueImpl extends WMLKeyValueRuleImpl implements WMLKeyValue
   {
     switch (featureID)
     {
-      case WMLPackage.WML_KEY_VALUE__VALUE:
-        setValue((String)newValue);
+      case WMLPackage.WML_LUA_CODE__CODE:
+        setCode((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -137,8 +137,8 @@ public class WMLKeyValueImpl extends WMLKeyValueRuleImpl implements WMLKeyValue
   {
     switch (featureID)
     {
-      case WMLPackage.WML_KEY_VALUE__VALUE:
-        setValue(VALUE_EDEFAULT);
+      case WMLPackage.WML_LUA_CODE__CODE:
+        setCode(CODE_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -154,8 +154,8 @@ public class WMLKeyValueImpl extends WMLKeyValueRuleImpl implements WMLKeyValue
   {
     switch (featureID)
     {
-      case WMLPackage.WML_KEY_VALUE__VALUE:
-        return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
+      case WMLPackage.WML_LUA_CODE__CODE:
+        return CODE_EDEFAULT == null ? code != null : !CODE_EDEFAULT.equals(code);
     }
     return super.eIsSet(featureID);
   }
@@ -171,10 +171,10 @@ public class WMLKeyValueImpl extends WMLKeyValueRuleImpl implements WMLKeyValue
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (value: ");
-    result.append(value);
+    result.append(" (code: ");
+    result.append(code);
     result.append(')');
     return result.toString();
   }
 
-} //WMLKeyValueImpl
+} //WMLLuaCodeImpl

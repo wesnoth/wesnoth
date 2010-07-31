@@ -7,43 +7,32 @@ package org.wesnoth.parser.antlr.internal;
 import org.eclipse.xtext.parser.antlr.Lexer;
 }
 
-T10 : '[' ;
-T11 : ']' ;
-T12 : '[/' ;
-T13 : '=' ;
-T14 : '.' ;
-T15 : ' ' ;
+T11 : '[' ;
+T12 : '+' ;
+T13 : ']' ;
+T14 : '[/' ;
+T15 : '=' ;
 T16 : '_' ;
-T17 : '-' ;
-T18 : '/' ;
-T19 : 'n' ;
-T20 : 's' ;
-T21 : 'w' ;
-T22 : 'e' ;
-T23 : 'sw' ;
-T24 : 'se' ;
-T25 : 'ne' ;
-T26 : 'nw' ;
-T27 : ',' ;
-T28 : '~' ;
-T29 : ':' ;
 
-// $ANTLR src "../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g" 1108
+// $ANTLR src "../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g" 728
+RULE_RULE_LUA_CODE : '<<' ( options {greedy=false;} : . )*'>>';
+
+// $ANTLR src "../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g" 730
+RULE_RULE_MACRO : '{' ( options {greedy=false;} : . )*'}';
+
+// $ANTLR src "../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g" 732
 RULE_SL_COMMENT : '#' ~(('\n'|'\r'))* ('\r'? '\n')?;
 
-// $ANTLR src "../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g" 1110
-RULE_MACRO : '{' ( options {greedy=false;} : . )*'}';
+// $ANTLR src "../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g" 734
+RULE_ID : ('a'..'z'|'A'..'Z'|'0'..'9'|'_')+;
 
-// $ANTLR src "../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g" 1112
+// $ANTLR src "../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g" 736
+RULE_STRING : '"' ('\\' ('b'|'t'|'n'|'f'|'r'|'"'|'\''|'\\')|~(('\\'|'"')))* '"';
+
+// $ANTLR src "../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g" 738
 RULE_WS : (' '|'\t'|'\r'|'\n')+;
 
-// $ANTLR src "../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g" 1114
-RULE_ID : ('a'..'z'|'A'..'Z'|'0'..'9') ('a'..'z'|'A'..'Z'|'_'|' '|'0'..'9')*;
-
-// $ANTLR src "../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g" 1116
-RULE_IINT : ('-'|'+')? ('0'..'9')+;
-
-// $ANTLR src "../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g" 1118
-RULE_STRING : '"' ('\\' ('b'|'t'|'n'|'f'|'r'|'"'|'\''|'\\')|~(('\\'|'"')))* '"';
+// $ANTLR src "../org.wesnoth.wml/src-gen/org/wesnoth/parser/antlr/internal/InternalWML.g" 740
+RULE_ANY_OTHER : .;
 
 

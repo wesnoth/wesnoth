@@ -32,8 +32,8 @@ import org.wesnoth.wML.WMLTag;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.wesnoth.wML.impl.WMLRootImpl#getRtags <em>Rtags</em>}</li>
- *   <li>{@link org.wesnoth.wML.impl.WMLRootImpl#getRmacros <em>Rmacros</em>}</li>
+ *   <li>{@link org.wesnoth.wML.impl.WMLRootImpl#getTags <em>Tags</em>}</li>
+ *   <li>{@link org.wesnoth.wML.impl.WMLRootImpl#getMacros <em>Macros</em>}</li>
  * </ul>
  * </p>
  *
@@ -42,24 +42,24 @@ import org.wesnoth.wML.WMLTag;
 public class WMLRootImpl extends MinimalEObjectImpl.Container implements WMLRoot
 {
   /**
-   * The cached value of the '{@link #getRtags() <em>Rtags</em>}' containment reference list.
+   * The cached value of the '{@link #getTags() <em>Tags</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getRtags()
+   * @see #getTags()
    * @generated
    * @ordered
    */
-  protected EList<WMLTag> rtags;
+  protected EList<WMLTag> tags;
 
   /**
-   * The cached value of the '{@link #getRmacros() <em>Rmacros</em>}' containment reference list.
+   * The cached value of the '{@link #getMacros() <em>Macros</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getRmacros()
+   * @see #getMacros()
    * @generated
    * @ordered
    */
-  protected EList<WMLMacro> rmacros;
+  protected EList<WMLMacro> macros;
 
   /**
    * <!-- begin-user-doc -->
@@ -87,13 +87,13 @@ public class WMLRootImpl extends MinimalEObjectImpl.Container implements WMLRoot
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<WMLTag> getRtags()
+  public EList<WMLTag> getTags()
   {
-    if (rtags == null)
+    if (tags == null)
     {
-      rtags = new EObjectContainmentEList<WMLTag>(WMLTag.class, this, WMLPackage.WML_ROOT__RTAGS);
+      tags = new EObjectContainmentEList<WMLTag>(WMLTag.class, this, WMLPackage.WML_ROOT__TAGS);
     }
-    return rtags;
+    return tags;
   }
 
   /**
@@ -101,13 +101,13 @@ public class WMLRootImpl extends MinimalEObjectImpl.Container implements WMLRoot
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<WMLMacro> getRmacros()
+  public EList<WMLMacro> getMacros()
   {
-    if (rmacros == null)
+    if (macros == null)
     {
-      rmacros = new EObjectContainmentEList<WMLMacro>(WMLMacro.class, this, WMLPackage.WML_ROOT__RMACROS);
+      macros = new EObjectContainmentEList<WMLMacro>(WMLMacro.class, this, WMLPackage.WML_ROOT__MACROS);
     }
-    return rmacros;
+    return macros;
   }
 
   /**
@@ -120,10 +120,10 @@ public class WMLRootImpl extends MinimalEObjectImpl.Container implements WMLRoot
   {
     switch (featureID)
     {
-      case WMLPackage.WML_ROOT__RTAGS:
-        return ((InternalEList<?>)getRtags()).basicRemove(otherEnd, msgs);
-      case WMLPackage.WML_ROOT__RMACROS:
-        return ((InternalEList<?>)getRmacros()).basicRemove(otherEnd, msgs);
+      case WMLPackage.WML_ROOT__TAGS:
+        return ((InternalEList<?>)getTags()).basicRemove(otherEnd, msgs);
+      case WMLPackage.WML_ROOT__MACROS:
+        return ((InternalEList<?>)getMacros()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -138,10 +138,10 @@ public class WMLRootImpl extends MinimalEObjectImpl.Container implements WMLRoot
   {
     switch (featureID)
     {
-      case WMLPackage.WML_ROOT__RTAGS:
-        return getRtags();
-      case WMLPackage.WML_ROOT__RMACROS:
-        return getRmacros();
+      case WMLPackage.WML_ROOT__TAGS:
+        return getTags();
+      case WMLPackage.WML_ROOT__MACROS:
+        return getMacros();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -157,13 +157,13 @@ public class WMLRootImpl extends MinimalEObjectImpl.Container implements WMLRoot
   {
     switch (featureID)
     {
-      case WMLPackage.WML_ROOT__RTAGS:
-        getRtags().clear();
-        getRtags().addAll((Collection<? extends WMLTag>)newValue);
+      case WMLPackage.WML_ROOT__TAGS:
+        getTags().clear();
+        getTags().addAll((Collection<? extends WMLTag>)newValue);
         return;
-      case WMLPackage.WML_ROOT__RMACROS:
-        getRmacros().clear();
-        getRmacros().addAll((Collection<? extends WMLMacro>)newValue);
+      case WMLPackage.WML_ROOT__MACROS:
+        getMacros().clear();
+        getMacros().addAll((Collection<? extends WMLMacro>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -179,11 +179,11 @@ public class WMLRootImpl extends MinimalEObjectImpl.Container implements WMLRoot
   {
     switch (featureID)
     {
-      case WMLPackage.WML_ROOT__RTAGS:
-        getRtags().clear();
+      case WMLPackage.WML_ROOT__TAGS:
+        getTags().clear();
         return;
-      case WMLPackage.WML_ROOT__RMACROS:
-        getRmacros().clear();
+      case WMLPackage.WML_ROOT__MACROS:
+        getMacros().clear();
         return;
     }
     super.eUnset(featureID);
@@ -199,10 +199,10 @@ public class WMLRootImpl extends MinimalEObjectImpl.Container implements WMLRoot
   {
     switch (featureID)
     {
-      case WMLPackage.WML_ROOT__RTAGS:
-        return rtags != null && !rtags.isEmpty();
-      case WMLPackage.WML_ROOT__RMACROS:
-        return rmacros != null && !rmacros.isEmpty();
+      case WMLPackage.WML_ROOT__TAGS:
+        return tags != null && !tags.isEmpty();
+      case WMLPackage.WML_ROOT__MACROS:
+        return macros != null && !macros.isEmpty();
     }
     return super.eIsSet(featureID);
   }

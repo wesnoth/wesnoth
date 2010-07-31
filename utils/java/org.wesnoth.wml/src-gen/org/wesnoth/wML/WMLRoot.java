@@ -18,8 +18,8 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.wesnoth.wML.WMLRoot#getRtags <em>Rtags</em>}</li>
- *   <li>{@link org.wesnoth.wML.WMLRoot#getRmacros <em>Rmacros</em>}</li>
+ *   <li>{@link org.wesnoth.wML.WMLRoot#getTags <em>Tags</em>}</li>
+ *   <li>{@link org.wesnoth.wML.WMLRoot#getMacros <em>Macros</em>}</li>
  * </ul>
  * </p>
  *
@@ -30,35 +30,35 @@ import org.eclipse.emf.ecore.EObject;
 public interface WMLRoot extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Rtags</b></em>' containment reference list.
+   * Returns the value of the '<em><b>Tags</b></em>' containment reference list.
    * The list contents are of type {@link org.wesnoth.wML.WMLTag}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Rtags</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Tags</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Rtags</em>' containment reference list.
-   * @see org.wesnoth.wML.WMLPackage#getWMLRoot_Rtags()
+   * @return the value of the '<em>Tags</em>' containment reference list.
+   * @see org.wesnoth.wML.WMLPackage#getWMLRoot_Tags()
    * @model containment="true"
    * @generated
    */
-  EList<WMLTag> getRtags();
+  EList<WMLTag> getTags();
 
   /**
-   * Returns the value of the '<em><b>Rmacros</b></em>' containment reference list.
+   * Returns the value of the '<em><b>Macros</b></em>' containment reference list.
    * The list contents are of type {@link org.wesnoth.wML.WMLMacro}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Rmacros</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Macros</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Rmacros</em>' containment reference list.
-   * @see org.wesnoth.wML.WMLPackage#getWMLRoot_Rmacros()
+   * @return the value of the '<em>Macros</em>' containment reference list.
+   * @see org.wesnoth.wML.WMLPackage#getWMLRoot_Macros()
    * @model containment="true"
    * @generated
    */
-  EList<WMLMacro> getRmacros();
+  EList<WMLMacro> getMacros();
 
 } // WMLRoot

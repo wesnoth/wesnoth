@@ -6,7 +6,6 @@
  */
 package org.wesnoth.wML;
 
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,7 +23,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface WMLMacro extends EObject
+public interface WMLMacro extends WMLKeyValueRule
 {
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
