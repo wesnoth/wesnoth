@@ -1014,6 +1014,7 @@ AC_CONFIG_FILES([Makefile
 		 m4/Makefile
 		 icons/Makefile
 		 src/Makefile
+		 src/lua/Makefile
 		 doc/Makefile
 		 doc/man/Makefile
 		 doc/manual/Makefile])

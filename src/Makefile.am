@@ -1,4 +1,5 @@
 AUTOMAKE_OPTIONS = subdir-objects
+SUBDIRS = lua
 
 bin_PROGRAMS =
 bin_SCRIPTS =
@@ -558,7 +559,7 @@ CXXFLAGS += -Iana/api
 endif
 
 lua/liblua.a:
-	$(MAKE) -C lua/ a CC="$(CXX)"
+	$(MAKE) -C lua/ liblua.a
 
 # Until game_config.cpp is removed, this will be needed to ensure that the
 # REVISION constant gets updated correctly.  If and when that definition is
