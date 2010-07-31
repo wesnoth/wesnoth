@@ -94,9 +94,9 @@ public class WMLAdapterFactory extends AdapterFactoryImpl
         return createWMLKeyAdapter();
       }
       @Override
-      public Adapter caseWMLKeyValueRule(WMLKeyValueRule object)
+      public Adapter caseWMLKeyValue(WMLKeyValue object)
       {
-        return createWMLKeyValueRuleAdapter();
+        return createWMLKeyValueAdapter();
       }
       @Override
       public Adapter caseWMLMacroCall(WMLMacroCall object)
@@ -107,6 +107,11 @@ public class WMLAdapterFactory extends AdapterFactoryImpl
       public Adapter caseWMLLuaCode(WMLLuaCode object)
       {
         return createWMLLuaCodeAdapter();
+      }
+      @Override
+      public Adapter caseWMLArrayCall(WMLArrayCall object)
+      {
+        return createWMLArrayCallAdapter();
       }
       @Override
       public Adapter caseWMLMacroDefine(WMLMacroDefine object)
@@ -191,16 +196,16 @@ public class WMLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.wesnoth.wML.WMLKeyValueRule <em>Key Value Rule</em>}'.
+   * Creates a new adapter for an object of class '{@link org.wesnoth.wML.WMLKeyValue <em>Key Value</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.wesnoth.wML.WMLKeyValueRule
+   * @see org.wesnoth.wML.WMLKeyValue
    * @generated
    */
-  public Adapter createWMLKeyValueRuleAdapter()
+  public Adapter createWMLKeyValueAdapter()
   {
     return null;
   }
@@ -231,6 +236,21 @@ public class WMLAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createWMLLuaCodeAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.wesnoth.wML.WMLArrayCall <em>Array Call</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.wesnoth.wML.WMLArrayCall
+   * @generated
+   */
+  public Adapter createWMLArrayCallAdapter()
   {
     return null;
   }

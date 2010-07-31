@@ -429,16 +429,23 @@ ruleWMLTag returns [EObject current=null]
 
 // Entry rule entryRuleWMLKey
 entryRuleWMLKey returns [EObject current=null] 
+	@init { 
+		HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens("RULE_WS");
+	}
 	:
 	{ currentNode = createCompositeNode(grammarAccess.getWMLKeyRule(), currentNode); }
 	 iv_ruleWMLKey=ruleWMLKey 
 	 { $current=$iv_ruleWMLKey.current; } 
 	 EOF 
 ;
+finally {
+	myHiddenTokenState.restore();
+}
 
 // Rule WMLKey
 ruleWMLKey returns [EObject current=null] 
     @init { EObject temp=null; setCurrentLookahead(); resetLookahead(); 
+		HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens("RULE_WS");
     }
     @after { resetLookahead(); 
     	lastConsumedNode = currentNode;
@@ -474,9 +481,9 @@ ruleWMLKey returns [EObject current=null]
 (
 (
 		{ 
-	        currentNode=createCompositeNode(grammarAccess.getWMLKeyAccess().getValueWMLKeyValueRuleParserRuleCall_2_0(), currentNode); 
+	        currentNode=createCompositeNode(grammarAccess.getWMLKeyAccess().getValueWMLKeyValueParserRuleCall_2_0(), currentNode); 
 	    }
-		lv_value_2_0=ruleWMLKeyValueRule		{
+		lv_value_2_0=ruleWMLKeyValue		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getWMLKeyRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -486,7 +493,7 @@ ruleWMLKey returns [EObject current=null]
 	       			$current, 
 	       			"value",
 	        		lv_value_2_0, 
-	        		"WMLKeyValueRule", 
+	        		"WMLKeyValue", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
 				handleValueConverterException(vce);
@@ -495,24 +502,36 @@ ruleWMLKey returns [EObject current=null]
 	    }
 
 )
-)+)
+)+(RULE_EOL
+    { 
+    createLeafNode(grammarAccess.getWMLKeyAccess().getEOLTerminalRuleCall_3_0(), null); 
+    }
+
+    |RULE_SL_COMMENT
+    { 
+    createLeafNode(grammarAccess.getWMLKeyAccess().getSL_COMMENTTerminalRuleCall_3_1(), null); 
+    }
+))
 ;
+finally {
+	myHiddenTokenState.restore();
+}
 
 
 
 
 
-// Entry rule entryRuleWMLKeyValueRule
-entryRuleWMLKeyValueRule returns [EObject current=null] 
+// Entry rule entryRuleWMLKeyValue
+entryRuleWMLKeyValue returns [EObject current=null] 
 	:
-	{ currentNode = createCompositeNode(grammarAccess.getWMLKeyValueRuleRule(), currentNode); }
-	 iv_ruleWMLKeyValueRule=ruleWMLKeyValueRule 
-	 { $current=$iv_ruleWMLKeyValueRule.current; } 
+	{ currentNode = createCompositeNode(grammarAccess.getWMLKeyValueRule(), currentNode); }
+	 iv_ruleWMLKeyValue=ruleWMLKeyValue 
+	 { $current=$iv_ruleWMLKeyValue.current; } 
 	 EOF 
 ;
 
-// Rule WMLKeyValueRule
-ruleWMLKeyValueRule returns [EObject current=null] 
+// Rule WMLKeyValue
+ruleWMLKeyValue returns [EObject current=null] 
     @init { EObject temp=null; setCurrentLookahead(); resetLookahead(); 
     }
     @after { resetLookahead(); 
@@ -520,7 +539,7 @@ ruleWMLKeyValueRule returns [EObject current=null]
     }:
 (
     { 
-        currentNode=createCompositeNode(grammarAccess.getWMLKeyValueRuleAccess().getWMLValueParserRuleCall_0(), currentNode); 
+        currentNode=createCompositeNode(grammarAccess.getWMLKeyValueAccess().getWMLValueParserRuleCall_0(), currentNode); 
     }
     this_WMLValue_0=ruleWMLValue
     { 
@@ -530,7 +549,7 @@ ruleWMLKeyValueRule returns [EObject current=null]
 
     |
     { 
-        currentNode=createCompositeNode(grammarAccess.getWMLKeyValueRuleAccess().getWMLMacroCallParserRuleCall_1(), currentNode); 
+        currentNode=createCompositeNode(grammarAccess.getWMLKeyValueAccess().getWMLMacroCallParserRuleCall_1(), currentNode); 
     }
     this_WMLMacroCall_1=ruleWMLMacroCall
     { 
@@ -540,11 +559,21 @@ ruleWMLKeyValueRule returns [EObject current=null]
 
     |
     { 
-        currentNode=createCompositeNode(grammarAccess.getWMLKeyValueRuleAccess().getWMLLuaCodeParserRuleCall_2(), currentNode); 
+        currentNode=createCompositeNode(grammarAccess.getWMLKeyValueAccess().getWMLLuaCodeParserRuleCall_2(), currentNode); 
     }
     this_WMLLuaCode_2=ruleWMLLuaCode
     { 
         $current = $this_WMLLuaCode_2.current; 
+        currentNode = currentNode.getParent();
+    }
+
+    |
+    { 
+        currentNode=createCompositeNode(grammarAccess.getWMLKeyValueAccess().getWMLArrayCallParserRuleCall_3(), currentNode); 
+    }
+    this_WMLArrayCall_3=ruleWMLArrayCall
+    { 
+        $current = $this_WMLArrayCall_3.current; 
         currentNode = currentNode.getParent();
     }
 )
@@ -641,6 +670,61 @@ ruleWMLLuaCode returns [EObject current=null]
 	    }
 
 )
+)
+;
+
+
+
+
+
+// Entry rule entryRuleWMLArrayCall
+entryRuleWMLArrayCall returns [EObject current=null] 
+	:
+	{ currentNode = createCompositeNode(grammarAccess.getWMLArrayCallRule(), currentNode); }
+	 iv_ruleWMLArrayCall=ruleWMLArrayCall 
+	 { $current=$iv_ruleWMLArrayCall.current; } 
+	 EOF 
+;
+
+// Rule WMLArrayCall
+ruleWMLArrayCall returns [EObject current=null] 
+    @init { EObject temp=null; setCurrentLookahead(); resetLookahead(); 
+    }
+    @after { resetLookahead(); 
+    	lastConsumedNode = currentNode;
+    }:
+(	'[' 
+    {
+        createLeafNode(grammarAccess.getWMLArrayCallAccess().getLeftSquareBracketKeyword_0(), null); 
+    }
+(
+(
+		{ 
+	        currentNode=createCompositeNode(grammarAccess.getWMLArrayCallAccess().getValueWMLValueParserRuleCall_1_0(), currentNode); 
+	    }
+		lv_value_1_0=ruleWMLValue		{
+	        if ($current==null) {
+	            $current = factory.create(grammarAccess.getWMLArrayCallRule().getType().getClassifier());
+	            associateNodeWithAstElement(currentNode.getParent(), $current);
+	        }
+	        try {
+	       		add(
+	       			$current, 
+	       			"value",
+	        		lv_value_1_0, 
+	        		"WMLValue", 
+	        		currentNode);
+	        } catch (ValueConverterException vce) {
+				handleValueConverterException(vce);
+	        }
+	        currentNode = currentNode.getParent();
+	    }
+
+)
+)+	']' 
+    {
+        createLeafNode(grammarAccess.getWMLArrayCallAccess().getRightSquareBracketKeyword_2(), null); 
+    }
 )
 ;
 
@@ -860,14 +944,16 @@ RULE_DEFINE : '#define' ( options {greedy=false;} : . )*'#enddef';
 
 RULE_TEXTDOMAIN : '#textdomain' ~(('\n'|'\r'))* ('\r'? '\n')?;
 
-RULE_SL_COMMENT : '#' ~(('\n'|'\r'))* ('\r'? '\n')?;
+RULE_STRING : '"' ('\\' ('b'|'t'|'n'|'f'|'r'|'"'|'\''|'\\')|~(('\\'|'"')))* '"';
 
 RULE_ID : ('a'..'z'|'A'..'Z'|'0'..'9'|'_'|',')+;
 
-RULE_STRING : '"' ('\\' ('b'|'t'|'n'|'f'|'r'|'"'|'\''|'\\')|~(('\\'|'"')))* '"';
+RULE_EOL : ('\r'|'\n')+;
 
-RULE_WS : (' '|'\t'|'\r'|'\n')+;
+RULE_WS : (' '|'\t')+;
 
 RULE_ANY_OTHER : .;
+
+RULE_SL_COMMENT : '#' ~(('\n'|'\r'))* ('\r'? '\n')?;
 
 

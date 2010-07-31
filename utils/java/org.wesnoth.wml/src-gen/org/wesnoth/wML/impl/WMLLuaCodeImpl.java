@@ -28,7 +28,7 @@ import org.wesnoth.wML.WMLPackage;
  *
  * @generated
  */
-public class WMLLuaCodeImpl extends WMLKeyValueRuleImpl implements WMLLuaCode
+public class WMLLuaCodeImpl extends WMLKeyValueImpl implements WMLLuaCode
 {
   /**
    * The default value of the '{@link #getValue() <em>Value</em>}' attribute.

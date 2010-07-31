@@ -57,7 +57,7 @@ public interface WMLKey extends EObject
 
   /**
    * Returns the value of the '<em><b>Value</b></em>' containment reference list.
-   * The list contents are of type {@link org.wesnoth.wML.WMLKeyValueRule}.
+   * The list contents are of type {@link org.wesnoth.wML.WMLKeyValue}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Value</em>' containment reference list isn't clear,
@@ -69,6 +69,6 @@ public interface WMLKey extends EObject
    * @model containment="true"
    * @generated
    */
-  EList<WMLKeyValueRule> getValue();
+  EList<WMLKeyValue> getValue();
 
 } // WMLKey

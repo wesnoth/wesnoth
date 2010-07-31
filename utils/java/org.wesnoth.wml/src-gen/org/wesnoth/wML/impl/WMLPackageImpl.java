@@ -13,9 +13,10 @@ import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
+import org.wesnoth.wML.WMLArrayCall;
 import org.wesnoth.wML.WMLFactory;
 import org.wesnoth.wML.WMLKey;
-import org.wesnoth.wML.WMLKeyValueRule;
+import org.wesnoth.wML.WMLKeyValue;
 import org.wesnoth.wML.WMLLuaCode;
 import org.wesnoth.wML.WMLMacroCall;
 import org.wesnoth.wML.WMLMacroDefine;
@@ -59,7 +60,7 @@ public class WMLPackageImpl extends EPackageImpl implements WMLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass wmlKeyValueRuleEClass = null;
+  private EClass wmlKeyValueEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -74,6 +75,13 @@ public class WMLPackageImpl extends EPackageImpl implements WMLPackage
    * @generated
    */
   private EClass wmlLuaCodeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass wmlArrayCallEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -334,9 +342,9 @@ public class WMLPackageImpl extends EPackageImpl implements WMLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getWMLKeyValueRule()
+  public EClass getWMLKeyValue()
   {
-    return wmlKeyValueRuleEClass;
+    return wmlKeyValueEClass;
   }
 
   /**
@@ -377,6 +385,26 @@ public class WMLPackageImpl extends EPackageImpl implements WMLPackage
   public EAttribute getWMLLuaCode_Value()
   {
     return (EAttribute)wmlLuaCodeEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getWMLArrayCall()
+  {
+    return wmlArrayCallEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getWMLArrayCall_Value()
+  {
+    return (EReference)wmlArrayCallEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -489,13 +517,16 @@ public class WMLPackageImpl extends EPackageImpl implements WMLPackage
     createEAttribute(wmlKeyEClass, WML_KEY__NAME);
     createEReference(wmlKeyEClass, WML_KEY__VALUE);
 
-    wmlKeyValueRuleEClass = createEClass(WML_KEY_VALUE_RULE);
+    wmlKeyValueEClass = createEClass(WML_KEY_VALUE);
 
     wmlMacroCallEClass = createEClass(WML_MACRO_CALL);
     createEAttribute(wmlMacroCallEClass, WML_MACRO_CALL__NAME);
 
     wmlLuaCodeEClass = createEClass(WML_LUA_CODE);
     createEAttribute(wmlLuaCodeEClass, WML_LUA_CODE__VALUE);
+
+    wmlArrayCallEClass = createEClass(WML_ARRAY_CALL);
+    createEReference(wmlArrayCallEClass, WML_ARRAY_CALL__VALUE);
 
     wmlMacroDefineEClass = createEClass(WML_MACRO_DEFINE);
     createEAttribute(wmlMacroDefineEClass, WML_MACRO_DEFINE__NAME);
@@ -536,9 +567,10 @@ public class WMLPackageImpl extends EPackageImpl implements WMLPackage
     // Set bounds for type parameters
 
     // Add supertypes to classes
-    wmlMacroCallEClass.getESuperTypes().add(this.getWMLKeyValueRule());
-    wmlLuaCodeEClass.getESuperTypes().add(this.getWMLKeyValueRule());
-    wmlValueEClass.getESuperTypes().add(this.getWMLKeyValueRule());
+    wmlMacroCallEClass.getESuperTypes().add(this.getWMLKeyValue());
+    wmlLuaCodeEClass.getESuperTypes().add(this.getWMLKeyValue());
+    wmlArrayCallEClass.getESuperTypes().add(this.getWMLKeyValue());
+    wmlValueEClass.getESuperTypes().add(this.getWMLKeyValue());
 
     // Initialize classes and features; add operations and parameters
     initEClass(wmlRootEClass, WMLRoot.class, "WMLRoot", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -559,15 +591,18 @@ public class WMLPackageImpl extends EPackageImpl implements WMLPackage
 
     initEClass(wmlKeyEClass, WMLKey.class, "WMLKey", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getWMLKey_Name(), ecorePackage.getEString(), "name", null, 0, 1, WMLKey.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getWMLKey_Value(), this.getWMLKeyValueRule(), null, "value", null, 0, -1, WMLKey.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getWMLKey_Value(), this.getWMLKeyValue(), null, "value", null, 0, -1, WMLKey.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(wmlKeyValueRuleEClass, WMLKeyValueRule.class, "WMLKeyValueRule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEClass(wmlKeyValueEClass, WMLKeyValue.class, "WMLKeyValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(wmlMacroCallEClass, WMLMacroCall.class, "WMLMacroCall", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getWMLMacroCall_Name(), ecorePackage.getEString(), "name", null, 0, 1, WMLMacroCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(wmlLuaCodeEClass, WMLLuaCode.class, "WMLLuaCode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getWMLLuaCode_Value(), ecorePackage.getEString(), "value", null, 0, 1, WMLLuaCode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(wmlArrayCallEClass, WMLArrayCall.class, "WMLArrayCall", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getWMLArrayCall_Value(), this.getWMLValue(), null, "value", null, 0, -1, WMLArrayCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(wmlMacroDefineEClass, WMLMacroDefine.class, "WMLMacroDefine", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getWMLMacroDefine_Name(), ecorePackage.getEString(), "name", null, 0, 1, WMLMacroDefine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

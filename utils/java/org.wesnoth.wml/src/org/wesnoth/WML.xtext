@@ -2,13 +2,12 @@
  * @author Timotei Dolean
  */
  //grammar org.wesnoth.WML with org.eclipse.xtext.common.Terminals
-grammar org.wesnoth.WML hidden(WS, SL_COMMENT)
+grammar org.wesnoth.WML hidden(EOL, WS, SL_COMMENT)
 generate wML "http://www.wesnoth.org/WML"
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 
 //TODO: add cross-reference for variables
 //handles TODO:
-// - arrays [ ]
 // - preprocessor commands: #define, #enddef, etc
 // - fix: { { } }
 
@@ -31,19 +30,19 @@ WMLTag:
 	'[/' endName = ID ']'
 	;
 
-WMLKey:
-	(name = ID) '='
-	value += WMLKeyValueRule+;
+WMLKey hidden(WS):
+	(name = ID) '=' value += WMLKeyValue+ (EOL|SL_COMMENT);
 
-WMLKeyValueRule:
-	WMLValue | WMLMacroCall | WMLLuaCode;
+WMLKeyValue:
+	WMLValue | WMLMacroCall | WMLLuaCode | WMLArrayCall;
 	
 WMLMacroCall:
 	name = MACRO;
 
 WMLLuaCode:
 	value = LUA_CODE;
-
+WMLArrayCall:
+	'[' value += WMLValue+ ']' ;
 WMLMacroDefine:
 	name = DEFINE;
 //		( Tags += WMLTag
@@ -65,8 +64,9 @@ terminal MACRO      : '{' -> '}';
 terminal DEFINE     : '#define' -> '#enddef';//!('\n'|'\r')* ('\r'? '\n')?;
 //terminal ENDDEF     : '#enddef' !('\n'|'\r')* ('\r'? '\n')?;
 terminal TEXTDOMAIN : '#textdomain' !('\n'|'\r')* ('\r'? '\n')?;
-terminal SL_COMMENT : '#' !('\n'|'\r')* ('\r'? '\n')?;
-terminal ID         : ('a'..'z'|'A'..'Z'|'0'..'9'|'_'|',')+;
 terminal STRING     : '"' ( '\\' ('b'|'t'|'n'|'f'|'r'|'"'|"'"|'\\') | !('\\'|'"') )* '"';
-terminal WS         : (' '|'\t'|'\r'|'\n')+;
+terminal ID         : ('a'..'z'|'A'..'Z'|'0'..'9'|'_'|',')+;
+terminal EOL		 : ('\r'|'\n')+;
+terminal WS         : (' '|'\t')+;
 terminal ANY_OTHER  : .;
+terminal SL_COMMENT : '#' !('\n'|'\r')* ('\r'? '\n')?;

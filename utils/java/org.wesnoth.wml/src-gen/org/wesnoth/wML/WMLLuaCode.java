@@ -23,7 +23,7 @@ package org.wesnoth.wML;
  * @model
  * @generated
  */
-public interface WMLLuaCode extends WMLKeyValueRule
+public interface WMLLuaCode extends WMLKeyValue
 {
   /**
    * Returns the value of the '<em><b>Value</b></em>' attribute.

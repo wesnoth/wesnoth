@@ -54,13 +54,13 @@ public interface WMLFactory extends EFactory
   WMLKey createWMLKey();
 
   /**
-   * Returns a new object of class '<em>Key Value Rule</em>'.
+   * Returns a new object of class '<em>Key Value</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Key Value Rule</em>'.
+   * @return a new object of class '<em>Key Value</em>'.
    * @generated
    */
-  WMLKeyValueRule createWMLKeyValueRule();
+  WMLKeyValue createWMLKeyValue();
 
   /**
    * Returns a new object of class '<em>Macro Call</em>'.
@@ -79,6 +79,15 @@ public interface WMLFactory extends EFactory
    * @generated
    */
   WMLLuaCode createWMLLuaCode();
+
+  /**
+   * Returns a new object of class '<em>Array Call</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Array Call</em>'.
+   * @generated
+   */
+  WMLArrayCall createWMLArrayCall();
 
   /**
    * Returns a new object of class '<em>Macro Define</em>'.

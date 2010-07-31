@@ -23,7 +23,7 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.wesnoth.wML.WMLKey;
-import org.wesnoth.wML.WMLKeyValueRule;
+import org.wesnoth.wML.WMLKeyValue;
 import org.wesnoth.wML.WMLPackage;
 
 /**
@@ -70,7 +70,7 @@ public class WMLKeyImpl extends MinimalEObjectImpl.Container implements WMLKey
    * @generated
    * @ordered
    */
-  protected EList<WMLKeyValueRule> value;
+  protected EList<WMLKeyValue> value;
 
   /**
    * <!-- begin-user-doc -->
@@ -121,11 +121,11 @@ public class WMLKeyImpl extends MinimalEObjectImpl.Container implements WMLKey
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<WMLKeyValueRule> getValue()
+  public EList<WMLKeyValue> getValue()
   {
     if (value == null)
     {
-      value = new EObjectContainmentEList<WMLKeyValueRule>(WMLKeyValueRule.class, this, WMLPackage.WML_KEY__VALUE);
+      value = new EObjectContainmentEList<WMLKeyValue>(WMLKeyValue.class, this, WMLPackage.WML_KEY__VALUE);
     }
     return value;
   }
@@ -180,7 +180,7 @@ public class WMLKeyImpl extends MinimalEObjectImpl.Container implements WMLKey
         return;
       case WMLPackage.WML_KEY__VALUE:
         getValue().clear();
-        getValue().addAll((Collection<? extends WMLKeyValueRule>)newValue);
+        getValue().addAll((Collection<? extends WMLKeyValue>)newValue);
         return;
     }
     super.eSet(featureID, newValue);

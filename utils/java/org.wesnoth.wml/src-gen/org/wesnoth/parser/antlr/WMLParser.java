@@ -22,7 +22,7 @@ public class WMLParser extends org.eclipse.xtext.parser.antlr.AbstractAntlrParse
 	protected IParseResult parse(String ruleName, CharStream in) {
 		TokenSource tokenSource = createLexer(in);
 		XtextTokenStream tokenStream = createTokenStream(tokenSource);
-		tokenStream.setInitialHiddenTokens("RULE_WS", "RULE_SL_COMMENT");
+		tokenStream.setInitialHiddenTokens("RULE_EOL", "RULE_WS", "RULE_SL_COMMENT");
 		org.wesnoth.parser.antlr.internal.InternalWMLParser parser = createParser(tokenStream);
 		parser.setTokenTypeMap(getTokenDefProvider().getTokenDefMap());
 		parser.setSyntaxErrorProvider(getSyntaxErrorProvider());

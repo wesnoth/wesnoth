@@ -244,23 +244,23 @@ public interface WMLPackage extends EPackage
   int WML_KEY_FEATURE_COUNT = 2;
 
   /**
-   * The meta object id for the '{@link org.wesnoth.wML.impl.WMLKeyValueRuleImpl <em>Key Value Rule</em>}' class.
+   * The meta object id for the '{@link org.wesnoth.wML.impl.WMLKeyValueImpl <em>Key Value</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.wesnoth.wML.impl.WMLKeyValueRuleImpl
-   * @see org.wesnoth.wML.impl.WMLPackageImpl#getWMLKeyValueRule()
+   * @see org.wesnoth.wML.impl.WMLKeyValueImpl
+   * @see org.wesnoth.wML.impl.WMLPackageImpl#getWMLKeyValue()
    * @generated
    */
-  int WML_KEY_VALUE_RULE = 3;
+  int WML_KEY_VALUE = 3;
 
   /**
-   * The number of structural features of the '<em>Key Value Rule</em>' class.
+   * The number of structural features of the '<em>Key Value</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int WML_KEY_VALUE_RULE_FEATURE_COUNT = 0;
+  int WML_KEY_VALUE_FEATURE_COUNT = 0;
 
   /**
    * The meta object id for the '{@link org.wesnoth.wML.impl.WMLMacroCallImpl <em>Macro Call</em>}' class.
@@ -279,7 +279,7 @@ public interface WMLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int WML_MACRO_CALL__NAME = WML_KEY_VALUE_RULE_FEATURE_COUNT + 0;
+  int WML_MACRO_CALL__NAME = WML_KEY_VALUE_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Macro Call</em>' class.
@@ -288,7 +288,7 @@ public interface WMLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int WML_MACRO_CALL_FEATURE_COUNT = WML_KEY_VALUE_RULE_FEATURE_COUNT + 1;
+  int WML_MACRO_CALL_FEATURE_COUNT = WML_KEY_VALUE_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link org.wesnoth.wML.impl.WMLLuaCodeImpl <em>Lua Code</em>}' class.
@@ -307,7 +307,7 @@ public interface WMLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int WML_LUA_CODE__VALUE = WML_KEY_VALUE_RULE_FEATURE_COUNT + 0;
+  int WML_LUA_CODE__VALUE = WML_KEY_VALUE_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Lua Code</em>' class.
@@ -316,7 +316,35 @@ public interface WMLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int WML_LUA_CODE_FEATURE_COUNT = WML_KEY_VALUE_RULE_FEATURE_COUNT + 1;
+  int WML_LUA_CODE_FEATURE_COUNT = WML_KEY_VALUE_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link org.wesnoth.wML.impl.WMLArrayCallImpl <em>Array Call</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.wesnoth.wML.impl.WMLArrayCallImpl
+   * @see org.wesnoth.wML.impl.WMLPackageImpl#getWMLArrayCall()
+   * @generated
+   */
+  int WML_ARRAY_CALL = 6;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WML_ARRAY_CALL__VALUE = WML_KEY_VALUE_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Array Call</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WML_ARRAY_CALL_FEATURE_COUNT = WML_KEY_VALUE_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link org.wesnoth.wML.impl.WMLMacroDefineImpl <em>Macro Define</em>}' class.
@@ -326,7 +354,7 @@ public interface WMLPackage extends EPackage
    * @see org.wesnoth.wML.impl.WMLPackageImpl#getWMLMacroDefine()
    * @generated
    */
-  int WML_MACRO_DEFINE = 6;
+  int WML_MACRO_DEFINE = 7;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -354,7 +382,7 @@ public interface WMLPackage extends EPackage
    * @see org.wesnoth.wML.impl.WMLPackageImpl#getWMLTextdomain()
    * @generated
    */
-  int WML_TEXTDOMAIN = 7;
+  int WML_TEXTDOMAIN = 8;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -382,7 +410,7 @@ public interface WMLPackage extends EPackage
    * @see org.wesnoth.wML.impl.WMLPackageImpl#getWMLValue()
    * @generated
    */
-  int WML_VALUE = 8;
+  int WML_VALUE = 9;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -391,7 +419,7 @@ public interface WMLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int WML_VALUE__VALUE = WML_KEY_VALUE_RULE_FEATURE_COUNT + 0;
+  int WML_VALUE__VALUE = WML_KEY_VALUE_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Value</em>' class.
@@ -400,7 +428,7 @@ public interface WMLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int WML_VALUE_FEATURE_COUNT = WML_KEY_VALUE_RULE_FEATURE_COUNT + 1;
+  int WML_VALUE_FEATURE_COUNT = WML_KEY_VALUE_FEATURE_COUNT + 1;
 
 
   /**
@@ -588,14 +616,14 @@ public interface WMLPackage extends EPackage
   EReference getWMLKey_Value();
 
   /**
-   * Returns the meta object for class '{@link org.wesnoth.wML.WMLKeyValueRule <em>Key Value Rule</em>}'.
+   * Returns the meta object for class '{@link org.wesnoth.wML.WMLKeyValue <em>Key Value</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Key Value Rule</em>'.
-   * @see org.wesnoth.wML.WMLKeyValueRule
+   * @return the meta object for class '<em>Key Value</em>'.
+   * @see org.wesnoth.wML.WMLKeyValue
    * @generated
    */
-  EClass getWMLKeyValueRule();
+  EClass getWMLKeyValue();
 
   /**
    * Returns the meta object for class '{@link org.wesnoth.wML.WMLMacroCall <em>Macro Call</em>}'.
@@ -638,6 +666,27 @@ public interface WMLPackage extends EPackage
    * @generated
    */
   EAttribute getWMLLuaCode_Value();
+
+  /**
+   * Returns the meta object for class '{@link org.wesnoth.wML.WMLArrayCall <em>Array Call</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Array Call</em>'.
+   * @see org.wesnoth.wML.WMLArrayCall
+   * @generated
+   */
+  EClass getWMLArrayCall();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.wesnoth.wML.WMLArrayCall#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Value</em>'.
+   * @see org.wesnoth.wML.WMLArrayCall#getValue()
+   * @see #getWMLArrayCall()
+   * @generated
+   */
+  EReference getWMLArrayCall_Value();
 
   /**
    * Returns the meta object for class '{@link org.wesnoth.wML.WMLMacroDefine <em>Macro Define</em>}'.
@@ -868,14 +917,14 @@ public interface WMLPackage extends EPackage
     EReference WML_KEY__VALUE = eINSTANCE.getWMLKey_Value();
 
     /**
-     * The meta object literal for the '{@link org.wesnoth.wML.impl.WMLKeyValueRuleImpl <em>Key Value Rule</em>}' class.
+     * The meta object literal for the '{@link org.wesnoth.wML.impl.WMLKeyValueImpl <em>Key Value</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.wesnoth.wML.impl.WMLKeyValueRuleImpl
-     * @see org.wesnoth.wML.impl.WMLPackageImpl#getWMLKeyValueRule()
+     * @see org.wesnoth.wML.impl.WMLKeyValueImpl
+     * @see org.wesnoth.wML.impl.WMLPackageImpl#getWMLKeyValue()
      * @generated
      */
-    EClass WML_KEY_VALUE_RULE = eINSTANCE.getWMLKeyValueRule();
+    EClass WML_KEY_VALUE = eINSTANCE.getWMLKeyValue();
 
     /**
      * The meta object literal for the '{@link org.wesnoth.wML.impl.WMLMacroCallImpl <em>Macro Call</em>}' class.
@@ -912,6 +961,24 @@ public interface WMLPackage extends EPackage
      * @generated
      */
     EAttribute WML_LUA_CODE__VALUE = eINSTANCE.getWMLLuaCode_Value();
+
+    /**
+     * The meta object literal for the '{@link org.wesnoth.wML.impl.WMLArrayCallImpl <em>Array Call</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.wesnoth.wML.impl.WMLArrayCallImpl
+     * @see org.wesnoth.wML.impl.WMLPackageImpl#getWMLArrayCall()
+     * @generated
+     */
+    EClass WML_ARRAY_CALL = eINSTANCE.getWMLArrayCall();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference WML_ARRAY_CALL__VALUE = eINSTANCE.getWMLArrayCall_Value();
 
     /**
      * The meta object literal for the '{@link org.wesnoth.wML.impl.WMLMacroDefineImpl <em>Macro Define</em>}' class.

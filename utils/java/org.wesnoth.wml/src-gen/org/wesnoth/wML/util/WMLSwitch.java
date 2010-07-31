@@ -117,10 +117,10 @@ public class WMLSwitch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case WMLPackage.WML_KEY_VALUE_RULE:
+      case WMLPackage.WML_KEY_VALUE:
       {
-        WMLKeyValueRule wmlKeyValueRule = (WMLKeyValueRule)theEObject;
-        T result = caseWMLKeyValueRule(wmlKeyValueRule);
+        WMLKeyValue wmlKeyValue = (WMLKeyValue)theEObject;
+        T result = caseWMLKeyValue(wmlKeyValue);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -128,7 +128,7 @@ public class WMLSwitch<T>
       {
         WMLMacroCall wmlMacroCall = (WMLMacroCall)theEObject;
         T result = caseWMLMacroCall(wmlMacroCall);
-        if (result == null) result = caseWMLKeyValueRule(wmlMacroCall);
+        if (result == null) result = caseWMLKeyValue(wmlMacroCall);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -136,7 +136,15 @@ public class WMLSwitch<T>
       {
         WMLLuaCode wmlLuaCode = (WMLLuaCode)theEObject;
         T result = caseWMLLuaCode(wmlLuaCode);
-        if (result == null) result = caseWMLKeyValueRule(wmlLuaCode);
+        if (result == null) result = caseWMLKeyValue(wmlLuaCode);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case WMLPackage.WML_ARRAY_CALL:
+      {
+        WMLArrayCall wmlArrayCall = (WMLArrayCall)theEObject;
+        T result = caseWMLArrayCall(wmlArrayCall);
+        if (result == null) result = caseWMLKeyValue(wmlArrayCall);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -158,7 +166,7 @@ public class WMLSwitch<T>
       {
         WMLValue wmlValue = (WMLValue)theEObject;
         T result = caseWMLValue(wmlValue);
-        if (result == null) result = caseWMLKeyValueRule(wmlValue);
+        if (result == null) result = caseWMLKeyValue(wmlValue);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -215,17 +223,17 @@ public class WMLSwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Key Value Rule</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Key Value</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Key Value Rule</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Key Value</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseWMLKeyValueRule(WMLKeyValueRule object)
+  public T caseWMLKeyValue(WMLKeyValue object)
   {
     return null;
   }
@@ -258,6 +266,22 @@ public class WMLSwitch<T>
    * @generated
    */
   public T caseWMLLuaCode(WMLLuaCode object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Array Call</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Array Call</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseWMLArrayCall(WMLArrayCall object)
   {
     return null;
   }

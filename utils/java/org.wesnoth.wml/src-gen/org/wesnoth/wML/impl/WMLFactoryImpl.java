@@ -71,9 +71,10 @@ public class WMLFactoryImpl extends EFactoryImpl implements WMLFactory
       case WMLPackage.WML_ROOT: return createWMLRoot();
       case WMLPackage.WML_TAG: return createWMLTag();
       case WMLPackage.WML_KEY: return createWMLKey();
-      case WMLPackage.WML_KEY_VALUE_RULE: return createWMLKeyValueRule();
+      case WMLPackage.WML_KEY_VALUE: return createWMLKeyValue();
       case WMLPackage.WML_MACRO_CALL: return createWMLMacroCall();
       case WMLPackage.WML_LUA_CODE: return createWMLLuaCode();
+      case WMLPackage.WML_ARRAY_CALL: return createWMLArrayCall();
       case WMLPackage.WML_MACRO_DEFINE: return createWMLMacroDefine();
       case WMLPackage.WML_TEXTDOMAIN: return createWMLTextdomain();
       case WMLPackage.WML_VALUE: return createWMLValue();
@@ -120,10 +121,10 @@ public class WMLFactoryImpl extends EFactoryImpl implements WMLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public WMLKeyValueRule createWMLKeyValueRule()
+  public WMLKeyValue createWMLKeyValue()
   {
-    WMLKeyValueRuleImpl wmlKeyValueRule = new WMLKeyValueRuleImpl();
-    return wmlKeyValueRule;
+    WMLKeyValueImpl wmlKeyValue = new WMLKeyValueImpl();
+    return wmlKeyValue;
   }
 
   /**
@@ -146,6 +147,17 @@ public class WMLFactoryImpl extends EFactoryImpl implements WMLFactory
   {
     WMLLuaCodeImpl wmlLuaCode = new WMLLuaCodeImpl();
     return wmlLuaCode;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public WMLArrayCall createWMLArrayCall()
+  {
+    WMLArrayCallImpl wmlArrayCall = new WMLArrayCallImpl();
+    return wmlArrayCall;
   }
 
   /**

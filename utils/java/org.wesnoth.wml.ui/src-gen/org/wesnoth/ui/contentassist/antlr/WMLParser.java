@@ -39,10 +39,12 @@ public class WMLParser extends AbstractContentAssistParser {
 				{
 					put(grammarAccess.getWMLRootAccess().getAlternatives(), "rule__WMLRoot__Alternatives");
 					put(grammarAccess.getWMLTagAccess().getAlternatives_4(), "rule__WMLTag__Alternatives_4");
-					put(grammarAccess.getWMLKeyValueRuleAccess().getAlternatives(), "rule__WMLKeyValueRule__Alternatives");
+					put(grammarAccess.getWMLKeyAccess().getAlternatives_3(), "rule__WMLKey__Alternatives_3");
+					put(grammarAccess.getWMLKeyValueAccess().getAlternatives(), "rule__WMLKeyValue__Alternatives");
 					put(grammarAccess.getWMLValueAccess().getValueAlternatives_0(), "rule__WMLValue__ValueAlternatives_0");
 					put(grammarAccess.getWMLTagAccess().getGroup(), "rule__WMLTag__Group__0");
 					put(grammarAccess.getWMLKeyAccess().getGroup(), "rule__WMLKey__Group__0");
+					put(grammarAccess.getWMLArrayCallAccess().getGroup(), "rule__WMLArrayCall__Group__0");
 					put(grammarAccess.getWMLRootAccess().getTagsAssignment_0(), "rule__WMLRoot__TagsAssignment_0");
 					put(grammarAccess.getWMLRootAccess().getMacroCallsAssignment_1(), "rule__WMLRoot__MacroCallsAssignment_1");
 					put(grammarAccess.getWMLRootAccess().getMacroDefinesAssignment_2(), "rule__WMLRoot__MacroDefinesAssignment_2");
@@ -59,6 +61,7 @@ public class WMLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getWMLKeyAccess().getValueAssignment_2(), "rule__WMLKey__ValueAssignment_2");
 					put(grammarAccess.getWMLMacroCallAccess().getNameAssignment(), "rule__WMLMacroCall__NameAssignment");
 					put(grammarAccess.getWMLLuaCodeAccess().getValueAssignment(), "rule__WMLLuaCode__ValueAssignment");
+					put(grammarAccess.getWMLArrayCallAccess().getValueAssignment_1(), "rule__WMLArrayCall__ValueAssignment_1");
 					put(grammarAccess.getWMLMacroDefineAccess().getNameAssignment(), "rule__WMLMacroDefine__NameAssignment");
 					put(grammarAccess.getWMLTextdomainAccess().getNameAssignment(), "rule__WMLTextdomain__NameAssignment");
 					put(grammarAccess.getWMLValueAccess().getValueAssignment(), "rule__WMLValue__ValueAssignment");
@@ -81,7 +84,7 @@ public class WMLParser extends AbstractContentAssistParser {
 	
 	@Override
 	protected String[] getInitialHiddenTokens() {
-		return new String[] { "RULE_WS", "RULE_SL_COMMENT" };
+		return new String[] { "RULE_EOL", "RULE_WS", "RULE_SL_COMMENT" };
 	}
 	
 	public WMLGrammarAccess getGrammarAccess() {
