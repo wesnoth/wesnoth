@@ -21,11 +21,11 @@
 #include "visitor.hpp"
 #include "manager.hpp"
 
-#include "actions.hpp"
 #include "arrow.hpp"
 #include "config.hpp"
 #include "foreach.hpp"
 #include "game_display.hpp"
+#include "mouse_events.hpp"
 #include "play_controller.hpp"
 #include "replay.hpp"
 #include "resources.hpp"
@@ -113,20 +113,23 @@ bool move::execute()
 
 	arrow_->set_alpha(ALPHA_HIGHLIGHT);
 
-	static const bool show_move = true;
 	map_location final_location;
-	int steps_done = ::move_unit(NULL, route_->steps, &recorder, resources::undo_stack, show_move, &final_location,
-			false, get_current_team().auto_shroud_updates());
-	// final_location now contains the final unit location
-	// if that isn't needed, pass NULL rather than &final_location
+	bool steps_finished;
+	{
+		events::mouse_handler& mouse_handler = resources::controller->get_mouse_handler_base();
+		team const& viewing_team = (*resources::teams)[resources::screen->viewing_team()];
+		steps_finished = mouse_handler.move_unit_along_route(*route_, &final_location, viewing_team.auto_shroud_updates());
+		// final_location now contains the final unit location
+		// if that isn't needed, pass NULL rather than &final_location
+	}
 
 	unit_map::const_iterator unit_it;
 
-	if (route_->steps.back() == final_location)
+	if (steps_finished && route_->steps.back() == final_location)
 	{
 		move_finished_completely = true;
 	}
-	else if (steps_done == 0)
+	else if (final_location == route_->steps.front())
 	{
 		LOG_WB << "Move execution resulted in zero movement.\n";
 	}
