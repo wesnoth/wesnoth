@@ -226,7 +226,7 @@ BOOST_AUTO_TEST_CASE(test_make_test_fake)
 		gui2::tmessage dlg("title", "message", true);
 		dlg.show(video, 1);
 	} catch(twml_exception& e) {
-		BOOST_CHECK(e.user_message == _("Failed to show a dialog, "
+		BOOST_CHECK(e.message == _("Failed to show a dialog, "
 					"which doesn't fit on the screen."));
 		return;
 	} catch(...) {

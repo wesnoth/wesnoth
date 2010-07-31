@@ -99,6 +99,7 @@ wesnoth_source = \
 	config_cache.cpp \
 	controller_base.cpp \
 	dialogs.cpp \
+	exceptions.cpp \
 	floating_textbox.cpp \
 	formula.cpp \
 	formula_debugger.cpp \
@@ -448,8 +449,8 @@ test_SOURCES =  \
 	tests/gui/test_save_dialog.cpp \
 	$(wesnoth_source)
 
-test_LDADD = $(INTERNALLIBS) $(THELIBS) $(BOOST_UNIT_TEST_FRAMEWORK_LIBS) $(PANGO_LIBS) $(FONTCONFIG_LIBS)
-test_DEPENDENCIES=libwesnoth-core.a libwesnoth.a
+test_LDADD = $(INTERNALLIBS) $(THELIBS) $(BOOST_UNIT_TEST_FRAMEWORK_LIBS) $(PANGO_LIBS) $(FONTCONFIG_LIBS) lua/liblua.a
+test_DEPENDENCIES=libwesnoth-core.a libwesnoth.a lua/liblua.a
 if ANA
 test_LDADD += $(BOOST_SYSTEM_LIBS) $(BOOST_THREAD_LIBS) -lana
 test_DEPENDENCIES += libana.a

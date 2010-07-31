@@ -132,21 +132,6 @@ static bool less_campaigns_rank(const config &a, const config &b) {
 	return a["rank"].to_int(1000) < b["rank"].to_int(1000);
 }
 
-char const *game::exception::sticky;
-
-void game::exception::rethrow()
-{
-	if (!sticky) return;
-	if (strcmp(sticky, "quit") == 0) throw CVideo::quit();
-	if (strcmp(sticky, "load game") == 0) throw game::load_game_exception();
-	if (strcmp(sticky, "end level") == 0) throw end_level_exception(QUIT);
-	throw game::exception("Unknown exception", "unknown");
-}
-
-std::string game::load_game_exception::game;
-bool game::load_game_exception::show_replay;
-bool game::load_game_exception::cancel_orders;
-
 namespace {
 struct jump_to_campaign_info
 {

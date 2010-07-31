@@ -324,6 +324,7 @@ set(wesnoth-main_SRC
 	config_cache.cpp
 	controller_base.cpp
 	dialogs.cpp
+	exceptions.cpp
 	floating_textbox.cpp
 	formula.cpp
 	formula_debugger.cpp
