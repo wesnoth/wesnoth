@@ -15,17 +15,26 @@
 #ifndef GAME_ERRORS_HPP_INCLUDED
 #define GAME_ERRORS_HPP_INCLUDED
 
+#include <exception>
 #include <string>
 
 namespace game {
-struct error {
+
+struct error : std::exception
+{
+	std::string message;
+
 	error() :
 		message()
 		{}
 	error(const std::string& msg) : message(msg)
 	{}
+	~error() throw() {}
 
-	std::string message;
+	const char *what() const throw()
+	{
+		return message.c_str();
+	}
 };
 
 struct mp_server_error : public error {
