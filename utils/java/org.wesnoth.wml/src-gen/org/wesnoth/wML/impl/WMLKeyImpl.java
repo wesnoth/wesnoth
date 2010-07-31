@@ -24,7 +24,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.wesnoth.wML.WMLKey;
 import org.wesnoth.wML.WMLKeyValueRule;
-import org.wesnoth.wML.WMLMacro;
 import org.wesnoth.wML.WMLPackage;
 
 /**
@@ -36,7 +35,6 @@ import org.wesnoth.wML.WMLPackage;
  * <ul>
  *   <li>{@link org.wesnoth.wML.impl.WMLKeyImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.wesnoth.wML.impl.WMLKeyImpl#getValue <em>Value</em>}</li>
- *   <li>{@link org.wesnoth.wML.impl.WMLKeyImpl#getExtraMacros <em>Extra Macros</em>}</li>
  * </ul>
  * </p>
  *
@@ -73,16 +71,6 @@ public class WMLKeyImpl extends MinimalEObjectImpl.Container implements WMLKey
    * @ordered
    */
   protected EList<WMLKeyValueRule> value;
-
-  /**
-   * The cached value of the '{@link #getExtraMacros() <em>Extra Macros</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getExtraMacros()
-   * @generated
-   * @ordered
-   */
-  protected EList<WMLMacro> extraMacros;
 
   /**
    * <!-- begin-user-doc -->
@@ -147,20 +135,6 @@ public class WMLKeyImpl extends MinimalEObjectImpl.Container implements WMLKey
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<WMLMacro> getExtraMacros()
-  {
-    if (extraMacros == null)
-    {
-      extraMacros = new EObjectContainmentEList<WMLMacro>(WMLMacro.class, this, WMLPackage.WML_KEY__EXTRA_MACROS);
-    }
-    return extraMacros;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -168,8 +142,6 @@ public class WMLKeyImpl extends MinimalEObjectImpl.Container implements WMLKey
     {
       case WMLPackage.WML_KEY__VALUE:
         return ((InternalEList<?>)getValue()).basicRemove(otherEnd, msgs);
-      case WMLPackage.WML_KEY__EXTRA_MACROS:
-        return ((InternalEList<?>)getExtraMacros()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -188,8 +160,6 @@ public class WMLKeyImpl extends MinimalEObjectImpl.Container implements WMLKey
         return getName();
       case WMLPackage.WML_KEY__VALUE:
         return getValue();
-      case WMLPackage.WML_KEY__EXTRA_MACROS:
-        return getExtraMacros();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -212,10 +182,6 @@ public class WMLKeyImpl extends MinimalEObjectImpl.Container implements WMLKey
         getValue().clear();
         getValue().addAll((Collection<? extends WMLKeyValueRule>)newValue);
         return;
-      case WMLPackage.WML_KEY__EXTRA_MACROS:
-        getExtraMacros().clear();
-        getExtraMacros().addAll((Collection<? extends WMLMacro>)newValue);
-        return;
     }
     super.eSet(featureID, newValue);
   }
@@ -236,9 +202,6 @@ public class WMLKeyImpl extends MinimalEObjectImpl.Container implements WMLKey
       case WMLPackage.WML_KEY__VALUE:
         getValue().clear();
         return;
-      case WMLPackage.WML_KEY__EXTRA_MACROS:
-        getExtraMacros().clear();
-        return;
     }
     super.eUnset(featureID);
   }
@@ -257,8 +220,6 @@ public class WMLKeyImpl extends MinimalEObjectImpl.Container implements WMLKey
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case WMLPackage.WML_KEY__VALUE:
         return value != null && !value.isEmpty();
-      case WMLPackage.WML_KEY__EXTRA_MACROS:
-        return extraMacros != null && !extraMacros.isEmpty();
     }
     return super.eIsSet(featureID);
   }

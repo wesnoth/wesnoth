@@ -23,16 +23,16 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalWMLParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_ANY_OTHER", "RULE_RULE_MACRO", "RULE_RULE_LUA_CODE", "RULE_SL_COMMENT", "RULE_WS", "'['", "']'", "'[/'", "'='", "'+'", "'_'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_ANY_OTHER", "RULE_MACRO", "RULE_LUA_CODE", "RULE_SL_COMMENT", "RULE_WS", "'+'", "'['", "']'", "'[/'", "'='"
     };
-    public static final int RULE_RULE_LUA_CODE=8;
+    public static final int RULE_LUA_CODE=8;
     public static final int RULE_ID=4;
-    public static final int RULE_RULE_MACRO=7;
     public static final int RULE_STRING=5;
     public static final int RULE_ANY_OTHER=6;
     public static final int RULE_WS=10;
     public static final int RULE_SL_COMMENT=9;
     public static final int EOF=-1;
+    public static final int RULE_MACRO=7;
 
         public InternalWMLParser(TokenStream input) {
             super(input);
@@ -112,7 +112,7 @@ public class InternalWMLParser extends AbstractInternalContentAssistParser {
                 int alt1=2;
                 int LA1_0 = input.LA(1);
 
-                if ( (LA1_0==RULE_RULE_MACRO||LA1_0==11) ) {
+                if ( (LA1_0==RULE_MACRO||LA1_0==12) ) {
                     alt1=1;
                 }
 
@@ -561,30 +561,30 @@ public class InternalWMLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start ruleWMLLuaCode
-    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:238:1: ruleWMLLuaCode : ( ( rule__WMLLuaCode__CodeAssignment ) ) ;
+    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:238:1: ruleWMLLuaCode : ( ( rule__WMLLuaCode__ValueAssignment ) ) ;
     public final void ruleWMLLuaCode() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:242:2: ( ( ( rule__WMLLuaCode__CodeAssignment ) ) )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:243:1: ( ( rule__WMLLuaCode__CodeAssignment ) )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:242:2: ( ( ( rule__WMLLuaCode__ValueAssignment ) ) )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:243:1: ( ( rule__WMLLuaCode__ValueAssignment ) )
             {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:243:1: ( ( rule__WMLLuaCode__CodeAssignment ) )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:244:1: ( rule__WMLLuaCode__CodeAssignment )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:243:1: ( ( rule__WMLLuaCode__ValueAssignment ) )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:244:1: ( rule__WMLLuaCode__ValueAssignment )
             {
-             before(grammarAccess.getWMLLuaCodeAccess().getCodeAssignment()); 
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:245:1: ( rule__WMLLuaCode__CodeAssignment )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:245:2: rule__WMLLuaCode__CodeAssignment
+             before(grammarAccess.getWMLLuaCodeAccess().getValueAssignment()); 
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:245:1: ( rule__WMLLuaCode__ValueAssignment )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:245:2: rule__WMLLuaCode__ValueAssignment
             {
-            pushFollow(FOLLOW_rule__WMLLuaCode__CodeAssignment_in_ruleWMLLuaCode455);
-            rule__WMLLuaCode__CodeAssignment();
+            pushFollow(FOLLOW_rule__WMLLuaCode__ValueAssignment_in_ruleWMLLuaCode455);
+            rule__WMLLuaCode__ValueAssignment();
             _fsp--;
 
 
             }
 
-             after(grammarAccess.getWMLLuaCodeAccess().getCodeAssignment()); 
+             after(grammarAccess.getWMLLuaCodeAccess().getValueAssignment()); 
 
             }
 
@@ -606,116 +606,41 @@ public class InternalWMLParser extends AbstractInternalContentAssistParser {
     // $ANTLR end ruleWMLLuaCode
 
 
-    // $ANTLR start entryRuleT_STRING
-    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:257:1: entryRuleT_STRING : ruleT_STRING EOF ;
-    public final void entryRuleT_STRING() throws RecognitionException {
-        try {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:258:1: ( ruleT_STRING EOF )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:259:1: ruleT_STRING EOF
-            {
-             before(grammarAccess.getT_STRINGRule()); 
-            pushFollow(FOLLOW_ruleT_STRING_in_entryRuleT_STRING482);
-            ruleT_STRING();
-            _fsp--;
-
-             after(grammarAccess.getT_STRINGRule()); 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleT_STRING489); 
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-        }
-        return ;
-    }
-    // $ANTLR end entryRuleT_STRING
-
-
-    // $ANTLR start ruleT_STRING
-    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:266:1: ruleT_STRING : ( ( rule__T_STRING__Group__0 ) ) ;
-    public final void ruleT_STRING() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:270:2: ( ( ( rule__T_STRING__Group__0 ) ) )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:271:1: ( ( rule__T_STRING__Group__0 ) )
-            {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:271:1: ( ( rule__T_STRING__Group__0 ) )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:272:1: ( rule__T_STRING__Group__0 )
-            {
-             before(grammarAccess.getT_STRINGAccess().getGroup()); 
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:273:1: ( rule__T_STRING__Group__0 )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:273:2: rule__T_STRING__Group__0
-            {
-            pushFollow(FOLLOW_rule__T_STRING__Group__0_in_ruleT_STRING515);
-            rule__T_STRING__Group__0();
-            _fsp--;
-
-
-            }
-
-             after(grammarAccess.getT_STRINGAccess().getGroup()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end ruleT_STRING
-
-
     // $ANTLR start rule__WMLRoot__Alternatives
-    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:285:1: rule__WMLRoot__Alternatives : ( ( ( rule__WMLRoot__TagsAssignment_0 ) ) | ( ( rule__WMLRoot__MacrosAssignment_1 ) ) );
+    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:257:1: rule__WMLRoot__Alternatives : ( ( ( rule__WMLRoot__TagsAssignment_0 ) ) | ( ( rule__WMLRoot__MacrosAssignment_1 ) ) );
     public final void rule__WMLRoot__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:289:1: ( ( ( rule__WMLRoot__TagsAssignment_0 ) ) | ( ( rule__WMLRoot__MacrosAssignment_1 ) ) )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:261:1: ( ( ( rule__WMLRoot__TagsAssignment_0 ) ) | ( ( rule__WMLRoot__MacrosAssignment_1 ) ) )
             int alt2=2;
             int LA2_0 = input.LA(1);
 
-            if ( (LA2_0==11) ) {
+            if ( (LA2_0==12) ) {
                 alt2=1;
             }
-            else if ( (LA2_0==RULE_RULE_MACRO) ) {
+            else if ( (LA2_0==RULE_MACRO) ) {
                 alt2=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("285:1: rule__WMLRoot__Alternatives : ( ( ( rule__WMLRoot__TagsAssignment_0 ) ) | ( ( rule__WMLRoot__MacrosAssignment_1 ) ) );", 2, 0, input);
+                    new NoViableAltException("257:1: rule__WMLRoot__Alternatives : ( ( ( rule__WMLRoot__TagsAssignment_0 ) ) | ( ( rule__WMLRoot__MacrosAssignment_1 ) ) );", 2, 0, input);
 
                 throw nvae;
             }
             switch (alt2) {
                 case 1 :
-                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:290:1: ( ( rule__WMLRoot__TagsAssignment_0 ) )
+                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:262:1: ( ( rule__WMLRoot__TagsAssignment_0 ) )
                     {
-                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:290:1: ( ( rule__WMLRoot__TagsAssignment_0 ) )
-                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:291:1: ( rule__WMLRoot__TagsAssignment_0 )
+                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:262:1: ( ( rule__WMLRoot__TagsAssignment_0 ) )
+                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:263:1: ( rule__WMLRoot__TagsAssignment_0 )
                     {
                      before(grammarAccess.getWMLRootAccess().getTagsAssignment_0()); 
-                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:292:1: ( rule__WMLRoot__TagsAssignment_0 )
-                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:292:2: rule__WMLRoot__TagsAssignment_0
+                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:264:1: ( rule__WMLRoot__TagsAssignment_0 )
+                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:264:2: rule__WMLRoot__TagsAssignment_0
                     {
-                    pushFollow(FOLLOW_rule__WMLRoot__TagsAssignment_0_in_rule__WMLRoot__Alternatives551);
+                    pushFollow(FOLLOW_rule__WMLRoot__TagsAssignment_0_in_rule__WMLRoot__Alternatives491);
                     rule__WMLRoot__TagsAssignment_0();
                     _fsp--;
 
@@ -730,16 +655,16 @@ public class InternalWMLParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 2 :
-                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:296:6: ( ( rule__WMLRoot__MacrosAssignment_1 ) )
+                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:268:6: ( ( rule__WMLRoot__MacrosAssignment_1 ) )
                     {
-                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:296:6: ( ( rule__WMLRoot__MacrosAssignment_1 ) )
-                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:297:1: ( rule__WMLRoot__MacrosAssignment_1 )
+                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:268:6: ( ( rule__WMLRoot__MacrosAssignment_1 ) )
+                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:269:1: ( rule__WMLRoot__MacrosAssignment_1 )
                     {
                      before(grammarAccess.getWMLRootAccess().getMacrosAssignment_1()); 
-                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:298:1: ( rule__WMLRoot__MacrosAssignment_1 )
-                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:298:2: rule__WMLRoot__MacrosAssignment_1
+                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:270:1: ( rule__WMLRoot__MacrosAssignment_1 )
+                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:270:2: rule__WMLRoot__MacrosAssignment_1
                     {
-                    pushFollow(FOLLOW_rule__WMLRoot__MacrosAssignment_1_in_rule__WMLRoot__Alternatives569);
+                    pushFollow(FOLLOW_rule__WMLRoot__MacrosAssignment_1_in_rule__WMLRoot__Alternatives509);
                     rule__WMLRoot__MacrosAssignment_1();
                     _fsp--;
 
@@ -771,16 +696,16 @@ public class InternalWMLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__WMLTag__Alternatives_4
-    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:307:1: rule__WMLTag__Alternatives_4 : ( ( ( rule__WMLTag__TagsAssignment_4_0 ) ) | ( ( rule__WMLTag__KeysAssignment_4_1 ) ) | ( ( rule__WMLTag__MacrosAssignment_4_2 ) ) );
+    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:279:1: rule__WMLTag__Alternatives_4 : ( ( ( rule__WMLTag__TagsAssignment_4_0 ) ) | ( ( rule__WMLTag__KeysAssignment_4_1 ) ) | ( ( rule__WMLTag__MacrosAssignment_4_2 ) ) );
     public final void rule__WMLTag__Alternatives_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:311:1: ( ( ( rule__WMLTag__TagsAssignment_4_0 ) ) | ( ( rule__WMLTag__KeysAssignment_4_1 ) ) | ( ( rule__WMLTag__MacrosAssignment_4_2 ) ) )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:283:1: ( ( ( rule__WMLTag__TagsAssignment_4_0 ) ) | ( ( rule__WMLTag__KeysAssignment_4_1 ) ) | ( ( rule__WMLTag__MacrosAssignment_4_2 ) ) )
             int alt3=3;
             switch ( input.LA(1) ) {
-            case 11:
+            case 12:
                 {
                 alt3=1;
                 }
@@ -790,30 +715,30 @@ public class InternalWMLParser extends AbstractInternalContentAssistParser {
                 alt3=2;
                 }
                 break;
-            case RULE_RULE_MACRO:
+            case RULE_MACRO:
                 {
                 alt3=3;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("307:1: rule__WMLTag__Alternatives_4 : ( ( ( rule__WMLTag__TagsAssignment_4_0 ) ) | ( ( rule__WMLTag__KeysAssignment_4_1 ) ) | ( ( rule__WMLTag__MacrosAssignment_4_2 ) ) );", 3, 0, input);
+                    new NoViableAltException("279:1: rule__WMLTag__Alternatives_4 : ( ( ( rule__WMLTag__TagsAssignment_4_0 ) ) | ( ( rule__WMLTag__KeysAssignment_4_1 ) ) | ( ( rule__WMLTag__MacrosAssignment_4_2 ) ) );", 3, 0, input);
 
                 throw nvae;
             }
 
             switch (alt3) {
                 case 1 :
-                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:312:1: ( ( rule__WMLTag__TagsAssignment_4_0 ) )
+                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:284:1: ( ( rule__WMLTag__TagsAssignment_4_0 ) )
                     {
-                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:312:1: ( ( rule__WMLTag__TagsAssignment_4_0 ) )
-                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:313:1: ( rule__WMLTag__TagsAssignment_4_0 )
+                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:284:1: ( ( rule__WMLTag__TagsAssignment_4_0 ) )
+                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:285:1: ( rule__WMLTag__TagsAssignment_4_0 )
                     {
                      before(grammarAccess.getWMLTagAccess().getTagsAssignment_4_0()); 
-                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:314:1: ( rule__WMLTag__TagsAssignment_4_0 )
-                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:314:2: rule__WMLTag__TagsAssignment_4_0
+                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:286:1: ( rule__WMLTag__TagsAssignment_4_0 )
+                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:286:2: rule__WMLTag__TagsAssignment_4_0
                     {
-                    pushFollow(FOLLOW_rule__WMLTag__TagsAssignment_4_0_in_rule__WMLTag__Alternatives_4602);
+                    pushFollow(FOLLOW_rule__WMLTag__TagsAssignment_4_0_in_rule__WMLTag__Alternatives_4542);
                     rule__WMLTag__TagsAssignment_4_0();
                     _fsp--;
 
@@ -828,16 +753,16 @@ public class InternalWMLParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 2 :
-                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:318:6: ( ( rule__WMLTag__KeysAssignment_4_1 ) )
+                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:290:6: ( ( rule__WMLTag__KeysAssignment_4_1 ) )
                     {
-                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:318:6: ( ( rule__WMLTag__KeysAssignment_4_1 ) )
-                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:319:1: ( rule__WMLTag__KeysAssignment_4_1 )
+                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:290:6: ( ( rule__WMLTag__KeysAssignment_4_1 ) )
+                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:291:1: ( rule__WMLTag__KeysAssignment_4_1 )
                     {
                      before(grammarAccess.getWMLTagAccess().getKeysAssignment_4_1()); 
-                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:320:1: ( rule__WMLTag__KeysAssignment_4_1 )
-                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:320:2: rule__WMLTag__KeysAssignment_4_1
+                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:292:1: ( rule__WMLTag__KeysAssignment_4_1 )
+                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:292:2: rule__WMLTag__KeysAssignment_4_1
                     {
-                    pushFollow(FOLLOW_rule__WMLTag__KeysAssignment_4_1_in_rule__WMLTag__Alternatives_4620);
+                    pushFollow(FOLLOW_rule__WMLTag__KeysAssignment_4_1_in_rule__WMLTag__Alternatives_4560);
                     rule__WMLTag__KeysAssignment_4_1();
                     _fsp--;
 
@@ -852,16 +777,16 @@ public class InternalWMLParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 3 :
-                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:324:6: ( ( rule__WMLTag__MacrosAssignment_4_2 ) )
+                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:296:6: ( ( rule__WMLTag__MacrosAssignment_4_2 ) )
                     {
-                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:324:6: ( ( rule__WMLTag__MacrosAssignment_4_2 ) )
-                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:325:1: ( rule__WMLTag__MacrosAssignment_4_2 )
+                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:296:6: ( ( rule__WMLTag__MacrosAssignment_4_2 ) )
+                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:297:1: ( rule__WMLTag__MacrosAssignment_4_2 )
                     {
                      before(grammarAccess.getWMLTagAccess().getMacrosAssignment_4_2()); 
-                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:326:1: ( rule__WMLTag__MacrosAssignment_4_2 )
-                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:326:2: rule__WMLTag__MacrosAssignment_4_2
+                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:298:1: ( rule__WMLTag__MacrosAssignment_4_2 )
+                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:298:2: rule__WMLTag__MacrosAssignment_4_2
                     {
-                    pushFollow(FOLLOW_rule__WMLTag__MacrosAssignment_4_2_in_rule__WMLTag__Alternatives_4638);
+                    pushFollow(FOLLOW_rule__WMLTag__MacrosAssignment_4_2_in_rule__WMLTag__Alternatives_4578);
                     rule__WMLTag__MacrosAssignment_4_2();
                     _fsp--;
 
@@ -893,49 +818,49 @@ public class InternalWMLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__WMLKeyValueRule__Alternatives
-    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:335:1: rule__WMLKeyValueRule__Alternatives : ( ( ruleWMLKeyValue ) | ( ruleWMLMacro ) | ( ruleWMLLuaCode ) );
+    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:307:1: rule__WMLKeyValueRule__Alternatives : ( ( ruleWMLKeyValue ) | ( ruleWMLMacro ) | ( ruleWMLLuaCode ) );
     public final void rule__WMLKeyValueRule__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:339:1: ( ( ruleWMLKeyValue ) | ( ruleWMLMacro ) | ( ruleWMLLuaCode ) )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:311:1: ( ( ruleWMLKeyValue ) | ( ruleWMLMacro ) | ( ruleWMLLuaCode ) )
             int alt4=3;
             switch ( input.LA(1) ) {
             case RULE_ID:
             case RULE_STRING:
             case RULE_ANY_OTHER:
-            case 16:
+            case 11:
                 {
                 alt4=1;
                 }
                 break;
-            case RULE_RULE_MACRO:
+            case RULE_MACRO:
                 {
                 alt4=2;
                 }
                 break;
-            case RULE_RULE_LUA_CODE:
+            case RULE_LUA_CODE:
                 {
                 alt4=3;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("335:1: rule__WMLKeyValueRule__Alternatives : ( ( ruleWMLKeyValue ) | ( ruleWMLMacro ) | ( ruleWMLLuaCode ) );", 4, 0, input);
+                    new NoViableAltException("307:1: rule__WMLKeyValueRule__Alternatives : ( ( ruleWMLKeyValue ) | ( ruleWMLMacro ) | ( ruleWMLLuaCode ) );", 4, 0, input);
 
                 throw nvae;
             }
 
             switch (alt4) {
                 case 1 :
-                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:340:1: ( ruleWMLKeyValue )
+                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:312:1: ( ruleWMLKeyValue )
                     {
-                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:340:1: ( ruleWMLKeyValue )
-                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:341:1: ruleWMLKeyValue
+                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:312:1: ( ruleWMLKeyValue )
+                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:313:1: ruleWMLKeyValue
                     {
                      before(grammarAccess.getWMLKeyValueRuleAccess().getWMLKeyValueParserRuleCall_0()); 
-                    pushFollow(FOLLOW_ruleWMLKeyValue_in_rule__WMLKeyValueRule__Alternatives671);
+                    pushFollow(FOLLOW_ruleWMLKeyValue_in_rule__WMLKeyValueRule__Alternatives611);
                     ruleWMLKeyValue();
                     _fsp--;
 
@@ -947,13 +872,13 @@ public class InternalWMLParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 2 :
-                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:346:6: ( ruleWMLMacro )
+                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:318:6: ( ruleWMLMacro )
                     {
-                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:346:6: ( ruleWMLMacro )
-                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:347:1: ruleWMLMacro
+                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:318:6: ( ruleWMLMacro )
+                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:319:1: ruleWMLMacro
                     {
                      before(grammarAccess.getWMLKeyValueRuleAccess().getWMLMacroParserRuleCall_1()); 
-                    pushFollow(FOLLOW_ruleWMLMacro_in_rule__WMLKeyValueRule__Alternatives688);
+                    pushFollow(FOLLOW_ruleWMLMacro_in_rule__WMLKeyValueRule__Alternatives628);
                     ruleWMLMacro();
                     _fsp--;
 
@@ -965,13 +890,13 @@ public class InternalWMLParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 3 :
-                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:352:6: ( ruleWMLLuaCode )
+                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:324:6: ( ruleWMLLuaCode )
                     {
-                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:352:6: ( ruleWMLLuaCode )
-                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:353:1: ruleWMLLuaCode
+                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:324:6: ( ruleWMLLuaCode )
+                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:325:1: ruleWMLLuaCode
                     {
                      before(grammarAccess.getWMLKeyValueRuleAccess().getWMLLuaCodeParserRuleCall_2()); 
-                    pushFollow(FOLLOW_ruleWMLLuaCode_in_rule__WMLKeyValueRule__Alternatives705);
+                    pushFollow(FOLLOW_ruleWMLLuaCode_in_rule__WMLKeyValueRule__Alternatives645);
                     ruleWMLLuaCode();
                     _fsp--;
 
@@ -1000,13 +925,13 @@ public class InternalWMLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__WMLKeyValue__ValueAlternatives_0
-    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:363:1: rule__WMLKeyValue__ValueAlternatives_0 : ( ( RULE_ID ) | ( RULE_STRING ) | ( RULE_ANY_OTHER ) | ( ruleT_STRING ) );
+    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:335:1: rule__WMLKeyValue__ValueAlternatives_0 : ( ( RULE_ID ) | ( RULE_STRING ) | ( RULE_ANY_OTHER ) | ( '+' ) );
     public final void rule__WMLKeyValue__ValueAlternatives_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:367:1: ( ( RULE_ID ) | ( RULE_STRING ) | ( RULE_ANY_OTHER ) | ( ruleT_STRING ) )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:339:1: ( ( RULE_ID ) | ( RULE_STRING ) | ( RULE_ANY_OTHER ) | ( '+' ) )
             int alt5=4;
             switch ( input.LA(1) ) {
             case RULE_ID:
@@ -1024,27 +949,27 @@ public class InternalWMLParser extends AbstractInternalContentAssistParser {
                 alt5=3;
                 }
                 break;
-            case 16:
+            case 11:
                 {
                 alt5=4;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("363:1: rule__WMLKeyValue__ValueAlternatives_0 : ( ( RULE_ID ) | ( RULE_STRING ) | ( RULE_ANY_OTHER ) | ( ruleT_STRING ) );", 5, 0, input);
+                    new NoViableAltException("335:1: rule__WMLKeyValue__ValueAlternatives_0 : ( ( RULE_ID ) | ( RULE_STRING ) | ( RULE_ANY_OTHER ) | ( '+' ) );", 5, 0, input);
 
                 throw nvae;
             }
 
             switch (alt5) {
                 case 1 :
-                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:368:1: ( RULE_ID )
+                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:340:1: ( RULE_ID )
                     {
-                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:368:1: ( RULE_ID )
-                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:369:1: RULE_ID
+                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:340:1: ( RULE_ID )
+                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:341:1: RULE_ID
                     {
                      before(grammarAccess.getWMLKeyValueAccess().getValueIDTerminalRuleCall_0_0()); 
-                    match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__WMLKeyValue__ValueAlternatives_0737); 
+                    match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__WMLKeyValue__ValueAlternatives_0677); 
                      after(grammarAccess.getWMLKeyValueAccess().getValueIDTerminalRuleCall_0_0()); 
 
                     }
@@ -1053,13 +978,13 @@ public class InternalWMLParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 2 :
-                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:374:6: ( RULE_STRING )
+                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:346:6: ( RULE_STRING )
                     {
-                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:374:6: ( RULE_STRING )
-                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:375:1: RULE_STRING
+                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:346:6: ( RULE_STRING )
+                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:347:1: RULE_STRING
                     {
                      before(grammarAccess.getWMLKeyValueAccess().getValueSTRINGTerminalRuleCall_0_1()); 
-                    match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__WMLKeyValue__ValueAlternatives_0754); 
+                    match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__WMLKeyValue__ValueAlternatives_0694); 
                      after(grammarAccess.getWMLKeyValueAccess().getValueSTRINGTerminalRuleCall_0_1()); 
 
                     }
@@ -1068,13 +993,13 @@ public class InternalWMLParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 3 :
-                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:380:6: ( RULE_ANY_OTHER )
+                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:352:6: ( RULE_ANY_OTHER )
                     {
-                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:380:6: ( RULE_ANY_OTHER )
-                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:381:1: RULE_ANY_OTHER
+                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:352:6: ( RULE_ANY_OTHER )
+                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:353:1: RULE_ANY_OTHER
                     {
                      before(grammarAccess.getWMLKeyValueAccess().getValueANY_OTHERTerminalRuleCall_0_2()); 
-                    match(input,RULE_ANY_OTHER,FOLLOW_RULE_ANY_OTHER_in_rule__WMLKeyValue__ValueAlternatives_0771); 
+                    match(input,RULE_ANY_OTHER,FOLLOW_RULE_ANY_OTHER_in_rule__WMLKeyValue__ValueAlternatives_0711); 
                      after(grammarAccess.getWMLKeyValueAccess().getValueANY_OTHERTerminalRuleCall_0_2()); 
 
                     }
@@ -1083,17 +1008,14 @@ public class InternalWMLParser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 4 :
-                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:386:6: ( ruleT_STRING )
+                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:358:6: ( '+' )
                     {
-                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:386:6: ( ruleT_STRING )
-                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:387:1: ruleT_STRING
+                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:358:6: ( '+' )
+                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:359:1: '+'
                     {
-                     before(grammarAccess.getWMLKeyValueAccess().getValueT_STRINGParserRuleCall_0_3()); 
-                    pushFollow(FOLLOW_ruleT_STRING_in_rule__WMLKeyValue__ValueAlternatives_0788);
-                    ruleT_STRING();
-                    _fsp--;
-
-                     after(grammarAccess.getWMLKeyValueAccess().getValueT_STRINGParserRuleCall_0_3()); 
+                     before(grammarAccess.getWMLKeyValueAccess().getValuePlusSignKeyword_0_3()); 
+                    match(input,11,FOLLOW_11_in_rule__WMLKeyValue__ValueAlternatives_0729); 
+                     after(grammarAccess.getWMLKeyValueAccess().getValuePlusSignKeyword_0_3()); 
 
                     }
 
@@ -1118,20 +1040,20 @@ public class InternalWMLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__WMLTag__Group__0
-    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:399:1: rule__WMLTag__Group__0 : rule__WMLTag__Group__0__Impl rule__WMLTag__Group__1 ;
+    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:373:1: rule__WMLTag__Group__0 : rule__WMLTag__Group__0__Impl rule__WMLTag__Group__1 ;
     public final void rule__WMLTag__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:403:1: ( rule__WMLTag__Group__0__Impl rule__WMLTag__Group__1 )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:404:2: rule__WMLTag__Group__0__Impl rule__WMLTag__Group__1
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:377:1: ( rule__WMLTag__Group__0__Impl rule__WMLTag__Group__1 )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:378:2: rule__WMLTag__Group__0__Impl rule__WMLTag__Group__1
             {
-            pushFollow(FOLLOW_rule__WMLTag__Group__0__Impl_in_rule__WMLTag__Group__0818);
+            pushFollow(FOLLOW_rule__WMLTag__Group__0__Impl_in_rule__WMLTag__Group__0761);
             rule__WMLTag__Group__0__Impl();
             _fsp--;
 
-            pushFollow(FOLLOW_rule__WMLTag__Group__1_in_rule__WMLTag__Group__0821);
+            pushFollow(FOLLOW_rule__WMLTag__Group__1_in_rule__WMLTag__Group__0764);
             rule__WMLTag__Group__1();
             _fsp--;
 
@@ -1154,20 +1076,20 @@ public class InternalWMLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__WMLTag__Group__0__Impl
-    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:411:1: rule__WMLTag__Group__0__Impl : ( '[' ) ;
+    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:385:1: rule__WMLTag__Group__0__Impl : ( '[' ) ;
     public final void rule__WMLTag__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:415:1: ( ( '[' ) )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:416:1: ( '[' )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:389:1: ( ( '[' ) )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:390:1: ( '[' )
             {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:416:1: ( '[' )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:417:1: '['
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:390:1: ( '[' )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:391:1: '['
             {
              before(grammarAccess.getWMLTagAccess().getLeftSquareBracketKeyword_0()); 
-            match(input,11,FOLLOW_11_in_rule__WMLTag__Group__0__Impl849); 
+            match(input,12,FOLLOW_12_in_rule__WMLTag__Group__0__Impl792); 
              after(grammarAccess.getWMLTagAccess().getLeftSquareBracketKeyword_0()); 
 
             }
@@ -1191,20 +1113,20 @@ public class InternalWMLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__WMLTag__Group__1
-    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:430:1: rule__WMLTag__Group__1 : rule__WMLTag__Group__1__Impl rule__WMLTag__Group__2 ;
+    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:404:1: rule__WMLTag__Group__1 : rule__WMLTag__Group__1__Impl rule__WMLTag__Group__2 ;
     public final void rule__WMLTag__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:434:1: ( rule__WMLTag__Group__1__Impl rule__WMLTag__Group__2 )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:435:2: rule__WMLTag__Group__1__Impl rule__WMLTag__Group__2
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:408:1: ( rule__WMLTag__Group__1__Impl rule__WMLTag__Group__2 )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:409:2: rule__WMLTag__Group__1__Impl rule__WMLTag__Group__2
             {
-            pushFollow(FOLLOW_rule__WMLTag__Group__1__Impl_in_rule__WMLTag__Group__1880);
+            pushFollow(FOLLOW_rule__WMLTag__Group__1__Impl_in_rule__WMLTag__Group__1823);
             rule__WMLTag__Group__1__Impl();
             _fsp--;
 
-            pushFollow(FOLLOW_rule__WMLTag__Group__2_in_rule__WMLTag__Group__1883);
+            pushFollow(FOLLOW_rule__WMLTag__Group__2_in_rule__WMLTag__Group__1826);
             rule__WMLTag__Group__2();
             _fsp--;
 
@@ -1227,31 +1149,31 @@ public class InternalWMLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__WMLTag__Group__1__Impl
-    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:442:1: rule__WMLTag__Group__1__Impl : ( ( rule__WMLTag__PlusAssignment_1 )? ) ;
+    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:416:1: rule__WMLTag__Group__1__Impl : ( ( rule__WMLTag__PlusAssignment_1 )? ) ;
     public final void rule__WMLTag__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:446:1: ( ( ( rule__WMLTag__PlusAssignment_1 )? ) )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:447:1: ( ( rule__WMLTag__PlusAssignment_1 )? )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:420:1: ( ( ( rule__WMLTag__PlusAssignment_1 )? ) )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:421:1: ( ( rule__WMLTag__PlusAssignment_1 )? )
             {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:447:1: ( ( rule__WMLTag__PlusAssignment_1 )? )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:448:1: ( rule__WMLTag__PlusAssignment_1 )?
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:421:1: ( ( rule__WMLTag__PlusAssignment_1 )? )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:422:1: ( rule__WMLTag__PlusAssignment_1 )?
             {
              before(grammarAccess.getWMLTagAccess().getPlusAssignment_1()); 
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:449:1: ( rule__WMLTag__PlusAssignment_1 )?
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:423:1: ( rule__WMLTag__PlusAssignment_1 )?
             int alt6=2;
             int LA6_0 = input.LA(1);
 
-            if ( (LA6_0==15) ) {
+            if ( (LA6_0==11) ) {
                 alt6=1;
             }
             switch (alt6) {
                 case 1 :
-                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:449:2: rule__WMLTag__PlusAssignment_1
+                    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:423:2: rule__WMLTag__PlusAssignment_1
                     {
-                    pushFollow(FOLLOW_rule__WMLTag__PlusAssignment_1_in_rule__WMLTag__Group__1__Impl910);
+                    pushFollow(FOLLOW_rule__WMLTag__PlusAssignment_1_in_rule__WMLTag__Group__1__Impl853);
                     rule__WMLTag__PlusAssignment_1();
                     _fsp--;
 
@@ -1284,20 +1206,20 @@ public class InternalWMLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__WMLTag__Group__2
-    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:459:1: rule__WMLTag__Group__2 : rule__WMLTag__Group__2__Impl rule__WMLTag__Group__3 ;
+    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:433:1: rule__WMLTag__Group__2 : rule__WMLTag__Group__2__Impl rule__WMLTag__Group__3 ;
     public final void rule__WMLTag__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:463:1: ( rule__WMLTag__Group__2__Impl rule__WMLTag__Group__3 )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:464:2: rule__WMLTag__Group__2__Impl rule__WMLTag__Group__3
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:437:1: ( rule__WMLTag__Group__2__Impl rule__WMLTag__Group__3 )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:438:2: rule__WMLTag__Group__2__Impl rule__WMLTag__Group__3
             {
-            pushFollow(FOLLOW_rule__WMLTag__Group__2__Impl_in_rule__WMLTag__Group__2941);
+            pushFollow(FOLLOW_rule__WMLTag__Group__2__Impl_in_rule__WMLTag__Group__2884);
             rule__WMLTag__Group__2__Impl();
             _fsp--;
 
-            pushFollow(FOLLOW_rule__WMLTag__Group__3_in_rule__WMLTag__Group__2944);
+            pushFollow(FOLLOW_rule__WMLTag__Group__3_in_rule__WMLTag__Group__2887);
             rule__WMLTag__Group__3();
             _fsp--;
 
@@ -1320,23 +1242,23 @@ public class InternalWMLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__WMLTag__Group__2__Impl
-    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:471:1: rule__WMLTag__Group__2__Impl : ( ( rule__WMLTag__NameAssignment_2 ) ) ;
+    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:445:1: rule__WMLTag__Group__2__Impl : ( ( rule__WMLTag__NameAssignment_2 ) ) ;
     public final void rule__WMLTag__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:475:1: ( ( ( rule__WMLTag__NameAssignment_2 ) ) )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:476:1: ( ( rule__WMLTag__NameAssignment_2 ) )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:449:1: ( ( ( rule__WMLTag__NameAssignment_2 ) ) )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:450:1: ( ( rule__WMLTag__NameAssignment_2 ) )
             {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:476:1: ( ( rule__WMLTag__NameAssignment_2 ) )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:477:1: ( rule__WMLTag__NameAssignment_2 )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:450:1: ( ( rule__WMLTag__NameAssignment_2 ) )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:451:1: ( rule__WMLTag__NameAssignment_2 )
             {
              before(grammarAccess.getWMLTagAccess().getNameAssignment_2()); 
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:478:1: ( rule__WMLTag__NameAssignment_2 )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:478:2: rule__WMLTag__NameAssignment_2
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:452:1: ( rule__WMLTag__NameAssignment_2 )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:452:2: rule__WMLTag__NameAssignment_2
             {
-            pushFollow(FOLLOW_rule__WMLTag__NameAssignment_2_in_rule__WMLTag__Group__2__Impl971);
+            pushFollow(FOLLOW_rule__WMLTag__NameAssignment_2_in_rule__WMLTag__Group__2__Impl914);
             rule__WMLTag__NameAssignment_2();
             _fsp--;
 
@@ -1366,20 +1288,20 @@ public class InternalWMLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__WMLTag__Group__3
-    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:488:1: rule__WMLTag__Group__3 : rule__WMLTag__Group__3__Impl rule__WMLTag__Group__4 ;
+    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:462:1: rule__WMLTag__Group__3 : rule__WMLTag__Group__3__Impl rule__WMLTag__Group__4 ;
     public final void rule__WMLTag__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:492:1: ( rule__WMLTag__Group__3__Impl rule__WMLTag__Group__4 )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:493:2: rule__WMLTag__Group__3__Impl rule__WMLTag__Group__4
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:466:1: ( rule__WMLTag__Group__3__Impl rule__WMLTag__Group__4 )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:467:2: rule__WMLTag__Group__3__Impl rule__WMLTag__Group__4
             {
-            pushFollow(FOLLOW_rule__WMLTag__Group__3__Impl_in_rule__WMLTag__Group__31001);
+            pushFollow(FOLLOW_rule__WMLTag__Group__3__Impl_in_rule__WMLTag__Group__3944);
             rule__WMLTag__Group__3__Impl();
             _fsp--;
 
-            pushFollow(FOLLOW_rule__WMLTag__Group__4_in_rule__WMLTag__Group__31004);
+            pushFollow(FOLLOW_rule__WMLTag__Group__4_in_rule__WMLTag__Group__3947);
             rule__WMLTag__Group__4();
             _fsp--;
 
@@ -1402,20 +1324,20 @@ public class InternalWMLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__WMLTag__Group__3__Impl
-    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:500:1: rule__WMLTag__Group__3__Impl : ( ']' ) ;
+    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:474:1: rule__WMLTag__Group__3__Impl : ( ']' ) ;
     public final void rule__WMLTag__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:504:1: ( ( ']' ) )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:505:1: ( ']' )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:478:1: ( ( ']' ) )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:479:1: ( ']' )
             {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:505:1: ( ']' )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:506:1: ']'
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:479:1: ( ']' )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:480:1: ']'
             {
              before(grammarAccess.getWMLTagAccess().getRightSquareBracketKeyword_3()); 
-            match(input,12,FOLLOW_12_in_rule__WMLTag__Group__3__Impl1032); 
+            match(input,13,FOLLOW_13_in_rule__WMLTag__Group__3__Impl975); 
              after(grammarAccess.getWMLTagAccess().getRightSquareBracketKeyword_3()); 
 
             }
@@ -1439,20 +1361,20 @@ public class InternalWMLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__WMLTag__Group__4
-    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:519:1: rule__WMLTag__Group__4 : rule__WMLTag__Group__4__Impl rule__WMLTag__Group__5 ;
+    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:493:1: rule__WMLTag__Group__4 : rule__WMLTag__Group__4__Impl rule__WMLTag__Group__5 ;
     public final void rule__WMLTag__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:523:1: ( rule__WMLTag__Group__4__Impl rule__WMLTag__Group__5 )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:524:2: rule__WMLTag__Group__4__Impl rule__WMLTag__Group__5
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:497:1: ( rule__WMLTag__Group__4__Impl rule__WMLTag__Group__5 )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:498:2: rule__WMLTag__Group__4__Impl rule__WMLTag__Group__5
             {
-            pushFollow(FOLLOW_rule__WMLTag__Group__4__Impl_in_rule__WMLTag__Group__41063);
+            pushFollow(FOLLOW_rule__WMLTag__Group__4__Impl_in_rule__WMLTag__Group__41006);
             rule__WMLTag__Group__4__Impl();
             _fsp--;
 
-            pushFollow(FOLLOW_rule__WMLTag__Group__5_in_rule__WMLTag__Group__41066);
+            pushFollow(FOLLOW_rule__WMLTag__Group__5_in_rule__WMLTag__Group__41009);
             rule__WMLTag__Group__5();
             _fsp--;
 
@@ -1475,35 +1397,35 @@ public class InternalWMLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__WMLTag__Group__4__Impl
-    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:531:1: rule__WMLTag__Group__4__Impl : ( ( rule__WMLTag__Alternatives_4 )* ) ;
+    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:505:1: rule__WMLTag__Group__4__Impl : ( ( rule__WMLTag__Alternatives_4 )* ) ;
     public final void rule__WMLTag__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:535:1: ( ( ( rule__WMLTag__Alternatives_4 )* ) )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:536:1: ( ( rule__WMLTag__Alternatives_4 )* )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:509:1: ( ( ( rule__WMLTag__Alternatives_4 )* ) )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:510:1: ( ( rule__WMLTag__Alternatives_4 )* )
             {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:536:1: ( ( rule__WMLTag__Alternatives_4 )* )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:537:1: ( rule__WMLTag__Alternatives_4 )*
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:510:1: ( ( rule__WMLTag__Alternatives_4 )* )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:511:1: ( rule__WMLTag__Alternatives_4 )*
             {
              before(grammarAccess.getWMLTagAccess().getAlternatives_4()); 
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:538:1: ( rule__WMLTag__Alternatives_4 )*
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:512:1: ( rule__WMLTag__Alternatives_4 )*
             loop7:
             do {
                 int alt7=2;
                 int LA7_0 = input.LA(1);
 
-                if ( (LA7_0==RULE_ID||LA7_0==RULE_RULE_MACRO||LA7_0==11) ) {
+                if ( (LA7_0==RULE_ID||LA7_0==RULE_MACRO||LA7_0==12) ) {
                     alt7=1;
                 }
 
 
                 switch (alt7) {
             	case 1 :
-            	    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:538:2: rule__WMLTag__Alternatives_4
+            	    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:512:2: rule__WMLTag__Alternatives_4
             	    {
-            	    pushFollow(FOLLOW_rule__WMLTag__Alternatives_4_in_rule__WMLTag__Group__4__Impl1093);
+            	    pushFollow(FOLLOW_rule__WMLTag__Alternatives_4_in_rule__WMLTag__Group__4__Impl1036);
             	    rule__WMLTag__Alternatives_4();
             	    _fsp--;
 
@@ -1539,20 +1461,20 @@ public class InternalWMLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__WMLTag__Group__5
-    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:548:1: rule__WMLTag__Group__5 : rule__WMLTag__Group__5__Impl rule__WMLTag__Group__6 ;
+    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:522:1: rule__WMLTag__Group__5 : rule__WMLTag__Group__5__Impl rule__WMLTag__Group__6 ;
     public final void rule__WMLTag__Group__5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:552:1: ( rule__WMLTag__Group__5__Impl rule__WMLTag__Group__6 )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:553:2: rule__WMLTag__Group__5__Impl rule__WMLTag__Group__6
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:526:1: ( rule__WMLTag__Group__5__Impl rule__WMLTag__Group__6 )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:527:2: rule__WMLTag__Group__5__Impl rule__WMLTag__Group__6
             {
-            pushFollow(FOLLOW_rule__WMLTag__Group__5__Impl_in_rule__WMLTag__Group__51124);
+            pushFollow(FOLLOW_rule__WMLTag__Group__5__Impl_in_rule__WMLTag__Group__51067);
             rule__WMLTag__Group__5__Impl();
             _fsp--;
 
-            pushFollow(FOLLOW_rule__WMLTag__Group__6_in_rule__WMLTag__Group__51127);
+            pushFollow(FOLLOW_rule__WMLTag__Group__6_in_rule__WMLTag__Group__51070);
             rule__WMLTag__Group__6();
             _fsp--;
 
@@ -1575,20 +1497,20 @@ public class InternalWMLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__WMLTag__Group__5__Impl
-    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:560:1: rule__WMLTag__Group__5__Impl : ( '[/' ) ;
+    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:534:1: rule__WMLTag__Group__5__Impl : ( '[/' ) ;
     public final void rule__WMLTag__Group__5__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:564:1: ( ( '[/' ) )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:565:1: ( '[/' )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:538:1: ( ( '[/' ) )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:539:1: ( '[/' )
             {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:565:1: ( '[/' )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:566:1: '[/'
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:539:1: ( '[/' )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:540:1: '[/'
             {
              before(grammarAccess.getWMLTagAccess().getLeftSquareBracketSolidusKeyword_5()); 
-            match(input,13,FOLLOW_13_in_rule__WMLTag__Group__5__Impl1155); 
+            match(input,14,FOLLOW_14_in_rule__WMLTag__Group__5__Impl1098); 
              after(grammarAccess.getWMLTagAccess().getLeftSquareBracketSolidusKeyword_5()); 
 
             }
@@ -1612,20 +1534,20 @@ public class InternalWMLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__WMLTag__Group__6
-    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:579:1: rule__WMLTag__Group__6 : rule__WMLTag__Group__6__Impl rule__WMLTag__Group__7 ;
+    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:553:1: rule__WMLTag__Group__6 : rule__WMLTag__Group__6__Impl rule__WMLTag__Group__7 ;
     public final void rule__WMLTag__Group__6() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:583:1: ( rule__WMLTag__Group__6__Impl rule__WMLTag__Group__7 )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:584:2: rule__WMLTag__Group__6__Impl rule__WMLTag__Group__7
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:557:1: ( rule__WMLTag__Group__6__Impl rule__WMLTag__Group__7 )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:558:2: rule__WMLTag__Group__6__Impl rule__WMLTag__Group__7
             {
-            pushFollow(FOLLOW_rule__WMLTag__Group__6__Impl_in_rule__WMLTag__Group__61186);
+            pushFollow(FOLLOW_rule__WMLTag__Group__6__Impl_in_rule__WMLTag__Group__61129);
             rule__WMLTag__Group__6__Impl();
             _fsp--;
 
-            pushFollow(FOLLOW_rule__WMLTag__Group__7_in_rule__WMLTag__Group__61189);
+            pushFollow(FOLLOW_rule__WMLTag__Group__7_in_rule__WMLTag__Group__61132);
             rule__WMLTag__Group__7();
             _fsp--;
 
@@ -1648,23 +1570,23 @@ public class InternalWMLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__WMLTag__Group__6__Impl
-    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:591:1: rule__WMLTag__Group__6__Impl : ( ( rule__WMLTag__EndNameAssignment_6 ) ) ;
+    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:565:1: rule__WMLTag__Group__6__Impl : ( ( rule__WMLTag__EndNameAssignment_6 ) ) ;
     public final void rule__WMLTag__Group__6__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:595:1: ( ( ( rule__WMLTag__EndNameAssignment_6 ) ) )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:596:1: ( ( rule__WMLTag__EndNameAssignment_6 ) )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:569:1: ( ( ( rule__WMLTag__EndNameAssignment_6 ) ) )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:570:1: ( ( rule__WMLTag__EndNameAssignment_6 ) )
             {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:596:1: ( ( rule__WMLTag__EndNameAssignment_6 ) )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:597:1: ( rule__WMLTag__EndNameAssignment_6 )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:570:1: ( ( rule__WMLTag__EndNameAssignment_6 ) )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:571:1: ( rule__WMLTag__EndNameAssignment_6 )
             {
              before(grammarAccess.getWMLTagAccess().getEndNameAssignment_6()); 
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:598:1: ( rule__WMLTag__EndNameAssignment_6 )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:598:2: rule__WMLTag__EndNameAssignment_6
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:572:1: ( rule__WMLTag__EndNameAssignment_6 )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:572:2: rule__WMLTag__EndNameAssignment_6
             {
-            pushFollow(FOLLOW_rule__WMLTag__EndNameAssignment_6_in_rule__WMLTag__Group__6__Impl1216);
+            pushFollow(FOLLOW_rule__WMLTag__EndNameAssignment_6_in_rule__WMLTag__Group__6__Impl1159);
             rule__WMLTag__EndNameAssignment_6();
             _fsp--;
 
@@ -1694,16 +1616,16 @@ public class InternalWMLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__WMLTag__Group__7
-    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:608:1: rule__WMLTag__Group__7 : rule__WMLTag__Group__7__Impl ;
+    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:582:1: rule__WMLTag__Group__7 : rule__WMLTag__Group__7__Impl ;
     public final void rule__WMLTag__Group__7() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:612:1: ( rule__WMLTag__Group__7__Impl )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:613:2: rule__WMLTag__Group__7__Impl
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:586:1: ( rule__WMLTag__Group__7__Impl )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:587:2: rule__WMLTag__Group__7__Impl
             {
-            pushFollow(FOLLOW_rule__WMLTag__Group__7__Impl_in_rule__WMLTag__Group__71246);
+            pushFollow(FOLLOW_rule__WMLTag__Group__7__Impl_in_rule__WMLTag__Group__71189);
             rule__WMLTag__Group__7__Impl();
             _fsp--;
 
@@ -1726,20 +1648,20 @@ public class InternalWMLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__WMLTag__Group__7__Impl
-    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:619:1: rule__WMLTag__Group__7__Impl : ( ']' ) ;
+    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:593:1: rule__WMLTag__Group__7__Impl : ( ']' ) ;
     public final void rule__WMLTag__Group__7__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:623:1: ( ( ']' ) )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:624:1: ( ']' )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:597:1: ( ( ']' ) )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:598:1: ( ']' )
             {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:624:1: ( ']' )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:625:1: ']'
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:598:1: ( ']' )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:599:1: ']'
             {
              before(grammarAccess.getWMLTagAccess().getRightSquareBracketKeyword_7()); 
-            match(input,12,FOLLOW_12_in_rule__WMLTag__Group__7__Impl1274); 
+            match(input,13,FOLLOW_13_in_rule__WMLTag__Group__7__Impl1217); 
              after(grammarAccess.getWMLTagAccess().getRightSquareBracketKeyword_7()); 
 
             }
@@ -1763,20 +1685,20 @@ public class InternalWMLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__WMLKey__Group__0
-    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:654:1: rule__WMLKey__Group__0 : rule__WMLKey__Group__0__Impl rule__WMLKey__Group__1 ;
+    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:628:1: rule__WMLKey__Group__0 : rule__WMLKey__Group__0__Impl rule__WMLKey__Group__1 ;
     public final void rule__WMLKey__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:658:1: ( rule__WMLKey__Group__0__Impl rule__WMLKey__Group__1 )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:659:2: rule__WMLKey__Group__0__Impl rule__WMLKey__Group__1
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:632:1: ( rule__WMLKey__Group__0__Impl rule__WMLKey__Group__1 )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:633:2: rule__WMLKey__Group__0__Impl rule__WMLKey__Group__1
             {
-            pushFollow(FOLLOW_rule__WMLKey__Group__0__Impl_in_rule__WMLKey__Group__01321);
+            pushFollow(FOLLOW_rule__WMLKey__Group__0__Impl_in_rule__WMLKey__Group__01264);
             rule__WMLKey__Group__0__Impl();
             _fsp--;
 
-            pushFollow(FOLLOW_rule__WMLKey__Group__1_in_rule__WMLKey__Group__01324);
+            pushFollow(FOLLOW_rule__WMLKey__Group__1_in_rule__WMLKey__Group__01267);
             rule__WMLKey__Group__1();
             _fsp--;
 
@@ -1799,23 +1721,23 @@ public class InternalWMLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__WMLKey__Group__0__Impl
-    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:666:1: rule__WMLKey__Group__0__Impl : ( ( rule__WMLKey__NameAssignment_0 ) ) ;
+    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:640:1: rule__WMLKey__Group__0__Impl : ( ( rule__WMLKey__NameAssignment_0 ) ) ;
     public final void rule__WMLKey__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:670:1: ( ( ( rule__WMLKey__NameAssignment_0 ) ) )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:671:1: ( ( rule__WMLKey__NameAssignment_0 ) )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:644:1: ( ( ( rule__WMLKey__NameAssignment_0 ) ) )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:645:1: ( ( rule__WMLKey__NameAssignment_0 ) )
             {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:671:1: ( ( rule__WMLKey__NameAssignment_0 ) )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:672:1: ( rule__WMLKey__NameAssignment_0 )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:645:1: ( ( rule__WMLKey__NameAssignment_0 ) )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:646:1: ( rule__WMLKey__NameAssignment_0 )
             {
              before(grammarAccess.getWMLKeyAccess().getNameAssignment_0()); 
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:673:1: ( rule__WMLKey__NameAssignment_0 )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:673:2: rule__WMLKey__NameAssignment_0
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:647:1: ( rule__WMLKey__NameAssignment_0 )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:647:2: rule__WMLKey__NameAssignment_0
             {
-            pushFollow(FOLLOW_rule__WMLKey__NameAssignment_0_in_rule__WMLKey__Group__0__Impl1351);
+            pushFollow(FOLLOW_rule__WMLKey__NameAssignment_0_in_rule__WMLKey__Group__0__Impl1294);
             rule__WMLKey__NameAssignment_0();
             _fsp--;
 
@@ -1845,20 +1767,20 @@ public class InternalWMLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__WMLKey__Group__1
-    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:683:1: rule__WMLKey__Group__1 : rule__WMLKey__Group__1__Impl rule__WMLKey__Group__2 ;
+    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:657:1: rule__WMLKey__Group__1 : rule__WMLKey__Group__1__Impl rule__WMLKey__Group__2 ;
     public final void rule__WMLKey__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:687:1: ( rule__WMLKey__Group__1__Impl rule__WMLKey__Group__2 )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:688:2: rule__WMLKey__Group__1__Impl rule__WMLKey__Group__2
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:661:1: ( rule__WMLKey__Group__1__Impl rule__WMLKey__Group__2 )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:662:2: rule__WMLKey__Group__1__Impl rule__WMLKey__Group__2
             {
-            pushFollow(FOLLOW_rule__WMLKey__Group__1__Impl_in_rule__WMLKey__Group__11381);
+            pushFollow(FOLLOW_rule__WMLKey__Group__1__Impl_in_rule__WMLKey__Group__11324);
             rule__WMLKey__Group__1__Impl();
             _fsp--;
 
-            pushFollow(FOLLOW_rule__WMLKey__Group__2_in_rule__WMLKey__Group__11384);
+            pushFollow(FOLLOW_rule__WMLKey__Group__2_in_rule__WMLKey__Group__11327);
             rule__WMLKey__Group__2();
             _fsp--;
 
@@ -1881,20 +1803,20 @@ public class InternalWMLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__WMLKey__Group__1__Impl
-    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:695:1: rule__WMLKey__Group__1__Impl : ( '=' ) ;
+    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:669:1: rule__WMLKey__Group__1__Impl : ( '=' ) ;
     public final void rule__WMLKey__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:699:1: ( ( '=' ) )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:700:1: ( '=' )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:673:1: ( ( '=' ) )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:674:1: ( '=' )
             {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:700:1: ( '=' )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:701:1: '='
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:674:1: ( '=' )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:675:1: '='
             {
              before(grammarAccess.getWMLKeyAccess().getEqualsSignKeyword_1()); 
-            match(input,14,FOLLOW_14_in_rule__WMLKey__Group__1__Impl1412); 
+            match(input,15,FOLLOW_15_in_rule__WMLKey__Group__1__Impl1355); 
              after(grammarAccess.getWMLKeyAccess().getEqualsSignKeyword_1()); 
 
             }
@@ -1918,21 +1840,17 @@ public class InternalWMLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__WMLKey__Group__2
-    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:714:1: rule__WMLKey__Group__2 : rule__WMLKey__Group__2__Impl rule__WMLKey__Group__3 ;
+    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:688:1: rule__WMLKey__Group__2 : rule__WMLKey__Group__2__Impl ;
     public final void rule__WMLKey__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:718:1: ( rule__WMLKey__Group__2__Impl rule__WMLKey__Group__3 )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:719:2: rule__WMLKey__Group__2__Impl rule__WMLKey__Group__3
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:692:1: ( rule__WMLKey__Group__2__Impl )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:693:2: rule__WMLKey__Group__2__Impl
             {
-            pushFollow(FOLLOW_rule__WMLKey__Group__2__Impl_in_rule__WMLKey__Group__21443);
+            pushFollow(FOLLOW_rule__WMLKey__Group__2__Impl_in_rule__WMLKey__Group__21386);
             rule__WMLKey__Group__2__Impl();
-            _fsp--;
-
-            pushFollow(FOLLOW_rule__WMLKey__Group__3_in_rule__WMLKey__Group__21446);
-            rule__WMLKey__Group__3();
             _fsp--;
 
 
@@ -1954,26 +1872,26 @@ public class InternalWMLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__WMLKey__Group__2__Impl
-    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:726:1: rule__WMLKey__Group__2__Impl : ( ( ( rule__WMLKey__ValueAssignment_2 ) ) ( ( rule__WMLKey__ValueAssignment_2 )* ) ) ;
+    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:699:1: rule__WMLKey__Group__2__Impl : ( ( ( rule__WMLKey__ValueAssignment_2 ) ) ( ( rule__WMLKey__ValueAssignment_2 )* ) ) ;
     public final void rule__WMLKey__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:730:1: ( ( ( ( rule__WMLKey__ValueAssignment_2 ) ) ( ( rule__WMLKey__ValueAssignment_2 )* ) ) )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:731:1: ( ( ( rule__WMLKey__ValueAssignment_2 ) ) ( ( rule__WMLKey__ValueAssignment_2 )* ) )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:703:1: ( ( ( ( rule__WMLKey__ValueAssignment_2 ) ) ( ( rule__WMLKey__ValueAssignment_2 )* ) ) )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:704:1: ( ( ( rule__WMLKey__ValueAssignment_2 ) ) ( ( rule__WMLKey__ValueAssignment_2 )* ) )
             {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:731:1: ( ( ( rule__WMLKey__ValueAssignment_2 ) ) ( ( rule__WMLKey__ValueAssignment_2 )* ) )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:732:1: ( ( rule__WMLKey__ValueAssignment_2 ) ) ( ( rule__WMLKey__ValueAssignment_2 )* )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:704:1: ( ( ( rule__WMLKey__ValueAssignment_2 ) ) ( ( rule__WMLKey__ValueAssignment_2 )* ) )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:705:1: ( ( rule__WMLKey__ValueAssignment_2 ) ) ( ( rule__WMLKey__ValueAssignment_2 )* )
             {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:732:1: ( ( rule__WMLKey__ValueAssignment_2 ) )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:733:1: ( rule__WMLKey__ValueAssignment_2 )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:705:1: ( ( rule__WMLKey__ValueAssignment_2 ) )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:706:1: ( rule__WMLKey__ValueAssignment_2 )
             {
              before(grammarAccess.getWMLKeyAccess().getValueAssignment_2()); 
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:734:1: ( rule__WMLKey__ValueAssignment_2 )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:734:2: rule__WMLKey__ValueAssignment_2
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:707:1: ( rule__WMLKey__ValueAssignment_2 )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:707:2: rule__WMLKey__ValueAssignment_2
             {
-            pushFollow(FOLLOW_rule__WMLKey__ValueAssignment_2_in_rule__WMLKey__Group__2__Impl1475);
+            pushFollow(FOLLOW_rule__WMLKey__ValueAssignment_2_in_rule__WMLKey__Group__2__Impl1415);
             rule__WMLKey__ValueAssignment_2();
             _fsp--;
 
@@ -1984,11 +1902,11 @@ public class InternalWMLParser extends AbstractInternalContentAssistParser {
 
             }
 
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:737:1: ( ( rule__WMLKey__ValueAssignment_2 )* )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:738:1: ( rule__WMLKey__ValueAssignment_2 )*
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:710:1: ( ( rule__WMLKey__ValueAssignment_2 )* )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:711:1: ( rule__WMLKey__ValueAssignment_2 )*
             {
              before(grammarAccess.getWMLKeyAccess().getValueAssignment_2()); 
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:739:1: ( rule__WMLKey__ValueAssignment_2 )*
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:712:1: ( rule__WMLKey__ValueAssignment_2 )*
             loop8:
             do {
                 int alt8=2;
@@ -1997,22 +1915,22 @@ public class InternalWMLParser extends AbstractInternalContentAssistParser {
                 if ( (LA8_0==RULE_ID) ) {
                     int LA8_2 = input.LA(2);
 
-                    if ( (LA8_2==EOF||(LA8_2>=RULE_ID && LA8_2<=RULE_RULE_LUA_CODE)||LA8_2==11||LA8_2==13||(LA8_2>=15 && LA8_2<=16)) ) {
+                    if ( (LA8_2==EOF||(LA8_2>=RULE_ID && LA8_2<=RULE_LUA_CODE)||(LA8_2>=11 && LA8_2<=12)||LA8_2==14) ) {
                         alt8=1;
                     }
 
 
                 }
-                else if ( ((LA8_0>=RULE_STRING && LA8_0<=RULE_RULE_LUA_CODE)||LA8_0==16) ) {
+                else if ( ((LA8_0>=RULE_STRING && LA8_0<=RULE_LUA_CODE)||LA8_0==11) ) {
                     alt8=1;
                 }
 
 
                 switch (alt8) {
             	case 1 :
-            	    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:739:2: rule__WMLKey__ValueAssignment_2
+            	    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:712:2: rule__WMLKey__ValueAssignment_2
             	    {
-            	    pushFollow(FOLLOW_rule__WMLKey__ValueAssignment_2_in_rule__WMLKey__Group__2__Impl1487);
+            	    pushFollow(FOLLOW_rule__WMLKey__ValueAssignment_2_in_rule__WMLKey__Group__2__Impl1427);
             	    rule__WMLKey__ValueAssignment_2();
             	    _fsp--;
 
@@ -2050,410 +1968,21 @@ public class InternalWMLParser extends AbstractInternalContentAssistParser {
     // $ANTLR end rule__WMLKey__Group__2__Impl
 
 
-    // $ANTLR start rule__WMLKey__Group__3
-    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:750:1: rule__WMLKey__Group__3 : rule__WMLKey__Group__3__Impl ;
-    public final void rule__WMLKey__Group__3() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:754:1: ( rule__WMLKey__Group__3__Impl )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:755:2: rule__WMLKey__Group__3__Impl
-            {
-            pushFollow(FOLLOW_rule__WMLKey__Group__3__Impl_in_rule__WMLKey__Group__31520);
-            rule__WMLKey__Group__3__Impl();
-            _fsp--;
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end rule__WMLKey__Group__3
-
-
-    // $ANTLR start rule__WMLKey__Group__3__Impl
-    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:761:1: rule__WMLKey__Group__3__Impl : ( ( rule__WMLKey__Group_3__0 )* ) ;
-    public final void rule__WMLKey__Group__3__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:765:1: ( ( ( rule__WMLKey__Group_3__0 )* ) )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:766:1: ( ( rule__WMLKey__Group_3__0 )* )
-            {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:766:1: ( ( rule__WMLKey__Group_3__0 )* )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:767:1: ( rule__WMLKey__Group_3__0 )*
-            {
-             before(grammarAccess.getWMLKeyAccess().getGroup_3()); 
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:768:1: ( rule__WMLKey__Group_3__0 )*
-            loop9:
-            do {
-                int alt9=2;
-                int LA9_0 = input.LA(1);
-
-                if ( (LA9_0==15) ) {
-                    alt9=1;
-                }
-
-
-                switch (alt9) {
-            	case 1 :
-            	    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:768:2: rule__WMLKey__Group_3__0
-            	    {
-            	    pushFollow(FOLLOW_rule__WMLKey__Group_3__0_in_rule__WMLKey__Group__3__Impl1547);
-            	    rule__WMLKey__Group_3__0();
-            	    _fsp--;
-
-
-            	    }
-            	    break;
-
-            	default :
-            	    break loop9;
-                }
-            } while (true);
-
-             after(grammarAccess.getWMLKeyAccess().getGroup_3()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end rule__WMLKey__Group__3__Impl
-
-
-    // $ANTLR start rule__WMLKey__Group_3__0
-    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:786:1: rule__WMLKey__Group_3__0 : rule__WMLKey__Group_3__0__Impl rule__WMLKey__Group_3__1 ;
-    public final void rule__WMLKey__Group_3__0() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:790:1: ( rule__WMLKey__Group_3__0__Impl rule__WMLKey__Group_3__1 )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:791:2: rule__WMLKey__Group_3__0__Impl rule__WMLKey__Group_3__1
-            {
-            pushFollow(FOLLOW_rule__WMLKey__Group_3__0__Impl_in_rule__WMLKey__Group_3__01586);
-            rule__WMLKey__Group_3__0__Impl();
-            _fsp--;
-
-            pushFollow(FOLLOW_rule__WMLKey__Group_3__1_in_rule__WMLKey__Group_3__01589);
-            rule__WMLKey__Group_3__1();
-            _fsp--;
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end rule__WMLKey__Group_3__0
-
-
-    // $ANTLR start rule__WMLKey__Group_3__0__Impl
-    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:798:1: rule__WMLKey__Group_3__0__Impl : ( '+' ) ;
-    public final void rule__WMLKey__Group_3__0__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:802:1: ( ( '+' ) )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:803:1: ( '+' )
-            {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:803:1: ( '+' )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:804:1: '+'
-            {
-             before(grammarAccess.getWMLKeyAccess().getPlusSignKeyword_3_0()); 
-            match(input,15,FOLLOW_15_in_rule__WMLKey__Group_3__0__Impl1617); 
-             after(grammarAccess.getWMLKeyAccess().getPlusSignKeyword_3_0()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end rule__WMLKey__Group_3__0__Impl
-
-
-    // $ANTLR start rule__WMLKey__Group_3__1
-    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:817:1: rule__WMLKey__Group_3__1 : rule__WMLKey__Group_3__1__Impl ;
-    public final void rule__WMLKey__Group_3__1() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:821:1: ( rule__WMLKey__Group_3__1__Impl )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:822:2: rule__WMLKey__Group_3__1__Impl
-            {
-            pushFollow(FOLLOW_rule__WMLKey__Group_3__1__Impl_in_rule__WMLKey__Group_3__11648);
-            rule__WMLKey__Group_3__1__Impl();
-            _fsp--;
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end rule__WMLKey__Group_3__1
-
-
-    // $ANTLR start rule__WMLKey__Group_3__1__Impl
-    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:828:1: rule__WMLKey__Group_3__1__Impl : ( ( rule__WMLKey__ExtraMacrosAssignment_3_1 ) ) ;
-    public final void rule__WMLKey__Group_3__1__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:832:1: ( ( ( rule__WMLKey__ExtraMacrosAssignment_3_1 ) ) )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:833:1: ( ( rule__WMLKey__ExtraMacrosAssignment_3_1 ) )
-            {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:833:1: ( ( rule__WMLKey__ExtraMacrosAssignment_3_1 ) )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:834:1: ( rule__WMLKey__ExtraMacrosAssignment_3_1 )
-            {
-             before(grammarAccess.getWMLKeyAccess().getExtraMacrosAssignment_3_1()); 
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:835:1: ( rule__WMLKey__ExtraMacrosAssignment_3_1 )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:835:2: rule__WMLKey__ExtraMacrosAssignment_3_1
-            {
-            pushFollow(FOLLOW_rule__WMLKey__ExtraMacrosAssignment_3_1_in_rule__WMLKey__Group_3__1__Impl1675);
-            rule__WMLKey__ExtraMacrosAssignment_3_1();
-            _fsp--;
-
-
-            }
-
-             after(grammarAccess.getWMLKeyAccess().getExtraMacrosAssignment_3_1()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end rule__WMLKey__Group_3__1__Impl
-
-
-    // $ANTLR start rule__T_STRING__Group__0
-    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:849:1: rule__T_STRING__Group__0 : rule__T_STRING__Group__0__Impl rule__T_STRING__Group__1 ;
-    public final void rule__T_STRING__Group__0() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:853:1: ( rule__T_STRING__Group__0__Impl rule__T_STRING__Group__1 )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:854:2: rule__T_STRING__Group__0__Impl rule__T_STRING__Group__1
-            {
-            pushFollow(FOLLOW_rule__T_STRING__Group__0__Impl_in_rule__T_STRING__Group__01709);
-            rule__T_STRING__Group__0__Impl();
-            _fsp--;
-
-            pushFollow(FOLLOW_rule__T_STRING__Group__1_in_rule__T_STRING__Group__01712);
-            rule__T_STRING__Group__1();
-            _fsp--;
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end rule__T_STRING__Group__0
-
-
-    // $ANTLR start rule__T_STRING__Group__0__Impl
-    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:861:1: rule__T_STRING__Group__0__Impl : ( '_' ) ;
-    public final void rule__T_STRING__Group__0__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:865:1: ( ( '_' ) )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:866:1: ( '_' )
-            {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:866:1: ( '_' )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:867:1: '_'
-            {
-             before(grammarAccess.getT_STRINGAccess().get_Keyword_0()); 
-            match(input,16,FOLLOW_16_in_rule__T_STRING__Group__0__Impl1740); 
-             after(grammarAccess.getT_STRINGAccess().get_Keyword_0()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end rule__T_STRING__Group__0__Impl
-
-
-    // $ANTLR start rule__T_STRING__Group__1
-    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:880:1: rule__T_STRING__Group__1 : rule__T_STRING__Group__1__Impl ;
-    public final void rule__T_STRING__Group__1() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:884:1: ( rule__T_STRING__Group__1__Impl )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:885:2: rule__T_STRING__Group__1__Impl
-            {
-            pushFollow(FOLLOW_rule__T_STRING__Group__1__Impl_in_rule__T_STRING__Group__11771);
-            rule__T_STRING__Group__1__Impl();
-            _fsp--;
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end rule__T_STRING__Group__1
-
-
-    // $ANTLR start rule__T_STRING__Group__1__Impl
-    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:891:1: rule__T_STRING__Group__1__Impl : ( RULE_STRING ) ;
-    public final void rule__T_STRING__Group__1__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:895:1: ( ( RULE_STRING ) )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:896:1: ( RULE_STRING )
-            {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:896:1: ( RULE_STRING )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:897:1: RULE_STRING
-            {
-             before(grammarAccess.getT_STRINGAccess().getSTRINGTerminalRuleCall_1()); 
-            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__T_STRING__Group__1__Impl1798); 
-             after(grammarAccess.getT_STRINGAccess().getSTRINGTerminalRuleCall_1()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end rule__T_STRING__Group__1__Impl
-
-
     // $ANTLR start rule__WMLRoot__TagsAssignment_0
-    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:913:1: rule__WMLRoot__TagsAssignment_0 : ( ruleWMLTag ) ;
+    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:730:1: rule__WMLRoot__TagsAssignment_0 : ( ruleWMLTag ) ;
     public final void rule__WMLRoot__TagsAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:917:1: ( ( ruleWMLTag ) )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:918:1: ( ruleWMLTag )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:734:1: ( ( ruleWMLTag ) )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:735:1: ( ruleWMLTag )
             {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:918:1: ( ruleWMLTag )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:919:1: ruleWMLTag
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:735:1: ( ruleWMLTag )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:736:1: ruleWMLTag
             {
              before(grammarAccess.getWMLRootAccess().getTagsWMLTagParserRuleCall_0_0()); 
-            pushFollow(FOLLOW_ruleWMLTag_in_rule__WMLRoot__TagsAssignment_01836);
+            pushFollow(FOLLOW_ruleWMLTag_in_rule__WMLRoot__TagsAssignment_01471);
             ruleWMLTag();
             _fsp--;
 
@@ -2480,20 +2009,20 @@ public class InternalWMLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__WMLRoot__MacrosAssignment_1
-    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:928:1: rule__WMLRoot__MacrosAssignment_1 : ( ruleWMLMacro ) ;
+    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:745:1: rule__WMLRoot__MacrosAssignment_1 : ( ruleWMLMacro ) ;
     public final void rule__WMLRoot__MacrosAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:932:1: ( ( ruleWMLMacro ) )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:933:1: ( ruleWMLMacro )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:749:1: ( ( ruleWMLMacro ) )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:750:1: ( ruleWMLMacro )
             {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:933:1: ( ruleWMLMacro )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:934:1: ruleWMLMacro
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:750:1: ( ruleWMLMacro )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:751:1: ruleWMLMacro
             {
              before(grammarAccess.getWMLRootAccess().getMacrosWMLMacroParserRuleCall_1_0()); 
-            pushFollow(FOLLOW_ruleWMLMacro_in_rule__WMLRoot__MacrosAssignment_11867);
+            pushFollow(FOLLOW_ruleWMLMacro_in_rule__WMLRoot__MacrosAssignment_11502);
             ruleWMLMacro();
             _fsp--;
 
@@ -2520,24 +2049,24 @@ public class InternalWMLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__WMLTag__PlusAssignment_1
-    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:943:1: rule__WMLTag__PlusAssignment_1 : ( ( '+' ) ) ;
+    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:760:1: rule__WMLTag__PlusAssignment_1 : ( ( '+' ) ) ;
     public final void rule__WMLTag__PlusAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:947:1: ( ( ( '+' ) ) )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:948:1: ( ( '+' ) )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:764:1: ( ( ( '+' ) ) )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:765:1: ( ( '+' ) )
             {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:948:1: ( ( '+' ) )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:949:1: ( '+' )
-            {
-             before(grammarAccess.getWMLTagAccess().getPlusPlusSignKeyword_1_0()); 
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:950:1: ( '+' )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:951:1: '+'
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:765:1: ( ( '+' ) )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:766:1: ( '+' )
             {
              before(grammarAccess.getWMLTagAccess().getPlusPlusSignKeyword_1_0()); 
-            match(input,15,FOLLOW_15_in_rule__WMLTag__PlusAssignment_11903); 
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:767:1: ( '+' )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:768:1: '+'
+            {
+             before(grammarAccess.getWMLTagAccess().getPlusPlusSignKeyword_1_0()); 
+            match(input,11,FOLLOW_11_in_rule__WMLTag__PlusAssignment_11538); 
              after(grammarAccess.getWMLTagAccess().getPlusPlusSignKeyword_1_0()); 
 
             }
@@ -2565,20 +2094,20 @@ public class InternalWMLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__WMLTag__NameAssignment_2
-    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:966:1: rule__WMLTag__NameAssignment_2 : ( RULE_ID ) ;
+    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:783:1: rule__WMLTag__NameAssignment_2 : ( RULE_ID ) ;
     public final void rule__WMLTag__NameAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:970:1: ( ( RULE_ID ) )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:971:1: ( RULE_ID )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:787:1: ( ( RULE_ID ) )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:788:1: ( RULE_ID )
             {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:971:1: ( RULE_ID )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:972:1: RULE_ID
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:788:1: ( RULE_ID )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:789:1: RULE_ID
             {
              before(grammarAccess.getWMLTagAccess().getNameIDTerminalRuleCall_2_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__WMLTag__NameAssignment_21942); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__WMLTag__NameAssignment_21577); 
              after(grammarAccess.getWMLTagAccess().getNameIDTerminalRuleCall_2_0()); 
 
             }
@@ -2602,20 +2131,20 @@ public class InternalWMLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__WMLTag__TagsAssignment_4_0
-    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:981:1: rule__WMLTag__TagsAssignment_4_0 : ( ruleWMLTag ) ;
+    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:798:1: rule__WMLTag__TagsAssignment_4_0 : ( ruleWMLTag ) ;
     public final void rule__WMLTag__TagsAssignment_4_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:985:1: ( ( ruleWMLTag ) )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:986:1: ( ruleWMLTag )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:802:1: ( ( ruleWMLTag ) )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:803:1: ( ruleWMLTag )
             {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:986:1: ( ruleWMLTag )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:987:1: ruleWMLTag
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:803:1: ( ruleWMLTag )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:804:1: ruleWMLTag
             {
              before(grammarAccess.getWMLTagAccess().getTagsWMLTagParserRuleCall_4_0_0()); 
-            pushFollow(FOLLOW_ruleWMLTag_in_rule__WMLTag__TagsAssignment_4_01973);
+            pushFollow(FOLLOW_ruleWMLTag_in_rule__WMLTag__TagsAssignment_4_01608);
             ruleWMLTag();
             _fsp--;
 
@@ -2642,20 +2171,20 @@ public class InternalWMLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__WMLTag__KeysAssignment_4_1
-    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:996:1: rule__WMLTag__KeysAssignment_4_1 : ( ruleWMLKey ) ;
+    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:813:1: rule__WMLTag__KeysAssignment_4_1 : ( ruleWMLKey ) ;
     public final void rule__WMLTag__KeysAssignment_4_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:1000:1: ( ( ruleWMLKey ) )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:1001:1: ( ruleWMLKey )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:817:1: ( ( ruleWMLKey ) )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:818:1: ( ruleWMLKey )
             {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:1001:1: ( ruleWMLKey )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:1002:1: ruleWMLKey
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:818:1: ( ruleWMLKey )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:819:1: ruleWMLKey
             {
              before(grammarAccess.getWMLTagAccess().getKeysWMLKeyParserRuleCall_4_1_0()); 
-            pushFollow(FOLLOW_ruleWMLKey_in_rule__WMLTag__KeysAssignment_4_12004);
+            pushFollow(FOLLOW_ruleWMLKey_in_rule__WMLTag__KeysAssignment_4_11639);
             ruleWMLKey();
             _fsp--;
 
@@ -2682,20 +2211,20 @@ public class InternalWMLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__WMLTag__MacrosAssignment_4_2
-    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:1011:1: rule__WMLTag__MacrosAssignment_4_2 : ( ruleWMLMacro ) ;
+    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:828:1: rule__WMLTag__MacrosAssignment_4_2 : ( ruleWMLMacro ) ;
     public final void rule__WMLTag__MacrosAssignment_4_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:1015:1: ( ( ruleWMLMacro ) )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:1016:1: ( ruleWMLMacro )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:832:1: ( ( ruleWMLMacro ) )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:833:1: ( ruleWMLMacro )
             {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:1016:1: ( ruleWMLMacro )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:1017:1: ruleWMLMacro
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:833:1: ( ruleWMLMacro )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:834:1: ruleWMLMacro
             {
              before(grammarAccess.getWMLTagAccess().getMacrosWMLMacroParserRuleCall_4_2_0()); 
-            pushFollow(FOLLOW_ruleWMLMacro_in_rule__WMLTag__MacrosAssignment_4_22035);
+            pushFollow(FOLLOW_ruleWMLMacro_in_rule__WMLTag__MacrosAssignment_4_21670);
             ruleWMLMacro();
             _fsp--;
 
@@ -2722,20 +2251,20 @@ public class InternalWMLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__WMLTag__EndNameAssignment_6
-    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:1026:1: rule__WMLTag__EndNameAssignment_6 : ( RULE_ID ) ;
+    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:843:1: rule__WMLTag__EndNameAssignment_6 : ( RULE_ID ) ;
     public final void rule__WMLTag__EndNameAssignment_6() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:1030:1: ( ( RULE_ID ) )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:1031:1: ( RULE_ID )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:847:1: ( ( RULE_ID ) )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:848:1: ( RULE_ID )
             {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:1031:1: ( RULE_ID )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:1032:1: RULE_ID
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:848:1: ( RULE_ID )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:849:1: RULE_ID
             {
              before(grammarAccess.getWMLTagAccess().getEndNameIDTerminalRuleCall_6_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__WMLTag__EndNameAssignment_62066); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__WMLTag__EndNameAssignment_61701); 
              after(grammarAccess.getWMLTagAccess().getEndNameIDTerminalRuleCall_6_0()); 
 
             }
@@ -2759,20 +2288,20 @@ public class InternalWMLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__WMLKey__NameAssignment_0
-    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:1041:1: rule__WMLKey__NameAssignment_0 : ( RULE_ID ) ;
+    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:858:1: rule__WMLKey__NameAssignment_0 : ( RULE_ID ) ;
     public final void rule__WMLKey__NameAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:1045:1: ( ( RULE_ID ) )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:1046:1: ( RULE_ID )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:862:1: ( ( RULE_ID ) )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:863:1: ( RULE_ID )
             {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:1046:1: ( RULE_ID )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:1047:1: RULE_ID
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:863:1: ( RULE_ID )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:864:1: RULE_ID
             {
              before(grammarAccess.getWMLKeyAccess().getNameIDTerminalRuleCall_0_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__WMLKey__NameAssignment_02097); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__WMLKey__NameAssignment_01732); 
              after(grammarAccess.getWMLKeyAccess().getNameIDTerminalRuleCall_0_0()); 
 
             }
@@ -2796,20 +2325,20 @@ public class InternalWMLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__WMLKey__ValueAssignment_2
-    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:1056:1: rule__WMLKey__ValueAssignment_2 : ( ruleWMLKeyValueRule ) ;
+    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:873:1: rule__WMLKey__ValueAssignment_2 : ( ruleWMLKeyValueRule ) ;
     public final void rule__WMLKey__ValueAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:1060:1: ( ( ruleWMLKeyValueRule ) )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:1061:1: ( ruleWMLKeyValueRule )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:877:1: ( ( ruleWMLKeyValueRule ) )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:878:1: ( ruleWMLKeyValueRule )
             {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:1061:1: ( ruleWMLKeyValueRule )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:1062:1: ruleWMLKeyValueRule
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:878:1: ( ruleWMLKeyValueRule )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:879:1: ruleWMLKeyValueRule
             {
              before(grammarAccess.getWMLKeyAccess().getValueWMLKeyValueRuleParserRuleCall_2_0()); 
-            pushFollow(FOLLOW_ruleWMLKeyValueRule_in_rule__WMLKey__ValueAssignment_22128);
+            pushFollow(FOLLOW_ruleWMLKeyValueRule_in_rule__WMLKey__ValueAssignment_21763);
             ruleWMLKeyValueRule();
             _fsp--;
 
@@ -2835,64 +2364,24 @@ public class InternalWMLParser extends AbstractInternalContentAssistParser {
     // $ANTLR end rule__WMLKey__ValueAssignment_2
 
 
-    // $ANTLR start rule__WMLKey__ExtraMacrosAssignment_3_1
-    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:1071:1: rule__WMLKey__ExtraMacrosAssignment_3_1 : ( ruleWMLMacro ) ;
-    public final void rule__WMLKey__ExtraMacrosAssignment_3_1() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:1075:1: ( ( ruleWMLMacro ) )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:1076:1: ( ruleWMLMacro )
-            {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:1076:1: ( ruleWMLMacro )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:1077:1: ruleWMLMacro
-            {
-             before(grammarAccess.getWMLKeyAccess().getExtraMacrosWMLMacroParserRuleCall_3_1_0()); 
-            pushFollow(FOLLOW_ruleWMLMacro_in_rule__WMLKey__ExtraMacrosAssignment_3_12159);
-            ruleWMLMacro();
-            _fsp--;
-
-             after(grammarAccess.getWMLKeyAccess().getExtraMacrosWMLMacroParserRuleCall_3_1_0()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end rule__WMLKey__ExtraMacrosAssignment_3_1
-
-
     // $ANTLR start rule__WMLKeyValue__ValueAssignment
-    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:1086:1: rule__WMLKeyValue__ValueAssignment : ( ( rule__WMLKeyValue__ValueAlternatives_0 ) ) ;
+    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:888:1: rule__WMLKeyValue__ValueAssignment : ( ( rule__WMLKeyValue__ValueAlternatives_0 ) ) ;
     public final void rule__WMLKeyValue__ValueAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:1090:1: ( ( ( rule__WMLKeyValue__ValueAlternatives_0 ) ) )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:1091:1: ( ( rule__WMLKeyValue__ValueAlternatives_0 ) )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:892:1: ( ( ( rule__WMLKeyValue__ValueAlternatives_0 ) ) )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:893:1: ( ( rule__WMLKeyValue__ValueAlternatives_0 ) )
             {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:1091:1: ( ( rule__WMLKeyValue__ValueAlternatives_0 ) )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:1092:1: ( rule__WMLKeyValue__ValueAlternatives_0 )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:893:1: ( ( rule__WMLKeyValue__ValueAlternatives_0 ) )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:894:1: ( rule__WMLKeyValue__ValueAlternatives_0 )
             {
              before(grammarAccess.getWMLKeyValueAccess().getValueAlternatives_0()); 
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:1093:1: ( rule__WMLKeyValue__ValueAlternatives_0 )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:1093:2: rule__WMLKeyValue__ValueAlternatives_0
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:895:1: ( rule__WMLKeyValue__ValueAlternatives_0 )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:895:2: rule__WMLKeyValue__ValueAlternatives_0
             {
-            pushFollow(FOLLOW_rule__WMLKeyValue__ValueAlternatives_0_in_rule__WMLKeyValue__ValueAssignment2190);
+            pushFollow(FOLLOW_rule__WMLKeyValue__ValueAlternatives_0_in_rule__WMLKeyValue__ValueAssignment1794);
             rule__WMLKeyValue__ValueAlternatives_0();
             _fsp--;
 
@@ -2922,21 +2411,21 @@ public class InternalWMLParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start rule__WMLMacro__NameAssignment
-    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:1102:1: rule__WMLMacro__NameAssignment : ( RULE_RULE_MACRO ) ;
+    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:904:1: rule__WMLMacro__NameAssignment : ( RULE_MACRO ) ;
     public final void rule__WMLMacro__NameAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:1106:1: ( ( RULE_RULE_MACRO ) )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:1107:1: ( RULE_RULE_MACRO )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:908:1: ( ( RULE_MACRO ) )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:909:1: ( RULE_MACRO )
             {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:1107:1: ( RULE_RULE_MACRO )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:1108:1: RULE_RULE_MACRO
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:909:1: ( RULE_MACRO )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:910:1: RULE_MACRO
             {
-             before(grammarAccess.getWMLMacroAccess().getNameRULE_MACROTerminalRuleCall_0()); 
-            match(input,RULE_RULE_MACRO,FOLLOW_RULE_RULE_MACRO_in_rule__WMLMacro__NameAssignment2223); 
-             after(grammarAccess.getWMLMacroAccess().getNameRULE_MACROTerminalRuleCall_0()); 
+             before(grammarAccess.getWMLMacroAccess().getNameMACROTerminalRuleCall_0()); 
+            match(input,RULE_MACRO,FOLLOW_RULE_MACRO_in_rule__WMLMacro__NameAssignment1827); 
+             after(grammarAccess.getWMLMacroAccess().getNameMACROTerminalRuleCall_0()); 
 
             }
 
@@ -2958,22 +2447,22 @@ public class InternalWMLParser extends AbstractInternalContentAssistParser {
     // $ANTLR end rule__WMLMacro__NameAssignment
 
 
-    // $ANTLR start rule__WMLLuaCode__CodeAssignment
-    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:1117:1: rule__WMLLuaCode__CodeAssignment : ( RULE_RULE_LUA_CODE ) ;
-    public final void rule__WMLLuaCode__CodeAssignment() throws RecognitionException {
+    // $ANTLR start rule__WMLLuaCode__ValueAssignment
+    // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:919:1: rule__WMLLuaCode__ValueAssignment : ( RULE_LUA_CODE ) ;
+    public final void rule__WMLLuaCode__ValueAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:1121:1: ( ( RULE_RULE_LUA_CODE ) )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:1122:1: ( RULE_RULE_LUA_CODE )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:923:1: ( ( RULE_LUA_CODE ) )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:924:1: ( RULE_LUA_CODE )
             {
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:1122:1: ( RULE_RULE_LUA_CODE )
-            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:1123:1: RULE_RULE_LUA_CODE
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:924:1: ( RULE_LUA_CODE )
+            // ../org.wesnoth.wml.ui/src-gen/org/wesnoth/ui/contentassist/antlr/internal/InternalWML.g:925:1: RULE_LUA_CODE
             {
-             before(grammarAccess.getWMLLuaCodeAccess().getCodeRULE_LUA_CODETerminalRuleCall_0()); 
-            match(input,RULE_RULE_LUA_CODE,FOLLOW_RULE_RULE_LUA_CODE_in_rule__WMLLuaCode__CodeAssignment2254); 
-             after(grammarAccess.getWMLLuaCodeAccess().getCodeRULE_LUA_CODETerminalRuleCall_0()); 
+             before(grammarAccess.getWMLLuaCodeAccess().getValueLUA_CODETerminalRuleCall_0()); 
+            match(input,RULE_LUA_CODE,FOLLOW_RULE_LUA_CODE_in_rule__WMLLuaCode__ValueAssignment1858); 
+             after(grammarAccess.getWMLLuaCodeAccess().getValueLUA_CODETerminalRuleCall_0()); 
 
             }
 
@@ -2992,14 +2481,14 @@ public class InternalWMLParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end rule__WMLLuaCode__CodeAssignment
+    // $ANTLR end rule__WMLLuaCode__ValueAssignment
 
 
  
 
     public static final BitSet FOLLOW_ruleWMLRoot_in_entryRuleWMLRoot61 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleWMLRoot68 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__WMLRoot__Alternatives_in_ruleWMLRoot94 = new BitSet(new long[]{0x0000000000000882L});
+    public static final BitSet FOLLOW_rule__WMLRoot__Alternatives_in_ruleWMLRoot94 = new BitSet(new long[]{0x0000000000001082L});
     public static final BitSet FOLLOW_ruleWMLTag_in_entryRuleWMLTag122 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleWMLTag129 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__WMLTag__Group__0_in_ruleWMLTag155 = new BitSet(new long[]{0x0000000000000002L});
@@ -3017,80 +2506,63 @@ public class InternalWMLParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_rule__WMLMacro__NameAssignment_in_ruleWMLMacro395 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleWMLLuaCode_in_entryRuleWMLLuaCode422 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleWMLLuaCode429 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__WMLLuaCode__CodeAssignment_in_ruleWMLLuaCode455 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleT_STRING_in_entryRuleT_STRING482 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleT_STRING489 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__T_STRING__Group__0_in_ruleT_STRING515 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__WMLRoot__TagsAssignment_0_in_rule__WMLRoot__Alternatives551 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__WMLRoot__MacrosAssignment_1_in_rule__WMLRoot__Alternatives569 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__WMLTag__TagsAssignment_4_0_in_rule__WMLTag__Alternatives_4602 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__WMLTag__KeysAssignment_4_1_in_rule__WMLTag__Alternatives_4620 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__WMLTag__MacrosAssignment_4_2_in_rule__WMLTag__Alternatives_4638 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleWMLKeyValue_in_rule__WMLKeyValueRule__Alternatives671 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleWMLMacro_in_rule__WMLKeyValueRule__Alternatives688 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleWMLLuaCode_in_rule__WMLKeyValueRule__Alternatives705 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__WMLKeyValue__ValueAlternatives_0737 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__WMLKeyValue__ValueAlternatives_0754 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ANY_OTHER_in_rule__WMLKeyValue__ValueAlternatives_0771 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleT_STRING_in_rule__WMLKeyValue__ValueAlternatives_0788 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__WMLTag__Group__0__Impl_in_rule__WMLTag__Group__0818 = new BitSet(new long[]{0x0000000000008010L});
-    public static final BitSet FOLLOW_rule__WMLTag__Group__1_in_rule__WMLTag__Group__0821 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_11_in_rule__WMLTag__Group__0__Impl849 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__WMLTag__Group__1__Impl_in_rule__WMLTag__Group__1880 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__WMLTag__Group__2_in_rule__WMLTag__Group__1883 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__WMLTag__PlusAssignment_1_in_rule__WMLTag__Group__1__Impl910 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__WMLTag__Group__2__Impl_in_rule__WMLTag__Group__2941 = new BitSet(new long[]{0x0000000000001000L});
-    public static final BitSet FOLLOW_rule__WMLTag__Group__3_in_rule__WMLTag__Group__2944 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__WMLTag__NameAssignment_2_in_rule__WMLTag__Group__2__Impl971 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__WMLTag__Group__3__Impl_in_rule__WMLTag__Group__31001 = new BitSet(new long[]{0x0000000000002890L});
-    public static final BitSet FOLLOW_rule__WMLTag__Group__4_in_rule__WMLTag__Group__31004 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_12_in_rule__WMLTag__Group__3__Impl1032 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__WMLTag__Group__4__Impl_in_rule__WMLTag__Group__41063 = new BitSet(new long[]{0x0000000000002000L});
-    public static final BitSet FOLLOW_rule__WMLTag__Group__5_in_rule__WMLTag__Group__41066 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__WMLTag__Alternatives_4_in_rule__WMLTag__Group__4__Impl1093 = new BitSet(new long[]{0x0000000000000892L});
-    public static final BitSet FOLLOW_rule__WMLTag__Group__5__Impl_in_rule__WMLTag__Group__51124 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__WMLTag__Group__6_in_rule__WMLTag__Group__51127 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_13_in_rule__WMLTag__Group__5__Impl1155 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__WMLTag__Group__6__Impl_in_rule__WMLTag__Group__61186 = new BitSet(new long[]{0x0000000000001000L});
-    public static final BitSet FOLLOW_rule__WMLTag__Group__7_in_rule__WMLTag__Group__61189 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__WMLTag__EndNameAssignment_6_in_rule__WMLTag__Group__6__Impl1216 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__WMLTag__Group__7__Impl_in_rule__WMLTag__Group__71246 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_12_in_rule__WMLTag__Group__7__Impl1274 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__WMLKey__Group__0__Impl_in_rule__WMLKey__Group__01321 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_rule__WMLKey__Group__1_in_rule__WMLKey__Group__01324 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__WMLKey__NameAssignment_0_in_rule__WMLKey__Group__0__Impl1351 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__WMLKey__Group__1__Impl_in_rule__WMLKey__Group__11381 = new BitSet(new long[]{0x00000000000101F0L});
-    public static final BitSet FOLLOW_rule__WMLKey__Group__2_in_rule__WMLKey__Group__11384 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_14_in_rule__WMLKey__Group__1__Impl1412 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__WMLKey__Group__2__Impl_in_rule__WMLKey__Group__21443 = new BitSet(new long[]{0x0000000000008002L});
-    public static final BitSet FOLLOW_rule__WMLKey__Group__3_in_rule__WMLKey__Group__21446 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__WMLKey__ValueAssignment_2_in_rule__WMLKey__Group__2__Impl1475 = new BitSet(new long[]{0x00000000000101F2L});
-    public static final BitSet FOLLOW_rule__WMLKey__ValueAssignment_2_in_rule__WMLKey__Group__2__Impl1487 = new BitSet(new long[]{0x00000000000101F2L});
-    public static final BitSet FOLLOW_rule__WMLKey__Group__3__Impl_in_rule__WMLKey__Group__31520 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__WMLKey__Group_3__0_in_rule__WMLKey__Group__3__Impl1547 = new BitSet(new long[]{0x0000000000008002L});
-    public static final BitSet FOLLOW_rule__WMLKey__Group_3__0__Impl_in_rule__WMLKey__Group_3__01586 = new BitSet(new long[]{0x0000000000000080L});
-    public static final BitSet FOLLOW_rule__WMLKey__Group_3__1_in_rule__WMLKey__Group_3__01589 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_15_in_rule__WMLKey__Group_3__0__Impl1617 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__WMLKey__Group_3__1__Impl_in_rule__WMLKey__Group_3__11648 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__WMLKey__ExtraMacrosAssignment_3_1_in_rule__WMLKey__Group_3__1__Impl1675 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__T_STRING__Group__0__Impl_in_rule__T_STRING__Group__01709 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_rule__T_STRING__Group__1_in_rule__T_STRING__Group__01712 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_16_in_rule__T_STRING__Group__0__Impl1740 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__T_STRING__Group__1__Impl_in_rule__T_STRING__Group__11771 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__T_STRING__Group__1__Impl1798 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleWMLTag_in_rule__WMLRoot__TagsAssignment_01836 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleWMLMacro_in_rule__WMLRoot__MacrosAssignment_11867 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_15_in_rule__WMLTag__PlusAssignment_11903 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__WMLTag__NameAssignment_21942 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleWMLTag_in_rule__WMLTag__TagsAssignment_4_01973 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleWMLKey_in_rule__WMLTag__KeysAssignment_4_12004 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleWMLMacro_in_rule__WMLTag__MacrosAssignment_4_22035 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__WMLTag__EndNameAssignment_62066 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__WMLKey__NameAssignment_02097 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleWMLKeyValueRule_in_rule__WMLKey__ValueAssignment_22128 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleWMLMacro_in_rule__WMLKey__ExtraMacrosAssignment_3_12159 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__WMLKeyValue__ValueAlternatives_0_in_rule__WMLKeyValue__ValueAssignment2190 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_RULE_MACRO_in_rule__WMLMacro__NameAssignment2223 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_RULE_LUA_CODE_in_rule__WMLLuaCode__CodeAssignment2254 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__WMLLuaCode__ValueAssignment_in_ruleWMLLuaCode455 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__WMLRoot__TagsAssignment_0_in_rule__WMLRoot__Alternatives491 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__WMLRoot__MacrosAssignment_1_in_rule__WMLRoot__Alternatives509 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__WMLTag__TagsAssignment_4_0_in_rule__WMLTag__Alternatives_4542 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__WMLTag__KeysAssignment_4_1_in_rule__WMLTag__Alternatives_4560 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__WMLTag__MacrosAssignment_4_2_in_rule__WMLTag__Alternatives_4578 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleWMLKeyValue_in_rule__WMLKeyValueRule__Alternatives611 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleWMLMacro_in_rule__WMLKeyValueRule__Alternatives628 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleWMLLuaCode_in_rule__WMLKeyValueRule__Alternatives645 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__WMLKeyValue__ValueAlternatives_0677 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__WMLKeyValue__ValueAlternatives_0694 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ANY_OTHER_in_rule__WMLKeyValue__ValueAlternatives_0711 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_11_in_rule__WMLKeyValue__ValueAlternatives_0729 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__WMLTag__Group__0__Impl_in_rule__WMLTag__Group__0761 = new BitSet(new long[]{0x0000000000000810L});
+    public static final BitSet FOLLOW_rule__WMLTag__Group__1_in_rule__WMLTag__Group__0764 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_12_in_rule__WMLTag__Group__0__Impl792 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__WMLTag__Group__1__Impl_in_rule__WMLTag__Group__1823 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__WMLTag__Group__2_in_rule__WMLTag__Group__1826 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__WMLTag__PlusAssignment_1_in_rule__WMLTag__Group__1__Impl853 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__WMLTag__Group__2__Impl_in_rule__WMLTag__Group__2884 = new BitSet(new long[]{0x0000000000002000L});
+    public static final BitSet FOLLOW_rule__WMLTag__Group__3_in_rule__WMLTag__Group__2887 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__WMLTag__NameAssignment_2_in_rule__WMLTag__Group__2__Impl914 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__WMLTag__Group__3__Impl_in_rule__WMLTag__Group__3944 = new BitSet(new long[]{0x0000000000005090L});
+    public static final BitSet FOLLOW_rule__WMLTag__Group__4_in_rule__WMLTag__Group__3947 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_13_in_rule__WMLTag__Group__3__Impl975 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__WMLTag__Group__4__Impl_in_rule__WMLTag__Group__41006 = new BitSet(new long[]{0x0000000000004000L});
+    public static final BitSet FOLLOW_rule__WMLTag__Group__5_in_rule__WMLTag__Group__41009 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__WMLTag__Alternatives_4_in_rule__WMLTag__Group__4__Impl1036 = new BitSet(new long[]{0x0000000000001092L});
+    public static final BitSet FOLLOW_rule__WMLTag__Group__5__Impl_in_rule__WMLTag__Group__51067 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__WMLTag__Group__6_in_rule__WMLTag__Group__51070 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_14_in_rule__WMLTag__Group__5__Impl1098 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__WMLTag__Group__6__Impl_in_rule__WMLTag__Group__61129 = new BitSet(new long[]{0x0000000000002000L});
+    public static final BitSet FOLLOW_rule__WMLTag__Group__7_in_rule__WMLTag__Group__61132 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__WMLTag__EndNameAssignment_6_in_rule__WMLTag__Group__6__Impl1159 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__WMLTag__Group__7__Impl_in_rule__WMLTag__Group__71189 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_13_in_rule__WMLTag__Group__7__Impl1217 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__WMLKey__Group__0__Impl_in_rule__WMLKey__Group__01264 = new BitSet(new long[]{0x0000000000008000L});
+    public static final BitSet FOLLOW_rule__WMLKey__Group__1_in_rule__WMLKey__Group__01267 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__WMLKey__NameAssignment_0_in_rule__WMLKey__Group__0__Impl1294 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__WMLKey__Group__1__Impl_in_rule__WMLKey__Group__11324 = new BitSet(new long[]{0x00000000000009F0L});
+    public static final BitSet FOLLOW_rule__WMLKey__Group__2_in_rule__WMLKey__Group__11327 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_15_in_rule__WMLKey__Group__1__Impl1355 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__WMLKey__Group__2__Impl_in_rule__WMLKey__Group__21386 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__WMLKey__ValueAssignment_2_in_rule__WMLKey__Group__2__Impl1415 = new BitSet(new long[]{0x00000000000009F2L});
+    public static final BitSet FOLLOW_rule__WMLKey__ValueAssignment_2_in_rule__WMLKey__Group__2__Impl1427 = new BitSet(new long[]{0x00000000000009F2L});
+    public static final BitSet FOLLOW_ruleWMLTag_in_rule__WMLRoot__TagsAssignment_01471 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleWMLMacro_in_rule__WMLRoot__MacrosAssignment_11502 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_11_in_rule__WMLTag__PlusAssignment_11538 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__WMLTag__NameAssignment_21577 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleWMLTag_in_rule__WMLTag__TagsAssignment_4_01608 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleWMLKey_in_rule__WMLTag__KeysAssignment_4_11639 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleWMLMacro_in_rule__WMLTag__MacrosAssignment_4_21670 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__WMLTag__EndNameAssignment_61701 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__WMLKey__NameAssignment_01732 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleWMLKeyValueRule_in_rule__WMLKey__ValueAssignment_21763 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__WMLKeyValue__ValueAlternatives_0_in_rule__WMLKeyValue__ValueAssignment1794 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_MACRO_in_rule__WMLMacro__NameAssignment1827 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_LUA_CODE_in_rule__WMLLuaCode__ValueAssignment1858 = new BitSet(new long[]{0x0000000000000002L});
 
 }

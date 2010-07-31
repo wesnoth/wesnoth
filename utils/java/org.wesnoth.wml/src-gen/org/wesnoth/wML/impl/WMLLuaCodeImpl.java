@@ -22,7 +22,7 @@ import org.wesnoth.wML.WMLPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.wesnoth.wML.impl.WMLLuaCodeImpl#getCode <em>Code</em>}</li>
+ *   <li>{@link org.wesnoth.wML.impl.WMLLuaCodeImpl#getValue <em>Value</em>}</li>
  * </ul>
  * </p>
  *
@@ -31,24 +31,24 @@ import org.wesnoth.wML.WMLPackage;
 public class WMLLuaCodeImpl extends WMLKeyValueRuleImpl implements WMLLuaCode
 {
   /**
-   * The default value of the '{@link #getCode() <em>Code</em>}' attribute.
+   * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getCode()
+   * @see #getValue()
    * @generated
    * @ordered
    */
-  protected static final String CODE_EDEFAULT = null;
+  protected static final String VALUE_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getCode() <em>Code</em>}' attribute.
+   * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getCode()
+   * @see #getValue()
    * @generated
    * @ordered
    */
-  protected String code = CODE_EDEFAULT;
+  protected String value = VALUE_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -76,9 +76,9 @@ public class WMLLuaCodeImpl extends WMLKeyValueRuleImpl implements WMLLuaCode
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getCode()
+  public String getValue()
   {
-    return code;
+    return value;
   }
 
   /**
@@ -86,12 +86,12 @@ public class WMLLuaCodeImpl extends WMLKeyValueRuleImpl implements WMLLuaCode
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setCode(String newCode)
+  public void setValue(String newValue)
   {
-    String oldCode = code;
-    code = newCode;
+    String oldValue = value;
+    value = newValue;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, WMLPackage.WML_LUA_CODE__CODE, oldCode, code));
+      eNotify(new ENotificationImpl(this, Notification.SET, WMLPackage.WML_LUA_CODE__VALUE, oldValue, value));
   }
 
   /**
@@ -104,8 +104,8 @@ public class WMLLuaCodeImpl extends WMLKeyValueRuleImpl implements WMLLuaCode
   {
     switch (featureID)
     {
-      case WMLPackage.WML_LUA_CODE__CODE:
-        return getCode();
+      case WMLPackage.WML_LUA_CODE__VALUE:
+        return getValue();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -120,8 +120,8 @@ public class WMLLuaCodeImpl extends WMLKeyValueRuleImpl implements WMLLuaCode
   {
     switch (featureID)
     {
-      case WMLPackage.WML_LUA_CODE__CODE:
-        setCode((String)newValue);
+      case WMLPackage.WML_LUA_CODE__VALUE:
+        setValue((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -137,8 +137,8 @@ public class WMLLuaCodeImpl extends WMLKeyValueRuleImpl implements WMLLuaCode
   {
     switch (featureID)
     {
-      case WMLPackage.WML_LUA_CODE__CODE:
-        setCode(CODE_EDEFAULT);
+      case WMLPackage.WML_LUA_CODE__VALUE:
+        setValue(VALUE_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -154,8 +154,8 @@ public class WMLLuaCodeImpl extends WMLKeyValueRuleImpl implements WMLLuaCode
   {
     switch (featureID)
     {
-      case WMLPackage.WML_LUA_CODE__CODE:
-        return CODE_EDEFAULT == null ? code != null : !CODE_EDEFAULT.equals(code);
+      case WMLPackage.WML_LUA_CODE__VALUE:
+        return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
     }
     return super.eIsSet(featureID);
   }
@@ -171,8 +171,8 @@ public class WMLLuaCodeImpl extends WMLKeyValueRuleImpl implements WMLLuaCode
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (code: ");
-    result.append(code);
+    result.append(" (value: ");
+    result.append(value);
     result.append(')');
     return result.toString();
   }

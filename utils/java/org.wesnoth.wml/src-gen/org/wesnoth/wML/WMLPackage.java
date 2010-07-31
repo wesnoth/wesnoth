@@ -199,22 +199,13 @@ public interface WMLPackage extends EPackage
   int WML_KEY__VALUE = 1;
 
   /**
-   * The feature id for the '<em><b>Extra Macros</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int WML_KEY__EXTRA_MACROS = 2;
-
-  /**
    * The number of structural features of the '<em>Key</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int WML_KEY_FEATURE_COUNT = 3;
+  int WML_KEY_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link org.wesnoth.wML.impl.WMLKeyValueRuleImpl <em>Key Value Rule</em>}' class.
@@ -302,13 +293,13 @@ public interface WMLPackage extends EPackage
   int WML_LUA_CODE = 6;
 
   /**
-   * The feature id for the '<em><b>Code</b></em>' attribute.
+   * The feature id for the '<em><b>Value</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int WML_LUA_CODE__CODE = WML_KEY_VALUE_RULE_FEATURE_COUNT + 0;
+  int WML_LUA_CODE__VALUE = WML_KEY_VALUE_RULE_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Lua Code</em>' class.
@@ -461,17 +452,6 @@ public interface WMLPackage extends EPackage
   EReference getWMLKey_Value();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.wesnoth.wML.WMLKey#getExtraMacros <em>Extra Macros</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Extra Macros</em>'.
-   * @see org.wesnoth.wML.WMLKey#getExtraMacros()
-   * @see #getWMLKey()
-   * @generated
-   */
-  EReference getWMLKey_ExtraMacros();
-
-  /**
    * Returns the meta object for class '{@link org.wesnoth.wML.WMLKeyValueRule <em>Key Value Rule</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -534,15 +514,15 @@ public interface WMLPackage extends EPackage
   EClass getWMLLuaCode();
 
   /**
-   * Returns the meta object for the attribute '{@link org.wesnoth.wML.WMLLuaCode#getCode <em>Code</em>}'.
+   * Returns the meta object for the attribute '{@link org.wesnoth.wML.WMLLuaCode#getValue <em>Value</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Code</em>'.
-   * @see org.wesnoth.wML.WMLLuaCode#getCode()
+   * @return the meta object for the attribute '<em>Value</em>'.
+   * @see org.wesnoth.wML.WMLLuaCode#getValue()
    * @see #getWMLLuaCode()
    * @generated
    */
-  EAttribute getWMLLuaCode_Code();
+  EAttribute getWMLLuaCode_Value();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -678,14 +658,6 @@ public interface WMLPackage extends EPackage
     EReference WML_KEY__VALUE = eINSTANCE.getWMLKey_Value();
 
     /**
-     * The meta object literal for the '<em><b>Extra Macros</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference WML_KEY__EXTRA_MACROS = eINSTANCE.getWMLKey_ExtraMacros();
-
-    /**
      * The meta object literal for the '{@link org.wesnoth.wML.impl.WMLKeyValueRuleImpl <em>Key Value Rule</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -742,12 +714,12 @@ public interface WMLPackage extends EPackage
     EClass WML_LUA_CODE = eINSTANCE.getWMLLuaCode();
 
     /**
-     * The meta object literal for the '<em><b>Code</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute WML_LUA_CODE__CODE = eINSTANCE.getWMLLuaCode_Code();
+    EAttribute WML_LUA_CODE__VALUE = eINSTANCE.getWMLLuaCode_Value();
 
   }
 

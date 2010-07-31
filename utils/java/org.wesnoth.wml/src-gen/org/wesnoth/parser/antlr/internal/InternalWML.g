@@ -395,35 +395,7 @@ ruleWMLKey returns [EObject current=null]
 	    }
 
 )
-)+(	'+' 
-    {
-        createLeafNode(grammarAccess.getWMLKeyAccess().getPlusSignKeyword_3_0(), null); 
-    }
-(
-(
-		{ 
-	        currentNode=createCompositeNode(grammarAccess.getWMLKeyAccess().getExtraMacrosWMLMacroParserRuleCall_3_1_0(), currentNode); 
-	    }
-		lv_extraMacros_4_0=ruleWMLMacro		{
-	        if ($current==null) {
-	            $current = factory.create(grammarAccess.getWMLKeyRule().getType().getClassifier());
-	            associateNodeWithAstElement(currentNode.getParent(), $current);
-	        }
-	        try {
-	       		add(
-	       			$current, 
-	       			"extraMacros",
-	        		lv_extraMacros_4_0, 
-	        		"WMLMacro", 
-	        		currentNode);
-	        } catch (ValueConverterException vce) {
-				handleValueConverterException(vce);
-	        }
-	        currentNode = currentNode.getParent();
-	    }
-
-)
-))*)
+)+)
 ;
 
 
@@ -564,25 +536,22 @@ ruleWMLKeyValue returns [EObject current=null]
 	        }
 	    }
 
-    |		{ 
-	        currentNode=createCompositeNode(grammarAccess.getWMLKeyValueAccess().getValueT_STRINGParserRuleCall_0_3(), currentNode); 
-	    }
-		lv_value_0_4=ruleT_STRING		{
+    |		lv_value_0_4=	'+' 
+    {
+        createLeafNode(grammarAccess.getWMLKeyValueAccess().getValuePlusSignKeyword_0_3(), "value"); 
+    }
+ 
+	    {
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getWMLKeyValueRule().getType().getClassifier());
-	            associateNodeWithAstElement(currentNode.getParent(), $current);
+	            associateNodeWithAstElement(currentNode, $current);
 	        }
+	        
 	        try {
-	       		set(
-	       			$current, 
-	       			"value",
-	        		lv_value_0_4, 
-	        		"T_STRING", 
-	        		currentNode);
+	       		set($current, "value", lv_value_0_4, null, lastConsumedNode);
 	        } catch (ValueConverterException vce) {
 				handleValueConverterException(vce);
 	        }
-	        currentNode = currentNode.getParent();
 	    }
 
 )
@@ -613,9 +582,9 @@ ruleWMLMacro returns [EObject current=null]
     }:
 (
 (
-		lv_name_0_0=RULE_RULE_MACRO
+		lv_name_0_0=RULE_MACRO
 		{
-			createLeafNode(grammarAccess.getWMLMacroAccess().getNameRULE_MACROTerminalRuleCall_0(), "name"); 
+			createLeafNode(grammarAccess.getWMLMacroAccess().getNameMACROTerminalRuleCall_0(), "name"); 
 		}
 		{
 	        if ($current==null) {
@@ -627,7 +596,7 @@ ruleWMLMacro returns [EObject current=null]
 	       			$current, 
 	       			"name",
 	        		lv_name_0_0, 
-	        		"RULE_MACRO", 
+	        		"MACRO", 
 	        		lastConsumedNode);
 	        } catch (ValueConverterException vce) {
 				handleValueConverterException(vce);
@@ -660,9 +629,9 @@ ruleWMLLuaCode returns [EObject current=null]
     }:
 (
 (
-		lv_code_0_0=RULE_RULE_LUA_CODE
+		lv_value_0_0=RULE_LUA_CODE
 		{
-			createLeafNode(grammarAccess.getWMLLuaCodeAccess().getCodeRULE_LUA_CODETerminalRuleCall_0(), "code"); 
+			createLeafNode(grammarAccess.getWMLLuaCodeAccess().getValueLUA_CODETerminalRuleCall_0(), "value"); 
 		}
 		{
 	        if ($current==null) {
@@ -672,9 +641,9 @@ ruleWMLLuaCode returns [EObject current=null]
 	        try {
 	       		set(
 	       			$current, 
-	       			"code",
-	        		lv_code_0_0, 
-	        		"RULE_LUA_CODE", 
+	       			"value",
+	        		lv_value_0_0, 
+	        		"LUA_CODE", 
 	        		lastConsumedNode);
 	        } catch (ValueConverterException vce) {
 				handleValueConverterException(vce);
@@ -689,49 +658,13 @@ ruleWMLLuaCode returns [EObject current=null]
 
 
 
-// Entry rule entryRuleT_STRING
-entryRuleT_STRING returns [String current=null] 
-	:
-	{ currentNode = createCompositeNode(grammarAccess.getT_STRINGRule(), currentNode); } 
-	 iv_ruleT_STRING=ruleT_STRING 
-	 { $current=$iv_ruleT_STRING.current.getText(); }  
-	 EOF 
-;
+RULE_LUA_CODE : '<<' ( options {greedy=false;} : . )*'>>';
 
-// Rule T_STRING
-ruleT_STRING returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] 
-    @init { setCurrentLookahead(); resetLookahead(); 
-    }
-    @after { resetLookahead(); 
-	    lastConsumedNode = currentNode;
-    }:
-(
-	kw='_' 
-    {
-        $current.merge(kw);
-        createLeafNode(grammarAccess.getT_STRINGAccess().get_Keyword_0(), null); 
-    }
-    this_STRING_1=RULE_STRING    {
-		$current.merge(this_STRING_1);
-    }
-
-    { 
-    createLeafNode(grammarAccess.getT_STRINGAccess().getSTRINGTerminalRuleCall_1(), null); 
-    }
-)
-    ;
-
-
-
-
-
-RULE_RULE_LUA_CODE : '<<' ( options {greedy=false;} : . )*'>>';
-
-RULE_RULE_MACRO : '{' ( options {greedy=false;} : . )*'}';
+RULE_MACRO : '{' ( options {greedy=false;} : . )*'}';
 
 RULE_SL_COMMENT : '#' ~(('\n'|'\r'))* ('\r'? '\n')?;
 
-RULE_ID : ('a'..'z'|'A'..'Z'|'0'..'9'|'_')+;
+RULE_ID : ('a'..'z'|'A'..'Z'|'0'..'9'|'_'|',')+;
 
 RULE_STRING : '"' ('\\' ('b'|'t'|'n'|'f'|'r'|'"'|'\''|'\\')|~(('\\'|'"')))* '"';
 

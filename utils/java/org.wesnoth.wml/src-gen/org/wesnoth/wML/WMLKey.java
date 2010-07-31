@@ -20,7 +20,6 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link org.wesnoth.wML.WMLKey#getName <em>Name</em>}</li>
  *   <li>{@link org.wesnoth.wML.WMLKey#getValue <em>Value</em>}</li>
- *   <li>{@link org.wesnoth.wML.WMLKey#getExtraMacros <em>Extra Macros</em>}</li>
  * </ul>
  * </p>
  *
@@ -71,21 +70,5 @@ public interface WMLKey extends EObject
    * @generated
    */
   EList<WMLKeyValueRule> getValue();
-
-  /**
-   * Returns the value of the '<em><b>Extra Macros</b></em>' containment reference list.
-   * The list contents are of type {@link org.wesnoth.wML.WMLMacro}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Extra Macros</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Extra Macros</em>' containment reference list.
-   * @see org.wesnoth.wML.WMLPackage#getWMLKey_ExtraMacros()
-   * @model containment="true"
-   * @generated
-   */
-  EList<WMLMacro> getExtraMacros();
 
 } // WMLKey

@@ -15,7 +15,7 @@ package org.wesnoth.wML;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.wesnoth.wML.WMLLuaCode#getCode <em>Code</em>}</li>
+ *   <li>{@link org.wesnoth.wML.WMLLuaCode#getValue <em>Value</em>}</li>
  * </ul>
  * </p>
  *
@@ -26,29 +26,29 @@ package org.wesnoth.wML;
 public interface WMLLuaCode extends WMLKeyValueRule
 {
   /**
-   * Returns the value of the '<em><b>Code</b></em>' attribute.
+   * Returns the value of the '<em><b>Value</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Code</em>' attribute isn't clear,
+   * If the meaning of the '<em>Value</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Code</em>' attribute.
-   * @see #setCode(String)
-   * @see org.wesnoth.wML.WMLPackage#getWMLLuaCode_Code()
+   * @return the value of the '<em>Value</em>' attribute.
+   * @see #setValue(String)
+   * @see org.wesnoth.wML.WMLPackage#getWMLLuaCode_Value()
    * @model
    * @generated
    */
-  String getCode();
+  String getValue();
 
   /**
-   * Sets the value of the '{@link org.wesnoth.wML.WMLLuaCode#getCode <em>Code</em>}' attribute.
+   * Sets the value of the '{@link org.wesnoth.wML.WMLLuaCode#getValue <em>Value</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Code</em>' attribute.
-   * @see #getCode()
+   * @param value the new value of the '<em>Value</em>' attribute.
+   * @see #getValue()
    * @generated
    */
-  void setCode(String value);
+  void setValue(String value);
 
 } // WMLLuaCode
