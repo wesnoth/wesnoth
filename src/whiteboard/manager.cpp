@@ -626,7 +626,7 @@ void manager::fake_unit_deleter::operator() (unit*& fake_unit)
         {
         	resources::screen->remove_temporary_unit(fake_unit);
         }
-        DBG_WB << "Erasing temporary unit " << fake_unit->name() << " [ " << fake_unit->underlying_id() << "]\n";
+        DBG_WB << "Erasing temporary unit " << fake_unit->name() << " [" << fake_unit->id() << "]\n";
         delete fake_unit;
     }
 }
