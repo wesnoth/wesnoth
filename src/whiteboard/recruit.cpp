@@ -117,7 +117,9 @@ unit* recruit::create_corresponding_unit()
 	unit_type const* type = unit_types.find(unit_name_);
 	assert(type);
 	int side_num = resources::screen->viewing_side();
-	return new unit(type, side_num, true);
+	//real_unit = false needed to avoid generating random traits and causing OOS
+	bool real_unit = false;
+	return new unit(type, side_num, real_unit);
 }
 
 }
