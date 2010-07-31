@@ -30,10 +30,10 @@
 namespace wb
 {
 
-mapbuilder_visitor::mapbuilder_visitor(unit_map& unit_map, side_actions_ptr side_actions, bool include_recruits)
+mapbuilder_visitor::mapbuilder_visitor(unit_map& unit_map, side_actions_ptr side_actions, bool for_pathfinding)
 	: unit_map_(unit_map)
     , excluded_units_()
-	, include_recruits_(include_recruits)
+	, for_pathfinding_(for_pathfinding)
 	, side_actions_(side_actions)
 	, applied_actions_()
 	, mode_(BUILD_PLANNED_MAP)
@@ -84,7 +84,7 @@ void mapbuilder_visitor::visit_recruit(recruit_ptr recruit)
 
 	if(mode_ == BUILD_PLANNED_MAP)
 	{
-		if (include_recruits_)
+		if (for_pathfinding_)
 		{
 			recruit->apply_temp_modifier(unit_map_);
 			//remember which actions we applied, so we can unapply them later

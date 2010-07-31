@@ -63,7 +63,7 @@ protected:
 	unit_map& unit_map_;
 
 	std::set<unit const*> excluded_units_;
-	bool include_recruits_;
+	bool for_pathfinding_;
 
 	side_actions_ptr side_actions_;
 	action_queue applied_actions_;

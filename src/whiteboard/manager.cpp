@@ -214,24 +214,28 @@ bool manager::current_side_has_actions() const
 void manager::validate_viewer_actions()
 {
 	assert(!executing_actions_);
+	log_scope2("whiteboard", "Validate viewer actions.")
 	viewer_actions()->validate_actions();
 }
 
-void manager::set_planned_unit_map(bool include_recruits)
+void manager::set_planned_unit_map(bool for_pathfinding)
 {
 	if (!executing_actions_ && !wait_for_side_init_)
 	{
 		if (!planned_unit_map_active_)
 		{
+			std::string message;
+			for_pathfinding ? message = "Building planned unit map for pathfinding."
+					: message = "Building planned unit map";
+			log_scope2("whiteboard", message);
 			validate_actions_if_needed();
-			DBG_WB << "Building planned unit map.\n";
-			mapbuilder_.reset(new mapbuilder_visitor(*resources::units, viewer_actions(), include_recruits));
+			mapbuilder_.reset(new mapbuilder_visitor(*resources::units, viewer_actions(), for_pathfinding));
 			mapbuilder_->build_map();
 			planned_unit_map_active_ = true;
 		}
 		else
 		{
-			WRN_WB << "Attempt to set planned unit map when it was already set.\n";
+			LOG_WB << "Attempt to set planned unit map when it was already set.\n";
 		}
 	}
 	else if (executing_actions_)
@@ -246,13 +250,13 @@ void manager::set_real_unit_map()
 	{
 		if (planned_unit_map_active_)
 		{
-			DBG_WB << "Restoring regular unit map.\n";
+			log_scope2("whiteboard", "Restoring regular unit map.");
 			mapbuilder_.reset();
 			planned_unit_map_active_ = false;
 		}
 		else
 		{
-			DBG_WB << "Attempt to disable the planned unit map, when it was already disabled.\n";
+			LOG_WB << "Attempt to disable the planned unit map, when it was already disabled.\n";
 		}
 	}
 	else //executing_actions_
