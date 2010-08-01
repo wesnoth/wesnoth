@@ -117,7 +117,6 @@ void recruit::remove_temp_modifier(unit_map& unit_map)
 
 unit* recruit::create_corresponding_unit()
 {
-	/** @todo: find some way of generating the unit without random traits */
 	unit_type const* type = unit_types.find(unit_name_);
 	assert(type);
 	int side_num = resources::screen->viewing_side();
