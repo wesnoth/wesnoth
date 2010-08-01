@@ -214,6 +214,7 @@ bool manager::current_side_has_actions() const
 void manager::validate_viewer_actions()
 {
 	assert(!executing_actions_);
+	if (viewer_actions()->empty()) return;
 	log_scope2("whiteboard", "Validate viewer actions.")
 	viewer_actions()->validate_actions();
 }
@@ -224,13 +225,16 @@ void manager::set_planned_unit_map(bool for_pathfinding)
 	{
 		if (!planned_unit_map_active_)
 		{
-			std::string message;
-			for_pathfinding ? message = "Building planned unit map for pathfinding."
-					: message = "Building planned unit map";
-			log_scope2("whiteboard", message);
-			validate_actions_if_needed();
-			mapbuilder_.reset(new mapbuilder_visitor(*resources::units, viewer_actions(), for_pathfinding));
-			mapbuilder_->build_map();
+			if (!viewer_actions()->empty())
+			{
+				validate_actions_if_needed();
+				std::string message;
+				for_pathfinding ? message = "Building planned unit map for pathfinding."
+						: message = "Building planned unit map";
+				log_scope2("whiteboard", message);
+				mapbuilder_.reset(new mapbuilder_visitor(*resources::units, viewer_actions(), for_pathfinding));
+				mapbuilder_->build_map();
+			}
 			planned_unit_map_active_ = true;
 		}
 		else
@@ -250,8 +254,11 @@ void manager::set_real_unit_map()
 	{
 		if (planned_unit_map_active_)
 		{
-			log_scope2("whiteboard", "Restoring regular unit map.");
-			mapbuilder_.reset();
+			if (mapbuilder_)
+			{
+				log_scope2("whiteboard", "Restoring regular unit map.");
+				mapbuilder_.reset();
+			}
 			planned_unit_map_active_ = false;
 		}
 		else

@@ -408,6 +408,8 @@ void side_actions::validate_actions()
 		ERR_WB << "Validating action queue while temp modifiers are applied!!!\n";
 	}
 
+	if (empty()) return;
+
 	bool validation_finished = false;
 	while(!validation_finished){
 		validate_visitor validator(*resources::units, shared_from_this());

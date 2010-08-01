@@ -89,6 +89,9 @@ void recruit::apply_temp_modifier(unit_map& unit_map)
 	assert(valid_);
 	temp_unit_->set_location(recruit_hex_);
 
+	DBG_WB << "Inserting future recruit [" << temp_unit_->id()
+			<< "] at position " << temp_unit_->get_location() << ".\n";
+
 	unit_map.insert(temp_unit_);
 	//unit map takes ownership of temp_unit
 
