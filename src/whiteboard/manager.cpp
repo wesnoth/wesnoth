@@ -428,8 +428,6 @@ void manager::save_temp_move()
 {
 	if (has_temp_move() && !executing_actions_ && !resources::controller->is_linger_mode())
 	{
-		scoped_planned_unit_map planned_unit_map;
-
 		arrow_ptr move_arrow;
 		fake_unit_ptr fake_unit;
 
