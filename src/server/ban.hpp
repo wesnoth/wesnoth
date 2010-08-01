@@ -14,7 +14,7 @@
 
 #ifndef SERVER_GAME_HPP_INCLUDED
 #define SERVER_GAME_HPP_INCLUDED
-#include "game_errors.hpp"
+#include "exceptions.hpp"
 
 #include <set>
 #include <map>

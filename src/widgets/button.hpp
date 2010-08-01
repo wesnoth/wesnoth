@@ -18,6 +18,7 @@
 
 #include "widget.hpp"
 
+#include "../exceptions.hpp"
 #include "../sdl_utils.hpp"
 
 #include <string>
@@ -29,7 +30,11 @@ namespace gui {
 class button : public widget
 {
 public:
-	struct error {};
+	struct error : public game::error {
+        error()
+            : game::error("GUI1 button error")
+            {}
+    };
 
 	enum TYPE { TYPE_PRESS, TYPE_CHECK, TYPE_TURBO, TYPE_IMAGE };
 

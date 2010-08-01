@@ -17,6 +17,7 @@
 
 class config;
 
+#include "../exceptions.hpp"
 #include "../global.hpp"
 
 #include <string>
@@ -114,10 +115,8 @@ class user_handler {
 		/** Mark this user as a moderator */
 		virtual void set_is_moderator(const std::string& name, const bool& is_moderator) =0;
 
-		/** A simple structure to throw as an error. */
-		struct error {
-			error(const std::string& msg) : message(msg) {}
-			std::string message;
+		struct error : game::error {
+			error(const std::string& message) : game::error(message) {}
 		};
 
 		/** Initiate the mailer object. */
