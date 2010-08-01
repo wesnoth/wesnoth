@@ -508,8 +508,10 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 			gui().unhighlight_reach();
 			current_paths_ = pathfind::paths();
 			current_route_.steps.clear();
+
 			resources::whiteboard->save_temp_attack(attack_from, clicked_u->get_location());
-		return false;
+			return false;
+
 		} else if (u.valid() && clicked_u.valid() && u->side() == side_num_) {
 			if (attack_from == selected_hex_) { //no move needed
 				int choice = show_attack_dialog(attack_from, clicked_u->get_location());
@@ -664,7 +666,7 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse) {
 			{
 				sound::play_UI_sound("select-unit.wav");
 
-				if (!(resources::whiteboard->is_active() && resources::whiteboard->unit_has_actions(*u))) {
+				if (!resources::whiteboard->unit_has_actions(*u)) {
 					u->set_selecting();
 					game_events::fire("select", hex);
 				}
