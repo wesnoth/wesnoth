@@ -110,9 +110,12 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 			// we store the previous hexes used to propose attack direction
 			previous_hex_ = last_hex_;
 			// the hex of the selected unit is also "free"
-			if (last_hex_ == selected_hex_ || find_unit(last_hex_) == units_.end()) {
-				previous_free_hex_ = last_hex_;
-			}
+			{ // start planned pathfind map scope
+				wb::scoped_planned_pathfind_map planned_pathfind_map;
+				if (last_hex_ == selected_hex_ || find_unit(last_hex_) == units_.end()) {
+					previous_free_hex_ = last_hex_;
+				}
+			} // end planned pathfind map scope
 		}
 		last_hex_ = new_hex;
 	}
@@ -170,12 +173,7 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 
 			// we search if there is an attack possibility and where
 			attack_from = current_unit_attacks_from(new_hex);
-		} // end planned unit map scope
 
-		{ // start planned unit map scope
-			wb::scoped_planned_unit_map planned_unit_map;
-			selected_unit = find_unit(selected_hex_);
-			mouseover_unit = find_unit(new_hex);
 			//see if we should show the normal cursor, the movement cursor, or
 			//the attack cursor
 			//If the cursor is on WAIT, we don't change it and let the setter
@@ -210,20 +208,18 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 			gui().clear_attack_indicator();
 		}
 
-		{ //start planned unit map scope
-			wb::scoped_planned_unit_map planned_unit_map;
-			selected_unit = find_unit(selected_hex_);
-			mouseover_unit = find_unit(new_hex);
-			// the destination is the pointed hex or the adjacent hex
-			// used to attack it
-			map_location dest;
-			unit_map::const_iterator dest_un;
+		// the destination is the pointed hex or the adjacent hex
+		// used to attack it
+		map_location dest;
+		unit_map::const_iterator dest_un;
+		{ // start planned pathfind map scope
+			wb::scoped_planned_pathfind_map planned_pathfind_map;
 			if (attack_from.valid()) {
 				dest = attack_from;
 				dest_un = find_unit(dest);
 			}	else {
 				dest = new_hex;
-				dest_un = mouseover_unit;
+				dest_un = find_unit(new_hex);
 			}
 
 			if(dest == selected_hex_ || dest_un != units_.end()) {
@@ -240,10 +236,8 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 					unit_movement_resetter move_reset(*selected_unit,
 							selected_unit->side() != side_num_);
 
-					{ // start planned unit map scope
-						wb::scoped_planned_pathfind_map planned_pathfind_map;
-						current_route_ = get_route(selected_unit, dest, waypoints_, viewing_team());
-					} // end planned unit map scope
+					current_route_ = get_route(selected_unit, dest, waypoints_, viewing_team());
+
 					resources::whiteboard->create_temp_move();
 
 					if(!browse) {
@@ -251,7 +245,10 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 					}
 				}
 			}
+		} // end planned pathfind map scope
 
+		{ // start planned unit map scope
+			wb::scoped_planned_unit_map planned_unit_map;
 			unit_map::iterator un = mouseover_unit;
 
 			if (un != units_.end() && current_paths_.destinations.empty() &&
