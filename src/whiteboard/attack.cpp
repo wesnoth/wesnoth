@@ -82,7 +82,7 @@ bool attack::execute()
 
 	events::mouse_handler const& mouse_handler = resources::controller->get_mouse_handler_base();
 
-	std::set<map_location> adj_enemies = mouse_handler.get_adj_enemies(get_dest_hex(), resources::screen->viewing_side());
+	std::set<map_location> adj_enemies = mouse_handler.get_adj_enemies(get_dest_hex(), side_number());
 
 	if (execute_successful && route_->steps.size() >= 2)
 	{
@@ -93,7 +93,7 @@ bool attack::execute()
 			execute_successful = false;
 		}
 		//check if new enemies are now visible
-		else if(mouse_handler.get_adj_enemies(get_dest_hex(), resources::screen->viewing_side()) != adj_enemies)
+		else if(mouse_handler.get_adj_enemies(get_dest_hex(), side_number()) != adj_enemies)
 		{
 			execute_successful = false; //ambush, interrupt attack
 		}
