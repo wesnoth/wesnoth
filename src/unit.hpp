@@ -475,7 +475,7 @@ int side_upkeep(int side_num);
 unit_map::iterator find_visible_unit(const map_location &loc,
 	const team &current_team, bool see_all = false);
 
-const unit *get_visible_unit(const map_location &loc,
+unit *get_visible_unit(const map_location &loc,
 	const team &current_team, bool see_all = false);
 
 struct team_data
