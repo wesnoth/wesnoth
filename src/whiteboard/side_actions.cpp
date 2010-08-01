@@ -203,11 +203,14 @@ side_actions::iterator side_actions::bump_earlier(side_actions::iterator positio
 	if(!validate_iterator(position - 1))
 		return end();
 
-
 	side_actions::iterator previous = position - 1;
 	//Verify we're not moving an action out-of-order compared to other action of the same unit
-	if ((*previous)->get_unit() == (*position)->get_unit())
-		return end();
+	{
+		unit const* previous_ptr = (*previous)->get_unit();
+		unit const* current_ptr = (*position)->get_unit();
+		if (previous_ptr && current_ptr && previous_ptr == current_ptr)
+			return end();
+	}
 
 	//If this is a move, verify that it doesn't depend on a previous move for freeing its destination
 	{
@@ -254,9 +257,13 @@ side_actions::iterator side_actions::bump_later(side_actions::iterator position)
 		return end();
 
 	side_actions::iterator next = position + 1;
-	//Verify we're not moving an action out-of-order compared to other action of the same unit
-	if ((*next)->get_unit() == (*position)->get_unit())
-		return end();
+	{
+		unit const* next_ptr = (*next)->get_unit();
+		unit const* current_ptr = (*position)->get_unit();
+		//Verify we're not moving an action out-of-order compared to other action of the same unit
+		if (next_ptr && current_ptr && next_ptr == current_ptr)
+			return end();
+	}
 
 	//If this is a move, verify that an earlier move doesn't depend on it for freeing its destination
 	{
