@@ -8,6 +8,7 @@
  *******************************************************************************/
 package org.wesnoth.ui;
 
+import org.apache.log4j.Level;
 import org.eclipse.jface.text.source.ISourceViewer;
 import org.eclipse.swt.custom.StyledText;
 import org.eclipse.swt.widgets.Composite;
@@ -20,6 +21,14 @@ public class WMLEditor extends XtextEditor
 {
 	protected IHighlightingHelper highlightingHelper_;
 	protected LeafNode currentHighlightedNode_;
+
+	public WMLEditor()
+	{
+		super();
+		org.apache.log4j.Logger.getLogger(XtextEditor.class).setLevel(Level.DEBUG);
+		// activate the wesnoth plugin
+		Activator.getDefault();
+	}
 
 	@Override
 	public void createPartControl(Composite parent)

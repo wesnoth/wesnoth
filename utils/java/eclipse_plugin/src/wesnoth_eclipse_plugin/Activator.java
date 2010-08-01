@@ -95,7 +95,7 @@ public class Activator extends AbstractUIPlugin
 	 * Checks if the user has set some needed preferences and if the workspace
 	 * is setup (there exists the "User Addons" project)
 	 */
-	private static boolean checkConditions()
+	public static boolean checkConditions()
 	{
 		String execDir = Preferences.getString(Constants.P_WESNOTH_EXEC_PATH);
 		String userDir = Preferences.getString(Constants.P_WESNOTH_USER_DIR);
