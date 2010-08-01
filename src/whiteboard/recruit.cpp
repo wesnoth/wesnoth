@@ -19,6 +19,7 @@
 #include "recruit.hpp"
 
 #include "manager.hpp"
+#include "side_actions.hpp"
 #include "visitor.hpp"
 
 #include "game_display.hpp"
@@ -96,11 +97,10 @@ void recruit::apply_temp_modifier(unit_map& unit_map)
 	//unit map takes ownership of temp_unit
 
 	temp_cost_ = temp_unit_->type()->cost();
-
 	/**
-	 * @todo: add cost to money spent on recruits, need variable in
-	 * side_actions to track this.
+	 * Add cost to money spent on recruits.
 	 */
+	resources::teams->at(team_index()).get_side_actions()->change_gold_spent_by(temp_cost_);
 
 	temp_unit_ = NULL;
 }
@@ -110,9 +110,9 @@ void recruit::remove_temp_modifier(unit_map& unit_map)
 	temp_unit_ = unit_map.extract(recruit_hex_);
 
 	/**
-	 * @todo: remove cost from money spent on recruits, need variable in
-	 * side_actions to track this.
+	 * Remove cost from money spent on recruits.
 	 */
+	resources::teams->at(team_index()).get_side_actions()->change_gold_spent_by(-temp_cost_);
 }
 
 unit* recruit::create_corresponding_unit()

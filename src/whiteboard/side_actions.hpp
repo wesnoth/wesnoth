@@ -172,6 +172,9 @@ public:
 
 	void validate_actions();
 
+	int get_gold_spent() const { return gold_spent_; }
+	void change_gold_spent_by(int difference) { gold_spent_ += difference; assert(gold_spent_ >= 0);}
+
 private:
 
 	bool validate_iterator(iterator position) { return position >= begin() && position < end(); }
@@ -179,6 +182,9 @@ private:
 	action_queue actions_;
 	size_t team_index_;
 	bool team_index_defined_;
+
+	/// Used to store gold "spent" in planned recruits/recalls when the future unit map is applied
+	int gold_spent_;
 };
 
 /** Dumps side_actions on a stream, for debug purposes. */

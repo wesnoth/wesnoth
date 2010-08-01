@@ -53,6 +53,7 @@ side_actions::side_actions()
 	: actions_()
 	, team_index_(0)
 	, team_index_defined_(false)
+	, gold_spent_(0)
 {
 }
 
