@@ -37,7 +37,7 @@ namespace wb
 class recruit: public wb::action, public boost::enable_shared_from_this<recruit>
 {
 public:
-	recruit(const std::string& unit_name, const map_location& recruit_hex);
+	recruit(size_t team_index, const std::string& unit_name, const map_location& recruit_hex);
 	virtual ~recruit();
 
 	friend class validate_visitor;

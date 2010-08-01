@@ -35,7 +35,7 @@ public:
 	friend class highlight_visitor;
 
 	///Future unit map must be valid during construction, so that attack can find its units
-	attack(const map_location& target_hex, int weapon_choice, const pathfind::marked_route& route,
+	attack(size_t team_index, const map_location& target_hex, int weapon_choice, const pathfind::marked_route& route,
 			arrow_ptr arrow, fake_unit_ptr fake_unit);
 	virtual ~attack();
 

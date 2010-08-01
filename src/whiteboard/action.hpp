@@ -31,7 +31,7 @@ class visitor;
 class action
 {
 public:
-	action();
+	action(size_t team_index);
 	virtual ~action();
 
 	virtual std::ostream& print(std::ostream& s) const = 0;
@@ -56,6 +56,8 @@ public:
 
 	/** Return the unit targeted by this action. Null if unit doesn't exist. */
 	virtual unit* get_unit() const = 0;
+	/** Returns the index of the team that owns this action */
+	size_t team_index() { return team_index_; }
 
 	/**
 	 * Indicates to an action whether its status is invalid, and whether it should change its
@@ -63,6 +65,9 @@ public:
 	 */
 	virtual void set_valid(bool valid) = 0;
 	virtual bool is_valid() = 0;
+
+private:
+	size_t team_index_;
 };
 
 std::ostream& operator<<(std::ostream& s, action_ptr action);

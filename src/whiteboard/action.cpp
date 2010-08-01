@@ -37,13 +37,13 @@ std::ostream& action::print(std::ostream& s) const
 	return s;
 }
 
-action::~action()
+action::action(size_t team_index)
+	: team_index_(team_index)
 {
 }
 
-action::action()
+action::~action()
 {
-
 }
 
 } // end namespace wb

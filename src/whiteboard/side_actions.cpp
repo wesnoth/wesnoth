@@ -148,7 +148,7 @@ side_actions::iterator side_actions::execute(side_actions::iterator position)
 side_actions::iterator side_actions::queue_move(const pathfind::marked_route& route, arrow_ptr arrow, fake_unit_ptr fake_unit)
 {
 	move_ptr new_move;
-	new_move.reset(new move(route, arrow, fake_unit));
+	new_move.reset(new move(team_index(), route, arrow, fake_unit));
 	return queue_action(new_move);
 }
 
@@ -157,14 +157,14 @@ side_actions::iterator side_actions::queue_attack(const map_location& target_hex
 		arrow_ptr arrow, fake_unit_ptr fake_unit)
 {
 	attack_ptr new_attack;
-	new_attack.reset(new attack(target_hex, weapon_choice, route, arrow, fake_unit));
+	new_attack.reset(new attack(team_index(), target_hex, weapon_choice, route, arrow, fake_unit));
 	return queue_action(new_attack);
 }
 
 side_actions::iterator side_actions::queue_recruit(const std::string& unit_name, const map_location& recruit_hex)
 {
 	recruit_ptr new_recruit;
-	new_recruit.reset(new recruit(unit_name, recruit_hex));
+	new_recruit.reset(new recruit(team_index(), unit_name, recruit_hex));
 	return queue_action(new_recruit);
 }
 

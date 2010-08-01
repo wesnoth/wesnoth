@@ -49,7 +49,8 @@ std::ostream& recruit::print(std::ostream &s) const
 	return s;
 }
 
-recruit::recruit(const std::string& unit_name, const map_location& recruit_hex):
+recruit::recruit(size_t team_index, const std::string& unit_name, const map_location& recruit_hex):
+		action(team_index),
 		unit_name_(unit_name),
 		recruit_hex_(recruit_hex),
 		temp_unit_(create_corresponding_unit()),

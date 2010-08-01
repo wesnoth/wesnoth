@@ -41,7 +41,7 @@ public:
 	static const std::string ARROW_STYLE_INVALID;
 
 	///Future unit map must be valid during construction, so that move can find its unit
-	move(const pathfind::marked_route& route, arrow_ptr arrow,
+	move(size_t team_index, const pathfind::marked_route& route, arrow_ptr arrow,
 			fake_unit_ptr fake_unit);
 	virtual ~move();
 

@@ -68,9 +68,10 @@ static team& get_current_team()
 	return current_team;
 }
 
-move::move(const pathfind::marked_route& route,
+move::move(size_t team_index, const pathfind::marked_route& route,
 		arrow_ptr arrow, fake_unit_ptr fake_unit)
-: unit_(NULL),
+: action(team_index),
+  unit_(NULL),
   unit_id_(),
   route_(new pathfind::marked_route(route)),
   movement_cost_(0),
