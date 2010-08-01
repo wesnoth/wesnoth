@@ -3527,10 +3527,10 @@ void console_handler::do_toggle_draw_terrain_codes() {
 void console_handler::do_toggle_whiteboard() {
 	resources::whiteboard->set_active(!resources::whiteboard->is_active());
 	if (resources::whiteboard->is_active()) {
-		print(get_cmd(), _("Planning mode (whiteboard) activated!"));
+		print(get_cmd(), _("Planning mode activated!"));
 		resources::whiteboard->print_help_once();
 	} else {
-		print(get_cmd(), _("Planning mode (whiteboard) deactivated!"));
+		print(get_cmd(), _("Planning mode deactivated!"));
 	}
 }
 
