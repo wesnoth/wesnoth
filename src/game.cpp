@@ -652,7 +652,7 @@ bool game_controller::play_test()
 	try {
 		upload_log nolog(false);
 		play_game(disp(),state_,game_config(),nolog);
-	} catch(game::load_game_exception& e) {
+	} catch (game::load_game_exception &) {
 		test_mode_ = false;
 		return true;
 	}
@@ -882,7 +882,7 @@ bool game_controller::play_multiplayer_mode()
 
 		state_.snapshot = level;
 		play_game(disp(), state_, game_config(), log);
-	} catch(game::load_game_exception& e) {
+	} catch (game::load_game_exception &) {
 		//the user's trying to load a game, so go into the normal title screen loop and load one
 		return true;
 	} catch(twml_exception& e) {
@@ -1393,7 +1393,7 @@ bool game_controller::play_multiplayer()
 		}
 	} catch(incorrect_map_format_exception& e) {
 		gui2::show_error_message(disp().video(), std::string(_("The game map could not be loaded: ")) + e.msg_);
-	} catch(game::load_game_exception& e) {
+	} catch (game::load_game_exception &) {
 		//this will make it so next time through the title screen loop, this game is loaded
 	} catch(twml_exception& e) {
 		e.show(disp());
