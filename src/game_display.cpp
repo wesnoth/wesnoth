@@ -219,6 +219,8 @@ void game_display::select_hex(map_location hex)
 
 void game_display::highlight_hex(map_location hex)
 {
+	wb::scoped_planned_pathfind_map future; //< Lasts for whole method.
+
 	const unit *u = get_visible_unit(hex, teams_[viewing_team()], !viewpoint_);
 	if (u) {
 		displayedUnitHex_ = hex;
@@ -241,6 +243,8 @@ void game_display::highlight_hex(map_location hex)
 
 void game_display::display_unit_hex(map_location hex)
 {
+	wb::scoped_planned_pathfind_map future; //< Lasts for whole method.
+
 	const unit *u = get_visible_unit(hex, teams_[viewing_team()], !viewpoint_);
 	if (u) {
 		displayedUnitHex_ = hex;
@@ -441,6 +445,8 @@ void game_display::draw_game_status()
 
 void game_display::draw_sidebar()
 {
+	wb::scoped_planned_pathfind_map future; //< Lasts for whole method.
+
 	draw_report(reports::REPORT_CLOCK);
 	draw_report(reports::REPORT_COUNTDOWN);
 
