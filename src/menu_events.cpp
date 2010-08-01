@@ -723,9 +723,7 @@ void menu_handler::recruit(int side_num, const map_location &last_hex)
 	}
 
 	if(recruit_res != -1) {
-		if (!resources::whiteboard->save_recruit(item_keys[recruit_res], side_num, last_hex)) {
-			do_recruit(item_keys[recruit_res], side_num, last_hex);
-		}
+		do_recruit(item_keys[recruit_res], side_num, last_hex);
 	}
 }
 
@@ -758,49 +756,56 @@ void menu_handler::do_recruit(const std::string &name, int side_num,
 	const unit_type *u_type = unit_types.find(name);
 	assert(u_type);
 
-	if (u_type->cost() > current_team.gold()) {
-		gui2::show_transient_message(gui_->video(), "",
-			_("You don't have enough gold to recruit that unit"));
-		return;
-	}
+	{ wb::scoped_planned_pathfind_map future; //< start planned pathfind map scope
+		if (u_type->cost() > current_team.gold()) {
+			gui2::show_transient_message(gui_->video(), "",
+				_("You don't have enough gold to recruit that unit"));
+			return;
+		}
+	} // end planned pathfind map scope
 
 	last_recruit_ = name;
 	const events::command_disabler disable_commands;
 
 	map_location loc = last_hex;
-	const std::string &msg = find_recruit_location(side_num, loc);
+	std::string msg;
+	{ wb::scoped_planned_pathfind_map future; //< start planned pathfind map scope
+		msg = find_recruit_location(side_num, loc);
+	} // end planned pathfind map scope
 	if (!msg.empty()) {
 		gui2::show_transient_message(gui_->video(), "", msg);
 		return;
 	}
 
-	//create a unit with traits
-	recorder.add_recruit(recruit_num, loc);
-	const unit new_unit(u_type, side_num, true);
-	place_recruit(new_unit, loc, false, true);
-	current_team.spend_gold(u_type->cost());
-	statistics::recruit_unit(new_unit);
+	if (!resources::whiteboard->save_recruit(name, side_num, loc)) {
+		//create a unit with traits
+		recorder.add_recruit(recruit_num, loc);
+		const unit new_unit(u_type, side_num, true);
+		place_recruit(new_unit, loc, false, true);
+		current_team.spend_gold(u_type->cost());
+		statistics::recruit_unit(new_unit);
 
-	//MP_COUNTDOWN grant time bonus for recruiting
-	current_team.set_action_bonus_count(1 + current_team.action_bonus_count());
+		//MP_COUNTDOWN grant time bonus for recruiting
+		current_team.set_action_bonus_count(1 + current_team.action_bonus_count());
 
-	resources::redo_stack->clear();
-	assert(new_unit.type());
+		resources::redo_stack->clear();
+		assert(new_unit.type());
 
-	// Dissallow undoing of recruits. Can be enabled again once the unit's
-	// description= key doesn't use random anymore.
-	const bool shroud_cleared = clear_shroud(side_num);
-	if (shroud_cleared || new_unit.type()->genders().size() > 1
-		|| new_unit.type()->has_random_traits()) {
-		clear_undo_stack(side_num);
-	} else {
-		resources::undo_stack->push_back(undo_action(new_unit, loc, undo_action::RECRUIT));
+		// Dissallow undoing of recruits. Can be enabled again once the unit's
+		// description= key doesn't use random anymore.
+		const bool shroud_cleared = clear_shroud(side_num);
+		if (shroud_cleared || new_unit.type()->genders().size() > 1
+			|| new_unit.type()->has_random_traits()) {
+			clear_undo_stack(side_num);
+		} else {
+			resources::undo_stack->push_back(undo_action(new_unit, loc, undo_action::RECRUIT));
+		}
+
+		gui_->recalculate_minimap();
+		gui_->invalidate_game_status();
+		gui_->invalidate_all();
+		recorder.add_checksum_check(loc);
 	}
-
-	gui_->recalculate_minimap();
-	gui_->invalidate_game_status();
-	gui_->invalidate_all();
-	recorder.add_checksum_check(loc);
 }
 
 void menu_handler::recall(int side_num, const map_location &last_hex)
