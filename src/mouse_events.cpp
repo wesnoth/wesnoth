@@ -124,9 +124,11 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 		if (reachmap_invalid_) {
 			reachmap_invalid_ = false;
 			if (!current_paths_.destinations.empty() && !show_partial_move_) {
-				resources::whiteboard->set_planned_unit_map();
-				unit_map::iterator u = find_unit(selected_hex_);
-				resources::whiteboard->set_real_unit_map();
+				unit_map::iterator u;
+				{ // start planned unit map scope
+					wb::scoped_planned_unit_map planned_unit_map;
+					 u = find_unit(selected_hex_);
+				} // end planned unit map scope
 				if(selected_hex_.valid() && u != units_.end() ) {
 					// reselect the unit without firing events (updates current_paths_)
 					select_hex(selected_hex_, true);
