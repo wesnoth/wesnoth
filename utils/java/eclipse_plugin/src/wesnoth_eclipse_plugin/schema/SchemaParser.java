@@ -24,6 +24,7 @@ import wesnoth_eclipse_plugin.utils.StringUtils;
  */
 public class SchemaParser
 {
+	//TODO: add a faster search method for keys/tags by name
 	private static SchemaParser	instance_;
 
 	public static SchemaParser getInstance()

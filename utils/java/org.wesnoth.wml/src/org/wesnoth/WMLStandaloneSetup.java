@@ -8,14 +8,17 @@
  *******************************************************************************/
 package org.wesnoth;
 
+import wesnoth_eclipse_plugin.schema.SchemaParser;
+
 /**
  * Initialization support for running Xtext languages
  * without equinox extension registry
  */
-public class WMLStandaloneSetup extends WMLStandaloneSetupGenerated{
-
+public class WMLStandaloneSetup extends WMLStandaloneSetupGenerated
+{
 	public static void doSetup() {
 		new WMLStandaloneSetup().createInjectorAndDoEMFRegistration();
+		SchemaParser.getInstance().parseSchema(false);
 	}
 }
 

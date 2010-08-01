@@ -21,6 +21,7 @@ public class Tag
 	private String extendedTagName_ = "";
 	private List<Tag> tagChildren_;
 	private List<TagKey> keyChildren_;
+
 	private Tag description_;
 	private char cardinality_ = ' ';
 
