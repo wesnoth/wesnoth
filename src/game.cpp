@@ -2334,16 +2334,14 @@ int main(int argc, char** argv)
 	} catch(twml_exception& e) {
 		std::cerr << "WML exception:\nUser message: "
 			<< e.message << "\nDev message: " << e.dev_message << '\n';
+	} catch(game_logic::formula_error& e) {
+		std::cerr << e.what()
+			<< "\n\nGame will be aborted.\n";
 	} catch(game::error &) {
 		// A message has already been displayed.
 	} catch(std::bad_alloc&) {
 		std::cerr << "Ran out of memory. Aborted.\n";
 		return ENOMEM;
-	} catch(game_logic::formula_error& e) {
-		std::cerr << "Formula error found in " << e.filename << ":" << e.line
-			<< "\nIn formula " << e.formula
-			<< "\nError: " << e.type
-			<< "\n\nGame will be aborted.\n";
 	}
 
 	return 0;

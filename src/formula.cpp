@@ -15,6 +15,7 @@
 #include <boost/lexical_cast.hpp>
 #include <iostream>
 #include <set>
+#include <sstream>
 
 #include "foreach.hpp"
 #include "formula_callable.hpp"
@@ -1140,6 +1141,21 @@ variant formula::execute(formula_debugger *fdb) const
 {
 	static map_formula_callable null_callable;
 	return execute(null_callable,fdb);
+}
+
+formula_error::formula_error(const std::string& type, const std::string& formula,
+		const std::string& file, int line)
+	: error()
+	, type(type)
+	, formula(formula)
+	, filename(file)
+	, line(line)
+{
+	std::stringstream ss;
+	ss << "Formula error in " << filename << ":" << line
+	   << "\nIn formula " << formula
+	   << "\nError: " << type;
+	message = ss.str();
 }
 
 }

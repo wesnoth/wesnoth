@@ -17,6 +17,7 @@
 #include <map>
 #include <string>
 
+#include "exceptions.hpp"
 #include "formula_debugger_fwd.hpp"
 #include "formula_fwd.hpp"
 #include "formula_tokenizer.hpp"
@@ -75,22 +76,20 @@ private:
 	friend class formula_debugger;
 };
 
-struct formula_error
+struct formula_error : public game::error
 {
 	formula_error()
-		: type()
+		: error()
+		, type()
 		, formula()
 		, filename()
 		, line(0)
 	{}
 
 	formula_error(const std::string& type, const std::string& formula,
-			const std::string& file, int line)
-		: type(type)
-		, formula(formula)
-		, filename(file)
-		, line(line)
-	{}
+			const std::string& file, int line);
+
+	~formula_error() throw() {}
 
 	std::string type;
 	std::string formula;
