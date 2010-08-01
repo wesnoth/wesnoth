@@ -42,14 +42,6 @@ validate_visitor::~validate_visitor()
 {
 }
 
-//FIXME: move this some place it can be accessible from the whole whiteboard
-static team& get_current_team()
-{
-	int current_side = resources::controller->current_side();
-	team& current_team = (*resources::teams)[current_side - 1];
-	return current_team;
-}
-
 bool validate_visitor::validate_actions()
 {
 	foreach(action_ptr action, *side_actions_)
@@ -95,7 +87,8 @@ void validate_visitor::visit_move(move_ptr move)
 		pathfind::plain_route new_plain_route;
 		if (move->valid_)
 		{
-			pathfind::shortest_path_calculator path_calc(*move->get_unit(), get_current_team(), *resources::units,
+			pathfind::shortest_path_calculator path_calc(*move->get_unit(),
+					resources::teams->at(side_actions_->team_index()), *resources::units,
 					*resources::teams, *resources::game_map);
 			new_plain_route = pathfind::a_star_search(move->get_source_hex(),
 					move->get_dest_hex(), 10000, &path_calc, resources::game_map->w(), resources::game_map->h());
@@ -172,7 +165,7 @@ void validate_visitor::visit_recruit(recruit_ptr recruit)
 	//invalidate recruit hex so number display is updated properly
 	resources::screen->invalidate(recruit->recruit_hex_);
 
-	int team_index = resources::screen->viewing_team();
+	int team_index = side_actions_->team_index();
 
 	//Check that destination hex is still free
 	if(resources::units->find(recruit->recruit_hex_) != resources::units->end())

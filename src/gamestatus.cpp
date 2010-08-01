@@ -38,6 +38,7 @@
 #include "formula_string_utils.hpp"
 #include "map.hpp"
 #include "pathfind/pathfind.hpp"
+#include "whiteboard/side_actions.hpp"
 
 #include <boost/bind.hpp>
 
@@ -787,6 +788,7 @@ protected:
 		temp_team.set_gold_add(gold_info_add_);
 		teams_.push_back(temp_team);
 		t_ = &teams_.back();
+		t_->get_side_actions()->set_team_index(teams_.size() - 1);
 	}
 
 

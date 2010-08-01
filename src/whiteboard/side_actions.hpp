@@ -42,6 +42,10 @@ public:
 	side_actions();
 	virtual ~side_actions();
 
+	///Must be called only once, right after the team that owns this side_actions is added to the teams vector
+	void set_team_index(size_t team_index);
+	size_t team_index() { assert(team_index_defined_); return team_index_; }
+
 	const action_queue& actions() const { return actions_; }
 
 	/** Gets called when display is drawing a hex, to allow drawing symbols to the screen */
@@ -173,6 +177,8 @@ private:
 	bool validate_iterator(iterator position) { return position >= begin() && position < end(); }
 
 	action_queue actions_;
+	size_t team_index_;
+	bool team_index_defined_;
 };
 
 /** Dumps side_actions on a stream, for debug purposes. */

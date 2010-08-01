@@ -50,11 +50,20 @@ std::ostream &operator<<(std::ostream &s, wb::side_actions const& side_actions)
 
 side_actions::side_actions()
 	: actions_()
+	, team_index_(0)
+	, team_index_defined_(false)
 {
 }
 
 side_actions::~side_actions()
 {
+}
+
+void side_actions::set_team_index(size_t team_index)
+{
+	assert(!team_index_defined_);
+	team_index_ = team_index;
+	team_index_defined_ = true;
 }
 
 void side_actions::draw_hex(const map_location& hex)
