@@ -27,7 +27,8 @@ public class WMLEditor extends XtextEditor
 	public WMLEditor()
 	{
 		super();
-		org.apache.log4j.Logger.getLogger(XtextEditor.class).setLevel(Level.DEBUG);
+		if (WMLUiModule.DEBUG)
+			org.apache.log4j.Logger.getLogger(XtextEditor.class).setLevel(Level.DEBUG);
 		// activate the wesnoth plugin
 		Activator.getDefault();
 	}

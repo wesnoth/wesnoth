@@ -40,6 +40,8 @@ import com.google.inject.Binder;
 @SuppressWarnings("all")
 public class WMLUiModule extends org.wesnoth.ui.AbstractWMLUiModule
 {
+	public final static boolean DEBUG = true;
+
 	public WMLUiModule(AbstractUIPlugin plugin) {
 		super(plugin);
 	}

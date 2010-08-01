@@ -15,14 +15,13 @@ import org.eclipse.xtext.parsetree.LeafNode;
 import org.eclipse.xtext.parsetree.NodeUtil;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
+import org.wesnoth.ui.WMLUiModule;
 
 import wesnoth_eclipse_plugin.schema.SchemaParser;
 import wesnoth_eclipse_plugin.schema.Tag;
 
 public class WMLProposalProvider extends AbstractWMLProposalProvider
 {
-	public final static boolean DEBUG_AUTOCOMPLETE = true;
-
 	public WMLProposalProvider()
 	{
 		super();
@@ -76,7 +75,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 	 */
 	private void dbg(Object str)
 	{
-		if (!(DEBUG_AUTOCOMPLETE))
+		if (!(WMLUiModule.DEBUG))
 			return;
 		System.out.println(str.toString());
 	}
