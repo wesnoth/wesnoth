@@ -26,6 +26,7 @@
 
 #include "foreach.hpp"
 #include "game_display.hpp"
+#include "game_end_exceptions.hpp"
 #include "resources.hpp"
 
 #include <set>
@@ -115,7 +116,16 @@ side_actions::iterator side_actions::execute(side_actions::iterator position)
 		LOG_WB << "Before execution, " << *this << "\n";
 		size_t distance = std::distance(begin(), position);
 		action_ptr action = *position;
-		bool finished = action->execute();
+		bool finished;
+		try	{
+			 finished = action->execute();
+		} catch (end_turn_exception e) {
+			actions_.erase(position);
+			LOG_WB << "End turn exception caught during execution, deleting action. " << *this << "\n";
+			validate_actions();
+			throw;
+		}
+
 		if (finished)
 		{
 			actions_.erase(position);

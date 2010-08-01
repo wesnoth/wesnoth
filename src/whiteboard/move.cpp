@@ -25,6 +25,7 @@
 #include "config.hpp"
 #include "foreach.hpp"
 #include "game_display.hpp"
+#include "game_end_exceptions.hpp"
 #include "mouse_events.hpp"
 #include "play_controller.hpp"
 #include "replay.hpp"
@@ -111,7 +112,12 @@ bool move::execute()
 	{
 		events::mouse_handler& mouse_handler = resources::controller->get_mouse_handler_base();
 		team const& owner_team = resources::teams->at(team_index());
-		steps_finished = mouse_handler.move_unit_along_route(*route_, &final_location, owner_team.auto_shroud_updates());
+		try {
+			steps_finished = mouse_handler.move_unit_along_route(*route_, &final_location, owner_team.auto_shroud_updates());
+		} catch (end_turn_exception e) {
+			arrow_->set_alpha(ALPHA_NORMAL);
+			throw; // we rely on the caller to delete this action
+		}
 		// final_location now contains the final unit location
 		// if that isn't needed, pass NULL rather than &final_location
 	}
