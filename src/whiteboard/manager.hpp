@@ -67,11 +67,8 @@ public:
 	void on_deselect_hex(){ erase_temp_move();}
 	void on_gamestate_change();
 
-	side_actions_ptr viewer_actions() const;
-	side_actions_ptr current_side_actions() const;
-	bool current_side_has_actions() const;
+	static bool current_side_has_actions();
 	void validate_viewer_actions();
-
 
 	/**
 	 * Temporarily apply the effects of the current team's
@@ -81,12 +78,13 @@ public:
 	void set_real_unit_map();
 	bool has_planned_unit_map() const { return planned_unit_map_active_; }
 
-	///Applies the future unit map and returns a pointer to the unit at hex, NULL if none
-	unit* find_unit_future(map_location hex);
-	///Returns the unit (if any) located in the current selected hex on the future unit map.
-	unit* find_selected_future();
-	///If there's a unit of the current viewing team capable of actions in the selected hex, returns it.
-	unit* find_selected_actor_future();
+	///Applies the future unit map and returns a pointer to the unit at hex,
+	///NULL if none is visible to the current viewer side
+	static unit* future_visible_unit(map_location hex, int viewer_side = viewer_side());
+	///Applies the future unit map and returns a pointer to the unit at hex,
+	///NULL if none is visible to the current viewer team
+	/// @param on_side Only search for units of this side.
+	static unit* future_visible_unit(int on_side, map_location hex, int viewer_side = viewer_side());
 
 	/**
 	 * Callback from the display when drawing hexes, to allow the whiteboard to
@@ -132,6 +130,13 @@ public:
 
 private:
 	void validate_actions_if_needed();
+
+	/// returns resources::screen->viewing_team()
+	static size_t viewer_team();
+	/// returns resources::screen->viewing_side()
+	static int viewer_side();
+	static side_actions_ptr viewer_actions();
+	static side_actions_ptr current_side_actions();
 
 	///Tracks whether the whiteboard is active.
 	bool active_;

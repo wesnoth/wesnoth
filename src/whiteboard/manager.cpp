@@ -192,21 +192,21 @@ void manager::on_finish_side_turn()
 	LOG_WB << "on_finish_side_turn()\n";
 }
 
-side_actions_ptr manager::viewer_actions() const
+side_actions_ptr manager::viewer_actions()
 {
 	side_actions_ptr side_actions =
 			(*resources::teams)[resources::screen->viewing_team()].get_side_actions();
 	return side_actions;
 }
 
-side_actions_ptr manager::current_side_actions() const
+side_actions_ptr manager::current_side_actions()
 {
 	side_actions_ptr side_actions =
 			(*resources::teams)[resources::controller->current_side() - 1].get_side_actions();
 	return side_actions;
 }
 
-bool manager::current_side_has_actions() const
+bool manager::current_side_has_actions()
 {
 	return !current_side_actions()->empty();
 }
@@ -272,26 +272,18 @@ void manager::set_real_unit_map()
 	}
 }
 
-unit* manager::find_unit_future(map_location hex)
+unit* manager::future_visible_unit(map_location hex, int viewer_side)
 {
 	scoped_planned_unit_map planned_unit_map;
-	assert(has_planned_unit_map());
-	unit_map::iterator it;
-		if ((it = resources::units->find(hex)) != resources::units->end())
-			return &*it;
-		else
-			return NULL;
+	assert(resources::whiteboard->has_planned_unit_map());
+	//use global method get_visible_unit
+	return get_visible_unit(hex, resources::teams->at(viewer_side - 1), false);
 }
 
-unit* manager::find_selected_future()
+unit* manager::future_visible_unit(int on_side, map_location hex, int viewer_side)
 {
-	return find_unit_future(resources::screen->selected_hex());
-}
-
-unit* manager::find_selected_actor_future()
-{
-	unit* unit = find_selected_future();
-	if (unit && unit->side() == resources::screen->viewing_side())
+	unit* unit = future_visible_unit(hex, viewer_side);
+	if (unit && unit->side() == on_side)
 		return unit;
 	else
 		return NULL;
@@ -347,7 +339,7 @@ void manager::create_temp_move()
 
 	if (route.steps.empty() || route.steps.size() < 2) return;
 
-	unit const* selected_unit = this->find_selected_actor_future();
+	unit const* selected_unit = future_visible_unit(resources::screen->selected_hex(), viewer_side());
 	if (!selected_unit) return;
 	if (selected_unit->side() != resources::screen->viewing_side()) return;
 
@@ -470,7 +462,7 @@ void manager::save_temp_attack(const map_location& attack_from, const map_locati
 			route_->steps.push_back(attack_from);
 		}
 
-		unit* attacking_unit = find_unit_future(source_hex);
+		unit const* attacking_unit = future_visible_unit(source_hex);
 		assert(attacking_unit);
 
 		int weapon_choice = resources::controller->get_mouse_handler_base().show_attack_dialog(
@@ -520,7 +512,7 @@ void manager::contextual_execute()
 
 		action_ptr action;
 		side_actions::iterator it;
-		unit* selected_unit = this->find_selected_actor_future();
+		unit const* selected_unit = future_visible_unit(resources::screen->selected_hex(), viewer_side());
 		if (selected_unit &&
 				(it = viewer_actions()->find_first_action_of(*selected_unit)) != viewer_actions()->end())
 		{
@@ -553,7 +545,7 @@ void manager::contextual_delete()
 
 		action_ptr action;
 		side_actions::iterator it;
-		unit* selected_unit = this->find_selected_actor_future();
+		unit const* selected_unit = future_visible_unit(resources::screen->selected_hex(), viewer_side());
 		if (selected_unit &&
 				(it = viewer_actions()->find_first_action_of(*selected_unit)) != viewer_actions()->end())
 		{
@@ -636,6 +628,17 @@ void manager::validate_actions_if_needed()
 	}
 	gamestate_mutated_ = false;
 }
+
+
+size_t manager::viewer_team()
+{
+	return resources::screen->viewing_team();
+}
+int manager::viewer_side()
+{
+	return resources::screen->viewing_side();
+}
+
 
 scoped_planned_unit_map::scoped_planned_unit_map()
 :has_planned_unit_map_(resources::whiteboard->has_planned_unit_map())

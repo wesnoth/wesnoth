@@ -73,7 +73,7 @@ move::move(size_t team_index, const pathfind::marked_route& route,
 {
 	assert(!route_->steps.empty());
 
-	unit_ = resources::whiteboard->find_unit_future(get_source_hex());
+	unit_ = resources::whiteboard->future_visible_unit(get_source_hex());
 	assert(unit_);
 	unit_id_ = unit_->id();
 
