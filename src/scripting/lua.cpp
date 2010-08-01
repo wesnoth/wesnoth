@@ -347,7 +347,7 @@ bool luaW_toconfig(lua_State *L, int index, config &cfg, int tstring_meta)
 /**
  * Converts an optional table or vconfig to a config object.
  */
-config luaW_checkconfig(lua_State *L, int index)
+static config luaW_checkconfig(lua_State *L, int index)
 {
 	config result;
 	if (!luaW_toconfig(L, index, result))
