@@ -79,10 +79,10 @@ public:
 	bool has_planned_unit_map() const { return planned_unit_map_active_; }
 
 	///Applies the future unit map and returns a pointer to the unit at hex,
-	///NULL if none is visible to the current viewer side
+	///NULL if none is visible to the specified viewer side
 	static unit* future_visible_unit(map_location hex, int viewer_side = viewer_side());
 	///Applies the future unit map and returns a pointer to the unit at hex,
-	///NULL if none is visible to the current viewer team
+	///NULL if none is visible to the specified viewer side
 	/// @param on_side Only search for units of this side.
 	static unit* future_visible_unit(int on_side, map_location hex, int viewer_side = viewer_side());
 
