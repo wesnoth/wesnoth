@@ -125,6 +125,7 @@ public:
 	SDL_Color xp_color() const;
 	/** Set to true for some scenario-specific units which should not be renamed */
 	bool unrenamable() const { return unrenamable_; }
+	void set_side(int side) { side_ = side; }
 	int side() const { return side_; }
 	std::string side_id() const;
 	const std::string& team_color() const { return flag_rgb_; }
