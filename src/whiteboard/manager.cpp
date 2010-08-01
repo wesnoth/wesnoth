@@ -485,7 +485,7 @@ bool manager::save_recruit(const std::string& name, int side_num, const map_loca
 {
 	bool created_planned_recruit = false;
 
-	if (active_ && !resources::controller->is_linger_mode()) {
+	if (active_ && !executing_actions_ && !resources::controller->is_linger_mode()) {
 		if (side_num != resources::screen->viewing_side())
 		{
 			LOG_WB <<"manager::save_recruit called for a different side than viewing side.\n";
