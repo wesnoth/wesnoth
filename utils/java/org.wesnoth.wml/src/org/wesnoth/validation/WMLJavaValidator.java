@@ -8,8 +8,18 @@
  *******************************************************************************/
 package org.wesnoth.validation;
 
-public class WMLJavaValidator extends AbstractWMLJavaValidator {
+import org.eclipse.xtext.validation.Check;
+import org.wesnoth.wML.WMLPackage;
+import org.wesnoth.wML.WMLTag;
 
+public class WMLJavaValidator extends AbstractWMLJavaValidator
+{
+	@Check
+	public void checkTagName(WMLTag tag)
+	{
+		if (!tag.getName().equals(tag.getEndName()))
+			error("Incorrect closing tag name", WMLPackage.WML_TAG__END_NAME);
+	}
 //	@Check
 //	public void checkGreetingStartsWithCapital(Attributes attr) {
 		//System.out.println("Bla: ");
