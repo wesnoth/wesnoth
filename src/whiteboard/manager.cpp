@@ -606,6 +606,11 @@ bool manager::unit_has_actions(const unit& unit) const
 	return viewer_actions()->unit_has_actions(unit);
 }
 
+int manager::get_spent_gold_for(int side)
+{
+	return resources::teams->at(side - 1).get_side_actions()->get_gold_spent();
+}
+
 void manager::fake_unit_deleter::operator() (unit*& fake_unit)
 {
     if (fake_unit)

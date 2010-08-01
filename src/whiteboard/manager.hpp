@@ -124,6 +124,8 @@ public:
 	/** Checks whether the specified unit has at least one planned action */
 	bool unit_has_actions(const unit& unit) const;
 
+	int get_spent_gold_for(int side);
+
 	struct fake_unit_deleter {
 	    void operator() (unit*& ptr);
 	};

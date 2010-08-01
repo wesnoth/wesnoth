@@ -682,8 +682,13 @@ void menu_handler::recruit(int side_num, const map_location &last_hex)
 
 		item_keys.push_back(*it);
 
-		//display units that we can't afford to recruit in red
-		const char prefix = (type->cost() > current_team.gold() ? font::BAD_TEXT : font::NULL_MARKUP);
+		char prefix;
+		{ wb::scoped_planned_pathfind_map future; //< start planned pathfind map scope
+			int wb_gold = resources::whiteboard->get_spent_gold_for(side_num);
+			//display units that we can't afford to recruit in red
+			prefix = (type->cost() > current_team.gold() - wb_gold
+					? font::BAD_TEXT : font::NULL_MARKUP);
+		} // end planned pathfind map scope
 
 		std::stringstream description;
 		description << font::IMAGE << type->image();
@@ -757,7 +762,7 @@ void menu_handler::do_recruit(const std::string &name, int side_num,
 	assert(u_type);
 
 	{ wb::scoped_planned_pathfind_map future; //< start planned pathfind map scope
-		if (u_type->cost() > current_team.gold()) {
+		if (u_type->cost() > current_team.gold() - resources::whiteboard->get_spent_gold_for(side_num)) {
 			gui2::show_transient_message(gui_->video(), "",
 				_("You don't have enough gold to recruit that unit"));
 			return;
