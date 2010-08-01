@@ -652,13 +652,13 @@ public class WMLGrammarAccess extends AbstractGrammarElementFinder {
 	} 
 
 	//terminal ID:
-	//	("a".."z" | "A".."Z" | "0".."9" | "_" | ",")+;
+	//	("a".."z" | "A".."Z" | "0".."9" | "_" | "-" | ",")+;
 	public TerminalRule getIDRule() {
 		return (tID != null) ? tID : (tID = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "ID"));
 	} 
 
 	//terminal EOL:
-	//	("\r" | "\n")+;
+	//	"\r" | "\n";
 	public TerminalRule getEOLRule() {
 		return (tEOL != null) ? tEOL : (tEOL = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "EOL"));
 	} 

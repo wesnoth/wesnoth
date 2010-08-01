@@ -274,6 +274,7 @@
         <right value="9"/>
       </elements>
       <elements xsi:type="xtext:Keyword" value="_"/>
+      <elements xsi:type="xtext:Keyword" value="-"/>
       <elements xsi:type="xtext:Keyword" value=","/>
     </alternatives>
   </rules>
@@ -281,7 +282,7 @@
     <type metamodel="//@metamodelDeclarations.1">
       <classifier xsi:type="ecore:EDataType" href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </type>
-    <alternatives xsi:type="xtext:Alternatives" cardinality="+">
+    <alternatives xsi:type="xtext:Alternatives">
       <elements xsi:type="xtext:Keyword" value="&#xD;"/>
       <elements xsi:type="xtext:Keyword" value="&#xA;"/>
     </alternatives>
