@@ -32,6 +32,7 @@
 #include "resources.hpp"
 #include "team.hpp"
 #include "tod_manager.hpp"
+#include "whiteboard/manager.hpp"
 
 #include <iostream>
 #include <ctime>
@@ -524,14 +525,16 @@ report generate_report(TYPE type,
 	// For the following status reports, show them in gray text
 	// when it is not the active player's turn.
 	case GOLD: {
+		//Supposes the full/"pathfind" unit map is applied
+		int fake_gold = current_team.gold() - resources::whiteboard->get_spent_gold_for(current_side);
 		char const *end = naps;
 		if (current_side != playing_side)
 			str << span_color(font::GRAY_COLOR);
-		else if (current_team.gold() < 0)
+		else if (fake_gold < 0)
 			str << span_color(font::BAD_COLOR);
 		else
 			end = "";
-		str << current_team.gold() << end;
+		str << fake_gold << end;
 		break;
 	}
 	case VILLAGES: {

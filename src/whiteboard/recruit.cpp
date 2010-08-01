@@ -101,6 +101,7 @@ void recruit::apply_temp_modifier(unit_map& unit_map)
 	 * Add cost to money spent on recruits.
 	 */
 	resources::teams->at(team_index()).get_side_actions()->change_gold_spent_by(temp_cost_);
+	resources::screen->invalidate_game_status();
 
 	temp_unit_ = NULL;
 }
@@ -113,6 +114,7 @@ void recruit::remove_temp_modifier(unit_map& unit_map)
 	 * Remove cost from money spent on recruits.
 	 */
 	resources::teams->at(team_index()).get_side_actions()->change_gold_spent_by(-temp_cost_);
+	resources::screen->invalidate_game_status();
 }
 
 unit* recruit::create_corresponding_unit()
