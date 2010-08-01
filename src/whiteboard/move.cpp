@@ -60,14 +60,6 @@ const double move::ALPHA_NORMAL = 0.6;
 const std::string move::ARROW_STYLE_VALID = "";
 const std::string move::ARROW_STYLE_INVALID = "invalid";
 
-//FIXME: move this out of here if it ends up being used only once
-static team& get_current_team()
-{
-	int current_side = resources::controller->current_side();
-	team& current_team = (*resources::teams)[current_side - 1];
-	return current_team;
-}
-
 move::move(size_t team_index, const pathfind::marked_route& route,
 		arrow_ptr arrow, fake_unit_ptr fake_unit)
 : action(team_index),
@@ -118,8 +110,8 @@ bool move::execute()
 	bool steps_finished;
 	{
 		events::mouse_handler& mouse_handler = resources::controller->get_mouse_handler_base();
-		team const& viewing_team = (*resources::teams)[resources::screen->viewing_team()];
-		steps_finished = mouse_handler.move_unit_along_route(*route_, &final_location, viewing_team.auto_shroud_updates());
+		team const& owner_team = resources::teams->at(team_index());
+		steps_finished = mouse_handler.move_unit_along_route(*route_, &final_location, owner_team.auto_shroud_updates());
 		// final_location now contains the final unit location
 		// if that isn't needed, pass NULL rather than &final_location
 	}
@@ -204,7 +196,8 @@ void move::set_route(const pathfind::marked_route& route)
 bool move::calculate_new_route(const map_location& source_hex, const map_location& dest_hex)
 {
 	pathfind::plain_route new_plain_route;
-	pathfind::shortest_path_calculator path_calc(*get_unit(), get_current_team(), *resources::units,
+	pathfind::shortest_path_calculator path_calc(*get_unit(),
+						resources::teams->at(team_index()), *resources::units,
 						*resources::teams, *resources::game_map);
 	new_plain_route = pathfind::a_star_search(source_hex,
 						dest_hex, 10000, &path_calc, resources::game_map->w(), resources::game_map->h());
