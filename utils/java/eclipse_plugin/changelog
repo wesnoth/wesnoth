@@ -2,6 +2,11 @@ Eclipse plugin changelog
 
 0.3.0
 	* Added hyperlink on maps, so they are opened in the game editor when clicked or F3 is pressed
+	* The *.map files are opened automatically in the game map editor
+	* The grammar was updated so the editor will support a broader variety of wml code
+	** Autocompletion **
+		- tag names
+		- mandatory tag keys are automatically added for each auto-completed tag
 
 0.2.1
 	* The workspace setup is done automatically on plugin start (first usage of it's features)
@@ -14,22 +19,30 @@ Eclipse plugin changelog
 0.2.0
 	26 June 2010
 	* updated the editor to xtext 1.0.0
+	** Wizards **
+		- era
+		- faction
+		- dynamically generated wizards for every tag, based on wml schema
+	** Menus **
+		- added wmlscope, wmlindent on preprocessor menu
+		- open campaign/scenario in game
+		- open the game
 
+0.0.1
 	* Misc
-	- created the TemplateProvider that manages the templates
-	for various file types
-	- created the Preferences page for plugin related preferences
-	- added the update site for the plugin (http://eclipse.wesnoth.org)
+		- created the TemplateProvider that manages the templates
+		for various file types
+		- created the Preferences page for plugin related preferences
+		- added the update site for the plugin (http://eclipse.wesnoth.org)
 
-	* Wizards
-	- campaign
-	- scenario
+	** Wizards **
+		- campaign
+		- scenario
 
-	* Menus
-	- Opening the editor
-	- Importing wesnoth map
-	- Open selected map in the map editor
-	- Open selected scenario in game
-	- Run wmllint on different files and see the output
-	- See preprocessor output for different files
-
+	** Menus **
+		- Opening the editor
+		- Importing wesnoth map
+		- Open selected map in the map editor
+		- Open selected scenario in game
+		- Run wmllint on different files and see the output
+		- See preprocessor output for different files
