@@ -91,8 +91,9 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 		proposal.append("]\n");
 		for(TagKey key : keys)
 		{
-			proposal.append(String.format("\t%s%s=\n",
-					indent, key.getName()));
+			if (key.getCardinality() == '1')
+				proposal.append(String.format("\t%s%s=\n",
+						indent, key.getName()));
 		}
 		proposal.append(String.format("%s[/%s]",indent, tagName));
 		return proposal.toString();
