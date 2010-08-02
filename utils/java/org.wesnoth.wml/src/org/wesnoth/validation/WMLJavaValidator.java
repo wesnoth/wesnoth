@@ -27,7 +27,8 @@ public class WMLJavaValidator extends AbstractWMLJavaValidator
 		if (node != null)
 		{
 			LeafNode parentNode = (LeafNode)
-						NodeUtil.findLeafNodeAtOffset(node, node.getOffset() + 2);
+						NodeUtil.findLeafNodeAtOffset(node.getParent(),
+								node.getParent().getOffset() + 2);
 
 			boolean found = false;
 			String searchName = parentNode.getText();
@@ -35,6 +36,7 @@ public class WMLJavaValidator extends AbstractWMLJavaValidator
 			{
 				searchName = "root";
 			}
+			System.out.println(searchName);
 			if (SchemaParser.getInstance().getTags().get(searchName) != null)
 			{
 				for(Tag childTag : SchemaParser.getInstance().getTags().get(searchName).
