@@ -185,7 +185,7 @@ protected:
 
 	persist_context &add_child(const std::string &key);
 public:
-	virtual bool clear_var(std::string &) = 0;
+	virtual bool clear_var(const std::string &) = 0;
 	virtual config get_var(const std::string &) const = 0;
 	virtual bool set_var(const std::string &, const config &) = 0;
 	virtual bool start_transaction () = 0;
