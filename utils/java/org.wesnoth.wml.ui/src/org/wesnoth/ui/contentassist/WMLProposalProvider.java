@@ -8,6 +8,9 @@
  *******************************************************************************/
 package org.wesnoth.ui.contentassist;
 
+import java.util.Properties;
+
+import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.text.contentassist.ICompletionProposal;
 import org.eclipse.xtext.Assignment;
@@ -17,13 +20,18 @@ import org.eclipse.xtext.parsetree.LeafNode;
 import org.eclipse.xtext.parsetree.NodeUtil;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
+import org.eclipse.xtext.ui.editor.utils.EditorUtils;
 import org.wesnoth.ui.WMLUiModule;
+import org.wesnoth.ui.labeling.WMLLabelProvider;
+import org.wesnoth.wML.WMLKey;
 import org.wesnoth.wML.WMLTag;
 import org.wesnoth.wML.impl.WMLFactoryImpl;
 
+import wesnoth_eclipse_plugin.Logger;
 import wesnoth_eclipse_plugin.schema.SchemaParser;
 import wesnoth_eclipse_plugin.schema.Tag;
 import wesnoth_eclipse_plugin.schema.TagKey;
+import wesnoth_eclipse_plugin.utils.ProjectUtils;
 
 public class WMLProposalProvider extends AbstractWMLProposalProvider
 {
@@ -79,6 +87,38 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 	private void addKeyValueProposals(EObject model,
 			ContentAssistContext context, ICompletionProposalAcceptor acceptor)
 	{
+		if (model != null && model instanceof WMLKey)
+		{
+			dbg(model);
+			WMLKey key = (WMLKey)model;
+
+			// handle the next_scenario
+			if (key.getName().equals("next_scenario"))
+			{
+				IFile file = (IFile)EditorUtils.getActiveXtextEditor()
+								.getEditorInput().getAdapter(IFile.class);
+				if (file == null)
+				{
+					Logger.getInstance().logError("FATAL! file is null (and it shouldn't)");
+					return;
+				}
+				Properties props = ProjectUtils.getPropertiesForProject(file.getProject());
+				//TODO: dummy entry. remove when proper architecture is ready
+				props.setProperty("scenarios", "01_scen1,02_scen2,");
+				if (props.getProperty("scenarios") != null)
+				{
+					String[] scenarios = props.getProperty("scenarios").split(",");
+					for(String scenarioId : scenarios)
+					{
+						if (scenarioId.isEmpty())
+							continue;
+						acceptor.accept(createCompletionProposal(scenarioId,
+								scenarioId, WMLLabelProvider.getImageByName("scenario.png"),
+								context));
+					}
+				}
+			}
+		}
 	}
 
 	/**
