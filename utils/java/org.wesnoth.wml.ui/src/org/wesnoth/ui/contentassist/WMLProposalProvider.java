@@ -49,7 +49,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 		addTagProposals(model, false, context, acceptor);
 	}
 
-	private void addTagProposals(EObject model, boolean firstBracket,
+	private void addTagProposals(EObject model, boolean ruleProposal,
 			ContentAssistContext context, ICompletionProposalAcceptor acceptor)
 	{
 		if (context.getCurrentNode().eContainer() != null &&
@@ -84,7 +84,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 			dbg("root node. adding tags: "+ rootTag.getTagChildren().size());
 			for(Tag tag : rootTag.getTagChildren())
 			{
-				acceptor.accept(tagProposal(tag, "", firstBracket, context));
+				acceptor.accept(tagProposal(tag, "", ruleProposal, context));
 			}
 		}
 	}
@@ -92,16 +92,16 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 	 * Returns the proposal for the specified tag, usign the specified indent
 	 * @param tag The tag from which to construct the proposal
 	 * @param indent The indent used to indent the tag and subsequent keys
-	 * @param firstBracket Whether to add or not the '[' to the autcompletion
+	 * @param ruleProposal Whether this is a proposal for an entire rule or not
 	 * @param context
 	 * @return
 	 */
-	private ICompletionProposal tagProposal(Tag tag, String indent, boolean firstBracket,
+	private ICompletionProposal tagProposal(Tag tag, String indent, boolean ruleProposal,
 					ContentAssistContext context)
 	{
 //		dbg("indent:[" + indent +"]");
 		StringBuilder proposal = new StringBuilder();
-		if (firstBracket)
+		if (ruleProposal)
 			proposal.append("[");
 		proposal.append(tag.getName());
 		proposal.append("]\n");
