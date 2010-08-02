@@ -18,6 +18,7 @@ import org.eclipse.xtext.parsetree.NodeUtil;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
 import org.wesnoth.ui.WMLUiModule;
+import org.wesnoth.wML.WMLTag;
 
 import wesnoth_eclipse_plugin.schema.SchemaParser;
 import wesnoth_eclipse_plugin.schema.Tag;
@@ -33,10 +34,29 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 	}
 
 	@Override
+	public void completeWMLKey_Name(EObject model, Assignment assignment,
+			ContentAssistContext context, ICompletionProposalAcceptor acceptor)
+	{
+		super.completeWMLKey_Name(model, assignment, context, acceptor);
+		dbg("completing wmlkeyname");
+		addKeyNameProposals(model, context, acceptor);
+	}
+
+	@Override
+	public void complete_WMLKeyValue(EObject model, RuleCall ruleCall,
+			ContentAssistContext context, ICompletionProposalAcceptor acceptor)
+	{
+		super.complete_WMLKeyValue(model, ruleCall, context, acceptor);
+		dbg("completing wmlkeyvalue");
+		addKeyValueProposals(model, context, acceptor);
+	}
+
+	@Override
 	public void complete_WMLTag(EObject model, RuleCall ruleCall,
 			ContentAssistContext context, ICompletionProposalAcceptor acceptor)
 	{
 		super.complete_WMLTag(model, ruleCall, context, acceptor);
+		dbg("completing wmltag - rule");
 		addTagProposals(model, true, context, acceptor);
 	}
 
@@ -49,11 +69,54 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 		addTagProposals(model, false, context, acceptor);
 	}
 
+	/**
+	 * Adss the wml key's names proposals
+	 * @param model
+	 * @param context
+	 * @param acceptor
+	 */
+	private void addKeyValueProposals(EObject model,
+			ContentAssistContext context, ICompletionProposalAcceptor acceptor)
+	{
+
+	}
+
+	/**
+	 * Adss the wml key's names proposals
+	 * @param model
+	 * @param context
+	 * @param acceptor
+	 */
+	private void addKeyNameProposals(EObject model,
+			ContentAssistContext context, ICompletionProposalAcceptor acceptor)
+	{
+		if (model instanceof WMLTag)
+		{
+			WMLTag tag = (WMLTag)model;
+			if (SchemaParser.getInstance().	getTags().get(tag.getName()) != null)
+			{
+				for(TagKey key : SchemaParser.getInstance().
+						getTags().get(tag.getName()).getKeyChildren())
+				{
+					acceptor.accept(createCompletionProposal(key.getName(),
+							key.getName() + "=", context));
+				}
+			}
+		}
+	}
+
+	/**
+	 * Adds the tag proposals
+	 * @param model
+	 * @param ruleProposal
+	 * @param context
+	 * @param acceptor
+	 */
 	private void addTagProposals(EObject model, boolean ruleProposal,
 			ContentAssistContext context, ICompletionProposalAcceptor acceptor)
 	{
-		if (context.getCurrentNode().eContainer() != null &&
-			context.getCurrentNode().eContainer() instanceof AbstractNode &&
+		//TODO: enhace
+		if (checkContextNodeIsAbstractNode(context) &&
 			((AbstractNode)context.getCurrentNode().eContainer()).getParent() != null &&
 			((AbstractNode)context.getCurrentNode().eContainer()).getParent().eContainer() != null)
 		{
@@ -88,6 +151,13 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 			}
 		}
 	}
+
+	private boolean checkContextNodeIsAbstractNode(ContentAssistContext context)
+	{
+		return (context.getCurrentNode().eContainer() != null &&
+				context.getCurrentNode().eContainer() instanceof AbstractNode);
+	}
+
 	/**
 	 * Returns the proposal for the specified tag, usign the specified indent
 	 * @param tag The tag from which to construct the proposal
