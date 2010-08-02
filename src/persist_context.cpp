@@ -62,7 +62,7 @@ persist_file_context::persist_file_context(const std::string &name_space)
 	active_ = &(root_node_.child(namespace_.next()));
 }
 
-bool persist_file_context::clear_var(std::string &global)
+bool persist_file_context::clear_var(const std::string &global)
 {
 //	if (cfg_.empty()) {
 //		load_persist_data(namespace_.root(),cfg_);
@@ -75,10 +75,10 @@ bool persist_file_context::clear_var(std::string &global)
 		if (!exists) {
 			if (cfg.child(global)) {
 				exists = true;
-				std::string::iterator index_start = std::find(global.begin(),global.end(),'[');
+				std::string::const_iterator index_start = std::find(global.begin(),global.end(),'[');
 				if (index_start != global.end())
 				{
-					const std::string::iterator index_end = std::find(global.begin(),global.end(),']');
+					const std::string::const_iterator index_end = std::find(global.begin(),global.end(),']');
 					const std::string index_str(index_start+1,index_end);
 					size_t index = static_cast<size_t>(lexical_cast_default<int>(index_str));
 					cfg.remove_child(global,index);
@@ -116,8 +116,10 @@ config persist_file_context::get_var(const std::string &global) const
 
 	config &cfg = active_->cfg_.child("variables");
 	if (cfg) {
-		if (cfg.child(global)) {
-			ret.add_child(global,cfg.child(global));
+		size_t arrsize = cfg.child_count(global);
+		if (arrsize > 0) {
+			for (size_t i = 0; i < arrsize; i++)
+				ret.add_child(global,cfg.child(global,i));
 		} else {
 			ret = pack_scalar(global,cfg[global]);
 		}
@@ -158,9 +160,13 @@ bool persist_file_context::set_var(const std::string &global,const config &val)
 
 	config &cfg = active_->cfg_.child_or_add("variables");
 	if (val.has_attribute(global)) {
-		cfg[global] = val[global];
+		if (val[global].empty())
+			clear_var(global);
+		else
+			cfg[global] = val[global];
 	} else {
-		cfg.add_child(global,val.child(global));
+		cfg.clear_children(global);
+		cfg.append(val);
 	}
 //	dirty_ = true;
 	return save_context();

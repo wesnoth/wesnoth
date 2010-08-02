@@ -183,7 +183,6 @@ protected:
 		, valid_(namespace_.valid())
 	{};
 
-	//static persist_context invalid;
 	persist_context &add_child(const std::string &key);
 public:
 	virtual bool clear_var(std::string &) = 0;
@@ -209,7 +208,7 @@ private:
 
 public:
 	persist_file_context(const std::string &name_space);
-	bool clear_var(std::string &);
+	bool clear_var(const std::string &);
 	config get_var(const std::string &) const;
 	bool set_var(const std::string &, const config &);
 
