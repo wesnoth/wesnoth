@@ -1986,12 +1986,26 @@ int combat_modifier(const map_location &loc,
 {
 	const time_of_day &tod = resources::tod_manager->time_of_day_at(loc);
 
-	int bonus = tod.lawful_bonus;
+	int bonus;
+	int lawful_bonus = tod.lawful_bonus;
+	int liminal_bonus = tod.liminal_bonus;
 
-	if(alignment == unit_type::NEUTRAL)
-		bonus = 0;
-	else if(alignment == unit_type::CHAOTIC)
-		bonus = -bonus;
+	switch(alignment) {
+		case unit_type::LAWFUL:
+			bonus = lawful_bonus;
+			break;
+		case unit_type::NEUTRAL:
+			bonus = 0;
+			break;
+		case unit_type::CHAOTIC:
+			bonus = -lawful_bonus;
+			break;
+		case unit_type::LIMINAL:
+			bonus = liminal_bonus;
+		default:
+			bonus = 0;
+	}
+
 	if(is_fearless)
 		bonus = std::max<int>(bonus, 0);
 
