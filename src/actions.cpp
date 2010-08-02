@@ -2002,6 +2002,7 @@ int combat_modifier(const map_location &loc,
 			break;
 		case unit_type::LIMINAL:
 			bonus = liminal_bonus;
+			break;
 		default:
 			bonus = 0;
 	}
