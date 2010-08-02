@@ -1621,6 +1621,7 @@ void unit::write(config& cfg) const
 			break;
 		case unit_type::LIMINAL:
 			cfg["alignment"] = "liminal";
+			break;
 		default:
 			cfg["alignment"] = "neutral";
 	}
