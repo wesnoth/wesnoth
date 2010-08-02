@@ -9,6 +9,7 @@
 package org.wesnoth.ui;
 
 import org.eclipse.jface.text.hyperlink.IHyperlinkDetector;
+import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtext.resource.ILocationInFileProvider;
 import org.eclipse.xtext.ui.editor.XtextEditor;
@@ -24,6 +25,7 @@ import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculato
 import org.eclipse.xtext.ui.editor.syntaxcoloring.antlr.AbstractAntlrTokenToAttributeIdMapper;
 import org.wesnoth.ui.autoedit.WMLAutoEditStrategy;
 import org.wesnoth.ui.contentassist.WMLContentAssistContext;
+import org.wesnoth.ui.labeling.WMLLabelProvider;
 import org.wesnoth.ui.navigation.WMLHyperlinkHelper;
 import org.wesnoth.ui.outline.WMLTransformer;
 import org.wesnoth.ui.resource.WMLLocationInFileProvider;
@@ -119,5 +121,11 @@ public class WMLUiModule extends org.wesnoth.ui.AbstractWMLUiModule
 	public Class<? extends DefaultAutoEditStrategy> bindAutoEditStrategy()
 	{
 		return WMLAutoEditStrategy.class;
+	}
+
+	@Override
+	public Class<? extends ILabelProvider> bindILabelProvider()
+	{
+		return WMLLabelProvider.class;
 	}
 }

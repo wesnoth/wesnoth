@@ -8,6 +8,9 @@
  *******************************************************************************/
 package org.wesnoth.ui.labeling;
 
+import java.util.Locale;
+
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider;
 
@@ -25,15 +28,13 @@ public class WMLLabelProvider extends DefaultEObjectLabelProvider {
 		super(delegate);
 	}
 
-/*
-	//Labels and icons can be computed like this:
-
-	String text(MyModel ele) {
-	  return "my "+ele.getName();
+	@Override
+	protected Object doGetImage(Object element)
+	{
+		if (element instanceof EClass)
+		{
+			return ((EClass)element).getName().toLowerCase(Locale.ENGLISH) + ".png";
+		}
+		return super.doGetImage(element);
 	}
-
-    String image(MyModel ele) {
-      return "MyModel.gif";
-    }
-*/
 }

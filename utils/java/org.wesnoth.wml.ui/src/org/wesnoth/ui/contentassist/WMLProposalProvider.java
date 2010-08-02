@@ -19,6 +19,7 @@ import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
 import org.wesnoth.ui.WMLUiModule;
 import org.wesnoth.wML.WMLTag;
+import org.wesnoth.wML.impl.WMLFactoryImpl;
 
 import wesnoth_eclipse_plugin.schema.SchemaParser;
 import wesnoth_eclipse_plugin.schema.Tag;
@@ -78,7 +79,6 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 	private void addKeyValueProposals(EObject model,
 			ContentAssistContext context, ICompletionProposalAcceptor acceptor)
 	{
-
 	}
 
 	/**
@@ -98,8 +98,10 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 				for(TagKey key : SchemaParser.getInstance().
 						getTags().get(tag.getName()).getKeyChildren())
 				{
-					acceptor.accept(createCompletionProposal(key.getName(),
-							key.getName() + "=", context));
+					acceptor.accept(createCompletionProposal(key.getName() + "=",
+							key.getName(),
+							getImage(WMLFactoryImpl.eINSTANCE.getWMLPackage().getWMLKey()),
+							context));
 				}
 			}
 		}
@@ -115,7 +117,6 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 	private void addTagProposals(EObject model, boolean ruleProposal,
 			ContentAssistContext context, ICompletionProposalAcceptor acceptor)
 	{
-		//TODO: enhace
 		if (checkContextNodeIsAbstractNode(context) &&
 			((AbstractNode)context.getCurrentNode().eContainer()).getParent() != null &&
 			((AbstractNode)context.getCurrentNode().eContainer()).getParent().eContainer() != null)
@@ -182,13 +183,15 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 						indent, key.getName()));
 		}
 		proposal.append(String.format("%s[/%s]",indent, tag.getName()));
-		return createCompletionProposal(tag.getName(), proposal.toString(), context);
+		return createCompletionProposal(proposal.toString(), tag.getName(),
+					getImage(WMLFactoryImpl.eINSTANCE.getWMLPackage().getWMLTag()),
+					context);
 	}
 
-	private ICompletionProposal createCompletionProposal(String displayName, String content,
+	private ICompletionProposal createCompletionProposal(String proposal, String displayString,
 					ContentAssistContext context)
 	{
-		return createCompletionProposal(content, displayName, null, context);
+		return createCompletionProposal(proposal, displayString, null, context);
 	}
 
 	/**
