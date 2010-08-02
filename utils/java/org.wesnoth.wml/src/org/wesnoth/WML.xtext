@@ -43,8 +43,8 @@ WMLMacroCall:
 		)*
 	'}';
 	
-WMLMacroParameter:
-	'(' param += (WMLValue | WMLTag | WMLMacroCall | WMLKey)+ ')';
+WMLMacroParameter: {WMLMacroParameter}
+	'(' param += (WMLValue | WMLTag | WMLMacroCall | WMLKey)* ')';
 WMLLuaCode:
 	value = LUA_CODE;
 WMLArrayCall:

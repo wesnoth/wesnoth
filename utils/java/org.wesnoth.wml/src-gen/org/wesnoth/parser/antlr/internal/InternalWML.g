@@ -787,17 +787,28 @@ ruleWMLMacroParameter returns [EObject current=null]
     @after { resetLookahead(); 
     	lastConsumedNode = currentNode;
     }:
-(	'(' 
+((
+    { 
+        temp=factory.create(grammarAccess.getWMLMacroParameterAccess().getWMLMacroParameterAction_0().getType().getClassifier());
+        $current = temp; 
+        temp = null;
+        CompositeNode newNode = createCompositeNode(grammarAccess.getWMLMacroParameterAccess().getWMLMacroParameterAction_0(), currentNode.getParent());
+    newNode.getChildren().add(currentNode);
+    moveLookaheadInfo(currentNode, newNode);
+    currentNode = newNode; 
+        associateNodeWithAstElement(currentNode, $current); 
+    }
+)	'(' 
     {
-        createLeafNode(grammarAccess.getWMLMacroParameterAccess().getLeftParenthesisKeyword_0(), null); 
+        createLeafNode(grammarAccess.getWMLMacroParameterAccess().getLeftParenthesisKeyword_1(), null); 
     }
 (
 (
 (
 		{ 
-	        currentNode=createCompositeNode(grammarAccess.getWMLMacroParameterAccess().getParamWMLValueParserRuleCall_1_0_0(), currentNode); 
+	        currentNode=createCompositeNode(grammarAccess.getWMLMacroParameterAccess().getParamWMLValueParserRuleCall_2_0_0(), currentNode); 
 	    }
-		lv_param_1_1=ruleWMLValue		{
+		lv_param_2_1=ruleWMLValue		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getWMLMacroParameterRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -806,7 +817,7 @@ ruleWMLMacroParameter returns [EObject current=null]
 	       		add(
 	       			$current, 
 	       			"param",
-	        		lv_param_1_1, 
+	        		lv_param_2_1, 
 	        		"WMLValue", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -816,9 +827,9 @@ ruleWMLMacroParameter returns [EObject current=null]
 	    }
 
     |		{ 
-	        currentNode=createCompositeNode(grammarAccess.getWMLMacroParameterAccess().getParamWMLTagParserRuleCall_1_0_1(), currentNode); 
+	        currentNode=createCompositeNode(grammarAccess.getWMLMacroParameterAccess().getParamWMLTagParserRuleCall_2_0_1(), currentNode); 
 	    }
-		lv_param_1_2=ruleWMLTag		{
+		lv_param_2_2=ruleWMLTag		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getWMLMacroParameterRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -827,7 +838,7 @@ ruleWMLMacroParameter returns [EObject current=null]
 	       		add(
 	       			$current, 
 	       			"param",
-	        		lv_param_1_2, 
+	        		lv_param_2_2, 
 	        		"WMLTag", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -837,9 +848,9 @@ ruleWMLMacroParameter returns [EObject current=null]
 	    }
 
     |		{ 
-	        currentNode=createCompositeNode(grammarAccess.getWMLMacroParameterAccess().getParamWMLMacroCallParserRuleCall_1_0_2(), currentNode); 
+	        currentNode=createCompositeNode(grammarAccess.getWMLMacroParameterAccess().getParamWMLMacroCallParserRuleCall_2_0_2(), currentNode); 
 	    }
-		lv_param_1_3=ruleWMLMacroCall		{
+		lv_param_2_3=ruleWMLMacroCall		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getWMLMacroParameterRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -848,7 +859,7 @@ ruleWMLMacroParameter returns [EObject current=null]
 	       		add(
 	       			$current, 
 	       			"param",
-	        		lv_param_1_3, 
+	        		lv_param_2_3, 
 	        		"WMLMacroCall", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -858,9 +869,9 @@ ruleWMLMacroParameter returns [EObject current=null]
 	    }
 
     |		{ 
-	        currentNode=createCompositeNode(grammarAccess.getWMLMacroParameterAccess().getParamWMLKeyParserRuleCall_1_0_3(), currentNode); 
+	        currentNode=createCompositeNode(grammarAccess.getWMLMacroParameterAccess().getParamWMLKeyParserRuleCall_2_0_3(), currentNode); 
 	    }
-		lv_param_1_4=ruleWMLKey		{
+		lv_param_2_4=ruleWMLKey		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getWMLMacroParameterRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -869,7 +880,7 @@ ruleWMLMacroParameter returns [EObject current=null]
 	       		add(
 	       			$current, 
 	       			"param",
-	        		lv_param_1_4, 
+	        		lv_param_2_4, 
 	        		"WMLKey", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -881,9 +892,9 @@ ruleWMLMacroParameter returns [EObject current=null]
 )
 
 )
-)+	')' 
+)*	')' 
     {
-        createLeafNode(grammarAccess.getWMLMacroParameterAccess().getRightParenthesisKeyword_2(), null); 
+        createLeafNode(grammarAccess.getWMLMacroParameterAccess().getRightParenthesisKeyword_3(), null); 
     }
 )
 ;

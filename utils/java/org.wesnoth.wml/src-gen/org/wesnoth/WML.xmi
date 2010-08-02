@@ -124,8 +124,13 @@
       <classifier xsi:type="ecore:EClass" href="http://www.wesnoth.org/WML#//WMLMacroParameter"/>
     </type>
     <alternatives xsi:type="xtext:Group">
+      <elements xsi:type="xtext:Action">
+        <type metamodel="//@metamodelDeclarations.0">
+          <classifier xsi:type="ecore:EClass" href="http://www.wesnoth.org/WML#//WMLMacroParameter"/>
+        </type>
+      </elements>
       <elements xsi:type="xtext:Keyword" value="("/>
-      <elements xsi:type="xtext:Assignment" cardinality="+" feature="param" operator="+=">
+      <elements xsi:type="xtext:Assignment" cardinality="*" feature="param" operator="+=">
         <terminal xsi:type="xtext:Alternatives">
           <elements xsi:type="xtext:RuleCall" rule="//@rules.10"/>
           <elements xsi:type="xtext:RuleCall" rule="//@rules.1"/>
