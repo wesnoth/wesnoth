@@ -1227,7 +1227,11 @@ def global_sanity_check(filename, lines):
             elif key in ('name', 'male_name', 'female_name'):		# FIXME: check this someday
                 pass
             elif key in translatables:
-                if markcheck and not value.startswith("$") and not value.startswith("{") and not re.match(" +", value) and not has_tr_mark:
+                if markcheck and has_tr_mark and lines[i].find("\"\"")>-1:
+                    print '"%s", line %d: %s doesn`t need translation mark (translatable string is empty)' \
+                          % (filename, i+1, key)
+                    lines[i] = lines[i].replace("=_","=")
+                if markcheck and not value.startswith("$") and not value.startswith("{") and not re.match(" +", value) and not has_tr_mark and lines[i].find("\"\"")==-1:
                     print '"%s", line %d: %s needs translation mark' \
                           % (filename, i+1, key)
                     lines[i] = lines[i].replace('=', "=_ ")
