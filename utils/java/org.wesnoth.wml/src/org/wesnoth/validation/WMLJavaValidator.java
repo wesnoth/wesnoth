@@ -36,7 +36,6 @@ public class WMLJavaValidator extends AbstractWMLJavaValidator
 			{
 				searchName = "root";
 			}
-			System.out.println(searchName);
 			if (SchemaParser.getInstance().getTags().get(searchName) != null)
 			{
 				for(Tag childTag : SchemaParser.getInstance().getTags().get(searchName).

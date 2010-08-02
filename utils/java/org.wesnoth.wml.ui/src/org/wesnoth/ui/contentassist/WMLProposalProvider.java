@@ -8,7 +8,10 @@
  *******************************************************************************/
 package org.wesnoth.ui.contentassist;
 
+import java.util.List;
+
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.jface.text.contentassist.ICompletionProposal;
 import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.parsetree.AbstractNode;
 import org.eclipse.xtext.parsetree.LeafNode;
@@ -19,6 +22,7 @@ import org.wesnoth.ui.WMLUiModule;
 
 import wesnoth_eclipse_plugin.schema.SchemaParser;
 import wesnoth_eclipse_plugin.schema.Tag;
+import wesnoth_eclipse_plugin.schema.TagKey;
 
 public class WMLProposalProvider extends AbstractWMLProposalProvider
 {
@@ -44,13 +48,16 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 			{
 				LeafNode parent = (LeafNode)NodeUtil.findLeafNodeAtOffset(node.getParent(),
 						node.getParent().getOffset() + 2);
-				dbg(parent.getText());
+				String parentIndent = ((LeafNode)NodeUtil.findLeafNodeAtOffset(node.getParent(),
+						node.getOffset())).getText();
+//				dbg("parent text: " + parent.getText());
 				Tag tagChildren = SchemaParser.getInstance().getTags().get(parent.getText());
 				if (tagChildren != null)
 				{
 					for(Tag tag : tagChildren.getTagChildren())
 					{
 						acceptor.accept(createCompletionProposal(tag.getName(),
+								tagProposalContent(tag.getName(), parentIndent, tag.getKeyChildren()),
 								context));
 					}
 				}
@@ -63,10 +70,38 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 				dbg("root node. adding tags: "+ rootTag.getTagChildren().size());
 				for(Tag tag : rootTag.getTagChildren())
 				{
-					acceptor.accept(createCompletionProposal(tag.getName(), context));
+					acceptor.accept(createCompletionProposal(tag.getName(),
+							tagProposalContent(tag.getName(), "", tag.getKeyChildren()),
+							context));
 				}
 			}
 		}
+		else
+			dbg("current container is null or not an abstract node.");
+	}
+
+
+
+	private String tagProposalContent(String tagName, String indent,
+				List<TagKey> keys)
+	{
+//		dbg("indent:[" + indent +"]");
+		StringBuilder proposal = new StringBuilder();
+		proposal.append(tagName);
+		proposal.append("]\n");
+		for(TagKey key : keys)
+		{
+			proposal.append(String.format("\t%s%s=\n",
+					indent, key.getName()));
+		}
+		proposal.append(String.format("%s[/%s]",indent, tagName));
+		return proposal.toString();
+	}
+
+	private ICompletionProposal createCompletionProposal(String displayName, String content,
+					ContentAssistContext context)
+	{
+		return createCompletionProposal(content, displayName, null, context);
 	}
 
 	/**

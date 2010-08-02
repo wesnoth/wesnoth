@@ -42,8 +42,6 @@ public class WMLFormatter extends AbstractDeclarativeFormatter
 		// no space before and after ']'
 		c.setNoSpace().around(f.getWMLTagAccess().getRightSquareBracketKeyword_3());
 		c.setNoSpace().around(f.getWMLTagAccess().getRightSquareBracketKeyword_7());
-		c.setNoSpace().around(f.getWMLTagAccess().getRightSquareBracketKeyword_3());
-		c.setNoSpace().around(f.getWMLTagAccess().getRightSquareBracketKeyword_7());
 
 		// no space before and after the '=' in 'key=value'
 		c.setNoSpace().around(f.getWMLKeyAccess().getEqualsSignKeyword_1());
