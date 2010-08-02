@@ -8,8 +8,6 @@
  *******************************************************************************/
 package org.wesnoth.ui.contentassist;
 
-import java.util.List;
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.text.contentassist.ICompletionProposal;
 import org.eclipse.xtext.Assignment;
@@ -51,14 +49,13 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 				String parentIndent = ((LeafNode)NodeUtil.findLeafNodeAtOffset(node.getParent(),
 						node.getOffset())).getText();
 //				dbg("parent text: " + parent.getText());
+				parentIndent =  parentIndent.replace("\r", "").replace("\n", "");
 				Tag tagChildren = SchemaParser.getInstance().getTags().get(parent.getText());
 				if (tagChildren != null)
 				{
 					for(Tag tag : tagChildren.getTagChildren())
 					{
-						acceptor.accept(createCompletionProposal(tag.getName(),
-								tagProposalContent(tag.getName(), parentIndent, tag.getKeyChildren()),
-								context));
+						acceptor.accept(tagProposal(tag, parentIndent, context));
 					}
 				}
 				else
@@ -70,9 +67,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 				dbg("root node. adding tags: "+ rootTag.getTagChildren().size());
 				for(Tag tag : rootTag.getTagChildren())
 				{
-					acceptor.accept(createCompletionProposal(tag.getName(),
-							tagProposalContent(tag.getName(), "", tag.getKeyChildren()),
-							context));
+					acceptor.accept(tagProposal(tag, "", context));
 				}
 			}
 		}
@@ -80,23 +75,27 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 			dbg("current container is null or not an abstract node.");
 	}
 
-
-
-	private String tagProposalContent(String tagName, String indent,
-				List<TagKey> keys)
+	/**
+	 * Returns the proposal for the specified tag, usign the specified indent
+	 * @param tag The tag from which to construct the proposal
+	 * @param indent The indent used to indent the tag and subsequent keys
+	 * @return
+	 */
+	private ICompletionProposal tagProposal(Tag tag, String indent,
+					ContentAssistContext context)
 	{
 //		dbg("indent:[" + indent +"]");
 		StringBuilder proposal = new StringBuilder();
-		proposal.append(tagName);
+		proposal.append(tag.getName());
 		proposal.append("]\n");
-		for(TagKey key : keys)
+		for(TagKey key : tag.getKeyChildren())
 		{
 			if (key.getCardinality() == '1')
 				proposal.append(String.format("\t%s%s=\n",
 						indent, key.getName()));
 		}
-		proposal.append(String.format("%s[/%s]",indent, tagName));
-		return proposal.toString();
+		proposal.append(String.format("%s[/%s]",indent, tag.getName()));
+		return createCompletionProposal(tag.getName(), proposal.toString(), context);
 	}
 
 	private ICompletionProposal createCompletionProposal(String displayName, String content,
