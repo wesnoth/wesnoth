@@ -17,9 +17,10 @@
 #ifndef MAP_EXCEPTION_H_INCLUDED
 #define MAP_EXCEPTION_H_INCLUDED
 
-struct incorrect_map_format_exception {
-	incorrect_map_format_exception(const std::string& msg) : msg_(msg) {}
-	const std::string msg_;
+#include "exceptions.hpp"
+
+struct incorrect_map_format_exception : game::error {
+	incorrect_map_format_exception(const std::string& message) : error(message) {}
 };
 
 #endif

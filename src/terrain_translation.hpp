@@ -22,6 +22,8 @@
 #include <vector>
 #include <map>
 
+#include "exceptions.hpp"
+
 namespace t_translation {
 
     /**
@@ -98,9 +100,8 @@ namespace t_translation {
     // Exception thrown if there's an error with the terrain.
 	// Note: atm most thrown result in a crash, but I like
 	// an uncatched exception better than an assert.
-	struct error {
-		error(const char* msg) : message(msg) {}
-		const char* const message;
+	struct error : game::error {
+		error(const std::string& message) : game::error(message) {}
 	};
 
 	// Some types of terrain which must be known, and can't just

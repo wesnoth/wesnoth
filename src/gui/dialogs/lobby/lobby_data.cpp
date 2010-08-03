@@ -227,7 +227,7 @@ game_info::game_info(const config& game, const config& game_config)
 			map_size_info = msi.str();
 			map_info += " - " + map_size_info;
 		} catch (incorrect_map_format_exception &e) {
-			ERR_CF << "illegal map: " << e.msg_ << "\n";
+			ERR_CF << "illegal map: " << e.message << "\n";
 			verified = false;
 		} catch (twml_exception& e) {
 			ERR_CF <<  "map could not be loaded: " << e.dev_message << '\n';

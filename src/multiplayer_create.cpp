@@ -505,11 +505,11 @@ void create::process_event()
 		try {
 			map = std::auto_ptr<gamemap>(new gamemap(game_config(), map_data));
 		} catch(incorrect_map_format_exception& e) {
-			ERR_CF << "map could not be loaded: " << e.msg_ << "\n";
+			ERR_CF << "map could not be loaded: " << e.message << "\n";
 
 #ifndef USE_TINY_GUI
 			tooltips::clear_tooltips(minimap_rect_);
-			tooltips::add_tooltip(minimap_rect_,e.msg_);
+			tooltips::add_tooltip(minimap_rect_,e.message);
 #endif
 		} catch(twml_exception& e) {
 			ERR_CF <<  "map could not be loaded: " << e.dev_message << '\n';
@@ -666,7 +666,7 @@ void create::hide_children(bool hide)
 			draw_centered_on_background(mini, minimap_rect_, back_color, video().getSurface());
 #endif
 		} catch(incorrect_map_format_exception& e) {
-			ERR_CF << "map could not be loaded: " << e.msg_ << "\n";
+			ERR_CF << "map could not be loaded: " << e.message << "\n";
 		} catch(twml_exception& e) {
 			ERR_CF <<  "map could not be loaded: " << e.dev_message << '\n';
 		}

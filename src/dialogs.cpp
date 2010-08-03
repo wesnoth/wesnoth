@@ -431,7 +431,7 @@ void save_preview_pane::draw_contents()
 					map_cache_.insert(std::pair<std::string,surface>(map_data,surface(map_surf)));
 				}
 			} catch(incorrect_map_format_exception& e) {
-				ERR_CF << "map could not be loaded: " << e.msg_ << '\n';
+				ERR_CF << "map could not be loaded: " << e.message << '\n';
 			} catch(twml_exception& e) {
 				ERR_CF << "map could not be loaded: " << e.dev_message << '\n';
 			}
