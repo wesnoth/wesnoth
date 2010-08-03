@@ -2521,6 +2521,29 @@ static int intf_get_locations(lua_State *L)
 	return 1;
 }
 
+/**
+ * Matches a location against the given filter.
+ * - Args 1,2: integers.
+ * - Arg 3: WML table.
+ * - Ret 1: boolean.
+ */
+static int intf_match_location(lua_State *L)
+{
+	int x = luaL_checkinteger(L, 1) - 1;
+	int y = luaL_checkinteger(L, 2) - 1;
+	vconfig filter = luaW_checkvconfig(L, 3);
+
+	if (filter.null()) {
+		lua_pushboolean(L, true);
+		return 1;
+	}
+
+	terrain_filter t_filter(filter, *resources::units);
+	t_filter.restrict_size(game_config::max_loop);
+	lua_pushboolean(L, t_filter.match(map_location(x, y)));
+	return 1;
+}
+
 LuaKernel::LuaKernel()
 	: mState(luaL_newstate())
 {
@@ -2566,6 +2589,7 @@ LuaKernel::LuaKernel()
 		{ "get_variable",             &intf_get_variable             },
 		{ "get_village_owner",        &intf_get_village_owner        },
 		{ "is_enemy",                 &intf_is_enemy                 },
+		{ "match_location",           &intf_match_location           },
 		{ "match_unit",               &intf_match_unit               },
 		{ "message",                  &intf_message                  },
 		{ "play_sound",               &intf_play_sound               },
