@@ -1995,21 +1995,22 @@ static int process_command_args(int argc, char** argv) {
 						defines_map.insert(std::make_pair(tmp_val,
 							preproc_define(tmp_val)));
 					}
-					std::cerr<<"added "<<defines_map.size()<<" defines.\n";
+					std::cerr<< SDL_GetTicks() << "added "<<defines_map.size()<<" defines.\n";
 				}
 
 				// preprocess common macros first
-				std::cerr<<"processing common macros...\n";
+				std::cerr << SDL_GetTicks() << " preprocessing common macros from /data/core...\n";
 				preprocess_resource(game_config::path + "/data/core/",&defines_map);
+				std::cerr << SDL_GetTicks() << " acquired " << defines_map.size() << " defines.\n";
 
-				std::cerr<<"processing specified resource...\n";
-				//if
+				std::cerr << SDL_GetTicks() << " preprocessing specified resource: "
+						  << resourceToProcess << " ...\n";
 				preprocess_resource(resourceToProcess, &defines_map, true,true, targetDir);
 
-				std::cerr<<"processing finished.\n";
+				std::cerr << SDL_GetTicks() << " preprocessing finished.\n";
 			}
 			else{
-				std::cerr<<"Please specify a source file/folder and a target folder\n";
+				std::cerr << "Please specify a source file/folder and a target folder\n";
 			}
 			return 1;
 		}
