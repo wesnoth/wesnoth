@@ -504,14 +504,16 @@ report generate_report(TYPE type,
 		}
 
 		int b = tod.lawful_bonus;
+		int c = tod.liminal_bonus;
 		tooltip << tod.name << '\n'
 			<< _("Lawful units: ") << signed_percent(b) << "\n"
 			<< _("Neutral units: ") << signed_percent(0) << "\n"
-			<< _("Chaotic units: ") << signed_percent(-b);
+			<< _("Chaotic units: ") << signed_percent(-b) << "\n"
+			<< _("Liminal units: ") << signed_percent(c);
 
 		std::string tod_image = tod.image;
-		if (tod.bonus_modified > 0) tod_image += "~BRIGHTEN()";
-		else if (tod.bonus_modified < 0) tod_image += "~DARKEN()";
+		if (tod.lawful_bonus_modified > 0) tod_image += "~BRIGHTEN()";
+		else if (tod.lawful_bonus_modified < 0) tod_image += "~DARKEN()";
 		if (preferences::flip_time()) tod_image += "~FL(horiz)";
 
 		return report("",tod_image,tooltip.str(),"time_of_day");

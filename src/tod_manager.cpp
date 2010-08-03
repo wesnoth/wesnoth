@@ -265,7 +265,7 @@ time_of_day tod_manager::time_of_day_at(const map_location& loc) const
 		}
 	}
 
-	tod.bonus_modified = illum_light - tod.lawful_bonus;
+	tod.lawful_bonus_modified = illum_light - tod.lawful_bonus;
 	tod.lawful_bonus = illum_light;
 
 	return tod;

@@ -233,7 +233,7 @@ public:
 		int old_value_;
 	};
 
-	enum ALIGNMENT { LAWFUL, NEUTRAL, CHAOTIC };
+	enum ALIGNMENT { LAWFUL, NEUTRAL, CHAOTIC, LIMINAL };
 
 	ALIGNMENT alignment() const { return alignment_; }
 	static const char* alignment_description(ALIGNMENT align, unit_race::GENDER gender = unit_race::MALE);

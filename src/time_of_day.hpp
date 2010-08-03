@@ -43,7 +43,11 @@ struct time_of_day
 
 	/** The % bonus lawful units receive. Chaotics receive -lawful_bonus. */
 	int lawful_bonus;
-	int bonus_modified;
+	int lawful_bonus_modified;
+
+	/** The % bonus liminal units receive. */
+	int liminal_bonus;
+	int liminal_bonus_modified;
 
 	/** The image to be displayed in the game status. */
 	std::string image;

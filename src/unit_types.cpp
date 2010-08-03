@@ -732,6 +732,8 @@ void unit_type::build_full(const config& cfg, const movement_type_map& mv_types,
 		alignment_ = CHAOTIC;
 	else if(align == "neutral")
 		alignment_ = NEUTRAL;
+	else if(align == "liminal")
+		alignment_ = LIMINAL;
 	else {
 		ERR_CF << "Invalid alignment found for " << id() << ": '" << align << "'\n";
 		alignment_ = NEUTRAL;
