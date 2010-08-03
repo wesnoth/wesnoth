@@ -8,7 +8,7 @@
  *******************************************************************************/
 package org.wesnoth.ui.contentassist;
 
-import java.util.Properties;
+import java.util.Map.Entry;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.ecore.EObject;
@@ -93,8 +93,9 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 			dbg(model);
 			WMLKey key = (WMLKey)model;
 
-			// handle the next_scenario
-			if (key.getName().equals("next_scenario"))
+			// handle the next_scenario and first_scenario
+			if (key.getName().equals("next_scenario") ||
+				key.getName().equals("first_scenario"))
 			{
 				IFile file = (IFile)EditorUtils.getActiveXtextEditor()
 								.getEditorInput().getAdapter(IFile.class);
@@ -103,20 +104,13 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 					Logger.getInstance().logError("FATAL! file is null (and it shouldn't)");
 					return;
 				}
-				Properties props = ProjectUtils.getPropertiesForProject(file.getProject());
-				//TODO: dummy entry. remove when proper architecture is ready
-				props.setProperty("scenarios", "01_scen1,02_scen2,");
-				if (props.getProperty("scenarios") != null)
+
+				for(Entry<String, String> scenario : ProjectUtils.
+						getCacheForProject(file.getProject()).getScenarios().entrySet())
 				{
-					String[] scenarios = props.getProperty("scenarios").split(",");
-					for(String scenarioId : scenarios)
-					{
-						if (scenarioId.isEmpty())
-							continue;
-						acceptor.accept(createCompletionProposal(scenarioId,
-								scenarioId, WMLLabelProvider.getImageByName("scenario.png"),
-								context));
-					}
+					acceptor.accept(createCompletionProposal(scenario.getValue(),
+							scenario.getValue(), WMLLabelProvider.getImageByName("scenario.png"),
+							context));
 				}
 			}
 		}

@@ -8,6 +8,9 @@
  *******************************************************************************/
 package wesnoth_eclipse_plugin;
 
+import java.util.Map.Entry;
+
+import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.widgets.Shell;
@@ -16,6 +19,8 @@ import org.osgi.framework.BundleContext;
 
 import wesnoth_eclipse_plugin.preferences.Preferences;
 import wesnoth_eclipse_plugin.utils.GUIUtils;
+import wesnoth_eclipse_plugin.utils.ProjectCache;
+import wesnoth_eclipse_plugin.utils.ProjectUtils;
 import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
 
 /**
@@ -56,6 +61,11 @@ public class Activator extends AbstractUIPlugin
 	{
 		plugin = null;
 		Logger.getInstance().stopLogger();
+		for(Entry<IProject, ProjectCache> cache :
+					ProjectUtils.getProjectCaches().entrySet())
+		{
+			cache.getValue().saveCache();
+		}
 		super.stop(context);
 	}
 

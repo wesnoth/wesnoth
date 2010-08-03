@@ -11,6 +11,9 @@ package wesnoth_eclipse_plugin.utils;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Properties;
 
 import org.eclipse.core.resources.IProject;
@@ -29,9 +32,11 @@ public class ProjectCache
 	private Properties properties_;
 	private IProject associatedProject_;
 	private File wesnothFile_;
+	private Map<String, String> scenarios_;
 
 	public ProjectCache(IProject project)
 	{
+		scenarios_ = new HashMap<String, String>();
 		propertiesTimetamp_ = 0;
 		properties_ = new Properties();
 
@@ -64,6 +69,22 @@ public class ProjectCache
 				ResourceUtils.createWesnothFile(wesnothFile_.getAbsolutePath());
 			properties_.loadFromXML(new FileInputStream(wesnothFile_));
 			propertiesTimetamp_ = wesnothFile_.lastModified();
+
+			// parse scenario ids
+			scenarios_.clear();
+			String[] fileNames = properties_.getProperty("scen_fns", "").split(",");
+			String[] scenarioIds = properties_.getProperty("scen_ids", "").split(",");
+			if (fileNames.length == scenarioIds.length)
+			{
+				for(int index = 0; index < fileNames.length;index++)
+				{
+					if (scenarioIds[index].isEmpty())
+						continue;
+					scenarios_.put(fileNames[index], scenarioIds[index]);
+				}
+			}
+			else
+				Logger.getInstance().logError("incorrect scenarios data.!!");
 		}
 		catch (Exception e)
 		{
@@ -90,9 +111,21 @@ public class ProjectCache
 	}
 
 	/**
+	 * Gets the map with the scenarios
+	 * The key represent the filenames of the files
+	 * and the value the scenarioId from that file
+	 * @return
+	 */
+	public Map<String, String> getScenarios()
+	{
+		return scenarios_;
+	}
+
+	/**
 	 * Saves the cache to disk.
 	 * Saves:
 	 * - properties
+	 * - existing scenarios
 	 * @return
 	 */
 	public boolean saveCache()
@@ -101,6 +134,22 @@ public class ProjectCache
 			ResourceUtils.createWesnothFile(wesnothFile_.getAbsolutePath());
 		try
 		{
+			// store scenario ids
+			StringBuilder fileNames = new StringBuilder(scenarios_.size());
+			StringBuilder scenarioIds = new StringBuilder(scenarios_.size());
+			for(Entry<String, String> scenario : scenarios_.entrySet())
+			{
+				if (fileNames.length() > 0)
+				{
+					fileNames.append(',');
+					scenarioIds.append(',');
+				}
+				fileNames.append(scenario.getKey());
+				scenarioIds.append(scenario.getValue());
+			}
+
+			properties_.setProperty("scen_fns", fileNames.toString());
+			properties_.setProperty("scen_ids", scenarioIds.toString());
 
 			// store properties
 			properties_.storeToXML(new FileOutputStream(wesnothFile_), null);

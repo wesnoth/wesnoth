@@ -24,6 +24,7 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.Path;
 import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
 
 import wesnoth_eclipse_plugin.Logger;
 
@@ -35,6 +36,11 @@ public class ProjectUtils
 	 */
 	private static Map<IProject, ProjectCache> projectCache_ =
 		new HashMap<IProject, ProjectCache>();
+
+	public static Map<IProject, ProjectCache> getProjectCaches()
+	{
+		return projectCache_;
+	}
 
 	/**
 	 * Gets the properties store for specified project.
@@ -59,7 +65,8 @@ public class ProjectUtils
 
 		if (cache == null)
 		{
-			projectCache_.put(project, new ProjectCache(project));
+			cache = new ProjectCache(project);
+			projectCache_.put(project,cache);
 		}
 		return cache;
 	}
@@ -195,7 +202,7 @@ public class ProjectUtils
 	 */
 	public static String getCampaignID(IResource resource)
 	{
-		WMLSaxHandler handler = getWMLHandlerFromResource(
+		WMLSaxHandler handler = getParsedWMLFromResource(
 					PreprocessorUtils.getPreprocessedFilePath(
 						getMainConfigLocation(resource), false, true).toString());
 		if (handler == null)
@@ -210,18 +217,22 @@ public class ProjectUtils
 	 */
 	public static String getScenarioID(IFile file)
 	{
-		WMLSaxHandler handler = getWMLHandlerFromResource(
+		WMLSaxHandler handler = getParsedWMLFromResource(
 				PreprocessorUtils.getPreprocessedFilePath(file, false, true).toString());
 		if (handler == null)
 			return null;
 		return handler.ScenarioId;
 	}
 
-	private static WMLSaxHandler getWMLHandlerFromResource(String resourcePath)
+	/**
+	 * Returns the WMLSaxHandler for the parsed specified resource
+	 * @param resourcePath The resourcepath to parse
+	 * @return
+	 */
+	public static WMLSaxHandler getParsedWMLFromResource(String resourcePath)
 	{
+		ExternalToolInvoker parser = WMLTools.runWMLParser2(resourcePath);
 		try{
-			ExternalToolInvoker parser =
-				WMLTools.runWMLParser2(resourcePath);
 			parser.waitForTool();
 			SAXParser saxparser;
 			saxparser = SAXParserFactory.newInstance().newSAXParser();
@@ -229,6 +240,11 @@ public class ProjectUtils
 			WMLSaxHandler handler = new WMLSaxHandler();
 			saxparser.parse(new InputSource(new StringReader(parser.getOutputContent())), handler);
 			return handler;
+		}
+		catch (SAXException e) {
+			Logger.getInstance().logException(e);
+			Logger.getInstance().logError("Using output: " + parser.getOutputContent());
+			return null;
 		}
 		catch (Exception e)
 		{

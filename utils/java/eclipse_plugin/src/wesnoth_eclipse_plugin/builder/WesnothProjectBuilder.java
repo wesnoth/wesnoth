@@ -37,9 +37,11 @@ import wesnoth_eclipse_plugin.preferences.Preferences;
 import wesnoth_eclipse_plugin.templates.ReplaceableParameter;
 import wesnoth_eclipse_plugin.utils.AntUtils;
 import wesnoth_eclipse_plugin.utils.PreprocessorUtils;
+import wesnoth_eclipse_plugin.utils.ProjectCache;
 import wesnoth_eclipse_plugin.utils.ProjectUtils;
 import wesnoth_eclipse_plugin.utils.ResourceUtils;
 import wesnoth_eclipse_plugin.utils.StringUtils;
+import wesnoth_eclipse_plugin.utils.WMLSaxHandler;
 import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
 
 public class WesnothProjectBuilder extends IncrementalProjectBuilder
@@ -53,7 +55,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 	{
 		try
 		{
-			getProject().accept(new SampleResourceVisitor(monitor));
+			getProject().accept(new ResourceVisitor(monitor));
 		} catch (CoreException e)
 		{
 			Logger.getInstance().logException(e);
@@ -64,7 +66,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 			throws CoreException
 	{
 		// the visitor does the work.
-		delta.accept(new SampleDeltaVisitor(monitor));
+		delta.accept(new ResourceDeltaVisitor(monitor));
 	}
 
 	@SuppressWarnings("rawtypes")
@@ -153,7 +155,12 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 
 	protected void handleRemovedResource(IResource resource)
 	{
-
+		if (resource instanceof IFile &&
+			(resource.getName().toLowerCase(Locale.ENGLISH).endsWith(".cfg")))
+		{
+			ProjectUtils.getCacheForProject(getProject()).
+					getScenarios().remove(resource.getName());
+		}
 	}
 
 	protected void checkResource(IResource resource, IProgressMonitor monitor,
@@ -178,6 +185,28 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 				monitor.subTask("Preprocessing...");
 				PreprocessorUtils.preprocessFile(file, null);
 				monitor.worked(5);
+
+				monitor.subTask("Gathering file information...");
+				ProjectCache projCache = ProjectUtils.getCacheForProject(getProject());
+
+				if (ProjectUtils.isScenarioFile(file.getLocation().toOSString()))
+				{
+					WMLSaxHandler handler =  ProjectUtils.
+						getParsedWMLFromResource(PreprocessorUtils.getPreprocessedFilePath(file, false, false).toString());
+					if (handler.ScenarioId == null)
+					{
+						projCache.getScenarios().remove(file.getName());
+						Logger.getInstance().logWarn("got a null scenario id" +
+								"for 'scenario' file:" + file.getName());
+					}
+					else
+					{
+						Logger.getInstance().log("added scenarioId ["+handler.ScenarioId +
+								"] for file: " + file.getName());
+						projCache.getScenarios().put(file.getName(), handler.ScenarioId);
+					}
+				}
+				monitor.worked(10);
 
 				// we need to find the correct column start/end based on the current document
 				// (or get that from the tool)
@@ -288,11 +317,11 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 		}
 	}
 
-	class SampleDeltaVisitor implements IResourceDeltaVisitor
+	class ResourceDeltaVisitor implements IResourceDeltaVisitor
 	{
 		private IProgressMonitor monitor_;
 
-		public SampleDeltaVisitor(IProgressMonitor monitor) {
+		public ResourceDeltaVisitor(IProgressMonitor monitor) {
 			monitor_ = monitor;
 		}
 
@@ -320,11 +349,11 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 		}
 	}
 
-	class SampleResourceVisitor implements IResourceVisitor
+	class ResourceVisitor implements IResourceVisitor
 	{
 		private IProgressMonitor monitor_;
 
-		public SampleResourceVisitor(IProgressMonitor monitor) {
+		public ResourceVisitor(IProgressMonitor monitor) {
 			monitor_ = monitor;
 		}
 
