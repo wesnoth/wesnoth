@@ -388,12 +388,13 @@ static bool luaW_tovconfig(lua_State *L, int index, vconfig &vcfg)
 
 /**
  * Gets an optional vconfig from either a table or a userdata.
- * @param def true if an empty config should be created for a missing value.
+ * @param allow_missing true if missing values are allowed; the function
+ *        then returns an unconstructed vconfig.
  */
-static vconfig luaW_checkvconfig(lua_State *L, int index, bool def = false)
+static vconfig luaW_checkvconfig(lua_State *L, int index, bool allow_missing = false)
 {
-	vconfig result = def ? vconfig::empty_vconfig() : vconfig::unconstructed_vconfig();
-	if (!luaW_tovconfig(L, index, result))
+	vconfig result = vconfig::unconstructed_vconfig();
+	if (!luaW_tovconfig(L, index, result) || (!allow_missing && result.null()))
 		luaL_typerror(L, index, "WML table");
 	return result;
 }
@@ -934,7 +935,7 @@ static int intf_get_unit(lua_State *L)
  */
 static int intf_get_units(lua_State *L)
 {
-	vconfig filter = luaW_checkvconfig(L, 1);
+	vconfig filter = luaW_checkvconfig(L, 1, true);
 
 	// Go through all the units while keeping the following stack:
 	// 1: metatable, 2: return table, 3: userdata, 4: metatable copy
@@ -973,7 +974,7 @@ static int intf_match_unit(lua_State *L)
 	unit *u = lu->get();
 	if (!u) return luaL_argerror(L, 1, "unit not found");
 
-	vconfig filter = luaW_checkvconfig(L, 2);
+	vconfig filter = luaW_checkvconfig(L, 2, true);
 
 	if (filter.null()) {
 		lua_pushboolean(L, true);
@@ -1000,7 +1001,7 @@ static int intf_match_unit(lua_State *L)
  */
 static int intf_get_recall_units(lua_State *L)
 {
-	vconfig filter = luaW_checkvconfig(L, 1);
+	vconfig filter = luaW_checkvconfig(L, 1, true);
 
 	// Go through all the units while keeping the following stack:
 	// 1: metatable, 2: return table, 3: userdata, 4: metatable copy
@@ -2135,7 +2136,7 @@ static int intf_simulate_combat(lua_State *L)
  */
 static int intf_tovconfig(lua_State *L)
 {
-	vconfig vcfg = luaW_checkvconfig(L, 1, true);
+	vconfig vcfg = luaW_checkvconfig(L, 1);
 	luaW_pushvconfig(L, vcfg);
 	return 1;
 }
@@ -2531,7 +2532,7 @@ static int intf_match_location(lua_State *L)
 {
 	int x = luaL_checkinteger(L, 1) - 1;
 	int y = luaL_checkinteger(L, 2) - 1;
-	vconfig filter = luaW_checkvconfig(L, 3);
+	vconfig filter = luaW_checkvconfig(L, 3, true);
 
 	if (filter.null()) {
 		lua_pushboolean(L, true);
