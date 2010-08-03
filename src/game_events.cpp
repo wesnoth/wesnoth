@@ -2299,31 +2299,6 @@ WML_HANDLER_FUNCTION(store_villages, /*event_info*/, cfg)
 	varinfo.vars->append(to_store);
 }
 
-WML_HANDLER_FUNCTION(store_locations, /*event_info*/, cfg)
-{
-	log_scope("store_locations");
-	std::string variable = cfg["variable"];
-	if (variable.empty()) {
-		variable="location";
-	}
-
-	std::set<map_location> res;
-	terrain_filter filter(cfg, *resources::units);
-	filter.restrict_size(game_config::max_loop);
-	filter.get_locations(res, true);
-
-	resources::state_of_game->clear_variable_cfg(variable);
-	for(std::set<map_location>::const_iterator j = res.begin(); j != res.end(); ++j) {
-		config &loc_store = resources::state_of_game->add_variable_cfg(variable);
-		j->write(loc_store);
-		resources::game_map->write_terrain(*j, loc_store);
-		if (resources::game_map->is_village(*j)) {
-			int side = village_owner(*j, *resources::teams) + 1;
-			loc_store["owner_side"] = side;
-		}
-	}
-}
-
 // Command to take control of a village for a certain side
 WML_HANDLER_FUNCTION(capture_village, /*event_info*/, cfg)
 {

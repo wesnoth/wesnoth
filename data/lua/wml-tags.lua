@@ -435,3 +435,20 @@ end
 function wml_actions.sound(cfg)
 	wesnoth.play_sound(cfg.name, cfg["repeat"])
 end
+
+function wml_actions.store_locations(cfg)
+	local var = cfg.variable or "location"
+	-- the variable can be mentioned in a [find_in] subtag, so it
+	-- cannot be cleared before the locations are recovered
+	local locs = wesnoth.get_locations(cfg)
+	wesnoth.set_variable(var)
+	for i, loc in ipairs(locs) do
+		local x, y = loc[1], loc[2]
+		local t = wesnoth.get_terrain(x, y)
+		local res = { x = x, y = y, terrain = t }
+		if wesnoth.get_terrain_info(t).village then
+			res.owner_side = wesnoth.get_village_owner(x, y) or 0
+		end
+		wesnoth.set_variable(string.format("%s[%d]", var, i - 1), res)
+	end
+end
