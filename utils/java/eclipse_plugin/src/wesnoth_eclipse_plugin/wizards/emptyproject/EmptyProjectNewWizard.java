@@ -141,7 +141,7 @@ public class EmptyProjectNewWizard extends NewWizardTemplate
 				ignored += currentProject.getName();
 				props.setProperty("ignored", ignored);
 				WorkspaceUtils.createIgnoreFilter(uaproj, currentProject.getName());
-				ProjectUtils.savePropertiesForProject(uaproj);
+				ProjectUtils.saveCacheForProject(uaproj);
 				uaproj.refreshLocal(IResource.DEPTH_ONE, new NullProgressMonitor());
 			}
 		} catch (CoreException e)

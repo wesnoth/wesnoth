@@ -21,6 +21,15 @@ public class TestHandler extends AbstractHandler
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException
 	{
+//		try
+//		{
+//			BuildCommand c = ((BuildCommand)WorkspaceUtils.getSelectedProject().getDescription().getBuildSpec()[1]);
+//			System.out.println(c);
+//		}
+//		catch (CoreException e)
+//		{
+//			e.printStackTrace();
+//		}
 //		IFile sel = WorkspaceUtils.getSelectedFile();
 //		if (sel == null)
 //			return null;

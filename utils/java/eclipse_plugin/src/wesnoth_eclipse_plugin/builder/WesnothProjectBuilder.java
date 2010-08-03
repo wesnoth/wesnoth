@@ -44,6 +44,11 @@ import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
 
 public class WesnothProjectBuilder extends IncrementalProjectBuilder
 {
+	public WesnothProjectBuilder()
+	{
+		super();
+	}
+
 	protected void fullBuild(final IProgressMonitor monitor) throws CoreException
 	{
 		try
@@ -146,7 +151,13 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 		return null;
 	}
 
-	protected void checkResource(IResource resource, IProgressMonitor monitor)
+	protected void handleRemovedResource(IResource resource)
+	{
+
+	}
+
+	protected void checkResource(IResource resource, IProgressMonitor monitor,
+						int delta)
 	{
 		monitor.worked(5);
 		if (isResourceIgnored(resource))
@@ -293,14 +304,15 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 			{
 			case IResourceDelta.ADDED:
 				// handle added resource
-				checkResource(resource, monitor_);
+				checkResource(resource, monitor_, delta.getKind());
 				break;
 			case IResourceDelta.REMOVED:
 				// handle removed resource
+				handleRemovedResource(resource);
 				break;
 			case IResourceDelta.CHANGED:
 				// handle changed resource
-				checkResource(resource, monitor_);
+				checkResource(resource, monitor_, delta.getKind());
 				break;
 			}
 			// return true to continue visiting children.
@@ -319,7 +331,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 		@Override
 		public boolean visit(IResource resource)
 		{
-			checkResource(resource, monitor_);
+			checkResource(resource, monitor_, -1);
 			// return true to continue visiting children.
 			return true;
 		}

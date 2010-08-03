@@ -9,10 +9,9 @@
 package wesnoth_eclipse_plugin.utils;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.StringReader;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 
 import javax.xml.parsers.SAXParser;
@@ -31,12 +30,11 @@ import wesnoth_eclipse_plugin.Logger;
 public class ProjectUtils
 {
 	/**
-	 * A map which stores the properties for each project.
+	 * A map which stores the caches for each project.
 	 * The properties are stored in '.wesnoth' file
-	 * The first element in the pair is 'last modified' .wenoth file attribute
 	 */
-	private static HashMap<IProject, Pair<Long, Properties>> projectProperties_ =
-		new HashMap<IProject, Pair<Long, Properties>>();
+	private static Map<IProject, ProjectCache> projectCache_ =
+		new HashMap<IProject, ProjectCache>();
 
 	/**
 	 * Gets the properties store for specified project.
@@ -47,26 +45,23 @@ public class ProjectUtils
 	 */
 	public static Properties getPropertiesForProject(IProject project)
 	{
-		Pair<Long, Properties> pair = projectProperties_.get(project);
-		File wesnothFile = new File(project.getLocation().toOSString()  +
-				"/.wesnoth");
-		try
-		{
-			ResourceUtils.createWesnothFile(wesnothFile.getAbsolutePath());
+		return getCacheForProject(project).getProperties();
+	}
 
-			if (pair == null || wesnothFile.lastModified() > pair.First)
-			{
-				pair = new Pair<Long, Properties>(wesnothFile.lastModified(), null);
-				pair.Second = new Properties();
-				pair.Second.loadFromXML(new FileInputStream(wesnothFile));
-				projectProperties_.put(project, pair);
-			}
-		}
-		catch (Exception e)
+	/**
+	 * Gets the cache for the specified project
+	 * @param project
+	 * @return
+	 */
+	public static ProjectCache getCacheForProject(IProject project)
+	{
+		ProjectCache cache = projectCache_.get(project);
+
+		if (cache == null)
 		{
-			Logger.getInstance().logException(e);
+			projectCache_.put(project, new ProjectCache(project));
 		}
-		return pair.Second;
+		return cache;
 	}
 
 	/**
@@ -75,20 +70,7 @@ public class ProjectUtils
 	 */
 	public static void setPropertiesForProject(IProject project, Properties props)
 	{
-		File wesnothFile = new File(project.getLocation().toOSString()  +
-				"/.wesnoth");
-
-		ResourceUtils.createWesnothFile(wesnothFile.getAbsolutePath());
-		try
-		{
-			props.storeToXML(new FileOutputStream(wesnothFile), null);
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-		}
-		projectProperties_.put(project,
-				new Pair<Long, Properties>(wesnothFile.lastModified(), props));
+		projectCache_.put(project, new ProjectCache(project, props));
 	}
 
 	/**
@@ -96,27 +78,9 @@ public class ProjectUtils
 	 * If the file/properties don't exist they will be created
 	 * @param project
 	 */
-	public static void savePropertiesForProject(IProject project)
+	public static void saveCacheForProject(IProject project)
 	{
-		File wesnothFile = new File(project.getLocation().toOSString()  +
-				"/.wesnoth");
-
-		if (!(projectProperties_.containsKey(project)))
-		{
-			ResourceUtils.createWesnothFile(wesnothFile.getAbsolutePath());
-			projectProperties_.put(project,
-					new Pair<Long, Properties>(wesnothFile.lastModified(), new Properties()));
-		}
-
-		try
-		{
-			projectProperties_.get(project).Second.
-				storeToXML(new FileOutputStream(wesnothFile), null);
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-		}
+		getCacheForProject(project).saveCache();
 	}
 
 	//TODO: create a simple java wmlparsers in order to get the right values
