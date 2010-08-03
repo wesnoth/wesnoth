@@ -176,7 +176,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 			{
 				for(Tag tag : tagChildren.getTagChildren())
 				{
-					acceptor.accept(tagProposal(tag, parentIndent, false, context));
+					acceptor.accept(tagProposal(tag, parentIndent, ruleProposal, context));
 				}
 			}
 			else
