@@ -221,7 +221,7 @@ connection_stats get_connection_stats(connection connection_num)
 	return connection_stats(get_send_stats(connection_num).total,get_receive_stats(connection_num).total,details.connected_at);
 }
 
-error::error(const std::string& msg, connection sock) : message(msg), socket(sock)
+error::error(const std::string& msg, connection sock) : game::error(msg), socket(sock)
 {
 	if(socket) {
 		bad_sockets.insert(socket);

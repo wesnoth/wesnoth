@@ -115,7 +115,7 @@ class user_handler {
 		/** Mark this user as a moderator */
 		virtual void set_is_moderator(const std::string& name, const bool& is_moderator) =0;
 
-		struct error : game::error {
+		struct error : public game::error {
 			error(const std::string& message) : game::error(message) {}
 		};
 

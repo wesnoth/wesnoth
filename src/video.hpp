@@ -67,12 +67,12 @@ class CVideo : private boost::noncopyable {
 
 	bool isFullScreen() const;
 
-	struct error : game::error
+	struct error : public game::error
 	{
 		error() : game::error("Video initialization failed") {}
 	};
 
-	struct quit : game::exception
+	struct quit : public game::exception
 	{
 		quit() : game::exception("Exit game", "quit") {}
 	};

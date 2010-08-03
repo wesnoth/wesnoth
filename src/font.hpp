@@ -14,6 +14,7 @@
 #ifndef FONT_HPP_INCLUDED
 #define FONT_HPP_INCLUDED
 
+#include "exceptions.hpp"
 #include "SDL.h"
 #include "SDL_ttf.h"
 
@@ -37,7 +38,9 @@ struct manager {
 	 */
 	void update_font_path() const;
 
-	struct error {};
+	struct error : public game::error {
+		error() : game::error("Font initialization failed") {}
+	};
 private:
 	/** Initializes the font path. */
 	void init() const;

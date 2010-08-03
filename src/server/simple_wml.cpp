@@ -161,7 +161,7 @@ char* string_span::duplicate() const
 }
 
 error::error(const char* msg)
-  : message(msg)
+  : game::error(msg)
 {
 	ERR_SWML << "ERROR: '" << msg << "'\n";
 }

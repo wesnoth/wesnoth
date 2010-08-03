@@ -97,7 +97,7 @@ namespace network {
                                  stats->uptime() ); //TODO: is uptime ok?
     }
 
-    error::error(const std::string& msg, connection sock) : message(msg), socket(sock)
+    error::error(const std::string& msg, connection sock) : game::error(msg), socket(sock)
     {
     }
 

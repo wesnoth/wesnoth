@@ -22,6 +22,7 @@
 
 class config;
 
+#include "exceptions.hpp"
 #include "SDL_net.h"
 
 #include <string>
@@ -217,10 +218,9 @@ struct connection_stats
 
 connection_stats get_connection_stats(connection connection_num);
 
-struct error
+struct error : public game::error
 {
 	error(const std::string& msg="", connection sock=0);
-	std::string message;
 	connection socket;
 
 	void disconnect();

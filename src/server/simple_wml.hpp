@@ -8,11 +8,12 @@
 #include <string>
 #include <vector>
 
+#include "exceptions.hpp"
+
 namespace simple_wml {
 
-struct error {
+struct error : public game::error {
 	error(const char* msg);
-	std::string message;
 };
 
 class string_span
