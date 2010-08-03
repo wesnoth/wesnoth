@@ -18,7 +18,6 @@ class WMLError(Exception):
         self.wml_line = parser.last_wml_line
         self.message = message
         self.preprocessed = parser.preprocessed
-        self.tempdir = None
 
     def __str__(self):
         r = "WMLError:\n"
@@ -183,6 +182,7 @@ class Parser:
         self.wesnoth_exe = wesnoth_exe
         self.config_dir = config_dir
         self.data_dir = data_dir
+        self.temp_dir = None
         self.no_preprocess = no_preprocess
         self.preprocessed = None
         self.verbose = False
@@ -214,8 +214,8 @@ class Parser:
         If this is not called then the .parse method will assume the
         WML is already preprocessed.
         """
-        if self.tempdir:
-            output = self.tempdir
+        if self.temp_dir:
+            output = self.temp_dir
         else:
             output = tempfile.mkdtemp(prefix="wmlparser_")
         p_option = "-p=" + defines if defines else "-p "
@@ -664,7 +664,7 @@ code = <<
 
     p = Parser(options.wesnoth, options.config_dir, options.data_dir,
         options.no_preprocess)
-    if options.keep_temp: p.tempdir = options.keep_temp
+    if options.keep_temp: p.temp_dir = options.keep_temp
     if options.verbose: p.verbose = True
     if options.input: p.parse_file(options.input, options.defines)
     elif options.text: p.parse_text(options.text, options.defines)
