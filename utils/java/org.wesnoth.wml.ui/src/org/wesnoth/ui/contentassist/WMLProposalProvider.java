@@ -16,6 +16,7 @@ import org.eclipse.jface.text.contentassist.ICompletionProposal;
 import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.parsetree.AbstractNode;
+import org.eclipse.xtext.parsetree.CompositeNode;
 import org.eclipse.xtext.parsetree.LeafNode;
 import org.eclipse.xtext.parsetree.NodeUtil;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
@@ -170,30 +171,46 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 	private void addTagProposals(EObject model, boolean ruleProposal,
 			ContentAssistContext context, ICompletionProposalAcceptor acceptor)
 	{
-		if (checkContextNodeIsAbstractNode(context) &&
-			((AbstractNode)context.getCurrentNode().eContainer()).getParent() != null &&
-			((AbstractNode)context.getCurrentNode().eContainer()).getParent().eContainer() != null)
-		{
-			AbstractNode node = (AbstractNode)context.getCurrentNode().eContainer();
+		WMLTag parentTag = null;
+		if (model instanceof WMLTag)
+			parentTag = (WMLTag)model;
+		else if (model.eContainer() instanceof WMLTag)
+			parentTag = (WMLTag)model.eContainer();
 
-			LeafNode parent = (LeafNode)NodeUtil.findLeafNodeAtOffset(node.getParent(),
-					node.getParent().getOffset() + 2);
-			String parentIndent = ((LeafNode)NodeUtil.findLeafNodeAtOffset(node.getParent(),
-					node.getOffset())).getText();
+		if (parentTag != null)
+		{
+			CompositeNode node = NodeUtil.getNode(model);
+
+			String parentIndent = "";
+			if (context.getCurrentNode().getOffset() > 0)
+				parentIndent = ((LeafNode)NodeUtil.findLeafNodeAtOffset(node.getParent(),
+						context.getCurrentNode().getOffset())).getText();
 
 			// remove ugly new lines that break indentation
 			parentIndent =  parentIndent.replace("\r", "").replace("\n", "");
 
-			Tag tagChildren = SchemaParser.getInstance().getTags().get(parent.getText());
+			Tag tagChildren = SchemaParser.getInstance().getTags().get(parentTag.getName());
 			if (tagChildren != null)
 			{
+				boolean found = false;
 				for(Tag tag : tagChildren.getTagChildren())
 				{
-					acceptor.accept(tagProposal(tag, parentIndent, ruleProposal, context));
+					found = false;
+
+					for(WMLTag wmlTag : parentTag.getTags())
+						if (wmlTag.getName().equals(tag.getName()))
+						{
+							found = true;
+							break;
+						}
+
+					if (found == false)
+						acceptor.accept(tagProposal(tag, parentIndent,
+								ruleProposal, context));
 				}
 			}
 			else
-				dbg("!!! no tag found with that name:" + parent.getText());
+				dbg("!!! no tag found with that name:" + parentTag.getName());
 		}
 		else // we are at the root
 		{
