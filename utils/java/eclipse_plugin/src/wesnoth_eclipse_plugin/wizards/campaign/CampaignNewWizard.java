@@ -16,6 +16,7 @@ import java.util.Properties;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -88,7 +89,10 @@ public class CampaignNewWizard extends NewWizardTemplate
 			IProject currentProject = page0_.getProjectHandle();
 
 			// the project
-			currentProject.create(new NullProgressMonitor());
+			IProjectDescription newDescription = ResourcesPlugin.getWorkspace().
+			newProjectDescription(page0_.getProjectName());
+					newDescription.setLocation(page0_.getLocationPath());
+			currentProject.create(newDescription, new NullProgressMonitor());
 			currentProject.open(null);
 			monitor.worked(2);
 
