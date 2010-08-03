@@ -57,13 +57,13 @@ public class WizardGeneratorPageKey extends NewWizardPageTemplate
 		{
 			TagKey key = keys_.get(i);
 
-			if (key.getCardinality() == '-')
+			if (key.isForbidden())
 				continue;
 
 			Label label = new Label(container_, SWT.NONE);
 			label.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
 			// add star to required items
-			label.setText(key.getName() + (key.getCardinality()== '1' ? "*" : "") + ":");
+			label.setText(key.getName() + (key.isRequired() ? "*" : "") + ":");
 
 			// if the is an enum create a combobox instead of textbox
 			if (key.getIsEnum())
@@ -84,7 +84,7 @@ public class WizardGeneratorPageKey extends NewWizardPageTemplate
 				textBox.setData("valType", key.getValueType());
 				textBox.setData("card", key.getCardinality());
 				textBox.setData("trans", key.getIsTranslatable());
-				if (key.getCardinality() == '1')
+				if (key.isRequired())
 					textBox.setData("comp", false); // is textbox complete
 
 				textBox.addModifyListener(new ModifyListener() {

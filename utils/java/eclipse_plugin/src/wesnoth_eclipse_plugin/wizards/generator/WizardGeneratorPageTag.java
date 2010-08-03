@@ -63,7 +63,7 @@ public class WizardGeneratorPageTag extends NewWizardPageTemplate
 		for (int i = startIndex_; i <= endIndex_; i++)
 		{
 			final Tag tag = tags_.get(i);
-			if (tag.getCardinality() == '-')
+			if (tag.isForbidden())
 				continue;
 
 			Group tagGroup = new Group(container_, SWT.NONE);
@@ -116,7 +116,7 @@ public class WizardGeneratorPageTag extends NewWizardPageTemplate
 
 	private void addNewItem(List targetList, Tag tag)
 	{
-		if ((tag.getCardinality() == '1' || tag.getCardinality() == '?') &&
+		if ((tag.isOptional() || tag.isRequired()) &&
 			targetList.getItemCount() == 1)
 		{
 			GUIUtils.showWarnMessageBox("You can't add more than one item.");
@@ -158,7 +158,7 @@ public class WizardGeneratorPageTag extends NewWizardPageTemplate
 
 			int cnt = ((List)control.getData("list")).getItemCount();
 			Tag tag = (Tag)control.getData("tag");
-			if (cnt == 0 && tag.getCardinality() == '1')
+			if (cnt == 0 && tag.isRequired())
 			{
 				setErrorMessage("You need to have a [" + tag.getName() + "] defined.");
 				return;

@@ -145,11 +145,19 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 				for(TagKey key : SchemaParser.getInstance().
 						getTags().get(tag.getName()).getKeyChildren())
 				{
+					// skip forbidden keys
+					if (key.isForbidden())
+						continue;
+
 					found = false;
-					// don't suggest already completed keys
-					for(WMLKey eKey: tag.getKeys())
-						if (eKey.getName().equals(key.getName()))
+					// check only non-repeatable keys
+					if (key.isRepeatable() == false)
+					{
+						// don't suggest already completed keys
+						for(WMLKey eKey: tag.getKeys())
+							if (eKey.getName().equals(key.getName()))
 								found = true;
+					}
 
 					if (found == false)
 						acceptor.accept(createCompletionProposal(key.getName() + "=",
@@ -195,14 +203,22 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 				boolean found = false;
 				for(Tag tag : tagChildren.getTagChildren())
 				{
+					// skip forbidden tags
+					if (tag.isForbidden())
+						continue;
+
 					found = false;
 
-					for(WMLTag wmlTag : parentTag.getTags())
-						if (wmlTag.getName().equals(tag.getName()))
-						{
-							found = true;
-							break;
-						}
+					// check only non-repeatable tags
+					if (tag.isRepeatable() == false)
+					{
+						for(WMLTag wmlTag : parentTag.getTags())
+							if (wmlTag.getName().equals(tag.getName()))
+							{
+								found = true;
+								break;
+							}
+					}
 
 					if (found == false)
 						acceptor.accept(tagProposal(tag, parentIndent,
@@ -248,7 +264,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 		proposal.append("]\n");
 		for(TagKey key : tag.getKeyChildren())
 		{
-			if (key.getCardinality() == '1')
+			if (key.isRequired())
 				proposal.append(String.format("\t%s%s=\n",
 						indent, key.getName()));
 		}
