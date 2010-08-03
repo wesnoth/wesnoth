@@ -420,7 +420,7 @@ public class WMLTools
 		}
 		if (filePath != null && (filePath.isEmpty() || !new File(filePath).exists()))
 		{
-			GUIUtils.showErrorMessageBox("The file does not exist or is null");
+			Logger.getInstance().logWarn("The file does not exist or is null: " + filePath);
 			return false;
 		}
 

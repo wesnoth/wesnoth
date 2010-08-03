@@ -232,6 +232,8 @@ public class ProjectUtils
 	public static WMLSaxHandler getParsedWMLFromResource(String resourcePath)
 	{
 		ExternalToolInvoker parser = WMLTools.runWMLParser2(resourcePath);
+		if (parser == null)
+			return null;
 		try{
 			parser.waitForTool();
 			SAXParser saxparser;

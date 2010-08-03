@@ -193,7 +193,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 				{
 					WMLSaxHandler handler =  ProjectUtils.
 						getParsedWMLFromResource(PreprocessorUtils.getPreprocessedFilePath(file, false, false).toString());
-					if (handler.ScenarioId == null)
+					if (handler == null || handler.ScenarioId == null)
 					{
 						projCache.getScenarios().remove(file.getName());
 						Logger.getInstance().logWarn("got a null scenario id" +
