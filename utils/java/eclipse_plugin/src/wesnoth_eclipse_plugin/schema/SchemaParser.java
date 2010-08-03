@@ -365,6 +365,10 @@ public class SchemaParser
 
 	/**
 	 * Returns the cardinality as a character of the specified value
+	 * required = 1
+	 * optional = ?
+	 * repeated = *
+	 * forbidden = -
 	 * @param value The value
 	 */
 	public char getCardinality(String value)

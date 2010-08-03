@@ -75,10 +75,55 @@ public class TagKey
 		}
 	}
 
+	/**
+	 * Possible values:
+	 * required = 1
+	 * optional = ?
+	 * repeated = *
+	 * forbidden = -
+	 * @return
+	 */
 	public char getCardinality()
 	{
 		return cardinality_;
 	}
+
+	/**
+	 * Returns true if this key is required
+	 * @return
+	 */
+	public boolean isRequired()
+	{
+		return cardinality_ == '1';
+	}
+
+	/**
+	 * Returns true if this key is forbidden to appear
+	 * @return
+	 */
+	public boolean isForbidden()
+	{
+		return cardinality_ == '-';
+	}
+
+	/**
+	 * Returns true if this key is repeatable
+	 * @return
+	 */
+	public boolean isRepeatable()
+	{
+		return cardinality_ == '*';
+	}
+
+	/**
+	 * Returns true if this key is optional
+	 * @return
+	 */
+	public boolean isOptional()
+	{
+		return cardinality_ == '?';
+	}
+
 	public void setCardinality(char cardinality)
 	{
 		cardinality_ = cardinality;
