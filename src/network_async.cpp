@@ -36,6 +36,18 @@
 
 using namespace network;
 
+namespace
+{
+    size_t global_number_of_network_connections_ = 0;
+}
+
+/* ----------------------------------- Global  Functions ----------------------------------- */
+
+size_t number_of_connections()
+{
+    return global_number_of_network_connections_;
+}
+
 /* ----------------------------------- Utility Functions ----------------------------------- */
 
 namespace utils
@@ -305,8 +317,10 @@ void server::handle_connect( ana::error_code error, net_id new_client_id )
     }
 }
 
-void server::handle_disconnect( ana::error_code error, net_id server_id)
+void server::handle_disconnect( ana::error_code error, net_id id)
 {
+    if ( pending_ids_.find( id ) == pending_ids_.end() )
+        --global_number_of_network_connections_;
 }
 
 void server::handle_receive( ana::error_code error, ana::net_id id, ana::detail::read_buffer buf)
@@ -344,6 +358,10 @@ void server::handle_receive( ana::error_code error, ana::net_id id, ana::detail:
                 server_->set_header_first_mode( id );
 
                 pending_ids_.erase( id );
+
+                ++global_number_of_network_connections_;
+
+                handler.handle_connect( error, id );
             }
         }
     }

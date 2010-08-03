@@ -17,8 +17,6 @@
  * See the COPYING file for more details.
  */
 
-#include <set>
-
 /*
 Hello reader, welcome:
 
@@ -64,18 +62,35 @@ Feature Requests:
 #ifndef NETWORK_ASYNC_HPP_INCLUDED
 #define NETWORK_ASYNC_HPP_INCLUDED
 
+#include <set>
+
 #include "ana/api/ana.hpp"
 
 /** Namespace of the asynchronous network API. */
 namespace network
 {
 
+    /** @name Global functions.
+     *
+     * Some functions relevant for Wesnoth's network users.
+     */
+    //@{
+    /**
+     * The amount of components connected to this user of the network code.
+     */
+    size_t number_of_connections();
+    //@}
+
+    /**
+     */
+    //@{
     /**
      * A wesnoth ID of a network component.
      * For instance, when a client connects to a server, it is a assigned a server side
      * wesnoth_id from the server.
      */
     typedef uint32_t wesnoth_id;
+    //@}
 
     /**
      * Main interface for handlers of Wesnoth network events.
@@ -142,7 +157,7 @@ namespace network
          * @sa ana::error_code
          * @sa ana::operation_id
          */
-        virtual void handle_send(ana::error_code, ana::net_id, operation_id) {}
+        virtual void handle_send(ana::error_code, ana::net_id, ana::operation_id) {}
     };
 
     /**
@@ -225,7 +240,7 @@ namespace network
              * @sa ana::operation_id
              * @sa ana::send_type
              */
-            operation_id async_send( const config& );
+            ana::operation_id async_send( const config& );
 
             /**
              * Signal the client that you are waiting for a message from the server
@@ -277,16 +292,16 @@ namespace network
 
             /* ------------------------ Inhereted handler methods -------------------------*/
 
-            virtual void handle_connect( ana::error_code error, net_id server_id );
+            virtual void handle_connect( ana::error_code error, ana::net_id server_id );
 
-            virtual void handle_disconnect( ana::error_code error, net_id server_id);
+            virtual void handle_disconnect( ana::error_code error, ana::net_id server_id);
 
             virtual void handle_receive( ana::error_code error,
-                                         net_id,
+                                         ana::net_id,
                                          ana::detail::read_buffer);
 
             virtual void handle_send( ana::error_code error,
-                                      net_id client,
+                                      ana::net_id client,
                                       ana::operation_id op_id);
 
             /* ------------------------------- Private Types ------------------------------*/
@@ -351,17 +366,17 @@ namespace network
             /**
              * Attempt to send a WML document to a client.
              */
-            operation_id async_send( ana::net_id, const config& );
+            ana::operation_id async_send( ana::net_id, const config& );
 
             /**
              * Attempt to send a WML document to every connected client.
              */
-            operation_id async_send( const config& );
+            ana::operation_id async_send( const config& );
 
             /**
              * Attempt to send a WML document to every connected client except one.
              */
-            operation_id async_send_except( ana::net_id,  const config& );
+            ana::operation_id async_send_except( ana::net_id,  const config& );
 
             /**
              * Signal the server that you are waiting for a message from a given client
@@ -411,16 +426,16 @@ namespace network
         private:
             /* ------------------------ Inhereted handler methods -------------------------*/
 
-            virtual void handle_connect( ana::error_code error, net_id server_id );
+            virtual void handle_connect( ana::error_code error, ana::net_id server_id );
 
-            virtual void handle_disconnect( ana::error_code error, net_id server_id);
+            virtual void handle_disconnect( ana::error_code error, ana::net_id server_id);
 
             virtual void handle_receive( ana::error_code error,
-                                         net_id,
+                                         ana::net_id,
                                          ana::detail::read_buffer);
 
             virtual void handle_send( ana::error_code error,
-                                      net_id client,
+                                      ana::net_id client,
                                       ana::operation_id op_id);
 
 
