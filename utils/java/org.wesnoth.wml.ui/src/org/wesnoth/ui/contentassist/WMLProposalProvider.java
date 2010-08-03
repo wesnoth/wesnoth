@@ -130,17 +130,30 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 	private void addKeyNameProposals(EObject model,
 			ContentAssistContext context, ICompletionProposalAcceptor acceptor)
 	{
+		WMLTag tag = null;
 		if (model instanceof WMLTag)
+			tag = (WMLTag)model;
+		else if (model.eContainer() instanceof WMLTag)
+			tag = (WMLTag)model.eContainer();
+
+		if (tag != null)
 		{
-			WMLTag tag = (WMLTag)model;
 			if (SchemaParser.getInstance().	getTags().get(tag.getName()) != null)
 			{
+				boolean found = false;
 				for(TagKey key : SchemaParser.getInstance().
 						getTags().get(tag.getName()).getKeyChildren())
 				{
-					acceptor.accept(createCompletionProposal(key.getName() + "=",
-							key.getName(),
-							getImage(WMLFactoryImpl.eINSTANCE.getWMLPackage().getWMLKey()),
+					found = false;
+					// don't suggest already completed keys
+					for(WMLKey eKey: tag.getKeys())
+						if (eKey.getName().equals(key.getName()))
+								found = true;
+
+					if (found == false)
+						acceptor.accept(createCompletionProposal(key.getName() + "=",
+								key.getName(),
+								getImage(WMLFactoryImpl.eINSTANCE.getWMLPackage().getWMLKey()),
 							context));
 				}
 			}
