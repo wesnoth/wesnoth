@@ -20,10 +20,7 @@
 #include "time_of_day.hpp"
 
 time_of_day::time_of_day(const config& cfg):
-	lawful_bonus(cfg["lawful_bonus"]),
-	lawful_bonus_modified(0),
-	liminal_bonus(cfg["liminal_bonus"]),
-	liminal_bonus_modified(0),
+	lawful_bonus(cfg["lawful_bonus"]), bonus_modified(0),
 	image(cfg["image"]), name(cfg["name"].t_str()), id(cfg["id"]),
 	image_mask(cfg["mask"]),
 	red(cfg["red"]), green(cfg["green"]), blue(cfg["blue"]),
@@ -33,9 +30,7 @@ time_of_day::time_of_day(const config& cfg):
 
 time_of_day::time_of_day()
 : lawful_bonus(0)
-, lawful_bonus_modified(0)
-, liminal_bonus(0)
-, liminal_bonus_modified(0)
+, bonus_modified(0)
 , image()
 , name("NULL_TOD")
 , id("nulltod")
@@ -50,7 +45,6 @@ time_of_day::time_of_day()
 void time_of_day::write(config& cfg) const
 {
 	cfg["lawful_bonus"] = lawful_bonus;
-	cfg["liminal_bonus"] = liminal_bonus;
 	cfg["red"] = red;
 	cfg["green"] = green;
 	cfg["blue"] = blue;
