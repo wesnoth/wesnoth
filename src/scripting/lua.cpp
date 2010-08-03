@@ -44,6 +44,7 @@
 #include "play_controller.hpp"
 #include "replay.hpp"
 #include "resources.hpp"
+#include "terrain_filter.hpp"
 #include "terrain_translation.hpp"
 #include "sound.hpp"
 #include "unit.hpp"
@@ -2491,6 +2492,35 @@ static int intf_set_dialog_canvas(lua_State *L)
 	return 0;
 }
 
+/**
+ * Gets all the locations matching a given filter.
+ * Arg 1: WML table.
+ * Ret 1: array of integer pairs.
+ */
+static int intf_get_locations(lua_State *L)
+{
+	vconfig filter = luaW_checkvconfig(L, 1);
+
+	std::set<map_location> res;
+	terrain_filter t_filter(filter, *resources::units);
+	t_filter.restrict_size(game_config::max_loop);
+	t_filter.get_locations(res, true);
+
+	lua_createtable(L, res.size(), 0);
+	int i = 1;
+	foreach (map_location const &loc, res)
+	{
+		lua_createtable(L, 2, 0);
+		lua_pushinteger(L, loc.x + 1);
+		lua_rawseti(L, -2, 1);
+		lua_pushinteger(L, loc.y + 1);
+		lua_rawseti(L, -2, 2);
+		lua_rawseti(L, -2, i);
+		++i;
+	}
+	return 1;
+}
+
 LuaKernel::LuaKernel()
 	: mState(luaL_newstate())
 {
@@ -2525,6 +2555,7 @@ LuaKernel::LuaKernel()
 		{ "fire_event",               &intf_fire_event               },
 		{ "float_label",              &intf_float_label              },
 		{ "get_dialog_value",         &intf_get_dialog_value         },
+		{ "get_locations",            &intf_get_locations            },
 		{ "get_map_size",             &intf_get_map_size             },
 		{ "get_recall_units",         &intf_get_recall_units         },
 		{ "get_selected_tile",        &intf_get_selected_tile        },
