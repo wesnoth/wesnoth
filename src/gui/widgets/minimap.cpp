@@ -196,7 +196,7 @@ const surface tminimap::get_image(const int w, const int h) const
 #endif
 		return surf;
 
-	} catch (incorrect_map_format_exception& e) {
+	} catch (incorrect_map_format_error& e) {
 		ERR_CF << "Error while loading the map: " << e.message << '\n';
 #ifdef DEBUG_MINIMAP_CACHE
 		std::cerr << 'X';

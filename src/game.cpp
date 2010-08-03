@@ -1391,7 +1391,7 @@ bool game_controller::play_multiplayer()
 		} else {
 			ERR_CONFIG << "caught config::error\n";
 		}
-	} catch(incorrect_map_format_exception& e) {
+	} catch(incorrect_map_format_error& e) {
 		gui2::show_error_message(disp().video(), std::string(_("The game map could not be loaded: ")) + e.message);
 	} catch (game::load_game_exception &) {
 		//this will make it so next time through the title screen loop, this game is loaded

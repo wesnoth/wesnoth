@@ -185,10 +185,10 @@ void gamemap::read(const std::string& data)
 		symbols["border_size_val"] = "0";
 		VALIDATE(border_size_ == 0, vgettext(msg.c_str(), symbols));
 	} else if(usage == "") {
-		throw incorrect_map_format_exception("Map has a header but no usage");
+		throw incorrect_map_format_error("Map has a header but no usage");
 	} else {
 		std::string msg = "Map has a header but an unknown usage:" + usage;
-		throw incorrect_map_format_exception(msg.c_str());
+		throw incorrect_map_format_error(msg.c_str());
 	}
 
 	const std::string& map = std::string(data, header_offset + 2);
@@ -199,7 +199,7 @@ void gamemap::read(const std::string& data)
 	} catch(t_translation::error& e) {
 		// We re-throw the error but as map error.
 		// Since all codepaths test for this, it's the least work.
-		throw incorrect_map_format_exception(e.message);
+		throw incorrect_map_format_error(e.message);
 	}
 
 	// Convert the starting positions to the array
@@ -216,7 +216,7 @@ void gamemap::read(const std::string& data)
 			ss << "Starting position " << itor->first << " out of range\n";
 			ERR_CF << ss.str();
 			ss << "The map cannot be loaded.";
-			throw incorrect_map_format_exception(ss.str().c_str());
+			throw incorrect_map_format_error(ss.str().c_str());
 		}
 
 		// Add to the starting position array
@@ -240,7 +240,7 @@ void gamemap::read(const std::string& data)
 						   << ") '" << tiles_[x][y] << "'\n";
 					ERR_CF << ss.str();
 					ss << "The map cannot be loaded.";
-					throw incorrect_map_format_exception(ss.str().c_str());
+					throw incorrect_map_format_error(ss.str().c_str());
 				}
 			}
 

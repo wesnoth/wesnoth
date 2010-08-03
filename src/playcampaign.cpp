@@ -105,7 +105,7 @@ void play_replay(display& disp, game_state& gamestate, const config& game_config
 		gui2::show_error_message(disp.video(), _("The game could not be loaded: ") + e.message);
 	} catch(game::game_error& e) {
 		gui2::show_error_message(disp.video(), _("Error while playing the game: ") + e.message);
-	} catch(incorrect_map_format_exception& e) {
+	} catch(incorrect_map_format_error& e) {
 		gui2::show_error_message(disp.video(), std::string(_("The game map could not be loaded: ")) + e.message);
 	} catch(twml_exception& e) {
 		e.show(disp);
@@ -369,7 +369,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 		} catch(game::game_error& e) {
 			gui2::show_error_message(disp.video(), _("Error while playing the game: ") + e.message);
 			return QUIT;
-		} catch(incorrect_map_format_exception& e) {
+		} catch(incorrect_map_format_error& e) {
 			gui2::show_error_message(disp.video(), std::string(_("The game map could not be loaded: ")) + e.message);
 			return QUIT;
 		} catch(config::error& e) {

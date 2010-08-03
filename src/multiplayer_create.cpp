@@ -326,7 +326,7 @@ void create::process_event()
 		std::auto_ptr<gamemap> map(NULL);
 		try {
 			map = std::auto_ptr<gamemap>(new gamemap(game_config(), map_data));
-		} catch(incorrect_map_format_exception&) {
+		} catch(incorrect_map_format_error&) {
 		} catch(twml_exception&) {}
 
 		if (map.get() == NULL) {
@@ -504,7 +504,7 @@ void create::process_event()
 		std::auto_ptr<gamemap> map(NULL);
 		try {
 			map = std::auto_ptr<gamemap>(new gamemap(game_config(), map_data));
-		} catch(incorrect_map_format_exception& e) {
+		} catch(incorrect_map_format_error& e) {
 			ERR_CF << "map could not be loaded: " << e.message << "\n";
 
 #ifndef USE_TINY_GUI
@@ -665,7 +665,7 @@ void create::hide_children(bool hide)
 			SDL_Color back_color = {0,0,0,255};
 			draw_centered_on_background(mini, minimap_rect_, back_color, video().getSurface());
 #endif
-		} catch(incorrect_map_format_exception& e) {
+		} catch(incorrect_map_format_error& e) {
 			ERR_CF << "map could not be loaded: " << e.message << "\n";
 		} catch(twml_exception& e) {
 			ERR_CF <<  "map could not be loaded: " << e.dev_message << '\n';

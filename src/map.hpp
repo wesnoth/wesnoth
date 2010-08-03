@@ -103,7 +103,7 @@ public:
 	 * @param cfg the game config.
 	 * @param data the map data to load.
 	 */
-	gamemap(const config &cfg, const std::string &data); //throw(incorrect_map_format_exception)
+	gamemap(const config &cfg, const std::string &data); //throw(incorrect_map_format_error)
 
 	virtual ~gamemap();
 
