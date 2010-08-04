@@ -140,6 +140,7 @@ void replay_controller::reset_replay(){
 	is_playing_ = false;
 	player_number_ = 1;
 	current_turn_ = 1;
+	previous_turn_ = 0;
 	tod_manager_= tod_manager_start_;
 	recorder.start_replay();
 	units_ = units_start_;
