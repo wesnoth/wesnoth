@@ -1110,7 +1110,6 @@ void preprocess_resource(const std::string& res_name, preproc_map *defines_map,
 
 	config cfg;
 
-	read(cfg, streamContent, &error_log);
 	if (!error_log.empty())
 	{
 		throw config::error(error_log);
@@ -1118,6 +1117,7 @@ void preprocess_resource(const std::string& res_name, preproc_map *defines_map,
 
 	if (write_cfg == true || write_plain_cfg == true)
 	{
+		read(cfg, streamContent, &error_log);
 		const std::string preproc_res_name = target_directory + "/" + file_name(res_name);
 
 		// write the processed cfg file
