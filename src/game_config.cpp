@@ -54,30 +54,30 @@ namespace game_config
 
 	int cache_compression_level = 6;
 
-	std::string game_icon = "wesnoth-icon-small.png", game_title, game_logo, title_music, lobby_music;
+	std::string game_icon, game_title, game_logo, title_music, lobby_music;
 	int title_logo_x = 0, title_logo_y = 0, title_buttons_x = 0, title_buttons_y = 0, title_buttons_padding = 0,
 	    title_tip_x = 0, title_tip_width = 0, title_tip_padding = 0;
 
-	std::string terrain_mask_image = "terrain/alphamask.png";
-	std::string grid_image_top = "terrain/grid-top.png";
-	std::string grid_image_bottom = "terrain/grid-bottom.png";
-	std::string mouseover_image = "";
-	std::string selected_image = "";
-	std::string unreachable_image = "terrain/darken.png";    /**< overlay image for unreachable tiles. */
-	std::string linger_image = "terrain/darken-linger.png";  /**< overlay image for tiles in linger mode. */
+	std::string terrain_mask_image;
+	std::string grid_image_top;
+	std::string grid_image_bottom;
+	std::string mouseover_image;
+	std::string selected_image;
+	std::string unreachable_image;    /**< overlay image for unreachable tiles. */
+	std::string linger_image;  /**< overlay image for tiles in linger mode. */
 
 	std::string shroud_prefix;
 	std::string fog_prefix;
 
-	std::string energy_image = "misc/bar-energy.png";
-	std::string moved_ball_image = "misc/ball-moved.png";
-	std::string unmoved_ball_image = "misc/ball-unmoved.png";
-	std::string partmoved_ball_image = "misc/ball-partmoved.png";
-	std::string enemy_ball_image = "misc/ball-enemy.png";
-	std::string ally_ball_image = "misc/ball-ally.png";
-	std::string flag_image = "flags/flag-1.png:150,flags/flag-2.png:150,flags/flag-3.png:150,flags/flag-4.png:150";
-	std::string flag_icon_image = "flags/flag_icon.png";
-	std::string flag_rgb = "flag_green";
+	std::string energy_image;
+	std::string moved_ball_image;
+	std::string unmoved_ball_image;
+	std::string partmoved_ball_image;
+	std::string enemy_ball_image;
+	std::string ally_ball_image;
+	std::string flag_image;
+	std::string flag_icon_image;
+	std::string flag_rgb;
 	std::vector<Uint32> red_green_scale;
 	std::vector<Uint32> red_green_scale_text;
 
@@ -89,12 +89,12 @@ namespace game_config
 	bool local_light = false;
 
 	std::vector<std::string> foot_speed_prefix;
-	std::string foot_teleport_enter = "footsteps/teleport-in.png";
-	std::string foot_teleport_exit = "footsteps/teleport-out.png";
+	std::string foot_teleport_enter;
+	std::string foot_teleport_exit;
 
-	std::string observer_image = "misc/eye.png";
-	std::string tod_bright_image = "misc/tod-bright.png";
-	std::string tod_dark_image = "misc/tod-dark.png";
+	std::string observer_image;
+	std::string tod_bright_image;
+	std::string tod_dark_image;
 	std::string unchecked_menu_image = "buttons/checkbox.png";
 	std::string checked_menu_image = "buttons/checkbox-pressed.png";
 	std::string wml_menu_image = "buttons/WML-custom.png";
