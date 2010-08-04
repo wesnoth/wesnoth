@@ -452,3 +452,17 @@ function wml_actions.store_locations(cfg)
 		wesnoth.set_variable(string.format("%s[%d]", var, i - 1), res)
 	end
 end
+
+function wml_actions.hide_unit(cfg)
+	for i,u in ipairs(wesnoth.get_units(cfg)) do
+		u.hidden = true
+	end
+	wml_actions.redraw {}
+end
+
+function wml_actions.unhide_unit(cfg)
+	for i,u in ipairs(wesnoth.get_units(cfg)) do
+		u.hidden = false
+	end
+	wml_actions.redraw {}
+end

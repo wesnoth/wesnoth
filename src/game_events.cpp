@@ -1604,29 +1604,6 @@ WML_HANDLER_FUNCTION(removeitem, event_info, cfg)
 	}
 }
 
-WML_HANDLER_FUNCTION(hide_unit, /*event_info*/, cfg)
-{
-	// Hiding units
-	const map_location loc = cfg_to_loc(cfg);
-	unit_map::iterator u = resources::units->find(loc);
-	if (u.valid()) {
-		u->set_hidden(true);
-		resources::screen->invalidate(loc);
-		resources::screen->draw();
-	}
-}
-
-WML_HANDLER_FUNCTION(unhide_unit, /*event_info*/, cfg)
-{
-	const map_location loc = cfg_to_loc(cfg);
-	// Unhide all for backward compatibility
-	foreach (unit &u, *resources::units) {
-		u.set_hidden(false);
-		resources::screen->invalidate(loc);
-		resources::screen->draw();
-	}
-}
-
 // Adding new items
 WML_HANDLER_FUNCTION(item, /*event_info*/, cfg)
 {
