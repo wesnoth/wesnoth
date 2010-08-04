@@ -88,6 +88,9 @@ void replay_controller::init(){
 	const cursor::setter cursor_setter(cursor::NORMAL);
 	init_replay_display();
 
+	units_start_ = units_;
+	teams_start_ = teams_;
+
 	fire_prestart(true);
 	init_gui();
 	statistics::fresh_stats();
@@ -98,9 +101,6 @@ void replay_controller::init(){
 
 	fire_start(true);
 	update_gui();
-
-	units_start_ = units_;
-	teams_start_ = teams_;
 }
 
 void replay_controller::init_gui(){
