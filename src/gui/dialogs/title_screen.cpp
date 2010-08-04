@@ -206,18 +206,11 @@ void ttitle_screen::pre_show(CVideo& video, twindow& window)
 				, boost::ref(window)
 				, false));
 
-
-	/***** Select a random game_title *****/
-	std::vector<std::string> game_title_list =
-		utils::split(game_config::images::game_title
-				, ','
-				, utils::STRIP_SPACES | utils::REMOVE_EMPTY);
-
-	if(game_title_list.empty()) {
+	if(game_config::images::game_title.empty()) {
 		ERR_CF << "No title image defined\n";
 	} else {
 		window.canvas()[0].set_variable("background_image",
-			variant(game_title_list[rand()%game_title_list.size()]));
+			variant(game_config::images::game_title));
 	}
 
 	/***** Set the logo *****/
