@@ -19,14 +19,30 @@
 #include "persist_context.hpp"
 #include "persist_manager.hpp"
 #include "persist_var.hpp"
+#include "replay.hpp"
 #include "resources.hpp"
 
+struct persist_choice: mp_sync::user_choice {
+	const persist_context &ctx;
+	std::string var_name;
+	persist_choice(const persist_context &context,const std::string &name) 
+		: ctx(context)
+		, var_name(name) {
+	}
+	virtual config query_user() const {
+		return ctx.get_var(var_name);
+	}
+	virtual config random_choice(rand_rng::simple_rng &) const {
+		return config();
+	}
+};
 
 static void get_global_variable(persist_context &ctx, const vconfig &pcfg)
 {
 	std::string global = pcfg["from_global"];
 	std::string local = pcfg["to_local"];
-	config cfg = ctx.get_var(global);
+	persist_choice choice(ctx,global);
+	config cfg = mp_sync::get_user_choice("global_variable",choice,false);
 	if (cfg) {
 		size_t arrsize = cfg.child_count(global);
 		if (arrsize == 0) {

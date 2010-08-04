@@ -1200,9 +1200,9 @@ void replay_network_sender::commit_and_sync()
 	}
 }
 
-config mp_sync::get_user_choice(const std::string &name, const user_choice &uch)
+config mp_sync::get_user_choice(const std::string &name, const user_choice &uch, bool is_interactive)
 {
-	if (resources::state_of_game->phase() == game_state::PLAY)
+	if ((resources::state_of_game->phase() == game_state::PLAY) || !is_interactive)
 	{
 		/* We have to communicate with the player and store the
 		   choices in the replay. So a decision will be made on
