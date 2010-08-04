@@ -480,6 +480,16 @@ unit *luaW_tounit(lua_State *L, int index, bool only_on_map)
 }
 
 /**
+ * Converts a Lua value to a unit pointer.
+ */
+static unit *luaW_checkunit(lua_State *L, int index, bool only_on_map = false)
+{
+	unit *u = luaW_tounit(L, index, only_on_map);
+	if (!u) luaL_typerror(L, index, "unit");
+	return u;
+}
+
+/**
  * Creates a t_string object (__call metamethod).
  * - Arg 1: userdata containing the domain.
  * - Arg 2: string to translate.
@@ -1604,8 +1614,7 @@ static int intf_find_path(lua_State *L)
 
 	if (lua_isuserdata(L, arg))
 	{
-		u = luaW_tounit(L, 1);
-		if (!u) return luaL_typerror(L, 1, "unit");
+		u = luaW_checkunit(L, 1);
 		src = u->get_location();
 		++arg;
 	}
@@ -1712,8 +1721,7 @@ static int intf_find_reach(lua_State *L)
 
 	if (lua_isuserdata(L, arg))
 	{
-		u = luaW_tounit(L, 1);
-		if (!u) return luaL_typerror(L, 1, "unit");
+		u = luaW_checkunit(L, 1);
 		src = u->get_location();
 		++arg;
 	}
@@ -2003,9 +2011,7 @@ static int intf_create_unit(lua_State *L)
  */
 static int intf_copy_unit(lua_State *L)
 {
-	unit const *u = luaW_tounit(L, 1);
-	if (!u) return luaL_typerror(L, 1, "unit");
-
+	unit const *u = luaW_checkunit(L, 1);
 	new(lua_newuserdata(L, sizeof(lua_unit))) lua_unit(new unit(*u));
 	lua_pushlightuserdata(L, (void *)&getunitKey);
 	lua_rawget(L, LUA_REGISTRYINDEX);
@@ -2022,8 +2028,7 @@ static int intf_copy_unit(lua_State *L)
  */
 static int intf_unit_resistance(lua_State *L)
 {
-	unit const *u = luaW_tounit(L, 1);
-	if (!u) return luaL_typerror(L, 1, "unit");
+	unit const *u = luaW_checkunit(L, 1);
 	char const *m = luaL_checkstring(L, 2);
 	bool a = lua_toboolean(L, 3);
 
@@ -2044,10 +2049,8 @@ static int intf_unit_resistance(lua_State *L)
  */
 static int intf_unit_movement_cost(lua_State *L)
 {
-	unit const *u = luaW_tounit(L, 1);
-	if (!u) return luaL_typerror(L, 1, "unit");
+	unit const *u = luaW_checkunit(L, 1);
 	char const *m = luaL_checkstring(L, 2);
-
 	t_translation::t_terrain t = t_translation::read_terrain_code(m);
 	lua_pushinteger(L, u->movement_cost(t));
 	return 1;
@@ -2060,10 +2063,8 @@ static int intf_unit_movement_cost(lua_State *L)
  */
 static int intf_unit_defense(lua_State *L)
 {
-	unit const *u = luaW_tounit(L, 1);
-	if (!u) return luaL_typerror(L, 1, "unit");
+	unit const *u = luaW_checkunit(L, 1);
 	char const *m = luaL_checkstring(L, 2);
-
 	t_translation::t_terrain t = t_translation::read_terrain_code(m);
 	lua_pushinteger(L, u->defense_modifier(t));
 	return 1;
@@ -2103,8 +2104,7 @@ static int intf_simulate_combat(lua_State *L)
 {
 	int arg_num = 1, att_w = -1, def_w = -1;
 
-	unit const *att = luaW_tounit(L, arg_num);
-	if (!att) return luaL_typerror(L, arg_num, "unit");
+	unit const *att = luaW_checkunit(L, arg_num);
 	++arg_num;
 	if (lua_isnumber(L, arg_num)) {
 		att_w = lua_tointeger(L, arg_num) - 1;
@@ -2113,8 +2113,7 @@ static int intf_simulate_combat(lua_State *L)
 		++arg_num;
 	}
 
-	unit const *def = luaW_tounit(L, arg_num, true);
-	if (!def) return luaL_typerror(L, arg_num, "unit");
+	unit const *def = luaW_checkunit(L, arg_num, true);
 	++arg_num;
 	if (lua_isnumber(L, arg_num)) {
 		def_w = lua_tointeger(L, arg_num) - 1;
@@ -2555,9 +2554,7 @@ static int intf_match_location(lua_State *L)
  */
 static int intf_add_modification(lua_State *L)
 {
-	unit *u = luaW_tounit(L, 1);
-	if (!u) return luaL_typerror(L, 1, "unit");
-
+	unit *u = luaW_checkunit(L, 1);
 	char const *m = luaL_checkstring(L, 2);
 	std::string sm = m;
 	if (sm != "advance" && sm != "object" && sm != "trait")
