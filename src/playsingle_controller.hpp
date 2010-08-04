@@ -19,7 +19,6 @@
 #include "global.hpp"
 
 #include "cursor.hpp"
-#include "persist_manager.hpp"
 #include "play_controller.hpp"
 #include "replay.hpp"
 
@@ -97,7 +96,6 @@ protected:
 	bool turn_over_;
 	bool skip_next_turn_;
 	LEVEL_RESULT level_result_;
-	persist_manager persist_;
 private:
 	void report_victory(std::ostringstream &report, int player_gold,
 		int remaining_gold, int finishing_bonus_per_turn,

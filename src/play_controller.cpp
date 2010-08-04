@@ -62,6 +62,7 @@ static void clear_resources()
 	resources::soundsources = NULL;
 	resources::tod_manager = NULL;
 	resources::whiteboard = NULL;
+	resources::persist = NULL;
 }
 
 play_controller::play_controller(const config& level, game_state& state_of_game,
@@ -80,6 +81,7 @@ play_controller::play_controller(const config& level, game_state& state_of_game,
 	menu_handler_(NULL, units_, teams_, level, map_, game_config, tod_manager_, state_of_game),
 	soundsources_manager_(),
 	tod_manager_(level, num_turns, &state_of_game),
+	persist_(),
 	gui_(),
 	statistics_context_(level["name"]),
 	level_(level),
@@ -115,6 +117,7 @@ play_controller::play_controller(const config& level, game_state& state_of_game,
 	resources::tod_manager = &tod_manager_;
 	resources::undo_stack = &undo_stack_;
 	resources::redo_stack = &redo_stack_;
+	resources::persist = &persist_;
 
 	// Setup victory and defeat music
 	set_victory_music_list(level_["victory_music"]);

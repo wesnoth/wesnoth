@@ -26,6 +26,7 @@
 #include "map.hpp"
 #include "menu_events.hpp"
 #include "mouse_events.hpp"
+#include "persist_manager.hpp"
 #include "statistics.hpp"
 #include "tod_manager.hpp"
 #include "savegame_config.hpp"
@@ -196,6 +197,7 @@ protected:
 	events::menu_handler menu_handler_;
 	boost::scoped_ptr<soundsource::manager> soundsources_manager_;
 	tod_manager tod_manager_;
+	persist_manager persist_;
 
 	//other objects
 	boost::scoped_ptr<game_display> gui_;
