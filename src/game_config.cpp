@@ -183,35 +183,35 @@ namespace game_config
 		default_victory_music = v["default_victory_music"].str();
 		default_defeat_music = v["default_defeat_music"].str();
 
-		{
+		if(const config &i = v.child("images")){
 			using namespace game_config::images;
-			game_icon = v["game_icon"].str();
-			game_title = v["game_title"].str();
-			game_logo = v["game_logo"].str();
+			game_icon = i["game_icon"].str();
+			game_title = i["game_title"].str();
+			game_logo = i["game_logo"].str();
 
-			moved_ball = v["moved_ball_image"].str();
-			unmoved_ball = v["unmoved_ball_image"].str();
-			partmoved_ball = v["partmoved_ball_image"].str();
-			enemy_ball = v["enemy_ball_image"].str();
-			ally_ball = v["ally_ball_image"].str();
-			energy = v["energy_image"].str();
+			moved_ball = i["moved_ball"].str();
+			unmoved_ball = i["unmoved_ball"].str();
+			partmoved_ball = i["partmoved_ball"].str();
+			enemy_ball = i["enemy_ball"].str();
+			ally_ball = i["ally_ball"].str();
+			energy = i["energy"].str();
 
-			flag = v["flag_image"].str();
-			flag_icon = v["flag_icon_image"].str();
+			flag = i["flag"].str();
+			flag_icon = i["flag_icon"].str();
 
-			terrain_mask = v["terrain_mask_image"].str();
-			grid_top = v["grid_image_top"].str();
-			grid_bottom = v["grid_image_bottom"].str();
-			mouseover = v["mouseover_image"].str();
-			selected = v["selected_image"].str();
-			unreachable = v["unreachable_image"].str();
-			linger = v["linger_image"].str();
+			terrain_mask = i["terrain_mask"].str();
+			grid_top = i["grid_top"].str();
+			grid_bottom = i["grid_bottom"].str();
+			mouseover = i["mouseover"].str();
+			selected = i["selected"].str();
+			unreachable = i["unreachable"].str();
+			linger = i["linger"].str();
 
-			observer = v["observer_image"].str();
-			tod_bright = v["tod_bright_image"].str();
-			tod_dark = v["tod_dark_image"].str();
-			level = v["level_image"].str();
-			ellipsis = v["ellipsis_image"].str();
+			observer = i["observer"].str();
+			tod_bright = i["tod_bright"].str();
+			tod_dark = i["tod_dark"].str();
+			level = i["level"].str();
+			ellipsis = i["ellipsis"].str();
 		} // images
 
 		hp_bar_scaling = v["hp_bar_scaling"].to_double(0.666);
