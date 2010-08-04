@@ -84,8 +84,7 @@ namespace game_config
 			mouseover,
 			selected,
 			unreachable,
-			///@todo de-hardcode this
-			linger = "terrain/darken-linger.png",
+			linger,
 			// GUI elements
 			observer,
 			tod_bright,
@@ -206,6 +205,7 @@ namespace game_config
 			mouseover = v["mouseover_image"].str();
 			selected = v["selected_image"].str();
 			unreachable = v["unreachable_image"].str();
+			linger = v["linger_image"].str();
 
 			observer = v["observer_image"].str();
 			tod_bright = v["tod_bright_image"].str();
