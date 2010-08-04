@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IProject;
@@ -164,9 +165,12 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 	}
 
 	protected boolean checkResource(IResource resource, IProgressMonitor monitor,
-						int delta)
+						int delta, boolean handleMainCfg)
 	{
 		monitor.worked(5);
+		if (resource.exists() == false)
+			return false;
+
 		if (isResourceIgnored(resource))
 			return false;
 
@@ -177,6 +181,10 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 		if (resource instanceof IFile &&
 			(resource.getName().toLowerCase(Locale.ENGLISH).endsWith(".cfg")))
 		{
+			if (handleMainCfg == false &&
+				resource.getName().startsWith("_main.cfg"))
+				return true;
+
 			try
 			{
 				IFile file = (IFile) resource;
@@ -335,7 +343,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 			{
 			case IResourceDelta.ADDED:
 				// handle added resource
-				visitChildren = checkResource(resource, monitor_, delta.getKind());
+				visitChildren = checkResource(resource, monitor_, delta.getKind(), false);
 				break;
 			case IResourceDelta.REMOVED:
 				// handle removed resource
@@ -344,9 +352,17 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 				break;
 			case IResourceDelta.CHANGED:
 				// handle changed resource
-				visitChildren = checkResource(resource, monitor_, delta.getKind());
+				visitChildren = checkResource(resource, monitor_, delta.getKind(), false);
 				break;
 			}
+
+			if (resource instanceof IContainer)
+			{
+				// preprocess _main.cfg before all
+				checkResource(((IContainer) resource).getFile(new Path("_main.cfg")),
+						monitor_, delta.getKind(), true);
+			}
+
 			// return true to continue visiting children.
 			return visitChildren;
 		}
@@ -363,7 +379,13 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 		@Override
 		public boolean visit(IResource resource)
 		{
-			return checkResource(resource, monitor_, -1);
+			// preprocess _main.cfg before all
+			if (resource instanceof IContainer)
+			{
+				checkResource(((IContainer) resource).getFile(new Path("_main.cfg")),
+						monitor_, -1, true);
+			}
+			return checkResource(resource, monitor_, -1, false);
 		}
 	}
 }
