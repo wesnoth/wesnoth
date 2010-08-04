@@ -2036,10 +2036,12 @@ void display::draw_hex(const map_location& loc) {
 
 	// Draw the grid, if that's been enabled
 		if(grid_ && on_map && !off_map_tile) {
+			static const image::locator grid_top(game_config::images::grid_top);
 			drawing_buffer_add(LAYER_GRID_TOP, loc, tblit(xpos, ypos,
-				image::get_image(game_config::images::grid_top, image::SCALED_TO_HEX)));
+				image::get_image(grid_top, image::SCALED_TO_HEX)));
+			static const image::locator grid_bottom(game_config::images::grid_bottom);
 			drawing_buffer_add(LAYER_GRID_BOTTOM, loc, tblit(xpos, ypos,
-				image::get_image(game_config::images::grid_bottom, image::SCALED_TO_HEX)));
+				image::get_image(grid_bottom, image::SCALED_TO_HEX)));
 		}
 	}
 

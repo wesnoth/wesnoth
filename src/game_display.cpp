@@ -357,8 +357,9 @@ void game_display::draw_hex(const map_location& loc)
 	// that we want to attack.
 	if (!is_shrouded && !reach_map_.empty()
 			&& reach_map_.find(loc) == reach_map_.end() && loc != attack_indicator_dst_) {
+		static const image::locator unreachable(game_config::images::unreachable);
 		drawing_buffer_add(LAYER_REACHMAP, loc, tblit(xpos, ypos,
-			image::get_image(game_config::images::unreachable,image::UNMASKED)));
+				image::get_image(unreachable,image::UNMASKED)));
 	}
 
 	resources::whiteboard->draw_hex(loc);
@@ -383,19 +384,22 @@ void game_display::draw_hex(const map_location& loc)
 	// Linger overlay unconditionally otherwise it might give glitches
 	// so it's drawn over the shroud and fog.
 	if(game_mode_ != RUNNING) {
-		blit.surf.push_back(image::get_image(game_config::images::linger, image::SCALED_TO_HEX));
+		static const image::locator linger(game_config::images::linger);
+		blit.surf.push_back(image::get_image(linger, image::SCALED_TO_HEX));
 		drawing_buffer_add(LAYER_LINGER_OVERLAY, loc, blit);
 		blit.surf.clear();
 	}
 
 	if(on_map && loc == selectedHex_ && !game_config::images::selected.empty()) {
+		static const image::locator selected(game_config::images::selected);
 		drawing_buffer_add(LAYER_MOVE_INFO, loc, tblit(xpos, ypos,
-			image::get_image(game_config::images::selected, image::UNMASKED)));
+				image::get_image(selected, image::UNMASKED)));
 	}
 
 	if(on_map && loc == mouseoverHex_ && !game_config::images::mouseover.empty()) {
+		static const image::locator mouseover(game_config::images::mouseover);
 		drawing_buffer_add(LAYER_MOVE_INFO, loc, tblit(xpos, ypos,
-			image::get_image(game_config::images::mouseover, image::UNMASKED)));
+				image::get_image(mouseover, image::UNMASKED)));
 	}
 
 	// Show def% and turn to reach infos

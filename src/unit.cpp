@@ -1878,30 +1878,35 @@ void unit::redraw_unit()
 		disp.drawing_buffer_add(display::LAYER_UNIT_FIRST, loc_,
 			display::tblit(xsrc, ysrc +adjusted_params.y-ellipse_floating, ellipse_front));
 	}
-
 	if(draw_bars) {
-		const std::string* movement_file = NULL;
+		const image::locator* orb_img = NULL;
+		static const image::locator enemy_ball(game_config::images::enemy_ball);
+		static const image::locator ally_ball(game_config::images::ally_ball);
+		static const image::locator moved_ball(game_config::images::moved_ball);
+		static const image::locator unmoved_ball(game_config::images::unmoved_ball);
+		static const image::locator partmoved_ball(game_config::images::partmoved_ball);
+
 		const std::string* energy_file = &game_config::images::energy;
 
 		if(size_t(side()) != disp.viewing_team()+1) {
 			if(disp.team_valid() &&
 			   disp.get_teams()[disp.viewing_team()].is_enemy(side())) {
-				movement_file = &game_config::images::enemy_ball;
+				orb_img = &enemy_ball;
 			} else {
-				movement_file = &game_config::images::ally_ball;
+				orb_img = &ally_ball;
 			}
 		} else {
-			movement_file = &game_config::images::moved_ball;
+			orb_img = &moved_ball;
 			if(disp.playing_team() == disp.viewing_team() && !user_end_turn()) {
 				if (movement_left() == total_movement()) {
-					movement_file = &game_config::images::unmoved_ball;
+					orb_img = &unmoved_ball;
 				} else if (unit_can_move(*this)) {
-					movement_file = &game_config::images::partmoved_ball;
+					orb_img = &partmoved_ball;
 				}
 			}
 		}
-
-		surface orb(image::get_image(*movement_file,image::SCALED_TO_ZOOM));
+		assert(orb_img != NULL);
+		surface orb(image::get_image(*orb_img,image::SCALED_TO_ZOOM));
 		if (orb != NULL) {
 			disp.drawing_buffer_add(display::LAYER_UNIT_BAR,
 				loc_, display::tblit(xsrc, ysrc +adjusted_params.y, orb));

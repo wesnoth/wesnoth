@@ -83,8 +83,9 @@ void editor_display::draw_hex(const map_location& loc)
 		}
 
 		if(loc == mouseoverHex_ && !game_config::images::mouseover.empty()) {
-		drawing_buffer_add(LAYER_MOVE_INFO, loc, tblit(xpos, ypos,
-			image::get_image(game_config::images::mouseover, image::UNMASKED)));
+			static const image::locator mouseover(game_config::images::mouseover);
+			drawing_buffer_add(LAYER_MOVE_INFO, loc, tblit(xpos, ypos,
+					image::get_image(mouseover, image::UNMASKED)));
 		}
 	}
 }
