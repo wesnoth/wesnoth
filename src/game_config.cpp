@@ -185,9 +185,9 @@ namespace game_config
 
 		{
 			using namespace game_config::images;
-			game_icon = v["icon"].str();
-			game_title = v["title"].str();
-			game_logo = v["logo"].str();
+			game_icon = v["game_icon"].str();
+			game_title = v["game_title"].str();
+			game_logo = v["game_logo"].str();
 
 			moved_ball = v["moved_ball_image"].str();
 			unmoved_ball = v["unmoved_ball_image"].str();
