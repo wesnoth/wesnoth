@@ -822,6 +822,7 @@ static int impl_unit_get(lua_State *L)
 		lua_setmetatable(L, -2);
 		return 1;
 	}
+	return_bool_attrib("hidden", u.get_hidden());
 	return_bool_attrib("petrified", u.incapacitated());
 	return_bool_attrib("resting", u.resting());
 	return_string_attrib("role", u.get_role());
@@ -852,6 +853,7 @@ static int impl_unit_set(lua_State *L)
 	modify_tstring_attrib("name", u.set_name(value));
 	modify_string_attrib("role", u.set_role(value));
 	modify_string_attrib("facing", u.set_facing(map_location::parse_direction(value)));
+	modify_bool_attrib("hidden", u.set_hidden(value));
 	if (!lu->on_map()) {
 		map_location loc = u.get_location();
 		modify_int_attrib("x", loc.x = value - 1; u.set_location(loc));
