@@ -20,6 +20,7 @@
 #include "game_events.hpp"
 #include "gettext.hpp"
 #include "log.hpp"
+#include "map_label.hpp"
 #include "replay.hpp"
 #include "replay_controller.hpp"
 #include "resources.hpp"
@@ -151,6 +152,17 @@ void replay_controller::reset_replay(){
 		// failure)
 		events_manager_.reset();
 		events_manager_.reset(new game_events::manager(level_));
+	}
+
+	gui_->labels().read(level_);
+
+	// Find a list of 'items' (i.e. overlays) on the level, and add them
+	foreach (const config &overlay, level_.child_range("item"))
+	{
+		gui_->add_overlay(
+			map_location(overlay, resources::state_of_game),
+			overlay["image"], overlay["halo"], overlay["team_name"],
+			overlay["visible_in_fog"].to_bool(true));
 	}
 
 	fire_prestart(true);
