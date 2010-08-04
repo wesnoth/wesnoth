@@ -134,7 +134,7 @@ bool terrain_filter::match_internal(const map_location& loc, const bool ignore_x
 						break;
 					}
 				}
-				if (!found) return true;
+				if (!found) return false;
 			}
 		}
 	}
