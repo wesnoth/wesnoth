@@ -165,11 +165,11 @@ void replay_controller::reset_replay(){
 			overlay["visible_in_fog"].to_bool(true));
 	}
 
+	statistics::fresh_stats();
+	set_victory_when_enemies_defeated(level_["victory_when_enemies_defeated"].to_bool(true));
+
 	fire_prestart(true);
 	init_gui();
-	statistics::fresh_stats();
-	set_victory_when_enemies_defeated(
-		utils::string_bool(level_["victory_when_enemies_defeated"], true));
 	fire_start(true);
 	update_gui();
 
