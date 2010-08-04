@@ -2545,6 +2545,27 @@ static int intf_match_location(lua_State *L)
 	return 1;
 }
 
+/**
+ * Adds a modification to a unit.
+ * - Arg 1: unit.
+ * - Arg 2: string.
+ * - Arg 3: WML table.
+ */
+static int intf_add_modification(lua_State *L)
+{
+	unit *u = luaW_tounit(L, 1);
+	if (!u) return luaL_typerror(L, 1, "unit");
+
+	char const *m = luaL_checkstring(L, 2);
+	std::string sm = m;
+	if (sm != "advance" && sm != "object" && sm != "trait")
+		return luaL_argerror(L, 2, "unknown modification type");
+
+	config cfg = luaW_checkconfig(L, 3);
+	u->add_modification(sm, cfg);
+	return 0;
+}
+
 LuaKernel::LuaKernel()
 	: mState(luaL_newstate())
 {
@@ -2568,6 +2589,7 @@ LuaKernel::LuaKernel()
 
 	// Put some callback functions in the scripting environment.
 	static luaL_reg const callbacks[] = {
+		{ "add_modification",         &intf_add_modification         },
 		{ "copy_unit",                &intf_copy_unit                },
 		{ "create_unit",              &intf_create_unit              },
 		{ "dofile",                   &intf_dofile                   },
