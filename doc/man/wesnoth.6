@@ -162,8 +162,12 @@ Example:
 or
 .B -p=MULTIPLAYER,MY_OWN_CAMPAIGN ~/wesnoth/data/campaign/camp ~/result
 .TP
+.B --preprocess-input-macros <source file>
+used only by the '--preprocess' command.
+Specifies a file that contains [preproc_define]s to be included before preprocessing.
+.TP
 .B --preprocess-output-macros [<target file>]
-usable only with '--preprocess' command.
+used only by the '--preprocess' command.
 Will output all preprocessed macros in the target file. If the file is not specified
 the output will be file '_MACROS_.cfg' in the target directory of preprocess's command.
 This switch should be typed before the --preprocess command.

@@ -1709,10 +1709,11 @@ static void gzip_decode(const std::string & input_file, const std::string & outp
 struct preprocess_options
 {
 public:
-	preprocess_options(): output_macros_path_("false")
+	preprocess_options(): output_macros_path_("false"), input_macros_()
 	{
 	}
 	std::string output_macros_path_;
+	preproc_map input_macros_;
 };
 
 /** Process commandline-arguments */
@@ -1833,8 +1834,12 @@ static int process_command_args(int argc, char** argv) {
 			<< "                               define1,define2,...  - the extra defines will\n"
 			<< "                               be added before processing the files. If you add\n"
 			<< "                               them you must add the '=' character before.\n"
+			<< " --preprocess-input-macros <source file>\n"
+			<< "                               used only by the '--preprocess' command.\n"
+			<< "                               Specifies a file that contains [preproc_define]s\n"
+			<< "                               to be included before preprocessing.\n"
 			<< " --preprocess-output-macros [<target file>]\n"
-			<< "                               usable only with '--preprocess' command.\n"
+			<< "                               used only by the '--preprocess' command.\n"
 			<< "                               Will output all preprocessed macros in the target file.\n"
 			<< "                               If the file is not specified the output will be\n"
 			<< "                               file '_MACROS_.cfg' in the target directory of\n"
@@ -1979,6 +1984,37 @@ static int process_command_args(int argc, char** argv) {
 				return 2;
 			}
 			srand(lexical_cast_default<unsigned int>(argv[arg]));
+		} else if (val == "--preprocess-input-macros") {
+			if (arg + 1 < argc)
+			{
+				++arg;
+				std::string file = argv[arg];
+				if (file_exists(file) == false)
+				{
+					std::cerr << "please specify an existing file.\n";
+					return 1;
+				}
+
+				std::cerr << SDL_GetTicks() << " Reading cached defines from: " << file << "\n";
+
+				config cfg;
+				std::string error_log;
+				scoped_istream stream = istream_file(file);
+				read(cfg, *stream);
+
+				int read = 0;
+				// use static preproc_define::read_pair(config) to make a object
+				foreach (const config::any_child &value, cfg.all_children_range()) {
+					const preproc_map::value_type def = preproc_define::read_pair(value.cfg);
+					preproc.input_macros_[def.first] = def.second;
+					++read;
+				}
+				std::cerr << SDL_GetTicks() << " Read " << read << " defines.\n";
+			}
+			else {
+				std::cerr << "please specify input macros file.\n";
+				return 2;
+			}
 		} else if (val == "--preprocess-output-macros") {
 			preproc.output_macros_path_ = "true";
 			if (arg + 1 < argc && argv[arg+1][0] != '-')
@@ -1995,7 +2031,7 @@ static int process_command_args(int argc, char** argv) {
 
 				Uint32 startTime = SDL_GetTicks();
 				// the 'core_defines_map' is the one got from /data/core macros
-				preproc_map defines_map;
+				preproc_map defines_map(preproc.input_macros_);
 				std::string error_log;
 
 				// add the specified defines
@@ -2031,13 +2067,15 @@ static int process_command_args(int argc, char** argv) {
 				// preprocess core macros first
 				std::cerr << "preprocessing common macros from 'data/core' ...\n";
 				preprocess_resource(game_config::path + "/data/core",&defines_map);
-				std::cerr << "acquired " << defines_map.size() << " 'data/core' defines.\n";
+				std::cerr << "acquired " << (defines_map.size() - preproc.input_macros_.size())
+					      << " 'data/core' defines.\n";
 
 				// preprocess resource
 				std::cerr << "preprocessing specified resource: "
 						  << resourceToProcess << " ...\n";
 				preprocess_resource(resourceToProcess, &defines_map, true,true, targetDir);
-				std::cerr << "acquired " << defines_map.size() << " total defines.\n";
+				std::cerr << "acquired " << (defines_map.size() - preproc.input_macros_.size())
+					      << " total defines.\n";
 
 				if (preproc.output_macros_path_ != "false")
 				{
@@ -2064,11 +2102,12 @@ static int process_command_args(int argc, char** argv) {
 				}
 
 				std::cerr << "preprocessing finished. Took "<< SDL_GetTicks() - startTime << " ticks.\n";
+				return 0;
 			}
 			else{
 				std::cerr << "Please specify a source file/folder and a target folder\n";
+				return 2;
 			}
-			return 1;
 		}
 	}
 
