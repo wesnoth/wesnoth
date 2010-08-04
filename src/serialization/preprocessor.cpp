@@ -1103,22 +1103,21 @@ void preprocess_resource(const std::string& res_name, preproc_map *defines_map,
 	encode_filename = false;
 
 	std::string error_log;
+	scoped_istream stream = preprocess_file(res_name, defines_map, &error_log);
+	std::stringstream ss;
+	ss<<(*stream).rdbuf();
+	std::string streamContent = ss.str();
 
-	if (write_cfg == false || write_plain_cfg == false)
+	config cfg;
+
+	read(cfg, streamContent, &error_log);
+	if (!error_log.empty())
 	{
-		preprocess_file(res_name, defines_map, &error_log);
+		throw config::error(error_log);
 	}
-	else
+
+	if (write_cfg == true || write_plain_cfg == true)
 	{
-		scoped_istream stream = preprocess_file(res_name, defines_map, &error_log);
-		std::stringstream ss;
-		ss<<(*stream).rdbuf();
-		std::string streamContent = ss.str();
-
-		config cfg;
-
-		read(cfg, streamContent, &error_log);
-
 		const std::string preproc_res_name = target_directory + "/" + file_name(res_name);
 
 		// write the processed cfg file
@@ -1137,10 +1136,5 @@ void preprocess_resource(const std::string& res_name, preproc_map *defines_map,
 			create_directory_if_missing_recursive(directory_name(preproc_res_name));
 			write_file(preproc_res_name+".plain",streamContent);
 		}
-	}
-
-	if (!error_log.empty())
-	{
-		throw config::error(error_log);
 	}
 }
