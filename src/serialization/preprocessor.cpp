@@ -805,9 +805,8 @@ bool preprocessor_data::get_chunk()
 			}
 			if (!skipping_) {
 				buffer.erase(buffer.end() - 7, buffer.end());
-				target_.defines_->insert(std::make_pair(
-					symbol, preproc_define(buffer, items, target_.textdomain_,
-					                       linenum + 1, target_.location_)));
+				(*target_.defines_)[symbol] = preproc_define(buffer, items, target_.textdomain_,
+					                       linenum + 1, target_.location_);
 				LOG_CF << "defining macro " << symbol << " (location " << get_location(target_.location_) << ")\n";
 			}
 		} else if (command == "ifdef") {
