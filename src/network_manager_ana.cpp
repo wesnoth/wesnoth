@@ -392,32 +392,26 @@ ana_component::~ana_component( )
 
 network::statistics ana_component::get_send_stats() const
 {
-    ana::stats_collector* stats = listener()->stats_collector();
+    ana::stats_collector& stats = listener()->stats_collector();
 
     network::statistics result;
 
-    if ( stats != NULL )
-    {
-        result.current     = stats->current_packet_out_total();
-        result.current_max = stats->current_packet_out_size();
-        result.total       = stats->get_stats( ana::ACCUMULATED )->bytes_out();
-    }
+    result.current     = stats.current_packet_out_total();
+    result.current_max = stats.current_packet_out_size();
+    result.total       = stats.get_stats( ana::ACCUMULATED )->bytes_out();
 
     return result;
 }
 
 network::statistics ana_component::get_receive_stats() const
 {
-    ana::stats_collector* stats = listener()->stats_collector();
+    ana::stats_collector& stats = listener()->stats_collector();
 
     network::statistics result;
 
-    if ( stats != NULL )
-    {
-        result.current     = stats->current_packet_in_total();
-        result.current_max = stats->current_packet_in_size();
-        result.total       = stats->get_stats( ana::ACCUMULATED )->bytes_in();
-    }
+    result.current     = stats.current_packet_in_total();
+    result.current_max = stats.current_packet_in_size();
+    result.total       = stats.get_stats( ana::ACCUMULATED )->bytes_in();
 
     return result;
 }
@@ -610,8 +604,6 @@ ana::net_id ana_network_manager::create_server( )
     server->set_listener_handler( this );
     server->set_raw_data_mode();
 
-    server->start_logging();
-
     return server->id();
 }
 
@@ -630,11 +622,10 @@ network::connection ana_network_manager::create_client_and_connect(std::string h
         ana_connect_handler handler;
 
         client->set_raw_data_mode();
+        client->set_connect_timeout( ana::time::seconds(10) );
         client->connect( &handler );
         client->set_listener_handler( this );
         client->run();
-
-        client->start_logging();
 
         handler.wait_completion(); // just wait for handler to finish
 
@@ -664,7 +655,7 @@ network::connection ana_network_manager::create_client_and_connect(std::string h
                 uint32_t my_id;
                 ana::serializer::bistream bis;
 
-                client->wait_raw_object(bis, sizeof(my_id) );
+                client->wait_raw_object(bis, sizeof(uint32_t) );
 
                 bis >> my_id;
                 ana::network_to_host_long( my_id );

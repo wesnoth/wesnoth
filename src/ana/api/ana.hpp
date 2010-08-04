@@ -155,12 +155,6 @@ namespace ana
     {
         virtual ~network_stats_logger() {}
 
-        /** Start logging network events for statistics collection. */
-        virtual void start_logging() = 0;
-
-        /** Stop logging network events (disables statistics collection.) */
-        virtual void stop_logging()  = 0;
-
         /**
          * Get the associated collected stats as per a stat_type.
          *
@@ -184,7 +178,6 @@ namespace ana
         class ana_component
         {
             public:
-
                 virtual ~ana_component() {}
 
                 /**
@@ -198,16 +191,6 @@ namespace ana
                  * Disconnect the component.
                  */
                 virtual void disconnect() = 0;
-
-                /**
-                 * Get associated stats_collector object.
-                 *
-                 * @returns A pointer to the associated stats_collector object,
-                 *          NULL if not keeping stats.
-                 *
-                 * \sa stats_collector.
-                 */
-                virtual ana::stats_collector* stats_collector() = 0;
 
                 /**
                  * Enter Raw Data mode, ana won't prefix your packets with header information.
@@ -232,6 +215,16 @@ namespace ana
 
                 /** Returns false iff the sender is in raw data mode. */
                 bool header_mode() const {return ! raw_data_; }
+
+                /**
+                 * Get associated stats_collector object.
+                 *
+                 * @returns A pointer to the associated stats_collector object,
+                 *          NULL if not keeping stats.
+                 *
+                 * \sa stats_collector.
+                 */
+                virtual ana::stats_collector& stats_collector() = 0;
 
             protected:
                 /** Initialize component, assign fresh id and sets header-first and async modes. */

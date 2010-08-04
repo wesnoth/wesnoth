@@ -88,7 +88,7 @@ void asio_listener::handle_body( ana::detail::read_buffer buf, const boost::syst
             disconnect( ec );
         else
         {
-            log_conditional_receive( buf );
+            stats_collector().log_receive( buf );
             listener_->handle_receive( ec, id(), buf );
             listen_one_message();
         }
@@ -99,19 +99,6 @@ void asio_listener::handle_body( ana::detail::read_buffer buf, const boost::syst
     }
 }
 
-void asio_listener::log_conditional_receive( const ana::detail::read_buffer& buf )
-{
-    if ( stats_collector() != NULL )
-        stats_collector()->log_receive( buf );
-}
-
-void asio_listener::log_conditional_receive( size_t size, bool finished)
-{
-    if ( stats_collector() != NULL )
-        stats_collector()->log_receive( size, finished );
-}
-
-
 void asio_listener::handle_header(char* header, const boost::system::error_code& ec)
 {
     try
@@ -120,15 +107,14 @@ void asio_listener::handle_header(char* header, const boost::system::error_code&
             disconnect( ec);
         else
         {
-            log_conditional_receive( ana::HEADER_LENGTH );
+            stats_collector().log_receive( ana::HEADER_LENGTH );
             ana::serializer::bistream input( std::string(header, ana::HEADER_LENGTH) );
 
             ana::ana_uint32 size;
             input >> size;
             ana::network_to_host_long( size );
 
-            if ( stats_collector() != NULL )
-                stats_collector()->start_receive_packet( size );
+            stats_collector().start_receive_packet( size );
 
             if (size != 0)
             {
@@ -172,7 +158,7 @@ void asio_listener::handle_partial_body( ana::detail::read_buffer         buffer
             accumulated += last_msg_size;
 
             //2nd param to add a completed packet
-            log_conditional_receive( last_msg_size, accumulated == buffer->size() );
+            stats_collector().log_receive( last_msg_size, accumulated == buffer->size() );
 
 
             if ( accumulated > buffer->size() )
@@ -223,7 +209,7 @@ void asio_listener::handle_raw_buffer( ana::detail::read_buffer buf,
         else
         {
             buf->resize( read_size );
-            log_conditional_receive( buf );
+            stats_collector().log_receive( buf );
             listener_->handle_receive( ec, id(), buf );
             listen_one_message();
         }

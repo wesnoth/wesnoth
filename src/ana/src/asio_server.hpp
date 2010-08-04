@@ -80,10 +80,7 @@ class asio_server : public  ana::server,
 
                 virtual std::string ip_address( ) const;
 
-                virtual void start_logging();
-                virtual void stop_logging();
-
-                virtual ana::stats_collector* stats_collector() { return stats_collector_; }
+                virtual ana::stats_collector& stats_collector();
 
                 virtual ana::timer* create_timer();
 
@@ -91,11 +88,9 @@ class asio_server : public  ana::server,
 
                 virtual void expecting_message( size_t ms_until_timeout );
 
-                void log_conditional_receive( const ana::detail::read_buffer& buffer );
-
                 tcp::socket           socket_;
                 asio_proxy_manager*   manager_;
-                ana::stats_collector* stats_collector_;
+                ana::stats_collector  stats_collector_;
         };
 
     public:
@@ -137,9 +132,6 @@ class asio_server : public  ana::server,
 
         virtual void log_receive( ana::detail::read_buffer buffer );
 
-        virtual void start_logging();
-        virtual void stop_logging();
-
         virtual const ana::stats* get_stats( ana::stat_type type ) const;
 
         virtual void cancel_pending( );
@@ -153,7 +145,7 @@ class asio_server : public  ana::server,
         // TODO: implement this, or improve OO design with 2nd param (vote for 2)
         virtual void wait_raw_object(ana::serializer::bistream& , size_t ) {}
 
-        virtual ana::stats_collector* stats_collector() { return stats_collector_; }
+        virtual ana::stats_collector& stats_collector();
 
         virtual ana::timer* create_timer();
 
@@ -183,7 +175,7 @@ class asio_server : public  ana::server,
         ana::connection_handler*      connection_handler_;
         asio_client_proxy*            last_client_proxy_;
 
-        ana::stats_collector*         stats_collector_;
+        ana::stats_collector          stats_collector_;
 
         ana::operation_id             last_valid_operation_id_; //0 means no operation performed
 };

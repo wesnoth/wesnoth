@@ -62,9 +62,6 @@ class asio_listener : public virtual ana::detail::listener
 
         virtual void wait_raw_object(ana::serializer::bistream& bis, size_t size);
 
-        void log_conditional_receive( const ana::detail::read_buffer& buf );
-        void log_conditional_receive( size_t size, bool finished = false);
-
         void listen_one_message();
 
         void disconnect( boost::system::error_code error);

@@ -62,8 +62,7 @@ void asio_sender::send(ana::detail::shared_buffer buffer ,
         }
         else
         {
-            if ( stats_collector() != NULL )
-                stats_collector()->start_send_packet( buffer->size() + ana::HEADER_LENGTH);
+            stats_collector().start_send_packet( buffer->size() + ana::HEADER_LENGTH );
 
             ana::ana_uint32 size( buffer->size() );
             ana::host_to_network_long( size );
@@ -129,7 +128,7 @@ void asio_sender::handle_partial_send( ana::detail::shared_buffer  buffer,
         {
             accumulated += last_msg_size;
 
-            log_conditional_send( last_msg_size, accumulated == buffer->size() );
+stats_collector().log_send( last_msg_size, accumulated == buffer->size() );
 
             if ( accumulated > buffer->size() )
                 throw std::runtime_error("The send operation was too large.");
@@ -169,11 +168,5 @@ void asio_sender::handle_send(const ana::error_code& ec,
         if ( ec )
             disconnect();
     }
-}
-
-void asio_sender::log_conditional_send( size_t size, bool finished )
-{
-    if (stats_collector() != NULL )
-        stats_collector()->log_send( size, finished );
 }
 

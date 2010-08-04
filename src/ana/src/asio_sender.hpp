@@ -73,8 +73,6 @@ class asio_sender : private ana::detail::sender
                          ana::timer*,
                          ana::operation_id,
                          bool from_timeout = false);
-
-        void log_conditional_send( size_t size, bool finished );
 };
 
 #endif

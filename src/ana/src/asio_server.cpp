@@ -53,7 +53,7 @@ asio_server::asio_server() :
     listener_( NULL ),
     connection_handler_( NULL ),
     last_client_proxy_( NULL ),
-    stats_collector_( NULL ),
+    stats_collector_( ),
     last_valid_operation_id_( ana::no_operation )
 {
 }
@@ -297,20 +297,7 @@ const ana::stats* asio_server::get_client_stats( ana::net_id id, ana::stat_type 
 
 void asio_server::log_receive( ana::detail::read_buffer buffer )
 {
-    if (stats_collector_ != NULL )
-        stats_collector_->log_receive( buffer );
-}
-
-void asio_server::start_logging()
-{
-    stop_logging();
-    stats_collector_ = new ana::stats_collector();
-}
-
-void asio_server::stop_logging()
-{
-    delete stats_collector_;
-    stats_collector_ = NULL;
+    stats_collector_.log_receive( buffer );
 }
 
 ana::timer* asio_server::create_timer()
@@ -320,10 +307,7 @@ ana::timer* asio_server::create_timer()
 
 const ana::stats* asio_server::get_stats( ana::stat_type type ) const
 {
-    if (stats_collector_ != NULL )
-        return stats_collector_->get_stats( type );
-    else
-        throw std::runtime_error("Logging is disabled. Use start_logging first.");
+    return stats_collector_.get_stats( type );
 }
 
 
@@ -333,7 +317,7 @@ asio_server::asio_client_proxy::asio_client_proxy(boost::asio::io_service& io_se
     asio_listener(),
     socket_(io_service),
     manager_(server),
-    stats_collector_( NULL )
+    stats_collector_( )
 {
 }
 
@@ -346,24 +330,6 @@ asio_server::asio_client_proxy::~asio_client_proxy()
 tcp::socket& asio_server::asio_client_proxy::socket()
 {
     return socket_;
-}
-
-void asio_server::asio_client_proxy::log_conditional_receive( const ana::detail::read_buffer& buf )
-{
-    if ( stats_collector_ != NULL )
-        stats_collector_->log_receive( buf );
-}
-
-void asio_server::asio_client_proxy::start_logging()
-{
-    stop_logging();
-    stats_collector_ = new ana::stats_collector();
-}
-
-void asio_server::asio_client_proxy::stop_logging()
-{
-    delete stats_collector_;
-    stats_collector_ = NULL;
 }
 
 void asio_server::disconnect( ana::net_id id )
@@ -413,6 +379,11 @@ void asio_server::set_raw_buffer_max_size( size_t size)
     }
 }
 
+ana::stats_collector& asio_server::stats_collector()
+{
+    return stats_collector_;
+}
+
 void asio_server::expecting_message( net_id id, size_t ms_until_timeout )
 {
     std::list<ana::server::client_proxy*>::iterator it;
@@ -448,10 +419,7 @@ void asio_server::set_raw_data_mode( ana::net_id id )
 
 const ana::stats* asio_server::asio_client_proxy::get_stats( ana::stat_type type ) const
 {
-    if (stats_collector_ != NULL )
-        return stats_collector_->get_stats( type );
-    else
-        throw std::runtime_error("Logging is disabled. Use start_logging first.");
+    return stats_collector_.get_stats( type );
 }
 
 void asio_server::cancel_pending( )
@@ -495,6 +463,11 @@ void asio_server::asio_client_proxy::cancel_pending()
 std::string asio_server::asio_client_proxy::ip_address() const
 {
     return socket_.remote_endpoint().address().to_string();
+}
+
+ana::stats_collector& asio_server::asio_client_proxy::stats_collector()
+{
+    return stats_collector_;
 }
 
 ana::timer* asio_server::asio_client_proxy::create_timer()

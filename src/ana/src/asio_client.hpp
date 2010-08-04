@@ -91,12 +91,9 @@ class asio_client : public ana::client,
 
         virtual void log_receive( ana::detail::read_buffer buffer );
 
-        virtual void start_logging();
-        virtual void stop_logging();
-
         virtual const ana::stats* get_stats( ana::stat_type type ) const;
 
-        virtual ana::stats_collector* stats_collector() { return stats_collector_; }
+        virtual ana::stats_collector& stats_collector();
 
         virtual ana::timer* create_timer() { return new ana::timer( io_service_); }
 
@@ -138,7 +135,7 @@ class asio_client : public ana::client,
         proxy_connection*         proxy_;
         bool                      use_proxy_;
 
-        ana::stats_collector*     stats_collector_;
+        ana::stats_collector      stats_collector_;
         ana::operation_id         last_valid_operation_id_;
 };
 

@@ -52,14 +52,13 @@ asio_client::asio_client(ana::address address, ana::port pt) :
     connect_timeout_ms_( 0 ),
     proxy_( NULL ),
     use_proxy_( false ),
-    stats_collector_( NULL ),
+    stats_collector_( ),
     last_valid_operation_id_( ana::no_operation )
 {
 }
 
 asio_client::~asio_client()
 {
-    stop_logging();
     disconnect_listener();
 
     std::list< boost::thread* >::iterator it;
@@ -139,10 +138,10 @@ void asio_client::handle_timeout(const boost::system::error_code& ec,
                                  ana::connection_handler*         handler,
                                  ana::timer*                      timer)
 {
-    delete timer;
-
     if ( ec != ana::operation_aborted ) // Timed out before canceling
     {
+        delete timer;
+
         handler->handle_connect( ana::timeout_error, 0 );
         cancel_pending();
     }
@@ -229,28 +228,17 @@ ana::operation_id asio_client::send(boost::asio::const_buffer buffer,
 
 void asio_client::log_receive( ana::detail::read_buffer buffer )
 {
-    if (stats_collector_ != NULL )
-        stats_collector_->log_receive( buffer );
-}
-
-void asio_client::start_logging()
-{
-    stop_logging();
-    stats_collector_ = new ana::stats_collector();
-}
-
-void asio_client::stop_logging()
-{
-    delete stats_collector_;
-    stats_collector_ = NULL;
+    stats_collector_.log_receive( buffer );
 }
 
 const ana::stats* asio_client::get_stats( ana::stat_type type ) const
 {
-    if (stats_collector_ != NULL )
-        return stats_collector_->get_stats( type );
-    else
-        throw std::runtime_error("Logging is disabled. Use start_logging first.");
+    return stats_collector_.get_stats( type );
+}
+
+ana::stats_collector& asio_client::stats_collector()
+{
+    return stats_collector_;
 }
 
 void asio_client::cancel_pending()
