@@ -82,9 +82,9 @@ void editor_display::draw_hex(const map_location& loc)
 				image::get_image("editor/selection-overlay.png", image::SCALED_TO_HEX)));
 		}
 
-		if(loc == mouseoverHex_ && !game_config::mouseover_image.empty()) {
+		if(loc == mouseoverHex_ && !game_config::images::mouseover.empty()) {
 		drawing_buffer_add(LAYER_MOVE_INFO, loc, tblit(xpos, ypos,
-			image::get_image(game_config::mouseover_image, image::UNMASKED)));
+			image::get_image(game_config::images::mouseover, image::UNMASKED)));
 		}
 	}
 }

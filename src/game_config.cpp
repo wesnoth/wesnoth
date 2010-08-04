@@ -54,29 +54,51 @@ namespace game_config
 
 	int cache_compression_level = 6;
 
-	std::string game_icon, game_title, game_logo, title_music, lobby_music;
 	int title_logo_x = 0, title_logo_y = 0, title_buttons_x = 0, title_buttons_y = 0, title_buttons_padding = 0,
 	    title_tip_x = 0, title_tip_width = 0, title_tip_padding = 0;
 
-	std::string terrain_mask_image;
-	std::string grid_image_top;
-	std::string grid_image_bottom;
-	std::string mouseover_image;
-	std::string selected_image;
-	std::string unreachable_image;    /**< overlay image for unreachable tiles. */
-	std::string linger_image;  /**< overlay image for tiles in linger mode. */
+	std::string title_music,
+			lobby_music,
+			default_victory_music,
+			default_defeat_music;
 
-	std::string shroud_prefix;
-	std::string fog_prefix;
+	namespace images {
+	std::string game_icon,
+			game_title,
+			game_logo,
+			// orbs and hp/xp bar
+			moved_ball,
+			unmoved_ball,
+			partmoved_ball,
+			enemy_ball,
+			ally_ball,
+			energy,
+			// flags
+			flag,
+			flag_icon,
+			// hex overlay
+			terrain_mask,
+			grid_top,
+			grid_bottom,
+			mouseover,
+			selected,
+			unreachable,
+			///@todo de-hardcode this
+			linger = "terrain/darken-linger.png",
+			// GUI elements
+			observer,
+			tod_bright,
+			tod_dark,
+			///@todo de-hardcode this
+			checked_menu = "buttons/checkbox-pressed.png",
+			unchecked_menu = "buttons/checkbox.png",
+			wml_menu = "buttons/WML-custom.png",
+			level,
+			ellipsis;
+	} //images
 
-	std::string energy_image;
-	std::string moved_ball_image;
-	std::string unmoved_ball_image;
-	std::string partmoved_ball_image;
-	std::string enemy_ball_image;
-	std::string ally_ball_image;
-	std::string flag_image;
-	std::string flag_icon_image;
+	std::string shroud_prefix, fog_prefix;
+
 	std::string flag_rgb;
 	std::vector<Uint32> red_green_scale;
 	std::vector<Uint32> red_green_scale_text;
@@ -91,19 +113,6 @@ namespace game_config
 	std::vector<std::string> foot_speed_prefix;
 	std::string foot_teleport_enter;
 	std::string foot_teleport_exit;
-
-	std::string observer_image;
-	std::string tod_bright_image;
-	std::string tod_dark_image;
-	std::string unchecked_menu_image = "buttons/checkbox.png";
-	std::string checked_menu_image = "buttons/checkbox-pressed.png";
-	std::string wml_menu_image = "buttons/WML-custom.png";
-
-	std::string level_image;
-	std::string ellipsis_image;
-
-	std::string default_victory_music;
-	std::string default_defeat_music;
 
 	std::map<std::string, color_range > team_rgb_range;
 	std::map<std::string, t_string > team_rgb_name;
@@ -169,31 +178,40 @@ namespace game_config
 		kill_experience = v["kill_experience"].to_int(8);
 		lobby_refresh = v["lobby_refresh"].to_int(2000);
 
-		game_icon = v["icon"].str();
-		game_title = v["title"].str();
-		game_logo = v["logo"].str();
 		title_music = v["title_music"].str();
 		lobby_music = v["lobby_music"].str();
+		default_victory_music = v["default_victory_music"].str();
+		default_defeat_music = v["default_defeat_music"].str();
 
-		title_logo_x = v["logo_x"];
-		title_logo_y = v["logo_y"];
-		title_buttons_x = v["buttons_x"];
-		title_buttons_y = v["buttons_y"];
-		title_buttons_padding = v["buttons_padding"];
+		{
+			using namespace game_config::images;
+			game_icon = v["icon"].str();
+			game_title = v["title"].str();
+			game_logo = v["logo"].str();
 
-		title_tip_x = v["tip_x"].to_int();
-		title_tip_width = v["tip_width"].to_int();
-		title_tip_padding = v["tip_padding"].to_int();
+			moved_ball = v["moved_ball_image"].str();
+			unmoved_ball = v["unmoved_ball_image"].str();
+			partmoved_ball = v["partmoved_ball_image"].str();
+			enemy_ball = v["enemy_ball_image"].str();
+			ally_ball = v["ally_ball_image"].str();
+			energy = v["energy_image"].str();
 
+			flag = v["flag_image"].str();
+			flag_icon = v["flag_icon_image"].str();
 
-		energy_image = v["energy_image"].str();
-		moved_ball_image = v["moved_ball_image"].str();
-		unmoved_ball_image = v["unmoved_ball_image"].str();
-		partmoved_ball_image = v["partmoved_ball_image"].str();
-		enemy_ball_image = v["enemy_ball_image"].str();
-		ally_ball_image = v["ally_ball_image"].str();
-		flag_image = v["flag_image"].str();
-		flag_icon_image = v["flag_icon_image"].str();
+			terrain_mask = v["terrain_mask_image"].str();
+			grid_top = v["grid_image_top"].str();
+			grid_bottom = v["grid_image_bottom"].str();
+			mouseover = v["mouseover_image"].str();
+			selected = v["selected_image"].str();
+			unreachable = v["unreachable_image"].str();
+
+			observer = v["observer_image"].str();
+			tod_bright = v["tod_bright_image"].str();
+			tod_dark = v["tod_dark_image"].str();
+			level = v["level_image"].str();
+			ellipsis = v["ellipsis_image"].str();
+		} // images
 
 		hp_bar_scaling = v["hp_bar_scaling"].to_double(0.666);
 		xp_bar_scaling = v["xp_bar_scaling"].to_double(0.5);
@@ -205,28 +223,23 @@ namespace game_config
 		foot_teleport_enter = v["footprint_teleport_enter"].str();
 		foot_teleport_exit = v["footprint_teleport_exit"].str();
 
-		terrain_mask_image = v["terrain_mask_image"].str();
-		grid_image_top = v["grid_image_top"].str();
-		grid_image_bottom = v["grid_image_bottom"].str();
-		mouseover_image = v["mouseover_image"].str();
-		selected_image = v["selected_image"].str();
-		unreachable_image = v["unreachable_image"].str();
+		title_logo_x = v["logo_x"];
+		title_logo_y = v["logo_y"];
+		title_buttons_x = v["buttons_x"];
+		title_buttons_y = v["buttons_y"];
+		title_buttons_padding = v["buttons_padding"];
+
+		title_tip_x = v["tip_x"].to_int();
+		title_tip_width = v["tip_width"].to_int();
+		title_tip_padding = v["tip_padding"].to_int();
 
 		shroud_prefix = v["shroud_prefix"].str();
 		fog_prefix  = v["fog_prefix"].str();
 
-		observer_image = v["observer_image"].str();
-		tod_bright_image = v["tod_bright_image"].str();
-		tod_dark_image = v["tod_dark_image"].str();
-
-		level_image = v["level_image"].str();
-		ellipsis_image = v["ellipsis_image"].str();
-		default_victory_music = v["default_victory_music"].str();
-		default_defeat_music = v["default_defeat_music"].str();
-
 		add_color_info(v);
 
-		if (const config::attribute_value *a = v.get("flag_rgb")) flag_rgb = a->str();
+		if (const config::attribute_value *a = v.get("flag_rgb"))
+			flag_rgb = a->str();
 
 		red_green_scale = string2rgb(v["red_green_scale"]);
 		if (red_green_scale.empty()) {

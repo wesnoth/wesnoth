@@ -477,7 +477,7 @@ surface locator::load_image_file() const
 surface locator::load_image_sub_file() const
 {
 	const surface mother_surface(get_image(val_.filename_, UNSCALED));
-	const surface mask(get_image(game_config::terrain_mask_image, UNSCALED));
+	const surface mask(get_image(game_config::images::terrain_mask, UNSCALED));
 
 	if(mother_surface == NULL)
 		return surface(NULL);
@@ -881,7 +881,7 @@ manager::~manager()
 void set_wm_icon()
 {
 #if !(defined(__APPLE__))
-	surface icon(get_image(game_config::game_icon,UNSCALED));
+	surface icon(get_image(game_config::images::game_icon,UNSCALED));
 	if(icon != NULL) {
 		::SDL_WM_SetIcon(icon,NULL);
 	}
@@ -968,7 +968,7 @@ static surface get_hexed(const locator& i_locator)
 {
 	surface image(get_image(i_locator, UNSCALED));
 	// Re-cut scaled tiles according to a mask.
-	const surface hex(get_image(game_config::terrain_mask_image,
+	const surface hex(get_image(game_config::images::terrain_mask,
 					UNSCALED));
 	return mask_surface(image, hex);
 }
@@ -1127,7 +1127,7 @@ bool is_in_hex(const locator& i_locator)
 	if(i_locator.in_cache(in_hex_info_)) {
 		return i_locator.locate_in_cache(in_hex_info_);
 	} else {
-		const surface mask(get_image(game_config::terrain_mask_image, UNSCALED));
+		const surface mask(get_image(game_config::images::terrain_mask, UNSCALED));
 		const surface image(get_image(i_locator, UNSCALED));
 
 		bool res = in_mask_surface(image, mask);

@@ -135,7 +135,7 @@ surface bl_function::operator()(const surface& src) const
 surface brighten_function::operator()(const surface &src) const
 {
 	surface ret = make_neutral_surface(src);
-	surface tod_bright(image::get_image(game_config:: tod_bright_image));
+	surface tod_bright(image::get_image(game_config::images:: tod_bright));
 	if (tod_bright)
 		blit_surface(tod_bright, NULL, ret, NULL);
 	return ret;
@@ -144,7 +144,7 @@ surface brighten_function::operator()(const surface &src) const
 surface darken_function::operator()(const surface &src) const
 {
 	surface ret = make_neutral_surface(src);
-	surface tod_dark(image::get_image(game_config:: tod_dark_image));
+	surface tod_dark(image::get_image(game_config::images::tod_dark));
 	if (tod_dark)
 		blit_surface(tod_dark, NULL, ret, NULL);
 	return ret;

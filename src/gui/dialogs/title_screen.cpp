@@ -209,7 +209,7 @@ void ttitle_screen::pre_show(CVideo& video, twindow& window)
 
 	/***** Select a random game_title *****/
 	std::vector<std::string> game_title_list =
-		utils::split(game_config::game_title
+		utils::split(game_config::images::game_title
 				, ','
 				, utils::STRIP_SPACES | utils::REMOVE_EMPTY);
 

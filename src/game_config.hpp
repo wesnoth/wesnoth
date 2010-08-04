@@ -64,18 +64,46 @@ namespace game_config
 	};
 	extern std::vector<server_info> server_list;
 
-	extern std::string game_icon, game_title, game_logo, title_music, lobby_music,
-		moved_ball_image, unmoved_ball_image, partmoved_ball_image,
-		enemy_ball_image, ally_ball_image, energy_image,
-		flag_image, flag_icon_image,
-		terrain_mask_image,
-		grid_image_top, grid_image_bottom,
-		mouseover_image, selected_image,
-		unreachable_image, linger_image,
-		shroud_prefix, fog_prefix,
-		observer_image, tod_bright_image, tod_dark_image,
-		checked_menu_image, unchecked_menu_image, wml_menu_image, level_image,
-		ellipsis_image, default_victory_music, default_defeat_music;
+	extern std::string title_music,
+			lobby_music,
+			default_victory_music,
+			default_defeat_music;
+
+	namespace images {
+	extern std::string game_icon,
+			game_title,
+			game_logo,
+			// orbs and hp/xp bar
+			moved_ball,
+			unmoved_ball,
+			partmoved_ball,
+			enemy_ball,
+			ally_ball,
+			energy,
+			// flags
+			flag,
+			flag_icon,
+			// hex overlay
+			terrain_mask,
+			grid_top,
+			grid_bottom,
+			mouseover,
+			selected,
+			unreachable,
+			linger,
+			// GUI elements
+			observer,
+			tod_bright,
+			tod_dark,
+			checked_menu,
+			unchecked_menu,
+			wml_menu,
+			level,
+			ellipsis;
+	} //images
+
+
+	extern std::string shroud_prefix, fog_prefix;
 
 	extern double hp_bar_scaling, xp_bar_scaling;
 	extern double hex_brightening;

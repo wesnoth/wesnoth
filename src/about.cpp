@@ -191,7 +191,7 @@ void show_about(display &disp, const std::string &campaign)
 	}
 	surface map_image(scale_surface(image::get_image(image_list[0]), screen->w, screen->h));
 	if(! map_image){
-		image_list[0]=game_config::game_title;
+		image_list[0]=game_config::images::game_title;
 		map_image=surface(scale_surface(image::get_image(image_list[0]), screen->w, screen->h));
 	}
 

@@ -1881,22 +1881,22 @@ void unit::redraw_unit()
 
 	if(draw_bars) {
 		const std::string* movement_file = NULL;
-		const std::string* energy_file = &game_config::energy_image;
+		const std::string* energy_file = &game_config::images::energy;
 
 		if(size_t(side()) != disp.viewing_team()+1) {
 			if(disp.team_valid() &&
 			   disp.get_teams()[disp.viewing_team()].is_enemy(side())) {
-				movement_file = &game_config::enemy_ball_image;
+				movement_file = &game_config::images::enemy_ball;
 			} else {
-				movement_file = &game_config::ally_ball_image;
+				movement_file = &game_config::images::ally_ball;
 			}
 		} else {
-			movement_file = &game_config::moved_ball_image;
+			movement_file = &game_config::images::moved_ball;
 			if(disp.playing_team() == disp.viewing_team() && !user_end_turn()) {
 				if (movement_left() == total_movement()) {
-					movement_file = &game_config::unmoved_ball_image;
+					movement_file = &game_config::images::unmoved_ball;
 				} else if (unit_can_move(*this)) {
-					movement_file = &game_config::partmoved_ball_image;
+					movement_file = &game_config::images::partmoved_ball;
 				}
 			}
 		}
@@ -2116,7 +2116,7 @@ std::map<std::string,std::string> unit::advancement_icons() const
 	if (!advances_to_.empty())
 	{
 		std::ostringstream tooltip;
-		const std::string &image = game_config::level_image;
+		const std::string &image = game_config::images::level;
 		foreach (const std::string &s, advances_to())
 		{
 			if (!s.empty())

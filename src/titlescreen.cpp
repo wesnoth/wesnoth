@@ -79,7 +79,7 @@ static bool fade_logo(game_display& screen, int xcpos, int ycpos)
 	surface const fb = screen.video().getSurface();
 	if (!fb) return true;
 
-	surface logo = image::get_image(game_config::game_logo);
+	surface logo = image::get_image(game_config::images::game_logo);
 	if (!logo) {
 		ERR_DP << "Could not find game logo\n";
 		return true;
@@ -322,7 +322,7 @@ static void draw_background(game_display& screen)
 
 		/*Select a random game_title*/
 		std::vector<std::string> game_title_list =
-			utils::split(game_config::game_title, ',', utils::STRIP_SPACES | utils::REMOVE_EMPTY);
+			utils::split(game_config::images::game_title, ',', utils::STRIP_SPACES | utils::REMOVE_EMPTY);
 
 		if(game_title_list.empty()) {
 			ERR_CF << "No title image defined\n";

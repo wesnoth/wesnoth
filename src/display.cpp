@@ -2037,9 +2037,9 @@ void display::draw_hex(const map_location& loc) {
 	// Draw the grid, if that's been enabled
 		if(grid_ && on_map && !off_map_tile) {
 			drawing_buffer_add(LAYER_GRID_TOP, loc, tblit(xpos, ypos,
-				image::get_image(game_config::grid_image_top, image::SCALED_TO_HEX)));
+				image::get_image(game_config::images::grid_top, image::SCALED_TO_HEX)));
 			drawing_buffer_add(LAYER_GRID_BOTTOM, loc, tblit(xpos, ypos,
-				image::get_image(game_config::grid_image_bottom, image::SCALED_TO_HEX)));
+				image::get_image(game_config::images::grid_bottom, image::SCALED_TO_HEX)));
 		}
 	}
 
@@ -2309,7 +2309,7 @@ void display::refresh_report(reports::TYPE report_num, reports::report report)
 
 			if (area.w < img->w && image_count) {
 				// We have more than one image, and this one doesn't fit.
-				img = surface(image::get_image(game_config::ellipsis_image));
+				img = surface(image::get_image(game_config::images::ellipsis));
 				used_ellipsis = true;
 			}
 

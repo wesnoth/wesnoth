@@ -123,7 +123,7 @@ report generate_report(TYPE type,
 		std::string mods = "~RC(" + old_rgb + ">" + new_rgb + ")";
 
 		if(flag_icon.empty()) {
-			flag_icon = game_config::flag_icon_image;
+			flag_icon = game_config::images::flag_icon;
 		}
 
 		image::locator flag_icon_img(flag_icon, mods);
@@ -678,7 +678,7 @@ report generate_report(TYPE type,
 		std::string mods = "~RC(" + old_rgb + ">" + new_rgb + ")";
 
 		if(flag_icon.empty()) {
-			flag_icon = game_config::flag_icon_image;
+			flag_icon = game_config::images::flag_icon;
 		}
 
 		image::locator flag_icon_img(flag_icon, mods);
@@ -696,7 +696,7 @@ report generate_report(TYPE type,
 			str << *i << "\n";
 		}
 
-		return report("",game_config::observer_image,str.str());
+		return report("",game_config::images::observer,str.str());
 	}
 #ifdef DISABLE_EDITOR
 	case EDITOR_SELECTED_TERRAIN:

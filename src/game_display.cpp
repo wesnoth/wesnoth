@@ -99,7 +99,7 @@ game_display::game_display(unit_map& units, CVideo& video, const gamemap& map,
 		std::string new_rgb = side_color;
 
 		if(flag.empty()) {
-			flag = game_config::flag_image;
+			flag = game_config::images::flag;
 		}
 
 		LOG_DP << "Adding flag for team " << i << " from animation " << flag << "\n";
@@ -358,7 +358,7 @@ void game_display::draw_hex(const map_location& loc)
 	if (!is_shrouded && !reach_map_.empty()
 			&& reach_map_.find(loc) == reach_map_.end() && loc != attack_indicator_dst_) {
 		drawing_buffer_add(LAYER_REACHMAP, loc, tblit(xpos, ypos,
-			image::get_image(game_config::unreachable_image,image::UNMASKED)));
+			image::get_image(game_config::images::unreachable,image::UNMASKED)));
 	}
 
 	resources::whiteboard->draw_hex(loc);
@@ -383,19 +383,19 @@ void game_display::draw_hex(const map_location& loc)
 	// Linger overlay unconditionally otherwise it might give glitches
 	// so it's drawn over the shroud and fog.
 	if(game_mode_ != RUNNING) {
-		blit.surf.push_back(image::get_image(game_config::linger_image, image::SCALED_TO_HEX));
+		blit.surf.push_back(image::get_image(game_config::images::linger, image::SCALED_TO_HEX));
 		drawing_buffer_add(LAYER_LINGER_OVERLAY, loc, blit);
 		blit.surf.clear();
 	}
 
-	if(on_map && loc == selectedHex_ && !game_config::selected_image.empty()) {
+	if(on_map && loc == selectedHex_ && !game_config::images::selected.empty()) {
 		drawing_buffer_add(LAYER_MOVE_INFO, loc, tblit(xpos, ypos,
-			image::get_image(game_config::selected_image, image::UNMASKED)));
+			image::get_image(game_config::images::selected, image::UNMASKED)));
 	}
 
-	if(on_map && loc == mouseoverHex_ && !game_config::mouseover_image.empty()) {
+	if(on_map && loc == mouseoverHex_ && !game_config::images::mouseover.empty()) {
 		drawing_buffer_add(LAYER_MOVE_INFO, loc, tblit(xpos, ypos,
-			image::get_image(game_config::mouseover_image, image::UNMASKED)));
+			image::get_image(game_config::images::mouseover, image::UNMASKED)));
 	}
 
 	// Show def% and turn to reach infos

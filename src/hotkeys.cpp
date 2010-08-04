@@ -994,8 +994,8 @@ void command_executor::show_menu(const std::vector<std::string>& items_arg, int 
 
 std::string command_executor::get_menu_image(hotkey::HOTKEY_COMMAND command, int index) const {
 	switch(get_action_state(command, index)) {
-		case ACTION_ON: return game_config::checked_menu_image;
-		case ACTION_OFF: return game_config::unchecked_menu_image;
+		case ACTION_ON: return game_config::images::checked_menu;
+		case ACTION_OFF: return game_config::images::unchecked_menu;
 		default: return get_action_image(command, index);
 	}
 }
