@@ -63,7 +63,8 @@ namespace game_config
 			default_defeat_music;
 
 	namespace images {
-	std::string game_icon,
+	//NOTE hardcode game_icon because used before that game_config is ready
+	std::string game_icon = "wesnoth-icon-small.png",
 			game_title,
 			game_logo,
 			// orbs and hp/xp bar

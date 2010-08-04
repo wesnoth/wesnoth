@@ -536,6 +536,7 @@ bool game_controller::init_video()
 		return true;
 	}
 
+	//NOTE will use the hardcoded icon, game_config is not ready yet
 	image::set_wm_icon();
 
 	std::pair<int,int> resolution;
@@ -596,6 +597,10 @@ bool game_controller::init_config(const bool force)
 
 	const config &cfg = game_config().child("game_config");
 	game_config::load_config(cfg ? &cfg : NULL);
+
+	//the game_config icon may be different from the hardcoded one
+	image::set_wm_icon();
+
 	hotkey::deactivate_all_scopes();
 	hotkey::set_scope_active(hotkey::SCOPE_GENERAL);
 	hotkey::set_scope_active(hotkey::SCOPE_GAME);
