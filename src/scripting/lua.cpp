@@ -740,7 +740,7 @@ static int impl_vconfig_collect(lua_State *L)
 
 #define modify_bool_attrib(name, accessor) \
 	if (strcmp(m, name) == 0) { \
-		int value = lua_toboolean(L, 3); \
+		bool value = lua_toboolean(L, 3); \
 		accessor; \
 		return 0; \
 	}
@@ -849,7 +849,7 @@ static int impl_unit_set(lua_State *L)
 	modify_int_attrib("side", u.set_side(value));
 	modify_int_attrib("moves", u.set_movement(value));
 	modify_int_attrib("hitpoints", u.set_hitpoints(value));
-	modify_bool_attrib("resting", u.set_resting(value != 0));
+	modify_bool_attrib("resting", u.set_resting(value));
 	modify_tstring_attrib("name", u.set_name(value));
 	modify_string_attrib("role", u.set_role(value));
 	modify_string_attrib("facing", u.set_facing(map_location::parse_direction(value)));
@@ -1281,7 +1281,7 @@ static int impl_side_set(lua_State *L)
 	modify_int_attrib("village_gold", t.set_village_gold(value));
 	modify_int_attrib("recall_cost", t.set_recall_cost(value));
 	modify_int_attrib("base_income", t.set_base_income(value));
-	modify_bool_attrib("objectives_changed", t.set_objectives_changed(value != 0));
+	modify_bool_attrib("objectives_changed", t.set_objectives_changed(value));
 	modify_tstring_attrib("user_team_name", t.change_team(t.team_name(), value));
 	modify_string_attrib("team_name", t.change_team(value, t.user_team_name()));
 
