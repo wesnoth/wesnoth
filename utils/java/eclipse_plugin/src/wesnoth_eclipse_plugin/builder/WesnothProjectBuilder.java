@@ -163,15 +163,15 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 		}
 	}
 
-	protected void checkResource(IResource resource, IProgressMonitor monitor,
+	protected boolean checkResource(IResource resource, IProgressMonitor monitor,
 						int delta)
 	{
 		monitor.worked(5);
 		if (isResourceIgnored(resource))
-			return;
+			return false;
 
 		if (monitor.isCanceled())
-			return;
+			return false;
 
 		// config files
 		if (resource instanceof IFile &&
@@ -249,6 +249,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 				Logger.getInstance().logException(e);
 			}
 		}
+		return true;
 	}
 
 	/**
@@ -329,23 +330,25 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 		public boolean visit(IResourceDelta delta) throws CoreException
 		{
 			IResource resource = delta.getResource();
+			boolean visitChildren = false;
 			switch (delta.getKind())
 			{
 			case IResourceDelta.ADDED:
 				// handle added resource
-				checkResource(resource, monitor_, delta.getKind());
+				visitChildren = checkResource(resource, monitor_, delta.getKind());
 				break;
 			case IResourceDelta.REMOVED:
 				// handle removed resource
 				handleRemovedResource(resource);
+				visitChildren = true;
 				break;
 			case IResourceDelta.CHANGED:
 				// handle changed resource
-				checkResource(resource, monitor_, delta.getKind());
+				visitChildren = checkResource(resource, monitor_, delta.getKind());
 				break;
 			}
 			// return true to continue visiting children.
-			return true;
+			return visitChildren;
 		}
 	}
 
@@ -360,9 +363,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 		@Override
 		public boolean visit(IResource resource)
 		{
-			checkResource(resource, monitor_, -1);
-			// return true to continue visiting children.
-			return true;
+			return checkResource(resource, monitor_, -1);
 		}
 	}
 }
