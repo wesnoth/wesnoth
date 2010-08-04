@@ -74,11 +74,11 @@ namespace game_config
 			game_title,
 			game_logo,
 			// orbs and hp/xp bar
-			moved_ball,
-			unmoved_ball,
-			partmoved_ball,
-			enemy_ball,
-			ally_ball,
+			moved_orb,
+			unmoved_orb,
+			partmoved_orb,
+			enemy_orb,
+			ally_orb,
 			energy,
 			// flags
 			flag,

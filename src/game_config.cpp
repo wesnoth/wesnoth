@@ -68,11 +68,11 @@ namespace game_config
 			game_title,
 			game_logo,
 			// orbs and hp/xp bar
-			moved_ball,
-			unmoved_ball,
-			partmoved_ball,
-			enemy_ball,
-			ally_ball,
+			moved_orb,
+			unmoved_orb,
+			partmoved_orb,
+			enemy_orb,
+			ally_orb,
 			energy,
 			// flags
 			flag,
@@ -189,11 +189,11 @@ namespace game_config
 			game_title = i["game_title"].str();
 			game_logo = i["game_logo"].str();
 
-			moved_ball = i["moved_ball"].str();
-			unmoved_ball = i["unmoved_ball"].str();
-			partmoved_ball = i["partmoved_ball"].str();
-			enemy_ball = i["enemy_ball"].str();
-			ally_ball = i["ally_ball"].str();
+			moved_orb = i["moved_orb"].str();
+			unmoved_orb = i["unmoved_orb"].str();
+			partmoved_orb = i["partmoved_orb"].str();
+			enemy_orb = i["enemy_orb"].str();
+			ally_orb = i["ally_orb"].str();
 			energy = i["energy"].str();
 
 			flag = i["flag"].str();
