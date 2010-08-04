@@ -218,8 +218,10 @@ Version 1.9.0-svn:
    * Added a way to compile wesnoth on windows by using CMake + MSVC9.
    * Added the possibility to specify absolute paths for "--config-dir"
    * Added more command line arguments for starting a campaign + scenario
-   * Added command line "preprocess" to preprocess a specified file/folder and
+   * Added command line "--preprocess" to preprocess a specified file/folder and
      output the result
+   * Added command line "--preprocess-output-macros" to output the preprocessed
+     macros to a file
    * Added command line "--data-dir" to explicitly override the data directory
    * Fixed the ping timeout not waiting for the default ping interval when
      ping timeout is not set to 0

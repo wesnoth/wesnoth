@@ -162,6 +162,12 @@ Example:
 or
 .B -p=MULTIPLAYER,MY_OWN_CAMPAIGN ~/wesnoth/data/campaign/camp ~/result
 .TP
+.B --preprocess-output-macros [<target file>]
+usable only with '--preprocess' command.
+Will output all preprocessed macros in the target file. If the file is not specified
+the output will be file '_MACROS_.cfg' in the target directory of preprocess's command.
+This switch should be typed before the --preprocess command.
+.TP
 .BI -r\  X x Y ,\ --resolution\  X x Y
 sets the screen resolution. Example:
 .B -r 800x600

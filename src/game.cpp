@@ -1706,11 +1706,20 @@ static void gzip_decode(const std::string & input_file, const std::string & outp
 	gzip_codec(input_file, output_file, false);
 }
 
+struct preprocess_options
+{
+public:
+	preprocess_options(): output_macros_path_("false")
+	{
+	}
+	std::string output_macros_path_;
+};
 
 /** Process commandline-arguments */
 static int process_command_args(int argc, char** argv) {
 	const std::string program = argv[0];
 	game_config::wesnoth_program_dir = directory_name(program);
+	preprocess_options preproc;
 
 	//parse arguments that shouldn't require a display device
 	int arg;
@@ -1824,6 +1833,13 @@ static int process_command_args(int argc, char** argv) {
 			<< "                               define1,define2,...  - the extra defines will\n"
 			<< "                               be added before processing the files. If you add\n"
 			<< "                               them you must add the '=' character before.\n"
+			<< " --preprocess-output-macros [<target file>]\n"
+			<< "                               usable only with '--preprocess' command.\n"
+			<< "                               Will output all preprocessed macros in the target file.\n"
+			<< "                               If the file is not specified the output will be\n"
+			<< "                               file '_MACROS_.cfg' in the target directory of\n"
+			<< "                               preprocess's command. This switch should be typed\n"
+			<< "                               before the --preprocess command.\n"
 			<< "  -r, --resolution XxY         sets the screen resolution. Example: -r 800x600\n"
 			<< "  --rng-seed <number>          seeds the random number generator with number\n"
 			<< "                               Example: --rng-seed 0\n"
@@ -1963,6 +1979,13 @@ static int process_command_args(int argc, char** argv) {
 				return 2;
 			}
 			srand(lexical_cast_default<unsigned int>(argv[arg]));
+		} else if (val == "--preprocess-output-macros") {
+			preproc.output_macros_path_ = "true";
+			if (arg + 1 < argc && argv[arg+1][0] != '-')
+			{
+				++arg;
+				preproc.output_macros_path_ = argv[arg];
+			}
 		} else if (val.find("--preprocess") == 0 || val.find("-p") == 0){
 			if (arg + 2 < argc){
 				++arg;
@@ -1970,6 +1993,8 @@ static int process_command_args(int argc, char** argv) {
 				++arg;
 				const std::string targetDir(argv[arg]);
 
+				Uint32 startTime = SDL_GetTicks();
+				// the 'core_defines_map' is the one got from /data/core macros
 				preproc_map defines_map;
 				std::string error_log;
 
@@ -1992,7 +2017,7 @@ static int process_command_args(int argc, char** argv) {
 						pos = tmpPos;
 
 						if (tmp_val.empty()){
-							LOG_PREPROC<<"empty define supplied\n";
+							std::cerr << "empty define supplied\n";
 							continue;
 						}
 
@@ -2000,19 +2025,45 @@ static int process_command_args(int argc, char** argv) {
 						defines_map.insert(std::make_pair(tmp_val,
 							preproc_define(tmp_val)));
 					}
-					std::cerr<< SDL_GetTicks() << "added "<<defines_map.size()<<" defines.\n";
+					std::cerr << "added " << defines_map.size() << " defines.\n";
 				}
 
-				// preprocess common macros first
-				std::cerr << SDL_GetTicks() << " preprocessing common macros from /data/core...\n";
-				preprocess_resource(game_config::path + "/data/core/",&defines_map);
-				std::cerr << SDL_GetTicks() << " acquired " << defines_map.size() << " defines.\n";
+				// preprocess core macros first
+				std::cerr << "preprocessing common macros from 'data/core' ...\n";
+				preprocess_resource(game_config::path + "/data/core",&defines_map);
+				std::cerr << "acquired " << defines_map.size() << " 'data/core' defines.\n";
 
-				std::cerr << SDL_GetTicks() << " preprocessing specified resource: "
+				// preprocess resource
+				std::cerr << "preprocessing specified resource: "
 						  << resourceToProcess << " ...\n";
 				preprocess_resource(resourceToProcess, &defines_map, true,true, targetDir);
+				std::cerr << "acquired " << defines_map.size() << " total defines.\n";
 
-				std::cerr << SDL_GetTicks() << " preprocessing finished.\n";
+				if (preproc.output_macros_path_ != "false")
+				{
+					std::string outputPath = targetDir + "/_MACROS_.cfg";
+					if (preproc.output_macros_path_ != "true")
+						outputPath = preproc.output_macros_path_;
+
+					std::cerr << "writing '" << outputPath << "' with "
+							  << defines_map.size() << " defines.\n";
+
+					scoped_ostream out = ostream_file(outputPath);
+					if (!out->fail())
+					{
+						config_writer writer(*out,false);
+
+						for(preproc_map::iterator itor = defines_map.begin();
+							itor != defines_map.end(); ++itor)
+						{
+							(*itor).second.write(writer, (*itor).first);
+						}
+					}
+					else
+						std::cerr << "couldn't open the file.\n";
+				}
+
+				std::cerr << "preprocessing finished. Took "<< SDL_GetTicks() - startTime << " ticks.\n";
 			}
 			else{
 				std::cerr << "Please specify a source file/folder and a target folder\n";
