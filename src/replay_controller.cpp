@@ -96,7 +96,7 @@ void replay_controller::init(){
 
 	DBG_REPLAY << "first_time..." << (recorder.is_skipping() ? "skipping" : "no skip") << "\n";
 
-	fire_start(!loading_game_);
+	fire_start(true);
 	update_gui();
 
 	units_start_ = units_;
@@ -172,7 +172,7 @@ void replay_controller::reset_replay(){
 	(*gui_).draw();
 
 	fire_prestart(true);
-	fire_start(!loading_game_);
+	fire_start(true);
 	gui_->new_turn();
 	gui_->invalidate_game_status();
 	events::raise_draw_event();
