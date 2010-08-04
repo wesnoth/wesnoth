@@ -218,7 +218,7 @@ struct user_choice
  * client is responsible for making the choice.
  * @param name tag used for storing the choice into the replay.
  */
-config get_user_choice(const std::string &name, const user_choice &uch, bool is_interactive = true);
+config get_user_choice(const std::string &name, const user_choice &uch);
 
 }
 

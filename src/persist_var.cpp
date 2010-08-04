@@ -42,7 +42,7 @@ static void get_global_variable(persist_context &ctx, const vconfig &pcfg)
 	std::string global = pcfg["from_global"];
 	std::string local = pcfg["to_local"];
 	persist_choice choice(ctx,global);
-	config cfg = mp_sync::get_user_choice("global_variable",choice,false);
+	config cfg = mp_sync::get_user_choice("global_variable",choice);
 	if (cfg) {
 		size_t arrsize = cfg.child_count(global);
 		if (arrsize == 0) {
