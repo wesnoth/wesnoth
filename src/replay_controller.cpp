@@ -60,7 +60,7 @@ replay_controller::replay_controller(const config& level,
 		const config& game_config, CVideo& video) :
 	play_controller(level, state_of_game, ticks, num_turns, game_config, video, false),
 	teams_start_(),
-	gamestate_start_(state_of_game),
+	gamestate_start_(gamestate_),
 	units_start_(),
 	tod_manager_start_(level, num_turns, &state_of_game),
 	current_turn_(1),
@@ -69,8 +69,11 @@ replay_controller::replay_controller(const config& level,
 	show_everything_(false),
 	show_team_(state_of_game.classification().campaign_type == "multiplayer" ? 0 : 1)
 {
+	units_start_ = units_;
+	teams_start_ = teams_;
+
 	init();
-	gamestate_start_ = gamestate_;
+	reset_replay();
 }
 
 replay_controller::~replay_controller()
@@ -87,20 +90,6 @@ void replay_controller::init(){
 	//guarantee the cursor goes back to 'normal' at the end of the level
 	const cursor::setter cursor_setter(cursor::NORMAL);
 	init_replay_display();
-
-	units_start_ = units_;
-	teams_start_ = teams_;
-
-	fire_prestart(true);
-	init_gui();
-	statistics::fresh_stats();
-	set_victory_when_enemies_defeated(
-		utils::string_bool(level_["victory_when_enemies_defeated"], true));
-
-	DBG_REPLAY << "first_time..." << (recorder.is_skipping() ? "skipping" : "no skip") << "\n";
-
-	fire_start(true);
-	update_gui();
 }
 
 void replay_controller::init_gui(){
@@ -155,7 +144,6 @@ void replay_controller::reset_replay(){
 	units_ = units_start_;
 	gamestate_ = gamestate_start_;
 	teams_ = teams_start_;
-	statistics::fresh_stats();
 	if (events_manager_ ){
 		// NOTE: this double reset is required so that the new
 		// instance of game_events::manager isn't created before the
@@ -165,19 +153,14 @@ void replay_controller::reset_replay(){
 		events_manager_.reset(new game_events::manager(level_));
 	}
 
-	gui_->new_turn();
-	gui_->invalidate_game_status();
-	events::raise_draw_event();
-	(*gui_).invalidate_all();
-	(*gui_).draw();
-
 	fire_prestart(true);
+	init_gui();
+	statistics::fresh_stats();
+	set_victory_when_enemies_defeated(
+		utils::string_bool(level_["victory_when_enemies_defeated"], true));
 	fire_start(true);
-	gui_->new_turn();
-	gui_->invalidate_game_status();
-	events::raise_draw_event();
-	(*gui_).invalidate_all();
-	(*gui_).draw();
+	update_gui();
+
 	b = gui_->find_button("button-resetreplay");
 	if (b != NULL) { b->release(); }
 }
