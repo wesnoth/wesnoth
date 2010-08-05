@@ -1834,6 +1834,8 @@ static int process_command_args(int argc, char** argv) {
 			<< "                               define1,define2,...  - the extra defines will\n"
 			<< "                               be added before processing the files. If you add\n"
 			<< "                               them you must add the '=' character before.\n"
+			<< "                               If 'SKIP_CORE' is in the define list the\n"
+			<< "                               data/core won't be preprocessed.\n"
 			<< " --preprocess-input-macros <source file>\n"
 			<< "                               used only by the '--preprocess' command.\n"
 			<< "                               Specifies a file that contains [preproc_define]s\n"
@@ -2030,7 +2032,9 @@ static int process_command_args(int argc, char** argv) {
 				const std::string targetDir(argv[arg]);
 
 				Uint32 startTime = SDL_GetTicks();
-				// the 'core_defines_map' is the one got from /data/core macros
+				// if the users add the SKIP_CORE define we won't preprocess data/core
+				bool skipCore = false;
+				// the 'core_defines_map' is the one got from data/core macros
 				preproc_map defines_map(preproc.input_macros_);
 				std::string error_log;
 
@@ -2060,15 +2064,25 @@ static int process_command_args(int argc, char** argv) {
 						LOG_PREPROC<<"adding define: "<< tmp_val<<'\n';
 						defines_map.insert(std::make_pair(tmp_val,
 							preproc_define(tmp_val)));
+						if (tmp_val == "SKIP_CORE")
+						{
+							std::cerr << "'SKIP_CORE' defined.\n";
+							skipCore = true;
+						}
 					}
 					std::cerr << "added " << defines_map.size() << " defines.\n";
 				}
 
-				// preprocess core macros first
-				std::cerr << "preprocessing common macros from 'data/core' ...\n";
-				preprocess_resource(game_config::path + "/data/core",&defines_map);
-				std::cerr << "acquired " << (defines_map.size() - preproc.input_macros_.size())
-					      << " 'data/core' defines.\n";
+				// preprocess core macros first if we don't skip the core
+				if (skipCore == false)
+				{
+					std::cerr << "preprocessing common macros from 'data/core' ...\n";
+					preprocess_resource(game_config::path + "/data/core",&defines_map);
+					std::cerr << "acquired " << (defines_map.size() - preproc.input_macros_.size())
+						<< " 'data/core' defines.\n";
+				}
+				else
+					std::cerr << "skipped 'data/core'\n";
 
 				// preprocess resource
 				std::cerr << "preprocessing specified resource: "
