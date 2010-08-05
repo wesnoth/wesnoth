@@ -969,22 +969,24 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 	}
 	unit un = recall_list_team[res];
 	recall_list_team.erase(recall_list_team.begin() + res);
-	recorder.add_recall(un.id(), loc);
-	place_recruit(un, loc, true, true);
-	statistics::recall_unit(un);
-	current_team.spend_gold(current_team.recall_cost());
+	if (!resources::whiteboard->save_recall(un, side_num, loc)) {
+		recorder.add_recall(un.id(), loc);
+		place_recruit(un, loc, true, true);
+		statistics::recall_unit(un);
+		current_team.spend_gold(current_team.recall_cost());
 
-	bool shroud_cleared = clear_shroud(side_num);
-	if (shroud_cleared) {
-		clear_undo_stack(side_num);
-	} else {
-		resources::undo_stack->push_back(undo_action(un, loc, undo_action::RECALL));
+		bool shroud_cleared = clear_shroud(side_num);
+		if (shroud_cleared) {
+			clear_undo_stack(side_num);
+		} else {
+			resources::undo_stack->push_back(undo_action(un, loc, undo_action::RECALL));
+		}
+
+		resources::redo_stack->clear();
+		gui_->invalidate_game_status();
+		gui_->invalidate_all();
+		recorder.add_checksum_check(loc);
 	}
-
-	resources::redo_stack->clear();
-	gui_->invalidate_game_status();
-	gui_->invalidate_all();
-	recorder.add_checksum_check(loc);
 }
 
 void menu_handler::undo(int side_num)

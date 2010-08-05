@@ -502,6 +502,15 @@ bool manager::save_recruit(const std::string& name, int side_num, const map_loca
 	return created_planned_recruit;
 }
 
+bool manager::save_recall(const unit& unit, int side_num, const map_location& recruit_hex)
+{
+	/** @todo implement method body */
+	(void) unit;
+	(void) side_num;
+	(void) recruit_hex;
+	return false;
+}
+
 void manager::contextual_execute()
 {
 	if (!(executing_actions_ || viewer_actions()->empty() || resources::controller->is_linger_mode())
