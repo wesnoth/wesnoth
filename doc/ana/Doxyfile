@@ -4,7 +4,7 @@ PROJECT_NAME           = ana
 
 PROJECT_NUMBER         =
 
-OUTPUT_DIRECTORY       = code
+OUTPUT_DIRECTORY       = doc
 
 CREATE_SUBDIRS         = YES
 
@@ -14,21 +14,21 @@ BRIEF_MEMBER_DESC      = YES
 
 REPEAT_BRIEF           = YES
 
-ABBREVIATE_BRIEF       = 
+ABBREVIATE_BRIEF       =
 
 ALWAYS_DETAILED_SEC    = NO
 
-INLINE_INHERITED_MEMB  = NO
+INLINE_INHERITED_MEMB  = YES
 
 FULL_PATH_NAMES        = YES
 
-STRIP_FROM_PATH        = src/ana
+STRIP_FROM_PATH        = src/ana/api
 
-STRIP_FROM_INC_PATH    = 
+STRIP_FROM_INC_PATH    =
 
 SHORT_NAMES            = NO
 
-JAVADOC_AUTOBRIEF      = YES 
+JAVADOC_AUTOBRIEF      = YES
 
 QT_AUTOBRIEF           = NO
 
@@ -40,7 +40,7 @@ SEPARATE_MEMBER_PAGES  = NO
 
 TAB_SIZE               = 4
 
-ALIASES                = 
+ALIASES                =
 
 OPTIMIZE_OUTPUT_FOR_C  = NO
 
@@ -175,7 +175,7 @@ WARN_FORMAT            = "$file:$line: $text"
 
 WARN_LOGFILE           = 
 
-INPUT                  = ../../src/ana
+INPUT                  = ../../src/ana/api
 
 
 INPUT_ENCODING         = UTF-8
@@ -553,10 +553,10 @@ DIRECTORY_GRAPH        = YES
 DOT_IMAGE_FORMAT       = png
 
 
-DOT_PATH               = 
+DOT_PATH               =
 
 
-DOTFILE_DIRS           = 
+DOTFILE_DIRS           =
 
 
 DOT_GRAPH_MAX_NODES    = 50

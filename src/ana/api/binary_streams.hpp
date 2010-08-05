@@ -42,6 +42,9 @@
 
 namespace ana
 {
+    /**
+     * Module for object serialization and Marshalling.
+     */
     namespace serializer
     {
         template <class T>
@@ -69,6 +72,15 @@ namespace ana
         template <class K, class D>
         struct template_is_container< std::multimap<K,D> > { enum {  value = 1 }; };
 
+        /**
+         * Output stream serialization. This class provides stream functionality to serialize
+         * objects in a way similar to that of std::cout or std::ostringstream.
+         *
+         * Extracted from MiLi (mili.googlecode.com).
+         *
+         * An extensive example of its usage can be seen in:
+         *    http://code.google.com/p/mili/source/browse/trunk/example_binary-streams.cpp
+         */
         class bostream
         {
             private:
@@ -77,11 +89,19 @@ namespace ana
                 template<class T, bool IsContainer> friend struct _inserter_helper;
 
             public:
+                /**
+                 * Standard constructor.
+                 */
                 bostream() :
                     _s()
                 {
                 }
 
+                /**
+                 * Insert any object to the stream.
+                 *
+                 * @param x : A copy of the object being inserted.
+                 */
                 template <class T>
                 bostream& operator<< (T x)
                 {
@@ -89,7 +109,9 @@ namespace ana
                     return *this;
                 }
 
-                /* Inserting a string inserts its size first. */
+                /**
+                 * Insert a string to the stream.
+                 */
                 bostream& operator<< (const std::string& s)
                 {
                     (*this) << uint32_t( s.size() );
@@ -97,6 +119,9 @@ namespace ana
                     return *this;
                 }
 
+                /**
+                 * Insert a vector of elements.
+                 */
                 template <class Other>
                 bostream& operator<< (const std::vector<Other>& vec)
                 {
@@ -108,50 +133,83 @@ namespace ana
                     return *this;
                 }
 
+                /** Insert a literal string. */
                 bostream& operator<< (const char* cs)
                 {
                     const std::string s(cs);
                     return operator<< (s);
                 }
 
+                /** Obtain the string representing the stream. */
                 const std::string& str() const
                 {
                     return _s;
                 }
 
+                /** Clear the stream. Enables the user to use it several times. */
                 void clear()
                 {
                     _s.clear();
                 }
 
             private:
+
+                /** The representation of the stream in memory. */
                 std::string _s;
         };
 
+        /**
+         * Input stream serialization. This class provides stream functionality to serialize
+         * objects in a way similar to that of std::cin or std::istringstream.
+         *
+         * Extracted from MiLi (mili.googlecode.com).
+         *
+         * An extensive example of its usage can be seen in:
+         *    http://code.google.com/p/mili/source/browse/trunk/example_binary-streams.cpp
+         */
         class bistream
         {
             private:
                 template<class T> friend class container_reader;
 
             public:
+                /**
+                 * Construct a new input stream object using a string representing a binary stream
+                 * as input.
+                 */
                 bistream(const std::string& str) :
                     _s(str),
                     _pos(0)
                 {
                 }
 
+                /**
+                 * Creates a new input stream object, but with no data.
+                 */
                 bistream() :
                     _s(),
                     _pos(0)
                 {
                 }
 
+                /**
+                 * Set the representation binary string.
+                 *
+                 * @param str : The new binary stream representation string.
+                 */
                 void str(const std::string& str)
                 {
                     _pos = 0;
                     _s = str;
                 }
 
+                /**
+                 * Read an element.
+                 *
+                 * @param x : A reference to the element you are reading into.
+                 *
+                 * @pre : The remaining input stream holds enough data to read the element.
+                 */
                 template <class T>
                 bistream& operator >> (T& x)
                 {
@@ -160,6 +218,14 @@ namespace ana
                     return *this;
                 }
 
+                /**
+                 * Read a string.
+                 *
+                 * @param str : A reference to the string you are reading into.
+                 *
+                 * @pre : The stream is situated in a position holding a 32 bit unsigned integer
+                 *        and then at least this very number of bytes remain.
+                 */
                 bistream& operator >> (std::string& str)
                 {
                     uint32_t size;
@@ -170,6 +236,14 @@ namespace ana
                     return *this;
                 }
 
+                /**
+                 * Read a vector.
+                 *
+                 * @param vec : A reference to the vector you are reading into.
+                 *
+                 * @pre : The stream is situated in a position holding a 32 bit unsigned integer
+                 *        and then at least this very number of elements remain.
+                 */
                 template <class Other>
                 bistream& operator>> (std::vector<Other>& vec)
                 {
@@ -183,6 +257,7 @@ namespace ana
                     return *this;
                 }
 
+                /** Clear the input stream. */
                 void clear()
                 {
                     _s.clear();
@@ -190,14 +265,33 @@ namespace ana
                 }
 
             private:
+
+                /** The string representing the input stream. */
                 std::string _s;
+
+                /** The position the stream is reading from.  */
                 std::size_t _pos;
         };
 
+        /**
+         * A helper class to insert containers from single elements. Use this when you know that
+         * the data will later be read into a vector or some other container but you don't have
+         * such a container for insertion, you want to create it on the go.
+         *
+         * @param T : The type of the elements in the container.
+         */
         template<class T>
         class container_writer
         {
             public:
+
+                /**
+                 * Default constructor.
+                 *
+                 * @param size : The amount of elements you will write.
+                 * @param bos : A reference to the output stream where you will create the
+                 *              container.
+                 */
                 container_writer( size_t size, bostream& bos) :
                     _elements_left( size ),
                     _bos( bos )
@@ -205,6 +299,9 @@ namespace ana
                     _bos << uint32_t( size );
                 }
 
+                /**
+                 * Push an element.
+                 */
                 container_writer& operator<<(T element)
                 {
                     assert( _elements_left > 0 );
@@ -215,20 +312,42 @@ namespace ana
                     return *this;
                 }
 
+                /**
+                 * Default destructor.
+                 *
+                 * @pre : The elements inserted equals the amount of elements that were promised
+                 *        to be inserted at the time of creation (size parameter.)
+                 */
                 ~container_writer()
                 {
                     if ( _elements_left != 0 )
                         throw/* std::runtime_error*/("More elements were expected to be written.");
                 }
             private:
+
+                /** The amount of elements you have yet to insert. */
                 size_t    _elements_left;
+
+                /** A reference to the output stream. */
                 bostream& _bos;
         };
 
+        /**
+         * A helper class to read from containers one by one. Use this when you want to read
+         * something inserted as a container one by one, you can also use it to know how many
+         * elements were inserted.
+         *
+         * @param T : The type of the elements in the container.
+         */
         template<class T>
         class container_reader
         {
             public:
+                /**
+                 * Standard constructor.
+                 *
+                 * @param bis : The input stream holding the data.
+                 */
                 container_reader( bistream& bis) :
                     _elements_left( 0 ),
                     _bis( bis )
@@ -236,6 +355,9 @@ namespace ana
                     _bis >> _elements_left;
                 }
 
+                /**
+                 * Read an element.
+                 */
                 container_reader& operator>>(T& element)
                 {
                     assert( _elements_left > 0 );
@@ -246,6 +368,17 @@ namespace ana
                     return *this;
                 }
 
+                /**
+                 * Skip a given amount of elements, default: 1.
+                 *
+                 * Examples:
+                 *    - skip();
+                 *    - skip(10);
+                 *
+                 * @param elements : The amount of elements you want to skip. Default: 1.
+                 *
+                 * @pre : At least the amount of elements you want to skip remain.
+                 */
                 void skip(size_t elements = 1)
                 {
                     if ( elements > _elements_left )
@@ -259,12 +392,27 @@ namespace ana
                         throw("Too much mas skipped.");
                 }
 
+                /**
+                 * Signal that you have finished reading. It is the same as skipping the amount
+                 * of elements left.
+                 */
                 void finished()
                 {
                     skip( _elements_left );
                     _elements_left = 0;
                 }
 
+                /**
+                 * Returns the amount of elements that still haven't been read from the container.
+                 */
+                size_t elements_left() const
+                {
+                    return _elements_left;
+                }
+
+                /**
+                 * Standard destructor. Finishes the reading process if necessary.
+                 */
                 ~container_reader()
                 {
                     if ( _elements_left != 0 )
@@ -272,7 +420,11 @@ namespace ana
                 }
 
             private:
+
+                /** The amount of elements that still haven't been read from the container. */
                 size_t    _elements_left;
+
+                /** A reference to the input stream. */
                 bistream& _bis;
         };
 

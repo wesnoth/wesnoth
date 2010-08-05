@@ -42,7 +42,7 @@
  *
  * ana is an API to develop simple server and client applications.
  *
- * @image html ana.png
+ * @image html logo.svg
  *
  * This project is being carried out as part of a Google Summer of Code 2010
  * project to reimplement <A HREF="http://wesnoth.org"> Wesnoth </A>'s stack.

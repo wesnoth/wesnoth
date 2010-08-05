@@ -609,6 +609,8 @@ ana::net_id ana_network_manager::create_server( )
 
 network::connection ana_network_manager::create_client_and_connect(std::string host, int port)
 {
+    ana::net_id new_client_id;
+
     try
     {
         std::stringstream ss;
@@ -618,6 +620,8 @@ network::connection ana_network_manager::create_client_and_connect(std::string h
         components_.insert( new_component );
 
         ana::client* const client = new_component->client();
+
+        new_client_id = client->id();
 
         ana_connect_handler handler;
 
@@ -632,7 +636,7 @@ network::connection ana_network_manager::create_client_and_connect(std::string h
         if( handler.error() )
         {
             network::disconnect( client->id() );
-            return 0;
+            throw network::error(_("Could not connect to host"), client->id() );
         }
         else
         {
@@ -649,7 +653,7 @@ network::connection ana_network_manager::create_client_and_connect(std::string h
             send_handler.wait_completion();
 
             if ( send_handler.error() )
-                return 0;
+                throw network::error(_("Could not connect to host"), client->id() );
             else
             {
                 uint32_t my_id;
@@ -671,6 +675,7 @@ network::connection ana_network_manager::create_client_and_connect(std::string h
     }
     catch( const std::exception& e )
     {
+        throw network::error(_("Could not connect to host"), new_client_id );
         return 0;
     }
 }
