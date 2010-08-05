@@ -12,12 +12,9 @@ import java.util.Map.Entry;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.IStatus;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
-import org.eclipse.ui.progress.UIJob;
 import org.osgi.framework.BundleContext;
 
 import wesnoth_eclipse_plugin.preferences.Preferences;
@@ -46,25 +43,17 @@ public class Activator extends AbstractUIPlugin
 		super.start(context);
 		plugin = this;
 		Logger.getInstance().startLogger();
-		UIJob job = new UIJob("checkConditions") {
-			@Override
-			public IStatus runInUIThread(IProgressMonitor monitor)
-			{
-				if (!checkConditions())
-				{
-					GUIUtils.showInfoMessageBox(
-							"Hello!\n" +
-							"Welcome to 'Wesnoth User Made Content Eclipse Plugin'.\n" +
-							"Since this is the first time you are using it " +
-							"I'll guide you through setting it up.\n\n" +
-							"First you'll have to setup your preferences.\n" +
-							"Press OK to continue.");
-					WorkspaceUtils.setupWorkspace(true);
-				}
-				return null;
-			}
-		};
-		job.schedule();
+		if (!checkConditions())
+		{
+			GUIUtils.showInfoMessageBox(
+					"Hello!\n" +
+					"Welcome to 'Wesnoth User Made Content Eclipse Plugin'.\n" +
+					"Since this is the first time you are using it " +
+					"I'll guide you through setting it up.\n\n" +
+					"First you'll have to setup your preferences.\n" +
+					"Press OK to continue.");
+			WorkspaceUtils.setupWorkspace(true);
+		}
 	}
 
 	@Override
