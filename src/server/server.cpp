@@ -395,17 +395,11 @@ void server::send_password_request(network::connection sock, const char* msg,
 config server::read_config() const {
 	config configuration;
 	if (config_file_ == "") return configuration;
-	scoped_istream stream = preprocess_file(config_file_);
-	std::string errors;
 	try {
-		read(configuration, *stream, &errors);
-		if (errors.empty()) {
-			LOG_SERVER << "Server configuration from file: '" << config_file_
-				<< "' read.\n";
-		} else {
-			ERR_CONFIG << "ERROR: Errors reading configuration file: '"
-				<< errors << "'.\n";
-		}
+		scoped_istream stream = preprocess_file(config_file_);
+		read(configuration, *stream);
+		LOG_SERVER << "Server configuration from file: '" << config_file_
+			<< "' read.\n";
 	} catch(config::error& e) {
 		ERR_CONFIG << "ERROR: Could not read configuration file: '"
 			<< config_file_ << "': '" << e.message << "'.\n";

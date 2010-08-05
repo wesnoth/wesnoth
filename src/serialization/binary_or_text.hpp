@@ -35,7 +35,7 @@ class config;
  *
  * @returns                       True iff the format is compressed.
  */
-bool detect_format_and_read(config &cfg, std::istream &in, std::string* error_log=NULL); // Throws config::error
+bool detect_format_and_read(config &cfg, std::istream &in); // Throws config::error
 
 /** Class for writing a config out to a file in pieces. */
 class config_writer

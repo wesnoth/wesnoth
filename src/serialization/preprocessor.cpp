@@ -217,7 +217,6 @@ class preprocessor_streambuf: public streambuf
 	preproc_map default_defines_;
 	std::string textdomain_;
 	std::string location_;
-	std::string *error_log;
 	int linenum_;
 	int depth_;
 	/**
@@ -231,11 +230,11 @@ class preprocessor_streambuf: public streambuf
 	friend struct preprocessor_deleter;
 	preprocessor_streambuf(preprocessor_streambuf const &);
 public:
-	preprocessor_streambuf(preproc_map *, std::string *);
+	preprocessor_streambuf(preproc_map *);
 	void error(const std::string &, int);
 };
 
-preprocessor_streambuf::preprocessor_streambuf(preproc_map *def, std::string *err_log) :
+preprocessor_streambuf::preprocessor_streambuf(preproc_map *def) :
 	streambuf(),
 	out_buffer_(""),
 	buffer_(),
@@ -244,7 +243,6 @@ preprocessor_streambuf::preprocessor_streambuf(preproc_map *def, std::string *er
 	default_defines_(),
 	textdomain_(PACKAGE),
 	location_(""),
-	error_log(err_log),
 	linenum_(0),
 	depth_(0),
 	quoted_(false)
@@ -260,7 +258,6 @@ preprocessor_streambuf::preprocessor_streambuf(preprocessor_streambuf const &t) 
 	default_defines_(),
 	textdomain_(PACKAGE),
 	location_(""),
-	error_log(t.error_log),
 	linenum_(0),
 	depth_(t.depth_),
 	quoted_(t.quoted_)
@@ -345,9 +342,6 @@ void preprocessor_streambuf::error(const std::string& error_type, int l)
 	position = lineno_string(pos.str());
 	error = error_type + " at " + position;
 	ERR_CF << error << '\n';
-	if (error_log)
-		*error_log += error + '\n';
-
 	throw preproc_config::error(error);
 }
 
@@ -1026,7 +1020,6 @@ struct preprocessor_deleter: std::basic_istream<char>
 {
 	preprocessor_streambuf *buf_;
 	preproc_map *defines_;
-	std::string *error_log;
 	preprocessor_deleter(preprocessor_streambuf *buf, preproc_map *defines);
 	~preprocessor_deleter();
 };
@@ -1034,7 +1027,6 @@ struct preprocessor_deleter: std::basic_istream<char>
 preprocessor_deleter::preprocessor_deleter(preprocessor_streambuf *buf,
 		preproc_map *defines)
 	: std::basic_istream<char>(buf), buf_(buf), defines_(defines)
-	, error_log(buf->error_log)
 {
 }
 
@@ -1048,8 +1040,7 @@ preprocessor_deleter::~preprocessor_deleter()
 }
 
 
-std::istream *preprocess_file(std::string const &fname,
-                              preproc_map *defines, std::string *error_log)
+std::istream *preprocess_file(std::string const &fname, preproc_map *defines)
 {
 	log_scope("preprocessing file...");
 	preproc_map *owned_defines = NULL;
@@ -1061,10 +1052,8 @@ std::istream *preprocess_file(std::string const &fname,
 		owned_defines = new preproc_map;
 		defines = owned_defines;
 	}
-	preprocessor_streambuf *buf = new preprocessor_streambuf(defines, error_log);
+	preprocessor_streambuf *buf = new preprocessor_streambuf(defines);
 	new preprocessor_file(*buf, fname);
-	if (error_log && !error_log->empty())
-		throw preproc_config::error("Error preprocessing files.");
 	return new preprocessor_deleter(buf, owned_defines);
 }
 
@@ -1101,22 +1090,16 @@ void preprocess_resource(const std::string& res_name, preproc_map *defines_map,
 	//disable filename encoding to get clear #line in cfg.plain
 	encode_filename = false;
 
-	std::string error_log;
-	scoped_istream stream = preprocess_file(res_name, defines_map, &error_log);
+	scoped_istream stream = preprocess_file(res_name, defines_map);
 	std::stringstream ss;
 	ss<<(*stream).rdbuf();
 	std::string streamContent = ss.str();
 
 	config cfg;
 
-	if (!error_log.empty())
-	{
-		throw config::error(error_log);
-	}
-
 	if (write_cfg == true || write_plain_cfg == true)
 	{
-		read(cfg, streamContent, &error_log);
+		read(cfg, streamContent);
 		const std::string preproc_res_name = target_directory + "/" + file_name(res_name);
 
 		// write the processed cfg file

@@ -55,7 +55,7 @@ class parser
 public:
 	parser(config& cfg, std::istream& in);
 	~parser();
-	void operator() (std::string* error_log=NULL);
+	void operator()();
 
 private:
 	void parse_element();
@@ -95,48 +95,35 @@ parser::~parser()
 	delete tok_;
 }
 
-void parser::operator()(std::string* error_log)
+void parser::operator()()
 {
 	cfg_.clear();
 	elements.push(element(&cfg_, ""));
 
 	do {
-		try {
-			tok_->next_token();
+		tok_->next_token();
 
-			switch(tok_->current_token().type) {
-			case token::LF:
-				continue;
-			case '[':
-				parse_element();
-				break;
-			case token::STRING:
-				parse_variable();
-				break;
-			default:
-				if (static_cast<unsigned char>(tok_->current_token().value[0]) == 0xEF &&
-				    static_cast<unsigned char>(tok_->next_token().value[0])    == 0xBB &&
-				    static_cast<unsigned char>(tok_->next_token().value[0])    == 0xBF)
-				{
-					ERR_CF << "Skipping over a utf8 BOM\n";
-				} else {
-					error(_("Unexpected characters at line start"));
-				}
-				break;
-			case token::END:
-				break;
+		switch(tok_->current_token().type) {
+		case token::LF:
+			continue;
+		case '[':
+			parse_element();
+			break;
+		case token::STRING:
+			parse_variable();
+			break;
+		default:
+			if (static_cast<unsigned char>(tok_->current_token().value[0]) == 0xEF &&
+			    static_cast<unsigned char>(tok_->next_token().value[0])    == 0xBB &&
+			    static_cast<unsigned char>(tok_->next_token().value[0])    == 0xBF)
+			{
+				ERR_CF << "Skipping over a utf8 BOM\n";
+			} else {
+				error(_("Unexpected characters at line start"));
 			}
-		} catch(config::error& e) {
-			if(error_log == NULL)
-				throw;
-
-			// On error, dump tokens to the next LF
-			while(tok_->current_token().type != token::LF &&
-					tok_->current_token().type != token::END) {
-				tok_->next_token();
-			}
-
-			*error_log += e.message + '\n';
+			break;
+		case token::END:
+			break;
 		}
 		increment_parser_progress();
 	} while (tok_->current_token().type != token::END);
@@ -343,18 +330,18 @@ void parser::error(const std::string& error_type)
 
 } // end anon namespace
 
-void read(config &cfg, std::istream &in, std::string* error_log)
+void read(config &cfg, std::istream &in)
 {
-	parser(cfg, in)(error_log);
+	parser(cfg, in)();
 }
 
-void read(config &cfg, std::string &in, std::string* error_log)
+void read(config &cfg, std::string &in)
 {
-	std::stringstream ss(in);
-	parser(cfg, ss)(error_log);
+	std::istringstream ss(in);
+	parser(cfg, ss)();
 }
 
-void read_gz(config &cfg, std::istream &file, std::string* error_log)
+void read_gz(config &cfg, std::istream &file)
 {
 	//an empty gzip file seems to confuse boost on msvc
 	//so return early if this is the case
@@ -365,7 +352,7 @@ void read_gz(config &cfg, std::istream &file, std::string* error_log)
 	filter.push(boost::iostreams::gzip_decompressor());
 	filter.push(file);
 
-	parser(cfg, filter)(error_log);
+	parser(cfg, filter)();
 }
 
 static char const *AttributeEquals = "=";

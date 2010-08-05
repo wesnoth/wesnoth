@@ -225,13 +225,14 @@ void manager::read_save_file(const std::string& name, config& cfg, std::string* 
 	cfg.clear();
 	try{
 		if(is_gzip_file(name)) {
-			read_gz(cfg, *file_stream, error_log);
+			read_gz(cfg, *file_stream);
 		} else {
-			detect_format_and_read(cfg, *file_stream, error_log);
+			detect_format_and_read(cfg, *file_stream);
 		}
 	} catch (config::error &err)
 	{
 		LOG_SAVE << err.message;
+		if (error_log) *error_log += err.message;
 		throw game::load_game_failed();
 	}
 
