@@ -2071,6 +2071,19 @@ static int intf_unit_defense(lua_State *L)
 }
 
 /**
+ * Returns true if the unit has the given ability enabled.
+ * - Arg 1: unit userdata.
+ * - Ret 1: boolean.
+ */
+static int intf_unit_ability(lua_State *L)
+{
+	unit const *u = luaW_checkunit(L, 1);
+	char const *m = luaL_checkstring(L, 2);
+	lua_pushboolean(L, u->get_ability_bool(m));
+	return 1;
+}
+
+/**
  * Puts a table at the top of the stack with some combat result.
  */
 static void luaW_pushsimdata(lua_State *L, const combatant &cmb)
@@ -2631,6 +2644,7 @@ LuaKernel::LuaKernel()
 		{ "synchronize_choice",       &intf_synchronize_choice       },
 		{ "textdomain",               &intf_textdomain               },
 		{ "tovconfig",                &intf_tovconfig                },
+		{ "unit_ability",             &intf_unit_ability             },
 		{ "unit_defense",             &intf_unit_defense             },
 		{ "unit_movement_cost",       &intf_unit_movement_cost       },
 		{ "unit_resistance",          &intf_unit_resistance          },
