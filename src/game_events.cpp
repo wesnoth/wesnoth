@@ -2900,15 +2900,21 @@ WML_HANDLER_FUNCTION(replace_map, /*event_info*/, cfg)
 // Experimental data persistence
 WML_HANDLER_FUNCTION(set_global_variable,/**/,pcfg)
 {
-	verify_and_set_global_variable(pcfg);
+	if (get_replay_source().at_end() || (network::nconnections() != 0))
+		verify_and_set_global_variable(pcfg);
 }
 WML_HANDLER_FUNCTION(get_global_variable,/**/,pcfg)
 {
-	verify_and_get_global_variable(pcfg);
+	if (resources::state_of_game->phase() == game_state::PLAY)
+		verify_and_get_global_variable(pcfg);
+	else {
+		lg::wml_error << "get_global_variable: Reading of global persistent variables is disallowed before the game is fully inited.\n";
+	}		
 }
 WML_HANDLER_FUNCTION(clear_global_variable,/**/,pcfg)
 {
-	verify_and_clear_global_variable(pcfg);
+	if (get_replay_source().at_end() || (network::nconnections() != 0))
+		verify_and_clear_global_variable(pcfg);
 }
 
 /** Handles all the different types of actions that can be triggered by an event. */
