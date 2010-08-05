@@ -293,6 +293,7 @@ wesnoth_source = \
 	whiteboard/manager.cpp \
 	whiteboard/highlight_visitor.cpp \
 	whiteboard/mapbuilder_visitor.cpp \
+	whiteboard/recall.cpp \
 	whiteboard/recruit.cpp \
 	whiteboard/side_actions.cpp \
 	whiteboard/validate_visitor.cpp \
