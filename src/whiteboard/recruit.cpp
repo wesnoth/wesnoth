@@ -97,7 +97,7 @@ void recruit::apply_temp_modifier(unit_map& unit_map)
 	//unit map takes ownership of temp_unit
 
 	temp_cost_ = temp_unit_->type()->cost();
-	/**
+	/*
 	 * Add cost to money spent on recruits.
 	 */
 	resources::teams->at(team_index()).get_side_actions()->change_gold_spent_by(temp_cost_);
@@ -110,7 +110,7 @@ void recruit::remove_temp_modifier(unit_map& unit_map)
 {
 	temp_unit_ = unit_map.extract(recruit_hex_);
 
-	/**
+	/*
 	 * Remove cost from money spent on recruits.
 	 */
 	resources::teams->at(team_index()).get_side_actions()->change_gold_spent_by(-temp_cost_);
