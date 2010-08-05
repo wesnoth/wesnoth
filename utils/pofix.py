@@ -45,6 +45,7 @@ stringfixes = {
 ("DejaVu Sans,WenQuanYi Zen Hei", "DejaVu Sans,Andagii,WenQuanYi Zen Hei"),
 ("wqy-zenhei.ttc,DejaVuSans.ttf", "wqy-zenhei.ttc,DejaVuSans.ttf,Andagii.ttf"),
 ("WenQuanYi Zen Hei,DejaVu Sans,", "WenQuanYi Zen Hei,DejaVu Sans,Andagii"),
+("Icelandic translation", "Icelandic Translation"),
 ),
 
 "wesnoth-aoi" : (
