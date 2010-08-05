@@ -968,8 +968,8 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 		return;
 	}
 	unit un = recall_list_team[res];
-	recall_list_team.erase(recall_list_team.begin() + res);
 	if (!resources::whiteboard->save_recall(un, side_num, loc)) {
+		recall_list_team.erase(recall_list_team.begin() + res);
 		recorder.add_recall(un.id(), loc);
 		place_recruit(un, loc, true, true);
 		statistics::recall_unit(un);
