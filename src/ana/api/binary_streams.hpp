@@ -47,6 +47,7 @@ namespace ana
      */
     namespace serializer
     {
+        /// @cond false
         template <class T>
         struct template_is_container { enum {  value = 0   }; };
 
@@ -71,6 +72,7 @@ namespace ana
 
         template <class K, class D>
         struct template_is_container< std::multimap<K,D> > { enum {  value = 1 }; };
+        /// @endcond
 
         /**
          * Output stream serialization. This class provides stream functionality to serialize
@@ -428,6 +430,7 @@ namespace ana
                 bistream& _bis;
         };
 
+        /// @cond false
         template<class T>
         struct bostream::_inserter_helper<T, false>
         {
@@ -451,6 +454,8 @@ namespace ana
                     (*bos) << *it;
             }
         };
+        /// @endcond
+
     } //serializer namespace
 } //ana namespace
 

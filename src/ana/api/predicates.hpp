@@ -60,6 +60,7 @@ namespace ana
         };
         //@}
 
+    /// @cond false
     /**
      * Intended for private use, should be created with create_predicate.
      *
@@ -94,6 +95,7 @@ namespace ana
                 return pred(cid);
             }
     };
+    /// @endcond
 
     /**
      * Creates a client predicate to be used in send operations.

@@ -45,8 +45,7 @@ namespace ana
 {
     /** @name Time duration functions. */
     //@{
-    /** @namespace time
-     *
+    /**
      * Time conversion functions.
      */
     namespace time
@@ -124,6 +123,7 @@ namespace ana
      */
     //@{
 
+    /// @cond false
     namespace detail
     {
         /** Private class providing traits for the timer type. */
@@ -156,6 +156,7 @@ namespace ana
             static boost::posix_time::time_duration to_posix_duration(const duration_type& d);
         };
     }
+    /// @endcond
 
     /** A boost::asio::basic_deadline_timer, can be used externally. */
     typedef boost::asio::basic_deadline_timer<std::time_t,detail::time_t_traits> boost_timer;

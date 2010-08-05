@@ -41,25 +41,49 @@
 
 namespace ana
 {
+    /** Type of collected network statistics. */
     enum stat_type
     {
+        /** Statistics accumulated since creation of the network component. */
         ACCUMULATED,
+
+        /** Network statistics for the last second. */
         SECONDS,
+
+        /** Network statistics for the last minute. */
         MINUTES,
+
+        /** Network statistics for the last hour. */
         HOURS,
+
+        /** Network statistics for the last day. */
         DAYS
     };
 
+    /**
+     * A network statistics object, describes statistics for a given time period.
+     */
     struct stats
     {
-		virtual ~stats() {}
+        virtual ~stats() {}
+
+        /** Returns the amount of seconds since creation. */
         virtual size_t uptime()       const = 0;
+
+        /** Returns the amount of received packets for a particular collected statistics object. */
         virtual size_t packets_in()   const = 0;
+
+        /** Returns the amount of sent packets for a particular collected statistics object. */
         virtual size_t packets_out()  const = 0;
+
+        /** Returns the amount of received bytes for a particular collected statistics object. */
         virtual size_t bytes_in()     const = 0;
+
+        /** Returns the amount of sent bytes for a particular collected statistics object. */
         virtual size_t bytes_out()    const = 0;
     };
 
+    /// @cond false
     namespace detail
     {
         class stats_logger : public stats
@@ -83,7 +107,7 @@ namespace ana
                     }
                 }
 
-				virtual ~stats_logger() {}
+                virtual ~stats_logger() {}
 
                 void log_send( detail::shared_buffer buffer )
                 {
@@ -179,14 +203,14 @@ namespace ana
                 minutes_stats_( time::minutes(1), io_service_ ),
                 hours_stats_( time::hours(1), io_service_ ),
                 days_stats_( time::days(1), io_service_ ),
-				current_packet_in_size_(0),
-				current_packet_out_size_(0),
-				current_packet_in_(0),
-				current_packet_out_(0),
-				current_packet_in_max_(0),
-				current_packet_out_max_(0),
-				current_packet_in_total_(0),
-				current_packet_out_total_(0)
+                current_packet_in_size_(0),
+                current_packet_out_size_(0),
+                current_packet_in_(0),
+                current_packet_out_(0),
+                current_packet_in_max_(0),
+                current_packet_out_max_(0),
+                current_packet_in_total_(0),
+                current_packet_out_total_(0)
             {
                 collector_thread_ = new boost::thread( boost::bind(&boost::asio::io_service::run,
                                                                    &io_service_) );
@@ -324,6 +348,7 @@ namespace ana
             size_t               current_packet_in_total_;
             size_t               current_packet_out_total_;
     };
+    /// @endcond
 }
 
 #endif

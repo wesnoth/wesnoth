@@ -45,12 +45,12 @@
  * @image html logo.svg
  *
  * This project is being carried out as part of a Google Summer of Code 2010
- * project to reimplement <A HREF="http://wesnoth.org"> Wesnoth </A>'s stack.
+ * project to reimplement <A HREF="http://wesnoth.org"> Wesnoth</A>'s stack.
  *
- * The projects' webpage is located at
- * <A HREF="http://async-net-api.googlecode.com"> GoogleCode </A>
+ * The projects' source code can be found at:
+ * <A HREF="http://svn.gna.org/viewcvs/wesnoth/trunk/src/ana/"> Wesnoth's repository </A>
  *
- * @section requirements requirements
+ * @section requirements Requirements
  * To compile ana, you need:
  *  - Boost, version 1.35 or newer
  */
@@ -151,6 +151,9 @@ namespace ana
         virtual void handle_disconnect(error_code, net_id) = 0;
     };
 
+    /**
+     * Interface for every component that logs network statistics.
+     */
     struct network_stats_logger
     {
         virtual ~network_stats_logger() {}
