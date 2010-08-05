@@ -18,11 +18,15 @@
 
 #include "recall.hpp"
 
+#include "unit.hpp"
+
 namespace wb
 {
 
-recall::recall(size_t team_index):
-		action(team_index)
+recall::recall(size_t team_index, const unit& unit, const map_location& recall_hex):
+		action(team_index),
+		unit_(new class unit(unit)),
+		recall_hex_(recall_hex)
 {
 }
 

@@ -21,14 +21,22 @@
 
 #include "action.hpp"
 
+#include "typedefs.hpp"
+
+#include "map_location.hpp"
+
 namespace wb
 {
 
 class recall: public wb::action
 {
 public:
-	recall(size_t team_index);
+	recall(size_t team_index, const unit& unit, const map_location& recall_hex);
 	virtual ~recall();
+
+private:
+	boost::scoped_ptr<unit> unit_;
+	map_location recall_hex_;
 };
 
 }
