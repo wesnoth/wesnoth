@@ -113,15 +113,28 @@ double config::attribute_value::to_double(double def) const
 	return def;
 }
 
+struct config_attribute_str_visitor : boost::static_visitor<std::string>
+{
+	std::string operator()(boost::blank const &) const
+	{ return std::string(); }
+	std::string operator()(bool b) const
+	{
+		static std::string s_yes("yes"), s_no("no");
+		return b ? s_yes : s_no;
+	}
+	std::string operator()(int i) const
+	{ return str_cast(i); }
+	std::string operator()(double d) const
+	{ return str_cast(d); }
+	std::string operator()(std::string const &s) const
+	{ return s; }
+	std::string operator()(t_string const &s) const
+	{ return s.str(); }
+};
+
 std::string config::attribute_value::str() const
 {
-	static std::string s_yes("yes"), s_no("no");
-	if (const std::string *p = boost::get<const std::string>(&value)) return *p;
-	if (const t_string *p = boost::get<const t_string>(&value)) return p->str();
-	if (const bool *p = boost::get<const bool>(&value)) return *p ? s_yes : s_no;
-	if (const int *p = boost::get<const int>(&value)) return str_cast(*p);
-	if (const double *p = boost::get<const double>(&value)) return str_cast(*p);
-	return std::string();
+	return boost::apply_visitor(config_attribute_str_visitor(), value);
 }
 
 t_string config::attribute_value::t_str() const

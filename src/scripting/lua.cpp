@@ -28,6 +28,7 @@
 
 #include <cassert>
 #include <cstring>
+#include <boost/variant.hpp>
 
 #include "scripting/lua.hpp"
 #include "scripting/lua_api.hpp"
@@ -136,6 +137,32 @@ static void luaW_pushtstring(lua_State *L, t_string const &v)
 	lua_pushlightuserdata(L, (void *)&tstringKey);
 	lua_rawget(L, LUA_REGISTRYINDEX);
 	lua_setmetatable(L, -2);
+}
+
+struct luaW_pushscalar_visitor : boost::static_visitor<>
+{
+	lua_State *L;
+	luaW_pushscalar_visitor(lua_State *l): L(l) {}
+	void operator()(boost::blank const &) const
+	{ lua_pushnil(L); }
+	void operator()(bool b) const
+	{ lua_pushboolean(L, b); }
+	void operator()(int i) const
+	{ lua_pushinteger(L, i); }
+	void operator()(double d) const
+	{ lua_pushnumber(L, d); }
+	void operator()(std::string const &s) const
+	{ lua_pushstring(L, s.c_str()); }
+	void operator()(t_string const &s) const
+	{ luaW_pushtstring(L, s); }
+};
+
+/**
+ * Converts a string into a Lua object pushed at the top of the stack.
+ */
+void luaW_pushscalar(lua_State *L, config::attribute_value const &v)
+{
+	boost::apply_visitor(luaW_pushscalar_visitor(L), v.value);
 }
 
 /**

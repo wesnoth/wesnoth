@@ -42,6 +42,7 @@
 typedef std::map<std::string, t_string> string_map;
 
 class config;
+struct lua_State;
 
 bool operator==(const config &, const config &);
 inline bool operator!=(const config &a, const config &b) { return !operator==(a, b); }
@@ -199,6 +200,7 @@ public:
 		{ return !operator==(other); }
 
 		friend std::ostream& operator<<(std::ostream &os, const attribute_value &v);
+		friend void luaW_pushscalar(lua_State *, const attribute_value &);
 	};
 
 	typedef std::map<std::string, attribute_value> attribute_map;
