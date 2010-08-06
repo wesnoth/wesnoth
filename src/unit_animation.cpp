@@ -64,14 +64,10 @@ const std::vector<std::string>& unit_animation::all_tag_names() {
 	return anim_tags.names;
 }
 
-config unit_animation::prepare_animation(const config &cfg,const std::string& animation_tag)
+static void prepare_single_animation(const config &anim_cfg,
+	config &expanded_animations, const std::string &animation_tag)
 {
-	config expanded_animations;
-	std::vector<config> unexpanded_anims;
-	// store all the anims we have to analyze
-	foreach (const config &anim, cfg.child_range(animation_tag)) {
-		unexpanded_anims.push_back(anim);
-	}
+	std::vector<config> unexpanded_anims(1, anim_cfg);
 	while(!unexpanded_anims.empty()) {
 		// take one anim out of the unexpanded list
 		const config analyzed_anim = unexpanded_anims.back();
@@ -116,6 +112,14 @@ config unit_animation::prepare_animation(const config &cfg,const std::string& an
 					expanded_animations.add_child(animation_tag,expanded_anim);
 			}
 		}
+	}
+}
+
+config unit_animation::prepare_animation(const config &cfg, const std::string &animation_tag)
+{
+	config expanded_animations;
+	foreach (const config &anim, cfg.child_range(animation_tag)) {
+		prepare_single_animation(anim, expanded_animations, animation_tag);
 	}
 	return expanded_animations;
 }
