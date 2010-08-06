@@ -321,12 +321,8 @@ void unit_attack(
 
 	const unit_map::iterator def = units.find(b);
 	assert(def != units.end());
-	// do a copy so we can change the caracteristics
-	unit defender = *def;
-	bool was_hidden = defender.get_hidden();
-	def->set_hidden(true);
-	disp->place_temporary_unit(&defender);
-
+	unit &defender = *def;
+	int def_hitpoints = defender.hitpoints();
 
 	att->set_facing(a.get_relative_dir(b));
 	def->set_facing(b.get_relative_dir(a));
@@ -409,8 +405,7 @@ void unit_attack(
 	// pass the animation back to the real unit
 	def->start_animation(animator.get_end_time(), defender_anim, true);
 	reset_helpers(&*att, &*def);
-	disp->remove_temporary_unit(&defender);
-	def->set_hidden(was_hidden);
+	def->set_hitpoints(def_hitpoints);
 }
 
 // private helper function, set all helpers to default position
