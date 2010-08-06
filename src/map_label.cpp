@@ -354,6 +354,8 @@ void terrain_label::write(config& cfg) const
 	cfg["text"] = text();
 	cfg["team_name"] = (this->team_name());
 	cfg["color"] = cfg_color();
+	///@deprecated 1.9.2 'colour' also written in label
+	cfg["colour"] = cfg_color();
 	cfg["visible_in_fog"] = visible_in_fog_;
 	cfg["visible_in_shroud"] = visible_in_shroud_;
 	cfg["immutable"] = immutable_;

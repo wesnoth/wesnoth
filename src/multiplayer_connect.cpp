@@ -732,6 +732,8 @@ config connect::side::get_config() const
 		res["user_team_name"] = parent_->user_team_names_[team_];
 		res["allow_player"] = allow_player_;
 		res["color"] = color_ + 1;
+		///@deprecated 1.9.2 'colour' also written
+		res["colour"] = color_ + 1;
 		res["gold"] = gold_;
 		res["income"] = income_;
 
@@ -752,7 +754,7 @@ config connect::side::get_config() const
 	if(parent_->params_.use_map_settings && enabled_) {
 		config trimmed = cfg_;
 		static char const *attrs[] = { "side", "controller", "id",
-			"team_name", "user_team_name", "color", "gold",
+			"team_name", "user_team_name", "color", "colour", "gold",
 			"income", "allow_changes" };
 		foreach (const char *attr, attrs) {
 			trimmed.remove_attribute(attr);

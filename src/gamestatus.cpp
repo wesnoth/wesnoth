@@ -237,6 +237,8 @@ void write_players(game_state& gamestate, config& cfg, const bool use_snapshot, 
 				///@deprecated 1.9.2 'colour' in [side]
 				const std::string colour_error = "Usage of 'colour' in [side] is deprecated, support will be removed in 1.9.2.\n";
 				(*scenario_side)["color"] = carryover_side.get_old_attribute("color","colour",colour_error);
+				///@deprecated 1.9.2 'colour' also written in [side]
+				(*scenario_side)["colour"] = (*scenario_side)["color"];
 
 				//add recallable units
 				foreach (const config &u, carryover_side.child_range("unit")) {
@@ -903,7 +905,7 @@ protected:
 			"current_player", "countdown_time", "action_bonus_count",
 			"flag", "flag_icon", "objectives", "objectives_changed",
 			"disallow_observers", "allow_player", "no_leader",
-			"hidden", "music", "color", "ai_config", "gold",
+			"hidden", "music", "color", "colour", "ai_config", "gold",
 			"start_gold", "team_rgb", "village_gold", "recall_cost",
 			"controller", "persistent", "share_view",
 			"share_maps", "recruit", "fog", "shroud", "shroud_data",
