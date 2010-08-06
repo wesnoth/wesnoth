@@ -68,12 +68,21 @@ struct animation_branch
 {
 	config attributes;
 	std::vector<config::all_children_iterator> children;
+	config merge() const
+	{
+		config result = attributes;
+		foreach (const config::all_children_iterator &i, children)
+			result.add_child(i->key, i->cfg);
+		return result;
+	}
 };
+
+typedef std::list<animation_branch> animation_branches;
 
 struct animation_cursor
 {
 	config::all_children_itors itors;
-	std::list<animation_branch> branches;
+	animation_branches branches;
 	animation_cursor *parent;
 	animation_cursor(const config &cfg):
 		itors(cfg.all_children_range()), branches(1), parent(NULL)
@@ -88,8 +97,7 @@ struct animation_cursor
 	}
 };
 
-static void prepare_single_animation(const config &anim_cfg,
-	config &expanded_animations, const std::string &animation_tag)
+static void prepare_single_animation(const config &anim_cfg, animation_branches &expanded_anims)
 {
 	std::list<animation_cursor> anim_cursors;
 	anim_cursors.push_back(animation_cursor(anim_cfg));
@@ -131,20 +139,16 @@ static void prepare_single_animation(const config &anim_cfg,
 
 	// Create the config object describing each branch.
 	assert(anim_cursors.size() == 1);
-	foreach (const animation_branch &ab, anim_cursors.back().branches) {
-		config expanded_anim;
-		foreach (const config::all_children_iterator &i, ab.children)
-			expanded_anim.add_child(i->key, i->cfg);
-		expanded_anim.merge_attributes(ab.attributes);
-		expanded_animations.add_child(animation_tag, expanded_anim);
-	}
+	animation_cursor &ac = anim_cursors.back();
+	expanded_anims.splice(expanded_anims.end(),
+		ac.branches, ac.branches.begin(), ac.branches.end());
 }
 
-config unit_animation::prepare_animation(const config &cfg, const std::string &animation_tag)
+static animation_branches prepare_animation(const config &cfg, const std::string &animation_tag)
 {
-	config expanded_animations;
+	animation_branches expanded_animations;
 	foreach (const config &anim, cfg.child_range(animation_tag)) {
-		prepare_single_animation(anim, expanded_animations, animation_tag);
+		prepare_single_animation(anim, expanded_animations);
 	}
 	return expanded_animations;
 }
@@ -472,100 +476,56 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 
 }
 
+static void add_simple_anim(std::vector<unit_animation> &animations,
+	const config &cfg, char const *tag_name, char const *apply_to,
+	display::tdrawing_layer layer = display::LAYER_UNIT_DEFAULT,
+	bool offscreen = true)
+{
+	foreach (const animation_branch &ab, prepare_animation(cfg, tag_name))
+	{
+		config anim = ab.merge();
+		anim["apply_to"] = apply_to;
+		if (!offscreen) {
+			config::attribute_value &v = anim["offscreen"];
+			if (v.empty()) v = false;
+		}
+		config::attribute_value &v = anim["layer"];
+		if (v.empty()) v = layer - display::LAYER_UNIT_FIRST;
+		animations.push_back(unit_animation(anim));
+	}
+}
+
 void unit_animation::add_anims( std::vector<unit_animation> & animations, const config & cfg)
 {
-	config expanded_cfg;
-
-	expanded_cfg = unit_animation::prepare_animation(cfg,"animation");
-	foreach (const config &anim, expanded_cfg.child_range("animation")) {
-		animations.push_back(unit_animation(anim));
+	foreach (const animation_branch &ab, prepare_animation(cfg, "animation")) {
+		animations.push_back(unit_animation(ab.merge()));
 	}
 
-	std::string default_layer = lexical_cast<std::string>
-		(display::LAYER_UNIT_DEFAULT - display::LAYER_UNIT_FIRST);
-	std::string move_layer = lexical_cast<std::string>
-		(display::LAYER_UNIT_MOVE_DEFAULT - display::LAYER_UNIT_FIRST);
-	std::string missile_layer = lexical_cast<std::string>
-		(display::LAYER_UNIT_MISSILE_DEFAULT - display::LAYER_UNIT_FIRST);
+	int default_layer = display::LAYER_UNIT_DEFAULT - display::LAYER_UNIT_FIRST;
+	int move_layer = display::LAYER_UNIT_MOVE_DEFAULT - display::LAYER_UNIT_FIRST;
+	int missile_layer = display::LAYER_UNIT_MISSILE_DEFAULT - display::LAYER_UNIT_FIRST;
 
-	expanded_cfg = unit_animation::prepare_animation(cfg,"resistance_anim");
-	foreach (config &anim, expanded_cfg.child_range("resistance_anim"))
-	{
-		anim["apply_to"] = "resistance";
-		if (anim["layer"].empty()) anim["layer"] = default_layer;
-		animations.push_back(unit_animation(anim));
-	}
+	add_simple_anim(animations, cfg, "resistance_anim", "resistance");
+	add_simple_anim(animations, cfg, "leading_anim", "leading");
+	add_simple_anim(animations, cfg, "recruit_anim", "recruited");
+	add_simple_anim(animations, cfg, "recruiting_anim", "recruiting");
+	add_simple_anim(animations, cfg, "standing_anim", "standing,default", display::LAYER_UNIT_DEFAULT, false);
+	add_simple_anim(animations, cfg, "idle_anim", "idling", display::LAYER_UNIT_DEFAULT, false);
+	add_simple_anim(animations, cfg, "levelin_anim", "levelin");
+	add_simple_anim(animations, cfg, "levelout_anim", "levelout");
 
-	expanded_cfg = unit_animation::prepare_animation(cfg,"leading_anim");
-	foreach (config &anim, expanded_cfg.child_range("leading_anim"))
+	foreach (const animation_branch &ab, prepare_animation(cfg, "healing_anim"))
 	{
-		anim["apply_to"] = "leading";
-		if (anim["layer"].empty()) anim["layer"] = default_layer;
-		animations.push_back(unit_animation(anim));
-	}
-
-	expanded_cfg = unit_animation::prepare_animation(cfg,"recruit_anim");
-	foreach (config &anim, expanded_cfg.child_range("recruit_anim"))
-	{
-		anim["apply_to"] = "recruited";
-		if (anim["layer"].empty()) anim["layer"] = default_layer;
-		animations.push_back(unit_animation(anim));
-	}
-
-	expanded_cfg = unit_animation::prepare_animation(cfg,"recruiting_anim");
-	foreach (config &anim, expanded_cfg.child_range("recruiting_anim"))
-	{
-		anim["apply_to"] = "recruiting";
-		if (anim["layer"].empty()) anim["layer"] = default_layer;
-		animations.push_back(unit_animation(anim));
-	}
-
-	expanded_cfg = unit_animation::prepare_animation(cfg,"standing_anim");
-	foreach (config &anim, expanded_cfg.child_range("standing_anim"))
-	{
-		anim["apply_to"] = "standing,default";
-		if (anim["offscreen"].empty()) anim["offscreen"] = false;
-		if (anim["layer"].empty()) anim["layer"] = default_layer;
-		animations.push_back(unit_animation(anim));
-	}
-
-	expanded_cfg = unit_animation::prepare_animation(cfg,"idle_anim");
-	foreach (config &anim, expanded_cfg.child_range("idle_anim"))
-	{
-		anim["apply_to"] = "idling";
-		if (anim["offscreen"].empty()) anim["offscreen"] = false;
-		if (anim["layer"].empty()) anim["layer"] = default_layer;
-		animations.push_back(unit_animation(anim));
-	}
-
-	expanded_cfg = unit_animation::prepare_animation(cfg,"levelin_anim");
-	foreach (config &anim, expanded_cfg.child_range("levelin_anim"))
-	{
-		anim["apply_to"] = "levelin";
-		if (anim["layer"].empty()) anim["layer"] = default_layer;
-		animations.push_back(unit_animation(anim));
-	}
-
-	expanded_cfg = unit_animation::prepare_animation(cfg,"levelout_anim");
-	foreach (config &anim, expanded_cfg.child_range("levelout_anim"))
-	{
-		anim["apply_to"] = "levelout";
-		if (anim["layer"].empty()) anim["layer"] = default_layer;
-		animations.push_back(unit_animation(anim));
-	}
-
-	expanded_cfg = unit_animation::prepare_animation(cfg,"healing_anim");
-	foreach (config &anim, expanded_cfg.child_range("healing_anim"))
-	{
+		config anim = ab.merge();
 		anim["apply_to"] = "healing";
 		if (anim["layer"].empty()) anim["layer"] = default_layer;
 		anim["value"] = anim["damage"];
 		animations.push_back(unit_animation(anim));
 	}
 
-	expanded_cfg = unit_animation::prepare_animation(cfg,"healed_anim");
-	foreach (config &anim, expanded_cfg.child_range("healed_anim"))
+	foreach (const animation_branch &ab, prepare_animation(cfg, "healed_anim"))
 	{
+		config anim = ab.merge();
 		anim["apply_to"] = "healed";
 		if (anim["layer"].empty()) anim["layer"] = default_layer;
 		anim["value"] = anim["healing"];
@@ -575,9 +535,9 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		animations.back().sub_anims_["_healed_sound"].add_frame(1,frame_builder().sound("heal.wav"),true);
 	}
 
-	expanded_cfg = unit_animation::prepare_animation(cfg,"poison_anim");
-	foreach (config &anim, expanded_cfg.child_range("poison_anim"))
+	foreach (const animation_branch &ab, prepare_animation(cfg, "poison_anim"))
 	{
+		config anim = ab.merge();
 		anim["apply_to"] ="poisoned";
 		if (anim["layer"].empty()) anim["layer"] = default_layer;
 		anim["value"] = anim["damage"];
@@ -587,17 +547,11 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		animations.back().sub_anims_["_poison_sound"].add_frame(1,frame_builder().sound("poison.ogg"),true);
 	}
 
-	expanded_cfg = unit_animation::prepare_animation(cfg,"pre_movement_anim");
-	foreach (config &anim, expanded_cfg.child_range("pre_movement_anim"))
-	{
-		anim["apply_to"] = "pre_movement";
-		if (anim["layer"].empty()) anim["layer"] = move_layer;
-		animations.push_back(unit_animation(anim));
-	}
+	add_simple_anim(animations, cfg, "pre_movement_anim", "pre_movement", display::LAYER_UNIT_MOVE_DEFAULT);
 
-	expanded_cfg = unit_animation::prepare_animation(cfg,"movement_anim");
-	foreach (config &anim, expanded_cfg.child_range("movement_anim"))
+	foreach (const animation_branch &ab, prepare_animation(cfg, "movement_anim"))
 	{
+		config anim = ab.merge();
 		if (anim["offset"].empty()) {
 			anim["offset"] = "0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,0~1:200,";
 		}
@@ -606,17 +560,11 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		animations.push_back(unit_animation(anim));
 	}
 
-	expanded_cfg = unit_animation::prepare_animation(cfg,"post_movement_anim");
-	foreach (config &anim, expanded_cfg.child_range("post_movement_anim"))
-	{
-		anim["apply_to"] = "post_movement";
-		if (anim["layer"].empty()) anim["layer"] = move_layer;
-		animations.push_back(unit_animation(anim));
-	}
+	add_simple_anim(animations, cfg, "post_movement_anim", "post_movement", display::LAYER_UNIT_MOVE_DEFAULT);
 
-	expanded_cfg = unit_animation::prepare_animation(cfg,"defend");
-	foreach (config &anim, expanded_cfg.child_range("defend"))
+	foreach (const animation_branch &ab, prepare_animation(cfg, "defend"))
 	{
+		config anim = ab.merge();
 		anim["apply_to"] = "defend";
 		if (anim["layer"].empty()) anim["layer"] = default_layer;
 		if (!anim["damage"].empty() && anim["value"].empty()) {
@@ -651,28 +599,12 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		}
 	}
 
-	expanded_cfg = unit_animation::prepare_animation(cfg,"draw_weapon_anim");
-	foreach (config &anim, expanded_cfg.child_range("draw_weapon_anim"))
+	add_simple_anim(animations, cfg, "draw_weapon_anim", "draw_wepaon", display::LAYER_UNIT_MOVE_DEFAULT);
+	add_simple_anim(animations, cfg, "sheath_weapon_anim", "sheath_wepaon", display::LAYER_UNIT_MOVE_DEFAULT);
+
+	foreach (const animation_branch &ab, prepare_animation(cfg, "attack_anim"))
 	{
-		anim["apply_to"] = "draw_weapon";
-		if (anim["layer"].empty()) anim["layer"] = move_layer;
-		animations.push_back(unit_animation(anim));
-	}
-
-
-
-	expanded_cfg = unit_animation::prepare_animation(cfg,"sheath_weapon_anim");
-	foreach (config &anim, expanded_cfg.child_range("sheath_weapon_anim"))
-	{
-		anim["apply_to"] = "sheath_weapon";
-		if (anim["layer"].empty()) anim["layer"] = move_layer;
-		animations.push_back(unit_animation(anim));
-	}
-
-
-	expanded_cfg = unit_animation::prepare_animation(cfg,"attack_anim");
-	foreach (config &anim, expanded_cfg.child_range("attack_anim"))
-	{
+		config anim = ab.merge();
 		anim["apply_to"] = "attack";
 		if (anim["layer"].empty()) anim["layer"] = move_layer;
 		config::const_child_itors missile_fs = anim.child_range("missile_frame");
@@ -691,9 +623,9 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		animations.push_back(unit_animation(anim));
 	}
 
-	expanded_cfg = unit_animation::prepare_animation(cfg,"death");
-	foreach (config &anim, expanded_cfg.child_range("death"))
+	foreach (const animation_branch &ab, prepare_animation(cfg, "death"))
 	{
+		config anim = ab.merge();
 		anim["apply_to"] = "death";
 		if (anim["layer"].empty()) anim["layer"] = default_layer;
 		animations.push_back(unit_animation(anim));
@@ -706,25 +638,19 @@ void unit_animation::add_anims( std::vector<unit_animation> & animations, const 
 		}
 	}
 
-	expanded_cfg = unit_animation::prepare_animation(cfg,"victory_anim");
-	foreach (config &anim, expanded_cfg.child_range("victory_anim"))
-	{
-		anim["apply_to"] = "victory";
-		if (anim["layer"].empty()) anim["layer"] = default_layer;
-		animations.push_back(unit_animation(anim));
-	}
+	add_simple_anim(animations, cfg, "victory_anim", "victory");
 
-	expanded_cfg = unit_animation::prepare_animation(cfg,"extra_anim");
-	foreach (config &anim, expanded_cfg.child_range("extra_anim"))
+	foreach (const animation_branch &ab, prepare_animation(cfg, "extra_anim"))
 	{
+		config anim = ab.merge();
 		anim["apply_to"] = anim["flag"];
 		if (anim["layer"].empty()) anim["layer"] = default_layer;
 		animations.push_back(unit_animation(anim));
 	}
 
-	expanded_cfg = unit_animation::prepare_animation(cfg,"teleport_anim");
-	foreach (config &anim, expanded_cfg.child_range("teleport_anim"))
+	foreach (const animation_branch &ab, prepare_animation(cfg, "teleport_anim"))
 	{
+		config anim = ab.merge();
 		if (anim["layer"].empty()) anim["layer"] = default_layer;
 		anim["apply_to"] = "pre_teleport";
 		animations.push_back(unit_animation(anim));

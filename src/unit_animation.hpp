@@ -72,16 +72,13 @@ class unit_animation
 		bool invalidate(const frame_parameters& value );
 
 	friend class unit;
+
+	explicit unit_animation(const config &cfg, const std::string &frame_string = "");
+
 	protected:
 	// reserved to class unit, for the special case of redrawing the unit base frame
 	const frame_parameters get_current_params(const frame_parameters & default_val = frame_parameters(),bool primary = true) const { return unit_anim_.parameters(default_val,primary); };
 	private:
-		static config prepare_animation(const config &cfg
-				, const std::string& animation_tag);
-
-		explicit unit_animation(const config& cfg
-				,const std::string& frame_string = "");
-
 		explicit unit_animation(int start_time
 				, const unit_frame &frame
 				, const std::string& event = ""
