@@ -102,7 +102,10 @@ class CampaignClient:
         """
         packet = ""
         while len(packet) < 4 and not self.canceled:
-            packet += self.sock.recv(4 - len(packet))
+            r = self.sock.recv(4 - len(packet))
+            if not r:
+                return None
+            packet += r
         if self.canceled:
             return None
 
@@ -112,7 +115,10 @@ class CampaignClient:
     
         packet = ""
         while len(packet) < l and not self.canceled:
-            packet += self.sock.recv(l - len(packet))
+            r = self.sock.recv(l - len(packet))
+            if not r:
+                return None
+            packet += r
             self.counter = len(packet)
         if self.canceled:
             return None
