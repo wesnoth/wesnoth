@@ -28,6 +28,7 @@ import org.wesnoth.wML.WMLTag;
 import org.wesnoth.wML.impl.WMLFactoryImpl;
 
 import wesnoth_eclipse_plugin.Logger;
+import wesnoth_eclipse_plugin.preprocessor.Define;
 import wesnoth_eclipse_plugin.schema.SchemaParser;
 import wesnoth_eclipse_plugin.schema.Tag;
 import wesnoth_eclipse_plugin.schema.TagKey;
@@ -57,7 +58,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 			ContentAssistContext context, ICompletionProposalAcceptor acceptor)
 	{
 		super.complete_WMLKeyValue(model, ruleCall, context, acceptor);
-		dbg("completing wmlkeyvalue");
+		dbg("completing wmlkeyvalue - rule");
 		addKeyValueProposals(model, context, acceptor);
 	}
 
@@ -77,6 +78,44 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 		super.completeWMLTag_Name(model, assignment, context, acceptor);
 		dbg("completing wmltagname");
 		addTagProposals(model, false, context, acceptor);
+	}
+
+	@Override
+	public void completeWMLMacroCall_Name(EObject model, Assignment assignment,
+			ContentAssistContext context, ICompletionProposalAcceptor acceptor)
+	{
+		super.completeWMLMacroCall_Name(model, assignment, context, acceptor);
+		dbg("completing wmlmacrocallname");
+		addMacroCallProposals(model, false, context, acceptor);
+	}
+
+	@Override
+	public void complete_WMLMacroCall(EObject model, RuleCall ruleCall,
+			ContentAssistContext context, ICompletionProposalAcceptor acceptor)
+	{
+		super.complete_WMLMacroCall(model, ruleCall, context, acceptor);
+		dbg("completing wmlmacrocall - rule");
+		addMacroCallProposals(model, true, context, acceptor);
+	}
+
+	private void addMacroCallProposals(EObject model, boolean ruleProposal,
+			ContentAssistContext context, ICompletionProposalAcceptor acceptor)
+	{
+		IFile file = (IFile)EditorUtils.getActiveXtextEditor()
+							.getEditorInput().getAdapter(IFile.class);
+		if (file == null)
+		{
+			Logger.getInstance().logError("FATAL! file is null (and it shouldn't)");
+			return;
+		}
+
+		for(Define define : ProjectUtils.getCacheForProject(file.getProject()).getDefines())
+		{
+			acceptor.accept(createCompletionProposal(
+					(ruleProposal == true ? "{" : "") + define.getName() + "}",
+					define.getName(),
+					WMLLabelProvider.getImageByName("macrocall.png"), context));
+		}
 	}
 
 	/**
