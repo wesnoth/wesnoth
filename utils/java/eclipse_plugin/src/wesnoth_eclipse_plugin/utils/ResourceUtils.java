@@ -206,7 +206,7 @@ public class ResourceUtils
 		{
 			if (!(wesnothFile.exists()))
 			{
-				wesnothFile.createNewFile();
+				createNewFile(wesnothFile.getAbsolutePath());
 				FileWriter writer = new FileWriter(wesnothFile);
 				writer.write("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n");
 				writer.write("<!DOCTYPE properties SYSTEM \"http://java.sun.com/dtd/properties.dtd\">\n");
@@ -229,7 +229,7 @@ public class ResourceUtils
 	{
 		try{
 			File antFile = new File(path);
-			antFile.createNewFile();
+			createNewFile(antFile.getAbsolutePath());
 			FileWriter writer = new FileWriter(antFile);
 			writer.write(
 					TemplateProvider.getInstance().getProcessedTemplate("build_xml", params));
@@ -238,6 +238,38 @@ public class ResourceUtils
 		catch (Exception e) {
 			Logger.getInstance().logException(e);
 		}
+	}
+
+	/**
+	 * Creates a new empty file in the target.
+	 * Subsequent non-existent directories in the path will be created
+	 * @param target
+	 * @return
+	 */
+	public static boolean createNewFile(String target)
+	{
+		createDirectory(new File(target).getParent());
+		try
+		{
+			return new File(target).createNewFile();
+		}
+		catch (IOException e)
+		{
+			return false;
+		}
+	}
+
+	/**
+	 * Creates the specified directory.
+	 * Subsequent non-existent directories will be created
+	 * @param target
+	 * @return
+	 */
+	public static boolean createDirectory(String target)
+	{
+		if (new File(target).isDirectory() == false)
+			return false;
+		return new File(target).mkdirs();
 	}
 
 	//TODO: create a simple java wmlparsers in order to get the right values

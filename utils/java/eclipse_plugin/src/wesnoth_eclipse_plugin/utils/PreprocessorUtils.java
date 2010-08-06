@@ -93,7 +93,7 @@ public class PreprocessorUtils
 
 			if (macrosFile != null && macrosFile.isEmpty() == false)
 			{
-				new File(macrosFile).createNewFile();
+				ResourceUtils.createNewFile(macrosFile);
 
 				// add the _MACROS_.cfg file
 				arguments.add("--preprocess-input-macros");
