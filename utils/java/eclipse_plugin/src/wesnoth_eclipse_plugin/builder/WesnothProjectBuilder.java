@@ -197,9 +197,9 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 				monitor.subTask("Gathering file information...");
 				ProjectCache projCache = ProjectUtils.getCacheForProject(getProject());
 
-				if (ProjectUtils.isScenarioFile(file.getLocation().toOSString()))
+				if (ResourceUtils.isScenarioFile(file.getLocation().toOSString()))
 				{
-					WMLSaxHandler handler =  ProjectUtils.
+					WMLSaxHandler handler =  ResourceUtils.
 						getParsedWMLFromResource(PreprocessorUtils.getPreprocessedFilePath(file, false, false).toString());
 					if (handler == null || handler.ScenarioId == null)
 					{

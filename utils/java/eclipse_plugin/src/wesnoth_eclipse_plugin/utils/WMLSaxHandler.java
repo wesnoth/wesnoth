@@ -22,28 +22,28 @@ public class WMLSaxHandler extends DefaultHandler
 	public String CampaignId = null;
 	public String ScenarioId = null;
 
-	private static Stack<String> stack;
+	private static Stack<String> stack_;
 	public WMLSaxHandler()
 	{
-		stack = new Stack<String>();
+		stack_ = new Stack<String>();
 	}
 
     @Override
 	public void startElement(String uri, String localName,
        String rawName, Attributes attributes)
     {
-          stack.push(rawName);
+          stack_.push(rawName);
     }
 
     @Override
     public void characters(char[] ch, int start, int length)
     		throws SAXException
     {
-    	if (stack.peek().equals("id"))
+    	if (stack_.peek().equals("id"))
     	{
-    		 if (stack.get(stack.size() - 2).equals("campaign"))
+    		if (stack_.get(stack_.size() - 2).equals("campaign"))
     			 CampaignId = new String(ch, start, length);
-    		 else if (stack.get(stack.size() - 2).equals("scenario"))
+    		else if (stack_.get(stack_.size() - 2).equals("scenario"))
     			 ScenarioId = new String(ch, start, length);
     	}
     	super.characters(ch, start, length);
@@ -53,7 +53,7 @@ public class WMLSaxHandler extends DefaultHandler
     		throws SAXException
     {
     	super.endElement(uri, localName, qName);
-    	stack.pop();
+    	stack_.pop();
     }
 
     @Override
