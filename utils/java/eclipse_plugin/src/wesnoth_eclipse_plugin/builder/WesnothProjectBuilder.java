@@ -76,7 +76,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 			throws CoreException
 	{
 		Logger.getInstance().log("building...");
-		monitor.beginTask("Building...", 100);
+		monitor.beginTask("Building project " + getProject().getName() + " ...", 100);
 
 		monitor.subTask("Checking conditions...");
 		if (Preferences.getString(Constants.P_WESNOTH_USER_DIR).isEmpty())
@@ -185,12 +185,13 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 			if (handleMainCfg == false && isMainCfg == true)
 				return true;
 
+			Logger.getInstance().log("");
 			try
 			{
 				IFile file = (IFile) resource;
 				deleteMarkers(file);
 
-				monitor.subTask("Preprocessing...");
+				monitor.subTask("Preprocessing file " + file.getName() + " ...");
 
 				List<String> defines = new ArrayList<String>();
 				// for non-main cfg file skip core as we already parsed
@@ -243,7 +244,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 				IDocument document = provider.getDocument(file);
 
 				// wmllint
-				monitor.subTask("WMLLint pass...");
+				monitor.subTask("Running WMLLint...");
 //				ExternalToolInvoker tool = WMLTools.runWMLLint(file.getLocation().toOSString(), true);
 //				tool.waitForTool();
 //
@@ -259,7 +260,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 				monitor.worked(20);
 
 				// wmlscope
-				monitor.subTask("WMLScope pass...");
+				monitor.subTask("Running WMLScope...");
 //				tool = WMLTools.runWMLScope(file.getLocation().toOSString());
 //				tool.waitForTool();
 //				output = StringUtils.getLines(tool.getErrorContent());

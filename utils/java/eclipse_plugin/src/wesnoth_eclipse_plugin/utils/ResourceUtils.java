@@ -267,8 +267,6 @@ public class ResourceUtils
 	 */
 	public static boolean createDirectory(String target)
 	{
-		if (new File(target).isDirectory() == false)
-			return false;
 		return new File(target).mkdirs();
 	}
 

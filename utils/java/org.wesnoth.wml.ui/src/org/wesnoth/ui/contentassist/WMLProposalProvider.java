@@ -15,7 +15,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.text.contentassist.ICompletionProposal;
 import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.RuleCall;
-import org.eclipse.xtext.parsetree.AbstractNode;
 import org.eclipse.xtext.parsetree.CompositeNode;
 import org.eclipse.xtext.parsetree.LeafNode;
 import org.eclipse.xtext.parsetree.NodeUtil;
@@ -34,6 +33,7 @@ import wesnoth_eclipse_plugin.schema.Tag;
 import wesnoth_eclipse_plugin.schema.TagKey;
 import wesnoth_eclipse_plugin.utils.ProjectUtils;
 
+@SuppressWarnings("unused")
 public class WMLProposalProvider extends AbstractWMLProposalProvider
 {
 	public WMLProposalProvider()
@@ -231,12 +231,6 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 				acceptor.accept(tagProposal(tag, "", ruleProposal, context));
 			}
 		}
-	}
-
-	private boolean checkContextNodeIsAbstractNode(ContentAssistContext context)
-	{
-		return (context.getCurrentNode().eContainer() != null &&
-				context.getCurrentNode().eContainer() instanceof AbstractNode);
 	}
 
 	/**

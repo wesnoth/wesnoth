@@ -1993,7 +1993,7 @@ static int process_command_args(int argc, char** argv) {
 				std::string file = argv[arg];
 				if (file_exists(file) == false)
 				{
-					std::cerr << "please specify an existing file.\n";
+					std::cerr << "please specify an existing file. File "<< file <<" doesn't exist.\n";
 					return 1;
 				}
 

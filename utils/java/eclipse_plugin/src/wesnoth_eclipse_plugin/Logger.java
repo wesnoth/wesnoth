@@ -57,6 +57,7 @@ public class Logger {
 
 			logWriter_ = new BufferedWriter(new FileWriter(logFilePath));
 			log("Logging started.");
+			log("Error codes: 1 - INFO, 2 - WARNING, 4 - ERROR");
 		} catch (IOException e)
 		{
 			GUIUtils.showErrorMessageBox("There was an error trying to open the log." +

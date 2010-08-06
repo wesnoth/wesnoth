@@ -59,7 +59,7 @@ public class ExternalToolInvoker
 		arguments_ = commandline;
 
 		processBuilder_ = new ProcessBuilder(commandline);
-		Logger.getInstance().log(String.format("Invoking tool %s with args: %s\n",
+		Logger.getInstance().log(String.format("Invoking tool %s with args: %s",
 				fileName, arguments));
 	}
 
