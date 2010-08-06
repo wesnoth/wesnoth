@@ -21,6 +21,10 @@ public class TestHandler extends AbstractHandler
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException
 	{
+//		DefinesSAXHandler handler = (DefinesSAXHandler) ResourceUtils.getWMLSAXHandlerFromResource(
+//				"d:/tmp/wesnoth_plugin/a/_MACROS_.cfg",
+//				new DefinesSAXHandler());
+//		System.out.println(handler.getDefines().size());
 //		try
 //		{
 //			BuildCommand c = ((BuildCommand)WorkspaceUtils.getSelectedProject().getDescription().getBuildSpec()[1]);

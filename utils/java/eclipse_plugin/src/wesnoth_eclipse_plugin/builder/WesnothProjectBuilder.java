@@ -199,8 +199,10 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 
 				if (ResourceUtils.isScenarioFile(file.getLocation().toOSString()))
 				{
-					WMLSaxHandler handler =  ResourceUtils.
-						getParsedWMLFromResource(PreprocessorUtils.getPreprocessedFilePath(file, false, false).toString());
+					WMLSaxHandler handler =  (WMLSaxHandler) ResourceUtils.
+						getWMLSAXHandlerFromResource(
+							PreprocessorUtils.getPreprocessedFilePath(file, false, false).toString(),
+							new WMLSaxHandler());
 					if (handler == null || handler.ScenarioId == null)
 					{
 						projCache.getScenarios().remove(file.getName());

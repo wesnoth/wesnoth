@@ -67,7 +67,7 @@ public class WMLTools
 			}
 			arguments.add(resourcePath);
 		}
-		return runPythonScript(arguments, stdin,stdout,stderr);
+		return runPythonScript(arguments, stdin, true, true, stdout,stderr);
 	}
 
 	/**
@@ -109,7 +109,7 @@ public class WMLTools
 		arguments.add("-i");
 		arguments.add(resourcePath);
 
-		return runPythonScript(arguments, null, null, null);
+		return runPythonScript(arguments, null, false, false, null, null);
 	}
 
 	/**
@@ -162,7 +162,7 @@ public class WMLTools
 				Path.SEPARATOR + "data/core");
 		arguments.add(resourcePath);
 
-		return runPythonScript(arguments, null, stdout,stderr);
+		return runPythonScript(arguments, null, true, true, stdout,stderr);
 	}
 
 	/**
@@ -216,7 +216,7 @@ public class WMLTools
 				Path.SEPARATOR + "data/core");
 		arguments.add(resourcePath);
 
-		return runPythonScript(arguments, null, stdout, stderr);
+		return runPythonScript(arguments, null, true, true, stdout, stderr);
 	}
 
 	/**
@@ -387,7 +387,7 @@ public class WMLTools
 
 		arguments.add("-u");
 		arguments.add(containerPath);
-		return runPythonScript(arguments, null, stdout,stderr);
+		return runPythonScript(arguments, null, true, true, stdout, stderr);
 	}
 
 	/**
@@ -439,13 +439,16 @@ public class WMLTools
 	 * @return
 	 */
 	public static ExternalToolInvoker runPythonScript(List<String> arguments, String stdin,
+			boolean stderrMonitoring, boolean stdoutMonitoring,
 			final OutputStream[] stdout, final OutputStream[] stderr)
 	{
 		final ExternalToolInvoker pyscript = new ExternalToolInvoker("python", arguments);
 
 		pyscript.runTool();
-		pyscript.startErrorMonitor();
-		pyscript.startOutputMonitor();
+		if (stderrMonitoring == true)
+			pyscript.startErrorMonitor();
+		if (stdoutMonitoring == true)
+			pyscript.startOutputMonitor();
 		if (stdin != null)
 		{
 			try

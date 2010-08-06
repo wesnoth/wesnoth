@@ -18,7 +18,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.io.StringReader;
 import java.util.List;
 
 import javax.xml.parsers.SAXParser;
@@ -36,6 +35,7 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.swt.SWT;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
+import org.xml.sax.helpers.DefaultHandler;
 
 import wesnoth_eclipse_plugin.Logger;
 import wesnoth_eclipse_plugin.templates.ReplaceableParameter;
@@ -352,9 +352,10 @@ public class ResourceUtils
 	 */
 	public static String getCampaignID(IResource resource)
 	{
-		WMLSaxHandler handler = getParsedWMLFromResource(
+		WMLSaxHandler handler = (WMLSaxHandler) getWMLSAXHandlerFromResource(
 					PreprocessorUtils.getPreprocessedFilePath(
-						getMainConfigLocation(resource), false, true).toString());
+						getMainConfigLocation(resource), false, true).toString(),
+						new WMLSaxHandler());
 		if (handler == null)
 			return null;
 		return handler.CampaignId;
@@ -367,31 +368,32 @@ public class ResourceUtils
 	 */
 	public static String getScenarioID(IFile file)
 	{
-		WMLSaxHandler handler = getParsedWMLFromResource(
-				PreprocessorUtils.getPreprocessedFilePath(file, false, true).toString());
+		WMLSaxHandler handler = (WMLSaxHandler) getWMLSAXHandlerFromResource(
+				PreprocessorUtils.getPreprocessedFilePath(file, false, true).toString(),
+				new WMLSaxHandler());
 		if (handler == null)
 			return null;
 		return handler.ScenarioId;
 	}
 
 	/**
-	 * Returns the WMLSaxHandler for the parsed specified resource
+	 * Returns the SaxHandler for the parsed specified wml resource
 	 * @param resourcePath The resourcepath to parse
+	 * @param saxHandler The SAX Handler used to handle the parsed wml
 	 * @return
 	 */
-	public static WMLSaxHandler getParsedWMLFromResource(String resourcePath)
+	public static DefaultHandler getWMLSAXHandlerFromResource(String resourcePath,
+					DefaultHandler saxHandler)
 	{
 		ExternalToolInvoker parser = WMLTools.runWMLParser2(resourcePath);
 		if (parser == null)
 			return null;
 		try{
-			parser.waitForTool();
 			SAXParser saxparser;
 			saxparser = SAXParserFactory.newInstance().newSAXParser();
 
-			WMLSaxHandler handler = new WMLSaxHandler();
-			saxparser.parse(new InputSource(new StringReader(parser.getOutputContent())), handler);
-			return handler;
+			saxparser.parse(new InputSource(parser.getStdout()), saxHandler);
+			return saxHandler;
 		}
 		catch (SAXException e) {
 			Logger.getInstance().logException(e);
