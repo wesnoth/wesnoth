@@ -2435,6 +2435,7 @@ int main(int argc, char** argv)
 		return 1;
 	} catch(config::error& e) {
 		std::cerr << e.message << "\n";
+		return 1;
 	} catch(gui::button::error&) {
 		std::cerr << "Could not create button: Image could not be found\n";
 	} catch(CVideo::quit&) {
@@ -2444,11 +2445,13 @@ int main(int argc, char** argv)
 	} catch(twml_exception& e) {
 		std::cerr << "WML exception:\nUser message: "
 			<< e.message << "\nDev message: " << e.dev_message << '\n';
+		return 1;
 	} catch(game_logic::formula_error& e) {
 		std::cerr << e.what()
 			<< "\n\nGame will be aborted.\n";
 	} catch(game::error &) {
 		// A message has already been displayed.
+		return 1;
 	} catch(std::bad_alloc&) {
 		std::cerr << "Ran out of memory. Aborted.\n";
 		return ENOMEM;
