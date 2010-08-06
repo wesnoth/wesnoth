@@ -11,7 +11,9 @@ package wesnoth_eclipse_plugin.utils;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Properties;
@@ -19,6 +21,7 @@ import java.util.Properties;
 import org.eclipse.core.resources.IProject;
 
 import wesnoth_eclipse_plugin.Logger;
+import wesnoth_eclipse_plugin.preprocessor.Define;
 
 /**
  * A class that stores some project specific infos
@@ -28,20 +31,31 @@ import wesnoth_eclipse_plugin.Logger;
  */
 public class ProjectCache
 {
-	private long propertiesTimetamp_;
-	private Properties properties_;
 	private IProject associatedProject_;
+
+	private long propertiesTimetamp_;
+	private long definesTimetamp_;
+
+	private Properties properties_;
+
 	private File wesnothFile_;
+	private File definesFile_;
+
 	private Map<String, String> scenarios_;
+	private List<Define> defines_;
 
 	public ProjectCache(IProject project)
 	{
 		scenarios_ = new HashMap<String, String>();
+		defines_ = new ArrayList<Define>();
 		propertiesTimetamp_ = 0;
 		properties_ = new Properties();
 
 		wesnothFile_ = new File(project.getLocation().toOSString()  +
 							"/.wesnoth");
+		definesFile_ = new File (PreprocessorUtils.getTemporaryLocation(
+				project.getFile("_main.cfg"))  + "/_MACROS_.cfg");
+
 		ResourceUtils.createWesnothFile(wesnothFile_.getAbsolutePath());
 		readProperties(true);
 	}
@@ -161,5 +175,31 @@ public class ProjectCache
 			Logger.getInstance().logException(e);
 			return false;
 		}
+	}
+
+	/**
+	 * Reads the defines files for this project
+	 * @param force skip checking for last modified timestamp
+	 */
+	public void readDefines(boolean force)
+	{
+		if (force == false &&
+			definesFile_.lastModified() <= definesTimetamp_)
+			return;
+		defines_ = Define.readDefines(definesFile_.getAbsolutePath());
+	}
+
+	public void setDefines(List<Define> defines)
+	{
+		defines_ = defines;
+	}
+
+	/**
+	 * Returns the defines associated with this project
+	 * @return
+	 */
+	public List<Define> getDefines()
+	{
+		return defines_;
 	}
 }

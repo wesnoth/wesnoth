@@ -6,6 +6,7 @@ import org.eclipse.ui.IPerspectiveFactory;
 
 public class WMLPerspective implements IPerspectiveFactory
 {
+	@SuppressWarnings("deprecation")
 	@Override
 	public void createInitialLayout(IPageLayout layout)
 	{

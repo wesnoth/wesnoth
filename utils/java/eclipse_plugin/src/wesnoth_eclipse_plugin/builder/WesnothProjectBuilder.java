@@ -181,8 +181,8 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 		if (resource instanceof IFile &&
 			(resource.getName().toLowerCase(Locale.ENGLISH).endsWith(".cfg")))
 		{
-			if (handleMainCfg == false &&
-				resource.getName().startsWith("_main.cfg"))
+			boolean isMainCfg = resource.getName().equals("_main.cfg");
+			if (handleMainCfg == false && isMainCfg == true)
 				return true;
 
 			try
@@ -191,7 +191,22 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 				deleteMarkers(file);
 
 				monitor.subTask("Preprocessing...");
-				PreprocessorUtils.preprocessFile(file, null);
+
+				List<String> defines = new ArrayList<String>();
+				// for non-main cfg file skip core as we already parsed
+				// that when preprocessed main
+				if (isMainCfg == false)
+					defines.add("SKIP_CORE");
+
+				// we use a single _MACROS_.cfg file for each project
+				PreprocessorUtils.preprocessFile(file,
+					PreprocessorUtils.getDefinesLocation(file), defines);
+
+				if (isMainCfg == true)
+				{
+					// process the defines obtained
+					ProjectUtils.getCacheForProject(getProject()).readDefines(true);
+				}
 				monitor.worked(5);
 
 				monitor.subTask("Gathering file information...");

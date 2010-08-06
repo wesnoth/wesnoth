@@ -8,6 +8,11 @@
  *******************************************************************************/
 package wesnoth_eclipse_plugin.preprocessor;
 
+import java.util.List;
+
+import wesnoth_eclipse_plugin.Logger;
+import wesnoth_eclipse_plugin.utils.ResourceUtils;
+
 /**
  * This represents a WML preprocessor define:
  * [preproc_define]
@@ -55,5 +60,33 @@ public class Define
 	public String getValue()
 	{
 		return value_;
+	}
+
+	/**
+	 * Reads the defines from the specified file
+	 * @param file
+	 * @return
+	 */
+	public static List<Define> readDefines(String file)
+	{
+		DefinesSAXHandler handler = (DefinesSAXHandler) ResourceUtils.
+				getWMLSAXHandlerFromResource(file, new DefinesSAXHandler());
+
+		Logger.getInstance().log("loaded " + handler.getDefines().size() + " defines for file: " + file);
+		return handler.getDefines();
+	}
+
+	/**
+	 * Returns a string containing the current define, formatted
+	 * @return
+	 */
+	//TODO: finish this
+	public static String toStringFormatted()
+	{
+		StringBuilder res = new StringBuilder();
+		res.append("[preproc_define]");
+		//res.append("\tname=\"\"");
+		res.append("[/preproc_define]");
+		return res.toString();
 	}
 }

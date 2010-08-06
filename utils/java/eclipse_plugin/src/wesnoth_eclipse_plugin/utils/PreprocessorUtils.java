@@ -16,6 +16,7 @@ import java.util.List;
 import org.eclipse.core.filesystem.EFS;
 import org.eclipse.core.filesystem.IFileStore;
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.ui.ide.IDE;
 
@@ -37,7 +38,22 @@ public class PreprocessorUtils
 	 */
 	public static boolean preprocessFile(IFile file, List<String> defines)
 	{
-		return preprocessFile(file, getTemporaryLocation(file), defines, true);
+		return preprocessFile(file, getTemporaryLocation(file),
+				getTemporaryLocation(file) + "/_MACROS_.cfg", defines, true);
+	}
+
+	/**
+	 * preprocesses a file using the wesnoth's executable, only
+	 * if the file was modified since last time checked.
+	 * The target directory is the temporary directory + files's path relative to project
+	 * @param file the file to process
+	 * @param macrosFile The file where macros are stored
+	 * @param defines the list of additional defines to be added when preprocessing the file
+	 * @return
+	 */
+	public static boolean preprocessFile(IFile file, String macrosFile, List<String> defines)
+	{
+		return preprocessFile(file, getTemporaryLocation(file), macrosFile, defines, true);
 	}
 
 	/**
@@ -45,12 +61,13 @@ public class PreprocessorUtils
 	 * if the file was modified since last time checked.
 	 * @param file the file to process
 	 * @param targetDirectory target directory where should be put the results
+	 * @param macrosFile The file where macros are stored
 	 * @param defines the list of additional defines to be added when preprocessing the file
 	 * @param waitForIt true to wait for the preprocessing to finish
 	 * @return
 	 */
 	public static boolean preprocessFile(IFile file, String targetDirectory,
-			List<String> defines, boolean waitForIt)
+			String macrosFile, List<String> defines, boolean waitForIt)
 	{
 		String filePath = file.getLocation().toOSString();
 		if (filesTimeStamps_.containsKey(filePath) &&
@@ -71,6 +88,19 @@ public class PreprocessorUtils
 			arguments.add("--data-dir");
 			arguments.add(Preferences.getString(Constants.P_WESNOTH_WORKING_DIR));
 
+			if (macrosFile != null && macrosFile.isEmpty() == false)
+			{
+				new File(macrosFile).createNewFile();
+
+				// add the _MACROS_.cfg file
+				arguments.add("--preprocess-input-macros");
+				arguments.add(macrosFile);
+
+
+				arguments.add("--preprocess-output-macros");
+				arguments.add(macrosFile);
+			}
+
 			if (defines != null && !defines.isEmpty())
 			{
 				String argument = "-p=";
@@ -79,6 +109,7 @@ public class PreprocessorUtils
 					argument += (defines.get(i) + ",");
 				}
 				argument  += defines.get(defines.size()-1);
+				arguments.add(argument);
 			}
 			else
 			{
@@ -158,5 +189,20 @@ public class PreprocessorUtils
 		targetDirectory += file.getProject().getName() + "/";
 		targetDirectory += file.getParent().getProjectRelativePath().toOSString() + "/";
 		return targetDirectory;
+	}
+
+	/**
+	 * Gets the location where the '_MACROS_.cfg' file is for the
+	 * specified resource.
+	 *
+	 * Currently we store just a defines file per project.
+	 * @param resource
+	 * @return
+	 */
+	public static String getDefinesLocation(IResource resource)
+	{
+		return WorkspaceUtils.getTemporaryFolder() +
+				resource.getProject().getName() +
+				"/_MACROS_.cfg";
 	}
 }
