@@ -672,6 +672,7 @@ code = <<
         jsonify(p.root, True)
         print
     elif options.to_xml:
+        print '<?xml version="1.0" encoding="UTF-8" ?>'
         print '<root>'
         xmlify(p.root, True, 1)
         print '</root>';
