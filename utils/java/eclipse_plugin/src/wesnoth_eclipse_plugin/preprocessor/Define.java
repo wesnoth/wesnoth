@@ -8,6 +8,7 @@
  *******************************************************************************/
 package wesnoth_eclipse_plugin.preprocessor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import wesnoth_eclipse_plugin.Logger;
@@ -30,15 +31,21 @@ public class Define
 	private String textdomain_;
 	private int lineNum_;
 	private String location_;
+	private List<String> args_;
 
 	public Define(String name, String value, String textdomain,
-				int linenum, String location)
+				int linenum, String location, List<String> args)
 	{
 		name_ = name;
 		value_ = value;
 		textdomain_ = textdomain;
 		lineNum_ = linenum;
 		location_ = location;
+		args_ = args;
+
+		// ensure no NullPointerException exists
+		if (args_ == null)
+			args_ = new ArrayList<String>();
 	}
 
 	public int getLineNum()
@@ -60,6 +67,15 @@ public class Define
 	public String getValue()
 	{
 		return value_;
+	}
+
+	/**
+	 * Gets the arguments of this macro
+	 * @return
+	 */
+	public List<String> getArguments()
+	{
+		return args_;
 	}
 
 	/**

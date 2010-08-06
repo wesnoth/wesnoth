@@ -30,11 +30,13 @@ public class DefinesSAXHandler extends DefaultHandler
 	private String textdomain_;
 	private int linenum_;
 	private String location_;
+	private List<String> arguments_;
 
 	public DefinesSAXHandler()
 	{
 		stack_ = new Stack<String>();
 		defines_ = new ArrayList<Define>();
+		arguments_ = new ArrayList<String>();
 	}
 
 	@Override
@@ -51,10 +53,12 @@ public class DefinesSAXHandler extends DefaultHandler
 	{
 		super.endElement(uri, localName, qName);
 		stack_.pop();
+
 		if (qName.equals("preproc_define"))
 		{
 			// create the define
-			defines_.add(new Define(name_, value_, textdomain_, linenum_, location_));
+			defines_.add(new Define(name_, value_, textdomain_,
+					linenum_, location_, arguments_));
 			// reset values
 			resetValues();
 		}
@@ -65,23 +69,33 @@ public class DefinesSAXHandler extends DefaultHandler
 			throws SAXException
 	{
 		super.characters(ch, start, length);
-		if (stack_.peek().equals("name"))
+		String element = stack_.peek();
+
+		if (element.equals("name"))
 		{
-			name_ = new String(ch, start, length);
+			// we have name at: 1 - preproc_define, 2 - argument
+			if (stack_.get(stack_.size() - 2).equals("argument"))
+			{
+				arguments_.add(new String(ch, start, length));
+			}
+			else
+			{
+				name_ = new String(ch, start, length);
+			}
 		}
-		else if (stack_.peek().equals("value"))
+		else if (element.equals("value"))
 		{
 			value_ = new String(ch, start, length);
 		}
-		else if (stack_.peek().equals("textdomain"))
+		else if (element.equals("textdomain"))
 		{
 			textdomain_ = new String(ch, start, length);
 		}
-		else if (stack_.peek().equals("linenum"))
+		else if (element.equals("linenum"))
 		{
 			linenum_ = Integer.valueOf(new String(ch, start, length));
 		}
-		else if (stack_.peek().equals("location"))
+		else if (element.equals("location"))
 		{
 			location_ = new String(ch, start, length);
 		}
@@ -97,6 +111,7 @@ public class DefinesSAXHandler extends DefaultHandler
 		linenum_ = 0;
 		location_ = "";
 		textdomain_ = "";
+		arguments_ = new ArrayList<String>();
 	}
 
 	/**
