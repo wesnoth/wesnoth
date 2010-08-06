@@ -945,6 +945,8 @@ WML_HANDLER_FUNCTION(store_side, /*event_info*/, cfg)
 	state_of_game->get_variable(var_name+".team_name") = teams[team_index].team_name();
 	state_of_game->get_variable(var_name+".user_team_name") = teams[team_index].user_team_name();
 	state_of_game->get_variable(var_name+".color") = teams[team_index].map_color_to();
+	///@deprecated 1.9.2 'colour'
+	state_of_game->get_variable(var_name+".colour") = teams[team_index].map_color_to();
 
 	state_of_game->get_variable(var_name+".gold") = teams[team_index].gold();
 }
