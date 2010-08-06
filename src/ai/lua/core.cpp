@@ -319,8 +319,7 @@ void lua_ai_action_handler::handle(config &cfg, bool configOut)
 
 	if (!configOut)
 	{
-		lua_newtable(L);//stack size is 3 [-1: table -2: ai_context -3: ai_action]
-		luaW_pushconfig(L, cfg);//the new table now contains the config
+		luaW_pushconfig(L, cfg);
 		luaW_pcall(L, 2, LUA_MULTRET, true);
 	}
 	else if (lua_gettop(L) > initial_top)
