@@ -36,7 +36,7 @@ public class PreprocessorUtils
 	 * @param defines the list of additional defines to be added when preprocessing the file
 	 * @return
 	 */
-	public static boolean preprocessFile(IFile file, List<String> defines)
+	public static int preprocessFile(IFile file, List<String> defines)
 	{
 		return preprocessFile(file, getTemporaryLocation(file),
 				getTemporaryLocation(file) + "/_MACROS_.cfg", defines, true);
@@ -51,7 +51,7 @@ public class PreprocessorUtils
 	 * @param defines the list of additional defines to be added when preprocessing the file
 	 * @return
 	 */
-	public static boolean preprocessFile(IFile file, String macrosFile, List<String> defines)
+	public static int preprocessFile(IFile file, String macrosFile, List<String> defines)
 	{
 		return preprocessFile(file, getTemporaryLocation(file), macrosFile, defines, true);
 	}
@@ -65,16 +65,19 @@ public class PreprocessorUtils
 	 * @param defines the list of additional defines to be added when preprocessing the file
 	 * @param waitForIt true to wait for the preprocessing to finish
 	 * @return
+	 * 	-1 - we skipped preprocessing - file was already preprocessed
+	 * 	 0 - preprocessed succesfully
+	 *   1 - there was an error
 	 */
-	public static boolean preprocessFile(IFile file, String targetDirectory,
+	public static int preprocessFile(IFile file, String targetDirectory,
 			String macrosFile, List<String> defines, boolean waitForIt)
 	{
 		String filePath = file.getLocation().toOSString();
 		if (filesTimeStamps_.containsKey(filePath) &&
-				filesTimeStamps_.get(filePath) >= new File(filePath).lastModified())
+			filesTimeStamps_.get(filePath) >= new File(filePath).lastModified())
 		{
 			Logger.getInstance().log("skipped preprocessing a non-modified file: " + filePath);
-			return true;
+			return -1;
 		}
 
 		filesTimeStamps_.put(filePath, new File(filePath).lastModified());
@@ -124,12 +127,12 @@ public class PreprocessorUtils
 					arguments);
 			wesnoth.runTool();
 			if (waitForIt)
-				wesnoth.waitForTool();
-			return true;
+				return wesnoth.waitForTool();
+			return 0;
 		}
 		catch (Exception e) {
 			Logger.getInstance().logException(e);
-			return false;
+			return 1;
 		}
 	}
 
