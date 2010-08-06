@@ -598,6 +598,9 @@ protected:
 	map_location mouseoverHex_;
 	CKey keys_;
 
+	/** Local cache for preferences::animate_map, since it is constantly queried. */
+	bool animate_map_;
+
 public:
 	/** Helper structure for rendering the terrains. */
 	struct tblit{

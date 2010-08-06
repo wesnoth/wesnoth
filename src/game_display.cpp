@@ -747,7 +747,7 @@ surface game_display::get_flag(const map_location& loc)
 		  (!fogged(loc) || !teams_[currentTeam_].is_enemy(i+1)))
 		{
 			flags_[i].update_last_draw_time();
-			const image::locator& image_flag = preferences::animate_map() ?
+			const image::locator &image_flag = animate_map_ ?
 				flags_[i].get_current_frame() : flags_[i].get_first_frame();
 			return image::get_image(image_flag, image::SCALED_TO_HEX);
 		}

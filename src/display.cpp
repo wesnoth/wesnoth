@@ -764,7 +764,7 @@ std::vector<surface> display::get_terrain_images(const map_location &loc,
 		for(std::vector<animated<image::locator> >::const_iterator it =
 				terrains->begin(); it != terrains->end(); ++it) {
 
-			const image::locator& image = preferences::animate_map() ?
+			const image::locator &image = animate_map_ ?
 				it->get_current_frame() : it->get_first_frame();
 
 			// We prevent ToD coloring and brightening of off-map tiles,
@@ -2426,9 +2426,8 @@ bool display::invalidate_locations_in_rect(const SDL_Rect& rect)
 void display::invalidate_animations()
 {
 	new_animation_frame();
-	if (!preferences::animate_map()) {
-		return;
-	}
+	animate_map_ = preferences::animate_map();
+	if (!animate_map_) return;
 
 	foreach (const map_location &loc, get_visible_hexes())
 	{
