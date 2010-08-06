@@ -4,6 +4,9 @@
  * licensed under the Eclipse Public License - v 1.0 by the copyright holder
  * listed above, as the Initial Contributor under such license. The text of
  * such license is available at www.eclipse.org.
+ *
+ * Other contributors:
+ * - Timotei Dolean
  */
 
 package org.wesnoth.ui.xtext;
@@ -205,5 +208,13 @@ public class EFSEditorInput extends PlatformObject implements IEFSEditorInput,
 	public void saveState(IMemento memento)
 	{
 		EFSEditorInputFactory.saveState(memento, this);
+	}
+
+	@Override
+	public boolean equals(Object arg0)
+	{
+		if ((arg0 instanceof IURIEditorInput) == false)
+			return false;
+		return (getURI().toString().equals(((IURIEditorInput)arg0).getURI().toString()));
 	}
 }
