@@ -18,7 +18,6 @@ import org.eclipse.core.filesystem.IFileStore;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.Path;
-import org.eclipse.ui.ide.IDE;
 
 import wesnoth_eclipse_plugin.Constants;
 import wesnoth_eclipse_plugin.Logger;
@@ -155,16 +154,7 @@ public class PreprocessorUtils
 					"The file is null or does not exist");
 			return;
 		}
-
-		try
-		{
-			IDE.openEditorOnFileStore(WorkspaceUtils.getWorkbenchWindow().getActivePage(),
-					getPreprocessedFilePath(file, openPlain, true));
-		}
-		catch (Exception e)
-		{
-			Logger.getInstance().logException(e);
-		}
+		EditorUtils.openEditor(getPreprocessedFilePath(file, openPlain, true));
 	}
 
 	/**

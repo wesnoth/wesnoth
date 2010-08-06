@@ -8,7 +8,10 @@
  *******************************************************************************/
 package wesnoth_eclipse_plugin.utils;
 
+import org.eclipse.core.filesystem.EFS;
+import org.eclipse.core.filesystem.IFileStore;
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.text.BadLocationException;
 import org.eclipse.jface.text.IDocument;
 import org.eclipse.jface.text.ITextSelection;
@@ -137,15 +140,43 @@ public class EditorUtils
 	 * @param file The file to open
 	 * @param activatePage True to activate the opened file
 	 */
-	public static void openEditor(IFile file, boolean activatePage)
+	public static IEditorPart openEditor(IFile file, boolean activatePage)
 	{
 		IWorkbenchPage page = WorkspaceUtils.getWorkbenchWindow().getActivePage();
 		try
 		{
-			IDE.openEditor(page, file, activatePage);
+			return IDE.openEditor(page, file, activatePage);
 		} catch (PartInitException e)
 		{
 			Logger.getInstance().logException(e);
+			return null;
 		}
 	}
+
+	/**
+	 * Opens the editor on the specified file (will use IFileStore)
+	 * @param file The file to open
+	 */
+	public static IEditorPart openEditor(String file)
+	{
+		return openEditor(EFS.getLocalFileSystem().getStore(new Path(file)));
+	}
+	/**
+	 * Opens the editor on the specified file (will use IFileStore)
+	 * @param file The file to open
+	 */
+	public static IEditorPart openEditor(IFileStore file)
+	{
+		try
+		{
+			return IDE.openEditorOnFileStore(WorkspaceUtils.getWorkbenchWindow().getActivePage(),
+					file);
+		}
+		catch (Exception e)
+		{
+			Logger.getInstance().logException(e);
+			return null;
+		}
+	}
+
 }
