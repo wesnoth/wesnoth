@@ -21,6 +21,7 @@
 #ifndef EDITOR_EDITOR_COMMON_HPP_INCLUDED
 #define EDITOR_EDITOR_COMMON_HPP_INCLUDED
 
+#include "../exceptions.hpp"
 #include "../log.hpp"
 #include <stdexcept>
 
@@ -36,15 +37,12 @@ class gamemap;
 
 namespace editor {
 
-struct editor_exception : public std::exception
+struct editor_exception : public game::error
 {
 	editor_exception(const std::string& msg)
-	: msg(msg)
+	: game::error(msg)
 	{
 	}
-	~editor_exception() throw() {}
-	const char* what() const throw() { return msg.c_str(); }
-	const std::string msg;
 };
 
 struct editor_logic_exception : public editor_exception

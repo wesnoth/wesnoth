@@ -953,6 +953,13 @@ bool game_controller::load_game()
 	} catch(twml_exception& e) {
 		e.show(disp());
 		return false;
+	} catch(io_exception& e) {
+		if(e.message.empty()) {
+			gui2::show_error_message(disp().video(), _("File I/O Error while reading the game"));
+		} else {
+			gui2::show_error_message(disp().video(), _("File I/O Error while reading the game: '") + e.message + '\'');
+		}
+		return false;
 	} catch(game::error& e) {
 		if(e.message.empty()) {
 			gui2::show_error_message(disp().video(), _("The file you have tried to load is corrupt"));
@@ -960,9 +967,6 @@ bool game_controller::load_game()
 		else {
 			gui2::show_error_message(disp().video(), _("The file you have tried to load is corrupt: '") + e.message + '\'');
 		}
-		return false;
-	} catch(io_exception&) {
-		gui2::show_error_message(disp().video(), _("File I/O Error while reading the game"));
 		return false;
 	}
 	recorder = replay(state_.replay_data);

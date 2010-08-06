@@ -20,21 +20,18 @@
 class config;
 class display;
 
+#include "exceptions.hpp"
 #include "map_location.hpp"
 
 #include <map>
 #include <string>
 #include <vector>
 
-struct mapgen_exception : public std::exception
+struct mapgen_exception : public game::error
 {
 	mapgen_exception(const std::string& msg)
-	: msg(msg)
-	{
-	}
-	~mapgen_exception() throw() {}
-	const char* what() const throw() { return msg.c_str(); }
-	const std::string msg;
+	: game::error(msg)
+	{}
 };
 
 class map_generator

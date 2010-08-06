@@ -386,7 +386,7 @@ std::string default_map_generator::generate_map(const std::vector<std::string>& 
 			error_message = "";
 		}
 		catch (mapgen_exception& exc){
-			error_message = exc.msg;
+			error_message = exc.message;
 		}
 		--tries;
 	} while (tries && map.empty());
@@ -415,7 +415,7 @@ config default_map_generator::create_scenario(const std::vector<std::string>& ar
 	}
 	catch (mapgen_exception exc){
 		res["map_data"] = "";
-		res["error_message"] = exc.msg;
+		res["error_message"] = exc.message;
 	}
 	DBG_NG << "done generating map..\n";
 
