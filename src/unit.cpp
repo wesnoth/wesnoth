@@ -189,7 +189,7 @@ unit::unit(const unit& o):
 }
 
 unit::unit(const config &cfg, bool use_traits, game_state* state) :
-	cfg_(cfg),
+	cfg_(),
 	loc_(),
 	advances_to_(),
 	type_(cfg["type"]),
@@ -262,8 +262,6 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 		throw game::game_error("creating unit with an empty type field");
 	}
 
-	cfg_.clear_children("unit"); //remove underlying unit definitions from scenario files
-
 	side_ = cfg["side"];
 	if(side_ <= 0) {
 		side_ = 1;
@@ -280,7 +278,6 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 	}
 	if (const config &variables = cfg.child("variables")) {
 		variables_ = variables;
-		cfg_.clear_children("variables");
 	}
 
 	facing_ = map_location::parse_direction(cfg["facing"]);
@@ -288,10 +285,9 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 
 	if (const config &mods = cfg.child("modifications")) {
 		modifications_ = mods;
-		cfg_.clear_children("modifications");
 	}
 
-	advance_to(type(), use_traits, state);
+	advance_to(cfg, type(), use_traits, state);
 	if (const config::attribute_value *v = cfg.get("race")) {
 		if (const unit_race *r = unit_types.find_race(*v)) {
 			race_ = r;
@@ -360,11 +356,7 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 		} else {
 			formula_vars_ = game_logic::map_formula_callable_ptr();
 		}
-
-        }
-
-        //remove ai from private cfg
-	cfg_.clear_children("ai");
+	}
 
 	//dont use the unit_type's attacks if this config has its own defined
 	config::const_child_itors cfg_range = cfg.child_range("attack");
@@ -374,7 +366,6 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 			attacks_.push_back(attack_type(*cfg_range.first));
 		} while(++cfg_range.first != cfg_range.second);
 	}
-	cfg_.clear_children("attack");
 
 	//dont use the unit_type's abilities if this config has its own defined
 	cfg_range = cfg.child_range("abilities");
@@ -426,7 +417,6 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 				set_state(st.first, true);
 			}
 		}
-		cfg_.clear_children("status");
 	}
 	if(cfg["ai_special"] == "guardian") {
 		set_state("guardian", true);
@@ -495,7 +485,8 @@ unit::unit(const config &cfg, bool use_traits, game_state* state) :
 	hidden_ = false;
 	game_config::add_color_info(cfg);
 
-	config input_cfg = cfg;
+	config input_cfg;
+	input_cfg.merge_attributes(cfg);
 
 	static char const *internalized_attrs[] = { "type", "id", "name",
 		"gender", "random_gender", "variation", "role", "ai_special",
@@ -768,7 +759,8 @@ std::vector<std::string> unit::get_traits_list() const
 	return res;
 }
 
-void unit::advance_to(const unit_type* t, bool use_traits, game_state* state)
+void unit::advance_to(const config &old_cfg, const unit_type *t,
+	bool use_traits, game_state *state)
 {
 	t = &t->get_gender_unit_type(gender_).get_variation(variation_);
 
@@ -785,16 +777,15 @@ void unit::advance_to(const unit_type* t, bool use_traits, game_state* state)
 
 	// Clear the stored config and replace it with the one from the unit type,
 	// except for a few attributes.
-	config old_cfg;
-	old_cfg.swap(cfg_);
-
+	config new_cfg;
 	static char const *persistent_attrs[] = { "upkeep", "ellipse",
 		"image", "usage", "random_traits", "generate_name" };
 	foreach (const char *attr, persistent_attrs) {
 		if (const config::attribute_value *v = old_cfg.get(attr)) {
-			cfg_[attr] = *v;
+			new_cfg[attr] = *v;
 		}
 	}
+	cfg_.swap(new_cfg);
 
 	if(t->movement_type().get_parent()) {
 		cfg_.merge_with(t->movement_type().get_parent()->get_cfg());

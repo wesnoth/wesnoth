@@ -79,7 +79,11 @@ public:
 	void set_game_context();
 
 	/** Advances this unit to another type */
-	void advance_to(const unit_type* t, bool use_traits=false, game_state* state = 0);
+	void advance_to(const unit_type *t, bool use_traits = false,
+		game_state *state = 0)
+	{
+		advance_to(cfg_, t, use_traits, state);
+	}
 	const std::vector<std::string>& advances_to() const { return advances_to_; }
 
 	/** The type id of the unit */
@@ -336,6 +340,8 @@ public:
 		const unsigned size, const tportrait::tside side) const;
 
 private:
+	void advance_to(const config &old_cfg, const unit_type *t,
+		bool use_traits, game_state *state);
 
 	bool internal_matches_filter(const vconfig& cfg,const map_location& loc,
 		bool use_flat_tod) const;
