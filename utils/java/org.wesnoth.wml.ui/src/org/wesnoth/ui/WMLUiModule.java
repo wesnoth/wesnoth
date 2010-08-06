@@ -17,6 +17,8 @@ import org.eclipse.xtext.ui.editor.autoedit.DefaultAutoEditStrategy;
 import org.eclipse.xtext.ui.editor.bracketmatching.IBracketMatcher;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 import org.eclipse.xtext.ui.editor.hyperlinking.HyperlinkHelper;
+import org.eclipse.xtext.ui.editor.model.IResourceForEditorInputFactory;
+import org.eclipse.xtext.ui.editor.model.XtextDocumentProvider;
 import org.eclipse.xtext.ui.editor.outline.transformer.ISemanticModelTransformer;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.HighlightingReconciler;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration;
@@ -35,6 +37,8 @@ import org.wesnoth.ui.syntax.WMLHighlightingHelper;
 import org.wesnoth.ui.syntax.WMLHighlightingReconciler;
 import org.wesnoth.ui.syntax.WMLSemanticHighlightingCalculator;
 import org.wesnoth.ui.syntax.bracketmatching.WMLBracketMatching;
+import org.wesnoth.ui.xtext.EFSExtendedDocumentProvider;
+import org.wesnoth.ui.xtext.EFSResourceForIEditorInputFactory;
 
 import com.google.inject.Binder;
 
@@ -53,6 +57,7 @@ public class WMLUiModule extends org.wesnoth.ui.AbstractWMLUiModule
 	@Override
 	public void configure(Binder binder)
 	{
+		binder.bind(XtextDocumentProvider.class).to(EFSExtendedDocumentProvider.class);
 		super.configure(binder);
 	}
 
@@ -88,6 +93,10 @@ public class WMLUiModule extends org.wesnoth.ui.AbstractWMLUiModule
 		return WMLEditor.class;
 	}
 
+	public Class<? extends IResourceForEditorInputFactory> bindIResourceForEditorInputFactory() {
+		return EFSResourceForIEditorInputFactory.class;
+	}
+
 	public Class<? extends IHighlightingHelper> bindIHighlightingHelper()
 	{
 		return WMLHighlightingHelper.class;
@@ -102,6 +111,7 @@ public class WMLUiModule extends org.wesnoth.ui.AbstractWMLUiModule
 	{
 		return WMLLocationInFileProvider.class;
 	}
+
 	@Override
 	public Class<? extends IHyperlinkDetector> bindIHyperlinkDetector()
 	{
@@ -128,4 +138,6 @@ public class WMLUiModule extends org.wesnoth.ui.AbstractWMLUiModule
 	{
 		return WMLLabelProvider.class;
 	}
+
+
 }
