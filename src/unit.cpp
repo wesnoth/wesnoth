@@ -1386,11 +1386,23 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 	const vconfig::child_list& wmlcfgs = cfg.get_children("filter_wml");
 	if (!wmlcfgs.empty()) {
 		config unit_cfg;
-		write(unit_cfg);
-		// Now, match the kids, WML based
-		for(unsigned int i=0; i < wmlcfgs.size(); ++i) {
-			if(!unit_cfg.matches(wmlcfgs[i].get_parsed_config())) {
-				return false;
+		for (unsigned i = 0; i < wmlcfgs.size(); ++i)
+		{
+			config fwml = wmlcfgs[i].get_parsed_config();
+			/* Check if the filter only cares about variables.
+			   If so, no need to serialize the whole unit. */
+			config::const_attr_itors ai = fwml.attribute_range();
+			config::all_children_itors ci = fwml.all_children_range();
+			if (std::distance(ai.first, ai.second) == 0 &&
+			    std::distance(ci.first, ci.second) == 1 &&
+			    ci.first->key == "variables") {
+				if (!variables_.matches(ci.first->cfg))
+					return false;
+			} else {
+				if (unit_cfg.empty())
+					write(unit_cfg);
+				if (!unit_cfg.matches(fwml))
+					return false;
 			}
 		}
 	}
