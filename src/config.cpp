@@ -184,10 +184,9 @@ config::config() : values(), children(), ordered_children()
 {
 }
 
-config::config(const config& cfg) : values(), children(), ordered_children()
+config::config(const config& cfg) : values(cfg.values), children(), ordered_children()
 {
-	cfg.check_valid();
-	append(cfg);
+	append_children(cfg);
 }
 
 config::config(const std::string& child) : values(), children(), ordered_children()
@@ -206,10 +205,9 @@ config& config::operator=(const config& cfg)
 		return *this;
 	}
 
-	check_valid(cfg);
-
 	clear();
-	append(cfg);
+	append_children(cfg);
+	values.insert(cfg.values.begin(), cfg.values.end());
 	return *this;
 }
 
@@ -239,14 +237,18 @@ void config::remove_attribute(const std::string &key)
 	values.erase(key);
 }
 
-void config::append(const config& cfg)
+void config::append_children(const config &cfg)
 {
 	check_valid(cfg);
 
 	foreach (const any_child &value, cfg.all_children_range()) {
 		add_child(value.key, value.cfg);
 	}
+}
 
+void config::append(const config &cfg)
+{
+	append_children(cfg);
 	foreach (const attribute &v, cfg.values) {
 		values[v.first] = v.second;
 	}

@@ -432,6 +432,11 @@ public:
 	void append(const config& cfg);
 
 	/**
+	 * Adds children from @a cfg.
+	 */
+	void append_children(const config &cfg);
+
+	/**
 	 * All children with the given key will be merged
 	 * into the first element with that key.
 	 */
