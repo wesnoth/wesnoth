@@ -77,7 +77,7 @@ static bool to_map_location(lua_State *L, int &index, map_location &res)
 {
 	if (lua_isuserdata(L, index))
 	{
-		unit const *u = lua::luaW_tounit(L, index);
+		unit const *u = luaW_tounit(L, index);
 		if (!u) return false;
 		res = u->get_location();
 		++index;
@@ -246,7 +246,7 @@ lua_ai_context* lua_ai_context::create(lua_State *L, char const *code, ai::engin
 	}
 
 	//compile the ai as a closure
-	if (!lua::luaW_pcall(L, 1, 1, true)) {
+	if (!luaW_pcall(L, 1, 1, true)) {
 		return NULL;//return with stack size 0 []
 	}
 
@@ -320,16 +320,16 @@ void lua_ai_action_handler::handle(config &cfg, bool configOut)
 	if (!configOut)
 	{
 		lua_newtable(L);//stack size is 3 [-1: table -2: ai_context -3: ai_action]
-		lua::table_of_wml_config(L, cfg);//the new table now contains the config
-		lua::luaW_pcall(L, 2, LUA_MULTRET, true);
+		luaW_pushconfig(L, cfg);//the new table now contains the config
+		luaW_pcall(L, 2, LUA_MULTRET, true);
 	}
 	else if (lua_gettop(L) > initial_top)
 	{
-		if (lua::luaW_pcall(L, 1, LUA_MULTRET, true)) {
+		if (luaW_pcall(L, 1, LUA_MULTRET, true)) {
 			int score = lua_tonumber(L, initial_top + 1);//get score
 
 			if (lua_gettop(L) >= initial_top + 2) {//check if we also have config
-				lua::luaW_toconfig(L, initial_top + 2, cfg);//get config
+				luaW_toconfig(L, initial_top + 2, cfg);//get config
 			}
 
 			cfg["score"] = score; // write score to the config

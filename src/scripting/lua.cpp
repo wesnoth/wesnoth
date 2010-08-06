@@ -60,8 +60,6 @@ static lg::log_domain log_scripting_lua("scripting/lua");
 #define LOG_LUA LOG_STREAM(info, log_scripting_lua)
 #define ERR_LUA LOG_STREAM(err, log_scripting_lua)
 
-namespace lua {
-
 static std::vector<config> preload_scripts;
 
 void extract_preload_scripts(config const &game_config)
@@ -223,7 +221,7 @@ static t_string luaW_checktstring(lua_State *L, int index)
  * The destination table should be at the top of the stack on entry. It is
  * still at the top on exit.
  */
-void table_of_wml_config(lua_State *L, config const &cfg)
+void luaW_pushconfig(lua_State *L, config const &cfg)
 {
 	if (!lua_checkstack(L, LUA_MINSTACK))
 		return;
@@ -235,7 +233,7 @@ void table_of_wml_config(lua_State *L, config const &cfg)
 		lua_pushstring(L, ch.key.c_str());
 		lua_rawseti(L, -2, 1);
 		lua_newtable(L);
-		table_of_wml_config(L, ch.cfg);
+		luaW_pushconfig(L, ch.cfg);
 		lua_rawseti(L, -2, 2);
 		lua_rawseti(L, -2, k++);
 	}
@@ -617,12 +615,12 @@ static int impl_vconfig_get(lua_State *L)
 	char const *m = luaL_checkstring(L, 2);
 	if (strcmp(m, "__literal") == 0) {
 		lua_newtable(L);
-		table_of_wml_config(L, v->get_config());
+		luaW_pushconfig(L, v->get_config());
 		return 1;
 	}
 	if (strcmp(m, "__parsed") == 0) {
 		lua_newtable(L);
-		table_of_wml_config(L, v->get_parsed_config());
+		luaW_pushconfig(L, v->get_parsed_config());
 		return 1;
 	}
 	if (strcmp(m, "__shallow_literal") == 0) {
@@ -716,14 +714,14 @@ static int impl_vconfig_collect(lua_State *L)
 		config cfg; \
 		accessor; \
 		lua_newtable(L); \
-		table_of_wml_config(L, cfg); \
+		luaW_pushconfig(L, cfg); \
 		return 1; \
 	}
 
 #define return_cfgref_attrib(name, accessor) \
 	if (strcmp(m, name) == 0) { \
 		lua_newtable(L); \
-		table_of_wml_config(L, accessor); \
+		luaW_pushconfig(L, accessor); \
 		return 1; \
 	}
 
@@ -1101,7 +1099,7 @@ static int intf_get_variable(lua_State *L)
 		if (w.is_valid) {
 			lua_newtable(L);
 			if (lua_toboolean(L, 2))
-				table_of_wml_config(L, w.as_container());
+				luaW_pushconfig(L, w.as_container());
 			return 1;
 		}
 	}
@@ -1526,7 +1524,7 @@ static int impl_current_get(lua_State *L)
 			cfg["y2"] = ev.loc2.y + 1;
 		}
 		lua_newtable(L);
-		table_of_wml_config(L, cfg);
+		luaW_pushconfig(L, cfg);
 		return 1;
 	}
 
@@ -2231,7 +2229,7 @@ static int intf_synchronize_choice(lua_State *L)
 	lua_settop(L, 1);
 	config cfg = mp_sync::get_user_choice("input", lua_synchronize(L));
 	lua_newtable(L);
-	table_of_wml_config(L, cfg);
+	luaW_pushconfig(L, cfg);
 	return 1;
 }
 
@@ -2984,6 +2982,3 @@ ai::lua_ai_action_handler* LuaKernel::create_lua_ai_action_handler(char const *c
 {
 	return ai::lua_ai_action_handler::create(mState,code,context);
 }
-
-} // of namespace lua
-

@@ -16,11 +16,7 @@
 #define AI_LUA_CORE_HPP
 
 struct lua_State;
-
-namespace lua {
 class LuaKernel;
-} // of namespace lua
-
 class config;
 
 namespace ai {
@@ -44,7 +40,7 @@ public:
 	~lua_ai_context();
 	void load();
 	static void init(lua_State *L);
-	friend class lua::LuaKernel;
+	friend class ::LuaKernel;
 };
 
 
@@ -64,7 +60,7 @@ private:
 public:
 	~lua_ai_action_handler();
 	void handle(config &, bool configOut = false);
-	friend class lua::LuaKernel;
+	friend class ::LuaKernel;
 };
 
 }//of namespace ai

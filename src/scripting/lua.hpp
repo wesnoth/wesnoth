@@ -25,8 +25,6 @@ class lua_ai_context;
 class engine_lua;
 } // of namespace ai
 
-namespace lua {
-
 void extract_preload_scripts(config const &);
 
 class LuaKernel
@@ -47,7 +45,5 @@ public:
 	ai::lua_ai_action_handler* create_lua_ai_action_handler(char const *code, ai::lua_ai_context &context);
 	void load_package();
 };
-
-} //of namespace lua
 
 #endif

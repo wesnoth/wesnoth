@@ -20,10 +20,7 @@
 class game_display;
 class gamemap;
 class game_state;
-namespace lua {
-	class LuaKernel;
-} //of namespace lua
-
+class LuaKernel;
 class play_controller;
 class team;
 class tod_manager;
@@ -43,7 +40,7 @@ namespace resources
 	extern unit_map *units;
 	extern std::vector<team> *teams;
 	extern game_state *state_of_game;
-	extern lua::LuaKernel *lua_kernel;
+	extern LuaKernel *lua_kernel;
 	extern play_controller *controller;
 	extern tod_manager *tod_manager;
 	extern wb::manager *whiteboard;

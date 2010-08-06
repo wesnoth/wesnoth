@@ -1554,7 +1554,7 @@ void game_controller::load_game_cfg(const bool force)
 		}
 
 		// Extract the Lua scripts at toplevel.
-		lua::extract_preload_scripts(game_config_);
+		extract_preload_scripts(game_config_);
 		game_config_.clear_children("lua");
 
 		game_config_.merge_children("units");

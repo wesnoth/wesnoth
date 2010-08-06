@@ -22,7 +22,7 @@ namespace resources
 	unit_map *units;
 	std::vector<team> *teams;
 	game_state *state_of_game;
-	lua::LuaKernel *lua_kernel;
+	LuaKernel *lua_kernel;
 	play_controller *controller;
 	::tod_manager *tod_manager;
 	wb::manager *whiteboard;
