@@ -64,54 +64,79 @@ const std::vector<std::string>& unit_animation::all_tag_names() {
 	return anim_tags.names;
 }
 
+struct animation_branch
+{
+	config attributes;
+	std::vector<config::all_children_iterator> children;
+};
+
+struct animation_cursor
+{
+	config::all_children_itors itors;
+	std::list<animation_branch> branches;
+	animation_cursor *parent;
+	animation_cursor(const config &cfg):
+		itors(cfg.all_children_range()), branches(1), parent(NULL)
+	{
+		branches.back().attributes.merge_attributes(cfg);
+	}
+	animation_cursor(const config &cfg, animation_cursor *p):
+		itors(cfg.all_children_range()), branches(p->branches), parent(p)
+	{
+		foreach (animation_branch &ab, branches)
+			ab.attributes.merge_attributes(cfg);
+	}
+};
+
 static void prepare_single_animation(const config &anim_cfg,
 	config &expanded_animations, const std::string &animation_tag)
 {
-	std::vector<config> unexpanded_anims(1, anim_cfg);
-	while(!unexpanded_anims.empty()) {
-		// take one anim out of the unexpanded list
-		const config analyzed_anim = unexpanded_anims.back();
-		unexpanded_anims.pop_back();
-		config expanded_anim;
-		expanded_anim.merge_attributes(analyzed_anim);
-		config::all_children_itors children = analyzed_anim.all_children_range();
-		for (config::all_children_iterator child = children.first; child != children.second; )
-		{
-			if (child->key == "if") {
-				std::vector<config> to_add;
-				config expanded_chunk = expanded_anim;
-				// add the content of if
-				expanded_chunk.append(child->cfg);
-				to_add.push_back(expanded_chunk);
-				++child;
-				if (child != children.second && child->key == "else") {
-					while (child != children.second && child->key == "else") {
-						expanded_chunk = expanded_anim;
-						// add the content of else to the stored one
-						expanded_chunk.append(child->cfg);
-						to_add.push_back(expanded_chunk);
-						// store the partially expanded string for later analyzis
-						++child;
-					}
-				} else {
-					// add an anim with the if part removed
-					to_add.push_back(expanded_anim);
-				}
-				// copy the end of the anim "as is" other if will be treated later
-				for (; child != children.second; ++child) {
-					foreach (config &c, to_add) {
-						c.add_child(child->key, child->cfg);
-					}
-				}
-				unexpanded_anims.insert(unexpanded_anims.end(),to_add.begin(),to_add.end());
-			} else {
-				// add the current node
-				expanded_anim.add_child(child->key, child->cfg);
-				++child;
-				if (child == children.second)
-					expanded_animations.add_child(animation_tag,expanded_anim);
-			}
+	std::list<animation_cursor> anim_cursors;
+	anim_cursors.push_back(animation_cursor(anim_cfg));
+	while (!anim_cursors.empty())
+	{
+		animation_cursor &ac = anim_cursors.back();
+		if (ac.itors.first == ac.itors.second) {
+			if (!ac.parent) break;
+			// Merge all the current branches into the parent.
+			ac.parent->branches.splice(ac.parent->branches.end(),
+				ac.branches, ac.branches.begin(), ac.branches.end());
+			anim_cursors.pop_back();
+			continue;
 		}
+		if (ac.itors.first->key != "if")
+		{
+			// Append current config object to all the branches in scope.
+			foreach (animation_branch &ab, ac.branches) {
+				ab.children.push_back(ac.itors.first);
+			}
+			++ac.itors.first;
+			continue;
+		}
+		int count = 0;
+		do {
+			/* Copies the current branches to each cursor created
+			   for the conditional clauses. Merge the attributes
+			   of the clause into them. */
+			anim_cursors.push_back(animation_cursor(ac.itors.first->cfg, &ac));
+			++ac.itors.first;
+			++count;
+		} while (ac.itors.first != ac.itors.second && ac.itors.first->key == "else");
+		if (count > 1) {
+			/* There are some "else" clauses, discard the branches
+			   from the current cursor. */
+			ac.branches.clear();
+		}
+	}
+
+	// Create the config object describing each branch.
+	assert(anim_cursors.size() == 1);
+	foreach (const animation_branch &ab, anim_cursors.back().branches) {
+		config expanded_anim;
+		foreach (const config::all_children_iterator &i, ab.children)
+			expanded_anim.add_child(i->key, i->cfg);
+		expanded_anim.merge_attributes(ab.attributes);
+		expanded_animations.add_child(animation_tag, expanded_anim);
 	}
 }
 
