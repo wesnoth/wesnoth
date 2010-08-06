@@ -83,6 +83,7 @@ namespace game_config
 			grid_bottom,
 			mouseover,
 			selected,
+			editor_brush,
 			unreachable,
 			linger,
 			// GUI elements
@@ -204,6 +205,7 @@ namespace game_config
 			grid_bottom = i["grid_bottom"].str();
 			mouseover = i["mouseover"].str();
 			selected = i["selected"].str();
+			editor_brush = i["editor_brush"].str();
 			unreachable = i["unreachable"].str();
 			linger = i["linger"].str();
 

@@ -89,6 +89,7 @@ namespace game_config
 			grid_bottom,
 			mouseover,
 			selected,
+			editor_brush,
 			unreachable,
 			linger,
 			// GUI elements
