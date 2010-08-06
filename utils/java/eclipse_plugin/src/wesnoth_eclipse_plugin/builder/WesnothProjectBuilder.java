@@ -199,10 +199,13 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 					defines.add("SKIP_CORE");
 
 				// we use a single _MACROS_.cfg file for each project
-				PreprocessorUtils.preprocessFile(file,
+				int preprocResult = PreprocessorUtils.preprocessFile(file,
 					PreprocessorUtils.getDefinesLocation(file), defines);
 
-				if (isMainCfg == true)
+				// preprocess only if we preprocessed (successfuly) the main file
+				// skip already preprocessed
+				//TODO: profile with this condition removed so we can have live feedback about macros
+				if (isMainCfg == true && preprocResult == 0)
 				{
 					// process the defines obtained
 					ProjectUtils.getCacheForProject(getProject()).readDefines(true);
