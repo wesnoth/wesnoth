@@ -609,7 +609,7 @@ ana::net_id ana_network_manager::create_server( )
 
 network::connection ana_network_manager::create_client_and_connect(std::string host, int port)
 {
-    ana::net_id new_client_id;
+    ana::net_id new_client_id = 42;
 
     try
     {
