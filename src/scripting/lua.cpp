@@ -1847,14 +1847,16 @@ static int intf_put_unit(lua_State *L)
 	}
 
 	resources::units->erase(loc);
-	if (u) {
+	if (!u) return 0;
+
+	if (lu) {
 		resources::units->add(loc, *u);
-		if (lu) {
-			size_t uid = u->underlying_id();
-			lu->lua_unit::~lua_unit();
-			new(lu) lua_unit(uid);
-		} else
-			delete u;
+		size_t uid = u->underlying_id();
+		lu->lua_unit::~lua_unit();
+		new(lu) lua_unit(uid);
+	} else {
+		u->set_location(loc);
+		resources::units->insert(u);
 	}
 
 	return 0;
