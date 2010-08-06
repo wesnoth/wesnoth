@@ -58,6 +58,7 @@ public class ProjectCache
 
 		ResourceUtils.createWesnothFile(wesnothFile_.getAbsolutePath());
 		readProperties(true);
+		readDefines(true);
 	}
 
 	public ProjectCache(IProject project, Properties defaults)
@@ -185,6 +186,8 @@ public class ProjectCache
 	{
 		if (force == false &&
 			definesFile_.lastModified() <= definesTimetamp_)
+			return;
+		if (definesFile_.exists() == false)
 			return;
 		defines_ = Define.readDefines(definesFile_.getAbsolutePath());
 	}
