@@ -320,19 +320,13 @@ void lua_ai_action_handler::handle(config &cfg, bool configOut)
 	if (!configOut)
 	{
 		luaW_pushconfig(L, cfg);
-		luaW_pcall(L, 2, LUA_MULTRET, true);
+		luaW_pcall(L, 2, 0, true);
 	}
-	else if (lua_gettop(L) > initial_top)
+	else if (luaW_pcall(L, 1, 2, true))
 	{
-		if (luaW_pcall(L, 1, LUA_MULTRET, true)) {
-			int score = lua_tonumber(L, initial_top + 1);//get score
-
-			if (lua_gettop(L) >= initial_top + 2) {//check if we also have config
-				luaW_toconfig(L, initial_top + 2, cfg);//get config
-			}
-
-			cfg["score"] = score; // write score to the config
-		}
+		int score = lua_tointeger(L, initial_top + 1);
+		luaW_toconfig(L, initial_top + 2, cfg);
+		cfg["score"] = score; // write score to the config
 	}
 
 	lua_settop(L, initial_top);//empty stack
