@@ -149,7 +149,7 @@ public:
 	virtual ~scoped_wml_variable();
 	const std::string& name() const { return var_name_; }
 	virtual void activate() = 0;
-	void store(const config& var_value);
+	config &store(const config &var_value = config());
 	bool activated() const { return activated_; }
 private:
 	config previous_val_;

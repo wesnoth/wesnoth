@@ -466,15 +466,16 @@ scoped_wml_variable::scoped_wml_variable(const std::string& var_name) :
 	repos->scoped_variables.push_back(this);
 }
 
-void scoped_wml_variable::store(const config& var_value)
+config &scoped_wml_variable::store(const config &var_value)
 {
 	foreach (const config &i, repos->get_variables().child_range(var_name_)) {
 		previous_val_.add_child(var_name_, i);
 	}
 	repos->clear_variable_cfg(var_name_);
-	repos->add_variable_cfg(var_name_, var_value);
+	config &res = repos->add_variable_cfg(var_name_, var_value);
 	LOG_NG << "scoped_wml_variable: var_name \"" << var_name_ << "\" has been auto-stored.\n";
 	activated_ = true;
+	return res;
 }
 
 scoped_wml_variable::~scoped_wml_variable()
@@ -495,12 +496,11 @@ void scoped_xy_unit::activate()
 	map_location loc = map_location(x_, y_);
 	unit_map::const_iterator itor = umap_.find(loc);
 	if(itor != umap_.end()) {
-		config tmp_cfg;
+		config &tmp_cfg = store();
 		itor->write(tmp_cfg);
 		tmp_cfg["x"] = x_ + 1;
 		tmp_cfg["y"] = y_ + 1;
 		LOG_NG << "auto-storing $" << name() << " at (" << loc << ")\n";
-		store(tmp_cfg);
 	} else {
 		ERR_NG << "failed to auto-store $" << name() << " at (" << loc << ")\n";
 	}
@@ -524,7 +524,7 @@ void scoped_recall_unit::activate()
 
 	if(team_it != teams.end()) {
 		if(team_it->recall_list().size() > recall_index_) {
-			config tmp_cfg;
+			config &tmp_cfg = store();
 			team_it->recall_list()[recall_index_].write(tmp_cfg);
 			tmp_cfg["x"] = "recall";
 			tmp_cfg["y"] = "recall";
