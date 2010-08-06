@@ -17,8 +17,6 @@ import org.eclipse.xtext.ui.editor.autoedit.DefaultAutoEditStrategy;
 import org.eclipse.xtext.ui.editor.bracketmatching.IBracketMatcher;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 import org.eclipse.xtext.ui.editor.hyperlinking.HyperlinkHelper;
-import org.eclipse.xtext.ui.editor.model.IResourceForEditorInputFactory;
-import org.eclipse.xtext.ui.editor.model.XtextDocumentProvider;
 import org.eclipse.xtext.ui.editor.outline.transformer.ISemanticModelTransformer;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.HighlightingReconciler;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration;
@@ -27,6 +25,7 @@ import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculato
 import org.eclipse.xtext.ui.editor.syntaxcoloring.antlr.AbstractAntlrTokenToAttributeIdMapper;
 import org.wesnoth.ui.autoedit.WMLAutoEditStrategy;
 import org.wesnoth.ui.contentassist.WMLContentAssistContext;
+import org.wesnoth.ui.editor.WMLEditor;
 import org.wesnoth.ui.labeling.WMLLabelProvider;
 import org.wesnoth.ui.navigation.WMLHyperlinkHelper;
 import org.wesnoth.ui.outline.WMLTransformer;
@@ -37,8 +36,6 @@ import org.wesnoth.ui.syntax.WMLHighlightingHelper;
 import org.wesnoth.ui.syntax.WMLHighlightingReconciler;
 import org.wesnoth.ui.syntax.WMLSemanticHighlightingCalculator;
 import org.wesnoth.ui.syntax.bracketmatching.WMLBracketMatching;
-import org.wesnoth.ui.xtext.EFSExtendedDocumentProvider;
-import org.wesnoth.ui.xtext.EFSResourceForIEditorInputFactory;
 
 import com.google.inject.Binder;
 
@@ -57,7 +54,6 @@ public class WMLUiModule extends org.wesnoth.ui.AbstractWMLUiModule
 	@Override
 	public void configure(Binder binder)
 	{
-		binder.bind(XtextDocumentProvider.class).to(EFSExtendedDocumentProvider.class);
 		super.configure(binder);
 	}
 
@@ -91,10 +87,6 @@ public class WMLUiModule extends org.wesnoth.ui.AbstractWMLUiModule
 	public Class<? extends XtextEditor> bindEditor()
 	{
 		return WMLEditor.class;
-	}
-
-	public Class<? extends IResourceForEditorInputFactory> bindIResourceForEditorInputFactory() {
-		return EFSResourceForIEditorInputFactory.class;
 	}
 
 	public Class<? extends IHighlightingHelper> bindIHighlightingHelper()
@@ -138,6 +130,4 @@ public class WMLUiModule extends org.wesnoth.ui.AbstractWMLUiModule
 	{
 		return WMLLabelProvider.class;
 	}
-
-
 }

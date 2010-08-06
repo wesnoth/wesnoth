@@ -55,12 +55,11 @@ public class WMLHyperlinkHelper extends HyperlinkHelper
 	private void createMacroHyperlink(LeafNode node,
 			IHyperlinkAcceptor acceptor, XtextResource resource)
 	{
-//		/FileLocationOpenerHyperlink macroTarget = new FileLocationOpenerHyperlink();
-		//macroTarget.setFilePath("e:\\work\\gw\\data\\campaigns\\An_Orcish_Incursion\\_main.cfg");
-		//macroTarget.setLinenumber(25);
-		//acceptor.accept(macroTarget);
+		FileLocationOpenerHyperlink macroTarget = new FileLocationOpenerHyperlink();
+		macroTarget.setFilePath("e:\\work\\gw\\data\\campaigns\\An_Orcish_Incursion\\_main.cfg");
+		macroTarget.setLinenumber(25);
+		acceptor.accept(macroTarget);
 	}
-
 
 	/**
 	 * Creates a hyperlink for opening the map.

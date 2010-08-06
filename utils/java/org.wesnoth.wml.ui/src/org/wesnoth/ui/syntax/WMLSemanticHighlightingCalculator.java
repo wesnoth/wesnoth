@@ -20,7 +20,7 @@ import org.eclipse.xtext.parsetree.NodeUtil;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightedPositionAcceptor;
 import org.eclipse.xtext.xtext.ui.editor.syntaxcoloring.SemanticHighlightingCalculator;
-import org.wesnoth.ui.WMLEditor;
+import org.wesnoth.ui.editor.WMLEditor;
 import org.wesnoth.wML.WMLKey;
 import org.wesnoth.wML.WMLMacroCall;
 import org.wesnoth.wML.WMLPackage;

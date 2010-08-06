@@ -24,7 +24,7 @@ import org.eclipse.xtext.ui.editor.syntaxcoloring.HighlightingReconciler;
 import org.eclipse.xtext.ui.editor.utils.EditorUtils;
 import org.eclipse.xtext.util.Pair;
 import org.wesnoth.services.WMLGrammarAccess;
-import org.wesnoth.ui.WMLEditor;
+import org.wesnoth.ui.editor.WMLEditor;
 import org.wesnoth.ui.syntax.WMLHighlightingConfiguration;
 import org.wesnoth.wML.WMLTag;
 

@@ -11,7 +11,7 @@ package org.wesnoth.ui.syntax;
 import org.eclipse.xtext.ui.editor.XtextEditor;
 import org.eclipse.xtext.ui.editor.XtextSourceViewer;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.HighlightingHelper;
-import org.wesnoth.ui.WMLEditor;
+import org.wesnoth.ui.editor.WMLEditor;
 
 /**
  * Highlighting helper.

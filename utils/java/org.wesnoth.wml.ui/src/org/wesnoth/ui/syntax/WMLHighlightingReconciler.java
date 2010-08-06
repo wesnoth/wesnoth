@@ -13,7 +13,7 @@ import org.eclipse.xtext.ui.editor.XtextEditor;
 import org.eclipse.xtext.ui.editor.XtextSourceViewer;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.HighlightingPresenter;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.HighlightingReconciler;
-import org.wesnoth.ui.WMLEditor;
+import org.wesnoth.ui.editor.WMLEditor;
 
 public class WMLHighlightingReconciler extends HighlightingReconciler
 {

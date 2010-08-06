@@ -6,16 +6,12 @@
  * such license is available at www.eclipse.org.
  */
 
-package org.wesnoth.ui.xtext;
+package org.wesnoth.ui.editor;
 
-import org.eclipse.ui.IEditorInput;
-import org.eclipse.ui.IStorageEditorInput;
-import org.eclipse.ui.IURIEditorInput;
+import org.eclipse.jface.action.IMenuManager;
 
-/**
- * An Editor Input marker for EFSEditorInput
- *
- */
-public interface IEFSEditorInput extends IEditorInput, IStorageEditorInput, IURIEditorInput {
-
+public class DefaultExtXtextEditorCustomizer implements IExtXtextEditorCustomizer {
+	public void customizeEditorContextMenu(IMenuManager menuManager) {
+		// do nothing
+	}
 }
