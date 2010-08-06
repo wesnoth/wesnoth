@@ -36,6 +36,7 @@ public class WMLHyperlinkHelper extends HyperlinkHelper
 		if (node == null)
 			return;
 
+		createMacroHyperlink(node, acceptor, resource);
 		LeafNode prevNode = (LeafNode)NodeUtil.findLeafNodeAtOffset(rootNode,
 									node.getOffset() - 1);
 		if(prevNode == null)
@@ -43,6 +44,23 @@ public class WMLHyperlinkHelper extends HyperlinkHelper
 
 		createMapHyperlink(prevNode, node, acceptor, resource);
 	}
+
+	/**
+	 * Creates a hyperlink for opening the macro definition
+	 * @param prevNode
+	 * @param node
+	 * @param acceptor
+	 * @param resource
+	  */
+	private void createMacroHyperlink(LeafNode node,
+			IHyperlinkAcceptor acceptor, XtextResource resource)
+	{
+//		/FileLocationOpenerHyperlink macroTarget = new FileLocationOpenerHyperlink();
+		//macroTarget.setFilePath("e:\\work\\gw\\data\\campaigns\\An_Orcish_Incursion\\_main.cfg");
+		//macroTarget.setLinenumber(25);
+		//acceptor.accept(macroTarget);
+	}
+
 
 	/**
 	 * Creates a hyperlink for opening the map.
