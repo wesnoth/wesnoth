@@ -104,14 +104,19 @@ public class PreprocessorUtils
 				arguments.add(macrosFile);
 			}
 
+			//TODO: remove me when trimming is done
+			if (defines == null)
+				defines = new ArrayList<String>();
+			defines.add("NO_TERRAIN_GFX");
+
 			if (defines != null && !defines.isEmpty())
 			{
 				String argument = "-p=";
-				for(int i=0;i<defines.size()-1;i++)
+				for(int i=0;i< defines.size() - 1;i++)
 				{
 					argument += (defines.get(i) + ",");
 				}
-				argument  += defines.get(defines.size()-1);
+				argument += defines.get(defines.size()-1);
 				arguments.add(argument);
 			}
 			else

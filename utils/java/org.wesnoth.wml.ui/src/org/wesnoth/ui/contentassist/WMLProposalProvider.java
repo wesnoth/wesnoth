@@ -111,9 +111,16 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 
 		for(Define define : ProjectUtils.getCacheForProject(file.getProject()).getDefines())
 		{
-			acceptor.accept(createCompletionProposal(
-					(ruleProposal == true ? "{" : "") + define.getName() + "}",
-					define.getName(),
+			StringBuilder proposal = new StringBuilder(10);
+			if (ruleProposal == true)
+				proposal.append("{");
+			proposal.append(define.getName());
+
+			for(String arg : define.getArguments())
+				proposal.append(" " + arg);
+			proposal.append("}");
+
+			acceptor.accept(createCompletionProposal(proposal.toString(), define.getName(),
 					WMLLabelProvider.getImageByName("macrocall.png"), context));
 		}
 	}
