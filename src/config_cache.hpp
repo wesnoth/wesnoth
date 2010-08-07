@@ -67,8 +67,7 @@ namespace game_config {
 	class config_cache;
 
 	typedef scoped_preproc_define_internal<config_cache> scoped_preproc_define;
-	typedef boost::shared_ptr<scoped_preproc_define> scoped_preproc_define_ptr;
-	typedef std::list<scoped_preproc_define_ptr> scoped_preproc_define_list;
+
 	/**
 	 * Singleton class to manage game config file caching.
 	 * It uses paths to config files as key to find correct cache
