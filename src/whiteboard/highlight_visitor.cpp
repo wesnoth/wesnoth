@@ -21,6 +21,7 @@
 #include "action.hpp"
 #include "attack.hpp"
 #include "move.hpp"
+#include "recall.hpp"
 #include "recruit.hpp"
 #include "side_actions.hpp"
 
@@ -278,6 +279,38 @@ void highlight_visitor::visit_recruit(recruit_ptr recruit)
 		assert (false);
 	}
 }
+
+void highlight_visitor::visit_recall(recall_ptr recall)
+{
+	switch (mode_)
+	{
+	case FIND_MAIN_HIGHLIGHT:
+		if (recall->recall_hex_ == mouseover_hex_)
+		{
+			main_highlight_ = recall;
+		}
+		break;
+	case FIND_SECONDARY_HIGHLIGHTS:
+		break;
+	case HIGHLIGHT_MAIN:
+		if (recall->fake_unit_)
+		{
+			//@todo: find some suitable effect for mouseover on planned recall.
+		}
+		break;
+	case HIGHLIGHT_SECONDARY:
+		break;
+	case UNHIGHLIGHT:
+		if (recall->fake_unit_)
+		{
+			//@todo: find some suitable effect for mouseover on planned recall.
+		}
+		break;
+	default:
+		assert (false);
+	}
+}
+
 
 void highlight_visitor::visit_all_actions()
 {
