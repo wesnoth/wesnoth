@@ -2414,6 +2414,7 @@ size_t move_unit(move_unit_spectator *move_spectator,
 
 	// move the real unit
 	units.move(ui->get_location(), steps.back());
+	resources::whiteboard->on_gamestate_change();
 	unit::clear_status_caches();
 
 	ui = units.find(steps.back());
@@ -2578,8 +2579,6 @@ size_t move_unit(move_unit_spectator *move_spectator,
 	disp.recalculate_minimap();
 
 	assert(steps.size() <= route.size());
-
-	resources::whiteboard->on_gamestate_change();
 
 	return steps.size();
 }
