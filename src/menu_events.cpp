@@ -969,24 +969,50 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 	}
 	unit un = recall_list_team[res];
 	if (!resources::whiteboard->save_recall(un, side_num, loc)) {
-		recall_list_team.erase(recall_list_team.begin() + res);
-		recorder.add_recall(un.id(), loc);
-		place_recruit(un, loc, true, true);
-		statistics::recall_unit(un);
-		current_team.spend_gold(current_team.recall_cost());
-
-		bool shroud_cleared = clear_shroud(side_num);
-		if (shroud_cleared) {
-			clear_undo_stack(side_num);
-		} else {
-			resources::undo_stack->push_back(undo_action(un, loc, undo_action::RECALL));
-		}
-
-		resources::redo_stack->clear();
-		gui_->invalidate_game_status();
-		gui_->invalidate_all();
-		recorder.add_checksum_check(loc);
+		do_recall(un, side_num, loc);
 	}
+}
+
+/// Predicate that compares the id() of two units. Used for the search in do_recall below
+struct unit_comparator_predicate {
+	unit_comparator_predicate(const unit& unit) : unit_(unit) {}
+	bool operator()(const unit& unit) {	return unit_.id() == unit.id();	}
+private:
+	const unit& unit_;
+};
+
+void menu_handler::do_recall(const unit& un, int side_num, const map_location& recall_location)
+{
+	team &current_team = teams_[side_num - 1];
+	std::vector<unit>& recall_list_team = current_team.recall_list();
+
+	unit_comparator_predicate comparator(un);
+
+	std::vector<unit>::iterator it = std::find_if(recall_list_team.begin(),
+			recall_list_team.end(), comparator);
+	if (it == recall_list_team.end())
+	{
+		ERR_NG << "menu_handler::do_recall(): Unit doesn't exist in recall list.\n";
+		return;
+	}
+
+	recall_list_team.erase(it);
+	recorder.add_recall(un.id(), recall_location);
+	place_recruit(un, recall_location, true, true);
+	statistics::recall_unit(un);
+	current_team.spend_gold(current_team.recall_cost());
+
+	bool shroud_cleared = clear_shroud(side_num);
+	if (shroud_cleared) {
+		clear_undo_stack(side_num);
+	} else {
+		resources::undo_stack->push_back(undo_action(un, recall_location, undo_action::RECALL));
+	}
+
+	resources::redo_stack->clear();
+	gui_->invalidate_game_status();
+	gui_->invalidate_all();
+	recorder.add_checksum_check(recall_location);
 }
 
 void menu_handler::undo(int side_num)

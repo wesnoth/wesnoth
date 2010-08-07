@@ -95,6 +95,7 @@ public:
 	void move_unit_to_loc(const unit_map::const_iterator& ui, const map_location& target,
 		bool continue_move, int side_num, mouse_handler &mousehandler);
 	void do_recruit(const std::string& name, int side_num, const map_location& last_hex);
+	void do_recall(const unit& un, int side_num, const map_location& recall_location);
 	void do_speak();
 	void do_search(const std::string& new_search);
 	void do_command(const std::string &str);
