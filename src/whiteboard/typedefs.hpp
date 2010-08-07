@@ -50,6 +50,7 @@ namespace wb {
 class action;
 class move;
 class attack;
+class recall;
 class recruit;
 class side_actions;
 
@@ -68,6 +69,8 @@ typedef boost::shared_ptr<attack> attack_ptr;
 typedef boost::shared_ptr<attack const> attack_const_ptr;
 typedef boost::shared_ptr<recruit> recruit_ptr;
 typedef boost::shared_ptr<recruit const> recruit_const_ptr;
+typedef boost::shared_ptr<recall> recall_ptr;
+typedef boost::shared_ptr<recall const> recall_const_ptr;
 
 } // end namespace wb
 
