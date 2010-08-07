@@ -76,8 +76,11 @@ public class ClosingEndTagAutoEditStrategy implements IAutoEditStrategy
 								}
 							}
 						}
-						command.shiftsCaret = true;
-						command.text = ("/" + tagName + "]");
+						if (tagName.isEmpty() == false)
+						{
+							command.shiftsCaret = true;
+							command.text = ("/" + tagName + "]");
+						}
 					}
 				});
 			}
