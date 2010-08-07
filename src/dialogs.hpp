@@ -119,18 +119,20 @@ private:
 class units_list_preview_pane : public dialogs::unit_preview_pane
 {
 public:
-	units_list_preview_pane(const unit &u, TYPE type = SHOW_ALL, bool left_side = true);
-	units_list_preview_pane(
-			const std::vector<unit>& units, const gui::filter_textbox* filter=NULL,
-			TYPE type=SHOW_ALL, bool left_side=true);
+	units_list_preview_pane(const unit *u, TYPE type = SHOW_ALL, bool left_side = true);
+	units_list_preview_pane(const std::vector<const unit *> &units,
+		const gui::filter_textbox *filter = NULL,
+		TYPE type = SHOW_ALL, bool left_side = true);
+	units_list_preview_pane(const std::vector<unit> &units,
+		const gui::filter_textbox *filter = NULL,
+		TYPE type = SHOW_ALL, bool left_side = true);
 
 private:
 	size_t size() const;
 	const details get_details() const;
 	void process_event();
 
-	const std::vector<unit>* units_;
-	std::vector<unit> unit_store_;
+	std::vector<const unit *> units_;
 };
 
 

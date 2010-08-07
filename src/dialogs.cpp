@@ -882,29 +882,36 @@ void unit_preview_pane::draw_contents()
 	}
 }
 
-units_list_preview_pane::units_list_preview_pane(const unit &u, TYPE type, bool on_left_side) :
+units_list_preview_pane::units_list_preview_pane(const unit *u, TYPE type, bool on_left_side) :
 	unit_preview_pane(NULL, type, on_left_side),
-	units_(&unit_store_),
-	unit_store_(1, u)
+	units_(1, u)
+{
+}
+
+units_list_preview_pane::units_list_preview_pane(const std::vector<const unit *> &units,
+		const gui::filter_textbox* filter, TYPE type, bool on_left_side) :
+	unit_preview_pane(filter, type, on_left_side),
+	units_(units)
 {
 }
 
 units_list_preview_pane::units_list_preview_pane(const std::vector<unit> &units,
 		const gui::filter_textbox* filter, TYPE type, bool on_left_side) :
 	unit_preview_pane(filter, type, on_left_side),
-	units_(&units),
-	unit_store_()
+	units_(units.size())
 {
+	for (unsigned i = 0; i < units.size(); ++i)
+		units_[i] = &units[i];
 }
 
 size_t units_list_preview_pane::size() const
 {
-	return (units_!=NULL) ? units_->size() : 0;
+	return units_.size();
 }
 
 const unit_preview_pane::details units_list_preview_pane::get_details() const
 {
-	const unit& u = (*units_)[index_];
+	const unit &u = *units_[index_];
 	details det;
 
 	det.image = u.still_image();
@@ -943,7 +950,7 @@ const unit_preview_pane::details units_list_preview_pane::get_details() const
 void units_list_preview_pane::process_event()
 {
 	if (details_button_.pressed() && index_ >= 0 && index_ < int(size())) {
-		show_unit_description((*units_)[index_]);
+		show_unit_description(*units_[index_]);
 	}
 }
 
