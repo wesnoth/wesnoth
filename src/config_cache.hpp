@@ -42,26 +42,16 @@ namespace game_config {
 			protected:
 				std::string name_;
 				bool add_;
-				std::string path_;
 			public:
 				/**
 				 * Adds normal preproc define.
 				 * @param name name of preproc define to add.
 				 * @param add true if we should add this.
 				 */
-				scoped_preproc_define_internal(const std::string& name, bool add = true) : name_(name), add_(add), path_()
+				scoped_preproc_define_internal(const std::string& name, bool add = true) : name_(name), add_(add)
 				{
 					if (add_)
 						T::instance().add_define(name_);
-				}
-
-				/**
-				 * adds path specific preproc define
-				 **/
-				scoped_preproc_define_internal(const std::string& path, const std::string& name, bool add = true) : name_(name), add_(add), path_(path)
-				{
-					if (add_)
-						T::instance().add_path_define(path_, name_);
 				}
 
 				/**
@@ -70,12 +60,7 @@ namespace game_config {
 				~scoped_preproc_define_internal()
 				{
 					if(add_)
-					{
-						if (path_.empty())
-							T::instance().remove_define(name_);
-						else
-							T::instance().remove_path_define(path_, name_);
-					}
+						T::instance().remove_define(name_);
 				}
 		};
 
