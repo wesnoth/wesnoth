@@ -20,6 +20,7 @@
 #include "action.hpp"
 #include "attack.hpp"
 #include "move.hpp"
+#include "recall.hpp"
 #include "recruit.hpp"
 #include "side_actions.hpp"
 
@@ -81,7 +82,6 @@ void mapbuilder_visitor::visit_attack(attack_ptr attack)
 
 void mapbuilder_visitor::visit_recruit(recruit_ptr recruit)
 {
-
 	if(mode_ == BUILD_PLANNED_MAP)
 	{
 		if (for_pathfinding_)
@@ -94,6 +94,23 @@ void mapbuilder_visitor::visit_recruit(recruit_ptr recruit)
 	else if (mode_ == RESTORE_NORMAL_MAP)
 	{
 		recruit->remove_temp_modifier(unit_map_);
+	}
+}
+
+void mapbuilder_visitor::visit_recall(recall_ptr recall)
+{
+	if(mode_ == BUILD_PLANNED_MAP)
+	{
+		if (for_pathfinding_)
+		{
+			recall->apply_temp_modifier(unit_map_);
+			//remember which actions we applied, so we can unapply them later
+			applied_actions_.push_back(recall);
+		}
+	}
+	else if (mode_ == RESTORE_NORMAL_MAP)
+	{
+		recall->remove_temp_modifier(unit_map_);
 	}
 }
 

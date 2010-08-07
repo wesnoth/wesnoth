@@ -19,6 +19,7 @@
 #include "validate_visitor.hpp"
 #include "attack.hpp"
 #include "move.hpp"
+#include "recall.hpp"
 #include "recruit.hpp"
 #include "side_actions.hpp"
 
@@ -193,6 +194,52 @@ void validate_visitor::visit_recruit(recruit_ptr recruit)
 	if (!recruit->is_valid())
 	{
 		actions_to_erase_.insert(recruit);
+	}
+}
+
+/// Predicate that compares the id() of two units. Used for the search in visit_recall below
+struct unit_comparator_predicate {
+	unit_comparator_predicate(const unit& unit) : unit_(unit) {}
+	bool operator()(const unit& unit) {	return unit_.id() == unit.id();	}
+private:
+	const unit& unit_;
+};
+
+void validate_visitor::visit_recall(recall_ptr recall)
+{
+	//invalidate recall hex so number display is updated properly
+	resources::screen->invalidate(recall->recall_hex_);
+
+	int team_index = side_actions_->team_index();
+
+	//Check that destination hex is still free
+	if(resources::units->find(recall->recall_hex_) != resources::units->end())
+	{
+		LOG_WB << "Recall set as invalid because target hex is occupied.\n";
+		recall->set_valid(false);
+	}
+	//Check that unit to recall is still in side's recall list
+	if (recall->is_valid())
+	{
+		const std::vector<unit>& recalls = (*resources::teams)[team_index].recall_list();
+		if (std::find_if(recalls.begin(), recalls.end(),
+				unit_comparator_predicate(*recall->temp_unit_)) == recalls.end())
+		{
+			recall->set_valid(false);
+			LOG_WB << " Validate visitor: Planned recall invalid since unit is not in recall list anymore.\n";
+		}
+	}
+	//Check that there is still enough gold to recall this unit
+	if (recall->is_valid()
+			&& (*resources::teams)[team_index].recall_cost() > (*resources::teams)[team_index].gold())
+	{
+		LOG_WB << "Recall set as invalid, team doesn't have enough gold.\n";
+		recall->set_valid(false);
+	}
+
+	if (!recall->is_valid())
+	{
+		actions_to_erase_.insert(recall);
 	}
 }
 
