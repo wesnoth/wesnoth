@@ -504,11 +504,23 @@ bool manager::save_recruit(const std::string& name, int side_num, const map_loca
 
 bool manager::save_recall(const unit& unit, int side_num, const map_location& recall_hex)
 {
-	/** @todo implement method body */
-	(void) unit;
-	(void) side_num;
-	(void) recall_hex;
-	return false;
+	bool created_planned_recall = false;
+
+	if (active_ && !executing_actions_ && !resources::controller->is_linger_mode())
+	{
+		if (side_num != resources::screen->viewing_side())
+		{
+			LOG_WB <<"manager::save_recall called for a different side than viewing side.\n";
+			created_planned_recall = false;
+		}
+		else
+		{
+			viewer_actions()->queue_recall(unit, recall_hex);
+			created_planned_recall = true;
+			print_help_once();
+		}
+	}
+	return created_planned_recall;
 }
 
 void manager::contextual_execute()

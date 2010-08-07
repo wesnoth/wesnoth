@@ -114,6 +114,12 @@ public:
 	iterator queue_recruit(const std::string& unit_name, const map_location& recruit_hex);
 
 	/**
+	 * Queues a recall to be executed last
+	 * @return The queued recall's position
+	 */
+	iterator queue_recall(const unit& unit, const map_location& recall_hex);
+
+	/**
 	 * Inserts an action at the specified position. The begin() and end() functions might prove useful here.
 	 * @return The inserted action's position.
 	 */

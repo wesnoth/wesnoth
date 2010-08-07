@@ -21,6 +21,7 @@
 #include "attack.hpp"
 #include "manager.hpp"
 #include "move.hpp"
+#include "recall.hpp"
 #include "recruit.hpp"
 #include "validate_visitor.hpp"
 
@@ -177,6 +178,13 @@ side_actions::iterator side_actions::queue_recruit(const std::string& unit_name,
 	recruit_ptr new_recruit;
 	new_recruit.reset(new recruit(team_index(), unit_name, recruit_hex));
 	return queue_action(new_recruit);
+}
+
+side_actions::iterator side_actions::queue_recall(const unit& unit, const map_location& recall_hex)
+{
+	recall_ptr new_recall;
+	new_recall.reset(new recall(team_index(), unit, recall_hex));
+	return queue_action(new_recall);
 }
 
 side_actions::iterator side_actions::insert_action(iterator position, action_ptr action)
