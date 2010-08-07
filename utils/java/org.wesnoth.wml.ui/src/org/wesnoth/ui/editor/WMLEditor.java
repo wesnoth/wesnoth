@@ -62,7 +62,7 @@ import com.google.inject.Inject;
 
 public class WMLEditor extends XtextEditor
 {
-	protected static final String AUTOLINK_PROJECT_NAME = "__AutoLinked_CFGExternalFiles";
+	protected static final String AUTOLINK_PROJECT_NAME = "_AutoLinked_CFGExternalFiles_";
 	protected static final String ENCODING_UTF8 = "utf-8";
 
 	protected IHighlightingHelper highlightingHelper_;
