@@ -97,11 +97,6 @@ public class WMLHyperlinkHelper extends HyperlinkHelper
 			filePath = filePath.replaceFirst("~", Preferences.getString(Constants.P_WESNOTH_USER_DIR) + "/data/");
 		else if (filePath.startsWith("core")) // data/core relative location
 			filePath = filePath.replace("core", Preferences.getString(Constants.P_WESNOTH_WORKING_DIR) + "/data/core/");
-		else
-		{
-			Logger.getInstance().log("cannot get location: " + filePath);
-			return;
-		}
 
 		FileLocationOpenerHyperlink macroTarget = new FileLocationOpenerHyperlink();
 		macroTarget.setHyperlinkRegion(new Region(container.getOffset(), container.getLength()));
