@@ -56,11 +56,9 @@ recruit::recruit(size_t team_index, const std::string& unit_name, const map_loca
 		recruit_hex_(recruit_hex),
 		temp_unit_(create_corresponding_unit()),
 		valid_(true),
-		fake_unit_(),
+		fake_unit_(create_corresponding_unit(), wb::manager::fake_unit_deleter()),
 		temp_cost_()
 {
-	//Create fake unit for the visual effect
-	fake_unit_.reset(create_corresponding_unit(), wb::manager::fake_unit_deleter());
 	fake_unit_->set_location(recruit_hex_);
 	fake_unit_->set_movement(0);
 	fake_unit_->set_attacks(0);
@@ -114,6 +112,7 @@ void recruit::remove_temp_modifier(unit_map& unit_map)
 	 * Remove cost from money spent on recruits.
 	 */
 	resources::teams->at(team_index()).get_side_actions()->change_gold_spent_by(-temp_cost_);
+	temp_cost_ = 0;
 	resources::screen->invalidate_game_status();
 }
 
