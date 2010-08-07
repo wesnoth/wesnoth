@@ -8,11 +8,13 @@
  *******************************************************************************/
 package org.wesnoth.ui;
 
+import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.parsetree.AbstractNode;
 import org.eclipse.xtext.parsetree.CompositeNode;
 import org.eclipse.xtext.parsetree.LeafNode;
 import org.eclipse.xtext.parsetree.NodeUtil;
+import org.eclipse.xtext.ui.editor.utils.EditorUtils;
 
 public class WMLUtil
 {
@@ -30,5 +32,17 @@ public class WMLUtil
 			}
 		}
 		return text.toString();
+	}
+
+	/**
+	 * Gets current edited file
+	 * @return
+	 */
+	public static IFile getActiveEditorFile()
+	{
+		if (EditorUtils.getActiveXtextEditor() == null)
+			return null;
+		return (IFile)EditorUtils.getActiveXtextEditor()
+					.getEditorInput().getAdapter(IFile.class);
 	}
 }

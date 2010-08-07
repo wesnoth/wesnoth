@@ -20,8 +20,8 @@ import org.eclipse.xtext.parsetree.LeafNode;
 import org.eclipse.xtext.parsetree.NodeUtil;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
-import org.eclipse.xtext.ui.editor.utils.EditorUtils;
 import org.wesnoth.ui.WMLUiModule;
+import org.wesnoth.ui.WMLUtil;
 import org.wesnoth.ui.labeling.WMLLabelProvider;
 import org.wesnoth.wML.WMLKey;
 import org.wesnoth.wML.WMLTag;
@@ -101,8 +101,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 	private void addMacroCallProposals(EObject model, boolean ruleProposal,
 			ContentAssistContext context, ICompletionProposalAcceptor acceptor)
 	{
-		IFile file = (IFile)EditorUtils.getActiveXtextEditor()
-							.getEditorInput().getAdapter(IFile.class);
+		IFile file = WMLUtil.getActiveEditorFile();
 		if (file == null)
 		{
 			Logger.getInstance().logError("FATAL! file is null (and it shouldn't)");
@@ -144,8 +143,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 			if (key.getName().equals("next_scenario") ||
 				key.getName().equals("first_scenario"))
 			{
-				IFile file = (IFile)EditorUtils.getActiveXtextEditor()
-								.getEditorInput().getAdapter(IFile.class);
+				IFile file = WMLUtil.getActiveEditorFile();
 				if (file == null)
 				{
 					Logger.getInstance().logError("FATAL! file is null (and it shouldn't)");
