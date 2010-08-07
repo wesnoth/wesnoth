@@ -20,6 +20,8 @@ public class WMLAutoEditStrategy extends DefaultAutoEditStrategy
 	@Override
 	protected void configure(IEditStrategyAcceptor acceptor)
 	{
+		// don't super as we don't want autoeditor for [ or other stuff
 		configureStringLiteral(acceptor);
+		acceptor.accept(new ClosingEndTagAutoEditStrategy());
 	}
 }
