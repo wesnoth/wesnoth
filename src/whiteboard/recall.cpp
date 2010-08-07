@@ -43,7 +43,7 @@ std::ostream& operator<<(std::ostream& s, recall_const_ptr recall)
 
 std::ostream& recall::print(std::ostream &s) const
 {
-	//@todo Implement
+	s << "Recalling " << fake_unit_->name() << " [" << fake_unit_->id() << "] on hex " << recall_hex_;
 	return s;
 }
 
