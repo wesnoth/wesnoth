@@ -6,6 +6,8 @@
 #include <map>
 #include <vector>
 
+#include "exceptions.hpp"
+
 namespace game_logic {
 class formula_callable;
 }
@@ -29,9 +31,8 @@ struct variant_string;
 struct variant_map;
 class variant_iterator;
 
-struct type_error {
+struct type_error : public game::error {
 	explicit type_error(const std::string& str);
-	std::string message;
 };
 
 

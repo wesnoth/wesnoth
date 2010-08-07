@@ -23,6 +23,7 @@
 
 #include "about.hpp"
 #include "display.hpp"
+#include "exceptions.hpp"
 #include "foreach.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
@@ -325,10 +326,9 @@ private:
 };
 
 /// Thrown when the help system fails to parse something.
-struct parse_error
+struct parse_error : public game::error
 {
-	parse_error(const std::string& msg) : message(msg) {}
-	std::string message;
+	parse_error(const std::string& msg) : game::error(msg) {}
 };
 
 /// The area where the content is shown in the help browser.

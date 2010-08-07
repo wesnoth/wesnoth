@@ -61,7 +61,7 @@ std::string get_call_stack()
 	return res;
 }
 
-type_error::type_error(const std::string& str) : message(str) {
+type_error::type_error(const std::string& str) : game::error(str) {
 	std::cerr << "ERROR: " << message << "\n" << get_call_stack();
 }
 
