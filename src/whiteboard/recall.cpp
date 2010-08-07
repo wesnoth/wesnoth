@@ -93,7 +93,7 @@ void recall::apply_temp_modifier(unit_map& unit_map)
 	assert(valid_);
 	temp_unit_->set_location(recall_hex_);
 
-	DBG_WB << "Inserting future recall [" << temp_unit_->id()
+	DBG_WB << "Inserting future recall" << temp_unit_->name() << " [" << temp_unit_->id()
 			<< "] at position " << temp_unit_->get_location() << ".\n";
 
 	//temporarily remove unit from recall list

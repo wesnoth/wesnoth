@@ -831,12 +831,20 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 
 	gui_->draw(); //clear the old menu
 
-	if(recall_list_team.empty()) {
-		gui2::show_transient_message(gui_->video(), "",
-			_("There are no troops available to recall\n(You must have"
-			" veteran survivors from a previous scenario)"));
-		return;
-	}
+	{ wb::scoped_planned_pathfind_map future; //< start planned pathfind map scope
+		DBG_WB <<"menu_handler::recall: Contents of wb-modified recall list:\n";
+		foreach(const unit& unit, recall_list_team)
+		{
+			DBG_WB << unit.name() << " [" << unit.id() <<"]\n";
+		}
+
+		if(recall_list_team.empty()) {
+			gui2::show_transient_message(gui_->video(), "",
+				_("There are no troops available to recall\n(You must have"
+				" veteran survivors from a previous scenario)"));
+			return;
+		}
+	} // end planned pathfind map scope
 
 	std::vector<std::string> options, options_to_filter;
 
@@ -856,120 +864,134 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 	options.push_back(heading.str());
 	options_to_filter.push_back(options.back());
 
-	foreach (const unit &u, recall_list_team)
-	{
-		std::stringstream option, option_to_filter;
-		std::string name = u.name();
-		if (name.empty()) name = "-";
+	{ wb::scoped_planned_pathfind_map future; //< start planned pathfind map scope
+		foreach (const unit &u, recall_list_team)
+		{
+			std::stringstream option, option_to_filter;
+			std::string name = u.name();
+			if (name.empty()) name = "-";
 
-		option << IMAGE_PREFIX << u.absolute_image();
-#ifndef LOW_MEM
-		option << "~RC("  << u.team_color() << '>'
-			<< team::get_side_color_index(side_num) << ')';
-#endif
-		option << COLUMN_SEPARATOR
-			<< u.type_name() << COLUMN_SEPARATOR
-			<< name << COLUMN_SEPARATOR;
+			option << IMAGE_PREFIX << u.absolute_image();
+		#ifndef LOW_MEM
+			option << "~RC("  << u.team_color() << '>'
+				<< team::get_side_color_index(side_num) << ')';
+		#endif
+			option << COLUMN_SEPARATOR
+				<< u.type_name() << COLUMN_SEPARATOR
+				<< name << COLUMN_SEPARATOR;
 
-		// Show units of level (0=gray, 1 normal, 2 bold, 2+ bold&wbright)
-		const int level = u.level();
-		if(level < 1) {
-			option << "<150,150,150>";
-		} else if(level == 1) {
-			option << font::NORMAL_TEXT;
-		} else if(level == 2) {
-			option << font::BOLD_TEXT;
-		} else if(level > 2 ) {
-			option << font::BOLD_TEXT << "<255,255,255>";
+			// Show units of level (0=gray, 1 normal, 2 bold, 2+ bold&wbright)
+			const int level = u.level();
+			if(level < 1) {
+				option << "<150,150,150>";
+			} else if(level == 1) {
+				option << font::NORMAL_TEXT;
+			} else if(level == 2) {
+				option << font::BOLD_TEXT;
+			} else if(level > 2 ) {
+				option << font::BOLD_TEXT << "<255,255,255>";
+			}
+			option << level << COLUMN_SEPARATOR;
+
+			option << font::color2markup(u.xp_color()) << u.experience() << "/";
+			if (u.can_advance())
+				option << u.max_experience();
+			else
+				option << "-";
+
+			option_to_filter << u.type_name() << " " << name << " " << u.level();
+
+		#ifndef USE_TINY_GUI
+			option << COLUMN_SEPARATOR;
+			foreach (const t_string& trait, u.trait_names()) {
+				option << trait << '\n';
+				option_to_filter << " " << trait;
+			}
+		#endif
+
+			options.push_back(option.str());
+			options_to_filter.push_back(option_to_filter.str());
 		}
-		option << level << COLUMN_SEPARATOR;
-
-		option << font::color2markup(u.xp_color()) << u.experience() << "/";
-		if (u.can_advance())
-			option << u.max_experience();
-		else
-			option << "-";
-
-		option_to_filter << u.type_name() << " " << name << " " << u.level();
-
-#ifndef USE_TINY_GUI
-		option << COLUMN_SEPARATOR;
-		foreach (const t_string& trait, u.trait_names()) {
-			option << trait << '\n';
-			option_to_filter << " " << trait;
-		}
-#endif
-
-		options.push_back(option.str());
-		options_to_filter.push_back(option_to_filter.str());
-	}
+	} // end planned pathfind map scope
 
 	int res = 0;
 
 	{
-		gui::dialog rmenu(*gui_, _("Recall") + get_title_suffix(side_num),
-			_("Select unit:") + std::string("\n"),
-			gui::OK_CANCEL, gui::dialog::default_style);
-		rmenu.set_menu(options, &sorter);
+		{ wb::scoped_planned_pathfind_map future; //< start planned pathfind map scope
+			gui::dialog rmenu(*gui_, _("Recall") + get_title_suffix(side_num),
+				_("Select unit:") + std::string("\n"),
+				gui::OK_CANCEL, gui::dialog::default_style);
+			rmenu.set_menu(options, &sorter);
 
-		gui::filter_textbox* filter = new gui::filter_textbox(gui_->video(),
-			_("Filter: "), options, options_to_filter, 1, rmenu, 200);
-		rmenu.set_textbox(filter);
+			gui::filter_textbox* filter = new gui::filter_textbox(gui_->video(),
+				_("Filter: "), options, options_to_filter, 1, rmenu, 200);
+			rmenu.set_textbox(filter);
 
-		delete_recall_unit recall_deleter(*gui_, *filter, recall_list_team);
-		gui::dialog_button_info delete_button(&recall_deleter,_("Dismiss Unit"));
-		rmenu.add_button(delete_button);
+			delete_recall_unit recall_deleter(*gui_, *filter, recall_list_team);
+			gui::dialog_button_info delete_button(&recall_deleter,_("Dismiss Unit"));
+			rmenu.add_button(delete_button);
 
-		rmenu.add_button(new help::help_button(*gui_,"recruit_and_recall"),
-			gui::dialog::BUTTON_HELP);
+			rmenu.add_button(new help::help_button(*gui_,"recruit_and_recall"),
+				gui::dialog::BUTTON_HELP);
 
-		dialogs::units_list_preview_pane unit_preview(recall_list_team, filter);
-		rmenu.add_pane(&unit_preview);
+			dialogs::units_list_preview_pane unit_preview(recall_list_team, filter);
+			rmenu.add_pane(&unit_preview);
 
-		//sort by level
-		static int sort_by = 3;
-		static bool sort_reversed = false;
+			//sort by level
+			static int sort_by = 3;
+			static bool sort_reversed = false;
 
-		if(sort_by >= 0) {
-			rmenu.get_menu().sort_by(sort_by);
-			// "reclick" on the sorter to reverse the order
-			if(sort_reversed) {
+			if(sort_by >= 0) {
 				rmenu.get_menu().sort_by(sort_by);
+				// "reclick" on the sorter to reverse the order
+				if(sort_reversed) {
+					rmenu.get_menu().sort_by(sort_by);
+				}
 			}
+
+			res = rmenu.show();
+			res = filter->get_index(res);
+
+			sort_by = rmenu.get_menu().get_sort_by();
+			sort_reversed = rmenu.get_menu().get_sort_reversed();
+
+			if (res < 0) return;
+		} // end planned pathfind map scope
+	}
+
+	{ wb::scoped_planned_pathfind_map future; //< start planned pathfind map scope
+		int wb_gold = resources::whiteboard->get_spent_gold_for(side_num);
+		if (current_team.gold() - wb_gold < current_team.recall_cost()) {
+			utils::string_map i18n_symbols;
+			i18n_symbols["cost"] = lexical_cast<std::string>(current_team.recall_cost());
+			std::string msg = vngettext(
+				"You must have at least 1 gold piece to recall a unit",
+				"You must have at least $cost gold pieces to recall a unit",
+				current_team.recall_cost(), i18n_symbols);
+			gui2::show_transient_message(gui_->video(), "", msg);
+			return;
 		}
-
-		res = rmenu.show();
-		res = filter->get_index(res);
-
-		sort_by = rmenu.get_menu().get_sort_by();
-		sort_reversed = rmenu.get_menu().get_sort_reversed();
-
-		if (res < 0) return;
-	}
-
-	if (current_team.gold() < current_team.recall_cost()) {
-		utils::string_map i18n_symbols;
-		i18n_symbols["cost"] = lexical_cast<std::string>(current_team.recall_cost());
-		std::string msg = vngettext(
-			"You must have at least 1 gold piece to recall a unit",
-			"You must have at least $cost gold pieces to recall a unit",
-			current_team.recall_cost(), i18n_symbols);
-		gui2::show_transient_message(gui_->video(), "", msg);
-		return;
-	}
+	} // end planned pathfind map scope
 
 	LOG_NG << "recall index: " << res << "\n";
 	const events::command_disabler disable_commands;
 
-	map_location loc = last_hex;
-	const std::string &err = find_recruit_location(side_num, loc);
+	map_location recall_location = last_hex;
+	std::string err;
+	{ wb::scoped_planned_pathfind_map future; //< start planned pathfind map scope
+		err = find_recruit_location(side_num, recall_location);
+	} // end planned pathfind map scope
 	if(!err.empty()) {
 		gui2::show_transient_message(gui_->video(), "", err);
 		return;
 	}
-	unit un = recall_list_team[res];
-	if (!resources::whiteboard->save_recall(un, side_num, loc)) {
-		do_recall(un, side_num, loc);
+	unit* recalled_unit;
+	{ wb::scoped_planned_pathfind_map future; //< start planned pathfind map scope
+		recalled_unit = new unit(recall_list_team[res]);
+	} // end planned pathfind map scope
+
+	if (!resources::whiteboard->save_recall(*recalled_unit, side_num, recall_location)) {
+		do_recall(*recalled_unit, side_num, recall_location);
 	}
 }
 
