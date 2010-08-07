@@ -101,7 +101,7 @@ void recall::apply_temp_modifier(unit_map& unit_map)
 	std::vector<unit>::iterator it = std::find_if(recalls.begin(), recalls.end(),
 					unit_comparator_predicate(*temp_unit_));
 	assert(it != recalls.end());
-	resources::teams->at(team_index()).recall_list().erase(it);
+	recalls.erase(it);
 
 	// Temporarily insert unit into unit_map
 	unit_map.insert(temp_unit_);
