@@ -11,9 +11,7 @@ package wesnoth_eclipse_plugin.utils;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Properties;
@@ -42,12 +40,12 @@ public class ProjectCache
 	private File definesFile_;
 
 	private Map<String, String> scenarios_;
-	private List<Define> defines_;
+	private Map<String, Define> defines_;
 
 	public ProjectCache(IProject project)
 	{
-		scenarios_ = new HashMap<String, String>();
-		defines_ = new ArrayList<Define>();
+		scenarios_ = new HashMap<String, String>(3);
+		defines_ = new HashMap<String, Define>(0);
 		propertiesTimetamp_ = 0;
 		properties_ = new Properties();
 
@@ -192,7 +190,7 @@ public class ProjectCache
 		defines_ = Define.readDefines(definesFile_.getAbsolutePath());
 	}
 
-	public void setDefines(List<Define> defines)
+	public void setDefines(Map<String, Define> defines)
 	{
 		defines_ = defines;
 	}
@@ -201,7 +199,7 @@ public class ProjectCache
 	 * Returns the defines associated with this project
 	 * @return
 	 */
-	public List<Define> getDefines()
+	public Map<String, Define> getDefines()
 	{
 		return defines_;
 	}

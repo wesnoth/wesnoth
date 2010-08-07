@@ -109,18 +109,19 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 			return;
 		}
 
-		for(Define define : ProjectUtils.getCacheForProject(file.getProject()).getDefines())
+		for(Entry<String, Define> define : ProjectUtils.getCacheForProject(
+								file.getProject()).getDefines().entrySet())
 		{
 			StringBuilder proposal = new StringBuilder(10);
 			if (ruleProposal == true)
 				proposal.append("{");
-			proposal.append(define.getName());
+			proposal.append(define.getKey());
 
-			for(String arg : define.getArguments())
+			for(String arg : define.getValue().getArguments())
 				proposal.append(" " + arg);
 			proposal.append("}");
 
-			acceptor.accept(createCompletionProposal(proposal.toString(), define.getName(),
+			acceptor.accept(createCompletionProposal(proposal.toString(), define.getKey(),
 					WMLLabelProvider.getImageByName("macrocall.png"), context));
 		}
 	}

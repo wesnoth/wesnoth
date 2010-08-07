@@ -10,6 +10,7 @@ package wesnoth_eclipse_plugin.preprocessor;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import wesnoth_eclipse_plugin.Logger;
 import wesnoth_eclipse_plugin.utils.ResourceUtils;
@@ -83,7 +84,7 @@ public class Define
 	 * @param file
 	 * @return
 	 */
-	public static List<Define> readDefines(String file)
+	public static Map<String, Define> readDefines(String file)
 	{
 		DefinesSAXHandler handler = (DefinesSAXHandler) ResourceUtils.
 				getWMLSAXHandlerFromResource(file, new DefinesSAXHandler());

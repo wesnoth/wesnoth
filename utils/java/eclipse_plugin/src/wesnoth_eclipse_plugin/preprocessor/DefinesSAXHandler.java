@@ -9,7 +9,9 @@
 package wesnoth_eclipse_plugin.preprocessor;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Stack;
 
 import org.xml.sax.Attributes;
@@ -22,7 +24,7 @@ import org.xml.sax.helpers.DefaultHandler;
 public class DefinesSAXHandler extends DefaultHandler
 {
 	private static Stack<String> stack_;
-	private List<Define> defines_;
+	private Map<String, Define> defines_;
 
 	// indexes for different define properties
 	private String name_;
@@ -35,7 +37,7 @@ public class DefinesSAXHandler extends DefaultHandler
 	public DefinesSAXHandler()
 	{
 		stack_ = new Stack<String>();
-		defines_ = new ArrayList<Define>();
+		defines_ = new HashMap<String, Define>();
 		arguments_ = new ArrayList<String>();
 	}
 
@@ -57,7 +59,7 @@ public class DefinesSAXHandler extends DefaultHandler
 		if (qName.equals("preproc_define"))
 		{
 			// create the define
-			defines_.add(new Define(name_, value_, textdomain_,
+			defines_.put(name_, new Define(name_, value_, textdomain_,
 					linenum_, location_, arguments_));
 			// reset values
 			resetValues();
@@ -115,10 +117,10 @@ public class DefinesSAXHandler extends DefaultHandler
 	}
 
 	/**
-	 * Gets the list of defines parsed
+	 * Gets the map of defines parsed
 	 * @return
 	 */
-	public List<Define> getDefines()
+	public Map<String, Define> getDefines()
 	{
 		return defines_;
 	}
