@@ -96,21 +96,33 @@ void recall::apply_temp_modifier(unit_map& unit_map)
 	DBG_WB << "Inserting future recall [" << temp_unit_->id()
 			<< "] at position " << temp_unit_->get_location() << ".\n";
 
+	//temporarily remove unit from recall list
+	std::vector<unit>& recalls = resources::teams->at(team_index()).recall_list();
+	std::vector<unit>::iterator it = std::find_if(recalls.begin(), recalls.end(),
+					unit_comparator_predicate(*temp_unit_));
+	assert(it != recalls.end());
+	resources::teams->at(team_index()).recall_list().erase(it);
+
+	// Temporarily insert unit into unit_map
 	unit_map.insert(temp_unit_);
 	//unit map takes ownership of temp_unit
 	temp_unit_ = NULL;
 
+	//Add cost to money spent on recruits.
 	temp_cost_ = resources::teams->at(team_index()).recall_cost();
-	/*
-	 * Add cost to money spent on recruits.
-	 */
 	resources::teams->at(team_index()).get_side_actions()->change_gold_spent_by(temp_cost_);
+
+	// Update gold in top bar
 	resources::screen->invalidate_game_status();
 }
 
 void recall::remove_temp_modifier(unit_map& unit_map)
 {
 	temp_unit_ = unit_map.extract(recall_hex_);
+	assert(temp_unit_);
+
+	//Put unit back into recall list
+	resources::teams->at(team_index()).recall_list().push_back(*temp_unit_);
 
 	/*
 	 * Remove cost from money spent on recruits.
