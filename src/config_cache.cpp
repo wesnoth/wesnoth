@@ -46,8 +46,7 @@ namespace game_config {
 		force_valid_cache_(false),
 		use_cache_(true),
 		fake_invalid_cache_(false),
-		defines_map_(),
-		path_defines_()
+		defines_map_()
 	{
 		// To set-up initial defines map correctly
 		clear_defines();
@@ -274,25 +273,13 @@ namespace game_config {
 		// Make sure that we have fake transaction if no real one is going on
 		fake_transaction fake;
 
-		{
-			// activate path defines
-			scoped_preproc_define_list defines;
-			foreach (const path_define_map::value_type &define, path_defines_.equal_range(path)) {
-				scoped_preproc_define_ptr ptr(new scoped_preproc_define(define.second));
-				defines.push_back(ptr);
-			}
-
-			if (use_cache_)
-			{
-				read_cache(path, cfg);
-			} else {
-				preproc_map copy_map(make_copy_map());
-				read_configs(path, cfg, copy_map);
-				add_defines_map_diff(copy_map);
-			}
+		if (use_cache_) {
+			read_cache(path, cfg);
+		} else {
+			preproc_map copy_map(make_copy_map());
+			read_configs(path, cfg, copy_map);
+			add_defines_map_diff(copy_map);
 		}
-
-		return;
 	}
 
 	void config_cache::set_force_invalid_cache(bool force)
@@ -313,30 +300,6 @@ namespace game_config {
 	void config_cache::recheck_filetree_checksum()
 	{
 		data_tree_checksum(true);
-	}
-
-	void config_cache::add_path_define(const std::string& path, const std::string& define)
-	{
-		path_defines_.insert(std::make_pair(path,define));
-	}
-
-	class define_finder {
-		const std::string& define_;
-		public:
-		define_finder(const std::string& define) : define_(define)
-		{}
-		bool operator()(const config_cache::path_define_map::value_type& value)
-		{
-			return value.second == define_;
-		}
-	};
-
-	void config_cache::remove_path_define(const std::string& path, const std::string& define)
-	{
-		path_define_map::iterator begin = path_defines_.lower_bound(path);
-		path_define_map::iterator end = path_defines_.upper_bound(path);
-		path_define_map::iterator match = std::find_if(begin,end, define_finder(define));
-		path_defines_.erase(match);
 	}
 
 	void config_cache::add_define(const std::string& define)

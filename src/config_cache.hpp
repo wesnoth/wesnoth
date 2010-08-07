@@ -79,13 +79,10 @@ namespace game_config {
 	 *       using hash checksum of preproc_map.
 	 **/
 	class config_cache : private boost::noncopyable {
-		public:
-		typedef std::multimap<std::string,std::string> path_define_map;
 		private:
 
 		bool force_valid_cache_, use_cache_, fake_invalid_cache_;
 		preproc_map defines_map_;
-		path_define_map path_defines_;
 
 		void read_file(const std::string& file, config& cfg);
 		void write_file(std::string file, const config& cfg);
@@ -134,14 +131,6 @@ namespace game_config {
 		 * Remove a entry to preproc defines map
 		 **/
 		void remove_define(const std::string& define);
-		/**
-		 * Add a path specific entry to preproc defines map
-		 **/
-		void add_path_define(const std::string& path, const std::string& define);
-		/**
-		 * Remove a path specific entry to preproc defines map
-		 **/
-		void remove_path_define(const std::string& path, const std::string& define);
 
 		/**
 		 * Enable/disable caching
