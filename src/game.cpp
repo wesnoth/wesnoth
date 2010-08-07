@@ -1172,6 +1172,9 @@ bool game_controller::new_campaign()
 		state_.classification().difficulty = difficulties[difficulty];
 		cache_.clear_defines();
 		cache_.add_define(difficulties[difficulty]);
+	} else {
+		//clear even when there is no difficulty
+		cache_.clear_defines();
 	}
 
 	state_.classification().campaign_define = campaign["define"].str();
