@@ -155,8 +155,7 @@ void validate_visitor::visit_attack(attack_ptr attack)
 	{
 		visit_move(boost::static_pointer_cast<move>(attack));
 	}
-
-	if (!attack->is_valid())
+	else
 	{
 		actions_to_erase_.insert(attack);
 	}
@@ -192,7 +191,11 @@ void validate_visitor::visit_recruit(recruit_ptr recruit)
 		recruit->set_valid(false);
 	}
 
-	if (!recruit->is_valid())
+	if (recruit->is_valid())
+	{
+		mapbuilder_visitor::visit_recruit(recruit);
+	}
+	else
 	{
 		actions_to_erase_.insert(recruit);
 	}
@@ -230,7 +233,11 @@ void validate_visitor::visit_recall(recall_ptr recall)
 		recall->set_valid(false);
 	}
 
-	if (!recall->is_valid())
+	if (recall->is_valid())
+	{
+		mapbuilder_visitor::visit_recall(recall);
+	}
+	else
 	{
 		actions_to_erase_.insert(recall);
 	}
