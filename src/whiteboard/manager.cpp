@@ -709,4 +709,9 @@ scoped_planned_pathfind_map::~scoped_planned_pathfind_map()
 		resources::whiteboard->set_planned_unit_map();
 }
 
+bool unit_comparator_predicate::operator()(unit const& unit)
+{
+	return unit_.id() == unit.id();
+}
+
 } // end namespace wb

@@ -18,6 +18,7 @@
 
 #include "validate_visitor.hpp"
 #include "attack.hpp"
+#include "manager.hpp"
 #include "move.hpp"
 #include "recall.hpp"
 #include "recruit.hpp"
@@ -196,14 +197,6 @@ void validate_visitor::visit_recruit(recruit_ptr recruit)
 		actions_to_erase_.insert(recruit);
 	}
 }
-
-/// Predicate that compares the id() of two units. Used for the search in visit_recall below
-struct unit_comparator_predicate {
-	unit_comparator_predicate(const unit& unit) : unit_(unit) {}
-	bool operator()(const unit& unit) {	return unit_.id() == unit.id();	}
-private:
-	const unit& unit_;
-};
 
 void validate_visitor::visit_recall(recall_ptr recall)
 {

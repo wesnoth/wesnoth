@@ -195,6 +195,14 @@ struct scoped_planned_pathfind_map
 	bool has_planned_unit_map_;
 };
 
+/// Predicate that compares the id() of two units. Useful for searches in unit vectors with std::find_if()
+struct unit_comparator_predicate {
+	unit_comparator_predicate(unit const& unit) : unit_(unit) {}
+	bool operator()(unit const& unit);
+private:
+	unit const& unit_;
+};
+
 } // end namespace wb
 
 #endif /* WB_MANAGER_HPP_ */

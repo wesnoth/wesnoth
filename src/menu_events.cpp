@@ -973,20 +973,12 @@ void menu_handler::recall(int side_num, const map_location &last_hex)
 	}
 }
 
-/// Predicate that compares the id() of two units. Used for the search in do_recall below
-struct unit_comparator_predicate {
-	unit_comparator_predicate(const unit& unit) : unit_(unit) {}
-	bool operator()(const unit& unit) {	return unit_.id() == unit.id();	}
-private:
-	const unit& unit_;
-};
-
 void menu_handler::do_recall(const unit& un, int side_num, const map_location& recall_location)
 {
 	team &current_team = teams_[side_num - 1];
 	std::vector<unit>& recall_list_team = current_team.recall_list();
 
-	unit_comparator_predicate comparator(un);
+	wb::unit_comparator_predicate comparator(un);
 
 	std::vector<unit>::iterator it = std::find_if(recall_list_team.begin(),
 			recall_list_team.end(), comparator);
