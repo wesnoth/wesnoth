@@ -10,14 +10,20 @@ Version 1.9.0-svn:
        repository (Intermediate level, 13 scenarios)
    * Descent into Darkness:
      * 'A Small Favor' (part 1) now gives an early finish bonus.
+     * Dela is no longer invulnerable in 'Alone at Last' but cannot be safely
+       assassinated.
    * Eastern Invasion:
      * New (unanimated) sprites for Owaec.
      * Made it slightly easier to rescue the knights in 'Mal-Ravanal's Capital'.
+     * Increased the turn limit in 'Two Paths' from 18/16/14 to 18/17/16.
    * Heir to the Throne:
      * Made 'Cliffs of Thoria' much easier.
+     * Made 'Isle of the Damned' slightly easier.
    * Northern Rebirth:
      * In Showdown, you recover full gold only if Sisal survived the previous
        scenario.
+   * Son of the Black Eye:
+     * Increased the turn limit in 'Black Flag' from 30/25/20 to 30/28/24.
    * The South Guard:
      * A new set of story art by Scavenger.
      * In 'Vengeance', the final objective is now revealed at the beginning of
@@ -107,7 +113,7 @@ Version 1.9.0-svn:
    * stone path now matches other terrains
    * added wooden floor terrain
    * added mushroom farm terrain
-   * added volcano combo terrain.
+   * added volcano terrain.
    * added a special blend transition for mountains next to chasms
    * added snowy encampment
    * special snowy chasm appears next to snow terrains
@@ -209,6 +215,9 @@ Version 1.9.0-svn:
      min_value only clamps the effect of the illuminates bonus, but ToD and
      terrain effect can pass them.
    * New key 'set_no_flag' in [tile] which combines 'set_flag' and 'no_flag'
+   * Added [gold_carryover] tag to the [objectives] tag.
+   * Added [note] tag to the [objectives] tag.
+   * Added caption= key to the [objective] tag.
  * Miscellaneous and bug fixes:
    * Added help entry when new unit is created directly in the recall list
    * Defaulted log level to warning again
