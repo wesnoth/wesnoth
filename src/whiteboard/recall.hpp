@@ -44,7 +44,7 @@ public:
 	virtual void accept(visitor& v);
 
 	/** Returns true if the action has been completely executed and can be deleted */
-	virtual bool execute() = 0;
+	virtual bool execute();
 
 	/** Applies temporarily the result of this action to the specified unit map. */
 	virtual void apply_temp_modifier(unit_map& unit_map) = 0;

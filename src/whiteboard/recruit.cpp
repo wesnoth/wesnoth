@@ -78,7 +78,7 @@ void recruit::accept(visitor& v)
 bool recruit::execute()
 {
 	assert(valid_);
-	int side_num = resources::screen->viewing_side();
+	int side_num = team_index() + 1;
 	resources::controller->get_menu_handler().do_recruit(unit_name_, side_num, recruit_hex_);
 	return true;
 }
@@ -120,7 +120,7 @@ unit* recruit::create_corresponding_unit()
 {
 	unit_type const* type = unit_types.find(unit_name_);
 	assert(type);
-	int side_num = resources::screen->viewing_side();
+	int side_num = team_index() + 1;
 	//real_unit = false needed to avoid generating random traits and causing OOS
 	bool real_unit = false;
 	return new unit(type, side_num, real_unit);
