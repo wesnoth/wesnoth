@@ -193,54 +193,42 @@ frame_builder::frame_builder() :
 
 frame_builder::frame_builder(const config& cfg,const std::string& frame_string) :
 	duration_(1),
-	image_(),
-	image_diagonal_(),
-	image_mod_(""),
-	halo_(""),
-	halo_x_(""),
-	halo_y_(""),
-	halo_mod_(""),
-	sound_(""),
-	text_(""),
+	image_(cfg[frame_string + "image"]),
+	image_diagonal_(cfg[frame_string + "image_diagonal"]),
+	image_mod_(cfg[frame_string + "image_mod"]),
+	halo_(cfg[frame_string + "halo"]),
+	halo_x_(cfg[frame_string + "halo_x"]),
+	halo_y_(cfg[frame_string + "halo_y"]),
+	halo_mod_(cfg[frame_string + "halo_mod"]),
+	sound_(cfg[frame_string + "sound"]),
+	text_(cfg[frame_string + "text"]),
 	text_color_(0),
 	blend_with_(0),
-	blend_ratio_(""),
-	highlight_ratio_(""),
-	offset_(""),
-	submerge_(""),
-	x_(""),
-	y_(""),
-	drawing_layer_("")
+	blend_ratio_(cfg[frame_string + "blend_ratio"]),
+	highlight_ratio_(cfg[frame_string + "alpha"]),
+	offset_(cfg[frame_string + "offset"]),
+	submerge_(cfg[frame_string + "submerge"]),
+	x_(cfg[frame_string + "x"]),
+	y_(cfg[frame_string + "y"]),
+	drawing_layer_(cfg[frame_string + "layer"])
 {
-	image(image::locator(cfg[frame_string+"image"]),cfg[frame_string+"image_mod"]);
-	image_diagonal(image::locator(cfg[frame_string+"image_diagonal"]),cfg[frame_string+"image_mod"]);
-	sound(cfg[frame_string+"sound"]);
-	std::vector<std::string> tmp_string_vect=utils::split(cfg[frame_string+"text_color"]);
-	if(tmp_string_vect.size() ==3) {
-		text(cfg[frame_string+"text"],
-		 display::rgb(atoi(tmp_string_vect[0].c_str()),atoi(tmp_string_vect[1].c_str()),atoi(tmp_string_vect[2].c_str())));
-	} else {
-		text(cfg[frame_string+"text"],0);
+	std::vector<std::string> color = utils::split(cfg[frame_string + "text_color"]);
+	if (color.size() == 3) {
+		text_color_ = display::rgb(atoi(color[0].c_str()),
+			atoi(color[1].c_str()), atoi(color[2].c_str()));
 	}
 
-	if(!cfg[frame_string+"duration"].empty()) {
-		duration(cfg[frame_string + "duration"]);
+	if (const config::attribute_value *v = cfg.get(frame_string + "duration")) {
+		duration(*v);
 	} else {
 		duration(cfg[frame_string + "end"].to_int() - cfg[frame_string + "begin"].to_int());
 	}
-	halo(cfg[frame_string+"halo"],cfg[frame_string+"halo_x"],cfg[frame_string+"halo_y"],cfg[frame_string+"halo_mod"]);
-	 tmp_string_vect=utils::split(cfg[frame_string+"blend_color"]);
-	if(tmp_string_vect.size() ==3) {
-		blend(cfg[frame_string+"blend_ratio"],display::rgb(atoi(tmp_string_vect[0].c_str()),atoi(tmp_string_vect[1].c_str()),atoi(tmp_string_vect[2].c_str())));
-	} else {
-		blend(cfg[frame_string+"blend_ratio"],0);
+
+	color = utils::split(cfg[frame_string + "blend_color"]);
+	if (color.size() == 3) {
+		blend_with_ = display::rgb(atoi(color[0].c_str()),
+			atoi(color[1].c_str()), atoi(color[2].c_str()));
 	}
-	highlight(cfg[frame_string+"alpha"]);
-	offset(cfg[frame_string+"offset"]);
-	submerge(cfg[frame_string+"submerge"]);
-	x(cfg[frame_string+"x"]);
-	y(cfg[frame_string+"y"]);
-	drawing_layer(cfg[frame_string+"layer"]);
 }
 
 frame_builder & frame_builder::image(const image::locator& image ,const std::string & image_mod)
