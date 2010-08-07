@@ -3,6 +3,9 @@ Eclipse plugin changelog
 0.3.0
 	* The *.map files are opened automatically in the game map editor
 	* The grammar was updated so the editor will support a broader variety of wml code
+	* When there are tags that need to be closed, when the user types: '[/' the last
+	  unclosed tag will be closed automatically
+	* Added the 'Wesnoth project' View specialized for viewing wesnoth projects
 	** Navigation - Used with F3 or CTRL+CLICK **
 		- map location - opens the map in the editor
 		- macro calls - goes to macro definition
