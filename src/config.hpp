@@ -304,12 +304,19 @@ public:
 
 	const_attr_itors attribute_range() const;
 
-	config &find_child(const std::string& key, const std::string& name,
-	                   const t_string& value);
-	const config &find_child(const std::string& key, const std::string& name,
-	                         const t_string& value) const;
-	const config &find_child_recursive(const std::string& key, const std::string& name,
-	                         const t_string& value) const;
+	/**
+	 * Returns the first child of tag @a key with a @a name attribute
+	 * containing @a value.
+	 */
+	config &find_child(const std::string &key, const std::string &name,
+		const std::string &value);
+
+	const config &find_child(const std::string &key, const std::string &name,
+		const std::string &value) const
+	{ return const_cast<config *>(this)->find_child(key, name, value); }
+
+	const config &find_child_recursive(const std::string &key,
+		const std::string &name, const std::string &value) const;
 
 	void clear_children(const std::string& key);
 	void remove_child(const std::string& key, size_t index);

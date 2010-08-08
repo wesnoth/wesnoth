@@ -564,20 +564,22 @@ namespace {
 
 struct config_has_value {
 	config_has_value(const std::string& name, const std::string& value)
-	              : name_(name), value_(value)
-	{}
+		: name_(name), value_()
+	{
+		value_ = value;
+	}
 
 	bool operator()(const config* cfg) const { return (*cfg)[name_] == value_; }
 
 private:
-	const std::string name_, value_;
+	std::string name_;
+	config::attribute_value value_;
 };
 
 } // end namespace
 
-config &config::find_child(const std::string& key,
-                           const std::string& name,
-                           const t_string& value)
+config &config::find_child(const std::string &key, const std::string &name,
+	const std::string &value)
 {
 	check_valid();
 
@@ -594,16 +596,8 @@ config &config::find_child(const std::string& key,
 		return invalid;
 }
 
-const config &config::find_child(const std::string& key,
-                                 const std::string& name,
-                                 const t_string& value) const
-{
-	return const_cast<config *>(this)->find_child(key, name, value);
-}
-
 const config& config::find_child_recursive(const std::string& key,
-                                 const std::string& name,
-                                 const t_string& value) const
+	const std::string &name, const std::string &value) const
 {
 	const config& res = this->find_child(key, name, value);
 	if (res)
