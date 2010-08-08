@@ -1631,7 +1631,7 @@ void connect::load_game()
 
 	if(level_["objectives"].empty()) {
 		level_["objectives"] = "<big>" + t_string(N_("Victory:"), "wesnoth") +
-			"</big>\n<span foreground=\"#00ff00\">" +
+			"</big>\n<span foreground=\"#00ff00\">&#8226; " +
 			t_string(N_("Defeat enemy leader(s)"), "wesnoth") + "</span>";
 	}
 }
