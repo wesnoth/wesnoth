@@ -1141,7 +1141,7 @@ static int intf_get_variable(lua_State *L)
 /**
  * Sets a WML variable.
  * - Arg 1: string containing the variable name.
- * - Arg 2: bool/int/string/table containing the value.
+ * - Arg 2: boolean/integer/string/table containing the value.
  */
 static int intf_set_variable(lua_State *L)
 {
@@ -1253,7 +1253,7 @@ static int intf_require(lua_State *L)
 /**
  * Returns whether the first side is an enemy of the second one.
  * - Args 1,2: side numbers.
- * - Ret 1: bool.
+ * - Ret 1: boolean.
  */
 static int intf_is_enemy(lua_State *L)
 {
@@ -1976,6 +1976,7 @@ static int intf_extract_unit(lua_State *L)
  * Finds a vacant tile.
  * - Args 1,2: location.
  * - Arg 3: optional unit for checking movement type.
+ * - Rets 1,2: location.
  */
 static int intf_find_vacant_tile(lua_State *L)
 {
@@ -2024,6 +2025,7 @@ static int intf_float_label(lua_State *L)
 /**
  * Creates a unit from its WML description.
  * - Arg 1: WML table.
+ * - Ret 1: unit userdata.
  */
 static int intf_create_unit(lua_State *L)
 {
@@ -2039,6 +2041,7 @@ static int intf_create_unit(lua_State *L)
 /**
  * Copies a unit.
  * - Arg 1: unit userdata.
+ * - Ret 1: unit userdata.
  */
 static int intf_copy_unit(lua_State *L)
 {
@@ -2055,7 +2058,8 @@ static int intf_copy_unit(lua_State *L)
  * - Arg 1: unit userdata.
  * - Arg 2: string containing the attack type.
  * - Arg 3: boolean indicating if attacker.
- * - Args 4/5: optional location.
+ * - Args 4,5: optional location.
+ * - Ret 1: integer.
  */
 static int intf_unit_resistance(lua_State *L)
 {
@@ -2077,6 +2081,7 @@ static int intf_unit_resistance(lua_State *L)
  * Returns unit movement cost on a given terrain.
  * - Arg 1: unit userdata.
  * - Arg 2: string containing the terrain type.
+ * - Ret 1: integer.
  */
 static int intf_unit_movement_cost(lua_State *L)
 {
@@ -2091,6 +2096,7 @@ static int intf_unit_movement_cost(lua_State *L)
  * Returns unit defense on a given terrain.
  * - Arg 1: unit userdata.
  * - Arg 2: string containing the terrain type.
+ * - Ret 1: integer.
  */
 static int intf_unit_defense(lua_State *L)
 {
