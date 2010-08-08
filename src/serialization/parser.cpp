@@ -37,6 +37,7 @@
 #include <boost/iostreams/filtering_stream.hpp>
 #include <boost/iostreams/filter/gzip.hpp>
 #include <boost/algorithm/string/replace.hpp>
+#include <boost/variant.hpp>
 
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
@@ -361,97 +362,100 @@ void read_gz(config &cfg, std::istream &file)
 	parser(cfg, filter)();
 }
 
-static char const *AttributeEquals = "=";
-
-static char const *TranslatableAttributePrefix = "_ \"";
-static char const *AttributePrefix = "\"";
-static char const *AttributePostfix = "\"";
-
-static char const* AttributeContPostfix = " + \n";
-static char const* AttributeEndPostfix = "\n";
-
-static char const* TextdomainPrefix = "#textdomain ";
-static char const* TextdomainPostfix = "\n";
-
-static char const *ElementPrefix = "[";
-static char const *ElementPostfix = "]\n";
-static char const *EndElementPrefix = "[/";
-static char const *EndElementPostfix = "]\n";
-
-static std::string escaped_string(const std::string& value) {
-	std::vector<char> res;
-	for(std::string::const_iterator i = value.begin(); i != value.end(); ++i) {
-		// double interior quotes
-		if(*i == '\"') res.push_back(*i);
-		res.push_back(*i);
+static std::string escaped_string(const std::string &value)
+{
+	std::string res = value;
+	std::string::size_type pos = 0;
+	while ((pos = res.find('"', pos)) != std::string::npos) {
+		res.insert(pos + 1, 1, '"');
+		pos += 2;
 	}
-	return std::string(res.begin(), res.end());
+	return res;
 }
 
-void write_key_val(std::ostream &out, const std::string &key, const t_string &value, unsigned int level, std::string& textdomain)
+struct write_key_val_visitor : boost::static_visitor<void>
+{
+	std::ostream &out_;
+	unsigned level_;
+	std::string &textdomain_;
+	const std::string &key_;
+
+	write_key_val_visitor(std::ostream &out, unsigned level,
+		std::string &textdomain, const std::string &key)
+		: out_(out), level_(level), textdomain_(textdomain), key_(key)
+	{}
+
+	void operator()(boost::blank const &) const
+	{ out_ << "\"\""; }
+	void operator()(bool b) const
+	{ out_ << (b ? "yes" : "no"); }
+	void operator()(int i) const
+	{ out_ << i; }
+	void operator()(double d) const
+	{ out_ << d; }
+	void operator()(std::string const &s) const
+	{ out_ << '"' << escaped_string(s) << '"'; }
+	void operator()(t_string const &s) const;
+};
+
+/**
+ * Writes all the parts of a translatable string.
+ * @note If the first part is translatable and in the wrong textdomain,
+ *       the textdomain change has to happen before the attribute name.
+ *       That is the reason for not outputting the key beforehand and
+ *       letting this function do it.
+ */
+void write_key_val_visitor::operator()(t_string const &value) const
 {
 	bool first = true;
-	if (value.empty()) {
-		out << std::string(level, '\t') << key << AttributeEquals
-			<< AttributePrefix << AttributePostfix
-			<< AttributeEndPostfix;;
-		return;
-	}
 
-	for(t_string::walker w(value); !w.eos(); w.next()) {
+	for (t_string::walker w(value); !w.eos(); w.next())
+	{
 		std::string part(w.begin(), w.end());
 
-		if(w.translatable()) {
-			if(w.textdomain() != textdomain) {
-				out << TextdomainPrefix
-					<< w.textdomain()
-					<< TextdomainPostfix;
-				textdomain = w.textdomain();
-			}
+		if (!first)
+			out_ << " +\n";
 
-			if(first) {
-				out << std::string(level, '\t')
-					<< key
-					<< AttributeEquals;
-			}
-
-			out << TranslatableAttributePrefix
-				<< escaped_string(part)
-				<< AttributePostfix;
-
-		} else {
-			if(first) {
-				out << std::string(level, '\t')
-					<< key
-					<< AttributeEquals;
-			}
-
-			out << AttributePrefix
-				<< escaped_string(part)
-				<< AttributePostfix;
+		if (w.translatable() && w.textdomain() != textdomain_) {
+			textdomain_ = w.textdomain();
+			out_ << "#textdomain " << textdomain_ << '\n';
 		}
 
-		if(w.last()) {
-			out << AttributeEndPostfix;
-		} else {
-			out << AttributeContPostfix;
-			out << std::string(level+1, '\t');
-		}
+		for (unsigned i = 0; i < level_; ++i) out_ << '\t';
 
+		if (first)
+			out_ << key_ << '=';
+		else
+			out_ << '\t';
+
+		if (w.translatable())
+			out_ << '_';
+
+		out_ << '"' << escaped_string(part) << '"';
 		first = false;
 	}
 }
 
+void write_key_val(std::ostream &out, const std::string &key,
+	const config::attribute_value &value, unsigned level,
+	std::string& textdomain)
+{
+	if (!boost::get<t_string const>(&value.value)) {
+		for (unsigned i = 0; i < level; ++i) out << '\t';
+		out << key << '=';
+	}
+	boost::apply_visitor(write_key_val_visitor(out, level, textdomain, key), value.value);
+	out << '\n';
+}
+
 void write_open_child(std::ostream &out, const std::string &child, unsigned int level)
 {
-	out << std::string(level, '\t')
-		<< ElementPrefix << child << ElementPostfix;
+	out << std::string(level, '\t') << '[' << child << "]\n";
 }
 
 void write_close_child(std::ostream &out, const std::string &child, unsigned int level)
 {
-	out << std::string(level, '\t')
-		<< EndElementPrefix << child << EndElementPostfix;
+	out << std::string(level, '\t') << "[/" << child << "]\n";
 }
 
 static void write_internal(config const &cfg, std::ostream &out, std::string& textdomain, size_t tab = 0)

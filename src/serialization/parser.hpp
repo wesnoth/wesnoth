@@ -19,12 +19,7 @@
 #define SERIALIZATION_PARSER_HPP_INCLUDED
 
 #include "global.hpp"
-
-#include <iosfwd>
-#include <string>
-
-class config;
-class t_string;
+#include "config.hpp"
 
 // Read data in, clobbering existing data.
 void read(config &cfg, std::istream &in); 	// Throws config::error
@@ -32,7 +27,7 @@ void read(config &cfg, std::string &in); 	// Throws config::error
 void read_gz(config &cfg, std::istream &in);
 
 void write(std::ostream &out, config const &cfg, unsigned int level=0);
-void write_key_val(std::ostream &out, const std::string &key, const t_string &value, unsigned int level, std::string &textdomain);
+void write_key_val(std::ostream &out, const std::string &key, const config::attribute_value &value, unsigned level, std::string &textdomain);
 void write_open_child(std::ostream &out, const std::string &child, unsigned int level);
 void write_close_child(std::ostream &out, const std::string &child, unsigned int level);
 

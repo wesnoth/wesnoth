@@ -201,6 +201,7 @@ public:
 
 		friend std::ostream& operator<<(std::ostream &os, const attribute_value &v);
 		friend void luaW_pushscalar(lua_State *, const attribute_value &);
+		friend void write_key_val(std::ostream &, const std::string &, const attribute_value &, unsigned, std::string &);
 	};
 
 	typedef std::map<std::string, attribute_value> attribute_map;

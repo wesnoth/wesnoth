@@ -78,7 +78,9 @@ void config_writer::write_child(const std::string &key, const config &cfg)
 
 void config_writer::write_key_val(const std::string &key, const std::string &value)
 {
-	::write_key_val(out_, key, value, level_, textdomain_);
+	config::attribute_value v;
+	v = value;
+	::write_key_val(out_, key, v, level_, textdomain_);
 }
 
 void config_writer::open_child(const std::string &key)
