@@ -22,6 +22,10 @@ local function insert_before_nl(s, t)
 end
 
 local function generate_objectives(cfg)
+	-- Note: when changing the text formatting, remember to check if you also
+	-- need to change the hardcoded default multiplayer objective text in
+	-- multiplayer_connect.cpp.
+    
 	local _ = wesnoth.textdomain("wesnoth")
 	local objectives = ""
 	local win_objectives = ""
