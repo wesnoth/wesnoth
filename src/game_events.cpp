@@ -1721,8 +1721,6 @@ WML_HANDLER_FUNCTION(unit, /*event_info*/, cfg)
 		var.clear();
 		new_unit.write(var);
 		var["placement"] = parsed_cfg["placement"];
-		var["x"] = parsed_cfg["x"];
-		var["y"] = parsed_cfg["y"];
 		return;
 	}
 
