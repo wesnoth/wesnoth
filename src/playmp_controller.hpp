@@ -63,6 +63,7 @@ protected:
 	virtual void after_human_turn();
 	virtual void finish_side_turn();
 	void play_network_turn();
+	void init_turn_data();
 
 	turn_info* turn_data_;
 

@@ -146,8 +146,7 @@ void playmp_controller::before_human_turn(bool save){
 	LOG_NG << "playmp::before_human_turn...\n";
 	playsingle_controller::before_human_turn(save);
 
-	turn_data_ = new turn_info(player_number_, replay_sender_);
-	turn_data_->host_transfer().attach_handler(this);
+	init_turn_data();
 }
 
 bool playmp_controller::counting_down() {
@@ -434,6 +433,9 @@ void playmp_controller::after_human_turn(){
 	LOG_NG << "playmp::after_human_turn...\n";
 	end_turn_record();
 
+	//ensure that turn_data_ is constructed before it is used.
+	if (turn_data_ == NULL) init_turn_data();
+
 	//send one more time to make sure network is up-to-date.
 	turn_data_->send_data();
 	playsingle_controller::after_human_turn();
@@ -507,6 +509,11 @@ void playmp_controller::play_network_turn(){
 	turn_data.host_transfer().detach_handler(this);
 	LOG_NG << "finished networked...\n";
 	return;
+}
+
+void playmp_controller::init_turn_data() {
+	turn_data_ = new turn_info(player_number_, replay_sender_);
+	turn_data_->host_transfer().attach_handler(this);
 }
 
 void playmp_controller::process_oos(const std::string& err_msg) const {
