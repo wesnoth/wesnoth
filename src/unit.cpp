@@ -206,7 +206,7 @@ unit::unit(const unit& o):
 unit::unit(unit_map* unitmap, const config& cfg,
 		bool use_traits, game_state* state) :
 	cfg_(cfg),
-	loc_(),
+	loc_(lexical_cast_default<int>(cfg["x"]) - 1, lexical_cast_default<int>(cfg["y"]) - 1),
 	advances_to_(),
 	type_(cfg["type"]),
 	race_(NULL),
@@ -515,9 +515,9 @@ unit::unit(unit_map* unitmap, const config& cfg,
 		"max_hitpoints", "max_moves", "max_experience",
 		"advances_to", "hitpoints", "goto_x", "goto_y", "moves",
 		"experience", "resting", "unrenamable", "alignment",
-		"canrecruit",
+		"canrecruit", "x", "y",
 		// Useless attributes created when saving units to WML:
-		"flag_rgb", "language_name", "x", "y" };
+		"flag_rgb", "language_name" };
 	foreach (const char *attr, internalized_attrs) {
 		input_cfg.remove_attribute(attr);
 		cfg_.remove_attribute(attr);
