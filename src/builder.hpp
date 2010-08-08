@@ -545,7 +545,7 @@ private:
 			const std::string& replacement);
 
 	/**
-	 *  Rotates a template rule to a given angle, and returns the rotated rule.
+	 *  Rotates a template rule to a given angle.
 	 *
 	 *  Template rules are defined like normal rules, except that:
 	 *  * Flags and image filenames may contain template strings of the form
@@ -580,8 +580,8 @@ private:
 	 *    r2, r3, r4, r5, r0, r1 and so on.
 	 *
 	 */
-	building_rule rotate_rule(const building_rule &rule, int angle,
-							  const std::vector<std::string>& angle_name);
+	void rotate_rule(building_rule &rule, int angle,
+		const std::vector<std::string> &angle_name);
 
 	/**
 	 * Parses a "config" object, which should contains [image] children,

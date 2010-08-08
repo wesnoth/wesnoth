@@ -502,19 +502,14 @@ void terrain_builder::replace_token(terrain_builder::building_rule &rule, const 
 	//replace_token(rule.images, token, replacement);
 }
 
-terrain_builder::building_rule terrain_builder::rotate_rule(const terrain_builder::building_rule &rule,
-	int angle, const std::vector<std::string>& rot)
+void terrain_builder::rotate_rule(building_rule &ret, int angle,
+	const std::vector<std::string> &rot)
 {
-	building_rule ret;
-	if(rot.size() != 6) {
+	if (rot.size() != 6) {
 		ERR_NG << "invalid rotations\n";
-		return ret;
+		return;
 	}
-	ret.location_constraints = rule.location_constraints;
-	ret.probability = rule.probability;
-	ret.local = rule.local;
 
-	ret.constraints = rule.constraints;
 	foreach (terrain_constraint &cons, ret.constraints) {
 		rotate(cons, angle);
 	}
@@ -543,8 +538,6 @@ terrain_builder::building_rule terrain_builder::rotate_rule(const terrain_builde
 		token.push_back('0' + i);
 		replace_token(ret, token, rot[a]);
 	}
-
-	return ret;
 }
 
 terrain_builder::rule_image_variant::rule_image_variant(const std::string &image_string, const std::string& tod, int prob) :
@@ -731,7 +724,8 @@ void terrain_builder::add_rotated_rules(building_ruleset& rules, building_rule& 
 		const std::vector<std::string>& rot = utils::split(rotations, ',');
 
 		for(size_t angle = 0; angle < rot.size(); ++angle) {
-			building_rule rule = rotate_rule(tpl, angle, rot);
+			building_rule rule = tpl;
+			rotate_rule(rule, angle, rot);
 			add_rule(rules, rule, precedence);
 		}
 	}
