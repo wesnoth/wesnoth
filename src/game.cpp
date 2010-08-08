@@ -536,8 +536,13 @@ bool game_controller::init_video()
 		return true;
 	}
 
-	//NOTE will use the hardcoded icon, game_config is not ready yet
-	image::set_wm_icon();
+#if !(defined(__APPLE__))
+	surface icon(image::get_image("game-icon.png", image::UNSCALED));
+	if(icon != NULL) {
+		///must be called after SDL_Init() and before setting video mode
+		::SDL_WM_SetIcon(icon,NULL);
+	}
+#endif
 
 	std::pair<int,int> resolution;
 	int bpp = 0;
@@ -597,10 +602,6 @@ bool game_controller::init_config(const bool force)
 
 	const config &cfg = game_config().child("game_config");
 	game_config::load_config(cfg ? &cfg : NULL);
-
-	//the game_config icon may be different from the hardcoded one
-	//FIXME SDL seems to segfault when setting twice the same icon
-	//image::set_wm_icon();
 
 	hotkey::deactivate_all_scopes();
 	hotkey::set_scope_active(hotkey::SCOPE_GENERAL);

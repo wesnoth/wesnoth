@@ -879,16 +879,6 @@ manager::~manager()
 	flush_cache();
 }
 
-void set_wm_icon()
-{
-#if !(defined(__APPLE__))
-	surface icon(get_image(game_config::images::game_icon,UNSCALED));
-	if(icon != NULL) {
-		::SDL_WM_SetIcon(icon,NULL);
-	}
-#endif
-}
-
 SDL_PixelFormat last_pixel_format;
 
 void set_pixel_format(SDL_PixelFormat* format)

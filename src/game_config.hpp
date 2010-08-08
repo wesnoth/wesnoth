@@ -70,8 +70,7 @@ namespace game_config
 			default_defeat_music;
 
 	namespace images {
-	extern std::string game_icon,
-			game_title,
+	extern std::string game_title,
 			game_logo,
 			// orbs and hp/xp bar
 			moved_orb,

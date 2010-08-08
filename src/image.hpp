@@ -165,11 +165,6 @@ namespace image {
 		~manager();
 	};
 
-	///function to set the program's icon to the window manager.
-	///must be called after SDL_Init() is called, but before setting the
-	///video mode
-	void set_wm_icon();
-
 	///will make all scaled images have these rgb values added to all
 	///their pixels. i.e. add a certain color hint to images. useful
 	///for representing day/night. Invalidates all scaled images.
