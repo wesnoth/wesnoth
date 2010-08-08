@@ -62,8 +62,15 @@ public:
 	 */
 	virtual void set_ai_context(ai_context *context);
 private:
+
+	/**
+	 * The underlying lua code
+	 */
+	std::string code_;
+
 	//There is one lua engine per AI. So, it can hold state
 	boost::shared_ptr<lua_ai_context> lua_ai_context_;
+
 };
 
 } //end of namespace ai
