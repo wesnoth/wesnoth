@@ -43,8 +43,7 @@ public:
 
 	shared_object() : val_(0) { set(T()); }
 
-	template <typename U>
-	shared_object(const U& o) : val_(0) { set(o); }
+	shared_object(const T &o) : val_(0) { set(o); }
 
 	shared_object(const shared_object& o) : val_(o.val_) {
 		assert(valid());
