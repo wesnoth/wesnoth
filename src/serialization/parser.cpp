@@ -241,7 +241,10 @@ void parser::parse_variable()
 		switch (tok_->current_token().type) {
 		case ',':
 			if ((curvar+1) != variables.end()) {
-				cfg[*curvar] = t_string(buffer);
+				if (buffer.translatable())
+					cfg[*curvar] = t_string(buffer);
+				else
+					cfg[*curvar] = buffer.value();
 				buffer = t_string_base();
 				++curvar;
 				continue;
@@ -290,7 +293,10 @@ void parser::parse_variable()
 	}
 
 	finish:
-	cfg[*curvar] = t_string(buffer);
+	if (buffer.translatable())
+		cfg[*curvar] = t_string(buffer);
+	else
+		cfg[*curvar] = buffer.value();
 	while (++curvar != variables.end()) {
 		cfg[*curvar] = "";
 	}
