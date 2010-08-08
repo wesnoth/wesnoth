@@ -1,4 +1,8 @@
 Version 1.8.3+svn:
+ * AI:
+   * Fixed bug #16102: Made AI cancel attacks if a previously valid attack
+     was made invalid by WML event after move in move+attack sequence.
+   * Allowed custom eras to define Lua AI modifications for games played with this era.
  * Campaigns:
    * Delfadors Memoirs:
      * Fixed bug #16295: Make Lionel's portrait in Delfador's Memoirs story
