@@ -485,64 +485,64 @@ private:
 	void rotate(terrain_constraint &constraint, int angle);
 
 	/**
-	 * Replaces, in a given string, a token with its value.
+	 * Replaces, in a given string, rotation tokens with their values.
 	 *
-	 * @param s            The string in which to do the replacement
-	 * @param token        The token to substitute
-	 * @param replacement  The replacement string
+	 * @param s            the string in which to do the replacement
+	 * @param angle        the angle for substituting the correct replacement.
+	 * @param replacement  the replacement strings.
 	 */
-	void replace_token(std::string &s, const std::string &token,
-			const std::string& replacement);
+	void replace_rotate_tokens(std::string &s, int angle,
+		const std::vector<std::string> &replacement);
 
 	/**
-	 * Replaces, in a given rule_image, a token with its value.
+	 * Replaces, in a given rule_image, rotation tokens with their values.
 	 * The actual substitution is done in all variants of the given image.
 	 *
-	 * @param image        The rule_image in which to do the replacement
-	 * @param token        The token to substitute
-	 * @param replacement  The replacement string
+	 * @param image        the rule_image in which to do the replacement.
+	 * @param angle        the angle for substituting the correct replacement.
+	 * @param replacement  the replacement strings.
 	 */
-	void replace_token(rule_image &image, const std::string &token,
-			const std::string& replacement);
+	void replace_rotate_tokens(rule_image &image, int angle,
+		const std::vector<std::string> &replacement);
 
 	/**
-	 * Replaces, in a given rule_variant_image, a token with its value.
+	 * Replaces, in a given rule_variant_image, rotation tokens with their values.
 	 * The actual substitution is done in the "image_string" parameter
 	 * of this rule_variant_image.
 	 *
-	 * @param variant      The rule_variant_image in which to do the replacement
-	 * @param token        The token to substitute
-	 * @param replacement  The replacement string
+	 * @param variant      the rule_variant_image in which to do the replacement.
+	 * @param angle        the angle for substituting the correct replacement.
+	 * @param replacement  the replacement strings.
 	 */
-	void replace_token(rule_image_variant &variant, const std::string &token,
-			const std::string& replacement)
-		{ replace_token(variant.image_string, token, replacement); }
+	void replace_rotate_tokens(rule_image_variant &variant, int angle,
+		const std::vector<std::string> &replacement)
+	{ replace_rotate_tokens(variant.image_string, angle, replacement); }
 
 	/**
-	 * Replaces, in a given rule_imagelist, a token with its value.
+	 * Replaces, in a given rule_imagelist, rotation tokens with their values.
 	 * The actual substitution is done in all rule_images contained
 	 * in the rule_imagelist.
 	 *
-	 * @param &					The rule_imagelist in which to do the replacement
-	 * @param token		The token to substitute
-	 * @param replacement		The replacement string
+	 * @param list         the rule_imagelist in which to do the replacement.
+	 * @param angle        the angle for substituting the correct replacement.
+	 * @param replacement  the replacement strings.
 	 */
-	void replace_token(rule_imagelist &, const std::string &token,
-			const std::string& replacement);
+	void replace_rotate_tokens(rule_imagelist &list, int angle,
+		const std::vector<std::string> &replacement);
 
 	/**
-	 * Replaces, in a given building_rule, a token with its value.
+	 * Replaces, in a given building_rule, rotation tokens with their values.
 	 * The actual substitution is done in the rule_imagelists contained
 	 * in all constraints of the building_rule, and in the flags
 	 * (has_flag, set_flag and no_flag) contained in all constraints
 	 * of the building_rule.
 	 *
-	 * @param rule         The building_rule in which to do the replacement
-	 * @param token        The token to substitute
-	 * @param replacement  The replacement string
+	 * @param rule         the building_rule in which to do the replacement.
+	 * @param angle        the angle for substituting the correct replacement.
+	 * @param replacement  the replacement strings.
 	 */
-	void replace_token(building_rule &rule, const std::string &token,
-			const std::string& replacement);
+	void replace_rotate_tokens(building_rule &rule, int angle,
+		const std::vector<std::string> &replacement);
 
 	/**
 	 *  Rotates a template rule to a given angle.

@@ -453,53 +453,56 @@ void terrain_builder::rotate(terrain_constraint &ret, int angle)
 	}
 }
 
-void terrain_builder::replace_token(std::string &s, const std::string &token, const std::string &replacement)
+void terrain_builder::replace_rotate_tokens(std::string &s, int angle,
+	const std::vector<std::string> &replacement)
 {
-	size_t pos;
-
-	if(token.empty()) {
-		ERR_NG << "empty token in replace_token\n";
-		return;
-	}
-	while((pos = s.find(token)) != std::string::npos) {
-		s.replace(pos, token.size(), replacement);
+	std::string::size_type pos = 0;
+	while ((pos = s.find("@R", pos)) != std::string::npos) {
+		if (pos + 2 >= s.size()) return;
+		unsigned i = s[pos + 2] - '0' + angle;
+		if (i >= 6) i -= 6;
+		if (i >= 6) { pos += 2; continue; }
+		const std::string &r = replacement[i];
+		s.replace(pos, 3, r);
+		pos += r.size();
 	}
 }
 
-void terrain_builder::replace_token(terrain_builder::rule_image &image, const std::string &token, const std::string &replacement)
+void terrain_builder::replace_rotate_tokens(rule_image &image, int angle,
+	const std::vector<std::string> &replacement)
 {
 	foreach(rule_image_variant& variant, image.variants) {
-		replace_token(variant, token, replacement);
+		replace_rotate_tokens(variant, angle, replacement);
 	}
 }
 
-void terrain_builder::replace_token(terrain_builder::rule_imagelist &list, const std::string &token, const std::string &replacement)
+void terrain_builder::replace_rotate_tokens(rule_imagelist &list, int angle,
+	const std::vector<std::string> &replacement)
 {
-	rule_imagelist::iterator itor;
-
-	for(itor = list.begin(); itor != list.end(); ++itor) {
-		replace_token(*itor, token, replacement);
+	foreach (rule_image &img, list) {
+		replace_rotate_tokens(img, angle, replacement);
 	}
 }
 
-void terrain_builder::replace_token(terrain_builder::building_rule &rule, const std::string &token, const std::string& replacement)
+void terrain_builder::replace_rotate_tokens(building_rule &rule, int angle,
+	const std::vector<std::string> &replacement)
 {
 	foreach (terrain_constraint &cons, rule.constraints)
 	{
 		// Transforms attributes
 		foreach (std::string &flag, cons.set_flag) {
-			replace_token(flag, token, replacement);
+			replace_rotate_tokens(flag, angle, replacement);
 		}
 		foreach (std::string &flag, cons.no_flag) {
-			replace_token(flag, token, replacement);
+			replace_rotate_tokens(flag, angle, replacement);
 		}
 		foreach (std::string &flag, cons.has_flag) {
-			replace_token(flag, token, replacement);
+			replace_rotate_tokens(flag, angle, replacement);
 		}
-		replace_token(cons.images, token, replacement);
+		replace_rotate_tokens(cons.images, angle, replacement);
 	}
 
-	//replace_token(rule.images, token, replacement);
+	//replace_rotate_tokens(rule.images, angle, replacement);
 }
 
 void terrain_builder::rotate_rule(building_rule &ret, int angle,
@@ -532,12 +535,7 @@ void terrain_builder::rotate_rule(building_rule &ret, int angle,
 		cons.loc.legacy_sum_assign(map_location(-minx, -((miny - 1) / 2)));
 	}
 
-	for(int i = 0; i < 6; ++i) {
-		int a = (angle+i) % 6;
-		std::string token = "@R";
-		token.push_back('0' + i);
-		replace_token(ret, token, rot[a]);
-	}
+	replace_rotate_tokens(ret, angle, rot);
 }
 
 terrain_builder::rule_image_variant::rule_image_variant(const std::string &image_string, const std::string& tod, int prob) :
