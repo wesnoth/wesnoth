@@ -23,6 +23,7 @@
 #include "leader_list.hpp"
 #include "gamestatus.hpp"
 #include "multiplayer_ui.hpp"
+#include "src/show_dialog.hpp"
 
 namespace mp {
 

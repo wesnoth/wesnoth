@@ -66,6 +66,8 @@ Feature Requests:
 
 #include "ana/api/ana.hpp"
 
+class config;
+
 /** Namespace of the asynchronous network API. */
 namespace network
 {

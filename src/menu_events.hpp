@@ -23,6 +23,7 @@
 #include "unit_map.hpp"
 
 class game_state;
+class gamemap;
 class tod_manager;
 
 namespace events {

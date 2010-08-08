@@ -14,6 +14,9 @@
 
 #ifndef PERSIST_VAR_H_INCLUDED
 #define PERSIST_VAR_H_INCLUDED
+
+class vconfig;
+
 void verify_and_set_global_variable(const vconfig &pcfg);
 void verify_and_get_global_variable(const vconfig &pcfg);
 void verify_and_clear_global_variable(const vconfig &pcfg);

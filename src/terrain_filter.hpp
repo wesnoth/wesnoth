@@ -17,6 +17,7 @@
 
 #include "map_location.hpp"
 #include "pathutils.hpp"
+#include "terrain_translation.hpp"
 #include "variable.hpp"
 
 class config;
