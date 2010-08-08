@@ -599,7 +599,8 @@ bool game_controller::init_config(const bool force)
 	game_config::load_config(cfg ? &cfg : NULL);
 
 	//the game_config icon may be different from the hardcoded one
-	image::set_wm_icon();
+	//FIXME SDL seems to segfault when setting twice the same icon
+	//image::set_wm_icon();
 
 	hotkey::deactivate_all_scopes();
 	hotkey::set_scope_active(hotkey::SCOPE_GENERAL);
