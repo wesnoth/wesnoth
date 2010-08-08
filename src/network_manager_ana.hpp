@@ -387,6 +387,10 @@ class ana_network_manager : public ana::listener_handler,
          */
         network::connection create_client_and_connect(std::string host, int port);
 
+//         network::connection create_client_and_connect(std::string host,
+//                                                       int port,
+//                                                       threading::waiter&);
+
         network::connection new_connection_id( );
 
         /**

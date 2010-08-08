@@ -272,8 +272,10 @@ namespace ana
                 virtual void set_raw_buffer_max_size( size_t size ) = 0;
 
                 /**
-                 * Switch to raw data mode and perform a blocking wait.
-                 * Only POD types should be used.
+                 * Block the caller waiting for an incoming message of a certain amount of bytes.
+                 *
+                 * @param bis : Binary stream where the data will be stored.
+                 * @param size : The amount of bytes trying to be read.
                  */
                 virtual void wait_raw_object(ana::serializer::bistream& bis, size_t size) = 0;
 

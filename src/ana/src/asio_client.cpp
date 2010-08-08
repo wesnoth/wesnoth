@@ -53,7 +53,9 @@ asio_client::asio_client(ana::address address, ana::port pt) :
     proxy_( NULL ),
     use_proxy_( false ),
     stats_collector_( ),
-    last_valid_operation_id_( ana::no_operation )
+    last_valid_operation_id_( ana::no_operation ),
+    connection_informed_mutex_(),
+    connection_informed_( false )
 {
 }
 
@@ -89,7 +91,7 @@ void asio_client::handle_proxy_connection(const boost::system::error_code& ec,
 {
     delete timer;
 
-    handler->handle_connect( ec, 0 );
+    inform_connection_result( handler, ec);
 
     if ( ! ec )
         run_listener();
@@ -111,7 +113,7 @@ void asio_client::handle_connect(const boost::system::error_code& ec,
     {
         delete timer; // will call handle_timeout with ana::operation_aborted
 
-        handler->handle_connect( ec, 0 );
+        inform_connection_result( handler, ec);
 
         if ( ana::client::header_mode() )
             run_listener();
@@ -119,7 +121,7 @@ void asio_client::handle_connect(const boost::system::error_code& ec,
     else
     {
         if ( endpoint_iterator == tcp::resolver::iterator() ) // finished iterating, not connected
-            handler->handle_connect( ec, 0 );
+            inform_connection_result( handler, ec);
         else
         {
             //retry
@@ -134,6 +136,17 @@ void asio_client::handle_connect(const boost::system::error_code& ec,
     }
 }
 
+void asio_client::inform_connection_result( ana::connection_handler* handler, ana::error_code ec)
+{
+    boost::mutex::scoped_lock lock( connection_informed_mutex_ );
+
+    if( ! connection_informed_ )
+    {
+        connection_informed_ = true;
+        handler->handle_connect( ec, 0 );
+    }
+}
+
 void asio_client::handle_timeout(const boost::system::error_code& ec,
                                  ana::connection_handler*         handler,
                                  ana::timer*                      timer)
@@ -142,7 +155,7 @@ void asio_client::handle_timeout(const boost::system::error_code& ec,
     {
         delete timer;
 
-        handler->handle_connect( ana::timeout_error, 0 );
+        inform_connection_result( handler, ec);
         cancel_pending();
     }
 }
@@ -185,7 +198,8 @@ void asio_client::connect( ana::connection_handler* handler )
     }
     catch (const std::exception& e)
     {
-        handler->handle_connect( boost::system::error_code(1,boost::system::system_category ), 0 );
+        inform_connection_result( handler,
+                                  boost::system::error_code(1,boost::system::system_category ));
     }
 }
 

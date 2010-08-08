@@ -110,6 +110,8 @@ class asio_client : public ana::client,
                             ana::connection_handler*,
                             ana::timer*);
 
+        void inform_connection_result( ana::connection_handler*, ana::error_code);
+
         void handle_timeout(const boost::system::error_code& ec,
                             ana::connection_handler*,
                             ana::timer*);
@@ -137,6 +139,9 @@ class asio_client : public ana::client,
 
         ana::stats_collector      stats_collector_;
         ana::operation_id         last_valid_operation_id_;
+
+        boost::mutex              connection_informed_mutex_;
+        bool                      connection_informed_;
 };
 
 #endif

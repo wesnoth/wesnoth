@@ -71,7 +71,7 @@ namespace
     //TODO: no global bandwidth
 
     size_t instances_using_the_network_module( 0 );
-}
+} // end namespace
 
 namespace network {
 
@@ -167,7 +167,7 @@ namespace network {
 
     connection connect(const std::string& host, int port, threading::waiter& /*waiter*/)
     {
-        return connect( host, port );
+        return connect(host,port);
     }
 
     connection accept_connection()

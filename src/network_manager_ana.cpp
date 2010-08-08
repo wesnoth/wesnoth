@@ -346,8 +346,13 @@ const ana::error_code& ana_connect_handler::error() const
 
 void ana_connect_handler::handle_connect(ana::error_code error_code, ana::net_id /*client*/)
 {
-    error_code_ = error_code;
-    mutex_.unlock();
+    if ( ! error_code_ )
+    {
+        error_code_ = error_code;
+        mutex_.unlock();         //only unlock if it's the first time called
+    }
+    else
+        error_code_ = error_code; //use the latest error
 }
 
 void ana_connect_handler::wait_completion()
@@ -609,7 +614,7 @@ ana::net_id ana_network_manager::create_server( )
 
 network::connection ana_network_manager::create_client_and_connect(std::string host, int port)
 {
-    ana::net_id new_client_id = 42;
+    ana::net_id new_client_id = ana::invalid_net_id;
 
     try
     {
@@ -679,6 +684,24 @@ network::connection ana_network_manager::create_client_and_connect(std::string h
         return 0;
     }
 }
+
+/*
+network::connection ana_network_manager::create_client_and_connect(std::string host,
+                                                                   int port,
+                                                                   threading::waiter& waiter)
+{
+    const threading::async_operation_ptr op(new connect_operation(this,components_,host,port));
+
+    const connect_operation::RESULT res = op->execute(op, waiter);
+
+    if(res == connect_operation::ABORTED)
+        return 0;
+
+    static_cast<connect_operation*>(op.get())->check_error();
+
+    return static_cast<connect_operation*>(op.get())->result();
+}
+*/
 
 network::connection ana_network_manager::new_connection_id( )
 {

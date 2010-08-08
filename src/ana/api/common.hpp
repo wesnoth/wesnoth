@@ -88,6 +88,10 @@ namespace ana
         /** A network operation that didn't do anything.        */
         const operation_id no_operation = 0;
 
+        /** An invalid net_id. Useful for error checking.       */
+        const operation_id invalid_net_id = 0;
+
+
         /** Don't copy the buffer. */
         const send_type ZERO_COPY   = false;
 
