@@ -464,8 +464,8 @@ private:
 
 	/**
 	 *  "Rotates" a constraint from a rule.
-	 *  Takes a template constraint from a template rule, and creates
-	 *  a constraint from this template, rotated to the given angle.
+	 *  Takes a template constraint from a template rule, and rotates
+	 *  to the given angle.
 	 *
 	 *  On a constraint, the relative position of each rule, and the "base"
 	 *  of each vertical images, are rotated according to the given angle.
@@ -482,7 +482,7 @@ private:
 	 *  @param constraint  A template constraint to rotate
 	 *  @param angle       An int, from 0 to 5, representing the rotation angle.
 	 */
-	terrain_constraint rotate(const terrain_constraint &constraint, int angle);
+	void rotate(terrain_constraint &constraint, int angle);
 
 	/**
 	 * Replaces, in a given string, a token with its value.

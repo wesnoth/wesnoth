@@ -373,7 +373,7 @@ bool terrain_builder::load_images(building_rule &rule)
 	return true;
 }
 
-terrain_builder::terrain_constraint terrain_builder::rotate(const terrain_builder::terrain_constraint &constraint, int angle)
+void terrain_builder::rotate(terrain_constraint &ret, int angle)
 {
 	static const struct { int ii; int ij; int ji; int jj; }  rotations[6] =
 		{ {  1, 0, 0,  1 }, {  1,  1, -1, 0 }, { 0,  1, -1, -1 },
@@ -423,7 +423,6 @@ terrain_builder::terrain_constraint terrain_builder::rotate(const terrain_builde
 	assert(angle >= 0);
 
 	angle %= 6;
-	terrain_constraint ret = constraint;
 
 	// Vector i is going from n to s, vector j is going from ne to sw.
 	int vi = ret.loc.y - ret.loc.x/2;
@@ -452,8 +451,6 @@ terrain_builder::terrain_constraint terrain_builder::rotate(const terrain_builde
 		//std::cerr << "Rotation: from " << vx << ", " << vy << " to " << itor->basex <<
 		//	", " << itor->basey << "\n";
 	}
-
-	return ret;
 }
 
 void terrain_builder::replace_token(std::string &s, const std::string &token, const std::string &replacement)
@@ -517,9 +514,9 @@ terrain_builder::building_rule terrain_builder::rotate_rule(const terrain_builde
 	ret.probability = rule.probability;
 	ret.local = rule.local;
 
-	ret.constraints.reserve(rule.constraints.size());
-	foreach (const terrain_constraint &cons, rule.constraints) {
-		ret.constraints.push_back(rotate(cons, angle));
+	ret.constraints = rule.constraints;
+	foreach (terrain_constraint &cons, ret.constraints) {
+		rotate(cons, angle);
 	}
 
 	// Normalize the rotation, so that it starts on a positive location
