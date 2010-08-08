@@ -346,8 +346,7 @@ void playmp_controller::linger(upload_log& log)
 		try {
 			// reimplement parts of play_side()
 			player_number_ = first_player_;
-			turn_data_ = new turn_info(player_number_, replay_sender_);
-			turn_data_->host_transfer().attach_handler(this);
+			init_turn_data()
 
 			play_human_turn();
 			turn_over_ = true;  // We don't want to linger mode to add end_turn to replay
@@ -389,8 +388,7 @@ void playmp_controller::wait_for_upload()
 
 	const bool set_turn_data = (turn_data_ == 0);
 	if(set_turn_data) {
-		turn_data_ = new turn_info(player_number_, replay_sender_);
-		turn_data_->host_transfer().attach_handler(this);
+		init_turn_data();
 	}
 
 	while(true) {
