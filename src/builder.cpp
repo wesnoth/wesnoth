@@ -558,13 +558,9 @@ void terrain_builder::add_images_from_config(rule_imagelist& images, const confi
 	{
 		int layer = img["layer"];
 
-		int basex = 0, basey = 0;
-		if (img["base"].empty()) {
-			basex = TILEWIDTH / 2 + dx;
-			basey = TILEWIDTH / 2 + dy;
-		} else {
-			std::vector<std::string> base = utils::split(img["base"]);
-
+		int basex = TILEWIDTH / 2 + dx, basey = TILEWIDTH / 2 + dy;
+		if (const config::attribute_value *base_ = img.get("base")) {
+			std::vector<std::string> base = utils::split(*base_);
 			if(base.size() >= 2) {
 				basex = atoi(base[0].c_str());
 				basey = atoi(base[1].c_str());
@@ -572,9 +568,8 @@ void terrain_builder::add_images_from_config(rule_imagelist& images, const confi
 		}
 
 		int center_x = -1, center_y = -1;
-		if (!img["center"].empty()) {
-			std::vector<std::string> center = utils::split(img["center"]);
-
+		if (const config::attribute_value *center_ = img.get("center")) {
+			std::vector<std::string> center = utils::split(*center_);
 			if(center.size() >= 2) {
 				center_x = atoi(center[0].c_str());
 				center_y = atoi(center[1].c_str());
@@ -743,11 +738,10 @@ void terrain_builder::parse_config(const config &cfg, bool local)
 
 		// add_images_from_config(pbr.images, **br);
 
-		if(!br["x"].empty() && !br["y"].empty())
-			pbr.location_constraints =
-				map_location(br["x"].to_int() - 1, br["y"].to_int() - 1);
+		pbr.location_constraints =
+			map_location(br["x"].to_int() - 1, br["y"].to_int() - 1);
 
-		pbr.probability = br["probability"].empty() ? -1 : br["probability"].to_int();
+		pbr.probability = br["probability"].to_int(-1);
 
 		// Mapping anchor indices to anchor locations.
 		anchormap anchors;
@@ -761,14 +755,14 @@ void terrain_builder::parse_config(const config &cfg, bool local)
 			// Adds the terrain constraint to the current built terrain's list
 			// of terrain constraints, if it does not exist.
 			map_location loc;
-			if (!tc["x"].empty()) {
-				loc.x = tc["x"];
+			if (const config::attribute_value *v = tc.get("x")) {
+				loc.x = *v;
 			}
-			if (!tc["y"].empty()) {
-				loc.y = tc["y"];
+			if (const config::attribute_value *v = tc.get("y")) {
+				loc.y = *v;
 			}
-			if (!tc["loc"].empty()) {
-				std::vector<std::string> sloc = utils::split(tc["loc"]);
+			if (const config::attribute_value *v = tc.get("loc")) {
+				std::vector<std::string> sloc = utils::split(*v);
 				if(sloc.size() == 2) {
 					loc.x = atoi(sloc[0].c_str());
 					loc.y = atoi(sloc[1].c_str());
@@ -777,8 +771,8 @@ void terrain_builder::parse_config(const config &cfg, bool local)
 			if(loc.valid()) {
 				add_constraints(pbr.constraints, loc, tc, br);
 			}
-			if (!tc["pos"].empty()) {
-				int pos = tc["pos"];
+			if (const config::attribute_value *v = tc.get("pos")) {
+				int pos = *v;
 				if(anchors.find(pos) == anchors.end()) {
 					WRN_NG << "Invalid anchor!\n";
 					continue;
