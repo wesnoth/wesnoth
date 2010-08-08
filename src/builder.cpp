@@ -323,8 +323,10 @@ bool terrain_builder::load_images(building_rule &rule)
 
 	// Parse images and animations data
 	// If one is not valid, return false.
-	foreach(constraint_set::value_type& constraint, rule.constraints) {
-		foreach(rule_image& ri, constraint.second.images) {
+	foreach(terrain_constraint &constraint, rule.constraints)
+	{
+		foreach(rule_image& ri, constraint.images)
+		{
 			foreach(rule_image_variant& variant, ri.variants) {
 				typedef animated<image::locator>::frame_description frame_info;
 				std::vector<frame_info> frame_info_vector;
@@ -350,7 +352,7 @@ bool terrain_builder::load_images(building_rule &rule)
 					}
 					image::locator locator;
 					if(ri.global_image) {
-						locator = image::locator(filename, constraint.second.loc, ri.center_x, ri.center_y, modif);
+						locator = image::locator(filename, constraint.loc, ri.center_x, ri.center_y, modif);
 					} else {
 						locator = image::locator(filename, modif);
 					}
@@ -485,22 +487,19 @@ void terrain_builder::replace_token(terrain_builder::rule_imagelist &list, const
 
 void terrain_builder::replace_token(terrain_builder::building_rule &rule, const std::string &token, const std::string& replacement)
 {
-	constraint_set::iterator cons;
-
-	for(cons = rule.constraints.begin(); cons != rule.constraints.end(); ++cons) {
+	foreach (terrain_constraint &cons, rule.constraints)
+	{
 		// Transforms attributes
-		std::vector<std::string>::iterator flag;
-
-		for(flag = cons->second.set_flag.begin(); flag != cons->second.set_flag.end(); ++flag) {
-			replace_token(*flag, token, replacement);
+		foreach (std::string &flag, cons.set_flag) {
+			replace_token(flag, token, replacement);
 		}
-		for(flag = cons->second.no_flag.begin(); flag != cons->second.no_flag.end(); ++flag) {
-			replace_token(*flag, token, replacement);
+		foreach (std::string &flag, cons.no_flag) {
+			replace_token(flag, token, replacement);
 		}
-		for(flag = cons->second.has_flag.begin(); flag != cons->second.has_flag.end(); ++flag) {
-			replace_token(*flag, token, replacement);
+		foreach (std::string &flag, cons.has_flag) {
+			replace_token(flag, token, replacement);
 		}
-		replace_token(cons->second.images, token, replacement);
+		replace_token(cons.images, token, replacement);
 	}
 
 	//replace_token(rule.images, token, replacement);
@@ -518,22 +517,18 @@ terrain_builder::building_rule terrain_builder::rotate_rule(const terrain_builde
 	ret.probability = rule.probability;
 	ret.local = rule.local;
 
-	constraint_set tmp_cons;
-	constraint_set::const_iterator cons;
-	for(cons = rule.constraints.begin(); cons != rule.constraints.end(); ++cons) {
-		const terrain_constraint &rcons = rotate(cons->second, angle);
-
-		tmp_cons[rcons.loc] = rcons;
+	ret.constraints.reserve(rule.constraints.size());
+	foreach (const terrain_constraint &cons, rule.constraints) {
+		ret.constraints.push_back(rotate(cons, angle));
 	}
 
 	// Normalize the rotation, so that it starts on a positive location
 	int minx = INT_MAX;
 	int miny = INT_MAX;
 
-	constraint_set::iterator cons2;
-	for(cons2 = tmp_cons.begin(); cons2 != tmp_cons.end(); ++cons2) {
-		minx = std::min<int>(cons2->second.loc.x, minx);
-		miny = std::min<int>(2*cons2->second.loc.y + (cons2->second.loc.x & 1), miny);
+	foreach (const terrain_constraint &cons, ret.constraints) {
+		minx = std::min<int>(cons.loc.x, minx);
+		miny = std::min<int>(2 * cons.loc.y + (cons.loc.x & 1), miny);
 	}
 
 	if((miny & 1) && (minx & 1) && (minx < 0))
@@ -541,10 +536,8 @@ terrain_builder::building_rule terrain_builder::rotate_rule(const terrain_builde
 	if(!(miny & 1) && (minx & 1) && (minx > 0))
 		miny -= 2;
 
-	for(cons2 = tmp_cons.begin(); cons2 != tmp_cons.end(); ++cons2) {
-		// Adjusts positions
-		cons2->second.loc.legacy_sum_assign(map_location(-minx, -((miny-1)/2)));
-		ret.constraints[cons2->second.loc] = cons2->second;
+	foreach (terrain_constraint &cons, ret.constraints) {
+		cons.loc.legacy_sum_assign(map_location(-minx, -((miny - 1) / 2)));
 	}
 
 	for(int i = 0; i < 6; ++i) {
@@ -617,32 +610,43 @@ void terrain_builder::add_images_from_config(rule_imagelist& images, const confi
 	}
 }
 
-void terrain_builder::add_constraints(
+terrain_builder::terrain_constraint &terrain_builder::add_constraints(
 		terrain_builder::constraint_set& constraints,
 		const map_location& loc,
 		const t_translation::t_match& type, const config& global_images)
 {
-	if(constraints.find(loc) == constraints.end()) {
+	terrain_constraint *cons = NULL;
+	foreach (terrain_constraint &c, constraints) {
+		if (c.loc == loc) {
+			cons = &c;
+			break;
+		}
+	}
+
+	if (!cons) {
 		// The terrain at the current location did not exist, so create it
-		constraints[loc] = terrain_constraint(loc);
+		constraints.push_back(terrain_constraint(loc));
+		cons = &constraints.back();
 	}
 
 	if(!type.terrain.empty()) {
-		constraints[loc].terrain_types_match = type;
+		cons->terrain_types_match = type;
 	}
 
 	int x = loc.x * TILEWIDTH * 3 / 4;
 	int y = loc.y * TILEWIDTH + (loc.x % 2) * TILEWIDTH / 2;
-	add_images_from_config(constraints[loc].images, global_images, true, x, y);
+	add_images_from_config(cons->images, global_images, true, x, y);
+
+	return *cons;
 }
 
 void terrain_builder::add_constraints(terrain_builder::constraint_set &constraints,
 		const map_location& loc, const config& cfg, const config& global_images)
 
 {
-	add_constraints(constraints, loc, t_translation::t_match(cfg["type"], t_translation::WILDCARD), global_images);
+	terrain_constraint& constraint = add_constraints(constraints, loc,
+		t_translation::t_match(cfg["type"], t_translation::WILDCARD), global_images);
 
-	terrain_constraint& constraint = constraints[loc];
 
 	std::vector<std::string> item_string = utils::split(cfg["set_flag"]);
 	constraint.set_flag.insert(constraint.set_flag.end(),
@@ -804,28 +808,18 @@ void terrain_builder::parse_config(const config &cfg, bool local)
 		const std::vector<std::string> global_has_flag = utils::split(br["has_flag"]);
 		const std::vector<std::string> global_set_no_flag = utils::split(br["set_no_flag"]);
 
-		for(constraint_set::iterator constraint = pbr.constraints.begin(); constraint != pbr.constraints.end();
-		    ++constraint) {
-
-			if(!global_set_flag.empty())
-				constraint->second.set_flag.insert(constraint->second.set_flag.end(),
-						global_set_flag.begin(), global_set_flag.end());
-
-			if(!global_no_flag.empty())
-				constraint->second.no_flag.insert(constraint->second.no_flag.end(),
-						global_no_flag.begin(), global_no_flag.end());
-
-			if(!global_has_flag.empty())
-				constraint->second.has_flag.insert(constraint->second.has_flag.end(),
-						global_has_flag.begin(), global_has_flag.end());
-
-			if(!global_set_no_flag.empty()) {
-				constraint->second.set_flag.insert(constraint->second.set_flag.end(),
-						global_set_no_flag.begin(), global_set_no_flag.end());
-
-				constraint->second.no_flag.insert(constraint->second.no_flag.end(),
-						global_set_no_flag.begin(), global_set_no_flag.end());
-			}
+		foreach (terrain_constraint &constraint, pbr.constraints)
+		{
+			constraint.set_flag.insert(constraint.set_flag.end(),
+				global_set_flag.begin(), global_set_flag.end());
+			constraint.no_flag.insert(constraint.no_flag.end(),
+				global_no_flag.begin(), global_no_flag.end());
+			constraint.has_flag.insert(constraint.has_flag.end(),
+				global_has_flag.begin(), global_has_flag.end());
+			constraint.set_flag.insert(constraint.set_flag.end(),
+				global_set_no_flag.begin(), global_set_no_flag.end());
+			constraint.no_flag.insert(constraint.no_flag.end(),
+				global_set_no_flag.begin(), global_set_no_flag.end());
 		}
 
 		// Handles rotations
@@ -894,7 +888,7 @@ void terrain_builder::add_off_map_rule(const std::string& image)
 }
 
 bool terrain_builder::rule_matches(const terrain_builder::building_rule &rule,
-		const map_location &loc, const int rule_index, const constraint_set::const_iterator type_checked) const
+		const map_location &loc, const int rule_index, const terrain_constraint *type_checked) const
 {
 	if(rule.location_constraints.valid() && rule.location_constraints != loc) {
 		return false;
@@ -907,11 +901,10 @@ bool terrain_builder::rule_matches(const terrain_builder::building_rule &rule,
 		}
 	}
 
-	for(constraint_set::const_iterator cons = rule.constraints.begin();
-			cons != rule.constraints.end(); ++cons) {
-
+	foreach (const terrain_constraint &cons, rule.constraints)
+	{
 		// Translated location
-		const map_location tloc = loc.legacy_sum(cons->second.loc);
+		const map_location tloc = loc.legacy_sum(cons.loc);
 
 		if(!tile_map_.on_map(tloc)) {
 			return false;
@@ -920,25 +913,21 @@ bool terrain_builder::rule_matches(const terrain_builder::building_rule &rule,
 		//std::cout << "testing..." << builder_letter(map().get_terrain(tloc))
 
 		// check if terrain matches except if we already know that it does
-		if(cons != type_checked &&
-				!terrain_matches(map().get_terrain(tloc), cons->second.terrain_types_match)) {
+		if (&cons != type_checked && !terrain_matches(map().get_terrain(tloc), cons.terrain_types_match)) {
 			return false;
 		}
 
-		const tile& btile = tile_map_[tloc];
+		const std::set<std::string> &flags = tile_map_[tloc].flags;
 
-		std::vector<std::string>::const_iterator itor;
-		for(itor = cons->second.no_flag.begin(); itor != cons->second.no_flag.end(); ++itor) {
-
+		foreach (const std::string &s, cons.no_flag) {
 			// If a flag listed in "no_flag" is present, the rule does not match
-			if(btile.flags.find(*itor) != btile.flags.end()) {
+			if (flags.find(s) != flags.end()) {
 				return false;
 			}
 		}
-		for(itor = cons->second.has_flag.begin(); itor != cons->second.has_flag.end(); ++itor) {
-
+		foreach (const std::string &s, cons.has_flag) {
 			// If a flag listed in "has_flag" is not present, this rule does not match
-			if(btile.flags.find(*itor) == btile.flags.end()) {
+			if (flags.find(s) == flags.end()) {
 				return false;
 			}
 		}
@@ -951,22 +940,21 @@ void terrain_builder::apply_rule(const terrain_builder::building_rule &rule, con
 {
 	unsigned int rand_seed = get_noise(loc, rule_index);
 
-	for(constraint_set::const_iterator constraint = rule.constraints.begin();
-			constraint != rule.constraints.end(); ++constraint) {
-
-		const map_location tloc = loc.legacy_sum(constraint->second.loc);
+	foreach (const terrain_constraint &constraint, rule.constraints)
+	{
+		const map_location tloc = loc.legacy_sum(constraint.loc);
 		if(!tile_map_.on_map(tloc)) {
 			return;
 		}
 
 		tile& btile = tile_map_[tloc];
 
-		foreach(const rule_image& img, constraint->second.images) {
+		foreach (const rule_image &img, constraint.images) {
 			btile.images.push_back(tile::rule_image_rand(&img, rand_seed));
 		}
 
 		// Sets flags
-		foreach(const std::string& flag, constraint->second.set_flag) {
+		foreach (const std::string &flag, constraint.set_flag) {
 			btile.flags.insert(flag);
 		}
 
@@ -999,12 +987,11 @@ void terrain_builder::build_terrains()
 		// and later try to apply the rule only on them
 		size_t min_size = INT_MAX;
 		t_translation::t_list min_types;
-		constraint_set::const_iterator min_constraint = rule.constraints.end();
+		const terrain_constraint *min_constraint = NULL;
 
-		for(constraint_set::const_iterator constraint = rule.constraints.begin();
-		    	constraint != rule.constraints.end(); ++constraint) {
-
-		    const t_translation::t_match& match = constraint->second.terrain_types_match;
+		foreach (const terrain_constraint &constraint, rule.constraints)
+		{
+			const t_translation::t_match& match = constraint.terrain_types_match;
 			t_translation::t_list matching_types;
 			size_t constraint_size = 0;
 
@@ -1025,7 +1012,7 @@ void terrain_builder::build_terrains()
 			if (constraint_size < min_size) {
 				min_size = constraint_size;
 				min_types = matching_types;
-				min_constraint = constraint;
+				min_constraint = &constraint;
 				if (min_size == 0) {
 				 	// a constraint is never matched on this map
 				 	// we break with a empty type list
@@ -1042,7 +1029,7 @@ void terrain_builder::build_terrains()
 
 			for(std::vector<map_location>::const_iterator itor = locations->begin();
 					itor != locations->end(); ++itor) {
-				const map_location loc = itor->legacy_difference(min_constraint->second.loc);
+				const map_location loc = itor->legacy_difference(min_constraint->loc);
 
 				if(rule_matches(rule, loc, rule_index, min_constraint)) {
 					apply_rule(rule, loc, rule_index);

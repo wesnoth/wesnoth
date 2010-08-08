@@ -340,7 +340,7 @@ private:
 	/**
 	 * The list of constraints attached to a terrain_graphics WML rule.
 	 */
-	typedef std::map<map_location, terrain_constraint> constraint_set;
+	typedef std::vector<terrain_constraint> constraint_set;
 
 	/**
 	 * The in-memory representation of a [terrain_graphics] WML rule.
@@ -613,7 +613,7 @@ private:
 	 * @param global_images A configuration object containing [image] tags
 	 *                      describing rule-global images.
 	 */
-	void add_constraints(constraint_set& constraints,
+	terrain_constraint &add_constraints(constraint_set& constraints,
 			const map_location &loc, const t_translation::t_match& type,
 			const config& global_images);
 
@@ -734,7 +734,7 @@ private:
 	 *                  terrain types matches.
 	 */
 	bool rule_matches(const building_rule &rule, const map_location &loc,
-			const int rule_index, const constraint_set::const_iterator type_checked) const;
+			const int rule_index, const terrain_constraint *type_checked) const;
 
 	/**
 	 * Applies a rule at a given location: applies the result of a
