@@ -160,8 +160,8 @@ void game_display::new_turn()
 		const time_of_day& old_tod = tod_manager_.get_previous_time_of_day();
 
 		if(old_tod.image_mask != tod.image_mask) {
-			const surface old_mask(image::get_image(old_tod.image_mask,image::UNMASKED));
-			const surface new_mask(image::get_image(tod.image_mask,image::UNMASKED));
+			const surface old_mask(image::get_image(old_tod.image_mask,image::SCALED_TO_HEX));
+			const surface new_mask(image::get_image(tod.image_mask,image::SCALED_TO_HEX));
 
 			const int niterations = static_cast<int>(10/turbo_speed());
 			const int frame_time = 30;
@@ -295,7 +295,7 @@ image::TYPE game_display::get_image_type(const map_location& loc) {
 			}
 		}
 	}
-	return image::SCALED_TO_HEX;
+	return image::TOD_COLORED;
 }
 
 
@@ -359,7 +359,7 @@ void game_display::draw_hex(const map_location& loc)
 			&& reach_map_.find(loc) == reach_map_.end() && loc != attack_indicator_dst_) {
 		static const image::locator unreachable(game_config::images::unreachable);
 		drawing_buffer_add(LAYER_REACHMAP, loc, tblit(xpos, ypos,
-				image::get_image(unreachable,image::UNMASKED)));
+				image::get_image(unreachable,image::SCALED_TO_HEX)));
 	}
 
 	resources::whiteboard->draw_hex(loc);
@@ -375,17 +375,17 @@ void game_display::draw_hex(const map_location& loc)
 	// Draw the attack direction indicator
 	if(on_map && loc == attack_indicator_src_) {
 		drawing_buffer_add(LAYER_ATTACK_INDICATOR, loc, tblit(xpos, ypos,
-			image::get_image("misc/attack-indicator-src-" + attack_indicator_direction() + ".png", image::UNMASKED)));
+			image::get_image("misc/attack-indicator-src-" + attack_indicator_direction() + ".png", image::SCALED_TO_HEX)));
 	} else if (on_map && loc == attack_indicator_dst_) {
 		drawing_buffer_add(LAYER_ATTACK_INDICATOR, loc, tblit(xpos, ypos,
-			image::get_image("misc/attack-indicator-dst-" + attack_indicator_direction() + ".png", image::UNMASKED)));
+			image::get_image("misc/attack-indicator-dst-" + attack_indicator_direction() + ".png", image::SCALED_TO_HEX)));
 	}
 
 	// Linger overlay unconditionally otherwise it might give glitches
 	// so it's drawn over the shroud and fog.
 	if(game_mode_ != RUNNING) {
 		static const image::locator linger(game_config::images::linger);
-		blit.surf.push_back(image::get_image(linger, image::SCALED_TO_HEX));
+		blit.surf.push_back(image::get_image(linger, image::TOD_COLORED));
 		drawing_buffer_add(LAYER_LINGER_OVERLAY, loc, blit);
 		blit.surf.clear();
 	}
@@ -393,13 +393,13 @@ void game_display::draw_hex(const map_location& loc)
 	if(on_map && loc == selectedHex_ && !game_config::images::selected.empty()) {
 		static const image::locator selected(game_config::images::selected);
 		drawing_buffer_add(LAYER_MOVE_INFO, loc, tblit(xpos, ypos,
-				image::get_image(selected, image::UNMASKED)));
+				image::get_image(selected, image::SCALED_TO_HEX)));
 	}
 
 	if(on_map && loc == mouseoverHex_ && !game_config::images::mouseover.empty()) {
 		static const image::locator mouseover(game_config::images::mouseover);
 		drawing_buffer_add(LAYER_MOVE_INFO, loc, tblit(xpos, ypos,
-				image::get_image(mouseover, image::UNMASKED)));
+				image::get_image(mouseover, image::SCALED_TO_HEX)));
 	}
 
 	// Show def% and turn to reach infos
@@ -516,7 +516,7 @@ void game_display::draw_bar(const std::string& image, int xpos, int ypos,
 	height /= 2;
 #endif
 
-	surface surf(image::get_image(image,image::UNMASKED));
+	surface surf(image::get_image(image,image::SCALED_TO_HEX));
 
 	// We use UNSCALED because scaling (and bilinear interpolaion)
 	// is bad for calculate_energy_bar.
@@ -609,22 +609,22 @@ void game_display::draw_movement_info(const map_location& loc)
 
             if (w->second.invisible) {
 				drawing_buffer_add(LAYER_MOVE_INFO, loc, tblit(xpos, ypos,
-					image::get_image("misc/hidden.png", image::UNMASKED)));
+					image::get_image("misc/hidden.png", image::SCALED_TO_HEX)));
 			}
 
 			if (w->second.zoc) {
 				drawing_buffer_add(LAYER_MOVE_INFO, loc, tblit(xpos, ypos,
-					image::get_image("misc/zoc.png", image::UNMASKED)));
+					image::get_image("misc/zoc.png", image::SCALED_TO_HEX)));
 			}
 
 			if (w->second.capture) {
 				drawing_buffer_add(LAYER_MOVE_INFO, loc, tblit(xpos, ypos,
-					image::get_image("misc/capture.png", image::UNMASKED)));
+					image::get_image("misc/capture.png", image::SCALED_TO_HEX)));
 			}
 
 			if (w->second.pass_here) {
 				drawing_buffer_add(LAYER_MOVE_INFO, loc, tblit(xpos, ypos,
-					image::get_image("misc/waypoint.png", image::UNMASKED)));
+					image::get_image("misc/waypoint.png", image::SCALED_TO_HEX)));
 			}
 
 			//we display turn info only if different from a simple last "1"
@@ -707,7 +707,7 @@ std::vector<surface> game_display::footsteps_images(const map_location& loc)
 		if (!tiles_adjacent(*(i+(h-1)), *(i+h))) {
 			std::string teleport_image =
 			h==0 ? game_config::foot_teleport_enter : game_config::foot_teleport_exit;
-			teleport = image::get_image(teleport_image, image::UNMASKED);
+			teleport = image::get_image(teleport_image, image::SCALED_TO_HEX);
 			continue;
 		}
 
@@ -725,7 +725,7 @@ std::vector<surface> game_display::footsteps_images(const map_location& loc)
 			+ sense + "-" + i->write_direction(dir)
 			+ ".png" + rotate;
 
-		res.push_back(image::get_image(image, image::UNMASKED));
+		res.push_back(image::get_image(image, image::SCALED_TO_HEX));
 	}
 
 	// we draw teleport image (if any) in last
@@ -749,7 +749,7 @@ surface game_display::get_flag(const map_location& loc)
 			flags_[i].update_last_draw_time();
 			const image::locator &image_flag = animate_map_ ?
 				flags_[i].get_current_frame() : flags_[i].get_first_frame();
-			return image::get_image(image_flag, image::SCALED_TO_HEX);
+			return image::get_image(image_flag, image::TOD_COLORED);
 		}
 	}
 

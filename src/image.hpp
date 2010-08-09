@@ -28,12 +28,6 @@
 ///this module manages the cache of images. With an image name, you can get
 ///the surface corresponding to that image.
 //
-///images come in a number of varieties:
-/// - unscaled: no modifications have been done on the image.
-/// - scaled_to_hex: images are scaled to the size of a tile
-/// - scaled_to_zoom: images are scaled to the zoom factor, factor 1 is same as unscaled no other modifications are done
-/// - unmasked: images are scaled, but have no time of day masking applied to them
-/// - brightened: images are scaled and brighter than normal.
 namespace image {
 #ifdef USE_TINY_GUI
 	// images in tiny-gui will be scaled at install time
@@ -192,12 +186,14 @@ namespace image {
 	///scaled images.
 	void set_zoom(int zoom);
 
-	// unscaled : image will be drawn "as is" without changing size, even in case of redraw
-	// hexed : the hex mask is applied on the image
-	// unmasked : image will be scaled to fit into a hex, taking zoom into account
-	// scaled_to_hex : same but ToD coloring is also applied
-	enum TYPE { UNSCALED, HEXED, UNMASKED, SCALED_TO_HEX, SCALED_TO_ZOOM, BRIGHTENED, SEMI_BRIGHTENED };
-
+	/// UNSCALED : image will be drawn "as is" without changing size, even in case of redraw
+	/// SCALED_TO_ZOOM : image will be scaled taking zoom into account
+	/// HEXED : the hex mask is applied on the image
+	/// SCALED_TO_HEX : image will be scaled to fit into a hex, taking zoom into account
+	/// TOD_COLORED : same as SCALED_TO_HEX but ToD coloring is also applied
+	/// BRIGHTENED  : same as TOD_COLORED but also brightened
+	/// SEMI_BRIGHTENED  : same as TOD_COLORED but also semi-brightened
+	enum TYPE { UNSCALED, SCALED_TO_ZOOM, HEXED, SCALED_TO_HEX, TOD_COLORED, BRIGHTENED, SEMI_BRIGHTENED};
 
 	///function to get the surface corresponding to an image.
 	///note that this surface must be freed by the user by calling

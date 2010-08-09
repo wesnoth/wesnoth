@@ -777,9 +777,9 @@ std::vector<surface> display::get_terrain_images(const map_location &loc,
 
 			if(!use_local_light) {
 				const bool off_map = (image.get_filename() == off_map_name);
-				surf = image::get_image(image, off_map ? image::UNMASKED : image_type);
+				surf = image::get_image(image, off_map ? image::SCALED_TO_HEX : image_type);
 			} else if(color_mod.empty()) {
-				surf = image::get_image(image, image::UNMASKED);
+				surf = image::get_image(image, image::SCALED_TO_HEX);
 			} else {
 				image::locator colored_image(
 						image.get_filename(),
@@ -788,7 +788,7 @@ std::vector<surface> display::get_terrain_images(const map_location &loc,
 						image.get_modifications() + color_mod
 					);
 
-				surf = image::get_image(colored_image, image::UNMASKED);
+				surf = image::get_image(colored_image, image::SCALED_TO_HEX);
 			}
 
 			if (!surf.null()) {
@@ -2038,10 +2038,10 @@ void display::draw_hex(const map_location& loc) {
 		if(grid_ && on_map && !off_map_tile) {
 			static const image::locator grid_top(game_config::images::grid_top);
 			drawing_buffer_add(LAYER_GRID_TOP, loc, tblit(xpos, ypos,
-				image::get_image(grid_top, image::SCALED_TO_HEX)));
+				image::get_image(grid_top, image::TOD_COLORED)));
 			static const image::locator grid_bottom(game_config::images::grid_bottom);
 			drawing_buffer_add(LAYER_GRID_BOTTOM, loc, tblit(xpos, ypos,
-				image::get_image(grid_bottom, image::SCALED_TO_HEX)));
+				image::get_image(grid_bottom, image::TOD_COLORED)));
 		}
 	}
 
@@ -2053,7 +2053,7 @@ void display::draw_hex(const map_location& loc) {
 		drawing_buffer_add(LAYER_TERRAIN_FG, loc, tblit(xpos, ypos, tod_hex_mask2));
 	} else if(!tod_hex_mask.empty()) {
 		drawing_buffer_add(LAYER_TERRAIN_FG, loc, tblit(xpos, ypos,
-			image::get_image(tod_hex_mask,image::UNMASKED)));
+			image::get_image(tod_hex_mask,image::SCALED_TO_HEX)));
 	}
 
 	// Paint mouseover overlays
@@ -2127,7 +2127,7 @@ void display::draw_hex(const map_location& loc) {
 }
 
 image::TYPE display::get_image_type(const map_location& /*loc*/) {
-	return image::SCALED_TO_HEX;
+	return image::TOD_COLORED;
 }
 
 void display::draw_sidebar() {

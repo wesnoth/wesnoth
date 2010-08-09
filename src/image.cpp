@@ -122,8 +122,13 @@ namespace {
 image::locator::locator_finder_t locator_finder;
 
 /** Definition of all image maps */
-image::image_cache images_,hexed_images_,scaled_to_hex_images_,scaled_to_zoom_,unmasked_images_;
-image::image_cache brightened_images_,semi_brightened_images_;
+image::image_cache images_,
+		scaled_to_zoom_,
+		hexed_images_,
+		scaled_to_hex_images_,
+		tod_colored_images_,
+		brightened_images_,
+		semi_brightened_images_;
 
 // cache storing if each image fit in a hex
 image::bool_cache in_hex_info_;
@@ -160,9 +165,9 @@ void flush_cache()
 {
 	images_.flush();
 	hexed_images_.flush();
-	scaled_to_hex_images_.flush();
+	tod_colored_images_.flush();
 	scaled_to_zoom_.flush();
-	unmasked_images_.flush();
+	scaled_to_hex_images_.flush();
 	brightened_images_.flush();
 	semi_brightened_images_.flush();
 	in_hex_info_.flush();
@@ -731,7 +736,7 @@ surface locator::load_image_sub_file() const
 					int cx = lexical_cast<int>(params[2]);
 					int cy = lexical_cast<int>(params[3]);
 					image::locator new_loc(val_.filename_, map_location(x,y), cx, cy, "");//TODO remove only ~LOC
-					surf = get_image(new_loc, SCALED_TO_HEX);
+					surf = get_image(new_loc, TOD_COLORED);
 				}
 				// BLIT function
 				else if("BLIT" == function) {
@@ -909,7 +914,7 @@ void set_color_adjustment(int r, int g, int b)
 		red_adjust = r;
 		green_adjust = g;
 		blue_adjust = b;
-		scaled_to_hex_images_.flush();
+		tod_colored_images_.flush();
 		brightened_images_.flush();
 		semi_brightened_images_.flush();
 		reversed_images_.clear();
@@ -939,7 +944,7 @@ void set_zoom(int amount)
 {
 	if(amount != zoom) {
 		zoom = amount;
-		scaled_to_hex_images_.flush();
+		tod_colored_images_.flush();
 		brightened_images_.flush();
 		semi_brightened_images_.flush();
 		reversed_images_.clear();
@@ -949,7 +954,7 @@ void set_zoom(int amount)
 		// or if they are already at the wanted zoom.
 		if (zoom != tile_size && zoom != cached_zoom) {
 			scaled_to_zoom_.flush();
-			unmasked_images_.flush();
+			scaled_to_hex_images_.flush();
 			cached_zoom = zoom;
 		}
 	}
@@ -964,7 +969,7 @@ static surface get_hexed(const locator& i_locator)
 	return mask_surface(image, hex);
 }
 
-static surface get_unmasked(const locator& i_locator)
+static surface get_scaled_to_hex(const locator& i_locator)
 {
 	// If no scaling needed at this zoom level,
 	// we just use the hexed image.
@@ -975,9 +980,9 @@ static surface get_unmasked(const locator& i_locator)
 		return image;
 }
 
-static surface get_scaled_to_hex(const locator& i_locator)
+static surface get_tod_colored(const locator& i_locator)
 {
-	surface res(get_image(i_locator, UNMASKED));
+	surface res(get_image(i_locator, SCALED_TO_HEX));
 
 	// Adjusts color if necessary.
 	if (red_adjust != 0 ||
@@ -1005,13 +1010,13 @@ static surface get_scaled_to_zoom(const locator& i_locator)
 
 static surface get_brightened(const locator& i_locator)
 {
-	surface image(get_image(i_locator, SCALED_TO_HEX));
+	surface image(get_image(i_locator, TOD_COLORED));
 	return surface(brighten_image(image, ftofxp(game_config::hex_brightening)));
 }
 
 static surface get_semi_brightened(const locator& i_locator)
 {
-	surface image(get_image(i_locator, SCALED_TO_HEX));
+	surface image(get_image(i_locator, TOD_COLORED));
 	return surface(brighten_image(image, ftofxp(game_config::hex_semi_brightening)));
 }
 
@@ -1029,17 +1034,17 @@ surface get_image(const image::locator& i_locator, TYPE type)
 		if(zoom == tile_size)
 			type = UNSCALED;
 		break;
-	case UNMASKED:
+	case SCALED_TO_HEX:
 		if(zoom == tile_size)
 			type = HEXED;
 		break;
 	case BRIGHTENED:
 		if(ftofxp(game_config::hex_brightening) == ftofxp(1.0))
-			type = SCALED_TO_HEX;
+			type = TOD_COLORED;
 		break;
 	case SEMI_BRIGHTENED:
 		if(ftofxp(game_config::hex_semi_brightening) == ftofxp(1.0))
-			type = SCALED_TO_HEX;
+			type = TOD_COLORED;
 		break;
 	default:
 		break;
@@ -1050,8 +1055,8 @@ surface get_image(const image::locator& i_locator, TYPE type)
 	case UNSCALED:
 		imap = &images_;
 		break;
-	case SCALED_TO_HEX:
-		imap = &scaled_to_hex_images_;
+	case TOD_COLORED:
+		imap = &tod_colored_images_;
 		break;
 	case SCALED_TO_ZOOM:
 		imap = &scaled_to_zoom_;
@@ -1059,8 +1064,8 @@ surface get_image(const image::locator& i_locator, TYPE type)
 	case HEXED:
 		imap = &hexed_images_;
 		break;
-	case UNMASKED:
-		imap = &unmasked_images_;
+	case SCALED_TO_HEX:
+		imap = &scaled_to_hex_images_;
 		break;
 	case BRIGHTENED:
 		imap = &brightened_images_;
@@ -1082,8 +1087,8 @@ surface get_image(const image::locator& i_locator, TYPE type)
 		// If type is unscaled, directly load the image from the disk.
 		res = i_locator.load_from_disk();
 		break;
-	case SCALED_TO_HEX:
-		res = get_scaled_to_hex(i_locator);
+	case TOD_COLORED:
+		res = get_tod_colored(i_locator);
 		break;
 	case SCALED_TO_ZOOM:
 		res = get_scaled_to_zoom(i_locator);
@@ -1091,8 +1096,8 @@ surface get_image(const image::locator& i_locator, TYPE type)
 	case HEXED:
 		res = get_hexed(i_locator);
 		break;
-	case UNMASKED:
-		res = get_unmasked(i_locator);
+	case SCALED_TO_HEX:
+		res = get_scaled_to_hex(i_locator);
 		break;
 	case BRIGHTENED:
 		res = get_brightened(i_locator);

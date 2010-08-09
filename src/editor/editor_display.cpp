@@ -67,7 +67,7 @@ image::TYPE editor_display::get_image_type(const map_location& loc)
 	} else if (map().in_selection(loc)) {
 		return image::SEMI_BRIGHTENED;
 	}
-	return image::SCALED_TO_HEX;
+	return image::TOD_COLORED;
 }
 
 void editor_display::draw_hex(const map_location& loc)
@@ -79,19 +79,19 @@ void editor_display::draw_hex(const map_location& loc)
 	if (map().on_board_with_border(loc)) {
 		if (map().in_selection(loc)) {
 			drawing_buffer_add(LAYER_FOG_SHROUD, loc, tblit(xpos, ypos,
-				image::get_image("editor/selection-overlay.png", image::SCALED_TO_HEX)));
+				image::get_image("editor/selection-overlay.png", image::TOD_COLORED)));
 		}
 
 		if (brush_locations_.find(loc) != brush_locations_.end()) {
 			static const image::locator brush(game_config::images::editor_brush);
 			drawing_buffer_add(LAYER_MOVE_INFO, loc, tblit(xpos, ypos,
-					image::get_image(brush, image::UNMASKED)));
+					image::get_image(brush, image::SCALED_TO_HEX)));
 		}
 
 		if(loc == mouseoverHex_ && !game_config::images::mouseover.empty()) {
 			static const image::locator mouseover(game_config::images::mouseover);
 			drawing_buffer_add(LAYER_MOVE_INFO, loc, tblit(xpos, ypos,
-					image::get_image(mouseover, image::UNMASKED)));
+					image::get_image(mouseover, image::SCALED_TO_HEX)));
 		}
 	}
 }
