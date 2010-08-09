@@ -123,6 +123,14 @@ static register_goal_factory<target_unit_goal>
 	goal_factory("");
 
 
+static register_goal_factory<target_unit_goal>
+	goal_factory_target("target");
+
+
+static register_goal_factory<target_location_goal>
+	goal_factory_target_location("target_location");
+
+
 static register_goal_factory<protect_location_goal>
 	goal_factory_protect("protect");
 

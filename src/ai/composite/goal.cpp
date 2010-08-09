@@ -121,7 +121,7 @@ void target_unit_goal::add_targets(std::back_insert_iterator< std::vector< targe
 	//find the enemy leaders and explicit targets
 	foreach (const unit &u, *resources::units) {
 		if (u.matches_filter(vconfig(criteria), u.get_location())) {
-			LOG_AI_GOAL << "found explicit target... " << u.get_location() << " with value: " << value() << "\n";
+			LOG_AI_GOAL << "found explicit target unit at ... " << u.get_location() << " with value: " << value() << "\n";
 			*target_list = target(u.get_location(), value(), target::EXPLICIT);
 		}
 	}
@@ -135,6 +135,49 @@ target_unit_goal::target_unit_goal(readonly_context &context, const config &cfg)
 	, value_(0.0)
 {
 }
+
+
+void target_location_goal::on_create()
+{
+	goal::on_create();
+	if (cfg_.has_attribute("value")) {
+		try {
+			value_ = boost::lexical_cast<double>(cfg_["value"]);
+		} catch (boost::bad_lexical_cast){
+			ERR_AI_GOAL << "bad value of goal"<<std::endl;
+			value_ = 0;
+		}
+	}
+	const config &criteria = cfg_.child("criteria");
+	if (criteria) {
+		filter_ptr_ = boost::shared_ptr<terrain_filter>(new terrain_filter(vconfig(criteria),get_info().units));
+	}
+}
+
+void target_location_goal::add_targets(std::back_insert_iterator< std::vector< target > > target_list)
+{
+	if (!(this)->active()) {
+		return;
+	}
+
+	if (!filter_ptr_) return;
+
+	std::set<map_location> items;
+	filter_ptr_->get_locations(items);
+	foreach (const map_location &loc, items)
+	{
+		LOG_AI_GOAL << "found explicit target location ... " << loc << " with value: " << value() << std::endl;
+		*target_list = target(loc, value(), target::EXPLICIT);
+	}
+
+}
+
+target_location_goal::target_location_goal(readonly_context &context, const config &cfg)
+	: goal(context,cfg)
+	, value_(0.0)
+{
+}
+
 
 
 void protect_goal::on_create()

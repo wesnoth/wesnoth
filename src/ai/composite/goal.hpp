@@ -98,6 +98,26 @@ private:
 };
 
 
+class target_location_goal : public goal {
+public:
+	target_location_goal(readonly_context &context, const config &cfg);
+
+
+	virtual void add_targets(std::back_insert_iterator< std::vector< target > > target_list);
+
+
+	virtual void on_create();
+
+private:
+	double value() const
+	{
+		return value_;
+	}
+	boost::shared_ptr<terrain_filter> filter_ptr_;
+	double value_;
+};
+
+
 class protect_goal : public goal {
 public:
 	protect_goal(readonly_context &context, const config &cfg, bool protect_only_own_unit, bool protect_unit);
