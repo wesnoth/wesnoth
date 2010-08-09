@@ -255,9 +255,13 @@ node::node(document& doc, node* parent, const char** str, int depth) :
 				}
 			}
 
-			if(*s != '"') {
-				ERR_SWML << "no quotes for attribute '" << name << "'\n";
-				throw error("did not find quotes around attribute");
+			if (*s != '"') {
+				end = strchr(s, '\n');
+				if (!end) {
+					ERR_SWML << "ATTR: '" << name << "' (((" << s << ")))\n";
+					throw error("did not find end of attribute");
+				}
+				goto read_attribute;
 			}
 
 			end = s;
@@ -289,6 +293,7 @@ node::node(document& doc, node* parent, const char** str, int depth) :
 
 			++s;
 
+			read_attribute:
 			string_span value(s, end - s);
 			if(attr_.empty() == false && !(attr_.back().first < name)) {
 				ERR_SWML << "attributes: '" << attr_.back().first << "' < '" << name << "'\n";
