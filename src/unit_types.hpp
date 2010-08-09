@@ -159,22 +159,26 @@ public:
 	friend class unit;
 	friend class unit_type_data;
 
-	unit_type();
-	unit_type(const config& cfg, const movement_type_map& movement_types,
-	          const race_map &races, const config::const_child_itors &traits);
+	/**
+	 * Creates a unit type for the given config, but delays its build
+	 * till later.
+	 * @note @a cfg is not copied, so it has to point to some permanent
+	 *       storage, that is, a child of unit_type_data::unit_cfg.
+	 */
+	unit_type(config &cfg);
 	unit_type(const unit_type& o);
 
 	~unit_type();
 
 	/** Load data into an empty unit_type */
-	void build_full(const config& cfg, const movement_type_map& movement_types,
-	                const race_map &races, const config::const_child_itors &traits);
+	void build_full(const movement_type_map &movement_types,
+		const race_map &races, const config::const_child_itors &traits);
 	/** Partially load data into an empty unit_type */
-    void build_help_index(const config& cfg, const movement_type_map& movement_types,
-	                      const race_map &races, const config::const_child_itors &traits);
+	void build_help_index(const movement_type_map &movement_types,
+		const race_map &races, const config::const_child_itors &traits);
 	/** Load the most needed data into an empty unit_type */
-    void build_created(const config& cfg, const movement_type_map& mv_types,
-	                   const race_map &races, const config::const_child_itors &traits);
+	void build_created(const movement_type_map &movement_types,
+		const race_map &races, const config::const_child_itors &traits);
 
 	/**
 	 * Adds an additional advancement path to a unit type.
@@ -274,12 +278,10 @@ public:
 
 	const config &get_cfg() const { return cfg_; }
 
-	void set_config(const config& cfg);
-
 private:
 	void operator=(const unit_type& o);
 
-	config cfg_;
+	config &cfg_;
 
 	std::string id_;
     t_string type_name_;

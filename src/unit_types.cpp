@@ -552,46 +552,6 @@ static const unit_race& dummy_race(){
 #pragma warning(disable:4351)
 #endif
 
-unit_type::unit_type() :
-	cfg_(),
-	id_(),
-	type_name_(),
-	description_(),
-	hitpoints_(0),
-	level_(0),
-	movement_(0),
-	max_attacks_(0),
-	cost_(0),
-	usage_(),
-	undead_variation_(),
-	image_(),
-	image_profile_(),
-	flag_rgb_(),
-	num_traits_(0),
-	gender_types_(),
-	variations_(),
-	race_(&dummy_race()),
-	alpha_(),
-	abilities_(),
-	adv_abilities_(),
-	ability_tooltips_(),
-	adv_ability_tooltips_(),
-	zoc_(false),
-	hide_help_(false),
-	advances_to_(),
-	experience_needed_(0),
-	alignment_(),
-	movementType_(),
-	possibleTraits_(),
-	genders_(),
-	animations_(),
-	build_status_(NOT_BUILT),
-	portraits_()
-{
-	gender_types_[0] = NULL;
-	gender_types_[1] = NULL;
-}
-
 #ifdef _MSC_VER
 #pragma warning(pop)
 #endif
@@ -640,10 +600,9 @@ unit_type::unit_type(const unit_type& o) :
 }
 
 
-unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
-                     const race_map &races, const config::const_child_itors &traits) :
-	cfg_(),
-	id_(),
+unit_type::unit_type(config &cfg) :
+	cfg_(cfg),
+	id_(cfg["id"]),
 	type_name_(),
 	description_(),
 	hitpoints_(0),
@@ -677,32 +636,27 @@ unit_type::unit_type(const config& cfg, const movement_type_map& mv_types,
 	build_status_(NOT_BUILT),
 	portraits_()
 {
-	build_full(cfg, mv_types, races, traits);
+	gender_types_[0] = NULL;
+	gender_types_[1] = NULL;
 }
 
 unit_type::~unit_type()
 {
-    if (gender_types_[unit_race::MALE] != NULL)
-        delete gender_types_[unit_race::MALE];
-    if (gender_types_[unit_race::FEMALE] != NULL)
-        delete gender_types_[unit_race::FEMALE];
+	delete gender_types_[0];
+	delete gender_types_[1];
 
 	for(variations_map::iterator i = variations_.begin(); i != variations_.end(); ++i) {
 		delete i->second;
 	}
 }
 
-void unit_type::set_config(const config& cfg)
+void unit_type::build_full(const movement_type_map &mv_types,
+	const race_map &races, const config::const_child_itors &traits)
 {
-	cfg_ = cfg;
-	id_ = cfg["id"].str();
-}
+	if (build_status_ == NOT_BUILT || build_status_ == CREATED)
+		build_help_index(mv_types, races, traits);
 
-void unit_type::build_full(const config& cfg, const movement_type_map& mv_types,
-                           const race_map &races, const config::const_child_itors &traits)
-{
-    if ( (build_status_ == NOT_BUILT) || (build_status_ == CREATED) )
-        build_help_index(cfg, mv_types, races, traits);
+	config &cfg = cfg_;
 
 	movementType_ = unit_movement_type(cfg);
 	alpha_ = ftofxp(1.0);
@@ -711,18 +665,22 @@ void unit_type::build_full(const config& cfg, const movement_type_map& mv_types,
 	{
 		possibleTraits_.add_child("trait", t);
 	}
-	foreach (const config &var_cfg, cfg.child_range("variation"))
+	foreach (config &var_cfg, cfg.child_range("variation"))
 	{
 		if (var_cfg["inherit"].to_bool()) {
 			config nvar_cfg(cfg);
 			nvar_cfg.merge_with(var_cfg);
 			nvar_cfg.clear_children("variation");
-			variations_.insert(std::make_pair(nvar_cfg["variation_name"],
-				new unit_type(nvar_cfg, mv_types, races, traits)));
-		} else {
-			variations_.insert(std::make_pair(var_cfg["variation_name"],
-				new unit_type(var_cfg, mv_types, races, traits)));
+			var_cfg.swap(nvar_cfg);
 		}
+		unit_type *ut = new unit_type(var_cfg);
+		ut->build_full(mv_types, races, traits);
+		variations_.insert(std::make_pair(var_cfg["variation_name"], ut));
+	}
+
+	for (int i = 0; i < 2; ++i) {
+		if (gender_types_[i])
+			gender_types_[i]->build_full(mv_types, races, traits);
 	}
 
 	const std::string& align = cfg["alignment"];
@@ -739,9 +697,8 @@ void unit_type::build_full(const config& cfg, const movement_type_map& mv_types,
 		alignment_ = NEUTRAL;
 	}
 
-	const race_map::const_iterator race_it = races.find(cfg["race"]);
-	if(race_it != races.end()) {
-		race_ = &race_it->second;
+	if (race_ != &dummy_race())
+	{
 		if (!race_->uses_global_traits()) {
 			possibleTraits_.clear();
 		}
@@ -794,13 +751,13 @@ void unit_type::build_full(const config& cfg, const movement_type_map& mv_types,
 	build_status_ = FULL;
 }
 
-void unit_type::build_help_index(const config& cfg, const movement_type_map& mv_types,
-                                 const race_map &races, const config::const_child_itors &traits)
+void unit_type::build_help_index(const movement_type_map &mv_types,
+	const race_map &races, const config::const_child_itors &traits)
 {
-    if (build_status_ == NOT_BUILT){
-        set_config(cfg);
-        build_created(cfg, mv_types, races, traits);
-    }
+	if (build_status_ == NOT_BUILT)
+		build_created(mv_types, races, traits);
+
+	const config &cfg = cfg_;
 
 	type_name_ = cfg_["name"];
 	description_ = cfg_["description"];
@@ -813,6 +770,11 @@ void unit_type::build_help_index(const config& cfg, const movement_type_map& mv_
 	undead_variation_ = cfg_["undead_variation"].str();
 	image_ = cfg_["image"].str();
 	image_profile_ = cfg_["profile"].str();
+
+	for (int i = 0; i < 2; ++i) {
+		if (gender_types_[i])
+			gender_types_[i]->build_help_index(mv_types, races, traits);
+	}
 
 	const race_map::const_iterator race_it = races.find(cfg["race"]);
 	if(race_it != races.end()) {
@@ -866,38 +828,41 @@ void unit_type::build_help_index(const config& cfg, const movement_type_map& mv_
 	build_status_ = HELP_INDEX;
 }
 
-void unit_type::build_created(const config& cfg, const movement_type_map& mv_types,
-                              const race_map &races, const config::const_child_itors &traits)
+void unit_type::build_created(const movement_type_map &mv_types,
+	const race_map &races, const config::const_child_itors &traits)
 {
 	gender_types_[0] = NULL;
 	gender_types_[1] = NULL;
 
-	if (const config &male_cfg = cfg.child("male"))
+	config &cfg = cfg_;
+
+	if (config &male_cfg = cfg.child("male"))
 	{
-		config m_cfg;
-		if (!male_cfg["inherit"].to_bool(true)) {
-			m_cfg = male_cfg;
-		} else {
-			m_cfg = cfg;
+		if (male_cfg["inherit"].to_bool(true)) {
+			config m_cfg(cfg);
 			m_cfg.merge_with(male_cfg);
+			male_cfg.swap(m_cfg);
 		}
-		m_cfg.clear_children("male");
-		m_cfg.clear_children("female");
-		gender_types_[unit_race::MALE] = new unit_type(m_cfg,mv_types,races,traits);
+		male_cfg.clear_children("male");
+		male_cfg.clear_children("female");
+		gender_types_[0] = new unit_type(male_cfg);
 	}
 
-	if (const config &female_cfg = cfg.child("female"))
+	if (config &female_cfg = cfg.child("female"))
 	{
-		config f_cfg;
-		if (!female_cfg["inherit"].to_bool(true)) {
-			f_cfg = female_cfg;
-		} else {
-			f_cfg = cfg;
+		if (female_cfg["inherit"].to_bool(true)) {
+			config f_cfg(cfg);
 			f_cfg.merge_with(female_cfg);
+			female_cfg.swap(f_cfg);
 		}
-		f_cfg.clear_children("male");
-		f_cfg.clear_children("female");
-		gender_types_[unit_race::FEMALE] = new unit_type(f_cfg,mv_types,races,traits);
+		female_cfg.clear_children("male");
+		female_cfg.clear_children("female");
+		gender_types_[1] = new unit_type(female_cfg);
+	}
+
+	for (int i = 0; i < 2; ++i) {
+		if (gender_types_[i])
+			gender_types_[i]->build_created(mv_types, races, traits);
 	}
 
     const std::string& advances_to_val = cfg["advances_to"];
@@ -1174,12 +1139,9 @@ void unit_type_data::set_config(config &cfg)
 			merge_cfg.merge_with(ut);
 			ut.swap(merge_cfg);
 		}
-        // we insert an empty unit_type and build it after the copy (for performance)
-        std::pair<unit_type_map::iterator,bool> insertion =
-            insert(std::pair<const std::string,unit_type>(id,unit_type()));
-        //	if (!insertion.second)
-        // TODO: else { warning for multiple units with same id}
-        LOG_CONFIG << "added " << id << " to unit_type list (unit_type_data.unit_types)\n";
+		// We insert an empty unit_type and build it after the copy (for performance).
+		insert(std::make_pair(id, unit_type(ut)));
+		LOG_CONFIG << "added " << id << " to unit_type list (unit_type_data.unit_types)\n";
 	}
 
 	build_all(unit_type::CREATED);
@@ -1256,21 +1218,19 @@ unit_type &unit_type_data::build_unit_type(const unit_type_map::iterator &ut, un
 {
 	DBG_UT << "Building unit type " << ut->first << ", level " << status << '\n';
 
-	const config &unit_cfg = find_config(ut->first);
 	if (int(status) <= int(ut->second.build_status()))
 		return ut->second;
 
 	switch (status) {
 	case unit_type::CREATED:
-		ut->second.set_config(unit_cfg);
-		ut->second.build_created(unit_cfg, movement_types_, races_, unit_cfg_->child_range("trait"));
+		ut->second.build_created(movement_types_, races_, unit_cfg_->child_range("trait"));
 		break;
 	case unit_type::HELP_INDEX:
 		// Build the data needed to feed the help index.
-		ut->second.build_help_index(unit_cfg, movement_types_, races_, unit_cfg_->child_range("trait"));
+		ut->second.build_help_index(movement_types_, races_, unit_cfg_->child_range("trait"));
 		break;
 	default:
-		ut->second.build_full(unit_cfg, movement_types_, races_, unit_cfg_->child_range("trait"));
+		ut->second.build_full(movement_types_, races_, unit_cfg_->child_range("trait"));
 	}
 
 	return ut->second;
