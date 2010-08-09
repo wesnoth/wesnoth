@@ -328,11 +328,10 @@ bool terrain_builder::load_images(building_rule &rule)
 		foreach(rule_image& ri, constraint.images)
 		{
 			foreach(rule_image_variant& variant, ri.variants) {
-				typedef animated<image::locator>::frame_description frame_info;
-				std::vector<frame_info> frame_info_vector;
-
 				//TODO: improve this, 99% of terrains are not animated.
 				std::vector<std::string> frames = utils::parenthetical_split(variant.image_string,',');
+				if (frames.empty()) return false;
+
 				foreach(const std::string& frame, frames) {
 					const std::vector<std::string> items = utils::split(frame, ':');
 					const std::string& str = items.front();
@@ -356,15 +355,9 @@ bool terrain_builder::load_images(building_rule &rule)
 					} else {
 						locator = image::locator(filename, modif);
 					}
-					frame_info_vector.push_back(frame_info(time,locator));
+					variant.image.add_frame(time, locator);
 				}
 
-				if(frame_info_vector.empty())
-					return false;
-
-				animated<image::locator> th(frame_info_vector);
-
-				variant.image = th;
 				variant.image.start_animation(0, true);
 			}
 		}
