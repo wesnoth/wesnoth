@@ -45,6 +45,7 @@ import wesnoth_eclipse_plugin.utils.StringUtils;
 import wesnoth_eclipse_plugin.utils.WMLSaxHandler;
 import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
 
+@SuppressWarnings("unused")
 public class WesnothProjectBuilder extends IncrementalProjectBuilder
 {
 	public WesnothProjectBuilder()
