@@ -1165,29 +1165,14 @@ void unit_type_data::set_config(config &cfg)
 
 	foreach (config &ut, cfg.child_range("unit_type"))
 	{
-	    std::string id = ut["id"];
+		std::string id = ut["id"];
 		if (const config &bu = ut.child("base_unit"))
 		{
 			// Derive a new unit type from an existing base unit id
-			const std::string based_from = bu["id"];
-			config from_cfg = find_config(based_from);
-
-            config merge_cfg = from_cfg;
+			config merge_cfg = find_config(bu["id"]);
+			ut.clear_children("base_unit");
 			merge_cfg.merge_with(ut);
-            merge_cfg.clear_children("base_unit");
-            std::string id = merge_cfg["id"];
-            if(id.empty()) {
-				id = from_cfg["name"].str();
-            }
-
-			ut = merge_cfg;
-			ut["id"] = id;
-            /*
-            //merge the base_unit config into this one
-            (**i.first).merge_and_keep(from_cfg);
-            (**i.first).clear_children("base_unit");
-            (**i.first)["id"] = id;
-            */
+			ut.swap(merge_cfg);
 		}
         // we insert an empty unit_type and build it after the copy (for performance)
         std::pair<unit_type_map::iterator,bool> insertion =
