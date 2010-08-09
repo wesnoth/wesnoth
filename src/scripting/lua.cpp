@@ -1937,7 +1937,8 @@ static int intf_put_unit(lua_State *L)
 		u = lu->get();
 		if (!u) goto error_call_destructors_4;
 		if (lu->on_map()) {
-			if (unit_arg == 1) return 0;
+			if (unit_arg == 1 || u->get_location() == loc) return 0;
+			resources::units->erase(loc);
 			resources::units->move(u->get_location(), loc);
 			return 0;
 		}
