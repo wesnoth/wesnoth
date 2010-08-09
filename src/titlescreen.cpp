@@ -415,40 +415,42 @@ TITLE_RESULT show_title(game_display& screen, config& tips_of_day)
 	//- Texts for the menu-buttons.
 	//- Members of this array must correspond to the enumeration TITLE_RESULT
 	static const char* button_labels[] = {
-					       N_("TitleScreen button^Tutorial"),
-					       N_("TitleScreen button^Campaign"),
-					       N_("TitleScreen button^Multiplayer"),
-					       N_("TitleScreen button^Load"),
-					       N_("TitleScreen button^Add-ons"),
+		N_("TitleScreen button^Tutorial"),
+		N_("TitleScreen button^Campaign"),
+		N_("TitleScreen button^Multiplayer"),
+		N_("TitleScreen button^Load"),
+		N_("TitleScreen button^Add-ons"),
 #ifndef DISABLE_EDITOR
-					       N_("TitleScreen button^Map Editor"),
+		N_("TitleScreen button^Map Editor"),
 #endif
-					       N_("TitleScreen button^Language"),
-					       N_("TitleScreen button^Preferences"),
-					       N_("TitleScreen button^Credits"),
-					       N_("TitleScreen button^Quit"),
-								// Only the above buttons go into the menu-frame
-								// Next 2 buttons go into frame for the tip-of-the-day:
-					       N_("TitleScreen button^Previous"),
-					       N_("TitleScreen button^Next"),
-					       N_("TitleScreen button^Help"),
-								// Next entry is no button, but shown as a mail-icon instead:
-					       N_("TitleScreen button^Help Wesnoth") };
+		N_("TitleScreen button^Language"),
+		N_("TitleScreen button^Preferences"),
+		N_("TitleScreen button^Credits"),
+		N_("TitleScreen button^Quit"),
+		// Only the above buttons go into the menu-frame
+		// Next 2 buttons go into frame for the tip-of-the-day:
+		N_("TitleScreen button^Previous"),
+		N_("TitleScreen button^Next"),
+		N_("TitleScreen button^Help"),
+	};
 	//- Texts for the tooltips of the menu-buttons
-	static const char* help_button_labels[] = { N_("Start a tutorial to familiarize yourself with the game"),
-						    N_("Start a new single player campaign"),
-						    N_("Play multiplayer (hotseat, LAN, or Internet), or a single scenario against the AI"),
-						    N_("Load a saved game"),
-						    N_("Download usermade campaigns, eras, or map packs"),
+	static const char* help_button_labels[] = {
+		N_("Start a tutorial to familiarize yourself with the game"),
+		N_("Start a new single player campaign"),
+		N_("Play multiplayer (hotseat, LAN, or Internet), or a single scenario against the AI"),
+		N_("Load a saved game"),
+		N_("Download usermade campaigns, eras, or map packs"),
 #ifndef DISABLE_EDITOR
-						    N_("Start the map editor"),
+		N_("Start the map editor"),
 #endif
-						    N_("Change the language"),
-						    N_("Configure the game's settings"),
-						    N_("View the credits"),
-						    N_("Quit the game"),
-						    N_("Show next tip of the day"),
-						    N_("Show Battle for Wesnoth help") };
+		N_("Change the language"),
+		N_("Configure the game's settings"),
+		N_("View the credits"),
+		N_("Quit the game"),
+		N_("Show previous tip of the day"),
+		N_("Show next tip of the day"),
+		N_("Show Battle for Wesnoth help")
+	};
 
 	static const size_t nbuttons = sizeof(button_labels)/sizeof(*button_labels);
 	const int menu_xbase = (game_config::title_buttons_x*screen.w())/1024;
@@ -467,13 +469,18 @@ TITLE_RESULT show_title(game_display& screen, config& tips_of_day)
 	std::vector<button> buttons;
 	size_t b, max_width = 0;
 	size_t n_menubuttons = 0;
-	for(b = 0; b != nbuttons; ++b) {
-		buttons.push_back(button(screen.video(),sgettext(button_labels[b])));
+	for (b = 0; b != nbuttons; ++b)
+	{
+		std::string label = sgettext(button_labels[b]);
+		if (b + TUTORIAL <= QUIT_GAME) {
+			buttons.push_back(button(screen.video(), label));
+			max_width = std::max<size_t>(max_width,buttons.back().width	());
+			n_menubuttons = b;
+		} else {
+			buttons.push_back(button(screen.video(), label,
+				button::TYPE_PRESS, "lite_small"));
+		}
 		buttons.back().set_help_string(sgettext(help_button_labels[b]));
-		max_width = std::max<size_t>(max_width,buttons.back().width());
-
-		n_menubuttons = b;
-		if(b + TUTORIAL == QUIT_GAME) break;	// Menu-frame ends at the quit-button
 	}
 
 	SDL_Rect main_dialog_area = {menu_xbase-padding, menu_ybase-padding, max_width+padding*2,
@@ -495,17 +502,9 @@ TITLE_RESULT show_title(game_display& screen, config& tips_of_day)
 		if(b + TUTORIAL == QUIT_GAME) break;
 	}
 
-	b = TIP_PREVIOUS - TUTORIAL;
-	gui::button previous_tip_button(screen.video(),sgettext(button_labels[b]),button::TYPE_PRESS,"lite_small");
-	previous_tip_button.set_help_string( sgettext(button_labels[b] ));
-
-	b = TIP_NEXT - TUTORIAL;
-	gui::button next_tip_button(screen.video(),sgettext(button_labels[b]),button::TYPE_PRESS,"lite_small");
-	next_tip_button.set_help_string( sgettext(button_labels[b] ));
-
-	b = SHOW_HELP - TUTORIAL;
-	gui::button help_tip_button(screen.video(),sgettext(button_labels[b]),button::TYPE_PRESS,"lite_small");
-	help_tip_button.set_help_string( sgettext(button_labels[b] ));
+	gui::button &previous_tip_button = buttons[TIP_PREVIOUS - TUTORIAL];
+	gui::button &next_tip_button = buttons[TIP_NEXT - TUTORIAL];
+	gui::button &help_tip_button = buttons[SHOW_HELP - TUTORIAL];
 
 	next_tip_of_day(tips_of_day);
 
@@ -554,22 +553,24 @@ TITLE_RESULT show_title(game_display& screen, config& tips_of_day)
 		}
 		if (key[SDLK_UP]) {
 			if (!key_processed) {
-				buttons[keyboard_button].set_active(false);
+				if (keyboard_button < nbuttons)
+					buttons[keyboard_button].set_active(false);
 				if (keyboard_button == 0) {
 					keyboard_button = nbuttons - 1;
 				} else {
-					keyboard_button--;
+					--keyboard_button;
 				}
 				key_processed = true;
 				buttons[keyboard_button].set_active(true);
 			}
 		} else if (key[SDLK_DOWN]) {
 			if (!key_processed) {
-				buttons[keyboard_button].set_active(false);
-				if (keyboard_button > nbuttons - 1) {
+				if (keyboard_button < nbuttons)
+					buttons[keyboard_button].set_active(false);
+				if (keyboard_button >= nbuttons - 1) {
 					keyboard_button = 0;
 				} else {
-					keyboard_button++;
+					++keyboard_button;
 				}
 				key_processed = true;
 				buttons[keyboard_button].set_active(true);
