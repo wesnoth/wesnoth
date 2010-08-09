@@ -29,7 +29,6 @@ struct token
 {
 	token() :
 		type(END),
-		leading_spaces(),
 		value()
 	{}
 
@@ -52,14 +51,6 @@ struct token
 	};
 
 	token_type type;
-
-	void reset()
-	{
-		value.clear();
-		leading_spaces.clear();
-	}
-
-	std::string leading_spaces;
 	std::string value;
 };
 

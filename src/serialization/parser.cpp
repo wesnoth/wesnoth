@@ -234,7 +234,7 @@ void parser::parse_variable()
 
 	std::vector<std::string>::const_iterator curvar = variables.begin();
 
-	bool ignore_next_newlines = false;
+	bool ignore_next_newlines = false, previous_string = false;
 	while(1) {
 		tok_->next_token();
 		assert(curvar != variables.end());
@@ -248,7 +248,6 @@ void parser::parse_variable()
 					cfg[*curvar] = buffer.value();
 				buffer = t_string_base();
 				++curvar;
-				continue;
 			} else {
 				buffer += ",";
 			}
@@ -268,14 +267,18 @@ void parser::parse_variable()
 				break;
 			case token::END:
 			case token::LF:
+				buffer += "_";
 				goto finish;
 			}
 			break;
 		case '+':
 			ignore_next_newlines = true;
 			continue;
+		case token::STRING:
+			if (previous_string) buffer += " ";
+			//nobreak
 		default:
-			buffer += tok_->current_token().leading_spaces + tok_->current_token().value;
+			buffer += tok_->current_token().value;
 			break;
 		case token::QSTRING:
 			buffer += tok_->current_token().value;
@@ -290,6 +293,7 @@ void parser::parse_variable()
 			goto finish;
 		}
 
+		previous_string = tok_->current_token().type == token::STRING;
 		ignore_next_newlines = false;
 	}
 

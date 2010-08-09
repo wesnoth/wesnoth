@@ -57,13 +57,12 @@ const token &tokenizer::next_token()
 #if DEBUG
 	previous_token_ = token_;
 #endif
-	token_.reset();
+	token_.value.clear();
 
 	// Dump spaces and inlined comments
 	for(;;)
 	{
 		while (is_space(current_)) {
-			token_.leading_spaces += current_;
 			next_char_fast();
 		}
 		if (current_ != 254)
