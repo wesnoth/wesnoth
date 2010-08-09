@@ -25,6 +25,7 @@ import org.wesnoth.ui.WMLUtil;
 import org.wesnoth.wML.WMLMacroCall;
 
 import wesnoth_eclipse_plugin.Logger;
+import wesnoth_eclipse_plugin.preprocessor.Define;
 import wesnoth_eclipse_plugin.utils.ProjectUtils;
 
 /**
@@ -56,14 +57,15 @@ public class WMLDocHandler extends AbstractHandler
                 	CompositeNode container = (CompositeNode)abstractNode.eContainer();
                     if (container.getElement() instanceof WMLMacroCall) {
                     	WMLMacroCall macro = (WMLMacroCall)container.getElement();
-
-                    	if (ProjectUtils.getCacheForProject(WMLUtil.getActiveEditorFile().getProject())
-                    			.getDefines().containsKey(macro.getName()))
+                    	Define define = ProjectUtils.getCacheForProject(
+                    			WMLUtil.getActiveEditorFile().getProject())
+                    			.getDefines().get(macro.getName());
+                    	if (define != null)
                     	{
                     		if (presenter_ == null) {
-                    			presenter_ = new WMLDocInformationPresenter(editor.getSite().getShell(),
-                    					macro.getName(),
-                    					"Macro: " + "", "",
+                    			presenter_ = new WMLDocInformationPresenter(
+                    					editor.getSite().getShell(),
+                    					new WMLDocMacro(define),
                     					positionAbsolute);
                     			presenter_.create();
                     		}

@@ -23,30 +23,30 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Shell;
-import org.wesnoth.ui.WMLUtil;
-
-import wesnoth_eclipse_plugin.utils.ProjectUtils;
 
 public class WMLDocInformationPresenter extends PopupDialog implements
 		MouseListener, SelectionListener, MouseTrackListener, MouseMoveListener
 {
 	private Point bounds_;
-	private String currentMacroName_;
+	private IWMLDocProvider currentDocProvider_;
 	private Composite panel_;
 
-	public WMLDocInformationPresenter(Shell parent, String macroName,
-			String titleText, String infoText, Point bounds)
+	/**
+	 * Creates a new WMLDocumentation information presenter
+	 */
+	public WMLDocInformationPresenter(Shell parent, IWMLDocProvider docProvider,
+				Point bounds)
 	{
 		super(parent, PopupDialog.INFOPOPUPRESIZE_SHELLSTYLE, true, true, true,
-				true, false, titleText, infoText);
+				false, false, "", "");
 		bounds_ = bounds;
-		currentMacroName_ = macroName;
+		currentDocProvider_ = docProvider;
 	}
 
 	@Override
 	protected Control createInfoTextArea(Composite parent)
 	{
-		//Add back& forward button
+		//TODO: Add back& forward button
 		return super.createInfoTextArea(parent);
 	}
 
@@ -60,12 +60,15 @@ public class WMLDocInformationPresenter extends PopupDialog implements
 		GridLayout grid = new GridLayout();
 		grid.numColumns = 5;
 		panel_.setLayout(grid);
-		StyledText text = new StyledText(panel_, SWT.None);
 
-		text.setText(ProjectUtils.getCacheForProject(WMLUtil.getActiveEditorFile().getProject())
-    			.getDefines().get(currentMacroName_).getValue());
+		StyledText text = new StyledText(panel_, SWT.NONE);
+
+		setTitleText(currentDocProvider_.getTitle());
+		setInfoText(currentDocProvider_.getInfoText());
+
+		text.setText(currentDocProvider_.getContents());
 		text.setEditable(false);
-		//text.setStyleRanges(ranges);
+		text.setStyleRanges(currentDocProvider_.getStyleRanges());
 
 		text.setLayoutData(createDefaultGridData(4));
 		text.addMouseListener(this);
