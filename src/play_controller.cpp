@@ -1167,12 +1167,13 @@ bool play_controller::in_context_menu(hotkey::HOTKEY_COMMAND command) const
 	case hotkey::HOTKEY_RECRUIT:
 	case hotkey::HOTKEY_REPEAT_RECRUIT:
 	case hotkey::HOTKEY_RECALL: {
+		wb::scoped_planned_pathfind_map future; //< lasts until method returns.
 		// last_hex_ is set by mouse_events::mouse_motion
 		// Enable recruit/recall on castle/keep tiles
 		for(unit_map::const_iterator leader = units_.begin();
 				leader != units_.end();++leader) {
 			if (leader->can_recruit() &&
-			    leader->side() == player_number_ &&
+			    leader->side() == resources::screen->viewing_side() &&
 				can_recruit_on(map_, leader->get_location(), mouse_handler_.get_last_hex()))
 				return true;
 		}

@@ -44,6 +44,7 @@
 #include "save_blocker.hpp"
 #include "soundsource.hpp"
 #include "storyscreen/interface.hpp"
+#include "whiteboard/manager.hpp"
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
@@ -102,16 +103,22 @@ void playsingle_controller::init_gui(){
 void playsingle_controller::recruit(){
 	if (!browse_)
 		menu_handler_.recruit(player_number_, mouse_handler_.get_last_hex());
+	else if (resources::whiteboard->is_active())
+		menu_handler_.recruit(resources::screen->viewing_side(), mouse_handler_.get_last_hex());
 }
 
 void playsingle_controller::repeat_recruit(){
 	if (!browse_)
 		menu_handler_.repeat_recruit(player_number_, mouse_handler_.get_last_hex());
+	else if (resources::whiteboard->is_active())
+		menu_handler_.repeat_recruit(resources::screen->viewing_side(), mouse_handler_.get_last_hex());
 }
 
 void playsingle_controller::recall(){
 	if (!browse_)
 		menu_handler_.recall(player_number_, mouse_handler_.get_last_hex());
+	else if (resources::whiteboard->is_active())
+		menu_handler_.recall(resources::screen->viewing_side(), mouse_handler_.get_last_hex());
 }
 
 void playsingle_controller::toggle_shroud_updates(){
@@ -954,10 +961,11 @@ bool playsingle_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, 
 		case hotkey::HOTKEY_ADD_WAYPOINT:
 		case hotkey::HOTKEY_UNIT_HOLD_POSITION:
 		case hotkey::HOTKEY_END_UNIT_TURN:
+			return !browse_ && !linger_ && !events::commands_disabled;
 		case hotkey::HOTKEY_RECRUIT:
 		case hotkey::HOTKEY_REPEAT_RECRUIT:
 		case hotkey::HOTKEY_RECALL:
-			return !browse_ && !linger_ && !events::commands_disabled;
+			return (!browse_ || resources::whiteboard->is_active()) && !linger_ && !events::commands_disabled;
 		case hotkey::HOTKEY_ENDTURN:
 			return (!browse_ || linger_) && !events::commands_disabled;
 
