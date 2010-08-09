@@ -61,11 +61,13 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw)
 
 			const map_location loc(x,y);
 			if(map.on_board(loc)) {
-				const bool shrouded = vw != NULL && vw->shrouded(loc);
+
+				const bool shrouded = (vw != NULL && vw->shrouded(loc));
 				// shrouded hex are not considered fogged (no need to fog a black image)
-				const bool fogged = vw != NULL && !shrouded && vw->fogged(loc);
+				const bool fogged = (vw != NULL && !shrouded && vw->fogged(loc));
 				const t_translation::t_terrain terrain = shrouded ?
-					t_translation::VOID_TERRAIN : map[loc];
+						t_translation::VOID_TERRAIN : map[loc];
+				const terrain_type& terrain_info = map.get_terrain_info(terrain);
 
 				bool need_fogging = false;
 
@@ -81,9 +83,11 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw)
 				}
 
 				if(i == cache->end()) {
-					surface tile(get_image("terrain/" + map.get_terrain_info(terrain).minimap_image() + ".png",image::HEXED));
+					std::string base_file =
+							"terrain/" + terrain_info.minimap_image() + ".png";
+					surface tile(get_image(base_file,image::HEXED));
 
-					if(tile == 0) {
+					if(tile == NULL) {
 						utils::string_map symbols;
 						symbols["terrain"] = t_translation::write_terrain_code(terrain);
 						const std::string msg =
@@ -93,25 +97,25 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw)
 
 					//Compose images of base and overlay if neccessary
 					if(map.get_terrain_info(terrain).is_combined()) {
-						surface overlay(get_image("terrain/" + map.get_terrain_info(terrain).minimap_image_overlay() + ".png", image::HEXED));
-						if(overlay != 0 && overlay != tile) {
+						std::string overlay_file =
+								"terrain/" + terrain_info.minimap_image_overlay() + ".png";
+						surface overlay(get_image(overlay_file,image::HEXED));
+
+						if(overlay != NULL && overlay != tile) {
 							surface combined = create_compatible_surface(tile, tile->w, tile->h);
-							SDL_Rect r;
-							r.x = 0;
-							r.y = 0;
+							SDL_Rect r = create_rect(0,0,0,0);
 							SDL_BlitSurface(tile, NULL, combined, &r);
 							r.x = std::max(0, (tile->w - overlay->w)/2);
 							r.y = std::max(0, (tile->h - overlay->h)/2);
                             if ((overlay->flags & SDL_RLEACCEL) == 0) {
                                 blit_surface(overlay, NULL, combined, &r);
                             } else {
-                                WRN_DP << map.get_terrain_info(terrain).minimap_image_overlay() << ".png overlay is RLE-encoded, creating a neutral surface\n";
+                                WRN_DP << overlay_file << " overlay is RLE-encoded, creating a neutral surface\n";
                                 surface overlay_neutral = make_neutral_surface(overlay);
 							    blit_surface(overlay_neutral, NULL, combined, &r);
                             }
 							tile = combined;
 						}
-
 					}
 
 					surf = surface(scale_surface_blended(tile,scale,scale));
