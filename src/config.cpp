@@ -315,7 +315,7 @@ config::const_child_itors config::child_range(const std::string& key) const
 	return const_child_itors(const_child_iterator(p->begin()), const_child_iterator(p->end()));
 }
 
-size_t config::child_count(const std::string& key) const
+unsigned config::child_count(const std::string &key) const
 {
 	check_valid();
 
@@ -376,7 +376,7 @@ config& config::add_child(const std::string& key, const config& val)
 	return *v.back();
 }
 
-config& config::add_child_at(const std::string& key, const config& val, size_t index)
+config &config::add_child_at(const std::string &key, const config &val, unsigned index)
 {
 	check_valid(val);
 
@@ -393,10 +393,11 @@ config& config::add_child_at(const std::string& key, const config& val, size_t i
 
 	std::vector<child_pos>::iterator ord = ordered_children.begin();
 	for(; ord != ordered_children.end(); ++ord) {
-		if(!inserted && ord->index == index && ord->pos->first == key) {
+		if (ord->pos != value.pos) continue;
+		if (!inserted && ord->index == index) {
 			ord = ordered_children.insert(ord,value);
 			inserted = true;
-		} else if(ord->index >= index && ord->pos->first == key) {
+		} else if (ord->index >= index) {
 			ord->index++;
 		}
 	}
@@ -410,12 +411,14 @@ config& config::add_child_at(const std::string& key, const config& val, size_t i
 
 namespace {
 
-struct remove_ordered {
-	remove_ordered(const std::string& key) : key_(key) {}
+struct remove_ordered
+{
+	remove_ordered(const config::child_map::iterator &iter) : iter_(iter) {}
 
-	bool operator()(const config::child_pos& pos) const { return pos.pos->first == key_; }
+	bool operator()(const config::child_pos &pos) const
+	{ return pos.pos == iter_; }
 private:
-	std::string key_;
+	config::child_map::iterator iter_;
 };
 
 }
@@ -424,15 +427,17 @@ void config::clear_children(const std::string& key)
 {
 	check_valid();
 
-	ordered_children.erase(std::remove_if(ordered_children.begin(),ordered_children.end(),remove_ordered(key)),ordered_children.end());
-
 	child_map::iterator i = children.find(key);
-	if (i != children.end()) {
-		for (child_list::iterator c = i->second.begin(); c != i->second.end(); ++c) {
-			delete *c;
-		}
-		children.erase(i);
+	if (i == children.end()) return;
+
+	ordered_children.erase(std::remove_if(ordered_children.begin(),
+		ordered_children.end(), remove_ordered(i)), ordered_children.end());
+
+	foreach (config *c, i->second) {
+		delete c;
 	}
+
+	children.erase(i);
 }
 
 void config::splice_children(config &src, const std::string &key)
@@ -443,7 +448,7 @@ void config::splice_children(config &src, const std::string &key)
 	if (i_src == src.children.end()) return;
 
 	src.ordered_children.erase(std::remove_if(src.ordered_children.begin(),
-		src.ordered_children.end(), remove_ordered(key)),
+		src.ordered_children.end(), remove_ordered(i_src)),
 		src.ordered_children.end());
 
 	child_list &dst = children[key];
@@ -468,57 +473,46 @@ void config::recursive_clear_value(const std::string& key)
 	}
 }
 
-config::all_children_iterator config::erase(const config::all_children_iterator& i)
+std::vector<config::child_pos>::iterator config::remove_child(
+	const child_map::iterator &pos, unsigned index)
 {
-	check_valid();
-	size_t index = i.i_->index;
-
-	config* found_config = NULL;
-	std::vector<child_pos>::iterator erase_pos, j, j_end = ordered_children.end();
-	for(j = ordered_children.begin(); j != j_end; ++j) {
-		if (i->key == j->pos->first) {
-			if (j->index == index) {
-				erase_pos = j;
-				found_config = *(j->pos->second.begin() + j->index);
-			} else if (j->index > index) {
-				// Decrement indexes of subsequent children with the same key.
-				--j->index;
-			}
-		}
+	/* Find the position with the correct index and decrement all the
+	   indices in the ordering that are above this index. */
+	unsigned found = 0;
+	foreach (child_pos &p, ordered_children)
+	{
+		if (p.pos != pos) continue;
+		if (p.index == index)
+			found = &p - &ordered_children.front();
+		else if (p.index > index)
+			--p.index;
 	}
-	child_list& vec = children[i->key];
-	assert(found_config && erase_pos->index < vec.size());
-	delete found_config;
-	vec.erase(vec.begin() + index);
-	return all_children_iterator(ordered_children.erase(erase_pos));
+
+	// Remove from the child map.
+	delete pos->second[index];
+	pos->second.erase(pos->second.begin() + index);
+
+	// Erase from the ordering and return the next position.
+	return ordered_children.erase(ordered_children.begin() + found);
 }
 
-void config::remove_child(const std::string& key, size_t index)
+config::all_children_iterator config::erase(const config::all_children_iterator& i)
+{
+	return all_children_iterator(remove_child(i.i_->pos, i.i_->index));
+}
+
+void config::remove_child(const std::string &key, unsigned index)
 {
 	check_valid();
 
-	// Remove from the ordering
-	const child_pos pos(children.find(key),index);
-	ordered_children.erase(std::remove(ordered_children.begin(),ordered_children.end(),pos),ordered_children.end());
-
-	// Decrement all indices in the ordering that are above this index,
-	// since everything is getting shifted back by 1.
-	for(std::vector<child_pos>::iterator i = ordered_children.begin(); i != ordered_children.end(); ++i) {
-		if(i->pos->first == key && i->index > index) {
-			i->index--;
-		}
-	}
-
-	// Remove from the child map
-	child_list& v = children[key];
-	if(index >= v.size()) {
+	child_map::iterator i = children.find(key);
+	if (i == children.end() || index >= i->second.size()) {
 		ERR_CF << "Error: attempting to delete non-existing child: "
 			<< key << "[" << index << "]\n";
 		return;
 	}
-	config* const res = v[index];
-	v.erase(v.begin()+index);
-	delete res;
+
+	remove_child(i, index);
 }
 
 const config::attribute_value &config::operator[](const std::string &key) const

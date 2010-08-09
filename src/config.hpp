@@ -234,7 +234,7 @@ public:
 
 	child_itors child_range(const std::string& key);
 	const_child_itors child_range(const std::string& key) const;
-	size_t child_count(const std::string& key) const;
+	unsigned child_count(const std::string &key) const;
 
 	/**
 	 * Copies the first child with the given @a key, or an empty config if there is none.
@@ -260,7 +260,7 @@ public:
 
 	config& add_child(const std::string& key);
 	config& add_child(const std::string& key, const config& val);
-	config& add_child_at(const std::string& key, const config& val, size_t index);
+	config& add_child_at(const std::string &key, const config &val, unsigned index);
 
 	/**
 	 * Returns a reference to the attribute with the given @a key.
@@ -326,7 +326,7 @@ public:
 	 */
 	void splice_children(config &src, const std::string &key);
 
-	void remove_child(const std::string& key, size_t index);
+	void remove_child(const std::string &key, unsigned index);
 	void recursive_clear_value(const std::string& key);
 
 	void clear();
@@ -339,10 +339,11 @@ public:
 		error(const std::string& message) : game::error(message) {}
 	};
 
-	struct child_pos {
-		child_pos(child_map::const_iterator p, size_t i) : pos(p), index(i) {}
-		child_map::const_iterator pos;
-		size_t index;
+	struct child_pos
+	{
+		child_pos(child_map::iterator p, unsigned i) : pos(p), index(i) {}
+		child_map::iterator pos;
+		unsigned index;
 
 		bool operator==(const child_pos& o) const { return pos == o.pos && index == o.index; }
 		bool operator!=(const child_pos& o) const { return !operator==(o); }
@@ -467,6 +468,11 @@ public:
 	void swap(config& cfg);
 
 private:
+	/**
+	 * Removes the child at position @a pos of @a l.
+	 */
+	std::vector<child_pos>::iterator remove_child(const child_map::iterator &l, unsigned pos);
+
 	/** All the attributes of this node. */
 	attribute_map values;
 
