@@ -161,6 +161,13 @@
 			id="org.eclipse.xtext.ui.editor.outline.QuickOutline"
 			name="Quick Outline">
 		</command>
+  <command
+        categoryId="org.eclipse.xtext.ui.category.XtextEditor"
+        defaultHandler="org.wesnoth.ui.labeling.wmldoc.WMLDocHandler"
+        description="Shows WML Documentation for active resource"
+        id="org.wesnoth.wml.ui.showWMLDoc"
+        name="Shows WML Documentation">
+  </command>
 	</extension>
 	<extension point="org.eclipse.ui.menus">
 		<menuContribution
@@ -180,6 +187,15 @@
       <markerResolutionGenerator
             class="org.wesnoth.ui.WMLExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator">
       </markerResolutionGenerator>
+   </extension>
+   <extension
+         point="org.eclipse.ui.bindings">
+      <key
+            commandId="org.wesnoth.wml.ui.showWMLDoc"
+            contextId="org.eclipse.xtext.ui.XtextEditorScope"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="F2">
+      </key>
    </extension>
 
 </plugin>
