@@ -126,11 +126,8 @@ public class WMLEditor extends XtextEditor
 			return false;
 		java.net.URI u1 = ((IURIEditorInput)getEditorInput()).getURI();
 		java.net.URI u2 = ((IURIEditorInput)((XtextEditor)obj).getEditorInput()).getURI();
-//		if (u1.toString().equals(u2.toString()) == false)
-//		{
-//			System.out.println(u1.toString());
-//			System.out.println(u2.toString());
-//		}
+		if (u1 == null || u2 == null)
+			return false;
 		return u1.toString().equals(u2.toString());
 	}
 
