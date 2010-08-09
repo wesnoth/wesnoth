@@ -102,10 +102,13 @@ void manager::print_help_once()
 
 void manager::set_active(bool active)
 {
-	if(is_observer())
+	if(wait_for_side_init_
+				|| executing_actions_
+				|| is_observer()
+				|| resources::controller->is_linger_mode())
 	{
 		active_ = false;
-		LOG_WB << "Whiteboard can't be activated by observers.\n";
+		LOG_WB << "Whiteboard can't be activated now.\n";
 	}
 	else if (active != active_)
 	{
@@ -128,7 +131,8 @@ void manager::set_invert_behavior(bool invert)
 	bool block_whiteboard_activation = false;
 	if(wait_for_side_init_
 			|| executing_actions_
-			|| is_observer())
+			|| is_observer()
+			|| resources::controller->is_linger_mode())
 	{
 		 block_whiteboard_activation = true;
 	}
