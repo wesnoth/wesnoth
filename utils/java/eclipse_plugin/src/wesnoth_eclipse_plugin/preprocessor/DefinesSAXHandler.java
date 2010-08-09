@@ -71,6 +71,8 @@ public class DefinesSAXHandler extends DefaultHandler
 			throws SAXException
 	{
 		super.characters(ch, start, length);
+		if (stack_.isEmpty())
+			return;
 		String element = stack_.peek();
 
 		if (element.equals("name"))
