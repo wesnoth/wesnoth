@@ -185,7 +185,7 @@ void terrain_builder::flush_local_rules()
 {
 	building_ruleset::iterator i = building_rules_.begin();
 	for(; i != building_rules_.end();){
-		if(i->second.local)
+		if (i->local)
 			building_rules_.erase(i++);
 		else
 			++i;
@@ -700,26 +700,34 @@ void terrain_builder::parse_mapstring(const std::string &mapstring,
 	}
 }
 
-void terrain_builder::add_rule(building_ruleset& rules, building_rule &rule, int precedence)
+void terrain_builder::add_rule(building_ruleset &rules, building_rule &rule)
 {
 	if(load_images(rule)) {
-		rules.insert(std::pair<int, building_rule>(precedence, rule));
+		rules.insert(rule);
 	}
 }
 
-void terrain_builder::add_rotated_rules(building_ruleset& rules, building_rule& tpl, int precedence, const std::string &rotations )
+void terrain_builder::add_rotated_rules(building_ruleset &rules, building_rule &tpl,
+	const std::string &rotations)
 {
 	if(rotations.empty()) {
 		// Adds the parsed built terrain to the list
 
-		add_rule(rules, tpl, precedence);
+		add_rule(rules, tpl);
 	} else {
 		const std::vector<std::string>& rot = utils::split(rotations, ',');
 
 		for(size_t angle = 0; angle < rot.size(); ++angle) {
+			/* Only 5% of the rules have valid images, so most of
+			   them will be discarded. If the ratio was higher,
+			   it would be more efficient to insert a copy of the
+			   template rule into the ruleset, modify it in place,
+			   and remove it if invalid. But since the ratio is so
+			   low, the speedup is not worth the extra multiset
+			   manipulations. */
 			building_rule rule = tpl;
 			rotate_rule(rule, angle, rot);
-			add_rule(rules, rule, precedence);
+			add_rule(rules, rule);
 		}
 	}
 }
@@ -808,9 +816,9 @@ void terrain_builder::parse_config(const config &cfg, bool local)
 		// Handles rotations
 		const std::string &rotations = br["rotations"];
 
-		int precedence = br["precedence"];
+		pbr.precedence = br["precedence"];
 
-		add_rotated_rules(building_rules_, pbr, precedence, rotations);
+		add_rotated_rules(building_rules_, pbr, rotations);
 
 	}
 
@@ -959,12 +967,8 @@ void terrain_builder::build_terrains()
 	}
 
 	int rule_index = 0;
-	building_ruleset::const_iterator r;
-
-	for(r = building_rules_.begin(); r != building_rules_.end(); ++r) {
-
-		const building_rule& rule = r->second;
-
+	foreach (const building_rule &rule, building_rules_)
+	{
 		// Find the constraint that contains the less terrain of all terrain rules.
 		// We will keep a track of the matching terrains of this constraint
 		// and later try to apply the rule only on them

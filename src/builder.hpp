@@ -351,6 +351,7 @@ private:
 			constraints(),
 			location_constraints(),
 			probability(0),
+			precedence(0),
 			local(false)
 		{}
 
@@ -374,9 +375,17 @@ private:
 		int probability;
 
 		/**
+		 * Ordering relation between the rules.
+		 */
+		int precedence;
+
+		/**
 		 * Indicate if the rule is only for this scenario
 		 */
 		bool local;
+
+		bool operator<(building_rule const &that) const
+		{ return precedence < that.precedence; }
 	};
 
 	/**
@@ -440,7 +449,7 @@ private:
 	 * A set of building rules. In-memory representation
 	 * of the whole set of [terrain_graphics] rules.
 	 */
-	typedef std::multimap<int, building_rule> building_ruleset;
+	typedef std::multiset<building_rule> building_ruleset;
 
 	/**
 	 * Load images and tests for validity of a rule. A rule is considered
@@ -653,9 +662,8 @@ private:
 	 *
 	 * @param rules      The ruleset into which to add the rules.
 	 * @param rule       The rule to add.
-	 * @param precedence The precedence specified in [terrain_graphics].
 	 */
-	void add_rule(building_ruleset& rules, building_rule &rule, int precedence);
+	void add_rule(building_ruleset& rules, building_rule &rule);
 
 	/**
 	 * Adds a set of rules to a ruleset, from a template rule which spans
@@ -663,13 +671,12 @@ private:
 	 *
 	 * @param rules      The ruleset into which to add the rules.
 	 * @param tpl        The template rule
-	 * @param precedence The precedence specified in [terrain_graphics].
 	 * @param rotations  A comma-separated string containing the
-	 *					 6 values for replacing rotation
-	 *					 template strings @verbatim (@Rn) @endverbatim
+	 *                   6 values for replacing rotation template
+	 *                   template strings @verbatim (@Rn) @endverbatim
 	 */
 	void add_rotated_rules(building_ruleset& rules, building_rule& tpl,
-			int precedence, const std::string &rotations);
+		const std::string &rotations);
 
 	/**
 	 * Parses a configuration object containing [terrain_graphics] rules,
