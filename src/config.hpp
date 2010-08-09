@@ -320,6 +320,12 @@ public:
 		const std::string &name, const std::string &value) const;
 
 	void clear_children(const std::string& key);
+
+	/**
+	 * Moves all the children with tag @a key from @a src to this.
+	 */
+	void splice_children(config &src, const std::string &key);
+
 	void remove_child(const std::string& key, size_t index);
 	void recursive_clear_value(const std::string& key);
 

@@ -435,6 +435,28 @@ void config::clear_children(const std::string& key)
 	}
 }
 
+void config::splice_children(config &src, const std::string &key)
+{
+	check_valid(src);
+
+	child_map::iterator i_src = src.children.find(key);
+	if (i_src == src.children.end()) return;
+
+	src.ordered_children.erase(std::remove_if(src.ordered_children.begin(),
+		src.ordered_children.end(), remove_ordered(key)),
+		src.ordered_children.end());
+
+	child_list &dst = children[key];
+	unsigned before = dst.size();
+	dst.insert(dst.end(), i_src->second.begin(), i_src->second.end());
+	src.children.erase(i_src);
+
+	child_map::iterator i_dst = children.find(key);
+	for (unsigned j = before; j < dst.size(); ++j) {
+		ordered_children.push_back(child_pos(i_dst, j));
+	}
+}
+
 void config::recursive_clear_value(const std::string& key)
 {
 	check_valid();

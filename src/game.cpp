@@ -1489,15 +1489,10 @@ void game_controller::load_game_cfg(const bool force)
 
 		main_transaction.lock();
 
-		// clone and put the gfx rules aside so that we can prepend the add-on
-		// rules to them.
+		/* Put the gfx rules aside so that we can prepend the add-on
+		   rules to them. */
 		config core_terrain_rules;
-		// FIXME: there should be a canned algorithm for cloning child_list objects,
-		// along with the memory their elements point to... little implementation detail.
-		foreach (config const &p_cfg, game_config_.child_range("terrain_graphics")) {
-			core_terrain_rules.add_child("terrain_graphics", p_cfg);
-		}
-		game_config_.clear_children("terrain_graphics");
+		core_terrain_rules.splice_children(game_config_, "terrain_graphics");
 
 		// load usermade add-ons
 		const std::string user_campaign_dir = get_addon_campaigns_dir();
@@ -1567,7 +1562,7 @@ void game_controller::load_game_cfg(const bool force)
 		game_config_.clear_children("lua");
 
 		game_config_.merge_children("units");
-		game_config_.append(core_terrain_rules);
+		game_config_.splice_children(core_terrain_rules, "terrain_graphics");
 
 		config& hashes = game_config_.add_child("multiplayer_hashes");
 		foreach (const config &ch, game_config_.child_range("multiplayer")) {
