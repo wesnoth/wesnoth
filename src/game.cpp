@@ -1449,6 +1449,7 @@ void game_controller::show_upload_begging()
 
 void game_controller::set_unit_data()
 {
+	loadscreen::start_stage("load unit types");
 	if (config &units = game_config_.child("units")) {
 		unit_types.set_config(units);
 	}
@@ -1478,9 +1479,9 @@ void game_controller::load_game_cfg(const bool force)
 		 * Then handle terrains so that they are last loaded from data/
 		 * 2nd everything in userdata
 		 **/
-		//reset the parse counter before reading the game files
+		loadscreen::start_stage("verify cache");
 		data_tree_checksum();
-		loadscreen::global_loadscreen->parser_counter = 0;
+		loadscreen::start_stage("create cache");
 
 		// start transaction so macros are shared
 		game_config::config_cache_transaction main_transaction;
@@ -1585,7 +1586,7 @@ void game_controller::load_game_cfg(const bool force)
 void game_controller::launch_game(RELOAD_GAME_DATA reload)
 {
 	loadscreen::global_loadscreen_manager loadscreen_manager(disp().video());
-	loadscreen::global_loadscreen->set_progress(0, _("Loading data files"));
+	loadscreen::start_stage("load data");
 	if(reload == RELOAD_DATA) {
 		game_config::scoped_preproc_define campaign_define(state_.classification().campaign_define, state_.classification().campaign_define.empty() == false);
 
@@ -1603,8 +1604,6 @@ void game_controller::launch_game(RELOAD_GAME_DATA reload)
 			return;
 		}
 	}
-
-	loadscreen::global_loadscreen->set_progress(60);
 
 	const binary_paths_manager bin_paths_manager(game_config());
 
@@ -2202,18 +2201,19 @@ static int do_gameloop(int argc, char** argv)
 	const cursor::manager cursor_manager;
 	cursor::set(cursor::WAIT);
 
+	loadscreen::global_loadscreen_manager loadscreen_manager(game.disp().video());
+
+	loadscreen::start_stage("init gui");
 	gui2::init();
 	const gui2::event::tmanager gui_event_manager;
 
-	loadscreen::global_loadscreen_manager loadscreen_manager(game.disp().video());
-
-	loadscreen::global_loadscreen->increment_progress(5, _("Loading game configuration."));
+	loadscreen::start_stage("load config");
 	res = game.init_config();
 	if(res == false) {
 		std::cerr << "could not initialize game config\n";
 		return 1;
 	}
-	loadscreen::global_loadscreen->increment_progress(10, _("Re-initialize fonts for the current language."));
+	loadscreen::start_stage("init fonts");
 
 	res = font::load_font_config();
 	if(res == false) {
@@ -2221,7 +2221,7 @@ static int do_gameloop(int argc, char** argv)
 		return 1;
 	}
 
-	loadscreen::global_loadscreen->increment_progress(0, _("Searching for installed add-ons."));
+	loadscreen::start_stage("refresh addons");
 	refresh_addon_version_info_cache();
 
 #if defined(_X11) && !defined(__APPLE__)
@@ -2230,7 +2230,7 @@ static int do_gameloop(int argc, char** argv)
 
 	config tips_of_day;
 
-	loadscreen::global_loadscreen->set_progress(100, _("Loading title screen."));
+	loadscreen::start_stage("titlescreen");
 
 	LOG_CONFIG << "time elapsed: "<<  (SDL_GetTicks() - start_ticks) << " ms\n";
 

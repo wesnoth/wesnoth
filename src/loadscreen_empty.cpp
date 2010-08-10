@@ -16,19 +16,8 @@
 
 #include "loadscreen.hpp"
 
-void loadscreen::set_progress(const int /*percentage*/, const std::string &/*text*/, const bool /*commit*/)
-{}
-
-void loadscreen::increment_progress(const int /*percentage*/, const std::string &/*text*/, const bool /*commit*/) {}
-
-void loadscreen::clear_screen(const bool /*commit*/) {}
+void loadscreen::start_stage(char const *) {}
+void loadscreen::increment_progress() {}
+void loadscreen::clear_screen() {}
 
 loadscreen *loadscreen::global_loadscreen = 0;
-
-void increment_filesystem_progress () {}
-
-
-void increment_set_config_progress () {}
-
-void increment_parser_progress () {}
-

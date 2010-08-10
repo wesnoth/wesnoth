@@ -38,17 +38,18 @@ class loadscreen {
 			dump_counters();
 		}
 
-		/** Function to display a load progress bar. */
-		void set_progress(const int percentage=0, const std::string &text="", const bool commit=true);
-		/** Function to increment the progress bar. */
-		void increment_progress(const int percentage=1, const std::string &text="", const bool commit=true);
-		/** Function to draw a blank screen. */
-		void clear_screen(const bool commit=true);
+	/**
+	 * Starts the stage with identifier @a id.
+	 */
+	static void start_stage(char const *id);
 
-		// Counters
-		int filesystem_counter;
-		int setconfig_counter;
-		int parser_counter;
+	/**
+	 * Increments the current stage for the progress bar.
+	 */
+	static void increment_progress();
+
+		/** Function to draw a blank screen. */
+		void clear_screen();
 
 		/**
 		 * A global loadscreen instance that can be used to avoid
@@ -66,7 +67,12 @@ private:
 			static global_loadscreen_manager* manager;
 			bool owns;
 		};
-	private:
+private:
+	/**
+	 * Displays a load progress bar.
+	 */
+	void draw_screen(const std::string &text);
+
 		// Prohibit default constructor
 		loadscreen();
 
@@ -80,10 +86,5 @@ private:
 
 		void dump_counters() const;
 };
-
-// Global accessible functions that centralize the loadscreen related work.
-void increment_filesystem_progress();
-void increment_set_config_progress();
-void increment_parser_progress();
 
 #endif

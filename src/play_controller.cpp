@@ -149,7 +149,7 @@ void play_controller::init(CVideo& video){
 		loadscreen_manager = scoped_loadscreen_manager.get();
 	}
 
-	loadscreen::global_loadscreen->set_progress(50, _("Loading level"));
+	loadscreen::start_stage("load level");
 	// If the recorder has no event, adds an "game start" event
 	// to the recorder, whose only goal is to initialize the RNG
 	if(recorder.empty()) {
@@ -171,7 +171,7 @@ void play_controller::init(CVideo& video){
 	}
 
 	LOG_NG << "initialized teams... "    << (SDL_GetTicks() - ticks_) << "\n";
-	loadscreen::global_loadscreen->set_progress(60, _("Initializing teams"));
+	loadscreen::start_stage("init teams");
 
 	// This *needs* to be created before the show_intro and show_map_scene
 	// as that functions use the manager state_of_game
@@ -203,17 +203,19 @@ void play_controller::init(CVideo& video){
 	if (teams_.empty()) end_level_data_.linger_mode = false;
 
 	LOG_NG << "loading units..." << (SDL_GetTicks() - ticks_) << "\n";
-	loadscreen::global_loadscreen->set_progress(70, _("Loading units"));
+	loadscreen::start_stage("load units");
 	preferences::encounter_recruitable_units(teams_);
 	preferences::encounter_start_units(units_);
 	preferences::encounter_recallable_units(teams_);
 	preferences::encounter_map_terrain(map_);
 
 
-	loadscreen::global_loadscreen->set_progress(80, _("Initializing display"));
-	LOG_NG << "initializing display... " << (SDL_GetTicks() - ticks_) << "\n";
-
+	LOG_NG << "initializing theme... " << (SDL_GetTicks() - ticks_) << '\n';
+	loadscreen::start_stage("init theme");
 	const config &theme_cfg = get_theme(game_config_, level_["theme"]);
+
+	LOG_NG << "building terrain rules... " << (SDL_GetTicks() - ticks_) << '\n';
+	loadscreen::start_stage("build terrain");
 	gui_.reset(new game_display(units_, video, map_, tod_manager_, teams_, theme_cfg, level_));
 	if (!gui_->video().faked()) {
 		if (gamestate_.mp_settings().mp_countdown)
@@ -221,7 +223,8 @@ void play_controller::init(CVideo& video){
 		else
 			gui_->get_theme().modify_label("time-icon", _ ("current local time"));
 	}
-	loadscreen::global_loadscreen->set_progress(90, _("Initializing display"));
+
+	loadscreen::start_stage("init display");
 	mouse_handler_.set_gui(gui_.get());
 	menu_handler_.set_gui(gui_.get());
 	resources::screen = gui_.get();
@@ -255,9 +258,7 @@ void play_controller::init(CVideo& video){
 		game_events::add_events(era_cfg.child_range("event"), "era_events");
 	}
 
-
-
-	loadscreen::global_loadscreen->set_progress(100, _("Starting game"));
+	loadscreen::global_loadscreen->start_stage("start game");
 	loadscreen_manager->reset();
 }
 

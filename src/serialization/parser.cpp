@@ -126,7 +126,7 @@ void parser::operator()()
 		case token::END:
 			break;
 		}
-		increment_parser_progress();
+		loadscreen::increment_progress();
 	} while (tok_->current_token().type != token::END);
 
 	// The main element should be there. If it is not, this is a parser error.

@@ -22,6 +22,7 @@
 #include "builder.hpp"
 #include "config.hpp"
 #include "foreach.hpp"
+#include "loadscreen.hpp"
 #include "log.hpp"
 #include "map.hpp"
 #include "serialization/string_utils.hpp"
@@ -813,6 +814,7 @@ void terrain_builder::parse_config(const config &cfg, bool local)
 
 		add_rotated_rules(building_rules_, pbr, rotations);
 
+		loadscreen::increment_progress();
 	}
 
 // Debug output for the terrain rules

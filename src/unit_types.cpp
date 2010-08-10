@@ -1118,14 +1118,14 @@ void unit_type_data::set_config(config &cfg)
 		const unit_movement_type move_type(mt);
 		movement_types_.insert(
 			std::pair<std::string,unit_movement_type>(move_type.name(), move_type));
-		increment_set_config_progress();
+		loadscreen::increment_progress();
 	}
 
 	foreach (const config &r, cfg.child_range("race"))
 	{
 		const unit_race race(r);
 		races_.insert(std::pair<std::string,unit_race>(race.id(),race));
-		increment_set_config_progress();
+		loadscreen::increment_progress();
 	}
 
 	foreach (config &ut, cfg.child_range("unit_type"))
@@ -1142,6 +1142,7 @@ void unit_type_data::set_config(config &cfg)
 		// We insert an empty unit_type and build it after the copy (for performance).
 		insert(std::make_pair(id, unit_type(ut)));
 		LOG_CONFIG << "added " << id << " to unit_type list (unit_type_data.unit_types)\n";
+		loadscreen::increment_progress();
 	}
 
 	build_all(unit_type::CREATED);
