@@ -11,51 +11,52 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import org.wesnoth.wML.WMLAbstractMacroCall;
 import org.wesnoth.wML.WMLPackage;
-import org.wesnoth.wML.WMLValue;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Value</b></em>'.
+ * An implementation of the model object '<em><b>Abstract Macro Call</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.wesnoth.wML.impl.WMLValueImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link org.wesnoth.wML.impl.WMLAbstractMacroCallImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class WMLValueImpl extends WMLKeyValueImpl implements WMLValue
+public class WMLAbstractMacroCallImpl extends MinimalEObjectImpl.Container implements WMLAbstractMacroCall
 {
   /**
-   * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getValue()
+   * @see #getName()
    * @generated
    * @ordered
    */
-  protected static final String VALUE_EDEFAULT = null;
+  protected static final String NAME_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getValue()
+   * @see #getName()
    * @generated
    * @ordered
    */
-  protected String value = VALUE_EDEFAULT;
+  protected String name = NAME_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected WMLValueImpl()
+  protected WMLAbstractMacroCallImpl()
   {
     super();
   }
@@ -68,7 +69,7 @@ public class WMLValueImpl extends WMLKeyValueImpl implements WMLValue
   @Override
   protected EClass eStaticClass()
   {
-    return WMLPackage.Literals.WML_VALUE;
+    return WMLPackage.Literals.WML_ABSTRACT_MACRO_CALL;
   }
 
   /**
@@ -76,9 +77,9 @@ public class WMLValueImpl extends WMLKeyValueImpl implements WMLValue
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getValue()
+  public String getName()
   {
-    return value;
+    return name;
   }
 
   /**
@@ -86,12 +87,12 @@ public class WMLValueImpl extends WMLKeyValueImpl implements WMLValue
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setValue(String newValue)
+  public void setName(String newName)
   {
-    String oldValue = value;
-    value = newValue;
+    String oldName = name;
+    name = newName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, WMLPackage.WML_VALUE__VALUE, oldValue, value));
+      eNotify(new ENotificationImpl(this, Notification.SET, WMLPackage.WML_ABSTRACT_MACRO_CALL__NAME, oldName, name));
   }
 
   /**
@@ -104,8 +105,8 @@ public class WMLValueImpl extends WMLKeyValueImpl implements WMLValue
   {
     switch (featureID)
     {
-      case WMLPackage.WML_VALUE__VALUE:
-        return getValue();
+      case WMLPackage.WML_ABSTRACT_MACRO_CALL__NAME:
+        return getName();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -120,8 +121,8 @@ public class WMLValueImpl extends WMLKeyValueImpl implements WMLValue
   {
     switch (featureID)
     {
-      case WMLPackage.WML_VALUE__VALUE:
-        setValue((String)newValue);
+      case WMLPackage.WML_ABSTRACT_MACRO_CALL__NAME:
+        setName((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -137,8 +138,8 @@ public class WMLValueImpl extends WMLKeyValueImpl implements WMLValue
   {
     switch (featureID)
     {
-      case WMLPackage.WML_VALUE__VALUE:
-        setValue(VALUE_EDEFAULT);
+      case WMLPackage.WML_ABSTRACT_MACRO_CALL__NAME:
+        setName(NAME_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -154,8 +155,8 @@ public class WMLValueImpl extends WMLKeyValueImpl implements WMLValue
   {
     switch (featureID)
     {
-      case WMLPackage.WML_VALUE__VALUE:
-        return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
+      case WMLPackage.WML_ABSTRACT_MACRO_CALL__NAME:
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
     }
     return super.eIsSet(featureID);
   }
@@ -171,10 +172,10 @@ public class WMLValueImpl extends WMLKeyValueImpl implements WMLValue
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (value: ");
-    result.append(value);
+    result.append(" (name: ");
+    result.append(name);
     result.append(')');
     return result.toString();
   }
 
-} //WMLValueImpl
+} //WMLAbstractMacroCallImpl

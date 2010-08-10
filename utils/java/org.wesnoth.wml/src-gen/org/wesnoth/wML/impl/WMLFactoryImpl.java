@@ -70,15 +70,14 @@ public class WMLFactoryImpl extends EFactoryImpl implements WMLFactory
     {
       case WMLPackage.WML_ROOT: return createWMLRoot();
       case WMLPackage.WML_TAG: return createWMLTag();
-      case WMLPackage.WML_KEY: return createWMLKey();
-      case WMLPackage.WML_KEY_VALUE: return createWMLKeyValue();
+      case WMLPackage.WML_ABSTRACT_MACRO_CALL: return createWMLAbstractMacroCall();
+      case WMLPackage.WML_MACRO_INCLUDE: return createWMLMacroInclude();
       case WMLPackage.WML_MACRO_CALL: return createWMLMacroCall();
-      case WMLPackage.WML_MACRO_PARAMETER: return createWMLMacroParameter();
-      case WMLPackage.WML_LUA_CODE: return createWMLLuaCode();
-      case WMLPackage.WML_ARRAY_CALL: return createWMLArrayCall();
       case WMLPackage.WML_MACRO_DEFINE: return createWMLMacroDefine();
       case WMLPackage.WML_TEXTDOMAIN: return createWMLTextdomain();
-      case WMLPackage.WML_VALUE: return createWMLValue();
+      case WMLPackage.WML_KEY: return createWMLKey();
+      case WMLPackage.WML_KEY_EXTRA_ARGS: return createWMLKeyExtraArgs();
+      case WMLPackage.WML_KEY_VALUE: return createWMLKeyValue();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -111,10 +110,10 @@ public class WMLFactoryImpl extends EFactoryImpl implements WMLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public WMLKey createWMLKey()
+  public WMLAbstractMacroCall createWMLAbstractMacroCall()
   {
-    WMLKeyImpl wmlKey = new WMLKeyImpl();
-    return wmlKey;
+    WMLAbstractMacroCallImpl wmlAbstractMacroCall = new WMLAbstractMacroCallImpl();
+    return wmlAbstractMacroCall;
   }
 
   /**
@@ -122,10 +121,10 @@ public class WMLFactoryImpl extends EFactoryImpl implements WMLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public WMLKeyValue createWMLKeyValue()
+  public WMLMacroInclude createWMLMacroInclude()
   {
-    WMLKeyValueImpl wmlKeyValue = new WMLKeyValueImpl();
-    return wmlKeyValue;
+    WMLMacroIncludeImpl wmlMacroInclude = new WMLMacroIncludeImpl();
+    return wmlMacroInclude;
   }
 
   /**
@@ -137,39 +136,6 @@ public class WMLFactoryImpl extends EFactoryImpl implements WMLFactory
   {
     WMLMacroCallImpl wmlMacroCall = new WMLMacroCallImpl();
     return wmlMacroCall;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public WMLMacroParameter createWMLMacroParameter()
-  {
-    WMLMacroParameterImpl wmlMacroParameter = new WMLMacroParameterImpl();
-    return wmlMacroParameter;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public WMLLuaCode createWMLLuaCode()
-  {
-    WMLLuaCodeImpl wmlLuaCode = new WMLLuaCodeImpl();
-    return wmlLuaCode;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public WMLArrayCall createWMLArrayCall()
-  {
-    WMLArrayCallImpl wmlArrayCall = new WMLArrayCallImpl();
-    return wmlArrayCall;
   }
 
   /**
@@ -199,10 +165,32 @@ public class WMLFactoryImpl extends EFactoryImpl implements WMLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public WMLValue createWMLValue()
+  public WMLKey createWMLKey()
   {
-    WMLValueImpl wmlValue = new WMLValueImpl();
-    return wmlValue;
+    WMLKeyImpl wmlKey = new WMLKeyImpl();
+    return wmlKey;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public WMLKeyExtraArgs createWMLKeyExtraArgs()
+  {
+    WMLKeyExtraArgsImpl wmlKeyExtraArgs = new WMLKeyExtraArgsImpl();
+    return wmlKeyExtraArgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public WMLKeyValue createWMLKeyValue()
+  {
+    WMLKeyValueImpl wmlKeyValue = new WMLKeyValueImpl();
+    return wmlKeyValue;
   }
 
   /**

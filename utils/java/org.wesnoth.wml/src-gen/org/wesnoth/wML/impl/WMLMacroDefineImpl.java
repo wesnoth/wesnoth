@@ -6,15 +6,26 @@
  */
 package org.wesnoth.wML.impl;
 
-import org.eclipse.emf.common.notify.Notification;
+import java.util.Collection;
+
+import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import org.eclipse.emf.ecore.util.EDataTypeEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
+
+import org.wesnoth.wML.WMLKey;
+import org.wesnoth.wML.WMLMacroCall;
 import org.wesnoth.wML.WMLMacroDefine;
 import org.wesnoth.wML.WMLPackage;
+import org.wesnoth.wML.WMLTag;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,7 +34,11 @@ import org.wesnoth.wML.WMLPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.wesnoth.wML.impl.WMLMacroDefineImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.wesnoth.wML.impl.WMLMacroDefineImpl#getParams <em>Params</em>}</li>
+ *   <li>{@link org.wesnoth.wML.impl.WMLMacroDefineImpl#getTags <em>Tags</em>}</li>
+ *   <li>{@link org.wesnoth.wML.impl.WMLMacroDefineImpl#getMacros <em>Macros</em>}</li>
+ *   <li>{@link org.wesnoth.wML.impl.WMLMacroDefineImpl#getMacrosDefines <em>Macros Defines</em>}</li>
+ *   <li>{@link org.wesnoth.wML.impl.WMLMacroDefineImpl#getKeys <em>Keys</em>}</li>
  * </ul>
  * </p>
  *
@@ -32,24 +47,54 @@ import org.wesnoth.wML.WMLPackage;
 public class WMLMacroDefineImpl extends MinimalEObjectImpl.Container implements WMLMacroDefine
 {
   /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The cached value of the '{@link #getParams() <em>Params</em>}' attribute list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getParams()
    * @generated
    * @ordered
    */
-  protected static final String NAME_EDEFAULT = null;
+  protected EList<String> params;
 
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The cached value of the '{@link #getTags() <em>Tags</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getTags()
    * @generated
    * @ordered
    */
-  protected String name = NAME_EDEFAULT;
+  protected EList<WMLTag> tags;
+
+  /**
+   * The cached value of the '{@link #getMacros() <em>Macros</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMacros()
+   * @generated
+   * @ordered
+   */
+  protected EList<WMLMacroCall> macros;
+
+  /**
+   * The cached value of the '{@link #getMacrosDefines() <em>Macros Defines</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMacrosDefines()
+   * @generated
+   * @ordered
+   */
+  protected EList<WMLMacroDefine> macrosDefines;
+
+  /**
+   * The cached value of the '{@link #getKeys() <em>Keys</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getKeys()
+   * @generated
+   * @ordered
+   */
+  protected EList<WMLKey> keys;
 
   /**
    * <!-- begin-user-doc -->
@@ -77,9 +122,13 @@ public class WMLMacroDefineImpl extends MinimalEObjectImpl.Container implements 
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getName()
+  public EList<String> getParams()
   {
-    return name;
+    if (params == null)
+    {
+      params = new EDataTypeEList<String>(String.class, this, WMLPackage.WML_MACRO_DEFINE__PARAMS);
+    }
+    return params;
   }
 
   /**
@@ -87,12 +136,77 @@ public class WMLMacroDefineImpl extends MinimalEObjectImpl.Container implements 
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setName(String newName)
+  public EList<WMLTag> getTags()
   {
-    String oldName = name;
-    name = newName;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, WMLPackage.WML_MACRO_DEFINE__NAME, oldName, name));
+    if (tags == null)
+    {
+      tags = new EObjectContainmentEList<WMLTag>(WMLTag.class, this, WMLPackage.WML_MACRO_DEFINE__TAGS);
+    }
+    return tags;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<WMLMacroCall> getMacros()
+  {
+    if (macros == null)
+    {
+      macros = new EObjectContainmentEList<WMLMacroCall>(WMLMacroCall.class, this, WMLPackage.WML_MACRO_DEFINE__MACROS);
+    }
+    return macros;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<WMLMacroDefine> getMacrosDefines()
+  {
+    if (macrosDefines == null)
+    {
+      macrosDefines = new EObjectContainmentEList<WMLMacroDefine>(WMLMacroDefine.class, this, WMLPackage.WML_MACRO_DEFINE__MACROS_DEFINES);
+    }
+    return macrosDefines;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<WMLKey> getKeys()
+  {
+    if (keys == null)
+    {
+      keys = new EObjectContainmentEList<WMLKey>(WMLKey.class, this, WMLPackage.WML_MACRO_DEFINE__KEYS);
+    }
+    return keys;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case WMLPackage.WML_MACRO_DEFINE__TAGS:
+        return ((InternalEList<?>)getTags()).basicRemove(otherEnd, msgs);
+      case WMLPackage.WML_MACRO_DEFINE__MACROS:
+        return ((InternalEList<?>)getMacros()).basicRemove(otherEnd, msgs);
+      case WMLPackage.WML_MACRO_DEFINE__MACROS_DEFINES:
+        return ((InternalEList<?>)getMacrosDefines()).basicRemove(otherEnd, msgs);
+      case WMLPackage.WML_MACRO_DEFINE__KEYS:
+        return ((InternalEList<?>)getKeys()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
@@ -105,8 +219,16 @@ public class WMLMacroDefineImpl extends MinimalEObjectImpl.Container implements 
   {
     switch (featureID)
     {
-      case WMLPackage.WML_MACRO_DEFINE__NAME:
-        return getName();
+      case WMLPackage.WML_MACRO_DEFINE__PARAMS:
+        return getParams();
+      case WMLPackage.WML_MACRO_DEFINE__TAGS:
+        return getTags();
+      case WMLPackage.WML_MACRO_DEFINE__MACROS:
+        return getMacros();
+      case WMLPackage.WML_MACRO_DEFINE__MACROS_DEFINES:
+        return getMacrosDefines();
+      case WMLPackage.WML_MACRO_DEFINE__KEYS:
+        return getKeys();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -116,13 +238,31 @@ public class WMLMacroDefineImpl extends MinimalEObjectImpl.Container implements 
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
-      case WMLPackage.WML_MACRO_DEFINE__NAME:
-        setName((String)newValue);
+      case WMLPackage.WML_MACRO_DEFINE__PARAMS:
+        getParams().clear();
+        getParams().addAll((Collection<? extends String>)newValue);
+        return;
+      case WMLPackage.WML_MACRO_DEFINE__TAGS:
+        getTags().clear();
+        getTags().addAll((Collection<? extends WMLTag>)newValue);
+        return;
+      case WMLPackage.WML_MACRO_DEFINE__MACROS:
+        getMacros().clear();
+        getMacros().addAll((Collection<? extends WMLMacroCall>)newValue);
+        return;
+      case WMLPackage.WML_MACRO_DEFINE__MACROS_DEFINES:
+        getMacrosDefines().clear();
+        getMacrosDefines().addAll((Collection<? extends WMLMacroDefine>)newValue);
+        return;
+      case WMLPackage.WML_MACRO_DEFINE__KEYS:
+        getKeys().clear();
+        getKeys().addAll((Collection<? extends WMLKey>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -138,8 +278,20 @@ public class WMLMacroDefineImpl extends MinimalEObjectImpl.Container implements 
   {
     switch (featureID)
     {
-      case WMLPackage.WML_MACRO_DEFINE__NAME:
-        setName(NAME_EDEFAULT);
+      case WMLPackage.WML_MACRO_DEFINE__PARAMS:
+        getParams().clear();
+        return;
+      case WMLPackage.WML_MACRO_DEFINE__TAGS:
+        getTags().clear();
+        return;
+      case WMLPackage.WML_MACRO_DEFINE__MACROS:
+        getMacros().clear();
+        return;
+      case WMLPackage.WML_MACRO_DEFINE__MACROS_DEFINES:
+        getMacrosDefines().clear();
+        return;
+      case WMLPackage.WML_MACRO_DEFINE__KEYS:
+        getKeys().clear();
         return;
     }
     super.eUnset(featureID);
@@ -155,8 +307,16 @@ public class WMLMacroDefineImpl extends MinimalEObjectImpl.Container implements 
   {
     switch (featureID)
     {
-      case WMLPackage.WML_MACRO_DEFINE__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case WMLPackage.WML_MACRO_DEFINE__PARAMS:
+        return params != null && !params.isEmpty();
+      case WMLPackage.WML_MACRO_DEFINE__TAGS:
+        return tags != null && !tags.isEmpty();
+      case WMLPackage.WML_MACRO_DEFINE__MACROS:
+        return macros != null && !macros.isEmpty();
+      case WMLPackage.WML_MACRO_DEFINE__MACROS_DEFINES:
+        return macrosDefines != null && !macrosDefines.isEmpty();
+      case WMLPackage.WML_MACRO_DEFINE__KEYS:
+        return keys != null && !keys.isEmpty();
     }
     return super.eIsSet(featureID);
   }
@@ -172,8 +332,8 @@ public class WMLMacroDefineImpl extends MinimalEObjectImpl.Container implements 
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (name: ");
-    result.append(name);
+    result.append(" (params: ");
+    result.append(params);
     result.append(')');
     return result.toString();
   }
