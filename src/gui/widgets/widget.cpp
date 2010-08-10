@@ -238,7 +238,7 @@ twidget::tdrawing_action twidget::get_drawing_action() const
 
 void twidget::set_visible_area(const SDL_Rect& area)
 {
-	clip_rect_ = get_rect_union(area, get_rect());
+	clip_rect_ = intersect_rects(area, get_rect());
 
 	if(clip_rect_ == get_rect()) {
 		drawing_action_ = DRAWN;

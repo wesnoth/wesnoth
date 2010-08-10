@@ -390,8 +390,7 @@ void tscrollbar_container::set_visible_area(const SDL_Rect& area)
 	tcontainer_::set_visible_area(area);
 
 	// Now get the visible part of the content.
-	content_visible_area_ =
-			get_rect_union(area, content_->get_rect());
+	content_visible_area_ = intersect_rects(area, content_->get_rect());
 
 	content_grid_->set_visible_area(content_visible_area_);
 }

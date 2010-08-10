@@ -106,32 +106,26 @@ SDL_Rect intersect_rects(SDL_Rect const &rect1, SDL_Rect const &rect2)
 	SDL_Rect res;
 	res.x = std::max<int>(rect1.x, rect2.x);
 	res.y = std::max<int>(rect1.y, rect2.y);
-	res.w = std::max<int>(std::min<int>(rect1.x + rect1.w, rect2.x + rect2.w) - res.x, 0);
-	res.h = std::max<int>(std::min<int>(rect1.y + rect1.h, rect2.y + rect2.h) - res.y, 0);
+	int w = std::min<int>(rect1.x + rect1.w, rect2.x + rect2.w) - res.x;
+	int h = std::min<int>(rect1.y + rect1.h, rect2.y + rect2.h) - res.y;
+	if (w <= 0 || h <= 0) return empty_rect;
+	res.w = w;
+	res.h = h;
 	return res;
 }
 
-SDL_Rect get_rect_union(SDL_Rect const &rect1, SDL_Rect const& rect2) {
-	const int left_side = std::max(rect1.x, rect2.x);
-	const int right_side = std::min(rect1.x + rect1.w, rect2.x + rect2.w);
-	if(left_side > right_side) {
-		return empty_rect;
-	}
-
-	const int top_side = std::max(rect1.y, rect2.y);
-	const int bottom_side = std::min(rect1.y + rect1.h, rect2.y + rect2.h);
-	if(top_side > bottom_side) {
-		return empty_rect;
-	}
-
-	SDL_Rect result = create_rect(
-			left_side,
-			top_side,
-			right_side - left_side,
-			bottom_side - top_side);
-
-	return result;
+SDL_Rect union_rects(SDL_Rect const &rect1, SDL_Rect const &rect2)
+{
+	if (rect1.w == 0 || rect1.h == 0) return rect2;
+	if (rect2.w == 0 || rect2.h == 0) return rect1;
+	SDL_Rect res;
+	res.x = std::min<int>(rect1.x, rect2.x);
+	res.y = std::min<int>(rect1.y, rect2.y);
+	res.w = std::max<int>(rect1.x + rect1.w, rect2.x + rect2.w) - res.x;
+	res.h = std::max<int>(rect1.y + rect1.h, rect2.y + rect2.h) - res.y;
+	return res;
 }
+
 SDL_Rect create_rect(const int x, const int y, const int w, const int h)
 {
 	SDL_Rect rect;
