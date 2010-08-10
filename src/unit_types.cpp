@@ -1207,6 +1207,7 @@ void unit_type_data::build_all(unit_type::BUILD_STATUS status)
 
 	for (unit_type_map::iterator u = types_.begin(), u_end = types_.end(); u != u_end; ++u) {
 		build_unit_type(u, status);
+		loadscreen::increment_progress();
 	}
 	for (unit_type_map::iterator u = types_.begin(), u_end = types_.end(); u != u_end; ++u) {
 		add_advancement(u->second);
