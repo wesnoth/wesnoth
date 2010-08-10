@@ -217,8 +217,19 @@ struct user_choice
  * stored into the replay. The function object is called if the local
  * client is responsible for making the choice.
  * @param name tag used for storing the choice into the replay.
+ * @param side the number of the side responsible for making the choice. 
+ *		- defaults to currently active side.
+ *
+ * @note In order to prevent issues with sync, crash, or infinite loop, a number of precautions 
+ *		must be taken when getting a choice from a specific side.
+ *		- The calling function must enter a loop to wait for network sync if the side is non-local.
+ *			- This loop must end when a response is received in the replay.
+ *		- The server must recognize @name replay commands as legal from non-active players.
+ *			- Preferably the server should be notified about which player the data is expected from, 
+ *			and discard data from unexpected players.
+ *		- do_replay_handle must ignore the @name replay command when the originating player's turn is reached.
  */
-config get_user_choice(const std::string &name, const user_choice &uch);
+config get_user_choice(const std::string &name, const user_choice &uch, int side = 0);
 
 }
 

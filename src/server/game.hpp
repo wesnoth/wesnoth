@@ -173,6 +173,8 @@ public:
 
 	void set_termination_reason(const std::string& reason);
 
+	void allow_global(const simple_wml::document &data);
+
 private:
 	//forbidden operations
 	game(const game&);
@@ -325,6 +327,9 @@ private:
 
 	bool save_replays_;
 	std::string replay_save_path_;
+
+	/** The side from which global variable data is expected*/
+	int global_wait_side_;
 };
 
 struct game_is_member {

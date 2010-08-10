@@ -66,7 +66,8 @@ game::game(player_map& players, const network::connection host,
 	bans_(),
 	termination_(),
 	save_replays_(save_replays),
-	replay_save_path_(replay_save_path)
+	replay_save_path_(replay_save_path),
+	global_wait_side_(0)
 {
 	assert(owner_);
 	players_.push_back(owner_);
@@ -740,11 +741,20 @@ bool game::is_legal_command(const simple_wml::node& command, bool is_player) {
 	if (!command.one_child()) return false;
 	// Chatting is never an illegal command.
 	if (command.child("speak")) return true;
+	if (is_player && command.child("global_variable")) {
+		const simple_wml::node *gvar = (command.child("global_variable"));
+		if ((*gvar)["side"].to_int() == global_wait_side_) {
+			global_wait_side_ = 0;
+			return true;
+		}
+		return false;
+	}
 	if (is_player
 	&& (command.child("label")
 		|| command.child("clear_labels")
 		|| command.child("rename")
 		|| command.child("countdown_update")
+		|| command.child("global_variable")
 		))
 	{
 		return true;
@@ -1295,6 +1305,13 @@ void game::set_termination_reason(const std::string& reason) {
 		termination_ = "out of sync - " + era.to_string();
 	}*/
 	if (termination_.empty()) { termination_ = reason; }
+}
+
+void game::allow_global(const simple_wml::document &data) {
+	const simple_wml::node *cfg = data.root().child("wait_global");
+	int side = (*cfg)["side"].to_int();
+	if ((side < 0) || (side > nsides_)) side = 0;
+	global_wait_side_ = side;
 }
 
 const user_vector game::all_game_users() const {

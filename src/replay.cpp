@@ -1142,6 +1142,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 			get_replay_source().add_expected_advancement(loc);
 			DBG_REPLAY << "got an explicit advance\n";
 
+		} else if (const config &child = cfg->child("global_variable")) {
 		} else {
 			if(! cfg->child("checksum")) {
 				replay::process_error("unrecognized action:\n" + cfg->debug());
@@ -1200,14 +1201,19 @@ void replay_network_sender::commit_and_sync()
 	}
 }
 
-config mp_sync::get_user_choice(const std::string &name, const user_choice &uch)
+config mp_sync::get_user_choice(const std::string &name, const user_choice &uch, int side)
 {
 	if (resources::state_of_game->phase() == game_state::PLAY)
 	{
 		/* We have to communicate with the player and store the
 		   choices in the replay. So a decision will be made on
 		   one host and shared amongst all of them. */
-		int active_side = resources::controller->current_side();
+
+		/* process the side parameter and ensure it is within boundaries */
+		if ((side <= 0) || (side > resources::teams->size())) 
+			side = resources::controller->current_side();
+
+		int active_side = side;
 		if ((*resources::teams)[active_side - 1].is_local() &&
 		    get_replay_source().at_end())
 		{
