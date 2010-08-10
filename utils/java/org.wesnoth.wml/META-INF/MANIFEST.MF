@@ -17,7 +17,8 @@ Require-Bundle: org.eclipse.xtext,
  org.eclipse.emf.ecore,
  org.eclipse.emf.common,
  org.antlr.runtime,
- wesnoth_eclipse_plugin;bundle-version="0.3.0"
+ wesnoth_eclipse_plugin;bundle-version="0.3.0",
+ org.eclipse.xtext.junit;bundle-version="1.0.0"
 Import-Package: org.apache.log4j
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.wesnoth,
