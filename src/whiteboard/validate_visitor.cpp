@@ -84,13 +84,16 @@ void validate_visitor::visit_move(move_ptr move)
 	if (!(move->get_source_hex().valid() && move->get_dest_hex().valid()))
 		move->set_valid(false);
 
-	if (move->valid_ && resources::units->find(move->get_source_hex()) == resources::units->end())
-		move->set_valid(false);
+	{ //limit scope of "it"
+		unit_map::const_iterator it = resources::units->find(move->get_source_hex());
+		if (move->valid_ && it == resources::units->end())
+			move->set_valid(false);
 
-	//check if the unit in the source hex has the same unit id as before,
-	//i.e. that it's the same unit
-	if (move->valid_ && move->unit_id_ != resources::units->find(move->get_source_hex())->id())
-		move->set_valid(false);
+		//check if the unit in the source hex has the same unit id as before,
+		//i.e. that it's the same unit
+		if (move->valid_ && move->unit_id_ != it->id())
+			move->set_valid(false);
+	}
 
 	if (move->valid_ && move->get_source_hex() != move->get_dest_hex()) //allow for zero-hex, move, in which case we skip pathfinding
 	{
