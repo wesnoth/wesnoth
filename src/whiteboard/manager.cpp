@@ -300,12 +300,12 @@ void manager::draw_hex(const map_location& hex)
 		viewer_actions()->draw_hex(hex);
 	}
 
-//	//Little hack to make the TAB key work properly: check at every draw if it's pressed,
-//	//to compensate for faulty detection of the "up" key event
-//	if(!(*key_poller_)[SDLK_TAB])
-//	{
-//		set_invert_behavior(false);
-//	}
+	//Little hack to make the TAB key work properly: check at every draw if it's pressed,
+	//to compensate for faulty detection of the "up" key event
+	if(!(*key_poller_)[SDLK_TAB])
+	{
+		set_invert_behavior(false);
+	}
 
 }
 
