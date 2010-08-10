@@ -785,20 +785,19 @@ void unit::advance_to(const config &old_cfg, const unit_type *t,
 			new_cfg[attr] = *v;
 		}
 	}
-	cfg_.swap(new_cfg);
 
 	if(t->movement_type().get_parent()) {
-		cfg_.merge_with(t->movement_type().get_parent()->get_cfg());
+		new_cfg.merge_with(t->movement_type().get_parent()->get_cfg());
 	}
 
-	cfg_.merge_with(t->cfg_);
+	new_cfg.merge_with(t->cfg_);
 
 	// Remove pure unit_type attributes.
 	static char const *unit_type_attrs[] = { "movement", "movement_type",
 		"die_sound", "flies", "inherit", "variation_name",
 		"ignore_race_traits", "hide_help" };
 	foreach (const char *attr, unit_type_attrs) {
-		cfg_.remove_attribute(attr);
+		new_cfg.remove_attribute(attr);
 	}
 
 	// If unit has specific profile, remember it and keep it after advancing
@@ -806,10 +805,11 @@ void unit::advance_to(const config &old_cfg, const unit_type *t,
 	if (!profile.empty()) {
 		const unit_type* u_type = type();
 		if (u_type != NULL && profile != u_type->cfg_["profile"]){
-			cfg_["profile"] = profile;
+			new_cfg["profile"] = profile;
 		}
 	}
 
+	cfg_.swap(new_cfg);
 	cfg_.clear_children("male");
 	cfg_.clear_children("female");
 
