@@ -71,6 +71,8 @@ void side_actions::set_team_index(size_t team_index)
 
 void side_actions::draw_hex(const map_location& hex)
 {
+	std::vector<int> numbers_to_draw;
+
 	const_iterator it;
 	for(it = begin(); it != end(); ++it)
 	{
@@ -79,18 +81,32 @@ void side_actions::draw_hex(const map_location& hex)
 
 		if((*it)->is_numbering_hex(hex))
 		{
-			//draw number corresponding to iterator's position + 1
+			//store number corresponding to iterator's position + 1
 			size_t number = (it - begin()) + 1;
-			std::stringstream number_text;
-			number_text << number;
-			const size_t font_size = 15;
-			SDL_Color color; color.r = 255; color.g = 255; color.b = 0; //yellow
-			// position 0,0 in the hex is the upper left corner
-			const double x_in_hex = 0.80; // 0.80 = horizontal coord., close to the right side of the hex
-			const double y_in_hex = 0.5; //0.5 = halfway in the hex vertically
-			resources::screen->draw_text_in_hex(hex, display::LAYER_ACTIONS_NUMBERING,
-					number_text.str(), font_size, color, x_in_hex, y_in_hex);
+			numbers_to_draw.push_back(number);
 		}
+	}
+
+	const double x_offset_base = 0.0;
+	const double y_offset_base = 0.2;
+	//position 0,0 in the hex is the upper left corner
+	//0.8 = horizontal coord., close to the right side of the hex
+	const double x_origin = 0.8 - numbers_to_draw.size() * x_offset_base;
+	//0.5 = halfway in the hex vertically
+	const double y_origin = 0.5 - numbers_to_draw.size() * (y_offset_base / 2);
+	double x_offset = 0, y_offset = 0;
+	foreach(int number, numbers_to_draw)
+	{
+		std::stringstream number_text;
+		number_text << number;
+		const size_t font_size = 15;
+		SDL_Color color; color.r = 255; color.g = 255; color.b = 0; //yellow
+		const double x_in_hex = x_origin + x_offset;
+		const double y_in_hex = y_origin + y_offset;
+		resources::screen->draw_text_in_hex(hex, display::LAYER_ACTIONS_NUMBERING,
+				number_text.str(), font_size, color, x_in_hex, y_in_hex);
+		x_offset += x_offset_base;
+		y_offset += y_offset_base;
 	}
 }
 
