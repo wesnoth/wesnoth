@@ -265,7 +265,7 @@ void manager::set_real_unit_map()
 			}
 			planned_unit_map_active_ = false;
 		}
-		else
+		else if (!wait_for_side_init_)
 		{
 			LOG_WB << "Attempt to disable the planned unit map, when it was already disabled.\n";
 		}
