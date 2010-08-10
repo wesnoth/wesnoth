@@ -213,23 +213,32 @@ struct user_choice
 
 /**
  * Performs a choice for WML events.
+ *
  * The choice is synchronized across all the multiplayer clients and
  * stored into the replay. The function object is called if the local
  * client is responsible for making the choice.
- * @param name tag used for storing the choice into the replay.
- * @param side the number of the side responsible for making the choice. 
- *		- defaults to currently active side.
+ * @param name Tag used for storing the choice into the replay.
+ * @param side The number of the side responsible for making the choice.
+ *             If zero, it defaults to the currently active side.
+ * @param force_sp If true, user choice will happen in prestart and start
+ *                 events too. But if used for these events in multiplayer,
+ *                 an exception will be thrown instead.
  *
- * @note In order to prevent issues with sync, crash, or infinite loop, a number of precautions 
- *		must be taken when getting a choice from a specific side.
- *		- The calling function must enter a loop to wait for network sync if the side is non-local.
- *			- This loop must end when a response is received in the replay.
- *		- The server must recognize @name replay commands as legal from non-active players.
- *			- Preferably the server should be notified about which player the data is expected from, 
- *			and discard data from unexpected players.
- *		- do_replay_handle must ignore the @name replay command when the originating player's turn is reached.
+ * @note In order to prevent issues with sync, crash, or infinite loop, a
+ *       number of precautions must be taken when getting a choice from a
+ *       specific side.
+ *       - The calling function must enter a loop to wait for network sync
+ *         if the side is non-local. This loop must end when a response is
+ *         received in the replay.
+ *       - The server must recognize @name replay commands as legal from
+ *         non-active players. Preferably the server should be notified
+ *         about which player the data is expected from, and discard data
+ *         from unexpected players.
+ *       - do_replay_handle must ignore the @name replay command when the
+ *         originating player's turn is reached.
  */
-config get_user_choice(const std::string &name, const user_choice &uch, int side = 0);
+config get_user_choice(const std::string &name, const user_choice &uch,
+	int side = 0, bool force_sp = false);
 
 }
 

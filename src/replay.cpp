@@ -1201,9 +1201,22 @@ void replay_network_sender::commit_and_sync()
 	}
 }
 
-config mp_sync::get_user_choice(const std::string &name, const user_choice &uch, int side)
+config mp_sync::get_user_choice(const std::string &name, const user_choice &uch,
+	int side, bool force_sp)
 {
-	if (resources::state_of_game->phase() == game_state::PLAY)
+	if (force_sp && network::nconnections() != 0 &&
+	    resources::state_of_game->phase() != game_state::PLAY)
+	{
+		/* We are in a multiplayer game, during an early event which
+		   prevents synchronization, and the WML is not interested
+		   in a random result. We cannot silently ignore the issue,
+		   since it would lead to a broken replay. To be sure that
+		   the WML does not catch the error and keep the game going,
+		   we use a sticky exception to forcefully quit. */
+		ERR_REPLAY << "MP synchronization does not work during prestart and start events.";
+		throw end_level_exception(QUIT);
+	}
+	if (resources::state_of_game->phase() == game_state::PLAY || force_sp)
 	{
 		/* We have to communicate with the player and store the
 		   choices in the replay. So a decision will be made on
