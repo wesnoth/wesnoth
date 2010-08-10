@@ -219,7 +219,6 @@ void manager::validate_viewer_actions()
 {
 	assert(!executing_actions_);
 	if (viewer_actions()->empty()) return;
-	log_scope2("whiteboard", "Validate viewer actions.")
 	viewer_actions()->validate_actions();
 }
 

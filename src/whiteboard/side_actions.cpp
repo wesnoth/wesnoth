@@ -446,9 +446,14 @@ void side_actions::validate_actions()
 	if (empty()) return;
 
 	bool validation_finished = false;
+	int passes = 1;
 	while(!validation_finished){
+		log_scope2("whiteboard", "Validating actions for side "
+				+ lexical_cast<std::string>(team_index() + 1) + ", pass "
+				+ lexical_cast<std::string>(passes));
 		validate_visitor validator(*resources::units, shared_from_this());
 		validation_finished = validator.validate_actions();
+		++passes;
 	}
 }
 

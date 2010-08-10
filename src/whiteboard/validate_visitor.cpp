@@ -38,6 +38,7 @@ validate_visitor::validate_visitor(unit_map& unit_map, side_actions_ptr side_act
 	: mapbuilder_visitor(unit_map, side_actions, true)
 	, actions_to_erase_()
 {
+	assert(!resources::whiteboard->has_planned_unit_map());
 }
 
 validate_visitor::~validate_visitor()
@@ -46,17 +47,23 @@ validate_visitor::~validate_visitor()
 
 bool validate_visitor::validate_actions()
 {
+	int action_number = 1;
 	foreach(action_ptr action, *side_actions_)
 	{
+		DBG_WB << "Action #" << action_number << "\n";
 		action->accept(*this);
+		++action_number;
 	}
 
 	if (!actions_to_erase_.empty())
 	{
+		int side_actions_size_before = side_actions_->actions().size();
+		LOG_WB << "Erasing " << actions_to_erase_.size() << " invalid actions.\n";
 		foreach(action_ptr action, actions_to_erase_)
 		{
 			side_actions_->remove_action(side_actions_->get_position_of(action), false);
 		}
+		assert(side_actions_size_before - side_actions_->actions().size() == actions_to_erase_.size());
 		actions_to_erase_.clear();
 		return false;
 	}
@@ -68,6 +75,8 @@ bool validate_visitor::validate_actions()
 
 void validate_visitor::visit_move(move_ptr move)
 {
+	DBG_WB <<"visiting move from " << move->get_source_hex()
+			<< " to " << move->get_dest_hex() << "\n";
 	//invalidate start and end hexes so number display is updated properly
 	resources::screen->invalidate(move->get_source_hex());
 	resources::screen->invalidate(move->get_dest_hex());
@@ -134,6 +143,8 @@ void validate_visitor::visit_move(move_ptr move)
 
 void validate_visitor::visit_attack(attack_ptr attack)
 {
+	DBG_WB <<"visiting attack from " << attack->get_dest_hex()
+			<< " to " << attack->target_hex_ << "\n";
 	//invalidate target hex to make sure attack indicators are updated
 	resources::screen->invalidate(attack->get_dest_hex());
 	resources::screen->invalidate(attack->target_hex_);
@@ -160,12 +171,14 @@ void validate_visitor::visit_attack(attack_ptr attack)
 	}
 	else
 	{
+		LOG_WB << "Invalid attack detected, adding to actions_to_erase_.\n";
 		actions_to_erase_.insert(attack);
 	}
 }
 
 void validate_visitor::visit_recruit(recruit_ptr recruit)
 {
+	DBG_WB << "visiting recruit on hex " << recruit->recruit_hex_ << "\n";
 	//invalidate recruit hex so number display is updated properly
 	resources::screen->invalidate(recruit->recruit_hex_);
 
@@ -200,12 +213,14 @@ void validate_visitor::visit_recruit(recruit_ptr recruit)
 	}
 	else
 	{
+		LOG_WB << "Invalid recruit detected, adding to actions_to_erase_.\n";
 		actions_to_erase_.insert(recruit);
 	}
 }
 
 void validate_visitor::visit_recall(recall_ptr recall)
 {
+	DBG_WB << "visiting recall on hex " << recall->recall_hex_ << "\n";
 	//invalidate recall hex so number display is updated properly
 	resources::screen->invalidate(recall->recall_hex_);
 
@@ -242,6 +257,7 @@ void validate_visitor::visit_recall(recall_ptr recall)
 	}
 	else
 	{
+		LOG_WB << "Invalid recall detected, adding to actions_to_erase_.\n";
 		actions_to_erase_.insert(recall);
 	}
 }
