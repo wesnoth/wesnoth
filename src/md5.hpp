@@ -46,11 +46,11 @@ class MD5 {
 public:
 // methods for controlled operation:
   MD5              ();  // simple initializer
-  void  update     (unsigned char *input, boost::uint32_t input_length);
+  void  update     (boost::uint8_t *input, boost::uint32_t input_length);
   void  finalize   ();
 
 // methods to acquire finalized result
-  unsigned char    *raw_digest ();  // digest as a 16-byte binary array
+  boost::uint8_t    *raw_digest ();  // digest as a 16-byte binary array
 
 
 private:
