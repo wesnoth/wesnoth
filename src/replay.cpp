@@ -1142,7 +1142,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 			get_replay_source().add_expected_advancement(loc);
 			DBG_REPLAY << "got an explicit advance\n";
 
-		} else if (const config &child = cfg->child("global_variable")) {
+		} else if (cfg->child("global_variable")) {
 		} else {
 			if(! cfg->child("checksum")) {
 				replay::process_error("unrecognized action:\n" + cfg->debug());
@@ -1210,7 +1210,7 @@ config mp_sync::get_user_choice(const std::string &name, const user_choice &uch,
 		   one host and shared amongst all of them. */
 
 		/* process the side parameter and ensure it is within boundaries */
-		if ((side <= 0) || (side > resources::teams->size())) 
+		if (unsigned(side - 1) >= resources::teams->size())
 			side = resources::controller->current_side();
 
 		int active_side = side;

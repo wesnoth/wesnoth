@@ -53,7 +53,7 @@ static void get_global_variable(persist_context &ctx, const vconfig &pcfg)
 	std::string local = pcfg["to_local"];
 	t_string side_string = pcfg["side"];
 	int side = lexical_cast_default<int>(pcfg["side"],resources::controller->current_side());
-	if ((side <= 0) || (side > resources::teams->size())) 
+	if (unsigned(side - 1) >= resources::teams->size())
 		side = resources::controller->current_side();
 	persist_choice choice(ctx,global,side);
 	config cfg = mp_sync::get_user_choice("global_variable",choice,side).child("variables");
@@ -74,7 +74,7 @@ static void get_global_variable(persist_context &ctx, const vconfig &pcfg)
 static void clear_global_variable(persist_context &ctx, const vconfig &pcfg)
 {
 	int side = lexical_cast_default<int>(pcfg["side"],resources::controller->current_side());
-	if ((side <= 0) || (side > resources::teams->size())) 
+	if (unsigned(side - 1) >= resources::teams->size())
 		side = resources::controller->current_side();
 	if ((*resources::teams)[side - 1].is_local()) {
 		std::string global = pcfg["global"];
@@ -85,7 +85,7 @@ static void clear_global_variable(persist_context &ctx, const vconfig &pcfg)
 static void set_global_variable(persist_context &ctx, const vconfig &pcfg)
 {
 	int side = lexical_cast_default<int>(pcfg["side"],resources::controller->current_side());
-	if ((side <= 0) || (side > resources::teams->size())) 
+	if (unsigned(side - 1) >= resources::teams->size())
 		side = resources::controller->current_side();
 	if ((*resources::teams)[side - 1].is_local()) {
 		if (pcfg["from_local"].empty()) {
@@ -129,7 +129,7 @@ void verify_and_get_global_variable(const vconfig &pcfg)
 		}
 		else {
 			int side = lexical_cast_default<int>(pcfg["side"],resources::controller->current_side());
-			if ((side <= 0) || (side > resources::teams->size())) 
+			if (unsigned(side - 1) >= resources::teams->size())
 				side = resources::controller->current_side();
 			if ((side != resources::controller->current_side()) 
 				&& !((*resources::teams)[side - 1].is_local())) {
