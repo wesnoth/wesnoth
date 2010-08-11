@@ -116,7 +116,7 @@ const token &tokenizer::next_token()
 				if (peek_char() != '"') break;
 				next_char_fast();
 			}
-			if (current_ == 254 ) {
+			if (current_ == 254) {
 				skip_comment();
 				--lineno_;
 				continue;
@@ -144,6 +144,10 @@ const token &tokenizer::next_token()
 			do {
 				token_.value += current_;
 				next_char_fast();
+				while (current_ == 254) {
+					skip_comment();
+					next_char_fast();
+				}
 			} while (is_alnum(current_));
 		} else {
 			token_.type = token::MISC;
