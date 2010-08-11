@@ -19,7 +19,6 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 
 import wesnoth_eclipse_plugin.Constants;
@@ -89,11 +88,17 @@ public class CampaignNewWizard extends NewWizardTemplate
 			IProject currentProject = page0_.getProjectHandle();
 
 			// the project
-			IProjectDescription newDescription = ResourcesPlugin.getWorkspace().
-			newProjectDescription(page0_.getProjectName());
-					newDescription.setLocation(page0_.getLocationPath());
-			currentProject.create(newDescription, new NullProgressMonitor());
-			currentProject.open(null);
+			if (page0_.getLocationPath().equals(ResourcesPlugin.getWorkspace().getRoot().getLocation()))
+			{
+				currentProject.create(monitor);
+			}
+			else
+			{
+				IProjectDescription newDescription = ResourcesPlugin.getWorkspace().
+				newProjectDescription(page0_.getProjectName());
+				newDescription.setLocation(page0_.getLocationPath());
+				currentProject.create(newDescription, monitor);
+			}
 			monitor.worked(2);
 
 			// add the nature to the project
@@ -142,7 +147,7 @@ public class CampaignNewWizard extends NewWizardTemplate
 				uaprops.setProperty("ignored", ignored);
 				WorkspaceUtils.createIgnoreFilter(uaproj, currentProject.getName());
 				ProjectUtils.saveCacheForProject(uaproj);
-				uaproj.refreshLocal(IResource.DEPTH_ONE, new NullProgressMonitor());
+				uaproj.refreshLocal(IResource.DEPTH_ONE, monitor);
 			}
 		} catch (CoreException e)
 		{
