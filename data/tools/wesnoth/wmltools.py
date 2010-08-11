@@ -256,6 +256,8 @@ def argmatch(formals, actuals):
             pass
         elif atype in ("string", "shortname", "name") and ftype == "types":
             pass
+        elif atype == "range" and ftype == "name":
+            pass
         elif atype != ftype and ftype is not None and atype is not None:
             return False
     return True
