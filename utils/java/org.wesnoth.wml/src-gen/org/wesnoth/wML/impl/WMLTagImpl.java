@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.wesnoth.wML.WMLAbstractMacroCall;
 import org.wesnoth.wML.WMLKey;
+import org.wesnoth.wML.WMLMacroDefine;
 import org.wesnoth.wML.WMLPackage;
 import org.wesnoth.wML.WMLTag;
 
@@ -37,8 +38,9 @@ import org.wesnoth.wML.WMLTag;
  *   <li>{@link org.wesnoth.wML.impl.WMLTagImpl#isPlus <em>Plus</em>}</li>
  *   <li>{@link org.wesnoth.wML.impl.WMLTagImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.wesnoth.wML.impl.WMLTagImpl#getTags <em>Tags</em>}</li>
+ *   <li>{@link org.wesnoth.wML.impl.WMLTagImpl#getMacros <em>Macros</em>}</li>
+ *   <li>{@link org.wesnoth.wML.impl.WMLTagImpl#getMacrosDefines <em>Macros Defines</em>}</li>
  *   <li>{@link org.wesnoth.wML.impl.WMLTagImpl#getKeys <em>Keys</em>}</li>
- *   <li>{@link org.wesnoth.wML.impl.WMLTagImpl#getMacroCalls <em>Macro Calls</em>}</li>
  *   <li>{@link org.wesnoth.wML.impl.WMLTagImpl#getEndName <em>End Name</em>}</li>
  * </ul>
  * </p>
@@ -98,6 +100,26 @@ public class WMLTagImpl extends MinimalEObjectImpl.Container implements WMLTag
   protected EList<WMLTag> tags;
 
   /**
+   * The cached value of the '{@link #getMacros() <em>Macros</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMacros()
+   * @generated
+   * @ordered
+   */
+  protected EList<WMLAbstractMacroCall> macros;
+
+  /**
+   * The cached value of the '{@link #getMacrosDefines() <em>Macros Defines</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMacrosDefines()
+   * @generated
+   * @ordered
+   */
+  protected EList<WMLMacroDefine> macrosDefines;
+
+  /**
    * The cached value of the '{@link #getKeys() <em>Keys</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -106,16 +128,6 @@ public class WMLTagImpl extends MinimalEObjectImpl.Container implements WMLTag
    * @ordered
    */
   protected EList<WMLKey> keys;
-
-  /**
-   * The cached value of the '{@link #getMacroCalls() <em>Macro Calls</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getMacroCalls()
-   * @generated
-   * @ordered
-   */
-  protected EList<WMLAbstractMacroCall> macroCalls;
 
   /**
    * The default value of the '{@link #getEndName() <em>End Name</em>}' attribute.
@@ -223,13 +235,13 @@ public class WMLTagImpl extends MinimalEObjectImpl.Container implements WMLTag
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<WMLKey> getKeys()
+  public EList<WMLAbstractMacroCall> getMacros()
   {
-    if (keys == null)
+    if (macros == null)
     {
-      keys = new EObjectContainmentEList<WMLKey>(WMLKey.class, this, WMLPackage.WML_TAG__KEYS);
+      macros = new EObjectContainmentEList<WMLAbstractMacroCall>(WMLAbstractMacroCall.class, this, WMLPackage.WML_TAG__MACROS);
     }
-    return keys;
+    return macros;
   }
 
   /**
@@ -237,13 +249,27 @@ public class WMLTagImpl extends MinimalEObjectImpl.Container implements WMLTag
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<WMLAbstractMacroCall> getMacroCalls()
+  public EList<WMLMacroDefine> getMacrosDefines()
   {
-    if (macroCalls == null)
+    if (macrosDefines == null)
     {
-      macroCalls = new EObjectContainmentEList<WMLAbstractMacroCall>(WMLAbstractMacroCall.class, this, WMLPackage.WML_TAG__MACRO_CALLS);
+      macrosDefines = new EObjectContainmentEList<WMLMacroDefine>(WMLMacroDefine.class, this, WMLPackage.WML_TAG__MACROS_DEFINES);
     }
-    return macroCalls;
+    return macrosDefines;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<WMLKey> getKeys()
+  {
+    if (keys == null)
+    {
+      keys = new EObjectContainmentEList<WMLKey>(WMLKey.class, this, WMLPackage.WML_TAG__KEYS);
+    }
+    return keys;
   }
 
   /**
@@ -281,10 +307,12 @@ public class WMLTagImpl extends MinimalEObjectImpl.Container implements WMLTag
     {
       case WMLPackage.WML_TAG__TAGS:
         return ((InternalEList<?>)getTags()).basicRemove(otherEnd, msgs);
+      case WMLPackage.WML_TAG__MACROS:
+        return ((InternalEList<?>)getMacros()).basicRemove(otherEnd, msgs);
+      case WMLPackage.WML_TAG__MACROS_DEFINES:
+        return ((InternalEList<?>)getMacrosDefines()).basicRemove(otherEnd, msgs);
       case WMLPackage.WML_TAG__KEYS:
         return ((InternalEList<?>)getKeys()).basicRemove(otherEnd, msgs);
-      case WMLPackage.WML_TAG__MACRO_CALLS:
-        return ((InternalEList<?>)getMacroCalls()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -305,10 +333,12 @@ public class WMLTagImpl extends MinimalEObjectImpl.Container implements WMLTag
         return getName();
       case WMLPackage.WML_TAG__TAGS:
         return getTags();
+      case WMLPackage.WML_TAG__MACROS:
+        return getMacros();
+      case WMLPackage.WML_TAG__MACROS_DEFINES:
+        return getMacrosDefines();
       case WMLPackage.WML_TAG__KEYS:
         return getKeys();
-      case WMLPackage.WML_TAG__MACRO_CALLS:
-        return getMacroCalls();
       case WMLPackage.WML_TAG__END_NAME:
         return getEndName();
     }
@@ -336,13 +366,17 @@ public class WMLTagImpl extends MinimalEObjectImpl.Container implements WMLTag
         getTags().clear();
         getTags().addAll((Collection<? extends WMLTag>)newValue);
         return;
+      case WMLPackage.WML_TAG__MACROS:
+        getMacros().clear();
+        getMacros().addAll((Collection<? extends WMLAbstractMacroCall>)newValue);
+        return;
+      case WMLPackage.WML_TAG__MACROS_DEFINES:
+        getMacrosDefines().clear();
+        getMacrosDefines().addAll((Collection<? extends WMLMacroDefine>)newValue);
+        return;
       case WMLPackage.WML_TAG__KEYS:
         getKeys().clear();
         getKeys().addAll((Collection<? extends WMLKey>)newValue);
-        return;
-      case WMLPackage.WML_TAG__MACRO_CALLS:
-        getMacroCalls().clear();
-        getMacroCalls().addAll((Collection<? extends WMLAbstractMacroCall>)newValue);
         return;
       case WMLPackage.WML_TAG__END_NAME:
         setEndName((String)newValue);
@@ -370,11 +404,14 @@ public class WMLTagImpl extends MinimalEObjectImpl.Container implements WMLTag
       case WMLPackage.WML_TAG__TAGS:
         getTags().clear();
         return;
+      case WMLPackage.WML_TAG__MACROS:
+        getMacros().clear();
+        return;
+      case WMLPackage.WML_TAG__MACROS_DEFINES:
+        getMacrosDefines().clear();
+        return;
       case WMLPackage.WML_TAG__KEYS:
         getKeys().clear();
-        return;
-      case WMLPackage.WML_TAG__MACRO_CALLS:
-        getMacroCalls().clear();
         return;
       case WMLPackage.WML_TAG__END_NAME:
         setEndName(END_NAME_EDEFAULT);
@@ -399,10 +436,12 @@ public class WMLTagImpl extends MinimalEObjectImpl.Container implements WMLTag
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case WMLPackage.WML_TAG__TAGS:
         return tags != null && !tags.isEmpty();
+      case WMLPackage.WML_TAG__MACROS:
+        return macros != null && !macros.isEmpty();
+      case WMLPackage.WML_TAG__MACROS_DEFINES:
+        return macrosDefines != null && !macrosDefines.isEmpty();
       case WMLPackage.WML_TAG__KEYS:
         return keys != null && !keys.isEmpty();
-      case WMLPackage.WML_TAG__MACRO_CALLS:
-        return macroCalls != null && !macroCalls.isEmpty();
       case WMLPackage.WML_TAG__END_NAME:
         return END_NAME_EDEFAULT == null ? endName != null : !END_NAME_EDEFAULT.equals(endName);
     }

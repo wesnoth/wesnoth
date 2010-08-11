@@ -15,6 +15,8 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
 import org.eclipse.emf.ecore.util.EDataTypeEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -27,34 +29,23 @@ import org.wesnoth.wML.WMLTag;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Macro Call</b></em>'.
+ * An implementation of the model object '<em><b>Macro Define</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.wesnoth.wML.impl.WMLMacroCallImpl#getArgs <em>Args</em>}</li>
- *   <li>{@link org.wesnoth.wML.impl.WMLMacroCallImpl#getParams <em>Params</em>}</li>
- *   <li>{@link org.wesnoth.wML.impl.WMLMacroCallImpl#getTags <em>Tags</em>}</li>
- *   <li>{@link org.wesnoth.wML.impl.WMLMacroCallImpl#getMacros <em>Macros</em>}</li>
- *   <li>{@link org.wesnoth.wML.impl.WMLMacroCallImpl#getMacrosDefines <em>Macros Defines</em>}</li>
- *   <li>{@link org.wesnoth.wML.impl.WMLMacroCallImpl#getKeys <em>Keys</em>}</li>
+ *   <li>{@link org.wesnoth.wML.impl.WMLMacroDefineImpl#getParams <em>Params</em>}</li>
+ *   <li>{@link org.wesnoth.wML.impl.WMLMacroDefineImpl#getTags <em>Tags</em>}</li>
+ *   <li>{@link org.wesnoth.wML.impl.WMLMacroDefineImpl#getMacros <em>Macros</em>}</li>
+ *   <li>{@link org.wesnoth.wML.impl.WMLMacroDefineImpl#getMacrosDefines <em>Macros Defines</em>}</li>
+ *   <li>{@link org.wesnoth.wML.impl.WMLMacroDefineImpl#getKeys <em>Keys</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class WMLMacroCallImpl extends WMLAbstractMacroCallImpl implements WMLMacroCall
+public class WMLMacroDefineImpl extends MinimalEObjectImpl.Container implements WMLMacroDefine
 {
-  /**
-   * The cached value of the '{@link #getArgs() <em>Args</em>}' attribute list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getArgs()
-   * @generated
-   * @ordered
-   */
-  protected EList<String> args;
-
   /**
    * The cached value of the '{@link #getParams() <em>Params</em>}' attribute list.
    * <!-- begin-user-doc -->
@@ -110,7 +101,7 @@ public class WMLMacroCallImpl extends WMLAbstractMacroCallImpl implements WMLMac
    * <!-- end-user-doc -->
    * @generated
    */
-  protected WMLMacroCallImpl()
+  protected WMLMacroDefineImpl()
   {
     super();
   }
@@ -123,21 +114,7 @@ public class WMLMacroCallImpl extends WMLAbstractMacroCallImpl implements WMLMac
   @Override
   protected EClass eStaticClass()
   {
-    return WMLPackage.Literals.WML_MACRO_CALL;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EList<String> getArgs()
-  {
-    if (args == null)
-    {
-      args = new EDataTypeEList<String>(String.class, this, WMLPackage.WML_MACRO_CALL__ARGS);
-    }
-    return args;
+    return WMLPackage.Literals.WML_MACRO_DEFINE;
   }
 
   /**
@@ -149,7 +126,7 @@ public class WMLMacroCallImpl extends WMLAbstractMacroCallImpl implements WMLMac
   {
     if (params == null)
     {
-      params = new EDataTypeEList<String>(String.class, this, WMLPackage.WML_MACRO_CALL__PARAMS);
+      params = new EDataTypeEList<String>(String.class, this, WMLPackage.WML_MACRO_DEFINE__PARAMS);
     }
     return params;
   }
@@ -163,7 +140,7 @@ public class WMLMacroCallImpl extends WMLAbstractMacroCallImpl implements WMLMac
   {
     if (tags == null)
     {
-      tags = new EObjectContainmentEList<WMLTag>(WMLTag.class, this, WMLPackage.WML_MACRO_CALL__TAGS);
+      tags = new EObjectContainmentEList<WMLTag>(WMLTag.class, this, WMLPackage.WML_MACRO_DEFINE__TAGS);
     }
     return tags;
   }
@@ -177,7 +154,7 @@ public class WMLMacroCallImpl extends WMLAbstractMacroCallImpl implements WMLMac
   {
     if (macros == null)
     {
-      macros = new EObjectContainmentEList<WMLMacroCall>(WMLMacroCall.class, this, WMLPackage.WML_MACRO_CALL__MACROS);
+      macros = new EObjectContainmentEList<WMLMacroCall>(WMLMacroCall.class, this, WMLPackage.WML_MACRO_DEFINE__MACROS);
     }
     return macros;
   }
@@ -191,7 +168,7 @@ public class WMLMacroCallImpl extends WMLAbstractMacroCallImpl implements WMLMac
   {
     if (macrosDefines == null)
     {
-      macrosDefines = new EObjectContainmentEList<WMLMacroDefine>(WMLMacroDefine.class, this, WMLPackage.WML_MACRO_CALL__MACROS_DEFINES);
+      macrosDefines = new EObjectContainmentEList<WMLMacroDefine>(WMLMacroDefine.class, this, WMLPackage.WML_MACRO_DEFINE__MACROS_DEFINES);
     }
     return macrosDefines;
   }
@@ -205,7 +182,7 @@ public class WMLMacroCallImpl extends WMLAbstractMacroCallImpl implements WMLMac
   {
     if (keys == null)
     {
-      keys = new EObjectContainmentEList<WMLKey>(WMLKey.class, this, WMLPackage.WML_MACRO_CALL__KEYS);
+      keys = new EObjectContainmentEList<WMLKey>(WMLKey.class, this, WMLPackage.WML_MACRO_DEFINE__KEYS);
     }
     return keys;
   }
@@ -220,13 +197,13 @@ public class WMLMacroCallImpl extends WMLAbstractMacroCallImpl implements WMLMac
   {
     switch (featureID)
     {
-      case WMLPackage.WML_MACRO_CALL__TAGS:
+      case WMLPackage.WML_MACRO_DEFINE__TAGS:
         return ((InternalEList<?>)getTags()).basicRemove(otherEnd, msgs);
-      case WMLPackage.WML_MACRO_CALL__MACROS:
+      case WMLPackage.WML_MACRO_DEFINE__MACROS:
         return ((InternalEList<?>)getMacros()).basicRemove(otherEnd, msgs);
-      case WMLPackage.WML_MACRO_CALL__MACROS_DEFINES:
+      case WMLPackage.WML_MACRO_DEFINE__MACROS_DEFINES:
         return ((InternalEList<?>)getMacrosDefines()).basicRemove(otherEnd, msgs);
-      case WMLPackage.WML_MACRO_CALL__KEYS:
+      case WMLPackage.WML_MACRO_DEFINE__KEYS:
         return ((InternalEList<?>)getKeys()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -242,17 +219,15 @@ public class WMLMacroCallImpl extends WMLAbstractMacroCallImpl implements WMLMac
   {
     switch (featureID)
     {
-      case WMLPackage.WML_MACRO_CALL__ARGS:
-        return getArgs();
-      case WMLPackage.WML_MACRO_CALL__PARAMS:
+      case WMLPackage.WML_MACRO_DEFINE__PARAMS:
         return getParams();
-      case WMLPackage.WML_MACRO_CALL__TAGS:
+      case WMLPackage.WML_MACRO_DEFINE__TAGS:
         return getTags();
-      case WMLPackage.WML_MACRO_CALL__MACROS:
+      case WMLPackage.WML_MACRO_DEFINE__MACROS:
         return getMacros();
-      case WMLPackage.WML_MACRO_CALL__MACROS_DEFINES:
+      case WMLPackage.WML_MACRO_DEFINE__MACROS_DEFINES:
         return getMacrosDefines();
-      case WMLPackage.WML_MACRO_CALL__KEYS:
+      case WMLPackage.WML_MACRO_DEFINE__KEYS:
         return getKeys();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -269,27 +244,23 @@ public class WMLMacroCallImpl extends WMLAbstractMacroCallImpl implements WMLMac
   {
     switch (featureID)
     {
-      case WMLPackage.WML_MACRO_CALL__ARGS:
-        getArgs().clear();
-        getArgs().addAll((Collection<? extends String>)newValue);
-        return;
-      case WMLPackage.WML_MACRO_CALL__PARAMS:
+      case WMLPackage.WML_MACRO_DEFINE__PARAMS:
         getParams().clear();
         getParams().addAll((Collection<? extends String>)newValue);
         return;
-      case WMLPackage.WML_MACRO_CALL__TAGS:
+      case WMLPackage.WML_MACRO_DEFINE__TAGS:
         getTags().clear();
         getTags().addAll((Collection<? extends WMLTag>)newValue);
         return;
-      case WMLPackage.WML_MACRO_CALL__MACROS:
+      case WMLPackage.WML_MACRO_DEFINE__MACROS:
         getMacros().clear();
         getMacros().addAll((Collection<? extends WMLMacroCall>)newValue);
         return;
-      case WMLPackage.WML_MACRO_CALL__MACROS_DEFINES:
+      case WMLPackage.WML_MACRO_DEFINE__MACROS_DEFINES:
         getMacrosDefines().clear();
         getMacrosDefines().addAll((Collection<? extends WMLMacroDefine>)newValue);
         return;
-      case WMLPackage.WML_MACRO_CALL__KEYS:
+      case WMLPackage.WML_MACRO_DEFINE__KEYS:
         getKeys().clear();
         getKeys().addAll((Collection<? extends WMLKey>)newValue);
         return;
@@ -307,22 +278,19 @@ public class WMLMacroCallImpl extends WMLAbstractMacroCallImpl implements WMLMac
   {
     switch (featureID)
     {
-      case WMLPackage.WML_MACRO_CALL__ARGS:
-        getArgs().clear();
-        return;
-      case WMLPackage.WML_MACRO_CALL__PARAMS:
+      case WMLPackage.WML_MACRO_DEFINE__PARAMS:
         getParams().clear();
         return;
-      case WMLPackage.WML_MACRO_CALL__TAGS:
+      case WMLPackage.WML_MACRO_DEFINE__TAGS:
         getTags().clear();
         return;
-      case WMLPackage.WML_MACRO_CALL__MACROS:
+      case WMLPackage.WML_MACRO_DEFINE__MACROS:
         getMacros().clear();
         return;
-      case WMLPackage.WML_MACRO_CALL__MACROS_DEFINES:
+      case WMLPackage.WML_MACRO_DEFINE__MACROS_DEFINES:
         getMacrosDefines().clear();
         return;
-      case WMLPackage.WML_MACRO_CALL__KEYS:
+      case WMLPackage.WML_MACRO_DEFINE__KEYS:
         getKeys().clear();
         return;
     }
@@ -339,17 +307,15 @@ public class WMLMacroCallImpl extends WMLAbstractMacroCallImpl implements WMLMac
   {
     switch (featureID)
     {
-      case WMLPackage.WML_MACRO_CALL__ARGS:
-        return args != null && !args.isEmpty();
-      case WMLPackage.WML_MACRO_CALL__PARAMS:
+      case WMLPackage.WML_MACRO_DEFINE__PARAMS:
         return params != null && !params.isEmpty();
-      case WMLPackage.WML_MACRO_CALL__TAGS:
+      case WMLPackage.WML_MACRO_DEFINE__TAGS:
         return tags != null && !tags.isEmpty();
-      case WMLPackage.WML_MACRO_CALL__MACROS:
+      case WMLPackage.WML_MACRO_DEFINE__MACROS:
         return macros != null && !macros.isEmpty();
-      case WMLPackage.WML_MACRO_CALL__MACROS_DEFINES:
+      case WMLPackage.WML_MACRO_DEFINE__MACROS_DEFINES:
         return macrosDefines != null && !macrosDefines.isEmpty();
-      case WMLPackage.WML_MACRO_CALL__KEYS:
+      case WMLPackage.WML_MACRO_DEFINE__KEYS:
         return keys != null && !keys.isEmpty();
     }
     return super.eIsSet(featureID);
@@ -366,12 +332,10 @@ public class WMLMacroCallImpl extends WMLAbstractMacroCallImpl implements WMLMac
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (args: ");
-    result.append(args);
-    result.append(", params: ");
+    result.append(" (params: ");
     result.append(params);
     result.append(')');
     return result.toString();
   }
 
-} //WMLMacroCallImpl
+} //WMLMacroDefineImpl

@@ -10,26 +10,26 @@ import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.wesnoth.wML.WMLAbstractKeyValue;
+import org.wesnoth.wML.WMLKeyExtraArgs;
 import org.wesnoth.wML.WMLPackage;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Abstract Key Value</b></em>'.
+ * An implementation of the model object '<em><b>Key Extra Args</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * </p>
  *
  * @generated
  */
-public class WMLAbstractKeyValueImpl extends MinimalEObjectImpl.Container implements WMLAbstractKeyValue
+public class WMLKeyExtraArgsImpl extends MinimalEObjectImpl.Container implements WMLKeyExtraArgs
 {
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected WMLAbstractKeyValueImpl()
+  protected WMLKeyExtraArgsImpl()
   {
     super();
   }
@@ -42,7 +42,7 @@ public class WMLAbstractKeyValueImpl extends MinimalEObjectImpl.Container implem
   @Override
   protected EClass eStaticClass()
   {
-    return WMLPackage.Literals.WML_ABSTRACT_KEY_VALUE;
+    return WMLPackage.Literals.WML_KEY_EXTRA_ARGS;
   }
 
-} //WMLAbstractKeyValueImpl
+} //WMLKeyExtraArgsImpl

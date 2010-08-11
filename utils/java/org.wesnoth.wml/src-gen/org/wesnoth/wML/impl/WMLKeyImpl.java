@@ -22,8 +22,9 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.wesnoth.wML.WMLAbstractKeyValue;
 import org.wesnoth.wML.WMLKey;
+import org.wesnoth.wML.WMLKeyExtraArgs;
+import org.wesnoth.wML.WMLKeyValue;
 import org.wesnoth.wML.WMLPackage;
 
 /**
@@ -71,7 +72,7 @@ public class WMLKeyImpl extends MinimalEObjectImpl.Container implements WMLKey
    * @generated
    * @ordered
    */
-  protected WMLAbstractKeyValue value;
+  protected WMLKeyValue value;
 
   /**
    * The cached value of the '{@link #getExtraArgs() <em>Extra Args</em>}' containment reference list.
@@ -81,7 +82,7 @@ public class WMLKeyImpl extends MinimalEObjectImpl.Container implements WMLKey
    * @generated
    * @ordered
    */
-  protected EList<WMLAbstractKeyValue> extraArgs;
+  protected EList<WMLKeyExtraArgs> extraArgs;
 
   /**
    * <!-- begin-user-doc -->
@@ -132,7 +133,7 @@ public class WMLKeyImpl extends MinimalEObjectImpl.Container implements WMLKey
    * <!-- end-user-doc -->
    * @generated
    */
-  public WMLAbstractKeyValue getValue()
+  public WMLKeyValue getValue()
   {
     return value;
   }
@@ -142,9 +143,9 @@ public class WMLKeyImpl extends MinimalEObjectImpl.Container implements WMLKey
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetValue(WMLAbstractKeyValue newValue, NotificationChain msgs)
+  public NotificationChain basicSetValue(WMLKeyValue newValue, NotificationChain msgs)
   {
-    WMLAbstractKeyValue oldValue = value;
+    WMLKeyValue oldValue = value;
     value = newValue;
     if (eNotificationRequired())
     {
@@ -159,7 +160,7 @@ public class WMLKeyImpl extends MinimalEObjectImpl.Container implements WMLKey
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setValue(WMLAbstractKeyValue newValue)
+  public void setValue(WMLKeyValue newValue)
   {
     if (newValue != value)
     {
@@ -180,11 +181,11 @@ public class WMLKeyImpl extends MinimalEObjectImpl.Container implements WMLKey
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<WMLAbstractKeyValue> getExtraArgs()
+  public EList<WMLKeyExtraArgs> getExtraArgs()
   {
     if (extraArgs == null)
     {
-      extraArgs = new EObjectContainmentEList<WMLAbstractKeyValue>(WMLAbstractKeyValue.class, this, WMLPackage.WML_KEY__EXTRA_ARGS);
+      extraArgs = new EObjectContainmentEList<WMLKeyExtraArgs>(WMLKeyExtraArgs.class, this, WMLPackage.WML_KEY__EXTRA_ARGS);
     }
     return extraArgs;
   }
@@ -242,11 +243,11 @@ public class WMLKeyImpl extends MinimalEObjectImpl.Container implements WMLKey
         setName((String)newValue);
         return;
       case WMLPackage.WML_KEY__VALUE:
-        setValue((WMLAbstractKeyValue)newValue);
+        setValue((WMLKeyValue)newValue);
         return;
       case WMLPackage.WML_KEY__EXTRA_ARGS:
         getExtraArgs().clear();
-        getExtraArgs().addAll((Collection<? extends WMLAbstractKeyValue>)newValue);
+        getExtraArgs().addAll((Collection<? extends WMLKeyExtraArgs>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -266,7 +267,7 @@ public class WMLKeyImpl extends MinimalEObjectImpl.Container implements WMLKey
         setName(NAME_EDEFAULT);
         return;
       case WMLPackage.WML_KEY__VALUE:
-        setValue((WMLAbstractKeyValue)null);
+        setValue((WMLKeyValue)null);
         return;
       case WMLPackage.WML_KEY__EXTRA_ARGS:
         getExtraArgs().clear();

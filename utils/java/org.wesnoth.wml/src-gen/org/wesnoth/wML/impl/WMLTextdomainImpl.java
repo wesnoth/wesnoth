@@ -13,23 +13,23 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.wesnoth.wML.WMLAbstractMacroCall;
 import org.wesnoth.wML.WMLPackage;
+import org.wesnoth.wML.WMLTextdomain;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Abstract Macro Call</b></em>'.
+ * An implementation of the model object '<em><b>Textdomain</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.wesnoth.wML.impl.WMLAbstractMacroCallImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.wesnoth.wML.impl.WMLTextdomainImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class WMLAbstractMacroCallImpl extends MinimalEObjectImpl.Container implements WMLAbstractMacroCall
+public class WMLTextdomainImpl extends MinimalEObjectImpl.Container implements WMLTextdomain
 {
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -56,7 +56,7 @@ public class WMLAbstractMacroCallImpl extends MinimalEObjectImpl.Container imple
    * <!-- end-user-doc -->
    * @generated
    */
-  protected WMLAbstractMacroCallImpl()
+  protected WMLTextdomainImpl()
   {
     super();
   }
@@ -69,7 +69,7 @@ public class WMLAbstractMacroCallImpl extends MinimalEObjectImpl.Container imple
   @Override
   protected EClass eStaticClass()
   {
-    return WMLPackage.Literals.WML_ABSTRACT_MACRO_CALL;
+    return WMLPackage.Literals.WML_TEXTDOMAIN;
   }
 
   /**
@@ -92,7 +92,7 @@ public class WMLAbstractMacroCallImpl extends MinimalEObjectImpl.Container imple
     String oldName = name;
     name = newName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, WMLPackage.WML_ABSTRACT_MACRO_CALL__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, WMLPackage.WML_TEXTDOMAIN__NAME, oldName, name));
   }
 
   /**
@@ -105,7 +105,7 @@ public class WMLAbstractMacroCallImpl extends MinimalEObjectImpl.Container imple
   {
     switch (featureID)
     {
-      case WMLPackage.WML_ABSTRACT_MACRO_CALL__NAME:
+      case WMLPackage.WML_TEXTDOMAIN__NAME:
         return getName();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -121,7 +121,7 @@ public class WMLAbstractMacroCallImpl extends MinimalEObjectImpl.Container imple
   {
     switch (featureID)
     {
-      case WMLPackage.WML_ABSTRACT_MACRO_CALL__NAME:
+      case WMLPackage.WML_TEXTDOMAIN__NAME:
         setName((String)newValue);
         return;
     }
@@ -138,7 +138,7 @@ public class WMLAbstractMacroCallImpl extends MinimalEObjectImpl.Container imple
   {
     switch (featureID)
     {
-      case WMLPackage.WML_ABSTRACT_MACRO_CALL__NAME:
+      case WMLPackage.WML_TEXTDOMAIN__NAME:
         setName(NAME_EDEFAULT);
         return;
     }
@@ -155,7 +155,7 @@ public class WMLAbstractMacroCallImpl extends MinimalEObjectImpl.Container imple
   {
     switch (featureID)
     {
-      case WMLPackage.WML_ABSTRACT_MACRO_CALL__NAME:
+      case WMLPackage.WML_TEXTDOMAIN__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
     }
     return super.eIsSet(featureID);
@@ -178,4 +178,4 @@ public class WMLAbstractMacroCallImpl extends MinimalEObjectImpl.Container imple
     return result.toString();
   }
 
-} //WMLAbstractMacroCallImpl
+} //WMLTextdomainImpl

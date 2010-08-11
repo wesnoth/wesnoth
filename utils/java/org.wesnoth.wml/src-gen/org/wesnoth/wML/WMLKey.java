@@ -65,12 +65,12 @@ public interface WMLKey extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Value</em>' containment reference.
-   * @see #setValue(WMLAbstractKeyValue)
+   * @see #setValue(WMLKeyValue)
    * @see org.wesnoth.wML.WMLPackage#getWMLKey_Value()
    * @model containment="true"
    * @generated
    */
-  WMLAbstractKeyValue getValue();
+  WMLKeyValue getValue();
 
   /**
    * Sets the value of the '{@link org.wesnoth.wML.WMLKey#getValue <em>Value</em>}' containment reference.
@@ -80,11 +80,11 @@ public interface WMLKey extends EObject
    * @see #getValue()
    * @generated
    */
-  void setValue(WMLAbstractKeyValue value);
+  void setValue(WMLKeyValue value);
 
   /**
    * Returns the value of the '<em><b>Extra Args</b></em>' containment reference list.
-   * The list contents are of type {@link org.wesnoth.wML.WMLAbstractKeyValue}.
+   * The list contents are of type {@link org.wesnoth.wML.WMLKeyExtraArgs}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Extra Args</em>' containment reference list isn't clear,
@@ -96,6 +96,6 @@ public interface WMLKey extends EObject
    * @model containment="true"
    * @generated
    */
-  EList<WMLAbstractKeyValue> getExtraArgs();
+  EList<WMLKeyExtraArgs> getExtraArgs();
 
 } // WMLKey

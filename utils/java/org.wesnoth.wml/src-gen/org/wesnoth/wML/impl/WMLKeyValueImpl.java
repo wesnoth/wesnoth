@@ -8,26 +8,28 @@ package org.wesnoth.wML.impl;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.wesnoth.wML.WMLMacroInclude;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import org.wesnoth.wML.WMLKeyValue;
 import org.wesnoth.wML.WMLPackage;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Macro Include</b></em>'.
+ * An implementation of the model object '<em><b>Key Value</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * </p>
  *
  * @generated
  */
-public class WMLMacroIncludeImpl extends WMLAbstractMacroCallImpl implements WMLMacroInclude
+public class WMLKeyValueImpl extends MinimalEObjectImpl.Container implements WMLKeyValue
 {
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected WMLMacroIncludeImpl()
+  protected WMLKeyValueImpl()
   {
     super();
   }
@@ -40,7 +42,7 @@ public class WMLMacroIncludeImpl extends WMLAbstractMacroCallImpl implements WML
   @Override
   protected EClass eStaticClass()
   {
-    return WMLPackage.Literals.WML_MACRO_INCLUDE;
+    return WMLPackage.Literals.WML_KEY_VALUE;
   }
 
-} //WMLMacroIncludeImpl
+} //WMLKeyValueImpl
