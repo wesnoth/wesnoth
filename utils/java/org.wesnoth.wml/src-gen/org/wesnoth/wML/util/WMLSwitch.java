@@ -110,6 +110,13 @@ public class WMLSwitch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case WMLPackage.WML_KEY:
+      {
+        WMLKey wmlKey = (WMLKey)theEObject;
+        T result = caseWMLKey(wmlKey);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case WMLPackage.WML_ABSTRACT_MACRO_CALL:
       {
         WMLAbstractMacroCall wmlAbstractMacroCall = (WMLAbstractMacroCall)theEObject;
@@ -130,43 +137,14 @@ public class WMLSwitch<T>
         WMLMacroCall wmlMacroCall = (WMLMacroCall)theEObject;
         T result = caseWMLMacroCall(wmlMacroCall);
         if (result == null) result = caseWMLAbstractMacroCall(wmlMacroCall);
-        if (result == null) result = caseWMLKeyExtraArgs(wmlMacroCall);
-        if (result == null) result = caseWMLKeyValue(wmlMacroCall);
+        if (result == null) result = caseWMLAbstractKeyValue(wmlMacroCall);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case WMLPackage.WML_MACRO_DEFINE:
+      case WMLPackage.WML_ABSTRACT_KEY_VALUE:
       {
-        WMLMacroDefine wmlMacroDefine = (WMLMacroDefine)theEObject;
-        T result = caseWMLMacroDefine(wmlMacroDefine);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case WMLPackage.WML_TEXTDOMAIN:
-      {
-        WMLTextdomain wmlTextdomain = (WMLTextdomain)theEObject;
-        T result = caseWMLTextdomain(wmlTextdomain);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case WMLPackage.WML_KEY:
-      {
-        WMLKey wmlKey = (WMLKey)theEObject;
-        T result = caseWMLKey(wmlKey);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case WMLPackage.WML_KEY_EXTRA_ARGS:
-      {
-        WMLKeyExtraArgs wmlKeyExtraArgs = (WMLKeyExtraArgs)theEObject;
-        T result = caseWMLKeyExtraArgs(wmlKeyExtraArgs);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case WMLPackage.WML_KEY_VALUE:
-      {
-        WMLKeyValue wmlKeyValue = (WMLKeyValue)theEObject;
-        T result = caseWMLKeyValue(wmlKeyValue);
+        WMLAbstractKeyValue wmlAbstractKeyValue = (WMLAbstractKeyValue)theEObject;
+        T result = caseWMLAbstractKeyValue(wmlAbstractKeyValue);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -202,6 +180,22 @@ public class WMLSwitch<T>
    * @generated
    */
   public T caseWMLTag(WMLTag object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Key</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Key</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseWMLKey(WMLKey object)
   {
     return null;
   }
@@ -255,81 +249,17 @@ public class WMLSwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Macro Define</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Abstract Key Value</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Macro Define</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Abstract Key Value</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseWMLMacroDefine(WMLMacroDefine object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Textdomain</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Textdomain</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseWMLTextdomain(WMLTextdomain object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Key</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Key</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseWMLKey(WMLKey object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Key Extra Args</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Key Extra Args</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseWMLKeyExtraArgs(WMLKeyExtraArgs object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Key Value</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Key Value</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseWMLKeyValue(WMLKeyValue object)
+  public T caseWMLAbstractKeyValue(WMLAbstractKeyValue object)
   {
     return null;
   }

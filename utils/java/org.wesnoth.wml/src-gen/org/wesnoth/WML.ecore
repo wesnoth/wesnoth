@@ -6,64 +6,35 @@
   <eClassifiers xsi:type="ecore:EClass" name="WMLRoot">
     <eStructuralFeatures xsi:type="ecore:EReference" name="tags" upperBound="-1" eType="#//WMLTag"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="macros" upperBound="-1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="macroCalls" upperBound="-1"
         eType="#//WMLAbstractMacroCall" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="macrosDefines" upperBound="-1"
-        eType="#//WMLMacroDefine" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WMLTag">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="plus" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="tags" upperBound="-1" eType="#//WMLTag"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="macros" upperBound="-1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="keys" upperBound="-1" eType="#//WMLKey"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="macroCalls" upperBound="-1"
         eType="#//WMLAbstractMacroCall" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="macrosDefines" upperBound="-1"
-        eType="#//WMLMacroDefine" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="keys" upperBound="-1" eType="#//WMLKey"
-        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="endName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="WMLAbstractMacroCall">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="WMLMacroInclude" eSuperTypes="#//WMLAbstractMacroCall"/>
-  <eClassifiers xsi:type="ecore:EClass" name="WMLMacroCall" eSuperTypes="#//WMLAbstractMacroCall #//WMLKeyExtraArgs #//WMLKeyValue">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="args" unique="false" upperBound="-1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="params" unique="false"
-        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="tags" upperBound="-1" eType="#//WMLTag"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="macros" upperBound="-1"
-        eType="#//WMLMacroCall" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="macrosDefines" upperBound="-1"
-        eType="#//WMLMacroDefine" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="keys" upperBound="-1" eType="#//WMLKey"
-        containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="WMLMacroDefine">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="params" unique="false"
-        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="tags" upperBound="-1" eType="#//WMLTag"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="macros" upperBound="-1"
-        eType="#//WMLMacroCall" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="macrosDefines" upperBound="-1"
-        eType="#//WMLMacroDefine" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="keys" upperBound="-1" eType="#//WMLKey"
-        containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="WMLTextdomain">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WMLKey">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//WMLKeyValue"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//WMLAbstractKeyValue"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="extraArgs" upperBound="-1"
-        eType="#//WMLKeyExtraArgs" containment="true"/>
+        eType="#//WMLAbstractKeyValue" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="WMLKeyExtraArgs"/>
-  <eClassifiers xsi:type="ecore:EClass" name="WMLKeyValue"/>
+  <eClassifiers xsi:type="ecore:EClass" name="WMLAbstractMacroCall"/>
+  <eClassifiers xsi:type="ecore:EClass" name="WMLMacroInclude" eSuperTypes="#//WMLAbstractMacroCall">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="path" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="WMLMacroCall" eSuperTypes="#//WMLAbstractMacroCall #//WMLAbstractKeyValue">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="params" upperBound="-1"
+        eType="#//WMLAbstractKeyValue" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="WMLAbstractKeyValue"/>
 </ecore:EPackage>

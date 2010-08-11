@@ -5,79 +5,58 @@
 grammar org.wesnoth.WML hidden(WS, SL_COMMENT)
 generate wML "http://www.wesnoth.org/WML"
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
-
 WMLRoot:
-	( (tags+=WMLTag)
-	| (macros+=WMLAbstractMacroCall)
-	| (macrosDefines+=WMLMacroDefine)
+	( tags+=WMLTag
+	| macroCalls+=WMLAbstractMacroCall
 	)*
-	;
+;
+
 WMLTag:
-	'[' (plus?='+')? name = ID ']'
-		( (tags+=WMLTag)
-		| (macros+=WMLAbstractMacroCall)
-		| (macrosDefines+=WMLMacroDefine)
-		| (keys+=WMLKey)
+	'[' (plus?='+')? name=ID ']'
+		( tags+=WMLTag
+		| keys+=WMLKey
+		| macroCalls+=WMLAbstractMacroCall
 		)*
-	'[/' endName = ID ']'
-	;
-WMLAbstractMacroCall:
-	WMLMacroInclude | WMLMacroCall;
-WMLMacroInclude:
-	'{' name = WMLPath '}';
-WMLMacroCall:
-	'{' name=ID args+=(ID |STRING | TSTRING | ANY_OTHER)*
-		( (params+=WMLMacroCallParameter)
-		| (tags+=WMLTag)
-		| (macros+=WMLMacroCall)
-		| (macrosDefines+=WMLMacroDefine)
-		| (keys+=WMLKey)
-		)*
-	'}';
-WMLMacroDefine:
-	DEFINE
-		( (params+=WMLMacroCallParameter)
-		| (tags+=WMLTag)
-		| (macros+=WMLMacroCall)
-		| (macrosDefines+=WMLMacroDefine)
-		| (keys+=WMLKey)
-		)*
-	ENDDEFINE
-	;
-WMLTextdomain:
-	name=TEXTDOMAIN;
+	'[/' endName=ID ']'
+;
+
 WMLKey:
-	name=WMLIDList '=' value = WMLKeyValue 
-		('+' extraArgs+=WMLKeyExtraArgs)*
-	;
-WMLKeyExtraArgs:
-	WMLMacroCall | STRING | TSTRING;
+	name=ID '=' value=WMLAbstractKeyValue ('+' extraArgs+=WMLAbstractKeyValue)*
+;
 
-WMLMacroCallParameter:
-	'('
-		(ID | STRING | TSTRING | FILE) 
-	')';
+WMLAbstractMacroCall:
+	WMLMacroInclude | WMLMacroCall
+;
+
+WMLMacroInclude:
+	'{' '~' path = WMLKeyValue '}'
+;
+WMLMacroCall:
+	'{' name=ID 
+		(
+			( params+=WMLAbstractKeyValue 
+			)*		
+		)?
+	'}'
+;
+
+WMLAbstractKeyValue:
+	WMLKeyValue | WMLMacroCall
+;
 WMLKeyValue:
-	(WMLINTList | WMLIDList | WMLMacroCall | STRING | TSTRING | WMLPath | FILE);
-WMLPath:
-	'~'? PATH_ID ('/' PATH_ID)+ FILE? '/'?;
-WMLIDList:
-	ID (',' ID)*;
-WMLINTList:
-	INT (',' INT)*;
+	(WMLANYVALUE)+
+;
+WMLANYVALUE:
+	ID | INT | STRING | TSTRING | ANY_OTHER;
 TSTRING:
-	'_' STRING;
-FILE:
-	PATH_ID+ '.' ID;
-PATH_ID:
-	ID | '-';
+	'_' STRING
+;
 
-terminal ID : ('a'..'z'|'A'..'Z'|'_'|'0'..'9')+;
-terminal INT returns ecore::EBigDecimal: ('0'..'9')* ('.' ('0'..'9')+)?;
-terminal STRING: '"' ( '\\' ('b'|'t'|'n'|'f'|'r'|'"'|"'"|'\\') | !('\\'|'"') )* '"';
-terminal TEXTDOMAIN: '#textdomain' !('\n'|'\r')* ('\r'? '\n')?; 
-terminal DEFINE: '#define' !('\n'|'\r')* ('\r'? '\n')?;
-terminal ENDDEFINE: '#enddef' !('\n'|'\r')* ('\r'? '\n')?;
-terminal SL_COMMENT : '#' !('\n'|'\r')* ('\r'? '\n')?;
-terminal WS: (' '|'\t'|'\r'|'\n')+;
+terminal ID  		: ('a'..'z'|'A'..'Z'|'_'|'-') ('a'..'z'|'A'..'Z'|'_'|'0'..'9'|'-')*;
+terminal INT returns ecore::EInt: ('0'..'9')+;
+terminal STRING	: '"' ( '\\' ('b'|'t'|'n'|'f'|'r'|'"'|"'"|'\\') | !('\\'|'"') )* '"';
+terminal SL_COMMENT 	: '#' !('\n'|'\r')* ('\r'? '\n')?;
+
+terminal WS			: (' '|'\t')+;
+terminal EOL			: ('\r'|'\n')+;
 terminal ANY_OTHER: .;
