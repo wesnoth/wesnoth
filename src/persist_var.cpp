@@ -56,7 +56,7 @@ static void get_global_variable(persist_context &ctx, const vconfig &pcfg)
 	if (unsigned(side - 1) >= resources::teams->size())
 		side = resources::controller->current_side();
 	persist_choice choice(ctx,global,side);
-	config cfg = mp_sync::get_user_choice("global_variable",choice,side).child("variables");
+	config cfg = mp_sync::get_user_choice("global_variable",choice,side,true).child("variables");
 	if (cfg) {
 		size_t arrsize = cfg.child_count(global);
 		if (arrsize == 0) {

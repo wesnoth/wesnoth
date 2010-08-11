@@ -2905,11 +2905,7 @@ WML_HANDLER_FUNCTION(set_global_variable,/**/,pcfg)
 }
 WML_HANDLER_FUNCTION(get_global_variable,/**/,pcfg)
 {
-	if (resources::state_of_game->phase() == game_state::PLAY)
-		verify_and_get_global_variable(pcfg);
-	else {
-		lg::wml_error << "get_global_variable: Reading of global persistent variables is disallowed before the game is fully inited.\n";
-	}		
+	verify_and_get_global_variable(pcfg);
 }
 WML_HANDLER_FUNCTION(clear_global_variable,/**/,pcfg)
 {
