@@ -77,6 +77,7 @@ public:
 	void set_planned_unit_map(bool for_pathfinding = false);
 	void set_real_unit_map();
 	bool has_planned_unit_map() const { return planned_unit_map_active_; }
+	bool is_map_for_pathfinding() const { return is_map_for_pathfinding_; }
 
 	///Applies the future unit map and returns a pointer to the unit at hex,
 	///NULL if none is visible to the specified viewer side
@@ -149,6 +150,7 @@ private:
 	bool print_help_once_;
 	bool wait_for_side_init_;
 	bool planned_unit_map_active_;
+	bool is_map_for_pathfinding_;
 	/** Track whenever we're modifying actions, to avoid dual execution etc. */
 	bool executing_actions_;
 	/** Track whether the gamestate changed and we need to validate actions. */
@@ -174,6 +176,7 @@ struct scoped_planned_unit_map
 	scoped_planned_unit_map();
 	~scoped_planned_unit_map();
 	bool has_planned_unit_map_;
+	bool is_map_for_pathfinding_;
 };
 
 /** Ensures that the real unit map is active for the duration of the struct's life,
@@ -183,6 +186,7 @@ struct scoped_real_unit_map
 	scoped_real_unit_map();
 	~scoped_real_unit_map();
 	bool has_planned_unit_map_;
+	bool is_map_for_pathfinding_;
 };
 
 /** A variant on the regular planned unit map, that includes units only useful for pathfinding,
@@ -194,6 +198,7 @@ struct scoped_planned_pathfind_map
 	scoped_planned_pathfind_map();
 	~scoped_planned_pathfind_map();
 	bool has_planned_unit_map_;
+	bool is_map_for_pathfinding_;
 };
 
 /// Predicate that compares the id() of two units. Useful for searches in unit vectors with std::find_if()

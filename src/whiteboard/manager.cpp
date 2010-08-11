@@ -44,6 +44,7 @@ manager::manager():
 		print_help_once_(true),
 		wait_for_side_init_(true),
 		planned_unit_map_active_(false),
+		is_map_for_pathfinding_(false),
 		executing_actions_(false),
 		gamestate_mutated_(false),
 		mapbuilder_(),
@@ -236,6 +237,7 @@ void manager::set_planned_unit_map(bool for_pathfinding)
 				for_pathfinding ? message = "Building planned unit map for pathfinding."
 						: message = "Building planned unit map";
 				log_scope2("whiteboard", message);
+				is_map_for_pathfinding_ = for_pathfinding;
 				mapbuilder_.reset(new mapbuilder_visitor(*resources::units, viewer_actions(), for_pathfinding));
 				mapbuilder_->build_map();
 			}
@@ -264,6 +266,7 @@ void manager::set_real_unit_map()
 				mapbuilder_.reset();
 			}
 			planned_unit_map_active_ = false;
+			is_map_for_pathfinding_ = false;
 		}
 		else if (!wait_for_side_init_)
 		{
@@ -688,21 +691,37 @@ int manager::viewer_side()
 }
 
 
-scoped_planned_unit_map::scoped_planned_unit_map()
-:has_planned_unit_map_(resources::whiteboard->has_planned_unit_map())
+scoped_planned_unit_map::scoped_planned_unit_map():
+		has_planned_unit_map_(resources::whiteboard->has_planned_unit_map()),
+		is_map_for_pathfinding_(resources::whiteboard->is_map_for_pathfinding())
 {
 	if (!has_planned_unit_map_)
+	{
 		resources::whiteboard->set_planned_unit_map();
+	}
+	else if (is_map_for_pathfinding_)
+	{
+		resources::whiteboard->set_real_unit_map();
+		resources::whiteboard->set_planned_unit_map();
+	}
 }
 
 scoped_planned_unit_map::~scoped_planned_unit_map()
 {
 	if (!has_planned_unit_map_)
+	{
 		resources::whiteboard->set_real_unit_map();
+	}
+	else if (is_map_for_pathfinding_ != resources::whiteboard->is_map_for_pathfinding())
+	{
+		resources::whiteboard->set_real_unit_map();
+		resources::whiteboard->set_planned_unit_map(is_map_for_pathfinding_);
+	}
 }
 
-scoped_real_unit_map::scoped_real_unit_map()
-:has_planned_unit_map_(resources::whiteboard->has_planned_unit_map())
+scoped_real_unit_map::scoped_real_unit_map():
+		has_planned_unit_map_(resources::whiteboard->has_planned_unit_map()),
+		is_map_for_pathfinding_(resources::whiteboard->is_map_for_pathfinding())
 {
 	if (has_planned_unit_map_)
 		resources::whiteboard->set_real_unit_map();
@@ -710,25 +729,40 @@ scoped_real_unit_map::scoped_real_unit_map()
 
 scoped_real_unit_map::~scoped_real_unit_map()
 {
-	if (has_planned_unit_map_ && !resources::whiteboard->has_planned_unit_map())
-		resources::whiteboard->set_planned_unit_map();
+	if (has_planned_unit_map_ &&
+			(!resources::whiteboard->has_planned_unit_map() ||
+			is_map_for_pathfinding_ != resources::whiteboard->is_map_for_pathfinding()))
+		resources::whiteboard->set_planned_unit_map(is_map_for_pathfinding_);
 }
 
-scoped_planned_pathfind_map::scoped_planned_pathfind_map()
-:has_planned_unit_map_(resources::whiteboard->has_planned_unit_map())
+scoped_planned_pathfind_map::scoped_planned_pathfind_map():
+		has_planned_unit_map_(resources::whiteboard->has_planned_unit_map()),
+		is_map_for_pathfinding_(resources::whiteboard->is_map_for_pathfinding())
 {
-	if (has_planned_unit_map_)
+	if (!has_planned_unit_map_)
+	{
+		resources::whiteboard->set_planned_unit_map(true);
+	}
+	else if (!is_map_for_pathfinding_)
+	{
 		resources::whiteboard->set_real_unit_map();
-
-	resources::whiteboard->set_planned_unit_map(true);
+		resources::whiteboard->set_planned_unit_map(true);
+	}
 }
 
 scoped_planned_pathfind_map::~scoped_planned_pathfind_map()
 {
-	resources::whiteboard->set_real_unit_map();
-
-	if (has_planned_unit_map_)
-		resources::whiteboard->set_planned_unit_map();
+	if (has_planned_unit_map_ && is_map_for_pathfinding_)
+	{
+	}
+	else
+	{
+		resources::whiteboard->set_real_unit_map();
+		if (has_planned_unit_map_)
+		{
+			resources::whiteboard->set_planned_unit_map(false);
+		}
+	}
 }
 
 bool unit_comparator_predicate::operator()(unit const& unit)
