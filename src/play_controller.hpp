@@ -142,7 +142,6 @@ public:
 
 protected:
 	void slice_before_scroll();
-	void slice_end();
 
 	game_display& get_display();
 	bool have_keyboard_focus();

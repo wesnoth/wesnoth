@@ -956,14 +956,6 @@ void play_controller::slice_before_scroll() {
 	soundsources_manager_->update();
 }
 
-void play_controller::slice_end() {
-	if(!browse_ && teams_[gui_->viewing_team()].objectives_changed()) {
-		check_end_level();
-		dialogs::show_objectives(level_, teams_[gui_->viewing_team()].objectives());
-		teams_[gui_->viewing_team()].reset_objectives_changed();
-	}
-}
-
 events::mouse_handler& play_controller::get_mouse_handler_base() {
 	return mouse_handler_;
 }

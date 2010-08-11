@@ -25,6 +25,7 @@
 #include "ai/manager.hpp"
 #include "ai/game_info.hpp"
 #include "ai/testing.hpp"
+#include "dialogs.hpp"
 #include "foreach.hpp"
 #include "game_end_exceptions.hpp"
 #include "game_events.hpp"
@@ -146,8 +147,15 @@ void playsingle_controller::force_end_turn(){
 
 void playsingle_controller::check_end_level()
 {
-	if ((level_result_ == NONE) || linger_)
+	if (level_result_ == NONE || linger_)
+	{
+		team &t = teams_[gui_->viewing_team()];
+		if (!browse_ && t.objectives_changed()) {
+			dialogs::show_objectives(level_, t.objectives());
+			t.reset_objectives_changed();
+		}
 		return;
+	}
 	throw end_level_exception(level_result_);
 }
 
