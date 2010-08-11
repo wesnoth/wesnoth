@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link org.wesnoth.wML.WMLKey#getName <em>Name</em>}</li>
  *   <li>{@link org.wesnoth.wML.WMLKey#getValue <em>Value</em>}</li>
- *   <li>{@link org.wesnoth.wML.WMLKey#getExtraArgs <em>Extra Args</em>}</li>
+ *   <li>{@link org.wesnoth.wML.WMLKey#getEol <em>Eol</em>}</li>
  * </ul>
  * </p>
  *
@@ -57,45 +57,45 @@ public interface WMLKey extends EObject
   void setName(String value);
 
   /**
-   * Returns the value of the '<em><b>Value</b></em>' containment reference.
+   * Returns the value of the '<em><b>Value</b></em>' containment reference list.
+   * The list contents are of type {@link org.wesnoth.wML.WMLKeyValue}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Value</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Value</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Value</em>' containment reference.
-   * @see #setValue(WMLKeyValue)
+   * @return the value of the '<em>Value</em>' containment reference list.
    * @see org.wesnoth.wML.WMLPackage#getWMLKey_Value()
    * @model containment="true"
    * @generated
    */
-  WMLKeyValue getValue();
+  EList<WMLKeyValue> getValue();
 
   /**
-   * Sets the value of the '{@link org.wesnoth.wML.WMLKey#getValue <em>Value</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Value</em>' containment reference.
-   * @see #getValue()
-   * @generated
-   */
-  void setValue(WMLKeyValue value);
-
-  /**
-   * Returns the value of the '<em><b>Extra Args</b></em>' containment reference list.
-   * The list contents are of type {@link org.wesnoth.wML.WMLKeyExtraArgs}.
+   * Returns the value of the '<em><b>Eol</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Extra Args</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Eol</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Extra Args</em>' containment reference list.
-   * @see org.wesnoth.wML.WMLPackage#getWMLKey_ExtraArgs()
-   * @model containment="true"
+   * @return the value of the '<em>Eol</em>' attribute.
+   * @see #setEol(String)
+   * @see org.wesnoth.wML.WMLPackage#getWMLKey_Eol()
+   * @model
    * @generated
    */
-  EList<WMLKeyExtraArgs> getExtraArgs();
+  String getEol();
+
+  /**
+   * Sets the value of the '{@link org.wesnoth.wML.WMLKey#getEol <em>Eol</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Eol</em>' attribute.
+   * @see #getEol()
+   * @generated
+   */
+  void setEol(String value);
 
 } // WMLKey

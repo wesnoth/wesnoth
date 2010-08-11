@@ -11,52 +11,51 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.wesnoth.wML.WMLAbstractMacroCall;
 import org.wesnoth.wML.WMLPackage;
+import org.wesnoth.wML.WMLValue;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Abstract Macro Call</b></em>'.
+ * An implementation of the model object '<em><b>Value</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.wesnoth.wML.impl.WMLAbstractMacroCallImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.wesnoth.wML.impl.WMLValueImpl#getValue <em>Value</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class WMLAbstractMacroCallImpl extends MinimalEObjectImpl.Container implements WMLAbstractMacroCall
+public class WMLValueImpl extends WMLKeyValueImpl implements WMLValue
 {
   /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getValue()
    * @generated
    * @ordered
    */
-  protected static final String NAME_EDEFAULT = null;
+  protected static final String VALUE_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getValue()
    * @generated
    * @ordered
    */
-  protected String name = NAME_EDEFAULT;
+  protected String value = VALUE_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected WMLAbstractMacroCallImpl()
+  protected WMLValueImpl()
   {
     super();
   }
@@ -69,7 +68,7 @@ public class WMLAbstractMacroCallImpl extends MinimalEObjectImpl.Container imple
   @Override
   protected EClass eStaticClass()
   {
-    return WMLPackage.Literals.WML_ABSTRACT_MACRO_CALL;
+    return WMLPackage.Literals.WML_VALUE;
   }
 
   /**
@@ -77,9 +76,9 @@ public class WMLAbstractMacroCallImpl extends MinimalEObjectImpl.Container imple
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getName()
+  public String getValue()
   {
-    return name;
+    return value;
   }
 
   /**
@@ -87,12 +86,12 @@ public class WMLAbstractMacroCallImpl extends MinimalEObjectImpl.Container imple
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setName(String newName)
+  public void setValue(String newValue)
   {
-    String oldName = name;
-    name = newName;
+    String oldValue = value;
+    value = newValue;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, WMLPackage.WML_ABSTRACT_MACRO_CALL__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, WMLPackage.WML_VALUE__VALUE, oldValue, value));
   }
 
   /**
@@ -105,8 +104,8 @@ public class WMLAbstractMacroCallImpl extends MinimalEObjectImpl.Container imple
   {
     switch (featureID)
     {
-      case WMLPackage.WML_ABSTRACT_MACRO_CALL__NAME:
-        return getName();
+      case WMLPackage.WML_VALUE__VALUE:
+        return getValue();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -121,8 +120,8 @@ public class WMLAbstractMacroCallImpl extends MinimalEObjectImpl.Container imple
   {
     switch (featureID)
     {
-      case WMLPackage.WML_ABSTRACT_MACRO_CALL__NAME:
-        setName((String)newValue);
+      case WMLPackage.WML_VALUE__VALUE:
+        setValue((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -138,8 +137,8 @@ public class WMLAbstractMacroCallImpl extends MinimalEObjectImpl.Container imple
   {
     switch (featureID)
     {
-      case WMLPackage.WML_ABSTRACT_MACRO_CALL__NAME:
-        setName(NAME_EDEFAULT);
+      case WMLPackage.WML_VALUE__VALUE:
+        setValue(VALUE_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -155,8 +154,8 @@ public class WMLAbstractMacroCallImpl extends MinimalEObjectImpl.Container imple
   {
     switch (featureID)
     {
-      case WMLPackage.WML_ABSTRACT_MACRO_CALL__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case WMLPackage.WML_VALUE__VALUE:
+        return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
     }
     return super.eIsSet(featureID);
   }
@@ -172,10 +171,10 @@ public class WMLAbstractMacroCallImpl extends MinimalEObjectImpl.Container imple
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (name: ");
-    result.append(name);
+    result.append(" (value: ");
+    result.append(value);
     result.append(')');
     return result.toString();
   }
 
-} //WMLAbstractMacroCallImpl
+} //WMLValueImpl

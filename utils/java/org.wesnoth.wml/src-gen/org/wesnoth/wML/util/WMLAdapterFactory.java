@@ -89,19 +89,34 @@ public class WMLAdapterFactory extends AdapterFactoryImpl
         return createWMLTagAdapter();
       }
       @Override
-      public Adapter caseWMLAbstractMacroCall(WMLAbstractMacroCall object)
+      public Adapter caseWMLKey(WMLKey object)
       {
-        return createWMLAbstractMacroCallAdapter();
+        return createWMLKeyAdapter();
       }
       @Override
-      public Adapter caseWMLMacroInclude(WMLMacroInclude object)
+      public Adapter caseWMLKeyValue(WMLKeyValue object)
       {
-        return createWMLMacroIncludeAdapter();
+        return createWMLKeyValueAdapter();
       }
       @Override
       public Adapter caseWMLMacroCall(WMLMacroCall object)
       {
         return createWMLMacroCallAdapter();
+      }
+      @Override
+      public Adapter caseWMLMacroParameter(WMLMacroParameter object)
+      {
+        return createWMLMacroParameterAdapter();
+      }
+      @Override
+      public Adapter caseWMLLuaCode(WMLLuaCode object)
+      {
+        return createWMLLuaCodeAdapter();
+      }
+      @Override
+      public Adapter caseWMLArrayCall(WMLArrayCall object)
+      {
+        return createWMLArrayCallAdapter();
       }
       @Override
       public Adapter caseWMLMacroDefine(WMLMacroDefine object)
@@ -114,19 +129,9 @@ public class WMLAdapterFactory extends AdapterFactoryImpl
         return createWMLTextdomainAdapter();
       }
       @Override
-      public Adapter caseWMLKey(WMLKey object)
+      public Adapter caseWMLValue(WMLValue object)
       {
-        return createWMLKeyAdapter();
-      }
-      @Override
-      public Adapter caseWMLKeyExtraArgs(WMLKeyExtraArgs object)
-      {
-        return createWMLKeyExtraArgsAdapter();
-      }
-      @Override
-      public Adapter caseWMLKeyValue(WMLKeyValue object)
-      {
-        return createWMLKeyValueAdapter();
+        return createWMLValueAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -181,31 +186,31 @@ public class WMLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.wesnoth.wML.WMLAbstractMacroCall <em>Abstract Macro Call</em>}'.
+   * Creates a new adapter for an object of class '{@link org.wesnoth.wML.WMLKey <em>Key</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.wesnoth.wML.WMLAbstractMacroCall
+   * @see org.wesnoth.wML.WMLKey
    * @generated
    */
-  public Adapter createWMLAbstractMacroCallAdapter()
+  public Adapter createWMLKeyAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.wesnoth.wML.WMLMacroInclude <em>Macro Include</em>}'.
+   * Creates a new adapter for an object of class '{@link org.wesnoth.wML.WMLKeyValue <em>Key Value</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.wesnoth.wML.WMLMacroInclude
+   * @see org.wesnoth.wML.WMLKeyValue
    * @generated
    */
-  public Adapter createWMLMacroIncludeAdapter()
+  public Adapter createWMLKeyValueAdapter()
   {
     return null;
   }
@@ -221,6 +226,51 @@ public class WMLAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createWMLMacroCallAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.wesnoth.wML.WMLMacroParameter <em>Macro Parameter</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.wesnoth.wML.WMLMacroParameter
+   * @generated
+   */
+  public Adapter createWMLMacroParameterAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.wesnoth.wML.WMLLuaCode <em>Lua Code</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.wesnoth.wML.WMLLuaCode
+   * @generated
+   */
+  public Adapter createWMLLuaCodeAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.wesnoth.wML.WMLArrayCall <em>Array Call</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.wesnoth.wML.WMLArrayCall
+   * @generated
+   */
+  public Adapter createWMLArrayCallAdapter()
   {
     return null;
   }
@@ -256,46 +306,16 @@ public class WMLAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.wesnoth.wML.WMLKey <em>Key</em>}'.
+   * Creates a new adapter for an object of class '{@link org.wesnoth.wML.WMLValue <em>Value</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.wesnoth.wML.WMLKey
+   * @see org.wesnoth.wML.WMLValue
    * @generated
    */
-  public Adapter createWMLKeyAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.wesnoth.wML.WMLKeyExtraArgs <em>Key Extra Args</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.wesnoth.wML.WMLKeyExtraArgs
-   * @generated
-   */
-  public Adapter createWMLKeyExtraArgsAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.wesnoth.wML.WMLKeyValue <em>Key Value</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.wesnoth.wML.WMLKeyValue
-   * @generated
-   */
-  public Adapter createWMLKeyValueAdapter()
+  public Adapter createWMLValueAdapter()
   {
     return null;
   }

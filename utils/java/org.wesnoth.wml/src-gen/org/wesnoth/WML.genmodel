@@ -9,47 +9,50 @@
   <genPackages prefix="WML" basePackage="org.wesnoth" disposableProviderFactory="true"
       ecorePackage="WML.ecore#/">
     <genClasses ecoreClass="WML.ecore#//WMLRoot">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLRoot/tags"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLRoot/macros"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLRoot/macrosDefines"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLRoot/Tags"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLRoot/MacroCalls"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLRoot/MacroDefines"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLRoot/Textdomains"/>
     </genClasses>
     <genClasses ecoreClass="WML.ecore#//WMLTag">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//WMLTag/plus"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//WMLTag/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLTag/tags"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLTag/macros"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLTag/macrosDefines"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLTag/keys"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLTag/Tags"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLTag/Keys"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLTag/MacroCalls"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLTag/MacroDefines"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLTag/Textdomains"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//WMLTag/endName"/>
-    </genClasses>
-    <genClasses ecoreClass="WML.ecore#//WMLAbstractMacroCall">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//WMLAbstractMacroCall/name"/>
-    </genClasses>
-    <genClasses ecoreClass="WML.ecore#//WMLMacroInclude"/>
-    <genClasses ecoreClass="WML.ecore#//WMLMacroCall">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//WMLMacroCall/args"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//WMLMacroCall/params"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLMacroCall/tags"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLMacroCall/macros"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLMacroCall/macrosDefines"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLMacroCall/keys"/>
-    </genClasses>
-    <genClasses ecoreClass="WML.ecore#//WMLMacroDefine">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//WMLMacroDefine/params"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLMacroDefine/tags"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLMacroDefine/macros"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLMacroDefine/macrosDefines"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLMacroDefine/keys"/>
-    </genClasses>
-    <genClasses ecoreClass="WML.ecore#//WMLTextdomain">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//WMLTextdomain/name"/>
     </genClasses>
     <genClasses ecoreClass="WML.ecore#//WMLKey">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//WMLKey/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLKey/value"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLKey/extraArgs"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//WMLKey/eol"/>
     </genClasses>
-    <genClasses ecoreClass="WML.ecore#//WMLKeyExtraArgs"/>
     <genClasses ecoreClass="WML.ecore#//WMLKeyValue"/>
+    <genClasses ecoreClass="WML.ecore#//WMLMacroCall">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//WMLMacroCall/relative"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//WMLMacroCall/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLMacroCall/params"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLMacroCall/extraMacros"/>
+    </genClasses>
+    <genClasses ecoreClass="WML.ecore#//WMLMacroParameter">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLMacroParameter/param"/>
+    </genClasses>
+    <genClasses ecoreClass="WML.ecore#//WMLLuaCode">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//WMLLuaCode/value"/>
+    </genClasses>
+    <genClasses ecoreClass="WML.ecore#//WMLArrayCall">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLArrayCall/value"/>
+    </genClasses>
+    <genClasses ecoreClass="WML.ecore#//WMLMacroDefine">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//WMLMacroDefine/name"/>
+    </genClasses>
+    <genClasses ecoreClass="WML.ecore#//WMLTextdomain">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//WMLTextdomain/name"/>
+    </genClasses>
+    <genClasses ecoreClass="WML.ecore#//WMLValue">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//WMLValue/value"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

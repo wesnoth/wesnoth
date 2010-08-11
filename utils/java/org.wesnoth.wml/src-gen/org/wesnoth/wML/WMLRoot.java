@@ -19,8 +19,9 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.wesnoth.wML.WMLRoot#getTags <em>Tags</em>}</li>
- *   <li>{@link org.wesnoth.wML.WMLRoot#getMacros <em>Macros</em>}</li>
- *   <li>{@link org.wesnoth.wML.WMLRoot#getMacrosDefines <em>Macros Defines</em>}</li>
+ *   <li>{@link org.wesnoth.wML.WMLRoot#getMacroCalls <em>Macro Calls</em>}</li>
+ *   <li>{@link org.wesnoth.wML.WMLRoot#getMacroDefines <em>Macro Defines</em>}</li>
+ *   <li>{@link org.wesnoth.wML.WMLRoot#getTextdomains <em>Textdomains</em>}</li>
  * </ul>
  * </p>
  *
@@ -47,35 +48,51 @@ public interface WMLRoot extends EObject
   EList<WMLTag> getTags();
 
   /**
-   * Returns the value of the '<em><b>Macros</b></em>' containment reference list.
-   * The list contents are of type {@link org.wesnoth.wML.WMLAbstractMacroCall}.
+   * Returns the value of the '<em><b>Macro Calls</b></em>' containment reference list.
+   * The list contents are of type {@link org.wesnoth.wML.WMLMacroCall}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Macros</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Macro Calls</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Macros</em>' containment reference list.
-   * @see org.wesnoth.wML.WMLPackage#getWMLRoot_Macros()
+   * @return the value of the '<em>Macro Calls</em>' containment reference list.
+   * @see org.wesnoth.wML.WMLPackage#getWMLRoot_MacroCalls()
    * @model containment="true"
    * @generated
    */
-  EList<WMLAbstractMacroCall> getMacros();
+  EList<WMLMacroCall> getMacroCalls();
 
   /**
-   * Returns the value of the '<em><b>Macros Defines</b></em>' containment reference list.
+   * Returns the value of the '<em><b>Macro Defines</b></em>' containment reference list.
    * The list contents are of type {@link org.wesnoth.wML.WMLMacroDefine}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Macros Defines</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Macro Defines</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Macros Defines</em>' containment reference list.
-   * @see org.wesnoth.wML.WMLPackage#getWMLRoot_MacrosDefines()
+   * @return the value of the '<em>Macro Defines</em>' containment reference list.
+   * @see org.wesnoth.wML.WMLPackage#getWMLRoot_MacroDefines()
    * @model containment="true"
    * @generated
    */
-  EList<WMLMacroDefine> getMacrosDefines();
+  EList<WMLMacroDefine> getMacroDefines();
+
+  /**
+   * Returns the value of the '<em><b>Textdomains</b></em>' containment reference list.
+   * The list contents are of type {@link org.wesnoth.wML.WMLTextdomain}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Textdomains</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Textdomains</em>' containment reference list.
+   * @see org.wesnoth.wML.WMLPackage#getWMLRoot_Textdomains()
+   * @model containment="true"
+   * @generated
+   */
+  EList<WMLTextdomain> getTextdomains();
 
 } // WMLRoot

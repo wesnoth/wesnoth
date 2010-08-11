@@ -2,82 +2,76 @@
  * @author Timotei Dolean
  */
  //grammar org.wesnoth.WML with org.eclipse.xtext.common.Terminals
-grammar org.wesnoth.WML hidden(WS, SL_COMMENT)
+grammar org.wesnoth.WML hidden(EOL, WS, SL_COMMENT)
 generate wML "http://www.wesnoth.org/WML"
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 
+//TODO: add cross-reference for variables
+//handles TODO:
+// - preprocessor commands: #define, #enddef, etc
+// - fix: { { } }
+
 WMLRoot:
-	( (tags+=WMLTag)
-	| (macros+=WMLAbstractMacroCall)
-	| (macrosDefines+=WMLMacroDefine)
+	( Tags += WMLTag
+	| MacroCalls += WMLMacroCall
+	| MacroDefines += WMLMacroDefine
+	| Textdomains += WMLTextdomain
 	)*
 	;
+
 WMLTag:
-	'[' (plus?='+')? name = ID ']'
-		( (tags+=WMLTag)
-		| (macros+=WMLAbstractMacroCall)
-		| (macrosDefines+=WMLMacroDefine)
-		| (keys+=WMLKey)
+	'[' (plus?='+')? name=ID ']'
+		( Tags += WMLTag
+		| Keys += WMLKey
+		| MacroCalls += WMLMacroCall // this generates multiple alternatives
+		| MacroDefines += WMLMacroDefine
+		| Textdomains += WMLTextdomain
 		)*
 	'[/' endName = ID ']'
 	;
-WMLAbstractMacroCall:
-	WMLMacroInclude | WMLMacroCall;
-WMLMacroInclude:
-	'{' name = WMLPath '}';
+
+WMLKey hidden(WS):
+	(name = ID) '=' value += WMLKeyValue+ eol=(EOL|SL_COMMENT);
+
+WMLKeyValue:
+	WMLValue | WMLMacroCall | WMLLuaCode | WMLArrayCall;
+	
 WMLMacroCall:
-	'{' name=ID args+=(ID |STRING | TSTRING | ANY_OTHER)*
-		( (params+=WMLMacroCallParameter)
-		| (tags+=WMLTag)
-		| (macros+=WMLMacroCall)
-		| (macrosDefines+=WMLMacroDefine)
-		| (keys+=WMLKey)
+	'{' (relative?='~')? name=ID
+		( params += (WMLValue | WMLMacroParameter)
+		| extraMacros += WMLMacroCall
 		)*
 	'}';
+	
+WMLMacroParameter: {WMLMacroParameter}
+	'(' param += (WMLValue | WMLTag | WMLMacroCall | WMLKey)* ')';
+WMLLuaCode:
+	value = LUA_CODE;
+WMLArrayCall:
+	'[' value += WMLValue+ ']' ;
 WMLMacroDefine:
-	DEFINE
-		( (params+=WMLMacroCallParameter)
-		| (tags+=WMLTag)
-		| (macros+=WMLMacroCall)
-		| (macrosDefines+=WMLMacroDefine)
-		| (keys+=WMLKey)
-		)*
-	ENDDEFINE
-	;
+	name = DEFINE;
+//		( Tags += WMLTag
+//		| Keys += WMLKey
+//		| MacroCalls += WMLMacroCall
+//		| MacroDefines += WMLMacroDefine
+//		| Textdomains += WMLTextdomain
+//		)*;
+//		ENDDEF;
+	
 WMLTextdomain:
-	name=TEXTDOMAIN;
-WMLKey:
-	name=WMLIDList '=' value = WMLKeyValue 
-		('+' extraArgs+=WMLKeyExtraArgs)*
-	;
-WMLKeyExtraArgs:
-	WMLMacroCall | STRING | TSTRING;
+	name = TEXTDOMAIN;
 
-WMLMacroCallParameter:
-	'('
-		(ID | STRING | TSTRING | FILE) 
-	')';
-WMLKeyValue:
-	(WMLINTList | WMLIDList | WMLMacroCall | STRING | TSTRING | WMLPath | FILE);
-WMLPath:
-	'~'? PATH_ID ('/' PATH_ID)+ FILE? '/'?;
-WMLIDList:
-	ID (',' ID)*;
-WMLINTList:
-	INT (',' INT)*;
-TSTRING:
-	'_' STRING;
-FILE:
-	PATH_ID+ '.' ID;
-PATH_ID:
-	ID | '-';
+WMLValue:
+	value = (ID | STRING |'+'|'~'| ANY_OTHER	);
 
-terminal ID : ('a'..'z'|'A'..'Z'|'_'|'0'..'9')+;
-terminal INT returns ecore::EBigDecimal: ('0'..'9')* ('.' ('0'..'9')+)?;
-terminal STRING: '"' ( '\\' ('b'|'t'|'n'|'f'|'r'|'"'|"'"|'\\') | !('\\'|'"') )* '"';
-terminal TEXTDOMAIN: '#textdomain' !('\n'|'\r')* ('\r'? '\n')?; 
-terminal DEFINE: '#define' !('\n'|'\r')* ('\r'? '\n')?;
-terminal ENDDEFINE: '#enddef' !('\n'|'\r')* ('\r'? '\n')?;
+terminal LUA_CODE   : '<<' -> '>>';
+terminal DEFINE     : '#define' -> '#enddef';//!('\n'|'\r')* ('\r'? '\n')?;
+//terminal ENDDEF     : '#enddef' !('\n'|'\r')* ('\r'? '\n')?;
+terminal TEXTDOMAIN : '#textdomain' !('\n'|'\r')* ('\r'? '\n')?;
+terminal STRING     : '"' ( '\\' ('b'|'t'|'n'|'f'|'r'|'"'|"'"|'\\') | !('\\'|'"') )* '"';
+terminal ID         : ('a'..'z'|'A'..'Z'|'0'..'9'|'_'|'-'|',')+;
+terminal EOL		 : ('\r'|'\n');
+terminal WS         : (' '|'\t')+;
+terminal ANY_OTHER  : .;
 terminal SL_COMMENT : '#' !('\n'|'\r')* ('\r'? '\n')?;
-terminal WS: (' '|'\t'|'\r'|'\n')+;
-terminal ANY_OTHER: .;

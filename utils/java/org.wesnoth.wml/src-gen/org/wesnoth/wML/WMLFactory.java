@@ -45,22 +45,22 @@ public interface WMLFactory extends EFactory
   WMLTag createWMLTag();
 
   /**
-   * Returns a new object of class '<em>Abstract Macro Call</em>'.
+   * Returns a new object of class '<em>Key</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Abstract Macro Call</em>'.
+   * @return a new object of class '<em>Key</em>'.
    * @generated
    */
-  WMLAbstractMacroCall createWMLAbstractMacroCall();
+  WMLKey createWMLKey();
 
   /**
-   * Returns a new object of class '<em>Macro Include</em>'.
+   * Returns a new object of class '<em>Key Value</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Macro Include</em>'.
+   * @return a new object of class '<em>Key Value</em>'.
    * @generated
    */
-  WMLMacroInclude createWMLMacroInclude();
+  WMLKeyValue createWMLKeyValue();
 
   /**
    * Returns a new object of class '<em>Macro Call</em>'.
@@ -70,6 +70,33 @@ public interface WMLFactory extends EFactory
    * @generated
    */
   WMLMacroCall createWMLMacroCall();
+
+  /**
+   * Returns a new object of class '<em>Macro Parameter</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Macro Parameter</em>'.
+   * @generated
+   */
+  WMLMacroParameter createWMLMacroParameter();
+
+  /**
+   * Returns a new object of class '<em>Lua Code</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Lua Code</em>'.
+   * @generated
+   */
+  WMLLuaCode createWMLLuaCode();
+
+  /**
+   * Returns a new object of class '<em>Array Call</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Array Call</em>'.
+   * @generated
+   */
+  WMLArrayCall createWMLArrayCall();
 
   /**
    * Returns a new object of class '<em>Macro Define</em>'.
@@ -90,31 +117,13 @@ public interface WMLFactory extends EFactory
   WMLTextdomain createWMLTextdomain();
 
   /**
-   * Returns a new object of class '<em>Key</em>'.
+   * Returns a new object of class '<em>Value</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Key</em>'.
+   * @return a new object of class '<em>Value</em>'.
    * @generated
    */
-  WMLKey createWMLKey();
-
-  /**
-   * Returns a new object of class '<em>Key Extra Args</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Key Extra Args</em>'.
-   * @generated
-   */
-  WMLKeyExtraArgs createWMLKeyExtraArgs();
-
-  /**
-   * Returns a new object of class '<em>Key Value</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Key Value</em>'.
-   * @generated
-   */
-  WMLKeyValue createWMLKeyValue();
+  WMLValue createWMLValue();
 
   /**
    * Returns the package supported by this factory.
