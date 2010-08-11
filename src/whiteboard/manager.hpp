@@ -162,8 +162,9 @@ private:
 	arrow_ptr move_arrow_;
 	fake_unit_ptr fake_unit_;
 
-
 	boost::scoped_ptr<CKey> key_poller_;
+
+	map_location hidden_unit_hex_;
 };
 
 /** Applies the planned unit map for the duration of the struct's life.

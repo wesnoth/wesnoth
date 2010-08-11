@@ -238,7 +238,10 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 
 					current_route_ = get_route(selected_unit, dest, waypoints_, viewing_team());
 
-					resources::whiteboard->create_temp_move();
+					{ // start enforced real unit map scope
+						wb::scoped_real_unit_map real_unit_map;
+						resources::whiteboard->create_temp_move();
+					} // end enforced real unit map scope
 
 					if(!browse) {
 						gui().set_route(&current_route_);

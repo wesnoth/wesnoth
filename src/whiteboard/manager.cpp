@@ -51,7 +51,8 @@ manager::manager():
 		route_(),
 		move_arrow_(),
 		fake_unit_(),
-		key_poller_(new CKey)
+		key_poller_(new CKey),
+		hidden_unit_hex_()
 {
 	LOG_WB << "Manager initialized.\n";
 }
@@ -310,10 +311,19 @@ void manager::draw_hex(const map_location& hex)
 
 void manager::on_mouseover_change(const map_location& hex)
 {
+	if (hidden_unit_hex_.valid())
+	{
+		if (unit* unit = get_visible_unit(hidden_unit_hex_,
+				resources::teams->at(viewer_side() - 1), false))
+		{
+			unit->set_hidden(false);
+		}
+		hidden_unit_hex_ = map_location();
+	}
+
 	//FIXME: Detect if a WML event is executing, and if so, avoid modifying the unit map during that time.
 	// Acting otherwise causes a crash.
 	if (!resources::screen->selected_hex().valid() && highlighter_)
-
 	{
 		highlighter_->set_mouseover_hex(hex);
 		highlighter_->highlight();
@@ -381,7 +391,7 @@ void manager::create_temp_move()
 		// Create temp arrow
 		move_arrow_.reset(new arrow());
 		move_arrow_->set_color(team::get_side_color_index(
-				resources::screen->viewing_side()));
+				viewer_side()));
 		move_arrow_->set_alpha(move::ALPHA_HIGHLIGHT);
 		resources::screen->add_arrow(*move_arrow_);
 
@@ -401,6 +411,15 @@ void manager::create_temp_move()
 			false); //get facing right
 	fake_unit_->set_location(route_->steps.back());
 	fake_unit_->set_ghosted(false);
+
+	//if destination is over another unit, temporarily hide it
+	unit* mouseover_unit = get_visible_unit(resources::screen->mouseover_hex(),
+			resources::teams->at(viewer_side() - 1), false);
+	if (mouseover_unit && mouseover_unit->side() == viewer_side())
+	{
+		mouseover_unit->set_hidden(true);
+		hidden_unit_hex_ = resources::screen->mouseover_hex();
+	}
 }
 
 void manager::erase_temp_move()
