@@ -820,7 +820,7 @@ def local_sanity_check(filename, nav, key, prefix, value, comment):
                           "[flame_burst_3_frame]", "[flame_burst_4_frame]",
                           "[flame_burst_5_frame]", "[flame_burst_6_frame]",
                           "[frame]", "[have_location]", "[have_unit]",
-                          "[missile_frame]", "[not]", "[or]",
+                          "[missile_frame]", "[not]", "[or]", "[sound_frame]",
                           "[poisoned_sound_frame]", "[sling_stone_frame]",
                           "[slowed_sound_frame]", "[then]", "[variable]"):
             print errlead + 'illegal child of [if]'
