@@ -421,7 +421,7 @@ class preprocessor_data: preprocessor
 		 * - 'J': skipping the "else" branch of a ifdef/ifndef
 		 * - '"': processing a string
 		 * - '<': processing a verbatim string
-		 * - '{': processing between chunks of a macro call (skip spaces)
+		 * - '{': processing between chunks of a macro call (skip spaces), no storage
 		 * - '[': processing inside a chunk of a macro call (stop on space or '(')
 		 * - '(': processing a parenthesized macro argument
 		 */
@@ -563,6 +563,19 @@ void preprocessor_data::push_token(char t)
 {
 	token_desc token(t, strings_.size(), linenum_);
 	tokens_.push_back(token);
+	if (t == '{') {
+		// Macro expansions do not have any associated storage at start.
+		return;
+	} else if (t == '"' || t == '<') {
+		/* Quoted strings are always inlined in the parent token. So
+		   they need neither storage nor metadata, unless the parent
+		   token is a macro expansion. */
+		char &outer_type = tokens_[tokens_.size() - 2].type;
+		if (outer_type != '{')
+			return;
+		outer_type = '[';
+		tokens_.back().stack_pos = strings_.size() + 1;
+	}
 	std::ostringstream s;
 	if (!skipping_ && slowpath_) {
 		s << "\376line " << linenum_ << ' ' << target_.location_
@@ -573,8 +586,35 @@ void preprocessor_data::push_token(char t)
 
 void preprocessor_data::pop_token()
 {
-	strings_.erase(strings_.begin() + tokens_.back().stack_pos, strings_.end());
+	char inner_type = tokens_.back().type;
+	unsigned stack_pos = tokens_.back().stack_pos;
 	tokens_.pop_back();
+	char &outer_type = tokens_.back().type;
+	if (inner_type == '(') {
+		// Parenthesized macro arguments are left on the stack.
+		assert(outer_type == '{');
+		return;
+	}
+	if (inner_type == '"' || inner_type == '<') {
+		// Quoted strings are always inlined.
+		assert(stack_pos == strings_.size());
+		return;
+	}
+	if (outer_type == '{') {
+		/* A macro expansion does not have any associated storage.
+		   Instead, storage of the inner token is not discarded
+		   but kept as a new macro argument. But if the inner token
+		   was a macro expansion, it is about to be appended, so
+		   prepare for it. */
+		if (inner_type == '{' || inner_type == '[') {
+			strings_.erase(strings_.begin() + stack_pos, strings_.end());
+			strings_.push_back(std::string());
+		}
+		assert(stack_pos + 1 == strings_.size());
+		outer_type = '[';
+		return;
+	}
+	strings_.erase(strings_.begin() + stack_pos, strings_.end());
 }
 
 void preprocessor_data::skip_spaces()
@@ -724,12 +764,7 @@ bool preprocessor_data::get_chunk()
 		put(c);
 		if (c == '>' && in_->peek() == '>') {
 			put(in_->get());
-			if (!skipping_ && slowpath_) {
-				std::string tmp = strings_.back();
-				pop_token();
-				strings_.back() += tmp;
-			} else
-				pop_token();
+			pop_token();
 		}
 	} else if (c == '<' && in_->peek() == '<') {
 		in_->get();
@@ -740,29 +775,19 @@ bool preprocessor_data::get_chunk()
 		if (token.type == '"') {
 			target_.quoted_ = false;
 			put(c);
-			if (!skipping_ && slowpath_) {
-				std::string tmp = strings_.back();
-				pop_token();
-				strings_.back() += tmp;
-			} else
-				pop_token();
+			pop_token();
 		} else if (!target_.quoted_) {
 			target_.quoted_ = true;
-			if (token.type == '{')
-				token.type = '[';
 			push_token('"');
 			put(c);
 		} else {
 			target_.error("Nested quoted string" , linenum_);
 		}
 	} else if (c == '{') {
-		if (token.type == '{')
-			token.type = '[';
 		push_token('{');
 		++slowpath_;
 	} else if (c == ')' && token.type == '(') {
-		tokens_.pop_back();
-		strings_.push_back(std::string());
+		pop_token();
 	} else if (c == '#' && !target_.quoted_) {
 		std::string command = read_word();
 		bool comment = false;
@@ -892,27 +917,17 @@ bool preprocessor_data::get_chunk()
 			put('\n');
 	} else if (token.type == '{' || token.type == '[') {
 		if (c == '(') {
-			if (token.type == '[')
-				token.type = '{';
-			else
-				strings_.pop_back();
+			// If a macro argument was started, it is implicitly ended.
+			token.type = '{';
 			push_token('(');
 		} else if (utils::portable_isspace(c)) {
-			if (token.type == '[') {
-				strings_.push_back(std::string());
-				token.type = '{';
-			}
+			// If a macro argument was started, it is implicitly ended.
+			token.type = '{';
 		} else if (c == '}') {
 			--slowpath_;
 			if (skipping_) {
 				pop_token();
 				return true;
-			}
-			if (token.type == '{') {
-				if (!strings_.back().empty()) {
-					target_.error("Can't parse new macro parameter with a macro call scope open", linenum_);
-				}
-				strings_.pop_back();
 			}
 
 			std::string symbol = strings_[token.stack_pos];
@@ -975,7 +990,7 @@ bool preprocessor_data::get_chunk()
 						                      val.linenum, dir, val.textdomain, defines);
 						res << in.rdbuf(); }
 					delete buf;
-					strings_.back() += res.str();
+					put(res.str());
 				}
 			} else if (target_.depth_ < 40) {
 				LOG_CF << "Macro definition not found for " << symbol << " , attempting to open as file.\n";
@@ -994,7 +1009,7 @@ bool preprocessor_data::get_chunk()
 							new preprocessor_file(*buf, nfname);
 							res << in.rdbuf(); }
 						delete buf;
-						strings_.back() += res.str();
+						put(res.str());
 					}
 				}
 				else
@@ -1005,11 +1020,19 @@ bool preprocessor_data::get_chunk()
 				}
 			} else {
 				target_.error("Too much nested preprocessing inclusions", linenum_);
-				pop_token();
 			}
-		} else {
-			strings_.back() += c;
-			token.type = '[';
+		}
+		else if (!skipping_)
+		{
+			if (token.type == '{')
+			{
+				std::ostringstream s;
+				s << "\376line " << linenum_ << ' ' << target_.location_
+				  << "\n\376textdomain " << target_.textdomain_ << '\n';
+				strings_.push_back(s.str());
+				token.type = '[';
+			}
+			put(c);
 		}
 	} else
 		put(c);
