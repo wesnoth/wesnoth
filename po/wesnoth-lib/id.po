@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-07-19 00:25+0200\n"
-"PO-Revision-Date: 2009-04-05 16:30+0530\n"
-"Last-Translator: Nicky IW <inkraiswitras@yahoo.com>\n"
+"POT-Creation-Date: 2010-07-19 00:46+0200\n"
+"PO-Revision-Date: 2010-08-11 14:36+0700\n"
+"Last-Translator: Yuris <Yuris_Wicaksana@yahoo.com>\n"
 "Language-Team: none\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -71,12 +71,12 @@ msgstr "Rawa"
 #. [terrain_type]: id=leaf_litter
 #: data/core/terrain.cfg:130 data/core/terrain.cfg:167
 msgid "Grassland"
-msgstr "Tanah Rumput"
+msgstr "Padang Rumput"
 
 #. [terrain_type]: id=savanna
 #: data/core/terrain.cfg:149
 msgid "Savanna"
-msgstr "Padang Rumput"
+msgstr "Sabana"
 
 #. [terrain_type]: id=grass_dry
 #: data/core/terrain.cfg:158
@@ -98,7 +98,7 @@ msgstr "Kotoran"
 #: data/core/terrain.cfg:224
 #, fuzzy
 msgid "Cobbles"
-msgstr "Robohan"
+msgstr "Reruntuhan"
 
 #. [terrain_type]: id=ice
 #: data/core/terrain.cfg:237
@@ -128,7 +128,7 @@ msgstr "Oasis"
 #. [terrain_type]: id=sand_rubble
 #: data/core/terrain.cfg:292
 msgid "Rubble"
-msgstr "Robohan"
+msgstr "Reruntuhan"
 
 #. [terrain_type]: id=crater
 #: data/core/terrain.cfg:303
@@ -139,7 +139,7 @@ msgstr "Kawah"
 #: data/core/terrain.cfg:318
 #, fuzzy
 msgid "Mixed Flowers"
-msgstr "Hutan Salju"
+msgstr "Hutan Musim Gugur "
 
 #. [terrain_type]: id=farm
 #: data/core/terrain.cfg:327
@@ -148,9 +148,8 @@ msgstr "Sawah"
 
 #. [terrain_type]: id=stones_small
 #: data/core/terrain.cfg:336
-#, fuzzy
 msgid "Stones"
-msgstr "Aksi"
+msgstr ""
 
 #. [terrain_type]: id=mushrooms_small
 #: data/core/terrain.cfg:345
@@ -172,7 +171,7 @@ msgstr ""
 #. [terrain_type]: id=great_tree
 #: data/core/terrain.cfg:377
 msgid "Great Tree"
-msgstr "Pohon Hebat"
+msgstr "Pohon besar"
 
 #. [terrain_type]: id=tropical_forest
 #: data/core/terrain.cfg:387
@@ -195,9 +194,8 @@ msgstr "Hutan"
 
 #. [terrain_type]: id=forest
 #: data/core/terrain.cfg:398
-#, fuzzy
 msgid "Pine Forest"
-msgstr "Hutan Salju"
+msgstr "Hutan Cemara "
 
 #. [terrain_type]: id=snow_forest
 #. [terrain_type]: id=deciduous_forest_winter_snow
@@ -209,49 +207,46 @@ msgstr "Hutan Salju"
 
 #. [terrain_type]: id=snow_forest
 #: data/core/terrain.cfg:408
-#, fuzzy
 msgid "Snowy Pine Forest"
-msgstr "Hutan Salju"
+msgstr "Hutan Cemara Tertutup salju"
 
 #. [terrain_type]: id=deciduous_forest_summer
 #: data/core/terrain.cfg:420
 msgid "Summer Deciduous Forest"
-msgstr ""
+msgstr "Hutan Musim Panas yang Berganti Daun Setiap Tahun"
 
 #. [terrain_type]: id=deciduous_forest_fall
 #: data/core/terrain.cfg:431
 msgid "Fall Deciduous Forest"
-msgstr ""
+msgstr "Hutan Musim Gugur yang Rontok"
 
 #. [terrain_type]: id=deciduous_forest_winter
 #: data/core/terrain.cfg:442
 msgid "Winter Deciduous Forest"
-msgstr ""
+msgstr "Hutan Musim Dingin yang Rontok"
 
 #. [terrain_type]: id=deciduous_forest_winter_snow
 #: data/core/terrain.cfg:453
-#, fuzzy
 msgid "Snowy Deciduous Forest"
-msgstr "Hutan Salju"
+msgstr "Hutan Berganti daun setiap tahun Tertutup salju"
 
 #. [terrain_type]: id=mixed_forest_summer
 #: data/core/terrain.cfg:465
 msgid "Summer Mixed Forest"
-msgstr ""
+msgstr "Hutan Musim Panas "
 
 #. [terrain_type]: id=mixed_forest_fall
 #: data/core/terrain.cfg:476
 msgid "Fall Mixed Forest"
-msgstr ""
+msgstr "Hutan Musim Gugur "
 
 #. [terrain_type]: id=mixed_forest_winter
 #: data/core/terrain.cfg:487
 msgid "Winter Mixed Forest"
-msgstr ""
+msgstr "Hutan Musim Dingin "
 
 #. [terrain_type]: id=mixed_forest_winter_snow
 #: data/core/terrain.cfg:498
-#, fuzzy
 msgid "Snowy Mixed Forest"
 msgstr "Hutan Salju"
 
@@ -281,15 +276,13 @@ msgstr "Gunung"
 
 #. [terrain_type]: id=desert_mountains
 #: data/core/terrain.cfg:564
-#, fuzzy
 msgid "Desert Mountains"
 msgstr "Pegunungan Gurun Tak Terlalui"
 
 #. [terrain_type]: id=snow_mountains
 #: data/core/terrain.cfg:574
-#, fuzzy
 msgid "Snowy Mountains"
-msgstr "Gunung"
+msgstr "Gunung-Gunung tertutup salju"
 
 #. [terrain_type]: id=forested_hills
 #. [terrain_type]: id=deciduous_forest_summer_hills
@@ -315,43 +308,36 @@ msgstr "Bukit Salju Berhutan"
 
 #. [terrain_type]: id=deciduous_forest_summer_hills
 #: data/core/terrain.cfg:609
-#, fuzzy
 msgid "Summer Deciduous Forested Hills"
 msgstr "Bukit Berhutan"
 
 #. [terrain_type]: id=deciduous_forest_fall_hills
 #: data/core/terrain.cfg:620
-#, fuzzy
 msgid "Fall Deciduous Forested Hills"
 msgstr "Bukit Berhutan"
 
 #. [terrain_type]: id=deciduous_forest_winter_hills
 #: data/core/terrain.cfg:631
-#, fuzzy
 msgid "Winter Deciduous Forested Hills"
 msgstr "Bukit Berhutan"
 
 #. [terrain_type]: id=deciduous_forest_winter_snow_hills
 #: data/core/terrain.cfg:642
-#, fuzzy
 msgid "Snowy Deciduous Forested Hills"
 msgstr "Bukit Berhutan"
 
 #. [terrain_type]: id=mixed_forest_summer_hills
 #: data/core/terrain.cfg:653
-#, fuzzy
 msgid "Summer Mixed Forested Hills"
 msgstr "Bukit Berhutan"
 
 #. [terrain_type]: id=mixed_forest_winter_hills
 #: data/core/terrain.cfg:674
-#, fuzzy
 msgid "Winter Mixed Forested Hills"
 msgstr "Bukit Berhutan"
 
 #. [terrain_type]: id=mixed_forest_winter_snow_hills
 #: data/core/terrain.cfg:685
-#, fuzzy
 msgid "Snowy Mixed Forested Hills"
 msgstr "Bukit Berhutan"
 
@@ -505,9 +491,8 @@ msgstr "Perkemahan"
 
 #. [terrain_type]: id=orcish_fort
 #: data/core/terrain.cfg:1350
-#, fuzzy
 msgid "Fort"
-msgstr "Hutan"
+msgstr "Benteng"
 
 #. [terrain_type]: id=snow_orcish_fort
 #: data/core/terrain.cfg:1361
@@ -538,7 +523,7 @@ msgstr "Reruntuhan"
 #. [terrain_type]: id=sunkenruin
 #: data/core/terrain.cfg:1425
 msgid "Sunken Ruin"
-msgstr "Reruntuhan Tenggelam"
+msgstr "Reruntuhan yang Tenggelam"
 
 #. [terrain_type]: id=swampruin
 #: data/core/terrain.cfg:1437
@@ -573,13 +558,11 @@ msgstr "Benteng"
 
 #. [terrain_type]: id=encampment_keep
 #: data/core/terrain.cfg:1466
-#, fuzzy
 msgid "Encampment Keep"
 msgstr "Perkemahan"
 
 #. [terrain_type]: id=orcish_keep
 #: data/core/terrain.cfg:1479
-#, fuzzy
 msgid "Fort Keep"
 msgstr "Benteng"
 
@@ -594,24 +577,23 @@ msgstr "Benteng"
 #. [terrain_type]: id=swamp_keep
 #: data/core/terrain.cfg:1505 data/core/terrain.cfg:1542
 #: data/core/terrain.cfg:1581
-#, fuzzy
 msgid "Castle Keep"
 msgstr "Istana"
 
 #. [terrain_type]: id=elven_keep
 #: data/core/terrain.cfg:1529
 msgid "Elven Keep"
-msgstr ""
+msgstr "Benteng Elven"
 
 #. [terrain_type]: id=ruined_keep
 #: data/core/terrain.cfg:1555
 msgid "Ruined Castle Keep"
-msgstr ""
+msgstr "Benteng yang Rusak"
 
 #. [terrain_type]: id=sunken_keep
 #: data/core/terrain.cfg:1568
 msgid "Sunken Castle Keep"
-msgstr ""
+msgstr "Benteng yang Terendam"
 
 #. [terrain_type]: id=desert_keep
 #: data/core/terrain.cfg:1616 data/core/terrain.cfg:1617
@@ -732,9 +714,8 @@ msgstr "Batalkan"
 
 #. [label]
 #: data/gui/default/window/campaign_dialog.cfg:49
-#, fuzzy
 msgid "Play a campaign"
-msgstr "Kampanye"
+msgstr "Mainkan Kampanye"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -766,14 +747,13 @@ msgstr ""
 #: data/gui/default/window/data_manage.cfg:81
 #: data/gui/default/window/game_load.cfg:181
 msgid "Choose the game to load"
-msgstr ""
+msgstr "Pilihlah simpanan game yang ingin dilanjutkan"
 
 #. [label]: id=lblFilter
 #: data/gui/default/window/data_manage.cfg:105
 #: data/gui/default/window/game_load.cfg:205
-#, fuzzy
 msgid "Filter"
-msgstr "File:"
+msgstr "Saringan"
 
 #. [label]: id=filename
 #. [label]: id=name
@@ -786,9 +766,8 @@ msgstr "Nama"
 #. [label]: id=date
 #: data/gui/default/window/data_manage.cfg:169
 #: data/gui/default/window/game_load.cfg:269
-#, fuzzy
 msgid "Date"
-msgstr "Paste"
+msgstr "Tanggal"
 
 #. [button]: id=clear
 #: data/gui/default/window/data_manage.cfg:258
@@ -955,58 +934,53 @@ msgstr "Terapkan"
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:28
 msgid "Formula debugger"
-msgstr ""
+msgstr "Formula untuk debugger"
 
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:51
 msgid "Welcome"
-msgstr ""
+msgstr "Selamat Datang"
 
 #. [label]: id=state
 #: data/gui/default/window/formula_debugger.cfg:63
-#, fuzzy
 msgid "state"
-msgstr "Paste"
+msgstr "negara"
 
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:77
 msgid "Call stack"
-msgstr ""
+msgstr "Tumpukan Panggilan "
 
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:86
 #: data/gui/default/window/gamestate_inspector.cfg:268
-#, fuzzy
 msgid "Actions"
 msgstr "Aksi"
 
 #. [button]: id=step
 #: data/gui/default/window/formula_debugger.cfg:120
-#, fuzzy
 msgid "Step operation"
-msgstr "Moderasi"
+msgstr "Langkah Operasi"
 
 #. [button]: id=next
 #: data/gui/default/window/formula_debugger.cfg:131
-#, fuzzy
 msgid "Next operation"
-msgstr "Generator Berikutnya"
+msgstr "Operasi Berikutnya"
 
 #. [button]: id=stepout
 #: data/gui/default/window/formula_debugger.cfg:142
 msgid "Step out"
-msgstr ""
+msgstr "Keluar"
 
 #. [button]: id=continue
 #: data/gui/default/window/formula_debugger.cfg:153
-#, fuzzy
 msgid "Continue"
 msgstr "Teruskan Gerakan"
 
 #. [label]
 #: data/gui/default/window/formula_debugger.cfg:170
 msgid "Execution trace"
-msgstr ""
+msgstr "Melacak Pelaksanaan "
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
@@ -1021,20 +995,18 @@ msgstr "Keluar"
 
 #. [label]: id=lblTitle
 #: data/gui/default/window/game_delete.cfg:32
-#, fuzzy
 msgid "Delete Save"
 msgstr "Hapus File"
 
 #. [label]: id=lblMessage
 #: data/gui/default/window/game_delete.cfg:52
-#, fuzzy
 msgid "Do you really want to delete this game?"
-msgstr "Apakah anda benar-benar mau keluar?"
+msgstr "Apakah anda benar-benar mau menghapus permainan ini?"
 
 #. [toggle_button]: id=dont_ask_again
 #: data/gui/default/window/game_delete.cfg:72
 msgid "Don't ask me again!"
-msgstr ""
+msgstr "Jangan menanyaiku lagi!"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -1070,19 +1042,16 @@ msgstr "Load Permainan"
 #. [button]: id=delete
 #: data/gui/default/window/game_load.cfg:352
 #: data/gui/default/window/game_load.cfg:353
-#, fuzzy
 msgid "Delete"
 msgstr "Hapus File"
 
 #. [toggle_button]: id=show_replay
 #: data/gui/default/window/game_load.cfg:371
-#, fuzzy
 msgid "Show replay"
-msgstr "pemain"
+msgstr "Tunjukkan permainan ulang"
 
 #. [toggle_button]: id=cancel_orders
 #: data/gui/default/window/game_load.cfg:389
-#, fuzzy
 msgid "Cancel orders"
 msgstr "Batalkan"
 
@@ -1098,24 +1067,23 @@ msgstr "Simpan Permainan"
 #: data/gui/default/window/game_save.cfg:62
 #: data/gui/default/window/game_save_message.cfg:82
 #: data/gui/default/window/game_save_oos.cfg:82
-#, fuzzy
 msgid "Name:"
 msgstr "Nama:"
 
 #. [label]: id=lblMessage
 #: data/gui/default/window/game_save_message.cfg:52
 msgid "x"
-msgstr ""
+msgstr "x"
 
 #. [label]: id=lblMessage
 #: data/gui/default/window/game_save_oos.cfg:52
 msgid "OOS error"
-msgstr ""
+msgstr "Ada kesalahan OOS"
 
 #. [toggle_button]: id=ignore_all
 #: data/gui/default/window/game_save_oos.cfg:134
 msgid "Ignore All"
-msgstr ""
+msgstr "Abaikan Semua"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=quit_game
@@ -1126,46 +1094,44 @@ msgstr "Keluar dari Permainan"
 #. [label]: id=lblTitle
 #: data/gui/default/window/game_save_overwrite.cfg:32
 msgid "Overwrite?"
-msgstr ""
+msgstr "Simpan Ulang ?"
 
 #. [label]: id=lblMessage
 #: data/gui/default/window/game_save_overwrite.cfg:52
 msgid "Save already exists. Do you want to overwrite it?"
-msgstr ""
+msgstr "Data telah tersimpan. Apakah anda ingin melanjutkan penyimpanan ulang?"
 
 #. [label]
 #: data/gui/default/window/gamestate_inspector.cfg:38
 msgid "Gamestate Inspector"
-msgstr ""
+msgstr "Inspektur Gamestate "
 
 #. [label]
 #: data/gui/default/window/gamestate_inspector.cfg:92
-#, fuzzy
 msgid "Types"
-msgstr "ya"
+msgstr "Jenis"
 
 #. [label]
 #: data/gui/default/window/gamestate_inspector.cfg:103
-#, fuzzy
 msgid "Content"
-msgstr "Sambungkan"
+msgstr "Isi"
 
 #. [label]
 #: data/gui/default/window/gamestate_inspector.cfg:114
 msgid "Inspection window"
-msgstr ""
+msgstr "Jendela Pemeriksaan"
 
 #. [label]: id=unit_type
 #. [label]: id=typename
 #: data/gui/default/window/gamestate_inspector.cfg:145
 #: data/gui/default/window/unit_create.cfg:138
 msgid "Type"
-msgstr ""
+msgstr "Tipe"
 
 #. [label]: id=name
 #: data/gui/default/window/gamestate_inspector.cfg:206
 msgid "Variable"
-msgstr ""
+msgstr "Variable"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -1198,14 +1164,13 @@ msgstr "Ganti bahasa"
 
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:109
-#, fuzzy
 msgid "Games"
-msgstr "Nama"
+msgstr "Permainan"
 
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:177
 msgid "Requires a password to join"
-msgstr ""
+msgstr "Masukkan kata sandi untuk masuk"
 
 #. [toggle_button]: id=use_map_settings
 #. [row]
@@ -1216,19 +1181,18 @@ msgstr "Gunakan setting peta"
 
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:179
-#, fuzzy
 msgid "Reloaded game"
-msgstr "Buat permainan"
+msgstr "Buka kembali permainan sebelumnya"
 
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:180
 msgid "Unknown era"
-msgstr ""
+msgstr "Jaman yang tidak diketahui"
 
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:182
 msgid "Gold per village"
-msgstr ""
+msgstr "Emas per desa"
 
 #. [label]
 #. [row]
@@ -1240,95 +1204,87 @@ msgstr "Pemodifikasi pengalaman"
 #. [row]
 #: data/gui/default/window/lobby_main.cfg:186
 msgid "Time limit"
-msgstr ""
+msgstr "Batas waktu"
 
 #. [label]
 #: data/gui/default/window/lobby_main.cfg:305
-#, fuzzy
 msgid "Sort players:"
-msgstr "Pemain:"
+msgstr "Jenis Pemain:"
 
 #. [toggle_button]: id=player_list_sort_relation
 #: data/gui/default/window/lobby_main.cfg:313
 msgid "Friends first, ignored people last"
-msgstr ""
+msgstr "Para teman terlebih dahulu, abaikan orang yang terakhir  "
 
 #. [toggle_button]: id=player_list_sort_name
 #: data/gui/default/window/lobby_main.cfg:321
 msgid "Alphabetically"
-msgstr ""
+msgstr "Berurutan menurut abjad"
 
 #. [definition]
 #: data/gui/default/window/lobby_main.cfg:337
-#, fuzzy
 msgid "Selected game"
-msgstr "Hapus File"
+msgstr "game yang terpilih"
 
 #. [definition]
 #: data/gui/default/window/lobby_main.cfg:338
 msgid "Current room"
-msgstr ""
+msgstr "Bilik yang Sedang Digunakan"
 
 #. [definition]
 #: data/gui/default/window/lobby_main.cfg:339
 msgid "Lobby"
-msgstr ""
+msgstr "Lobi"
 
 #. [definition]
 #: data/gui/default/window/lobby_main.cfg:340
-#, fuzzy
 msgid "Other games"
-msgstr "Buat permainan"
+msgstr "permainan lainnya"
 
 #. [label]: id=room
 #: data/gui/default/window/lobby_main.cfg:479
 msgid "Rooms"
-msgstr ""
+msgstr "Bilik-Bilik"
 
 #. [image]: id=pending_messages
 #: data/gui/default/window/lobby_main.cfg:497
-#, fuzzy
 msgid "Messages waiting"
-msgstr "Berpesan"
+msgstr "Menunggu pesan"
 
 #. [label]
 #: data/gui/default/window/lobby_main.cfg:567
-#, fuzzy
 msgid "Multiplayer Lobby"
-msgstr "Multi-pemain"
+msgstr "Lobi Multi-pemain"
 
 #. [label]
 #: data/gui/default/window/lobby_main.cfg:575
-#, fuzzy
 msgid "Filter:"
-msgstr "File:"
+msgstr "Saringan:"
 
 #. [toggle_button]: id=filter_with_friends
 #: data/gui/default/window/lobby_main.cfg:586
-#, fuzzy
 msgid "Friends"
 msgstr "Daftar Teman"
 
 #. [toggle_button]: id=filter_without_ignored
 #: data/gui/default/window/lobby_main.cfg:592
 msgid "No ignored"
-msgstr ""
+msgstr "Tidak diabaikan"
 
 #. [toggle_button]: id=filter_vacant_slots
 #: data/gui/default/window/lobby_main.cfg:598
 msgid "Vacant slots"
-msgstr ""
+msgstr "Slot lowong"
 
 #. [toggle_button]: id=filter_invert
 #: data/gui/default/window/lobby_main.cfg:604
 msgid "Invert filter"
-msgstr ""
+msgstr "Balikkan saringan"
 
 #. [button]: id=send_message
 #: data/gui/default/window/lobby_main.cfg:648
-#, fuzzy
 msgid "Send"
-msgstr "Pasir"
+msgstr "Kirim"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=show_preferences
@@ -1341,9 +1297,8 @@ msgstr "Pilihan"
 
 #. [button]: id=refresh
 #: data/gui/default/window/lobby_main.cfg:672
-#, fuzzy
 msgid "Refresh"
-msgstr "Refresh Display"
+msgstr "Menyegarkan"
 
 #. [label]
 #. [button]: id=create
@@ -1354,66 +1309,58 @@ msgstr "Buat Permainan"
 
 #. [button]: id=join_global
 #: data/gui/default/window/lobby_main.cfg:692
-#, fuzzy
 msgid "Join"
-msgstr "Login"
+msgstr "Ikut"
 
 #. [button]: id=observe_global
 #: data/gui/default/window/lobby_main.cfg:698
 msgid "Observe"
-msgstr ""
+msgstr "Mengamati"
 
 #. [toggle_button]: id=skip_replay
 #: data/gui/default/window/lobby_main.cfg:704
-#, fuzzy
 msgid "Quick replay"
-msgstr "pemain"
+msgstr "permainan ulangan cepat"
 
 #. [label]
 #: data/gui/default/window/lobby_player_info.cfg:30
-#, fuzzy
 msgid "Player Info — "
-msgstr "Jumlah Pemain:"
+msgstr "Info Pemain:"
 
 #. [button]: id=start_whisper
 #: data/gui/default/window/lobby_player_info.cfg:62
-#, fuzzy
 msgid "Send private message"
-msgstr "Kirim pesan privat:"
+msgstr "Kirim pesan prbadi:"
 
 #. [button]: id=add_to_friends
 #: data/gui/default/window/lobby_player_info.cfg:91
-#, fuzzy
 msgid "Add to friends list"
 msgstr "Tambahkan nama pengguna ini ke daftar teman anda"
 
 #. [button]: id=add_to_ignores
 #: data/gui/default/window/lobby_player_info.cfg:100
-#, fuzzy
 msgid "Add to ignores list"
-msgstr "Tambahkan nama pengguna ini ke daftar diabaikan anda"
+msgstr "Tambahkan nama pengguna ini ke daftar yang anda abaikan "
 
 #. [button]: id=remove_from_list
 #: data/gui/default/window/lobby_player_info.cfg:109
-#, fuzzy
 msgid "Remove from list"
 msgstr "Hapus nama pengguna ini dari daftar anda"
 
 #. [label]
 #: data/gui/default/window/lobby_player_info.cfg:133
-#, fuzzy
 msgid "Moderation"
 msgstr "Moderasi"
 
 #. [button]: id=check_status
 #: data/gui/default/window/lobby_player_info.cfg:140
 msgid "Check status"
-msgstr ""
+msgstr "Mengecek status"
 
 #. [label]
 #: data/gui/default/window/lobby_player_info.cfg:147
 msgid "Kick / ban reason:"
-msgstr ""
+msgstr "Menendang / alasan terlarang:"
 
 #. [button]: id=kick
 #: data/gui/default/window/lobby_player_info.cfg:160
@@ -1424,17 +1371,15 @@ msgstr "Tendang"
 #. [label]
 #: data/gui/default/window/lobby_player_info.cfg:167
 msgid "Ban time:"
-msgstr ""
+msgstr "Larangan Waktu:"
 
 #. [button]: id=kick_ban
 #: data/gui/default/window/lobby_player_info.cfg:180
-#, fuzzy
 msgid "Kick/ban"
 msgstr "Tendang"
 
 #. [window]: id=mp_cmd_wrapper
 #: data/gui/default/window/mp_cmd_wrapper.cfg:8
-#, fuzzy
 msgid "Multiplayer command dialog"
 msgstr "Dialog perintah multi-pemain"
 
@@ -1701,7 +1646,6 @@ msgstr ""
 
 #. [button]: id=previous_tip
 #: data/gui/default/window/title_screen.cfg:165
-#, fuzzy
 msgid "Previous"
 msgstr "Unit Sebelumnya"
 
@@ -1753,7 +1697,7 @@ msgstr "Load"
 #: data/gui/default/window/title_screen.cfg:229
 #, fuzzy
 msgid "Load a saved game"
-msgstr "Buat permainan"
+msgstr "Buka kembali permainan sebelumnya"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:230
@@ -1826,32 +1770,28 @@ msgstr "Cipta Unit (Debug!)"
 
 #. [label]
 #: data/gui/default/window/unit_create.cfg:59
-#, fuzzy
 msgid "Gender:"
-msgstr "Buat"
+msgstr "Jenis kelamin :"
 
 #. [toggle_button]: id=male_toggle
 #: data/gui/default/window/unit_create.cfg:69
-#, fuzzy
 msgid "Male"
-msgstr "Istana"
+msgstr "Pria"
 
 #. [toggle_button]: id=female_toggle
 #: data/gui/default/window/unit_create.cfg:79
 msgid "Female"
-msgstr ""
+msgstr "Wanita"
 
 #. [toggle_button]: id=namegen_toggle
 #: data/gui/default/window/unit_create.cfg:97
-#, fuzzy
 msgid "Generate name"
-msgstr "Buat Peta"
+msgstr "Menghasilkan nama"
 
 #. [label]: id=race
 #: data/gui/default/window/unit_create.cfg:126
-#, fuzzy
 msgid "Race"
-msgstr "Batalkan"
+msgstr "Ras"
 
 #: src/filechooser.cpp:75
 msgid "File: "
@@ -1886,7 +1826,6 @@ msgid "player"
 msgstr "pemain"
 
 #: src/game_preferences_display.cpp:157
-#, fuzzy
 msgid "Full Screen"
 msgstr "Pasang Layar Penuh"
 
@@ -1904,7 +1843,7 @@ msgstr "Lompati Gerakan AI"
 
 #: src/game_preferences_display.cpp:161
 msgid "Interrupt move when an ally is sighted"
-msgstr ""
+msgstr "Menyela Gerakan ketika sekutu terlihat"
 
 #: src/game_preferences_display.cpp:162
 msgid "Show Grid"
@@ -2150,7 +2089,7 @@ msgstr "Jangan tunjukkan animasi unit AI bergerak"
 
 #: src/game_preferences_display.cpp:342
 msgid "Sighting an allied unit interrupts your unit’s movement"
-msgstr ""
+msgstr "Kemunculan unit sekutu menyela pergerakan unit anda"
 
 #: src/game_preferences_display.cpp:350
 msgid "Overlay a grid onto the map"
@@ -2362,11 +2301,13 @@ msgstr "Tidak ada kisi-kisi didefinisi."
 
 #: src/gui/auxiliary/window_builder.cpp:166
 msgid "Linked '$id' group has multiple definitions."
-msgstr ""
+msgstr "yang dihubungkan '$id'  kelompok mempunyai berbagai definisi"
 
 #: src/gui/auxiliary/window_builder.cpp:368
 msgid "Linked '$id' group needs a 'fixed_width' or 'fixed_height' key."
 msgstr ""
+"yang dihubungkan '$id' kelompok membutuhkan 'fixed_width' atau "
+"'fixed_height'  kunci."
 
 #: src/gui/auxiliary/window_builder.cpp:467
 msgid "A row must have a column."
@@ -2396,7 +2337,6 @@ msgstr ""
 "'list_data' harus memiliki jumlah kolom yang sama dengan 'list_definition'."
 
 #: src/gui/auxiliary/window_builder/multi_page.cpp:38
-#, fuzzy
 msgid "No page defined."
 msgstr "Tidak ada kisi-kisi didefinisi."
 
@@ -2405,7 +2345,6 @@ msgid "The number of value_labels and values don't match."
 msgstr "Nilai value_labels dan value tidak cocok."
 
 #: src/gui/auxiliary/window_builder/stacked_widget.cpp:36
-#, fuzzy
 msgid "No stack defined."
 msgstr "Tidak ada daftar didefinisi."
 
@@ -2424,81 +2363,77 @@ msgstr "Tidak ada kisi-kisi didefinisi."
 
 #: src/gui/dialogs/data_manage.cpp:176 src/gui/dialogs/game_load.cpp:258
 msgid "#(Invalid)"
-msgstr ""
+msgstr "#(Tidak Berlaku)"
 
 #: src/gui/dialogs/data_manage.cpp:196 src/gui/dialogs/game_load.cpp:278
 msgid "Campaign: $campaign_name"
-msgstr ""
+msgstr "Kampanye: $campaign_name"
 
 #: src/gui/dialogs/data_manage.cpp:213 src/gui/dialogs/game_load.cpp:295
-#, fuzzy
 msgid "replay"
-msgstr "pemain"
+msgstr "permainan ulang"
 
 #: src/gui/dialogs/data_manage.cpp:215 src/gui/dialogs/game_load.cpp:297
-#, fuzzy
 msgid "Turn"
 msgstr "Akhir Giliran"
 
 #: src/gui/dialogs/data_manage.cpp:217 src/gui/dialogs/game_load.cpp:299
-#, fuzzy
 msgid "Scenario Start"
-msgstr "Misi Skenario"
+msgstr "Permulaan Skenario"
 
 #: src/gui/dialogs/data_manage.cpp:220 src/gui/dialogs/game_load.cpp:302
 msgid "Difficulty: "
-msgstr ""
+msgstr "Kesulitan: "
 
 #: src/gui/dialogs/data_manage.cpp:224 src/gui/dialogs/game_load.cpp:306
-#, fuzzy
 msgid "Version: "
-msgstr "Versi"
+msgstr "Versi:"
 
 #: src/gui/dialogs/lobby_main.cpp:229
 msgid "whisper to $receiver"
-msgstr ""
+msgstr "bisikan kepada $receiver"
 
 #: src/gui/dialogs/lobby_main.cpp:660
 msgid "Games: showing $num_shown out of $num_total"
-msgstr ""
+msgstr "Permainan: menunjukkan $num_shown out of $num_total"
 
 #: src/gui/dialogs/lobby_main.cpp:704
 msgid "Observers allowed"
-msgstr ""
+msgstr "Para Pengamat diijinkan"
 
 #: src/gui/dialogs/lobby_main.cpp:707
 msgid "Observers not allowed"
-msgstr ""
+msgstr "Para Pengamat tidak diijinkan"
 
 #: src/gui/dialogs/lobby_main.cpp:1112
 msgid ""
 "Whisper session with $name started. If you don't want to receive messages "
 "from this user, type /ignore $name\n"
 msgstr ""
+"Sesi bisikan dengan $name dimulai.jika anda tidak menginginkan menerima "
+"pesan dari pemain ini, ketikkan /Abaikan $name\n"
 
 #: src/gui/dialogs/lobby_main.cpp:1118
 msgid "Room $name joined"
-msgstr ""
+msgstr "Bilik $name telah ikut"
 
 #: src/gui/dialogs/lobby_main.cpp:1435
 msgid "$player has entered the room"
-msgstr ""
+msgstr "$player Telah memasuki Bilik"
 
 #: src/gui/dialogs/lobby_main.cpp:1473
 msgid "$player has left the room"
-msgstr ""
+msgstr "$player telah meninggalkan Bilik"
 
 #: src/gui/dialogs/lobby_main.cpp:1586
-#, fuzzy
 msgid "Password Required"
 msgstr "Pengingat Kata Sandi"
 
 #: src/gui/dialogs/lobby_main.cpp:1587
 msgid "Joining this game requires a password."
-msgstr ""
+msgstr "Untuk ikut kedalam permainan ini harus memasukkan password."
 
 #: src/gui/dialogs/lobby_main.cpp:1588
-#, fuzzy
 msgid "Password: "
 msgstr "Kata Sandi:"
 
@@ -2513,7 +2448,7 @@ msgstr "Sedang Load Permainan..."
 #: src/gui/dialogs/title_screen.cpp:146
 #, fuzzy
 msgid "Version "
-msgstr "Versi"
+msgstr "Versi:"
 
 #: src/gui/dialogs/title_screen.cpp:149
 msgid "Version"
@@ -2542,7 +2477,7 @@ msgstr ""
 
 #: src/gui/widgets/window.cpp:809
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
-msgstr ""
+msgstr "Klik membubarkan dengan cara ' klik_membubarkan' atau tombol' ok' ."
 
 #: src/gui/widgets/window.cpp:834 src/gui/widgets/window.cpp:867
 #: src/tests/gui/test_gui2.cpp:229
@@ -2559,7 +2494,7 @@ msgstr "Unit Sebelumnya"
 
 #: src/hotkeys.cpp:48
 msgid "Add waypoint"
-msgstr ""
+msgstr "Menambahkan waypoint"
 
 #: src/hotkeys.cpp:49
 msgid "Hold Position"
@@ -2642,7 +2577,6 @@ msgid "End Turn"
 msgstr "Akhir Giliran"
 
 #: src/hotkeys.cpp:71
-#, fuzzy
 msgid "Toggle Ellipses"
 msgstr "Pasang Kisi"
 
@@ -2667,7 +2601,6 @@ msgid "Speak"
 msgstr "Bicara"
 
 #: src/hotkeys.cpp:78
-#, fuzzy
 msgid "Change Side (Debug!)"
 msgstr "Ganti Sisi Unit (Debug!)"
 
@@ -3003,7 +2936,7 @@ msgstr "Gambar Layar Gagal Diambil"
 #. translate this message as "sv,da", while Danish as "da,sv".
 #: src/image.cpp:413
 msgid "language code for localized resources^en_US"
-msgstr ""
+msgstr "kode bahasa untuk sumber daya yang dilokalisir"
 
 #: src/mapgen_dialog.cpp:109 src/preferences_display.cpp:289
 msgid "Close Window"
@@ -3162,22 +3095,31 @@ msgstr ""
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "Di seksi '[$section|]' kunci wajib '$key|' tidak dipasang."
 
+#~ msgid "Road"
+#~ msgstr "Jalan"
+
 #~ msgid "Cave path"
 #~ msgstr "Jalan gua"
-
-#~ msgid "Window not defined."
-#~ msgstr "Jendela tidak didefinisi."
 
 #~ msgid "River Ford"
 #~ msgstr "Sungai Dangkal"
 
-#~ msgid "Road"
-#~ msgstr "Jalan"
+#~ msgid "Use new lobby interface"
+#~ msgstr "Gunakan alat penghubung lobi baru"
+
+#~ msgid ""
+#~ "mouseover^Use new lobby interface (only works after a manual reconnect to "
+#~ "the server)"
+#~ msgstr ""
+#~ "Gunakan alat penghubung lobi baru (hanya bekerja setelah dengan cara "
+#~ "manual menyambung kembali pada server)"
+
+#~ msgid "Window not defined."
+#~ msgstr "Jendela tidak didefinisi."
 
 #~ msgid "Save The Map"
 #~ msgstr "Simpan Peta Tersebut"
 
-#, fuzzy
 #~ msgid ""
 #~ "'stack_data' must have the same number of columns as the "
 #~ "'list_definition'."
