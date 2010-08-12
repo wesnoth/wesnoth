@@ -84,7 +84,8 @@ struct event_context
 	event_context(bool s): mutated(true), skip_messages(s) {}
 };
 
-static event_context *current_context;
+static event_context default_context(false);
+static event_context *current_context = &default_context;
 
 /**
  * Context state with automatic lifetime handling.
@@ -96,37 +97,15 @@ struct scoped_context
 
 	scoped_context()
 		: old_context(current_context)
-		, new_context(old_context ? old_context->skip_messages : false)
+		, new_context(old_context != &default_context && old_context->skip_messages)
 	{
 		current_context = &new_context;
 	}
 
 	~scoped_context()
 	{
-		if (old_context) old_context->mutated |= new_context.mutated;
+		old_context->mutated |= new_context.mutated;
 		current_context = old_context;
-	}
-};
-
-/**
- * Failsafe context state, in case commands are executed outside an event.
- */
-struct scoped_dummy_context
-{
-	bool dummy_context;
-
-	scoped_dummy_context()
-		: dummy_context(!current_context)
-	{
-		if (!dummy_context) return;
-		current_context = new event_context(false);
-	}
-
-	~scoped_dummy_context()
-	{
-		if (!dummy_context) return;
-		delete current_context;
-		current_context = NULL;
 	}
 };
 
@@ -3073,7 +3052,6 @@ namespace game_events {
 
 	void handle_event_commands(const game_events::queued_event& event_info, const vconfig &cfg)
 	{
-		scoped_dummy_context dummy;
 		resources::lua_kernel->run_wml_action("command", cfg, event_info);
 	}
 
@@ -3086,7 +3064,6 @@ namespace game_events {
 			<< std::hex << std::setiosflags(std::ios::uppercase)
 			<< reinterpret_cast<uintptr_t>(&cfg.get_config()) << std::dec << "\n";
 
-		scoped_dummy_context dummy;
 		if (!resources::lua_kernel->run_wml_action(cmd, cfg, event_info))
 		{
 			ERR_NG << "Couldn't find function for wml tag: "<< cmd <<"\n";
