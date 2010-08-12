@@ -111,7 +111,7 @@ void attack::draw_hex(const map_location& hex)
 {
 	if (hex == get_dest_hex() || hex == target_hex_) //draw attack indicator
 	{
-		//TODO: replace this by either the use of transparency + LAYER_ATTACK_INDICATOR,
+		//@todo: replace this by either the use of transparency + LAYER_ATTACK_INDICATOR,
 		//or a dedicated layer
 		const display::tdrawing_layer layer = display::LAYER_FOOTSTEPS;
 
@@ -124,9 +124,8 @@ void attack::draw_hex(const map_location& hex)
 			int xpos = resources::screen->get_location_x(get_dest_hex());
 			int ypos = resources::screen->get_location_y(get_dest_hex());
 
-			//TODO: Give the whiteboard its own copy of the attack indicator, so it can have a different look.
 			resources::screen->drawing_buffer_add(layer, get_dest_hex(), display::tblit(xpos, ypos,
-					image::get_image("misc/attack-indicator-src-" + direction_text + ".png", image::SCALED_TO_HEX)));
+					image::get_image("whiteboard/attack-indicator-src-" + direction_text + ".png", image::SCALED_TO_HEX)));
 		}
 		else if (hex == target_hex_) //add symbol to defender hex
 		{
@@ -134,7 +133,7 @@ void attack::draw_hex(const map_location& hex)
 			int ypos = resources::screen->get_location_y(target_hex_);
 
 			resources::screen->drawing_buffer_add(layer, target_hex_, display::tblit(xpos, ypos,
-					image::get_image("misc/attack-indicator-dst-" + direction_text + ".png", image::SCALED_TO_HEX)));
+					image::get_image("whiteboard/attack-indicator-dst-" + direction_text + ".png", image::SCALED_TO_HEX)));
 		}
 	}
 }
