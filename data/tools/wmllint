@@ -653,6 +653,7 @@ translatables = (\
                "name_inactive",
                "note",
                "option_description",
+               "option_name",
                "order",
                "plural_name",
                "prefix",
@@ -1878,7 +1879,7 @@ def translator(filename, mapxforms, textxform):
             display_state = True
         elif re.match(" *wmllint: *display +off", transformed[i:]):
             display_state = False
-        elif transformed[i] == '"':
+        elif transformed[i] == '"' and not display_state:
             quotecount += 1
             if quotecount % 2 == 0:
                 singleline = False
