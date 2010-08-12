@@ -1,4 +1,10 @@
 Version 1.8.4+svn:
+ * AI:
+   * Fixed bug #16406: Fixed broken AI of SoF 1, and improved upgrade procedure
+     for old-style AI config.
+ * Campaigns:
+   * Legend of Wesmere:
+     * Added another keep in scenario 14.
  * Language and i18n:
    * Updated translations: Indonesian, Japanese
 
@@ -6,7 +12,8 @@ Version 1.8.4:
  * AI:
    * Fixed bug #16102: Made AI cancel attacks if a previously valid attack
      was made invalid by WML event after move in move+attack sequence.
-   * Allowed custom eras to define Lua AI modifications for games played with this era.
+   * Allowed custom eras to define Lua AI modifications for games played with
+     this era.
  * Campaigns:
    * Delfadors Memoirs:
      * Fixed bug #16295: Make Lionel's portrait in Delfador's Memoirs story
