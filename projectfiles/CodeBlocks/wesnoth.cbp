@@ -62,7 +62,7 @@
 			<Add library="gobject-2.0" />
 			<Add library="fontconfig" />
 			<Add library="libglib-2.0" />
-			<Add library="lua51" />
+			<Add library="liblua" />
 		</Linker>
 		<Unit filename="..\..\packaging\windows\wesnoth.rc">
 			<Option compilerVar="WINDRES" />
@@ -207,6 +207,7 @@
 		<Unit filename="..\..\src\editor\mouse_action.hpp" />
 		<Unit filename="..\..\src\events.cpp" />
 		<Unit filename="..\..\src\events.hpp" />
+		<Unit filename="..\..\src\exceptions.cpp" />
 		<Unit filename="..\..\src\filechooser.cpp" />
 		<Unit filename="..\..\src\filechooser.hpp" />
 		<Unit filename="..\..\src\filesystem.cpp" />
@@ -537,6 +538,29 @@
 		<Unit filename="..\..\src\lobby_preferences.hpp" />
 		<Unit filename="..\..\src\log.cpp" />
 		<Unit filename="..\..\src\log.hpp" />
+		<Unit filename="..\..\src\lua\lapi.h" />
+		<Unit filename="..\..\src\lua\lauxlib.h" />
+		<Unit filename="..\..\src\lua\lcode.h" />
+		<Unit filename="..\..\src\lua\ldebug.h" />
+		<Unit filename="..\..\src\lua\ldo.h" />
+		<Unit filename="..\..\src\lua\lfunc.h" />
+		<Unit filename="..\..\src\lua\lgc.h" />
+		<Unit filename="..\..\src\lua\llex.h" />
+		<Unit filename="..\..\src\lua\llimits.h" />
+		<Unit filename="..\..\src\lua\lmem.h" />
+		<Unit filename="..\..\src\lua\lobject.h" />
+		<Unit filename="..\..\src\lua\lopcodes.h" />
+		<Unit filename="..\..\src\lua\lparser.h" />
+		<Unit filename="..\..\src\lua\lstate.h" />
+		<Unit filename="..\..\src\lua\lstring.h" />
+		<Unit filename="..\..\src\lua\ltable.h" />
+		<Unit filename="..\..\src\lua\ltm.h" />
+		<Unit filename="..\..\src\lua\lua.h" />
+		<Unit filename="..\..\src\lua\luaconf.h" />
+		<Unit filename="..\..\src\lua\lualib.h" />
+		<Unit filename="..\..\src\lua\lundump.h" />
+		<Unit filename="..\..\src\lua\lvm.h" />
+		<Unit filename="..\..\src\lua\lzio.h" />
 		<Unit filename="..\..\src\malloc.c">
 			<Option compilerVar="CC" />
 			<Option compiler="gcc" use="1" buildCommand="$compiler $options -DDISABLE_POOL_ALLOC $includes -c $file -o $object" />
@@ -651,8 +675,8 @@
 		<Unit filename="..\..\src\serialization\string_utils.hpp" />
 		<Unit filename="..\..\src\serialization\tokenizer.cpp" />
 		<Unit filename="..\..\src\settings.cpp" />
-		<Unit filename="..\..\src\settings.hpp" />
 		<Unit filename="..\..\src\gui\dialogs\..\..\settings.hpp" />
+		<Unit filename="..\..\src\settings.hpp" />
 		<Unit filename="..\..\src\sha1.cpp" />
 		<Unit filename="..\..\src\sha1.hpp" />
 		<Unit filename="..\..\src\shared_object.hpp" />
@@ -711,6 +735,7 @@
 		<Unit filename="..\..\src\unit_display.hpp" />
 		<Unit filename="..\..\src\unit_frame.cpp" />
 		<Unit filename="..\..\src\unit_frame.hpp" />
+		<Unit filename="..\..\src\unit_helper.cpp" />
 		<Unit filename="..\..\src\unit_id.cpp" />
 		<Unit filename="..\..\src\unit_id.hpp" />
 		<Unit filename="..\..\src\unit_map.cpp" />
@@ -729,11 +754,13 @@
 		<Unit filename="..\..\src\video.hpp" />
 		<Unit filename="..\..\src\wesconfig.h" />
 		<Unit filename="..\..\src\whiteboard\action.cpp" />
-		<Unit filename="..\..\src\whiteboard\manager.cpp" />
-		<Unit filename="..\..\src\whiteboard\move.cpp" />
-		<Unit filename="..\..\src\whiteboard\find_visitor.cpp" />
+		<Unit filename="..\..\src\whiteboard\attack.cpp" />
 		<Unit filename="..\..\src\whiteboard\highlight_visitor.cpp" />
+		<Unit filename="..\..\src\whiteboard\manager.cpp" />
 		<Unit filename="..\..\src\whiteboard\mapbuilder_visitor.cpp" />
+		<Unit filename="..\..\src\whiteboard\move.cpp" />
+		<Unit filename="..\..\src\whiteboard\recall.cpp" />
+		<Unit filename="..\..\src\whiteboard\recruit.cpp" />
 		<Unit filename="..\..\src\whiteboard\side_actions.cpp" />
 		<Unit filename="..\..\src\whiteboard\validate_visitor.cpp" />
 		<Unit filename="..\..\src\whiteboard\visitor.cpp" />
