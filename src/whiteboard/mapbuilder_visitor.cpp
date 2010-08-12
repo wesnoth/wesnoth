@@ -118,8 +118,9 @@ void mapbuilder_visitor::restore_normal_map()
 {
 	mode_ = RESTORE_NORMAL_MAP;
 	action_queue::const_reverse_iterator rit;
+	action_queue::const_reverse_iterator end = applied_actions_.rend();
 	//applied_actions_ contain only the actions that we applied to the unit map
-	for (rit = applied_actions_.rbegin(); rit != applied_actions_.rend(); ++rit)
+	for (rit = applied_actions_.rbegin(); rit != end; ++rit)
 	{
 		if ((*rit)->is_valid())
 		{
