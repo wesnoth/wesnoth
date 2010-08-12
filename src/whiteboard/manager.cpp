@@ -395,7 +395,7 @@ void manager::create_temp_move()
 		move_arrow_.reset(new arrow());
 		move_arrow_->set_color(team::get_side_color_index(
 				viewer_side()));
-		move_arrow_->set_alpha(move::ALPHA_HIGHLIGHT);
+		move_arrow_->set_style(arrow::STYLE_HIGHLIGHTED);
 		resources::screen->add_arrow(*move_arrow_);
 
 	}

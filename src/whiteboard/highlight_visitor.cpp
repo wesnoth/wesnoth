@@ -43,7 +43,6 @@ highlight_visitor::highlight_visitor(const unit_map& unit_map, side_actions_ptr 
 	, selection_candidate_(NULL)
 	, main_highlight_()
 	, secondary_highlights_()
-	, color_backup_()
 {
 }
 
@@ -222,9 +221,7 @@ void highlight_visitor::visit_move(move_ptr move)
 	case HIGHLIGHT_MAIN:
 		if (move->arrow_)
 		{
-			color_backup_ = move->arrow_->get_color();
-			move->arrow_->set_alpha(move::ALPHA_HIGHLIGHT);
-			move->arrow_->set_color("white");
+			move->arrow_->set_style(arrow::STYLE_FOCUS);
 		}
 		if (move->fake_unit_)
 		{
@@ -234,7 +231,7 @@ void highlight_visitor::visit_move(move_ptr move)
 	case HIGHLIGHT_SECONDARY:
 		if (move->arrow_)
 		{
-			move->arrow_->set_alpha(move::ALPHA_HIGHLIGHT);
+			move->arrow_->set_style(arrow::STYLE_HIGHLIGHTED);
 		}
 		if (move->fake_unit_)
 		{
@@ -244,11 +241,7 @@ void highlight_visitor::visit_move(move_ptr move)
 	case UNHIGHLIGHT:
 		if (move->arrow_)
 		{
-			if (move == main_highlight_.lock())
-			{
-				move->arrow_->set_color(color_backup_);
-			}
-			move->arrow_->set_alpha(move::ALPHA_NORMAL);
+			move->arrow_->set_style(arrow::STYLE_STANDARD);
 		}
 		if (move->fake_unit_)
 		{

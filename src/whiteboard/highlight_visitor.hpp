@@ -83,8 +83,6 @@ private:
 
 	weak_action_ptr main_highlight_;
 	std::deque<weak_action_ptr> secondary_highlights_;
-
-	std::string color_backup_;
 };
 
 } // end namespace wb

@@ -35,11 +35,6 @@ public:
 	friend class validate_visitor;
 	friend class highlight_visitor;
 
-	static const double ALPHA_HIGHLIGHT;
-	static const double ALPHA_NORMAL;
-	static const std::string ARROW_STYLE_VALID;
-	static const std::string ARROW_STYLE_INVALID;
-
 	///Future unit map must be valid during construction, so that move can find its unit
 	move(size_t team_index, const pathfind::marked_route& route, arrow_ptr arrow,
 			fake_unit_ptr fake_unit);

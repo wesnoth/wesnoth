@@ -56,11 +56,6 @@ std::ostream& move::print(std::ostream &s) const
 	return s;
 }
 
-const double move::ALPHA_HIGHLIGHT = 1.0;
-const double move::ALPHA_NORMAL = 0.6;
-const std::string move::ARROW_STYLE_VALID = "";
-const std::string move::ARROW_STYLE_INVALID = "invalid";
-
 move::move(size_t team_index, const pathfind::marked_route& route,
 		arrow_ptr arrow, fake_unit_ptr fake_unit)
 : action(team_index),
@@ -105,7 +100,7 @@ bool move::execute()
 
 	bool move_finished_completely = false;
 
-	arrow_->set_alpha(ALPHA_HIGHLIGHT);
+	arrow_->set_style(arrow::STYLE_HIGHLIGHTED);
 
 	map_location final_location;
 	bool steps_finished;
@@ -115,7 +110,7 @@ bool move::execute()
 		try {
 			steps_finished = mouse_handler.move_unit_along_route(*route_, &final_location, owner_team.auto_shroud_updates());
 		} catch (end_turn_exception e) {
-			arrow_->set_alpha(ALPHA_NORMAL);
+			arrow_->set_style(arrow::STYLE_STANDARD);
 			throw; // we rely on the caller to delete this action
 		}
 		// final_location now contains the final unit location
@@ -176,7 +171,7 @@ bool move::execute()
 		LOG_WB << "Unit disappeared from map during move execution.\n";
 	}
 
-	arrow_->set_alpha(ALPHA_NORMAL);
+	arrow_->set_style(arrow::STYLE_STANDARD);
 	return move_finished_completely;
 }
 
