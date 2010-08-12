@@ -1,3 +1,4 @@
+
 /* $Id$ */
 /*
    Copyright (C) 2009 - 2010 by Yurii Chernyi <terraninfo@terraninfo.net>
@@ -235,7 +236,7 @@ void protect_goal::add_targets(std::back_insert_iterator< std::vector< target > 
 		LOG_AI_GOAL << "skipping " << goal_type << " goal - no criteria given" << std::endl;
 		return;
 	} else {
-		DBG_AI_GOAL << goal_type << " goal with criteria" << std::endl << cfg_.child("criteria") << std::endl;
+		DBG_AI_GOAL << "side " << get_side() << ": "<< goal_type << " goal with criteria" << std::endl << cfg_.child("criteria") << std::endl;
 	}
 
 	unit_map &units = *resources::units;
@@ -249,14 +250,14 @@ void protect_goal::add_targets(std::back_insert_iterator< std::vector< target > 
 			}
 			//TODO: we will protect hidden units, by not testing for invisibility to current side
 			if (u.matches_filter(vconfig(criteria), u.get_location())) {
-				DBG_AI_GOAL << "in " << goal_type << ": " << u.get_location() << " should be protected\n";
+				DBG_AI_GOAL << "side " << get_side() << ": in " << goal_type << ": " << u.get_location() << " should be protected\n";
 				items.insert(u.get_location());
 			}
 		}
 	} else {
 		filter_ptr_->get_locations(items);
 	}
-	DBG_AI_GOAL << "seaching for threats in "+goal_type+" goal" << std::endl;
+	DBG_AI_GOAL << "side " << get_side() << ": seaching for threats in "+goal_type+" goal" << std::endl;
 	// Look for directions to protect a specific location or specific unit.
 	foreach (const map_location &loc, items)
 	{
@@ -266,7 +267,7 @@ void protect_goal::add_targets(std::back_insert_iterator< std::vector< target > 
 			if (current_team().is_enemy(u.side()) && distance < radius_ &&
 			    !u.invisible(u.get_location()))
 			{
-				DBG_AI_GOAL << "in " << goal_type << ": found threat target. " << u.get_location() << " is a threat to "<< loc << '\n';
+				DBG_AI_GOAL << "side " << get_side() << ": in " << goal_type << ": found threat target. " << u.get_location() << " is a threat to "<< loc << '\n';
 				*target_list = target(u.get_location(),
 					value_ * double(radius_ - distance) /
 					radius_, target::THREAT);
