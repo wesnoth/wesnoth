@@ -1,0 +1,5 @@
+Those files were created from the non-transparent arrows with the following imagemagick command:
+
+mogrify -channel Alpha -evaluate Divide 2 *
+
+i.e. they are 50% transparent, as their alpha channel was divided by 2.
