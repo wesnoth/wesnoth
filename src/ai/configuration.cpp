@@ -320,6 +320,17 @@ bool configuration::parse_side_config(side_number side, const config& original_c
 }
 
 
+static void transfer_turns_and_time_of_day_data(const config &src, config &dst)
+{
+	if (const config::attribute_value *turns = src.get("turns")) {
+		dst["turns"] = *turns;
+	}
+	if (const config::attribute_value *time_of_day = src.get("time_of_day")) {
+		dst["time_of_day"] = *time_of_day;
+	}
+}
+
+
 bool configuration::upgrade_side_config_from_1_07_02_to_1_07_03(side_number side, config &cfg)
 {
 	LOG_AI_CONFIGURATION << "side "<< side <<": upgrading ai config version from version 1.7.2 to 1.7.3"<< std::endl;
@@ -349,59 +360,62 @@ bool configuration::upgrade_side_config_from_1_07_02_to_1_07_03(side_number side
 	config fallback_stage_cfg_ai;
 
 	foreach (config &aiparam, cfg.child_range("ai")) {
+		foreach (const well_known_aspect &wka, well_known_aspects) {
+			if (wka.was_an_attribute_) {
+				aiparam.remove_attribute(wka.name_);
+			} else {
+				aiparam.clear_children(wka.name_);
+			}
+		}
+
+
+		foreach (const config &aitarget, aiparam.child_range("target")) {
+			config aigoal;
+			transfer_turns_and_time_of_day_data(aiparam,aigoal);
+
+			if (const config::attribute_value *v = aitarget.get("value")) {
+				aigoal["value"] = *v;
+			} else {
+				aigoal["value"] = 0;
+			}
+
+			config &aigoalcriteria = aigoal.add_child("criteria",aitarget);
+			aigoalcriteria.remove_attribute("value");
+
+			parsed_cfg.add_child("goal",aigoal);
+		}
+		aiparam.clear_children("target");
+
+
+		foreach (config &ai_protect_unit, aiparam.child_range("protect_unit")) {
+			transfer_turns_and_time_of_day_data(aiparam,ai_protect_unit);
+			upgrade_protect_goal_config_from_1_07_02_to_1_07_03(side,ai_protect_unit,parsed_cfg,true);
+		}
+		aiparam.clear_children("protect_unit");
+
+
+		foreach (config &ai_protect_location, aiparam.child_range("protect_location")) {
+			transfer_turns_and_time_of_day_data(aiparam,ai_protect_location);
+			upgrade_protect_goal_config_from_1_07_02_to_1_07_03(side,ai_protect_location,parsed_cfg,false);
+		}
+		aiparam.clear_children("protect_location");
+
+
+		if (const config::attribute_value *v = aiparam.get("protect_leader"))
+		{
+			config c;
+			c["value"] = *v;
+			c["canrecruit"] = true;
+			c["side_number"] = side;
+			transfer_turns_and_time_of_day_data(aiparam,c);
+			if (const config::attribute_value *v = aiparam.get("protect_leader_radius")) {
+				c["radius"] = *v;
+			}
+
+			upgrade_protect_goal_config_from_1_07_02_to_1_07_03(side,c,parsed_cfg,true);
+		}
+
 		if (!aiparam.has_attribute("turns") && !aiparam.has_attribute("time_of_day")) {
-			foreach (const well_known_aspect &wka, well_known_aspects) {
-				if (wka.was_an_attribute_) {
-					aiparam.remove_attribute(wka.name_);
-				} else {
-					aiparam.clear_children(wka.name_);
-				}
-			}
-
-
-			foreach (const config &aitarget, aiparam.child_range("target")) {
-				config aigoal;
-
-				if (const config::attribute_value *v = aitarget.get("value")) {
-					aigoal["value"] = *v;
-				} else {
-					aigoal["value"] = 0;
-				}
-
-				config &aigoalcriteria = aigoal.add_child("criteria",aitarget);
-				aigoalcriteria.remove_attribute("value");
-
-				parsed_cfg.add_child("goal",aigoal);
-			}
-			aiparam.clear_children("target");
-
-
-			foreach (const config &ai_protect_unit, aiparam.child_range("protect_unit")) {
-				upgrade_protect_goal_config_from_1_07_02_to_1_07_03(side,ai_protect_unit,parsed_cfg,true);
-			}
-			aiparam.clear_children("protect_unit");
-
-
-			foreach (const config &ai_protect_location, aiparam.child_range("protect_location")) {
-				upgrade_protect_goal_config_from_1_07_02_to_1_07_03(side,ai_protect_location,parsed_cfg,false);
-			}
-			aiparam.clear_children("protect_location");
-
-
-			if (const config::attribute_value *v = aiparam.get("protect_leader"))
-			{
-				config c;
-				c["value"] = *v;
-				c["canrecruit"] = true;
-				c["side_number"] = side;
-				if (const config::attribute_value *v = aiparam.get("protect_leader_radius")) {
-					c["radius"] = *v;
-				}
-
-				upgrade_protect_goal_config_from_1_07_02_to_1_07_03(side,c,parsed_cfg,true);
-			}
-
-
 			fallback_stage_cfg_ai.append(aiparam);
 		}
 	}
@@ -452,6 +466,7 @@ void configuration::upgrade_protect_goal_config_from_1_07_02_to_1_07_03(side_num
 {
 	config aigoal;
 	aigoal["name"] = "protect";
+	transfer_turns_and_time_of_day_data(protect_cfg,aigoal);
 
 	if (const config::attribute_value *v = protect_cfg.get("value")) {
 		aigoal["value"] = *v;
