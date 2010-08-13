@@ -25,7 +25,7 @@ local function generate_objectives(cfg)
 	-- Note: when changing the text formatting, remember to check if you also
 	-- need to change the hardcoded default multiplayer objective text in
 	-- multiplayer_connect.cpp.
-    
+
 	local _ = wesnoth.textdomain("wesnoth")
 	local objectives = ""
 	local win_objectives = ""
@@ -492,4 +492,72 @@ function wml_actions.unhide_unit(cfg)
 		u.hidden = false
 	end
 	wml_actions.redraw {}
+end
+
+function wml_actions.modify_unit(cfg)
+	local unit_variable = "LUA_modify_unit"
+
+	local function handle_attributes(cfg, unit_path)
+		for current_key, current_value in pairs(cfg) do
+			if type(current_value) ~= "table" then
+				wesnoth.set_variable(string.format("%s.%s", unit_path, current_key), current_value)
+			end
+		end
+	end
+
+	local function handle_child(cfg, unit_path)
+		local children_handled = {}
+		handle_attributes(cfg, unit_path)
+
+		for current_index, current_table in ipairs(cfg) do
+			local current_tag = current_table[1]
+			local tag_index = children_handled[current_tag] or 0
+			handle_child(current_table[2], string.format("%s.%s[%u]",
+				unit_path, current_tag, tag_index))
+			children_handled[current_tag] = tag_index + 1
+		end
+	end
+
+	local function handle_unit(cfg, unit_num)
+		local children_handled = {}
+		local unit_path = string.format("%s[%u]", unit_variable, unit_num)
+		handle_attributes(cfg, unit_path)
+
+		for current_index, current_table in ipairs(cfg) do
+			local current_tag = current_table[1]
+			if current_tag == "filter" then
+				-- nothing
+			elseif current_tag == "object" or current_tag == "trait" then
+				local unit = wesnoth.get_variable(unit_path)
+				unit = wesnoth.create_unit(unit)
+				wesnoth.add_modification(unit, current_tag, current_table[2])
+				unit = unit.__cfg;
+				wesnoth.set_variable(unit_path, unit)
+			else
+				local tag_index = children_handled[current_tag] or 0
+				handle_child(current_table[2], string.format("%s.%s[%u]",
+					unit_path, current_tag, tag_index))
+				children_handled[current_tag] = tag_index + 1
+			end
+		end
+
+		local type = cfg.type
+		if type then
+			wesnoth.set_variable(unit_path .. ".advances_to", type)
+			wesnoth.set_variable(unit_path .. ".experience", wesnoth.get_variable(unit_path .. ".max_experience"))
+		end
+		wml_actions.unstore_unit { variable = unit_path }
+	end
+
+	local filter = helper.get_child(cfg, "filter") or helper.wml_error "[modify_unit] missing required [filter] tag"
+	local cfg = cfg.__parsed
+
+	wml_actions.store_unit { {"filter", filter}, variable = unit_variable, kill = true }
+	local max_index = wesnoth.get_variable(unit_variable .. ".length") - 1
+
+	for current_unit = 0, max_index do
+		handle_unit(cfg, current_unit)
+	end
+
+	wesnoth.set_variable(unit_variable)
 end
