@@ -33,6 +33,7 @@ directory so that it can be compiled with same C++ compiler as the engine.
 
 ***
 
+
 >>> Terrain: <<<
 
 There are many changes and improvements to terrain since 1.8.x.  Many of these changes are ongoing, so some terrains are half-baked, but overall the appearance should be much improved.
@@ -41,7 +42,7 @@ There are many changes and improvements to terrain since 1.8.x.  Many of these c
 -- Highlights: --
 
 * New Animated Water and new land to water transitions.
-* Cave terrains are no longer extra dark, so they donÕt clash so much with other terrains.  The darkness in underground maps is now supplied by a Òtime of dayÓ color shift.
+* Cave terrains are no longer extra dark, so they donÕt clash so much with other terrains.  The darkness in underground maps is now supplied by a "time of day" color shift.
 * The base terrain beneath land villages can now be changed.
 * The color of most terrains have been shifted, so that terrains look like they belong together.
 * Many new terrain variants.
@@ -51,7 +52,7 @@ There are many changes and improvements to terrain since 1.8.x.  Many of these c
 
 * Cactuses and desert decorations. These are now *not* automatically part of Dd (desert). Mapmakers can now apply the embellishment "Desert Plants" (^Edp) over any base terrain, to get the density and placement of cacti that they want.
 
-* Flower are are now an embellishment overlay (^Efm) "Embellishment, Flowers, Mixed". It can now be mixed with other base terrains. "Ggf" is depreciated. It still exists, but will eventually be removed. For a better appearance, convert to "Gg^Efm", or another base with Ò^EfmÓ.
+* Flower are are now an embellishment overlay (^Efm) "Embellishment, Flowers, Mixed". It can now be mixed with other base terrains. "Ggf" is depreciated. It still exists, but will eventually be removed. For a better appearance, convert to "Gg^Efm", or another base with "^Efm".
 
 * "Desert Road" (Rd) used to be a rather dark and ambiguous dirt terrain. It's now much lighter as is appropriate for very dry dirt, but might have been used elsewhere as a dark terrain- which it no longer is. If dark was what you wanted switch to "Rb" or another of terrain.
 
