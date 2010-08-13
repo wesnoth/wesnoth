@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en_GB\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-08-05 11:33+0200\n"
+"POT-Creation-Date: 2010-08-13 11:21+0200\n"
 "PO-Revision-Date: 2009-11-02 10:07-0500\n"
 "Last-Translator: Eric S. Raymond <esr@thyrsus.com>\n"
 "Language-Team: English (British) <en@li.org>\n"
@@ -10135,10 +10135,6 @@ msgstr "Next"
 msgid "TitleScreen button^Help"
 msgstr "Help"
 
-#: src/titlescreen.cpp:436
-msgid "TitleScreen button^Help Wesnoth"
-msgstr "Help Wesnoth"
-
 #: src/titlescreen.cpp:438
 msgid "Start a tutorial to familiarize yourself with the game"
 msgstr "Start a tutorial to familiarise yourself with the game"
@@ -10184,10 +10180,15 @@ msgid "Quit the game"
 msgstr "Quit the game"
 
 #: src/titlescreen.cpp:450
-msgid "Show next tip of the day"
+#, fuzzy
+msgid "Show previous tip of the day"
 msgstr "Show next tip of the day"
 
 #: src/titlescreen.cpp:451
+msgid "Show next tip of the day"
+msgstr "Show next tip of the day"
+
+#: src/titlescreen.cpp:452
 msgid "Show Battle for Wesnoth help"
 msgstr "Show Battle for Wesnoth help"
 
@@ -10273,6 +10274,9 @@ msgstr "lawful"
 #: src/unit_types.cpp:1008
 msgid "female^neutral"
 msgstr "neutral"
+
+#~ msgid "TitleScreen button^Help Wesnoth"
+#~ msgstr "Help Wesnoth"
 
 #~ msgid ""
 #~ "Battle for Wesnoth automatically sends anonymized statistics about your "

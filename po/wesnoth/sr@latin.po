@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-08-05 11:33+0200\n"
+"POT-Creation-Date: 2010-08-13 11:21+0200\n"
 "PO-Revision-Date: 2010-07-24 12:24+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -10160,10 +10160,6 @@ msgstr "Naredno"
 msgid "TitleScreen button^Help"
 msgstr "Pomoć"
 
-#: src/titlescreen.cpp:436
-msgid "TitleScreen button^Help Wesnoth"
-msgstr "Pomognite Vesnot"
-
 #: src/titlescreen.cpp:438
 msgid "Start a tutorial to familiarize yourself with the game"
 msgstr "Pokrenite podučavanje o načinima i činiocima igranja"
@@ -10209,10 +10205,15 @@ msgid "Quit the game"
 msgstr "Napustite igru"
 
 #: src/titlescreen.cpp:450
-msgid "Show next tip of the day"
+#, fuzzy
+msgid "Show previous tip of the day"
 msgstr "Na sledeći savet dana"
 
 #: src/titlescreen.cpp:451
+msgid "Show next tip of the day"
+msgstr "Na sledeći savet dana"
+
+#: src/titlescreen.cpp:452
 msgid "Show Battle for Wesnoth help"
 msgstr "Na pomoć „Boja za Vesnot“"
 
@@ -10302,3 +10303,6 @@ msgstr "zakonita"
 #: src/unit_types.cpp:1008
 msgid "female^neutral"
 msgstr "neutralna"
+
+#~ msgid "TitleScreen button^Help Wesnoth"
+#~ msgstr "Pomognite Vesnot"

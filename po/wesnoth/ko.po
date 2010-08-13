@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-08-05 11:33+0200\n"
+"POT-Creation-Date: 2010-08-13 11:21+0200\n"
 "PO-Revision-Date: 2006-03-21 21:06-0800\n"
 "Last-Translator: Andrew <Sfradix@hotmail.com>\n"
 "Language-Team: none\n"
@@ -8617,11 +8617,6 @@ msgstr "나가기"
 msgid "TitleScreen button^Help"
 msgstr "게임 로드"
 
-#: src/titlescreen.cpp:436
-#, fuzzy
-msgid "TitleScreen button^Help Wesnoth"
-msgstr "게임 로드"
-
 #: src/titlescreen.cpp:438
 msgid "Start a tutorial to familiarize yourself with the game"
 msgstr "게임에 친숙해지기 위해 연습 게임을 합니다"
@@ -8668,10 +8663,14 @@ msgid "Quit the game"
 msgstr "게임을 나갑니다"
 
 #: src/titlescreen.cpp:450
-msgid "Show next tip of the day"
+msgid "Show previous tip of the day"
 msgstr ""
 
 #: src/titlescreen.cpp:451
+msgid "Show next tip of the day"
+msgstr ""
+
+#: src/titlescreen.cpp:452
 msgid "Show Battle for Wesnoth help"
 msgstr ""
 
@@ -8762,6 +8761,10 @@ msgstr "엘프 실프"
 #, fuzzy
 msgid "female^neutral"
 msgstr "레드 메이지"
+
+#, fuzzy
+#~ msgid "TitleScreen button^Help Wesnoth"
+#~ msgstr "게임 로드"
 
 #, fuzzy
 #~ msgid "Upload statistics"

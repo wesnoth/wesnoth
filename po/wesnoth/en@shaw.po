@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: en@shaw\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-08-05 11:33+0200\n"
+"POT-Creation-Date: 2010-08-13 11:21+0200\n"
 "PO-Revision-Date: 2009-10-11 21:15-0400\n"
 "Last-Translator: Arc Riley <arcriley@ubuntu.com>\n"
 "Language-Team: Shavian English <ubuntu-l10n-en-shaw@lists.launchpad.net>\n"
@@ -9947,10 +9947,6 @@ msgstr "𐑯𐑧𐑒𐑕𐑑"
 msgid "TitleScreen button^Help"
 msgstr "𐑣𐑧𐑤𐑐"
 
-#: src/titlescreen.cpp:436
-msgid "TitleScreen button^Help Wesnoth"
-msgstr "𐑣𐑧𐑤𐑐 ·𐑢𐑧𐑕𐑯𐑷𐑔"
-
 #: src/titlescreen.cpp:438
 msgid "Start a tutorial to familiarize yourself with the game"
 msgstr "𐑕𐑑𐑸𐑑 𐑩 𐑑𐑵𐑑𐑹𐑰𐑩𐑤 𐑑 𐑓𐑩𐑥𐑦𐑤𐑘𐑻𐑲𐑟 𐑿𐑼𐑕𐑧𐑤𐑓 𐑢𐑦𐑞 𐑞 𐑜𐑱𐑥"
@@ -9994,10 +9990,15 @@ msgid "Quit the game"
 msgstr "𐑒𐑢𐑦𐑑 𐑞 𐑜𐑱𐑥"
 
 #: src/titlescreen.cpp:450
-msgid "Show next tip of the day"
+#, fuzzy
+msgid "Show previous tip of the day"
 msgstr "𐑖𐑴 𐑯𐑧𐑒𐑕𐑑 𐑑𐑦𐑐 𐑝 𐑞 𐑛𐑱"
 
 #: src/titlescreen.cpp:451
+msgid "Show next tip of the day"
+msgstr "𐑖𐑴 𐑯𐑧𐑒𐑕𐑑 𐑑𐑦𐑐 𐑝 𐑞 𐑛𐑱"
+
+#: src/titlescreen.cpp:452
 msgid "Show Battle for Wesnoth help"
 msgstr "𐑖𐑴 𐑚𐑨𐑑𐑩𐑤 𐑓𐑹 ·𐑢𐑧𐑕𐑯𐑷𐑔 𐑣𐑧𐑤𐑐"
 
@@ -10083,6 +10084,9 @@ msgstr "𐑤𐑷𐑓𐑫𐑤"
 #: src/unit_types.cpp:1008
 msgid "female^neutral"
 msgstr "𐑯𐑵𐑑𐑮𐑩𐑤"
+
+#~ msgid "TitleScreen button^Help Wesnoth"
+#~ msgstr "𐑣𐑧𐑤𐑐 ·𐑢𐑧𐑕𐑯𐑷𐑔"
 
 #~ msgid ""
 #~ "Battle for Wesnoth automatically sends anonymized statistics about your "

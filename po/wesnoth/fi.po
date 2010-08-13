@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-08-05 11:33+0200\n"
+"POT-Creation-Date: 2010-08-13 11:21+0200\n"
 "PO-Revision-Date: 2010-04-30 23:55+0200\n"
 "Last-Translator: Mikko Nikkilä <miccoh@gmail.com>\n"
 "Language-Team: American English <kde-i18n-doc@kde.org>\n"
@@ -10212,10 +10212,6 @@ msgstr "Seuraava"
 msgid "TitleScreen button^Help"
 msgstr "Ohje"
 
-#: src/titlescreen.cpp:436
-msgid "TitleScreen button^Help Wesnoth"
-msgstr "Auta Wesnothia"
-
 #: src/titlescreen.cpp:438
 msgid "Start a tutorial to familiarize yourself with the game"
 msgstr "Aloita tutoriaali tutustuaksesi peliin"
@@ -10261,10 +10257,15 @@ msgid "Quit the game"
 msgstr "Poistu pelistä"
 
 #: src/titlescreen.cpp:450
-msgid "Show next tip of the day"
+#, fuzzy
+msgid "Show previous tip of the day"
 msgstr "Näytä seuraava päivän vihje"
 
 #: src/titlescreen.cpp:451
+msgid "Show next tip of the day"
+msgstr "Näytä seuraava päivän vihje"
+
+#: src/titlescreen.cpp:452
 msgid "Show Battle for Wesnoth help"
 msgstr "Näytä Wesnothin ohje"
 
@@ -10350,6 +10351,9 @@ msgstr "lainkuuliainen"
 #: src/unit_types.cpp:1008
 msgid "female^neutral"
 msgstr "neutraali"
+
+#~ msgid "TitleScreen button^Help Wesnoth"
+#~ msgstr "Auta Wesnothia"
 
 #~ msgid ""
 #~ "Battle for Wesnoth automatically sends anonymized statistics about your "

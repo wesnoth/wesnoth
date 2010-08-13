@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: he\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-08-05 11:33+0200\n"
+"POT-Creation-Date: 2010-08-13 11:21+0200\n"
 "PO-Revision-Date: 2009-07-13 00:55+0300\n"
 "Last-Translator: Oron Peled <oron@actcom.co.il>\n"
 "Language-Team: Hebrew\n"
@@ -9332,10 +9332,6 @@ msgstr "הבא"
 msgid "TitleScreen button^Help"
 msgstr "עזרה"
 
-#: src/titlescreen.cpp:436
-msgid "TitleScreen button^Help Wesnoth"
-msgstr "עזור לווסנות'"
-
 #: src/titlescreen.cpp:438
 msgid "Start a tutorial to familiarize yourself with the game"
 msgstr "התחל הדרכה להכרת המשחק"
@@ -9381,10 +9377,15 @@ msgid "Quit the game"
 msgstr "צא מהמשחק"
 
 #: src/titlescreen.cpp:450
-msgid "Show next tip of the day"
+#, fuzzy
+msgid "Show previous tip of the day"
 msgstr "הראה את הטיפ הבא"
 
 #: src/titlescreen.cpp:451
+msgid "Show next tip of the day"
+msgstr "הראה את הטיפ הבא"
+
+#: src/titlescreen.cpp:452
 msgid "Show Battle for Wesnoth help"
 msgstr "העזרה של הקרב של ווסנות'"
 
@@ -9474,6 +9475,9 @@ msgstr "סדר"
 #: src/unit_types.cpp:1008
 msgid "female^neutral"
 msgstr "ניטרלי"
+
+#~ msgid "TitleScreen button^Help Wesnoth"
+#~ msgstr "עזור לווסנות'"
 
 #~ msgid "Wesnoth Developers"
 #~ msgstr "צוות הפיתוח"

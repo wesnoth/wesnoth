@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.5+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-08-05 11:33+0200\n"
+"POT-Creation-Date: 2010-08-13 11:21+0200\n"
 "PO-Revision-Date: 2008-11-04 13:44+0200\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -10261,10 +10261,6 @@ msgstr "Næste"
 msgid "TitleScreen button^Help"
 msgstr "Hjælp"
 
-#: src/titlescreen.cpp:436
-msgid "TitleScreen button^Help Wesnoth"
-msgstr "Hjælp Wesnoth"
-
 #: src/titlescreen.cpp:438
 msgid "Start a tutorial to familiarize yourself with the game"
 msgstr "Start vejledningen og bliv introduceret for spillet."
@@ -10310,10 +10306,15 @@ msgid "Quit the game"
 msgstr "Afslut spillet"
 
 #: src/titlescreen.cpp:450
-msgid "Show next tip of the day"
+#, fuzzy
+msgid "Show previous tip of the day"
 msgstr "Vis næste dagens tip"
 
 #: src/titlescreen.cpp:451
+msgid "Show next tip of the day"
+msgstr "Vis næste dagens tip"
+
+#: src/titlescreen.cpp:452
 msgid "Show Battle for Wesnoth help"
 msgstr "Hjælp til Kampen om Wesnoth"
 
@@ -10403,6 +10404,9 @@ msgstr "loyal"
 #, fuzzy
 msgid "female^neutral"
 msgstr "udød"
+
+#~ msgid "TitleScreen button^Help Wesnoth"
+#~ msgstr "Hjælp Wesnoth"
 
 #~ msgid "Upload statistics"
 #~ msgstr "Send statistik"

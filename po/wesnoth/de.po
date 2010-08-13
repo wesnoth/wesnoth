@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.8\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-08-05 11:33+0200\n"
+"POT-Creation-Date: 2010-08-13 11:21+0200\n"
 "PO-Revision-Date: 2010-05-27 18:59+0200\n"
 "Last-Translator: Gerfried Fuchs <rhonda@deb.at>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
@@ -10442,10 +10442,6 @@ msgstr "Nächster"
 msgid "TitleScreen button^Help"
 msgstr "Hilfe"
 
-#: src/titlescreen.cpp:436
-msgid "TitleScreen button^Help Wesnoth"
-msgstr "Wesnoth helfen"
-
 #: src/titlescreen.cpp:438
 msgid "Start a tutorial to familiarize yourself with the game"
 msgstr "Führt in die Grundzüge des Spieles ein"
@@ -10491,10 +10487,15 @@ msgid "Quit the game"
 msgstr "Das Spiel beenden"
 
 #: src/titlescreen.cpp:450
-msgid "Show next tip of the day"
+#, fuzzy
+msgid "Show previous tip of the day"
 msgstr "Nächsten Tip des Tages anzeigen"
 
 #: src/titlescreen.cpp:451
+msgid "Show next tip of the day"
+msgstr "Nächsten Tip des Tages anzeigen"
+
+#: src/titlescreen.cpp:452
 msgid "Show Battle for Wesnoth help"
 msgstr "Hilfe zu Battle for Wesnoth anzeigen"
 
@@ -10580,6 +10581,9 @@ msgstr "redlich"
 #: src/unit_types.cpp:1008
 msgid "female^neutral"
 msgstr "neutral"
+
+#~ msgid "TitleScreen button^Help Wesnoth"
+#~ msgstr "Wesnoth helfen"
 
 #~ msgid ""
 #~ "Battle for Wesnoth automatically sends anonymized statistics about your "

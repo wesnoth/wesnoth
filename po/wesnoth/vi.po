@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-08-05 11:33+0200\n"
+"POT-Creation-Date: 2010-08-13 11:21+0200\n"
 "PO-Revision-Date: 2010-07-18 09:22+0700\n"
 "Last-Translator: Huynh Yen Loc <walkingcorpse13@gmail.com>\n"
 "Language-Team: Vietnamese <>\n"
@@ -10142,10 +10142,6 @@ msgstr "Tiếp"
 msgid "TitleScreen button^Help"
 msgstr "Trợ giúp"
 
-#: src/titlescreen.cpp:436
-msgid "TitleScreen button^Help Wesnoth"
-msgstr "Giúp Wesnoth"
-
 #: src/titlescreen.cpp:438
 msgid "Start a tutorial to familiarize yourself with the game"
 msgstr "Bắt đầu một hướng dẫn để làm quen với trò chơi"
@@ -10191,10 +10187,15 @@ msgid "Quit the game"
 msgstr "Thoát khỏi trò chơi"
 
 #: src/titlescreen.cpp:450
-msgid "Show next tip of the day"
+#, fuzzy
+msgid "Show previous tip of the day"
 msgstr "Hiện mẹo trong ngày kế tiếp"
 
 #: src/titlescreen.cpp:451
+msgid "Show next tip of the day"
+msgstr "Hiện mẹo trong ngày kế tiếp"
+
+#: src/titlescreen.cpp:452
 msgid "Show Battle for Wesnoth help"
 msgstr "Hiện trợ giúp Trận chiến giành Wesnoth"
 
@@ -10278,6 +10279,9 @@ msgstr "chính thống"
 #: src/unit_types.cpp:1008
 msgid "female^neutral"
 msgstr "trung lập"
+
+#~ msgid "TitleScreen button^Help Wesnoth"
+#~ msgstr "Giúp Wesnoth"
 
 #~ msgid ""
 #~ "Battle for Wesnoth automatically sends anonymized statistics about your "

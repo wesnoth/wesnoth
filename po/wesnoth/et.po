@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4 Estonian translation\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-08-05 11:33+0200\n"
+"POT-Creation-Date: 2010-08-13 11:21+0200\n"
 "PO-Revision-Date: 2009-12-25 11:55+0300\n"
 "Last-Translator: Kaido Kikkas <kakk@kakupesa.net>\n"
 "Language-Team: Kaido Kikkas <kakk@kakupesa.net>\n"
@@ -10006,10 +10006,6 @@ msgstr "Järgmine"
 msgid "TitleScreen button^Help"
 msgstr "Abiinfo"
 
-#: src/titlescreen.cpp:436
-msgid "TitleScreen button^Help Wesnoth"
-msgstr "Aita Wesnothi tegijaid"
-
 #: src/titlescreen.cpp:438
 msgid "Start a tutorial to familiarize yourself with the game"
 msgstr "Mänguga tutvumist alusta õpetusest"
@@ -10053,10 +10049,15 @@ msgid "Quit the game"
 msgstr "Välju mängust"
 
 #: src/titlescreen.cpp:450
-msgid "Show next tip of the day"
+#, fuzzy
+msgid "Show previous tip of the day"
 msgstr "Näita järgmist vihjet"
 
 #: src/titlescreen.cpp:451
+msgid "Show next tip of the day"
+msgstr "Näita järgmist vihjet"
+
+#: src/titlescreen.cpp:452
 msgid "Show Battle for Wesnoth help"
 msgstr "Näita Wesnothi Lahingu abiteavet"
 
@@ -10142,6 +10143,9 @@ msgstr "kuulekas"
 #: src/unit_types.cpp:1008
 msgid "female^neutral"
 msgstr "ükskõikne"
+
+#~ msgid "TitleScreen button^Help Wesnoth"
+#~ msgstr "Aita Wesnothi tegijaid"
 
 #~ msgid ""
 #~ "Battle for Wesnoth automatically sends anonymized statistics about your "

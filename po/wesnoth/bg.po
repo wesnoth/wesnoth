@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-08-05 11:33+0200\n"
+"POT-Creation-Date: 2010-08-13 11:21+0200\n"
 "PO-Revision-Date: 2007-08-21 17:39+0300\n"
 "Last-Translator: Denica <dmincheva2002@gmail.com>\n"
 "Language-Team: Bulgarian <bg@li.org>\n"
@@ -9715,10 +9715,6 @@ msgstr "Изход"
 msgid "TitleScreen button^Help"
 msgstr "Помощ"
 
-#: src/titlescreen.cpp:436
-msgid "TitleScreen button^Help Wesnoth"
-msgstr "Помогни на Уеснот"
-
 #: src/titlescreen.cpp:438
 msgid "Start a tutorial to familiarize yourself with the game"
 msgstr "Започни с обучението, за да се запознаеш с играта"
@@ -9763,10 +9759,15 @@ msgid "Quit the game"
 msgstr "Изход от играта"
 
 #: src/titlescreen.cpp:450
-msgid "Show next tip of the day"
+#, fuzzy
+msgid "Show previous tip of the day"
 msgstr "Покажи следващия съвет за деня"
 
 #: src/titlescreen.cpp:451
+msgid "Show next tip of the day"
+msgstr "Покажи следващия съвет за деня"
+
+#: src/titlescreen.cpp:452
 msgid "Show Battle for Wesnoth help"
 msgstr "Покажи помощ за Битката за Уеснот"
 
@@ -9861,6 +9862,9 @@ msgstr "лоялна"
 #, fuzzy
 msgid "female^neutral"
 msgstr "немъртва"
+
+#~ msgid "TitleScreen button^Help Wesnoth"
+#~ msgstr "Помогни на Уеснот"
 
 #~ msgid "Upload statistics"
 #~ msgstr "Зареди статистика"

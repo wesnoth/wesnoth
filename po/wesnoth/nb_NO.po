@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.1.1\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-08-05 11:33+0200\n"
+"POT-Creation-Date: 2010-08-13 11:21+0200\n"
 "PO-Revision-Date: 2009-04-05 10:50+0100\n"
 "Last-Translator: Gaute Storli Nielsen <gauteamus(at)gmail(dot)com>\n"
 "Language-Team: None\n"
@@ -9901,11 +9901,6 @@ msgstr "Avslutt"
 msgid "TitleScreen button^Help"
 msgstr "Fortsett spill"
 
-#: src/titlescreen.cpp:436
-#, fuzzy
-msgid "TitleScreen button^Help Wesnoth"
-msgstr "Fortsett spill"
-
 #: src/titlescreen.cpp:438
 msgid "Start a tutorial to familiarize yourself with the game"
 msgstr "Begynn opplæring for å bli kjent med spillet"
@@ -9952,10 +9947,14 @@ msgid "Quit the game"
 msgstr "Avslutt spillet"
 
 #: src/titlescreen.cpp:450
-msgid "Show next tip of the day"
+msgid "Show previous tip of the day"
 msgstr ""
 
 #: src/titlescreen.cpp:451
+msgid "Show next tip of the day"
+msgstr ""
+
+#: src/titlescreen.cpp:452
 #, fuzzy
 msgid "Show Battle for Wesnoth help"
 msgstr "Hjelp med Kampen om Wesnoth"
@@ -10050,6 +10049,10 @@ msgstr "Fredløs"
 #, fuzzy
 msgid "female^neutral"
 msgstr "Overfallskvinne"
+
+#, fuzzy
+#~ msgid "TitleScreen button^Help Wesnoth"
+#~ msgstr "Fortsett spill"
 
 #~ msgid "Wesnoth Developers"
 #~ msgstr "Utviklere av Wesnoth"

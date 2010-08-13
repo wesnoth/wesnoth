@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-08-05 11:33+0200\n"
+"POT-Creation-Date: 2010-08-13 11:21+0200\n"
 "PO-Revision-Date: 2010-05-25 19:58+0200\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian <wesnoth-hungtrans@gna.org>\n"
@@ -10298,10 +10298,6 @@ msgstr "Következő"
 msgid "TitleScreen button^Help"
 msgstr "Súgó"
 
-#: src/titlescreen.cpp:436
-msgid "TitleScreen button^Help Wesnoth"
-msgstr "Hozzájárulás"
-
 #: src/titlescreen.cpp:438
 msgid "Start a tutorial to familiarize yourself with the game"
 msgstr "A gyakorlópálya indítása a játékkal való ismerkedéshez"
@@ -10347,10 +10343,15 @@ msgid "Quit the game"
 msgstr "Kilépés a játékból"
 
 #: src/titlescreen.cpp:450
-msgid "Show next tip of the day"
+#, fuzzy
+msgid "Show previous tip of the day"
 msgstr "Mutasd a következő tippet"
 
 #: src/titlescreen.cpp:451
+msgid "Show next tip of the day"
+msgstr "Mutasd a következő tippet"
+
+#: src/titlescreen.cpp:452
 msgid "Show Battle for Wesnoth help"
 msgstr "Harc Wesnothért Súgó"
 
@@ -10436,6 +10437,9 @@ msgstr "igazságos"
 #: src/unit_types.cpp:1008
 msgid "female^neutral"
 msgstr "semleges"
+
+#~ msgid "TitleScreen button^Help Wesnoth"
+#~ msgstr "Hozzájárulás"
 
 #~ msgid ""
 #~ "Battle for Wesnoth automatically sends anonymized statistics about your "

@@ -149,7 +149,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: el_gr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-08-05 11:33+0200\n"
+"POT-Creation-Date: 2010-08-13 11:21+0200\n"
 "PO-Revision-Date: 2008-01-21 18:54+0200\n"
 "Last-Translator: Konstantinos Egarhos <atixos@gmail.com>\n"
 "Language-Team:  <el@li.org>\n"
@@ -9211,10 +9211,6 @@ msgstr "Επόμενο"
 msgid "TitleScreen button^Help"
 msgstr "Βοήθεια"
 
-#: src/titlescreen.cpp:436
-msgid "TitleScreen button^Help Wesnoth"
-msgstr "Βοήθεια του Γουέσνοθ"
-
 #: src/titlescreen.cpp:438
 msgid "Start a tutorial to familiarize yourself with the game"
 msgstr " Ξεκίνησε ένα φροντιστήριο γιά νά μάθεις περισσότερα γιά το παιχνίδι "
@@ -9260,10 +9256,15 @@ msgid "Quit the game"
 msgstr "Βγές από τό παιχνίδι"
 
 #: src/titlescreen.cpp:450
-msgid "Show next tip of the day"
+#, fuzzy
+msgid "Show previous tip of the day"
 msgstr "Επόμενη συμβουλή"
 
 #: src/titlescreen.cpp:451
+msgid "Show next tip of the day"
+msgstr "Επόμενη συμβουλή"
+
+#: src/titlescreen.cpp:452
 msgid "Show Battle for Wesnoth help"
 msgstr "Βοήθεια"
 
@@ -9353,6 +9354,9 @@ msgstr "νομοταγής"
 #, fuzzy
 msgid "female^neutral"
 msgstr "απέθαντη"
+
+#~ msgid "TitleScreen button^Help Wesnoth"
+#~ msgstr "Βοήθεια του Γουέσνοθ"
 
 #~ msgid "Upload statistics"
 #~ msgstr "Αποστολή στατιστικών"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.2\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-08-05 11:33+0200\n"
+"POT-Creation-Date: 2010-08-13 11:21+0200\n"
 "PO-Revision-Date: 2010-06-06 23:53+0100\n"
 "Last-Translator: aceman <acelists@atlas.sk>\n"
 "Language-Team: none\n"
@@ -10113,10 +10113,6 @@ msgstr "Nasledujúci"
 msgid "TitleScreen button^Help"
 msgstr "Návod"
 
-#: src/titlescreen.cpp:436
-msgid "TitleScreen button^Help Wesnoth"
-msgstr "Podporte Wesnoth"
-
 #: src/titlescreen.cpp:438
 msgid "Start a tutorial to familiarize yourself with the game"
 msgstr "Spusti úvodný výcvik, v ktorom sa zoznámiš s touto hrou"
@@ -10162,10 +10158,15 @@ msgid "Quit the game"
 msgstr "Ukonči hru"
 
 #: src/titlescreen.cpp:450
-msgid "Show next tip of the day"
+#, fuzzy
+msgid "Show previous tip of the day"
 msgstr "Zobraz ďalší tip dňa"
 
 #: src/titlescreen.cpp:451
+msgid "Show next tip of the day"
+msgstr "Zobraz ďalší tip dňa"
+
+#: src/titlescreen.cpp:452
 msgid "Show Battle for Wesnoth help"
 msgstr "Návod k Bitke o Wesnoth"
 
@@ -10253,6 +10254,9 @@ msgstr "poriadok"
 #: src/unit_types.cpp:1008
 msgid "female^neutral"
 msgstr "neutrálna"
+
+#~ msgid "TitleScreen button^Help Wesnoth"
+#~ msgstr "Podporte Wesnoth"
 
 #~ msgid ""
 #~ "Battle for Wesnoth automatically sends anonymized statistics about your "

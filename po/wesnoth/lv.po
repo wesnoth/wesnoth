@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.7.9\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-08-05 11:33+0200\n"
+"POT-Creation-Date: 2010-08-13 11:21+0200\n"
 "PO-Revision-Date: 2010-05-29 20:28+0300\n"
 "Last-Translator: Reinis Danne <rei4dan@gmail.com>\n"
 "Language-Team: none\n"
@@ -10189,10 +10189,6 @@ msgstr "Nākamais"
 msgid "TitleScreen button^Help"
 msgstr "Palīdzība"
 
-#: src/titlescreen.cpp:436
-msgid "TitleScreen button^Help Wesnoth"
-msgstr "Vesnotas palīdzība"
-
 #: src/titlescreen.cpp:438
 msgid "Start a tutorial to familiarize yourself with the game"
 msgstr "Izmantojiet apmācību, lai iepazītos ar spēli"
@@ -10238,10 +10234,15 @@ msgid "Quit the game"
 msgstr "Pamest spēli"
 
 #: src/titlescreen.cpp:450
-msgid "Show next tip of the day"
+#, fuzzy
+msgid "Show previous tip of the day"
 msgstr "Parādīt nākošo dienas padomu"
 
 #: src/titlescreen.cpp:451
+msgid "Show next tip of the day"
+msgstr "Parādīt nākošo dienas padomu"
+
+#: src/titlescreen.cpp:452
 msgid "Show Battle for Wesnoth help"
 msgstr "Parādīt \"Cīņas par Vesnotu\" palīdzību"
 
@@ -10329,6 +10330,9 @@ msgstr "likumpaklausīga"
 #: src/unit_types.cpp:1008
 msgid "female^neutral"
 msgstr "neitrāla"
+
+#~ msgid "TitleScreen button^Help Wesnoth"
+#~ msgstr "Vesnotas palīdzība"
 
 #~ msgid ""
 #~ "Battle for Wesnoth automatically sends anonymized statistics about your "

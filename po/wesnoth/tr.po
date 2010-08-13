@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-08-05 11:33+0200\n"
+"POT-Creation-Date: 2010-08-13 11:21+0200\n"
 "PO-Revision-Date: 2009-04-12 14:56+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <ceviri@belgeler.gen.tr>\n"
@@ -10025,10 +10025,6 @@ msgstr "Sonraki"
 msgid "TitleScreen button^Help"
 msgstr "Yardım"
 
-#: src/titlescreen.cpp:436
-msgid "TitleScreen button^Help Wesnoth"
-msgstr "Wesnoth Yardımı"
-
 #: src/titlescreen.cpp:438
 msgid "Start a tutorial to familiarize yourself with the game"
 msgstr "Oyuna alışmanız için öğreticiyi başlatır"
@@ -10075,10 +10071,15 @@ msgid "Quit the game"
 msgstr "Oyundan çıkar"
 
 #: src/titlescreen.cpp:450
-msgid "Show next tip of the day"
+#, fuzzy
+msgid "Show previous tip of the day"
 msgstr "Günün sonraki ipucunu gösterir"
 
 #: src/titlescreen.cpp:451
+msgid "Show next tip of the day"
+msgstr "Günün sonraki ipucunu gösterir"
+
+#: src/titlescreen.cpp:452
 msgid "Show Battle for Wesnoth help"
 msgstr "Wesnoth Savaşı Yardımını gösterir"
 
@@ -10164,6 +10165,9 @@ msgstr "adil"
 #: src/unit_types.cpp:1008
 msgid "female^neutral"
 msgstr "tarafsız"
+
+#~ msgid "TitleScreen button^Help Wesnoth"
+#~ msgstr "Wesnoth Yardımı"
 
 #~ msgid ""
 #~ "Battle for Wesnoth automatically sends anonymized statistics about your "

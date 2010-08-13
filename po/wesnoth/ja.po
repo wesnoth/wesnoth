@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-08-05 11:33+0200\n"
+"POT-Creation-Date: 2010-08-13 11:21+0200\n"
 "PO-Revision-Date: 2010-07-12 04:43+0900\n"
 "Last-Translator: IWAI, Masaharu <iwaim.sub@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
@@ -10016,10 +10016,6 @@ msgstr "次"
 msgid "TitleScreen button^Help"
 msgstr "ヘルプ"
 
-#: src/titlescreen.cpp:436
-msgid "TitleScreen button^Help Wesnoth"
-msgstr "Wesnoth への支援"
-
 #: src/titlescreen.cpp:438
 msgid "Start a tutorial to familiarize yourself with the game"
 msgstr "ゲームに慣れるためのチュートリアルを開始します"
@@ -10066,10 +10062,15 @@ msgid "Quit the game"
 msgstr "ゲームを終了します"
 
 #: src/titlescreen.cpp:450
-msgid "Show next tip of the day"
+#, fuzzy
+msgid "Show previous tip of the day"
 msgstr "次のヒントを表示します"
 
 #: src/titlescreen.cpp:451
+msgid "Show next tip of the day"
+msgstr "次のヒントを表示します"
+
+#: src/titlescreen.cpp:452
 msgid "Show Battle for Wesnoth help"
 msgstr "Battle for Wesnoth のヘルプを表示します"
 
@@ -10154,6 +10155,9 @@ msgstr "秩序"
 #: src/unit_types.cpp:1008
 msgid "female^neutral"
 msgstr "中立"
+
+#~ msgid "TitleScreen button^Help Wesnoth"
+#~ msgstr "Wesnoth への支援"
 
 #~ msgid ""
 #~ "Battle for Wesnoth automatically sends anonymized statistics about your "

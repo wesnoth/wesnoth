@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-08-05 11:33+0200\n"
+"POT-Creation-Date: 2010-08-13 11:21+0200\n"
 "PO-Revision-Date: 2008-02-21 10:21+0800\n"
 "Last-Translator: eve <eve_eso@yahoo.com>\n"
 "Language-Team: \n"
@@ -8925,10 +8925,6 @@ msgstr "Sunod"
 msgid "TitleScreen button^Help"
 msgstr "Tulong"
 
-#: src/titlescreen.cpp:436
-msgid "TitleScreen button^Help Wesnoth"
-msgstr "Tulungan ang Wesnoth"
-
 #: src/titlescreen.cpp:438
 msgid "Start a tutorial to familiarize yourself with the game"
 msgstr "Magsimula ng pagsasanay para maging pamilyar sa laro"
@@ -8974,10 +8970,15 @@ msgid "Quit the game"
 msgstr "Umalis sa laro"
 
 #: src/titlescreen.cpp:450
-msgid "Show next tip of the day"
+#, fuzzy
+msgid "Show previous tip of the day"
 msgstr "Ipakita ang sunod na tip para sa araw"
 
 #: src/titlescreen.cpp:451
+msgid "Show next tip of the day"
+msgstr "Ipakita ang sunod na tip para sa araw"
+
+#: src/titlescreen.cpp:452
 msgid "Show Battle for Wesnoth help"
 msgstr "Ipakita ang Battle for Wesnoth help"
 
@@ -9069,6 +9070,9 @@ msgstr "matapat"
 #, fuzzy
 msgid "female^neutral"
 msgstr "malusog"
+
+#~ msgid "TitleScreen button^Help Wesnoth"
+#~ msgstr "Tulungan ang Wesnoth"
 
 #~ msgid "Upload statistics"
 #~ msgstr "Upload istatistiks"

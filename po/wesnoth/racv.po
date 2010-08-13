@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.3-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-08-05 11:33+0200\n"
+"POT-Creation-Date: 2010-08-13 11:21+0200\n"
 "PO-Revision-Date: 2008-09-24 02:09+0100\n"
 "Last-Translator: Mavorte <mavorte1@yahoo.es>\n"
 "Language-Team: none\n"
@@ -10408,10 +10408,6 @@ msgstr "Següent"
 msgid "TitleScreen button^Help"
 msgstr "Ajuda"
 
-#: src/titlescreen.cpp:436
-msgid "TitleScreen button^Help Wesnoth"
-msgstr "Ajude a Wesnoth"
-
 #: src/titlescreen.cpp:438
 msgid "Start a tutorial to familiarize yourself with the game"
 msgstr "Comença el tutorial per a familiarisar-te ab el joc"
@@ -10457,10 +10453,15 @@ msgid "Quit the game"
 msgstr "Eixir del joc"
 
 #: src/titlescreen.cpp:450
-msgid "Show next tip of the day"
+#, fuzzy
+msgid "Show previous tip of the day"
 msgstr "Mostrar el següent consell del dia"
 
 #: src/titlescreen.cpp:451
+msgid "Show next tip of the day"
+msgstr "Mostrar el següent consell del dia"
+
+#: src/titlescreen.cpp:452
 msgid "Show Battle for Wesnoth help"
 msgstr "Mostrar l'ajuda de Batalla per Wesnoth"
 
@@ -10550,6 +10551,9 @@ msgstr "lleal"
 #, fuzzy
 msgid "female^neutral"
 msgstr "no morta"
+
+#~ msgid "TitleScreen button^Help Wesnoth"
+#~ msgstr "Ajude a Wesnoth"
 
 #, fuzzy
 #~ msgid "Wesnoth Developers"
