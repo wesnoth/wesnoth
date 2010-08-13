@@ -33,7 +33,43 @@ directory so that it can be compiled with same C++ compiler as the engine.
 
 ***
 
-REPLACE ME WITH CONTENT...
+>>> Terrain: <<<
+
+There are many changes and improvements to terrain since 1.8.x.  Many of these changes are ongoing, so some terrains are half-baked, but overall the appearance should be much improved.
+
+
+-- Highlights: --
+
+* New Animated Water and new land to water transitions.
+* Cave terrains are no longer extra dark, so they donÕt clash so much with other terrains.  The darkness in underground maps is now supplied by a Òtime of dayÓ color shift.
+* The base terrain beneath land villages can now be changed.
+* The color of most terrains have been shifted, so that terrains look like they belong together.
+* Many new terrain variants.
+
+
+-- Important Changes for Map Conversion: --
+
+* Cactuses and desert decorations. These are now *not* automatically part of Dd (desert). Mapmakers can now apply the embellishment "Desert Plants" (^Edp) over any base terrain, to get the density and placement of cacti that they want.
+
+* Flower are are now an embellishment overlay (^Efm) "Embellishment, Flowers, Mixed". It can now be mixed with other base terrains. "Ggf" is depreciated. It still exists, but will eventually be removed. For a better appearance, convert to "Gg^Efm", or another base with Ò^EfmÓ.
+
+* "Desert Road" (Rd) used to be a rather dark and ambiguous dirt terrain. It's now much lighter as is appropriate for very dry dirt, but might have been used elsewhere as a dark terrain- which it no longer is. If dark was what you wanted switch to "Rb" or another of terrain.
+
+* "Rocky Path" (Rp) was intended as an overgrown foresty path, but didn't make this very clear and seems to be often used for plain grey cobbles. It is now really overgrown. If that's not what you want use Rrc, or another flat terrain.
+
+
+-- New Cave Varients: --
+
+There is a new cave floor and 3 new cave walls.  Currently these are not very distinct, due to time constraints.  The following is what they will look like in a later release.
+
+* Hewn Cave Wall (Xuc)  A wall roughly hewn from natural stone
+* Earthy Cave Floor (Uue)  Soil and Stones mixed together.  Maybe some roots.
+* Earthy Cave Wall (Xue)  Soil and Stones mixed together.  Maybe some roots.
+* Earthy Hewn Cave Wall (Xuec)  Wooden Beam support the walls, as in a mine.
+
+
+-- Warning: --
+The stone walls with pillars and bricks (Xos, Xol) are attractive, but built in a way that makes them extremely difficult to mesh with other terrains.  These will likely remade for a future development release, so custom terrains or scenery items will likely no longer work quite right with them.
 
 ***
 
