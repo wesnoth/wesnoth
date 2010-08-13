@@ -48,8 +48,9 @@ difficulty is 1.  The scenario must be one of the campaign's child
 scenarios. The default scenario is campaign's first scenario.
 .TP 
 \fB\-\-config\-dir\fP\fI\ name\fP
-設定玩家配置目錄到 $HOME 之下或「我的文件\我的遊戲 (My Documents\eMy Games)」(Windows 系統)之下的
-\fIname\fP目錄。
+sets the user configuration directory to \fIname\fP under $HOME or "My
+Documents\eMy Games" for windows.  You can also specify an absolute path for
+the configuration directory outside the $HOME or "My Documents\eMy Games"
 .TP 
 \fB\-\-config\-path\fP
 顯示玩家配置目錄的路徑並退出。
@@ -119,9 +120,20 @@ folder is specified, it will be preprocessed recursively based on the known
 preprocessor rules. The common macroses from the data/core/macros will be
 preprocessed before the specified resources.  \fBdefine1,define2,...\fP \- the
 extra defines will be added before processing the files. If you want to add
-them you must add the '=' character before.  Example: \fB\-p
+them you must add the '=' character before.  If 'SKIP_CORE' is in the define
+list the data/core won't be preprocessed.  Example: \fB\-p
 ~/wesnoth/data/campaigns/tutorial ~/result\fP or
 \fB\-p=MULTIPLAYER,MY_OWN_CAMPAIGN ~/wesnoth/data/campaign/camp ~/result\fP
+.TP 
+\fB\-\-preprocess\-input\-macros <source file>\fP
+used only by the '\-\-preprocess' command.  Specifies a file that contains
+[preproc_define]s to be included before preprocessing.
+.TP 
+\fB\-\-preprocess\-output\-macros [<target file>]\fP
+used only by the '\-\-preprocess' command.  Will output all preprocessed
+macros in the target file. If the file is not specified the output will be
+file '_MACROS_.cfg' in the target directory of preprocess's command.  This
+switch should be typed before the \-\-preprocess command.
 .TP 
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
 設定螢幕解析度。例如： \fB\-r 800x600\fP
@@ -157,10 +169,10 @@ them you must add the '=' character before.  Example: \fB\-p
 .TP 
 \fB\-\-algorithm\fP\fInumber\fP\fB=\fP\fIvalue\fP
 為這個陣營選擇一個非標準的AI控制。可選值有：\fBidle_ai\fP 和 \fBsample_ai\fP.
-.TP  
+.TP 
 \fB\-\-controller\fP\fInumber\fP\fB=\fP\fIvalue\fP
 選擇這個陣營的控制者。可選值有：\fBhuman\fP和\fBai\fP。
-.TP  
+.TP 
 \fB\-\-era=\fP\fIvalue\fP
 使用這個選項選擇一個模式來代替\fBDefault\fP模式。所選模式由ID決定。模式在\fBdata/multiplayer/eras.cfg\fP檔案中描述。
 .TP 

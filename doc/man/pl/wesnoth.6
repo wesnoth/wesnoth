@@ -56,8 +56,9 @@ difficulty is 1.  The scenario must be one of the campaign's child
 scenarios. The default scenario is campaign's first scenario.
 .TP 
 \fB\-\-config\-dir\fP\fI\ name\fP
-ustawia katalog konfiguracyjny użytkownika na \fIname\fP w ramach katalogu
-$HOME lub (w przypadku systemów Windows) "My Documents\eMy Games".
+sets the user configuration directory to \fIname\fP under $HOME or "My
+Documents\eMy Games" for windows.  You can also specify an absolute path for
+the configuration directory outside the $HOME or "My Documents\eMy Games"
 .TP 
 \fB\-\-config\-path\fP
 wyświetla ścieżkę katalogu konfiguracyjnego użytkownika i kończy działanie.
@@ -139,9 +140,20 @@ folder is specified, it will be preprocessed recursively based on the known
 preprocessor rules. The common macroses from the data/core/macros will be
 preprocessed before the specified resources.  \fBdefine1,define2,...\fP \- the
 extra defines will be added before processing the files. If you want to add
-them you must add the '=' character before.  Example: \fB\-p
+them you must add the '=' character before.  If 'SKIP_CORE' is in the define
+list the data/core won't be preprocessed.  Example: \fB\-p
 ~/wesnoth/data/campaigns/tutorial ~/result\fP or
 \fB\-p=MULTIPLAYER,MY_OWN_CAMPAIGN ~/wesnoth/data/campaign/camp ~/result\fP
+.TP 
+\fB\-\-preprocess\-input\-macros <source file>\fP
+used only by the '\-\-preprocess' command.  Specifies a file that contains
+[preproc_define]s to be included before preprocessing.
+.TP 
+\fB\-\-preprocess\-output\-macros [<target file>]\fP
+used only by the '\-\-preprocess' command.  Will output all preprocessed
+macros in the target file. If the file is not specified the output will be
+file '_MACROS_.cfg' in the target directory of preprocess's command.  This
+switch should be typed before the \-\-preprocess command.
 .TP 
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
 ustawia rozdzielczość ekranu gry. Przykład: \fB\-r 800x600\fP
@@ -184,11 +196,11 @@ strony.
 \fB\-\-algorithm\fP\fInumer\fP\fB=\fP\fIwartość\fP
 pozwala wybrać niestandardowy algorytm, z którego ma korzystać AI
 kontrolujące daną stronę. Dostępne wartości: \fBidle_ai\fP i \fBsample_ai\fP..
-.TP  
+.TP 
 \fB\-\-controller\fP\fInumer\fP\fB=\fP\fIwartość\fP
 pozwala ustalić typ gracza kontrolującego daną stronę. Dostępne wartości:
 \fBhuman\fP i \fBai\fP.
-.TP  
+.TP 
 \fB\-\-era=\fP\fIwartość\fP
 tej opcji należy użyć, aby zagrać w wybranej erze zamiast w erze domyślnej
 (\fBDefault\fP). Ery wybierane są na podstawie identyfikatora i są opisane w

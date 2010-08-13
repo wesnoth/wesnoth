@@ -55,8 +55,9 @@ difficulty is 1.  The scenario must be one of the campaign's child
 scenarios. The default scenario is campaign's first scenario.
 .TP 
 \fB\-\-config\-dir\fP\fI\ nome\fP
-Ajusta a pasta de configurações de usuário para \fIname\fP em $HOME (ou "My
-Documents\eMy Games" no windows).
+sets the user configuration directory to \fIname\fP under $HOME or "My
+Documents\eMy Games" for windows.  You can also specify an absolute path for
+the configuration directory outside the $HOME or "My Documents\eMy Games"
 .TP 
 \fB\-\-config\-path\fP
 imprime o caminho da pasta de configurações de usuário e sai.
@@ -138,9 +139,20 @@ folder is specified, it will be preprocessed recursively based on the known
 preprocessor rules. The common macroses from the data/core/macros will be
 preprocessed before the specified resources.  \fBdefine1,define2,...\fP \- the
 extra defines will be added before processing the files. If you want to add
-them you must add the '=' character before.  Example: \fB\-p
+them you must add the '=' character before.  If 'SKIP_CORE' is in the define
+list the data/core won't be preprocessed.  Example: \fB\-p
 ~/wesnoth/data/campaigns/tutorial ~/result\fP or
 \fB\-p=MULTIPLAYER,MY_OWN_CAMPAIGN ~/wesnoth/data/campaign/camp ~/result\fP
+.TP 
+\fB\-\-preprocess\-input\-macros <source file>\fP
+used only by the '\-\-preprocess' command.  Specifies a file that contains
+[preproc_define]s to be included before preprocessing.
+.TP 
+\fB\-\-preprocess\-output\-macros [<target file>]\fP
+used only by the '\-\-preprocess' command.  Will output all preprocessed
+macros in the target file. If the file is not specified the output will be
+file '_MACROS_.cfg' in the target directory of preprocess's command.  This
+switch should be typed before the \-\-preprocess command.
 .TP 
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
 configura a resolução da tela. Por exemplo: \fB\-r 800x600\fP
@@ -182,10 +194,10 @@ para este time.
 \fB\-\-algorithm\fP\fInúmero\fP\fB=\fP\fIvalor\fP
 escolhe um algoritmo não padrão para ser usado pelo controlador de IA para
 este time. Valores possíveis: "idle_ai" e "sample_ai".
-.TP  
+.TP 
 \fB\-\-controller\fP\fInúmero\fP\fB=\fP\fIvalor\fP
 escolhe o controlador deste time. Valores possíveis: \fBhuman\fP e \fBai\fP.
-.TP  
+.TP 
 \fB\-\-era=\fP\fIvalor\fP
 use esta opção para jogar na era selecionada, ao invés da era
 \fBPadrão\fP. Você escolhe a era pelo identificador (id). As eras disponíveis

@@ -47,7 +47,9 @@ difficulty is 1.  The scenario must be one of the campaign's child
 scenarios. The default scenario is campaign's first scenario.
 .TP 
 \fB\-\-config\-dir\fP\fI\ name\fP
-ユーザ設定ディレクトリを $HOME 以下の \fIname\fP または windows の "My Documents\eMy Games" に設定する。
+sets the user configuration directory to \fIname\fP under $HOME or "My
+Documents\eMy Games" for windows.  You can also specify an absolute path for
+the configuration directory outside the $HOME or "My Documents\eMy Games"
 .TP 
 \fB\-\-config\-path\fP
 ユーザ設定ディレクトリの名前を表示して、終了する。
@@ -119,9 +121,20 @@ folder is specified, it will be preprocessed recursively based on the known
 preprocessor rules. The common macroses from the data/core/macros will be
 preprocessed before the specified resources.  \fBdefine1,define2,...\fP \- the
 extra defines will be added before processing the files. If you want to add
-them you must add the '=' character before.  Example: \fB\-p
+them you must add the '=' character before.  If 'SKIP_CORE' is in the define
+list the data/core won't be preprocessed.  Example: \fB\-p
 ~/wesnoth/data/campaigns/tutorial ~/result\fP or
 \fB\-p=MULTIPLAYER,MY_OWN_CAMPAIGN ~/wesnoth/data/campaign/camp ~/result\fP
+.TP 
+\fB\-\-preprocess\-input\-macros <source file>\fP
+used only by the '\-\-preprocess' command.  Specifies a file that contains
+[preproc_define]s to be included before preprocessing.
+.TP 
+\fB\-\-preprocess\-output\-macros [<target file>]\fP
+used only by the '\-\-preprocess' command.  Will output all preprocessed
+macros in the target file. If the file is not specified the output will be
+file '_MACROS_.cfg' in the target directory of preprocess's command.  This
+switch should be typed before the \-\-preprocess command.
 .TP 
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
 画面解像度を設定する。例: \fB\-r 800x600\fP
@@ -158,10 +171,10 @@ them you must add the '=' character before.  Example: \fB\-p
 \fB\-\-algorithm\fP\fInumber\fP\fB=\fP\fIvalue\fP
 この陣営向けに AI コントローラによって使用される非標準のアルゴリズムを選択する。設定可能な値(value)は、 \fBidle_ai\fP と
 \fBsample_ai\fP。
-.TP  
+.TP 
 \fB\-\-controller\fP\fInumber\fP\fB=\fP\fIvalue\fP
 この陣営の操作者を選択する。設定可能な値(value)は、\fBhuman\fP と \fBai\fP。
-.TP  
+.TP 
 \fB\-\-era=\fP\fIvalue\fP
 \fBDefault\fP の代わりの時代を選択してプレイするためにこのオプションを使用する。時代は ID によって選択される。時代はファイル
 \fBdata/multiplayer/eras.cfg\fP の中に記述されている。

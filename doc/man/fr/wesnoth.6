@@ -55,8 +55,9 @@ difficulty is 1.  The scenario must be one of the campaign's child
 scenarios. The default scenario is campaign's first scenario.
 .TP 
 \fB\-\-config\-dir\fP\fI\ répertoire\fP
-définit le répertoire de configuration de l'utilisateur à \fIname\fP dans $HOME
-ou "Mes Documents\eMes Jeux".
+sets the user configuration directory to \fIname\fP under $HOME or "My
+Documents\eMy Games" for windows.  You can also specify an absolute path for
+the configuration directory outside the $HOME or "My Documents\eMy Games"
 .TP 
 \fB\-\-config\-path\fP
 Affiche le nom du répertoire de configuration utilisateur et quitte le
@@ -139,9 +140,20 @@ folder is specified, it will be preprocessed recursively based on the known
 preprocessor rules. The common macroses from the data/core/macros will be
 preprocessed before the specified resources.  \fBdefine1,define2,...\fP \- the
 extra defines will be added before processing the files. If you want to add
-them you must add the '=' character before.  Example: \fB\-p
+them you must add the '=' character before.  If 'SKIP_CORE' is in the define
+list the data/core won't be preprocessed.  Example: \fB\-p
 ~/wesnoth/data/campaigns/tutorial ~/result\fP or
 \fB\-p=MULTIPLAYER,MY_OWN_CAMPAIGN ~/wesnoth/data/campaign/camp ~/result\fP
+.TP 
+\fB\-\-preprocess\-input\-macros <source file>\fP
+used only by the '\-\-preprocess' command.  Specifies a file that contains
+[preproc_define]s to be included before preprocessing.
+.TP 
+\fB\-\-preprocess\-output\-macros [<target file>]\fP
+used only by the '\-\-preprocess' command.  Will output all preprocessed
+macros in the target file. If the file is not specified the output will be
+file '_MACROS_.cfg' in the target directory of preprocess's command.  This
+switch should be typed before the \-\-preprocess command.
 .TP 
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-résolution\fP\ \fIX\fP\fBx\fP\fIY\fP
 Définit la résolution de l'écran. Exemple\ : \fB\-r 800x600\fP
@@ -183,11 +195,11 @@ Sélectionne un fichier de configuration pour l'IA de cette faction.
 \fB\-\-algorithm\fP\fInombre\fP\fB=\fP\fIvaleur\fP
 Sélectionne un algorithme utilisé par l'IA de cette faction. Valeurs
 possibles\ : \fBidle_ai\fP et \fBsample_ai\fP.
-.TP  
+.TP 
 \fB\-\-controller\fP\fInombre\fP\fB=\fP\fIvaleur\fP
 Sélectionne le type de joueur de ce camp. Valeurs possibles\ : \fBhuman\fP et
 \fBai\fP.
-.TP  
+.TP 
 \fB\-\-era=\fP\fIvaleur\fP
 Utilisez cette option pour jouer à l'ère sélectionnée au lieu de l'ère \fBPar
 défaut\fP. Cette ère est sélectionnée par un identifiant. Les ères standard

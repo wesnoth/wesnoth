@@ -54,8 +54,9 @@ difficulty is 1.  The scenario must be one of the campaign's child
 scenarios. The default scenario is campaign's first scenario.
 .TP 
 \fB\-\-config\-dir\fP\fI\ názov\fP
-nastaví adresár s používateľskými nastaveniami na \fImeno\fP pod $HOME alebo
-"My Documents\eMy Games" vo Windows.
+sets the user configuration directory to \fIname\fP under $HOME or "My
+Documents\eMy Games" for windows.  You can also specify an absolute path for
+the configuration directory outside the $HOME or "My Documents\eMy Games"
 .TP 
 \fB\-\-config\-path\fP
 vypíše názov adresára s používateľskými nastaveniami a skončí.
@@ -134,9 +135,20 @@ folder is specified, it will be preprocessed recursively based on the known
 preprocessor rules. The common macroses from the data/core/macros will be
 preprocessed before the specified resources.  \fBdefine1,define2,...\fP \- the
 extra defines will be added before processing the files. If you want to add
-them you must add the '=' character before.  Example: \fB\-p
+them you must add the '=' character before.  If 'SKIP_CORE' is in the define
+list the data/core won't be preprocessed.  Example: \fB\-p
 ~/wesnoth/data/campaigns/tutorial ~/result\fP or
 \fB\-p=MULTIPLAYER,MY_OWN_CAMPAIGN ~/wesnoth/data/campaign/camp ~/result\fP
+.TP 
+\fB\-\-preprocess\-input\-macros <source file>\fP
+used only by the '\-\-preprocess' command.  Specifies a file that contains
+[preproc_define]s to be included before preprocessing.
+.TP 
+\fB\-\-preprocess\-output\-macros [<target file>]\fP
+used only by the '\-\-preprocess' command.  Will output all preprocessed
+macros in the target file. If the file is not specified the output will be
+file '_MACROS_.cfg' in the target directory of preprocess's command.  This
+switch should be typed before the \-\-preprocess command.
 .TP 
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
 nastaví rozlíšenie obrazovky. Napríklad: \fB\-r 800x600\fP
@@ -176,11 +188,11 @@ zvolí konfiguračný súbor na načítanie pre počítačového hráča za dan�
 \fB\-\-algorithm\fP\fIčíslo\fP\fB=\fP\fIhodnota\fP
 nastaví neštandardný algoritmus počítačovému hráčovi za danú stranu. Možné
 hodnoty: \fBidle_ai\fP a \fBsample_ai\fP.
-.TP  
+.TP 
 \fB\-\-controller\fP\fIčíslo\fP\fB=\fP\fIhodnota\fP
 nastaví ovládanie pre danú stranu. Možné hodnoty: \fBhuman\fP (človek) a \fBai\fP
 (počítač).
-.TP  
+.TP 
 \fB\-\-era=\fP\fIhodnota\fP
 táto možnosť umožňuje hrať v inej ako štandardnej (\fBDefault\fP) ére. Éra sa
 zadáva pomocou id. Éry sú definované v súbore \fBdata/multiplayer/eras.cfg\fP.

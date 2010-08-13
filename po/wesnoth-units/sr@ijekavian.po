@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-units\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-07-19 00:25+0200\n"
+"POT-Creation-Date: 2010-08-13 11:31+0200\n"
 "PO-Revision-Date: 2010-03-02 11:21+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -321,19 +321,19 @@ msgstr ""
 #: data/core/units/goblins/Spearman.cfg:53
 #: data/core/units/humans/Horseman.cfg:36
 #: data/core/units/humans/Loyalist_Javelineer.cfg:40
-#: data/core/units/humans/Loyalist_Spearman.cfg:87
+#: data/core/units/humans/Loyalist_Spearman.cfg:59
 #: data/core/units/merfolk/Hoplite.cfg:48
 #: data/core/units/merfolk/Hunter.cfg:37 data/core/units/merfolk/Hunter.cfg:45
 #: data/core/units/merfolk/Javelineer.cfg:37
 #: data/core/units/merfolk/Javelineer.cfg:45
 #: data/core/units/merfolk/Spearman.cfg:36
 #: data/core/units/merfolk/Spearman.cfg:44
-#: data/core/units/saurians/Ambusher.cfg:39
-#: data/core/units/saurians/Ambusher.cfg:48
-#: data/core/units/saurians/Flanker.cfg:40
-#: data/core/units/saurians/Flanker.cfg:49
-#: data/core/units/saurians/Skirmisher.cfg:133
-#: data/core/units/saurians/Skirmisher.cfg:142
+#: data/core/units/saurians/Ambusher.cfg:38
+#: data/core/units/saurians/Ambusher.cfg:47
+#: data/core/units/saurians/Flanker.cfg:39
+#: data/core/units/saurians/Flanker.cfg:48
+#: data/core/units/saurians/Skirmisher.cfg:132
+#: data/core/units/saurians/Skirmisher.cfg:141
 #: data/core/units/undead/Skele_Chocobone.cfg:26
 msgid "spear"
 msgstr "копље"
@@ -734,8 +734,8 @@ msgstr "бојна сјекира"
 #. [attack]: type=blade
 #: data/core/units/dwarves/Explorer.cfg:51
 #: data/core/units/dwarves/Fighter.cfg:47
-#: data/core/units/dwarves/Pathfinder.cfg:37
-#: data/core/units/dwarves/Pathfinder.cfg:45
+#: data/core/units/dwarves/Pathfinder.cfg:155
+#: data/core/units/dwarves/Pathfinder.cfg:163
 #: data/core/units/dwarves/Scout.cfg:37 data/core/units/dwarves/Scout.cfg:45
 #: data/core/units/undead/Skele_Deathblade.cfg:162
 #: data/core/units/undead/Skele_Draug.cfg:43
@@ -796,7 +796,7 @@ msgstr ""
 #: data/core/units/dwarves/Sentinel.cfg:60
 #: data/core/units/dwarves/Stalwart.cfg:55
 #: data/core/units/humans/Loyalist_Javelineer.cfg:51
-#: data/core/units/humans/Loyalist_Spearman.cfg:99
+#: data/core/units/humans/Loyalist_Spearman.cfg:71
 msgid "javelin"
 msgstr "џилит"
 
@@ -830,12 +830,13 @@ msgstr "патуљ-наступач"
 
 #. [unit_type]: id=Dwarvish Pathfinder, race=dwarf
 #: data/core/units/dwarves/Pathfinder.cfg:18
+#, fuzzy
 msgid ""
 "These hardy dwarves are sometimes away from their caves for long periods, "
 "scouting and patrolling the borders. They spend this time watching for "
 "invaders, and fighting bandits and thieves who encroach on dwarvish "
-"territory. They are powerful fighters in a melee, and from a distance their "
-"deftly thrown axes can rival the power and accuracy of a human archer."
+"territory. They are powerful pathfinders in a melee, and from a distance "
+"their deftly thrown axes can rival the power and accuracy of a human archer."
 msgstr ""
 "Ови срчани патуљци понекад проводе дуго времена изван својих пећина, "
 "извиђајући и надгледајући границе. Вријеме проводе пазећи на упадице и "
@@ -1063,7 +1064,7 @@ msgstr ""
 #: data/core/units/humans/Woodsman_Ranger.cfg:59
 #: data/core/units/nagas/Fighter.cfg:102 data/core/units/nagas/Myrmidon.cfg:43
 #: data/core/units/nagas/Warrior.cfg:41 data/core/units/orcs/Grunt.cfg:71
-#: data/core/units/orcs/Leader.cfg:28
+#: data/core/units/orcs/Leader.cfg:41
 msgid "sword"
 msgstr "мач"
 
@@ -1203,9 +1204,9 @@ msgstr ""
 #: data/core/units/merfolk/Enchantress.cfg:37
 #: data/core/units/merfolk/Initiate.cfg:40
 #: data/core/units/merfolk/Priestess.cfg:97
-#: data/core/units/saurians/Augur.cfg:78
+#: data/core/units/saurians/Augur.cfg:39
 #: data/core/units/saurians/Oracle.cfg:78
-#: data/core/units/saurians/Soothsayer.cfg:78
+#: data/core/units/saurians/Soothsayer.cfg:39
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:99
 msgid "staff"
 msgstr "штап"
@@ -2047,9 +2048,9 @@ msgstr ""
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:53
 #: data/core/units/humans/Loyalist_Sergeant.cfg:56
 #: data/core/units/orcs/Crossbowman.cfg:46
-#: data/core/units/orcs/Crossbowman.cfg:55 data/core/units/orcs/Leader.cfg:37
-#: data/core/units/orcs/Ruler.cfg:36 data/core/units/orcs/Slurbow.cfg:51
-#: data/core/units/orcs/Slurbow.cfg:60 data/core/units/orcs/Sovereign.cfg:37
+#: data/core/units/orcs/Crossbowman.cfg:55 data/core/units/orcs/Leader.cfg:50
+#: data/core/units/orcs/Ruler.cfg:49 data/core/units/orcs/Slurbow.cfg:51
+#: data/core/units/orcs/Slurbow.cfg:60 data/core/units/orcs/Sovereign.cfg:50
 #: data/core/units/undead/Skele_Death_Knight.cfg:54
 msgid "crossbow"
 msgstr "самостријел"
@@ -4111,7 +4112,7 @@ msgid "Orcish Leader"
 msgstr "орко-главник"
 
 #. [unit_type]: id=Orcish Leader, race=orc
-#: data/core/units/orcs/Leader.cfg:19
+#: data/core/units/orcs/Leader.cfg:20
 msgid ""
 "Unusually cunning orcs tend to find themselves as the leaders of warrior "
 "bands. They carry a bow out of necessity, but are much more skilled with the "
@@ -4130,7 +4131,7 @@ msgid "Orcish Ruler"
 msgstr "орко-владар"
 
 #. [unit_type]: id=Orcish Ruler, race=orc
-#: data/core/units/orcs/Ruler.cfg:18
+#: data/core/units/orcs/Ruler.cfg:19
 msgid ""
 "Any orc who can keep a large tribe from feuding and in-fighting is often "
 "unusually intelligent and commanding, and is inevitably very strong as well. "
@@ -4145,7 +4146,7 @@ msgstr ""
 "наређења која се прате не из страха, већ оданости."
 
 #. [attack]: type=blade
-#: data/core/units/orcs/Ruler.cfg:27 data/core/units/orcs/Sovereign.cfg:28
+#: data/core/units/orcs/Ruler.cfg:40 data/core/units/orcs/Sovereign.cfg:41
 #: data/core/units/orcs/Warlord.cfg:37 data/core/units/orcs/Warrior.cfg:35
 msgid "greatsword"
 msgstr "велики мач"
@@ -4203,7 +4204,7 @@ msgid "Orcish Sovereign"
 msgstr "орко-суверен"
 
 #. [unit_type]: id=Orcish Sovereign, race=orc
-#: data/core/units/orcs/Sovereign.cfg:19
+#: data/core/units/orcs/Sovereign.cfg:20
 msgid ""
 "From time to time, an orc will arise who has a natural charisma and command "
 "over his ilk. If he is also strong and cunning enough to survive early "
@@ -4281,7 +4282,7 @@ msgid "Saurian Augur"
 msgstr "саур-претсказач"
 
 #. [unit_type]: id=Saurian Augur, race=lizard
-#: data/core/units/saurians/Augur.cfg:21
+#: data/core/units/saurians/Augur.cfg:20
 msgid ""
 "Saurians have some knowledge of what men call sorcery, but their practice of "
 "it reeks of augury and black magic. It is little understood, but rightly "
@@ -4292,9 +4293,9 @@ msgstr ""
 "на гласу је по страху међу онима против којих се употреби."
 
 #. [attack]: type=cold
-#: data/core/units/saurians/Augur.cfg:87
+#: data/core/units/saurians/Augur.cfg:48
 #: data/core/units/saurians/Oracle.cfg:87
-#: data/core/units/saurians/Soothsayer.cfg:87
+#: data/core/units/saurians/Soothsayer.cfg:48
 msgid "curse"
 msgstr "клетва"
 
@@ -4370,7 +4371,7 @@ msgid "Saurian Soothsayer"
 msgstr "саур-правоказ"
 
 #. [unit_type]: id=Saurian Soothsayer, race=lizard
-#: data/core/units/saurians/Soothsayer.cfg:21
+#: data/core/units/saurians/Soothsayer.cfg:20
 msgid ""
 "Saurians are known to have some strange skills, arts bordering on the "
 "magical and mysterious. It is clear that some of them are particularly "

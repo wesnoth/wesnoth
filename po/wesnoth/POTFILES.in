@@ -44,6 +44,7 @@ src/ana/src/asio_listener.cpp
 src/ana/src/asio_proxy_connection.cpp
 src/ana/src/asio_sender.cpp
 src/ana/src/asio_server.cpp
+src/ana/src/asio_timers.cpp
 src/ana/test/ana_client.cpp
 src/ana/test/sdl_server.cpp
 src/animated_game.cpp
@@ -64,6 +65,7 @@ src/dialogs.cpp
 src/display.cpp
 src/editor/editor_preferences.cpp
 src/events.cpp
+src/exceptions.cpp
 src/filesystem.cpp
 src/floating_textbox.cpp
 src/formula.cpp
@@ -113,6 +115,7 @@ src/multiplayer_create.cpp
 src/multiplayer_ui.cpp
 src/multiplayer_wait.cpp
 src/network_ana.cpp
+src/network_async.cpp
 src/network.cpp
 src/network_manager_ana.cpp
 src/network_worker.cpp
@@ -191,6 +194,7 @@ src/unit_animation.cpp
 src/unit.cpp
 src/unit_display.cpp
 src/unit_frame.cpp
+src/unit_helper.cpp
 src/unit_id.cpp
 src/unit_map.cpp
 src/unit_types.cpp
@@ -206,6 +210,8 @@ src/whiteboard/highlight_visitor.cpp
 src/whiteboard/manager.cpp
 src/whiteboard/mapbuilder_visitor.cpp
 src/whiteboard/move.cpp
+src/whiteboard/recall.cpp
+src/whiteboard/recruit.cpp
 src/whiteboard/side_actions.cpp
 src/whiteboard/validate_visitor.cpp
 src/whiteboard/visitor.cpp

@@ -54,8 +54,9 @@ difficulty is 1.  The scenario must be one of the campaign's child
 scenarios. The default scenario is campaign's first scenario.
 .TP 
 \fB\-\-config\-dir\fP\fI\ jméno\fP
-nastaví adresář s uživatelskými daty na \fIjméno\fP v $HOME nebo "Dokumenty\eMy
-Games" pod Windows.
+sets the user configuration directory to \fIname\fP under $HOME or "My
+Documents\eMy Games" for windows.  You can also specify an absolute path for
+the configuration directory outside the $HOME or "My Documents\eMy Games"
 .TP 
 \fB\-\-config\-path\fP
 pouze zobrazí cestu k adresáři s konfiguračními soubory a skončí.
@@ -136,9 +137,20 @@ folder is specified, it will be preprocessed recursively based on the known
 preprocessor rules. The common macroses from the data/core/macros will be
 preprocessed before the specified resources.  \fBdefine1,define2,...\fP \- the
 extra defines will be added before processing the files. If you want to add
-them you must add the '=' character before.  Example: \fB\-p
+them you must add the '=' character before.  If 'SKIP_CORE' is in the define
+list the data/core won't be preprocessed.  Example: \fB\-p
 ~/wesnoth/data/campaigns/tutorial ~/result\fP or
 \fB\-p=MULTIPLAYER,MY_OWN_CAMPAIGN ~/wesnoth/data/campaign/camp ~/result\fP
+.TP 
+\fB\-\-preprocess\-input\-macros <source file>\fP
+used only by the '\-\-preprocess' command.  Specifies a file that contains
+[preproc_define]s to be included before preprocessing.
+.TP 
+\fB\-\-preprocess\-output\-macros [<target file>]\fP
+used only by the '\-\-preprocess' command.  Will output all preprocessed
+macros in the target file. If the file is not specified the output will be
+file '_MACROS_.cfg' in the target directory of preprocess's command.  This
+switch should be typed before the \-\-preprocess command.
 .TP 
 \fB\-r\ \fP\fIX\fP\fBx\fP\fIY\fP\fB,\ \-\-resolution\ \fP\fIX\fP\fBx\fP\fIY\fP
 nastavuje rozlišení. Příklad: \fB\-r 800x600\fP
@@ -178,10 +190,10 @@ vybere konfigurační soubor k načtení pro AI dané strany.
 \fB\-\-algorithm\fP\fIstrana\fP\fB=\fP\fIhodnota\fP
 vybírá nestandardní algoritmus, který bude použit pro umělou inteligenci
 této strany. Momentálně jsou k dispozici hodnoty: \fBidle_ai\fP a \fBsample_ai\fP.
-.TP  
+.TP 
 \fB\-\-controller\fP\fIstrana\fP\fB=\fP\fIhodnota\fP
 vybírá druh ovládání strany. Použitelné hodnoty jsou \fBhuman\fP a \fBai\fP.
-.TP  
+.TP 
 \fB\-\-era=\fP\fIhodnota\fP
 použij tuto volbu pro hraní ve specifické éře místo éry \fBDefault\fP. Éra je
 vybrána pomocí svého id. Všechny éry jsou popsány v souboru
