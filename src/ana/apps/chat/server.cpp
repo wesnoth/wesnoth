@@ -126,7 +126,7 @@ class ChatServer : public listener_handler,
 
         virtual void handle_receive( ana::error_code          error,
                                      net_id                   client,
-                                     ana::detail::read_buffer buffer)
+                                     ana::read_buffer         buffer)
         {
             if (! error)
             {

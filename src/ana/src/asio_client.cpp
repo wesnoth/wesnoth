@@ -240,7 +240,7 @@ ana::operation_id asio_client::send(boost::asio::const_buffer buffer,
     return last_valid_operation_id_;
 }
 
-void asio_client::log_receive( ana::detail::read_buffer buffer )
+void asio_client::log_receive( ana::read_buffer buffer )
 {
     stats_collector_.log_receive( buffer );
 }

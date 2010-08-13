@@ -91,14 +91,14 @@ class ana_component
         const ana::stats* get_stats( ana::stat_type type = ana::ACCUMULATED ) const;
 
         /** Push a buffer to the queue of incoming messages. */
-        void add_buffer(ana::detail::read_buffer buffer, ana::net_id id);
+        void add_buffer(ana::read_buffer buffer, ana::net_id id);
 
         /**
          * Blocking operation to wait for a message in a component.
          *
          * @returns The buffer that was received first from all pending buffers.
          */
-        ana::detail::read_buffer wait_for_element();
+        ana::read_buffer wait_for_element();
 
         /** Returns the network id of the oldest sender of a pending buffer. */
         network::connection oldest_sender_id_still_pending();
@@ -118,7 +118,7 @@ class ana_component
         boost::mutex                   mutex_;
         boost::condition_variable      condition_;
 
-        std::queue< ana::detail::read_buffer > buffers_;
+        std::queue< ana::read_buffer > buffers_;
         std::queue< network::connection >      sender_ids_;
 };
 
@@ -246,7 +246,7 @@ class ana_receive_handler : public ana::listener_handler
         }
 
     private:
-        virtual void handle_receive   (ana::error_code, ana::net_id, ana::detail::read_buffer);
+        virtual void handle_receive   (ana::error_code, ana::net_id, ana::read_buffer);
         virtual void handle_disconnect(ana::error_code, ana::net_id);
 
         void handle_timeout(ana::error_code error_code);
@@ -297,7 +297,7 @@ class ana_multiple_receive_handler : public ana::listener_handler
         }
 
         /** Returns the buffer from the operation. */
-        ana::detail::read_buffer buffer() const
+        ana::read_buffer buffer() const
         {
             return buffer_;
         }
@@ -308,7 +308,7 @@ class ana_multiple_receive_handler : public ana::listener_handler
         }
 
     private:
-        virtual void handle_receive   (ana::error_code, ana::net_id, ana::detail::read_buffer);
+        virtual void handle_receive   (ana::error_code, ana::net_id, ana::read_buffer);
         virtual void handle_disconnect(ana::error_code, ana::net_id);
 
         void handle_timeout(ana::error_code error_code);
@@ -319,7 +319,7 @@ class ana_multiple_receive_handler : public ana::listener_handler
         boost::mutex             handler_mutex_;
         boost::mutex             timeout_called_mutex_;
         ana::error_code          error_code_;
-        ana::detail::read_buffer buffer_;
+        ana::read_buffer buffer_;
         network::connection      wesnoth_id_;
         ana::timer*              receive_timer_;
         bool                     finished_;
@@ -362,34 +362,6 @@ class ana_connect_handler : public ana::connection_handler
         boost::mutex       mutex_;
         ana::error_code    error_code_;
 };
-
-class ana_simple_receive_handler : public ana::listener_handler
-{
-    public:
-        ana_simple_receive_handler( );
-
-        /** Destructor. */
-        ~ana_simple_receive_handler();
-
-        const ana::error_code& error() const;
-
-        /** Locks current thread until a message or an error has been received. */
-        void wait_completion();
-
-        /** Returns the buffer from the operation. */
-        ana::detail::read_buffer buffer() const;
-    private:
-        virtual void handle_receive( ana::error_code          error,
-                                     ana::net_id              client,
-                                     ana::detail::read_buffer buffer);
-
-        virtual void handle_disconnect( ana::error_code, ana::net_id );
-
-        boost::mutex             mutex_;
-        ana::error_code          error_code_;
-        ana::detail::read_buffer buffer_;
-};
-
 
 /**
  * Provides network functionality for Wesnoth using the ana API and library.
@@ -510,7 +482,7 @@ class ana_network_manager : public ana::listener_handler,
 
         virtual void handle_receive( ana::error_code          error,
                                      ana::net_id              client,
-                                     ana::detail::read_buffer buffer);
+                                     ana::read_buffer buffer);
 
         virtual void handle_disconnect(ana::error_code /*error_code*/, ana::net_id client);
 
@@ -530,7 +502,7 @@ class ana_network_manager : public ana::listener_handler,
          * @param buffer : The buffer with the compressed stream as input.
          * @param cfg : The config object as output.
          */
-        void read_config( const ana::detail::read_buffer& buffer, config& cfg);
+        void read_config( const ana::read_buffer& buffer, config& cfg);
 
         // Attributes
         ana::timer*                connect_timer_;

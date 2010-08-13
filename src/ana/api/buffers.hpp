@@ -126,9 +126,6 @@ namespace ana
                 size_t size_;
         };
 
-        /** A shared pointer to a read_buffer, self destructs when no one is referencing it. */
-        typedef boost::shared_ptr<read_buffer_implementation> read_buffer;
-
         /**
          * A buffer to be constructed from different buffers that can duplicate the other
          * and hold a local copy that will destruct with the object itself.
@@ -171,6 +168,10 @@ namespace ana
     typedef boost::shared_ptr<detail::copying_buffer> shared_buffer;
 
     } //namespace detail
+
+    /** A shared pointer to a read_buffer, self destructs when no one is referencing it. */
+    typedef boost::shared_ptr<detail::read_buffer_implementation> read_buffer;
+
 
     /** @name Buffer creation methods
      *

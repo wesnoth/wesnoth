@@ -139,7 +139,7 @@ void ana_receive_handler::wait_completion(ana::detail::timed_sender* component, 
 
 void ana_receive_handler::handle_receive(ana::error_code          error_c,
                                          ana::net_id              client,
-                                         ana::detail::read_buffer read_buffer)
+                                         ana::read_buffer read_buffer)
 {
     boost::mutex::scoped_lock lock( handler_mutex_);
 
@@ -264,7 +264,7 @@ void ana_multiple_receive_handler::wait_completion(size_t timeout_ms )
 
 void ana_multiple_receive_handler::handle_receive(ana::error_code          error_c,
                                                   ana::net_id              id,
-                                                  ana::detail::read_buffer read_buffer)
+                                                  ana::read_buffer read_buffer)
 {
     boost::mutex::scoped_lock lock( handler_mutex_);
 
@@ -325,52 +325,6 @@ void ana_multiple_receive_handler::handle_timeout(ana::error_code error_code)
 
 // Begin ana_connect_handler implementation -------------------------------------------------------
 
-ana_simple_receive_handler::ana_simple_receive_handler( ) :
-    mutex_(),
-    error_code_(),
-    buffer_()
-{
-    mutex_.lock();
-}
-
-ana_simple_receive_handler::~ana_simple_receive_handler()
-{
-    mutex_.lock();
-    mutex_.unlock();
-}
-
-const ana::error_code& ana_simple_receive_handler::error() const
-{
-    return error_code_;
-}
-
-void ana_simple_receive_handler::wait_completion()
-{
-    mutex_.lock();
-    mutex_.unlock();
-}
-
-ana::detail::read_buffer ana_simple_receive_handler::buffer() const
-{
-    return buffer_;
-}
-
-void ana_simple_receive_handler::handle_receive( ana::error_code          error,
-                                                 ana::net_id              /*client*/,
-                                                 ana::detail::read_buffer buffer)
-{
-    error_code_ = error;
-    buffer_     = buffer;
-    mutex_.unlock();
-}
-
-void ana_simple_receive_handler::handle_disconnect( ana::error_code error, ana::net_id )
-{
-    error_code_ = error;
-}
-
-// Begin ana_connect_handler implementation -------------------------------------------------------
-
 ana_connect_handler::ana_connect_handler( ) :
     mutex_( ),
     error_code_()
@@ -393,13 +347,6 @@ void ana_connect_handler::handle_connect(ana::error_code error_code, ana::net_id
 {
     error_code_ = error_code;
     mutex_.unlock();
-/*    if ( ! error_code_ )
-    {
-        error_code_ = error_code;
-        mutex_.unlock();         //only unlock if it's the first time called
-    }
-    else
-        error_code_ = error_code; //use the latest error*/
 }
 
 void ana_connect_handler::wait_completion()
@@ -522,7 +469,7 @@ const ana::stats* ana_component::get_stats( ana::stat_type type ) const
     return listener()->get_stats( type );
 }
 
-void ana_component::add_buffer(ana::detail::read_buffer buffer, ana::net_id id)
+void ana_component::add_buffer(ana::read_buffer buffer, ana::net_id id)
 {
     {
         boost::lock_guard<boost::mutex> lock(mutex_);
@@ -534,14 +481,14 @@ void ana_component::add_buffer(ana::detail::read_buffer buffer, ana::net_id id)
     condition_.notify_all();
 }
 
-ana::detail::read_buffer ana_component::wait_for_element()
+ana::read_buffer ana_component::wait_for_element()
 {
     boost::unique_lock<boost::mutex> lock(mutex_);
 
     while(buffers_.empty())
         condition_.wait(lock);
 
-    const ana::detail::read_buffer buffer_ret = buffers_.front();
+    const ana::read_buffer buffer_ret = buffers_.front();
 
     buffers_.pop();
 
@@ -711,30 +658,17 @@ network::connection ana_network_manager::create_client_and_connect(std::string h
                 uint32_t my_id;
                 ana::serializer::bistream bis;
 
-                ana_simple_receive_handler rcv_handler;
-                client->set_listener_handler( &rcv_handler );
-                client->expecting_message( ana::time::seconds( 3 ) );
+                client->wait_raw_object(bis, sizeof(uint32_t) );
+
+                bis >> my_id;
+                ana::network_to_host_long( my_id );
+
+                new_component->set_wesnoth_id( my_id );
+
+                client->set_header_first_mode();
                 client->run_listener();
-                rcv_handler.wait_completion();
-                client->cancel_pending();
-                client->set_listener_handler( this );
 
-                if ( rcv_handler.error() )
-                    throw network::error(_("Could not connect to host"), client->id() );
-                else
-                {
-                    bis.str( rcv_handler.buffer()->string() );
-    //                 client->wait_raw_object(bis, sizeof(my_id) );
-
-                    bis >> my_id;
-                    ana::network_to_host_long( my_id );
-
-                    new_component->set_wesnoth_id( my_id );
-
-                    client->set_header_first_mode();
-                    client->run_listener();
-                    return network::connection( client->id() );
-                }
+                return network::connection( client->id() );
             }
         }
     }
@@ -890,7 +824,7 @@ void ana_network_manager::compress_config( const config& cfg, std::ostringstream
 }
 
 
-void ana_network_manager::read_config( const ana::detail::read_buffer& buffer, config& cfg)
+void ana_network_manager::read_config( const ana::read_buffer& buffer, config& cfg)
 {
     std::istringstream input( buffer->string() );
 
@@ -1138,7 +1072,7 @@ network::connection ana_network_manager::read_from_all( std::vector<char>& vec)
     {
         if (  (*it)->new_buffer_ready() )
         {
-            ana::detail::read_buffer buffer = (*it)->wait_for_element();
+            ana::read_buffer buffer = (*it)->wait_for_element();
 
             char* ch = buffer->base_char();
             for (size_t i = 0; i < buffer->size(); ++i)  // copy the buffer
@@ -1213,7 +1147,7 @@ void ana_network_manager::handle_send(ana::error_code error_code,
 
 void ana_network_manager::handle_receive( ana::error_code          error,
                                           ana::net_id              client,
-                                          ana::detail::read_buffer buffer)
+                                          ana::read_buffer buffer)
 {
     if (error)
         network::disconnect( client );

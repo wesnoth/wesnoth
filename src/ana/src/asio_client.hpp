@@ -89,7 +89,7 @@ class asio_client : public ana::client,
 
         virtual tcp::socket& socket();
 
-        virtual void log_receive( ana::detail::read_buffer buffer );
+        virtual void log_receive( ana::read_buffer buffer );
 
         virtual const ana::stats* get_stats( ana::stat_type type ) const;
 

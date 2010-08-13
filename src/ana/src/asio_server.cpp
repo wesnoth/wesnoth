@@ -295,7 +295,7 @@ const ana::stats* asio_server::get_client_stats( ana::net_id id, ana::stat_type 
         return NULL; //No such client
 }
 
-void asio_server::log_receive( ana::detail::read_buffer buffer )
+void asio_server::log_receive( ana::read_buffer buffer )
 {
     stats_collector_.log_receive( buffer );
 }

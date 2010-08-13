@@ -130,7 +130,7 @@ class asio_server : public  ana::server,
 
         virtual const ana::stats* get_client_stats( ana::net_id, ana::stat_type ) const;
 
-        virtual void log_receive( ana::detail::read_buffer buffer );
+        virtual void log_receive( ana::read_buffer buffer );
 
         virtual const ana::stats* get_stats( ana::stat_type type ) const;
 

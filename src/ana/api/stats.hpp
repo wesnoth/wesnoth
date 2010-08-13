@@ -122,7 +122,7 @@ namespace ana
                         ++packets_out_;
                 }
 
-                void log_receive( detail::read_buffer buffer )
+                void log_receive( read_buffer buffer )
                 {
                     ++packets_in_;
                     bytes_in_ += buffer->size();
@@ -263,7 +263,7 @@ namespace ana
             }
 
 
-            void log_receive( detail::read_buffer buffer )
+            void log_receive( read_buffer buffer )
             {
                 accumulator_.log_receive  ( buffer );
                 seconds_stats_.log_receive( buffer );
