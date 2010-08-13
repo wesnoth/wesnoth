@@ -97,7 +97,7 @@ void asio_sender::handle_sent_header(const ana::error_code&      ec,
 {
     delete bos;
 
-    if (bytes_sent != sizeof(uint32_t) )
+    if (bytes_sent != sizeof( ana::ana_uint32 ) )
         throw std::runtime_error("Couldn't send header.");
 
     if ( ec )

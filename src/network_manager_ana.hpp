@@ -363,6 +363,34 @@ class ana_connect_handler : public ana::connection_handler
         ana::error_code    error_code_;
 };
 
+class ana_simple_receive_handler : public ana::listener_handler
+{
+    public:
+        ana_simple_receive_handler( );
+
+        /** Destructor. */
+        ~ana_simple_receive_handler();
+
+        const ana::error_code& error() const;
+
+        /** Locks current thread until a message or an error has been received. */
+        void wait_completion();
+
+        /** Returns the buffer from the operation. */
+        ana::detail::read_buffer buffer() const;
+    private:
+        virtual void handle_receive( ana::error_code          error,
+                                     ana::net_id              client,
+                                     ana::detail::read_buffer buffer);
+
+        virtual void handle_disconnect( ana::error_code, ana::net_id );
+
+        boost::mutex             mutex_;
+        ana::error_code          error_code_;
+        ana::detail::read_buffer buffer_;
+};
+
+
 /**
  * Provides network functionality for Wesnoth using the ana API and library.
  */
@@ -386,10 +414,6 @@ class ana_network_manager : public ana::listener_handler,
          * @returns The ID of the new created client, as a network::connection number.
          */
         network::connection create_client_and_connect(std::string host, int port);
-
-//         network::connection create_client_and_connect(std::string host,
-//                                                       int port,
-//                                                       threading::waiter&);
 
         network::connection new_connection_id( );
 

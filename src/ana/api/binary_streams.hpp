@@ -38,7 +38,6 @@
 
 #include <string>
 #include <assert.h>
-#include <stdint.h>
 
 namespace ana
 {
@@ -116,7 +115,7 @@ namespace ana
                  */
                 bostream& operator<< (const std::string& s)
                 {
-                    (*this) << uint32_t( s.size() );
+                    (*this) << ana::ana_uint32( s.size() );
                     _s += s;
                     return *this;
                 }
@@ -127,7 +126,7 @@ namespace ana
                 template <class Other>
                 bostream& operator<< (const std::vector<Other>& vec)
                 {
-                    const uint32_t size(vec.size());
+                    const ana::ana_uint32 size(vec.size());
                     (*this) << size;
                     for (size_t i(0); i < size; ++i)
                         (*this) << vec[i];
@@ -230,7 +229,7 @@ namespace ana
                  */
                 bistream& operator >> (std::string& str)
                 {
-                    uint32_t size;
+                    ana::ana_uint32 size;
                     (*this) >> size;
                     assert(_s.size() >= size+_pos);
                     str  = _s.substr(_pos,size);
@@ -249,7 +248,7 @@ namespace ana
                 template <class Other>
                 bistream& operator>> (std::vector<Other>& vec)
                 {
-                    uint32_t size;
+                    ana::ana_uint32 size;
                     (*this) >> size;
                     assert(_s.size() >= (size * sizeof(Other)) + _pos);
                     vec.resize(size);
@@ -298,7 +297,7 @@ namespace ana
                     _elements_left( size ),
                     _bos( bos )
                 {
-                    _bos << uint32_t( size );
+                    _bos << ana::ana_uint32( size );
                 }
 
                 /**
@@ -445,7 +444,7 @@ namespace ana
         {
             static void call(bostream* bos, const T& cont)
             {
-                const uint32_t size(cont.size());
+                const ana::ana_uint32 size(cont.size());
                 (*bos) << size;
 
                 typename T::const_iterator it( cont.begin() );

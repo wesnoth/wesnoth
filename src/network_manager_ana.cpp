@@ -323,6 +323,51 @@ void ana_multiple_receive_handler::handle_timeout(ana::error_code error_code)
     timeout_called_mutex_.unlock();
 }
 
+// Begin ana_connect_handler implementation -------------------------------------------------------
+
+ana_simple_receive_handler::ana_simple_receive_handler( ) :
+    mutex_(),
+    error_code_(),
+    buffer_()
+{
+    mutex_.lock();
+}
+
+ana_simple_receive_handler::~ana_simple_receive_handler()
+{
+    mutex_.lock();
+    mutex_.unlock();
+}
+
+const ana::error_code& ana_simple_receive_handler::error() const
+{
+    return error_code_;
+}
+
+void ana_simple_receive_handler::wait_completion()
+{
+    mutex_.lock();
+    mutex_.unlock();
+}
+
+ana::detail::read_buffer ana_simple_receive_handler::buffer() const
+{
+    return buffer_;
+}
+
+void ana_simple_receive_handler::handle_receive( ana::error_code          error,
+                                                 ana::net_id              /*client*/,
+                                                 ana::detail::read_buffer buffer)
+{
+    error_code_ = error;
+    buffer_     = buffer;
+    mutex_.unlock();
+}
+
+void ana_simple_receive_handler::handle_disconnect( ana::error_code error, ana::net_id )
+{
+    error_code_ = error;
+}
 
 // Begin ana_connect_handler implementation -------------------------------------------------------
 
@@ -346,13 +391,15 @@ const ana::error_code& ana_connect_handler::error() const
 
 void ana_connect_handler::handle_connect(ana::error_code error_code, ana::net_id /*client*/)
 {
-    if ( ! error_code_ )
+    error_code_ = error_code;
+    mutex_.unlock();
+/*    if ( ! error_code_ )
     {
         error_code_ = error_code;
         mutex_.unlock();         //only unlock if it's the first time called
     }
     else
-        error_code_ = error_code; //use the latest error
+        error_code_ = error_code; //use the latest error*/
 }
 
 void ana_connect_handler::wait_completion()
@@ -664,17 +711,30 @@ network::connection ana_network_manager::create_client_and_connect(std::string h
                 uint32_t my_id;
                 ana::serializer::bistream bis;
 
-                client->wait_raw_object(bis, sizeof(uint32_t) );
-
-                bis >> my_id;
-                ana::network_to_host_long( my_id );
-
-                new_component->set_wesnoth_id( my_id );
-
-                client->set_header_first_mode();
+                ana_simple_receive_handler rcv_handler;
+                client->set_listener_handler( &rcv_handler );
+                client->expecting_message( ana::time::seconds( 3 ) );
                 client->run_listener();
+                rcv_handler.wait_completion();
+                client->cancel_pending();
+                client->set_listener_handler( this );
 
-                return network::connection( client->id() );
+                if ( rcv_handler.error() )
+                    throw network::error(_("Could not connect to host"), client->id() );
+                else
+                {
+                    bis.str( rcv_handler.buffer()->string() );
+    //                 client->wait_raw_object(bis, sizeof(my_id) );
+
+                    bis >> my_id;
+                    ana::network_to_host_long( my_id );
+
+                    new_component->set_wesnoth_id( my_id );
+
+                    client->set_header_first_mode();
+                    client->run_listener();
+                    return network::connection( client->id() );
+                }
             }
         }
     }
@@ -684,24 +744,6 @@ network::connection ana_network_manager::create_client_and_connect(std::string h
         return 0;
     }
 }
-
-/*
-network::connection ana_network_manager::create_client_and_connect(std::string host,
-                                                                   int port,
-                                                                   threading::waiter& waiter)
-{
-    const threading::async_operation_ptr op(new connect_operation(this,components_,host,port));
-
-    const connect_operation::RESULT res = op->execute(op, waiter);
-
-    if(res == connect_operation::ABORTED)
-        return 0;
-
-    static_cast<connect_operation*>(op.get())->check_error();
-
-    return static_cast<connect_operation*>(op.get())->result();
-}
-*/
 
 network::connection ana_network_manager::new_connection_id( )
 {
