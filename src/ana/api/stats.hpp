@@ -307,7 +307,7 @@ namespace ana
                 else
                 {
                     current_packet_in_        = size;
-                    current_packet_in_max_    = std::max(size, current_packet_in_max_);
+                    current_packet_in_max_    = (std::max)(size, current_packet_in_max_);
                     current_packet_in_total_ += size;
                 }
             }
@@ -322,7 +322,7 @@ namespace ana
                 else
                 {
                     current_packet_out_        = size;
-                    current_packet_out_max_    = std::max(size, current_packet_out_max_);
+                    current_packet_out_max_    = (std::max)(size, current_packet_out_max_);
                     current_packet_out_total_ += size;
                 }
             }

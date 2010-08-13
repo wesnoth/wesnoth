@@ -20,8 +20,11 @@ target_link_libraries( ana-static ${Boost_SYSTEM_LIBRARY} ${Boost_THREAD_LIBRARY
 
 set ( CMAKE_INSTALL_PREFIX /usr/local )
 
-install ( TARGETS ana LIBRARY DESTINATION lib )
-install ( TARGETS ana-static ARCHIVE DESTINATION lib )
+IF(NOT MSVC)
+       set ( CMAKE_INSTALL_PREFIX /usr/local )
+       install ( TARGETS ana LIBRARY DESTINATION lib )
+       install ( TARGETS ana-static ARCHIVE DESTINATION lib )
+ENDIF(NOT MSVC)
 
 set ( ana_headers ../api/ana.hpp
                   ../api/common.hpp
@@ -30,4 +33,6 @@ set ( ana_headers ../api/ana.hpp
                   ../api/predicates.hpp
                   ../api/binary_streams.hpp )
 
-install ( FILES  ${ana_headers} DESTINATION include/ana )
+IF(NOT MSVC)
+       install ( FILES  ${ana_headers} DESTINATION include/ana )
+ENDIF(NOT MSVC)
