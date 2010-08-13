@@ -324,8 +324,6 @@ void manager::on_mouseover_change(const map_location& hex)
 		hidden_unit_hex_ = map_location();
 	}
 
-	//FIXME: Detect if a WML event is executing, and if so, avoid modifying the unit map during that time.
-	// Acting otherwise causes a crash.
 	if (!resources::screen->selected_hex().valid() && highlighter_)
 	{
 		highlighter_->set_mouseover_hex(hex);
