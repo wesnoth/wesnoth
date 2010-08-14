@@ -94,9 +94,13 @@ public class WMLHyperlinkHelper extends HyperlinkHelper
 		String filePath = define.getLocation().split(" ")[0];
 
 		if (filePath.startsWith("~")) // user addon relative location
-			filePath = filePath.replaceFirst("~", Preferences.getString(Constants.P_WESNOTH_USER_DIR) + "/data/");
+			filePath = filePath.replaceFirst("~",
+					Preferences.getString(Constants.P_WESNOTH_USER_DIR).replace('\\', '/') +
+					"/data/");
 		else if (filePath.startsWith("core")) // data/core relative location
-			filePath = filePath.replace("core", Preferences.getString(Constants.P_WESNOTH_WORKING_DIR) + "/data/core/");
+			filePath = filePath.replaceFirst("core",
+					Preferences.getString(Constants.P_WESNOTH_WORKING_DIR).replace('\\', '/') +
+					"/data/core/");
 
 		FileLocationOpenerHyperlink macroTarget = new FileLocationOpenerHyperlink();
 		macroTarget.setHyperlinkRegion(new Region(container.getOffset(), container.getLength()));
@@ -124,7 +128,8 @@ public class WMLHyperlinkHelper extends HyperlinkHelper
 			mapLocation = mapLocation.substring(1, value.getLength() - 1);
 
 		mapLocation = mapLocation.replaceFirst("~",
-				Preferences.getString(Constants.P_WESNOTH_USER_DIR) + "/data/");
+				Preferences.getString(Constants.P_WESNOTH_USER_DIR).replace('\\','/') +
+				"/data/");
 
 		ObjectStorageAdapter adapter = (ObjectStorageAdapter)EcoreUtil.getAdapter(value.eAdapters(),
 				ObjectStorageAdapter.class);
