@@ -137,7 +137,7 @@ public class ProjectUtils
 		{
 			ArrayList<ReplaceableParameter> param = new ArrayList<ReplaceableParameter>();
 			param.add(new ReplaceableParameter("$$project_name", handle.getName()));
-			param.add(new ReplaceableParameter("$$project_dir_name", ""));
+			param.add(new ReplaceableParameter("$$project_dir_name", handle.getName()));
 			ResourceUtils.createFile(handle, "build.xml",
 					TemplateProvider.getInstance().getProcessedTemplate("build_xml", param), true);
 		}
