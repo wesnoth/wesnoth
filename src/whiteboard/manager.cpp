@@ -22,8 +22,10 @@
 #include "highlight_visitor.hpp"
 #include "mapbuilder_visitor.hpp"
 #include "move.hpp"
+#include "recruit.hpp"
 #include "side_actions.hpp"
 
+#include "actions.hpp"
 #include "arrow.hpp"
 #include "chat_events.hpp"
 #include "foreach.hpp"
@@ -180,6 +182,19 @@ void manager::set_invert_behavior(bool invert)
 bool manager::can_execute_hotkey() const
 {
 	return !resources::controller->is_linger_mode() && !viewer_actions()->empty();
+}
+
+bool manager::allow_leader_to_move(unit const& leader) const
+{
+	foreach(action_const_ptr action, *viewer_actions())
+	{
+		if(recruit_const_ptr recruit = boost::dynamic_pointer_cast<class recruit const>(action))
+		{
+			if (can_recruit_on(*resources::game_map, leader.get_location(), recruit->get_recruit_hex()))
+				return false;
+		}
+	}
+	return true;
 }
 
 void manager::on_init_side()

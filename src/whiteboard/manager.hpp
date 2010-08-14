@@ -59,6 +59,7 @@ public:
 
 	void set_invert_behavior(bool invert);
 	bool can_execute_hotkey() const;
+	bool allow_leader_to_move(unit const& leader) const;
 
 	void on_init_side();
 	void on_finish_side_turn();
