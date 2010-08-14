@@ -143,8 +143,10 @@ public:
 		bool valid() const
 		{ return map_ && map_->is_valid(i_); }
 
-		bool operator==(const iterator_base& rhs) const { return i_ == rhs.i_; }
-		bool operator!=(const iterator_base& rhs) const { return !operator==(rhs); }
+		bool operator==(const iterator_base &rhs) const
+		{ assert(map_ == rhs.map_); return i_ == rhs.i_; }
+		bool operator!=(const iterator_base &rhs) const
+		{ return !operator==(rhs); }
 
 		map_type* get_map() const { return map_; }
 
