@@ -158,6 +158,27 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 							context));
 				}
 			}
+			else
+			{
+				if (model.eContainer() != null &&
+					model.eContainer() instanceof WMLTag)
+				{
+					WMLTag parent = (WMLTag) model.eContainer();
+					Tag tag = SchemaParser.getInstance().getTags().get(parent.getName());
+					if (tag != null)
+					{
+						TagKey tagKey = tag.getChildKey(key.getName());
+						if (tagKey.isEnum())
+						{
+							String[] values = tagKey.getValue().split(",");
+							for(String val : values)
+							{
+								acceptor.accept(createCompletionProposal(val, context));
+							}
+						}
+					}
+				}
+			}
 		}
 	}
 

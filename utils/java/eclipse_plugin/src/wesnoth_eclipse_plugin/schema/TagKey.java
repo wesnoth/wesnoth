@@ -24,7 +24,6 @@ public class TagKey
 	 * - = forbidden
 	 */
 	private char cardinality_;
-	private String	valueType_;
 	private String value_;
 	private boolean isEnum_;
 	private boolean isTranslatable_;
@@ -36,7 +35,6 @@ public class TagKey
 
 		if (valueType == null || valueType.isEmpty())
 		{
-			valueType_ = "";
 			isEnum_ = false;
 			isTranslatable_ = false;
 		}
@@ -45,7 +43,7 @@ public class TagKey
 			isEnum_ = valueType.substring(1, valueType.indexOf(" ")).equals("enum");
 
 			 // remove the " "
-			valueType_ = valueType.substring(valueType.indexOf(" ") + 1, valueType.length() - 1);
+			value_ = valueType.substring(valueType.indexOf(" ") + 1, valueType.length() - 1);
 			isTranslatable_ = trans;
 		}
 	}
@@ -134,9 +132,9 @@ public class TagKey
 		return value_;
 	}
 
-	public void setDefaultValue(String defaultValue)
+	public void setValue(String value)
 	{
-		value_ = defaultValue;
+		value_ = value;
 	}
 
 	public String getName()
@@ -144,17 +142,12 @@ public class TagKey
 		return name_;
 	}
 
-	public String getValueType()
-	{
-		return valueType_;
-	}
-
-	public boolean getIsTranslatable()
+	public boolean isTranslatable()
 	{
 		return isTranslatable_;
 	}
 
-	public boolean getIsEnum()
+	public boolean isEnum()
 	{
 		return isEnum_;
 	}

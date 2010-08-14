@@ -66,12 +66,12 @@ public class WizardGeneratorPageKey extends NewWizardPageTemplate
 			label.setText(key.getName() + (key.isRequired() ? "*" : "") + ":");
 
 			// if the is an enum create a combobox instead of textbox
-			if (key.getIsEnum())
+			if (key.isEnum())
 			{
 				Combo combo = new Combo(container_, SWT.READ_ONLY);
 				combo.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 				combo.setData("name", key.getName());
-				String[] items = key.getValueType().split(",");
+				String[] items = key.getValue().split(",");
 				combo.setItems(items);
 				combo.select(0);
 			}
@@ -81,9 +81,9 @@ public class WizardGeneratorPageKey extends NewWizardPageTemplate
 				textBox.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 
 				textBox.setData("name", key.getName());
-				textBox.setData("valType", key.getValueType());
+				textBox.setData("valType", key.getValue());
 				textBox.setData("card", key.getCardinality());
-				textBox.setData("trans", key.getIsTranslatable());
+				textBox.setData("trans", key.isTranslatable());
 				if (key.isRequired())
 					textBox.setData("comp", false); // is textbox complete
 

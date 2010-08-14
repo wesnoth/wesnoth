@@ -349,10 +349,7 @@ public class SchemaParser
 		for (TagKey key : tag.getKeyChildren())
 		{
 			res.append(StringUtils.multiples("\t", indent) +
-					"\t" + key.getName() + "=" +
-					(tag.getName().equals("description") ?
-							key.getValue() : key.getValueType())
-					+ "\n");
+					"\t" + key.getName() + "=" + key.getValue() + "\n");
 		}
 		for (Tag tmpTag : tag.getTagChildren())
 		{
