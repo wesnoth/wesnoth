@@ -22,19 +22,19 @@ import org.eclipse.xtext.parsetree.LeafNode;
 import org.eclipse.xtext.parsetree.NodeUtil;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
+import org.wesnoth.Logger;
+import org.wesnoth.preprocessor.Define;
+import org.wesnoth.schema.SchemaParser;
+import org.wesnoth.schema.Tag;
+import org.wesnoth.schema.TagKey;
 import org.wesnoth.ui.WMLUiModule;
 import org.wesnoth.ui.WMLUtil;
 import org.wesnoth.ui.labeling.WMLLabelProvider;
+import org.wesnoth.utils.ProjectUtils;
 import org.wesnoth.wML.WMLKey;
 import org.wesnoth.wML.WMLTag;
 import org.wesnoth.wML.impl.WMLFactoryImpl;
 
-import wesnoth_eclipse_plugin.Logger;
-import wesnoth_eclipse_plugin.preprocessor.Define;
-import wesnoth_eclipse_plugin.schema.SchemaParser;
-import wesnoth_eclipse_plugin.schema.Tag;
-import wesnoth_eclipse_plugin.schema.TagKey;
-import wesnoth_eclipse_plugin.utils.ProjectUtils;
 
 @SuppressWarnings("unused")
 public class WMLProposalProvider extends AbstractWMLProposalProvider

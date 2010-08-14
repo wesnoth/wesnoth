@@ -21,13 +21,13 @@ import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.XtextEditor;
 import org.eclipse.xtext.ui.editor.utils.EditorUtils;
 import org.eclipse.xtext.util.concurrent.IUnitOfWork;
+import org.wesnoth.Logger;
+import org.wesnoth.preprocessor.Define;
 import org.wesnoth.ui.WMLUtil;
+import org.wesnoth.utils.ProjectUtils;
 import org.wesnoth.wML.WMLMacroCall;
 import org.wesnoth.wML.WMLTag;
 
-import wesnoth_eclipse_plugin.Logger;
-import wesnoth_eclipse_plugin.preprocessor.Define;
-import wesnoth_eclipse_plugin.utils.ProjectUtils;
 
 /**
  * A handler that handles pressing F2 on a resource in the editor

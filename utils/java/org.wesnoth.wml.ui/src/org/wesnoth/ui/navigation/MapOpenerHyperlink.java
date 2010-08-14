@@ -11,8 +11,8 @@ package org.wesnoth.ui.navigation;
 import java.io.File;
 
 import org.eclipse.xtext.ui.editor.hyperlinking.XtextHyperlink;
+import org.wesnoth.utils.GameUtils;
 
-import wesnoth_eclipse_plugin.utils.GameUtils;
 
 public class MapOpenerHyperlink extends XtextHyperlink
 {

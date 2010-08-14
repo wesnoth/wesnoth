@@ -13,8 +13,8 @@ import org.eclipse.jface.text.IDocument;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.texteditor.ITextEditor;
 import org.eclipse.xtext.ui.editor.hyperlinking.XtextHyperlink;
+import org.wesnoth.utils.EditorUtils;
 
-import wesnoth_eclipse_plugin.utils.EditorUtils;
 
 /**
  * This is a hyperlink that opens a specified file

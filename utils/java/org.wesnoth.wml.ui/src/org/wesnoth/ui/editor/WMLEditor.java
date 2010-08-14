@@ -52,11 +52,11 @@ import org.eclipse.ui.texteditor.IDocumentProvider;
 import org.eclipse.xtext.parsetree.LeafNode;
 import org.eclipse.xtext.ui.editor.XtextEditor;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingHelper;
+import org.wesnoth.Activator;
+import org.wesnoth.Logger;
 import org.wesnoth.ui.WMLUiModule;
 import org.wesnoth.ui.syntax.WMLHighlightingHelper;
 
-import wesnoth_eclipse_plugin.Activator;
-import wesnoth_eclipse_plugin.Logger;
 
 import com.google.inject.Inject;
 

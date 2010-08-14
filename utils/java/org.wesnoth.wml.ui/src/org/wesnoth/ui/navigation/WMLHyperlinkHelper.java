@@ -17,15 +17,15 @@ import org.eclipse.xtext.parsetree.NodeUtil;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.ui.editor.hyperlinking.HyperlinkHelper;
 import org.eclipse.xtext.ui.editor.hyperlinking.IHyperlinkAcceptor;
+import org.wesnoth.Constants;
+import org.wesnoth.Logger;
+import org.wesnoth.preferences.Preferences;
+import org.wesnoth.preprocessor.Define;
 import org.wesnoth.ui.WMLUtil;
 import org.wesnoth.ui.emf.ObjectStorageAdapter;
+import org.wesnoth.utils.ProjectUtils;
 import org.wesnoth.wML.WMLMacroCall;
 
-import wesnoth_eclipse_plugin.Constants;
-import wesnoth_eclipse_plugin.Logger;
-import wesnoth_eclipse_plugin.preferences.Preferences;
-import wesnoth_eclipse_plugin.preprocessor.Define;
-import wesnoth_eclipse_plugin.utils.ProjectUtils;
 
 public class WMLHyperlinkHelper extends HyperlinkHelper
 {

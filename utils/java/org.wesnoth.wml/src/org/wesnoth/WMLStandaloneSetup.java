@@ -8,7 +8,7 @@
  *******************************************************************************/
 package org.wesnoth;
 
-import wesnoth_eclipse_plugin.schema.SchemaParser;
+import org.wesnoth.schema.SchemaParser;
 
 /**
  * Initialization support for running Xtext languages

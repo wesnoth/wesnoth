@@ -13,14 +13,14 @@ import org.eclipse.xtext.parsetree.LeafNode;
 import org.eclipse.xtext.parsetree.NodeUtil;
 import org.eclipse.xtext.validation.Check;
 import org.eclipse.xtext.validation.CheckType;
+import org.wesnoth.schema.SchemaParser;
+import org.wesnoth.schema.Tag;
 import org.wesnoth.wML.WMLKey;
 import org.wesnoth.wML.WMLMacroCall;
 import org.wesnoth.wML.WMLPackage;
 import org.wesnoth.wML.WMLRoot;
 import org.wesnoth.wML.WMLTag;
 
-import wesnoth_eclipse_plugin.schema.SchemaParser;
-import wesnoth_eclipse_plugin.schema.Tag;
 
 /**
  * This represents the validator for config files

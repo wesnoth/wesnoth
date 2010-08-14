@@ -14,9 +14,9 @@ import java.util.List;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.StyleRange;
 import org.eclipse.swt.widgets.Display;
+import org.wesnoth.schema.SchemaParser;
+import org.wesnoth.schema.Tag;
 
-import wesnoth_eclipse_plugin.schema.SchemaParser;
-import wesnoth_eclipse_plugin.schema.Tag;
 
 /**
  * Displays wml doc for a tag

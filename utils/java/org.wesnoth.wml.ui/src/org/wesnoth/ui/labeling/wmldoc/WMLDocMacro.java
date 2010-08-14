@@ -14,8 +14,8 @@ import java.util.List;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.StyleRange;
 import org.eclipse.swt.widgets.Display;
+import org.wesnoth.preprocessor.Define;
 
-import wesnoth_eclipse_plugin.preprocessor.Define;
 
 /**
  * Provides WMLDoc info for a macro
