@@ -51,9 +51,6 @@ public class Activator extends AbstractUIPlugin
 	@Override
 	public void stop(BundleContext context) throws Exception
 	{
-		plugin = null;
-		Logger.getInstance().stopLogger();
-
 		// save the caches of the projects on disk
 		for(Entry<IProject, ProjectCache> cache :
 					ProjectUtils.getProjectCaches().entrySet())
@@ -61,6 +58,10 @@ public class Activator extends AbstractUIPlugin
 			cache.getValue().saveCache();
 		}
 		PreprocessorUtils.getInstance().saveTimestamps();
+
+		Logger.getInstance().stopLogger();
+
+		plugin = null;
 		super.stop(context);
 	}
 
