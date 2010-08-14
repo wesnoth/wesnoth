@@ -19,6 +19,8 @@
 
 #include "global.hpp"
 
+#include <cstddef>
+
 class display;
 
 namespace editor {

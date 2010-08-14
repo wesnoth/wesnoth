@@ -27,8 +27,9 @@
 #include <map>
 #include <vector>
 
-#include "../../config.hpp"
-#include "../../foreach.hpp"
+#include "config.hpp"
+#include "foreach.hpp"
+#include "ai/composite/component.hpp"
 
 namespace ai{
 
