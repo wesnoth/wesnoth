@@ -6,17 +6,17 @@
 #
 # Czech Wesnoth translation team <wesnoth-cs-l@nospam.buchtovi.cz>,
 #
-# Oto 'tapik' Buchta <tapik@buchtovi.cz>, 2006, 2007.
-# Vladimír Slávik <slavik.vladimir@seznam.cz>, 2007 - 2009.
 #
+# Oto 'tapik' Buchta <tapik@buchtovi.cz>, 2006, 2007, 2010.
+# Vladimír Slávik <slavik.vladimir@seznam.cz>, 2007 - 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-08-13 11:39+0300\n"
-"PO-Revision-Date: 2010-04-26 23:15+0100\n"
-"Last-Translator: VladimírSlávik <slavik.vladimir@nospam@seznam.cz>\n"
-"Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
+"PO-Revision-Date: 2010-08-14 12:33+0200\n"
+"Last-Translator: Oto 'tapik' Buchta <tapik@buchtovi.cz>\n"
+"Language-Team: Český <wesnoth-cs-l@buchtovi.cz>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,6 +25,7 @@ msgstr ""
 "X-Poedit-Language: Czech\n"
 "X-Poedit-Country: CZECH REPUBLIC\n"
 "X-Poedit-Basepath: D:\\Dev\\wesnoth-trunk\n"
+"X-Generator: Lokalize 1.0\n"
 
 # type: TH
 #. type: TH
@@ -162,9 +163,6 @@ msgstr "B<--config-dir>I<\\ jméno>"
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:61
 #, fuzzy
-#| msgid ""
-#| "sets the user configuration directory to I<name> under $HOME or \"My "
-#| "Documents\\eMy Games\" for windows."
 msgid ""
 "sets the user configuration directory to I<name> under $HOME or \"My "
 "Documents\\eMy Games\" for windows.  You can also specify an absolute path "
@@ -226,9 +224,6 @@ msgstr "B<-e, --editor>I<\\ soubor>"
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:77
 #, fuzzy
-#| msgid ""
-#| "start the in-game map editor directly. If I<file> is specified, "
-#| "equivalent to B<-e --load>"
 msgid ""
 "start the in-game map editor directly. If I<file> is specified, equivalent "
 "to B<-l --load>"
@@ -824,7 +819,7 @@ msgstr "nastavuje počet kol pro vybraný scénář, implicitně je B<50>."
 #: ../../doc/man/wesnoth.6:266 ../../doc/man/wesnothd.6:265
 #, no-wrap
 msgid "EXIT STATUS"
-msgstr ""
+msgstr "NÁVRATOVÝ STATUS"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:269
@@ -833,6 +828,10 @@ msgid ""
 "fonts, etc) initialization error. An exit status of 2 indicates an error "
 "with the command line options."
 msgstr ""
+"Status normálního ukončení je 0. Návratový tatus 1 pak signalizuje chybu "
+"inicializace (ať už jde o knihovnu SDL, video, fonty či jiné knihovny). "
+"Status 2 pak signalizuje chybu při zpracování nějaké volby z příkazového "
+"řádku."
 
 # type: SH
 #. type: SH
@@ -910,7 +909,6 @@ msgstr "VIZ TAKÉ"
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:289
 #, fuzzy
-#| msgid "wesnothd"
 msgid "B<wesnothd>(6)."
 msgstr "wesnothd"
 
@@ -1777,6 +1775,9 @@ msgid ""
 "Normal exit status is 0 when the server was properly shutdown. An exit "
 "status of 2 indicates an error with the command line options."
 msgstr ""
+"Status normálního ukončení, tedy když se server korektně vypne, je 0. "
+"Návratový status 2 pak signalizuje chybu při zpracování nějaké volby z "
+"příkazového řádku."
 
 # type: Plain text
 #. type: Plain text
@@ -1800,17 +1801,8 @@ msgstr ""
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:286
 #, fuzzy
-#| msgid "wesnoth"
 msgid "B<wesnoth>(6)."
 msgstr "wesnoth"
-
-# type: Plain text
-#~ msgid "B<wesnoth_editor>(6), B<wesnothd>(6)"
-#~ msgstr "B<wesnoth_editor>(6), B<wesnothd>(6)"
-
-# type: Plain text
-#~ msgid "B<wesnoth>(6), B<wesnoth_editor>(6)"
-#~ msgstr "B<wesnoth>(6), B<wesnoth_editor>(6)"
 
 # type: TP
 #~ msgid "B<-c, --campaign>"
@@ -1819,3 +1811,11 @@ msgstr "wesnoth"
 # type: Plain text
 #~ msgid "goes directly to the campaign selection menu."
 #~ msgstr "přeskočí hlavní menu a zobrazí ihned seznam tažení."
+
+# type: Plain text
+#~ msgid "B<wesnoth_editor>(6), B<wesnothd>(6)"
+#~ msgstr "B<wesnoth_editor>(6), B<wesnothd>(6)"
+
+# type: Plain text
+#~ msgid "B<wesnoth>(6), B<wesnoth_editor>(6)"
+#~ msgstr "B<wesnoth>(6), B<wesnoth_editor>(6)"
