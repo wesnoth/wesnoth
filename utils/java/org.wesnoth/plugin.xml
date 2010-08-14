@@ -1,0 +1,659 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         id="Wesnoth_Eclipse_Plugin.projectBuilder"
+         name="Wesnoth Project Builder"
+         point="org.eclipse.core.resources.builders">
+      <builder hasNature="true">
+         <run
+               class="org.wesnoth.builder.WesnothProjectBuilder">
+         </run>
+      </builder>
+   </extension>
+   <extension
+         id="Wesnoth_Eclipse_Plugin.wesnothNature"
+         name="Wesnoth Project Nature"
+         point="org.eclipse.core.resources.natures">
+      <runtime>
+         <run
+               class="org.wesnoth.builder.WesnothProjectNature">
+         </run>
+      </runtime>
+      <builder
+            id="Wesnoth_Eclipse_Plugin.projectBuilder">
+      </builder>
+   </extension>
+   <extension
+         id="xmlProblem"
+         name="XML Problem"
+         point="org.eclipse.core.resources.markers">
+      <super
+            type="org.eclipse.core.resources.problemmarker">
+      </super>
+      <persistent
+            value="true">
+      </persistent>
+   </extension>
+   <extension
+         id="Wesnoth_Eclipse_Plugin.application"
+         point="org.eclipse.core.runtime.applications">
+      <application
+            icon="icons/wesnoth-icon_16.png"
+            thread="main"
+            visible="true">
+         <run
+               class="org.wesnoth.product.Application">
+         </run>
+      </application>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="org.wesnoth.preferences.Preferences">
+      </initializer>
+   </extension>
+   <extension
+         id="product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="Wesnoth_Eclipse_Plugin.application"
+            name="Wesnoth User Made Content IDE">
+         <property
+               name="appName"
+               value="Wesnoth User Made Content IDE">
+         </property>
+         <property
+               name="preferenceCustomization"
+               value="plugin_customization.ini">
+         </property>
+         <property
+               name="startupMessageRect"
+               value="94,275,285,15">
+         </property>
+         <property
+               name="startupProgressRect"
+               value="94,260,100,15">
+         </property>
+         <property
+               name="startupForegroundColor"
+               value="000000">
+         </property>
+      </product>
+   </extension>
+   <extension
+         id="Wesnoth_Eclipse_Plugin.help"
+         point="org.eclipse.help.toc">
+      <toc
+            file="toc.xml"
+            primary="true">
+      </toc>
+      <toc
+            file="tocfeatures.xml">
+      </toc>
+      <toc
+            file="tocgettingstarted.xml">
+      </toc>
+      <toc
+            file="tocreference.xml">
+      </toc>
+   </extension>
+   <extension
+         id="Wesnoth_Eclipse_Plugin.contexts"
+         point="org.eclipse.help.contexts">
+      <contexts
+            file="contextHelp.xml"
+            plugin="Wesnoth_Eclipse_Plugin">
+      </contexts>
+   </extension>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            default="true"
+            extensions="map"
+            icon="icons/wesnoth_editor-icon_16.png"
+            id="Wesnoth_Eclipse_Plugin.mapFileEditor"
+            launcher="org.wesnoth.editors.MapFileEditor"
+            name="Map files editor">
+      </editor>
+      <editor
+            default="false"
+            id="Wesnoth Eclipse Plugin.editor2"
+            name="name">
+      </editor>
+   </extension>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <category
+            id="wesnoth.eclipse.newWizards"
+            name="Wesnoth">
+      </category>
+      <wizard
+            category="wesnoth.eclipse.newWizards"
+            class="org.wesnoth.wizards.newfile.NewConfigFileWizard"
+            icon="icons/wesnoth-icon_16.png"
+            id="wesnoth_eclipse_plugin.wizards.newfile.NewConfigFileWizard"
+            name="Wesnoth file wizard (.cfg)">
+      </wizard>
+      <wizard
+            category="wesnoth.eclipse.newWizards"
+            class="org.wesnoth.wizards.emptyproject.EmptyProjectNewWizard"
+            icon="icons/wesnoth-icon_16.png"
+            id="wesnoth_eclipse_plugin.wizard.emptyProjectWizard"
+            name="Empty project"
+            project="true">
+         <description>
+            Creates a new empty project
+         </description>
+      </wizard>
+      <wizard
+            category="wesnoth.eclipse.newWizards"
+            class="org.wesnoth.wizards.campaign.CampaignNewWizard"
+            icon="icons/wesnoth-icon_16.png"
+            id="wesnoth_eclipse_plugin.wizards.CampaignNewWizard"
+            name="Wesnoth Campaign"
+            project="true">
+         <description>
+            Create a Wesnoth campaign.
+         </description>
+      </wizard>
+      <wizard
+            category="wesnoth.eclipse.newWizards"
+            class="org.wesnoth.wizards.scenario.ScenarioNewWizard"
+            icon="icons/wesnoth-icon_16.png"
+            id="wesnoth_eclipse_plugin.wizards.ScenarioNewWizard"
+            name="Wesnoth Scenario"
+            project="false">
+         <description>
+            Create a Wesnoth single player or multiplayer scenario.
+         </description>
+      </wizard>
+      <wizard
+            category="wesnoth.eclipse.newWizards"
+            class="org.wesnoth.wizards.era.EraNewWizard"
+            icon="icons/wesnoth-icon_16.png"
+            id="wesnoth_eclipse_plugin.wizards.eraNewWizard"
+            name="Wesnoth Era"
+            project="false">
+         <description>
+            Create a new wesnoth era.
+         </description>
+      </wizard>
+      <wizard
+            category="wesnoth.eclipse.newWizards"
+            class="org.wesnoth.wizards.faction.FactionNewWizard"
+            icon="icons/wesnoth-icon_16.png"
+            id="wesnoth_eclipse_plugin.wizard.factionNewWizard"
+            name="Wesnoth Faction"
+            project="false">
+         <description>
+            Create a new Wesnoth faction.
+         </description>
+      </wizard>
+      <wizard
+            category="wesnoth.eclipse.newWizards"
+            class="org.wesnoth.wizards.generator.WizardLauncher"
+            icon="icons/wesnoth-icon_16.png"
+            id="wesnoth_eclipse_plugin.wizard.wizardLauncher"
+            name="Wizard Launcher"
+            project="false">
+         <description>
+            Launches the wizard based on the selected tag.
+         </description>
+      </wizard>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+
+      <category
+            name="Wesnoth"
+            id="Wesnoth_Eclipse_Plugin.view_category">
+      </category>
+      <view
+            allowMultiple="false"
+            category="Wesnoth_Eclipse_Plugin.view_category"
+            class="org.eclipse.ui.navigator.CommonNavigator"
+            icon="icons/wesnoth-icon_16.png"
+            id="wesnoth_eclipse_plugin.views.projects"
+            name="Wesnoth Projects"
+            restorable="true">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.navigator.navigatorContent">
+      <commonFilter
+            activeByDefault="true"
+            id="wesnoth_eclipse_plugin.navigator.filters.hideAutoLinkedProject"
+            name="Hide Autolinked CFG Projects">
+         <filterExpression>
+            <or>
+               <adapt
+                     type="org.eclipse.core.resources.IProject">
+                  <test
+                        property="org.eclipse.core.resources.name"
+                        value="_AutoLinked_CFGExternalFiles_">
+                  </test>
+               </adapt>
+            </or></filterExpression>
+      </commonFilter>
+      <navigatorContent
+            activeByDefault="true"
+            id="wesnoth_eclipse_plugin.navigator.wmlProjectDataCore"
+            name="Core"
+            priority="highest">
+         <triggerPoints>
+            <or>
+               <and>
+                  <instanceof
+                        value="org.eclipse.core.resources.IProject">
+                  </instanceof></and>
+            </or></triggerPoints>
+      </navigatorContent>
+      <commonFilter
+            activeByDefault="true"
+            id="wesnoth_eclipse_plugin.navigator.filters.buildxml"
+            name="Hide build.xml">
+         <filterExpression>
+            <or>
+               <adapt
+                     type="org.eclipse.core.resources.IFile">
+                  <test
+                        property="org.eclipse.core.resources.name"
+                        value="build.xml">
+                  </test>
+               </adapt>
+            </or>
+         </filterExpression>
+      </commonFilter>
+   </extension>
+   <extension
+         point="org.eclipse.ui.navigator.viewer">
+      <viewer
+            viewerId="wesnoth_eclipse_plugin.views.projects">
+      </viewer>
+      <viewerContentBinding
+            viewerId="wesnoth_eclipse_plugin.views.projects">
+         <includes>
+            <contentExtension
+                  pattern="org.eclipse.ui.navigator.resourceContent">
+            </contentExtension>
+            <contentExtension
+                  pattern="org.eclipse.ui.navigator.resources.filters.*">
+            </contentExtension>
+            <contentExtension
+                  pattern="wesnoth_eclipse_plugin.navigator.filters.*">
+            </contentExtension>
+         </includes>
+      </viewerContentBinding>
+      <viewerActionBinding
+            viewerId="wesnoth_eclipse_plugin.views.projects">
+         <includes>
+            <actionExtension
+                  pattern="org.eclipse.ui.navigator.resources.*">
+            </actionExtension>
+         </includes>
+      </viewerActionBinding>
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="true"
+            id="plugin.projectContributions"
+            nameFilter="*"
+            objectClass="org.eclipse.core.resources.IProject">
+         <action
+               class="org.wesnoth.action.WesnothProjectReport"
+               enablesFor="1"
+               icon="icons/wesnoth-icon_16.png"
+               id="action.proj.report"
+               label="Wesnoth project report"
+               menubarPath="_wesnoth">
+         </action>
+         <visibility>
+               <objectState
+                     name="projectNature"
+                     value="Wesnoth_Eclipse_Plugin.wesnothNature">
+               </objectState>
+         </visibility>
+      </objectContribution>
+      <objectContribution
+            adaptable="false"
+            id="plugin.mapContributions"
+            nameFilter="*maps*"
+            objectClass="org.eclipse.core.resources.IFolder">
+         <action
+               class="org.wesnoth.action.ImportMap"
+               enablesFor="1"
+               icon="icons/wesnoth_editor-icon_16.png"
+               id="action.maps.importmap"
+               label="Import map"
+               menubarPath="_wesnoth">
+         </action>
+         <visibility>
+               <objectState
+                     name="projectNature"
+                     value="Wesnoth_Eclipse_Plugin.wesnothNature">
+               </objectState>
+         </visibility>
+      </objectContribution>
+      <objectContribution
+            adaptable="false"
+            id="plugin.mapFilesContributions"
+            nameFilter="*.map"
+            objectClass="org.eclipse.core.resources.IFile">
+         <action
+               class="org.wesnoth.action.OpenMapInEditor"
+               enablesFor="1"
+               icon="icons/wesnoth_editor-icon_16.png"
+               id="action.map.openMapInEditor"
+               label="Open map in editor"
+               menubarPath="_wesnoth">
+         </action>
+         <visibility>
+               <objectState
+                     name="projectNature"
+                     value="Wesnoth_Eclipse_Plugin.wesnothNature">
+               </objectState>
+         </visibility>
+      </objectContribution>
+      <objectContribution
+            adaptable="false"
+            id="plugin.configFilesContributions"
+            nameFilter="*.cfg"
+            objectClass="org.eclipse.core.resources.IFile">
+         <action
+               class="org.wesnoth.action.OpenScenarioInGame"
+               enablesFor="1"
+               icon="icons/wesnoth-icon_16.png"
+               id="action.cfg.openScenarioInGame"
+               label="Open scenario in game"
+               menubarPath="_wesnoth">
+         </action>
+         <menu
+               icon="icons/wesnoth-icon_16.png"
+               id="plugin.preprocessorMenu"
+               label="Preprocessor"
+               path="_wesnoth">
+            <groupMarker
+                  name="preprocessorMenuMarker">
+            </groupMarker>
+         </menu>
+         <action
+               class="org.wesnoth.action.ShowPreprocessedConfig"
+               id="action.cfg.preprocessedConfig"
+               label="Show preprocessed file"
+               menubarPath="plugin.preprocessorMenu/preprocessorMenuMarker">
+         </action>
+         <action
+               class="org.wesnoth.action.ShowPlainPreprocessedConfig"
+               id="action.cfg.plainPreprocessedconfig"
+               label="Show plain preprocessed file"
+               menubarPath="plugin.preprocessorMenu/preprocessorMenuMarker">
+         </action>
+         <menu
+               icon="icons/wesnoth-icon_16.png"
+               id="plugin.wmltoolsCfgMenu"
+               label="WML Tools"
+               path="_wesnoth">
+            <groupMarker
+                  name="wmltoolsCfgMenuMarker">
+            </groupMarker>
+         </menu>
+         <action
+               class="org.wesnoth.action.RunWMLLintOnSelection"
+               id="action.cfg.wmllintOnFile"
+               label="Run &quot;wmllint&quot; on this file"
+               menubarPath="plugin.wmltoolsCfgMenu/wmltoolsCfgMenuMarker">
+         </action>
+         <action
+               class="org.wesnoth.action.RunWMLScopeOnSelection"
+               id="action.cfg.wmlscope"
+               label="Run &quot;wmlscope&quot; on this file"
+               menubarPath="plugin.wmltoolsCfgMenu/wmltoolsCfgMenuMarker">
+         </action>
+         <action
+               class="org.wesnoth.action.RunWMLIndentOnSelection"
+               id="action.cfg.wmlindent"
+               label="Run &quot;wmlindent&quot; on this file"
+               menubarPath="plugin.wmltoolsCfgMenu/wmltoolsCfgMenuMarker">
+         </action>
+         <visibility>
+               <objectState
+                     name="projectNature"
+                     value="Wesnoth_Eclipse_Plugin.wesnothNature">
+               </objectState>
+         </visibility>
+      </objectContribution>
+      <objectContribution
+            adaptable="false"
+            id="plugin.containerContributions"
+            nameFilter="*"
+            objectClass="org.eclipse.core.resources.IContainer">
+         <action
+               class="org.wesnoth.action.UploadAddon"
+               icon="icons/wesnoth-icon_16.png"
+               id="action.container.addonUpload"
+               label="Upload Add-on"
+               menubarPath="_wesnoth">
+         </action>
+         <action
+               class="org.wesnoth.action.OpenCampaignInGame"
+               icon="icons/wesnoth-icon_16.png"
+               id="action.container.startCampaign"
+               label="Open campaign in game"
+               menubarPath="_wesnoth">
+         </action>
+         <menu
+               icon="icons/wesnoth-icon_16.png"
+               id="plugin.wmltoolsContainerMenu"
+               label="WML Tools"
+               path="_wesnoth">
+            <groupMarker
+                  name="wmltoolsContainerMenuMarker">
+            </groupMarker>
+         </menu>
+         <action
+               class="org.wesnoth.action.RunWMLScopeOnSelection"
+               id="action.container.wmlscope"
+               label="Run &quot;wmlscope&quot; on the container"
+               menubarPath="plugin.wmltoolsContainerMenu/wmltoolsContainerMenuMarker">
+         </action>
+         <action
+               class="org.wesnoth.action.RunWMLIndentOnSelection"
+               id="action.container.wmlindent"
+               label="Run &quot;wmlindent&quot; on the container"
+               menubarPath="plugin.wmltoolsContainerMenu/wmltoolsContainerMenuMarker">
+         </action>
+         <action
+               class="org.wesnoth.action.RunWMLLintOnSelection"
+               id="action.container.wmllintOnFile"
+               label="Run &quot;wmllint&quot; on the container"
+               menubarPath="plugin.wmltoolsContainerMenu/wmltoolsContainerMenuMarker">
+         </action>
+         <visibility>
+               <objectState
+                     name="projectNature"
+                     value="Wesnoth_Eclipse_Plugin.wesnothNature">
+               </objectState>
+         </visibility>
+      </objectContribution>
+      <objectContribution
+            adaptable="false"
+            id="plugin.nonWesnothProjectContributions"
+            nameFilter="*"
+            objectClass="org.eclipse.core.resources.IProject">
+         <action
+               class="org.wesnoth.builder.ToggleNatureAction"
+               enablesFor="+"
+               icon="icons/wesnoth-icon_16.png"
+               id="action.nonWesnothProj.addRemoveNature"
+               label="Add/Remove Sample Nature"
+               menubarPath="_wesnoth">
+         </action>
+         <action
+               class="org.wesnoth.action.RegenerateBuildFiles"
+               enablesFor="+"
+               id="action.nonWesnothProj.regenBuildFiles"
+               label="Regenerate build files"
+               menubarPath="_wesnoth">
+         </action>
+      </objectContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <category
+            id="Wesnoth_Eclipse_Plugin.commands.category"
+            name="Wesnoth">
+      </category>
+      <command
+            defaultHandler="org.wesnoth.handlers.OpenEditorHandler"
+            description="Opens the wesnoth editor"
+            id="Wesnoth_Eclipse_Plugin.commands.openEditor"
+            name="openeditor">
+      </command>
+      <command
+            defaultHandler="org.wesnoth.handlers.ImportMapHandler"
+            description="Import an existing map into the current maps folder"
+            id="Wesnoth_Eclipse_Plugin.commands.importMap"
+            name="importMap">
+      </command>
+      <command
+            defaultHandler="org.wesnoth.handlers.OpenGameHandler"
+            description="Opens the game"
+            id="Wesnoth_Eclipse_Plugin.commands.openGame"
+            name="openGame">
+      </command>
+      <command
+            defaultHandler="org.wesnoth.handlers.OpenMapInEditorHandler"
+            description="Opens the selected map in the map editor"
+            id="Wesnoth_Eclipse_Plugin.commands.openMapInEditor"
+            name="openMapInEditor">
+      </command>
+      <command
+            defaultHandler="org.wesnoth.handlers.SetupWorkspaceHandler"
+            description="Setups the workspace"
+            id="Wesnoth_Eclipse_Plugin.commands.setupWorkspace"
+            name="setupWorkspace">
+      </command>
+      <command
+            defaultHandler="org.wesnoth.handlers.ReloadFilesHandler"
+            description="Reloads all plugin related files"
+            id="Wesnoth_Eclipse_Plugin.commands.reloadFiles"
+            name="reloadFiles">
+      </command>
+      <command
+            defaultHandler="org.wesnoth.handlers.TestHandler"
+            id="Wesnoth_Eclipse_Plugin.commands.test"
+            name="test command">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="menu:org.eclipse.ui.main.menu?after=additions">
+         <menu
+               icon="icons/wesnoth-icon_16.png"
+               id="Wesnoth_Eclipse_Plugin.menus.wesnothMenu"
+               label="Wesnoth"
+               mnemonic="s">
+            <command
+                  commandId="Wesnoth_Eclipse_Plugin.commands.openEditor"
+                  icon="icons/wesnoth_editor-icon_16.png"
+                  id="Wesnoth_Eclipse_Plugin.menus.openEditor"
+                  label="Open editor"
+                  mnemonic="e">
+            </command>
+            <command
+                  commandId="Wesnoth_Eclipse_Plugin.commands.openGame"
+                  icon="icons/wesnoth-icon_16.png"
+                  id="Wesnoth_Eclipse_Plugin.menus.openGame"
+                  label="Open game"
+                  mnemonic="g">
+            </command>
+            <separator
+                  name="separator1"
+                  visible="true">
+            </separator>
+            <command
+                  commandId="Wesnoth_Eclipse_Plugin.commands.importMap"
+                  icon="icons/wesnoth_editor-icon_16.png"
+                  label="Import Map">
+            </command>
+            <command
+                  commandId="Wesnoth_Eclipse_Plugin.commands.openMapInEditor"
+                  icon="icons/wesnoth_editor-icon_16.png"
+                  label="Open map with editor"
+                  style="push">
+            </command>
+            <separator
+                  name="separator2"
+                  visible="true">
+            </separator>
+            <command
+                  commandId="Wesnoth_Eclipse_Plugin.commands.setupWorkspace"
+                  label="Setup Workspace"
+                  style="push">
+            </command>
+            <command
+                  commandId="Wesnoth_Eclipse_Plugin.commands.reloadFiles"
+                  label="Reload cache"
+                  style="push">
+            </command>
+            <command
+                  commandId="org.eclipse.ui.window.preferences"
+                  label="Open plugin&apos;s preferences"
+                  style="push">
+               <parameter
+                     name="preferencePageId"
+                     value="wml_plugin_preferences">
+               </parameter>
+            </command>
+            <separator
+                  name="separator3"
+                  visible="true">
+            </separator>
+            <command
+                  commandId="Wesnoth_Eclipse_Plugin.commands.test"
+                  label="Test (FOR DEBUG ONLY!!)"
+                  style="push">
+            </command>
+         </menu>
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            class="org.wesnoth.preferences.WesnothPreferencesPage"
+            id="wml_plugin_preferences"
+            name="Wesnoth UMC">
+      </page>
+      <page
+            category="wml_plugin_preferences"
+            class="org.wesnoth.preferences.WMLToolsPreferencePage"
+            id="wml_plugin_preferences.wmltools"
+            name="WML Tools">
+      </page>
+      <page
+            category="wml_plugin_preferences"
+            class="org.wesnoth.preferences.AddonUploadPreferencePage"
+            id="wml_plugin_preferences.addon_upload"
+            name="Addon Uploader">
+      </page>
+   </extension>
+   <extension
+         id="Wesnoth_Eclipse_Plugin.perspectives"
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="org.wesnoth.product.WMLPerspective"
+            icon="icons/wesnoth_editor-icon_16.png"
+            id="Wesnoth_Eclipse_Plugin.product.perspective"
+            name="Wesnoth">
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+   </extension>
+
+</plugin>

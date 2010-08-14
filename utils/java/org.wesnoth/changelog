@@ -1,0 +1,78 @@
+Eclipse plugin changelog
+
+0.3.0
+	* Fixed a problem in cases when the workbench isn't started and the
+	  welcome message would have caused error starting the plugin
+	* Now it's possible to use a wesnoth project without the 'build.xml' build files.
+	  If the build.xml file is missing the user can 'regenerate' it by using the
+	  project's context menu. A file without 'build.xml' is considered to be
+	  a data/campaigns/ project
+	* Removed the User Addons project
+	* The 'Setup workspace" action will create a project for each existing
+	  data/campaigns/ campaign and for each directory in 'useraddons/data/add-ons'
+	* Wesnoth projects building was improved by:
+		- removing some unused properties
+		- caching of preprocessed files. Files that already have been preprocessed will be skipped.
+		- the project macros are read only at the end of the build
+	* The *.map files are opened automatically in the game map editor
+	* The grammar was updated so the editor will support a broader variety of wml code
+	* When there are tags that need to be closed, when the user types: '[/' the last
+	  unclosed tag will be closed automatically
+	* The user can specify whether the new project wizard should create the files:
+	  '_server.pbl' and 'build.xml'
+	* Added the 'Wesnoth project' View specialized for viewing wesnoth projects
+	* Added wizard for new wesnoth config file (.cfg)
+	** Helpers**
+		- pressing F2 on different wml elements, brings up the WMLDoc:
+			- macros - will display its name, definition and arguments
+			- tags - will display a description for the tag
+	** Navigation - Used with F3 or CTRL+CLICK **
+		- map location - opens the map in the editor
+		- macro calls - goes to macro definition
+	** Autocompletion **
+		* We now have priorities, so more important stuff is shown first. Currently
+		  the following order is in place: key values > key names > tags > macro calls
+		- tag names
+		- mandatory tag keys are automatically added for each auto-completed tag
+		- key names
+		- macro calls
+		- key values: enums, scenarios
+
+0.2.1
+	* The workspace setup is done automatically on plugin start (first usage of it's features)
+	* Faster launching of campaign/scenario due to some enhancement in the wmlparser
+	* The plugin will autocomplete the paths for wesnoth if it's installed on its default location
+	* The logs will be placed in <temp>/wesnoth_plugin/logs and will have the name based only on current time
+	* New preferences pages for 'Addon uploader' and 'WML Tools' were added
+	* Fix collision between files with the same name by preprocessing them in separate directories
+
+0.2.0
+	26 June 2010
+	* updated the editor to xtext 1.0.0
+	** Wizards **
+		- era
+		- faction
+		- dynamically generated wizards for every tag, based on wml schema
+	** Menus **
+		- added wmlscope, wmlindent on preprocessor menu
+		- open campaign/scenario in game
+		- open the game
+
+0.0.1
+	* Misc
+		- created the TemplateProvider that manages the templates
+		for various file types
+		- created the Preferences page for plugin related preferences
+		- added the update site for the plugin (http://eclipse.wesnoth.org)
+
+	** Wizards **
+		- campaign
+		- scenario
+
+	** Menus **
+		- Opening the editor
+		- Importing wesnoth map
+		- Open selected map in the map editor
+		- Open selected scenario in game
+		- Run wmllint on different files and see the output
+		- See preprocessor output for different files

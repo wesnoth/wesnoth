@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="$$project_name" default="copyAll">
+	<!-- <property file="build.properties"/> -->
+	<target name="copyAll">
+		<copy verbose="true" todir="${wesnoth.user.dir}/data/add-ons/$$project_dir_name/">
+			<fileset dir="">
+				<!-- <exclude name=".project"/> -->
+				<exclude name="build.xml"/>
+				<exclude name="build.properties"/>
+			</fileset>
+		</copy>
+	</target>
+</project>
