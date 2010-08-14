@@ -338,9 +338,11 @@ void highlight_visitor::find_main_highlight()
 	// action destination hexes usually take priority over that
 	mode_ = FIND_MAIN_HIGHLIGHT;
 	assert(main_highlight_.expired());
-	foreach(action_ptr action, *side_actions_)
+	side_actions::reverse_iterator rend = side_actions_->rend();
+	side_actions::reverse_iterator action = side_actions_->rbegin();
+	for (; action != rend; ++action )
 	{
-		action->accept(*this);
+		(*action)->accept(*this);
 		if (action_ptr main = main_highlight_.lock())
 		{
 			owner_unit_ = main->get_unit();
