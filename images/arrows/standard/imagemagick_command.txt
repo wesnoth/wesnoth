@@ -1,5 +1,5 @@
-Those files were created from the non-transparent arrows with the following imagemagick command:
+Those files were created from a copy of the "focus" arrows with the following imagemagick command:
 
-mogrify -channel Alpha -evaluate Divide 2 *
+mogrify -channel Alpha -evaluate Divide 2 *.png
 
 i.e. they are 50% transparent, as their alpha channel was divided by 2.

@@ -1,0 +1,5 @@
+Those files were created from a copy of the "focus" arrows with the following imagemagick command:
+
+mogrify -channel Alpha -evaluate Multiply 0.75 *.png
+
+i.e. they are 20% transparent, as their alpha channel was multiplied by 0.75.
