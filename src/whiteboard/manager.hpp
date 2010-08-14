@@ -125,6 +125,8 @@ public:
 	/** Deletes all planned actions for all teams */
 	void erase_all_actions();
 
+	boost::weak_ptr<highlight_visitor> get_highlighter() { return highlighter_; }
+
 	/** Checks whether the specified unit has at least one planned action */
 	bool unit_has_actions(const unit& unit) const;
 
@@ -157,7 +159,7 @@ private:
 	bool gamestate_mutated_;
 
 	boost::scoped_ptr<mapbuilder_visitor> mapbuilder_;
-	boost::scoped_ptr<highlight_visitor> highlighter_;
+	boost::shared_ptr<highlight_visitor> highlighter_;
 
 	boost::scoped_ptr<pathfind::marked_route> route_;
 
