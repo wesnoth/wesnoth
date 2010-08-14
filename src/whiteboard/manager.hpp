@@ -167,7 +167,6 @@ private:
 	boost::scoped_ptr<CKey> key_poller_;
 
 	map_location hidden_unit_hex_;
-	std::string hidden_unit_id_;
 };
 
 /** Applies the planned unit map for the duration of the struct's life.

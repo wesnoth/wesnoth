@@ -53,8 +53,7 @@ manager::manager():
 		move_arrow_(),
 		fake_unit_(),
 		key_poller_(new CKey),
-		hidden_unit_hex_(),
-		hidden_unit_id_("")
+		hidden_unit_hex_()
 {
 	LOG_WB << "Manager initialized.\n";
 }
@@ -315,18 +314,10 @@ void manager::draw_hex(const map_location& hex)
 
 void manager::on_mouseover_change(const map_location& hex)
 {
-	if (hidden_unit_hex_.valid() && !events::commands_disabled)
+	if (hidden_unit_hex_.valid())
 	{
-		if (unit* unit = get_visible_unit(hidden_unit_hex_,
-				resources::teams->at(viewer_side() - 1), false))
-		{
-			if (unit->id() == hidden_unit_id_)
-			{
-				unit->set_hidden(false);
-			}
-		}
+		resources::screen->remove_exclusive_draw(hidden_unit_hex_);
 		hidden_unit_hex_ = map_location();
-		hidden_unit_id_ = "";
 	}
 
 	if (!resources::screen->selected_hex().valid() && highlighter_)
@@ -419,14 +410,8 @@ void manager::create_temp_move()
 	fake_unit_->set_ghosted(false);
 
 	//if destination is over another unit, temporarily hide it
-	unit* mouseover_unit = get_visible_unit(resources::screen->mouseover_hex(),
-			resources::teams->at(viewer_side() - 1), false);
-	if (mouseover_unit && mouseover_unit->side() == viewer_side())
-	{
-		mouseover_unit->set_hidden(true);
-		hidden_unit_hex_ = resources::screen->mouseover_hex();
-		hidden_unit_id_ = mouseover_unit->id();
-	}
+	resources::screen->add_exclusive_draw(fake_unit_->get_location(), *fake_unit_);
+	hidden_unit_hex_ = fake_unit_->get_location();
 }
 
 void manager::erase_temp_move()
@@ -605,6 +590,7 @@ void manager::contextual_delete()
 				(it = viewer_actions()->get_position_of(action)) != viewer_actions()->end())
 		{
 			viewer_actions()->remove_action(it);
+			highlighter_->set_mouseover_hex(highlighter_->get_mouseover_hex());
 		}
 		else //we already check above for viewer_actions()->empty()
 		{

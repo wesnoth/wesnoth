@@ -43,7 +43,7 @@ public:
 	const map_location& get_mouseover_hex() const {return mouseover_hex_; }
 
 	void highlight();
-	void unhighlight();
+	void clear();
 
 	action_ptr get_execute_target();
 	action_ptr get_delete_target();
@@ -56,8 +56,7 @@ public:
 	virtual void visit_recall(recall_ptr recall);
 
 private:
-
-	void clear();
+	void unhighlight();
 	void visit_all_actions();
 
 	void find_main_highlight();
@@ -78,6 +77,7 @@ private:
 	side_actions_ptr side_actions_;
 
 	map_location mouseover_hex_;
+	std::set<map_location> exclusive_display_hexes_;
 	unit* owner_unit_;
 	unit* selection_candidate_;
 

@@ -39,6 +39,7 @@ highlight_visitor::highlight_visitor(const unit_map& unit_map, side_actions_ptr 
 	, unit_map_(unit_map)
 	, side_actions_(side_actions)
 	, mouseover_hex_()
+	, exclusive_display_hexes_()
 	, owner_unit_(NULL)
 	, selection_candidate_(NULL)
 	, main_highlight_()
@@ -101,13 +102,6 @@ void highlight_visitor::highlight()
 
 		if (action_ptr main = main_highlight_.lock())
 		{
-			unit* hide_me = get_visible_unit(mouseover_hex_,
-					resources::teams->at(side_actions_->team_index()),false);
-			if (hide_me && hide_me->side() == int(side_actions_->team_index()) + 1)
-			{
-				hide_me->set_hidden(true);
-			}
-
 			//Highlight main highlight
 			mode_ = HIGHLIGHT_MAIN;
 			main->accept(*this);
@@ -116,6 +110,9 @@ void highlight_visitor::highlight()
 		if (!secondary_highlights_.empty())
 			//Highlight owner unit
 			owner_unit_->set_selecting();
+			//Make sure owner unit is the only one displayed in its hex
+			resources::screen->add_exclusive_draw(owner_unit_->get_location(), *owner_unit_);
+			exclusive_display_hexes_.insert(owner_unit_->get_location());
 			//Highlight secondary highlights
 			mode_ = HIGHLIGHT_SECONDARY;
 			foreach(weak_action_ptr weak, secondary_highlights_)
@@ -139,14 +136,6 @@ void highlight_visitor::unhighlight()
 	if (action_ptr main = main_highlight_.lock() )
 	{
 		main->accept(*this);
-
-		//Unhide the other unit in the hex if it was hidden
-		unit* unhide_me = get_visible_unit(mouseover_hex_,
-				resources::teams->at(side_actions_->team_index()),false);
-		if (unhide_me && unhide_me->side() == int(side_actions_->team_index()) + 1)
-		{
-			unhide_me->set_hidden(false);
-		}
 	}
 
 	//unhighlight secondary highlights
@@ -157,6 +146,13 @@ void highlight_visitor::unhighlight()
 			action->accept(*this);
 		}
 	}
+
+	//unhide other units if needed
+	foreach(map_location hex, exclusive_display_hexes_)
+	{
+		resources::screen->remove_exclusive_draw(hex);
+	}
+	exclusive_display_hexes_.clear();
 }
 
 action_ptr highlight_visitor::get_execute_target()
@@ -225,7 +221,10 @@ void highlight_visitor::visit_move(move_ptr move)
 		}
 		if (move->fake_unit_)
 		{
-			move->fake_unit_->set_standing(false);
+			move->fake_unit_->set_ghosted(false);
+			//Make sure the fake unit is the only one displayed in its hex
+			resources::screen->add_exclusive_draw(move->fake_unit_->get_location(), *move->fake_unit_);
+			exclusive_display_hexes_.insert(move->fake_unit_->get_location());
 		}
 		break;
 	case HIGHLIGHT_SECONDARY:
@@ -236,6 +235,9 @@ void highlight_visitor::visit_move(move_ptr move)
 		if (move->fake_unit_)
 		{
 			move->fake_unit_->set_ghosted(false);
+			//Make sure the fake unit is the only one displayed in its hex
+			resources::screen->add_exclusive_draw(move->fake_unit_->get_location(), *move->fake_unit_);
+			exclusive_display_hexes_.insert(move->fake_unit_->get_location());
 		}
 		break;
 	case UNHIGHLIGHT:
