@@ -881,15 +881,10 @@ void file_tree_checksum::write(config& cfg) const
 	cfg["modified"] = lexical_cast<std::string>(modified);
 }
 
-bool operator==(const file_tree_checksum& lhs, const file_tree_checksum& rhs)
+bool file_tree_checksum::operator==(const file_tree_checksum &rhs) const
 {
-	return lhs.nfiles == rhs.nfiles && lhs.sum_size == rhs.sum_size &&
-		   lhs.modified == rhs.modified;
-}
-
-bool operator!=(const file_tree_checksum& lhs, const file_tree_checksum& rhs)
-{
-	return !operator==(lhs,rhs);
+	return nfiles == rhs.nfiles && sum_size == rhs.sum_size &&
+		modified == rhs.modified;
 }
 
 static void get_file_tree_checksum_internal(const std::string& path, file_tree_checksum& res)

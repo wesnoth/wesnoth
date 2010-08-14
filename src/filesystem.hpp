@@ -141,10 +141,10 @@ struct file_tree_checksum
 	// @todo make variables private!
 	size_t nfiles, sum_size;
 	time_t modified;
+	bool operator==(const file_tree_checksum &rhs) const;
+	bool operator!=(const file_tree_checksum &rhs) const
+	{ return !operator==(rhs); }
 };
-
-bool operator==(const file_tree_checksum& lhs, const file_tree_checksum& rhs);
-bool operator!=(const file_tree_checksum& lhs, const file_tree_checksum& rhs);
 
 /** Get the time at which the data/ tree was last modified at. */
 const file_tree_checksum& data_tree_checksum(bool reset = false);
