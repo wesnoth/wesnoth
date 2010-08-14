@@ -337,7 +337,8 @@ public class WorkspaceUtils
 					monitor.beginTask("Setting up the workspace...", files.size() * 35);
 					for(File file: files)
 					{
-						if (file.isDirectory() == false)
+						if (file.isDirectory() == false ||
+							file.getName().startsWith("."))
 							continue;
 
 						String projectName = file.getName();
