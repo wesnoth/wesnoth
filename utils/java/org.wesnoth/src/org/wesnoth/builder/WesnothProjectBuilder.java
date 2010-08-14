@@ -194,23 +194,25 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 				monitor.subTask("Gathering file information...");
 				ProjectCache projCache = ProjectUtils.getCacheForProject(getProject());
 
-				if (ResourceUtils.isScenarioFile(file.getLocation().toOSString()))
+				WMLSaxHandler handler =  (WMLSaxHandler) ResourceUtils.
+				getWMLSAXHandlerFromResource(
+						PreprocessorUtils.getInstance().getPreprocessedFilePath(file, false, false).toString(),
+						new WMLSaxHandler(file.getLocation().toOSString()));
+				if (handler != null)
 				{
-					WMLSaxHandler handler =  (WMLSaxHandler) ResourceUtils.
-						getWMLSAXHandlerFromResource(
-								PreprocessorUtils.getInstance().getPreprocessedFilePath(file, false, false).toString(),
-							new WMLSaxHandler());
-					if (handler == null || handler.ScenarioId == null)
-					{
-						projCache.getScenarios().remove(file.getName());
-						Logger.getInstance().logWarn("got a null scenario id" +
-								"for 'scenario' file:" + file.getName());
-					}
-					else
+					//TODO: add a non-intrusive way of checking if file is scenario
+					if (handler.ScenarioId != null)
 					{
 						Logger.getInstance().log("added scenarioId ["+handler.ScenarioId +
 								"] for file: " + file.getName());
 						projCache.getScenario(file.getName()).setId(handler.ScenarioId);
+					}
+
+					if (handler.Variables.size() > 0)
+					{
+						projCache.getScenario(file.getName()).getVariables().clear();
+						projCache.getScenario(file.getName()).getVariables()
+							.addAll(handler.Variables.values());
 					}
 				}
 				monitor.worked(10);

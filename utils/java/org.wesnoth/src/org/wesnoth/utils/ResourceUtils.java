@@ -199,13 +199,15 @@ public class ResourceUtils
 	 * Creates the '.wesnoth' file with the specified path
 	 * only if it doesn't exist already
 	 * @param path The path of '.wesnoth' file
+	 * @param force If true the file will be re-created if exists
 	 */
-	public static void createWesnothFile(String path)
+	public static void createWesnothFile(String path, boolean force)
 	{
 		File wesnothFile = new File(path);
 		try
 		{
-			if (!(wesnothFile.exists()))
+			if (force == true ||
+				(force == false && wesnothFile.exists() == false))
 			{
 				createNewFile(wesnothFile.getAbsolutePath());
 				new DialogSettings("project").save(path);
@@ -394,7 +396,7 @@ public class ResourceUtils
 		WMLSaxHandler handler = (WMLSaxHandler) getWMLSAXHandlerFromResource(
 				PreprocessorUtils.getInstance().getPreprocessedFilePath(
 						getMainConfigLocation(resource), false, true).toString(),
-						new WMLSaxHandler());
+						new WMLSaxHandler(resource.getLocation().toOSString()));
 		if (handler == null)
 			return null;
 		return handler.CampaignId;
@@ -409,7 +411,7 @@ public class ResourceUtils
 	{
 		WMLSaxHandler handler = (WMLSaxHandler) getWMLSAXHandlerFromResource(
 				PreprocessorUtils.getInstance().getPreprocessedFilePath(file, false, true).toString(),
-				new WMLSaxHandler());
+				new WMLSaxHandler(file.getLocation().toOSString()));
 		if (handler == null)
 			return null;
 		return handler.ScenarioId;

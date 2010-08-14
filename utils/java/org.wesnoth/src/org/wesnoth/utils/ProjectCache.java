@@ -53,7 +53,7 @@ public class ProjectCache
 		definesFile_ = new File (PreprocessorUtils.getInstance().getTemporaryLocation(
 				project.getFile("_main.cfg"))  + "/_MACROS_.cfg");
 
-		ResourceUtils.createWesnothFile(wesnothFile_.getAbsolutePath());
+		ResourceUtils.createWesnothFile(wesnothFile_.getAbsolutePath(), false);
 		readProperties(true);
 		readDefines(true);
 	}
@@ -70,8 +70,7 @@ public class ProjectCache
 			return;
 		try
 		{
-			if (wesnothFile_.exists() == false)
-				ResourceUtils.createWesnothFile(wesnothFile_.getAbsolutePath());
+			ResourceUtils.createWesnothFile(wesnothFile_.getAbsolutePath(), false);
 
 			try
 			{
@@ -82,7 +81,7 @@ public class ProjectCache
 				// backward compatiblity
 				// we already have an xml format used by Properties.
 				// convert it to DialogSettings
-				ResourceUtils.createWesnothFile(wesnothFile_.getAbsolutePath());
+				ResourceUtils.createWesnothFile(wesnothFile_.getAbsolutePath(), true);
 				properties_.load(wesnothFile_.getAbsolutePath());
 			}
 
@@ -163,8 +162,7 @@ public class ProjectCache
 	 */
 	public boolean saveCache()
 	{
-		if (wesnothFile_.exists() == false)
-			ResourceUtils.createWesnothFile(wesnothFile_.getAbsolutePath());
+		ResourceUtils.createWesnothFile(wesnothFile_.getAbsolutePath(), false);
 		try
 		{
 			// save scenario info
