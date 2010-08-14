@@ -234,9 +234,6 @@ public class PreprocessorUtils
 		DialogSettings settings = new DialogSettings("preprocessed");
 		try
 		{
-			filesTimeStamps_.put("file1.txt", 2923489273482349L);
-			filesTimeStamps_.put("file2.txt", 73482349L);
-			filesTimeStamps_.put("file3.txt", 3489273482349L);
 			settings.put("files", filesTimeStamps_.keySet().toArray(new String[0]));
 			List<String> timestamps = new ArrayList<String>();
 			for(Long timestamp : filesTimeStamps_.values())
@@ -265,10 +262,15 @@ public class PreprocessorUtils
 
 		try
 		{
+			// ensure the creation of a valid file if it doesn't exist
+			if (new File(filename).exists() == false)
+				settings.save(filename);
+
 			settings.load(filename);
 			String[] timestamps = settings.getArray("timestamps");
 			String[] files = settings.getArray("files");
-			if (timestamps.length == files.length)
+			if (timestamps != null && files != null &&
+				timestamps.length == files.length)
 			{
 				for(int index = 0 ;index < files.length; ++index)
 				{
