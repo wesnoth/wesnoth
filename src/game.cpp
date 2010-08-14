@@ -2037,6 +2037,7 @@ static int process_command_args(int argc, char** argv) {
 				Uint32 startTime = SDL_GetTicks();
 				// if the users add the SKIP_CORE define we won't preprocess data/core
 				bool skipCore = false;
+				bool skipTerrainGFX = false;
 				// the 'core_defines_map' is the one got from data/core macros
 				preproc_map defines_map(preproc.input_macros_);
 				std::string error_log;
@@ -2072,6 +2073,11 @@ static int process_command_args(int argc, char** argv) {
 							std::cerr << "'SKIP_CORE' defined.\n";
 							skipCore = true;
 						}
+						else if (tmp_val == "NO_TERRAIN_GFX")
+						{
+							std::cerr << "'NO_TERRAIN_GFX' defined.\n";
+							skipTerrainGFX = true;
+						}
 					}
 					std::cerr << "added " << defines_map.size() << " defines.\n";
 				}
@@ -2080,7 +2086,12 @@ static int process_command_args(int argc, char** argv) {
 				if (skipCore == false)
 				{
 					std::cerr << "preprocessing common macros from 'data/core' ...\n";
-					preprocess_resource(game_config::path + "/data/core",&defines_map);
+					
+					// process each folder explicitly to gain speed
+					preprocess_resource(game_config::path + "/data/core/macros",&defines_map);
+					if (skipTerrainGFX == false)
+						preprocess_resource(game_config::path + "/data/core/terrain-graphics",&defines_map);
+
 					std::cerr << "acquired " << (defines_map.size() - preproc.input_macros_.size())
 						<< " 'data/core' defines.\n";
 				}
