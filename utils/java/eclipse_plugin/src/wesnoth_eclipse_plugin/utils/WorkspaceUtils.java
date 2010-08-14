@@ -287,10 +287,8 @@ public class WorkspaceUtils
 			{
 				GUIUtils.showInfoMessageBox(
 						"Good. The preferences were set.\n" +
-						"Now, I'll make a simple project which will " +
-						"correspond to\n" +
-						"'<your wesnoth user directory>/data/addons' directory " +
-						"where the addons will be stored.\n" +
+						"Now, I'll make projects for each existing campaign "+
+						"and user addon. It will take a while."+
 						"Press OK to continue.");
 			}
 		}
