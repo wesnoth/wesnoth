@@ -508,8 +508,10 @@ report generate_report(TYPE type,
 		tooltip << tod.name << '\n'
 			<< _("Lawful units: ") << signed_percent(b) << "\n"
 			<< _("Neutral units: ") << signed_percent(0) << "\n"
-			<< _("Chaotic units: ") << signed_percent(-b) << "\n"
-			<< _("Liminal units: ") << signed_percent(c);
+			<< _("Chaotic units: ") << signed_percent(-b);
+
+		if (tod.liminal_present)
+		tooltip <<  "\n" << _("Liminal units: ") << signed_percent(c);
 
 		std::string tod_image = tod.image;
 		if (tod.lawful_bonus_modified > 0) tod_image += "~BRIGHTEN()";

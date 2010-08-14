@@ -48,6 +48,7 @@ struct time_of_day
 	/** The % bonus liminal units receive. */
 	int liminal_bonus;
 	int liminal_bonus_modified;
+	bool liminal_present;
 
 	/** The image to be displayed in the game status. */
 	std::string image;

@@ -24,6 +24,7 @@ time_of_day::time_of_day(const config& cfg):
 	lawful_bonus_modified(0),
 	liminal_bonus(cfg["liminal_bonus"]),
 	liminal_bonus_modified(0),
+	liminal_present(!(cfg["liminal_bonus"]).empty()),
 	image(cfg["image"]), name(cfg["name"].t_str()), id(cfg["id"]),
 	image_mask(cfg["mask"]),
 	red(cfg["red"]), green(cfg["green"]), blue(cfg["blue"]),
