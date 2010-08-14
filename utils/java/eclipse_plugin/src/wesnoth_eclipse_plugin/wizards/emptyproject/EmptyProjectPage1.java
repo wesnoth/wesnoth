@@ -14,6 +14,7 @@ import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
@@ -31,6 +32,7 @@ public class EmptyProjectPage1 extends NewWizardPageTemplate
 	private Text txtPassphrase_;
 	private Text txtIcon_;
 	private Text txtType_;
+	private Button chkGeneratePBL_;
 
 
 	public EmptyProjectPage1() {
@@ -55,6 +57,10 @@ public class EmptyProjectPage1 extends NewWizardPageTemplate
 			}
 		};
 		container.setLayout(new GridLayout(3, false));
+
+		chkGeneratePBL_ = new Button(container, SWT.CHECK);
+		chkGeneratePBL_.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false, 3, 1));
+		chkGeneratePBL_.setText("Generate '_server.pbl' with the following information");
 
 		Label _lblTitle = new Label(container, SWT.NONE);
 		_lblTitle.setText("Project title*:");
@@ -246,5 +252,10 @@ public class EmptyProjectPage1 extends NewWizardPageTemplate
 	public String getType()
 	{
 		return txtType_.getText();
+	}
+
+	public boolean getGeneratePBLFile()
+	{
+		return  chkGeneratePBL_.getSelection();
 	}
 }

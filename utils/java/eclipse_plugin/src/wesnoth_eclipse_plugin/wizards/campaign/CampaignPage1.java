@@ -31,6 +31,7 @@ public class CampaignPage1 extends NewWizardPageTemplate
 	private Text	txtPassphrase_;
 	private Text	txtIcon_;
 	private Button	chkMultiCampaign_;
+	private Button chkGeneratePBL_;
 
 	public CampaignPage1() {
 		super("campaignPage1");
@@ -92,6 +93,10 @@ public class CampaignPage1 extends NewWizardPageTemplate
 		chkMultiCampaign_.setLayoutData(gd_chkMultiCampaign_);
 		chkMultiCampaign_.setText("This is a multiplayer campaign");
 		new Label(container, SWT.NONE);
+
+		chkGeneratePBL_ = new Button(container, SWT.CHECK);
+		chkGeneratePBL_.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false, 3, 1));
+		chkGeneratePBL_.setText("Generate '_server.pbl' with the following information:");
 
 		Label lblAuthor = new Label(container, SWT.NONE);
 		lblAuthor.setText("Author:");
@@ -233,5 +238,10 @@ public class CampaignPage1 extends NewWizardPageTemplate
 	public boolean isMultiplayer()
 	{
 		return chkMultiCampaign_.getSelection();
+	}
+
+	public boolean getGeneratePBLFile()
+	{
+		return chkGeneratePBL_.getSelection();
 	}
 }

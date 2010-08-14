@@ -112,6 +112,10 @@ public class CampaignNewWizard extends NewWizardTemplate
 
 			for (Pair<String, String> file : files)
 			{
+				if (file.Second.equals("pbl") &&
+					page1_.getGeneratePBLFile() == false)
+					continue;
+
 				ResourceUtils.createFile(currentProject, file.First, prepareTemplate(file.Second), true);
 				monitor.worked(1);
 			}
