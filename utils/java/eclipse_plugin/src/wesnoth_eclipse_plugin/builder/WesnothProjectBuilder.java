@@ -92,28 +92,8 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 		monitor.worked(2);
 
 		// check for 'build.xml' existance
-		if (new File(getProject().getLocation().toOSString() + "/build.xml").exists() == false)
+		if (new File(getProject().getLocation().toOSString() + "/build.xml").exists() == true)
 		{
-			//TODO: create handler for explicit creating the build xml
-			Logger.getInstance().logWarn("build.xml doesn't exist. Path: " +
-					getProject().getLocation().toOSString() + "/build.xml");
-//			Logger.getInstance().log("build.xml is missing. regenerating",
-//					"The 'build.xml' file is missing. The file will be regenerated.");
-//
-//			List<ReplaceableParameter> params = new ArrayList<ReplaceableParameter>();
-//			params.add(new ReplaceableParameter("$$project_name", getProject().getName()));
-//			params.add(new ReplaceableParameter("$$project_dir_name", getProject().getName()));
-//			ResourceUtils.createBuildXMLFile(
-//					getProject().getLocation().toOSString() + "/build.xml", params);
-//
-//			getProject().refreshLocal(IResource.DEPTH_ONE, new NullProgressMonitor());
-//
-//			Logger.getInstance().log("build.xml regenerated",
-//					"The 'build.xml' file was successfully regenerated.");
-		}
-		else
-		{
-
 			// run the ant job to copy the whole project
 			// in the user add-ons directory (incremental)
 			monitor.subTask("Copying resources...");
@@ -154,6 +134,12 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 			}
 		}
 
+		// we read the defines at the end of the build
+		// to speed up things
+		// process the defines obtained
+		ProjectUtils.getCacheForProject(getProject()).readDefines(true);
+		monitor.worked(10);
+
 		monitor.done();
 		return null;
 	}
@@ -172,13 +158,9 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 						int delta, boolean handleMainCfg)
 	{
 		monitor.worked(5);
-		if (resource.exists() == false)
-			return false;
-
-		if (isResourceIgnored(resource))
-			return false;
-
-		if (monitor.isCanceled())
+		if (resource.exists() == false ||
+			monitor.isCanceled() ||
+			isResourceIgnored(resource))
 			return false;
 
 		// config files
@@ -206,15 +188,6 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 				// we use a single _MACROS_.cfg file for each project
 				int preprocResult = PreprocessorUtils.preprocessFile(file,
 					PreprocessorUtils.getDefinesLocation(file), defines);
-
-				// preprocess only if we preprocessed (successfuly) the main file
-				// skip already preprocessed
-				//TODO: profile with this condition removed so we can have live feedback about macros
-				if (isMainCfg == true && preprocResult == 0)
-				{
-					// process the defines obtained
-					ProjectUtils.getCacheForProject(getProject()).readDefines(true);
-				}
 				monitor.worked(5);
 
 				monitor.subTask("Gathering file information...");
