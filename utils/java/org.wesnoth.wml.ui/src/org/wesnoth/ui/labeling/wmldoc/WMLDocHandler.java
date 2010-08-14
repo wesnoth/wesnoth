@@ -23,6 +23,7 @@ import org.eclipse.xtext.ui.editor.utils.EditorUtils;
 import org.eclipse.xtext.util.concurrent.IUnitOfWork;
 import org.wesnoth.ui.WMLUtil;
 import org.wesnoth.wML.WMLMacroCall;
+import org.wesnoth.wML.WMLTag;
 
 import wesnoth_eclipse_plugin.Logger;
 import wesnoth_eclipse_plugin.preprocessor.Define;
@@ -55,14 +56,16 @@ public class WMLDocHandler extends AbstractHandler
                 		return;
 
                 	CompositeNode container = (CompositeNode)abstractNode.eContainer();
-                    if (container.getElement() instanceof WMLMacroCall) {
+                    if (container.getElement() instanceof WMLMacroCall)
+                    {
                     	WMLMacroCall macro = (WMLMacroCall)container.getElement();
                     	Define define = ProjectUtils.getCacheForProject(
                     			WMLUtil.getActiveEditorFile().getProject())
                     			.getDefines().get(macro.getName());
                     	if (define != null)
                     	{
-                    		if (presenter_ == null) {
+                    		if (presenter_ == null)
+                    		{
                     			presenter_ = new WMLDocInformationPresenter(
                     					editor.getSite().getShell(),
                     					new WMLDocMacro(define),
@@ -71,6 +74,18 @@ public class WMLDocHandler extends AbstractHandler
                     		}
                     		presenter_.open();
                     	}
+                    }
+                    else if (container.getElement() instanceof WMLTag)
+                    {
+                    	if (presenter_ == null)
+                    	{
+                    		presenter_ = new WMLDocInformationPresenter(
+                    					editor.getSite().getShell(),
+                    					new WMLDocTag(((WMLTag)container.getElement()).getName()),
+                    					positionAbsolute);
+                    		presenter_.create();
+                    	}
+                    	presenter_.open();
                     }
                 }
 			});
