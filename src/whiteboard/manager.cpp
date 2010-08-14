@@ -455,7 +455,6 @@ void manager::save_temp_move()
 		move_arrow = arrow_ptr(move_arrow_);
 		fake_unit = fake_unit_ptr(fake_unit_);
 
-		fake_unit->set_disabled_ghosted(false);
 		viewer_actions()->queue_move(*route_, move_arrow, fake_unit);
 		erase_temp_move();
 		LOG_WB << *viewer_actions() << "\n";
@@ -564,7 +563,7 @@ void manager::contextual_execute()
 		side_actions::iterator it;
 		unit const* selected_unit = future_visible_unit(resources::screen->selected_hex(), viewer_side());
 		if (selected_unit &&
-				(it = viewer_actions()->find_first_action_of(*selected_unit)) != viewer_actions()->end())
+				(it = viewer_actions()->find_first_action_of(selected_unit)) != viewer_actions()->end())
 		{
 			executing_actions_ = true;
 			viewer_actions()->execute(it);
@@ -597,7 +596,7 @@ void manager::contextual_delete()
 		side_actions::iterator it;
 		unit const* selected_unit = future_visible_unit(resources::screen->selected_hex(), viewer_side());
 		if (selected_unit &&
-				(it = viewer_actions()->find_first_action_of(*selected_unit)) != viewer_actions()->end())
+				(it = viewer_actions()->find_first_action_of(selected_unit)) != viewer_actions()->end())
 		{
 			viewer_actions()->remove_action(it);
 		}
@@ -653,7 +652,7 @@ void manager::erase_all_actions()
 	}
 }
 
-bool manager::unit_has_actions(const unit& unit) const
+bool manager::unit_has_actions(unit const* unit) const
 {
 	return viewer_actions()->unit_has_actions(unit);
 }

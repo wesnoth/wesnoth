@@ -68,7 +68,7 @@ void highlight_visitor::set_mouseover_hex(const map_location& hex)
 	{
 		selection_candidate_ = &(*it);
 
-		if(side_actions_->unit_has_actions(*it))
+		if(side_actions_->unit_has_actions(&*it))
 		{
 			owner_unit_ = &(*it);
 		}
@@ -131,14 +131,16 @@ void highlight_visitor::unhighlight()
 	if(owner_unit_)
 		owner_unit_->set_standing(true);
 
-	mode_ = UNHIGHLIGHT;
+
 	//unhighlight main highlight
 	if (action_ptr main = main_highlight_.lock() )
 	{
+		mode_ = UNHIGHLIGHT_MAIN;
 		main->accept(*this);
 	}
 
 	//unhighlight secondary highlights
+	mode_ = UNHIGHLIGHT_SECONDARY;
 	foreach(weak_action_ptr weak, secondary_highlights_)
 	{
 		if (action_ptr action = weak.lock())
@@ -159,9 +161,9 @@ action_ptr highlight_visitor::get_execute_target()
 {
 	action_ptr action;
 
-	if (owner_unit_ && side_actions_->unit_has_actions(*owner_unit_))
+	if (owner_unit_ && side_actions_->unit_has_actions(owner_unit_))
 	{
-		action = *side_actions_->find_first_action_of(*owner_unit_);
+		action = *side_actions_->find_first_action_of(owner_unit_);
 	}
 	else
 	{
@@ -173,9 +175,9 @@ action_ptr highlight_visitor::get_execute_target()
 action_ptr highlight_visitor::get_delete_target()
 {
 	action_ptr action;
-	if (owner_unit_ && side_actions_->unit_has_actions(*owner_unit_))
+	if (owner_unit_ && side_actions_->unit_has_actions(owner_unit_))
 	{
-		action = *side_actions_->find_last_action_of(*owner_unit_);
+		action = *side_actions_->find_last_action_of(owner_unit_);
 	}
 	else
 	{
@@ -221,6 +223,7 @@ void highlight_visitor::visit_move(move_ptr move)
 		}
 		if (move->fake_unit_)
 		{
+			///@todo find some highlight animation
 			move->fake_unit_->set_ghosted(false);
 			//Make sure the fake unit is the only one displayed in its hex
 			resources::screen->add_exclusive_draw(move->fake_unit_->get_location(), *move->fake_unit_);
@@ -240,14 +243,20 @@ void highlight_visitor::visit_move(move_ptr move)
 			exclusive_display_hexes_.insert(move->fake_unit_->get_location());
 		}
 		break;
-	case UNHIGHLIGHT:
+	case UNHIGHLIGHT_MAIN:
+	case UNHIGHLIGHT_SECONDARY:
 		if (move->arrow_)
 		{
 			move->arrow_->set_style(arrow::STYLE_STANDARD);
 		}
 		if (move->fake_unit_)
 		{
-			move->fake_unit_->set_disabled_ghosted(false);
+			side_actions::iterator last_action = side_actions_->find_last_action_of(move->get_unit());
+
+			if (!(last_action != side_actions_->end() && *last_action == move))
+			{
+				move->fake_unit_->set_disabled_ghosted(false);
+			}
 		}
 		break;
 	default:
@@ -281,7 +290,8 @@ void highlight_visitor::visit_recruit(recruit_ptr recruit)
 		break;
 	case HIGHLIGHT_SECONDARY:
 		break;
-	case UNHIGHLIGHT:
+	case UNHIGHLIGHT_MAIN:
+	case UNHIGHLIGHT_SECONDARY:
 		if (recruit->fake_unit_)
 		{
 			//@todo: find some suitable effect for mouseover on planned recruit.
@@ -312,7 +322,8 @@ void highlight_visitor::visit_recall(recall_ptr recall)
 		break;
 	case HIGHLIGHT_SECONDARY:
 		break;
-	case UNHIGHLIGHT:
+	case UNHIGHLIGHT_MAIN:
+	case UNHIGHLIGHT_SECONDARY:
 		if (recall->fake_unit_)
 		{
 			//@todo: find some suitable effect for mouseover on planned recall.

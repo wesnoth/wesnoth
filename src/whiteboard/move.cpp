@@ -20,6 +20,7 @@
 
 #include "visitor.hpp"
 #include "manager.hpp"
+#include "side_actions.hpp"
 
 #include "arrow.hpp"
 #include "config.hpp"
@@ -73,11 +74,37 @@ move::move(size_t team_index, const pathfind::marked_route& route,
 	assert(unit_);
 	unit_id_ = unit_->id();
 
+	//This action defines the future position of the unit, make its fake unit more visible
+	//than previous actions' fake units
+	fake_unit_->set_ghosted(true);
+	side_actions_ptr side_actions = resources::teams->at(team_index).get_side_actions();
+	side_actions::iterator action = side_actions->find_last_action_of(unit_);
+	if (action != side_actions->end())
+	{
+		if (move_ptr move = boost::dynamic_pointer_cast<class move>(*action))
+		{
+			move->fake_unit_->set_disabled_ghosted(false);
+		}
+	}
+
 	this->calculate_move_cost();
 }
 
 move::~move()
 {
+	if (resources::teams)
+	{
+		side_actions_ptr side_actions = resources::teams->at(team_index()).get_side_actions();
+		side_actions::iterator action = side_actions->find_last_action_of(unit_);
+		if (action != side_actions->end())
+		{
+			if (move_ptr move = boost::dynamic_pointer_cast<class move>(*action))
+			{
+				move->fake_unit_->set_ghosted(true);
+			}
+		}
+	}
+
 	//reminder: here we rely on the ~arrow destructor to invalidate
 	//its whole path.
 }

@@ -394,7 +394,7 @@ side_actions::iterator side_actions::get_position_of(action_ptr action)
 	return end();
 }
 
-side_actions::iterator side_actions::find_first_action_of(const unit& unit, side_actions::iterator start_position)
+side_actions::iterator side_actions::find_first_action_of(unit const* unit, side_actions::iterator start_position)
 {
 	if (!empty() && validate_iterator(start_position))
 	{
@@ -402,7 +402,7 @@ side_actions::iterator side_actions::find_first_action_of(const unit& unit, side
 		for (position = start_position; position != end(); ++position)
 		{
 			action_ptr action = *position;
-			if (action->get_unit() == &unit)
+			if (action->get_unit() == unit)
 			{
 				return position;
 			}
@@ -411,12 +411,12 @@ side_actions::iterator side_actions::find_first_action_of(const unit& unit, side
 	return end();
 }
 
-side_actions::iterator side_actions::find_first_action_of(const unit& unit)
+side_actions::iterator side_actions::find_first_action_of(unit const* unit)
 {
 	return find_first_action_of(unit, begin());
 }
 
-side_actions::iterator side_actions::find_last_action_of(const unit& unit, side_actions::iterator start_position)
+side_actions::iterator side_actions::find_last_action_of(unit const* unit, side_actions::iterator start_position)
 {
 	if (!empty() && validate_iterator(start_position))
 	{
@@ -424,7 +424,7 @@ side_actions::iterator side_actions::find_last_action_of(const unit& unit, side_
 		for (position = start_position; position != begin() - 1; --position)
 		{
 			action_ptr action = *position;
-			if (action->get_unit() == &unit)
+			if (action->get_unit() == unit)
 			{
 				return position;
 			}
@@ -433,12 +433,12 @@ side_actions::iterator side_actions::find_last_action_of(const unit& unit, side_
 	return end();
 }
 
-side_actions::iterator side_actions::find_last_action_of(const unit& unit)
+side_actions::iterator side_actions::find_last_action_of(unit const* unit)
 {
 	return find_last_action_of(unit, end() - 1);
 }
 
-bool side_actions::unit_has_actions(const unit& unit)
+bool side_actions::unit_has_actions(unit const* unit)
 {
 	if (empty())
 		return false;
@@ -446,12 +446,12 @@ bool side_actions::unit_has_actions(const unit& unit)
 		return find_first_action_of(unit) != end();
 }
 
-size_t side_actions::count_actions_of(const unit& unit)
+size_t side_actions::count_actions_of(unit const* unit)
 {
 	size_t count = 0;
 	foreach(action_ptr action, *this)
 	{
-		if (action->get_unit() == &unit)
+		if (action->get_unit() == unit)
 		{
 			++count;
 		}

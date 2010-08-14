@@ -129,7 +129,7 @@ public:
 	boost::weak_ptr<highlight_visitor> get_highlighter() { return highlighter_; }
 
 	/** Checks whether the specified unit has at least one planned action */
-	bool unit_has_actions(const unit& unit) const;
+	bool unit_has_actions(unit const* unit) const;
 
 	int get_spent_gold_for(int side);
 
