@@ -174,6 +174,22 @@ public class Tag
 		return keyChildren_;
 	}
 
+	/**
+	 * Returns the key child that has the specified name or
+	 * null if none found
+	 * @param name
+	 * @return
+	 */
+	public TagKey getChildKey(String name)
+	{
+		for(TagKey key : keyChildren_)
+		{
+			if (key.getName().equals(name))
+				return key;
+		}
+		return null;
+	}
+
 	public List<Tag> getTagChildren()
 	{
 		if (tagChildren_ == null)
@@ -181,6 +197,21 @@ public class Tag
 		return tagChildren_;
 	}
 
+	/**
+	 * Returns the tag child that has the specified name
+	 * or null if none found
+	 * @param name
+	 * @return
+	 */
+	public Tag getChildTag(String name)
+	{
+		for (Tag tag : tagChildren_)
+		{
+			if (tag.getName().equals(name))
+				return tag;
+		}
+		return null;
+	}
 
 	/**
 	 * A tag comparator that sorts just after required cardinality.
