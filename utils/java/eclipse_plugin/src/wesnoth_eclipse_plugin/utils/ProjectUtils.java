@@ -103,7 +103,6 @@ public class ProjectUtils
 			projectPath = description.getLocationURI().toString();
 		else
 			projectPath = handle.getLocation().toOSString();
-		System.out.println(projectPath);
 
 		monitor.subTask("Cleaning files...");
 		// cleanup existing files

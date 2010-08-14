@@ -21,7 +21,6 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 
-import wesnoth_eclipse_plugin.Constants;
 import wesnoth_eclipse_plugin.Logger;
 import wesnoth_eclipse_plugin.templates.ReplaceableParameter;
 import wesnoth_eclipse_plugin.templates.TemplateProvider;
@@ -94,23 +93,18 @@ public class EmptyProjectNewWizard extends NewWizardTemplate
 			// the project
 			if (page0_.getLocationPath().equals(ResourcesPlugin.getWorkspace().getRoot().getLocation()))
 			{
-				currentProject.create(monitor);
+				ProjectUtils.createWesnothProject(currentProject, null, true,
+						false, monitor);
 			}
 			else
 			{
 				IProjectDescription newDescription = ResourcesPlugin.getWorkspace().
 				newProjectDescription(page0_.getProjectName());
 				newDescription.setLocation(page0_.getLocationPath());
-				currentProject.create(newDescription, monitor);
+				ProjectUtils.createWesnothProject(currentProject, newDescription,
+						true, false, monitor);
 			}
-			currentProject.open(null);
 			monitor.worked(2);
-
-			// add the nature to the project
-			IProjectDescription description = currentProject.getDescription();
-			description.setNatureIds(new String[] { Constants.NATURE_WESNOTH,
-					Constants.NATURE_XTEXT });
-			currentProject.setDescription(description, null);
 
 			String emptyProjectStructure = prepareTemplate("empty_project");
 			if (emptyProjectStructure == null)
