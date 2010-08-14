@@ -50,6 +50,11 @@ public:
 	action_ptr get_bump_target();
 	unit* get_selection_target();
 
+	weak_action_ptr get_main_highlight() { return main_highlight_; }
+	typedef std::deque<weak_action_ptr> secondary_highlights_t;
+	secondary_highlights_t get_secondary_highlights() { return secondary_highlights_; }
+
+
 	virtual void visit_move(move_ptr move);
 	virtual void visit_attack(attack_ptr attack);
 	virtual void visit_recruit(recruit_ptr recruit);
@@ -82,7 +87,7 @@ private:
 	unit* selection_candidate_;
 
 	weak_action_ptr main_highlight_;
-	std::deque<weak_action_ptr> secondary_highlights_;
+	secondary_highlights_t secondary_highlights_;
 };
 
 } // end namespace wb
