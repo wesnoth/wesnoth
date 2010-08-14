@@ -101,10 +101,10 @@ const struct {
 	  N_("Team 1"), false, hotkey::SCOPE_GAME },
 	{ hotkey::HOTKEY_REPLAY_SKIP_ANIMATION, "replayskipanimation", N_("Skip animation"), false, hotkey::SCOPE_GAME },
 	// Whiteboard commands
-	{ hotkey::HOTKEY_WB_EXECUTE_ACTION, "wbexecuteaction", N_("Execute next planned action"), false, hotkey::SCOPE_GAME },
-	{ hotkey::HOTKEY_WB_DELETE_ACTION, "wbdeleteaction", N_("Delete last planned action"), false, hotkey::SCOPE_GAME },
-	{ hotkey::HOTKEY_WB_BUMP_UP_ACTION, "wbbumpupaction", N_("Move planned action toward queue beginning"), false, hotkey::SCOPE_GAME },
-	{ hotkey::HOTKEY_WB_BUMP_DOWN_ACTION, "wbbumpdownaction", N_("Move planned action toward queue end"), false, hotkey::SCOPE_GAME },
+	{ hotkey::HOTKEY_WB_EXECUTE_ACTION, "wbexecuteaction", N_("Execute planned action"), false, hotkey::SCOPE_GAME },
+	{ hotkey::HOTKEY_WB_DELETE_ACTION, "wbdeleteaction", N_("Delete planned action"), false, hotkey::SCOPE_GAME },
+	{ hotkey::HOTKEY_WB_BUMP_UP_ACTION, "wbbumpupaction", N_("Move action up queue"), false, hotkey::SCOPE_GAME },
+	{ hotkey::HOTKEY_WB_BUMP_DOWN_ACTION, "wbbumpdownaction", N_("Move action down queue"), false, hotkey::SCOPE_GAME },
 
 #ifndef DISABLE_EDITOR
 	{ hotkey::HOTKEY_EDITOR_QUIT_TO_DESKTOP, "editor-quit-to-desktop", N_("Quit to Desktop"), false, hotkey::SCOPE_EDITOR },
