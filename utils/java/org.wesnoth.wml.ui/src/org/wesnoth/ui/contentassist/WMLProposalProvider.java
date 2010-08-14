@@ -252,7 +252,10 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 			String parentIndent = "";
 			if (context.getCurrentNode().getOffset() > 0)
 				parentIndent = ((LeafNode)NodeUtil.findLeafNodeAtOffset(node.getParent(),
-						context.getCurrentNode().getOffset())).getText();
+						context.getCurrentNode().getOffset() -
+						// if we have a rule proposal, subtract 1
+						(ruleProposal ? 1 : 0)
+						)).getText();
 
 			// remove ugly new lines that break indentation
 			parentIndent =  parentIndent.replace("\r", "").replace("\n", "");
