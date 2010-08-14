@@ -26,7 +26,6 @@ import org.eclipse.core.resources.IResourceVisitor;
 import org.eclipse.core.resources.IncrementalProjectBuilder;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.text.IDocument;
 import org.eclipse.ui.editors.text.TextFileDocumentProvider;
@@ -35,7 +34,6 @@ import org.eclipse.ui.texteditor.IDocumentProvider;
 import wesnoth_eclipse_plugin.Constants;
 import wesnoth_eclipse_plugin.Logger;
 import wesnoth_eclipse_plugin.preferences.Preferences;
-import wesnoth_eclipse_plugin.templates.ReplaceableParameter;
 import wesnoth_eclipse_plugin.utils.AntUtils;
 import wesnoth_eclipse_plugin.utils.PreprocessorUtils;
 import wesnoth_eclipse_plugin.utils.ProjectCache;
@@ -88,50 +86,56 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 		}
 		monitor.worked(5);
 
-		// check for 'build.xml' existance
-		if (!(new File(getProject().getLocation().toOSString() + "/build.xml").exists()))
-		{
-			Logger.getInstance().log("build.xml is missing. regenerating",
-					"The 'build.xml' file is missing. The file will be regenerated.");
-
-			List<ReplaceableParameter> params = new ArrayList<ReplaceableParameter>();
-			params.add(new ReplaceableParameter("$$project_name", getProject().getName()));
-			params.add(new ReplaceableParameter("$$project_dir_name",
-					getProject().getName().equals("User Addons")? "" : getProject().getName()));
-			ResourceUtils.createBuildXMLFile(
-					getProject().getLocation().toOSString() + "/build.xml", params);
-
-			getProject().refreshLocal(IResource.DEPTH_ONE, new NullProgressMonitor());
-
-			Logger.getInstance().log("build.xml regenerated",
-					"The 'build.xml' file was successfully regenerated.");
-		}
-		monitor.worked(2);
-
-		// run the ant job to copy the whole project
-		// in the user add-ons directory (incremental)
-		monitor.subTask("Copying resources...");
-		HashMap<String, String> properties = new HashMap<String, String>();
-		properties.put("wesnoth.user.dir",
-				Preferences.getString(Constants.P_WESNOTH_USER_DIR) + Path.SEPARATOR);
-		Logger.getInstance().log("Ant result:");
-
-		String result = AntUtils.runAnt(
-				getProject().getLocation().toOSString() + "/build.xml",
-				properties, true);
-		Logger.getInstance().log(result);
-		monitor.worked(10);
-
-		if (result == null)
-		{
-			Logger.getInstance().log("error running the ant job",
-					"There was an error running the ant job.");
-			return null;
-		}
-
 		// create the temporary directory used by the plugin if not created
 		monitor.subTask("Creating temporary directory...");
 		WorkspaceUtils.getTemporaryFolder();
+		monitor.worked(2);
+
+		// check for 'build.xml' existance
+		if (new File(getProject().getLocation().toOSString() + "/build.xml").exists() == false)
+		{
+			//TODO: create handler for explicit creating the build xml
+			Logger.getInstance().logWarn("build.xml doesn't exist. Path: " +
+					getProject().getLocation().toOSString() + "/build.xml");
+//			Logger.getInstance().log("build.xml is missing. regenerating",
+//					"The 'build.xml' file is missing. The file will be regenerated.");
+//
+//			List<ReplaceableParameter> params = new ArrayList<ReplaceableParameter>();
+//			params.add(new ReplaceableParameter("$$project_name", getProject().getName()));
+//			params.add(new ReplaceableParameter("$$project_dir_name",
+//					getProject().getName().equals("User Addons")? "" : getProject().getName()));
+//			ResourceUtils.createBuildXMLFile(
+//					getProject().getLocation().toOSString() + "/build.xml", params);
+//
+//			getProject().refreshLocal(IResource.DEPTH_ONE, new NullProgressMonitor());
+//
+//			Logger.getInstance().log("build.xml regenerated",
+//					"The 'build.xml' file was successfully regenerated.");
+		}
+		else
+		{
+
+			// run the ant job to copy the whole project
+			// in the user add-ons directory (incremental)
+			monitor.subTask("Copying resources...");
+			HashMap<String, String> properties = new HashMap<String, String>();
+			properties.put("wesnoth.user.dir",
+					Preferences.getString(Constants.P_WESNOTH_USER_DIR) + Path.SEPARATOR);
+			Logger.getInstance().log("Ant result:");
+
+			String result = AntUtils.runAnt(
+					getProject().getLocation().toOSString() + "/build.xml",
+					properties, true);
+			Logger.getInstance().log(result);
+			monitor.worked(10);
+
+			if (result == null)
+			{
+				Logger.getInstance().log("error running the ant job",
+						"There was an error running the ant job.");
+				return null;
+			}
+		}
 		monitor.worked(2);
 
 		if (kind == FULL_BUILD)
