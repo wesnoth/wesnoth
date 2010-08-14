@@ -11,7 +11,6 @@ package wesnoth_eclipse_plugin;
 import java.util.Map.Entry;
 
 import org.eclipse.core.resources.IProject;
-import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
@@ -111,8 +110,7 @@ public class Activator extends AbstractUIPlugin
 	}
 
 	/**
-	 * Checks if the user has set some needed preferences and if the workspace
-	 * is setup (there exists the "User Addons" project)
+	 * Checks if the user has set some needed preferences and they are valid
 	 */
 	public static boolean checkConditions()
 	{
@@ -123,8 +121,7 @@ public class Activator extends AbstractUIPlugin
 		String workingDir = Preferences.getString(Constants.P_WESNOTH_WORKING_DIR);
 
 		if (!WorkspaceUtils.validPath(execDir) || !WorkspaceUtils.validPath(userDir) ||
-			!WorkspaceUtils.validPath(wmltoolsDir) || !WorkspaceUtils.validPath(workingDir) ||
-			!ResourcesPlugin.getWorkspace().getRoot().getProject("User Addons").exists())
+			!WorkspaceUtils.validPath(wmltoolsDir) || !WorkspaceUtils.validPath(workingDir))
 		{
 			return false;
 		}

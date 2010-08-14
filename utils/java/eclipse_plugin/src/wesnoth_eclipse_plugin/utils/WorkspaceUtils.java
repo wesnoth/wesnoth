@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 import org.eclipse.core.resources.FileInfoMatcherDescription;
 import org.eclipse.core.resources.IContainer;
@@ -75,12 +74,13 @@ public class WorkspaceUtils
 	}
 
 	/**
-	 * Gets the 'user addons' project from the workspace, or null if none existing
+	 * Gets the project from the workspace that has the specified name,
+	 * or null if none existing
 	 * @return
 	 */
-	public static IProject getUserAddonsProject()
+	public static IProject getProject(String name)
 	{
-		IProject proj = ResourcesPlugin.getWorkspace().getRoot().getProject("User Addons");
+		IProject proj = ResourcesPlugin.getWorkspace().getRoot().getProject(name);
 		if (proj.exists())
 			return proj;
 		return null;
@@ -270,8 +270,7 @@ public class WorkspaceUtils
 
 		String result = Preferences.getString(Constants.P_WESNOTH_USER_DIR) +
 							Path.SEPARATOR + "data/add-ons/";
-		if (!resource.getProject().getName().toLowerCase(new Locale("English")).equals("user addons"))
-			result += (resource.getProject().getName() + Path.SEPARATOR);
+		result += (resource.getProject().getName() + Path.SEPARATOR);
 		result += resource.getProjectRelativePath().toOSString();
 		return result;
 	}
@@ -280,7 +279,6 @@ public class WorkspaceUtils
 	 * Setups the workspace, by checking:
 	 * 1) The user has set all plugin's preferences.
 	 * 	If not, the preferences window will open
-	 * 2) The project "User addons" exists. If not, it will be created
 	 */
 	public static void setupWorkspace(final boolean guided)
 	{
@@ -418,7 +416,7 @@ public class WorkspaceUtils
 
 	/**
 	 * Checks if the user has set some needed preferences and if the workspace
-	 * is setup (there exists the "User Addons" project)
+	 * is setup
 	 *
 	 * @param displayWarning true to display a messagebox warning
 	 * 		  the user if conditions are not met

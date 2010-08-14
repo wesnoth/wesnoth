@@ -264,10 +264,6 @@ public class ScenarioPage0 extends NewWizardPageTemplate
 		// make the map path to be relative to the ~addons directory
 
 		String homePath = txtProject_.getText();
-		if (homePath.startsWith("/User Addons"))
-		{
-			homePath = homePath.substring(("/User Addons").length());
-		}
 		if (!homePath.isEmpty() && homePath.charAt(0) == '/')
 			homePath = homePath.substring(1);
 

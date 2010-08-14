@@ -29,21 +29,7 @@ public class WesnothProjectReport extends ObjectActionDelegate
 			return;
 		}
 
-		String simpleReport = "";
-		if (project.getName().equals("User Addons"))
-		{
-			File projRoot = new File(project.getLocation().toOSString());
-			for (File container : projRoot.listFiles())
-			{
-				if (!(container.isDirectory()))
-					continue;
-				simpleReport += container.getName() + ":\n";
-				simpleReport += getReportForContainer(project.getFolder(container.getName()));
-			}
-		}
-		else
-			simpleReport = getReportForContainer(project);
-		GUIUtils.showInfoMessageBox(simpleReport);
+		GUIUtils.showInfoMessageBox(getReportForContainer(project));
 	}
 
 	/**

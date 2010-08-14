@@ -18,7 +18,6 @@ import java.util.Properties;
 
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
@@ -186,14 +185,6 @@ public class ScenarioNewWizard extends NewWizardTemplate
 			}
 		});
 		monitor.worked(1);
-
-		// refresh the addons project
-		IProject uaproj = WorkspaceUtils.getUserAddonsProject();
-		if (uaproj != null)
-		{
-			uaproj.refreshLocal(IResource.DEPTH_ONE, new NullProgressMonitor());
-		}
-
 		monitor.done();
 	}
 

@@ -102,8 +102,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 //
 //			List<ReplaceableParameter> params = new ArrayList<ReplaceableParameter>();
 //			params.add(new ReplaceableParameter("$$project_name", getProject().getName()));
-//			params.add(new ReplaceableParameter("$$project_dir_name",
-//					getProject().getName().equals("User Addons")? "" : getProject().getName()));
+//			params.add(new ReplaceableParameter("$$project_dir_name", getProject().getName()));
 //			ResourceUtils.createBuildXMLFile(
 //					getProject().getLocation().toOSString() + "/build.xml", params);
 //
