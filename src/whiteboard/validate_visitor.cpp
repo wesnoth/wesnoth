@@ -55,6 +55,8 @@ bool validate_visitor::validate_actions()
 		++action_number;
 	}
 
+	//FIXME: by reverse iterating this can be done in a more efficiant way
+	// by using the iterator returned by remove_action it could even be done in the loop above
 	if (!actions_to_erase_.empty())
 	{
 		int side_actions_size_before = side_actions_->actions().size();
