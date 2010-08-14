@@ -11,12 +11,12 @@ package org.wesnoth.utils;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Properties;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.jface.dialogs.DialogSettings;
 import org.wesnoth.Constants;
 import org.wesnoth.templates.ReplaceableParameter;
 import org.wesnoth.templates.TemplateProvider;
@@ -43,7 +43,7 @@ public class ProjectUtils
 	 * This method ensures it will get the latest up-to-date '.wesnoth' file
 	 * @param project the project
 	 */
-	public static Properties getPropertiesForProject(IProject project)
+	public static DialogSettings getPropertiesForProject(IProject project)
 	{
 		return getCacheForProject(project).getProperties();
 	}
@@ -63,15 +63,6 @@ public class ProjectUtils
 			projectCache_.put(project,cache);
 		}
 		return cache;
-	}
-
-	/**
-	 * Sets the properties store for the specified project and saves the file
-	 * If the '.wesnoth' file doesn't exist it will be created
-	 */
-	public static void setPropertiesForProject(IProject project, Properties props)
-	{
-		projectCache_.put(project, new ProjectCache(project, props));
 	}
 
 	/**

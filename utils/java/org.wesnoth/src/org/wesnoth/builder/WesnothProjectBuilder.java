@@ -209,7 +209,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 					{
 						Logger.getInstance().log("added scenarioId ["+handler.ScenarioId +
 								"] for file: " + file.getName());
-						projCache.getScenarios().put(file.getName(), handler.ScenarioId);
+						projCache.getScenario(file.getName()).setId(handler.ScenarioId);
 					}
 				}
 				monitor.worked(10);
@@ -268,13 +268,11 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 		if (ProjectUtils.getPropertiesForProject(getProject()) == null)
 			return false;
 
-		String ignored = ProjectUtils.getPropertiesForProject(getProject()).getProperty("ignored");
+		String[] ignored = ProjectUtils.getPropertiesForProject(getProject()).getArray("ignored");
 		if (ignored == null)
 			return false;
 
-		String[] ignoredFiles = ignored.split(",");
-
-		for (String path : ignoredFiles)
+		for (String path : ignored)
 		{
 			if (path.isEmpty())
 				continue;

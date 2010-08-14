@@ -8,9 +8,13 @@
  *******************************************************************************/
 package org.wesnoth.handlers;
 
+import java.io.IOException;
+
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
+import org.eclipse.jface.dialogs.DialogSettings;
+import org.eclipse.jface.dialogs.IDialogSettings;
 
 /**
  * Here it goes testing stuff in the plugin ( For DEBUG ONLY!)
@@ -21,6 +25,19 @@ public class TestHandler extends AbstractHandler
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException
 	{
+		DialogSettings set = new DialogSettings("proj");
+		IDialogSettings section2 = set.addNewSection("scenario");
+		section2.put("filename", "name");
+		IDialogSettings section3 = set.addNewSection("scenario2");
+		section3.put("filename", "name2");
+		try
+		{
+			set.save("D:/timo.txt");
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
 //		IWorkingSet set = WorkspaceUtils.getWorkingSetManager().getWorkingSet("Default");
 //		WorkingSetFilterActionGroup action = new WorkingSetFilterActionGroup(Activator.getShell(),
 //				null);

@@ -14,7 +14,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
-import java.util.Properties;
 
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
@@ -24,6 +23,7 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.jface.dialogs.DialogSettings;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
@@ -37,7 +37,6 @@ import org.wesnoth.utils.ProjectUtils;
 import org.wesnoth.utils.ResourceUtils;
 import org.wesnoth.utils.WorkspaceUtils;
 import org.wesnoth.wizards.NewWizardTemplate;
-
 
 /**
  * This is a sample new wizard. Its role is to create a new file resource in the
@@ -73,8 +72,8 @@ public class ScenarioNewWizard extends NewWizardTemplate
 
 		if (selectionContainer_ != null)
 		{
-			Properties props = ProjectUtils.getPropertiesForProject(selectionContainer_.getProject());
-			if (props != null && props.getProperty("difficulties") != null)
+			DialogSettings props = ProjectUtils.getPropertiesForProject(selectionContainer_.getProject());
+			if (props.get("difficulties") != null)
 			{
 				page1_ = new ScenarioPage1();
 				addPage(page1_);

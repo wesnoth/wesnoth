@@ -121,6 +121,10 @@ public class EmptyProjectNewWizard extends NewWizardTemplate
 					page1_.getGeneratePBLFile() == false)
 					continue;
 
+				if (file.Second.equals("build_xml") &&
+					page1_.isDataCampaignsProject())
+					continue;
+
 				ResourceUtils.createFile(currentProject, file.First, prepareTemplate(file.Second), true);
 				monitor.worked(1);
 			}

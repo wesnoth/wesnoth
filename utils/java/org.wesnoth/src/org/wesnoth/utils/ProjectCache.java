@@ -9,17 +9,14 @@
 package org.wesnoth.utils;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Properties;
 
 import org.eclipse.core.resources.IProject;
+import org.eclipse.jface.dialogs.DialogSettings;
 import org.wesnoth.Logger;
 import org.wesnoth.preprocessor.Define;
-
+import org.wesnoth.wml.core.scenarios.Scenario;
 
 /**
  * A class that stores some project specific infos
@@ -34,20 +31,19 @@ public class ProjectCache
 	private long propertiesTimetamp_;
 	private long definesTimetamp_;
 
-	private Properties properties_;
+	private DialogSettings properties_;
 
 	private File wesnothFile_;
 	private File definesFile_;
 
-	private Map<String, String> scenarios_;
+	private Map<String, Scenario> scenarios_;
 	private Map<String, Define> defines_;
 
 	public ProjectCache(IProject project)
 	{
-		scenarios_ = new HashMap<String, String>(3);
 		defines_ = new HashMap<String, Define>(0);
 		propertiesTimetamp_ = 0;
-		properties_ = new Properties();
+		properties_ = new DialogSettings("project");
 
 		wesnothFile_ = new File(project.getLocation().toOSString()  +
 							"/.wesnoth");
@@ -57,13 +53,6 @@ public class ProjectCache
 		ResourceUtils.createWesnothFile(wesnothFile_.getAbsolutePath());
 		readProperties(true);
 		readDefines(true);
-	}
-
-	public ProjectCache(IProject project, Properties defaults)
-	{
-		this(project);
-		properties_ = new Properties(defaults);
-		saveCache();
 	}
 
 	/**
@@ -80,24 +69,19 @@ public class ProjectCache
 		{
 			if (wesnothFile_.exists() == false)
 				ResourceUtils.createWesnothFile(wesnothFile_.getAbsolutePath());
-			properties_.loadFromXML(new FileInputStream(wesnothFile_));
-			propertiesTimetamp_ = wesnothFile_.lastModified();
 
-			// parse scenario ids
-			scenarios_.clear();
-			String[] fileNames = properties_.getProperty("scen_fns", "").split(",");
-			String[] scenarioIds = properties_.getProperty("scen_ids", "").split(",");
-			if (fileNames.length == scenarioIds.length)
+			try
 			{
-				for(int index = 0; index < fileNames.length;index++)
-				{
-					if (scenarioIds[index].isEmpty())
-						continue;
-					scenarios_.put(fileNames[index], scenarioIds[index]);
-				}
+				properties_.load(wesnothFile_.getAbsolutePath());
 			}
-			else
-				Logger.getInstance().logError("incorrect scenarios data.!!");
+			catch(ClassCastException ex)
+			{
+				// backward compatiblity
+				// we already have an xml format used by Properties.
+				// convert it to DialogSettings
+				ResourceUtils.createWesnothFile(wesnothFile_.getAbsolutePath());
+			}
+			propertiesTimetamp_ = wesnothFile_.lastModified();
 		}
 		catch (Exception e)
 		{
@@ -117,7 +101,7 @@ public class ProjectCache
 	 * This method ensures it will get the latest up-to-date '.wesnoth' file
 	 * @return
 	 */
-	public Properties getProperties()
+	public DialogSettings getProperties()
 	{
 		readProperties(false);
 		return properties_;
@@ -129,9 +113,22 @@ public class ProjectCache
 	 * and the value the scenarioId from that file
 	 * @return
 	 */
-	public Map<String, String> getScenarios()
+	public Map<String, Scenario> getScenarios()
 	{
 		return scenarios_;
+	}
+
+	/**
+	 * Gets the scenario by it's filename.
+	 * If the scenario doesn't exist it will be created
+	 * @param name
+	 * @return
+	 */
+	public Scenario getScenario(String name)
+	{
+		if (scenarios_.containsKey(name) == false)
+			scenarios_.put(name, new Scenario(name, null));
+		return scenarios_.get(name);
 	}
 
 	/**
@@ -147,25 +144,8 @@ public class ProjectCache
 			ResourceUtils.createWesnothFile(wesnothFile_.getAbsolutePath());
 		try
 		{
-			// store scenario ids
-			StringBuilder fileNames = new StringBuilder(scenarios_.size());
-			StringBuilder scenarioIds = new StringBuilder(scenarios_.size());
-			for(Entry<String, String> scenario : scenarios_.entrySet())
-			{
-				if (fileNames.length() > 0)
-				{
-					fileNames.append(',');
-					scenarioIds.append(',');
-				}
-				fileNames.append(scenario.getKey());
-				scenarioIds.append(scenario.getValue());
-			}
-
-			properties_.setProperty("scen_fns", fileNames.toString());
-			properties_.setProperty("scen_ids", scenarioIds.toString());
-
 			// store properties
-			properties_.storeToXML(new FileOutputStream(wesnothFile_), null);
+			properties_.save(wesnothFile_.getAbsolutePath());
 			propertiesTimetamp_ = wesnothFile_.lastModified();
 			return true;
 		}

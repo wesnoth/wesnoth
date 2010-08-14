@@ -11,7 +11,6 @@ package org.wesnoth.wizards.campaign;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
@@ -115,6 +114,9 @@ public class CampaignNewWizard extends NewWizardTemplate
 				if (file.Second.equals("pbl") &&
 					page1_.getGeneratePBLFile() == false)
 					continue;
+				if (file.Second.equals("build_xml") &&
+					page1_.isDataCampaignsProject())
+					continue;
 
 				ResourceUtils.createFile(currentProject, file.First, prepareTemplate(file.Second), true);
 				monitor.worked(1);
@@ -126,9 +128,8 @@ public class CampaignNewWizard extends NewWizardTemplate
 			}
 
 			// store some campaign-related info
-			Properties props = new Properties();
-			props.setProperty("difficulties", page2_.getDifficulties());
-			ProjectUtils.setPropertiesForProject(currentProject, props);
+			ProjectUtils.getPropertiesForProject(currentProject).put("difficulties", page2_.getDifficulties());
+			ProjectUtils.saveCacheForProject(currentProject);
 		} catch (CoreException e)
 		{
 			Logger.getInstance().logException(e);

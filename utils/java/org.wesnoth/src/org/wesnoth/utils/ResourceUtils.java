@@ -32,6 +32,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.jface.dialogs.DialogSettings;
 import org.eclipse.swt.SWT;
 import org.wesnoth.Logger;
 import org.wesnoth.templates.ReplaceableParameter;
@@ -207,11 +208,7 @@ public class ResourceUtils
 			if (!(wesnothFile.exists()))
 			{
 				createNewFile(wesnothFile.getAbsolutePath());
-				FileWriter writer = new FileWriter(wesnothFile);
-				writer.write("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n");
-				writer.write("<!DOCTYPE properties SYSTEM \"http://java.sun.com/dtd/properties.dtd\">\n");
-				writer.write("<properties>\n</properties>\n");
-				writer.close();
+				new DialogSettings("project").save(path);
 			}
 		}
 		catch (Exception e) {
