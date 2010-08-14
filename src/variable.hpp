@@ -46,7 +46,6 @@ public:
 	static vconfig unconstructed_vconfig(); // Must not be dereferenced
 
 	vconfig& operator=(const vconfig& cfg);
-	vconfig& operator=(const config &cfg);
 
 	bool null() const { return cfg_ == NULL; }
 	bool is_volatile() const { return cache_key_ != NULL; }

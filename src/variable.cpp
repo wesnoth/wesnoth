@@ -226,16 +226,6 @@ vconfig& vconfig::operator=(const vconfig& cfg)
 	return *this;
 }
 
-vconfig& vconfig::operator=(const config &cfg)
-{
-	if (cfg_ != &cfg) {
-		cfg_ = &cfg;
-		decrement_config_usage(cache_key_);
-		cache_key_ = NULL;
-	}
-	return *this;
-}
-
 const config vconfig::get_parsed_config() const
 {
 	config res;
