@@ -420,13 +420,14 @@ side_actions::iterator side_actions::find_last_action_of(unit const* unit, side_
 {
 	if (!empty() && validate_iterator(start_position))
 	{
-		side_actions::iterator position;
-		for (position = start_position; position != begin() - 1; --position)
+		reverse_iterator position(start_position);
+		for (--position ; position != rend(); ++position)
 		{
 			action_ptr action = *position;
 			if (action->get_unit() == unit)
 			{
-				return position;
+				iterator found_position = position.base();
+				return --found_position;
 			}
 		}
 	}
