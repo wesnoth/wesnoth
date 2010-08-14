@@ -83,7 +83,7 @@ public class WMLHyperlinkHelper extends HyperlinkHelper
 		Define define = ProjectUtils.getCacheForProject(file.getProject()).getDefines().get(macro.getName());
 		if (define == null)
 		{
-			//TODO: handle macro to file case
+			//TODO: handle macro include call - open folder?
 			//Logger.getInstance().log("No macro with that name found.");
 			return;
 		}
@@ -116,8 +116,13 @@ public class WMLHyperlinkHelper extends HyperlinkHelper
 		if (!(key.getText().equals("map_data")))
 			return;
 
-		// trim the " and the {
-		String mapLocation = value.getText().substring(2, value.getLength() - 2);
+		// trim the " and the { (if any exist)
+		String mapLocation = value.getText();
+		if (mapLocation.startsWith("\""))
+			mapLocation = mapLocation.substring(1, value.getLength() - 1);
+		if (mapLocation.startsWith("{"))
+			mapLocation = mapLocation.substring(1, value.getLength() - 1);
+
 		mapLocation = mapLocation.replaceFirst("~",
 				Preferences.getString(Constants.P_WESNOTH_USER_DIR) + "/data/");
 
