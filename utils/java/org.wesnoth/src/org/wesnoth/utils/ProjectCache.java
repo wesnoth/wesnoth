@@ -17,8 +17,8 @@ import org.eclipse.jface.dialogs.DialogSettings;
 import org.eclipse.jface.dialogs.IDialogSettings;
 import org.wesnoth.Logger;
 import org.wesnoth.preprocessor.Define;
+import org.wesnoth.wml.core.ConfigFile;
 import org.wesnoth.wml.core.Variable;
-import org.wesnoth.wml.core.scenarios.Scenario;
 
 /**
  * A class that stores some project specific infos
@@ -38,12 +38,12 @@ public class ProjectCache
 	private File wesnothFile_;
 	private File definesFile_;
 
-	private Map<String, Scenario> scenarios_;
+	private Map<String, ConfigFile> configFiles_;
 	private Map<String, Define> defines_;
 
 	public ProjectCache(IProject project)
 	{
-		scenarios_ = new HashMap<String, Scenario>();
+		configFiles_ = new HashMap<String, ConfigFile>();
 		defines_ = new HashMap<String, Define>(0);
 		propertiesTimetamp_ = 0;
 		properties_ = new DialogSettings("project");
@@ -85,24 +85,29 @@ public class ProjectCache
 				properties_.load(wesnothFile_.getAbsolutePath());
 			}
 
-			for(IDialogSettings scenario : properties_.getSection("scenarios").getSections())
+			if (properties_.getSection("configs") != null)
 			{
-				if (scenario.getName().startsWith("scenario") == false)
-					continue;
-
-				Scenario tmp = new Scenario(scenario.get("filename"), scenario.get("id"));
-				for(IDialogSettings variable : scenario.getSection("variables").getSections())
+				for(IDialogSettings config : properties_.getSection("configs").getSections())
 				{
-					if (variable.getName().startsWith("var") == false)
+					if (config.getName().startsWith("config") == false)
 						continue;
-					tmp.getVariables().add(
-							new Variable(variable.get("name"),
+
+					ConfigFile tmp = new ConfigFile(config.get("filename"));
+					tmp.setScenarioId(config.get("scenario_id"));
+					tmp.setCampaignId(config.get("campaign_id"));
+
+					for(IDialogSettings variable : config.getSection("variables").getSections())
+					{
+						if (variable.getName().startsWith("var") == false)
+							continue;
+						tmp.getVariables().add(
+								new Variable(variable.get("name"),
 										variable.get("location"),
 										variable.getInt("offset")));
+					}
+					configFiles_.put(config.get("filename"), tmp);
 				}
-				scenarios_.put(scenario.get("filename"), tmp);
 			}
-
 			propertiesTimetamp_ = wesnothFile_.lastModified();
 		}
 		catch (Exception e)
@@ -130,27 +135,27 @@ public class ProjectCache
 	}
 
 	/**
-	 * Gets the map with the scenarios
+	 * Gets the map with the Configs
 	 * The key represent the filenames of the files
 	 * and the value the scenarioId from that file
 	 * @return
 	 */
-	public Map<String, Scenario> getScenarios()
+	public Map<String, ConfigFile> getConfigs()
 	{
-		return scenarios_;
+		return configFiles_;
 	}
 
 	/**
-	 * Gets the scenario by it's filename.
-	 * If the scenario doesn't exist it will be created
+	 * Gets the Config by it's filename.
+	 * If the Config doesn't exist it will be created
 	 * @param name
 	 * @return
 	 */
-	public Scenario getScenario(String name)
+	public ConfigFile getConfig(String name)
 	{
-		if (scenarios_.containsKey(name) == false)
-			scenarios_.put(name, new Scenario(name, null));
-		return scenarios_.get(name);
+		if (configFiles_.containsKey(name) == false)
+			configFiles_.put(name, new ConfigFile(name));
+		return configFiles_.get(name);
 	}
 
 	/**
@@ -165,18 +170,19 @@ public class ProjectCache
 		ResourceUtils.createWesnothFile(wesnothFile_.getAbsolutePath(), false);
 		try
 		{
-			// save scenario info
-			int scenCnt = 0;
-			IDialogSettings scenarios = properties_.addNewSection("scenarios");
-			for(Scenario scenario : scenarios_.values())
+			// save config files info
+			int configCnt = 0;
+			IDialogSettings configsSection = properties_.addNewSection("configs");
+			for(ConfigFile config : configFiles_.values())
 			{
-				IDialogSettings scenSection = scenarios.addNewSection("scenario" + scenCnt);
-				scenSection.put("id", scenario.getId());
-				scenSection.put("filename", scenario.getFilename());
+				IDialogSettings configSection = configsSection.addNewSection("config" + configCnt);
+				configSection.put("scenario_id", config.getScenarioId());
+				configSection.put("campaign_id", config.getCampaignId());
+				configSection.put("filename", config.getFilename());
 
-				IDialogSettings variablesSection = scenSection.addNewSection("variables");
+				IDialogSettings variablesSection = configSection.addNewSection("variables");
 				int varCnt = 0;
-				for(Variable var : scenario.getVariables())
+				for(Variable var : config.getVariables())
 				{
 					IDialogSettings varSection = variablesSection.addNewSection("var" + varCnt);
 					varSection.put("name", var.getName());
@@ -185,7 +191,7 @@ public class ProjectCache
 
 					++varCnt;
 				}
-				++scenCnt;
+				++configCnt;
 			}
 
 			// store properties

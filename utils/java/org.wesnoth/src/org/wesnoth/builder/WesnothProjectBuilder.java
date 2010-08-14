@@ -28,8 +28,6 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.text.IDocument;
-import org.eclipse.ui.editors.text.TextFileDocumentProvider;
-import org.eclipse.ui.texteditor.IDocumentProvider;
 import org.wesnoth.Constants;
 import org.wesnoth.Logger;
 import org.wesnoth.preferences.Preferences;
@@ -41,6 +39,7 @@ import org.wesnoth.utils.ResourceUtils;
 import org.wesnoth.utils.StringUtils;
 import org.wesnoth.utils.WMLSaxHandler;
 import org.wesnoth.utils.WorkspaceUtils;
+import org.wesnoth.wml.core.ConfigFile;
 
 
 @SuppressWarnings("unused")
@@ -151,7 +150,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 			(resource.getName().toLowerCase(Locale.ENGLISH).endsWith(".cfg")))
 		{
 			ProjectUtils.getCacheForProject(getProject()).
-					getScenarios().remove(resource.getName());
+					getConfigs().remove(resource.getName());
 		}
 	}
 
@@ -195,33 +194,35 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 				ProjectCache projCache = ProjectUtils.getCacheForProject(getProject());
 
 				WMLSaxHandler handler =  (WMLSaxHandler) ResourceUtils.
-				getWMLSAXHandlerFromResource(
+					getWMLSAXHandlerFromResource(
 						PreprocessorUtils.getInstance().getPreprocessedFilePath(file, false, false).toString(),
 						new WMLSaxHandler(file.getLocation().toOSString()));
+
 				if (handler != null)
 				{
-					//TODO: add a non-intrusive way of checking if file is scenario
-					if (handler.ScenarioId != null)
+					ConfigFile cfg = handler.getConfigFile();
+					projCache.getConfigs().put(file.getName(), cfg);
+					if (cfg.isScenario())
 					{
-						Logger.getInstance().log("added scenarioId ["+handler.ScenarioId +
-								"] for file: " + file.getName());
-						projCache.getScenario(file.getName()).setId(handler.ScenarioId);
-					}
-
-					if (handler.Variables.size() > 0)
-					{
-						projCache.getScenario(file.getName()).getVariables().clear();
-						projCache.getScenario(file.getName()).getVariables()
-							.addAll(handler.Variables.values());
+						if (cfg.getScenarioId() != null &&
+							cfg.getScenarioId().isEmpty() == false)
+						{
+							Logger.getInstance().log("added scenarioId [" + cfg.getScenarioId() +
+									"] for file: " + file.getName());
+						}
+						else
+						{
+							projCache.getConfigs().remove(file.getName());
+						}
 					}
 				}
 				monitor.worked(10);
 
 				// we need to find the correct column start/end based on the current document
 				// (or get that from the tool)
-				IDocumentProvider provider = new TextFileDocumentProvider();
-				provider.connect(file);
-				IDocument document = provider.getDocument(file);
+//				IDocumentProvider provider = new TextFileDocumentProvider();
+//				provider.connect(file);
+//				IDocument document = provider.getDocument(file);
 
 				// wmllint
 //				monitor.subTask("Running WMLLint...");

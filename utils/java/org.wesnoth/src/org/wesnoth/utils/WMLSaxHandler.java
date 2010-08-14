@@ -8,10 +8,9 @@
  *******************************************************************************/
 package org.wesnoth.utils;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Stack;
 
+import org.wesnoth.wml.core.ConfigFile;
 import org.wesnoth.wml.core.Variable;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
@@ -19,24 +18,28 @@ import org.xml.sax.helpers.DefaultHandler;
 
 /**
  * A simple wml sax handler that parsers the xml of a config file
+ * and gets some information about it
  */
 public class WMLSaxHandler extends DefaultHandler
 {
-	public String CampaignId = null;
-	public String ScenarioId = null;
-	public Map<String, Variable> Variables = new HashMap<String, Variable>();
-
 	private static Stack<String> stack_;
-	private static final int SET_VARIABLE = 1;
-	private static final int SET_VARIABLE_ARRAY = 2;
-	private int STATUS = 0;
 	private Variable tmpVar_;
 	private String filePath_;
+	private ConfigFile cfg_;
 
+	private int STATUS = 0;
+	/** states list */
+	private static final int SET_VARIABLE = 1;
+	private static final int SET_VARIABLE_ARRAY = 2;
+
+	/**
+	 * @param filePath
+	 */
 	public WMLSaxHandler(String filePath)
 	{
 		stack_ = new Stack<String>();
 		filePath_ = filePath;
+		cfg_ = new ConfigFile(filePath);
 	}
 
     @Override
@@ -48,11 +51,20 @@ public class WMLSaxHandler extends DefaultHandler
     	{
     		STATUS = SET_VARIABLE;
     		tmpVar_ = new Variable();
-    	} else if (rawName.equals("set_variables"))
+    	}
+    	else if (rawName.equals("set_variables"))
     	{
     		STATUS = SET_VARIABLE_ARRAY;
     		tmpVar_ = new Variable();
     		tmpVar_.setIsArray(true);
+    	}
+    	else if (rawName.equals("campaign"))
+    	{
+    		cfg_.setIsCampaign(true);
+    	}
+    	else if (rawName.equals("scenario"))
+    	{
+    		cfg_.setIsScenario(true);
     	}
     }
 
@@ -66,9 +78,9 @@ public class WMLSaxHandler extends DefaultHandler
     		if (peek.equals("id"))
     		{
     			if (stack_.get(stack_.size() - 2).equals("campaign"))
-    				CampaignId = new String(ch, start, length);
+    				cfg_.setCampaignId(new String(ch, start, length));
     			else if (stack_.get(stack_.size() - 2).equals("scenario"))
-    				ScenarioId = new String(ch, start, length);
+    				cfg_.setScenarioId(new String(ch, start, length));
     		}
 
 			if (STATUS == SET_VARIABLE ||
@@ -89,7 +101,7 @@ public class WMLSaxHandler extends DefaultHandler
 					tmpVar_.setOffset(start);
 					tmpVar_.setLocation(filePath_);
 
-					Variables.put(name, tmpVar_);
+					cfg_.getVariables().add(tmpVar_);
 				}
     		}
     	}
@@ -113,5 +125,14 @@ public class WMLSaxHandler extends DefaultHandler
     public String getFilePath()
 	{
 		return filePath_;
+	}
+
+    /**
+     * Gets the Config resulted by parsing the file
+     * @return
+     */
+    public ConfigFile getConfigFile()
+	{
+		return cfg_;
 	}
 }

@@ -34,7 +34,7 @@ import org.wesnoth.utils.ProjectUtils;
 import org.wesnoth.wML.WMLKey;
 import org.wesnoth.wML.WMLTag;
 import org.wesnoth.wML.impl.WMLFactoryImpl;
-import org.wesnoth.wml.core.scenarios.Scenario;
+import org.wesnoth.wml.core.ConfigFile;
 
 
 @SuppressWarnings("unused")
@@ -162,11 +162,14 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 					return;
 				}
 
-				for(Entry<String, Scenario> scenario : ProjectUtils.
-						getCacheForProject(file.getProject()).getScenarios().entrySet())
+				for(ConfigFile config : ProjectUtils.
+						getCacheForProject(file.getProject()).getConfigs().values())
 				{
-					acceptor.accept(createCompletionProposal(scenario.getValue().getId(),
-							scenario.getValue().getId(), WMLLabelProvider.getImageByName("scenario.png"),
+					if (config.getScenarioId() == null ||
+						config.getScenarioId().isEmpty())
+						continue;
+					acceptor.accept(createCompletionProposal(config.getScenarioId(),
+							config.getScenarioId(), WMLLabelProvider.getImageByName("scenario.png"),
 							context, 1700));
 				}
 			}

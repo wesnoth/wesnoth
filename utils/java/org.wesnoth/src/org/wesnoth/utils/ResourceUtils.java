@@ -391,7 +391,7 @@ public class ResourceUtils
 	 * @param resource The resource where to search the id
 	 * @return
 	 */
-	public static String getCampaignID(IResource resource)
+	public static String getCampaignID(IFile resource)
 	{
 		WMLSaxHandler handler = (WMLSaxHandler) getWMLSAXHandlerFromResource(
 				PreprocessorUtils.getInstance().getPreprocessedFilePath(
@@ -399,7 +399,7 @@ public class ResourceUtils
 						new WMLSaxHandler(resource.getLocation().toOSString()));
 		if (handler == null)
 			return null;
-		return handler.CampaignId;
+		return handler.getConfigFile().getCampaignId();
 	}
 
 	/**
@@ -414,7 +414,7 @@ public class ResourceUtils
 				new WMLSaxHandler(file.getLocation().toOSString()));
 		if (handler == null)
 			return null;
-		return handler.ScenarioId;
+		return handler.getConfigFile().getScenarioId();
 	}
 
 	/**
@@ -448,19 +448,30 @@ public class ResourceUtils
 		}
 	}
 
+	/**
+	 * @deprecated Use the {@link WMLSaxHandler#IsCampaign}
+	 * @param fileName
+	 * @return
+	 */
+	@Deprecated
 	public static boolean isCampaignFile(String fileName)
 	{
 		if (!fileName.endsWith(".cfg"))
 			return false;
-		//TODO: replace this with a better checking
 		String fileContentString = ResourceUtils.getFileContents(new File(fileName));
 		return (fileContentString.contains("[campaign]") && fileContentString.contains("[/campaign]"));
 	}
+
+	/**
+	 * @deprecated Use the {@link WMLSaxHandler#IsScenario}
+	 * @param fileName
+	 * @return
+	 */
+	@Deprecated
 	public static boolean isScenarioFile(String fileName)
 	{
 		if (!fileName.endsWith(".cfg"))
 			return false;
-		//TODO: replace this with a better checkings
 		String fileContentString = ResourceUtils.getFileContents(new File(fileName));
 		return (fileContentString.contains("[scenario]") && fileContentString.contains("[/scenario]"));
 	}
