@@ -32,6 +32,7 @@ public class CampaignPage1 extends NewWizardPageTemplate
 	private Text	txtIcon_;
 	private Button	chkMultiCampaign_;
 	private Button chkGeneratePBL_;
+	private Button chkDataCampaignProject_;
 
 	public CampaignPage1() {
 		super("campaignPage1");
@@ -86,6 +87,10 @@ public class CampaignPage1 extends NewWizardPageTemplate
 
 		Label lblRelativeToThe = new Label(container, SWT.NONE);
 		lblRelativeToThe.setText("Relative to the data folder");
+
+		chkDataCampaignProject_ = new Button(container, SWT.CHECK);
+		chkDataCampaignProject_.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false, 3, 1));
+		chkDataCampaignProject_.setText("This is a 'data/campaigns/' project");
 
 		chkMultiCampaign_ = new Button(container, SWT.CHECK);
 		GridData gd_chkMultiCampaign_ = new GridData(SWT.LEFT, SWT.CENTER, false, false, 2, 1);
@@ -243,5 +248,10 @@ public class CampaignPage1 extends NewWizardPageTemplate
 	public boolean getGeneratePBLFile()
 	{
 		return chkGeneratePBL_.getSelection();
+	}
+
+	public boolean isDataCampaignsProject()
+	{
+		return chkDataCampaignProject_.getSelection();
 	}
 }

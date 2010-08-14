@@ -88,7 +88,7 @@ public class CampaignNewWizard extends NewWizardTemplate
 			if (page0_.getLocationPath().equals(ResourcesPlugin.getWorkspace().getRoot().getLocation()))
 			{
 				ProjectUtils.createWesnothProject(currentProject, null,
-						true, false, monitor);
+						true, !page1_.isDataCampaignsProject(), monitor);
 			}
 			else
 			{
@@ -96,7 +96,7 @@ public class CampaignNewWizard extends NewWizardTemplate
 				newProjectDescription(page0_.getProjectName());
 				newDescription.setLocation(page0_.getLocationPath());
 				ProjectUtils.createWesnothProject(currentProject, newDescription,
-						true, false, monitor);
+						true, !page1_.isDataCampaignsProject(), monitor);
 			}
 			monitor.worked(2);
 

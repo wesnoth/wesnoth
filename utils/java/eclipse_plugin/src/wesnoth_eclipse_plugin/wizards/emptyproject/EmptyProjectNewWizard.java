@@ -90,8 +90,8 @@ public class EmptyProjectNewWizard extends NewWizardTemplate
 			// the project
 			if (page0_.getLocationPath().equals(ResourcesPlugin.getWorkspace().getRoot().getLocation()))
 			{
-				ProjectUtils.createWesnothProject(currentProject, null, true,
-						false, monitor);
+				ProjectUtils.createWesnothProject(currentProject, null, page1_.isDataCampaignsProject(),
+						!page1_.isDataCampaignsProject(), monitor);
 			}
 			else
 			{
@@ -99,8 +99,9 @@ public class EmptyProjectNewWizard extends NewWizardTemplate
 				newProjectDescription(page0_.getProjectName());
 				newDescription.setLocation(page0_.getLocationPath());
 				ProjectUtils.createWesnothProject(currentProject, newDescription,
-						true, false, monitor);
+						true, !page1_.isDataCampaignsProject(), monitor);
 			}
+
 			monitor.worked(2);
 
 			String emptyProjectStructure = prepareTemplate("empty_project");

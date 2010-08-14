@@ -33,6 +33,7 @@ public class EmptyProjectPage1 extends NewWizardPageTemplate
 	private Text txtIcon_;
 	private Text txtType_;
 	private Button chkGeneratePBL_;
+	private Button chkDataCampaignsProject_;
 
 
 	public EmptyProjectPage1() {
@@ -57,6 +58,11 @@ public class EmptyProjectPage1 extends NewWizardPageTemplate
 			}
 		};
 		container.setLayout(new GridLayout(3, false));
+
+		chkDataCampaignsProject_ = new Button(container, SWT.CHECK);
+		chkDataCampaignsProject_.setText("This is a 'data/campaigns/' project");
+		new Label(container, SWT.NONE);
+		new Label(container, SWT.NONE);
 
 		chkGeneratePBL_ = new Button(container, SWT.CHECK);
 		chkGeneratePBL_.setLayoutData(new GridData(SWT.LEFT, SWT.CENTER, false, false, 3, 1));
@@ -257,5 +263,10 @@ public class EmptyProjectPage1 extends NewWizardPageTemplate
 	public boolean getGeneratePBLFile()
 	{
 		return  chkGeneratePBL_.getSelection();
+	}
+
+	public boolean isDataCampaignsProject()
+	{
+		return chkDataCampaignsProject_.getSelection();
 	}
 }

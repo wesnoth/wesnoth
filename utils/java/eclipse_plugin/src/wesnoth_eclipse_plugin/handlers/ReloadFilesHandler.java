@@ -8,12 +8,17 @@
  *******************************************************************************/
 package wesnoth_eclipse_plugin.handlers;
 
+import java.util.Map.Entry;
+
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
+import org.eclipse.core.resources.IProject;
 
 import wesnoth_eclipse_plugin.schema.SchemaParser;
 import wesnoth_eclipse_plugin.templates.TemplateProvider;
 import wesnoth_eclipse_plugin.utils.GUIUtils;
+import wesnoth_eclipse_plugin.utils.ProjectCache;
+import wesnoth_eclipse_plugin.utils.ProjectUtils;
 
 public class ReloadFilesHandler extends AbstractHandler
 {
@@ -22,6 +27,13 @@ public class ReloadFilesHandler extends AbstractHandler
 	{
 		SchemaParser.getInstance().parseSchema(true);
 		TemplateProvider.getInstance().loadTemplates();
+
+		// reload the cache only for already loaded files
+		for(Entry<IProject, ProjectCache> cache :
+				ProjectUtils.getProjectCaches().entrySet())
+		{
+			cache.getValue().readDefines(true);
+		}
 
 		GUIUtils.showInfoMessageBox("Files reloaded.");
 		return null;
