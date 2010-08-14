@@ -14,6 +14,7 @@ import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -25,7 +26,7 @@ import wesnoth_eclipse_plugin.utils.StringUtils;
 public class TemplateProvider
 {
 	private static TemplateProvider		instance_;
-	private final HashMap<String, String>	templates_	= new HashMap<String, String>();
+	private final Map<String, String>	templates_	= new HashMap<String, String>();
 
 	public static TemplateProvider getInstance()
 	{

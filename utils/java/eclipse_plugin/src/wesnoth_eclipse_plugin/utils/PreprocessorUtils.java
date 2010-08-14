@@ -12,6 +12,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.core.filesystem.EFS;
 import org.eclipse.core.filesystem.IFileStore;
@@ -25,7 +26,7 @@ import wesnoth_eclipse_plugin.preferences.Preferences;
 
 public class PreprocessorUtils
 {
-	private static HashMap<String, Long> filesTimeStamps_ = new HashMap<String, Long>();
+	private static Map<String, Long> filesTimeStamps_ = new HashMap<String, Long>();
 
 	/**
 	 * preprocesses a file using the wesnoth's executable, only

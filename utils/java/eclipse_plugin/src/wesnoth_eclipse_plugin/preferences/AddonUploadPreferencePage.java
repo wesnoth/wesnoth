@@ -1,6 +1,7 @@
 package wesnoth_eclipse_plugin.preferences;
 
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Map.Entry;
 
 import org.eclipse.jface.preference.BooleanFieldEditor;
@@ -17,7 +18,7 @@ import wesnoth_eclipse_plugin.jface.RegexStringFieldEditor;
 public class AddonUploadPreferencePage extends FieldEditorPreferencePage implements
 		IWorkbenchPreferencePage
 {
-	HashMap<String, String> ports_;
+	Map<String, String> ports_;
 
 	public AddonUploadPreferencePage()
 	{

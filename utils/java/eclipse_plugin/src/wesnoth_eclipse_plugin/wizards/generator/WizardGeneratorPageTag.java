@@ -10,6 +10,7 @@ package wesnoth_eclipse_plugin.wizards.generator;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Map.Entry;
 
 import org.eclipse.swt.SWT;
@@ -33,7 +34,7 @@ import wesnoth_eclipse_plugin.wizards.NewWizardPageTemplate;
 public class WizardGeneratorPageTag extends NewWizardPageTemplate
 {
 	private java.util.List<Tag>						tags_;
-	private HashMap<String, java.util.List<String>>	content_;
+	private Map<String, java.util.List<String>>	content_;
 	private int									startIndex_, endIndex_;
 	private Composite								container_;
 	private byte									indent_;

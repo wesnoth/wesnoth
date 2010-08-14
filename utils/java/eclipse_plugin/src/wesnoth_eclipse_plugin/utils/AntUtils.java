@@ -11,8 +11,8 @@ package wesnoth_eclipse_plugin.utils;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.PrintStream;
-import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 
 import org.apache.tools.ant.BuildLogger;
 import org.apache.tools.ant.DefaultLogger;
@@ -34,7 +34,7 @@ public class AntUtils
 	 * @param recordOutput true if the output of the runned file should be recorded and returned
 	 * @return null if the build didn't success
 	 */
-	public static String runAnt(String antFile, HashMap<String, String> properties,
+	public static String runAnt(String antFile, Map<String, String> properties,
 			boolean recordOutput)
 	{
 		Project project = new Project();

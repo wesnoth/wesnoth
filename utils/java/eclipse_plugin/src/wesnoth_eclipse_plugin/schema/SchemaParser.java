@@ -11,6 +11,7 @@ package wesnoth_eclipse_plugin.schema;
 import java.io.File;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Stack;
 
 import wesnoth_eclipse_plugin.Constants;
@@ -34,8 +35,8 @@ public class SchemaParser
 		return instance_;
 	}
 
-	private HashMap<String, String> primitives_	    = new HashMap<String, String>();
-	private HashMap<String, Tag>    tags_          = new HashMap<String, Tag>();
+	private Map<String, String> primitives_	    = new HashMap<String, String>();
+	private Map<String, Tag>    tags_          = new HashMap<String, Tag>();
 	private boolean                parsingDone_   = false;
 
 	/**
@@ -318,7 +319,7 @@ public class SchemaParser
 	/**
 	 * Gets the hasmap with parsed tags
 	 */
-	public HashMap<String, Tag> getTags()
+	public Map<String, Tag> getTags()
 	{
 		return tags_;
 	}
@@ -326,7 +327,7 @@ public class SchemaParser
 	/**
 	 * Gets the hasmap with the parsed primitives
 	 */
-	public HashMap<String, String> getPrimitives()
+	public Map<String, String> getPrimitives()
 	{
 		return primitives_;
 	}

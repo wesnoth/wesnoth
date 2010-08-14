@@ -97,7 +97,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 			// run the ant job to copy the whole project
 			// in the user add-ons directory (incremental)
 			monitor.subTask("Copying resources...");
-			HashMap<String, String> properties = new HashMap<String, String>();
+			Map<String, String> properties = new HashMap<String, String>();
 			properties.put("wesnoth.user.dir",
 					Preferences.getString(Constants.P_WESNOTH_USER_DIR) + Path.SEPARATOR);
 			Logger.getInstance().log("Ant result:");
