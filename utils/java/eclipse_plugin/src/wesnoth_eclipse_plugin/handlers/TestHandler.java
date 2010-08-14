@@ -21,6 +21,10 @@ public class TestHandler extends AbstractHandler
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException
 	{
+//		IWorkingSet set = WorkspaceUtils.getWorkingSetManager().getWorkingSet("Default");
+//		WorkingSetFilterActionGroup action = new WorkingSetFilterActionGroup(Activator.getShell(),
+//				null);
+//		action.setWorkingSet(set);
 //		DefinesSAXHandler handler = (DefinesSAXHandler) ResourceUtils.getWMLSAXHandlerFromResource(
 //				"d:/tmp/wesnoth_plugin/a/_MACROS_.cfg",
 //				new DefinesSAXHandler());

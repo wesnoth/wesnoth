@@ -27,6 +27,7 @@ import org.eclipse.core.resources.IResourceFilterDescription;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.resources.WorkspaceJob;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -37,6 +38,8 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.window.Window;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.IWorkingSet;
+import org.eclipse.ui.IWorkingSetManager;
 import org.eclipse.ui.dialogs.PreferencesUtil;
 
 import wesnoth_eclipse_plugin.Activator;
@@ -215,6 +218,15 @@ public class WorkspaceUtils
 	}
 
 	/**
+	 * Returns the current working set manager
+	 * @return
+	 */
+	public static IWorkingSetManager getWorkingSetManager()
+	{
+		return getWorkbenchWindow().getWorkbench().getWorkingSetManager();
+	}
+
+	/**
 	 * Returns the temporary folder where the plugin can write resources
 	 *
 	 * @return
@@ -299,6 +311,15 @@ public class WorkspaceUtils
 			{
 				try
 				{
+					// create a default working set
+					IWorkingSetManager manager = getWorkingSetManager();
+					IWorkingSet defaultSet = manager.getWorkingSet("Default");
+					if (defaultSet == null)
+					{
+						defaultSet = manager.createWorkingSet("Default", new IAdaptable[0]);
+						manager.addWorkingSet(defaultSet);
+					}
+
 					// automatically import 'special' folders as projects
 					List<File> files = new ArrayList<File>();
 					String addonsDir = Preferences.getString(Constants.P_WESNOTH_USER_DIR)+"/data/add-ons/";
@@ -332,17 +353,21 @@ public class WorkspaceUtils
 							ResourcesPlugin.getWorkspace().newProjectDescription(projectName);
 						description.setLocation(new Path(file.getAbsolutePath()));
 
-						IContainer cont = ResourcesPlugin.getWorkspace().getRoot().
+						IContainer container = ResourcesPlugin.getWorkspace().getRoot().
 							getContainerForLocation(new Path(file.getAbsolutePath()));
 
+						IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
 						// don't create the project if it exists already
-						if (cont == null)
+						if (container == null)
 						{
-							ProjectUtils.createWesnothProject(
-									ResourcesPlugin.getWorkspace().getRoot().getProject(projectName),
-									description, true, false, monitor);
+							ProjectUtils.createWesnothProject(project, description,
+									true, false, monitor);
+							container = project;
 						}
+						manager.addToWorkingSets(container, new IWorkingSet[] { defaultSet });
 					}
+
+					//TODO select the default working set manager as the active one
 
 					if (guided)
 					{
