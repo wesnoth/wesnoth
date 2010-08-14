@@ -15,7 +15,6 @@ import java.util.Properties;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
-import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -27,7 +26,6 @@ import wesnoth_eclipse_plugin.templates.TemplateProvider;
 import wesnoth_eclipse_plugin.utils.Pair;
 import wesnoth_eclipse_plugin.utils.ProjectUtils;
 import wesnoth_eclipse_plugin.utils.ResourceUtils;
-import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
 import wesnoth_eclipse_plugin.wizards.NewWizardTemplate;
 
 public class CampaignNewWizard extends NewWizardTemplate
@@ -127,23 +125,6 @@ public class CampaignNewWizard extends NewWizardTemplate
 			Properties props = new Properties();
 			props.setProperty("difficulties", page2_.getDifficulties());
 			ProjectUtils.setPropertiesForProject(currentProject, props);
-
-			// refresh and add ignore filter on 'user addons' project
-			IProject uaproj = WorkspaceUtils.getUserAddonsProject();
-			if (uaproj != null)
-			{
-				Properties uaprops = ProjectUtils.getPropertiesForProject(uaproj);
-				String ignored = uaprops.getProperty("ignored");
-				if (ignored == null)
-					ignored = "";
-				if (!ignored.isEmpty())
-					ignored += ",";
-				ignored += currentProject.getName();
-				uaprops.setProperty("ignored", ignored);
-				WorkspaceUtils.createIgnoreFilter(uaproj, currentProject.getName());
-				ProjectUtils.saveCacheForProject(uaproj);
-				uaproj.refreshLocal(IResource.DEPTH_ONE, monitor);
-			}
 		} catch (CoreException e)
 		{
 			Logger.getInstance().logException(e);
