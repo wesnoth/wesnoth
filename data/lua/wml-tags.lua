@@ -550,7 +550,7 @@ function wml_actions.modify_unit(cfg)
 	end
 
 	local filter = helper.get_child(cfg, "filter") or helper.wml_error "[modify_unit] missing required [filter] tag"
-	local cfg = cfg.__parsed
+	local cfg = helper.parsed(cfg)
 
 	wml_actions.store_unit { {"filter", filter}, variable = unit_variable, kill = true }
 	local max_index = wesnoth.get_variable(unit_variable .. ".length") - 1
@@ -560,4 +560,63 @@ function wml_actions.modify_unit(cfg)
 	end
 
 	wesnoth.set_variable(unit_variable)
+end
+
+function wml_actions.move_unit(cfg)
+	local coordinate_error = "invalid coordinate in [move_unit]"
+	local to_x = tostring(cfg.to_x) or helper.wml_error(coordinate_error)
+	local to_y = tostring(cfg.to_y) or helper.wml_error(coordinate_error)
+	local fire_event = cfg.fire_event
+	cfg = helper.literal(cfg)
+	cfg.to_x, cfg.to_y, cfg.fire_event = nil, nil, nil
+	local units = wesnoth.get_units(cfg)
+
+	local function proxy_unit_is_valid(unit)
+		local function dummy() return unit.x end
+		return pcall(dummy)
+	end
+
+	local pattern = "[^%s,]+"
+	for current_unit_index, current_unit in ipairs(units) do
+		if fire_event and not proxy_unit_is_valid(current_unit) then
+		else
+			local xs, ys = string.gmatch(to_x, pattern), string.gmatch(to_y, pattern)
+			local move_string_x = current_unit.x
+			local move_string_y = current_unit.y
+
+			local x, y = xs(), ys()
+			while true do
+				x = tonumber(x) or helper.wml_error(coordinate_error)
+				y = tonumber(y) or helper.wml_error(coordinate_error)
+				x, y = wesnoth.find_vacant_tile(x, y, current_unit)
+				move_string_x = string.format("%s,%u", move_string_x, x)
+				move_string_y = string.format("%s,%u", move_string_y, y)
+				local next_x, next_y = xs(), ys()
+				if not next_x and not next_y then break end
+				x, y = next_x, next_y
+			end
+
+			if current_unit.x < x then current_unit.facing = "se"
+			elseif current_unit.x > x then current_unit.facing = "sw"
+			end
+
+			wesnoth.extract_unit(current_unit)
+			local current_unit_cfg = current_unit.__cfg
+			wml_actions.move_unit_fake {
+				type = current_unit_cfg.type,
+				gender = current_unit_cfg.gender,
+				variation = current_unit_cfg.variation,
+				side = current_unit_cfg.side,
+				x = move_string_x,
+				y = move_string_y
+			}
+			local x2, y2 = current_unit.x, current_unit.y
+			current_unit.x, current_unit.y = x, y
+			wesnoth.put_unit(current_unit)
+
+			if fire_event then
+				wesnoth.fire_event("moveto", x, y, x2, y2)
+			end
+		end
+	end
 end
