@@ -22,9 +22,9 @@ public class RunWMLLintOnPreprocFile extends ObjectActionDelegate
 	public void run(IAction action)
 	{
 		IFile file = WorkspaceUtils.getSelectedFile(WorkspaceUtils.getWorkbenchWindow());
-		PreprocessorUtils.preprocessFile(file, null);
+		PreprocessorUtils.getInstance().preprocessFile(file, null);
 
 		WMLTools.runWMLToolAsWorkspaceJob(Tools.WMLLINT,
-				PreprocessorUtils.getPreprocessedFilePath(file,	false, false).toString());
+				PreprocessorUtils.getInstance().getPreprocessedFilePath(file,	false, false).toString());
 	}
 }

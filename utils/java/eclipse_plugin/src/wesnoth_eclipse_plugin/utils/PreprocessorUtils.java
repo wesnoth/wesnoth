@@ -30,7 +30,21 @@ import wesnoth_eclipse_plugin.preferences.Preferences;
 
 public class PreprocessorUtils
 {
-	private static Map<String, Long> filesTimeStamps_ = new HashMap<String, Long>();
+	private static PreprocessorUtils instance_;
+	private Map<String, Long> filesTimeStamps_ = new HashMap<String, Long>();
+
+	private PreprocessorUtils()
+	{
+		filesTimeStamps_ = new HashMap<String, Long>();
+		restoreTimestamps();
+	}
+
+	public static PreprocessorUtils getInstance()
+	{
+		if (instance_ == null)
+			instance_ = new PreprocessorUtils();
+		return instance_;
+	}
 
 	/**
 	 * preprocesses a file using the wesnoth's executable, only
@@ -40,7 +54,7 @@ public class PreprocessorUtils
 	 * @param defines the list of additional defines to be added when preprocessing the file
 	 * @return
 	 */
-	public static int preprocessFile(IFile file, List<String> defines)
+	public int preprocessFile(IFile file, List<String> defines)
 	{
 		return preprocessFile(file, getTemporaryLocation(file),
 				getTemporaryLocation(file) + "/_MACROS_.cfg", defines, true);
@@ -55,7 +69,7 @@ public class PreprocessorUtils
 	 * @param defines the list of additional defines to be added when preprocessing the file
 	 * @return
 	 */
-	public static int preprocessFile(IFile file, String macrosFile, List<String> defines)
+	public int preprocessFile(IFile file, String macrosFile, List<String> defines)
 	{
 		return preprocessFile(file, getTemporaryLocation(file), macrosFile, defines, true);
 	}
@@ -73,7 +87,7 @@ public class PreprocessorUtils
 	 * 	 0 - preprocessed succesfully
 	 *   1 - there was an error
 	 */
-	public static int preprocessFile(IFile file, String targetDirectory,
+	public int preprocessFile(IFile file, String targetDirectory,
 			String macrosFile, List<String> defines, boolean waitForIt)
 	{
 		String filePath = file.getLocation().toOSString();
@@ -151,7 +165,7 @@ public class PreprocessorUtils
 	 * @param openPlain true if it should open the plain preprocessed version
 	 * or false for the normal one
 	 */
-	public static void openPreprocessedFileInEditor(IFile file, boolean openPlain)
+	public void openPreprocessedFileInEditor(IFile file, boolean openPlain)
 	{
 		if (file == null || !file.exists())
 		{
@@ -170,7 +184,7 @@ public class PreprocessorUtils
 	 * doesn't exist it will be created.
 	 * @return
 	 */
-	public static IFileStore getPreprocessedFilePath(IFile file, boolean plain,
+	public IFileStore getPreprocessedFilePath(IFile file, boolean plain,
 			boolean create)
 	{
 		IFileStore preprocFile =
@@ -186,7 +200,7 @@ public class PreprocessorUtils
 	 * @param file
 	 * @return
 	 */
-	public static String getTemporaryLocation(IFile file)
+	public String getTemporaryLocation(IFile file)
 	{
 		String targetDirectory = WorkspaceUtils.getTemporaryFolder();
 		targetDirectory += file.getProject().getName() + "/";
@@ -202,7 +216,7 @@ public class PreprocessorUtils
 	 * @param resource
 	 * @return
 	 */
-	public static String getDefinesLocation(IResource resource)
+	public String getDefinesLocation(IResource resource)
 	{
 		return WorkspaceUtils.getTemporaryFolder() +
 				resource.getProject().getName() +
@@ -213,7 +227,7 @@ public class PreprocessorUtils
 	 * Saves the current timestamps for preprocessed files
 	 * to filesystem
 	 */
-	public static void saveTimestamps()
+	public void saveTimestamps()
 	{
 		IPath path = Activator.getDefault().getStateLocation();
 		String filename = path.append("preprocessed.txt").toOSString();
@@ -242,7 +256,7 @@ public class PreprocessorUtils
 	 * Restores the timestamps for preprocessed files from
 	 * the filesystem
 	 */
-	public static void restoreTimestamps()
+	public void restoreTimestamps()
 	{
 		IPath path = Activator.getDefault().getStateLocation();
 		String filename = path.append("preprocessed.txt").toOSString();

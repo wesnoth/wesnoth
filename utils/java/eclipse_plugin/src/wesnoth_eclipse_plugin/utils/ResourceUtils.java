@@ -395,7 +395,7 @@ public class ResourceUtils
 	public static String getCampaignID(IResource resource)
 	{
 		WMLSaxHandler handler = (WMLSaxHandler) getWMLSAXHandlerFromResource(
-					PreprocessorUtils.getPreprocessedFilePath(
+				PreprocessorUtils.getInstance().getPreprocessedFilePath(
 						getMainConfigLocation(resource), false, true).toString(),
 						new WMLSaxHandler());
 		if (handler == null)
@@ -411,7 +411,7 @@ public class ResourceUtils
 	public static String getScenarioID(IFile file)
 	{
 		WMLSaxHandler handler = (WMLSaxHandler) getWMLSAXHandlerFromResource(
-				PreprocessorUtils.getPreprocessedFilePath(file, false, true).toString(),
+				PreprocessorUtils.getInstance().getPreprocessedFilePath(file, false, true).toString(),
 				new WMLSaxHandler());
 		if (handler == null)
 			return null;

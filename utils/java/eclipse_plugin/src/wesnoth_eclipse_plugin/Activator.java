@@ -46,7 +46,6 @@ public class Activator extends AbstractUIPlugin
 		super.start(context);
 		plugin = this;
 		Logger.getInstance().startLogger();
-		PreprocessorUtils.restoreTimestamps();
 	}
 
 	@Override
@@ -61,7 +60,7 @@ public class Activator extends AbstractUIPlugin
 		{
 			cache.getValue().saveCache();
 		}
-		PreprocessorUtils.saveTimestamps();
+		PreprocessorUtils.getInstance().saveTimestamps();
 		super.stop(context);
 	}
 

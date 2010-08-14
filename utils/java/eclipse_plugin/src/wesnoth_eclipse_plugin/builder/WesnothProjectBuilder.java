@@ -186,8 +186,8 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 					defines.add("SKIP_CORE");
 
 				// we use a single _MACROS_.cfg file for each project
-				int preprocResult = PreprocessorUtils.preprocessFile(file,
-					PreprocessorUtils.getDefinesLocation(file), defines);
+				int preprocResult = PreprocessorUtils.getInstance().preprocessFile(file,
+						PreprocessorUtils.getInstance().getDefinesLocation(file), defines);
 				monitor.worked(5);
 
 				monitor.subTask("Gathering file information...");
@@ -197,7 +197,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 				{
 					WMLSaxHandler handler =  (WMLSaxHandler) ResourceUtils.
 						getWMLSAXHandlerFromResource(
-							PreprocessorUtils.getPreprocessedFilePath(file, false, false).toString(),
+								PreprocessorUtils.getInstance().getPreprocessedFilePath(file, false, false).toString(),
 							new WMLSaxHandler());
 					if (handler == null || handler.ScenarioId == null)
 					{

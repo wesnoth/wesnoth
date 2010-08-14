@@ -18,7 +18,7 @@ public class ShowPlainPreprocessedConfig extends ObjectActionDelegate
 	@Override
 	public void run(IAction action)
 	{
-		PreprocessorUtils.openPreprocessedFileInEditor(
+		PreprocessorUtils.getInstance().openPreprocessedFileInEditor(
 				WorkspaceUtils.getSelectedFile(WorkspaceUtils.getWorkbenchWindow()),
 				true);
 	}

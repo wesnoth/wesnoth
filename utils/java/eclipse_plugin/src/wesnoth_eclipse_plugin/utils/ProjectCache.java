@@ -51,7 +51,7 @@ public class ProjectCache
 
 		wesnothFile_ = new File(project.getLocation().toOSString()  +
 							"/.wesnoth");
-		definesFile_ = new File (PreprocessorUtils.getTemporaryLocation(
+		definesFile_ = new File (PreprocessorUtils.getInstance().getTemporaryLocation(
 				project.getFile("_main.cfg"))  + "/_MACROS_.cfg");
 
 		ResourceUtils.createWesnothFile(wesnothFile_.getAbsolutePath());
