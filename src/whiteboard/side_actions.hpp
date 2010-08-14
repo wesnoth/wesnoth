@@ -38,6 +38,8 @@ public:
 
 	typedef action_queue::iterator iterator;
 	typedef action_queue::const_iterator const_iterator;
+	typedef action_queue::reverse_iterator reverse_iterator;
+	typedef action_queue::const_reverse_iterator const_reverse_iterator;
 
 	side_actions();
 	virtual ~side_actions();
@@ -69,12 +71,16 @@ public:
 	/**
 	 * Returns the iterator for the first (executed earlier) action within the actions set.
 	 */
-	iterator begin() {return actions_.begin(); }
+	iterator begin() { return actions_.begin(); }
+	/// reverse version of the above
+	reverse_iterator rbegin() { return actions_.rbegin(); }
 
 	/**
 	 * Returns the iterator for the position *after* the last executed action within the actions set.
 	 */
 	iterator end() { return actions_.end(); }
+	/// reverse version of the above
+	reverse_iterator rend() { return actions_.rend(); }
 
 	/**
 	 * Indicates whether the action queue is empty.
