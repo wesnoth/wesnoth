@@ -51,7 +51,9 @@ int progressive_string::duration() const
 	return total;
 
 }
-static const std::string empty_string ="";
+
+static const std::string empty_string;
+
 const std::string& progressive_string::get_current_element(int current_time)const
 {
 	int time = 0;
@@ -63,7 +65,6 @@ const std::string& progressive_string::get_current_element(int current_time)cons
 
 	}
 	if(sub_halo) sub_halo--;
-	if(sub_halo >= data_.size()) sub_halo = data_.size();
 	return data_[sub_halo].first;
 }
 
@@ -106,10 +107,6 @@ const T progressive_<T>::get_current_element(int current_time, T default_val) co
 	if(sub_halo != 0) {
 		sub_halo--;
 		time -= data_[sub_halo].second;
-	}
-	if(sub_halo >= data_.size()) {
-		sub_halo = data_.size();
-		time = searched_time; // Never more than max allowed
 	}
 
 	const T first =  data_[sub_halo].first.first;
