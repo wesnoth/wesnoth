@@ -15,7 +15,6 @@ import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.jface.action.IAction;
-import org.eclipse.jface.viewers.IStructuredSelection;
 
 import wesnoth_eclipse_plugin.Constants;
 import wesnoth_eclipse_plugin.Logger;
@@ -27,24 +26,23 @@ public class ToggleNatureAction extends ObjectActionDelegate
 	@SuppressWarnings("rawtypes")
 	public void run(IAction action)
 	{
-		if (selection_ instanceof IStructuredSelection)
+		if(structuredSelection_ == null)
+			return;
+		for (Iterator it = structuredSelection_.iterator(); it.hasNext();)
 		{
-			for (Iterator it = ((IStructuredSelection) selection_).iterator(); it.hasNext();)
+			Object element = it.next();
+			IProject project = null;
+			if (element instanceof IProject)
 			{
-				Object element = it.next();
-				IProject project = null;
-				if (element instanceof IProject)
-				{
-					project = (IProject) element;
-				}
-				else if (element instanceof IAdaptable)
-				{
-					project = (IProject) ((IAdaptable) element).getAdapter(IProject.class);
-				}
-				if (project != null)
-				{
-					toggleNature(project);
-				}
+				project = (IProject) element;
+			}
+			else if (element instanceof IAdaptable)
+			{
+				project = (IProject) ((IAdaptable) element).getAdapter(IProject.class);
+			}
+			if (project != null)
+			{
+				toggleNature(project);
 			}
 		}
 	}

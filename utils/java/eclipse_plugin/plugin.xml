@@ -297,15 +297,8 @@
             nameFilter="*"
             objectClass="org.eclipse.core.resources.IProject">
          <action
-               class="wesnoth_eclipse_plugin.builder.ToggleNatureAction"
-               enablesFor="+"
-               icon="icons/wesnoth-icon_16.png"
-               id="action.proj.addRemoveNature"
-               label="Add/Remove Sample Nature"
-               menubarPath="_wesnoth">
-         </action>
-         <action
                class="wesnoth_eclipse_plugin.action.WesnothProjectReport"
+               enablesFor="1"
                icon="icons/wesnoth-icon_16.png"
                id="action.proj.report"
                label="Wesnoth project report"
@@ -478,6 +471,27 @@
                      value="Wesnoth_Eclipse_Plugin.wesnothNature">
                </objectState>
          </visibility>
+      </objectContribution>
+      <objectContribution
+            adaptable="false"
+            id="plugin.nonWesnothProjectContributions"
+            nameFilter="*"
+            objectClass="org.eclipse.core.resources.IProject">
+         <action
+               class="wesnoth_eclipse_plugin.builder.ToggleNatureAction"
+               enablesFor="+"
+               icon="icons/wesnoth-icon_16.png"
+               id="action.nonWesnothProj.addRemoveNature"
+               label="Add/Remove Sample Nature"
+               menubarPath="_wesnoth">
+         </action>
+         <action
+               class="wesnoth_eclipse_plugin.action.RegenerateBuildFiles"
+               enablesFor="+"
+               id="action.nonWesnothProj.regenBuildFiles"
+               label="Regenerate build files"
+               menubarPath="_wesnoth">
+         </action>
       </objectContribution>
    </extension>
    <extension
