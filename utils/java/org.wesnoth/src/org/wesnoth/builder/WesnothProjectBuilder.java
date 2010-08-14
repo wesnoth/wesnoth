@@ -138,6 +138,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 		// to speed up things
 		// process the defines obtained
 		ProjectUtils.getCacheForProject(getProject()).readDefines(true);
+		ProjectUtils.saveCacheForProject(getProject());
 		monitor.worked(10);
 
 		monitor.done();
@@ -221,7 +222,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 				IDocument document = provider.getDocument(file);
 
 				// wmllint
-				monitor.subTask("Running WMLLint...");
+//				monitor.subTask("Running WMLLint...");
 //				ExternalToolInvoker tool = WMLTools.runWMLLint(file.getLocation().toOSString(), true);
 //				tool.waitForTool();
 //
@@ -237,7 +238,7 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 				monitor.worked(20);
 
 				// wmlscope
-				monitor.subTask("Running WMLScope...");
+//				monitor.subTask("Running WMLScope...");
 //				tool = WMLTools.runWMLScope(file.getLocation().toOSString());
 //				tool.waitForTool();
 //				output = StringUtils.getLines(tool.getErrorContent());

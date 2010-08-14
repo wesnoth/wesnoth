@@ -14,8 +14,10 @@ import java.util.Map;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.jface.dialogs.DialogSettings;
+import org.eclipse.jface.dialogs.IDialogSettings;
 import org.wesnoth.Logger;
 import org.wesnoth.preprocessor.Define;
+import org.wesnoth.wml.core.Variable;
 import org.wesnoth.wml.core.scenarios.Scenario;
 
 /**
@@ -41,6 +43,7 @@ public class ProjectCache
 
 	public ProjectCache(IProject project)
 	{
+		scenarios_ = new HashMap<String, Scenario>();
 		defines_ = new HashMap<String, Define>(0);
 		propertiesTimetamp_ = 0;
 		properties_ = new DialogSettings("project");
@@ -80,7 +83,27 @@ public class ProjectCache
 				// we already have an xml format used by Properties.
 				// convert it to DialogSettings
 				ResourceUtils.createWesnothFile(wesnothFile_.getAbsolutePath());
+				properties_.load(wesnothFile_.getAbsolutePath());
 			}
+
+			for(IDialogSettings scenario : properties_.getSection("scenarios").getSections())
+			{
+				if (scenario.getName().startsWith("scenario") == false)
+					continue;
+
+				Scenario tmp = new Scenario(scenario.get("filename"), scenario.get("id"));
+				for(IDialogSettings variable : scenario.getSection("variables").getSections())
+				{
+					if (variable.getName().startsWith("var") == false)
+						continue;
+					tmp.getVariables().add(
+							new Variable(variable.get("name"),
+										variable.get("location"),
+										variable.getInt("offset")));
+				}
+				scenarios_.put(scenario.get("filename"), tmp);
+			}
+
 			propertiesTimetamp_ = wesnothFile_.lastModified();
 		}
 		catch (Exception e)
@@ -144,6 +167,29 @@ public class ProjectCache
 			ResourceUtils.createWesnothFile(wesnothFile_.getAbsolutePath());
 		try
 		{
+			// save scenario info
+			int scenCnt = 0;
+			IDialogSettings scenarios = properties_.addNewSection("scenarios");
+			for(Scenario scenario : scenarios_.values())
+			{
+				IDialogSettings scenSection = scenarios.addNewSection("scenario" + scenCnt);
+				scenSection.put("id", scenario.getId());
+				scenSection.put("filename", scenario.getFilename());
+
+				IDialogSettings variablesSection = scenSection.addNewSection("variables");
+				int varCnt = 0;
+				for(Variable var : scenario.getVariables())
+				{
+					IDialogSettings varSection = variablesSection.addNewSection("var" + varCnt);
+					varSection.put("name", var.getName());
+					varSection.put("location", var.getLocation());
+					varSection.put("offset", var.getOffset());
+
+					++varCnt;
+				}
+				++scenCnt;
+			}
+
 			// store properties
 			properties_.save(wesnothFile_.getAbsolutePath());
 			propertiesTimetamp_ = wesnothFile_.lastModified();
