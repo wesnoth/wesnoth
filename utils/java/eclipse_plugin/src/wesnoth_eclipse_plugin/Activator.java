@@ -14,6 +14,7 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
@@ -30,6 +31,8 @@ public class Activator extends AbstractUIPlugin
 {
 	// The shared instance
 	private static Activator	plugin;
+	// a switch for knowing if we already started checking conditions
+	private static boolean checkingConditions = false;
 
 	/**
 	 * The constructor
@@ -43,17 +46,6 @@ public class Activator extends AbstractUIPlugin
 		super.start(context);
 		plugin = this;
 		Logger.getInstance().startLogger();
-		if (!checkConditions())
-		{
-			GUIUtils.showInfoMessageBox(
-					"Hello!\n" +
-					"Welcome to 'Wesnoth User Made Content Eclipse Plugin'.\n" +
-					"Since this is the first time you are using it " +
-					"I'll guide you through setting it up.\n\n" +
-					"First you'll have to setup your preferences.\n" +
-					"Press OK to continue.");
-			WorkspaceUtils.setupWorkspace(true);
-		}
 	}
 
 	@Override
@@ -61,6 +53,8 @@ public class Activator extends AbstractUIPlugin
 	{
 		plugin = null;
 		Logger.getInstance().stopLogger();
+
+		// save the caches of the projects on disk
 		for(Entry<IProject, ProjectCache> cache :
 					ProjectUtils.getProjectCaches().entrySet())
 		{
@@ -76,6 +70,21 @@ public class Activator extends AbstractUIPlugin
 	 */
 	public static Activator getDefault()
 	{
+		if (checkingConditions == false &&
+			PlatformUI.isWorkbenchRunning())
+		{
+			if (!checkConditions())
+			{
+				GUIUtils.showInfoMessageBox(
+						"Hello!\n" +
+						"Welcome to 'Wesnoth User Made Content Eclipse Plugin'.\n" +
+						"Since this is the first time you are using it " +
+						"I'll guide you through setting it up.\n\n" +
+						"First you'll have to setup your preferences.\n" +
+				"Press OK to continue.");
+				WorkspaceUtils.setupWorkspace(true);
+			}
+		}
 		return plugin;
 	}
 
@@ -107,6 +116,7 @@ public class Activator extends AbstractUIPlugin
 	 */
 	public static boolean checkConditions()
 	{
+		checkingConditions = true;
 		String execDir = Preferences.getString(Constants.P_WESNOTH_EXEC_PATH);
 		String userDir = Preferences.getString(Constants.P_WESNOTH_USER_DIR);
 		String wmltoolsDir = Preferences.getString(Constants.P_WESNOTH_WMLTOOLS_DIR);
