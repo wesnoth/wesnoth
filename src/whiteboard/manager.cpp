@@ -591,6 +591,7 @@ void manager::contextual_delete()
 		{
 			viewer_actions()->remove_action(it);
 			highlighter_->set_mouseover_hex(highlighter_->get_mouseover_hex());
+			highlighter_->highlight();
 		}
 		else //we already check above for viewer_actions()->empty()
 		{
