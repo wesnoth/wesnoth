@@ -11,9 +11,10 @@ package wesnoth_eclipse_plugin.utils;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
-import java.util.Properties;
 
 import org.eclipse.core.resources.FileInfoMatcherDescription;
 import org.eclipse.core.resources.IContainer;
@@ -24,9 +25,13 @@ import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IResourceFilterDescription;
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.resources.WorkspaceJob;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.preference.PreferenceDialog;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.window.Window;
@@ -38,8 +43,6 @@ import wesnoth_eclipse_plugin.Activator;
 import wesnoth_eclipse_plugin.Constants;
 import wesnoth_eclipse_plugin.Logger;
 import wesnoth_eclipse_plugin.preferences.Preferences;
-import wesnoth_eclipse_plugin.templates.ReplaceableParameter;
-import wesnoth_eclipse_plugin.templates.TemplateProvider;
 
 public class WorkspaceUtils
 {
@@ -267,7 +270,7 @@ public class WorkspaceUtils
 	 * 	If not, the preferences window will open
 	 * 2) The project "User addons" exists. If not, it will be created
 	 */
-	public static void setupWorkspace(boolean guided)
+	public static void setupWorkspace(final boolean guided)
 	{
 		if (!checkConditions(false))
 		{
@@ -292,80 +295,80 @@ public class WorkspaceUtils
 			}
 		}
 
-		// automatically import "WesnothUserDir/data/add-ons as a project container
-		String userDir = Preferences.getString(Constants.P_WESNOTH_USER_DIR);
-		IProject projectToCreate = ResourcesPlugin.getWorkspace().getRoot().getProject("User Addons");
-		try
-		{
-			if (!projectToCreate.exists())
+		WorkspaceJob job = new WorkspaceJob("Setting up the workspace...") {
+			@Override
+			public IStatus runInWorkspace(IProgressMonitor monitor)
 			{
-				IProjectDescription description =
-						ResourcesPlugin.getWorkspace().newProjectDescription("User Addons");
-
-				// cleanup any strictly-project related files if any.
-				if (new File(userDir + Path.SEPARATOR + "data/add-ons/.project").exists())
-					new File(userDir + Path.SEPARATOR + "data/add-ons/.project").delete();
-
-				description.setLocation(new Path(userDir + Path.SEPARATOR + "data/add-ons/"));
-				projectToCreate.create(description, null);
-				projectToCreate.open(null);
-
-				// the nature isn't set on creation so the nature adds the builder aswell
-				description.setNatureIds(new String[] { Constants.NATURE_WESNOTH,
-						Constants.NATURE_XTEXT });
-				projectToCreate.setDescription(description, null);
-
-				// add the build.xml file
-				ArrayList<ReplaceableParameter> param = new ArrayList<ReplaceableParameter>();
-				param.add(new ReplaceableParameter("$$project_name", "User Addons"));
-				param.add(new ReplaceableParameter("$$project_dir_name", ""));
-				ResourceUtils.createFile(projectToCreate, "build.xml",
-						TemplateProvider.getInstance().getProcessedTemplate("build_xml", param), true);
-
-				// we need to skip the already created projects (if any) in the addons directory
-				StringBuilder skipList = new StringBuilder();
-				for (IProject project : ResourcesPlugin.getWorkspace().getRoot().getProjects())
+				try
 				{
-					if (project.getName().equals("User Addons"))
-						continue;
-					if (skipList.length() > 0)
-						skipList.append(",");
-					skipList.append(StringUtils.trimPathSeparators(getPathRelativeToUserDir(project)));
+					// automatically import 'special' folders as projects
+					List<File> files = new ArrayList<File>();
+					String addonsDir = Preferences.getString(Constants.P_WESNOTH_USER_DIR)+"/data/add-ons/";
+					String campaignsDir = Preferences.getString(Constants.P_WESNOTH_WORKING_DIR) + "/data/campaigns/";
 
-					// hide the existing projects
-					createIgnoreFilter(projectToCreate, project.getName());
+					File[] tmp = null;
+					// useraddons/add-ons/data
+					tmp = new File(addonsDir).listFiles();
+					if (tmp != null)
+						files.addAll(Arrays.asList(tmp));
+
+					// workingdir/data/campaigns
+					tmp = new File(campaignsDir).listFiles();
+					if (tmp != null)
+						files.addAll(Arrays.asList(tmp));
+
+					monitor.beginTask("Setting up the workspace...", files.size() * 35);
+					for(File file: files)
+					{
+						if (file.isDirectory() == false)
+							continue;
+
+						String projectName = file.getName();
+						if (StringUtils.normalizePath(file.getAbsolutePath()).contains(
+							StringUtils.normalizePath(campaignsDir)))
+						{
+							projectName = "_Campaign_" + file.getName();
+						}
+
+						IProjectDescription description =
+							ResourcesPlugin.getWorkspace().newProjectDescription(projectName);
+						description.setLocation(new Path(file.getAbsolutePath()));
+
+						IContainer cont = ResourcesPlugin.getWorkspace().getRoot().
+							getContainerForLocation(new Path(file.getAbsolutePath()));
+
+						// don't create the project if it exists already
+						if (cont == null)
+						{
+							ProjectUtils.createWesnothProject(
+									ResourcesPlugin.getWorkspace().getRoot().getProject(projectName),
+									description, true, false, monitor);
+						}
+					}
+
+					if (guided)
+					{
+						GUIUtils.showInfoMessageBox(
+								"Congrats!\n" +
+								"Everything is set up. Now you can use the plugin.\n\n" +
+								"Good luck and have fun!");
+					}
+					else
+					{
+						Logger.getInstance().log("setupWorkspace was successful",
+								"Workspace was set up successfully.");
+					}
+				} catch (Exception e)
+				{
+					Logger.getInstance().logException(e);
+					GUIUtils.showErrorMessageBox("There was an error trying to setup the workspace.");
 				}
-				Properties props = new Properties();
-				props.setProperty("ignored", skipList.toString());
-				ProjectUtils.setPropertiesForProject(projectToCreate, props);
-			}
 
-			if (guided)
-			{
-				GUIUtils.showInfoMessageBox(
-						"Congrats!\n" +
-						"Everything is set up. Now you can use the plugin.\n\n" +
-						"Good luck and have fun!");
+				monitor.done();
+				return Status.OK_STATUS;
 			}
-			else
-			{
-				Logger.getInstance().log("setupWorkspace was successful",
-						"Workspace was set up successfully.");
-			}
-		} catch (Exception e)
-		{
-			Logger.getInstance().logException(e);
-			GUIUtils.showErrorMessageBox("There was an error trying to setup the workspace.");
-
-			// let's remove the corrupted project
-			try
-			{
-				projectToCreate.delete(true, null);
-			}
-			catch (CoreException e1)
-			{
-			}
-		}
+		};
+		job.schedule();
 	}
 
 	/**

@@ -8,11 +8,19 @@
  *******************************************************************************/
 package wesnoth_eclipse_plugin.utils;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 
 import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IProjectDescription;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IProgressMonitor;
+
+import wesnoth_eclipse_plugin.Constants;
+import wesnoth_eclipse_plugin.templates.ReplaceableParameter;
+import wesnoth_eclipse_plugin.templates.TemplateProvider;
 
 public class ProjectUtils
 {
@@ -74,5 +82,67 @@ public class ProjectUtils
 	public static void saveCacheForProject(IProject project)
 	{
 		getCacheForProject(project).saveCache();
+	}
+
+	/**
+	 * Creates a project that has associated the wesnoth nature using
+	 * the specified handle. If the project is created there will be
+	 * no modifications done by this method.
+	 * @param handle the handle to the project
+	 * @param description the default description used when the project is created
+	 * @param the monitor will do a 30 worked amount in the method
+	 * @throws CoreException
+	 */
+	public static int createWesnothProject(IProject handle, IProjectDescription description,
+				boolean open, boolean createBuildXML, IProgressMonitor monitor) throws CoreException
+	{
+		if (handle.exists())
+			return -1;
+		String projectPath = null;
+		if (handle.getLocation() == null)
+			projectPath = description.getLocationURI().toString();
+		else
+			projectPath = handle.getLocation().toOSString();
+		System.out.println(projectPath);
+
+		monitor.subTask("Cleaning files...");
+		// cleanup existing files
+		ResourceUtils.removeFile(projectPath + "/.wesnoth");
+		ResourceUtils.removeFile(projectPath + "/.project");
+		ResourceUtils.removeFile(projectPath + "/.build.xml");
+		monitor.worked(5);
+
+		monitor.subTask("Creating project '" + handle.getName() + "' ...");
+		// create the project
+		if (description == null)
+			handle.create(monitor);
+		else
+		{
+			handle.create(description, monitor);
+		}
+
+		if (open)
+			handle.open(monitor);
+		monitor.worked(10);
+
+		monitor.subTask("Configuring project...");
+		// add wesnoth nature
+		IProjectDescription tmpDescription = handle.getDescription();
+		tmpDescription.setNatureIds(new String[] { Constants.NATURE_WESNOTH,
+				Constants.NATURE_XTEXT });
+		handle.setDescription(tmpDescription, monitor);
+		monitor.worked(5);
+
+		// add the build.xml file
+		if (createBuildXML)
+		{
+			ArrayList<ReplaceableParameter> param = new ArrayList<ReplaceableParameter>();
+			param.add(new ReplaceableParameter("$$project_name", handle.getName()));
+			param.add(new ReplaceableParameter("$$project_dir_name", ""));
+			ResourceUtils.createFile(handle, "build.xml",
+					TemplateProvider.getInstance().getProcessedTemplate("build_xml", param), true);
+		}
+		monitor.worked(10);
+		return 0;
 	}
 }

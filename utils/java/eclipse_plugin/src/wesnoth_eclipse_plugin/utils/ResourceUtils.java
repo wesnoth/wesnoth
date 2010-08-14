@@ -270,6 +270,18 @@ public class ResourceUtils
 		return new File(target).mkdirs();
 	}
 
+	/**
+	 * Removes the specified file
+	 * @param target
+	 * @return
+	 */
+	public static boolean removeFile(String target)
+	{
+		if (new File(target).exists())
+			return new File(target).delete();
+		return true;
+	}
+
 	//TODO: create a simple java wmlparsers in order to get the right values
 	public static String getConfigKeyValue(String fileName, String propertyName)
 	{
