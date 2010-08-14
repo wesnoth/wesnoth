@@ -53,7 +53,8 @@ manager::manager():
 		move_arrow_(),
 		fake_unit_(),
 		key_poller_(new CKey),
-		hidden_unit_hex_()
+		hidden_unit_hex_(),
+		hidden_unit_id_("")
 {
 	LOG_WB << "Manager initialized.\n";
 }
@@ -314,14 +315,18 @@ void manager::draw_hex(const map_location& hex)
 
 void manager::on_mouseover_change(const map_location& hex)
 {
-	if (hidden_unit_hex_.valid())
+	if (hidden_unit_hex_.valid() && !events::commands_disabled)
 	{
 		if (unit* unit = get_visible_unit(hidden_unit_hex_,
 				resources::teams->at(viewer_side() - 1), false))
 		{
-			unit->set_hidden(false);
+			if (unit->id() == hidden_unit_id_)
+			{
+				unit->set_hidden(false);
+			}
 		}
 		hidden_unit_hex_ = map_location();
+		hidden_unit_id_ = "";
 	}
 
 	if (!resources::screen->selected_hex().valid() && highlighter_)
@@ -420,6 +425,7 @@ void manager::create_temp_move()
 	{
 		mouseover_unit->set_hidden(true);
 		hidden_unit_hex_ = resources::screen->mouseover_hex();
+		hidden_unit_id_ = mouseover_unit->id();
 	}
 }
 

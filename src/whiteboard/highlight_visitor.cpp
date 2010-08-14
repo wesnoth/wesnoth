@@ -99,18 +99,13 @@ void highlight_visitor::highlight()
 		//Find secondary actions to highlight
 		find_secondary_highlights();
 
-
 		if (action_ptr main = main_highlight_.lock())
 		{
-			//Hide any "present" unit that gets in the way
-			if (!events::commands_disabled) //< don't do it e.g. during unit movement
+			unit* hide_me = get_visible_unit(mouseover_hex_,
+					resources::teams->at(side_actions_->team_index()),false);
+			if (hide_me && hide_me->side() == int(side_actions_->team_index()) + 1)
 			{
-				unit* hide_me = get_visible_unit(mouseover_hex_,
-						resources::teams->at(side_actions_->team_index()),false);
-				if (hide_me && hide_me->side() == int(side_actions_->team_index()) + 1)
-				{
-					hide_me->set_hidden(true);
-				}
+				hide_me->set_hidden(true);
 			}
 
 			//Highlight main highlight
@@ -146,14 +141,11 @@ void highlight_visitor::unhighlight()
 		main->accept(*this);
 
 		//Unhide the other unit in the hex if it was hidden
-		if (!events::commands_disabled) //< don't do it e.g. during unit movement
+		unit* unhide_me = get_visible_unit(mouseover_hex_,
+				resources::teams->at(side_actions_->team_index()),false);
+		if (unhide_me && unhide_me->side() == int(side_actions_->team_index()) + 1)
 		{
-			unit* unhide_me = get_visible_unit(mouseover_hex_,
-					resources::teams->at(side_actions_->team_index()),false);
-			if (unhide_me && unhide_me->side() == int(side_actions_->team_index()) + 1)
-			{
-				unhide_me->set_hidden(false);
-			}
+			unhide_me->set_hidden(false);
 		}
 	}
 
