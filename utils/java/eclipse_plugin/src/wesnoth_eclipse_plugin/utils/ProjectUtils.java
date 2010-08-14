@@ -127,8 +127,8 @@ public class ProjectUtils
 		monitor.subTask("Configuring project...");
 		// add wesnoth nature
 		IProjectDescription tmpDescription = handle.getDescription();
-		tmpDescription.setNatureIds(new String[] { Constants.NATURE_WESNOTH,
-				Constants.NATURE_XTEXT });
+		tmpDescription.setNatureIds(new String[] { Constants.NATURE_WESNOTH /*,
+				Constants.NATURE_XTEXT */});
 		handle.setDescription(tmpDescription, monitor);
 		monitor.worked(5);
 
