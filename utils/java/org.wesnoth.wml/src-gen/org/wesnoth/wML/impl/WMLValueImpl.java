@@ -6,11 +6,13 @@
  */
 package org.wesnoth.wML.impl;
 
-import org.eclipse.emf.common.notify.Notification;
+import java.util.Collection;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EDataTypeEList;
 
 import org.wesnoth.wML.WMLPackage;
 import org.wesnoth.wML.WMLValue;
@@ -31,24 +33,14 @@ import org.wesnoth.wML.WMLValue;
 public class WMLValueImpl extends WMLKeyValueImpl implements WMLValue
 {
   /**
-   * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
+   * The cached value of the '{@link #getValue() <em>Value</em>}' attribute list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getValue()
    * @generated
    * @ordered
    */
-  protected static final String VALUE_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getValue()
-   * @generated
-   * @ordered
-   */
-  protected String value = VALUE_EDEFAULT;
+  protected EList<String> value;
 
   /**
    * <!-- begin-user-doc -->
@@ -76,22 +68,13 @@ public class WMLValueImpl extends WMLKeyValueImpl implements WMLValue
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getValue()
+  public EList<String> getValue()
   {
+    if (value == null)
+    {
+      value = new EDataTypeEList<String>(String.class, this, WMLPackage.WML_VALUE__VALUE);
+    }
     return value;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setValue(String newValue)
-  {
-    String oldValue = value;
-    value = newValue;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, WMLPackage.WML_VALUE__VALUE, oldValue, value));
   }
 
   /**
@@ -115,13 +98,15 @@ public class WMLValueImpl extends WMLKeyValueImpl implements WMLValue
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
       case WMLPackage.WML_VALUE__VALUE:
-        setValue((String)newValue);
+        getValue().clear();
+        getValue().addAll((Collection<? extends String>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -138,7 +123,7 @@ public class WMLValueImpl extends WMLKeyValueImpl implements WMLValue
     switch (featureID)
     {
       case WMLPackage.WML_VALUE__VALUE:
-        setValue(VALUE_EDEFAULT);
+        getValue().clear();
         return;
     }
     super.eUnset(featureID);
@@ -155,7 +140,7 @@ public class WMLValueImpl extends WMLKeyValueImpl implements WMLValue
     switch (featureID)
     {
       case WMLPackage.WML_VALUE__VALUE:
-        return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
+        return value != null && !value.isEmpty();
     }
     return super.eIsSet(featureID);
   }

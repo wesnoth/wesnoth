@@ -226,7 +226,7 @@ public interface WMLPackage extends EPackage
   int WML_KEY__NAME = 0;
 
   /**
-   * The feature id for the '<em><b>Value</b></em>' containment reference list.
+   * The feature id for the '<em><b>Value</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -235,22 +235,13 @@ public interface WMLPackage extends EPackage
   int WML_KEY__VALUE = 1;
 
   /**
-   * The feature id for the '<em><b>Eol</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int WML_KEY__EOL = 2;
-
-  /**
    * The number of structural features of the '<em>Key</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int WML_KEY_FEATURE_COUNT = 3;
+  int WML_KEY_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link org.wesnoth.wML.impl.WMLKeyValueImpl <em>Key Value</em>}' class.
@@ -430,13 +421,58 @@ public interface WMLPackage extends EPackage
   int WML_MACRO_DEFINE__NAME = 0;
 
   /**
+   * The feature id for the '<em><b>Tags</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WML_MACRO_DEFINE__TAGS = 1;
+
+  /**
+   * The feature id for the '<em><b>Keys</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WML_MACRO_DEFINE__KEYS = 2;
+
+  /**
+   * The feature id for the '<em><b>Macro Calls</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WML_MACRO_DEFINE__MACRO_CALLS = 3;
+
+  /**
+   * The feature id for the '<em><b>Macro Defines</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WML_MACRO_DEFINE__MACRO_DEFINES = 4;
+
+  /**
+   * The feature id for the '<em><b>Textdomains</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WML_MACRO_DEFINE__TEXTDOMAINS = 5;
+
+  /**
    * The number of structural features of the '<em>Macro Define</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int WML_MACRO_DEFINE_FEATURE_COUNT = 1;
+  int WML_MACRO_DEFINE_FEATURE_COUNT = 6;
 
   /**
    * The meta object id for the '{@link org.wesnoth.wML.impl.WMLTextdomainImpl <em>Textdomain</em>}' class.
@@ -477,7 +513,7 @@ public interface WMLPackage extends EPackage
   int WML_VALUE = 10;
 
   /**
-   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * The feature id for the '<em><b>Value</b></em>' attribute list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -669,26 +705,15 @@ public interface WMLPackage extends EPackage
   EAttribute getWMLKey_Name();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.wesnoth.wML.WMLKey#getValue <em>Value</em>}'.
+   * Returns the meta object for the containment reference '{@link org.wesnoth.wML.WMLKey#getValue <em>Value</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Value</em>'.
+   * @return the meta object for the containment reference '<em>Value</em>'.
    * @see org.wesnoth.wML.WMLKey#getValue()
    * @see #getWMLKey()
    * @generated
    */
   EReference getWMLKey_Value();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.wesnoth.wML.WMLKey#getEol <em>Eol</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Eol</em>'.
-   * @see org.wesnoth.wML.WMLKey#getEol()
-   * @see #getWMLKey()
-   * @generated
-   */
-  EAttribute getWMLKey_Eol();
 
   /**
    * Returns the meta object for class '{@link org.wesnoth.wML.WMLKeyValue <em>Key Value</em>}'.
@@ -839,6 +864,61 @@ public interface WMLPackage extends EPackage
   EAttribute getWMLMacroDefine_Name();
 
   /**
+   * Returns the meta object for the containment reference list '{@link org.wesnoth.wML.WMLMacroDefine#getTags <em>Tags</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Tags</em>'.
+   * @see org.wesnoth.wML.WMLMacroDefine#getTags()
+   * @see #getWMLMacroDefine()
+   * @generated
+   */
+  EReference getWMLMacroDefine_Tags();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.wesnoth.wML.WMLMacroDefine#getKeys <em>Keys</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Keys</em>'.
+   * @see org.wesnoth.wML.WMLMacroDefine#getKeys()
+   * @see #getWMLMacroDefine()
+   * @generated
+   */
+  EReference getWMLMacroDefine_Keys();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.wesnoth.wML.WMLMacroDefine#getMacroCalls <em>Macro Calls</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Macro Calls</em>'.
+   * @see org.wesnoth.wML.WMLMacroDefine#getMacroCalls()
+   * @see #getWMLMacroDefine()
+   * @generated
+   */
+  EReference getWMLMacroDefine_MacroCalls();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.wesnoth.wML.WMLMacroDefine#getMacroDefines <em>Macro Defines</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Macro Defines</em>'.
+   * @see org.wesnoth.wML.WMLMacroDefine#getMacroDefines()
+   * @see #getWMLMacroDefine()
+   * @generated
+   */
+  EReference getWMLMacroDefine_MacroDefines();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.wesnoth.wML.WMLMacroDefine#getTextdomains <em>Textdomains</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Textdomains</em>'.
+   * @see org.wesnoth.wML.WMLMacroDefine#getTextdomains()
+   * @see #getWMLMacroDefine()
+   * @generated
+   */
+  EReference getWMLMacroDefine_Textdomains();
+
+  /**
    * Returns the meta object for class '{@link org.wesnoth.wML.WMLTextdomain <em>Textdomain</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -870,10 +950,10 @@ public interface WMLPackage extends EPackage
   EClass getWMLValue();
 
   /**
-   * Returns the meta object for the attribute '{@link org.wesnoth.wML.WMLValue#getValue <em>Value</em>}'.
+   * Returns the meta object for the attribute list '{@link org.wesnoth.wML.WMLValue#getValue <em>Value</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Value</em>'.
+   * @return the meta object for the attribute list '<em>Value</em>'.
    * @see org.wesnoth.wML.WMLValue#getValue()
    * @see #getWMLValue()
    * @generated
@@ -1038,20 +1118,12 @@ public interface WMLPackage extends EPackage
     EAttribute WML_KEY__NAME = eINSTANCE.getWMLKey_Name();
 
     /**
-     * The meta object literal for the '<em><b>Value</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     EReference WML_KEY__VALUE = eINSTANCE.getWMLKey_Value();
-
-    /**
-     * The meta object literal for the '<em><b>Eol</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute WML_KEY__EOL = eINSTANCE.getWMLKey_Eol();
 
     /**
      * The meta object literal for the '{@link org.wesnoth.wML.impl.WMLKeyValueImpl <em>Key Value</em>}' class.
@@ -1178,6 +1250,46 @@ public interface WMLPackage extends EPackage
     EAttribute WML_MACRO_DEFINE__NAME = eINSTANCE.getWMLMacroDefine_Name();
 
     /**
+     * The meta object literal for the '<em><b>Tags</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference WML_MACRO_DEFINE__TAGS = eINSTANCE.getWMLMacroDefine_Tags();
+
+    /**
+     * The meta object literal for the '<em><b>Keys</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference WML_MACRO_DEFINE__KEYS = eINSTANCE.getWMLMacroDefine_Keys();
+
+    /**
+     * The meta object literal for the '<em><b>Macro Calls</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference WML_MACRO_DEFINE__MACRO_CALLS = eINSTANCE.getWMLMacroDefine_MacroCalls();
+
+    /**
+     * The meta object literal for the '<em><b>Macro Defines</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference WML_MACRO_DEFINE__MACRO_DEFINES = eINSTANCE.getWMLMacroDefine_MacroDefines();
+
+    /**
+     * The meta object literal for the '<em><b>Textdomains</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference WML_MACRO_DEFINE__TEXTDOMAINS = eINSTANCE.getWMLMacroDefine_Textdomains();
+
+    /**
      * The meta object literal for the '{@link org.wesnoth.wML.impl.WMLTextdomainImpl <em>Textdomain</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1206,7 +1318,7 @@ public interface WMLPackage extends EPackage
     EClass WML_VALUE = eINSTANCE.getWMLValue();
 
     /**
-     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Value</b></em>' attribute list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated

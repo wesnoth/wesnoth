@@ -27,7 +27,6 @@
     <genClasses ecoreClass="WML.ecore#//WMLKey">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//WMLKey/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLKey/value"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//WMLKey/eol"/>
     </genClasses>
     <genClasses ecoreClass="WML.ecore#//WMLKeyValue"/>
     <genClasses ecoreClass="WML.ecore#//WMLMacroCall">
@@ -47,6 +46,11 @@
     </genClasses>
     <genClasses ecoreClass="WML.ecore#//WMLMacroDefine">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//WMLMacroDefine/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLMacroDefine/Tags"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLMacroDefine/Keys"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLMacroDefine/MacroCalls"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLMacroDefine/MacroDefines"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLMacroDefine/Textdomains"/>
     </genClasses>
     <genClasses ecoreClass="WML.ecore#//WMLTextdomain">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//WMLTextdomain/name"/>

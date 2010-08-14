@@ -57,7 +57,7 @@ public class AddonUploadPreferencePage extends FieldEditorPreferencePage impleme
 		portsRegex.deleteCharAt(portsRegex.length() - 1);
 		portsRegex.append(")*");
 
-		System.out.println(portsRegex.toString());
+		//System.out.println(portsRegex.toString());
 		addField(new RegexStringFieldEditor(Constants.P_WAU_PORT,
 				"Port", portsRegex.toString(),
 				"Invalid port number", getFieldEditorParent()));

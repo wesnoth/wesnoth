@@ -31,7 +31,6 @@ public class WMLGrammarAccess extends AbstractGrammarElementFinder {
 		////TODO: add cross-reference for variables
 		////handles TODO:
 		//// - preprocessor commands: #define, #enddef, etc
-		//// - fix: { { } }
 		//WMLRoot:
 		//	(Tags+=WMLTag | MacroCalls+=WMLMacroCall | MacroDefines+=WMLMacroDefine | Textdomains+=WMLTextdomain)*;
 		public ParserRule getRule() { return rule; }
@@ -173,16 +172,12 @@ public class WMLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cEqualsSignKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cValueAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cValueWMLKeyValueParserRuleCall_2_0 = (RuleCall)cValueAssignment_2.eContents().get(0);
-		private final Assignment cEolAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final Alternatives cEolAlternatives_3_0 = (Alternatives)cEolAssignment_3.eContents().get(0);
-		private final RuleCall cEolEOLTerminalRuleCall_3_0_0 = (RuleCall)cEolAlternatives_3_0.eContents().get(0);
-		private final RuleCall cEolSL_COMMENTTerminalRuleCall_3_0_1 = (RuleCall)cEolAlternatives_3_0.eContents().get(1);
 		
 		//WMLKey hidden(WS):
-		//	name=ID "=" value+=WMLKeyValue+ eol=(EOL | SL_COMMENT);
+		//	name=ID "=" value=WMLKeyValue;
 		public ParserRule getRule() { return rule; }
 
-		//name=ID "=" value+=WMLKeyValue+ eol=(EOL | SL_COMMENT)
+		//name=ID "=" value=WMLKeyValue
 		public Group getGroup() { return cGroup; }
 
 		//name=ID
@@ -194,23 +189,11 @@ public class WMLGrammarAccess extends AbstractGrammarElementFinder {
 		//"="
 		public Keyword getEqualsSignKeyword_1() { return cEqualsSignKeyword_1; }
 
-		//value+=WMLKeyValue+
+		//value=WMLKeyValue
 		public Assignment getValueAssignment_2() { return cValueAssignment_2; }
 
 		//WMLKeyValue
 		public RuleCall getValueWMLKeyValueParserRuleCall_2_0() { return cValueWMLKeyValueParserRuleCall_2_0; }
-
-		//eol=(EOL | SL_COMMENT)
-		public Assignment getEolAssignment_3() { return cEolAssignment_3; }
-
-		//EOL | SL_COMMENT
-		public Alternatives getEolAlternatives_3_0() { return cEolAlternatives_3_0; }
-
-		//EOL
-		public RuleCall getEolEOLTerminalRuleCall_3_0_0() { return cEolEOLTerminalRuleCall_3_0_0; }
-
-		//SL_COMMENT
-		public RuleCall getEolSL_COMMENTTerminalRuleCall_3_0_1() { return cEolSL_COMMENTTerminalRuleCall_3_0_1; }
 	}
 
 	public class WMLKeyValueElements extends AbstractParserRuleElementFinder {
@@ -399,18 +382,72 @@ public class WMLGrammarAccess extends AbstractGrammarElementFinder {
 
 	public class WMLMacroDefineElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "WMLMacroDefine");
-		private final Assignment cNameAssignment = (Assignment)rule.eContents().get(1);
-		private final RuleCall cNameDEFINETerminalRuleCall_0 = (RuleCall)cNameAssignment.eContents().get(0);
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cNameDEFINETerminalRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
+		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
+		private final Assignment cTagsAssignment_1_0 = (Assignment)cAlternatives_1.eContents().get(0);
+		private final RuleCall cTagsWMLTagParserRuleCall_1_0_0 = (RuleCall)cTagsAssignment_1_0.eContents().get(0);
+		private final Assignment cKeysAssignment_1_1 = (Assignment)cAlternatives_1.eContents().get(1);
+		private final RuleCall cKeysWMLKeyParserRuleCall_1_1_0 = (RuleCall)cKeysAssignment_1_1.eContents().get(0);
+		private final Assignment cMacroCallsAssignment_1_2 = (Assignment)cAlternatives_1.eContents().get(2);
+		private final RuleCall cMacroCallsWMLMacroCallParserRuleCall_1_2_0 = (RuleCall)cMacroCallsAssignment_1_2.eContents().get(0);
+		private final Assignment cMacroDefinesAssignment_1_3 = (Assignment)cAlternatives_1.eContents().get(3);
+		private final RuleCall cMacroDefinesWMLMacroDefineParserRuleCall_1_3_0 = (RuleCall)cMacroDefinesAssignment_1_3.eContents().get(0);
+		private final Assignment cTextdomainsAssignment_1_4 = (Assignment)cAlternatives_1.eContents().get(4);
+		private final RuleCall cTextdomainsWMLTextdomainParserRuleCall_1_4_0 = (RuleCall)cTextdomainsAssignment_1_4.eContents().get(0);
+		private final RuleCall cENDDEFTerminalRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
 		
 		//WMLMacroDefine:
-		//	name=DEFINE;
+		//	name=DEFINE (Tags+=WMLTag | Keys+=WMLKey | MacroCalls+=WMLMacroCall | MacroDefines+=WMLMacroDefine |
+		//	Textdomains+=WMLTextdomain)* ENDDEF;
 		public ParserRule getRule() { return rule; }
 
+		//name=DEFINE (Tags+=WMLTag | Keys+=WMLKey | MacroCalls+=WMLMacroCall | MacroDefines+=WMLMacroDefine |
+		//Textdomains+=WMLTextdomain)* ENDDEF
+		public Group getGroup() { return cGroup; }
+
 		//name=DEFINE
-		public Assignment getNameAssignment() { return cNameAssignment; }
+		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
 
 		//DEFINE
-		public RuleCall getNameDEFINETerminalRuleCall_0() { return cNameDEFINETerminalRuleCall_0; }
+		public RuleCall getNameDEFINETerminalRuleCall_0_0() { return cNameDEFINETerminalRuleCall_0_0; }
+
+		//(Tags+=WMLTag | Keys+=WMLKey | MacroCalls+=WMLMacroCall | MacroDefines+=WMLMacroDefine | Textdomains+=WMLTextdomain)*
+		public Alternatives getAlternatives_1() { return cAlternatives_1; }
+
+		//Tags+=WMLTag
+		public Assignment getTagsAssignment_1_0() { return cTagsAssignment_1_0; }
+
+		//WMLTag
+		public RuleCall getTagsWMLTagParserRuleCall_1_0_0() { return cTagsWMLTagParserRuleCall_1_0_0; }
+
+		//Keys+=WMLKey
+		public Assignment getKeysAssignment_1_1() { return cKeysAssignment_1_1; }
+
+		//WMLKey
+		public RuleCall getKeysWMLKeyParserRuleCall_1_1_0() { return cKeysWMLKeyParserRuleCall_1_1_0; }
+
+		//MacroCalls+=WMLMacroCall
+		public Assignment getMacroCallsAssignment_1_2() { return cMacroCallsAssignment_1_2; }
+
+		//WMLMacroCall
+		public RuleCall getMacroCallsWMLMacroCallParserRuleCall_1_2_0() { return cMacroCallsWMLMacroCallParserRuleCall_1_2_0; }
+
+		//MacroDefines+=WMLMacroDefine
+		public Assignment getMacroDefinesAssignment_1_3() { return cMacroDefinesAssignment_1_3; }
+
+		//WMLMacroDefine
+		public RuleCall getMacroDefinesWMLMacroDefineParserRuleCall_1_3_0() { return cMacroDefinesWMLMacroDefineParserRuleCall_1_3_0; }
+
+		//Textdomains+=WMLTextdomain
+		public Assignment getTextdomainsAssignment_1_4() { return cTextdomainsAssignment_1_4; }
+
+		//WMLTextdomain
+		public RuleCall getTextdomainsWMLTextdomainParserRuleCall_1_4_0() { return cTextdomainsWMLTextdomainParserRuleCall_1_4_0; }
+
+		//ENDDEF
+		public RuleCall getENDDEFTerminalRuleCall_2() { return cENDDEFTerminalRuleCall_2; }
 	}
 
 	public class WMLTextdomainElements extends AbstractParserRuleElementFinder {
@@ -418,13 +455,6 @@ public class WMLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cNameAssignment = (Assignment)rule.eContents().get(1);
 		private final RuleCall cNameTEXTDOMAINTerminalRuleCall_0 = (RuleCall)cNameAssignment.eContents().get(0);
 		
-		////		( Tags += WMLTag
-		////		| Keys += WMLKey
-		////		| MacroCalls += WMLMacroCall
-		////		| MacroDefines += WMLMacroDefine
-		////		| Textdomains += WMLTextdomain
-		////		)*;
-		////		ENDDEF;
 		//WMLTextdomain:
 		//	name=TEXTDOMAIN;
 		public ParserRule getRule() { return rule; }
@@ -447,10 +477,10 @@ public class WMLGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cValueANY_OTHERTerminalRuleCall_0_4 = (RuleCall)cValueAlternatives_0.eContents().get(4);
 		
 		//WMLValue:
-		//	value=(ID | STRING | "+" | "~" | ANY_OTHER);
+		//	value+=(ID | STRING | "+" | "~" | ANY_OTHER)+;
 		public ParserRule getRule() { return rule; }
 
-		//value=(ID | STRING | "+" | "~" | ANY_OTHER)
+		//value+=(ID | STRING | "+" | "~" | ANY_OTHER)+
 		public Assignment getValueAssignment() { return cValueAssignment; }
 
 		//ID | STRING | "+" | "~" | ANY_OTHER
@@ -486,6 +516,7 @@ public class WMLGrammarAccess extends AbstractGrammarElementFinder {
 	private WMLValueElements pWMLValue;
 	private TerminalRule tLUA_CODE;
 	private TerminalRule tDEFINE;
+	private TerminalRule tENDDEF;
 	private TerminalRule tTEXTDOMAIN;
 	private TerminalRule tSTRING;
 	private TerminalRule tID;
@@ -510,7 +541,6 @@ public class WMLGrammarAccess extends AbstractGrammarElementFinder {
 	////TODO: add cross-reference for variables
 	////handles TODO:
 	//// - preprocessor commands: #define, #enddef, etc
-	//// - fix: { { } }
 	//WMLRoot:
 	//	(Tags+=WMLTag | MacroCalls+=WMLMacroCall | MacroDefines+=WMLMacroDefine | Textdomains+=WMLTextdomain)*;
 	public WMLRootElements getWMLRootAccess() {
@@ -533,7 +563,7 @@ public class WMLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//WMLKey hidden(WS):
-	//	name=ID "=" value+=WMLKeyValue+ eol=(EOL | SL_COMMENT);
+	//	name=ID "=" value=WMLKeyValue;
 	public WMLKeyElements getWMLKeyAccess() {
 		return (pWMLKey != null) ? pWMLKey : (pWMLKey = new WMLKeyElements());
 	}
@@ -593,7 +623,8 @@ public class WMLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//WMLMacroDefine:
-	//	name=DEFINE;
+	//	name=DEFINE (Tags+=WMLTag | Keys+=WMLKey | MacroCalls+=WMLMacroCall | MacroDefines+=WMLMacroDefine |
+	//	Textdomains+=WMLTextdomain)* ENDDEF;
 	public WMLMacroDefineElements getWMLMacroDefineAccess() {
 		return (pWMLMacroDefine != null) ? pWMLMacroDefine : (pWMLMacroDefine = new WMLMacroDefineElements());
 	}
@@ -602,13 +633,6 @@ public class WMLGrammarAccess extends AbstractGrammarElementFinder {
 		return getWMLMacroDefineAccess().getRule();
 	}
 
-	////		( Tags += WMLTag
-	////		| Keys += WMLKey
-	////		| MacroCalls += WMLMacroCall
-	////		| MacroDefines += WMLMacroDefine
-	////		| Textdomains += WMLTextdomain
-	////		)*;
-	////		ENDDEF;
 	//WMLTextdomain:
 	//	name=TEXTDOMAIN;
 	public WMLTextdomainElements getWMLTextdomainAccess() {
@@ -620,7 +644,7 @@ public class WMLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//WMLValue:
-	//	value=(ID | STRING | "+" | "~" | ANY_OTHER);
+	//	value+=(ID | STRING | "+" | "~" | ANY_OTHER)+;
 	public WMLValueElements getWMLValueAccess() {
 		return (pWMLValue != null) ? pWMLValue : (pWMLValue = new WMLValueElements());
 	}
@@ -635,14 +659,18 @@ public class WMLGrammarAccess extends AbstractGrammarElementFinder {
 		return (tLUA_CODE != null) ? tLUA_CODE : (tLUA_CODE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "LUA_CODE"));
 	} 
 
-	////!('\n'|'\r')* ('\r'? '\n')?;
 	//terminal DEFINE:
-	//	"#define"->"#enddef";
+	//	"#define" !("\n" | "\r")* ("\r"? "\n")?;
 	public TerminalRule getDEFINERule() {
 		return (tDEFINE != null) ? tDEFINE : (tDEFINE = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "DEFINE"));
 	} 
 
-	////terminal ENDDEF     : '#enddef' !('\n'|'\r')* ('\r'? '\n')?;
+	//terminal ENDDEF:
+	//	"#enddef" !("\n" | "\r")* ("\r"? "\n")?;
+	public TerminalRule getENDDEFRule() {
+		return (tENDDEF != null) ? tENDDEF : (tENDDEF = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "ENDDEF"));
+	} 
+
 	//terminal TEXTDOMAIN:
 	//	"#textdomain" !("\n" | "\r")* ("\r"? "\n")?;
 	public TerminalRule getTEXTDOMAINRule() {

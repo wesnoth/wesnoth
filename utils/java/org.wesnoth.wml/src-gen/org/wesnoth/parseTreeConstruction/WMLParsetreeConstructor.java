@@ -39,7 +39,7 @@ protected class ThisRootNode extends RootToken {
 			case 5: return new WMLMacroParameter_Group(this, this, 5, inst);
 			case 6: return new WMLLuaCode_ValueAssignment(this, this, 6, inst);
 			case 7: return new WMLArrayCall_Group(this, this, 7, inst);
-			case 8: return new WMLMacroDefine_NameAssignment(this, this, 8, inst);
+			case 8: return new WMLMacroDefine_Group(this, this, 8, inst);
 			case 9: return new WMLTextdomain_NameAssignment(this, this, 9, inst);
 			case 10: return new WMLValue_ValueAssignment(this, this, 10, inst);
 			default: return null;
@@ -53,7 +53,6 @@ protected class ThisRootNode extends RootToken {
  * //TODO: add cross-reference for variables
  * //handles TODO:
  * // - preprocessor commands: #define, #enddef, etc
- * // - fix: { { } }
  * WMLRoot:
  * 	(Tags+=WMLTag | MacroCalls+=WMLMacroCall | MacroDefines+=WMLMacroDefine | Textdomains+=WMLTextdomain)*;
  *
@@ -191,7 +190,7 @@ protected class WMLRoot_MacroDefinesAssignment_2 extends AssignmentToken  {
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new WMLMacroDefine_NameAssignment(this, this, 0, inst);
+			case 0: return new WMLMacroDefine_Group(this, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -606,7 +605,7 @@ protected class WMLTag_MacroDefinesAssignment_4_3 extends AssignmentToken  {
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new WMLMacroDefine_NameAssignment(this, this, 0, inst);
+			case 0: return new WMLMacroDefine_Group(this, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -772,11 +771,11 @@ protected class WMLTag_RightSquareBracketKeyword_7 extends KeywordToken  {
 /************ begin Rule WMLKey ****************
  *
  * WMLKey hidden(WS):
- * 	name=ID "=" value+=WMLKeyValue+ eol=(EOL | SL_COMMENT);
+ * 	name=ID "=" value=WMLKeyValue;
  *
  **/
 
-// name=ID "=" value+=WMLKeyValue+ eol=(EOL | SL_COMMENT)
+// name=ID "=" value=WMLKeyValue
 protected class WMLKey_Group extends GroupToken {
 	
 	public WMLKey_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -791,7 +790,7 @@ protected class WMLKey_Group extends GroupToken {
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new WMLKey_EolAssignment_3(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new WMLKey_ValueAssignment_2(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -860,7 +859,7 @@ protected class WMLKey_EqualsSignKeyword_1 extends KeywordToken  {
 
 }
 
-// value+=WMLKeyValue+
+// value=WMLKeyValue
 protected class WMLKey_ValueAssignment_2 extends AssignmentToken  {
 	
 	public WMLKey_ValueAssignment_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -900,50 +899,10 @@ protected class WMLKey_ValueAssignment_2 extends AssignmentToken  {
 	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
 		if(value == inst.getEObject() && !inst.isConsumed()) return null;
 		switch(index) {
-			case 0: return new WMLKey_ValueAssignment_2(lastRuleCallOrigin, next, actIndex, consumed);
-			case 1: return new WMLKey_EqualsSignKeyword_1(lastRuleCallOrigin, next, actIndex, consumed);
+			case 0: return new WMLKey_EqualsSignKeyword_1(lastRuleCallOrigin, next, actIndex, consumed);
 			default: return null;
 		}	
 	}	
-}
-
-// eol=(EOL | SL_COMMENT)
-protected class WMLKey_EolAssignment_3 extends AssignmentToken  {
-	
-	public WMLKey_EolAssignment_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getWMLKeyAccess().getEolAssignment_3();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new WMLKey_ValueAssignment_2(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-    @Override	
-	public IEObjectConsumer tryConsume() {
-		if((value = eObjectConsumer.getConsumable("eol",true)) == null) return null;
-		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("eol");
-		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getWMLKeyAccess().getEolEOLTerminalRuleCall_3_0_0(), value, null)) {
-			type = AssignmentType.TERMINAL_RULE_CALL;
-			element = grammarAccess.getWMLKeyAccess().getEolEOLTerminalRuleCall_3_0_0();
-			return obj;
-		}
-		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getWMLKeyAccess().getEolSL_COMMENTTerminalRuleCall_3_0_1(), value, null)) {
-			type = AssignmentType.TERMINAL_RULE_CALL;
-			element = grammarAccess.getWMLKeyAccess().getEolSL_COMMENTTerminalRuleCall_3_0_1();
-			return obj;
-		}
-		return null;
-	}
-
 }
 
 
@@ -1787,20 +1746,51 @@ protected class WMLArrayCall_RightSquareBracketKeyword_2 extends KeywordToken  {
 /************ begin Rule WMLMacroDefine ****************
  *
  * WMLMacroDefine:
- * 	name=DEFINE;
+ * 	name=DEFINE (Tags+=WMLTag | Keys+=WMLKey | MacroCalls+=WMLMacroCall | MacroDefines+=WMLMacroDefine |
+ * 	Textdomains+=WMLTextdomain)* ENDDEF;
  *
  **/
 
-// name=DEFINE
-protected class WMLMacroDefine_NameAssignment extends AssignmentToken  {
+// name=DEFINE (Tags+=WMLTag | Keys+=WMLKey | MacroCalls+=WMLMacroCall | MacroDefines+=WMLMacroDefine |
+// Textdomains+=WMLTextdomain)* ENDDEF
+protected class WMLMacroDefine_Group extends GroupToken {
 	
-	public WMLMacroDefine_NameAssignment(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public WMLMacroDefine_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Group getGrammarElement() {
+		return grammarAccess.getWMLMacroDefineAccess().getGroup();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new WMLMacroDefine_ENDDEFTerminalRuleCall_2(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override
+	public IEObjectConsumer tryConsume() {
+		if(getEObject().eClass() != grammarAccess.getWMLMacroDefineRule().getType().getClassifier())
+			return null;
+		return eObjectConsumer;
+	}
+
+}
+
+// name=DEFINE
+protected class WMLMacroDefine_NameAssignment_0 extends AssignmentToken  {
+	
+	public WMLMacroDefine_NameAssignment_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Assignment getGrammarElement() {
-		return grammarAccess.getWMLMacroDefineAccess().getNameAssignment();
+		return grammarAccess.getWMLMacroDefineAccess().getNameAssignment_0();
 	}
 
     @Override
@@ -1812,13 +1802,11 @@ protected class WMLMacroDefine_NameAssignment extends AssignmentToken  {
 
     @Override	
 	public IEObjectConsumer tryConsume() {
-		if(getEObject().eClass() != grammarAccess.getWMLMacroDefineRule().getType().getClassifier())
-			return null;
 		if((value = eObjectConsumer.getConsumable("name",true)) == null) return null;
 		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("name");
-		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getWMLMacroDefineAccess().getNameDEFINETerminalRuleCall_0(), value, null)) {
+		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getWMLMacroDefineAccess().getNameDEFINETerminalRuleCall_0_0(), value, null)) {
 			type = AssignmentType.TERMINAL_RULE_CALL;
-			element = grammarAccess.getWMLMacroDefineAccess().getNameDEFINETerminalRuleCall_0();
+			element = grammarAccess.getWMLMacroDefineAccess().getNameDEFINETerminalRuleCall_0_0();
 			return obj;
 		}
 		return null;
@@ -1826,18 +1814,297 @@ protected class WMLMacroDefine_NameAssignment extends AssignmentToken  {
 
 }
 
+// (Tags+=WMLTag | Keys+=WMLKey | MacroCalls+=WMLMacroCall | MacroDefines+=WMLMacroDefine | Textdomains+=WMLTextdomain)*
+protected class WMLMacroDefine_Alternatives_1 extends AlternativesToken {
+
+	public WMLMacroDefine_Alternatives_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Alternatives getGrammarElement() {
+		return grammarAccess.getWMLMacroDefineAccess().getAlternatives_1();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new WMLMacroDefine_TagsAssignment_1_0(lastRuleCallOrigin, this, 0, inst);
+			case 1: return new WMLMacroDefine_KeysAssignment_1_1(lastRuleCallOrigin, this, 1, inst);
+			case 2: return new WMLMacroDefine_MacroCallsAssignment_1_2(lastRuleCallOrigin, this, 2, inst);
+			case 3: return new WMLMacroDefine_MacroDefinesAssignment_1_3(lastRuleCallOrigin, this, 3, inst);
+			case 4: return new WMLMacroDefine_TextdomainsAssignment_1_4(lastRuleCallOrigin, this, 4, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// Tags+=WMLTag
+protected class WMLMacroDefine_TagsAssignment_1_0 extends AssignmentToken  {
+	
+	public WMLMacroDefine_TagsAssignment_1_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getWMLMacroDefineAccess().getTagsAssignment_1_0();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new WMLTag_Group(this, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("Tags",true)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("Tags");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getWMLTagRule().getType().getClassifier())) {
+				type = AssignmentType.PARSER_RULE_CALL;
+				element = grammarAccess.getWMLMacroDefineAccess().getTagsWMLTagParserRuleCall_1_0_0(); 
+				consumed = obj;
+				return param;
+			}
+		}
+		return null;
+	}
+
+    @Override
+	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
+		if(value == inst.getEObject() && !inst.isConsumed()) return null;
+		switch(index) {
+			case 0: return new WMLMacroDefine_Alternatives_1(lastRuleCallOrigin, next, actIndex, consumed);
+			case 1: return new WMLMacroDefine_NameAssignment_0(lastRuleCallOrigin, next, actIndex, consumed);
+			default: return null;
+		}	
+	}	
+}
+
+// Keys+=WMLKey
+protected class WMLMacroDefine_KeysAssignment_1_1 extends AssignmentToken  {
+	
+	public WMLMacroDefine_KeysAssignment_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getWMLMacroDefineAccess().getKeysAssignment_1_1();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new WMLKey_Group(this, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("Keys",true)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("Keys");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getWMLKeyRule().getType().getClassifier())) {
+				type = AssignmentType.PARSER_RULE_CALL;
+				element = grammarAccess.getWMLMacroDefineAccess().getKeysWMLKeyParserRuleCall_1_1_0(); 
+				consumed = obj;
+				return param;
+			}
+		}
+		return null;
+	}
+
+    @Override
+	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
+		if(value == inst.getEObject() && !inst.isConsumed()) return null;
+		switch(index) {
+			case 0: return new WMLMacroDefine_Alternatives_1(lastRuleCallOrigin, next, actIndex, consumed);
+			case 1: return new WMLMacroDefine_NameAssignment_0(lastRuleCallOrigin, next, actIndex, consumed);
+			default: return null;
+		}	
+	}	
+}
+
+// MacroCalls+=WMLMacroCall
+protected class WMLMacroDefine_MacroCallsAssignment_1_2 extends AssignmentToken  {
+	
+	public WMLMacroDefine_MacroCallsAssignment_1_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getWMLMacroDefineAccess().getMacroCallsAssignment_1_2();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new WMLMacroCall_Group(this, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("MacroCalls",true)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("MacroCalls");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getWMLMacroCallRule().getType().getClassifier())) {
+				type = AssignmentType.PARSER_RULE_CALL;
+				element = grammarAccess.getWMLMacroDefineAccess().getMacroCallsWMLMacroCallParserRuleCall_1_2_0(); 
+				consumed = obj;
+				return param;
+			}
+		}
+		return null;
+	}
+
+    @Override
+	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
+		if(value == inst.getEObject() && !inst.isConsumed()) return null;
+		switch(index) {
+			case 0: return new WMLMacroDefine_Alternatives_1(lastRuleCallOrigin, next, actIndex, consumed);
+			case 1: return new WMLMacroDefine_NameAssignment_0(lastRuleCallOrigin, next, actIndex, consumed);
+			default: return null;
+		}	
+	}	
+}
+
+// MacroDefines+=WMLMacroDefine
+protected class WMLMacroDefine_MacroDefinesAssignment_1_3 extends AssignmentToken  {
+	
+	public WMLMacroDefine_MacroDefinesAssignment_1_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getWMLMacroDefineAccess().getMacroDefinesAssignment_1_3();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new WMLMacroDefine_Group(this, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("MacroDefines",true)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("MacroDefines");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getWMLMacroDefineRule().getType().getClassifier())) {
+				type = AssignmentType.PARSER_RULE_CALL;
+				element = grammarAccess.getWMLMacroDefineAccess().getMacroDefinesWMLMacroDefineParserRuleCall_1_3_0(); 
+				consumed = obj;
+				return param;
+			}
+		}
+		return null;
+	}
+
+    @Override
+	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
+		if(value == inst.getEObject() && !inst.isConsumed()) return null;
+		switch(index) {
+			case 0: return new WMLMacroDefine_Alternatives_1(lastRuleCallOrigin, next, actIndex, consumed);
+			case 1: return new WMLMacroDefine_NameAssignment_0(lastRuleCallOrigin, next, actIndex, consumed);
+			default: return null;
+		}	
+	}	
+}
+
+// Textdomains+=WMLTextdomain
+protected class WMLMacroDefine_TextdomainsAssignment_1_4 extends AssignmentToken  {
+	
+	public WMLMacroDefine_TextdomainsAssignment_1_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getWMLMacroDefineAccess().getTextdomainsAssignment_1_4();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new WMLTextdomain_NameAssignment(this, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("Textdomains",true)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("Textdomains");
+		if(value instanceof EObject) { // org::eclipse::xtext::impl::RuleCallImpl
+			IEObjectConsumer param = createEObjectConsumer((EObject)value);
+			if(param.isInstanceOf(grammarAccess.getWMLTextdomainRule().getType().getClassifier())) {
+				type = AssignmentType.PARSER_RULE_CALL;
+				element = grammarAccess.getWMLMacroDefineAccess().getTextdomainsWMLTextdomainParserRuleCall_1_4_0(); 
+				consumed = obj;
+				return param;
+			}
+		}
+		return null;
+	}
+
+    @Override
+	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
+		if(value == inst.getEObject() && !inst.isConsumed()) return null;
+		switch(index) {
+			case 0: return new WMLMacroDefine_Alternatives_1(lastRuleCallOrigin, next, actIndex, consumed);
+			case 1: return new WMLMacroDefine_NameAssignment_0(lastRuleCallOrigin, next, actIndex, consumed);
+			default: return null;
+		}	
+	}	
+}
+
+
+// ENDDEF
+protected class WMLMacroDefine_ENDDEFTerminalRuleCall_2 extends UnassignedTextToken {
+
+	public WMLMacroDefine_ENDDEFTerminalRuleCall_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public RuleCall getGrammarElement() {
+		return grammarAccess.getWMLMacroDefineAccess().getENDDEFTerminalRuleCall_2();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new WMLMacroDefine_Alternatives_1(lastRuleCallOrigin, this, 0, inst);
+			case 1: return new WMLMacroDefine_NameAssignment_0(lastRuleCallOrigin, this, 1, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+
 /************ end Rule WMLMacroDefine ****************/
 
 
 /************ begin Rule WMLTextdomain ****************
  *
- * //		( Tags += WMLTag
- * //		| Keys += WMLKey
- * //		| MacroCalls += WMLMacroCall
- * //		| MacroDefines += WMLMacroDefine
- * //		| Textdomains += WMLTextdomain
- * //		)*;
- * //		ENDDEF;
  * WMLTextdomain:
  * 	name=TEXTDOMAIN;
  *
@@ -1884,11 +2151,11 @@ protected class WMLTextdomain_NameAssignment extends AssignmentToken  {
 /************ begin Rule WMLValue ****************
  *
  * WMLValue:
- * 	value=(ID | STRING | "+" | "~" | ANY_OTHER);
+ * 	value+=(ID | STRING | "+" | "~" | ANY_OTHER)+;
  *
  **/
 
-// value=(ID | STRING | "+" | "~" | ANY_OTHER)
+// value+=(ID | STRING | "+" | "~" | ANY_OTHER)+
 protected class WMLValue_ValueAssignment extends AssignmentToken  {
 	
 	public WMLValue_ValueAssignment(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1903,14 +2170,13 @@ protected class WMLValue_ValueAssignment extends AssignmentToken  {
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			default: return lastRuleCallOrigin.createFollowerAfterReturn(this, index, index, inst);
+			case 0: return new WMLValue_ValueAssignment(lastRuleCallOrigin, this, 0, inst);
+			default: return lastRuleCallOrigin.createFollowerAfterReturn(this, index, index - 1, inst);
 		}	
 	}
 
     @Override	
 	public IEObjectConsumer tryConsume() {
-		if(getEObject().eClass() != grammarAccess.getWMLValueRule().getType().getClassifier())
-			return null;
 		if((value = eObjectConsumer.getConsumable("value",true)) == null) return null;
 		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("value");
 		if(keywordSerializer.isValid(obj.getEObject(), grammarAccess.getWMLValueAccess().getValuePlusSignKeyword_0_2(), value, null)) {
