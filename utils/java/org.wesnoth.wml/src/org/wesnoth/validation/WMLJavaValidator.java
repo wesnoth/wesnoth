@@ -12,12 +12,25 @@ import org.eclipse.xtext.parsetree.CompositeNode;
 import org.eclipse.xtext.parsetree.LeafNode;
 import org.eclipse.xtext.parsetree.NodeUtil;
 import org.eclipse.xtext.validation.Check;
+import org.eclipse.xtext.validation.CheckType;
+import org.wesnoth.wML.WMLKey;
+import org.wesnoth.wML.WMLMacroCall;
 import org.wesnoth.wML.WMLPackage;
+import org.wesnoth.wML.WMLRoot;
 import org.wesnoth.wML.WMLTag;
 
 import wesnoth_eclipse_plugin.schema.SchemaParser;
 import wesnoth_eclipse_plugin.schema.Tag;
 
+/**
+ * This represents the validator for config files
+ *
+ * http://wiki.eclipse.org/Xtext/Documentation/Xtext_New_and_Noteworthy#Different_validation_hooks
+ * CheckType:
+ * 1. during editing with a delay of 500ms, only FAST is passed
+ * 2. on save NORMAL is passed
+ * 3. an action, which can be optionally generated for you DSL, explicitely evaluates EXPENSIVE constraints
+ */
 public class WMLJavaValidator extends AbstractWMLJavaValidator
 {
 	@Check
@@ -53,6 +66,31 @@ public class WMLJavaValidator extends AbstractWMLJavaValidator
 		}
 		if (!tag.getName().equals(tag.getEndName()))
 			error("Incorrect closing tag name.", WMLPackage.WML_TAG__END_NAME);
+	}
+
+	@Check(CheckType.EXPENSIVE)
+	public void checkExpensiveKeyValue(WMLKey key)
+	{
+		//TODO: add regex checking here
+		System.out.println("triggered wmlkey expensive validation.");
+	}
+
+	@Check(CheckType.NORMAL)
+	public void checkNormalWMLRootCardinality(WMLRoot root)
+	{
+		//TODO: add check for subtags cardinality
+	}
+
+	@Check(CheckType.NORMAL)
+	public void checkNormalWMLTagCardinality(WMLTag tag)
+	{
+		//TODO: add check for subtags/subkeys cardinality
+	}
+
+	@Check(CheckType.FAST)
+	public void checkNormalWMLMacroExistance(WMLMacroCall call)
+	{
+		//TODO: add check for macro existance - by name
 	}
 //	@Check
 //	public void checkGreetingStartsWithCapital(Attributes attr) {
