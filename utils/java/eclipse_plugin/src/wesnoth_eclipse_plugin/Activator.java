@@ -19,6 +19,7 @@ import org.osgi.framework.BundleContext;
 
 import wesnoth_eclipse_plugin.preferences.Preferences;
 import wesnoth_eclipse_plugin.utils.GUIUtils;
+import wesnoth_eclipse_plugin.utils.PreprocessorUtils;
 import wesnoth_eclipse_plugin.utils.ProjectCache;
 import wesnoth_eclipse_plugin.utils.ProjectUtils;
 import wesnoth_eclipse_plugin.utils.WorkspaceUtils;
@@ -45,6 +46,7 @@ public class Activator extends AbstractUIPlugin
 		super.start(context);
 		plugin = this;
 		Logger.getInstance().startLogger();
+		PreprocessorUtils.restoreTimestamps();
 	}
 
 	@Override
@@ -59,6 +61,7 @@ public class Activator extends AbstractUIPlugin
 		{
 			cache.getValue().saveCache();
 		}
+		PreprocessorUtils.saveTimestamps();
 		super.stop(context);
 	}
 

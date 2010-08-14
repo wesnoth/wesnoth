@@ -9,6 +9,7 @@
 package wesnoth_eclipse_plugin.utils;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -18,8 +19,11 @@ import org.eclipse.core.filesystem.EFS;
 import org.eclipse.core.filesystem.IFileStore;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.jface.dialogs.DialogSettings;
 
+import wesnoth_eclipse_plugin.Activator;
 import wesnoth_eclipse_plugin.Constants;
 import wesnoth_eclipse_plugin.Logger;
 import wesnoth_eclipse_plugin.preferences.Preferences;
@@ -203,5 +207,64 @@ public class PreprocessorUtils
 		return WorkspaceUtils.getTemporaryFolder() +
 				resource.getProject().getName() +
 				"/_MACROS_.cfg";
+	}
+
+	/**
+	 * Saves the current timestamps for preprocessed files
+	 * to filesystem
+	 */
+	public static void saveTimestamps()
+	{
+		IPath path = Activator.getDefault().getStateLocation();
+		String filename = path.append("preprocessed.txt").toOSString();
+		DialogSettings settings = new DialogSettings("preprocessed");
+		try
+		{
+			filesTimeStamps_.put("file1.txt", 2923489273482349L);
+			filesTimeStamps_.put("file2.txt", 73482349L);
+			filesTimeStamps_.put("file3.txt", 3489273482349L);
+			settings.put("files", filesTimeStamps_.keySet().toArray(new String[0]));
+			List<String> timestamps = new ArrayList<String>();
+			for(Long timestamp : filesTimeStamps_.values())
+			{
+				timestamps.add(timestamp.toString());
+			}
+			settings.put("timestamps", timestamps.toArray(new String[0]));
+			settings.save(filename);
+		}
+		catch (Exception e)
+		{
+			Logger.getInstance().logException(e);
+		}
+	}
+
+	/**
+	 * Restores the timestamps for preprocessed files from
+	 * the filesystem
+	 */
+	public static void restoreTimestamps()
+	{
+		IPath path = Activator.getDefault().getStateLocation();
+		String filename = path.append("preprocessed.txt").toOSString();
+		DialogSettings settings = new DialogSettings("preprocessed");
+		filesTimeStamps_.clear();
+
+		try
+		{
+			settings.load(filename);
+			String[] timestamps = settings.getArray("timestamps");
+			String[] files = settings.getArray("files");
+			if (timestamps.length == files.length)
+			{
+				for(int index = 0 ;index < files.length; ++index)
+				{
+					filesTimeStamps_.put(files[index], Long.valueOf(timestamps[index]));
+				}
+			}
+		}
+		catch (IOException e)
+		{
+			Logger.getInstance().logException(e);
+		}
 	}
 }
