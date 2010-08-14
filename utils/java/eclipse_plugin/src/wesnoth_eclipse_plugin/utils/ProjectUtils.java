@@ -99,16 +99,20 @@ public class ProjectUtils
 		if (handle.exists())
 			return -1;
 		String projectPath = null;
-		if (handle.getLocation() == null)
+
+		if (handle.getLocation() == null && description != null)
 			projectPath = description.getLocationURI().toString();
-		else
+		else if (handle.getLocation() != null)
 			projectPath = handle.getLocation().toOSString();
 
 		monitor.subTask("Cleaning files...");
-		// cleanup existing files
-		ResourceUtils.removeFile(projectPath + "/.wesnoth");
-		ResourceUtils.removeFile(projectPath + "/.project");
-		ResourceUtils.removeFile(projectPath + "/.build.xml");
+		if (projectPath != null)
+		{
+			// cleanup existing files
+			ResourceUtils.removeFile(projectPath + "/.wesnoth");
+			ResourceUtils.removeFile(projectPath + "/.project");
+			ResourceUtils.removeFile(projectPath + "/.build.xml");
+		}
 		monitor.worked(5);
 
 		monitor.subTask("Creating project '" + handle.getName() + "' ...");
