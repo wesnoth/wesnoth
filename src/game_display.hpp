@@ -187,6 +187,21 @@ public:
 	 */
 	int remove_temporary_unit(unit *u);
 
+	/**
+	 * Allows a unit to request to be the only one drawn in its hex. Useful for situations where
+	 * multiple units (one real, multiple temporary) can end up stacked, such as with the whiteboard.
+	 * @param loc The location of the unit requesting exclusivity.
+	 * @param unit The unit requesting exlusivity.
+	 * @return false if there's already an exclusive draw request for this location.
+	 */
+	bool add_exclusive_draw(const map_location loc, unit& unit);
+	/**
+	 * Cancels an exclusive draw request.
+	 * @return The id of the unit whose exclusive draw request was canceled, or else
+	 *         the empty string if there was no exclusive draw request for this location.
+	 */
+	std::string remove_exclusive_draw(const map_location loc);
+
 	/** Returns a reference to the temp units deque.
 	 */
 	const std::deque<unit*>& get_temp_units() { return temp_units_; }
@@ -306,7 +321,12 @@ private:
 
 	unit_map& units_;
 
+	/// collection of units destined to be drawn but not put into the unit map
 	std::deque<unit*> temp_units_;
+
+	typedef std::map<map_location, std::string> exclusive_unit_draw_requests_t;
+	/// map of hexes where only one unit should be drawn, the one identified by the associated id string
+	exclusive_unit_draw_requests_t exclusive_unit_draw_requests_;
 
 	// Locations of the attack direction indicator's parts
 	map_location attack_indicator_src_;

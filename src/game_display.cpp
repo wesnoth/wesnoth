@@ -306,13 +306,17 @@ void game_display::draw_invalidated()
 
 	foreach (const map_location& loc, invalidated_) {
 		unit_map::iterator u_it = units_.find(loc);
-		if (u_it != units_.end())
+		exclusive_unit_draw_requests_t::iterator request = exclusive_unit_draw_requests_.find(loc);
+		if (u_it != units_.end()
+				&& (request == exclusive_unit_draw_requests_.end() || request->second == u_it->id()))
 			u_it->redraw_unit();
 	}
 
 	foreach(unit* temp_unit, temp_units_) {
 		const map_location& loc = temp_unit->get_location();
-		if (invalidated_.find(loc) != invalidated_.end())
+		exclusive_unit_draw_requests_t::iterator request = exclusive_unit_draw_requests_.find(loc);
+		if (invalidated_.find(loc) != invalidated_.end()
+				&& (request == exclusive_unit_draw_requests_.end() || request->second == temp_unit->id()))
 			temp_unit->redraw_unit();
 	}
 
@@ -970,6 +974,31 @@ int game_display::remove_temporary_unit(unit *u)
 		ERR_NG << "Error: duplicate temp unit found in game_display::remove_temporary_unit" << std::endl;
 	}
 	return removed;
+}
+
+bool game_display::add_exclusive_draw(const map_location loc, unit& unit)
+{
+	if (loc.valid() && exclusive_unit_draw_requests_.find(loc) == exclusive_unit_draw_requests_.end())
+	{
+		exclusive_unit_draw_requests_[loc] = unit.id();
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+std::string game_display::remove_exclusive_draw(const map_location loc)
+{
+	std::string id = "";
+	if(loc.valid())
+	{
+		id = exclusive_unit_draw_requests_[loc];
+		//id will be set to the default "" string by the [] operator if the map doesn't have anything for that loc.
+		exclusive_unit_draw_requests_.erase(loc);
+	}
+	return id;
 }
 
 void game_display::set_attack_indicator(const map_location& src, const map_location& dst)
