@@ -25,6 +25,11 @@ public abstract class NewWizardTemplate extends Wizard implements INewWizard
 	protected Object				data_				= null;
 	protected String				objectName_			= "";
 
+	public NewWizardTemplate()
+	{
+		setNeedsProgressMonitor(true);
+	}
+
 	@Override
 	public void init(IWorkbench workbench, IStructuredSelection selection)
 	{

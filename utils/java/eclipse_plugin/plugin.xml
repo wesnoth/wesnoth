@@ -131,6 +131,13 @@
       </category>
       <wizard
             category="wesnoth.eclipse.newWizards"
+            class="wesnoth_eclipse_plugin.wizards.newfile.NewConfigFileWizard"
+            icon="icons/wesnoth-icon_16.png"
+            id="wesnoth_eclipse_plugin.wizards.newfile.NewConfigFileWizard"
+            name="Wesnoth file wizard (.cfg)">
+      </wizard>
+      <wizard
+            category="wesnoth.eclipse.newWizards"
             class="wesnoth_eclipse_plugin.wizards.emptyproject.EmptyProjectNewWizard"
             icon="icons/wesnoth-icon_16.png"
             id="wesnoth_eclipse_plugin.wizard.emptyProjectWizard"
