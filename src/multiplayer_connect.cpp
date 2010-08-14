@@ -1427,7 +1427,6 @@ void connect::layout_children(const SDL_Rect& rect)
 	left_button->set_location(right  - right_button->width() - left_button->width() - gui::ButtonHPadding,
 	                          bottom - left_button->height());
 
-	waiting_label_.set_location(left + 8, bottom-left_button->height() + 4);
 	type_title_label_.set_location(left+30, top+35);
 	faction_title_label_.set_location((left+145), top+35);
 	team_title_label_.set_location((left+260), top+35);
@@ -1436,8 +1435,9 @@ void connect::layout_children(const SDL_Rect& rect)
 	income_title_label_.set_location((left+560), top+35);
 
 	add_local_player_.set_help_string(_("Adds a named hotseat player to the player list"));
-	add_local_player_.set_location(left + gui::ButtonHPadding, bottom -
-		add_local_player_.height());
+	add_local_player_.set_location(left, bottom - add_local_player_.height());
+	waiting_label_.set_location(left + gui::ButtonHPadding +
+		add_local_player_.width(), bottom - left_button->height() + 4);
 
 	SDL_Rect scroll_pane_rect;
 	scroll_pane_rect.x = ca.x;
