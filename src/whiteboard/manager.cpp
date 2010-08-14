@@ -186,6 +186,21 @@ bool manager::can_execute_hotkey() const
 
 bool manager::allow_leader_to_move(unit const& leader) const
 {
+	//Look for another leader on another keep in the same castle
+	{ wb::scoped_planned_unit_map future; //< start planned unit map scope
+		foreach(unit const& unit, *resources::units)
+		{
+			if (unit.can_recruit() &&
+					resources::game_map->is_keep(unit.get_location()) &&
+					unit.id() != leader.id())
+			{
+				if (can_recruit_on(*resources::game_map, unit.get_location(), leader.get_location()))
+					return true;
+			}
+		}
+	} // end planned unit map scope
+
+	//Look for planned recruits that depend on this leader
 	foreach(action_const_ptr action, *viewer_actions())
 	{
 		if(recruit_const_ptr recruit = boost::dynamic_pointer_cast<class recruit const>(action))
