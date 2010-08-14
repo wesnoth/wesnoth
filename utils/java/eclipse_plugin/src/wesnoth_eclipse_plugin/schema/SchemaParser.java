@@ -171,6 +171,11 @@ public class SchemaParser
 						value = tokens[1];
 					}
 
+					if (value.length() >= 2)
+					{
+						value = value.substring(1, value.length() - 1);
+					}
+
 					currentTag.setDescription(new Tag("description", '?'));
 					currentTag.getDescription().getKeyChildren().add(
 							new TagKey(tokens[0], '?', "", value, true));
