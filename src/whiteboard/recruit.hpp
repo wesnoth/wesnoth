@@ -66,6 +66,8 @@ public:
 	/** For recruit actions, always returns NULL. */
 	virtual unit* get_unit() const { return NULL; }
 
+	map_location const get_recruit_hex() const { return recruit_hex_; }
+
 	/**
 	 * Indicates to an action whether its status is invalid, and whether it should change its
 	 * display (and avoid any change to the game state) accordingly
