@@ -13,6 +13,8 @@ import java.util.Map.Entry;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.text.contentassist.ICompletionProposal;
+import org.eclipse.jface.viewers.StyledString;
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.parsetree.CompositeNode;
@@ -37,6 +39,15 @@ import wesnoth_eclipse_plugin.utils.ProjectUtils;
 @SuppressWarnings("unused")
 public class WMLProposalProvider extends AbstractWMLProposalProvider
 {
+	/**
+	 * We have the following priorities:
+	 *
+	 * 1700 - key values
+	 * 1500 - key names
+	 * 1000 - tags
+	 *  100 - macro calls
+	 */
+
 	public WMLProposalProvider()
 	{
 		super();
@@ -121,7 +132,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 			proposal.append("}");
 
 			acceptor.accept(createCompletionProposal(proposal.toString(), define.getKey(),
-					WMLLabelProvider.getImageByName("macrocall.png"), context));
+					WMLLabelProvider.getImageByName("macrocall.png"), context, 100));
 		}
 	}
 
@@ -155,7 +166,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 				{
 					acceptor.accept(createCompletionProposal(scenario.getValue(),
 							scenario.getValue(), WMLLabelProvider.getImageByName("scenario.png"),
-							context));
+							context, 1700));
 				}
 			}
 			else
@@ -173,7 +184,7 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 							String[] values = tagKey.getValue().split(",");
 							for(String val : values)
 							{
-								acceptor.accept(createCompletionProposal(val, context));
+								acceptor.accept(createCompletionProposal(val, context, 1700));
 							}
 						}
 					}
@@ -221,9 +232,9 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 
 					if (found == false)
 						acceptor.accept(createCompletionProposal(key.getName() + "=",
-								key.getName(),
-								getImage(WMLFactoryImpl.eINSTANCE.getWMLPackage().getWMLKey()),
-							context));
+							key.getName(),
+							getImage(WMLFactoryImpl.eINSTANCE.getWMLPackage().getWMLKey()),
+							context, 1500));
 				}
 			}
 		}
@@ -253,8 +264,8 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 			if (context.getCurrentNode().getOffset() > 0)
 				parentIndent = ((LeafNode)NodeUtil.findLeafNodeAtOffset(node.getParent(),
 						context.getCurrentNode().getOffset() -
-						// if we have a rule proposal, subtract 1
-						(ruleProposal ? 1 : 0)
+						// if we have a non-rule proposal, subtract 1
+						(ruleProposal ? 0 : 1)
 						)).getText();
 
 			// remove ugly new lines that break indentation
@@ -328,7 +339,14 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 		proposal.append(String.format("%s[/%s]",indent, tag.getName()));
 		return createCompletionProposal(proposal.toString(), tag.getName(),
 					getImage(WMLFactoryImpl.eINSTANCE.getWMLPackage().getWMLTag()),
-					context);
+					context, 100);
+	}
+
+	private ICompletionProposal createCompletionProposal(String proposal,
+			ContentAssistContext context, int priority)
+	{
+		return createCompletionProposal(proposal, null, null, priority,
+				context.getPrefix(), context);
 	}
 
 	private ICompletionProposal createCompletionProposal(String proposal, String displayString,
@@ -337,6 +355,12 @@ public class WMLProposalProvider extends AbstractWMLProposalProvider
 		return createCompletionProposal(proposal, displayString, null, context);
 	}
 
+	public ICompletionProposal createCompletionProposal(String proposal, String displayString, Image image,
+			ContentAssistContext contentAssistContext, int priority)
+	{
+		return createCompletionProposal(proposal, new StyledString(displayString),
+					image, priority, contentAssistContext.getPrefix(), contentAssistContext);
+	}
 	/**
 	 * Method for debugging the auto completion
 	 * @param str

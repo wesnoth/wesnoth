@@ -17,6 +17,7 @@ import org.eclipse.xtext.ui.editor.XtextEditor;
 import org.eclipse.xtext.ui.editor.autoedit.DefaultAutoEditStrategy;
 import org.eclipse.xtext.ui.editor.bracketmatching.IBracketMatcher;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
+import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalComparator;
 import org.eclipse.xtext.ui.editor.hyperlinking.HyperlinkHelper;
 import org.eclipse.xtext.ui.editor.outline.transformer.ISemanticModelTransformer;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.HighlightingReconciler;
@@ -26,6 +27,7 @@ import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculato
 import org.eclipse.xtext.ui.editor.syntaxcoloring.antlr.AbstractAntlrTokenToAttributeIdMapper;
 import org.wesnoth.ui.autoedit.WMLAutoEditStrategy;
 import org.wesnoth.ui.contentassist.WMLContentAssistContext;
+import org.wesnoth.ui.contentassist.WMLProposalComparator;
 import org.wesnoth.ui.editor.WMLAbstractDirtyEditorCallback;
 import org.wesnoth.ui.editor.WMLEditor;
 import org.wesnoth.ui.labeling.WMLLabelProvider;
@@ -120,6 +122,11 @@ public class WMLUiModule extends org.wesnoth.ui.AbstractWMLUiModule
 	public Class<? extends ContentAssistContext> bindContentAssistContext()
 	{
 		return WMLContentAssistContext.class;
+	}
+
+	public Class<? extends ICompletionProposalComparator> bindICompletionProposalComparator()
+	{
+		return WMLProposalComparator.class;
 	}
 
 	public Class<? extends DefaultAutoEditStrategy> bindAutoEditStrategy()
