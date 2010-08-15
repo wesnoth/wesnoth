@@ -57,17 +57,20 @@ void arrow::set_path(arrow_path_t const& path)
 	{
 		previous_path_ = path_;
 		path_ = path;
-		update_symbols(previous_path_);
+		invalidate_arrow_path(previous_path_);
+		update_symbols();
+		notify_arrow_changed();
 	}
 }
 
 void arrow::reset()
 {
+	invalidate_arrow_path(previous_path_);
 	invalidate_arrow_path(path_);
+	previous_path_.clear();
+	path_.clear();
 	symbols_map_.clear();
 	notify_arrow_changed();
-	path_.clear();
-	previous_path_.clear();
 }
 
 void arrow::set_color(std::string const& color)
@@ -75,7 +78,7 @@ void arrow::set_color(std::string const& color)
 	color_ = color;
 	if (valid_path(path_))
 	{
-		update_symbols(path_);
+		update_symbols();
 	}
 }
 
@@ -88,7 +91,7 @@ void arrow::set_style(const std::string& style)
 	style_ = style;
 	if (valid_path(path_))
 	{
-		update_symbols(path_);
+		update_symbols();
 	}
 }
 
@@ -98,7 +101,6 @@ void arrow::set_layer(display::tdrawing_layer const& layer)
 	if (valid_path(path_))
 	{
 		invalidate_arrow_path(path_);
-		notify_arrow_changed();
 	}
 }
 
@@ -120,7 +122,7 @@ bool arrow::path_contains(map_location const& hex) const
 
 void arrow::draw_hex(map_location const& hex)
 {
-	if(SCREEN && path_contains(hex))
+	if(path_contains(hex))
 	{
 		SCREEN->render_image(SCREEN->get_location_x(hex), SCREEN->get_location_y(hex), layer_,
 					hex, image::get_image(symbols_map_[hex], image::SCALED_TO_ZOOM));
@@ -135,7 +137,7 @@ bool arrow::valid_path(arrow_path_t path)
 		return false;
 }
 
-void arrow::update_symbols(arrow_path_t old_path)
+void arrow::update_symbols()
 {
 	if (!valid_path(path_))
 	{
@@ -144,8 +146,7 @@ void arrow::update_symbols(arrow_path_t old_path)
 	}
 
 	symbols_map_.clear();
-
-	invalidate_arrow_path(old_path);
+	invalidate_arrow_path(path_);
 
 	std::string const mods = "~RC(FF00FF>"+ color_ + ")"; //magenta to current color
 
@@ -268,10 +269,6 @@ void arrow::update_symbols(arrow_path_t old_path)
 		}
 		symbols_map_[*hex] = image;
 	}
-
-	invalidate_arrow_path(path_);
-
-	notify_arrow_changed();
 }
 
 void arrow::invalidate_arrow_path(arrow_path_t path)

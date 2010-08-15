@@ -82,9 +82,10 @@ public:
 protected:
 
 	/**
-	 * @param old_path : the path to erase and replace with the new symbols
+	 * Calculate the symbols to place along the arrow path.
+	 * Invalidates every hex along the path.
 	 */
-	virtual void update_symbols(arrow_path_t old_path);
+	virtual void update_symbols();
 
 	display::tdrawing_layer layer_;
 
