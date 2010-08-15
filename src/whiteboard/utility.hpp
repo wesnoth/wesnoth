@@ -28,7 +28,7 @@ namespace wb {
 /**
  * For a given leader on a keep, find another leader on another keep in the same castle.
  */
-map_location find_backup_leader(unit const& leader);
+unit const* find_backup_leader(unit const& leader);
 
 } //end namespace wb
 

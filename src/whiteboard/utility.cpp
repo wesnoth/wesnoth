@@ -26,7 +26,7 @@
 
 namespace wb {
 
-map_location find_backup_leader(unit const& leader)
+unit const* find_backup_leader(unit const& leader)
 {
 	assert(leader.can_recruit());
 	assert(resources::game_map->is_keep(leader.get_location()));
@@ -37,10 +37,10 @@ map_location find_backup_leader(unit const& leader)
 				unit.id() != leader.id())
 		{
 			if (can_recruit_on(*resources::game_map, unit.get_location(), leader.get_location()))
-				return unit.get_location();
+				return &unit;
 		}
 	}
-	return map_location();
+	return NULL;
 }
 
 } //end namespace wb

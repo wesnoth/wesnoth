@@ -17,6 +17,7 @@
  */
 
 #include "side_actions.hpp"
+
 #include "action.hpp"
 #include "attack.hpp"
 #include "manager.hpp"
@@ -24,11 +25,14 @@
 #include "recall.hpp"
 #include "recruit.hpp"
 #include "highlight_visitor.hpp"
+#include "utility.hpp"
 #include "validate_visitor.hpp"
 
+#include "actions.hpp"
 #include "foreach.hpp"
 #include "game_display.hpp"
 #include "game_end_exceptions.hpp"
+#include "map.hpp"
 #include "resources.hpp"
 
 #include <set>
@@ -271,13 +275,44 @@ side_actions::iterator side_actions::bump_earlier(side_actions::iterator positio
 			return end();
 	}
 
-	//If this is a move, verify that it doesn't depend on a previous move for freeing its destination
 	{
 		using boost::dynamic_pointer_cast;
-		if (move_ptr bump_earlier = dynamic_pointer_cast<move>(*position)) {
-			if (move_ptr previous_move = dynamic_pointer_cast<move>(*previous))	{
-				if (bump_earlier->get_dest_hex() == previous_move->get_source_hex()) {
+		//If this is a move, verify that it doesn't depend on a previous move for freeing its destination
+		if (move_ptr bump_earlier = dynamic_pointer_cast<move>(*position))
+		{
+			if (move_ptr previous_move = dynamic_pointer_cast<move>(*previous))
+			{
+				if (bump_earlier->get_dest_hex() == previous_move->get_source_hex())
+				{
 					return end();
+				}
+			}
+			//Also check the case of reordering a leader's move with respect to a recruit that depend on him
+			map_location recruit_recall_loc;
+			if (recruit_ptr previous_recruit = dynamic_pointer_cast<recruit>(*previous))
+			{
+				recruit_recall_loc = previous_recruit->get_recruit_hex();
+			} else if (recall_ptr previous_recall = dynamic_pointer_cast<recall>(*previous))
+			{
+				recruit_recall_loc = previous_recall->get_recall_hex();
+			}
+			if (recruit_recall_loc.valid())
+			{
+				unit const* leader = bump_earlier->get_unit();
+				if(leader->can_recruit() &&
+						resources::game_map->is_keep(leader->get_location()) &&
+						can_recruit_on(*resources::game_map, leader->get_location(), recruit_recall_loc))
+				{
+					if(unit const* backup_leader = find_backup_leader(*leader))
+					{
+						side_actions::iterator it = find_first_action_of(backup_leader);
+						if (!(it == end() || it > position))
+							return end(); //backup leader but he moves before us, refuse bump
+					}
+					else
+					{
+						return end(); //no backup leader, refuse bump
+					}
 				}
 			}
 		}
@@ -305,8 +340,7 @@ side_actions::iterator side_actions::bump_earlier(side_actions::iterator positio
 //move action toward back of queue
 side_actions::iterator side_actions::bump_later(side_actions::iterator position)
 {
-	if (resources::whiteboard->has_planned_unit_map())
-	{
+	if (resources::whiteboard->has_planned_unit_map()) {
 		ERR_WB << "Modifying action queue while temp modifiers are applied!!!\n";
 	}
 
@@ -324,13 +358,48 @@ side_actions::iterator side_actions::bump_later(side_actions::iterator position)
 			return end();
 	}
 
-	//If this is a move, verify that an earlier move doesn't depend on it for freeing its destination
+	//If the action whose place we're gonna take is a move, verify that it doesn't
+	//depend on us for freeing its destination
 	{
 		using boost::dynamic_pointer_cast;
-		if (move_ptr bump_later = dynamic_pointer_cast<move>(*position)) {
-			if (move_ptr next_move = dynamic_pointer_cast<move>(*next))	{
-				if (next_move->get_dest_hex() == bump_later->get_source_hex()) {
+		if (move_ptr next_move = dynamic_pointer_cast<move>(*next))
+		{
+			if (move_ptr bump_later = dynamic_pointer_cast<move>(*position))
+			{
+				if (next_move->get_dest_hex() == bump_later->get_source_hex())
+				{
 					return end();
+				}
+			} else {
+				//Check that we're not bumping this planned recruit after a move of the leader it depends on
+				map_location recruit_recall_loc;
+				if (recruit_ptr bump_later = dynamic_pointer_cast<recruit>(*position))
+				{
+					recruit_recall_loc = bump_later->get_recruit_hex();
+				}
+				else if (recall_ptr bump_later = dynamic_pointer_cast<recall>(*position))
+				{
+					recruit_recall_loc = bump_later->get_recall_hex();
+				}
+
+				if (recruit_recall_loc.valid())
+				{
+					unit const* leader = next_move->get_unit();
+					if(leader->can_recruit() &&
+							resources::game_map->is_keep(leader->get_location()) &&
+							can_recruit_on(*resources::game_map, leader->get_location(), recruit_recall_loc))
+					{
+						if (unit const* backup_leader = find_backup_leader(*leader))
+						{
+							side_actions::iterator it = find_first_action_of(backup_leader);
+							if (!(it == end() || it > position))
+								return end(); //backup leader but already programmed to act before us, refuse bump
+						}
+						else
+						{
+							return end(); //no backup leader, refuse bump
+						}
+					}
 				}
 			}
 		}
