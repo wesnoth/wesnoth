@@ -29,6 +29,7 @@
 #include "log.hpp"
 #include "map.hpp"
 #include "map_label.hpp"
+#include "persist_manager.hpp"
 #include "replay.hpp"
 #include "resources.hpp"
 #include "serialization/binary_or_text.hpp"
@@ -754,6 +755,10 @@ bool savegame::save_game(CVideo* video, const std::string& filename)
 		LOG_SAVE << "Setting parent of '" << filename_<< "' to " << gamestate_.classification().parent << "\n";
 
 		write_game_to_disk(filename_);
+		if (resources::persist != NULL) {
+			resources::persist->end_transaction();
+			resources::persist ->start_transaction();
+		}
 
 		grandparent = parent;
 		parent = filename_;

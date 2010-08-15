@@ -118,6 +118,7 @@ play_controller::play_controller(const config& level, game_state& state_of_game,
 	resources::undo_stack = &undo_stack_;
 	resources::redo_stack = &redo_stack_;
 	resources::persist = &persist_;
+	persist_.start_transaction();
 
 	// Setup victory and defeat music
 	set_victory_music_list(level_["victory_music"]);
@@ -137,6 +138,7 @@ play_controller::play_controller(const config& level, game_state& state_of_game,
 
 play_controller::~play_controller()
 {
+	persist_.end_transaction();
 	clear_resources();
 }
 
