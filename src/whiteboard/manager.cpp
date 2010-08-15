@@ -185,6 +185,11 @@ bool manager::can_execute_hotkey() const
 	return !resources::controller->is_linger_mode() && !viewer_actions()->empty();
 }
 
+bool manager::can_reorder_action() const
+{
+	return can_execute_hotkey() && highlighter_ && highlighter_->get_bump_target();
+}
+
 bool manager::allow_leader_to_move(unit const& leader) const
 {
 	//Look for another leader on another keep in the same castle

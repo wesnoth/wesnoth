@@ -214,9 +214,10 @@ void playsingle_controller::clear_messages(){
 	menu_handler_.clear_messages();
 }
 
-
 void playsingle_controller::whiteboard_toggle() {
-
+	resources::whiteboard->set_active(!resources::whiteboard->is_active());
+	//@todo Stop printing whiteboard help in the chat once we have better documentation/help
+	resources::whiteboard->print_help_once();
 }
 
 void playsingle_controller::whiteboard_execute_action(){
@@ -798,6 +799,18 @@ void playsingle_controller::end_turn_record_unlock()
 	turn_over_ = false;
 }
 
+hotkey::ACTION_STATE playsingle_controller::get_action_state(hotkey::HOTKEY_COMMAND command, int index) const
+{
+	switch(command) {
+	case hotkey::HOTKEY_WB_TOGGLE:
+		return resources::whiteboard->is_active() ? hotkey::ACTION_ON : hotkey::ACTION_OFF;
+	default:
+		return play_controller::get_action_state(command, index);
+	}
+}
+
+
+
 void playsingle_controller::after_human_turn(){
 	browse_ = true;
 	end_turn_record();
@@ -1038,11 +1051,15 @@ bool playsingle_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, 
 			if (i == units_.end()) return false;
 			return i->move_interrupted();
 		}
+		case hotkey::HOTKEY_WB_TOGGLE:
+			return true;
 		case hotkey::HOTKEY_WB_EXECUTE_ACTION:
 		case hotkey::HOTKEY_WB_DELETE_ACTION:
+			return resources::whiteboard->can_execute_hotkey();
 		case hotkey::HOTKEY_WB_BUMP_UP_ACTION:
 		case hotkey::HOTKEY_WB_BUMP_DOWN_ACTION:
-			return resources::whiteboard->can_execute_hotkey();
+			return resources::whiteboard->can_reorder_action();
+
 		default: return play_controller::can_execute_command(command, index);
 	}
 	return res;

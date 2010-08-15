@@ -51,14 +51,13 @@ public:
 
 	void print_help_once();
 
-	/**
-	 * Determine whether the whiteboard is activated.
-	 */
+	///Determine whether the whiteboard is activated.
 	bool is_active() const { return active_; }
 	void set_active(bool active);
 
 	void set_invert_behavior(bool invert);
 	bool can_execute_hotkey() const;
+	bool can_reorder_action() const;
 	bool allow_leader_to_move(unit const& leader) const;
 
 	void on_init_side(bool is_replay);
