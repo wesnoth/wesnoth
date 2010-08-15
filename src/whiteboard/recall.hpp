@@ -62,6 +62,8 @@ public:
 	/** For recall actions, always returns NULL. */
 	virtual unit* get_unit() const { return NULL; }
 
+	map_location const get_recall_hex() const { return recall_hex_; }
+
 	/**
 	 * Indicates to an action whether its status is invalid, and whether it should change its
 	 * display (and avoid any change to the game state) accordingly
