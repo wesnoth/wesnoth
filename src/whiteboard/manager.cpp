@@ -24,6 +24,7 @@
 #include "move.hpp"
 #include "recruit.hpp"
 #include "side_actions.hpp"
+#include "utility.hpp"
 
 #include "actions.hpp"
 #include "arrow.hpp"
@@ -188,16 +189,8 @@ bool manager::allow_leader_to_move(unit const& leader) const
 {
 	//Look for another leader on another keep in the same castle
 	{ wb::scoped_planned_unit_map future; //< start planned unit map scope
-		foreach(unit const& unit, *resources::units)
-		{
-			if (unit.can_recruit() &&
-					resources::game_map->is_keep(unit.get_location()) &&
-					unit.id() != leader.id())
-			{
-				if (can_recruit_on(*resources::game_map, unit.get_location(), leader.get_location()))
-					return true;
-			}
-		}
+		if(find_backup_leader(leader).valid())
+			return true;
 	} // end planned unit map scope
 
 	//Look for planned recruits that depend on this leader
