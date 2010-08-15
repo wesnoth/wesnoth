@@ -591,17 +591,6 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 
 		gui().unhighlight_reach();
 
-		//If this is a leader on a keep, ask permission to the whiteboard to move it
-		//since otherwise it may cause planned recruits to be erased.
-		if (u->can_recruit() &&	u->side() == gui().viewing_side() &&
-			resources::game_map->is_keep(u->get_location()) &&
-			!resources::whiteboard->allow_leader_to_move(*u))
-		{
-			gui2::show_transient_message(gui_->video(), "",
-					_("You cannot move your leader away from the keep with some planned recruits left."));
-			return false;
-		}
-
 		// If the whiteboard is active, it intercepts any unit movement
 		if (resources::whiteboard->is_active()) {
 				// Unselect the current hex, and create planned move for whiteboard
@@ -622,6 +611,17 @@ bool mouse_handler::left_click(int x, int y, const bool browse)
 			//Don't move if the selected unit already has actions
 			//from the whiteboard.
 			if (resources::whiteboard->unit_has_actions(&*u)) {
+				return false;
+			}
+
+			//If this is a leader on a keep, ask permission to the whiteboard to move it
+			//since otherwise it may cause planned recruits to be erased.
+			if (u->can_recruit() &&	u->side() == gui().viewing_side() &&
+				resources::game_map->is_keep(u->get_location()) &&
+				!resources::whiteboard->allow_leader_to_move(*u))
+			{
+				gui2::show_transient_message(gui_->video(), "",
+						_("You cannot move your leader away from the keep with some planned recruits left."));
 				return false;
 			}
 
