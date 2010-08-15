@@ -499,8 +499,6 @@ surface locator::load_image_sub_file() const
 
 		static const image::locator terrain_mask(game_config::images::terrain_mask);
 		const surface mask(get_image(terrain_mask, UNSCALED));
-		if(mask == NULL)
-			return surface(NULL);
 
 		surface cutted(cut_surface(surf, srcrect));
 		surf = mask_surface(cutted, mask);

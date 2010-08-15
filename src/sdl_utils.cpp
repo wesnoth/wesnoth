@@ -915,6 +915,9 @@ surface mask_surface(const surface &surf, const surface &mask)
 	if(surf == NULL) {
 		return NULL;
 	}
+	if(mask == NULL) {
+		return surf;
+	}
 
 	surface nsurf = make_neutral_surface(surf);
 	surface nmask(make_neutral_surface(mask));
