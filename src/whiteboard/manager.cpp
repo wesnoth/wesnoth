@@ -30,6 +30,7 @@
 #include "arrow.hpp"
 #include "chat_events.hpp"
 #include "foreach.hpp"
+#include "game_preferences.hpp"
 #include "key.hpp"
 #include "pathfind/pathfind.hpp"
 #include "play_controller.hpp"
@@ -44,6 +45,7 @@ namespace wb {
 manager::manager():
 		active_(false),
 		inverted_behavior_(false),
+		self_activate_once_(true),
 		print_help_once_(true),
 		wait_for_side_init_(true),
 		planned_unit_map_active_(false),
@@ -219,6 +221,12 @@ void manager::on_init_side(bool is_replay)
 	highlighter_.reset(new highlight_visitor(*resources::units, viewer_actions()));
 	wait_for_side_init_ = false;
 	LOG_WB << "on_init_side()\n";
+
+	if (self_activate_once_ && preferences::enable_whiteboard_mode_on_start())
+	{
+		self_activate_once_ = false;
+		set_active(true);
+	}
 }
 
 void manager::on_finish_side_turn()

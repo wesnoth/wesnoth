@@ -149,6 +149,7 @@ private:
 	///Tracks whether the whiteboard is active.
 	bool active_;
 	bool inverted_behavior_;
+	bool self_activate_once_;
 	bool print_help_once_;
 	bool wait_for_side_init_;
 	bool planned_unit_map_active_;

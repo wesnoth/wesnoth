@@ -400,14 +400,14 @@ void set_turn_dialog(bool ison)
 	preferences::set("turn_dialog", ison);
 }
 
-bool delay_shroud_updates_on_start()
+bool enable_whiteboard_mode_on_start()
 {
-	return preferences::get("delay_shroud_updates_on_start", false);
+	return preferences::get("enable_planning_mode_on_start", false);
 }
 
-void set_delay_shroud_updates_on_start(bool value)
+void set_enable_whiteboard_mode_on_start(bool value)
 {
-	preferences::set("delay_shroud_updates_on_start", value);
+	preferences::set("enable_planning_mode_on_start", value);
 }
 
 bool show_combat()
