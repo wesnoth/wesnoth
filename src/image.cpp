@@ -497,11 +497,8 @@ surface locator::load_image_sub_file() const
 			srcrect.y += surf->h/2 - val_.center_y_;
 		}
 
-		static const image::locator terrain_mask(game_config::images::terrain_mask);
-		const surface mask(get_image(terrain_mask, UNSCALED));
-
 		surface cutted(cut_surface(surf, srcrect));
-		surf = mask_surface(cutted, mask);
+		surf = mask_surface(cutted, get_hexmask());
 	}
 
 	if(val_.modifications_.size()){
@@ -954,9 +951,7 @@ static surface get_hexed(const locator& i_locator)
 {
 	surface image(get_image(i_locator, UNSCALED));
 	// Re-cut scaled tiles according to a mask.
-	static const image::locator terrain_mask(game_config::images::terrain_mask);
-	const surface hex(get_image(terrain_mask, UNSCALED));
-	return mask_surface(image, hex);
+	return mask_surface(image, get_hexmask());
 }
 
 static surface get_scaled_to_hex(const locator& i_locator)
@@ -1108,15 +1103,20 @@ surface get_image(const image::locator& i_locator, TYPE type)
 	return res;
 }
 
+surface get_hexmask()
+{
+	static const image::locator terrain_mask(game_config::images::terrain_mask);
+	return get_image(terrain_mask, UNSCALED);
+}
+
 bool is_in_hex(const locator& i_locator)
 {
 	if(i_locator.in_cache(in_hex_info_)) {
 		return i_locator.locate_in_cache(in_hex_info_);
 	} else {
-		const surface mask(get_image(game_config::images::terrain_mask, UNSCALED));
 		const surface image(get_image(i_locator, UNSCALED));
 
-		bool res = in_mask_surface(image, mask);
+		bool res = in_mask_surface(image, get_hexmask());
 
 		i_locator.add_to_cache(in_hex_info_, res);
 

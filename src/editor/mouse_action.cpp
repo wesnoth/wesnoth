@@ -178,8 +178,7 @@ void mouse_action::set_terrain_mouse_overlay(editor_display& disp, t_translation
 	SDL_BlitSurface ( image_bg, NULL, image, &rcDestRight );
 
 	//apply mask so the overlay is contained within the mouseover hex
-	surface mask(image::get_image("terrain/alphamask.png"));
-	image = mask_surface(image, mask);
+	image = mask_surface(image, image::get_hexmask());
 
 	// Add the alpha factor and scale the image
 	image = scale_surface(adjust_surface_alpha(image, alpha), zoom, zoom);

@@ -200,6 +200,9 @@ namespace image {
 	///SDL_FreeSurface()
 	surface get_image(const locator& i_locator, TYPE type=UNSCALED);
 
+	///function to get the standard hex mask
+	surface get_hexmask();
+
 	///function to check if an image fit into an hex
 	///return false if the image has not the standard size.
 	bool is_in_hex(const locator& i_locator);
