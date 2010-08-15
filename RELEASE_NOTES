@@ -91,7 +91,7 @@ Once you have some planned actions defined, readily identifiable by the numbers 
 
 -- Limitations --
 
-* Out-of-turn planning doesn't reliably work while units are moving. Concretely it works fine for multiplayer games, not so well agains the AI since it plays fast.
+* Out-of-turn planning doesn't reliably work while units are moving. Concretely it works fine for multiplayer games, not so well against the AI since it plays fast.
 * Disabling enemy moves tracking might help with out-of-turn planning.
 * The planning system hasn't been tested against the whole range of possible WML events, some of them might still cause crashes. However succesful tests included the tutorial, the "test" scenario, Dark Forecast, the first scenario of Legend of Wesmere, and others.
 * The sidebar shows unit information only when hovering over the future destination of a unit (for instance, if it has two moves defined, over the second move's ghosted unit), and not over the unit itself, which is not very intuitive.
