@@ -86,16 +86,15 @@ void validate_visitor::visit_move(move_ptr move)
 	if (!(move->get_source_hex().valid() && move->get_dest_hex().valid()))
 		move->set_valid(false);
 
-	{ //limit scope of "it"
-		unit_map::const_iterator it = resources::units->find(move->get_source_hex());
-		if (move->valid_ && it == resources::units->end())
-			move->set_valid(false);
+	unit_map::const_iterator unit_it = resources::units->find(move->get_source_hex());
 
-		//check if the unit in the source hex has the same unit id as before,
-		//i.e. that it's the same unit
-		if (move->valid_ && move->unit_id_ != it->id())
-			move->set_valid(false);
-	}
+	if (move->valid_ && unit_it == resources::units->end())
+		move->set_valid(false);
+
+	//check if the unit in the source hex has the same unit id as before,
+	//i.e. that it's the same unit
+	if (move->valid_ && move->unit_id_ != unit_it->id())
+		move->set_valid(false);
 
 	if (move->valid_ && move->get_source_hex() != move->get_dest_hex()) //allow for zero-hex, move, in which case we skip pathfinding
 	{
@@ -131,15 +130,22 @@ void validate_visitor::visit_move(move_ptr move)
 
 				//@todo: Since this might lengthen the path, we probably need a special conflict state
 				// to warn the player that the initial path is no longer possible.
-
 			}
-			// Now call the superclass to apply the result of this move to the unit map,
-			// so that further pathfinding takes it into account.
-			mapbuilder_visitor::visit_move(move);
+
+			//Check that the unit still has enough movement to do this move
+			if (unit_it->movement_left() < move->movement_cost_)
+				move->set_valid(false);
 		}
 	}
-	//FIXME: temporary until invalid arrow styles are in: delete invalid moves
-	if (!move->valid_)
+
+	if (move->valid_)
+	{
+		// Now call the superclass to apply the result of this move to the unit map,
+		// so that further pathfinding takes it into account.
+		mapbuilder_visitor::visit_move(move);
+	}
+	else
+		//FIXME: temporary until invalid arrow styles are in: delete invalid moves
 	{
 		LOG_WB << "Invalid move detected, adding to actions_to_erase_.\n";
 		actions_to_erase_.insert(move);
