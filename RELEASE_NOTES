@@ -74,7 +74,43 @@ The stone walls with pillars and bricks (Xos, Xol) are attractive, but built in 
 
 ***
 
-REPLACE ME WITH CONTENT...
+>>> Planning system / Whiteboard <<<
+
+A move planning system codenamed "Whiteboard" has been developed by one of our students for this Google Summer of Code. Its purpose is to visually test out several possible move (/attack/recruit/recall) combinations, check out the possible enemy moves for each one, and then execute the planned moves of your choice with the press of a key. Out-of-turn planning is also supported, so you can finally fine-tune your recruits and recalls or lay out some basic moves while waiting for your turn.
+
+This planning system is also destined to replace eventually Delay Shroud Updates, which is giving headaches to C++ coders and WML developers alike. Therefore DSU has been disabled in this release so the whiteboard's worth as a replacement can be determined. Your testing and feedback in this area is particularly needed and appreciated.
+
+-- Commands --
+
+To turn the planning system on and off, use the shift-p hotkey (configurable), the check box in the right-click or Actions menu, or finally type the :wb command. There is an option in Preferences to enable the whiteboard on game start. You can also hold the Tab key as an instant toggle: it allows planning a move when the whiteboard is off, and making a regular move when the whiteboard is on.
+
+Once you have some planned actions defined, readily identifiable by the numbers (and arrows, for moves), you can execute or delete them, or move them up/down the action queue. Numbering matters, since if you're not hovering the mouse over a particular unit or action, the "execute" or "delete" command will target action #1. The current shortcut keys use keys that were free, and are subject to change, but they are currently:
+* Execute: y
+* Delete: h
+* Reorder action up/down: PgUp/PgDown
+
+-- Limitations --
+
+* Out-of-turn planning doesn't reliably work while units are moving. Concretely it works fine for multiplayer games, not so well agains the AI since it plays fast.
+* Disabling enemy moves tracking might help with out-of-turn planning.
+* The planning system hasn't been tested against the whole range of possible WML events, some of them might still cause crashes. However succesful tests included the tutorial, the "test" scenario, Dark Forecast, the first scenario of Legend of Wesmere, and others.
+* The sidebar shows unit information only when hovering over the future destination of a unit (for instance, if it has two moves defined, over the second move's ghosted unit), and not over the unit itself, which is not very intuitive.
+* There's no interaction between the whiteboard and the game clock, therefore you won't get any time credit for planned moves until they are executed.
+
+-- Short-term developments --
+
+Those are the features planned for the near future:
+* Cumulative Battle Statistics and Chance to Kill calculations for multiple attackers.
+* A "consider dead" action that allows you to pretend a unit is dead for a moment, and see the effect on pathfinding and Zone of Control.
+* Depending on feedback, an "execute all" command allowing you to quickly execute several trivial moves in quick succession.
+
+-- Long-term developments --
+
+The whiteboard has been developed from the start with a networked aspect in mind, eventually allowing your allies to see your planned actions, as well as other interesting features such as suggesting moves and placing label-like symbols on the map. However there is still a lot of work left to get there.
+
+-- Your testing is needed --
+
+Please report bugs on bugs.wesnoth.org and assign them to Item Group "Whiteboard". For general feedback, head over to the Planning System/Whiteboard Feedback Thread in the Multiplayer Development forum.
 
 ***
 
