@@ -46,6 +46,7 @@
 #include "soundsource.hpp"
 #include "storyscreen/interface.hpp"
 #include "whiteboard/manager.hpp"
+#include "util.hpp"
 
 static lg::log_domain log_engine("engine");
 #define ERR_NG LOG_STREAM(err, log_engine)
@@ -951,7 +952,7 @@ void playsingle_controller::store_gold(bool obs)
 		foreach (const team &t, teams_)
 		{
 			if (!t.persistent()) continue;
-			int carryover_gold = ((t.gold() + finishing_bonus) * end_level.carryover_percentage) / 100;
+			int carryover_gold = div100rounded((t.gold() + finishing_bonus) * end_level.carryover_percentage);
 			config::child_itors side_range = gamestate_.snapshot.child_range("side");
 			config::child_iterator side_it = side_range.first;
 

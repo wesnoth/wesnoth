@@ -37,7 +37,7 @@ inline bool is_even(T num) { return !is_odd(num); }
 
 /** Guarantees portable results for division by 100; round towards 0 */
 inline int div100rounded(int num) {
-	return (num < 0) ? -(((-num) + 49) / 100) : (num + 49) / 100;
+	return (num < 0) ? -(((-num) + 50) / 100) : (num + 50) / 100;
 }
 
 /**
