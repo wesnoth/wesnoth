@@ -118,7 +118,7 @@ void verify_and_get_global_variable(const vconfig &pcfg)
 		else {
 			int side = lexical_cast_default<int>(pcfg["side"],0);
 			if (pcfg["side"] == "global") side = resources::controller->current_side();
-			if ((side <= 0) || (side >= resources::teams->size())) {
+			if (unsigned (side - 1) >= resources::teams->size()) {
 				LOG_SAVE << "Error: [get_global_variable] attribute \"side\" specifies invalid side number.";
 				valid = false;
 			} else {
