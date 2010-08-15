@@ -101,6 +101,7 @@ const struct {
 	  N_("Team 1"), false, hotkey::SCOPE_GAME },
 	{ hotkey::HOTKEY_REPLAY_SKIP_ANIMATION, "replayskipanimation", N_("Skip animation"), false, hotkey::SCOPE_GAME },
 	// Whiteboard commands
+	{ hotkey::HOTKEY_WB_TOGGLE, "wbtoggle", N_("Toggle planning mode"), false, hotkey::SCOPE_GAME },
 	{ hotkey::HOTKEY_WB_EXECUTE_ACTION, "wbexecuteaction", N_("Execute planned action"), false, hotkey::SCOPE_GAME },
 	{ hotkey::HOTKEY_WB_DELETE_ACTION, "wbdeleteaction", N_("Delete planned action"), false, hotkey::SCOPE_GAME },
 	{ hotkey::HOTKEY_WB_BUMP_UP_ACTION, "wbbumpupaction", N_("Move action up queue"), false, hotkey::SCOPE_GAME },
@@ -861,6 +862,8 @@ bool command_executor::execute_command(HOTKEY_COMMAND command, int /*index*/)
 		 case HOTKEY_REPLAY_SKIP_ANIMATION:
 			replay_skip_animation();
 			 break;
+		 case HOTKEY_WB_TOGGLE:
+			 whiteboard_toggle();
 		 case HOTKEY_WB_EXECUTE_ACTION:
 			 whiteboard_execute_action();
 			 break;

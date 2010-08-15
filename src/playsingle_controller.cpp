@@ -214,6 +214,30 @@ void playsingle_controller::clear_messages(){
 	menu_handler_.clear_messages();
 }
 
+
+void playsingle_controller::whiteboard_toggle() {
+
+}
+
+void playsingle_controller::whiteboard_execute_action(){
+	whiteboard_manager_->contextual_execute();
+}
+
+void playsingle_controller::whiteboard_delete_action(){
+	whiteboard_manager_->contextual_delete();
+}
+
+void playsingle_controller::whiteboard_bump_up_action()
+{
+	whiteboard_manager_->contextual_bump_up_action();
+}
+
+void playsingle_controller::whiteboard_bump_down_action()
+{
+	whiteboard_manager_->contextual_bump_down_action();
+}
+
+
 #ifdef USRCMD2
 void playsingle_controller::user_command_2(){
 	menu_handler_.user_command_2();
@@ -1014,6 +1038,11 @@ bool playsingle_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, 
 			if (i == units_.end()) return false;
 			return i->move_interrupted();
 		}
+		case hotkey::HOTKEY_WB_EXECUTE_ACTION:
+		case hotkey::HOTKEY_WB_DELETE_ACTION:
+		case hotkey::HOTKEY_WB_BUMP_UP_ACTION:
+		case hotkey::HOTKEY_WB_BUMP_DOWN_ACTION:
+			return resources::whiteboard->can_execute_hotkey();
 		default: return play_controller::can_execute_command(command, index);
 	}
 	return res;

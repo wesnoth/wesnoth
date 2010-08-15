@@ -452,24 +452,6 @@ void play_controller::search(){
 	menu_handler_.search();
 }
 
-void play_controller::whiteboard_execute_action(){
-	whiteboard_manager_->contextual_execute();
-}
-
-void play_controller::whiteboard_delete_action(){
-	whiteboard_manager_->contextual_delete();
-}
-
-void play_controller::whiteboard_bump_up_action()
-{
-	whiteboard_manager_->contextual_bump_up_action();
-}
-
-void play_controller::whiteboard_bump_down_action()
-{
-	whiteboard_manager_->contextual_bump_down_action();
-}
-
 void play_controller::fire_prestart(bool execute)
 {
 	// Run initialization scripts, even if loading from a snapshot.
@@ -803,12 +785,6 @@ bool play_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int in
 			!(menu_handler_.current_unit()->unrenamable()) &&
 			menu_handler_.current_unit()->side() == gui_->viewing_side() &&
 			teams_[menu_handler_.current_unit()->side() - 1].is_human();
-
-	case hotkey::HOTKEY_WB_EXECUTE_ACTION:
-	case hotkey::HOTKEY_WB_DELETE_ACTION:
-	case hotkey::HOTKEY_WB_BUMP_UP_ACTION:
-	case hotkey::HOTKEY_WB_BUMP_DOWN_ACTION:
-		return resources::whiteboard->can_execute_hotkey();
 
 	default:
 		return false;

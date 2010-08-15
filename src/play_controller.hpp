@@ -99,12 +99,6 @@ public:
 	virtual void toggle_grid();
 	virtual void search();
 
-	// Whiteboard hotkeys
-	virtual void whiteboard_execute_action();
-	virtual void whiteboard_delete_action();
-	virtual void whiteboard_bump_up_action();
-	virtual void whiteboard_bump_down_action();
-
 	virtual void do_init_side(const unsigned int team_index);
 	virtual void play_side(const unsigned int team_num, bool save) = 0;
 
