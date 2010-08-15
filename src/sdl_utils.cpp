@@ -971,8 +971,11 @@ surface mask_surface(const surface &surf, const surface &mask)
 
 bool in_mask_surface(const surface &surf, const surface &mask)
 {
-	if(surf == NULL || mask == NULL) {
+	if(surf == NULL) {
 		return false;
+	}
+	if(mask == NULL){
+		return true;
 	}
 
 	if (surf->w != surf->w || surf->h != mask->h ) {
