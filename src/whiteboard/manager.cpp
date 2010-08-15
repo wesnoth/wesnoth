@@ -346,7 +346,8 @@ void manager::on_mouseover_change(const map_location& hex)
 		hidden_unit_hex_ = map_location();
 	}
 
-	if (!resources::screen->selected_hex().valid() && highlighter_)
+	//if (!resources::screen->selected_hex().valid() && highlighter_)
+	if (!has_temp_move() && highlighter_)
 	{
 		highlighter_->set_mouseover_hex(hex);
 		highlighter_->highlight();
