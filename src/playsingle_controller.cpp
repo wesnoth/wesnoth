@@ -1015,8 +1015,9 @@ bool playsingle_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, 
 			return (!browse_ || linger_) && !events::commands_disabled;
 
 		case hotkey::HOTKEY_DELAY_SHROUD:
-			return !linger_ && (teams_[gui_->viewing_team()].uses_fog() || teams_[gui_->viewing_team()].uses_shroud())
-			&& !events::commands_disabled;
+			return false; //Disabled to test if whiteboard is appropriate replacement
+//			return !linger_ && (teams_[gui_->viewing_team()].uses_fog() || teams_[gui_->viewing_team()].uses_shroud())
+//			&& !events::commands_disabled;
 		case hotkey::HOTKEY_UPDATE_SHROUD:
 			return !linger_
 				&& player_number_ == gui_->viewing_side()
