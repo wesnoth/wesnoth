@@ -189,7 +189,7 @@ bool manager::allow_leader_to_move(unit const& leader) const
 {
 	//Look for another leader on another keep in the same castle
 	{ wb::scoped_planned_unit_map future; //< start planned unit map scope
-		if(find_backup_leader(leader).valid())
+		if(find_backup_leader(leader))
 			return true;
 	} // end planned unit map scope
 
