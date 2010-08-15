@@ -24,6 +24,7 @@ persist_context &persist_manager::get_context(const std::string &ns)
 	context_map::iterator i = contexts_.find(key);
 	if (i == contexts_.end()) {
 		contexts_[key] = new persist_file_context(key);
+		if (in_transaction_) contexts_[key]->start_transaction();
 	}
 	persist_context *ret = contexts_[key];
 	if (ret->get_node() != ns)
@@ -32,25 +33,31 @@ persist_context &persist_manager::get_context(const std::string &ns)
 }
 
 bool persist_manager::start_transaction() {
+	if (in_transaction_) return false;
 	bool result = true;
 	foreach (context_map::reference ctx, contexts_){
 		result &= ctx.second->start_transaction();
 	}
+	in_transaction_ = true;
 	return result;
 }
 
 bool persist_manager::end_transaction() {
+	if (!in_transaction_) return false;
 	bool result = true;
 	foreach (context_map::reference ctx, contexts_){
 		result &= ctx.second->end_transaction();
 	}
+	in_transaction_ = !result;
 	return result;
 }
 
 bool persist_manager::cancel_transaction() {
+	if (!in_transaction_) return false;
 	bool result = true;
 	foreach (context_map::reference ctx, contexts_){
 		result &= ctx.second->cancel_transaction();
 	}
+	in_transaction_ = false;
 	return result;
 }

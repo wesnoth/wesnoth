@@ -166,6 +166,7 @@ protected:
 	node root_node_;
 	node *active_;
 	bool valid_;
+	bool in_transaction_;
 
 	persist_context()
 		: cfg_()
@@ -173,6 +174,7 @@ protected:
 		, root_node_("",this,cfg_)
 		, active_(&root_node_)
 		, valid_(false)
+		, in_transaction_(false)
 	{};
 
 	persist_context(const std::string &name_space)
@@ -181,6 +183,7 @@ protected:
 		, root_node_(namespace_.root_,this,cfg_)
 		, active_(&root_node_)
 		, valid_(namespace_.valid())
+		, in_transaction_(false)
 	{};
 
 	persist_context &add_child(const std::string &key);
@@ -212,15 +215,26 @@ public:
 	config get_var(const std::string &) const;
 	bool set_var(const std::string &, const config &);
 
-	// TODO: transaction support (needed for MP)
 	bool start_transaction () {
-		return false;
+		if (in_transaction_)
+			return false;
+		in_transaction_ = true;
+		return true;
 	}
 	bool end_transaction () {
-		return false;
+		if (!in_transaction_)
+			return false;
+		in_transaction_ = false;
+		save_context();
+		return true;
 	}
 	bool cancel_transaction () {
-		return false;
+		if (!in_transaction_)
+			return false;
+		load();
+		root_node_.init();
+		in_transaction_ = false;
+		return true;
 	}
 };
 #endif

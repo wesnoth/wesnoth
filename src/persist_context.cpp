@@ -99,7 +99,10 @@ bool persist_file_context::clear_var(const std::string &global)
 				}
 			}
 	//		dirty_ = true;
-			ret = save_context();
+			if (!in_transaction_)
+				ret = save_context();
+			else 
+				ret = true;
 		} else {
 			ret = exists;
 		}
@@ -169,7 +172,10 @@ bool persist_file_context::set_var(const std::string &global,const config &val)
 		cfg.append(val);
 	}
 //	dirty_ = true;
-	return save_context();
+	if (!in_transaction_)
+		return save_context();
+	else 
+		return true;
 }
 void persist_context::set_node(const std::string &name) {
 	active_ = &(root_node_.child(name));
