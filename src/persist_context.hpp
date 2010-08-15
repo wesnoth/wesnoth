@@ -18,8 +18,8 @@
 #include "log.hpp"
 static lg::log_domain log_persist("engine/persistence");
 
-#define LOG_SAVE LOG_STREAM(info, log_persist)
-#define ERR_SAVE LOG_STREAM(err, log_persist)
+#define LOG_PERSIST LOG_STREAM(info, log_persist)
+#define ERR_PERSist LOG_STREAM(err, log_persist)
 config pack_scalar(const std::string &,const t_string &);
 class persist_context {
 public:

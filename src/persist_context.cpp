@@ -48,7 +48,7 @@ void persist_file_context::load() {
 			try {
 				detect_format_and_read(cfg_,*file_stream);
 			} catch (config::error &err) {
-				LOG_SAVE << err.message;
+				LOG_PERSIST << err.message;
 			}
 		}
 	}
@@ -147,7 +147,7 @@ bool persist_file_context::save_context() {
 					writer.write(cfg_);
 					success = true;
 				} catch(config::error &err) {
-					LOG_SAVE << err.message;
+					LOG_PERSIST << err.message;
 					success = false;
 				}
 			}

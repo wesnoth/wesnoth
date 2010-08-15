@@ -98,28 +98,28 @@ void verify_and_get_global_variable(const vconfig &pcfg)
 {
 	bool valid = true;
 	if (!pcfg.has_attribute("from_global")) {
-		LOG_SAVE << "Error: [get_global_variable] missing required attribute \"from_global\"";
+		LOG_PERSIST << "Error: [get_global_variable] missing required attribute \"from_global\"";
 		valid = false;
 	}
 	if (!pcfg.has_attribute("to_local")) {
-		LOG_SAVE << "Error: [get_global_variable] missing required attribute \"to_local\"";
+		LOG_PERSIST << "Error: [get_global_variable] missing required attribute \"to_local\"";
 		valid = false;
 	}
 	// TODO: allow for global namespace.
 	if (!pcfg.has_attribute("namespace")) {
-		LOG_SAVE << "Error: [get_global_variable] missing attribute \"namespace\" and no global namespace provided.";
+		LOG_PERSIST << "Error: [get_global_variable] missing attribute \"namespace\" and no global namespace provided.";
 		valid = false;
 	}
 	if (network::nconnections() != 0) {
 		if (!pcfg.has_attribute("side")) {
-			LOG_SAVE << "Error: [get_global_variable] missing attribute \"side\" required in multiplayer context.";
+			LOG_PERSIST << "Error: [get_global_variable] missing attribute \"side\" required in multiplayer context.";
 			valid = false;
 		}
 		else {
 			int side = lexical_cast_default<int>(pcfg["side"],0);
 			if (pcfg["side"] == "global") side = resources::controller->current_side();
 			if (unsigned (side - 1) >= resources::teams->size()) {
-				LOG_SAVE << "Error: [get_global_variable] attribute \"side\" specifies invalid side number.";
+				LOG_PERSIST << "Error: [get_global_variable] attribute \"side\" specifies invalid side number.";
 				valid = false;
 			} else {
 				if ((side != resources::controller->current_side()) 
@@ -145,7 +145,7 @@ void verify_and_get_global_variable(const vconfig &pcfg)
 		if (ctx.valid()) {
 			get_global_variable(ctx,pcfg);
 		} else {
-			LOG_SAVE << "Error: [get_global_variable] attribute \"namespace\" is not valid.";
+			LOG_PERSIST << "Error: [get_global_variable] attribute \"namespace\" is not valid.";
 		}
 	}
 }
@@ -153,20 +153,20 @@ void verify_and_set_global_variable(const vconfig &pcfg)
 {
 	bool valid = true;
 	if (!pcfg.has_attribute("to_global")) {
-		LOG_SAVE << "Error: [set_global_variable] missing required attribute \"from_global\"";
+		LOG_PERSIST << "Error: [set_global_variable] missing required attribute \"from_global\"";
 		valid = false;
 	}
 	if (!pcfg.has_attribute("from_local")) {
-		LOG_SAVE << "Warning: [set_global_variable] missing attribute \"to_local\", global variable will be cleared";
+		LOG_PERSIST << "Warning: [set_global_variable] missing attribute \"to_local\", global variable will be cleared";
 	}
 	// TODO: allow for global namespace.
 	if (!pcfg.has_attribute("namespace")) {
-		LOG_SAVE << "Error: [set_global_variable] missing attribute \"namespace\" and no global namespace provided.";
+		LOG_PERSIST << "Error: [set_global_variable] missing attribute \"namespace\" and no global namespace provided.";
 		valid = false;
 	}
 	if (network::nconnections() != 0) {
 		if (!pcfg.has_attribute("side")) {
-			LOG_SAVE << "Error: [set_global_variable] missing attribute \"side\" required in multiplayer context.";
+			LOG_PERSIST << "Error: [set_global_variable] missing attribute \"side\" required in multiplayer context.";
 			valid = false;
 		} else {
 			int side = lexical_cast_default<int>(pcfg["side"],0);
@@ -174,7 +174,7 @@ void verify_and_set_global_variable(const vconfig &pcfg)
 			if (pcfg["side"] != "global") {
 				//Ensure that the side is valid.
 				if (unsigned(side-1) > resources::teams->size()) {
-					LOG_SAVE << "Error: [set_global_variable] attribute \"side\" specifies invalid side number.";
+					LOG_PERSIST << "Error: [set_global_variable] attribute \"side\" specifies invalid side number.";
 					valid = false;
 				} else {
 					//Set the variable only if it is meant for a side we control
@@ -189,7 +189,7 @@ void verify_and_set_global_variable(const vconfig &pcfg)
 		if (ctx.valid()) {
 			set_global_variable(ctx,pcfg);
 		} else {
-			LOG_SAVE << "Error: [set_global_variable] attribute \"namespace\" is not valid.";
+			LOG_PERSIST << "Error: [set_global_variable] attribute \"namespace\" is not valid.";
 		}
 	}
 }
@@ -197,16 +197,16 @@ void verify_and_clear_global_variable(const vconfig &pcfg)
 {
 	bool valid = true;
 	if (!pcfg.has_attribute("global")) {
-		LOG_SAVE << "Error: [clear_global_variable] missing required attribute \"from_global\"";
+		LOG_PERSIST << "Error: [clear_global_variable] missing required attribute \"from_global\"";
 		valid = false;
 	}
 	if (!pcfg.has_attribute("namespace")) {
-		LOG_SAVE << "Error: [clear_global_variable] missing attribute \"namespace\" and no global namespace provided.";
+		LOG_PERSIST << "Error: [clear_global_variable] missing attribute \"namespace\" and no global namespace provided.";
 		valid = false;
 	}
 	if (network::nconnections() != 0) {
 		if (!pcfg.has_attribute("side")) {
-			LOG_SAVE << "Error: [set_global_variable] missing attribute \"side\" required in multiplayer context.";
+			LOG_PERSIST << "Error: [set_global_variable] missing attribute \"side\" required in multiplayer context.";
 			valid = false;
 		} else {
 			int side = lexical_cast_default<int>(pcfg["side"],0);
@@ -214,7 +214,7 @@ void verify_and_clear_global_variable(const vconfig &pcfg)
 			if (pcfg["side"] != "global") {
 				//Ensure that the side is valid.
 				if (unsigned(side-1) > resources::teams->size()) {
-					LOG_SAVE << "Error: [clear_global_variable] attribute \"side\" specifies invalid side number.";
+					LOG_PERSIST << "Error: [clear_global_variable] attribute \"side\" specifies invalid side number.";
 					valid = false;
 				} else {
 					//Clear the variable only if it is meant for a side we control
@@ -229,7 +229,7 @@ void verify_and_clear_global_variable(const vconfig &pcfg)
 		if (ctx.valid()) {
 			clear_global_variable(ctx,pcfg);
 		} else {
-			LOG_SAVE << "Error: [clear_global_variable] attribute \"namespace\" is not valid.";
+			LOG_PERSIST << "Error: [clear_global_variable] attribute \"namespace\" is not valid.";
 		}
 	}
 }
