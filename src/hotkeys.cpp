@@ -864,6 +864,7 @@ bool command_executor::execute_command(HOTKEY_COMMAND command, int /*index*/)
 			 break;
 		 case HOTKEY_WB_TOGGLE:
 			 whiteboard_toggle();
+			 break;
 		 case HOTKEY_WB_EXECUTE_ACTION:
 			 whiteboard_execute_action();
 			 break;
