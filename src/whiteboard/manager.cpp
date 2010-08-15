@@ -259,6 +259,7 @@ bool manager::current_side_has_actions()
 void manager::validate_viewer_actions()
 {
 	assert(!executing_actions_);
+	gamestate_mutated_ = false;
 	if (viewer_actions()->empty()) return;
 	viewer_actions()->validate_actions();
 }
@@ -705,9 +706,8 @@ void manager::validate_actions_if_needed()
 	if (gamestate_mutated_)
 	{
 		LOG_WB << "'gamestate_mutated_' flag dirty, validating actions.\n";
-		validate_viewer_actions();
+		validate_viewer_actions(); //sets gamestate_mutated_ to false
 	}
-	gamestate_mutated_ = false;
 }
 
 
