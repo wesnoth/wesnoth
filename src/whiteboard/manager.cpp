@@ -205,8 +205,11 @@ bool manager::allow_leader_to_move(unit const& leader) const
 	return true;
 }
 
-void manager::on_init_side()
+void manager::on_init_side(bool is_replay)
 {
+	if (is_replay)
+		return;
+
 	validate_viewer_actions();
 	highlighter_.reset(new highlight_visitor(*resources::units, viewer_actions()));
 	wait_for_side_init_ = false;

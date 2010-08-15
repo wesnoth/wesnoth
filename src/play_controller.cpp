@@ -510,7 +510,7 @@ void play_controller::init_side(const unsigned int team_index, bool is_replay){
 	gamestate_.get_variable("side_number") = player_number_;
 	gamestate_.last_selected = map_location::null_location;
 
-	resources::whiteboard->on_init_side();
+	resources::whiteboard->on_init_side(is_replay);
 
 	/**
 	 * We do this only for local side when we are not replaying.

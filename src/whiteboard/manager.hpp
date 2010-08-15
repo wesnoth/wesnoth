@@ -61,7 +61,7 @@ public:
 	bool can_execute_hotkey() const;
 	bool allow_leader_to_move(unit const& leader) const;
 
-	void on_init_side();
+	void on_init_side(bool is_replay);
 	void on_finish_side_turn();
 	void on_mouseover_change(const map_location& hex);
 	void on_select_hex(){}
