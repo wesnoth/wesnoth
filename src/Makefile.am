@@ -296,6 +296,7 @@ wesnoth_source = \
 	whiteboard/recall.cpp \
 	whiteboard/recruit.cpp \
 	whiteboard/side_actions.cpp \
+	whiteboard/utility.cpp \
 	whiteboard/validate_visitor.cpp \
 	whiteboard/visitor.cpp \
 	widgets/combo.cpp \
