@@ -481,37 +481,29 @@ surface locator::load_image_file() const
 
 surface locator::load_image_sub_file() const
 {
-	const surface mother_surface(get_image(val_.filename_, UNSCALED));
-	static const image::locator terrain_mask(game_config::images::terrain_mask);
-	const surface mask(get_image(terrain_mask, UNSCALED));
+	surface surf = get_image(val_.filename_, UNSCALED);
+	if(surf == NULL)
+		return NULL;
 
-	if(mother_surface == NULL)
-		return surface(NULL);
-	if(mask == NULL)
-		return surface(NULL);
-
-	surface surf=mother_surface;
-	if(val_.loc_.x>-1 && val_.loc_.y>-1 && val_.center_x_>-1 && val_.center_y_>-1){
-		int offset_x = mother_surface->w/2 - val_.center_x_;
-		int offset_y = mother_surface->h/2 - val_.center_y_;
+	if(val_.loc_.valid()) {
 		SDL_Rect srcrect = create_rect(
-				  ((tile_size*3) / 4) * val_.loc_.x + offset_x
-				, tile_size * val_.loc_.y + (tile_size / 2) * (val_.loc_.x % 2) + offset_y
+				((tile_size*3) / 4) * val_.loc_.x
+				, tile_size * val_.loc_.y + (tile_size / 2) * (val_.loc_.x % 2)
 				, tile_size
 				, tile_size);
 
-		surface tmp(cut_surface(mother_surface, srcrect));
-		surf=mask_surface(tmp, mask);
-	}
-	else if(val_.loc_.x>-1 && val_.loc_.y>-1 ){
-	  SDL_Rect srcrect = create_rect(
-		      ((tile_size*3) / 4) * val_.loc_.x
-			, tile_size * val_.loc_.y + (tile_size / 2) * (val_.loc_.x % 2)
-			, tile_size
-			, tile_size);
+		if(val_.center_x_ >= 0 && val_.center_y_>= 0){
+			srcrect.x += surf->w/2 - val_.center_x_;
+			srcrect.y += surf->h/2 - val_.center_y_;
+		}
 
-	  surface tmp(cut_surface(mother_surface, srcrect));
-	  surf=mask_surface(tmp, mask);
+		static const image::locator terrain_mask(game_config::images::terrain_mask);
+		const surface mask(get_image(terrain_mask, UNSCALED));
+		if(mask == NULL)
+			return surface(NULL);
+
+		surface cutted(cut_surface(surf, srcrect));
+		surf = mask_surface(cutted, mask);
 	}
 
 	if(val_.modifications_.size()){
