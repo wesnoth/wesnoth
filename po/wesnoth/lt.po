@@ -8,14 +8,14 @@ msgstr ""
 "POT-Creation-Date: 2010-08-13 11:21+0200\n"
 "PO-Revision-Date: 2010-01-01 00:00+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
-"Language-Team: Lietuvių <komp_lt@konferencijos.lt>\n"
-"Language: \n"
+"Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
+"Language: lt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10==1 && n%100!=11 ? 1 : n"
 "%10>=2 && (n%100<10 || n%100>=20) ? 2 : 3);\n"
-"X-Generator: Lokalize 1.0\n"
+"X-Generator: Lokalize 1.1\n"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:5
@@ -344,7 +344,7 @@ msgstr "Kinų vertimas"
 #. [about]
 #: data/core/about.cfg:1223
 msgid "Chinese (Taiwan) Translation"
-msgstr "Kinų (Taivano) vertimas"
+msgstr "Kinų (Taivanio) vertimas"
 
 #. [about]
 #: data/core/about.cfg:1245
@@ -5943,7 +5943,7 @@ msgid ""
 msgstr ""
 "Daugelyje kampanijų scenarijų kompiuterio kontroliuojamiems sąjungininkams "
 "galite nurodyti paprastas instrukcijas naudodami dešinio spragtelėjimo "
-"konteksninį meniu."
+"kontekstinį meniu."
 
 #: data/lua/wml-tags.lua:24 src/multiplayer_connect.cpp:1612
 msgid "Victory:"
@@ -6554,11 +6554,11 @@ msgstr "Priedas negali būti tinkamai ištrintas:"
 
 #: src/attack_prediction_display.cpp:107 src/attack_prediction_display.cpp:217
 msgid "Attacker"
-msgstr "Atakuojantysis"
+msgstr "Atakuojančiojo"
 
 #: src/attack_prediction_display.cpp:108 src/attack_prediction_display.cpp:216
 msgid "Defender"
-msgstr "Besiginantis"
+msgstr "Besiginančiojo"
 
 #: src/attack_prediction_display.cpp:126
 msgid "Expected Battle Result (HP)"
@@ -7747,9 +7747,8 @@ msgid "(debug command)"
 msgstr "(derinimo komanda)"
 
 #: src/menu_events.cpp:2404
-#, fuzzy
 msgid "(network only)"
-msgstr " (tik tinkle)"
+msgstr "(tik tinkle)"
 
 #: src/menu_events.cpp:2429
 msgid "Refresh gui."
@@ -7780,9 +7779,8 @@ msgid "Visualize the screen refresh procedure."
 msgstr "Vizualizuoti ekrano atnaujinimo procedūrą."
 
 #: src/menu_events.cpp:2439
-#, fuzzy
 msgid "Show fps."
-msgstr "Rodyti peržaidimus"
+msgstr "Rodyti kadrus per sekundę"
 
 #: src/menu_events.cpp:2441
 msgid "Save game."
@@ -7934,34 +7932,28 @@ msgid "(empty)"
 msgstr "(tuščia)"
 
 #: src/menu_events.cpp:2740 src/menu_events.cpp:2746 src/menu_events.cpp:2796
-#, fuzzy
 msgid "ignores list"
-msgstr "Ignoruojamųjų sąraše"
+msgstr "Ignoruojamųjų sąrašas"
 
 #: src/menu_events.cpp:2746
-#, fuzzy
 msgid "Added to ignore list: $nick"
-msgstr "Pridėti į ignoruojamų sąrašą: "
+msgstr "Pridėti į ignoruojamųjų sąrašą: $nick"
 
 #: src/menu_events.cpp:2749 src/menu_events.cpp:2768
-#, fuzzy
 msgid "Invalid username: $nick"
-msgstr "Netinkamas naudotojo vardas: "
+msgstr "Netinkamas naudotojo vardas: $nick"
 
 #: src/menu_events.cpp:2759 src/menu_events.cpp:2766 src/menu_events.cpp:2792
-#, fuzzy
 msgid "friends list"
-msgstr "Draugų sąraše"
+msgstr "Draugų sąrašas"
 
 #: src/menu_events.cpp:2766
-#, fuzzy
 msgid "Added to friends list: $nick"
-msgstr "Pridėti į draugų sąrašą: "
+msgstr "Pridėti į draugų sąrašą: $nick"
 
 #: src/menu_events.cpp:2782
-#, fuzzy
 msgid "Removed from list: $nick"
-msgstr "Pašalintas iš sąrašo: "
+msgstr "Pašalintas iš sąrašo: $nick"
 
 #: src/menu_events.cpp:2782 src/menu_events.cpp:2800
 #, fuzzy
@@ -8064,14 +8056,12 @@ msgid ""
 msgstr ""
 
 #: src/menu_events.cpp:3333
-#, fuzzy
 msgid "Invalid unit type"
-msgstr "Netinkamas elemento vardas"
+msgstr "Netinkamas dalinio tipas"
 
 #: src/menu_events.cpp:3346
-#, fuzzy
 msgid "Invalid location"
-msgstr "Netinkama spalva"
+msgstr "Netinkama vietovė"
 
 #: src/menu_events.cpp:3382
 msgid "ai"
@@ -8488,23 +8478,20 @@ msgid " (Unknown Era)"
 msgstr "Nežinoma era"
 
 #: src/multiplayer_lobby.cpp:536 src/multiplayer_lobby.cpp:899
-#, fuzzy
 msgid "Password Required"
-msgstr "Slaptažodis: "
+msgstr "Reikalingas slaptažodis"
 
 #: src/multiplayer_lobby.cpp:720 src/multiplayer_wait.cpp:174
 msgid "Game Lobby"
 msgstr "Žaidimo vestibiulis"
 
 #: src/multiplayer_lobby.cpp:725
-#, fuzzy
 msgid "Observe Game"
-msgstr "Stebėtojai"
+msgstr "Stebėti žaidimą"
 
 #: src/multiplayer_lobby.cpp:726
-#, fuzzy
 msgid "Join Game"
-msgstr "Įkelti žaidimą"
+msgstr "Prisijungti prie žaidimo"
 
 #: src/multiplayer_lobby.cpp:728
 #, fuzzy
@@ -8517,9 +8504,8 @@ msgid "Preferences"
 msgstr "Priklausomybės"
 
 #: src/multiplayer_lobby.cpp:732
-#, fuzzy
 msgid "Quit"
-msgstr "Greitas"
+msgstr "Išjungti"
 
 #: src/multiplayer_lobby.cpp:734
 #, fuzzy
@@ -8531,9 +8517,8 @@ msgid "Invert"
 msgstr ""
 
 #: src/multiplayer_lobby.cpp:736
-#, fuzzy
 msgid "Vacant Slots"
-msgstr "Laisva vieta:"
+msgstr "Laisvų vietų"
 
 #: src/multiplayer_lobby.cpp:737
 msgid "Friends in Game"
@@ -8793,23 +8778,14 @@ msgstr[3] ""
 "pradžios aukso."
 
 #: src/playsingle_controller.cpp:254
-#, fuzzy
 msgid ""
 "You will start the next scenario with the defined minimum starting gold."
 msgid_plural ""
 "You will start the next scenario with the defined minimum starting gold."
-msgstr[0] ""
-"Kitą scenarijų pradėsite su 1 auksiniu pridėtu prie nustatyto mažiausio "
-"pradžios aukso."
-msgstr[1] ""
-"Kitą scenarijų pradėsite su $gold aukso pridėto prie nustatyto mažiausio "
-"pradžios aukso."
-msgstr[2] ""
-"Kitą scenarijų pradėsite su $gold aukso pridėto prie nustatyto mažiausio "
-"pradžios aukso."
-msgstr[3] ""
-"Kitą scenarijų pradėsite su $gold aukso pridėto prie nustatyto mažiausio "
-"pradžios aukso."
+msgstr[0] "Kitą scenarijų pradėsite su nustatytu mažiausiu pradžios auksu."
+msgstr[1] "Kitą scenarijų pradėsite su nustatytu mažiausiu pradžios auksu."
+msgstr[2] "Kitą scenarijų pradėsite su nustatytu mažiausiu pradžios auksu."
+msgstr[3] "Kitą scenarijų pradėsite su nustatytu mažiausiu pradžios auksu."
 
 #: src/playsingle_controller.cpp:262
 msgid ""
@@ -9177,9 +9153,8 @@ msgid "Quit the game"
 msgstr "Išjungti žaidimą"
 
 #: src/titlescreen.cpp:450
-#, fuzzy
 msgid "Show previous tip of the day"
-msgstr "Rodo kitą dienos patarimą"
+msgstr "Rodo ankstesnį dienos patarimą"
 
 #: src/titlescreen.cpp:451
 msgid "Show next tip of the day"
@@ -9275,41 +9250,3 @@ msgstr ""
 #: src/unit_types.cpp:1008
 msgid "female^neutral"
 msgstr "neutrali"
-
-#~ msgid "TitleScreen button^Help Wesnoth"
-#~ msgstr "Padėkite Vesnotui"
-
-#~ msgid "Wesnoth Developers"
-#~ msgstr "Vesnoto programuotojai"
-
-#~ msgid "Upload statistics"
-#~ msgstr "Nusiųsti statistiką"
-
-#~ msgid "Help Wesnoth"
-#~ msgstr "Padėkite Vesnotui"
-
-#~ msgid "Help Wesnoth by sending us information"
-#~ msgstr "Padėkite Vesnotui, siųsdami mums informaciją"
-
-#~ msgid ""
-#~ "Wesnoth relies on volunteers like yourself for feedback, especially "
-#~ "beginners and new players. Wesnoth keeps summaries of your games: you can "
-#~ "help us improve game play by giving permission to send these summaries "
-#~ "(anonymously) to wesnoth.org.\n"
-#~ msgstr ""
-#~ "Vesnotui reikia savanoriškų atsiliepimų iš žaidėjų, ypač iš pradedančiųjų "
-#~ "ir naujų žaidėjų. Vesnotas išsaugo santrauką apie jūsų žaidimo eigą; "
-#~ "pagelbėsite mums tobulinti žaidimą, jei sutiksite, kad jūsų žaidimų "
-#~ "santraukos būtų anonimiškai nusiųstos į wesnoth.org.\n"
-
-#~ msgid "Summaries are stored here:"
-#~ msgstr "Santraukos išsaugotos čia:"
-
-#~ msgid "You can view the results at:"
-#~ msgstr "Rezultatus galite peržvelgti čia:"
-
-#~ msgid "Help us make Wesnoth better for you!"
-#~ msgstr "Padėkite mums padaryti Vesnotą geresnį jums!"
-
-#~ msgid "Enable summary uploads"
-#~ msgstr "Leisti santraukų siuntimą"
