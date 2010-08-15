@@ -55,6 +55,15 @@ local function generate_objectives(cfg)
 			elseif condition == "lose" then
 				local caption = obj.caption
 
+				if obj.show_turn_counter then
+					local current_turn = wesnoth.current.turn
+					local turn_limit = wesnoth.game_config.last_turn
+
+					if turn_limit >= current_turn then
+						obj.description = obj.description .. "<small> " .. string.format(tostring(_"(current_turn/turn_limit)^(%d/%d)"), current_turn, turn_limit) .. "</small>"
+					end
+				end
+
 				if caption ~= nil then
 					lose_objectives = lose_objectives .. caption .. "\n"
 				end
