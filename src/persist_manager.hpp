@@ -25,17 +25,17 @@ class persist_manager {
 		bool in_transaction_;
 		context_map contexts_;
 	public:
+		bool start_transaction();
+		bool end_transaction();
+		bool cancel_transaction();
+
 		persist_manager() : in_transaction_(false),contexts_() {}
 		virtual ~persist_manager() {
+			cancel_transaction();
 			for (context_map::iterator i = contexts_.begin(); i != contexts_.end(); i++)
 				delete (i->second);
 		}
 		persist_context &get_context(const std::string &ns);
-
-		//TODO - Transactions
-		bool start_transaction();
-		bool end_transaction();
-		bool cancel_transaction();
 };
 
 #endif

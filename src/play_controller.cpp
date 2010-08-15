@@ -138,7 +138,6 @@ play_controller::play_controller(const config& level, game_state& state_of_game,
 
 play_controller::~play_controller()
 {
-	persist_.end_transaction();
 	clear_resources();
 }
 

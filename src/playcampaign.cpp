@@ -26,12 +26,14 @@
 #include "gui/dialogs/transient_message.hpp"
 #include "playcampaign.hpp"
 #include "map_create.hpp"
+#include "persist_manager.hpp"
 #include "playmp_controller.hpp"
 #include "replay_controller.hpp"
 #include "log.hpp"
 #include "map_exception.hpp"
 #include "dialogs.hpp"
 #include "gettext.hpp"
+#include "resources.hpp"
 #include "savegame.hpp"
 #include "sound.hpp"
 #include "wml_exception.hpp"
@@ -129,6 +131,8 @@ static LEVEL_RESULT playsingle_scenario(const config& game_config,
 	end_level = playcontroller.get_end_level_data();
 
 	if (res == DEFEAT) {
+		if (resources::persist != NULL)
+			resources::persist->end_transaction();
 		gui2::show_transient_message(disp.video(),
 				    _("Defeat"),
 				    _("You have been defeated!")
@@ -167,6 +171,8 @@ static LEVEL_RESULT playmp_scenario(const config& game_config,
 		io_type = IO_SERVER;
 
 	if (res == DEFEAT) {
+		if (resources::persist != NULL)
+			resources::persist->end_transaction();
 		gui2::show_transient_message(disp.video(),
 				    _("Defeat"),
 				    _("You have been defeated!")

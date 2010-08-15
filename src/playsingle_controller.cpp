@@ -929,6 +929,7 @@ void playsingle_controller::store_gold(bool obs)
 	if (obs) {
 		title = _("Scenario Report");
 	} else {
+		persist_.end_transaction();
 		title = _("Victory");
 		report << "<b>" << _("You have emerged victorious!") << "</b>\n\n";
 	}
