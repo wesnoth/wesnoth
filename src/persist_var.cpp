@@ -51,10 +51,8 @@ static void get_global_variable(persist_context &ctx, const vconfig &pcfg)
 {
 	std::string global = pcfg["from_global"];
 	std::string local = pcfg["to_local"];
-	t_string side_string = pcfg["side"];
-	int side = lexical_cast_default<int>(pcfg["side"],resources::controller->current_side());
-	if (unsigned(side - 1) >= resources::teams->size())
-		side = resources::controller->current_side();
+	int side = lexical_cast_default<int>(pcfg["side"],0);
+	if (pcfg["side"] == "global") side = resources::controller->current_side();
 	persist_choice choice(ctx,global,side);
 	config cfg = mp_sync::get_user_choice("global_variable",choice,side,true).child("variables");
 	if (cfg) {
@@ -73,37 +71,27 @@ static void get_global_variable(persist_context &ctx, const vconfig &pcfg)
 
 static void clear_global_variable(persist_context &ctx, const vconfig &pcfg)
 {
-	int side = lexical_cast_default<int>(pcfg["side"],resources::controller->current_side());
-	if (unsigned(side - 1) >= resources::teams->size())
-		side = resources::controller->current_side();
-	if ((*resources::teams)[side - 1].is_local()) {
-		std::string global = pcfg["global"];
-		ctx.clear_var(global);
-	}
+	std::string global = pcfg["global"];
+	ctx.clear_var(global);
 }
 
 static void set_global_variable(persist_context &ctx, const vconfig &pcfg)
 {
-	int side = lexical_cast_default<int>(pcfg["side"],resources::controller->current_side());
-	if (unsigned(side - 1) >= resources::teams->size())
-		side = resources::controller->current_side();
-	if ((*resources::teams)[side - 1].is_local()) {
-		if (pcfg["from_local"].empty()) {
-			clear_global_variable(ctx, pcfg);
+	if (pcfg["from_local"].empty()) {
+		clear_global_variable(ctx, pcfg);
+	} else {
+		std::string global = pcfg["to_global"];
+		std::string local = pcfg["from_local"];
+		config val;
+		const config &vars = resources::state_of_game->get_variables();
+		size_t arraylen = vars.child_count(local);
+		if (arraylen == 0) {
+			val = pack_scalar(global,resources::state_of_game->get_variable(local));
 		} else {
-			std::string global = pcfg["to_global"];
-			std::string local = pcfg["from_local"];
-			config val;
-			const config &vars = resources::state_of_game->get_variables();
-			size_t arraylen = vars.child_count(local);
-			if (arraylen == 0) {
-				val = pack_scalar(global,resources::state_of_game->get_variable(local));
-			} else {
-				for (size_t i = 0; i < arraylen; i++)
-					val.add_child(global,vars.child(local,i));
-			}
-			ctx.set_var(global,val);
+			for (size_t i = 0; i < arraylen; i++)
+				val.add_child(global,vars.child(local,i));
 		}
+		ctx.set_var(global,val);
 	}
 }
 void verify_and_get_global_variable(const vconfig &pcfg)
@@ -128,21 +116,25 @@ void verify_and_get_global_variable(const vconfig &pcfg)
 			valid = false;
 		}
 		else {
-			int side = lexical_cast_default<int>(pcfg["side"],resources::controller->current_side());
-			if (unsigned(side - 1) >= resources::teams->size())
-				side = resources::controller->current_side();
-			if ((side != resources::controller->current_side()) 
-				&& !((*resources::teams)[side - 1].is_local())) {
-				if ((*resources::teams)[resources::controller->current_side() - 1].is_local()) {
-					config data;
-					data.add_child("wait_global");
-					data.child("wait_global")["side"] = side;
-					network::send_data(data,0,true);
-				}
-				while (get_replay_source().at_end()) {
-					ai::manager::raise_user_interact();
-					ai::manager::raise_sync_network();
-					SDL_Delay(10);
+			int side = lexical_cast_default<int>(pcfg["side"],0);
+			if (pcfg["side"] == "global") side = resources::controller->current_side();
+			if ((side <= 0) || (side >= resources::teams->size())) {
+				LOG_SAVE << "Error: [get_global_variable] attribute \"side\" specifies invalid side number.";
+				valid = false;
+			} else {
+				if ((side != resources::controller->current_side()) 
+					&& !((*resources::teams)[side - 1].is_local())) {
+					if ((*resources::teams)[resources::controller->current_side() - 1].is_local()) {
+						config data;
+						data.add_child("wait_global");
+						data.child("wait_global")["side"] = side;
+						network::send_data(data,0,true);
+					}
+					while (get_replay_source().at_end()) {
+						ai::manager::raise_user_interact();
+						ai::manager::raise_sync_network();
+						SDL_Delay(10);
+					}
 				}
 			}
 		}
@@ -176,9 +168,21 @@ void verify_and_set_global_variable(const vconfig &pcfg)
 		if (!pcfg.has_attribute("side")) {
 			LOG_SAVE << "Error: [set_global_variable] missing attribute \"side\" required in multiplayer context.";
 			valid = false;
+		} else {
+			int side = lexical_cast_default<int>(pcfg["side"],0);
+			//Check side matching only if the side is not "global".
+			if (pcfg["side"] != "global") {
+				//Ensure that the side is valid.
+				if (unsigned(side-1) > resources::teams->size()) {
+					LOG_SAVE << "Error: [set_global_variable] attribute \"side\" specifies invalid side number.";
+					valid = false;
+				} else {
+					//Set the variable only if it is meant for a side we control
+					valid = (*resources::teams)[side - 1].is_local();
+				}
+			}
 		}
 	}
-	// TODO: determine single or multiplayer and check for side=, depending.
 	if (valid)
 	{
 		persist_context &ctx = resources::persist->get_context((pcfg["namespace"]));
@@ -202,11 +206,23 @@ void verify_and_clear_global_variable(const vconfig &pcfg)
 	}
 	if (network::nconnections() != 0) {
 		if (!pcfg.has_attribute("side")) {
-			LOG_SAVE << "Error: [clear_global_variable] missing attribute \"side\" required in multiplayer context.";
+			LOG_SAVE << "Error: [set_global_variable] missing attribute \"side\" required in multiplayer context.";
 			valid = false;
+		} else {
+			int side = lexical_cast_default<int>(pcfg["side"],0);
+			//Check side matching only if the side is not "global".
+			if (pcfg["side"] != "global") {
+				//Ensure that the side is valid.
+				if (unsigned(side-1) > resources::teams->size()) {
+					LOG_SAVE << "Error: [clear_global_variable] attribute \"side\" specifies invalid side number.";
+					valid = false;
+				} else {
+					//Clear the variable only if it is meant for a side we control
+					valid = (*resources::teams)[side - 1].is_local();
+				}
+			}
 		}
 	}
-	// TODO: determine single or multiplayer and check for side=, depending.
 	if (valid)
 	{
 		persist_context &ctx = resources::persist->get_context((pcfg["namespace"]));
