@@ -8,14 +8,14 @@ msgstr ""
 "POT-Creation-Date: 2010-08-13 11:31+0200\n"
 "PO-Revision-Date: 2010-01-01 00:00+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
-"Language-Team: Lietuvių <komp_lt@konferencijos.lt>\n"
-"Language: \n"
+"Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
+"Language: lt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10==1 && n%100!=11 ? 1 : n"
 "%10>=2 && (n%100<10 || n%100>=20) ? 2 : 3);\n"
-"X-Generator: Lokalize 1.0\n"
+"X-Generator: Lokalize 1.1\n"
 
 #. [campaign]: id=LOW
 #: data/campaigns/Legend_of_Wesmere/_main.cfg:67
@@ -646,16 +646,19 @@ msgid ""
 "Velon, I swear on the life of Irdya that I will not let you be forgotten "
 "while elves yet draw breath to sing."
 msgstr ""
+"Velonai, prisiekiu Irdijos gyvybe, kad neleisiu tavęs užmiršti, kol elfai "
+"dar turės kvapo dainuoti."
 
 #. [message]: id=Velon
 #: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:477
 msgid "Swords will aid us more than songs, Kalenz; you saw that before I."
 msgstr ""
+"Kardai padės mums labiau už dainas, Kalenzai; tu tai matei anksčiau nei aš."
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:481
 msgid "Swordsmen you shall have, as swiftly as I can find them and return."
-msgstr ""
+msgstr "Kardininkų turėsi tada, kai tik aš juos galėsiu rasti ir grįžti."
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:491
@@ -663,6 +666,8 @@ msgid ""
 "Velon has fallen. He counseled weakness, but did not deserved such an ugly "
 "death. We shall return with swords to avenge him!"
 msgstr ""
+"Velonas krito. Jis patarinėjo silpnybę, bet nenusipelnė tokios bjaurios "
+"mirties. Grįšime su kardais atkeršyti už jį."
 
 #. [message]: race=orc
 #: data/campaigns/Legend_of_Wesmere/scenarios/01_The_Uprooting.cfg:504
@@ -917,7 +922,7 @@ msgstr "Ne, mūsų ataka buvo atmušta."
 #. [message]: id=Urudin
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian.cfg:424
 msgid "They resisted us fiercely; the battle is not yet done."
-msgstr "Jie inirtingai mums priešinosi; mūšis dar nesibaigė."
+msgstr "Jie įnirtingai mums priešinosi; mūšis dar nesibaigė."
 
 #. [message]: id=Mutaf-uru
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian.cfg:440
@@ -932,7 +937,7 @@ msgstr "Paklustu."
 #. [message]
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian.cfg:497
 msgid " $orc_battlefield_strategy changed to attack "
-msgstr ""
+msgstr " $orc_battlefield_strategy pasikeitė į puolimą "
 
 #. [message]: id=Mutaf-uru
 #: data/campaigns/Legend_of_Wesmere/scenarios/03_Kalian.cfg:554
@@ -2239,7 +2244,7 @@ msgid ""
 "it. May be they are but children's tales...still, be very careful when you "
 "cross it."
 msgstr ""
-"Iš tiesų, manau, kad ši upė yra Arkan-Toria. Yra piktos legendos apie ją. "
+"Iš tiesų, manau, kad ši upė yra Arkan-torija. Yra piktos legendos apie ją. "
 "Gal būt jos yra tik vaikų pasakos... vis tik, būk labai atsargus, kai "
 "kelsiesi per ją."
 
@@ -2773,7 +2778,7 @@ msgstr ""
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:140
 msgid ""
 "Kill an orcish Great Chieftain? But he's guarded better than a Troll hole!"
-msgstr "Nužudyti orkų Didijį vadą? Bet jis saugomas geriau nei Trolių skylė!"
+msgstr "Nužudyti orkų Didįjį vadą? Bet jis saugomas geriau nei Trolių skylė!"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:145
@@ -2853,7 +2858,7 @@ msgid ""
 "you then help us slay the orcish Great Chief?"
 msgstr ""
 "Labai gerai, tarkime, kad Kleodil priims tavo knygos saugojimą. Kaip tu mums "
-"padėsi nužudyti orkų Didijį vadą?"
+"padėsi nužudyti orkų Didįjį vadą?"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/12_Revelations.cfg:200
@@ -4391,7 +4396,7 @@ msgid ""
 "Kalenz's veterans joined the host of the Northern Elves under Uradredia. "
 "Very soon, Landar's army appeared..."
 msgstr ""
-"Kalenzo veteranai prisijungė prie Uradredijaus vadovaujamų šiaurės elfų "
+"Kalenzo veteranai prisijungė prie Uradredijo vadovaujamų šiaurės elfų "
 "pajėgų. Labai greitai pasirodė ir Landaro kariuomenė..."
 
 #. [message]: speaker=narrator
@@ -4669,8 +4674,7 @@ msgstr "O, ne! Pavėlavome..."
 msgid "You retrieve $amount_gold pieces of gold."
 msgstr "Atgavote $amount_gold pieces aukso."
 
-#, fuzzy
-#~ msgid "Early finish bonus: keep Velon alive"
+#~ msgid "Early finish bonus: Defeat Wrulf"
 #~ msgstr "Ankstyvo pabaigimo premija: Nugalėkite Vrulfą"
 
 #~ msgid ""

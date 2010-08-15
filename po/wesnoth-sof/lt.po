@@ -8,14 +8,14 @@ msgstr ""
 "POT-Creation-Date: 2010-08-13 11:31+0200\n"
 "PO-Revision-Date: 2010-01-01 00:00+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
-"Language-Team: Lietuvių <komp_lt@konferencijos.lt>\n"
-"Language: \n"
+"Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
+"Language: lt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10==1 && n%100!=11 ? 1 : n"
 "%10>=2 && (n%100<10 || n%100>=20) ? 2 : 3);\n"
-"X-Generator: Lokalize 1.0\n"
+"X-Generator: Lokalize 1.1\n"
 
 #. [campaign]: id=Sceptre_of_Fire
 #: data/campaigns/Sceptre_of_Fire/_main.cfg:11
@@ -472,6 +472,7 @@ msgstr "Gerai, aš atvežu sidabrą."
 
 #. [message]: speaker=Glildur
 #: data/campaigns/Sceptre_of_Fire/scenarios/1_A_Bargain_is_Struck.cfg:319
+#, fuzzy
 msgid ""
 "Hey! You can’t do that — this road is an elvish road. We’re not letting you "
 "transport gold and jewels on it without paying a toll."
@@ -657,6 +658,8 @@ msgid ""
 "Next in our story, Rugnur retreated into the caves of Knalga. But the elves "
 "pressed on, and would enter the caves shortly."
 msgstr ""
+"Toliau mūsų istorijoje Rugnuras pasislėpė Knalgos urvuose. Bet elfai "
+"atkakliai spaudė, ir neužilgo į juos įsiveržė."
 
 #. [objective]: condition=win
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:68
@@ -664,11 +667,13 @@ msgid ""
 "Place someone on each of the six magic glyphs in order to close the dwarvish "
 "gates"
 msgstr ""
+"Nuveskite ką nors ant kiekvienos iš šešių magiškų plytelių ir užversite "
+"dvarfų vartus"
 
 #. [objective]: condition=win
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:72
 msgid "Kill all elves in the caves after the gates are closed"
-msgstr ""
+msgstr "Po to, kai užversite vartus, išžudykite visus elfus, patekusius vidun"
 
 #. [objective]: condition=lose
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:80
@@ -684,17 +689,17 @@ msgstr "Bagluro mirtis"
 msgid ""
 "These elves are right behind me! We have to go warn the council of this "
 "attack!..."
-msgstr ""
+msgstr "Tie elfai mina man ant kulnų! Reikia įspėti tarybą apie šį antpuolį!.."
 
 #. [message]: speaker=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:147
 msgid "Here — I’ll go warn the council. You stay here and fight."
-msgstr ""
+msgstr "Aš – aš eisiu įspėti tarybos. O jūs likite čia ir kaukitės."
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:151
 msgid "Yes, that sounds good. I'll stay here and try to defend the gates..."
-msgstr ""
+msgstr "Gerai, tebūnie. Aš pasiliksiu čia ir pabandysiu apginti vartus..."
 
 #. [message]: speaker=Glindur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:163
@@ -703,21 +708,24 @@ msgid ""
 "help? We have more troops and more provisions, and we are going to enter "
 "those caves and kill you!"
 msgstr ""
+"Matau pasiuntei į miestą pasiuntinį? Puiki mintis, bet ar jums tai padės? "
+"Mūsų daugiau, ir mes geriau apsirūpinę. Įžengsime į jūsų urvus, ir jus "
+"išžudysime!"
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:167
 msgid " *gulp*"
-msgstr ""
+msgstr " *gurgt*"
 
 #. [message]: speaker=Glindur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:171
 msgid "Ha! I thought as much. Well then, surrender!"
-msgstr ""
+msgstr "Cha! Taip ir maniau. Na, tuomet pasiduokite!"
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:175
 msgid "Um... on what terms?"
-msgstr "Um... kokiomis sąlygomis?"
+msgstr "Ee... Kokiomis sąlygomis?"
 
 #. [message]: speaker=Glindur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:179
@@ -735,11 +743,13 @@ msgid ""
 "Wait! Rugnur, dinna' they tell you <i>anything</i> when you took command "
 "here?!?"
 msgstr ""
+"Pala! Rugnurai, negi jie tau <i>nieko</i> nepaaiškino, kai perleido "
+"vadovavimą?!"
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:210
 msgid "Not really. This was supposedly a time of peace. Who are you?"
-msgstr ""
+msgstr "Nelabai. Buvo manoma, kad tai taikos metas. O kas tu toks?"
 
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:214
@@ -750,6 +760,10 @@ msgid ""
 "close it, the elves will no' be able to enter. And you elves; begone from "
 "here!"
 msgstr ""
+"Och! Aš senas karys, išėjęs poilsio... Bet regis, teks man išeiti jums į "
+"pagalbą, bo kitaip mus tie elfai sudoros... Vėl... Klausykis. Šitas įėjimas "
+"į miestą užsidaro. Anava vartai. Jei juos užversime, elfai nebegalės jų "
+"įveikt. O jūs, elfai – nešdinkitės iš čia!"
 
 #. [message]: speaker=Glindur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:218
@@ -757,11 +771,12 @@ msgid ""
 "Cease your meddling, old dwarf! Rugnur is in charge here, and it is he who "
 "will bargain with us."
 msgstr ""
+"Nustok čia vapėti, senas dvarfe! Rugnuras čia vadas, jis su mumis ir derėsis."
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:222
 msgid "Baglur, how do you close the gates?"
-msgstr ""
+msgstr "Baglurai, kaip tie vartai užsidaro?"
 
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:226
@@ -771,11 +786,15 @@ msgid ""
 "of the six glyphs. When all are occupied, the gates wi' close. Then the "
 "elves will be shut out of the caves forever, at least through this entrance."
 msgstr ""
+"Ech, tame ir bėda. Vartai magiški. Neįveikiami. Bet tai reiškia, kad juos ir "
+"uždaryti gali tik magija. Reikia nuvesti po vieną karį ant kiekvienos iš "
+"šešių plytelių. Kai visos bus numintos, vartai užsivers. Tada elfai bus "
+"atitverti nuo urvų visiems laikams. Na, bent jau pro čia."
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:230
 msgid "Don't we have troops positioned near these glyphs, to unlock them?"
-msgstr ""
+msgstr "Argi mes neturim dalinių šalia tų ypatingų plytelių, kad jas numint?"
 
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:234
@@ -783,11 +802,12 @@ msgid ""
 "Och, well, no. Lately trolls have been more in charge of those caves where "
 "the glyphs are than we dwarves have."
 msgstr ""
+"Ech, deja, ne. Pastaruoju metu ten daugiau šeimininkavo troliai, nei dvarfai."
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:238
 msgid "Well, where are they located?"
-msgstr ""
+msgstr "Na gerai, o kur jos?"
 
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:242
@@ -795,13 +815,15 @@ msgid ""
 "Two are down a side passage in the northwest, another two are in a similar "
 "location in the southeast, and two are right next to the front gate."
 msgstr ""
+"Dvi yra pietrytiniame koridoriuje, kitos dvi panašioj vietoj šiaurės "
+"vakaruose, ir dvi prie pat vartų."
 
 #. [message]: speaker=Glindur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:246
 msgid ""
 "Have you made up your mind yet about surrendering?! If you will not give up, "
 "prepare for battle!"
-msgstr ""
+msgstr "Ar jau apsisprendei pasiduoti?! Jei nepasiduosi, ruoškitės mūšiui!"
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:251
@@ -809,6 +831,9 @@ msgid ""
 "You may be more powerful than us, but I doubt even you can blast through "
 "dwarf-made stonecraft. We refuse — now let’s close these gates!"
 msgstr ""
+"Jūs gal ir stipresni už mus, bet abejoju, kad netgi jums pavyks prasiveržti "
+"pro dvarfų akmentašių vartus. Mes atsisakome. O dabar – užverkime tuos "
+"vartus! "
 
 #. [message]: speaker=unit
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:345
@@ -817,6 +842,8 @@ msgid ""
 "But what about this entrance? The elves can come through it just as easily "
 "as the main gate, and it cannot be closed!"
 msgstr ""
+"Bet kaip bus su šitu įėjimu? Jo mes neuždarysim, o pro čia elfai galės įeiti "
+"taip pat lengvai, kaip pro pagrindinius vartus!"
 
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:349
@@ -825,11 +852,13 @@ msgid ""
 "I think it can be sealed up somehow... Yes, look, activating that glyph "
 "seems to have closed up the gap."
 msgstr ""
+"Manau, jį galima kažkaip užtverti... Taip, pažvelkit, numynus tą plytelę, "
+"užsivėrė praėjimas."
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:423
 msgid "We have everyone positioned on the glyphs! What do we do now?"
-msgstr ""
+msgstr "Visos plytelės numintos! Ką daryt dabar?"
 
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:427
@@ -837,6 +866,8 @@ msgid ""
 "Just watch. The gates wi’ close very soon. Then the elves outside — and, "
 "unfortunately, our dwarves who are still out there — wi’ become irrelevant."
 msgstr ""
+"Tiesiog laukt. Vartai tuojau pat užsivers. Tada lauke likę elfai – bet deja, "
+"ir mūsiškiai – bus nebe mūsų reikalas."
 
 #. [message]: speaker=Glindur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:501
@@ -845,6 +876,9 @@ msgid ""
 "exit these caves, to give Haldric back his jewel. And when you do, we will "
 "be ready for you."
 msgstr ""
+"Ach! Na, šįkart mane nugalėjote, bet kada nors vis tiek turėsite išlįsti "
+"lauk, kad atiduotumėte Haldrikui jo brangakmenį. Ir štai tada, mes jūsų "
+"lauksime."
 
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:505
@@ -852,23 +886,24 @@ msgid ""
 "If that is what ye choose to do, fine, but be prepared to wait for many "
 "years."
 msgstr ""
+"Jei manote, kad jums to reikia, prašom. Bet pasiruoškit laukti daugel metų."
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:534
 msgid ""
 "There are still some elves left in here. We have to eliminate them, too, "
 "unless they surrender."
-msgstr ""
+msgstr "Dar liko elfų ir viduj. Reikia juos išnaikinti, nebent jie pasiduotų."
 
 #. [message]: role=elf
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:542
 msgid "You would have us be cowards! We do not surrender."
-msgstr ""
+msgstr "Norėtum, kad pasirodytume bailiais! Elfai nepasiduoda."
 
 #. [objective]: condition=win
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:547
 msgid "Kill all elves in the caves"
-msgstr "Urvuose nužudykite visus elfus"
+msgstr "Nužudykite visus elfus urvuose"
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:587
@@ -876,16 +911,20 @@ msgid ""
 "That’s all of the elves. Now I should go down to the city and report. I'm "
 "late already..."
 msgstr ""
+"Tai tiek tų elfų. Dabar man reiktų leistis į miestą ir raportuoti. Jau ir "
+"taip pasivėlinau..."
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:601
 msgid "Well, now I should go down to the city and report. I'm late already..."
 msgstr ""
+"Na, dabar man reiktų leistis į miestą ir raportuoti. Jau ir taip "
+"pasivėlinau..."
 
 #. [message]: speaker=unit
 #: data/campaigns/Sceptre_of_Fire/scenarios/2_Closing_the_Gates.cfg:614
 msgid "My glyph is on."
-msgstr ""
+msgstr "Mano plytelė nuspausta."
 
 #. [scenario]: id=2t_In_the_Dwarven_City
 #: data/campaigns/Sceptre_of_Fire/scenarios/2t_In_the_Dwarven_City.cfg:3
@@ -907,6 +946,8 @@ msgid ""
 "Now, I must tell you of another character in our drama. Durstorn, the lord "
 "of Dwarfdom. Or at least of this clan."
 msgstr ""
+"Dabar, papasakosiu tau apie kitą mūsų dramos veikėją. Durstorną, dvarfų "
+"valdovą. Na, ar bent jau šio klano valdovą."
 
 #. [part]
 #: data/campaigns/Sceptre_of_Fire/scenarios/2t_In_the_Dwarven_City.cfg:41
@@ -914,6 +955,8 @@ msgid ""
 "Durstorn was not happy this day. Nor was he usually; but today he was "
 "unhappier than usual."
 msgstr ""
+"Durstornas tą dieną nebuvo linksmas. Tiesa, jis niekada nebūdavo linksmas, "
+"bet tądien buvo labiau suirzęs, nei įprasta."
 
 #. [unit]: type=Dwarvish Stalwart, id=Neglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2t_In_the_Dwarven_City.cfg:58
@@ -951,11 +994,13 @@ msgid ""
 "Where's that fool Rugnur gotten to? It's time for him to report on events in "
 "the surface world. He's late!"
 msgstr ""
+"Kur prašapo tas kvailys Rugnuras? Jau pats laikas būtų raportuoti apie "
+"įvykius paviršiuje. Jis vėluoja!"
 
 #. [message]: speaker=Noiraran
 #: data/campaigns/Sceptre_of_Fire/scenarios/2t_In_the_Dwarven_City.cfg:134
 msgid "Perhaps the outpost was held up?"
-msgstr ""
+msgstr "Gal kas užpuolė postą?"
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/2t_In_the_Dwarven_City.cfg:138
@@ -963,16 +1008,18 @@ msgid ""
 "Ha! There hasn't been a border attack since the men came from over the sea, "
 "why would someone attack us now?"
 msgstr ""
+"Cha! Mūsų pasienių niekas nepuolė nuo pat tada, kai iš už jūrų atsikėlė "
+"žmonės, kodėl staiga kas nors turėtų mus pulti?"
 
 #. [message]: speaker=Kuhnar
 #: data/campaigns/Sceptre_of_Fire/scenarios/2t_In_the_Dwarven_City.cfg:142
 msgid "The elves might want our gold."
-msgstr "Elfai gali norėti mūsų aukso."
+msgstr "Elfai gali užsimanyti mūsų aukso."
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/2t_In_the_Dwarven_City.cfg:146
 msgid "Good one, let them try to take it! Ha!"
-msgstr ""
+msgstr "Geras, tegu pabando! Cha!"
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2t_In_the_Dwarven_City.cfg:155
@@ -980,16 +1027,18 @@ msgid ""
 "Hey, Durstorn, have we started yet? King Haldric came by just now, wanted to "
 "talk to you..."
 msgstr ""
+"Ei, Durstornai, ar jau prasidėjo pasitarimas? Ką tik buvo atvykęs karalius "
+"Haldrikas, norėjo su tavimi pasikalbėti..."
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/2t_In_the_Dwarven_City.cfg:159
 msgid "Speak properly to your elders, boy! Why are you late?"
-msgstr ""
+msgstr "Kalbėk su vyresniais kaip pridera, berniūkšti! Kodėl vėluoji?"
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2t_In_the_Dwarven_City.cfg:163
 msgid "Huh? Didn't a messenger come and tell you?"
-msgstr ""
+msgstr "A? Negi neatvyko mano pasiuntinys?"
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/2t_In_the_Dwarven_City.cfg:167
@@ -1002,11 +1051,13 @@ msgid ""
 "I think you'd better let me explain. King Haldric II of Wesnoth came to the "
 "gate. Then we had to close it, which took considerable time."
 msgstr ""
+"Gal leiskite man paaiškinti. Prie vartų buvo atvykęs Vesnoto karalius "
+"Haldrikas II. Po to mums teko juos uždaryti, kas gerokai užtruko."
 
 #. [message]: speaker=Glinar
 #: data/campaigns/Sceptre_of_Fire/scenarios/2t_In_the_Dwarven_City.cfg:176
 msgid "What'd he want? And why'd you have to close the gate?"
-msgstr ""
+msgstr "Ko jis norėjo? Ir kodėl jums teko uždaryti vartus?"
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2t_In_the_Dwarven_City.cfg:180
@@ -1016,11 +1067,15 @@ msgid ""
 "magic, or something like that. We closed the doors because elves were "
 "attacking us."
 msgstr ""
+"Jis norėjo sudaryti sandėrį. Davė mums stebuklingą brangakmenį, vadinamą "
+"„ugnies rubinu“, ir prašė pagaminti iš jo skeptrą. Kad sutramdyti jame "
+"slypinčias tamsiąsias jėgas, ar kažkas tokio. O vartus užvėrėm, nes puolė "
+"elfai."
 
 #. [message]: speaker=Noiraran
 #: data/campaigns/Sceptre_of_Fire/scenarios/2t_In_the_Dwarven_City.cfg:184
 msgid "What is he going to give us for it, eh?"
-msgstr ""
+msgstr "Ir ką jis mums už tai?"
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2t_In_the_Dwarven_City.cfg:188
@@ -1028,6 +1083,8 @@ msgid ""
 "He paid us five thousand silver in advance, and he'll give us five thousand "
 "more when we deliver the finished sceptre if we are done before he dies."
 msgstr ""
+"Jis sumokėjo penkis tūkstančius sidabrinių avanso ir sumokės antra tiek "
+"tada, kai baigsim darbą, su sąlyga, kad spėsim iki jo mirties."
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/2t_In_the_Dwarven_City.cfg:192
@@ -1037,11 +1094,17 @@ msgid ""
 "him! This is a task that will take many years, and now all of our work in "
 "that time will bring us very little gain."
 msgstr ""
+"Ką?! Tu jau sutikai? Kvailas berniūkšti, reikėjo pakviesti ką nors iš "
+"vyresniųjų! Galėjome iš jo išpešti daug daugiau, nei dešimt tūkstančių "
+"sidabrinių! Šitoks darbas mums užtruks daugybę metų, ir dabar visas tas "
+"triūsas atneš labai nedaug pelno."
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2t_In_the_Dwarven_City.cfg:196
 msgid "Sorry, lord, but he said he would move on to another tribe if I left."
 msgstr ""
+"Atleiskit, valdove, bet jis pagrasino, kad nueis pas kitą klaną, jei aš "
+"delsiu."
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/2t_In_the_Dwarven_City.cfg:200
@@ -1051,6 +1114,9 @@ msgid ""
 "year. Oh well, what's done is done. We'll have to work for less than I would "
 "prefer..."
 msgstr ""
+"Negi neatpažįsti blefo?! Jis žino, kad mes geriausi meistrai, ir jis neitų "
+"pas kitus, net jei mes trypinėtume ištisus metus. Na, kas padaryta, tas "
+"padaryta. Dabar teks dirbti už mažiau, nei norėčiau..."
 
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2t_In_the_Dwarven_City.cfg:204
@@ -1058,6 +1124,8 @@ msgid ""
 "Well, since this boy bargained so badly, why not make him fulfill the "
 "contract himself? If he fails, it's on his head."
 msgstr ""
+"O ką, jei šis berniūkštis taip prastai derėjosi, kodėl gi jam neapsiėmus "
+"pačiam atlikti darbo? Jei susimaus, bus pats kaltas."
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/2t_In_the_Dwarven_City.cfg:208
@@ -1065,11 +1133,14 @@ msgid ""
 "Good idea, Baglur! He'll need some help, though, and it will take a master "
 "smith to make the sceptre. Why don't we send him to find Thursagan?"
 msgstr ""
+"Puiki mintis, Baglurai! Ir visgi, jam reikės pagalbos, o jau patį skeptrą "
+"tegalės padaryti tik tikras meistras. Kodėl gi mums jo nepasiuntus pas "
+"Tursaganą?"
 
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2t_In_the_Dwarven_City.cfg:212
 msgid "You mean the insane dwarf who lives in the far north?!"
-msgstr ""
+msgstr "Tu turi omeny tą pamišusį dvarfą, gyvenantį tolimoje šiaurėje?"
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/2t_In_the_Dwarven_City.cfg:216
@@ -1078,6 +1149,9 @@ msgid ""
 "Haldric wants it. And he has nothing to do, he will be fine with wasting 25 "
 "years of his life on this task."
 msgstr ""
+"Taip. Jis vienintelis man žinomas meistras, galintis padaryti tokį skeptrą, "
+"kokio reikia Haldrikui. Ir jis šiaip ar taip neturi ką veikti, sutiks "
+"praleisti ir 25 metus prie šito darbo."
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/2t_In_the_Dwarven_City.cfg:220
@@ -1085,6 +1159,8 @@ msgid ""
 "Very well, my lord. We will go into the north to find Thursagan. Do you have "
 "any idea where he is?"
 msgstr ""
+"Gerai, valdove. Mes keliausime į šiaurę ieškoti Tursagano. Ar numanote kur "
+"jo ieškoti?"
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/2t_In_the_Dwarven_City.cfg:224
@@ -1092,22 +1168,24 @@ msgid ""
 "Go to the furthest north entrance to the caves, and then go north. He's "
 "somewhere in those hills."
 msgstr ""
+"Keliaukite prie šiauriausių urvų vartų, ir nuo ten toliau į šiaurę. Jis "
+"gyvena kažkur tose kalvose."
 
 #. [message]: speaker=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/2t_In_the_Dwarven_City.cfg:238
 msgid "What did I miss, eh?"
-msgstr ""
+msgstr "O! Ką aš praleidau?"
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/2t_In_the_Dwarven_City.cfg:242
 msgid ""
 "Who the devil are you? Well, you seem to be with Rugnur... follow him north."
-msgstr ""
+msgstr "Kas tu toks, po velnių? A, tu su Rugnuru... Keliauk su juo šiaurėn."
 
 #. [scenario]: id=3_Searching_for_the_Runecrafter
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:3
 msgid "Searching for the Runecrafter"
-msgstr ""
+msgstr "Runų meistro beieškant"
 
 #. [part]
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:35
@@ -1117,11 +1195,15 @@ msgid ""
 "or worse. Nevertheless, they did reach the northlands, and began to search "
 "for the runesmith named Thursagan — the sage of fire."
 msgstr ""
+"Kelionė į šiaurines dykras buvo ilga ir sunki. Ten vedė vingiuoti ir "
+"klastingi tuneliai. Kelią pastodavo orkai, ar dar baisesni sutvėrimai. "
+"Nepaisant visko, jie priėjo šiaurines žemes ir pradėjo ieškoti runų meistro "
+"vardu Tursaganas – ugnies išminčiaus."
 
 #. [objective]: condition=win
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:96
 msgid "Find Thursagan and convince him to come back to the dwarvish city"
-msgstr ""
+msgstr "Raskite Tursaganą ir įtikinkite jį sugrįžti į dvarfų miestą"
 
 #. [message]: speaker=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:157
@@ -1129,6 +1211,8 @@ msgid ""
 "Now where are we going, anyway? We have been taking wrong turns and fighting "
 "orcs for months. This trip better have a good payoff to be worth that."
 msgstr ""
+"O kur mes visgi keliaujam? Jau ištisus mėnesius klaidžiojam ir kaunamės su "
+"orkais. Verčiau jau šita kelionė būtų pelninga, kad atpirktų tokius vargus."
 
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:161
@@ -1136,11 +1220,13 @@ msgid ""
 "We need to find the mage Thursagan and convince him to return to the citadel "
 "with us. He's somewhere up here."
 msgstr ""
+"Mums reikia rasti magą Tursaganą ir įtikinti jį sugrįžti su mumis į "
+"citadelę. Jis kažkur čia."
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:165
 msgid "Well, how are we supposed to find him?"
-msgstr ""
+msgstr "Na, o kaip mes žadam jį rasti?"
 
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:169
@@ -1148,6 +1234,8 @@ msgid ""
 "His will probably be the only house up here. No one else is insane enough to "
 "live this far north! Even the elves won't challenge us here."
 msgstr ""
+"Greičiausiai ten bus vienintelis jo namas. Niekas kitas nėra tiek "
+"išprotėjęs, kad gyventų taip toli šiaurėje! Net ir elfai mums čia netrukdytų."
 
 #. [message]: speaker=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:173
@@ -1155,21 +1243,23 @@ msgid ""
 "Except for trolls and ogres, right? They live in the far northlands. They're "
 "probably lurking around here somewhere."
 msgstr ""
+"Aha, išskyrus trolius ir žmogėdras? Jie gyvena tolimoje šiaurėje. "
+"Greičiausiai tūno kur nors netoliese."
 
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:177
 msgid "Right. We'll probably have to fight our way through to his house."
-msgstr ""
+msgstr "Na taip. Greičiausiai teks kautis, kad prieiti jo namą."
 
 #. [unit]: type=Gryphon, id=Krawg
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:296
 msgid "Krawg"
-msgstr "Krawgas"
+msgstr "Kravgas"
 
 #. [message]: speaker=Krawg
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:310
 msgid "Kwill yooo spakkk wit uuus?!?"
-msgstr ""
+msgstr "Karr kaalbėsitės sūū manyyym?!"
 
 #. [message]: speaker=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:315
@@ -1179,12 +1269,12 @@ msgstr "Aaa! Kas tai?!?"
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:319
 msgid "Is that... is that a gryphon?"
-msgstr "Ar tai... ar tai grifas?"
+msgstr "Ar tai... Ar tai grifas?"
 
 #. [message]: speaker=Krawg
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:324
 msgid "Kwes! Yooo spakkk wit uuus nuu?"
-msgstr ""
+msgstr "Joo! Arr dabarr kalbėsit su manyyym?"
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:328
@@ -1194,22 +1284,22 @@ msgstr "Jis kalba su mumis! Ko tu nori, grife?"
 #. [message]: speaker=Krawg
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:333
 msgid "Myy namm ees Krawgg. Yooo ees oooking forr a uunmasta?"
-msgstr ""
+msgstr "Ašš varrdu Krrragass. Jūsss iešškot rrrunmeistro?"
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:337
 msgid "Well, um, yes. Why, can you help us?"
-msgstr ""
+msgstr "Na, eee... Taip. O ką, ar gali mums padėti?"
 
 #. [message]: speaker=Krawg
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:342
 msgid "Ess... if yooo ills ka rolls aan ogras, us'll elp yoo!"
-msgstr ""
+msgstr "Joo... Jjjei užmuššit trrrolius ir ėdrrras, padėssssiu!"
 
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:346
 msgid "Sure, we'll help you fight trolls and ogres."
-msgstr ""
+msgstr "Žinoma, padėsim tau susidoroti su troliais ir žmogėdrom."
 
 #. [objective]: condition=win
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:355
@@ -1217,6 +1307,8 @@ msgid ""
 "Find Thursagan and convince him to come back to the dwarvish city, then "
 "bring him back to the caves"
 msgstr ""
+"Raskite Tursaganą ir įtikinkite jį sugrįžti į dvarfų miestą. Tada saugiai "
+"parveskite jį į urvus."
 
 #. [objective]: condition=lose
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:371
@@ -1234,7 +1326,7 @@ msgstr ""
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:439
 #: data/campaigns/Sceptre_of_Fire/scenarios/9_Caverns_of_Flame.cfg:815
 msgid "Death of Krawg"
-msgstr "Krawgo mirtis"
+msgstr "Kravgo mirtis"
 
 #. [unit]: id=Kawn # wmllint: ignore, type=Gryphon Rider
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:387
@@ -1259,7 +1351,7 @@ msgstr "Tursaganas"
 #. [message]: speaker=narrator
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:435
 msgid "Go away, you birds! Or I shall burn you out of the air!"
-msgstr ""
+msgstr "Skriskit šalin, paukštyčiai! Kitaip sudeginsiu jus tiesiai ore!"
 
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:439
@@ -1267,11 +1359,13 @@ msgid ""
 "He doesn't want to talk to the gryphons, apparently. I think we'll have to "
 "get someone there he will talk to..."
 msgstr ""
+"Regis, jis nenusiteikęs bendrauti su grifais. Teks nusiųsti ten ką nors, su "
+"kuo jis teiksis kalbėt."
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:480
 msgid "What do you people want!? Leave me alone!"
-msgstr ""
+msgstr "Ko jums reikia?! Palikit mane ramybėje!"
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:484
@@ -1279,6 +1373,8 @@ msgid ""
 "Old mage, we come with a message from Lord Durstorn. He asks you to come "
 "back to the city."
 msgstr ""
+"Senasis mage, mes atnešėme pranešimą nuo valdovo Durstorno. Jis prašo jus "
+"sugrįžti į miestą."
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:488
@@ -1286,6 +1382,7 @@ msgid ""
 "Ha! That fool thinks he can order me around. Why does he want me to go back, "
 "anyway?"
 msgstr ""
+"Cha! Tas kvailys mano, kad gali man įsakinėti. O ko jam iš manęs prireikė?"
 
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:492
@@ -1293,6 +1390,7 @@ msgid ""
 "We have entered into a bargain with the king of Wesnoth to craft a sceptre "
 "for him."
 msgstr ""
+"Mes sudarėme sutartį su Vesnoto karaliumi, pažadėjome jam nukalti skeptrą."
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:496
@@ -1300,6 +1398,7 @@ msgid ""
 "Oh, and now I suppose Durstorn wants me to craft it, eh? Well I'm not going "
 "to."
 msgstr ""
+"A, ir dabar Durstornas nori, kad aš jį nukalčiau, ane? O aš nekalsiu, va."
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:500
@@ -1307,11 +1406,13 @@ msgid ""
 "You don't want to make a sceptre to contain the power of the ruby of fire? "
 "Very well, your choice is made."
 msgstr ""
+"Nenori nukalti skeptro ir pažaboti jame ugnies rubino galios? Na, kaip nori, "
+"tavo teisė rinktis."
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:504
 msgid "The ruby of fire, what is that, some worthless Wesnothian gem?"
-msgstr ""
+msgstr "Ugnies rubinas, kas tai? Koks nors bevertis Vesnoto akmeniūkštis?"
 
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:508
@@ -1320,16 +1421,19 @@ msgid ""
 "artifact ever seen. Even an untrained hand can use it to cast fiery bolts as "
 "powerful as those of arch mages."
 msgstr ""
+"Taip, tai Vesnoto akmuo. Bet tuo pačiu tai ko gero galingiausias magiškas "
+"artefaktas, kokį teko regėti. Net nemokyto rankose jis gali leisti ugnies "
+"pliūpsnius, jėga nenusileidžiančius stipriausiems magams."
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:512
 msgid "Oh, really? And what does Haldric want us to do with it?"
-msgstr ""
+msgstr "Tikrai? Ir ką Haldrikas nori, kad mes padarytume?"
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:516
 msgid "Contain and intensify its power."
-msgstr ""
+msgstr "Sutramdyti ir padidinti jo galią."
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:520
@@ -1338,6 +1442,9 @@ msgid ""
 "powerful magic artifact ever seen. This will be a true test of my skill. I "
 "expect it will take many years."
 msgstr ""
+"Supratau. Na gerai, padėsiu jums sutverti tą skeptrą... Galingiausią kada "
+"nors matytą magišką artefaktą. Tai bus išbandymas vertas mano sugebėjimų. "
+"Darbas truks daugel metų."
 
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:524
@@ -1345,6 +1452,7 @@ msgid ""
 "Good. Now, there are still wild animals here... we have to get back into the "
 "caves."
 msgstr ""
+"Gerai. O čia vis dar esama laukinių gyvūnų... Reikia nusigauti atgal į urvus."
 
 #. [objective]: condition=win
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:551
@@ -1371,12 +1479,12 @@ msgstr "Tursagano mirtis"
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/3_Searching_for_the_Runecrafter.cfg:596
 msgid "Well, now we are in the caves again! Come on, back south, to the city."
-msgstr ""
+msgstr "Na štai, mes ir vėl urvuose. Eime, atgal į pietus, atgal į miestą."
 
 #. [scenario]: id=3t_The_Council_Regathers
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:3
 msgid "The Council Regathers"
-msgstr ""
+msgstr "Pakartotinis pasitarimas"
 
 #. [part]
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:37
@@ -1385,11 +1493,14 @@ msgid ""
 "them so long. So they quickly returned to the dwarven city, with two new "
 "members of their party — one expected, and one not."
 msgstr ""
+"Kelias atgal nebuvo toks pavojingas kaip prieš metus. Tad ir kelionė netruko "
+"taip ilgai. Keliauninkai greitai grįžo į dvarfų miestą, su dviem naujais "
+"pakeleiviais: vienu lauktu, kitu – ne."
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:142
 msgid "Lord Durstorn, we have succeeded in our mission. Thursagan is here."
-msgstr ""
+msgstr "Valdove Durstornai, mes sėkmingai įvykdėme užduotį. Tursaganas atvyko."
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:146
@@ -1397,21 +1508,23 @@ msgid ""
 "What? You mean you found Thursagan and got him to return with you? "
 "Astounding! But what is that gryphon doing there?"
 msgstr ""
+"Ką? Nori pasakyti, kad jūs tikrai radot Tursaganą ir įtikinot jį grįžti su "
+"jumis? Įspūdinga! Bet ką čia veikia tas grifas?"
 
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:150
 msgid "Yes, we did. And that is Krawg, who helped us in the northlands."
-msgstr ""
+msgstr "Taip, įtikinom. O tai Kravgas, jis pagelbėjo mums šiaurėje."
 
 #. [message]: speaker=Krawg
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:155
 msgid "Yaa! Mee Krawg!"
-msgstr ""
+msgstr "Jooo! Ašš Krraaavgas!"
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:159
 msgid "Now, where is this ruby that I am to work with, eh Durstorn?"
-msgstr ""
+msgstr "O kurgi tas rubinas, su kuriuo man teks dirbti, a, Durstornai?"
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:163
@@ -1419,11 +1532,13 @@ msgid ""
 "In the treasury. And leave it there until you’re ready to work with it — I "
 "still don't trust you."
 msgstr ""
+"Iždinėj. Ir palik jį ten, kol nebūsi pasiruošęs su juo dirbti. Aš vis dar "
+"tavimi nepasitikiu."
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:167
 msgid "Ha! <i>You</i> don't trust <i>me</i>?"
-msgstr ""
+msgstr "Cha! <i>Tu</i> nepasitiki <i>manim</i>?"
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:171
@@ -1431,6 +1546,8 @@ msgid ""
 "Exactly! Why would I? And I order you to stay out of the treasury, away from "
 "that ruby!"
 msgstr ""
+"Taip! Ir kodėl turėčiau? Įsakau tau nekišti nosies į iždinę, neliesti to "
+"rubino!"
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:175
@@ -1438,11 +1555,13 @@ msgid ""
 "You don't dictate what I am to do, Durstorn! I will do as I please, and "
 "don't stop me if you want me to make this sceptre."
 msgstr ""
+"Neaiškink man ką daryti, o ko ne, Durstornai! Elgsiuos kaip išmanau, ir "
+"netrukdyk man, jeigu nori, kad sutverčiau tą skeptrą."
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:179
 msgid "The ruby is mine, and don't touch it!"
-msgstr ""
+msgstr "Rubinas mano, neliesk jo!"
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:183
@@ -1450,11 +1569,13 @@ msgid ""
 "Uh, technically it's Haldric’s, and I think that if Thursagan needs to see "
 "it to plan this sceptre, we must allow it."
 msgstr ""
+"Na, šiaip jau, jis Haldriko. Ir manau, kad jeigu Tursaganas nori jį pamatyti "
+"prieš planuodamas darbus, turim jam leisti."
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:187
 msgid "It will be as it must, then. *grumble grumble*"
-msgstr ""
+msgstr "Tebūnie, jei taip reikia. *Hrrr*"
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:193
@@ -1462,16 +1583,18 @@ msgid ""
 "Hm... a most interesting jewel. I can feel its magical power. I will start "
 "drawing up plans for the sceptre immediately."
 msgstr ""
+"Hm... Ypatingai įdomus akmuo. Jaučiu jo magišką jėgą. Tuojau pat pradėsiu "
+"planuoti darbus."
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:202
 msgid "Now, I will need certain materials to make this sceptre."
-msgstr ""
+msgstr "Šio skeptro gamybai man prireiks tam tikrų medžiagų."
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:206
 msgid "Oh, what?"
-msgstr ""
+msgstr "Kokių?"
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:210
@@ -1481,6 +1604,10 @@ msgid ""
 "others to search for those, though. I'll also need to have the jeweler cut "
 "the ruby once I have the plans done."
 msgstr ""
+"Sakyčiau, apie keturis pūdus gryniausio aukso ir dukart tiek aukščiausios "
+"kokybės anglies. Dar reikės daugybės skaidriausių šalies brangakmenių, bet "
+"jų ieškoti teks kitiems. Taip pat, kai jau turėsiu planus, man reiks "
+"juvelyro pagalbos rubinui nutašyti."
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:214
@@ -1488,6 +1615,8 @@ msgid ""
 "Just use my gold and coal, I have enough! Or, if they're not 'good enough' "
 "for you, find them yourself."
 msgstr ""
+"Panaudok mano auksą ir anglį, turiu pakankamai! O jeigu jie „nepakankamai "
+"geri“, pats ir ieškokis."
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:218
@@ -1495,6 +1624,8 @@ msgid ""
 "You try my patience, Durstorn. You know yours aren't acceptable, but you "
 "have to give me something or I can't make the sceptre!"
 msgstr ""
+"Bandai mano kantrybę, Durstornai. Pats žinai, kad taviškiai netinkami, bet "
+"turi man parūpinti medžiagų, kitaip negalėsiu pagaminti skeptro!"
 
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:222
@@ -1503,11 +1634,15 @@ msgid ""
 "eastern mines, north of the Arkan-thoria. Trolls ha' overrun them, but "
 "earlier they were the source of the finest smithing materials."
 msgstr ""
+"Palaukit, palaukit. Auksas ir anglys... Manau, galim jų rasti tose "
+"apleistose kasyklose rytuose, į šiaurę nuo Arkan-torijos. Dabar tenai "
+"šeimininkauja troliai, bet anksčiau ten buvo išgaunama aukščiausios kokybės "
+"žaliava."
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:226
 msgid "So, we will go to the eastern mines!"
-msgstr ""
+msgstr "Reiškia, eisim į rytines kasyklas!"
 
 #. [message]: speaker=Durstorn
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:230
@@ -1516,6 +1651,9 @@ msgid ""
 "quite a bit of our payment, but it can't be helped. Our people do not mine "
 "jewels."
 msgstr ""
+"Gerai. O dėl brangakmenių, pasamdysiu kitus jų ieškot. Tatai mums kainuos "
+"nemenką uždarbio dalį, bet čia jau nieko nepadarysi. Mūsų tauta nekasa "
+"brangakmenių."
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:234
@@ -1524,6 +1662,9 @@ msgid ""
 "mines, and I will bring some runecrafters-in-training from the academy to "
 "help fight these enemies."
 msgstr ""
+"Tinka. Durstornai, pasiųsk mums iš paskos kelis kalnakasius, o aš iš "
+"akademijos prigriebsiu kelis runakalystės studentus, kad padėtų susitvarkyti "
+"su priešais."
 
 #. [unit]: type=Dwarvish Runesmith, id=Kinan    # wmllint: ignore
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:241
@@ -1538,7 +1679,7 @@ msgstr "Rynanas"
 #. [message]: speaker=narrator
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:262
 msgid "Two runesmiths from the academy have joined you!"
-msgstr ""
+msgstr "Prie jūsų prisijungia du runakaliai iš akademijos!"
 
 #. [message]: speaker=Alanin
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:267
@@ -1546,18 +1687,20 @@ msgid ""
 "Fine, you all go to the eastern mines. Me, I'll stay here. No point going "
 "where I can't help!"
 msgstr ""
+"Puiku, jūs keliaukite į rytines kasyklas. O aš, aš liksiu čia. Nėra prasmės "
+"keliauti ten, kur iš manęs nebus naudos."
 
 #. [message]: speaker=Krawg
 #: data/campaigns/Sceptre_of_Fire/scenarios/3t_The_Council_Regathers.cfg:272
 msgid "M' 'u!"
-msgstr ""
+msgstr "Aššširrr!"
 
 #. [settings]
 #. [scenario]: id=4_Gathering_Materials
 #: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:3
 #: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:23
 msgid "Gathering Materials"
-msgstr ""
+msgstr "Berenkant žaliavas"
 
 #. [part]
 #: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:10
@@ -1566,6 +1709,8 @@ msgid ""
 "with trolls and other vile creatures, who thrived in the dark and gloom of "
 "the caves."
 msgstr ""
+"Išėjusieji į rytines kasyklas buvo išties drąsūs. Jose buvo pilna trolių ir "
+"kitokių piktų padarų, klestinčių tamsioje urvų tyloje."
 
 #. [part]
 #: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:13
@@ -1575,6 +1720,10 @@ msgid ""
 "most part avoid the enemy. They only once had to venture into the very heart "
 "of the trolls' territory."
 msgstr ""
+"Ir visgi dar drąsesni buvo Rugnuras ir jo kompanjonai, praleidę tuose "
+"urvuose ištisus du metus. Kalnakasyba – darbas ne skubandiems. Didžiąją "
+"laiko dalį jiems neblogai sekėsi išvengti priešo. Ir tik kartą teko keliauti "
+"į pačią trolių teritorijos širdį."
 
 #. [objective]: condition=win
 #: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:254
@@ -1582,11 +1731,12 @@ msgid ""
 "Bring the necessary gold and coal to create the sceptre to the starting "
 "castle"
 msgstr ""
+"Atgabenkite skeptrui reikalingus auksą ir anglį į pilį, kur pradedate lygį"
 
 #. [objective]: condition=win
 #: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:258
 msgid "1 load of gold and 2 loads of coal are needed"
-msgstr ""
+msgstr "Reikia vieno nešulio aukso ir dviejų nešulių anglies"
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:297
@@ -1595,6 +1745,9 @@ msgid ""
 "to fight them; also be prepared to spend quite some time here — mining can "
 "take a while."
 msgstr ""
+"Na, štai ir rytinės kasyklos. Čia veisiasi troliai ir žmogėdros, tad būkite "
+"budrūs, gali tekti kautis. Taip pat pasiruoškite praleisti čia nemažai laiko "
+"– galime užtrukti, kol prikasim ko reikia."
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:301
@@ -1603,11 +1756,13 @@ msgid ""
 "do not know where it was found, but Baglur said these mines were the source "
 "of it."
 msgstr ""
+"Kad pagaminčiau artefaktą, kurio nori Haldrikas, man reikia ypatingo aukso. "
+"Nežinau kur jis buvo kasamas, bet Bagluras sakė, kad kažkur šitose kasyklose."
 
 #. [message]: speaker=Baglur
 #: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:305
 msgid "Also, the only coal that wi' melt this gold is here."
-msgstr ""
+msgstr "Taip pat, čia randama vienintelė anglis, galinti tą auksą išlydyti."
 
 #. [message]: speaker=Rugnur
 #: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:309
@@ -1615,46 +1770,51 @@ msgid ""
 "So we’re down here to, what, mine this gold and coal? That should be easy "
 "enough."
 msgstr ""
+"Tai mes čia atsibeldėm ko, kasti to aukso ir anglies? Tai neturėtų būti per "
+"daug sunku."
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:313
+#, fuzzy
 msgid ""
 "Yes, although we will have to hire the miners — they don't work for free. "
 "But beware, there are trolls and such down here..."
 msgstr ""
+"Taip, tačiau teks samdyti kalnakasius, o jie dykai nedirba. Ir būkite "
+"atsargūs – tie troliai ir kiti nelabieji..."
 
 #. [message]: speaker=unit
 #: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:338
 msgid "Here is some of the coal that we need! Bring the miners to take it!"
-msgstr ""
+msgstr "Čia yra mums reikalingos anglies! Atveskite kalnakasius jos pargabent!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:363
 #: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:400
 #: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:521
 msgid "I have all the coal I can carry..."
-msgstr "Turiu tiek anglies, kiek tik galiu panešti..."
+msgstr "Prikasiau tiek anglies, kiek tik galiu panešti..."
 
 #. [message]: speaker=unit
 #: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:432
 msgid "Here is the mine of precious gold! Send the miners this way."
-msgstr "Čia brangaus aukso kasykla! Atsiųskite kalnakasius čia."
+msgstr "Čia tauriojo aukso kasykla! Siųskite kalnakasius čia."
 
 #. [message]: speaker=unit
 #: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:457
 #: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:595
 msgid "I have all the gold I can carry..."
-msgstr "Turiu tiek aukso, kiek tik galiu panešti..."
+msgstr "Prikasiau tiek aukso, kiek tik galiu panešti..."
 
 #. [message]: speaker=unit
 #: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:636
 msgid "My load of coal is delivered!"
-msgstr ""
+msgstr "Štai mano anglies nešulys!"
 
 #. [message]: speaker=unit
 #: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:664
 msgid "That’s the last load of coal we need."
-msgstr ""
+msgstr "Štai visa mums reikalinga anglis."
 
 #. [message]: speaker=Thursagan
 #: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:674
@@ -1663,6 +1823,8 @@ msgid ""
 "This is all we need from these mines. Now we should go back further west, "
 "where there are no trolls and ogres, and mine there."
 msgstr ""
+"Tai viskas, ko mums reikia iš šių kasyklų. Dabar reikia grįžti į vakarus, "
+"kur nėra nei trolių, nei žmogėdrų, ir toliau kasti ten."
 
 #. [message]: speaker=unit
 #: data/campaigns/Sceptre_of_Fire/scenarios/4_Gathering_Materials.cfg:701

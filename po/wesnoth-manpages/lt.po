@@ -7,14 +7,14 @@ msgstr ""
 "POT-Creation-Date: 2010-08-13 11:39+0300\n"
 "PO-Revision-Date: 2010-01-01 00:00+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
-"Language-Team: Lietuvių <komp_lt@konferencijos.lt>\n"
-"Language: \n"
+"Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
+"Language: lt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10==1 && n%100!=11 ? 1 : n"
 "%10>=2 && (n%100<10 || n%100>=20) ? 2 : 3);\n"
-"X-Generator: Lokalize 1.0\n"
+"X-Generator: Lokalize 1.1\n"
 
 # type: TH
 #. type: TH
@@ -155,9 +155,6 @@ msgstr "B<--config-dir>I<\\ pavadinimas>"
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:61
 #, fuzzy
-#| msgid ""
-#| "sets the user configuration directory to I<name> under $HOME or \"My "
-#| "Documents\\eMy Games\" for windows."
 msgid ""
 "sets the user configuration directory to I<name> under $HOME or \"My "
 "Documents\\eMy Games\" for windows.  You can also specify an absolute path "
@@ -220,14 +217,11 @@ msgstr "B<-e,\\ --editor>I<\\ failas>"
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:77
 #, fuzzy
-#| msgid ""
-#| "start the in-game map editor directly. If I<file> is specified, "
-#| "equivalent to B<-e --load>"
 msgid ""
 "start the in-game map editor directly. If I<file> is specified, equivalent "
 "to B<-l --load>"
 msgstr ""
-"tiesiogiai paleidžia ingertuotą žemėlapių redaktorių. Jei nurodytas "
+"tiesiogiai paleidžia integruotą žemėlapių redaktorių. Jei nurodytas "
 "I<failas>, tai yra ekvivalentu B<-e --load>"
 
 # type: TP
@@ -900,7 +894,6 @@ msgstr "TAIP PAT ŽIŪRĖKITE"
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:289
 #, fuzzy
-#| msgid "wesnothd"
 msgid "B<wesnothd>(6)."
 msgstr "wesnothd"
 
@@ -1187,7 +1180,7 @@ msgid ""
 "The number of allowed connections from the same IP. B<0> means infinite. "
 "(default: B<5>)"
 msgstr ""
-"Leidižamų prisijungimų skaičius iš to paties IP. B<0> reiškia begalybė. "
+"Leidžiamų prisijungimų skaičius iš to paties IP. B<0> reiškia begalybė. "
 "(numatyta: B<5>)"
 
 # type: TP
@@ -1520,9 +1513,9 @@ msgid ""
 "connected client's requests to the specified server.  Accepts the same keys "
 "as B<[redirect]>."
 msgstr ""
-"B<[proxy]> Elementas, nurodantis serveriui elgtis kaip proksi ir persiųsti "
-"visus prisijungusius klientus į nurodytą serverį.  Priima tuos pačius raktus "
-"kaip ir B<[redirect]>."
+"B<[proxy]> Elementas, nurodantis serveriui elgtis kaip tarpiniam serveriui "
+"ir persiųsti visus prisijungusius klientus į nurodytą serverį.  Priima tuos "
+"pačius raktus kaip ir B<[redirect]>."
 
 # type: Plain text
 #. type: Plain text
@@ -1749,17 +1742,8 @@ msgstr ""
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:286
 #, fuzzy
-#| msgid "wesnoth"
 msgid "B<wesnoth>(6)."
 msgstr "wesnoth"
-
-# type: Plain text
-#~ msgid "B<wesnoth_editor>(6), B<wesnothd>(6)"
-#~ msgstr "B<wesnoth_editor>(6), B<wesnothd>(6)"
-
-# type: Plain text
-#~ msgid "B<wesnoth>(6), B<wesnoth_editor>(6)"
-#~ msgstr "B<wesnoth>(6), B<wesnoth_editor>(6)"
 
 # type: TP
 #~ msgid "B<-c, --campaign>"
@@ -1768,3 +1752,11 @@ msgstr "wesnoth"
 # type: Plain text
 #~ msgid "goes directly to the campaign selection menu."
 #~ msgstr "iš karto rodo kampanijos pasirinkimo meniu."
+
+# type: Plain text
+#~ msgid "B<wesnoth_editor>(6), B<wesnothd>(6)"
+#~ msgstr "B<wesnoth_editor>(6), B<wesnothd>(6)"
+
+# type: Plain text
+#~ msgid "B<wesnoth>(6), B<wesnoth_editor>(6)"
+#~ msgstr "B<wesnoth>(6), B<wesnoth_editor>(6)"
