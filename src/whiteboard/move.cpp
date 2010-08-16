@@ -132,6 +132,7 @@ bool move::execute()
 	bool move_finished_completely = false;
 
 	arrow_->set_style(arrow::STYLE_HIGHLIGHTED);
+	fake_unit_->set_hidden(true);
 
 	map_location final_location;
 	bool steps_finished;
@@ -202,7 +203,11 @@ bool move::execute()
 		LOG_WB << "Unit disappeared from map during move execution.\n";
 	}
 
-	arrow_->set_style(arrow::STYLE_STANDARD);
+	if (!move_finished_completely)
+	{
+		arrow_->set_style(arrow::STYLE_STANDARD);
+		fake_unit_->set_hidden(false);
+	}
 	return move_finished_completely;
 }
 
