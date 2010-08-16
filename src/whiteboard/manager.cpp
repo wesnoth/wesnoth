@@ -212,14 +212,15 @@ bool manager::allow_leader_to_move(unit const& leader) const
 	return true;
 }
 
-void manager::before_human_turn()
+void manager::on_init_side(bool is_replay)
 {
-	LOG_WB << "before_human_turn(): Current side is " << resources::controller->current_side()
-			<< " and viewing side is" << resources::screen->viewing_side() << "\n";
+	if (is_replay)
+		return;
 
 	validate_viewer_actions();
 	highlighter_.reset(new highlight_visitor(*resources::units, viewer_actions()));
 	wait_for_side_init_ = false;
+	LOG_WB << "on_init_side()\n";
 
 	if (self_activate_once_ && preferences::enable_whiteboard_mode_on_start())
 	{

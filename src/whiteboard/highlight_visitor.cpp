@@ -343,7 +343,8 @@ void highlight_visitor::find_main_highlight()
 	// action destination hexes usually take priority over that
 	mode_ = FIND_MAIN_HIGHLIGHT;
 	assert(main_highlight_.expired());
-	assert(side_actions_->team_index() == resources::screen->viewing_team());
+	LOG_WB << "highlight_visitor::find_main_highlight(): searching in side_actions of size "
+			<< side_actions_->actions().size() << "\n";
 	side_actions::reverse_iterator rend = side_actions_->rend();
 	side_actions::reverse_iterator action = side_actions_->rbegin();
 	for (; action != rend; ++action )

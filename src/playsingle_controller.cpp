@@ -693,8 +693,6 @@ void playsingle_controller::before_human_turn(bool save)
 	if(preferences::turn_bell()) {
 		sound::play_bell(game_config::sounds::turn_bell);
 	}
-
-	resources::whiteboard->before_human_turn();
 }
 
 void playsingle_controller::show_turn_dialog(){
