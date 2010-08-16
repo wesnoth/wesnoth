@@ -90,7 +90,7 @@ public class EmptyProjectNewWizard extends NewWizardTemplate
 			// the project
 			if (page0_.getLocationPath().equals(ResourcesPlugin.getWorkspace().getRoot().getLocation()))
 			{
-				ProjectUtils.createWesnothProject(currentProject, null, page1_.isDataCampaignsProject(),
+				ProjectUtils.createWesnothProject(currentProject, null, true,
 						!page1_.isDataCampaignsProject(), monitor);
 			}
 			else
