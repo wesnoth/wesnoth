@@ -39,18 +39,19 @@ public class WMLParser extends AbstractContentAssistParser {
 				{
 					put(grammarAccess.getWMLRootAccess().getAlternatives(), "rule__WMLRoot__Alternatives");
 					put(grammarAccess.getWMLTagAccess().getAlternatives_4(), "rule__WMLTag__Alternatives_4");
+					put(grammarAccess.getWMLKeyAccess().getAlternatives_4(), "rule__WMLKey__Alternatives_4");
 					put(grammarAccess.getWMLKeyValueAccess().getAlternatives(), "rule__WMLKeyValue__Alternatives");
 					put(grammarAccess.getWMLMacroCallAccess().getAlternatives_3(), "rule__WMLMacroCall__Alternatives_3");
 					put(grammarAccess.getWMLMacroCallAccess().getParamsAlternatives_3_0_0(), "rule__WMLMacroCall__ParamsAlternatives_3_0_0");
-					put(grammarAccess.getWMLMacroParameterAccess().getParamAlternatives_2_0(), "rule__WMLMacroParameter__ParamAlternatives_2_0");
 					put(grammarAccess.getWMLMacroDefineAccess().getAlternatives_1(), "rule__WMLMacroDefine__Alternatives_1");
 					put(grammarAccess.getWMLValueAccess().getValueAlternatives_0(), "rule__WMLValue__ValueAlternatives_0");
 					put(grammarAccess.getWMLTagAccess().getGroup(), "rule__WMLTag__Group__0");
 					put(grammarAccess.getWMLKeyAccess().getGroup(), "rule__WMLKey__Group__0");
+					put(grammarAccess.getWMLKeyAccess().getGroup_3(), "rule__WMLKey__Group_3__0");
 					put(grammarAccess.getWMLMacroCallAccess().getGroup(), "rule__WMLMacroCall__Group__0");
-					put(grammarAccess.getWMLMacroParameterAccess().getGroup(), "rule__WMLMacroParameter__Group__0");
 					put(grammarAccess.getWMLArrayCallAccess().getGroup(), "rule__WMLArrayCall__Group__0");
 					put(grammarAccess.getWMLMacroDefineAccess().getGroup(), "rule__WMLMacroDefine__Group__0");
+					put(grammarAccess.getTSTRINGAccess().getGroup(), "rule__TSTRING__Group__0");
 					put(grammarAccess.getWMLRootAccess().getTagsAssignment_0(), "rule__WMLRoot__TagsAssignment_0");
 					put(grammarAccess.getWMLRootAccess().getMacroCallsAssignment_1(), "rule__WMLRoot__MacroCallsAssignment_1");
 					put(grammarAccess.getWMLRootAccess().getMacroDefinesAssignment_2(), "rule__WMLRoot__MacroDefinesAssignment_2");
@@ -65,11 +66,11 @@ public class WMLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getWMLTagAccess().getEndNameAssignment_6(), "rule__WMLTag__EndNameAssignment_6");
 					put(grammarAccess.getWMLKeyAccess().getNameAssignment_0(), "rule__WMLKey__NameAssignment_0");
 					put(grammarAccess.getWMLKeyAccess().getValueAssignment_2(), "rule__WMLKey__ValueAssignment_2");
+					put(grammarAccess.getWMLKeyAccess().getValueAssignment_3_3(), "rule__WMLKey__ValueAssignment_3_3");
 					put(grammarAccess.getWMLMacroCallAccess().getRelativeAssignment_1(), "rule__WMLMacroCall__RelativeAssignment_1");
 					put(grammarAccess.getWMLMacroCallAccess().getNameAssignment_2(), "rule__WMLMacroCall__NameAssignment_2");
 					put(grammarAccess.getWMLMacroCallAccess().getParamsAssignment_3_0(), "rule__WMLMacroCall__ParamsAssignment_3_0");
 					put(grammarAccess.getWMLMacroCallAccess().getExtraMacrosAssignment_3_1(), "rule__WMLMacroCall__ExtraMacrosAssignment_3_1");
-					put(grammarAccess.getWMLMacroParameterAccess().getParamAssignment_2(), "rule__WMLMacroParameter__ParamAssignment_2");
 					put(grammarAccess.getWMLLuaCodeAccess().getValueAssignment(), "rule__WMLLuaCode__ValueAssignment");
 					put(grammarAccess.getWMLArrayCallAccess().getValueAssignment_1(), "rule__WMLArrayCall__ValueAssignment_1");
 					put(grammarAccess.getWMLMacroDefineAccess().getNameAssignment_0(), "rule__WMLMacroDefine__NameAssignment_0");
@@ -78,8 +79,10 @@ public class WMLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getWMLMacroDefineAccess().getMacroCallsAssignment_1_2(), "rule__WMLMacroDefine__MacroCallsAssignment_1_2");
 					put(grammarAccess.getWMLMacroDefineAccess().getMacroDefinesAssignment_1_3(), "rule__WMLMacroDefine__MacroDefinesAssignment_1_3");
 					put(grammarAccess.getWMLMacroDefineAccess().getTextdomainsAssignment_1_4(), "rule__WMLMacroDefine__TextdomainsAssignment_1_4");
+					put(grammarAccess.getWMLMacroDefineAccess().getValuesAssignment_1_5(), "rule__WMLMacroDefine__ValuesAssignment_1_5");
 					put(grammarAccess.getWMLTextdomainAccess().getNameAssignment(), "rule__WMLTextdomain__NameAssignment");
 					put(grammarAccess.getWMLValueAccess().getValueAssignment(), "rule__WMLValue__ValueAssignment");
+					put(grammarAccess.getEQUAL_PARSEAccess().getValAssignment(), "rule__EQUAL_PARSE__ValAssignment");
 				}
 			};
 		}

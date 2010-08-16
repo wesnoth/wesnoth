@@ -22,7 +22,7 @@ WMLTag:
 	'[' (plus?='+')? name=ID ']'
 		( Tags += WMLTag
 		| Keys += WMLKey
-		| MacroCalls += WMLMacroCall // this generates multiple alternatives
+		| MacroCalls += WMLMacroCall
 		| MacroDefines += WMLMacroDefine
 		| Textdomains += WMLTextdomain
 		)*
@@ -30,20 +30,18 @@ WMLTag:
 	;
 
 WMLKey hidden(WS):
-	(name = ID) '=' value = WMLKeyValue;
+	name = ID '=' value += WMLKeyValue+ (EOL? '+' EOL? value+=WMLKeyValue )* (EOL|SL_COMMENT);
 
 WMLKeyValue:
 	WMLValue | WMLMacroCall | WMLLuaCode | WMLArrayCall;
 	
 WMLMacroCall:
 	'{' (relative?='~')? name=ID
-		( params += (WMLValue | WMLMacroParameter)
+		( params += (WMLValue | WMLTag | EQUAL_PARSE)
 		| extraMacros += WMLMacroCall
 		)*
 	'}';
-	
-WMLMacroParameter: {WMLMacroParameter}
-	'(' param += (WMLValue | WMLTag | WMLMacroCall | WMLKey)* ')';
+
 WMLLuaCode:
 	value = LUA_CODE;
 WMLArrayCall:
@@ -55,6 +53,7 @@ WMLMacroDefine:
 		| MacroCalls += WMLMacroCall
 		| MacroDefines += WMLMacroDefine
 		| Textdomains += WMLTextdomain
+		| Values += WMLValue
 		)*
 	ENDDEF;
 	
@@ -62,8 +61,12 @@ WMLTextdomain:
 	name = TEXTDOMAIN;
 
 WMLValue:
-	value += (ID | STRING |'+'|'~'| ANY_OTHER)+;
+	value = (ID | TSTRING | STRING |'~' | ANY_OTHER);
 
+TSTRING:
+	'_' STRING;
+EQUAL_PARSE:
+	val='=';
 terminal LUA_CODE   : '<<' -> '>>';
 terminal DEFINE     : '#define' !('\n'|'\r')* ('\r'? '\n')?;
 terminal ENDDEF     : '#enddef' !('\n'|'\r')* ('\r'? '\n')?;

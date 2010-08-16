@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.wesnoth.wML.WMLMacroDefine#getMacroCalls <em>Macro Calls</em>}</li>
  *   <li>{@link org.wesnoth.wML.WMLMacroDefine#getMacroDefines <em>Macro Defines</em>}</li>
  *   <li>{@link org.wesnoth.wML.WMLMacroDefine#getTextdomains <em>Textdomains</em>}</li>
+ *   <li>{@link org.wesnoth.wML.WMLMacroDefine#getValues <em>Values</em>}</li>
  * </ul>
  * </p>
  *
@@ -138,5 +139,21 @@ public interface WMLMacroDefine extends EObject
    * @generated
    */
   EList<WMLTextdomain> getTextdomains();
+
+  /**
+   * Returns the value of the '<em><b>Values</b></em>' containment reference list.
+   * The list contents are of type {@link org.wesnoth.wML.WMLValue}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Values</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Values</em>' containment reference list.
+   * @see org.wesnoth.wML.WMLPackage#getWMLMacroDefine_Values()
+   * @model containment="true"
+   * @generated
+   */
+  EList<WMLValue> getValues();
 
 } // WMLMacroDefine

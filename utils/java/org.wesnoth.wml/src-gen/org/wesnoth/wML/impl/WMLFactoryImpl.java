@@ -73,12 +73,12 @@ public class WMLFactoryImpl extends EFactoryImpl implements WMLFactory
       case WMLPackage.WML_KEY: return createWMLKey();
       case WMLPackage.WML_KEY_VALUE: return createWMLKeyValue();
       case WMLPackage.WML_MACRO_CALL: return createWMLMacroCall();
-      case WMLPackage.WML_MACRO_PARAMETER: return createWMLMacroParameter();
       case WMLPackage.WML_LUA_CODE: return createWMLLuaCode();
       case WMLPackage.WML_ARRAY_CALL: return createWMLArrayCall();
       case WMLPackage.WML_MACRO_DEFINE: return createWMLMacroDefine();
       case WMLPackage.WML_TEXTDOMAIN: return createWMLTextdomain();
       case WMLPackage.WML_VALUE: return createWMLValue();
+      case WMLPackage.EQUAL_PARSE: return createEQUAL_PARSE();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -144,17 +144,6 @@ public class WMLFactoryImpl extends EFactoryImpl implements WMLFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public WMLMacroParameter createWMLMacroParameter()
-  {
-    WMLMacroParameterImpl wmlMacroParameter = new WMLMacroParameterImpl();
-    return wmlMacroParameter;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public WMLLuaCode createWMLLuaCode()
   {
     WMLLuaCodeImpl wmlLuaCode = new WMLLuaCodeImpl();
@@ -203,6 +192,17 @@ public class WMLFactoryImpl extends EFactoryImpl implements WMLFactory
   {
     WMLValueImpl wmlValue = new WMLValueImpl();
     return wmlValue;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EQUAL_PARSE createEQUAL_PARSE()
+  {
+    EQUAL_PARSEImpl equaL_PARSE = new EQUAL_PARSEImpl();
+    return equaL_PARSE;
   }
 
   /**

@@ -35,9 +35,6 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLMacroCall/params"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLMacroCall/extraMacros"/>
     </genClasses>
-    <genClasses ecoreClass="WML.ecore#//WMLMacroParameter">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLMacroParameter/param"/>
-    </genClasses>
     <genClasses ecoreClass="WML.ecore#//WMLLuaCode">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//WMLLuaCode/value"/>
     </genClasses>
@@ -51,12 +48,16 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLMacroDefine/MacroCalls"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLMacroDefine/MacroDefines"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLMacroDefine/Textdomains"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLMacroDefine/Values"/>
     </genClasses>
     <genClasses ecoreClass="WML.ecore#//WMLTextdomain">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//WMLTextdomain/name"/>
     </genClasses>
     <genClasses ecoreClass="WML.ecore#//WMLValue">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//WMLValue/value"/>
+    </genClasses>
+    <genClasses ecoreClass="WML.ecore#//EQUAL_PARSE">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//EQUAL_PARSE/val"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

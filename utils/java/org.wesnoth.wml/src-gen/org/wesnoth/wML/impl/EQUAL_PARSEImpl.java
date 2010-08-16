@@ -11,51 +11,52 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import org.wesnoth.wML.EQUAL_PARSE;
 import org.wesnoth.wML.WMLPackage;
-import org.wesnoth.wML.WMLValue;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Value</b></em>'.
+ * An implementation of the model object '<em><b>EQUAL PARSE</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.wesnoth.wML.impl.WMLValueImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link org.wesnoth.wML.impl.EQUAL_PARSEImpl#getVal <em>Val</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class WMLValueImpl extends WMLKeyValueImpl implements WMLValue
+public class EQUAL_PARSEImpl extends MinimalEObjectImpl.Container implements EQUAL_PARSE
 {
   /**
-   * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
+   * The default value of the '{@link #getVal() <em>Val</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getValue()
+   * @see #getVal()
    * @generated
    * @ordered
    */
-  protected static final String VALUE_EDEFAULT = null;
+  protected static final String VAL_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
+   * The cached value of the '{@link #getVal() <em>Val</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getValue()
+   * @see #getVal()
    * @generated
    * @ordered
    */
-  protected String value = VALUE_EDEFAULT;
+  protected String val = VAL_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected WMLValueImpl()
+  protected EQUAL_PARSEImpl()
   {
     super();
   }
@@ -68,7 +69,7 @@ public class WMLValueImpl extends WMLKeyValueImpl implements WMLValue
   @Override
   protected EClass eStaticClass()
   {
-    return WMLPackage.Literals.WML_VALUE;
+    return WMLPackage.Literals.EQUAL_PARSE;
   }
 
   /**
@@ -76,9 +77,9 @@ public class WMLValueImpl extends WMLKeyValueImpl implements WMLValue
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getValue()
+  public String getVal()
   {
-    return value;
+    return val;
   }
 
   /**
@@ -86,12 +87,12 @@ public class WMLValueImpl extends WMLKeyValueImpl implements WMLValue
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setValue(String newValue)
+  public void setVal(String newVal)
   {
-    String oldValue = value;
-    value = newValue;
+    String oldVal = val;
+    val = newVal;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, WMLPackage.WML_VALUE__VALUE, oldValue, value));
+      eNotify(new ENotificationImpl(this, Notification.SET, WMLPackage.EQUAL_PARSE__VAL, oldVal, val));
   }
 
   /**
@@ -104,8 +105,8 @@ public class WMLValueImpl extends WMLKeyValueImpl implements WMLValue
   {
     switch (featureID)
     {
-      case WMLPackage.WML_VALUE__VALUE:
-        return getValue();
+      case WMLPackage.EQUAL_PARSE__VAL:
+        return getVal();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -120,8 +121,8 @@ public class WMLValueImpl extends WMLKeyValueImpl implements WMLValue
   {
     switch (featureID)
     {
-      case WMLPackage.WML_VALUE__VALUE:
-        setValue((String)newValue);
+      case WMLPackage.EQUAL_PARSE__VAL:
+        setVal((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -137,8 +138,8 @@ public class WMLValueImpl extends WMLKeyValueImpl implements WMLValue
   {
     switch (featureID)
     {
-      case WMLPackage.WML_VALUE__VALUE:
-        setValue(VALUE_EDEFAULT);
+      case WMLPackage.EQUAL_PARSE__VAL:
+        setVal(VAL_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -154,8 +155,8 @@ public class WMLValueImpl extends WMLKeyValueImpl implements WMLValue
   {
     switch (featureID)
     {
-      case WMLPackage.WML_VALUE__VALUE:
-        return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
+      case WMLPackage.EQUAL_PARSE__VAL:
+        return VAL_EDEFAULT == null ? val != null : !VAL_EDEFAULT.equals(val);
     }
     return super.eIsSet(featureID);
   }
@@ -171,10 +172,10 @@ public class WMLValueImpl extends WMLKeyValueImpl implements WMLValue
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (value: ");
-    result.append(value);
+    result.append(" (val: ");
+    result.append(val);
     result.append(')');
     return result.toString();
   }
 
-} //WMLValueImpl
+} //EQUAL_PARSEImpl

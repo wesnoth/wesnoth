@@ -30,8 +30,8 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WMLKey">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="value" eType="#//WMLKeyValue"
-        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" upperBound="-1"
+        eType="#//WMLKeyValue" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WMLKeyValue"/>
   <eClassifiers xsi:type="ecore:EClass" name="WMLMacroCall" eSuperTypes="#//WMLKeyValue">
@@ -41,10 +41,6 @@
         eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="extraMacros" upperBound="-1"
         eType="#//WMLMacroCall" containment="true"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="WMLMacroParameter">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="param" upperBound="-1"
-        eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WMLLuaCode" eSuperTypes="#//WMLKeyValue">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -65,12 +61,16 @@
         eType="#//WMLMacroDefine" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="Textdomains" upperBound="-1"
         eType="#//WMLTextdomain" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="Values" upperBound="-1"
+        eType="#//WMLValue" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WMLTextdomain">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WMLValue" eSuperTypes="#//WMLKeyValue">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" unique="false" upperBound="-1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EQUAL_PARSE">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="val" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
 </ecore:EPackage>

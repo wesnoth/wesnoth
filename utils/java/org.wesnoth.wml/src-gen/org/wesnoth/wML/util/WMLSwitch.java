@@ -132,13 +132,6 @@ public class WMLSwitch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case WMLPackage.WML_MACRO_PARAMETER:
-      {
-        WMLMacroParameter wmlMacroParameter = (WMLMacroParameter)theEObject;
-        T result = caseWMLMacroParameter(wmlMacroParameter);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case WMLPackage.WML_LUA_CODE:
       {
         WMLLuaCode wmlLuaCode = (WMLLuaCode)theEObject;
@@ -174,6 +167,13 @@ public class WMLSwitch<T>
         WMLValue wmlValue = (WMLValue)theEObject;
         T result = caseWMLValue(wmlValue);
         if (result == null) result = caseWMLKeyValue(wmlValue);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case WMLPackage.EQUAL_PARSE:
+      {
+        EQUAL_PARSE equaL_PARSE = (EQUAL_PARSE)theEObject;
+        T result = caseEQUAL_PARSE(equaL_PARSE);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -262,22 +262,6 @@ public class WMLSwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Macro Parameter</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Macro Parameter</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseWMLMacroParameter(WMLMacroParameter object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Lua Code</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -353,6 +337,22 @@ public class WMLSwitch<T>
    * @generated
    */
   public T caseWMLValue(WMLValue object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>EQUAL PARSE</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>EQUAL PARSE</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseEQUAL_PARSE(EQUAL_PARSE object)
   {
     return null;
   }
