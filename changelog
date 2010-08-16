@@ -21,6 +21,9 @@ Version 1.9.0-svn:
    * Heir to the Throne:
      * Made 'Cliffs of Thoria' much easier.
      * Made 'Isle of the Damned' slightly easier.
+   * Liberty:
+     * Increased the difficulty of 'Unlawful Orders', 'The Grey Woods' and 'The
+       Hunters' and 'Glory'.
    * Northern Rebirth:
      * In Showdown, you recover full gold only if Sisal survived the previous
        scenario.
@@ -31,6 +34,9 @@ Version 1.9.0-svn:
      * In 'Vengeance', the final objective is now revealed at the beginning of
        the scenario.
      * New images for the Infantry Lieutenant and Commander by Rhyging5
+   * Scenarios in Eastern Invasion, Liberty, Northern Rebirth, Son of the
+     Black-Eye and The Rise of Wesnoth which feature computer-controlled allies
+     now allow you to affect their behavior via the right-click menu.
  * Graphics
    * Added new portraits for: the Orc Archer, Crossbowman, Slurbow, Sayer,
      several new Orc Grunt line alternates, Draug and one alternate, Ghoul,
@@ -224,7 +230,7 @@ Version 1.9.0-svn:
      terrain effect can pass them.
    * Added [gold_carryover] tag to the [objectives] tag.
    * Added [note] tag to the [objectives] tag.
-   * Added caption= key to the [objective] tag.
+   * Added caption= and show_turn_counter= keys to the [objective] tag.
  * Miscellaneous and bug fixes:
    * Added help entry when new unit is created directly in the recall list
    * Defaulted log level to warning again
