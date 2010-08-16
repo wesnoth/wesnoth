@@ -104,7 +104,8 @@ move::~move()
 		{
 			if (move_ptr move = boost::dynamic_pointer_cast<class move>(*action))
 			{
-				move->fake_unit_->set_ghosted(true);
+				if (move->fake_unit_)
+					move->fake_unit_->set_ghosted(true);
 			}
 		}
 	}
