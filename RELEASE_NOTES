@@ -33,6 +33,57 @@ directory so that it can be compiled with same C++ compiler as the engine.
 
 ***
 
+>>> Network: <<<
+
+The  entire  network module  has  been  rewritten  using Boost's  asio
+library as part of a GSoC 2010 project by Guillermo Biset (billynux.)
+
+The work was divided into two parts:
+
+* Writing  a library  to help  develop asynchronous  sever  and client
+  network applications.
+* Rewriting the Wesnoth network implementation to use this library.
+
+-- ANA: --
+
+ANA (stands  for Asynchronous  Network API) is  an API and  library to
+help developers code their  own server and client applications without
+having to deal with the many details of network programming.
+
+ANA  is  implemented with  Boost's  Asynchronous Input/Output  Library
+(asio) and  features a natural asynchronous (i.e.  non blocking) model
+of computation.  One important feature that must be taken into account
+is  the fact that  the flow  of control  is reversed  from synchronous
+implementation of network applications.
+
+In  our particular  case,  old implementations  for  users of  network
+features would constantly  poll the network implementation questioning
+whether some  event had occurred. Now,  it is the  network module (the
+ANA library) that will invoke a  given handler to let the user know of
+an event.
+
+You can find out more about what  ANA is and what it's good for if you
+compile the LaTeX document contained  in doc/ana and you can check out
+the  API   and  implementation   details  in  the   doxygen  generated
+documentation (e.g. run "doxygen Doxyfile" in src/ana.)
+
+-- Network Implementation: --
+
+The new network  implementation uses the ANA library,  the old network
+API (network.hpp) is  mapped to a network manager  that is the handler
+for  the  events  generated  by  ANA.  Even  though  from  the  user's
+perspective control  flow still remains the same,  some simplicity and
+overall performance has been achieved.
+
+-- New Network Implementation Proposal: --
+
+A new  network API was  proposed in network_async.hpp, however  it was
+judged that rewriting the  existent network user's code to accommodate
+this new  API must  be a thoroughly  thought through endeavor  and was
+thus postponed to better wrap up the GSoC project.
+
+
+***
 
 >>> Terrain: <<<
 
