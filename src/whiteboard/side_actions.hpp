@@ -92,13 +92,6 @@ public:
 	 */
 	void clear() { actions_.clear(); }
 
-//	/**
-//	 * Inserts a move at the specified position. The begin() and end() functions might prove useful here.
-//	 * @return The inserted move's position.
-//	 */
-//	iterator insert_move(const map_location& source_hex, const map_location& target_hex,
-//			iterator position, arrow_ptr arrow, fake_unit_ptr fake_unit);
-
 	/**
 	 * Queues a move to be executed last
 	 * @return The queued move's position

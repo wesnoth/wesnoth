@@ -194,13 +194,6 @@ side_actions::iterator side_actions::execute(side_actions::iterator position)
 	}
 }
 
-//side_actions::iterator side_actions::insert_move(const map_location& source_hex, const map_location& target_hex, side_actions::iterator position,
-//		arrow_ptr arrow, fake_unit_ptr fake_unit)
-//{
-//	action_ptr action(new move(source_hex, target_hex, arrow, fake_unit));
-//	return insert_action(position, action);
-//}
-
 side_actions::iterator side_actions::queue_move(const pathfind::marked_route& route, arrow_ptr arrow, fake_unit_ptr fake_unit)
 {
 	move_ptr new_move;
