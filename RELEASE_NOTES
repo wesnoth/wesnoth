@@ -145,7 +145,7 @@ Once you have some planned actions defined, readily identifiable by the numbers 
 
 * Out-of-turn planning doesn't reliably work while units are moving. Concretely it works fine for multiplayer games, not so well against the AI since it plays fast.
 * Disabling enemy moves tracking might help with out-of-turn planning.
-* The planning system hasn't been tested against the whole range of possible WML events, some of them might still cause crashes. However succesful tests included the tutorial, the "test" scenario, Dark Forecast, the first scenario of Legend of Wesmere. A New Land crashes if you try use the special scenario actions (build, etc.) on a unit that has a planned action defined.
+* The planning system hasn't been tested against the whole range of possible WML events, some of them might still cause crashes. However succesful tests included the tutorial, the "test" scenario, Dark Forecast, the first scenario of Legend of Wesmere.
 * The sidebar shows unit information only when hovering over the future destination of a unit (for instance, if it has two moves defined, over the second move's ghosted unit), and not over the unit itself, which is not very intuitive.
 * There's no interaction between the whiteboard and the game clock, therefore you won't get any time credit for planned moves until they are executed.
 
