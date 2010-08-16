@@ -359,7 +359,8 @@ void manager::on_mouseover_change(const map_location& hex)
 		hidden_unit_hex_ = map_location();
 	}
 
-	//if (!resources::screen->selected_hex().valid() && highlighter_)
+	//@todo Right now the planned actions of the current selected unit won't get priority,
+	// see what we want to do with the UI in that case.
 	if (!has_temp_move() && highlighter_)
 	{
 		highlighter_->set_mouseover_hex(hex);
