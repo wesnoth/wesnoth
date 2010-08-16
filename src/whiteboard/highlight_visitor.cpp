@@ -55,10 +55,11 @@ highlight_visitor::~highlight_visitor()
 
 void highlight_visitor::set_mouseover_hex(const map_location& hex)
 {
-	if (mouseover_hex_.valid())
-	{
-		clear();
-	}
+	clear();
+
+	if (!mouseover_hex_.valid())
+		return;
+
 	scoped_real_unit_map ensure_real_map;
 	mouseover_hex_ = hex;
 	//if we're right over a unit, just highlight all of this unit's actions
@@ -349,6 +350,8 @@ void highlight_visitor::find_main_highlight()
 	// action destination hexes usually take priority over that
 	mode_ = FIND_MAIN_HIGHLIGHT;
 	assert(main_highlight_.expired());
+	LOG_WB << "highlight_visitor::find_main_highlight(): searching in side_actions of size "
+			<< side_actions_->actions().size() << "\n";
 	side_actions::reverse_iterator rend = side_actions_->rend();
 	side_actions::reverse_iterator action = side_actions_->rbegin();
 	for (; action != rend; ++action )
