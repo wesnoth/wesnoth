@@ -1434,7 +1434,9 @@ void connect::layout_children(const SDL_Rect& rect)
 	gold_title_label_.set_location((left+493), top+35);
 	income_title_label_.set_location((left+560), top+35);
 
-	add_local_player_.set_help_string(_("Adds a named hotseat player to the player list"));
+	add_local_player_.set_help_string(("Feature currently disabled."));
+	add_local_player_.set_active(false);
+	add_local_player_.hide(true);
 	add_local_player_.set_location(left, bottom - add_local_player_.height());
 	waiting_label_.set_location(left + gui::ButtonHPadding +
 		add_local_player_.width(), bottom - left_button->height() + 4);
