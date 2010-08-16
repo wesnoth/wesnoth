@@ -511,7 +511,7 @@ bool game::describe_slots() {
 		}
 	}
 	char buf[50];
-	snprintf(buf,sizeof(buf), "%d/%d", available_slots, num_sides);
+	snprintf(buf,sizeof(buf), "%d", available_slots);
 
 	if ((*description_)["slots"] != buf) {
 		description_->set_attr_dup("slots", buf);
