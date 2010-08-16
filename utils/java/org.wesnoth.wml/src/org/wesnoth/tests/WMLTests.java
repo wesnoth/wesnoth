@@ -77,6 +77,13 @@ public abstract class WMLTests extends AbstractXtextTests
 	    }
 	  }
 
+	  protected void showTokenisation(String input) {
+	    List<Token> tokens = getTokens(input);
+	    for (int i = 0; i < tokens.size(); i++) {
+	      Token token = tokens.get(i);
+		  System.out.println(getTokenType(token));
+	    }
+	  }
 	  /**
 	   * check that an input is not tokenised using a particular terminal rule
 	   * */

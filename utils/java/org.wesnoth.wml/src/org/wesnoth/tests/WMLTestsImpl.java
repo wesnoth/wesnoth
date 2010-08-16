@@ -24,10 +24,6 @@ public class WMLTestsImpl extends WMLTests
 		checkTokenisation("abc", ID);
 		checkTokenisation("abc123", ID);
 		checkTokenisation("abc_123", ID);
-
-		//fail as entity is a keyword
-		failTokenisation("entity", ID);
-		failTokenisation("A", ID);
 	}
 	public void testSLCOMMENT(){
 		checkTokenisation("#comment", SL_COMMENT);
@@ -37,10 +33,10 @@ public class WMLTestsImpl extends WMLTests
 
 	public void testTokenSequences(){
 		checkTokenisation("123 abc", ID, WS, ID);
-		checkTokenisation("123 \t#comment\n abc", INT, WS, SL_COMMENT,WS,ID);
+		checkTokenisation("123 \t#comment\n abc", ID, WS, SL_COMMENT,WS,ID);
 
 		//note that no white space is necessary!
-		checkTokenisation("123abc", INT, ID);
+		checkTokenisation("123abc", ID);
 	}
 
 }
