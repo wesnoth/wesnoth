@@ -236,11 +236,13 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 
 				// Show the route from selected unit to mouseover hex
 				// the movement_reset is active only if it's not the unit's turn
+				// Note: we should activate the whiteboard's planned unit map only after this is done,
+				// since the future state includes changes to the units' movement points
 				unit_movement_resetter move_reset(*selected_unit,
 						selected_unit->side() != side_num_);
 
 				{ wb::scoped_planned_pathfind_map future; //< start planned pathfind map scope
-					current_route_ = get_route(selected_unit, dest, waypoints_, viewing_team());
+					current_route_ = get_route(&*selected_unit, dest, waypoints_, viewing_team());
 				} // end planned pathfind map scope
 
 				resources::whiteboard->create_temp_move();
@@ -251,42 +253,49 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 			}
 		}
 
+		unit* un;
 		{ // start planned unit map scope
 			wb::scoped_planned_unit_map planned_unit_map;
-			unit_map::iterator un = mouseover_unit;
+			unit_map::iterator iter = mouseover_unit;
+			if (iter != units_.end())
+				un = &*iter;
+			else
+				un = NULL;
+		} //end planned unit map scope
 
-			if (un != units_.end() && current_paths_.destinations.empty() &&
-				!gui().fogged(un->get_location()))
-			{
-				if (un->side() != side_num_) {
-					//unit under cursor is not on our team, highlight reach
-					unit_movement_resetter move_reset(*un);
+		if (un && current_paths_.destinations.empty() &&
+			!gui().fogged(un->get_location()))
+		{
+			if (un->side() != side_num_) {
+				//unit under cursor is not on our team, highlight reach
+				//Note: planned unit map must be activated after this is done,
+				//since the future state includes changes to units' movement.
+				unit_movement_resetter move_reset(*un);
 
-					bool teleport = un->get_ability_bool("teleport");
+				bool teleport = un->get_ability_bool("teleport");
 
+				{ // start planned unit map scope
+					wb::scoped_planned_pathfind_map planned_pathfind_map;
+					current_paths_ = pathfind::paths(map_,units_,new_hex,teams_,
+														false,teleport,viewing_team(),path_turns_);
+				} // end planned unit map scope
+
+				gui().highlight_reach(current_paths_);
+				enemy_paths_ = true;
+			} else {
+				//unit is on our team, show path if the unit has one
+				const map_location go_to = un->get_goto();
+				if(map_.on_board(go_to)) {
+					pathfind::marked_route route;
 					{ // start planned unit map scope
 						wb::scoped_planned_pathfind_map planned_pathfind_map;
-						current_paths_ = pathfind::paths(map_,units_,new_hex,teams_,
-															false,teleport,viewing_team(),path_turns_);
+						route = get_route(un, go_to, un->waypoints(), current_team());
 					} // end planned unit map scope
-
-					gui().highlight_reach(current_paths_);
-					enemy_paths_ = true;
-				} else {
-					//unit is on our team, show path if the unit has one
-					const map_location go_to = un->get_goto();
-					if(map_.on_board(go_to)) {
-						pathfind::marked_route route;
-						{ // start planned unit map scope
-							wb::scoped_planned_pathfind_map planned_pathfind_map;
-							route = get_route(un, go_to, un->waypoints(), current_team());
-						} // end planned unit map scope
-						gui().set_route(&route);
-					}
-					over_route_ = true;
+					gui().set_route(&route);
 				}
+				over_route_ = true;
 			}
-		} //end planned unit map scope
+		}
 	}
 }
 
@@ -399,7 +408,7 @@ void mouse_handler::add_waypoint(const map_location& loc) {
 	mouse_motion(0,0, false, true);
 }
 
-pathfind::marked_route mouse_handler::get_route(unit_map::const_iterator un, map_location go_to, const std::vector<map_location>& waypoints, team &team)
+pathfind::marked_route mouse_handler::get_route(unit* un, map_location go_to, const std::vector<map_location>& waypoints, team &team)
 {
 	// The pathfinder will check unit visibility (fogged/stealthy).
 	const pathfind::shortest_path_calculator calc(*un, team, units_, teams_, map_);
@@ -665,7 +674,11 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse) {
 		{
 			// if it's not the unit's turn, we reset its moves
 			// and we restore them before the "select" event is raised
-			unit_movement_resetter move_reset(*u, u->side() != side_num_);
+			// Ensure the planned unit map is reapplied afterwards, otherwise it screws up the future state
+			{ // start enforced real unit map scope
+				wb::scoped_real_unit_map real_unit_map;
+				unit_movement_resetter move_reset(*u, u->side() != side_num_);
+			} // end enforced real unit map scope
 			bool teleport = u->get_ability_bool("teleport");
 
 			current_paths_ = pathfind::paths(map_, units_, hex, teams_,

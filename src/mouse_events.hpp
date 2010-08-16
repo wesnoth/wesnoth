@@ -62,7 +62,7 @@ public:
 
 	void add_waypoint(const map_location& loc);
 
-	pathfind::marked_route get_route(unit_map::const_iterator un, map_location go_to, const std::vector<map_location>& waypoints, team &team);
+	pathfind::marked_route get_route(unit* un, map_location go_to, const std::vector<map_location>& waypoints, team &team);
 
 	const pathfind::marked_route& get_current_route() { return current_route_; }
 

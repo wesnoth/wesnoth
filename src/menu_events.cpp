@@ -1666,7 +1666,7 @@ void menu_handler::move_unit_to_loc(const unit_map::const_iterator &ui,
 {
 	assert(ui != units_.end());
 
-	pathfind::marked_route route = mousehandler.get_route(ui, target, ui->waypoints(), teams_[side_num - 1]);
+	pathfind::marked_route route = mousehandler.get_route(&*ui, target, ui->waypoints(), teams_[side_num - 1]);
 
 	if(route.steps.empty())
 		return;
@@ -1711,7 +1711,7 @@ void menu_handler::execute_gotos(mouse_handler &mousehandler, int side)
 			if(fully_moved.count(current_loc))
 				continue;
 
-			pathfind::marked_route route = mousehandler.get_route(ui, goto_loc, ui->waypoints(), teams_[side - 1]);
+			pathfind::marked_route route = mousehandler.get_route(&*ui, goto_loc, ui->waypoints(), teams_[side - 1]);
 
 			if(route.steps.size() <= 1) { // invalid path
 				fully_moved.insert(current_loc);
