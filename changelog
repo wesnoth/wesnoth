@@ -127,6 +127,9 @@ Version 1.9.0-svn:
    * rename TRANSITION_RESTRICTED and TRANSITION_RESTRICTED2 to
      OVERLAY_ROTATION_RESTRICTED and OVERLAY_ROTATION_RESTRICTED2
    * All unused macros are slowly removed to try to get a logical and complete subset of macros
+   * Allow to use local ToD terrain variants in [time_area]
+   * ToD key in terrain [variant] now accept a list of ToD
+   * New key 'set_no_flag' in [tile] which combines 'set_flag' and 'no_flag'
  * Units:
    * Giant Rat moved from DiD to core.
  * User interface:
@@ -177,6 +180,8 @@ Version 1.9.0-svn:
    * New mouseover image instead of simply highlighting the hex
    * Tab completion for :commands and units search function
    * Fixed #15781: On maps with statues player can pick statues team
+   * Fixed move+attack not interrupted when ambushed at destination
+   * Stop disabling mouse during attack+move
  * WML Engine:
    * Deprecated [set_variable]'s random key, use rand instead
    * Renamed [unit][status] healable to unhealable so it can default to 'no'
@@ -204,7 +209,6 @@ Version 1.9.0-svn:
    * Rename all "colour" keys to "color" (in [side] and [label]), same for
      "colour_lock"
    * Allow a [case] value to take comma-separated values
-   * Allow to use local ToD terrain variants in [time_area]
    * Move fog/shroud image definition into game_config.cfg
    * Add new game_config keys "hex_brightening", "hex_semi_brightening",
      "mouseover_image" and "selected_image" to tune mouse interface
@@ -213,13 +217,11 @@ Version 1.9.0-svn:
    * [effect] violate_maximum= (for use when increasing HP) takes a real boolean
      value now instead of taking any non-empty value as "true".
    * Allow checking out terrain defense for units when it's not your turn.
-   * ToD key in terrain [variant] now accept a list of ToD
    * New image path function: dst~BLIT(src[, x, y]) blitting src image on dst
      image at coordinates (x,y)
    * Fix bugs in 'illuminates' when using non-standard values. Now max and
      min_value only clamps the effect of the illuminates bonus, but ToD and
      terrain effect can pass them.
-   * New key 'set_no_flag' in [tile] which combines 'set_flag' and 'no_flag'
    * Added [gold_carryover] tag to the [objectives] tag.
    * Added [note] tag to the [objectives] tag.
    * Added caption= key to the [objective] tag.
