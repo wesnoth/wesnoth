@@ -33,8 +33,15 @@ import org.wesnoth.wML.WMLTag;
  */
 public class WMLJavaValidator extends AbstractWMLJavaValidator
 {
-	@Check
-	public void checkTagName(WMLTag tag)
+//	@Check(CheckType.FAST)
+	public void checkFastTagName(WMLTag tag)
+	{
+		if (!tag.getName().equals(tag.getEndName()))
+			warning("Incorrect closing tag name.", WMLPackage.WML_TAG__END_NAME);
+	}
+
+//	@Check(CheckType.NORMAL)
+	public void checkNormalTagName(WMLTag tag)
 	{
 		CompositeNode node = NodeUtil.getNodeAdapter(tag).getParserNode();
 		if (node != null)
@@ -64,8 +71,6 @@ public class WMLJavaValidator extends AbstractWMLJavaValidator
 					warning("There is no such wml tag name.", WMLPackage.WML_TAG__NAME);
 			}
 		}
-		if (!tag.getName().equals(tag.getEndName()))
-			error("Incorrect closing tag name.", WMLPackage.WML_TAG__END_NAME);
 	}
 
 	@Check(CheckType.EXPENSIVE)
@@ -92,16 +97,4 @@ public class WMLJavaValidator extends AbstractWMLJavaValidator
 	{
 		//TODO: add check for macro existance - by name
 	}
-//	@Check
-//	public void checkGreetingStartsWithCapital(Attributes attr) {
-		//System.out.println("Bla: ");
-//		for (String itm : attr.getName())
-//		{
-//			System.out.println(itm);
-//		}
-//		if (!Character.isUpperCase(attr.getName().charAt(0))) {
-//			warning("Name should start with a capital", MyDslPackage.GREETING__NAME);
-//		}
-//	}
-
 }
