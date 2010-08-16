@@ -376,6 +376,8 @@ void manager::on_gamestate_change()
 
 void manager::create_temp_move()
 {
+	assert(!has_planned_unit_map());
+
 	route_.reset();
 
 	if (!active_ || resources::controller->is_linger_mode()) return;

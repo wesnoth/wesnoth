@@ -222,34 +222,34 @@ void mouse_handler::mouse_motion(int x, int y, const bool browse, bool update)
 				dest = new_hex;
 				dest_un = find_unit(new_hex);
 			}
+		} // end planned pathfind map scope
 
-			if(dest == selected_hex_ || dest_un != units_.end()) {
-				current_route_.steps.clear();
-				gui().set_route(NULL);
-				resources::whiteboard->erase_temp_move();
-			}
-			else if (!current_paths_.destinations.empty() &&
-					 map_.on_board(selected_hex_) && map_.on_board(new_hex))
-			{
-				if (selected_unit != units_.end() && !selected_unit->incapacitated()) {
-					// Show the route from selected unit to mouseover hex
-					// the movement_reset is active only if it's not the unit's turn
-					unit_movement_resetter move_reset(*selected_unit,
-							selected_unit->side() != side_num_);
+		if(dest == selected_hex_ || dest_un != units_.end()) {
+			current_route_.steps.clear();
+			gui().set_route(NULL);
+			resources::whiteboard->erase_temp_move();
+		}
+		else if (!current_paths_.destinations.empty() &&
+				 map_.on_board(selected_hex_) && map_.on_board(new_hex))
+		{
+			if (selected_unit != units_.end() && !selected_unit->incapacitated()) {
 
+				// Show the route from selected unit to mouseover hex
+				// the movement_reset is active only if it's not the unit's turn
+				unit_movement_resetter move_reset(*selected_unit,
+						selected_unit->side() != side_num_);
+
+				{ wb::scoped_planned_pathfind_map future; //< start planned pathfind map scope
 					current_route_ = get_route(selected_unit, dest, waypoints_, viewing_team());
+				} // end planned pathfind map scope
 
-					{ // start enforced real unit map scope
-						wb::scoped_real_unit_map real_unit_map;
-						resources::whiteboard->create_temp_move();
-					} // end enforced real unit map scope
+				resources::whiteboard->create_temp_move();
 
-					if(!browse) {
-						gui().set_route(&current_route_);
-					}
+				if(!browse) {
+					gui().set_route(&current_route_);
 				}
 			}
-		} // end planned pathfind map scope
+		}
 
 		{ // start planned unit map scope
 			wb::scoped_planned_unit_map planned_unit_map;
