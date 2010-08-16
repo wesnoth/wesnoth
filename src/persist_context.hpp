@@ -188,9 +188,9 @@ protected:
 
 	persist_context &add_child(const std::string &key);
 public:
-	virtual bool clear_var(const std::string &) = 0;
+	virtual bool clear_var(const std::string &, bool immediate = false) = 0;
 	virtual config get_var(const std::string &) const = 0;
-	virtual bool set_var(const std::string &, const config &) = 0;
+	virtual bool set_var(const std::string &, const config &, bool immediate = false) = 0;
 	virtual bool start_transaction () = 0;
 	virtual bool end_transaction () = 0;
 	virtual bool cancel_transaction () = 0;
@@ -211,9 +211,9 @@ private:
 
 public:
 	persist_file_context(const std::string &name_space);
-	bool clear_var(const std::string &);
+	bool clear_var(const std::string &, bool immediate = false);
 	config get_var(const std::string &) const;
-	bool set_var(const std::string &, const config &);
+	bool set_var(const std::string &, const config &, bool immediate = false);
 
 	bool start_transaction () {
 		if (in_transaction_)

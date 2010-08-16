@@ -72,7 +72,7 @@ static void get_global_variable(persist_context &ctx, const vconfig &pcfg)
 static void clear_global_variable(persist_context &ctx, const vconfig &pcfg)
 {
 	std::string global = pcfg["global"];
-	ctx.clear_var(global);
+	ctx.clear_var(global,utils::string_bool(pcfg["immediate"]));
 }
 
 static void set_global_variable(persist_context &ctx, const vconfig &pcfg)
@@ -91,7 +91,7 @@ static void set_global_variable(persist_context &ctx, const vconfig &pcfg)
 			for (size_t i = 0; i < arraylen; i++)
 				val.add_child(global,vars.child(local,i));
 		}
-		ctx.set_var(global,val);
+		ctx.set_var(global,val,utils::string_bool(pcfg["immediate"]));
 	}
 }
 void verify_and_get_global_variable(const vconfig &pcfg)
