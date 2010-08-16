@@ -40,7 +40,7 @@ class mapbuilder_visitor;
 class highlight_visitor;
 
 /**
- * This class holds and manages all of the whiteboard's planned actions.
+ * This class is the frontend of the whiteboard framework for the rest of the Wesnoth code.
  */
 class manager : private boost::noncopyable
 {

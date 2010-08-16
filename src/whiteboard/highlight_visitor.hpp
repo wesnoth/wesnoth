@@ -32,7 +32,10 @@ static lg::log_domain log_whiteboard_highlight("whiteboard/highlight");
 namespace wb
 {
 
-
+/**
+ * Visitor that handles highlighting planned actions as you hover over them,
+ * and determine the right target for contextual execution.
+ */
 class highlight_visitor: public wb::visitor
 {
 public:
@@ -50,8 +53,10 @@ public:
 	action_ptr get_bump_target();
 	unit* get_selection_target();
 
+	/// @return the action the currently receives the highlight focus
 	weak_action_ptr get_main_highlight() { return main_highlight_; }
 	typedef std::deque<weak_action_ptr> secondary_highlights_t;
+	/// @return the collection of actions that are highlighted but don't have the focus
 	secondary_highlights_t get_secondary_highlights() { return secondary_highlights_; }
 
 

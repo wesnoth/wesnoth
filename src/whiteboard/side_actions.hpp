@@ -32,6 +32,11 @@ namespace wb
 
 class move;
 
+/**
+ * This internal whiteboard class holds the planned action queue for a team, and offers many
+ * utility methods to create and manipulate them. It maintains an internal data structure
+ * but mostly hides it by providing its own iterators, begin() and end() methods, etc.
+ */
 class side_actions: public boost::enable_shared_from_this<side_actions>
 {
 public:

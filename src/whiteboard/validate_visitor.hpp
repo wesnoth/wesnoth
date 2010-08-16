@@ -26,6 +26,10 @@
 namespace wb
 {
 
+/**
+ * Visits all the actions in the given side_actions, building a future unit map as it goes,
+ * and checking the validity of each action.
+ */
 class validate_visitor: public mapbuilder_visitor
 {
 public:
