@@ -693,14 +693,11 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse) {
 
 		// selection have impact only if we are not observing and it's our unit
 		if ((!commands_disabled || resources::whiteboard->is_active()) && u->side() == gui().viewing_side()) {
-			if (!browse)
+			if (!(browse || resources::whiteboard->unit_has_actions(&*u)))
 			{
 				sound::play_UI_sound("select-unit.wav");
-
-				if (!resources::whiteboard->unit_has_actions(&*u)) {
-					u->set_selecting();
-					game_events::fire("select", hex);
-				}
+				u->set_selecting();
+				game_events::fire("select", hex);
 			}
 			resources::whiteboard->on_select_hex();
 		}
