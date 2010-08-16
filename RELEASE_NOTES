@@ -115,6 +115,14 @@ When reporting bugs, please run wesnoth with the --log-debug=whiteboard command 
 
 ***
 
+A new WML feature is now available in Wesnoth - WML variables can now be stored in a persistent way, allowing scenarios to read and write persistent WML variables, both in singleplayer (from local machine) and in multiplayer (from other players across the network). This allows WML authors to store/access persistent data 'in context' of a specific campaign/add-on/group of addons/ group of games, allowing things like 'achievements' or 'massive multiplayer campaigns' to be implemented.
+
+Documentation of this feature is provided at http://wiki.wesnoth.org/PersistenceWML	
+
+Support for this feature was coded by Jody Northup (Upthorn), during Google Summer of Code 2010.
+
+***
+
 REPLACE ME WITH CONTENT...
 
 ***
