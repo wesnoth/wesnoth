@@ -35,6 +35,7 @@ import org.wesnoth.wML.WMLPackage;
  * <ul>
  *   <li>{@link org.wesnoth.wML.impl.WMLKeyImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.wesnoth.wML.impl.WMLKeyImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link org.wesnoth.wML.impl.WMLKeyImpl#getEol <em>Eol</em>}</li>
  * </ul>
  * </p>
  *
@@ -71,6 +72,26 @@ public class WMLKeyImpl extends MinimalEObjectImpl.Container implements WMLKey
    * @ordered
    */
   protected EList<WMLKeyValue> value;
+
+  /**
+   * The default value of the '{@link #getEol() <em>Eol</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getEol()
+   * @generated
+   * @ordered
+   */
+  protected static final String EOL_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getEol() <em>Eol</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getEol()
+   * @generated
+   * @ordered
+   */
+  protected String eol = EOL_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -135,6 +156,29 @@ public class WMLKeyImpl extends MinimalEObjectImpl.Container implements WMLKey
    * <!-- end-user-doc -->
    * @generated
    */
+  public String getEol()
+  {
+    return eol;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setEol(String newEol)
+  {
+    String oldEol = eol;
+    eol = newEol;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, WMLPackage.WML_KEY__EOL, oldEol, eol));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -160,6 +204,8 @@ public class WMLKeyImpl extends MinimalEObjectImpl.Container implements WMLKey
         return getName();
       case WMLPackage.WML_KEY__VALUE:
         return getValue();
+      case WMLPackage.WML_KEY__EOL:
+        return getEol();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -182,6 +228,9 @@ public class WMLKeyImpl extends MinimalEObjectImpl.Container implements WMLKey
         getValue().clear();
         getValue().addAll((Collection<? extends WMLKeyValue>)newValue);
         return;
+      case WMLPackage.WML_KEY__EOL:
+        setEol((String)newValue);
+        return;
     }
     super.eSet(featureID, newValue);
   }
@@ -202,6 +251,9 @@ public class WMLKeyImpl extends MinimalEObjectImpl.Container implements WMLKey
       case WMLPackage.WML_KEY__VALUE:
         getValue().clear();
         return;
+      case WMLPackage.WML_KEY__EOL:
+        setEol(EOL_EDEFAULT);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -220,6 +272,8 @@ public class WMLKeyImpl extends MinimalEObjectImpl.Container implements WMLKey
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case WMLPackage.WML_KEY__VALUE:
         return value != null && !value.isEmpty();
+      case WMLPackage.WML_KEY__EOL:
+        return EOL_EDEFAULT == null ? eol != null : !EOL_EDEFAULT.equals(eol);
     }
     return super.eIsSet(featureID);
   }
@@ -237,6 +291,8 @@ public class WMLKeyImpl extends MinimalEObjectImpl.Container implements WMLKey
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (name: ");
     result.append(name);
+    result.append(", eol: ");
+    result.append(eol);
     result.append(')');
     return result.toString();
   }

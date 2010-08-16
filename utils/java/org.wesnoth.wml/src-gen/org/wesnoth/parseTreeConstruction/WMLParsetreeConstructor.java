@@ -865,11 +865,11 @@ protected class WMLTag_RightSquareBracketKeyword_7 extends KeywordToken  {
 /************ begin Rule WMLKey ****************
  *
  * WMLKey hidden(WS):
- * 	name=ID "=" value+=WMLKeyValue* (EOL? "+" EOL? value+=WMLKeyValue+)* (EOL | SL_COMMENT);
+ * 	name=ID "=" value+=WMLKeyValue* (EOL? "+" EOL? value+=WMLKeyValue+)* eol=(EOL | SL_COMMENT);
  *
  **/
 
-// name=ID "=" value+=WMLKeyValue* (EOL? "+" EOL? value+=WMLKeyValue+)* (EOL | SL_COMMENT)
+// name=ID "=" value+=WMLKeyValue* (EOL? "+" EOL? value+=WMLKeyValue+)* eol=(EOL | SL_COMMENT)
 protected class WMLKey_Group extends GroupToken {
 	
 	public WMLKey_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -884,7 +884,7 @@ protected class WMLKey_Group extends GroupToken {
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new WMLKey_Alternatives_4(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new WMLKey_EolAssignment_4(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -1093,38 +1093,16 @@ protected class WMLKey_ValueAssignment_3_3 extends AssignmentToken  {
 }
 
 
-// EOL | SL_COMMENT
-protected class WMLKey_Alternatives_4 extends AlternativesToken {
-
-	public WMLKey_Alternatives_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+// eol=(EOL | SL_COMMENT)
+protected class WMLKey_EolAssignment_4 extends AssignmentToken  {
+	
+	public WMLKey_EolAssignment_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
-	public Alternatives getGrammarElement() {
-		return grammarAccess.getWMLKeyAccess().getAlternatives_4();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new WMLKey_EOLTerminalRuleCall_4_0(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// EOL
-protected class WMLKey_EOLTerminalRuleCall_4_0 extends UnassignedTextToken {
-
-	public WMLKey_EOLTerminalRuleCall_4_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public RuleCall getGrammarElement() {
-		return grammarAccess.getWMLKeyAccess().getEOLTerminalRuleCall_4_0();
+	public Assignment getGrammarElement() {
+		return grammarAccess.getWMLKeyAccess().getEolAssignment_4();
 	}
 
     @Override
@@ -1137,8 +1115,24 @@ protected class WMLKey_EOLTerminalRuleCall_4_0 extends UnassignedTextToken {
 		}	
 	}
 
-}
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("eol",true)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("eol");
+		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getWMLKeyAccess().getEolEOLTerminalRuleCall_4_0_0(), value, null)) {
+			type = AssignmentType.TERMINAL_RULE_CALL;
+			element = grammarAccess.getWMLKeyAccess().getEolEOLTerminalRuleCall_4_0_0();
+			return obj;
+		}
+		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getWMLKeyAccess().getEolSL_COMMENTTerminalRuleCall_4_0_1(), value, null)) {
+			type = AssignmentType.TERMINAL_RULE_CALL;
+			element = grammarAccess.getWMLKeyAccess().getEolSL_COMMENTTerminalRuleCall_4_0_1();
+			return obj;
+		}
+		return null;
+	}
 
+}
 
 
 /************ end Rule WMLKey ****************/

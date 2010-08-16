@@ -588,15 +588,54 @@ ruleWMLKey returns [EObject current=null]
 	    }
 
 )
-)+)*(RULE_EOL
-    { 
-    createLeafNode(grammarAccess.getWMLKeyAccess().getEOLTerminalRuleCall_4_0(), null); 
-    }
+)+)*(
+(
+(
+		lv_eol_7_1=RULE_EOL
+		{
+			createLeafNode(grammarAccess.getWMLKeyAccess().getEolEOLTerminalRuleCall_4_0_0(), "eol"); 
+		}
+		{
+	        if ($current==null) {
+	            $current = factory.create(grammarAccess.getWMLKeyRule().getType().getClassifier());
+	            associateNodeWithAstElement(currentNode, $current);
+	        }
+	        try {
+	       		set(
+	       			$current, 
+	       			"eol",
+	        		lv_eol_7_1, 
+	        		"EOL", 
+	        		lastConsumedNode);
+	        } catch (ValueConverterException vce) {
+				handleValueConverterException(vce);
+	        }
+	    }
 
-    |RULE_SL_COMMENT
-    { 
-    createLeafNode(grammarAccess.getWMLKeyAccess().getSL_COMMENTTerminalRuleCall_4_1(), null); 
-    }
+    |		lv_eol_7_2=RULE_SL_COMMENT
+		{
+			createLeafNode(grammarAccess.getWMLKeyAccess().getEolSL_COMMENTTerminalRuleCall_4_0_1(), "eol"); 
+		}
+		{
+	        if ($current==null) {
+	            $current = factory.create(grammarAccess.getWMLKeyRule().getType().getClassifier());
+	            associateNodeWithAstElement(currentNode, $current);
+	        }
+	        try {
+	       		set(
+	       			$current, 
+	       			"eol",
+	        		lv_eol_7_2, 
+	        		"SL_COMMENT", 
+	        		lastConsumedNode);
+	        } catch (ValueConverterException vce) {
+				handleValueConverterException(vce);
+	        }
+	    }
+
+)
+
+)
 ))
 ;
 finally {

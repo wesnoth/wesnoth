@@ -39,7 +39,7 @@ public class WMLParser extends AbstractContentAssistParser {
 				{
 					put(grammarAccess.getWMLRootAccess().getAlternatives(), "rule__WMLRoot__Alternatives");
 					put(grammarAccess.getWMLTagAccess().getAlternatives_4(), "rule__WMLTag__Alternatives_4");
-					put(grammarAccess.getWMLKeyAccess().getAlternatives_4(), "rule__WMLKey__Alternatives_4");
+					put(grammarAccess.getWMLKeyAccess().getEolAlternatives_4_0(), "rule__WMLKey__EolAlternatives_4_0");
 					put(grammarAccess.getWMLKeyValueAccess().getAlternatives(), "rule__WMLKeyValue__Alternatives");
 					put(grammarAccess.getWMLMacroCallAccess().getAlternatives_4(), "rule__WMLMacroCall__Alternatives_4");
 					put(grammarAccess.getWMLMacroCallAccess().getParamsAlternatives_4_0_0(), "rule__WMLMacroCall__ParamsAlternatives_4_0_0");
@@ -73,6 +73,7 @@ public class WMLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getWMLKeyAccess().getNameAssignment_0(), "rule__WMLKey__NameAssignment_0");
 					put(grammarAccess.getWMLKeyAccess().getValueAssignment_2(), "rule__WMLKey__ValueAssignment_2");
 					put(grammarAccess.getWMLKeyAccess().getValueAssignment_3_3(), "rule__WMLKey__ValueAssignment_3_3");
+					put(grammarAccess.getWMLKeyAccess().getEolAssignment_4(), "rule__WMLKey__EolAssignment_4");
 					put(grammarAccess.getWMLMacroCallAccess().getPointAssignment_1(), "rule__WMLMacroCall__PointAssignment_1");
 					put(grammarAccess.getWMLMacroCallAccess().getRelativeAssignment_2(), "rule__WMLMacroCall__RelativeAssignment_2");
 					put(grammarAccess.getWMLMacroCallAccess().getNameAssignment_3(), "rule__WMLMacroCall__NameAssignment_3");

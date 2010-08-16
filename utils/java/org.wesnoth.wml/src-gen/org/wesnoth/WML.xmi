@@ -88,9 +88,11 @@
           <terminal xsi:type="xtext:RuleCall" rule="//@rules.3"/>
         </elements>
       </elements>
-      <elements xsi:type="xtext:Alternatives">
-        <elements xsi:type="xtext:RuleCall" rule="//@rules.26"/>
-        <elements xsi:type="xtext:RuleCall" rule="//@rules.29"/>
+      <elements xsi:type="xtext:Assignment" feature="eol" operator="=">
+        <terminal xsi:type="xtext:Alternatives">
+          <elements xsi:type="xtext:RuleCall" rule="//@rules.26"/>
+          <elements xsi:type="xtext:RuleCall" rule="//@rules.29"/>
+        </terminal>
       </elements>
     </alternatives>
   </rules>

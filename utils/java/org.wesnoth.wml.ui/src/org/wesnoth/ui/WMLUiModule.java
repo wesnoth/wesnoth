@@ -18,6 +18,7 @@ import org.eclipse.xtext.ui.editor.autoedit.DefaultAutoEditStrategy;
 import org.eclipse.xtext.ui.editor.bracketmatching.IBracketMatcher;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalComparator;
+import org.eclipse.xtext.ui.editor.folding.DefaultFoldingRegionProvider;
 import org.eclipse.xtext.ui.editor.hyperlinking.HyperlinkHelper;
 import org.eclipse.xtext.ui.editor.outline.transformer.ISemanticModelTransformer;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.HighlightingReconciler;
@@ -30,6 +31,7 @@ import org.wesnoth.ui.contentassist.WMLContentAssistContext;
 import org.wesnoth.ui.contentassist.WMLProposalComparator;
 import org.wesnoth.ui.editor.WMLAbstractDirtyEditorCallback;
 import org.wesnoth.ui.editor.WMLEditor;
+import org.wesnoth.ui.folding.WMLFoldingRegionProvider;
 import org.wesnoth.ui.labeling.WMLLabelProvider;
 import org.wesnoth.ui.navigation.WMLHyperlinkHelper;
 import org.wesnoth.ui.outline.WMLTransformer;
@@ -144,5 +146,10 @@ public class WMLUiModule extends org.wesnoth.ui.AbstractWMLUiModule
 	public Class<? extends IXtextEditorCallback> bindIXtextEditorCallback()
 	{
 		return WMLAbstractDirtyEditorCallback.class;
+	}
+
+	public Class<? extends DefaultFoldingRegionProvider> bindDefaultFoldingRegionProvider()
+	{
+		return WMLFoldingRegionProvider.class;
 	}
 }
