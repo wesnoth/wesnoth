@@ -236,6 +236,8 @@ Version 1.9.0-svn:
      based on difficulty simpler), ON_SIGHTING (a substitute for sighted events)
    * Removed WML macros: NEUTRAL_SIDE
  * Miscellaneous and bug fixes:
+   * Added a network library for asynchronous server & client applications (ANA)
+   * Rewrote the network module using this (ANA) library
    * Added help entry when new unit is created directly in the recall list
    * Defaulted log level to warning again
    * better fix for bug 14765 now that string freeze is off
