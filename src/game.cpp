@@ -1805,8 +1805,8 @@ static int process_command_args(int argc, char** argv) {
 			<< "                               'all' can be used to match any log domain.\n"
 			<< "                               Available levels: error, warning, info, debug.\n"
 			<< "                               By default the 'error' level is used.\n"
-			<< "  --logdomains [filter]        lists defined log domains containing filter and\n"
-			<< "                               exits.\n"
+			<< "  --logdomains [filter]        lists defined log domains (only the ones containing\n"
+			<< "                               [filter] if used) and exits.\n"
 			<< "  --max-fps                    the maximum fps the game tries to run at. Values\n"
 			<< "                               should be between 1 and 1000, the default is 50.\n"
 			<< "  -m, --multiplayer            starts a multiplayer game. There are additional\n"
@@ -2086,7 +2086,7 @@ static int process_command_args(int argc, char** argv) {
 				if (skipCore == false)
 				{
 					std::cerr << "preprocessing common macros from 'data/core' ...\n";
-					
+
 					// process each folder explicitly to gain speed
 					preprocess_resource(game_config::path + "/data/core/macros",&defines_map);
 					if (skipTerrainGFX == false)
