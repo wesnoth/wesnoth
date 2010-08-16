@@ -15,7 +15,25 @@ Eclipse plugin changelog
 		- caching of preprocessed files. Files that already have been preprocessed will be skipped.
 		- the project macros are read only at the end of the build
 	* The *.map files are opened automatically in the game map editor
-	* The grammar was updated so the editor will support a broader variety of wml code
+	* The grammar was updated so the editor will support a broader variety of wml code.
+	  Even though, the current grammar has 2 unsupported WML Constructs:
+	  1) Attributes with the key name as a macro: (an example: Dead Water campaign/utils/dw-utils.cfg:70)
+		{name}=id
+	  2) Unterminated/unstarted tags. This is used sometimes in macro definitions.
+		(example: Delfadors Memoirs/scenarios/09_Houses_of_the_Undead.cfg, the first 2 macros defined)
+
+		#define macro_start
+			[unit]
+				id=myunit
+		#enddef
+		...
+		#define macro_end
+			[/unit]
+		#enddef
+
+		As a resolve to this issue you could write/re-write the macro so instead of having 2 macros
+		you would have only one + 1 extra argument that will represent the content replaced in between
+
 	* When there are tags that need to be closed, when the user types: '[/' the last
 	  unclosed tag will be closed automatically
 	* The user can specify whether the new project wizard should create the files:
