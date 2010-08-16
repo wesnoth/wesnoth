@@ -2,7 +2,7 @@
 <feature
       id="Wesnoth_Eclipse_Plugin"
       label="Wesnoth User Made Content Plugin"
-      version="0.3.0"
+      version="1.0.0"
       provider-name="Wesnoth">
 
    <description>
@@ -219,6 +219,7 @@ litigation.
       <import plugin="org.eclipse.emf.ecore"/>
       <import plugin="org.eclipse.emf.common"/>
       <import plugin="org.antlr.runtime"/>
+      <import plugin="org.eclipse.xtext.junit" version="1.0.0" match="greaterOrEqual"/>
       <import plugin="org.apache.log4j"/>
       <import plugin="org.wesnoth.wml"/>
       <import plugin="org.eclipse.xtext.ui"/>
@@ -228,6 +229,8 @@ litigation.
       <import plugin="org.eclipse.ui"/>
       <import plugin="org.eclipse.xtext.builder"/>
       <import plugin="org.eclipse.xtext.xtext.ui" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.core.filesystem" version="1.3.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.jdt.core" version="3.6.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.core.runtime"/>
       <import plugin="org.eclipse.core.resources"/>
       <import plugin="org.eclipse.jface.text" version="3.3.0" match="greaterOrEqual"/>
@@ -237,26 +240,28 @@ litigation.
       <import plugin="org.eclipse.ui.console" version="3.4.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.xtext.builder" version="1.0.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.xtext.ui" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui.navigator" version="3.5.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui.navigator.resources"/>
    </requires>
 
    <plugin
          id="org.wesnoth.wml"
          download-size="0"
          install-size="0"
-         version="1.0.0"
+         version="1.1.0"
          unpack="false"/>
 
    <plugin
          id="org.wesnoth.wml.ui"
          download-size="0"
          install-size="0"
-         version="1.0.0"
+         version="1.1.0"
          unpack="false"/>
 
    <plugin
-         id="Wesnoth_Eclipse_Plugin"
+         id="org.wesnoth"
          download-size="0"
          install-size="0"
-         version="0.3.0"/>
+         version="1.0.0"/>
 
 </feature>

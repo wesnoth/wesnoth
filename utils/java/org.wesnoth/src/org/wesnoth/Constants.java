@@ -60,6 +60,9 @@ public class Constants
 	public static final String 	P_WAU_ADDRESS           = "wau_address";
 	public static final String 	P_WAU_PORT              = "wau_port";
 
+	/** Advanced preferences */
+	public static final String	P_ADV_NO_TERRAIN_GFX	= "adv_no_terrain_gfx";
+
 	/** Wizards Constants **/
 	public static final int		WIZ_TextBoxHeight       = 21;
 	public static final int		WIZ_MaxTextBoxesOnPage  = 10;

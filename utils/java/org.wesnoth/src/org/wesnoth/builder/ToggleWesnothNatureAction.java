@@ -12,15 +12,16 @@ import java.util.Iterator;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
+import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IAdaptable;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.jface.action.IAction;
 import org.wesnoth.Constants;
 import org.wesnoth.Logger;
 import org.wesnoth.action.ObjectActionDelegate;
 
-
-public class ToggleNatureAction extends ObjectActionDelegate
+public class ToggleWesnothNatureAction extends ObjectActionDelegate
 {
 	@Override
 	@SuppressWarnings("rawtypes")
@@ -59,7 +60,6 @@ public class ToggleNatureAction extends ObjectActionDelegate
 			IProjectDescription description = project.getDescription();
 			String[] natures = description.getNatureIds();
 
-			boolean removed = false;
 			for (int i = 0; i < natures.length; ++i)
 			{
 				if (Constants.NATURE_WESNOTH.equals(natures[i]))
@@ -69,31 +69,19 @@ public class ToggleNatureAction extends ObjectActionDelegate
 					System.arraycopy(natures, 0, newNatures, 0, i);
 					System.arraycopy(natures, i + 1, newNatures, i, natures.length - i - 1);
 					description.setNatureIds(newNatures);
-					project.setDescription(description, null);
-					removed = true;
-				}
-				if (Constants.NATURE_XTEXT.equals(natures[i]))
-				{
-					// Remove the nature
-					String[] newNatures = new String[natures.length - 1];
-					System.arraycopy(natures, 0, newNatures, 0, i);
-					System.arraycopy(natures, i + 1, newNatures, i, natures.length - i - 1);
-					description.setNatureIds(newNatures);
-					project.setDescription(description, null);
-					removed = true;
+					project.setDescription(description, new NullProgressMonitor());
+					project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
+					return;
 				}
 			}
 
-			if (removed == true)
-				return;
-
 			// Add the natures
-			String[] newNatures = new String[natures.length + 2];
+			String[] newNatures = new String[natures.length + 1];
 			System.arraycopy(natures, 0, newNatures, 0, natures.length);
 			newNatures[natures.length] = Constants.NATURE_WESNOTH;
-			newNatures[natures.length + 1] = Constants.NATURE_XTEXT;
 			description.setNatureIds(newNatures);
-			project.setDescription(description, null);
+			project.setDescription(description, new NullProgressMonitor());
+			project.refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
 		} catch (CoreException e)
 		{
 			Logger.getInstance().logException(e);

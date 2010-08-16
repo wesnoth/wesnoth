@@ -27,7 +27,6 @@ import org.wesnoth.Constants;
 import org.wesnoth.Logger;
 import org.wesnoth.preferences.Preferences;
 
-
 public class PreprocessorUtils
 {
 	private static PreprocessorUtils instance_;
@@ -122,10 +121,12 @@ public class PreprocessorUtils
 				arguments.add(macrosFile);
 			}
 
-			//TODO: remove me when trimming is done
-			if (defines == null)
-				defines = new ArrayList<String>();
-			defines.add("NO_TERRAIN_GFX");
+			if (Preferences.getBool(Constants.P_ADV_NO_TERRAIN_GFX))
+			{
+				if (defines == null)
+					defines = new ArrayList<String>();
+				defines.add("NO_TERRAIN_GFX");
+			}
 
 			if (defines != null && !defines.isEmpty())
 			{

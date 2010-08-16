@@ -1,3 +1,11 @@
+/*******************************************************************************
+ * Copyright (c) 2010 by Timotei Dolean <timotei21@gmail.com>
+ *
+ * This program and the accompanying materials are made available
+ * under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *******************************************************************************/
 package org.wesnoth.preferences;
 
 import org.eclipse.jface.preference.BooleanFieldEditor;
@@ -8,7 +16,6 @@ import org.eclipse.ui.IWorkbenchPreferencePage;
 import org.eclipse.xtext.ui.editor.preferences.fields.LabelFieldEditor;
 import org.wesnoth.Activator;
 import org.wesnoth.Constants;
-
 
 public class WMLToolsPreferencePage extends FieldEditorPreferencePage implements
 		IWorkbenchPreferencePage

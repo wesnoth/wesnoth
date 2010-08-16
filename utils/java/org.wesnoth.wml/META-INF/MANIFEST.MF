@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.wesnoth.wml
 Bundle-Vendor: Wesnoth.org
-Bundle-Version: 1.0.0
+Bundle-Version: 1.1.0
 Bundle-SymbolicName: org.wesnoth.wml; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.xtext,
@@ -17,8 +17,8 @@ Require-Bundle: org.eclipse.xtext,
  org.eclipse.emf.ecore,
  org.eclipse.emf.common,
  org.antlr.runtime,
- org.wesnoth;bundle-version="0.3.0",
- org.eclipse.xtext.junit;bundle-version="1.0.0"
+ org.eclipse.xtext.junit;bundle-version="1.0.0",
+ org.wesnoth;bundle-version="1.0.0"
 Import-Package: org.apache.log4j
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.wesnoth,

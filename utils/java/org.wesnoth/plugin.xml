@@ -481,23 +481,39 @@
       </objectContribution>
       <objectContribution
             adaptable="false"
-            id="plugin.nonWesnothProjectContributions"
+            id="plugin.allProjectContributions"
             nameFilter="*"
             objectClass="org.eclipse.core.resources.IProject">
-         <action
-               class="org.wesnoth.builder.ToggleNatureAction"
-               enablesFor="+"
-               icon="icons/wesnoth-icon_16.png"
-               id="action.nonWesnothProj.addRemoveNature"
-               label="Add/Remove Sample Nature"
-               menubarPath="_wesnoth">
-         </action>
          <action
                class="org.wesnoth.action.RegenerateBuildFiles"
                enablesFor="+"
                id="action.nonWesnothProj.regenBuildFiles"
                label="Regenerate build files"
                menubarPath="_wesnoth">
+         </action>
+         <menu
+               id="org.wesnoth.allProjBuilders"
+               label="Builders"
+               path="_wesnoth">
+            <groupMarker
+                  name="org.wesnoth.buildersMarker">
+            </groupMarker>
+         </menu>
+         <action
+               class="org.wesnoth.builder.ToggleWesnothNatureAction"
+               enablesFor="+"
+               icon="icons/wesnoth-icon_16.png"
+               id="action.nonWesnothProj.addRemoveWesnothNature"
+               label="Add/Remove wesnoth Builder"
+               menubarPath="org.wesnoth.allProjBuilders/org.wesnoth.buildersMarker">
+         </action>
+         <action
+               class="org.wesnoth.builder.ToggleXtextNatureAction"
+               enablesFor="+"
+               icon="icons/wesnoth-icon_16.png"
+               id="action.nonWesnothProj.addRemovextextNature"
+               label="Add/Remove xtext Builder"
+               menubarPath="org.wesnoth.allProjBuilders/org.wesnoth.buildersMarker">
          </action>
       </objectContribution>
    </extension>
@@ -640,6 +656,12 @@
             class="org.wesnoth.preferences.AddonUploadPreferencePage"
             id="wml_plugin_preferences.addon_upload"
             name="Addon Uploader">
+      </page>
+      <page
+            category="wml_plugin_preferences"
+            class="org.wesnoth.preferences.AdvancedPreferencePage"
+            id="wml_plugin_preferences.advanced"
+            name="Advanced Preferences">
       </page>
    </extension>
    <extension

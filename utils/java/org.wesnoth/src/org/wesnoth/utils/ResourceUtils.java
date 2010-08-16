@@ -391,7 +391,7 @@ public class ResourceUtils
 	 * @param resource The resource where to search the id
 	 * @return
 	 */
-	public static String getCampaignID(IFile resource)
+	public static String getCampaignID(IResource resource)
 	{
 		WMLSaxHandler handler = (WMLSaxHandler) getWMLSAXHandlerFromResource(
 				PreprocessorUtils.getInstance().getPreprocessedFilePath(

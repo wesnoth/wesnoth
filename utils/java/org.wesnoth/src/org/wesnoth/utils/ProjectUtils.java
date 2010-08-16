@@ -18,6 +18,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.dialogs.DialogSettings;
 import org.wesnoth.Constants;
+import org.wesnoth.Logger;
 import org.wesnoth.templates.ReplaceableParameter;
 import org.wesnoth.templates.TemplateProvider;
 
@@ -108,11 +109,16 @@ public class ProjectUtils
 
 		monitor.subTask("Creating project '" + handle.getName() + "' ...");
 		// create the project
-		if (description == null)
-			handle.create(monitor);
-		else
-		{
-			handle.create(description, monitor);
+		try{
+			if (description == null)
+				handle.create(monitor);
+			else
+			{
+				handle.create(description, monitor);
+			}
+		}
+		catch (CoreException e) { // project already exists
+			Logger.getInstance().logException(e);
 		}
 
 		if (open)

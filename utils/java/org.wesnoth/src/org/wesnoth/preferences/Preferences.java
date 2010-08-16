@@ -44,6 +44,9 @@ public class Preferences extends AbstractPreferenceInitializer {
 		store.setDefault(Constants.P_WAU_VERBOSE, false);
 		store.setDefault(Constants.P_WAU_ADDRESS, "add-ons.wesnoth.org");
 		store.setDefault(Constants.P_WAU_PORT, 15002);
+
+		// adnvaced
+		store.setDefault(Constants.P_ADV_NO_TERRAIN_GFX, true);
 	}
 
 	/**

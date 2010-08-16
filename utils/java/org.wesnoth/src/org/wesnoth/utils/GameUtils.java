@@ -67,12 +67,11 @@ public class GameUtils
 		{
 			String campaignId = null;
 			String scenarioId = null;
-			if (selectedResource instanceof IFile)
-			{
-				campaignId = ResourceUtils.getCampaignID((IFile)selectedResource);
-				if (scenario == true)
-					scenarioId = ResourceUtils.getScenarioID((IFile)selectedResource);
-			}
+
+			campaignId = ResourceUtils.getCampaignID(selectedResource);
+
+			if (scenario == true && selectedResource instanceof IFile)
+				scenarioId = ResourceUtils.getScenarioID((IFile)selectedResource);
 
 			if (campaignId == null)
 			{
