@@ -200,8 +200,6 @@ Version 1.9.0-svn:
    * Trying to include a missing macro/file is now a fatal error
    * Added #ifhave/#ifnhave for testing existence of files and directories
    * Added [volume] tag, which allows game volume to be changed during scenarios
-   * Added ON_DIFFICULTY, a macro that makes using different values based on
-     difficulty simpler
    * Prototype support for [set_global_variable]
    * Prototype support for [get_global_variable]
    * Prototype support for [clear_global_variable]
@@ -231,6 +229,9 @@ Version 1.9.0-svn:
    * Added [gold_carryover] tag to the [objectives] tag.
    * Added [note] tag to the [objectives] tag.
    * Added caption= and show_turn_counter= keys to the [objective] tag.
+   * New WML macros: ON_DIFFICULTY (a macro that makes using different values
+     based on difficulty simpler), ON_SIGHTING (a substitute for sighted events)
+   * Removed WML macros: NEUTRAL_SIDE
  * Miscellaneous and bug fixes:
    * Added help entry when new unit is created directly in the recall list
    * Defaulted log level to warning again
