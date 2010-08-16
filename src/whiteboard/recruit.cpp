@@ -78,6 +78,7 @@ void recruit::accept(visitor& v)
 bool recruit::execute()
 {
 	assert(valid_);
+	fake_unit_->set_hidden(true);
 	int side_num = team_index() + 1;
 	resources::controller->get_menu_handler().do_recruit(unit_name_, side_num, recruit_hex_);
 	return true;
