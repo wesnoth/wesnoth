@@ -6,10 +6,6 @@ grammar org.wesnoth.WML hidden(EOL, WS, SL_COMMENT)
 generate wML "http://www.wesnoth.org/WML"
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 
-//TODO: add cross-reference for variables
-//handles TODO:
-// - preprocessor commands: #define, #enddef, etc
-
 WMLRoot:
 	( Tags += WMLTag
 	| MacroCalls += WMLMacroCall
@@ -38,7 +34,7 @@ WMLKeyValue:
 	WMLValue | WMLMacroCall | WMLLuaCode | WMLArrayCall;
 	
 WMLMacroCall:
-	'{' (point?='.' '/')? (relative?='~')? name=ID
+	'{' (point?='./')? (relative?='~')? name=ID
 		( params += (WMLValue | MacroTokens)
 		| extraMacros += WMLMacroCall
 		)*
@@ -77,7 +73,7 @@ WMLTextdomain:
 	name = TEXTDOMAIN;
 
 WMLValue:
-	value = (ID | TSTRING | TVAR | STRING |'~' | '.' |'$'|'/' |'(' | ')'| ANY_OTHER);
+	value = (ID | TSTRING | TVAR | STRING |'~' | '.' | './' |'$'|'/' |'(' | ')'| ANY_OTHER);
 
 TSTRING:
 	'_' STRING;

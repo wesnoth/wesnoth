@@ -689,11 +689,11 @@ ruleWMLMacroCall returns [EObject current=null]
     {
         createLeafNode(grammarAccess.getWMLMacroCallAccess().getLeftCurlyBracketKeyword_0(), null); 
     }
-((
 (
-		lv_point_1_0=	'.' 
+(
+		lv_point_1_0=	'./' 
     {
-        createLeafNode(grammarAccess.getWMLMacroCallAccess().getPointFullStopKeyword_1_0_0(), "point"); 
+        createLeafNode(grammarAccess.getWMLMacroCallAccess().getPointFullStopSolidusKeyword_1_0(), "point"); 
     }
  
 	    {
@@ -703,20 +703,16 @@ ruleWMLMacroCall returns [EObject current=null]
 	        }
 	        
 	        try {
-	       		set($current, "point", true, ".", lastConsumedNode);
+	       		set($current, "point", true, "./", lastConsumedNode);
 	        } catch (ValueConverterException vce) {
 				handleValueConverterException(vce);
 	        }
 	    }
 
 )
-)	'/' 
-    {
-        createLeafNode(grammarAccess.getWMLMacroCallAccess().getSolidusKeyword_1_1(), null); 
-    }
 )?(
 (
-		lv_relative_3_0=	'~' 
+		lv_relative_2_0=	'~' 
     {
         createLeafNode(grammarAccess.getWMLMacroCallAccess().getRelativeTildeKeyword_2_0(), "relative"); 
     }
@@ -737,7 +733,7 @@ ruleWMLMacroCall returns [EObject current=null]
 )
 )?(
 (
-		lv_name_4_0=RULE_ID
+		lv_name_3_0=RULE_ID
 		{
 			createLeafNode(grammarAccess.getWMLMacroCallAccess().getNameIDTerminalRuleCall_3_0(), "name"); 
 		}
@@ -750,7 +746,7 @@ ruleWMLMacroCall returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"name",
-	        		lv_name_4_0, 
+	        		lv_name_3_0, 
 	        		"ID", 
 	        		lastConsumedNode);
 	        } catch (ValueConverterException vce) {
@@ -765,7 +761,7 @@ ruleWMLMacroCall returns [EObject current=null]
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getWMLMacroCallAccess().getParamsWMLValueParserRuleCall_4_0_0_0(), currentNode); 
 	    }
-		lv_params_5_1=ruleWMLValue		{
+		lv_params_4_1=ruleWMLValue		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getWMLMacroCallRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -774,7 +770,7 @@ ruleWMLMacroCall returns [EObject current=null]
 	       		add(
 	       			$current, 
 	       			"params",
-	        		lv_params_5_1, 
+	        		lv_params_4_1, 
 	        		"WMLValue", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -786,7 +782,7 @@ ruleWMLMacroCall returns [EObject current=null]
     |		{ 
 	        currentNode=createCompositeNode(grammarAccess.getWMLMacroCallAccess().getParamsMacroTokensParserRuleCall_4_0_0_1(), currentNode); 
 	    }
-		lv_params_5_2=ruleMacroTokens		{
+		lv_params_4_2=ruleMacroTokens		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getWMLMacroCallRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -795,7 +791,7 @@ ruleWMLMacroCall returns [EObject current=null]
 	       		add(
 	       			$current, 
 	       			"params",
-	        		lv_params_5_2, 
+	        		lv_params_4_2, 
 	        		"MacroTokens", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -813,7 +809,7 @@ ruleWMLMacroCall returns [EObject current=null]
 		{ 
 	        currentNode=createCompositeNode(grammarAccess.getWMLMacroCallAccess().getExtraMacrosWMLMacroCallParserRuleCall_4_1_0(), currentNode); 
 	    }
-		lv_extraMacros_6_0=ruleWMLMacroCall		{
+		lv_extraMacros_5_0=ruleWMLMacroCall		{
 	        if ($current==null) {
 	            $current = factory.create(grammarAccess.getWMLMacroCallRule().getType().getClassifier());
 	            associateNodeWithAstElement(currentNode.getParent(), $current);
@@ -822,7 +818,7 @@ ruleWMLMacroCall returns [EObject current=null]
 	       		add(
 	       			$current, 
 	       			"extraMacros",
-	        		lv_extraMacros_6_0, 
+	        		lv_extraMacros_5_0, 
 	        		"WMLMacroCall", 
 	        		currentNode);
 	        } catch (ValueConverterException vce) {
@@ -1672,9 +1668,9 @@ ruleWMLValue returns [EObject current=null]
 	        }
 	    }
 
-    |		lv_value_0_7=	'$' 
+    |		lv_value_0_7=	'./' 
     {
-        createLeafNode(grammarAccess.getWMLValueAccess().getValueDollarSignKeyword_0_6(), "value"); 
+        createLeafNode(grammarAccess.getWMLValueAccess().getValueFullStopSolidusKeyword_0_6(), "value"); 
     }
  
 	    {
@@ -1690,9 +1686,9 @@ ruleWMLValue returns [EObject current=null]
 	        }
 	    }
 
-    |		lv_value_0_8=	'/' 
+    |		lv_value_0_8=	'$' 
     {
-        createLeafNode(grammarAccess.getWMLValueAccess().getValueSolidusKeyword_0_7(), "value"); 
+        createLeafNode(grammarAccess.getWMLValueAccess().getValueDollarSignKeyword_0_7(), "value"); 
     }
  
 	    {
@@ -1708,9 +1704,9 @@ ruleWMLValue returns [EObject current=null]
 	        }
 	    }
 
-    |		lv_value_0_9=	'(' 
+    |		lv_value_0_9=	'/' 
     {
-        createLeafNode(grammarAccess.getWMLValueAccess().getValueLeftParenthesisKeyword_0_8(), "value"); 
+        createLeafNode(grammarAccess.getWMLValueAccess().getValueSolidusKeyword_0_8(), "value"); 
     }
  
 	    {
@@ -1726,9 +1722,9 @@ ruleWMLValue returns [EObject current=null]
 	        }
 	    }
 
-    |		lv_value_0_10=	')' 
+    |		lv_value_0_10=	'(' 
     {
-        createLeafNode(grammarAccess.getWMLValueAccess().getValueRightParenthesisKeyword_0_9(), "value"); 
+        createLeafNode(grammarAccess.getWMLValueAccess().getValueLeftParenthesisKeyword_0_9(), "value"); 
     }
  
 	    {
@@ -1744,9 +1740,27 @@ ruleWMLValue returns [EObject current=null]
 	        }
 	    }
 
-    |		lv_value_0_11=RULE_ANY_OTHER
+    |		lv_value_0_11=	')' 
+    {
+        createLeafNode(grammarAccess.getWMLValueAccess().getValueRightParenthesisKeyword_0_10(), "value"); 
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = factory.create(grammarAccess.getWMLValueRule().getType().getClassifier());
+	            associateNodeWithAstElement(currentNode, $current);
+	        }
+	        
+	        try {
+	       		set($current, "value", lv_value_0_11, null, lastConsumedNode);
+	        } catch (ValueConverterException vce) {
+				handleValueConverterException(vce);
+	        }
+	    }
+
+    |		lv_value_0_12=RULE_ANY_OTHER
 		{
-			createLeafNode(grammarAccess.getWMLValueAccess().getValueANY_OTHERTerminalRuleCall_0_10(), "value"); 
+			createLeafNode(grammarAccess.getWMLValueAccess().getValueANY_OTHERTerminalRuleCall_0_11(), "value"); 
 		}
 		{
 	        if ($current==null) {
@@ -1757,7 +1771,7 @@ ruleWMLValue returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"value",
-	        		lv_value_0_11, 
+	        		lv_value_0_12, 
 	        		"ANY_OTHER", 
 	        		lastConsumedNode);
 	        } catch (ValueConverterException vce) {

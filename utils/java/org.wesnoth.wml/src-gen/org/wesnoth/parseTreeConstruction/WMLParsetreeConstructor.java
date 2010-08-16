@@ -51,9 +51,6 @@ protected class ThisRootNode extends RootToken {
 
 /************ begin Rule WMLRoot ****************
  *
- * //TODO: add cross-reference for variables
- * //handles TODO:
- * // - preprocessor commands: #define, #enddef, etc
  * WMLRoot:
  * 	(Tags+=WMLTag | MacroCalls+=WMLMacroCall | MacroDefines+=WMLMacroDefine | Textdomains+=WMLTextdomain |
  * 	IfDefs+=WMLPreprocIF)*;
@@ -1340,11 +1337,11 @@ protected class WMLKeyValue_WMLArrayCallParserRuleCall_3 extends RuleCallToken {
 /************ begin Rule WMLMacroCall ****************
  *
  * WMLMacroCall:
- * 	"{" (point?="." "/")? relative?="~"? name=ID (params+=(WMLValue | MacroTokens) | extraMacros+=WMLMacroCall)* "}";
+ * 	"{" point?="./"? relative?="~"? name=ID (params+=(WMLValue | MacroTokens) | extraMacros+=WMLMacroCall)* "}";
  *
  **/
 
-// "{" (point?="." "/")? relative?="~"? name=ID (params+=(WMLValue | MacroTokens) | extraMacros+=WMLMacroCall)* "}"
+// "{" point?="./"? relative?="~"? name=ID (params+=(WMLValue | MacroTokens) | extraMacros+=WMLMacroCall)* "}"
 protected class WMLMacroCall_Group extends GroupToken {
 	
 	public WMLMacroCall_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1394,38 +1391,16 @@ protected class WMLMacroCall_LeftCurlyBracketKeyword_0 extends KeywordToken  {
 
 }
 
-// (point?="." "/")?
-protected class WMLMacroCall_Group_1 extends GroupToken {
+// point?="./"?
+protected class WMLMacroCall_PointAssignment_1 extends AssignmentToken  {
 	
-	public WMLMacroCall_Group_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Group getGrammarElement() {
-		return grammarAccess.getWMLMacroCallAccess().getGroup_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new WMLMacroCall_SolidusKeyword_1_1(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
-// point?="."
-protected class WMLMacroCall_PointAssignment_1_0 extends AssignmentToken  {
-	
-	public WMLMacroCall_PointAssignment_1_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public WMLMacroCall_PointAssignment_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Assignment getGrammarElement() {
-		return grammarAccess.getWMLMacroCallAccess().getPointAssignment_1_0();
+		return grammarAccess.getWMLMacroCallAccess().getPointAssignment_1();
 	}
 
     @Override
@@ -1442,36 +1417,13 @@ protected class WMLMacroCall_PointAssignment_1_0 extends AssignmentToken  {
 		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("point");
 		if(Boolean.TRUE.equals(value)) { // org::eclipse::xtext::impl::KeywordImpl
 			type = AssignmentType.KEYWORD;
-			element = grammarAccess.getWMLMacroCallAccess().getPointFullStopKeyword_1_0_0();
+			element = grammarAccess.getWMLMacroCallAccess().getPointFullStopSolidusKeyword_1_0();
 			return obj;
 		}
 		return null;
 	}
 
 }
-
-// "/"
-protected class WMLMacroCall_SolidusKeyword_1_1 extends KeywordToken  {
-	
-	public WMLMacroCall_SolidusKeyword_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
-		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
-	}
-	
-	@Override
-	public Keyword getGrammarElement() {
-		return grammarAccess.getWMLMacroCallAccess().getSolidusKeyword_1_1();
-	}
-
-    @Override
-	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
-		switch(index) {
-			case 0: return new WMLMacroCall_PointAssignment_1_0(lastRuleCallOrigin, this, 0, inst);
-			default: return null;
-		}	
-	}
-
-}
-
 
 // relative?="~"?
 protected class WMLMacroCall_RelativeAssignment_2 extends AssignmentToken  {
@@ -1488,7 +1440,7 @@ protected class WMLMacroCall_RelativeAssignment_2 extends AssignmentToken  {
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new WMLMacroCall_Group_1(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new WMLMacroCall_PointAssignment_1(lastRuleCallOrigin, this, 0, inst);
 			case 1: return new WMLMacroCall_LeftCurlyBracketKeyword_0(lastRuleCallOrigin, this, 1, inst);
 			default: return null;
 		}	
@@ -1524,7 +1476,7 @@ protected class WMLMacroCall_NameAssignment_3 extends AssignmentToken  {
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
 			case 0: return new WMLMacroCall_RelativeAssignment_2(lastRuleCallOrigin, this, 0, inst);
-			case 1: return new WMLMacroCall_Group_1(lastRuleCallOrigin, this, 1, inst);
+			case 1: return new WMLMacroCall_PointAssignment_1(lastRuleCallOrigin, this, 1, inst);
 			case 2: return new WMLMacroCall_LeftCurlyBracketKeyword_0(lastRuleCallOrigin, this, 2, inst);
 			default: return null;
 		}	
@@ -2889,11 +2841,11 @@ protected class WMLTextdomain_NameAssignment extends AssignmentToken  {
 /************ begin Rule WMLValue ****************
  *
  * WMLValue:
- * 	value=(ID | TSTRING | TVAR | STRING | "~" | "." | "$" | "/" | "(" | ")" | ANY_OTHER);
+ * 	value=(ID | TSTRING | TVAR | STRING | "~" | "." | "./" | "$" | "/" | "(" | ")" | ANY_OTHER);
  *
  **/
 
-// value=(ID | TSTRING | TVAR | STRING | "~" | "." | "$" | "/" | "(" | ")" | ANY_OTHER)
+// value=(ID | TSTRING | TVAR | STRING | "~" | "." | "./" | "$" | "/" | "(" | ")" | ANY_OTHER)
 protected class WMLValue_ValueAssignment extends AssignmentToken  {
 	
 	public WMLValue_ValueAssignment(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -2928,24 +2880,29 @@ protected class WMLValue_ValueAssignment extends AssignmentToken  {
 			element = grammarAccess.getWMLValueAccess().getValueFullStopKeyword_0_5();
 			return obj;
 		}
-		if(keywordSerializer.isValid(obj.getEObject(), grammarAccess.getWMLValueAccess().getValueDollarSignKeyword_0_6(), value, null)) {
+		if(keywordSerializer.isValid(obj.getEObject(), grammarAccess.getWMLValueAccess().getValueFullStopSolidusKeyword_0_6(), value, null)) {
 			type = AssignmentType.KEYWORD;
-			element = grammarAccess.getWMLValueAccess().getValueDollarSignKeyword_0_6();
+			element = grammarAccess.getWMLValueAccess().getValueFullStopSolidusKeyword_0_6();
 			return obj;
 		}
-		if(keywordSerializer.isValid(obj.getEObject(), grammarAccess.getWMLValueAccess().getValueSolidusKeyword_0_7(), value, null)) {
+		if(keywordSerializer.isValid(obj.getEObject(), grammarAccess.getWMLValueAccess().getValueDollarSignKeyword_0_7(), value, null)) {
 			type = AssignmentType.KEYWORD;
-			element = grammarAccess.getWMLValueAccess().getValueSolidusKeyword_0_7();
+			element = grammarAccess.getWMLValueAccess().getValueDollarSignKeyword_0_7();
 			return obj;
 		}
-		if(keywordSerializer.isValid(obj.getEObject(), grammarAccess.getWMLValueAccess().getValueLeftParenthesisKeyword_0_8(), value, null)) {
+		if(keywordSerializer.isValid(obj.getEObject(), grammarAccess.getWMLValueAccess().getValueSolidusKeyword_0_8(), value, null)) {
 			type = AssignmentType.KEYWORD;
-			element = grammarAccess.getWMLValueAccess().getValueLeftParenthesisKeyword_0_8();
+			element = grammarAccess.getWMLValueAccess().getValueSolidusKeyword_0_8();
 			return obj;
 		}
-		if(keywordSerializer.isValid(obj.getEObject(), grammarAccess.getWMLValueAccess().getValueRightParenthesisKeyword_0_9(), value, null)) {
+		if(keywordSerializer.isValid(obj.getEObject(), grammarAccess.getWMLValueAccess().getValueLeftParenthesisKeyword_0_9(), value, null)) {
 			type = AssignmentType.KEYWORD;
-			element = grammarAccess.getWMLValueAccess().getValueRightParenthesisKeyword_0_9();
+			element = grammarAccess.getWMLValueAccess().getValueLeftParenthesisKeyword_0_9();
+			return obj;
+		}
+		if(keywordSerializer.isValid(obj.getEObject(), grammarAccess.getWMLValueAccess().getValueRightParenthesisKeyword_0_10(), value, null)) {
+			type = AssignmentType.KEYWORD;
+			element = grammarAccess.getWMLValueAccess().getValueRightParenthesisKeyword_0_10();
 			return obj;
 		}
 		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getWMLValueAccess().getValueIDTerminalRuleCall_0_0(), value, null)) {
@@ -2968,9 +2925,9 @@ protected class WMLValue_ValueAssignment extends AssignmentToken  {
 			element = grammarAccess.getWMLValueAccess().getValueSTRINGTerminalRuleCall_0_3();
 			return obj;
 		}
-		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getWMLValueAccess().getValueANY_OTHERTerminalRuleCall_0_10(), value, null)) {
+		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getWMLValueAccess().getValueANY_OTHERTerminalRuleCall_0_11(), value, null)) {
 			type = AssignmentType.TERMINAL_RULE_CALL;
-			element = grammarAccess.getWMLValueAccess().getValueANY_OTHERTerminalRuleCall_0_10();
+			element = grammarAccess.getWMLValueAccess().getValueANY_OTHERTerminalRuleCall_0_11();
 			return obj;
 		}
 		return null;
