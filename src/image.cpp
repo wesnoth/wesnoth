@@ -956,27 +956,14 @@ static surface get_hexed(const locator& i_locator)
 
 static surface get_scaled_to_hex(const locator& i_locator)
 {
-	// If no scaling needed at this zoom level,
-	// we just use the hexed image.
-	surface image(get_image(i_locator, HEXED));
-	if (zoom != tile_size)
-		return scale_surface(image, zoom, zoom);
-	else
-		return image;
+	surface img = get_image(i_locator, HEXED);
+	return scale_surface(img, zoom, zoom);
 }
 
 static surface get_tod_colored(const locator& i_locator)
 {
-	surface res(get_image(i_locator, SCALED_TO_HEX));
-
-	// Adjusts color if necessary.
-	if (red_adjust != 0 ||
-				green_adjust != 0 || blue_adjust != 0) {
-		res = surface(adjust_surface_color(res,
-					red_adjust, green_adjust, blue_adjust));
-	}
-
-	return res;
+	surface img = get_image(i_locator, SCALED_TO_HEX);
+	return adjust_surface_color(img, red_adjust, green_adjust, blue_adjust);
 }
 
 static surface get_scaled_to_zoom(const locator& i_locator)
@@ -1005,23 +992,12 @@ static surface get_semi_brightened(const locator& i_locator)
 	return surface(brighten_image(image, ftofxp(game_config::hex_semi_brightening)));
 }
 
-surface get_image(const image::locator& i_locator, TYPE type)
-{
-	surface res(NULL);
-	image_cache *imap;
-
-	if(i_locator.is_void())
-		return surface(NULL);
-
-	//translate type to a simpler one when possible
+///translate type to a simpler one when possible
+static TYPE simplify_type(TYPE type){
 	switch(type) {
 	case SCALED_TO_ZOOM:
 		if(zoom == tile_size)
 			type = UNSCALED;
-		break;
-	case SCALED_TO_HEX:
-		if(zoom == tile_size)
-			type = HEXED;
 		break;
 	case BRIGHTENED:
 		if(ftofxp(game_config::hex_brightening) == ftofxp(1.0))
@@ -1035,6 +1011,30 @@ surface get_image(const image::locator& i_locator, TYPE type)
 		break;
 	}
 
+	if(type == TOD_COLORED) {
+		if (red_adjust==0 && green_adjust==0 && blue_adjust==0)
+			type = SCALED_TO_HEX;
+	}
+	
+	if(type == SCALED_TO_HEX) {
+		if(zoom == tile_size)
+			type = HEXED;
+	}
+	
+	return type;
+}
+
+
+surface get_image(const image::locator& i_locator, TYPE type)
+{
+	surface res;
+
+	if(i_locator.is_void())
+		return res;
+
+	type = simplify_type(type);
+
+	image_cache *imap;
 	// select associated cache
 	switch(type) {
 	case UNSCALED:
@@ -1059,7 +1059,7 @@ surface get_image(const image::locator& i_locator, TYPE type)
 		imap = &semi_brightened_images_;
 		break;
 	default:
-		return surface(NULL);
+		return res;
 	}
 
 	// return the image if already cached
@@ -1091,7 +1091,7 @@ surface get_image(const image::locator& i_locator, TYPE type)
 		res = get_semi_brightened(i_locator);
 		break;
 	default:
-		return surface(NULL);
+		return res;
 	}
 
 	// Optimizes surface before storing it
