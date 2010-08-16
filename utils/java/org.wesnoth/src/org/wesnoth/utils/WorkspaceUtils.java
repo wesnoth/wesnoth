@@ -345,7 +345,7 @@ public class WorkspaceUtils
 						if (StringUtils.normalizePath(file.getAbsolutePath()).contains(
 							StringUtils.normalizePath(campaignsDir)))
 						{
-							projectName = "_Campaign_" + file.getName();
+							projectName = "_Mainline_" + file.getName();
 						}
 
 						IProjectDescription description =
