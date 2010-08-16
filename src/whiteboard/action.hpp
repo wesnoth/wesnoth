@@ -26,7 +26,7 @@ namespace wb {
 class visitor;
 
 /**
- * Superclass for all the whiteboard planned actions.
+ * Abstract base class for all the whiteboard planned actions.
  */
 class action
 {
@@ -49,9 +49,7 @@ public:
 	/** Gets called by display when drawing a hex, to allow actions to draw to the screen. */
 	virtual void draw_hex(const map_location& hex) = 0;
 
-	/**
-	 * Indicates whether this hex is the preferred hex to draw the numbering for this action.
-	 */
+	/** Indicates whether this hex is the preferred hex to draw the numbering for this action. */
 	virtual bool is_numbering_hex(const map_location& hex) const = 0;
 
 	/** Return the unit targeted by this action. Null if unit doesn't exist. */

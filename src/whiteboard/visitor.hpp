@@ -26,6 +26,10 @@
 namespace wb
 {
 
+/**
+ * Abstract base class for all the visitors (cf GoF Visitor Design Pattern)
+ * the whiteboard uses.
+ */
 class visitor : private boost::noncopyable
 {
 public:
