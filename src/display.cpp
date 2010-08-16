@@ -114,6 +114,8 @@ display::display(CVideo& video, const gamemap* map, const config& theme_cfg, con
 	selectedHex_(),
 	mouseoverHex_(),
 	keys_(),
+	animate_map_(true),
+	local_tod_light_(false),
 	drawing_buffer_(),
 	map_screenshot_(false),
 	fps_handle_(0),
@@ -697,7 +699,7 @@ std::vector<surface> display::get_terrain_images(const map_location &loc,
 
 	std::string color_mod;
 	bool use_lightmap = false;
-	bool use_local_light = game_config::local_light;
+	bool use_local_light = local_tod_light_;
 	if(use_local_light){
 		const time_of_day& tod = get_time_of_day(loc);
 
@@ -1936,6 +1938,9 @@ void display::draw(bool update,bool force) {
 	if (screen_.update_locked()) {
 		return;
 	}
+
+	local_tod_light_ = preferences::get("local_tod_light", false);
+
 	bool changed = draw_init();
 	pre_draw();
 	// invalidate all that needs to be invalidated
