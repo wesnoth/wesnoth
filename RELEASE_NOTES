@@ -82,6 +82,13 @@ judged that rewriting the  existent network user's code to accommodate
 this new  API must  be a thoroughly  thought through endeavor  and was
 thus postponed to better wrap up the GSoC project.
 
+-- Dependencies of the New Network Module: --
+
+The implementation of the new network module requires:
+* boost_thread
+* boost_system
+* boost_asio
+All in versions of the Boost libraries 1.35.0 or above.
 
 ***
 
