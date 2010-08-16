@@ -73,12 +73,7 @@ WMLTextdomain:
 	name = TEXTDOMAIN;
 
 WMLValue:
-	value = (ID | TSTRING | TVAR | STRING |'~' | '.' | './' |'$'|'/' |'(' | ')'| ANY_OTHER);
-
-TSTRING:
-	'_' STRING;
-TVAR:
-	'_$';
+	value = (ID | STRING |'_'|'~' | '.' | './' |'$'|'/' |'(' | ')'| ANY_OTHER);
 // we use this as a hack for any characters in the macro call
 // so we won't trigger things like: key=value or [tag]
 MacroTokens:

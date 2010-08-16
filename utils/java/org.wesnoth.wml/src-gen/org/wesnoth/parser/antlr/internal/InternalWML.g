@@ -1648,51 +1648,9 @@ ruleWMLValue returns [EObject current=null]
 	        }
 	    }
 
-    |		{ 
-	        currentNode=createCompositeNode(grammarAccess.getWMLValueAccess().getValueTSTRINGParserRuleCall_0_1(), currentNode); 
-	    }
-		lv_value_0_2=ruleTSTRING		{
-	        if ($current==null) {
-	            $current = factory.create(grammarAccess.getWMLValueRule().getType().getClassifier());
-	            associateNodeWithAstElement(currentNode.getParent(), $current);
-	        }
-	        try {
-	       		set(
-	       			$current, 
-	       			"value",
-	        		lv_value_0_2, 
-	        		"TSTRING", 
-	        		currentNode);
-	        } catch (ValueConverterException vce) {
-				handleValueConverterException(vce);
-	        }
-	        currentNode = currentNode.getParent();
-	    }
-
-    |		{ 
-	        currentNode=createCompositeNode(grammarAccess.getWMLValueAccess().getValueTVARParserRuleCall_0_2(), currentNode); 
-	    }
-		lv_value_0_3=ruleTVAR		{
-	        if ($current==null) {
-	            $current = factory.create(grammarAccess.getWMLValueRule().getType().getClassifier());
-	            associateNodeWithAstElement(currentNode.getParent(), $current);
-	        }
-	        try {
-	       		set(
-	       			$current, 
-	       			"value",
-	        		lv_value_0_3, 
-	        		"TVAR", 
-	        		currentNode);
-	        } catch (ValueConverterException vce) {
-				handleValueConverterException(vce);
-	        }
-	        currentNode = currentNode.getParent();
-	    }
-
-    |		lv_value_0_4=RULE_STRING
+    |		lv_value_0_2=RULE_STRING
 		{
-			createLeafNode(grammarAccess.getWMLValueAccess().getValueSTRINGTerminalRuleCall_0_3(), "value"); 
+			createLeafNode(grammarAccess.getWMLValueAccess().getValueSTRINGTerminalRuleCall_0_1(), "value"); 
 		}
 		{
 	        if ($current==null) {
@@ -1703,7 +1661,7 @@ ruleWMLValue returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"value",
-	        		lv_value_0_4, 
+	        		lv_value_0_2, 
 	        		"STRING", 
 	        		lastConsumedNode);
 	        } catch (ValueConverterException vce) {
@@ -1711,9 +1669,45 @@ ruleWMLValue returns [EObject current=null]
 	        }
 	    }
 
-    |		lv_value_0_5=	'~' 
+    |		lv_value_0_3=	'_' 
     {
-        createLeafNode(grammarAccess.getWMLValueAccess().getValueTildeKeyword_0_4(), "value"); 
+        createLeafNode(grammarAccess.getWMLValueAccess().getValue_Keyword_0_2(), "value"); 
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = factory.create(grammarAccess.getWMLValueRule().getType().getClassifier());
+	            associateNodeWithAstElement(currentNode, $current);
+	        }
+	        
+	        try {
+	       		set($current, "value", lv_value_0_3, null, lastConsumedNode);
+	        } catch (ValueConverterException vce) {
+				handleValueConverterException(vce);
+	        }
+	    }
+
+    |		lv_value_0_4=	'~' 
+    {
+        createLeafNode(grammarAccess.getWMLValueAccess().getValueTildeKeyword_0_3(), "value"); 
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = factory.create(grammarAccess.getWMLValueRule().getType().getClassifier());
+	            associateNodeWithAstElement(currentNode, $current);
+	        }
+	        
+	        try {
+	       		set($current, "value", lv_value_0_4, null, lastConsumedNode);
+	        } catch (ValueConverterException vce) {
+				handleValueConverterException(vce);
+	        }
+	    }
+
+    |		lv_value_0_5=	'.' 
+    {
+        createLeafNode(grammarAccess.getWMLValueAccess().getValueFullStopKeyword_0_4(), "value"); 
     }
  
 	    {
@@ -1729,9 +1723,9 @@ ruleWMLValue returns [EObject current=null]
 	        }
 	    }
 
-    |		lv_value_0_6=	'.' 
+    |		lv_value_0_6=	'./' 
     {
-        createLeafNode(grammarAccess.getWMLValueAccess().getValueFullStopKeyword_0_5(), "value"); 
+        createLeafNode(grammarAccess.getWMLValueAccess().getValueFullStopSolidusKeyword_0_5(), "value"); 
     }
  
 	    {
@@ -1747,9 +1741,9 @@ ruleWMLValue returns [EObject current=null]
 	        }
 	    }
 
-    |		lv_value_0_7=	'./' 
+    |		lv_value_0_7=	'$' 
     {
-        createLeafNode(grammarAccess.getWMLValueAccess().getValueFullStopSolidusKeyword_0_6(), "value"); 
+        createLeafNode(grammarAccess.getWMLValueAccess().getValueDollarSignKeyword_0_6(), "value"); 
     }
  
 	    {
@@ -1765,9 +1759,9 @@ ruleWMLValue returns [EObject current=null]
 	        }
 	    }
 
-    |		lv_value_0_8=	'$' 
+    |		lv_value_0_8=	'/' 
     {
-        createLeafNode(grammarAccess.getWMLValueAccess().getValueDollarSignKeyword_0_7(), "value"); 
+        createLeafNode(grammarAccess.getWMLValueAccess().getValueSolidusKeyword_0_7(), "value"); 
     }
  
 	    {
@@ -1783,9 +1777,9 @@ ruleWMLValue returns [EObject current=null]
 	        }
 	    }
 
-    |		lv_value_0_9=	'/' 
+    |		lv_value_0_9=	'(' 
     {
-        createLeafNode(grammarAccess.getWMLValueAccess().getValueSolidusKeyword_0_8(), "value"); 
+        createLeafNode(grammarAccess.getWMLValueAccess().getValueLeftParenthesisKeyword_0_8(), "value"); 
     }
  
 	    {
@@ -1801,9 +1795,9 @@ ruleWMLValue returns [EObject current=null]
 	        }
 	    }
 
-    |		lv_value_0_10=	'(' 
+    |		lv_value_0_10=	')' 
     {
-        createLeafNode(grammarAccess.getWMLValueAccess().getValueLeftParenthesisKeyword_0_9(), "value"); 
+        createLeafNode(grammarAccess.getWMLValueAccess().getValueRightParenthesisKeyword_0_9(), "value"); 
     }
  
 	    {
@@ -1819,27 +1813,9 @@ ruleWMLValue returns [EObject current=null]
 	        }
 	    }
 
-    |		lv_value_0_11=	')' 
-    {
-        createLeafNode(grammarAccess.getWMLValueAccess().getValueRightParenthesisKeyword_0_10(), "value"); 
-    }
- 
-	    {
-	        if ($current==null) {
-	            $current = factory.create(grammarAccess.getWMLValueRule().getType().getClassifier());
-	            associateNodeWithAstElement(currentNode, $current);
-	        }
-	        
-	        try {
-	       		set($current, "value", lv_value_0_11, null, lastConsumedNode);
-	        } catch (ValueConverterException vce) {
-				handleValueConverterException(vce);
-	        }
-	    }
-
-    |		lv_value_0_12=RULE_ANY_OTHER
+    |		lv_value_0_11=RULE_ANY_OTHER
 		{
-			createLeafNode(grammarAccess.getWMLValueAccess().getValueANY_OTHERTerminalRuleCall_0_11(), "value"); 
+			createLeafNode(grammarAccess.getWMLValueAccess().getValueANY_OTHERTerminalRuleCall_0_10(), "value"); 
 		}
 		{
 	        if ($current==null) {
@@ -1850,7 +1826,7 @@ ruleWMLValue returns [EObject current=null]
 	       		set(
 	       			$current, 
 	       			"value",
-	        		lv_value_0_12, 
+	        		lv_value_0_11, 
 	        		"ANY_OTHER", 
 	        		lastConsumedNode);
 	        } catch (ValueConverterException vce) {
@@ -1863,71 +1839,6 @@ ruleWMLValue returns [EObject current=null]
 )
 )
 ;
-
-
-
-
-
-// Entry rule entryRuleTSTRING
-entryRuleTSTRING returns [String current=null] 
-	:
-	{ currentNode = createCompositeNode(grammarAccess.getTSTRINGRule(), currentNode); } 
-	 iv_ruleTSTRING=ruleTSTRING 
-	 { $current=$iv_ruleTSTRING.current.getText(); }  
-	 EOF 
-;
-
-// Rule TSTRING
-ruleTSTRING returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] 
-    @init { setCurrentLookahead(); resetLookahead(); 
-    }
-    @after { resetLookahead(); 
-	    lastConsumedNode = currentNode;
-    }:
-(
-	kw='_' 
-    {
-        $current.merge(kw);
-        createLeafNode(grammarAccess.getTSTRINGAccess().get_Keyword_0(), null); 
-    }
-    this_STRING_1=RULE_STRING    {
-		$current.merge(this_STRING_1);
-    }
-
-    { 
-    createLeafNode(grammarAccess.getTSTRINGAccess().getSTRINGTerminalRuleCall_1(), null); 
-    }
-)
-    ;
-
-
-
-
-
-// Entry rule entryRuleTVAR
-entryRuleTVAR returns [String current=null] 
-	:
-	{ currentNode = createCompositeNode(grammarAccess.getTVARRule(), currentNode); } 
-	 iv_ruleTVAR=ruleTVAR 
-	 { $current=$iv_ruleTVAR.current.getText(); }  
-	 EOF 
-;
-
-// Rule TVAR
-ruleTVAR returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] 
-    @init { setCurrentLookahead(); resetLookahead(); 
-    }
-    @after { resetLookahead(); 
-	    lastConsumedNode = currentNode;
-    }:
-
-	kw='_$' 
-    {
-        $current.merge(kw);
-        createLeafNode(grammarAccess.getTVARAccess().get_Keyword(), null); 
-    }
-
-    ;
 
 
 

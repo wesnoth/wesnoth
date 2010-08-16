@@ -55,7 +55,6 @@ public class WMLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getWMLArrayCallAccess().getGroup(), "rule__WMLArrayCall__Group__0");
 					put(grammarAccess.getWMLMacroDefineAccess().getGroup(), "rule__WMLMacroDefine__Group__0");
 					put(grammarAccess.getWMLPreprocIFAccess().getGroup(), "rule__WMLPreprocIF__Group__0");
-					put(grammarAccess.getTSTRINGAccess().getGroup(), "rule__TSTRING__Group__0");
 					put(grammarAccess.getWMLRootAccess().getTagsAssignment_0(), "rule__WMLRoot__TagsAssignment_0");
 					put(grammarAccess.getWMLRootAccess().getMacroCallsAssignment_1(), "rule__WMLRoot__MacroCallsAssignment_1");
 					put(grammarAccess.getWMLRootAccess().getMacroDefinesAssignment_2(), "rule__WMLRoot__MacroDefinesAssignment_2");

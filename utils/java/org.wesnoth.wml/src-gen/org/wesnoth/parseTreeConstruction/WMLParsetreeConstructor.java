@@ -2859,11 +2859,11 @@ protected class WMLTextdomain_NameAssignment extends AssignmentToken  {
 /************ begin Rule WMLValue ****************
  *
  * WMLValue:
- * 	value=(ID | TSTRING | TVAR | STRING | "~" | "." | "./" | "$" | "/" | "(" | ")" | ANY_OTHER);
+ * 	value=(ID | STRING | "_" | "~" | "." | "./" | "$" | "/" | "(" | ")" | ANY_OTHER);
  *
  **/
 
-// value=(ID | TSTRING | TVAR | STRING | "~" | "." | "./" | "$" | "/" | "(" | ")" | ANY_OTHER)
+// value=(ID | STRING | "_" | "~" | "." | "./" | "$" | "/" | "(" | ")" | ANY_OTHER)
 protected class WMLValue_ValueAssignment extends AssignmentToken  {
 	
 	public WMLValue_ValueAssignment(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -2888,39 +2888,44 @@ protected class WMLValue_ValueAssignment extends AssignmentToken  {
 			return null;
 		if((value = eObjectConsumer.getConsumable("value",true)) == null) return null;
 		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("value");
-		if(keywordSerializer.isValid(obj.getEObject(), grammarAccess.getWMLValueAccess().getValueTildeKeyword_0_4(), value, null)) {
+		if(keywordSerializer.isValid(obj.getEObject(), grammarAccess.getWMLValueAccess().getValue_Keyword_0_2(), value, null)) {
 			type = AssignmentType.KEYWORD;
-			element = grammarAccess.getWMLValueAccess().getValueTildeKeyword_0_4();
+			element = grammarAccess.getWMLValueAccess().getValue_Keyword_0_2();
 			return obj;
 		}
-		if(keywordSerializer.isValid(obj.getEObject(), grammarAccess.getWMLValueAccess().getValueFullStopKeyword_0_5(), value, null)) {
+		if(keywordSerializer.isValid(obj.getEObject(), grammarAccess.getWMLValueAccess().getValueTildeKeyword_0_3(), value, null)) {
 			type = AssignmentType.KEYWORD;
-			element = grammarAccess.getWMLValueAccess().getValueFullStopKeyword_0_5();
+			element = grammarAccess.getWMLValueAccess().getValueTildeKeyword_0_3();
 			return obj;
 		}
-		if(keywordSerializer.isValid(obj.getEObject(), grammarAccess.getWMLValueAccess().getValueFullStopSolidusKeyword_0_6(), value, null)) {
+		if(keywordSerializer.isValid(obj.getEObject(), grammarAccess.getWMLValueAccess().getValueFullStopKeyword_0_4(), value, null)) {
 			type = AssignmentType.KEYWORD;
-			element = grammarAccess.getWMLValueAccess().getValueFullStopSolidusKeyword_0_6();
+			element = grammarAccess.getWMLValueAccess().getValueFullStopKeyword_0_4();
 			return obj;
 		}
-		if(keywordSerializer.isValid(obj.getEObject(), grammarAccess.getWMLValueAccess().getValueDollarSignKeyword_0_7(), value, null)) {
+		if(keywordSerializer.isValid(obj.getEObject(), grammarAccess.getWMLValueAccess().getValueFullStopSolidusKeyword_0_5(), value, null)) {
 			type = AssignmentType.KEYWORD;
-			element = grammarAccess.getWMLValueAccess().getValueDollarSignKeyword_0_7();
+			element = grammarAccess.getWMLValueAccess().getValueFullStopSolidusKeyword_0_5();
 			return obj;
 		}
-		if(keywordSerializer.isValid(obj.getEObject(), grammarAccess.getWMLValueAccess().getValueSolidusKeyword_0_8(), value, null)) {
+		if(keywordSerializer.isValid(obj.getEObject(), grammarAccess.getWMLValueAccess().getValueDollarSignKeyword_0_6(), value, null)) {
 			type = AssignmentType.KEYWORD;
-			element = grammarAccess.getWMLValueAccess().getValueSolidusKeyword_0_8();
+			element = grammarAccess.getWMLValueAccess().getValueDollarSignKeyword_0_6();
 			return obj;
 		}
-		if(keywordSerializer.isValid(obj.getEObject(), grammarAccess.getWMLValueAccess().getValueLeftParenthesisKeyword_0_9(), value, null)) {
+		if(keywordSerializer.isValid(obj.getEObject(), grammarAccess.getWMLValueAccess().getValueSolidusKeyword_0_7(), value, null)) {
 			type = AssignmentType.KEYWORD;
-			element = grammarAccess.getWMLValueAccess().getValueLeftParenthesisKeyword_0_9();
+			element = grammarAccess.getWMLValueAccess().getValueSolidusKeyword_0_7();
 			return obj;
 		}
-		if(keywordSerializer.isValid(obj.getEObject(), grammarAccess.getWMLValueAccess().getValueRightParenthesisKeyword_0_10(), value, null)) {
+		if(keywordSerializer.isValid(obj.getEObject(), grammarAccess.getWMLValueAccess().getValueLeftParenthesisKeyword_0_8(), value, null)) {
 			type = AssignmentType.KEYWORD;
-			element = grammarAccess.getWMLValueAccess().getValueRightParenthesisKeyword_0_10();
+			element = grammarAccess.getWMLValueAccess().getValueLeftParenthesisKeyword_0_8();
+			return obj;
+		}
+		if(keywordSerializer.isValid(obj.getEObject(), grammarAccess.getWMLValueAccess().getValueRightParenthesisKeyword_0_9(), value, null)) {
+			type = AssignmentType.KEYWORD;
+			element = grammarAccess.getWMLValueAccess().getValueRightParenthesisKeyword_0_9();
 			return obj;
 		}
 		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getWMLValueAccess().getValueIDTerminalRuleCall_0_0(), value, null)) {
@@ -2928,24 +2933,14 @@ protected class WMLValue_ValueAssignment extends AssignmentToken  {
 			element = grammarAccess.getWMLValueAccess().getValueIDTerminalRuleCall_0_0();
 			return obj;
 		}
-		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getWMLValueAccess().getValueTSTRINGParserRuleCall_0_1(), value, null)) {
-			type = AssignmentType.DATATYPE_RULE_CALL;
-			element = grammarAccess.getWMLValueAccess().getValueTSTRINGParserRuleCall_0_1();
-			return obj;
-		}
-		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getWMLValueAccess().getValueTVARParserRuleCall_0_2(), value, null)) {
-			type = AssignmentType.DATATYPE_RULE_CALL;
-			element = grammarAccess.getWMLValueAccess().getValueTVARParserRuleCall_0_2();
-			return obj;
-		}
-		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getWMLValueAccess().getValueSTRINGTerminalRuleCall_0_3(), value, null)) {
+		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getWMLValueAccess().getValueSTRINGTerminalRuleCall_0_1(), value, null)) {
 			type = AssignmentType.TERMINAL_RULE_CALL;
-			element = grammarAccess.getWMLValueAccess().getValueSTRINGTerminalRuleCall_0_3();
+			element = grammarAccess.getWMLValueAccess().getValueSTRINGTerminalRuleCall_0_1();
 			return obj;
 		}
-		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getWMLValueAccess().getValueANY_OTHERTerminalRuleCall_0_11(), value, null)) {
+		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getWMLValueAccess().getValueANY_OTHERTerminalRuleCall_0_10(), value, null)) {
 			type = AssignmentType.TERMINAL_RULE_CALL;
-			element = grammarAccess.getWMLValueAccess().getValueANY_OTHERTerminalRuleCall_0_11();
+			element = grammarAccess.getWMLValueAccess().getValueANY_OTHERTerminalRuleCall_0_10();
 			return obj;
 		}
 		return null;
@@ -2954,8 +2949,6 @@ protected class WMLValue_ValueAssignment extends AssignmentToken  {
 }
 
 /************ end Rule WMLValue ****************/
-
-
 
 
 /************ begin Rule MacroTokens ****************

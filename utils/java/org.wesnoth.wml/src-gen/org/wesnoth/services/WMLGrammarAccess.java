@@ -622,95 +622,59 @@ public class WMLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cValueAssignment = (Assignment)rule.eContents().get(1);
 		private final Alternatives cValueAlternatives_0 = (Alternatives)cValueAssignment.eContents().get(0);
 		private final RuleCall cValueIDTerminalRuleCall_0_0 = (RuleCall)cValueAlternatives_0.eContents().get(0);
-		private final RuleCall cValueTSTRINGParserRuleCall_0_1 = (RuleCall)cValueAlternatives_0.eContents().get(1);
-		private final RuleCall cValueTVARParserRuleCall_0_2 = (RuleCall)cValueAlternatives_0.eContents().get(2);
-		private final RuleCall cValueSTRINGTerminalRuleCall_0_3 = (RuleCall)cValueAlternatives_0.eContents().get(3);
-		private final Keyword cValueTildeKeyword_0_4 = (Keyword)cValueAlternatives_0.eContents().get(4);
-		private final Keyword cValueFullStopKeyword_0_5 = (Keyword)cValueAlternatives_0.eContents().get(5);
-		private final Keyword cValueFullStopSolidusKeyword_0_6 = (Keyword)cValueAlternatives_0.eContents().get(6);
-		private final Keyword cValueDollarSignKeyword_0_7 = (Keyword)cValueAlternatives_0.eContents().get(7);
-		private final Keyword cValueSolidusKeyword_0_8 = (Keyword)cValueAlternatives_0.eContents().get(8);
-		private final Keyword cValueLeftParenthesisKeyword_0_9 = (Keyword)cValueAlternatives_0.eContents().get(9);
-		private final Keyword cValueRightParenthesisKeyword_0_10 = (Keyword)cValueAlternatives_0.eContents().get(10);
-		private final RuleCall cValueANY_OTHERTerminalRuleCall_0_11 = (RuleCall)cValueAlternatives_0.eContents().get(11);
+		private final RuleCall cValueSTRINGTerminalRuleCall_0_1 = (RuleCall)cValueAlternatives_0.eContents().get(1);
+		private final Keyword cValue_Keyword_0_2 = (Keyword)cValueAlternatives_0.eContents().get(2);
+		private final Keyword cValueTildeKeyword_0_3 = (Keyword)cValueAlternatives_0.eContents().get(3);
+		private final Keyword cValueFullStopKeyword_0_4 = (Keyword)cValueAlternatives_0.eContents().get(4);
+		private final Keyword cValueFullStopSolidusKeyword_0_5 = (Keyword)cValueAlternatives_0.eContents().get(5);
+		private final Keyword cValueDollarSignKeyword_0_6 = (Keyword)cValueAlternatives_0.eContents().get(6);
+		private final Keyword cValueSolidusKeyword_0_7 = (Keyword)cValueAlternatives_0.eContents().get(7);
+		private final Keyword cValueLeftParenthesisKeyword_0_8 = (Keyword)cValueAlternatives_0.eContents().get(8);
+		private final Keyword cValueRightParenthesisKeyword_0_9 = (Keyword)cValueAlternatives_0.eContents().get(9);
+		private final RuleCall cValueANY_OTHERTerminalRuleCall_0_10 = (RuleCall)cValueAlternatives_0.eContents().get(10);
 		
 		//WMLValue:
-		//	value=(ID | TSTRING | TVAR | STRING | "~" | "." | "./" | "$" | "/" | "(" | ")" | ANY_OTHER);
+		//	value=(ID | STRING | "_" | "~" | "." | "./" | "$" | "/" | "(" | ")" | ANY_OTHER);
 		public ParserRule getRule() { return rule; }
 
-		//value=(ID | TSTRING | TVAR | STRING | "~" | "." | "./" | "$" | "/" | "(" | ")" | ANY_OTHER)
+		//value=(ID | STRING | "_" | "~" | "." | "./" | "$" | "/" | "(" | ")" | ANY_OTHER)
 		public Assignment getValueAssignment() { return cValueAssignment; }
 
-		//ID | TSTRING | TVAR | STRING | "~" | "." | "./" | "$" | "/" | "(" | ")" | ANY_OTHER
+		//ID | STRING | "_" | "~" | "." | "./" | "$" | "/" | "(" | ")" | ANY_OTHER
 		public Alternatives getValueAlternatives_0() { return cValueAlternatives_0; }
 
 		//ID
 		public RuleCall getValueIDTerminalRuleCall_0_0() { return cValueIDTerminalRuleCall_0_0; }
 
-		//TSTRING
-		public RuleCall getValueTSTRINGParserRuleCall_0_1() { return cValueTSTRINGParserRuleCall_0_1; }
-
-		//TVAR
-		public RuleCall getValueTVARParserRuleCall_0_2() { return cValueTVARParserRuleCall_0_2; }
-
 		//STRING
-		public RuleCall getValueSTRINGTerminalRuleCall_0_3() { return cValueSTRINGTerminalRuleCall_0_3; }
-
-		//"~"
-		public Keyword getValueTildeKeyword_0_4() { return cValueTildeKeyword_0_4; }
-
-		//"."
-		public Keyword getValueFullStopKeyword_0_5() { return cValueFullStopKeyword_0_5; }
-
-		//"./"
-		public Keyword getValueFullStopSolidusKeyword_0_6() { return cValueFullStopSolidusKeyword_0_6; }
-
-		//"$"
-		public Keyword getValueDollarSignKeyword_0_7() { return cValueDollarSignKeyword_0_7; }
-
-		//"/"
-		public Keyword getValueSolidusKeyword_0_8() { return cValueSolidusKeyword_0_8; }
-
-		//"("
-		public Keyword getValueLeftParenthesisKeyword_0_9() { return cValueLeftParenthesisKeyword_0_9; }
-
-		//")"
-		public Keyword getValueRightParenthesisKeyword_0_10() { return cValueRightParenthesisKeyword_0_10; }
-
-		//ANY_OTHER
-		public RuleCall getValueANY_OTHERTerminalRuleCall_0_11() { return cValueANY_OTHERTerminalRuleCall_0_11; }
-	}
-
-	public class TSTRINGElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "TSTRING");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword c_Keyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final RuleCall cSTRINGTerminalRuleCall_1 = (RuleCall)cGroup.eContents().get(1);
-		
-		//TSTRING returns ecore::EString:
-		//	"_" STRING;
-		public ParserRule getRule() { return rule; }
-
-		//"_" STRING
-		public Group getGroup() { return cGroup; }
+		public RuleCall getValueSTRINGTerminalRuleCall_0_1() { return cValueSTRINGTerminalRuleCall_0_1; }
 
 		//"_"
-		public Keyword get_Keyword_0() { return c_Keyword_0; }
+		public Keyword getValue_Keyword_0_2() { return cValue_Keyword_0_2; }
 
-		//STRING
-		public RuleCall getSTRINGTerminalRuleCall_1() { return cSTRINGTerminalRuleCall_1; }
-	}
+		//"~"
+		public Keyword getValueTildeKeyword_0_3() { return cValueTildeKeyword_0_3; }
 
-	public class TVARElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "TVAR");
-		private final Keyword c_Keyword = (Keyword)rule.eContents().get(1);
-		
-		//TVAR returns ecore::EString:
-		//	"_$";
-		public ParserRule getRule() { return rule; }
+		//"."
+		public Keyword getValueFullStopKeyword_0_4() { return cValueFullStopKeyword_0_4; }
 
-		//"_$"
-		public Keyword get_Keyword() { return c_Keyword; }
+		//"./"
+		public Keyword getValueFullStopSolidusKeyword_0_5() { return cValueFullStopSolidusKeyword_0_5; }
+
+		//"$"
+		public Keyword getValueDollarSignKeyword_0_6() { return cValueDollarSignKeyword_0_6; }
+
+		//"/"
+		public Keyword getValueSolidusKeyword_0_7() { return cValueSolidusKeyword_0_7; }
+
+		//"("
+		public Keyword getValueLeftParenthesisKeyword_0_8() { return cValueLeftParenthesisKeyword_0_8; }
+
+		//")"
+		public Keyword getValueRightParenthesisKeyword_0_9() { return cValueRightParenthesisKeyword_0_9; }
+
+		//ANY_OTHER
+		public RuleCall getValueANY_OTHERTerminalRuleCall_0_10() { return cValueANY_OTHERTerminalRuleCall_0_10; }
 	}
 
 	public class MacroTokensElements extends AbstractParserRuleElementFinder {
@@ -763,8 +727,6 @@ public class WMLGrammarAccess extends AbstractGrammarElementFinder {
 	private WMLPreprocIFElements pWMLPreprocIF;
 	private WMLTextdomainElements pWMLTextdomain;
 	private WMLValueElements pWMLValue;
-	private TSTRINGElements pTSTRING;
-	private TVARElements pTVAR;
 	private MacroTokensElements pMacroTokens;
 	private TerminalRule tLUA_CODE;
 	private TerminalRule tIFHAVE;
@@ -902,33 +864,13 @@ public class WMLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//WMLValue:
-	//	value=(ID | TSTRING | TVAR | STRING | "~" | "." | "./" | "$" | "/" | "(" | ")" | ANY_OTHER);
+	//	value=(ID | STRING | "_" | "~" | "." | "./" | "$" | "/" | "(" | ")" | ANY_OTHER);
 	public WMLValueElements getWMLValueAccess() {
 		return (pWMLValue != null) ? pWMLValue : (pWMLValue = new WMLValueElements());
 	}
 	
 	public ParserRule getWMLValueRule() {
 		return getWMLValueAccess().getRule();
-	}
-
-	//TSTRING returns ecore::EString:
-	//	"_" STRING;
-	public TSTRINGElements getTSTRINGAccess() {
-		return (pTSTRING != null) ? pTSTRING : (pTSTRING = new TSTRINGElements());
-	}
-	
-	public ParserRule getTSTRINGRule() {
-		return getTSTRINGAccess().getRule();
-	}
-
-	//TVAR returns ecore::EString:
-	//	"_$";
-	public TVARElements getTVARAccess() {
-		return (pTVAR != null) ? pTVAR : (pTVAR = new TVARElements());
-	}
-	
-	public ParserRule getTVARRule() {
-		return getTVARAccess().getRule();
 	}
 
 	//// we use this as a hack for any characters in the macro call
