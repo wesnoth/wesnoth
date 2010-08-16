@@ -76,6 +76,7 @@ public class WMLFactoryImpl extends EFactoryImpl implements WMLFactory
       case WMLPackage.WML_LUA_CODE: return createWMLLuaCode();
       case WMLPackage.WML_ARRAY_CALL: return createWMLArrayCall();
       case WMLPackage.WML_MACRO_DEFINE: return createWMLMacroDefine();
+      case WMLPackage.WML_PREPROC_IF: return createWMLPreprocIF();
       case WMLPackage.WML_TEXTDOMAIN: return createWMLTextdomain();
       case WMLPackage.WML_VALUE: return createWMLValue();
       case WMLPackage.MACRO_TOKENS: return createMacroTokens();
@@ -170,6 +171,17 @@ public class WMLFactoryImpl extends EFactoryImpl implements WMLFactory
   {
     WMLMacroDefineImpl wmlMacroDefine = new WMLMacroDefineImpl();
     return wmlMacroDefine;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public WMLPreprocIF createWMLPreprocIF()
+  {
+    WMLPreprocIFImpl wmlPreprocIF = new WMLPreprocIFImpl();
+    return wmlPreprocIF;
   }
 
   /**

@@ -32,6 +32,7 @@ import org.wesnoth.wML.WMLPackage;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.wesnoth.wML.impl.WMLMacroCallImpl#isPoint <em>Point</em>}</li>
  *   <li>{@link org.wesnoth.wML.impl.WMLMacroCallImpl#isRelative <em>Relative</em>}</li>
  *   <li>{@link org.wesnoth.wML.impl.WMLMacroCallImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.wesnoth.wML.impl.WMLMacroCallImpl#getParams <em>Params</em>}</li>
@@ -43,6 +44,26 @@ import org.wesnoth.wML.WMLPackage;
  */
 public class WMLMacroCallImpl extends WMLKeyValueImpl implements WMLMacroCall
 {
+  /**
+   * The default value of the '{@link #isPoint() <em>Point</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isPoint()
+   * @generated
+   * @ordered
+   */
+  protected static final boolean POINT_EDEFAULT = false;
+
+  /**
+   * The cached value of the '{@link #isPoint() <em>Point</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isPoint()
+   * @generated
+   * @ordered
+   */
+  protected boolean point = POINT_EDEFAULT;
+
   /**
    * The default value of the '{@link #isRelative() <em>Relative</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -122,6 +143,29 @@ public class WMLMacroCallImpl extends WMLKeyValueImpl implements WMLMacroCall
   protected EClass eStaticClass()
   {
     return WMLPackage.Literals.WML_MACRO_CALL;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public boolean isPoint()
+  {
+    return point;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setPoint(boolean newPoint)
+  {
+    boolean oldPoint = point;
+    point = newPoint;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, WMLPackage.WML_MACRO_CALL__POINT, oldPoint, point));
   }
 
   /**
@@ -226,6 +270,8 @@ public class WMLMacroCallImpl extends WMLKeyValueImpl implements WMLMacroCall
   {
     switch (featureID)
     {
+      case WMLPackage.WML_MACRO_CALL__POINT:
+        return isPoint();
       case WMLPackage.WML_MACRO_CALL__RELATIVE:
         return isRelative();
       case WMLPackage.WML_MACRO_CALL__NAME:
@@ -249,6 +295,9 @@ public class WMLMacroCallImpl extends WMLKeyValueImpl implements WMLMacroCall
   {
     switch (featureID)
     {
+      case WMLPackage.WML_MACRO_CALL__POINT:
+        setPoint((Boolean)newValue);
+        return;
       case WMLPackage.WML_MACRO_CALL__RELATIVE:
         setRelative((Boolean)newValue);
         return;
@@ -277,6 +326,9 @@ public class WMLMacroCallImpl extends WMLKeyValueImpl implements WMLMacroCall
   {
     switch (featureID)
     {
+      case WMLPackage.WML_MACRO_CALL__POINT:
+        setPoint(POINT_EDEFAULT);
+        return;
       case WMLPackage.WML_MACRO_CALL__RELATIVE:
         setRelative(RELATIVE_EDEFAULT);
         return;
@@ -303,6 +355,8 @@ public class WMLMacroCallImpl extends WMLKeyValueImpl implements WMLMacroCall
   {
     switch (featureID)
     {
+      case WMLPackage.WML_MACRO_CALL__POINT:
+        return point != POINT_EDEFAULT;
       case WMLPackage.WML_MACRO_CALL__RELATIVE:
         return relative != RELATIVE_EDEFAULT;
       case WMLPackage.WML_MACRO_CALL__NAME:
@@ -326,7 +380,9 @@ public class WMLMacroCallImpl extends WMLKeyValueImpl implements WMLMacroCall
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (relative: ");
+    result.append(" (point: ");
+    result.append(point);
+    result.append(", relative: ");
     result.append(relative);
     result.append(", name: ");
     result.append(name);

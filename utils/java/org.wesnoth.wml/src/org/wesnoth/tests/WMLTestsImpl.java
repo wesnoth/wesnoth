@@ -32,9 +32,11 @@ public class WMLTestsImpl extends WMLTests
 	}
 
 	public void testTokenSequences(){
+		showTokenisation("amount=+$random\n");
+		checkParsing("amount=+$random", "WMLKey");
+
 		checkTokenisation("123 abc", ID, WS, ID);
 		checkTokenisation("123 \t#comment\n abc", ID, WS, SL_COMMENT,WS,ID);
-
 		//note that no white space is necessary!
 		checkTokenisation("123abc", ID);
 	}

@@ -107,13 +107,22 @@ public interface WMLPackage extends EPackage
   int WML_ROOT__TEXTDOMAINS = 3;
 
   /**
+   * The feature id for the '<em><b>If Defs</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WML_ROOT__IF_DEFS = 4;
+
+  /**
    * The number of structural features of the '<em>Root</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int WML_ROOT_FEATURE_COUNT = 4;
+  int WML_ROOT_FEATURE_COUNT = 5;
 
   /**
    * The meta object id for the '{@link org.wesnoth.wML.impl.WMLTagImpl <em>Tag</em>}' class.
@@ -189,13 +198,22 @@ public interface WMLPackage extends EPackage
   int WML_TAG__TEXTDOMAINS = 6;
 
   /**
+   * The feature id for the '<em><b>If Defs</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WML_TAG__IF_DEFS = 7;
+
+  /**
    * The feature id for the '<em><b>End Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int WML_TAG__END_NAME = 7;
+  int WML_TAG__END_NAME = 8;
 
   /**
    * The number of structural features of the '<em>Tag</em>' class.
@@ -204,7 +222,7 @@ public interface WMLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int WML_TAG_FEATURE_COUNT = 8;
+  int WML_TAG_FEATURE_COUNT = 9;
 
   /**
    * The meta object id for the '{@link org.wesnoth.wML.impl.WMLKeyImpl <em>Key</em>}' class.
@@ -273,13 +291,22 @@ public interface WMLPackage extends EPackage
   int WML_MACRO_CALL = 4;
 
   /**
+   * The feature id for the '<em><b>Point</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WML_MACRO_CALL__POINT = WML_KEY_VALUE_FEATURE_COUNT + 0;
+
+  /**
    * The feature id for the '<em><b>Relative</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int WML_MACRO_CALL__RELATIVE = WML_KEY_VALUE_FEATURE_COUNT + 0;
+  int WML_MACRO_CALL__RELATIVE = WML_KEY_VALUE_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -288,7 +315,7 @@ public interface WMLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int WML_MACRO_CALL__NAME = WML_KEY_VALUE_FEATURE_COUNT + 1;
+  int WML_MACRO_CALL__NAME = WML_KEY_VALUE_FEATURE_COUNT + 2;
 
   /**
    * The feature id for the '<em><b>Params</b></em>' containment reference list.
@@ -297,7 +324,7 @@ public interface WMLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int WML_MACRO_CALL__PARAMS = WML_KEY_VALUE_FEATURE_COUNT + 2;
+  int WML_MACRO_CALL__PARAMS = WML_KEY_VALUE_FEATURE_COUNT + 3;
 
   /**
    * The feature id for the '<em><b>Extra Macros</b></em>' containment reference list.
@@ -306,7 +333,7 @@ public interface WMLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int WML_MACRO_CALL__EXTRA_MACROS = WML_KEY_VALUE_FEATURE_COUNT + 3;
+  int WML_MACRO_CALL__EXTRA_MACROS = WML_KEY_VALUE_FEATURE_COUNT + 4;
 
   /**
    * The number of structural features of the '<em>Macro Call</em>' class.
@@ -315,7 +342,7 @@ public interface WMLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int WML_MACRO_CALL_FEATURE_COUNT = WML_KEY_VALUE_FEATURE_COUNT + 4;
+  int WML_MACRO_CALL_FEATURE_COUNT = WML_KEY_VALUE_FEATURE_COUNT + 5;
 
   /**
    * The meta object id for the '{@link org.wesnoth.wML.impl.WMLLuaCodeImpl <em>Lua Code</em>}' class.
@@ -447,13 +474,122 @@ public interface WMLPackage extends EPackage
   int WML_MACRO_DEFINE__VALUES = 6;
 
   /**
+   * The feature id for the '<em><b>If Defs</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WML_MACRO_DEFINE__IF_DEFS = 7;
+
+  /**
    * The number of structural features of the '<em>Macro Define</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int WML_MACRO_DEFINE_FEATURE_COUNT = 7;
+  int WML_MACRO_DEFINE_FEATURE_COUNT = 8;
+
+  /**
+   * The meta object id for the '{@link org.wesnoth.wML.impl.WMLPreprocIFImpl <em>Preproc IF</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.wesnoth.wML.impl.WMLPreprocIFImpl
+   * @see org.wesnoth.wML.impl.WMLPackageImpl#getWMLPreprocIF()
+   * @generated
+   */
+  int WML_PREPROC_IF = 8;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WML_PREPROC_IF__NAME = 0;
+
+  /**
+   * The feature id for the '<em><b>Tags</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WML_PREPROC_IF__TAGS = 1;
+
+  /**
+   * The feature id for the '<em><b>Keys</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WML_PREPROC_IF__KEYS = 2;
+
+  /**
+   * The feature id for the '<em><b>Macro Calls</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WML_PREPROC_IF__MACRO_CALLS = 3;
+
+  /**
+   * The feature id for the '<em><b>Macro Defines</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WML_PREPROC_IF__MACRO_DEFINES = 4;
+
+  /**
+   * The feature id for the '<em><b>Textdomains</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WML_PREPROC_IF__TEXTDOMAINS = 5;
+
+  /**
+   * The feature id for the '<em><b>Values</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WML_PREPROC_IF__VALUES = 6;
+
+  /**
+   * The feature id for the '<em><b>If Defs</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WML_PREPROC_IF__IF_DEFS = 7;
+
+  /**
+   * The feature id for the '<em><b>Elses</b></em>' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WML_PREPROC_IF__ELSES = 8;
+
+  /**
+   * The number of structural features of the '<em>Preproc IF</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WML_PREPROC_IF_FEATURE_COUNT = 9;
 
   /**
    * The meta object id for the '{@link org.wesnoth.wML.impl.WMLTextdomainImpl <em>Textdomain</em>}' class.
@@ -463,7 +599,7 @@ public interface WMLPackage extends EPackage
    * @see org.wesnoth.wML.impl.WMLPackageImpl#getWMLTextdomain()
    * @generated
    */
-  int WML_TEXTDOMAIN = 8;
+  int WML_TEXTDOMAIN = 9;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -491,7 +627,7 @@ public interface WMLPackage extends EPackage
    * @see org.wesnoth.wML.impl.WMLPackageImpl#getWMLValue()
    * @generated
    */
-  int WML_VALUE = 9;
+  int WML_VALUE = 10;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -519,7 +655,7 @@ public interface WMLPackage extends EPackage
    * @see org.wesnoth.wML.impl.WMLPackageImpl#getMacroTokens()
    * @generated
    */
-  int MACRO_TOKENS = 10;
+  int MACRO_TOKENS = 11;
 
   /**
    * The feature id for the '<em><b>Val</b></em>' attribute.
@@ -593,6 +729,17 @@ public interface WMLPackage extends EPackage
    * @generated
    */
   EReference getWMLRoot_Textdomains();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.wesnoth.wML.WMLRoot#getIfDefs <em>If Defs</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>If Defs</em>'.
+   * @see org.wesnoth.wML.WMLRoot#getIfDefs()
+   * @see #getWMLRoot()
+   * @generated
+   */
+  EReference getWMLRoot_IfDefs();
 
   /**
    * Returns the meta object for class '{@link org.wesnoth.wML.WMLTag <em>Tag</em>}'.
@@ -682,6 +829,17 @@ public interface WMLPackage extends EPackage
   EReference getWMLTag_Textdomains();
 
   /**
+   * Returns the meta object for the containment reference list '{@link org.wesnoth.wML.WMLTag#getIfDefs <em>If Defs</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>If Defs</em>'.
+   * @see org.wesnoth.wML.WMLTag#getIfDefs()
+   * @see #getWMLTag()
+   * @generated
+   */
+  EReference getWMLTag_IfDefs();
+
+  /**
    * Returns the meta object for the attribute '{@link org.wesnoth.wML.WMLTag#getEndName <em>End Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -743,6 +901,17 @@ public interface WMLPackage extends EPackage
    * @generated
    */
   EClass getWMLMacroCall();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.wesnoth.wML.WMLMacroCall#isPoint <em>Point</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Point</em>'.
+   * @see org.wesnoth.wML.WMLMacroCall#isPoint()
+   * @see #getWMLMacroCall()
+   * @generated
+   */
+  EAttribute getWMLMacroCall_Point();
 
   /**
    * Returns the meta object for the attribute '{@link org.wesnoth.wML.WMLMacroCall#isRelative <em>Relative</em>}'.
@@ -918,6 +1087,126 @@ public interface WMLPackage extends EPackage
   EReference getWMLMacroDefine_Values();
 
   /**
+   * Returns the meta object for the containment reference list '{@link org.wesnoth.wML.WMLMacroDefine#getIfDefs <em>If Defs</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>If Defs</em>'.
+   * @see org.wesnoth.wML.WMLMacroDefine#getIfDefs()
+   * @see #getWMLMacroDefine()
+   * @generated
+   */
+  EReference getWMLMacroDefine_IfDefs();
+
+  /**
+   * Returns the meta object for class '{@link org.wesnoth.wML.WMLPreprocIF <em>Preproc IF</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Preproc IF</em>'.
+   * @see org.wesnoth.wML.WMLPreprocIF
+   * @generated
+   */
+  EClass getWMLPreprocIF();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.wesnoth.wML.WMLPreprocIF#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see org.wesnoth.wML.WMLPreprocIF#getName()
+   * @see #getWMLPreprocIF()
+   * @generated
+   */
+  EAttribute getWMLPreprocIF_Name();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.wesnoth.wML.WMLPreprocIF#getTags <em>Tags</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Tags</em>'.
+   * @see org.wesnoth.wML.WMLPreprocIF#getTags()
+   * @see #getWMLPreprocIF()
+   * @generated
+   */
+  EReference getWMLPreprocIF_Tags();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.wesnoth.wML.WMLPreprocIF#getKeys <em>Keys</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Keys</em>'.
+   * @see org.wesnoth.wML.WMLPreprocIF#getKeys()
+   * @see #getWMLPreprocIF()
+   * @generated
+   */
+  EReference getWMLPreprocIF_Keys();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.wesnoth.wML.WMLPreprocIF#getMacroCalls <em>Macro Calls</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Macro Calls</em>'.
+   * @see org.wesnoth.wML.WMLPreprocIF#getMacroCalls()
+   * @see #getWMLPreprocIF()
+   * @generated
+   */
+  EReference getWMLPreprocIF_MacroCalls();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.wesnoth.wML.WMLPreprocIF#getMacroDefines <em>Macro Defines</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Macro Defines</em>'.
+   * @see org.wesnoth.wML.WMLPreprocIF#getMacroDefines()
+   * @see #getWMLPreprocIF()
+   * @generated
+   */
+  EReference getWMLPreprocIF_MacroDefines();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.wesnoth.wML.WMLPreprocIF#getTextdomains <em>Textdomains</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Textdomains</em>'.
+   * @see org.wesnoth.wML.WMLPreprocIF#getTextdomains()
+   * @see #getWMLPreprocIF()
+   * @generated
+   */
+  EReference getWMLPreprocIF_Textdomains();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.wesnoth.wML.WMLPreprocIF#getValues <em>Values</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Values</em>'.
+   * @see org.wesnoth.wML.WMLPreprocIF#getValues()
+   * @see #getWMLPreprocIF()
+   * @generated
+   */
+  EReference getWMLPreprocIF_Values();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.wesnoth.wML.WMLPreprocIF#getIfDefs <em>If Defs</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>If Defs</em>'.
+   * @see org.wesnoth.wML.WMLPreprocIF#getIfDefs()
+   * @see #getWMLPreprocIF()
+   * @generated
+   */
+  EReference getWMLPreprocIF_IfDefs();
+
+  /**
+   * Returns the meta object for the attribute list '{@link org.wesnoth.wML.WMLPreprocIF#getElses <em>Elses</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute list '<em>Elses</em>'.
+   * @see org.wesnoth.wML.WMLPreprocIF#getElses()
+   * @see #getWMLPreprocIF()
+   * @generated
+   */
+  EAttribute getWMLPreprocIF_Elses();
+
+  /**
    * Returns the meta object for class '{@link org.wesnoth.wML.WMLTextdomain <em>Textdomain</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1046,6 +1335,14 @@ public interface WMLPackage extends EPackage
     EReference WML_ROOT__TEXTDOMAINS = eINSTANCE.getWMLRoot_Textdomains();
 
     /**
+     * The meta object literal for the '<em><b>If Defs</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference WML_ROOT__IF_DEFS = eINSTANCE.getWMLRoot_IfDefs();
+
+    /**
      * The meta object literal for the '{@link org.wesnoth.wML.impl.WMLTagImpl <em>Tag</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1112,6 +1409,14 @@ public interface WMLPackage extends EPackage
     EReference WML_TAG__TEXTDOMAINS = eINSTANCE.getWMLTag_Textdomains();
 
     /**
+     * The meta object literal for the '<em><b>If Defs</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference WML_TAG__IF_DEFS = eINSTANCE.getWMLTag_IfDefs();
+
+    /**
      * The meta object literal for the '<em><b>End Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1164,6 +1469,14 @@ public interface WMLPackage extends EPackage
      * @generated
      */
     EClass WML_MACRO_CALL = eINSTANCE.getWMLMacroCall();
+
+    /**
+     * The meta object literal for the '<em><b>Point</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute WML_MACRO_CALL__POINT = eINSTANCE.getWMLMacroCall_Point();
 
     /**
      * The meta object literal for the '<em><b>Relative</b></em>' attribute feature.
@@ -1298,6 +1611,96 @@ public interface WMLPackage extends EPackage
      * @generated
      */
     EReference WML_MACRO_DEFINE__VALUES = eINSTANCE.getWMLMacroDefine_Values();
+
+    /**
+     * The meta object literal for the '<em><b>If Defs</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference WML_MACRO_DEFINE__IF_DEFS = eINSTANCE.getWMLMacroDefine_IfDefs();
+
+    /**
+     * The meta object literal for the '{@link org.wesnoth.wML.impl.WMLPreprocIFImpl <em>Preproc IF</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.wesnoth.wML.impl.WMLPreprocIFImpl
+     * @see org.wesnoth.wML.impl.WMLPackageImpl#getWMLPreprocIF()
+     * @generated
+     */
+    EClass WML_PREPROC_IF = eINSTANCE.getWMLPreprocIF();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute WML_PREPROC_IF__NAME = eINSTANCE.getWMLPreprocIF_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Tags</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference WML_PREPROC_IF__TAGS = eINSTANCE.getWMLPreprocIF_Tags();
+
+    /**
+     * The meta object literal for the '<em><b>Keys</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference WML_PREPROC_IF__KEYS = eINSTANCE.getWMLPreprocIF_Keys();
+
+    /**
+     * The meta object literal for the '<em><b>Macro Calls</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference WML_PREPROC_IF__MACRO_CALLS = eINSTANCE.getWMLPreprocIF_MacroCalls();
+
+    /**
+     * The meta object literal for the '<em><b>Macro Defines</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference WML_PREPROC_IF__MACRO_DEFINES = eINSTANCE.getWMLPreprocIF_MacroDefines();
+
+    /**
+     * The meta object literal for the '<em><b>Textdomains</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference WML_PREPROC_IF__TEXTDOMAINS = eINSTANCE.getWMLPreprocIF_Textdomains();
+
+    /**
+     * The meta object literal for the '<em><b>Values</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference WML_PREPROC_IF__VALUES = eINSTANCE.getWMLPreprocIF_Values();
+
+    /**
+     * The meta object literal for the '<em><b>If Defs</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference WML_PREPROC_IF__IF_DEFS = eINSTANCE.getWMLPreprocIF_IfDefs();
+
+    /**
+     * The meta object literal for the '<em><b>Elses</b></em>' attribute list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute WML_PREPROC_IF__ELSES = eINSTANCE.getWMLPreprocIF_Elses();
 
     /**
      * The meta object literal for the '{@link org.wesnoth.wML.impl.WMLTextdomainImpl <em>Textdomain</em>}' class.

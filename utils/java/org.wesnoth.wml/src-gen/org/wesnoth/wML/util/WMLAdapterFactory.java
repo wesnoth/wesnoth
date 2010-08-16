@@ -119,6 +119,11 @@ public class WMLAdapterFactory extends AdapterFactoryImpl
         return createWMLMacroDefineAdapter();
       }
       @Override
+      public Adapter caseWMLPreprocIF(WMLPreprocIF object)
+      {
+        return createWMLPreprocIFAdapter();
+      }
+      @Override
       public Adapter caseWMLTextdomain(WMLTextdomain object)
       {
         return createWMLTextdomainAdapter();
@@ -271,6 +276,21 @@ public class WMLAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createWMLMacroDefineAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.wesnoth.wML.WMLPreprocIF <em>Preproc IF</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.wesnoth.wML.WMLPreprocIF
+   * @generated
+   */
+  public Adapter createWMLPreprocIFAdapter()
   {
     return null;
   }

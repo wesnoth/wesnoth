@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.wesnoth.wML.WMLMacroCall;
 import org.wesnoth.wML.WMLMacroDefine;
 import org.wesnoth.wML.WMLPackage;
+import org.wesnoth.wML.WMLPreprocIF;
 import org.wesnoth.wML.WMLRoot;
 import org.wesnoth.wML.WMLTag;
 import org.wesnoth.wML.WMLTextdomain;
@@ -38,6 +39,7 @@ import org.wesnoth.wML.WMLTextdomain;
  *   <li>{@link org.wesnoth.wML.impl.WMLRootImpl#getMacroCalls <em>Macro Calls</em>}</li>
  *   <li>{@link org.wesnoth.wML.impl.WMLRootImpl#getMacroDefines <em>Macro Defines</em>}</li>
  *   <li>{@link org.wesnoth.wML.impl.WMLRootImpl#getTextdomains <em>Textdomains</em>}</li>
+ *   <li>{@link org.wesnoth.wML.impl.WMLRootImpl#getIfDefs <em>If Defs</em>}</li>
  * </ul>
  * </p>
  *
@@ -84,6 +86,16 @@ public class WMLRootImpl extends MinimalEObjectImpl.Container implements WMLRoot
    * @ordered
    */
   protected EList<WMLTextdomain> textdomains;
+
+  /**
+   * The cached value of the '{@link #getIfDefs() <em>If Defs</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getIfDefs()
+   * @generated
+   * @ordered
+   */
+  protected EList<WMLPreprocIF> ifDefs;
 
   /**
    * <!-- begin-user-doc -->
@@ -167,6 +179,20 @@ public class WMLRootImpl extends MinimalEObjectImpl.Container implements WMLRoot
    * <!-- end-user-doc -->
    * @generated
    */
+  public EList<WMLPreprocIF> getIfDefs()
+  {
+    if (ifDefs == null)
+    {
+      ifDefs = new EObjectContainmentEList<WMLPreprocIF>(WMLPreprocIF.class, this, WMLPackage.WML_ROOT__IF_DEFS);
+    }
+    return ifDefs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -180,6 +206,8 @@ public class WMLRootImpl extends MinimalEObjectImpl.Container implements WMLRoot
         return ((InternalEList<?>)getMacroDefines()).basicRemove(otherEnd, msgs);
       case WMLPackage.WML_ROOT__TEXTDOMAINS:
         return ((InternalEList<?>)getTextdomains()).basicRemove(otherEnd, msgs);
+      case WMLPackage.WML_ROOT__IF_DEFS:
+        return ((InternalEList<?>)getIfDefs()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -202,6 +230,8 @@ public class WMLRootImpl extends MinimalEObjectImpl.Container implements WMLRoot
         return getMacroDefines();
       case WMLPackage.WML_ROOT__TEXTDOMAINS:
         return getTextdomains();
+      case WMLPackage.WML_ROOT__IF_DEFS:
+        return getIfDefs();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -233,6 +263,10 @@ public class WMLRootImpl extends MinimalEObjectImpl.Container implements WMLRoot
         getTextdomains().clear();
         getTextdomains().addAll((Collection<? extends WMLTextdomain>)newValue);
         return;
+      case WMLPackage.WML_ROOT__IF_DEFS:
+        getIfDefs().clear();
+        getIfDefs().addAll((Collection<? extends WMLPreprocIF>)newValue);
+        return;
     }
     super.eSet(featureID, newValue);
   }
@@ -259,6 +293,9 @@ public class WMLRootImpl extends MinimalEObjectImpl.Container implements WMLRoot
       case WMLPackage.WML_ROOT__TEXTDOMAINS:
         getTextdomains().clear();
         return;
+      case WMLPackage.WML_ROOT__IF_DEFS:
+        getIfDefs().clear();
+        return;
     }
     super.eUnset(featureID);
   }
@@ -281,6 +318,8 @@ public class WMLRootImpl extends MinimalEObjectImpl.Container implements WMLRoot
         return macroDefines != null && !macroDefines.isEmpty();
       case WMLPackage.WML_ROOT__TEXTDOMAINS:
         return textdomains != null && !textdomains.isEmpty();
+      case WMLPackage.WML_ROOT__IF_DEFS:
+        return ifDefs != null && !ifDefs.isEmpty();
     }
     return super.eIsSet(featureID);
   }

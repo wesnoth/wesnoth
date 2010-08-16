@@ -99,6 +99,15 @@ public interface WMLFactory extends EFactory
   WMLMacroDefine createWMLMacroDefine();
 
   /**
+   * Returns a new object of class '<em>Preproc IF</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Preproc IF</em>'.
+   * @generated
+   */
+  WMLPreprocIF createWMLPreprocIF();
+
+  /**
    * Returns a new object of class '<em>Textdomain</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

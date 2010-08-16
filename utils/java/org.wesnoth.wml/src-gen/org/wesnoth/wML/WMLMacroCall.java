@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link org.wesnoth.wML.WMLMacroCall#isPoint <em>Point</em>}</li>
  *   <li>{@link org.wesnoth.wML.WMLMacroCall#isRelative <em>Relative</em>}</li>
  *   <li>{@link org.wesnoth.wML.WMLMacroCall#getName <em>Name</em>}</li>
  *   <li>{@link org.wesnoth.wML.WMLMacroCall#getParams <em>Params</em>}</li>
@@ -31,6 +32,32 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface WMLMacroCall extends WMLKeyValue
 {
+  /**
+   * Returns the value of the '<em><b>Point</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Point</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Point</em>' attribute.
+   * @see #setPoint(boolean)
+   * @see org.wesnoth.wML.WMLPackage#getWMLMacroCall_Point()
+   * @model
+   * @generated
+   */
+  boolean isPoint();
+
+  /**
+   * Sets the value of the '{@link org.wesnoth.wML.WMLMacroCall#isPoint <em>Point</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Point</em>' attribute.
+   * @see #isPoint()
+   * @generated
+   */
+  void setPoint(boolean value);
+
   /**
    * Returns the value of the '<em><b>Relative</b></em>' attribute.
    * <!-- begin-user-doc -->

@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.wesnoth.wML.WMLMacroDefine#getMacroDefines <em>Macro Defines</em>}</li>
  *   <li>{@link org.wesnoth.wML.WMLMacroDefine#getTextdomains <em>Textdomains</em>}</li>
  *   <li>{@link org.wesnoth.wML.WMLMacroDefine#getValues <em>Values</em>}</li>
+ *   <li>{@link org.wesnoth.wML.WMLMacroDefine#getIfDefs <em>If Defs</em>}</li>
  * </ul>
  * </p>
  *
@@ -155,5 +156,21 @@ public interface WMLMacroDefine extends EObject
    * @generated
    */
   EList<WMLValue> getValues();
+
+  /**
+   * Returns the value of the '<em><b>If Defs</b></em>' containment reference list.
+   * The list contents are of type {@link org.wesnoth.wML.WMLPreprocIF}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>If Defs</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>If Defs</em>' containment reference list.
+   * @see org.wesnoth.wML.WMLPackage#getWMLMacroDefine_IfDefs()
+   * @model containment="true"
+   * @generated
+   */
+  EList<WMLPreprocIF> getIfDefs();
 
 } // WMLMacroDefine

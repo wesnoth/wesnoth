@@ -15,6 +15,7 @@ WMLRoot:
 	| MacroCalls += WMLMacroCall
 	| MacroDefines += WMLMacroDefine
 	| Textdomains += WMLTextdomain
+	| IfDefs += WMLPreprocIF
 	)*
 	;
 
@@ -25,18 +26,19 @@ WMLTag:
 		| MacroCalls += WMLMacroCall
 		| MacroDefines += WMLMacroDefine
 		| Textdomains += WMLTextdomain
+		| IfDefs += WMLPreprocIF
 		)*
 	'[/' endName = ID ']'
 	;
 
 WMLKey hidden(WS):
-	name = ID '=' value += WMLKeyValue* (EOL? '+' EOL? value+=WMLKeyValue )* (EOL|SL_COMMENT);
+	name = ID '=' value += WMLKeyValue* (EOL? '+' EOL? value+=WMLKeyValue+)* (EOL|SL_COMMENT);
 
 WMLKeyValue:
 	WMLValue | WMLMacroCall | WMLLuaCode | WMLArrayCall;
 	
 WMLMacroCall:
-	'{' ('.')? (relative?='~')? name=ID
+	'{' (point?='.' '/')? (relative?='~')? name=ID
 		( params += (WMLValue | MacroTokens)
 		| extraMacros += WMLMacroCall
 		)*
@@ -54,14 +56,28 @@ WMLMacroDefine:
 		| MacroDefines += WMLMacroDefine
 		| Textdomains += WMLTextdomain
 		| Values += WMLValue
+		| IfDefs += WMLPreprocIF
 		)*
 	ENDDEF;
-	
+
+WMLPreprocIF:
+	name=(IFDEF | IFNDEF | IFHAVE | IFNHAVE)
+		( Tags += WMLTag
+		| Keys += WMLKey
+		| MacroCalls += WMLMacroCall
+		| MacroDefines += WMLMacroDefine
+		| Textdomains += WMLTextdomain
+		| Values += WMLValue
+		| IfDefs += WMLPreprocIF
+		| Elses += ELSE
+		)*
+	ENDIF;
+
 WMLTextdomain:
 	name = TEXTDOMAIN;
 
 WMLValue:
-	value = (ID | TSTRING | TVAR | STRING |'~' | '.'|'(' | ')'| ANY_OTHER);
+	value = (ID | TSTRING | TVAR | STRING |'~' | '.' |'$'|'/' |'(' | ')'| ANY_OTHER);
 
 TSTRING:
 	'_' STRING;
@@ -73,9 +89,17 @@ MacroTokens:
 	val=('='|'['|']'|'+'|'[/');
 
 terminal LUA_CODE   : '<<' -> '>>';
+// Preprocessor terminals
+terminal IFHAVE	 : '#ifhave' !('\n'|'\r')* ('\r'? '\n')?;
+terminal IFNHAVE	 : '#ifnhave' !('\n'|'\r')* ('\r'? '\n')?;
+terminal IFDEF		 : '#ifdef' !('\n'|'\r')* ('\r'? '\n')?;
+terminal IFNDEF	 : '#ifndef' !('\n'|'\r')* ('\r'? '\n')?;
+terminal ELSE		 : '#else' !('\n'|'\r')* ('\r'? '\n')?;
+terminal ENDIF      : '#endif' !('\n'|'\r')* ('\r'? '\n')?;
 terminal DEFINE     : '#define' !('\n'|'\r')* ('\r'? '\n')?;
 terminal ENDDEF     : '#enddef' !('\n'|'\r')* ('\r'? '\n')?;
 terminal TEXTDOMAIN : '#textdomain' !('\n'|'\r')* ('\r'? '\n')?;
+// end preprocessor terminals
 terminal STRING     : '"' ( '\\' ('b'|'t'|'n'|'f'|'r'|'"'|"'"|'\\') | !('\\'|'"') )* '"';
 terminal ID         : ('a'..'z'|'A'..'Z'|'0'..'9'|'_'|'-'|',')+;
 terminal EOL		 : ('\r'|'\n');

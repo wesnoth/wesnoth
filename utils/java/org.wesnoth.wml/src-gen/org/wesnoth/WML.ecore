@@ -12,6 +12,8 @@
         eType="#//WMLMacroDefine" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="Textdomains" upperBound="-1"
         eType="#//WMLTextdomain" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="IfDefs" upperBound="-1"
+        eType="#//WMLPreprocIF" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WMLTag">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="plus" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
@@ -26,6 +28,8 @@
         eType="#//WMLMacroDefine" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="Textdomains" upperBound="-1"
         eType="#//WMLTextdomain" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="IfDefs" upperBound="-1"
+        eType="#//WMLPreprocIF" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="endName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WMLKey">
@@ -35,6 +39,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WMLKeyValue"/>
   <eClassifiers xsi:type="ecore:EClass" name="WMLMacroCall" eSuperTypes="#//WMLKeyValue">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="point" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="relative" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="params" upperBound="-1"
@@ -63,6 +68,27 @@
         eType="#//WMLTextdomain" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="Values" upperBound="-1"
         eType="#//WMLValue" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="IfDefs" upperBound="-1"
+        eType="#//WMLPreprocIF" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="WMLPreprocIF">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="Tags" upperBound="-1" eType="#//WMLTag"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="Keys" upperBound="-1" eType="#//WMLKey"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="MacroCalls" upperBound="-1"
+        eType="#//WMLMacroCall" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="MacroDefines" upperBound="-1"
+        eType="#//WMLMacroDefine" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="Textdomains" upperBound="-1"
+        eType="#//WMLTextdomain" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="Values" upperBound="-1"
+        eType="#//WMLValue" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="IfDefs" upperBound="-1"
+        eType="#//WMLPreprocIF" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Elses" unique="false" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WMLTextdomain">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

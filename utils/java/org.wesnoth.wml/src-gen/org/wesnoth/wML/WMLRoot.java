@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.wesnoth.wML.WMLRoot#getMacroCalls <em>Macro Calls</em>}</li>
  *   <li>{@link org.wesnoth.wML.WMLRoot#getMacroDefines <em>Macro Defines</em>}</li>
  *   <li>{@link org.wesnoth.wML.WMLRoot#getTextdomains <em>Textdomains</em>}</li>
+ *   <li>{@link org.wesnoth.wML.WMLRoot#getIfDefs <em>If Defs</em>}</li>
  * </ul>
  * </p>
  *
@@ -94,5 +95,21 @@ public interface WMLRoot extends EObject
    * @generated
    */
   EList<WMLTextdomain> getTextdomains();
+
+  /**
+   * Returns the value of the '<em><b>If Defs</b></em>' containment reference list.
+   * The list contents are of type {@link org.wesnoth.wML.WMLPreprocIF}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>If Defs</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>If Defs</em>' containment reference list.
+   * @see org.wesnoth.wML.WMLPackage#getWMLRoot_IfDefs()
+   * @model containment="true"
+   * @generated
+   */
+  EList<WMLPreprocIF> getIfDefs();
 
 } // WMLRoot

@@ -108,6 +108,7 @@ public abstract class WMLTests extends AbstractXtextTests
 	   * */
 	  protected void checkParsing(String input, String entryRule) {
 	    IParseResult la = getParseResult(input, entryRule);
+	    System.out.println(la.getParseErrors());
 	    assertEquals(input, 0, la.getParseErrors().size());
 	  }
 
