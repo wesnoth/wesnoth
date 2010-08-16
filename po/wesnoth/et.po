@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.4 Estonian translation\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-08-13 11:21+0200\n"
-"PO-Revision-Date: 2009-12-25 11:55+0300\n"
+"PO-Revision-Date: 2010-08-16 08:59+0300\n"
 "Last-Translator: Kaido Kikkas <kakk@kakupesa.net>\n"
 "Language-Team: Kaido Kikkas <kakk@kakupesa.net>\n"
 "Language: \n"
@@ -105,21 +105,18 @@ msgstr "Ooteruumi helid"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:107
-#, fuzzy
 msgid "Disable notifications"
-msgstr "Lülita automaatsalvestus välja."
+msgstr "Lülita teavitused välja"
 
 #. [ai]: id=default # id is needed uniquely identify a MP AI, it is not needed in the scenario AI
 #: data/ai/ais/default_ai.cfg:4
-#, fuzzy
 msgid "Multiplayer_AI^Default AI"
-msgstr "Mitmekesi mäng"
+msgstr "Vaikimisi arvutimängija"
 
 #. [ai]: id=testing_ai_default
 #: data/ai/ais/testing_ai_default.cfg:5
-#, fuzzy
 msgid "Multiplayer_AI^RCA AI"
-msgstr "Mitmekesi mäng"
+msgstr "RCA arvutimängija"
 
 #. [time]: id=underground
 #. [illuminated_time]: id=underground_illum
@@ -5130,9 +5127,8 @@ msgstr "elatanud"
 
 #. [trait]: id=aged
 #: data/core/macros/traits.cfg:222
-#, fuzzy
 msgid "female^aged"
-msgstr "juhm"
+msgstr "elatanud"
 
 #. [color_range]: id=red
 #. [color_range]: id=1
@@ -8421,6 +8417,8 @@ msgid ""
 "Unknown command '$command', try $help_command for a list of available "
 "commands."
 msgstr ""
+"Käsk  '$command' on tundmatu. Proovi vaadata saadaolevate käskude nimekirja: "
+"$help_command."
 
 #: src/menu_events.cpp:1951
 msgid ""
@@ -8432,53 +8430,51 @@ msgstr ""
 
 #: src/menu_events.cpp:1953
 msgid "do not translate the 'all'^[all|<command>]"
-msgstr ""
+msgstr "ära tõlgi klauslit 'all'^[all|<command>]"
 
 #: src/menu_events.cpp:1997
-#, fuzzy
 msgid "Error:"
 msgstr "Viga:"
 
 #: src/menu_events.cpp:2003
 msgid "Missing argument $arg_id"
-msgstr ""
+msgstr "Puuduv argument: $arg_id"
 
 #: src/menu_events.cpp:2051
 msgid ""
 "Available commands $flags_description:\n"
 "$list_of_commands"
 msgstr ""
+"Saadaolevad käsud: $flags_description:\n"
+"$list_of_commands"
 
 #: src/menu_events.cpp:2051 src/menu_events.cpp:2052 src/menu_events.cpp:2075
-#, fuzzy
 msgid "help"
-msgstr "Abiteave"
+msgstr "abiteave"
 
 #: src/menu_events.cpp:2052
 msgid "Type $help_command <command> for more info."
-msgstr ""
+msgstr "Lisainfo saamiseks proovi $help_command <käsk> ."
 
 #: src/menu_events.cpp:2063
 msgid " No help available."
 msgstr "Abiinfo pole kättesaadav."
 
 #: src/menu_events.cpp:2068
-#, fuzzy
 msgid "Usage:"
-msgstr "Teade:"
+msgstr "Kasutus:"
 
 #: src/menu_events.cpp:2073
 msgid "aliases:"
-msgstr ""
+msgstr "aliased:"
 
 #: src/menu_events.cpp:2199
 msgid "(A) - admin command"
-msgstr ""
+msgstr "(A) - haldurikäsk"
 
 #: src/menu_events.cpp:2206 src/menu_events.cpp:2405
-#, fuzzy
 msgid "(admin only)"
-msgstr "Võistkondlik"
+msgstr "(ainult haldur)"
 
 #: src/menu_events.cpp:2226
 msgid ""
@@ -8500,7 +8496,7 @@ msgstr ""
 #: src/menu_events.cpp:2238 src/menu_events.cpp:2240 src/menu_events.cpp:2265
 #: src/menu_events.cpp:2267 src/menu_events.cpp:2269 src/menu_events.cpp:2283
 msgid "<nick>"
-msgstr ""
+msgstr "<nimi>"
 
 #: src/menu_events.cpp:2233
 msgid "Unban a user. He does not have to be in the game but on the server."
@@ -8529,9 +8525,8 @@ msgid "Send a message to the server admins currently online"
 msgstr "Saada teade serveri halduritele, kes on hetkel võrgus"
 
 #: src/menu_events.cpp:2254
-#, fuzzy
 msgid "<message>"
-msgstr "Teade:"
+msgstr "<sõnum>"
 
 #: src/menu_events.cpp:2254
 msgid "Send an emotion or personal action in chat."
@@ -8547,11 +8542,11 @@ msgstr ""
 
 #: src/menu_events.cpp:2259
 msgid "<nick> <message>"
-msgstr ""
+msgstr "<nimi> <sõnum>"
 
 #: src/menu_events.cpp:2263
 msgid "<level> <domain>"
-msgstr ""
+msgstr "<tase> <domeen>"
 
 #: src/menu_events.cpp:2263
 msgid "Change the log level of a log domain."
@@ -8579,7 +8574,7 @@ msgstr "Näita versiooniinfot."
 
 #: src/menu_events.cpp:2276
 msgid "<password> <email (optional)>"
-msgstr ""
+msgstr "<parool> <e-post (soovi korral)>"
 
 #: src/menu_events.cpp:2276
 msgid "Register your nick"
@@ -8595,7 +8590,7 @@ msgstr "Uuenda oma kasutajainfot. Vt täpsemalt '/details' alt."
 
 #: src/menu_events.cpp:2281
 msgid "<detail> <value>"
-msgstr ""
+msgstr "<detail> <väärtus>"
 
 #: src/menu_events.cpp:2283
 msgid "Request information about a nick."
@@ -8607,7 +8602,7 @@ msgstr "Küsib kasutajainfo võimalusi, mida saad enda kohta sisestada."
 
 #: src/menu_events.cpp:2287 src/menu_events.cpp:2290 src/menu_events.cpp:2292
 msgid "<room>"
-msgstr ""
+msgstr "<ruum>"
 
 #: src/menu_events.cpp:2287
 msgid "Join a room."
@@ -8627,7 +8622,7 @@ msgstr "Ligipääsetavate ruumide nimekiri."
 
 #: src/menu_events.cpp:2296
 msgid "<room> <msg>"
-msgstr ""
+msgstr "<ruum> <sõnum>"
 
 #: src/menu_events.cpp:2296
 msgid "Room message."
@@ -8635,7 +8630,7 @@ msgstr "Ruumi sõnum."
 
 #: src/menu_events.cpp:2298
 msgid "<room> <type> [value]"
-msgstr ""
+msgstr "<ruum> <tüüp> [väärtus]"
 
 #: src/menu_events.cpp:2298
 msgid "Room query."
@@ -8643,17 +8638,15 @@ msgstr "Ruumi päring."
 
 #: src/menu_events.cpp:2397
 msgid "(D) - debug only, (N) - network only, (A) - admin only"
-msgstr ""
+msgstr "(D) - ainult silumisel, (N) - ainult võrgus, (A) - ainult haldurile"
 
 #: src/menu_events.cpp:2403
-#, fuzzy
 msgid "(debug command)"
-msgstr "Silumiskäsud"
+msgstr "(silumiskäsk)"
 
 #: src/menu_events.cpp:2404
-#, fuzzy
 msgid "(network only)"
-msgstr "Võrgumängija"
+msgstr "(ainult võrgus)"
 
 #: src/menu_events.cpp:2429
 msgid "Refresh gui."
@@ -8665,12 +8658,11 @@ msgstr "Lülita osapool arvuti või inimese juhitavaks."
 
 #: src/menu_events.cpp:2431
 msgid "do not translate the on/off^[<side> [on/off]]"
-msgstr ""
+msgstr "ära tõlgi klauslit on/off^[<side> [on/off]]"
 
 #: src/menu_events.cpp:2434
-#, fuzzy
 msgid "<side> <nick>"
-msgstr "Kasutus: control <osapool> <nimi>"
+msgstr "<osapool> <nimi>"
 
 #: src/menu_events.cpp:2434
 msgid "Assign control of a side to a different player or observer."
@@ -8685,9 +8677,8 @@ msgid "Visualize the screen refresh procedure."
 msgstr "Visualiseeri ekraani värskendusprotseduuri."
 
 #: src/menu_events.cpp:2439
-#, fuzzy
 msgid "Show fps."
-msgstr "Näita kordust"
+msgstr "Näita FPS-e."
 
 #: src/menu_events.cpp:2441
 msgid "Save game."
@@ -8711,7 +8702,7 @@ msgstr "Lülita automaatsalvestus välja."
 
 #: src/menu_events.cpp:2454
 msgid "<id>"
-msgstr ""
+msgstr "<nr>"
 
 #: src/menu_events.cpp:2454
 msgid "Advance to the next scenario, or scenario identified by 'id'"
@@ -8731,7 +8722,7 @@ msgstr "Lülita silumisrežiim välja."
 
 #: src/menu_events.cpp:2464 src/menu_events.cpp:2468
 msgid "<command>[;<command>...]"
-msgstr ""
+msgstr "<käsk>[;<käsk>...]"
 
 #: src/menu_events.cpp:2464
 msgid "Execute a Lua statement."
@@ -8739,7 +8730,7 @@ msgstr "Sisesta Lua käsk."
 
 #: src/menu_events.cpp:2466
 msgid "Grant higher privileges to Lua scripts."
-msgstr ""
+msgstr "Anna Lua skriptidele rohkem õigusi."
 
 #: src/menu_events.cpp:2468
 msgid "Set the command used by the custom command hotkey"
@@ -8751,7 +8742,7 @@ msgstr "Käivita mängu oleku jälgija"
 
 #: src/menu_events.cpp:2472
 msgid "<name>[=<command>]"
-msgstr ""
+msgstr "<nimi>[=<käsk>]"
 
 #: src/menu_events.cpp:2472
 msgid "Set or show alias to a command"
@@ -8759,7 +8750,7 @@ msgstr "Määra või näita käsu aliast"
 
 #: src/menu_events.cpp:2474
 msgid "<var>=<value>"
-msgstr ""
+msgstr "<muutuja>=<väärtus>"
 
 #: src/menu_events.cpp:2474
 msgid "Set a scenario variable."
@@ -8767,7 +8758,7 @@ msgstr "Määra stsenaariumi muutuja väärtus."
 
 #: src/menu_events.cpp:2476
 msgid "<var>"
-msgstr ""
+msgstr "<muutuja>"
 
 #: src/menu_events.cpp:2476
 msgid "Show a scenario variable."
@@ -8827,11 +8818,11 @@ msgstr "Vahetasin '$domain' tasemele '$level'."
 
 #: src/menu_events.cpp:2637
 msgid "whisper to $receiver"
-msgstr ""
+msgstr "sosista $receiver -le"
 
 #: src/menu_events.cpp:2644
 msgid "whisper: $sender"
-msgstr ""
+msgstr "$sender sosistab: "
 
 #: src/menu_events.cpp:2740 src/menu_events.cpp:2759
 #: src/multiplayer_connect.cpp:699
@@ -8839,74 +8830,65 @@ msgid "(empty)"
 msgstr "(tühi)"
 
 #: src/menu_events.cpp:2740 src/menu_events.cpp:2746 src/menu_events.cpp:2796
-#, fuzzy
 msgid "ignores list"
-msgstr "Eiratavate nimekirjas"
+msgstr "eiratavate nimekiri"
 
 #: src/menu_events.cpp:2746
-#, fuzzy
 msgid "Added to ignore list: $nick"
-msgstr "Lisatud eiratavate nimekirja:"
+msgstr "Lisatud eiratavate nimekirja: $nick"
 
 #: src/menu_events.cpp:2749 src/menu_events.cpp:2768
-#, fuzzy
 msgid "Invalid username: $nick"
-msgstr "Vigane kasutajanimi:"
+msgstr "Vigane kasutajanimi:  $nick"
 
 #: src/menu_events.cpp:2759 src/menu_events.cpp:2766 src/menu_events.cpp:2792
-#, fuzzy
 msgid "friends list"
-msgstr "Sõbranimekirjas"
+msgstr "sõbranimekiri"
 
 #: src/menu_events.cpp:2766
-#, fuzzy
 msgid "Added to friends list: $nick"
-msgstr "Lisatud sõprade nimekirja:"
+msgstr "Lisatud sõprade nimekirja: $nick"
 
 #: src/menu_events.cpp:2782
-#, fuzzy
 msgid "Removed from list: $nick"
-msgstr "Nimekirjast eemaldatud:"
+msgstr "Nimekirjast eemaldatud:  $nick"
 
 #: src/menu_events.cpp:2782 src/menu_events.cpp:2800
-#, fuzzy
 msgid "friends and ignores list"
-msgstr "Eiratavate nimekirjas"
+msgstr "sõprade ja eiratavate nimekiri"
 
 #: src/menu_events.cpp:2800
 msgid "There are no players on your friends or ignore list."
 msgstr "Sinu sõbra- ja eiramisnimekirjad on tühjad."
 
 #: src/menu_events.cpp:2805
-#, fuzzy
 msgid "version"
-msgstr "Versioon"
+msgstr "versioon"
 
 #: src/menu_events.cpp:2821
 msgid "registering with password *** and no email address"
-msgstr ""
+msgstr "registreerun parooliga ***, e-posti ei lisa."
 
 #: src/menu_events.cpp:2825
 msgid "registering with password *** and email address $email"
-msgstr ""
+msgstr "registreerun parooliga *** ja e-postiaadressiga $email"
 
 #: src/menu_events.cpp:2828 src/menu_events.cpp:2839 src/menu_events.cpp:2857
 #: src/menu_events.cpp:2871
 msgid "nick registration"
-msgstr ""
+msgstr "hüüdnime registreerimine"
 
 #: src/menu_events.cpp:2839
 msgid "dropping your username"
-msgstr ""
+msgstr "kustutan kasutajanime"
 
 #: src/menu_events.cpp:2857
 msgid "setting $var to $value"
-msgstr ""
+msgstr "panen $var väärtuseks $value"
 
 #: src/menu_events.cpp:2871
-#, fuzzy
 msgid "requesting information for user $nick"
-msgstr "Küsi infot mängija kohta."
+msgstr "küsin infot kasutaja $nick kohta"
 
 #: src/menu_events.cpp:2983
 msgid "Couldn't find label or unit containing the string '$search'."
@@ -8946,7 +8928,7 @@ msgstr "Silumine välja lülitatud!"
 
 #: src/menu_events.cpp:3191
 msgid "Unsafe Lua scripts."
-msgstr ""
+msgstr "Ebaturvalised Lua skriptid."
 
 #: src/menu_events.cpp:3192
 msgid ""
@@ -8954,30 +8936,33 @@ msgid ""
 "continue? If you have downloaded add-ons, do not click 'ok'! They would "
 "instantly take over your computer. You have been warned."
 msgstr ""
+"Sa oled tegemas Wesnothi turvaauku. Oled ikka kindel, et soovid jätkata? Kui "
+"oled alla laadinud lisasid, ära klõpsa 'Olgu'! Need võtavad su arvuti enda "
+"kontrolli alla. Sind on hoiatatud."
 
 #: src/menu_events.cpp:3195
 msgid "Unsafe mode enabled!"
-msgstr ""
+msgstr "Ebaturvaline režiim sisse lülitatud!"
 
 #: src/menu_events.cpp:3238
 msgid "Variable not found"
-msgstr ""
+msgstr "Muutujat ei leitud"
 
 #: src/menu_events.cpp:3276
 msgid ""
 "Invalid alignment: '$alignment', needs to be one of lawful, neutral or "
 "chaotic."
 msgstr ""
+"Hoiakut '$alignment' ei ole, see peab olema kas kuulekas, ükskõikne või "
+"korratu."
 
 #: src/menu_events.cpp:3333
-#, fuzzy
 msgid "Invalid unit type"
-msgstr "Vigane märgendinimi"
+msgstr "vigane üksusetüüp"
 
 #: src/menu_events.cpp:3346
-#, fuzzy
 msgid "Invalid location"
-msgstr "Vigane värvus"
+msgstr "vigane asukoht"
 
 #: src/menu_events.cpp:3382
 msgid "ai"
@@ -9019,7 +9004,7 @@ msgstr "Serveripoolne ümbersuunamine"
 
 #: src/multiplayer.cpp:256
 msgid "Bad data received from server"
-msgstr ""
+msgstr "Server saatis vigased andmed"
 
 #: src/multiplayer.cpp:297
 msgid "You must login first."
@@ -9321,9 +9306,8 @@ msgid "Invalid era selected"
 msgstr "Valiti vigane ajastu"
 
 #: src/multiplayer_create.cpp:333
-#, fuzzy
 msgid "The map is invalid."
-msgstr "Mäng on läbi."
+msgstr "Vigane kaart."
 
 #: src/multiplayer_create.cpp:335
 msgid "You must enter a name."
@@ -9435,7 +9419,6 @@ msgid "Friends in Game"
 msgstr "Sõbrad mängus"
 
 #: src/multiplayer_lobby.cpp:738
-#, fuzzy
 msgid "Filter:"
 msgstr "Filter:"
 
@@ -9685,15 +9668,14 @@ msgstr[1] ""
 "Sa alustad järgmist stsenaariumi $gold kuldrahaga lisaks sealsele algsummale."
 
 #: src/playsingle_controller.cpp:254
-#, fuzzy
 msgid ""
 "You will start the next scenario with the defined minimum starting gold."
 msgid_plural ""
 "You will start the next scenario with the defined minimum starting gold."
 msgstr[0] ""
-"Sa alustad järgmist stsenaariumi $gold kuldrahaga lisaks sealsele algsummale."
+"Sa alustad järgmist stsenaariumi sealse kindlaksmääratud algsummaga."
 msgstr[1] ""
-"Sa alustad järgmist stsenaariumi $gold kuldrahaga lisaks sealsele algsummale."
+"Sa alustad järgmist stsenaariumi sealse kindlaksmääratud algsummaga."
 
 #: src/playsingle_controller.cpp:262
 msgid ""
@@ -10049,9 +10031,8 @@ msgid "Quit the game"
 msgstr "Välju mängust"
 
 #: src/titlescreen.cpp:450
-#, fuzzy
 msgid "Show previous tip of the day"
-msgstr "Näita järgmist vihjet"
+msgstr "Näita eelmist vihjet"
 
 #: src/titlescreen.cpp:451
 msgid "Show next tip of the day"
