@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-08-13 11:31+0200\n"
-"PO-Revision-Date: 2009-12-25 23:14+0300\n"
+"PO-Revision-Date: 2010-08-16 09:02+0300\n"
 "Last-Translator: Kaido Kikkas <kakk@kakupesa.net>\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -132,9 +132,8 @@ msgstr "Põllumaa"
 
 #. [terrain_type]: id=stones_small
 #: data/core/terrain.cfg:302
-#, fuzzy
 msgid "Stones"
-msgstr "Tegevused"
+msgstr ""
 
 #. [terrain_type]: id=mushrooms_small
 #: data/core/terrain.cfg:311
@@ -2124,7 +2123,7 @@ msgstr "Ära animeeri arvuti juhitud üksuste liikumist."
 
 #: src/game_preferences_display.cpp:342
 msgid "Sighting an allied unit interrupts your unit’s movement"
-msgstr ""
+msgstr "Liitlasüksuse nägemine peatab sinu üksuse käigu"
 
 #: src/game_preferences_display.cpp:350
 msgid "Overlay a grid onto the map"
@@ -2387,7 +2386,7 @@ msgstr ""
 #: src/gui/auxiliary/window_builder/tree_view.cpp:89
 #, fuzzy
 msgid "No node defined."
-msgstr "Servereid pole määratud."
+msgstr "Lehekülge pole määratud."
 
 #: src/gui/dialogs/data_manage.cpp:176 src/gui/dialogs/game_load.cpp:258
 msgid "#(Invalid)"
@@ -2447,11 +2446,11 @@ msgstr "Liitusid ruumiga $name"
 
 #: src/gui/dialogs/lobby_main.cpp:1435
 msgid "$player has entered the room"
-msgstr ""
+msgstr "$player sisenes ruumi"
 
 #: src/gui/dialogs/lobby_main.cpp:1473
 msgid "$player has left the room"
-msgstr ""
+msgstr "$player lahkus ruumist"
 
 #: src/gui/dialogs/lobby_main.cpp:1586
 msgid "Password Required"
@@ -3121,17 +3120,26 @@ msgstr ""
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "Sektsioonis '[$section|]' pole kohustuslik võti '$key|' määratud."
 
+#~ msgid "Road"
+#~ msgstr "Tee"
+
 #~ msgid "Cave path"
 #~ msgstr "Kooparada"
-
-#~ msgid "Window not defined."
-#~ msgstr "Aken pole määratletud."
 
 #~ msgid "River Ford"
 #~ msgstr "Koolmekoht"
 
-#~ msgid "Road"
-#~ msgstr "Tee"
+#~ msgid "Use new lobby interface"
+#~ msgstr "Kasuta uut ooteruumi"
+
+#~ msgid ""
+#~ "mouseover^Use new lobby interface (only works after a manual reconnect to "
+#~ "the server)"
+#~ msgstr ""
+#~ "Kasuta uut ooteruumi (töötab ainult käsitsi serveriga ühendumise korral)"
+
+#~ msgid "Window not defined."
+#~ msgstr "Aken pole määratletud."
 
 #~ msgid "Save The Map"
 #~ msgstr "Salvesta kaart"
