@@ -642,7 +642,7 @@ network::connection ana_network_manager::create_client_and_connect(std::string h
             //Send handshake
             ana::serializer::bostream bos;
 
-            uint32_t handshake( 0 );
+            ana::ana_uint32 handshake( 0 );
             bos << handshake;
 
             ana_send_handler send_handler;
@@ -655,10 +655,10 @@ network::connection ana_network_manager::create_client_and_connect(std::string h
                 throw network::error(_("Could not connect to host"), client->id() );
             else
             {
-                uint32_t my_id;
+                ana::ana_uint32 my_id;
                 ana::serializer::bistream bis;
 
-                client->wait_raw_object(bis, sizeof(uint32_t) );
+                client->wait_raw_object(bis, sizeof(ana::ana_uint32) );
 
                 bis >> my_id;
                 ana::network_to_host_long( my_id );
@@ -797,7 +797,8 @@ size_t ana_network_manager::number_of_connections() const
             ++total;
         else
         {
-            std::map< ana::server*, clients_manager* >::const_iterator mgr = server_manager_.find( (*it)->server() );
+            std::map< ana::server*, clients_manager* >::const_iterator mgr = server_manager_.find(
+(*it)->server() );
             total += mgr->second->client_amount();
         }
     }
@@ -1173,10 +1174,11 @@ void ana_network_manager::handle_receive( ana::error_code          error,
                 {
                     if ( mgrs->second->is_pending_handshake( client ) ) // Did he login already?
                     {
-                        if ( buffer->size() != sizeof(uint32_t) ) // all handshakes are 4 bytes long
+                        // all handshakes are 4 bytes long
+                        if ( buffer->size() != sizeof(ana::ana_uint32) )
                             mgrs->first->disconnect( client );
 
-                        uint32_t handshake;
+                        ana::ana_uint32 handshake;
                         {
                             ana::serializer::bistream bis( buffer->string() );
 
@@ -1191,7 +1193,7 @@ void ana_network_manager::handle_receive( ana::error_code          error,
                             mgrs->second->handshaked( client );
                             //send back it's id
                             ana::serializer::bostream bos;
-                            uint32_t network_byte_order_id = client;
+                            ana::ana_uint32 network_byte_order_id = client;
                             ana::host_to_network_long( network_byte_order_id );
                             bos << network_byte_order_id;
 

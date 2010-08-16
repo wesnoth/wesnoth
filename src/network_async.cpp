@@ -173,7 +173,7 @@ void client::handle_connect( ana::error_code error, net_id server_id )
 {
     ana::serializer::bostream bos;
 
-    uint32_t handshake( 0 );
+    ana::ana_uint32 handshake( 0 );
     bos << handshake;
 
     client_->send( ana::buffer( bos.str()), this );

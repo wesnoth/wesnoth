@@ -91,7 +91,7 @@ namespace network
      * For instance, when a client connects to a server, it is a assigned a server side
      * wesnoth_id from the server.
      */
-    typedef uint32_t wesnoth_id;
+    typedef ana::ana_uint32 wesnoth_id;
     //@}
 
     /**
