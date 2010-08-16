@@ -46,8 +46,11 @@ public:
 
 	///Must be called only once, right after the team that owns this side_actions is added to the teams vector
 	void set_team_index(size_t team_index);
+
+	///Returns the team index this action queue belongs to
 	size_t team_index() { assert(team_index_defined_); return team_index_; }
 
+	/// Get the underlying action container
 	const action_queue& actions() const { return actions_; }
 
 	/** Gets called when display is drawing a hex, to allow drawing symbols to the screen */
@@ -69,14 +72,14 @@ public:
 	iterator execute(iterator position);
 
 	/**
-	 * Returns the iterator for the first (executed earlier) action within the actions set.
+	 * Returns the iterator for the first (executed earlier) action within the actions queue.
 	 */
 	iterator begin() { return actions_.begin(); }
 	/// reverse version of the above
 	reverse_iterator rbegin() { return actions_.rbegin(); }
 
 	/**
-	 * Returns the iterator for the position *after* the last executed action within the actions set.
+	 * Returns the iterator for the position *after* the last executed action within the actions queue.
 	 */
 	iterator end() { return actions_.end(); }
 	/// reverse version of the above
@@ -161,7 +164,7 @@ public:
 	 * @return The position, or end() if not found.
 	 */
 	iterator find_first_action_of(unit const* unit, iterator start_position);
-	///Variant of this method that always start searching at begin()
+	///Variant of this method that always start searching at the beginning of the queue
 	iterator find_first_action_of(unit const* unit);
 
 	/**
@@ -169,15 +172,18 @@ public:
 	 * @return The position, or end() if not found.
 	 */
 	iterator find_last_action_of(unit const* unit, iterator start_position);
-	///Variant of this method that always start searching at end() - 1
+	///Variant of the previous method that always start searching at the end of the queue
 	iterator find_last_action_of(unit const* unit);
 
 	bool unit_has_actions(unit const* unit);
 	size_t count_actions_of(unit const* unit);
 
+	///Validates all planned actions in the queue
 	void validate_actions();
 
+	///Used to track gold spending by recruits/recalls when building the future unit map
 	int get_gold_spent() const { return gold_spent_; }
+	///Used to track gold spending by recruits/recalls when building the future unit map
 	void change_gold_spent_by(int difference) { gold_spent_ += difference; assert(gold_spent_ >= 0);}
 
 private:
