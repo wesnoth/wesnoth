@@ -53,13 +53,21 @@ public:
 
 	///Determine whether the whiteboard is activated.
 	bool is_active() const { return active_; }
+	///Activates/Deactivates the whiteboard
 	void set_active(bool active);
-
+	///Called by the key that temporarily toggles the activated state when held
 	void set_invert_behavior(bool invert);
+
+	///Used to ask the whiteboard if its general purpose hotkeys can be called now
 	bool can_execute_hotkey() const;
+	///Used to ask the whiteboard if its action reordering hotkeys can be called now
 	bool can_reorder_action() const;
+	///Used to ask permission to the wb to move a leader, to avoid invalidating planned recruits
 	bool allow_leader_to_move(unit const& leader) const;
 
+	/**
+	 * The on_* methods below inform the whiteboard of specific events
+	 */
 	void on_init_side(bool is_replay);
 	void on_finish_side_turn();
 	void on_mouseover_change(const map_location& hex);
@@ -67,22 +75,28 @@ public:
 	void on_deselect_hex(){ erase_temp_move();}
 	void on_gamestate_change();
 
+	/// Whether the current side has actions in its planned actions queue
 	static bool current_side_has_actions();
+
+	/// Validates all actions of the current viewing side
 	void validate_viewer_actions();
 
-	/**
-	 * Temporarily apply the effects of the current team's
-	 * planned moves to the unit map.
-	 */
+	/// Transforms the unit map so that it now reflects the future state of things,
+	/// i.e. when all planned actions will have been executed
+	/// @param for_pathfinding Whether to include recruits and recalls when building the future map
 	void set_planned_unit_map(bool for_pathfinding = false);
+	/// Restore the regular unit map
 	void set_real_unit_map();
+	/// Whether the planned unit map is currently applied
 	bool has_planned_unit_map() const { return planned_unit_map_active_; }
+	/// Whether the planned unit map currently applied (if any) is
+	/// the "pathfinding" version, i.e. one that includes future recruits and recalls
 	bool is_map_for_pathfinding() const { return is_map_for_pathfinding_; }
 
-	///Applies the future unit map and returns a pointer to the unit at hex,
+	///Applies the future unit map and @return a pointer to the unit at hex,
 	///NULL if none is visible to the specified viewer side
 	static unit* future_visible_unit(map_location hex, int viewer_side = viewer_side());
-	///Applies the future unit map and returns a pointer to the unit at hex,
+	///Applies the future unit map and @return a pointer to the unit at hex,
 	///NULL if none is visible to the specified viewer side
 	/// @param on_side Only search for units of this side.
 	static unit* future_visible_unit(int on_side, map_location hex, int viewer_side = viewer_side());
@@ -94,24 +108,25 @@ public:
 	 */
 	void draw_hex(const map_location& hex);
 
-	/** Creates a temporary visual arrow, that follows the cursor, for move creation purposes */
+	/// Creates a temporary visual arrow, that follows the cursor, for move creation purposes
 	void create_temp_move();
-	/** Informs whether an arrow is being displayed for move creation purposes */
+	/// Informs whether an arrow is being displayed for move creation purposes
 	bool has_temp_move() const { return route_ && fake_unit_ && move_arrow_; }
+	/// Erase the temporary arrow
 	void erase_temp_move();
-	/**
-	 * Creates a move action for the current side,
-	 * and erases the temp move. The move action is inserted
-	 * at the end of the queue, to be executed last.
-     */
+	/// Creates a move action for the current side, and erases the temp move.
+	/// The move action is inserted at the end of the queue, to be executed last.
 	void save_temp_move();
 
+	/// Creates an attack or attack-move action for the current side
 	void save_temp_attack(const map_location& attack_from, const map_location& target_hex);
 
-	/// returns true if manager has saved a planned recruit
+	/// Creates a recruit action for the current side
+	/// @return true if manager has saved a planned recruit
 	bool save_recruit(const std::string& name, int side_num, const map_location& recruit_hex);
 
-	/// returns true if manager has saved a planned recall
+	/// Creates a recall action for the current side
+	/// @return true if manager has saved a planned recall
 	bool save_recall(const unit& unit, int side_num, const map_location& recall_hex);
 
 	/** Executes first action in the queue for current side */
@@ -125,13 +140,17 @@ public:
 	/** Deletes all planned actions for all teams */
 	void erase_all_actions();
 
+	/// Get the highlight visitor instance in use by the manager
 	boost::weak_ptr<highlight_visitor> get_highlighter() { return highlighter_; }
 
 	/** Checks whether the specified unit has at least one planned action */
 	bool unit_has_actions(unit const* unit) const;
 
+	/// Used to track gold spending per-side when building the planned unit map
+	/// Is referenced by the top bar gold display
 	int get_spent_gold_for(int side);
 
+	/// Utility struct used to automatize memory management for the whiteboard's fake/ghosted units
 	struct fake_unit_deleter {
 	    void operator() (unit*& ptr);
 	};
