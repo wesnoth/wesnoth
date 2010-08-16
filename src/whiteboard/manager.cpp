@@ -53,7 +53,7 @@ manager::manager():
 		executing_actions_(false),
 		gamestate_mutated_(false),
 		mapbuilder_(),
-		highlighter_(new highlight_visitor(*resources::units, viewer_actions())),
+		highlighter_(),
 		route_(),
 		move_arrow_(),
 		fake_unit_(),
@@ -218,7 +218,6 @@ void manager::on_init_side(bool is_replay)
 		return;
 
 	validate_viewer_actions();
-	highlighter_.reset(new highlight_visitor(*resources::units, viewer_actions()));
 	wait_for_side_init_ = false;
 	LOG_WB << "on_init_side()\n";
 
@@ -354,18 +353,26 @@ void manager::draw_hex(const map_location& hex)
 
 void manager::on_mouseover_change(const map_location& hex)
 {
+
 	if (hidden_unit_hex_.valid())
 	{
 		resources::screen->remove_exclusive_draw(hidden_unit_hex_);
 		hidden_unit_hex_ = map_location();
 	}
 
-	//@todo Right now the planned actions of the current selected unit won't get priority,
-	// see what we want to do with the UI in that case.
-	if (!has_temp_move() && highlighter_)
+	if (!(wait_for_side_init_ || executing_actions_))
 	{
-		highlighter_->set_mouseover_hex(hex);
-		highlighter_->highlight();
+		//@todo Right now the planned actions of the current selected unit won't get priority,
+		// see what we want to do with the UI in that case.
+		if (!has_temp_move())
+		{
+			if (!highlighter_)
+			{
+				highlighter_.reset(new highlight_visitor(*resources::units, viewer_actions()));
+			}
+			highlighter_->set_mouseover_hex(hex);
+			highlighter_->highlight();
+		}
 	}
 }
 
