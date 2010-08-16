@@ -46,6 +46,7 @@ import org.wesnoth.wML.WMLValue;
  *   <li>{@link org.wesnoth.wML.impl.WMLMacroDefineImpl#getTextdomains <em>Textdomains</em>}</li>
  *   <li>{@link org.wesnoth.wML.impl.WMLMacroDefineImpl#getValues <em>Values</em>}</li>
  *   <li>{@link org.wesnoth.wML.impl.WMLMacroDefineImpl#getIfDefs <em>If Defs</em>}</li>
+ *   <li>{@link org.wesnoth.wML.impl.WMLMacroDefineImpl#getEndName <em>End Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -142,6 +143,26 @@ public class WMLMacroDefineImpl extends MinimalEObjectImpl.Container implements 
    * @ordered
    */
   protected EList<WMLPreprocIF> ifDefs;
+
+  /**
+   * The default value of the '{@link #getEndName() <em>End Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getEndName()
+   * @generated
+   * @ordered
+   */
+  protected static final String END_NAME_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getEndName() <em>End Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getEndName()
+   * @generated
+   * @ordered
+   */
+  protected String endName = END_NAME_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -290,6 +311,29 @@ public class WMLMacroDefineImpl extends MinimalEObjectImpl.Container implements 
    * <!-- end-user-doc -->
    * @generated
    */
+  public String getEndName()
+  {
+    return endName;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setEndName(String newEndName)
+  {
+    String oldEndName = endName;
+    endName = newEndName;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, WMLPackage.WML_MACRO_DEFINE__END_NAME, oldEndName, endName));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -339,6 +383,8 @@ public class WMLMacroDefineImpl extends MinimalEObjectImpl.Container implements 
         return getValues();
       case WMLPackage.WML_MACRO_DEFINE__IF_DEFS:
         return getIfDefs();
+      case WMLPackage.WML_MACRO_DEFINE__END_NAME:
+        return getEndName();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -385,6 +431,9 @@ public class WMLMacroDefineImpl extends MinimalEObjectImpl.Container implements 
         getIfDefs().clear();
         getIfDefs().addAll((Collection<? extends WMLPreprocIF>)newValue);
         return;
+      case WMLPackage.WML_MACRO_DEFINE__END_NAME:
+        setEndName((String)newValue);
+        return;
     }
     super.eSet(featureID, newValue);
   }
@@ -423,6 +472,9 @@ public class WMLMacroDefineImpl extends MinimalEObjectImpl.Container implements 
       case WMLPackage.WML_MACRO_DEFINE__IF_DEFS:
         getIfDefs().clear();
         return;
+      case WMLPackage.WML_MACRO_DEFINE__END_NAME:
+        setEndName(END_NAME_EDEFAULT);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -453,6 +505,8 @@ public class WMLMacroDefineImpl extends MinimalEObjectImpl.Container implements 
         return values != null && !values.isEmpty();
       case WMLPackage.WML_MACRO_DEFINE__IF_DEFS:
         return ifDefs != null && !ifDefs.isEmpty();
+      case WMLPackage.WML_MACRO_DEFINE__END_NAME:
+        return END_NAME_EDEFAULT == null ? endName != null : !END_NAME_EDEFAULT.equals(endName);
     }
     return super.eIsSet(featureID);
   }
@@ -470,6 +524,8 @@ public class WMLMacroDefineImpl extends MinimalEObjectImpl.Container implements 
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (name: ");
     result.append(name);
+    result.append(", endName: ");
+    result.append(endName);
     result.append(')');
     return result.toString();
   }

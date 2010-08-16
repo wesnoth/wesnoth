@@ -1194,11 +1194,31 @@ ruleWMLMacroDefine returns [EObject current=null]
 	    }
 
 )
-))*RULE_ENDDEF
-    { 
-    createLeafNode(grammarAccess.getWMLMacroDefineAccess().getENDDEFTerminalRuleCall_2(), null); 
-    }
+))*(
+(
+		lv_endName_8_0=RULE_ENDDEF
+		{
+			createLeafNode(grammarAccess.getWMLMacroDefineAccess().getEndNameENDDEFTerminalRuleCall_2_0(), "endName"); 
+		}
+		{
+	        if ($current==null) {
+	            $current = factory.create(grammarAccess.getWMLMacroDefineRule().getType().getClassifier());
+	            associateNodeWithAstElement(currentNode, $current);
+	        }
+	        try {
+	       		set(
+	       			$current, 
+	       			"endName",
+	        		lv_endName_8_0, 
+	        		"ENDDEF", 
+	        		lastConsumedNode);
+	        } catch (ValueConverterException vce) {
+				handleValueConverterException(vce);
+	        }
+	    }
+
 )
+))
 ;
 
 
@@ -1510,11 +1530,31 @@ ruleWMLPreprocIF returns [EObject current=null]
 	    }
 
 )
-))*RULE_ENDIF
-    { 
-    createLeafNode(grammarAccess.getWMLPreprocIFAccess().getENDIFTerminalRuleCall_2(), null); 
-    }
+))*(
+(
+		lv_endName_9_0=RULE_ENDIF
+		{
+			createLeafNode(grammarAccess.getWMLPreprocIFAccess().getEndNameENDIFTerminalRuleCall_2_0(), "endName"); 
+		}
+		{
+	        if ($current==null) {
+	            $current = factory.create(grammarAccess.getWMLPreprocIFRule().getType().getClassifier());
+	            associateNodeWithAstElement(currentNode, $current);
+	        }
+	        try {
+	       		set(
+	       			$current, 
+	       			"endName",
+	        		lv_endName_9_0, 
+	        		"ENDIF", 
+	        		lastConsumedNode);
+	        } catch (ValueConverterException vce) {
+				handleValueConverterException(vce);
+	        }
+	    }
+
 )
+))
 ;
 
 

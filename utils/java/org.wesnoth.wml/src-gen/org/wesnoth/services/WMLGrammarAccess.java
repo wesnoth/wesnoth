@@ -413,15 +413,16 @@ public class WMLGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cValuesWMLValueParserRuleCall_1_5_0 = (RuleCall)cValuesAssignment_1_5.eContents().get(0);
 		private final Assignment cIfDefsAssignment_1_6 = (Assignment)cAlternatives_1.eContents().get(6);
 		private final RuleCall cIfDefsWMLPreprocIFParserRuleCall_1_6_0 = (RuleCall)cIfDefsAssignment_1_6.eContents().get(0);
-		private final RuleCall cENDDEFTerminalRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
+		private final Assignment cEndNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cEndNameENDDEFTerminalRuleCall_2_0 = (RuleCall)cEndNameAssignment_2.eContents().get(0);
 		
 		//WMLMacroDefine:
 		//	name=DEFINE (Tags+=WMLTag | Keys+=WMLKey | MacroCalls+=WMLMacroCall | MacroDefines+=WMLMacroDefine |
-		//	Textdomains+=WMLTextdomain | Values+=WMLValue | IfDefs+=WMLPreprocIF)* ENDDEF;
+		//	Textdomains+=WMLTextdomain | Values+=WMLValue | IfDefs+=WMLPreprocIF)* endName=ENDDEF;
 		public ParserRule getRule() { return rule; }
 
 		//name=DEFINE (Tags+=WMLTag | Keys+=WMLKey | MacroCalls+=WMLMacroCall | MacroDefines+=WMLMacroDefine |
-		//Textdomains+=WMLTextdomain | Values+=WMLValue | IfDefs+=WMLPreprocIF)* ENDDEF
+		//Textdomains+=WMLTextdomain | Values+=WMLValue | IfDefs+=WMLPreprocIF)* endName=ENDDEF
 		public Group getGroup() { return cGroup; }
 
 		//name=DEFINE
@@ -476,8 +477,11 @@ public class WMLGrammarAccess extends AbstractGrammarElementFinder {
 		//WMLPreprocIF
 		public RuleCall getIfDefsWMLPreprocIFParserRuleCall_1_6_0() { return cIfDefsWMLPreprocIFParserRuleCall_1_6_0; }
 
+		//endName=ENDDEF
+		public Assignment getEndNameAssignment_2() { return cEndNameAssignment_2; }
+
 		//ENDDEF
-		public RuleCall getENDDEFTerminalRuleCall_2() { return cENDDEFTerminalRuleCall_2; }
+		public RuleCall getEndNameENDDEFTerminalRuleCall_2_0() { return cEndNameENDDEFTerminalRuleCall_2_0; }
 	}
 
 	public class WMLPreprocIFElements extends AbstractParserRuleElementFinder {
@@ -506,17 +510,18 @@ public class WMLGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cIfDefsWMLPreprocIFParserRuleCall_1_6_0 = (RuleCall)cIfDefsAssignment_1_6.eContents().get(0);
 		private final Assignment cElsesAssignment_1_7 = (Assignment)cAlternatives_1.eContents().get(7);
 		private final RuleCall cElsesELSETerminalRuleCall_1_7_0 = (RuleCall)cElsesAssignment_1_7.eContents().get(0);
-		private final RuleCall cENDIFTerminalRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
+		private final Assignment cEndNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cEndNameENDIFTerminalRuleCall_2_0 = (RuleCall)cEndNameAssignment_2.eContents().get(0);
 		
 		//WMLPreprocIF:
 		//	name=(IFDEF | IFNDEF | IFHAVE | IFNHAVE) (Tags+=WMLTag | Keys+=WMLKey | MacroCalls+=WMLMacroCall |
 		//	MacroDefines+=WMLMacroDefine | Textdomains+=WMLTextdomain | Values+=WMLValue | IfDefs+=WMLPreprocIF | Elses+=ELSE)*
-		//	ENDIF;
+		//	endName=ENDIF;
 		public ParserRule getRule() { return rule; }
 
 		//name=(IFDEF | IFNDEF | IFHAVE | IFNHAVE) (Tags+=WMLTag | Keys+=WMLKey | MacroCalls+=WMLMacroCall |
 		//MacroDefines+=WMLMacroDefine | Textdomains+=WMLTextdomain | Values+=WMLValue | IfDefs+=WMLPreprocIF | Elses+=ELSE)*
-		//ENDIF
+		//endName=ENDIF
 		public Group getGroup() { return cGroup; }
 
 		//name=(IFDEF | IFNDEF | IFHAVE | IFNHAVE)
@@ -589,8 +594,11 @@ public class WMLGrammarAccess extends AbstractGrammarElementFinder {
 		//ELSE
 		public RuleCall getElsesELSETerminalRuleCall_1_7_0() { return cElsesELSETerminalRuleCall_1_7_0; }
 
+		//endName=ENDIF
+		public Assignment getEndNameAssignment_2() { return cEndNameAssignment_2; }
+
 		//ENDIF
-		public RuleCall getENDIFTerminalRuleCall_2() { return cENDIFTerminalRuleCall_2; }
+		public RuleCall getEndNameENDIFTerminalRuleCall_2_0() { return cEndNameENDIFTerminalRuleCall_2_0; }
 	}
 
 	public class WMLTextdomainElements extends AbstractParserRuleElementFinder {
@@ -862,7 +870,7 @@ public class WMLGrammarAccess extends AbstractGrammarElementFinder {
 
 	//WMLMacroDefine:
 	//	name=DEFINE (Tags+=WMLTag | Keys+=WMLKey | MacroCalls+=WMLMacroCall | MacroDefines+=WMLMacroDefine |
-	//	Textdomains+=WMLTextdomain | Values+=WMLValue | IfDefs+=WMLPreprocIF)* ENDDEF;
+	//	Textdomains+=WMLTextdomain | Values+=WMLValue | IfDefs+=WMLPreprocIF)* endName=ENDDEF;
 	public WMLMacroDefineElements getWMLMacroDefineAccess() {
 		return (pWMLMacroDefine != null) ? pWMLMacroDefine : (pWMLMacroDefine = new WMLMacroDefineElements());
 	}
@@ -874,7 +882,7 @@ public class WMLGrammarAccess extends AbstractGrammarElementFinder {
 	//WMLPreprocIF:
 	//	name=(IFDEF | IFNDEF | IFHAVE | IFNHAVE) (Tags+=WMLTag | Keys+=WMLKey | MacroCalls+=WMLMacroCall |
 	//	MacroDefines+=WMLMacroDefine | Textdomains+=WMLTextdomain | Values+=WMLValue | IfDefs+=WMLPreprocIF | Elses+=ELSE)*
-	//	ENDIF;
+	//	endName=ENDIF;
 	public WMLPreprocIFElements getWMLPreprocIFAccess() {
 		return (pWMLPreprocIF != null) ? pWMLPreprocIF : (pWMLPreprocIF = new WMLPreprocIFElements());
 	}

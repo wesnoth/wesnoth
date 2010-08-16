@@ -18,7 +18,11 @@ public class WMLHighlightingConfiguration extends DefaultHighlightingConfigurati
 {
 	public static final String RULE_WML_TAG = "wmlTag";
 	public static final String RULE_WML_KEY = "wmlKey";
-	public static final String RULE_WML_MACRO = "wmlMacro";
+	public static final String RULE_WML_MACRO_CALL = "wmlMacroCall";
+
+	public static final String RULE_WML_MACRO_DEFINE = "wmlMacroDefine";
+	public static final String RULE_WML_IF = "wmlIF";
+	public static final String RULE_WML_TEXTDOMAIN = "wmlTextdomain";
 
 	public static final String RULE_START_END_TAG = "wmlStartEnd";
 
@@ -28,9 +32,23 @@ public class WMLHighlightingConfiguration extends DefaultHighlightingConfigurati
 		super.configure(acceptor);
 		acceptor.acceptDefaultHighlighting(RULE_WML_TAG, "WML Tag", tagTextStyle());
 		acceptor.acceptDefaultHighlighting(RULE_WML_KEY, "WML Key", keyTextStyle());
-		acceptor.acceptDefaultHighlighting(RULE_WML_MACRO, "WML Macro", macroTextStyle());
+		acceptor.acceptDefaultHighlighting(RULE_WML_MACRO_CALL, "WML Macro Call", macroTextStyle());
+
 		acceptor.acceptDefaultHighlighting(RULE_START_END_TAG,
 				"WML Start/End Tag Highlight", startEndTextStyle());
+
+		// preproc
+		acceptor.acceptDefaultHighlighting(RULE_WML_MACRO_DEFINE, "WML Macro Define", preprocTextStyle());
+		acceptor.acceptDefaultHighlighting(RULE_WML_IF, "WML IF", preprocTextStyle());
+		acceptor.acceptDefaultHighlighting(RULE_WML_TEXTDOMAIN, "WML Textdomain", preprocTextStyle());
+	}
+
+	public TextStyle preprocTextStyle()
+	{
+		TextStyle textStyle = defaultTextStyle().copy();
+		textStyle.setColor(new RGB(31, 209, 241));
+		textStyle.setStyle(SWT.BOLD);
+		return textStyle;
 	}
 
 	public TextStyle macroTextStyle()

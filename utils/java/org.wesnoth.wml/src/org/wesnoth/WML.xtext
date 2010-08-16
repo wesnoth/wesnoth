@@ -54,7 +54,7 @@ WMLMacroDefine:
 		| Values += WMLValue
 		| IfDefs += WMLPreprocIF
 		)*
-	ENDDEF;
+	endName = ENDDEF;
 
 WMLPreprocIF:
 	name=(IFDEF | IFNDEF | IFHAVE | IFNHAVE)
@@ -67,7 +67,7 @@ WMLPreprocIF:
 		| IfDefs += WMLPreprocIF
 		| Elses += ELSE
 		)*
-	ENDIF;
+	endName = ENDIF;
 
 WMLTextdomain:
 	name = TEXTDOMAIN;

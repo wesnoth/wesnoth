@@ -492,13 +492,22 @@ public interface WMLPackage extends EPackage
   int WML_MACRO_DEFINE__IF_DEFS = 7;
 
   /**
+   * The feature id for the '<em><b>End Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WML_MACRO_DEFINE__END_NAME = 8;
+
+  /**
    * The number of structural features of the '<em>Macro Define</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int WML_MACRO_DEFINE_FEATURE_COUNT = 8;
+  int WML_MACRO_DEFINE_FEATURE_COUNT = 9;
 
   /**
    * The meta object id for the '{@link org.wesnoth.wML.impl.WMLPreprocIFImpl <em>Preproc IF</em>}' class.
@@ -592,13 +601,22 @@ public interface WMLPackage extends EPackage
   int WML_PREPROC_IF__ELSES = 8;
 
   /**
+   * The feature id for the '<em><b>End Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WML_PREPROC_IF__END_NAME = 9;
+
+  /**
    * The number of structural features of the '<em>Preproc IF</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int WML_PREPROC_IF_FEATURE_COUNT = 9;
+  int WML_PREPROC_IF_FEATURE_COUNT = 10;
 
   /**
    * The meta object id for the '{@link org.wesnoth.wML.impl.WMLTextdomainImpl <em>Textdomain</em>}' class.
@@ -1118,6 +1136,17 @@ public interface WMLPackage extends EPackage
   EReference getWMLMacroDefine_IfDefs();
 
   /**
+   * Returns the meta object for the attribute '{@link org.wesnoth.wML.WMLMacroDefine#getEndName <em>End Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>End Name</em>'.
+   * @see org.wesnoth.wML.WMLMacroDefine#getEndName()
+   * @see #getWMLMacroDefine()
+   * @generated
+   */
+  EAttribute getWMLMacroDefine_EndName();
+
+  /**
    * Returns the meta object for class '{@link org.wesnoth.wML.WMLPreprocIF <em>Preproc IF</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1225,6 +1254,17 @@ public interface WMLPackage extends EPackage
    * @generated
    */
   EAttribute getWMLPreprocIF_Elses();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.wesnoth.wML.WMLPreprocIF#getEndName <em>End Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>End Name</em>'.
+   * @see org.wesnoth.wML.WMLPreprocIF#getEndName()
+   * @see #getWMLPreprocIF()
+   * @generated
+   */
+  EAttribute getWMLPreprocIF_EndName();
 
   /**
    * Returns the meta object for class '{@link org.wesnoth.wML.WMLTextdomain <em>Textdomain</em>}'.
@@ -1649,6 +1689,14 @@ public interface WMLPackage extends EPackage
     EReference WML_MACRO_DEFINE__IF_DEFS = eINSTANCE.getWMLMacroDefine_IfDefs();
 
     /**
+     * The meta object literal for the '<em><b>End Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute WML_MACRO_DEFINE__END_NAME = eINSTANCE.getWMLMacroDefine_EndName();
+
+    /**
      * The meta object literal for the '{@link org.wesnoth.wML.impl.WMLPreprocIFImpl <em>Preproc IF</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1729,6 +1777,14 @@ public interface WMLPackage extends EPackage
      * @generated
      */
     EAttribute WML_PREPROC_IF__ELSES = eINSTANCE.getWMLPreprocIF_Elses();
+
+    /**
+     * The meta object literal for the '<em><b>End Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute WML_PREPROC_IF__END_NAME = eINSTANCE.getWMLPreprocIF_EndName();
 
     /**
      * The meta object literal for the '{@link org.wesnoth.wML.impl.WMLTextdomainImpl <em>Textdomain</em>}' class.

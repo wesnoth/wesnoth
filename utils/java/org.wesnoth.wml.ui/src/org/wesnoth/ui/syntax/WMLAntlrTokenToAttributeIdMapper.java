@@ -21,7 +21,7 @@ public class WMLAntlrTokenToAttributeIdMapper extends DefaultAntlrTokenToAttribu
 		}
 		if (tokenName.equals("'{'") || tokenName.equals("'}'"))
 		{
-			return WMLHighlightingConfiguration.RULE_WML_MACRO;
+			return WMLHighlightingConfiguration.RULE_WML_MACRO_CALL;
 		}
 		return super.calculateId(tokenName, tokenType);
 	}

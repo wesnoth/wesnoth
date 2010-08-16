@@ -187,7 +187,9 @@
           <terminal xsi:type="xtext:RuleCall" rule="//@rules.8"/>
         </elements>
       </elements>
-      <elements xsi:type="xtext:RuleCall" rule="//@rules.22"/>
+      <elements xsi:type="xtext:Assignment" feature="endName" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.22"/>
+      </elements>
     </alternatives>
   </rules>
   <rules xsi:type="xtext:ParserRule" name="WMLPreprocIF">
@@ -229,7 +231,9 @@
           <terminal xsi:type="xtext:RuleCall" rule="//@rules.19"/>
         </elements>
       </elements>
-      <elements xsi:type="xtext:RuleCall" rule="//@rules.20"/>
+      <elements xsi:type="xtext:Assignment" feature="endName" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="//@rules.20"/>
+      </elements>
     </alternatives>
   </rules>
   <rules xsi:type="xtext:ParserRule" name="WMLTextdomain">

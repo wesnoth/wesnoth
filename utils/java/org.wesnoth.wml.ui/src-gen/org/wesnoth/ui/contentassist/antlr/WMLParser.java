@@ -89,6 +89,7 @@ public class WMLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getWMLMacroDefineAccess().getTextdomainsAssignment_1_4(), "rule__WMLMacroDefine__TextdomainsAssignment_1_4");
 					put(grammarAccess.getWMLMacroDefineAccess().getValuesAssignment_1_5(), "rule__WMLMacroDefine__ValuesAssignment_1_5");
 					put(grammarAccess.getWMLMacroDefineAccess().getIfDefsAssignment_1_6(), "rule__WMLMacroDefine__IfDefsAssignment_1_6");
+					put(grammarAccess.getWMLMacroDefineAccess().getEndNameAssignment_2(), "rule__WMLMacroDefine__EndNameAssignment_2");
 					put(grammarAccess.getWMLPreprocIFAccess().getNameAssignment_0(), "rule__WMLPreprocIF__NameAssignment_0");
 					put(grammarAccess.getWMLPreprocIFAccess().getTagsAssignment_1_0(), "rule__WMLPreprocIF__TagsAssignment_1_0");
 					put(grammarAccess.getWMLPreprocIFAccess().getKeysAssignment_1_1(), "rule__WMLPreprocIF__KeysAssignment_1_1");
@@ -98,6 +99,7 @@ public class WMLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getWMLPreprocIFAccess().getValuesAssignment_1_5(), "rule__WMLPreprocIF__ValuesAssignment_1_5");
 					put(grammarAccess.getWMLPreprocIFAccess().getIfDefsAssignment_1_6(), "rule__WMLPreprocIF__IfDefsAssignment_1_6");
 					put(grammarAccess.getWMLPreprocIFAccess().getElsesAssignment_1_7(), "rule__WMLPreprocIF__ElsesAssignment_1_7");
+					put(grammarAccess.getWMLPreprocIFAccess().getEndNameAssignment_2(), "rule__WMLPreprocIF__EndNameAssignment_2");
 					put(grammarAccess.getWMLTextdomainAccess().getNameAssignment(), "rule__WMLTextdomain__NameAssignment");
 					put(grammarAccess.getWMLValueAccess().getValueAssignment(), "rule__WMLValue__ValueAssignment");
 					put(grammarAccess.getMacroTokensAccess().getValAssignment(), "rule__MacroTokens__ValAssignment");

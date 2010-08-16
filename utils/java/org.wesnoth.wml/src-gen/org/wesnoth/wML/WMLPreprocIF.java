@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.wesnoth.wML.WMLPreprocIF#getValues <em>Values</em>}</li>
  *   <li>{@link org.wesnoth.wML.WMLPreprocIF#getIfDefs <em>If Defs</em>}</li>
  *   <li>{@link org.wesnoth.wML.WMLPreprocIF#getElses <em>Elses</em>}</li>
+ *   <li>{@link org.wesnoth.wML.WMLPreprocIF#getEndName <em>End Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -189,5 +190,31 @@ public interface WMLPreprocIF extends EObject
    * @generated
    */
   EList<String> getElses();
+
+  /**
+   * Returns the value of the '<em><b>End Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>End Name</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>End Name</em>' attribute.
+   * @see #setEndName(String)
+   * @see org.wesnoth.wML.WMLPackage#getWMLPreprocIF_EndName()
+   * @model
+   * @generated
+   */
+  String getEndName();
+
+  /**
+   * Sets the value of the '{@link org.wesnoth.wML.WMLPreprocIF#getEndName <em>End Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>End Name</em>' attribute.
+   * @see #getEndName()
+   * @generated
+   */
+  void setEndName(String value);
 
 } // WMLPreprocIF

@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.wesnoth.wML.WMLMacroDefine#getTextdomains <em>Textdomains</em>}</li>
  *   <li>{@link org.wesnoth.wML.WMLMacroDefine#getValues <em>Values</em>}</li>
  *   <li>{@link org.wesnoth.wML.WMLMacroDefine#getIfDefs <em>If Defs</em>}</li>
+ *   <li>{@link org.wesnoth.wML.WMLMacroDefine#getEndName <em>End Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -172,5 +173,31 @@ public interface WMLMacroDefine extends EObject
    * @generated
    */
   EList<WMLPreprocIF> getIfDefs();
+
+  /**
+   * Returns the value of the '<em><b>End Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>End Name</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>End Name</em>' attribute.
+   * @see #setEndName(String)
+   * @see org.wesnoth.wML.WMLPackage#getWMLMacroDefine_EndName()
+   * @model
+   * @generated
+   */
+  String getEndName();
+
+  /**
+   * Sets the value of the '{@link org.wesnoth.wML.WMLMacroDefine#getEndName <em>End Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>End Name</em>' attribute.
+   * @see #getEndName()
+   * @generated
+   */
+  void setEndName(String value);
 
 } // WMLMacroDefine

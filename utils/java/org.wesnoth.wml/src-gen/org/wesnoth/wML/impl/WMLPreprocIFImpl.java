@@ -48,6 +48,7 @@ import org.wesnoth.wML.WMLValue;
  *   <li>{@link org.wesnoth.wML.impl.WMLPreprocIFImpl#getValues <em>Values</em>}</li>
  *   <li>{@link org.wesnoth.wML.impl.WMLPreprocIFImpl#getIfDefs <em>If Defs</em>}</li>
  *   <li>{@link org.wesnoth.wML.impl.WMLPreprocIFImpl#getElses <em>Elses</em>}</li>
+ *   <li>{@link org.wesnoth.wML.impl.WMLPreprocIFImpl#getEndName <em>End Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -154,6 +155,26 @@ public class WMLPreprocIFImpl extends MinimalEObjectImpl.Container implements WM
    * @ordered
    */
   protected EList<String> elses;
+
+  /**
+   * The default value of the '{@link #getEndName() <em>End Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getEndName()
+   * @generated
+   * @ordered
+   */
+  protected static final String END_NAME_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getEndName() <em>End Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getEndName()
+   * @generated
+   * @ordered
+   */
+  protected String endName = END_NAME_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -316,6 +337,29 @@ public class WMLPreprocIFImpl extends MinimalEObjectImpl.Container implements WM
    * <!-- end-user-doc -->
    * @generated
    */
+  public String getEndName()
+  {
+    return endName;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setEndName(String newEndName)
+  {
+    String oldEndName = endName;
+    endName = newEndName;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, WMLPackage.WML_PREPROC_IF__END_NAME, oldEndName, endName));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -367,6 +411,8 @@ public class WMLPreprocIFImpl extends MinimalEObjectImpl.Container implements WM
         return getIfDefs();
       case WMLPackage.WML_PREPROC_IF__ELSES:
         return getElses();
+      case WMLPackage.WML_PREPROC_IF__END_NAME:
+        return getEndName();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -417,6 +463,9 @@ public class WMLPreprocIFImpl extends MinimalEObjectImpl.Container implements WM
         getElses().clear();
         getElses().addAll((Collection<? extends String>)newValue);
         return;
+      case WMLPackage.WML_PREPROC_IF__END_NAME:
+        setEndName((String)newValue);
+        return;
     }
     super.eSet(featureID, newValue);
   }
@@ -458,6 +507,9 @@ public class WMLPreprocIFImpl extends MinimalEObjectImpl.Container implements WM
       case WMLPackage.WML_PREPROC_IF__ELSES:
         getElses().clear();
         return;
+      case WMLPackage.WML_PREPROC_IF__END_NAME:
+        setEndName(END_NAME_EDEFAULT);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -490,6 +542,8 @@ public class WMLPreprocIFImpl extends MinimalEObjectImpl.Container implements WM
         return ifDefs != null && !ifDefs.isEmpty();
       case WMLPackage.WML_PREPROC_IF__ELSES:
         return elses != null && !elses.isEmpty();
+      case WMLPackage.WML_PREPROC_IF__END_NAME:
+        return END_NAME_EDEFAULT == null ? endName != null : !END_NAME_EDEFAULT.equals(endName);
     }
     return super.eIsSet(featureID);
   }
@@ -509,6 +563,8 @@ public class WMLPreprocIFImpl extends MinimalEObjectImpl.Container implements WM
     result.append(name);
     result.append(", Elses: ");
     result.append(elses);
+    result.append(", endName: ");
+    result.append(endName);
     result.append(')');
     return result.toString();
   }

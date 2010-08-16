@@ -1824,12 +1824,12 @@ protected class WMLArrayCall_RightSquareBracketKeyword_2 extends KeywordToken  {
  *
  * WMLMacroDefine:
  * 	name=DEFINE (Tags+=WMLTag | Keys+=WMLKey | MacroCalls+=WMLMacroCall | MacroDefines+=WMLMacroDefine |
- * 	Textdomains+=WMLTextdomain | Values+=WMLValue | IfDefs+=WMLPreprocIF)* ENDDEF;
+ * 	Textdomains+=WMLTextdomain | Values+=WMLValue | IfDefs+=WMLPreprocIF)* endName=ENDDEF;
  *
  **/
 
 // name=DEFINE (Tags+=WMLTag | Keys+=WMLKey | MacroCalls+=WMLMacroCall | MacroDefines+=WMLMacroDefine |
-// Textdomains+=WMLTextdomain | Values+=WMLValue | IfDefs+=WMLPreprocIF)* ENDDEF
+// Textdomains+=WMLTextdomain | Values+=WMLValue | IfDefs+=WMLPreprocIF)* endName=ENDDEF
 protected class WMLMacroDefine_Group extends GroupToken {
 	
 	public WMLMacroDefine_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1844,7 +1844,7 @@ protected class WMLMacroDefine_Group extends GroupToken {
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new WMLMacroDefine_ENDDEFTerminalRuleCall_2(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new WMLMacroDefine_EndNameAssignment_2(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -2250,16 +2250,16 @@ protected class WMLMacroDefine_IfDefsAssignment_1_6 extends AssignmentToken  {
 }
 
 
-// ENDDEF
-protected class WMLMacroDefine_ENDDEFTerminalRuleCall_2 extends UnassignedTextToken {
-
-	public WMLMacroDefine_ENDDEFTerminalRuleCall_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+// endName=ENDDEF
+protected class WMLMacroDefine_EndNameAssignment_2 extends AssignmentToken  {
+	
+	public WMLMacroDefine_EndNameAssignment_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
-	public RuleCall getGrammarElement() {
-		return grammarAccess.getWMLMacroDefineAccess().getENDDEFTerminalRuleCall_2();
+	public Assignment getGrammarElement() {
+		return grammarAccess.getWMLMacroDefineAccess().getEndNameAssignment_2();
 	}
 
     @Override
@@ -2269,6 +2269,18 @@ protected class WMLMacroDefine_ENDDEFTerminalRuleCall_2 extends UnassignedTextTo
 			case 1: return new WMLMacroDefine_NameAssignment_0(lastRuleCallOrigin, this, 1, inst);
 			default: return null;
 		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("endName",true)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("endName");
+		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getWMLMacroDefineAccess().getEndNameENDDEFTerminalRuleCall_2_0(), value, null)) {
+			type = AssignmentType.TERMINAL_RULE_CALL;
+			element = grammarAccess.getWMLMacroDefineAccess().getEndNameENDDEFTerminalRuleCall_2_0();
+			return obj;
+		}
+		return null;
 	}
 
 }
@@ -2282,13 +2294,13 @@ protected class WMLMacroDefine_ENDDEFTerminalRuleCall_2 extends UnassignedTextTo
  * WMLPreprocIF:
  * 	name=(IFDEF | IFNDEF | IFHAVE | IFNHAVE) (Tags+=WMLTag | Keys+=WMLKey | MacroCalls+=WMLMacroCall |
  * 	MacroDefines+=WMLMacroDefine | Textdomains+=WMLTextdomain | Values+=WMLValue | IfDefs+=WMLPreprocIF | Elses+=ELSE)*
- * 	ENDIF;
+ * 	endName=ENDIF;
  *
  **/
 
 // name=(IFDEF | IFNDEF | IFHAVE | IFNHAVE) (Tags+=WMLTag | Keys+=WMLKey | MacroCalls+=WMLMacroCall |
 // MacroDefines+=WMLMacroDefine | Textdomains+=WMLTextdomain | Values+=WMLValue | IfDefs+=WMLPreprocIF | Elses+=ELSE)*
-// ENDIF
+// endName=ENDIF
 protected class WMLPreprocIF_Group extends GroupToken {
 	
 	public WMLPreprocIF_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -2303,7 +2315,7 @@ protected class WMLPreprocIF_Group extends GroupToken {
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new WMLPreprocIF_ENDIFTerminalRuleCall_2(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new WMLPreprocIF_EndNameAssignment_2(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -2760,16 +2772,16 @@ protected class WMLPreprocIF_ElsesAssignment_1_7 extends AssignmentToken  {
 }
 
 
-// ENDIF
-protected class WMLPreprocIF_ENDIFTerminalRuleCall_2 extends UnassignedTextToken {
-
-	public WMLPreprocIF_ENDIFTerminalRuleCall_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+// endName=ENDIF
+protected class WMLPreprocIF_EndNameAssignment_2 extends AssignmentToken  {
+	
+	public WMLPreprocIF_EndNameAssignment_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
-	public RuleCall getGrammarElement() {
-		return grammarAccess.getWMLPreprocIFAccess().getENDIFTerminalRuleCall_2();
+	public Assignment getGrammarElement() {
+		return grammarAccess.getWMLPreprocIFAccess().getEndNameAssignment_2();
 	}
 
     @Override
@@ -2779,6 +2791,18 @@ protected class WMLPreprocIF_ENDIFTerminalRuleCall_2 extends UnassignedTextToken
 			case 1: return new WMLPreprocIF_NameAssignment_0(lastRuleCallOrigin, this, 1, inst);
 			default: return null;
 		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("endName",true)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("endName");
+		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getWMLPreprocIFAccess().getEndNameENDIFTerminalRuleCall_2_0(), value, null)) {
+			type = AssignmentType.TERMINAL_RULE_CALL;
+			element = grammarAccess.getWMLPreprocIFAccess().getEndNameENDIFTerminalRuleCall_2_0();
+			return obj;
+		}
+		return null;
 	}
 
 }

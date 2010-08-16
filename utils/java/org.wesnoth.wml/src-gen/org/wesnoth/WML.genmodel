@@ -54,6 +54,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLMacroDefine/Textdomains"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLMacroDefine/Values"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLMacroDefine/IfDefs"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//WMLMacroDefine/endName"/>
     </genClasses>
     <genClasses ecoreClass="WML.ecore#//WMLPreprocIF">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//WMLPreprocIF/name"/>
@@ -65,6 +66,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLPreprocIF/Values"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference WML.ecore#//WMLPreprocIF/IfDefs"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//WMLPreprocIF/Elses"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//WMLPreprocIF/endName"/>
     </genClasses>
     <genClasses ecoreClass="WML.ecore#//WMLTextdomain">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute WML.ecore#//WMLTextdomain/name"/>
