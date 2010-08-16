@@ -512,14 +512,14 @@ public interface WMLPackage extends EPackage
   int WML_VALUE_FEATURE_COUNT = WML_KEY_VALUE_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link org.wesnoth.wML.impl.EQUAL_PARSEImpl <em>EQUAL PARSE</em>}' class.
+   * The meta object id for the '{@link org.wesnoth.wML.impl.MacroTokensImpl <em>Macro Tokens</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.wesnoth.wML.impl.EQUAL_PARSEImpl
-   * @see org.wesnoth.wML.impl.WMLPackageImpl#getEQUAL_PARSE()
+   * @see org.wesnoth.wML.impl.MacroTokensImpl
+   * @see org.wesnoth.wML.impl.WMLPackageImpl#getMacroTokens()
    * @generated
    */
-  int EQUAL_PARSE = 10;
+  int MACRO_TOKENS = 10;
 
   /**
    * The feature id for the '<em><b>Val</b></em>' attribute.
@@ -528,16 +528,16 @@ public interface WMLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int EQUAL_PARSE__VAL = 0;
+  int MACRO_TOKENS__VAL = 0;
 
   /**
-   * The number of structural features of the '<em>EQUAL PARSE</em>' class.
+   * The number of structural features of the '<em>Macro Tokens</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int EQUAL_PARSE_FEATURE_COUNT = 1;
+  int MACRO_TOKENS_FEATURE_COUNT = 1;
 
 
   /**
@@ -960,25 +960,25 @@ public interface WMLPackage extends EPackage
   EAttribute getWMLValue_Value();
 
   /**
-   * Returns the meta object for class '{@link org.wesnoth.wML.EQUAL_PARSE <em>EQUAL PARSE</em>}'.
+   * Returns the meta object for class '{@link org.wesnoth.wML.MacroTokens <em>Macro Tokens</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>EQUAL PARSE</em>'.
-   * @see org.wesnoth.wML.EQUAL_PARSE
+   * @return the meta object for class '<em>Macro Tokens</em>'.
+   * @see org.wesnoth.wML.MacroTokens
    * @generated
    */
-  EClass getEQUAL_PARSE();
+  EClass getMacroTokens();
 
   /**
-   * Returns the meta object for the attribute '{@link org.wesnoth.wML.EQUAL_PARSE#getVal <em>Val</em>}'.
+   * Returns the meta object for the attribute '{@link org.wesnoth.wML.MacroTokens#getVal <em>Val</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Val</em>'.
-   * @see org.wesnoth.wML.EQUAL_PARSE#getVal()
-   * @see #getEQUAL_PARSE()
+   * @see org.wesnoth.wML.MacroTokens#getVal()
+   * @see #getMacroTokens()
    * @generated
    */
-  EAttribute getEQUAL_PARSE_Val();
+  EAttribute getMacroTokens_Val();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -1336,14 +1336,14 @@ public interface WMLPackage extends EPackage
     EAttribute WML_VALUE__VALUE = eINSTANCE.getWMLValue_Value();
 
     /**
-     * The meta object literal for the '{@link org.wesnoth.wML.impl.EQUAL_PARSEImpl <em>EQUAL PARSE</em>}' class.
+     * The meta object literal for the '{@link org.wesnoth.wML.impl.MacroTokensImpl <em>Macro Tokens</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.wesnoth.wML.impl.EQUAL_PARSEImpl
-     * @see org.wesnoth.wML.impl.WMLPackageImpl#getEQUAL_PARSE()
+     * @see org.wesnoth.wML.impl.MacroTokensImpl
+     * @see org.wesnoth.wML.impl.WMLPackageImpl#getMacroTokens()
      * @generated
      */
-    EClass EQUAL_PARSE = eINSTANCE.getEQUAL_PARSE();
+    EClass MACRO_TOKENS = eINSTANCE.getMacroTokens();
 
     /**
      * The meta object literal for the '<em><b>Val</b></em>' attribute feature.
@@ -1351,7 +1351,7 @@ public interface WMLPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute EQUAL_PARSE__VAL = eINSTANCE.getEQUAL_PARSE_Val();
+    EAttribute MACRO_TOKENS__VAL = eINSTANCE.getMacroTokens_Val();
 
   }
 

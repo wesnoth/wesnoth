@@ -117,13 +117,13 @@ public interface WMLFactory extends EFactory
   WMLValue createWMLValue();
 
   /**
-   * Returns a new object of class '<em>EQUAL PARSE</em>'.
+   * Returns a new object of class '<em>Macro Tokens</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>EQUAL PARSE</em>'.
+   * @return a new object of class '<em>Macro Tokens</em>'.
    * @generated
    */
-  EQUAL_PARSE createEQUAL_PARSE();
+  MacroTokens createMacroTokens();
 
   /**
    * Returns the package supported by this factory.

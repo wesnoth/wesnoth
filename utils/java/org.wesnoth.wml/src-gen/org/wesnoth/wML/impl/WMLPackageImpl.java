@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
+import org.wesnoth.wML.MacroTokens;
 import org.wesnoth.wML.WMLArrayCall;
 import org.wesnoth.wML.WMLFactory;
 import org.wesnoth.wML.WMLKey;
@@ -109,7 +110,7 @@ public class WMLPackageImpl extends EPackageImpl implements WMLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass equaL_PARSEEClass = null;
+  private EClass macroTokensEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -569,9 +570,9 @@ public class WMLPackageImpl extends EPackageImpl implements WMLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getEQUAL_PARSE()
+  public EClass getMacroTokens()
   {
-    return equaL_PARSEEClass;
+    return macroTokensEClass;
   }
 
   /**
@@ -579,9 +580,9 @@ public class WMLPackageImpl extends EPackageImpl implements WMLPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getEQUAL_PARSE_Val()
+  public EAttribute getMacroTokens_Val()
   {
-    return (EAttribute)equaL_PARSEEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)macroTokensEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -663,8 +664,8 @@ public class WMLPackageImpl extends EPackageImpl implements WMLPackage
     wmlValueEClass = createEClass(WML_VALUE);
     createEAttribute(wmlValueEClass, WML_VALUE__VALUE);
 
-    equaL_PARSEEClass = createEClass(EQUAL_PARSE);
-    createEAttribute(equaL_PARSEEClass, EQUAL_PARSE__VAL);
+    macroTokensEClass = createEClass(MACRO_TOKENS);
+    createEAttribute(macroTokensEClass, MACRO_TOKENS__VAL);
   }
 
   /**
@@ -751,8 +752,8 @@ public class WMLPackageImpl extends EPackageImpl implements WMLPackage
     initEClass(wmlValueEClass, WMLValue.class, "WMLValue", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getWMLValue_Value(), ecorePackage.getEString(), "value", null, 0, 1, WMLValue.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(equaL_PARSEEClass, org.wesnoth.wML.EQUAL_PARSE.class, "EQUAL_PARSE", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getEQUAL_PARSE_Val(), ecorePackage.getEString(), "val", null, 0, 1, org.wesnoth.wML.EQUAL_PARSE.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(macroTokensEClass, MacroTokens.class, "MacroTokens", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getMacroTokens_Val(), ecorePackage.getEString(), "val", null, 0, 1, MacroTokens.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

@@ -13,23 +13,23 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.wesnoth.wML.EQUAL_PARSE;
+import org.wesnoth.wML.MacroTokens;
 import org.wesnoth.wML.WMLPackage;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>EQUAL PARSE</b></em>'.
+ * An implementation of the model object '<em><b>Macro Tokens</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.wesnoth.wML.impl.EQUAL_PARSEImpl#getVal <em>Val</em>}</li>
+ *   <li>{@link org.wesnoth.wML.impl.MacroTokensImpl#getVal <em>Val</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class EQUAL_PARSEImpl extends MinimalEObjectImpl.Container implements EQUAL_PARSE
+public class MacroTokensImpl extends MinimalEObjectImpl.Container implements MacroTokens
 {
   /**
    * The default value of the '{@link #getVal() <em>Val</em>}' attribute.
@@ -56,7 +56,7 @@ public class EQUAL_PARSEImpl extends MinimalEObjectImpl.Container implements EQU
    * <!-- end-user-doc -->
    * @generated
    */
-  protected EQUAL_PARSEImpl()
+  protected MacroTokensImpl()
   {
     super();
   }
@@ -69,7 +69,7 @@ public class EQUAL_PARSEImpl extends MinimalEObjectImpl.Container implements EQU
   @Override
   protected EClass eStaticClass()
   {
-    return WMLPackage.Literals.EQUAL_PARSE;
+    return WMLPackage.Literals.MACRO_TOKENS;
   }
 
   /**
@@ -92,7 +92,7 @@ public class EQUAL_PARSEImpl extends MinimalEObjectImpl.Container implements EQU
     String oldVal = val;
     val = newVal;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, WMLPackage.EQUAL_PARSE__VAL, oldVal, val));
+      eNotify(new ENotificationImpl(this, Notification.SET, WMLPackage.MACRO_TOKENS__VAL, oldVal, val));
   }
 
   /**
@@ -105,7 +105,7 @@ public class EQUAL_PARSEImpl extends MinimalEObjectImpl.Container implements EQU
   {
     switch (featureID)
     {
-      case WMLPackage.EQUAL_PARSE__VAL:
+      case WMLPackage.MACRO_TOKENS__VAL:
         return getVal();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -121,7 +121,7 @@ public class EQUAL_PARSEImpl extends MinimalEObjectImpl.Container implements EQU
   {
     switch (featureID)
     {
-      case WMLPackage.EQUAL_PARSE__VAL:
+      case WMLPackage.MACRO_TOKENS__VAL:
         setVal((String)newValue);
         return;
     }
@@ -138,7 +138,7 @@ public class EQUAL_PARSEImpl extends MinimalEObjectImpl.Container implements EQU
   {
     switch (featureID)
     {
-      case WMLPackage.EQUAL_PARSE__VAL:
+      case WMLPackage.MACRO_TOKENS__VAL:
         setVal(VAL_EDEFAULT);
         return;
     }
@@ -155,7 +155,7 @@ public class EQUAL_PARSEImpl extends MinimalEObjectImpl.Container implements EQU
   {
     switch (featureID)
     {
-      case WMLPackage.EQUAL_PARSE__VAL:
+      case WMLPackage.MACRO_TOKENS__VAL:
         return VAL_EDEFAULT == null ? val != null : !VAL_EDEFAULT.equals(val);
     }
     return super.eIsSet(featureID);
@@ -178,4 +178,4 @@ public class EQUAL_PARSEImpl extends MinimalEObjectImpl.Container implements EQU
     return result.toString();
   }
 
-} //EQUAL_PARSEImpl
+} //MacroTokensImpl

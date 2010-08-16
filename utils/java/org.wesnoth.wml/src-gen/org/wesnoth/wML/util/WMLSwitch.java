@@ -170,10 +170,10 @@ public class WMLSwitch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case WMLPackage.EQUAL_PARSE:
+      case WMLPackage.MACRO_TOKENS:
       {
-        EQUAL_PARSE equaL_PARSE = (EQUAL_PARSE)theEObject;
-        T result = caseEQUAL_PARSE(equaL_PARSE);
+        MacroTokens macroTokens = (MacroTokens)theEObject;
+        T result = caseMacroTokens(macroTokens);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -342,17 +342,17 @@ public class WMLSwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>EQUAL PARSE</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Macro Tokens</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>EQUAL PARSE</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Macro Tokens</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseEQUAL_PARSE(EQUAL_PARSE object)
+  public T caseMacroTokens(MacroTokens object)
   {
     return null;
   }

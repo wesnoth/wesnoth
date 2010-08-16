@@ -30,14 +30,14 @@ WMLTag:
 	;
 
 WMLKey hidden(WS):
-	name = ID '=' value += WMLKeyValue+ (EOL? '+' EOL? value+=WMLKeyValue )* (EOL|SL_COMMENT);
+	name = ID '=' value += WMLKeyValue* (EOL? '+' EOL? value+=WMLKeyValue )* (EOL|SL_COMMENT);
 
 WMLKeyValue:
 	WMLValue | WMLMacroCall | WMLLuaCode | WMLArrayCall;
 	
 WMLMacroCall:
-	'{' (relative?='~')? name=ID
-		( params += (WMLValue | WMLTag | EQUAL_PARSE)
+	'{' ('.')? (relative?='~')? name=ID
+		( params += (WMLValue | MacroTokens)
 		| extraMacros += WMLMacroCall
 		)*
 	'}';
@@ -61,12 +61,17 @@ WMLTextdomain:
 	name = TEXTDOMAIN;
 
 WMLValue:
-	value = (ID | TSTRING | STRING |'~' | ANY_OTHER);
+	value = (ID | TSTRING | TVAR | STRING |'~' | '.'|'(' | ')'| ANY_OTHER);
 
 TSTRING:
 	'_' STRING;
-EQUAL_PARSE:
-	val='=';
+TVAR:
+	'_$';
+// we use this as a hack for any characters in the macro call
+// so we won't trigger things like: key=value or [tag]
+MacroTokens:
+	val=('='|'['|']'|'+'|'[/');
+
 terminal LUA_CODE   : '<<' -> '>>';
 terminal DEFINE     : '#define' !('\n'|'\r')* ('\r'? '\n')?;
 terminal ENDDEF     : '#enddef' !('\n'|'\r')* ('\r'? '\n')?;

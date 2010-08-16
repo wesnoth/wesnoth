@@ -10,21 +10,21 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>EQUAL PARSE</b></em>'.
+ * A representation of the model object '<em><b>Macro Tokens</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.wesnoth.wML.EQUAL_PARSE#getVal <em>Val</em>}</li>
+ *   <li>{@link org.wesnoth.wML.MacroTokens#getVal <em>Val</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.wesnoth.wML.WMLPackage#getEQUAL_PARSE()
+ * @see org.wesnoth.wML.WMLPackage#getMacroTokens()
  * @model
  * @generated
  */
-public interface EQUAL_PARSE extends EObject
+public interface MacroTokens extends EObject
 {
   /**
    * Returns the value of the '<em><b>Val</b></em>' attribute.
@@ -36,14 +36,14 @@ public interface EQUAL_PARSE extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Val</em>' attribute.
    * @see #setVal(String)
-   * @see org.wesnoth.wML.WMLPackage#getEQUAL_PARSE_Val()
+   * @see org.wesnoth.wML.WMLPackage#getMacroTokens_Val()
    * @model
    * @generated
    */
   String getVal();
 
   /**
-   * Sets the value of the '{@link org.wesnoth.wML.EQUAL_PARSE#getVal <em>Val</em>}' attribute.
+   * Sets the value of the '{@link org.wesnoth.wML.MacroTokens#getVal <em>Val</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Val</em>' attribute.
@@ -52,4 +52,4 @@ public interface EQUAL_PARSE extends EObject
    */
   void setVal(String value);
 
-} // EQUAL_PARSE
+} // MacroTokens
