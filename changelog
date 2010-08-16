@@ -51,6 +51,7 @@ Version 1.9.0-svn:
    * Two new flag styles.
    * Animate terrain in editor
    * New advanced preference to use a local ToD color-shift
+   * Added framework allowing to draw various arrow styles on the map.
  * Language and i18n:
    * Updated translations: British English, Catalan, Chinese (Simplified),
      Chinese (Traditional), Czech, Dutch, Estonian, Finnish, French, Galician,
@@ -188,6 +189,8 @@ Version 1.9.0-svn:
    * Fixed #15781: On maps with statues player can pick statues team
    * Fixed move+attack not interrupted when ambushed at destination
    * Stop disabling mouse during attack+move
+   * Added the whiteboard planning system (GSoC project), see release notes for details.
+   * Allowed viewing terrain defense for the selected unit outside of your turn.
  * WML Engine:
    * Deprecated [set_variable]'s random key, use rand instead
    * Renamed [unit][status] healable to unhealable so it can default to 'no'
@@ -235,7 +238,6 @@ Version 1.9.0-svn:
  * Miscellaneous and bug fixes:
    * Added help entry when new unit is created directly in the recall list
    * Defaulted log level to warning again
-   * New option to auto-set delay shroud update on game start
    * better fix for bug 14765 now that string freeze is off
    * Fixed picking the proper locale, the problem only occurred on some
      systems
