@@ -82,6 +82,7 @@ bool recall::execute()
 {
 	assert(valid_);
 	assert(temp_unit_);
+	fake_unit_->set_hidden(true);
 	resources::controller->get_menu_handler().do_recall(*temp_unit_, team_index() + 1, recall_hex_);
 	delete temp_unit_;
 	temp_unit_ = NULL;
