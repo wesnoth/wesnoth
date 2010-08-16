@@ -993,7 +993,7 @@ static surface get_semi_brightened(const locator& i_locator)
 }
 
 ///translate type to a simpler one when possible
-static TYPE simplify_type(TYPE type){
+static TYPE simplify_type(const image::locator& i_locator, TYPE type){
 	switch(type) {
 	case SCALED_TO_ZOOM:
 		if(zoom == tile_size)
@@ -1020,7 +1020,13 @@ static TYPE simplify_type(TYPE type){
 		if(zoom == tile_size)
 			type = HEXED;
 	}
-	
+
+	if(type == HEXED) {
+		// check if the image is already hex-cutted by the location system
+		if(i_locator.get_loc().valid())
+			type = UNSCALED;
+	}
+
 	return type;
 }
 
@@ -1032,7 +1038,7 @@ surface get_image(const image::locator& i_locator, TYPE type)
 	if(i_locator.is_void())
 		return res;
 
-	type = simplify_type(type);
+	type = simplify_type(i_locator, type);
 
 	image_cache *imap;
 	// select associated cache
