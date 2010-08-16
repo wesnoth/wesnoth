@@ -57,7 +57,7 @@ void highlight_visitor::set_mouseover_hex(const map_location& hex)
 {
 	clear();
 
-	if (!mouseover_hex_.valid())
+	if (!hex.valid())
 		return;
 
 	scoped_real_unit_map ensure_real_map;
