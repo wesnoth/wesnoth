@@ -676,11 +676,13 @@ public:
 		LAYER_FOG_SHROUD,          /**< Fog and shroud. */
 		LAYER_ARROWS,              /**< Arrows from the arrows framework. Used for planned moves display. */
 		LAYER_ACTIONS_NUMBERING,   /**< Move numbering for the whiteboard. */
+		LAYER_SELECTED_HEX,        /**< Image on the selected unit */
+		LAYER_MOUSEOVER_HEX,       /**< Image following the mouse */
+		LAYER_ATTACK_INDICATOR,    /**< Layer which holds the attack indicator. */
 		LAYER_UNIT_BAR,            /**<
 		                            * Unit bars and overlays are drawn on this
 		                            * layer (for testing here).
 		                            */
-		LAYER_ATTACK_INDICATOR,    /**< Layer which holds the attack indicator. */
 		LAYER_MOVE_INFO,           /**< Movement info (defense%, ect...). */
 		LAYER_LINGER_OVERLAY,      /**< The overlay used for the linger mode. */
 		LAYER_BORDER,              /**< The border of the map. */
