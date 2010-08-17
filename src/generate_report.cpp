@@ -213,7 +213,7 @@ report generate_report(TYPE type,
 				str << ", ";
 			++i;
 			//FIXME pull out ability's name from description
-			tooltip << _("Ability:") << "\n"
+			tooltip << _("Ability: ")
 				<< *i;
 			const std::string help_page = "ability_" + name;
 
@@ -473,7 +473,9 @@ report generate_report(TYPE type,
 						<< "  " << *sp_it << "</span>\n";
 					const std::string help_page = "weaponspecial_" + sp_it->base_str();
 					++sp_it;
-					tooltip << *sp_it << '\n';
+					//FIXME pull out special's name from description
+					tooltip << _("Weapon special: ")
+							<< *sp_it << '\n';
 
 					res.add_text(flush(str), flush(tooltip), help_page);
 				}
