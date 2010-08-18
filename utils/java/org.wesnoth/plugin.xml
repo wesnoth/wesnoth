@@ -59,26 +59,38 @@
          point="org.eclipse.core.runtime.products">
       <product
             application="Wesnoth_Eclipse_Plugin.application"
-            name="Wesnoth User Made Content IDE">
+            name="Wesnoth User Made Content">
          <property
                name="appName"
-               value="Wesnoth User Made Content IDE">
+               value="Wesnoth User Made Content">
          </property>
          <property
                name="preferenceCustomization"
                value="plugin_customization.ini">
          </property>
          <property
+               name="startupForegroundColor"
+               value="000000">
+         </property>
+         <property
                name="startupMessageRect"
-               value="94,275,285,15">
+               value="19,227,200,15">
          </property>
          <property
                name="startupProgressRect"
-               value="94,260,100,15">
+               value="0,280,455,15">
          </property>
          <property
-               name="startupForegroundColor"
-               value="000000">
+               name="aboutImage"
+               value="icons/wesnoth-about.png">
+         </property>
+         <property
+               name="aboutText"
+               value="Battle for Wesnoth User Made Content Plugin">
+         </property>
+         <property
+               name="windowImages"
+               value="icons/wesnoth-icon_16.png,icons/wesnoth-icon_32.png,icons/wesnoth-icon.png">
          </property>
       </product>
    </extension>
@@ -213,7 +225,7 @@
       <view
             allowMultiple="false"
             category="Wesnoth_Eclipse_Plugin.view_category"
-            class="org.eclipse.ui.navigator.CommonNavigator"
+            class="org.wesnoth.navigator.WesnothProjectsExplorer"
             icon="icons/wesnoth-icon_16.png"
             id="wesnoth_eclipse_plugin.views.projects"
             name="Wesnoth Projects"
@@ -676,6 +688,42 @@
    </extension>
    <extension
          point="org.eclipse.ui.perspectiveExtensions">
+   </extension>
+   <extension
+         point="org.eclipse.ui.elementFactories">
+      <factory
+            class="org.wesnoth.navigator.WesnothProjectsExplorer"
+            id="org.wesnoth.factory">
+      </factory>
+   </extension>
+   <extension
+         point="org.eclipse.ui.intro">
+      <intro
+            class="org.eclipse.ui.intro.config.CustomizableIntroPart"
+            icon="icons/wesnoth-icon_16.png"
+            id="org.wesnoth.intro"
+            label="Welcome to Wesnoth User Made Content Plugin">
+      </intro>
+      <introProductBinding
+            introId="org.wesnoth.intro"
+            productId="org.wesnoth.product">
+      </introProductBinding>
+   </extension>
+   <extension
+         point="org.eclipse.ui.intro.config">
+      <config
+            content="intro/content.xml"
+            id="org.wesnoth.introConfigId"
+            introId="org.wesnoth.intro">
+         <presentation
+               home-page-id="root">
+            <implementation
+                  kind="html"
+                  os="win32,linux,macosx"
+                  style="content/shared.css">
+            </implementation>
+         </presentation>
+      </config>
    </extension>
 
 </plugin>
