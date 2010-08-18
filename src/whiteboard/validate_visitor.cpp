@@ -86,15 +86,33 @@ void validate_visitor::visit_move(move_ptr move)
 	if (!(move->get_source_hex().valid() && move->get_dest_hex().valid()))
 		move->set_valid(false);
 
-	unit_map::const_iterator unit_it = resources::units->find(move->get_source_hex());
-
-	if (move->valid_ && unit_it == resources::units->end())
+	//Check that destination hex is still free
+	if(resources::units->find(move->get_dest_hex()) != resources::units->end())
+	{
+		LOG_WB << "Move set as invalid because target hex is occupied.\n";
 		move->set_valid(false);
+	}
+
+	unit_map::const_iterator unit_it;
+	//Check that the unit still exists in the source hex
+	if (move->valid_)
+	{
+		unit_it = resources::units->find(move->get_source_hex());
+
+		if (unit_it == resources::units->end())
+		{
+			move->set_valid(false);
+			move->unit_ = NULL;
+		}
+	}
 
 	//check if the unit in the source hex has the same unit id as before,
 	//i.e. that it's the same unit
 	if (move->valid_ && move->unit_id_ != unit_it->id())
+	{
 		move->set_valid(false);
+		move->unit_ = NULL;
+	}
 
 	//Now that we've reliably identified the unit owning this planned move, update the
 	//pointer in case there has been some funny business in the unit map
