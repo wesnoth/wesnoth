@@ -101,6 +101,10 @@ void highlight_visitor::highlight()
 		//Find secondary actions to highlight
 		find_secondary_highlights();
 
+		//Make sure owner unit is the only one displayed in its hex
+		resources::screen->add_exclusive_draw(owner_unit_->get_location(), *owner_unit_);
+		exclusive_display_hexes_.insert(owner_unit_->get_location());
+
 		if (action_ptr main = main_highlight_.lock())
 		{
 			//Highlight main highlight
@@ -109,9 +113,6 @@ void highlight_visitor::highlight()
 		}
 
 		if (!secondary_highlights_.empty())
-			//Make sure owner unit is the only one displayed in its hex
-			resources::screen->add_exclusive_draw(owner_unit_->get_location(), *owner_unit_);
-			exclusive_display_hexes_.insert(owner_unit_->get_location());
 			//Highlight secondary highlights
 			mode_ = HIGHLIGHT_SECONDARY;
 			foreach(weak_action_ptr weak, secondary_highlights_)
