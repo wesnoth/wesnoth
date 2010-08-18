@@ -280,6 +280,10 @@ void highlight_visitor::visit_recruit(recruit_ptr recruit)
 		if (recruit->fake_unit_)
 		{
 			//@todo: find some suitable effect for mouseover on planned recruit.
+
+			//Make sure the fake unit is the only one displayed in its hex
+			resources::screen->add_exclusive_draw(recruit->fake_unit_->get_location(), *recruit->fake_unit_);
+			exclusive_display_hexes_.insert(recruit->fake_unit_->get_location());
 		}
 		break;
 	case HIGHLIGHT_SECONDARY:
@@ -321,6 +325,10 @@ void highlight_visitor::visit_recall(recall_ptr recall)
 		if (recall->fake_unit_)
 		{
 			//@todo: find some suitable effect for mouseover on planned recall.
+
+			//Make sure the fake unit is the only one displayed in its hex
+			resources::screen->add_exclusive_draw(recall->fake_unit_->get_location(), *recall->fake_unit_);
+			exclusive_display_hexes_.insert(recall->fake_unit_->get_location());
 		}
 		break;
 	default:
