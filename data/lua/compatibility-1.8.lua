@@ -31,5 +31,5 @@ function wesnoth.register_wml_action(name, handler)
 end
 
 function wesnoth.fire(name, cfg)
-	wesnoth.wml_actions[name](cfg)
+	wesnoth.wml_actions[name](wesnoth.tovconfig(cfg or {}))
 end
