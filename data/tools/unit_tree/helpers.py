@@ -115,16 +115,16 @@ class WesnothList:
     """
     Lists various Wesnoth stuff like units, campaigns, terrains, factions...
     """
-    def __init__(self, wesnoth_exe, transdir):
+    def __init__(self, wesnoth_exe, config_dir, data_dir, transdir):
         self.unit_lookup = {}
         self.race_lookup = {}
         self.terrain_lookup = {}
         self.movetype_lookup = {}
         self.era_lookup = {}
         self.campaign_lookup = {}
-        self.parser = wmlparser2.Parser(wesnoth_exe)
+        self.parser = wmlparser2.Parser(wesnoth_exe, config_dir,
+            data_dir, no_preprocess = False)
         
-        self.parser = wmlparser2.Parser(wesnoth_exe)
 
     def add_terrains(self):
         """

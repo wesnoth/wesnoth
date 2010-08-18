@@ -777,7 +777,8 @@ def find_languages():
     """
     global languages
     if languages_found: return languages_found
-    parser = wmlparser2.Parser(options.wesnoth)
+    parser = wmlparser2.Parser(options.wesnoth, options.config_dir,
+        options.data_dir, no_preprocess = False)
     parser.parse_text("{languages}")
 
     for locale in parser.get_all(tag = "locale"):
@@ -872,7 +873,11 @@ def copy_images():
                 file(local, "w").write(url.read())
 
 def parse_game():
-    stuff = helpers.WesnothList(options.wesnoth, options.transdir)
+    stuff = helpers.WesnothList(
+        options.wesnoth,
+        options.config_dir,
+        options.data_dir,
+        options.transdir)
     
     def p(x): sys.stdout.write(x); sys.stdout.flush()
     def pn(x): print(x)
@@ -974,6 +979,10 @@ if __name__ == '__main__':
     gc.disable()
 
     op = optparse.OptionParser()
+    op.add_option("-C", "--config-dir",
+        help = "Specify the user configuration dir (wesnoth --config-path).")
+    op.add_option("-D", "--data-dir",
+        help = "Specify the wesnoth data dir (wesnoth --path).")
     op.add_option("-l", "--language", default = "all",
         help = "Specify a language to use. Else outputs is produced for all languages.")
     op.add_option("-o", "--output",
