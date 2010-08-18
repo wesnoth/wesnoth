@@ -322,26 +322,26 @@ void manager::draw_hex(const map_location& hex)
 
 void manager::on_mouseover_change(const map_location& hex)
 {
-
 	if (hidden_unit_hex_.valid())
 	{
 		resources::screen->remove_exclusive_draw(hidden_unit_hex_);
 		hidden_unit_hex_ = map_location();
 	}
 
-	if (!(wait_for_side_init_ || executing_actions_))
+	map_location selected_hex = resources::screen->selected_hex();
+	unit_map::iterator it;
+	{ wb::scoped_planned_pathfind_map future; //< start planned pathfind map scope
+		it = resources::units->find(selected_hex);
+	} // end planned pathfind map scope
+	if (!((selected_hex.valid() && it != resources::units->end())
+			|| has_temp_move() || wait_for_side_init_ || executing_actions_))
 	{
-		//@todo Right now the planned actions of the current selected unit won't get priority,
-		// see what we want to do with the UI in that case.
-		if (!has_temp_move())
+		if (!highlighter_)
 		{
-			if (!highlighter_)
-			{
-				highlighter_.reset(new highlight_visitor(*resources::units, viewer_actions()));
-			}
-			highlighter_->set_mouseover_hex(hex);
-			highlighter_->highlight();
+			highlighter_.reset(new highlight_visitor(*resources::units, viewer_actions()));
 		}
+		highlighter_->set_mouseover_hex(hex);
+		highlighter_->highlight();
 	}
 }
 
