@@ -42,7 +42,7 @@ void persist_file_context::load() {
 	create_directory_if_missing(cfg_dir);
 
 	std::string cfg_name = get_persist_cfg_name(namespace_.root_);
-	if (!cfg_name.empty()) {
+	if (file_exists(cfg_name) && !is_directory(cfg_name)) {
 		scoped_istream file_stream = istream_file(cfg_name);
 		if (!(file_stream->fail())) {
 			try {

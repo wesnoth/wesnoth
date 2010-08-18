@@ -580,6 +580,7 @@ static void setup_user_data_dir()
 	_mkdir((user_data_dir + "/data").c_str());
 	_mkdir((user_data_dir + "/data/add-ons").c_str());
 	_mkdir((user_data_dir + "/saves").c_str());
+	_mkdir((user_data_dir + "/persist").c_str());
 #elif defined(__BEOS__)
 	BPath tpath;
 	#define BEOS_CREATE_PREFERENCES_SUBDIR(subdir) \
@@ -592,6 +593,7 @@ static void setup_user_data_dir()
 	BEOS_CREATE_PREFERENCES_SUBDIR("data");
 	BEOS_CREATE_PREFERENCES_SUBDIR("data/add-ons");
 	BEOS_CREATE_PREFERENCES_SUBDIR("saves");
+	BEOS_CREATE_PREFERENCES_SUBDIR("persist");
 	#undef BEOS_CREATE_PREFERENCES_SUBDIR
 #else
 	const std::string& dir_path = user_data_dir;
@@ -611,6 +613,7 @@ static void setup_user_data_dir()
 	create_directory_if_missing(dir_path + "/data");
 	create_directory_if_missing(dir_path + "/data/add-ons");
 	create_directory_if_missing(dir_path + "/saves");
+	create_directory_if_missing(dir_path + "/persist");
 #endif
 }
 
