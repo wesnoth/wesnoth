@@ -9,16 +9,12 @@
 package org.wesnoth.preferences;
 
 import org.eclipse.jface.preference.BooleanFieldEditor;
-import org.eclipse.jface.preference.FieldEditorPreferencePage;
 import org.eclipse.jface.preference.ScaleFieldEditor;
-import org.eclipse.ui.IWorkbench;
-import org.eclipse.ui.IWorkbenchPreferencePage;
 import org.eclipse.xtext.ui.editor.preferences.fields.LabelFieldEditor;
 import org.wesnoth.Activator;
 import org.wesnoth.Constants;
 
-public class WMLToolsPreferencePage extends FieldEditorPreferencePage implements
-		IWorkbenchPreferencePage
+public class WMLToolsPreferencePage extends AbstractPreferencePage
 {
 	public WMLToolsPreferencePage()
 	{
@@ -53,10 +49,5 @@ public class WMLToolsPreferencePage extends FieldEditorPreferencePage implements
 		addField(new ScaleFieldEditor(Constants.P_WMLLINT_VERBOSE_LEVEL, "Verbose level:",
 				getFieldEditorParent(), 0, 3, 1, 1));
 		addField(new LabelFieldEditor("", getFieldEditorParent()));
-	}
-
-	@Override
-	public void init(IWorkbench workbench)
-	{
 	}
 }

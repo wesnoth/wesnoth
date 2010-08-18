@@ -13,17 +13,13 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import org.eclipse.jface.preference.BooleanFieldEditor;
-import org.eclipse.jface.preference.FieldEditorPreferencePage;
 import org.eclipse.jface.preference.StringFieldEditor;
-import org.eclipse.ui.IWorkbench;
-import org.eclipse.ui.IWorkbenchPreferencePage;
 import org.eclipse.xtext.ui.editor.preferences.fields.LabelFieldEditor;
 import org.wesnoth.Activator;
 import org.wesnoth.Constants;
 import org.wesnoth.jface.RegexStringFieldEditor;
 
-public class AddonUploadPreferencePage extends FieldEditorPreferencePage implements
-		IWorkbenchPreferencePage
+public class AddonUploadPreferencePage extends AbstractPreferencePage
 {
 	Map<String, String> ports_;
 
@@ -45,14 +41,16 @@ public class AddonUploadPreferencePage extends FieldEditorPreferencePage impleme
 	protected void createFieldEditors()
 	{
 		addField(new StringFieldEditor(Constants.P_WAU_PASSWORD,
-				"Password (stored in plain text)", getFieldEditorParent()));
+				"Password (stored in plain text)", getFieldEditorParent()),
+				"This is the password used to authenticate to the addons server");
 		addField(new BooleanFieldEditor(Constants.P_WAU_VERBOSE,
 				"Verbose", 1, getFieldEditorParent()));
 
 		addField(new RegexStringFieldEditor(Constants.P_WAU_ADDRESS,
 				"Address", "[^:]*",
-				"The address must not contain any port number as its set below.",
-				getFieldEditorParent()));
+				"The address must not contain any port number as it's set below.",
+				getFieldEditorParent()),
+				"The address used to connect to the addons server.");
 
 		StringBuilder ports = new StringBuilder();
 		StringBuilder portsRegex = new StringBuilder();
@@ -68,13 +66,9 @@ public class AddonUploadPreferencePage extends FieldEditorPreferencePage impleme
 		//System.out.println(portsRegex.toString());
 		addField(new RegexStringFieldEditor(Constants.P_WAU_PORT,
 				"Port", portsRegex.toString(),
-				"Invalid port number", getFieldEditorParent()));
+				"Invalid port number", getFieldEditorParent()),
+				"Based on this number you will upload the addons to a separate addon server.");
 		addField(new LabelFieldEditor("Ports available by wesnoth's version:\n" +
 				ports.toString(), getFieldEditorParent()));
-	}
-
-	@Override
-	public void init(IWorkbench workbench)
-	{
 	}
 }

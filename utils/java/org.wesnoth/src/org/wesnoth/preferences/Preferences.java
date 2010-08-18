@@ -17,10 +17,11 @@ import org.wesnoth.Constants;
 /**
  * Class used to initialize default preference values.
  */
-public class Preferences extends AbstractPreferenceInitializer {
-
+public class Preferences extends AbstractPreferenceInitializer
+{
 	@Override
-	public void initializeDefaultPreferences() {
+	public void initializeDefaultPreferences()
+	{
 		IPreferenceStore store = Activator.getDefault().getPreferenceStore();
 		// general settings
 		store.setDefault(Constants.P_WESNOTH_EXEC_PATH, "");

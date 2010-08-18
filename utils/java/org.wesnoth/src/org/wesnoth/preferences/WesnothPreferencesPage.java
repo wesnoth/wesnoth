@@ -15,21 +15,17 @@ import java.util.List;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.preference.DirectoryFieldEditor;
 import org.eclipse.jface.preference.FieldEditor;
-import org.eclipse.jface.preference.FieldEditorPreferencePage;
 import org.eclipse.jface.preference.FileFieldEditor;
 import org.eclipse.jface.preference.StringFieldEditor;
 import org.eclipse.jface.util.PropertyChangeEvent;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.widgets.Text;
-import org.eclipse.ui.IWorkbench;
-import org.eclipse.ui.IWorkbenchPreferencePage;
 import org.wesnoth.Activator;
 import org.wesnoth.Constants;
 import org.wesnoth.templates.ReplaceableParameter;
 import org.wesnoth.templates.TemplateProvider;
 import org.wesnoth.utils.StringUtils;
-
 
 /**
  * This class represents a preference page that
@@ -44,8 +40,7 @@ import org.wesnoth.utils.StringUtils;
  * the main plug-in class. That way, preferences can
  * be accessed directly via the preference store.
  */
-public class WesnothPreferencesPage extends FieldEditorPreferencePage
-		implements IWorkbenchPreferencePage
+public class WesnothPreferencesPage extends AbstractPreferencePage
 {
 	private DirectoryFieldEditor	wmlToolsField_;
 	private DirectoryFieldEditor	wesnothWorkingDirField_;
@@ -105,28 +100,23 @@ public class WesnothPreferencesPage extends FieldEditorPreferencePage
 					}
 				}
 			});
-		addField(wesnothExecutableField_);
+		addField(wesnothExecutableField_, "The executable used to launch wesnoth (wesnoth / wesnoth.exe");
 
 		wesnothWorkingDirField_ = new DirectoryFieldEditor(Constants.P_WESNOTH_WORKING_DIR,
 				"Working directory:", getFieldEditorParent());
 		wesnothWorkingDirField_.getTextControl(getFieldEditorParent()).
 			addModifyListener(listener);
-		addField(wesnothWorkingDirField_);
+		addField(wesnothWorkingDirField_, "This directory should containing data, manual, images directories of wesnoth.");
 
 		wesnothUserDirField_ = new DirectoryFieldEditor(Constants.P_WESNOTH_USER_DIR,
 				"User data directory:", getFieldEditorParent());
-		addField(wesnothUserDirField_);
+		addField(wesnothUserDirField_, "This directory should contain the data/add-ons/ directory, where user addons are stored.");
 
 		wmlToolsField_ = new DirectoryFieldEditor(Constants.P_WESNOTH_WMLTOOLS_DIR,
 				"WML* tools directory:", getFieldEditorParent());
-		addField(wmlToolsField_);
+		addField(wmlToolsField_, "This directory should contain the wmltools: wmllint, wmlscope, wmlindent, etc.");
 
 		guessDefaultPaths();
-	}
-
-	@Override
-	public void init(IWorkbench workbench)
-	{
 	}
 
 	@Override

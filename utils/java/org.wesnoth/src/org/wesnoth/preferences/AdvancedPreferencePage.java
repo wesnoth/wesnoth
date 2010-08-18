@@ -9,14 +9,10 @@
 package org.wesnoth.preferences;
 
 import org.eclipse.jface.preference.BooleanFieldEditor;
-import org.eclipse.jface.preference.FieldEditorPreferencePage;
-import org.eclipse.ui.IWorkbench;
-import org.eclipse.ui.IWorkbenchPreferencePage;
 import org.wesnoth.Activator;
 import org.wesnoth.Constants;
 
-public class AdvancedPreferencePage extends FieldEditorPreferencePage implements
-		IWorkbenchPreferencePage
+public class AdvancedPreferencePage extends AbstractPreferencePage
 {
 	public AdvancedPreferencePage()
 	{
@@ -29,17 +25,10 @@ public class AdvancedPreferencePage extends FieldEditorPreferencePage implements
 	@Override
 	protected void createFieldEditors()
 	{
-		BooleanFieldEditor field =  new BooleanFieldEditor(
+		addField(new BooleanFieldEditor(
 				Constants.P_ADV_NO_TERRAIN_GFX, "NO_TERRAIN_GFX defined", 1,
-				getFieldEditorParent());
-		field.getLabelControl(getFieldEditorParent()).setToolTipText(
+				getFieldEditorParent()),
 				"If this is set the Terrain Graphics macros won't be parsed" +
 				" => improved performance. Check this only if you need them.");
-		addField(field);
-	}
-
-	@Override
-	public void init(IWorkbench workbench)
-	{
 	}
 }
