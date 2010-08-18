@@ -304,20 +304,20 @@ void game_display::draw_invalidated()
 	halo::unrender(invalidated_);
 	display::draw_invalidated();
 
-	foreach (const map_location& loc, invalidated_) {
-		unit_map::iterator u_it = units_.find(loc);
-		exclusive_unit_draw_requests_t::iterator request = exclusive_unit_draw_requests_.find(loc);
-		if (u_it != units_.end()
-				&& (request == exclusive_unit_draw_requests_.end() || request->second == u_it->id()))
-			u_it->redraw_unit();
-	}
-
 	foreach(unit* temp_unit, temp_units_) {
 		const map_location& loc = temp_unit->get_location();
 		exclusive_unit_draw_requests_t::iterator request = exclusive_unit_draw_requests_.find(loc);
 		if (invalidated_.find(loc) != invalidated_.end()
 				&& (request == exclusive_unit_draw_requests_.end() || request->second == temp_unit->id()))
 			temp_unit->redraw_unit();
+	}
+
+	foreach (const map_location& loc, invalidated_) {
+		unit_map::iterator u_it = units_.find(loc);
+		exclusive_unit_draw_requests_t::iterator request = exclusive_unit_draw_requests_.find(loc);
+		if (u_it != units_.end()
+				&& (request == exclusive_unit_draw_requests_.end() || request->second == u_it->id()))
+			u_it->redraw_unit();
 	}
 
 	halo::unrender(invalidated_);
