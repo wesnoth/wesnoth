@@ -3326,6 +3326,8 @@ namespace game_events {
 			return false;
 		}
 
+		resources::whiteboard->on_gamestate_change();
+
 		bool result = false;
 		while(events_queue.empty() == false) {
 			game_events::queued_event ev = events_queue.front();
@@ -3359,7 +3361,6 @@ namespace game_events {
 			commit();
 		}
 
-		resources::whiteboard->on_gamestate_change();
 		return result;
 	}
 
