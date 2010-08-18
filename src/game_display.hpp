@@ -202,6 +202,11 @@ public:
 	 */
 	std::string remove_exclusive_draw(const map_location loc);
 
+	/**
+	 * Cancels all the exclusive draw requests.
+	 */
+	void clear_exclusive_draws() { exclusive_unit_draw_requests_.clear(); }
+
 	/** Returns a reference to the temp units deque.
 	 */
 	const std::deque<unit*>& get_temp_units() { return temp_units_; }
