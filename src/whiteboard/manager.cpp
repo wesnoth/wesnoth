@@ -349,6 +349,8 @@ void manager::on_gamestate_change()
 {
 	DBG_WB << "Manager received gamestate change notification.\n";
 	gamestate_mutated_ = true;
+	//Clear exclusive draws that might not get a chance to be cleared the normal way
+	resources::screen->clear_exclusive_draws();
 }
 
 void manager::create_temp_move()
