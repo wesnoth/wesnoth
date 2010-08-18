@@ -175,15 +175,14 @@ void attack_analysis::analyze(const gamemap& map, unit_map& units,
 		// The reward for advancing a unit is to get a 'negative' loss of that unit
 		if (!up->advances_to().empty()) {
 			int xp_for_advance = up->max_experience() - up->experience();
-			int kill_xp, fight_xp;
 
 			// See bug #6272... in some cases, unit already has got enough xp to advance,
 			// but hasn't (bug elsewhere?).  Can cause divide by zero.
 			if (xp_for_advance <= 0)
 				xp_for_advance = 1;
 
-			fight_xp = defend_it->level();
-			kill_xp = game_config::kill_xp(fight_xp);
+			int fight_xp = defend_it->level();
+			int kill_xp = game_config::kill_xp(fight_xp);
 
 			if (fight_xp >= xp_for_advance) {
 				advance_prob = prob_fought;
