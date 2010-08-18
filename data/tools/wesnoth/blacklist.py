@@ -16,7 +16,8 @@ g = G()
 
 def parse_test(wml, d):
     all = []
-    g.p = wmlparser2.Parser(options.wesnoth)
+    g.p = wmlparser2.Parser(options.wesnoth, options.config_dir,
+        options.data_dir, no_preprocess = False)
     try:
         g.p.parse_text(wml, d)
     except wmlparser2.WMLError as e:
@@ -29,6 +30,7 @@ def parse_test(wml, d):
     return all
 
 def get_userdir():
+    if options.config_dir: return config_dir
     p = subprocess.Popen([options.wesnoth, "--config-path"],
         stdout = subprocess.PIPE, stderr = subprocess.PIPE)
     out, err = p.communicate()
@@ -102,13 +104,15 @@ def check_runaway():
 def main():
     global options
     p = optparse.OptionParser()
+    p.add_option("-C", "--config-dir",
+        help = "Specify the user configuration dir (wesnoth --config-path).")
+    p.add_option("-D", "--data-dir",
+        help = "Specify the wesnoth data dir (wesnoth --path).")
     p.add_option("-d", "--directory",
         help = "First move all add-ons into the wesnoth add-ons folder and "
         "this script will then move broken ones to the specified directory.")
     p.add_option("-w", "--wesnoth")
-    p.add_option("-r", "--runaway", help = "First move all addons into the "
-        "given folder and the ones without runaway units will be "
-        "moved into the wesnoth add-ons folder by this script.")
+    p.add_option("-r", "--runaway")
     options, args = p.parse_args()
     
     if not options.wesnoth:
