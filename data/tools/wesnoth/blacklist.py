@@ -30,7 +30,7 @@ def parse_test(wml, d):
     return all
 
 def get_userdir():
-    if options.config_dir: return config_dir
+    if options.config_dir: return options.config_dir
     p = subprocess.Popen([options.wesnoth, "--config-path"],
         stdout = subprocess.PIPE, stderr = subprocess.PIPE)
     out, err = p.communicate()

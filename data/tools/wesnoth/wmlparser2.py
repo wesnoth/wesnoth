@@ -61,10 +61,11 @@ class AttributeNode:
     def get_text(self, translation = None):
         r = u""
         for s in self.value:
+            ustr = s.data.decode("utf8", "ignore")
             if translation:
-                r += translation(s.data.decode("utf8"), s.textdomain)
+                r += translation(ustr, s.textdomain)
             else:
-                r += s.data.decode("utf8")
+                r += ustr
         return r
 
 class TagNode:
@@ -343,7 +344,8 @@ class Parser:
             self.parent_node = self.parent_node[:-1]
         else:
             node = TagNode(tag)
-            self.parent_node[-1].append(node)
+            if self.parent_node:
+                self.parent_node[-1].append(node)
             self.parent_node.append(node)
         self.parse_outside_strings(line[end + 1:])
 
