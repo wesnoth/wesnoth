@@ -98,7 +98,8 @@ void validate_visitor::visit_move(move_ptr move)
 
 	//Now that we've reliably identified the unit owning this planned move, update the
 	//pointer in case there has been some funny business in the unit map
-	move->unit_ = &*unit_it;
+	if (move->valid_)
+		move->unit_ = &*unit_it;
 
 	if (move->valid_ && move->get_source_hex() != move->get_dest_hex()) //allow for zero-hex, move, in which case we skip pathfinding
 	{
