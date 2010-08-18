@@ -66,7 +66,7 @@ struct cost_calculator
 	virtual double cost(const map_location& loc, const double so_far) const = 0;
 	virtual ~cost_calculator() {}
 
-	inline double getNoPathValue() const { return (42424242.0); }
+	static double getNoPathValue() { return (42424242.0); }
 };
 
 /**
