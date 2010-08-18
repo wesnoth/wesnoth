@@ -21,6 +21,7 @@
 #include "visitor.hpp"
 #include "manager.hpp"
 #include "side_actions.hpp"
+#include "utility.hpp"
 
 #include "arrow.hpp"
 #include "config.hpp"
@@ -70,7 +71,7 @@ move::move(size_t team_index, const pathfind::marked_route& route,
 {
 	assert(!route_->steps.empty());
 
-	unit_ = resources::whiteboard->future_visible_unit(get_source_hex());
+	unit_ = wb::future_visible_unit(get_source_hex());
 	assert(unit_);
 	unit_id_ = unit_->id();
 

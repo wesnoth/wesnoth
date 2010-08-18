@@ -20,6 +20,7 @@
 
 #include "manager.hpp"
 #include "side_actions.hpp"
+#include "utility.hpp"
 #include "visitor.hpp"
 
 #include "game_display.hpp"
@@ -54,7 +55,7 @@ recall::recall(size_t team_index, const unit& unit, const map_location& recall_h
 		temp_unit_(new class unit(unit)),
 		recall_hex_(recall_hex),
 		valid_(true),
-		fake_unit_(new class unit(unit), wb::manager::fake_unit_deleter()),
+		fake_unit_(new class unit(unit), wb::fake_unit_deleter()),
 		temp_cost_(0)
 {
 	fake_unit_->set_location(recall_hex_);

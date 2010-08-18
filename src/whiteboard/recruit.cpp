@@ -20,6 +20,7 @@
 
 #include "manager.hpp"
 #include "side_actions.hpp"
+#include "utility.hpp"
 #include "visitor.hpp"
 
 #include "game_display.hpp"
@@ -56,7 +57,7 @@ recruit::recruit(size_t team_index, const std::string& unit_name, const map_loca
 		recruit_hex_(recruit_hex),
 		temp_unit_(create_corresponding_unit()),
 		valid_(true),
-		fake_unit_(create_corresponding_unit(), wb::manager::fake_unit_deleter()),
+		fake_unit_(create_corresponding_unit(), wb::fake_unit_deleter()),
 		temp_cost_()
 {
 	fake_unit_->set_location(recruit_hex_);

@@ -71,7 +71,6 @@ public:
 	void on_init_side(bool is_replay);
 	void on_finish_side_turn();
 	void on_mouseover_change(const map_location& hex);
-	void on_select_hex(){}
 	void on_deselect_hex(){ erase_temp_move();}
 	void on_gamestate_change();
 
@@ -92,14 +91,6 @@ public:
 	/// Whether the planned unit map currently applied (if any) is
 	/// the "pathfinding" version, i.e. one that includes future recruits and recalls
 	bool is_map_for_pathfinding() const { return is_map_for_pathfinding_; }
-
-	///Applies the future unit map and @return a pointer to the unit at hex,
-	///NULL if none is visible to the specified viewer side
-	static unit* future_visible_unit(map_location hex, int viewer_side = viewer_side());
-	///Applies the future unit map and @return a pointer to the unit at hex,
-	///NULL if none is visible to the specified viewer side
-	/// @param on_side Only search for units of this side.
-	static unit* future_visible_unit(int on_side, map_location hex, int viewer_side = viewer_side());
 
 	/**
 	 * Callback from the display when drawing hexes, to allow the whiteboard to
@@ -150,20 +141,8 @@ public:
 	/// Is referenced by the top bar gold display
 	int get_spent_gold_for(int side);
 
-	/// Utility struct used to automatize memory management for the whiteboard's fake/ghosted units
-	struct fake_unit_deleter {
-	    void operator() (unit*& ptr);
-	};
-
 private:
 	void validate_actions_if_needed();
-
-	/// returns resources::screen->viewing_team()
-	static size_t viewer_team();
-	/// returns resources::screen->viewing_side()
-	static int viewer_side();
-	static side_actions_ptr viewer_actions();
-	static side_actions_ptr current_side_actions();
 
 	///Tracks whether the whiteboard is active.
 	bool active_;

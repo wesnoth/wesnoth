@@ -699,7 +699,6 @@ void mouse_handler::select_hex(const map_location& hex, const bool browse) {
 				u->set_selecting();
 				game_events::fire("select", hex);
 			}
-			resources::whiteboard->on_select_hex();
 		}
 
 	} else {

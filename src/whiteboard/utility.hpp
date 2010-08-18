@@ -25,10 +25,36 @@ class unit;
 
 namespace wb {
 
+/// Utility struct used to automatize memory management for the whiteboard's fake/ghosted units
+struct fake_unit_deleter {
+    void operator() (unit*& ptr);
+};
+
+/// @return The current viewing team's index
+size_t viewer_team();
+
+/// @return The current viewing side's number (i.e. team index + 1)
+int viewer_side();
+
+/// @return The side_actions instance belonging to the current viewing team
+side_actions_ptr viewer_actions();
+
+/// @return The side_actions instance belonging to the current playing team
+side_actions_ptr current_side_actions();
+
 /**
  * For a given leader on a keep, find another leader on another keep in the same castle.
  */
 unit const* find_backup_leader(unit const& leader);
+
+///Applies the future unit map and @return a pointer to the unit at hex,
+///NULL if none is visible to the specified viewer side
+unit* future_visible_unit(map_location hex, int viewer_side = viewer_side());
+
+///Applies the future unit map and @return a pointer to the unit at hex,
+///NULL if none is visible to the specified viewer side
+/// @param on_side Only search for units of this side.
+unit* future_visible_unit(int on_side, map_location hex, int viewer_side = viewer_side());
 
 } //end namespace wb
 

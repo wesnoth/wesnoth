@@ -236,20 +236,6 @@ void manager::on_finish_side_turn()
 	LOG_WB << "on_finish_side_turn()\n";
 }
 
-side_actions_ptr manager::viewer_actions()
-{
-	side_actions_ptr side_actions =
-			(*resources::teams)[resources::screen->viewing_team()].get_side_actions();
-	return side_actions;
-}
-
-side_actions_ptr manager::current_side_actions()
-{
-	side_actions_ptr side_actions =
-			(*resources::teams)[resources::controller->current_side() - 1].get_side_actions();
-	return side_actions;
-}
-
 bool manager::current_side_has_actions()
 {
 	return !current_side_actions()->empty();
@@ -316,23 +302,6 @@ void manager::set_real_unit_map()
 	{
 		LOG_WB << "Attempt to set planned_unit_map during action execution.\n";
 	}
-}
-
-unit* manager::future_visible_unit(map_location hex, int viewer_side)
-{
-	scoped_planned_unit_map planned_unit_map;
-	assert(resources::whiteboard->has_planned_unit_map());
-	//use global method get_visible_unit
-	return get_visible_unit(hex, resources::teams->at(viewer_side - 1), false);
-}
-
-unit* manager::future_visible_unit(int on_side, map_location hex, int viewer_side)
-{
-	unit* unit = future_visible_unit(hex, viewer_side);
-	if (unit && unit->side() == on_side)
-		return unit;
-	else
-		return NULL;
 }
 
 void manager::draw_hex(const map_location& hex)
@@ -453,7 +422,7 @@ void manager::create_temp_move()
 	{
 		// Create temp ghost unit
 		fake_unit_.reset(new unit(*selected_unit),
-				wb::manager::fake_unit_deleter());
+				wb::fake_unit_deleter());
 		resources::screen->place_temporary_unit(fake_unit_.get());
 		fake_unit_->set_ghosted(false);
 	}
@@ -703,19 +672,6 @@ int manager::get_spent_gold_for(int side)
 	return resources::teams->at(side - 1).get_side_actions()->get_gold_spent();
 }
 
-void manager::fake_unit_deleter::operator() (unit*& fake_unit)
-{
-    if (fake_unit)
-    {
-        if(resources::screen)
-        {
-        	resources::screen->remove_temporary_unit(fake_unit);
-        }
-        DBG_WB << "Erasing temporary unit " << fake_unit->name() << " [" << fake_unit->id() << "]\n";
-        delete fake_unit;
-    }
-}
-
 void manager::validate_actions_if_needed()
 {
 	if (gamestate_mutated_)
@@ -724,17 +680,6 @@ void manager::validate_actions_if_needed()
 		validate_viewer_actions(); //sets gamestate_mutated_ to false
 	}
 }
-
-
-size_t manager::viewer_team()
-{
-	return resources::screen->viewing_team();
-}
-int manager::viewer_side()
-{
-	return resources::screen->viewing_side();
-}
-
 
 scoped_planned_unit_map::scoped_planned_unit_map():
 		has_planned_unit_map_(resources::whiteboard->has_planned_unit_map()),
