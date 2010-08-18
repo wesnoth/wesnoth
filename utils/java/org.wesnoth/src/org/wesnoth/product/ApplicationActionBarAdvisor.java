@@ -20,9 +20,10 @@ import org.eclipse.ui.application.IActionBarConfigurer;
 
 public class ApplicationActionBarAdvisor extends ActionBarAdvisor
 {
-    IWorkbenchAction aboutAction_;
-    IWorkbenchAction quitAction_;
-    IWorkbenchAction newAction_;
+    private IWorkbenchAction aboutAction_;
+    private IWorkbenchAction quitAction_;
+    private IWorkbenchAction prefAction_;
+    private IWorkbenchAction newWizardDropDownAction_;
 
     public ApplicationActionBarAdvisor(IActionBarConfigurer configurer)
     {
@@ -31,21 +32,42 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor
     @Override
 	protected void makeActions(IWorkbenchWindow window)
     {
-    	aboutAction_ = ActionFactory.ABOUT.create(window);
-    	register(aboutAction_);
-
+    	// file menu
+    	newWizardDropDownAction_ = ActionFactory.NEW_WIZARD_DROP_DOWN.create(window);
+    	register(newWizardDropDownAction_);
     	quitAction_ = ActionFactory.QUIT.create(window);
     	register(quitAction_);
 
-    	newAction_ = ActionFactory.NEW.create(window);
-    	register(newAction_);
+    	// window menu
+    	prefAction_ = ActionFactory.PREFERENCES.create(window);
+    	register(prefAction_);
+
+    	//help menu
+    	aboutAction_ = ActionFactory.ABOUT.create(window);
+    	register(aboutAction_);
     }
 
     @Override
 	protected void fillMenuBar(IMenuManager menuBar)
     {
-    	menuBar.add(newAction_);
+    	MenuManager fileMenu = new MenuManager("&File", "wesnoth.file");
+    	fileMenu.add(newWizardDropDownAction_);
+    	fileMenu.add(quitAction_);
+    	menuBar.add(fileMenu);
+
+    	MenuManager editMenu = new MenuManager("&Edit", IWorkbenchActionConstants.M_EDIT);
+    	menuBar.add(editMenu);
+
+    	// wesnoth
     	menuBar.add(new GroupMarker(IWorkbenchActionConstants.MB_ADDITIONS));
+
+    	MenuManager projectMenu = new MenuManager("&Project", IWorkbenchActionConstants.M_PROJECT);
+    	menuBar.add(projectMenu);
+
+    	MenuManager windowMenu = new MenuManager("&Window", IWorkbenchActionConstants.M_WINDOW);
+    	windowMenu.add(prefAction_);
+    	menuBar.add(windowMenu);
+
     	MenuManager helpMenu = new MenuManager("&Help", "help");
     	helpMenu.add(aboutAction_);
     	menuBar.add(helpMenu);
