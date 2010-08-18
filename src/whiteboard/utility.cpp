@@ -32,17 +32,18 @@
 namespace wb {
 
 
-void fake_unit_deleter::operator() (unit*& fake_unit)
+void fake_unit_deleter::operator()(unit*& fake_unit)
 {
-    if (fake_unit)
-    {
-        if(resources::screen)
-        {
-        	resources::screen->remove_temporary_unit(fake_unit);
-        }
-        DBG_WB << "Erasing temporary unit " << fake_unit->name() << " [" << fake_unit->id() << "]\n";
-        delete fake_unit;
-    }
+	if (fake_unit)
+	{
+		if (resources::screen)
+		{
+			resources::screen->remove_temporary_unit(fake_unit);
+		}
+		DBG_WB << "Erasing temporary unit " << fake_unit->name() << " ["
+					<< fake_unit->id() << "]\n";
+		delete fake_unit;
+	}
 }
 
 size_t viewer_team()
