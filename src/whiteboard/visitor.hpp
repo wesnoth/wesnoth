@@ -33,13 +33,17 @@ namespace wb
 class visitor : private boost::noncopyable
 {
 public:
-	visitor();
+	visitor(side_actions_ptr side_actions);
 	virtual ~visitor();
 
 	virtual void visit_move(move_ptr move) = 0;
 	virtual void visit_attack(attack_ptr attack) = 0;
 	virtual void visit_recruit(recruit_ptr recruit) = 0;
 	virtual void visit_recall(recall_ptr recall) = 0;
+
+protected:
+	virtual void visit_all_actions();
+	side_actions_ptr side_actions_;
 };
 
 }

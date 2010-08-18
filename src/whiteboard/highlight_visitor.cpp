@@ -35,9 +35,9 @@ namespace wb
 {
 
 highlight_visitor::highlight_visitor(const unit_map& unit_map, side_actions_ptr side_actions)
-	: mode_(NONE)
+	: visitor (side_actions)
+	, mode_(NONE)
 	, unit_map_(unit_map)
-	, side_actions_(side_actions)
 	, mouseover_hex_()
 	, exclusive_display_hexes_()
 	, owner_unit_(NULL)
@@ -325,15 +325,6 @@ void highlight_visitor::visit_recall(recall_ptr recall)
 		break;
 	default:
 		assert (false);
-	}
-}
-
-
-void highlight_visitor::visit_all_actions()
-{
-	foreach(action_ptr action, *side_actions_)
-	{
-		action->accept(*this);
 	}
 }
 

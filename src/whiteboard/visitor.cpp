@@ -18,15 +18,28 @@
 
 #include "validate_visitor.hpp"
 
+#include "action.hpp"
+#include "foreach.hpp"
+#include "side_actions.hpp"
+
 namespace wb
 {
 
-visitor::visitor()
+visitor::visitor(side_actions_ptr side_actions):
+		side_actions_(side_actions)
 {
 }
 
 visitor::~visitor()
 {
+}
+
+void visitor::visit_all_actions()
+{
+	foreach(action_ptr action, *side_actions_)
+	{
+		action->accept(*this);
+	}
 }
 
 }//end namespace wb

@@ -67,7 +67,6 @@ public:
 
 private:
 	void unhighlight();
-	void visit_all_actions();
 
 	void find_main_highlight();
 	void find_secondary_highlights();
@@ -85,7 +84,6 @@ private:
 	mode mode_;
 
 	const unit_map& unit_map_;
-	side_actions_ptr side_actions_;
 
 	map_location mouseover_hex_;
 	std::set<map_location> exclusive_display_hexes_;

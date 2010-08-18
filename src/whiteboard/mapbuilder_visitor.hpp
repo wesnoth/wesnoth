@@ -64,7 +64,6 @@ protected:
 	std::set<unit const*> excluded_units_;
 	bool for_pathfinding_;
 
-	side_actions_ptr side_actions_;
 	action_queue applied_actions_;
 
 	enum mapbuilder_mode {
@@ -73,8 +72,6 @@ protected:
 	};
 
 	mapbuilder_mode mode_;
-
-
 };
 
 }

@@ -32,10 +32,10 @@ namespace wb
 {
 
 mapbuilder_visitor::mapbuilder_visitor(unit_map& unit_map, side_actions_ptr side_actions, bool for_pathfinding)
-	: unit_map_(unit_map)
+	: visitor(side_actions)
+	, unit_map_(unit_map)
     , excluded_units_()
 	, for_pathfinding_(for_pathfinding)
-	, side_actions_(side_actions)
 	, applied_actions_()
 	, mode_(BUILD_PLANNED_MAP)
 {
