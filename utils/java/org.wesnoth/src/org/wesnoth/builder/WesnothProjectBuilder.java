@@ -116,6 +116,8 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 		}
 		monitor.worked(2);
 
+
+		boolean readDefines = true;
 		if (kind == FULL_BUILD)
 		{
 			fullBuild(monitor);
@@ -129,17 +131,29 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 			}
 			else
 			{
+				readDefines = false;
+				IResourceDelta[] affected = delta.getAffectedChildren();
+
+				for(IResourceDelta tmp : affected)
+				{
+					if (tmp.getResource().getName().toLowerCase(Locale.ENGLISH).endsWith(".cfg"))
+					{
+						readDefines = true;
+						break;
+					}
+				}
 				incrementalBuild(delta, monitor);
 			}
 		}
 
-		// we read the defines at the end of the build
-		// to speed up things
-		// process the defines obtained
-		ProjectUtils.getCacheForProject(getProject()).readDefines(true);
-		ProjectUtils.saveCacheForProject(getProject());
-		monitor.worked(10);
-
+		if (readDefines)
+		{
+			// we read the defines at the end of the build
+			// to speed up things (and only if we had any .cfg files processed)
+			ProjectUtils.getCacheForProject(getProject()).readDefines(true);
+			ProjectUtils.saveCacheForProject(getProject());
+			monitor.worked(10);
+		}
 		monitor.done();
 		return null;
 	}
@@ -338,25 +352,37 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 		public boolean visit(IResourceDelta delta) throws CoreException
 		{
 			IResource resource = delta.getResource();
+			boolean foundCfg = false;
+			IResourceDelta[] affected = delta.getAffectedChildren();
+
+			for(IResourceDelta tmp : affected)
+			{
+				if (tmp.getResource().getName().toLowerCase(Locale.ENGLISH).endsWith(".cfg"))
+				{
+					foundCfg = true;
+					break;
+				}
+			}
+
 			boolean visitChildren = false;
 			switch (delta.getKind())
 			{
-			case IResourceDelta.ADDED:
-				// handle added resource
-				visitChildren = checkResource(resource, monitor_, delta.getKind(), false);
-				break;
-			case IResourceDelta.REMOVED:
-				// handle removed resource
-				handleRemovedResource(resource);
-				visitChildren = true;
-				break;
-			case IResourceDelta.CHANGED:
-				// handle changed resource
-				visitChildren = checkResource(resource, monitor_, delta.getKind(), false);
-				break;
+				case IResourceDelta.ADDED:
+					// handle added resource
+					visitChildren = checkResource(resource, monitor_, delta.getKind(), false);
+					break;
+				case IResourceDelta.REMOVED:
+					// handle removed resource
+					handleRemovedResource(resource);
+					visitChildren = true;
+					break;
+				case IResourceDelta.CHANGED:
+					// handle changed resource
+					visitChildren = checkResource(resource, monitor_, delta.getKind(), false);
+					break;
 			}
 
-			if (resource instanceof IContainer)
+			if (foundCfg && resource instanceof IContainer)
 			{
 				// preprocess _main.cfg before all
 				checkResource(((IContainer) resource).getFile(new Path("_main.cfg")),
