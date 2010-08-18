@@ -108,7 +108,7 @@ class ImageCollector:
                 sys.stderr.write(
                     "Warning: Required image %s: \"%s\" does not exist.\n" % (
                         repr(c), repr(i)))
-                if 1: #self.verbose:
+                if self.verbose:
                     sys.stderr.write("Warning: Looked at the following locations:\n")
                     sys.stderr.write("\n".join(bases) + "\n")
 
