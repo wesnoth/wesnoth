@@ -91,8 +91,8 @@ struct paths
 	paths(gamemap const &map,
 	      unit_map const &units,
 	      map_location const &loc, std::vector<team> const &teams,
-	      bool force_ignore_zocs,bool allow_teleport,
-		 const team &viewing_team,int additional_turns = 0,
+	      bool force_ignore_zocs, bool allow_teleport,
+		 const team &viewing_team, int additional_turns = 0,
 		 bool see_all = false, bool ignore_units = false);
 
 	struct step
@@ -152,7 +152,7 @@ struct marked_route
 	struct mark
 	{
 		mark(int turns_number = 0, bool pass = false,  bool in_zoc = false,
-		         bool do_capture = false, bool is_invisible = false)
+				bool do_capture = false, bool is_invisible = false)
 			: turns(turns_number), pass_here(pass), zoc(in_zoc),
 			  capture(do_capture), invisible(is_invisible) {}
 		int turns;
@@ -172,9 +172,9 @@ struct marked_route
 };
 
 plain_route a_star_search(map_location const &src, map_location const &dst,
-                           double stop_at, const cost_calculator* costCalculator,
-                           const size_t parWidth, const size_t parHeight,
-                           std::set<map_location> const *teleports = NULL);
+		double stop_at, const cost_calculator* costCalculator,
+		const size_t parWidth, const size_t parHeight,
+		std::set<map_location> const *teleports = NULL);
 
 /**
  * Add marks on a route @a rt assuming that the unit located at the first hex of
@@ -239,7 +239,6 @@ struct dummy_path_calculator : cost_calculator
 {
 	dummy_path_calculator(const unit& u, const gamemap& map);
 	virtual double cost(const map_location& loc, const double so_far) const;
-
 };
 
 }
