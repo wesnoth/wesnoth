@@ -654,6 +654,7 @@ public:
 		LAYER_GRID_TOP,            /**< Top half part of grid image */
 		LAYER_MOUSEOVER_OVERLAY,   /**< Mouseover overlay used by editor*/
 		LAYER_FOOTSTEPS,           /**< Footsteps showing path from unit to mouse */
+		LAYER_MOUSEOVER_TOP,       /**< Top half of image following the mouse */
 		LAYER_UNIT_FIRST,          /**< Reserve layers to be selected for WML. */
 		LAYER_UNIT_BG = LAYER_UNIT_FIRST+10,             /**< Used for the ellipse behind the unit. */
 		LAYER_UNIT_DEFAULT=LAYER_UNIT_FIRST+40,/**<default layer for drawing units */
@@ -677,7 +678,7 @@ public:
 		LAYER_ARROWS,              /**< Arrows from the arrows framework. Used for planned moves display. */
 		LAYER_ACTIONS_NUMBERING,   /**< Move numbering for the whiteboard. */
 		LAYER_SELECTED_HEX,        /**< Image on the selected unit */
-		LAYER_MOUSEOVER_HEX,       /**< Image following the mouse */
+		LAYER_MOUSEOVER_BOTTOM,    /**< Bottom half of image following the mouse */
 		LAYER_ATTACK_INDICATOR,    /**< Layer which holds the attack indicator. */
 		LAYER_UNIT_BAR,            /**<
 		                            * Unit bars and overlays are drawn on this

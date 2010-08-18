@@ -401,12 +401,6 @@ void game_display::draw_hex(const map_location& loc)
 				image::get_image(selected, image::SCALED_TO_HEX)));
 	}
 
-	if(on_map && loc == mouseoverHex_ && !game_config::images::mouseover.empty()) {
-		static const image::locator mouseover(game_config::images::mouseover);
-		drawing_buffer_add(LAYER_MOUSEOVER_HEX, loc, tblit(xpos, ypos,
-				image::get_image(mouseover, image::SCALED_TO_HEX)));
-	}
-
 	// Show def% and turn to reach infos
 	if(!is_shrouded && on_map) {
 		draw_movement_info(loc);
