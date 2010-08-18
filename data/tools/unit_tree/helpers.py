@@ -23,16 +23,18 @@ class ImageCollector:
     A class to collect all the images which need to be copied to the HTML
     output folder.
     """
-    def __init__(self, wesnoth_exe):
+    def __init__(self, wesnoth_exe, userdir, datadir):
         self.images = {}
         self.paths_per_campaign = {}
         self.ipaths = {}
         self.notfound = {}
         self.id = 0
         self.verbose = 0
+        self.datadir = datadir
+        self.userdir = userdir
         
-        self.datadir = get_datadir(wesnoth_exe)
-        self.userdir = get_userdir(wesnoth_exe)
+        if not self.datadir: self.datadir = get_datadir(wesnoth_exe)
+        if not self.userdir: self.userdir = get_userdir(wesnoth_exe)
 
     def add_binary_paths_from_WML(self, campaign, WML):
         self.paths_per_campaign[campaign] = self.paths_per_campaign.get(
@@ -106,7 +108,7 @@ class ImageCollector:
                 sys.stderr.write(
                     "Warning: Required image %s: \"%s\" does not exist.\n" % (
                         repr(c), repr(i)))
-                if self.verbose:
+                if 1: #self.verbose:
                     sys.stderr.write("Warning: Looked at the following locations:\n")
                     sys.stderr.write("\n".join(bases) + "\n")
 

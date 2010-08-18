@@ -1022,7 +1022,8 @@ if __name__ == '__main__':
     else:
         languages = [options.language]
 
-    image_collector = helpers.ImageCollector(options.wesnoth)
+    image_collector = helpers.ImageCollector(options.wesnoth,
+        options.config_dir, options.data_dir)
 
     wesnoth = parse_game()
     
