@@ -118,15 +118,14 @@ void validate_visitor::visit_move(move_ptr move)
 		if (move->valid_ && (resources::units->find(move->get_dest_hex()) != resources::units->end()))
 			move->set_valid(false);
 
-		pathfind::plain_route new_plain_route;
+		pathfind::marked_route new_route;
 		if (move->valid_)
 		{
-			pathfind::shortest_path_calculator path_calc(*move->get_unit(),
-					resources::teams->at(side_actions_->team_index()), *resources::units,
-					*resources::teams, *resources::game_map);
-			new_plain_route = pathfind::a_star_search(move->get_source_hex(),
-					move->get_dest_hex(), 10000, &path_calc, resources::game_map->w(), resources::game_map->h());
-			if (new_plain_route.move_cost >= path_calc.getNoPathValue())
+			//@todo: use something else than empty vector for waypoints?
+			new_route = resources::controller->get_mouse_handler_base().get_route(move->get_unit(),move->get_dest_hex(),
+					std::vector<map_location>(), resources::teams->at(side_actions_->team_index()));
+
+			if (new_route.move_cost >= pathfind::cost_calculator::getNoPathValue())
 			{
 				move->set_valid(false);
 			}
@@ -134,15 +133,11 @@ void validate_visitor::visit_move(move_ptr move)
 
 		if (move->valid_)
 		{
-			if ((!std::equal(new_plain_route.steps.begin(), new_plain_route.steps.end(), move->get_route().steps.begin()))
-				|| new_plain_route.move_cost != move->get_route().move_cost)
+			if ((!std::equal(new_route.steps.begin(), new_route.steps.end(), move->get_route().steps.begin()))
+				|| new_route.move_cost != move->get_route().move_cost)
 			{
 				//new valid path differs from the previous one, replace
-				//@todo: use something else than empty vector for waypoints?
-				pathfind::marked_route new_marked_route =
-						pathfind::mark_route(new_plain_route, std::vector<map_location>());
-
-				move->set_route(new_marked_route);
+				move->set_route(new_route);
 
 				//@todo: Since this might lengthen the path, we probably need a special conflict state
 				// to warn the player that the initial path is no longer possible.
