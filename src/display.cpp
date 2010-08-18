@@ -2087,18 +2087,12 @@ void display::draw_hex(const map_location& loc) {
 			image::get_image(fog_image, image_type)));
 	}
 
-	bool has_fog_shroud = fogged(loc);
-
 	if(!shrouded(loc)) {
-		const std::vector<surface>& fog_shroud = get_fog_shroud_images(loc, image_type);
-		has_fog_shroud |= !fog_shroud.empty();
-		drawing_buffer_add(LAYER_FOG_SHROUD, loc, tblit(xpos, ypos, fog_shroud));
+		drawing_buffer_add(LAYER_FOG_SHROUD, loc, tblit(xpos, ypos, get_fog_shroud_images(loc, image_type)));
 	}
 
 	if(on_map && loc == mouseoverHex_) {
-		//when fogged we draw top part above fog (no visible unit to decapitate)
-		drawing_buffer_add(
-				has_fog_shroud ? LAYER_MOUSEOVER_BOTTOM : LAYER_MOUSEOVER_TOP,
+		drawing_buffer_add(LAYER_MOUSEOVER_TOP,
 				loc, tblit(xpos, ypos, image::get_image("misc/hover-hex-top.png", image::SCALED_TO_HEX)));
 		drawing_buffer_add(LAYER_MOUSEOVER_BOTTOM,
 				loc, tblit(xpos, ypos, image::get_image("misc/hover-hex-bottom.png", image::SCALED_TO_HEX)));

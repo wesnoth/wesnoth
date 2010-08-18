@@ -674,11 +674,11 @@ public:
 		LAYER_UNIT_MISSILE_DEFAULT = LAYER_UNIT_FIRST+90, /**< default layer for missile frames*/
 		LAYER_UNIT_LAST=LAYER_UNIT_FIRST+100,
 		LAYER_REACHMAP,            /**< "black stripes" on unreachable hexes. */
+		LAYER_MOUSEOVER_BOTTOM,    /**< Bottom half of image following the mouse */
 		LAYER_FOG_SHROUD,          /**< Fog and shroud. */
 		LAYER_ARROWS,              /**< Arrows from the arrows framework. Used for planned moves display. */
 		LAYER_ACTIONS_NUMBERING,   /**< Move numbering for the whiteboard. */
 		LAYER_SELECTED_HEX,        /**< Image on the selected unit */
-		LAYER_MOUSEOVER_BOTTOM,    /**< Bottom half of image following the mouse */
 		LAYER_ATTACK_INDICATOR,    /**< Layer which holds the attack indicator. */
 		LAYER_UNIT_BAR,            /**<
 		                            * Unit bars and overlays are drawn on this
