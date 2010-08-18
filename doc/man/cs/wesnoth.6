@@ -102,8 +102,9 @@ budou vypisovány všechny kategorie. Dostupné kategorie: \fBerror\fP,\
 \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP. Implicitně je aktivována kategorie
 \fBerror\fP.
 .TP 
-\fB\-\-logdomains\fP
-Vypíše seznam všech kategorií logování a skončí.
+\fB\-\-logdomains\ [filter]\fP
+lists defined log domains (only the ones containing \fBfilter\fP if used) and
+exits
 .TP 
 \fB\-\-max\-fps\fP
 počet snímků za sekundu které může hra zobrazit, hodnota by měla náležet do
@@ -225,11 +226,12 @@ ID. Frakce jsou popsány v souboru data/multiplayer.cfg
 \fB\-\-turns=\fP\fIhodnota\fP
 nastavuje počet kol pro vybraný scénář, implicitně je \fB50\fP.
 .
-.SH "EXIT STATUS"
+.SH "NÁVRATOVÝ STATUS"
 .
-Normal exit status is 0. An exit status of 1 indicates an (SDL, video,
-fonts, etc) initialization error. An exit status of 2 indicates an error
-with the command line options.
+Status normálního ukončení je 0. Návratový tatus 1 pak signalizuje chybu
+inicializace (ať už jde o knihovnu SDL, video, fonty či jiné
+knihovny). Status 2 pak signalizuje chybu při zpracování nějaké volby z
+příkazového řádku.
 .
 .SH AUTOŘI
 .

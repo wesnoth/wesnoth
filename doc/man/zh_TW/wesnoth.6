@@ -89,8 +89,9 @@ to \fB\-l \-\-load\fP
 設定debug的級別。\fBall\fP用來支配任意bebug級別。可選的級別有：\fBerror\fP，\ \fBwarning\fP，\ \fBinfo\fP，\
 \fBdebug\fP。預設的級別是\fBerror\fP。
 .TP 
-\fB\-\-logdomains\fP
-匯出所有日志列表並退出。
+\fB\-\-logdomains\ [filter]\fP
+lists defined log domains (only the ones containing \fBfilter\fP if used) and
+exits
 .TP 
 \fB\-\-max\-fps\fP
 遊戲每秒能顯示的幀幅數，可以設為1－1000的數，預設為\fB50\fP。

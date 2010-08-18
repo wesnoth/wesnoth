@@ -89,8 +89,9 @@ gzip フォーマットのファイルを展開して .gz という拡張子を�
 ログ領域(domain)の厳密さのレベルを設定する。 \fBall\fP は、どのログ領域にも対応させるために利用される。有効なレベルは以下の通り。
 \fBerror\fP、\ \fBwarning\fP、\ \fBinfo\fP、\ \fBdebug\fP。既定値では \fBerror\fP レベルが使用される。
 .TP 
-\fB\-\-logdomains\fP
-すべてのログ領域(domain)のリストを表示して、終了する。
+\fB\-\-logdomains\ [filter]\fP
+lists defined log domains (only the ones containing \fBfilter\fP if used) and
+exits
 .TP 
 \fB\-\-max\-fps\fP
 ゲームにおける 1 秒間あたりのフレーム数。値は 1 から 1000 までで、既定値は \fB50\fP。

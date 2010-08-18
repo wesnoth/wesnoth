@@ -101,8 +101,9 @@ määrab logimise taseme.  \fBall\fP valib kõik tasemed.  Tasemeteks on:
 \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP.  Vaikimisi on kasutusel
 \fBerror\fP.
 .TP 
-\fB\-\-logdomains\fP
-Väljastab logitasemete nimekirja ja väljub programmist.
+\fB\-\-logdomains\ [filter]\fP
+lists defined log domains (only the ones containing \fBfilter\fP if used) and
+exits
 .TP 
 \fB\-\-max\-fps\fP
 mängu väljastatavate ekraanikaadrite arv sekundis, peaks jääma vahemikku
@@ -221,11 +222,10 @@ määrab selle number. Rühmi on kirjeldatud failis data/multiplayer.cfg .
 \fB\-\-turns=\fP\fIväärtus\fP
 määrab valitud stsenaariumi käikude arvu. Vaikimisi väärtuseks on \fB50\fP.
 .
-.SH "EXIT STATUS"
+.SH VÄLJUMISOLEK
 .
-Normal exit status is 0. An exit status of 1 indicates an (SDL, video,
-fonts, etc) initialization error. An exit status of 2 indicates an error
-with the command line options.
+Tavapärane väljumisolek on 0. Olek 1 tähistab algseadistuse viga (SDL,
+video, kirjastiilid jne). Olek 2 tähistab käsureaparameetrite viga.
 .
 .SH AUTOR
 .

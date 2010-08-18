@@ -86,8 +86,9 @@ to \fB\-l \-\-load\fP
 设置日志域的严重度级别。\fBall\fP可以用来匹配任意日志域。可选的级别有：\fBerror\fP，\ \fBwarning\fP，\ \fBinfo\fP，\
 \fBdebug\fP。默认的级别是\fBerror\fP。
 .TP 
-\fB\-\-logdomains\fP
-导出所有日志域的清单并退出。
+\fB\-\-logdomains\ [filter]\fP
+lists defined log domains (only the ones containing \fBfilter\fP if used) and
+exits
 .TP 
 \fB\-\-max\-fps\fP
 游戏每秒能显示的帧数，这个值应该在1和1000之间，默认为\fB50\fP。
