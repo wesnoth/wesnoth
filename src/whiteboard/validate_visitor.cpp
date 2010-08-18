@@ -86,13 +86,6 @@ void validate_visitor::visit_move(move_ptr move)
 	if (!(move->get_source_hex().valid() && move->get_dest_hex().valid()))
 		move->set_valid(false);
 
-	//Check that destination hex is still free
-	if(resources::units->find(move->get_dest_hex()) != resources::units->end())
-	{
-		LOG_WB << "Move set as invalid because target hex is occupied.\n";
-		move->set_valid(false);
-	}
-
 	unit_map::const_iterator unit_it;
 	//Check that the unit still exists in the source hex
 	if (move->valid_)
