@@ -360,7 +360,7 @@ namespace game_events {
 					}
 				}
 			}
-			if(utils::string_bool((*u)["search_recall_list"]))
+			if ((*u)["search_recall_list"].to_bool())
 			{
 				for(std::vector<team>::iterator team = resources::teams->begin();
 						team!=resources::teams->end(); ++team)
@@ -446,7 +446,7 @@ namespace game_events {
 	bool conditional_passed(const vconfig& cond, bool backwards_compat)
 	{
 		bool allow_backwards_compat = backwards_compat = backwards_compat &&
-			utils::string_bool(cond["backwards_compat"],true);
+			cond["backwards_compat"].to_bool(true);
 		bool matches = internal_conditional_passed(cond, allow_backwards_compat);
 
 		// Handle [and], [or], and [not] with in-order precedence
@@ -533,8 +533,8 @@ namespace {
 
 static map_location cfg_to_loc(const vconfig& cfg,int defaultx = 0, int defaulty = 0)
 {
-	int x = lexical_cast_default(cfg["x"], defaultx) - 1;
-	int y = lexical_cast_default(cfg["y"], defaulty) - 1;
+	int x = cfg["x"].to_int(defaultx) - 1;
+	int y = cfg["y"].to_int(defaulty) - 1;
 
 	return map_location(x, y);
 }
@@ -547,8 +547,7 @@ namespace {
 
 static void toggle_shroud(const bool remove, const vconfig& cfg)
 {
-	std::string side = cfg["side"];
-	const int side_num = lexical_cast_default<int>(side,1);
+	int side_num = cfg["side"].to_int(1);
 	const size_t index = side_num-1;
 
 	if (index < resources::teams->size())
@@ -604,13 +603,13 @@ WML_HANDLER_FUNCTION(teleport, event_info, cfg)
 	if (dst == u->get_location() || !resources::game_map->on_board(dst)) return;
 
 	const unit *pass_check = &*u;
-	if (utils::string_bool(cfg["ignore_passability"]))
+	if (cfg["ignore_passability"].to_bool())
 		pass_check = NULL;
 	const map_location vacant_dst = find_vacant_tile(*resources::game_map, *resources::units, dst, pathfind::VACANT_ANY, pass_check);
 	if (!resources::game_map->on_board(vacant_dst)) return;
 
 	int side = u->side();
-	if (utils::string_bool(cfg["clear_shroud"], true)) {
+	if (cfg["clear_shroud"].to_bool(true)) {
 		clear_shroud(side);
 	}
 
@@ -619,7 +618,7 @@ WML_HANDLER_FUNCTION(teleport, event_info, cfg)
 	std::vector<map_location> teleport_path;
 	teleport_path.push_back(src_loc);
 	teleport_path.push_back(vacant_dst);
-	bool animate = utils::string_bool(cfg["animate"]);
+	bool animate = cfg["animate"].to_bool();
 	unit_display::move_unit(teleport_path, *u, *resources::teams, animate);
 
 	resources::units->move(src_loc, vacant_dst);
@@ -660,7 +659,7 @@ WML_HANDLER_FUNCTION(unpetrify, /*event_info*/, cfg)
 
 WML_HANDLER_FUNCTION(allow_recruit, /*event_info*/, cfg)
 {
-	int side_num = lexical_cast_default<int>(cfg["side"], 1);
+	int side_num = cfg["side"].to_int(1);
 	unsigned index = side_num - 1;
 	if (index >= resources::teams->size()) return;
 
@@ -701,13 +700,7 @@ WML_HANDLER_FUNCTION(volume, /*event_info*/, cfg)
 static void color_adjust(const vconfig& cfg)
 {
 	game_display &screen = *resources::screen;
-	std::string red = cfg["red"];
-	std::string green = cfg["green"];
-	std::string blue = cfg["blue"];
-	const int r = atoi(red.c_str());
-	const int g = atoi(green.c_str());
-	const int b = atoi(blue.c_str());
-	screen.adjust_colors(r,g,b);
+	screen.adjust_colors(cfg["red"], cfg["green"], cfg["blue"]);
 	screen.invalidate_all();
 	screen.draw(true,true);
 }
@@ -728,19 +721,13 @@ WML_HANDLER_FUNCTION(colour_adjust, /*event_info*/, cfg)
 WML_HANDLER_FUNCTION(delay, /*event_info*/, cfg)
 {
 	game_display &screen = *resources::screen;
-	std::string delay_string = cfg["time"];
-	const int delay_time = atoi(delay_string.c_str());
-	screen.delay(delay_time);
+	screen.delay(cfg["time"]);
 }
 
 WML_HANDLER_FUNCTION(scroll, /*event_info*/, cfg)
 {
 	game_display &screen = *resources::screen;
-	std::string x = cfg["x"];
-	std::string y = cfg["y"];
-	const int xoff = atoi(x.c_str());
-	const int yoff = atoi(y.c_str());
-	screen.scroll(xoff,yoff);
+	screen.scroll(cfg["x"], cfg["y"]);
 	screen.draw(true,true);
 }
 
@@ -750,7 +737,7 @@ WML_HANDLER_FUNCTION(scroll, /*event_info*/, cfg)
 WML_HANDLER_FUNCTION(store_time_of_day, /*event_info*/, cfg)
 {
 	const map_location loc = cfg_to_loc(cfg, -999, -999);
-	const size_t turn = lexical_cast_default<size_t>(cfg["turn"], 0);
+	int turn = cfg["turn"];
 	// using 0 will use the current turn
 	const time_of_day& tod = resources::tod_manager->get_time_of_day(loc,turn);
 
@@ -777,8 +764,7 @@ WML_HANDLER_FUNCTION(inspect, /*event_info*/, cfg)
 
 WML_HANDLER_FUNCTION(modify_ai, /*event_info*/, cfg)
 {
-	std::string side = cfg["side"];
-	const int side_num = lexical_cast_default<int>(side,0);
+	int side_num = cfg["side"];
 	if (side_num==0) {
 		return;
 	}
@@ -789,19 +775,12 @@ WML_HANDLER_FUNCTION(modify_side, /*event_info*/, cfg)
 {
 	std::vector<team> &teams = *resources::teams;
 
-	std::string side = cfg["side"];
-	std::string income = cfg["income"];
 	std::string name = cfg["name"];
 	std::string team_name = cfg["team_name"];
 	std::string user_team_name = cfg["user_team_name"];
-	std::string gold = cfg["gold"];
 	std::string controller = cfg["controller"];
 	std::string recruit_str = cfg["recruit"];
-	std::string fog = cfg["fog"];
-	std::string shroud = cfg["shroud"];
-	std::string hidden = cfg["hidden"];
 	std::string shroud_data = cfg["shroud_data"];
-	std::string village_gold = cfg["village_gold"];
 	const config& parsed = cfg.get_parsed_config();
 	const config::const_child_itors &ai = parsed.child_range("ai");
 	/**
@@ -812,7 +791,7 @@ WML_HANDLER_FUNCTION(modify_side, /*event_info*/, cfg)
 	std::string share_view = cfg["share_view"];
 	std::string share_maps = cfg["share_maps"];
 
-	const int side_num = lexical_cast_default<int>(side,1);
+	int side_num = cfg["side"].to_int(1);
 	const size_t team_index = side_num-1;
 
 	if (team_index < teams.size())
@@ -836,36 +815,42 @@ WML_HANDLER_FUNCTION(modify_side, /*event_info*/, cfg)
 			teams[team_index].set_recruits(std::set<std::string>(recruit.begin(),recruit.end()));
 		}
 		// Modify income
+		config::attribute_value income = cfg["income"];
 		if (!income.empty()) {
-			teams[team_index].set_base_income(lexical_cast_default<int>(income) + game_config::base_income);
+			teams[team_index].set_base_income(income.to_int() + game_config::base_income);
 		}
 		// Modify total gold
+		config::attribute_value gold = cfg["gold"];
 		if (!gold.empty()) {
-			teams[team_index].set_gold(lexical_cast_default<int>(gold));
+			teams[team_index].set_gold(gold);
 		}
 		// Set controller
 		if (!controller.empty()) {
 			teams[team_index].change_controller(controller);
 		}
 		// Set shroud
+		config::attribute_value shroud = cfg["shroud"];
 		if (!shroud.empty()) {
-			teams[team_index].set_shroud(utils::string_bool(shroud, true));
+			teams[team_index].set_shroud(shroud.to_bool(true));
 		}
 		// Merge shroud data
 		if (!shroud_data.empty()) {
 			teams[team_index].merge_shroud_map_data(shroud_data);
 		}
 		// Set whether team is hidden in status table
+		config::attribute_value hidden = cfg["hidden"];
 		if (!hidden.empty()) {
-			teams[team_index].set_hidden(utils::string_bool(hidden, true));
+			teams[team_index].set_hidden(hidden.to_bool(true));
 		}
 		// Set fog
+		config::attribute_value fog = cfg["fog"];
 		if (!fog.empty()) {
-			teams[team_index].set_fog(utils::string_bool(fog, true));
+			teams[team_index].set_fog(fog.to_bool(true));
 		}
 		// Set income per village
+		config::attribute_value village_gold = cfg["village_gold"];
 		if (!village_gold.empty()) {
-			teams[team_index].set_village_gold(lexical_cast_default<int>(village_gold));
+			teams[team_index].set_village_gold(village_gold);
 		}
 		// Redeploy ai from location (this ignores current AI parameters)
 		if (!switch_ai.empty()) {
@@ -899,11 +884,10 @@ WML_HANDLER_FUNCTION(store_side, /*event_info*/, cfg)
 	game_state *state_of_game = resources::state_of_game;
 	std::vector<team> &teams = *resources::teams;
 
-	std::string side = cfg["side"];
 	std::string var_name = cfg["variable"];
 	if (var_name.empty()) var_name = "side";
 
-	int side_num = lexical_cast_default<int>(side, 1);
+	int side_num = cfg["side"].to_int(1);
 	size_t team_index = side_num - 1;
 	if (team_index >= teams.size()) return;
 
@@ -929,19 +913,19 @@ WML_HANDLER_FUNCTION(store_side, /*event_info*/, cfg)
 
 WML_HANDLER_FUNCTION(modify_turns, /*event_info*/, cfg)
 {
-	std::string value = cfg["value"];
+	config::attribute_value value = cfg["value"];
 	std::string add = cfg["add"];
-	std::string current = cfg["current"];
+	config::attribute_value current = cfg["current"];
 	tod_manager& tod_man = *resources::tod_manager;
 	if(!add.empty()) {
 		tod_man.modify_turns(add);
 	} else if(!value.empty()) {
-		tod_man.set_number_of_turns(lexical_cast_default<int>(value,-1));
+		tod_man.set_number_of_turns(value.to_int(-1));
 	}
 	// change current turn only after applying mods
 	if(!current.empty()) {
 		const unsigned int current_turn_number = tod_man.turn();
-		const int new_turn_number = lexical_cast_default<int>(current, current_turn_number);
+		int new_turn_number = current.to_int(current_turn_number);
 		const unsigned int new_turn_number_u = static_cast<unsigned int>(new_turn_number);
 		if(new_turn_number_u < current_turn_number || (new_turn_number > tod_man.number_of_turns() && tod_man.number_of_turns() != -1)) {
 			ERR_NG << "attempted to change current turn number to one out of range (" << new_turn_number << ") or less than current turn\n";
@@ -958,10 +942,9 @@ namespace {
 std::auto_ptr<unit> create_fake_unit(const vconfig& cfg)
 {
 	std::string type = cfg["type"];
-	std::string side = cfg["side"];
 	std::string variation = cfg["variation"];
 
-	size_t side_num = lexical_cast_default<int>(side,1)-1;
+	size_t side_num = cfg["side"].to_int(1) - 1;
 	if (side_num >= resources::teams->size()) side_num = 0;
 
 	unit_race::GENDER gender = string_gender(cfg["gender"]);
@@ -1078,7 +1061,7 @@ WML_HANDLER_FUNCTION(move_units_fake, /*event_info*/, cfg)
 	foreach(const vconfig& config, unit_cfgs) {
 		const std::vector<std::string> xvals = utils::split(config["x"]);
 		const std::vector<std::string> yvals = utils::split(config["y"]);
-		const int skip_steps = lexical_cast_default<int>(config["skip_steps"]);
+		int skip_steps = config["skip_steps"];
 		units.push_back(create_fake_unit(config));
 		paths.push_back(fake_unit_path(units.back(), xvals, yvals));
 		if(skip_steps > 0)
@@ -1151,62 +1134,62 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 		var = state_of_game->get_variable(to_variable);
 	}
 
-	const std::string add = cfg["add"];
-	if(add.empty() == false) {
-		if(isint(var.str()) && isint(add)) {
-			var = var.to_int() + atoi(add.c_str());
+	config::attribute_value add = cfg["add"];
+	if (!add.empty()) {
+		if (isint(var.str()) && isint(add.str())) {
+			var = var.to_int() + add.to_int();
 		} else {
-			var = atof(var.str().c_str()) + atof(add.c_str());
+			var = var.to_double() + add.to_double();
 		}
 	}
 
-	const std::string sub = cfg["sub"];
-	if(sub.empty() == false) {
-		if(isint(var.str()) && isint(sub)) {
-			var = var.to_int() - atoi(sub.c_str());
+	config::attribute_value sub = cfg["sub"];
+	if (!sub.empty()) {
+		if (isint(var.str()) && isint(sub.str())) {
+			var = var.to_int() - sub.to_int();
 		} else {
-			var = atof(var.str().c_str()) - atof(sub.c_str());
+			var = var.to_double() - sub.to_double();
 		}
 	}
 
-	const std::string multiply = cfg["multiply"];
-	if(multiply.empty() == false) {
-		if(isint(var.str()) && isint(multiply)) {
-			var = var.to_int() * atoi(multiply.c_str());
+	config::attribute_value multiply = cfg["multiply"];
+	if (!multiply.empty()) {
+		if (isint(var.str()) && isint(multiply.str())) {
+			var = var.to_int() * multiply.to_int();
 		} else {
-			var = atof(var.str().c_str()) * atof(multiply.c_str());
+			var = var.to_double() * multiply.to_double();
 		}
 	}
 
-	const std::string divide = cfg["divide"];
-	if(divide.empty() == false) {
-		if (std::atof(divide.c_str()) == 0) {
+	config::attribute_value divide = cfg["divide"];
+	if (!divide.empty()) {
+		if (divide.to_double() == 0) {
 			ERR_NG << "division by zero on variable " << name << "\n";
 			return;
 		}
-		if(isint(var.str()) && isint(divide)) {
-			var = var.to_int() / atoi(divide.c_str());
+		if (isint(var.str()) && isint(divide.str())) {
+			var = var.to_int() / divide.to_int();
 		} else {
-			var = atof(var.str().c_str()) / atof(divide.c_str());
+			var = var.to_double() / divide.to_double();
 		}
 	}
 
-	const std::string modulo = cfg["modulo"];
-	if(modulo.empty() == false) {
-		if(std::atof(modulo.c_str()) == 0) {
+	config::attribute_value modulo = cfg["modulo"];
+	if (!modulo.empty()) {
+		if (modulo.to_double() == 0) {
 			ERR_NG << "division by zero on variable " << name << "\n";
 			return;
 		}
-		if(isint(var.str()) && isint(modulo)) {
-			var = var.to_int() % atoi(modulo.c_str());
+		if (isint(var.str()) && isint(modulo.str())) {
+			var = var.to_int() % modulo.to_int();
 		} else {
-			var = std::fmod(atof(var.str().c_str()), atof(modulo.c_str()));
+			var = std::fmod(var.to_double(), modulo.to_double());
 		}
 	}
 
-	const std::string round_val = cfg["round"];
-	if(round_val.empty() == false) {
-		double value = atof(var.str().c_str());
+	config::attribute_value round_val = cfg["round"];
+	if (!round_val.empty()) {
+		double value = var.to_double();
 		if (round_val == "ceil") {
 			value = std::ceil(value);
 		} else if (round_val == "floor") {
@@ -1215,7 +1198,7 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 			// We assume the value is an integer.
 			// Any non-numerical values will be interpreted as 0
 			// Which is probably what was intended anyway
-			const int decimals = std::atoi(round_val.c_str());
+			int decimals = round_val.to_int();
 			value *= std::pow(10.0, decimals); //add $decimals zeroes
 			value = round_portable(value); // round() isn't implemented everywhere
 			value *= std::pow(10.0, -decimals); //and remove them
@@ -1223,22 +1206,22 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 		var = value;
 	}
 
-	const t_string ipart = cfg["ipart"];
-	if(ipart.empty() == false) {
+	config::attribute_value ipart = cfg["ipart"];
+	if (!ipart.empty()) {
 		double result;
-		std::modf(std::atof(ipart.c_str()), &result);
+		std::modf(ipart.to_double(), &result);
 		var = result;
 	}
 
-	const t_string fpart = cfg["fpart"];
-	if(fpart.empty() == false) {
+	config::attribute_value fpart = cfg["fpart"];
+	if (!fpart.empty()) {
 		double ignore;
-		var = std::modf(std::atof(fpart.c_str()), &ignore);
+		var = std::modf(fpart.to_double(), &ignore);
 	}
 
-	const t_string string_length_target = cfg["string_length"];
-	if(string_length_target.empty() == false) {
-		var = int(string_length_target.str().length());
+	config::attribute_value string_length_target = cfg["string_length"];
+	if (!string_length_target.blank()) {
+		var = int(string_length_target.str().size());
 	}
 
 	// Note: maybe we add more options later, eg. strftime formatting.
@@ -1354,7 +1337,7 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 			key_name="value";
 		}
 
-		bool remove_empty=utils::string_bool(join_element["remove_empty"]);
+		bool remove_empty = join_element["remove_empty"].to_bool();
 
 		std::string joined_string;
 
@@ -1440,7 +1423,7 @@ WML_HANDLER_FUNCTION(set_variables, /*event_info*/, cfg)
 			key_name="value";
 		}
 
-		bool remove_empty=utils::string_bool(split_element["remove_empty"]);
+		bool remove_empty = split_element["remove_empty"].to_bool();
 
 		char* separator = separator_string.empty() ? NULL : &separator_string[0];
 
@@ -1591,7 +1574,7 @@ WML_HANDLER_FUNCTION(item, /*event_info*/, cfg)
 	const std::string img = cfg["image"];
 	const std::string halo = cfg["halo"];
 	const std::string team_name = cfg["team_name"];
-	const bool visible_in_fog = utils::string_bool(cfg["visible_in_fog"],true);
+	bool visible_in_fog = cfg["visible_in_fog"].to_bool(true);
 
 	if (!img.empty() || !halo.empty()) {
 		screen.add_overlay(loc, img, halo, team_name, visible_in_fog);
@@ -1646,7 +1629,7 @@ WML_HANDLER_FUNCTION(terrain, /*event_info*/, cfg)
 	if (cfg["layer"] == "base") mode = gamemap::BASE; else
 	if (cfg["layer"] == "overlay") mode = gamemap::OVERLAY;
 
-	bool replace_if_failed = utils::string_bool(cfg["replace_if_failed"]);
+	bool replace_if_failed = cfg["replace_if_failed"].to_bool();
 
 	foreach (const map_location &loc, parse_location_range(cfg["x"], cfg["y"], true)) {
 		change_terrain(loc, terrain, mode, replace_if_failed);
@@ -1669,7 +1652,7 @@ WML_HANDLER_FUNCTION(terrain_mask, /*event_info*/, cfg)
 		e.show(*resources::screen);
 		return;
 	}
-	bool border = utils::string_bool(cfg["border"]);
+	bool border = cfg["border"].to_bool();
 	resources::game_map->overlay(mask, cfg.get_parsed_config(), loc.x, loc.y, border);
 	screen_needs_rebuild = true;
 }
@@ -1760,7 +1743,7 @@ WML_HANDLER_FUNCTION(recall, /*event_info*/, cfg)
 				unit to_recruit(*u);
 				avail.erase(u);	// Erase before recruiting, since recruiting can fire more events
 				find_recruit_location(index + 1, loc, false);
-				place_recruit(to_recruit, loc, true, utils::string_bool(cfg["show"], true), true, true);
+				place_recruit(to_recruit, loc, true, cfg["show"].to_bool(true), true, true);
 				unit_recalled = true;
 				break;
 			}
@@ -1816,7 +1799,8 @@ WML_HANDLER_FUNCTION(object, event_info, cfg)
 		command_type = "else";
 	}
 
-	if(!utils::string_bool(cfg["silent"])) {
+	if (!cfg["silent"].to_bool())
+	{
 		surface surface(NULL);
 
 		if(image.empty() == false) {
@@ -1827,9 +1811,8 @@ WML_HANDLER_FUNCTION(object, event_info, cfg)
 		resources::screen->draw();
 
 		try {
-			const std::string duration_str = cfg["duration"];
-			const unsigned int lifetime = average_frame_time
-				* lexical_cast_default<unsigned int>(duration_str, prevent_misclick_duration);
+			unsigned lifetime = average_frame_time
+				* cfg["duration"].to_int(prevent_misclick_duration);
 
 			wml_event_dialog to_show(*resources::screen, (surface.null() ? caption : ""), text);
 			if(!surface.null()) {
@@ -1858,19 +1841,9 @@ WML_HANDLER_FUNCTION(print, /*event_info*/, cfg)
 	if(text.empty())
 		return;
 
-	std::string size_str = cfg["size"];
-	std::string duration_str = cfg["duration"];
-	std::string red_str = cfg["red"];
-	std::string green_str = cfg["green"];
-	std::string blue_str = cfg["blue"];
-
-	const int size = lexical_cast_default<int>(size_str,font::SIZE_SMALL);
-	const int lifetime = lexical_cast_default<int>(duration_str,50);
-	const int red = lexical_cast_default<int>(red_str,0);
-	const int green = lexical_cast_default<int>(green_str,0);
-	const int blue = lexical_cast_default<int>(blue_str,0);
-
-	SDL_Color color = create_color(red, green, blue);
+	int size = cfg["size"].to_int(font::SIZE_SMALL);
+	int lifetime = cfg["duration"].to_int(50);
+	SDL_Color color = create_color(cfg["red"], cfg["green"], cfg["blue"]);
 
 	const SDL_Rect& rect = resources::screen->map_outside_area();
 
@@ -1942,7 +1915,8 @@ WML_HANDLER_FUNCTION(kill, event_info, cfg)
 			{
 				bool fire_event = false;
 				game_events::entity_location death_loc(*un);
-				if(utils::string_bool(cfg["fire_event"])) {
+				if (cfg["fire_event"].to_bool())
+				{
 					// Prevent infinite recursion of 'die' events
 					fire_event = true;
 					recursion_preventer_ptr recursion_prevent;
@@ -1962,7 +1936,7 @@ WML_HANDLER_FUNCTION(kill, event_info, cfg)
 				if (fire_event) {
 					game_events::fire("last breath", death_loc, death_loc);
 				}
-				if(utils::string_bool(cfg["animate"])) {
+				if (cfg["animate"].to_bool()) {
 					resources::screen->scroll_to_tile(loc);
 					if (un.valid()) {
 						unit_display::unit_die(loc, *un);
@@ -1976,9 +1950,7 @@ WML_HANDLER_FUNCTION(kill, event_info, cfg)
 						resources::units->erase(un);
 					}
 				}
-				if (! utils::string_bool(cfg["fire_event"])) {
-					resources::units->erase(un);
-				}
+				else resources::units->erase(un);
 			}
 		}
 	}
@@ -2101,8 +2073,8 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 		map_location loc = cfg_to_loc(
 			(cfg.has_attribute("x") && cfg.has_attribute("y")) ? cfg : vconfig(var));
 		if(loc.valid()) {
-			if(utils::string_bool(cfg["find_vacant"])) {
-			  loc = pathfind::find_vacant_tile(*resources::game_map, *resources::units,loc);
+			if (cfg["find_vacant"].to_bool()) {
+				loc = pathfind::find_vacant_tile(*resources::game_map, *resources::units,loc);
 			}
 
 			resources::units->erase(loc);
@@ -2113,19 +2085,11 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 			if(!text.empty() && !controller->is_skipping_replay())
 			{
 				// Print floating label
-				std::string red_str = cfg["red"];
-				std::string green_str = cfg["green"];
-				std::string blue_str = cfg["blue"];
-				const int red = lexical_cast_default<int>(red_str,0);
-				const int green = lexical_cast_default<int>(green_str,0);
-				const int blue = lexical_cast_default<int>(blue_str,0);
-				{
-					resources::screen->float_label(loc,text,red,green,blue);
-				}
+				resources::screen->float_label(loc, text, cfg["red"], cfg["green"], cfg["blue"]);
 			}
 
 			const int side = controller->current_side();
-			if (utils::string_bool(cfg["advance"], true) &&
+			if (cfg["advance"].to_bool(true) &&
 			    unit_helper::will_certainly_advance(resources::units->find(loc)))
 			{
 				int total_opt = unit_helper::number_of_possible_advances(u);
@@ -2202,12 +2166,11 @@ WML_HANDLER_FUNCTION(unstore_unit, /*event_info*/, cfg)
 
 WML_HANDLER_FUNCTION(store_starting_location, /*event_info*/, cfg)
 {
-	std::string side = cfg["side"];
 	std::string variable = cfg["variable"];
 	if (variable.empty()) {
 		variable="location";
 	}
-	const int side_num = lexical_cast_default<int>(side,1);
+	int side_num = cfg["side"].to_int(1);
 
 	const map_location& loc = resources::game_map->starting_position(side_num);
 	config &loc_store = resources::state_of_game->get_variable_cfg(variable);
@@ -2255,7 +2218,7 @@ WML_HANDLER_FUNCTION(store_villages, /*event_info*/, cfg)
 // Command to take control of a village for a certain side
 WML_HANDLER_FUNCTION(capture_village, /*event_info*/, cfg)
 {
-	int side_num = lexical_cast_default<int>(cfg["side"]);
+	int side_num = cfg["side"].to_int();
 	foreach (const map_location &loc, parse_location_range(cfg["x"], cfg["y"])) {
 		if (resources::game_map->is_village(loc)) {
 			get_village(loc, side_num);
@@ -2296,26 +2259,24 @@ WML_HANDLER_FUNCTION(endlevel, /*event_info*/, cfg)
 		state_of_game->classification().end_text = end_of_campaign_text;
 	}
 
-	std::string end_of_campaign_text_delay = cfg["end_text_duration"];
+	config::attribute_value end_of_campaign_text_delay = cfg["end_text_duration"];
 	if (!end_of_campaign_text_delay.empty()) {
 		state_of_game->classification().end_text_duration =
-			lexical_cast_default<unsigned int,const std::string&>(end_of_campaign_text_delay, state_of_game->classification().end_text_duration);
+			end_of_campaign_text_delay.to_int(state_of_game->classification().end_text_duration);
 	}
 
 	end_level_data &data = resources::controller->get_end_level_data();
 
 	std::string result = cfg["result"];
 	data.custom_endlevel_music = cfg["music"].str();
-	data.carryover_report = utils::string_bool(cfg["carryover_report"], true);
-	data.prescenario_save = utils::string_bool(cfg["save"], true);
-	data.linger_mode = utils::string_bool(cfg["linger_mode"], true)
+	data.carryover_report = cfg["carryover_report"].to_bool(true);
+	data.prescenario_save = cfg["save"].to_bool(true);
+	data.linger_mode = cfg["linger_mode"].to_bool(true)
 		&& !resources::teams->empty();
-	data.reveal_map = utils::string_bool(cfg["reveal_map"], true);
-	data.gold_bonus = utils::string_bool(cfg["bonus"], true);
-	data.carryover_percentage = lexical_cast_default<int>
-		(cfg["carryover_percentage"],
-		 game_config::gold_carryover_percentage);
-	data.carryover_add = utils::string_bool(cfg["carryover_add"]);
+	data.reveal_map = cfg["reveal_map"].to_bool(true);
+	data.gold_bonus = cfg["bonus"].to_bool(true);
+	data.carryover_percentage = cfg["carryover_percentage"].to_int(game_config::gold_carryover_percentage);
+	data.carryover_add = cfg["carryover_add"].to_bool();
 
 	if (result.empty() || result == "victory") {
 		resources::controller->force_end_level(VICTORY);
@@ -2350,10 +2311,9 @@ WML_HANDLER_FUNCTION(redraw, /*event_info*/, cfg)
 {
 	game_display &screen = *resources::screen;
 
-	std::string side = cfg["side"];
+	config::attribute_value side = cfg["side"];
 	if (!side.empty()) {
-		const int side_num = lexical_cast_default<int>(side);
-		clear_shroud(side_num);
+		clear_shroud(side);
 		screen.recalculate_minimap();
 	}
 	if (screen_needs_rebuild) {
@@ -2385,7 +2345,7 @@ WML_HANDLER_FUNCTION(heal_unit, event_info, cfg)
 {
 	unit_map *units = resources::units;
 
-	const bool animated = utils::string_bool(cfg["animate"],false);
+	bool animated = cfg["animate"].to_bool();
 
 	const vconfig healed_filter = cfg.child("filter");
 	unit_map::iterator u;
@@ -2415,7 +2375,7 @@ WML_HANDLER_FUNCTION(heal_unit, event_info, cfg)
 		}
 	}
 
-	int amount = lexical_cast_default<int>(cfg["amount"],0);
+	int amount = cfg["amount"];
 	int real_amount = u->hitpoints();
 	u->heal(amount);
 	real_amount = u->hitpoints() - real_amount;
@@ -2595,8 +2555,7 @@ struct message_user_choice : mp_sync::user_choice
 		// Parse input text, if not available all fields are empty
 		std::string text_input_label = text_input_element["label"];
 		std::string text_input_content = text_input_element["text"];
-		unsigned input_max_size = lexical_cast_default<unsigned>(
-			text_input_element["max_length"], 256);
+		unsigned input_max_size = text_input_element["max_length"].to_int(256);
 		if (input_max_size > 1024 || input_max_size < 1) {
 			lg::wml_error << "invalid maximum size for input "
 				<< input_max_size << '\n';
@@ -2772,7 +2731,7 @@ WML_HANDLER_FUNCTION(time_area, /*event_info*/, cfg)
 {
 	log_scope("time_area");
 
-	const bool remove = utils::string_bool(cfg["remove"],false);
+	bool remove = cfg["remove"].to_bool();
 	std::string ids = cfg["id"];
 
 	if(remove) {
@@ -2815,13 +2774,9 @@ WML_HANDLER_FUNCTION(replace_schedule, /*event_info*/, cfg)
 // Adding new events
 WML_HANDLER_FUNCTION(event, /*event_info*/, cfg)
 {
-	std::string behavior_flag = cfg["delayed_variable_substitution"];
-	if(!(utils::string_bool(behavior_flag,true)))
-	{
+	if (!cfg["delayed_variable_substitution"].to_bool(true)) {
 		new_handlers.push_back(game_events::event_handler(cfg.get_parsed_config()));
-	}
-	else
-	{
+	} else {
 		new_handlers.push_back(game_events::event_handler(cfg.get_config()));
 	}
 }
@@ -2843,14 +2798,14 @@ WML_HANDLER_FUNCTION(replace_map, /*event_info*/, cfg)
 	}
 	if (map.total_width() > game_map->total_width()
 	|| map.total_height() > game_map->total_height()) {
-		if (!utils::string_bool(cfg["expand"])) {
+		if (!cfg["expand"].to_bool()) {
 			lg::wml_error << "replace_map: Map dimension(s) increase but expand is not set\n";
 			return;
 		}
 	}
 	if (map.total_width() < game_map->total_width()
 	|| map.total_height() < game_map->total_height()) {
-		if (!utils::string_bool(cfg["shrink"])) {
+		if (!cfg["shrink"].to_bool()) {
 			lg::wml_error << "replace_map: Map dimension(s) decrease but shrink is not set\n";
 			return;
 		}
