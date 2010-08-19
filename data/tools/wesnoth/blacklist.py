@@ -22,7 +22,7 @@ def parse_test(wml, d):
         g.p.parse_text(wml, d)
     except wmlparser2.WMLError as e:
         for i, line in enumerate(str(e).splitlines()):
-            print(str(1 + i) + ": " + line[:80])
+            print(str(1 + i) + ": " + line)
             for mo in re.findall("~add-ons/(.*?)[:/]", line):
                 print("    " + mo)
                 all.append(mo)
@@ -57,17 +57,26 @@ def blacklist_if_faulty(wml, d):
     return False
 
 def check_runaway():
-    dir = get_userdir() + "/data/add-ons"
-    g.p = wmlparser2.Parser(options.wesnoth)
+    udir = get_userdir() + "/data/add-ons"
+    g.p = wmlparser2.Parser(options.wesnoth, options.config_dir,
+        options.data_dir, no_preprocess = False)
 
+    def move(f, t, name):
+        com = "mv " + f + "/" + name + " " + t + "/"
+        if os.path.exists(f + "/" + name + ".cfg"):
+            com = "mv " + f + "/" + name + ".cfg " + t + "/"
+        shell(com)
+
+    total = []
+    passed = []
     for f in glob.glob(options.runaway + "/*"):
         name = os.path.basename(f)
         if f.endswith(".cfg"): continue
         name = name.replace("'", "'\\''")
         name = "'" + name + "'"
         print("__________\nTesting " + name)
-        com = "mv " + options.runaway + "/" + name + "* " + dir + "/"
-        shell(com)
+        move(options.runaway, udir, name)
+        
         
         ok = True
         try:
@@ -93,13 +102,39 @@ def check_runaway():
             print(e)
             print("***")
             print("")
-            print("Ignoring parse error as we're only doing runaway checks.")
-            print("")
+            ok = False
 
-        if not ok:
-            com = "mv " + dir + "/" + name + "* " + options.runaway + "/"
-            shell(com)
-            
+        move(udir, options.runaway, name)
+
+        if ok:
+            passed.append(name)
+        total.append(name)
+
+    print("\n%d/%d addons passed runaway test. Trying to parse them." % (
+        len(passed), len(total)))
+    
+    parsed = []
+    for name in passed:
+        print("__________\nParsing " + name)
+        move(options.runaway, udir, name)
+
+        ok = True
+        errors = parse_test("{multiplayer}{~add-ons}", "MULTIPLAYER")
+        if errors:
+            print(errors)
+            ok = False
+            print("Parsing failed!")
+
+        move(udir, options.runaway, name)
+
+        if ok:
+            parsed.append(name)
+    
+    
+    print("\n%d/%d addons could be parsed. Moving them to the add-ons folder.\n" % (
+        len(parsed), len(total)))
+    for name in parsed:
+        move(options.runaway, udir, name)
 
 def main():
     global options
@@ -112,7 +147,10 @@ def main():
         help = "First move all add-ons into the wesnoth add-ons folder and "
         "this script will then move broken ones to the specified directory.")
     p.add_option("-w", "--wesnoth")
-    p.add_option("-r", "--runaway")
+    p.add_option("-r", "--runaway",
+        help = "First move all add-ons into the given folder and "
+        "this script will then move them into the add-ons folder "
+        "making sure there are no run-away units.")
     options, args = p.parse_args()
     
     if not options.wesnoth:
