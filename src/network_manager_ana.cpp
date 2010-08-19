@@ -881,7 +881,9 @@ size_t ana_network_manager::send_raw_data( const char*         base_char,
     ana_component_set::iterator it;
 
     it = std::find_if( components_.begin(), components_.end(),
-                    boost::bind(&ana_component::get_id, _1) == id );
+                       (boost::bind(&ana_component::get_wesnoth_id, _1) == connection_num)
+                    || (boost::bind(&ana_component::get_id, _1) == id ) );
+    //Make a broad attempt at finding it, test for both ANA's id and the assigned one.
 
     if ( it != components_.end())
     {
@@ -899,8 +901,12 @@ size_t ana_network_manager::send_raw_data( const char*         base_char,
     }
     else
     {
-        for (it = components_.begin(); it != components_.end(); ++it)
+        if ( components_.size() == 0 )
+            return 0;
+        else
         {
+            it = components_.begin();
+
             if ((*it)->is_server())
             {
                 ana_send_handler handler;                   //, ana::ZERO_COPY);
@@ -911,10 +917,19 @@ size_t ana_network_manager::send_raw_data( const char*         base_char,
                 else
                     return size;
             }
+            else
+            {
+                ana_send_handler handler;
+                (*it)->client()->send( ana::buffer( base_char, size ), &handler);
+                handler.wait_completion();
+
+                if ( handler.error() )
+                    return 0;
+                else
+                    return size;
+            }
         }
     }
-
-    return 0;
 }
 
 void ana_network_manager::send_all_except(const config& cfg, network::connection connection_num)

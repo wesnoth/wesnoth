@@ -53,6 +53,9 @@ void asio_sender::send(ana::detail::shared_buffer buffer ,
                                             running_timer, op_id, true ) );
         }
 
+        stats_collector().start_send_packet(  buffer->size()
+                                            + ( raw_mode() ? 0 : ana::HEADER_LENGTH ) );
+
         if ( raw_mode() )
         {
             socket.async_write_some( boost::asio::buffer(buffer->base(), buffer->size() ),
@@ -62,8 +65,6 @@ void asio_sender::send(ana::detail::shared_buffer buffer ,
         }
         else
         {
-            stats_collector().start_send_packet( buffer->size() + ana::HEADER_LENGTH );
-
             ana::ana_uint32 size( buffer->size() );
             ana::host_to_network_long( size );
 
