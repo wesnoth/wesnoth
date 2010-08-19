@@ -143,6 +143,17 @@ add_textdomain()
 	    ${do} cp /tmp/ctd$$.tmp $file
 	fi
     done
+    for file in `find data -name "*.lua" -print`
+    do
+	if grep '#textdomain' $file >/dev/null
+	then
+	    :
+	else
+	    ${do} echo "--! #textdomain wesnoth" >/tmp/ctd$$.tmp
+	    ${do} cat $file >>/tmp/ctd$$.tmp
+	    ${do} cp /tmp/ctd$$.tmp $file
+	fi
+    done
 }
 
 if [ "$1" = "-h" -o "$1" = "--help" ]
