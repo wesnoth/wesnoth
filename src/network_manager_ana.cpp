@@ -1053,7 +1053,10 @@ network::connection ana_network_manager::read_from( network::connection connecti
         ana::net_id id( connection_num );
 
         it = std::find_if( components_.begin(), components_.end(),
-                        boost::bind(&ana_component::get_id, _1) == id );
+                        (boost::bind(&ana_component::get_wesnoth_id, _1) == connection_num)
+                     || (boost::bind(&ana_component::get_id, _1) == id ) );
+        //Make a broad attempt at finding it, test for both ANA's id and the assigned one.
+
 
         if ( it != components_.end())
             return read_from(it, cfg, timeout_ms);
@@ -1094,16 +1097,16 @@ network::statistics ana_network_manager::get_send_stats(network::connection hand
 {
     if ( handle != 0 )
     {
-        ana::net_id id( handle );
+//         ana::net_id id( handle );
         std::set< ana_component* >::iterator it;
 
         it = std::find_if( components_.begin(), components_.end(),
-                            boost::bind(&ana_component::get_id, _1) == id );
+                            boost::bind(&ana_component::get_wesnoth_id, _1) == handle );
 
         if ( it != components_.end() )
             return (*it)->get_send_stats( );
         else
-            throw std::runtime_error("Received message from a non connected component.");
+            throw std::runtime_error("Trying to get stats from the wrong component.");
     }
     else if( ! components_.empty() )
     {
