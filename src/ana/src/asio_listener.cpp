@@ -268,7 +268,7 @@ void asio_listener::listen_one_message()
     }
     catch(const std::exception& e)
     {
-        disconnect( boost::system::error_code(1,boost::system::system_category) );
+        disconnect( ana::generic_error );
     }
 }
 

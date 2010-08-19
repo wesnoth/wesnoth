@@ -198,8 +198,7 @@ void asio_client::connect( ana::connection_handler* handler )
     }
     catch (const std::exception& e)
     {
-        inform_connection_result( handler,
-                                  boost::system::error_code(1,boost::system::system_category ));
+        inform_connection_result( handler, ana::generic_error );
     }
 }
 

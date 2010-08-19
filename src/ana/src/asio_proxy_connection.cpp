@@ -153,15 +153,11 @@ void proxy_connection::handle_response(boost::asio::streambuf*          buf,
                     do_connect( );
                 }
                 else //TODO: digest authentication support here
-                    manager_->handle_proxy_connection(
-                              boost::system::error_code(1,boost::system::system_category ),
-                                                      conn_handler_, timer_);
+                    manager_->handle_proxy_connection( ana::generic_error, conn_handler_, timer_);
 
             }
             else //Can't connect, wrong password or wasn't offered the possibility to authenticate
-                manager_->handle_proxy_connection(
-                    boost::system::error_code(1,boost::system::system_category ),
-                    conn_handler_, timer_);
+                manager_->handle_proxy_connection( ana::generic_error, conn_handler_, timer_);
         }
     }
 }
@@ -230,9 +226,7 @@ void proxy_connection::do_connect()
     }
     catch (const std::exception& e)
     {
-        manager_->handle_proxy_connection(
-            boost::system::error_code(1,boost::system::system_category),
-            conn_handler_, timer_ );
+        manager_->handle_proxy_connection(ana::generic_error, conn_handler_, timer_ );
     }
 }
 
