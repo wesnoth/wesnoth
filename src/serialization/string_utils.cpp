@@ -30,10 +30,6 @@ static lg::log_domain log_engine("engine");
 #define ERR_GENERAL LOG_STREAM(err, lg::general)
 #define ERR_NG LOG_STREAM(err, log_engine)
 
-variable_set::~variable_set()
-{
-}
-
 namespace utils {
 
 bool isnewline(const char c)

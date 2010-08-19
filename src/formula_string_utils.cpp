@@ -30,15 +30,14 @@ class string_map_variable_set : public variable_set
 public:
 	string_map_variable_set(const string_map& map) : map_(map) {};
 
-	virtual t_string get_variable_const (const std::string& key) const
+	virtual config::attribute_value get_variable_const(const std::string &key) const
 	{
+		config::attribute_value val;
 		const string_map::const_iterator itor = map_.find(key);
-		if (itor == map_.end()) {
-			return t_string();
-		} else {
-			return itor->second;
-		}
-	};
+		if (itor != map_.end())
+			val = itor->second;
+		return val;
+	}
 private:
 	const string_map& map_;
 

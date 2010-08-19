@@ -166,32 +166,6 @@ void luaW_pushscalar(lua_State *L, config::attribute_value const &v)
 }
 
 /**
- * Converts a string into a Lua object pushed at the top of the stack.
- * Boolean ("yes"/"no") and numbers are detected and typed accordingly.
- */
-static void luaW_pushscalar(lua_State *L, t_string const &v)
-{
-	if (!v.translatable())
-	{
-		char *pe;
-		char const *pb = v.c_str();
-		double d = strtod(v.c_str(), &pe);
-		if (pe != pb && *pe == '\0')
-			lua_pushnumber(L, d);
-		else if (v == "yes")
-			lua_pushboolean(L, true);
-		else if (v == "no")
-			lua_pushboolean(L, false);
-		else
-			lua_pushstring(L, pb);
-	}
-	else
-	{
-		luaW_pushtstring(L, v);
-	}
-}
-
-/**
  * Returns true if the metatable of the object is the one found in the registry.
  */
 static bool luaW_hasmetatable(lua_State *L

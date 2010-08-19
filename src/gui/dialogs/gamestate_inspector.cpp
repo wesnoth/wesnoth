@@ -79,7 +79,7 @@ public:
 	model(const vconfig &c)
 		: cfg(c), name(), stuff_list(),stuff_types_list(),inspect(),inspector_name()
 	{
-		name = cfg["name"];
+		name = cfg["name"].str();
 	}
 
 	vconfig cfg;

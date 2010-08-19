@@ -24,17 +24,8 @@
 #include <string>
 #include <vector>
 #include <boost/next_prior.hpp>
-#include "../tstring.hpp"
 
 #include "SDL_types.h"
-
-class variable_set
-{
-public:
-	virtual ~variable_set();
-
-	virtual t_string get_variable_const(const std::string& id) const = 0;
-};
 
 /** The type we use to represent Unicode strings. */
 typedef std::vector<wchar_t> wide_string;
@@ -43,6 +34,8 @@ typedef std::vector<wchar_t> wide_string;
 typedef std::vector<Uint16> ucs2_string;
 typedef std::vector<Uint32> ucs4_string;
 typedef std::string utf8_string;
+
+class t_string;
 
 namespace utils {
 

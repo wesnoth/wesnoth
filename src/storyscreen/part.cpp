@@ -142,19 +142,19 @@ void part::resolve_wml(const vconfig &cfg)
 	}
 
 	if(cfg.has_attribute("background")) {
-		background_file_ = cfg["background"];
+		background_file_ = cfg["background"].str();
 	}
 	if(cfg.has_attribute("scale_background")) {
-		scale_background_ = utils::string_bool(cfg["scale_background"], true);
+		scale_background_ = cfg["scale_background"].to_bool(true);
 	}
 	if(cfg.has_attribute("show_title")) {
-		show_title_ = utils::string_bool(cfg["show_title"]);
+		show_title_ = cfg["show_title"].to_bool();
 	}
 	if(cfg.has_attribute("story")) {
-		text_ = cfg["story"];
+		text_ = cfg["story"].str();
 	}
 	if(cfg.has_attribute("title")) {
-		text_title_ = cfg["title"];
+		text_title_ = cfg["title"].str();
 		if(!cfg.has_attribute("show_title")) {
 			show_title_ = true;
 		}
@@ -166,10 +166,10 @@ void part::resolve_wml(const vconfig &cfg)
 		title_alignment_ = string_title_align(cfg["title_alignment"]);
 	}
 	if(cfg.has_attribute("music")) {
-		music_ = cfg["music"];
+		music_ = cfg["music"].str();
 	}
 	if(cfg.has_attribute("sound")) {
-		sound_ = cfg["sound"];
+		sound_ = cfg["sound"].str();
 	}
 
 	// Execution flow/branching/[image]

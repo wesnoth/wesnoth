@@ -1496,7 +1496,7 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 
 	if (cfg.has_attribute("lua_function")) {
 		bool b = resources::lua_kernel->run_filter
-			(cfg["lua_function"].c_str(), *this);
+			(cfg["lua_function"].str().c_str(), *this);
 		if (!b) return false;
 	}
 

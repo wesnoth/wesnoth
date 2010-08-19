@@ -557,7 +557,7 @@ void wml_animation_internal(unit_animator &animator, const vconfig &cfg, const m
 		if(cfg["red"].empty() && cfg["green"].empty() && cfg["blue"].empty()) {
 			text_color = display::rgb(0xff,0xff,0xff);
 		} else {
-			text_color = display::rgb(atoi(cfg["red"].c_str()),atoi(cfg["green"].c_str()),atoi(cfg["blue"].c_str()));
+			text_color = display::rgb(cfg["red"], cfg["green"], cfg["blue"]);
 		}
 		resources::screen->scroll_to_tile(u->get_location(), game_display::ONSCREEN, true, false);
 		vconfig t_filter = cfg.child("facing");

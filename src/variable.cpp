@@ -32,6 +32,8 @@
 #include "unit_map.hpp"
 #include "team.hpp"
 
+#include <boost/variant.hpp>
+
 static lg::log_domain log_engine("engine");
 #define LOG_NG LOG_STREAM(info, log_engine)
 #define WRN_NG LOG_STREAM(warn, log_engine)
@@ -346,12 +348,27 @@ bool vconfig::has_child(const std::string& key) const
 	return false;
 }
 
-const t_string vconfig::expand(const std::string& key) const
+struct vconfig_expand_visitor : boost::static_visitor<void>
 {
-	const t_string& val = (*cfg_)[key];
-	if(repos != NULL)
-		return utils::interpolate_variables_into_tstring(val, *repos);
-	return t_string(val);
+	config::attribute_value &result;
+	vconfig_expand_visitor(config::attribute_value &r): result(r) {}
+	template<typename T> void operator()(T const &) const {}
+	void operator()(const std::string &s) const
+	{
+		result = utils::interpolate_variables_into_string(s, *repos);
+	}
+	void operator()(const t_string &s) const
+	{
+		result = utils::interpolate_variables_into_tstring(s, *repos);
+	}
+};
+
+config::attribute_value vconfig::expand(const std::string &key) const
+{
+	config::attribute_value val = (*cfg_)[key];
+	if (repos)
+		boost::apply_visitor(vconfig_expand_visitor(val), val.value);
+	return val;
 }
 
 vconfig::all_children_iterator::all_children_iterator(const Itor &i, const config *cache_key)

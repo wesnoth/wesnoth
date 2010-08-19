@@ -69,8 +69,9 @@ public:
 	 * lifetime ends which causes UB. Instead use:
 	 * const std::string temp = vcfg["foo"];
 	 */
-	const t_string operator[](const std::string& key) const { return expand(key); }
-	const t_string expand(const std::string&) const; /** < Synonym for operator[] */
+	const config::attribute_value operator[](const std::string &key) const
+	{ return expand(key); }
+	config::attribute_value expand(const std::string&) const; /** < Synonym for operator[] */
 	bool has_attribute(const std::string& key) const { return cfg_->has_attribute(key); }
 	bool empty() const { return (null() || cfg_->empty()); }
 

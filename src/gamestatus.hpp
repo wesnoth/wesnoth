@@ -103,7 +103,7 @@ public:
 	// Variable access
 
 	config::attribute_value &get_variable(const std::string &varname);
-	virtual t_string get_variable_const(const std::string& varname) const;
+	virtual config::attribute_value get_variable_const(const std::string& varname) const;
 	config& get_variable_cfg(const std::string& varname);
 
 	void set_variable(const std::string& varname, const t_string& value);

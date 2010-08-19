@@ -42,6 +42,7 @@
 typedef std::map<std::string, t_string> string_map;
 
 class config;
+class vconfig;
 struct lua_State;
 
 bool operator==(const config &, const config &);
@@ -202,6 +203,7 @@ public:
 		friend std::ostream& operator<<(std::ostream &os, const attribute_value &v);
 		friend void luaW_pushscalar(lua_State *, const attribute_value &);
 		friend void write_key_val(std::ostream &, const std::string &, const attribute_value &, unsigned, std::string &);
+		friend class vconfig;
 	};
 
 	typedef std::map<std::string, attribute_value> attribute_map;
@@ -480,6 +482,13 @@ private:
 	child_map children;
 
 	std::vector<child_pos> ordered_children;
+};
+
+class variable_set
+{
+public:
+	virtual ~variable_set() {}
+	virtual config::attribute_value get_variable_const(const std::string &id) const = 0;
 };
 
 #endif

@@ -20,6 +20,7 @@
 #include "gui/widgets/helper.hpp"
 #include "serialization/string_utils.hpp"
 #include "util.hpp"
+#include "tstring.hpp"
 
 #include <boost/static_assert.hpp>
 

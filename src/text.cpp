@@ -21,6 +21,7 @@
 #include "gui/auxiliary/log.hpp"
 #include "font.hpp"
 #include "serialization/string_utils.hpp"
+#include "tstring.hpp"
 
 #include <cassert>
 #include <cstring>

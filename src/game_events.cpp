@@ -408,20 +408,19 @@ namespace game_events {
 		foreach (const vconfig &values, variables)
 		{
 			const std::string name = values["name"];
-			std::string value = resources::state_of_game->get_variable_const(name);
-
-			const double num_value = atof(value.c_str());
+			config::attribute_value value = resources::state_of_game->get_variable_const(name);
+			double num_value = value.to_double();
 
 #define TEST_STR_ATTR(name, test) do { \
 			if (values.has_attribute(name)) { \
-				std::string attr_str = values[name].str(); \
+				config::attribute_value attr_str = values[name]; \
 				if (!(test)) return false; \
 			} \
 			} while (0)
 
 #define TEST_NUM_ATTR(name, test) do { \
 			if (values.has_attribute(name)) { \
-				double attr_num = atof(values[name].c_str()); \
+				double attr_num = values[name].to_double(); \
 				if (!(test)) return false; \
 			} \
 			} while (0)
@@ -434,11 +433,9 @@ namespace game_events {
 			TEST_NUM_ATTR("less_than",             num_value <  attr_num);
 			TEST_NUM_ATTR("greater_than_equal_to", num_value >= attr_num);
 			TEST_NUM_ATTR("less_than_equal_to",    num_value <= attr_num);
-			TEST_STR_ATTR("boolean_equals",
-				utils::string_bool(value) == utils::string_bool(attr_str));
-			TEST_STR_ATTR("boolean_not_equals",
-				utils::string_bool(value) != utils::string_bool(attr_str));
-			TEST_STR_ATTR("contains", value.find(attr_str) != std::string::npos);
+			TEST_STR_ATTR("boolean_equals",        value == attr_str);
+			TEST_STR_ATTR("boolean_not_equals",    value != attr_str);
+			TEST_STR_ATTR("contains", value.str().find(attr_str.str()) != std::string::npos);
 
 #undef TEST_STR_ATTR
 #undef TEST_NUM_ATTR
@@ -1805,7 +1802,7 @@ WML_HANDLER_FUNCTION(object, event_info, cfg)
 
 	if (u != resources::units->end() && (filter.null() || game_events::unit_matches_filter(*u, filter)))
 	{
-		text = cfg["description"];
+		text = cfg["description"].str();
 
 		u->add_modification("object", cfg.get_parsed_config());
 
@@ -1815,7 +1812,7 @@ WML_HANDLER_FUNCTION(object, event_info, cfg)
 		// Mark this item as used up.
 		used_items.insert(id);
 	} else {
-		text = cfg["cannot_use_message"];
+		text = cfg["cannot_use_message"].str();
 		command_type = "else";
 	}
 
@@ -2038,13 +2035,13 @@ WML_HANDLER_FUNCTION(set_menu_item, /*event_info*/, cfg)
 		mref = new wml_menu_item(id);
 	}
 	if(cfg.has_attribute("image")) {
-		mref->image = cfg["image"];
+		mref->image = cfg["image"].str();
 	}
 	if(cfg.has_attribute("description")) {
 		mref->description = cfg["description"];
 	}
 	if(cfg.has_attribute("needs_select")) {
-		mref->needs_select = utils::string_bool(cfg["needs_select"], false);
+		mref->needs_select = cfg["needs_select"].to_bool();
 	}
 	if(cfg.has_child("show_if")) {
 		mref->show_if = cfg.child("show_if").get_config();
@@ -2308,7 +2305,7 @@ WML_HANDLER_FUNCTION(endlevel, /*event_info*/, cfg)
 	end_level_data &data = resources::controller->get_end_level_data();
 
 	std::string result = cfg["result"];
-	data.custom_endlevel_music = cfg["music"];
+	data.custom_endlevel_music = cfg["music"].str();
 	data.carryover_report = utils::string_bool(cfg["carryover_report"], true);
 	data.prescenario_save = utils::string_bool(cfg["save"], true);
 	data.linger_mode = utils::string_bool(cfg["linger_mode"], true)
@@ -2542,7 +2539,7 @@ std::string get_image(const vconfig& cfg, unit_map::iterator speaker)
 
 		image::locator locator(image);
 		if(!locator.file_exists()) {
-			image = cfg["image"];
+			image = cfg["image"].str();
 		}
 	}
 	return image;
