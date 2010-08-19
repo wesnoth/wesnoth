@@ -33,11 +33,12 @@
  *
  */
 
-#ifndef BINARY_STREAMS_H
-#define BINARY_STREAMS_H
+#ifndef BINARY_STREAMS_HPP
+#define BINARY_STREAMS_HPP
 
 #include <string>
 #include <assert.h>
+#include <set>
 
 namespace ana
 {

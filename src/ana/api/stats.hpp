@@ -136,7 +136,7 @@ namespace ana
                 }
 
             private:
-                void reset(boost::system::error_code& /*ec*/)
+                void reset(const boost::system::error_code& /*ec*/)
                 {
                     packets_in_  = 0;
                     packets_out_ = 0;
