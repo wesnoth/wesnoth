@@ -47,12 +47,12 @@ side_actions_ptr current_side_actions();
  */
 unit const* find_backup_leader(unit const& leader);
 
-///Applies the future unit map and @return a pointer to the unit at hex,
-///NULL if none is visible to the specified viewer side
+/// Applies the future unit map and @return a pointer to the unit at hex
+/// @retval NULL if none is visible to the specified viewer side
 unit* future_visible_unit(map_location hex, int viewer_side = wb::viewer_side());
 
-///Applies the future unit map and @return a pointer to the unit at hex,
-///NULL if none is visible to the specified viewer side
+/// Applies the future unit map and @return a pointer to the unit at hex
+/// @retval NULL if none is visible to the specified viewer side
 /// @param on_side Only search for units of this side.
 unit* future_visible_unit(int on_side, map_location hex, int viewer_side = wb::viewer_side());
 
