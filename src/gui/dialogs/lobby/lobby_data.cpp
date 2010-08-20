@@ -171,7 +171,7 @@ game_info::game_info(const config& game, const config& game_config)
 , vision()
 , status()
 , time_limit()
-, vacant_slots(game["slots"].to_int())
+, vacant_slots(lexical_cast_default<int>(game["slots"], 0)) // Can't use to_int() here.
 , current_turn(0)
 , reloaded(game["savegame"].to_bool())
 , started(false)
