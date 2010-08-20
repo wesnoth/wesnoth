@@ -13,9 +13,11 @@ import java.util.Map.Entry;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 import org.wesnoth.preferences.Preferences;
+import org.wesnoth.utils.GUIUtils;
 import org.wesnoth.utils.PreprocessorUtils;
 import org.wesnoth.utils.ProjectCache;
 import org.wesnoth.utils.ProjectUtils;
@@ -70,21 +72,21 @@ public class Activator extends AbstractUIPlugin
 	 */
 	public static Activator getDefault()
 	{
-//		if (checkingConditions == false &&
-//			PlatformUI.isWorkbenchRunning())
-//		{
-//			if (!checkConditions())
-//			{
-//				GUIUtils.showInfoMessageBox(
-//						"Hello!\n" +
-//						"Welcome to 'Wesnoth User Made Content Eclipse Plugin'.\n" +
-//						"Since this is the first time you are using it " +
-//						"I'll guide you through setting it up.\n\n" +
-//						"First you'll have to setup your preferences.\n" +
-//				"Press OK to continue.");
-//				WorkspaceUtils.setupWorkspace(true);
-//			}
-//		}
+		if (checkingConditions == false &&
+			PlatformUI.isWorkbenchRunning())
+		{
+			if (!checkConditions())
+			{
+				GUIUtils.showInfoMessageBox(
+						"Hello!\n" +
+						"Welcome to 'Wesnoth User Made Content Eclipse Plugin'.\n" +
+						"Since this is the first time you are using it " +
+						"I'll guide you through setting it up.\n\n" +
+						"First you'll have to setup your preferences.\n" +
+				"Press OK to continue.");
+				WorkspaceUtils.setupWorkspace(true);
+			}
+		}
 		return plugin;
 	}
 

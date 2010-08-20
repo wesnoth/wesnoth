@@ -38,7 +38,7 @@ public class Preferences extends AbstractPreferenceInitializer
 		store.setDefault(Constants.P_WMLLINT_VERBOSE_LEVEL, 0);
 
 		store.setDefault(Constants.P_WMLSCOPE_VERBOSE_LEVEL, 0);
-		store.setDefault(Constants.P_WMLSCOPE_COLLISIONS, true);
+		store.setDefault(Constants.P_WMLSCOPE_COLLISIONS, false);
 
 		// upload manager
 		store.setDefault(Constants.P_WAU_PASSWORD, "");

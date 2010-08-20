@@ -26,11 +26,11 @@
       </builder>
    </extension>
    <extension
-         id="xmlProblem"
-         name="XML Problem"
+         id="org.wesnoth.marker.wmllint"
+         name="WMLLint suggestion"
          point="org.eclipse.core.resources.markers">
       <super
-            type="org.eclipse.core.resources.problemmarker">
+            type="org.eclipse.core.resources.taskmarker">
       </super>
       <persistent
             value="true">
@@ -724,6 +724,17 @@
             </implementation>
          </presentation>
       </config>
+   </extension>
+   <extension
+         id="org.wesnoth.marker.wmlscope"
+         name="WMLScope problem"
+         point="org.eclipse.core.resources.markers">
+      <super
+            type="org.eclipse.core.resources.problemmarker">
+      </super>
+      <persistent
+            value="true">
+      </persistent>
    </extension>
 
 </plugin>

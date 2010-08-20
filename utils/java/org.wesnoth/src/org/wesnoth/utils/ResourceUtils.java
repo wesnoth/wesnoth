@@ -26,21 +26,23 @@ import javax.xml.parsers.SAXParserFactory;
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
+import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.dialogs.DialogSettings;
 import org.eclipse.swt.SWT;
+import org.wesnoth.Constants;
 import org.wesnoth.Logger;
 import org.wesnoth.templates.ReplaceableParameter;
 import org.wesnoth.templates.TemplateProvider;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
-
 
 public class ResourceUtils
 {
@@ -474,5 +476,68 @@ public class ResourceUtils
 			return false;
 		String fileContentString = ResourceUtils.getFileContents(new File(fileName));
 		return (fileContentString.contains("[scenario]") && fileContentString.contains("[/scenario]"));
+	}
+
+	/**
+	 * Deletes all markers of type specified from the resource
+	 * @param resource
+	 * @param type
+	 */
+	public static void deleteMarkers(IResource resource, String type)
+	{
+		try
+		{
+			resource.deleteMarkers(type, false, IResource.DEPTH_INFINITE);
+		} catch (CoreException e)
+		{
+			Logger.getInstance().logException(e);
+		}
+	}
+
+	/**
+	 * Parses the current line of the file and add the marker (if any) on the file.
+	 * Current used format: "sourcefile", line x: error message
+	 * @param line the line to parse
+	 * @param type the created marker or null if there was none
+	 * @return
+	 */
+	public static IMarker addMarkerForLine(String line, String type)
+	{
+		// error template, is the one used by GCC:
+		// "sourcefile", line <linenumber>: error message
+		try
+		{
+			final String pivot = ", line ";
+			int pivotIndex =  line.indexOf(pivot, 2);
+			System.out.println(line);
+			String sourceFile = line.substring(1, pivotIndex - 1);
+			int lineNumber = Integer.parseInt(
+					line.substring(pivotIndex + pivot.length(),
+							line.indexOf(":", pivotIndex + pivot.length() + 1)));
+			String message = line.substring(line.indexOf(" ", pivotIndex + pivot.length() + 1));
+
+			// Get the file
+			IFile file = ResourcesPlugin.getWorkspace().getRoot().
+				getFileForLocation(new Path(sourceFile));
+			if (file.exists() == false)
+				return null;
+
+			IMarker marker = file.createMarker(type);
+			marker.setAttribute(IMarker.SOURCE_ID, sourceFile);
+			marker.setAttribute(IMarker.MESSAGE, message);
+			marker.setAttribute(IMarker.LINE_NUMBER, lineNumber);
+
+			// wmllint should be info or warning
+			if (type.equals(Constants.MARKER_WMLLINT))
+				marker.setAttribute(IMarker.SEVERITY, IMarker.SEVERITY_INFO);
+			else
+				marker.setAttribute(IMarker.SEVERITY, IMarker.SEVERITY_ERROR);
+			return marker;
+		}
+		catch (Exception e)
+		{
+			Logger.getInstance().logException(e);
+			return null;
+		}
 	}
 }

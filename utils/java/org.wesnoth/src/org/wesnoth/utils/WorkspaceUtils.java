@@ -182,6 +182,7 @@ public class WorkspaceUtils
 		return (IContainer) selection.getFirstElement();
 	}
 
+
 	/**
 	 * Gets the selected resource(file/folder/project) or null if none selected
 	 * @return

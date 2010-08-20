@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.WorkspaceJob;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
@@ -118,9 +119,9 @@ public class WMLTools
 	 * @param resourcePath the full path of the target where "wmllint" will be runned on
 	 * @param dryrun true to run "wmllint" in dry mode - i.e. no changes in the config file.
 	 */
-	public static ExternalToolInvoker runWMLLint(String resourcePath, boolean dryrun)
+	public static ExternalToolInvoker runWMLLint(String resourcePath, boolean dryrun, boolean showProgress)
 	{
-		return runWMLLint(resourcePath, dryrun, new OutputStream[0], new OutputStream[0]);
+		return runWMLLint(resourcePath, dryrun, showProgress, new OutputStream[0], new OutputStream[0]);
 	}
 
 	/**
@@ -132,7 +133,7 @@ public class WMLTools
 	 * @param stderr The array of streams where to output the stderr content
 	 */
 	public static ExternalToolInvoker runWMLLint(String resourcePath, boolean dryrun,
-				OutputStream[] stdout, OutputStream[] stderr)
+				boolean showProgress, OutputStream[] stdout, OutputStream[] stderr)
 	{
 		if (!checkPrerequisites(resourcePath, "wmllint"))
 			return null;
@@ -148,7 +149,7 @@ public class WMLTools
 		for(int i=1; i <= verboseLevel; i++)
 			arguments.add("-v");
 
-		if (verboseLevel <= 1)
+		if (verboseLevel <= 0 && showProgress)
 			arguments.add("--progress");
 
 		if (dryrun || Preferences.getBool(Constants.P_WMLLINT_DRYRUN) == true)
@@ -171,9 +172,9 @@ public class WMLTools
 	 * @param resourcePath the full path of the target where "wmlindent" will be runned on
 	 * @return
 	 */
-	public static ExternalToolInvoker runWMLScope(String resourcePath)
+	public static ExternalToolInvoker runWMLScope(String resourcePath, boolean showProgress)
 	{
-		return runWMLScope(resourcePath, new OutputStream[0], new OutputStream[0]);
+		return runWMLScope(resourcePath, showProgress, new OutputStream[0], new OutputStream[0]);
 	}
 
 	/**
@@ -184,7 +185,7 @@ public class WMLTools
 	 * @param stderr The array of streams where to output the stderr content
 	 * @return
 	 */
-	public static ExternalToolInvoker runWMLScope(String resourcePath,
+	public static ExternalToolInvoker runWMLScope(String resourcePath, boolean showProgress,
 			OutputStream[] stdout, OutputStream[] stderr)
 	{
 		if (!checkPrerequisites(resourcePath, "wmlscope"))
@@ -198,18 +199,19 @@ public class WMLTools
 		arguments.add(wmlscopeFile.getAbsolutePath());
 		int verboseLevel = Preferences.getInt(Constants.P_WMLSCOPE_VERBOSE_LEVEL);
 
-		if (verboseLevel == 0)
-			arguments.add("--progress");
-		else
+		if (verboseLevel > 0)
 		{
 			arguments.add("-w");
 			arguments.add(String.valueOf(verboseLevel));
 		}
+		else if (showProgress)
+			arguments.add("--progress");
 
 		if (Preferences.getBool(Constants.P_WMLSCOPE_COLLISIONS) == true)
 			arguments.add("--collisions");
 
-		arguments.add("--crossreference");
+		arguments.add("--unchecked");
+		arguments.add("--unresolved");
 
 		// add default core directory
 		arguments.add(Preferences.getString(Constants.P_WESNOTH_WORKING_DIR) +
@@ -264,6 +266,7 @@ public class WMLTools
 					OutputStream[] stderr = new OutputStream[]{ console.newMessageStream() };
 
 					String location;
+					IResource resource = null;
 
 					IFile selFile = WorkspaceUtils.getSelectedFile();
 					if (targetPath != null)
@@ -271,9 +274,15 @@ public class WMLTools
 					else
 					{
 						if (selFile != null)
+						{
 							location = selFile.getLocation().toOSString();
+							resource = selFile;
+						}
 						else
-							location = WorkspaceUtils.getSelectedContainer().getLocation().toOSString();
+						{
+							resource = WorkspaceUtils.getSelectedContainer();
+							location = resource.getLocation().toOSString();
+						}
 					}
 
 					switch(tool)
@@ -291,10 +300,10 @@ public class WMLTools
 										stdout, stderr);
 							break;
 						case WMLLINT:
-							toolInvoker = WMLTools.runWMLLint(location, true, stdout, stderr);
+							toolInvoker = WMLTools.runWMLLint(location, true, false, stdout, stderr);
 							break;
 						case WMLSCOPE:
-							toolInvoker = WMLTools.runWMLScope(location, stdout, stderr);
+							toolInvoker = WMLTools.runWMLScope(location, false, stdout, stderr);
 							break;
 					}
 					monitor.worked(50);
@@ -335,10 +344,25 @@ public class WMLTools
 					stderrWatcher.start();
 					stdoutWatcher.start();
 					toolInvoker.waitForTool();
-					if (selFile != null && targetPath == null)
+					if (tool == Tools.WMLINDENT &&
+						selFile != null && targetPath == null)
 					{
 						EditorUtils.replaceEditorText(toolInvoker.getOutputContent());
 					}
+
+					if (tool == Tools.WMLSCOPE)
+					{
+						if (resource != null)
+							resource.deleteMarkers(Constants.MARKER_WMLSCOPE, false, IResource.DEPTH_INFINITE);
+						parseAndAddMarkers(toolInvoker.getOutputContent(), Constants.MARKER_WMLSCOPE);
+					}
+					else if (tool == Tools.WMLLINT)
+					{
+						if (resource != null)
+							resource.deleteMarkers(Constants.MARKER_WMLLINT, false, IResource.DEPTH_INFINITE);
+						parseAndAddMarkers(toolInvoker.getOutputContent(), Constants.MARKER_WMLLINT);
+					}
+
 					monitor.worked(50);
 					monitor.done();
 				}
@@ -391,6 +415,32 @@ public class WMLTools
 	}
 
 	/**
+	 * Parses the output and adds markers accordingly
+	 */
+	public static void parseAndAddMarkers(String output, String markerType)
+	{
+		String[] lines = StringUtils.getLines(output);
+		boolean startMD5 = false;
+		for(String line : lines)
+		{
+			if (line.startsWith("#") ||
+				line.matches("^[\\t ]*$") ||
+				line.startsWith("wmllint:"))
+				continue;
+			if (line.startsWith("%%"))
+			{
+				startMD5 = !startMD5;
+				continue;
+			}
+			// skip parsing collisions
+			if (startMD5)
+				continue;
+
+			ResourceUtils.addMarkerForLine(line, markerType);
+		}
+	}
+
+	/**
 	 * Checks if a wmlTool (that is in the wml tools directory) and
 	 * an additional file that is target of the tool exist / are valid.
 	 *
@@ -436,6 +486,8 @@ public class WMLTools
 	 * @param stdin A string that will be written to stdin of the python script
 	 * @param stdout An array of streams where to write the stdout from the script
 	 * @param stderr An array of streams where to write the stderr from the script
+	 * @param stderrMonitoring True to start stderr monitoring on tool
+	 * @param stdoutMonitoring True to start stdout monitoring on tool
 	 * @return
 	 */
 	public static ExternalToolInvoker runPythonScript(List<String> arguments, String stdin,

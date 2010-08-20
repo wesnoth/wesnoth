@@ -17,7 +17,6 @@ import java.util.Map;
 
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IResourceDelta;
@@ -27,7 +26,6 @@ import org.eclipse.core.resources.IncrementalProjectBuilder;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Path;
-import org.eclipse.jface.text.IDocument;
 import org.wesnoth.Constants;
 import org.wesnoth.Logger;
 import org.wesnoth.preferences.Preferences;
@@ -189,7 +187,6 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 			try
 			{
 				IFile file = (IFile) resource;
-				deleteMarkers(file);
 
 				monitor.subTask("Preprocessing file " + file.getName() + " ...");
 
@@ -300,44 +297,6 @@ public class WesnothProjectBuilder extends IncrementalProjectBuilder
 				return true;
 		}
 		return false;
-	}
-
-	/**
-	 * Adds the specified MarkerToken in the selected file
-	 * @param file
-	 * @param token
-	 * @param document
-	 */
-	private void addMarker(IFile file, MarkerToken token, IDocument document)
-	{
-		try
-		{
-			IMarker marker = file.createMarker(Constants.BUILDER_MARKER_TYPE);
-			marker.setAttribute(IMarker.MESSAGE, token.getMessage());
-			if (token.getColumnEnd() != 0)
-			{
-				marker.setAttribute(IMarker.CHAR_START,
-					document.getLineOffset(token.getLine() - 1) + token.getColumnStart());
-				marker.setAttribute(IMarker.CHAR_END,
-					document.getLineOffset(token.getLine() - 1) + token.getColumnEnd());
-			}
-			marker.setAttribute(IMarker.LINE_NUMBER, token.getLine());
-			marker.setAttribute(IMarker.SEVERITY,token.getType().toMarkerSeverity());
-		} catch (Exception e)
-		{
-			Logger.getInstance().logException(e);
-		}
-	}
-
-	private void deleteMarkers(IFile file)
-	{
-		try
-		{
-			file.deleteMarkers(Constants.BUILDER_MARKER_TYPE, false, IResource.DEPTH_ZERO);
-		} catch (CoreException e)
-		{
-			Logger.getInstance().logException(e);
-		}
 	}
 
 	class ResourceDeltaVisitor implements IResourceDeltaVisitor

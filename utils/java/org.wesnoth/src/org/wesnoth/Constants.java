@@ -72,7 +72,10 @@ public class Constants
 	/** Builder Constants **/
 	public static final String BUIILDER_WESNOTH     = "Wesnoth_Eclipse_Plugin.projectBuilder";
 	public static final String BUILDER_XTEXT        = XtextProjectHelper.BUILDER_ID;
-	public static final String BUILDER_MARKER_TYPE  = "Wesnoth_Eclipse_Plugin.configProblem";
+
+	/** Markers **/
+	public static final String MARKER_WMLSCOPE      = "org.wesnoth.marker.wmlscope";
+	public static final String MARKER_WMLLINT       = "org.wesnoth.marker.wmllint";
 
 	/** Nature Constants **/
 	public static final String NATURE_WESNOTH       = "Wesnoth_Eclipse_Plugin.wesnothNature";

@@ -21,6 +21,19 @@ public class TestHandler extends AbstractHandler
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException
 	{
+//		IFile file = ResourcesPlugin.getWorkspace().getRoot().getFileForLocation(new Path("E:\\work\\java\\runtime-EclipseApplication\\A_Simple_Campaign\\scenarios\\atemplate.cfg"));
+//		try
+//		{
+//			file.deleteMarkers(Constants.MARKER_WMLSCOPE, false, IResource.DEPTH_INFINITE);
+//			IMarker a= file.createMarker(Constants.MARKER_WMLLINT);
+//			a.setAttribute(IMarker.LINE_NUMBER, 3);
+//			a.setAttribute(IMarker.SEVERITY, IMarker.SEVERITY_WARNING);
+//		}
+//		catch (CoreException e)
+//		{
+//			e.printStackTrace();
+//		}
+
 //		DialogSettings set = new DialogSettings("proj");
 //		IDialogSettings section2 = set.addNewSection("scenario");
 //		section2.put("filename", "name");
@@ -221,3 +234,4 @@ public class TestHandler extends AbstractHandler
 		return null;
 	}
 }
+
