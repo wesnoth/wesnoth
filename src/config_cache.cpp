@@ -72,6 +72,9 @@ namespace game_config {
 #ifdef USE_TINY_GUI
 		defines_map_["TINY"] = preproc_define();
 #endif
+#ifdef LOW_MEM
+		defines_map_["LOW_MEM"] = preproc_define();
+#endif
 
 		if (game_config::small_gui)
 			defines_map_["SMALL_GUI"] = preproc_define();
