@@ -214,8 +214,8 @@ public class WMLTools
 		arguments.add("--unresolved");
 
 		// add default core directory
-//		arguments.add(Preferences.getString(Constants.P_WESNOTH_WORKING_DIR) +
-//				Path.SEPARATOR + "data/core");
+		arguments.add(Preferences.getString(Constants.P_WESNOTH_WORKING_DIR) +
+				Path.SEPARATOR + "data/core");
 		arguments.add(resourcePath);
 
 		return runPythonScript(arguments, null, true, true, stdout, stderr);
