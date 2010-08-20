@@ -1111,18 +1111,18 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 	const std::string name = cfg["name"];
 	config::attribute_value &var = state_of_game->get_variable(name);
 
-	const t_string &literal = cfg.get_config()["literal"]; // no $var substitution
-	if(literal.empty() == false) {
+	config::attribute_value literal = cfg.get_config()["literal"]; // no $var substitution
+	if (!literal.blank()) {
 		var = literal;
 	}
 
-	const t_string value = cfg["value"];
-	if(value.empty() == false) {
+	config::attribute_value value = cfg["value"];
+	if (!value.blank()) {
 		var = value;
 	}
 
-	const t_string format = cfg["format"];
-	if(format.empty() == false) {
+	config::attribute_value format = cfg["format"];
+	if (!format.blank()) {
 		///@deprecated 1.9.2 Usage of 'format' instead of 'value'
 		lg::wml_error << "Usage of 'format' is deprecated, use 'value' instead, "
 			"support will be removed in 1.9.2.\n";
