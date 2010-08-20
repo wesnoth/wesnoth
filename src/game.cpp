@@ -597,6 +597,9 @@ bool game_controller::init_config(const bool force)
 
 	if (!multiplayer_mode_ && !test_mode_ && !jump_to_editor_)
 		cache_.add_define("TITLE_SCREEN");
+#ifdef LOW_MEM
+	cache_.add_define("LOW_MEM");
+#endif
 
 	load_game_cfg(force);
 
