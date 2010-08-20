@@ -6,8 +6,11 @@ Version 1.9.0+svn:
      attack and defence.
  * Units
    * Added the Ghast unit from DiD to core with new base frame and animations.
- * Wml
-   * Added a LOW_MEM constant to WML to adapt wml to low memory builds
+ * WML Engine:
+   * Added a LOW_MEM define to WML to be able to adapt WML to low memory builds.
+   * Added event: side turn X
+   * Added event: turn X refresh
+
 
 Version 1.9.0:
  * AI:

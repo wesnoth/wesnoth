@@ -546,6 +546,7 @@ void play_controller::do_init_side(const unsigned int team_index){
 
 		game_events::fire("side turn");
 		game_events::fire("side " + side_num + " turn");
+		game_events::fire("side turn " + turn_num);
 		game_events::fire("side " + side_num + " turn " + turn_num);
 	}
 
@@ -577,6 +578,7 @@ void play_controller::do_init_side(const unsigned int team_index){
 	if (!loading_game_) {
 		game_events::fire("turn refresh");
 		game_events::fire("side " + side_num + " turn refresh");
+		game_events::fire("turn " + turn_num + " refresh");
 		game_events::fire("side " + side_num + " turn " + turn_num + " refresh");
 	}
 
