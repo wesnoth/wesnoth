@@ -881,8 +881,9 @@ size_t ana_network_manager::send_raw_data( const char*         base_char,
     ana_component_set::iterator it;
 
     it = std::find_if( components_.begin(), components_.end(),
-                       (boost::bind(&ana_component::get_wesnoth_id, _1) == connection_num)
-                    || (boost::bind(&ana_component::get_id, _1) == id ) );
+                   boost::bind(std::logical_or<bool>(),
+                       (boost::bind(&ana_component::get_wesnoth_id, _1) == connection_num),
+                       (boost::bind(&ana_component::get_id, _1) == id ) ));
     //Make a broad attempt at finding it, test for both ANA's id and the assigned one.
 
     if ( it != components_.end())
@@ -1068,8 +1069,9 @@ network::connection ana_network_manager::read_from( network::connection connecti
         ana::net_id id( connection_num );
 
         it = std::find_if( components_.begin(), components_.end(),
-                        (boost::bind(&ana_component::get_wesnoth_id, _1) == connection_num)
-                     || (boost::bind(&ana_component::get_id, _1) == id ) );
+                    boost::bind(std::logical_or<bool>(),
+                        (boost::bind(&ana_component::get_wesnoth_id, _1) == connection_num),
+                        (boost::bind(&ana_component::get_id, _1) == id ) ) );
         //Make a broad attempt at finding it, test for both ANA's id and the assigned one.
 
 
