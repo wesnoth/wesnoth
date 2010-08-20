@@ -214,8 +214,8 @@ public class WMLTools
 		arguments.add("--unresolved");
 
 		// add default core directory
-		arguments.add(Preferences.getString(Constants.P_WESNOTH_WORKING_DIR) +
-				Path.SEPARATOR + "data/core");
+//		arguments.add(Preferences.getString(Constants.P_WESNOTH_WORKING_DIR) +
+//				Path.SEPARATOR + "data/core");
 		arguments.add(resourcePath);
 
 		return runPythonScript(arguments, null, true, true, stdout, stderr);
@@ -421,6 +421,7 @@ public class WMLTools
 	{
 		String[] lines = StringUtils.getLines(output);
 		boolean startMD5 = false;
+
 		for(String line : lines)
 		{
 			if (line.startsWith("#") ||
@@ -484,8 +485,10 @@ public class WMLTools
 	 * @param arguments the arguments of the "python" executable.
 	 *        The first argument should be the script file name
 	 * @param stdin A string that will be written to stdin of the python script
-	 * @param stdout An array of streams where to write the stdout from the script
+	 * @param stdout An array of streams where to write the stdout from the script.
+	 * A non null array implies 'stdoutMonitoring' true.
 	 * @param stderr An array of streams where to write the stderr from the script
+	 * A non null array implies 'stderrMonitoring' true.
 	 * @param stderrMonitoring True to start stderr monitoring on tool
 	 * @param stdoutMonitoring True to start stdout monitoring on tool
 	 * @return
@@ -497,10 +500,10 @@ public class WMLTools
 		final ExternalToolInvoker pyscript = new ExternalToolInvoker("python", arguments);
 
 		pyscript.runTool();
-		if (stderrMonitoring == true)
-			pyscript.startErrorMonitor();
-		if (stdoutMonitoring == true)
-			pyscript.startOutputMonitor();
+		if (stderrMonitoring == true || stderr != null)
+			pyscript.startErrorMonitor(stderr);
+		if (stdoutMonitoring == true || stdout != null)
+			pyscript.startOutputMonitor(stdout);
 		if (stdin != null)
 		{
 			try
@@ -514,48 +517,6 @@ public class WMLTools
 				Logger.getInstance().logException(e);
 			}
 		}
-
-		Thread outputThread = new Thread(new Runnable() {
-			@Override
-			public void run()
-			{
-				try{
-					if (stdout == null || stdout.length == 0)
-						return;
-					String line = "";
-					while ((line = pyscript.readOutputLine()) != null)
-					{
-						for(OutputStream stream : stdout)
-							stream.write((line + "\n").getBytes());
-					}
-				}
-				catch (IOException e) {
-					Logger.getInstance().logException(e);
-				}
-			}
-		});
-		Thread errorThread = new Thread(new Runnable() {
-			@Override
-			public void run()
-			{
-				try
-				{
-					if (stderr == null || stderr.length == 0)
-						return;
-					String line = "";
-					while ((line = pyscript.readErrorLine()) != null)
-					{
-						for(OutputStream stream : stderr)
-							stream.write((line + "\n").getBytes());
-					}
-				} catch (IOException e)
-				{
-					Logger.getInstance().logException(e);
-				}
-			}
-		});
-		outputThread.start();
-		errorThread.start();
 		return pyscript;
 	}
 

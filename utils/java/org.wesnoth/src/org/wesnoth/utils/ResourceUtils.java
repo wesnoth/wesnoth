@@ -509,7 +509,7 @@ public class ResourceUtils
 		{
 			final String pivot = ", line ";
 			int pivotIndex =  line.indexOf(pivot, 2);
-			System.out.println(line);
+
 			String sourceFile = line.substring(1, pivotIndex - 1);
 			int lineNumber = Integer.parseInt(
 					line.substring(pivotIndex + pivot.length(),

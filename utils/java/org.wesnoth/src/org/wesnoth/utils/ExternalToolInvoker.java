@@ -23,9 +23,8 @@ import java.util.Locale;
 import org.wesnoth.Constants;
 import org.wesnoth.Logger;
 
-
 /**
- * A tools to invoke an external tool/executable
+ * A tool to invoke an external tool/executable
  */
 public class ExternalToolInvoker
 {
@@ -37,11 +36,11 @@ public class ExternalToolInvoker
 
 	// Thread for monitoring stdout
 	private Thread monitorOutputThread_;
-	private String outputContent_ 		= "";
+	private StringBuilder outputContent_;
 
 	// Thread for monitoring stderr
 	private Thread monitorErrorThread_;
-	private String errorContent_ 		= "";
+	private StringBuilder errorContent_;
 
 	private List<String> arguments_;
 
@@ -62,6 +61,9 @@ public class ExternalToolInvoker
 		processBuilder_ = new ProcessBuilder(commandline);
 		Logger.getInstance().log(String.format("Invoking tool %s with args: %s",
 				fileName, arguments));
+
+	 	outputContent_ = new StringBuilder();
+	 	errorContent_ = new StringBuilder();
 	}
 
 	/**
@@ -92,13 +94,9 @@ public class ExternalToolInvoker
 
 			if (stdoutReader != null)
 				bufferedReaderOutput_ = new BufferedReader(stdoutReader);
-			else
-				Logger.getInstance().logWarn("couldn't attach output reader.");
 
 			if (stderrReader != null)
 				bufferedReaderError_ = new BufferedReader(stderrReader);
-			else
-				Logger.getInstance().logWarn("couldn't attach err reader.");
 		} catch (IOException e)
 		{
 			Logger.getInstance().logException(e);
@@ -174,14 +172,36 @@ public class ExternalToolInvoker
 	 */
 	public void startErrorMonitor()
 	{
+		startErrorMonitor(new OutputStream[0]);
+	}
+
+	/**
+	 * Starts a new thread monitoring stderr.
+	 * All "Error" output will be available to be read from <code>getErrorContent()</code>
+	 * @param extraStreams The extra streams array where stderr will be written or null if none
+	 */
+	public void startErrorMonitor(final OutputStream[] extraStreams)
+	{
 		monitorErrorThread_ = new Thread(new Runnable() {
 			@Override
 			public void run()
 			{
-				String line = "";
-				while((line = readErrorLine()) != null)
+				try
 				{
-					errorContent_ += (line + "\n");
+					String line = "";
+					while((line = readErrorLine()) != null)
+					{
+						if (extraStreams != null)
+						{
+							for(OutputStream stream : extraStreams)
+								stream.write((line + "\n").getBytes());
+						}
+						errorContent_.append(line + "\n");
+					}
+				}
+				catch (IOException e)
+				{
+					e.printStackTrace();
 				}
 			}
 		});
@@ -194,14 +214,37 @@ public class ExternalToolInvoker
 	 */
 	public void startOutputMonitor()
 	{
+		startOutputMonitor(new OutputStream[0]);
+	}
+
+	/**
+	 * Starts a new thread monitoring stdout.
+	 * All "Output" output will be available to be read from <code>getOutputContent()</code>
+	 * @param extraStreams The extra streams array where stdout will be written or null if none
+	 */
+	public void startOutputMonitor(final OutputStream[] extraStreams)
+	{
 		monitorOutputThread_ = new Thread(new Runnable() {
 			@Override
 			public void run()
 			{
-				String line = "";
-				while((line = readOutputLine()) != null)
+				try
 				{
-					outputContent_ += (line + "\n");
+					String line = "";
+					while((line = readOutputLine()) != null)
+					{
+						if (extraStreams != null)
+						{
+							for(OutputStream stream : extraStreams)
+								stream.write((line + "\n").getBytes());
+						}
+						outputContent_.append(line + "\n");
+					}
+
+				}
+				catch (IOException e)
+				{
+					e.printStackTrace();
 				}
 			}
 		});
@@ -215,7 +258,7 @@ public class ExternalToolInvoker
 	 */
 	public String getErrorContent()
 	{
-		return errorContent_;
+		return errorContent_.toString();
 	}
 
 	/**
@@ -225,7 +268,7 @@ public class ExternalToolInvoker
 	 */
 	public String getOutputContent()
 	{
-		return outputContent_;
+		return outputContent_.toString();
 	}
 
 	/**
