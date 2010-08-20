@@ -1191,9 +1191,9 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 	if (!round_val.empty()) {
 		double value = var.to_double();
 		if (round_val == "ceil") {
-			value = std::ceil(value);
+			var = int(std::ceil(value));
 		} else if (round_val == "floor") {
-			value = std::floor(value);
+			var = int(std::floor(value));
 		} else {
 			// We assume the value is an integer.
 			// Any non-numerical values will be interpreted as 0
@@ -1202,15 +1202,15 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 			value *= std::pow(10.0, decimals); //add $decimals zeroes
 			value = round_portable(value); // round() isn't implemented everywhere
 			value *= std::pow(10.0, -decimals); //and remove them
+			var = value;
 		}
-		var = value;
 	}
 
 	config::attribute_value ipart = cfg["ipart"];
 	if (!ipart.empty()) {
 		double result;
 		std::modf(ipart.to_double(), &result);
-		var = result;
+		var = int(result);
 	}
 
 	config::attribute_value fpart = cfg["fpart"];
