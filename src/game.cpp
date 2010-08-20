@@ -600,6 +600,10 @@ bool game_controller::init_config(const bool force)
 #ifdef LOW_MEM
 	cache_.add_define("LOW_MEM");
 #endif
+#ifdef USE_TINY_GUI
+	cache_.add_define("USE_TINY_GUI");
+#endif
+
 
 	load_game_cfg(force);
 
