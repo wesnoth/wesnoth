@@ -1216,16 +1216,19 @@ bool unit::matches_filter(const vconfig& cfg, const map_location& loc, bool use_
 
 bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, bool use_flat_tod) const
 {
-	if(cfg.has_attribute("name") && cfg["name"] != name_) {
+	config::attribute_value cfg_name = cfg["name"];
+	if (!cfg_name.blank() && cfg_name.str() != name_) {
 		return false;
 	}
 
-	if(cfg.has_attribute("id") && cfg["id"] != this->id()) {
+	config::attribute_value cfg_id = cfg["id"];
+	if (!cfg_id.blank() && cfg_id.str() != id()) {
 		return false;
 	}
 
 	// Allow 'speaker' as an alternative to id, since people use it so often
-	if(cfg.has_attribute("speaker") && cfg["speaker"] != this->id()) {
+	config::attribute_value cfg_speaker = cfg["speaker"];
+	if (!cfg_speaker.blank() && cfg_speaker.str() != id()) {
 		return false;
 	}
 
@@ -1241,9 +1244,9 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 		}
 	}
 	// Also allow filtering on location ranges outside of the location filter
-	if(cfg.has_attribute("x") || cfg.has_attribute("y")){
-		const t_string& cfg_x = cfg["x"];
-		const t_string& cfg_y = cfg["y"];
+	config::attribute_value cfg_x = cfg["x"];
+	config::attribute_value cfg_y = cfg["y"];
+	if (!cfg_x.blank() || !cfg_y.blank()){
 		if(cfg_x == "recall" && cfg_y == "recall") {
 			//locations on the map are considered to not be on a recall list
 			if ((!resources::game_map && loc.valid()) ||
@@ -1259,9 +1262,10 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 	}
 
 	// The type could be a comma separated list of types
-	if(cfg.has_attribute("type")) {
-		const t_string& t_type = cfg["type"];
-		const std::string& type = t_type;
+	config::attribute_value cfg_type = cfg["type"];
+	if (!cfg_type.blank())
+	{
+		std::string type = cfg_type;
 		const std::string& this_type = type_id();
 
 		// We only do the full CSV search if we find a comma in there,
@@ -1282,10 +1286,10 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 		}
 	}
 
-	if(cfg.has_attribute("ability")) {
-		const t_string& t_ability = cfg["ability"];
-		const std::string& ability = t_ability;
-
+	config::attribute_value cfg_ability = cfg["ability"];
+	if (!cfg_ability.blank())
+	{
+		std::string ability = cfg_ability;
 		if(has_ability_by_id(ability)) {
 			// pass
 		} else if(std::find(ability.begin(),ability.end(),',') != ability.end()) {
@@ -1305,33 +1309,31 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 		}
 	}
 
-	if(cfg.has_attribute("race") && race_->id() != cfg["race"]) {
+	config::attribute_value cfg_race = cfg["race"];
+	if (!cfg_race.blank() && cfg_race.str() != race_->id()) {
 		return false;
 	}
 
-	if(cfg.has_attribute("gender") && string_gender(cfg["gender"]) != gender()) {
+	config::attribute_value cfg_gender = cfg["gender"];
+	if (!cfg_gender.blank() && string_gender(cfg_gender) != gender()) {
 		return false;
 	}
 
-	if(cfg.has_attribute("side")) {
-		const t_string& t_side = cfg["side"];
-		const std::string& side = t_side;
-		if (this->side() == lexical_cast_default<int>(side)) {
-			// pass
-		} else if(std::find(side.begin(),side.end(),',') != side.end()) {
-			const std::vector<std::string>& vals = utils::split(side);
-
-			if (std::find(vals.begin(), vals.end(), str_cast(side_)) == vals.end()) {
-				return false;
-			}
-		} else {
+	config::attribute_value cfg_side = cfg["side"];
+	if (!cfg_side.blank() && cfg_side.to_int() != side()) {
+		std::string side = cfg_side;
+		if (std::find(side.begin(), side.end(), ',') == side.end()) {
 			return false;
 		}
-	  }
+		std::vector<std::string> vals = utils::split(side);
+		if (std::find(vals.begin(), vals.end(), str_cast(side_)) == vals.end()) {
+			return false;
+		}
+	}
 
-	if(cfg.has_attribute("has_weapon")) {
-		const t_string& t_weapon = cfg["has_weapon"];
-		const std::string& weapon = t_weapon;
+	config::attribute_value cfg_has_weapon = cfg["has_weapon"];
+	if (!cfg_has_weapon.blank()) {
+		std::string weapon = cfg_has_weapon;
 		bool has_weapon = false;
 		const std::vector<attack_type>& attacks = this->attacks();
 		for(std::vector<attack_type>::const_iterator i = attacks.begin();
@@ -1346,27 +1348,33 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 		}
 	}
 
-	if(cfg.has_attribute("role") && role_ != cfg["role"]) {
+	config::attribute_value cfg_role = cfg["role"];
+	if (!cfg_role.blank() && cfg_role.str() != role_) {
 		return false;
 	}
 
-	if(cfg.has_attribute("ai_special") && ai_special_ != cfg["ai_special"]) {
+	config::attribute_value cfg_ai_special = cfg["ai_special"];
+	if (!cfg_ai_special.blank() && cfg_ai_special.str() != ai_special_) {
 		return false;
 	}
 
-	if(cfg.has_attribute("canrecruit") && utils::string_bool(cfg["canrecruit"]) != can_recruit()) {
+	config::attribute_value cfg_canrecruit = cfg["canrecruit"];
+	if (!cfg_canrecruit.blank() && cfg_canrecruit.to_bool() != can_recruit()) {
 		return false;
 	}
 
-	if(cfg.has_attribute("level") && level_ != lexical_cast_default<int>(cfg["level"],-1)) {
+	config::attribute_value cfg_level = cfg["level"];
+	if (!cfg_level.blank() && cfg_level.to_int(-1) != level_) {
 		return false;
 	}
 
-	if(cfg.has_attribute("defense") && defense_modifier(resources::game_map->get_terrain(loc)) != lexical_cast_default<int>(cfg["defense"],-1)) {
+	config::attribute_value cfg_defense = cfg["defense"];
+	if (!cfg_defense.blank() && cfg_defense.to_int(-1) != defense_modifier(resources::game_map->get_terrain(loc))) {
 		return false;
 	}
 
-	if(cfg.has_attribute("movement_cost") && movement_cost(resources::game_map->get_terrain(loc)) != lexical_cast_default<int>(cfg["movement_cost"],-1)) {
+	config::attribute_value cfg_movement = cfg["movement_cost"];
+	if (!cfg_movement.blank() && cfg_movement.to_int(-1) != movement_cost(resources::game_map->get_terrain(loc))) {
 		return false;
 	}
 
@@ -1402,7 +1410,7 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 		const vconfig::child_list& vis_filt = cfg.get_children("filter_vision");
 		vconfig::child_list::const_iterator i, i_end = vis_filt.end();
 		for (i = vis_filt.begin(); i != i_end; ++i) {
-			bool visible = utils::string_bool((*i)["visible"], true);
+			bool visible = (*i)["visible"].to_bool(true);
 			std::set<int> viewers;
 			if (i->has_attribute("viewing_side")) {
 				std::vector<std::pair<int,int> > ranges = utils::parse_ranges((*i)["viewing_side"]);
@@ -1448,8 +1456,9 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 			int match_count=0;
 			static std::vector<map_location::DIRECTION> default_dirs
 				= map_location::parse_directions("n,ne,se,s,sw,nw");
-			std::vector<map_location::DIRECTION> dirs = (*i).has_attribute("adjacent")
-				? map_location::parse_directions((*i)["adjacent"]) : default_dirs;
+			config::attribute_value i_adjacent = (*i)["adjacent"];
+			std::vector<map_location::DIRECTION> dirs = !i_adjacent.blank() ?
+				map_location::parse_directions(i_adjacent) : default_dirs;
 			std::vector<map_location::DIRECTION>::const_iterator j, j_end = dirs.end();
 			for (j = dirs.begin(); j != j_end; ++j) {
 				unit_map::const_iterator unit_itor = units.find(adjacent[*j]);
@@ -1457,23 +1466,26 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 				|| !unit_itor->matches_filter(*i, unit_itor->get_location(), use_flat_tod)) {
 					continue;
 				}
-				if (!(*i).has_attribute("is_enemy")
-				|| utils::string_bool((*i)["is_enemy"]) == teams_manager::get_teams()[this->side()-1].is_enemy(unit_itor->side())) {
+				config::attribute_value i_is_enemy = (*i)["is_enemy"];
+				if (!i_is_enemy.blank() || i_is_enemy.to_bool() ==
+				    teams_manager::get_teams()[this->side() - 1].is_enemy(unit_itor->side())) {
 					++match_count;
 				}
 			}
 			static std::vector<std::pair<int,int> > default_counts = utils::parse_ranges("1-6");
-			std::vector<std::pair<int,int> > counts = (*i).has_attribute("count")
-				? utils::parse_ranges((*i)["count"]) : default_counts;
+			config::attribute_value i_count = (*i)["count"];
+			std::vector<std::pair<int,int> > counts = !i_count.blank()
+				? utils::parse_ranges(i_count) : default_counts;
 			if(!in_ranges(match_count, counts)) {
 				return false;
 			}
 		}
 	}
 
-	if(cfg.has_attribute("find_in")) {
+	config::attribute_value cfg_find_in = cfg["find_in"];
+	if (!cfg_find_in.blank()) {
 		// Allow filtering by searching a stored variable of units
-		variable_info vi(cfg["find_in"], false, variable_info::TYPE_CONTAINER);
+		variable_info vi(cfg_find_in, false, variable_info::TYPE_CONTAINER);
 		if(!vi.is_valid) return false;
 		if(vi.explicit_index) {
 			config::const_child_iterator i = vi.vars->child_range(vi.key).first;
@@ -1486,17 +1498,18 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 				return false;
 		}
 	}
-	if(cfg.has_attribute("formula")) {
+	config::attribute_value cfg_formula = cfg["formula"];
+	if (!cfg_formula.blank()) {
 		const unit_callable callable(std::pair<map_location, unit>(loc,*this));
-		const game_logic::formula form(cfg["formula"]);
+		const game_logic::formula form(cfg_formula);
 		if(!form.evaluate(callable).as_bool()) {///@todo use formula_ai
 			return false;
 		}
 	}
 
-	if (cfg.has_attribute("lua_function")) {
-		bool b = resources::lua_kernel->run_filter
-			(cfg["lua_function"].str().c_str(), *this);
+	config::attribute_value cfg_lua_function = cfg["lua_function"];
+	if (!cfg_lua_function.blank()) {
+		bool b = resources::lua_kernel->run_filter(cfg_lua_function.str().c_str(), *this);
 		if (!b) return false;
 	}
 
@@ -2073,10 +2086,7 @@ int unit::resistance_against(const std::string& damage_name,bool attacker,const 
 	int res = 0;
 
 	if (const config &resistance = cfg_.child("resistance")) {
-		const std::string& val = resistance[damage_name];
-		if (!val.empty()) {
-			res = 100 - lexical_cast_default<int>(val);
-		}
+		res = 100 - resistance[damage_name].to_int(100);
 	}
 
 	unit_ability_list resistance_abilities = get_abilities("resistance",loc);
@@ -2321,7 +2331,6 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 				} else if(apply_to == "hitpoints") {
 					LOG_UT << "applying hitpoint mod..." << hit_points_ << "/" << max_hit_points_ << "\n";
 					const std::string &increase_hp = effect["increase"];
-					const std::string &heal_full = effect["heal_full"];
 					const std::string &increase_total = effect["increase_total"];
 					const std::string &set_hp = effect["set"];
 					const std::string &set_total = effect["set_total"];
@@ -2356,7 +2365,7 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 					if(max_hit_points_ < 1)
 						max_hit_points_ = 1;
 
-					if(heal_full.empty() == false && utils::string_bool(heal_full,true)) {
+					if (effect["heal_full"].to_bool()) {
 						heal_all();
 					}
 
@@ -2374,7 +2383,6 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 						hit_points_ = 1;
 				} else if(apply_to == "movement") {
 					const std::string &increase = effect["increase"];
-					const std::string &set_to = effect["set"];
 
 					if(increase.empty() == false) {
 						if (!times)
@@ -2384,9 +2392,7 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 						max_movement_ = utils::apply_modifier(max_movement_, increase, 1);
 					}
 
-					if(set_to.empty() == false) {
-						max_movement_ = atoi(set_to.c_str());
-					}
+					max_movement_ = effect["set"].to_int(max_movement_);
 
 					if(movement_ > max_movement_)
 						movement_ = max_movement_;
