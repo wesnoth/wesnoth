@@ -477,7 +477,11 @@ class ana_network_manager : public ana::listener_handler,
         /** Retrieve download statistics on a given component. */
         network::statistics get_receive_stats(network::connection handle);
 
-        /** */
+        /**
+         * Disconnect a given client.
+         *
+         * @param handle : The ID of the component (should be a client) to be disconnected.
+         */
         bool disconnect( network::connection handle);
 
     private:
