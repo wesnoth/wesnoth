@@ -51,8 +51,8 @@ static void get_global_variable(persist_context &ctx, const vconfig &pcfg)
 {
 	std::string global = pcfg["from_global"];
 	std::string local = pcfg["to_local"];
-	int side = lexical_cast_default<int>(pcfg["side"],0);
-	if (pcfg["side"] == "global") side = resources::controller->current_side();
+	config::attribute_value pcfg_side = pcfg["side"];
+	int side = pcfg_side.str() == "global" ? resources::controller->current_side() : pcfg_side.to_int();
 	persist_choice choice(ctx,global,side);
 	config cfg = mp_sync::get_user_choice("global_variable",choice,side,true).child("variables");
 	if (cfg) {
@@ -72,7 +72,7 @@ static void get_global_variable(persist_context &ctx, const vconfig &pcfg)
 static void clear_global_variable(persist_context &ctx, const vconfig &pcfg)
 {
 	std::string global = pcfg["global"];
-	ctx.clear_var(global,utils::string_bool(pcfg["immediate"]));
+	ctx.clear_var(global, pcfg["immediate"].to_bool());
 }
 
 static void set_global_variable(persist_context &ctx, const vconfig &pcfg)
@@ -91,7 +91,7 @@ static void set_global_variable(persist_context &ctx, const vconfig &pcfg)
 			for (size_t i = 0; i < arraylen; i++)
 				val.add_child(global,vars.child(local,i));
 		}
-		ctx.set_var(global,val,utils::string_bool(pcfg["immediate"]));
+		ctx.set_var(global, val, pcfg["immediate"].to_bool());
 	}
 }
 void verify_and_get_global_variable(const vconfig &pcfg)
@@ -116,8 +116,8 @@ void verify_and_get_global_variable(const vconfig &pcfg)
 			valid = false;
 		}
 		else {
-			int side = lexical_cast_default<int>(pcfg["side"],0);
-			if (pcfg["side"] == "global") side = resources::controller->current_side();
+			config::attribute_value pcfg_side = pcfg["side"];
+			int side = pcfg_side.str() == "global" ? resources::controller->current_side() : pcfg_side.to_int();
 			if (unsigned (side - 1) >= resources::teams->size()) {
 				LOG_PERSIST << "Error: [get_global_variable] attribute \"side\" specifies invalid side number.";
 				valid = false;
@@ -169,9 +169,10 @@ void verify_and_set_global_variable(const vconfig &pcfg)
 			LOG_PERSIST << "Error: [set_global_variable] missing attribute \"side\" required in multiplayer context.";
 			valid = false;
 		} else {
-			int side = lexical_cast_default<int>(pcfg["side"],0);
+			config::attribute_value pcfg_side = pcfg["side"];
+			int side = pcfg_side;
 			//Check side matching only if the side is not "global".
-			if (pcfg["side"] != "global") {
+			if (pcfg_side.str() != "global") {
 				//Ensure that the side is valid.
 				if (unsigned(side-1) > resources::teams->size()) {
 					LOG_PERSIST << "Error: [set_global_variable] attribute \"side\" specifies invalid side number.";
@@ -209,9 +210,10 @@ void verify_and_clear_global_variable(const vconfig &pcfg)
 			LOG_PERSIST << "Error: [set_global_variable] missing attribute \"side\" required in multiplayer context.";
 			valid = false;
 		} else {
-			int side = lexical_cast_default<int>(pcfg["side"],0);
+			config::attribute_value pcfg_side = pcfg["side"];
+			int side = pcfg_side;
 			//Check side matching only if the side is not "global".
-			if (pcfg["side"] != "global") {
+			if (pcfg_side.str() != "global") {
 				//Ensure that the side is valid.
 				if (unsigned(side-1) > resources::teams->size()) {
 					LOG_PERSIST << "Error: [clear_global_variable] attribute \"side\" specifies invalid side number.";
