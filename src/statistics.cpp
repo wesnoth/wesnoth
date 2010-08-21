@@ -609,7 +609,7 @@ void write_stats(config_writer &out)
 void read_stats(const config& cfg)
 {
 	fresh_stats();
-	mid_scenario = (utils::string_bool(cfg["mid_scenario"]));
+	mid_scenario = cfg["mid_scenario"].to_bool();
 
 	foreach (const config &s, cfg.child_range("scenario")) {
 		master_stats.push_back(scenario_stats(s));
