@@ -779,23 +779,20 @@ void individual_effect::set(value_modifier t, int val, const config *abil, const
 bool filter_base_matches(const config& cfg, int def)
 {
 	if (const config &apply_filter = cfg.child("filter_base_value")) {
-		std::string const &cond_eq = apply_filter["equals"];
-		std::string const &cond_ne = apply_filter["not_equals"];
-		std::string const &cond_lt = apply_filter["less_than"];
-		std::string const &cond_gt = apply_filter["greater_than"];
-		std::string const &cond_ge = apply_filter["greater_than_equal_to"];
-		std::string const &cond_le = apply_filter["less_than_equal_to"];
-		if ((cond_eq.empty() || def == lexical_cast_default<int>(cond_eq))
-		&& (cond_ne.empty() || def != lexical_cast_default<int>(cond_ne))
-		&& (cond_lt.empty() || def <  lexical_cast_default<int>(cond_lt))
-		&& (cond_gt.empty() || def >  lexical_cast_default<int>(cond_gt))
-		&& (cond_ge.empty() || def >= lexical_cast_default<int>(cond_ge))
-		&& (cond_le.empty() || def <= lexical_cast_default<int>(cond_le)))
-            return true;
-        else
-            return false;
+		config::attribute_value cond_eq = apply_filter["equals"];
+		config::attribute_value cond_ne = apply_filter["not_equals"];
+		config::attribute_value cond_lt = apply_filter["less_than"];
+		config::attribute_value cond_gt = apply_filter["greater_than"];
+		config::attribute_value cond_ge = apply_filter["greater_than_equal_to"];
+		config::attribute_value cond_le = apply_filter["less_than_equal_to"];
+		return  (cond_eq.empty() || def == cond_eq.to_int()) &&
+			(cond_ne.empty() || def != cond_ne.to_int()) &&
+			(cond_lt.empty() || def <  cond_lt.to_int()) &&
+			(cond_gt.empty() || def >  cond_gt.to_int()) &&
+			(cond_ge.empty() || def >= cond_ge.to_int()) &&
+			(cond_le.empty() || def <= cond_le.to_int());
 	}
-    return true;
+	return true;
 }
 
 effect::effect(const unit_ability_list& list, int def, bool backstab) :
