@@ -1672,11 +1672,14 @@ static bool try_add_unit_to_recall_list(const map_location& loc, const unit& u)
 // If we should spawn a new unit on the map somewhere
 WML_HANDLER_FUNCTION(unit, /*event_info*/, cfg)
 {
-	const config& parsed_cfg = cfg.get_parsed_config();
+	config parsed_cfg = cfg.get_parsed_config();
 
-	if (cfg.has_attribute("to_variable")) {
+	config::attribute_value to_variable = cfg["to_variable"];
+	if (!to_variable.blank())
+	{
+		parsed_cfg.remove_attribute("to_variable");
 		unit new_unit(parsed_cfg, true, resources::state_of_game);
-		config &var = resources::state_of_game->get_variable_cfg(parsed_cfg["to_variable"]);
+		config &var = resources::state_of_game->get_variable_cfg(to_variable);
 		var.clear();
 		new_unit.write(var);
 		var["placement"] = parsed_cfg["placement"];
