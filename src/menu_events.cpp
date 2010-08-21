@@ -815,7 +815,7 @@ void menu_handler::do_recruit(const std::string &name, int side_num,
 
 void menu_handler::recall(int side_num, const map_location &last_hex)
 {
-	if(utils::string_bool(level_["disallow_recall"])) {
+	if (level_["disallow_recall"].to_bool()) {
 		gui2::show_transient_message(gui_->video(),"",_("You are separated from your soldiers and may not recall them"));
 		return;
 	}
@@ -2979,7 +2979,7 @@ void menu_handler::send_chat_message(const std::string& message, bool allies_onl
 
 	const int side = is_observer() ? 0 : gui_->viewing_side();
 	if(!is_observer()) {
-		cfg["side"] = lexical_cast<std::string>(side);
+		cfg["side"] = side;
 	}
 
 	bool private_message = has_friends() && allies_only;
