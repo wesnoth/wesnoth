@@ -573,10 +573,9 @@ void wml_animation_internal(unit_animator &animator, const vconfig &cfg, const m
 			}
 		}
 		animator.add_animation(&*u, cfg["flag"], u->get_location(),
-			secondary_loc, lexical_cast_default<int>(cfg["value"]),
-			utils::string_bool(cfg["with_bars"]), false,
+			secondary_loc, cfg["value"], cfg["with_bars"].to_bool(), false,
 			cfg["text"], text_color, hits, primary, secondary,
-			lexical_cast_default<int>(cfg["value_second"]));
+			cfg["value_second"]);
 	}
 	const vconfig::child_list sub_anims = cfg.get_children("animate");
 	vconfig::child_list::const_iterator anim_itor;
