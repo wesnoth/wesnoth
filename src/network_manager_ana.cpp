@@ -1158,6 +1158,34 @@ network::statistics ana_network_manager::get_receive_stats(network::connection h
         return network::statistics();
 }
 
+bool ana_network_manager::disconnect( network::connection handle)
+{
+    if ( handle == 0 )
+        close_connections_and_cleanup();
+    else
+    {
+        ana::net_id id( handle );
+        ana_component_set::iterator it;
+
+        it = std::find_if( components_.begin(), components_.end(),
+                       boost::bind(std::logical_or<bool>(),
+                           (boost::bind(&ana_component::get_wesnoth_id, _1) == handle),
+                           (boost::bind(&ana_component::get_id, _1) == id ) ));
+        //Make a broad attempt at finding it, test for both ANA's id and the assigned one.
+
+        if ( it == components_.end())
+            throw std::runtime_error("Trying to disconnect an invalid component.");
+        else
+        {
+            if ( (*it)->is_server() )
+                throw std::runtime_error("Can't disconnect server directly.");
+            else
+                (*it)->client()->disconnect();
+        }
+    }
+    return true;
+}
+
 void ana_network_manager::handle_send(ana::error_code error_code,
                                       ana::net_id client,
                                       ana::operation_id /*op_id*/)

@@ -175,9 +175,9 @@ namespace network {
         return ana_manager.new_connection_id();
     }
 
-    bool disconnect(connection /*s*/)
+    bool disconnect(connection handle)
     {
-        throw std::runtime_error("TODO:Not implemented disconnect");
+        return ana_manager.disconnect( handle );
     }
 
     void queue_disconnect(network::connection /*sock*/)
