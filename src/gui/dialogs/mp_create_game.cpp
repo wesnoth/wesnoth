@@ -104,7 +104,7 @@ void tmp_create_game::pre_show(CVideo& /*video*/, twindow& window)
 	int i = 0;
 	foreach (const config &map, cfg_.child_range("multiplayer"))
 	{
-		if (utils::string_bool(map["allow_new_game"], true)) {
+		if (map["allow_new_game"].to_bool(true)) {
 			string_map item;
 			item.insert(std::make_pair("label", map["name"].str()));
 			item.insert(std::make_pair("tooltip", map["name"].str()));
