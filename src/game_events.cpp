@@ -788,8 +788,6 @@ WML_HANDLER_FUNCTION(modify_side, /*event_info*/, cfg)
 	 * to change it on the fly without causing visual glitches
 	 */
 	std::string switch_ai = cfg["switch_ai"];
-	std::string share_view = cfg["share_view"];
-	std::string share_maps = cfg["share_maps"];
 
 	int side_num = cfg["side"].to_int(1);
 	const size_t team_index = side_num-1;
@@ -861,16 +859,18 @@ WML_HANDLER_FUNCTION(modify_side, /*event_info*/, cfg)
 			ai::manager::modify_active_ai_config_old_for_side(side_num,ai);
 		}
 		// Add shared view to current team
+		config::attribute_value share_view = cfg["share_view"];
 		if (!share_view.empty()){
-			teams[team_index].set_share_view(utils::string_bool(share_view, true));
+			teams[team_index].set_share_view(share_view.to_bool(true));
 			team::clear_caches();
 			resources::screen->recalculate_minimap();
 			resources::screen->invalidate_all();
 		}
 		// Add shared maps to current team
 		// IMPORTANT: this MUST happen *after* share_view is changed
+		config::attribute_value share_maps = cfg["share_maps"];
 		if (!share_maps.empty()){
-			teams[team_index].set_share_maps(utils::string_bool(share_maps, true));
+			teams[team_index].set_share_maps(share_maps.to_bool(true));
 			team::clear_caches();
 			resources::screen->recalculate_minimap();
 			resources::screen->invalidate_all();
