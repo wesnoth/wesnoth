@@ -252,7 +252,7 @@ unit_animation::unit_animation(const config& cfg,const std::string& frame_string
 	foreach (const config &filter, cfg.child_range("filter_second_attack")) {
 		secondary_attack_filter_.push_back(filter);
 	}
-	play_offscreen_=utils::string_bool(cfg["offscreen"],true);
+	play_offscreen_ = cfg["offscreen"].to_bool(true);
 
 }
 
