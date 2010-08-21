@@ -1,198 +1,40 @@
-This file is here to allow devs to easily add stuff in the release
-notes for the next release, it allows easy syncing with the release
-team, since you don't have to be around when the release takes
-place...
+This file is here to allow devs to easily add stuff in the release notes for the next release, it allows easy syncing with the release team, since you don't have to be around when the release takes place...
 
-Just dump whatever you want to have mentioned in the release notes
-here. Please take care that it is in a way that allows copy&paste to
-the release notes. That is making sure that spelling/grammar/whatever
-is usable and that you are using complete sentences, not just single
-words.
+Just dump whatever you want to have mentioned in the release notes here. Please take care that it is in a way that allows copy&paste to the release notes. That is making sure that spelling/grammar/whatever is usable and that you are using complete sentences, not just single words. Please do use forum syntax and do *NOT* split lines after 80 chars!
+
+Stuff that belongs in here:
+* groundbreaking changes (new campaigns, extremely new feature, ...)
+* changed dependencies (new things, version bumps, stuff that was removed)
 
 The release team should empty this file after each release.
 
 ***
 
-A new campaign has entered mainline after being hosted by the
-Wesnoth-UMC-Dev Project for a few months. It is Dead Water, an
-intermediate level merfolk campaign with 13 scenarios.
+REPLACE ME WITH CONTENT...
 
 ***
 
-On X11 systems, Battle for Wesnoth now respects the XDG base directory
-specification when storing files into the home directory. In particular,
-unless some custom configuration from the user or the desktop environment
-is in use, config files will be found in ~/.config/wesnoth, save files
-and add-ons will be found in ~/.local/share/wesnoth/<version>, and cache
-files will be found in ~/.cache/wesnoth.
+REPLACE ME WITH CONTENT...
 
 ***
 
-Lua is no longer an external dependency. It is now imported in the src/
-directory so that it can be compiled with same C++ compiler as the engine.
+REPLACE ME WITH CONTENT...
 
 ***
 
->>> Network: <<<
-
-The  entire  network module  has  been  rewritten  using Boost's  asio
-library as part of a GSoC 2010 project by Guillermo Biset (billynux.)
-
-The work was divided into two parts:
-
-* Writing  a library  to help  develop asynchronous  sever  and client
-  network applications.
-* Rewriting the Wesnoth network implementation to use this library.
-
--- ANA: --
-
-ANA (stands  for Asynchronous  Network API) is  an API and  library to
-help developers code their  own server and client applications without
-having to deal with the many details of network programming.
-
-ANA  is  implemented with  Boost's  Asynchronous Input/Output  Library
-(asio) and  features a natural asynchronous (i.e.  non blocking) model
-of computation.  One important feature that must be taken into account
-is  the fact that  the flow  of control  is reversed  from synchronous
-implementation of network applications.
-
-In  our particular  case,  old implementations  for  users of  network
-features would constantly  poll the network implementation questioning
-whether some  event had occurred. Now,  it is the  network module (the
-ANA library) that will invoke a  given handler to let the user know of
-an event.
-
-You can find out more about what  ANA is and what it's good for if you
-compile the LaTeX document contained  in doc/ana and you can check out
-the  API   and  implementation   details  in  the   doxygen  generated
-documentation (e.g. run "doxygen Doxyfile" in src/ana.)
-
--- Network Implementation: --
-
-The new network  implementation uses the ANA library,  the old network
-API (network.hpp) is  mapped to a network manager  that is the handler
-for  the  events  generated  by  ANA.  Even  though  from  the  user's
-perspective control  flow still remains the same,  some simplicity and
-overall performance has been achieved.
-
--- New Network Implementation Proposal: --
-
-A new  network API was  proposed in network_async.hpp, however  it was
-judged that rewriting the  existent network user's code to accommodate
-this new  API must  be a thoroughly  thought through endeavor  and was
-thus postponed to better wrap up the GSoC project.
-
--- Dependencies of the New Network Module: --
-
-The implementation of the new network module requires:
-* boost_thread
-* boost_system
-* boost_asio
-All in versions of the Boost libraries 1.35.0 or above.
+REPLACE ME WITH CONTENT...
 
 ***
 
->>> Terrain: <<<
-
-There are many changes and improvements to terrain since 1.8.x.  Many of these changes are ongoing, so some terrains are half-baked, but overall the appearance should be much improved.
-
-
--- Highlights: --
-
-* New Animated Water and new land to water transitions.
-* Cave terrains are no longer extra dark, so they don't clash so much with other terrains.  The darkness in underground maps is now supplied by a "time of day" color shift.
-* There is a new advanced preference "local time of day light" to activate this area-specific color shift (note that it may use more memory in heavy cases like big caves)
-* The base terrain beneath land villages can now be changed.
-* The color of most terrains have been shifted, so that terrains look like they belong together.
-* Many new terrain variants.
-
-
--- Important Changes for Map Conversion: --
-
-* Cactuses and desert decorations. These are now *not* automatically part of Dd (desert). Mapmakers can now apply the embellishment "Desert Plants" (^Edp) over any base terrain, to get the density and placement of cacti that they want.
-
-* Flower are are now an embellishment overlay (^Efm) "Embellishment, Flowers, Mixed". It can now be mixed with other base terrains. "Ggf" is depreciated. It still exists, but will eventually be removed. For a better appearance, convert to "Gg^Efm", or another base with "^Efm".
-
-* "Desert Road" (Rd) used to be a rather dark and ambiguous dirt terrain. It's now much lighter as is appropriate for very dry dirt, but might have been used elsewhere as a dark terrain- which it no longer is. If dark was what you wanted switch to "Rb" or another of terrain.
-
-* "Rocky Path" (Rp) was intended as an overgrown foresty path, but didn't make this very clear and seems to be often used for plain grey cobbles. It is now really overgrown. If that's not what you want use Rrc, or another flat terrain.
-
-
--- New Cave Varients: --
-
-There is a new cave floor and 3 new cave walls.  Currently these are not very distinct, due to time constraints.  The following is what they will look like in a later release.
-
-* Hewn Cave Wall (Xuc)  A wall roughly hewn from natural stone
-* Earthy Cave Floor (Uue)  Soil and Stones mixed together.  Maybe some roots.
-* Earthy Cave Wall (Xue)  Soil and Stones mixed together.  Maybe some roots.
-* Earthy Hewn Cave Wall (Xuec)  Wooden Beam support the walls, as in a mine.
-
-
--- Warning: --
-The stone walls with pillars and bricks (Xos, Xol) are attractive, but built in a way that makes them extremely difficult to mesh with other terrains.  These will likely be remade for a future development release, so custom terrains or scenery items will likely no longer work quite right with them.
+REPLACE ME WITH CONTENT...
 
 ***
 
->>> Planning system / Whiteboard <<<
-
-A brand new move planning system codenamed "Whiteboard" has been developed as a Google Summer of Code 2010 project by Gabriel Morin (gabba). Its purpose is to visually test out several possible move (/attack/recruit/recall) combinations, check out the possible enemy moves for each one, and then execute the planned moves of your choice with the press of a key. Out-of-turn planning is also supported, so you can finally fine-tune your recruits and recalls or lay out some basic moves while waiting for your turn.
-
-This planning system is also destined to replace eventually Delay Shroud Updates, which is giving headaches to C++ coders and WML developers alike. Therefore DSU has been disabled in this release so the whiteboard's worth as a replacement can be determined. Your testing and feedback in this area is particularly needed and appreciated.
-
--- Commands --
-
-To turn the planning system on and off, use the shift-p hotkey (configurable), the check box in the right-click or Actions menu, or finally type the :wb command. There is an option in Preferences to enable the whiteboard on game start. You can also hold the Tab key as an instant toggle: it allows planning a move when the whiteboard is off, and making a regular move when the whiteboard is on.
-
-Once you have some planned actions defined, readily identifiable by the numbers (and arrows, for moves), you can execute or delete them, or move them up/down the action queue. Numbering matters, since if you're not hovering the mouse over a particular unit or action, the "execute" or "delete" command will target action #1. The current shortcut keys use keys that were free, and are subject to change, but they are currently:
-* Execute: y
-* Delete: h
-* Reorder action up/down: PgUp/PgDown
-
--- Limitations --
-
-* Out-of-turn planning doesn't reliably work while units are moving. Concretely it works fine for multiplayer games, not so well against the AI since it plays fast.
-* Disabling enemy moves tracking might help with out-of-turn planning.
-* The planning system hasn't been tested against the whole range of possible WML events, some of them might still cause crashes. However succesful tests included the tutorial, the "test" scenario, Dark Forecast, the first scenario of Legend of Wesmere.
-* The sidebar shows unit information only when hovering over the future destination of a unit (for instance, if it has two moves defined, over the second move's ghosted unit), and not over the unit itself, which is not very intuitive.
-* There's no interaction between the whiteboard and the game clock, therefore you won't get any time credit for planned moves until they are executed.
-
--- Short-term developments --
-
-Those are the features planned for the near future:
-* Cumulative Battle Statistics and Chance to Kill calculations for multiple attackers.
-* A "consider dead" action that allows you to pretend a unit is dead for a moment, and see the effect on pathfinding and Zone of Control.
-* Depending on feedback, an "execute all" command allowing you to quickly execute several trivial moves in quick succession.
-
--- Long-term developments --
-
-The whiteboard has been developed from the start with a networked aspect in mind, eventually allowing your allies to see your planned actions, as well as other interesting features such as suggesting moves and placing label-like symbols on the map. However there is still a lot of work left to get there.
-
--- Your testing is needed --
-
-Please report bugs on bugs.wesnoth.org and assign them to Item Group "Whiteboard". For general feedback, head over to the Planning System/Whiteboard Feedback Thread in the Multiplayer Development forum.
-When reporting bugs, please run wesnoth with the --log-debug=whiteboard command line option, reproduce your bug, and attach the resulting log to your bug report.
+REPLACE ME WITH CONTENT...
 
 ***
 
-A new WML feature is now available in Wesnoth - WML variables can now be stored in a persistent way, allowing scenarios to read and write persistent WML variables, both in singleplayer (from local machine) and in multiplayer (from other players across the network). This allows WML authors to store/access persistent data 'in context' of a specific campaign/add-on/group of addons/ group of games, allowing things like 'achievements' or 'massive multiplayer campaigns' to be implemented.
-
-Documentation of this feature is provided at http://wiki.wesnoth.org/PersistenceWML
-
-Support for this feature was coded by Jody Northup (Upthorn), during Google Summer of Code 2010.
-
-***
-
->>> Wesnoth User made content Eclipse Plugin <<<
-
-During Google Summer of Code 2010, Timotei Dolean (timotei) has developed the Wesnoth UMC Plugin.
-
-The plugin is in something like a WML IDE. Basically it offers you some features that greatly help anybody who makes User made Content in WML.
-- It has wizards for new campaign, scenario, faction, era and every other wml tag you can think of. You just complete the needed values and it generates the wml (with nice indentation).
-- It has frontends for launching wmltools( like wmllint, wmlscope, wmlindent on files/directories), the wesnoth game, map editor.
-- It has a specialized WML editor, that has syntax highlighting, tag folding and outline, autocompletion, macro "explorer" and so on.
-- It has a 'upload addon' feature that uploads the specified project to the addons server.
-
-For details and information on how to install it go to: http://eclipse.wesnoth.org
+REPLACE ME WITH CONTENT...
 
 ***
 
