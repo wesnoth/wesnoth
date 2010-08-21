@@ -715,8 +715,8 @@ void ui::gamelist_updated(bool silent)
 	{
 		user_info u_elem;
 		u_elem.name = user["name"].str();
-		u_elem.state = user["available"] == "no" ? GAME : LOBBY;
-		u_elem.registered = utils::string_bool(user["registered"]);
+		u_elem.state = user["available"].to_bool(true) ? LOBBY : GAME;
+		u_elem.registered = user["registered"].to_bool();
 		u_elem.game_id = user["game_id"].str();
 		u_elem.location = user["location"].str();
 		if (u_elem.name == preferences::login()) {
