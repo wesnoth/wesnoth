@@ -21,6 +21,32 @@ local function insert_before_nl(s, t)
 	return string.gsub(tostring(s), "[^\n]*", "%0" .. t, 1)
 end
 
+local scenario_objectives = {}
+
+local objectives_old_save = wesnoth.game_events.on_save
+local objectives_old_load = wesnoth.game_events.on_load
+
+function wesnoth.game_events.on_save()
+	local custom_cfg = objectives_old_save and objectives_old_saves() or {}
+	for i,v in pairs(scenario_objectives) do
+		v.side = i
+		table.insert(custom_cfg, { "objectives", v })
+	end
+	return custom_cfg
+end
+
+function wesnoth.game_events.on_load(cfg)
+	for i = #cfg,1,-1 do
+		local v = cfg[i]
+		if v[1] == "objectives" then
+			local v2 = v[2]
+			scenario_objectives[v2.side or 0] = v2
+			table.remove(cfg, i)
+		end
+	end
+	if objectives_old_load then objectives_old_load(cfg) end
+end
+
 local function generate_objectives(cfg)
 	-- Note: when changing the text formatting, remember to check if you also
 	-- need to change the hardcoded default multiplayer objective text in
@@ -127,7 +153,7 @@ function wml_actions.objectives(cfg)
 	-- Save the objectives in a WML variable in case they have to be regenerated later.
 	cfg.side = nil
 	cfg.silent = nil
-	wesnoth.set_variable("__scenario_objectives_" .. side, cfg)
+	scenario_objectives[side] = cfg
 
 	-- Generate objectives for the given sides
 	local objectives = generate_objectives(cfg)
@@ -141,32 +167,22 @@ function wml_actions.objectives(cfg)
 		team.objectives = objectives
 		if not silent then team.objectives_changed = true end
 	end
-
-	-- Prepare an event for removing objectives variables on output.
-	if not wesnoth.get_variable("__scenario_objectives_gc") then
-		wesnoth.set_variable("__scenario_objectives_gc", true)
-		local vars = "__scenario_objectives_gc,__scenario_objectives_0"
-		for side = 1, #wesnoth.sides do
-			vars = vars .. ",__scenario_objectives_" .. side
-		end
-		wml_actions.event { name="victory", { "clear_variable", { name = vars }}}
-	end
 end
 
 function wml_actions.show_objectives(cfg)
 	local side = cfg.side or 0
-	local cfg0 = wesnoth.get_variable("__scenario_objectives_0")
+	local cfg0 = scenario_objectives[0]
 	if side == 0 then
 		local objectives0 = cfg0 and generate_objectives(cfg0)
 		for side, team in ipairs(wesnoth.sides) do
-			cfg = wesnoth.get_variable("__scenario_objectives_" .. side)
+			cfg = scenario_objectives[side]
 			local objectives = (cfg and generate_objectives(cfg)) or objectives0
 			if objectives then team.objectives = objectives end
 			team.objectives_changed = true
 		end
 	else
 		local team = wesnoth.sides[side]
-		cfg = wesnoth.get_variable("__scenario_objectives_" .. side) or cfg0
+		cfg = scenario_objectives[side] or cfg0
 		local objectives = cfg and generate_objectives(cfg)
 		if objectives then team.objectives = objectives end
 		team.objectives_changed = true
