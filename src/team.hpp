@@ -69,7 +69,8 @@ public:
 
 	struct team_info
 	{
-		team_info(const config& cfg);
+		team_info();
+		void read(const config &cfg);
 		void write(config& cfg) const;
 		std::string name;
 		int gold;
@@ -120,9 +121,11 @@ public:
 
 	static std::map<int, color_range> team_color_range_;
 	static const int default_team_gold;
-	team(const config& cfg, const gamemap& map, int gold=default_team_gold);
 
-	~team() {};
+	team();
+	~team();
+
+	void build(const config &cfg, const gamemap &map, int gold = default_team_gold);
 
 	void write(config& cfg) const;
 

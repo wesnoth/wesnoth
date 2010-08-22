@@ -683,6 +683,9 @@ protected:
 	void init()
 	{
 		side_ = side_cfg_["side"].to_int(1);
+		if (unsigned(side_ - 1) >= teams_.size() || teams_[side_ - 1].side() != 0)
+			throw config::error("Invalid side number.");
+		t_ = &teams_[side_ - 1];
 
 		log_step("init");
 
@@ -787,11 +790,8 @@ protected:
 	void new_team()
 	{
 		log_step("new team");
-		team temp_team(side_cfg_, map_, gold_info_ngold_);
-		temp_team.set_gold_add(gold_info_add_);
-		teams_.push_back(temp_team);
-		t_ = &teams_.back();
-		t_->get_side_actions()->set_team_index(teams_.size() - 1);
+		t_->build(side_cfg_, map_, gold_info_ngold_);
+		t_->set_gold_add(gold_info_add_);
 	}
 
 

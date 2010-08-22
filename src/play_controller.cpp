@@ -174,6 +174,8 @@ void play_controller::init(CVideo& video){
 	LOG_NG << "initialized teams... "    << (SDL_GetTicks() - ticks_) << "\n";
 	loadscreen::start_stage("init teams");
 
+	resources::teams->resize(level_.child_count("side"));
+
 	// This *needs* to be created before the show_intro and show_map_scene
 	// as that functions use the manager state_of_game
 	// Has to be done before registering any events!

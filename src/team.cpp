@@ -47,39 +47,65 @@ const std::vector<team>& teams_manager::get_teams()
 	return *teams;
 }
 
-team::team_info::team_info(const config& cfg) :
-		name(cfg["name"]),
-		gold(cfg["gold"]),
-		start_gold(0),
-		gold_add(false),
-		income(cfg["income"]),
-		income_per_village(0),
-		recall_cost(0),
-		can_recruit(),
-		team_name(cfg["team_name"]),
-		user_team_name(cfg["user_team_name"].t_str()),
-		save_id(cfg["save_id"]),
-		current_player(cfg["current_player"]),
-		countdown_time(cfg["countdown_time"]),
-		action_bonus_count(cfg["action_bonus_count"]),
-		flag(cfg["flag"]),
-		flag_icon(cfg["flag_icon"]),
-		description(cfg["id"]),
-		scroll_to_leader(cfg["scroll_to_leader"].to_bool(true)),
-		objectives(cfg["objectives"].t_str()),
-		objectives_changed(cfg["objectives_changed"].to_bool()),
-		controller(),
-		share_maps(false),
-		share_view(false),
-		disallow_observers(cfg["disallow_observers"].to_bool()),
-		allow_player(cfg["allow_player"].to_bool(true)),
-		no_leader(cfg["no_leader"].to_bool()),
-		hidden(cfg["hidden"].to_bool()),
-		music(cfg["music"]),
-		color(),
-		side(cfg["side"].to_int(1)),
-		persistent(false)
+team::team_info::team_info() :
+	name(),
+	gold(0),
+	start_gold(0),
+	gold_add(false),
+	income(0),
+	income_per_village(0),
+	recall_cost(0),
+	can_recruit(),
+	team_name(),
+	user_team_name(),
+	save_id(),
+	current_player(),
+	countdown_time(),
+	action_bonus_count(0),
+	flag(),
+	flag_icon(),
+	description(),
+	scroll_to_leader(true),
+	objectives(),
+	objectives_changed(false),
+	controller(),
+	share_maps(false),
+	share_view(false),
+	disallow_observers(false),
+	allow_player(false),
+	no_leader(true),
+	hidden(true),
+	music(),
+	color(),
+	side(0),
+	persistent(false)
 {
+}
+
+void team::team_info::read(const config &cfg)
+{
+	name = cfg["name"].str();
+	gold = cfg["gold"];
+	income = cfg["income"];
+	team_name = cfg["team_name"].str();
+	user_team_name = cfg["user_team_name"];
+	save_id = cfg["save_id"].str();
+	current_player = cfg["current_player"].str();
+	countdown_time = cfg["countdown_time"].str();
+	action_bonus_count = cfg["action_bonus_count"];
+	flag = cfg["flag"].str();
+	flag_icon = cfg["flag_icon"].str();
+	description = cfg["id"].str();
+	scroll_to_leader = cfg["scroll_to_leader"].to_bool(true);
+	objectives = cfg["objectives"];
+	objectives_changed = cfg["objectives_changed"].to_bool();
+	disallow_observers = cfg["disallow_observers"].to_bool();
+	allow_player = cfg["allow_player"].to_bool(true);
+	no_leader = cfg["no_leader"].to_bool();
+	hidden = cfg["hidden"].to_bool();
+	music = cfg["music"].str();
+	side = cfg["side"].to_int(1);
+
 	///@deprecated 1.9.2 Usage of 'colour' in [side]
 	const std::string colour_error = "Usage of 'colour' in [side] is deprecated, support will be removed in 1.9.2.\n";
 	if(cfg.has_old_attribute("color","colour",colour_error))
@@ -239,23 +265,34 @@ void team::merge_shroud_map_data(const std::string& shroud_data)
 	shroud_.merge(shroud_data);
 }
 
-team::team(const config& cfg, const gamemap& map, int gold) :
-		savegame_config(),
-		gold_(gold),
-		villages_(),
-		shroud_(),
-		fog_(),
-		auto_shroud_updates_(true),
-		info_(cfg),
-		countdown_time_(0),
-		action_bonus_count_(0),
-		recall_list_(),
-		enemies_(),
-		seen_(),
-		ally_shroud_(),
-		ally_fog_(),
-		planned_actions_()
+team::team() :
+	savegame_config(),
+	gold_(0),
+	villages_(),
+	shroud_(),
+	fog_(),
+	auto_shroud_updates_(true),
+	info_(),
+	countdown_time_(0),
+	action_bonus_count_(0),
+	recall_list_(),
+	enemies_(),
+	seen_(),
+	ally_shroud_(),
+	ally_fog_(),
+	planned_actions_()
 {
+}
+
+team::~team()
+{
+}
+
+void team::build(const config &cfg, const gamemap& map, int gold)
+{
+	gold_ = gold;
+	info_.read(cfg);
+
 	fog_.set_enabled(cfg["fog"].to_bool());
 	shroud_.set_enabled(cfg["shroud"].to_bool());
 	shroud_.read(cfg["shroud_data"]);
@@ -287,6 +324,7 @@ team::team(const config& cfg, const gamemap& map, int gold) :
 	action_bonus_count_ = cfg["action_bonus_count"];
 
 	planned_actions_.reset(new wb::side_actions());
+	planned_actions_->set_team_index(info_.side - 1);
 }
 
 void team::write(config& cfg) const
