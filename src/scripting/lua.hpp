@@ -30,11 +30,13 @@ void extract_preload_scripts(config const &);
 class LuaKernel
 {
 	lua_State *mState;
+	const config &level_;
 	bool execute(char const *, int, int);
 public:
-	LuaKernel();
+	LuaKernel(const config &);
 	~LuaKernel();
 	void initialize();
+	void save_game(config &cfg);
 	void set_wml_action(std::string const &, game_events::action_handler);
 	bool run_wml_action(std::string const &, vconfig const &,
 		game_events::queued_event const &);

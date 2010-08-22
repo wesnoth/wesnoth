@@ -3145,7 +3145,7 @@ namespace game_events {
 			unit_wml_ids.insert(id);
 		}
 
-		resources::lua_kernel = new LuaKernel;
+		resources::lua_kernel = new LuaKernel(cfg);
 		manager_running = true;
 
 		foreach (static_wml_action_map::value_type &action, static_wml_actions) {
@@ -3205,6 +3205,8 @@ namespace game_events {
 
 		if (resources::screen)
 			resources::screen->write_overlays(cfg);
+
+		resources::lua_kernel->save_game(cfg);
 	}
 
 	manager::~manager() {

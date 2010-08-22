@@ -2589,8 +2589,8 @@ static int intf_add_modification(lua_State *L)
 	return 0;
 }
 
-LuaKernel::LuaKernel()
-	: mState(luaL_newstate())
+LuaKernel::LuaKernel(const config &cfg)
+	: mState(luaL_newstate()), level_(cfg)
 {
 	lua_State *L = mState;
 
@@ -2810,9 +2810,9 @@ LuaKernel::LuaKernel()
 void LuaKernel::initialize()
 {
 	lua_State *L = mState;
-	lua_getglobal(L, "wesnoth");
 
 	// Create the sides table.
+	lua_getglobal(L, "wesnoth");
 	std::vector<team> &teams = *resources::teams;
 	lua_pushlightuserdata(L, (void *)&getsideKey);
 	lua_rawget(L, LUA_REGISTRYINDEX);
@@ -2827,9 +2827,10 @@ void LuaKernel::initialize()
 		lua_rawseti(L, -2, i + 1);
 	}
 	lua_setfield(L, -3, "sides");
-	lua_pop(L, 1);
+	lua_pop(L, 2);
 
 	// Create the unit_types table.
+	lua_getglobal(L, "wesnoth");
 	lua_pushlightuserdata(L, (void *)&gettypeKey);
 	lua_rawget(L, LUA_REGISTRYINDEX);
 	lua_newtable(L);
@@ -2849,6 +2850,13 @@ void LuaKernel::initialize()
 	foreach (const config &cfg, preload_scripts) {
 		execute(cfg["code"].str().c_str(), 0, 0);
 	}
+	foreach (const config &cfg, level_.child_range("lua")) {
+		execute(cfg["code"].str().c_str(), 0, 0);
+	}
+}
+
+void LuaKernel::save_game(config &)
+{
 }
 
 LuaKernel::~LuaKernel()
