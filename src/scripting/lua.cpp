@@ -439,8 +439,8 @@ bool luaW_pcall(lua_State *L
 				e = em;
 			chat_message("Lua error", std::string(m, e ? e - m : strlen(m)));
 		} else {
-			chat_message("Lua error", m);
 			ERR_LUA << m << '\n';
+			chat_message("Lua error", m);
 		}
 		lua_pop(L, 2);
 		return false;
@@ -2789,6 +2789,12 @@ LuaKernel::LuaKernel(const config &cfg)
 	lua_setfield(L, -2, "wml_actions");
 	lua_pop(L, 1);
 
+	// Create the game_events table.
+	lua_getglobal(L, "wesnoth");
+	lua_newtable(L);
+	lua_setfield(L, -2, "game_events");
+	lua_pop(L, 1);
+
 	// Remove the math.random function, since it is not OoS-proof.
 	lua_getglobal(L, "math");
 	lua_pushnil(L);
@@ -2853,10 +2859,99 @@ void LuaKernel::initialize()
 	foreach (const config &cfg, level_.child_range("lua")) {
 		execute(cfg["code"].str().c_str(), 0, 0);
 	}
+
+	load_game();
 }
 
-void LuaKernel::save_game(config &)
+static char const *handled_file_tags[] = {
+	"color_palette", "color_range", "event", "item", "label", "lua",
+	"menu_item", "music", "side", "sound_source", "teleport", "time",
+	"time_area", "variables"
+};
+
+static bool is_handled_file_tag(const std::string &s)
 {
+	foreach (char const *t, handled_file_tags) {
+		if (s == t) return true;
+	}
+	return false;
+}
+
+/**
+ * Executes the game_events.on_load function and passes to it all the
+ * scenario tags not yet handled.
+ */
+void LuaKernel::load_game()
+{
+	lua_State *L = mState;
+
+	lua_getglobal(L, "wesnoth");
+	lua_pushstring(L, "game_events");
+	lua_rawget(L, -2);
+	lua_remove(L, -2);
+	lua_pushstring(L, "on_load");
+	lua_rawget(L, -2);
+	lua_remove(L, -2);
+
+	if (lua_isnil(L, -1)) {
+		lua_pop(L, 1);
+		return;
+	}
+
+	lua_newtable(L);
+	int k = 1;
+	foreach (const config::any_child &v, level_.all_children_range())
+	{
+		if (is_handled_file_tag(v.key)) continue;
+		lua_createtable(L, 2, 0);
+		lua_pushstring(L, v.key.c_str());
+		lua_rawseti(L, -2, 1);
+		luaW_pushconfig(L, v.cfg);
+		lua_rawseti(L, -2, 2);
+		lua_rawseti(L, -2, k++);
+	}
+
+	luaW_pcall(L, 1, 0, false);
+}
+
+/**
+ * Executes the game_events.on_save function and adds to @a cfg the
+ * returned tags. Also flushes the [lua] tags.
+ */
+void LuaKernel::save_game(config &cfg)
+{
+	foreach (const config &v, level_.child_range("lua")) {
+		cfg.add_child("lua", v);
+	}
+
+	lua_State *L = mState;
+
+	lua_getglobal(L, "wesnoth");
+	lua_pushstring(L, "game_events");
+	lua_rawget(L, -2);
+	lua_remove(L, -2);
+	lua_pushstring(L, "on_save");
+	lua_rawget(L, -2);
+	lua_remove(L, -2);
+
+	if (lua_isnil(L, -1)) {
+		lua_pop(L, 1);
+		return;
+	}
+
+	if (!luaW_pcall(L, 0, 1, false))
+		return;
+	config v;
+	if (!luaW_toconfig(L, -1, cfg))
+		return;
+
+	for (;;)
+	{
+		config::all_children_iterator i = v.ordered_begin();
+		if (i == v.ordered_end()) break;
+		if (is_handled_file_tag(i->key)) continue;
+		cfg.splice_children(v, i->key);
+	}
 }
 
 LuaKernel::~LuaKernel()

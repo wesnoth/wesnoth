@@ -36,7 +36,8 @@ public:
 	LuaKernel(const config &);
 	~LuaKernel();
 	void initialize();
-	void save_game(config &cfg);
+	void save_game(config &);
+	void load_game();
 	void set_wml_action(std::string const &, game_events::action_handler);
 	bool run_wml_action(std::string const &, vconfig const &,
 		game_events::queued_event const &);
