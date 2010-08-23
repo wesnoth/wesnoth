@@ -175,6 +175,7 @@ void target_location_goal::add_targets(std::back_insert_iterator< std::vector< t
 
 target_location_goal::target_location_goal(readonly_context &context, const config &cfg)
 	: goal(context,cfg)
+	, filter_ptr_()
 	, value_(0.0)
 {
 }
