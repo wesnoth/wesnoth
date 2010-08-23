@@ -73,21 +73,9 @@ void terrain_builder::tile::rebuild_cache(const std::string& tod, logs* log)
 
 		imagelist& img_list = is_background ? images_background : images_foreground;
 
-		int rnd = (ri.rand % 100) + 1;
 		foreach(const rule_image_variant& variant, ri->variants){
 			if(!variant.tods.empty() && variant.tods.find(tod) == variant.tods.end())
 				continue;
-
-			//we found a matching ToD variant, check probability
-			if(rnd > variant.probability) {
-				//probability test failed, decrease rnd so it's now into the
-				//range of probability left.
-				//Example: it was in 1..100 and failed a 80% match, so it's now
-				//in the 1..20 range and a following 10% match will have 1/2
-				//chance to pass
-				rnd -= variant.probability;
-				continue;
-			}
 
 			img_list.push_back(variant.image);
 			img_list.back().set_animation_time(ri.rand % img_list.back().get_animation_duration());
@@ -532,11 +520,10 @@ void terrain_builder::rotate_rule(building_rule &ret, int angle,
 	replace_rotate_tokens(ret, angle, rot);
 }
 
-terrain_builder::rule_image_variant::rule_image_variant(const std::string &image_string, const std::string& tod, int prob) :
+terrain_builder::rule_image_variant::rule_image_variant(const std::string &image_string, const std::string& tod) :
 		image_string(image_string),
 		image(),
-		tods(),
-		probability(prob)
+		tods()
 {
 	if(!tod.empty()) {
 		const std::vector<std::string> tod_list = utils::split(tod);
@@ -575,9 +562,8 @@ void terrain_builder::add_images_from_config(rule_imagelist& images, const confi
 		{
 			const std::string &name = variant["name"];
 			const std::string &tod = variant["tod"];
-			const int prob = variant["probability"].to_int(100);
 
-			images.back().variants.push_back(rule_image_variant(name, tod, prob));
+			images.back().variants.push_back(rule_image_variant(name, tod));
 		}
 
 		// Adds the main (default) variant of the image at the end,
