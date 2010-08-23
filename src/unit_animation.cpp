@@ -66,6 +66,12 @@ const std::vector<std::string>& unit_animation::all_tag_names() {
 
 struct animation_branch
 {
+	animation_branch()
+		: attributes()
+		, children()
+	{
+	}
+
 	config attributes;
 	std::vector<config::all_children_iterator> children;
 	config merge() const
