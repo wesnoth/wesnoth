@@ -31,7 +31,7 @@ struct persist_choice: mp_sync::user_choice {
 	const persist_context &ctx;
 	std::string var_name;
 	int side;
-	persist_choice(const persist_context &context,const std::string &name, int side_num) 
+	persist_choice(const persist_context &context,const std::string &name, int side_num)
 		: ctx(context)
 		, var_name(name)
 		, side(side_num) {
@@ -122,7 +122,7 @@ void verify_and_get_global_variable(const vconfig &pcfg)
 				LOG_PERSIST << "Error: [get_global_variable] attribute \"side\" specifies invalid side number.";
 				valid = false;
 			} else {
-				if ((side != resources::controller->current_side()) 
+				if ((side != resources::controller->current_side())
 					&& !((*resources::teams)[side - 1].is_local())) {
 					if ((*resources::teams)[resources::controller->current_side() - 1].is_local()) {
 						config data;

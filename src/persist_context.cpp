@@ -224,7 +224,7 @@ bool persist_file_context::set_var(const std::string &global,const config &val, 
 		active_->cfg_.remove_attribute("variables");
 		active_->cfg_.add_child("variables",bactive);
 		return ret;
-	} else 
+	} else
 		return true;
 }
 void persist_context::set_node(const std::string &name) {

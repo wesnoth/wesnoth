@@ -1015,7 +1015,7 @@ static TYPE simplify_type(const image::locator& i_locator, TYPE type){
 		if (red_adjust==0 && green_adjust==0 && blue_adjust==0)
 			type = SCALED_TO_HEX;
 	}
-	
+
 	if(type == SCALED_TO_HEX) {
 		if(zoom == tile_size)
 			type = HEXED;
