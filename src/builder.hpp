@@ -156,14 +156,15 @@ public:
 	 */
 	struct rule_image_variant {
 		/** Constructor for the normal defaut case */
-		rule_image_variant(const std::string &image_string) :
+		rule_image_variant(const std::string &image_string, const std::string& variations) :
 			image_string(image_string),
-			image(),
+			variations(variations),
+			images(),
 			tods()
 			{};
 
 		/** Constructor for true [variant] cases */
-		rule_image_variant(const std::string &image_string, const std::string& tod);
+		rule_image_variant(const std::string &image_string, const std::string& variations, const std::string& tod);
 
 		/** A string representing either the filename for an image, or
 		 *  a list of images, with an optional timing for each image.
@@ -184,11 +185,16 @@ public:
 		 */
 		std::string image_string;
 
+		/** A semi-solon separated list of string used to replace
+		 * @verbatim <code>@V</code> @endverbatim in image_string (if present)
+		 */
+		std::string variations;
+
 		/** An animated image locator built according to the image string.
 		 * This will be the image locator which will actually
 		 * be returned to the user.
 		 */
-		animated<image::locator> image;
+		std::vector< animated<image::locator> > images;
 
 		/** The Time of Day associated to this variant (if any)*/
 		std::set<std::string> tods;

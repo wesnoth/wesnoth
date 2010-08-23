@@ -77,7 +77,10 @@ void terrain_builder::tile::rebuild_cache(const std::string& tod, logs* log)
 			if(!variant.tods.empty() && variant.tods.find(tod) == variant.tods.end())
 				continue;
 
-			img_list.push_back(variant.image);
+			//need to break parity pattern in RNG
+			///@TODO improve this
+			unsigned int rnd = ri.rand / 7919; //just the 1000th prime
+			img_list.push_back(variant.images[rnd % variant.images.size()]);
 			img_list.back().set_animation_time(ri.rand % img_list.back().get_animation_duration());
 
 			if(log) {
@@ -304,6 +307,29 @@ static bool image_exists(const std::string& name)
 	return false;
 }
 
+static std::vector<std::string> get_variations(const std::string& base, const std::string& variations)
+{
+	///@TODO optimize this function
+	std::vector<std::string> res;
+	if(variations.empty()){
+		res.push_back(base);
+		return res;
+	}
+	std::string::size_type pos = base.find("@V", 0);
+	if(pos == std::string::npos) {
+		res.push_back(base);
+		return res;
+	}
+	std::vector<std::string> vars = utils::split(variations, ';', 0);
+
+	const std::string prefix(base, 0, pos);
+	const std::string postfix(base, pos+2, std::string::npos);
+	foreach(std::string& v, vars){
+		res.push_back(prefix + v + postfix);
+	}
+	return res;
+}
+
 bool terrain_builder::load_images(building_rule &rule)
 {
 	// If the rule has no constraints, it is invalid
@@ -316,38 +342,52 @@ bool terrain_builder::load_images(building_rule &rule)
 	{
 		foreach(rule_image& ri, constraint.images)
 		{
-			foreach(rule_image_variant& variant, ri.variants) {
-				//TODO: improve this, 99% of terrains are not animated.
-				std::vector<std::string> frames = utils::parenthetical_split(variant.image_string,',');
-				if (frames.empty()) return false;
+			foreach(rule_image_variant& variant, ri.variants)
+			{
 
-				foreach(const std::string& frame, frames) {
-					const std::vector<std::string> items = utils::split(frame, ':');
-					const std::string& str = items.front();
+				//std::vector<std::string> var_strings = utils::split(variant.image_string, ';');
+				std::vector<std::string> var_strings = get_variations(variant.image_string, variant.variations);
+				foreach(const std::string& var, var_strings)
+				{
+					///@TODO improve this, 99% of terrains are not animated.
+					std::vector<std::string> frames = utils::parenthetical_split(var,',');
+					animated<image::locator> res;
 
-					const size_t tilde = str.find('~');
-					bool has_tilde = tilde != std::string::npos;
-					const std::string filename = "terrain/" + (has_tilde ? str.substr(0,tilde) : str);
+					foreach(const std::string& frame, frames)
+					{
+						const std::vector<std::string> items = utils::split(frame, ':');
+						const std::string& str = items.front();
 
-					if(!image_exists(filename))
-						return false;
+						const size_t tilde = str.find('~');
+						bool has_tilde = tilde != std::string::npos;
+						const std::string filename = "terrain/" + (has_tilde ? str.substr(0,tilde) : str);
 
-					const std::string modif = (has_tilde ? str.substr(tilde+1) : "");
+						if(!image_exists(filename)){
+							continue; // ignore missing frames
+						}
 
-					int time = 100;
-					if(items.size() > 1) {
-						time = atoi(items.back().c_str());
+						const std::string modif = (has_tilde ? str.substr(tilde+1) : "");
+
+						int time = 100;
+						if(items.size() > 1) {
+							time = atoi(items.back().c_str());
+						}
+						image::locator locator;
+						if(ri.global_image) {
+							locator = image::locator(filename, constraint.loc, ri.center_x, ri.center_y, modif);
+						} else {
+							locator = image::locator(filename, modif);
+						}
+						res.add_frame(time, locator);
 					}
-					image::locator locator;
-					if(ri.global_image) {
-						locator = image::locator(filename, constraint.loc, ri.center_x, ri.center_y, modif);
-					} else {
-						locator = image::locator(filename, modif);
-					}
-					variant.image.add_frame(time, locator);
+					if(res.get_frames_count() == 0)
+						break; // no valid images, don't register it
+
+					res.start_animation(0, true);
+					variant.images.push_back(res);
 				}
-
-				variant.image.start_animation(0, true);
+				if(variant.images.empty())
+					return false; //no valid images, rule is invalid
 			}
 		}
 	}
@@ -520,9 +560,10 @@ void terrain_builder::rotate_rule(building_rule &ret, int angle,
 	replace_rotate_tokens(ret, angle, rot);
 }
 
-terrain_builder::rule_image_variant::rule_image_variant(const std::string &image_string, const std::string& tod) :
+terrain_builder::rule_image_variant::rule_image_variant(const std::string &image_string, const std::string& variations, const std::string& tod) :
 		image_string(image_string),
-		image(),
+		variations(variations),
+		images(),
 		tods()
 {
 	if(!tod.empty()) {
@@ -561,15 +602,17 @@ void terrain_builder::add_images_from_config(rule_imagelist& images, const confi
 		foreach (const config &variant, img.child_range("variant"))
 		{
 			const std::string &name = variant["name"];
+			const std::string &variations = img["variations"];
 			const std::string &tod = variant["tod"];
 
-			images.back().variants.push_back(rule_image_variant(name, tod));
+			images.back().variants.push_back(rule_image_variant(name, variations, tod));
 		}
 
 		// Adds the main (default) variant of the image at the end,
 		// (will be used only if previous variants don't match)
 		const std::string &name = img["name"];
-		images.back().variants.push_back(rule_image_variant(name));
+		const std::string &variations = img["variations"];
+		images.back().variants.push_back(rule_image_variant(name, variations));
 	}
 }
 
