@@ -92,9 +92,12 @@ namespace network {
     {
         const ana::stats* stats = ana_manager.get_stats( connection_num );
 
-        return connection_stats( stats->bytes_out(),
-                                 stats->bytes_in(),
-                                 stats->uptime() ); //TODO: is uptime ok?
+        if ( stats == NULL )
+            throw std::runtime_error("Invalid connection ID to get stats from.");
+        else
+            return connection_stats( stats->bytes_out(),
+                                     stats->bytes_in(),
+                                     stats->uptime() );
     }
 
     error::error(const std::string& msg, connection sock) : game::error(msg), socket(sock)
@@ -107,7 +110,13 @@ namespace network {
 
     pending_statistics get_pending_stats()
     {
-        throw std::runtime_error("TODO:Not implemented get_pending_stats");
+        //TODO: implement this feature, this is only to avoid segfaults when /query netstats is sent
+        pending_statistics result;
+
+        result.npending_sends       = 0;
+        result.nbytes_pending_sends = 0;
+
+        return result;
     }
 
     manager::manager(size_t /*min_threads*/, size_t /*max_threads*/) : free_(true)
@@ -245,7 +254,6 @@ namespace network {
         const size_t bytes_width  = 8;
 
         const ana::stats* stats = ana_manager.get_stats( );
-
 
         std::stringstream ss;
         ss  << " " << std::setw(field_width) <<  packet_type << "| "

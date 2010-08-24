@@ -696,6 +696,8 @@ network::connection ana_network_manager::new_connection_id( )
     // No new connection
     return 0;
 }
+
+
 const ana::stats* ana_network_manager::get_stats( network::connection connection_num,
                                                   ana::stat_type      type)
 {
@@ -704,7 +706,7 @@ const ana::stats* ana_network_manager::get_stats( network::connection connection
 
     if ( id == 0 )
     {
-        if ( components_.size() > 0 )
+        if ( ! components_.empty() )
         {
             it = components_.begin();
             return (*it)->get_stats( type );
@@ -715,10 +717,25 @@ const ana::stats* ana_network_manager::get_stats( network::connection connection
     else
     {
         it = std::find_if( components_.begin(), components_.end(),
-                            boost::bind(&ana_component::get_id, _1) == id );
+                           boost::bind(std::logical_or<bool>(),
+                           (boost::bind(&ana_component::get_wesnoth_id, _1) == connection_num),
+                           (boost::bind(&ana_component::get_id, _1) == id ) ));
+        //Make a broad attempt at finding it, test for both ANA's id and the assigned one.
 
         if ( it != components_.end())
             return (*it)->get_stats( type );
+        else
+        {
+            for ( it = components_.begin() ; it != components_.end(); ++it)
+            {
+                if ( (*it)->is_server() )
+                {
+                    const ana::stats* res = (*it)->server()->get_client_stats(id,ana::ACCUMULATED);
+                    if ( res != NULL )
+                        return res;
+                }
+            }
+        }
 
         return NULL;
     }
