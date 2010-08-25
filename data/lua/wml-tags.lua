@@ -80,13 +80,14 @@ local function generate_objectives(cfg)
 				win_objectives = win_objectives .. color_prefix(0, 255, 0) .. bullet .. obj.description .. "</span>" .. "\n"
 			elseif condition == "lose" then
 				local caption = obj.caption
+				local turn_counter = ""
 
 				if obj.show_turn_counter then
 					local current_turn = wesnoth.current.turn
 					local turn_limit = wesnoth.game_config.last_turn
 
 					if turn_limit >= current_turn then
-						obj.description = obj.description .. "<small> " .. string.format(tostring(_"(current_turn/turn_limit)^(%d/%d)"), current_turn, turn_limit) .. "</small>"
+						turn_counter = "<small> " .. string.format(tostring(_"(current_turn/turn_limit)^(%d/%d)"), current_turn, turn_limit) .. "</small>"
 					end
 				end
 
@@ -94,7 +95,7 @@ local function generate_objectives(cfg)
 					lose_objectives = lose_objectives .. caption .. "\n"
 				end
 
-				lose_objectives = lose_objectives .. color_prefix(255, 0, 0) .. bullet .. obj.description .. "</span>" .. "\n"
+				lose_objectives = lose_objectives .. color_prefix(255, 0, 0) .. bullet .. obj.description .. turn_counter .. "</span>" .. "\n"
 			else
 				wesnoth.message "Unknown condition, ignoring."
 			end
@@ -111,7 +112,15 @@ local function generate_objectives(cfg)
 		end
 
 		if obj.carryover_percentage then
-			gold_carryover = gold_carryover .. color_prefix(255, 255, 192) .. bullet .. "<small>" .. string.format(tostring(_ "%d%% of gold carried over to the next scenario."), obj.carryover_percentage) .. "</small></span>\n"
+			local carryover_amount_string = ""
+
+			if obj.carryover_percentage == 0 then
+				carryover_amount_string = _"No gold carried over to the next scenario."
+			else
+				carryover_amount_string = string.format(tostring(_ "%d%% of gold carried over to the next scenario."), obj.carryover_percentage)
+			end
+
+			gold_carryover = gold_carryover .. color_prefix(255, 255, 192) .. bullet .. "<small>" .. carryover_amount_string .. "</small></span>\n"
 		end
 	end
 
