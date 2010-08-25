@@ -585,6 +585,7 @@ ana_network_manager::ana_network_manager() :
     connect_timer_( NULL ),
     components_(),
     server_manager_(),
+    disconnected_components_(),
     disconnected_ids_()
 {
 }
@@ -756,9 +757,21 @@ void ana_network_manager::close_connections_and_cleanup()
 
 void ana_network_manager::throw_if_pending_disconnection()
 {
+    if ( ! disconnected_components_.empty() )
+    {
+        ana_component* component = disconnected_components_.front();
+        disconnected_components_.pop();
+
+        const ana::net_id id = component->get_id(); // Should I use wesnoth_id here?
+
+        delete component;
+
+        throw network::error(_("Client disconnected"),id);
+    }
+
     if ( ! disconnected_ids_.empty() )
     {
-        const ana::net_id id = disconnected_ids_.front();
+        ana::net_id id = disconnected_ids_.front();
         disconnected_ids_.pop();
         throw network::error(_("Client disconnected"),id);
     }
@@ -1305,10 +1318,8 @@ void ana_network_manager::handle_disconnect(ana::error_code /*error_code*/, ana:
 
     if ( it != components_.end() )
     {
-//         close_connections_and_cleanup();
-        delete *it;
+        disconnected_components_.push( *it );
         components_.erase(it);
-        disconnected_ids_.push( client );
     }
     else
     {

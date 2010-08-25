@@ -517,7 +517,11 @@ class ana_network_manager : public ana::listener_handler,
 
         std::map< ana::server*, clients_manager* > server_manager_;
 
-        std::queue< ana::net_id > disconnected_ids_;
+        /** Clients that have disconnected from servers (used for client applications.) */
+        std::queue< ana_component* > disconnected_components_;
+
+        /** Client IDs that have disconnected from a serve (used in servers applications.) */
+        std::queue< ana::net_id >    disconnected_ids_;
 };
 
 #endif
