@@ -1844,7 +1844,7 @@ void unit::redraw_unit()
 		halo::remove(unit_halo_);
 		unit_halo_ = halo::NO_HALO;
 	} else if(unit_halo_ != halo::NO_HALO) {
-		halo::set_location(unit_halo_, x, y);
+		halo::set_location(unit_halo_, x, y - height_adjust);
 	}
 
 
