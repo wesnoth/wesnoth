@@ -215,6 +215,25 @@ local function get_team(cfg, tag)
 	return team
 end
 
+function wml_actions.chat(cfg)
+	local speaker = cfg.speaker
+	local side_list = cfg.side
+	local message = cfg.message or
+		helper.wml_error "[chat] missing required message= attribute."
+	if side_list == nil then
+		wesnoth.message(speaker, message)
+	else
+		side_list = side_list .. ","
+		for v in string.gmatch(side_list, "(%w+),") do
+			local side = wesnoth.get_side(tonumber(v))
+			print(side.__cfg.controller)
+			if side.__cfg.controller == "human" then
+				wesnoth.message(speaker, message)
+			end
+		end
+	end
+end
+
 function wml_actions.gold(cfg)
 	local team = get_team(cfg, "[gold]")
 	local amount = tonumber(cfg.amount) or
