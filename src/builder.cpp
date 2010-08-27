@@ -322,10 +322,13 @@ static std::vector<std::string> get_variations(const std::string& base, const st
 	}
 	std::vector<std::string> vars = utils::split(variations, ';', 0);
 
-	const std::string prefix(base, 0, pos);
-	const std::string postfix(base, pos+2, std::string::npos);
-	foreach(std::string& v, vars){
-		res.push_back(prefix + v + postfix);
+	foreach(const std::string& v, vars){
+		res.push_back(base);
+		std::string::size_type pos = 0;
+		while ((pos = res.back().find("@V", pos)) != std::string::npos) {
+			res.back().replace(pos, 2, v);
+			pos += v.size();
+		}
 	}
 	return res;
 }
@@ -345,7 +348,6 @@ bool terrain_builder::load_images(building_rule &rule)
 			foreach(rule_image_variant& variant, ri.variants)
 			{
 
-				//std::vector<std::string> var_strings = utils::split(variant.image_string, ';');
 				std::vector<std::string> var_strings = get_variations(variant.image_string, variant.variations);
 				foreach(const std::string& var, var_strings)
 				{
