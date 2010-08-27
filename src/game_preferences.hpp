@@ -184,11 +184,6 @@ namespace preferences {
 	bool flip_time();
 	void set_flip_time(bool value);
 
-	bool has_upload_log();
-	bool upload_log();
-	void set_upload_log(bool value);
-	std::string upload_id();
-
 	// Multiplayer functions
 	std::string get_chat_timestamp(const time_t& t);
 	bool chat_timestamping();

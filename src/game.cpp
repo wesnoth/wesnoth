@@ -72,7 +72,6 @@
 #include "statistics.hpp"
 #include "thread.hpp"
 #include "titlescreen.hpp"
-#include "upload_log.hpp"
 #include "wml_exception.hpp"
 #include "wml_separators.hpp"
 #include "serialization/binary_or_text.hpp"
@@ -180,7 +179,6 @@ public:
 	bool change_language();
 
 	void show_preferences();
-	void show_upload_begging();
 
 	enum RELOAD_GAME_DATA { RELOAD_DATA, NO_RELOAD_DATA };
 	void launch_game(RELOAD_GAME_DATA reload=RELOAD_DATA);
@@ -215,7 +213,6 @@ private:
 	const image::manager image_manager_;
 	const events::event_context main_event_context_;
 	const hotkey::manager hotkey_manager_;
-	const upload_log::manager upload_log_manager_;
 	sound::music_thinker music_thinker_;
 	resize_monitor resize_monitor_;
 	binary_paths_manager paths_manager_;
@@ -253,7 +250,6 @@ game_controller::game_controller(int argc, char** argv) :
 	image_manager_(),
 	main_event_context_(),
 	hotkey_manager_(),
-	upload_log_manager_(),
 	music_thinker_(),
 	resize_monitor_(),
 	paths_manager_(),
@@ -658,8 +654,7 @@ bool game_controller::play_test()
 	paths_manager_.set_paths(game_config());
 
 	try {
-		upload_log nolog(false);
-		play_game(disp(),state_,game_config(),nolog);
+		play_game(disp(),state_,game_config());
 	} catch (game::load_game_exception &) {
 		test_mode_ = false;
 		return true;
@@ -885,11 +880,10 @@ bool game_controller::play_multiplayer_mode()
 			}
 		}
 
-		upload_log log( all_ai );
 		recorder.add_log_data("ai_log","ai_label",label);
 
 		state_.snapshot = level;
-		play_game(disp(), state_, game_config(), log);
+		play_game(disp(), state_, game_config());
 	} catch (game::load_game_exception &) {
 		//the user's trying to load a game, so go into the normal title screen loop and load one
 		return true;
@@ -1440,14 +1434,6 @@ void game_controller::show_preferences()
 	disp().redraw_everything();
 }
 
-void game_controller::show_upload_begging()
-{
-	upload_log_dialog::show_beg_dialog(disp());
-
-	disp().redraw_everything();
-}
-
-
 void game_controller::set_unit_data()
 {
 	loadscreen::start_stage("load unit types");
@@ -1609,12 +1595,7 @@ void game_controller::launch_game(RELOAD_GAME_DATA reload)
 	const binary_paths_manager bin_paths_manager(game_config());
 
 	try {
-		// Only record log for single-player games & tutorial.
-		upload_log log(state_.classification().campaign_type.empty()
-					   || state_.classification().campaign_type == "scenario"
-					   || state_.classification().campaign_type == "tutorial");
-
-		const LEVEL_RESULT result = play_game(disp(),state_,game_config(), log);
+		const LEVEL_RESULT result = play_game(disp(),state_,game_config());
 		// don't show The End for multiplayer scenario
 		// change this if MP campaigns are implemented
 		if(result == VICTORY && (state_.classification().campaign_type.empty() || state_.classification().campaign_type != "multiplayer")) {
@@ -2381,9 +2362,6 @@ static int do_gameloop(int argc, char** argv)
 			} catch(config_changed_exception const&) {
 				game.reload_changed_game_config();
 			}
-			continue;
-		} else if(res == gui::BEG_FOR_UPLOAD) {
-			game.show_upload_begging();
 			continue;
 		} else if(res == gui::RELOAD_GAME_DATA) {
 			loadscreen::global_loadscreen_manager loadscreen(game.disp().video());

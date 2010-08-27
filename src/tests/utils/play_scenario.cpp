@@ -23,9 +23,6 @@
 #include "playcampaign.hpp"
 #include "unit.hpp"
 #include "unit_map.hpp"
-#include "upload_log.hpp"
-
-
 
 namespace test_utils {
 	play_scenario::play_scenario(const std::string& id) :
@@ -110,11 +107,10 @@ namespace test_utils {
 		source_.type_key(current_time_++, SDLK_EXCLAIM);
 		source_.type_key(current_time_++, SDLK_RETURN);
 
-		upload_log no_upload(false);
 		game_state& state = end->get_state();
 		state.classification().campaign_type = "test";
 		state.classification().scenario = id_;
-		play_game(get_fake_display(1024, 768), state, game_config_, no_upload);
+		play_game(get_fake_display(1024, 768), state, game_config_);
 	}
 
 	std::string play_scenario::get_unit_id(const map_location &loc)

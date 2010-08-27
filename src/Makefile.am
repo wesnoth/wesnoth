@@ -284,7 +284,6 @@ wesnoth_source = \
 	unit_id.cpp \
 	unit_map.cpp \
 	unit_types.cpp \
-	upload_log.cpp \
 	variable.cpp \
 	variant.cpp \
 	whiteboard/action.cpp \

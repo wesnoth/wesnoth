@@ -39,7 +39,6 @@
 #include "resources.hpp"
 #include "savegame.hpp"
 #include "sound.hpp"
-#include "upload_log.hpp"
 #include "formula_string_utils.hpp"
 #include "events.hpp"
 #include "save_blocker.hpp"
@@ -319,7 +318,7 @@ void playsingle_controller::report_victory(
 }
 
 LEVEL_RESULT playsingle_controller::play_scenario(
-	const config::const_child_itors &story, upload_log &log,
+	const config::const_child_itors &story,
 	bool skip_replay)
 {
 	LOG_NG << "in playsingle_controller::play_scenario()...\n";
@@ -358,14 +357,6 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 
 	LOG_NG << "entering try... " << (SDL_GetTicks() - ticks_) << "\n";
 	try {
-		// Log before prestart events: they do weird things.
-		if (first_human_team_ != -1) { //sp logs
-			log.start(gamestate_, teams_[first_human_team_],
-				loading_game_ ? gamestate_.get_variable("turn_number").str().c_str() : "",
-				tod_manager_.number_of_turns(), resources::game_map->write());
-		} else { //ai vs. ai upload logs
-			log.start(gamestate_, resources::game_map->write());
-		}
 
 		fire_prestart(!loading_game_);
 		init_gui();
@@ -413,7 +404,6 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 		if (lge.game != "") {
 			gamestate_ = game_state();
 		}
-		log.quit(turn());
 		throw lge;
 	} catch (end_level_exception &end_level_exn) {
 		ai_testing::log_game_end();
@@ -458,13 +448,11 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 		}
 
 		if (end_level_result == QUIT) {
-			log.quit(turn());
 			return QUIT;
 		}
 		else if (end_level_result == DEFEAT)
 		{
 			gamestate_.classification().completion = "defeat";
-			log.defeat(turn());
 			game_events::fire("defeat");
 
 			if (!obs) {
@@ -497,8 +485,6 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 				if(victory_music.empty() != true)
 					sound::play_music_once(victory_music);
 			}
-			if (first_human_team_ != -1)
-				log.victory(turn(), teams_[first_human_team_].gold());
 
 			// Add all the units that survived the scenario.
 			LOG_NG << "Add units that survived the scenario to the recall list.\n";
@@ -735,7 +721,7 @@ struct set_completion
 	const std::string completion_;
 };
 
-void playsingle_controller::linger(upload_log& log)
+void playsingle_controller::linger()
 {
 	LOG_NG << "beginning end-of-scenario linger\n";
 	browse_ = true;
@@ -774,7 +760,6 @@ void playsingle_controller::linger(upload_log& log)
 		if (lge.game != "") {
 			gamestate_ = game_state();
 		}
-		log.quit(turn());
 		throw lge;
 	}
 

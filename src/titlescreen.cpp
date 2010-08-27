@@ -156,25 +156,15 @@ void read_tips_of_day(config& tips_of_day)
 		ERR_CF << "Could not read data/hardwired/tips.cfg\n";
 	}
 
-	//we shuffle the tips after each initial loading. We only shuffle if
-	//the upload_log preference has been set. If it hasn't been set, it's the
-	//user's first time playing since this feature has been added, so we'll
-	//leave the tips in their default order, which will always contain a tip
-	//regarding the upload log first, so the user sees it.
+	//we shuffle the tips after each initial loading.
 	config::const_child_itors itors = tips_of_day.child_range("tip");
-	if (itors.first != itors.second && preferences::has_upload_log()) {
+	if (itors.first != itors.second) {
 		std::vector<config> tips(itors.first, itors.second);
 		std::random_shuffle(tips.begin(), tips.end());
 		tips_of_day.clear();
 		foreach (const config &tip, tips) {
 			tips_of_day.add_child("tip", tip);
 		}
-	}
-
-	//Make sure that the upload log preference is set, if it's not already, so
-	//that we know next time we've already seen the message about uploads.
-	if(!preferences::has_upload_log()) {
-		preferences::set_upload_log(preferences::upload_log());
 	}
 }
 
@@ -524,7 +514,6 @@ TITLE_RESULT show_title(game_display& screen, config& tips_of_day)
 	gui::button &previous_tip_button = buttons[TIP_PREVIOUS - TUTORIAL];
 	gui::button &next_tip_button = buttons[TIP_NEXT - TUTORIAL];
 	gui::button &help_tip_button = buttons[SHOW_HELP - TUTORIAL];
-	gui::button &beg_button = buttons[BEG_FOR_UPLOAD - TUTORIAL];
 
 	next_tip_of_day(tips_of_day);
 
@@ -533,9 +522,6 @@ TITLE_RESULT show_title(game_display& screen, config& tips_of_day)
 	draw_tip_of_day(screen, tips_of_day, gui::dialog_frame::titlescreen_style,
 					&previous_tip_button, &next_tip_button, &help_tip_button, &main_dialog_area, tip_of_day_restorer);
 
-	const int pad = game_config::title_tip_padding;
-	beg_button.set_location(screen.w() - pad - beg_button.location().w,
-		screen.h() - pad - beg_button.location().h);
 	events::raise_draw_event();
 
 	LOG_DP << "drew buttons dialog\n";
@@ -574,9 +560,6 @@ TITLE_RESULT show_title(game_display& screen, config& tips_of_day)
 
 		if(help_tip_button.pressed()) {
 			return SHOW_HELP;
-		}
-		if(beg_button.pressed()) {
-			return BEG_FOR_UPLOAD;
 		}
 		if (key[SDLK_UP]) {
 			if (!key_processed) {

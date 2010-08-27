@@ -77,7 +77,6 @@ set(game-external-libs
 	${common-external-libs}
 	${SDLIMAGE_LIBRARY}
 	${SDLMIXER_LIBRARY}
-	${SDLNET_LIBRARY}        # only to link to upload_log when using ANA
 	${ANA_LIBRARIES}
 	${SDLTTF_LIBRARY}
 	${PANGOCAIRO_LIBRARIES}
@@ -506,7 +505,6 @@ set(wesnoth-main_SRC
 	unit_id.cpp
 	unit_map.cpp
 	unit_types.cpp
-	upload_log.cpp
 	variable.cpp
 	variant.cpp
 	whiteboard/action.cpp
@@ -772,7 +770,6 @@ if(ENABLE_TESTS)
 	add_definitions(-DBOOST_TEST_DYN_LINK)
 
 	set(test_SRC
-		network_worker.cpp # NEEDED when compiling with ANA support
 		tests/main.cpp
 		tests/utils/fake_display.cpp 
 		tests/utils/fake_event_source.cpp 

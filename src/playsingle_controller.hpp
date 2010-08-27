@@ -22,8 +22,6 @@
 #include "play_controller.hpp"
 #include "replay.hpp"
 
-struct upload_log;
-
 #include <vector>
 
 class playsingle_controller : public play_controller
@@ -34,7 +32,7 @@ public:
 	virtual ~playsingle_controller();
 
 	LEVEL_RESULT play_scenario(const config::const_child_itors &story,
-		upload_log &log, bool skip_replay);
+		bool skip_replay);
 
 	virtual void handle_generic_event(const std::string& name);
 
@@ -69,7 +67,7 @@ public:
 	virtual void user_command_2();
 	virtual void user_command_3();
 #endif
-	void linger(upload_log& log);
+	void linger();
 
 	virtual void force_end_level(LEVEL_RESULT res)
 	{ level_result_ = res; }

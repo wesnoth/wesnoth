@@ -753,34 +753,6 @@ void set_flip_time(bool value)
 	preferences::set("flip_time", value);
 }
 
-bool has_upload_log()
-{
-	return preferences::get("upload_log_new").empty() == false;
-}
-
-bool upload_log()
-{
-	return preferences::get("upload_log_new", true);
-}
-
-void set_upload_log(bool value)
-{
-	preferences::set("upload_log_new", value);
-}
-
-std::string upload_id()
-{
-	// We create a unique id for each person, *when asked for* to increase
-	// randomness.
-	if (preferences::get("upload_id") == "") {
-		srand(static_cast<unsigned int>(time(NULL)));
-		preferences::set("upload_id",
-			lexical_cast<std::string>(rand())
-				 + lexical_cast<std::string>(SDL_GetTicks()));
-	}
-	return preferences::get("upload_id");
-}
-
 bool compress_saves()
 {
 	return preferences::get("compress_saves", true);

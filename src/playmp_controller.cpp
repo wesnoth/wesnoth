@@ -25,7 +25,6 @@
 #include "resources.hpp"
 #include "savegame.hpp"
 #include "sound.hpp"
-#include "upload_log.hpp"
 #include "formula_string_utils.hpp"
 
 static lg::log_domain log_engine("engine");
@@ -311,7 +310,7 @@ void playmp_controller::reset_end_scenario_button()
 	gui_->set_game_mode(game_display::RUNNING);
 }
 
-void playmp_controller::linger(upload_log& log)
+void playmp_controller::linger()
 {
 	LOG_NG << "beginning end-of-scenario linger\n";
 	browse_ = true;
@@ -355,7 +354,6 @@ void playmp_controller::linger(upload_log& log)
 		} catch (game::load_game_exception&) {
 			LOG_NG << "caught load-game-exception" << std::endl;
 			// this should not happen, the option to load a game is disabled
-			log.quit(turn());
 			throw;
 		} catch (end_level_exception&) {
 			// thrown if the host ends the scenario and let us advance

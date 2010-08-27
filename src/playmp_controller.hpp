@@ -42,7 +42,7 @@ public:
 	void reset_countdown();
 	void think_about_countdown(int ticks);
 	void process(events::pump_info &info);
-	void linger(upload_log& log);
+	void linger();
 	/** Wait for the host to upload the next scenario. */
 	void wait_for_upload();
 	void process_oos(const std::string& err_msg) const;
