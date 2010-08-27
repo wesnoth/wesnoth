@@ -62,7 +62,7 @@ local function generate_objectives(cfg)
 	local win_string = cfg.victory_string or _ "Victory:"
 	local lose_string = cfg.defeat_string or _ "Defeat:"
 	local gold_carryover_string = cfg.gold_carryover_string or _ "Gold carryover:"
-	local notes_string = cfg.notes_string or _ "Notes:"
+	local notes_string = cfg.notes_string o			print(side.__cfg.controller)r _ "Notes:"
 
 	local bullet = "&#8226; "
 
@@ -216,19 +216,25 @@ local function get_team(cfg, tag)
 end
 
 function wml_actions.chat(cfg)
-	local speaker = cfg.speaker
+	local speaker = tostring(cfg.speaker)
 	local side_list = cfg.side
-	local message = cfg.message or
+	local message = tostring(cfg.message) or
 		helper.wml_error "[chat] missing required message= attribute."
-	if side_list == nil then
+	-- If the speaker exists in a variable such as second_unit then we want to make their name show up
+	if wesnoth.get_variable(speaker .. ".id") then
+		speaker = wesnoth.get_variable(speaker .. ".name")
+	end
+	-- If no side was given, then display unconditionally
+	if not side_list then
 		wesnoth.message(speaker, message)
 	else
 		side_list = side_list .. ","
 		for v in string.gmatch(side_list, "(%w+),") do
 			local side = wesnoth.get_side(tonumber(v))
-			print(side.__cfg.controller)
 			if side.__cfg.controller == "human" then
 				wesnoth.message(speaker, message)
+				-- Break after displaying once in case the same machine controls multiple sides on the list
+				break
 			end
 		end
 	end
