@@ -93,11 +93,11 @@ if test "x$debug" = "xyes"
 then
 	# Don't use ansi for CFLAGS since it fails to compile.
 	CFLAGS="-O0 -DDEBUG -ggdb3 -W -Wall $CFLAGS"
-	CXXFLAGS="-O0 -DDEBUG -ggdb3 -W -Wall -ansi $CXXFLAGS"
+	CXXFLAGS="-O0 -DDEBUG -ggdb3 -W -Wall -std=c++98 $CXXFLAGS"
 else
 	# Don't use ansi for CFLAGS since it fails to compile.
 	CFLAGS="-O2 -W -Wall $CFLAGS"
-	CXXFLAGS="-O2 -W -Wall -ansi $CXXFLAGS"
+	CXXFLAGS="-O2 -W -Wall -std=c++98 $CXXFLAGS"
 fi
 
 if test "x$profile" = "xyes"
