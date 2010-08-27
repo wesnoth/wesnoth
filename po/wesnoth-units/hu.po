@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-units_1.5\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-08-13 11:31+0200\n"
-"PO-Revision-Date: 2010-03-27 12:43+0100\n"
+"POT-Creation-Date: 2010-08-18 16:24+0200\n"
+"PO-Revision-Date: 2010-08-27 08:44+0200\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian <wesnoth-hungtrans@gna.org>\n"
 "Language: hu\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 1.0\n"
+"X-Generator: Lokalize 1.1\n"
 "X-Poedit-Bookmarks: 232,-1,-1,-1,-1,-1,-1,-1,-1,-1\n"
 
 #. [unit_type]: id=Blood Bat, race=bats
@@ -1095,7 +1095,7 @@ msgstr ""
 #: data/core/units/humans/Loyalist_Lieutenant.cfg:46
 #: data/core/units/humans/Loyalist_Longbowman.cfg:39
 #: data/core/units/humans/Loyalist_Master_Bowman.cfg:39
-#: data/core/units/humans/Loyalist_Sergeant.cfg:47
+#: data/core/units/humans/Loyalist_Sergeant.cfg:41
 #: data/core/units/humans/Loyalist_Swordsman.cfg:39
 #: data/core/units/humans/Woodsman_Ranger.cfg:59
 #: data/core/units/nagas/Fighter.cfg:102 data/core/units/nagas/Myrmidon.cfg:43
@@ -1396,6 +1396,7 @@ msgstr "Tünde mesterlövész"
 
 #. [unit_type]: id=Elvish Marksman, race=elf
 #: data/core/units/elves/Marksman.cfg:20
+#, fuzzy
 msgid ""
 "Elves are wonderously keen-sighted, a gift which contributes to their "
 "mastery of the bow. An elf practiced at archery can hit targets that a man "
@@ -1717,7 +1718,6 @@ msgstr "Kobold nyársaló"
 
 #. [unit_type]: id=Goblin Impaler, race=goblin
 #: data/core/units/goblins/Impaler.cfg:21
-#, fuzzy
 msgid ""
 "Goblins are used by the orcs as skirmishers to disrupt the enemy's battle "
 "line. Those who manage to survive their first few battles equip themselves "
@@ -1966,7 +1966,7 @@ msgid ""
 "however, and growing experience with these weapons makes them deadlier at "
 "the tilt."
 msgstr ""
-"A legtehetségesebb és legfegyelmezettebb lovasokból lovag lehet. A harc "
+"A legtehetségesebb és legfegyelmezettebb dzsidásokból lovag lehet. A harc "
 "veteránjaiként már láttak gyakran halálos kimenetelű, félresikerült "
 "rohamozást, így megtanulták azt óvatosan kezelni. A lovagok éppen ezért "
 "kardot is hordanak a fegyvertárukban, és olyan taktikákat tanulnak, melyek "
@@ -2042,7 +2042,7 @@ msgstr ""
 #. [unit_type]: id=Horseman, race=human
 #: data/core/units/humans/Horseman.cfg:4
 msgid "Horseman"
-msgstr "Lovas"
+msgstr "Dzsidás"
 
 #. [unit_type]: id=Horseman, race=human
 #: data/core/units/humans/Horseman.cfg:20
@@ -2055,11 +2055,11 @@ msgid ""
 "must take care against both spearmen and archers for whom their large size "
 "provide inviting targets."
 msgstr ""
-"A lovasok gyakran Wesnoth vad és megszelídítetlen területeiről származnak, "
+"A dzsidások gyakran Wesnoth vad és megszelídítetlen területeiről származnak, "
 "ezért már kora gyermekkorukban megülik a lovat, és arra tanítják őket, hogy "
-"a tisztesség kódexét kövessék. Egy lovas rohama nagyon erőteljes, de "
-"veszélyes taktika, aminek értékét sokszor bizonyították a harcmezőn. A "
-"lovasok könnyen leküzdik a gyalogságot, különösen azokat, akik megtörik az "
+"a tisztesség kódexét kövessék. Egy dzsidás rohama lehengerlő, de veszélyes "
+"taktika, melynek értékét sokszor bizonyították a harcmezőn. A dzsidások "
+"könnyen leküzdik a gyalogságot, különösen azokat, akik megtörik az "
 "arcvonalat, de figyelniük kell a lándzsásokra és az íjászokra, akik számára "
 "nagy méretük csábító célpontot jelent."
 
@@ -2116,7 +2116,7 @@ msgstr ""
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:61
 #: data/core/units/humans/Loyalist_Lieutenant.cfg:55
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:53
-#: data/core/units/humans/Loyalist_Sergeant.cfg:56
+#: data/core/units/humans/Loyalist_Sergeant.cfg:50
 #: data/core/units/orcs/Crossbowman.cfg:46
 #: data/core/units/orcs/Crossbowman.cfg:55 data/core/units/orcs/Leader.cfg:50
 #: data/core/units/orcs/Ruler.cfg:49 data/core/units/orcs/Slurbow.cfg:51
@@ -2142,7 +2142,7 @@ msgid ""
 "Cavalrymen are very useful for taking and holding positions on open ground, "
 "for screening friendly soldiers, and also for scouting work."
 msgstr ""
-"A huszárokat taktikájuk és felszerelésük különbözteti meg a lovasoktól. A "
+"A huszárokat taktikájuk és felszerelésük különbözteti meg a dzsidásoktól. A "
 "huszár nehezebb páncélt visel, és kopja helyett kardot és pajzsot tart "
 "magánál. Taktikájukba nem tartozik bele a roham, ehelyett karddal küzdenek, "
 "lovat és lovasát is eredményesen használva a közelharcban.\n"
@@ -2194,7 +2194,7 @@ msgstr ""
 "Különleges szokása Wesnoth nemességének, hogy fiaikat beíratják a két harci "
 "rend egyikébe, ahol vagy a lovaglás, vagy a vívás művészetébe avatják be "
 "őket. A párbajhősök a fiatal nemesség sajnálatosan gyakori szokása után "
-"kapták a nevüket, ami során a sértés valódi vagy beképzelt tüskéje a "
+"kapták a nevüket, amely során a sértés valódi vagy beképzelt tüskéje a "
 "veleszületett joguk azonnali bizonyítására ösztönözheti őket.\n"
 "\n"
 "Tapasztalt vívóknak számítanak, kis számszeríjat hordanak maguknál, melyet "
@@ -2548,7 +2548,7 @@ msgid "Sergeant"
 msgstr "Őrmester"
 
 #. [unit_type]: id=Sergeant, race=human
-#: data/core/units/humans/Loyalist_Sergeant.cfg:26
+#: data/core/units/humans/Loyalist_Sergeant.cfg:20
 msgid ""
 "The Sergeant is a low-ranking officer in the ranks of an army. Though "
 "academically trained, he will need some experience in the field before his "
@@ -3361,6 +3361,7 @@ msgstr "Erdőkerülő"
 
 #. [unit_type]: id=Ranger, race=human
 #: data/core/units/humans/Woodsman_Ranger.cfg:23
+#, fuzzy
 msgid ""
 "Rangers are wild men and wanderers, who have chosen to shun the company of "
 "their fellow men for myriad reasons. They have spent the better part of "
