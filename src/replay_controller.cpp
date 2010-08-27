@@ -50,6 +50,7 @@ LEVEL_RESULT play_replay_level(const config& game_config,
 		}
 	}
 	catch(end_level_exception&){
+		game::exception::sticky = NULL;
 		DBG_NG << "play_replay_level: end_level_exception\n";
 	}
 
@@ -270,7 +271,7 @@ void replay_controller::play_replay(){
 		is_playing_ = false;
 	}
 	catch(end_level_exception& e){
-		if (e.result == QUIT) { throw e; }
+		if (e.result == QUIT) throw;
 	}
 }
 
@@ -337,7 +338,8 @@ void replay_controller::play_side(const unsigned int /*team_index*/, bool){
 	}
 	catch(end_level_exception& e){
 		//VICTORY/DEFEAT end_level_exception shall not return to title screen
-		if ((e.result != VICTORY) && (e.result != DEFEAT)) { throw e; }
+		if (e.result == VICTORY || e.result == DEFEAT) return;
+		throw;
 	}
 }
 

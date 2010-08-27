@@ -406,6 +406,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 		}
 		throw lge;
 	} catch (end_level_exception &end_level_exn) {
+		game::exception::sticky = NULL;
 		ai_testing::log_game_end();
 		LEVEL_RESULT end_level_result = end_level_exn.result;
 		if (!end_level.custom_endlevel_music.empty()) {
