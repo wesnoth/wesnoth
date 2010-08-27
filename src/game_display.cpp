@@ -971,7 +971,7 @@ int game_display::remove_temporary_unit(unit *u)
 	return removed;
 }
 
-bool game_display::add_exclusive_draw(const map_location loc, unit& unit)
+bool game_display::add_exclusive_draw(const map_location& loc, unit& unit)
 {
 	if (loc.valid() && exclusive_unit_draw_requests_.find(loc) == exclusive_unit_draw_requests_.end())
 	{
@@ -984,7 +984,7 @@ bool game_display::add_exclusive_draw(const map_location loc, unit& unit)
 	}
 }
 
-std::string game_display::remove_exclusive_draw(const map_location loc)
+std::string game_display::remove_exclusive_draw(const map_location& loc)
 {
 	std::string id = "";
 	if(loc.valid())

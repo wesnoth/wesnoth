@@ -194,13 +194,13 @@ public:
 	 * @param unit The unit requesting exlusivity.
 	 * @return false if there's already an exclusive draw request for this location.
 	 */
-	bool add_exclusive_draw(const map_location loc, unit& unit);
+	bool add_exclusive_draw(const map_location& loc, unit& unit);
 	/**
 	 * Cancels an exclusive draw request.
 	 * @return The id of the unit whose exclusive draw request was canceled, or else
 	 *         the empty string if there was no exclusive draw request for this location.
 	 */
-	std::string remove_exclusive_draw(const map_location loc);
+	std::string remove_exclusive_draw(const map_location& loc);
 
 	/**
 	 * Cancels all the exclusive draw requests.
