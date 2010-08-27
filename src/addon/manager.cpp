@@ -440,7 +440,7 @@ namespace {
 			stream << std::fixed << size << size_postfix;
 #else
 			if (size < 100) stream.precision(3);
-			else size = static_cast<int>(size);
+			else size = trunc(size);
 			stream << size << size_postfix;
 #endif
 			return stream.str();
