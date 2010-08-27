@@ -552,6 +552,12 @@ void play_controller::do_init_side(const unsigned int team_index){
 		game_events::fire("side " + side_num + " turn " + turn_num);
 	}
 
+	if(current_team.is_human()) {
+		gui_->set_team(player_number_ - 1);
+		gui_->recalculate_minimap();
+		gui_->invalidate_all();
+		gui_->draw(true,true);
+	}
 	// We want to work out if units for this player should get healed,
 	// and the player should get income now.
 	// Healing/income happen if it's not the first turn of processing,

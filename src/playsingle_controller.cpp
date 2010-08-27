@@ -665,10 +665,6 @@ void playsingle_controller::before_human_turn(bool save)
 	browse_ = false;
 	linger_ = false;
 
-	gui_->set_team(player_number_ - 1);
-	gui_->recalculate_minimap();
-	gui_->invalidate_all();
-	gui_->draw(true,true);
 
 	ai::manager::raise_turn_started();
 
