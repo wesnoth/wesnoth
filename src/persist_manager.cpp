@@ -61,3 +61,4 @@ bool persist_manager::cancel_transaction() {
 	in_transaction_ = false;
 	return result;
 }
+
