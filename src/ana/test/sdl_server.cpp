@@ -81,7 +81,6 @@ int main(int argc, char **argv)
             {
                 // Added this, from here
                 char buf[4];
-                int len = SDLNet_TCP_Recv(csd,buf,4);
 
                 const int message_length = *( reinterpret_cast<int*>(buf) );
 
