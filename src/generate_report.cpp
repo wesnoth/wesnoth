@@ -372,8 +372,18 @@ report generate_report(TYPE type,
 				nattacks = swarm_min_attacks + (swarm_max_attacks - swarm_min_attacks) * hitp / mhitp;
 			}
 
-			str << span_color(font::weapon_color)
-				<< damage << font::weapon_numbers_sep << nattacks
+			SDL_Color dmg_color = font::weapon_color;
+			float dmg_bonus = static_cast<float>(damage)/base_damage;
+			if(dmg_bonus > 1.0)
+				dmg_color = font::good_dmg_color;
+			else if(dmg_bonus < 1.0)
+				dmg_color = font::bad_dmg_color;
+
+			str << span_color(dmg_color)
+				<< damage
+				<< "</span>"
+				<< span_color(font::weapon_color)
+				<< font::weapon_numbers_sep << nattacks
 				<< ' ' << at.name()
 				<< "</span>\n";
 

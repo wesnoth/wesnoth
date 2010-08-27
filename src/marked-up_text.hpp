@@ -32,7 +32,12 @@ extern const char LARGE_TEXT, SMALL_TEXT, BOLD_TEXT, NORMAL_TEXT, NULL_MARKUP, B
 // some colors often used in UI
 extern const std::string weapon, weapon_details, unit_type, race;
 
-extern const SDL_Color weapon_color, weapon_details_color, unit_type_color, race_color;
+extern const SDL_Color weapon_color,
+		good_dmg_color,
+		bad_dmg_color,
+		weapon_details_color,
+		unit_type_color,
+		race_color;
 
 // separator bewteen damage-hits and range--type
 extern const std::string weapon_numbers_sep, weapon_details_sep;
