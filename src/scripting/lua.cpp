@@ -453,6 +453,37 @@ bool luaW_pcall(lua_State *L
 	return true;
 }
 
+/**
+ * Pushes the value found by following the variadic names (char *), if the
+ * value is not nil.
+ * @return true if an element was pushed.
+ */
+#ifdef __GNUC__
+__attribute__((sentinel))
+#endif
+bool luaW_getglobal(lua_State *L, ...)
+{
+	lua_pushvalue(L, LUA_GLOBALSINDEX);
+
+	va_list ap;
+	va_start(ap, L);
+	while (const char *s = va_arg(ap, const char *))
+	{
+		if (!lua_istable(L, -1)) goto discard;
+		lua_pushstring(L, s);
+		lua_rawget(L, -2);
+		lua_remove(L, -2);
+	}
+	va_end(ap);
+
+	if (lua_isnil(L, -1)) {
+		discard:
+		lua_pop(L, 1);
+		return false;
+	}
+	return true;
+}
+
 lua_unit::~lua_unit()
 {
 	delete ptr;
@@ -2881,18 +2912,8 @@ void LuaKernel::load_game()
 {
 	lua_State *L = mState;
 
-	lua_getglobal(L, "wesnoth");
-	lua_pushstring(L, "game_events");
-	lua_rawget(L, -2);
-	lua_remove(L, -2);
-	lua_pushstring(L, "on_load");
-	lua_rawget(L, -2);
-	lua_remove(L, -2);
-
-	if (lua_isnil(L, -1)) {
-		lua_pop(L, 1);
+	if (!luaW_getglobal(L, "wesnoth", "game_events", "on_load", NULL))
 		return;
-	}
 
 	lua_newtable(L);
 	int k = 1;
@@ -2922,13 +2943,8 @@ void LuaKernel::save_game(config &cfg)
 
 	lua_State *L = mState;
 
-	lua_getglobal(L, "wesnoth");
-	lua_pushstring(L, "game_events");
-	lua_rawget(L, -2);
-	lua_remove(L, -2);
-	lua_pushstring(L, "on_save");
-	lua_rawget(L, -2);
-	lua_remove(L, -2);
+	if (!luaW_getglobal(L, "wesnoth", "game_events", "on_save", NULL))
+		return;
 
 	if (lua_isnil(L, -1)) {
 		lua_pop(L, 1);
@@ -2996,18 +3012,9 @@ bool LuaKernel::run_wml_action(std::string const &cmd, vconfig const &cfg,
 {
 	lua_State *L = mState;
 
-	lua_getglobal(L, "wesnoth");
-	lua_pushstring(L, "wml_actions");
-	lua_rawget(L, -2);
-	lua_remove(L, -2);
-	lua_pushstring(L, cmd.c_str());
-	lua_rawget(L, -2);
-	lua_remove(L, -2);
 
-	if (lua_isnil(L, -1)) {
-		lua_pop(L, 1);
+	if (!luaW_getglobal(L, "wesnoth", "wml_actions", cmd.c_str(), NULL))
 		return false;
-	}
 
 	queued_event_context dummy(&ev);
 	luaW_pushvconfig(L, cfg);
