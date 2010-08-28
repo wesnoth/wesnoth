@@ -61,7 +61,7 @@ local function generate_objectives(cfg)
 			if condition == "win" then
 				local caption = obj.caption
 
-				if caption ~= nil then
+				if caption then
 					win_objectives = win_objectives .. caption .. "\n"
 				end
 
@@ -79,7 +79,7 @@ local function generate_objectives(cfg)
 					end
 				end
 
-				if caption ~= nil then
+				if caption then
 					lose_objectives = lose_objectives .. caption .. "\n"
 				end
 
@@ -113,7 +113,7 @@ local function generate_objectives(cfg)
 	end
 
 	for note in helper.child_range(cfg, "note") do
-		if note.description ~= nil then
+		if note.description then
 			notes = notes .. color_prefix(255, 255, 255) .. bullet .. "<small>" .. note.description .. "</small></span>\n"
 		end
 	end
