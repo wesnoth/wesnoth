@@ -2056,7 +2056,14 @@ int unit::movement_cost(const t_translation::t_terrain terrain) const
 int unit::defense_modifier(t_translation::t_terrain terrain) const
 {
 	assert(resources::game_map != NULL);
-	return defense_modifier_internal(defense_mods_, cfg_, NULL, *resources::game_map, terrain);
+	int def = defense_modifier_internal(defense_mods_, cfg_, NULL, *resources::game_map, terrain);
+	unit_ability_list defense_abilities = get_abilities("defense");
+	if (!defense_abilities.empty()) {
+		unit_abilities::effect defense_effect(defense_abilities, def, false);
+		def = std::min<int>(defense_effect.get_composite_value(),
+			defense_abilities.highest("max_value").first);
+	}
+	return def;
 }
 
 bool unit::resistance_filter_matches(const config& cfg, bool attacker, const std::string& damage_name, int res) const
