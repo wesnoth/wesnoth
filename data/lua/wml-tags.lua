@@ -6,9 +6,10 @@
 if wesnoth.package["lua/helper.lua"] then return end
 
 function wesnoth.game_events.on_load(cfg)
-	for i = 1,#cfg do
-		wesnoth.message("WML error", string.format("[%s] not supported", cfg[i][1]))
-	end
+	if #cfg == 0 then return end
+	local t = {}
+	for i = 1,#cfg do t[i] = string.format("[%s]", cfg[i][1]) end
+	error(string.format("~wml:%s not supported at scenario toplevel", table.concat(t, ', ')), 0)
 end
 
 function wesnoth.game_events.on_save()

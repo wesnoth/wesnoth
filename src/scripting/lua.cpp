@@ -2965,7 +2965,7 @@ void LuaKernel::load_game()
 		lua_rawseti(L, -2, k++);
 	}
 
-	luaW_pcall(L, 1, 0, false);
+	luaW_pcall(L, 1, 0, true);
 }
 
 /**
