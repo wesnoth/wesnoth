@@ -2632,6 +2632,25 @@ static int intf_add_tile_overlay(lua_State *L)
 	return 0;
 }
 
+/**
+ * Adds an overlay on a tile.
+ * - Args 1,2: location.
+ * - Arg 3: optional string.
+ */
+static int intf_remove_tile_overlay(lua_State *L)
+{
+	int x = luaL_checkinteger(L, 1) - 1;
+	int y = luaL_checkinteger(L, 2) - 1;
+	char const *m = lua_tostring(L, 3);
+
+	if (m) {
+		resources::screen->remove_single_overlay(map_location(x, y), m);
+	} else {
+		resources::screen->remove_overlay(map_location(x, y));
+	}
+	return 0;
+}
+
 LuaKernel::LuaKernel(const config &cfg)
 	: mState(luaL_newstate()), level_(cfg)
 {
@@ -2685,6 +2704,7 @@ LuaKernel::LuaKernel(const config &cfg)
 		{ "play_sound",               &intf_play_sound               },
 		{ "put_recall_unit",          &intf_put_recall_unit          },
 		{ "put_unit",                 &intf_put_unit                 },
+		{ "remove_tile_overlay",      &intf_remove_tile_overlay      },
 		{ "require",                  &intf_require                  },
 		{ "scroll_to_tile",           &intf_scroll_to_tile           },
 		{ "set_dialog_callback",      &intf_set_dialog_callback      },
