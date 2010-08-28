@@ -107,13 +107,7 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw)
 							SDL_BlitSurface(tile, NULL, combined, &r);
 							r.x = std::max(0, (tile->w - overlay->w)/2);
 							r.y = std::max(0, (tile->h - overlay->h)/2);
-                            if ((overlay->flags & SDL_RLEACCEL) == 0) {
-                                blit_surface(overlay, NULL, combined, &r);
-                            } else {
-                                WRN_DP << overlay_file << " overlay is RLE-encoded, creating a neutral surface\n";
-                                surface overlay_neutral = make_neutral_surface(overlay);
-							    blit_surface(overlay_neutral, NULL, combined, &r);
-                            }
+							blit_surface(overlay, NULL, combined, &r);
 							tile = combined;
 						}
 					}
