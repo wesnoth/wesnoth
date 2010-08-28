@@ -1789,8 +1789,9 @@ void unit::redraw_unit()
 	frame_parameters params;
 	const t_translation::t_terrain terrain = map.get_terrain(loc_);
 	const terrain_type& terrain_info = map.get_terrain_info(terrain);
-	// do not set to 0 so we can distinguih the flying from the "not on submerge terrain"
-	 params.submerge= is_flying() ? 0.01 : terrain_info.unit_submerge();
+	// do not set to 0 so we can distinguish the flying from the "not on submerge terrain"
+	// instead use -1.0 (as in "negative depth", it will be ignored by rendering)
+	params.submerge= is_flying() ? -1.0 : terrain_info.unit_submerge();
 
 	if (invisible(loc_) &&
 			params.highlight_ratio > 0.5) {
@@ -1861,10 +1862,12 @@ void unit::redraw_unit()
 	surface ellipse_back(NULL);
 	int ellipse_floating = 0;
 	if(draw_bars && preferences::show_side_colors()) {
-		// The division by 2 seems to have no real meaning,
-		// It just works fine with the current center of ellipse
-		// and prevent a too large adjust if submerge = 1.0
-		ellipse_floating = static_cast<int>(adjusted_params.submerge * disp.hex_size() / 2);
+		if(adjusted_params.submerge > 0.0) {
+			// The division by 2 seems to have no real meaning,
+			// It just works fine with the current center of ellipse
+			// and prevent a too large adjust if submerge = 1.0
+			ellipse_floating = static_cast<int>(adjusted_params.submerge * disp.hex_size() / 2);
+		}
 
 		std::string ellipse=image_ellipse();
 		if(ellipse.empty()){

@@ -1167,20 +1167,25 @@ void display::render_image(int x, int y, const display::tdrawing_layer drawing_l
 		return;
 	}
 
-	const int submerge_height = std::min<int>(surf->h,std::max<int>(0,int(surf->h*(1.0-submerged))));
-
-	SDL_Rect srcrect = create_rect(0, 0, surf->w, submerge_height);
-
-	drawing_buffer_add(drawing_layer, loc, tblit(x, y, surf, srcrect));
-
-	if(submerge_height != surf->h) {
-		surf.assign(adjust_surface_alpha(surf,ftofxp(0.2),false));
-
-		srcrect.y = submerge_height;
-		srcrect.h = surf->h-submerge_height;
-		y += submerge_height;
-
+	if(submerged > 0.0) {
+		// divide the surface into 2 parts
+		const int submerge_height = std::max<int>(0, surf->h*(1.0-submerged));
+		SDL_Rect srcrect = create_rect(0, 0, surf->w, submerge_height);
 		drawing_buffer_add(drawing_layer, loc, tblit(x, y, surf, srcrect));
+
+		if(submerge_height != surf->h) {
+			//the lower part will be transparent
+			surf.assign(adjust_surface_alpha(surf,ftofxp(0.2),false));
+
+			srcrect.y = submerge_height;
+			srcrect.h = surf->h-submerge_height;
+			y += submerge_height;
+
+			drawing_buffer_add(drawing_layer, loc, tblit(x, y, surf, srcrect));
+		}
+	} else {
+		// simple blit
+		drawing_buffer_add(drawing_layer, loc, tblit(x, y, surf));
 	}
 
 }
