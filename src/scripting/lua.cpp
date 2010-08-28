@@ -409,6 +409,7 @@ static vconfig luaW_checkvconfig(lua_State *L, int index, bool allow_missing = f
 
 /**
  * Calls a Lua function stored below its @a nArgs arguments at the top of the stack.
+ * @param nRets LUA_MULTRET for unbounded return values.
  * @return true if the call was successful and @a nRets return values are available.
  */
 bool luaW_pcall(lua_State *L
@@ -447,12 +448,7 @@ bool luaW_pcall(lua_State *L
 	}
 
 	// Remove the error handler.
-
-	if(nRets == LUA_MULTRET) {
-		lua_remove(L, error_handler_index);
-	} else {
-		lua_remove(L, -1 - nRets);
-	}
+	lua_remove(L, error_handler_index);
 
 	return true;
 }
