@@ -618,24 +618,15 @@ int battle_context::choose_defender_weapon(const unit &attacker, const unit &def
 
 	for (i = 0; i < choices.size(); ++i) {
 		const attack_type &def = defender.attacks()[choices[i]];
-		if (def.defense_weight() > max_weight) {
+		if (def.defense_weight() >= max_weight) {
 			max_weight = def.defense_weight();
-			battle_context_unit_stats *def_stats = new battle_context_unit_stats(defender, defender_loc, choices[i], false,
-					attacker, attacker_loc, &att, units);
-			min_rating = static_cast<int>(def_stats->num_blows * def_stats->damage *
-					def_stats->chance_to_hit * def.defense_weight());
-
-			delete def_stats;
-		}
-		else if (def.defense_weight() == max_weight) {
-			battle_context_unit_stats *def_stats = new battle_context_unit_stats(defender, defender_loc, choices[i], false,
-					attacker, attacker_loc, &att, units);
-			int simple_rating = static_cast<int>(def_stats->num_blows * def_stats->damage *
-					def_stats->chance_to_hit * def.defense_weight());
-
-			if (simple_rating < min_rating )
-				min_rating = simple_rating;
-			delete def_stats;
+			const battle_context_unit_stats def_stats(defender, defender_loc,
+					choices[i], false, attacker, attacker_loc, &att, units);
+			int rating = static_cast<int>(def_stats.num_blows * def_stats.damage *
+					def_stats.chance_to_hit * def.defense_weight());
+			if (def.defense_weight() > max_weight || rating < min_rating ) {
+				min_rating = rating;
+			}
 		}
 	}
 
