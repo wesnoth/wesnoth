@@ -3175,9 +3175,6 @@ namespace game_events {
 		if (resources::soundsources)
 			resources::soundsources->write_sourcespecs(cfg);
 
-		if (resources::screen)
-			resources::screen->write_overlays(cfg);
-
 		resources::lua_kernel->save_game(cfg);
 	}
 

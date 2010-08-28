@@ -158,15 +158,6 @@ void replay_controller::reset_replay(){
 
 	gui_->labels().read(level_);
 
-	// Find a list of 'items' (i.e. overlays) on the level, and add them
-	foreach (const config &overlay, level_.child_range("item"))
-	{
-		gui_->add_overlay(
-			map_location(overlay, resources::state_of_game),
-			overlay["image"], overlay["halo"], overlay["team_name"],
-			overlay["visible_in_fog"].to_bool(true));
-	}
-
 	statistics::fresh_stats();
 	set_victory_when_enemies_defeated(level_["victory_when_enemies_defeated"].to_bool(true));
 

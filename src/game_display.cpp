@@ -1056,18 +1056,6 @@ void game_display::remove_single_overlay(const map_location& loc, const std::str
 	}
 }
 
-void game_display::write_overlays(config& cfg) const
-{
-	for(overlay_map::const_iterator i = overlays_.begin(); i != overlays_.end(); ++i) {
-		config& item = cfg.add_child("item");
-		i->first.write(item);
-		item["image"] = i->second.image;
-		item["halo"] = i->second.halo;
-		item["team_name"] = i->second.team_name;
-		item["visible_in_fog"] = i->second.visible_in_fog;
-	}
-}
-
 void game_display::parse_team_overlays()
 {
 	const team& curr_team = teams_[playing_team()];

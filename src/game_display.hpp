@@ -237,9 +237,6 @@ public:
 	/** remove_single_overlay will remove a single overlay from a tile */
 	void remove_single_overlay(const map_location& loc, const std::string& toDelete);
 
-	/** Function to serialize overlay data. */
-	void write_overlays(config& cfg) const;
-
 	/**
 	 * Check the overlay_map for proper team-specific overlays to be
 	 * displayed/hidden

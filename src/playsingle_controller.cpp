@@ -334,15 +334,6 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 	}
 	gui_->labels().read(level_);
 
-	// Find a list of 'items' (i.e. overlays) on the level, and add them
-	foreach (const config &overlay, level_.child_range("item"))
-	{
-		gui_->add_overlay(
-			map_location(overlay, resources::state_of_game),
-			overlay["image"], overlay["halo"], overlay["team_name"],
-			overlay["visible_in_fog"].to_bool(true));
-	}
-
 	// Read sound sources
 	assert(soundsources_manager_ != NULL);
 	foreach (const config &s, level_.child_range("sound_source")) {
