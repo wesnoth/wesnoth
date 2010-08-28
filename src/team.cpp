@@ -158,7 +158,7 @@ void team::team_info::read(const config &cfg)
 		team_color_range_[side] = global_rgb->second;
 	}
 
-	income_per_village = cfg["village_income"].to_int(game_config::village_income);
+	income_per_village = cfg["village_gold"].to_int(game_config::village_income);
 	recall_cost = cfg["recall_cost"].to_int(game_config::recall_cost);
 
 	std::string control = cfg["controller"];
