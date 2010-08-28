@@ -461,7 +461,7 @@ bool luaW_pcall(lua_State *L
 #ifdef __GNUC__
 __attribute__((sentinel))
 #endif
-bool luaW_getglobal(lua_State *L, ...)
+static bool luaW_getglobal(lua_State *L, ...)
 {
 	lua_pushvalue(L, LUA_GLOBALSINDEX);
 
