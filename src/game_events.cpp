@@ -1574,24 +1574,6 @@ WML_HANDLER_FUNCTION(removeitem, event_info, cfg)
 	}
 }
 
-// Adding new items
-WML_HANDLER_FUNCTION(item, /*event_info*/, cfg)
-{
-	game_display &screen = *resources::screen;
-
-	map_location loc = cfg_to_loc(cfg);
-	const std::string img = cfg["image"];
-	const std::string halo = cfg["halo"];
-	const std::string team_name = cfg["team_name"];
-	bool visible_in_fog = cfg["visible_in_fog"].to_bool(true);
-
-	if (!img.empty() || !halo.empty()) {
-		screen.add_overlay(loc, img, halo, team_name, visible_in_fog);
-		screen.invalidate(loc);
-		screen.draw();
-	}
-}
-
 WML_HANDLER_FUNCTION(sound_source, /*event_info*/, cfg)
 {
 	soundsource::sourcespec spec(cfg.get_parsed_config());

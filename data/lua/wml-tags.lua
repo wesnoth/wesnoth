@@ -676,3 +676,15 @@ function wml_actions.move_unit(cfg)
 		end
 	end
 end
+
+function wml_actions.item(cfg)
+	if not cfg.image and not cfg.halo then
+		helper.wml_error "[item] missing required image= and halo= attributes."
+	end
+	local x, y = tonumber(cfg.x), tonumber(cfg.y)
+	if not x or not y then
+		helper.wml_error "[item] missing required x= and y= attributes."
+	end
+	wesnoth.add_tile_overlay(x, y, cfg)
+	wml_actions.redraw {}
+end
