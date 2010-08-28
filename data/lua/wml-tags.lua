@@ -5,6 +5,16 @@
 -- file is the first one to be executed.
 if wesnoth.package["lua/helper.lua"] then return end
 
+function wesnoth.game_events.on_load(cfg)
+	for i = 1,#cfg do
+		wesnoth.message("WML error", string.format("[%s] not supported", cfg[i][1]))
+	end
+end
+
+function wesnoth.game_events.on_save()
+	return {}
+end
+
 wesnoth.require "lua/wml/objectives.lua"
 
 local helper = wesnoth.require "lua/helper.lua"

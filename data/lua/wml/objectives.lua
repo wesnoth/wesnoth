@@ -1,5 +1,6 @@
 local helper = wesnoth.require "lua/helper.lua"
 local wml_actions = wesnoth.wml_actions
+local game_events = wesnoth.game_events
 
 local function color_prefix(r, g, b)
 	return string.format('<span foreground="#%02x%02x%02x">', r, g, b)
@@ -11,11 +12,9 @@ end
 
 local scenario_objectives = {}
 
-local objectives_old_save = wesnoth.game_events.on_save
-local objectives_old_load = wesnoth.game_events.on_load
-
-function wesnoth.game_events.on_save()
-	local custom_cfg = objectives_old_save and objectives_old_saves() or {}
+local old_on_save = game_events.on_save
+function game_events.on_save()
+	local custom_cfg = old_on_save()
 	for i,v in pairs(scenario_objectives) do
 		v.side = i
 		table.insert(custom_cfg, { "objectives", v })
@@ -23,7 +22,8 @@ function wesnoth.game_events.on_save()
 	return custom_cfg
 end
 
-function wesnoth.game_events.on_load(cfg)
+local old_on_load = game_events.on_load
+function game_events.on_load(cfg)
 	for i = #cfg,1,-1 do
 		local v = cfg[i]
 		if v[1] == "objectives" then
@@ -32,7 +32,7 @@ function wesnoth.game_events.on_load(cfg)
 			table.remove(cfg, i)
 		end
 	end
-	if objectives_old_load then objectives_old_load(cfg) end
+	old_on_load(cfg)
 end
 
 local function generate_objectives(cfg)
