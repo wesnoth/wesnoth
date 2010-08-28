@@ -1555,25 +1555,6 @@ WML_HANDLER_FUNCTION(role, /*event_info*/, cfg)
 	}
 }
 
-WML_HANDLER_FUNCTION(removeitem, event_info, cfg)
-{
-	game_display &screen = *resources::screen;
-
-	std::string img = cfg["image"];
-	map_location loc = cfg_to_loc(cfg);
-
-	if(!loc.valid()) {
-		loc = event_info.loc1;
-	}
-
-	if(!img.empty()) { //If image key is set remove that one item
-		screen.remove_single_overlay(loc, img);
-	}
-	else { //Else remove the overlay completely
-		screen.remove_overlay(loc);
-	}
-}
-
 WML_HANDLER_FUNCTION(sound_source, /*event_info*/, cfg)
 {
 	soundsource::sourcespec spec(cfg.get_parsed_config());
