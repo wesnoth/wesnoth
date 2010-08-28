@@ -51,7 +51,7 @@ function wml_actions.item(cfg)
 	wml_actions.redraw {}
 end
 
-function wml_actions.remove_item(cfg)
+function wml_actions.removeitem(cfg)
 	local x, y = tonumber(cfg.x), tonumber(cfg.y)
 	if not x or not y then
 		local context = wesnoth.current.event_context
