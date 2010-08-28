@@ -2929,7 +2929,7 @@ void LuaKernel::initialize()
 
 static char const *handled_file_tags[] = {
 	"color_palette", "color_range", "event", "label", "lua",
-	"menu_item", "music", "side", "sound_source", "story", "teleport", "time",
+	"menu_item", "music", "side", "sound_source", "story", "time",
 	"time_area", "variables"
 };
 
