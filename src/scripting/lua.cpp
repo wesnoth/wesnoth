@@ -2616,6 +2616,22 @@ static int intf_add_modification(lua_State *L)
 	return 0;
 }
 
+/**
+ * Adds an overlay on a tile.
+ * - Args 1,2: location.
+ * - Arg 3: WML table.
+ */
+static int intf_add_tile_overlay(lua_State *L)
+{
+	int x = luaL_checkinteger(L, 1) - 1;
+	int y = luaL_checkinteger(L, 2) - 1;
+	config cfg = luaW_checkconfig(L, 3);
+
+	resources::screen->add_overlay(map_location(x, y), cfg["image"], cfg["halo"],
+		cfg["team_name"], cfg["visible_in_fog"].to_bool(true));
+	return 0;
+}
+
 LuaKernel::LuaKernel(const config &cfg)
 	: mState(luaL_newstate()), level_(cfg)
 {
@@ -2640,6 +2656,7 @@ LuaKernel::LuaKernel(const config &cfg)
 	// Put some callback functions in the scripting environment.
 	static luaL_reg const callbacks[] = {
 		{ "add_modification",         &intf_add_modification         },
+		{ "add_tile_overlay",         &intf_add_tile_overlay         },
 		{ "copy_unit",                &intf_copy_unit                },
 		{ "create_unit",              &intf_create_unit              },
 		{ "dofile",                   &intf_dofile                   },
