@@ -258,7 +258,7 @@ bool is_format_char(char c)
 	}
 }
 
-bool is_cjk_char(const wchar_t ch)
+bool is_cjk_char(const wchar_t c)
 {
 	/**
 	 * You can check these range at http://unicode.org/charts/
@@ -266,6 +266,9 @@ bool is_cjk_char(const wchar_t ch)
 	 * Notice that not all characters in that part is still in use today, so don't list them all here.
 	 * Below are characters that I guess may be used in wesnoth translations.
 	 */
+
+	// cast to silence a windows warning (uses only 16bit for wchar_t)
+	const unsigned int ch = static_cast<unsigned int>(c);
 
 	//FIXME add range from Japanese-specific and Korean-specific section if you know the characters are used today.
 	return
