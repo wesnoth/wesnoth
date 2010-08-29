@@ -1968,10 +1968,6 @@ class map_command_handler
 		{
 			return command_map_.empty();
 		}
-		bool has_command(const std::string& cmd) const
-		{
-			return get_command(cmd) != 0;
-		}
 		//actual work function
 		void dispatch(std::string cmd)
 		{
