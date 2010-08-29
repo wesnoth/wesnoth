@@ -171,7 +171,6 @@ public:
 	static const int E_NO_ROUTE = 2008;
 	virtual std::string do_describe() const;
 	virtual const map_location& get_unit_location() const;
-	virtual const move_unit_spectator& get_move_spectator() const;
 protected:
 	virtual void do_check_before();
 	virtual void do_check_after();

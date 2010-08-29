@@ -420,11 +420,6 @@ const map_location& move_result::get_unit_location() const
 }
 
 
-const move_unit_spectator& move_result::get_move_spectator() const
-{
-	return move_spectator_;
-}
-
 void move_result::do_check_after()
 {
 	if (move_spectator_.get_ambusher().valid()) {
