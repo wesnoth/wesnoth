@@ -75,7 +75,6 @@
 		B52EE8DB121359A600CFBDAB /* savegame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8C2121359A600CFBDAB /* savegame.cpp */; };
 		B52EE8DC121359A600CFBDAB /* sound_music_track.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8C4121359A600CFBDAB /* sound_music_track.cpp */; };
 		B52EE8DD121359A600CFBDAB /* unit_helper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8C7121359A600CFBDAB /* unit_helper.cpp */; };
-		B52EE8DE121359A600CFBDAB /* upload_log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8C9121359A600CFBDAB /* upload_log.cpp */; };
 		B52EE8DF121359A600CFBDAB /* arrow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8A1121359A600CFBDAB /* arrow.cpp */; };
 		B52EE8E0121359A600CFBDAB /* exceptions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8A4121359A600CFBDAB /* exceptions.cpp */; };
 		B52EE8E1121359A600CFBDAB /* formula_debugger_fwd.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8A6121359A600CFBDAB /* formula_debugger_fwd.cpp */; };
@@ -95,7 +94,6 @@
 		B52EE8EF121359A600CFBDAB /* savegame.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8C2121359A600CFBDAB /* savegame.cpp */; };
 		B52EE8F0121359A600CFBDAB /* sound_music_track.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8C4121359A600CFBDAB /* sound_music_track.cpp */; };
 		B52EE8F1121359A600CFBDAB /* unit_helper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8C7121359A600CFBDAB /* unit_helper.cpp */; };
-		B52EE8F2121359A600CFBDAB /* upload_log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8C9121359A600CFBDAB /* upload_log.cpp */; };
 		B52EE91512135AC300CFBDAB /* action.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE8FE12135AC300CFBDAB /* action.cpp */; };
 		B52EE91612135AC300CFBDAB /* attack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE90012135AC300CFBDAB /* attack.cpp */; };
 		B52EE91712135AC300CFBDAB /* highlight_visitor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B52EE90212135AC300CFBDAB /* highlight_visitor.cpp */; };
@@ -1043,8 +1041,6 @@
 		B52EE8C6121359A600CFBDAB /* stub.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = stub.hpp; sourceTree = "<group>"; };
 		B52EE8C7121359A600CFBDAB /* unit_helper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = unit_helper.cpp; sourceTree = "<group>"; };
 		B52EE8C8121359A600CFBDAB /* unit_helper.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = unit_helper.hpp; sourceTree = "<group>"; };
-		B52EE8C9121359A600CFBDAB /* upload_log.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = upload_log.cpp; sourceTree = "<group>"; };
-		B52EE8CA121359A600CFBDAB /* upload_log.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = upload_log.hpp; sourceTree = "<group>"; };
 		B52EE8FE12135AC300CFBDAB /* action.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = action.cpp; sourceTree = "<group>"; };
 		B52EE8FF12135AC300CFBDAB /* action.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = action.hpp; sourceTree = "<group>"; };
 		B52EE90012135AC300CFBDAB /* attack.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = attack.cpp; sourceTree = "<group>"; };
@@ -2037,8 +2033,6 @@
 				B52EE8C6121359A600CFBDAB /* stub.hpp */,
 				B52EE8C7121359A600CFBDAB /* unit_helper.cpp */,
 				B52EE8C8121359A600CFBDAB /* unit_helper.hpp */,
-				B52EE8C9121359A600CFBDAB /* upload_log.cpp */,
-				B52EE8CA121359A600CFBDAB /* upload_log.hpp */,
 				B52EE8821213585300CFBDAB /* tod_manager.cpp */,
 				B52EE8831213585300CFBDAB /* tod_manager.hpp */,
 				B5A5E3AD12132C790047782D /* lua */,
@@ -3617,7 +3611,6 @@
 				B52EE8DB121359A600CFBDAB /* savegame.cpp in Sources */,
 				B52EE8DC121359A600CFBDAB /* sound_music_track.cpp in Sources */,
 				B52EE8DD121359A600CFBDAB /* unit_helper.cpp in Sources */,
-				B52EE8DE121359A600CFBDAB /* upload_log.cpp in Sources */,
 				B52EE91512135AC300CFBDAB /* action.cpp in Sources */,
 				B52EE91612135AC300CFBDAB /* attack.cpp in Sources */,
 				B52EE91712135AC300CFBDAB /* highlight_visitor.cpp in Sources */,
@@ -4022,7 +4015,6 @@
 				B52EE8EF121359A600CFBDAB /* savegame.cpp in Sources */,
 				B52EE8F0121359A600CFBDAB /* sound_music_track.cpp in Sources */,
 				B52EE8F1121359A600CFBDAB /* unit_helper.cpp in Sources */,
-				B52EE8F2121359A600CFBDAB /* upload_log.cpp in Sources */,
 				B52EE92012135AC300CFBDAB /* action.cpp in Sources */,
 				B52EE92112135AC300CFBDAB /* attack.cpp in Sources */,
 				B52EE92212135AC300CFBDAB /* highlight_visitor.cpp in Sources */,
