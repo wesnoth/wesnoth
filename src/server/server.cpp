@@ -361,7 +361,9 @@ void server::send_error(network::connection sock, const char* msg, const char* e
 {
 	simple_wml::document doc;
 	doc.root().add_child("error").set_attr("message", msg);
-	if (strlen(error_code)) doc.child("error")->set_attr("error_code", error_code);
+	if(*error_code != '\0') {
+		doc.child("error")->set_attr("error_code", error_code);
+	}
 	send_doc(doc, sock, "error");
 }
 
@@ -387,7 +389,9 @@ void server::send_password_request(network::connection sock, const char* msg,
 	e.set_attr("phpbb_encryption", user_handler_->use_phpbb_encryption() ? "yes" : "no");
 	e.set_attr("salt", (pepper + salt).c_str());
 	e.set_attr("force_confirmation", force_confirmation ? "yes" : "no");
-	if (strlen(error_code)) e.set_attr("error_code", error_code);
+	if(*error_code != '\0') {
+		e.set_attr("error_code", error_code);
+	}
 
 	send_doc(doc, sock, "error");
 }
