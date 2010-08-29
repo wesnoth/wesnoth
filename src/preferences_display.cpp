@@ -12,15 +12,17 @@
    See the COPYING file for more details.
 */
 
+#define GETTEXT_DOMAIN "wesnoth-lib"
+
 /**
  *  @file
  *  Manage display-related preferences, e.g. screen-size, etc.
  */
 
 #include "global.hpp"
+#include "preferences_display.hpp"
 
-#define GETTEXT_DOMAIN "wesnoth-lib"
-
+#include "construct_dialog.hpp"
 #include "display.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
@@ -28,10 +30,7 @@
 #include "hotkeys.hpp"
 #include "log.hpp"
 #include "marked-up_text.hpp"
-#include "preferences_display.hpp"
-#include "construct_dialog.hpp"
 #include "wml_separators.hpp"
-
 
 namespace preferences {
 
