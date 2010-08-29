@@ -29,7 +29,6 @@ public:
 
 	void set_selected(int val);
 	void set_items(const std::vector<std::string>& items);
-	size_t items_size() const;
 	int selected() const;
 	bool changed();
 
