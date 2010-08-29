@@ -39,6 +39,7 @@
 #include "formula_string_utils.hpp"
 #include "team.hpp"
 #include "scripting/lua.hpp"
+#include "play_controller.hpp"
 
 static lg::log_domain log_unit("unit");
 #define DBG_UT LOG_STREAM(debug, log_unit)
@@ -2483,7 +2484,16 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 					game_config::add_color_info(effect);
 					LOG_UT << "applying image_mod \n";
 				} else if (apply_to == "new_animation") {
-					unit_animation::add_anims(animations_, effect);
+					if(effect["id"].empty()) {
+						unit_animation::add_anims(animations_, effect);
+					} else {
+						std::vector<unit_animation> &built = resources::controller->animation_cache[effect["id"]];
+						if(built.empty()) {
+							unit_animation::add_anims(built, effect);
+						}
+						animations_.insert(animations_.end(),built.begin(),built.end());
+					}
+
 				} else if (apply_to == "ellipse") {
 					cfg_["ellipse"] = effect["ellipse"];
 				}

@@ -30,6 +30,7 @@
 #include "statistics.hpp"
 #include "tod_manager.hpp"
 #include "savegame_config.hpp"
+#include "unit_animation.hpp"
 
 #include <vector>
 
@@ -134,6 +135,7 @@ public:
 	events::mouse_handler& get_mouse_handler_base();
 	events::menu_handler& get_menu_handler() { return menu_handler_; }
 
+	std::map< std::string, std::vector<unit_animation> > animation_cache;
 protected:
 	void slice_before_scroll();
 
