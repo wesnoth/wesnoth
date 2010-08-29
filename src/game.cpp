@@ -1450,7 +1450,6 @@ void game_controller::load_game_cfg(const bool force)
 		cache_.add_define("DEBUG_MODE");
 	}
 
-	gui::set_background_dirty();
 	if (!game_config_.empty() && !force
 			&& old_defines_map_ == cache_.get_preproc_map())
 		return; // game_config already holds requested config in memory
@@ -2329,14 +2328,10 @@ static int do_gameloop(int argc, char** argv)
 				tips_of_day.clear();
 				t_string::reset_translations();
 				image::flush_cache();
-				gui::set_background_dirty();
 			}
 			continue;
 		} else if(res == gui::EDIT_PREFERENCES) {
 			game.show_preferences();
-			if (game.disp().video().modeChanged()) {
-				gui::set_background_dirty();
-			}
 			continue;
 		} else if(res == gui::SHOW_ABOUT) {
 			about::show_about(game.disp());
@@ -2362,8 +2357,6 @@ static int do_gameloop(int argc, char** argv)
 			///@todo editor can ask the game to quit completely
 			if (game.start_editor() == editor::EXIT_QUIT_TO_DESKTOP) {
 				return 0;
-			} else {
-				gui::set_background_dirty();
 			}
 			continue;
 #endif

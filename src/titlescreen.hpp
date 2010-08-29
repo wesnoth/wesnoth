@@ -16,7 +16,6 @@
 #define TITLE_HPP_INCLUDED
 
 class config;
-class game_display;
 
 /** Read the file with the tips-of-the-day. */
 void read_tips_of_day(config& tips_of_day);
@@ -53,24 +52,6 @@ enum TITLE_RESULT { TUTORIAL = 1,		/**< Start special campaign 'tutorial' */
 					RELOAD_GAME_DATA,	/**< Used to reload all game data */
 					NOTHING				/**< Default, nothing done, no redraw needed */
 				  };
-
-/** Mark the titlescreen background as dirty */
-void set_background_dirty();
-
-/**
- *  Show titlepage with logo and background, menu-buttons and tip-of-the-day.
- *
- *  After the page is shown, this routine waits
- *  for the user to click one of the menu-buttons,
- *  or a keypress.
- *
- *  @param	screen			display object
- *  @param	tips_of_day		list of tips
- *
- *  @return	the value of the menu-item the user has choosen.
- *  @retval	see @ref TITLE_RESULT for possible values
- */
-TITLE_RESULT show_title(game_display& screen, config& tips_of_day);
 }
 
 #endif
