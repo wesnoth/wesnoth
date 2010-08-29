@@ -140,8 +140,7 @@ void advance_unit(const map_location &loc, bool random_choice, bool add_replay_e
 	int res;
 
 	if (random_choice) {
-		const std::vector<std::string>& options = u->advances_to();
-		res = rand() % options.size();
+		res = rand() % unit_helper::number_of_possible_advances(*u);
 	} else {
 		res = advance_unit_dialog(loc);
 	}
