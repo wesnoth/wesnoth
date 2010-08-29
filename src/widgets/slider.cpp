@@ -105,11 +105,6 @@ int slider::value() const
 	return value_;
 }
 
-int slider::min_value() const
-{
-	return min_;
-}
-
 int slider::max_value() const
 {
 	return max_;
