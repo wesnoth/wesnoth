@@ -12,8 +12,6 @@
    See the COPYING file for more details.
 */
 
-/** @file */
-
 #ifndef PREFERENCES_DISPLAY_HPP_INCLUDED
 #define PREFERENCES_DISPLAY_HPP_INCLUDED
 
