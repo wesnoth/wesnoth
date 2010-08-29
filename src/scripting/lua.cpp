@@ -3003,6 +3003,27 @@ void LuaKernel::save_game(config &cfg)
 	}
 }
 
+/**
+ * Executes the game_events.on_missing_anim function and passes the
+ * corresponding.
+ */
+config LuaKernel::get_animation(std::string const &name)
+{
+	lua_State *L = mState;
+	config res;
+
+	if (!luaW_getglobal(L, "wesnoth", "game_events", "on_missing_anim", NULL))
+		return res;
+
+	lua_pushstring(L, name.c_str());
+	if (!luaW_pcall(L, 1, 1, false))
+		return res;
+
+	luaW_toconfig(L, -1, res);
+	lua_pop(L, 1);
+	return res;
+}
+
 LuaKernel::~LuaKernel()
 {
 	lua_close(mState);
