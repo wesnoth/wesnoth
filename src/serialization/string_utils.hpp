@@ -13,8 +13,6 @@
    See the COPYING file for more details.
 */
 
-/** @file */
-
 #ifndef SERIALIZATION_STRING_UTILS_HPP_INCLUDED
 #define SERIALIZATION_STRING_UTILS_HPP_INCLUDED
 
