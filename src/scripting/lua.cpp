@@ -2983,16 +2983,12 @@ void LuaKernel::save_game(config &cfg)
 	if (!luaW_getglobal(L, "wesnoth", "game_events", "on_save", NULL))
 		return;
 
-	if (lua_isnil(L, -1)) {
-		lua_pop(L, 1);
-		return;
-	}
-
 	if (!luaW_pcall(L, 0, 1, false))
 		return;
+
 	config v;
-	if (!luaW_toconfig(L, -1, cfg))
-		return;
+	luaW_toconfig(L, -1, v);
+	lua_pop(L, 1);
 
 	for (;;)
 	{
