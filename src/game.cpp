@@ -2287,27 +2287,16 @@ static int do_gameloop(int argc, char** argv)
 
 		gui::TITLE_RESULT res = game.is_loading() ? gui::LOAD_GAME : gui::NOTHING;
 
-		if(gui2::new_widgets) {
-			const preferences::display_manager disp_manager(&game.disp());
-			const hotkey::basic_handler key_handler(&game.disp());
+		const preferences::display_manager disp_manager(&game.disp());
+		const hotkey::basic_handler key_handler(&game.disp());
 
-			const font::floating_label_context label_manager;
+		const font::floating_label_context label_manager;
 
-			cursor::set(cursor::NORMAL);
-			gui2::ttitle_screen dlg;
-			dlg.show(game.disp().video());
+		cursor::set(cursor::NORMAL);
+		gui2::ttitle_screen dlg;
+		dlg.show(game.disp().video());
 
-			res = static_cast<gui::TITLE_RESULT>(dlg.get_retval());
-
-		} else {
-			while(res == gui::NOTHING) {
-				res = gui::show_title(game.disp(),tips_of_day);
-				if (res == gui::REDRAW_BACKGROUND) {
-					gui::set_background_dirty();
-					res = gui::NOTHING;
-				}
-			}
-		}
+		res = static_cast<gui::TITLE_RESULT>(dlg.get_retval());
 
 		game_controller::RELOAD_GAME_DATA should_reload = game_controller::RELOAD_DATA;
 
