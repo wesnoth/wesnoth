@@ -67,11 +67,7 @@ recall::recall(size_t team_index, const unit& unit, const map_location& recall_h
 
 recall::~recall()
 {
-	if (temp_unit_)
-	{
-		delete temp_unit_;
-		temp_unit_ = NULL;
-	}
+	delete temp_unit_;
 }
 
 void recall::accept(visitor& v)
