@@ -16,6 +16,7 @@
 
 #include "dialogs.hpp"
 #include "gettext.hpp"
+#include "game_preferences.hpp"
 #include "log.hpp"
 #include "gui/dialogs/lobby_main.hpp"
 #include "gui/dialogs/message.hpp"

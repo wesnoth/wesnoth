@@ -21,6 +21,7 @@
 #include "foreach.hpp"
 #include "hotkeys.hpp"
 #include "game_end_exceptions.hpp"
+#include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "filesystem.hpp"
 #include "log.hpp"

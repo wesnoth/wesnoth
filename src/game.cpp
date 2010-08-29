@@ -30,6 +30,7 @@
 #include "dialogs.hpp"
 #include "foreach.hpp"
 #include "game_display.hpp"
+#include "game_preferences.hpp"
 #include "builder.hpp"
 #include "filesystem.hpp"
 #include "font.hpp"

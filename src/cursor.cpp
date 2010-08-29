@@ -20,6 +20,7 @@
 #include "global.hpp"
 
 #include "cursor.hpp"
+#include "game_preferences.hpp"
 #include "image.hpp"
 #include "preferences_display.hpp"
 #include "sdl_utils.hpp"

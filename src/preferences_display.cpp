@@ -22,6 +22,7 @@
 #define GETTEXT_DOMAIN "wesnoth-lib"
 
 #include "display.hpp"
+#include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "hotkeys.hpp"

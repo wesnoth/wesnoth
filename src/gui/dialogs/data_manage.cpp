@@ -18,6 +18,8 @@
 
 #include "foreach.hpp"
 #include "formula_string_utils.hpp"
+#include "game_config.hpp"
+#include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/log.hpp"
 #include "gui/dialogs/field.hpp"

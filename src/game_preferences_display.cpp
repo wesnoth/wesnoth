@@ -19,6 +19,7 @@
 #include "filesystem.hpp"
 #include "filechooser.hpp"
 #include "foreach.hpp"
+#include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "lobby_preferences.hpp"

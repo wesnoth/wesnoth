@@ -19,6 +19,8 @@
 #include "foreach.hpp"
 #include "formula_string_utils.hpp"
 #include "gettext.hpp"
+#include "game_config.hpp"
+#include "game_preferences.hpp"
 #include "gui/auxiliary/log.hpp"
 #include "gui/dialogs/field.hpp"
 #include "gui/dialogs/game_delete.hpp"

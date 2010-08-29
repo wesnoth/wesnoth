@@ -29,6 +29,7 @@
 #include "foreach.hpp"
 #include "game_end_exceptions.hpp"
 #include "game_events.hpp"
+#include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/transient_message.hpp"

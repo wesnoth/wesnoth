@@ -23,6 +23,7 @@
 #include "foreach.hpp"
 #include "image.hpp"
 #include "log.hpp"
+#include "preferences.hpp"
 #include "preferences_display.hpp"
 #include "sdl_utils.hpp"
 #include "video.hpp"

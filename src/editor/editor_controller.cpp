@@ -32,6 +32,7 @@
 #include "../filechooser.hpp"
 #include "../filesystem.hpp"
 #include "../foreach.hpp"
+#include "../game_preferences.hpp"
 #include "../gettext.hpp"
 #include "../map_create.hpp"
 #include "../mapgen.hpp"

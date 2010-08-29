@@ -18,9 +18,9 @@
 #include "dialogs.hpp"
 #include "display.hpp"
 #include "foreach.hpp"
+#include "game_preferences.hpp"
 #include "log.hpp"
 #include "mouse_handler_base.hpp"
-#include "preferences_display.hpp"
 
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)

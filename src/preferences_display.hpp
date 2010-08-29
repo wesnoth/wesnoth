@@ -17,9 +17,11 @@
 #ifndef PREFERENCES_DISPLAY_HPP_INCLUDED
 #define PREFERENCES_DISPLAY_HPP_INCLUDED
 
-#include "game_preferences.hpp"
-
 class CVideo;
+class config;
+class display;
+
+#include <string>
 
 namespace preferences {
 
