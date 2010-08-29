@@ -2061,8 +2061,7 @@ int unit::defense_modifier(t_translation::t_terrain terrain) const
 	unit_ability_list defense_abilities = get_abilities("defense");
 	if (!defense_abilities.empty()) {
 		unit_abilities::effect defense_effect(defense_abilities, def, false);
-		def = std::min<int>(defense_effect.get_composite_value(),
-			defense_abilities.highest("max_value").first);
+		def = defense_effect.get_composite_value();
 	}
 	return def;
 }
