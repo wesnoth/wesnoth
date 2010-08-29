@@ -89,7 +89,6 @@ struct map_location {
 	map_location vector_negation() const;
 	map_location vector_sum(const map_location &a) const;
 	map_location& vector_sum_assign(const map_location &a);
-	map_location vector_difference(const map_location &a) const;
 	map_location &vector_difference_assign(const map_location &a);
 
 	// Do n step in the direction d

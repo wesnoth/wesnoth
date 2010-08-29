@@ -179,11 +179,6 @@ map_location& map_location::vector_sum_assign(const map_location &a)
 	return *this;
 }
 
-map_location map_location::vector_difference(const map_location &a) const
-{
-	return vector_sum(a.vector_negation());
-}
-
 map_location& map_location::vector_difference_assign(const map_location &a)
 {
 	return vector_sum_assign(a.vector_negation());
