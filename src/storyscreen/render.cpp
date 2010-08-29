@@ -211,7 +211,7 @@ bool part_ui::render_floating_images()
 			update_rect(ri.rect);
 		}
 
-		if (!skip_) {
+		if (!skip_ && fi.display_delay() > 0) {
 			for (unsigned i = 0; i != 50; ++i)
 			{
 				if (handle_interface()) return false;
