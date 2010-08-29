@@ -211,12 +211,14 @@ bool part_ui::render_floating_images()
 			update_rect(ri.rect);
 		}
 
-		if (!skip_ && fi.display_delay() > 0) {
-			for (unsigned i = 0; i != 50; ++i)
+		if (!skip_)
+		{
+			int delay = fi.display_delay(), delay_step = 20;
+			for (int i = 0; i != (delay + delay_step - 1) / delay_step; ++i)
 			{
 				if (handle_interface()) return false;
 				if (skip_) break;
-				disp_.delay(fi.display_delay() / 50);
+				disp_.delay(std::min<int>(delay_step, delay - i * delay_step));
 			}
 		}
 
