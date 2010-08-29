@@ -45,7 +45,7 @@ extern "C" int _putenv(const char*);
 
 namespace {
 	language_def current_language;
-	string_map strings_;
+	utils::string_map strings_;
 }
 
 static language_list known_languages;
@@ -64,7 +64,7 @@ symbol_table string_table;
 
 const t_string& symbol_table::operator[](const std::string& key) const
 {
-	const string_map::const_iterator i = strings_.find(key);
+	const utils::string_map::const_iterator i = strings_.find(key);
 	if(i != strings_.end()) {
 		return i->second;
 	} else {

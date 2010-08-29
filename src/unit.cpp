@@ -2116,17 +2116,17 @@ int unit::resistance_against(const std::string& damage_name,bool attacker,const 
 	return 100 - res;
 }
 
-string_map unit::get_base_resistances() const
+utils::string_map unit::get_base_resistances() const
 {
 	if (const config &resistance = cfg_.child("resistance"))
 	{
-		string_map res;
+		utils::string_map res;
 		foreach (const config::attribute &i, resistance.attribute_range()) {
 			res[i.first] = i.second;
 		}
 		return res;
 	}
-	return string_map();
+	return utils::string_map();
 }
 
 #if 0

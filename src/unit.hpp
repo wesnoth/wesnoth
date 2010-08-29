@@ -242,7 +242,7 @@ public:
 		{return resistance_against(damage_type.type(), attacker, loc);};
 
 	//return resistances without any abililities applied
-	string_map get_base_resistances() const;
+	utils::string_map get_base_resistances() const;
 //		std::map<terrain_type::TERRAIN,int> movement_type() const;
 
 	bool can_advance() const { return advances_to_.empty()==false || get_modification_advances().empty() == false; }
@@ -428,7 +428,7 @@ private:
 
 	bool flying_, is_fearless_, is_healthy_;
 
-	string_map modification_descriptions_;
+	utils::string_map modification_descriptions_;
 	// Animations:
 	std::vector<unit_animation> animations_;
 

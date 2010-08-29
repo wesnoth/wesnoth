@@ -31,6 +31,8 @@ namespace gui2 {
 class tdialog;
 class twindow;
 
+typedef std::map< std::string, t_string > string_map;
+
 /**
  * Base class for all widgets.
  *

@@ -228,10 +228,10 @@ report generate_report(TYPE type,
 
 		std::set<std::string> resistances_table;
 
-		string_map resistances = u->get_base_resistances();
+		utils::string_map resistances = u->get_base_resistances();
 
 		bool att_def_diff = false;
-		for(string_map::iterator resist = resistances.begin();
+		for(utils::string_map::iterator resist = resistances.begin();
 				resist != resistances.end(); ++resist) {
 			std::ostringstream line;
 			line << gettext(resist->first.c_str()) << ": ";

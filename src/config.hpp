@@ -39,8 +39,6 @@
 #include "game_errors.hpp"
 #include "tstring.hpp"
 
-typedef std::map<std::string, t_string> string_map;
-
 class config;
 class vconfig;
 struct lua_State;

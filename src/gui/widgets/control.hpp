@@ -23,7 +23,6 @@
 
 #include <cassert>
 
-typedef std::map<std::string,t_string> string_map;
 
 namespace gui2 {
 

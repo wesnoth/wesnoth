@@ -123,7 +123,7 @@ public:
 	int damage_against(const attack_type& attack) const { return resistance_against(attack); }
 	int resistance_against(const attack_type& attack) const;
 
-	string_map damage_table() const;
+	utils::string_map damage_table() const;
 
 	void set_parent(const unit_movement_type* parent) { parent_ = parent; }
 

@@ -695,7 +695,7 @@ bool game_controller::play_multiplayer_mode()
 	std::string era = "era_default";
 	std::string scenario = "multiplayer_The_Freelands";
 	std::map<int,std::string> side_types, side_controllers, side_algorithms, side_ai_configs;
-	std::map<int,string_map> side_parameters;
+	std::map<int,utils::string_map> side_parameters;
 	std::string turns = "50";
 	std::string label = "";
 
@@ -864,7 +864,7 @@ bool game_controller::play_multiplayer_mode()
 		config& ai_params = s.add_child("ai");
 
 		//now add in any arbitrary parameters given to the side
-		for(string_map::const_iterator j = side_parameters[side_num].begin(); j != side_parameters[side_num].end(); ++j) {
+		for(utils::string_map::const_iterator j = side_parameters[side_num].begin(); j != side_parameters[side_num].end(); ++j) {
 			s[j->first] = j->second;
 			ai_params[j->first] = j->second;
 		}

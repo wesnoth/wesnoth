@@ -2337,7 +2337,7 @@ static gui2::twidget *find_widget(lua_State *L, int i, bool readonly)
 			if (v > n) {
 				if (readonly)
 					goto error_call_destructors_1;
-				string_map dummy;
+				utils::string_map dummy;
 				for (; n < v; ++n)
 					l->add_row(dummy);
 			}
@@ -2352,7 +2352,7 @@ static gui2::twidget *find_widget(lua_State *L, int i, bool readonly)
 			if (v > n) {
 				if (readonly)
 					goto error_call_destructors_1;
-				string_map dummy;
+				utils::string_map dummy;
 				for (; n < v; ++n)
 					l->add_page(dummy);
 			}

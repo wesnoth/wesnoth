@@ -15,12 +15,11 @@
 #ifndef GUI_AUXILIARY_WINDOW_BUILDER_MULTI_PAGE_HPP_INCLUDED
 #define GUI_AUXILIARY_WINDOW_BUILDER_MULTI_PAGE_HPP_INCLUDED
 
+#include "gui/widgets/widget.hpp"
 #include "gui/auxiliary/window_builder/control.hpp"
 
 #include <map>
 #include <vector>
-
-typedef std::map<std::string,t_string> string_map;
 
 namespace gui2 {
 

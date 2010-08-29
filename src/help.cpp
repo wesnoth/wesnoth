@@ -1527,8 +1527,8 @@ public:
 		push_header(first_res_row, _("Resistance"));
 		resistance_table.push_back(first_res_row);
 		const unit_movement_type &movement_type = type_.movement_type();
-		string_map dam_tab = movement_type.damage_table();
-		for(string_map::const_iterator dam_it = dam_tab.begin(), dam_end = dam_tab.end();
+		utils::string_map dam_tab = movement_type.damage_table();
+		for(utils::string_map::const_iterator dam_it = dam_tab.begin(), dam_end = dam_tab.end();
 			 dam_it != dam_end; ++dam_it) {
 			std::vector<item> row;
 			int resistance = 100 - atoi((*dam_it).second.c_str());

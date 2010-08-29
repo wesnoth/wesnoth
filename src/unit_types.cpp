@@ -348,9 +348,9 @@ int unit_movement_type::resistance_against(const attack_type& attack) const
 	return res;
 }
 
-string_map unit_movement_type::damage_table() const
+utils::string_map unit_movement_type::damage_table() const
 {
-	string_map res;
+	utils::string_map res;
 	if(parent_ != NULL)
 		res = parent_->damage_table();
 

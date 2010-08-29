@@ -335,7 +335,7 @@ std::string lineno_string(const std::string &lineno)
 
 void preprocessor_streambuf::error(const std::string& error_type, int l)
 {
-	string_map i18n_symbols;
+	utils::string_map i18n_symbols;
 	std::string position, error;
 	std::ostringstream pos;
 	pos << l << ' ' << location_;
