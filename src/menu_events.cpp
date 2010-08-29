@@ -2154,11 +2154,6 @@ class map_command_handler
 		{
 			help_on_unknown_ = value;
 		}
-		//show all commands in help regardless whether they are active
-		static void set_show_unavailable(bool value)
-		{
-			show_unavailable_ = value;
-		}
 		//this is display-only
 		static void set_cmd_prefix(std::string value)
 		{
