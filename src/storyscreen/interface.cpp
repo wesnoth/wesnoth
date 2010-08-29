@@ -40,11 +40,6 @@ static lg::log_domain log_engine("engine");
 #include "stub.hpp"
 
 namespace {
-	void generate_endscreen_part_config(config& append_to_cfg)
-	{
-		config& partcfg = append_to_cfg.add_child("story").add_child("part");
-		partcfg["text_align"] = "centered";
-	}
 
 	int count_segments(const config::const_child_itors &story)
 	{
