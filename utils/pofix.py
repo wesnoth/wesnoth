@@ -27,7 +27,7 @@
 # utils/pofix.py po/wesnoth*/*.po*
 # find data/campaigns/ -name '*.cfg' -print0 | xargs -0 utils/pofix.py
 #
-# Please do make sure to add a comment before and new blocks of conversions
+# Please do make sure to add a comment before any new blocks of conversions
 # that states when it was added (current version number is enough) so that
 # the file can be cleaned up more easily every now and then.
 # Example:
@@ -39,6 +39,9 @@
 stringfixes = {
 
 "wesnoth" : (
+# conversion added in 1.9.0+svn
+("Alignement: ", "Alignment: "),
+
 # Convert hyphen-minuses that are being used as minus signs
 # to the Unicode minus sign
 # conversion added in 1.9.0-svn

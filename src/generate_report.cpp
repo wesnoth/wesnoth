@@ -198,7 +198,7 @@ report generate_report(TYPE type,
 		int cm = combat_modifier(displayed_unit_hex, u->alignment(), u->is_fearless());
 
 		str << align << " (" << signed_percent(cm) << ")";
-		tooltip << _("Alignement: ")
+		tooltip << _("Alignment: ")
 			<< "<b>" << align << "</b>\n"
 			<< string_table[align_id + "_description"];
 		return report(str.str(), "", tooltip.str(), "time_of_day");
