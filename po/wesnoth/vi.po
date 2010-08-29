@@ -4,9 +4,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-08-13 11:31+0200\n"
-"PO-Revision-Date: 2010-07-18 09:22+0700\n"
-"Last-Translator: Huynh Yen Loc <walkingcorpse13@gmail.com>\n"
+"POT-Creation-Date: 2010-08-18 16:24+0200\n"
+"PO-Revision-Date: 2010-08-29 09:36+0700\n"
+"Last-Translator: Huynh Yen Loc <nightgaunt13@gmail.com>\n"
 "Language-Team: Vietnamese <>\n"
 "Language: vi\n"
 "MIME-Version: 1.0\n"
@@ -46,53 +46,64 @@ msgstr "Hoạt hóa bản đồ"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:47
+#, fuzzy
+msgid "Local time of day light"
+msgstr "Chọn ngẫu nhiên thời điểm trong ngày ban đầu"
+
+#. [advanced_preference]: type=boolean
+#: data/advanced_preferences.cfg:48
+msgid "Local time of day light effect (use more memory)."
+msgstr ""
+
+#. [advanced_preference]: type=boolean
+#: data/advanced_preferences.cfg:55
 msgid "Show Titlescreen Animation"
 msgstr "Hiện hoạt ảnh màn hình tiêu đề"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:54
+#: data/advanced_preferences.cfg:62
 msgid "Unit Standing Animations"
 msgstr "Hoạt ảnh đơn vị đang đứng"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:61
+#: data/advanced_preferences.cfg:69
 msgid "Show Combat"
 msgstr "Hiện trận đấu"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:68
+#: data/advanced_preferences.cfg:76
 msgid "Ping Timeout"
 msgstr "Thời hạn ping"
 
 #. [advanced_preference]: type=int
-#: data/advanced_preferences.cfg:69
+#: data/advanced_preferences.cfg:77
 msgid ""
 "Number of seconds to wait for a ping reply before we time out. Disable with "
 "0."
 msgstr "Số giây cần chờ phản hồi ping trước khi hết giờ. Vô hiệu lực bằng 0."
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:79
+#: data/advanced_preferences.cfg:87
 msgid "Accept whisper messages from friends only"
 msgstr "Chỉ chấp nhận tin nhắn riêng từ bạn bè"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:86
+#: data/advanced_preferences.cfg:94
 msgid "Auto-open whisper windows in lobby"
 msgstr "Tự động mở cửa sổ tin nhắn riêng trong phòng gặp gỡ"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:93
+#: data/advanced_preferences.cfg:101
 msgid "Group players in lobby"
 msgstr "Xếp nhóm người chơi trong phòng gặp gỡ"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:100
+#: data/advanced_preferences.cfg:108
 msgid "Lobby sounds"
 msgstr "Âm thanh trong phòng gặp gỡ"
 
 #. [advanced_preference]: type=boolean
-#: data/advanced_preferences.cfg:107
+#: data/advanced_preferences.cfg:115
 msgid "Disable notifications"
 msgstr "tắt thông báo"
 
@@ -108,21 +119,80 @@ msgstr "Nhiều người chơi"
 msgid "Underground"
 msgstr "Dưới lòng đất"
 
+#. [leadership]: id=elates_kalenz
+#: data/campaigns/Legend_of_Wesmere/utils/abilities.cfg:13
+#, fuzzy
+msgid ""
+"Elated Kalenz:\n"
+"This unit can lead allied units that are next to it, making them fight "
+"better.\n"
+"\n"
+"Adjacent own units of lower level will do more damage in battle. When a unit "
+"adjacent to, of a lower level than, and on the same side as a unit with "
+"Leadership engages in combat, its attacks do 25% more damage times the "
+"difference in their levels."
+msgstr ""
+"Lãnh đạo:\n"
+"Đơn vị này có thể lãnh đạo các đơn vị cùng phe đứng cạnh nó, làm cho chúng "
+"chiến đấu tốt hơn.\n"
+"\n"
+"Các đơn vị cùng phe có trình độ thấp hơn đứng cạnh sẽ gây nhiều thiệt hại "
+"hơn khi chiến đấu. Khi một đơn vị đứng cạnh, có cấp thấp hơn, và ở cùng phe "
+"với đơn vị có khả năng lãnh đạo giao chiến, các đòn tấn công của nó gây "
+"thiệt hại nhiều hơn 25% nhân với mức chênh lệch trình độ của chúng."
+
+#. [heals]: id=heals_kalenz
+#: data/campaigns/Legend_of_Wesmere/utils/abilities.cfg:30
+#, fuzzy
+msgid "heals Kalenz +4"
+msgstr "hồi máu +4"
+
+#. [heals]: id=heals_kalenz
+#: data/campaigns/Legend_of_Wesmere/utils/abilities.cfg:31
+#, fuzzy
+msgid "female^heals Kalenz +4"
+msgstr "hồi máu +4"
+
+#. [heals]: id=heals_kalenz
+#: data/campaigns/Legend_of_Wesmere/utils/abilities.cfg:38
+#, fuzzy
+msgid ""
+"Heals +4:\n"
+"If a Shyde has developed a special band to a person her healing abilities "
+"increase for him. \n"
+"\n"
+"Allows the unit to heal adjacent allied units at the beginning of our turn.\n"
+"\n"
+"A unit cared for by this healer may heal up to 4 extra HP per turn, or stop "
+"poison from taking effect for that turn.\n"
+"A poisoned unit cannot be cured of its poison by a healer, and must seek the "
+"care of a village or a unit that can cure."
+msgstr ""
+"Hồi máu +4:\n"
+"Cho phép đơn vị hồi máu cho các đơn vị đồng minh đứng bên cạnh ở đầu mỗi "
+"lượt.\n"
+"\n"
+"Một đơn vị được đơn vị hồi máu này hồi máu có thể phục hồi lên tới 4 đơn vị "
+"máu mỗi lượt, hoặc ngăn chất độc phát huy hiệu lực ở lượt đó.\n"
+"Một đơn vị bị nhiễm độc không thể được một điều trị viên cứu chữa khỏi chất "
+"độc, mà phải tìm kiếm sự chăm sóc của một ngôi làng hoặc một đơn vị có khả "
+"năng giải độc."
+
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [unstore_unit]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:307
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:305
 #: src/actions.cpp:1284
 msgid "poisoned"
 msgstr "bị nhiễm độc"
 
 #. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:752
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:753
 #: data/core/macros/abilities.cfg:554
 msgid "berserk"
 msgstr "điên cuồng"
 
 #. [berserk]: id=berserk
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:755
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:756
 #: data/core/macros/abilities.cfg:556
 msgid ""
 "Berserk:\n"
@@ -134,13 +204,13 @@ msgstr ""
 "khi một trong hai bên tham chiến bị tiêu diệt, hoặc 30 vòng đấu đã diễn ra."
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:768
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:769
 #: data/core/macros/abilities.cfg:640
 msgid "magical"
 msgstr "phép thuật"
 
 #. [chance_to_hit]: id=magical
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:771
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:772
 #: data/core/macros/abilities.cfg:642
 msgid ""
 "Magical:\n"
@@ -152,13 +222,13 @@ msgstr ""
 "bị tấn công."
 
 #. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:783
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:784
 #: data/core/macros/abilities.cfg:689
 msgid "firststrike"
 msgstr "đánh trước"
 
 #. [firststrike]: id=firststrike
-#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:786
+#: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:787
 #: data/core/macros/abilities.cfg:691
 msgid ""
 "First Strike:\n"
@@ -374,7 +444,7 @@ msgstr "Quản lý và phối hợp đa năng"
 #. [about]
 #: data/core/about.cfg:246
 msgid "Artwork and Graphics"
-msgstr "Nghệ thuật và đồ họa"
+msgstr "Thiết kế mỹ thuật và đồ họa"
 
 #. [about]
 #: data/core/about.cfg:614
@@ -399,17 +469,17 @@ msgstr "Bản đồ và cân đối nhiều người chơi"
 #. [about]
 #: data/core/about.cfg:775
 msgid "Packagers"
-msgstr "Những người đóng gói"
+msgstr "Đóng gói phần mềm"
 
 #. [about]
 #: data/core/about.cfg:846
 msgid "Miscellaneous Contributors"
-msgstr "Những người đóng góp hỗn hợp"
+msgstr "Đóng góp hỗn hợp"
 
 #. [about]
 #: data/core/about.cfg:1100
 msgid "Internationalization Managers"
-msgstr "Những người quản lý quốc tế hóa"
+msgstr "Quản lý quốc tế hóa"
 
 #. [about]
 #: data/core/about.cfg:1125
@@ -474,12 +544,12 @@ msgstr "Bản dịch tiếng Hà Lan"
 #. [about]
 #: data/core/about.cfg:1468
 msgid "English (GB) Translation"
-msgstr "Bản dịch tiếng Anh (vương quốc Anh)"
+msgstr "Bản dịch tiếng Anh (Vương quốc Anh)"
 
 #. [about]
 #: data/core/about.cfg:1481
 msgid "English (Shaw) Translation"
-msgstr "Bản dịch tiếng Anh (vương quốc Anh)"
+msgstr "Bản dịch tiếng Anh (theo bảng chữ cái Shavian)"
 
 #. [about]
 #: data/core/about.cfg:1505
@@ -547,122 +617,122 @@ msgid "Indonesian Translation"
 msgstr "Bản dịch tiếng In-đô-nê-xi-a"
 
 #. [about]
-#: data/core/about.cfg:1981
+#: data/core/about.cfg:1986
 msgid "Italian Translation"
 msgstr "Bản dịch tiếng Italia"
 
 #. [about]
-#: data/core/about.cfg:2016
+#: data/core/about.cfg:2021
 msgid "Japanese Translation"
 msgstr "Bản dịch tiếng Nhật"
 
 #. [about]
-#: data/core/about.cfg:2068
+#: data/core/about.cfg:2073
 msgid "Korean Translation"
 msgstr "Bản dịch tiếng Hàn Quốc"
 
 #. [about]
-#: data/core/about.cfg:2075
+#: data/core/about.cfg:2080
 msgid "Latin Translation"
 msgstr "Bản dịch tiếng Latin"
 
 #. [about]
-#: data/core/about.cfg:2102
+#: data/core/about.cfg:2107
 msgid "Latvian Translation"
 msgstr "Bản dịch tiếng Latvia"
 
 #. [about]
-#: data/core/about.cfg:2113
+#: data/core/about.cfg:2118
 msgid "Lithuanian Translation"
 msgstr "Bản dịch tiếng Lát-vi"
 
 #. [about]
-#: data/core/about.cfg:2130
+#: data/core/about.cfg:2135
 msgid "Macedonian Translation"
 msgstr "Bản dịch tiếng Ma-xê-đô-ni-a"
 
 #. [about]
-#: data/core/about.cfg:2138
+#: data/core/about.cfg:2143
 msgid "Marathi Translation"
 msgstr "Bản dịch tiếng Ma-ra-tha"
 
 #. [about]
-#: data/core/about.cfg:2147
+#: data/core/about.cfg:2152
 msgid "Norwegian Translation"
 msgstr "Bản dịch tiếng Na Uy"
 
 #. [about]
-#: data/core/about.cfg:2172
+#: data/core/about.cfg:2177
 msgid "Polish Translation"
 msgstr "Bản dịch tiếng Ba Lan"
 
 #. [about]
-#: data/core/about.cfg:2212
+#: data/core/about.cfg:2217
 msgid "Portuguese Translation"
 msgstr "Bản dịch tiếng Bồ Đào Nha"
 
 #. [about]
-#: data/core/about.cfg:2219
+#: data/core/about.cfg:2224
 msgid "Portuguese (Brazil) Translation"
-msgstr "Bản dịch tiếng Bồ Đào Nha (B-ra-xin)"
+msgstr "Bản dịch tiếng Bồ Đào Nha (Braxin)"
 
 #. [about]
-#: data/core/about.cfg:2258
+#: data/core/about.cfg:2263
 msgid "Romanian Translation"
 msgstr "Bản dịch tiếng Romania"
 
 #. [about]
-#: data/core/about.cfg:2266
+#: data/core/about.cfg:2271
 msgid "Russian Translation"
 msgstr "Bản dịch tiếng Nga"
 
 #. [about]
-#: data/core/about.cfg:2333
+#: data/core/about.cfg:2338
 msgid "Serbian Translation"
 msgstr "Bản dịch tiếng Xéc-bi"
 
 #. [about]
-#: data/core/about.cfg:2352
+#: data/core/about.cfg:2357
 msgid "Slovak Translation"
 msgstr "Bản dịch tiếng Slô-va-ki-a"
 
 #. [about]
-#: data/core/about.cfg:2378
+#: data/core/about.cfg:2383
 msgid "Slovenian Translation"
 msgstr "Bản dịch tiếng Slô-vê-ni-a"
 
 #. [about]
-#: data/core/about.cfg:2391
+#: data/core/about.cfg:2396
 msgid "Spanish Translation"
 msgstr "Bản dịch tiếng Tây Ban Nha"
 
 #. [about]
-#: data/core/about.cfg:2452
+#: data/core/about.cfg:2457
 msgid "Swedish Translation"
 msgstr "Bản dịch tiếng Thụy Điển"
 
 #. [about]
-#: data/core/about.cfg:2481
+#: data/core/about.cfg:2486
 msgid "Turkish Translation"
 msgstr "Bản dịch tiếng Thổ Nhĩ Kỳ"
 
 #. [about]
-#: data/core/about.cfg:2503
+#: data/core/about.cfg:2508
 msgid "Valencian (southern Catalan) Translation"
 msgstr "Bản dịch tiếng Va-len-ci-a (Ca-ta-lan phía nam)"
 
 #. [about]
-#: data/core/about.cfg:2516
+#: data/core/about.cfg:2521
 msgid "Vietnamese Translation"
 msgstr "Bản dịch tiếng Việt"
 
 #. [about]
-#: data/core/about.cfg:2529
+#: data/core/about.cfg:2534
 msgid "RACV's Translation"
 msgstr "Bản dịch của RACV"
 
 #. [about]
-#: data/core/about.cfg:2536
+#: data/core/about.cfg:2541
 msgid "Bots"
 msgstr "Người máy"
 
@@ -717,7 +787,7 @@ msgstr "Địa hình"
 
 #. [section]: id=commands
 #. [topic]: id=..commands
-#: data/core/help.cfg:81 data/core/help.cfg:768
+#: data/core/help.cfg:81 data/core/help.cfg:772
 msgid "Commands"
 msgstr "Lệnh"
 
@@ -747,7 +817,7 @@ msgstr ""
 #. [topic]: id=.unknown_unit
 #: data/core/help.cfg:118
 msgid "Unknown Unit"
-msgstr "Đơn vị không xác định"
+msgstr "Đơn vị chưa xác định"
 
 #. [topic]: id=.unknown_unit
 #: data/core/help.cfg:121
@@ -759,7 +829,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Đơn vị này hiện thời không xác định. Bạn phải khám phá nó trong trò chơi để "
+"Đơn vị này hiện thời ch xác định. Bạn phải khám phá nó trong trò chơi để "
 "được phép xem mô tả về nó."
 
 #. [topic]: id=introduction_topic
@@ -2302,23 +2372,25 @@ msgid "Road"
 msgstr "Đường"
 
 #. [topic]: id=terrain_road
-#: data/core/help.cfg:497
+#: data/core/help.cfg:499
+#, fuzzy
 msgid ""
 "Roads are beaten paths of dirt, formed by many travelers passing over them. "
 "As far as gameplay is concerned, Roads behave as <ref>dst='terrain_flat' "
-"text='Flat'</ref> terrain."
+"text='Flat'</ref> terrain.\n"
+"\n"
 msgstr ""
 "Đường là những con đường mòn bằng đất đá, được tạo nên dưới dấu chân của "
 "nhiều lữ khách. Đối với trò chơi, đường hoạt động như địa hình "
 "<ref>dst='terrain_flat' text='đất phẳng'</ref>."
 
 #. [topic]: id=terrain_forest
-#: data/core/help.cfg:504
+#: data/core/help.cfg:506
 msgid "Forest"
 msgstr "Rừng"
 
 #. [topic]: id=terrain_forest
-#: data/core/help.cfg:511
+#: data/core/help.cfg:513
 msgid ""
 "Forests represent any woodland with significant undergrowth, enough to "
 "hinder passage. Though they slow nearly everyone down, forests do offer "
@@ -2351,12 +2423,13 @@ msgstr ""
 "\n"
 
 #. [topic]: id=terrain_hills
-#: data/core/help.cfg:519
+#: data/core/help.cfg:521
 msgid "Hills"
 msgstr "Đồi"
 
 #. [topic]: id=terrain_hills
-#: data/core/help.cfg:524
+#: data/core/help.cfg:528
+#, fuzzy
 msgid ""
 "Hills represent any reasonably rough terrain, with enough dips and rises in "
 "the ground to provide some cover. Hills are difficult for most troops to "
@@ -2366,7 +2439,8 @@ msgid ""
 "negated.\n"
 "\n"
 "Most units have about 50% defense in hills, whereas cavalry are limited to "
-"40%. Dwarves enjoy 60% defense in hills."
+"40%. Dwarves enjoy 60% defense in hills.\n"
+"\n"
 msgstr ""
 "Đồi tương ứng với những địa hình tương đối gồ ghề, có đủ chỗ trũng và gò cao "
 "trên bề mặt để ẩn nấp. Hầu hết quân lính khó di chuyển trên đồi. Người lùn, "
@@ -2378,12 +2452,12 @@ msgstr ""
 "chỉ có 40%. Người lùn hưởng tỷ lệ phòng thủ 60% trên đồi."
 
 #. [topic]: id=terrain_mountains
-#: data/core/help.cfg:531
+#: data/core/help.cfg:535
 msgid "Mountains"
 msgstr "Núi"
 
 #. [topic]: id=terrain_mountains
-#: data/core/help.cfg:536
+#: data/core/help.cfg:540
 msgid ""
 "Mountains are steep enough that units often have to climb over obstacles to "
 "move. By this nature, they provide a considerable defensive bonus for most "
@@ -2406,12 +2480,12 @@ msgstr ""
 "lùn hưởng 70%."
 
 #. [topic]: id=terrain_swamp_water
-#: data/core/help.cfg:543
+#: data/core/help.cfg:547
 msgid "Swamp"
 msgstr "Đầm lầy"
 
 #. [topic]: id=terrain_swamp_water
-#: data/core/help.cfg:548
+#: data/core/help.cfg:552
 msgid ""
 "Swamps represent any sort of wetlands. Swamps slow down nearly everyone, and "
 "inhibit their ability to defend themselves. An exception to this is any race "
@@ -2432,12 +2506,12 @@ msgstr ""
 "và thằn lằn tất cả nói chung hưởng 60%."
 
 #. [topic]: id=terrain_shallow_water
-#: data/core/help.cfg:555
+#: data/core/help.cfg:559
 msgid "Shallow Water"
 msgstr "Nước nông"
 
 #. [topic]: id=terrain_shallow_water
-#: data/core/help.cfg:560
+#: data/core/help.cfg:564
 msgid ""
 "Shallow water represents any body of water deep enough to come up to roughly "
 "a man’s waist. This is enough to slow down nearly anyone and leave them wide "
@@ -2459,12 +2533,12 @@ msgstr ""
 "cả người rắn lẫn người cá đều hưởng 60%."
 
 #. [topic]: id=terrain_deep_water
-#: data/core/help.cfg:567
+#: data/core/help.cfg:571
 msgid "Deep Water"
 msgstr "Nước sâu"
 
 #. [topic]: id=terrain_deep_water
-#: data/core/help.cfg:572
+#: data/core/help.cfg:576
 msgid ""
 "Deep water represents any body of water deep enough to cover a man’s head. "
 "Most units cannot enter deep water: it is the domain of units which can "
@@ -2480,12 +2554,12 @@ msgstr ""
 "với khả năng tự do di chuyển."
 
 #. [topic]: id=terrain_frozen
-#: data/core/help.cfg:579
+#: data/core/help.cfg:583
 msgid "Frozen"
 msgstr "Băng"
 
 #. [topic]: id=terrain_frozen
-#: data/core/help.cfg:584
+#: data/core/help.cfg:588
 msgid ""
 "Frozen terrain represents any flat area that is covered by snow or ice. Most "
 "units are slowed down on it, and have a harder time defending themselves. "
@@ -2502,12 +2576,12 @@ msgstr ""
 "Hầu hết các đơn vị có tỷ lệ phòng thủ 20% đến 40% trên địa hình băng."
 
 #. [topic]: id=terrain_castle
-#: data/core/help.cfg:591
+#: data/core/help.cfg:595
 msgid "Castle"
 msgstr "Lâu đài"
 
 #. [topic]: id=terrain_castle
-#: data/core/help.cfg:598
+#: data/core/help.cfg:602
 msgid ""
 "Castles are any sort of permanent fortification. Nearly all units receive a "
 "considerable bonus to their defense by being stationed in a castle, and all "
@@ -2530,12 +2604,12 @@ msgstr ""
 "\n"
 
 #. [topic]: id=terrain_sand
-#: data/core/help.cfg:607
+#: data/core/help.cfg:611
 msgid "Sand"
 msgstr "Cát"
 
 #. [topic]: id=terrain_sand
-#: data/core/help.cfg:612
+#: data/core/help.cfg:616
 msgid ""
 "The instability of sand makes it harder for most units to cross, and leaves "
 "them wide open to attack. In contrast, the wide feet or snakelike bodies of "
@@ -2551,12 +2625,12 @@ msgstr ""
 "Hầu hết các đơn vị nhận tỷ lệ phòng thủ 20% đến 40% trên cát."
 
 #. [topic]: id=terrain_desert
-#: data/core/help.cfg:619
+#: data/core/help.cfg:623
 msgid "Desert"
 msgstr "Sa mạc"
 
 #. [topic]: id=terrain_desert
-#: data/core/help.cfg:622
+#: data/core/help.cfg:626
 msgid ""
 "Deserts have a somewhat different composition than small sand pits or "
 "beaches, however for gameplay purposes they are identical. See "
@@ -2567,12 +2641,12 @@ msgstr ""
 "ref>."
 
 #. [topic]: id=terrain_cave
-#: data/core/help.cfg:629
+#: data/core/help.cfg:633
 msgid "Cave"
 msgstr "Hang động"
 
 #. [topic]: id=terrain_cave
-#: data/core/help.cfg:634
+#: data/core/help.cfg:638
 msgid ""
 "Cave terrain represents any underground cavern with enough room for a unit "
 "to pass. Most units are wholly unfamiliar with the terrain, and thus are "
@@ -2596,12 +2670,12 @@ msgstr ""
 "khi người lùn có 50%."
 
 #. [topic]: id=terrain_rockbound_cave
-#: data/core/help.cfg:641
+#: data/core/help.cfg:645
 msgid "Rockbound Cave"
 msgstr "Hang đá"
 
 #. [topic]: id=terrain_rockbound_cave
-#: data/core/help.cfg:646
+#: data/core/help.cfg:650
 msgid ""
 "Rockbound cave terrain is formed by the action of water and wind, carrying "
 "erosive particles that carve the rock. It resembles a scraggy underground "
@@ -2626,12 +2700,12 @@ msgstr ""
 "binh chỉ có 40%. Người lùn hưởng tỷ lệ phòng thủ 60% trong hang đá."
 
 #. [topic]: id=terrain_illuminated_cave
-#: data/core/help.cfg:653
+#: data/core/help.cfg:657
 msgid "Illuminated Cave"
 msgstr "Hang động được chiếu sáng"
 
 #. [topic]: id=terrain_illuminated_cave
-#: data/core/help.cfg:656
+#: data/core/help.cfg:660
 msgid ""
 "Rare patches of the underground world are illuminated by light from the "
 "surface shining down into the gloomy darkness. This provides an attack bonus "
@@ -2645,12 +2719,12 @@ msgstr ""
 "động thông thường."
 
 #. [topic]: id=terrain_fungus
-#: data/core/help.cfg:663
+#: data/core/help.cfg:667
 msgid "Mushroom Grove"
 msgstr "Lùm nấm"
 
 #. [topic]: id=terrain_fungus
-#: data/core/help.cfg:668
+#: data/core/help.cfg:672
 msgid ""
 "Mushroom groves are vast underground forests of giant mushrooms, which "
 "thrive in the damp darkness. Most units have trouble negotiating the spongy "
@@ -2674,12 +2748,12 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [topic]: id=terrain_village
-#: data/core/help.cfg:675 src/terrain.cpp:154
+#: data/core/help.cfg:679 src/terrain.cpp:154
 msgid "Village"
 msgstr "Làng"
 
 #. [topic]: id=terrain_village
-#: data/core/help.cfg:682
+#: data/core/help.cfg:686
 msgid ""
 "Villages represent any group of buildings, human or otherwise. Almost all "
 "units, even cavalry, have any easy time navigating villages, and most units "
@@ -2703,12 +2777,12 @@ msgstr ""
 "\n"
 
 #. [topic]: id=terrain_water_village
-#: data/core/help.cfg:691
+#: data/core/help.cfg:695
 msgid "Submerged Village"
 msgstr "Làng ngập nước"
 
 #. [topic]: id=terrain_water_village
-#: data/core/help.cfg:696
+#: data/core/help.cfg:700
 msgid ""
 "Submerged villages are the homes of Merfolk and Nagas. While water-dwelling "
 "creatures are at home here, land-dwellers have a hard time navigating and "
@@ -2731,12 +2805,12 @@ msgstr ""
 "các đơn vị chiến đấu trên cạn thường có tỷ lệ phòng thủ thấp."
 
 #. [topic]: id=terrain_unwalkable
-#: data/core/help.cfg:703
+#: data/core/help.cfg:707
 msgid "Unwalkable"
 msgstr "Không thể đi bộ qua"
 
 #. [topic]: id=terrain_unwalkable
-#: data/core/help.cfg:706
+#: data/core/help.cfg:710
 msgid ""
 "Unwalkable terrain covers any chasm or gorge which, as the name implies, "
 "cannot be crossed simply by walking. Chasms are noted for sheer walls which "
@@ -2749,12 +2823,12 @@ msgstr ""
 "đơn vị có khả năng bay mới có thể vượt qua địa hình này."
 
 #. [topic]: id=terrain_lava
-#: data/core/help.cfg:713
+#: data/core/help.cfg:717
 msgid "Lava"
 msgstr "Dung nham"
 
 #. [topic]: id=terrain_lava
-#: data/core/help.cfg:716
+#: data/core/help.cfg:720
 msgid ""
 "The dangers inherent in trying to walk on lava are fairly obvious. As far as "
 "movement is concerned, lava is equivalent to <ref>dst='terrain_unwalkable' "
@@ -2773,12 +2847,12 @@ msgstr ""
 "hỗn độn."
 
 #. [topic]: id=terrain_ford
-#: data/core/help.cfg:723
+#: data/core/help.cfg:727
 msgid "River Ford"
 msgstr "Chỗ cạn ở sông"
 
 #. [topic]: id=terrain_ford
-#: data/core/help.cfg:726
+#: data/core/help.cfg:730
 msgid ""
 "When a river happens to be extremely shallow, passing over it is a trivial "
 "matter for land based units. Moreover, any creature best adapted to swimming "
@@ -2795,12 +2869,12 @@ msgstr ""
 "và di chuyển tốt nhất cho đơn vị đứng trên nó."
 
 #. [topic]: id=terrain_reef
-#: data/core/help.cfg:733
+#: data/core/help.cfg:737
 msgid "Coastal Reef"
 msgstr "Đá ngầm ven biển"
 
 #. [topic]: id=terrain_reef
-#: data/core/help.cfg:738
+#: data/core/help.cfg:742
 msgid ""
 "Coastal reefs are shallows formed by stone, coral and sand. This provides "
 "most land units with a more steady footing and defensive positions than "
@@ -2818,12 +2892,12 @@ msgstr ""
 "ven biển."
 
 #. [topic]: id=terrain_bridge
-#: data/core/help.cfg:745
+#: data/core/help.cfg:749
 msgid "Bridge"
 msgstr "Cầu"
 
 #. [topic]: id=terrain_bridge
-#: data/core/help.cfg:751
+#: data/core/help.cfg:755
 msgid ""
 "To those capable of building one, the ability to lay a bridge offers a "
 "liberation from the fickle nature of waterways, whose fords come and go with "
@@ -2851,12 +2925,12 @@ msgstr ""
 "giác cầu."
 
 #. [topic]: id=terrain_impassable
-#: data/core/help.cfg:758
+#: data/core/help.cfg:762
 msgid "Impassable"
 msgstr "Không thể qua"
 
 #. [topic]: id=terrain_impassable
-#: data/core/help.cfg:761
+#: data/core/help.cfg:765
 msgid ""
 "Obstacles that not even the most determined traveler may overcome include "
 "solid walls of stone and mountains so tall and steep that they are "
@@ -2871,12 +2945,12 @@ msgstr ""
 "quỷ núi dữ tợn nhất cũng không thể đập thủng những bức tường đá dày."
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:774
+#: data/core/help.cfg:778
 msgid "General commands"
 msgstr "Lệnh chung"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:779
+#: data/core/help.cfg:783
 msgid ""
 "\n"
 "Clear chat messages.\n"
@@ -2887,7 +2961,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:783
+#: data/core/help.cfg:787
 msgid ""
 "\n"
 "Switch debug mode on (does not work in multiplayer). See "
@@ -2902,7 +2976,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:786
+#: data/core/help.cfg:790
 msgid ""
 "\n"
 "Set or toggle player on side between human and AI player. The player/client "
@@ -2921,7 +2995,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:789
+#: data/core/help.cfg:793
 msgid ""
 "\n"
 "Toggle the display of the current frames per second.\n"
@@ -2932,7 +3006,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:792
+#: data/core/help.cfg:796
 msgid ""
 "\n"
 "Switch a log domain to a different log level.\n"
@@ -2943,7 +3017,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:795
+#: data/core/help.cfg:799
 msgid ""
 "\n"
 "Redraws the screen and reloads any image files that have been changed.\n"
@@ -2954,7 +3028,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:798
+#: data/core/help.cfg:802
 msgid ""
 "\n"
 "Bring up theme selection menu.\n"
@@ -2965,7 +3039,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:801
+#: data/core/help.cfg:805
 msgid ""
 "\n"
 "Quit the scenario (without prompting).\n"
@@ -2976,7 +3050,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:804
+#: data/core/help.cfg:808
 msgid ""
 "\n"
 "Save the game (without prompting).\n"
@@ -2987,7 +3061,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=general_commands
-#: data/core/help.cfg:805
+#: data/core/help.cfg:809
 msgid ""
 "\n"
 "Save the game and quit the scenario (without prompting)."
@@ -2996,12 +3070,12 @@ msgstr ""
 "Lưu trò chơi và thoát khỏi màn (không nhắc nhở)."
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:813
+#: data/core/help.cfg:817
 msgid "Multiplayer commands"
 msgstr "Lệnh nhiều người chơi"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:817
+#: data/core/help.cfg:821
 msgid ""
 "\n"
 "Ban a user in a multiplayer game by the IP address used by that username and "
@@ -3016,7 +3090,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:820
+#: data/core/help.cfg:824
 msgid ""
 "\n"
 "Change the controller for side (write here the number of the side) to "
@@ -3035,7 +3109,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:823
+#: data/core/help.cfg:827
 msgid ""
 "\n"
 "Kick a user in multiplayer. They will be able to rejoin the game. If you "
@@ -3050,7 +3124,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:826
+#: data/core/help.cfg:830
 msgid ""
 "\n"
 "Mute a specific observer. If no username is supplied the muted usernames are "
@@ -3063,7 +3137,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:829
+#: data/core/help.cfg:833
 msgid ""
 "\n"
 "Toggle muting/silencing of all observers on/off.\n"
@@ -3074,7 +3148,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:832
+#: data/core/help.cfg:836
 msgid ""
 "\n"
 "Unban a user in a multiplayer game by the IP address used by that username. "
@@ -3088,7 +3162,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=mp_commands
-#: data/core/help.cfg:833
+#: data/core/help.cfg:837
 msgid ""
 "\n"
 "Unmute a specific observer. If no username is supplied the list of muted "
@@ -3099,12 +3173,12 @@ msgstr ""
 "xóa danh sách những người quan sát đã bị chặn tiếng."
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:840
+#: data/core/help.cfg:844
 msgid "Debug mode commands"
 msgstr "Lệnh  trong chế độ gỡ lỗi"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:844
+#: data/core/help.cfg:848
 msgid ""
 "\n"
 "Brings up a menu for choosing a scenario to immediately advance to in a "
@@ -3116,7 +3190,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:847
+#: data/core/help.cfg:851
 msgid ""
 "\n"
 "Create a unit of the specified type on the selected hex.\n"
@@ -3127,7 +3201,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:850
+#: data/core/help.cfg:854
 msgid ""
 "\n"
 "Toggle fog/shroud for the current side.\n"
@@ -3138,7 +3212,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:853
+#: data/core/help.cfg:857
 msgid ""
 "\n"
 "Adds the specified amount to the current side’s gold.\n"
@@ -3149,7 +3223,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:856
+#: data/core/help.cfg:860
 msgid ""
 "\n"
 "Immediately advances to the next scenario in a campaign.\n"
@@ -3160,7 +3234,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:859
+#: data/core/help.cfg:863
 msgid ""
 "\n"
 "Manually set a gamestate variable to value.\n"
@@ -3171,7 +3245,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:862
+#: data/core/help.cfg:866
 msgid ""
 "\n"
 "Show a gamestate variable.\n"
@@ -3182,7 +3256,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:865
+#: data/core/help.cfg:869
 msgid ""
 "\n"
 "Manually fire the specified event.\n"
@@ -3193,7 +3267,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:868
+#: data/core/help.cfg:872
 msgid ""
 "\n"
 "Modifies the specified property of the selected unit. Example: :unit "
@@ -3205,7 +3279,7 @@ msgstr ""
 "\n"
 
 #. [topic]: id=debug_commands
-#: data/core/help.cfg:869
+#: data/core/help.cfg:873
 msgid ""
 "\n"
 "Makes the selected unit level up N times. Example: :unit advances=2"
@@ -4914,28 +4988,28 @@ msgstr ""
 msgid "Turns run out"
 msgstr "Số lượt: "
 
-#: data/core/macros/objective-utils.cfg:60 data/lua/wml-tags.lua:72
+#: data/core/macros/objective-utils.cfg:61 data/lua/wml-tags.lua:81
 msgid "Early finish bonus."
 msgstr "Thưởng kết thúc sớm."
 
-#: data/core/macros/objective-utils.cfg:63 data/lua/wml-tags.lua:74
+#: data/core/macros/objective-utils.cfg:64 data/lua/wml-tags.lua:83
 msgid "No early finish bonus."
 msgstr "Không có thưởng kết thúc sớm."
 
-#: data/core/macros/objective-utils.cfg:67
+#: data/core/macros/objective-utils.cfg:68
 msgid "<small>(early finish bonus)</small>"
 msgstr "<small>(thưởng kết thúc sớm)</small>"
 
-#: data/core/macros/objective-utils.cfg:71
+#: data/core/macros/objective-utils.cfg:72
 #, fuzzy
 msgid "(early finish bonus)"
 msgstr "Thưởng kết thúc sớm."
 
-#: data/core/macros/objective-utils.cfg:75
+#: data/core/macros/objective-utils.cfg:76
 msgid "No gold carried over to the next scenario."
 msgstr "Không có lượng vàng nào được mang sang màn kế tiếp."
 
-#: data/core/macros/objective-utils.cfg:79
+#: data/core/macros/objective-utils.cfg:80
 msgid ""
 "\n"
 "100% of finishing gold carried over to the next scenario."
@@ -4943,7 +5017,7 @@ msgstr ""
 "\n"
 "100% lượng vàng kết thúc được mang sang màn kế tiếp."
 
-#: data/core/macros/objective-utils.cfg:83
+#: data/core/macros/objective-utils.cfg:84
 msgid ""
 "\n"
 "40% of finishing gold carried over to the next scenario."
@@ -4951,7 +5025,7 @@ msgstr ""
 "\n"
 "40% lượng vàng kết thúc được mang sang màn kế tiếp."
 
-#: data/core/macros/objective-utils.cfg:87
+#: data/core/macros/objective-utils.cfg:88
 msgid ""
 "\n"
 "20% of finishing gold carried over to the next scenario."
@@ -4959,11 +5033,11 @@ msgstr ""
 "\n"
 "20% lượng vàng kết thúc được mang sang màn kế tiếp."
 
-#: data/core/macros/objective-utils.cfg:94
+#: data/core/macros/objective-utils.cfg:95
 msgid "Alternative objective:"
 msgstr "Mục tiêu thay thế:"
 
-#: data/core/macros/objective-utils.cfg:98
+#: data/core/macros/objective-utils.cfg:99
 #, fuzzy
 msgid "Bonus objective:"
 msgstr "Mục tiêu thay thế:"
@@ -7200,7 +7274,7 @@ msgstr ""
 "Trong nhiều màn của chiến dịch, bạn có thể cấp những chỉ thị đơn giản cho "
 "đồng minh do máy tính điều khiển sử dụng trình đơn ngữ cảnh chuột phải."
 
-#: data/lua/wml-tags.lua:36 src/multiplayer_connect.cpp:1633
+#: data/lua/wml-tags.lua:36 src/multiplayer_connect.cpp:1635
 msgid "Victory:"
 msgstr "Chiến thắng:"
 
@@ -7216,7 +7290,11 @@ msgstr ""
 msgid "Notes:"
 msgstr ""
 
-#: data/lua/wml-tags.lua:79
+#: data/lua/wml-tags.lua:63
+msgid "(current_turn/turn_limit)^(%d/%d)"
+msgstr ""
+
+#: data/lua/wml-tags.lua:88
 #, fuzzy
 msgid "%d%% of gold carried over to the next scenario."
 msgstr "Không có lượng vàng nào được mang sang màn kế tiếp."
@@ -7235,6 +7313,11 @@ msgstr "Đồng ý"
 #: src/multiplayer_create.cpp:86 src/multiplayer_wait.cpp:176
 msgid "Cancel"
 msgstr "Hủy bỏ"
+
+#. [attack]: type=fire
+#: data/scenario-test.cfg:441
+msgid "lightning"
+msgstr ""
 
 #: data/temp-file_send_data_strings.cfg:12
 msgid "About to upload statistics — Help us make Wesnoth better for you!"
@@ -7874,7 +7957,7 @@ msgstr "Bị chậm"
 msgid "Total damage"
 msgstr "Tổng thiệt hại"
 
-#: src/attack_prediction_display.cpp:259 src/mouse_events.cpp:813
+#: src/attack_prediction_display.cpp:259 src/mouse_events.cpp:837
 msgid "No usable weapon"
 msgstr "Không có vũ khí nào sử dụng được"
 
@@ -7882,7 +7965,7 @@ msgstr "Không có vũ khí nào sử dụng được"
 msgid "Chance of being unscathed"
 msgstr "Cơ hội không bị tổn thương"
 
-#: src/attack_prediction_display.cpp:546 src/mouse_events.cpp:882
+#: src/attack_prediction_display.cpp:546 src/mouse_events.cpp:906
 msgid "Damage Calculations"
 msgstr "Tính toán thiệt hại"
 
@@ -7906,7 +7989,7 @@ msgstr "Bạn có thực sự muốn xóa trò chơi này không?"
 msgid "Don't ask me again!"
 msgstr "Đừng hỏi tôi nữa!"
 
-#: src/dialogs.cpp:455 src/savegame.cpp:133
+#: src/dialogs.cpp:455 src/savegame.cpp:134
 msgid "%a %b %d %H:%M %Y"
 msgstr "%a %b %d %H:%M %Y"
 
@@ -7926,11 +8009,11 @@ msgstr "Nhiều người chơi"
 msgid "Tutorial"
 msgstr "Hướng dẫn"
 
-#: src/dialogs.cpp:505 src/savegame.cpp:946
+#: src/dialogs.cpp:505 src/savegame.cpp:951
 msgid "replay"
 msgstr "phát lại"
 
-#: src/dialogs.cpp:507 src/savegame.cpp:1018
+#: src/dialogs.cpp:507 src/savegame.cpp:1023
 msgid "Turn"
 msgstr "Lượt"
 
@@ -7946,20 +8029,20 @@ msgstr "Độ khó: "
 msgid "Version: "
 msgstr "Phiên bản: "
 
-#: src/dialogs.cpp:538 src/dialogs.cpp:554 src/savegame.cpp:162
-#: src/savegame.cpp:178
+#: src/dialogs.cpp:538 src/dialogs.cpp:554 src/savegame.cpp:163
+#: src/savegame.cpp:179
 msgid "%b %d %y"
 msgstr "%b %d %y"
 
-#: src/dialogs.cpp:544 src/savegame.cpp:168
+#: src/dialogs.cpp:544 src/savegame.cpp:169
 msgid "%H:%M"
 msgstr "%H:%M"
 
-#: src/dialogs.cpp:547 src/savegame.cpp:171
+#: src/dialogs.cpp:547 src/savegame.cpp:172
 msgid "%A, %H:%M"
 msgstr "%A, %H:%M"
 
-#: src/dialogs.cpp:550 src/savegame.cpp:174
+#: src/dialogs.cpp:550 src/savegame.cpp:175
 msgid "%b %d"
 msgstr "%b %d"
 
@@ -8029,7 +8112,7 @@ msgstr "Trận chiến giành Wesnoth"
 msgid "The file you have tried to load is corrupt"
 msgstr "Tập tin bạn thử tải bị hỏng"
 
-#: src/game.cpp:952 src/game.cpp:970 src/savegame.cpp:533
+#: src/game.cpp:952 src/game.cpp:970 src/savegame.cpp:534
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Tập tin bạn thử tải bị hỏng: '"
 
@@ -8074,15 +8157,15 @@ msgstr "Không hiện lại nữa"
 msgid "Error while starting server: "
 msgstr "Lỗi khi khởi động máy chủ: "
 
-#: src/game.cpp:1389 src/playcampaign.cpp:105 src/playcampaign.cpp:367
+#: src/game.cpp:1389 src/playcampaign.cpp:107 src/playcampaign.cpp:373
 msgid "The game could not be loaded: "
 msgstr "Không thể tải trò chơi: "
 
-#: src/game.cpp:1391 src/playcampaign.cpp:107 src/playcampaign.cpp:370
+#: src/game.cpp:1391 src/playcampaign.cpp:109 src/playcampaign.cpp:376
 msgid "Error while playing the game: "
 msgstr "Lỗi khi chơi trò chơi: "
 
-#: src/game.cpp:1409 src/playcampaign.cpp:109 src/playcampaign.cpp:373
+#: src/game.cpp:1409 src/playcampaign.cpp:111 src/playcampaign.cpp:379
 msgid "The game map could not be loaded: "
 msgstr "Không thể tải bản đồ trò chơi: "
 
@@ -8103,7 +8186,7 @@ msgstr "Lỗi khi tải các tập tin cấu hình trò chơi: '"
 msgid "' (The game will now exit)"
 msgstr "' (Trò chơi bây giờ sẽ thoát)"
 
-#: src/game_config.cpp:318
+#: src/game_config.cpp:316
 msgid "Invalid color range: "
 msgstr "Phạm vi màu không hợp lệ: "
 
@@ -8124,7 +8207,7 @@ msgid "Info: "
 msgstr "Thông tin: "
 
 #: src/generate_report.cpp:93 src/multiplayer_connect.cpp:1095
-#: src/savegame.cpp:692
+#: src/savegame.cpp:693
 msgid "Name: "
 msgstr "Tên: "
 
@@ -8208,7 +8291,7 @@ msgstr "Phân loại: "
 
 #: src/generate_report.cpp:216
 #, fuzzy
-msgid "Ability:"
+msgid "Ability: "
 msgstr "Khả năng: "
 
 #: src/generate_report.cpp:252
@@ -8308,24 +8391,29 @@ msgstr "% chính xác"
 msgid "Parry :"
 msgstr ""
 
-#: src/generate_report.cpp:509
+#: src/generate_report.cpp:477
+#, fuzzy
+msgid "Weapon special: "
+msgstr "Tính đặc biệt của vũ khí"
+
+#: src/generate_report.cpp:511
 msgid "Lawful units: "
 msgstr "Đơn vị chính thống: "
 
-#: src/generate_report.cpp:510
+#: src/generate_report.cpp:512
 msgid "Neutral units: "
 msgstr "Đơn vị trung lập: "
 
-#: src/generate_report.cpp:511
+#: src/generate_report.cpp:513
 msgid "Chaotic units: "
 msgstr "Đơn vị hỗn độn: "
 
-#: src/generate_report.cpp:512
+#: src/generate_report.cpp:516
 #, fuzzy
 msgid "Liminal units: "
 msgstr "Đơn vị chính thống: "
 
-#: src/generate_report.cpp:693
+#: src/generate_report.cpp:697
 msgid "Observers:"
 msgstr "Người quan sát:"
 
@@ -9559,11 +9647,18 @@ msgstr "Lệnh:"
 msgid "User-Command#3"
 msgstr "Lệnh người dùng #3"
 
-#: src/mouse_events.cpp:812 src/mouse_events.cpp:892
+#: src/mouse_events.cpp:633
+#, fuzzy
+msgid ""
+"You cannot move your leader away from the keep with some planned recruits "
+"left."
+msgstr "Bạn phải để người chỉ huy trên pháo đài để tuyển quân hoặc gọi lại."
+
+#: src/mouse_events.cpp:836 src/mouse_events.cpp:916
 msgid "Attack Enemy"
 msgstr "Tấn công kẻ thù"
 
-#: src/mouse_events.cpp:893
+#: src/mouse_events.cpp:917
 msgid "Choose weapon:"
 msgstr "Chọn vũ khí:"
 
@@ -9673,7 +9768,7 @@ msgstr "(Khe trống)"
 msgid "Anonymous local player"
 msgstr "người chơi  cục bộ ẩn danh"
 
-#: src/multiplayer_connect.cpp:678 src/multiplayer_connect.cpp:1458
+#: src/multiplayer_connect.cpp:678 src/multiplayer_connect.cpp:1460
 msgid "Computer Player"
 msgstr "máy tính"
 
@@ -9746,35 +9841,31 @@ msgstr "màn không hợp lệ vì nó không có phe nào."
 msgid "Enter a name for the new player"
 msgstr ""
 
-#: src/multiplayer_connect.cpp:1438
-msgid "Adds a named hotseat player to the player list"
-msgstr ""
-
-#: src/multiplayer_connect.cpp:1455
+#: src/multiplayer_connect.cpp:1457
 msgid "Network Player"
 msgstr "người chơi  mạng"
 
-#: src/multiplayer_connect.cpp:1457
+#: src/multiplayer_connect.cpp:1459
 msgid "Local Player"
 msgstr "người chơi  cục bộ"
 
-#: src/multiplayer_connect.cpp:1459
+#: src/multiplayer_connect.cpp:1461
 msgid "Empty"
 msgstr "Bỏ trống"
 
-#: src/multiplayer_connect.cpp:1610
+#: src/multiplayer_connect.cpp:1612
 msgid "Cannot find era $era"
 msgstr "Không thể tìm thấy thời đại $era"
 
-#: src/multiplayer_connect.cpp:1635
+#: src/multiplayer_connect.cpp:1637
 msgid "Defeat enemy leader(s)"
 msgstr "Đánh bại lãnh đạo kẻ thù"
 
-#: src/multiplayer_connect.cpp:1734
+#: src/multiplayer_connect.cpp:1736
 msgid "Waiting for players to join..."
 msgstr "Đang chờ các người chơi  tham gia..."
 
-#: src/multiplayer_connect.cpp:1735
+#: src/multiplayer_connect.cpp:1737
 #, fuzzy
 msgid "Waiting for players to choose factions..."
 msgstr "Đang chờ các người chơi  tham gia..."
@@ -10023,7 +10114,7 @@ msgstr[0] "Vị trí ban đầu:"
 msgid "invalid network handle"
 msgstr "số điều khiển mạng không hợp lệ"
 
-#: src/network.cpp:139 src/network_manager_ana.cpp:770
+#: src/network.cpp:139 src/network_manager_ana.cpp:746
 msgid "Client disconnected"
 msgstr "Máy khách đã ngắt kết nối"
 
@@ -10035,8 +10126,8 @@ msgstr "Không thể thêm cổng kết nối vào tập hợp cổng kết nố
 msgid "Could not send initial handshake"
 msgstr "Không thể gửi lệnh giao tiếp ban đầu"
 
-#: src/network_manager_ana.cpp:644 src/network_manager_ana.cpp:661
-#: src/network_manager_ana.cpp:683
+#: src/network_manager_ana.cpp:638 src/network_manager_ana.cpp:655
+#: src/network_manager_ana.cpp:677
 #, fuzzy
 msgid "Could not connect to host"
 msgstr "Không thể kết nối đến máy chủ."
@@ -10045,48 +10136,48 @@ msgstr "Không thể kết nối đến máy chủ."
 msgid "Terrain with a movement cost less than 1 encountered."
 msgstr "Đã gặp phải địa hình với chi phí di chuyển nhỏ hơn 1."
 
-#: src/play_controller.cpp:222
+#: src/play_controller.cpp:223
 msgid "time left for current turn"
 msgstr "thời gian còn lại cho lược hiện tại"
 
-#: src/play_controller.cpp:224 src/replay_controller.cpp:127
+#: src/play_controller.cpp:225 src/replay_controller.cpp:127
 msgid "current local time"
 msgstr "giờ địa phương hiện tại"
 
-#: src/play_controller.cpp:1051 src/savegame.cpp:294 src/savegame.cpp:306
-#: src/savegame.cpp:972 src/savegame.cpp:974
+#: src/play_controller.cpp:1028 src/savegame.cpp:295 src/savegame.cpp:307
+#: src/savegame.cpp:977 src/savegame.cpp:979
 msgid "Auto-Save"
 msgstr "Lưu tự động"
 
-#: src/play_controller.cpp:1058
+#: src/play_controller.cpp:1035
 msgid "Back to turn "
 msgstr "Trở lại lượt "
 
-#: src/playcampaign.cpp:133 src/playcampaign.cpp:171
+#: src/playcampaign.cpp:137 src/playcampaign.cpp:177
 msgid "Defeat"
 msgstr "Thua cuộc"
 
-#: src/playcampaign.cpp:134 src/playcampaign.cpp:172
+#: src/playcampaign.cpp:138 src/playcampaign.cpp:178
 msgid "You have been defeated!"
 msgstr "Bạn đã bị đánh bại!"
 
-#: src/playcampaign.cpp:377
+#: src/playcampaign.cpp:383
 msgid "Error while reading the WML: "
 msgstr "Lỗi trong khi đọc WML: "
 
-#: src/playcampaign.cpp:413
+#: src/playcampaign.cpp:419
 msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr "Màn đã kết thúc. Bạn có muốn tiếp tục chiến dịch không?"
 
-#: src/playcampaign.cpp:439
+#: src/playcampaign.cpp:445
 msgid "Downloading next scenario..."
 msgstr "Đang tải về màn kế tiếp..."
 
-#: src/playcampaign.cpp:585
+#: src/playcampaign.cpp:591
 msgid "Do you want to save your game?"
 msgstr "Bạn có muốn lưu trò chơi không?"
 
-#: src/playcampaign.cpp:604
+#: src/playcampaign.cpp:610
 msgid "Unknown scenario: '$scenario|'"
 msgstr "Màn không xác định: '$scenario|'"
 
@@ -10122,43 +10213,43 @@ msgstr ""
 "\n"
 "Bạn có muốn lưu nhật ký lỗi trò chơi không?"
 
-#: src/playsingle_controller.cpp:232
+#: src/playsingle_controller.cpp:258
 msgid "Remaining gold: "
 msgstr "Lượng vàng còn lại: "
 
-#: src/playsingle_controller.cpp:236
+#: src/playsingle_controller.cpp:262
 msgid "Early finish bonus: "
 msgstr "Thưởng kết thúc sớm: "
 
-#: src/playsingle_controller.cpp:238
+#: src/playsingle_controller.cpp:264
 msgid "per turn"
 msgstr "mỗi lượt"
 
-#: src/playsingle_controller.cpp:239
+#: src/playsingle_controller.cpp:265
 msgid "Turns finished early: "
 msgstr "Số lượt kết thúc sớm: "
 
-#: src/playsingle_controller.cpp:241
+#: src/playsingle_controller.cpp:267
 msgid "Bonus: "
 msgstr "Thưởng: "
 
-#: src/playsingle_controller.cpp:244
+#: src/playsingle_controller.cpp:270
 msgid "Gold: "
 msgstr "Lượng vàng: "
 
-#: src/playsingle_controller.cpp:248
+#: src/playsingle_controller.cpp:274
 msgid "Carry over percentage: "
 msgstr "Phần trăm mang theo: "
 
-#: src/playsingle_controller.cpp:251
+#: src/playsingle_controller.cpp:277
 msgid "Bonus Gold: "
 msgstr "Lượng vàng thưởng: "
 
-#: src/playsingle_controller.cpp:253
+#: src/playsingle_controller.cpp:279
 msgid "Retained Gold: "
 msgstr "Lượng vàng giữ lại: "
 
-#: src/playsingle_controller.cpp:266
+#: src/playsingle_controller.cpp:292
 msgid ""
 "You will start the next scenario with $gold on top of the defined minimum "
 "starting gold."
@@ -10167,14 +10258,14 @@ msgid_plural ""
 "starting gold."
 msgstr[0] "Lượng vàng giữ lại: "
 
-#: src/playsingle_controller.cpp:274
+#: src/playsingle_controller.cpp:300
 msgid ""
 "You will start the next scenario with the defined minimum starting gold."
 msgid_plural ""
 "You will start the next scenario with the defined minimum starting gold."
 msgstr[0] "Lượng vàng giữ lại: "
 
-#: src/playsingle_controller.cpp:282
+#: src/playsingle_controller.cpp:308
 msgid ""
 "You will start the next scenario with $gold or its defined minimum starting "
 "gold, whichever is higher."
@@ -10183,15 +10274,15 @@ msgid_plural ""
 "gold, whichever is higher."
 msgstr[0] "Lượng vàng giữ lại: "
 
-#: src/playsingle_controller.cpp:428
+#: src/playsingle_controller.cpp:454
 msgid "Game Over"
 msgstr "Trò chơi kết thúc"
 
-#: src/playsingle_controller.cpp:429
+#: src/playsingle_controller.cpp:455
 msgid "The game is over."
 msgstr "Trò chơi kết thúc."
 
-#: src/playsingle_controller.cpp:514
+#: src/playsingle_controller.cpp:540
 msgid ""
 "A network disconnection has occurred, and the game\n"
 "cannot continue. Do you want to save the game?"
@@ -10199,19 +10290,19 @@ msgstr ""
 "Mạng bị ngắt, và trò chơi không thể tiếp tục.\n"
 "Bạn có muốn lưu trò chơi không?"
 
-#: src/playsingle_controller.cpp:674
+#: src/playsingle_controller.cpp:700
 msgid "It is now $name|'s turn"
 msgstr "Giờ là lượt của $name"
 
-#: src/playsingle_controller.cpp:892
+#: src/playsingle_controller.cpp:930
 msgid "Scenario Report"
 msgstr "Báo cáo màn"
 
-#: src/playsingle_controller.cpp:894
+#: src/playsingle_controller.cpp:933
 msgid "Victory"
 msgstr "Chiến thắng"
 
-#: src/playsingle_controller.cpp:895
+#: src/playsingle_controller.cpp:934
 msgid "You have emerged victorious!"
 msgstr "Bạn đã giành chiến thắng!"
 
@@ -10235,66 +10326,66 @@ msgstr "Thay thế bằng $player"
 msgid "$player has left the game. What do you want to do?"
 msgstr "$player đã rời khỏi trò chơi. Bạn muốn làm gì?"
 
-#: src/savegame.cpp:205 src/savegame.cpp:207
+#: src/savegame.cpp:206 src/savegame.cpp:208
 msgid " replay"
 msgstr " phát lại"
 
-#: src/savegame.cpp:445 src/savegame.cpp:449
+#: src/savegame.cpp:446 src/savegame.cpp:450
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr "Cảnh báo: Tập tin bạn thử tải bị hỏng. Vẫn đang tải.\n"
 
-#: src/savegame.cpp:488
+#: src/savegame.cpp:489
 msgid "This save is from a version too old to be loaded."
 msgstr "Bản lưu này là từ một phiên bản quá cũ."
 
-#: src/savegame.cpp:492
+#: src/savegame.cpp:493
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
 msgstr ""
 "Bản lưu này là từ một phiên bản khác của trò chơi. Bạn có muốn tải nó không?"
 
-#: src/savegame.cpp:539
+#: src/savegame.cpp:540
 msgid "This is not a multiplayer save"
 msgstr "Đây không phải bản lưu nhiều người chơi "
 
-#: src/savegame.cpp:605
+#: src/savegame.cpp:606
 msgid "The game could not be saved: "
 msgstr "Không thể lưu trò chơi: "
 
-#: src/savegame.cpp:692
+#: src/savegame.cpp:693
 msgid "Save already exists. Do you want to overwrite it?"
 msgstr "Bản lưu đã tồn tại. Bạn có muốn ghi đè lên nó không?"
 
-#: src/savegame.cpp:693
+#: src/savegame.cpp:694
 msgid "Overwrite?"
 msgstr "Ghi đè?"
 
-#: src/savegame.cpp:703
+#: src/savegame.cpp:704
 msgid "Save names should not end on '.gz'. Please choose a different name."
 msgstr "Tên bản lưu không nên kết thúc bằng '.gz'. Xin chọn một tên khác."
 
-#: src/savegame.cpp:765
+#: src/savegame.cpp:770
 msgid "Saved"
 msgstr "Đã lưu"
 
-#: src/savegame.cpp:765
+#: src/savegame.cpp:770
 msgid "The game has been saved"
 msgstr "Đã lưu trò chơi"
 
-#: src/savegame.cpp:799 src/savegame.cpp:824
+#: src/savegame.cpp:804 src/savegame.cpp:829
 msgid "Could not write to file"
 msgstr "Không thể ghi vào tập tin"
 
-#: src/savegame.cpp:937
+#: src/savegame.cpp:942
 msgid "Save Replay"
 msgstr "Lưu bản phát lại"
 
-#: src/savegame.cpp:955
+#: src/savegame.cpp:960
 msgid "Could not auto save the game. Please save the game manually."
 msgstr "Không thể tự động lưu trò chơi. Xin lưu trò chơi một cách thủ công."
 
-#: src/savegame.cpp:1006
+#: src/savegame.cpp:1011
 msgid "Save Game"
 msgstr "Lưu trò chơi"
 
@@ -10416,7 +10507,7 @@ msgstr "Làng đã sở hữu"
 
 #: src/theme.cpp:313
 msgid "border_size should be between 0.0 and 0.5."
-msgstr "border_size phải nằm giữa 0.0 và 0.5."
+msgstr "border_size n nằm giữa 0.0 và 0.5."
 
 #: src/titlescreen.cpp:428
 msgid "TitleScreen button^Tutorial"
@@ -10519,13 +10610,12 @@ msgid "Quit the game"
 msgstr "Thoát khỏi trò chơi"
 
 #: src/titlescreen.cpp:462
-#, fuzzy
 msgid "Show previous tip of the day"
-msgstr "Hiện mẹo trong ngày kế tiếp"
+msgstr "Hiện gợi ý trước đó"
 
 #: src/titlescreen.cpp:463
 msgid "Show next tip of the day"
-msgstr "Hiện mẹo trong ngày kế tiếp"
+msgstr "Hiện gợi ý tiếp theo"
 
 #: src/titlescreen.cpp:464
 msgid "Show Battle for Wesnoth help"
@@ -10649,6 +10739,9 @@ msgstr "Giúp chúng tôi làm cho Wesnoth tốt hơn cho bạn!"
 msgid "Enable summary uploads"
 msgstr "Cho phép tải lên bản tổng kết"
 
+#~ msgid "Multiplayer_AI^Default AI"
+#~ msgstr "Nhiều người chơi"
+
 #~ msgid "Which enemy side to focus on?"
 #~ msgstr "Tập trung vào kẻ thù nào?"
 
@@ -10660,30 +10753,6 @@ msgstr "Cho phép tải lên bản tổng kết"
 
 #~ msgid "focusing on protecting $this_ally_description|."
 #~ msgstr "tập trung vào việc bảo vệ $this_ally_description|."
-
-#, fuzzy
-#~ msgid "Whiteboard activated."
-#~ msgstr "Đã kích hoạt chế độ gỡ lỗi!"
-
-#, fuzzy
-#~ msgid "Whiteboard deactivated."
-#~ msgstr "Đã ngừng kích hoạt chế độ gỡ lỗi!"
-
-#, fuzzy
-#~ msgid "First"
-#~ msgstr "Canh một"
-
-#~ msgid "Next"
-#~ msgstr "Kế tiếp"
-
-#~ msgid "Upload statistics"
-#~ msgstr "Tải lên thống kê"
-
-#~ msgid "Help Wesnoth"
-#~ msgstr "Giúp Wesnoth"
-
-#~ msgid "Multiplayer_AI^Default AI"
-#~ msgstr "Nhiều người chơi"
 
 #~ msgid "- Handbook of Tactical Analysis Volume II - Haldric II, 43YW"
 #~ msgstr "- Sổ tay phân tích mưu lược, tập II - Haldric II, năm Wesnoth 43"
@@ -10792,8 +10861,17 @@ msgstr "Cho phép tải lên bản tổng kết"
 #~ msgid "Joining this game requires a password."
 #~ msgstr "Cần mật khẩu để tham gia trò chơi này."
 
+#~ msgid "Next"
+#~ msgstr "Kế tiếp"
+
 #~ msgid "$trait_name|: $trait_description "
 #~ msgstr "$trait_name|: $trait_description "
+
+#~ msgid "Upload statistics"
+#~ msgstr "Tải lên thống kê"
+
+#~ msgid "Help Wesnoth"
+#~ msgstr "Giúp Wesnoth"
 
 #~ msgid "Unknown unit type '$type|'"
 #~ msgstr "Kiểu đơn vị '$type|' không xác định"

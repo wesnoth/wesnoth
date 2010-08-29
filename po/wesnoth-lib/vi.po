@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-08-13 11:31+0200\n"
+"POT-Creation-Date: 2010-08-18 16:24+0200\n"
 "PO-Revision-Date: 2010-06-24 11:51+0700\n"
 "Last-Translator: Huynh Yen Loc <walkingcorpse13@gmail.com>\n"
 "Language-Team: Vietnamese <>\n"
@@ -21,253 +21,167 @@ msgid "Deep Water"
 msgstr "Nước sâu"
 
 #. [terrain_type]: id=shallow_water
-#: data/core/terrain.cfg:31
+#. [terrain_type]: id=tropical_water
+#: data/core/terrain.cfg:31 data/core/terrain.cfg:41
 msgid "Shallow Water"
 msgstr "Nước nông"
 
-#. [terrain_type]: id=tropical_water
-#: data/core/terrain.cfg:41
-#, fuzzy
-msgid "Tropical Water"
-msgstr "Rừng nhiệt đới"
-
 #. [terrain_type]: id=ford
-#: data/core/terrain.cfg:52
+#: data/core/terrain.cfg:53
 msgid "Ford"
 msgstr ""
 
 #. [terrain_type]: id=reef
-#: data/core/terrain.cfg:63
+#: data/core/terrain.cfg:64
 msgid "Coastal Reef"
 msgstr "Đá ngầm ven biển"
 
 #. [terrain_type]: id=swamp_water
-#: data/core/terrain.cfg:76
+#: data/core/terrain.cfg:77
 msgid "Swamp"
 msgstr "Đầm lầy"
 
 #. [terrain_type]: id=grassland
-#. [terrain_type]: id=leaf_litter
-#: data/core/terrain.cfg:94 data/core/terrain.cfg:133
-msgid "Grassland"
-msgstr "Đồng cỏ"
-
 #. [terrain_type]: id=savanna
-#: data/core/terrain.cfg:114
-msgid "Savanna"
-msgstr "Trảng cỏ"
-
 #. [terrain_type]: id=grass_dry
-#: data/core/terrain.cfg:124
-msgid "Dry Grass"
-msgstr ""
-
+#. [terrain_type]: id=leaf_litter
 #. [terrain_type]: id=dirt_dark
 #. [terrain_type]: id=dirt
 #. [terrain_type]: id=road
-#: data/core/terrain.cfg:145 data/core/terrain.cfg:154
-#: data/core/terrain.cfg:163
-msgid "Dirt"
-msgstr "Đất"
-
-#. [terrain_type]: id=road
 #. [terrain_type]: id=road_clean
 #. [terrain_type]: id=stone_path
-#: data/core/terrain.cfg:172 data/core/terrain.cfg:181
-#: data/core/terrain.cfg:190
-#, fuzzy
-msgid "Cobbles"
-msgstr "Gạch vụn"
+#. [terrain_type]
+#. [terrain_type]: id=flagstones_dark
+#. [terrain_type]: id=cave_path
+#. [terrain_type]: id=flat
+#: data/core/terrain.cfg:95 data/core/terrain.cfg:116
+#: data/core/terrain.cfg:127 data/core/terrain.cfg:137
+#: data/core/terrain.cfg:150 data/core/terrain.cfg:160
+#: data/core/terrain.cfg:170 data/core/terrain.cfg:180
+#: data/core/terrain.cfg:190 data/core/terrain.cfg:200
+#: data/core/terrain.cfg:702 data/core/terrain.cfg:747
+#: data/core/terrain.cfg:757 data/core/terrain.cfg:1989
+msgid "Flat"
+msgstr "Đất phẳng"
 
 #. [terrain_type]: id=ice
-#: data/core/terrain.cfg:203
+#: data/core/terrain.cfg:215
 msgid "Ice"
 msgstr "Băng"
 
 #. [terrain_type]: id=snow
-#: data/core/terrain.cfg:213
+#: data/core/terrain.cfg:225
 msgid "Snow"
 msgstr "Tuyết"
 
 #. [terrain_type]: id=desert
-#: data/core/terrain.cfg:228
-msgid "Desert"
-msgstr "Sa mạc"
-
 #. [terrain_type]: id=sand
-#: data/core/terrain.cfg:238
+#: data/core/terrain.cfg:240 data/core/terrain.cfg:251
 msgid "Sand"
 msgstr "Cát"
 
 #. [terrain_type]: id=oasis
-#: data/core/terrain.cfg:246
+#: data/core/terrain.cfg:260
 msgid "Oasis"
 msgstr "Ốc đảo"
 
 #. [terrain_type]: id=sand_rubble
-#: data/core/terrain.cfg:258
+#: data/core/terrain.cfg:272
 msgid "Rubble"
 msgstr "Gạch vụn"
 
 #. [terrain_type]: id=crater
-#: data/core/terrain.cfg:269
+#: data/core/terrain.cfg:283
 msgid "Crater"
 msgstr "Hố"
 
 #. [terrain_type]: id=flowers_mixed
-#: data/core/terrain.cfg:284
+#: data/core/terrain.cfg:298
 #, fuzzy
 msgid "Mixed Flowers"
 msgstr "Rừng hỗn hợp mùa thu"
 
 #. [terrain_type]: id=farm
-#: data/core/terrain.cfg:293
+#: data/core/terrain.cfg:307
 msgid "Farmland"
 msgstr "Nông trường"
 
 #. [terrain_type]: id=stones_small
-#: data/core/terrain.cfg:302
+#: data/core/terrain.cfg:316
 msgid "Stones"
 msgstr ""
 
 #. [terrain_type]: id=mushrooms_small
-#: data/core/terrain.cfg:311
+#: data/core/terrain.cfg:325
 #, fuzzy
 msgid "Mushrooms"
 msgstr "Lùm nấm"
 
 #. [terrain_type]: id=mushrooms_farm
-#: data/core/terrain.cfg:320
+#: data/core/terrain.cfg:334
 #, fuzzy
 msgid "Mushroom Farm"
 msgstr "Lùm nấm"
 
 #. [terrain_type]: id=desert_plants
-#: data/core/terrain.cfg:329
+#. [terrain_type]: id=desert_plants_sans_bones
+#: data/core/terrain.cfg:343 data/core/terrain.cfg:352
 #, fuzzy
 msgid "Desert Plants"
 msgstr "Núi sa mạc"
 
 #. [terrain_type]: id=windmill
-#: data/core/terrain.cfg:338
+#: data/core/terrain.cfg:362
 msgid "Windmill"
 msgstr ""
 
 #. [terrain_type]: id=great_tree
-#: data/core/terrain.cfg:352
-msgid "Great Tree"
-msgstr "Cây lớn"
-
 #. [terrain_type]: id=tropical_forest
-#: data/core/terrain.cfg:362
-msgid "Tropical Forest"
-msgstr "Rừng nhiệt đới"
-
 #. [terrain_type]: id=forest
+#. [terrain_type]: id=snow_forest
 #. [terrain_type]: id=deciduous_forest_summer
 #. [terrain_type]: id=deciduous_forest_fall
 #. [terrain_type]: id=deciduous_forest_winter
 #. [terrain_type]: id=mixed_forest_summer
 #. [terrain_type]: id=mixed_forest_fall
 #. [terrain_type]: id=mixed_forest_winter
-#: data/core/terrain.cfg:372 data/core/terrain.cfg:394
-#: data/core/terrain.cfg:405 data/core/terrain.cfg:416
-#: data/core/terrain.cfg:439 data/core/terrain.cfg:450
-#: data/core/terrain.cfg:461
+#: data/core/terrain.cfg:376 data/core/terrain.cfg:387
+#: data/core/terrain.cfg:398 data/core/terrain.cfg:408
+#: data/core/terrain.cfg:420 data/core/terrain.cfg:431
+#: data/core/terrain.cfg:442 data/core/terrain.cfg:465
+#: data/core/terrain.cfg:476 data/core/terrain.cfg:487
 msgid "Forest"
 msgstr "Rừng"
 
-#. [terrain_type]: id=forest
-#: data/core/terrain.cfg:373
-msgid "Pine Forest"
-msgstr "Rừng thông"
-
-#. [terrain_type]: id=snow_forest
 #. [terrain_type]: id=deciduous_forest_winter_snow
 #. [terrain_type]: id=mixed_forest_winter_snow
-#: data/core/terrain.cfg:382 data/core/terrain.cfg:427
-#: data/core/terrain.cfg:472
+#: data/core/terrain.cfg:453 data/core/terrain.cfg:498
 msgid "Snow Forest"
 msgstr "Rừng tuyết"
 
-#. [terrain_type]: id=snow_forest
-#: data/core/terrain.cfg:383
-msgid "Snowy Pine Forest"
-msgstr "Rừng thông tuyết"
-
-#. [terrain_type]: id=deciduous_forest_summer
-#: data/core/terrain.cfg:395
-msgid "Summer Deciduous Forest"
-msgstr "Rừng rụng lá mùa hè"
-
-#. [terrain_type]: id=deciduous_forest_fall
-#: data/core/terrain.cfg:406
-msgid "Fall Deciduous Forest"
-msgstr "Rừng rụng lá mùa thu"
-
-#. [terrain_type]: id=deciduous_forest_winter
-#: data/core/terrain.cfg:417
-msgid "Winter Deciduous Forest"
-msgstr "Rừng rụng lá mùa đông"
-
-#. [terrain_type]: id=deciduous_forest_winter_snow
-#: data/core/terrain.cfg:428
-msgid "Snowy Deciduous Forest"
-msgstr "Rừng tuyết rụng lá"
-
-#. [terrain_type]: id=mixed_forest_summer
-#: data/core/terrain.cfg:440
-msgid "Summer Mixed Forest"
-msgstr "Rừng hỗn hợp mùa hè"
-
-#. [terrain_type]: id=mixed_forest_fall
-#: data/core/terrain.cfg:451
-msgid "Fall Mixed Forest"
-msgstr "Rừng hỗn hợp mùa thu"
-
-#. [terrain_type]: id=mixed_forest_winter
-#: data/core/terrain.cfg:462
-msgid "Winter Mixed Forest"
-msgstr "Rừng hỗn hợp mùa đông"
-
-#. [terrain_type]: id=mixed_forest_winter_snow
-#: data/core/terrain.cfg:473
-msgid "Snowy Mixed Forest"
-msgstr "Rừng tuyết hỗn hợp"
-
 #. [terrain_type]: id=hills
 #. [terrain_type]: id=hills_dry
-#: data/core/terrain.cfg:489 data/core/terrain.cfg:497
+#: data/core/terrain.cfg:515 data/core/terrain.cfg:523
 msgid "Hills"
 msgstr "Đồi"
 
 #. [terrain_type]: id=desert_hills
-#: data/core/terrain.cfg:506
+#: data/core/terrain.cfg:533
 msgid "Dunes"
 msgstr "Đụn cát"
 
 #. [terrain_type]: id=snow_hills
-#: data/core/terrain.cfg:516
+#: data/core/terrain.cfg:543
 msgid "Snow Hills"
 msgstr "Đồi tuyết"
 
 #. [terrain_type]: id=mountains
 #. [terrain_type]: id=desert_mountains
 #. [terrain_type]: id=snow_mountains
-#: data/core/terrain.cfg:530 data/core/terrain.cfg:538
-#: data/core/terrain.cfg:548
+#: data/core/terrain.cfg:557 data/core/terrain.cfg:565
+#: data/core/terrain.cfg:575
 msgid "Mountains"
 msgstr "Núi"
-
-#. [terrain_type]: id=desert_mountains
-#: data/core/terrain.cfg:539
-msgid "Desert Mountains"
-msgstr "Núi sa mạc"
-
-#. [terrain_type]: id=snow_mountains
-#: data/core/terrain.cfg:549
-msgid "Snowy Mountains"
-msgstr "Núi tuyết"
 
 #. [terrain_type]: id=forested_hills
 #. [terrain_type]: id=deciduous_forest_summer_hills
@@ -276,175 +190,121 @@ msgstr "Núi tuyết"
 #. [terrain_type]: id=mixed_forest_summer_hills
 #. [terrain_type]: id=mixed_forest_fall_hills
 #. [terrain_type]: id=mixed_forest_winter_hills
-#: data/core/terrain.cfg:563 data/core/terrain.cfg:583
-#: data/core/terrain.cfg:594 data/core/terrain.cfg:605
-#: data/core/terrain.cfg:627 data/core/terrain.cfg:638
-#: data/core/terrain.cfg:648
+#: data/core/terrain.cfg:590 data/core/terrain.cfg:610
+#: data/core/terrain.cfg:621 data/core/terrain.cfg:632
+#: data/core/terrain.cfg:654 data/core/terrain.cfg:665
+#: data/core/terrain.cfg:676
 msgid "Forested Hills"
 msgstr "Rừng trên đồi"
 
 #. [terrain_type]: id=forested_snow_hills
 #. [terrain_type]: id=deciduous_forest_winter_snow_hills
 #. [terrain_type]: id=mixed_forest_winter_snow_hills
-#: data/core/terrain.cfg:573 data/core/terrain.cfg:616
-#: data/core/terrain.cfg:659
+#: data/core/terrain.cfg:600 data/core/terrain.cfg:643
+#: data/core/terrain.cfg:687
 msgid "Forested Snow Hills"
 msgstr "Rừng tuyết trên đồi"
 
-#. [terrain_type]: id=deciduous_forest_summer_hills
-#: data/core/terrain.cfg:584
-msgid "Summer Deciduous Forested Hills"
-msgstr "Rừng rụng lá mùa hè trên đồi"
-
-#. [terrain_type]: id=deciduous_forest_fall_hills
-#: data/core/terrain.cfg:595
-msgid "Fall Deciduous Forested Hills"
-msgstr "Rừng rụng lá mùa thu trên đồi"
-
-#. [terrain_type]: id=deciduous_forest_winter_hills
-#: data/core/terrain.cfg:606
-msgid "Winter Deciduous Forested Hills"
-msgstr "Rừng rụng lá mùa đông trên đồi"
-
-#. [terrain_type]: id=deciduous_forest_winter_snow_hills
-#: data/core/terrain.cfg:617
-msgid "Snowy Deciduous Forested Hills"
-msgstr "Rừng tuyết rụng lá trên đồi"
-
-#. [terrain_type]: id=mixed_forest_summer_hills
-#: data/core/terrain.cfg:628
-msgid "Summer Mixed Forested Hills"
-msgstr "Rừng hỗn hợp mùa hè trên đồi"
-
-#. [terrain_type]: id=mixed_forest_winter_hills
-#: data/core/terrain.cfg:649
-msgid "Winter Mixed Forested Hills"
-msgstr "Rừng hỗn hợp mùa đông trên đồi"
-
-#. [terrain_type]: id=mixed_forest_winter_snow_hills
-#: data/core/terrain.cfg:660
-msgid "Snowy Mixed Forested Hills"
-msgstr "Rừng tuyết hỗn hợp trên đồi"
-
-#. [terrain_type]
-#: data/core/terrain.cfg:674
-msgid "Wooden Floor"
-msgstr ""
-
 #. [terrain_type]: id=lit
-#: data/core/terrain.cfg:688
+#: data/core/terrain.cfg:717
 msgid "Lit"
 msgstr "Sáng"
 
 #. [terrain_type]: id=cave
 #. [terrain_type]: id=cave_earthy
-#: data/core/terrain.cfg:698 data/core/terrain.cfg:706
+#: data/core/terrain.cfg:728 data/core/terrain.cfg:737
 msgid "Cave"
 msgstr "Hang động"
 
-#. [terrain_type]: id=flagstones_dark
-#. [terrain_type]: id=cave_path
-#. [terrain_type]: id=flat
-#: data/core/terrain.cfg:725 data/core/terrain.cfg:734
-#: data/core/terrain.cfg:1908
-msgid "Flat"
-msgstr "Đất phẳng"
-
 #. [terrain_type]: id=fungus
-#: data/core/terrain.cfg:743
+#: data/core/terrain.cfg:767
 msgid "Mushroom Grove"
 msgstr "Lùm nấm"
 
 #. [terrain_type]: id=fungus_beam
-#: data/core/terrain.cfg:752
+#: data/core/terrain.cfg:776
 msgid "Mushroom Grove Lit"
 msgstr "Lùm nấm sáng"
 
 #. [terrain_type]: id=rocky_cave
-#: data/core/terrain.cfg:763
+#: data/core/terrain.cfg:787
 msgid "Rockbound Cave"
 msgstr "Hang đá"
 
 #. [terrain_type]: id=rails
 #. [terrain_type]: id=railsdiag1
 #. [terrain_type]: id=railsdiag2
-#: data/core/terrain.cfg:786 data/core/terrain.cfg:798
-#: data/core/terrain.cfg:810
+#: data/core/terrain.cfg:800 data/core/terrain.cfg:812
+#: data/core/terrain.cfg:824
 msgid "Mine Rail"
 msgstr ""
 
 #. [terrain_type]: id=canyon
 #. [terrain_type]: id=chasm_earthy
-#: data/core/terrain.cfg:828 data/core/terrain.cfg:838
+#. [terrain_type]: id=abyss
+#: data/core/terrain.cfg:842 data/core/terrain.cfg:853
+#: data/core/terrain.cfg:864
 msgid "Chasm"
 msgstr "Vực"
 
-#. [terrain_type]: id=abyss
-#: data/core/terrain.cfg:848
-msgid "Ethereal Abyss"
-msgstr ""
-
 #. [terrain_type]: id=lava_chasm
-#: data/core/terrain.cfg:858
+#: data/core/terrain.cfg:875
 msgid "Lava chasm"
 msgstr "Vực dung nham"
 
 #. [terrain_type]: id=volcano
-#: data/core/terrain.cfg:869
+#: data/core/terrain.cfg:886
 msgid "Volcano"
 msgstr ""
 
 #. [terrain_type]: id=lava
-#: data/core/terrain.cfg:879
+#: data/core/terrain.cfg:896
 msgid "Lava"
 msgstr "Dung nham"
 
 #. [terrain_type]: id=cloud
+#. [terrain_type]: id=clouddesert
 #. [terrain_type]: id=cloud_snow
-#: data/core/terrain.cfg:894 data/core/terrain.cfg:912
+#: data/core/terrain.cfg:911 data/core/terrain.cfg:921
+#: data/core/terrain.cfg:931
 msgid "Impassable Mountains"
 msgstr "Núi không thể qua"
-
-#. [terrain_type]: id=clouddesert
-#: data/core/terrain.cfg:903
-msgid "Impassable Desert Mountains"
-msgstr "Núi sa mạc không thể qua"
 
 #. [terrain_type]: id=cavewall
 #. [terrain_type]: id=cavewall_hewn
 #. [terrain_type]: id=cavewall_earthy
 #. [terrain_type]: id=cavewall_earthy_hewn
-#: data/core/terrain.cfg:922 data/core/terrain.cfg:932
-#: data/core/terrain.cfg:942 data/core/terrain.cfg:952
+#: data/core/terrain.cfg:942 data/core/terrain.cfg:953
+#: data/core/terrain.cfg:964 data/core/terrain.cfg:975
 msgid "Cave Wall"
 msgstr "Vách hang động"
 
 #. [terrain_type]: id=wall_stone
 #. [terrain_type]: id=wall_stone_lit
-#: data/core/terrain.cfg:962 data/core/terrain.cfg:972
+#: data/core/terrain.cfg:986 data/core/terrain.cfg:997
 msgid "Wall"
 msgstr "Tường"
 
 #. [terrain_type]: id=impassable_overlay
 #. [terrain_type]: id=impassable
-#: data/core/terrain.cfg:982 data/core/terrain.cfg:1929
+#: data/core/terrain.cfg:1008 data/core/terrain.cfg:2010
 msgid "Impassable"
 msgstr "Không thể qua"
 
 #. [terrain_type]: id=void
-#: data/core/terrain.cfg:993
+#: data/core/terrain.cfg:1020
 msgid "Void"
 msgstr "Khoảng không"
 
 #. [terrain_type]: id=desert_village
-#. [terrain_type]: id=orcish_snow_village
 #. [terrain_type]: id=orcish_village
-#. [terrain_type]: id=orcish_snow_hills_village
+#. [terrain_type]: id=orcish_snow_village
 #. [terrain_type]: id=orcish_hill_village
+#. [terrain_type]: id=orcish_snow_hills_village
 #. [terrain_type]: id=elven_snow_village
 #. [terrain_type]: id=elven_village
-#. [terrain_type]: id=snow_village
 #. [terrain_type]: id=human_village
+#. [terrain_type]: id=snow_village
 #. [terrain_type]: id=city_village
 #. [terrain_type]: id=hill_village
 #. [terrain_type]: id=snow-hill_village
@@ -466,82 +326,54 @@ msgstr "Khoảng không"
 #. [terrain_type]: id=mermen_village
 #. [terrain_type]: id=swamp_merfolk-village
 #. [terrain_type]: id=village
-#: data/core/terrain.cfg:1009 data/core/terrain.cfg:1021
-#: data/core/terrain.cfg:1035 data/core/terrain.cfg:1047
-#: data/core/terrain.cfg:1059 data/core/terrain.cfg:1071
-#: data/core/terrain.cfg:1085 data/core/terrain.cfg:1097
-#: data/core/terrain.cfg:1111 data/core/terrain.cfg:1123
-#: data/core/terrain.cfg:1135 data/core/terrain.cfg:1147
-#: data/core/terrain.cfg:1159 data/core/terrain.cfg:1171
-#: data/core/terrain.cfg:1183 data/core/terrain.cfg:1195
-#: data/core/terrain.cfg:1207 data/core/terrain.cfg:1219
-#: data/core/terrain.cfg:1233 data/core/terrain.cfg:1245
-#: data/core/terrain.cfg:1257 data/core/terrain.cfg:1269
-#: data/core/terrain.cfg:1281 data/core/terrain.cfg:1293
-#: data/core/terrain.cfg:1305 data/core/terrain.cfg:1317
-#: data/core/terrain.cfg:1329 data/core/terrain.cfg:1343
-#: data/core/terrain.cfg:1354 data/core/terrain.cfg:1367
-#: data/core/terrain.cfg:1922
+#: data/core/terrain.cfg:1036 data/core/terrain.cfg:1049
+#: data/core/terrain.cfg:1064 data/core/terrain.cfg:1077
+#: data/core/terrain.cfg:1090 data/core/terrain.cfg:1103
+#: data/core/terrain.cfg:1118 data/core/terrain.cfg:1131
+#: data/core/terrain.cfg:1146 data/core/terrain.cfg:1159
+#: data/core/terrain.cfg:1172 data/core/terrain.cfg:1185
+#: data/core/terrain.cfg:1198 data/core/terrain.cfg:1211
+#: data/core/terrain.cfg:1224 data/core/terrain.cfg:1237
+#: data/core/terrain.cfg:1250 data/core/terrain.cfg:1263
+#: data/core/terrain.cfg:1278 data/core/terrain.cfg:1291
+#: data/core/terrain.cfg:1304 data/core/terrain.cfg:1317
+#: data/core/terrain.cfg:1330 data/core/terrain.cfg:1343
+#: data/core/terrain.cfg:1356 data/core/terrain.cfg:1369
+#: data/core/terrain.cfg:1382 data/core/terrain.cfg:1397
+#: data/core/terrain.cfg:1409 data/core/terrain.cfg:1423
+#: data/core/terrain.cfg:2003
 msgid "Village"
 msgstr "Làng"
 
 #. [terrain_type]: id=encampment
-#: data/core/terrain.cfg:1383
-msgid "Encampment"
-msgstr "Doanh trại"
-
 #. [terrain_type]: id=encampment_snow
-#: data/core/terrain.cfg:1394
-#, fuzzy
-msgid "Snowy Encampment"
-msgstr "Doanh trại"
-
 #. [terrain_type]: id=orcish_fort
-#: data/core/terrain.cfg:1405
-msgid "Fort"
-msgstr "Ph"
-
 #. [terrain_type]: id=snow_orcish_fort
-#: data/core/terrain.cfg:1416
-#, fuzzy
-msgid "Snowy Fort"
-msgstr "Rừng tuyết"
-
 #. [terrain_type]: id=castle
+#. [terrain_type]: id=snow_castle
 #. [terrain_type]: id=elven_castle
 #. [terrain_type]: id=dwarven_castle
+#. [terrain_type]: id=ruin
+#. [terrain_type]: id=sand_castle
 #. [terrain_type]: id=castle_overlay
-#: data/core/terrain.cfg:1427 data/core/terrain.cfg:1447
-#: data/core/terrain.cfg:1458 data/core/terrain.cfg:1674
+#: data/core/terrain.cfg:1440 data/core/terrain.cfg:1452
+#: data/core/terrain.cfg:1464 data/core/terrain.cfg:1476
+#: data/core/terrain.cfg:1488 data/core/terrain.cfg:1498
+#: data/core/terrain.cfg:1509 data/core/terrain.cfg:1520
+#: data/core/terrain.cfg:1532 data/core/terrain.cfg:1568
+#: data/core/terrain.cfg:1741
 msgid "Castle"
 msgstr "Lâu đài"
 
-#. [terrain_type]: id=snow_castle
-#: data/core/terrain.cfg:1437
-#, fuzzy
-msgid "Snowy Castle"
-msgstr "Lâu đài"
-
-#. [terrain_type]: id=ruin
-#: data/core/terrain.cfg:1469
-msgid "Ruin"
-msgstr "Tàn tích"
-
 #. [terrain_type]: id=sunkenruin
-#: data/core/terrain.cfg:1480
+#: data/core/terrain.cfg:1544
 msgid "Sunken Ruin"
 msgstr "Tàn tích bị chìm"
 
 #. [terrain_type]: id=swampruin
-#: data/core/terrain.cfg:1492
+#: data/core/terrain.cfg:1556
 msgid "Swamp Ruin"
 msgstr "Tàn tích đầm lầy"
-
-#. [terrain_type]: id=sand_castle
-#: data/core/terrain.cfg:1504
-#, fuzzy
-msgid "Desert Castle"
-msgstr "Lâu đài"
 
 #. [terrain_type]: id=encampment_keep
 #. [terrain_type]: id=encampment_snow_keep
@@ -552,68 +384,33 @@ msgstr "Lâu đài"
 #. [terrain_type]: id=elven_keep
 #. [terrain_type]: id=dwarven_keep
 #. [terrain_type]: id=ruined_keep
-#. [terrain_type]: id=sunken_keep
-#. [terrain_type]: id=swamp_keep
+#. [terrain_type]: id=desert_keep
 #. [terrain_type]: id=keep_overlay
-#: data/core/terrain.cfg:1520 data/core/terrain.cfg:1533
-#: data/core/terrain.cfg:1546 data/core/terrain.cfg:1559
-#: data/core/terrain.cfg:1572 data/core/terrain.cfg:1585
-#: data/core/terrain.cfg:1596 data/core/terrain.cfg:1609
-#: data/core/terrain.cfg:1622 data/core/terrain.cfg:1635
-#: data/core/terrain.cfg:1648 data/core/terrain.cfg:1662
+#: data/core/terrain.cfg:1585 data/core/terrain.cfg:1598
+#: data/core/terrain.cfg:1611 data/core/terrain.cfg:1624
+#: data/core/terrain.cfg:1637 data/core/terrain.cfg:1650
+#: data/core/terrain.cfg:1662 data/core/terrain.cfg:1675
+#: data/core/terrain.cfg:1688 data/core/terrain.cfg:1727
+#: data/core/terrain.cfg:1753
 msgid "Keep"
 msgstr "Pháo đài"
 
-#. [terrain_type]: id=encampment_keep
-#: data/core/terrain.cfg:1521
-msgid "Encampment Keep"
-msgstr "Pháo đài doanh trại"
-
-#. [terrain_type]: id=encampment_snow_keep
-#: data/core/terrain.cfg:1534
-#, fuzzy
-msgid "Snowy Encampment Keep"
-msgstr "Pháo đài doanh trại"
-
-#. [terrain_type]: id=orcish_keep
-#: data/core/terrain.cfg:1547
-msgid "Fort Keep"
-msgstr "Pháo đài công sự"
-
-#. [terrain_type]: id=snow_orcish_keep
-#: data/core/terrain.cfg:1560
-#, fuzzy
-msgid "Snowy Fort Keep"
-msgstr "Pháo đài công sự"
-
 #. [terrain_type]: id=human_keep
-#. [terrain_type]: id=dwarven_keep
-#. [terrain_type]: id=swamp_keep
-#: data/core/terrain.cfg:1573 data/core/terrain.cfg:1610
-#: data/core/terrain.cfg:1649
+#: data/core/terrain.cfg:1638
 msgid "Castle Keep"
 msgstr "Thành lũy"
 
-#. [terrain_type]: id=elven_keep
-#: data/core/terrain.cfg:1597
-msgid "Elven Keep"
-msgstr "Pháo đài của thần tiên"
-
-#. [terrain_type]: id=ruined_keep
-#: data/core/terrain.cfg:1623
-msgid "Ruined Castle Keep"
-msgstr "Pháo đài đổ nát"
-
 #. [terrain_type]: id=sunken_keep
-#: data/core/terrain.cfg:1636
-msgid "Sunken Castle Keep"
+#: data/core/terrain.cfg:1701
+#, fuzzy
+msgid "Sunken Keep"
 msgstr "Pháo đài bị chìm"
 
-#. [terrain_type]: id=desert_keep
-#: data/core/terrain.cfg:1684 data/core/terrain.cfg:1685
+#. [terrain_type]: id=swamp_keep
+#: data/core/terrain.cfg:1714
 #, fuzzy
-msgid "Desert Keep"
-msgstr "Sa mạc"
+msgid "Swamp Keep"
+msgstr "Đầm lầy"
 
 #. [terrain_type]: id=bridge
 #. [terrain_type]: id=bridgediag1
@@ -625,53 +422,38 @@ msgstr "Sa mạc"
 #. [terrain_type]: id=bridgelava
 #. [terrain_type]: id=bridgelavadiag1
 #. [terrain_type]: id=bridglavadiag2
-#: data/core/terrain.cfg:1704 data/core/terrain.cfg:1715
-#: data/core/terrain.cfg:1726 data/core/terrain.cfg:1739
-#: data/core/terrain.cfg:1750 data/core/terrain.cfg:1761
-#: data/core/terrain.cfg:1774 data/core/terrain.cfg:1783
-#: data/core/terrain.cfg:1793 data/core/terrain.cfg:1806
-#: data/core/terrain.cfg:1817 data/core/terrain.cfg:1829
+#: data/core/terrain.cfg:1772 data/core/terrain.cfg:1784
+#: data/core/terrain.cfg:1796 data/core/terrain.cfg:1810
+#: data/core/terrain.cfg:1822 data/core/terrain.cfg:1834
+#: data/core/terrain.cfg:1848 data/core/terrain.cfg:1858
+#: data/core/terrain.cfg:1869 data/core/terrain.cfg:1883
+#: data/core/terrain.cfg:1895 data/core/terrain.cfg:1908
 msgid "Bridge"
 msgstr "Cầu"
 
 #. [terrain_type]: id=off_map
-#: data/core/terrain.cfg:1847
+#: data/core/terrain.cfg:1927
 msgid "None"
 msgstr "Không có"
 
 #. [toggle_button]: id=shroud
 #. [terrain_type]: id=shroud
-#: data/core/terrain.cfg:1856 data/gui/default/window/mp_create_game.cfg:471
+#: data/core/terrain.cfg:1937 data/gui/default/window/mp_create_game.cfg:471
 msgid "Shroud"
 msgstr "Màn che"
 
 #. [terrain_type]: id=fog
-#: data/core/terrain.cfg:1865
+#: data/core/terrain.cfg:1946
 msgid "Fog"
 msgstr "Sương mù"
 
-#. [terrain_type]: id=m
-#: data/core/terrain.cfg:1878
-msgid "Test M"
-msgstr ""
-
-#. [terrain_type]: id=y
-#: data/core/terrain.cfg:1886
-msgid "Test Y"
-msgstr ""
-
-#. [terrain_type]: id=b
-#: data/core/terrain.cfg:1894
-msgid "Test B"
-msgstr ""
-
 #. [terrain_type]: id=frozen
-#: data/core/terrain.cfg:1915
+#: data/core/terrain.cfg:1996
 msgid "Frozen"
 msgstr "Đóng băng"
 
 #. [terrain_type]: id=unwalkable
-#: data/core/terrain.cfg:1936
+#: data/core/terrain.cfg:2017
 msgid "Unwalkable"
 msgstr "Không thể đi bộ qua"
 
@@ -840,7 +622,7 @@ msgstr "Tạo"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_new_map.cfg:27 src/hotkeys.cpp:115
+#: data/gui/default/window/editor_new_map.cfg:27 src/hotkeys.cpp:116
 msgid "New Map"
 msgstr "Bản đồ mới"
 
@@ -864,7 +646,7 @@ msgstr "Tạo bản đồ mới"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_resize_map.cfg:27 src/hotkeys.cpp:160
+#: data/gui/default/window/editor_resize_map.cfg:27 src/hotkeys.cpp:161
 msgid "Resize Map"
 msgstr "Thay đổi kích thước bản đồ"
 
@@ -906,7 +688,7 @@ msgstr "Thay đổi kích thước bản đồ"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_settings.cfg:38 src/hotkeys.cpp:113
+#: data/gui/default/window/editor_settings.cfg:38 src/hotkeys.cpp:114
 msgid "Editor Settings"
 msgstr "Thiết lập trình hiệu chỉnh"
 
@@ -1017,8 +799,8 @@ msgstr "Dấu vết thi hành"
 #. [grid]
 #: data/gui/default/window/formula_debugger.cfg:226
 #: data/gui/default/window/lobby_main.cfg:660
-#: data/gui/default/window/title_screen.cfg:235 src/hotkeys.cpp:651
-#: src/hotkeys.cpp:954
+#: data/gui/default/window/title_screen.cfg:235 src/hotkeys.cpp:652
+#: src/hotkeys.cpp:958
 msgid "Quit"
 msgstr "Thoát"
 
@@ -1663,7 +1445,7 @@ msgstr "Chọn"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=help
-#: data/gui/default/window/title_screen.cfg:149 src/hotkeys.cpp:191
+#: data/gui/default/window/title_screen.cfg:149 src/hotkeys.cpp:192
 msgid "Help"
 msgstr "Trợ giúp"
 
@@ -1749,7 +1531,7 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:232 src/hotkeys.cpp:193
+#: data/gui/default/window/title_screen.cfg:232 src/hotkeys.cpp:194
 msgid "Change the language"
 msgstr "Thay đổi ngôn ngữ"
 
@@ -1926,9 +1708,8 @@ msgid "Turn Dialog"
 msgstr "Hộp thoại nhắc lượt"
 
 #: src/game_preferences_display.cpp:179
-#, fuzzy
-msgid "Delay Shroud Updates on Start"
-msgstr "Trễ cập nhật màn che"
+msgid "Enable Planning Mode on Start"
+msgstr ""
 
 #: src/game_preferences_display.cpp:180
 msgid "Turn Bell"
@@ -2194,7 +1975,7 @@ msgid "Display a dialog at the beginning of your turn"
 msgstr "Hiển thị hộp thoại ở đầu lượt của bạn"
 
 #: src/game_preferences_display.cpp:389
-msgid "Activates the Delay Shroud Updates option on game start"
+msgid "Activates Planning Mode on game start"
 msgstr ""
 
 #: src/game_preferences_display.cpp:392
@@ -2555,7 +2336,7 @@ msgstr "Độ phóng mặc định"
 msgid "Toggle Full Screen"
 msgstr "Bật tắt toàn màn hình"
 
-#: src/hotkeys.cpp:58 src/hotkeys.cpp:909
+#: src/hotkeys.cpp:58 src/hotkeys.cpp:913
 msgid "Screenshot"
 msgstr "Chụp màn hình"
 
@@ -2579,7 +2360,7 @@ msgstr "Đổi tên đơn vị"
 msgid "Save Replay"
 msgstr "Lưu bản phát lại"
 
-#: src/hotkeys.cpp:65 src/hotkeys.cpp:117
+#: src/hotkeys.cpp:65 src/hotkeys.cpp:118
 msgid "Save Map"
 msgstr "Lưu bản đồ"
 
@@ -2696,254 +2477,258 @@ msgid "Skip animation"
 msgstr "Nhảy qua hoạt ảnh"
 
 #: src/hotkeys.cpp:104
-msgid "Execute next planned action"
+msgid "Toggle planning mode"
 msgstr ""
 
 #: src/hotkeys.cpp:105
-msgid "Delete last planned action"
+msgid "Execute planned action"
 msgstr ""
 
 #: src/hotkeys.cpp:106
-msgid "Move planned action toward queue beginning"
+msgid "Delete planned action"
 msgstr ""
 
 #: src/hotkeys.cpp:107
-msgid "Move planned action toward queue end"
+msgid "Move action up queue"
 msgstr ""
 
-#: src/hotkeys.cpp:110
+#: src/hotkeys.cpp:108
+msgid "Move action down queue"
+msgstr ""
+
+#: src/hotkeys.cpp:111
 msgid "Quit to Desktop"
 msgstr "Thoát về hệ điều hành"
 
-#: src/hotkeys.cpp:111
+#: src/hotkeys.cpp:112
 msgid "Close Map"
 msgstr "Đóng bản đồ"
 
-#: src/hotkeys.cpp:112
+#: src/hotkeys.cpp:113
 msgid "Switch Map"
 msgstr "Chuyển đổi bản đồ"
 
-#: src/hotkeys.cpp:114
+#: src/hotkeys.cpp:115
 msgid "Partial Undo"
 msgstr "Đảo lại một phần"
 
-#: src/hotkeys.cpp:116
+#: src/hotkeys.cpp:117
 msgid "Load Map"
 msgstr "Tải bản đồ"
 
-#: src/hotkeys.cpp:118
+#: src/hotkeys.cpp:119
 msgid "Save Map As"
 msgstr "Lưu bản đồ thành"
 
-#: src/hotkeys.cpp:119
+#: src/hotkeys.cpp:120
 msgid "Revert All Changes"
 msgstr "Đảo ngược mọi thay đổi"
 
-#: src/hotkeys.cpp:120
+#: src/hotkeys.cpp:121
 msgid "Map Information"
 msgstr "Thông tin bản đồ"
 
-#: src/hotkeys.cpp:122
+#: src/hotkeys.cpp:123
 msgid "Swap fore- and background terrains"
 msgstr "Tráo địa hình cận cảnh và hậu cảnh"
 
-#: src/hotkeys.cpp:123
+#: src/hotkeys.cpp:124
 msgid "Next Tool"
 msgstr "Công cụ kế tiếp"
 
-#: src/hotkeys.cpp:124
+#: src/hotkeys.cpp:125
 msgid "Paint Tool"
 msgstr "Công cụ vẽ"
 
-#: src/hotkeys.cpp:125
+#: src/hotkeys.cpp:126
 msgid "Fill Tool"
 msgstr "Công cụ tô"
 
-#: src/hotkeys.cpp:126
+#: src/hotkeys.cpp:127
 msgid "Selection Tool"
 msgstr "Công cụ lựa chọn"
 
-#: src/hotkeys.cpp:128
+#: src/hotkeys.cpp:129
 msgid "Set Starting Positions Tool"
 msgstr "Công cụ đặt vị trí ban đầu"
 
-#: src/hotkeys.cpp:129
+#: src/hotkeys.cpp:130
 msgid "Next Brush"
 msgstr "Chổi vẽ kế tiếp"
 
-#: src/hotkeys.cpp:130
+#: src/hotkeys.cpp:131
 msgid "Default Brush"
 msgstr "Chổi vẽ mặc định"
 
-#: src/hotkeys.cpp:131
+#: src/hotkeys.cpp:132
 msgid "Cut"
 msgstr "Cắt"
 
-#: src/hotkeys.cpp:132
+#: src/hotkeys.cpp:133
 msgid "Copy"
 msgstr "Chép"
 
-#: src/hotkeys.cpp:133
+#: src/hotkeys.cpp:134
 msgid "Paste"
 msgstr "Dán"
 
-#: src/hotkeys.cpp:134
+#: src/hotkeys.cpp:135
 msgid "Export selected coordinates to system clipboard"
 msgstr "Xuất tọa độ được chọn vào bảng chọn hệ thống"
 
-#: src/hotkeys.cpp:136
+#: src/hotkeys.cpp:137
 msgid "Select All"
 msgstr "Chọn tất cả"
 
-#: src/hotkeys.cpp:138
+#: src/hotkeys.cpp:139
 msgid "Select Inverse"
 msgstr "Đảo lựa chọn"
 
-#: src/hotkeys.cpp:140
+#: src/hotkeys.cpp:141
 msgid "Select None"
 msgstr "Không chọn gì"
 
-#: src/hotkeys.cpp:142
+#: src/hotkeys.cpp:143
 msgid "Rotate Clipboard Clockwise"
 msgstr "Quay bảng chọn theo chiều kim đồng hồ"
 
-#: src/hotkeys.cpp:144
+#: src/hotkeys.cpp:145
 msgid "Rotate Clipboard Counter-Clockwise"
 msgstr "Quay bảng chọn ngược chiều kim đồng hồ"
 
-#: src/hotkeys.cpp:146
+#: src/hotkeys.cpp:147
 msgid "Flip Clipboard Horizontally"
 msgstr "Lật ngang bảng chọn"
 
-#: src/hotkeys.cpp:148
+#: src/hotkeys.cpp:149
 msgid "Flip Clipboard Vertically"
 msgstr "Lật dọc bảng chọn"
 
-#: src/hotkeys.cpp:150
+#: src/hotkeys.cpp:151
 msgid "Rotate Selection"
 msgstr "Quay vùng chọn"
 
-#: src/hotkeys.cpp:152
+#: src/hotkeys.cpp:153
 msgid "Flip Selection"
 msgstr "Lật vùng chọn"
 
-#: src/hotkeys.cpp:154
+#: src/hotkeys.cpp:155
 msgid "Fill Selection"
 msgstr "Tô vùng chọn"
 
-#: src/hotkeys.cpp:156
+#: src/hotkeys.cpp:157
 msgid "Generate Tiles In Selection"
 msgstr "Tạo ô trong vùng chọn"
 
-#: src/hotkeys.cpp:158
+#: src/hotkeys.cpp:159
 msgid "Randomize Tiles In Selection"
 msgstr "Ngẫu nhiên hóa ô trong vùng chọn"
 
-#: src/hotkeys.cpp:162
+#: src/hotkeys.cpp:163
 msgid "Rotate Map"
 msgstr "Quay bản đồ"
 
-#: src/hotkeys.cpp:164
+#: src/hotkeys.cpp:165
 msgid "Generate Map"
 msgstr "Tạo bản đồ"
 
-#: src/hotkeys.cpp:166
+#: src/hotkeys.cpp:167
 msgid "Apply a Mask"
 msgstr "Áp dụng mặt nạ"
 
-#: src/hotkeys.cpp:168
+#: src/hotkeys.cpp:169
 msgid "Create Mask"
 msgstr "Tạo mặt nạ"
 
-#: src/hotkeys.cpp:170
+#: src/hotkeys.cpp:171
 msgid "Refresh Display"
 msgstr "Tải lại màn hình"
 
-#: src/hotkeys.cpp:172
+#: src/hotkeys.cpp:173
 msgid "Update Terrain Transitions"
 msgstr "Cập nhật chuyển tiếp địa hình"
 
-#: src/hotkeys.cpp:174
+#: src/hotkeys.cpp:175
 msgid "Auto-update Terrain Transitions"
 msgstr "Tự động cập nhật chuyển tiếp địa hình"
 
-#: src/hotkeys.cpp:176
+#: src/hotkeys.cpp:177
 msgid "Refresh Image Cache"
 msgstr "Tải lại bộ nhớ đệm ảnh"
 
-#: src/hotkeys.cpp:178
+#: src/hotkeys.cpp:179
 msgid "Draw Hex Coordinates"
 msgstr "Vẽ tọa độ hình lục giác"
 
-#: src/hotkeys.cpp:180
+#: src/hotkeys.cpp:181
 msgid "Draw Terrain Codes"
 msgstr "Vẽ mã địa hình"
 
-#: src/hotkeys.cpp:185
+#: src/hotkeys.cpp:186
 msgid "Delay Shroud Updates"
 msgstr "Trễ cập nhật màn che"
 
-#: src/hotkeys.cpp:186
+#: src/hotkeys.cpp:187
 msgid "Update Shroud Now"
 msgstr "Cập nhật màn che ngay"
 
-#: src/hotkeys.cpp:187
+#: src/hotkeys.cpp:188
 msgid "Continue Move"
 msgstr "Tiếp tục di chuyển"
 
-#: src/hotkeys.cpp:188
+#: src/hotkeys.cpp:189
 msgid "Find Label or Unit"
 msgstr "Tìm nhãn hoặc đơn vị"
 
-#: src/hotkeys.cpp:189
+#: src/hotkeys.cpp:190
 msgid "Speak to Ally"
 msgstr "Nói với đồng minh"
 
-#: src/hotkeys.cpp:190
+#: src/hotkeys.cpp:191
 msgid "Speak to All"
 msgstr "Nói với tất cả"
 
-#: src/hotkeys.cpp:192
+#: src/hotkeys.cpp:193
 msgid "View Chat Log"
 msgstr "Xem nhật ký tán gẫu"
 
-#: src/hotkeys.cpp:195
+#: src/hotkeys.cpp:196
 msgid "Enter user command"
 msgstr "Nhập lệnh người dùng"
 
-#: src/hotkeys.cpp:196
+#: src/hotkeys.cpp:197
 msgid "Custom command"
 msgstr "Lệnh tùy chỉnh"
 
-#: src/hotkeys.cpp:197
+#: src/hotkeys.cpp:198
 msgid "Run AI formula"
 msgstr "Chạy công thức máy tính"
 
-#: src/hotkeys.cpp:198
+#: src/hotkeys.cpp:199
 msgid "Clear messages"
 msgstr "Xóa tin nhắn"
 
-#: src/hotkeys.cpp:200
+#: src/hotkeys.cpp:201
 msgid "User-Command#2"
 msgstr "Lệnh người dùng #2"
 
-#: src/hotkeys.cpp:201
+#: src/hotkeys.cpp:202
 msgid "User-Command#3"
 msgstr "Lệnh người dùng #3"
 
-#: src/hotkeys.cpp:651 src/hotkeys.cpp:954
+#: src/hotkeys.cpp:652 src/hotkeys.cpp:958
 msgid "Do you really want to quit?"
 msgstr "Bạn có thực sự muốn thoát không?"
 
-#: src/hotkeys.cpp:909
+#: src/hotkeys.cpp:913
 msgid "Map-Screenshot"
 msgstr "Chụp màn hình bản đồ"
 
-#: src/hotkeys.cpp:916
+#: src/hotkeys.cpp:920
 msgid "Screenshot done"
 msgstr "Đã chụp màn hình"
 
-#: src/hotkeys.cpp:918
+#: src/hotkeys.cpp:922
 msgid "Screenshot failed"
 msgstr "Chụp màn hình thất bại"
 
@@ -3116,6 +2901,145 @@ msgstr ""
 #: src/wml_exception.cpp:70
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "Trong phần '[$section|]' khóa bắt buộc '$key|' không được thiết lập."
+
+#, fuzzy
+#~ msgid "Tropical Water"
+#~ msgstr "Rừng nhiệt đới"
+
+#~ msgid "Grassland"
+#~ msgstr "Đồng cỏ"
+
+#~ msgid "Savanna"
+#~ msgstr "Trảng cỏ"
+
+#~ msgid "Dirt"
+#~ msgstr "Đất"
+
+#, fuzzy
+#~ msgid "Cobbles"
+#~ msgstr "Gạch vụn"
+
+#~ msgid "Desert"
+#~ msgstr "Sa mạc"
+
+#~ msgid "Great Tree"
+#~ msgstr "Cây lớn"
+
+#~ msgid "Tropical Forest"
+#~ msgstr "Rừng nhiệt đới"
+
+#~ msgid "Pine Forest"
+#~ msgstr "Rừng thông"
+
+#~ msgid "Snowy Pine Forest"
+#~ msgstr "Rừng thông tuyết"
+
+#~ msgid "Summer Deciduous Forest"
+#~ msgstr "Rừng rụng lá mùa hè"
+
+#~ msgid "Fall Deciduous Forest"
+#~ msgstr "Rừng rụng lá mùa thu"
+
+#~ msgid "Winter Deciduous Forest"
+#~ msgstr "Rừng rụng lá mùa đông"
+
+#~ msgid "Snowy Deciduous Forest"
+#~ msgstr "Rừng tuyết rụng lá"
+
+#~ msgid "Summer Mixed Forest"
+#~ msgstr "Rừng hỗn hợp mùa hè"
+
+#~ msgid "Fall Mixed Forest"
+#~ msgstr "Rừng hỗn hợp mùa thu"
+
+#~ msgid "Winter Mixed Forest"
+#~ msgstr "Rừng hỗn hợp mùa đông"
+
+#~ msgid "Snowy Mixed Forest"
+#~ msgstr "Rừng tuyết hỗn hợp"
+
+#~ msgid "Desert Mountains"
+#~ msgstr "Núi sa mạc"
+
+#~ msgid "Snowy Mountains"
+#~ msgstr "Núi tuyết"
+
+#~ msgid "Summer Deciduous Forested Hills"
+#~ msgstr "Rừng rụng lá mùa hè trên đồi"
+
+#~ msgid "Fall Deciduous Forested Hills"
+#~ msgstr "Rừng rụng lá mùa thu trên đồi"
+
+#~ msgid "Winter Deciduous Forested Hills"
+#~ msgstr "Rừng rụng lá mùa đông trên đồi"
+
+#~ msgid "Snowy Deciduous Forested Hills"
+#~ msgstr "Rừng tuyết rụng lá trên đồi"
+
+#~ msgid "Summer Mixed Forested Hills"
+#~ msgstr "Rừng hỗn hợp mùa hè trên đồi"
+
+#~ msgid "Winter Mixed Forested Hills"
+#~ msgstr "Rừng hỗn hợp mùa đông trên đồi"
+
+#~ msgid "Snowy Mixed Forested Hills"
+#~ msgstr "Rừng tuyết hỗn hợp trên đồi"
+
+#~ msgid "Impassable Desert Mountains"
+#~ msgstr "Núi sa mạc không thể qua"
+
+#~ msgid "Encampment"
+#~ msgstr "Doanh trại"
+
+#, fuzzy
+#~ msgid "Snowy Encampment"
+#~ msgstr "Doanh trại"
+
+#~ msgid "Fort"
+#~ msgstr "Ph"
+
+#, fuzzy
+#~ msgid "Snowy Fort"
+#~ msgstr "Rừng tuyết"
+
+#, fuzzy
+#~ msgid "Snowy Castle"
+#~ msgstr "Lâu đài"
+
+#~ msgid "Ruin"
+#~ msgstr "Tàn tích"
+
+#, fuzzy
+#~ msgid "Desert Castle"
+#~ msgstr "Lâu đài"
+
+#~ msgid "Encampment Keep"
+#~ msgstr "Pháo đài doanh trại"
+
+#, fuzzy
+#~ msgid "Snowy Encampment Keep"
+#~ msgstr "Pháo đài doanh trại"
+
+#~ msgid "Fort Keep"
+#~ msgstr "Pháo đài công sự"
+
+#, fuzzy
+#~ msgid "Snowy Fort Keep"
+#~ msgstr "Pháo đài công sự"
+
+#~ msgid "Elven Keep"
+#~ msgstr "Pháo đài của thần tiên"
+
+#~ msgid "Ruined Castle Keep"
+#~ msgstr "Pháo đài đổ nát"
+
+#, fuzzy
+#~ msgid "Desert Keep"
+#~ msgstr "Sa mạc"
+
+#, fuzzy
+#~ msgid "Delay Shroud Updates on Start"
+#~ msgstr "Trễ cập nhật màn che"
 
 #~ msgid "Cave path"
 #~ msgstr "Đường trong hang động"
