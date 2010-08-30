@@ -26,6 +26,8 @@
 
 #include "SDL_syswm.h"
 
+#include <unistd.h>
+
 /**
  The following are two classes which wrap the SDL's interface to X,
  including locking/unlocking, and which manage the atom internment.
@@ -483,7 +485,7 @@ void copy_to_clipboard(const std::string& text, const bool)
 {
 	std::string new_str;
 	new_str.reserve(text.size());
-	for (int i = 0; i < text.size(); ++i)
+	for (unsigned int i = 0; i < text.size(); ++i)
 	{
 		if (text[i] == '\n')
 		{
@@ -493,33 +495,64 @@ void copy_to_clipboard(const std::string& text, const bool)
 		}
 	}
 	OSStatus err = noErr;
-	ScrapRef scrap = kScrapRefNone;
-	err = ClearCurrentScrap();
+	PasteboardRef clipboard;
+	PasteboardSyncFlags syncFlags;
+	CFDataRef textData = NULL;
+	err = PasteboardCreate(kPasteboardClipboard, &clipboard);
 	if (err != noErr) return;
-	err = GetCurrentScrap(&scrap);
+	err = PasteboardClear(clipboard);
 	if (err != noErr) return;
-	PutScrapFlavor(scrap, kScrapFlavorTypeText, kScrapFlavorMaskNone, text.size(), new_str.c_str());
+	syncFlags = PasteboardSynchronize(clipboard);
+	if ((syncFlags&kPasteboardModified) && !(syncFlags&kPasteboardClientIsOwner)) return;
+	textData = CFDataCreate(kCFAllocatorDefault, (const UInt8 *)new_str.c_str(), text.size());
+	PasteboardPutItemFlavor(clipboard, (PasteboardItemID)1, CFSTR("public.utf8-plain-text"), textData, 0);
 }
 
 std::string copy_from_clipboard(const bool)
 {
-	ScrapRef curscrap = kScrapRefNone;
-	Size scrapsize = 0;
 	OSStatus err = noErr;
-	err = GetCurrentScrap(&curscrap);
+	PasteboardRef clipboard;
+	PasteboardSyncFlags syncFlags;
+	ItemCount count;
+	err = PasteboardCreate(kPasteboardClipboard, &clipboard);
 	if (err != noErr) return "";
-	err = GetScrapFlavorSize(curscrap, kScrapFlavorTypeText, &scrapsize);
+	syncFlags = PasteboardSynchronize(clipboard);
+	if (syncFlags&kPasteboardModified) return "";
+	err = PasteboardGetItemCount(clipboard, &count);
 	if (err != noErr) return "";
-	std::string str;
-	str.reserve(scrapsize);
-	str.resize(scrapsize);
-	err = GetScrapFlavorData(curscrap, kScrapFlavorTypeText, &scrapsize, const_cast<char*>(str.data()));
-	if (err != noErr) return "";
-	for (int i = 0; i < str.size(); ++i)
-	{
-		if (str[i] == '\r') str[i] = '\n';
+	for (UInt32 k = 1; k <= count; k++) {
+		PasteboardItemID itemID;
+		CFArrayRef flavorTypeArray;
+		CFIndex flavorCount;
+		err = PasteboardGetItemIdentifier(clipboard, k, &itemID);
+		if (err != noErr) return "";
+		err = PasteboardCopyItemFlavors(clipboard, itemID, &flavorTypeArray);
+		if (err != noErr) return "";
+		flavorCount = CFArrayGetCount(flavorTypeArray);
+		for (CFIndex j = 0; j < flavorCount; j++) {
+			CFStringRef flavorType;
+			CFDataRef flavorData;
+			CFIndex flavorDataSize;
+			flavorType = (CFStringRef)CFArrayGetValueAtIndex(flavorTypeArray, j);
+			if (UTTypeConformsTo(flavorType, CFSTR("public.utf8-plain-text"))) {
+				err = PasteboardCopyItemFlavorData(clipboard, itemID, flavorType, &flavorData);
+				if (err != noErr) {
+					CFRelease(flavorTypeArray);
+					return "";
+				}
+				flavorDataSize = CFDataGetLength(flavorData);
+				std::string str;
+				str.reserve(flavorDataSize);
+				str.resize(flavorDataSize);
+				CFDataGetBytes(flavorData, CFRangeMake(0, flavorDataSize), (UInt8 *)str.data());
+				for (unsigned int i = 0; i < str.size(); ++i) {
+					if (str[i] == '\r') str[i] = '\n';
+				}
+				return str;
+			}
+		}
 	}
-	return str;
+	return "";
 }
 
 void handle_system_event(const SDL_Event& event)
