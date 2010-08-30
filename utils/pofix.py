@@ -39,9 +39,6 @@
 stringfixes = {
 
 "wesnoth" : (
-# conversion added in 1.9.0+svn
-("Alignement: ", "Alignment: "),
-
 # Convert hyphen-minuses that are being used as minus signs
 # to the Unicode minus sign
 # conversion added in 1.9.0-svn
