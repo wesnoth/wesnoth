@@ -182,6 +182,7 @@ void ttitle_screen::pre_show(CVideo& video, twindow& window)
 			page["tip"] = widget;
 
 			widget["label"] = tip["source"];
+			widget["use_markup"] = "true";
 			page["source"] = widget;
 
 			tip_pages->add_page(page);
