@@ -27,6 +27,11 @@
 # utils/pofix.py po/wesnoth*/*.po*
 # find data/campaigns/ -name '*.cfg' -print0 | xargs -0 utils/pofix.py
 #
+# To make use of >1 CPU core, you have to rely on xargs. In this sample 10 files
+# are handed over to 4 instances of pofix.py:
+# ls po/wesnoth*/*.po | xargs -P 4 -n 10 ./utils/pofix.py
+#
+#
 # Please do make sure to add a comment before any new blocks of conversions
 # that states when it was added (current version number is enough) so that
 # the file can be cleaned up more easily every now and then.
