@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-05-30 18:23+0200\n"
+"POT-Creation-Date: 2010-05-24 17:53+0200\n"
 "PO-Revision-Date: 2009-09-22 11:10+0100\n"
 "Last-Translator: VladimírSlávik <slavik.vladimir@nospam@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
@@ -147,7 +147,7 @@ msgstr "Klikni levým tlačítkem na Konráda"
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:221
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:394
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:514
-msgid "Left click on Li'sar"
+msgid "Left click on Li’sar"
 msgstr "Klikni levým tlačítkem na Lisar"
 
 #. [message]: speaker=narrator
@@ -180,7 +180,7 @@ msgstr "Přesuň Konráda k Delfadorovi kliknutím na místo označené 'TADY'."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:262
-msgid "Move Li'sar next to Delfador by clicking on the tile marked 'HERE'."
+msgid "Move Li’sar next to Delfador by clicking on the tile marked 'HERE'."
 msgstr "Přesuň Lisar k Delfadorovi kliknutím na místo označené 'TADY'."
 
 #. [event]
@@ -238,7 +238,7 @@ msgstr "Panáka? Mám předstírat, že bojuji s panákem?"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:368
-msgid "Child, you have 32 hitpoints and a sword. I'm fairly sure you'll win."
+msgid "Child, you have 32 hitpoints and a sword. I’m fairly sure you’ll win."
 msgstr "Dítě, máš 32 životů a meč. Jsem si docela jistý, že zvítězíš."
 
 #. [message]: speaker=narrator
@@ -385,7 +385,7 @@ msgstr "Klikni na vesnici pro přesun Konráda"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:524
-msgid "Click on the village to move Li'sar"
+msgid "Click on the village to move Li’sar"
 msgstr "Klikni na vesnici pro přesun Lisar"
 
 #. [message]: speaker=narrator
@@ -435,7 +435,7 @@ msgstr ""
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:593
-msgid "I'll recruit some elves!"
+msgid "I’ll recruit some elves!"
 msgstr "Naverbuji nějaké elfy!"
 
 #. [event]
@@ -470,7 +470,7 @@ msgstr "Přesuň Konráda do tvrze"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:612
-msgid "Move Li'sar to the keep"
+msgid "Move Li’sar to the keep"
 msgstr "Přesuň Lisar do tvrze"
 
 #. [message]: speaker=narrator
@@ -543,7 +543,7 @@ msgstr ""
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:763
-msgid "I'll tell them to use the one that does the most damage!"
+msgid "I’ll tell them to use the one that does the most damage!"
 msgstr "Řeknu jim, ať použijí ten, který způsobí největší zranění!"
 
 #. [message]: id=Delfador
@@ -583,18 +583,10 @@ msgstr "Klikni levým tlačítkem na panáka, abys na něj zaútočil."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:837
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:844
-msgid " The ranged attack was safer."
-msgstr ""
-
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:837
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:844
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:856
-#, fuzzy
 msgid ""
 "Your elf used a sword (5–4; or 5 damage, 4 attacks), which is a melee "
-"attack. The quintain defended with its melee attack (3–5)."
+"attack. Quintain defended with its melee attack (3–5). The ranged attack was "
+"safer."
 msgstr ""
 "Tvůj elf použil meč (5-4, neboli 4 útoky po 5 zraněních), což je útok "
 "zblízka, takže se panák bránil svým útokem zblízka (3-5). Útok na dálku by "
@@ -602,19 +594,27 @@ msgstr ""
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:845
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:897
-#, fuzzy
 msgid ""
-"\n"
+"Your elf used a sword (5–4; or 5 damage, 4 attacks), which is a melee "
+"attack. The quintain defended with its melee attack (3–5). The ranged attack "
+"was safer.\n"
 "End your turn, then attack again."
-msgstr "Ukonči své kolo a pak opět zaútoč."
+msgstr ""
+"Tvůj elf použil meč (5-4, neboli 4 útoky po 5 zraněních), což je útok "
+"zblízka, takže se panák bránil svým útokem zblízka (3-5). Útok na dálku by "
+"byl bezpečnější.\n"
+"Ukonči svůj tah a pak zaútoč znovu."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:857
 msgid ""
-"\n"
+"Your elf used a sword (5–4; or 5 damage, 4 attacks), which is a melee "
+"attack. The quintain defended with its melee attack (3–5).\n"
 "You should tell the other Elf to use the bow."
 msgstr ""
+"Tvůj elf použil meč (5-4, neboli 4 útoky po 5 zraněních), což je útok "
+"zblízka, takže se panák bránil svým útokem zblízka (3-5).\n"
+"Bylo by moudré, kdyby druhý elf použil luk."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:860
@@ -624,7 +624,6 @@ msgstr "Zaútoč dalším elfem"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:889
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:896
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:907
 msgid ""
 "Your elf used a bow, which is a ranged attack (3–3; or 3 damage, 3 attacks). "
@@ -633,6 +632,18 @@ msgid ""
 msgstr ""
 "Tvůj elf použil luk (3-3, neboli 3 útoky po 3 zraněních). Panák nemá útok na "
 "dálku, jen zblízka, takže se nemohl bránit."
+
+#. [message]: id=Delfador
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:897
+msgid ""
+"Your elf used a bow, which is a ranged attack (3–3; or 3 damage, 3 attacks). "
+"The quintain has no ranged attack, only a melee attack, so it could not "
+"defend itself.\n"
+"End your turn, then attack again."
+msgstr ""
+"Tvůj elf použil luk (3-3, neboli 3 útoky po 3 zraněních). Panák nemá útok na "
+"dálku, jen zblízka, takže se nemohl bránit.\n"
+"Ukonči svůj tah a zaútoč znovu."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:928
@@ -762,12 +773,12 @@ msgstr "Chceš pokračovat v tréninku?"
 
 #. [option]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1109
-msgid "Yes, I'm still figuring it out."
+msgid "Yes, I’m still figuring it out."
 msgstr "Ano, stále mi to není úplně jasné."
 
 #. [option]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1112
-msgid "No, I think I've got it."
+msgid "No, I think I’ve got it."
 msgstr "Ne, myslím že už to chápu."
 
 #. [message]: speaker=narrator
@@ -880,7 +891,7 @@ msgstr "Doufám, že se po tomto budu moci stáhnout!"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:237
-msgid "One lucky attack by an Orcish Grunt, and I'm done for!"
+msgid "One lucky attack by an Orcish Grunt, and I’m done for!"
 msgstr "Jeden dobrý útok skřetího pěšáka, a je po mně!"
 
 #. [message]: speaker=second_unit
@@ -929,7 +940,7 @@ msgstr "Vyprší počet kol"
 
 #. [objective]: condition=lose
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:375
-msgid "Death of Li'sar"
+msgid "Death of Li’sar"
 msgstr "Lisar zemře"
 
 #. [event]
@@ -960,7 +971,7 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:418
-msgid "This is no game, Li'sar! "
+msgid "This is no game, Li’sar! "
 msgstr "Tohle není hra, Lisar!"
 
 #. [event]
@@ -1160,7 +1171,7 @@ msgstr "Přesuň Konráda pro obsazení vesnice"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:614
-msgid "Move Li'sar to capture a village"
+msgid "Move Li’sar to capture a village"
 msgstr "Přesuň Lisar pro obsazení vesnice"
 
 #. [then]
@@ -1283,7 +1294,7 @@ msgstr "Elindel"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:885
-msgid "You've learned well, Konrad! "
+msgid "You’ve learned well, Konrad! "
 msgstr "Vidím, že už jsi se něco naučil, Konráde! "
 
 #. [then]
@@ -1298,7 +1309,7 @@ msgstr ""
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:887
-msgid "You've learned well, Li'sar! "
+msgid "You’ve learned well, Li’sar! "
 msgstr "Vidím, že už jsi se něco naučila, Lisar! "
 
 #. [then]
@@ -1421,7 +1432,7 @@ msgstr "Přesuň bojovníka a šamanku na jih, pak vrať Konráda do tvrze"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:979
-msgid "Move your Fighter and Shaman south, then return Li'sar to the Keep"
+msgid "Move your Fighter and Shaman south, then return Li’sar to the Keep"
 msgstr "Přesuň bojovníka a šamanku na jih, pak vrať Lisar do tvrze"
 
 #. [event]
@@ -1446,7 +1457,7 @@ msgstr "Přesuň Konráda do další (neobsazené) vesnice"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1007
-msgid "Move Li'sar to another (unowned) village"
+msgid "Move Li’sar to another (unowned) village"
 msgstr "Přesuň Lisar do další (neobsazené) vesnice"
 
 #. [event]
@@ -1460,7 +1471,7 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1033
-msgid "Can't our units just move around him?"
+msgid "Can’t our units just move around him?"
 msgstr "Nemohou kolem něj naše jednotky prostě projít?"
 
 #. [event]
@@ -1795,12 +1806,12 @@ msgstr ""
 "Jsem dost dobrý s mečem: čtyři útoky po osmi životech."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1643
-msgid "You took too long! We'll never be rid of these Orcs!"
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1659
+msgid "You took too long! We’ll never be rid of these Orcs!"
 msgstr "Trvalo ti to příliš dlouho, takhle se těch skřetů nikdy nezbavíme!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1661
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1677
 msgid ""
 "You are victorious! You may want to try Novice-level campaigns such as: The "
 "South Guard, An Orcish Incursion, A Tale of Two Brothers, and Heir to the "
@@ -1860,33 +1871,3 @@ msgstr ""
 #: data/campaigns/tutorial/units/Quintain.cfg:22
 msgid "flail"
 msgstr "cep"
-
-#~ msgid ""
-#~ "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
-#~ "attack. The quintain defended with its melee attack (3-5). The ranged "
-#~ "attack was safer.\n"
-#~ "End your turn, then attack again."
-#~ msgstr ""
-#~ "Tvůj elf použil meč (5-4, neboli 4 útoky po 5 zraněních), což je útok "
-#~ "zblízka, takže se panák bránil svým útokem zblízka (3-5). Útok na dálku "
-#~ "by byl bezpečnější.\n"
-#~ "Ukonči svůj tah a pak zaútoč znovu."
-
-#~ msgid ""
-#~ "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
-#~ "attack. The quintain defended with its melee attack (3-5).\n"
-#~ "You should tell the other Elf to use the bow."
-#~ msgstr ""
-#~ "Tvůj elf použil meč (5-4, neboli 4 útoky po 5 zraněních), což je útok "
-#~ "zblízka, takže se panák bránil svým útokem zblízka (3-5).\n"
-#~ "Bylo by moudré, kdyby druhý elf použil luk."
-
-#~ msgid ""
-#~ "Your elf used a bow, which is a ranged attack (3-3; or 3 damage, 3 "
-#~ "attacks). The quintain has no ranged attack, only a melee attack, so it "
-#~ "could not defend itself.\n"
-#~ "End your turn, then attack again."
-#~ msgstr ""
-#~ "Tvůj elf použil luk (3-3, neboli 3 útoky po 3 zraněních). Panák nemá útok "
-#~ "na dálku, jen zblízka, takže se nemohl bránit.\n"
-#~ "Ukonči svůj tah a zaútoč znovu."

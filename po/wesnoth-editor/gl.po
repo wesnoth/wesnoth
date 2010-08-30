@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-08-13 11:31+0200\n"
+"POT-Creation-Date: 2010-05-01 13:05+0200\n"
 "PO-Revision-Date: 2010-04-21 14:50+0200\n"
 "Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
@@ -64,53 +64,38 @@ msgstr "Herbais"
 msgid "desert"
 msgstr "Deserto"
 
-#. [editor_group]: id=embellishments
-#: data/core/editor/terrain-groups.cfg:37
-msgid "embellishments"
-msgstr ""
-
 #. [editor_group]: id=forest
-#: data/core/editor/terrain-groups.cfg:44
+#: data/core/editor/terrain-groups.cfg:37
 msgid "forest"
 msgstr "Bosques"
 
 #. [editor_group]: id=frozen
-#: data/core/editor/terrain-groups.cfg:51
+#: data/core/editor/terrain-groups.cfg:44
 msgid "frozen"
 msgstr "Conxelado"
 
 #. [editor_group]: id=rough
-#: data/core/editor/terrain-groups.cfg:58
+#: data/core/editor/terrain-groups.cfg:51
 msgid "rough"
 msgstr "Montañoso"
 
 #. [editor_group]: id=cave
-#: data/core/editor/terrain-groups.cfg:65
+#: data/core/editor/terrain-groups.cfg:58
 msgid "cave"
 msgstr "Subterráneo"
 
-#. [editor_group]: id=obstacle
-#: data/core/editor/terrain-groups.cfg:72
-msgid "obstacle"
-msgstr ""
-
 #. [editor_group]: id=village
-#: data/core/editor/terrain-groups.cfg:79
+#: data/core/editor/terrain-groups.cfg:65
 msgid "village"
 msgstr "Vilas"
 
 #. [editor_group]: id=castle
-#: data/core/editor/terrain-groups.cfg:86
+#: data/core/editor/terrain-groups.cfg:72
 msgid "castle"
 msgstr "Fortificacións"
 
-#. [editor_group]: id=bridge
-#: data/core/editor/terrain-groups.cfg:93
-msgid "bridge"
-msgstr ""
-
 #. [editor_group]: id=special
-#: data/core/editor/terrain-groups.cfg:100
+#: data/core/editor/terrain-groups.cfg:79
 msgid "special"
 msgstr "Especial"
 
@@ -333,21 +318,21 @@ msgstr "Xogador"
 msgid "The size of the target map is different from the current map"
 msgstr "O tamaño do mapa de destino é diferente do do mapa actual"
 
-#: src/editor/editor_palettes.cpp:509
+#: src/editor/editor_palettes.cpp:506
 msgid "(non-core)"
 msgstr "(non oficial)"
 
-#: src/editor/editor_palettes.cpp:510
+#: src/editor/editor_palettes.cpp:507
 msgid "Will not work in game without extra care."
 msgstr "Só funcionará na partida se se ten sumo coidado."
 
-#: src/editor/editor_palettes.cpp:540
-msgid "FG: "
-msgstr ""
+#: src/editor/editor_palettes.cpp:532
+msgid "FG"
+msgstr "Primeiro plano"
 
-#: src/editor/editor_palettes.cpp:541
-msgid "BG: "
-msgstr ""
+#: src/editor/editor_palettes.cpp:534
+msgid "BG"
+msgstr "Segundo plano"
 
 #: src/editor/map_context.cpp:70
 msgid "File not found"
@@ -393,15 +378,9 @@ msgstr ""
 "baixo o cursor. Premendo directamente unha tecla numérica moveraste á "
 "posición inicial do xogador correspondente."
 
-#: src/gui/dialogs/editor_settings.cpp:166
+#: src/gui/dialogs/editor_settings.cpp:162
 msgid "Custom setting"
 msgstr "Opción personalizada"
-
-#~ msgid "FG"
-#~ msgstr "Primeiro plano"
-
-#~ msgid "BG"
-#~ msgstr "Segundo plano"
 
 #~ msgid "Error creating action object"
 #~ msgstr "Houbo un erro ao crear o obxecto da acción"

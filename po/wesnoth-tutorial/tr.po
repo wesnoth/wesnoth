@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-tutorial\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-05-30 18:23+0200\n"
+"POT-Creation-Date: 2010-05-24 17:53+0200\n"
 "PO-Revision-Date: 2009-04-12 14:57+0300\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <ceviri@belgeler.gen.tr>\n"
@@ -143,7 +143,7 @@ msgstr "Konrad’ın üzerine sol tıklayınız"
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:221
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:394
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:514
-msgid "Left click on Li'sar"
+msgid "Left click on Li’sar"
 msgstr "Lisar’ın üzerine sol tıklayınız"
 
 #. [message]: speaker=narrator
@@ -178,7 +178,7 @@ msgstr "‘BURAYA’ yazan yere tıklayarak Konrad’ı Delfador’un yanına g�
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:262
-msgid "Move Li'sar next to Delfador by clicking on the tile marked 'HERE'."
+msgid "Move Li’sar next to Delfador by clicking on the tile marked 'HERE'."
 msgstr "‘BURAYA’ yazan yere tıklayarak Lisar’ı Delfador’un yanına götürün."
 
 #. [event]
@@ -237,7 +237,7 @@ msgstr "Bir korkuluk mu? Bir kuklayla döğüşür gibi yapmamı mı istiyorsun?
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:368
-msgid "Child, you have 32 hitpoints and a sword. I'm fairly sure you'll win."
+msgid "Child, you have 32 hitpoints and a sword. I’m fairly sure you’ll win."
 msgstr ""
 "Çocuğum, 32 yaşam puanına ve bir kılıca sahipsin. Kazanacağına tamamen "
 "eminim."
@@ -391,7 +391,7 @@ msgstr "Konrad’ı köye götürmek için köye tıklayın"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:524
-msgid "Click on the village to move Li'sar"
+msgid "Click on the village to move Li’sar"
 msgstr "Lisar’ı köye götürmek için köye tıklayın"
 
 #. [message]: speaker=narrator
@@ -439,7 +439,7 @@ msgstr ""
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:593
-msgid "I'll recruit some elves!"
+msgid "I’ll recruit some elves!"
 msgstr "Bir kaç elfi askere alacağım!"
 
 #. [event]
@@ -475,7 +475,7 @@ msgstr "Konrad’ı iç kaleye götür"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:612
-msgid "Move Li'sar to the keep"
+msgid "Move Li’sar to the keep"
 msgstr "Lisar’ı iç kaleye götür"
 
 #. [message]: speaker=narrator
@@ -547,7 +547,7 @@ msgstr ""
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:763
-msgid "I'll tell them to use the one that does the most damage!"
+msgid "I’ll tell them to use the one that does the most damage!"
 msgstr "En çok hasar verecek olanı kullanmalarını söyleyeceğim!"
 
 #. [message]: id=Delfador
@@ -587,18 +587,10 @@ msgstr "Korkuluğa sol tıklayıp saldırıyı başlatın."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:837
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:844
-msgid " The ranged attack was safer."
-msgstr ""
-
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:837
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:844
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:856
-#, fuzzy
 msgid ""
 "Your elf used a sword (5–4; or 5 damage, 4 attacks), which is a melee "
-"attack. The quintain defended with its melee attack (3–5)."
+"attack. Quintain defended with its melee attack (3–5). The ranged attack was "
+"safer."
 msgstr ""
 "Elf Savaşçınız bir yakın döğüş saldırısı yaptı ve kılıç kullandı (5-4’lük, "
 "yani 5 hasarlı 4 saldırı). Korkuluk da kendini (3-5’lik) yakın döğüş "
@@ -606,19 +598,27 @@ msgstr ""
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:845
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:897
-#, fuzzy
 msgid ""
-"\n"
+"Your elf used a sword (5–4; or 5 damage, 4 attacks), which is a melee "
+"attack. The quintain defended with its melee attack (3–5). The ranged attack "
+"was safer.\n"
 "End your turn, then attack again."
-msgstr "Eli bitirdikten sonra tekrar saldırırsın."
+msgstr ""
+"Elf Savaşçınız bir yakın döğüş saldırısı yaptı ve kılıç kullandı (5-4’lük, "
+"yani 5 hasarlı 4 saldırı). Korkuluk da kendini (3-5’lik) yakın döğüş "
+"silahıyla savundu. Uzaktan (Menzilli silahla) saldırsa daha güvenli olurdu.\n"
+"Şimdi eli bitirin."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:857
 msgid ""
-"\n"
+"Your elf used a sword (5–4; or 5 damage, 4 attacks), which is a melee "
+"attack. The quintain defended with its melee attack (3–5).\n"
 "You should tell the other Elf to use the bow."
 msgstr ""
+"Elf Savaşçınız bir yakın döğüş saldırısı yaptı ve kılıç kullandı (5-4’lük, "
+"yani 5 hasarlı 4 saldırı). Korkuluk da kendini (3-5’lik) yakındöğüş "
+"silahıyla savundu. Diğer Elf’e yayını kullanmasını söylemelisiniz."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:860
@@ -628,7 +628,6 @@ msgstr "Diğer Elfi saldırtın"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:889
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:896
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:907
 msgid ""
 "Your elf used a bow, which is a ranged attack (3–3; or 3 damage, 3 attacks). "
@@ -638,6 +637,19 @@ msgstr ""
 "Elf Savaşçınız bir menzilli saldırı silahı olan yayını kullandı (3-3’lük, "
 "yani 3 hasarlı 3 saldırı). Korkuluğun menzilli saldırı silahı olmadığı için "
 "bu saldırıya karşı kendini savunamadı."
+
+#. [message]: id=Delfador
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:897
+msgid ""
+"Your elf used a bow, which is a ranged attack (3–3; or 3 damage, 3 attacks). "
+"The quintain has no ranged attack, only a melee attack, so it could not "
+"defend itself.\n"
+"End your turn, then attack again."
+msgstr ""
+"Elf Savaşçınız bir menzilli saldırı silahı olan yayını kullandı (3-3’lük, "
+"yani 3 hasarlı 3 saldırı). Korkuluğun menzilli saldırı silahı olmadığı için "
+"bu saldırıya karşı kendini savunamadı.\n"
+"Şimdi eli bitirip tekrar saldırın."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:928
@@ -767,12 +779,12 @@ msgstr "Eğitime devam etmek istiyor musunuz?"
 
 #. [option]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1109
-msgid "Yes, I'm still figuring it out."
+msgid "Yes, I’m still figuring it out."
 msgstr "Evet, bir kaç taktik denemek istiyorum."
 
 #. [option]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1112
-msgid "No, I think I've got it."
+msgid "No, I think I’ve got it."
 msgstr "Hayır, yeterince deneyim kazandığımı sanıyorum."
 
 #. [message]: speaker=narrator
@@ -889,7 +901,7 @@ msgstr "Bundan sonra geri çekilsem iyi olacak!"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:237
-msgid "One lucky attack by an Orcish Grunt, and I'm done for!"
+msgid "One lucky attack by an Orcish Grunt, and I’m done for!"
 msgstr "Bir Ork Izbandudundan şanslı bir saldırı ve ben buna hazırım!"
 
 #. [message]: speaker=second_unit
@@ -936,7 +948,7 @@ msgstr "Ellerin bitmesi"
 
 #. [objective]: condition=lose
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:375
-msgid "Death of Li'sar"
+msgid "Death of Li’sar"
 msgstr "Lisar’ın ölümü"
 
 #. [event]
@@ -968,7 +980,7 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:418
-msgid "This is no game, Li'sar! "
+msgid "This is no game, Li’sar! "
 msgstr "Bu oyun değil, Lisar! "
 
 #. [event]
@@ -1166,7 +1178,7 @@ msgstr "Konrad bir köyü ele geçirsin"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:614
-msgid "Move Li'sar to capture a village"
+msgid "Move Li’sar to capture a village"
 msgstr "Lisar bir köyü ele geçirsin"
 
 #. [then]
@@ -1284,7 +1296,7 @@ msgstr "Brindel"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:885
-msgid "You've learned well, Konrad! "
+msgid "You’ve learned well, Konrad! "
 msgstr "Çabuk öğreniyorsun, Konrad!"
 
 #. [then]
@@ -1299,7 +1311,7 @@ msgstr ""
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:887
-msgid "You've learned well, Li'sar! "
+msgid "You’ve learned well, Li’sar! "
 msgstr "Çabuk öğreniyorsun, Lisar!"
 
 #. [then]
@@ -1425,7 +1437,7 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:979
-msgid "Move your Fighter and Shaman south, then return Li'sar to the Keep"
+msgid "Move your Fighter and Shaman south, then return Li’sar to the Keep"
 msgstr ""
 "Bir savaşçıyı ve şamanı güneye gönderdikten sonra Lisar’ı iç kaleye getirin"
 
@@ -1453,7 +1465,7 @@ msgstr "Konrad’ı diğer (sahipsiz) köye götür"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1007
-msgid "Move Li'sar to another (unowned) village"
+msgid "Move Li’sar to another (unowned) village"
 msgstr "Lisar’ı diğer (sahipsiz) köye götür"
 
 #. [event]
@@ -1465,7 +1477,7 @@ msgstr "Orklar köprüyü tutmuş! Kurt biniciler ulaşmadan adayı işgal etmel
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1033
-msgid "Can't our units just move around him?"
+msgid "Can’t our units just move around him?"
 msgstr "Bizim birimler etrafından dolaşamazlar mı?"
 
 #. [event]
@@ -1809,12 +1821,12 @@ msgstr ""
 "yapabilirim."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1643
-msgid "You took too long! We'll never be rid of these Orcs!"
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1659
+msgid "You took too long! We’ll never be rid of these Orcs!"
 msgstr "Çok uzun sürdü, bu Orkları asla yenemeyeceğiz!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1661
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1677
 msgid ""
 "You are victorious! You may want to try Novice-level campaigns such as: The "
 "South Guard, An Orcish Incursion, A Tale of Two Brothers, and Heir to the "
@@ -1874,39 +1886,6 @@ msgstr ""
 #: data/campaigns/tutorial/units/Quintain.cfg:22
 msgid "flail"
 msgstr "harman döven"
-
-#~ msgid ""
-#~ "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
-#~ "attack. The quintain defended with its melee attack (3-5). The ranged "
-#~ "attack was safer.\n"
-#~ "End your turn, then attack again."
-#~ msgstr ""
-#~ "Elf Savaşçınız bir yakın döğüş saldırısı yaptı ve kılıç kullandı "
-#~ "(5-4’lük, yani 5 hasarlı 4 saldırı). Korkuluk da kendini (3-5’lik) yakın "
-#~ "döğüş silahıyla savundu. Uzaktan (Menzilli silahla) saldırsa daha güvenli "
-#~ "olurdu.\n"
-#~ "Şimdi eli bitirin."
-
-#~ msgid ""
-#~ "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
-#~ "attack. The quintain defended with its melee attack (3-5).\n"
-#~ "You should tell the other Elf to use the bow."
-#~ msgstr ""
-#~ "Elf Savaşçınız bir yakın döğüş saldırısı yaptı ve kılıç kullandı "
-#~ "(5-4’lük, yani 5 hasarlı 4 saldırı). Korkuluk da kendini (3-5’lik) "
-#~ "yakındöğüş silahıyla savundu. Diğer Elf’e yayını kullanmasını "
-#~ "söylemelisiniz."
-
-#~ msgid ""
-#~ "Your elf used a bow, which is a ranged attack (3-3; or 3 damage, 3 "
-#~ "attacks). The quintain has no ranged attack, only a melee attack, so it "
-#~ "could not defend itself.\n"
-#~ "End your turn, then attack again."
-#~ msgstr ""
-#~ "Elf Savaşçınız bir menzilli saldırı silahı olan yayını kullandı (3-3’lük, "
-#~ "yani 3 hasarlı 3 saldırı). Korkuluğun menzilli saldırı silahı olmadığı "
-#~ "için bu saldırıya karşı kendini savunamadı.\n"
-#~ "Şimdi eli bitirip tekrar saldırın."
 
 #, fuzzy
 #~ msgid "<big>Galdrad"

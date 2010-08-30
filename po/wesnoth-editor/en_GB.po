@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+cvs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-08-13 11:31+0200\n"
+"POT-Creation-Date: 2010-05-24 17:53+0200\n"
 "PO-Revision-Date: 2009-11-02 10:17-0500\n"
 "Last-Translator: Eric S. Raymond <esr@thyrsus.com>\n"
 "Language-Team: en_GB\n"
@@ -52,53 +52,38 @@ msgstr "flat"
 msgid "desert"
 msgstr "desert"
 
-#. [editor_group]: id=embellishments
-#: data/core/editor/terrain-groups.cfg:37
-msgid "embellishments"
-msgstr ""
-
 #. [editor_group]: id=forest
-#: data/core/editor/terrain-groups.cfg:44
+#: data/core/editor/terrain-groups.cfg:37
 msgid "forest"
 msgstr "forest"
 
 #. [editor_group]: id=frozen
-#: data/core/editor/terrain-groups.cfg:51
+#: data/core/editor/terrain-groups.cfg:44
 msgid "frozen"
 msgstr "frozen"
 
 #. [editor_group]: id=rough
-#: data/core/editor/terrain-groups.cfg:58
+#: data/core/editor/terrain-groups.cfg:51
 msgid "rough"
 msgstr "rough"
 
 #. [editor_group]: id=cave
-#: data/core/editor/terrain-groups.cfg:65
+#: data/core/editor/terrain-groups.cfg:58
 msgid "cave"
 msgstr "cave"
 
-#. [editor_group]: id=obstacle
-#: data/core/editor/terrain-groups.cfg:72
-msgid "obstacle"
-msgstr ""
-
 #. [editor_group]: id=village
-#: data/core/editor/terrain-groups.cfg:79
+#: data/core/editor/terrain-groups.cfg:65
 msgid "village"
 msgstr "village"
 
 #. [editor_group]: id=castle
-#: data/core/editor/terrain-groups.cfg:86
+#: data/core/editor/terrain-groups.cfg:72
 msgid "castle"
 msgstr "castle"
 
-#. [editor_group]: id=bridge
-#: data/core/editor/terrain-groups.cfg:93
-msgid "bridge"
-msgstr ""
-
 #. [editor_group]: id=special
-#: data/core/editor/terrain-groups.cfg:100
+#: data/core/editor/terrain-groups.cfg:79
 msgid "special"
 msgstr "special"
 
@@ -317,21 +302,21 @@ msgstr "Player"
 msgid "The size of the target map is different from the current map"
 msgstr "The size of the target map is different from the current map"
 
-#: src/editor/editor_palettes.cpp:509
+#: src/editor/editor_palettes.cpp:506
 msgid "(non-core)"
 msgstr "(non-core)"
 
-#: src/editor/editor_palettes.cpp:510
+#: src/editor/editor_palettes.cpp:507
 msgid "Will not work in game without extra care."
 msgstr "Will not work in game without extra care."
 
-#: src/editor/editor_palettes.cpp:540
-msgid "FG: "
-msgstr ""
+#: src/editor/editor_palettes.cpp:532
+msgid "FG"
+msgstr "FG"
 
-#: src/editor/editor_palettes.cpp:541
-msgid "BG: "
-msgstr ""
+#: src/editor/editor_palettes.cpp:534
+msgid "BG"
+msgstr "BG"
 
 #: src/editor/map_context.cpp:70
 msgid "File not found"
@@ -377,15 +362,9 @@ msgstr ""
 "the cursor. Pressing a number key by itself will scroll to that player’s "
 "starting position."
 
-#: src/gui/dialogs/editor_settings.cpp:166
+#: src/gui/dialogs/editor_settings.cpp:162
 msgid "Custom setting"
 msgstr "Custom setting"
-
-#~ msgid "FG"
-#~ msgstr "FG"
-
-#~ msgid "BG"
-#~ msgstr "BG"
 
 #~ msgid "Error creating action object"
 #~ msgstr "Error creating action object"

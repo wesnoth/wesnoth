@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-08-18 16:24+0200\n"
+"POT-Creation-Date: 2010-05-24 17:53+0200\n"
 "PO-Revision-Date: 2010-06-24 11:51+0700\n"
 "Last-Translator: Huynh Yen Loc <walkingcorpse13@gmail.com>\n"
 "Language-Team: Vietnamese <>\n"
@@ -15,173 +15,238 @@ msgstr ""
 "X-Generator: Lokalize 1.0\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#. [terrain_type]: id=deep_water
-#: data/core/terrain.cfg:21
-msgid "Deep Water"
-msgstr "Nước sâu"
+#. [terrain_type]: id=off_map
+#: data/core/terrain.cfg:13
+msgid "None"
+msgstr "Không có"
 
-#. [terrain_type]: id=shallow_water
-#. [terrain_type]: id=tropical_water
-#: data/core/terrain.cfg:31 data/core/terrain.cfg:41
-msgid "Shallow Water"
-msgstr "Nước nông"
+#. [toggle_button]: id=shroud
+#. [terrain_type]: id=shroud
+#: data/core/terrain.cfg:22 data/gui/default/window/mp_create_game.cfg:471
+msgid "Shroud"
+msgstr "Màn che"
 
-#. [terrain_type]: id=ford
-#: data/core/terrain.cfg:53
-msgid "Ford"
-msgstr ""
-
-#. [terrain_type]: id=reef
-#: data/core/terrain.cfg:64
-msgid "Coastal Reef"
-msgstr "Đá ngầm ven biển"
-
-#. [terrain_type]: id=swamp_water
-#: data/core/terrain.cfg:77
-msgid "Swamp"
-msgstr "Đầm lầy"
-
-#. [terrain_type]: id=grassland
-#. [terrain_type]: id=savanna
-#. [terrain_type]: id=grass_dry
-#. [terrain_type]: id=leaf_litter
-#. [terrain_type]: id=dirt_dark
-#. [terrain_type]: id=dirt
-#. [terrain_type]: id=road
-#. [terrain_type]: id=road_clean
-#. [terrain_type]: id=stone_path
-#. [terrain_type]
-#. [terrain_type]: id=flagstones_dark
-#. [terrain_type]: id=cave_path
-#. [terrain_type]: id=flat
-#: data/core/terrain.cfg:95 data/core/terrain.cfg:116
-#: data/core/terrain.cfg:127 data/core/terrain.cfg:137
-#: data/core/terrain.cfg:150 data/core/terrain.cfg:160
-#: data/core/terrain.cfg:170 data/core/terrain.cfg:180
-#: data/core/terrain.cfg:190 data/core/terrain.cfg:200
-#: data/core/terrain.cfg:702 data/core/terrain.cfg:747
-#: data/core/terrain.cfg:757 data/core/terrain.cfg:1989
-msgid "Flat"
-msgstr "Đất phẳng"
+#. [terrain_type]: id=fog
+#: data/core/terrain.cfg:31
+msgid "Fog"
+msgstr "Sương mù"
 
 #. [terrain_type]: id=ice
-#: data/core/terrain.cfg:215
+#: data/core/terrain.cfg:43
 msgid "Ice"
 msgstr "Băng"
 
 #. [terrain_type]: id=snow
-#: data/core/terrain.cfg:225
+#: data/core/terrain.cfg:53
 msgid "Snow"
 msgstr "Tuyết"
 
+#. [terrain_type]: id=bridge
+#. [terrain_type]: id=bridgediag1
+#. [terrain_type]: id=bridgediag2
+#. [terrain_type]: id=bridgechasm
+#. [terrain_type]: id=bridgechasmdiag1
+#. [terrain_type]: id=bridgechasmdiag2
+#. [terrain_type]: id=bridgelava
+#. [terrain_type]: id=bridgelavadiag1
+#. [terrain_type]: id=bridglavadiag2
+#: data/core/terrain.cfg:66 data/core/terrain.cfg:77 data/core/terrain.cfg:88
+#: data/core/terrain.cfg:101 data/core/terrain.cfg:110
+#: data/core/terrain.cfg:120 data/core/terrain.cfg:132
+#: data/core/terrain.cfg:142 data/core/terrain.cfg:153
+msgid "Bridge"
+msgstr "Cầu"
+
+#. [terrain_type]: id=encampment
+#: data/core/terrain.cfg:168
+msgid "Encampment"
+msgstr "Doanh trại"
+
+#. [terrain_type]: id=orcish_fort
+#: data/core/terrain.cfg:179
+msgid "Fort"
+msgstr "Ph"
+
+#. [terrain_type]: id=castle
+#. [terrain_type]: id=elven_castle
+#. [terrain_type]: id=dwarven_castle
+#. [terrain_type]: id=castle_overlay
+#: data/core/terrain.cfg:190 data/core/terrain.cfg:200
+#: data/core/terrain.cfg:211 data/core/terrain.cfg:378
+msgid "Castle"
+msgstr "Lâu đài"
+
+#. [terrain_type]: id=ruin
+#: data/core/terrain.cfg:222
+msgid "Ruin"
+msgstr "Tàn tích"
+
+#. [terrain_type]: id=sunkenruin
+#: data/core/terrain.cfg:233
+msgid "Sunken Ruin"
+msgstr "Tàn tích bị chìm"
+
+#. [terrain_type]: id=swampruin
+#: data/core/terrain.cfg:245
+msgid "Swamp Ruin"
+msgstr "Tàn tích đầm lầy"
+
+#. [terrain_type]: id=encampment_keep
+#. [terrain_type]: id=orcish_keep
+#. [terrain_type]: id=human_keep
+#. [terrain_type]: id=elven_keep
+#. [terrain_type]: id=dwarven_keep
+#. [terrain_type]: id=ruined_keep
+#. [terrain_type]: id=sunken_keep
+#. [terrain_type]: id=swamp_keep
+#. [terrain_type]: id=keep_overlay
+#: data/core/terrain.cfg:261 data/core/terrain.cfg:274
+#: data/core/terrain.cfg:287 data/core/terrain.cfg:300
+#: data/core/terrain.cfg:313 data/core/terrain.cfg:326
+#: data/core/terrain.cfg:339 data/core/terrain.cfg:352
+#: data/core/terrain.cfg:366
+msgid "Keep"
+msgstr "Pháo đài"
+
+#. [terrain_type]: id=encampment_keep
+#: data/core/terrain.cfg:262
+msgid "Encampment Keep"
+msgstr "Pháo đài doanh trại"
+
+#. [terrain_type]: id=orcish_keep
+#: data/core/terrain.cfg:275
+msgid "Fort Keep"
+msgstr "Pháo đài công sự"
+
+#. [terrain_type]: id=human_keep
+#. [terrain_type]: id=dwarven_keep
+#. [terrain_type]: id=swamp_keep
+#: data/core/terrain.cfg:288 data/core/terrain.cfg:314
+#: data/core/terrain.cfg:353
+msgid "Castle Keep"
+msgstr "Thành lũy"
+
+#. [terrain_type]: id=elven_keep
+#: data/core/terrain.cfg:301
+msgid "Elven Keep"
+msgstr "Pháo đài của thần tiên"
+
+#. [terrain_type]: id=ruined_keep
+#: data/core/terrain.cfg:327
+msgid "Ruined Castle Keep"
+msgstr "Pháo đài đổ nát"
+
+#. [terrain_type]: id=sunken_keep
+#: data/core/terrain.cfg:340
+msgid "Sunken Castle Keep"
+msgstr "Pháo đài bị chìm"
+
+#. [terrain_type]: id=crater
+#: data/core/terrain.cfg:393
+msgid "Crater"
+msgstr "Hố"
+
 #. [terrain_type]: id=desert
+#: data/core/terrain.cfg:403
+msgid "Desert"
+msgstr "Sa mạc"
+
+#. [terrain_type]: id=sand_rubble
+#: data/core/terrain.cfg:413
+msgid "Rubble"
+msgstr "Gạch vụn"
+
 #. [terrain_type]: id=sand
-#: data/core/terrain.cfg:240 data/core/terrain.cfg:251
+#: data/core/terrain.cfg:424
 msgid "Sand"
 msgstr "Cát"
 
 #. [terrain_type]: id=oasis
-#: data/core/terrain.cfg:260
+#: data/core/terrain.cfg:432
 msgid "Oasis"
 msgstr "Ốc đảo"
 
-#. [terrain_type]: id=sand_rubble
-#: data/core/terrain.cfg:272
-msgid "Rubble"
-msgstr "Gạch vụn"
+#. [terrain_type]: id=snow_forest
+#. [terrain_type]: id=deciduous_forest_winter_snow
+#. [terrain_type]: id=mixed_forest_winter_snow
+#: data/core/terrain.cfg:447 data/core/terrain.cfg:522
+#: data/core/terrain.cfg:567
+msgid "Snow Forest"
+msgstr "Rừng tuyết"
 
-#. [terrain_type]: id=crater
-#: data/core/terrain.cfg:283
-msgid "Crater"
-msgstr "Hố"
-
-#. [terrain_type]: id=flowers_mixed
-#: data/core/terrain.cfg:298
-#, fuzzy
-msgid "Mixed Flowers"
-msgstr "Rừng hỗn hợp mùa thu"
-
-#. [terrain_type]: id=farm
-#: data/core/terrain.cfg:307
-msgid "Farmland"
-msgstr "Nông trường"
-
-#. [terrain_type]: id=stones_small
-#: data/core/terrain.cfg:316
-msgid "Stones"
-msgstr ""
-
-#. [terrain_type]: id=mushrooms_small
-#: data/core/terrain.cfg:325
-#, fuzzy
-msgid "Mushrooms"
-msgstr "Lùm nấm"
-
-#. [terrain_type]: id=mushrooms_farm
-#: data/core/terrain.cfg:334
-#, fuzzy
-msgid "Mushroom Farm"
-msgstr "Lùm nấm"
-
-#. [terrain_type]: id=desert_plants
-#. [terrain_type]: id=desert_plants_sans_bones
-#: data/core/terrain.cfg:343 data/core/terrain.cfg:352
-#, fuzzy
-msgid "Desert Plants"
-msgstr "Núi sa mạc"
-
-#. [terrain_type]: id=windmill
-#: data/core/terrain.cfg:362
-msgid "Windmill"
-msgstr ""
+#. [terrain_type]: id=snow_forest
+#: data/core/terrain.cfg:448
+msgid "Snowy Pine Forest"
+msgstr "Rừng thông tuyết"
 
 #. [terrain_type]: id=great_tree
-#. [terrain_type]: id=tropical_forest
+#: data/core/terrain.cfg:459
+msgid "Great Tree"
+msgstr "Cây lớn"
+
 #. [terrain_type]: id=forest
-#. [terrain_type]: id=snow_forest
 #. [terrain_type]: id=deciduous_forest_summer
 #. [terrain_type]: id=deciduous_forest_fall
 #. [terrain_type]: id=deciduous_forest_winter
 #. [terrain_type]: id=mixed_forest_summer
 #. [terrain_type]: id=mixed_forest_fall
 #. [terrain_type]: id=mixed_forest_winter
-#: data/core/terrain.cfg:376 data/core/terrain.cfg:387
-#: data/core/terrain.cfg:398 data/core/terrain.cfg:408
-#: data/core/terrain.cfg:420 data/core/terrain.cfg:431
-#: data/core/terrain.cfg:442 data/core/terrain.cfg:465
-#: data/core/terrain.cfg:476 data/core/terrain.cfg:487
+#: data/core/terrain.cfg:469 data/core/terrain.cfg:489
+#: data/core/terrain.cfg:500 data/core/terrain.cfg:511
+#: data/core/terrain.cfg:534 data/core/terrain.cfg:545
+#: data/core/terrain.cfg:556
 msgid "Forest"
 msgstr "Rừng"
 
+#. [terrain_type]: id=forest
+#: data/core/terrain.cfg:470
+msgid "Pine Forest"
+msgstr "Rừng thông"
+
+#. [terrain_type]: id=tropical_forest
+#: data/core/terrain.cfg:479
+msgid "Tropical Forest"
+msgstr "Rừng nhiệt đới"
+
+#. [terrain_type]: id=deciduous_forest_summer
+#: data/core/terrain.cfg:490
+msgid "Summer Deciduous Forest"
+msgstr "Rừng rụng lá mùa hè"
+
+#. [terrain_type]: id=deciduous_forest_fall
+#: data/core/terrain.cfg:501
+msgid "Fall Deciduous Forest"
+msgstr "Rừng rụng lá mùa thu"
+
+#. [terrain_type]: id=deciduous_forest_winter
+#: data/core/terrain.cfg:512
+msgid "Winter Deciduous Forest"
+msgstr "Rừng rụng lá mùa đông"
+
 #. [terrain_type]: id=deciduous_forest_winter_snow
+#: data/core/terrain.cfg:523
+msgid "Snowy Deciduous Forest"
+msgstr "Rừng tuyết rụng lá"
+
+#. [terrain_type]: id=mixed_forest_summer
+#: data/core/terrain.cfg:535
+msgid "Summer Mixed Forest"
+msgstr "Rừng hỗn hợp mùa hè"
+
+#. [terrain_type]: id=mixed_forest_fall
+#: data/core/terrain.cfg:546
+msgid "Fall Mixed Forest"
+msgstr "Rừng hỗn hợp mùa thu"
+
+#. [terrain_type]: id=mixed_forest_winter
+#: data/core/terrain.cfg:557
+msgid "Winter Mixed Forest"
+msgstr "Rừng hỗn hợp mùa đông"
+
 #. [terrain_type]: id=mixed_forest_winter_snow
-#: data/core/terrain.cfg:453 data/core/terrain.cfg:498
-msgid "Snow Forest"
-msgstr "Rừng tuyết"
-
-#. [terrain_type]: id=hills
-#. [terrain_type]: id=hills_dry
-#: data/core/terrain.cfg:515 data/core/terrain.cfg:523
-msgid "Hills"
-msgstr "Đồi"
-
-#. [terrain_type]: id=desert_hills
-#: data/core/terrain.cfg:533
-msgid "Dunes"
-msgstr "Đụn cát"
-
-#. [terrain_type]: id=snow_hills
-#: data/core/terrain.cfg:543
-msgid "Snow Hills"
-msgstr "Đồi tuyết"
-
-#. [terrain_type]: id=mountains
-#. [terrain_type]: id=desert_mountains
-#. [terrain_type]: id=snow_mountains
-#: data/core/terrain.cfg:557 data/core/terrain.cfg:565
-#: data/core/terrain.cfg:575
-msgid "Mountains"
-msgstr "Núi"
+#: data/core/terrain.cfg:568
+msgid "Snowy Mixed Forest"
+msgstr "Rừng tuyết hỗn hợp"
 
 #. [terrain_type]: id=forested_hills
 #. [terrain_type]: id=deciduous_forest_summer_hills
@@ -190,121 +255,178 @@ msgstr "Núi"
 #. [terrain_type]: id=mixed_forest_summer_hills
 #. [terrain_type]: id=mixed_forest_fall_hills
 #. [terrain_type]: id=mixed_forest_winter_hills
-#: data/core/terrain.cfg:590 data/core/terrain.cfg:610
-#: data/core/terrain.cfg:621 data/core/terrain.cfg:632
-#: data/core/terrain.cfg:654 data/core/terrain.cfg:665
-#: data/core/terrain.cfg:676
+#: data/core/terrain.cfg:583 data/core/terrain.cfg:603
+#: data/core/terrain.cfg:614 data/core/terrain.cfg:625
+#: data/core/terrain.cfg:647 data/core/terrain.cfg:658
+#: data/core/terrain.cfg:668
 msgid "Forested Hills"
 msgstr "Rừng trên đồi"
 
 #. [terrain_type]: id=forested_snow_hills
 #. [terrain_type]: id=deciduous_forest_winter_snow_hills
 #. [terrain_type]: id=mixed_forest_winter_snow_hills
-#: data/core/terrain.cfg:600 data/core/terrain.cfg:643
-#: data/core/terrain.cfg:687
+#: data/core/terrain.cfg:593 data/core/terrain.cfg:636
+#: data/core/terrain.cfg:679
 msgid "Forested Snow Hills"
 msgstr "Rừng tuyết trên đồi"
 
-#. [terrain_type]: id=lit
-#: data/core/terrain.cfg:717
-msgid "Lit"
-msgstr "Sáng"
+#. [terrain_type]: id=deciduous_forest_summer_hills
+#: data/core/terrain.cfg:604
+msgid "Summer Deciduous Forested Hills"
+msgstr "Rừng rụng lá mùa hè trên đồi"
 
-#. [terrain_type]: id=cave
-#. [terrain_type]: id=cave_earthy
-#: data/core/terrain.cfg:728 data/core/terrain.cfg:737
-msgid "Cave"
-msgstr "Hang động"
+#. [terrain_type]: id=deciduous_forest_fall_hills
+#: data/core/terrain.cfg:615
+msgid "Fall Deciduous Forested Hills"
+msgstr "Rừng rụng lá mùa thu trên đồi"
 
-#. [terrain_type]: id=fungus
+#. [terrain_type]: id=deciduous_forest_winter_hills
+#: data/core/terrain.cfg:626
+msgid "Winter Deciduous Forested Hills"
+msgstr "Rừng rụng lá mùa đông trên đồi"
+
+#. [terrain_type]: id=deciduous_forest_winter_snow_hills
+#: data/core/terrain.cfg:637
+msgid "Snowy Deciduous Forested Hills"
+msgstr "Rừng tuyết rụng lá trên đồi"
+
+#. [terrain_type]: id=mixed_forest_summer_hills
+#: data/core/terrain.cfg:648
+msgid "Summer Mixed Forested Hills"
+msgstr "Rừng hỗn hợp mùa hè trên đồi"
+
+#. [terrain_type]: id=mixed_forest_winter_hills
+#: data/core/terrain.cfg:669
+msgid "Winter Mixed Forested Hills"
+msgstr "Rừng hỗn hợp mùa đông trên đồi"
+
+#. [terrain_type]: id=mixed_forest_winter_snow_hills
+#: data/core/terrain.cfg:680
+msgid "Snowy Mixed Forested Hills"
+msgstr "Rừng tuyết hỗn hợp trên đồi"
+
+#. [terrain_type]: id=grassland
+#. [terrain_type]: id=grassland_flowers
+#. [terrain_type]: id=windmill
+#: data/core/terrain.cfg:694 data/core/terrain.cfg:703
+#: data/core/terrain.cfg:712
+msgid "Grassland"
+msgstr "Đồng cỏ"
+
+#. [terrain_type]: id=savanna
+#: data/core/terrain.cfg:721
+msgid "Savanna"
+msgstr "Trảng cỏ"
+
+#. [terrain_type]: id=snow_hills
+#: data/core/terrain.cfg:734
+msgid "Snow Hills"
+msgstr "Đồi tuyết"
+
+#. [terrain_type]: id=desert_hills
+#: data/core/terrain.cfg:744
+msgid "Dunes"
+msgstr "Đụn cát"
+
+#. [terrain_type]: id=hills
+#: data/core/terrain.cfg:754
+msgid "Hills"
+msgstr "Đồi"
+
+#. [terrain_type]: id=desert_mountains
+#. [terrain_type]: id=mountains
+#. [terrain_type]: id=snow_mountains
+#: data/core/terrain.cfg:766 data/core/terrain.cfg:776
+#: data/core/terrain.cfg:784
+msgid "Mountains"
+msgstr "Núi"
+
+#. [terrain_type]: id=desert_mountains
 #: data/core/terrain.cfg:767
-msgid "Mushroom Grove"
-msgstr "Lùm nấm"
+msgid "Desert Mountains"
+msgstr "Núi sa mạc"
 
-#. [terrain_type]: id=fungus_beam
-#: data/core/terrain.cfg:776
-msgid "Mushroom Grove Lit"
-msgstr "Lùm nấm sáng"
-
-#. [terrain_type]: id=rocky_cave
-#: data/core/terrain.cfg:787
-msgid "Rockbound Cave"
-msgstr "Hang đá"
-
-#. [terrain_type]: id=rails
-#. [terrain_type]: id=railsdiag1
-#. [terrain_type]: id=railsdiag2
-#: data/core/terrain.cfg:800 data/core/terrain.cfg:812
-#: data/core/terrain.cfg:824
-msgid "Mine Rail"
-msgstr ""
+#. [terrain_type]: id=snow_mountains
+#: data/core/terrain.cfg:785
+msgid "Snowy Mountains"
+msgstr "Núi tuyết"
 
 #. [terrain_type]: id=canyon
-#. [terrain_type]: id=chasm_earthy
-#. [terrain_type]: id=abyss
-#: data/core/terrain.cfg:842 data/core/terrain.cfg:853
-#: data/core/terrain.cfg:864
+#: data/core/terrain.cfg:799
 msgid "Chasm"
 msgstr "Vực"
 
 #. [terrain_type]: id=lava_chasm
-#: data/core/terrain.cfg:875
+#: data/core/terrain.cfg:808
 msgid "Lava chasm"
 msgstr "Vực dung nham"
 
-#. [terrain_type]: id=volcano
-#: data/core/terrain.cfg:886
-msgid "Volcano"
-msgstr ""
-
 #. [terrain_type]: id=lava
-#: data/core/terrain.cfg:896
+#: data/core/terrain.cfg:818
 msgid "Lava"
 msgstr "Dung nham"
 
-#. [terrain_type]: id=cloud
-#. [terrain_type]: id=clouddesert
-#. [terrain_type]: id=cloud_snow
-#: data/core/terrain.cfg:911 data/core/terrain.cfg:921
-#: data/core/terrain.cfg:931
-msgid "Impassable Mountains"
-msgstr "Núi không thể qua"
+#. [terrain_type]: id=road
+#. [terrain_type]: id=stone_path
+#: data/core/terrain.cfg:832 data/core/terrain.cfg:850
+#: data/core/terrain.cfg:859
+msgid "Road"
+msgstr "Đường"
 
-#. [terrain_type]: id=cavewall
-#. [terrain_type]: id=cavewall_hewn
-#. [terrain_type]: id=cavewall_earthy
-#. [terrain_type]: id=cavewall_earthy_hewn
-#: data/core/terrain.cfg:942 data/core/terrain.cfg:953
-#: data/core/terrain.cfg:964 data/core/terrain.cfg:975
-msgid "Cave Wall"
-msgstr "Vách hang động"
+#. [terrain_type]: id=dirt
+#: data/core/terrain.cfg:841
+msgid "Dirt"
+msgstr "Đất"
 
-#. [terrain_type]: id=wall_stone
-#. [terrain_type]: id=wall_stone_lit
-#: data/core/terrain.cfg:986 data/core/terrain.cfg:997
-msgid "Wall"
-msgstr "Tường"
+#. [terrain_type]: id=farm
+#: data/core/terrain.cfg:868
+msgid "Farmland"
+msgstr "Nông trường"
 
-#. [terrain_type]: id=impassable_overlay
-#. [terrain_type]: id=impassable
-#: data/core/terrain.cfg:1008 data/core/terrain.cfg:2010
-msgid "Impassable"
-msgstr "Không thể qua"
+#. [terrain_type]: id=swamp_water
+#: data/core/terrain.cfg:882
+msgid "Swamp"
+msgstr "Đầm lầy"
 
-#. [terrain_type]: id=void
-#: data/core/terrain.cfg:1020
-msgid "Void"
-msgstr "Khoảng không"
+#. [terrain_type]: id=lit
+#: data/core/terrain.cfg:896
+msgid "Lit"
+msgstr "Sáng"
+
+#. [terrain_type]: id=cave
+#: data/core/terrain.cfg:906
+msgid "Cave"
+msgstr "Hang động"
+
+#. [terrain_type]: id=cave_path
+#: data/core/terrain.cfg:924
+msgid "Cave path"
+msgstr "Đường trong hang động"
+
+#. [terrain_type]: id=fungus
+#: data/core/terrain.cfg:933
+msgid "Mushroom Grove"
+msgstr "Lùm nấm"
+
+#. [terrain_type]: id=fungus_beam
+#: data/core/terrain.cfg:942
+msgid "Mushroom Grove Lit"
+msgstr "Lùm nấm sáng"
+
+#. [terrain_type]: id=rocky_cave
+#: data/core/terrain.cfg:953
+msgid "Rockbound Cave"
+msgstr "Hang đá"
 
 #. [terrain_type]: id=desert_village
-#. [terrain_type]: id=orcish_village
 #. [terrain_type]: id=orcish_snow_village
-#. [terrain_type]: id=orcish_hill_village
+#. [terrain_type]: id=orcish_village
 #. [terrain_type]: id=orcish_snow_hills_village
+#. [terrain_type]: id=orcish_hill_village
 #. [terrain_type]: id=elven_snow_village
 #. [terrain_type]: id=elven_village
-#. [terrain_type]: id=human_village
 #. [terrain_type]: id=snow_village
+#. [terrain_type]: id=village
 #. [terrain_type]: id=city_village
 #. [terrain_type]: id=hill_village
 #. [terrain_type]: id=snow-hill_village
@@ -322,138 +444,90 @@ msgstr "Khoảng không"
 #. [terrain_type]: id=hut_mountains_village
 #. [terrain_type]: id=logcabin_village
 #. [terrain_type]: id=logcabin_snow_village
-#. [terrain_type]: id=swamp_village
 #. [terrain_type]: id=mermen_village
+#. [terrain_type]: id=swamp_village
 #. [terrain_type]: id=swamp_merfolk-village
-#. [terrain_type]: id=village
-#: data/core/terrain.cfg:1036 data/core/terrain.cfg:1049
-#: data/core/terrain.cfg:1064 data/core/terrain.cfg:1077
-#: data/core/terrain.cfg:1090 data/core/terrain.cfg:1103
-#: data/core/terrain.cfg:1118 data/core/terrain.cfg:1131
-#: data/core/terrain.cfg:1146 data/core/terrain.cfg:1159
-#: data/core/terrain.cfg:1172 data/core/terrain.cfg:1185
-#: data/core/terrain.cfg:1198 data/core/terrain.cfg:1211
-#: data/core/terrain.cfg:1224 data/core/terrain.cfg:1237
-#: data/core/terrain.cfg:1250 data/core/terrain.cfg:1263
-#: data/core/terrain.cfg:1278 data/core/terrain.cfg:1291
-#: data/core/terrain.cfg:1304 data/core/terrain.cfg:1317
-#: data/core/terrain.cfg:1330 data/core/terrain.cfg:1343
-#: data/core/terrain.cfg:1356 data/core/terrain.cfg:1369
-#: data/core/terrain.cfg:1382 data/core/terrain.cfg:1397
-#: data/core/terrain.cfg:1409 data/core/terrain.cfg:1423
-#: data/core/terrain.cfg:2003
+#: data/core/terrain.cfg:980 data/core/terrain.cfg:991
+#: data/core/terrain.cfg:1004 data/core/terrain.cfg:1015
+#: data/core/terrain.cfg:1026 data/core/terrain.cfg:1037
+#: data/core/terrain.cfg:1050 data/core/terrain.cfg:1061
+#: data/core/terrain.cfg:1074 data/core/terrain.cfg:1085
+#: data/core/terrain.cfg:1095 data/core/terrain.cfg:1106
+#: data/core/terrain.cfg:1117 data/core/terrain.cfg:1129
+#: data/core/terrain.cfg:1140 data/core/terrain.cfg:1151
+#: data/core/terrain.cfg:1162 data/core/terrain.cfg:1173
+#: data/core/terrain.cfg:1186 data/core/terrain.cfg:1197
+#: data/core/terrain.cfg:1208 data/core/terrain.cfg:1219
+#: data/core/terrain.cfg:1230 data/core/terrain.cfg:1241
+#: data/core/terrain.cfg:1252 data/core/terrain.cfg:1263
+#: data/core/terrain.cfg:1274 data/core/terrain.cfg:1287
+#: data/core/terrain.cfg:1302 data/core/terrain.cfg:1313
 msgid "Village"
 msgstr "Làng"
 
-#. [terrain_type]: id=encampment
-#. [terrain_type]: id=encampment_snow
-#. [terrain_type]: id=orcish_fort
-#. [terrain_type]: id=snow_orcish_fort
-#. [terrain_type]: id=castle
-#. [terrain_type]: id=snow_castle
-#. [terrain_type]: id=elven_castle
-#. [terrain_type]: id=dwarven_castle
-#. [terrain_type]: id=ruin
-#. [terrain_type]: id=sand_castle
-#. [terrain_type]: id=castle_overlay
-#: data/core/terrain.cfg:1440 data/core/terrain.cfg:1452
-#: data/core/terrain.cfg:1464 data/core/terrain.cfg:1476
-#: data/core/terrain.cfg:1488 data/core/terrain.cfg:1498
-#: data/core/terrain.cfg:1509 data/core/terrain.cfg:1520
-#: data/core/terrain.cfg:1532 data/core/terrain.cfg:1568
-#: data/core/terrain.cfg:1741
-msgid "Castle"
-msgstr "Lâu đài"
+#. [terrain_type]: id=deep_water
+#: data/core/terrain.cfg:1328
+msgid "Deep Water"
+msgstr "Nước sâu"
 
-#. [terrain_type]: id=sunkenruin
-#: data/core/terrain.cfg:1544
-msgid "Sunken Ruin"
-msgstr "Tàn tích bị chìm"
+#. [terrain_type]: id=shallow_water
+#: data/core/terrain.cfg:1338
+msgid "Shallow Water"
+msgstr "Nước nông"
 
-#. [terrain_type]: id=swampruin
-#: data/core/terrain.cfg:1556
-msgid "Swamp Ruin"
-msgstr "Tàn tích đầm lầy"
+#. [terrain_type]: id=ford
+#: data/core/terrain.cfg:1348
+msgid "River Ford"
+msgstr "Chỗ cạn ở sông"
 
-#. [terrain_type]: id=encampment_keep
-#. [terrain_type]: id=encampment_snow_keep
-#. [terrain_type]: id=orcish_keep
-#. [terrain_type]: id=snow_orcish_keep
-#. [terrain_type]: id=human_keep
-#. [terrain_type]: id=snow_keep
-#. [terrain_type]: id=elven_keep
-#. [terrain_type]: id=dwarven_keep
-#. [terrain_type]: id=ruined_keep
-#. [terrain_type]: id=desert_keep
-#. [terrain_type]: id=keep_overlay
-#: data/core/terrain.cfg:1585 data/core/terrain.cfg:1598
-#: data/core/terrain.cfg:1611 data/core/terrain.cfg:1624
-#: data/core/terrain.cfg:1637 data/core/terrain.cfg:1650
-#: data/core/terrain.cfg:1662 data/core/terrain.cfg:1675
-#: data/core/terrain.cfg:1688 data/core/terrain.cfg:1727
-#: data/core/terrain.cfg:1753
-msgid "Keep"
-msgstr "Pháo đài"
+#. [terrain_type]: id=reef
+#: data/core/terrain.cfg:1359
+msgid "Coastal Reef"
+msgstr "Đá ngầm ven biển"
 
-#. [terrain_type]: id=human_keep
-#: data/core/terrain.cfg:1638
-msgid "Castle Keep"
-msgstr "Thành lũy"
+#. [terrain_type]: id=cloud
+#: data/core/terrain.cfg:1373
+msgid "Impassable Mountains"
+msgstr "Núi không thể qua"
 
-#. [terrain_type]: id=sunken_keep
-#: data/core/terrain.cfg:1701
-#, fuzzy
-msgid "Sunken Keep"
-msgstr "Pháo đài bị chìm"
+#. [terrain_type]: id=clouddesert
+#: data/core/terrain.cfg:1382
+msgid "Impassable Desert Mountains"
+msgstr "Núi sa mạc không thể qua"
 
-#. [terrain_type]: id=swamp_keep
-#: data/core/terrain.cfg:1714
-#, fuzzy
-msgid "Swamp Keep"
-msgstr "Đầm lầy"
+#. [terrain_type]: id=cavewall
+#: data/core/terrain.cfg:1391
+msgid "Cave Wall"
+msgstr "Vách hang động"
 
-#. [terrain_type]: id=bridge
-#. [terrain_type]: id=bridgediag1
-#. [terrain_type]: id=bridgediag2
-#. [terrain_type]: id=stone_bridge
-#. [terrain_type]: id=bridgechasm
-#. [terrain_type]: id=bridgechasmdiag1
-#. [terrain_type]: id=bridgechasmdiag2
-#. [terrain_type]: id=bridgelava
-#. [terrain_type]: id=bridgelavadiag1
-#. [terrain_type]: id=bridglavadiag2
-#: data/core/terrain.cfg:1772 data/core/terrain.cfg:1784
-#: data/core/terrain.cfg:1796 data/core/terrain.cfg:1810
-#: data/core/terrain.cfg:1822 data/core/terrain.cfg:1834
-#: data/core/terrain.cfg:1848 data/core/terrain.cfg:1858
-#: data/core/terrain.cfg:1869 data/core/terrain.cfg:1883
-#: data/core/terrain.cfg:1895 data/core/terrain.cfg:1908
-msgid "Bridge"
-msgstr "Cầu"
+#. [terrain_type]: id=wall_stone
+#: data/core/terrain.cfg:1400
+msgid "Wall"
+msgstr "Tường"
 
-#. [terrain_type]: id=off_map
-#: data/core/terrain.cfg:1927
-msgid "None"
-msgstr "Không có"
+#. [terrain_type]: id=impassable_overlay
+#. [terrain_type]: id=impassable
+#: data/core/terrain.cfg:1410 data/core/terrain.cfg:1448
+msgid "Impassable"
+msgstr "Không thể qua"
 
-#. [toggle_button]: id=shroud
-#. [terrain_type]: id=shroud
-#: data/core/terrain.cfg:1937 data/gui/default/window/mp_create_game.cfg:471
-msgid "Shroud"
-msgstr "Màn che"
+#. [terrain_type]: id=void
+#: data/core/terrain.cfg:1421
+msgid "Void"
+msgstr "Khoảng không"
 
-#. [terrain_type]: id=fog
-#: data/core/terrain.cfg:1946
-msgid "Fog"
-msgstr "Sương mù"
+#. [terrain_type]: id=flat
+#: data/core/terrain.cfg:1434
+msgid "Flat"
+msgstr "Đất phẳng"
 
 #. [terrain_type]: id=frozen
-#: data/core/terrain.cfg:1996
+#: data/core/terrain.cfg:1441
 msgid "Frozen"
 msgstr "Đóng băng"
 
 #. [terrain_type]: id=unwalkable
-#: data/core/terrain.cfg:2017
+#: data/core/terrain.cfg:1455
 msgid "Unwalkable"
 msgstr "Không thể đi bộ qua"
 
@@ -500,8 +574,7 @@ msgstr "Kết nối"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=cancel
 #: data/gui/default/window/addon_connect.cfg:220
-#: data/gui/default/window/campaign_dialog.cfg:434
-#: data/gui/default/window/data_manage.cfg:353
+#: data/gui/default/window/campaign_dialog.cfg:433
 #: data/gui/default/window/editor_generate_map.cfg:111
 #: data/gui/default/window/editor_new_map.cfg:111
 #: data/gui/default/window/editor_resize_map.cfg:273
@@ -516,7 +589,6 @@ msgstr "Kết nối"
 #: data/gui/default/window/mp_login.cfg:262
 #: data/gui/default/window/mp_method_selection.cfg:218
 #: data/gui/default/window/mp_server_list.cfg:229
-#: data/gui/default/window/unit_attack.cfg:208
 #: data/gui/default/window/unit_create.cfg:216
 #: data/gui/default/window/unit_create.cfg:217 src/construct_dialog.cpp:134
 #: src/construct_dialog.cpp:137
@@ -530,9 +602,7 @@ msgstr "Chơi một chiến dịch"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
-#: data/gui/default/window/campaign_dialog.cfg:420
-#: data/gui/default/window/data_manage.cfg:339
-#: data/gui/default/window/data_manage.cfg:340
+#: data/gui/default/window/campaign_dialog.cfg:419
 #: data/gui/default/window/editor_settings.cfg:230
 #: data/gui/default/window/game_load.cfg:429
 #: data/gui/default/window/game_load.cfg:430
@@ -544,59 +614,10 @@ msgstr "Chơi một chiến dịch"
 #: data/gui/default/window/unit_create.cfg:205
 #: data/gui/default/window/wml_message.cfg:458
 #: data/gui/default/window/wml_message.cfg:679 src/construct_dialog.cpp:126
-#: src/construct_dialog.cpp:133 src/gui/dialogs/message.cpp:161
-#: src/gui/dialogs/message.cpp:168
+#: src/construct_dialog.cpp:133 src/gui/dialogs/message.cpp:164
+#: src/gui/dialogs/message.cpp:171
 msgid "OK"
 msgstr "Đồng ý"
-
-#. [label]: id=lblTitle
-#: data/gui/default/window/data_manage.cfg:42
-msgid "Manage Data"
-msgstr ""
-
-#. [label]: id=lblChoose
-#: data/gui/default/window/data_manage.cfg:81
-#: data/gui/default/window/game_load.cfg:181
-msgid "Choose the game to load"
-msgstr "Chọn trò chơi cần tải"
-
-#. [label]: id=lblFilter
-#: data/gui/default/window/data_manage.cfg:105
-#: data/gui/default/window/game_load.cfg:205
-msgid "Filter"
-msgstr "Bộ lọc"
-
-#. [label]: id=filename
-#. [label]: id=name
-#: data/gui/default/window/data_manage.cfg:155
-#: data/gui/default/window/game_load.cfg:255
-#: data/gui/default/window/mp_server_list.cfg:96
-msgid "Name"
-msgstr "Tên"
-
-#. [label]: id=date
-#: data/gui/default/window/data_manage.cfg:169
-#: data/gui/default/window/game_load.cfg:269
-msgid "Date"
-msgstr "Ngày"
-
-#. [button]: id=clear
-#: data/gui/default/window/data_manage.cfg:258
-#: data/gui/default/window/data_manage.cfg:259
-msgid "Clear"
-msgstr ""
-
-#. [button]: id=restore
-#: data/gui/default/window/data_manage.cfg:275
-#: data/gui/default/window/data_manage.cfg:276
-msgid "Restore"
-msgstr ""
-
-#. [button]: id=backup
-#: data/gui/default/window/data_manage.cfg:292
-#: data/gui/default/window/data_manage.cfg:293
-msgid "Backup"
-msgstr ""
 
 #. [label]
 #: data/gui/default/window/editor_generate_map.cfg:38
@@ -622,7 +643,7 @@ msgstr "Tạo"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_new_map.cfg:27 src/hotkeys.cpp:116
+#: data/gui/default/window/editor_new_map.cfg:27 src/hotkeys.cpp:110
 msgid "New Map"
 msgstr "Bản đồ mới"
 
@@ -646,7 +667,7 @@ msgstr "Tạo bản đồ mới"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_resize_map.cfg:27 src/hotkeys.cpp:161
+#: data/gui/default/window/editor_resize_map.cfg:27 src/hotkeys.cpp:155
 msgid "Resize Map"
 msgstr "Thay đổi kích thước bản đồ"
 
@@ -688,7 +709,7 @@ msgstr "Thay đổi kích thước bản đồ"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_settings.cfg:38 src/hotkeys.cpp:114
+#: data/gui/default/window/editor_settings.cfg:38 src/hotkeys.cpp:108
 msgid "Editor Settings"
 msgstr "Thiết lập trình hiệu chỉnh"
 
@@ -701,7 +722,7 @@ msgstr "Thiết lập trước thời điểm trong ngày"
 #. [button]: id=next_tip
 #: data/gui/default/window/editor_settings.cfg:75
 #: data/gui/default/window/editor_settings.cfg:76
-#: data/gui/default/window/title_screen.cfg:180
+#: data/gui/default/window/title_screen.cfg:138
 msgid "Next"
 msgstr "Kế tiếp"
 
@@ -738,7 +759,7 @@ msgstr "Cho phép mở nhiều hơn một bản đồ cùng một lúc (MDI)"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=apply
 #: data/gui/default/window/editor_settings.cfg:250
-#: src/game_preferences_display.cpp:198
+#: src/game_preferences_display.cpp:199
 msgid "Apply"
 msgstr "Áp dụng"
 
@@ -799,8 +820,8 @@ msgstr "Dấu vết thi hành"
 #. [grid]
 #: data/gui/default/window/formula_debugger.cfg:226
 #: data/gui/default/window/lobby_main.cfg:660
-#: data/gui/default/window/title_screen.cfg:235 src/hotkeys.cpp:652
-#: src/hotkeys.cpp:958
+#: data/gui/default/window/title_screen.cfg:191 src/hotkeys.cpp:646
+#: src/hotkeys.cpp:937
 msgid "Quit"
 msgstr "Thoát"
 
@@ -829,7 +850,7 @@ msgstr "Đừng hỏi tôi nữa!"
 #: data/gui/default/window/game_save_oos.cfg:187
 #: data/gui/default/window/game_save_overwrite.cfg:88
 #: data/gui/default/window/game_save_overwrite.cfg:89
-#: src/construct_dialog.cpp:129 src/gui/dialogs/message.cpp:175
+#: src/construct_dialog.cpp:129 src/gui/dialogs/message.cpp:178
 msgid "Yes"
 msgstr "Có"
 
@@ -839,16 +860,38 @@ msgstr "Có"
 #: data/gui/default/window/game_save_message.cfg:154
 #: data/gui/default/window/game_save_oos.cfg:201
 #: data/gui/default/window/game_save_overwrite.cfg:103
-#: src/construct_dialog.cpp:130 src/gui/dialogs/message.cpp:177
+#: src/construct_dialog.cpp:130 src/gui/dialogs/message.cpp:180
 msgid "No"
 msgstr "Không"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=lblTitle
 #: data/gui/default/window/game_load.cfg:42
-#: src/gui/dialogs/mp_create_game.cpp:87 src/hotkeys.cpp:66
+#: src/gui/dialogs/mp_create_game.cpp:76 src/hotkeys.cpp:66
 msgid "Load Game"
 msgstr "Tải trò chơi"
+
+#. [label]: id=lblChoose
+#: data/gui/default/window/game_load.cfg:181
+msgid "Choose the game to load"
+msgstr "Chọn trò chơi cần tải"
+
+#. [label]: id=lblFilter
+#: data/gui/default/window/game_load.cfg:205
+msgid "Filter"
+msgstr "Bộ lọc"
+
+#. [label]: id=name
+#. [label]: id=filename
+#: data/gui/default/window/game_load.cfg:255
+#: data/gui/default/window/mp_server_list.cfg:96
+msgid "Name"
+msgstr "Tên"
+
+#. [label]: id=date
+#: data/gui/default/window/game_load.cfg:269
+msgid "Date"
+msgstr "Ngày"
 
 #. [button]: id=delete
 #: data/gui/default/window/game_load.cfg:352
@@ -958,7 +1001,7 @@ msgstr "Đóng"
 #. [grid]
 #. [label]
 #: data/gui/default/window/language_selection.cfg:31
-#: data/gui/default/window/title_screen.cfg:232
+#: data/gui/default/window/title_screen.cfg:188
 msgid "Language"
 msgstr "Ngôn ngữ"
 
@@ -1101,7 +1144,7 @@ msgstr "Gửi"
 #. [button]: id=show_preferences
 #. [grid]
 #: data/gui/default/window/lobby_main.cfg:666
-#: data/gui/default/window/title_screen.cfg:233
+#: data/gui/default/window/title_screen.cfg:189
 #: src/game_preferences_display.cpp:53 src/hotkeys.cpp:79
 msgid "Preferences"
 msgstr "Tùy chọn"
@@ -1217,21 +1260,21 @@ msgstr "Danh sách bạn bè/từ chối"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=add_friend
 #: data/gui/default/window/mp_cmd_wrapper.cfg:162
-#: src/game_preferences_display.cpp:174
+#: src/game_preferences_display.cpp:176
 msgid "Add As Friend"
 msgstr "Thêm vào Bạn bè"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=add_ignore
 #: data/gui/default/window/mp_cmd_wrapper.cfg:177
-#: src/game_preferences_display.cpp:175
+#: src/game_preferences_display.cpp:177
 msgid "Add As Ignore"
 msgstr "Thêm vào Từ chối"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=remove
 #: data/gui/default/window/mp_cmd_wrapper.cfg:192
-#: src/game_preferences_display.cpp:176
+#: src/game_preferences_display.cpp:178
 msgid "Remove"
 msgstr "Xóa"
 
@@ -1362,7 +1405,7 @@ msgstr "Mật khẩu:"
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [toggle_button]: id=remember_password
 #: data/gui/default/window/mp_login.cfg:190
-#: src/game_preferences_display.cpp:170
+#: src/game_preferences_display.cpp:172
 msgid "Save password to preferences (clear text)"
 msgstr "Lưu mật khẩu vào tùy thích (văn bản không mã hóa)"
 
@@ -1375,8 +1418,8 @@ msgstr "Trình nhắc nhở mật khẩu"
 #. [label]
 #. [grid]
 #: data/gui/default/window/mp_method_selection.cfg:31
-#: data/gui/default/window/title_screen.cfg:228
-#: src/gui/dialogs/data_manage.cpp:203 src/gui/dialogs/game_load.cpp:285
+#: data/gui/default/window/title_screen.cfg:184
+#: src/gui/dialogs/game_load.cpp:271
 msgid "Multiplayer"
 msgstr "Nhiều người chơi"
 
@@ -1445,132 +1488,46 @@ msgstr "Chọn"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=help
-#: data/gui/default/window/title_screen.cfg:149 src/hotkeys.cpp:192
+#: data/gui/default/window/title_screen.cfg:109 src/hotkeys.cpp:186
 msgid "Help"
 msgstr "Trợ giúp"
 
-#. [button]: id=help
-#: data/gui/default/window/title_screen.cfg:150
-msgid "Show Battle for Wesnoth help"
-msgstr ""
-
 #. [button]: id=previous_tip
-#: data/gui/default/window/title_screen.cfg:165
+#: data/gui/default/window/title_screen.cfg:124
 msgid "Previous"
 msgstr "Trước"
 
-#. [button]: id=previous_tip
-#: data/gui/default/window/title_screen.cfg:166
-msgid "Show previous tip of the day"
-msgstr ""
-
-#. [button]: id=next_tip
-#: data/gui/default/window/title_screen.cfg:181
-msgid "Show next tip of the day"
-msgstr ""
-
-#. [grid]
-#: data/gui/default/window/title_screen.cfg:226
-msgid "Start a tutorial to familiarize yourself with the game"
-msgstr ""
-
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:226
-#: src/gui/dialogs/data_manage.cpp:205 src/gui/dialogs/game_load.cpp:287
+#: data/gui/default/window/title_screen.cfg:182
+#: src/gui/dialogs/game_load.cpp:273
 msgid "Tutorial"
 msgstr "Hướng dẫn"
 
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:227
+#: data/gui/default/window/title_screen.cfg:183
 msgid "Campaign"
 msgstr "Chiến dịch"
 
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:227
-msgid "Start a new single player campaign"
-msgstr ""
-
-#. [grid]
-#: data/gui/default/window/title_screen.cfg:228
-msgid ""
-"Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
-"the AI"
-msgstr ""
-
-#. [grid]
-#: data/gui/default/window/title_screen.cfg:229
+#: data/gui/default/window/title_screen.cfg:185
 msgid "Load"
 msgstr "Tải"
 
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:229
-#, fuzzy
-msgid "Load a saved game"
-msgstr "Trò chơi được tải lại"
-
-#. [grid]
-#: data/gui/default/window/title_screen.cfg:230
+#: data/gui/default/window/title_screen.cfg:186
 msgid "Add-ons"
 msgstr "Phần bổ sung"
 
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:230
-msgid "Download usermade campaigns, eras, or map packs"
-msgstr ""
-
-#. [grid]
-#: data/gui/default/window/title_screen.cfg:231
+#: data/gui/default/window/title_screen.cfg:187
 msgid "Editor"
 msgstr "Trình hiệu chỉnh"
 
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:231
-msgid "Start the map editor"
-msgstr ""
-
-#. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
-#. [grid]
-#: data/gui/default/window/title_screen.cfg:232 src/hotkeys.cpp:194
-msgid "Change the language"
-msgstr "Thay đổi ngôn ngữ"
-
-#. [grid]
-#: data/gui/default/window/title_screen.cfg:233
-msgid "Configure the game's settings"
-msgstr ""
-
-#. [grid]
-#: data/gui/default/window/title_screen.cfg:234
+#: data/gui/default/window/title_screen.cfg:190
 msgid "Credits"
 msgstr "Đóng góp"
-
-#. [grid]
-#: data/gui/default/window/title_screen.cfg:234
-msgid "View the credits"
-msgstr ""
-
-#. [grid]
-#: data/gui/default/window/title_screen.cfg:235
-#, fuzzy
-msgid "Quit the game"
-msgstr "Thoát trò chơi"
-
-#. [button]: id=upload_statistics
-#: data/gui/default/window/title_screen.cfg:320
-#, fuzzy
-msgid "Upload statistics"
-msgstr "Thống kê"
-
-#. [button]: id=ok
-#: data/gui/default/window/unit_attack.cfg:195
-msgid "Attack"
-msgstr ""
-
-#. [label]
-#: data/gui/default/window/unit_attack.cfg:255
-msgid "Attack enemy"
-msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -1627,515 +1584,519 @@ msgstr "Tên: "
 msgid "Creation of the directory failed."
 msgstr "Tạo thư mục thất bại."
 
-#: src/game_preferences.cpp:287
+#: src/game_preferences.cpp:301
 msgid "No server has been defined."
 msgstr "Không xác định được máy chủ nào."
 
-#: src/game_preferences.cpp:349
+#: src/game_preferences.cpp:363
 msgid "player"
 msgstr "người chơi"
 
-#: src/game_preferences_display.cpp:157
+#: src/game_preferences_display.cpp:158
 msgid "Full Screen"
 msgstr "Toàn màn hình"
 
-#: src/game_preferences_display.cpp:158
+#: src/game_preferences_display.cpp:159
 msgid "Enable scroll tracking of unit actions"
 msgstr "Cho phép theo dõi hành động của đơn vị"
 
-#: src/game_preferences_display.cpp:159
+#: src/game_preferences_display.cpp:160
 msgid "Accelerated Speed"
 msgstr "Tăng tốc"
 
-#: src/game_preferences_display.cpp:160
+#: src/game_preferences_display.cpp:161
 msgid "Skip AI Moves"
 msgstr "Bỏ qua nước đi của máy tính"
 
-#: src/game_preferences_display.cpp:161
+#: src/game_preferences_display.cpp:162
 msgid "Interrupt move when an ally is sighted"
 msgstr "Gián đoạn nước đi khi nhìn thấy đồng minh"
 
-#: src/game_preferences_display.cpp:162
+#: src/game_preferences_display.cpp:163
 msgid "Show Grid"
 msgstr "Hiện lưới"
 
-#: src/game_preferences_display.cpp:163 src/game_preferences_display.cpp:345
+#: src/game_preferences_display.cpp:164 src/game_preferences_display.cpp:346
 msgid "Save Replay on SP/MP Victory or MP Defeat"
 msgstr "Lưu bản phát lại khi chiến thắng 1ĐT/NĐT hoặc thua cuộc NĐT"
 
-#: src/game_preferences_display.cpp:164 src/game_preferences_display.cpp:348
+#: src/game_preferences_display.cpp:165 src/game_preferences_display.cpp:349
 msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
 msgstr "Xóa bản lưu tự động khi chiến thắng 1ĐT/NĐT hoặc thua cuộc NĐT"
 
-#: src/game_preferences_display.cpp:165
+#: src/game_preferences_display.cpp:166
 msgid "Do Not Show Lobby Joins"
 msgstr "Không hiện sự kiện tham gia phòng gặp gỡ"
 
-#: src/game_preferences_display.cpp:166
+#: src/game_preferences_display.cpp:167
 msgid "Show Lobby Joins Of Friends Only"
 msgstr "Chỉ hiện sự kiện tham gia phòng gặp gỡ của bạn bè"
 
-#: src/game_preferences_display.cpp:167
+#: src/game_preferences_display.cpp:168
 msgid "Show All Lobby Joins"
 msgstr "Hiện mọi sự kiện tham gia phòng gặp gỡ"
 
-#: src/game_preferences_display.cpp:168
+#: src/game_preferences_display.cpp:169
+msgid "Use new lobby interface"
+msgstr "Sử dụng giao diện phòng gặp gỡ mới"
+
+#: src/game_preferences_display.cpp:170
 msgid "Sort Lobby List"
 msgstr "Sắp xếp danh sách phòng gặp gỡ"
 
-#: src/game_preferences_display.cpp:169
+#: src/game_preferences_display.cpp:171
 msgid "Iconize Lobby List"
 msgstr "Biểu tượng hóa danh sách phòng gặp gỡ"
 
-#: src/game_preferences_display.cpp:171
+#: src/game_preferences_display.cpp:173
 msgid "Set path to wesnothd"
 msgstr "Đặt đường dẫn đến wesnothd"
 
-#: src/game_preferences_display.cpp:172
+#: src/game_preferences_display.cpp:174
 msgid "Friends List"
 msgstr "Danh sách bạn bè"
 
-#: src/game_preferences_display.cpp:173
+#: src/game_preferences_display.cpp:175
 msgid "Multiplayer Options"
 msgstr "Tùy chọn nhiều người chơi"
 
-#: src/game_preferences_display.cpp:177
+#: src/game_preferences_display.cpp:179
 msgid "Show Floating Labels"
 msgstr "Hiện nhãn nổi"
 
-#: src/game_preferences_display.cpp:178
+#: src/game_preferences_display.cpp:180
 msgid "Turn Dialog"
 msgstr "Hộp thoại nhắc lượt"
 
-#: src/game_preferences_display.cpp:179
-msgid "Enable Planning Mode on Start"
-msgstr ""
-
-#: src/game_preferences_display.cpp:180
+#: src/game_preferences_display.cpp:181
 msgid "Turn Bell"
 msgstr "Chuông nhắc lượt"
 
-#: src/game_preferences_display.cpp:181
+#: src/game_preferences_display.cpp:182
 msgid "Show Team Colors"
 msgstr "Hiện màu của đội"
 
-#: src/game_preferences_display.cpp:182
+#: src/game_preferences_display.cpp:183
 msgid "Show Color Cursors"
 msgstr "Hiện con trỏ màu"
 
-#: src/game_preferences_display.cpp:183
+#: src/game_preferences_display.cpp:184
 msgid "Show Haloing Effects"
 msgstr "Hiện hiệu ứng hào quang"
 
-#: src/game_preferences_display.cpp:184
+#: src/game_preferences_display.cpp:185
 msgid "Change Resolution"
 msgstr "Thay đổi độ phân giải"
 
-#: src/game_preferences_display.cpp:185
+#: src/game_preferences_display.cpp:186
 msgid "Theme"
 msgstr "Sắc thái"
 
-#: src/game_preferences_display.cpp:186
+#: src/game_preferences_display.cpp:187
 msgid "Hotkeys"
 msgstr "Phím tắt"
 
-#: src/game_preferences_display.cpp:187
+#: src/game_preferences_display.cpp:188
 msgid "Reverse Time Graphics"
 msgstr "Đảo ngược hình ảnh thời gian"
 
-#: src/game_preferences_display.cpp:189
+#: src/game_preferences_display.cpp:190
 msgid "Sound effects"
 msgstr "Hiệu ứng âm thanh"
 
-#: src/game_preferences_display.cpp:190
+#: src/game_preferences_display.cpp:191
 msgid "Music"
 msgstr "Âm nhạc"
 
-#: src/game_preferences_display.cpp:191
+#: src/game_preferences_display.cpp:192
 msgid "Chat Timestamping"
 msgstr "Nhãn thời gian tán gẫu"
 
-#: src/game_preferences_display.cpp:192
+#: src/game_preferences_display.cpp:193
 msgid "sound^Advanced Options"
 msgstr "Tùy chọn nâng cao"
 
-#: src/game_preferences_display.cpp:193
+#: src/game_preferences_display.cpp:194
 msgid "sound^Standard Options"
 msgstr "Tùy chọn chuẩn"
 
-#: src/game_preferences_display.cpp:194
+#: src/game_preferences_display.cpp:195
 msgid "User Interface Sounds"
 msgstr "Âm thanh giao diện người dùng"
 
-#: src/game_preferences_display.cpp:197
+#: src/game_preferences_display.cpp:198
 msgid "Custom"
 msgstr "Tùy chỉnh"
 
-#: src/game_preferences_display.cpp:199
+#: src/game_preferences_display.cpp:200
 msgid "Show Unit Idle Animations"
 msgstr "Hiện hoạt ảnh rảnh rỗi của đơn vị"
 
-#: src/game_preferences_display.cpp:201
+#: src/game_preferences_display.cpp:202
 msgid "Music Volume:"
 msgstr "Âm lượng âm nhạc:"
 
-#: src/game_preferences_display.cpp:201
+#: src/game_preferences_display.cpp:202
 msgid "SFX Volume:"
 msgstr "Âm lượng SFX:"
 
-#: src/game_preferences_display.cpp:202
+#: src/game_preferences_display.cpp:203
 msgid "UI Sound Volume:"
 msgstr "Âm lượng giao diện:"
 
-#: src/game_preferences_display.cpp:203
+#: src/game_preferences_display.cpp:204
 msgid "Bell Volume:"
 msgstr "Âm lượng chuông:"
 
-#: src/game_preferences_display.cpp:203
+#: src/game_preferences_display.cpp:204
 msgid "Scroll Speed:"
 msgstr "Tốc độ cuộn:"
 
-#: src/game_preferences_display.cpp:206
+#: src/game_preferences_display.cpp:207
 msgid "Sample Rate (Hz):"
 msgstr "Tỷ lệ lấy mẫu (Hz):"
 
-#: src/game_preferences_display.cpp:207
+#: src/game_preferences_display.cpp:208
 msgid "Frequency:"
 msgstr "Tần số:"
 
-#: src/game_preferences_display.cpp:232
+#: src/game_preferences_display.cpp:233
 msgid "Sound effects on/off"
 msgstr "Bật/tắt hiệu ứng âm thanh"
 
-#: src/game_preferences_display.cpp:236
+#: src/game_preferences_display.cpp:237
 msgid "Change the sound effects volume"
 msgstr "Thay đổi mức âm lượng hiệu ứng âm thanh"
 
-#: src/game_preferences_display.cpp:239
+#: src/game_preferences_display.cpp:240
 msgid "Music on/off"
 msgstr "Bật/tắt âm nhạc"
 
-#: src/game_preferences_display.cpp:243
+#: src/game_preferences_display.cpp:244
 msgid "Change the music volume"
 msgstr "Thay đổi mức âm lượng âm nhạc"
 
-#: src/game_preferences_display.cpp:249
+#: src/game_preferences_display.cpp:250
 msgid "Change the bell volume"
 msgstr "Thay đổi mức âm lượng chuông"
 
-#: src/game_preferences_display.cpp:252
+#: src/game_preferences_display.cpp:253
 msgid "Turn menu and button sounds on/off"
 msgstr "Bật tắt âm thanh trình đơn và nút"
 
-#: src/game_preferences_display.cpp:256
+#: src/game_preferences_display.cpp:257
 msgid "Change the sound volume for button clicks, etc."
 msgstr "Thay đổi mức âm lượng âm thanh khi nhấn nút, v.v..."
 
-#: src/game_preferences_display.cpp:258
+#: src/game_preferences_display.cpp:259
 msgid "Change the sample rate"
 msgstr "Thay đổi tỷ lệ lấy mẫu"
 
-#: src/game_preferences_display.cpp:267
+#: src/game_preferences_display.cpp:268
 msgid "User defined sample rate"
 msgstr "Tỷ lệ lấy mẫu do người dùng xác định"
 
-#: src/game_preferences_display.cpp:276 src/game_preferences_display.cpp:280
+#: src/game_preferences_display.cpp:277 src/game_preferences_display.cpp:281
 msgid "Change the buffer size"
 msgstr "Thay đổi kích thước bộ đệm"
 
-#: src/game_preferences_display.cpp:278 src/game_preferences_display.cpp:867
+#: src/game_preferences_display.cpp:279 src/game_preferences_display.cpp:841
 msgid "Buffer Size: "
 msgstr "Kích thước bộ đệm: "
 
-#: src/game_preferences_display.cpp:285
+#: src/game_preferences_display.cpp:286
 msgid "Change the speed of scrolling around the map"
 msgstr "Thay đổi tốc độ cuộn quanh bản đồ"
 
-#: src/game_preferences_display.cpp:290 src/game_preferences_display.cpp:292
+#: src/game_preferences_display.cpp:291 src/game_preferences_display.cpp:293
 msgid "Set the amount of chat lines shown"
 msgstr "Thiết lập số dòng tán gẫu được hiển thị"
 
-#: src/game_preferences_display.cpp:295
+#: src/game_preferences_display.cpp:296
 msgid "Add a timestamp to chat messages"
 msgstr "Thêm nhãn thời gian vào tin nhắn tán gẫu"
 
-#: src/game_preferences_display.cpp:298
+#: src/game_preferences_display.cpp:299
 msgid "Choose whether the game should run full screen or in a window"
 msgstr "Chọn trò chơi sẽ chạy toàn màn hình hay trong cửa sổ"
 
-#: src/game_preferences_display.cpp:301
+#: src/game_preferences_display.cpp:302
 msgid ""
 "Should the map view scroll to a unit when an action or move is animated."
 msgstr ""
 "Khung cảnh bản đồ có cuộn đến một đơn vị khi hoạt hóa hành động hoặc di "
 "chuyển hay không."
 
-#: src/game_preferences_display.cpp:304
+#: src/game_preferences_display.cpp:305
 msgid "Make units move and fight faster"
 msgstr "Làm cho các đơn vị di chuyển và chiến đấu nhanh hơn"
 
-#: src/game_preferences_display.cpp:321
+#: src/game_preferences_display.cpp:322
 msgid "Units move and fight speed"
 msgstr "Tốc độ di chuyển và chiến đấu của đơn vị"
 
-#: src/game_preferences_display.cpp:324
+#: src/game_preferences_display.cpp:325
 msgid "Show unit idle animations"
 msgstr "Hiện hoạt ảnh rảnh rỗi của đơn vị"
 
-#: src/game_preferences_display.cpp:330
+#: src/game_preferences_display.cpp:331
 msgid "Set the frequency of unit idle animations"
 msgstr "Thiết lập tần số hoạt ảnh rảnh rỗi của đơn vị"
 
-#: src/game_preferences_display.cpp:335
+#: src/game_preferences_display.cpp:336
 msgid "Set maximum number of automatic saves to be retained"
 msgstr "Thiết lập số bản lưu tự động tối đa cần giữ lại"
 
-#: src/game_preferences_display.cpp:339
+#: src/game_preferences_display.cpp:340
 msgid "Do not animate AI units moving"
 msgstr "Không hiện hoạt ảnh di chuyển của đơn vị do máy tính điều khiển"
 
-#: src/game_preferences_display.cpp:342
+#: src/game_preferences_display.cpp:343
 msgid "Sighting an allied unit interrupts your unit’s movement"
 msgstr "Nhìn thấy đơn vị đồng minh làm gián đoạn nước đi của đơn vị của bạn"
 
-#: src/game_preferences_display.cpp:350
+#: src/game_preferences_display.cpp:351
 msgid "Overlay a grid onto the map"
 msgstr "Phủ lưới lên trên bản đồ"
 
-#: src/game_preferences_display.cpp:353
+#: src/game_preferences_display.cpp:354
 msgid "Sort the player list in the lobby by player groups"
 msgstr "Sắp xếp danh sách người chơi trong phòng gặp gỡ theo từng nhóm"
 
-#: src/game_preferences_display.cpp:356
+#: src/game_preferences_display.cpp:357
 msgid "Show icons in front of the player names in the lobby."
 msgstr "Hiện biểu tượng trước tên người chơi trong phòng gặp gỡ."
 
-#: src/game_preferences_display.cpp:359
+#: src/game_preferences_display.cpp:360
 msgid "Uncheck to delete the saved password (on exit)."
 msgstr "Hủy đánh dấu để xóa mật khẩu đã lưu (khi thoát)."
 
-#: src/game_preferences_display.cpp:363
+#: src/game_preferences_display.cpp:364
 msgid "Do not show messages about players joining the multiplayer lobby"
 msgstr "Không hiện tin nhắn về những người chơi tham gia phòng gặp gỡ"
 
-#: src/game_preferences_display.cpp:365
+#: src/game_preferences_display.cpp:366
 msgid "Show messages about your friends joining the multiplayer lobby"
 msgstr "Hiện tin nhắn về bạn bè của bạn tham gia phòng gặp gỡ"
 
-#: src/game_preferences_display.cpp:367
+#: src/game_preferences_display.cpp:368
 msgid "Show messages about all players joining the multiplayer lobby"
 msgstr "Hiện tin nhắn về tất cả các người chơi tham gia phòng gặp gỡ"
 
-#: src/game_preferences_display.cpp:369
+#: src/game_preferences_display.cpp:371
+msgid ""
+"mouseover^Use new lobby interface (only works after a manual reconnect to "
+"the server)"
+msgstr ""
+"rê chuột qua^Sử dung giao diện phòng gặp gỡ mới (chỉ hoạt động sau khi thủ "
+"công kết nối lại đến máy chủ)"
+
+#: src/game_preferences_display.cpp:373
 msgid "Find and set path to MP server to host LAN games."
 msgstr ""
 "Tìm và thiết lập đường dẫn đến trình phục vụ NĐT để làm chủ trò chơi trên "
 "mạng cục bộ."
 
-#: src/game_preferences_display.cpp:370
+#: src/game_preferences_display.cpp:374
 msgid "View and edit your friends and ignores list"
 msgstr "Xem và sửa danh sách bạn bè và danh sách từ chối của bạn"
 
-#: src/game_preferences_display.cpp:371
+#: src/game_preferences_display.cpp:375
 msgid "Back to the multiplayer options"
 msgstr "Trở lại tùy chọn nhiều người chơi"
 
-#: src/game_preferences_display.cpp:372
+#: src/game_preferences_display.cpp:376
 msgid "Add this username to your friends list"
 msgstr "Thêm tên người dùng này vào danh sách bạn bè của bạn"
 
-#: src/game_preferences_display.cpp:373
+#: src/game_preferences_display.cpp:377
 msgid "Add this username to your ignores list"
 msgstr "Thêm tên người dùng này vào danh sách từ chối của bạn"
 
-#: src/game_preferences_display.cpp:374
+#: src/game_preferences_display.cpp:378
 msgid "Remove this username from your list"
 msgstr "Xóa tên người dùng này khỏi danh sách của bạn"
 
-#: src/game_preferences_display.cpp:377
+#: src/game_preferences_display.cpp:381
 msgid "Insert a username"
 msgstr "Chèn tên người dùng"
 
-#: src/game_preferences_display.cpp:380
+#: src/game_preferences_display.cpp:384
 msgid "Show text above a unit when it is hit to display damage inflicted"
 msgstr ""
 "Hiện văn bản trên đơn vị khi nó bị đánh trúng để hiển thị lượng thiệt hại đã "
 "gây ra"
 
-#: src/game_preferences_display.cpp:382
+#: src/game_preferences_display.cpp:386
 msgid "Change the resolution the game runs at"
 msgstr "Thay đổi độ phân giải của trò chơi"
 
-#: src/game_preferences_display.cpp:383
+#: src/game_preferences_display.cpp:387
 msgid "Change the theme the game runs with"
 msgstr "Thay đổi sắc thái của trò chơi"
 
-#: src/game_preferences_display.cpp:386
+#: src/game_preferences_display.cpp:390
 msgid "Display a dialog at the beginning of your turn"
 msgstr "Hiển thị hộp thoại ở đầu lượt của bạn"
 
-#: src/game_preferences_display.cpp:389
-msgid "Activates Planning Mode on game start"
-msgstr ""
-
-#: src/game_preferences_display.cpp:392
+#: src/game_preferences_display.cpp:393
 msgid "Play a bell sound at the beginning of your turn"
 msgstr "Phát âm thanh chuông ở đầu lượt của bạn"
 
-#: src/game_preferences_display.cpp:395
+#: src/game_preferences_display.cpp:396
 msgid ""
 "Show a colored circle around the base of each unit to show which side it is "
 "on"
 msgstr "Hiện vòng tròn có màu quanh chân mỗi đơn vị để biết nó ở phe nào"
 
-#: src/game_preferences_display.cpp:398
+#: src/game_preferences_display.cpp:399
 msgid "Choose whether the sun moves left-to-right or right-to-left"
 msgstr "Chọn mặt trời di chuyển từ trái sang phải hay từ phải sang trái"
 
-#: src/game_preferences_display.cpp:401
+#: src/game_preferences_display.cpp:402
 msgid "Use colored mouse cursors (may be slower)"
 msgstr "Sử dụng con trỏ chuột có màu (có thể chậm hơn)"
 
-#: src/game_preferences_display.cpp:404
+#: src/game_preferences_display.cpp:405
 msgid "Use graphical special effects (may be slower)"
 msgstr "Sử dụng các hiệu ứng đồ họa đặc biệt (có thể chậm hơn)"
 
-#: src/game_preferences_display.cpp:406
+#: src/game_preferences_display.cpp:407
 msgid "View and configure keyboard shortcuts"
 msgstr "Xem và cấu hình phím tắt"
 
-#: src/game_preferences_display.cpp:731
+#: src/game_preferences_display.cpp:709
 msgid "Speed: "
 msgstr "Tốc độ: "
 
-#: src/game_preferences_display.cpp:736 src/game_preferences_display.cpp:738
+#: src/game_preferences_display.cpp:714 src/game_preferences_display.cpp:716
 msgid "Maximum Auto-Saves: "
 msgstr "Số bản lưu tự động tối đa: "
 
-#: src/game_preferences_display.cpp:736
+#: src/game_preferences_display.cpp:714
 msgid "infinite"
 msgstr "vô hạn"
 
-#: src/game_preferences_display.cpp:919
+#: src/game_preferences_display.cpp:895
 msgid "Chat Lines: "
 msgstr "Số dòng tán gẫu: "
 
-#: src/game_preferences_display.cpp:941 src/game_preferences_display.cpp:949
+#: src/game_preferences_display.cpp:917 src/game_preferences_display.cpp:925
 msgid "Invalid username"
 msgstr "Tên người dùng không hợp lệ"
 
-#: src/game_preferences_display.cpp:1052
+#: src/game_preferences_display.cpp:1028
 msgid "yes"
 msgstr "có"
 
-#: src/game_preferences_display.cpp:1054
+#: src/game_preferences_display.cpp:1030
 msgid "no"
 msgstr "không"
 
-#: src/game_preferences_display.cpp:1087
+#: src/game_preferences_display.cpp:1063
 msgid "(empty list)"
 msgstr "(danh sách rỗng)"
 
-#: src/game_preferences_display.cpp:1210
+#: src/game_preferences_display.cpp:1186
 msgid "Prefs section^General"
 msgstr "Chung"
 
-#: src/game_preferences_display.cpp:1211
+#: src/game_preferences_display.cpp:1187
 msgid "Prefs section^Display"
 msgstr "Hiển thị"
 
-#: src/game_preferences_display.cpp:1212
+#: src/game_preferences_display.cpp:1188
 msgid "Prefs section^Sound"
 msgstr "Âm thanh"
 
-#: src/game_preferences_display.cpp:1213
+#: src/game_preferences_display.cpp:1189
 msgid "Prefs section^Multiplayer"
 msgstr "Nhiều người chơi"
 
-#: src/game_preferences_display.cpp:1214
+#: src/game_preferences_display.cpp:1190
 msgid "Advanced section^Advanced"
 msgstr "Nâng cao"
 
-#: src/game_preferences_display.cpp:1249
+#: src/game_preferences_display.cpp:1225
 msgid "Saved Theme Preference: "
 msgstr "Tùy thích sắc thái đã lưu: "
 
-#: src/game_preferences_display.cpp:1255
+#: src/game_preferences_display.cpp:1231
 msgid "New theme will take effect on next new or loaded game."
 msgstr "Sắc thái mới sẽ có hiệu lực ở trò chơi mới hoặc tải lại kế tiếp."
 
-#: src/game_preferences_display.cpp:1259
+#: src/game_preferences_display.cpp:1235
 msgid "No known themes. Try changing from within an existing game."
 msgstr ""
 "Không có chủ đề nào nào. Thử thay đổi từ bên trong một trò chơi đang chạy."
 
-#: src/game_preferences_display.cpp:1302
+#: src/game_preferences_display.cpp:1278
 msgid "Find $filename server binary to host networked games"
 msgstr "Tìm trình phục vụ nhị phân $filename để làm chủ trò chơi mạng"
 
-#: src/gui/auxiliary/canvas.cpp:483
+#: src/gui/auxiliary/canvas.cpp:369
 msgid "Line doesn't fit on canvas."
 msgstr "Đường thẳng không khớp với họa tiết nền."
 
-#: src/gui/auxiliary/canvas.cpp:619
+#: src/gui/auxiliary/canvas.cpp:504
 msgid "Rectangle doesn't fit on canvas."
 msgstr "Hình chữ nhật không khớp với họa tiết nền."
 
-#: src/gui/auxiliary/canvas.cpp:1092
+#: src/gui/auxiliary/canvas.cpp:971
 msgid "Text has a font size of 0."
 msgstr "Văn bản có kích thước phông bằng 0."
 
-#: src/gui/auxiliary/canvas.cpp:1161
+#: src/gui/auxiliary/canvas.cpp:1041
 msgid "Text doesn't start on canvas."
 msgstr "Văn bản không bắt đầu trên họa tiết nền."
 
-#: src/gui/auxiliary/widget_definition.cpp:135
-#: src/gui/auxiliary/window_builder.cpp:229
+#: src/gui/auxiliary/widget_definition.cpp:138
+#: src/gui/auxiliary/window_builder.cpp:204
 msgid "No resolution defined."
 msgstr "Không xác định được độ phân giải."
 
-#: src/gui/auxiliary/widget_definition/listbox.cpp:104
+#: src/gui/auxiliary/widget_definition/listbox.cpp:105
 #: src/gui/auxiliary/widget_definition/multi_page.cpp:54
 #: src/gui/auxiliary/widget_definition/scroll_label.cpp:73
-#: src/gui/auxiliary/widget_definition/scrollbar_panel.cpp:61
-#: src/gui/auxiliary/widget_definition/stacked_widget.cpp:56
-#: src/gui/auxiliary/widget_definition/tree_view.cpp:57
-#: src/gui/auxiliary/window_builder.cpp:336
+#: src/gui/auxiliary/widget_definition/scrollbar_panel.cpp:63
+#: src/gui/auxiliary/widget_definition/stacked_widget.cpp:51
+#: src/gui/auxiliary/widget_definition/tree_view.cpp:58
+#: src/gui/auxiliary/window_builder.cpp:311
 #: src/gui/auxiliary/window_builder/panel.cpp:35
 #: src/gui/auxiliary/window_builder/toggle_panel.cpp:38
 msgid "No grid defined."
 msgstr "Không xác định được lưới."
 
-#: src/gui/auxiliary/window_builder.cpp:156
+#: src/gui/auxiliary/window_builder.cpp:146
 msgid "Linked '$id' group has multiple definitions."
 msgstr "Nhóm '$id' đã liên kết có nhiều định nghĩa."
 
-#: src/gui/auxiliary/window_builder.cpp:367
+#: src/gui/auxiliary/window_builder.cpp:342
 msgid "Linked '$id' group needs a 'fixed_width' or 'fixed_height' key."
 msgstr "Nhóm '$id' đã liên kết cần khóa 'fixed_width' hoặc 'fixed_height'."
 
-#: src/gui/auxiliary/window_builder.cpp:466
+#: src/gui/auxiliary/window_builder.cpp:441
 msgid "A row must have a column."
 msgstr "Hàng phải có cột."
 
-#: src/gui/auxiliary/window_builder.cpp:467
+#: src/gui/auxiliary/window_builder.cpp:442
 msgid "Number of columns differ."
 msgstr "Số cột sai khác."
 
-#: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:46
-#: src/gui/auxiliary/window_builder/listbox.cpp:57
+#: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:42
+#: src/gui/auxiliary/window_builder/listbox.cpp:52
 #: src/gui/auxiliary/window_builder/scrollbar_panel.cpp:41
 msgid "No list defined."
 msgstr "Không xác định được danh sách."
 
-#: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:50
-#: src/gui/auxiliary/window_builder/listbox.cpp:61
+#: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:46
+#: src/gui/auxiliary/window_builder/listbox.cpp:56
 msgid "A 'list_definition' should contain one row."
 msgstr "'list_definition' phải chứa một hàng."
 
-#: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:66
-#: src/gui/auxiliary/window_builder/listbox.cpp:80
-#: src/gui/auxiliary/window_builder/multi_page.cpp:60
+#: src/gui/auxiliary/window_builder/horizontal_listbox.cpp:62
+#: src/gui/auxiliary/window_builder/listbox.cpp:72
+#: src/gui/auxiliary/window_builder/multi_page.cpp:59
 msgid ""
 "'list_data' must have the same number of columns as the 'list_definition'."
 msgstr "'list_data' phải có cùng số cột với 'list_definition'."
@@ -2144,7 +2105,7 @@ msgstr "'list_data' phải có cùng số cột với 'list_definition'."
 msgid "No page defined."
 msgstr "Không xác định được trang."
 
-#: src/gui/auxiliary/window_builder/slider.cpp:65
+#: src/gui/auxiliary/window_builder/slider.cpp:66
 msgid "The number of value_labels and values don't match."
 msgstr "Số value_labels và values không khớp nhau."
 
@@ -2152,64 +2113,51 @@ msgstr "Số value_labels và values không khớp nhau."
 msgid "No stack defined."
 msgstr "Không xác định được ngăn xếp."
 
-#: src/gui/auxiliary/window_builder/tree_view.cpp:45
-msgid "No nodes defined for a tree view."
-msgstr ""
-
-#: src/gui/auxiliary/window_builder/tree_view.cpp:85
-msgid "[node]id 'root' is reserved for the implentation."
-msgstr ""
-
-#: src/gui/auxiliary/window_builder/tree_view.cpp:89
-#, fuzzy
-msgid "No node defined."
-msgstr "Không xác định được trang."
-
-#: src/gui/dialogs/data_manage.cpp:176 src/gui/dialogs/game_load.cpp:258
+#: src/gui/dialogs/game_load.cpp:244
 msgid "#(Invalid)"
 msgstr "#(Không hợp lệ)"
 
-#: src/gui/dialogs/data_manage.cpp:196 src/gui/dialogs/game_load.cpp:278
+#: src/gui/dialogs/game_load.cpp:264
 msgid "Campaign: $campaign_name"
 msgstr "Chiến dịch: $campaign_name"
 
-#: src/gui/dialogs/data_manage.cpp:213 src/gui/dialogs/game_load.cpp:295
+#: src/gui/dialogs/game_load.cpp:283
 msgid "replay"
 msgstr "phát lại"
 
-#: src/gui/dialogs/data_manage.cpp:215 src/gui/dialogs/game_load.cpp:297
+#: src/gui/dialogs/game_load.cpp:285
 msgid "Turn"
 msgstr "Lượt"
 
-#: src/gui/dialogs/data_manage.cpp:217 src/gui/dialogs/game_load.cpp:299
+#: src/gui/dialogs/game_load.cpp:287
 msgid "Scenario Start"
 msgstr "Mở đầu màn"
 
-#: src/gui/dialogs/data_manage.cpp:220 src/gui/dialogs/game_load.cpp:302
+#: src/gui/dialogs/game_load.cpp:290
 msgid "Difficulty: "
 msgstr "Độ khó: "
 
-#: src/gui/dialogs/data_manage.cpp:224 src/gui/dialogs/game_load.cpp:306
+#: src/gui/dialogs/game_load.cpp:294
 msgid "Version: "
 msgstr "Phiên bản: "
 
-#: src/gui/dialogs/lobby_main.cpp:229
+#: src/gui/dialogs/lobby_main.cpp:255
 msgid "whisper to $receiver"
 msgstr "gửi tin nhắn cá nhân đến $receiver"
 
-#: src/gui/dialogs/lobby_main.cpp:660
+#: src/gui/dialogs/lobby_main.cpp:691
 msgid "Games: showing $num_shown out of $num_total"
 msgstr "Trò chơi: hiện $num_shown trông số $num_total"
 
-#: src/gui/dialogs/lobby_main.cpp:704
+#: src/gui/dialogs/lobby_main.cpp:733
 msgid "Observers allowed"
 msgstr "Cho phép người quan sát"
 
-#: src/gui/dialogs/lobby_main.cpp:707
+#: src/gui/dialogs/lobby_main.cpp:736
 msgid "Observers not allowed"
 msgstr "Không cho phép người quan sát"
 
-#: src/gui/dialogs/lobby_main.cpp:1112
+#: src/gui/dialogs/lobby_main.cpp:1077
 msgid ""
 "Whisper session with $name started. If you don't want to receive messages "
 "from this user, type /ignore $name\n"
@@ -2217,73 +2165,68 @@ msgstr ""
 "Phiên thì thầm với $name đã khởi chạy. Nếu bạn không muốn nhận tin nhắn từ "
 "người dùng này, đánh /ignore $name\n"
 
-#: src/gui/dialogs/lobby_main.cpp:1118
+#: src/gui/dialogs/lobby_main.cpp:1083
 msgid "Room $name joined"
 msgstr "Đã tham gia phòng $name"
 
-#: src/gui/dialogs/lobby_main.cpp:1435
+#: src/gui/dialogs/lobby_main.cpp:1400
 msgid "$player has entered the room"
 msgstr "$player đã vào phòng"
 
-#: src/gui/dialogs/lobby_main.cpp:1473
+#: src/gui/dialogs/lobby_main.cpp:1438
 msgid "$player has left the room"
 msgstr "$player đã rời khỏi phòng"
 
-#: src/gui/dialogs/lobby_main.cpp:1586
+#: src/gui/dialogs/lobby_main.cpp:1551
 msgid "Password Required"
 msgstr "Cần mật khẩu"
 
-#: src/gui/dialogs/lobby_main.cpp:1587
+#: src/gui/dialogs/lobby_main.cpp:1552
 msgid "Joining this game requires a password."
 msgstr "Tham gia trò chơi này cần mật khẩu."
 
-#: src/gui/dialogs/lobby_main.cpp:1588
+#: src/gui/dialogs/lobby_main.cpp:1553
 msgid "Password: "
 msgstr "Mật khẩu: "
 
-#: src/gui/dialogs/message.cpp:189 src/gui/dialogs/transient_message.cpp:54
+#: src/gui/dialogs/message.cpp:192 src/gui/dialogs/transient_message.cpp:57
 msgid "Error"
 msgstr "Lỗi"
 
-#: src/gui/dialogs/mp_create_game.cpp:88
+#: src/gui/dialogs/mp_create_game.cpp:77
 msgid "Load Game..."
 msgstr "Tải trò chơi..."
 
-#: src/gui/dialogs/title_screen.cpp:146
-#, fuzzy
-msgid "Version "
-msgstr "Phiên bản: "
-
-#: src/gui/dialogs/title_screen.cpp:149
+#: src/gui/dialogs/title_screen.cpp:91
 msgid "Version"
 msgstr "Phiên bản"
 
-#: src/gui/widgets/helper.cpp:136
+#: src/gui/widgets/helper.cpp:170
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "Không xác định được widget bắt buộc '$id'."
 
-#: src/gui/widgets/settings.cpp:389
+#: src/gui/widgets/settings.cpp:303
+msgid "Window not defined."
+msgstr "Không xác định được cửa sổ."
+
+#: src/gui/widgets/settings.cpp:408
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr "Định nghĩa widget '$definition' không chứa định nghĩa cho '$id'."
 
-#: src/gui/widgets/settings.cpp:445
+#: src/gui/widgets/settings.cpp:495
 msgid "No default gui defined."
 msgstr "Không xác định được GDND mặc định."
 
-#: src/gui/widgets/settings.cpp:472
+#: src/gui/widgets/settings.cpp:522
 msgid "No state or draw section defined."
 msgstr "Không xác định được trạng thái hoặc vùng vẽ."
 
-#: src/gui/widgets/tree_view_node.cpp:102
-msgid "Unknown builder id for tree view node."
-msgstr ""
-
-#: src/gui/widgets/window.cpp:809
+#: src/gui/widgets/window.cpp:788
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr "Nhấn giải tán cần một nút 'click_dismiss' hoặc 'ok'."
 
-#: src/gui/widgets/window.cpp:834 src/gui/widgets/window.cpp:867
+#: src/gui/widgets/window.cpp:813 src/gui/widgets/window.cpp:846
 #: src/tests/gui/test_gui2.cpp:229
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr "Thất bại khi hiện hộp thoại, nó không vừa với màn hình."
@@ -2336,7 +2279,7 @@ msgstr "Độ phóng mặc định"
 msgid "Toggle Full Screen"
 msgstr "Bật tắt toàn màn hình"
 
-#: src/hotkeys.cpp:58 src/hotkeys.cpp:913
+#: src/hotkeys.cpp:58 src/hotkeys.cpp:892
 msgid "Screenshot"
 msgstr "Chụp màn hình"
 
@@ -2360,7 +2303,7 @@ msgstr "Đổi tên đơn vị"
 msgid "Save Replay"
 msgstr "Lưu bản phát lại"
 
-#: src/hotkeys.cpp:65 src/hotkeys.cpp:118
+#: src/hotkeys.cpp:65 src/hotkeys.cpp:112
 msgid "Save Map"
 msgstr "Lưu bản đồ"
 
@@ -2476,259 +2419,243 @@ msgstr "Đội 1"
 msgid "Skip animation"
 msgstr "Nhảy qua hoạt ảnh"
 
-#: src/hotkeys.cpp:104
-msgid "Toggle planning mode"
-msgstr ""
-
 #: src/hotkeys.cpp:105
-msgid "Execute planned action"
-msgstr ""
-
-#: src/hotkeys.cpp:106
-msgid "Delete planned action"
-msgstr ""
-
-#: src/hotkeys.cpp:107
-msgid "Move action up queue"
-msgstr ""
-
-#: src/hotkeys.cpp:108
-msgid "Move action down queue"
-msgstr ""
-
-#: src/hotkeys.cpp:111
 msgid "Quit to Desktop"
 msgstr "Thoát về hệ điều hành"
 
-#: src/hotkeys.cpp:112
+#: src/hotkeys.cpp:106
 msgid "Close Map"
 msgstr "Đóng bản đồ"
 
-#: src/hotkeys.cpp:113
+#: src/hotkeys.cpp:107
 msgid "Switch Map"
 msgstr "Chuyển đổi bản đồ"
 
-#: src/hotkeys.cpp:115
+#: src/hotkeys.cpp:109
 msgid "Partial Undo"
 msgstr "Đảo lại một phần"
 
-#: src/hotkeys.cpp:117
+#: src/hotkeys.cpp:111
 msgid "Load Map"
 msgstr "Tải bản đồ"
 
-#: src/hotkeys.cpp:119
+#: src/hotkeys.cpp:113
 msgid "Save Map As"
 msgstr "Lưu bản đồ thành"
 
-#: src/hotkeys.cpp:120
+#: src/hotkeys.cpp:114
 msgid "Revert All Changes"
 msgstr "Đảo ngược mọi thay đổi"
 
-#: src/hotkeys.cpp:121
+#: src/hotkeys.cpp:115
 msgid "Map Information"
 msgstr "Thông tin bản đồ"
 
-#: src/hotkeys.cpp:123
+#: src/hotkeys.cpp:117
 msgid "Swap fore- and background terrains"
 msgstr "Tráo địa hình cận cảnh và hậu cảnh"
 
-#: src/hotkeys.cpp:124
+#: src/hotkeys.cpp:118
 msgid "Next Tool"
 msgstr "Công cụ kế tiếp"
 
-#: src/hotkeys.cpp:125
+#: src/hotkeys.cpp:119
 msgid "Paint Tool"
 msgstr "Công cụ vẽ"
 
-#: src/hotkeys.cpp:126
+#: src/hotkeys.cpp:120
 msgid "Fill Tool"
 msgstr "Công cụ tô"
 
-#: src/hotkeys.cpp:127
+#: src/hotkeys.cpp:121
 msgid "Selection Tool"
 msgstr "Công cụ lựa chọn"
 
-#: src/hotkeys.cpp:129
+#: src/hotkeys.cpp:123
 msgid "Set Starting Positions Tool"
 msgstr "Công cụ đặt vị trí ban đầu"
 
-#: src/hotkeys.cpp:130
+#: src/hotkeys.cpp:124
 msgid "Next Brush"
 msgstr "Chổi vẽ kế tiếp"
 
-#: src/hotkeys.cpp:131
+#: src/hotkeys.cpp:125
 msgid "Default Brush"
 msgstr "Chổi vẽ mặc định"
 
-#: src/hotkeys.cpp:132
+#: src/hotkeys.cpp:126
 msgid "Cut"
 msgstr "Cắt"
 
-#: src/hotkeys.cpp:133
+#: src/hotkeys.cpp:127
 msgid "Copy"
 msgstr "Chép"
 
-#: src/hotkeys.cpp:134
+#: src/hotkeys.cpp:128
 msgid "Paste"
 msgstr "Dán"
 
-#: src/hotkeys.cpp:135
+#: src/hotkeys.cpp:129
 msgid "Export selected coordinates to system clipboard"
 msgstr "Xuất tọa độ được chọn vào bảng chọn hệ thống"
 
-#: src/hotkeys.cpp:137
+#: src/hotkeys.cpp:131
 msgid "Select All"
 msgstr "Chọn tất cả"
 
-#: src/hotkeys.cpp:139
+#: src/hotkeys.cpp:133
 msgid "Select Inverse"
 msgstr "Đảo lựa chọn"
 
-#: src/hotkeys.cpp:141
+#: src/hotkeys.cpp:135
 msgid "Select None"
 msgstr "Không chọn gì"
 
-#: src/hotkeys.cpp:143
+#: src/hotkeys.cpp:137
 msgid "Rotate Clipboard Clockwise"
 msgstr "Quay bảng chọn theo chiều kim đồng hồ"
 
-#: src/hotkeys.cpp:145
+#: src/hotkeys.cpp:139
 msgid "Rotate Clipboard Counter-Clockwise"
 msgstr "Quay bảng chọn ngược chiều kim đồng hồ"
 
-#: src/hotkeys.cpp:147
+#: src/hotkeys.cpp:141
 msgid "Flip Clipboard Horizontally"
 msgstr "Lật ngang bảng chọn"
 
-#: src/hotkeys.cpp:149
+#: src/hotkeys.cpp:143
 msgid "Flip Clipboard Vertically"
 msgstr "Lật dọc bảng chọn"
 
-#: src/hotkeys.cpp:151
+#: src/hotkeys.cpp:145
 msgid "Rotate Selection"
 msgstr "Quay vùng chọn"
 
-#: src/hotkeys.cpp:153
+#: src/hotkeys.cpp:147
 msgid "Flip Selection"
 msgstr "Lật vùng chọn"
 
-#: src/hotkeys.cpp:155
+#: src/hotkeys.cpp:149
 msgid "Fill Selection"
 msgstr "Tô vùng chọn"
 
-#: src/hotkeys.cpp:157
+#: src/hotkeys.cpp:151
 msgid "Generate Tiles In Selection"
 msgstr "Tạo ô trong vùng chọn"
 
-#: src/hotkeys.cpp:159
+#: src/hotkeys.cpp:153
 msgid "Randomize Tiles In Selection"
 msgstr "Ngẫu nhiên hóa ô trong vùng chọn"
 
-#: src/hotkeys.cpp:163
+#: src/hotkeys.cpp:157
 msgid "Rotate Map"
 msgstr "Quay bản đồ"
 
-#: src/hotkeys.cpp:165
+#: src/hotkeys.cpp:159
 msgid "Generate Map"
 msgstr "Tạo bản đồ"
 
-#: src/hotkeys.cpp:167
+#: src/hotkeys.cpp:161
 msgid "Apply a Mask"
 msgstr "Áp dụng mặt nạ"
 
-#: src/hotkeys.cpp:169
+#: src/hotkeys.cpp:163
 msgid "Create Mask"
 msgstr "Tạo mặt nạ"
 
-#: src/hotkeys.cpp:171
+#: src/hotkeys.cpp:165
 msgid "Refresh Display"
 msgstr "Tải lại màn hình"
 
-#: src/hotkeys.cpp:173
+#: src/hotkeys.cpp:167
 msgid "Update Terrain Transitions"
 msgstr "Cập nhật chuyển tiếp địa hình"
 
-#: src/hotkeys.cpp:175
+#: src/hotkeys.cpp:169
 msgid "Auto-update Terrain Transitions"
 msgstr "Tự động cập nhật chuyển tiếp địa hình"
 
-#: src/hotkeys.cpp:177
+#: src/hotkeys.cpp:171
 msgid "Refresh Image Cache"
 msgstr "Tải lại bộ nhớ đệm ảnh"
 
-#: src/hotkeys.cpp:179
+#: src/hotkeys.cpp:173
 msgid "Draw Hex Coordinates"
 msgstr "Vẽ tọa độ hình lục giác"
 
-#: src/hotkeys.cpp:181
+#: src/hotkeys.cpp:175
 msgid "Draw Terrain Codes"
 msgstr "Vẽ mã địa hình"
 
-#: src/hotkeys.cpp:186
+#: src/hotkeys.cpp:180
 msgid "Delay Shroud Updates"
 msgstr "Trễ cập nhật màn che"
 
-#: src/hotkeys.cpp:187
+#: src/hotkeys.cpp:181
 msgid "Update Shroud Now"
 msgstr "Cập nhật màn che ngay"
 
-#: src/hotkeys.cpp:188
+#: src/hotkeys.cpp:182
 msgid "Continue Move"
 msgstr "Tiếp tục di chuyển"
 
-#: src/hotkeys.cpp:189
+#: src/hotkeys.cpp:183
 msgid "Find Label or Unit"
 msgstr "Tìm nhãn hoặc đơn vị"
 
-#: src/hotkeys.cpp:190
+#: src/hotkeys.cpp:184
 msgid "Speak to Ally"
 msgstr "Nói với đồng minh"
 
-#: src/hotkeys.cpp:191
+#: src/hotkeys.cpp:185
 msgid "Speak to All"
 msgstr "Nói với tất cả"
 
-#: src/hotkeys.cpp:193
+#: src/hotkeys.cpp:187
 msgid "View Chat Log"
 msgstr "Xem nhật ký tán gẫu"
 
-#: src/hotkeys.cpp:196
+#: src/hotkeys.cpp:188
+msgid "Change the language"
+msgstr "Thay đổi ngôn ngữ"
+
+#: src/hotkeys.cpp:190
 msgid "Enter user command"
 msgstr "Nhập lệnh người dùng"
 
-#: src/hotkeys.cpp:197
+#: src/hotkeys.cpp:191
 msgid "Custom command"
 msgstr "Lệnh tùy chỉnh"
 
-#: src/hotkeys.cpp:198
+#: src/hotkeys.cpp:192
 msgid "Run AI formula"
 msgstr "Chạy công thức máy tính"
 
-#: src/hotkeys.cpp:199
+#: src/hotkeys.cpp:193
 msgid "Clear messages"
 msgstr "Xóa tin nhắn"
 
-#: src/hotkeys.cpp:201
+#: src/hotkeys.cpp:195
 msgid "User-Command#2"
 msgstr "Lệnh người dùng #2"
 
-#: src/hotkeys.cpp:202
+#: src/hotkeys.cpp:196
 msgid "User-Command#3"
 msgstr "Lệnh người dùng #3"
 
-#: src/hotkeys.cpp:652 src/hotkeys.cpp:958
+#: src/hotkeys.cpp:646 src/hotkeys.cpp:937
 msgid "Do you really want to quit?"
 msgstr "Bạn có thực sự muốn thoát không?"
 
-#: src/hotkeys.cpp:913
+#: src/hotkeys.cpp:892
 msgid "Map-Screenshot"
 msgstr "Chụp màn hình bản đồ"
 
-#: src/hotkeys.cpp:920
+#: src/hotkeys.cpp:899
 msgid "Screenshot done"
 msgstr "Đã chụp màn hình"
 
-#: src/hotkeys.cpp:922
+#: src/hotkeys.cpp:901
 msgid "Screenshot failed"
 msgstr "Chụp màn hình thất bại"
 
@@ -2742,7 +2669,7 @@ msgstr "Chụp màn hình thất bại"
 #. other's resources rather than duplicating them. For example,
 #. Swedish (sv) and Danish (da) are such, so Swedish translator could
 #. translate this message as "sv,da", while Danish as "da,sv".
-#: src/image.cpp:418
+#: src/image.cpp:345
 msgid "language code for localized resources^en_US"
 msgstr "vi"
 
@@ -2778,35 +2705,35 @@ msgstr "Kích thước lâu đài:"
 msgid "Landform:"
 msgstr "Kiểu đất:"
 
-#: src/mapgen_dialog.cpp:248
+#: src/mapgen_dialog.cpp:244
 msgid "Roads Between Castles"
 msgstr "Đường giữa các lâu đài"
 
-#: src/mapgen_dialog.cpp:305
+#: src/mapgen_dialog.cpp:301
 msgid "/1000 tiles"
 msgstr "/1000 ô"
 
-#: src/mapgen_dialog.cpp:314
+#: src/mapgen_dialog.cpp:310
 msgid "Coastal"
 msgstr "Ven biển"
 
-#: src/mapgen_dialog.cpp:314
+#: src/mapgen_dialog.cpp:310
 msgid "Inland"
 msgstr "Nội địa"
 
-#: src/mapgen_dialog.cpp:314
+#: src/mapgen_dialog.cpp:310
 msgid "Island"
 msgstr "Đảo"
 
-#: src/marked-up_text.cpp:414
+#: src/marked-up_text.cpp:407
 msgid "The maximum text width is less than 1."
 msgstr "Chiều rộng văn bản tối đa nhỏ hơn 1."
 
-#: src/minimap.cpp:94
+#: src/minimap.cpp:90
 msgid "Could not get image for terrain: $terrain."
 msgstr "Không thể lấy ảnh cho địa hình: $terrain."
 
-#: src/minimap.cpp:123 src/minimap.cpp:135
+#: src/minimap.cpp:119 src/minimap.cpp:131
 msgid "Error creating or aquiring an image."
 msgstr "Lỗi khi tạo hoặc lấy ảnh."
 
@@ -2824,7 +2751,7 @@ msgstr ""
 msgid "Hotkey Settings"
 msgstr "Thiết lập phím tắt"
 
-#: src/preferences_display.cpp:299 src/preferences_display.cpp:368
+#: src/preferences_display.cpp:299 src/preferences_display.cpp:367
 msgid "Press desired Hotkey (Esc cancels)"
 msgstr "Ấn phím tắt mong muốn (Esc hủy bỏ)"
 
@@ -2844,41 +2771,33 @@ msgstr "Thay đổi phím tắt"
 msgid "Clear Hotkey"
 msgstr "Xóa phím tắt"
 
-#: src/preferences_display.cpp:402
+#: src/preferences_display.cpp:401
 msgid "This Hotkey is already in use."
 msgstr "Phím tắt này đã được sử dụng."
 
-#: src/preferences_display.cpp:413
+#: src/preferences_display.cpp:412
 msgid ""
 "Warning: screenshot hotkeys not combined with Control, Alt or Meta keys."
 msgstr ""
 "Cảnh báo: phím tắt chụp màn hình không được kết hợp với các phím Control, "
 "Alt hay Meta."
 
-#: src/preferences_display.cpp:510
+#: src/preferences_display.cpp:509
 msgid "There are no alternative video modes available"
 msgstr "Không có chế độ video thay thế"
 
-#: src/preferences_display.cpp:537
-msgid " (widescreen)"
-msgstr ""
-
-#: src/preferences_display.cpp:542
+#: src/preferences_display.cpp:538
 msgid "Choose Resolution"
 msgstr "Chọn độ phân giải"
 
-#: src/terrain_translation.cpp:702
+#: src/terrain_translation.cpp:703
 msgid ""
 "A terrain with a string with more than 4 characters has been found, the "
 "affected terrain is :"
 msgstr ""
 "Đã tìm thấy địa hình có chuỗi với nhiều hơn 4 ký tự, địa hình bị tác động là:"
 
-#: src/text.cpp:289
-msgid "The text contains invalid markup: "
-msgstr ""
-
-#: src/wml_exception.cpp:47
+#: src/wml_exception.cpp:53
 msgid ""
 "An error due to possibly invalid WML occurred\n"
 "The error message is :"
@@ -2886,11 +2805,11 @@ msgstr ""
 "Một lỗi có thể do WML không hợp lệ đã xảy ra\n"
 "Thông báo lỗi là:"
 
-#: src/wml_exception.cpp:49
+#: src/wml_exception.cpp:55
 msgid "When reporting the bug please include the following error message :"
 msgstr "Khi báo cáo lỗi xin kèm theo thông báo lỗi sau đây:"
 
-#: src/wml_exception.cpp:67
+#: src/wml_exception.cpp:73
 msgid ""
 "In section '[$section|]' where '$primary_key| = $primary_value' the "
 "mandatory key '$key|' isn't set."
@@ -2898,167 +2817,6 @@ msgstr ""
 "Trong phần '[$section|]' ở đó '$primary_key| = $primary_value', khóa bắt "
 "buộc '$key|' không được thiết lập."
 
-#: src/wml_exception.cpp:70
+#: src/wml_exception.cpp:76
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "Trong phần '[$section|]' khóa bắt buộc '$key|' không được thiết lập."
-
-#, fuzzy
-#~ msgid "Tropical Water"
-#~ msgstr "Rừng nhiệt đới"
-
-#~ msgid "Grassland"
-#~ msgstr "Đồng cỏ"
-
-#~ msgid "Savanna"
-#~ msgstr "Trảng cỏ"
-
-#~ msgid "Dirt"
-#~ msgstr "Đất"
-
-#, fuzzy
-#~ msgid "Cobbles"
-#~ msgstr "Gạch vụn"
-
-#~ msgid "Desert"
-#~ msgstr "Sa mạc"
-
-#~ msgid "Great Tree"
-#~ msgstr "Cây lớn"
-
-#~ msgid "Tropical Forest"
-#~ msgstr "Rừng nhiệt đới"
-
-#~ msgid "Pine Forest"
-#~ msgstr "Rừng thông"
-
-#~ msgid "Snowy Pine Forest"
-#~ msgstr "Rừng thông tuyết"
-
-#~ msgid "Summer Deciduous Forest"
-#~ msgstr "Rừng rụng lá mùa hè"
-
-#~ msgid "Fall Deciduous Forest"
-#~ msgstr "Rừng rụng lá mùa thu"
-
-#~ msgid "Winter Deciduous Forest"
-#~ msgstr "Rừng rụng lá mùa đông"
-
-#~ msgid "Snowy Deciduous Forest"
-#~ msgstr "Rừng tuyết rụng lá"
-
-#~ msgid "Summer Mixed Forest"
-#~ msgstr "Rừng hỗn hợp mùa hè"
-
-#~ msgid "Fall Mixed Forest"
-#~ msgstr "Rừng hỗn hợp mùa thu"
-
-#~ msgid "Winter Mixed Forest"
-#~ msgstr "Rừng hỗn hợp mùa đông"
-
-#~ msgid "Snowy Mixed Forest"
-#~ msgstr "Rừng tuyết hỗn hợp"
-
-#~ msgid "Desert Mountains"
-#~ msgstr "Núi sa mạc"
-
-#~ msgid "Snowy Mountains"
-#~ msgstr "Núi tuyết"
-
-#~ msgid "Summer Deciduous Forested Hills"
-#~ msgstr "Rừng rụng lá mùa hè trên đồi"
-
-#~ msgid "Fall Deciduous Forested Hills"
-#~ msgstr "Rừng rụng lá mùa thu trên đồi"
-
-#~ msgid "Winter Deciduous Forested Hills"
-#~ msgstr "Rừng rụng lá mùa đông trên đồi"
-
-#~ msgid "Snowy Deciduous Forested Hills"
-#~ msgstr "Rừng tuyết rụng lá trên đồi"
-
-#~ msgid "Summer Mixed Forested Hills"
-#~ msgstr "Rừng hỗn hợp mùa hè trên đồi"
-
-#~ msgid "Winter Mixed Forested Hills"
-#~ msgstr "Rừng hỗn hợp mùa đông trên đồi"
-
-#~ msgid "Snowy Mixed Forested Hills"
-#~ msgstr "Rừng tuyết hỗn hợp trên đồi"
-
-#~ msgid "Impassable Desert Mountains"
-#~ msgstr "Núi sa mạc không thể qua"
-
-#~ msgid "Encampment"
-#~ msgstr "Doanh trại"
-
-#, fuzzy
-#~ msgid "Snowy Encampment"
-#~ msgstr "Doanh trại"
-
-#~ msgid "Fort"
-#~ msgstr "Ph"
-
-#, fuzzy
-#~ msgid "Snowy Fort"
-#~ msgstr "Rừng tuyết"
-
-#, fuzzy
-#~ msgid "Snowy Castle"
-#~ msgstr "Lâu đài"
-
-#~ msgid "Ruin"
-#~ msgstr "Tàn tích"
-
-#, fuzzy
-#~ msgid "Desert Castle"
-#~ msgstr "Lâu đài"
-
-#~ msgid "Encampment Keep"
-#~ msgstr "Pháo đài doanh trại"
-
-#, fuzzy
-#~ msgid "Snowy Encampment Keep"
-#~ msgstr "Pháo đài doanh trại"
-
-#~ msgid "Fort Keep"
-#~ msgstr "Pháo đài công sự"
-
-#, fuzzy
-#~ msgid "Snowy Fort Keep"
-#~ msgstr "Pháo đài công sự"
-
-#~ msgid "Elven Keep"
-#~ msgstr "Pháo đài của thần tiên"
-
-#~ msgid "Ruined Castle Keep"
-#~ msgstr "Pháo đài đổ nát"
-
-#, fuzzy
-#~ msgid "Desert Keep"
-#~ msgstr "Sa mạc"
-
-#, fuzzy
-#~ msgid "Delay Shroud Updates on Start"
-#~ msgstr "Trễ cập nhật màn che"
-
-#~ msgid "Cave path"
-#~ msgstr "Đường trong hang động"
-
-#~ msgid "Window not defined."
-#~ msgstr "Không xác định được cửa sổ."
-
-#~ msgid "Road"
-#~ msgstr "Đường"
-
-#~ msgid "River Ford"
-#~ msgstr "Chỗ cạn ở sông"
-
-#~ msgid "Use new lobby interface"
-#~ msgstr "Sử dụng giao diện phòng gặp gỡ mới"
-
-#~ msgid ""
-#~ "mouseover^Use new lobby interface (only works after a manual reconnect to "
-#~ "the server)"
-#~ msgstr ""
-#~ "rê chuột qua^Sử dung giao diện phòng gặp gỡ mới (chỉ hoạt động sau khi "
-#~ "thủ công kết nối lại đến máy chủ)"

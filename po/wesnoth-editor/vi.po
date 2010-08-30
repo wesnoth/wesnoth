@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-08-18 16:24+0200\n"
+"POT-Creation-Date: 2010-05-24 17:53+0200\n"
 "PO-Revision-Date: 2010-06-11 15:03+0700\n"
 "Last-Translator: Huynh Yen Loc <walkingcorpse13@gmail.com>\n"
 "Language-Team: Vietnamese <>\n"
@@ -54,53 +54,38 @@ msgstr "đất phẳng"
 msgid "desert"
 msgstr "sa mạc"
 
-#. [editor_group]: id=embellishments
-#: data/core/editor/terrain-groups.cfg:37
-msgid "embellishments"
-msgstr ""
-
 #. [editor_group]: id=forest
-#: data/core/editor/terrain-groups.cfg:44
+#: data/core/editor/terrain-groups.cfg:37
 msgid "forest"
 msgstr "rừng"
 
 #. [editor_group]: id=frozen
-#: data/core/editor/terrain-groups.cfg:51
+#: data/core/editor/terrain-groups.cfg:44
 msgid "frozen"
 msgstr "đóng băng"
 
 #. [editor_group]: id=rough
-#: data/core/editor/terrain-groups.cfg:58
+#: data/core/editor/terrain-groups.cfg:51
 msgid "rough"
 msgstr "gồ ghề"
 
 #. [editor_group]: id=cave
-#: data/core/editor/terrain-groups.cfg:65
+#: data/core/editor/terrain-groups.cfg:58
 msgid "cave"
 msgstr "hang động"
 
-#. [editor_group]: id=obstacle
-#: data/core/editor/terrain-groups.cfg:72
-msgid "obstacle"
-msgstr ""
-
 #. [editor_group]: id=village
-#: data/core/editor/terrain-groups.cfg:79
+#: data/core/editor/terrain-groups.cfg:65
 msgid "village"
 msgstr "làng"
 
 #. [editor_group]: id=castle
-#: data/core/editor/terrain-groups.cfg:86
+#: data/core/editor/terrain-groups.cfg:72
 msgid "castle"
 msgstr "lâu đài"
 
-#. [editor_group]: id=bridge
-#: data/core/editor/terrain-groups.cfg:93
-msgid "bridge"
-msgstr ""
-
 #. [editor_group]: id=special
-#: data/core/editor/terrain-groups.cfg:100
+#: data/core/editor/terrain-groups.cfg:79
 msgid "special"
 msgstr "đặc biệt"
 
@@ -312,7 +297,7 @@ msgstr "Tự động cập nhật chuyển tiếp địa hình: Một phần"
 msgid "Auto-update Terrain Transitions: No"
 msgstr "Tự động cập nhật chuyển tiếp địa hình: Không"
 
-#: src/editor/editor_map.cpp:149 src/editor/mouse_action.cpp:428
+#: src/editor/editor_map.cpp:149 src/editor/mouse_action.cpp:429
 msgid "Player"
 msgstr "Người chơi"
 
@@ -320,21 +305,21 @@ msgstr "Người chơi"
 msgid "The size of the target map is different from the current map"
 msgstr "Kích thước của bản đồ đích khác với bản đồ hiện thời"
 
-#: src/editor/editor_palettes.cpp:509
+#: src/editor/editor_palettes.cpp:506
 msgid "(non-core)"
 msgstr "(không lõi)"
 
-#: src/editor/editor_palettes.cpp:510
+#: src/editor/editor_palettes.cpp:507
 msgid "Will not work in game without extra care."
 msgstr "Sẽ không hoạt động trong trò chơi nếu không chú ý thêm."
 
-#: src/editor/editor_palettes.cpp:540
-msgid "FG: "
-msgstr ""
+#: src/editor/editor_palettes.cpp:532
+msgid "FG"
+msgstr "TC"
 
-#: src/editor/editor_palettes.cpp:541
-msgid "BG: "
-msgstr ""
+#: src/editor/editor_palettes.cpp:534
+msgid "BG"
+msgstr "HC"
 
 #: src/editor/map_context.cpp:70
 msgid "File not found"
@@ -360,15 +345,15 @@ msgstr "Không thể lưu vào màn chơi"
 msgid "Could not save the map: $msg"
 msgstr "Không thể lưu bản đồ: $msg"
 
-#: src/editor/mouse_action.cpp:425
+#: src/editor/mouse_action.cpp:426
 msgid "(Player)^None"
 msgstr "Không có"
 
-#: src/editor/mouse_action.cpp:432
+#: src/editor/mouse_action.cpp:433
 msgid "Choose player"
 msgstr "Chọn người chơi"
 
-#: src/editor/mouse_action.cpp:433
+#: src/editor/mouse_action.cpp:434
 msgid ""
 "Which player should start here? You can use alt and a number key to set the "
 "starting position for a player, and del to clear the starting position under "
@@ -379,15 +364,9 @@ msgstr ""
 "thiết lập vị trí ban đầu cho một người chơi, và del để xóa vị trí ban đầu "
 "dưới con trỏ. Ấn một phím số sẽ cuộn đến vị trí ban đầu của người chơi đó."
 
-#: src/gui/dialogs/editor_settings.cpp:166
+#: src/gui/dialogs/editor_settings.cpp:162
 msgid "Custom setting"
 msgstr "Thiết lập tùy chỉnh"
-
-#~ msgid "FG"
-#~ msgstr "TC"
-
-#~ msgid "BG"
-#~ msgstr "HC"
 
 #~ msgid "Error creating action object"
 #~ msgstr "Lỗi khi tạo đối tượng hành động"

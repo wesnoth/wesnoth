@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.8\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-08-13 11:31+0200\n"
+"POT-Creation-Date: 2010-08-13 11:21+0200\n"
 "PO-Revision-Date: 2010-01-01 00:00+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
@@ -137,7 +137,7 @@ msgstr "Kairiu pelės klavišu paspauskite ant Konrado"
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:221
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:394
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:514
-msgid "Left click on Li'sar"
+msgid "Left click on Li’sar"
 msgstr "Kairiu pelės klavišu paspauskite ant Li'sar"
 
 #. [message]: speaker=narrator
@@ -171,7 +171,7 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:262
-msgid "Move Li'sar next to Delfador by clicking on the tile marked 'HERE'."
+msgid "Move Li’sar next to Delfador by clicking on the tile marked 'HERE'."
 msgstr ""
 "Nuveskite Li'sar šalia Delfadoro, paspaudę ant langelio su užrašu „ČIA“."
 
@@ -230,7 +230,7 @@ msgstr "Iškamšą? Tu nori, kad apsimesčiau, kad kaunuosi su manekenu?"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:368
-msgid "Child, you have 32 hitpoints and a sword. I'm fairly sure you'll win."
+msgid "Child, you have 32 hitpoints and a sword. I’m fairly sure you’ll win."
 msgstr ""
 "Vaike, tu turi 32 gyvybės taškus ir kalaviją. Aš beveik įsitikinęs, kad "
 "laimėsi."
@@ -374,7 +374,7 @@ msgstr "Spragtelėkite ant kaimo, kad nuvestumėte Konradą"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:524
-msgid "Click on the village to move Li'sar"
+msgid "Click on the village to move Li’sar"
 msgstr "Spragtelėkite ant kaimo, kad nuvestumėte Li'sar"
 
 #. [message]: speaker=narrator
@@ -421,7 +421,7 @@ msgstr ""
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:593
-msgid "I'll recruit some elves!"
+msgid "I’ll recruit some elves!"
 msgstr "Pasamdysiu elfų!"
 
 #. [event]
@@ -456,7 +456,7 @@ msgstr "Nuveskite Konradą į bokštą"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:612
-msgid "Move Li'sar to the keep"
+msgid "Move Li’sar to the keep"
 msgstr "Nuveskite Li'sar į bokštą"
 
 #. [message]: speaker=narrator
@@ -530,7 +530,7 @@ msgstr ""
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:763
-msgid "I'll tell them to use the one that does the most damage!"
+msgid "I’ll tell them to use the one that does the most damage!"
 msgstr "Liepsiu naudoti tą, kuris daro daugiau žalos!"
 
 #. [message]: id=Delfador
@@ -567,37 +567,36 @@ msgstr "Paspauskite ant iškamšos ir užpulsite."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:837
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:844
-msgid " The ranged attack was safer."
-msgstr ""
-
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:837
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:844
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:856
-#, fuzzy
 msgid ""
 "Your elf used a sword (5–4; or 5 damage, 4 attacks), which is a melee "
-"attack. The quintain defended with its melee attack (3–5)."
+"attack. Quintain defended with its melee attack (3–5). The ranged attack was "
+"safer."
 msgstr ""
 "Tavo elfas panaudojo kalaviją (5-4: 5 žalos, 4 smūgiai), atakavo iš arti. "
 "Iškamša taip pat gynėsi iš arti (3-5). Tolima ataka būtų buvusi saugesnė."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:845
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:897
-#, fuzzy
 msgid ""
-"\n"
+"Your elf used a sword (5–4; or 5 damage, 4 attacks), which is a melee "
+"attack. The quintain defended with its melee attack (3–5). The ranged attack "
+"was safer.\n"
 "End your turn, then attack again."
-msgstr "Baikite savo ėjimą ir tada pulkite vėl."
+msgstr ""
+"Tavo elfas panaudojo kalaviją (5-4: 5 žalos, 4 smūgiai), atakavo iš arti. "
+"Iškamša taip pat gynėsi iš arti (3-5). Tolima ataka būtų buvusi saugesnė.\n"
+"Pabaik ėjimą ir pulk vėl."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:857
 msgid ""
-"\n"
+"Your elf used a sword (5–4; or 5 damage, 4 attacks), which is a melee "
+"attack. The quintain defended with its melee attack (3–5).\n"
 "You should tell the other Elf to use the bow."
 msgstr ""
+"Tavo elfas panaudojo kalaviją (5-4: 5 žalos, 4 smūgiai), atakavo iš arti. "
+"Iškamša taip pat gynėsi iš arti (3-5).\n"
+"Kitam elfui liepk pulti su lanku."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:860
@@ -607,7 +606,6 @@ msgstr "Pulkite su kitu elfu"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:889
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:896
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:907
 msgid ""
 "Your elf used a bow, which is a ranged attack (3–3; or 3 damage, 3 attacks). "
@@ -616,6 +614,18 @@ msgid ""
 msgstr ""
 "Tavo elfas panaudojo lanką (3-3: 3 žalos, 3 šūviai), atakavo iš toli. "
 "Iškamša moka kovoti tik iš arti, tad negalėjo apsiginti."
+
+#. [message]: id=Delfador
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:897
+msgid ""
+"Your elf used a bow, which is a ranged attack (3–3; or 3 damage, 3 attacks). "
+"The quintain has no ranged attack, only a melee attack, so it could not "
+"defend itself.\n"
+"End your turn, then attack again."
+msgstr ""
+"Tavo elfas panaudojo lanką (3-3: 3 žalos, 3 šūviai), atakavo iš toli. "
+"Iškamša moka kovoti tik iš arti, tad negalėjo apsiginti.\n"
+"Pabaik ėjimą ir pulk vėl."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:928
@@ -744,12 +754,12 @@ msgstr "Ar norėtumėte tęsti praktiką?"
 
 #. [option]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1109
-msgid "Yes, I'm still figuring it out."
+msgid "Yes, I’m still figuring it out."
 msgstr "Taip, aš vis dar aiškinuosi."
 
 #. [option]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1112
-msgid "No, I think I've got it."
+msgid "No, I think I’ve got it."
 msgstr "Ne, aš jau supratau."
 
 #. [message]: speaker=narrator
@@ -862,7 +872,7 @@ msgstr "Tikiuosi, dabar bus galimybė atsitraukti!"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:237
-msgid "One lucky attack by an Orcish Grunt, and I'm done for!"
+msgid "One lucky attack by an Orcish Grunt, and I’m done for!"
 msgstr "Vienas sėkmingas orkų pėstininko smūgis, ir man galas!"
 
 #. [message]: speaker=second_unit
@@ -909,7 +919,7 @@ msgstr "Pasibaigia ėjimai"
 
 #. [objective]: condition=lose
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:375
-msgid "Death of Li'sar"
+msgid "Death of Li’sar"
 msgstr "Li'sar mirtis"
 
 #. [event]
@@ -941,7 +951,7 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:418
-msgid "This is no game, Li'sar! "
+msgid "This is no game, Li’sar! "
 msgstr "Tai ne žaidimas, Li'sar! "
 
 #. [event]
@@ -1139,7 +1149,7 @@ msgstr "Su Konradu užgrobkite kaimą"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:614
-msgid "Move Li'sar to capture a village"
+msgid "Move Li’sar to capture a village"
 msgstr "Su Li'sar užgrobkite kaimą"
 
 #. [then]
@@ -1261,7 +1271,7 @@ msgstr "Elindelis"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:885
-msgid "You've learned well, Konrad! "
+msgid "You’ve learned well, Konrad! "
 msgstr "Gerai išmokai, Konradai! "
 
 #. [then]
@@ -1276,7 +1286,7 @@ msgstr ""
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:887
-msgid "You've learned well, Li'sar! "
+msgid "You’ve learned well, Li’sar! "
 msgstr "Gerai išmokai, Li'sar! "
 
 #. [then]
@@ -1398,7 +1408,7 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:979
-msgid "Move your Fighter and Shaman south, then return Li'sar to the Keep"
+msgid "Move your Fighter and Shaman south, then return Li’sar to the Keep"
 msgstr ""
 "Nuveskite kovotoją ir šamanę į pietus, o tada grąžinkite Li'sar į bokštą"
 
@@ -1424,7 +1434,7 @@ msgstr "Nuveskite Konradą į kitą (neužgrobtą) kaimą"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1007
-msgid "Move Li'sar to another (unowned) village"
+msgid "Move Li’sar to another (unowned) village"
 msgstr "Nuveskite Li'sar į kitą (neužgrobtą) kaimą"
 
 #. [event]
@@ -1438,7 +1448,7 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1033
-msgid "Can't our units just move around him?"
+msgid "Can’t our units just move around him?"
 msgstr "O ar negali mūsų daliniai paprasčiausiai jį apeiti?"
 
 #. [event]
@@ -1772,12 +1782,12 @@ msgstr ""
 "Aš ypač gerai valdau kalaviją, darau 8 taškus žalos po 4 smūgius per ėjimą."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1643
-msgid "You took too long! We'll never be rid of these Orcs!"
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1659
+msgid "You took too long! We’ll never be rid of these Orcs!"
 msgstr "Užtrukai per ilgai! Niekada neatsikratysime šių orkų!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1661
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1677
 msgid ""
 "You are victorious! You may want to try Novice-level campaigns such as: The "
 "South Guard, An Orcish Incursion, A Tale of Two Brothers, and Heir to the "
@@ -1834,33 +1844,3 @@ msgstr ""
 #: data/campaigns/tutorial/units/Quintain.cfg:22
 msgid "flail"
 msgstr "kovos spragilas"
-
-#~ msgid ""
-#~ "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
-#~ "attack. The quintain defended with its melee attack (3-5). The ranged "
-#~ "attack was safer.\n"
-#~ "End your turn, then attack again."
-#~ msgstr ""
-#~ "Tavo elfas panaudojo kalaviją (5-4: 5 žalos, 4 smūgiai), atakavo iš arti. "
-#~ "Iškamša taip pat gynėsi iš arti (3-5). Tolima ataka būtų buvusi "
-#~ "saugesnė.\n"
-#~ "Pabaik ėjimą ir pulk vėl."
-
-#~ msgid ""
-#~ "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
-#~ "attack. The quintain defended with its melee attack (3-5).\n"
-#~ "You should tell the other Elf to use the bow."
-#~ msgstr ""
-#~ "Tavo elfas panaudojo kalaviją (5-4: 5 žalos, 4 smūgiai), atakavo iš arti. "
-#~ "Iškamša taip pat gynėsi iš arti (3-5).\n"
-#~ "Kitam elfui liepk pulti su lanku."
-
-#~ msgid ""
-#~ "Your elf used a bow, which is a ranged attack (3-3; or 3 damage, 3 "
-#~ "attacks). The quintain has no ranged attack, only a melee attack, so it "
-#~ "could not defend itself.\n"
-#~ "End your turn, then attack again."
-#~ msgstr ""
-#~ "Tavo elfas panaudojo lanką (3-3: 3 žalos, 3 šūviai), atakavo iš toli. "
-#~ "Iškamša moka kovoti tik iš arti, tad negalėjo apsiginti.\n"
-#~ "Pabaik ėjimą ir pulk vėl."

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-05-30 18:23+0200\n"
+"POT-Creation-Date: 2010-05-24 17:53+0200\n"
 "PO-Revision-Date: 2009-12-15 20:06+0100\n"
 "Last-Translator: Diego J. <diegojromerolopez@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -144,7 +144,7 @@ msgstr "Pulsa el botón izquierdo sobre Konrad"
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:221
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:394
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:514
-msgid "Left click on Li'sar"
+msgid "Left click on Li’sar"
 msgstr "Pulsa el botón izquierdo sobre Li'sar"
 
 #. [message]: speaker=narrator
@@ -178,7 +178,7 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:262
-msgid "Move Li'sar next to Delfador by clicking on the tile marked 'HERE'."
+msgid "Move Li’sar next to Delfador by clicking on the tile marked 'HERE'."
 msgstr ""
 "Mueve a Li'sar al lado de Delfador, pulsando en el lugar marcado con «AQUÍ»."
 
@@ -237,7 +237,7 @@ msgstr "¿Un estafermo? ¿Pretendes que luche contra un muñeco?"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:368
-msgid "Child, you have 32 hitpoints and a sword. I'm fairly sure you'll win."
+msgid "Child, you have 32 hitpoints and a sword. I’m fairly sure you’ll win."
 msgstr ""
 "Criatura, tienes 32 puntos de vida y una espada. Estoy bastante seguro de "
 "que ganarás."
@@ -387,7 +387,7 @@ msgstr "Pulsa en la aldea para mover a Konrad"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:524
-msgid "Click on the village to move Li'sar"
+msgid "Click on the village to move Li’sar"
 msgstr "Pulsa en la aldea para mover a Li'sar"
 
 #. [message]: speaker=narrator
@@ -435,7 +435,7 @@ msgstr ""
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:593
-msgid "I'll recruit some elves!"
+msgid "I’ll recruit some elves!"
 msgstr "¡Reclutaré algunos elfos!"
 
 #. [event]
@@ -470,7 +470,7 @@ msgstr "Mueve a Konrad al torreón"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:612
-msgid "Move Li'sar to the keep"
+msgid "Move Li’sar to the keep"
 msgstr "Mueve a Li'sar al torreón"
 
 #. [message]: speaker=narrator
@@ -546,7 +546,7 @@ msgstr ""
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:763
-msgid "I'll tell them to use the one that does the most damage!"
+msgid "I’ll tell them to use the one that does the most damage!"
 msgstr "¡Les diré que usen el que haga más daño!"
 
 #. [message]: id=Delfador
@@ -585,18 +585,10 @@ msgstr "Pulsa con el botón izquierdo sobre el estafermo para atacarlo."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:837
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:844
-msgid " The ranged attack was safer."
-msgstr ""
-
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:837
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:844
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:856
-#, fuzzy
 msgid ""
 "Your elf used a sword (5–4; or 5 damage, 4 attacks), which is a melee "
-"attack. The quintain defended with its melee attack (3–5)."
+"attack. Quintain defended with its melee attack (3–5). The ranged attack was "
+"safer."
 msgstr ""
 "Tu elfo usó una espada (5-4, ó 5 de daño, 4 ataques), que es un arma de "
 "ataque cuerpo a cuerpo. El estafermo se defendió con su ataque cuerpo a "
@@ -604,19 +596,28 @@ msgstr ""
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:845
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:897
-#, fuzzy
 msgid ""
-"\n"
+"Your elf used a sword (5–4; or 5 damage, 4 attacks), which is a melee "
+"attack. The quintain defended with its melee attack (3–5). The ranged attack "
+"was safer.\n"
 "End your turn, then attack again."
-msgstr "Termina tu turno y después ataca de nuevo."
+msgstr ""
+"Tu elfo usó una espada (5-4; ó 5 de daño, 4 ataques), que es un arma de "
+"ataque cuerpo a cuerpo. El estafermo se defendió con su ataque cuerpo a "
+"cuerpo (3-5). El ataque a distancia habría sido más seguro.\n"
+"Termina tu turno, y ataca de nuevo."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:857
 msgid ""
-"\n"
+"Your elf used a sword (5–4; or 5 damage, 4 attacks), which is a melee "
+"attack. The quintain defended with its melee attack (3–5).\n"
 "You should tell the other Elf to use the bow."
 msgstr ""
+"Tu elfo usó una espada (5-4, ó 5 de daño, 4 ataques), que es un arma de "
+"ataque cuerpo a cuerpo. El estafermo se defendió con su ataque cuerpo a "
+"cuerpo (3-5).\n"
+"Deberías decirle al otro elfo que use el arco."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:860
@@ -626,7 +627,6 @@ msgstr "Ataca con el otro elfo"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:889
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:896
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:907
 msgid ""
 "Your elf used a bow, which is a ranged attack (3–3; or 3 damage, 3 attacks). "
@@ -636,6 +636,19 @@ msgstr ""
 "Tu elfo ha usado un arco, que es un arma de distancia (3-3, ó 3 de daño, 3 "
 "ataques). El estafermo no tiene arma de ataque a distancia, sólo cuerpo a "
 "cuerpo, así que no pudo defenderse."
+
+#. [message]: id=Delfador
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:897
+msgid ""
+"Your elf used a bow, which is a ranged attack (3–3; or 3 damage, 3 attacks). "
+"The quintain has no ranged attack, only a melee attack, so it could not "
+"defend itself.\n"
+"End your turn, then attack again."
+msgstr ""
+"Tu elfo ha usado un arco, que es un arma de distancia (3-3, ó 3 de daño, 3 "
+"ataques). El estafermo no tiene arma de ataque a distancia, sólo cuerpo a "
+"cuerpo, así que no pudo defenderse.\n"
+"Termina tu turno, y ataca de nuevo."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:928
@@ -766,12 +779,12 @@ msgstr "¿Quieres seguir practicando?"
 
 #. [option]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1109
-msgid "Yes, I'm still figuring it out."
+msgid "Yes, I’m still figuring it out."
 msgstr "Sí, todavía me estoy haciendo una idea."
 
 #. [option]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1112
-msgid "No, I think I've got it."
+msgid "No, I think I’ve got it."
 msgstr "No, creo que ya lo entiendo."
 
 #. [message]: speaker=narrator
@@ -884,7 +897,7 @@ msgstr "¡Espero poder retirarme después de esto!"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:237
-msgid "One lucky attack by an Orcish Grunt, and I'm done for!"
+msgid "One lucky attack by an Orcish Grunt, and I’m done for!"
 msgstr "¡Un ataque con suerte de un soldado orco y estoy acabado!"
 
 #. [message]: speaker=second_unit
@@ -931,7 +944,7 @@ msgstr "Fin de los turnos"
 
 #. [objective]: condition=lose
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:375
-msgid "Death of Li'sar"
+msgid "Death of Li’sar"
 msgstr "Muerte de Li'sar"
 
 #. [event]
@@ -963,7 +976,7 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:418
-msgid "This is no game, Li'sar! "
+msgid "This is no game, Li’sar! "
 msgstr "¡Esto no es un juego Li'sar! "
 
 #. [event]
@@ -1164,7 +1177,7 @@ msgstr "Mueve a Konrad para capturar una aldea"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:614
-msgid "Move Li'sar to capture a village"
+msgid "Move Li’sar to capture a village"
 msgstr "Mueve a Li'sar para capturar una aldea"
 
 #. [then]
@@ -1288,7 +1301,7 @@ msgstr "Elindel"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:885
-msgid "You've learned well, Konrad! "
+msgid "You’ve learned well, Konrad! "
 msgstr "¡Has aprendido bien, Konrad! "
 
 #. [then]
@@ -1303,7 +1316,7 @@ msgstr ""
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:887
-msgid "You've learned well, Li'sar! "
+msgid "You’ve learned well, Li’sar! "
 msgstr "¡Has aprendido bien, Li'sar! "
 
 #. [then]
@@ -1430,7 +1443,7 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:979
-msgid "Move your Fighter and Shaman south, then return Li'sar to the Keep"
+msgid "Move your Fighter and Shaman south, then return Li’sar to the Keep"
 msgstr ""
 "Mueve al luchador y a la chamán al sur, luego devuelve a Li'sar al torreón"
 
@@ -1456,7 +1469,7 @@ msgstr "Mueve a Konrad a otra aldea (desocupada)"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1007
-msgid "Move Li'sar to another (unowned) village"
+msgid "Move Li’sar to another (unowned) village"
 msgstr "Mueve a Li'sar a otra aldea (desocupada)"
 
 #. [event]
@@ -1470,7 +1483,7 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1033
-msgid "Can't our units just move around him?"
+msgid "Can’t our units just move around him?"
 msgstr "¿No pueden nuestras unidades moverse simplemente alrededor de él?"
 
 #. [event]
@@ -1817,12 +1830,12 @@ msgstr ""
 "los 4 ataques."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1643
-msgid "You took too long! We'll never be rid of these Orcs!"
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1659
+msgid "You took too long! We’ll never be rid of these Orcs!"
 msgstr "¡Te has tomado demasiado tiempo! ¡Nunca nos desharemos de estos orcos!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1661
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1677
 msgid ""
 "You are victorious! You may want to try Novice-level campaigns such as: The "
 "South Guard, An Orcish Incursion, A Tale of Two Brothers, and Heir to the "
@@ -1881,38 +1894,6 @@ msgstr ""
 #: data/campaigns/tutorial/units/Quintain.cfg:22
 msgid "flail"
 msgstr "mayal"
-
-#~ msgid ""
-#~ "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
-#~ "attack. The quintain defended with its melee attack (3-5). The ranged "
-#~ "attack was safer.\n"
-#~ "End your turn, then attack again."
-#~ msgstr ""
-#~ "Tu elfo usó una espada (5-4; ó 5 de daño, 4 ataques), que es un arma de "
-#~ "ataque cuerpo a cuerpo. El estafermo se defendió con su ataque cuerpo a "
-#~ "cuerpo (3-5). El ataque a distancia habría sido más seguro.\n"
-#~ "Termina tu turno, y ataca de nuevo."
-
-#~ msgid ""
-#~ "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
-#~ "attack. The quintain defended with its melee attack (3-5).\n"
-#~ "You should tell the other Elf to use the bow."
-#~ msgstr ""
-#~ "Tu elfo usó una espada (5-4, ó 5 de daño, 4 ataques), que es un arma de "
-#~ "ataque cuerpo a cuerpo. El estafermo se defendió con su ataque cuerpo a "
-#~ "cuerpo (3-5).\n"
-#~ "Deberías decirle al otro elfo que use el arco."
-
-#~ msgid ""
-#~ "Your elf used a bow, which is a ranged attack (3-3; or 3 damage, 3 "
-#~ "attacks). The quintain has no ranged attack, only a melee attack, so it "
-#~ "could not defend itself.\n"
-#~ "End your turn, then attack again."
-#~ msgstr ""
-#~ "Tu elfo ha usado un arco, que es un arma de distancia (3-3, ó 3 de daño, "
-#~ "3 ataques). El estafermo no tiene arma de ataque a distancia, sólo cuerpo "
-#~ "a cuerpo, así que no pudo defenderse.\n"
-#~ "Termina tu turno, y ataca de nuevo."
 
 #, fuzzy
 #~ msgid "<big>Galdrad"

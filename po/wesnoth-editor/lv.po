@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.7.9\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-08-13 11:31+0200\n"
+"POT-Creation-Date: 2010-05-24 17:53+0200\n"
 "PO-Revision-Date: 2009-12-02 14:46+0300\n"
 "Last-Translator: Reinis Danne <rei4dan@gmail.com>\n"
 "Language-Team: none\n"
@@ -61,53 +61,38 @@ msgstr "līdzenums"
 msgid "desert"
 msgstr "tuksnesis"
 
-#. [editor_group]: id=embellishments
-#: data/core/editor/terrain-groups.cfg:37
-msgid "embellishments"
-msgstr ""
-
 #. [editor_group]: id=forest
-#: data/core/editor/terrain-groups.cfg:44
+#: data/core/editor/terrain-groups.cfg:37
 msgid "forest"
 msgstr "mežs"
 
 #. [editor_group]: id=frozen
-#: data/core/editor/terrain-groups.cfg:51
+#: data/core/editor/terrain-groups.cfg:44
 msgid "frozen"
 msgstr "sasalis"
 
 #. [editor_group]: id=rough
-#: data/core/editor/terrain-groups.cfg:58
+#: data/core/editor/terrain-groups.cfg:51
 msgid "rough"
 msgstr "nelīdzens"
 
 #. [editor_group]: id=cave
-#: data/core/editor/terrain-groups.cfg:65
+#: data/core/editor/terrain-groups.cfg:58
 msgid "cave"
 msgstr "ala"
 
-#. [editor_group]: id=obstacle
-#: data/core/editor/terrain-groups.cfg:72
-msgid "obstacle"
-msgstr ""
-
 #. [editor_group]: id=village
-#: data/core/editor/terrain-groups.cfg:79
+#: data/core/editor/terrain-groups.cfg:65
 msgid "village"
 msgstr "ciems"
 
 #. [editor_group]: id=castle
-#: data/core/editor/terrain-groups.cfg:86
+#: data/core/editor/terrain-groups.cfg:72
 msgid "castle"
 msgstr "pils"
 
-#. [editor_group]: id=bridge
-#: data/core/editor/terrain-groups.cfg:93
-msgid "bridge"
-msgstr ""
-
 #. [editor_group]: id=special
-#: data/core/editor/terrain-groups.cfg:100
+#: data/core/editor/terrain-groups.cfg:79
 msgid "special"
 msgstr "īpašs"
 
@@ -328,21 +313,21 @@ msgstr "Spēlētājs"
 msgid "The size of the target map is different from the current map"
 msgstr "Mērķa kartes izmērs atšķiras no pašreizējās"
 
-#: src/editor/editor_palettes.cpp:509
+#: src/editor/editor_palettes.cpp:506
 msgid "(non-core)"
 msgstr "(ne centrālā)"
 
-#: src/editor/editor_palettes.cpp:510
+#: src/editor/editor_palettes.cpp:507
 msgid "Will not work in game without extra care."
 msgstr "Bez īpašas piesardzības spēlē nestrādās."
 
-#: src/editor/editor_palettes.cpp:540
-msgid "FG: "
-msgstr ""
+#: src/editor/editor_palettes.cpp:532
+msgid "FG"
+msgstr "Priekšplāns"
 
-#: src/editor/editor_palettes.cpp:541
-msgid "BG: "
-msgstr ""
+#: src/editor/editor_palettes.cpp:534
+msgid "BG"
+msgstr "Fons"
 
 #: src/editor/map_context.cpp:70
 msgid "File not found"
@@ -388,12 +373,6 @@ msgstr ""
 "pozīciju zem kursora. Nospiežot tikai ciparu taustiņu, aiziesiet uz attiecģā "
 "spēlētāja sākuma pozīciju."
 
-#: src/gui/dialogs/editor_settings.cpp:166
+#: src/gui/dialogs/editor_settings.cpp:162
 msgid "Custom setting"
 msgstr "Pielāgoti iestatījumi"
-
-#~ msgid "FG"
-#~ msgstr "Priekšplāns"
-
-#~ msgid "BG"
-#~ msgstr "Fons"

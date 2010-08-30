@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-05-30 18:23+0200\n"
+"POT-Creation-Date: 2010-05-24 17:53+0200\n"
 "PO-Revision-Date: 2010-05-28 16:04+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -135,7 +135,7 @@ msgstr "左键单击科纳德"
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:221
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:394
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:514
-msgid "Left click on Li'sar"
+msgid "Left click on Li’sar"
 msgstr "左键单击莉莎"
 
 #. [message]: speaker=narrator
@@ -168,7 +168,7 @@ msgstr "单击标记着“这儿”的格子，把科纳德移动到黎伐多身
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:262
-msgid "Move Li'sar next to Delfador by clicking on the tile marked 'HERE'."
+msgid "Move Li’sar next to Delfador by clicking on the tile marked 'HERE'."
 msgstr "单击标记着“这儿”的格子，把莉莎移动到黎伐多身边。"
 
 #. [event]
@@ -226,7 +226,7 @@ msgstr "一个刺靶？您是想让我装作和一个假人打斗吗？"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:368
-msgid "Child, you have 32 hitpoints and a sword. I'm fairly sure you'll win."
+msgid "Child, you have 32 hitpoints and a sword. I’m fairly sure you’ll win."
 msgstr "孩子，你有32点生命值和一把剑。我很确定你会赢的。"
 
 #. [message]: speaker=narrator
@@ -365,7 +365,7 @@ msgstr "单击村庄把科纳德移动到那里"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:524
-msgid "Click on the village to move Li'sar"
+msgid "Click on the village to move Li’sar"
 msgstr "单击村庄把莉莎移动到那里"
 
 #. [message]: speaker=narrator
@@ -409,7 +409,7 @@ msgstr ""
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:593
-msgid "I'll recruit some elves!"
+msgid "I’ll recruit some elves!"
 msgstr "我会征募一些精灵！"
 
 #. [event]
@@ -442,7 +442,7 @@ msgstr "把科纳德移动到城堡主楼"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:612
-msgid "Move Li'sar to the keep"
+msgid "Move Li’sar to the keep"
 msgstr "把莉莎移动到城堡主楼"
 
 #. [message]: speaker=narrator
@@ -508,7 +508,7 @@ msgstr "但是在指派你的战士去和刺靶战斗之前，你应该知道他
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:763
-msgid "I'll tell them to use the one that does the most damage!"
+msgid "I’ll tell them to use the one that does the most damage!"
 msgstr "我会让他们使用伤害最高的攻击方式！"
 
 #. [message]: id=Delfador
@@ -545,37 +545,36 @@ msgstr "左键单击刺靶以攻击它。"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:837
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:844
-msgid " The ranged attack was safer."
-msgstr ""
-
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:837
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:844
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:856
-#, fuzzy
 msgid ""
 "Your elf used a sword (5–4; or 5 damage, 4 attacks), which is a melee "
-"attack. The quintain defended with its melee attack (3–5)."
+"attack. Quintain defended with its melee attack (3–5). The ranged attack was "
+"safer."
 msgstr ""
 "你的精灵使用了剑（5-4，或者说每次5点伤害，攻击4次），这是一种近战攻击。刺靶会"
 "以它的近战攻击（3-5）进行反击。而远程攻击更安全。"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:845
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:897
-#, fuzzy
 msgid ""
-"\n"
+"Your elf used a sword (5–4; or 5 damage, 4 attacks), which is a melee "
+"attack. The quintain defended with its melee attack (3–5). The ranged attack "
+"was safer.\n"
 "End your turn, then attack again."
-msgstr "结束你的回合，然后再次攻击。"
+msgstr ""
+"你的精灵使用了剑（5-4，或者说每次5点伤害，攻击4次），这是一种近战攻击。刺靶会"
+"以它的近战攻击（3-5）进行反击。而远程攻击更安全。\n"
+"结束你的回合，然后再次攻击。"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:857
 msgid ""
-"\n"
+"Your elf used a sword (5–4; or 5 damage, 4 attacks), which is a melee "
+"attack. The quintain defended with its melee attack (3–5).\n"
 "You should tell the other Elf to use the bow."
 msgstr ""
+"你的精灵使用了剑（5-4，或者说每次5点伤害，攻击4次），这是一种近战攻击。刺靶会"
+"以它的近战攻击（3-5）进行反击。\n"
+"你应该让另一个精灵使用弓。"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:860
@@ -585,7 +584,6 @@ msgstr "让另一个精灵攻击"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:889
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:896
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:907
 msgid ""
 "Your elf used a bow, which is a ranged attack (3–3; or 3 damage, 3 attacks). "
@@ -594,6 +592,18 @@ msgid ""
 msgstr ""
 "你的精灵使用了弓，这是一种远程攻击（3-3，或者说每次3点伤害，攻击3次）。刺靶没"
 "有远程攻击，只有近战攻击，所以它无法反击。"
+
+#. [message]: id=Delfador
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:897
+msgid ""
+"Your elf used a bow, which is a ranged attack (3–3; or 3 damage, 3 attacks). "
+"The quintain has no ranged attack, only a melee attack, so it could not "
+"defend itself.\n"
+"End your turn, then attack again."
+msgstr ""
+"你的精灵使用了弓，这是一种远程攻击（3-3，或者说每次3点伤害，攻击3次）。刺靶没"
+"有远程攻击，只有近战攻击，所以它无法反击。\n"
+"结束你的回合，然后再次攻击。"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:928
@@ -715,12 +725,12 @@ msgstr "你希望继续练习吗？"
 
 #. [option]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1109
-msgid "Yes, I'm still figuring it out."
+msgid "Yes, I’m still figuring it out."
 msgstr "是，我还在摸索呢。"
 
 #. [option]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1112
-msgid "No, I think I've got it."
+msgid "No, I think I’ve got it."
 msgstr "不，我想我已经弄明白了。"
 
 #. [message]: speaker=narrator
@@ -825,7 +835,7 @@ msgstr "但愿我还能活着回去！"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:237
-msgid "One lucky attack by an Orcish Grunt, and I'm done for!"
+msgid "One lucky attack by an Orcish Grunt, and I’m done for!"
 msgstr "只要一个兽人步兵再碰我一下，我就要完了！"
 
 #. [message]: speaker=second_unit
@@ -872,7 +882,7 @@ msgstr "回合数耗尽"
 
 #. [objective]: condition=lose
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:375
-msgid "Death of Li'sar"
+msgid "Death of Li’sar"
 msgstr "莉莎阵亡"
 
 #. [event]
@@ -901,7 +911,7 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:418
-msgid "This is no game, Li'sar! "
+msgid "This is no game, Li’sar! "
 msgstr "这次可不是闹着玩的，莉莎！"
 
 #. [event]
@@ -1086,7 +1096,7 @@ msgstr "移动科纳德去占领一座村庄"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:614
-msgid "Move Li'sar to capture a village"
+msgid "Move Li’sar to capture a village"
 msgstr "移动莉莎去占领一座村庄"
 
 #. [then]
@@ -1201,7 +1211,7 @@ msgstr "艾林德尔"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:885
-msgid "You've learned well, Konrad! "
+msgid "You’ve learned well, Konrad! "
 msgstr "你学得挺不错，科纳德！"
 
 #. [then]
@@ -1216,7 +1226,7 @@ msgstr ""
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:887
-msgid "You've learned well, Li'sar! "
+msgid "You’ve learned well, Li’sar! "
 msgstr "你学得挺不错，莉莎！"
 
 #. [then]
@@ -1335,7 +1345,7 @@ msgstr "让战士和萨满向南移动，然后让科纳德返回城堡主楼"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:979
-msgid "Move your Fighter and Shaman south, then return Li'sar to the Keep"
+msgid "Move your Fighter and Shaman south, then return Li’sar to the Keep"
 msgstr "让战士和萨满向南移动，然后让莉莎返回城堡主楼"
 
 #. [event]
@@ -1360,7 +1370,7 @@ msgstr "把科纳德移动到另一个（未被占领的）村庄中"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1007
-msgid "Move Li'sar to another (unowned) village"
+msgid "Move Li’sar to another (unowned) village"
 msgstr "把莉莎移动到另一个（未被占领的）村庄中"
 
 #. [event]
@@ -1372,7 +1382,7 @@ msgstr "那个兽人步兵堵住了桥！我们必须在狼骑兵到达前占领
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1033
-msgid "Can't our units just move around him?"
+msgid "Can’t our units just move around him?"
 msgstr "我们的单位不能直接从他身边通过吗？"
 
 #. [event]
@@ -1689,12 +1699,12 @@ msgstr ""
 "我对剑术特别擅长，拥有4次攻击，每次能造成8点伤害。"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1643
-msgid "You took too long! We'll never be rid of these Orcs!"
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1659
+msgid "You took too long! We’ll never be rid of these Orcs!"
 msgstr "你浪费了太多时间了！这样下去我们永远无法击败这些兽人！"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1661
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1677
 msgid ""
 "You are victorious! You may want to try Novice-level campaigns such as: The "
 "South Guard, An Orcish Incursion, A Tale of Two Brothers, and Heir to the "
@@ -1748,32 +1758,3 @@ msgstr "刺靶是用来进行剑术和枪术练习的。被一个刺靶攻击是
 #: data/campaigns/tutorial/units/Quintain.cfg:22
 msgid "flail"
 msgstr "连枷"
-
-#~ msgid ""
-#~ "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
-#~ "attack. The quintain defended with its melee attack (3-5). The ranged "
-#~ "attack was safer.\n"
-#~ "End your turn, then attack again."
-#~ msgstr ""
-#~ "你的精灵使用了剑（5-4，或者说每次5点伤害，攻击4次），这是一种近战攻击。刺"
-#~ "靶会以它的近战攻击（3-5）进行反击。而远程攻击更安全。\n"
-#~ "结束你的回合，然后再次攻击。"
-
-#~ msgid ""
-#~ "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
-#~ "attack. The quintain defended with its melee attack (3-5).\n"
-#~ "You should tell the other Elf to use the bow."
-#~ msgstr ""
-#~ "你的精灵使用了剑（5-4，或者说每次5点伤害，攻击4次），这是一种近战攻击。刺"
-#~ "靶会以它的近战攻击（3-5）进行反击。\n"
-#~ "你应该让另一个精灵使用弓。"
-
-#~ msgid ""
-#~ "Your elf used a bow, which is a ranged attack (3-3; or 3 damage, 3 "
-#~ "attacks). The quintain has no ranged attack, only a melee attack, so it "
-#~ "could not defend itself.\n"
-#~ "End your turn, then attack again."
-#~ msgstr ""
-#~ "你的精灵使用了弓，这是一种远程攻击（3-3，或者说每次3点伤害，攻击3次）。刺"
-#~ "靶没有远程攻击，只有近战攻击，所以它无法反击。\n"
-#~ "结束你的回合，然后再次攻击。"

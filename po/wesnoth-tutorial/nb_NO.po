@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-05-30 18:23+0200\n"
+"POT-Creation-Date: 2010-05-24 17:53+0200\n"
 "PO-Revision-Date: 2009-04-07 22:15+0100\n"
 "Last-Translator: Gaute Storli Nielsen <gauteamus(at)gmail(dot)com>\n"
 "Language-Team: none\n"
@@ -135,7 +135,7 @@ msgstr "Venstreklikk på Konrad"
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:221
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:394
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:514
-msgid "Left click on Li'sar"
+msgid "Left click on Li’sar"
 msgstr "Venstreklikk på Li'sar"
 
 #. [message]: speaker=narrator
@@ -171,7 +171,7 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:262
-msgid "Move Li'sar next to Delfador by clicking on the tile marked 'HERE'."
+msgid "Move Li’sar next to Delfador by clicking on the tile marked 'HERE'."
 msgstr ""
 "Flytt Li'sar ved siden av Delfador ved å klikke på feltet merket 'HIT'."
 
@@ -231,7 +231,7 @@ msgstr "En stråmann? Skal jeg lekesloss med en nikkedukke??"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:368
-msgid "Child, you have 32 hitpoints and a sword. I'm fairly sure you'll win."
+msgid "Child, you have 32 hitpoints and a sword. I’m fairly sure you’ll win."
 msgstr ""
 "Barn, du har 32 helsepoeng og et sverd. Med list og lempe er jeg brukbart "
 "sikker på at du kan vinne."
@@ -382,7 +382,7 @@ msgstr "Klikk på landsbyen for å flytte Konrad dit"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:524
-msgid "Click on the village to move Li'sar"
+msgid "Click on the village to move Li’sar"
 msgstr "Klikk på landsbyen for å flytte Li'sar dit"
 
 #. [message]: speaker=narrator
@@ -429,7 +429,7 @@ msgstr ""
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:593
-msgid "I'll recruit some elves!"
+msgid "I’ll recruit some elves!"
 msgstr "Ja! Jeg kan rekruttere noen alver!"
 
 #. [event]
@@ -465,7 +465,7 @@ msgstr "Flytt Konrad til vakttårnet"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:612
-msgid "Move Li'sar to the keep"
+msgid "Move Li’sar to the keep"
 msgstr "Flytt Li'sar til vakttårnet"
 
 #. [message]: speaker=narrator
@@ -540,7 +540,7 @@ msgstr ""
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:763
-msgid "I'll tell them to use the one that does the most damage!"
+msgid "I’ll tell them to use the one that does the most damage!"
 msgstr "Jeg gir dem bare ordre om å bruke det angrepet som gjør mest skade!"
 
 #. [message]: id=Delfador
@@ -580,18 +580,10 @@ msgstr "Venstrekilkk på stråmannen for å angripe den."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:837
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:844
-msgid " The ranged attack was safer."
-msgstr ""
-
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:837
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:844
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:856
-#, fuzzy
 msgid ""
 "Your elf used a sword (5–4; or 5 damage, 4 attacks), which is a melee "
-"attack. The quintain defended with its melee attack (3–5)."
+"attack. Quintain defended with its melee attack (3–5). The ranged attack was "
+"safer."
 msgstr ""
 "Alven brukte et sverd (5-4, eller 5 skade, 4 angrep), som er et "
 "nærkampvåpen. Stråmannen får forsvare seg med sitt eget nærkampangrep (3-5). "
@@ -599,19 +591,28 @@ msgstr ""
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:845
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:897
-#, fuzzy
 msgid ""
-"\n"
+"Your elf used a sword (5–4; or 5 damage, 4 attacks), which is a melee "
+"attack. The quintain defended with its melee attack (3–5). The ranged attack "
+"was safer.\n"
 "End your turn, then attack again."
-msgstr "Avslutt runden din og angrip så igjen."
+msgstr ""
+"Alven brukte et sverd (5-4, eller 5 skade, 4 angrep), som er et "
+"nærkampvåpen. Stråmannen får forsvare seg med sitt eget nærkampangrep (3-5). "
+"Avstandsvåpnet var nok sikrere.\n"
+"Avslutt runden, og angrip så igjen."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:857
 msgid ""
-"\n"
+"Your elf used a sword (5–4; or 5 damage, 4 attacks), which is a melee "
+"attack. The quintain defended with its melee attack (3–5).\n"
 "You should tell the other Elf to use the bow."
 msgstr ""
+"Alven brukte et sverd (5-4, eller 5 skade, 4 angrep), som er et "
+"nærkampsvåpen. Stråmannen får forsvare seg med sitt eget nærkampangrep "
+"(3-5).\n"
+"Du bør råde alvene til å bruke buen."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:860
@@ -621,7 +622,6 @@ msgstr "Angrip med den andre alven"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:889
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:896
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:907
 msgid ""
 "Your elf used a bow, which is a ranged attack (3–3; or 3 damage, 3 attacks). "
@@ -631,6 +631,19 @@ msgstr ""
 "Alven brukte en bue (3-3, eller 3 skade, 3 angrep), som er et avstandsvåpen. "
 "Stråmannen har ikke noe avstandsangrep, kun nærkamp, så den kunne ikke "
 "forsvare seg."
+
+#. [message]: id=Delfador
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:897
+msgid ""
+"Your elf used a bow, which is a ranged attack (3–3; or 3 damage, 3 attacks). "
+"The quintain has no ranged attack, only a melee attack, so it could not "
+"defend itself.\n"
+"End your turn, then attack again."
+msgstr ""
+"Alven brukte en bue (3-3, eller 3 skade, 3 angrep), som er et avstandsvåpen. "
+"Stråmannen har ikke noe avstandsangrep, kun nærkamp, så den kunne ikke "
+"forsvare seg.\n"
+"Avslutt runden, og angrip så igjen."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:928
@@ -759,12 +772,12 @@ msgstr "Vil du fortsette treningen?"
 
 #. [option]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1109
-msgid "Yes, I'm still figuring it out."
+msgid "Yes, I’m still figuring it out."
 msgstr "Ja, jeg trenger erfaringen."
 
 #. [option]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1112
-msgid "No, I think I've got it."
+msgid "No, I think I’ve got it."
 msgstr "Nei, jeg tror jeg har fått nok."
 
 #. [message]: speaker=narrator
@@ -878,7 +891,7 @@ msgstr "Jeg håper jeg kan få avløsning etter dette!"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:237
-msgid "One lucky attack by an Orcish Grunt, and I'm done for!"
+msgid "One lucky attack by an Orcish Grunt, and I’m done for!"
 msgstr "Et heldig angrep av en orkisk Fotsoldat, og jeg er ferdig!"
 
 #. [message]: speaker=second_unit
@@ -925,7 +938,7 @@ msgstr "Rundene tar slutt"
 
 #. [objective]: condition=lose
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:375
-msgid "Death of Li'sar"
+msgid "Death of Li’sar"
 msgstr "Li'sar dør"
 
 #. [event]
@@ -957,7 +970,7 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:418
-msgid "This is no game, Li'sar! "
+msgid "This is no game, Li’sar! "
 msgstr "Dette er ingen lek i skogen, Li'sar!"
 
 #. [event]
@@ -1154,7 +1167,7 @@ msgstr "Flytt Konrad for å befeste en landsby. "
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:614
-msgid "Move Li'sar to capture a village"
+msgid "Move Li’sar to capture a village"
 msgstr "Flytt Li'sar for å befeste en landsby. "
 
 #. [then]
@@ -1270,7 +1283,7 @@ msgstr "Elindel"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:885
-msgid "You've learned well, Konrad! "
+msgid "You’ve learned well, Konrad! "
 msgstr "Du har vært lærenem, Konrad!"
 
 #. [then]
@@ -1285,7 +1298,7 @@ msgstr ""
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:887
-msgid "You've learned well, Li'sar! "
+msgid "You’ve learned well, Li’sar! "
 msgstr "Du har vært lærenem, Li'sar!"
 
 #. [then]
@@ -1410,7 +1423,7 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:979
-msgid "Move your Fighter and Shaman south, then return Li'sar to the Keep"
+msgid "Move your Fighter and Shaman south, then return Li’sar to the Keep"
 msgstr ""
 "Flytt Infanteristen og Sjamanen sørover, og vend så tilbake til vakttårnet "
 "med Li'sar."
@@ -1438,7 +1451,7 @@ msgstr "Flytt Konrad til en annen (eierløs) landsby."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1007
-msgid "Move Li'sar to another (unowned) village"
+msgid "Move Li’sar to another (unowned) village"
 msgstr "Flytt Li'sar til en annen (eierløs) landsby."
 
 #. [event]
@@ -1451,7 +1464,7 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1033
-msgid "Can't our units just move around him?"
+msgid "Can’t our units just move around him?"
 msgstr "Kan ikke enhetene våre bare flytte forbi ham?"
 
 #. [event]
@@ -1792,12 +1805,12 @@ msgstr ""
 "Jeg er særlig god med sverdet: fire angrep med 8 skade for hvert treff!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1643
-msgid "You took too long! We'll never be rid of these Orcs!"
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1659
+msgid "You took too long! We’ll never be rid of these Orcs!"
 msgstr "Du har brukt for lang tid. Vi blir aldri kvitt orkene nå!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1661
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1677
 msgid ""
 "You are victorious! You may want to try Novice-level campaigns such as: The "
 "South Guard, An Orcish Incursion, A Tale of Two Brothers, and Heir to the "
@@ -1856,38 +1869,6 @@ msgstr ""
 #: data/campaigns/tutorial/units/Quintain.cfg:22
 msgid "flail"
 msgstr "stålpisk"
-
-#~ msgid ""
-#~ "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
-#~ "attack. The quintain defended with its melee attack (3-5). The ranged "
-#~ "attack was safer.\n"
-#~ "End your turn, then attack again."
-#~ msgstr ""
-#~ "Alven brukte et sverd (5-4, eller 5 skade, 4 angrep), som er et "
-#~ "nærkampvåpen. Stråmannen får forsvare seg med sitt eget nærkampangrep "
-#~ "(3-5). Avstandsvåpnet var nok sikrere.\n"
-#~ "Avslutt runden, og angrip så igjen."
-
-#~ msgid ""
-#~ "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
-#~ "attack. The quintain defended with its melee attack (3-5).\n"
-#~ "You should tell the other Elf to use the bow."
-#~ msgstr ""
-#~ "Alven brukte et sverd (5-4, eller 5 skade, 4 angrep), som er et "
-#~ "nærkampsvåpen. Stråmannen får forsvare seg med sitt eget nærkampangrep "
-#~ "(3-5).\n"
-#~ "Du bør råde alvene til å bruke buen."
-
-#~ msgid ""
-#~ "Your elf used a bow, which is a ranged attack (3-3; or 3 damage, 3 "
-#~ "attacks). The quintain has no ranged attack, only a melee attack, so it "
-#~ "could not defend itself.\n"
-#~ "End your turn, then attack again."
-#~ msgstr ""
-#~ "Alven brukte en bue (3-3, eller 3 skade, 3 angrep), som er et "
-#~ "avstandsvåpen. Stråmannen har ikke noe avstandsangrep, kun nærkamp, så "
-#~ "den kunne ikke forsvare seg.\n"
-#~ "Avslutt runden, og angrip så igjen."
 
 #, fuzzy
 #~ msgid "<big>Galdrad"

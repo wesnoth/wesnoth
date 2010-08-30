@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-tutorial-fi\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-05-30 18:23+0200\n"
+"POT-Creation-Date: 2010-05-24 17:53+0200\n"
 "PO-Revision-Date: 2009-12-23 14:46+0200\n"
 "Last-Translator: Mikko Nikkilä <miccoh@gmail.com>\n"
 "Language-Team: Finnish <kde-i18n-fi-discussion@lists.sourceforge.net>\n"
@@ -135,7 +135,7 @@ msgstr "Napsauta hiiren vasenta painiketta Konradin kohdalla"
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:221
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:394
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:514
-msgid "Left click on Li'sar"
+msgid "Left click on Li’sar"
 msgstr "Napsauta hiiren vasenta painiketta Li’sarin kohdalla"
 
 #. [message]: speaker=narrator
@@ -169,7 +169,7 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:262
-msgid "Move Li'sar next to Delfador by clicking on the tile marked 'HERE'."
+msgid "Move Li’sar next to Delfador by clicking on the tile marked 'HERE'."
 msgstr ""
 "Liikuta Li’sar Delfadorin viereen klikkaamalla ruutua, jossa lukee ”TÄNNE”."
 
@@ -228,7 +228,7 @@ msgstr "Harjoittelunuken? Haluatko minun taistelevan nukkea vastaan?!"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:368
-msgid "Child, you have 32 hitpoints and a sword. I'm fairly sure you'll win."
+msgid "Child, you have 32 hitpoints and a sword. I’m fairly sure you’ll win."
 msgstr ""
 "Lapseni, sinulla on 32 elämäpistettä ja miekka. Olen melko varma voitostasi."
 
@@ -377,7 +377,7 @@ msgstr "Liikuta Konrad kylään napsauttamalla sopivaa kylää"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:524
-msgid "Click on the village to move Li'sar"
+msgid "Click on the village to move Li’sar"
 msgstr "Liikuta Li’sar kylään napsauttamalla sopivaa kylää"
 
 #. [message]: speaker=narrator
@@ -424,7 +424,7 @@ msgstr ""
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:593
-msgid "I'll recruit some elves!"
+msgid "I’ll recruit some elves!"
 msgstr "Värvään haltioita!"
 
 #. [event]
@@ -459,7 +459,7 @@ msgstr "Liikuta Konrad linnakkeeseen"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:612
-msgid "Move Li'sar to the keep"
+msgid "Move Li’sar to the keep"
 msgstr "Liikuta Li’sar linnakkeeseen"
 
 #. [message]: speaker=narrator
@@ -537,7 +537,7 @@ msgstr ""
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:763
-msgid "I'll tell them to use the one that does the most damage!"
+msgid "I’ll tell them to use the one that does the most damage!"
 msgstr "Käsken heitä käyttämään sitä, joka tekee eniten vahinkoa!"
 
 #. [message]: id=Delfador
@@ -579,18 +579,10 @@ msgstr ""
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:837
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:844
-msgid " The ranged attack was safer."
-msgstr ""
-
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:837
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:844
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:856
-#, fuzzy
 msgid ""
 "Your elf used a sword (5–4; or 5 damage, 4 attacks), which is a melee "
-"attack. The quintain defended with its melee attack (3–5)."
+"attack. Quintain defended with its melee attack (3–5). The ranged attack was "
+"safer."
 msgstr ""
 "Haltiasi käytti miekkaa (5-4: 5 vahinkopistettä, 4 hyökkäystä), joka on "
 "lähitaisteluase. Harjoittelunukke puolustautui omalla "
@@ -598,19 +590,28 @@ msgstr ""
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:845
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:897
-#, fuzzy
 msgid ""
-"\n"
+"Your elf used a sword (5–4; or 5 damage, 4 attacks), which is a melee "
+"attack. The quintain defended with its melee attack (3–5). The ranged attack "
+"was safer.\n"
 "End your turn, then attack again."
-msgstr "Lopeta vuorosi ja hyökkää sitten uudestaan."
+msgstr ""
+"Haltiasi käytti miekkaa (5-4: 5 vahinkopistettä, 4 hyökkäystä), joka on "
+"lähitaisteluase. Harjoittelunukke puolustautui omalla "
+"lähitaisteluhyökkäyksellään (3-5). Kaukotaisteluhyökkäys oli turvallisempi.\n"
+"Lopeta vuorosi ja hyökkää sitten uudestaan."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:857
 msgid ""
-"\n"
+"Your elf used a sword (5–4; or 5 damage, 4 attacks), which is a melee "
+"attack. The quintain defended with its melee attack (3–5).\n"
 "You should tell the other Elf to use the bow."
 msgstr ""
+"Haltiasi käytti miekkaa (5-4: 5 vahinkopistettä, 4 hyökkäystä), joka on "
+"lähitaisteluase. Harjoittelunukke puolustautui omalla "
+"lähitaisteluhyökkäyksellään (3-5).\n"
+"Sinun kannattaisi käskeä toista haltiaa käyttämään jousta."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:860
@@ -620,7 +621,6 @@ msgstr "Hyökkää toisella haltialla"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:889
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:896
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:907
 msgid ""
 "Your elf used a bow, which is a ranged attack (3–3; or 3 damage, 3 attacks). "
@@ -630,6 +630,19 @@ msgstr ""
 "Haltiasi käytti jousta (3-3: 3 vahinkopistettä, 3 hyökkäystä). "
 "Harjoittelunukella ei ole kaukotaisteluhyökkäystä, vaan ainoastaan "
 "lähitaisteluhyökkäys, joten se ei voinut puolustautua ollenkaan."
+
+#. [message]: id=Delfador
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:897
+msgid ""
+"Your elf used a bow, which is a ranged attack (3–3; or 3 damage, 3 attacks). "
+"The quintain has no ranged attack, only a melee attack, so it could not "
+"defend itself.\n"
+"End your turn, then attack again."
+msgstr ""
+"Haltiasi käytti jousta (3-3: 3 vahinkopistettä, 3 hyökkäystä). "
+"Harjoittelunukella ei ole kaukotaisteluhyökkäystä, vaan ainoastaan "
+"lähitaisteluhyökkäys, joten se ei voinut puolustautua ollenkaan.\n"
+"Lopeta vuorosi ja hyökkää sitten uudestaan."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:928
@@ -762,12 +775,12 @@ msgstr "Haluatko jatkaa harjoittelua?"
 
 #. [option]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1109
-msgid "Yes, I'm still figuring it out."
+msgid "Yes, I’m still figuring it out."
 msgstr "Kyllä, tarvitsen lisäharjoitusta."
 
 #. [option]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1112
-msgid "No, I think I've got it."
+msgid "No, I think I’ve got it."
 msgstr "En, luulen jo osaavani."
 
 #. [message]: speaker=narrator
@@ -880,7 +893,7 @@ msgstr "Toivottavasti minulla on mahdollisuus vetäytyä tämän jälkeen!"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:237
-msgid "One lucky attack by an Orcish Grunt, and I'm done for!"
+msgid "One lucky attack by an Orcish Grunt, and I’m done for!"
 msgstr "Yksi onnekas örkkisotilaan hyökkäys ja olen mennyttä!"
 
 #. [message]: speaker=second_unit
@@ -928,7 +941,7 @@ msgstr "Vuorot loppuvat"
 
 #. [objective]: condition=lose
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:375
-msgid "Death of Li'sar"
+msgid "Death of Li’sar"
 msgstr "Li’sarin kuolema"
 
 #. [event]
@@ -960,7 +973,7 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:418
-msgid "This is no game, Li'sar! "
+msgid "This is no game, Li’sar! "
 msgstr "Tämä ei ole leikkiä, Li’sar! "
 
 #. [event]
@@ -1161,7 +1174,7 @@ msgstr "Valtaa kylä liikuttamalla Konrad siihen"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:614
-msgid "Move Li'sar to capture a village"
+msgid "Move Li’sar to capture a village"
 msgstr "Valtaa kylä liikuttamalla Li’sar siihen"
 
 #. [then]
@@ -1283,7 +1296,7 @@ msgstr "Elindel"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:885
-msgid "You've learned well, Konrad! "
+msgid "You’ve learned well, Konrad! "
 msgstr "Olet oppinut hyvin, Konrad! "
 
 #. [then]
@@ -1298,7 +1311,7 @@ msgstr ""
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:887
-msgid "You've learned well, Li'sar! "
+msgid "You’ve learned well, Li’sar! "
 msgstr "Olet oppinut hyvin, Li’sar! "
 
 #. [then]
@@ -1426,7 +1439,7 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:979
-msgid "Move your Fighter and Shaman south, then return Li'sar to the Keep"
+msgid "Move your Fighter and Shaman south, then return Li’sar to the Keep"
 msgstr ""
 "Liikuta soturisi ja shamaanisi etelään. Palaa sitten Li’sarilla linnakkeeseen"
 
@@ -1452,7 +1465,7 @@ msgstr "Liikuta Konrad seuraavaan omistamattomaan kylään"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1007
-msgid "Move Li'sar to another (unowned) village"
+msgid "Move Li’sar to another (unowned) village"
 msgstr "Liikuta Li’sar seuraavaan omistamattomaan kylään"
 
 #. [event]
@@ -1466,7 +1479,7 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1033
-msgid "Can't our units just move around him?"
+msgid "Can’t our units just move around him?"
 msgstr "Eivätkö yksikkömme voi vain kiertää örkin ohitse?"
 
 #. [event]
@@ -1812,13 +1825,13 @@ msgstr ""
 "jokainen tekee 8 elämäpistettä vahinkoa."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1643
-msgid "You took too long! We'll never be rid of these Orcs!"
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1659
+msgid "You took too long! We’ll never be rid of these Orcs!"
 msgstr ""
 "Sinulla on kestänyt liian pitkään. Emme pääse koskaan eroon näistä örkeistä!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1661
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1677
 msgid ""
 "You are victorious! You may want to try Novice-level campaigns such as: The "
 "South Guard, An Orcish Incursion, A Tale of Two Brothers, and Heir to the "
@@ -1878,39 +1891,6 @@ msgstr ""
 #: data/campaigns/tutorial/units/Quintain.cfg:22
 msgid "flail"
 msgstr "varsta"
-
-#~ msgid ""
-#~ "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
-#~ "attack. The quintain defended with its melee attack (3-5). The ranged "
-#~ "attack was safer.\n"
-#~ "End your turn, then attack again."
-#~ msgstr ""
-#~ "Haltiasi käytti miekkaa (5-4: 5 vahinkopistettä, 4 hyökkäystä), joka on "
-#~ "lähitaisteluase. Harjoittelunukke puolustautui omalla "
-#~ "lähitaisteluhyökkäyksellään (3-5). Kaukotaisteluhyökkäys oli "
-#~ "turvallisempi.\n"
-#~ "Lopeta vuorosi ja hyökkää sitten uudestaan."
-
-#~ msgid ""
-#~ "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
-#~ "attack. The quintain defended with its melee attack (3-5).\n"
-#~ "You should tell the other Elf to use the bow."
-#~ msgstr ""
-#~ "Haltiasi käytti miekkaa (5-4: 5 vahinkopistettä, 4 hyökkäystä), joka on "
-#~ "lähitaisteluase. Harjoittelunukke puolustautui omalla "
-#~ "lähitaisteluhyökkäyksellään (3-5).\n"
-#~ "Sinun kannattaisi käskeä toista haltiaa käyttämään jousta."
-
-#~ msgid ""
-#~ "Your elf used a bow, which is a ranged attack (3-3; or 3 damage, 3 "
-#~ "attacks). The quintain has no ranged attack, only a melee attack, so it "
-#~ "could not defend itself.\n"
-#~ "End your turn, then attack again."
-#~ msgstr ""
-#~ "Haltiasi käytti jousta (3-3: 3 vahinkopistettä, 3 hyökkäystä). "
-#~ "Harjoittelunukella ei ole kaukotaisteluhyökkäystä, vaan ainoastaan "
-#~ "lähitaisteluhyökkäys, joten se ei voinut puolustautua ollenkaan.\n"
-#~ "Lopeta vuorosi ja hyökkää sitten uudestaan."
 
 #, fuzzy
 #~ msgid "<big>Galdrad"

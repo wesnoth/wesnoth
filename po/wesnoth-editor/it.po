@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-08-13 11:31+0200\n"
+"POT-Creation-Date: 2010-05-24 17:53+0200\n"
 "PO-Revision-Date: 2009-09-27 15:26+0200\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -60,53 +60,38 @@ msgstr "pianeggiante"
 msgid "desert"
 msgstr "deserto"
 
-#. [editor_group]: id=embellishments
-#: data/core/editor/terrain-groups.cfg:37
-msgid "embellishments"
-msgstr ""
-
 #. [editor_group]: id=forest
-#: data/core/editor/terrain-groups.cfg:44
+#: data/core/editor/terrain-groups.cfg:37
 msgid "forest"
 msgstr "foresta"
 
 #. [editor_group]: id=frozen
-#: data/core/editor/terrain-groups.cfg:51
+#: data/core/editor/terrain-groups.cfg:44
 msgid "frozen"
 msgstr "congelato"
 
 #. [editor_group]: id=rough
-#: data/core/editor/terrain-groups.cfg:58
+#: data/core/editor/terrain-groups.cfg:51
 msgid "rough"
 msgstr "impervio"
 
 #. [editor_group]: id=cave
-#: data/core/editor/terrain-groups.cfg:65
+#: data/core/editor/terrain-groups.cfg:58
 msgid "cave"
 msgstr "grotta"
 
-#. [editor_group]: id=obstacle
-#: data/core/editor/terrain-groups.cfg:72
-msgid "obstacle"
-msgstr ""
-
 #. [editor_group]: id=village
-#: data/core/editor/terrain-groups.cfg:79
+#: data/core/editor/terrain-groups.cfg:65
 msgid "village"
 msgstr "villaggio"
 
 #. [editor_group]: id=castle
-#: data/core/editor/terrain-groups.cfg:86
+#: data/core/editor/terrain-groups.cfg:72
 msgid "castle"
 msgstr "castello"
 
-#. [editor_group]: id=bridge
-#: data/core/editor/terrain-groups.cfg:93
-msgid "bridge"
-msgstr ""
-
 #. [editor_group]: id=special
-#: data/core/editor/terrain-groups.cfg:100
+#: data/core/editor/terrain-groups.cfg:79
 msgid "special"
 msgstr "speciale"
 
@@ -328,21 +313,21 @@ msgstr "Giocatore"
 msgid "The size of the target map is different from the current map"
 msgstr "La dimensione della mappa destinazione è diversa da quella attuale"
 
-#: src/editor/editor_palettes.cpp:509
+#: src/editor/editor_palettes.cpp:506
 msgid "(non-core)"
 msgstr "(non-core)"
 
-#: src/editor/editor_palettes.cpp:510
+#: src/editor/editor_palettes.cpp:507
 msgid "Will not work in game without extra care."
 msgstr "non funziona nel gioco senza particolari attenzioni."
 
-#: src/editor/editor_palettes.cpp:540
-msgid "FG: "
-msgstr ""
+#: src/editor/editor_palettes.cpp:532
+msgid "FG"
+msgstr "Primo piano"
 
-#: src/editor/editor_palettes.cpp:541
-msgid "BG: "
-msgstr ""
+#: src/editor/editor_palettes.cpp:534
+msgid "BG"
+msgstr "Sfondo"
 
 #: src/editor/map_context.cpp:70
 msgid "File not found"
@@ -388,15 +373,9 @@ msgstr ""
 "posizione iniziale sotto il cursore. Se premi un tasto numerico da solo la "
 "mappa scorrerà per far vedere la posizione iniziale di tale giocatore."
 
-#: src/gui/dialogs/editor_settings.cpp:166
+#: src/gui/dialogs/editor_settings.cpp:162
 msgid "Custom setting"
 msgstr "Personalizzazioni"
-
-#~ msgid "FG"
-#~ msgstr "Primo piano"
-
-#~ msgid "BG"
-#~ msgstr "Sfondo"
 
 #~ msgid "Error creating action object"
 #~ msgstr "Errore nella creazione dell'oggetto di azione"

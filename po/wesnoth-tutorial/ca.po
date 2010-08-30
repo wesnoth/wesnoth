@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.5.5+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-05-30 18:23+0200\n"
+"POT-Creation-Date: 2010-05-24 17:53+0200\n"
 "PO-Revision-Date: 2008-10-17 22:30+0200\n"
 "Last-Translator: Jose Gordillo <kilder@hotmail.com>\n"
 "Language-Team: Catalan <wesnoth-ca@list.etting.org>\n"
@@ -142,7 +142,7 @@ msgstr "Feu clic esquerre sobre Konrad"
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:221
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:394
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:514
-msgid "Left click on Li'sar"
+msgid "Left click on Li’sar"
 msgstr "Feu clic esquerre sobre Li'sar"
 
 #. [message]: speaker=narrator
@@ -179,7 +179,7 @@ msgstr "Mou en Konrad al costat de Delfador tot i fent clic on diu «AQUÍ»."
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:262
 #, fuzzy
-msgid "Move Li'sar next to Delfador by clicking on the tile marked 'HERE'."
+msgid "Move Li’sar next to Delfador by clicking on the tile marked 'HERE'."
 msgstr "Mou Li'sar al costat de Delfador tot i fent clic on diu «AQUÍ»."
 
 #. [event]
@@ -242,7 +242,7 @@ msgstr "Un caramot? Voleu que lluiti contra un ninot??"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:368
-msgid "Child, you have 32 hitpoints and a sword. I'm fairly sure you'll win."
+msgid "Child, you have 32 hitpoints and a sword. I’m fairly sure you’ll win."
 msgstr ""
 "Noiet, tens 32 punts d'impacte i una espasa. Estic gairebé segur que "
 "guanyaràs."
@@ -406,7 +406,7 @@ msgstr "Feu clic en el llogaret per a moure en Konrad"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:524
-msgid "Click on the village to move Li'sar"
+msgid "Click on the village to move Li’sar"
 msgstr "Feu clic en el llogaret per a moure la Li'sar"
 
 #. [message]: speaker=narrator
@@ -457,7 +457,7 @@ msgstr ""
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:593
-msgid "I'll recruit some elves!"
+msgid "I’ll recruit some elves!"
 msgstr "Reclutaré alguns elfs!"
 
 #. [event]
@@ -494,7 +494,7 @@ msgstr "Mogueu en Konrad cap a la torre"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:612
-msgid "Move Li'sar to the keep"
+msgid "Move Li’sar to the keep"
 msgstr "Mogueu la Li'sar cap a la torre"
 
 #. [message]: speaker=narrator
@@ -571,7 +571,7 @@ msgstr ""
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:763
 #, fuzzy
-msgid "I'll tell them to use the one that does the most damage!"
+msgid "I’ll tell them to use the one that does the most damage!"
 msgstr "Els ordenaré que usin l'atac que més fereixi!"
 
 #. [message]: id=Delfador
@@ -609,18 +609,11 @@ msgstr "Feu clic esquerre en el caramot per atacar-lo."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:837
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:844
-msgid " The ranged attack was safer."
-msgstr ""
-
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:837
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:844
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:856
 #, fuzzy
 msgid ""
 "Your elf used a sword (5–4; or 5 damage, 4 attacks), which is a melee "
-"attack. The quintain defended with its melee attack (3–5)."
+"attack. Quintain defended with its melee attack (3–5). The ranged attack was "
+"safer."
 msgstr ""
 "El vostre elf ha usat la seua espasa (5-4 o 5 dany, 4 atacs), que és un atac "
 "de melé, així que el caramot s'ha defès amb el seu atac de melé (3-5). "
@@ -628,19 +621,29 @@ msgstr ""
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:845
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:897
 #, fuzzy
 msgid ""
-"\n"
+"Your elf used a sword (5–4; or 5 damage, 4 attacks), which is a melee "
+"attack. The quintain defended with its melee attack (3–5). The ranged attack "
+"was safer.\n"
 "End your turn, then attack again."
-msgstr "Finalitzeu el vostre torn i ataqueu de nou."
+msgstr ""
+"El vostre elf ha usat la seua espasa (5-4 o 5 dany, 4 atacs), que és un atac "
+"de melé, així que el caramot s'ha defès amb el seu atac de melé (3-5). "
+"L'atac a distància era més segur.\n"
+"Finalitzeu el vostre torn i torneu a atacar."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:857
+#, fuzzy
 msgid ""
-"\n"
+"Your elf used a sword (5–4; or 5 damage, 4 attacks), which is a melee "
+"attack. The quintain defended with its melee attack (3–5).\n"
 "You should tell the other Elf to use the bow."
 msgstr ""
+"El vostre elf ha usat la seua espasa (5-4 o 5 dany, 4 atacs), que és un atac "
+"de melé, així que el caramot s'ha defès amb el seu atac de melé (3-5).\n"
+"Hauríeu d'ordenar l'altre elf que usi l'arc."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:860
@@ -651,7 +654,6 @@ msgstr "Ataca amb l'altre elf"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:889
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:896
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:907
 #, fuzzy
 msgid ""
@@ -662,6 +664,20 @@ msgstr ""
 "El vostre elf ha usat el seu arc, que és un atac a distància (3-3, o 3 punts "
 "de dany, 3 atacs). El caramot no té atac a distància, només un de melé, així "
 "que no ha pogut defensar-se."
+
+#. [message]: id=Delfador
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:897
+#, fuzzy
+msgid ""
+"Your elf used a bow, which is a ranged attack (3–3; or 3 damage, 3 attacks). "
+"The quintain has no ranged attack, only a melee attack, so it could not "
+"defend itself.\n"
+"End your turn, then attack again."
+msgstr ""
+"El vostre elf ha usat el seu arc, que és un atac a distància (3-3, o 3 punts "
+"de dany, 3 atacs). El caramot no té atac a distància, només un de melé, així "
+"que no ha pogut defensar-se.\n"
+"Finalitzeu el vostre torn, després torneu a atacar."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:928
@@ -797,12 +813,12 @@ msgstr "Voleu continuar practicant?"
 
 #. [option]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1109
-msgid "Yes, I'm still figuring it out."
+msgid "Yes, I’m still figuring it out."
 msgstr "Sí, encara necessito més pràctica."
 
 #. [option]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1112
-msgid "No, I think I've got it."
+msgid "No, I think I’ve got it."
 msgstr "No, crec que ja capto la idea."
 
 #. [message]: speaker=narrator
@@ -921,7 +937,7 @@ msgstr "Tan de bo pugui retirar-me després d'açò!"
 #. [message]: speaker=second_unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:237
 #, fuzzy
-msgid "One lucky attack by an Orcish Grunt, and I'm done for!"
+msgid "One lucky attack by an Orcish Grunt, and I’m done for!"
 msgstr "Només amb que un soldat orc tingui sort, estic acabat!"
 
 #. [message]: speaker=second_unit
@@ -970,7 +986,7 @@ msgstr "Fi dels torns"
 
 #. [objective]: condition=lose
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:375
-msgid "Death of Li'sar"
+msgid "Death of Li’sar"
 msgstr "Mort de Li'sar"
 
 #. [event]
@@ -1003,7 +1019,7 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:418
-msgid "This is no game, Li'sar! "
+msgid "This is no game, Li’sar! "
 msgstr "Açò no és cap joc, Li'sar!"
 
 #. [event]
@@ -1213,7 +1229,7 @@ msgstr "Mou en Konrad a un llogaret."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:614
-msgid "Move Li'sar to capture a village"
+msgid "Move Li’sar to capture a village"
 msgstr "Mou la Li'sar a un llogaret per capturar-lo"
 
 #. [then]
@@ -1335,7 +1351,7 @@ msgstr "Elindel"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:885
-msgid "You've learned well, Konrad! "
+msgid "You’ve learned well, Konrad! "
 msgstr "Ho has aprés bé, Konrad! "
 
 #. [then]
@@ -1351,7 +1367,7 @@ msgstr ""
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:887
-msgid "You've learned well, Li'sar! "
+msgid "You’ve learned well, Li’sar! "
 msgstr "Ho has aprés bé, Li'sar! "
 
 #. [then]
@@ -1487,7 +1503,7 @@ msgstr ""
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:979
 #, fuzzy
-msgid "Move your Fighter and Shaman south, then return Li'sar to the Keep"
+msgid "Move your Fighter and Shaman south, then return Li’sar to the Keep"
 msgstr ""
 "Moveu el lluitador i la xaman cap al sud, després torneu en Konrad a la torre"
 
@@ -1514,7 +1530,7 @@ msgstr "Mogueu en Konrad a un altre llogaret que no controleu"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1007
-msgid "Move Li'sar to another (unowned) village"
+msgid "Move Li’sar to another (unowned) village"
 msgstr "Mogueu la Li'sar a un altre llogaret que no controleu"
 
 #. [event]
@@ -1529,7 +1545,7 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1033
-msgid "Can't our units just move around him?"
+msgid "Can’t our units just move around him?"
 msgstr "No poden les nostres unitats voltejar-lo?"
 
 #. [event]
@@ -1898,13 +1914,13 @@ msgstr ""
 "Sóc particularment hàbil amb l'espasa: quatre atacs, cadascú causa 8 de dany."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1643
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1659
 #, fuzzy
-msgid "You took too long! We'll never be rid of these Orcs!"
+msgid "You took too long! We’ll never be rid of these Orcs!"
 msgstr "Heu trigat massa, mai ens lliurarem d'aquests orcs!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1661
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1677
 #, fuzzy
 msgid ""
 "You are victorious! You may want to try Novice-level campaigns such as: The "
@@ -1966,41 +1982,6 @@ msgstr ""
 #: data/campaigns/tutorial/units/Quintain.cfg:22
 msgid "flail"
 msgstr "maça amb cadenes"
-
-#, fuzzy
-#~ msgid ""
-#~ "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
-#~ "attack. The quintain defended with its melee attack (3-5). The ranged "
-#~ "attack was safer.\n"
-#~ "End your turn, then attack again."
-#~ msgstr ""
-#~ "El vostre elf ha usat la seua espasa (5-4 o 5 dany, 4 atacs), que és un "
-#~ "atac de melé, així que el caramot s'ha defès amb el seu atac de melé "
-#~ "(3-5). L'atac a distància era més segur.\n"
-#~ "Finalitzeu el vostre torn i torneu a atacar."
-
-#, fuzzy
-#~ msgid ""
-#~ "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
-#~ "attack. The quintain defended with its melee attack (3-5).\n"
-#~ "You should tell the other Elf to use the bow."
-#~ msgstr ""
-#~ "El vostre elf ha usat la seua espasa (5-4 o 5 dany, 4 atacs), que és un "
-#~ "atac de melé, així que el caramot s'ha defès amb el seu atac de melé "
-#~ "(3-5).\n"
-#~ "Hauríeu d'ordenar l'altre elf que usi l'arc."
-
-#, fuzzy
-#~ msgid ""
-#~ "Your elf used a bow, which is a ranged attack (3-3; or 3 damage, 3 "
-#~ "attacks). The quintain has no ranged attack, only a melee attack, so it "
-#~ "could not defend itself.\n"
-#~ "End your turn, then attack again."
-#~ msgstr ""
-#~ "El vostre elf ha usat el seu arc, que és un atac a distància (3-3, o 3 "
-#~ "punts de dany, 3 atacs). El caramot no té atac a distància, només un de "
-#~ "melé, així que no ha pogut defensar-se.\n"
-#~ "Finalitzeu el vostre torn, després torneu a atacar."
 
 #, fuzzy
 #~ msgid "<big>Galdrad"

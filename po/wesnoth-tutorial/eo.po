@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-05-30 18:23+0200\n"
+"POT-Creation-Date: 2010-05-24 17:53+0200\n"
 "PO-Revision-Date: 2008-03-01 17:34+0200\n"
 "Last-Translator: Aleksej Korgenkov <grimpanto@mail.ru>\n"
 "Language-Team: none\n"
@@ -138,7 +138,7 @@ msgstr "Klaku Konradon"
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:221
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:394
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:514
-msgid "Left click on Li'sar"
+msgid "Left click on Li’sar"
 msgstr "Klaku Li'sar"
 
 #. [message]: speaker=narrator
@@ -175,7 +175,7 @@ msgstr "Movu Konradon ĉe Delfadoro per klako sur loko, markita 'ĈI TIE'."
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:262
 #, fuzzy
-msgid "Move Li'sar next to Delfador by clicking on the tile marked 'HERE'."
+msgid "Move Li’sar next to Delfador by clicking on the tile marked 'HERE'."
 msgstr "Movu Li'sar ĉe Delfadoro per klako sur loko, markita ĈI TIE'."
 
 #. [event]
@@ -238,7 +238,7 @@ msgstr "Birdtimigilo? Ĉu vi volas ke mi batalu kontraŭ manekeno??"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:368
-msgid "Child, you have 32 hitpoints and a sword. I'm fairly sure you'll win."
+msgid "Child, you have 32 hitpoints and a sword. I’m fairly sure you’ll win."
 msgstr ""
 "Infano, vi havas 32 batpoentojn kaj glavon. Mi estas sufiĉe certa ke vi "
 "gajnos."
@@ -398,7 +398,7 @@ msgstr "Klaku vilaĝon por movi Konradon"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:524
-msgid "Click on the village to move Li'sar"
+msgid "Click on the village to move Li’sar"
 msgstr "Klaku vilaĝon por movi Li'sar"
 
 #. [message]: speaker=narrator
@@ -449,7 +449,7 @@ msgstr ""
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:593
-msgid "I'll recruit some elves!"
+msgid "I’ll recruit some elves!"
 msgstr "Mi varbos iom da elfoj!"
 
 #. [event]
@@ -486,7 +486,7 @@ msgstr "Movu Konradon al la defendejo"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:612
-msgid "Move Li'sar to the keep"
+msgid "Move Li’sar to the keep"
 msgstr "Movu Li'sar al la defendejo"
 
 #. [message]: speaker=narrator
@@ -564,7 +564,7 @@ msgstr ""
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:763
 #, fuzzy
-msgid "I'll tell them to use the one that does the most damage!"
+msgid "I’ll tell them to use the one that does the most damage!"
 msgstr "Mi ordonos ke ili uzu la plej damaĝan!"
 
 #. [message]: id=Delfador
@@ -603,18 +603,11 @@ msgstr "Klaku la Timigilon por ataki ĝin."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:837
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:844
-msgid " The ranged attack was safer."
-msgstr ""
-
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:837
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:844
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:856
 #, fuzzy
 msgid ""
 "Your elf used a sword (5–4; or 5 damage, 4 attacks), which is a melee "
-"attack. The quintain defended with its melee attack (3–5)."
+"attack. Quintain defended with its melee attack (3–5). The ranged attack was "
+"safer."
 msgstr ""
 "Via elfo uzis sabron (5-4, aŭ damaĝo 5, 4 atakoj), tio estas kontakta atako, "
 "do la timigilo respondas per sia kontakta atako (3-5). La distanca atako "
@@ -622,19 +615,30 @@ msgstr ""
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:845
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:897
 #, fuzzy
 msgid ""
-"\n"
+"Your elf used a sword (5–4; or 5 damage, 4 attacks), which is a melee "
+"attack. The quintain defended with its melee attack (3–5). The ranged attack "
+"was safer.\n"
 "End your turn, then attack again."
-msgstr "Finu vian movon kaj ataku denove."
+msgstr ""
+"Via elfo uzis sabron (5-4, aŭ damaĝo 5, 4 atakoj), tio estas kontakta atako, "
+"do la timigilo respondas per sia kontakta atako (3-5). La distanca atako "
+"estas pli sekura.\n"
+"Finu vian movon kaj ataku denove."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:857
+#, fuzzy
 msgid ""
-"\n"
+"Your elf used a sword (5–4; or 5 damage, 4 attacks), which is a melee "
+"attack. The quintain defended with its melee attack (3–5).\n"
 "You should tell the other Elf to use the bow."
 msgstr ""
+"Via elfo uzis sabron (5-4, aŭ damaĝo 5, 4 atakoj), kiu estas kontakta atako, "
+"do la timigilo respondas per sia kontakta atako (3-5). La distanca atako "
+"estas pli sekura.\n"
+"Decas diri al la alia Elfo uzi pafarkon."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:860
@@ -645,7 +649,6 @@ msgstr "Ataku kun helpo de alia Elfo"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:889
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:896
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:907
 #, fuzzy
 msgid ""
@@ -656,6 +659,20 @@ msgstr ""
 "Via elfo uzis pafarkon, kio estas distanca atako (3-3, aŭ 3 - damaĝo, 3 "
 "atakoj). La birtimigilo ne povas ataki distance, nur kontakte, do ĝi ne "
 "povas defendi sin."
+
+#. [message]: id=Delfador
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:897
+#, fuzzy
+msgid ""
+"Your elf used a bow, which is a ranged attack (3–3; or 3 damage, 3 attacks). "
+"The quintain has no ranged attack, only a melee attack, so it could not "
+"defend itself.\n"
+"End your turn, then attack again."
+msgstr ""
+"Via elfo uzis pafarkon, kio estas distanca atako (3-3, aŭ 3 - damaĝo, 3 "
+"atakoj). La birtimigilo ne povas ataki distance, nur kontakte, do ĝi ne "
+"povas defendi sin.\n"
+"Finu vian movon kaj ataku denove."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:928
@@ -788,12 +805,12 @@ msgstr "Ĉu vi volas plu praktiki?"
 
 #. [option]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1109
-msgid "Yes, I'm still figuring it out."
+msgid "Yes, I’m still figuring it out."
 msgstr "Jes, mi restas."
 
 #. [option]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1112
-msgid "No, I think I've got it."
+msgid "No, I think I’ve got it."
 msgstr "Ne, mi pensas ke mi ellernis tion."
 
 #. [message]: speaker=narrator
@@ -912,7 +929,7 @@ msgstr "Mi esperas ke mi remarŝos post tio!"
 #. [message]: speaker=second_unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:237
 #, fuzzy
-msgid "One lucky attack by an Orcish Grunt, and I'm done for!"
+msgid "One lucky attack by an Orcish Grunt, and I’m done for!"
 msgstr "Unu bonŝanca atako de Gruntema Orko kaj mi foriĝos!"
 
 #. [message]: speaker=second_unit
@@ -961,7 +978,7 @@ msgstr "Tempo finiĝis"
 
 #. [objective]: condition=lose
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:375
-msgid "Death of Li'sar"
+msgid "Death of Li’sar"
 msgstr "Morto de Li'sar"
 
 #. [event]
@@ -994,7 +1011,7 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:418
-msgid "This is no game, Li'sar! "
+msgid "This is no game, Li’sar! "
 msgstr "Tio ne estats ludo, Li'sar!"
 
 #. [event]
@@ -1201,7 +1218,7 @@ msgstr "Movu Konradon por okupi vilaĝon"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:614
-msgid "Move Li'sar to capture a village"
+msgid "Move Li’sar to capture a village"
 msgstr "Movu Li'sar por okupi vilaĝon"
 
 #. [then]
@@ -1323,7 +1340,7 @@ msgstr "Elindel"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:885
-msgid "You've learned well, Konrad! "
+msgid "You’ve learned well, Konrad! "
 msgstr "Vi lernas bone, Konrado!"
 
 #. [then]
@@ -1339,7 +1356,7 @@ msgstr ""
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:887
-msgid "You've learned well, Li'sar! "
+msgid "You’ve learned well, Li’sar! "
 msgstr "Vi lernas bone, Li'sar!"
 
 #. [then]
@@ -1471,7 +1488,7 @@ msgstr ""
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:979
 #, fuzzy
-msgid "Move your Fighter and Shaman south, then return Li'sar to the Keep"
+msgid "Move your Fighter and Shaman south, then return Li’sar to the Keep"
 msgstr ""
 "Movu batalanton kaj Ŝamanon sude, poste revenigu Li'sar al la Defendejo"
 
@@ -1497,7 +1514,7 @@ msgstr "Movu Konradon al alia (nekonata) vilaĝo"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1007
-msgid "Move Li'sar to another (unowned) village"
+msgid "Move Li’sar to another (unowned) village"
 msgstr "Movu Li'sar al alia (nekonata) vilaĝo"
 
 #. [event]
@@ -1512,7 +1529,7 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1033
-msgid "Can't our units just move around him?"
+msgid "Can’t our units just move around him?"
 msgstr "Ĉu niaj militunoj ne povas simple ĉirkaŭiri lin?"
 
 #. [event]
@@ -1881,13 +1898,13 @@ msgstr ""
 "Mi precipe bonas kun sabro: kvar atakoj donas po ok damaĝojn ĉiu."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1643
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1659
 #, fuzzy
-msgid "You took too long! We'll never be rid of these Orcs!"
+msgid "You took too long! We’ll never be rid of these Orcs!"
 msgstr "Vi tro longe prokrastis, vi neniam liberiĝos de ĉi tiuj orkoj!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1661
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1677
 #, fuzzy
 msgid ""
 "You are victorious! You may want to try Novice-level campaigns such as: The "
@@ -1947,41 +1964,6 @@ msgstr ""
 #: data/campaigns/tutorial/units/Quintain.cfg:22
 msgid "flail"
 msgstr "draŝilo"
-
-#, fuzzy
-#~ msgid ""
-#~ "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
-#~ "attack. The quintain defended with its melee attack (3-5). The ranged "
-#~ "attack was safer.\n"
-#~ "End your turn, then attack again."
-#~ msgstr ""
-#~ "Via elfo uzis sabron (5-4, aŭ damaĝo 5, 4 atakoj), tio estas kontakta "
-#~ "atako, do la timigilo respondas per sia kontakta atako (3-5). La distanca "
-#~ "atako estas pli sekura.\n"
-#~ "Finu vian movon kaj ataku denove."
-
-#, fuzzy
-#~ msgid ""
-#~ "Your elf used a sword (5-4; or 5 damage, 4 attacks), which is a melee "
-#~ "attack. The quintain defended with its melee attack (3-5).\n"
-#~ "You should tell the other Elf to use the bow."
-#~ msgstr ""
-#~ "Via elfo uzis sabron (5-4, aŭ damaĝo 5, 4 atakoj), kiu estas kontakta "
-#~ "atako, do la timigilo respondas per sia kontakta atako (3-5). La distanca "
-#~ "atako estas pli sekura.\n"
-#~ "Decas diri al la alia Elfo uzi pafarkon."
-
-#, fuzzy
-#~ msgid ""
-#~ "Your elf used a bow, which is a ranged attack (3-3; or 3 damage, 3 "
-#~ "attacks). The quintain has no ranged attack, only a melee attack, so it "
-#~ "could not defend itself.\n"
-#~ "End your turn, then attack again."
-#~ msgstr ""
-#~ "Via elfo uzis pafarkon, kio estas distanca atako (3-3, aŭ 3 - damaĝo, 3 "
-#~ "atakoj). La birtimigilo ne povas ataki distance, nur kontakte, do ĝi ne "
-#~ "povas defendi sin.\n"
-#~ "Finu vian movon kaj ataku denove."
 
 #, fuzzy
 #~ msgid "<big>Galdrad"

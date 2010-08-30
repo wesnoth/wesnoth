@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-08-18 16:24+0200\n"
+"POT-Creation-Date: 2010-05-24 17:53+0200\n"
 "PO-Revision-Date: 2010-01-16 15:45+0100\n"
 "Last-Translator: Benoît Timbert <benoit.timbert@free.fr>\n"
 "Language-Team: Équipe de traduction française <wesnoth@ml.free.fr>\n"
@@ -59,53 +59,38 @@ msgstr "plat"
 msgid "desert"
 msgstr "désert"
 
-#. [editor_group]: id=embellishments
-#: data/core/editor/terrain-groups.cfg:37
-msgid "embellishments"
-msgstr ""
-
 #. [editor_group]: id=forest
-#: data/core/editor/terrain-groups.cfg:44
+#: data/core/editor/terrain-groups.cfg:37
 msgid "forest"
 msgstr "forêt"
 
 #. [editor_group]: id=frozen
-#: data/core/editor/terrain-groups.cfg:51
+#: data/core/editor/terrain-groups.cfg:44
 msgid "frozen"
 msgstr "glacé"
 
 #. [editor_group]: id=rough
-#: data/core/editor/terrain-groups.cfg:58
+#: data/core/editor/terrain-groups.cfg:51
 msgid "rough"
 msgstr "accidenté"
 
 #. [editor_group]: id=cave
-#: data/core/editor/terrain-groups.cfg:65
+#: data/core/editor/terrain-groups.cfg:58
 msgid "cave"
 msgstr "caverne"
 
-#. [editor_group]: id=obstacle
-#: data/core/editor/terrain-groups.cfg:72
-msgid "obstacle"
-msgstr ""
-
 #. [editor_group]: id=village
-#: data/core/editor/terrain-groups.cfg:79
+#: data/core/editor/terrain-groups.cfg:65
 msgid "village"
 msgstr "village"
 
 #. [editor_group]: id=castle
-#: data/core/editor/terrain-groups.cfg:86
+#: data/core/editor/terrain-groups.cfg:72
 msgid "castle"
 msgstr "château"
 
-#. [editor_group]: id=bridge
-#: data/core/editor/terrain-groups.cfg:93
-msgid "bridge"
-msgstr ""
-
 #. [editor_group]: id=special
-#: data/core/editor/terrain-groups.cfg:100
+#: data/core/editor/terrain-groups.cfg:79
 msgid "special"
 msgstr "spécial"
 
@@ -321,7 +306,7 @@ msgstr "Mettre à jour automatiquement les transitions entre terrains : Partiel"
 msgid "Auto-update Terrain Transitions: No"
 msgstr "Mettre à jour automatiquement les transitions entre terrains : Non"
 
-#: src/editor/editor_map.cpp:149 src/editor/mouse_action.cpp:428
+#: src/editor/editor_map.cpp:149 src/editor/mouse_action.cpp:429
 msgid "Player"
 msgstr "Joueur"
 
@@ -331,21 +316,21 @@ msgstr ""
 "La taille de la carte de destination est différente de celle de la carte "
 "actuelle"
 
-#: src/editor/editor_palettes.cpp:509
+#: src/editor/editor_palettes.cpp:506
 msgid "(non-core)"
 msgstr "(extension)"
 
-#: src/editor/editor_palettes.cpp:510
+#: src/editor/editor_palettes.cpp:507
 msgid "Will not work in game without extra care."
 msgstr "Ne fonctionnera pas dans le jeu sans travail supplémentaire."
 
-#: src/editor/editor_palettes.cpp:540
-msgid "FG: "
-msgstr ""
+#: src/editor/editor_palettes.cpp:532
+msgid "FG"
+msgstr "PP"
 
-#: src/editor/editor_palettes.cpp:541
-msgid "BG: "
-msgstr ""
+#: src/editor/editor_palettes.cpp:534
+msgid "BG"
+msgstr "AP"
 
 #: src/editor/map_context.cpp:70
 msgid "File not found"
@@ -371,15 +356,15 @@ msgstr "Impossible de sauvegarder dans le scénario"
 msgid "Could not save the map: $msg"
 msgstr "Impossible de sauvegarder la carte : $msg"
 
-#: src/editor/mouse_action.cpp:425
+#: src/editor/mouse_action.cpp:426
 msgid "(Player)^None"
 msgstr "Aucun"
 
-#: src/editor/mouse_action.cpp:432
+#: src/editor/mouse_action.cpp:433
 msgid "Choose player"
 msgstr "Choisir le joueur"
 
-#: src/editor/mouse_action.cpp:433
+#: src/editor/mouse_action.cpp:434
 msgid ""
 "Which player should start here? You can use alt and a number key to set the "
 "starting position for a player, and del to clear the starting position under "
@@ -391,15 +376,9 @@ msgstr ""
 "position sous le curseur. Appuyez seulement sur un chiffre pour aller à la "
 "position de départ du joueur associé à ce numéro."
 
-#: src/gui/dialogs/editor_settings.cpp:166
+#: src/gui/dialogs/editor_settings.cpp:162
 msgid "Custom setting"
 msgstr "Réglages personnalisés"
-
-#~ msgid "FG"
-#~ msgstr "PP"
-
-#~ msgid "BG"
-#~ msgstr "AP"
 
 #~ msgid "Error creating action object"
 #~ msgstr "Erreur lors de la création d'un objet d'action"

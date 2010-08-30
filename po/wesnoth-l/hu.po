@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-l_1.4_1.5\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-08-18 16:24+0200\n"
+"POT-Creation-Date: 2010-08-08 17:31+0200\n"
 "PO-Revision-Date: 2009-10-22 21:15+0200\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian <wesnoth-hungtrans@gna.org>\n"
@@ -99,7 +99,7 @@ msgstr "Hadjárat karbantartása"
 msgid "Artwork and Graphics Design"
 msgstr "Illusztrációk és grafikai arculat"
 
-#. [scenario]: id=01_The_Raid
+#. [scenario]: id=the_raid
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:4
 msgid "The Raid"
 msgstr "A rajtaütés"
@@ -191,54 +191,64 @@ msgstr "A koboldok elérik Dallbent"
 #. [objective]: condition=lose
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:110
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:81
-#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:129
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:105
+#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:127
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:103
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:124
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:158
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:156
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:97
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:305
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:385
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:598
 msgid "Death of Baldras"
 msgstr "Baldras elesik"
 
 #. [objective]: condition=lose
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:114
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:85
-#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:133
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:109
+#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:131
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:107
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:128
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:162
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:160
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:101
 msgid "Death of Harper"
 msgstr "Harper elesik"
 
+#. [objective]: condition=lose
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:118
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:89
+#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:139
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:115
+#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:132
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:164
+#: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:105
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:309
+msgid "Turns run out"
+msgstr "Kifutsz az időből"
+
 #. [event]
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:154
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:153
 msgid "Gatrakh"
 msgstr "Gatrakh"
 
 #. [event]
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:155
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:154
 msgid "Thurg"
 msgstr "Thurg"
+
+#. [event]
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:157
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:162
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:167
+msgid "Krung"
+msgstr "Krung"
 
 #. [event]
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:158
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:163
 #: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:168
-msgid "Krung"
-msgstr "Krung"
-
-#. [event]
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:159
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:164
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:169
 msgid "Gorokh"
 msgstr "Gorokh"
 
 #. [message]: speaker=Fal Khag
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:193
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:192
 msgid ""
 "I long to burn human cities, but until our great chieftains provide us with "
 "sufficient forces we must look to these villagers to feed our wolves and "
@@ -250,7 +260,7 @@ msgstr ""
 "pengéink vérszomját."
 
 #. [message]: speaker=Fal Khag
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:197
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:196
 msgid ""
 "Ride, you worms, I want to finish our raid before the hunting party returns "
 "to the human village."
@@ -259,52 +269,52 @@ msgstr ""
 "visszatér az emberek falujába."
 
 #. [event]
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:206
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:205
 msgid "Jalak"
 msgstr "Jalak"
 
 #. [event]
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:207
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:206
 msgid "Delurin"
 msgstr "Delurin"
 
 #. [event]
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:208
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:207
 msgid "Red"
 msgstr "Red"
 
 #. [event]
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:209
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:208
 msgid "Ordo"
 msgstr "Ordo"
 
 #. [event]
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:210
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:209
 msgid "Novus"
 msgstr "Novus"
 
 #. [event]
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:211
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:210
 msgid "Teneor"
 msgstr "Teneor"
 
 #. [event]
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:212
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:211
 msgid "Kembe"
 msgstr "Kembe"
 
 #. [event]
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:213
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:212
 msgid "Treagh"
 msgstr "Treagh"
 
 #. [unit]: type=Footpad_Peasant, id=Harper
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:220
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:219
 msgid "Harper"
 msgstr "Harper"
 
 #. [message]: speaker=Red
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:234
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:233
 msgid ""
 "Look, goblin riders approach! You were right, they were going to raid "
 "Dallben while we were gone."
@@ -313,7 +323,7 @@ msgstr ""
 "Dallbent a távollétünkben."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:238
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:237
 msgid ""
 "We must stop them before they reach the village. Damn the crown, they have "
 "long since forgotten about us out here."
@@ -322,17 +332,16 @@ msgstr ""
 "réges-rég megfeledkeztek rólunk."
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:242
-#, fuzzy
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:241
 msgid ""
-"That goblin leader is heading full-speed straight for Dallben. But we’ll "
+"That goblin leader is heading full-speed straight for Dallben. But we'll "
 "need to chase them all down if we’re going to stop them."
 msgstr ""
 "Az a kobold vezér teljes sebességgel egyenest Dallbenbe tart! Üldözőbe kell "
 "vennünk, ha meg akarjuk állítani őket."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:246
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:245
 msgid ""
 "Do it. Try to hold them back until us old-timers can get there and finish "
 "them off."
@@ -341,11 +350,10 @@ msgstr ""
 "érünk és el nem intézzük őket."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:250
-#, fuzzy
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:249
 msgid ""
-"And Harper... don’t get yourself killed. I’m responsible for you now that "
-"your father is gone, and I won’t dishonor his memory by breaking my promise "
+"And Harper... don't get yourself killed. I'm responsible for you now that "
+"your father is gone, and I won't dishonor his memory by breaking my promise "
 "to keep you safe."
 msgstr ""
 "És Harper... ne ölesd meg magad. Én vagyok érted a felelős, mióta apád "
@@ -353,12 +361,12 @@ msgstr ""
 "megvédésedre tett ígéretemet."
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:254
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:253
 msgid "...I know... All right now, let’s stop these goblins!"
 msgstr "...Tudom... Jól van, állítsuk meg ezeket a koboldokat!"
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:294
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:293
 msgid ""
 "We are barely able to survive these orc raids. We lost two men last week, "
 "more today... yet Weldyn does nothing!"
@@ -368,7 +376,7 @@ msgstr ""
 "semmit!"
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:301
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:300
 msgid ""
 "We are barely able to survive these orc raids. We lost two men last week, "
 "more could have died today... yet Weldyn does nothing!"
@@ -378,7 +386,7 @@ msgstr ""
 "tesz semmit!"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:307
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:306
 msgid ""
 "The King stopped sending patrols out here once the war started. Once that "
 "happened, the burden fell to us. We are citizens of Wesnoth, and as long as "
@@ -390,13 +398,13 @@ msgstr ""
 "szemben."
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:311
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:310
 msgid "The banner will fly over a ghost town if help does not come soon."
 msgstr ""
 "A zászló egy szellemváros fölött fog lobogni, ha nem jön hamar segítség."
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:339
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:338
 msgid ""
 "They’re getting closer to our village! What about the town guards, can they "
 "help us?"
@@ -405,11 +413,10 @@ msgstr ""
 "tudnak nekünk segíteni?"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:343
-#, fuzzy
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:342
 msgid ""
-"They’ll come out when they see those riders, or us, approaching, but there "
-"aren’t many of them... I wouldn’t count on them being able to protect the "
+"They'll come out when they see those riders, or us, approaching, but there "
+"aren't many of them... I wouldn't count on them being able to protect the "
 "village alone for long."
 msgstr ""
 "Persze, ki fognak jönni, ha meglátják a fosztogatókat vagy minket közeledni, "
@@ -417,45 +424,45 @@ msgstr ""
 "tartani a falut."
 
 #. [event]
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:358
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:357
 msgid "Remald"
 msgstr "Remald"
 
 #. [event]
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:359
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:358
 msgid "Wolmas"
 msgstr "Wolmas"
 
 #. [event]
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:364
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:363
 msgid "Jasken"
 msgstr "Jasken"
 
 #. [message]: speaker=Wolmas
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:371
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:370
 msgid "What’s happening here? Why are you running like mad, $unit.name|?"
 msgstr "Mi folyik itt? Miért rohantok úgy, mint az őrültek, $unit.name|?"
 
 #. [message]: speaker=unit
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:375
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:374
 msgid "Goblin riders on the hunt. We must not let any of them to the village!"
 msgstr ""
 "A kobold martalócok vérre szomjaznak. Nem engedhetjük, hogy a faluba érjen "
 "akár csak egy is közülük!"
 
 #. [message]: speaker=Wolmas
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:382
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:381
 msgid "Look! Goblin riders are on the hunt — and heading right for Dallben!"
 msgstr ""
 "Nézzétek! Vérszomjas kobold martalócok - és egyenesen Dallbenbe tartanak!"
 
 #. [message]: speaker=Remald
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:386
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:385
 msgid "Halt!"
 msgstr "Állj!"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:406
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:405
 msgid ""
 "The goblins reached the village! There will surely be nothing left when they "
 "are done pillaging it."
@@ -464,7 +471,7 @@ msgstr ""
 "fosztogatással."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:419
+#: data/campaigns/Liberty/scenarios/01_The_Raid.cfg:418
 msgid ""
 "None remarked on the passing of the tiny, isolated frontier town. It was but "
 "a harbinger of the evil to come under the tyranny of Asheviere."
@@ -473,7 +480,7 @@ msgstr ""
 "eltűnt a föld színéről. Nem volt ez más, mint az Asheviere zsarnoksága "
 "alatti gonoszság előhírnöke."
 
-#. [scenario]: id=02_Civil_Disobedience
+#. [scenario]: id=civil_disobedience
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:4
 msgid "Civil Disobedience"
 msgstr "Polgári engedetlenség"
@@ -489,13 +496,13 @@ msgstr "Polgári engedetlenség"
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:37
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:68
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:32
-#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:60
+#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:58
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:43
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:65
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:63
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:40
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:96
 #: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:55
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:79
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:77
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:50
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:58
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:221
@@ -516,12 +523,12 @@ msgstr "Tarwen"
 #. [side]: type=Royal Guard, id=Archarel
 #. [side]: type=Iron Mauler, id=Linneus
 #: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:51
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:85
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:83
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:55
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:70
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:67
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:81
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:108
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:107
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:135
 msgid "Asheviere"
 msgstr "Asheviere"
@@ -532,17 +539,17 @@ msgid "Kill the Wesnoth army captain, Tarwen"
 msgstr "Megölöd a wesnothi hadsereg kapitányát, Tarwent"
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:127
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:126
 msgid "Look, riders approach."
 msgstr "Nézzétek, lovasok közelednek."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:131
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:130
 msgid "Stand fast, nephew."
 msgstr "Ne mozdulj unokaöcsém."
 
 #. [message]: speaker=Tarwen
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:144
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:143
 msgid ""
 "By order of the Queen, the magistrate of this town is ordered to travel with "
 "us to Elensefar for vetting."
@@ -551,12 +558,12 @@ msgstr ""
 "kell jönnie Elensefarba."
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:148
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:147
 msgid "Garard is the King of Wesnoth. We are ruled by no queen."
 msgstr "Wesnoth királya Garard. Nincs semmiféle királynőnk."
 
 #. [message]: speaker=Tarwen
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:152
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:151
 msgid ""
 "Insolent peasants, you will kneel before your betters! Asheviere is the "
 "queen of Wesnoth. The King fell three weeks ago at Abez. I shall not bandy "
@@ -569,17 +576,17 @@ msgstr ""
 "jönnie, és mindegy, hogy élve vagy holtan."
 
 #. [message]: speaker=Tarwen
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:186
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:185
 msgid "Guard the gate."
 msgstr "Őrizzétek a kaput."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:197
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:196
 msgid "Harper, get out of here. This is no battle for you."
 msgstr "Harper, menekülj innen. Ez nem a te küzdelmed."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:202
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:201
 msgid ""
 "I am the magistrate of Dallben, and it is YOU who will be leaving Dallben, "
 "be it dead or alive."
@@ -588,17 +595,17 @@ msgstr ""
 "vagy holtan."
 
 #. [message]: speaker=Tarwen
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:217
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:216
 msgid "Get back, you cur!"
 msgstr "Vissza, hitvány kutya!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:231
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:230
 msgid "Get out of my village!"
 msgstr "Takarodj a falvamból!"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:244
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:243
 msgid ""
 "Our lives were hard enough when we were beneath the attention of the Crown. "
 "But now I fear things will be worse."
@@ -607,12 +614,12 @@ msgstr ""
 "attól tartok, a dolgok most még nehezebbé válnak."
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:249
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:248
 msgid "We must tell the people of Delwyn about this."
 msgstr "Muszáj Delwyn népét is értesítenünk a történtekről."
 
 #. [message]: role=Advisor
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:262
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:261
 msgid ""
 "That is true. We have always flown to their aid, and they to ours. This is "
 "something we should face together."
@@ -621,7 +628,7 @@ msgstr ""
 "olyan csapás, amivel együtt kell szembenéznünk."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:267
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:266
 msgid ""
 "Very well. We will go to Delwyn and share counsel with them. I never thought "
 "Wesnoth would fall into darkness. Now, not only do the orcs threaten our "
@@ -633,7 +640,7 @@ msgstr ""
 "hanem baljós dolgok is történnek a királynő trónra kerülésével."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:272
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:271
 msgid ""
 "Today we may no longer be citizens of Wesnoth. I wish it could be otherwise, "
 "but we are now outlaws."
@@ -642,13 +649,13 @@ msgstr ""
 "törvényen kívüliek vagyunk."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:340
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:339
 msgid ""
 "Oh, no! We have run out of time, they have arrived with reinforcements..."
 msgstr "Ó, jaj! Kifutottunk az időből, az ellenség erősítést hozott..."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:353
+#: data/campaigns/Liberty/scenarios/02_Civil_Disobedience.cfg:352
 msgid ""
 "They would be remembered only traitors rightly put down by the Queen’s "
 "lances. And in the dark years to come, woe betide any who questioned it."
@@ -657,18 +664,18 @@ msgstr ""
 "királynő kopjái. És az eljövendő sötét években csak szenvedés vár arra, aki "
 "megkérdőjelezi ezt az állítást..."
 
-#. [scenario]: id=03_A_Strategy_of_Hope
+#. [scenario]: id=a_strategy_of_hope
 #: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:4
 msgid "A Strategy of Hope"
 msgstr "Reménykeltő stratégia"
 
 #. [side]: type=Highwayman_Peasant, id=Relnan
-#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:42
+#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:40
 msgid "Relnan"
 msgstr "Relnan"
 
 #. [side]: type=Orcish Warrior, id=Urk Delek
-#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:68
+#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:66
 msgid "Urk Delek"
 msgstr "Urk Delek"
 
@@ -677,35 +684,34 @@ msgstr "Urk Delek"
 #. [side]: type=Lich, id=Sel-Mana
 #. [side]: type=Orcish Warrior, id=Urk Delek
 #. [side]: type=Saurian Oracle, id=Thhsthss
-#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:90
-#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:111
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:107
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:123
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:140
+#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:88
+#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:109
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:105
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:121
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:138
 msgid "Evil"
 msgstr "A gonoszok"
 
 #. [side]: type=Saurian Oracle, id=Thhsthss
-#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:96
+#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:94
 msgid "Thhsthss"
 msgstr "Thhsthss"
 
 #. [objective]: condition=win
-#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:125
+#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:123
 msgid "Defeat both enemy leaders"
 msgstr "Legyőzöd mindkét ellenséges vezért"
 
 #. [objective]: condition=lose
-#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:137
+#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:135
 msgid "Death of Relnan"
 msgstr "Relnan elesik"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:175
-#, fuzzy
+#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:170
 msgid ""
 "Relnan, thank you for welcoming our messenger and agreeing to meet with us. "
-"In your many years as Delwyn’s magistrate I have never known your judgment "
+"In your many years as Delwyn's magistrate I have never known your judgment "
 "to err."
 msgstr ""
 "Relnan, köszönjük, hogy fogadtad futárunkat, és beleegyeztél a velünk való "
@@ -713,7 +719,7 @@ msgstr ""
 "esetről, amikor rossz döntést hoztál volna."
 
 #. [message]: speaker=Relnan
-#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:179
+#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:174
 msgid ""
 "It has been a long time, old friend. Your news worries us. Yet, there is no "
 "problem we have not worked out here at our secret meeting place."
@@ -723,7 +729,7 @@ msgstr ""
 "találkáink során."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:183
+#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:178
 msgid ""
 "You do not understand. We attacked a Wesnoth army patrol. Not only that, the "
 "leader was no man I had ever seen in Annuvin province before. Never has one "
@@ -734,7 +740,7 @@ msgstr ""
 "ideküldött őrjárat kapitánya sem volt még ilyen szívtelen és kegyetlen."
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:187
+#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:182
 msgid ""
 "Had they taken my uncle, they would have surely shown up in Delwyn today "
 "with the same ultimatum. As it is, several riders escaped."
@@ -743,22 +749,21 @@ msgstr ""
 "hasonló ultimátummal. És ne feledjük, hogy sajnos jó néhány lovas elmenekült."
 
 #. [message]: speaker=Relnan
-#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:191
-#, fuzzy
+#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:186
 msgid ""
-"Well, it won’t be long until they report back to the local garrison with the "
+"Well, it won't be long until they report back to the local garrison with the "
 "details of your encounter."
 msgstr ""
 "Nos, akkor nemsokára megérkeznek a helyőrséghez, és jelentenek az "
 "összeütközésetek részleteiről."
 
 #. [message]: speaker=Advisor
-#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:195
+#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:190
 msgid "Then they’ll be back in force."
 msgstr "Akkor csakhamar egy nagyobb csapattal térnek vissza."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:199
+#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:194
 msgid ""
 "An offense to decency, this is! Since when has Wesnoth been ruled by fear "
 "and treachery? We should consult with Lord Maddock of Elensefar. We have "
@@ -769,13 +774,12 @@ msgstr ""
 "éve ismerjük és ugyanolyan nemesnek mutatkozott tetteiben, mint nevében. "
 
 #. [message]: speaker=Relnan
-#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:203
-#, fuzzy
+#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:198
 msgid ""
 "I agree. But, Baldras, what will you tell him? We know something has been "
 "going badly wrong in Wesnoth of late, that more than ordinary corruption and "
 "incompetence is afoot. But when the effects fall on mere peasants, the wrong "
-"of it may not seem so obvious from a noble’s chair."
+"of it may not seem so obvious from a noble's chair."
 msgstr ""
 "Egyetértek, Baldras. De mit fogsz mondani neki? Tudjuk, hogy a dolgok nagyon "
 "rossz fordulatot vettek Wesnothban. Hogy többről van szó, mint puszta "
@@ -784,7 +788,7 @@ msgstr ""
 "egy nemes úr számára?"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:207
+#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:202
 msgid ""
 "We need evidence. Hard evidence...but wait, are those orcish war drums I "
 "hear?"
@@ -793,7 +797,7 @@ msgstr ""
 "ork harci dobokat hallok?"
 
 #. [message]: speaker=Relnan
-#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:211
+#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:206
 msgid ""
 "I think they are, old friend. And that rank smell on the wind tells another "
 "tale; saurians approach. To arms!"
@@ -801,25 +805,25 @@ msgstr ""
 "De bizony, öreg barátom. És a szél gyíklények bűzét hozza... Fegyverbe!"
 
 #. [message]: speaker=Urk Delek
-#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:219
+#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:214
 msgid ""
 "By the sound of the wolves, the scent trail of Fal Khag’s killers ends here."
 msgstr ""
 "A farkasok nyüszítése alapján Fal Khag gyilkosainak szagnyoma itt ér véget."
 
 #. [message]: speaker=Thhsthss
-#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:225
+#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:220
 msgid "Fal Khag is nothing to usss, orc. You promissed uss gold. Bright gold."
 msgstr ""
 "Fal Khag nekünk ssszemmit nem ér, ork. Aranyat ígértél. Fényesssz aranyat."
 
 #. [message]: speaker=Urk Delek
-#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:229
+#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:224
 msgid "You will get gold. And our wolves will get meat."
 msgstr "Lesz arany, a farkasainknak pedig hús."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:241
+#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:236
 msgid ""
 "Something is very wrong here. Those orcs were carrying weapons with Army "
 "forge-markings."
@@ -828,14 +832,14 @@ msgstr ""
 "kovácsműhelyének jele volt."
 
 #. [message]: speaker=Relnan
-#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:245
+#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:240
 msgid "Aye. And the gold in their pouches looked new from the mint."
 msgstr ""
 "Ahogy mondod. És az arany az erszényeikben frissiben érkezett a királyi "
 "pénzverdéből."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:249
+#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:244
 msgid ""
 "Can the darkest rumors be true, then? Does the Kingdom...does Queen "
 "Asheviere...send orcs against her own people?"
@@ -844,7 +848,7 @@ msgstr ""
 "Asheviere királynő... orkokat a saját emberei ellen?"
 
 #. [message]: speaker=Relnan
-#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:253
+#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:248
 msgid ""
 "I think your mission to Lord Maddock just became more urgent than we knew, "
 "Baldras. I must remain here to see to the defense of Delwyn and Dallben, but "
@@ -855,7 +859,7 @@ msgstr ""
 "védelmét, de neked minél gyorsabban Elensefarba kell sietned."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:270
+#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:265
 msgid ""
 "We have tarried here for far too long... there is no way we can reach "
 "Elensefar and return with help before the Wesnoth army destroys our homes. "
@@ -866,7 +870,7 @@ msgstr ""
 "otthonainkat. Visszavonulás!!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:283
+#: data/campaigns/Liberty/scenarios/03_A_Strategy_Of_Hope.cfg:278
 msgid ""
 "Baldras and Relnan returned to their villages to find them destroyed, with "
 "those who fought left dead and the few survivors born away to unguessable "
@@ -879,7 +883,7 @@ msgstr ""
 "Wesnoth egyre mélyebbre süllyedt a sötétségbe, Baldras és Relnan megélte, "
 "hogy még rosszabbat is lásson..."
 
-#. [scenario]: id=04_Unlawful_Orders
+#. [scenario]: id=unlawful_orders
 #: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:4
 msgid "Unlawful Orders"
 msgstr "Törvénytelen igazság"
@@ -895,33 +899,33 @@ msgid "Port of Elensefar"
 msgstr "Elensefar kikötője"
 
 #. [side]: type=General, id=Lord Maddock
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:52
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:50
 msgid "Lord Maddock"
 msgstr "Lord Maddock"
 
 #. [side]: type=General, id=Kestrel
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:73
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:71
 msgid "Kestrel"
 msgstr "Kestrel"
 
 #. [objective]: condition=win
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:101
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:99
 msgid "Defeat the enemy general"
 msgstr "Legyőzöd az ellenség tábornokát"
 
 #. [objective]: condition=lose
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:113
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:111
 msgid "Death of Maddock"
 msgstr "Maddock elesik"
 
 #. [event]
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:138
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:133
 msgid "Rothel"
 msgstr "Rothel"
 
 # Itt jegyezném meg, hogy az elder nem csak öreget jelent.
 #. [message]: speaker=Lord Maddock
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:188
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:183
 msgid ""
 "Baldras, your trip here was not wise. The Queen’s patrols have been visiting "
 "the local villages and bringing the elders here. Those that swear allegiance "
@@ -932,7 +936,7 @@ msgstr ""
 "hazatérhetnek. Akik nem..."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:192
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:187
 msgid ""
 "...are dispatched on the spot. I know the price of dissent. But what of you?"
 msgstr ""
@@ -940,7 +944,7 @@ msgstr ""
 "más véleményen van az ember. Téged hogyhogy nem bántottak?"
 
 #. [message]: speaker=Lord Maddock
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:196
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:191
 msgid ""
 "Well, they do not come within the walls of my city. They are actually camped "
 "nearby, and the main garrison is further south at Halstead. I know my time "
@@ -953,12 +957,12 @@ msgstr ""
 "hűséget fogadni."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:200
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:195
 msgid "Will you?"
 msgstr "És tényleg nem leszel hajlandó?"
 
 #. [message]: speaker=Lord Maddock
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:204
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:199
 msgid ""
 "Yes. The Queen ascended to the throne through the vilest of treachery. "
 "However, while most of my forces were sent with the King to fight the orcs, "
@@ -971,7 +975,7 @@ msgstr ""
 "hogy Elensefarra támadjanak-e."
 
 #. [message]: speaker=Lord Maddock
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:208
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:203
 msgid ""
 "We have an uneasy peace until they are done with the smaller villages and "
 "finally come around to obtaining my oath. The treaty between Elensefar and "
@@ -984,7 +988,7 @@ msgstr ""
 "vessem a bizalmam. Túl gonosz idők ezek. "
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:212
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:207
 msgid ""
 "What can we do then? We have brought with us many from Annuvin province who "
 "are willing to fight, but our families are still at home. They will not last "
@@ -995,7 +999,7 @@ msgstr ""
 "kitartani, ha a királynő őrjáratai visszatérnek oda."
 
 #. [message]: speaker=Lord Maddock
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:216
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:211
 msgid ""
 "I am unwilling to start a civil war. I believe the Queen will remain "
 "preoccupied with order throughout the kingdom and, more importantly, with "
@@ -1009,7 +1013,7 @@ msgstr ""
 
 # ;-)
 #. [message]: speaker=Kestrel
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:220
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:215
 msgid ""
 "A foolish miscalculation, Lord Maddock. These men with which you consort are "
 "outlaws and fugitives. They are a well-organized gang of criminals and "
@@ -1022,14 +1026,14 @@ msgstr ""
 "ahogy felesküszik Asheviere királynőre."
 
 #. [message]: speaker=Lord Maddock
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:224
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:219
 msgid "Men, to arms! The defense of Elensefar has begun!"
 msgstr "Katonák, fegyverbe! Az Elensefarért vívott küzdelem megkezdődött!"
 
 # adversary= ellenség!
 # nem szövetséges
 #. [message]: speaker=narrator
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:243
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:238
 msgid ""
 "As the sun set, a horrific change began to take place to the human "
 "adversaries of Baldras and his allies..."
@@ -1038,7 +1042,7 @@ msgstr ""
 "szövetségeseinek ellenfeleiben...."
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:555
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:550
 msgid ""
 "I cannot believe what my eyes are seeing! The flesh runs from their bones... "
 "these are not human warriors we fight. They are evil spirits masquerading as "
@@ -1048,7 +1052,7 @@ msgstr ""
 "lényekkel harcolunk. Gonosz lelkek ezek embernek álcázva!"
 
 #. [message]: speaker=Lord Maddock
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:566
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:561
 msgid ""
 "Their human aspect is returning! This is an evil manner of sorcery we face, "
 "but one that we may yet overcome. CHARGE!"
@@ -1057,15 +1061,14 @@ msgstr ""
 "még sikerül felülkerekednünk rajta. ROHAM!"
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:580
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:575
 msgid "Who are you? What are you?"
 msgstr "Kik vagytok? Mik vagytok?"
 
 #. [message]: speaker=Kestrel
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:584
-#, fuzzy
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:579
 msgid ""
-"We are accursed. We were once under the command of Prince Eldred, the King’s "
+"We are accursed. We were once under the command of Prince Eldred, the King's "
 "son and betrayer. The price for our treason is this hellish existence. We "
 "know not who or what inflicted this curse upon us, but our mortal deaths may "
 "be only the beginning of the penance we are doomed to pay."
@@ -1077,12 +1080,12 @@ msgstr ""
 "kárhoztattunk."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:595
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:590
 msgid "Lord Maddock, now that we are victorious, will you help us?"
 msgstr "Lord Maddock, most hogy győztünk, segítesz nekünk?"
 
 #. [message]: speaker=Lord Maddock
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:599
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:594
 msgid ""
 "I will not. Unless you want me to round up the city’s thieves to fight for "
 "you, I do not have the troops to spare. However, I am not the only one who "
@@ -1094,12 +1097,12 @@ msgstr ""
 "szegletében."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:603
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:598
 msgid "I don’t understand. There are no other noble lords in this area."
 msgstr "Nem értem. Nincs más nemes úr ezen a környéken."
 
 #. [message]: speaker=Lord Maddock
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:607
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:602
 msgid ""
 "Southeast of here there is a town, and there you may find assistance of the "
 "type I cannot give."
@@ -1108,8 +1111,7 @@ msgstr ""
 "amit én nem tudok megadni."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:611
-#, fuzzy
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:606
 msgid ""
 "Wish us well. If we are to resist the Wesnoth army a second time, we’re "
 "going to need more than clubs and slings against steel."
@@ -1118,7 +1120,7 @@ msgstr ""
 "sokkal többre lesz szükségünk az acél ellen, mint bunkósbotok meg parittyák."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:630
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:625
 msgid ""
 "Look, more riders come from the southeast. We cannot survive another "
 "assault. We are finished!"
@@ -1127,7 +1129,7 @@ msgstr ""
 "támadást. Végünk van!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:643
+#: data/campaigns/Liberty/scenarios/04_Unlawful_Orders.cfg:638
 msgid ""
 "Indeed, Asheviere’s armies had mustered and struck before the nascent "
 "rebellion could even be planned. Her power and ruthlessness — and their toll "
@@ -1137,7 +1139,7 @@ msgstr ""
 "újdonsült felkelést egyáltalán megtervezhették volna. A királynő hatalma és "
 "kegyetlensége - és halálos következményeik - csak egyre és egyre növekedett."
 
-#. [scenario]: id=05_Hide_and_Seek
+#. [scenario]: id=hide_and_seek
 #: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:6
 msgid "Hide and Seek"
 msgstr "Bújócska"
@@ -1163,7 +1165,7 @@ msgid "Take Baldras to meet the leader of the insurgency"
 msgstr "Elvezeted Baldrast a felkelés vezetőjéhez"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:440
+#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:442
 msgid ""
 "Relentlessly pursued by riders patrolling the road to Elensefar, Baldras and "
 "his men traveled unseen along the swampy banks of the Great River to the "
@@ -1175,7 +1177,7 @@ msgstr ""
 
 # Sötétedésig rejtőzni fognak, aztán előjönnek, hogy a Maddock Úr által hagyott nyomokat megvizsgálják.:-)
 #. [message]: speaker=narrator
-#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:445
+#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:447
 msgid ""
 "They hid until nightfall, then crept out to find the help Lord Maddock "
 "hinted was here."
@@ -1184,26 +1186,26 @@ msgstr ""
 "által említett segítséget."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:493
+#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:495
 msgid ""
-"I’m not sure where we’re supposed to go now. If we go into town we can start "
+"I'm not sure where we’re supposed to go now. If we go into town we can start "
 "asking around for information."
 msgstr ""
 "Nem tudom, hova is kéne mennünk. Ha bemennénk a városba, kérdezősködhetnénk, "
 "hátha megtudunk valamit."
 
 #. [unit]: type=Thief, id=Link
-#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:509
+#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:511
 msgid "Link"
 msgstr "Link"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:514
+#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:516
 msgid "Who are you?"
 msgstr "Te meg ki vagy?"
 
 #. [message]: speaker=Link
-#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:518
+#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:520
 msgid ""
 "I have come to find you. You must make it through the city without being "
 "seen. The soldiers are normally out hunting for my kind, but a company of "
@@ -1215,12 +1217,12 @@ msgstr ""
 "szerepét."
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:522
+#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:524
 msgid "They’re looking for us."
 msgstr "Minket keresnek."
 
 #. [message]: speaker=Link
-#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:526
+#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:528
 msgid ""
 "Well, good thing I found you first. Now hurry, you must make it past the "
 "city into the Grey Woods. There is a small path in the southeast that leads "
@@ -1233,7 +1235,7 @@ msgstr ""
 "a vezetőnkhöz. Ha lehet, próbáljátok meg elkerülni a katonákat."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:564
+#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:566
 msgid ""
 "Looks like these guards hold stationary posts, so if we’re careful enough we "
 "should be able to slip our way around them unnoticed."
@@ -1242,7 +1244,7 @@ msgstr ""
 "átosonhatunk köztük feltűnés nélkül. "
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:568
+#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:570
 msgid ""
 "Harper, you younger and faster folks need to be our eyes now. Scout ahead "
 "and try to find a way for us to get past the guards, but make sure to not "
@@ -1254,17 +1256,17 @@ msgstr ""
 "meglássanak benneteket, különben mind nagy galibába kerülünk..."
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:656
+#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:658
 msgid "They’ve seen us, RUN!"
 msgstr "Megláttak minket, FUTÁS!"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:673
+#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:675
 msgid "Fall back, quickly! Maybe we can yet lose them!"
 msgstr "Vissza, gyorsan! Talán még lerázhatjuk őket!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:689
+#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:691
 msgid ""
 "Gentlemen, please come this way and follow the path into the forest. Our "
 "leader is anxious to meet you."
@@ -1273,13 +1275,13 @@ msgstr ""
 "várja önöket."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:693
+#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:695
 msgid ""
 "As soon as we escape the Wesnoth death squad, we will be happy to oblige."
 msgstr "Amint megúsztuk a wesnothi halálosztagot, boldogan megtesszük."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:697
+#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:699
 msgid ""
 "I haven’t run this much in years. If you were to ask me to infiltrate a "
 "heavily guarded city relying on nothing but the cover of darkness and my "
@@ -1290,30 +1292,30 @@ msgstr ""
 "volna, hogy bolond vagy."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:701
+#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:703
 msgid "As it turns out, I’m the crazy one. Let’s finish this folly."
 msgstr "Amint látható, én vagyok a bolond. Fejezzük be ezt a marhaságot!"
 
 #. [message]: speaker=Hans
-#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:726
+#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:728
 msgid ""
 "You can come if you wish, but the leader is only interested in speaking to "
 "Baldras."
 msgstr "Jöhet, ha úgy kívánja, de a vezér csak Baldras-szal óhajt beszélni."
 
 #. [message]: speaker=Hans
-#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:746
+#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:748
 msgid "Fly, and we may yet evade them in the Grey Woods."
 msgstr "Siessen, és talán lerázhatjuk őket a Szürke-erdőben."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:751
+#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:753
 msgid "Lead the way..."
 msgstr "Mutasd az utat..."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:775
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:443
+#: data/campaigns/Liberty/scenarios/05_Hide_and_Seek.cfg:777
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:438
 msgid ""
 "We have spent too much time here. Surely the Queen’s forces have returned to "
 "Dallben. Our mission is unfinished, but we must return to fight a suicide "
@@ -1323,49 +1325,48 @@ msgstr ""
 "visszatértek Dallbenbe. Bár még nem fejeztük be küldetésünk, mégis vissza "
 "kell térnünk egy öngyilkos csatára."
 
-#. [scenario]: id=06_The_Grey_Woods
+#. [scenario]: id=the_gray_woods
 #: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:4
 msgid "The Grey Woods"
 msgstr "A Szürke-erdő"
 
 #. [side]: type=Shadow Lord, id=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:63
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:61
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:205
 msgid "Helicrom"
 msgstr "Helicrom"
 
 #. [side]: type=Necromancer, id=Mal-Jarrof
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:98
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:96
 msgid "Mal-Jarrof"
 msgstr "Mal-Jarrof"
 
 #. [side]: type=Necromancer, id=Mal-Jerod
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:114
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:112
 msgid "Mal-Jerod"
 msgstr "Mal-Jerod"
 
 #. [side]: type=Lich, id=Sel-Mana
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:130
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:128
 msgid "Sel-Mana"
 msgstr "Sel-Mana"
 
 #. [objective]: condition=win
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:154
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:152
 msgid "Defeat the lich and its minions"
 msgstr "Elpusztítod a delevényt és követőit"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:225
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:220
 msgid "The leader, I presume."
 msgstr "A vezető, gondolom."
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:229
-#, fuzzy
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:224
 msgid ""
 "I am Helicrom, and you should not be so glib. I control dangerous men. My "
 "henchmen can slip unseen through any city, rob a man while he sleeps, or "
-"attack a caravan head-on. It’s not noble work, but our pursuits require "
+"attack a caravan head-on. It's not noble work, but our pursuits require "
 "plenty of gold."
 msgstr ""
 "Helicrom vagyok, nem kéne olyan félvállról venned. Veszélyes embereknek "
@@ -1374,12 +1375,12 @@ msgstr ""
 "nappal. Nem tisztességes munka, de az elfoglaltságaink sok aranyat kívánnak."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:233
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:228
 msgid "Your pursuits?"
 msgstr "Az elfoglaltságaitok?"
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:237
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:232
 msgid ""
 "The former King’s magic ministry kept a tight control on the training and "
 "employment of mages in Wesnoth. Those of us who dared to... depart from the "
@@ -1393,12 +1394,12 @@ msgstr ""
 "maradásunk és a biztonságunk nem olcsó."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:241
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:236
 msgid "I have heard of you. Necromancers. Barely-human scum, I say."
 msgstr "Hallottam már rólatok. Holtidézők. Fél-ember söpredék, azt mondom."
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:245
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:240
 msgid ""
 "Wrong. Necromancers become slaves to their lich masters and eventually lose "
 "their humanity. We have proven that practicing the dark arts need not lead "
@@ -1413,12 +1414,12 @@ msgstr ""
 "táncolunk egyikhez sem ragaszkodva igazán."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:249
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:244
 msgid "I...see, I think. Why do you want to help us?"
 msgstr "Értem... azt hiszem. Miért akartok segíteni nekünk?"
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:253
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:248
 msgid ""
 "We don’t. You have sought us out. But, I do know of your situation and am "
 "willing to help. Any weakening of the Throne of Wesnoth, whether it be "
@@ -1429,7 +1430,7 @@ msgstr ""
 "Wesnoth trónját - üljön azon épp király vagy királynő - hasznunkra van."
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:264
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:259
 msgid ""
 "Carcyn is always foggy as of late because these woods have recently become "
 "home to a lich and two of its underling necromancers. Our experiments may "
@@ -1440,7 +1441,7 @@ msgstr ""
 "kísérleteink ébresztették fel a delevényt... nem tudjuk pontosan."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:268
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:263
 msgid ""
 "So now you need to defend your rear as well as your front... I see your "
 "predicament. My men will wipe this land clean if you can help us defend our "
@@ -1451,17 +1452,17 @@ msgstr ""
 "megvédeni az otthonunkat."
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:293
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:288
 msgid "Finally that creature is dead, yet its foolish minions resist."
 msgstr "Végre halott az a szörnyűség, az ostoba szolgái mégis kitartanak."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:300
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:295
 msgid "The lich is destroyed and its minions dead."
 msgstr "A delevény és a talpnyalói elpusztultak."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:317
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:312
 msgid ""
 "The defeat of the evil lich infesting the Grey Woods was a bittersweet "
 "victory. With Helicrom dead, the guild of shadow magic was thrown into "
@@ -1471,7 +1472,7 @@ msgstr ""
 "halálával az árnymágusok céhe felbomlott."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:322
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:317
 msgid ""
 "The remaining members were very grateful and offered Baldras a sizable sum "
 "of gold for his help. It was not the help he was hoping for, but he knew it "
@@ -1482,7 +1483,7 @@ msgstr ""
 "reménykedett, tudta, hogy ennek kell elégnek lennie a közelgő összecsapáshoz."
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:341
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:336
 msgid ""
 "With the undead driven out, we may live here in relative peace and pursue "
 "our studies. For this, Baldras, I am grateful."
@@ -1491,7 +1492,7 @@ msgstr ""
 "folytathatjuk a kutatásainkat. Baldras, ezért nagyon hálás vagyok neked."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:345
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:340
 msgid ""
 "Studies? Peace? You mean to continue feeding on the lawful citizens of "
 "Wesnoth. There will be no peace for them."
@@ -1500,7 +1501,7 @@ msgstr ""
 "Számukra nem lesz béke."
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:349
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:344
 msgid ""
 "No one here is in a position to be dispensing moral judgments. Regardless, "
 "you have done great service to us today, and we owe you a debt. I will help "
@@ -1511,7 +1512,7 @@ msgstr ""
 "vagyok. Segítek, ahogy tőlem telik."
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:353
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:348
 msgid ""
 "I was planning on giving you gold. Any good army is well financed, and with "
 "the lich gone we can now spare it."
@@ -1521,7 +1522,7 @@ msgstr ""
 "szükségünk a pénzre."
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:357
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:352
 msgid ""
 "But, I think it would help you more if I lent you some of my men to join you "
 "on your adventures. The Queen has been sending mages out here, and my men "
@@ -1533,7 +1534,7 @@ msgstr ""
 "szomjazni."
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:361
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:356
 msgid ""
 "On the other hand, if I keep the full force of my organization here, we "
 "might be able to regroup and join you on the battlefield when the time comes."
@@ -1543,22 +1544,22 @@ msgstr ""
 "ideje."
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:365
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:360
 msgid "I leave it to you to decide."
 msgstr "Rád bízom a döntést."
 
 #. [option]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:367
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:362
 msgid "I will take the gold. How does 500 sound?"
 msgstr "Az aranyat választom. 500 hogy hangzik?"
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:371
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:366
 msgid "Agreed. Good luck and farewell to you, Master Baldras."
 msgstr "Megegyeztünk. Sok sikert és jó szerencsét, Baldras mester!"
 
 #. [option]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:392
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:387
 msgid ""
 "Send your men with us. They will be valuable help as we prepare for the "
 "assault from the Wesnoth army garrison."
@@ -1567,19 +1568,19 @@ msgstr ""
 "helyőrség ellen."
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:396
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:391
 msgid "Done. My finest mages and thieves are at your disposal. Use them well."
 msgstr ""
 "Rendben. A legjobb mágusaim és tolvajaim a rendelkezésedre állnak. Vezesd "
 "őket bölcsen!"
 
 #. [option]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:410
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:405
 msgid "I wish you to join us in battle against the Queen’s forces."
 msgstr "Azt szeretném, ha csatlakoznál hozzánk a királynő elleni harcban."
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:414
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:409
 msgid ""
 "Alright. I need time to clean up this forest and recall my men from the "
 "countryside. We will be ready to march in 7 days. All now hinges on you! "
@@ -1590,11 +1591,11 @@ msgstr ""
 "indulásra. Most minden rajtatok áll! Addig is..."
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:464
+#: data/campaigns/Liberty/scenarios/06_The_Grey_Woods.cfg:459
 msgid "My men... have failed to protect me! I perish..."
 msgstr "Az embereim... nem tudtak megvédeni engem! Végem van..."
 
-#. [scenario]: id=07_The_Hunters
+#. [scenario]: id=the_hunters
 #: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:4
 msgid "The Hunters"
 msgstr "A vadászok"
@@ -1661,17 +1662,17 @@ msgid "Kill all enemy forces"
 msgstr "Legyőzöd az összes ellenséges egységet"
 
 #. [event]
-#: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:132
+#: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:131
 msgid "Jingo"
 msgstr "Jingo"
 
 #. [event]
-#: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:133
+#: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:132
 msgid "Majel"
 msgstr "Majel"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:151
+#: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:150
 msgid ""
 "The words of Lord Maddock have weighed heavy on me these past few days. It "
 "has dawned on me that we can never win. We will never defeat the entire army "
@@ -1684,7 +1685,7 @@ msgstr ""
 "hogy lehetnék rá képes?"
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:155
+#: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:154
 msgid ""
 "What’s worse is that she appears to have taken notice. We have counted five "
 "platoons of heavy infantry marching towards the garrison in just the last 2 "
@@ -1695,7 +1696,7 @@ msgstr ""
 "tartanak."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:159
+#: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:158
 msgid ""
 "The garrison. The towers of Halstead are more than a garrison, nephew, they "
 "are a fortress. They used to protect this area from the enemies of Wesnoth; "
@@ -1706,29 +1707,29 @@ msgstr ""
 "ellenségeitől; sosem hittem volna, hogy egyszer az ellenség menedékévé válik."
 
 #. [event]: id=Pitcher 20 14}, id=Pitcher 28 18}, id=Pitcher 20 14}
-#: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:162
+#: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:161
 msgid "Pitcher"
 msgstr "Pitcher"
 
 #. [message]: speaker=Pitcher
-#: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:169
+#: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:168
 msgid "(Baldras!)"
 msgstr "(Baldras!)"
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:173
+#: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:172
 msgid "Uncle, he wears the crest of the Elense. We should answer."
 msgstr "Bácsikám, ez az ember Elense címerét viseli. Válaszoljunk!"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:177
+#: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:176
 msgid "Rider, hush before we are discovered! Come to us, but quietly!"
 msgstr ""
 "Lovas, csendesedj el, mielőtt észrevesznek minket! Gyere ide, de nagyon "
 "halkan!"
 
 #. [message]: speaker=Pitcher
-#: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:184
+#: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:183
 msgid ""
 "Master Baldras, I bring news from the north. During the past week, several "
 "patrols have again ventured across the Great River into Annuvin. A man named "
@@ -1739,12 +1740,12 @@ msgstr ""
 "ellenük egy kis csapattal, s legyőzte őket."
 
 #. [message]: speaker=Majel
-#: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:188
+#: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:187
 msgid "This is surely good news!"
 msgstr "Ez nagyon jó hír!"
 
 #. [message]: speaker=Pitcher
-#: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:192
+#: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:191
 msgid ""
 "I am afraid it is not. The Queen is sending a branch of her main field army "
 "directly from Weldyn. As soon as they arrive, they will burn every village "
@@ -1755,7 +1756,7 @@ msgstr ""
 "túlélni."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:196
+#: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:195
 msgid ""
 "The troop movements all make sense now. We must stop this army from reaching "
 "the garrison. We cannot swallow them whole, but we can gnaw away at them. "
@@ -1769,13 +1770,13 @@ msgstr ""
 "Halsteadbe érnek, már a végsőkig kimerültnek vagy haldoklónak kell lenniük."
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:200
+#: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:199
 msgid "You just said we can’t beat their entire army!"
 msgstr ""
 "Épp az imént mondtad, hogy nem győzedelmeskedhetünk a teljes sereg felett!"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:204
+#: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:203
 msgid ""
 "Do you propose surrender? It’s this or nothing. All we can do is see it "
 "through to the end."
@@ -1784,22 +1785,21 @@ msgstr ""
 "végsőkig."
 
 #. [message]: speaker=Pitcher
-#: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:208
-#, fuzzy
+#: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:207
 msgid ""
 "May you prevail in peace and war. I must depart before I am seen so far from "
-"my Lord’s borders."
+"my Lord's borders."
 msgstr ""
 "Legyen sikeretek békében és harcban egyaránt! Nekem tüstént mennem kell, még "
 "mielőtt meglátnak ilyen messze uram birtokainak határaitól."
 
 #. [message]: speaker=Jingo
-#: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:219
+#: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:218
 msgid "Another platoon approaches..."
 msgstr "Egy másik osztag közeleg..."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:271
+#: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:270
 msgid ""
 "When we are done, no one will fear the open roads and night sky more than "
 "the army of the usurper. Strike fast, strike silently... and leave no one "
@@ -1810,12 +1810,12 @@ msgstr ""
 "senkit életben!"
 
 #. [message]: speaker=Linneus
-#: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:285
+#: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:284
 msgid "It’s an ambush! Hold your ground!"
 msgstr "Megtámadtak! Tartsátok az állásokat!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:296
+#: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:295
 msgid ""
 "The next morning, the local night patrol returned to the nearby outpost. "
 "They were surprised to see their fellow soldiers engaged in combat with the "
@@ -1826,7 +1826,7 @@ msgstr ""
 "oly sokat hallottak."
 
 #. [message]: speaker=Archarel
-#: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:304
+#: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:303
 msgid ""
 "Troops, to arms! These peasant scum think they are above the law. We will "
 "show them the law!"
@@ -1835,12 +1835,12 @@ msgstr ""
 "törvény. Majd mi megmutatjuk, mi is a törvény valójában!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:321
+#: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:320
 msgid "Ow! Fire hot! No step in fire!"
 msgstr "Aú! Tűzforró! Ne lépjetek a tűzbe!"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:341
+#: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:340
 msgid ""
 "What a bloody mess. We must attack Halstead next. If we wait, they will "
 "become invincible. If we can burn it to the ground before that happens, our "
@@ -1853,7 +1853,7 @@ msgstr ""
 "dönti el az otthonaink, a családjaink és a szabadságunk sorsát!"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:352
+#: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:351
 msgid ""
 "Send word to Helicrom that we are ready. It is time for him to repay his "
 "debt."
@@ -1862,7 +1862,7 @@ msgstr ""
 "adósságát."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:373
+#: data/campaigns/Liberty/scenarios/07_The_Hunters.cfg:372
 msgid ""
 "We have spent too much time here. Surely the entire Wesnoth army marches on "
 "our position. We are done for!"
@@ -1870,7 +1870,7 @@ msgstr ""
 "Túl sok időt töltöttünk itt. Nyilván már az egész hadsereg erre masírozik. "
 "Végünk van!"
 
-#. [scenario]: id=08_Glory
+#. [scenario]: id=glory
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:4
 msgid "Glory"
 msgstr "Dicsőség"
@@ -1930,12 +1930,11 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:40
-#, fuzzy
 msgid ""
 "This sentinel of the western plains stood watch as Wesnoth prospered for "
 "many centuries under the protection it provided. No war has overcome it, and "
 "its walls have never been overrun. The blood of invaders stains its parapets "
-"and the bones of the defeated crumble at the base of Halstead’s frozen waves "
+"and the bones of the defeated crumble at the base of Halstead's frozen waves "
 "of stone."
 msgstr ""
 "A nyugati síkság őrszemeként vigyázott sok évszázadon át, míg Wesnoth "
@@ -1944,7 +1943,7 @@ msgstr ""
 "porlanak kőlábainál."
 
 #. [side]: type=General, id=Dommel
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:69
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:67
 msgid "Dommel"
 msgstr "Dommel"
 
@@ -1960,18 +1959,16 @@ msgstr "Orkok"
 
 #. [objective]: condition=win
 #: data/campaigns/Liberty/scenarios/08_Glory.cfg:301
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:381
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:594
 msgid "Destroy the stronghold of Halstead"
 msgstr "Elpusztítod a halsteadi erődöt"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:418
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:404
 msgid "There it is. The stronghold of Halstead."
 msgstr "Itt is van. A halsteadi erőd."
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:431
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:417
 msgid ""
 "Look at how tall it is! Those towers rise sheer out of the ground, as if "
 "called forth out of the earth."
@@ -1980,7 +1977,7 @@ msgstr ""
 "mintha onnan nőttek volna ki."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:435
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:421
 msgid ""
 "That may not be too far from the truth. During the time of the Great Kings "
 "of Wesnoth, this land was tamed with powerful magic. Wizards of an ancient "
@@ -1991,7 +1988,7 @@ msgstr ""
 "mélyben lévő sziklákból építették Halstead falait."
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:439
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:425
 msgid ""
 "I don’t see how we can bring it down. They are already invincible in there!"
 msgstr ""
@@ -2000,7 +1997,7 @@ msgstr ""
 
 # A vagyonom segítségével számos titokra fényt deríthettem.... :-)
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:450
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:436
 msgid ""
 "No, my young friend. Halstead indeed has a weakness. Among my many assets is "
 "access to a wealth of secrets few in Wesnoth are privy to."
@@ -2010,7 +2007,7 @@ msgstr ""
 "adatik meg Wesnothban."
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:454
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:440
 msgid ""
 "You see, the mountain on which the fort was built is solid, but the castle "
 "on top has been built and rebuilt many times over the ages. It is not as "
@@ -2021,7 +2018,7 @@ msgstr ""
 "elpusztíthatatlan, mint gondolnád."
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:458
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:444
 msgid ""
 "Beneath the structure is a system of catacombs that connects all four towers "
 "to the central keep. Over time, after many wars, supports were required to "
@@ -2032,8 +2029,8 @@ msgstr ""
 "kellett támasztani a szerkezetet, hogy a központi rész ne dőljön össze."
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:462
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:488
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:448
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:474
 msgid ""
 "So... we can knock out the supports and bring down the stronghold of "
 "Halstead. Would it really work?"
@@ -2043,8 +2040,8 @@ msgstr ""
 
 #. [message]: speaker=Helicrom
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:466
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:492
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:452
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:478
 msgid ""
 "I believe it will. Each tower has a passage down to the catacombs. If we can "
 "reach the center of each tower, one of our men can escape down to the bowels "
@@ -2057,17 +2054,17 @@ msgstr ""
 "benne, hogy csak mind a négy támaszték lerombolása pusztítja el az erődöt."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:472
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:458
 msgid "No, young one. Halstead indeed has a weakness."
 msgstr "Nem, fiam. Halsteadnek valóban van egy gyenge pontja."
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:476
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:462
 msgid "How do you know?"
 msgstr "Honnan tudod?"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:480
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:466
 msgid ""
 "When I was a boy, my father — your grandfather — brought your dad and me to "
 "live in Aldril after orcs massacred many in our village. We grew up around "
@@ -2078,7 +2075,7 @@ msgstr ""
 "nőttünk fel, és sok mindent megtanultunk."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:484
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:470
 msgid ""
 "Beneath the structure is a system of catacombs that connects all four towers "
 "to the central keep. The catacombs growing over time, combined with "
@@ -2092,13 +2089,13 @@ msgstr ""
 
 # Kicsit fura, hogy a mind a négy torony ledöntésére válaszolja, hogy remélem igazad van.
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:498
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:484
 msgid ""
 "I hope you’re right. In a few hours, night will fall, and we will find out."
 msgstr "Remélem, igazad van. Néhány óra múlva besötétedik, és minden kiderül."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:502
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:488
 msgid ""
 "We must be cautious. Look there, a substantial orc force is also advancing "
 "on Halstead. They must think Wesnoth’s army is spread out right now."
@@ -2107,46 +2104,46 @@ msgstr ""
 "Biztosan azt hiszik, hogy Wesnoth hadserege épp szét van szórva az országban."
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:506
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:492
 msgid "Heh. They’re in for a surprise. This may work to our advantage."
 msgstr ""
 "Ha! Meglepetésszerűen akarnak támadni, ez még a mi malmunkra hajthatja a "
 "vizet."
 
 #. [message]: role=farseer
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:521
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:507
 msgid "Look in the distance... riders approach!"
 msgstr "A távolban... lovasok közelednek!"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:530
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:516
 msgid "Who is it?"
 msgstr "Kik azok?"
 
 #. [message]: role=farseer
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:534
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:520
 msgid "Help, I hope. Circumstances cannot afford to get much more dire."
 msgstr "Segítség, remélem. A helyzetnek nem szabad tovább romlani."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:540
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:526
 msgid "Riders approach from the northwest! Stand fast, men."
 msgstr "Lovasok érkeznek északnyugat felől! Tartsátok az állásokat, katonák."
 
 #. [unit]: type=Paladin, id=Sir Gwydion
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:549
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:535
 msgid "Sir Gwydion"
 msgstr "Sir Gwydion"
 
 # Mondd mi a biztosíték?
 # ???
 #. [message]: type=Lancer
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:565
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:551
 msgid "Sound the advance!"
 msgstr "Szóljanak a kürtök! Előre!"
 
 #. [message]: speaker=Sir Gwydion
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:569
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:555
 msgid ""
 "Knights of Elensefar, behold: the battle has already begun! Make camp here. "
 "Then, we CHARGE!"
@@ -2155,7 +2152,7 @@ msgstr ""
 "Aztán TÁMADUNK! "
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:582
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:568
 msgid ""
 "Amazing. Lord Maddock sent his house guards... his finest troops! Elensefar "
 "must be defenseless now. More hinges on this battle than I thought."
@@ -2165,64 +2162,63 @@ msgstr ""
 "hittem."
 
 #. [message]: role=farseer
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:587
-#, fuzzy
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:573
 msgid ""
-"Baldras, Gwydion is Lord Maddock’s son. This battle isn’t just about Annuvin "
+"Baldras, Gwydion is Lord Maddock's son. This battle isn't just about Annuvin "
 "anymore."
 msgstr ""
 "Baldras, Sir Gwydion Lord Maddock fia. Már nem csak Annuvinért harcolunk."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:617
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:586
 msgid ""
 "That afternoon, another advance element of the main Wesnoth army arrived..."
 msgstr ""
 "Azon a délutánon egy újabb erős hadtest érkezett a wesnothi főseregből..."
 
 #. [message]: speaker=Dommel
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:687
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:656
 msgid ""
 "I think... I think they’re trying to storm Halstead itself... the fools!"
 msgstr "Azt hiszem... azt hiszem, le akarják rohanni Halsteadet... A balgák!"
 
 #. [message]: speaker=Dommel
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:704
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:673
 msgid "They have breached the fortress gate! Repulse them!"
 msgstr "Áttörték az erőd kapuját! Visszaverni őket!"
 
 #. [message]: speaker=unit
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:720
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:689
 msgid "I’m inside the tower! I’m going down to the catacombs — cover me."
 msgstr "Bent vagyok a toronyban! Lemegyek a katakombákba. Fedezzetek!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:730
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:699
 msgid "After about an hour..."
 msgstr "Körülbelül egy óra múlva..."
 
 #. [message]: speaker=unit
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:740
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:709
 msgid "It’s done."
 msgstr "Ez kész."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:767
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:736
 msgid "The stronghold of Halstead began to shake..."
 msgstr "Halstead erőssége megrázkódott..."
 
 #. [message]: speaker=unit
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:772
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:741
 msgid "We cannot stay here. The fortress has started to collapse!"
 msgstr "Nem maradhatunk itt. Az erőd hamarosan összeomlik!"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:803
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:772
 msgid "I think it’s working! Everybody get clear NOW!"
 msgstr "Úgy látom, bevált a tervünk. Mindenkinek TŰNÉS!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:827
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:796
 msgid ""
 "With a thunderous earthquake and a vast billowing of dust, thousands of tons "
 "of stone and wood crashed in on itself. Some of it tumbled down the steep "
@@ -2235,12 +2231,12 @@ msgstr ""
 "kibelezett hegy gyomrában."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:832
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:801
 msgid "No one inside the fortress would make it out alive."
 msgstr "Az erődben tartózkodók közül senki sem maradt életben."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:901
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:870
 msgid ""
 "After more than a week of fierce fighting, the main body of Asheviere’s host "
 "arrived from Weldyn. The battle was soon finished. Every last man from the "
@@ -2251,12 +2247,12 @@ msgstr ""
 "kivégezték."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:931
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:900
 msgid "Men, help me out of here! I am trapped under this rubble."
 msgstr "Emberek, segítsetek kijutni! A törmelék alá szorultam."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:935
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:904
 msgid ""
 "No one was able to get to Baldras in time. He and many of his companions "
 "died that day beneath the stronghold of Halstead."
@@ -2265,44 +2261,43 @@ msgstr ""
 "lelték halálukat."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:940
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:909
 msgid "I hope this sacrifice is not in vain... but we will never know."
 msgstr "Remélem, ez az áldozat nem hiábavaló... de soha nem fogjuk megtudni."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:946
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:915
 msgid "Our dream of freedom... gone... Unngh."
 msgstr "A szabadságról dédelgetett álmunk... elveszett... Unngh."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:953
-#, fuzzy
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:922
 msgid ""
 "The rebellion had stakes its all on victory at Halstead, but win or lose, "
 "there would be no help for the villagers, ground beneath the wheels of "
-"Asheviere’s wrath."
+"Asheviere's wrath."
 msgstr ""
 "A felkelés mindent kockára tett, hogy győzzön Halsteadnél... de akár győz, "
 "akár veszít, nem jelent menedéket azon falusiaknak, akik Asheviere "
 "haragjának gőzhengere alá kerülnek..."
 
 #. [message]: speaker=Harper
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:969
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:938
 msgid "Uncle!"
 msgstr "Bácsikám!"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:973
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:942
 msgid "NO!"
 msgstr "NEM!"
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:977
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:946
 msgid "I promised your father I would watch after you... and I failed."
 msgstr "Megígértem apádnak, hogy vigyázni fogok rád... de kudarcot vallottam."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:981
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:950
 msgid ""
 "But we are so close to the end. We must finish this. I am sorry you will not "
 "be able to enjoy our freedom. Goodbye, Harper."
@@ -2311,7 +2306,7 @@ msgstr ""
 "a szabadságot. Isten veled, Harper."
 
 #. [message]: speaker=Helicrom
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:995
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:964
 msgid ""
 "Carry on, my friends. Fighting by your side is the most honorable thing I "
 "have done..."
@@ -2320,12 +2315,12 @@ msgstr ""
 "mellettetek harcolhattam..."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:1042
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:1011
 msgid "Your reign of terror is over, General."
 msgstr "Vége a rémuralomnak, tábornok."
 
 #. [message]: speaker=Dommel
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:1047
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:1016
 msgid ""
 "You will never successfully oppose Asheviere. Her power is too great... This "
 "small victory today is but a reprieve from the unimaginable pain you will "
@@ -2337,20 +2332,20 @@ msgstr ""
 "erejével lesújt rátok."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:1058
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:1027
 msgid ""
 "This was no small victory. You underestimate the power of love for freedom."
 msgstr "Ez nem csak egy kis győzelem. Alábecsülöd a szabadságvágy erejét."
 
 #. [message]: speaker=Dommel
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:1062
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:1031
 msgid ""
 "You... underestimate the... cruelty and ambition of your Queen... unngh.."
 msgstr ""
 "Te... becsülöd alá a... királynő kegyetlenségét és... ambícióit... unngh.."
 
 #. [message]: speaker=Baldras
-#: data/campaigns/Liberty/scenarios/08_Glory.cfg:1069
+#: data/campaigns/Liberty/scenarios/08_Glory.cfg:1038
 msgid ""
 "Small victory? Bah! Now we will raze this fortress and bury it in the earth "
 "from whence it came."
@@ -2358,14 +2353,14 @@ msgstr ""
 "Kis győzelem? Egy frászt! Porig romboljuk ezt az erődöt, visszaadjuk a "
 "földnek, amelyből vétetett."
 
-#. [scenario]: id=09_Epilogue
-#: data/campaigns/Liberty/scenarios/09_Epilogue.cfg:4
+#. [scenario]: id=epilog
+#: data/campaigns/Liberty/scenarios/09_Epilog.cfg:4
 msgid "Liberty — Epilogue"
 msgstr "Szabadság - Utószó"
 
 # Az egész háború értelmetlen volt. Ami trötént az mindenkit megdöbbentett. :)
 #. [part]
-#: data/campaigns/Liberty/scenarios/09_Epilogue.cfg:14
+#: data/campaigns/Liberty/scenarios/09_Epilog.cfg:14
 msgid ""
 "The rest of the battle was a blur. The shock of what had happened stunned "
 "everybody."
@@ -2374,7 +2369,7 @@ msgstr ""
 "történt."
 
 #. [part]
-#: data/campaigns/Liberty/scenarios/09_Epilogue.cfg:17
+#: data/campaigns/Liberty/scenarios/09_Epilog.cfg:17
 msgid ""
 "Baldras and his men fled the plains of western Wesnoth under the cover of "
 "night. The spectacle of Halstead’s destruction stunned them into a daze that "
@@ -2387,7 +2382,7 @@ msgstr ""
 
 # Hát, mivel nemrég még sizeable orcish army volt, nem vagyok hajlandó lefordítani, hogy small as it was.
 #. [part]
-#: data/campaigns/Liberty/scenarios/09_Epilogue.cfg:20
+#: data/campaigns/Liberty/scenarios/09_Epilog.cfg:20
 msgid ""
 "The Elense riders routed the orcish army, small as it was, and sent them "
 "back across the Great River. They then scattered to the countryside and were "
@@ -2399,7 +2394,7 @@ msgstr ""
 "hallott róluk többet. Baldras ezt meglehetősen furcsállotta."
 
 #. [part]
-#: data/campaigns/Liberty/scenarios/09_Epilogue.cfg:23
+#: data/campaigns/Liberty/scenarios/09_Epilog.cfg:23
 msgid ""
 "As the main body of Asheviere’s army neared the ruins of Halstead, strange "
 "things began to happen. Every night, men would disappear. Others were found "
@@ -2415,7 +2410,7 @@ msgstr ""
 "élőholtaktól való félelem."
 
 #. [part]
-#: data/campaigns/Liberty/scenarios/09_Epilogue.cfg:26
+#: data/campaigns/Liberty/scenarios/09_Epilog.cfg:26
 msgid ""
 "When the army of Wesnoth found the ruins of the mighty fortress Halstead, it "
 "was too much. Their shock that such a thing could happen combined with the "
@@ -2431,12 +2426,11 @@ msgstr ""
 
 # bitter humor kb. cinikusan, de egyáltalán miért, mikor ez egy jó taktikai és a szövetségesei?
 #. [part]
-#: data/campaigns/Liberty/scenarios/09_Epilogue.cfg:29
-#, fuzzy
+#: data/campaigns/Liberty/scenarios/09_Epilog.cfg:29
 msgid ""
 "Baldras had just crossed the Great River when rumors of night-stalkers "
 "filtered through his ranks. With bitter humor he realized that Lord "
-"Maddock’s men were successfully using tactics Baldras had mastered and used "
+"Maddock's men were successfully using tactics Baldras had mastered and used "
 "during his resistance."
 msgstr ""
 "Baldras épp a Nagy-folyón való átkelés után hallotta az éjszakai "
@@ -2445,7 +2439,7 @@ msgstr ""
 "ellenállása idején. Keserűen elmosolyodott."
 
 #. [part]
-#: data/campaigns/Liberty/scenarios/09_Epilogue.cfg:32
+#: data/campaigns/Liberty/scenarios/09_Epilog.cfg:32
 msgid ""
 "The peasants-turned-outlaws finally reached Dallben. It was burnt to the "
 "ground. In a panic, they raced through the forest to Delwyn. It was likewise "
@@ -2456,32 +2450,29 @@ msgstr ""
 "találtak, azonban nem tudtak rájönni, hogy mi is történhetett..."
 
 #. [part]
-#: data/campaigns/Liberty/scenarios/09_Epilogue.cfg:36
-#, fuzzy
+#: data/campaigns/Liberty/scenarios/09_Epilog.cfg:36
 msgid ""
-"...a grimy note nailed to a charred post that read, “Baldras, You would have "
-"been proud. We gave ’em hell. But in the end, it wasn’t enough.”"
+"...a grimy note nailed to a charred post that read, 'Baldras, You would have "
+"been proud. We gave 'em hell. But in the end, it wasn't enough.'"
 msgstr ""
 "...egy ütött-kopott cédula lógott az egyik elszenesedett gerendán ezzel a "
 "felirattal: \"Baldras, büszke lettél volna ránk. Megmutattuk nekik, hogy "
 "milyen a pokol. A végén azonban ez sem volt elég.\""
 
 #. [part]
-#: data/campaigns/Liberty/scenarios/09_Epilogue.cfg:40
-#, fuzzy
+#: data/campaigns/Liberty/scenarios/09_Epilog.cfg:40
 msgid ""
-"“We fled like criminals in the night, but we made sure that no one would "
-"harass us anymore.”"
+"'We fled like criminals in the night, but we made sure that no one would "
+"harass us anymore.'"
 msgstr ""
 "\"Elmenekültünk, mint bűnözők az éjszaka leple alatt, de elértük, hogy senki "
 "ne zaklasson minket soha többé.\""
 
 #. [part]
-#: data/campaigns/Liberty/scenarios/09_Epilogue.cfg:44
-#, fuzzy
+#: data/campaigns/Liberty/scenarios/09_Epilog.cfg:44
 msgid ""
-"“If you wish to find us, head southwest. When you reach the land’s end, just "
-"keep going. See you in the Three Sisters, old friend. ― Relnan” "
+"'If you wish to find us, head southwest. When you reach the land's end, just "
+"keep going. See you in the Three Sisters, old friend. - Relnan' "
 msgstr ""
 "\"Ha ránk akarsz találni, tarts délnyugatnak. Amikor eléred a síkság végét, "
 "csak menj tovább. Viszlát a Három Nővérben, öreg cimbora - Relnan\""
@@ -2492,7 +2483,7 @@ msgid "Bone Knight"
 msgstr "Csontlovag"
 
 #. [unit_type]: id=Bone Knight, race=undead
-#: data/campaigns/Liberty/units/Bone_Knight.cfg:27
+#: data/campaigns/Liberty/units/Bone_Knight.cfg:33
 msgid ""
 "Once great warriors across the plains, these mounted riders atop their "
 "skeletal horses were raised from the ground by unholy magic to spread fear "
@@ -2503,13 +2494,13 @@ msgstr ""
 "nyargalva félelmet és pusztulást hozzanak."
 
 #. [attack]: type=blade
-#: data/campaigns/Liberty/units/Bone_Knight.cfg:31
-#: data/campaigns/Liberty/units/Skeleton_Rider.cfg:42
+#: data/campaigns/Liberty/units/Bone_Knight.cfg:37
+#: data/campaigns/Liberty/units/Skeleton_Rider.cfg:41
 msgid "axe"
 msgstr "bárd"
 
 #. [attack]: type=impact
-#: data/campaigns/Liberty/units/Bone_Knight.cfg:68
+#: data/campaigns/Liberty/units/Bone_Knight.cfg:79
 msgid "trample"
 msgstr "eltaposás"
 
@@ -2519,13 +2510,12 @@ msgid "Death Squire"
 msgstr "Halálapród"
 
 #. [unit_type]: id=Death Squire, race=undead
-#: data/campaigns/Liberty/units/Death_Squire.cfg:27
-#, fuzzy
+#: data/campaigns/Liberty/units/Death_Squire.cfg:26
 msgid ""
 "Sometimes the mightiest warriors and generals, cursed with hate and angst, "
 "came back to this world as Death Knights. Death Squires serve them whilst "
 "accruing enough unholy power to become Death Knights. In the process they "
-"pick up a good deal of the Knight’s power, including the ability to command "
+"pick up a good deal of the Knight's power, including the ability to command "
 "underlings."
 msgstr ""
 "Néha a leghatalmasabb harcosok és tábornokok, akiket gyűlöletből vagy "
@@ -2536,7 +2526,7 @@ msgstr ""
 "tudjon az alattvalóknak."
 
 #. [attack]: type=blade
-#: data/campaigns/Liberty/units/Death_Squire.cfg:32
+#: data/campaigns/Liberty/units/Death_Squire.cfg:31
 msgid "sword"
 msgstr "kard"
 
@@ -2614,7 +2604,6 @@ msgstr "Árnymágus"
 
 #. [unit_type]: id=Shadow Mage, race=human
 #: data/campaigns/Liberty/units/Shadow_Mage.cfg:21
-#, fuzzy
 msgid ""
 "Years of violence and brutality to support the study of forbidden magical "
 "arts have turned the shadow mages into feared fighters. Now completely "
@@ -2643,7 +2632,7 @@ msgid "Skeleton Rider"
 msgstr "Csontlovas"
 
 #. [unit_type]: id=Skeleton Rider, race=undead
-#: data/campaigns/Liberty/units/Skeleton_Rider.cfg:35
+#: data/campaigns/Liberty/units/Skeleton_Rider.cfg:34
 msgid ""
 "Once great warriors thundering across the plains, these mounted riders atop "
 "their skeletal horses were raised from the grave by unholy magic to spread "
@@ -2866,9 +2855,6 @@ msgstr ""
 "halottan feküdtek a sivár földön, a kevés túlélőt pedig elhurcolták a "
 "kifürkészhetetlen végzet felé. Keserű sors volt ez, de ahogy Asheviere "
 "szorítása erősödött, még ennél rosszabbat is megéltek..."
-
-#~ msgid "Turns run out"
-#~ msgstr "Kifutsz az időből"
 
 #~ msgid "Translators"
 #~ msgstr "Fordítók"
