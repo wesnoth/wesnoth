@@ -2,6 +2,22 @@ Version 1.9.0+svn:
  * Campaigns:
    * Unified the campaign description of the number of scenarios. Now the the
      number reflects only the battle scenarios of each campaign.
+   * Legend of Wesmere:
+	* Added a second chapter to the multiplayer port.
+		* (Playable) Chapter one, a two player campaign, ends after scenario 7, the recruit lists are saved to persistent variables.
+		* (Beta)     Chapter two, a three player campaign, can only be started with a save from chapter one.
+		* (Alpha)    Chapter three, a two player campaign, can only be started with a save from chapter two.
+		* There is no savefile compatability between saves from an older version of Wesnoth.
+	* Scenarios
+	        * Scenario one's objectives changed.
+	        * Completed a rewrite of scenario 5, changing the objectives, ai and game mechanism slightly.
+		* Shortened scenario 7 by ledding the orcs flee if their numbers went to low.
+	        * Rebalanced Scenario 14.
+	* Miscellaneous and bug fixes:
+		* Fixed scenario number 5 where the gold carrier's overlay was not removed.
+		* Fixed the bug with the army split up before scenario number 9.
+	        * Map and coding updates regarding the new terrain types and graphics.
+	        * Added keeps to every scenario to match the number of leaders (singleplayer) or sides (multiplayer).
  * Language and i18n:
    * Updated fonts: DejaVu 2.32
    * Updated translations: Chinese (Simplified), Chinese (Traditional), French,
@@ -29,7 +45,7 @@ Version 1.9.0+svn:
    * Added event: turn X refresh
    * Added [chat] tag for outputting public or private messages to the chat.
    * Added events: turn end and turn X end_text
-   * Added events: side turn end, side X turn end, side turn X end, 
+   * Added events: side turn end, side X turn end, side turn X end,
      and side X turn Y end
  * Miscellaneous and bug fixes:
    * Removed: statistics upload code.
