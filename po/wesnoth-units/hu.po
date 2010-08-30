@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-units_1.5\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-05-24 17:53+0200\n"
+"POT-Creation-Date: 2010-08-30 11:56+0200\n"
 "PO-Revision-Date: 2010-08-27 08:44+0200\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian <wesnoth-hungtrans@gna.org>\n"
@@ -50,7 +50,7 @@ msgstr ""
 #: data/core/units/goblins/Knight.cfg:48
 #: data/core/units/goblins/Pillager.cfg:47
 #: data/core/units/goblins/Wolf_Rider.cfg:64
-#: data/core/units/monsters/Cave_Spider.cfg:25
+#: data/core/units/monsters/Giant_Spider.cfg:25
 #: data/core/units/monsters/Sea_Serpent.cfg:27
 #: data/core/units/monsters/Water_Serpent.cfg:43
 #: data/core/units/monsters/Wolf.cfg:50
@@ -188,7 +188,7 @@ msgid "Armageddon Drake"
 msgstr "Végítélet perzsekény"
 
 #. [unit_type]: id=Armageddon Drake, race=drake
-#: data/core/units/drakes/Armageddon.cfg:27
+#: data/core/units/drakes/Armageddon.cfg:28
 msgid ""
 "Were it not for the armor they wear, certain drakes might be "
 "indistinguishable from true dragons, at least to the lesser races for whom "
@@ -203,13 +203,13 @@ msgstr ""
 "okádni."
 
 #. [attack]: type=blade
-#: data/core/units/drakes/Armageddon.cfg:86 data/core/units/drakes/Fire.cfg:42
+#: data/core/units/drakes/Armageddon.cfg:58 data/core/units/drakes/Fire.cfg:42
 #: data/core/units/drakes/Inferno.cfg:44
 msgid "battle claws"
 msgstr "harci karmok"
 
 #. [attack]: type=fire
-#: data/core/units/drakes/Armageddon.cfg:95
+#: data/core/units/drakes/Armageddon.cfg:67
 #: data/core/units/drakes/Blademaster.cfg:50
 #: data/core/units/drakes/Burner.cfg:49 data/core/units/drakes/Fighter.cfg:48
 #: data/core/units/drakes/Fire.cfg:51 data/core/units/drakes/Flameheart.cfg:44
@@ -279,7 +279,7 @@ msgstr ""
 #: data/core/units/gryphons/Gryphon_Rider.cfg:42
 #: data/core/units/monsters/Skeletal_Dragon.cfg:42
 #: data/core/units/undead/Corpse_Ghoul.cfg:27
-#: data/core/units/undead/Corpse_Necrophage.cfg:28
+#: data/core/units/undead/Corpse_Necrophage.cfg:39
 #: data/core/units/undead/Spirit_Nightgaunt.cfg:67
 #: data/core/units/undead/Spirit_Shadow.cfg:135
 msgid "claws"
@@ -334,17 +334,17 @@ msgstr ""
 #: data/core/units/humans/Loyalist_Javelineer.cfg:40
 #: data/core/units/humans/Loyalist_Spearman.cfg:59
 #: data/core/units/merfolk/Hoplite.cfg:48
-#: data/core/units/merfolk/Hunter.cfg:37 data/core/units/merfolk/Hunter.cfg:45
+#: data/core/units/merfolk/Hunter.cfg:38 data/core/units/merfolk/Hunter.cfg:46
 #: data/core/units/merfolk/Javelineer.cfg:37
 #: data/core/units/merfolk/Javelineer.cfg:45
 #: data/core/units/merfolk/Spearman.cfg:36
 #: data/core/units/merfolk/Spearman.cfg:44
-#: data/core/units/saurians/Ambusher.cfg:39
-#: data/core/units/saurians/Ambusher.cfg:48
-#: data/core/units/saurians/Flanker.cfg:40
-#: data/core/units/saurians/Flanker.cfg:49
-#: data/core/units/saurians/Skirmisher.cfg:133
-#: data/core/units/saurians/Skirmisher.cfg:142
+#: data/core/units/saurians/Ambusher.cfg:38
+#: data/core/units/saurians/Ambusher.cfg:47
+#: data/core/units/saurians/Flanker.cfg:39
+#: data/core/units/saurians/Flanker.cfg:48
+#: data/core/units/saurians/Skirmisher.cfg:132
+#: data/core/units/saurians/Skirmisher.cfg:141
 #: data/core/units/undead/Skele_Chocobone.cfg:26
 msgid "spear"
 msgstr "lándzsa"
@@ -715,10 +715,10 @@ msgstr ""
 #: data/core/units/humans/Woodsman_Huntsman.cfg:51
 #: data/core/units/humans/Woodsman_Poacher.cfg:48
 #: data/core/units/humans/Woodsman_Trapper.cfg:82
-#: data/core/units/orcs/Archer.cfg:26 data/core/units/orcs/Assassin.cfg:40
+#: data/core/units/orcs/Archer.cfg:41 data/core/units/orcs/Assassin.cfg:40
 #: data/core/units/orcs/Slayer.cfg:39
-#: data/core/units/undead/Skele_Banebow.cfg:31
-#: data/core/units/undead/Skele_Bone_Shooter.cfg:29
+#: data/core/units/undead/Skele_Banebow.cfg:44
+#: data/core/units/undead/Skele_Bone_Shooter.cfg:42
 msgid "dagger"
 msgstr "tőr"
 
@@ -760,11 +760,11 @@ msgstr "csatabárd"
 #. [attack]: type=blade
 #: data/core/units/dwarves/Explorer.cfg:51
 #: data/core/units/dwarves/Fighter.cfg:47
-#: data/core/units/dwarves/Pathfinder.cfg:37
-#: data/core/units/dwarves/Pathfinder.cfg:45
+#: data/core/units/dwarves/Pathfinder.cfg:155
+#: data/core/units/dwarves/Pathfinder.cfg:163
 #: data/core/units/dwarves/Scout.cfg:37 data/core/units/dwarves/Scout.cfg:45
 #: data/core/units/undead/Skele_Deathblade.cfg:162
-#: data/core/units/undead/Skele_Draug.cfg:30
+#: data/core/units/undead/Skele_Draug.cfg:43
 #: data/core/units/undead/Skele_Revenant.cfg:43
 #: data/core/units/undead/Skeleton.cfg:119
 msgid "axe"
@@ -855,12 +855,13 @@ msgstr "Törp nyomolvasó"
 
 #. [unit_type]: id=Dwarvish Pathfinder, race=dwarf
 #: data/core/units/dwarves/Pathfinder.cfg:18
+#, fuzzy
 msgid ""
 "These hardy dwarves are sometimes away from their caves for long periods, "
 "scouting and patrolling the borders. They spend this time watching for "
 "invaders, and fighting bandits and thieves who encroach on dwarvish "
-"territory. They are powerful fighters in a melee, and from a distance their "
-"deftly thrown axes can rival the power and accuracy of a human archer."
+"territory. They are powerful pathfinders in a melee, and from a distance "
+"their deftly thrown axes can rival the power and accuracy of a human archer."
 msgstr ""
 "Ezek a keménykötésű törpök sokszor hosszú időre is távol maradnak a "
 "barlangjuktól, ha a határon járőröznek vagy felderítést végeznek. Ilyenkor "
@@ -1091,15 +1092,15 @@ msgstr ""
 #: data/core/units/humans/Horse_Paladin.cfg:52
 #: data/core/units/humans/Loyalist_Cavalryman.cfg:64
 #: data/core/units/humans/Loyalist_Dragoon.cfg:49
-#: data/core/units/humans/Loyalist_Lieutenant.cfg:46
+#: data/core/units/humans/Loyalist_Lieutenant.cfg:40
 #: data/core/units/humans/Loyalist_Longbowman.cfg:39
 #: data/core/units/humans/Loyalist_Master_Bowman.cfg:39
-#: data/core/units/humans/Loyalist_Sergeant.cfg:47
+#: data/core/units/humans/Loyalist_Sergeant.cfg:41
 #: data/core/units/humans/Loyalist_Swordsman.cfg:39
 #: data/core/units/humans/Woodsman_Ranger.cfg:59
 #: data/core/units/nagas/Fighter.cfg:102 data/core/units/nagas/Myrmidon.cfg:43
 #: data/core/units/nagas/Warrior.cfg:41 data/core/units/orcs/Grunt.cfg:71
-#: data/core/units/orcs/Leader.cfg:28
+#: data/core/units/orcs/Leader.cfg:41
 msgid "sword"
 msgstr "kard"
 
@@ -1117,11 +1118,11 @@ msgstr "kard"
 #: data/core/units/humans/Woodsman_Poacher.cfg:57
 #: data/core/units/humans/Woodsman_Ranger.cfg:68
 #: data/core/units/humans/Woodsman_Trapper.cfg:91
-#: data/core/units/orcs/Archer.cfg:35 data/core/units/orcs/Archer.cfg:44
+#: data/core/units/orcs/Archer.cfg:50 data/core/units/orcs/Archer.cfg:59
 #: data/core/units/orcs/Warlord.cfg:46
-#: data/core/units/undead/Skele_Banebow.cfg:40
-#: data/core/units/undead/Skele_Bone_Shooter.cfg:38
-#: data/core/units/undead/Skeleton_Archer.cfg:41
+#: data/core/units/undead/Skele_Banebow.cfg:53
+#: data/core/units/undead/Skele_Bone_Shooter.cfg:51
+#: data/core/units/undead/Skeleton_Archer.cfg:54
 msgid "bow"
 msgstr "íj"
 
@@ -1245,9 +1246,9 @@ msgstr ""
 #: data/core/units/merfolk/Enchantress.cfg:37
 #: data/core/units/merfolk/Initiate.cfg:40
 #: data/core/units/merfolk/Priestess.cfg:97
-#: data/core/units/saurians/Augur.cfg:78
+#: data/core/units/saurians/Augur.cfg:39
 #: data/core/units/saurians/Oracle.cfg:78
-#: data/core/units/saurians/Soothsayer.cfg:78
+#: data/core/units/saurians/Soothsayer.cfg:39
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:99
 msgid "staff"
 msgstr "bot"
@@ -1395,10 +1396,11 @@ msgstr "Tünde mesterlövész"
 
 #. [unit_type]: id=Elvish Marksman, race=elf
 #: data/core/units/elves/Marksman.cfg:20
+#, fuzzy
 msgid ""
 "Elves are wonderously keen-sighted, a gift which contributes to their "
 "mastery of the bow. An elf practiced at archery can hit targets that a man "
-"couldn't even see, and can nock a second arrow almost as soon as the first "
+"couldn’t even see, and can nock a second arrow almost as soon as the first "
 "is let fly. Realizing this prodigious skill does come with one cost, that "
 "being a lack of practice with the sword."
 msgstr ""
@@ -1609,11 +1611,12 @@ msgstr "Erdőtündér"
 
 #. [unit_type]: id=Elvish Shyde, race=elf
 #: data/core/units/elves/Shyde.cfg:22
+#, fuzzy
 msgid ""
-"Devotion to the path of faerie may will eventually transform an elf maiden "
-"into a creature of both worlds. Guided by a nature which is little "
-"understood, these beautiful stewards of the elven forests epitomize the "
-"grace and mystery of their people."
+"Devotion to the path of faerie may eventually transform an elf maiden into a "
+"creature of both worlds. Guided by a power which is little understood, these "
+"beautiful stewards of the elven forests epitomize the grace and mystery of "
+"their people."
 msgstr ""
 "A tündérré válás útjához való elkötelezettség egy tünde hajadont a két világ "
 "között létező teremtménnyé változtat. Egy kevéssé megértett természet által "
@@ -2082,7 +2085,7 @@ msgstr ""
 
 #. [attack]: type=blade
 #: data/core/units/humans/Loyalist_Bowman.cfg:37
-#: data/core/units/orcs/Crossbowman.cfg:24 data/core/units/orcs/Slurbow.cfg:29
+#: data/core/units/orcs/Crossbowman.cfg:37 data/core/units/orcs/Slurbow.cfg:42
 msgid "short sword"
 msgstr "rövid kard"
 
@@ -2111,13 +2114,13 @@ msgstr ""
 #: data/core/units/humans/Loyalist_Duelist.cfg:94
 #: data/core/units/humans/Loyalist_General.cfg:65
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:61
-#: data/core/units/humans/Loyalist_Lieutenant.cfg:55
+#: data/core/units/humans/Loyalist_Lieutenant.cfg:49
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:53
-#: data/core/units/humans/Loyalist_Sergeant.cfg:56
-#: data/core/units/orcs/Crossbowman.cfg:33
-#: data/core/units/orcs/Crossbowman.cfg:42 data/core/units/orcs/Leader.cfg:37
-#: data/core/units/orcs/Ruler.cfg:36 data/core/units/orcs/Slurbow.cfg:38
-#: data/core/units/orcs/Slurbow.cfg:47 data/core/units/orcs/Sovereign.cfg:37
+#: data/core/units/humans/Loyalist_Sergeant.cfg:50
+#: data/core/units/orcs/Crossbowman.cfg:46
+#: data/core/units/orcs/Crossbowman.cfg:55 data/core/units/orcs/Leader.cfg:50
+#: data/core/units/orcs/Ruler.cfg:49 data/core/units/orcs/Slurbow.cfg:51
+#: data/core/units/orcs/Slurbow.cfg:60 data/core/units/orcs/Sovereign.cfg:50
 #: data/core/units/undead/Skele_Death_Knight.cfg:54
 msgid "crossbow"
 msgstr "számszeríj"
@@ -2398,7 +2401,7 @@ msgid "Lieutenant"
 msgstr "Hadnagy"
 
 #. [unit_type]: id=Lieutenant, race=human
-#: data/core/units/humans/Loyalist_Lieutenant.cfg:25
+#: data/core/units/humans/Loyalist_Lieutenant.cfg:19
 msgid ""
 "Trained at swords and crossbows, Lieutenants lead small groups of human "
 "soldiers, coordinating their attacks."
@@ -2545,7 +2548,7 @@ msgid "Sergeant"
 msgstr "Őrmester"
 
 #. [unit_type]: id=Sergeant, race=human
-#: data/core/units/humans/Loyalist_Sergeant.cfg:26
+#: data/core/units/humans/Loyalist_Sergeant.cfg:20
 msgid ""
 "The Sergeant is a low-ranking officer in the ranks of an army. Though "
 "academically trained, he will need some experience in the field before his "
@@ -3358,6 +3361,7 @@ msgstr "Erdőkerülő"
 
 #. [unit_type]: id=Ranger, race=human
 #: data/core/units/humans/Woodsman_Ranger.cfg:23
+#, fuzzy
 msgid ""
 "Rangers are wild men and wanderers, who have chosen to shun the company of "
 "their fellow men for myriad reasons. They have spent the better part of "
@@ -3369,7 +3373,7 @@ msgid ""
 "are an element that knights and landed armies cannot control. They are men "
 "of dubious motives, and are the first to scoff at any royal decree, if they "
 "even hear of it at all. Rangers can be hired, but they are just as likely to "
-"be in the employ of bandits, as they are to be in the king's service."
+"be in the employ of bandits, as they are to be in the king’s service."
 msgstr ""
 "Az erdőkerülők vad emberek és vándorok, akik úgy döntöttek, hogy elkerülik "
 "embertársaik közelségét számtalan ok miatt. Életük nagy részét a buja "
@@ -3722,27 +3726,6 @@ msgstr ""
 "A sellő harcosok a sellő hadsereg gerincét alkotják. Erős szigonyaikat "
 "cipelve veszedelmet jelenthetnek mindazokra, akik a vízbe merészkednek."
 
-#. [unit_type]: id=Giant Spider, race=monster
-#: data/core/units/monsters/Cave_Spider.cfg:4
-msgid "Giant Spider"
-msgstr "Óriáspók"
-
-#. [unit_type]: id=Giant Spider, race=monster
-#: data/core/units/monsters/Cave_Spider.cfg:20
-msgid ""
-"Giant Spiders are said to roam the depths of Knalga, devouring many victims. "
-"They have a vicious bite, made worse by the fact that it is poisoned, and "
-"can also fling webs through the air to trap their prey."
-msgstr ""
-"A szóbeszéd úgy tartja, hogy Knalga legmélyén óriáspókok vadásznak "
-"áldozataikra: közel érve harapásukkal megmérgezik, távolról pedig hálójukkal "
-"lassítják le a kiszemelt zsákmányt."
-
-#. [attack]: type=impact
-#: data/core/units/monsters/Cave_Spider.cfg:37
-msgid "web"
-msgstr "háló"
-
 #. [unit_type]: id=Cuttle Fish, race=monster
 #: data/core/units/monsters/Cuttle_Fish.cfg:4
 msgid "Cuttle Fish"
@@ -3803,6 +3786,8 @@ msgstr ""
 
 #. [attack]: type=blade
 #: data/core/units/monsters/Fire_Dragon.cfg:31
+#: data/core/units/monsters/Giant_Rat.cfg:37
+#: data/core/units/undead/Corpse_Ghast.cfg:28
 msgid "bite"
 msgstr "harapás"
 
@@ -3817,7 +3802,7 @@ msgid "Giant Mudcrawler"
 msgstr "Óriás sártipró"
 
 #. [unit_type]: id=Giant Mudcrawler, race=monster
-#: data/core/units/monsters/Giant_Mudcrawler.cfg:18
+#: data/core/units/monsters/Giant_Mudcrawler.cfg:19
 msgid ""
 "Giant Mudcrawlers are a larger kind of Mudcrawler, and are magical "
 "constructs of soil and water. They attack by belching lumps of mud at their "
@@ -3828,20 +3813,32 @@ msgstr ""
 "támadnak."
 
 #. [attack]: type=impact
-#: data/core/units/monsters/Giant_Mudcrawler.cfg:47
+#: data/core/units/monsters/Giant_Mudcrawler.cfg:60
 #: data/core/units/monsters/Yeti.cfg:36
 #: data/core/units/trolls/Rocklobber.cfg:27
 #: data/core/units/trolls/Troll_Shaman.cfg:31
 #: data/core/units/trolls/Whelp.cfg:39
-#: data/core/units/undead/Skeleton_Archer.cfg:32
+#: data/core/units/undead/Skeleton_Archer.cfg:45
 msgid "fist"
 msgstr "ököl"
 
 #. [attack]: type=impact
-#: data/core/units/monsters/Giant_Mudcrawler.cfg:56
-#: data/core/units/monsters/Mudcrawler.cfg:46
+#: data/core/units/monsters/Giant_Mudcrawler.cfg:69
+#: data/core/units/monsters/Mudcrawler.cfg:59
 msgid "mud glob"
 msgstr "sárlabdacs"
+
+#. [unit_type]: id=Giant Rat, race=monster
+#: data/core/units/monsters/Giant_Rat.cfg:4
+msgid "Giant Rat"
+msgstr ""
+
+#. [unit_type]: id=Giant Rat, race=monster
+#: data/core/units/monsters/Giant_Rat.cfg:18
+msgid ""
+"Given an adequate supply of food, some rats can grow to truly impressive "
+"sizes. They can also grow quite aggressive."
+msgstr ""
 
 #. [unit_type]: id=Giant Scorpion, race=monster
 #: data/core/units/monsters/Giant_Scorpion.cfg:4
@@ -3868,13 +3865,34 @@ msgstr "tüske"
 msgid "pincers"
 msgstr "ollók"
 
+#. [unit_type]: id=Giant Spider, race=monster
+#: data/core/units/monsters/Giant_Spider.cfg:4
+msgid "Giant Spider"
+msgstr "Óriáspók"
+
+#. [unit_type]: id=Giant Spider, race=monster
+#: data/core/units/monsters/Giant_Spider.cfg:20
+msgid ""
+"Giant Spiders are said to roam the depths of Knalga, devouring many victims. "
+"They have a vicious bite, made worse by the fact that it is poisoned, and "
+"can also fling webs through the air to trap their prey."
+msgstr ""
+"A szóbeszéd úgy tartja, hogy Knalga legmélyén óriáspókok vadásznak "
+"áldozataikra: közel érve harapásukkal megmérgezik, távolról pedig hálójukkal "
+"lassítják le a kiszemelt zsákmányt."
+
+#. [attack]: type=impact
+#: data/core/units/monsters/Giant_Spider.cfg:37
+msgid "web"
+msgstr "háló"
+
 #. [unit_type]: id=Mudcrawler, race=monster
 #: data/core/units/monsters/Mudcrawler.cfg:4
 msgid "Mudcrawler"
 msgstr "Sártipró"
 
 #. [unit_type]: id=Mudcrawler, race=monster
-#: data/core/units/monsters/Mudcrawler.cfg:19
+#: data/core/units/monsters/Mudcrawler.cfg:20
 msgid ""
 "Mudcrawlers are magical constructs of soil and water. They attack by "
 "belching lumps of mud at their foes."
@@ -4138,7 +4156,7 @@ msgid "Orcish Archer"
 msgstr "Ork íjász"
 
 #. [unit_type]: id=Orcish Archer, race=orc
-#: data/core/units/orcs/Archer.cfg:19
+#: data/core/units/orcs/Archer.cfg:20
 msgid ""
 "Amongst orcs, bows are often regarded as a cowardly weapon; but even orcs, "
 "especially youths and those of slight build, are pragmatic enough to use "
@@ -4183,7 +4201,7 @@ msgid "Orcish Crossbowman"
 msgstr "Ork számszeríjász"
 
 #. [unit_type]: id=Orcish Crossbowman, race=orc
-#: data/core/units/orcs/Crossbowman.cfg:18
+#: data/core/units/orcs/Crossbowman.cfg:19
 msgid ""
 "Orcish crossbows are crude imitations of human or dwarvish design; a "
 "crossbow of any make, though, is a fairly potent device. The orcs privileged "
@@ -4217,7 +4235,7 @@ msgid "Orcish Leader"
 msgstr "Ork nemzetségfő"
 
 #. [unit_type]: id=Orcish Leader, race=orc
-#: data/core/units/orcs/Leader.cfg:19
+#: data/core/units/orcs/Leader.cfg:20
 msgid ""
 "Unusually cunning orcs tend to find themselves as the leaders of warrior "
 "bands. They carry a bow out of necessity, but are much more skilled with the "
@@ -4237,7 +4255,7 @@ msgid "Orcish Ruler"
 msgstr "Ork törzsfőnök"
 
 #. [unit_type]: id=Orcish Ruler, race=orc
-#: data/core/units/orcs/Ruler.cfg:18
+#: data/core/units/orcs/Ruler.cfg:19
 msgid ""
 "Any orc who can keep a large tribe from feuding and in-fighting is often "
 "unusually intelligent and commanding, and is inevitably very strong as well. "
@@ -4254,7 +4272,7 @@ msgstr ""
 "hanem hűségből."
 
 #. [attack]: type=blade
-#: data/core/units/orcs/Ruler.cfg:27 data/core/units/orcs/Sovereign.cfg:28
+#: data/core/units/orcs/Ruler.cfg:40 data/core/units/orcs/Sovereign.cfg:41
 #: data/core/units/orcs/Warlord.cfg:37 data/core/units/orcs/Warrior.cfg:35
 msgid "greatsword"
 msgstr "kétkezes kard"
@@ -4285,7 +4303,7 @@ msgid "Orcish Slurbow"
 msgstr "Ork nyílpuskás"
 
 #. [unit_type]: id=Orcish Slurbow, race=orc
-#: data/core/units/orcs/Slurbow.cfg:23
+#: data/core/units/orcs/Slurbow.cfg:24
 msgid ""
 "The basic design of a crossbow gives rise to the arbalest or 'slurbow'; a "
 "much more intricate device, complete with a hand-turned cranequin to re-cock "
@@ -4314,7 +4332,7 @@ msgid "Orcish Sovereign"
 msgstr "Ork fejedelem"
 
 #. [unit_type]: id=Orcish Sovereign, race=orc
-#: data/core/units/orcs/Sovereign.cfg:19
+#: data/core/units/orcs/Sovereign.cfg:20
 msgid ""
 "From time to time, an orc will arise who has a natural charisma and command "
 "over his ilk. If he is also strong and cunning enough to survive early "
@@ -4394,7 +4412,7 @@ msgid "Saurian Augur"
 msgstr "Gyík madárjós"
 
 #. [unit_type]: id=Saurian Augur, race=lizard
-#: data/core/units/saurians/Augur.cfg:21
+#: data/core/units/saurians/Augur.cfg:20
 msgid ""
 "Saurians have some knowledge of what men call sorcery, but their practice of "
 "it reeks of augury and black magic. It is little understood, but rightly "
@@ -4405,9 +4423,9 @@ msgstr ""
 "bűzlik. Kevéssé megértett és az ellenségeik által nagyon félt képességük ez."
 
 #. [attack]: type=cold
-#: data/core/units/saurians/Augur.cfg:87
+#: data/core/units/saurians/Augur.cfg:48
 #: data/core/units/saurians/Oracle.cfg:87
-#: data/core/units/saurians/Soothsayer.cfg:87
+#: data/core/units/saurians/Soothsayer.cfg:48
 msgid "curse"
 msgstr "átok"
 
@@ -4485,7 +4503,7 @@ msgid "Saurian Soothsayer"
 msgstr "Gyík kuruzsló"
 
 #. [unit_type]: id=Saurian Soothsayer, race=lizard
-#: data/core/units/saurians/Soothsayer.cfg:21
+#: data/core/units/saurians/Soothsayer.cfg:20
 msgid ""
 "Saurians are known to have some strange skills, arts bordering on the "
 "magical and mysterious. It is clear that some of them are particularly "
@@ -4663,6 +4681,22 @@ msgstr ""
 "teljében... még. Regenerációs képességük segítségével kigyógyulnak a "
 "méregből és segítség nélkül felépülnek sebeikből."
 
+#. [unit_type]: id=Ghast, race=undead
+#: data/core/units/undead/Corpse_Ghast.cfg:4
+msgid "Ghast"
+msgstr ""
+
+#. [unit_type]: id=Ghast, race=undead
+#: data/core/units/undead/Corpse_Ghast.cfg:20
+msgid ""
+"The ghast is a creature taken from humankind’s most primal nightmares. "
+"Unlike their lesser cousins, ghouls and necrophages, ghasts are not patient "
+"enough to wait for their victim to die from poison before consuming the "
+"body. They attack directly with their enormous mouths, trying to rip the "
+"flesh straight from their foes. Once their enemy is defeated, they eat the "
+"rest of the body, gaining strength in the process."
+msgstr ""
+
 #. [unit_type]: id=Ghoul, race=undead
 #: data/core/units/undead/Corpse_Ghoul.cfg:4
 msgid "Ghoul"
@@ -4694,7 +4728,7 @@ msgid "Necrophage"
 msgstr "Hullafaló"
 
 #. [unit_type]: id=Necrophage, race=undead
-#: data/core/units/undead/Corpse_Necrophage.cfg:20
+#: data/core/units/undead/Corpse_Necrophage.cfg:19
 msgid ""
 "The necrophage, or 'devourer of the dead', is a monstrous, corpulent thing, "
 "which bears only a crude resemblance to a man. They appear to be quite "
@@ -4986,7 +5020,7 @@ msgid "Banebow"
 msgstr "Sorscsapás-íjász"
 
 #. [unit_type]: id=Banebow, race=undead
-#: data/core/units/undead/Skele_Banebow.cfg:18
+#: data/core/units/undead/Skele_Banebow.cfg:19
 msgid ""
 "The most powerful of the undead archers invariably end up being those who "
 "were themselves archers in their previous life. They wander the fields of "
@@ -5006,7 +5040,7 @@ msgid "Bone Shooter"
 msgstr "Csontvadász"
 
 #. [unit_type]: id=Bone Shooter, race=undead
-#: data/core/units/undead/Skele_Bone_Shooter.cfg:16
+#: data/core/units/undead/Skele_Bone_Shooter.cfg:17
 msgid ""
 "Of a dark sorcerer's creations, some take more strongly to the false life "
 "given them. The potency of their un-life is given equipment to match; "
@@ -5080,7 +5114,7 @@ msgid "Draug"
 msgstr "Felejtő"
 
 #. [unit_type]: id=Draug, race=undead
-#: data/core/units/undead/Skele_Draug.cfg:18
+#: data/core/units/undead/Skele_Draug.cfg:19
 msgid ""
 "There is little left, in these towering ruins, of the men they once were. "
 "Warriors at heart, they are now lost in the dream of unlife; wandering "
@@ -5102,10 +5136,11 @@ msgstr "Bosszúálló"
 
 #. [unit_type]: id=Revenant, race=undead
 #: data/core/units/undead/Skele_Revenant.cfg:19
+#, fuzzy
 msgid ""
 "Given false life to do battle once more, the creatures known as Revenants "
 "were clearly great warriors in their time, though the memory of that time is "
-"allmost wholly lost to their undead selves. Even the sorcerers who raised "
+"almost wholly lost to their undead selves. Even the sorcerers who raised "
 "them can only speculate on their past. Such questions aside, a Revenant is a "
 "powerful tool in combat: a fearless warrior that feels no pain and will "
 "fight to the bitter end."
@@ -5141,7 +5176,7 @@ msgid "Skeleton Archer"
 msgstr "Csont-íjász"
 
 #. [unit_type]: id=Skeleton Archer, race=undead
-#: data/core/units/undead/Skeleton_Archer.cfg:17
+#: data/core/units/undead/Skeleton_Archer.cfg:18
 msgid ""
 "A skeleton archer is little different from the 'skeletons' which often "
 "accompany it — it is a sin against nature, a warrior raised from the dead to "

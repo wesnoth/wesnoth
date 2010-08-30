@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-editor\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-08-13 11:31+0200\n"
+"POT-Creation-Date: 2010-08-30 11:56+0200\n"
 "PO-Revision-Date: 2010-02-22 13:52+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -182,23 +182,23 @@ msgstr "Прозор"
 msgid "villages"
 msgstr "села"
 
-#: src/editor/editor_controller.cpp:121
+#: src/editor/editor_controller.cpp:122
 msgid "Quit Editor"
 msgstr "Напусти уређивач"
 
-#: src/editor/editor_controller.cpp:276
+#: src/editor/editor_controller.cpp:277
 msgid "Fatal error"
 msgstr "Кобна грешка"
 
-#: src/editor/editor_controller.cpp:301 src/editor/editor_controller.cpp:1062
+#: src/editor/editor_controller.cpp:302 src/editor/editor_controller.cpp:1063
 msgid "(New Map)"
 msgstr "(нова мапа)"
 
-#: src/editor/editor_controller.cpp:307
+#: src/editor/editor_controller.cpp:308
 msgid "Do you really want to quit?"
 msgstr "Желите ли заиста да напустите?"
 
-#: src/editor/editor_controller.cpp:309
+#: src/editor/editor_controller.cpp:310
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
@@ -206,7 +206,7 @@ msgstr ""
 "Желите ли заиста да напустите? Измене на мапи од последњег уписа биће "
 "изгубљене."
 
-#: src/editor/editor_controller.cpp:311
+#: src/editor/editor_controller.cpp:312
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -215,80 +215,80 @@ msgstr ""
 "последњег уписа биће изгубљене:"
 
 # наслов
-#: src/editor/editor_controller.cpp:316
+#: src/editor/editor_controller.cpp:317
 msgid "Quit"
 msgstr "Напуштање"
 
-#: src/editor/editor_controller.cpp:373
+#: src/editor/editor_controller.cpp:374
 msgid "No editor time-of-day found."
 msgstr "Нема доба дана у уређивачу."
 
-#: src/editor/editor_controller.cpp:409
+#: src/editor/editor_controller.cpp:410
 msgid "Unsaved Changes"
 msgstr "Несачуване измене"
 
-#: src/editor/editor_controller.cpp:410
+#: src/editor/editor_controller.cpp:411
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
 msgstr "Желите ли да одбаците све измене над мапом од последњег уписа?"
 
 # наслов
-#: src/editor/editor_controller.cpp:428
+#: src/editor/editor_controller.cpp:429
 msgid "Choose a Map to Open"
 msgstr "Избор мапе за отварање"
 
-#: src/editor/editor_controller.cpp:463
+#: src/editor/editor_controller.cpp:464
 msgid "Save the Map As"
 msgstr "Сачувај мапу као"
 
-#: src/editor/editor_controller.cpp:467
+#: src/editor/editor_controller.cpp:468
 msgid "The file already exists. Do you want to overwrite it?"
 msgstr "Датотека већ постоји. Желите ли да је пребришете?"
 
-#: src/editor/editor_controller.cpp:484
+#: src/editor/editor_controller.cpp:485
 msgid "No random map generators found."
 msgstr "Нема ниједног генератора насумичних мапа."
 
-#: src/editor/editor_controller.cpp:497 src/editor/editor_controller.cpp:501
+#: src/editor/editor_controller.cpp:498 src/editor/editor_controller.cpp:502
 msgid "Map creation failed."
 msgstr "Стварање мапе није успело."
 
 # наслов
-#: src/editor/editor_controller.cpp:516
+#: src/editor/editor_controller.cpp:517
 msgid "Choose a mask to apply"
 msgstr "Избор маске за примењивање"
 
-#: src/editor/editor_controller.cpp:523
+#: src/editor/editor_controller.cpp:524
 msgid "Error loading mask"
 msgstr "Грешка при учитавању маске"
 
 # наслов
-#: src/editor/editor_controller.cpp:538
+#: src/editor/editor_controller.cpp:539
 msgid "Choose target map"
 msgstr "Избор циљне мапе"
 
-#: src/editor/editor_controller.cpp:545 src/editor/editor_controller.cpp:709
+#: src/editor/editor_controller.cpp:546 src/editor/editor_controller.cpp:710
 msgid "Error loading map"
 msgstr "Грешка при учитавању мапе"
 
-#: src/editor/editor_controller.cpp:623 src/editor/editor_controller.cpp:665
+#: src/editor/editor_controller.cpp:624 src/editor/editor_controller.cpp:666
 msgid "This map is already open."
 msgstr "Ова мапа је већ отворена."
 
-#: src/editor/editor_controller.cpp:644
+#: src/editor/editor_controller.cpp:645
 msgid "Map saved."
 msgstr "Мапа је сачувана."
 
-#: src/editor/editor_controller.cpp:688
+#: src/editor/editor_controller.cpp:689
 msgid "Loaded embedded map data"
 msgstr "Учитани угнежђени подаци мапе."
 
 # >> @title:window
-#: src/editor/editor_controller.cpp:689 src/editor/editor_controller.cpp:703
+#: src/editor/editor_controller.cpp:690 src/editor/editor_controller.cpp:704
 msgid "Map loaded from scenario"
 msgstr "Мапа учитана из сценарија"
 
-#: src/editor/editor_controller.cpp:699
+#: src/editor/editor_controller.cpp:700
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
@@ -296,35 +296,35 @@ msgstr ""
 "Учитана поменута датотека мапе:\n"
 "$new"
 
-#: src/editor/editor_controller.cpp:1092
+#: src/editor/editor_controller.cpp:1093
 msgid "Undo"
 msgstr "Опозови"
 
-#: src/editor/editor_controller.cpp:1094
+#: src/editor/editor_controller.cpp:1095
 msgid "Can't Undo"
 msgstr "Опозив неизводљив"
 
-#: src/editor/editor_controller.cpp:1098
+#: src/editor/editor_controller.cpp:1099
 msgid "Redo"
 msgstr "Понови"
 
-#: src/editor/editor_controller.cpp:1100
+#: src/editor/editor_controller.cpp:1101
 msgid "Can't Redo"
 msgstr "Понављање неизводљиво"
 
-#: src/editor/editor_controller.cpp:1105
+#: src/editor/editor_controller.cpp:1106
 msgid "Auto-update Terrain Transitions: Yes"
 msgstr "Самоажурирање прелаза терена: да"
 
-#: src/editor/editor_controller.cpp:1108
+#: src/editor/editor_controller.cpp:1109
 msgid "Auto-update Terrain Transitions: Partial"
 msgstr "Самоажурирање прелаза терена: делимично"
 
-#: src/editor/editor_controller.cpp:1112
+#: src/editor/editor_controller.cpp:1113
 msgid "Auto-update Terrain Transitions: No"
 msgstr "Самоажурирање прелаза терена: не"
 
-#: src/editor/editor_map.cpp:149 src/editor/mouse_action.cpp:429
+#: src/editor/editor_map.cpp:149 src/editor/mouse_action.cpp:428
 msgid "Player"
 msgstr "Играч"
 
@@ -373,16 +373,16 @@ msgstr "Не могу да сачувам у сценарио."
 msgid "Could not save the map: $msg"
 msgstr "Не могу да сачувам мапу: $msg"
 
-#: src/editor/mouse_action.cpp:426
+#: src/editor/mouse_action.cpp:425
 msgid "(Player)^None"
 msgstr "ниједан"
 
 # наслов
-#: src/editor/mouse_action.cpp:433
+#: src/editor/mouse_action.cpp:432
 msgid "Choose player"
 msgstr "Избор играча"
 
-#: src/editor/mouse_action.cpp:434
+#: src/editor/mouse_action.cpp:433
 msgid ""
 "Which player should start here? You can use alt and a number key to set the "
 "starting position for a player, and del to clear the starting position under "

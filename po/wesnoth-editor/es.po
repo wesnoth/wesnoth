@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-05-24 17:53+0200\n"
+"POT-Creation-Date: 2010-08-30 11:56+0200\n"
 "PO-Revision-Date: 2009-12-15 18:27+0100\n"
 "Last-Translator: Diego J. <diegojromerolopez@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -62,38 +62,53 @@ msgstr "llano"
 msgid "desert"
 msgstr "desierto"
 
-#. [editor_group]: id=forest
+#. [editor_group]: id=embellishments
 #: data/core/editor/terrain-groups.cfg:37
+msgid "embellishments"
+msgstr ""
+
+#. [editor_group]: id=forest
+#: data/core/editor/terrain-groups.cfg:44
 msgid "forest"
 msgstr "bosque"
 
 #. [editor_group]: id=frozen
-#: data/core/editor/terrain-groups.cfg:44
+#: data/core/editor/terrain-groups.cfg:51
 msgid "frozen"
 msgstr "helado"
 
 #. [editor_group]: id=rough
-#: data/core/editor/terrain-groups.cfg:51
+#: data/core/editor/terrain-groups.cfg:58
 msgid "rough"
 msgstr "abrupto"
 
 #. [editor_group]: id=cave
-#: data/core/editor/terrain-groups.cfg:58
+#: data/core/editor/terrain-groups.cfg:65
 msgid "cave"
 msgstr "caverna"
 
+#. [editor_group]: id=obstacle
+#: data/core/editor/terrain-groups.cfg:72
+msgid "obstacle"
+msgstr ""
+
 #. [editor_group]: id=village
-#: data/core/editor/terrain-groups.cfg:65
+#: data/core/editor/terrain-groups.cfg:79
 msgid "village"
 msgstr "aldea"
 
 #. [editor_group]: id=castle
-#: data/core/editor/terrain-groups.cfg:72
+#: data/core/editor/terrain-groups.cfg:86
 msgid "castle"
 msgstr "castillo"
 
+#. [editor_group]: id=bridge
+#: data/core/editor/terrain-groups.cfg:93
+msgid "bridge"
+msgstr ""
+
 #. [editor_group]: id=special
-#: data/core/editor/terrain-groups.cfg:79
+#: data/core/editor/terrain-groups.cfg:100
 msgid "special"
 msgstr "especial"
 
@@ -171,23 +186,23 @@ msgstr "Ventana"
 msgid "villages"
 msgstr "aldeas"
 
-#: src/editor/editor_controller.cpp:121
+#: src/editor/editor_controller.cpp:122
 msgid "Quit Editor"
 msgstr "Salir del editor"
 
-#: src/editor/editor_controller.cpp:276
+#: src/editor/editor_controller.cpp:277
 msgid "Fatal error"
 msgstr "Error grave"
 
-#: src/editor/editor_controller.cpp:301 src/editor/editor_controller.cpp:1062
+#: src/editor/editor_controller.cpp:302 src/editor/editor_controller.cpp:1063
 msgid "(New Map)"
 msgstr "(Nuevo mapa)"
 
-#: src/editor/editor_controller.cpp:307
+#: src/editor/editor_controller.cpp:308
 msgid "Do you really want to quit?"
 msgstr "¿Realmente desea salir?"
 
-#: src/editor/editor_controller.cpp:309
+#: src/editor/editor_controller.cpp:310
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
@@ -195,7 +210,7 @@ msgstr ""
 "¿Realmente desea salir? Se perderán los cambios en el mapa desde la última "
 "vez que lo guardó."
 
-#: src/editor/editor_controller.cpp:311
+#: src/editor/editor_controller.cpp:312
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -203,78 +218,78 @@ msgstr ""
 "¿Realmente desea salir? Se perderán los cambios en los siguientes mapas "
 "desde la última vez que los guardó:"
 
-#: src/editor/editor_controller.cpp:316
+#: src/editor/editor_controller.cpp:317
 msgid "Quit"
 msgstr "Salir"
 
-#: src/editor/editor_controller.cpp:373
+#: src/editor/editor_controller.cpp:374
 msgid "No editor time-of-day found."
 msgstr "No se encontró una hora del día para el editor."
 
-#: src/editor/editor_controller.cpp:409
+#: src/editor/editor_controller.cpp:410
 msgid "Unsaved Changes"
 msgstr "Cambios sin guardar"
 
-#: src/editor/editor_controller.cpp:410
+#: src/editor/editor_controller.cpp:411
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
 msgstr ""
 "¿Desea abandonar todos los cambios efectuados en el mapa desde que lo guardó "
 "por última vez?"
 
-#: src/editor/editor_controller.cpp:428
+#: src/editor/editor_controller.cpp:429
 msgid "Choose a Map to Open"
 msgstr "Escoja un mapa a cargar"
 
-#: src/editor/editor_controller.cpp:463
+#: src/editor/editor_controller.cpp:464
 msgid "Save the Map As"
 msgstr "Guardar el mapa como"
 
-#: src/editor/editor_controller.cpp:467
+#: src/editor/editor_controller.cpp:468
 msgid "The file already exists. Do you want to overwrite it?"
 msgstr "El mapa ya existe. ¿Desea sobreescribirlo?"
 
-#: src/editor/editor_controller.cpp:484
+#: src/editor/editor_controller.cpp:485
 msgid "No random map generators found."
 msgstr "No se encontraron generadores de mapa aleatorio"
 
-#: src/editor/editor_controller.cpp:497 src/editor/editor_controller.cpp:501
+#: src/editor/editor_controller.cpp:498 src/editor/editor_controller.cpp:502
 msgid "Map creation failed."
 msgstr "Falló la creación del mapa."
 
-#: src/editor/editor_controller.cpp:516
+#: src/editor/editor_controller.cpp:517
 msgid "Choose a mask to apply"
 msgstr "Escoja una máscara a aplicar"
 
-#: src/editor/editor_controller.cpp:523
+#: src/editor/editor_controller.cpp:524
 msgid "Error loading mask"
 msgstr "Error al cargar la máscara"
 
-#: src/editor/editor_controller.cpp:538
+#: src/editor/editor_controller.cpp:539
 msgid "Choose target map"
 msgstr "Escoja mapa de destino"
 
-#: src/editor/editor_controller.cpp:545 src/editor/editor_controller.cpp:709
+#: src/editor/editor_controller.cpp:546 src/editor/editor_controller.cpp:710
 msgid "Error loading map"
 msgstr "Error al cargar el mapa"
 
-#: src/editor/editor_controller.cpp:623 src/editor/editor_controller.cpp:665
+#: src/editor/editor_controller.cpp:624 src/editor/editor_controller.cpp:666
 msgid "This map is already open."
 msgstr "Este mapa ya se encuentra abierto."
 
-#: src/editor/editor_controller.cpp:644
+#: src/editor/editor_controller.cpp:645
 msgid "Map saved."
 msgstr "Mapa guardado."
 
-#: src/editor/editor_controller.cpp:688
+#: src/editor/editor_controller.cpp:689
 msgid "Loaded embedded map data"
 msgstr "Cargar datos incrustados de mapa"
 
-#: src/editor/editor_controller.cpp:689 src/editor/editor_controller.cpp:703
+#: src/editor/editor_controller.cpp:690 src/editor/editor_controller.cpp:704
 msgid "Map loaded from scenario"
 msgstr "Mapa cargado desde escenario"
 
-#: src/editor/editor_controller.cpp:699
+#: src/editor/editor_controller.cpp:700
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
@@ -282,35 +297,35 @@ msgstr ""
 "Archivo de mapa referenciado cargado:\n"
 "$new"
 
-#: src/editor/editor_controller.cpp:1092
+#: src/editor/editor_controller.cpp:1093
 msgid "Undo"
 msgstr "Deshacer"
 
-#: src/editor/editor_controller.cpp:1094
+#: src/editor/editor_controller.cpp:1095
 msgid "Can't Undo"
 msgstr "No se puede deshacer"
 
-#: src/editor/editor_controller.cpp:1098
+#: src/editor/editor_controller.cpp:1099
 msgid "Redo"
 msgstr "Rehacer"
 
-#: src/editor/editor_controller.cpp:1100
+#: src/editor/editor_controller.cpp:1101
 msgid "Can't Redo"
 msgstr "No se puede rehacer"
 
-#: src/editor/editor_controller.cpp:1105
+#: src/editor/editor_controller.cpp:1106
 msgid "Auto-update Terrain Transitions: Yes"
 msgstr "Actualizar automáticamente transiciones de terreno: sí"
 
-#: src/editor/editor_controller.cpp:1108
+#: src/editor/editor_controller.cpp:1109
 msgid "Auto-update Terrain Transitions: Partial"
 msgstr "Actualizar automáticamente transiciones de terreno: parcial"
 
-#: src/editor/editor_controller.cpp:1112
+#: src/editor/editor_controller.cpp:1113
 msgid "Auto-update Terrain Transitions: No"
 msgstr "Actualizar automáticamente transiciones de terreno: no"
 
-#: src/editor/editor_map.cpp:149 src/editor/mouse_action.cpp:429
+#: src/editor/editor_map.cpp:149 src/editor/mouse_action.cpp:428
 msgid "Player"
 msgstr "Jugador"
 
@@ -318,21 +333,21 @@ msgstr "Jugador"
 msgid "The size of the target map is different from the current map"
 msgstr "El tamaño del mapa de destino difiere del mapa actual"
 
-#: src/editor/editor_palettes.cpp:506
+#: src/editor/editor_palettes.cpp:509
 msgid "(non-core)"
 msgstr "(no-principal)"
 
-#: src/editor/editor_palettes.cpp:507
+#: src/editor/editor_palettes.cpp:510
 msgid "Will not work in game without extra care."
 msgstr "No funcionará en un juego sin cuidados extra."
 
-#: src/editor/editor_palettes.cpp:532
-msgid "FG"
-msgstr "Primer plano"
+#: src/editor/editor_palettes.cpp:540
+msgid "FG: "
+msgstr ""
 
-#: src/editor/editor_palettes.cpp:534
-msgid "BG"
-msgstr "Fondo"
+#: src/editor/editor_palettes.cpp:541
+msgid "BG: "
+msgstr ""
 
 #: src/editor/map_context.cpp:70
 msgid "File not found"
@@ -358,15 +373,15 @@ msgstr "No se pudo guardar en escenario"
 msgid "Could not save the map: $msg"
 msgstr "No se pudo guardar el mapa: $msg"
 
-#: src/editor/mouse_action.cpp:426
+#: src/editor/mouse_action.cpp:425
 msgid "(Player)^None"
 msgstr "Ninguno"
 
-#: src/editor/mouse_action.cpp:433
+#: src/editor/mouse_action.cpp:432
 msgid "Choose player"
 msgstr "Escoja un jugador"
 
-#: src/editor/mouse_action.cpp:434
+#: src/editor/mouse_action.cpp:433
 msgid ""
 "Which player should start here? You can use alt and a number key to set the "
 "starting position for a player, and del to clear the starting position under "
@@ -377,9 +392,15 @@ msgstr ""
 "para establecer la ubicación inicial bajo el puntero. Presionar una tecla "
 "numérica sola cambiará la vista a la ubicación inicial de ese jugador."
 
-#: src/gui/dialogs/editor_settings.cpp:162
+#: src/gui/dialogs/editor_settings.cpp:166
 msgid "Custom setting"
 msgstr "Personalizado"
+
+#~ msgid "FG"
+#~ msgstr "Primer plano"
+
+#~ msgid "BG"
+#~ msgstr "Fondo"
 
 #~ msgid "Error creating action object"
 #~ msgstr "Error al crear un objeto de acción"

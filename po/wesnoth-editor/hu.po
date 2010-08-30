@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: hu-editor_1.5\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-05-24 17:53+0200\n"
+"POT-Creation-Date: 2010-08-30 11:56+0200\n"
 "PO-Revision-Date: 2009-10-17 21:52+0200\n"
 "Last-Translator: Kádár-Németh Krisztián <krisztian.kad@gmail.com>\n"
 "Language-Team: Hungarian <wesnoth-hungtrans@gna.org>\n"
@@ -58,38 +58,53 @@ msgstr "síkság"
 msgid "desert"
 msgstr "sivatag"
 
-#. [editor_group]: id=forest
+#. [editor_group]: id=embellishments
 #: data/core/editor/terrain-groups.cfg:37
+msgid "embellishments"
+msgstr ""
+
+#. [editor_group]: id=forest
+#: data/core/editor/terrain-groups.cfg:44
 msgid "forest"
 msgstr "erdő"
 
 #. [editor_group]: id=frozen
-#: data/core/editor/terrain-groups.cfg:44
+#: data/core/editor/terrain-groups.cfg:51
 msgid "frozen"
 msgstr "jégvidék"
 
 #. [editor_group]: id=rough
-#: data/core/editor/terrain-groups.cfg:51
+#: data/core/editor/terrain-groups.cfg:58
 msgid "rough"
 msgstr "rögös"
 
 #. [editor_group]: id=cave
-#: data/core/editor/terrain-groups.cfg:58
+#: data/core/editor/terrain-groups.cfg:65
 msgid "cave"
 msgstr "barlang"
 
+#. [editor_group]: id=obstacle
+#: data/core/editor/terrain-groups.cfg:72
+msgid "obstacle"
+msgstr ""
+
 #. [editor_group]: id=village
-#: data/core/editor/terrain-groups.cfg:65
+#: data/core/editor/terrain-groups.cfg:79
 msgid "village"
 msgstr "falu"
 
 #. [editor_group]: id=castle
-#: data/core/editor/terrain-groups.cfg:72
+#: data/core/editor/terrain-groups.cfg:86
 msgid "castle"
 msgstr "vár"
 
+#. [editor_group]: id=bridge
+#: data/core/editor/terrain-groups.cfg:93
+msgid "bridge"
+msgstr ""
+
 #. [editor_group]: id=special
-#: data/core/editor/terrain-groups.cfg:79
+#: data/core/editor/terrain-groups.cfg:100
 msgid "special"
 msgstr "különleges"
 
@@ -164,23 +179,23 @@ msgstr "Ablak"
 msgid "villages"
 msgstr "falvak"
 
-#: src/editor/editor_controller.cpp:121
+#: src/editor/editor_controller.cpp:122
 msgid "Quit Editor"
 msgstr "Kilépés a szerkesztőből"
 
-#: src/editor/editor_controller.cpp:276
+#: src/editor/editor_controller.cpp:277
 msgid "Fatal error"
 msgstr "Végzetes hiba"
 
-#: src/editor/editor_controller.cpp:301 src/editor/editor_controller.cpp:1062
+#: src/editor/editor_controller.cpp:302 src/editor/editor_controller.cpp:1063
 msgid "(New Map)"
 msgstr "(Új pálya)"
 
-#: src/editor/editor_controller.cpp:307
+#: src/editor/editor_controller.cpp:308
 msgid "Do you really want to quit?"
 msgstr "Valóban ki akarsz lépni?"
 
-#: src/editor/editor_controller.cpp:309
+#: src/editor/editor_controller.cpp:310
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
@@ -188,7 +203,7 @@ msgstr ""
 "Valóban ki akarsz lépni? Az utolsó mentés utáni változtatások a térképen el "
 "fognak veszni."
 
-#: src/editor/editor_controller.cpp:311
+#: src/editor/editor_controller.cpp:312
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -196,78 +211,78 @@ msgstr ""
 "Valóban ki akarsz lépni? Az alábbi térképek lettek módosítva, és az utolsó "
 "mentés utáni összes változtatás el fog veszni:"
 
-#: src/editor/editor_controller.cpp:316
+#: src/editor/editor_controller.cpp:317
 msgid "Quit"
 msgstr "Kilépés"
 
-#: src/editor/editor_controller.cpp:373
+#: src/editor/editor_controller.cpp:374
 msgid "No editor time-of-day found."
 msgstr "Nem található a szerkesztői napszak."
 
-#: src/editor/editor_controller.cpp:409
+#: src/editor/editor_controller.cpp:410
 msgid "Unsaved Changes"
 msgstr "Mentetlen változtatások"
 
-#: src/editor/editor_controller.cpp:410
+#: src/editor/editor_controller.cpp:411
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
 msgstr ""
 "El akarod vetni az összes változtatást, amit a pálya utolsó mentése óta "
 "végeztél?"
 
-#: src/editor/editor_controller.cpp:428
+#: src/editor/editor_controller.cpp:429
 msgid "Choose a Map to Open"
 msgstr "Válaszd ki a betöltendő pályát"
 
-#: src/editor/editor_controller.cpp:463
+#: src/editor/editor_controller.cpp:464
 msgid "Save the Map As"
 msgstr "Pálya mentése másként"
 
-#: src/editor/editor_controller.cpp:467
+#: src/editor/editor_controller.cpp:468
 msgid "The file already exists. Do you want to overwrite it?"
 msgstr "A fájl már létezik. Felül akarod írni?"
 
-#: src/editor/editor_controller.cpp:484
+#: src/editor/editor_controller.cpp:485
 msgid "No random map generators found."
 msgstr "Nem található véletlenszerű pályakészítő."
 
-#: src/editor/editor_controller.cpp:497 src/editor/editor_controller.cpp:501
+#: src/editor/editor_controller.cpp:498 src/editor/editor_controller.cpp:502
 msgid "Map creation failed."
 msgstr "A pálya elkészítése meghiúsult."
 
-#: src/editor/editor_controller.cpp:516
+#: src/editor/editor_controller.cpp:517
 msgid "Choose a mask to apply"
 msgstr "Válassz ki egy alkalmazandó maszkot"
 
-#: src/editor/editor_controller.cpp:523
+#: src/editor/editor_controller.cpp:524
 msgid "Error loading mask"
 msgstr "Hiba a maszk betöltésekor"
 
-#: src/editor/editor_controller.cpp:538
+#: src/editor/editor_controller.cpp:539
 msgid "Choose target map"
 msgstr "Válaszd ki a célpályát"
 
-#: src/editor/editor_controller.cpp:545 src/editor/editor_controller.cpp:709
+#: src/editor/editor_controller.cpp:546 src/editor/editor_controller.cpp:710
 msgid "Error loading map"
 msgstr "Hiba a pálya betöltése közben"
 
-#: src/editor/editor_controller.cpp:623 src/editor/editor_controller.cpp:665
+#: src/editor/editor_controller.cpp:624 src/editor/editor_controller.cpp:666
 msgid "This map is already open."
 msgstr "A pálya már meg van nyitva."
 
-#: src/editor/editor_controller.cpp:644
+#: src/editor/editor_controller.cpp:645
 msgid "Map saved."
 msgstr "Pálya sikeresen elmentve."
 
-#: src/editor/editor_controller.cpp:688
+#: src/editor/editor_controller.cpp:689
 msgid "Loaded embedded map data"
 msgstr "A beágyazott térkép adatai betöltődtek"
 
-#: src/editor/editor_controller.cpp:689 src/editor/editor_controller.cpp:703
+#: src/editor/editor_controller.cpp:690 src/editor/editor_controller.cpp:704
 msgid "Map loaded from scenario"
 msgstr "A küldetés térképe betöltődött"
 
-#: src/editor/editor_controller.cpp:699
+#: src/editor/editor_controller.cpp:700
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
@@ -275,35 +290,35 @@ msgstr ""
 "Az alábbi térképfájl betöltődött:\n"
 "$new"
 
-#: src/editor/editor_controller.cpp:1092
+#: src/editor/editor_controller.cpp:1093
 msgid "Undo"
 msgstr "Visszavonás"
 
-#: src/editor/editor_controller.cpp:1094
+#: src/editor/editor_controller.cpp:1095
 msgid "Can't Undo"
 msgstr "Nem vonható vissza"
 
-#: src/editor/editor_controller.cpp:1098
+#: src/editor/editor_controller.cpp:1099
 msgid "Redo"
 msgstr "Megismétlés"
 
-#: src/editor/editor_controller.cpp:1100
+#: src/editor/editor_controller.cpp:1101
 msgid "Can't Redo"
 msgstr "Nem ismételhető meg"
 
-#: src/editor/editor_controller.cpp:1105
+#: src/editor/editor_controller.cpp:1106
 msgid "Auto-update Terrain Transitions: Yes"
 msgstr "Terepáttűnések automatikus frissítése: Igen"
 
-#: src/editor/editor_controller.cpp:1108
+#: src/editor/editor_controller.cpp:1109
 msgid "Auto-update Terrain Transitions: Partial"
 msgstr "Terepáttűnések automatikus frissítése: Részleges"
 
-#: src/editor/editor_controller.cpp:1112
+#: src/editor/editor_controller.cpp:1113
 msgid "Auto-update Terrain Transitions: No"
 msgstr "Terepáttűnések automatikus frissítése: Nem"
 
-#: src/editor/editor_map.cpp:149 src/editor/mouse_action.cpp:429
+#: src/editor/editor_map.cpp:149 src/editor/mouse_action.cpp:428
 msgid "Player"
 msgstr "Játékos"
 
@@ -311,22 +326,22 @@ msgstr "Játékos"
 msgid "The size of the target map is different from the current map"
 msgstr "A célpálya mérete különbözik a jelenlegi pálya méretétől"
 
-#: src/editor/editor_palettes.cpp:506
+#: src/editor/editor_palettes.cpp:509
 msgid "(non-core)"
 msgstr "(speciális terep)"
 
-#: src/editor/editor_palettes.cpp:507
+#: src/editor/editor_palettes.cpp:510
 msgid "Will not work in game without extra care."
 msgstr ""
 "Külön odafigyelést igényel, ellenkező esetben nem fog működni a játékban"
 
-#: src/editor/editor_palettes.cpp:532
-msgid "FG"
-msgstr "Előtér"
+#: src/editor/editor_palettes.cpp:540
+msgid "FG: "
+msgstr ""
 
-#: src/editor/editor_palettes.cpp:534
-msgid "BG"
-msgstr "Háttér"
+#: src/editor/editor_palettes.cpp:541
+msgid "BG: "
+msgstr ""
 
 #: src/editor/map_context.cpp:70
 msgid "File not found"
@@ -351,15 +366,15 @@ msgstr "Nem sikerült a pályába menteni"
 msgid "Could not save the map: $msg"
 msgstr "A következő pályát nem lehet elmenteni: $msg"
 
-#: src/editor/mouse_action.cpp:426
+#: src/editor/mouse_action.cpp:425
 msgid "(Player)^None"
 msgstr "Játékos"
 
-#: src/editor/mouse_action.cpp:433
+#: src/editor/mouse_action.cpp:432
 msgid "Choose player"
 msgstr "Válassz játékost"
 
-#: src/editor/mouse_action.cpp:434
+#: src/editor/mouse_action.cpp:433
 msgid ""
 "Which player should start here? You can use alt and a number key to set the "
 "starting position for a player, and del to clear the starting position under "
@@ -371,9 +386,15 @@ msgstr ""
 "kezdési helyet. Egy szám lenyomásakor a térkép az adott játékos kezdési "
 "helyéhez ugrik."
 
-#: src/gui/dialogs/editor_settings.cpp:162
+#: src/gui/dialogs/editor_settings.cpp:166
 msgid "Custom setting"
 msgstr "Egyedi beállítások"
+
+#~ msgid "FG"
+#~ msgstr "Előtér"
+
+#~ msgid "BG"
+#~ msgstr "Háttér"
 
 #~ msgid "Error creating action object"
 #~ msgstr "Hiba a parancsobjektum létrehozásakor"

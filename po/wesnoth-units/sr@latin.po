@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-units\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-08-13 11:31+0200\n"
+"POT-Creation-Date: 2010-08-30 11:56+0200\n"
 "PO-Revision-Date: 2010-03-02 11:21+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -197,13 +197,13 @@ msgstr ""
 "neizmernom vatrom tako i neosetljiva na nju."
 
 #. [attack]: type=blade
-#: data/core/units/drakes/Armageddon.cfg:43 data/core/units/drakes/Fire.cfg:42
+#: data/core/units/drakes/Armageddon.cfg:58 data/core/units/drakes/Fire.cfg:42
 #: data/core/units/drakes/Inferno.cfg:44
 msgid "battle claws"
 msgstr "bojne kandže"
 
 #. [attack]: type=fire
-#: data/core/units/drakes/Armageddon.cfg:52
+#: data/core/units/drakes/Armageddon.cfg:67
 #: data/core/units/drakes/Blademaster.cfg:50
 #: data/core/units/drakes/Burner.cfg:49 data/core/units/drakes/Fighter.cfg:48
 #: data/core/units/drakes/Fire.cfg:51 data/core/units/drakes/Flameheart.cfg:44
@@ -270,7 +270,7 @@ msgstr ""
 #: data/core/units/gryphons/Gryphon_Rider.cfg:42
 #: data/core/units/monsters/Skeletal_Dragon.cfg:42
 #: data/core/units/undead/Corpse_Ghoul.cfg:27
-#: data/core/units/undead/Corpse_Necrophage.cfg:28
+#: data/core/units/undead/Corpse_Necrophage.cfg:39
 #: data/core/units/undead/Spirit_Nightgaunt.cfg:67
 #: data/core/units/undead/Spirit_Shadow.cfg:135
 msgid "claws"
@@ -323,7 +323,7 @@ msgstr ""
 #: data/core/units/humans/Loyalist_Javelineer.cfg:40
 #: data/core/units/humans/Loyalist_Spearman.cfg:59
 #: data/core/units/merfolk/Hoplite.cfg:48
-#: data/core/units/merfolk/Hunter.cfg:37 data/core/units/merfolk/Hunter.cfg:45
+#: data/core/units/merfolk/Hunter.cfg:38 data/core/units/merfolk/Hunter.cfg:46
 #: data/core/units/merfolk/Javelineer.cfg:37
 #: data/core/units/merfolk/Javelineer.cfg:45
 #: data/core/units/merfolk/Spearman.cfg:36
@@ -1058,10 +1058,10 @@ msgstr ""
 #: data/core/units/humans/Horse_Paladin.cfg:52
 #: data/core/units/humans/Loyalist_Cavalryman.cfg:64
 #: data/core/units/humans/Loyalist_Dragoon.cfg:49
-#: data/core/units/humans/Loyalist_Lieutenant.cfg:46
+#: data/core/units/humans/Loyalist_Lieutenant.cfg:40
 #: data/core/units/humans/Loyalist_Longbowman.cfg:39
 #: data/core/units/humans/Loyalist_Master_Bowman.cfg:39
-#: data/core/units/humans/Loyalist_Sergeant.cfg:47
+#: data/core/units/humans/Loyalist_Sergeant.cfg:41
 #: data/core/units/humans/Loyalist_Swordsman.cfg:39
 #: data/core/units/humans/Woodsman_Ranger.cfg:59
 #: data/core/units/nagas/Fighter.cfg:102 data/core/units/nagas/Myrmidon.cfg:43
@@ -2046,9 +2046,9 @@ msgstr ""
 #: data/core/units/humans/Loyalist_Duelist.cfg:94
 #: data/core/units/humans/Loyalist_General.cfg:65
 #: data/core/units/humans/Loyalist_Grand_Marshal.cfg:61
-#: data/core/units/humans/Loyalist_Lieutenant.cfg:55
+#: data/core/units/humans/Loyalist_Lieutenant.cfg:49
 #: data/core/units/humans/Loyalist_Master_at_Arms.cfg:53
-#: data/core/units/humans/Loyalist_Sergeant.cfg:56
+#: data/core/units/humans/Loyalist_Sergeant.cfg:50
 #: data/core/units/orcs/Crossbowman.cfg:46
 #: data/core/units/orcs/Crossbowman.cfg:55 data/core/units/orcs/Leader.cfg:50
 #: data/core/units/orcs/Ruler.cfg:49 data/core/units/orcs/Slurbow.cfg:51
@@ -2327,7 +2327,7 @@ msgid "Lieutenant"
 msgstr "poručnik"
 
 #. [unit_type]: id=Lieutenant, race=human
-#: data/core/units/humans/Loyalist_Lieutenant.cfg:25
+#: data/core/units/humans/Loyalist_Lieutenant.cfg:19
 msgid ""
 "Trained at swords and crossbows, Lieutenants lead small groups of human "
 "soldiers, coordinating their attacks."
@@ -2470,7 +2470,7 @@ msgid "Sergeant"
 msgstr "narednik"
 
 #. [unit_type]: id=Sergeant, race=human
-#: data/core/units/humans/Loyalist_Sergeant.cfg:26
+#: data/core/units/humans/Loyalist_Sergeant.cfg:20
 msgid ""
 "The Sergeant is a low-ranking officer in the ranks of an army. Though "
 "academically trained, he will need some experience in the field before his "
@@ -3680,6 +3680,7 @@ msgstr ""
 #. [attack]: type=blade
 #: data/core/units/monsters/Fire_Dragon.cfg:31
 #: data/core/units/monsters/Giant_Rat.cfg:37
+#: data/core/units/undead/Corpse_Ghast.cfg:28
 msgid "bite"
 msgstr "ugriz"
 
@@ -4536,6 +4537,22 @@ msgstr ""
 "nesposobni da pravilno hodaju, već se moraju gegati na sve četiri, sirova "
 "snaga koju već poseduju sasvim nadoknađuje te nepogodnosti."
 
+#. [unit_type]: id=Ghast, race=undead
+#: data/core/units/undead/Corpse_Ghast.cfg:4
+msgid "Ghast"
+msgstr ""
+
+#. [unit_type]: id=Ghast, race=undead
+#: data/core/units/undead/Corpse_Ghast.cfg:20
+msgid ""
+"The ghast is a creature taken from humankind’s most primal nightmares. "
+"Unlike their lesser cousins, ghouls and necrophages, ghasts are not patient "
+"enough to wait for their victim to die from poison before consuming the "
+"body. They attack directly with their enormous mouths, trying to rip the "
+"flesh straight from their foes. Once their enemy is defeated, they eat the "
+"rest of the body, gaining strength in the process."
+msgstr ""
+
 #. [unit_type]: id=Ghoul, race=undead
 #: data/core/units/undead/Corpse_Ghoul.cfg:4
 msgid "Ghoul"
@@ -4568,7 +4585,7 @@ msgid "Necrophage"
 msgstr "nekrofag"
 
 #. [unit_type]: id=Necrophage, race=undead
-#: data/core/units/undead/Corpse_Necrophage.cfg:20
+#: data/core/units/undead/Corpse_Necrophage.cfg:19
 #, fuzzy
 msgid ""
 "The necrophage, or 'devourer of the dead', is a monstrous, corpulent thing, "
@@ -4577,7 +4594,7 @@ msgid ""
 "poisons of the blood, and have a stench to match. But the most revolting "
 "fact about these fratures, apparent only to those who can perceive the "
 "traces of foul magic on them, is that they were somehow made from living men "
-"— a process about which almost nothing is known, but which can be nothing "
+"- a process about which almost nothing is known, but which can be nothing "
 "but nightmarish."
 msgstr ""
 "Nekrofag, iliti „proždirač mrtvih“, grozomorna je i podgojena pojava, tek "
