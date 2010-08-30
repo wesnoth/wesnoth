@@ -71,22 +71,37 @@ void show_language_dialog(CVideo& video, twindow& window)
  * This shows the title screen. This dialog is still under construction and
  * is only shown when --new-widgets are used.
  *
- * @start_table = grid
- *     (addons) (button) ()       The button to get the addons.
- *     (language) (button) ()     The button to change the language.
+ * @begin{table}[dialog_widgets]
+ * addons & & button & m &
+ *         The button to get the addons. $
  *
- *     (tips) (multi_page) ()     A multi_page to hold all tips, when this
- *                                widget is used the area of the tips doesn't
- *                                need to be resized when the next or previous
- *                                button is pressed.
- *     (tip) (label) ()           The tip of the day.
- *     (source) (label) ()        The source for the tip of the day.
- *     (next_tip) (button) ()     The button show the next tip of day.
- *     (previous_tip) (button) () The button show the previous tip of day.
- *     (logo) (progress_bar) ()   A progress bar to "animate" the image
- *     (revision_number) (control)
- *                                A widget to show the version number.
- * @end_table
+ * language & & button & m &
+ *         The button to change the language. $
+ *
+ * tips & & multi_page & o &
+ *         A multi_page to hold all tips, when this widget is used the area of
+ *         the tips doesn't need to be resized when the next or previous button
+ *         is pressed. $
+ *
+ * -tip & & label & o &
+ *         The tip of the day. $
+ *
+ * -source & & label & o &
+ *         The source for the tip of the day. $
+ *
+ * next_tip & & button & m &
+ *         The button show the next tip of the day. $
+ *
+ * previous_tip & & button & m &
+ *         The button show the previous tip of the day. $
+ *
+ * logo & & progress_bar & o &
+ *         A progress bar to "animate" the image. $
+ *
+ * revision_number & & control & o &
+ *         A widget to show the version number. $
+ *
+ * @end{table}
  */
 
 REGISTER_WINDOW(title_screen)
