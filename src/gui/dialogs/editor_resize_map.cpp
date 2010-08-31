@@ -34,45 +34,56 @@ namespace gui2 {
  *
  * This shows the dialog to resize the current map.
  *
- * @start_table = grid
- *     (old_width) (label) ()     Shows the old width of the map.
- *     (old_height) (label) ()    Shows the old height of the map.
+ * @begin{table}[dialog_widgets]
  *
- *     (width) (slider) ()        Determines the new width of the map.
- *     (height) (slider) ()       Determines the new height of the map.
+ * old_width & & label & m &
+ *         Shows the old width of the map. $
  *
- *     (copy_edge_terrain) (boolean_selector) ()
- *                                Determines whether the border terrains
- *                                should be used to expand or not.
+ * old_height & & label & m &
+ *         Shows the old height of the map. $
  *
- *     (expand0) (toggle_button) ()
- *                                Determines in which direction to expand,
- *                                shows the north east marker.
- *     (expand1) (toggle_button) ()
- *                                Determines in which direction to expand,
- *                                shows the north marker.
- *     (expand2) (toggle_button) ()
- *                                Determines in which direction to expand,
- *                                shows the north west marker.
- *     (expand3) (toggle_button) ()
- *                                Determines in which direction to expand,
- *                                shows the east marker.
- *     (expand4) (toggle_button) ()
- *                                Determines in which direction to expand,
- *                                shows the centre marker.
- *     (expand5) (toggle_button) ()
- *                                Determines in which direction to expand,
- *                                shows the west marker.
- *     (expand6) (toggle_button) ()
- *                                Determines in which direction to expand,
- *                                shows the south east marker.
- *     (expand7) (toggle_button) ()
- *                                Determines in which direction to expand,
- *                                shows the south marker.
- *     (expand8) (toggle_button) ()
- *                                Determines in which direction to expand,
- *                                shows the south west marker.
- * @end_table
+ * width & & slider & m &
+ *         Determines the new width of the map. $
+ *
+ * height & & slider & m &
+ *         Determines the new height of the map. $
+ *
+ * copy_edge_terrain & & boolean_selector & m &
+ *         Determines whether the border terrains should be used to expand or
+ *         not. $
+ *
+ * expand0 & & toggle_button & m &
+ *         Determines in which direction to expand, shows the north east
+ *         marker. $
+ *
+ * expand1 & & toggle_button & m &
+ *         Determines in which direction to expand, shows the north marker. $
+ *
+ * expand2 & & toggle_button & m &
+ *         Determines in which direction to expand, shows the north west
+ *         marker. $
+ *
+ * expand3 & & toggle_button & m &
+ *         Determines in which direction to expand, shows the east marker. $
+ *
+ * expand4 & & toggle_button & m &
+ *         Determines in which direction to expand, shows the centre marker. $
+ *
+ * expand5 & & toggle_button & m &
+ *         Determines in which direction to expand, shows the west marker. $
+ *
+ * expand6 & & toggle_button & m &
+ *         Determines in which direction to expand, shows the south east
+ *         marker. $
+ *
+ * expand7 & & toggle_button & m &
+ *         Determines in which direction to expand, shows the south marker. $
+ *
+ * expand8 & & toggle_button & m &
+ *         Determines in which direction to expand, shows the south west
+ *         marker. $
+ *
+ * @end{table}
  */
 
 REGISTER_WINDOW(editor_resize_map)
