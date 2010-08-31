@@ -452,11 +452,12 @@ void config::splice_children(config &src, const std::string &key)
 		src.ordered_children.end());
 
 	child_list &dst = children[key];
+	child_map::iterator i_dst = children.find(key);
 	unsigned before = dst.size();
 	dst.insert(dst.end(), i_src->second.begin(), i_src->second.end());
 	src.children.erase(i_src);
+	// key might be a reference to i_src->first, so it is no longer usable.
 
-	child_map::iterator i_dst = children.find(key);
 	for (unsigned j = before; j < dst.size(); ++j) {
 		ordered_children.push_back(child_pos(i_dst, j));
 	}
