@@ -720,7 +720,7 @@ declared_spellings = {"GLOBAL":["I'm", "I've", "I'd", "I'll",
                                 "hitpoint", "hitpoints", "FFA", "multiplayer",
                                 "playtesting", "respawn", "respawns",
                                 "WML", "HP", "XP", "AI", "ZOC", "YW",
-                                "L0", "L1", "L2", "L3",
+                                "L0", "L1", "L2", "L3", "MC",
                                 # archaisms
                                 "faugh", "hewn", "leapt", "dreamt", "spilt",
                                 "grandmam", "grandsire", "grandsires",
@@ -1905,6 +1905,8 @@ def inner_spellcheck(nav, value, spelldict):
     value = string_strip(value)
     # Discard extraneous stuff 
     value = value.replace("...", " ")
+    value = value.replace("\"", " ")
+    value = value.replace("\\n", " ")
     value = value.replace("/", " ")
     value = value.replace(")", " ")
     value = value.replace("(", " ")
