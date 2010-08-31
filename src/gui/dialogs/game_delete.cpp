@@ -26,10 +26,12 @@ namespace gui2 {
  *
  * This shows the dialog to confirm deleting a savegame file.
  *
- * @start_table = container
- *     (dont_ask_again) (boolean_selector) ()
- *                     A checkbox to not show this dialog again.
- * @end_table
+ * @begin{table}[dialog_widgets]
+ *
+ * dont_ask_again & & boolean_selector & m &
+ *        A checkbox to not show this dialog again. $
+ *
+ * @end{table}
  */
 
 REGISTER_WINDOW(game_delete)
