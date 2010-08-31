@@ -40,33 +40,37 @@ namespace gui2 {
  *
  * This shows the dialog to set the editor settings.
  *
- * @start_table = grid
- *     (current_tod) (label) ()   Displays the currently selected time of
- *                                day(ToD) mask.
- *     (current_tod_image) (label) ()
- *                                The image for the ToD mask.
- *     (next_tod) (button) ()     Selects the next ToD mask.
+ * @begin{table}[dialog_widgets]
  *
- *     (custom_tod_toggle) (toggle_button) ()
- *                                Allow to set the ToD mask by selecting the
- *                                color components manually.
- *     (custom_tod_red) (slider) ()
- *                                Sets the red component of the custom ToD
- *                                mask.
- *     (custom_tod_green) (slider) ()
- *                                Sets the green component of the custom ToD
- *                                mask.
- *     (custom_tod_blue) (slider) ()
- *                                Sets the blue component of the custom ToD
- *                                mask.
+ * current_tod & & label & m &
+ *         Displays the currently selected time of day(ToD) mask. $
  *
- *     (custom_tod_auto_refresh) (toggle_button) ()
- *                                Directly update the ToD mask when a
- *                                component slider is moved.
+ * current_tod_image & & label & m &
+ *         The image for the ToD mask. $
  *
- *     (use_mdi) (boolean) ()     Sets whether the user interface should be
- *                                an MDI interface or not.
- * @end_table
+ * next_tod & & button & m &
+ *         Selects the next ToD mask. $
+ *
+ * custom_tod_toggle & & toggle_button & m &
+ *         Allow to set the ToD mask by selecting the color components
+ *         manually. $
+ *
+ * custom_tod_red & & slider & m &
+ *         Sets the red component of the custom ToD mask. $
+ *
+ * custom_tod_green & & slider & m &
+ *         Sets the green component of the custom ToD mask. $
+ *
+ * custom_tod_blue & & slider & m &
+ *         Sets the blue component of the custom ToD mask. $
+ *
+ * custom_tod_auto_refresh & & toggle_button & m &
+ *         Directly update the ToD mask when a component slider is moved. $
+ *
+ * use_mdi & & boolean & m &
+ *         Sets whether the user interface should be an MDI interface or not. $
+ *
+ * @end{table}
  */
 
 REGISTER_WINDOW(editor_settings)
