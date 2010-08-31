@@ -407,7 +407,6 @@ pathfind::marked_route pathfind::mark_route(const plain_route &rt,
 		// move_cost of the next step is irrelevant for the last step
 		assert(last_step || resources::game_map->on_board(*(i+1)));
 		const int move_cost = last_step ? 0 : u.movement_cost((*resources::game_map)[*(i+1)]);
-		bool capture = false;
 		bool pass_here = false;
 		if (w != waypoints.end() && *i == *w) {
 			++w;
@@ -444,7 +443,7 @@ pathfind::marked_route pathfind::mark_route(const plain_route &rt,
 		zoc = enemy_zoc((*resources::teams), *(i + 1), viewing_team,u.side())
 					&& !u.get_ability_bool("skirmisher", *(i+1));
 
-		if (zoc || capture) {
+		if (zoc) {
 			movement = 0;
 		} else {
 			movement -= move_cost;
