@@ -28,14 +28,15 @@ namespace gui2 {
  *
  * This shows the dialog to generate a new map in the editor.
  *
- * @start_table = grid
- *     (width) (integer_selector) ()
- *                                An integer selector to determine the width
- *                                of the map to create.
- *     (height) (integer_selector) ()
- *                                An integer selector to determine the height
- *                                of the map to create.
- * @end_table
+ * @begin{table}[dialog_widgets]
+ *
+ * width & & integer_selector & m &
+ *        An integer selector to determine the width of the map to create. $
+ *
+ * height & & integer_selector & m &
+ *        An integer selector to determine the height of the map to create. $
+ *
+ * @end{table}
  */
 
 REGISTER_WINDOW(editor_new_map)
