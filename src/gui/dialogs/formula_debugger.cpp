@@ -35,16 +35,30 @@ namespace gui2 {
  *
  * This shows the debugger for the formulas.
  *
- * @start_table = grid
- *     (stack) (control) ()       A stack.
- *     (execution) (control) ()   Execution trace label.
- *     (state) (control) ()       The state.
+ * @begin{table}[dialog_widgets]
  *
- *     (step) (button) ()         Button to step into the execution.
- *     (stepout) (button) ()      Button to step out of the execution.
- *     (next) (button) ()         Button to execute the next statement.
- *     (continue) (button) ()     Button to continue the execution.
- * @end_table
+ * stack & & control & m &
+ *         A stack. $
+ *
+ * execution & & control & m &
+ *         Execution trace label. $
+ *
+ * state & & control & m &
+ *         The state. $
+ *
+ * step & & button & m &
+ *         Button to step into the execution. $
+ *
+ * stepout & & button & m &
+ *         Button to step out of the execution. $
+ *
+ * next & & button & m &
+ *         Button to execute the next statement. $
+ *
+ * continue & & button & m &
+ *         Button to continue the execution. $
+ *
+ * @end{table}
  */
 
 REGISTER_WINDOW(formula_debugger)
