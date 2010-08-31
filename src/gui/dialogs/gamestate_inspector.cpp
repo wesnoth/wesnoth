@@ -46,11 +46,18 @@ namespace gui2 {
  *
  * This shows the gamestate inspector
  *
- * @start_table = grid
- *     (inspector_name) (control) ()   Name of the inspector
- *     (stuff_list) (control) ()       List of various stuff that can be viewed
- *     (inspect) (control) ()          The state of the variable or event
- * @end_table
+ * @begin{table}[dialog_widgets]
+ *
+ * inspector_name & & control & m &
+ *         Name of the inspector. $
+ *
+ * stuff_list & & control & m &
+ *         List of various stuff that can be viewed. $
+ *
+ * inspect & & control & m &
+ *         The state of the variable or event. $
+ *
+ * @end{table}
  */
 
 
