@@ -33,11 +33,15 @@ namespace gui2 {
  *
  * This shows the dialog to create a savegame file.
  *
- * @start_table = grid
- *     (lblTitle) (label) ()      The title of the window.
- *     (txtFilename) (text_box) ()
- *                                The name of the savefile.
- * @end_table
+ * @begin{table}[dialog_widgets]
+ *
+ * lblTitle & & label & m &
+ *         The title of the window. $
+ *
+ * txtFilename & & text_box & m &
+ *         The name of the savefile. $
+ *
+ * @end{table}
  */
 
 REGISTER_WINDOW(game_save)
