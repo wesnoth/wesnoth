@@ -131,11 +131,15 @@ void tmp_server_list::post_show(twindow& window)
  *
  * This shows the dialog to the MP server to connect to.
  *
- * @start_table = grid
- *     (host_name) (text_box) ()       The name of the server to connect to.
- *     [list] (button) ()              Shows a dialog with a list of
- *                                     predefined servers to connect to.
- * @end_table
+ * @begin{table}[dialog_widgets]
+ *
+ * start_table & & text_box & m &
+ *         The name of the server to connect to. $
+ *
+ * list & & button & o &
+ *         Shows a dialog with a list of predefined servers to connect to. $
+ *
+ * @end{table}
  */
 
 REGISTER_WINDOW(mp_connect)
