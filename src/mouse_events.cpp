@@ -795,20 +795,23 @@ int mouse_handler::fill_weapon_choices(std::vector<battle_context>& bc_vector, u
 
 int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const map_location& defender_loc)
 {
+
+	unit_map::iterator attacker = units_.find(attacker_loc);
+	unit_map::iterator defender = units_.find(defender_loc);
+	if(attacker == units_.end() || defender == units_.end()) {
+		ERR_NG << "One fighter is missing, can't attack";
+		return -1; // abort, click will do nothing
+	}
+
+	std::vector<battle_context> bc_vector;
+	const int best = fill_weapon_choices(bc_vector, attacker, defender);
+
 	if(gui2::new_widgets) {
-
-		unit_map::iterator attacker = find_unit(attacker_loc);
-		unit_map::iterator defender = find_unit(defender_loc);
-
-		std::vector<battle_context> weapons;
-		const int best_weapon =
-				fill_weapon_choices(weapons, attacker, defender);
-
 		gui2::tunit_attack dlg(
 				  attacker
 				, defender
-				, weapons
-				, best_weapon);
+				, bc_vector
+				, best);
 
 		dlg.show(resources::screen->video());
 
@@ -818,12 +821,6 @@ int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const ma
 			return -1;
 		}
 	}
-
-	unit_map::iterator attacker = find_unit(attacker_loc);
-	unit_map::iterator defender = find_unit(defender_loc);
-
-	std::vector<battle_context> bc_vector;
-	int best = fill_weapon_choices(bc_vector, attacker, defender);
 
 	if (bc_vector.empty())
 	{
