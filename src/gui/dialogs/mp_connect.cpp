@@ -45,13 +45,18 @@ namespace {
  *
  * This shows the dialog with a list of predefined multiplayer servers.
  *
- * @start_table = grid
- *     (server_list) (listbox) ()      Listbox with the predefined servers to
- *                                     connect to.
- *     -[name] (control) ()            Widgets which shows the name of the
- *                                     server.
- *     -(address) (control) ()         The address/host_name of the server.
- * @end_table
+ * @begin{table}[dialog_widgets]
+ *
+ * server_list & & listbox & m &
+ *         Listbox with the predefined servers to connect to. $
+ *
+ * -name & & control & o &
+ *         Widget which shows the name of the server. $
+ *
+ * -address & & control & m &
+ *         The address/host_name of the server. $
+ *
+ * @end{table}
  */
 
 class tmp_server_list : public tdialog
