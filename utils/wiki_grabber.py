@@ -276,6 +276,7 @@ if __name__ == "__main__":
         #
         # Description is the description for the control, this is all the text
         # after the ret_val field.
+        print "The container grid is deprecated, use the dialog_widgets instead.\n"
         idention = r"(-*)"
         id = r"(?:(\[)|\()(.*)(?(2)\]|\))"
         widget_list = r"\((.+)\)"
