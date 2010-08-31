@@ -44,24 +44,33 @@ namespace gui2 {
  *
  * This shows the dialog choose which campaign the user wants to play.
  *
- * @start_table = grid
- *     (campaign_list) (listbox) ()
- *                                A listbox that contains all available
- *                                campaigns.
- *     -[icon] (image) ()         The icon for the campaign.
- *     -[name] (control) ()       The name of the campaign.
- *     -[victory] (image) ()      The icon to show when the user finished the
- *                                campaign. The engine determines whether or
- *                                not the user has finished the campaign and
- *                                sets the visible flag for the widget
- *                                accordingly.
- *     (campaign_details) (multi_page) ()
- *                                A multi page widget that shows more details
- *                                for the selected campaign.
- *     -[image] (image) ()        The image for the campaign.
- *     -[description] (control) ()
- *                                The description of the campaign.
- * @end_table
+ * @begin{table}[dialog_widgets]
+ *
+ * campaign_list & & listbox & m &
+ *         A listbox that contains all available campaigns. $
+ *
+ * -icon & & image & o &
+ *         The icon for the campaign. $
+ *
+ * -name & & control & o &
+ *         The name of the campaign. $
+ *
+ * -victory & & image & o &
+ *         The icon to show when the user finished the campaign. The engine
+ *         determines whether or not the user has finished the campaign and
+ *         sets the visible flag for the widget accordingly. $
+ *
+ * campaign_details & & multi_page & m &
+ *         A multi page widget that shows more details for the selected
+ *         campaign. $
+ *
+ * -image & & image & o &
+ *         The image for the campaign. $
+ *
+ * -description & & control & o &
+ *         The description of the campaign. $
+ *
+ * @end{table}
  */
 
 REGISTER_WINDOW(campaign_selection)
