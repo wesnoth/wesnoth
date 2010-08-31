@@ -415,7 +415,15 @@ pathfind::marked_route pathfind::mark_route(const plain_route &rt,
 
 		team const& viewing_team = (*resources::teams)[resources::screen->viewing_team()];
 
-		if (last_step || zoc || move_cost > movement) {
+		// check if there is a village that we could capture
+		// if it's an enemy unit and a fogged village, we assume it's free
+		// (if he already owns it, we can't know that)
+		// if it's not an enemy, we can always know if he owns the village
+		bool village = resources::game_map->is_village(*i) && ( !unit_team.owns_village(*i)
+				|| (viewing_team.is_enemy(u.side()) && viewing_team.fogged(*i)) );
+
+		// NOTE if there is a waypoint on a not owned village, then we will always stop there
+		if (last_step || zoc || move_cost > movement || (pass_here && village)) {
 			// check if we stop an a village and so maybe capture it
 			// if it's an enemy unit and a fogged village, we assume a capture
 			// (if he already owns it, we can't know that)
