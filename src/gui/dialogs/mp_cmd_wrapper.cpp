@@ -47,7 +47,7 @@ namespace gui2 {
  *
  * send_message & & button & m &
  *         Execute /msg. $
- * 
+ *
  * add_friend & & button & m &
  *         Execute /friend. $
  *
