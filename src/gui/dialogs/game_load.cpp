@@ -53,25 +53,38 @@ namespace gui2 {
  *
  * This shows the dialog to select and load a savegame file.
  *
- * @start_table = grid
- *     (txtFilter) (text) ()      The filter for the listbox items.
+ * @begin{table}[dialog_widgets]
  *
- *     (savegame_list) (listbox) ()
- *                                List of savegames.
- *     -(filename)                The name of the savegame.
- *     -[date]                    The date the savegame was created.
+ * txtFilter & & text & m &
+ *         The filter for the listbox items. $
  *
- *     (preview_pane) (widget) () Container widget or grid that contains the
- *                                items for a preview. The visible status of
- *                                this container depends on whether or not
- *                                something is selected.
- *     -(minimap) (minimap) ()    Minimap of the selected savegame.
- *     -(imgLeader) (image) ()    The image of the leader in the selected
- *                                savegame.
- *     -(lblScenario) (label) ()  The name of the scenario of the selected
- *                                savegame.
- *     -(lblSummary) (label) ()   Summary of the selected savegame.
- * @end_table
+ * savegame_list & & listbox & m &
+ *         List of savegames. $
+ *
+ * -filename & & control & m &
+ *         Name of the savegame. $
+ *
+ * -date & & control & o &
+ *         Date the savegame was created. $
+ *
+ * preview_pane & & widget & m &
+ *         Container widget or grid that contains the items for a preview. The
+ *         visible status of this container depends on whether or not something
+ *         is selected. $
+ *
+ * -minimap & & minimap & m &
+ *         Minimap of the selected savegame. $
+ *
+ * -imgLeader & & image & m &
+ *         The image of the leader in the selected savegame. $
+ *
+ * -lblScenario & & label & m &
+ *         The name of the scenario of the selected savegame. $
+ *
+ * -lblSummary & & label & m &
+ *         Summary of the selected savegame. $
+ *
+ * @end{table}
  */
 
 REGISTER_WINDOW(game_load)
