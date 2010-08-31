@@ -34,18 +34,39 @@ namespace gui2 {
  * This shows a dialog that provides a graphical front-end
  * to various commands in the multiplayer lobby
  *
- * @start_table = container
- *     message (text_box)         Text to send as a private message.
- *     reason (text_box)          The reason for a ban.
- *     time (text_box)            The time the ban lasts.
- *     [send_message] (button)    Execute /msg.
- *     [add_friend] (button)      Execute /friend.
- *     [add_ignore] (button)      Execute /ignore.
- *     [remove] (button)          Execute /remove.
- *     [status] (button)          Execute /query status.
- *     [kick] (button)            Execute /query kick.
- *     [ban] (button)             Execute /query kban.
- * @end_table
+ * @begin{table}[dialog_widgets]
+ *
+ * message & & text_box & o &
+ *         Text to send as a private message. $
+ *
+ * reason & & text_box & o &
+ *         The reason for a ban. $
+ *
+ * time & & text_box & o &
+ *         The time the ban lasts. $
+ *
+ * send_message & & button & m &
+ *         Execute /msg. $
+ * 
+ * add_friend & & button & m &
+ *         Execute /friend. $
+ *
+ * add_ignore & & button & m &
+ *         Execute /ignore. $
+ *
+ * remove & & button & m &
+ *         Execute /remove. $
+ *
+ * status & & button & m &
+ *         Execute /query status. $
+ *
+ * kick & & button & m &
+ *         Execute /query kick. $
+ *
+ * ban & & button & m &
+ *         Execute /query kban. $
+ *
+ * @end{table}
  */
 
 REGISTER_WINDOW(mp_cmd_wrapper)
