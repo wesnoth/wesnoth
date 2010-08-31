@@ -197,14 +197,24 @@ void tmp_connect::show_server_list(twindow& window)
  *
  * This shows the dialog to log in to the MP server
  *
- * @start_table = grid
- *     (user_name) (text_box) ()       The login user name.
- *     (password) (text_box) ()        The password.
- *     [password_reminder] (button) () Request a password reminder.
- *     [change_username] (button) ()   Use a different username.
- *     [login_label] (button) ()       Displays the information received
- *                                     from the server.
- * @end_table
+ * @begin{table}[dialog_widgets]
+ *
+ * user_name & & text_box & m &
+ *         The login user name. $
+ *
+ * password & & text_box & m &
+ *         The password. $
+ *
+ * password_reminder & & button & o &
+ *         Request a password reminder. $
+ *
+ * change_username & & button & o &
+ *         Use a different username. $
+ *
+ * login_label & & button & o &
+ *         Displays the information received from the server. $
+ *
+ * @end{table}
  */
 
 REGISTER_WINDOW(mp_login)
