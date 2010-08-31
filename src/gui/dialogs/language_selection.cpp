@@ -37,11 +37,15 @@ namespace gui2 {
  *
  * This shows the dialog to select the language to use.
  *
- * @start_table = grid
- *     (language_list) (listbox) ()    This text contains the list with
- *                                     available languages.
- *     -[] (control) ()                Gets the name of the language.
- * @end_table
+ * @begin{table}[dialog_widgets]
+ *
+ * language_list & & listbox & m &
+ *         This text contains the list with available languages. $
+ *
+ * - & & control & o &
+ *         Gets the name of the language. &
+ *
+ * @end{table}
  */
 
 REGISTER_WINDOW(language_selection)
