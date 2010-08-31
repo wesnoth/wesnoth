@@ -2281,6 +2281,12 @@ size_t move_unit(move_unit_spectator *move_spectator,
 		std::vector<map_location>& waypoints = ui->waypoints();
 		if(!waypoints.empty() && waypoints.front() == *step) {
 			waypoints.erase(waypoints.begin());
+			//if user placed waypoint on a enemy/free village
+			//assume that he wanted to capture it
+			if(map.is_village(*step) && !tm->owns_village(*step)) {
+				// this will stop the unit, and capture should do it anyway
+				moves_left = 0;
+			}
 		}
 
 		// If we use fog or shroud, see if we have sighted an enemy unit,
