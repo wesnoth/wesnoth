@@ -249,25 +249,25 @@ bool move::calculate_new_route(const map_location& source_hex, const map_locatio
 void move::apply_temp_modifier(unit_map& unit_map)
 {
 	if (get_source_hex() == get_dest_hex())
-		return; //zero-hex move, probably used by attack subclass
+		return; //zero-hex move, used by attack subclass
 
 	//TODO: deal with multi-turn moves, which may for instance end their first turn
 	// by capturing a village
 
 	//TODO: we may need to change unit status here and change it back in remove_temp_modifier
 
-	unit_map::iterator unit_it = resources::units->find(get_source_hex());
-	assert(unit_it != resources::units->end());
+	unit_map::iterator unit_it = unit_map.find(get_source_hex());
+	assert(unit_it != unit_map.end());
 
 	unit& unit = *unit_it;
 	//Modify movement points
-	DBG_WB <<"Changing movement points for unit " << unit.name() << " [" << unit.id()
+	DBG_WB <<"Move: Changing movement points for unit " << unit.name() << " [" << unit.id()
 			<< "] from " << unit.movement_left() << " to "
 			<< unit.movement_left() - movement_cost_ << ".\n";
 	unit.set_movement(unit.movement_left() - movement_cost_);
 
 	// Move the unit
-	DBG_WB << "Temporarily moving unit " << unit.name() << " [" << unit.id()
+	DBG_WB << "Move: Temporarily moving unit " << unit.name() << " [" << unit.id()
 			<< "] from (" << get_source_hex() << ") to (" << get_dest_hex() <<")\n";
 	unit_map.move(get_source_hex(), get_dest_hex());
 
@@ -280,9 +280,13 @@ void move::remove_temp_modifier(unit_map& unit_map)
 
 	unit_map::iterator unit_it = resources::units->find(get_dest_hex());
 	assert(unit_it != resources::units->end());
+	unit& unit = *unit_it;
 
 	// Restore movement points
-	unit_it->set_movement(unit_it->movement_left() + movement_cost_);
+	DBG_WB << "Move: Changing movement points for unit " << unit.name() << " [" << unit.id()
+				<< "] from " << unit.movement_left() << " to "
+				<< unit.movement_left() + movement_cost_ << ".\n";
+	unit.set_movement(unit.movement_left() + movement_cost_);
 
 	// Restore the unit to its original position
 	unit_map.move(get_dest_hex(), get_source_hex());

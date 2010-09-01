@@ -23,9 +23,6 @@
 
 #include "action.hpp"
 
-#include <set>
-#include <stack>
-
 namespace wb
 {
 
@@ -46,9 +43,6 @@ public:
 	 */
 	virtual void build_map();
 
-	/// Any actions associated with this unit will be ignored when modifying the unit map
-	virtual void exclude(const unit& unit) { excluded_units_.insert(&unit); }
-
 	/// Visitor pattern method, no need to call this directly
 	virtual void visit_move(move_ptr move);
 	virtual void visit_attack(attack_ptr attack);
@@ -61,7 +55,6 @@ protected:
 
 	unit_map& unit_map_;
 
-	std::set<unit const*> excluded_units_;
 	bool for_pathfinding_;
 
 	action_queue applied_actions_;

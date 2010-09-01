@@ -34,7 +34,6 @@ namespace wb
 mapbuilder_visitor::mapbuilder_visitor(unit_map& unit_map, side_actions_ptr side_actions, bool for_pathfinding)
 	: visitor(side_actions)
 	, unit_map_(unit_map)
-    , excluded_units_()
 	, for_pathfinding_(for_pathfinding)
 	, applied_actions_()
 	, mode_(BUILD_PLANNED_MAP)
@@ -60,24 +59,30 @@ void mapbuilder_visitor::build_map()
 
 void mapbuilder_visitor::visit_move(move_ptr move)
 {
-	if (excluded_units_.find(move->get_unit()) == excluded_units_.end())
+	if(mode_ == BUILD_PLANNED_MAP)
 	{
-		if(mode_ == BUILD_PLANNED_MAP)
-		{
-			move->apply_temp_modifier(unit_map_);
-			//remember which actions we applied, so we can unapply them later
-			applied_actions_.push_back(move);
-		}
-		else if (mode_ == RESTORE_NORMAL_MAP)
-		{
-			move->remove_temp_modifier(unit_map_);
-		}
+		move->apply_temp_modifier(unit_map_);
+		//remember which actions we applied, so we can unapply them later
+		applied_actions_.push_back(move);
+	}
+	else if (mode_ == RESTORE_NORMAL_MAP)
+	{
+		move->remove_temp_modifier(unit_map_);
 	}
 }
 
 void mapbuilder_visitor::visit_attack(attack_ptr attack)
 {
-	visit_move(boost::static_pointer_cast<move>(attack));
+	if(mode_ == BUILD_PLANNED_MAP)
+	{
+		attack->apply_temp_modifier(unit_map_);
+		//remember which actions we applied, so we can unapply them later
+		applied_actions_.push_back(attack);
+	}
+	else if (mode_ == RESTORE_NORMAL_MAP)
+	{
+		attack->remove_temp_modifier(unit_map_);
+	}
 }
 
 void mapbuilder_visitor::visit_recruit(recruit_ptr recruit)

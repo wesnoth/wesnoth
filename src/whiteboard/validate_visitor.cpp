@@ -144,7 +144,7 @@ void validate_visitor::visit_move(move_ptr move)
 			}
 
 			//Check that the unit still has enough movement to do this move
-			if (unit_it->movement_left() < move->movement_cost_)
+			if (move->valid_ && unit_it->movement_left() < move->movement_cost_)
 				move->set_valid(false);
 		}
 	}

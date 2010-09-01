@@ -50,10 +50,12 @@ std::ostream& attack::print(std::ostream& s) const
 
 attack::attack(size_t team_index, const map_location& target_hex, int weapon_choice, const pathfind::marked_route& route,
 		arrow_ptr arrow, fake_unit_ptr fake_unit)
-	: move(team_index, route, arrow, fake_unit)
-	, target_hex_(target_hex), weapon_choice_(weapon_choice)
+	: move(team_index, route, arrow, fake_unit),
+	target_hex_(target_hex),
+	weapon_choice_(weapon_choice),
+	attack_movement_cost_(get_unit()->attacks()[weapon_choice_].movement_used()),
+	temp_movement_substracted_(0)
 {
-
 }
 
 attack::~attack()
@@ -105,6 +107,39 @@ bool attack::execute()
 		//only path that returns execute_successful = true
 	}
 	return execute_successful;
+}
+
+void attack::apply_temp_modifier(unit_map& unit_map)
+{
+	move::apply_temp_modifier(unit_map);
+	assert(get_unit());
+	unit& unit = *get_unit();
+	LOG_WB << unit.name() << " [" << unit.id()
+					<< "] has " << unit.attacks_left() << " attacks, decreasing by one" << "\n";
+	assert(unit.attacks_left() > 0);
+	unit.set_attacks(unit.attacks_left() - 1);
+
+	//Calculate movement to substract
+	temp_movement_substracted_ = unit.movement_left() >= attack_movement_cost_ ? attack_movement_cost_ : 0 ;
+	DBG_WB << "Attack: Changing movement points for unit " << unit.name() << " [" << unit.id()
+				<< "] from " << unit.movement_left() << " to "
+				<< unit.movement_left() - temp_movement_substracted_ << ".\n";
+	unit.set_movement(unit.movement_left() - temp_movement_substracted_);
+}
+
+void attack::remove_temp_modifier(unit_map& unit_map)
+{
+	assert(get_unit());
+	unit& unit = *get_unit();
+	LOG_WB << unit.name() << " [" << unit.id()
+					<< "] has " << unit.attacks_left() << " attacks, increasing by one" << "\n";
+	unit.set_attacks(unit.attacks_left() + 1);
+	DBG_WB << "Attack: Changing movement points for unit " << unit.name() << " [" << unit.id()
+				<< "] from " << unit.movement_left() << " to "
+				<< unit.movement_left() + temp_movement_substracted_ << ".\n";
+	unit.set_movement(unit.movement_left() + temp_movement_substracted_);
+	temp_movement_substracted_ = 0;
+	move::remove_temp_modifier(unit_map);
 }
 
 void attack::draw_hex(const map_location& hex)

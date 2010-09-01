@@ -45,6 +45,11 @@ public:
 
 	virtual bool execute();
 
+	/** Applies temporarily the result of this action to the specified unit map. */
+	virtual void apply_temp_modifier(unit_map& unit_map);
+	/** Removes the result of this action from the specified unit map. */
+	virtual void remove_temp_modifier(unit_map& unit_map);
+
 	/** Gets called by display when drawing a hex, to allow actions to draw to the screen. */
 	virtual void draw_hex(const map_location& hex);
 
@@ -55,6 +60,8 @@ private:
 		map_location target_hex_;
 
 		int weapon_choice_;
+		int attack_movement_cost_;
+		int temp_movement_substracted_;
 };
 
 /** Dumps an attack on a stream, for debug purposes. */
