@@ -1109,6 +1109,8 @@ def global_sanity_check(filename, lines):
     # for double spaces at end of sentence.
     present = []
     in_scenario = False
+    in_multiplayer = False
+    subtag_depth = 0
     in_person = False
     in_trait = False
     ignore_id = False
@@ -1131,12 +1133,27 @@ def global_sanity_check(filename, lines):
     for i in range(len(lines)):
         if '[' in lines[i]:
             preamble_seen = True
+        # This logic looks odd because a scenario can be conditionally
+        # wrapped in both [scenario] and [multiplayer]; we mustn't count
+        # either as a subtag even if it occurs inside the other, otherwise
+        # this code might see id= declarations as being at the wrong depth.
         if "[scenario]" in lines[i]:
             in_scenario = True
             preamble_seen = False
         elif "[/scenario]" in lines[i]:
             in_scenario = False
-        elif "[trait]" in lines[i]:
+        elif "[multiplayer]" in lines[i]:
+            in_multiplayer = True
+            preamble_seen = False
+        elif "[/multiplayer]" in lines[i]:
+            in_multiplayer = False
+        else:
+            if re.match(r"\[[a-z]", lines[i]):
+                subtag_depth += 1
+            if "[/" in lines[i]:
+                subtag_depth -= 1
+        # Ordinary subtag flags begin here
+        if "[trait]" in lines[i]:
             in_trait = True
         elif "[/trait]" in lines[i]:
             in_trait = False
@@ -1255,12 +1272,12 @@ def global_sanity_check(filename, lines):
                 if key == "message" and in_message and not in_option:
                     lines[i] = pangoize(lines[i], filename, i)
             else:
-                if in_scenario and key == "id":
+                if (in_scenario or in_multiplayer) and key == "id":
                     if in_person:
                         present.append(value)
                     elif value in ('narrator', 'unit', 'second_unit') or (value and value[0] in ("$", "{")):
                         continue
-                    elif preamble_seen and not ignore_id and not in_object and not in_cfg and not in_facet and not in_sound_source and not in_remove_sound_source and not in_stage and not in_goal and not in_set_menu_item and not value in present:
+                    elif preamble_seen and subtag_depth > 0 and not ignore_id and not in_object and not in_cfg and not in_facet and not in_sound_source and not in_remove_sound_source and not in_stage and not in_goal and not in_set_menu_item and not value in present:
                         print '"%s", line %d: unknown \'%s\' referred to by id' \
                               % (filename, i+1, value)
                 if markcheck and has_tr_mark and not ("wmllint: ignore" in comment or "wmllint: noconvert" in comment):
