@@ -369,8 +369,8 @@ std::pair<map_location,map_location> testing_move_to_targets_phase::choose_move(
 	LOG_AI << "choose target...\n";
 
 	if(best_rated_target == rated_targets.end()) {
-		LOG_AI << "no eligible targets found\n";
-		return std::pair<map_location,map_location>();
+		LOG_AI << "no eligible targets found for unit at " << u->get_location() << std::endl;
+		return std::make_pair(u->get_location(), u->get_location());
 	}
 
 	assert(best_rating >= 0);
