@@ -52,7 +52,7 @@ public:
 	virtual void remove_temp_modifier(unit_map& unit_map);
 
 	/** Gets called by display when drawing a hex, to allow actions to draw to the screen. */
-	virtual void draw_hex(const map_location&) { }
+	virtual void draw_hex(const map_location& hex);
 
 	/**
 	 * Indicates whether this hex is the preferred hex to draw the numbering for this action.

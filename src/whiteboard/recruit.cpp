@@ -120,6 +120,22 @@ void recruit::remove_temp_modifier(unit_map& unit_map)
 	resources::screen->invalidate_game_status();
 }
 
+void recruit::draw_hex(map_location const& hex)
+{
+	if (hex == recruit_hex_)
+	{
+		const double x_offset = 0.5;
+		const double y_offset = 0.7;
+		//position 0,0 in the hex is the upper left corner
+		std::stringstream number_text;
+		number_text << "-" << temp_unit_->type()->cost();
+		size_t font_size = 16;
+		SDL_Color color; color.r = 255; color.g = 0; color.b = 0; //red
+		resources::screen->draw_text_in_hex(hex, display::LAYER_ACTIONS_NUMBERING,
+						number_text.str(), font_size, color, x_offset, y_offset);
+	}
+}
+
 unit* recruit::create_corresponding_unit()
 {
 	unit_type const* type = unit_types.find(unit_name_);
