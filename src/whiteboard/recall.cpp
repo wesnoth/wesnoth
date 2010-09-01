@@ -131,3 +131,5 @@ void recall::remove_temp_modifier(unit_map& unit_map)
 }
 
 }
+
+} //end namespace wb
