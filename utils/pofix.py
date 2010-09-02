@@ -63,47 +63,16 @@ stringfixes = {
 ("- usually in blood - although", "— usually in blood — although"),
 ("position - although", "position — although"),
 ("as advisors -", "as advisors —"),
-("- Great Mage Delfador", "― Great Mage Delfador"),
-("- The Wesnoth Tactical Guide", "― The Wesnoth Tactical Guide"),
-("- King Konrad, 536YW", "― King Konrad, 536YW"),
-("- Memoirs of Gweddry, 627YW", "― Memoirs of Gweddry, 627YW"),
-("- High Lord Kalenz, 470YW", "― High Lord Kalenz, 470YW"),
-("- The Wesnoth Community", "― The Wesnoth Community"),
 ("don't have to - let it", "don't have to — let it"),
-("- Sir Kaylan,", "― Sir Kaylan,"),
-("- Princess Li'sar,", "― Princess Li’sar,"),
 ("your attacks - they will", "your attacks — they will"),
-("- The Scroll of Chantal,", "― The Scroll of Chantal,"),
-("- Great Sage Dacyn,", "― Great Sage Dacyn,"),
-("- Queen Li'sar,", "― Queen Li’sar,"),
-("- Meneldur,", "― Meneldur,"),
 ("upload statistics - Help", "upload statistics — Help"),
 ("(A) - auth command", "(A) — auth command"),
 ("(D) - debug only, (N) - network only, (A) - auth only", "(D) — debug only, (N) — network only, (A) — auth only"),
 ("not empty - duplicate", "not empty — duplicate"),
-("- King Konrad,", "― King Konrad,"),
 ("Player Info -", "Player Info —"),
 ("About to upload statistics - Help us make Wesnoth better for you!", "About to upload statistics — Help us make Wesnoth better for you!"),
 #the following rule applies to wesnoth/*.po* and to wesnoth-manual/*.po*
 ("victory objectives - getting", "victory objectives — getting"),
-
-# Fix screw up
-# conversion added in 1.9.0-svn
-("— Great Mage Delfador", "― Great Mage Delfador"),
-("— The Wesnoth Tactical Guide", "― The Wesnoth Tactical Guide"),
-("— King Konrad, 536YW", "― King Konrad, 536YW"),
-("— Memoirs of Gweddry, 627YW", "― Memoirs of Gweddry, 627YW"),
-("— High Lord Kalenz, 470YW", "― High Lord Kalenz, 470YW"),
-("— The Wesnoth Community", "― The Wesnoth Community"),
-("— Sir Kaylan,", "― Sir Kaylan,"),
-("— Princess Li'sar,", "― Princess Li’sar,"),
-("— The Scroll of Chantal,", "― The Scroll of Chantal,"),
-("— Great Sage Dacyn,", "― Great Sage Dacyn,"),
-("— Queen Li'sar,", "― Queen Li’sar,"),
-("— King Konrad,", "― King Konrad,"),
-("— Meneldur,", "― Meneldur,"),
-("― Princess Li'sar,", "― Princess Li’sar,"),
-("― Queen Li'sar,", "― Queen Li’sar,"),
 
 # Straight apostrophes and quotes to curly ones
 # conversion added in 1.9.0-svn
@@ -2811,7 +2780,7 @@ stringfixes = {
 # ("\"Ut'Tan-Grorag\"", "\"Ut’Tan-Grorag\""),
 # ("\"Ut'Tan-Vrork\"", "\"Ut’Tan-Vrork\""),
 
-# Generates long po line: 86 bytes 
+# Generates long po line: 86 bytes
 # ("kind that won't leave <i>us</i>", "kind that won’t leave <i>us</i>"),
 
 # May generate long po line: 85 bytes
