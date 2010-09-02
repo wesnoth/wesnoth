@@ -407,6 +407,8 @@ twindow::tretval twindow::get_retval_by_id(const std::string& id)
 #endif
 	} else if(id == "credits") {
 		return static_cast<tretval>(gui::SHOW_ABOUT);
+	} else if(id == "refresh") {
+		return static_cast<tretval>(gui::RELOAD_GAME_DATA);
 	} else if(id == "quit") {
 		return static_cast<tretval>(gui::QUIT_GAME);
 
