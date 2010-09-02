@@ -1011,7 +1011,7 @@ connect::connect(game_display& disp, const config& game_config,
 	gold_title_label_(video(), _("Gold"), font::SIZE_SMALL, font::LOBBY_COLOR),
 	income_title_label_(video(), _("Income"), font::SIZE_SMALL, font::LOBBY_COLOR),
 
-	launch_(video(), _("I'm Ready")),
+	launch_(video(), _("I’m Ready")),
 	cancel_(video(), _("Cancel")),
 	add_local_player_(video(), _("Add named local player")),
 	combo_control_group_(new gui::drop_group_manager())
