@@ -63,6 +63,7 @@
 			<Add library="fontconfig" />
 			<Add library="libglib-2.0" />
 			<Add library="liblua" />
+			<Add directory=".\" />
 		</Linker>
 		<Unit filename="..\..\packaging\windows\wesnoth.rc">
 			<Option compilerVar="WINDRES" />
@@ -398,8 +399,6 @@
 		<Unit filename="..\..\src\gui\dialogs\gamestate_inspector.cpp" />
 		<Unit filename="..\..\src\gui\dialogs\gamestate_inspector.hpp" />
 		<Unit filename="..\..\src\gui\dialogs\helper.hpp" />
-		<Unit filename="..\..\src\gui\dialogs\icon_message.cpp" />
-		<Unit filename="..\..\src\gui\dialogs\icon_message.hpp" />
 		<Unit filename="..\..\src\gui\dialogs\language_selection.cpp" />
 		<Unit filename="..\..\src\gui\dialogs\language_selection.hpp" />
 		<Unit filename="..\..\src\gui\dialogs\lobby\lobby_data.cpp" />
@@ -675,8 +674,8 @@
 		<Unit filename="..\..\src\serialization\string_utils.hpp" />
 		<Unit filename="..\..\src\serialization\tokenizer.cpp" />
 		<Unit filename="..\..\src\settings.cpp" />
-		<Unit filename="..\..\src\gui\dialogs\..\..\settings.hpp" />
 		<Unit filename="..\..\src\settings.hpp" />
+		<Unit filename="..\..\src\gui\dialogs\..\..\settings.hpp" />
 		<Unit filename="..\..\src\sha1.cpp" />
 		<Unit filename="..\..\src\sha1.hpp" />
 		<Unit filename="..\..\src\shared_object.hpp" />
@@ -741,8 +740,6 @@
 		<Unit filename="..\..\src\unit_map.cpp" />
 		<Unit filename="..\..\src\unit_types.cpp" />
 		<Unit filename="..\..\src\unit_types.hpp" />
-		<Unit filename="..\..\src\upload_log.cpp" />
-		<Unit filename="..\..\src\upload_log.hpp" />
 		<Unit filename="..\..\src\util.cpp" />
 		<Unit filename="..\..\src\util.hpp" />
 		<Unit filename="..\..\src\variable.cpp" />
@@ -754,16 +751,30 @@
 		<Unit filename="..\..\src\video.hpp" />
 		<Unit filename="..\..\src\wesconfig.h" />
 		<Unit filename="..\..\src\whiteboard\action.cpp" />
+		<Unit filename="..\..\src\whiteboard\action.hpp" />
 		<Unit filename="..\..\src\whiteboard\attack.cpp" />
+		<Unit filename="..\..\src\whiteboard\attack.hpp" />
 		<Unit filename="..\..\src\whiteboard\highlight_visitor.cpp" />
+		<Unit filename="..\..\src\whiteboard\highlight_visitor.hpp" />
 		<Unit filename="..\..\src\whiteboard\manager.cpp" />
+		<Unit filename="..\..\src\whiteboard\manager.hpp" />
 		<Unit filename="..\..\src\whiteboard\mapbuilder_visitor.cpp" />
+		<Unit filename="..\..\src\whiteboard\mapbuilder_visitor.hpp" />
 		<Unit filename="..\..\src\whiteboard\move.cpp" />
+		<Unit filename="..\..\src\whiteboard\move.hpp" />
 		<Unit filename="..\..\src\whiteboard\recall.cpp" />
+		<Unit filename="..\..\src\whiteboard\recall.hpp" />
 		<Unit filename="..\..\src\whiteboard\recruit.cpp" />
+		<Unit filename="..\..\src\whiteboard\recruit.hpp" />
 		<Unit filename="..\..\src\whiteboard\side_actions.cpp" />
+		<Unit filename="..\..\src\whiteboard\side_actions.hpp" />
+		<Unit filename="..\..\src\whiteboard\typedefs.hpp" />
+		<Unit filename="..\..\src\whiteboard\utility.cpp" />
+		<Unit filename="..\..\src\whiteboard\utility.hpp" />
 		<Unit filename="..\..\src\whiteboard\validate_visitor.cpp" />
+		<Unit filename="..\..\src\whiteboard\validate_visitor.hpp" />
 		<Unit filename="..\..\src\whiteboard\visitor.cpp" />
+		<Unit filename="..\..\src\whiteboard\visitor.hpp" />
 		<Unit filename="..\..\src\widgets\button.cpp" />
 		<Unit filename="..\..\src\widgets\button.hpp" />
 		<Unit filename="..\..\src\widgets\combo.cpp" />
