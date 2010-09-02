@@ -355,7 +355,7 @@ private:
 		building_rule() :
 			constraints(),
 			location_constraints(),
-			probability(0),
+			probability(100),
 			precedence(0),
 			local(false),
 			hash_(DUMMY_HASH)

@@ -773,7 +773,7 @@ void terrain_builder::parse_config(const config &cfg, bool local)
 		pbr.location_constraints =
 			map_location(br["x"].to_int() - 1, br["y"].to_int() - 1);
 
-		pbr.probability = br["probability"].to_int(-1);
+		pbr.probability = br["probability"].to_int(100);
 
 		// Mapping anchor indices to anchor locations.
 		anchormap anchors;
@@ -912,7 +912,7 @@ bool terrain_builder::rule_matches(const terrain_builder::building_rule &rule,
 		return false;
 	}
 
-	if(rule.probability != -1) {
+	if(rule.probability != 100) {
 		unsigned int random = get_noise(loc, rule.get_hash()) % 100;
 		if(random > static_cast<unsigned int>(rule.probability)) {
 			return false;
