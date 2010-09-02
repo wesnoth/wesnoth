@@ -906,14 +906,14 @@ void terrain_builder::add_off_map_rule(const std::string& image)
 }
 
 bool terrain_builder::rule_matches(const terrain_builder::building_rule &rule,
-		const map_location &loc, const int rule_index, const terrain_constraint *type_checked) const
+		const map_location &loc, const terrain_constraint *type_checked) const
 {
 	if(rule.location_constraints.valid() && rule.location_constraints != loc) {
 		return false;
 	}
 
 	if(rule.probability != -1) {
-		unsigned int random = get_noise(loc, rule_index) % 100;
+		unsigned int random = get_noise(loc, rule.get_hash()) % 100;
 		if(random > static_cast<unsigned int>(rule.probability)) {
 			return false;
 		}
@@ -954,9 +954,9 @@ bool terrain_builder::rule_matches(const terrain_builder::building_rule &rule,
 	return true;
 }
 
-void terrain_builder::apply_rule(const terrain_builder::building_rule &rule, const map_location &loc, const int rule_index)
+void terrain_builder::apply_rule(const terrain_builder::building_rule &rule, const map_location &loc)
 {
-	unsigned int rand_seed = get_noise(loc, rule_index);
+	unsigned int rand_seed = get_noise(loc, rule.get_hash());
 
 	foreach (const terrain_constraint &constraint, rule.constraints)
 	{
@@ -979,6 +979,38 @@ void terrain_builder::apply_rule(const terrain_builder::building_rule &rule, con
 	}
 }
 
+// copied from text_surface::hash()
+// but keep it separated because the needs are different
+// and changing it will modify the map random variations
+static unsigned int hash_str(const std::string& str)
+{
+	unsigned int h = 0;
+	for(std::string::const_iterator it = str.begin(), it_end = str.end(); it != it_end; ++it)
+		h = ((h << 9) | (h >> (sizeof(int) * 8 - 9))) ^ (*it);
+	return h;
+}
+
+unsigned int terrain_builder::building_rule::get_hash() const
+{
+	if(hash_ != DUMMY_HASH)
+		return hash_;
+
+	foreach(const terrain_constraint &constraint, constraints) {
+		foreach(const rule_image& ri, constraint.images) {
+			foreach(const rule_image_variant& variant, ri.variants) {
+				// we will often hash the same string, but that seems fast enough
+				hash_ += hash_str(variant.image_string);
+			}
+		}
+	}
+
+	//don't use the reserved dummy hash
+	if(hash_ == DUMMY_HASH)
+		hash_ = 105533;  // just a random big prime number
+
+	return hash_;
+}
+
 void terrain_builder::build_terrains()
 {
 	log_scope("terrain_builder::build_terrains");
@@ -993,7 +1025,6 @@ void terrain_builder::build_terrains()
 		}
 	}
 
-	int rule_index = 0;
 	foreach (const building_rule &rule, building_rules_)
 	{
 		// Find the constraint that contains the less terrain of all terrain rules.
@@ -1045,13 +1076,12 @@ void terrain_builder::build_terrains()
 					itor != locations->end(); ++itor) {
 				const map_location loc = itor->legacy_difference(min_constraint->loc);
 
-				if(rule_matches(rule, loc, rule_index, min_constraint)) {
-					apply_rule(rule, loc, rule_index);
+				if(rule_matches(rule, loc, min_constraint)) {
+					apply_rule(rule, loc);
 				}
 			}
 		}
 
-		++rule_index;
 	}
 }
 

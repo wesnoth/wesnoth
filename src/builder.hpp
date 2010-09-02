@@ -71,6 +71,8 @@ public:
 	 */
 	static const int UNITPOS = 36 + 18;
 
+	static const unsigned int DUMMY_HASH = 0;
+
 	/** A shorthand typedef for a list of animated image locators,
 	 * the base data type returned by the get_terrain_at method.
 	 */
@@ -355,7 +357,8 @@ private:
 			location_constraints(),
 			probability(0),
 			precedence(0),
-			local(false)
+			local(false),
+			hash_(DUMMY_HASH)
 		{}
 
 		/**
@@ -389,6 +392,10 @@ private:
 
 		bool operator<(building_rule const &that) const
 		{ return precedence < that.precedence; }
+
+		unsigned int get_hash() const;
+	private:
+		mutable unsigned int hash_;
 	};
 
 	/**
@@ -736,15 +743,10 @@ private:
 	 * @param rule      The rule to check.
 	 * @param loc       The location in the map where we want to check
 	 *                  whether the rule matches.
-	 * @param rule_index The index of the rule, relative to the start of
-	 *                  the rule list. Rule indices are used for seeding
-	 *                  the pseudo-random-number generator used for
-	 *                  probability calculations.
 	 * @param type_checked The constraint which we already know that its
 	 *                  terrain types matches.
 	 */
-	bool rule_matches(const building_rule &rule, const map_location &loc,
-			const int rule_index, const terrain_constraint *type_checked) const;
+	bool rule_matches(const building_rule &rule, const map_location &loc, const terrain_constraint *type_checked) const;
 
 	/**
 	 * Applies a rule at a given location: applies the result of a
@@ -753,9 +755,8 @@ private:
 	 *
 	 * @param rule      The rule to apply
 	 * @param loc       The location to which to apply the rule.
-	 * @param rule_index The index of the rule used for seed generation
 	 */
-	void apply_rule(const building_rule &rule, const map_location &loc, const int rule_index);
+	void apply_rule(const building_rule &rule, const map_location &loc);
 
 	/**
 	 * Calculates the list of terrains, and fills the tile_map_ member,
