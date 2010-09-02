@@ -2294,10 +2294,12 @@ static int do_gameloop(int argc, char** argv)
 		const font::floating_label_context label_manager;
 
 		cursor::set(cursor::NORMAL);
-		gui2::ttitle_screen dlg;
-		dlg.show(game.disp().video());
+		if(res == gui::NOTHING) {
+			gui2::ttitle_screen dlg;
+			dlg.show(game.disp().video());
 
-		res = static_cast<gui::TITLE_RESULT>(dlg.get_retval());
+			res = static_cast<gui::TITLE_RESULT>(dlg.get_retval());
+		}
 
 		game_controller::RELOAD_GAME_DATA should_reload = game_controller::RELOAD_DATA;
 
