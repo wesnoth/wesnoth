@@ -2342,7 +2342,7 @@ size_t move_unit(move_unit_spectator *move_spectator,
 
 				std::vector<std::pair<const config *, map_location> >::const_iterator hide_it = hides.cfgs.begin();
 				// we only use the first valid alert message
-				for(;hide_it != hides.cfgs.end() && !ambushed_string.empty(); ++hide_it) {
+				for(;hide_it != hides.cfgs.end() && ambushed_string.empty(); ++hide_it) {
 					ambushed_string = (*hide_it->first)["alert"];
 				}
 			}
