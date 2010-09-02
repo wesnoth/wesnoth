@@ -106,6 +106,10 @@ stringfixes = {
 
 # 'Can not' -> 'cannot'
 ("directory name and can not be installed", "directory name and cannot be installed"),
+
+# More straight to curly conversions
+# conversion added in 1.9.0+svn
+("Don't make a wish.", "Don’t make a wish."),
 ),
 
 "wesnoth-anl" : (
@@ -931,7 +935,7 @@ stringfixes = {
 ("diminuitive", "diminutive"),
 # Convert makeshift dashes:
 # conversion added in 1.9.0-svn
-("allowed - grudgingly - to", "allowed — grudgingly — to"),
+("allowed - grudgingly - to", "allowed—grudgingly—to"),
 ("horseback - in fact", "horseback — in fact"),
 ("is quite justified -", "is quite justified —"),
 ("their own race - this power", "their own race — this power"),
@@ -940,6 +944,23 @@ stringfixes = {
 ("in battle - if only", "in battle — if only"),
 ("accompany it - it is a sin", "accompany it — it is a sin"),
 ("rarely seen - standing", "rarely seen — standing"),
+
+# Fix spacing of old results
+# conversion added in 1.9.0+svn
+("allowed — grudgingly — to", "allowed—grudgingly—to"),
+
+# Convert straight quotes to curly quotes
+# conversion added in 1.9.0+svn
+("particularly good at ""resolving"" territorial", "particularly good at “resolving” territorial"),
+("the power they've learned to focus", "the power they’ve learned to focus"),
+("challenge his tribe's leader for", "challenge his tribe’s leader for"),
+("drakes'", "drakes’"),
+("although it's most commonly", "although it’s most commonly"),
+("one's own goals", "one’s own goals"),
+("commands of it's master", "commands of it’s master"),
+("This doesn't work", "This doesn’t work"),
+("target's", "target’s"),
+("enemies'", "enemies’"),
 ),
 
 "wesnoth-utbs" : (
