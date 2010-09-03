@@ -370,7 +370,7 @@ namespace game_events {
 						break;
 					}
 					const std::vector<unit>& avail_units = team->recall_list();
-					for(std::vector<unit>::const_iterator unit = avail_units.begin(); unit!=avail_units.end();) {
+					for(std::vector<unit>::const_iterator unit = avail_units.begin(); unit!=avail_units.end(); ++unit) {
 						if(counts == default_counts && match_count) {
 							break;
 						}
