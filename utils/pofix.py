@@ -2806,21 +2806,6 @@ stringfixes = {
 # May generate long po line: 85 bytes
 ("It's the Prince", "It’s the Prince"),
 
-# po lines of 84 bytes and under appear to be OK, but I have a list if needed ...
-
-# These lines risk generating duplicate msgids
-# ("a unit doesn't do anything", "a unit doesn’t do anything"),
-# ("Earl Lanbec'h", "Earl Lanbec’h"),
-# ("I don't think so,", "I don’t think so,"),
-# ("I don't know what", "I don’t know what"),
-# ("If ye'll permit me", "If ye’ll permit me"),
-# ("If you'll permit me", "If you’ll permit me"),
-# ("I'm not sure", "I’m not sure"),
-# ("so, sir, ye're wrong. We", "so, sir, ye’re wrong. We"),
-# ("so, sir, you're wrong. We", "so, sir, you’re wrong. We"),
-# ("We've defeated the", "We’ve defeated the"),
-# ("We're going to", "We’re going to"),
-
 # The rest all appear safe to apply
 
 ("'Lord'? Oh no!", "‘Lord’? Oh no!"),
