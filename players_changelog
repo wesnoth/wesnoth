@@ -3,20 +3,26 @@ changes may be omitted). For a complete list of changes, see the main
 changelog: http://svn.gna.org/viewcvs/*checkout*/wesnoth/trunk/changelog
 
 Version 1.9.0+svn:
- * Graphics
+ * Graphics:
    * New animations: Merman Hunter ranged animation and defence, Warrior se 
      attack and defence.
    * New portraits: Inferno Drake
    * New Terrain: Tropical Ocean, Snowy Human City Village, Muddy Quagmire
+
  * Language and i18n:
    * Updated translations: Chinese (Simplified), Chinese (Traditional), French,
      Hungarian, Indonesian, Japanese, Polish, Vietnamese.
+
  * Multiplayer:
    * Updated most of the maps taking advantage of the new terrains.
- * Units
+
+ * Units:
+   * Decreased the melee and ranged attack of the Footpad from 5-2 to 4-2.
    * Added the Ghast unit from DiD to core with new base frame and animations.
+
  * Miscellaneous:
    * Removed: statistics upload code.
+
 
 Version 1.9.0:
  * Campaigns:
@@ -110,6 +116,7 @@ Version 1.9.0:
    * All villages except water and swamp villages can now be placed on any base
      terrain.
    * Introduced a new allignement called "Liminal". Those units fight best during the twilight times of day.
+
 
 Version 1.8.0:
  * Campaigns:
