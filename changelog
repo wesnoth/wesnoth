@@ -3,7 +3,7 @@ Version 1.9.0+svn:
    * Fixed bug #16585: made AI move in targeting phase even if for some of the
      'best' units moves to targets are impossible
  * Campaigns:
-   * Unified the campaign description of the number of scenarios. Now the the
+   * Unified the campaign description of the number of scenarios. Now the
      number reflects only the battle scenarios of each campaign.
    * Legend of Wesmere:
      * Added a second chapter to the multiplayer port.
@@ -13,14 +13,14 @@ Version 1.9.0+svn:
                     with a save from chapter one.
        * (Alpha)    Chapter three, a two player campaign, can only be started
                     with a save from chapter two.
-       * There is no savefile compatability between saves from an older version
+       * There is no savefile compatibility between saves from an older version
          of Wesnoth.
      * Scenarios
        * Scenario one's objectives changed.
        * Completed a rewrite of scenario 5, changing the objectives, ai and
          game mechanism slightly.
        * Scenario 7
-         * Shortened by ledding the orcs flee if their numbers went to low.
+         * Shortened by letting the orcs flee if their numbers went too low.
          * The player can choose between two different starting positions for
            Olurf.
        * Rebalanced Scenario 14.
@@ -34,10 +34,6 @@ Version 1.9.0+svn:
        * Added keeps to every scenario to match the number of leaders
          (singleplayer) or sides (multiplayer).
        * Removed the obselete Haldric the second portrait.
- * Language and i18n:
-   * Updated fonts: DejaVu 2.32
-   * Updated translations: Chinese (Simplified), Chinese (Traditional), French,
-     Hungarian, Indonesian, Japanese, Polish, Vietnamese
  * Graphics
    * New animations: Merman Hunter ranged animation and defence, Warrior se 
      attack and defence.
@@ -48,7 +44,12 @@ Version 1.9.0+svn:
        oceans.
      * Snowy Human City Village added
      * Muddy Quagmire (Sm) added - alias of swamp
+ * Language and i18n:
+   * Updated fonts: DejaVu 2.32
+   * Updated translations: Chinese (Simplified), Chinese (Traditional), French,
+     Hungarian, Indonesian, Japanese, Polish, Vietnamese
  * Multiplayer:
+   * Updated most of the maps taking advantage of the new terrains.
    * Side vision is now switched before the healing phase of the turn (only
      visible in hotseat)
  * Terrain WML:
@@ -57,6 +58,9 @@ Version 1.9.0+svn:
    * Added the Ghast unit from DiD to core with new base frame and animations.
  * User interface:
    * Changed: the title screen is now gui2.
+ * Whiteboard
+   * Added cost display for planned recruits and recalls
+   * Fixed bug #16554 : Infinite attacks with the whiteboard
  * WML Engine:
    * Added a LOW_MEM define to WML to be able to adapt WML to low memory
      builds.
@@ -66,9 +70,6 @@ Version 1.9.0+svn:
    * Added events: turn end and turn X end_text
    * Added events: side turn end, side X turn end, side turn X end,
      and side X turn Y end
- * Whiteboard
-   * Added cost display for planned recruits and recalls
-   * Fixed bug #16554 : Infinite attacks with the whiteboard
  * Miscellaneous and bug fixes:
    * Removed: statistics upload code.
    * Changed: compiler mode set to c++98
