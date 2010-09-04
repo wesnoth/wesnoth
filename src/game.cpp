@@ -2289,12 +2289,12 @@ static int do_gameloop(int argc, char** argv)
 		gui::TITLE_RESULT res = game.is_loading() ? gui::LOAD_GAME : gui::NOTHING;
 
 		const preferences::display_manager disp_manager(&game.disp());
-		const hotkey::basic_handler key_handler(&game.disp());
 
 		const font::floating_label_context label_manager;
 
 		cursor::set(cursor::NORMAL);
 		if(res == gui::NOTHING) {
+			const hotkey::basic_handler key_handler(&game.disp());
 			gui2::ttitle_screen dlg;
 			dlg.show(game.disp().video());
 
