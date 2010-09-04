@@ -4,7 +4,7 @@ changelog: http://svn.gna.org/viewcvs/*checkout*/wesnoth/trunk/changelog
 
 Version 1.9.0+svn:
  * Graphics:
-   * New animations: Merman Hunter ranged animation and defence, Warrior se 
+   * New animations: Merman Hunter ranged animation and defence, Warrior se
      attack and defence.
    * New portraits: Inferno Drake
    * New Terrain: Tropical Ocean, Snowy Human City Village, Muddy Quagmire
@@ -20,8 +20,14 @@ Version 1.9.0+svn:
    * Decreased the melee and ranged attack of the Footpad from 5-2 to 4-2.
    * Added the Ghast unit from DiD to core with new base frame and animations.
 
+ * User interface:
+   * Use red/green color for damage in sidebar when modified by bonus/malus.
+   * Placing a waypoint on a capturable village will now make the unit pause
+     there to capture it (FR#16603).
+
  * Miscellaneous:
    * Removed: statistics upload code.
+   * Optimize cache creation and loading.
 
 
 Version 1.9.0:
