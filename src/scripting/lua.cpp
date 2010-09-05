@@ -29,6 +29,7 @@
 
 #include <cassert>
 #include <cstring>
+#include <boost/bind.hpp>
 #include <boost/variant.hpp>
 
 #include "scripting/lua.hpp"
@@ -51,7 +52,11 @@
 #include "sound.hpp"
 #include "unit.hpp"
 #include "ai/lua/core.hpp"
+#ifdef GUI2_EXPERIMENTAL_LISTBOX
+#include "gui/widgets/list.hpp"
+#else
 #include "gui/widgets/listbox.hpp"
+#endif
 #include "gui/widgets/multi_page.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/text_box.hpp"
@@ -2329,7 +2334,11 @@ static gui2::twidget *find_widget(lua_State *L, int i, bool readonly)
 	gui2::twidget *w = scoped_dialog::current->window;
 	for (; !lua_isnoneornil(L, i); ++i)
 	{
+#ifdef GUI2_EXPERIMENTAL_LISTBOX
+		if (gui2::tlist *l = dynamic_cast<gui2::tlist *>(w))
+#else
 		if (gui2::tlistbox *l = dynamic_cast<gui2::tlistbox *>(w))
+#endif
 		{
 			int v = lua_tointeger(L, i);
 			if (v < 1)
@@ -2410,7 +2419,11 @@ static int intf_set_dialog_value(lua_State *L)
 {
 	gui2::twidget *w = find_widget(L, 2, false);
 
+#ifdef GUI2_EXPERIMENTAL_LISTBOX
+	if (gui2::tlist *l = dynamic_cast<gui2::tlist *>(w))
+#else
 	if (gui2::tlistbox *l = dynamic_cast<gui2::tlistbox *>(w))
+#endif
 	{
 		int v = luaL_checkinteger(L, 1);
 		int n = l->get_item_count();
@@ -2452,7 +2465,12 @@ static int intf_get_dialog_value(lua_State *L)
 {
 	gui2::twidget *w = find_widget(L, 1, true);
 
-	if (gui2::tlistbox *l = dynamic_cast<gui2::tlistbox *>(w)) {
+#ifdef GUI2_EXPERIMENTAL_LISTBOX
+	if (gui2::tlist *l = dynamic_cast<gui2::tlist *>(w))
+#else
+	if (gui2::tlistbox *l = dynamic_cast<gui2::tlistbox *>(w))
+#endif
+	{
 		lua_pushinteger(L, l->get_selected_row() + 1);
 	} else if (gui2::tmulti_page *l = dynamic_cast<gui2::tmulti_page *>(w)) {
 		lua_pushinteger(L, l->get_selected_page() + 1);
@@ -2483,6 +2501,14 @@ static void dialog_callback(gui2::twidget *w)
 	lua_call(L, 0, 0);
 }
 
+/** Helper struct for intf_set_dialog_callback. */
+struct tdialog_callback_wrapper
+{
+	void forward(gui2::twidget* widget)
+	{
+		dialog_callback(widget);
+	}
+};
 /**
  * Sets a callback on a widget of the current dialog.
  * - Arg 1: function.
@@ -2506,9 +2532,21 @@ static int intf_set_dialog_callback(lua_State *L)
 
 	if (lua_isnil(L, 1)) return 0;
 
+#ifdef GUI2_EXPERIMENTAL_LISTBOX
+	if (gui2::tlist *l = dynamic_cast<gui2::tlist *>(w)) {
+		static tdialog_callback_wrapper wrapper;
+		connect_signal_notify_modified(*l
+				, boost::bind(
+					  &tdialog_callback_wrapper::forward
+					, wrapper
+					, w));
+	}
+#else
 	if (gui2::tlistbox *l = dynamic_cast<gui2::tlistbox *>(w)) {
 		l->set_callback_value_change(&dialog_callback);
-	} else if (gui2::ttoggle_button *b = dynamic_cast<gui2::ttoggle_button *>(w)) {
+	}
+#endif
+	  else if (gui2::ttoggle_button *b = dynamic_cast<gui2::ttoggle_button *>(w)) {
 		b->set_callback_state_change(&dialog_callback);
 	} else
 		return luaL_argerror(L, lua_gettop(L), "unsupported widget");
