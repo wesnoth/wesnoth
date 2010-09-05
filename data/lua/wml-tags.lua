@@ -194,18 +194,10 @@ function wml_actions.wml_action(cfg)
 end
 
 function wml_actions.lua(cfg)
-	local cfg = helper.literal(cfg)
-	local args = helper.get_child(cfg, "args") or {}
-	local ev = wesnoth.current.event_context
-	args.x1 = ev.x1
-	args.y1 = ev.y1
-	args.x2 = ev.x2
-	args.y2 = ev.y2
-	table.insert(args, ev[1])
-	table.insert(args, ev[2])
+	local cfg = helper.shallow_literal(cfg)
 	local bytecode, message = loadstring(cfg.code or "")
 	if not bytecode then error("~lua:" .. message, 0) end
-	bytecode(args)
+	bytecode(helper.get_child(cfg, "args"))
 end
 
 function wml_actions.music(cfg)
