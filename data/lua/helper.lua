@@ -272,10 +272,7 @@ function helper.distance_between(x1, y1, x2, y2)
 end
 
 function helper.literal(cfg)
-	local t = type(cfg)
-	if t == "table" then
-		return cfg
-	elseif t == "userdata" then
+	if type(cfg) == "userdata" then
 		return cfg.__literal
 	else
 		return cfg or {}
@@ -283,10 +280,7 @@ function helper.literal(cfg)
 end
 
 function helper.parsed(cfg)
-	local t = type(cfg)
-	if t == "table" then
-		return tovconfig(cfg).__parsed
-	elseif t == "userdata" then
+	if type(cfg) == "userdata" then
 		return cfg.__parsed
 	else
 		return cfg or {}
@@ -294,10 +288,7 @@ function helper.parsed(cfg)
 end
 
 function helper.shallow_literal(cfg)
-	local t = type(cfg)
-	if t == "table" then
-		return cfg
-	elseif t == "userdata" then
+	if type(cfg) == "userdata" then
 		return cfg.__shallow_literal
 	else
 		return cfg or {}
@@ -305,10 +296,7 @@ function helper.shallow_literal(cfg)
 end
 
 function helper.shallow_parsed(cfg)
-	local t = type(cfg)
-	if t == "table" then
-		return tovconfig(cfg).__shallow_parsed
-	elseif t == "userdata" then
+	if type(cfg) == "userdata" then
 		return cfg.__shallow_parsed
 	else
 		return cfg or {}
