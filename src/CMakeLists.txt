@@ -109,6 +109,10 @@ else(USE_ANA_NETWORK)
 		${common-external-libs}
 		${SDLNET_LIBRARY}
 	)
+	set(game-external-libs
+		${game-external-libs}
+		${SDLNET_LIBRARY}
+	)
 endif(USE_ANA_NETWORK)
 
 set(tools-external-libs
