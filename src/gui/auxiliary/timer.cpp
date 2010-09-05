@@ -85,6 +85,8 @@ public:
 	}
 };
 
+extern "C" {
+
 static Uint32 timer_callback(Uint32, void* id)
 {
 	DBG_GUI_E << "Pushing timer event in queue.\n";
@@ -110,6 +112,8 @@ static Uint32 timer_callback(Uint32, void* id)
 
 	return itor->second.interval;
 }
+
+} // extern "C"
 
 unsigned long
 add_timer(const Uint32 interval
