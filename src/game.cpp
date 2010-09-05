@@ -433,6 +433,10 @@ game_controller::game_controller(int argc, char** argv) :
 		} else if(val == "--debug" || val == "-d") {
 			game_config::debug = true;
 			game_config::mp_debug = true;
+			//set the wml log domain to level "debug"
+			std::string s = "wml";
+			int severity = 3;
+			lg::set_log_domain_severity(s, severity);
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
 		 } else if (val.substr(0, 18) == "--debug-dot-level=") {
 			 gui2::tdebug_layout_graph::set_level(val.substr(18));
