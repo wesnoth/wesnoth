@@ -3602,58 +3602,69 @@ stringfixes = {
 timecheck = 1283156523  # Mo 30 Aug 2010 08:22:03 UTC
 
 import os, sys, time, stat, re
+try:
+    from multiprocessing import Pool, cpu_count
+    def parallel_map(*args, **kw):
+        pool = Pool(cpu_count())
+        return pool.map(*args, **kw)
+except ImportError:
+    print "Failed to import 'multiprocessing' module. Multiple cpu cores won't be utilized"
+    parallel_map = map
+
+def process_file(path):
+    before = open(path, "r").read()
+    after = before
+    decommented = re.sub("#.*", "", before)
+    for (domain, fixes) in stringfixes.items():
+        # In case of screwed-up pairs that are hard to find, uncomment the following:
+        #for fix in fixes:
+        #    if len(fix) != 2:
+        #        print fix
+        for (old, new) in fixes:
+            if old is new:
+                #complain loudly
+                print "pofix: old string\n\t\"%s\"\n equals new string\n\t\"%s\"\nexiting." % (old, new)
+                sys.exit(1)
+            #this check is problematic and the last clause is added to prevent false
+            #positives in case that new is a substring of old, though this can also
+            #lead to "real" probs not found, the real check would be "does replacing
+            #old with new lead to duplicate msgids? (including old ones marked with #~)"
+            #which is not easily done in the current design...
+            elif new in decommented and old in decommented and not new in old:
+                print "pofix: %s already includes the new string\n\t\"%s\"\nbut also the old\n\t\"%s\"\nthis needs handfixing for now since it likely creates duplicate msgids." % (path, new, old)
+            else:
+                lines = after.split('\n')
+                for (i, line) in enumerate(lines):
+                    if line and line[0] != '#':
+                        lines[i] = lines[i].replace(old, new)
+                after = '\n'.join(lines)
+    if after != before:
+        print "pofix: %s modified" % path
+        # Save a backup
+        os.rename(path, path + "-bak")
+        # Write out transformed version
+        ofp = open(path, "w")
+        ofp.write(after)
+        ofp.close()
+        return 1
+    else:
+        return 0
 
 if __name__ == '__main__':
     newer = 0
     modified = 0
     pocount = 0
+    files = []
     for path in sys.argv[1:]:
         if not path.endswith(".po") and not path.endswith(".pot") and not path.endswith(".cfg"):
             continue
-        try:
-            pocount += 1
-            # Notice how many files are newer than the time check
-            statinfo = os.stat(path)
-            if statinfo.st_mtime > timecheck:
-                newer += 1
-            # Read the content of each file and transform it
-            before = open(path, "r").read()
-            after = before
-            decommented = re.sub("#.*", "", before)
-            for (domain, fixes) in stringfixes.items():
-	        # In case of screwed-up pairs that are hard to find, uncomment the following:
-	        #for fix in fixes:
-                #    if len(fix) != 2:
-                #        print fix
-                for (old, new) in fixes:
-                    if old is new:
-                        #complain loudly
-                        print "pofix: old string\n\t\"%s\"\n equals new string\n\t\"%s\"\nexiting." % (old, new)
-                        sys.exit(1)
-                    #this check is problematic and the last clause is added to prevent false
-                    #positives in case that new is a substring of old, though this can also
-                    #lead to "real" probs not found, the real check would be "does replacing
-                    #old with new lead to duplicate msgids? (including old ones marked with #~)"
-                    #which is not easily done in the current design...
-                    elif new in decommented and old in decommented and not new in old:
-                        print "pofix: %s already includes the new string\n\t\"%s\"\nbut also the old\n\t\"%s\"\nthis needs handfixing for now since it likely creates duplicate msgids." % (path, new, old)
-                    else:
-                        lines = after.split('\n')
-                        for (i, line) in enumerate(lines):
-                            if line and line[0] != '#':
-                                lines[i] = lines[i].replace(old, new)
-                        after = '\n'.join(lines)
-            if after != before:
-                print "pofix: %s modified" % path
-                modified += 1
-                # Save a backup
-                os.rename(path, path + "-bak")
-                # Write out transformed version
-                ofp = open(path, "w")
-                ofp.write(after)
-                ofp.close()
-        except OSError:
-            print >>sys.stderr, "pofix: I can't see %s" % path
+        pocount += 1
+        # Notice how many files are newer than the time check
+        statinfo = os.stat(path)
+        if statinfo.st_mtime > timecheck:
+            newer += 1
+	files.append(path)
+    modified = sum(parallel_map(process_file, files))
     print "pofix: %d files processed, %d files modified, %d files newer" \
           % (pocount, modified, newer)
     if pocount > 1 and newer == pocount:
