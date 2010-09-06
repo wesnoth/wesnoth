@@ -3613,8 +3613,8 @@ except ImportError:
 
 def process_file(path):
     before = open(path, "r").read()
-    after = before
     decommented = re.sub("#.*", "", before)
+    lines = before.split('\n')
     for (domain, fixes) in stringfixes.items():
         # In case of screwed-up pairs that are hard to find, uncomment the following:
         #for fix in fixes:
@@ -3633,11 +3633,10 @@ def process_file(path):
             elif new in decommented and old in decommented and not new in old:
                 print "pofix: %s already includes the new string\n\t\"%s\"\nbut also the old\n\t\"%s\"\nthis needs handfixing for now since it likely creates duplicate msgids." % (path, new, old)
             else:
-                lines = after.split('\n')
                 for (i, line) in enumerate(lines):
                     if line and line[0] != '#':
                         lines[i] = lines[i].replace(old, new)
-                after = '\n'.join(lines)
+    after = '\n'.join(lines)
     if after != before:
         print "pofix: %s modified" % path
         # Save a backup
