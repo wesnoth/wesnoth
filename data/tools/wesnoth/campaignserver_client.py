@@ -354,7 +354,7 @@ class CampaignClient:
                 if os.path.isdir(fn):
                     sub = put_dir(os.path.basename(fn), fn)
                 else:
-                    sub = put_file(os.path.basename(fn), file(fn))
+                    sub = put_file(os.path.basename(fn), open(fn, 'rb'))
                 if sub: dataNode.insert(sub)
             return dataNode
 
