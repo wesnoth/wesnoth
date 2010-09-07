@@ -176,6 +176,12 @@ protected:
 	result set_result(result res);
 
 	/**
+	 * Sets the name of the selected game which is used to highlight the names
+	 * of the players which have joined this game.
+	 */
+	void set_selected_game(const std::string& game_name);
+
+	/**
 	 * Called each time the gamelist_ variable is updated. May be
 	 * overridden by child classes to add custom gamelist behaviour.
 	 */
@@ -190,6 +196,10 @@ protected:
 
 	void append_to_title(const std::string& name);
 	const gui::label& title() const;
+
+	std::string get_selected_user_game();
+	bool selected_user_changed() const { return selected_user_changed_; }
+	void set_selected_user_changed(const bool& changed) { selected_user_changed_ = changed; }
 
 private:
 	/**
@@ -224,7 +234,10 @@ private:
 
 	std::vector<std::string> user_list_;
 
+	std::string selected_game_;
+
 	std::string selected_user_;
+	bool selected_user_changed_;
 
 	result result_;
 

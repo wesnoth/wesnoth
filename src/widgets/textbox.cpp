@@ -206,6 +206,16 @@ void textbox::draw_contents()
 	update_rect(loc);
 }
 
+void textbox::set_editable(bool value)
+{
+	editable_ = value;
+}
+
+bool textbox::editable() const
+{
+	return editable_;
+}
+
 void textbox::scroll_to_bottom()
 {
 	set_position(get_max_position());

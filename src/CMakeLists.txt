@@ -470,6 +470,7 @@ set(wesnoth-main_SRC
 	multiplayer_wait.cpp
 	multiplayer_connect.cpp
 	multiplayer_create.cpp
+	multiplayer_lobby.cpp
 	${network_implementation_files} # network.cpp and network_worker.cpp are included by default (without USE_ANA_NETWORK)
 	persist_context.cpp
 	persist_manager.cpp

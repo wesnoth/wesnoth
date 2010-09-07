@@ -243,6 +243,7 @@ wesnoth_source = \
 	multiplayer_wait.cpp \
 	multiplayer_connect.cpp \
 	multiplayer_create.cpp \
+	multiplayer_lobby.cpp \
 	$(network_core) \
 	pathfind/pathfind.cpp \
 	persist_context.cpp \
