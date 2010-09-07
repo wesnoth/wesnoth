@@ -43,6 +43,8 @@ public class Constants
 
 	public static final String	P_WESNOTH_USER_DIR      = "wesnoth_user_dir";
 
+	public static final String 	P_PYTHON_PATH           = "python_path";
+
 	/** WML Tools preferences constants **/
 	public static final String	P_WMLINDENT_VERBOSE     = "wmlindent_verbose";
 	public static final String	P_WMLINDENT_DRYRUN      = "wmlindent_dry_run";

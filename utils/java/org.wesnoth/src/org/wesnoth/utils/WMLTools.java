@@ -451,6 +451,12 @@ public class WMLTools
 	 */
 	public static boolean checkPrerequisites(String filePath, String wmlTool)
 	{
+		if (Preferences.getString(Constants.P_PYTHON_PATH).equals(""))
+		{
+			GUIUtils.showWarnMessageBox("Please set the python executable path in the " +
+				"preferences before you use this feature.");
+			return false;
+		}
 		if (wmlTool != null)
 		{
 			if (Preferences.getString(Constants.P_WESNOTH_WMLTOOLS_DIR).equals(""))
@@ -497,7 +503,8 @@ public class WMLTools
 			boolean stderrMonitoring, boolean stdoutMonitoring,
 			final OutputStream[] stdout, final OutputStream[] stderr)
 	{
-		final ExternalToolInvoker pyscript = new ExternalToolInvoker("python", arguments);
+		final ExternalToolInvoker pyscript = new ExternalToolInvoker(
+				Preferences.getString(Constants.P_PYTHON_PATH) , arguments);
 
 		pyscript.runTool();
 		if (stderrMonitoring == true || stderr != null)

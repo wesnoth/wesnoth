@@ -28,6 +28,7 @@ public class Preferences extends AbstractPreferenceInitializer
 		store.setDefault(Constants.P_WESNOTH_WORKING_DIR, "");
 		store.setDefault(Constants.P_WESNOTH_USER_DIR, "");
 		store.setDefault(Constants.P_WESNOTH_WMLTOOLS_DIR, "");
+		store.setDefault(Constants.P_PYTHON_PATH, "");
 
 		// wml tools
 		store.setDefault(Constants.P_WMLINDENT_VERBOSE, true);

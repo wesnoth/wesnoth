@@ -21,6 +21,7 @@ import org.eclipse.jface.util.PropertyChangeEvent;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
 import org.eclipse.swt.widgets.Text;
+import org.eclipse.xtext.ui.editor.preferences.fields.LabelFieldEditor;
 import org.wesnoth.Activator;
 import org.wesnoth.Constants;
 import org.wesnoth.templates.ReplaceableParameter;
@@ -81,7 +82,7 @@ public class WesnothPreferencesPage extends AbstractPreferencePage
 		};
 
 		wesnothExecutableField_ = new FileFieldEditor(Constants.P_WESNOTH_EXEC_PATH,
-				"Wesnoth executable path:", getFieldEditorParent());
+				"Wesnoth executable path*:", getFieldEditorParent());
 		wesnothExecutableField_.getTextControl(getFieldEditorParent()).
 			addModifyListener(new ModifyListener() {
 				@Override
@@ -103,19 +104,22 @@ public class WesnothPreferencesPage extends AbstractPreferencePage
 		addField(wesnothExecutableField_, "The executable used to launch wesnoth (wesnoth / wesnoth.exe");
 
 		wesnothWorkingDirField_ = new DirectoryFieldEditor(Constants.P_WESNOTH_WORKING_DIR,
-				"Working directory:", getFieldEditorParent());
+				"Working directory*:", getFieldEditorParent());
 		wesnothWorkingDirField_.getTextControl(getFieldEditorParent()).
 			addModifyListener(listener);
 		addField(wesnothWorkingDirField_, "This directory should containing data, manual, images directories of wesnoth.");
 
 		wesnothUserDirField_ = new DirectoryFieldEditor(Constants.P_WESNOTH_USER_DIR,
-				"User data directory:", getFieldEditorParent());
+				"User data directory*:", getFieldEditorParent());
 		addField(wesnothUserDirField_, "This directory should contain the data/add-ons/ directory, where user addons are stored.");
 
 		wmlToolsField_ = new DirectoryFieldEditor(Constants.P_WESNOTH_WMLTOOLS_DIR,
-				"WML* tools directory:", getFieldEditorParent());
+				"WML* tools directory*:", getFieldEditorParent());
 		addField(wmlToolsField_, "This directory should contain the wmltools: wmllint, wmlscope, wmlindent, etc.");
 
+		addField(new FileFieldEditor(Constants.P_PYTHON_PATH, "Python executable path*:", getFieldEditorParent()));
+
+		addField(new LabelFieldEditor("All fields marked with an (*) are mandatory.", getFieldEditorParent()));
 		guessDefaultPaths();
 	}
 

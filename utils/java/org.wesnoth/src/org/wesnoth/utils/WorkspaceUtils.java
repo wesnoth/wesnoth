@@ -290,8 +290,8 @@ public class WorkspaceUtils
 					Activator.getShell(), "wml_plugin_preferences", null, null);
 			if (pref.open() == Window.CANCEL || !checkConditions(true))
 			{
-				GUIUtils.showErrorMessageBox("The workspace was not setup. " +
-						"Please check the logs for errors.");
+				GUIUtils.showErrorMessageBox("Not all mandatory preferences were setup, " +
+						"aborting. Please re-run this if you want to use the plugin.");
 				return;
 			}
 
