@@ -36,6 +36,7 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.preference.PreferenceDialog;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.window.Window;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.IWorkingSet;
@@ -335,15 +336,25 @@ public class WorkspaceUtils
 					String campaignsDir = Preferences.getString(Constants.P_WESNOTH_WORKING_DIR) + "/data/campaigns/";
 
 					File[] tmp = null;
-					// useraddons/add-ons/data
-					tmp = new File(addonsDir).listFiles();
-					if (tmp != null)
-						files.addAll(Arrays.asList(tmp));
+					if (GUIUtils.showMessageBox("Do you want me to create for you" +
+							" projects for each of your addon, so you can easily use them?",
+							SWT.ICON_QUESTION | SWT.YES | SWT.NO) == SWT.YES)
+					{
+						// useraddons/add-ons/data
+						tmp = new File(addonsDir).listFiles();
+						if (tmp != null)
+							files.addAll(Arrays.asList(tmp));
+					}
 
-					// workingdir/data/campaigns
-					tmp = new File(campaignsDir).listFiles();
-					if (tmp != null)
-						files.addAll(Arrays.asList(tmp));
+					if (GUIUtils.showMessageBox("Do you want me to create for you" +
+							" projects for each mainline campaign?",
+							SWT.ICON_QUESTION | SWT.YES | SWT.NO) == SWT.YES)
+					{
+						// workingdir/data/campaigns
+						tmp = new File(campaignsDir).listFiles();
+						if (tmp != null)
+							files.addAll(Arrays.asList(tmp));
+					}
 
 					monitor.beginTask("Setting up the workspace...", files.size() * 35);
 					for(File file: files)
@@ -378,7 +389,6 @@ public class WorkspaceUtils
 					}
 
 					//TODO select the default working set manager as the active one
-
 					if (guided)
 					{
 						GUIUtils.showInfoMessageBox(
