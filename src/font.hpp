@@ -111,14 +111,11 @@ int line_width(const std::string& line, int font_size, int style=TTF_STYLE_NORMA
 ///
 SDL_Rect line_size(const std::string& line, int font_size, int style=TTF_STYLE_NORMAL);
 
-///
-/// If the text excedes the specified max width, end it with an ellipsis (...)
-/// The with_tags can probably always be set to false
-/// If parse_for_style is true we look for the style of the text (bold, etc.)
-/// before deleting its tags.
-///
+/**
+ * If the text excedes the specified max width, end it with an ellipsis (...)
+ */
 std::string make_text_ellipsis(const std::string& text, int font_size, int max_width,
-		bool with_tags = true, bool parse_for_style = false);
+	int style = TTF_STYLE_NORMAL);
 
 
 /// structure which will hide all current floating labels, and cause floating labels

@@ -116,8 +116,17 @@ void button::calculate_size()
 
 	if (!change_size) {
 		unsigned w = loc.w - (type_ == TYPE_PRESS ? horizontal_padding : checkbox_horizontal_padding + base_width_);
-		if (type_ != TYPE_IMAGE){
-			label_ = font::make_text_ellipsis(label_, font_size, w, false);
+		if (type_ != TYPE_IMAGE)
+		{
+			int fs = font_size;
+			int style = TTF_STYLE_NORMAL;
+			std::string::const_iterator i_beg = label_.begin(), i_end = label_.end(),
+				i = font::parse_markup(i_beg, i_end, &fs, NULL, &style);
+			if (i != i_end) {
+				std::string tmp(i, i_end);
+				label_.erase(i - i_beg, i_end - i_beg);
+				label_ += font::make_text_ellipsis(tmp, fs, w, style);
+			}
 		}
 	}
 

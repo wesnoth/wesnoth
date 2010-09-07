@@ -949,11 +949,20 @@ void menu::draw_row(const size_t row_index, const SDL_Rect& rect, ROW_TYPE type)
 				column.x = xpos;
 				const bool has_wrap = (str.find_first_of("\r\n") != std::string::npos);
 				//prevent ellipsis calculation if there is any line wrapping
-				const std::string to_show =
-					(use_ellipsis_ && !has_wrap) ?
-						font::make_text_ellipsis(str, style_->get_font_size(),
-							loc.w - (xpos - rect.x) - 2*style_->get_thickness(), false, true)
-						: str;
+				std::string to_show = str;
+				if (use_ellipsis_ && !has_wrap)
+				{
+					int fs = style_->get_font_size();
+					int style = TTF_STYLE_NORMAL;
+					int w = loc.w - (xpos - rect.x) - 2 * style_->get_thickness();
+					std::string::const_iterator i_beg = to_show.begin(), i_end = to_show.end(),
+						i = font::parse_markup(i_beg, i_end, &fs, NULL, &style);
+					if (i != i_end) {
+						std::string tmp(i, i_end);
+						to_show.erase(i - i_beg, i_end - i_beg);
+						to_show += font::make_text_ellipsis(tmp, fs, w, style);
+					}
+				}
 				const SDL_Rect& text_size = font::text_area(str,style_->get_font_size());
 				const size_t y = rect.y + (rect.h - text_size.h)/2;
 				font::draw_text(&video(),column,style_->get_font_size(),font::NORMAL_COLOR,to_show,xpos,y);
