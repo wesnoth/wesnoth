@@ -25,6 +25,7 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IResourceFilterDescription;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.resources.WorkspaceJob;
+import org.eclipse.core.runtime.AssertionFailedException;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -315,8 +316,17 @@ public class WorkspaceUtils
 					IWorkingSet defaultSet = manager.getWorkingSet("Default");
 					if (defaultSet == null)
 					{
-						defaultSet = manager.createWorkingSet("Default", new IAdaptable[0]);
-						manager.addWorkingSet(defaultSet);
+						// we could get an assert exception if too many
+						// 'setup workspace' are running at a time
+						try
+						{
+							defaultSet = manager.createWorkingSet("Default", new IAdaptable[0]);
+							manager.addWorkingSet(defaultSet);
+						}
+						catch(AssertionFailedException e)
+						{
+							Logger.getInstance().logWarn(e.getMessage());
+						}
 					}
 
 					// automatically import 'special' folders as projects

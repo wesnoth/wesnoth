@@ -34,6 +34,7 @@ public class WMLFoldingRegionProvider extends DefaultFoldingRegionProvider
 	{
 		Assert.isNotNull(compositeNode, "parameter 'compositeNode' must not be null");
 		if (compositeNode.getElement() instanceof WMLKey &&
+			((WMLKey)compositeNode.getElement()).getEol() != null &&
 			((WMLKey)compositeNode.getElement()).getEol().length() > 0)
 			return null;
 		else if (compositeNode.getElement() instanceof WMLTextdomain)
