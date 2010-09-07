@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="9,00"
@@ -278,10 +278,6 @@
 				>
 			</File>
 			<File
-				RelativePath="..\..\src\astarsearch.cpp"
-				>
-			</File>
-			<File
 				RelativePath="..\..\src\attack_prediction.cpp"
 				>
 			</File>
@@ -542,15 +538,15 @@
 				>
 			</File>
 			<File
+				RelativePath="..\..\src\multiplayer_lobby.cpp"
+				>
+			</File>
+			<File
 				RelativePath="..\..\src\multiplayer_ui.cpp"
 				>
 			</File>
 			<File
 				RelativePath="..\..\src\multiplayer_wait.cpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\pathfind.cpp"
 				>
 			</File>
 			<File
@@ -1604,6 +1600,62 @@
 						</FileConfiguration>
 					</File>
 					<File
+						RelativePath="..\..\src\gui\widgets\tree_view.cpp"
+						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Widgets\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Release|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Widgets\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Debug (fast)|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Widgets\"
+							/>
+						</FileConfiguration>
+					</File>
+					<File
+						RelativePath="..\..\src\gui\widgets\tree_view_node.cpp"
+						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Widgets\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Release|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Widgets\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Debug (fast)|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Widgets\"
+							/>
+						</FileConfiguration>
+					</File>
+					<File
 						RelativePath="..\..\src\gui\widgets\vertical_scrollbar.cpp"
 						>
 						<FileConfiguration
@@ -1807,7 +1859,23 @@
 						RelativePath="..\..\src\gui\dialogs\editor_generate_map.cpp"
 						>
 						<FileConfiguration
+							Name="Debug|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Dialogs\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
 							Name="Release|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Dialogs\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Debug (fast)|Win32"
 							>
 							<Tool
 								Name="VCCLCompilerTool"
@@ -2381,10 +2449,58 @@
 						<File
 							RelativePath="..\..\src\gui\dialogs\lobby\lobby_data.cpp"
 							>
+							<FileConfiguration
+								Name="Debug|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Dialogs\Lobby\"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Release|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Dialogs\Lobby\"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Debug (fast)|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Dialogs\Lobby\"
+								/>
+							</FileConfiguration>
 						</File>
 						<File
 							RelativePath="..\..\src\gui\dialogs\lobby\lobby_info.cpp"
 							>
+							<FileConfiguration
+								Name="Debug|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Dialogs\Lobby\"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Release|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Dialogs\Lobby\"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Debug (fast)|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Dialogs\Lobby\"
+								/>
+							</FileConfiguration>
 						</File>
 					</Filter>
 				</Filter>
@@ -2394,6 +2510,30 @@
 					<File
 						RelativePath="..\..\src\gui\auxiliary\canvas.cpp"
 						>
+						<FileConfiguration
+							Name="Debug|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Release|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\"
+							/>
+						</FileConfiguration>
+						<FileConfiguration
+							Name="Debug (fast)|Win32"
+							>
+							<Tool
+								Name="VCCLCompilerTool"
+								ObjectFile="$(IntDir)\Gui\Auxiliary\"
+							/>
+						</FileConfiguration>
 					</File>
 					<File
 						RelativePath="..\..\src\gui\auxiliary\log.cpp"
@@ -3127,6 +3267,34 @@
 							</FileConfiguration>
 						</File>
 						<File
+							RelativePath="..\..\src\gui\auxiliary\window_builder\tree_view.cpp"
+							>
+							<FileConfiguration
+								Name="Debug|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Window_Builder\"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Release|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Window_Builder\"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Debug (fast)|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Window_Builder\"
+								/>
+							</FileConfiguration>
+						</File>
+						<File
 							RelativePath="..\..\src\gui\auxiliary\window_builder\vertical_scrollbar.cpp"
 							>
 							<FileConfiguration
@@ -3239,6 +3407,626 @@
 								<Tool
 									Name="VCCLCompilerTool"
 									ObjectFile="$(IntDir)\Gui\Auxiliary\Event\"
+								/>
+							</FileConfiguration>
+						</File>
+					</Filter>
+					<Filter
+						Name="Widget_Definition"
+						>
+						<File
+							RelativePath="..\..\src\gui\auxiliary\widget_definition\button.cpp"
+							>
+							<FileConfiguration
+								Name="Debug|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Release|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Debug (fast)|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+								/>
+							</FileConfiguration>
+						</File>
+						<File
+							RelativePath="..\..\src\gui\auxiliary\widget_definition\horizontal_scrollbar.cpp"
+							>
+							<FileConfiguration
+								Name="Debug|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Release|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Debug (fast)|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+								/>
+							</FileConfiguration>
+						</File>
+						<File
+							RelativePath="..\..\src\gui\auxiliary\widget_definition\image.cpp"
+							>
+							<FileConfiguration
+								Name="Debug|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Release|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Debug (fast)|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+								/>
+							</FileConfiguration>
+						</File>
+						<File
+							RelativePath="..\..\src\gui\auxiliary\widget_definition\label.cpp"
+							>
+							<FileConfiguration
+								Name="Debug|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Release|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Debug (fast)|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+								/>
+							</FileConfiguration>
+						</File>
+						<File
+							RelativePath="..\..\src\gui\auxiliary\widget_definition\listbox.cpp"
+							>
+							<FileConfiguration
+								Name="Debug|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Release|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Debug (fast)|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+								/>
+							</FileConfiguration>
+						</File>
+						<File
+							RelativePath="..\..\src\gui\auxiliary\widget_definition\menubar.cpp"
+							>
+							<FileConfiguration
+								Name="Debug|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Release|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Debug (fast)|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+								/>
+							</FileConfiguration>
+						</File>
+						<File
+							RelativePath="..\..\src\gui\auxiliary\widget_definition\minimap.cpp"
+							>
+							<FileConfiguration
+								Name="Debug|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Release|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Debug (fast)|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+								/>
+							</FileConfiguration>
+						</File>
+						<File
+							RelativePath="..\..\src\gui\auxiliary\widget_definition\multi_page.cpp"
+							>
+							<FileConfiguration
+								Name="Debug|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Release|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Debug (fast)|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+								/>
+							</FileConfiguration>
+						</File>
+						<File
+							RelativePath="..\..\src\gui\auxiliary\widget_definition\panel.cpp"
+							>
+							<FileConfiguration
+								Name="Debug|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Release|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Debug (fast)|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+								/>
+							</FileConfiguration>
+						</File>
+						<File
+							RelativePath="..\..\src\gui\auxiliary\widget_definition\repeating_button.cpp"
+							>
+							<FileConfiguration
+								Name="Debug|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Release|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Debug (fast)|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+								/>
+							</FileConfiguration>
+						</File>
+						<File
+							RelativePath="..\..\src\gui\auxiliary\widget_definition\scroll_label.cpp"
+							>
+							<FileConfiguration
+								Name="Debug|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Release|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Debug (fast)|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+								/>
+							</FileConfiguration>
+						</File>
+						<File
+							RelativePath="..\..\src\gui\auxiliary\widget_definition\scrollbar_panel.cpp"
+							>
+							<FileConfiguration
+								Name="Debug|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Release|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Debug (fast)|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+								/>
+							</FileConfiguration>
+						</File>
+						<File
+							RelativePath="..\..\src\gui\auxiliary\widget_definition\slider.cpp"
+							>
+							<FileConfiguration
+								Name="Debug|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Release|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Debug (fast)|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+								/>
+							</FileConfiguration>
+						</File>
+						<File
+							RelativePath="..\..\src\gui\auxiliary\widget_definition\spacer.cpp"
+							>
+							<FileConfiguration
+								Name="Debug|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Release|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Debug (fast)|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+								/>
+							</FileConfiguration>
+						</File>
+						<File
+							RelativePath="..\..\src\gui\auxiliary\widget_definition\stacked_widget.cpp"
+							>
+							<FileConfiguration
+								Name="Debug|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Release|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Debug (fast)|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+								/>
+							</FileConfiguration>
+						</File>
+						<File
+							RelativePath="..\..\src\gui\auxiliary\widget_definition\text_box.cpp"
+							>
+							<FileConfiguration
+								Name="Debug|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Release|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Debug (fast)|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+								/>
+							</FileConfiguration>
+						</File>
+						<File
+							RelativePath="..\..\src\gui\auxiliary\widget_definition\toggle_button.cpp"
+							>
+							<FileConfiguration
+								Name="Debug|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Release|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Debug (fast)|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+								/>
+							</FileConfiguration>
+						</File>
+						<File
+							RelativePath="..\..\src\gui\auxiliary\widget_definition\toggle_panel.cpp"
+							>
+							<FileConfiguration
+								Name="Debug|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Release|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Debug (fast)|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+								/>
+							</FileConfiguration>
+						</File>
+						<File
+							RelativePath="..\..\src\gui\auxiliary\widget_definition\tooltip.cpp"
+							>
+							<FileConfiguration
+								Name="Debug|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Release|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Debug (fast)|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+								/>
+							</FileConfiguration>
+						</File>
+						<File
+							RelativePath="..\..\src\gui\auxiliary\widget_definition\tree_view.cpp"
+							>
+							<FileConfiguration
+								Name="Debug|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Release|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Debug (fast)|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+								/>
+							</FileConfiguration>
+						</File>
+						<File
+							RelativePath="..\..\src\gui\auxiliary\widget_definition\vertical_scrollbar.cpp"
+							>
+							<FileConfiguration
+								Name="Debug|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Release|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Debug (fast)|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+								/>
+							</FileConfiguration>
+						</File>
+						<File
+							RelativePath="..\..\src\gui\auxiliary\widget_definition\window.cpp"
+							>
+							<FileConfiguration
+								Name="Debug|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Release|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
+								/>
+							</FileConfiguration>
+							<FileConfiguration
+								Name="Debug (fast)|Win32"
+								>
+								<Tool
+									Name="VCCLCompilerTool"
+									ObjectFile="$(IntDir)\Gui\Auxiliary\Widget_Definition\"
 								/>
 							</FileConfiguration>
 						</File>
@@ -4023,18 +4811,114 @@
 				<File
 					RelativePath="..\..\src\storyscreen\controller.cpp"
 					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Storyscreen\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Storyscreen\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug (fast)|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Storyscreen\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\storyscreen\interface.cpp"
 					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Storyscreen\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Storyscreen\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug (fast)|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Storyscreen\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\storyscreen\part.cpp"
 					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Storyscreen\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Storyscreen\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug (fast)|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Storyscreen\"
+						/>
+					</FileConfiguration>
 				</File>
 				<File
 					RelativePath="..\..\src\storyscreen\render.cpp"
 					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Storyscreen\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Storyscreen\"
+						/>
+					</FileConfiguration>
+					<FileConfiguration
+						Name="Debug (fast)|Win32"
+						>
+						<Tool
+							Name="VCCLCompilerTool"
+							ObjectFile="$(IntDir)\Storyscreen\"
+						/>
+					</FileConfiguration>
 				</File>
 			</Filter>
 			<Filter
@@ -5125,6 +6009,18 @@
 					</File>
 				</Filter>
 			</Filter>
+			<Filter
+				Name="Pathfind"
+				>
+				<File
+					RelativePath="..\..\src\pathfind\astarsearch.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\..\src\pathfind\pathfind.cpp"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="Resource Files"
@@ -5462,10 +6358,6 @@
 			</File>
 			<File
 				RelativePath="..\..\src\network_worker.hpp"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\pathfind.hpp"
 				>
 			</File>
 			<File
@@ -6019,6 +6911,14 @@
 						>
 					</File>
 					<File
+						RelativePath="..\..\src\gui\widgets\tree_view.hpp"
+						>
+					</File>
+					<File
+						RelativePath="..\..\src\gui\widgets\tree_view_node.hpp"
+						>
+					</File>
+					<File
 						RelativePath="..\..\src\gui\widgets\vertical_scrollbar.hpp"
 						>
 					</File>
@@ -6179,6 +7079,98 @@
 						</File>
 						<File
 							RelativePath="..\..\src\gui\auxiliary\event\handler.hpp"
+							>
+						</File>
+					</Filter>
+					<Filter
+						Name="Widget_Definition"
+						>
+						<File
+							RelativePath="..\..\src\gui\auxiliary\widget_definition\button.hpp"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\gui\auxiliary\widget_definition\horizontal_scrollbar.hpp"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\gui\auxiliary\widget_definition\image.hpp"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\gui\auxiliary\widget_definition\label.hpp"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\gui\auxiliary\widget_definition\listbox.hpp"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\gui\auxiliary\widget_definition\menubar.hpp"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\gui\auxiliary\widget_definition\minimap.hpp"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\gui\auxiliary\widget_definition\multi_page.hpp"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\gui\auxiliary\widget_definition\panel.hpp"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\gui\auxiliary\widget_definition\repeating_button.hpp"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\gui\auxiliary\widget_definition\scroll_label.hpp"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\gui\auxiliary\widget_definition\scrollbar_panel.hpp"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\gui\auxiliary\widget_definition\slider.hpp"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\gui\auxiliary\widget_definition\spacer.hpp"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\gui\auxiliary\widget_definition\stacked_widget.hpp"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\gui\auxiliary\widget_definition\text_box.hpp"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\gui\auxiliary\widget_definition\toggle_button.hpp"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\gui\auxiliary\widget_definition\toggle_panel.hpp"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\gui\auxiliary\widget_definition\tooltip.hpp"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\gui\auxiliary\widget_definition\tree_view.hpp"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\gui\auxiliary\widget_definition\vertical_scrollbar.hpp"
+							>
+						</File>
+						<File
+							RelativePath="..\..\src\gui\auxiliary\widget_definition\window.hpp"
 							>
 						</File>
 					</Filter>
@@ -6419,6 +7411,14 @@
 						>
 					</File>
 				</Filter>
+			</Filter>
+			<Filter
+				Name="Pathfind"
+				>
+				<File
+					RelativePath="..\..\src\pathfind\pathfind.hpp"
+					>
+				</File>
 			</Filter>
 		</Filter>
 		<Filter
