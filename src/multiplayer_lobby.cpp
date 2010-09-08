@@ -90,8 +90,11 @@ SDL_Rect gamebrowser::get_item_rect(size_t index) const {
 		return res;
 	}
 	const SDL_Rect& loc = inner_location();
-	const SDL_Rect res = { loc.x, loc.y + (index - visible_range_.first) * row_height(), loc.w, row_height()};
-	return res;
+	return create_rect(
+			  loc.x
+			, loc.y + (index - visible_range_.first) * row_height()
+			, loc.w
+			, row_height());
 }
 
 void gamebrowser::draw()
