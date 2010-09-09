@@ -196,6 +196,8 @@ stringfixes = {
 # conversion added in 1.9.0-svn
 ("A Small Favor -", "A Small Favor —"),
 ("running away - my horsemen", "running away — my horsemen"),
+('says. "The book was', "says. “The book was"),
+("Phew! Let’s get out of here", "Phew! Let’s get out of here."),
 
 # Convert straight apostrophes/quotation marks
 # conversion added in 1.9.0-svn
@@ -346,6 +348,7 @@ stringfixes = {
 ("a week ago - wanted", "a week ago — wanted"),
 ("disturbing that a Kai - and", "disturbing that a Kai — and"),
 ("- would run here", "— would run here"),
+("to be survive.", "to survive."),
 
 # Straight quotes to curly quotes
 # conversion added in 1.9.0+svn
