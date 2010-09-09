@@ -321,7 +321,6 @@ std::string terrain_palette::get_terrain_string(const t_translation::t_terrain t
 }
 
 void terrain_palette::left_mouse_click(const int mousex, const int mousey) {
-	sound::play_UI_sound(game_config::sounds::button_press);
 	int tselect = tile_selected(mousex, mousey);
 	if(tselect >= 0 && (tstart_+tselect) < terrains_.size()) {
 		select_fg_terrain(terrains_[tstart_+tselect]);
@@ -583,6 +582,7 @@ unsigned int brush_bar::selected_brush_size() {
 }
 
 void brush_bar::left_mouse_click(const int mousex, const int mousey) {
+	sound::play_UI_sound(game_config::sounds::button_press);
 	int index = selected_index(mousex, mousey);
 	if(index >= 0) {
 		if (static_cast<size_t>(index) != selected_) {
