@@ -197,7 +197,6 @@ stringfixes = {
 ("A Small Favor -", "A Small Favor —"),
 ("running away - my horsemen", "running away — my horsemen"),
 ('says. "The book was', "says. “The book was"),
-("Phew! Let’s get out of here", "Phew! Let’s get out of here."),
 
 # Convert straight apostrophes/quotation marks
 # conversion added in 1.9.0-svn
