@@ -1153,6 +1153,10 @@ stringfixes = {
 ("they're holding Bjarn", "they’re holding Bjarn"),
 ("day's", "day’s"),
 ("I don't think we can rescue", "I don’t think we can rescue"),
+
+# Fix capitalization
+# conversion added in 1.9.0+svn
+("Rooting Out A Mage", "Rooting Out a Mage"),
 ),
 
 "wesnoth-tutorial" : (
