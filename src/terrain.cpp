@@ -31,9 +31,9 @@ static lg::log_domain log_config("config");
 #define DBG_G LOG_STREAM(debug, lg::general)
 
 terrain_type::terrain_type() :
-		minimap_image_("void"),
-		minimap_image_overlay_("void"),
-		editor_image_("void"),
+		minimap_image_(),
+		minimap_image_overlay_(),
+		editor_image_(),
 		id_(),
 		name_(),
 		description_(),
@@ -63,7 +63,7 @@ terrain_type::terrain_type() :
 
 terrain_type::terrain_type(const config& cfg) :
 		minimap_image_(cfg["symbol_image"]),
-		minimap_image_overlay_("void"),
+		minimap_image_overlay_(),
 		editor_image_(cfg["editor_image"]),
 		id_(cfg["id"]),
 		name_(cfg["name"].t_str()),
