@@ -25,6 +25,7 @@
 #include "../foreach.hpp"
 #include "../gettext.hpp"
 #include "../serialization/string_utils.hpp"
+#include "../sound.hpp"
 #include "../tooltips.hpp"
 
 namespace editor {
@@ -574,6 +575,7 @@ unsigned int brush_bar::selected_brush_size() {
 }
 
 void brush_bar::left_mouse_click(const int mousex, const int mousey) {
+	sound::play_UI_sound(game_config::sounds::button_press);
 	int index = selected_index(mousex, mousey);
 	if(index >= 0) {
 		if (static_cast<size_t>(index) != selected_) {
