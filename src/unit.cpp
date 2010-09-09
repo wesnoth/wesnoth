@@ -1469,7 +1469,7 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 					continue;
 				}
 				config::attribute_value i_is_enemy = (*i)["is_enemy"];
-				if (!i_is_enemy.blank() || i_is_enemy.to_bool() ==
+				if (i_is_enemy.blank() || i_is_enemy.to_bool() ==
 				    teams_manager::get_teams()[this->side() - 1].is_enemy(unit_itor->side())) {
 					++match_count;
 				}
