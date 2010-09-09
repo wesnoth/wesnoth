@@ -1152,6 +1152,12 @@ stringfixes = {
 ("they're holding Bjarn", "they’re holding Bjarn"),
 ("day's", "day’s"),
 ("I don't think we can rescue", "I don’t think we can rescue"),
+
+("4 scenarios; the 'Hard' version may challenge", "4 scenarios; the ‘Hard’ version may challenge"),
+
+# Fix capitalization
+# conversion added in 1.9.0+svn
+("Rooting Out A Mage", "Rooting Out a Mage"),
 ),
 
 "wesnoth-tutorial" : (
@@ -2150,10 +2156,6 @@ stringfixes = {
 ("You were right, Kapou'e, the", "You were right, Kapou’e, the"),
 ("You're right. I can", "You’re right. I can"),
 ("young upstart called Kapou'e. He", "young upstart called Kapou’e. He"),
-),
-
-"wesnoth-tb" : (
-("4 scenarios; the 'Hard' version may challenge", "4 scenarios; the ‘Hard’ version may challenge"),
 ),
 
 "wesnoth-thot" : (
