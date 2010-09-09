@@ -88,11 +88,6 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw)
 							"terrain/" + terrain_info.minimap_image() + ".png";
 					surface tile = get_image(base_file,image::HEXED);
 
-					if(tile == NULL) {
-						WRN_DP << "Could not get minimap image for terrain: "
-								<<  t_translation::write_terrain_code(terrain) << std::endl;
-					}
-
 					//Compose images of base and overlay if neccessary
 					// NOTE we also skip overlay when base is missing (to avoid hiding the error)
 					if(tile != NULL && map.get_terrain_info(terrain).is_combined()) {
