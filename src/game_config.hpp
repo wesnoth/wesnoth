@@ -100,7 +100,8 @@ namespace game_config
 			unchecked_menu,
 			wml_menu,
 			level,
-			ellipsis;
+			ellipsis,
+			missing;
 	} //images
 
 

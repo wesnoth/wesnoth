@@ -666,7 +666,7 @@ namespace {
 	void do_addon_icon_fixups(std::string& icon, const std::string& addon_name)
 	{
 		static const std::string default_icon = "misc/blank-hex.png";
-		static const std::string debug_default_icon = "misc/missing-image.png";
+		static const std::string debug_default_icon = game_config::images::missing;
 
 		if(icon.empty()) {
 			ERR_CFG << "remote add-on '" << addon_name << "' has no icon\n";

@@ -94,7 +94,8 @@ namespace game_config
 			unchecked_menu = "buttons/checkbox.png",
 			wml_menu = "buttons/WML-custom.png",
 			level,
-			ellipsis;
+			ellipsis,
+			missing;
 	} //images
 
 	std::string shroud_prefix, fog_prefix;
@@ -211,6 +212,7 @@ namespace game_config
 			tod_dark = i["tod_dark"].str();
 			level = i["level"].str();
 			ellipsis = i["ellipsis"].str();
+			missing = i["missing"].str();
 		} // images
 
 		hp_bar_scaling = v["hp_bar_scaling"].to_double(0.666);

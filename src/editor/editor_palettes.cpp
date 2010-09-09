@@ -446,7 +446,7 @@ void terrain_palette::draw(bool force) {
 			if(base_image == NULL) {
 				tooltip_text << "BASE IMAGE NOT FOUND\n";
 				ERR_ED << "image for terrain " << counter << ": '" << base_filename << "' not found\n";
-				base_image = image::get_image("misc/missing-image.png");
+				base_image = image::get_image(game_config::images::missing);
 				if (base_image == NULL) {
 					ERR_ED << "Placeholder image not found\n";
 					return;
@@ -468,7 +468,7 @@ void terrain_palette::draw(bool force) {
 		if(image == NULL) {
 			tooltip_text << "IMAGE NOT FOUND\n";
 			ERR_ED << "image for terrain " << counter << ": '" << filename << "' not found\n";
-			image = image::get_image("misc/missing-image.png");
+			image = image::get_image(game_config::images::missing);
 			if (image == NULL) {
 				ERR_ED << "Placeholder image not found\n";
 				return;

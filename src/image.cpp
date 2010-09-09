@@ -472,9 +472,8 @@ surface locator::load_image_file() const
 
 	if (res.null() && !val_.filename_.empty()) {
 		ERR_DP << "could not open image '" << val_.filename_ << "'\n";
-		static const std::string missing = "misc/missing-image.png";
-		if (game_config::debug && val_.filename_ != missing)
-			return get_image(missing, UNSCALED);
+		if (game_config::debug && val_.filename_ != game_config::images::missing)
+			return get_image(game_config::images::missing, UNSCALED);
 	}
 
 	return res;

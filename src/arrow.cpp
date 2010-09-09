@@ -266,7 +266,7 @@ void arrow::update_symbols()
 		if (!image.file_exists())
 		{
 			ERR_ARR << "Image " << image_filename << " not found.\n";
-			image = image::locator("misc/missing-image.png");
+			image = image::locator(game_config::images::missing);
 		}
 		symbols_map_[*hex] = image;
 	}
