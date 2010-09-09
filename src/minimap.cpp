@@ -86,21 +86,19 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw)
 				if(i == cache->end()) {
 					std::string base_file =
 							"terrain/" + terrain_info.minimap_image() + ".png";
-					surface tile(get_image(base_file,image::HEXED));
+					surface tile = get_image(base_file,image::HEXED);
 
 					if(tile == NULL) {
-						utils::string_map symbols;
-						symbols["terrain"] = t_translation::write_terrain_code(terrain);
-						const std::string msg =
-							vgettext("Could not get image for terrain: $terrain.", symbols);
-						VALIDATE(false, msg);
+						WRN_DP << "Could not get minimap image for terrain: "
+								<<  t_translation::write_terrain_code(terrain) << std::endl;
 					}
 
 					//Compose images of base and overlay if neccessary
-					if(map.get_terrain_info(terrain).is_combined()) {
+					// NOTE we also skip overlay when base is missing (to avoid hiding the error)
+					if(tile != NULL && map.get_terrain_info(terrain).is_combined()) {
 						std::string overlay_file =
 								"terrain/" + terrain_info.minimap_image_overlay() + ".png";
-						surface overlay(get_image(overlay_file,image::HEXED));
+						surface overlay = get_image(overlay_file,image::HEXED);
 
 						if(overlay != NULL && overlay != tile) {
 							surface combined = create_compatible_surface(tile, tile->w, tile->h);
@@ -113,9 +111,7 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw)
 						}
 					}
 
-					surf = surface(scale_surface_blended(tile,scale,scale));
-
-					VALIDATE(surf != NULL, _("Error creating or aquiring an image."));
+					surf = scale_surface_blended(tile,scale,scale);
 
 					i = normal_cache->insert(cache_map::value_type(terrain,surf)).first;
 				}
@@ -123,11 +119,9 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw)
 				surf = i->second;
 
 				if (need_fogging) {
-					surf = surface(adjust_surface_color(surf,-50,-50,-50));
+					surf = adjust_surface_color(surf,-50,-50,-50);
 					fog_cache->insert(cache_map::value_type(terrain,surf));
 				}
-
-				VALIDATE(surf != NULL, _("Error creating or aquiring an image."));
 
 				// we need a balanced shift up and down of the hexes.
 				// if not, only the bottom half-hexes are clipped
@@ -141,7 +135,8 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw)
 						, 0
 						, 0);
 
-				SDL_BlitSurface(surf, NULL, minimap, &maprect);
+				if(surf != NULL)
+					SDL_BlitSurface(surf, NULL, minimap, &maprect);
 			}
 		}
 	}
