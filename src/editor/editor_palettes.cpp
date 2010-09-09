@@ -26,6 +26,7 @@
 #include "../foreach.hpp"
 #include "../gettext.hpp"
 #include "../serialization/string_utils.hpp"
+#include "../sound.hpp"
 #include "../tooltips.hpp"
 #include "../marked-up_text.hpp"
 
@@ -320,6 +321,7 @@ std::string terrain_palette::get_terrain_string(const t_translation::t_terrain t
 }
 
 void terrain_palette::left_mouse_click(const int mousex, const int mousey) {
+	sound::play_UI_sound(game_config::sounds::button_press);
 	int tselect = tile_selected(mousex, mousey);
 	if(tselect >= 0 && (tstart_+tselect) < terrains_.size()) {
 		select_fg_terrain(terrains_[tstart_+tselect]);
