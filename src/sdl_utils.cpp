@@ -634,8 +634,11 @@ surface scale_surface_blended(const surface &surf, int w, int h, bool optimize)
 
 surface adjust_surface_color(const surface &surf, int red, int green, int blue, bool optimize)
 {
-	if((red == 0 && green == 0 && blue == 0) || surf == NULL)
-		return create_optimized_surface(surf);
+	if(surf == NULL)
+		return NULL;
+
+	if((red == 0 && green == 0 && blue == 0))
+		return optimize ? create_optimized_surface(surf) : surf;
 
 	surface nsurf(make_neutral_surface(surf));
 
@@ -756,10 +759,10 @@ surface shadow_image(const surface &surf, bool optimize)
 
 
 surface recolor_image(surface surf, const std::map<Uint32, Uint32>& map_rgb, bool optimize){
-	if(map_rgb.size()){
-		if(surf == NULL)
+	if(surf == NULL)
 		return NULL;
 
+	if(map_rgb.size()){
 	     surface nsurf(make_neutral_surface(surf));
 	     if(nsurf == NULL) {
 			std::cerr << "failed to make neutral surface\n";
@@ -1337,6 +1340,9 @@ surface blur_alpha_surface(const surface &surf, int depth, bool optimize)
 
 surface cut_surface(const surface &surf, SDL_Rect const &r)
 {
+	if(surf == NULL)
+		return NULL;
+
 	surface res = create_compatible_surface(surf, r.w, r.h);
 
 	size_t sbpp = surf->format->BytesPerPixel;
