@@ -122,7 +122,7 @@ class tod_manager : public savegame::savegame_config
 		 *
 		 * Correct time is calculated from current time.
 		 */
-		const time_of_day& get_time_of_day_turn(int nturn) const;
+		const time_of_day& get_time_of_day_turn(const std::vector<time_of_day>& times, int nturn) const;
 
 		struct area_time_of_day {
 			area_time_of_day() :

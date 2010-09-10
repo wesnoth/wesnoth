@@ -111,20 +111,23 @@ void tod_manager::set_time_of_day(int newTime)
 
 const time_of_day& tod_manager::get_previous_time_of_day() const
 {
-	return get_time_of_day_turn(turn_ - 1);
+	return get_time_of_day_turn(times_, turn_ - 1);
 }
 
 const time_of_day& tod_manager::get_time_of_day(const map_location& loc, int n_turn) const
 {
+	if(n_turn == 0)
+		n_turn = turn_;
+
 	for (std::vector<area_time_of_day>::const_reverse_iterator
 		 i = areas_.rbegin(), i_end = areas_.rend(); i != i_end; ++i)
 	{
 		if (i->hexes.count(loc) != 1) continue;
 		VALIDATE(i->times.size(), _("No time of day has been defined."));
-		return i->times[(n_turn - 1) % i->times.size()];
+		return get_time_of_day_turn(i->times, n_turn);
 	}
 
-	return get_time_of_day_turn(n_turn ? n_turn : turn_);
+	return get_time_of_day_turn(times_, n_turn);
 }
 
 bool tod_manager::is_start_ToD(const std::string& random_start_time)
@@ -213,15 +216,15 @@ void tod_manager::set_start_ToD(config &level, int current_turn)
 
 }
 
-const time_of_day& tod_manager::get_time_of_day_turn(int nturn) const
+const time_of_day& tod_manager::get_time_of_day_turn(const std::vector<time_of_day>& times, int nturn) const
 {
-	int time = (currentTime_ + nturn  - turn_) % times_.size();
+	int time = (currentTime_ + nturn  - turn_) % times.size();
 
 	while(time < 0)	{
-		time += times_.size();
+		time += times.size();
 	}
 
-	return times_[time];
+	return times[time];
 }
 
 time_of_day tod_manager::time_of_day_at(const map_location& loc) const
