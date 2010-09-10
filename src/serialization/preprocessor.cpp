@@ -32,6 +32,8 @@
 #include "filesystem.hpp"
 #include "util.hpp"
 
+#include <stdexcept>
+
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
 #define WRN_CF LOG_STREAM(warn, log_config)
@@ -407,26 +409,25 @@ class preprocessor_data: preprocessor
 	/** Description of a preprocessing chunk. */
 	struct token_desc
 	{
-		token_desc(const char type, const int stack_pos, const int linenum)
+		enum TOKEN_TYPE {
+			START,        // Toplevel
+			PROCESS_IF,   // Processing the "if" branch of a ifdef/ifndef (the "else" branch will be skipped)
+			PROCESS_ELSE, // Processing the "else" branch of a ifdef/ifndef
+			SKIP_IF,      // Skipping the "if" branch of a ifdef/ifndef (the "else" branch, if any, will be processed)
+			SKIP_ELSE,    // Skipping the "else" branch of a ifdef/ifndef
+			STRING,       // Processing a string
+			VERBATIM,     // Processing a verbatim string
+			MACRO_SPACE,  // Processing between chunks of a macro call (skip spaces)
+			MACRO_CHUNK,  // Processing inside a chunk of a macro call (stop on space or '(')
+			MACRO_PARENS  // Processing a parenthesized macro argument
+		};
+		token_desc(TOKEN_TYPE type, const int stack_pos, const int linenum)
 			: type(type)
 			, stack_pos(stack_pos)
 			, linenum(linenum)
 		{
 		}
-		/** @todo FIXME: add enum for token type. */
-		/**
-		 * Preprocessor state.
-		 * - 'i': processing the "if" branch of a ifdef/ifndef (the "else" branch will be skipped)
-		 * - 'j': processing the "else" branch of a ifdef/ifndef
-		 * - 'I': skipping the "if" branch of a ifdef/ifndef (the "else" branch, if any, will be processed)
-		 * - 'J': skipping the "else" branch of a ifdef/ifndef
-		 * - '"': processing a string
-		 * - '<': processing a verbatim string
-		 * - '{': processing between chunks of a macro call (skip spaces), no storage
-		 * - '[': processing inside a chunk of a macro call (stop on space or '(')
-		 * - '(': processing a parenthesized macro argument
-		 */
-		char type;
+		TOKEN_TYPE type;
 		/** Starting position in #strings_ of the delayed text for this chunk. */
 		int stack_pos;
 		int linenum;
@@ -458,7 +459,7 @@ class preprocessor_data: preprocessor
 	std::string read_rest_of_line();
 	void skip_spaces();
 	void skip_eol();
-	void push_token(char);
+	void push_token(token_desc::TOKEN_TYPE);
 	void pop_token();
 	void put(char);
 	void put(std::string const & /*, int change_line
@@ -473,7 +474,20 @@ public:
 	                  std::map<std::string, std::string> *defines);
 	~preprocessor_data();
 	virtual bool get_chunk();
+
+	friend bool operator==(preprocessor_data::token_desc::TOKEN_TYPE, char);
+	friend bool operator==(char, preprocessor_data::token_desc::TOKEN_TYPE);
+	friend bool operator!=(preprocessor_data::token_desc::TOKEN_TYPE, char);
+	friend bool operator!=(char, preprocessor_data::token_desc::TOKEN_TYPE);
 };
+
+bool operator==(preprocessor_data::token_desc::TOKEN_TYPE, char)
+{
+	throw std::logic_error("don't compare tokens with characters");
+}
+bool operator==(char lhs, preprocessor_data::token_desc::TOKEN_TYPE rhs){ return rhs == lhs; }
+bool operator!=(preprocessor_data::token_desc::TOKEN_TYPE rhs, char lhs){ return !(lhs == rhs); }
+bool operator!=(char lhs, preprocessor_data::token_desc::TOKEN_TYPE rhs){ return rhs != lhs; }
 
 preprocessor_file::preprocessor_file(preprocessor_streambuf &t, std::string const &name) :
 	preprocessor(t),
@@ -552,7 +566,7 @@ preprocessor_data::preprocessor_data(preprocessor_streambuf &t,
 		t.textdomain_ = domain;
 	}
 
-	push_token('*');
+	push_token(token_desc::START);
 }
 
 preprocessor_data::~preprocessor_data()
@@ -560,21 +574,21 @@ preprocessor_data::~preprocessor_data()
 	delete local_defines_;
 }
 
-void preprocessor_data::push_token(char t)
+void preprocessor_data::push_token(token_desc::TOKEN_TYPE t)
 {
 	token_desc token(t, strings_.size(), linenum_);
 	tokens_.push_back(token);
-	if (t == '{') {
+	if (t == token_desc::MACRO_SPACE) {
 		// Macro expansions do not have any associated storage at start.
 		return;
-	} else if (t == '"' || t == '<') {
+	} else if (t == token_desc::STRING || t == token_desc::VERBATIM) {
 		/* Quoted strings are always inlined in the parent token. So
 		   they need neither storage nor metadata, unless the parent
 		   token is a macro expansion. */
-		char &outer_type = tokens_[tokens_.size() - 2].type;
-		if (outer_type != '{')
+		token_desc::TOKEN_TYPE &outer_type = tokens_[tokens_.size() - 2].type;
+		if (outer_type != token_desc::MACRO_SPACE)
 			return;
-		outer_type = '[';
+		outer_type = token_desc::MACRO_CHUNK;
 		tokens_.back().stack_pos = strings_.size() + 1;
 	}
 	std::ostringstream s;
@@ -587,32 +601,32 @@ void preprocessor_data::push_token(char t)
 
 void preprocessor_data::pop_token()
 {
-	char inner_type = tokens_.back().type;
+	token_desc::TOKEN_TYPE inner_type = tokens_.back().type;
 	unsigned stack_pos = tokens_.back().stack_pos;
 	tokens_.pop_back();
-	char &outer_type = tokens_.back().type;
-	if (inner_type == '(') {
+	token_desc::TOKEN_TYPE &outer_type = tokens_.back().type;
+	if (inner_type == token_desc::MACRO_PARENS) {
 		// Parenthesized macro arguments are left on the stack.
-		assert(outer_type == '{');
+		assert(outer_type == token_desc::MACRO_SPACE);
 		return;
 	}
-	if (inner_type == '"' || inner_type == '<') {
+	if (inner_type == token_desc::STRING || inner_type == token_desc::VERBATIM) {
 		// Quoted strings are always inlined.
 		assert(stack_pos == strings_.size());
 		return;
 	}
-	if (outer_type == '{') {
+	if (outer_type == token_desc::MACRO_SPACE) {
 		/* A macro expansion does not have any associated storage.
 		   Instead, storage of the inner token is not discarded
 		   but kept as a new macro argument. But if the inner token
 		   was a macro expansion, it is about to be appended, so
 		   prepare for it. */
-		if (inner_type == '{' || inner_type == '[') {
+		if (inner_type == token_desc::MACRO_SPACE || inner_type == token_desc::MACRO_CHUNK) {
 			strings_.erase(strings_.begin() + stack_pos, strings_.end());
 			strings_.push_back(std::string());
 		}
 		assert(stack_pos + 1 == strings_.size());
-		outer_type = '[';
+		outer_type = token_desc::MACRO_CHUNK;
 		return;
 	}
 	strings_.erase(strings_.begin() + stack_pos, strings_.end());
@@ -723,7 +737,7 @@ void preprocessor_data::put(std::string const &s /*, int line_change*/)
 void preprocessor_data::conditional_skip(bool skip)
 {
 	if (skip) ++skipping_;
-	push_token(skip ? 'J' : 'i');
+	push_token(skip ? token_desc::SKIP_ELSE : token_desc::PROCESS_IF);
 }
 
 bool preprocessor_data::get_chunk()
@@ -735,15 +749,16 @@ bool preprocessor_data::get_chunk()
 		// Make sure we don't have any incomplete tokens.
 		char const *s;
 		switch (token.type) {
-		case '*': return false; // everything is fine
-		case 'i':
-		case 'I':
-		case 'j':
-		case 'J': s = "#ifdef or #ifndef"; break;
-		case '"': s = "Quoted string"; break;
-		case '[':
-		case '{': s = "Macro substitution"; break;
-		case '(': s = "Macro argument"; break;
+		case token_desc::START: return false; // everything is fine
+		case token_desc::PROCESS_IF:
+		case token_desc::SKIP_IF:
+		case token_desc::PROCESS_ELSE:
+		case token_desc::SKIP_ELSE: s = "#ifdef or #ifndef"; break;
+		case token_desc::STRING: s = "Quoted string"; break;
+		case token_desc::VERBATIM: s = "Verbatim string"; break;
+		case token_desc::MACRO_CHUNK:
+		case token_desc::MACRO_SPACE: s = "Macro substitution"; break;
+		case token_desc::MACRO_PARENS: s = "Macro argument"; break;
 		default: s = "???";
 		}
 		target_.error(std::string(s) + " not terminated", token.linenum);
@@ -761,7 +776,7 @@ bool preprocessor_data::get_chunk()
 		buffer += '\n';
 		// line_change = 1-1 = 0
 		put(buffer);
-	} else if (token.type == '<') {
+	} else if (token.type == token_desc::VERBATIM) {
 		put(c);
 		if (c == '>' && in_->peek() == '>') {
 			put(in_->get());
@@ -769,25 +784,25 @@ bool preprocessor_data::get_chunk()
 		}
 	} else if (c == '<' && in_->peek() == '<') {
 		in_->get();
-		push_token('<');
+		push_token(token_desc::VERBATIM);
 		put('<');
 		put('<');
 	} else if (c == '"') {
-		if (token.type == '"') {
+		if (token.type == token_desc::STRING) {
 			target_.quoted_ = false;
 			put(c);
 			pop_token();
 		} else if (!target_.quoted_) {
 			target_.quoted_ = true;
-			push_token('"');
+			push_token(token_desc::STRING);
 			put(c);
 		} else {
 			target_.error("Nested quoted string" , linenum_);
 		}
 	} else if (c == '{') {
-		push_token('{');
+		push_token(token_desc::MACRO_SPACE);
 		++slowpath_;
-	} else if (c == ')' && token.type == '(') {
+	} else if (c == ')' && token.type == token_desc::MACRO_PARENS) {
 		pop_token();
 	} else if (c == '#' && !target_.quoted_) {
 		std::string command = read_word();
@@ -858,23 +873,23 @@ bool preprocessor_data::get_chunk()
 				<< (found ? "found" : "not found") << '\n';
 			conditional_skip(found);
 		} else if (command == "else") {
-			if (token.type == 'J') {
+			if (token.type == token_desc::SKIP_ELSE) {
 				pop_token();
 				--skipping_;
-				push_token('j');
-			} else if (token.type == 'i') {
+				push_token(token_desc::PROCESS_ELSE);
+			} else if (token.type == token_desc::PROCESS_IF) {
 				pop_token();
 				++skipping_;
-				push_token('I');
+				push_token(token_desc::SKIP_IF);
 			} else {
 				target_.error("Unexpected #else", linenum_);
 			}
 		} else if (command == "endif") {
 			switch (token.type) {
-			case 'I':
-			case 'J': --skipping_;
-			case 'i':
-			case 'j': break;
+			case token_desc::SKIP_IF:
+			case token_desc::SKIP_ELSE: --skipping_;
+			case token_desc::PROCESS_IF:
+			case token_desc::PROCESS_ELSE: break;
 			default:
 				target_.error("Unexpected #endif", linenum_);
 			}
@@ -912,24 +927,35 @@ bool preprocessor_data::get_chunk()
 			} else
 				DBG_CF << "Skipped a warning\n";
 		} else
-			comment = token.type != '{';
+			comment = token.type != token_desc::MACRO_SPACE;
 		skip_eol();
 		if (comment)
 			put('\n');
-	} else if (token.type == '{' || token.type == '[') {
+	} else if (token.type == token_desc::MACRO_SPACE || token.type == token_desc::MACRO_CHUNK) {
 		if (c == '(') {
 			// If a macro argument was started, it is implicitly ended.
-			token.type = '{';
-			push_token('(');
+			token.type = token_desc::MACRO_SPACE;
+			push_token(token_desc::MACRO_PARENS);
 		} else if (utils::portable_isspace(c)) {
 			// If a macro argument was started, it is implicitly ended.
-			token.type = '{';
+			token.type = token_desc::MACRO_SPACE;
 		} else if (c == '}') {
 			--slowpath_;
 			if (skipping_) {
 				pop_token();
 				return true;
 			}
+			// FIXME: is this obsolete?
+			//if (token.type == token_desc::MACRO_SPACE) {
+			//	if (!strings_.back().empty()) {
+			//		std::ostringstream error;
+			//		std::ostringstream location;
+			//		error << "Can't parse new macro parameter with a macro call scope open";
+			//		location<<linenum_<<' '<<target_.location_;
+			//		target_.error(error.str(), location.str());
+			//	}
+			//	strings_.pop_back();
+			//}
 
 			std::string symbol = strings_[token.stack_pos];
 			std::string::size_type pos;
@@ -1025,13 +1051,13 @@ bool preprocessor_data::get_chunk()
 		}
 		else if (!skipping_)
 		{
-			if (token.type == '{')
+			if (token.type == token_desc::MACRO_SPACE)
 			{
 				std::ostringstream s;
 				s << "\376line " << linenum_ << ' ' << target_.location_
 				  << "\n\376textdomain " << target_.textdomain_ << '\n';
 				strings_.push_back(s.str());
-				token.type = '[';
+				token.type = token_desc::MACRO_CHUNK;
 			}
 			put(c);
 		}
