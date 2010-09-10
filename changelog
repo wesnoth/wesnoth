@@ -101,6 +101,8 @@ Version 1.9.0+svn:
    * Added "variations" key and "@V" symbol in [terrain_graphics] (syntax is
      not final, and may change later)
    * Fixed a bug causing the PUT_TO_RECALL_LIST macro to freeze the game.
+   * Modified [set_variable] "divide" so that it always performs a
+     floating-point divide.
  * Miscellaneous and bug fixes:
    * Removed: statistics upload code.
    * Changed: compiler mode set to c++98

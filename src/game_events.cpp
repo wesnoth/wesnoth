@@ -1109,11 +1109,6 @@ WML_HANDLER_FUNCTION(move_units_fake, /*event_info*/, cfg)
 	LOG_WML << "Units removed\n";
 }
 
-// Helper function(s) for [set_variable]
-static bool isint(const std::string &var) {
-	return var.find('.') == std::string::npos;
-}
-
 WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 {
 	game_state *state_of_game = resources::state_of_game;
@@ -1146,29 +1141,17 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 
 	config::attribute_value add = cfg["add"];
 	if (!add.empty()) {
-		if (isint(var.str()) && isint(add.str())) {
-			var = var.to_int() + add.to_int();
-		} else {
-			var = var.to_double() + add.to_double();
-		}
+		var = var.to_double() + add.to_double();
 	}
 
 	config::attribute_value sub = cfg["sub"];
 	if (!sub.empty()) {
-		if (isint(var.str()) && isint(sub.str())) {
-			var = var.to_int() - sub.to_int();
-		} else {
-			var = var.to_double() - sub.to_double();
-		}
+		var = var.to_double() - sub.to_double();
 	}
 
 	config::attribute_value multiply = cfg["multiply"];
 	if (!multiply.empty()) {
-		if (isint(var.str()) && isint(multiply.str())) {
-			var = var.to_int() * multiply.to_int();
-		} else {
-			var = var.to_double() * multiply.to_double();
-		}
+		var = var.to_double() * multiply.to_double();
 	}
 
 	config::attribute_value divide = cfg["divide"];
@@ -1177,11 +1160,7 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 			ERR_NG << "division by zero on variable " << name << "\n";
 			return;
 		}
-		if (isint(var.str()) && isint(divide.str())) {
-			var = var.to_int() / divide.to_int();
-		} else {
-			var = var.to_double() / divide.to_double();
-		}
+		var = var.to_double() / divide.to_double();
 	}
 
 	config::attribute_value modulo = cfg["modulo"];
@@ -1190,11 +1169,7 @@ WML_HANDLER_FUNCTION(set_variable, /*event_info*/, cfg)
 			ERR_NG << "division by zero on variable " << name << "\n";
 			return;
 		}
-		if (isint(var.str()) && isint(modulo.str())) {
-			var = var.to_int() % modulo.to_int();
-		} else {
-			var = std::fmod(var.to_double(), modulo.to_double());
-		}
+		var = std::fmod(var.to_double(), modulo.to_double());
 	}
 
 	config::attribute_value round_val = cfg["round"];

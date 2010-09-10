@@ -104,6 +104,7 @@ bool config::attribute_value::to_bool(bool def) const
 int config::attribute_value::to_int(int def) const
 {
 	if (const int *p = boost::get<const int>(&value)) return *p;
+	if (const double *p = boost::get<const double>(&value)) return int(*p);
 	return def;
 }
 
