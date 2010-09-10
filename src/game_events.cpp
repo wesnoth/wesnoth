@@ -2731,7 +2731,7 @@ WML_HANDLER_FUNCTION(time_area, /*event_info*/, cfg)
 		std::set<map_location> locs;
 		terrain_filter filter(cfg, *resources::units);
 		filter.restrict_size(game_config::max_loop);
-		filter.get_locations(locs);
+		filter.get_locations(locs, true);
 		config parsed_cfg = cfg.get_parsed_config();
 		resources::tod_manager->add_time_area(id, locs, parsed_cfg);
 		LOG_NG << "event WML inserted time_area '" << id << "'\n";

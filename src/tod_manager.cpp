@@ -116,14 +116,12 @@ const time_of_day& tod_manager::get_previous_time_of_day() const
 
 const time_of_day& tod_manager::get_time_of_day(const map_location& loc, int n_turn) const
 {
-	if (loc.valid()) {
-		for (std::vector<area_time_of_day>::const_reverse_iterator
-		     i = areas_.rbegin(), i_end = areas_.rend(); i != i_end; ++i)
-		{
-			if (i->hexes.count(loc) != 1) continue;
-			VALIDATE(i->times.size(), _("No time of day has been defined."));
-			return i->times[(n_turn - 1) % i->times.size()];
-		}
+	for (std::vector<area_time_of_day>::const_reverse_iterator
+		 i = areas_.rbegin(), i_end = areas_.rend(); i != i_end; ++i)
+	{
+		if (i->hexes.count(loc) != 1) continue;
+		VALIDATE(i->times.size(), _("No time of day has been defined."));
+		return i->times[(n_turn - 1) % i->times.size()];
 	}
 
 	return get_time_of_day_turn(n_turn ? n_turn : turn_);
@@ -148,7 +146,7 @@ void tod_manager::add_time_area(const config& cfg)
 	area.id = cfg["id"].str();
 	area.xsrc = cfg["x"].str();
 	area.ysrc = cfg["y"].str();
-	std::vector<map_location> const& locs = parse_location_range(area.xsrc, area.ysrc);
+	std::vector<map_location> const& locs = parse_location_range(area.xsrc, area.ysrc, true);
 	std::copy(locs.begin(), locs.end(), std::inserter(area.hexes, area.hexes.end()));
 	time_of_day::parse_times(cfg, area.times);
 }
