@@ -94,42 +94,42 @@ void set_playerlist_group_players(bool v)
 
 bool filter_lobby()
 {
-	return utils::string_bool(preferences::get("filter_lobby"), false);
+	return preferences::get("filter_lobby", false);
 }
 
 void set_filter_lobby(bool value)
 {
-	preferences::set("filter_lobby", value ? "yes" : "no");
+	preferences::set("filter_lobby", value);
 }
 
 bool fi_invert()
 {
-	return utils::string_bool(preferences::get("fi_invert"), false);
+	return preferences::get("fi_invert", false);
 }
 
 void set_fi_invert(bool value)
 {
-	preferences::set("fi_invert", value ? "yes" : "no");
+	preferences::set("fi_invert", value);
 }
 
 bool fi_vacant_slots()
 {
-	return utils::string_bool(preferences::get("fi_vacant_slots"), false);
+	return preferences::get("fi_vacant_slots", false);
 }
 
 void set_fi_vacant_slots(bool value)
 {
-	preferences::set("fi_vacant_slots", value ? "yes" : "no");
+	preferences::set("fi_vacant_slots", value);
 }
 
 bool fi_friends_in_game()
 {
-	return utils::string_bool(preferences::get("fi_friends_in_game"), false);
+	return preferences::get("fi_friends_in_game", false);
 }
 
 void set_fi_friends_in_game(bool value)
 {
-	preferences::set("fi_friends_in_game", value ? "yes" : "no");
+	preferences::set("fi_friends_in_game", value);
 }
 
 std::string fi_text()
