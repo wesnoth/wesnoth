@@ -1630,9 +1630,8 @@ WML_HANDLER_FUNCTION(unit, /*event_info*/, cfg)
 		config &var = resources::state_of_game->get_variable_cfg(to_variable);
 		var.clear();
 		new_unit.write(var);
-		var["placement"] = parsed_cfg["placement"];
-		var["x"] = parsed_cfg["x"];
-		var["y"] = parsed_cfg["y"];
+		if (const config::attribute_value *v = parsed_cfg.get("x")) var["x"] = *v;
+		if (const config::attribute_value *v = parsed_cfg.get("y")) var["y"] = *v;
 		return;
 	}
 
