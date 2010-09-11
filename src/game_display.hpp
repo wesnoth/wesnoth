@@ -146,6 +146,8 @@ public:
 
 	const time_of_day& get_time_of_day(const map_location& loc) const;
 
+	bool has_time_area() const;
+
 protected:
 	/**
 	 * game_display pre_draw does specific things related e.g. to unit rendering

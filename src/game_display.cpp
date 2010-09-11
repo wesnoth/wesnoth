@@ -423,6 +423,11 @@ const time_of_day& game_display::get_time_of_day(const map_location& loc) const
 	return tod_manager_.get_time_of_day(loc);
 }
 
+bool game_display::has_time_area() const
+{
+	return tod_manager_.has_time_area();
+}
+
 void game_display::draw_report(reports::TYPE report_num)
 {
 	if(!team_valid()) {
