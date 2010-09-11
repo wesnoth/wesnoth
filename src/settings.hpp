@@ -71,36 +71,6 @@ namespace settings {
 	 */
 	int get_xp_modifier(const std::string& value);
 
-	/**
-	 * Returns whether the fog of war should be used.
-	 * If no valid value is supplied, it will return a default.
-	 *
-	 * @param value         string containing a boolean value
-	 *
-	 * @returns             whether or not the fog of war should be used
-	 */
-	bool use_fog(const std::string& value);
-
-	/**
-	 * Returns whether the random start time feature should be used.
-	 * If no valid value is supplied, it will return a default.
-	 *
-	 * @param value         string containing a boolean value
-	 *
-	 * @returns             whether or not the random start time should be used
-	 */
-	bool use_random_start_time(const std::string& value);
-
-	/**
-	 * Returns whether the shroud should be used.
-	 * If no valid value is supplied, it will return a default.
-	 *
-	 * @param value         string containing a boolean value
-	 *
-	 * @returns             whether or not the shroud should be used
-	 */
-	bool use_shroud(const std::string& value);
-
 } // namespace settings
 
 #endif

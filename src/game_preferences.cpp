@@ -475,7 +475,7 @@ std::string get_mp_server_program_name()
 
 bool random_start_time()
 {
-	return settings::use_random_start_time(preferences::get("mp_random_start_time"));
+	return preferences::get("mp_random_start_time", true);
 }
 
 void set_random_start_time(bool value)
@@ -485,7 +485,7 @@ void set_random_start_time(bool value)
 
 bool fog()
 {
-	return settings::use_fog(preferences::get("mp_fog"));
+	return preferences::get("mp_fog", true);
 }
 
 void set_fog(bool value)
@@ -495,7 +495,7 @@ void set_fog(bool value)
 
 bool shroud()
 {
-	return settings::use_shroud(preferences::get("mp_shroud"));
+	return preferences::get("mp_shroud", true);
 }
 
 void set_shroud(bool value)

@@ -50,20 +50,5 @@ int get_xp_modifier(const std::string& value)
 	return lexical_cast_in_range<int>(value, 70, 30, 200);
 }
 
-bool use_fog(const std::string& value)
-{
-	return utils::string_bool(value, true);
-}
-
-bool use_random_start_time(const std::string& value)
-{
-	return utils::string_bool(value, true);
-}
-
-bool use_shroud(const std::string& value)
-{
-	return utils::string_bool(value, false);
-}
-
 } // end namespace settings
 

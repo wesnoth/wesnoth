@@ -571,7 +571,7 @@ void create::process_event()
 			preferences::xp_modifier());
 
 		random_start_time_.set_check(map_settings ?
-			settings::use_random_start_time(parameters_.scenario_data["random_start_time"]) :
+			parameters_.scenario_data["random_start_time"].to_bool(true) :
 			preferences::random_start_time());
 
 		// These are per player, always show values of player 1.
@@ -591,11 +591,11 @@ void create::process_event()
 				preferences::village_gold());
 
 			fog_game_.set_check(map_settings ?
-				settings::use_fog(cfg["fog"]) :
+				cfg["fog"].to_bool(true) :
 				preferences::fog());
 
 			shroud_game_.set_check(map_settings ?
-				settings::use_shroud(cfg["shroud"]) :
+				cfg["shroud"].to_bool(true) :
 				preferences::shroud());
 		}
 
