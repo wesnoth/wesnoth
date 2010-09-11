@@ -1055,10 +1055,11 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 			const map_location dst(destination, resources::state_of_game);
 
 			int weapon_num = child["weapon"];
-			int def_weapon_num = child["defender_weapon"].to_int(-1);
-			if (def_weapon_num == -1) {
+			int def_weapon_num = child["defender_weapon"].to_int(-2);
+			if (def_weapon_num == -2) {
 				// Let's not gratuitously destroy backwards compat.
-				ERR_REPLAY << "Old data, having to guess weapon\n";
+				WRN_REPLAY << "Old data, having to guess weapon\n";
+				def_weapon_num = -1;
 			}
 
 			unit_map::iterator u = resources::units->find(src);
