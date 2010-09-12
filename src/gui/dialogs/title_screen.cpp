@@ -110,6 +110,13 @@ void show_language_dialog(CVideo& video, twindow& window)
 
 REGISTER_WINDOW(title_screen)
 
+static bool hotkey(twindow& window, const gui::TITLE_RESULT title_result)
+{
+	window.set_retval(static_cast<twindow::tretval>(title_result));
+
+	return true;
+}
+
 ttitle_screen::ttitle_screen()
 	: video_(NULL)
 	, tips_()
@@ -147,6 +154,16 @@ static void animate_logo(
 		remove_timer(timer_id);
 		timer_id = 0;
 	}
+}
+
+void ttitle_screen::post_build(CVideo&, twindow& window)
+{
+	/** @todo Should become a title screen hotkey. */
+	window.register_hotkey(hotkey::TITLE_SCREEN__RELOAD_WML
+				, boost::bind(
+					  &hotkey
+					, boost::ref(window)
+					, gui::RELOAD_GAME_DATA));
 }
 
 void ttitle_screen::pre_show(CVideo& video, twindow& window)

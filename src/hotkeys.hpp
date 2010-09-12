@@ -107,6 +107,8 @@ enum HOTKEY_COMMAND {
 	HOTKEY_USER_CMD_2,
 	HOTKEY_USER_CMD_3,
 #endif
+	/* Gui2 specific hotkeys. */
+	TITLE_SCREEN__RELOAD_WML,
 	HOTKEY_NULL
 };
 

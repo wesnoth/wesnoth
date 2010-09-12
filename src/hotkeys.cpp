@@ -203,6 +203,13 @@ const struct {
 	{ hotkey::HOTKEY_USER_CMD_2, "usercommand#2", N_("User-Command#2"), false, hotkey::SCOPE_GAME },
 	{ hotkey::HOTKEY_USER_CMD_3, "usercommand#3", N_("User-Command#3"), false, hotkey::SCOPE_GAME },
 #endif
+	{
+		  hotkey::TITLE_SCREEN__RELOAD_WML
+		, "title_screen__reload_wml"
+		, N_("Refresh WML")
+		, true
+		, hotkey::SCOPE_GENERAL
+	},
 	{ hotkey::HOTKEY_NULL, NULL, NULL, true, hotkey::SCOPE_GENERAL }
 };
 
