@@ -335,9 +335,8 @@ int unit_movement_type::resistance_against(const attack_type& attack) const
 
 	if (const config &resistance = cfg_.child("resistance"))
 	{
-		const std::string &val = resistance[attack.type()];
-		if (!val.empty()) {
-			res = atoi(val.c_str());
+		if (const::config::attribute_value *val = resistance.get(attack.type())) {
+			res = *val;
 			result_found = true;
 		}
 	}
@@ -435,9 +434,8 @@ int movement_cost_internal(std::map<t_translation::t_terrain, int>& move_costs,
 		}
 
 		const std::string& id = map.get_terrain_info(underlying.front()).id();
-		const std::string &val = movement_costs[id];
-		if (!val.empty()) {
-			res = atoi(val.c_str());
+		if (const config::attribute_value *val = movement_costs.get(id)) {
+			res = *val;
 			result_found = true;
 		}
 	}
@@ -517,10 +515,8 @@ int defense_modifier_internal(std::map<t_translation::t_terrain, int>& defense_m
 		}
 
 		const std::string& id = map.get_terrain_info(underlying.front()).id();
-		const std::string &val = defense[id];
-
-		if (!val.empty()) {
-			res = atoi(val.c_str());
+		if (const config::attribute_value *val = defense.get(id)) {
+			res = *val;
 			result_found = true;
 		}
 	}
