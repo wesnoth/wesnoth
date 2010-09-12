@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.5.7+svn\n"
 "POT-Creation-Date: 2010-08-18 16:24+0300\n"
-"PO-Revision-Date: 2010-09-09 17:11+0700\n"
+"PO-Revision-Date: 2010-09-10 15:59+0700\n"
 "Last-Translator: Huynh Yen L <nightgaunt13@gmail.c>\n"
 "Language-Team: none <>\n"
 "Language: \n"
@@ -339,9 +339,9 @@ msgid ""
 "log domain. Available levels: B<error>,\\ B<warning>,\\ B<info>,\\ "
 "B<debug>.  By default the B<error> level is used."
 msgstr ""
-"đặt mức trầm trọng của miền dăng nhập. B<all> có thể phù hợp với bất cứ miền "
-"đăng nhập nào. Các mức có sẵn: B<error>,\\ B<warning>,\\ B<info>,\\ "
-"B<debug>. Theo mặc định sử dụng mức B<error>."
+"đặt mức độ của miền dăng nhập. B<all> có thể phù hợp với bất cứ miền đăng "
+"nhập nào. Các mức có sẵn: B<error>,\\ B<warning>,\\ B<info>,\\ B<debug>. "
+"Theo mặc định sử dụng mức B<error>."
 
 # type: TP
 #. type: TP
@@ -556,7 +556,7 @@ msgid ""
 "in preferences. Example: B<--server server.wesnoth.org>"
 msgstr ""
 "kết nối đến máy chủ được chỉ định trước nếu có, còn không kết nối đến máy "
-"chủ đầu tiên trong tùy thích. Ví dụ Example: B<--server server.wesnoth.org>"
+"chủ đầu tiên trong phần tùy chọn. Ví dụ: B<--server server.wesnoth.org>"
 
 # type: TP
 #. type: TP
@@ -992,7 +992,7 @@ msgstr "B<-d, --daemon>"
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:55
 msgid "runs wesnothd as a daemon."
-msgstr "chạy wesnothd như một tiến trình chạy nền."
+msgstr "chạy wesnothd như một tiến trình nền."
 
 # type: Plain text
 #. type: Plain text
@@ -1009,10 +1009,10 @@ msgid ""
 "B<debug>.  By default the B<error> level is used and the B<info> level for "
 "the B<server> domain."
 msgstr ""
-"đặt mức độ nghiêm khắc của miền đăng nhập.  B<all> có thể sử dụng để phù hợp "
-"với bất kỳ miền đăng nhập nào. Các mức độ có sẵn: B<error>,\\ B<warning>,\\ "
-"B<info>,\\ B<debug>. Mặc định là mức độ B<error> được sử dụng và mức độ "
-"B<info> cho miền B<server>."
+"đặt mức độ của miền đăng nhập.  B<all> có thể sử dụng để phù hợp với bất kỳ "
+"miền đăng nhập nào. Các mức độ có sẵn: B<error>,\\ B<warning>,\\ B<info>,\\ "
+"B<debug>. Mặc định là mức độ B<error> được sử dụng và mức độ B<info> cho "
+"miền B<server>."
 
 # type: TP
 #. type: TP
@@ -1045,8 +1045,8 @@ msgid ""
 "sets the maximum number of waiting worker threads for network I/O to n "
 "(default: B<5>,\\ max:\\ B<30>)."
 msgstr ""
-"đặt số lượng tối đa cho chủ đề chờ đợi công nhân cho mạng lưới vào/ra là n "
-"(mặc định: B<5>,\\ max:\\ B<30>)."
+"đặt số lượng tối đa cho chủ đề đang đợi cho mạng lưới vào/ra là n (mặc định: "
+"B<5>,\\ max:\\ B<30>)."
 
 # type: TP
 #. type: TP
@@ -1062,8 +1062,8 @@ msgid ""
 "sets the maximum number of worker threads that will be created.  If set to "
 "B<0> there will be no limit (default: B<0>)."
 msgstr ""
-"đặt số lượng tối đa cho chủ đề chờ đợi công nhân sẽ được tạo ra. Nếu đặt là  "
-"B<0> thì sẽ không có giới hạn (mặc định: B<0>)."
+"đặt số lượng tối đa cho chủ đề sẽ được tạo ra. Nếu đặt là  B<0> thì sẽ không "
+"có giới hạn (mặc định: B<0>)."
 
 # type: TP
 #. type: TP
@@ -1813,7 +1813,7 @@ msgstr "wesnoth"
 
 # type: Plain text
 #~ msgid "Dumps a list of all log domains and exits."
-#~ msgstr "Loại bỏ danh sách tất cả miền dăng nhập và thoát."
+#~ msgstr "Loại bỏ danh sách tất cả miền đăng nhập và thoát."
 
 # type: Plain text
 #~ msgid "B<wesnoth_editor>(6), B<wesnothd>(6)"
