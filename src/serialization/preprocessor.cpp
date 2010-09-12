@@ -908,8 +908,10 @@ bool preprocessor_data::get_chunk()
 		} else if (command == "undef") {
 			skip_spaces();
 			std::string const &symbol = read_word();
-			target_.defines_->erase(symbol);
-			LOG_CF << "undefine macro " << symbol << " (location " << get_location(target_.location_) << ")\n";
+			if (!skipping_) {
+				target_.defines_->erase(symbol);
+				LOG_CF << "undefine macro " << symbol << " (location " << get_location(target_.location_) << ")\n";
+			}
 		} else if (command == "error") {
 			if (!skipping_) {
 				skip_spaces();
