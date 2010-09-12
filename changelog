@@ -109,6 +109,9 @@ Version 1.9.0+svn:
      floating-point divide.
    * Allow time_area to define local time of day on map border (bug #16508)
    * Fix time of day not changing in time area (bug #16584)
+   * Allowed negative defense values as a way to set upper bounds,
+     e.g. village=-60 means that a unit cannot have less than 60 def (more
+     than 40% def) on terrains containing villages.
  * Miscellaneous and bug fixes:
    * Removed: statistics upload code.
    * Changed: compiler mode set to c++98

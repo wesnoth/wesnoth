@@ -399,7 +399,7 @@ private:
 	int movement_;
 	int max_movement_;
 	mutable std::map<t_translation::t_terrain, int> movement_costs_; // movement cost cache
-	mutable std::map<t_translation::t_terrain, int> defense_mods_; // defense modifiers cache
+	mutable defense_cache defense_mods_; // defense modifiers cache
 	bool hold_position_;
 	bool end_turn_;
 	bool resting_;

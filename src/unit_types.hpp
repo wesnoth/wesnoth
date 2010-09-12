@@ -103,6 +103,29 @@ private:
 
 class unit_movement_type;
 
+/**
+ * Possible range of the defense. When a single value is needed, #max_
+ * (maximum defense) is selected, unless #min_ is bigger.
+ */
+struct defense_range
+{
+	int min_, max_;
+};
+
+typedef std::map<t_translation::t_terrain, defense_range> defense_cache;
+
+const defense_range &defense_range_modifier_internal(defense_cache &defense_mods,
+	const config &cfg, const unit_movement_type *parent,
+	const gamemap &map, t_translation::t_terrain terrain, int recurse_count = 0);
+
+int defense_modifier_internal(defense_cache &defense_mods,
+	const config &cfg, const unit_movement_type *parent,
+	const gamemap &map, t_translation::t_terrain terrain, int recurse_count = 0);
+
+int movement_cost_internal(std::map<t_translation::t_terrain, int> &move_costs,
+	const config &cfg, const unit_movement_type *parent,
+	const gamemap &map, t_translation::t_terrain terrain, int recurse_count = 0);
+
 //the 'unit movement type' is the basic size of the unit - flying, small land,
 //large land, etc etc.
 class unit_movement_type
@@ -119,8 +142,12 @@ public:
 	unit_movement_type();
 
 	std::string name() const;
-	int movement_cost(const gamemap& map, t_translation::t_terrain terrain) const;
-	int defense_modifier(const gamemap& map, t_translation::t_terrain terrain) const;
+	int movement_cost(const gamemap &map, t_translation::t_terrain terrain) const
+	{ return movement_cost_internal(moveCosts_, cfg_, parent_, map, terrain); }
+	int defense_modifier(const gamemap &map, t_translation::t_terrain terrain) const
+	{ return defense_modifier_internal(defenseMods_, cfg_, parent_, map, terrain); }
+	const defense_range &defense_range_modifier(const gamemap &map, t_translation::t_terrain terrain) const
+	{ return defense_range_modifier_internal(defenseMods_, cfg_, parent_, map, terrain); }
 	int damage_against(const attack_type& attack) const { return resistance_against(attack); }
 	int resistance_against(const attack_type& attack) const;
 
@@ -129,28 +156,17 @@ public:
 	void set_parent(const unit_movement_type* parent) { parent_ = parent; }
 
 	bool is_flying() const;
-	const std::map<t_translation::t_terrain, int>& movement_costs() const { return moveCosts_; }
-	const std::map<t_translation::t_terrain, int>& defense_mods() const { return defenseMods_; }
 
 	const config& get_cfg() const { return cfg_; }
 	const unit_movement_type* get_parent() const { return parent_; }
 private:
 	mutable std::map<t_translation::t_terrain, int> moveCosts_;
-	mutable std::map<t_translation::t_terrain, int> defenseMods_;
+	mutable defense_cache defenseMods_;
 
 	const unit_movement_type* parent_;
 
 	config cfg_;
 };
-
-int movement_cost_internal(std::map<t_translation::t_terrain, int>& move_costs,
-		const config& cfg, const unit_movement_type* parent,
-		const gamemap& map,	t_translation::t_terrain terrain, int recurse_count = 0);
-
-int defense_modifier_internal(std::map<t_translation::t_terrain, int>& defense_mods,
-		const config& cfg, const unit_movement_type* parent,
-		const gamemap& map, t_translation::t_terrain terrain, int recurse_count = 0);
-
 
 typedef std::map<std::string,unit_movement_type> movement_type_map;
 

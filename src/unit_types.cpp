@@ -315,19 +315,6 @@ std::string unit_movement_type::name() const
 		return cfg_["name"];
 }
 
-int unit_movement_type::movement_cost(const gamemap& map,
-		t_translation::t_terrain terrain) const
-{
-	int res = movement_cost_internal(moveCosts_, cfg_, parent_, map, terrain);
-	return res;
-}
-
-int unit_movement_type::defense_modifier(const gamemap& map,
-		t_translation::t_terrain terrain) const
-{
-	return defense_modifier_internal(defenseMods_, cfg_, parent_, map, terrain);
-}
-
 int unit_movement_type::resistance_against(const attack_type& attack) const
 {
 	bool result_found = false;
@@ -454,33 +441,37 @@ int movement_cost_internal(std::map<t_translation::t_terrain, int>& move_costs,
 	return res;
 }
 
-int defense_modifier_internal(std::map<t_translation::t_terrain, int>& defense_mods,
+const defense_range &defense_range_modifier_internal(defense_cache &defense_mods,
 		const config& cfg, const unit_movement_type* parent,
 		const gamemap& map, t_translation::t_terrain terrain, int recurse_count)
 {
-	const std::map<t_translation::t_terrain, int>::const_iterator i = defense_mods.find(terrain);
-	if (i != defense_mods.end()) return i->second;
+	defense_range dummy = { 0, 100 };
+	std::pair<defense_cache::iterator, bool> ib =
+		defense_mods.insert(defense_cache::value_type(terrain, dummy));
+	if (!ib.second) return ib.first->second;
 
-	bool result_found = false;
-	int res = 100;
+	defense_range &res = ib.first->second;
 
 	// If this is an alias, then select the best of all underlying terrains.
 	const t_translation::t_list& underlying = map.underlying_def_terrain(terrain);
 	assert(!underlying.empty());
 
 	if (underlying.size() != 1 || underlying.front() != terrain) {
-		bool revert = (underlying.front() == t_translation::MINUS ? true : false);
+		bool revert = underlying.front() == t_translation::MINUS;
 		if(recurse_count >= 90) {
 			ERR_CF << "infinite defense_modifier recursion: "
 				<< t_translation::write_terrain_code(terrain)
 				<< " depth " << recurse_count << "\n";
 		}
 		if (recurse_count >= 100) {
-			defense_mods.insert(std::pair<t_translation::t_terrain, int>(terrain, res));
 			return res;
 		}
 
-		res = revert ? 0 : 100;
+		if (revert) {
+			res.max_ = 0;
+			res.min_ = 100;
+		}
+
 		for (t_translation::t_list::const_iterator i = underlying.begin();
 				i != underlying.end(); ++i) {
 
@@ -491,50 +482,57 @@ int defense_modifier_internal(std::map<t_translation::t_terrain, int>& defense_m
 				revert = true;
 				continue;
 			}
-			const int value = defense_modifier_internal(defense_mods, cfg, parent,
-					map, *i, recurse_count + 1);
+			const defense_range &inh = defense_range_modifier_internal
+				(defense_mods, cfg, parent, map, *i, recurse_count + 1);
 
-			if (value < res && !revert) {
-				res = value;
-			} else if (value > res && revert) {
-				res = value;
+			if (!revert) {
+				if (inh.max_ < res.max_) res.max_ = inh.max_;
+				if (inh.min_ > res.min_) res.min_ = inh.min_;
+			} else {
+				if (inh.max_ > res.max_) res.max_ = inh.max_;
+				if (inh.min_ < res.min_) res.min_ = inh.min_;
 			}
 		}
 
-		defense_mods.insert(std::pair<t_translation::t_terrain, int>(terrain, res));
-		return res;
+		goto check;
 	}
 
-	if (const config& defense = cfg.child("defense")) {
-		if (underlying.size() != 1) {
-			ERR_CF << "Terrain '" << terrain << "' has "
-				<< underlying.size() << " underlying names - 0 expected.\n";
-
-			defense_mods.insert(std::pair<t_translation::t_terrain, int>(terrain, res));
-			return res;
-		}
-
+	if (const config& defense = cfg.child("defense"))
+	{
 		const std::string& id = map.get_terrain_info(underlying.front()).id();
 		if (const config::attribute_value *val = defense.get(id)) {
-			res = *val;
-			result_found = true;
+			int def = *val;
+			if (def >= 0) res.max_ = def;
+			else res.max_ = res.min_ = -def;
+			goto check;
 		}
 	}
 
-	if (!result_found && parent != NULL) {
-		res = parent->defense_modifier(map, terrain);
+	if (parent) {
+		return parent->defense_range_modifier(map, terrain);
 	}
 
-	if (res < 0) {
-		WRN_CF << "Defense '" << res << "' is '< 0' reset to 0 (100% defense).\n";
-		res = 0;
-	} else if (res > 100) {
-		WRN_CF << "Defense '" << res << "' is '> 100' reset to 100 (0% defense).\n";
-		res = 100;
+	check:
+
+	if (res.min_ < 0) {
+		WRN_CF << "Defense '" << res.min_ << "' is '< 0' reset to 0 (100% defense).\n";
+		res.min_ = 0;
+	}
+	if (res.max_ > 100) {
+		WRN_CF << "Defense '" << res.max_ << "' is '> 100' reset to 100 (0% defense).\n";
+		res.max_ = 100;
 	}
 
-	defense_mods.insert(std::pair<t_translation::t_terrain, int>(terrain, res));
 	return res;
+}
+
+int defense_modifier_internal(defense_cache &defense_mods,
+	const config &cfg, const unit_movement_type *parent,
+	const gamemap &map, t_translation::t_terrain terrain, int recurse_count)
+{
+	const defense_range &def = defense_range_modifier_internal(defense_mods,
+		cfg, parent, map, terrain, recurse_count);
+	return (std::max)(def.max_, def.min_);
 }
 
 static const unit_race& dummy_race(){
