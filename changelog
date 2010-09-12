@@ -9,6 +9,8 @@ Version 1.9.0+svn:
      * New portraits for Arne and Bjarn.
    * Dead Water:
      * Fixed the last scenario not working due to an 'unknown scenario' error.
+   * Descent into Darkness:
+     * Fixed the 'A Small Favor' scenarios being unbeatable.
    * Eastern Invasion:
      * Increased Owaec's hitpoints and attack stats, and added a new weapon
        special to his morningstar on levels 2 and 3.
@@ -78,9 +80,11 @@ Version 1.9.0+svn:
    * Re-added the old MP lobby.
  * Terrain WML:
    * Updated height adjust of desert, orcish, and snowy keeps.
+   * Fixed broken aliasing of the wooden floor.
  * Units:
    * Decreased the melee and ranged attack of the Footpad from 5-2 to 4-2.
    * Added the Ghast unit from DiD to core with new base frame and animations.
+   * Made the Giant Rat have a normal AMLA instead of an AMLA with no fullheal.
  * User interface:
    * Changed: the title screen is now gui2.
    * Use red/green color for damage in sidebar when modified by bonus/malus
