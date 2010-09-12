@@ -1093,13 +1093,13 @@ void editor_controller::show_menu(const std::vector<std::string>& items_arg, int
 			if (get_map_context().can_undo()) {
 				hotkey::get_hotkey(*i).set_description(_("Undo"));
 			} else {
-				hotkey::get_hotkey(*i).set_description(_("Can't Undo"));
+				hotkey::get_hotkey(*i).set_description(_("Can’t Undo"));
 			}
 		} else if (command == hotkey::HOTKEY_REDO) {
 			if (get_map_context().can_redo()) {
 				hotkey::get_hotkey(*i).set_description(_("Redo"));
 			} else {
-				hotkey::get_hotkey(*i).set_description(_("Can't Redo"));
+				hotkey::get_hotkey(*i).set_description(_("Can’t Redo"));
 			}
 		} else if (command == hotkey::HOTKEY_EDITOR_AUTO_UPDATE_TRANSITIONS) {
 			switch (auto_update_transitions_) {

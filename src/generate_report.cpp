@@ -184,7 +184,7 @@ report generate_report(TYPE type,
 		}
 		if (u->get_state(unit::STATE_POISONED)) {
 			add_status(res, "misc/poisoned.png", N_("poisoned: "),
-				N_("This unit is poisoned. It will lose 8 HP every turn until it can seek a cure to the poison in a village or from a friendly unit with the 'cures' ability.\n\nUnits cannot be killed by poison alone. The poison will not reduce it below 1 HP."));
+				N_("This unit is poisoned. It will lose 8 HP every turn until it can seek a cure to the poison in a village or from a friendly unit with the ‘cures’ ability.\n\nUnits cannot be killed by poison alone. The poison will not reduce it below 1 HP."));
 		}
 		if (u->get_state(unit::STATE_PETRIFIED)) {
 			add_status(res, "misc/petrified.png", N_("petrified: "),

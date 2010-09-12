@@ -30,7 +30,7 @@ in epic multi-player fantasy battles.
 Battle for Wesnoth is open-source software, and a thriving community
 of volunteers cooperates to improve the game. You can create your own
 custom units, write your own scenarios, and even script full-blown
-campaigns. User-maintained content is available from an add-on server, 
+campaigns. User-maintained content is available from an add-on server,
 and the very best of it is incorporated into Battle for Wesnoth's
 official releases.
 
@@ -101,7 +101,7 @@ Tutorial::
  the basic controls needed to play the game. Winning or losing is not
  important here, but learning what to do is. Click the Tutorial button to
  play. In the Tutorial you are in the role of the prince Konrad or the
- princess Li'sar, learning from the Elder Mage Delfador - pay attention 
+ princess Li'sar, learning from the Elder Mage Delfador — pay attention
  or he might turn
  you into a newt.
 
@@ -129,7 +129,7 @@ Multiplayer::
 Load::
  Click this button to load a previously saved game. You will be shown
  a dialogue listing saved games. Select the game and click Ok to load
- and continue, or Cancel to return to the Main Menu. If you select a 
+ and continue, or Cancel to return to the Main Menu. If you select a
  replay game, you can check the Replay check box. The loaded game will
  make all the moves from the beginning while you watch.
 
@@ -137,7 +137,7 @@ Add-ons::
  Click this button to enter the content server where a whole lot of
  content created by normal users is hosted. Among the things available there
  are many campaigns, multiplayer eras (defining factions for multiplayer
- games) and multiplayer maps. With the "Remove Add-ons" button you can remove 
+ games) and multiplayer maps. With the "Remove Add-ons" button you can remove
  them again once you do not want them anymore.
 
 Map Editor::
@@ -159,10 +159,10 @@ Credits::
  irc.freenode.org:6667 on #wesnoth.
 
 Quit::
- Click this button to close Wesnoth. 
+ Click this button to close Wesnoth.
 
 Help::
- Click this button to open the integrated in game Help System. It will provide 
+ Click this button to open the integrated in game Help System. It will provide
  you with information about units and all other gameplay relevant things of the
  game. Most of those things are mentioned in this manual.
 
@@ -190,7 +190,7 @@ Campaigns
 ^^^^^^^^^
 
 Campaigns are sequences of battles with a connecting
-storyline. Typical campaigns have about 10-20 scenarios. The main
+storyline. Typical campaigns have about 10–20 scenarios. The main
 advantage with campaigns is that they allow you to develop your
 army. As you complete each scenario, the remaining units at the end
 are saved for you to use in the next scenario. If you choose not to
@@ -239,19 +239,19 @@ without the password.
 Join official Server
 ++++++++++++++++++++
 
-This option directly connects you to the official server. You will end in the 
-lobby where you can create your games as you wish and where many games are 
+This option directly connects you to the official server. You will end in the
+lobby where you can create your games as you wish and where many games are
 already open and maybe some players already waiting to join in a new match.
 
 Connect to Server
 +++++++++++++++++
 
-This option opens a dialog box allowing you to enter the address of the 
-machine to join. In this dialog 
-there also is the button "View List" that does show a list of official servers 
+This option opens a dialog box allowing you to enter the address of the
+machine to join. In this dialog
+there also is the button "View List" that does show a list of official servers
 that can be used as backup if the main server is currently not available.
 
-A complete list of official and user setup servers is listed at this 
+A complete list of official and user setup servers is listed at this
 website: http://wesnoth.org/wiki/MultiplayerServers[Multiplayer servers].
 
 You can also reach servers hosted by any other player with this menu option.
@@ -278,10 +278,10 @@ public server or by someone else.
 Local Game
 ++++++++++
 
-This creates a game just running on your computer. You can either use it as 
-hotseat game where everyone plays at the same computers by taking turns in 
-the 'hotseat'. Hotseat games will take about the same time to play as games 
-played over the Internet. Or you can just play a scenario against AI 
+This creates a game just running on your computer. You can either use it as
+hotseat game where everyone plays at the same computers by taking turns in
+the 'hotseat'. Hotseat games will take about the same time to play as games
+played over the Internet. Or you can just play a scenario against AI
 opponents rather than human players. This can be a good way to become familiar
 with the various maps that are used for multiplayer games before playing
 against real opponents. It can also be used as a simple way to explore
@@ -362,7 +362,7 @@ identified by Race, Level, and Class. Each unit has strengths and
 weaknesses, based on their Resistances, current Terrain, and Level. Full
 details are in the in game help.
 
-Life and Death - Experience
+Life and Death — Experience
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 As your troops gain battle experience, they will learn more skills
@@ -507,8 +507,8 @@ Upkeep
 
 Each unit also has an upkeep cost. The upkeep cost is generally equal to
 the level of the unit, unless the unit has the "Loyal" trait (<<traits,see
-below>>). Units that are not initially recruited - i.e. the leader or
-those that join voluntarily - usually have the Loyal trait. Upkeep is
+below>>). Units that are not initially recruited — i.e. the leader or
+those that join voluntarily — usually have the Loyal trait. Upkeep is
 only paid if the total upkeep of a side's units is greater than the
 number of villages that side controls. Upkeep paid is the difference
 between the number of villages and the upkeep cost.
@@ -518,7 +518,7 @@ Income
 
 So, the formula for determining the income per turn is
 
-  2 + villages - maximum(0, upkeep - villages)
+  2 + villages − maximum(0, upkeep − villages)
 
 where upkeep is equal to the sum of the levels of all your non-loyal
 units.
@@ -560,16 +560,16 @@ the damage dealt by lawful and chaotic units:
 `-------`----------------------------------------`---------------------`-------`------
 Turn    Image                                    Day-phase             Lawful  Chaotic
 --------------------------------------------------------------------------------------
-1       image:images/schedule-dawn.png[]         Dawn                  --      --     
-2       image:images/schedule-morning.png[]      Day (morning)         +25%    -25%   
-3       image:images/schedule-afternoon.png[]    Day (afternoon)       +25%    -25%    
-4       image:images/schedule-dusk.png[]         Dusk                  --      --     
-5       image:images/schedule-firstwatch.png[]   Night (first watch)   -25%    +25%   
-6       image:images/schedule-secondwatch.png[]  Night (second watch)  -25%    +25%
-Special image:images/schedule-underground.png[]  Underground           -25%    +25%
+1       image:images/schedule-dawn.png[]         Dawn                  --      --
+2       image:images/schedule-morning.png[]      Day (morning)         +25%    −25%
+3       image:images/schedule-afternoon.png[]    Day (afternoon)       +25%    −25%
+4       image:images/schedule-dusk.png[]         Dusk                  --      --
+5       image:images/schedule-firstwatch.png[]   Night (first watch)   −25%    +25%
+6       image:images/schedule-secondwatch.png[]  Night (second watch)  −25%    +25%
+Special image:images/schedule-underground.png[]  Underground           −25%    +25%
 --------------------------------------------------------------------------------------
 
-Keep in mind that some scenarios take place underground, where it is 
+Keep in mind that some scenarios take place underground, where it is
 perpetually night!
 
 For example: consider a fight between a Lawful and a Chaotic unit when
@@ -598,28 +598,28 @@ Intelligent::
   Intelligent units are very useful at the beginning of a campaign as they
   can advance to higher levels more quickly. Later in campaigns Intelligent
   is not quite as useful because the After Maximum Level Advancement (AMLA)
-  is not as significant a change as advancing a level. If you have many 
+  is not as significant a change as advancing a level. If you have many
   'maximum level' units you may wish to recall units with more useful traits.
 Quick::
   Quick units have 1 extra movement point, but 5% less HP than usual.
-  Quick is the most noticeable trait, particularly in slower moving units 
-  such as trolls or heavy infantry. Units with the Quick trait often have 
-  greatly increased mobility in rough terrain, which can be important to 
-  consider when deploying your forces. Also, Quick units aren't quite as 
+  Quick is the most noticeable trait, particularly in slower moving units
+  such as trolls or heavy infantry. Units with the Quick trait often have
+  greatly increased mobility in rough terrain, which can be important to
+  consider when deploying your forces. Also, Quick units aren't quite as
   tough as units without this trait and are subsequently less good at holding
   contested positions.
 Resilient::
   Resilient units have 4 HP plus 1 HP per level more than usual.
   Resilient units can be useful at all stages of a campaign, and this is a
   useful trait for all units. Resilient is often most helpful as a trait when
-  it occurs in a unit that has some combination of low hitpoints, good 
-  defense, or high resistances. Resilient units are especially useful for 
+  it occurs in a unit that has some combination of low hitpoints, good
+  defense, or high resistances. Resilient units are especially useful for
   holding strategic positions against opponents.
 Strong::
   Strong units do 1 more damage for every successful strike in melee combat,
   and have 1 more HP.
   While useful for any close-combat unit, Strong is most effective for units
-  who have a high number of swings such as the Elvish Fighter. Strong units 
+  who have a high number of swings such as the Elvish Fighter. Strong units
   can be very useful when a tiny bit of extra damage is all that is needed to
   turn a damaging stroke into a killing blow.
 
@@ -646,7 +646,7 @@ These traits can either be assigned by the scenario designer or are always
 assigned based on the unit type:
 
 Loyal::
-  Loyal units don't incur upkeep. Most units incur an upkeep cost at the end 
+  Loyal units don't incur upkeep. Most units incur an upkeep cost at the end
   of every turn, which is equal to their level. Loyal units do not incur this
   cost.
   During campaigns, certain units may opt to join the player's forces of their
@@ -750,7 +750,7 @@ Heals +8::
   A poisoned unit cannot be cured of its poison by a healer, and must seek
   the care of a village or a unit that can cure.
 Illuminates::
-  This unit illuminates the surrounding area, making lawful units fight 
+  This unit illuminates the surrounding area, making lawful units fight
   better, and chaotic units fight worse.
   Any units adjacent to this unit will fight as if it were dusk when it
   is night, and as if it were day when it is dusk.
@@ -822,7 +822,7 @@ Moving
 ~~~~~~
 
 Clicking on a unit identifies all the places it can move on its current
-turn by dimming unreachable hexes (pressing the number keys 2-7 will
+turn by dimming unreachable hexes (pressing the number keys 2–7 will
 identify the additional hexes that can be reached in that number of
 turns in a similar manner). While in this mode, moving the cursor over
 a hex will identify the path your unit will take towards that hex as
@@ -875,7 +875,7 @@ orb. This orb is:
 `------`------------------------------------------`-----------------------------
 Orb    Image                                      Description
 --------------------------------------------------------------------------------
-Green  image:images/orb-green.jpg["Green orb"]    If you control the unit and \ 
+Green  image:images/orb-green.jpg["Green orb"]    If you control the unit and \
                                                   it hasn't moved this turn
 Yellow image:images/orb-yellow.jpg["Yellow orb"]  If you control the unit and \
                                                   it has moved this turn, but \
@@ -904,7 +904,7 @@ that the unit has no Zone of Control.
 
 Some campaigns use a star-shaped base to indicate leaders and heroes
 (units which are somehow special and for example not allowed to die in
-the course of the scenario); others use a silver crown icon above the 
+the course of the scenario); others use a silver crown icon above the
 energy bar to mark heroes. Still others have no specific hero indicator
 at all. Which (if any) is used is a stylistic choice left to campaign
 designers.
@@ -914,7 +914,7 @@ Fighting
 
 If you move next to an enemy unit, you may attack it. Click on your
 unit that is next to an enemy unit, and click on the enemy you want to
-attack - this will bring up a window that presents further options for
+attack – this will bring up a window that presents further options for
 the fight. Every unit has one or more weapons it can attack with. Some
 weapons, such as swords, are melee weapons, and some weapons, such as
 bows, are ranged weapons.
@@ -930,7 +930,7 @@ Different types of attacks do different amounts of damage, and a certain
 number of strikes may be made with each weapon. For instance, an Elvish
 Fighter does 5 points of damage with its sword every time it hits,
 and can strike 4 blows with the sword in one exchange. This is written
-as 5-4, meaning 5 damage per hit, and 4 strikes.
+as 5–4, meaning 5 damage per hit, and 4 strikes.
 
 Every unit has a chance of being hit based on the terrain it is in. For
 instance, units in castles and villages have a lower chance of being
@@ -960,7 +960,7 @@ Attack types
  - *Fire*: Weapons using fire to roast the foe like a chicken. Example:
    A drake's fire breath.
  - *Arcane*: An attack that dispels the magic animating zombies,
-   specters, and other undead creatures and spirits. Example: A white 
+   specters, and other undead creatures and spirits. Example: A white
    mage's magic attack.
 
 Resistance
@@ -1177,11 +1177,11 @@ either ensure that your unit can weather the return attacks or decide
 that you're willing to lose that unit. To withstand the enemy's
 strikes next turn, it is often wise to attack at the range that
 allows the enemy to do least damage to you, rather than choosing the
-maximum expected damage to the enemy. 
+maximum expected damage to the enemy.
 
 In particular, use your ranged weapons if the enemy has no ranged
 attack. The computer's default choice only looks for the most damage
-you can deal, so using it will often result in your units taking more 
+you can deal, so using it will often result in your units taking more
 damage than necessary.
 
 Time of Day
@@ -1272,7 +1272,7 @@ During the scenario
  - You can use lower level units as cannon fodder, to slow down
    enemy. E.g. you can use them to block enemies reaching your important units.
  - You can cause damage to enemies with advanced units and then finish
-   them with lower level units - to give them more experience (and finally
+   them with lower level units — to give them more experience (and finally
    make them advance to next level).
  - When you have a White Mage (advances from Mage) or Druid (advances
    from Shaman), put it in the middle of a circle of units to heal them
@@ -1282,7 +1282,7 @@ During the scenario
     * lawful units do more damage at day and less damage at night
     * chaotic units do more damage at night and less damage at day
     * remember to always check the time of day on the right side of the
-      screen. Plan ahead - think about what it's going to be next turn as
+      screen. Plan ahead — think about what it's going to be next turn as
       well as this turn.
  - Some units are resistant or vulnerable to different kind of
    attacks. Mounted units are weak vs pierce attacks. Fire and arcane
@@ -1308,7 +1308,7 @@ Winning a scenario
  - The quicker you win a scenario, the more gold you get; you will get
    more gold from winning early than from all of the map's villages for
    the rest of the turns.
- - Killing all enemy leaders usually gives instant victory. 
+ - Killing all enemy leaders usually gives instant victory.
 
 More general tips
 ^^^^^^^^^^^^^^^^^

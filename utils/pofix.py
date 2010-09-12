@@ -97,7 +97,6 @@ stringfixes = {
 ("plague doesn't", "plague doesn’t"),
 ("mechanical units don't", "mechanical units don’t"),
 ("I'm Ready", "I’m Ready"),
-#("an odd width aren't", "an odd width aren't"),
 
 # Fix capitalization
 # conversion added in 1.9.0-svn
@@ -110,6 +109,43 @@ stringfixes = {
 # More straight to curly conversions
 # conversion added in 1.9.0+svn
 ("Don't make a wish.", "Don’t make a wish."),
+
+("if it hasn't moved this", "if it hasn’t moved this"),
+("to activate 'delay shroud updates' in the", "to activate ‘delay shroud updates’ in the"),
+("update via 'update shroud now' (or the", "update via ‘update shroud now’ (or the"),
+("with a 5-4 attack may", "with a 5–4 attack may"),
+("with a 9-2 attack can", "with a 9–2 attack can"),
+("with a 5-4 attack does", "with a 5–4 attack does"),
+("the unit they're fighting. If", "the unit they’re fighting. If"),
+("have many 'maximum level'", "have many ‘maximum level’"),
+("it is 'on', set an", "it is ‘on’, set an"),
+("it is 'off' set a", "it is ‘off’ set a"),
+("they won't be kicked", "they won’t be kicked"),
+("doesn't work on Undead", "doesn’t work on Undead"),
+("within a drake's body enables", "within a drake’s body enables"),
+("than the Elves'", "than the Elves’"),
+("it's most commonly", "it’s most commonly"),
+("it's master. Only", "it’s master. Only"),
+("Don't neglect to", "Don’t neglect to"),
+("the enemy can't reach your", "the enemy can’t reach your"),
+("what you're facing. In", "what you’re facing. In"),
+("remain at death's door until", "remain at death’s door until"),
+("into an enemy's zone of", "into an enemy’s zone of"),
+("Don't move an", "Don’t move an"),
+("if you don't have to", "if you don’t have to"),
+("unit, but don't attack or", "unit, but don’t attack or"),
+("word in Wesnoth's playing screen", "word in Wesnoth’s playing screen"),
+("You don't have a", "You don’t have a"),
+("Don't ask me", "Don’t ask me"),
+("Don't show again", "Don’t show again"),
+("with the 'cures'", "with the ‘cures’"),
+("You don't have enough", "You don’t have enough"),
+("players that don't", "players that don’t"),
+("it's -1.", "it’s −1."),
+
+# Correct spelling
+# conversion added in 1.9.0+svn
+("has a tool-tip", "has a tooltip"),
 ),
 
 "wesnoth-anl" : (
@@ -735,12 +771,6 @@ stringfixes = {
 ("With bitter humor he realized that Lord Maddock's", "With bitter humor he realized that Lord Maddock’s"),
 ),
 
-"wesnoth-lib" : (
-# Convert makeshift dashes
-# conversion added in 1.9.0-svn
-("Player Info - ", "Player Info — "),
-),
-
 "wesnoth-low" : (
 # Spelling fixes required at r44124
 ("engaged wit the defenders", "engaged with the defenders"),
@@ -764,9 +794,6 @@ stringfixes = {
 ("Council of hard choices", "Council of Hard Choices"),
 ("Ka'lian under attack", "Ka’lian under Attack"), # Also convert apostrophe to its curly form
 ("Hostile mountains", "Hostile Mountains"),
-),
-
-"wesnoth-manual" : (
 ),
 
 "wesnoth-multiplayer" : (
@@ -795,6 +822,45 @@ stringfixes = {
 ("watery caves- a spear whose", "watery caves— a spear whose"),
 ("-- map design, spawn groups and scenario concept", "— map design, spawn groups and scenario concept"),
 ("- WML implementation", "— WML implementation"),
+
+("lair of Chak'kso Ney'yks, a legendary", "lair of Chak’kso Ney’yks, a legendary"),
+("steal the Basilisk's gold.", "steal the Basilisk’s gold."),
+("the Basilisk's cave,", "the Basilisk’s cave,"),
+("(translation: ''The Hunts-Foes-In-", "(translation: “The Hunts-Foes-In-"),
+("Boiling-Rivers Clan'').", "Boiling-Rivers Clan”)."),
+("text: ''After he was", "text: “After he was"),
+("Upper World, Chak'kso's enraged", "Upper World, Chak’kso’s enraged"),
+("through ''pathways of stone''", "through ‘pathways of stone’"),
+("of Chak'kso's hatred.'' Confused,", "of Chak’kso’s hatred.” Confused,"),
+("was entitled ''Ney'yks of", "was entitled “Ney’yks of"),
+("Gaze,'' and told", "Gaze,” and told"),
+("as the ''Chak'kso Ney'yks,'' a name", "as the “Chak’kso Ney’yks,” a name"),
+("tongue, meant ''Eldest Child of Chak'kso.''", "tongue, meant “Eldest Child of Chak’kso.”"),
+("Chak'kso was believed", "Chak’kso was believed"),
+("as a ''great demon of the earth'' in the", "as a ‘great demon of the earth’ in the"),
+("histories, Chak'kso had once", "histories, Chak’kso had once"),
+("''The Ney'yks,'' or ''The Eldest Child,'' in the", "“The Ney’yks,” or “The Eldest Child,” in the"),
+("'mongst the Statues here was slain", "’mongst the Statues here was slain"),
+("kept the area's goblins alive", "kept the area’s goblins alive"),
+("wouldn't move. As the", "wouldn’t move. As the"),
+("as ''The Dragonbane.'' It was", "as ‘The Dragonbane’. It was"),
+("initiated a ''counterattack''", "initiated a ‘counterattack’"),
+("lake, no other's, and though", "lake, no other’s, and though"),
+("the Serpent's eyes. And the", "the Serpent’s eyes. And the"),
+("hero of Wesnoth's Golden Age,", "hero of Wesnoth’s Golden Age,"),
+("in the sun's glory.", "in the sun’s glory."),
+("warmed by the sun's rays,", "warmed by the sun’s rays,"),
+("Aethec Corryn: ''Talael Ryndoc!", "Aethec Corryn: “Talael Ryndoc!"),
+("the death I'd have given you!''", "the death I’d have given you!”"),
+("tooth of Chak'kso Ney'yks, an Elder", "tooth of Chak’kso Ney’yks, an Elder"),
+("very-much-alive Chak'kso Ney'yks, who was, oddly", "very-much-alive Chak’kso Ney’yks, who was, oddly"),
+("she hasn't moved her eyes", "she hasn’t moved her eyes"),
+("Lose all your team's leaders", "Lose all your team’s leaders"),
+("2p — Sulla's Ruins", "2p — Sulla’s Ruins"),
+("many of Wesnoth's greatest", "many of Wesnoth’s greatest"),
+("4p — Isar's Cross", "4p — Isar’s Cross"),
+("6p — Crusaders' Field", "6p — Crusaders’ Field"),
+("Frankly, I haven't got a", "Frankly, I haven’t got a"),
 ),
 
 "wesnoth-nr" : (
@@ -1195,6 +1261,61 @@ stringfixes = {
 ("This doesn't work", "This doesn’t work"),
 ("target's", "target’s"),
 ("enemies'", "enemies’"),
+
+("known as 'Armageddon Drakes' are", "known as ‘Armageddon Drakes’ are"),
+("protect their fellows' honor, and", "protect their fellows’ honor, and"),
+("to the drake's traditional metal", "to the drake’s traditional metal"),
+("good at \"resolving\" territorial disputes", "good at “resolving” territorial disputes"),
+("challenge his tribe's", "challenge his tribe’s"),
+("enemy where it's least", "enemy where it’s least"),
+("supplement their bodies' momentum, adding", "supplement their bodies’ momentum, adding"),
+("tribe's army. No", "tribe’s army. No"),
+("of these 'thundersticks' is terrifying", "of these ‘thundersticks’ is terrifying"),
+("from these 'thundersticks' can take", "from these ‘thundersticks’ can take"),
+("any of humanity's fresh", "any of humanity’s fresh"),
+("the elvish 'Avengers' comes from", "the elvish ‘Avengers’ comes from"),
+("titled as 'sorceresses' by other", "titled as ‘sorceresses’ by other"),
+("'Dire wolves' differ from", "‘Dire wolves’ differ from"),
+("from these beasts' paws into", "from these beasts’ paws into"),
+("disrupt the enemy's battle", "disrupt the enemy’s battle"),
+("The Goblin 'Knights' have little", "The Goblin ‘Knights’ have little"),
+("Nonetheless, a rouser's frenzied goading", "Nonetheless, a rouser’s frenzied goading"),
+("are called 'Goblins' and are", "are called ‘Goblins’ and are"),
+("for the paladins' loyalty is", "for the paladins’ loyalty is"),
+("liege's apparent virtue.", "liege’s apparent virtue."),
+("as the 'Grand Knights'", "as the ‘Grand Knights’"),
+("custom of Wesnoth's nobility that", "custom of Wesnoth’s nobility that"),
+("Magi as 'Red Magi'. Likewise, the", "Magi as ‘Red Magi’. Likewise, the"),
+("signify the mage's ability to", "signify the mage’s ability to"),
+("warriors, the 'Red Magi' have a", "warriors, the ‘Red Magi’ have a"),
+("service, former 'footpads' rise up", "service, former ‘footpads’ rise up"),
+("victim's belongings. Masters", "victim’s belongings. Masters"),
+("of outlaw, they're not comfortable", "of outlaw, they’re not comfortable"),
+("derisively called 'footpads' by their", "derisively called ‘footpads’ by their"),
+("against their employer's enemies, often", "against their employer’s enemies, often"),
+("known as 'Ruffians'. With enough", "known as ‘Ruffians’. With enough"),
+("the various 'guilds' of", "the various ‘guilds’ of"),
+("in a 'fair fight'.", "in a ‘fair fight’."),
+("However, if you're hurling peasants", "However, if you’re hurling peasants"),
+("your foes, you're clearly out", "your foes, you’re clearly out"),
+("nets, mermen can't give any", "nets, mermen can’t give any"),
+("are called 'Slayers' by their", "are called ‘Slayers’ by their"),
+("arbalest or 'slurbow'; a", "arbalest or ‘slurbow’; a"),
+("whatever 'societal' function they", "whatever ‘societal’ function they"),
+("as large 'sticks and stones' serve them", "as large ‘sticks and stones’ serve them"),
+("necrophage, or 'devourer of the dead', is a", "necrophage, or ‘devourer of the dead’, is a"),
+("- a process", "— a process"),
+("sight of one's", "sight of one’s"),
+("immortality from nature's grasp, the", "immortality from nature’s grasp, the"),
+("of black magic's first goal:", "of black magic’s first goal:"),
+("is considered 'black magic' is the", "is considered ‘black magic’ is the"),
+("alone caused humanity's condemnation of", "alone caused humanity’s condemnation of"),
+("a dark sorcerer's creations, some", "a dark sorcerer’s creations, some"),
+("dubbed simply 'Bone-Shooters' by their", "dubbed simply ‘Bone-Shooters’ by their"),
+("known as 'Deathblades' were masters", "known as ‘Deathblades’ were masters"),
+("from the 'skeletons' which often", "from the ‘skeletons’ which often"),
+("In their masters' hands, these", "In their masters’ hands, these"),
+("masters' powers. They", "masters’ powers. They"),
 ),
 
 "wesnoth-utbs" : (
@@ -3597,6 +3718,49 @@ stringfixes = {
 ("Your word can't be trusted.", "Your word can’t be trusted."),
 ),
 # End of pass 2, bulk apostrophe conversion
+
+# Apostrophe conversion, core data
+# Also, A New Land Multiplayer, as there were only six strings to tweak
+# by Simons Mith, based on build 46240 or so (2010-09-03)
+
+"wesnoth-anl" : (
+("some spider's nests in", "some spiders’ nests in"),
+("the spider's web. Maybe", "the spider’s web. Maybe"),
+("our chances wouldn't nearly be", "our chances wouldn’t nearly be"),
+("reduce the enemy's income by", "reduce the enemy’s income by"),
+("of the 'Elvish' style villages", "of the ‘Elvish’ style villages"),
+("Let's cut you free!", "Let’s cut you free!"),
+),
+
+"wesnoth-editor" : (
+("Can't Undo", "Can’t Undo"),
+("Can't Redo", "Can’t Redo"),
+),
+
+"wesnoth-lib" : (
+# Convert makeshift dashes
+# conversion added in 1.9.0-svn
+("Player Info - ", "Player Info — "),
+
+("Don't ask me again!", "Don’t ask me again!"),
+("dedicated server 'wesnothd'", "dedicated server ‘wesnothd’"),
+("the game's settings", "the game’s settings"),
+),
+
+"wesnoth-manual" : (
+("Mage Delfador - pay attention", "Mage Delfador — pay attention"),
+("about 10-20 scenarios.", "about 10–20 scenarios."),
+("Life and Death - Experience", "Life and Death — Experience"),
+("- i.e. the leader", "— i.e. the leader"),
+("voluntarily - usually", "voluntarily — usually"),
+("2 + villages - maximum(0, upkeep - villages)", "2 + villages − maximum(0, upkeep − villages)"),
+("-25%", "−25%"),
+("number keys 2-7 will identify", "number keys 2–7 will identify"),
+("want to attack -", "want to attack —"),
+("written as 5-4,", "written as 5–4,"),
+("level units - to give", "level units — to give"),
+("Plan ahead - think about", "Plan ahead — think about"),
+),
 
 }
 

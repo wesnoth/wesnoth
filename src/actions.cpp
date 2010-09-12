@@ -371,7 +371,7 @@ std::string find_recruit_location(int side, map_location &recruit_loc, bool need
 	}
 
 	if (leader == u_end && (need_castle || !resources::game_map->on_board(recruit_loc))) {
-		return _("You don't have a leader to recruit with.");
+		return _("You don’t have a leader to recruit with.");
 	}
 
 	assert(leader != u_end || !need_castle);
