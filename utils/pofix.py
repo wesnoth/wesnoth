@@ -232,7 +232,6 @@ stringfixes = {
 # conversion added in 1.9.0-svn
 ("A Small Favor -", "A Small Favor —"),
 ("running away - my horsemen", "running away — my horsemen"),
-('says. "The book was', "says. “The book was"),
 
 # Convert straight apostrophes/quotation marks
 # conversion added in 1.9.0-svn
@@ -293,7 +292,7 @@ stringfixes = {
 ("I'll have my", "I’ll have my"),
 ("'For your final test", "“For your final test"),
 ("retrieving a book,'", "retrieving a book,”"),
-("'The book was", "‘The book was"),
+("'The book was", "“The book was"),
 ("it from me.'", "it from me.”"),
 ("'They are no", "“They are no"),
 ("twice now.'", "twice now.”"),
@@ -308,6 +307,10 @@ stringfixes = {
 ("you've got", "you’ve got"),
 ("humankind's", "humankind’s"),
 ("I'm not ready to die", "I’m not ready to die"),
+
+# Fix screw up
+# conversion added in 1.9.0+svn
+("‘The book was", "“The book was"),
 ),
 
 "wesnoth-dm" : (
@@ -1009,6 +1012,13 @@ stringfixes = {
 ("a Lord -- to join", "a Lord — to join"),
 ("best of times - so", "best of times — so"),
 
+# Convert another makeshift dash
+# conversion added in 1.9.0+svn
+("I- I die?", "I— I die?"),
+("We come in peace. May our peoples-", "We come in peace. May our peoples—"),
+("By the right of treaty, ancient but still true-", "By the right of treaty, ancient but still true—"),
+("That tree, it speaks! No- No- We are tree-friends, really!", "That tree, it speaks! No— No— We are tree-friends, really!"),
+
 # Fix screw up
 # conversion added in 1.9.0-svn
 ("is time — but I'll", "is time — but I’ll"),
@@ -1413,6 +1423,13 @@ stringfixes = {
 ("wait...what's this", "wait...what’s this"),
 ("I've heard tales", "I’ve heard tales"),
 ("Traveler's Ring", "Traveler’s Ring"),
+
+# Convert more apostrophes/quotes and makeshift dashes
+# conversion added in 1.9.0+svn
+("I'll be back soon!", "I’ll be back soon!"),
+("Let's aid the dwarves.", "Let’s aid the dwarves."),
+("Let's aid the trolls.", "Let’s aid the trolls."),
+("Kaleh, a quick question-", "Kaleh, a quick question—"),
 ),
 
 "1.8-announcement" : (
@@ -2836,7 +2853,7 @@ stringfixes = {
 ("I've saved his sorry", "I’ve saved his sorry"),
 ("I've seen the ancient", "I’ve seen the ancient"),
 ("in the end, I'm afraid you just", "in the end, I’m afraid you just"),
-("in the wall. 'If you dare", "in the wall. ‘If you dare"),
+("in the wall. 'If you dare", "in the wall. “If you dare"),
 ("in this chamber. You're surprised to see", "in this chamber. You’re surprised to see"),
 ("Incoming! Ugh, it's big, hairy, and", "Incoming! Ugh, it’s big, hairy, and"),
 ("instead of a coward's. For that I", "instead of a coward’s. For that I"),
@@ -3116,6 +3133,10 @@ stringfixes = {
 ("you, I don't think that the", "you, I don’t think that the"),
 ("your word. We haven't seen elves for", "your word. We haven’t seen elves for"),
 ("Zur... Come mortal, let's cross our blades... It's time for", "Zur... Come mortal, let’s cross our blades... It’s time for"),
+
+# Fix screw up
+# conversion added in 1.9.0+svn
+("in the wall. ‘If you dare", "in the wall. “If you dare"),
 ),
 # End of pass 1 of bulk apostrophe and dash conversion by Simons Mith.
 
