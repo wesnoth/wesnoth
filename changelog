@@ -81,10 +81,15 @@ Version 1.9.0+svn:
  * Terrain WML:
    * Updated height adjust of desert, orcish, and snowy keeps.
    * Fixed broken aliasing of the wooden floor.
- * Units:
+ * Unit changes and balancing:
    * Decreased the melee and ranged attack of the Footpad from 5-2 to 4-2.
    * Added the Ghast unit from DiD to core with new base frame and animations.
    * Made the Giant Rat have a normal AMLA instead of an AMLA with no fullheal.
+   * All bats are now given a 'feral' trait which caps their defense on villages
+     to 40% and also making them receive only one random trait.
+   * All villages except for water and swamp villages are now aliased to both
+     village and the terrain they're placed on, giving best movement and defense
+     of both.
  * User interface:
    * Changed: the title screen is now gui2 (bugs #12906, #12908 and #15987).
    * Use red/green color for damage in sidebar when modified by bonus/malus

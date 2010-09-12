@@ -38,9 +38,14 @@ Version 1.9.0+svn:
  * Multiplayer:
    * Updated most of the maps taking advantage of the new terrains.
 
- * Units:
+ * Unit changes and balancing:
    * Decreased the melee and ranged attack of the Footpad from 5-2 to 4-2.
    * Added the Ghast unit from DiD to core with new base frame and animations.
+   * All bats are now given a 'feral' trait which caps their defense on villages
+     to 40% and also making them receive only one random trait.
+   * All villages except for water and swamp villages are now aliased to both
+     village and the terrain they're placed on, giving best movement and defense
+     of both.
 
  * User interface:
    * Use red/green color for damage in sidebar when modified by bonus/malus.
