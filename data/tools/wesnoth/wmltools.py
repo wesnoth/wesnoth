@@ -151,7 +151,7 @@ def formaltype(f):
         f = f[1:]
     if f == "SIDE" or f.endswith("_SIDE"):
         ftype = "side"
-    elif f in ("SIDE", "X", "Y", "RED", "GREEN", "BLUE", "TURN", "PROB", "LAYER", "TIME") or f.endswith("NUMBER") or f.endswith("AMOUNT") or f.endswith("COST") or f.endswith("RADIUS") or f.endswith("_X") or f.endswith("_Y") or f.endswith("_INCREMENT") or f.endswith("_FACTOR") or f.endswith("_TIME") or f.endswith("_SIZE"):
+    elif f in ("SIDE", "X", "Y", "RED", "GREEN", "BLUE", "TURN", "PROB", "LAYER", "TIME", "DURATION") or f.endswith("NUMBER") or f.endswith("AMOUNT") or f.endswith("PERCENTAGE") or f.endswith("COST") or f.endswith("RADIUS") or f.endswith("_X") or f.endswith("_Y") or f.endswith("_INCREMENT") or f.endswith("_FACTOR") or f.endswith("_TIME") or f.endswith("_SIZE"):
         ftype = "numeric"
     elif f in ("POSITION",) or f.endswith("_POSITION") or f == "BASE":
         ftype = "position"
@@ -169,7 +169,7 @@ def formaltype(f):
         ftype = "terrain_pattern"
     elif f.startswith("TERRAIN") or f.endswith("TERRAIN"):
         ftype = "terrain_code"
-    elif f in ("NAME", "VAR", "IMAGESTEM", "ID", "FLAG") or f.endswith("_NAME") or f.endswith("_ID"):
+    elif f in ("NAME", "VAR", "IMAGESTEM", "ID", "FLAG", "BUILDER") or f.endswith("_NAME") or f.endswith("_ID"):
         ftype = "name"
     elif f in ("ID_STRING", "NAME_STRING", "DESCRIPTION"):
         ftype = "optional_string"
@@ -183,7 +183,7 @@ def formaltype(f):
         ftype = "filter"
     elif f == "WML" or f.endswith("_WML"):
         ftype = "wml"
-    elif f in ("AFFIX",) or f.endswith("AFFIX"):
+    elif f in ("AFFIX", "POSTFIX") or f.endswith("AFFIX"):
         ftype = "affix"
     # The regexp case avoids complaints about some wacky terrain macros.
     elif f.endswith("VALUE") or re.match("[ARS][0-9]", f):
