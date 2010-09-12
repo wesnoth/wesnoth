@@ -2059,11 +2059,15 @@ int unit::defense_modifier(t_translation::t_terrain terrain) const
 {
 	assert(resources::game_map != NULL);
 	int def = defense_modifier_internal(defense_mods_, cfg_, NULL, *resources::game_map, terrain);
+#if 0
+	// A [defense] ability is too costly and doesn't take into account target locations.
+	// Left as a comment in case someone ever wonders why it isn't a good idea.
 	unit_ability_list defense_abilities = get_abilities("defense");
 	if (!defense_abilities.empty()) {
 		unit_abilities::effect defense_effect(defense_abilities, def, false);
 		def = defense_effect.get_composite_value();
 	}
+#endif
 	return def;
 }
 
