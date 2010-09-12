@@ -608,41 +608,6 @@ protected:
 	bool local_tod_light_;
 
 public:
-	/** Helper structure for rendering the terrains. */
-	struct tblit{
-		tblit(const int x, const int y) :
-			x(x),
-			y(y),
-			surf(),
-			clip()
-			{}
-
-		tblit(const int x, const int y, const surface& surf,
-				const SDL_Rect& clip = SDL_Rect()) :
-			x(x),
-			y(y),
-			surf(1, surf),
-			clip(clip)
-			{}
-
-		tblit(const int x, const int y, const std::vector<surface>& surf,
-				const SDL_Rect& clip = SDL_Rect()) :
-			x(x),
-			y(y),
-			surf(surf),
-			clip(clip)
-			{}
-
-
-		int x;                      /**< x screen coordinate to render at. */
-		int y;                      /**< y screen coordinate to render at. */
-		std::vector<surface> surf;  /**< surface(s) to render. */
-		SDL_Rect clip;              /**<
-		                             * The clipping area of the source if
-		                             * ommitted the entire source is used.
-		                             */
-	};
-
 	/**
 	 * The layers to render something on. This value should never be stored
 	 * it's the internal drawing order and adding removing and reordering
@@ -725,38 +690,102 @@ public:
 
 protected:
 	/**
-	 * Compare functor for the blitting.
+	 * In order to render a hex properly it needs to be rendered per row. On
+	 * this row several layers need to be drawn at the same time. Mainly the
+	 * unit and the background terrain. This is needed since both can spill
+	 * in the next hex. The foreground terrain needs to be drawn before to
+	 * avoid decapitation a unit.
 	 *
-	 * The blitting order must be sorted on y value first instead of x so added
-	 * another functor since map_location::operator< sorts on x value.
+	 * In other words:
+	 * for every layer
+	 *   for every row (starting from the top)
+	 *     for every hex in the row
+	 *       ...
+	 *
+	 * this is modified to:
+	 * for every layer group
+	 *   for every row (starting from the top)
+	 *     for every layer in the group
+	 *       for every hex in the row
+	 *         ...
+	 *
+	 * * Surfaces are rendered per level in a map.
+	 * * Per level the items are rendered per location these locations are
+	 *   stored in the drawing order required for units.
+	 * * every location has a vector with surfaces, each with its own screen
+	 *   coordinate to render at.
+	 * * every vector element has a vector with surfaces to render.
 	 */
-	struct draw_order
+	class drawing_buffer_key
 	{
-		bool operator()(const map_location& lhs, const map_location& rhs) const
+	private:
+		// store x, y, and layer in one 32 bit integer
+		// 4 most significant bits == layer group   => 16
+		// 10 second most significant bits == y     => 1024
+		// 8 third most significant bits == layer   => 256
+		// 10 least significant bits == x           => 1024
+		unsigned int key_;
+
+		static const tdrawing_layer layer_groups[];
+		static const unsigned int max_layer_group;
+
+		enum {
+			MaxBorder = 3
+		};
+	public:
+		drawing_buffer_key(const map_location &loc, tdrawing_layer layer)
 		{
-			// use similar y transformation as for on-screen coordinates
-			int ly = lhs.y*2 + lhs.x%2;
-			int ry = rhs.y*2 + rhs.x%2;
-			return ly < ry || (ly == ry && lhs.x < rhs.x);
+			// max_layer_group + 1 is the last valid entry in layer_groups, but it is always > layer
+			// thus the first --g is a given => start with max_layer_groups right away
+			unsigned int g = max_layer_group;
+			while (layer < layer_groups[g]) {
+				--g;
+			}
+			key_  = (g << 28) | (static_cast<unsigned int>(loc.y + MaxBorder) << 18);
+			key_ |= (static_cast<unsigned int>(layer) << 10) | static_cast<unsigned int>(loc.x + MaxBorder);
 		}
+
+		bool operator<(const drawing_buffer_key &rhs) const { return key_ < rhs.key_; }
 	};
 
-	/**
-	 * Group of layers:
-	 * layers of a group will always be rendered under layers of the next group
-	 * regardless of the location
-	 */
-	enum tdrawing_layergroup{
-		LAYERGROUP_TERRAIN_BG,
-		LAYERGROUP_UNIT,
-		LAYERGROUP_UNIT_MOVE,
-		LAYERGROUP_UI
+	/** Helper structure for rendering the terrains. */
+	class tblit
+	{
+	public:
+		tblit(const tdrawing_layer layer, const map_location& loc,
+				const int x, const int y, const surface surf,
+				const SDL_Rect& clip)
+			: x_(x), y_(y), surf_(1, surf), clip_(clip),
+			key_(loc, layer)
+		{}
+
+		tblit(const tdrawing_layer layer, const map_location& loc,
+				const int x, const int y, const std::vector<surface>& surf,
+				const SDL_Rect& clip)
+			: x_(x), y_(y), surf_(surf), clip_(clip),
+			key_(loc, layer)
+		{}
+
+		int x() const { return x_; }
+		int y() const { return y_; }
+		const std::vector<surface> &surf() const { return surf_; }
+		const SDL_Rect &clip() const { return clip_; }
+
+		bool operator<(const tblit &rhs) const { return key_ < rhs.key_; }
+
+	private:
+		int x_;                      /**< x screen coordinate to render at. */
+		int y_;                      /**< y screen coordinate to render at. */
+		std::vector<surface> surf_;  /**< surface(s) to render. */
+		SDL_Rect clip_;              /**<
+		                              * The clipping area of the source if
+		                              * ommitted the entire source is used.
+		                              */
+		drawing_buffer_key key_;
 	};
 
-	typedef std::map<tdrawing_layer, std::vector<tblit> > tlayer_map;
-	typedef std::map<map_location, tlayer_map, draw_order > tlocation_map;
-	typedef std::map<tdrawing_layergroup, tlocation_map> tgroup_map;
-	tgroup_map drawing_buffer_;
+	typedef std::list<tblit> tdrawing_buffer;
+	tdrawing_buffer drawing_buffer_;
 
 public:
 
@@ -769,7 +798,13 @@ public:
 	 * @param blit               The structure to blit.
 	 */
 	void drawing_buffer_add(const tdrawing_layer layer,
-			const map_location& loc, const tblit& blit);
+			const map_location& loc, int x, int y, const surface surf,
+			const SDL_Rect &clip = SDL_Rect());
+
+	void drawing_buffer_add(const tdrawing_layer layer,
+			const map_location& loc, int x, int y,
+			const std::vector<surface> &surf,
+			const SDL_Rect &clip = SDL_Rect());
 
 protected:
 

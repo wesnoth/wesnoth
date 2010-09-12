@@ -1891,13 +1891,13 @@ void unit::redraw_unit()
 	if (ellipse_back != NULL) {
 		//disp.drawing_buffer_add(display::LAYER_UNIT_BG, loc,
 		disp.drawing_buffer_add(display::LAYER_UNIT_FIRST, loc_,
-			display::tblit(xsrc, ysrc +adjusted_params.y-ellipse_floating, ellipse_back));
+			xsrc, ysrc +adjusted_params.y-ellipse_floating, ellipse_back);
 	}
 
 	if (ellipse_front != NULL) {
 		//disp.drawing_buffer_add(display::LAYER_UNIT_FG, loc,
 		disp.drawing_buffer_add(display::LAYER_UNIT_FIRST, loc_,
-			display::tblit(xsrc, ysrc +adjusted_params.y-ellipse_floating, ellipse_front));
+			xsrc, ysrc +adjusted_params.y-ellipse_floating, ellipse_front);
 	}
 	if(draw_bars) {
 		const image::locator* orb_img = NULL;
@@ -1930,7 +1930,7 @@ void unit::redraw_unit()
 		surface orb(image::get_image(*orb_img,image::SCALED_TO_ZOOM));
 		if (orb != NULL) {
 			disp.drawing_buffer_add(display::LAYER_UNIT_BAR,
-				loc_, display::tblit(xsrc, ysrc +adjusted_params.y, orb));
+				loc_, xsrc, ysrc +adjusted_params.y, orb);
 		}
 
 		double unit_energy = 0.0;
@@ -1966,7 +1966,7 @@ void unit::redraw_unit()
 				//	crown = adjust_surface_alpha(crown, bar_alpha);
 				//}
 				disp.drawing_buffer_add(display::LAYER_UNIT_BAR,
-					loc_, display::tblit(xsrc, ysrc +adjusted_params.y, crown));
+					loc_, xsrc, ysrc +adjusted_params.y, crown);
 			}
 		}
 
@@ -1974,7 +1974,7 @@ void unit::redraw_unit()
 			const surface ov_img(image::get_image(*ov, image::SCALED_TO_ZOOM));
 			if(ov_img != NULL) {
 				disp.drawing_buffer_add(display::LAYER_UNIT_BAR,
-					loc_, display::tblit(xsrc, ysrc +adjusted_params.y, ov_img));
+					loc_, xsrc, ysrc +adjusted_params.y, ov_img);
 			}
 		}
 	}

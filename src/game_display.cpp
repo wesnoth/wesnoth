@@ -335,9 +335,8 @@ void game_display::draw_hex(const map_location& loc)
 	const bool on_map = get_map().on_board(loc);
 	const bool is_shrouded = shrouded(loc);
 	const bool is_fogged = fogged(loc);
-	int xpos = get_location_x(loc);
-	int ypos = get_location_y(loc);
-	tblit blit(xpos, ypos);
+	const int xpos = get_location_x(loc);
+	const int ypos = get_location_y(loc);
 
 	image::TYPE image_type = get_image_type(loc);
 
@@ -351,12 +350,12 @@ void game_display::draw_hex(const map_location& loc)
 			overlays.first->second.team_name.find(teams_[playing_team()].team_name()) != std::string::npos)
 			&& !(is_fogged && !overlays.first->second.visible_in_fog))
 			{
-				drawing_buffer_add(LAYER_TERRAIN_BG, loc, tblit(xpos, ypos,
-					image::get_image(overlays.first->second.image,image_type)));
+				drawing_buffer_add(LAYER_TERRAIN_BG, loc, xpos, ypos,
+					image::get_image(overlays.first->second.image,image_type));
 			}
 		}
 		// village-control flags.
-		drawing_buffer_add(LAYER_TERRAIN_BG, loc, tblit(xpos, ypos, get_flag(loc)));
+		drawing_buffer_add(LAYER_TERRAIN_BG, loc, xpos, ypos, get_flag(loc));
 	}
 
 	// Draw reach_map information.
@@ -365,8 +364,8 @@ void game_display::draw_hex(const map_location& loc)
 	if (!is_shrouded && !reach_map_.empty()
 			&& reach_map_.find(loc) == reach_map_.end() && loc != attack_indicator_dst_) {
 		static const image::locator unreachable(game_config::images::unreachable);
-		drawing_buffer_add(LAYER_REACHMAP, loc, tblit(xpos, ypos,
-				image::get_image(unreachable,image::SCALED_TO_HEX)));
+		drawing_buffer_add(LAYER_REACHMAP, loc, xpos, ypos,
+				image::get_image(unreachable,image::SCALED_TO_HEX));
 	}
 
 	resources::whiteboard->draw_hex(loc);
@@ -376,31 +375,30 @@ void game_display::draw_hex(const map_location& loc)
 		// Footsteps indicating a movement path
 		const std::vector<surface>& footstepImages = footsteps_images(loc);
 		if (footstepImages.size() != 0) {
-			drawing_buffer_add(LAYER_FOOTSTEPS, loc, tblit(xpos, ypos, footstepImages));
+			drawing_buffer_add(LAYER_FOOTSTEPS, loc, xpos, ypos, footstepImages);
 		}
 	}
 	// Draw the attack direction indicator
 	if(on_map && loc == attack_indicator_src_) {
-		drawing_buffer_add(LAYER_ATTACK_INDICATOR, loc, tblit(xpos, ypos,
-			image::get_image("misc/attack-indicator-src-" + attack_indicator_direction() + ".png", image::SCALED_TO_HEX)));
+		drawing_buffer_add(LAYER_ATTACK_INDICATOR, loc, xpos, ypos,
+			image::get_image("misc/attack-indicator-src-" + attack_indicator_direction() + ".png", image::SCALED_TO_HEX));
 	} else if (on_map && loc == attack_indicator_dst_) {
-		drawing_buffer_add(LAYER_ATTACK_INDICATOR, loc, tblit(xpos, ypos,
-			image::get_image("misc/attack-indicator-dst-" + attack_indicator_direction() + ".png", image::SCALED_TO_HEX)));
+		drawing_buffer_add(LAYER_ATTACK_INDICATOR, loc, xpos, ypos,
+			image::get_image("misc/attack-indicator-dst-" + attack_indicator_direction() + ".png", image::SCALED_TO_HEX));
 	}
 
 	// Linger overlay unconditionally otherwise it might give glitches
 	// so it's drawn over the shroud and fog.
 	if(game_mode_ != RUNNING) {
 		static const image::locator linger(game_config::images::linger);
-		blit.surf.push_back(image::get_image(linger, image::TOD_COLORED));
-		drawing_buffer_add(LAYER_LINGER_OVERLAY, loc, blit);
-		blit.surf.clear();
+		drawing_buffer_add(LAYER_LINGER_OVERLAY, loc, xpos, ypos,
+			image::get_image(linger, image::TOD_COLORED));
 	}
 
 	if(on_map && loc == selectedHex_ && !game_config::images::selected.empty()) {
 		static const image::locator selected(game_config::images::selected);
-		drawing_buffer_add(LAYER_SELECTED_HEX, loc, tblit(xpos, ypos,
-				image::get_image(selected, image::SCALED_TO_HEX)));
+		drawing_buffer_add(LAYER_SELECTED_HEX, loc, xpos, ypos,
+				image::get_image(selected, image::SCALED_TO_HEX));
 	}
 
 	// Show def% and turn to reach infos
@@ -567,8 +565,8 @@ void game_display::draw_bar(const std::string& image, int xpos, int ypos,
 	SDL_Rect bot = create_rect(0, bar_loc.y + skip_rows, surf->w, 0);
 	bot.h = surf->w - bot.y;
 
-	drawing_buffer_add(LAYER_UNIT_BAR, loc, tblit(xpos, ypos, surf, top));
-	drawing_buffer_add(LAYER_UNIT_BAR, loc, tblit(xpos, ypos + top.h, surf, bot));
+	drawing_buffer_add(LAYER_UNIT_BAR, loc, xpos, ypos, surf, top);
+	drawing_buffer_add(LAYER_UNIT_BAR, loc, xpos, ypos + top.h, surf, bot);
 
 	size_t unfilled = static_cast<size_t>(height * (1.0 - filled));
 
@@ -577,7 +575,7 @@ void game_display::draw_bar(const std::string& image, int xpos, int ypos,
 		surface filled_surf = create_compatible_surface(bar_surf, bar_loc.w, height - unfilled);
 		SDL_Rect filled_area = create_rect(0, 0, bar_loc.w, height-unfilled);
 		SDL_FillRect(filled_surf,&filled_area,SDL_MapRGBA(bar_surf->format,col.r,col.g,col.b, r_alpha));
-		drawing_buffer_add(LAYER_UNIT_BAR, loc, tblit(xpos + bar_loc.x, ypos + bar_loc.y + unfilled, filled_surf));
+		drawing_buffer_add(LAYER_UNIT_BAR, loc, xpos + bar_loc.x, ypos + bar_loc.y + unfilled, filled_surf);
 	}
 }
 
@@ -614,23 +612,23 @@ void game_display::draw_movement_info(const map_location& loc)
 			int ypos = get_location_y(loc);
 
             if (w->second.invisible) {
-				drawing_buffer_add(LAYER_MOVE_INFO, loc, tblit(xpos, ypos,
-					image::get_image("misc/hidden.png", image::SCALED_TO_HEX)));
+				drawing_buffer_add(LAYER_MOVE_INFO, loc, xpos, ypos,
+					image::get_image("misc/hidden.png", image::SCALED_TO_HEX));
 			}
 
 			if (w->second.zoc) {
-				drawing_buffer_add(LAYER_MOVE_INFO, loc, tblit(xpos, ypos,
-					image::get_image("misc/zoc.png", image::SCALED_TO_HEX)));
+				drawing_buffer_add(LAYER_MOVE_INFO, loc, xpos, ypos,
+					image::get_image("misc/zoc.png", image::SCALED_TO_HEX));
 			}
 
 			if (w->second.capture) {
-				drawing_buffer_add(LAYER_MOVE_INFO, loc, tblit(xpos, ypos,
-					image::get_image("misc/capture.png", image::SCALED_TO_HEX)));
+				drawing_buffer_add(LAYER_MOVE_INFO, loc, xpos, ypos,
+					image::get_image("misc/capture.png", image::SCALED_TO_HEX));
 			}
 
 			if (w->second.pass_here) {
-				drawing_buffer_add(LAYER_MOVE_INFO, loc, tblit(xpos, ypos,
-					image::get_image("misc/waypoint.png", image::SCALED_TO_HEX)));
+				drawing_buffer_add(LAYER_MOVE_INFO, loc, xpos, ypos,
+					image::get_image("misc/waypoint.png", image::SCALED_TO_HEX));
 			}
 
 			//we display turn info only if different from a simple last "1"

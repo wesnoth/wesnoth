@@ -75,18 +75,17 @@ void editor_display::draw_hex(const map_location& loc)
 {
 	int xpos = get_location_x(loc);
 	int ypos = get_location_y(loc);
-	tblit blit(xpos, ypos);
 	display::draw_hex(loc);
 	if (map().on_board_with_border(loc)) {
 		if (map().in_selection(loc)) {
-			drawing_buffer_add(LAYER_FOG_SHROUD, loc, tblit(xpos, ypos,
-				image::get_image("editor/selection-overlay.png", image::TOD_COLORED)));
+			drawing_buffer_add(LAYER_FOG_SHROUD, loc, xpos, ypos,
+				image::get_image("editor/selection-overlay.png", image::TOD_COLORED));
 		}
 
 		if (brush_locations_.find(loc) != brush_locations_.end()) {
 			static const image::locator brush(game_config::images::editor_brush);
-			drawing_buffer_add(LAYER_MOUSEOVER_OVERLAY, loc, tblit(xpos, ypos,
-					image::get_image(brush, image::SCALED_TO_HEX)));
+			drawing_buffer_add(LAYER_MOUSEOVER_OVERLAY, loc, xpos, ypos,
+					image::get_image(brush, image::SCALED_TO_HEX));
 		}
 	}
 }
