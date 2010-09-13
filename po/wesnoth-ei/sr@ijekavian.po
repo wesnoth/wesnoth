@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-ei\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-08-30 11:56+0200\n"
+"POT-Creation-Date: 2010-09-13 11:01+0200\n"
 "PO-Revision-Date: 2010-03-05 01:53+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -93,12 +93,12 @@ msgid "Campaign Maintenance"
 msgstr "Одржавање похода"
 
 #. [about]
-#: data/campaigns/Eastern_Invasion/_main.cfg:37
+#: data/campaigns/Eastern_Invasion/_main.cfg:41
 msgid "Campaign Epilogue and Continuity"
 msgstr "Епилог и усаглашеност похода"
 
 #. [about]
-#: data/campaigns/Eastern_Invasion/_main.cfg:43
+#: data/campaigns/Eastern_Invasion/_main.cfg:47
 msgid "Artwork and Graphics Design"
 msgstr "Цртежи и графички дизајн"
 
@@ -2345,8 +2345,13 @@ msgstr "А гдје им је вођа? Не видим га."
 
 #. [message]
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:308
+msgid "Uh... "
+msgstr ""
+
+#. [message]
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:308
 #, fuzzy
-msgid "Uh... (<i>Whispers</i>) I dunno. He escaped, I think."
+msgid "whisper^I dunno. He escaped, I think."
 msgstr "Овај... [шапуће] Не знам. Побјеже, мислим."
 
 #. [message]: speaker=King Dra-Nak
@@ -3642,6 +3647,21 @@ msgstr ""
 "Вођи равница, ратници јахачи умјешно користе мач и сјеверњачу. Јашући на "
 "коњу, могу се кретати бојиштем великом брзином, и тако пружати неопходну "
 "помоћ на различитим фронтовима."
+
+#. [attacks]: id=shock
+#: data/campaigns/Eastern_Invasion/utils/abilities.cfg:8
+#: data/campaigns/Eastern_Invasion/utils/abilities.cfg:9
+msgid "shock"
+msgstr ""
+
+#. [attacks]: id=shock
+#: data/campaigns/Eastern_Invasion/utils/abilities.cfg:11
+#: data/campaigns/Eastern_Invasion/utils/abilities.cfg:13
+msgid ""
+"Shock:\n"
+"When this attack is used on offense, the opponent will retaliate with one "
+"less strike than normally, to a minimum of one strike."
+msgstr ""
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/utils/deaths.cfg:9

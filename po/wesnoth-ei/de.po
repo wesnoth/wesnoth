@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.8\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-08-30 11:56+0200\n"
+"POT-Creation-Date: 2010-09-13 11:11+0200\n"
 "PO-Revision-Date: 2010-04-28 08:43+0200\n"
 "Last-Translator: Gerfried Fuchs <rhonda@deb.at>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
@@ -87,12 +87,12 @@ msgid "Campaign Maintenance"
 msgstr "Betreuung"
 
 #. [about]
-#: data/campaigns/Eastern_Invasion/_main.cfg:37
+#: data/campaigns/Eastern_Invasion/_main.cfg:41
 msgid "Campaign Epilogue and Continuity"
 msgstr "Kampagnenepilog und -zusammenhang"
 
 #. [about]
-#: data/campaigns/Eastern_Invasion/_main.cfg:43
+#: data/campaigns/Eastern_Invasion/_main.cfg:47
 msgid "Artwork and Graphics Design"
 msgstr "Grafik"
 
@@ -2416,8 +2416,13 @@ msgstr "Nun, wo ist ihr Anführer? Ich kann ihn nirgends entdecken."
 
 #. [message]
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:308
+msgid "Uh... "
+msgstr ""
+
+#. [message]
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:308
 #, fuzzy
-msgid "Uh... (<i>Whispers</i>) I dunno. He escaped, I think."
+msgid "whisper^I dunno. He escaped, I think."
 msgstr "Ähm... (Geflüster)... Keine Ahnung. Ich glaube, er konnte fliehen."
 
 #. [message]: speaker=King Dra-Nak
@@ -3762,6 +3767,21 @@ msgstr ""
 "dem Schwert und dem Morgenstern. Da sie auf Pferden reiten, sind sie in der "
 "Lage, sich blitzschnell auf dem Schlachtfeld zu bewegen, um ihre Verbündeten "
 "kurz hintereinander an verschiedenen Fronten zu unterstützen."
+
+#. [attacks]: id=shock
+#: data/campaigns/Eastern_Invasion/utils/abilities.cfg:8
+#: data/campaigns/Eastern_Invasion/utils/abilities.cfg:9
+msgid "shock"
+msgstr ""
+
+#. [attacks]: id=shock
+#: data/campaigns/Eastern_Invasion/utils/abilities.cfg:11
+#: data/campaigns/Eastern_Invasion/utils/abilities.cfg:13
+msgid ""
+"Shock:\n"
+"When this attack is used on offense, the opponent will retaliate with one "
+"less strike than normally, to a minimum of one strike."
+msgstr ""
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/utils/deaths.cfg:9

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-editor\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-08-30 11:56+0200\n"
+"POT-Creation-Date: 2010-09-13 11:01+0200\n"
 "PO-Revision-Date: 2010-06-21 23:49+0100\n"
 "Last-Translator: Koen Vervloesem <koen@vervloesem.eu>\n"
 "Language-Team: Dutch <AI0867@gmail.com>\n"
@@ -181,23 +181,23 @@ msgstr "Venster"
 msgid "villages"
 msgstr "dorpen"
 
-#: src/editor/editor_controller.cpp:122
+#: src/editor/editor_controller.cpp:123
 msgid "Quit Editor"
 msgstr "Editor verlaten"
 
-#: src/editor/editor_controller.cpp:277
+#: src/editor/editor_controller.cpp:278
 msgid "Fatal error"
 msgstr "Fatale fout"
 
-#: src/editor/editor_controller.cpp:302 src/editor/editor_controller.cpp:1063
+#: src/editor/editor_controller.cpp:303 src/editor/editor_controller.cpp:1064
 msgid "(New Map)"
 msgstr "(Nieuwe kaart)"
 
-#: src/editor/editor_controller.cpp:308
+#: src/editor/editor_controller.cpp:309
 msgid "Do you really want to quit?"
 msgstr "Wilt u echt afsluiten?"
 
-#: src/editor/editor_controller.cpp:310
+#: src/editor/editor_controller.cpp:311
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
@@ -205,7 +205,7 @@ msgstr ""
 "Wilt u echt afsluiten? Wijzigingen van de kaart sinds de laatste save gaan "
 "verloren."
 
-#: src/editor/editor_controller.cpp:312
+#: src/editor/editor_controller.cpp:313
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -213,77 +213,77 @@ msgstr ""
 "Wilt u echt afsluiten? De volgende kaarten zijn gewijzigd en alle "
 "wijzigingen sinds de laatste save gaan verloren."
 
-#: src/editor/editor_controller.cpp:317
+#: src/editor/editor_controller.cpp:318
 msgid "Quit"
 msgstr "Afsluiten"
 
-#: src/editor/editor_controller.cpp:374
+#: src/editor/editor_controller.cpp:375
 msgid "No editor time-of-day found."
 msgstr "Geen editor tijd-van-dag gevonden."
 
-#: src/editor/editor_controller.cpp:410
+#: src/editor/editor_controller.cpp:411
 msgid "Unsaved Changes"
 msgstr "Onopgeslagen wijzigingen"
 
-#: src/editor/editor_controller.cpp:411
+#: src/editor/editor_controller.cpp:412
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
 msgstr ""
 "Wilt u alle wijzigingen sinds u laatst de kaart opsloeg ongedaan maken?"
 
-#: src/editor/editor_controller.cpp:429
+#: src/editor/editor_controller.cpp:430
 msgid "Choose a Map to Open"
 msgstr "Kies een kaart om in te lezen"
 
-#: src/editor/editor_controller.cpp:464
+#: src/editor/editor_controller.cpp:465
 msgid "Save the Map As"
 msgstr "Sla de kaart op als"
 
-#: src/editor/editor_controller.cpp:468
+#: src/editor/editor_controller.cpp:469
 msgid "The file already exists. Do you want to overwrite it?"
 msgstr "Het bestand bestaat al. Wilt u de bestaande kaart overschrijven?"
 
-#: src/editor/editor_controller.cpp:485
+#: src/editor/editor_controller.cpp:486
 msgid "No random map generators found."
 msgstr "Geen generator van willekeurige kaarten gevonden."
 
-#: src/editor/editor_controller.cpp:498 src/editor/editor_controller.cpp:502
+#: src/editor/editor_controller.cpp:499 src/editor/editor_controller.cpp:503
 msgid "Map creation failed."
 msgstr "Kaart aanmaken mislukt."
 
-#: src/editor/editor_controller.cpp:517
+#: src/editor/editor_controller.cpp:518
 msgid "Choose a mask to apply"
 msgstr "Kies een masker om toe te passen"
 
-#: src/editor/editor_controller.cpp:524
+#: src/editor/editor_controller.cpp:525
 msgid "Error loading mask"
 msgstr "Fout bij het laden van het masker"
 
-#: src/editor/editor_controller.cpp:539
+#: src/editor/editor_controller.cpp:540
 msgid "Choose target map"
 msgstr "Kies doelkaart"
 
-#: src/editor/editor_controller.cpp:546 src/editor/editor_controller.cpp:710
+#: src/editor/editor_controller.cpp:547 src/editor/editor_controller.cpp:711
 msgid "Error loading map"
 msgstr "Fout bij het laden van de kaart"
 
-#: src/editor/editor_controller.cpp:624 src/editor/editor_controller.cpp:666
+#: src/editor/editor_controller.cpp:625 src/editor/editor_controller.cpp:667
 msgid "This map is already open."
 msgstr "Deze kaart is al open"
 
-#: src/editor/editor_controller.cpp:645
+#: src/editor/editor_controller.cpp:646
 msgid "Map saved."
 msgstr "Kaart opgeslagen."
 
-#: src/editor/editor_controller.cpp:689
+#: src/editor/editor_controller.cpp:690
 msgid "Loaded embedded map data"
 msgstr "Ingebedde kaartgegevens geladen"
 
-#: src/editor/editor_controller.cpp:690 src/editor/editor_controller.cpp:704
+#: src/editor/editor_controller.cpp:691 src/editor/editor_controller.cpp:705
 msgid "Map loaded from scenario"
 msgstr "Kaart geladen uit scenario"
 
-#: src/editor/editor_controller.cpp:700
+#: src/editor/editor_controller.cpp:701
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
@@ -291,63 +291,63 @@ msgstr ""
 "Geladen gerefereerde kaartbestand:\n"
 "$new"
 
-#: src/editor/editor_controller.cpp:1093
+#: src/editor/editor_controller.cpp:1094
 msgid "Undo"
 msgstr "Ongedaan maken"
 
-#: src/editor/editor_controller.cpp:1095
+#: src/editor/editor_controller.cpp:1096
 msgid "Can’t Undo"
 msgstr "Kan niet ongedaan maken"
 
-#: src/editor/editor_controller.cpp:1099
+#: src/editor/editor_controller.cpp:1100
 msgid "Redo"
 msgstr "Opnieuw"
 
-#: src/editor/editor_controller.cpp:1101
+#: src/editor/editor_controller.cpp:1102
 msgid "Can’t Redo"
 msgstr "Kan niet herhalen"
 
-#: src/editor/editor_controller.cpp:1106
+#: src/editor/editor_controller.cpp:1107
 msgid "Auto-update Terrain Transitions: Yes"
 msgstr "Update terreinovergangen automatisch: Ja"
 
-#: src/editor/editor_controller.cpp:1109
+#: src/editor/editor_controller.cpp:1110
 msgid "Auto-update Terrain Transitions: Partial"
 msgstr "Update terreinovergangen automatisch: Gedeeltelijk"
 
-#: src/editor/editor_controller.cpp:1113
+#: src/editor/editor_controller.cpp:1114
 msgid "Auto-update Terrain Transitions: No"
 msgstr "Update terreinovergangen automatisch: Nee"
 
-#: src/editor/editor_map.cpp:149 src/editor/mouse_action.cpp:428
+#: src/editor/editor_map.cpp:150 src/editor/mouse_action.cpp:429
 msgid "Player"
 msgstr "Speler"
 
-#: src/editor/editor_map.cpp:256
+#: src/editor/editor_map.cpp:257
 msgid "The size of the target map is different from the current map"
 msgstr "De grootte van de doelkaart verschilt van die van de huidige kaart"
 
-#: src/editor/editor_palettes.cpp:509
+#: src/editor/editor_palettes.cpp:511
 msgid "(non-core)"
 msgstr "(niet-kern)"
 
-#: src/editor/editor_palettes.cpp:510
+#: src/editor/editor_palettes.cpp:512
 msgid "Will not work in game without extra care."
 msgstr "Zal niet in het spel werken zonder extra werk."
 
-#: src/editor/editor_palettes.cpp:540
+#: src/editor/editor_palettes.cpp:542
 msgid "FG: "
 msgstr ""
 
-#: src/editor/editor_palettes.cpp:541
+#: src/editor/editor_palettes.cpp:543
 msgid "BG: "
 msgstr ""
 
-#: src/editor/map_context.cpp:70
+#: src/editor/map_context.cpp:71
 msgid "File not found"
 msgstr "Bestand niet gevonden"
 
-#: src/editor/map_context.cpp:84
+#: src/editor/map_context.cpp:85
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
@@ -355,27 +355,27 @@ msgstr ""
 "Het kaartbestand lijkt op een scenario, maar de map_data waarde wijst niet "
 "naar een bestaand bestand"
 
-#: src/editor/map_context.cpp:99
+#: src/editor/map_context.cpp:100
 msgid "Empty map file"
 msgstr "Leeg kaartbestand"
 
-#: src/editor/map_context.cpp:219
+#: src/editor/map_context.cpp:220
 msgid "Could not save into scenario"
 msgstr "Kaart opslaan in scenario mislukt"
 
-#: src/editor/map_context.cpp:226
+#: src/editor/map_context.cpp:227
 msgid "Could not save the map: $msg"
 msgstr "Kaart opslaan mislukt: $msg"
 
-#: src/editor/mouse_action.cpp:425
+#: src/editor/mouse_action.cpp:426
 msgid "(Player)^None"
 msgstr "Geen"
 
-#: src/editor/mouse_action.cpp:432
+#: src/editor/mouse_action.cpp:433
 msgid "Choose player"
 msgstr "Kies speler"
 
-#: src/editor/mouse_action.cpp:433
+#: src/editor/mouse_action.cpp:434
 msgid ""
 "Which player should start here? You can use alt and a number key to set the "
 "starting position for a player, and del to clear the starting position under "
@@ -387,7 +387,7 @@ msgstr ""
 "onder de cursor te verwijderen. Het indrukken van enkel een numerieke knop "
 "schuift het scherm naar de startpositie van die speler."
 
-#: src/gui/dialogs/editor_settings.cpp:166
+#: src/gui/dialogs/editor_settings.cpp:171
 msgid "Custom setting"
 msgstr "Eigen instelling"
 

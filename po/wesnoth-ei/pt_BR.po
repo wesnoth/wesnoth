@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pt_BR\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-08-30 11:56+0200\n"
+"POT-Creation-Date: 2010-09-13 11:01+0200\n"
 "PO-Revision-Date: 2009-12-23 00:45-0300\n"
 "Last-Translator: Claudio Terra <cbterra@gmail.com>\n"
 "Language-Team:  <gnome-l10n-br@listas.cipsga.org.br>\n"
@@ -93,12 +93,12 @@ msgid "Campaign Maintenance"
 msgstr "manutenção da Campanha"
 
 #. [about]
-#: data/campaigns/Eastern_Invasion/_main.cfg:37
+#: data/campaigns/Eastern_Invasion/_main.cfg:41
 msgid "Campaign Epilogue and Continuity"
 msgstr "Epílogo e Continuidade da Campanha"
 
 #. [about]
-#: data/campaigns/Eastern_Invasion/_main.cfg:43
+#: data/campaigns/Eastern_Invasion/_main.cfg:47
 msgid "Artwork and Graphics Design"
 msgstr "Design de Gráficos e Artes"
 
@@ -2354,8 +2354,13 @@ msgstr "Bem, onde está o líder deles? Eu não o vejo."
 
 #. [message]
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:308
+msgid "Uh... "
+msgstr ""
+
+#. [message]
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:308
 #, fuzzy
-msgid "Uh... (<i>Whispers</i>) I dunno. He escaped, I think."
+msgid "whisper^I dunno. He escaped, I think."
 msgstr "Uh... (sussurro).. Eu... Ele escapou, eu acho."
 
 #. [message]: speaker=King Dra-Nak
@@ -3666,6 +3671,21 @@ msgstr ""
 "espada e do mangual. Montados em seus cavalos, são capazes de se moverem "
 "pelo campo de batalha em grande velocidade, podendo prover o apoio "
 "necessário para diversas frontes."
+
+#. [attacks]: id=shock
+#: data/campaigns/Eastern_Invasion/utils/abilities.cfg:8
+#: data/campaigns/Eastern_Invasion/utils/abilities.cfg:9
+msgid "shock"
+msgstr ""
+
+#. [attacks]: id=shock
+#: data/campaigns/Eastern_Invasion/utils/abilities.cfg:11
+#: data/campaigns/Eastern_Invasion/utils/abilities.cfg:13
+msgid ""
+"Shock:\n"
+"When this attack is used on offense, the opponent will retaliate with one "
+"less strike than normally, to a minimum of one strike."
+msgstr ""
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/utils/deaths.cfg:9

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.5.0-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-08-30 11:56+0200\n"
+"POT-Creation-Date: 2010-09-13 11:01+0200\n"
 "PO-Revision-Date: 2008-04-20 12:41+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -76,12 +76,12 @@ msgid "Campaign Maintenance"
 msgstr ""
 
 #. [about]
-#: data/campaigns/Eastern_Invasion/_main.cfg:37
+#: data/campaigns/Eastern_Invasion/_main.cfg:41
 msgid "Campaign Epilogue and Continuity"
 msgstr ""
 
 #. [about]
-#: data/campaigns/Eastern_Invasion/_main.cfg:43
+#: data/campaigns/Eastern_Invasion/_main.cfg:47
 msgid "Artwork and Graphics Design"
 msgstr ""
 
@@ -2025,7 +2025,12 @@ msgstr ""
 
 #. [message]
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:308
-msgid "Uh... (<i>Whispers</i>) I dunno. He escaped, I think."
+msgid "Uh... "
+msgstr ""
+
+#. [message]
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:308
+msgid "whisper^I dunno. He escaped, I think."
 msgstr ""
 
 #. [message]: speaker=King Dra-Nak
@@ -3087,6 +3092,21 @@ msgid ""
 "sword and the morning star. Riding horses, they are able to move around the "
 "battlefield with great speed, and can provide much needed assistance to "
 "different fronts."
+msgstr ""
+
+#. [attacks]: id=shock
+#: data/campaigns/Eastern_Invasion/utils/abilities.cfg:8
+#: data/campaigns/Eastern_Invasion/utils/abilities.cfg:9
+msgid "shock"
+msgstr ""
+
+#. [attacks]: id=shock
+#: data/campaigns/Eastern_Invasion/utils/abilities.cfg:11
+#: data/campaigns/Eastern_Invasion/utils/abilities.cfg:13
+msgid ""
+"Shock:\n"
+"When this attack is used on offense, the opponent will retaliate with one "
+"less strike than normally, to a minimum of one strike."
 msgstr ""
 
 #. [message]: speaker=Gweddry

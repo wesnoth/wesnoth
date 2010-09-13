@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-08-30 11:56+0200\n"
+"POT-Creation-Date: 2010-09-13 11:01+0200\n"
 "PO-Revision-Date: 2009-12-15 18:55+0100\n"
 "Last-Translator: Diego J. <diegojromerolopez@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -92,12 +92,12 @@ msgid "Campaign Maintenance"
 msgstr "Mantenimiento de la Campaña"
 
 #. [about]
-#: data/campaigns/Eastern_Invasion/_main.cfg:37
+#: data/campaigns/Eastern_Invasion/_main.cfg:41
 msgid "Campaign Epilogue and Continuity"
 msgstr "Epílogo de la Campaña y Continuidad"
 
 #. [about]
-#: data/campaigns/Eastern_Invasion/_main.cfg:43
+#: data/campaigns/Eastern_Invasion/_main.cfg:47
 msgid "Artwork and Graphics Design"
 msgstr "Arte y Diseño Gráfico"
 
@@ -2359,8 +2359,13 @@ msgstr "Bien, ¿dónde está su líder? No lo veo."
 
 #. [message]
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:308
+msgid "Uh... "
+msgstr ""
+
+#. [message]
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:308
 #, fuzzy
-msgid "Uh... (<i>Whispers</i>) I dunno. He escaped, I think."
+msgid "whisper^I dunno. He escaped, I think."
 msgstr "Eh... (susurra).. No lo sé. Ha escapado, creo."
 
 #. [message]: speaker=King Dra-Nak
@@ -3676,6 +3681,21 @@ msgstr ""
 "Los guerreros montados, dueños de las llanuras, conocen el uso de la espada "
 "y el lucero del alba. A lomos de sus caballos son capaces de moverse por el "
 "campo de batalla a gran velocidad, y ofrecer su ayuda en diferentes frentes."
+
+#. [attacks]: id=shock
+#: data/campaigns/Eastern_Invasion/utils/abilities.cfg:8
+#: data/campaigns/Eastern_Invasion/utils/abilities.cfg:9
+msgid "shock"
+msgstr ""
+
+#. [attacks]: id=shock
+#: data/campaigns/Eastern_Invasion/utils/abilities.cfg:11
+#: data/campaigns/Eastern_Invasion/utils/abilities.cfg:13
+msgid ""
+"Shock:\n"
+"When this attack is used on offense, the opponent will retaliate with one "
+"less strike than normally, to a minimum of one strike."
+msgstr ""
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/utils/deaths.cfg:9

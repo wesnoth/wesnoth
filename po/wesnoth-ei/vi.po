@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.5.7+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-08-30 11:56+0200\n"
+"POT-Creation-Date: 2010-09-13 11:01+0200\n"
 "PO-Revision-Date: 2010-09-07 20:12+0700\n"
 "Last-Translator: Huynh Yen L <nightgaunt13@gmail.c>\n"
 "Language-Team: Vietnamese <>\n"
@@ -90,12 +90,12 @@ msgid "Campaign Maintenance"
 msgstr "Bảo trì chiến dịch"
 
 #. [about]
-#: data/campaigns/Eastern_Invasion/_main.cfg:37
+#: data/campaigns/Eastern_Invasion/_main.cfg:41
 msgid "Campaign Epilogue and Continuity"
 msgstr "Phần kết của chiến dịch và tiếp tục"
 
 #. [about]
-#: data/campaigns/Eastern_Invasion/_main.cfg:43
+#: data/campaigns/Eastern_Invasion/_main.cfg:47
 msgid "Artwork and Graphics Design"
 msgstr "Thiết kế nghệ thuật và đồ họa"
 
@@ -2392,8 +2392,13 @@ msgstr "Nào, chỉ huy của chúng đâu? Ta không thấy hắn. "
 
 #. [message]
 #: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:308
+msgid "Uh... "
+msgstr ""
+
+#. [message]
+#: data/campaigns/Eastern_Invasion/scenarios/11_Captured.cfg:308
 #, fuzzy
-msgid "Uh... (<i>Whispers</i>) I dunno. He escaped, I think."
+msgid "whisper^I dunno. He escaped, I think."
 msgstr ""
 "h...(thì thầm)... Tôi không biết nữa. Hắn ta đã trốn thoát, tôi nghĩ vậy. "
 
@@ -3715,6 +3720,21 @@ msgstr ""
 "Chỉ huy của đồng bằng, chiến binh cưỡi ngựa thành thạo sử dụng cả kiếm và "
 "chùy gai. Cưỡi trên lưng ngựa , họ có thể đi quanh chiến trường vói tốc độ "
 "nhanh, và có thể trợ giúp lúc cần thiết ở nhiều mặt trận khác nhau"
+
+#. [attacks]: id=shock
+#: data/campaigns/Eastern_Invasion/utils/abilities.cfg:8
+#: data/campaigns/Eastern_Invasion/utils/abilities.cfg:9
+msgid "shock"
+msgstr ""
+
+#. [attacks]: id=shock
+#: data/campaigns/Eastern_Invasion/utils/abilities.cfg:11
+#: data/campaigns/Eastern_Invasion/utils/abilities.cfg:13
+msgid ""
+"Shock:\n"
+"When this attack is used on offense, the opponent will retaliate with one "
+"less strike than normally, to a minimum of one strike."
+msgstr ""
 
 #. [message]: speaker=Gweddry
 #: data/campaigns/Eastern_Invasion/utils/deaths.cfg:9

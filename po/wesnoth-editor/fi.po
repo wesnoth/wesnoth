@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-08-30 11:56+0200\n"
+"POT-Creation-Date: 2010-09-13 11:01+0200\n"
 "PO-Revision-Date: 2009-12-23 14:23+0200\n"
 "Last-Translator: Mikko Nikkilä <miccoh@gmail.com>\n"
 "Language-Team: none\n"
@@ -178,23 +178,23 @@ msgstr "Ikkuna"
 msgid "villages"
 msgstr "kylää"
 
-#: src/editor/editor_controller.cpp:122
+#: src/editor/editor_controller.cpp:123
 msgid "Quit Editor"
 msgstr "Sulje editori"
 
-#: src/editor/editor_controller.cpp:277
+#: src/editor/editor_controller.cpp:278
 msgid "Fatal error"
 msgstr "Vakava virhe"
 
-#: src/editor/editor_controller.cpp:302 src/editor/editor_controller.cpp:1063
+#: src/editor/editor_controller.cpp:303 src/editor/editor_controller.cpp:1064
 msgid "(New Map)"
 msgstr "(uusi kartta)"
 
-#: src/editor/editor_controller.cpp:308
+#: src/editor/editor_controller.cpp:309
 msgid "Do you really want to quit?"
 msgstr "Haluatko todella lopettaa?"
 
-#: src/editor/editor_controller.cpp:310
+#: src/editor/editor_controller.cpp:311
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
@@ -202,7 +202,7 @@ msgstr ""
 "Haluatko todella lopettaa? Viime tallennuksen jälkeiset muutokset karttaan "
 "menetetään."
 
-#: src/editor/editor_controller.cpp:312
+#: src/editor/editor_controller.cpp:313
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -210,78 +210,78 @@ msgstr ""
 "Haluatko todella lopettaa? Seuraavia karttoja on muutettu ja kaikki viime "
 "tallennuksen jälkeiset muutokset menetetään:"
 
-#: src/editor/editor_controller.cpp:317
+#: src/editor/editor_controller.cpp:318
 msgid "Quit"
 msgstr "Lopeta"
 
-#: src/editor/editor_controller.cpp:374
+#: src/editor/editor_controller.cpp:375
 msgid "No editor time-of-day found."
 msgstr "Editorin vuorokaudenaikoja ei löytynyt."
 
-#: src/editor/editor_controller.cpp:410
+#: src/editor/editor_controller.cpp:411
 msgid "Unsaved Changes"
 msgstr "Tallentamattomat muutokset"
 
-#: src/editor/editor_controller.cpp:411
+#: src/editor/editor_controller.cpp:412
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
 msgstr ""
 "Haluatko hävittää kaikki viime tallennuksen jälkeen karttaan tekemäsi "
 "muutokset?"
 
-#: src/editor/editor_controller.cpp:429
+#: src/editor/editor_controller.cpp:430
 msgid "Choose a Map to Open"
 msgstr "Valitse avattava kartta"
 
-#: src/editor/editor_controller.cpp:464
+#: src/editor/editor_controller.cpp:465
 msgid "Save the Map As"
 msgstr "Tallenna kartta nimellä"
 
-#: src/editor/editor_controller.cpp:468
+#: src/editor/editor_controller.cpp:469
 msgid "The file already exists. Do you want to overwrite it?"
 msgstr "Tiedosto on jo olemassa. Haluatko korvata sen?"
 
-#: src/editor/editor_controller.cpp:485
+#: src/editor/editor_controller.cpp:486
 msgid "No random map generators found."
 msgstr "Kartan satunnaisgeneraattoreita ei löydy."
 
-#: src/editor/editor_controller.cpp:498 src/editor/editor_controller.cpp:502
+#: src/editor/editor_controller.cpp:499 src/editor/editor_controller.cpp:503
 msgid "Map creation failed."
 msgstr "Kartan luonti epäonnistui."
 
-#: src/editor/editor_controller.cpp:517
+#: src/editor/editor_controller.cpp:518
 msgid "Choose a mask to apply"
 msgstr "Valitse käytettävä maski"
 
-#: src/editor/editor_controller.cpp:524
+#: src/editor/editor_controller.cpp:525
 msgid "Error loading mask"
 msgstr "Maskin lataus epäonnistui."
 
-#: src/editor/editor_controller.cpp:539
+#: src/editor/editor_controller.cpp:540
 msgid "Choose target map"
 msgstr "Valitse kohdekartta"
 
-#: src/editor/editor_controller.cpp:546 src/editor/editor_controller.cpp:710
+#: src/editor/editor_controller.cpp:547 src/editor/editor_controller.cpp:711
 msgid "Error loading map"
 msgstr "Kartan lataus epännistui."
 
-#: src/editor/editor_controller.cpp:624 src/editor/editor_controller.cpp:666
+#: src/editor/editor_controller.cpp:625 src/editor/editor_controller.cpp:667
 msgid "This map is already open."
 msgstr "Valittu kartta on jo avoinna."
 
-#: src/editor/editor_controller.cpp:645
+#: src/editor/editor_controller.cpp:646
 msgid "Map saved."
 msgstr "Kartta tallennettu."
 
-#: src/editor/editor_controller.cpp:689
+#: src/editor/editor_controller.cpp:690
 msgid "Loaded embedded map data"
 msgstr "Ladattu sisäinen karttadata."
 
-#: src/editor/editor_controller.cpp:690 src/editor/editor_controller.cpp:704
+#: src/editor/editor_controller.cpp:691 src/editor/editor_controller.cpp:705
 msgid "Map loaded from scenario"
 msgstr "Kartta skenaariosta ladattu"
 
-#: src/editor/editor_controller.cpp:700
+#: src/editor/editor_controller.cpp:701
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
@@ -289,63 +289,63 @@ msgstr ""
 "Ladattu viitattu karttatiedosto:\n"
 "$new"
 
-#: src/editor/editor_controller.cpp:1093
+#: src/editor/editor_controller.cpp:1094
 msgid "Undo"
 msgstr "Peruuta"
 
-#: src/editor/editor_controller.cpp:1095
+#: src/editor/editor_controller.cpp:1096
 msgid "Can’t Undo"
 msgstr "Ei voi peruuttaa"
 
-#: src/editor/editor_controller.cpp:1099
+#: src/editor/editor_controller.cpp:1100
 msgid "Redo"
 msgstr "Tee uudelleen"
 
-#: src/editor/editor_controller.cpp:1101
+#: src/editor/editor_controller.cpp:1102
 msgid "Can’t Redo"
 msgstr "Ei voi tehdä uudelleen"
 
-#: src/editor/editor_controller.cpp:1106
+#: src/editor/editor_controller.cpp:1107
 msgid "Auto-update Terrain Transitions: Yes"
 msgstr "Maastomuutosten automaattinen päivitys: Kyllä"
 
-#: src/editor/editor_controller.cpp:1109
+#: src/editor/editor_controller.cpp:1110
 msgid "Auto-update Terrain Transitions: Partial"
 msgstr "Maastomuutosten automaattinen päivitys: Osittain"
 
-#: src/editor/editor_controller.cpp:1113
+#: src/editor/editor_controller.cpp:1114
 msgid "Auto-update Terrain Transitions: No"
 msgstr "Maastomuutosten automaattinen päivitys: Ei"
 
-#: src/editor/editor_map.cpp:149 src/editor/mouse_action.cpp:428
+#: src/editor/editor_map.cpp:150 src/editor/mouse_action.cpp:429
 msgid "Player"
 msgstr "Pelaaja"
 
-#: src/editor/editor_map.cpp:256
+#: src/editor/editor_map.cpp:257
 msgid "The size of the target map is different from the current map"
 msgstr "Kohdekartta on eri kokoinen kuin tämänhetkinen kartta."
 
-#: src/editor/editor_palettes.cpp:509
+#: src/editor/editor_palettes.cpp:511
 msgid "(non-core)"
 msgstr "(ei-ydin)"
 
-#: src/editor/editor_palettes.cpp:510
+#: src/editor/editor_palettes.cpp:512
 msgid "Will not work in game without extra care."
 msgstr "Ei tule toimimaan pelissä ilman ylimääräistä huolenpitoa."
 
-#: src/editor/editor_palettes.cpp:540
+#: src/editor/editor_palettes.cpp:542
 msgid "FG: "
 msgstr ""
 
-#: src/editor/editor_palettes.cpp:541
+#: src/editor/editor_palettes.cpp:543
 msgid "BG: "
 msgstr ""
 
-#: src/editor/map_context.cpp:70
+#: src/editor/map_context.cpp:71
 msgid "File not found"
 msgstr "Tiedostoa ei löydy"
 
-#: src/editor/map_context.cpp:84
+#: src/editor/map_context.cpp:85
 msgid ""
 "The map file looks like a scenario, but the map_data value does not point to "
 "an existing file"
@@ -353,27 +353,27 @@ msgstr ""
 "Karttatiedosto näyttää skenaariolta, mutta map_data-arvo ei viittaa "
 "olemassaolevaan tiedostoon"
 
-#: src/editor/map_context.cpp:99
+#: src/editor/map_context.cpp:100
 msgid "Empty map file"
 msgstr "Tyhjä karttatiedosto"
 
-#: src/editor/map_context.cpp:219
+#: src/editor/map_context.cpp:220
 msgid "Could not save into scenario"
 msgstr "Skenaarioon ei voida tallentaa"
 
-#: src/editor/map_context.cpp:226
+#: src/editor/map_context.cpp:227
 msgid "Could not save the map: $msg"
 msgstr "Karttaa ei voitu tallentaa: $msg"
 
-#: src/editor/mouse_action.cpp:425
+#: src/editor/mouse_action.cpp:426
 msgid "(Player)^None"
 msgstr "Ei mikään"
 
-#: src/editor/mouse_action.cpp:432
+#: src/editor/mouse_action.cpp:433
 msgid "Choose player"
 msgstr "Valitse pelaaja"
 
-#: src/editor/mouse_action.cpp:433
+#: src/editor/mouse_action.cpp:434
 msgid ""
 "Which player should start here? You can use alt and a number key to set the "
 "starting position for a player, and del to clear the starting position under "
@@ -385,7 +385,7 @@ msgstr ""
 "aloituskohdan kursorin alla. Pelkän numeronäppäimen painaminen vierittää "
 "kyseisen pelaajan aloituskohtaan."
 
-#: src/gui/dialogs/editor_settings.cpp:166
+#: src/gui/dialogs/editor_settings.cpp:171
 msgid "Custom setting"
 msgstr "Muokattu asetus"
 

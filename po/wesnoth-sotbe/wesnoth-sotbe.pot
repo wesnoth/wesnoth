@@ -10,7 +10,7 @@ msgstr ""
 "#-#-#-#-#  wesnoth-sotbe.cpp.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-08-30 11:56+0200\n"
+"POT-Creation-Date: 2010-09-13 11:11+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,7 +21,7 @@ msgstr ""
 "#-#-#-#-#  wesnoth-sotbe.wml.pot (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-08-30 11:56+0200\n"
+"POT-Creation-Date: 2010-09-13 11:10+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -131,7 +131,7 @@ msgstr ""
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:345
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:24
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:30
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:39
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:52
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:34
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:25
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:23
@@ -171,8 +171,8 @@ msgstr ""
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:54
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:51
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:57
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:61
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:67
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:74
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:80
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:52
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:58
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:57
@@ -732,7 +732,7 @@ msgstr ""
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:349
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/08_Silent_Forest.cfg:28
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/09_Shan_Taum_The_Smug.cfg:34
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:43
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:56
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:38
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/12_Giving_Some_Back.cfg:29
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:27
@@ -1577,8 +1577,8 @@ msgstr ""
 #. [side]: type=Bandit, id=Sagmar
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:70
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/07_Desert_Of_Death.cfg:96
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:93
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:117
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:106
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:130
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:89
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:117
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:152
@@ -2195,30 +2195,35 @@ msgid "Nooo! Don’t kill me, I surrender to you little earthworm."
 msgstr ""
 
 #. [scenario]: id=Saving_Inarix
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:10
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:12
 msgid "Saving Inarix"
 msgstr ""
 
 #. [objective]: condition=win
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:31
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:34
+msgid "Wait for Inarix’s arrival from the south on turn 4"
+msgstr ""
+
+#. [objective]: condition=win
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:44
 msgid "Destroy the southern part of the bridge"
 msgstr ""
 
 #. [objective]: condition=win
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:35
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:48
 msgid ""
 "In order to recruit saurians later on, bring Inarix and at least four "
 "saurians to safety"
 msgstr ""
 
 #. [objectives]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:54
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:67
 msgid "Note: whoever detonates the bridge will die."
 msgstr ""
 
 #. [side]: type=Elvish Champion, id=Thelarion
 #. [unit]: type=Elvish Champion, id=Thelarion
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:79
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:92
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:70
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:189
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/14_Back_Home.cfg:136
@@ -2226,37 +2231,37 @@ msgid "Thelarion"
 msgstr ""
 
 #. [side]: type=Dwarvish Steelclad, id=Darstang
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:103
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:116
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:99
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/13_Dwarvish_Stand.cfg:81
 msgid "Darstang"
 msgstr ""
 
 #. [event]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:133
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:146
 msgid "Plonk"
 msgstr ""
 
 #. [event]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:137
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:150
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:186
 msgid "Eastern Tower"
 msgstr ""
 
 #. [event]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:138
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:151
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:187
 msgid "Western Tower"
 msgstr ""
 
 #. [event]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:139
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:152
 #: data/campaigns/Son_Of_The_Black_Eye/scenarios/11_Clash_Of_Armies.cfg:188
 msgid "Southern Tower"
 msgstr ""
 
 #. [message]: speaker=Plonk
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:182
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:195
 msgid ""
 "Reinforcements, at last! Whoever you are, you are welcome in Prestim! The "
 "fortified bridge over the River Bork was taken this morning by a small "
@@ -2264,12 +2269,12 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:186
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:199
 msgid "Ah! They are no match against my hammer."
 msgstr ""
 
 #. [message]: speaker=Plonk
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:190
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:203
 msgid ""
 "There is worse; our scouts report that our saurian allies led by Inarix are "
 "still trapped on the other side of the river some miles away. They won’t be "
@@ -2277,31 +2282,31 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Plonk
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:194
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:207
 msgid ""
 "Elves and dwarves have joined humans against us and have set up camp nearby. "
 "Humans will arrive soon. We must destroy the southern bridge on the river."
 msgstr ""
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:198
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:211
 msgid ""
 "If Inarix falls prey to those humans then we won’t be able to count on their "
 "help in this struggle. We must do something!"
 msgstr ""
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:203
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:216
 msgid "I know what we must do. Kill elves and help Inarix cross."
 msgstr ""
 
 #. [message]: speaker=Plonk
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:207
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:220
 msgid "It won’t be that easy! Our enemies are well entrenched."
 msgstr ""
 
 #. [message]: speaker=Plonk
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:211
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:224
 msgid ""
 "We can sabotage the southern bridge to slow them down. When the bulk of the "
 "saurians have crossed, someone needs to go and light the barrel of oil we "
@@ -2310,7 +2315,7 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Thelarion
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:218
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:231
 msgid ""
 "Hey look, that tribe of orcs that destroyed my enclave in the Silent Forest "
 "have reinforced Prestim. It is time to avenge the death of our fallen kin my "
@@ -2318,147 +2323,147 @@ msgid ""
 msgstr ""
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:222
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:235
 msgid ""
 "Ahhh, it’s ‘the Prince’ from the Silent Forest. Unfortunately, I don’t think "
 "we can deal with him now, we have to focus on saving Inarix."
 msgstr ""
 
 #. [event]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:230
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:243
 msgid "Inarix"
 msgstr ""
 
 #. [message]: speaker=Inarix
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:248
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:261
 msgid ""
 "Hurry-hurry, friends. Lanbec’h and his kind are right on our tails, we must "
 "reach Prestim quickly."
 msgstr ""
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:324
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:341
 msgid "Bah! I’m not going to blow myself to bits!"
 msgstr ""
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:342
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:359
 msgid "Grüü, stay away from that thing! I still have a use for you!"
 msgstr ""
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:349
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:366
 msgid "Uh... OK, Chief!"
 msgstr ""
 
 #. [message]: speaker=Inarix
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:367
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:384
 msgid "I’m not going to do it!"
 msgstr ""
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:404
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:421
 msgid "Get away from there you idiot, I’m still over here!"
 msgstr ""
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:419
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:436
 msgid "Hey, don’t light it up, I’m not safe!"
 msgstr ""
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:473
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:490
 msgid "Chief, we can’t be blowing the bridge before Inarix is here, can we?"
 msgstr ""
 
 #. [then]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:485
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:502
 msgid ""
 "Chief, Inarix hasn’t yet made it across! Are you really sure you want to do "
 "this?"
 msgstr ""
 
 #. [else]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:489
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:506
 msgid "I’m ready, Chief!"
 msgstr ""
 
 #. [option]: speaker=unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:498
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:515
 msgid "Let her blow!"
 msgstr ""
 
 #. [message]: speaker=Grüü
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:503
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:520
 msgid "Bye bye, $unit.name|!"
 msgstr ""
 
 #. [message]: speaker=Inarix
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:515
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:532
 msgid "Damn you, Son of the Black-Eye! You’ll pay for this!"
 msgstr ""
 
 #. [message]
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:529
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:546
 msgid "No, wait!"
 msgstr ""
 
 #. [message]: speaker=unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:536
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:553
 msgid "Aaaaaaaargh!"
 msgstr ""
 
 #. [option]: speaker=unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:552
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:569
 msgid "Wait a moment."
 msgstr ""
 
 #. [message]: speaker=unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:557
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:574
 msgid "<i>Phew!</i>"
 msgstr ""
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:612
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:629
 msgid ""
 "Blast it! The saurians have had too many casualties in order for them to be "
 "of any real help to us. We won’t be able to recruit them in the future."
 msgstr ""
 
 #. [message]: speaker=Thelarion
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:626
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:643
 msgid ""
 "This has taken too much time, we should send all of our troops and send "
 "these creatures back to hell."
 msgstr ""
 
 #. [message]: speaker=Darstang
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:630
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:647
 msgid "It won’t be said that Elves were braver than us, everyone attack!"
 msgstr ""
 
-#. [unit]: type=General, id=Earl Lanbec’h
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:648
+#. [unit]: type=General, id=Earl Lanbec'h
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:665
 msgid "Earl Lanbec’h"
 msgstr ""
 
-#. [message]: speaker=Earl Lanbec’h
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:664
+#. [message]: speaker=Earl Lanbec'h
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:681
 msgid "At them! Rip them to the last!"
 msgstr ""
 
 #. [message]: speaker=Kapou'e
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:668
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:685
 msgid "It is too late, we are defeated."
 msgstr ""
 
 #. [message]: speaker=unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:712
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:729
 msgid "The green earth will curse you for this..."
 msgstr ""
 
 #. [message]: speaker=unit
-#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:724
+#: data/campaigns/Son_Of_The_Black_Eye/scenarios/10_Saving_Inarix.cfg:741
 msgid "Curse you, foul orc!"
 msgstr ""
 

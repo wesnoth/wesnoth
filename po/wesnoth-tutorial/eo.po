@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-08-30 11:56+0200\n"
+"POT-Creation-Date: 2010-09-13 11:01+0200\n"
 "PO-Revision-Date: 2008-03-01 17:34+0200\n"
 "Last-Translator: Aleksej Korgenkov <grimpanto@mail.ru>\n"
 "Language-Team: none\n"
@@ -17,15 +17,16 @@ msgstr ""
 #, fuzzy
 msgid ""
 "\n"
-"<big>Click a mouse button or press spacebar to continue...</big>"
+"<big>Click a mouse button or press the spacebar to continue...</big>"
 msgstr ""
 "\n"
 "*Klaku aŭ premu iun klavon por daŭrigi..."
 
 #. [tutorial]: id=tutorial
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:49
-msgid "Wesnoth Tutorial"
-msgstr "Vesnot Instruado"
+#, fuzzy
+msgid "Wesnoth Tutorial Part I"
+msgstr "Vesnot Instruado Parto II"
 
 #. [side]: type=Fighter, id=student
 #. [command]
@@ -89,25 +90,16 @@ msgstr "Li’sar"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:206
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:213
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:212
 #, fuzzy
-msgid "<big>Welcome to Wesnoth!</big>"
+msgid "Welcome to Wesnoth!"
 msgstr "*Bonvenon al Vesnot"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:208
-msgid ""
-"\n"
-"For this tutorial, you are playing Konrad. "
-msgstr ""
-"\n"
-"Dum ĉi tiu instruado vi ludos Konradon. "
-
-#. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:209
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:216
 #, fuzzy
 msgid ""
+"For this tutorial, you are playing Konrad.\n"
 "You are standing in the keep, and your mentor Delfador is on the east side "
 "of the river."
 msgstr ""
@@ -115,34 +107,36 @@ msgstr ""
 "flanko de la rivero."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:215
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:214
+#, fuzzy
 msgid ""
-"\n"
-"For this tutorial, you are playing Li’sar. "
+"For this tutorial, you are playing Li’sar.\n"
+"You are standing in the keep, and your mentor Delfador is on the east side "
+"of the river."
 msgstr ""
-"\n"
-"Dum ĉi tiu instruado vi ludos Li'sar."
+"Vi lokiĝas en la defendejo kaj via mentoro Delfador estas sur la Orienta "
+"flanko de la rivero."
 
 #. [event]
 #. [event]: id=student moves 0}
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:220
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:393
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:513
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:218
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:404
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:526
 msgid "Left click on Konrad"
 msgstr "Klaku Konradon"
 
 #. [event]
 #. [event]: id=student moves 0}
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:221
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:394
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:514
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:219
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:405
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:527
 msgid "Left click on Li’sar"
 msgstr "Klaku Li'sar"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:240
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:238
 #, fuzzy
 msgid ""
 "<big>You have selected Konrad.</big>\n"
@@ -152,7 +146,7 @@ msgstr ""
 "Lokoj kien li povas moviĝi estas lumigitaj"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:247
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:245
 #, fuzzy
 msgid ""
 "<big>You have selected Li’sar.</big>\n"
@@ -162,35 +156,39 @@ msgstr ""
 "Lokoj kien shi povas moviĝi estas lumigitaj"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:252
-msgid "HERE"
-msgstr "ĈI TIE"
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:250
+msgid "Here"
+msgstr ""
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:258
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:256
 #, fuzzy
 msgid ""
-"Move Konrad next to Delfador by clicking on the tile marked <b>HERE</b>."
+"Move Konrad next to Delfador by clicking on the tile marked <b>Here</b>."
 msgstr "Movu Konradon ĉe Delfadoro per klako sur loko, markita 'ĈI TIE'."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:262
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:260
 #, fuzzy
 msgid ""
-"Move Li’sar next to Delfador by clicking on the tile marked <b>HERE</b>."
+"Move Li’sar next to Delfador by clicking on the tile marked <b>Here</b>."
 msgstr "Movu Li'sar ĉe Delfadoro per klako sur loko, markita ĈI TIE'."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:267
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:265
 #, fuzzy
-msgid "Left click on tile labeled <b>HERE</b>"
+msgid "Left click on tile labeled <b>Here</b>"
 msgstr "Klaku sur la ĉelo markita ĈI TIE"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:294
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:290
+msgid "Oops!"
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:292
 #, fuzzy
 msgid ""
-"<big>Oops!</big>\n"
 "You moved to the wrong place! After this message, you can press <b>u</b> to "
 "undo, then try again."
 msgstr ""
@@ -200,53 +198,70 @@ msgstr ""
 "*Klaku por daŭrigi..."
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:316
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:314
 #, fuzzy
 msgid "Good morning, Delfador! Is it time to attack things?"
 msgstr "Bonan matenon, Delfadoro! Ĉu venis tempo ataki?"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:320
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:318
 msgid "Um, well..."
 msgstr "Do, bone..."
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:324
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:322
 msgid "Have you found an orc for me to fight, huh? A troll?"
 msgstr "Ĉu vi trovis orkon por mi? Aŭ  trolon?"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:328
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:326
 msgid "Quiet! I will summon an enemy for you..."
 msgstr "Silenton! Por vi malamiko estos..."
 
 #. [event]: id=student moves 0}
 #. [unit_type]: id=Quintain, race=mechanical
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:356
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:354
 #: data/campaigns/tutorial/units/Quintain.cfg:4
 msgid "Quintain"
 msgstr "Birdtimigilo"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:360
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:358
 msgid "... this quintain!"
 msgstr "... ĉi tiu birdtimigilo!"
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:364
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:362
 #, fuzzy
-msgid "A quintain? You want me to pretend to fight a dummy?"
+msgid "A quintain? You want me to fight a dummy?"
 msgstr "Birdtimigilo? Ĉu vi volas ke mi batalu kontraŭ manekeno??"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:368
-msgid "Child, you have 32 hitpoints and a sword. I’m fairly sure you’ll win."
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:369
+#, fuzzy
+msgid "You have 32 hitpoints and a sword, boy. I’m fairly sure you’ll win."
+msgstr ""
+"Infano, vi havas 32 batpoentojn kaj glavon. Mi estas sufiĉe certa ke vi "
+"gajnos."
+
+#. [message]: id=Delfador
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:374
+#, fuzzy
+msgid ""
+"female^Young lady, you have 32 hitpoints and a sword. I’m fairly sure you’ll "
+"win."
 msgstr ""
 "Infano, vi havas 32 batpoentojn kaj glavon. Mi estas sufiĉe certa ke vi "
 "gajnos."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:373
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:382
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:388
+msgid "Attacking"
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:384
 #, fuzzy
 msgid ""
 "To attack the quintain, first select the attacker (Konrad) then the target "
@@ -258,7 +273,7 @@ msgstr ""
 "Kiam vi klakos OK, Konrado atakos."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:378
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:389
 #, fuzzy
 msgid ""
 "To attack the quintain, first select the attacker (Li’sar) then the target "
@@ -270,77 +285,85 @@ msgstr ""
 "vi klakos OK, Li'sar atakos."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:389
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:400
 msgid "Click on the quintain to attack it"
 msgstr "Klaku la birdtimigilon por ataki ĝin"
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:425
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:436
 msgid "Hey! This quintain fights back!"
 msgstr "Hej! La timigilo responde atakas!"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:429
-msgid "Hmm, maybe we should have started with a doll."
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:440
+#, fuzzy
+msgid "Hmm, perhaps we should have started with a doll."
 msgstr "Hm, eble ni devas komenci kun pupo..."
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:433
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:444
 msgid "Should I retreat?"
 msgstr "Ĉu mi devas remarŝi?"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:437
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:448
 msgid "Good idea!"
 msgstr "Bona ideo!"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:442
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:453
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:457
+msgid "Crowns"
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:454
 #, fuzzy
 msgid ""
-"Note: the tiny metal crown above Delfador means you will lose the game if he "
+"Note: The tiny metal crown above Delfador means you will lose the game if he "
 "is killed. You will also lose the game if your leader (Konrad) is killed."
 msgstr ""
 "Noto: la eta arĝenta krono ĉe Delfadoro montras, ke vi malgajnos, se li "
 "mortos. Vi ankaŭ malgajnas, se via gvidanto (Konrado) mortas."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:445
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:458
 #, fuzzy
 msgid ""
-"Note: the tiny metal crown above Delfador means you will lose the game if he "
+"Note: The tiny metal crown above Delfador means you will lose the game if he "
 "is killed. You will also lose the game if your leader (Li’sar) is killed."
 msgstr ""
 "Noto: la eta arĝenta krono ĉe Delfadoro montras, ke vi malgajnos, se li "
 "mortos. Vi ankaŭ malgajnas, se via gvidantino (Li'sar) mortas."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:457
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:470
+#, fuzzy
 msgid ""
 "Unfortunately, you’ve used up your turn attacking the quintain. The quintain "
-"will now get a turn."
+"now gets to attack."
 msgstr ""
 "Bedaŭrinde, vi uzis vian movon atakante la timigilon. Venis vico de la "
 "timigilo."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:462
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:475
 #, fuzzy
 msgid ""
 "female^Unfortunately, you’ve used up your turn attacking the quintain. The "
-"quintain will now get a turn."
+"quintain now gets to attack."
 msgstr ""
 "Bedaŭrinde, vi uzis vian movon atakante la timigilon. Venis vico de la "
 "timigilo."
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:468
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:481
 #, fuzzy
 msgid "The <i>dummy</i> gets a turn?"
 msgstr "Ĉu la MANEKENO ricevos movon?"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:474
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:487
 #, fuzzy
 msgid ""
 "Yes. It’s a magical quintain.\n"
@@ -355,26 +378,26 @@ msgstr ""
 "Eltenu!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:477
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:490
 #, fuzzy
-msgid "Click on the <b>End Turn</b> button on the bottom right"
+msgid "Click on the <b>End Turn</b> button in the bottom right of the screen"
 msgstr "Klaku sur la butono 'Fino de Movo' en la malsupra dekstra angulo"
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:498
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:511
 #, fuzzy
 msgid "Ouch! I need to heal! Only $student_hp hitpoints left!"
 msgstr "Aj! Mi devas resaniĝi! Restis nur $student_hp bp!"
 
 #. [event]
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:500
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:444
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:513
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:442
 msgid "Village"
 msgstr "Vilaĝo"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:505
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:518
 #, fuzzy
 msgid ""
 "There is a village on the other side of the river. Visiting villages is a "
@@ -385,7 +408,7 @@ msgstr ""
 "remarŝi tien."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:510
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:523
 #, fuzzy
 msgid ""
 "female^There is a village on the other side of the river. Visiting villages "
@@ -396,23 +419,30 @@ msgstr ""
 "remarŝi tien."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:523
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:536
 msgid "Click on the village to move Konrad"
 msgstr "Klaku vilaĝon por movi Konradon"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:524
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:537
 msgid "Click on the village to move Li’sar"
 msgstr "Klaku vilaĝon por movi Li'sar"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:542
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:555
+#, fuzzy
+msgid "Villages"
+msgstr "Vilaĝo"
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:557
 #, fuzzy
 msgid ""
-"You captured a village! It now flies your flag color and has been added to "
-"your total village count at the top of the screen (house icon). Villages "
-"provide the gold needed to recruit units. Each turn, you gain two gold plus "
-"one for every village you own."
+"You have captured a village! It now flies your flag and has been added to "
+"your total village count. (The house icon at the top of the screen shows how "
+"many villages you currently control.) Villages provide the gold needed to "
+"recruit units. Each turn, you gain two gold plus one for every village you "
+"own."
 msgstr ""
 "Nun vi posedas la vilaĝon: vi povas vidi vian flirtantan flagon kaj baldaŭ "
 "'1' aperos post la bildeto de domo en la supra parto de la ekrano. Vilaĝoj "
@@ -423,48 +453,49 @@ msgstr ""
 #. [event]
 #. [then]
 #. [else]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:546
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:676
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:848
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:900
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:561
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:693
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:726
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:866
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:918
 #, fuzzy
 msgid "Click on the <b>End Turn</b> button"
 msgstr "Klaku la butonon 'Fino de Movo'"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:582
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:597
 #, fuzzy
 msgid ""
-"You’re about to be healed by $hp_difference hitpoints, but I think you’re "
-"going to need some help against that quintain."
+"You’re about to be healed by $hp_difference hitpoints, but it’s time to "
+"summon some help against that quintain."
 msgstr ""
 "Vi estas resanigita per ok batpoentoj.  Sed mi pensas ke vi bezonas iun "
 "helpon kontraŭ ĉi tiu timigilo."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:587
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:602
 #, fuzzy
 msgid ""
-"female^You’re about to be healed by $hp_difference hitpoints, but I think "
-"you’re going to need some help against that quintain."
+"female^You’re about to be healed by $hp_difference hitpoints, but it’s time "
+"to summon some help against that quintain."
 msgstr ""
 "Vi estas resanigita per ok batpoentoj.  Sed mi pensas ke vi bezonas iun "
 "helpon kontraŭ ĉi tiu timigilo."
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:593
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:608
 msgid "I’ll recruit some elves!"
 msgstr "Mi varbos iom da elfoj!"
 
 #. [event]
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:595
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:610
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:972
 msgid "Keep"
 msgstr "Defendejo"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:600
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:615
 #, fuzzy
 msgid ""
 "A splendid idea. You can recruit two units if you return to the keep. You "
@@ -474,7 +505,7 @@ msgstr ""
 "havas sufiĉe da monoj por tio."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:605
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:620
 #, fuzzy
 msgid ""
 "female^A splendid idea. You can recruit two units if you return to the keep. "
@@ -484,22 +515,27 @@ msgstr ""
 "havas sufiĉe da monoj por tio."
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:611
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:626
 msgid "Move Konrad to the keep"
 msgstr "Movu Konradon al la defendejo"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:612
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:627
 msgid "Move Li’sar to the keep"
 msgstr "Movu Li'sar al la defendejo"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:630
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:644
+msgid "Recruiting"
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:646
 #, fuzzy
 msgid ""
-"Whenever you’re on a <i>keep</i>, you can <i>recruit</i> into castle tiles "
-"around it by right-clicking and selecting <b>Recruit</b>. This time you will "
-"only be given one type of unit to choose: the Elvish Fighter."
+"Whenever you’re on a <i>keep</i>, you can <i>recruit</i> into the castle "
+"tiles around it by right-clicking and selecting <b>Recruit</b>. This time "
+"you will only be given one type of unit to choose: the Elvish Fighter."
 msgstr ""
 "Kiam vi estas en defendejo, vi povas rekrutigi militunuojn en kastelon per "
 "dekstra klako kaj elekto 'Varbu'. Nun vi havas por elekti nur unu tipon de "
@@ -507,20 +543,26 @@ msgstr ""
 "*Klaku por daŭrigi..."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:634
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:650
 #, fuzzy
-msgid "Right click on one castle tile and select <b>Recruit</b>"
+msgid "Right click on a castle tile and select <b>Recruit</b>"
 msgstr "Klaku per dekstra butono sur kastela ĉelo kaj elektu 'Varbu'"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:670
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:702
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:684
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:717
+msgid "New Recruits"
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:687
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:720
 #, fuzzy
 msgid ""
-"These newly recruited units can do nothing this turn; you will control them "
+"New units cannot act in the turn they appear; you will gain control of them "
 "next turn.\n"
-"Note: after this dialog, you can move the mouse over a unit to see a "
-"description on the right of the screen."
+"After this dialog, you can move the mouse over a unit to see a summary of "
+"its abilities on the right of the screen."
 msgstr ""
 "Tuj rekrutigitaj unuoj ne havas movon: vi kontrolos ilin ekde sekvanta "
 "movo.\n"
@@ -529,19 +571,14 @@ msgstr ""
 "*Klaku aŭ premu iun klavon por daŭrigi..."
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:681
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:713
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:698
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:731
 #, fuzzy
 msgid "Right click on the other castle tile and recruit another unit"
 msgstr "Klaku dekstran butonon sur la alia ĉelo kaj varbu alian militunuon."
 
-#. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:708
-msgid "Click on the End Turn button"
-msgstr "Klaku la butonon 'Fino de Movo'"
-
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:735
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:753
 #, fuzzy
 msgid ""
 "Hey, the quintain just healed 2 hitpoints! I’d better attack it at once!"
@@ -550,19 +587,19 @@ msgstr ""
 "ataki ĝin tuj!"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:739
-msgid "Yes, if a unit doesn't do anything for a turn, it will slowly heal."
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:757
+msgid "Yes, if a unit doesn’t do anything for a turn, it will slowly heal."
 msgstr ""
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:745
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:763
 msgid ""
 "Had the quintain survived your onslaught, it would have regained two "
 "hitpoints. If a unit doesn’t do anything for a turn, it will slowly heal."
 msgstr ""
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:759
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:777
 #, fuzzy
 msgid ""
 "But before you send your fighters against the quintain, you should know they "
@@ -573,13 +610,13 @@ msgstr ""
 "du manieroj ataki..."
 
 #. [message]: id=student
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:763
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:781
 #, fuzzy
 msgid "I’ll tell them to use the one that does the most damage!"
 msgstr "Mi ordonos ke ili uzu la plej damaĝan!"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:767
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:785
 #, fuzzy
 msgid ""
 "And which would that be? The sword (5–4) or the bow (3–3)? I suppose you’ll "
@@ -589,18 +626,18 @@ msgstr ""
 "vi malkovros tion..."
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:769
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:787
 msgid "Left click on an Elvish Fighter"
 msgstr "Klaku Elfan Batalanton"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:770
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:788
 #, fuzzy
 msgid "End your turn and attack again."
 msgstr "Finu vian movon kaj ataku denove."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:789
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:807
 msgid ""
 "You wouldn’t do anything stupid like charging that quintain yourself again, "
 "now would you?\n"
@@ -608,20 +645,21 @@ msgid ""
 msgstr ""
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:800
-msgid "Left click on the Quintain to attack it."
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:818
+#, fuzzy
+msgid "Left click on the quintain to attack it."
 msgstr "Klaku la Timigilon por ataki ĝin."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:837
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:844
-msgid " The ranged attack was safer."
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:855
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:862
+msgid " The ranged attack would have been safer."
 msgstr ""
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:837
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:844
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:856
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:855
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:862
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:874
 #, fuzzy
 msgid ""
 "Your elf used a sword (5–4; or 5 damage, 4 attacks), which is a <i>melee</i> "
@@ -632,8 +670,8 @@ msgstr ""
 "estas pli sekura."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:845
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:897
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:863
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:915
 #, fuzzy
 msgid ""
 "\n"
@@ -641,26 +679,26 @@ msgid ""
 msgstr "Finu vian movon kaj ataku denove."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:857
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:875
 msgid ""
 "\n"
 "You should tell the other elf to use the bow."
 msgstr ""
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:860
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:909
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:878
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:927
 #, fuzzy
 msgid "Attack with the other elf"
 msgstr "Ataku kun helpo de alia Elfo"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:889
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:896
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:907
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:914
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:925
 #, fuzzy
 msgid ""
-"Your elf used a bow, which is a <i>ranged</i> attack (3-3; or 3 damage, 3 "
+"Your elf used a bow, which is a <i>ranged</i> attack (3–3; or 3 damage, 3 "
 "attacks). The quintain has no ranged attack, only a melee attack, so it "
 "could not defend itself."
 msgstr ""
@@ -669,59 +707,77 @@ msgstr ""
 "povas defendi sin."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:928
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:946
 #, fuzzy
 msgid "Keep attacking with both elves until the quintain is finished!"
 msgstr "Daŭrigu atakojn, per aliaj elfoj ĝis kiam vi ne finos kun la timigilo!"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:942
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:960
 msgid "Maybe you should recruit another elf?"
 msgstr "Eble vi devas varbi ankoraŭ unu elfon?"
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:948
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:964
+msgid "Unit Descriptions"
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:966
 #, fuzzy
 msgid ""
-"Note:\n"
 "You can right click on a unit to see a detailed <b>Unit Description</b>."
 msgstr ""
 "Noto:\n"
 "Vi povas per dekstra klako sur unuo vidi detalan Priskribon de la Militunuo."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:971
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:987
+msgid "Protect Your Troops"
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:989
 #, fuzzy
 msgid ""
-"Note:\n"
 "Remember to pull back wounded units into villages and recruit more if "
 "needed. Take special care of units with the highest <i>experience points (XP)"
-"</i> so they can level up!"
+"</i> so they can gain levels and become more powerful."
 msgstr ""
 "Noto:\n"
 "Memoru revenigi vunditajn unuojn al vilaĝoj kaj rekrutigi pliajn, se vi "
 "bezonas. Zorgu pri unuoj, kiuj havas la plej multe da spertpoentoj (SP)."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:990
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1006
+msgid "Support"
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1008
+#, fuzzy
 msgid ""
-"Note:\n"
-"Each village you own can support a single unit for free. After that, each "
-"unit costs you one gold per turn."
+"Each village you control will <i>support</i> one unit for free. After that, "
+"each unit costs you one gold per turn."
 msgstr ""
 "Noto:\n"
 "Ĉiu posedata vilaĝo povas subteni unu militunuon senpage. Poste ĉiu unuo "
 "kostas unu moneron por movo."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1007
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1023
+msgid "Advancement"
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1025
 #, fuzzy
 msgid ""
-"Note:\n"
-"When a unit gets enough experience (the experience bar is the smaller bar on "
-"the right), it will go up a level. Elvish Fighters have two options, and you "
-"will have a chance to choose which one you want. Note that level 2 units "
-"cost you twice as much to support as level 1 units."
+"When a unit gains enough experience points (the <i>experience bar</i>, if "
+"present, is on the <b>right</b> of the <i>hitpoints bar</i>), it will go up "
+"a level. Elvish Fighters have two advancement options, and you will be able "
+"to choose which one you want. However, second level units cost twice as much "
+"to support as first level units."
 msgstr ""
 "Noto:\n"
 "Kiam unuo ricevas sufiĉan sperton (la strio kiu montras sperton estas eta "
@@ -730,15 +786,21 @@ msgstr ""
 "kostas duoble pli ol unuoj de la unua."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1024
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1040
+#, fuzzy
+msgid "Defenses"
+msgstr "Defendu sin ĉi tie."
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1043
 #, fuzzy
 msgid ""
-"Note:\n"
-"Once you select a unit, you’ll see percentages for different terrain tiles. "
-"The higher the percentage, the more defense that unit will have. For "
-"example, defense is good in castles and villages but bad in rivers. The "
-"dummy’s attacks are magical, however, so they have a 70% chance of hitting "
-"you wherever you stand."
+"Whenever one of your units is selected, you’ll see varying percentages as "
+"you move the mouse over the map. The higher the percentage, the more "
+"<i>defense</i> that unit has in that kind of terrain. For example, most "
+"units have good defenses in castles and villages but poor defenses in "
+"rivers. However, these quintains use a <i>magical</i> attack, which always "
+"has a 70% chance of hitting no matter what terrain its target occupies."
 msgstr ""
 "Noto:\n"
 "Kiam vi elektas unuon vi povas vidi procentojn por diversaj lokoj: pli "
@@ -747,46 +809,44 @@ msgstr ""
 "magiaj, do ĝi ĉiam havas 70% ŝancon por frapi vin sendepende de via loko."
 
 #. [message]: speaker=second_unit
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1049
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1068
 #, fuzzy
-msgid "The quintain is dead, and I have gained more experience!"
+msgid "The quintain is destroyed, and I have gained more experience!"
 msgstr "La timigilo mortis, majstro, kaj mi akiris sperton!"
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1054
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1058
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1074
 #, fuzzy
 msgid ""
 "Yes, you gain experience through battle, especially by killing an opponent. "
-"Gain enough experience and you’ll become more powerful."
+"Gain enough experience and you’ll become more powerful.\n"
+"Now, Konrad, I will leave you with more dummies to practice on! After that, "
+"we have real work to do..."
 msgstr ""
 "Jes, vi akiras sperton kiam vi batalas, precipe mortigante kontraŭulojn: "
 "akiru sufiĉan sperton kaj estu pli potenca."
 
 #. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1055
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1078
 #, fuzzy
 msgid ""
-" Now, Konrad, I will leave you with more dummies to practice on! After that, "
+"Yes, you gain experience through battle, especially by killing an opponent. "
+"Gain enough experience and you’ll become more powerful.\n"
+"Now, Li’sar, I will leave you with more dummies to practice on! After that, "
 "we have real work to do..."
 msgstr ""
-"Nun, Konrado, mi lasas vin kun pluaj manekenoj por praktiki. Post tio vi "
-"havos realan laboron..."
-
-#. [message]: id=Delfador
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1059
-#, fuzzy
-msgid ""
-" Now, Li’sar, I will leave you with more dummies to practice on! After that, "
-"we have real work to do..."
-msgstr ""
-"Nun, Li'sar, mi lasas vin kun pluaj por ke vi praktiku!. Post tio vi havos "
-"realan laboron..."
+"Jes, vi akiras sperton kiam vi batalas, precipe mortigante kontraŭulojn: "
+"akiru sufiĉan sperton kaj estu pli potenca."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1098
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1115
+msgid "Note"
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1117
+#, fuzzy
 msgid ""
-"Note:\n"
 "These dummies only attack if you are a single tile away. With care, you "
 "should be able to kill them one at a time."
 msgstr ""
@@ -794,38 +854,50 @@ msgstr ""
 "La manekenoj povas ataki vin nur se vi okupas najbaran ĉelon."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1107
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1126
 msgid "Do you want to keep practicing?"
 msgstr "Ĉu vi volas plu praktiki?"
 
 #. [option]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1109
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1128
 msgid "Yes, I’m still figuring it out."
 msgstr "Jes, mi restas."
 
 #. [option]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1112
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1131
 msgid "No, I think I’ve got it."
 msgstr "Ne, mi pensas ke mi ellernis tion."
 
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1153
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1172
+msgid "Victory"
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1173
 #, fuzzy
 msgid ""
 "After your victory notice, the map will be grayed out to indicate that the "
-"scenario is over, but you will be able to examine the final positions and "
-"state of your troops before clicking <b>End Scenario</b> to continue to the "
-"next scenario."
+"scenario is over, but you will still be able to examine the final positions "
+"and state of your troops and any surviving enemies. This is called <i>linger "
+"mode</i>. When you’re finished, click the <b>End Scenario</b> button to go "
+"on the next scenario in the campaign."
 msgstr ""
 "Post notico pri via venko la mapo farighas griza, montrante ke la scenaro "
 "finiĝis, sed vi povas ekzamini finalan pozicion kaj staton de via armeo "
 "antaŭ klaki 'Fini Scenaron' por daŭrigi kun sekva."
 
-#: data/campaigns/tutorial/scenarios/2_Speaking.cfg:27
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/2_Speaking.cfg:30
+msgid "Undo"
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/campaigns/tutorial/scenarios/2_Speaking.cfg:31
 #, fuzzy
 msgid ""
-"<big>Remember:</big>\n"
-"You can press <b>u</b> to undo most things; useful for correcting mistakes."
+"Don’t forget, you can press <b>u</b> to undo most things; useful for "
+"correcting mistakes."
 msgstr ""
 "*Memorfiksu:\n"
 "Vi povas premi 'u' por malfari plimulton de aĵoj: tio estas utila por "
@@ -833,19 +905,19 @@ msgstr ""
 
 #. [unit]: id=Galdrad, type=Elvish Captain
 #. [message]: speaker=narrator
-#: data/campaigns/tutorial/scenarios/2_Speaking.cfg:39
-#: data/campaigns/tutorial/scenarios/2_Speaking.cfg:49
-#: data/campaigns/tutorial/scenarios/2_Speaking.cfg:62
+#: data/campaigns/tutorial/scenarios/2_Speaking.cfg:44
+#: data/campaigns/tutorial/scenarios/2_Speaking.cfg:54
+#: data/campaigns/tutorial/scenarios/2_Speaking.cfg:67
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:384
 msgid "Galdrad"
 msgstr "Geldrado"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Speaking.cfg:74
+#: data/campaigns/tutorial/scenarios/2_Speaking.cfg:82
 #, fuzzy
 msgid ""
 ", your new recruit, has two traits: <i>strong</i> and <i>intelligent</i>. "
-"‘Strong’ means a unit does more damage, and ‘intelligent’ means it requires "
+"‘Strong’ means a unit does more damage, and ‘intelligent’ means it needs "
 "less experience to advance a level."
 msgstr ""
 ", via nova rekruto havas du kapablojn: forto kaj intelekto. Forto signifas "
@@ -853,7 +925,7 @@ msgstr ""
 "havante mal pli da sperto."
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Speaking.cfg:87
+#: data/campaigns/tutorial/scenarios/2_Speaking.cfg:97
 #, fuzzy
 msgid ""
 " has two traits: <i>quick</i> and <i>resilient</i>. ‘Quick’ means a unit can "
@@ -897,7 +969,7 @@ msgstr ""
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:29
 #, fuzzy
-msgid "Move a unit (Fighter if possible) to the patch of forest"
+msgid "Move a unit (a Fighter if possible) to the patch of forest"
 msgstr "Movu unuon (batalanton se eblas) al la arbarrando."
 
 #. [event]
@@ -976,9 +1048,10 @@ msgstr "Morto de Li'sar"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:411
+#, fuzzy
 msgid ""
-"Ho Galdrad! Has Delfador conjured something else to beat me with? A flock of "
-"scarecrows, perhaps?"
+"Ho, Galdrad! Has Delfador conjured something else to beat me with? A flock "
+"of scarecrows, perhaps?"
 msgstr ""
 "Ho, Galdrado! Ĉu Delfador elsorĉis ion ankoraŭ por ke mi batalu kontraŭ tio? "
 "Eble amason da timigiloj?"
@@ -1025,8 +1098,8 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:423
 #, fuzzy
 msgid ""
-"By then, their leader will have recruited units to send against us and the "
-"real fight will begin."
+"By then, their leader will have recruited more units to send against us and "
+"the real fight will begin."
 msgstr ""
 "Poste kontraŭa gvidanto rekrutigos kaj sendos kontraŭ ni militunuojn, kaj la "
 "reala batalo komenciĝos."
@@ -1037,25 +1110,24 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:426
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:427
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:428
-msgid "SHALLOW"
-msgstr "MALPROFUNDA"
+msgid "Shallow"
+msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:429
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:430
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:431
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:432
-msgid "DEEP"
-msgstr "PROFUNDA"
+msgid "Deep water"
+msgstr ""
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:434
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:433
 #, fuzzy
 msgid ""
-"See this dark blue water? It’s too deep for either side to cross. They could "
-"slowly wade through that narrow band of shallow lighter-blue water in the "
-"east; but we could stand on the shore and force them to fight us from the "
-"water, where they are exposed and we are protected by the forest."
+"See this dark blue water? It’s too deep for either side to cross. The orcs "
+"could slowly wade through that narrow band of shallow lighter-blue water in "
+"the east; but we could stand on the shore and force them to fight us from "
+"the water, where they are exposed and we are protected by the forest."
 msgstr ""
 "Vidu la malhele-bluan akvon: ĝi estas tro profunda por trairi tie. Oni povas "
 "malrapide travadi tra tiu mallarĝa zono de hele-blua akvo oriente, sed pli "
@@ -1063,7 +1135,7 @@ msgstr ""
 "malbone defendataj kaj ni estos bone defendataj en la arbaro."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:445
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:443
 #, fuzzy
 msgid ""
 "The more likely attack, then, is across the bridge. That middle island is "
@@ -1074,7 +1146,7 @@ msgstr ""
 "vilaĝo por resanigi vunditajn unuojn kaj arbaro kie ni bone batalas."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:451
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:449
 #, fuzzy
 msgid ""
 "To start, we will need some units:\n"
@@ -1088,30 +1160,31 @@ msgstr ""
 "Unu Elfa Ŝamano"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:526
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:524
 #, fuzzy
 msgid ""
 "During your tutorial, both $recall_name1 and $recall_name2 gained "
-"$recall_xp1 experience points. You should recall them now so they can gain "
-"more experience, rather than recruiting new ones."
+"$recall_xp1 experience points. You should <i>recall</i> them now so they can "
+"gain more experience, rather than recruiting new Fighters."
 msgstr ""
 "Dum la instruado $recall_name1 ricevis $recall_xp1 poentoj de sperto kaj "
 "$recall_name2 ricevis $recall_xp2. Indas alvoki ilin nun ĉar ili ricevos pli "
 "multe da sperto ol ĵus rekrutigitaj."
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:529
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:527
+#, fuzzy
 msgid ""
 "During your tutorial, $recall_name1 gained $recall_xp1 experience points, "
-"and $recall_name2 gained $recall_xp2. You should recall them now so they can "
-"gain more experience, rather than recruiting new ones."
+"and $recall_name2 gained $recall_xp2. You should <i>recall</i> them now so "
+"they can gain more experience, rather than recruiting new Fighters."
 msgstr ""
 "Dum la instruado $recall_name1 ricevis $recall_xp1 poentoj de sperto kaj "
 "$recall_name2 ricevis $recall_xp2. Indas alvoki ilin nun ĉar ili ricevos pli "
 "multe da sperto ol ĵus rekrutigitaj."
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:535
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:533
 msgid ""
 "During your tutorial, $recall_name1 gained $recall_xp1 experience points. "
 "You should recall that unit now, and recruit a second one (which is cheaper "
@@ -1121,50 +1194,51 @@ msgstr ""
 "alvoki tiun unuon kaj varbi la duan (ĉar tio estas malplikosta ol alvoki)."
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:538
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:536
 msgid "RECALL $recall_name1"
 msgstr "ALVOKU $recall_name1"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:539
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:537
 #, fuzzy
-msgid "Right click on the tile north-east of you and recall $recall_name1"
+msgid ""
+"Right click on the tile north-east of you and <i>recall</i> $recall_name1"
 msgstr ""
 "Klaku per la dekstra butono sur la ĉelo sud-oriente de vi kaj alvoku "
 "$recall_name2"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:548
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:546
 #, fuzzy
 msgid ""
-"If any Elvish Fighters from your last battle had experience, we would recall "
-"them to the current battlefield. However, both units don’t have much "
-"experience so it’s more efficient to recruit new ones. Recruit an Elvish "
-"Fighter."
+"If any Elvish Fighters from your last battle had experience, we would "
+"<i>recall</i> them to the current battlefield. However, your veterans gained "
+"no experience so it’s cheaper to recruit new units instead. Recruit an "
+"Elvish Fighter."
 msgstr ""
 "Se iu Elfo Batalanto de via lasta batalo havus sperton ni povus alvoki ĝin: "
 "tamen ili ne havas, do malplikoste estas varbi novajn. Rekrutigu Elfan "
 "Batalanton."
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:551
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:549
 #, fuzzy
 msgid ""
-"If you had any experienced units alive from your last battle we would recall "
-"them. Instead we must recruit a new Elvish Fighter."
+"If you had any experienced units alive from your last battle we would "
+"<i>recall</i> them. Instead we must recruit some new Elvish Fighters."
 msgstr ""
 "Se vi havus spertajn unuojn, kiuj restis vivaj, ni povus alvoki ilin, "
 "anstataŭ ni devas varbi novan Elfan Batalanton."
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:554
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:810
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:853
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:552
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:808
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:851
 msgid "Elvish Fighter"
 msgstr "Elfa Batalanto"
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:555
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:553
 #, fuzzy
 msgid "Right click on the tile north-east of you and recruit an Elvish Fighter"
 msgstr ""
@@ -1172,30 +1246,30 @@ msgstr ""
 "Elfan Batalanton"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:595
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:593
 #, fuzzy
 msgid "No! I said recruit an Elvish <i>Shaman</i>! Now try again..."
 msgstr "Ne! Mi diris varbi Elfan Ŝamanon! Nun provu denove..."
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:604
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:602
 #, fuzzy
 msgid ""
-"The Shaman is a fairly weak unit but has the ability to heal units around "
-"it. It also has a special attack which slows enemies, halving the damage "
-"they do!"
+"The Shaman is a fairly weak unit, but she has the ability to <i>heal</i> "
+"friendly units around her. She also has a special attack which <i>slows</i> "
+"enemies, halving the damage they do."
 msgstr ""
 "La Ŝamano estas sufiĉe malforta, sed havas kapablon resanigi unuojn ĉe ĝi. "
 "Ĝi ankaŭ havas specialan atakon per kiu malrapidigas malamikojn kaj duonigas "
 "ilian damaĝon!"
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:605
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:603
 msgid "So, should I end my turn now?"
 msgstr "Do, ĉu mi devas fini mian movon nun?"
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:607
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:605
 #, fuzzy
 msgid ""
 "While none of your recruited units can move, you still can. Your five units "
@@ -1207,91 +1281,92 @@ msgstr ""
 "devas pligrandigi enspezon."
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:609
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:607
 msgid "Move Konrad to capture a village"
 msgstr "Movu Konradon por okupi vilaĝon"
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:610
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:608
 msgid "Move Li’sar to capture a village"
 msgstr "Movu Li'sar por okupi vilaĝon"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:627
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:666
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:625
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:664
 #, fuzzy
 msgid "No! I said recruit an Elvish <i>Archer</i>! Now try again..."
 msgstr "Ne! Mi diris varbi Elfan Ŝamanon! Nun provu denove..."
 
 #. [unit]: id=Eowynial, type=Elvish Archer
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:633
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:645
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:631
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:643
 msgid "Eowynial"
 msgstr "Eowynial"
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:649
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:647
 msgid "Shaman"
 msgstr "Shamano"
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:650
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:648
 msgid "Recruit an Elvish Shaman to your north"
 msgstr "Varbu Elfan Shamanon al via nordo"
 
 #. [unit]: id=Elriend, type=Elvish Archer
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:672
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:683
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:670
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:681
 msgid "Elriend"
 msgstr "Elrajndo"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:706
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:704
 #, fuzzy
 msgid "No! I said <i>recall</i> $recall_name2|! Now try again..."
 msgstr "Ne! Mi diris ALVOKI $recall_name2|!  Nun provu denove..."
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:715
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:752
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:713
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:750
 msgid "Archer #1"
 msgstr "Pafarkisto #1"
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:716
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:753
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:714
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:751
 msgid "Archer #2"
 msgstr "Pafarkisto #2"
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:718
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:755
-msgid "Recruit two Elvish Archers in tiles to your west"
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:716
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:753
+#, fuzzy
+msgid "Recruit two Elvish Archers in the tiles to your west"
 msgstr "Varbu du Elfajn Pafarkistojn sur okcidentaj ĉeloj"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:731
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:729
 #, fuzzy
 msgid "No! I said recruit an Elvish <i>Fighter</i>! Now try again..."
 msgstr "Ne! Mi diris varbi Elfan BATALANTON! Nun provu denove..."
 
 #. [unit]: id=Golir, type=Elvish Fighter
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:737
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:748
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:735
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:746
 msgid "Golir"
 msgstr "Golir"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:786
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:784
 msgid "No! I said recall $recall_name1, not $recall_name2|! Now try again..."
 msgstr ""
 "Ne! Mi diris alvoki $recall_name1, sed ne $recall_name2|! Nun provu denove..."
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:790
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:788
 #, fuzzy
 msgid ""
 "No! I said <i>recall</i> $recall_name1 from the last battle, not recruit a "
@@ -1301,7 +1376,7 @@ msgstr ""
 "$recruit.language_name|! Nun provu denove..."
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:806
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:804
 #, fuzzy
 msgid "Right click on the tile east of you and recall $recall_name2"
 msgstr ""
@@ -1309,20 +1384,20 @@ msgstr ""
 "$recall_name2"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:807
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:805
 msgid "RECALL $recall_name2"
 msgstr "AVOKU $recall_name2"
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:811
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:854
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:809
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:852
 #, fuzzy
 msgid "Right click on the tile east of you and recruit an Elvish Fighter"
 msgstr ""
 "Klaku per la dekstra butono sur la ĉelo sude de vi kaj varbu Elfan Batalanton"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:834
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:832
 #, fuzzy
 msgid ""
 "$recruit.language_name|? I said <i>recruit</i> a new <i>Elvish Fighter</i>. "
@@ -1333,19 +1408,19 @@ msgstr ""
 
 #. [unit]: id=Elindel, type=Elvish Fighter
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:841
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:852
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:839
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:850
 msgid "Elindel"
 msgstr "Elindel"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:881
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:879
 msgid "You’ve learned well, Konrad! "
 msgstr "Vi lernas bone, Konrado!"
 
 #. [then]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:880
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:882
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:884
 #, fuzzy
 msgid ""
 "The village supports one unit and pays 1 gold per turn. You’re only losing 1 "
@@ -1355,19 +1430,19 @@ msgstr ""
 "perdas nur po 1 monero dum movo."
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:883
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:881
 msgid "You’ve learned well, Li’sar! "
 msgstr "Vi lernas bone, Li'sar!"
 
 #. [then]
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:886
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:884
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1014
 msgid "End your turn"
 msgstr "Finu vian movon"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:892
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:890
 msgid ""
 "You’ve captured all the villages around the keep, but stay near so you can "
 "recruit more units."
@@ -1376,52 +1451,64 @@ msgstr ""
 "pliajn unuojn."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:907
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:905
+#, fuzzy
 msgid ""
-"You should leave the villages near your keep for Konrad to capture, as he "
-"needs to stay nearby to recruit more units anyway."
+"You should leave the villages near your keep for Konrad to capture. He needs "
+"to stay nearby to recruit more units anyway."
 msgstr ""
 "Decas forlasi la vilaĝojn ĉe via defendejo, ĉar Konrado devas esti proksime "
 "por rekrutigi novajn unuojn."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:908
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:906
+#, fuzzy
 msgid ""
-"You should leave the villages near your keep for Li’sar to capture, as she "
+"You should leave the villages near your keep for Li’sar to capture. She "
 "needs to stay nearby to recruit more units anyway."
 msgstr ""
 "Decas forlasi la vilaĝojn ĉe via defendejo, ĉar Li'sar devas esti proksime "
 "por rekrutigi novajn unuojn."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:914
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:912
 #, fuzzy
-msgid "Orcs have no ranged attack, so use your archers against them."
+msgid "Orcish Grunts have no ranged attacks, so use your archers against them."
 msgstr ""
 "Orkoj ne havas distancan atakon, do uzu viajn pafarkistojn kontraŭ ili."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:917
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:914
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1041
 #, fuzzy
-msgid ""
-"Attack the orc with an Archer\n"
-"(move mouse over units to see description on right)"
-msgstr ""
-"Ataku la Orkon per via Akpafisto (movu muson sur la unuo por vidi priskribon "
-"dekstre)"
+msgid "Attack the orc with an Archer"
+msgstr "Ataku la Orkon per Pafarkisto"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:925
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:915
+msgid "<big>Unit Summaries</big>"
+msgstr ""
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:916
+msgid ""
+"\n"
+"To review the capabilities of any unit—including an enemy—hover the mouse "
+"over it, and you will see a unit summary on the right of the screen"
+msgstr ""
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:924
 #, fuzzy
 msgid ""
 "Excellent. Elves are well-protected in the forest. There’s only a 30% chance "
-"of hitting an Elvish Archer in forests."
+"of hitting an Elvish Archer in that tile."
 msgstr ""
 "Perfekte. Elfoj estas bone defendataj en la arbaro: oni havas nur 30% ŝancon "
 "por trafi Elfan Pafarkiston en arbaro."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:934
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:933
 #, fuzzy
 msgid ""
 "It’s very dangerous to stand in water when there are enemies about! Your "
@@ -1432,34 +1519,40 @@ msgstr ""
 "havas 80% ŝancon esti damaĝita kiam Orko atakos responde! Malfaru!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:940
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:939
 #, fuzzy
 msgid "Attack the orc with the other Archer"
 msgstr "Ataku la Orkon per la alia Pafarkisto"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:952
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:951
 #, fuzzy
 msgid "Fighter to HERE"
 msgstr "Batalanton ĉi tien"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:953
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:952
 #, fuzzy
 msgid ""
-"Your other units cannot reach that orc this turn. Send a Fighter to the "
-"village to the far east. It will take two turns to reach it."
+"Your other units cannot reach the orc this turn. Send a Fighter to the "
+"village in the far east of the map. It will take two turns to reach it."
 msgstr ""
 "Viaj aliaj unuoj ne povas atingi tiun Orkon dum ĉi tiu movo. Sendu "
 "Batalanton orienten al malproksima vilaĝo: tio okupos du movojn."
 
 #. [event]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:953
+msgid "<big>Long-distance Movement</big>"
+msgstr ""
+
+#. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:954
 #, fuzzy
 msgid ""
+"\n"
 "You can order a unit to move for multiple turns by selecting the unit and "
 "clicking on the destination. A number will indicate how many turns it will "
-"take until that unit reaches the tile."
+"take to get there."
 msgstr ""
 "Vi povas devigi unuon moviĝi dum multaj movoj: elektu unuon kaj klaku celon. "
 "Vi vidos (2) se bezonas du movojn por atingi ĝin."
@@ -1504,7 +1597,8 @@ msgstr "Mi ne havas monon por varbi!"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1001
-msgid "This is often a problem, which is why owning villages is important."
+#, fuzzy
+msgid "That is often a problem, which is why owning villages is important."
 msgstr "Tio estas ofta problemo, tial posedo de vilaĝoj estas grava."
 
 #. [then]
@@ -1549,18 +1643,12 @@ msgid ""
 "No. Once you move close to an enemy unit, you are in its <i>Zone of Control</"
 "i> and cannot move further that turn.\n"
 "To move your troops onto that island without wading slowly through the "
-"water, you’ll have to kill him."
+"water, you’ll have to kill the Grunt."
 msgstr ""
 "Ne: apenaŭ vi trafas malamikan unuon vi estas en tiel nomata 'Kontrolata "
 "Zono' kaj ne povas plu moviĝi dum la movo.\n"
 "Por movi vian armeon al la insulo sen malrapida travado de akvo vi devas "
 "mortigi lin."
-
-#. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1041
-#, fuzzy
-msgid "Attack the orc with an Archer"
-msgstr "Ataku la Orkon per Pafarkisto"
 
 #. [then]
 #. [event]
@@ -1585,8 +1673,8 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1073
 #, fuzzy
 msgid ""
-"Yes. If your Shaman stands just behind that unit on the bridge, it will heal "
-"it at the beginning of the next turn."
+"Yes. If your Shaman stands just behind that unit on the bridge, she will "
+"heal it at the beginning of the next turn."
 msgstr ""
 "Jes. Se via Ŝamano staras tuj malantaŭ unuo sur la ponto, ĝi resanigos la "
 "unuon komence de sekvanta movo."
@@ -1622,40 +1710,51 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1143
 #, fuzzy
 msgid ""
-"Don’t forget about your fighter in the east; you can move him south to that "
+"Don’t forget about your Fighter in the east; you can move him south to that "
 "last village near the channel."
 msgstr ""
 "Ne forgesu ke vi havas batalanton oriente: vi povas movi lin suden por okupi "
 "lastan vilaĝon ĉe la kanalo."
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1149
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1148
 #, fuzzy
 msgid ""
-"We need to take that village, otherwise they will take it next turn! Move "
-"your wounded unit onto the village so it can heal, then kill that orc!"
+"We need to occupy that village, otherwise they will take it next turn! Move "
+"a unit into the village to stop the orcs capturing it. Whichever unit you "
+"choose will benefit from the village’s healing, too."
 msgstr ""
 "Necesas kapti tiun vilaĝon ĉar alimaniere ili faros tion dum sekva movo. "
 "Movu vian vunditan unuon por ke ĝi tie resaniĝu kaj poste mortigu tiun Orkon!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1161
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1160
 #, fuzzy
 msgid ""
-"Careful! It is now nighttime. Orcs are <i>chaotic</i>, meaning their attacks "
-"are 25% stronger at night and 25% weaker in the day. You are <i>lawful</i>: "
-"stronger by day. Elves are <i>neutral</i>: unaffected by night and day."
+"Careful! It is now nighttime. Orcs are <i>chaotic</i>, which means their "
+"attacks are now 25% stronger. By day, their attacks are 25% weaker, which is "
+"a noticeable difference. You are <i>lawful</i>: stronger by day and weaker "
+"at night. Your elvish warriors are <i>neutral</i>: unaffected by the time of "
+"day."
 msgstr ""
 "Atenton! Nun estas nokto. Orkoj estas kaosemaj: ili estas 25% pli fortaj "
 "nokte kaj 25% malpli fortaj tage. Vi estas leĝema: pli forta dum tago. Elfoj "
 "estas neŭtralaj: por ili ne estas diferenco inter tago kaj nokto."
 
 #. [event]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1161
+#, fuzzy
+msgid "<big>Time of Day</big>"
+msgstr "*Bonvenon al Vesnot"
+
+#. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1162
 #, fuzzy
 msgid ""
+"\n"
 "After this dialog, hold the mouse over the landscape image below the minimap "
-"on the right to see a description of the time of day."
+"on the right. This brings up a description of the time of day, showing who "
+"has the advantage."
 msgstr ""
 "Post la mesaĝo direktu muson dekstren sur la bildon malsupre de la mapo por "
 "vidi priskribon pri tempoj de tago."
@@ -1665,7 +1764,8 @@ msgstr ""
 #, fuzzy
 msgid ""
 "Remember to retreat your wounded units to villages. Healers can only heal 4 "
-"hitpoints at a time, while villages can heal 8 (the maximum for any unit)."
+"hitpoints at a time, while villages can heal 8 (the maximum healing for any "
+"unit)."
 msgstr ""
 "Memoru revenigi viajn vunditajn unuojn al vilaĝoj. Kuracantoj povas resanigi "
 "nur po 4 batpoentojn, vilaĝoj povas resanigi po 8."
@@ -1686,13 +1786,20 @@ msgstr ""
 "arbaron, estos malfacile forpeli ilin de tie!"
 
 #. [event]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1183
+msgid "<big>Tracking Unused Units</big>"
+msgstr ""
+
+#. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1184
 #, fuzzy
 msgid ""
-"You can make sure you’ve used all your units each turn by pressing <b>n</b> "
-"to automatically select the next unit. <b>Space</b> will indicate a unit is "
-"finished.\n"
-"When <b>n</b> no longer selects a new unit, you can end your turn."
+"\n"
+"You can ensure you use all your troops by pressing <b>n</b> to step from one "
+"unit to the next. If you press <b>space</b>, you can mark the currently "
+"selected unit as having finished its turn, which stops you moving it by "
+"accident later on. When <b>n</b> no longer selects a new unit, it’s safe to "
+"end your turn."
 msgstr ""
 "Vi povas certiĝii ke vi uzis ĉiujn viajn unuojn dum la movo: premu 'n' por "
 "la sekvonta unuo, 'SPACO'n por fini movon de la unuo.\n"
@@ -1700,26 +1807,36 @@ msgstr ""
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1189
-#, fuzzy
-msgid ""
-"You only need to defeat the leader to win (see <b>Main Menu</b>-"
-"><b>Objectives</b>)."
+msgid "<big>Victory Conditions</big>"
 msgstr ""
-"Por gajni vi bezonas nur mortigi la gvidanton de kontraŭuloj: rigardu Ĉefan "
-"Menuon->Celoj."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1194
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1190
+msgid ""
+"\n"
+"In this scenario, you only need to defeat the orc leader to win. (Victory "
+"conditions for a scenario are given under <b>Scenario Objectives</b> in the "
+"<b>Main Menu</b>)."
+msgstr ""
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1195
+msgid "<big>Recruit the Right Unit Types</big>"
+msgstr ""
+
+#. [event]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1196
 #, fuzzy
 msgid ""
+"\n"
 "Remember to recruit troops useful for the situation. Archers are "
-"particularly effective against Grunts, Wolf Riders and their leader."
+"particularly effective against Grunts, Wolf Riders and the orcish leader."
 msgstr ""
 "Memoru rekrutigi pli da militunoj ol estas bezonate: Pafarkistoj estas "
 "aparte efektivaj kontraŭ Gruntemuloj, Luprajdantoj kaj ilia Gvidanto."
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1212
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1214
 #, fuzzy
 msgid ""
 "Stay near the keep! You need to be on a keep to recruit more units, and I "
@@ -1729,7 +1846,7 @@ msgstr ""
 "la gvidanto de Orkoj permesos uzi la sian!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1226
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1228
 #, fuzzy
 msgid ""
 "Their leader has moved into that village! He’s not as stupid as I thought. "
@@ -1739,7 +1856,7 @@ msgstr ""
 "orko resaniĝas dum ĉiu movo kaj havas bonan defendon."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1237
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1239
 #, fuzzy
 msgid ""
 "That unit has captured our village! You’d better get him out; it heals him "
@@ -1749,7 +1866,7 @@ msgstr ""
 "resaniĝas dum ĉiu movo kaj havas bonan defendon."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1249
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1251
 msgid ""
 "Using me to attack is risky! I can slow the opponent with my ranged attack, "
 "but I hope you have a plan if I miss!"
@@ -1758,51 +1875,62 @@ msgstr ""
 "distanca atako, sed mi esperas ke vi ankaŭ havas planon se mi maltrafos!"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1285
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1301
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1287
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1303
 #, fuzzy
 msgid ""
 "You are close to killing their leader! The unit who finishes him will gain "
-"16 experience points because he is level 2. Choose your unit carefully!"
+"16 experience points because he is second level. Choose your attacking unit "
+"carefully!"
 msgstr ""
 "Vi estas proksime al mortigo de ilia gvidanto! La unuo kiu neniigos lin "
 "ricevos 16 poentojn da sperto, ĉar gvidanto havas la 2-an nivelon. Elektu "
 "vian unuon zorgeme."
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1350
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1352
 #, fuzzy
 msgid ""
 "We will miss $deadguy.name| because he had $deadguy.experience experience "
-"points, meaning he would have advanced to level 2 soon."
+"points. He would have advanced to second level soon."
 msgstr ""
 "Ni perdis $deadguy.user_description|, kaj li havis $deadguy.experience "
 "poentoj da sperto, tio signifas ke li baldaŭ povus pligrandigi nivelon ĝis "
 "la 2."
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1353
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1355
 #, fuzzy
 msgid ""
 "We will miss $deadguy.name| because she had $deadguy.experience experience "
-"points, meaning she would have advanced to level 2 soon."
+"points. She would have advanced to second level soon."
 msgstr ""
 "Ni perdis $deadguy.user_description|, kaj li havis $deadguy.experience "
 "poentoj da sperto, tio signifas ke li baldaŭ povus pligrandigi nivelon ĝis "
 "la 2."
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1364
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1372
 #, fuzzy
 msgid ""
-"We will miss $deadguy.name|, but it’s better than one of our experienced "
-"troops dying!"
+"We will miss $deadguy.name|, but at least he was not one of our experienced "
+"troops!"
+msgstr ""
+"Ni perdis $deadguy.user_description|, sed tio estas pli bona ol se mortus iu "
+"el niaj spertaj militistoj!"
+
+#. [else]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1375
+#, fuzzy
+msgid ""
+"We will miss $deadguy.name|, but at least she was not one of our experienced "
+"troops!"
 msgstr ""
 "Ni perdis $deadguy.user_description|, sed tio estas pli bona ol se mortus iu "
 "el niaj spertaj militistoj!"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1377
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1390
 msgid ""
 "Losing a healer hurts all the troops! Keep them out of the enemy’s reach!"
 msgstr ""
@@ -1810,11 +1938,17 @@ msgstr ""
 "viajn militistojn!"
 
 #. [then]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1378
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1391
+msgid "<big>Tracking Enemy Movement</big>"
+msgstr ""
+
+#. [then]
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1392
 #, fuzzy
 msgid ""
+"\n"
 "You can see where an enemy can reach by moving the mouse over them. You can "
-"see all the possible enemy moves at once with the <b>Show Enemy Moves</b> "
+"see all possible enemy moves at once with the <b>Show Enemy Moves</b> "
 "command from the <b>Actions</b> menu."
 msgstr ""
 "Vi povas vidi kien kontraŭuloj povas atingi movante muson sur ili. Vi povas "
@@ -1822,16 +1956,17 @@ msgstr ""
 "malamikoj' el menuo 'Agoj'."
 
 #. [else]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1382
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1396
 #, fuzzy
 msgid ""
-"Level 2 units are powerful, but not invulnerable! Goodbye, $deadguy.name|."
+"Second level units are powerful, but not invulnerable! Goodbye, $deadguy."
+"name|."
 msgstr ""
 "Unuoj de la 2-a nivelo estas potencaj, sed tamen vundeblaj! Adiaŭ, $deadguy."
 "user_description|."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1397
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1411
 #, fuzzy
 msgid ""
 "Beware of the orc leader: he can do 36 hitpoints of damage at night! Attack "
@@ -1841,7 +1976,7 @@ msgstr ""
 "nokte! Ataku lin per multaj unuoj kune, dum tago."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1417
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1432
 #, fuzzy
 msgid ""
 "Advancing a level has fully healed me!\n"
@@ -1853,7 +1988,7 @@ msgstr ""
 "por ĉiu el la kvar atakoj. Uzu min por forpeli batrezistantajn unuojn."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1426
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1441
 #, fuzzy
 msgid ""
 "female^Advancing a level has fully healed me!\n"
@@ -1865,7 +2000,7 @@ msgstr ""
 "por ĉiu el la kvar atakoj. Uzu min por forpeli batrezistantajn unuojn."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1442
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1457
 #, fuzzy
 msgid ""
 "Advancing a level has fully healed me!\n"
@@ -1879,13 +2014,13 @@ msgstr ""
 "tiam, kiam ili kontaktiĝas kun mi."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1456
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1471
 #, fuzzy
 msgid ""
 "Advancing a level has fully healed me!\n"
 "I am good with both bow and sword, and I have a special ability: "
-"<i>Leadership</i>. Level 1 units around me do 25% more damage, so position "
-"me carefully."
+"<i>Leadership</i>. First level units around me do 25% more damage, so "
+"position me carefully."
 msgstr ""
 "Pligrandigo de nivelo min tute resanigis!\n"
 "Mi bone fartas kun miaj pafarko kaj sabro, kaj mi havas specialan econ: "
@@ -1893,7 +2028,7 @@ msgstr ""
 "lokigu min zorgeme."
 
 #. [message]: speaker=unit
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1471
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1486
 #, fuzzy
 msgid ""
 "Advancing a level has fully healed me!\n"
@@ -1903,20 +2038,20 @@ msgstr ""
 "Mi precipe bonas kun sabro: kvar atakoj donas po ok damaĝojn ĉiu."
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1639
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1654
 #, fuzzy
 msgid "You took too long! We’ll never be rid of these orcs!"
 msgstr "Vi tro longe prokrastis, vi neniam liberiĝos de ĉi tiuj orkoj!"
 
 #. [event]
-#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1657
+#: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1672
 #, fuzzy
 msgid ""
-"You are victorious! You may want to try novice-level campaigns such as: "
-"<i>The South Guard</i>, <i>An Orcish Incursion</i>, <i>A Tale of Two "
-"Brothers</i>, and <i>Heir to the Throne</i>. <i>The South Guard</i> was "
-"specifically designed as a beginner’s campaign. Konrad, Li’sar and Delfador "
-"are characters from <i>Heir to the Throne</i>."
+"You have beaten the orcs! You may want to try some novice-level campaigns "
+"next, such as: <i>The South Guard</i>, <i>An Orcish Incursion</i>, <i>A Tale "
+"of Two Brothers</i>, or <i>Heir to the Throne</i>. <i>The South Guard</i> "
+"was specifically designed as a beginner’s campaign. Konrad, Li’sar and "
+"Delfador are characters from <i>Heir to the Throne</i>."
 msgstr ""
 "Vi venkis kontraŭ la Orkoj. Poste vi povos provi iun kampanjon kun Komecanta "
 "nivelo, exemple la Suda Gardisto, Du Fratoj aŭ Heredanto de la Trono. La "
@@ -1970,6 +2105,67 @@ msgstr ""
 #: data/campaigns/tutorial/units/Quintain.cfg:22
 msgid "flail"
 msgstr "draŝilo"
+
+#~ msgid "Wesnoth Tutorial"
+#~ msgstr "Vesnot Instruado"
+
+#~ msgid ""
+#~ "\n"
+#~ "For this tutorial, you are playing Konrad. "
+#~ msgstr ""
+#~ "\n"
+#~ "Dum ĉi tiu instruado vi ludos Konradon. "
+
+#~ msgid ""
+#~ "\n"
+#~ "For this tutorial, you are playing Li’sar. "
+#~ msgstr ""
+#~ "\n"
+#~ "Dum ĉi tiu instruado vi ludos Li'sar."
+
+#~ msgid "HERE"
+#~ msgstr "ĈI TIE"
+
+#~ msgid "Click on the End Turn button"
+#~ msgstr "Klaku la butonon 'Fino de Movo'"
+
+#, fuzzy
+#~ msgid ""
+#~ " Now, Konrad, I will leave you with more dummies to practice on! After "
+#~ "that, we have real work to do..."
+#~ msgstr ""
+#~ "Nun, Konrado, mi lasas vin kun pluaj manekenoj por praktiki. Post tio vi "
+#~ "havos realan laboron..."
+
+#, fuzzy
+#~ msgid ""
+#~ " Now, Li’sar, I will leave you with more dummies to practice on! After "
+#~ "that, we have real work to do..."
+#~ msgstr ""
+#~ "Nun, Li'sar, mi lasas vin kun pluaj por ke vi praktiku!. Post tio vi "
+#~ "havos realan laboron..."
+
+#~ msgid "SHALLOW"
+#~ msgstr "MALPROFUNDA"
+
+#~ msgid "DEEP"
+#~ msgstr "PROFUNDA"
+
+#, fuzzy
+#~ msgid ""
+#~ "Attack the orc with an Archer\n"
+#~ "(move mouse over units to see description on right)"
+#~ msgstr ""
+#~ "Ataku la Orkon per via Akpafisto (movu muson sur la unuo por vidi "
+#~ "priskribon dekstre)"
+
+#, fuzzy
+#~ msgid ""
+#~ "You only need to defeat the leader to win (see <b>Main Menu</b>-"
+#~ "><b>Objectives</b>)."
+#~ msgstr ""
+#~ "Por gajni vi bezonas nur mortigi la gvidanton de kontraŭuloj: rigardu "
+#~ "Ĉefan Menuon->Celoj."
 
 #, fuzzy
 #~ msgid ""
