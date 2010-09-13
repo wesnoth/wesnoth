@@ -151,8 +151,10 @@ def formaltype(f):
         f = f[1:]
     if f == "SIDE" or f.endswith("_SIDE"):
         ftype = "side"
-    elif f in ("SIDE", "X", "Y", "RED", "GREEN", "BLUE", "TURN", "PROB", "LAYER", "TIME", "DURATION") or f.endswith("NUMBER") or f.endswith("AMOUNT") or f.endswith("PERCENTAGE") or f.endswith("COST") or f.endswith("RADIUS") or f.endswith("_X") or f.endswith("_Y") or f.endswith("_INCREMENT") or f.endswith("_FACTOR") or f.endswith("_TIME") or f.endswith("_SIZE"):
+    elif f in ("SIDE", "X", "Y", "RED", "GREEN", "BLUE", "TURN", "PROB", "LAYER", "TIME", "DURATION") or f.endswith("NUMBER") or f.endswith("AMOUNT") or f.endswith("COST") or f.endswith("RADIUS") or f.endswith("_X") or f.endswith("_Y") or f.endswith("_INCREMENT") or f.endswith("_FACTOR") or f.endswith("_TIME") or f.endswith("_SIZE"):
         ftype = "numeric"
+    elif f.endswith("PERCENTAGE"):
+        ftype = "percentage"
     elif f in ("POSITION",) or f.endswith("_POSITION") or f == "BASE":
         ftype = "position"
     elif f.endswith("_SPAN"):
@@ -169,7 +171,7 @@ def formaltype(f):
         ftype = "terrain_pattern"
     elif f.startswith("TERRAIN") or f.endswith("TERRAIN"):
         ftype = "terrain_code"
-    elif f in ("NAME", "VAR", "IMAGESTEM", "ID", "FLAG", "BUILDER") or f.endswith("_NAME") or f.endswith("_ID"):
+    elif f in ("NAME", "NAMESPACE", "VAR", "IMAGESTEM", "ID", "FLAG", "BUILDER") or f.endswith("_NAME") or f.endswith("_ID") or f.endswith("_VAR"):
         ftype = "name"
     elif f in ("ID_STRING", "NAME_STRING", "DESCRIPTION"):
         ftype = "optional_string"
@@ -183,7 +185,7 @@ def formaltype(f):
         ftype = "filter"
     elif f == "WML" or f.endswith("_WML"):
         ftype = "wml"
-    elif f in ("AFFIX", "POSTFIX") or f.endswith("AFFIX"):
+    elif f in ("AFFIX", "POSTFIX", "ROTATION") or f.endswith("AFFIX"):
         ftype = "affix"
     # The regexp case avoids complaints about some wacky terrain macros.
     elif f.endswith("VALUE") or re.match("[ARS][0-9]", f):
@@ -198,6 +200,8 @@ def actualtype(a):
     # Deduce the type of the actual
     if a.isdigit() or a.startswith("-") and a[1:].isdigit():
         atype = "numeric"
+    elif re.match(r"0\.[0-9]+\Z", a):
+        atype = "percentage"
     elif re.match(r"-?[0-9]+,-?[0-9]+\Z", a):
         atype = "position"
     elif re.match(r"([0-9]+\-[0-9]+,?|[0-9]+,?)+\Z", a):
@@ -246,7 +250,7 @@ def argmatch(formals, actuals):
             pass
         elif atype in ("numeric", "position") and ftype == "span":
             pass
-        elif atype in ("shortname", "name", "empty") and ftype == "affix":
+        elif atype in ("shortname", "name", "empty", "stringliteral") and ftype == "affix":
             pass
         elif atype in ("shortname", "name", "stringliteral") and ftype == "string":
             pass
@@ -259,6 +263,8 @@ def argmatch(formals, actuals):
         elif atype in ("terrain_code", "shortname", "name") and ftype == "terrain_pattern":
             pass
         elif atype in ("string", "shortname", "name") and ftype == "types":
+            pass
+        elif atype in ("numeric", "percentage") and ftype == "percentage":
             pass
         elif atype == "range" and ftype == "name":
             pass
