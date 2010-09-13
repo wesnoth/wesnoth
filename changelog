@@ -328,6 +328,7 @@ Version 1.9.0:
    * Added the whiteboard planning system (GSoC project), see release notes for details.
    * Allowed viewing terrain defense for the selected unit outside of your turn.
  * WML Engine:
+   * Added wml action tag: [move_unit]
    * Deprecated [set_variable]'s random key, use rand instead
    * Renamed [unit][status] healable to unhealable so it can default to 'no'
    * Added 'side X turn refresh' and 'side X turn Y refresh' events
