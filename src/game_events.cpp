@@ -1857,25 +1857,6 @@ typedef boost::scoped_ptr<recursion_preventer> recursion_preventer_ptr;
 
 WML_HANDLER_FUNCTION(kill, event_info, cfg)
 {
-	bool secondary_unit = cfg.has_child("secondary_unit");
-	game_events::entity_location killer_loc(map_location(0, 0));
-	if(cfg["fire_event"].to_bool() && secondary_unit)
-	{
-		secondary_unit = false;
-		for(unit_map::const_unit_iterator unit = resources::units->begin();
-			unit != resources::units->end(); ++unit) {
-				if(game_events::unit_matches_filter(*unit, cfg.child("secondary_unit")))
-				{
-					killer_loc = game_events::entity_location(*unit);
-					secondary_unit = true;
-					break;
-				}
-		}
-		if(!secondary_unit) {
-			WRN_NG << "failed to match [secondary_unit] in [kill] with a single on-board unit\n";
-		}
-	}
-
 	// Use (x,y) iteration, because firing events ruins unit_map iteration
 	for (map_location loc(0,0); loc.x < resources::game_map->w(); ++loc.x)
 	{
@@ -1886,9 +1867,6 @@ WML_HANDLER_FUNCTION(kill, event_info, cfg)
 			{
 				bool fire_event = false;
 				game_events::entity_location death_loc(*un);
-				if(!secondary_unit) {
-					killer_loc = game_events::entity_location(*un);
-				}
 				if (cfg["fire_event"].to_bool())
 				{
 					// Prevent infinite recursion of 'die' events
@@ -1908,7 +1886,7 @@ WML_HANDLER_FUNCTION(kill, event_info, cfg)
 					}
 				}
 				if (fire_event) {
-					game_events::fire("last breath", death_loc, killer_loc);
+					game_events::fire("last breath", death_loc, death_loc);
 				}
 				if (cfg["animate"].to_bool()) {
 					resources::screen->scroll_to_tile(loc);
@@ -1918,7 +1896,7 @@ WML_HANDLER_FUNCTION(kill, event_info, cfg)
 				}
 				if (fire_event)
 				{
-					game_events::fire("die", death_loc, killer_loc);
+					game_events::fire("die", death_loc, death_loc);
 					un = resources::units->find(death_loc);
 					if (un != resources::units->end() && death_loc.matches_unit(*un)) {
 						resources::units->erase(un);
