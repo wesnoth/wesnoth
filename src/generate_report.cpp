@@ -423,7 +423,8 @@ report generate_report(TYPE type,
 				<< lang_type << "</span>\n";
 
 			tooltip << _("Weapon range: ") << "<b>" << range << "</b>\n"
-				<< _("Damage type: ")  << "<b>" << lang_type << "</b>\n";
+				<< _("Damage type: ")  << "<b>" << lang_type << "</b>\n"
+				<< _("Damage: ") << "\n";
 
 			// Find all the unit types on the map, and
 			// show this weapon's bonus against all the different units.
@@ -439,14 +440,26 @@ report generate_report(TYPE type,
 				     !u_it->invisible(loc)))
 				{
 					seen_units.insert(u_it->type_id());
-					int resistance = u_it->resistance_against(at, false, loc) - 100;
+					int resistance = u_it->resistance_against(at, false, loc);
 					resistances[resistance].insert(u_it->type_name());
 				}
 			}
 
+			// reset damage_multiplier
+			damage_multiplier = 100;
+
+			// reset ToD bonus to a dummy location (to get global ToD)
+			tod_bonus = combat_modifier(map_location::null_location, u->alignment(), u->is_fearless());
+			damage_multiplier += tod_bonus;
+
+			//ignore leadership bonus
+
 			// use reverse order to show higher damage bonus first
 			for(std::map<int,std::set<std::string> >::reverse_iterator resist = resistances.rbegin(); resist != resistances.rend(); ++resist) {
-				tooltip << signed_percent(resist->first) << " " << _("vs") << " ";
+				int damage = round_damage(base_damage, damage_multiplier * resist->first, damage_divisor);
+				tooltip << "<b>" << damage << "</b>  "
+						<< "<i>(" << signed_percent(resist->first-100) << ")</i> "
+						<< _("vs") << " ";
 				for(std::set<std::string>::const_iterator i = resist->second.begin(); i != resist->second.end(); ++i) {
 					if(i != resist->second.begin()) {
 						tooltip << ", ";
