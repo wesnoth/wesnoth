@@ -3,19 +3,18 @@
 #  Andrius Štikonas <stikonas@gmail.com>, 2007-2010.
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.8\n"
+"Project-Id-Version: Battle for Wesnoth 1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-09-13 11:01+0200\n"
+"POT-Creation-Date: 2010-09-13 11:11+0200\n"
 "PO-Revision-Date: 2010-01-01 00:00+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
-"Language: lt\n"
+"Language: Lithuanian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10==1 && n%100!=11 ? 1 : n"
 "%10>=2 && (n%100<10 || n%100>=20) ? 2 : 3);\n"
-"X-Generator: Lokalize 1.1\n"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:5
@@ -51,7 +50,7 @@ msgstr "Animuoti žemėlapį"
 #: data/advanced_preferences.cfg:47
 #, fuzzy
 msgid "Local time of day light"
-msgstr "Pradžioje atsitiktinai parinkti dienos laiką"
+msgstr "Paros laikas"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:48
@@ -113,8 +112,9 @@ msgstr "Uždrausti autoišsaugojimus."
 
 #. [ai]: id=testing_ai_default
 #: data/ai/ais/testing_ai_default.cfg:5
+#, fuzzy
 msgid "Multiplayer_AI^RCA AI"
-msgstr "RCA DI"
+msgstr "Daug žaidėjų"
 
 #. [time]: id=underground
 #. [illuminated_time]: id=underground_illum
@@ -350,7 +350,7 @@ msgstr "Kinų vertimas"
 #. [about]
 #: data/core/about.cfg:1308
 msgid "Chinese (Taiwan) Translation"
-msgstr "Kinų (Taivanio) vertimas"
+msgstr "Kinų (Taivano) vertimas"
 
 #. [about]
 #: data/core/about.cfg:1330
@@ -672,7 +672,6 @@ msgstr "Apžvalga"
 
 #. [topic]: id=introduction_topic
 #: data/core/help.cfg:129
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -685,11 +684,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Mūšis dėl Vesnoto yra ėjimais pagrįstas fantastinis strateginis žaidimas, iš "
-"dalies neįprastas tarp šiuolaikinių strateginių žaidimų. Kol kiti žaidimai "
-"siekia sudėtingumo, Mūšis dėl Vesnoto siekia paprastumo, tačiau iš šių "
-"paprastų taisyklių atsiranda strategijų gausumas, darantis žaidimą lengvai "
-"išmokstamą, bet sunkų puikiai įvaldyti."
+"<italic>text='Mūšis dėl Vesnoto'</italic> yra ėjimais pagrįstas fantastinis "
+"strateginis žaidimas, iš dalies neįprastas tarp šiuolaikinių strateginių "
+"žaidimų. Kol kiti žaidimai siekia sudėtingumo, Mūšis dėl Vesnoto siekia "
+"paprastumo, tačiau iš šių paprastų taisyklių atsiranda strategijų gausumas, "
+"darantis žaidimą lengvai išmokstamą, bet sunkų puikiai įvaldyti."
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:141
@@ -708,7 +707,6 @@ msgstr ""
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:144
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -726,9 +724,9 @@ msgstr ""
 "<italic>text=Apmokymas</italic>. Tai nuves jus į interaktyvų apmokymą, kuris "
 "išmokys jus Vesnoto pagrindų. Po to, rekomenduojama, kad pirmiausia "
 "sužaistumėte kampaniją Sosto įpėdinis – spauskite <italic>text=Kampanija</"
-"italic>, tada <italic>text='Sosto įpėdinis'</italic>. Kadangi Mūšis dėl "
-"Vesnoto gali būti pakankamai iššaukiančiu, galite norėti pradėti "
-"<italic>text=Lengvu</italic> sudėtingumu."
+"italic>, tada <italic>text='Sosto įpėdinis'</italic>. Kadangi "
+"<italic>text='Mūšis dėl Vesnoto'</italic> gali būti pakankamai iššaukiančiu, "
+"galite norėti pradėti <italic>text=Lengvu</italic> sudėtingumu."
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:147
@@ -799,7 +797,6 @@ msgstr ""
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:164
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -811,10 +808,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Kai laimite scenarijų, žemėlapis papilkės ir mygtukas „Baigti ėjimą“ "
-"pasikeis į „Baigti scenarijų“. Pieš nuspausdami šį mygtuką, kad tęstumėte, "
-"dabar galite atlikti tokius veiksmus kaip keisti išsaugojimų nustatymus arba "
-"(jei esate daugelio žaidėjų žaidime) kalbėtis su kitais žaidėjais."
+"Kai laimite scenarijų, žemėlapis papilkės ir mygtukas <bold>text='Baigti "
+"ėjimą'</bold> pasikeis į <bold>text='Baigti scenarijų'</bold>. Pieš "
+"nuspausdami šį mygtuką, kad tęstumėte, dabar galite atlikti tokius veiksmus "
+"kaip keisti išsaugojimų nustatymus arba (jei esate daugelio žaidėjų žaidime) "
+"kalbėtis su kitais žaidėjais."
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:171
@@ -1290,6 +1288,7 @@ msgstr "Patirtis ir Paaukštinimai"
 
 #. [topic]: id=experience_and_advancement
 #: data/core/help.cfg:296
+#, fuzzy
 msgid ""
 "If both units survive a combat, they gain a number of experience points "
 "equal to the level of the unit they’re fighting. If a unit kills another in "
@@ -1497,7 +1496,6 @@ msgstr "Licencija"
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:358
-#, fuzzy
 msgid ""
 "Most units have two traits. However, Undead units are assigned the single "
 "trait <italic>text='Undead'</italic>, and Woses do not receive any traits. "
@@ -1505,9 +1503,10 @@ msgid ""
 "usually randomly assigned to a unit when it is recruited."
 msgstr ""
 "Dauguma dalinių turi du bruožus. Tačiau nemirėlių daliniams priskirtas "
-"vienintelis bruožas „Nemirėlis“, o miškiniai neturi jokių bruožų. Bruožai "
-"yra pakeitimai, kurie šiek tiek pakeičia dalinio atributus. Jie paprastai "
-"atsitiktinai priskiriami daliniui, kai jis yra pasamdomas."
+"vienintelis bruožas <italic>text='Nemirėlis'</italic>, o miškiniai neturi "
+"jokių bruožų. Bruožai yra pakeitimai, kurie šiek tiek pakeičia dalinio "
+"atributus. Jie paprastai atsitiktinai priskiriami daliniui, kai jis yra "
+"pasamdomas."
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:360
@@ -1718,7 +1717,6 @@ msgstr ""
 
 #. [topic]: id=traits_mechanical
 #: data/core/help.cfg:427
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1728,9 +1726,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Mechaniniai daliniai paprastai turi vienintelį bruožą „Mechaninis“. Kadangi "
-"mechaniniai daliniai iš tikrųjų neturi gyvybės, išsiurbimas, nuodai ir maras "
-"jų neveikia."
+"Mechaniniai daliniai paprastai turi vienintelį bruožą "
+"<italic>text='Mechaninis'</italic>. Kadangi mechaniniai daliniai iš tikrųjų "
+"neturi gyvybės, išsiurbimas, nuodai ir maras jų neveikia."
 
 #. [topic]: id=traits_dextrous
 #: data/core/help.cfg:432
@@ -1808,7 +1806,6 @@ msgstr "Lėtas"
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:457
-#, fuzzy
 msgid "Slow units have −1 movement but 5% more hitpoints."
 msgstr ""
 "Lėti daliniai turi 1 judėjimo tašku mažiau, bet 5% daugiau gyvybės taškų."
@@ -2830,12 +2827,12 @@ msgstr ""
 #. [dummy]: id=feeding
 #: data/core/macros/abilities.cfg:497
 msgid "feeding"
-msgstr "maitinimas"
+msgstr "maitinasi"
 
 #. [dummy]: id=feeding
 #: data/core/macros/abilities.cfg:498
 msgid "female^feeding"
-msgstr "maitinimas"
+msgstr "maitinasi"
 
 #. [dummy]: id=feeding
 #: data/core/macros/abilities.cfg:500
@@ -2844,7 +2841,7 @@ msgid ""
 "This unit gains 1 hitpoint added to its maximum whenever it kills a living "
 "unit."
 msgstr ""
-"Maitinimas:\n"
+"Maitinasi:\n"
 "Šis dalinys gauna 1 gyvybės tašką, pridedamą prie jo maksimalaus, kai jis "
 "užmuša gyvą dalinį."
 
@@ -3586,13 +3583,13 @@ msgstr ""
 "Fadriendelas,Fandelas,Farandiras,Fávynas,Fendelas,Feras,Filmanas,Fiorilas,"
 "Fitrarilas,Forfilas,Fyrionas,Gadriendilas,Gadriengas,Galadrieldoras,"
 "Galáladas,Galálas,Galalitas,Galaras,Galelas,Galelduras,Galelitas,Galémboras,"
-"Galithrariandas,Galolduras,Galulduras,Galuras,Galurionas,Gamboras,Gánas,"
+"Galitrariandas,Galolduras,Galulduras,Galuras,Galurionas,Gamboras,Gánas,"
 "Ganduilas,Garaldoras,Gararilas,Geladas,Gérilas,Gil-Gandelas,Gil-Gangas,"
 "Giomboras,Gitralas,Gitraladas,Gladriendilas,Glalas,Glámboras,Glandilas,"
 "Glarangas,Glararilas,Glilmalas,Glimiras,Glioras,Glólas,Gloldoras,Glómiras,"
 "Glonas,Glulas,Goladas,Goras,Gumboras,Gylas,Gymboras,Gynas,Harariandas,"
 "Háriandas,Hebrilas,Hemiras,Hénduilas,Hilas,Hil-Garionas,Hilmariandas,Hiongas,"
-"Hirionas,Hithrandelas,Horfiladas,Horfindelas,Hundelas,Hymiras,Hyrionas,"
+"Hirionas,Hitrandelas,Horfiladas,Horfindelas,Hundelas,Hymiras,Hyrionas,"
 "Hyvynas,Isadriengas,Isándiras,Isarandelas,Isararas,Iselas,Iséras,"
 "Isilmandelas,Isirionas,Isitaralas,Isólas,Isóndelas,Isóngas,Isorfiladas,"
 "Isorfindiras,Isuvynas,Isyndelas,Legalas,Legaranas,Legémiras,Legérilas,"
@@ -4059,7 +4056,7 @@ msgstr ""
 "Laffalialomdiumas,Landunvonbamas,Lassemistas,Lefnublemdde,Libleddnummas,"
 "Lolmandindelas,Monlamvimdanas,Muldondindalas,Mundionalaflas,Mundumblemdumas,"
 "Munnamdulbonas,Nanmildaldumas,Nunmaldildunas,Orofarnië,Pambedrumne,"
-"Pomtamkomtrobumas,Rithramkamhanas,Tantondernintanas,Temtundembennas,"
+"Pomtamkomtrobumas,Ritramkamhanas,Tantondernintanas,Temtundembennas,"
 "Temtunnongetemas,Tondenkontenkonas,Trūmbadūmas,Tumtentantarunas,"
 "Tumtonnongatumas,Tumtumgamtomtomas,Vonrunmaldinas,Vudadūnoplas"
 
@@ -4071,9 +4068,8 @@ msgstr ""
 
 #. [objective]: condition=lose
 #: data/core/macros/objective-utils.cfg:54
-#, fuzzy
 msgid "Turns run out"
-msgstr "Ėjimai: "
+msgstr "Pasibaigia ėjimai"
 
 #: data/core/macros/objective-utils.cfg:61 data/lua/wml/objectives.lua:100
 msgid "Early finish bonus."
@@ -4088,9 +4084,8 @@ msgid "<small>(early finish bonus)</small>"
 msgstr "<small>(ankstyvo pabaigimo premija)</small>"
 
 #: data/core/macros/objective-utils.cfg:72
-#, fuzzy
 msgid "(early finish bonus)"
-msgstr "Ankstyvo pabaigimo premija."
+msgstr "(ankstyvo pabaigimo premija)"
 
 #: data/core/macros/objective-utils.cfg:76 data/lua/wml/objectives.lua:110
 msgid "No gold carried over to the next scenario."
@@ -4125,9 +4120,8 @@ msgid "Alternative objective:"
 msgstr "Alternatyvus tikslas:"
 
 #: data/core/macros/objective-utils.cfg:99
-#, fuzzy
 msgid "Bonus objective:"
-msgstr "Alternatyvus tikslas:"
+msgstr "Premijinis tikslas:"
 
 #. [message]: speaker=narrator
 #: data/core/macros/scenario-utils.cfg:108
@@ -4141,8 +4135,9 @@ msgstr ""
 #. [time]: id=indoors
 #. [illuminated_time]: id=indoors_illum
 #: data/core/macros/schedules.cfg:70 data/core/macros/schedules.cfg:76
+#, fuzzy
 msgid "Indoors"
-msgstr ""
+msgstr "Netinkama spalva"
 
 #. [time]: id=deep_underground
 #. [illuminated_time]: id=deep_underground_illum
@@ -4763,7 +4758,6 @@ msgstr "Elfai"
 
 #. [race]: id=elf
 #: data/core/units.cfg:118
-#, fuzzy
 msgid ""
 "Compared to humans, elves are somewhat taller, more agile but less sturdy. "
 "They have slightly pointy ears, pale skin and usually blond hair. Few "
@@ -5282,21 +5276,31 @@ msgstr "Košmaras"
 
 #. [language]
 #: data/hardwired/english.cfg:10
+#, fuzzy
 msgid ""
 "Liminal units fight better during twilight while fighting normally during "
 "day and night. \n"
 "\n"
 "Twilight: +25% Damage"
 msgstr ""
+"Chaotiški daliniai geriau kaunasi naktį ir blogiau – dieną.\n"
+"\n"
+"Dieną: −25% žalos\n"
+"Naktį: +25% žalos"
 
 #. [language]
 #: data/hardwired/english.cfg:15
+#, fuzzy
 msgid ""
 "Lawful units fight better during the day, and worse at night.\n"
 "\n"
 "Day: +25% Damage\n"
 "Night: −25% Damage"
 msgstr ""
+"Chaotiški daliniai geriau kaunasi naktį ir blogiau – dieną.\n"
+"\n"
+"Dieną: −25% žalos\n"
+"Naktį: +25% žalos"
 
 #. [language]
 #: data/hardwired/english.cfg:16
@@ -5323,7 +5327,7 @@ msgstr ""
 #. [language]
 #: data/hardwired/english.cfg:23
 msgid "$name's Bridge,$name's Crossing"
-msgstr "$name's tiltas,$name's brasta"
+msgstr "$name tiltas,$name brasta"
 
 #. [language]
 #: data/hardwired/english.cfg:24
@@ -5476,12 +5480,12 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:4 data/hardwired/tips.cfg:132
-#, fuzzy
 msgid "<i>― Great Mage Delfador, 516YW</i>"
-msgstr "- Didysis magas Delfadoras, 516VM"
+msgstr "<i>― Didysis magas Delfadoras, 516VM</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:7
+#, fuzzy
 msgid ""
 "In the 'Actions' menu, you can select 'Show Enemy Moves' to highlight all "
 "possible hexes your adversary can actually move to (assuming your units stay "
@@ -5509,9 +5513,8 @@ msgstr ""
 #: data/hardwired/tips.cfg:184 data/hardwired/tips.cfg:192
 #: data/hardwired/tips.cfg:196 data/hardwired/tips.cfg:200
 #: data/hardwired/tips.cfg:205
-#, fuzzy
 msgid "<i>― The Wesnoth Tactical Guide</i>"
-msgstr "- Vesnoto taktinis gidas"
+msgstr "<i>― Vesnoto taktinis gidas</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:11
@@ -5526,9 +5529,8 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:12
-#, fuzzy
 msgid "<i>― King Konrad, 536YW</i>"
-msgstr "- Karalius Konradas, 536VM"
+msgstr "<i>― Karalius Konradas, 536VM</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:15
@@ -5543,9 +5545,8 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:16 data/hardwired/tips.cfg:124
-#, fuzzy
 msgid "<i>― Memoirs of Gweddry, 627YW</i>"
-msgstr "- Gweddry memuarai, 627VM"
+msgstr "<i>― Gveddrio memuarai, 627VM</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:19
@@ -5573,9 +5574,8 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:28 data/hardwired/tips.cfg:100
-#, fuzzy
 msgid "<i>― High Lord Kalenz, 470YW</i>"
-msgstr "- Didysis valdovas Kalenzas, 470VM"
+msgstr "<i>― Didysis valdovas Kalenzas, 470VM</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:31
@@ -5608,9 +5608,8 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:40
-#, fuzzy
 msgid "<i>― The Wesnoth Community</i>"
-msgstr "- Vesnoto bendruomenė"
+msgstr "<i>― Vesnoto bendruomenė</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:43
@@ -5621,9 +5620,8 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:44
-#, fuzzy
 msgid "<i>― Royal Compendium of Battle Terminology: Volume II, 212YW</i>"
-msgstr "- Mūšio terminologijos karališkoji santrauka – II tomas, 212VM"
+msgstr "<i>― Mūšio terminologijos karališkoji santrauka: II tomas, 212VM</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:47
@@ -5635,9 +5633,8 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:48 data/hardwired/tips.cfg:72
-#, fuzzy
 msgid "<i>― Haldric II, 42YW, from Handbook of Tactical Analysis: Volume I</i>"
-msgstr "- Taktinės analizės vadovas, I tomas – Haldrikas II, 42VM"
+msgstr "<i>― Haldrikas II, 42VM, iš Taktinės analizės vadovo: I tomo</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:51
@@ -5713,10 +5710,9 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:76
-#, fuzzy
 msgid ""
 "<i>― Haldric II, 43YW, from Handbook of Tactical Analysis: Volume II</i>"
-msgstr "- Taktinės analizės vadovas, I tomas – Haldrikas II, 42VM"
+msgstr "<i>― Haldrikas II, 43VM, iš Taktinės analizės vadovo: II tomo</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:79
@@ -5729,6 +5725,7 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:83
+#, fuzzy
 msgid ""
 "Don’t move an injured unit if you don’t have to — let it rest. If a unit "
 "does not move or attack, it will recover two hitpoints at the beginning of "
@@ -5750,9 +5747,8 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:88 data/hardwired/tips.cfg:168
-#, fuzzy
 msgid "<i>― Sir Kaylan, 498YW</i>"
-msgstr "- Seras Kajlanas, 468VM"
+msgstr "<i>― Seras Kajlanas, 498VM</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:91
@@ -5764,9 +5760,8 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:92
-#, fuzzy
 msgid "<i>― Sir Kaylan, 502YW</i>"
-msgstr "- Seras Kajlanas, 502VM"
+msgstr "<i>― Seras Kajlanas, 502VM</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:95
@@ -5812,9 +5807,8 @@ msgstr "Nebijokite atsitraukti ir persigrupuoti; dažnai tai raktas į pergalę.
 
 #. [tip]
 #: data/hardwired/tips.cfg:112
-#, fuzzy
 msgid "<i>― Meneldur, 123YW</i>"
-msgstr "- Menelduras, 123VM"
+msgstr "<i>― Menelduras, 123VM</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:115
@@ -5839,10 +5833,9 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:120 data/hardwired/tips.cfg:128
-#, fuzzy
 msgid ""
 "<i>― Haldric II, 42 YW, from Handbook of Tactical Analysis: Volume I</i>"
-msgstr "- Taktinės analizės vadovas, I tomas – Haldrikas II, 42VM"
+msgstr "<i>― Haldrikas II, 42 VM, iš Taktinės analizės vadovo: I tomo</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:123
@@ -5883,9 +5876,8 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:136
-#, fuzzy
 msgid "<i>― Princess Li’sar, 515YW</i>"
-msgstr "- Princesė Li'sar, 515VM"
+msgstr "<i>― Princesė Li’sar, 515VM</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:139
@@ -5894,6 +5886,7 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:143
+#, fuzzy
 msgid ""
 "If you move a unit, but don’t attack or discover any additional information, "
 "you can undo your move by pressing 'u'."
@@ -5921,9 +5914,8 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:152
-#, fuzzy
 msgid "<i>― The Scroll of Chantal, 516YW</i>"
-msgstr "- Čantal pergamento ritinys, 516VM"
+msgstr "<i>― Čantal pergamento ritinys, 516VM</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:155
@@ -5941,9 +5933,8 @@ msgstr "Paslaptingos atakos labai veiksmingos prieš nemirėlius."
 
 #. [tip]
 #: data/hardwired/tips.cfg:160
-#, fuzzy
 msgid "<i>― Great Sage Dacyn, 626YW</i>"
-msgstr "- Didis išminčius Deisynas, 626VM"
+msgstr "<i>― Didis išminčius Deisynas, 626VM</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:163
@@ -6008,9 +5999,8 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:188
-#, fuzzy
 msgid "<i>― Queen Li’sar, 528YW</i>"
-msgstr "- Karalienė Li'sar, 528VM"
+msgstr "<i>― Karalienė Li’sar, 528VM</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:191
@@ -6072,9 +6062,8 @@ msgid "(%d turns left)"
 msgstr ""
 
 #: data/lua/wml/objectives.lua:112
-#, fuzzy
 msgid "%d%% of gold carried over to the next scenario."
-msgstr "Nė kiek aukso nepernešama į kitą scenarijų."
+msgstr "%d%% aukso pernešta į kitą scenarijų."
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [lua]: id=the_list, id=the_label, id=the_icon, id=ok, id=cancel, id=flip, id=the_image
@@ -6099,7 +6088,7 @@ msgstr ""
 #: data/temp-file_send_data_strings.cfg:12
 msgid "About to upload statistics — Help us make Wesnoth better for you!"
 msgstr ""
-"Ruošiamasi išsiųsti statistiką – Padėkite mums padaryti Vesnotą geresnį jums!"
+"Ruošiamasi išsiųsti statistiką — Padėkite mums padaryti Vesnotą geresnį jums!"
 
 #: data/temp-file_send_data_strings.cfg:13
 msgid "Save my reply and do not ask again"
@@ -6509,9 +6498,8 @@ msgid "Type"
 msgstr "Tipas"
 
 #: src/addon/manager.cpp:809
-#, fuzzy
 msgid "Install dependencies"
-msgstr "Priklausomybės"
+msgstr "Įdiegti priklausomybes"
 
 #: src/addon/manager.cpp:810
 msgid ""
@@ -6918,9 +6906,8 @@ msgid "File I/O Error while reading the game"
 msgstr "Failo I/O klaida, nuskaitant žaidimą"
 
 #: src/game.cpp:963
-#, fuzzy
 msgid "File I/O Error while reading the game: '"
-msgstr "Failo I/O klaida, nuskaitant žaidimą"
+msgstr "Failo I/O klaida, nuskaitant žaidimą: „"
 
 #: src/game.cpp:1061
 msgid "No campaigns are available.\n"
@@ -7010,28 +6997,24 @@ msgid "Name: "
 msgstr "Vardas: "
 
 #: src/generate_report.cpp:101
-#, fuzzy
 msgid "Type: "
-msgstr "Tipas"
+msgstr "Tipas: "
 
 #: src/generate_report.cpp:113 src/help.cpp:1404
 msgid "Race: "
 msgstr "Rasė: "
 
 #: src/generate_report.cpp:136
-#, fuzzy
 msgid "Level: "
-msgstr "Žymė: "
+msgstr "Lygis: "
 
 #: src/generate_report.cpp:138
-#, fuzzy
 msgid "Advances to:"
-msgstr "Tobulėja į: "
+msgstr "Tobulėja į:"
 
 #: src/generate_report.cpp:164
-#, fuzzy
 msgid "Trait: "
-msgstr "Bruožai"
+msgstr "Bruožas: "
 
 #: src/generate_report.cpp:178
 msgid "invisible: "
@@ -7082,9 +7065,8 @@ msgid "Alignment: "
 msgstr ""
 
 #: src/generate_report.cpp:217
-#, fuzzy
 msgid "Ability: "
-msgstr "Gebėjimai: "
+msgstr "Gebėjimas: "
 
 #: src/generate_report.cpp:253
 msgid "Resistances: "
@@ -7099,9 +7081,8 @@ msgid "Experience Modifier: "
 msgstr "Patirties modifikatorius: "
 
 #: src/generate_report.cpp:288
-#, fuzzy
 msgid "Terrain: "
-msgstr "Vietovė"
+msgstr "Vietovė: "
 
 #: src/generate_report.cpp:305
 msgid "maximum^max."
@@ -7112,19 +7093,16 @@ msgid "minimum^min."
 msgstr ""
 
 #: src/generate_report.cpp:310
-#, fuzzy
 msgid "Defense: "
-msgstr "Gynyba"
+msgstr "Gynyba:"
 
 #: src/generate_report.cpp:391
-#, fuzzy
 msgid "Weapon: "
-msgstr "ginklo nuotolis: "
+msgstr "Ginklas: "
 
 #: src/generate_report.cpp:392
-#, fuzzy
 msgid "Damage: "
-msgstr "Žala"
+msgstr "Žala: "
 
 #: src/generate_report.cpp:395
 #, fuzzy
@@ -7132,42 +7110,37 @@ msgid "Base damage: "
 msgstr "Bendra žala"
 
 #: src/generate_report.cpp:397
-#, fuzzy
 msgid "Time of day: "
-msgstr "Paros laikas"
+msgstr "Paros laikas: "
 
 #: src/generate_report.cpp:401
-#, fuzzy
 msgid "Leadership: "
-msgstr "Vadovavimas"
+msgstr "Vadovavimas: "
 
 #: src/generate_report.cpp:405
-#, fuzzy
 msgid "Slowed: "
-msgstr "sulėtintas: "
+msgstr "Sulėtintas: "
 
 #: src/generate_report.cpp:409
-#, fuzzy
 msgid "Attacks: "
-msgstr "Atakuojančiojo"
+msgstr "Atakos: "
 
 #: src/generate_report.cpp:411
 msgid "Base attacks: "
 msgstr ""
 
 #: src/generate_report.cpp:413
+#, fuzzy
 msgid "Swarm: "
-msgstr ""
+msgstr "Pelkė"
 
 #: src/generate_report.cpp:425
-#, fuzzy
 msgid "Weapon range: "
-msgstr "ginklo nuotolis: "
+msgstr "Ginklo nuotolis: "
 
 #: src/generate_report.cpp:426
-#, fuzzy
 msgid "Damage type: "
-msgstr "žalos tipas: "
+msgstr "Žalos tipas: "
 
 #: src/generate_report.cpp:449
 msgid "vs"
@@ -7176,7 +7149,7 @@ msgstr "prieš"
 #: src/generate_report.cpp:468
 #, fuzzy
 msgid "Accuracy :"
-msgstr "% taiklumas"
+msgstr "Taiklumas: "
 
 #: src/generate_report.cpp:473
 msgid "Parry :"
@@ -7463,44 +7436,36 @@ msgid "?"
 msgstr "?"
 
 #: src/loadscreen.cpp:221
-#, fuzzy
 msgid "Initializing user interface"
-msgstr "Paruošiamos komandos"
+msgstr "Paruošiama naudotojo sąsaja"
 
 #: src/loadscreen.cpp:222
-#, fuzzy
 msgid "Loading game configuration"
-msgstr "Įkeliama žaidimo konfigūracija."
+msgstr "Įkeliama žaidimo konfigūracija"
 
 #: src/loadscreen.cpp:223 src/loadscreen.cpp:230
-#, fuzzy
 msgid "Verifying cache"
-msgstr "Tikrinamas podėlis..."
+msgstr "Tikrinamas podėlis"
 
 #: src/loadscreen.cpp:224 src/loadscreen.cpp:231
-#, fuzzy
 msgid "Reading files and creating cache"
-msgstr "Skaitomi failai ir kuriamas podėlis..."
+msgstr "Skaitomi failai ir kuriamas podėlis"
 
 #: src/loadscreen.cpp:225 src/loadscreen.cpp:232
-#, fuzzy
 msgid "Reading unit files"
-msgstr "Skaitomi dalinių failai..."
+msgstr "Skaitomi dalinių failai"
 
 #: src/loadscreen.cpp:226
-#, fuzzy
 msgid "Re-initialize fonts for the current language"
-msgstr "Iš naujo įkeliami šriftai naudojamai kalbai."
+msgstr "Iš naujo įkeliami šriftai naudojamai kalbai"
 
 #: src/loadscreen.cpp:227
-#, fuzzy
 msgid "Searching for installed add-ons"
-msgstr "Ieškoma įdiegtų priedų."
+msgstr "Ieškoma įdiegtų priedų"
 
 #: src/loadscreen.cpp:228
-#, fuzzy
 msgid "Loading title screen"
-msgstr "Įkeliamas titulinis vaizdas."
+msgstr "Įkeliamas titulinis vaizdas"
 
 #: src/loadscreen.cpp:229
 msgid "Loading data files"
@@ -7728,6 +7693,7 @@ msgid "Select unit:"
 msgstr "Pasirinkite dalinį:"
 
 #: src/menu_events.cpp:769
+#, fuzzy
 msgid "You don’t have enough gold to recruit that unit"
 msgstr "Neturite pakankamai aukso, kad pasamdytumėte šį dalinį"
 
@@ -8115,7 +8081,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2535
 msgid "[turn]"
-msgstr ""
+msgstr "[ėjimas]"
 
 #: src/menu_events.cpp:2537
 msgid ""
@@ -8341,9 +8307,8 @@ msgid "Can't change control of out-of-bounds side: '$side'."
 msgstr ""
 
 #: src/menu_events.cpp:3242
-#, fuzzy
 msgid "Layers"
-msgstr "Žaidėjai: "
+msgstr "Sluoksniai"
 
 #: src/menu_events.cpp:3315
 msgid "Choose Scenario (Debug!)"
@@ -8399,14 +8364,12 @@ msgid "Invalid location"
 msgstr "Netinkama vietovė"
 
 #: src/menu_events.cpp:3576
-#, fuzzy
 msgid "Planning mode activated!"
-msgstr "Įjungtas derinimo režimas!"
+msgstr "Įjungtas planavimo režimas!"
 
 #: src/menu_events.cpp:3579
-#, fuzzy
 msgid "Planning mode deactivated!"
-msgstr "Išjungtas derinimo režimas!"
+msgstr "Planavimo režimas išjungtas!"
 
 #: src/menu_events.cpp:3587
 msgid "ai"
@@ -8840,9 +8803,8 @@ msgid "--no games open--"
 msgstr ""
 
 #: src/multiplayer_lobby.cpp:157
-#, fuzzy
 msgid " (Unknown Era)"
-msgstr "Nežinoma era"
+msgstr " (Nežinoma era)"
 
 #: src/multiplayer_lobby.cpp:539 src/multiplayer_lobby.cpp:902
 msgid "Password Required"
@@ -8866,9 +8828,8 @@ msgid "Quick Replays"
 msgstr "Peržaidimas"
 
 #: src/multiplayer_lobby.cpp:733
-#, fuzzy
 msgid "Preferences"
-msgstr "Priklausomybės"
+msgstr ""
 
 #: src/multiplayer_lobby.cpp:735
 msgid "Quit"
@@ -8889,12 +8850,11 @@ msgstr "Laisvų vietų"
 
 #: src/multiplayer_lobby.cpp:740
 msgid "Friends in Game"
-msgstr ""
+msgstr "Draugai žaidime"
 
 #: src/multiplayer_lobby.cpp:741
-#, fuzzy
 msgid "Search:"
-msgstr "Ieškoti"
+msgstr "Ieškoti:"
 
 #: src/multiplayer_lobby.cpp:750
 msgid "Skip quickly to the active turn when observing"
@@ -8996,9 +8956,8 @@ msgstr ""
 
 #: src/network_manager_ana.cpp:640 src/network_manager_ana.cpp:657
 #: src/network_manager_ana.cpp:679
-#, fuzzy
 msgid "Could not connect to host"
-msgstr "Nepavyko prisijungti prie mazgo."
+msgstr "Nepavyko prisijungti prie mazgo"
 
 #: src/pathfind/pathfind.cpp:487
 msgid "Terrain with a movement cost less than 1 encountered."
@@ -9428,7 +9387,7 @@ msgstr ""
 
 #: src/unit.cpp:2535
 msgid " move"
-msgstr " žingsnis"
+msgstr "žingsnis"
 
 #: src/unit.cpp:2550
 msgid "$effect_description per level"
@@ -9492,199 +9451,3 @@ msgstr "ištikima"
 #: src/unit_types.cpp:969
 msgid "female^neutral"
 msgstr "neutrali"
-
-#, fuzzy
-#~ msgid "nightly regeneration"
-#~ msgstr "Regeneracijos žiedas"
-
-#, fuzzy
-#~ msgid "female^nightly regeneration"
-#~ msgstr "regeneruoja"
-
-#, fuzzy
-#~ msgid "Nightly Regeneration"
-#~ msgstr "Regeneracijos žiedas"
-
-#, fuzzy
-#~ msgid "dayly regeneration"
-#~ msgstr "Regeneracijos žiedas"
-
-#, fuzzy
-#~ msgid "female^daily regeneration"
-#~ msgstr "regeneruoja"
-
-#, fuzzy
-#~ msgid "Daily Regeneration"
-#~ msgstr "Regeneracijos žiedas"
-
-#, fuzzy
-#~ msgid "female^twilight ambush"
-#~ msgstr "pasala"
-
-#, fuzzy
-#~ msgid ""
-#~ "Twilight ambush:\n"
-#~ "This unit can hide during twilight times of day, and remain undetected by "
-#~ "its enemies.\n"
-#~ "\n"
-#~ "Enemy units cannot see this unit while it is a twilight time of day, "
-#~ "except if they have units next to it. Any enemy unit that first discovers "
-#~ "this unit immediately loses all its remaining movement."
-#~ msgstr ""
-#~ "Slėpimasis:\n"
-#~ "Šis dalinys gali slėptis kaimuose (išskyrus vandens kaimuose), ir likti "
-#~ "neaptiktu savo priešų, išskyrus tų, kurie stovi greta jo.\n"
-#~ "\n"
-#~ "Priešo daliniai negali matyti šio dalinio, kol jis yra kaime, išskyrus "
-#~ "tik jei jie turi dalinių šalia jo. Bet kuris priešo dalinys, kuris pirmas "
-#~ "aptinka šį dalinį iš karto praranda likusį judėjimą."
-
-#, fuzzy
-#~ msgid ""
-#~ "Ambush:\n"
-#~ "This unit can hide during twilight times of day, and remain undetected by "
-#~ "its enemies.\n"
-#~ "\n"
-#~ "Enemy units cannot see this unit while it is a twilight time of day, "
-#~ "except if they have units next to it. Any enemy unit that first discovers "
-#~ "this unit immediately loses all its remaining movement."
-#~ msgstr ""
-#~ "Slėpimasis:\n"
-#~ "Šis dalinys gali slėptis kaimuose (išskyrus vandens kaimuose), ir likti "
-#~ "neaptiktu savo priešų, išskyrus tų, kurie stovi greta jo.\n"
-#~ "\n"
-#~ "Priešo daliniai negali matyti šio dalinio, kol jis yra kaime, išskyrus "
-#~ "tik jei jie turi dalinių šalia jo. Bet kuris priešo dalinys, kuris pirmas "
-#~ "aptinka šį dalinį iš karto praranda likusį judėjimą."
-
-#~ msgid "Multiplayer_AI^Default AI"
-#~ msgstr "Numatytas DI"
-
-#~ msgid "Which enemy side to focus on?"
-#~ msgstr "Ties kuria priešų puse susikoncentruoti?"
-
-#~ msgid "Which friendly side to protect?"
-#~ msgstr "Kurią draugišką pusę ginti?"
-
-#~ msgid "- Handbook of Tactical Analysis Volume II - Haldric II, 43YW"
-#~ msgstr "- Taktinės analizės vadovas, II tomas – Haldrikas II, 43VM"
-
-#~ msgid ""
-#~ "$addon_title depends upon the following add-on which you have not "
-#~ "installed yet:"
-#~ msgid_plural ""
-#~ "$addon_title depends upon the following add-ons which you have not "
-#~ "installed yet:"
-#~ msgstr[0] "$addon_title reikalauja šio priedo, kurio jūs dar neįdiegėte:"
-#~ msgstr[1] "$addon_title reikalauja šių priedų, kurių jūs dar neįdiegėte:"
-#~ msgstr[2] "$addon_title reikalauja šių priedų, kurių jūs dar neįdiegėte:"
-#~ msgstr[3] "$addon_title reikalauja šių priedų, kurių jūs dar neįdiegėte:"
-
-#~ msgid "tooltip^damage"
-#~ msgid_plural "damage"
-#~ msgstr[0] "žalos"
-#~ msgstr[1] "žalos"
-#~ msgstr[2] "žalos"
-#~ msgstr[3] "žalos"
-
-#~ msgid "tooltip^attack"
-#~ msgid_plural "attacks"
-#~ msgstr[0] "ataka"
-#~ msgstr[1] "ataka"
-#~ msgstr[2] "atakos"
-#~ msgstr[3] "atakų"
-
-#~ msgid "tooltip^% accuracy"
-#~ msgstr "% taiklumas"
-
-#, fuzzy
-#~ msgid "Filter:"
-#~ msgstr "Filtras: "
-
-#~ msgid "Next"
-#~ msgstr "Toliau"
-
-#~ msgid "TitleScreen button^Tutorial"
-#~ msgstr "Apmokymas"
-
-#~ msgid "TitleScreen button^Campaign"
-#~ msgstr "Kampanija"
-
-#~ msgid "TitleScreen button^Multiplayer"
-#~ msgstr "Daug žaidėjų"
-
-#~ msgid "TitleScreen button^Load"
-#~ msgstr "Įkelti"
-
-#~ msgid "TitleScreen button^Add-ons"
-#~ msgstr "Priedai"
-
-#~ msgid "TitleScreen button^Map Editor"
-#~ msgstr "Žemėlapių red."
-
-#~ msgid "TitleScreen button^Language"
-#~ msgstr "Kalba"
-
-#~ msgid "TitleScreen button^Preferences"
-#~ msgstr "Nustatymai"
-
-#~ msgid "TitleScreen button^Credits"
-#~ msgstr "Autoriai"
-
-#~ msgid "TitleScreen button^Quit"
-#~ msgstr "Išjungti"
-
-#~ msgid "TitleScreen button^Previous"
-#~ msgstr "Ankstesnis"
-
-#~ msgid "TitleScreen button^Next"
-#~ msgstr "Kitas"
-
-#~ msgid "TitleScreen button^Help"
-#~ msgstr "Pagalba"
-
-#~ msgid "Start a tutorial to familiarize yourself with the game"
-#~ msgstr "Pradėkite apmokymą, kad susipažintumėte su žaidimu"
-
-#~ msgid "Start a new single player campaign"
-#~ msgstr "Pradėkite naują vieno žaidėjo kampaniją"
-
-#~ msgid ""
-#~ "Play multiplayer (hotseat, LAN, or Internet), or a single scenario "
-#~ "against the AI"
-#~ msgstr ""
-#~ "Žaisti kelių žaidėjų (karšta vieta, LAN arba internetu) žaidimą arba "
-#~ "vieną scenarijų prieš DI"
-
-#~ msgid "Load a saved game"
-#~ msgstr "Įkelti išsaugotą žaidimą"
-
-#~ msgid "Download usermade campaigns, eras, or map packs"
-#~ msgstr "Atsisiųsti naudotojų sukurtas kampanijas, eras, žemėlapių rinkinius"
-
-#~ msgid "Start the map editor"
-#~ msgstr "Paleisti žemėlapių redaktorių"
-
-#~ msgid "Change the language"
-#~ msgstr "Pakeisti kalbą"
-
-#~ msgid "Configure the game's settings"
-#~ msgstr "Konfigūruoti žaidimo nustatymus"
-
-#~ msgid "View the credits"
-#~ msgstr "Peržiūrėti autorius"
-
-#~ msgid "Quit the game"
-#~ msgstr "Išjungti žaidimą"
-
-#~ msgid "Show previous tip of the day"
-#~ msgstr "Rodo ankstesnį dienos patarimą"
-
-#~ msgid "Show next tip of the day"
-#~ msgstr "Rodo kitą dienos patarimą"
-
-#~ msgid "Show Battle for Wesnoth help"
-#~ msgstr "Rodyti Mūšio dėl Vesnoto pagalbą"
-
-#~ msgid "$trait_name|: $trait_description "
-#~ msgstr "$trait_name|: $trait_description "

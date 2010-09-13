@@ -3,18 +3,17 @@
 #  Andrius Štikonas <stikonas@gmail.com>, 2007-2010.
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.8\n"
+"Project-Id-Version: Battle for Wesnoth 1.10\n"
 "POT-Creation-Date: 2010-08-18 16:24+0300\n"
 "PO-Revision-Date: 2010-01-01 00:00+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
-"Language: lt\n"
+"Language: Lithuanian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10==1 && n%100!=11 ? 1 : n"
 "%10>=2 && (n%100<10 || n%100>=20) ? 2 : 3);\n"
-"X-Generator: Lokalize 1.1\n"
 
 # type: TH
 #. type: TH
@@ -133,7 +132,7 @@ msgstr "nustato bitų vienam pikseliui vertę. Pavyzdžiui: B<--bpp 32>"
 #: ../../doc/man/wesnoth.6:49
 #, no-wrap
 msgid "B<-c, --campaign[[E<lt>difficultyE<gt>] E<lt>id_campaignE<gt> [E<lt>id_scenarioE<gt>]]>"
-msgstr ""
+msgstr "B<-c, --campaign[[E<lt>sunkumasE<gt>] E<lt>kampanijos_idE<gt> [E<lt>scenarijaus_idE<gt>]]>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:54
@@ -155,9 +154,6 @@ msgstr "B<--config-dir>I<\\ pavadinimas>"
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:61
 #, fuzzy
-#| msgid ""
-#| "sets the user configuration directory to I<name> under $HOME or \"My "
-#| "Documents\\eMy Games\" for windows."
 msgid ""
 "sets the user configuration directory to I<name> under $HOME or \"My "
 "Documents\\eMy Games\" for windows.  You can also specify an absolute path "
@@ -184,7 +180,7 @@ msgstr "išveda naudotojo konfigūracijos aplanko kelią ir išeina."
 #: ../../doc/man/wesnoth.6:64
 #, no-wrap
 msgid "B<--data-dir E<lt>directoryE<gt>>"
-msgstr ""
+msgstr "B<--data-dir E<lt>aplankas<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:67
@@ -220,9 +216,6 @@ msgstr "B<-e,\\ --editor>I<\\ failas>"
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:77
 #, fuzzy
-#| msgid ""
-#| "start the in-game map editor directly. If I<file> is specified, "
-#| "equivalent to B<-e --load>"
 msgid ""
 "start the in-game map editor directly. If I<file> is specified, equivalent "
 "to B<-l --load>"
@@ -349,10 +342,9 @@ msgstr ""
 # type: TP
 #. type: TP
 #: ../../doc/man/wesnoth.6:120
-#, fuzzy, no-wrap
-#| msgid "B<--logdomains>"
+#, no-wrap
 msgid "B<--logdomains\\ [filter]>"
-msgstr "B<--logdomains>"
+msgstr "B<--logdomains\\ [filtras]>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:125
@@ -901,10 +893,8 @@ msgstr "TAIP PAT ŽIŪRĖKITE"
 # type: TH
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:291
-#, fuzzy
-#| msgid "wesnothd"
 msgid "B<wesnothd>(6)."
-msgstr "wesnothd"
+msgstr "B<wesnothd>(6)."
 
 # type: TH
 #. type: TH
@@ -1750,23 +1740,5 @@ msgstr ""
 # type: TH
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:286
-#, fuzzy
-#| msgid "wesnoth"
 msgid "B<wesnoth>(6)."
-msgstr "wesnoth"
-
-# type: TP
-#~ msgid "B<-c, --campaign>"
-#~ msgstr "B<-c, --campaign>"
-
-# type: Plain text
-#~ msgid "goes directly to the campaign selection menu."
-#~ msgstr "iš karto rodo kampanijos pasirinkimo meniu."
-
-# type: Plain text
-#~ msgid "B<wesnoth_editor>(6), B<wesnothd>(6)"
-#~ msgstr "B<wesnoth_editor>(6), B<wesnothd>(6)"
-
-# type: Plain text
-#~ msgid "B<wesnoth>(6), B<wesnoth_editor>(6)"
-#~ msgstr "B<wesnoth>(6), B<wesnoth_editor>(6)"
+msgstr "B<wesnoth>(6)."

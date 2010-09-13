@@ -3,19 +3,18 @@
 #  Andrius Štikonas <stikonas@gmail.com>, 2007-2010.
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.8\n"
+"Project-Id-Version: Battle for Wesnoth 1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-09-13 11:01+0200\n"
+"POT-Creation-Date: 2010-09-13 11:11+0200\n"
 "PO-Revision-Date: 2010-01-01 00:00+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
-"Language: lt\n"
+"Language: Lithuanian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10==1 && n%100!=11 ? 1 : n"
 "%10>=2 && (n%100<10 || n%100>=20) ? 2 : 3);\n"
-"X-Generator: Lokalize 1.0\n"
 
 #. [terrain_type]: id=deep_water
 #: data/core/terrain.cfg:21
@@ -30,7 +29,7 @@ msgstr "Seklus vanduo"
 #. [terrain_type]: id=ford
 #: data/core/terrain.cfg:64
 msgid "Ford"
-msgstr ""
+msgstr "Brasta"
 
 #. [terrain_type]: id=reef
 #: data/core/terrain.cfg:75
@@ -136,9 +135,8 @@ msgstr "Uolėtas urvas"
 #. [terrain_type]: id=mermen_village
 #. [terrain_type]: id=swamp_merfolk-village
 #: data/core/terrain.cfg:1441 data/core/terrain.cfg:1455
-#, fuzzy
 msgid "Aquatic Village"
-msgstr "Kaimas"
+msgstr "Vandens kaimas"
 
 #. [terrain_type]: id=castle
 #. [terrain_type]: id=castle_overlay
@@ -149,7 +147,7 @@ msgstr "Pilis"
 #. [terrain_type]: id=sunkenruin
 #: data/core/terrain.cfg:1577
 msgid "Sunken Ruin"
-msgstr "Paskendę griuvėsiai"
+msgstr "Apsempti griuvėsiai"
 
 #. [terrain_type]: id=swampruin
 #: data/core/terrain.cfg:1589
@@ -178,15 +176,13 @@ msgstr "Bokštas"
 
 #. [terrain_type]: id=sunken_keep
 #: data/core/terrain.cfg:1735
-#, fuzzy
 msgid "Sunken Keep"
-msgstr "Apsemtas pilies bokštas"
+msgstr "Apsemtas bokštas"
 
 #. [terrain_type]: id=swamp_keep
 #: data/core/terrain.cfg:1748
-#, fuzzy
 msgid "Swamp Keep"
-msgstr "Pelkė"
+msgstr "Pelkių bokštas"
 
 #. [terrain_type]: id=bridge
 #. [terrain_type]: id=bridgediag1
@@ -338,7 +334,7 @@ msgstr "Gerai"
 #. [label]: id=lblTitle
 #: data/gui/default/window/data_manage.cfg:42
 msgid "Manage Data"
-msgstr ""
+msgstr "Tvarkyti duomenis"
 
 #. [label]: id=lblChoose
 #: data/gui/default/window/data_manage.cfg:81
@@ -370,13 +366,13 @@ msgstr "Data"
 #: data/gui/default/window/data_manage.cfg:258
 #: data/gui/default/window/data_manage.cfg:259
 msgid "Clear"
-msgstr ""
+msgstr "Išvalyti"
 
 #. [button]: id=restore
 #: data/gui/default/window/data_manage.cfg:275
 #: data/gui/default/window/data_manage.cfg:276
 msgid "Restore"
-msgstr ""
+msgstr "Atstatyti"
 
 #. [button]: id=backup
 #: data/gui/default/window/data_manage.cfg:292
@@ -603,7 +599,7 @@ msgstr "Ar tikrai norite ištrinti šį žaidimą?"
 #. [toggle_button]: id=dont_ask_again
 #: data/gui/default/window/game_delete.cfg:72
 msgid "Don’t ask me again!"
-msgstr "Daugiau nebeklausk!"
+msgstr "Daugiau nebeklausti!"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=ok
@@ -710,9 +706,8 @@ msgstr "Tipai"
 
 #. [label]
 #: data/gui/default/window/gamestate_inspector.cfg:103
-#, fuzzy
 msgid "Content"
-msgstr "Prisijungti"
+msgstr "Turinys"
 
 #. [label]
 #: data/gui/default/window/gamestate_inspector.cfg:114
@@ -812,7 +807,7 @@ msgstr "Rikiuoti žaidėjus:"
 #. [toggle_button]: id=player_list_sort_relation
 #: data/gui/default/window/lobby_main.cfg:313
 msgid "Friends first, ignored people last"
-msgstr ""
+msgstr "Pirma draugai, ignoruojami žmonės paskutiniai"
 
 #. [toggle_button]: id=player_list_sort_name
 #: data/gui/default/window/lobby_main.cfg:321
@@ -872,7 +867,7 @@ msgstr "Nėra ignoruojamų"
 #. [toggle_button]: id=filter_vacant_slots
 #: data/gui/default/window/lobby_main.cfg:598
 msgid "Vacant slots"
-msgstr ""
+msgstr "Laisvos vietos"
 
 #. [toggle_button]: id=filter_invert
 #: data/gui/default/window/lobby_main.cfg:604
@@ -923,7 +918,7 @@ msgstr ""
 #. [label]
 #: data/gui/default/window/lobby_player_info.cfg:30
 msgid "Player Info — "
-msgstr "Apie žaidėją: "
+msgstr "Apie žaidėją – "
 
 #. [button]: id=start_whisper
 #: data/gui/default/window/lobby_player_info.cfg:62
@@ -1234,7 +1229,7 @@ msgstr "Pagalba"
 #. [button]: id=help
 #: data/gui/default/window/title_screen.cfg:150
 msgid "Show Battle for Wesnoth help"
-msgstr ""
+msgstr "Rodyti Mūšio dėl Vesnoto pagalbą"
 
 #. [button]: id=previous_tip
 #: data/gui/default/window/title_screen.cfg:165
@@ -1244,17 +1239,17 @@ msgstr "Ankstesnis"
 #. [button]: id=previous_tip
 #: data/gui/default/window/title_screen.cfg:166
 msgid "Show previous tip of the day"
-msgstr ""
+msgstr "Rodyti ankstesnį dienos patarimą"
 
 #. [button]: id=next_tip
 #: data/gui/default/window/title_screen.cfg:181
 msgid "Show next tip of the day"
-msgstr ""
+msgstr "Rodyti kitą dienos patarimą"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:226
 msgid "Start a tutorial to familiarize yourself with the game"
-msgstr ""
+msgstr "Pradėti apmokymą, kad susipažintumėte su žaidimu"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
@@ -1271,7 +1266,7 @@ msgstr "Kampanija"
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:227
 msgid "Start a new single player campaign"
-msgstr ""
+msgstr "Pradėti naują vieno žaidėjo kampaniją"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:228
@@ -1287,9 +1282,8 @@ msgstr "Įkelti"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:229
-#, fuzzy
 msgid "Load a saved game"
-msgstr "Perkrautas žaidimas"
+msgstr "Įkelti išsaugotą žaidimą"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:230
@@ -1309,7 +1303,7 @@ msgstr "Redaktorius"
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:231
 msgid "Start the map editor"
-msgstr ""
+msgstr "Paleisti žemėlapių redaktorių"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
@@ -1320,7 +1314,7 @@ msgstr "Keisti kalbą"
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:233
 msgid "Configure the game’s settings"
-msgstr ""
+msgstr "Konfigūruoti žaidimo nustatymus"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:234
@@ -1330,23 +1324,22 @@ msgstr "Autoriai"
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:234
 msgid "View the credits"
-msgstr ""
+msgstr "Peržiūrėti autorius"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:235
-#, fuzzy
 msgid "Quit the game"
 msgstr "Išjungti žaidimą"
 
 #. [button]: id=ok
 #: data/gui/default/window/unit_attack.cfg:195
 msgid "Attack"
-msgstr ""
+msgstr "Pulti"
 
 #. [label]
 #: data/gui/default/window/unit_attack.cfg:255
 msgid "Attack enemy"
-msgstr ""
+msgstr "Pulti priešą"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -1674,7 +1667,7 @@ msgstr "Neanimuoti judančių DI dalinių"
 
 #: src/game_preferences_display.cpp:346
 msgid "Sighting an allied unit interrupts your unit’s movement"
-msgstr "Draugiško dalinio pastebėjimas sustabdo jūsų dalinio judėjimą"
+msgstr ""
 
 #: src/game_preferences_display.cpp:354
 msgid "Overlay a grid onto the map"
@@ -1942,13 +1935,12 @@ msgid "[node]id 'root' is reserved for the implentation."
 msgstr ""
 
 #: src/gui/auxiliary/window_builder/tree_view.cpp:90
-#, fuzzy
 msgid "No node defined."
-msgstr "Neapibrėžtas puslapis."
+msgstr ""
 
 #: src/gui/dialogs/data_manage.cpp:179 src/gui/dialogs/game_load.cpp:274
 msgid "#(Invalid)"
-msgstr ""
+msgstr "#(Negalioja)"
 
 #: src/gui/dialogs/data_manage.cpp:199 src/gui/dialogs/game_load.cpp:294
 msgid "Campaign: $campaign_name"
@@ -2002,11 +1994,11 @@ msgstr ""
 
 #: src/gui/dialogs/lobby_main.cpp:1436
 msgid "$player has entered the room"
-msgstr ""
+msgstr "$player prisijungė prie kambario"
 
 #: src/gui/dialogs/lobby_main.cpp:1474
 msgid "$player has left the room"
-msgstr ""
+msgstr "$player paliko kambarį"
 
 #: src/gui/dialogs/lobby_main.cpp:1587
 msgid "Password Required"
@@ -2029,9 +2021,8 @@ msgid "Load Game..."
 msgstr "Įkelti žaidimą..."
 
 #: src/gui/dialogs/title_screen.cpp:182
-#, fuzzy
 msgid "Version "
-msgstr "Versija: "
+msgstr "Versija "
 
 #: src/gui/dialogs/title_screen.cpp:185
 msgid "Version"
@@ -2160,9 +2151,8 @@ msgid "End Turn"
 msgstr "Baigti ėjimą"
 
 #: src/hotkeys.cpp:73
-#, fuzzy
 msgid "Toggle Ellipses"
-msgstr "Perjungti tinklelį"
+msgstr "Perjungti elipses"
 
 #: src/hotkeys.cpp:74
 msgid "Toggle Grid"
@@ -2497,9 +2487,8 @@ msgid "User-Command#3"
 msgstr "Naudotojo-komanda#3"
 
 #: src/hotkeys.cpp:209
-#, fuzzy
 msgid "Refresh WML"
-msgstr "Atnaujinti"
+msgstr "Atnaujinti WML"
 
 #: src/hotkeys.cpp:661 src/hotkeys.cpp:967
 msgid "Do you really want to quit?"
@@ -2636,7 +2625,7 @@ msgstr "Nėra jokių alternatyvių video režimų"
 
 #: src/preferences_display.cpp:538
 msgid " (widescreen)"
-msgstr ""
+msgstr " (plačiaekranis)"
 
 #: src/preferences_display.cpp:543
 msgid "Choose Resolution"
@@ -2673,169 +2662,3 @@ msgstr ""
 #: src/wml_exception.cpp:71
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr ""
-
-#~ msgid "Ice"
-#~ msgstr "Ledas"
-
-#~ msgid "Snow"
-#~ msgstr "Sniegas"
-
-#~ msgid "Crater"
-#~ msgstr "Krateris"
-
-#, fuzzy
-#~ msgid "Mixed Flowers"
-#~ msgstr "Rudeninis mišrus miškas"
-
-#~ msgid "Farmland"
-#~ msgstr "Dirbama žemė"
-
-#, fuzzy
-#~ msgid "Mushrooms"
-#~ msgstr "Grybų giraitė"
-
-#, fuzzy
-#~ msgid "Mushroom Farm"
-#~ msgstr "Grybų giraitė"
-
-#, fuzzy
-#~ msgid "Desert Plants"
-#~ msgstr "Dykumos kalnai"
-
-#~ msgid "Chasm"
-#~ msgstr "Bedugnė"
-
-#~ msgid "Lava chasm"
-#~ msgstr "Lavos bedugnė"
-
-#~ msgid "Lava"
-#~ msgstr "Lava"
-
-#~ msgid "Impassable Mountains"
-#~ msgstr "Nepereinami kalnai"
-
-#~ msgid "Cave Wall"
-#~ msgstr "Urvo siena"
-
-#~ msgid "Wall"
-#~ msgstr "Siena"
-
-#~ msgid "Void"
-#~ msgstr "Tuštuma"
-
-#~ msgid "Castle Keep"
-#~ msgstr "Pilies bokštas"
-
-#~ msgid "None"
-#~ msgstr "Nieko"
-
-#~ msgid "Could not get image for terrain: $terrain."
-#~ msgstr "Nepavyksta gauti vietovės paveikslėlio: $terrain."
-
-#~ msgid "Error creating or aquiring an image."
-#~ msgstr "Klaida sukuriant arba gaunant paveiksliuką."
-
-#~ msgid "Encampment"
-#~ msgstr "Stovykla"
-
-#~ msgid "Fort"
-#~ msgstr "Tvirtovė"
-
-#~ msgid "Ruin"
-#~ msgstr "Griuvėsiai"
-
-#~ msgid "Encampment Keep"
-#~ msgstr "Stovyklos bokštas"
-
-#~ msgid "Fort Keep"
-#~ msgstr "Tvirtovės bokštas"
-
-#~ msgid "Elven Keep"
-#~ msgstr "Elfų bokštas"
-
-#~ msgid "Ruined Castle Keep"
-#~ msgstr "Sugriautas pilies bokštas"
-
-#~ msgid "Desert"
-#~ msgstr "Dykuma"
-
-#~ msgid "Snowy Pine Forest"
-#~ msgstr "Apsnigtas pušynas"
-
-#~ msgid "Great Tree"
-#~ msgstr "Didysis medis"
-
-#~ msgid "Pine Forest"
-#~ msgstr "Pušynas"
-
-#~ msgid "Tropical Forest"
-#~ msgstr "Tropinis miškas"
-
-#~ msgid "Summer Deciduous Forest"
-#~ msgstr "Vasarinis lapuočių miškas"
-
-#~ msgid "Fall Deciduous Forest"
-#~ msgstr "Rudeninis lapuočių miškas"
-
-#~ msgid "Winter Deciduous Forest"
-#~ msgstr "Žieminis lapuočių miškas"
-
-#~ msgid "Snowy Deciduous Forest"
-#~ msgstr "Apsnigtas lapuočių miškas"
-
-#~ msgid "Summer Mixed Forest"
-#~ msgstr "Vasarinis mišrus miškas"
-
-#~ msgid "Winter Mixed Forest"
-#~ msgstr "Žieminis mišrus miškas"
-
-#~ msgid "Snowy Mixed Forest"
-#~ msgstr "Apsnigtas mišrus miškas"
-
-#~ msgid "Summer Deciduous Forested Hills"
-#~ msgstr "Vasarinės lapuočiais apaugusios kalvos"
-
-#~ msgid "Fall Deciduous Forested Hills"
-#~ msgstr "Rudeninės lapuočiais apaugusios kalvos"
-
-#~ msgid "Winter Deciduous Forested Hills"
-#~ msgstr "Žieminės lapuočiais apaugusios kalvos"
-
-#~ msgid "Snowy Deciduous Forested Hills"
-#~ msgstr "Snieguotos lapuočiais apaugusios kalvos"
-
-#~ msgid "Summer Mixed Forested Hills"
-#~ msgstr "Vasarinės mišriu mišku apaugusios kalvos"
-
-#~ msgid "Winter Mixed Forested Hills"
-#~ msgstr "Žieminės mišriu mišku apaugusios kalvos"
-
-#~ msgid "Snowy Mixed Forested Hills"
-#~ msgstr "Apsnigtos mišriu mišku apaugusios kalvos"
-
-#~ msgid "Grassland"
-#~ msgstr "Žolynai"
-
-#~ msgid "Savanna"
-#~ msgstr "Savana"
-
-#~ msgid "Snowy Mountains"
-#~ msgstr "Apsnigti kalnai"
-
-#~ msgid "Road"
-#~ msgstr "Kelias"
-
-#~ msgid "Dirt"
-#~ msgstr "Purvas"
-
-#~ msgid "Cave path"
-#~ msgstr "Urvo takelis"
-
-#~ msgid "River Ford"
-#~ msgstr "Upės brasta"
-
-#~ msgid "Impassable Desert Mountains"
-#~ msgstr "Nepraeinami dykumos kalnai"
-
-#~ msgid "Window not defined."
-#~ msgstr "Langas neapibrėžtas."

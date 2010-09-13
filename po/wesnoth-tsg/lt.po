@@ -3,19 +3,18 @@
 #  Andrius Štikonas <stikonas@gmail.com>, 2007-2010.
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.8\n"
+"Project-Id-Version: Battle for Wesnoth 1.10\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-09-13 11:01+0200\n"
+"POT-Creation-Date: 2010-09-13 11:11+0200\n"
 "PO-Revision-Date: 2010-01-01 00:00+0300\n"
 "Last-Translator: Andrius Štikonas <stikonas@gmail.com>\n"
 "Language-Team: Lithuanian <komp_lt@konferencijos.lt>\n"
-"Language: lt\n"
+"Language: Lithuanian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n%10==1 && n%100!=11 ? 1 : n"
 "%10>=2 && (n%100<10 || n%100>=20) ? 2 : 3);\n"
-"X-Generator: Lokalize 1.1\n"
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:9
@@ -30,7 +29,7 @@ msgstr "PS"
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:19
 msgid "(Novice level, 9 scenarios.)"
-msgstr ""
+msgstr "(Pradedantysis lygis, 9 scenarijai.)"
 
 #. [campaign]: id=The_South_Guard
 #: data/campaigns/The_South_Guard/_main.cfg:19
@@ -41,7 +40,7 @@ msgid ""
 "\n"
 msgstr ""
 "Jaunas riteris vardu Deoranas paskiriamas perimti vadovavimą Pietų "
-"Sargybai... Pastaba: ši kampanija specialiai kurta kaip įvadas į Vesnotą. "
+"sargybai... Pastaba: ši kampanija specialiai kurta kaip įvadas į Vesnotą. "
 "„Civilio“ sudėtingumo lygis pritaikytas pirmą kartą žaidžiantiems.\n"
 "\n"
 
@@ -137,7 +136,7 @@ msgstr "Deoranas"
 #: data/campaigns/The_South_Guard/scenarios/09b_Bandit_Epilogue.cfg:20
 #: data/campaigns/The_South_Guard/scenarios/10a_Elf_Epilogue.cfg:20
 msgid "South Guard"
-msgstr "Pietų Sargyba"
+msgstr "Pietų sargyba"
 
 #. [side]: type=Bandit, id=Urza Mathin
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:54
@@ -215,7 +214,6 @@ msgstr "Moretas"
 
 #. [message]: speaker=Moreth
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:179
-#, fuzzy
 msgid ""
 "You’ll never take this village! I’ve seen your kind kill too many townsmen, "
 "and I’ll defend them to the death!"
@@ -225,13 +223,12 @@ msgstr ""
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:185
-#, fuzzy
 msgid ""
 "My kind? I am a soldier of Wesnoth, a messenger of King Haldric, and the new "
 "commander of the South Guard! What do you mean, “my kind”?"
 msgstr ""
 "Tokius kaip aš? Aš Vesnoto karys, karaliaus Haldriko pasiuntinys ir naujasis "
-"Pietų Sargybos vadas! Ką turi omeny, „tokius kaip aš“?"
+"Pietų sargybos vadas! Ką turi omeny, „tokius kaip aš“?"
 
 #. [message]: speaker=Moreth
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:190
@@ -242,7 +239,7 @@ msgid ""
 msgstr ""
 "Atsiprašau, pone! Aš pamaniau, kad jūs vienas iš tų banditų, kurie puldinėja "
 "miestelius ir žudo gyventojus. Ką jūs čia veikiate? Seras Gerikas ir aš "
-"buvome paskutinieji iš Pietų Sargybos..."
+"buvome paskutinieji iš Pietų sargybos..."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:195
@@ -251,7 +248,7 @@ msgid ""
 "must arm the villagers and drive off the bandits before they can do any more "
 "harm!"
 msgstr ""
-"Aš atsiųstas perimti vadovavimą Pietų Sargyba ir įvesti čia tvarką. Reikia "
+"Aš atsiųstas perimti vadovavimą Pietų sargyba ir įvesti čia tvarką. Reikia "
 "apginkluoti kaimiečius ir nustumti banditus kol jie nepridarė dar daugiau "
 "žalos!"
 
@@ -296,7 +293,7 @@ msgid ""
 msgstr ""
 "Valdove, gerai, kad karalius Haldrikas atsiuntė jus į mūsų žemes! Banditai "
 "užėmė visą vietovę ir žudo bei plėšia be pasigailėjimo. Grąžinkite Pietų "
-"Sargybai pasitikėjimą ir atsikratykite banditų!"
+"sargybai pasitikėjimą ir atsikratykite banditų!"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:254
@@ -310,7 +307,6 @@ msgstr ""
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:259
-#, fuzzy
 msgid ""
 "I will open the citadel’s armory. We have a supply of spears and bows, and "
 "lacked only a leader to bring us to battle with them!"
@@ -330,13 +326,12 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:272
-#, fuzzy
 msgid ""
 "Units that have a <i>hero</i> marker are vital to your campaign. If any of "
 "them die, you will lose the scenario, so guard them carefully!"
 msgstr ""
-"Daliniai su herojaus karūna būtini jūsų kampanijai. Jeigu kuris nors iš jų "
-"žus, pralaimėsite mūšį, tad kruopščiai juos saugokite!"
+"Daliniai su <i>herojaus</i> karūna būtini jūsų kampanijai. Jeigu kuris nors "
+"iš jų žus, pralaimėsite mūšį, tad kruopščiai juos saugokite!"
 
 #. [objective]: condition=lose
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:287
@@ -361,7 +356,6 @@ msgstr "Traukite atgal į stovyklą kur pradėjote ir nusisamdykite dalinių."
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:326
-#, fuzzy
 msgid ""
 "While you’re in your camp, you can recruit more troops. Build up a small "
 "force to use against the bandits that Urza Mathin recruits."
@@ -388,7 +382,7 @@ msgid ""
 "Guard."
 msgstr ""
 "Ietininkai stiprūs artimoje kovoje ir naudingi kovojant su dauguma priešų. "
-"Tolimose atakose ietininkai silpnesni. Jie sudaro Pietų Sargybos šerdį."
+"Tolimose atakose ietininkai silpnesni. Jie sudaro Pietų sargybos šerdį."
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:341
@@ -412,30 +406,28 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:370
-#, fuzzy
 msgid ""
 "All of your units are <i>lawful</i>. This means that they receive a combat "
 "bonus during the day, and a penalty at night. Urza Mathin’s units are all "
 "<i>chaotic</i>, which means that they receive a bonus at night and a penalty "
 "during the day. You will be much more effective fighting during the day."
 msgstr ""
-"Visi jūsų daliniai kaunasi už tvarką. Tai reiškia, kad dieną jie kaunasi "
-"stipriau, o naktį silpniau. Tuo tarpu Urza Matino kariai kaunasi už chaosą, "
-"tad jie stipresni naktį ir silpnesni dieną. Jums daug palankiau kautis dieną."
+"Visi jūsų daliniai <i>kaunasi už tvarką</i>. Tai reiškia, kad dieną jie "
+"kaunasi stipriau, o naktį silpniau. Tuo tarpu Urza Matino kariai yra "
+"<i>chaotiški</i>, tad jie stipresni naktį ir silpnesni dieną. Jums daug "
+"palankiau kautis dieną."
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:390
-#, fuzzy
 msgid ""
 "My lord! The dawn is breaking — now is the time for us to attack and drive "
 "these bandits from our lands. To me men of the South Guard!"
 msgstr ""
 "Valdove! Jau brėkšta – dabar tinkamiausias laikas pulti ir išguiti šituos "
-"nedorėlius iš mūsų žemių. Paskui mane, Pietų Sargybos vyrai!"
+"nedorėlius iš mūsų žemių. Paskui mane, Pietų sargybos vyrai!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:396
-#, fuzzy
 msgid ""
 "During the day your units will deal more damage, and Urza Mathin’s less. The "
 "more of his troops you can defeat during the day, the better!"
@@ -474,7 +466,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:466
-#, fuzzy
 msgid ""
 "You may now recruit Merman Hunters. Mermen are aquatic creatures. Keep them "
 "in rivers and swamps and they will fight well! Put them on dry land and "
@@ -498,7 +489,6 @@ msgstr "Kas ten eina! Tuojau pat išeikite iš namo!"
 
 #. [message]: speaker=Aleron
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:506
-#, fuzzy
 msgid ""
 "Stay! It’s me, Aleron! The villagers hid me from the bandits when the town "
 "was overrun. They have kept me safe, though I was gravely wounded..."
@@ -526,7 +516,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:518
-#, fuzzy
 msgid ""
 "Aleron is a Longbowman, stronger and better trained than regular bowmen. His "
 "arrows are deadly to enemies without a ranged attack."
@@ -545,7 +534,7 @@ msgid ""
 "We are no bandits. The banner of the South Guard flies again! Help us drive "
 "these criminals from your land."
 msgstr ""
-"Mes ne banditai. Pietų Sargybos vėliava ir vėl plevėsuoja! Padėk mums "
+"Mes ne banditai. Pietų sargybos vėliava ir vėl plevėsuoja! Padėk mums "
 "išstumti tuos nusikaltėlius iš tavo žemės."
 
 #. [message]: speaker=Aleron
@@ -578,7 +567,7 @@ msgid ""
 "Do you not see the banners flying in the wind? The South Guard fights again. "
 "Flee while you can, or you will meet swift death on our spears!"
 msgstr ""
-"Ar nematai plazdančių vėliavų? Pietų Sargyba vėl kovoja. Bėk kol gali, nes "
+"Ar nematai plazdančių vėliavų? Pietų sargyba vėl kovoja. Bėk kol gali, nes "
 "kitaip greitai rasi savo mirtį ant mūsų iečių!"
 
 #. [message]: speaker=narrator
@@ -609,7 +598,6 @@ msgstr "Baigėsi mano plėšikavimo dienos! Mano broliai už mane atkeršys..."
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/01_Born_To_The_Banner.cfg:655
-#, fuzzy
 msgid ""
 "He is dead! Congratulations, commander. We thought we would never see "
 "reinforcements — Did Sir Loris send you from Westin?"
@@ -625,7 +613,7 @@ msgid ""
 "in the citadel?"
 msgstr ""
 "Ne. Mane atsiuntė karalius Haldrikas, kad perimčiau vadovavimą Pietų "
-"Sargyba. Karalius savaitėmis negavo jokių žinių. Kiek laiko jūs ir jūsų "
+"sargyba. Karalius savaitėmis negavo jokių žinių. Kiek laiko jūs ir jūsų "
 "vyrai buvote užspeisti citadelėje?"
 
 #. [message]: speaker=Sir Gerrick
@@ -698,14 +686,13 @@ msgstr ""
 
 #. [message]: speaker=Urza Nalmath
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:194
-#, fuzzy
 msgid ""
 "What?! If there are soldiers of Wesnoth coming from the northern forts, then "
 "my brother Mathin is surely dead... They will pay for his death, just as Sir "
 "Loris paid for his pride!"
 msgstr ""
 "Ką?! Jeigu iš šiaurinių tvirtovių artėja Vesnoto kariai, reiškia mano brolis "
-"Matinas tikrai miręs... Jie sumokės už jo mirtį, kaip kad seras Loris "
+"Matinas tikrai miręs... Jie sumokės už jo mirtį, kaip kad Seras Loris "
 "sumokėjo už savo išdidumą!"
 
 #. [objective]: condition=win
@@ -725,9 +712,8 @@ msgstr "Deoranai, užimk vadavietę Vestino citadelėje."
 
 #. [objective]: condition=win
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:251
-#, fuzzy
 msgid "Bring Deoran to the Citadel of Westin"
-msgstr "Nuveskite Deoraną į Vestino citadelę."
+msgstr "Nuveskite Deoraną į Vestino citadelę"
 
 #. [unit]: type=White Mage, id=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:291
@@ -736,18 +722,16 @@ msgstr "Ministras Hylas"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:304
-#, fuzzy
 msgid "More bandits?! They’ll feel the deadly bite of my lance!"
 msgstr "Dar daugiau banditų?! Tuoj paragausite mirties nuo mano ieties!"
 
 #. [message]: speaker=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:308
-#, fuzzy
 msgid ""
 "Peace! For I am no enemy. I am Minister Hylas, advisor to Sir Loris! You "
 "came just in time! We couldn’t have held them off another day..."
 msgstr ""
-"Nepulk! Aš tau ne priešas. Aš ministras Hylas, sero Lorio patarėjas! "
+"Nepulk! Aš tau ne priešas. Aš ministras Hylas, Sero Lorio patarėjas! "
 "Atvykote pačiu laiku! Jau rytoj nebūtume nuo jų atsilaikę..."
 
 #. [message]: speaker=Deoran
@@ -759,7 +743,7 @@ msgid ""
 msgstr ""
 "Išties, atvykome laiku. Bet kur seras Loris? Kur miesto garnizonas? Karalius "
 "Haldrikas atsiuntė mane pagelbėti Loriui ir perimti vadovavimą Pietų "
-"Sargybai, nes karalius jau du mėnesius negavo iš Vestino žinių."
+"sargybai, nes karalius jau du mėnesius negavo iš Vestino žinių."
 
 #. [message]: speaker=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:316
@@ -807,7 +791,6 @@ msgstr "Tyborgas"
 
 #. [message]: speaker=Ufes
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:331
-#, fuzzy
 msgid ""
 "We will do our best to hold the city — you lead your men across the river "
 "and kill the bandit leader!"
@@ -855,13 +838,11 @@ msgstr ""
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:424
-#, fuzzy
 msgid "We’re too late! They’re burning the city..."
 msgstr "Pavėlavome! Jie degina miestą..."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:429
-#, fuzzy
 msgid ""
 "Westin has fallen! This is a problem too great for me to handle — I must "
 "return to Haldric and tell him of our loss..."
@@ -899,13 +880,12 @@ msgstr "Kad ir kaip jis to pridirbo, turime jį nugalėti!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:482
-#, fuzzy
 msgid ""
 "Not only will Minister Hylas’s <i>arcane</i> attack melt undead bones, but "
 "he can also heal wounded units near him."
 msgstr ""
-"Ministro Hylo paslaptinga ataka ne tik tirpdo nemirėliams kaulus, jis dar "
-"gali ir gydyti greta esančius karius."
+"Ministro Hylo <i>paslaptinga</i> ataka ne tik tirpdo nemirėliams kaulus, jis "
+"dar gali ir gydyti greta esančius karius."
 
 #. [message]: speaker=Urza Nalmath
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:506
@@ -914,7 +894,6 @@ msgstr "Nepalikit nieko! Sudeginkit kaimus ir visus išžudykit!"
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:510
-#, fuzzy
 msgid "We will avenge your brother’s death!"
 msgstr "Atkeršysime už tavo brolio mirtį!"
 
@@ -925,9 +904,8 @@ msgstr "Jie degina mūsų kaimus! Turime juos sustabdyti!"
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/scenarios/02_Proven_By_The_Sword.cfg:553
-#, fuzzy
 msgid "My brother has died unavenged! What have we done?!"
-msgstr "Už mano brolį nebuvo atkeršyta! Ką mes padarėme!?"
+msgstr "Už mano brolį nebuvo atkeršyta! Ką mes padarėme?!"
 
 #. [message]: speaker=Deoran
 #. [message]: speaker=second_unit
@@ -943,7 +921,7 @@ msgid ""
 "elves of the Aethenwood west of here. He asked that a knight be sent to "
 "discuss a new threat to Wesnoth."
 msgstr ""
-"Dar prieš prasidedant banditų reidams, pas serą Lorį buvo atvykęs elfų "
+"Dar prieš prasidedant banditų reidams, pas Serą Lorį buvo atvykęs elfų "
 "pasiuntinys iš vakaruose esančio Ėtenvudo. Jis prašė vykti su juo aptarti "
 "naujojo pavojaus Vesnotui."
 
@@ -1022,7 +1000,7 @@ msgid ""
 "trick of theirs trying to bring him into the woods..."
 msgstr ""
 "Būk atsargus, Deoranai. Jau daugelį metų joks žmogus nekėlė kojos į elfų "
-"girias. Nežinome kaip jie mus pasitiks. Seras Loris manė juos rezgant kokią "
+"girias. Nežinome kaip jie mus pasitiks. seras Loris manė juos rezgant kokią "
 "gudrybę, kad įvilioti jį į miškus."
 
 #. [message]: speaker=Deoran
@@ -1038,7 +1016,6 @@ msgstr ""
 
 #. [message]: speaker=Urza Fastik
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:148
-#, fuzzy
 msgid ""
 "I have lost two brothers to Deoran — I shall not allow him to reach the "
 "accursed elves! Deoran will die before he reaches the western forest!"
@@ -1102,7 +1079,6 @@ msgstr ""
 
 #. [message]: role=second
 #: data/campaigns/The_South_Guard/scenarios/03_A_Desparate_Errand.cfg:259
-#, fuzzy
 msgid ""
 "I hope that’s the last of the bandits! How many more of these foul undead "
 "must we fight?"
@@ -1246,9 +1222,8 @@ msgstr "Ašarų slėnis"
 
 #. [side]: type=Dark Adept, type=Dark Sorcerer, type=Necromancer, id=Mal A'kai
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:68
-#, fuzzy
 msgid "Mal A’kai"
-msgstr "Mal A'kai"
+msgstr "Mal A’kai"
 
 #. [side]: type=Dark Adept, type=Dark Sorcerer, type=Necromancer, id=Mal A'kai
 #. [side]: type=Outlaw, id=Jera Ilras
@@ -1307,7 +1282,6 @@ msgstr ""
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:186
-#, fuzzy
 msgid ""
 "What?! Those are no friends of the elves! They are brigands, and they must "
 "be destroyed!"
@@ -1340,7 +1314,6 @@ msgstr "Rodos, žavingas vyrukas..."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:206
-#, fuzzy
 msgid ""
 "Yet, as she says, he is our best hope to rid our lands of this new menace. "
 "We do that which we must. Ethiliel, you make for Mebrin’s village. We will "
@@ -1352,7 +1325,6 @@ msgstr ""
 
 #. [message]: speaker=Mal A'kai
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:211
-#, fuzzy
 msgid "Ha! You’re too late. We’ve taken what we want from this valley."
 msgstr "Cha! Pavėlavote. Mes jau pasiėmėme, ką norėjome, iš šio slėnio."
 
@@ -1368,7 +1340,6 @@ msgstr "Išvalykite Ašarų Slėnį"
 
 #. [objective]: condition=win
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:226
-#, fuzzy
 msgid "Move Ethiliel to Mebrin’s village"
 msgstr "Nuveskite Etilielę į Mebrino sodybą"
 
@@ -1395,7 +1366,6 @@ msgstr ""
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:288
-#, fuzzy
 msgid ""
 "We must clear out these undead if you are to reach Mebrin’s village! What "
 "should we do?"
@@ -1464,7 +1434,6 @@ msgstr "Pagaliau, laisvas! Ačiū jums, draugai mano..."
 
 #. [message]: speaker=Jera Ilras
 #: data/campaigns/The_South_Guard/scenarios/04_Vale_of_Tears.cfg:480
-#, fuzzy
 msgid ""
 "You’re too late! You’ll never find our stronghold, and even if you did, what "
 "can you do against the dead?"
@@ -1662,7 +1631,6 @@ msgstr "Nemirėlių vadas nugalėtas!"
 
 #. [message]: speaker=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:317
-#, fuzzy
 msgid "No... I fear there is still much evil present."
 msgstr "Ne... Bijau, kad dar yra daug blogio."
 
@@ -1683,7 +1651,6 @@ msgstr "Atrodo, rūke matau kažką judant... Atrodo kaip stovykla!"
 
 #. [message]: speaker=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:378
-#, fuzzy
 msgid "Thank heaven! You’re alive!"
 msgstr "Ačiū dievams! Jūs gyvi!"
 
@@ -1731,7 +1698,6 @@ msgstr ""
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:408
-#, fuzzy
 msgid ""
 "You imprisoned Mebrin?! For that you must surely pay. Speak swiftly so that "
 "we may end this parley and dispatch you quickly! We will have vengeance!"
@@ -1795,7 +1761,6 @@ msgstr ""
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:445
-#, fuzzy
 msgid ""
 "Hmm... I have to consider this... If I ally with the elves, I must fight the "
 "bandits, but if I ally with the bandits I will make enemies of the elves..."
@@ -1810,7 +1775,6 @@ msgstr "Labai gerai. Visi žmonės privalo susivienyti prieš nemirėlius."
 
 #. [message]: speaker=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:505
-#, fuzzy
 msgid ""
 "We will now fight alongside you. Come, my thugs and footpads, rally to me!"
 msgstr ""
@@ -1902,7 +1866,6 @@ msgstr "Graar!"
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:722
-#, fuzzy
 msgid ""
 "Well! That was easier than I thought it’d be. Looks like the undead aren’t "
 "so tough after all!"
@@ -1917,7 +1880,6 @@ msgstr "Išties. Tamsos karalius krito."
 
 #. [message]: speaker=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:731
-#, fuzzy
 msgid ""
 "I’m afraid it is not so. This was not the real Mebrin we destroyed, but a "
 "mere phantom. He resides in catacombs deep underneath the castle, but they "
@@ -1929,7 +1891,6 @@ msgstr ""
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:736
-#, fuzzy
 msgid ""
 "We spared your life in order to defeat the source of these undead, and now "
 "you tell us we cannot even reach it?! Ethiliel could have dispelled these "
@@ -1941,7 +1902,6 @@ msgstr ""
 
 #. [message]: speaker=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:740
-#, fuzzy
 msgid ""
 "If I had told you, you and the elves would have killed me! I didn’t have a "
 "choice!"
@@ -2057,7 +2017,7 @@ msgid ""
 "Go, Sir Gerrick, and take with you an escort of elves, if Ethiliel will "
 "permit it."
 msgstr ""
-"Vyk, sere Gerikai, ir pasiimk su savimi elfų palydą, jei tik Etilielė leis."
+"Vyk, Sere Gerikai, ir pasiimk su savimi elfų palydą, jei tik Etilielė leis."
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/05_Choice_In_The_Fog.cfg:804
@@ -2193,7 +2153,7 @@ msgstr "Ššš... Tai žmonės, sudarę sutartį su nelemtais vandeniais! Ššš
 #. [message]: speaker=Eliomir
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:249
 msgid "We have stumbled into a den of nagas!"
-msgstr "Pakliuvome į nagų knibždėlyną!"
+msgstr "Pakliuvome į nágų knibždėlyną!"
 
 #. [message]: speaker=Queen Xeila
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:253
@@ -2205,7 +2165,7 @@ msgstr "Ššš... Visus juos užmušim, brolyčiai. Ššš..."
 msgid ""
 "We must clear this road for Deoran and Ethiliel! We must destroy the naga "
 "lair!"
-msgstr "Reikia išvalyti kelią Deoranui ir Etilielei! Sunaikinkime nagų irštvą!"
+msgstr "Reikia išvalyti kelią Deoranui ir Etilielei! Sunaikinkime nágų irštvą!"
 
 #. [message]: speaker=Queen Xeila
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:263
@@ -2230,12 +2190,11 @@ msgstr ""
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:275
-#, fuzzy
 msgid ""
 "She won’t listen. If we leave these nagas here, they will ambush Deoran and "
 "Ethiliel! We must destroy them!"
 msgstr ""
-"Ji nepaklausys. Jeigu paliksime čia nagas, jie užpuls Deoraną ir Etilielę! "
+"Ji nepaklausys. Jeigu paliksime čia nágas, jie užpuls Deoraną ir Etilielę! "
 "Turime juos sunaikinti!"
 
 #. [objective]: condition=win
@@ -2245,11 +2204,10 @@ msgstr "Nugalėkite Karalienę Zeilą"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:322
-#, fuzzy
 msgid ""
 "There are a group of naga occupying this area... they don’t look very "
 "friendly."
-msgstr "Čia gyvena nagų būrys... Jie neatrodo labai draugiški."
+msgstr "Čia gyvena nágų būrys... Jos neatrodo labai draugiškos."
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:327
@@ -2310,7 +2268,6 @@ msgstr ""
 
 #. [message]: speaker=Abdur
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:404
-#, fuzzy
 msgid "Unworthy fools! I’ll kill you for this sacrilege!"
 msgstr "Niekingi kvailiai! Užmušiu jus už tokį piktžodžiavimą!"
 
@@ -2320,7 +2277,7 @@ msgid ""
 "These naga are still in control of the road. We must clear the way for "
 "Deoran and Ethiliel!"
 msgstr ""
-"Nagos vis dar kontroliuoja kelią. Privalom išvalyti Deoranui ir Etilielei "
+"Nágos vis dar kontroliuoja kelią. Privalom išvalyti Deoranui ir Etilielei "
 "praėjimą!"
 
 #. [message]: speaker=Sir Gerrick
@@ -2342,7 +2299,6 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/06a_Tidings_Good_And_Ill.cfg:446
-#, fuzzy
 msgid ""
 "While the council debated the best course of action, Deoran and Ethiliel "
 "prepared to enter the caves under Mebrin’s fortress..."
@@ -2373,7 +2329,6 @@ msgstr "Vizis"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:466
-#, fuzzy
 msgid "Deoran and Urza Afalas led their men quickly from Mebrin’s fortress..."
 msgstr ""
 "Deoranas ir Urza Afalas greitai išvedė savo vyrus iš Mebrino tvirtovės..."
@@ -2420,7 +2375,6 @@ msgstr "Jei taip, nedelskime. Sekite, aš rodysiu kelią."
 
 #. [message]: speaker=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:512
-#, fuzzy
 msgid ""
 "Remember that these woods are crawling with elves, and I don’t think they’ll "
 "receive us too kindly. Stay on the path and perhaps we can avoid at least "
@@ -2436,14 +2390,12 @@ msgstr "Nuveskite Deoraną per girią ir į kitą upės krantą"
 
 #. [objectives]
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:545
-#, fuzzy
 msgid ""
 "At the start of each turn, Urza Afalas will reveal as much of the secret "
 "path as is within his vision range."
 msgstr ""
 "Kiekvieno ėjimo pradžioje, Urza Afalas atvers slaptą taką tiek, kiek leidžia "
-"jo matymo laukas.\n"
-"\n"
+"jo matymo laukas."
 
 #. [message]: speaker=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:731
@@ -2452,7 +2404,6 @@ msgstr "Dar truputėlį toliau!"
 
 #. [message]: speaker=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:750
-#, fuzzy
 msgid "We’re almost there!"
 msgstr "Jau beveik atėjom!"
 
@@ -2528,7 +2479,6 @@ msgstr "Ačiū dievams, įveikėme šitą siaubingą mišką!"
 
 #. [message]: speaker=Sir Gerrick
 #: data/campaigns/The_South_Guard/scenarios/06b_The_Long_March.cfg:1151
-#, fuzzy
 msgid "Indeed, Afalas, you’ve earned my trust today."
 msgstr "Iš tiesų Afalasai, šiandieną užsidirbai mano pasitikėjimą."
 
@@ -2552,9 +2502,8 @@ msgstr "Į gilumas"
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:49
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_In_The_Flood.cfg:54
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:54
-#, fuzzy
 msgid "Mal M’Brin"
-msgstr "Mal M'Brinas"
+msgstr "Mal M’Brinas"
 
 #. [side]: type=Soulless, id=Groth
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:101
@@ -2591,9 +2540,8 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:264
-#, fuzzy
 msgid "Also, soldiers with the <i>quick</i> trait will be useful in the dark."
-msgstr "Taip pat, tamsoje naudingesni bus greiti kariai."
+msgstr "Taip pat, tamsoje naudingesni bus <i>greiti</i> kariai."
 
 #. [objective]: condition=win
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:272
@@ -2604,7 +2552,6 @@ msgstr "Suraskite nemirėlių šaltinį po citadele"
 
 #. [message]: speaker=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:310
-#, fuzzy
 msgid ""
 "What horrid creature may that be? I’ve seen many wicked things in my life, "
 "but never one such as that."
@@ -2614,7 +2561,6 @@ msgstr ""
 
 #. [message]: speaker=Ethiliel
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:315
-#, fuzzy
 msgid ""
 "It must be a guardian of some kind set here by Mebrin. We elves have heard "
 "stories of these creatures but I wouldn’t have expected to come across "
@@ -2626,7 +2572,6 @@ msgstr ""
 
 #. [message]: speaker=Grek
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:328
-#, fuzzy
 msgid ""
 "Ha! Humans and elves! What are you doing in our caves, and why shouldn’t we "
 "grind your bones and gnaw on your flesh?"
@@ -2641,7 +2586,6 @@ msgstr "Nenorėjome savivaliauti. Medžiojame nemirėlius."
 
 #. [message]: speaker=Grek
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:338
-#, fuzzy
 msgid ""
 "Undead! Ha! We kill undead all the time. You be friendly enough so we won’t "
 "kill you, but why should we help you?"
@@ -2677,7 +2621,6 @@ msgstr ""
 
 #. [message]: speaker=Grek
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:411
-#, fuzzy
 msgid ""
 "Go here and light the thunder fire and it will blast a back door into the "
 "lich’s lair!"
@@ -2755,7 +2698,6 @@ msgstr "Cha! Šįkart jau išgalėsite susimokėti troliams už pagalbą?"
 
 #. [option]: speaker=Grek
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:581
-#, fuzzy
 msgid "Here’s $troll_help_cost for your help against the undead."
 msgstr "Štai $troll_help_cost auksinių už jūsų pagalbą prieš nemirėlius."
 
@@ -2766,13 +2708,11 @@ msgstr "Ne, apgailestauju."
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:622
-#, fuzzy
 msgid "I’m lighting it!"
 msgstr "Padegu!"
 
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:656
-#, fuzzy
 msgid "I’ve broken through!"
 msgstr "Prasiveržiau!"
 
@@ -2797,7 +2737,6 @@ msgstr ""
 
 #. [message]: speaker=Mal M'Brin
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:695
-#, fuzzy
 msgid ""
 "I broke their chains. They bound me, the accursed humans. Bound me! "
 "Kidnapped me to raise undead for them. Menaced me with cold iron... ahh, the "
@@ -2805,7 +2744,7 @@ msgid ""
 msgstr ""
 "Aš nutraukiau jų grandines. Jie mane sukaustė, prakeiktieji žmonės! "
 "Sukaustė! Pagrobė mane, kad kelčiau jiems nemirėlius. Kankino mane šaltąja "
-"geležimi. Och, geležis ant odos... Ji degino, degino!"
+"geležimi... Och, geležis ant odos, ji degino, degino!"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:700
@@ -2850,7 +2789,6 @@ msgstr ""
 
 #. [message]: speaker=Mal M'Brin
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:720
-#, fuzzy
 msgid ""
 "I am called Mal M’Brin now, Ethiliel, best student of mine. It is time for a "
 "new lesson. I was such as you, full of doubt and weakness, but now I have "
@@ -2858,7 +2796,7 @@ msgid ""
 "have touched the void at the heart of all things. You, too, can partake of "
 "its boundless power."
 msgstr ""
-"Dabar aš vadinuosi Mal M'Brinas, Etiliele, geriausia mano mokine. Atėjo "
+"Dabar aš vadinuosi Mal M’Brinas, Etiliele, geriausia mano mokine. Atėjo "
 "laikas naujai pamokai. Buvau toks kaip tu, pilnas abejonių ir silpnybių, bet "
 "dabar aš miriau ir tapau daugiau, nei tu žinai. Mirtyje yra begalybė; aš "
 "paliečiau tuštumą visų daiktų širdyse. Šios beribės galios užtektų ir tau."
@@ -2889,7 +2827,6 @@ msgstr "Ne. To nebus. Žynys Mebrinas nebegyvas. Laikas suteikti jam poilsį."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:742
-#, fuzzy
 msgid ""
 "Even a mere human can see that you have become a mockery of all that you "
 "once believed in. I will destroy you and your works if it’s the last thing I "
@@ -2910,7 +2847,6 @@ msgstr ""
 
 #. [message]: speaker=Mal M'Brin
 #: data/campaigns/The_South_Guard/scenarios/07a_Into_The_Depths.cfg:758
-#, fuzzy
 msgid ""
 "Nooo! This cannot be. The elves I once led have destroyed me. After all I "
 "have sacrificed, I still die..."
@@ -2996,7 +2932,6 @@ msgstr "Mirties sargybinis"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_In_The_Flood.cfg:172
-#, fuzzy
 msgid ""
 "We have escaped the great forest, but look! The undead are chasing us — we "
 "must not have rooted them all out of the wood."
@@ -3015,7 +2950,6 @@ msgstr ""
 
 #. [message]: speaker=Urza Afalas
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_In_The_Flood.cfg:180
-#, fuzzy
 msgid ""
 "I too will make my stand here — I owe you my life and must atone for my "
 "crimes. Together we will hold off the foul undead as long as we can."
@@ -3026,7 +2960,6 @@ msgstr ""
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/07b_Pebbles_In_The_Flood.cfg:184
-#, fuzzy
 msgid ""
 "Minister Hylas, ride with me to Westin — you must summon the Council of "
 "Westin while I prepare the city’s defenses. We shall return as soon as we "
@@ -3163,17 +3096,16 @@ msgstr "Stot! Kas ateina prie Vesnoto pasienio?"
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/08a_Return_To_Kerlath.cfg:208
 msgid "It is I, Deoran, commander of the South Guard, and my men."
-msgstr "Tai aš, Deoranas, Pietų Sargybos vadas, ir mano vyrai kartu."
+msgstr "Tai aš, Deoranas, Pietų sargybos vadas, ir mano vyrai kartu."
 
 #. [message]: speaker=Plynry
 #: data/campaigns/The_South_Guard/scenarios/08a_Return_To_Kerlath.cfg:213
-#, fuzzy
 msgid ""
 "Deoran? You had been thought lost long since. But I see by your men’s gear "
 "and drill that they are of the South Guard indeed. Pass."
 msgstr ""
 "Deoranas? Jau ilgai laikėme tave dingusiu. Bet iš tavo vyrų aprangos ir "
-"paruošimo matau, kad jūs tikrai iš Pietų Sargybos. Praeikite..."
+"paruošimo matau, kad jūs tikrai iš Pietų sargybos. Praeikite."
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/08a_Return_To_Kerlath.cfg:218
@@ -3210,7 +3142,6 @@ msgstr "LT. Nilafas"
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:290
-#, fuzzy
 msgid ""
 "Look! The undead army has broken through Sir Gerrick’s lines! Alas, he is "
 "lost!"
@@ -3325,7 +3256,6 @@ msgstr ""
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:399
-#, fuzzy
 msgid ""
 "We have rallied all the forces that we will be able to! Let us not make Sir "
 "Gerrick’s sacrifice a vain one. For Wesnoth!"
@@ -3337,9 +3267,8 @@ msgstr ""
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:411
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:428
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:473
-#, fuzzy
 msgid "Defeat Mal M’Brin"
-msgstr "Nugalėkite Mal M'Briną"
+msgstr "Nugalėkite Mal M’Briną"
 
 #. [objectives]
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:421
@@ -3362,7 +3291,6 @@ msgstr "Niekada vėl nebepamatysiu laisvo Vestino..."
 #. [message]: speaker=unit
 #: data/campaigns/The_South_Guard/scenarios/08b_The_Tides_of_War.cfg:537
 #: data/campaigns/The_South_Guard/utils/sg_deaths.cfg:93
-#, fuzzy
 msgid "Far from home I fall — but not in vain! Guard our people, Deoran!"
 msgstr ""
 "Toli nuo namų aš kritau... Bet ne veltui! Sergėk mūsų žmones, Deoranai!"
@@ -3520,7 +3448,6 @@ msgstr "Gal ir taip, bet tai mūsų vienintelė viltis. Turiu pasiekti Iteldeną
 
 #. [event]
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:241
-#, fuzzy
 msgid "Ithelden’s base"
 msgstr "Iteldeno bazė"
 
@@ -3542,7 +3469,6 @@ msgstr "Aš viską atidaviau savo karalystei! Atkeršyk už mane, Deoranai!"
 
 #. [message]: speaker=Minister Hylas
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:341
-#, fuzzy
 msgid ""
 "Ithelden’s elves have killed Ethiliel! Now we have no chance to come to an "
 "agreement with them. A war with the Elves is imminent."
@@ -3552,7 +3478,6 @@ msgstr ""
 
 #. [message]: speaker=Deoran
 #: data/campaigns/The_South_Guard/scenarios/09a_Vengeance.cfg:345
-#, fuzzy
 msgid ""
 "We are far away from Weldyn. We’ll surely all be killed long before any "
 "reinforcements arrive."
@@ -3713,7 +3638,6 @@ msgstr "Gelbėdama žmones, praradau viską... Dabar jie tikrai prapuls!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/utils/sg_help.cfg:29
-#, fuzzy
 msgid ""
 "Thugs are the mainstay of the bandit armies. They do not have a <i>ranged</"
 "i> attack, and are vulnerable to your archers. Deoran’s lance will also "
@@ -3721,12 +3645,12 @@ msgid ""
 "more dangerous at night."
 msgstr ""
 "Užpuolikai sudaro pagrindinę banditų armijos masę. Jie nemoka atakuoti iš "
-"toli, tad bus lengvas grobis jūsų lankininkams. Deorano ietis taip pat sės "
-"baimę jų širdyse. Kaip ir visi banditų daliniai, jie pavojingesni naktį."
+"<i>toli</i>, tad bus lengvas grobis jūsų lankininkams. Deorano ietis taip "
+"pat sės baimę jų širdyse. Kaip ir visi banditų daliniai, jie pavojingesni "
+"naktį."
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/utils/sg_help.cfg:56
-#, fuzzy
 msgid ""
 "Thieves are more subtle than thugs. They try to surround your units and stab "
 "them in the back. Make sure that thieves never have an opportunity to attack "
@@ -3741,20 +3665,18 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/utils/sg_help.cfg:83
-#, fuzzy
 msgid ""
 "Footpads are the scouts of the bandit armies. They are quick, and have both "
 "a <i>melee</i> attack and a <i>ranged</i> attack. Neither of their attacks "
 "is very strong, however, and your spearmen will make quick work of them "
 "during the day."
 msgstr ""
-"Plėšikai yra banditų žvalgai. Jie greiti, moka atakuoti tiek iš toli, tiek "
-"iš arti, nors nei viena, nei kita ne itin smarkiai; dienos metu ietininkai "
-"juos greitai prikirps."
+"Plėšikai yra banditų žvalgai. Jie greiti, moka atakuoti tiek iš <i>toli</i>, "
+"tiek iš <i>arti</i>, nors nei viena, nei kita ne itin smarkiai; dienos metu "
+"ietininkai juos greitai prikirps."
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/utils/sg_help.cfg:110
-#, fuzzy
 msgid ""
 "Skeletons are the bones of fallen warriors raised by some dark magic. They "
 "are almost immune to piercing weapons like arrows and spears. Bladed attacks "
@@ -3764,12 +3686,11 @@ msgid ""
 msgstr ""
 "Skeletai yra kritusių karių kaulai, prikelti kažkokios tamsios magijos "
 "pagalba. Jie beveik atsparūs duriantiesiems ginklams, kaip kad strėlės ir "
-"ietys. Ašmenys juos žeidžia, o ministro Hylo paslaptinga ataka jiems "
+"ietys. Ašmenys juos žeidžia, o ministro Hylo <i>paslaptinga</i> ataka jiems "
 "mirtina. Kaip ir kiti banditai, naktį jie pavojingesni."
 
 #. [message]: speaker=narrator
 #: data/campaigns/The_South_Guard/utils/sg_help.cfg:137
-#, fuzzy
 msgid ""
 "Walking corpses are the bodies of slain warriors, filled with some black "
 "magic. They are slow and weak — any of your units is more than a match for "
@@ -3794,7 +3715,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:25
-#, fuzzy
 msgid ""
 "For eight years the South Guard had defended the farms and homes surrounding "
 "the city of Westin, the capital of Wesnoth’s frontier province of Kerlath in "
@@ -3805,7 +3725,7 @@ msgid ""
 "the ancient heart forest of the Great Continent so dense and gloomy that "
 "even elves forbore from dwelling there."
 msgstr ""
-"Aštuonerius metus Pietų Sargyba gynė fermas ir namus, supančius Vestino "
+"Aštuonerius metus Pietų sargyba gynė fermas ir namus, supančius Vestino "
 "miestą, Kerlato provincijos, besidriekiančios piečiausiame Vesnoto "
 "pakraštyje, sostinę. Pikčiausias jiems pasitaikantis priešas būdavo koks "
 "atsitiktinis banditas. Orkai buvo toli šiaurėje. Vakariniame Ėtenvude "
@@ -3821,13 +3741,12 @@ msgid ""
 "under the command of Sir Loris, suddenly ceased. King Haldric decided to "
 "send someone to investigate."
 msgstr ""
-"Tuomet, devintųjų metų pavasarį, Pietų Sargybai vadovaujant serui Loriui, "
+"Tuomet, devintųjų metų pavasarį, Pietų sargybai vadovaujant serui Loriui, "
 "žinios staiga liovėsi. Karalius Haldrikas nusprendė nusiųsti ką nors "
 "išsiaiškinti."
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:33
-#, fuzzy
 msgid ""
 "King Haldric summoned a young, undistinguished but promising cavalry officer "
 "named Deoran. Deoran was the son of Haldiel, who had fought with distinction "
@@ -3846,7 +3765,7 @@ msgid ""
 "Guard..."
 msgstr ""
 "Karalius Haldrikas įšventino Deoraną į riterius ir paskyrė jam užduotį: joti "
-"į Vestiną ir pareikalauti iš sero Lorio, Pietų Sargybos vado, ataskaitų."
+"į Vestiną ir pareikalauti iš sero Lorio, Pietų sargybos vado, ataskaitų."
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:58
@@ -3858,11 +3777,10 @@ msgid ""
 msgstr ""
 "Nugalėjęs Urza Matiną, Deoranas tuojau pat išsiuntinėjo žvalgus į visą "
 "apylinkę. Jo vyrai pranešė apie banditus, laisvai kertančius sieną ir "
-"terorizuojančius kaimiečius. Pietų Sargybos karių niekur nebuvo pastebėta."
+"terorizuojančius kaimiečius. Pietų sargybos karių niekur nebuvo pastebėta."
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:63
-#, fuzzy
 msgid ""
 "Deoran decided to take action and wipe out the bandits. He gathered the men "
 "of Sir Gerrick’s command and whatever peasants were of strong body and "
@@ -3888,7 +3806,7 @@ msgid ""
 "Ethiliel led the men of the South Guard into the southern forest. Shadows "
 "soon covered their paths day and night, and a thick fog filled the air."
 msgstr ""
-"Etilielė vedė Pietų Sargybos vyrus per pietinį mišką. Neužilgo šešėliai "
+"Etilielė vedė Pietų sargybos vyrus per pietinį mišką. Neužilgo šešėliai "
 "pradėjo dieną-naktį užkloti jiems takus, o orą apsunkino tankus rūkas."
 
 #. [part]
@@ -3904,7 +3822,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:99
-#, fuzzy
 msgid ""
 "Finally Ethiliel told the men to halt and pitch camp — they had reached the "
 "Black River, beyond which no elf or man would willingly pass."
@@ -3914,19 +3831,17 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:108
-#, fuzzy
 msgid ""
 "After Mal M’Brin’s defeat, Deoran’s troops and their elvish allies turned "
 "north for home. As they re-crossed the Black River, fall was fading into "
 "winter."
 msgstr ""
-"Nugalėjus Mal M'Briną, Deorano daliniai ir jų sąjungininkai elfai pasuko į "
-"šiaurę, link namų. Jiems besikeliant atgal per Juodąją upę, rudenį keitė "
+"Nugalėjus Mal M’Briną, Deorano daliniai ir jų sąjungininkai elfai pasuko į "
+"šiaurę, namų link. Jiems besikeliant atgal per Juodąją upę, rudenį keitė "
 "žiema."
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:114
-#, fuzzy
 msgid ""
 "Forage and game were scarce in the gloomy woods. The men’s spirits were "
 "lifted by the thought of home, but their bodies became gaunt. The long weeks "
@@ -3943,7 +3858,7 @@ msgid ""
 "gloom followed close behind the men of the South Guard."
 msgstr ""
 "Deoranui, serui Gerikui ir Urza Afalasui išnirus iš didžiojo miško, jau "
-"snigo. Ore tvyrojo spengianti tyla, o Pietų Sargybos vyrams iš paskos "
+"snigo. Ore tvyrojo spengianti tyla, o Pietų sargybos vyrams iš paskos "
 "žingsniavo bauginanti tamsa."
 
 #. [part]
@@ -3965,12 +3880,11 @@ msgid ""
 msgstr ""
 "Pagaliau aušra nudažė horizontą ir saulės spinduliai įkvėpė naujos gyvybės "
 "nuvargusiems Vestino gynėjams. Didis šūkis nuaidėjo per slėnį, kai Pietų "
-"Sargybos vyrai nustūmė savo priešus elfus nuo sienų. Staiga, visą mūšio "
+"sargybos vyrai nustūmė savo priešus elfus nuo sienų. Staiga, visą mūšio "
 "lauką užtemdė tankus rūkas..."
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:143
-#, fuzzy
 msgid ""
 "When the fog broke, Ethiliel stood alone, facing the wall of spears. Bathed "
 "in light, she spoke to the men of Wesnoth, saying, “Stop! Enough blood has "
@@ -4004,7 +3918,7 @@ msgid ""
 "their burdens again, a messenger came from King Haldric."
 msgstr ""
 "Šitaip stojo nerami taika tarp žmonių ir elfų. Daugelį savaičių Pietų "
-"Sargyba patruliavo elfų pamiškes ir prižiūrėjo fermų ir kaimų atstatymą. "
+"sargyba patruliavo elfų pamiškes ir prižiūrėjo fermų ir kaimų atstatymą. "
 "Pagaliau, betirpstant sniegui ir atsivėrus keliams, atvyko pasiuntinys nuo "
 "karaliaus Haldriko."
 
@@ -4021,7 +3935,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:165
-#, fuzzy
 msgid ""
 "With bitter spears and grim expression, the men of Wesnoth launched the last "
 "assault on the undead. As they cut through lifeless flesh and shattered "
@@ -4032,7 +3945,7 @@ msgstr ""
 "Su aštriomis ietimis ir rūsčiais veidais, Vesnoto vyrai pradėjo paskutinį "
 "išpuolį prieš nemirėlius. Jiems bekapojant negyvus kūnus ir bedaužant šaltus "
 "kaulus, pro debesis prasibrovė saulės spindulys. Vėjas nurimo ir vyrai įgavo "
-"naują kvėpavimą. Surikę kurtinantį karo šūkį, jie puolė Mal M'Brino stovyklą "
+"naują kvėpavimą. Surikę kurtinantį karo šūkį, jie puolė Mal M’Brino stovyklą "
 "ir nuvertė galingąjį burtininką."
 
 #. [part]
@@ -4061,7 +3974,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:181
-#, fuzzy
 msgid ""
 "The loftiest mound belonged to Sir Gerrick. After the battle, Deoran led an "
 "expedition to the southern border posts, and there he found Sir Gerrick’s "
@@ -4075,7 +3987,6 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/The_South_Guard/utils/sg_story.cfg:185
-#, fuzzy
 msgid ""
 "Gerrick’s name was added at the top of the roll of fallen heroes, and read "
 "aloud at the beginning of every great council. The memory of his desperate "
@@ -4109,30 +4020,3 @@ msgstr ""
 "Seras Deoranas, Vesnoto riteris, buvo iškviestas į Veldyną, į pasitarimą su "
 "pačiu karaliumi Haldriku. Virš karalystės rinkosi audros debesys, ir "
 "kiekvieno vado nuomonė apie artėjantį sunkmetį buvo vertinga."
-
-#~ msgid "(Novice level, 8 or 9 scenarios depending on the branch you take.)"
-#~ msgstr ""
-#~ "(Pradedantysis lygis, 8 arba 9 scenarijai, priklausomai nuo pasirinktos "
-#~ "šakos.)"
-
-#~ msgid "Time runs out"
-#~ msgstr "Pasibaigia ėjimai"
-
-#~ msgid "You have a bodyguard?!!"
-#~ msgstr "Tu turi asmens sargybinį?!!"
-
-#~ msgid ""
-#~ "My mount will not help me in these rocky paths - I will leave him here at "
-#~ "the entrance and proceed on foot."
-#~ msgstr ""
-#~ "Žirgas nepadės man šiose akmenuotuose olose. Paliksiu jį čia, prie įėjimo "
-#~ "ir toliau eisiu pėsčias."
-
-#~ msgid "That is wise. Speed is less valuable in caves than toughness."
-#~ msgstr "Tai išmintinga. Greitis mažiau vertingas urvuose nei ištvermė."
-
-#~ msgid "Dismounted Commander"
-#~ msgstr "Pėsčias vadas"
-
-#~ msgid "Deoran was still a dangerous commander, even without his horse."
-#~ msgstr "Net ir be savojo žirgo, Deoranas buvo pavojingas vadas."
