@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-09-13 11:01+0200\n"
+"POT-Creation-Date: 2010-09-13 11:11+0200\n"
 "PO-Revision-Date: 2010-08-30 19:32+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -1336,8 +1336,8 @@ msgid ""
 " Neutral units are unaffected by the time of day."
 msgstr ""
 "时段对某些单位的伤害输出有影响，具体如下：\n"
-" 守序单位昼间伤害+25%，夜间伤害-25%。\n"
-" 混乱单位昼间伤害+25%，夜间伤害-25%。\n"
+" 守序单位昼间伤害+25%，夜间伤害−25%。\n"
+" 混乱单位昼间伤害+25%，夜间伤害−25%。\n"
 " 中立单位不受时段的影响。"
 
 #. [topic]: id=time_of_day
@@ -5937,7 +5937,7 @@ msgstr ""
 "守序单位擅长在昼间战斗，不擅长在夜间战斗。\n"
 "\n"
 "昼间：+25%伤害\n"
-"夜间：-25%伤害"
+"夜间：−25%伤害"
 
 #. [language]
 #: data/hardwired/english.cfg:15
@@ -5950,7 +5950,7 @@ msgstr ""
 "守序单位擅长在昼间战斗，不擅长在夜间战斗。\n"
 "\n"
 "昼间：+25%伤害\n"
-"夜间：-25%伤害"
+"夜间：−25%伤害"
 
 #. [language]
 #: data/hardwired/english.cfg:16
@@ -5969,7 +5969,7 @@ msgid ""
 msgstr ""
 "混乱单位擅长在夜间战斗，不擅长在昼间战斗。\n"
 "\n"
-"昼间：-25%伤害\n"
+"昼间：−25%伤害\n"
 "夜间：+25%伤害"
 
 #. [language]
@@ -6386,7 +6386,7 @@ msgstr ""
 #, fuzzy
 msgid ""
 "<i>― Haldric II, 43YW, from Handbook of Tactical Analysis: Volume II</i>"
-msgstr "——战术分析手册第一卷，哈德里克二世，韦元42年"
+msgstr "——战术分析手册第二卷，哈德里克二世，韦元43年"
 
 #. [tip]
 #: data/hardwired/tips.cfg:79
@@ -10100,83 +10100,6 @@ msgstr "忠诚"
 msgid "female^neutral"
 msgstr "中立"
 
-#, fuzzy
-#~ msgid "nightly regeneration"
-#~ msgstr "再生戒指"
-
-#, fuzzy
-#~ msgid "female^nightly regeneration"
-#~ msgstr "再生"
-
-#, fuzzy
-#~ msgid "Nightly Regeneration"
-#~ msgstr "再生戒指"
-
-#, fuzzy
-#~ msgid "dayly regeneration"
-#~ msgstr "再生戒指"
-
-#, fuzzy
-#~ msgid "female^daily regeneration"
-#~ msgstr "再生"
-
-#, fuzzy
-#~ msgid "Daily Regeneration"
-#~ msgstr "再生戒指"
-
-#, fuzzy
-#~ msgid "twilight skirmisher"
-#~ msgstr "游击"
-
-#, fuzzy
-#~ msgid "female^twilight skirmisher"
-#~ msgstr "游击"
-
-#, fuzzy
-#~ msgid ""
-#~ "Twilight skirmisher:\n"
-#~ "This unit is skilled in moving past enemies quickly during the twilight "
-#~ "times of day, and ignores all enemy Zones of Control."
-#~ msgstr ""
-#~ "游击：\n"
-#~ "本单位擅长于从敌人旁边迅速通过，且能忽略所有敌人单位的控制区域。"
-
-#, fuzzy
-#~ msgid "female^twilight ambush"
-#~ msgstr "伏击"
-
-#, fuzzy
-#~ msgid ""
-#~ "Twilight ambush:\n"
-#~ "This unit can hide during twilight times of day, and remain undetected by "
-#~ "its enemies.\n"
-#~ "\n"
-#~ "Enemy units cannot see this unit while it is a twilight time of day, "
-#~ "except if they have units next to it. Any enemy unit that first discovers "
-#~ "this unit immediately loses all its remaining movement."
-#~ msgstr ""
-#~ "伏击：\n"
-#~ "本单位可以隐藏在森林里，不会被敌人发觉。\n"
-#~ "\n"
-#~ "当本单位在森林里时，敌人看不见他，除非敌方有单位与他相邻。第一个发现本单位"
-#~ "的敌军单位将立刻丧失其剩余的全部行动点数。"
-
-#, fuzzy
-#~ msgid ""
-#~ "Ambush:\n"
-#~ "This unit can hide during twilight times of day, and remain undetected by "
-#~ "its enemies.\n"
-#~ "\n"
-#~ "Enemy units cannot see this unit while it is a twilight time of day, "
-#~ "except if they have units next to it. Any enemy unit that first discovers "
-#~ "this unit immediately loses all its remaining movement."
-#~ msgstr ""
-#~ "伏击：\n"
-#~ "本单位可以隐藏在森林里，不会被敌人发觉。\n"
-#~ "\n"
-#~ "当本单位在森林里时，敌人看不见他，除非敌方有单位与他相邻。第一个发现本单位"
-#~ "的敌军单位将立刻丧失其剩余的全部行动点数。"
-
 #~ msgid "Multiplayer_AI^Default AI"
 #~ msgstr "默认 AI"
 
@@ -10191,9 +10114,6 @@ msgstr "中立"
 
 #~ msgid "focusing on protecting $this_ally_description|."
 #~ msgstr "重点保护$this_ally_description|。"
-
-#~ msgid "- Handbook of Tactical Analysis Volume II - Haldric II, 43YW"
-#~ msgstr "——战术分析手册第二卷，哈德里克二世，韦元43年"
 
 #~ msgid ""
 #~ "$addon_title depends upon the following add-on which you have not "
@@ -10297,7 +10217,7 @@ msgstr "中立"
 #~ msgid "Change the language"
 #~ msgstr "切换语言"
 
-#~ msgid "Configure the game's settings"
+#~ msgid "Configure the game’s settings"
 #~ msgstr "更改游戏设置"
 
 #~ msgid "View the credits"
