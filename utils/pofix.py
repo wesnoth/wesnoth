@@ -109,7 +109,7 @@ stringfixes = {
 # More straight to curly conversions
 # conversion added in 1.9.0+svn
 ("Don't make a wish.", "Don’t make a wish."),
-("$name's", "$name|’"),
+("$name's", "$name|’s"),
 ("$road's", "$road|’s"),
 
 ("if it hasn't moved this", "if it hasn’t moved this"),
