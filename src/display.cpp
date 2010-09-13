@@ -763,7 +763,7 @@ std::vector<surface> display::get_terrain_images(const map_location &loc,
 		// Cache the offmap name.
 		// Since it is themabel it can change,
 		// so don't make it static.
-		const std::string off_map_name = "terrain/" + theme_.border().tile_image + ".png";
+		const std::string off_map_name = "terrain/" + theme_.border().tile_image;
 		for(std::vector<animated<image::locator> >::const_iterator it =
 				terrains->begin(); it != terrains->end(); ++it) {
 
