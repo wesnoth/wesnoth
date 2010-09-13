@@ -1469,7 +1469,7 @@ stringfixes = {
 ("The village's mage Bjarn", "The village’s mage Bjarn"),
 ("'Fear and obey Mordak the Mage!'", "“Fear and obey Mordak the Mage!”"),
 ("Mordak's", "Mordak’s"),
-("more than two days'", "more than two days’"),
+("more than two days' ride", "more than two days’ ride"),
 ("brother's", "brother’s"),
 ("We're chasing after", "We’re chasing after"),
 ("master's", "master’s"),
@@ -1484,8 +1484,6 @@ stringfixes = {
 ("they're holding Bjarn", "they’re holding Bjarn"),
 ("day's", "day’s"),
 ("I don't think we can rescue", "I don’t think we can rescue"),
-
-("4 scenarios; the 'Hard' version may challenge", "4 scenarios; the ‘Hard’ version may challenge"),
 
 # Fix capitalization
 # conversion added in 1.9.0+svn
