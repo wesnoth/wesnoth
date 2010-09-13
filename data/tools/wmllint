@@ -124,22 +124,15 @@ from wesnoth.wmliterator import *
 
 # Changes meant to be done on maps and .cfg lines.
 mapchanges = (
-        ("Ha^Voa", "Ha^Voha"),
-        ("Hh^Vo,",  "Hh^Voh,"),
-        ("Hh^Vo\r",  "Hh^Voh\r"),
-        ("Hh^Vo\n",  "Hh^Voh\n"),
-        ("Mm^Vhh", "Mm^Vhm"),
-        ("Hh^Vc,",  "Hh^Vch,"),
-        ("Hh^Vc\r",  "Hh^Vch\r"),
-        ("Hh^Vc\n",  "Hh^Vch\n"),
-        ("Ha^Vca", "Ha^Vcha"),
-        ("Mm^Vc,",  "Mm^Vcm,"),
-        ("Mm^Vc\r",  "Mm^Vcm\r"),
-        ("Mm^Vc\n",  "Mm^Vcm\n"),
-        ("Ggf,",  "Gg^Emf,"),
-        ("Ggf\r",  "Gg^Emf\r"),
-        ("Ggf\n",  "Gg^Emf\n"),
-        )
+    ("^Voha", "^Voa"),
+    ("^Voh",  "^Vo"),
+    ("^Vhms", "^Vhha"),
+    ("^Vhm",  "^Vhh"),
+    ("^Vcha", "^Vca"),
+    ("^Vch",  "^Vc"),
+    ("^Vcm",  "^Vc"),
+    ("Ggf,",  "Gg^Emf"),
+    )
 
 # Global changes meant to be done on all lines.  Suppressed by noconvert.
 linechanges = (
