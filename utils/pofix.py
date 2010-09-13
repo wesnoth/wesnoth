@@ -456,6 +456,9 @@ stringfixes = {
 ("It doesn't seem to have helped its previous owner. I don't want it.", "It doesn’t seem to have helped its previous owner. I don’t want it."),
 ("Let's hope those wild wolves", "Let’s hope those wild wolves"),
 ("don't get to the feast", "don’t get to the feast"),
+
+# Spelling fix in 1.9.0+svn @ 46436
+("truely formidible", "truly formidable"),
 ),
 
 "wesnoth-ei" : (
