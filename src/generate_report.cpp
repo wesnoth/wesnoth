@@ -424,7 +424,7 @@ report generate_report(TYPE type,
 
 			tooltip << _("Weapon range: ") << "<b>" << range << "</b>\n"
 				<< _("Damage type: ")  << "<b>" << lang_type << "</b>\n"
-				<< _("Damage: ") << "\n";
+				<< _("Damage versus: ") << "\n";
 
 			// Find all the unit types on the map, and
 			// show this weapon's bonus against all the different units.
@@ -458,8 +458,7 @@ report generate_report(TYPE type,
 			for(std::map<int,std::set<std::string> >::reverse_iterator resist = resistances.rbegin(); resist != resistances.rend(); ++resist) {
 				int damage = round_damage(base_damage, damage_multiplier * resist->first, damage_divisor);
 				tooltip << "<b>" << damage << "</b>  "
-						<< "<i>(" << signed_percent(resist->first-100) << ")</i> "
-						<< _("vs") << " ";
+						<< "<i>(" << signed_percent(resist->first-100) << ")</i> : ";
 				for(std::set<std::string>::const_iterator i = resist->second.begin(); i != resist->second.end(); ++i) {
 					if(i != resist->second.begin()) {
 						tooltip << ", ";
