@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-06-25 11:17+0200\n"
+"POT-Creation-Date: 2010-09-13 14:13+0200\n"
 "PO-Revision-Date: 2010-04-11 12:55+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
@@ -14376,11 +14376,11 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Marksman.cfg:35
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Marshal.cfg:46
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Outrider.cfg:41
-#: data/campaigns/Under_the_Burning_Suns/units/Desert_Prowler.cfg:40
+#: data/campaigns/Under_the_Burning_Suns/units/Desert_Prowler.cfg:39
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Ranger.cfg:45
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Rider.cfg:40
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Scout.cfg:40
-#: data/campaigns/Under_the_Burning_Suns/units/Desert_Sentinel.cfg:40
+#: data/campaigns/Under_the_Burning_Suns/units/Desert_Sentinel.cfg:38
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Sharpshooter.cfg:43
 #: data/campaigns/Under_the_Burning_Suns/units/Human_Commander.cfg:44
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:390
@@ -14682,8 +14682,8 @@ msgstr ""
 #. [attack]: type=impact
 #. [effect]: type=impact
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Hunter.cfg:46
-#: data/campaigns/Under_the_Burning_Suns/units/Desert_Prowler.cfg:49
-#: data/campaigns/Under_the_Burning_Suns/units/Desert_Sentinel.cfg:49
+#: data/campaigns/Under_the_Burning_Suns/units/Desert_Prowler.cfg:48
+#: data/campaigns/Under_the_Burning_Suns/units/Desert_Sentinel.cfg:47
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:70
 #: data/campaigns/Under_the_Burning_Suns/units/Nym.cfg:39
 msgid "bolas"
@@ -14776,7 +14776,7 @@ msgstr ""
 
 #. [unit_type]: id=Nym Prowler, race=elf
 #. [female]
-#: data/campaigns/Under_the_Burning_Suns/units/Desert_Prowler.cfg:137
+#: data/campaigns/Under_the_Burning_Suns/units/Desert_Prowler.cfg:145
 #: data/campaigns/Under_the_Burning_Suns/units/Nym.cfg:155
 msgid "female^Desert Prowler"
 msgstr "Pustynna maruderka"
@@ -14833,25 +14833,19 @@ msgstr ""
 "jeździeckie są niedoścignione, choć brakuje im siły w walce."
 
 #. [unit_type]: id=Desert Sentinel, race=elf
-#: data/campaigns/Under_the_Burning_Suns/units/Desert_Sentinel.cfg:35
+#: data/campaigns/Under_the_Burning_Suns/units/Desert_Sentinel.cfg:33
 msgid ""
 "Desert Sentinels patrol the sands; they are trained to avoid enemies when it "
 "is advantageous. They can cripple opponents with their bolas and are deadly "
-"with their swords.\n"
-"\n"
-"The skirmish ability allows the rogue to ignore enemy units' zones of "
-"control and thus move unhindered around them."
+"with their swords."
 msgstr ""
 "Pustynni strażnicy patrolują piaski i nauczeni są unikać silniejszych "
-"przeciwników, jeśli jest to korzystniejsze, niż walka. Potrafią razić wrogów "
-"przy pomocy bola i używają mieczy z zabójczą precyzją.\n"
-"\n"
-"Umiejętności harcownika pozwalają im ignorować strefy kontroli jednostek "
-"nieprzyjaciela i z łatwością je omijać."
+"przeciwników, jeśli jest to korzystniejsze, niż walka. Potrafią obezwładniać "
+"przeciwników swoimi bola, a mieczami posługują się z zabójczą sprawnością."
 
 #. [unit_type]: id=Nym Sentinel, race=elf
 #. [female]
-#: data/campaigns/Under_the_Burning_Suns/units/Desert_Sentinel.cfg:122
+#: data/campaigns/Under_the_Burning_Suns/units/Desert_Sentinel.cfg:126
 #: data/campaigns/Under_the_Burning_Suns/units/Nym.cfg:141
 msgid "female^Desert Sentinel"
 msgstr "Pustynna strażniczka"
@@ -16749,6 +16743,21 @@ msgstr "Długa ciemność (3)"
 msgid "The Long Dark (4)"
 msgstr "Długa ciemność (4)"
 
+#~ msgid ""
+#~ "Desert Sentinels patrol the sands; they are trained to avoid enemies when "
+#~ "it is advantageous. They can cripple opponents with their bolas and are "
+#~ "deadly with their swords.\n"
+#~ "\n"
+#~ "The skirmish ability allows the rogue to ignore enemy units' zones of "
+#~ "control and thus move unhindered around them."
+#~ msgstr ""
+#~ "Pustynni strażnicy patrolują piaski i nauczeni są unikać silniejszych "
+#~ "przeciwników, jeśli jest to korzystniejsze, niż walka. Potrafią razić "
+#~ "wrogów przy pomocy bola i używają mieczy z zabójczą precyzją.\n"
+#~ "\n"
+#~ "Umiejętności harcownika pozwalają im ignorować strefy kontroli jednostek "
+#~ "nieprzyjaciela i z łatwością je omijać."
+
 #~ msgid "THE END"
 #~ msgstr "KONIEC"
 
@@ -17274,16 +17283,6 @@ msgstr "Długa ciemność (4)"
 #~ "przeciwieństwie do większości swoich pobratymców wolą szermierkę od "
 #~ "łucznictwa. Elfy te dobrze walczą pieszo i najlepiej sprawdzają się "
 #~ "otwartych piaskach."
-
-#~ msgid ""
-#~ "Desert Sentinels patrol the sands; they are trained to avoid enemies when "
-#~ "it is advantageous. They can cripple opponents with their bolas and are "
-#~ "deadly with their swords."
-#~ msgstr ""
-#~ "Pustynni strażnicy patrolują piaski i nauczeni są unikać silniejszych "
-#~ "przeciwników, jeśli jest to korzystniejsze, niż walka. Potrafią "
-#~ "obezwładniać przeciwników swoimi bola, a mieczami posługują się z "
-#~ "zabójczą sprawnością."
 
 #~ msgid "Hey Naru, the rocks have stopped falling. You can come out now!"
 #~ msgstr "Hej Naru, skały przestały już padać. Możesz wyjść!"

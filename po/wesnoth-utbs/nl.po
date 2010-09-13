@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-06-25 11:17+0200\n"
+"POT-Creation-Date: 2010-09-13 14:13+0200\n"
 "PO-Revision-Date: 2009-04-26 04:24+0200\n"
 "Last-Translator: Alexander van Gessel <ai0867@gmail.com>\n"
 "Language-Team: Dutch <ai0867@gmail.com>\n"
@@ -14671,11 +14671,11 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Marksman.cfg:35
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Marshal.cfg:46
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Outrider.cfg:41
-#: data/campaigns/Under_the_Burning_Suns/units/Desert_Prowler.cfg:40
+#: data/campaigns/Under_the_Burning_Suns/units/Desert_Prowler.cfg:39
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Ranger.cfg:45
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Rider.cfg:40
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Scout.cfg:40
-#: data/campaigns/Under_the_Burning_Suns/units/Desert_Sentinel.cfg:40
+#: data/campaigns/Under_the_Burning_Suns/units/Desert_Sentinel.cfg:38
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Sharpshooter.cfg:43
 #: data/campaigns/Under_the_Burning_Suns/units/Human_Commander.cfg:44
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:390
@@ -14986,8 +14986,8 @@ msgstr ""
 #. [attack]: type=impact
 #. [effect]: type=impact
 #: data/campaigns/Under_the_Burning_Suns/units/Desert_Hunter.cfg:46
-#: data/campaigns/Under_the_Burning_Suns/units/Desert_Prowler.cfg:49
-#: data/campaigns/Under_the_Burning_Suns/units/Desert_Sentinel.cfg:49
+#: data/campaigns/Under_the_Burning_Suns/units/Desert_Prowler.cfg:48
+#: data/campaigns/Under_the_Burning_Suns/units/Desert_Sentinel.cfg:47
 #: data/campaigns/Under_the_Burning_Suns/units/Kaleh.cfg:70
 #: data/campaigns/Under_the_Burning_Suns/units/Nym.cfg:39
 #, fuzzy
@@ -15086,7 +15086,7 @@ msgstr ""
 
 #. [unit_type]: id=Nym Prowler, race=elf
 #. [female]
-#: data/campaigns/Under_the_Burning_Suns/units/Desert_Prowler.cfg:137
+#: data/campaigns/Under_the_Burning_Suns/units/Desert_Prowler.cfg:145
 #: data/campaigns/Under_the_Burning_Suns/units/Nym.cfg:155
 msgid "female^Desert Prowler"
 msgstr "Woestijnsluipster"
@@ -15148,25 +15148,20 @@ msgstr ""
 "nagenoeg ongeëvenaard, hoewel het ze in het gevecht aan kracht ontbreekt."
 
 #. [unit_type]: id=Desert Sentinel, race=elf
-#: data/campaigns/Under_the_Burning_Suns/units/Desert_Sentinel.cfg:35
+#: data/campaigns/Under_the_Burning_Suns/units/Desert_Sentinel.cfg:33
 #, fuzzy
 msgid ""
 "Desert Sentinels patrol the sands; they are trained to avoid enemies when it "
 "is advantageous. They can cripple opponents with their bolas and are deadly "
-"with their swords.\n"
-"\n"
-"The skirmish ability allows the rogue to ignore enemy units' zones of "
-"control and thus move unhindered around them."
+"with their swords."
 msgstr ""
-"Woestijnwachters bewaken de woestijn; ze zijn getraind om vijanden te "
-"ontlopen als dat beter uitkomt. Ze kunnen hun tegenstanders met hun bola's "
-"vertragen en dodelijk toeslaan met hun zwaard.\n"
-"\n"
-"Bijzonderheden: Deze warzaaiers negeren vijandelijke beheersingszones."
+"Woestijn schildwachten patrouilleren over het zand; ze zijn getraind om "
+"vijanden te ontlopen wanneer deze voordeel hebben. Ze kunnen vijanden met "
+"hun bolas verlammen and zijn dodelijk met hun zwaarden."
 
 #. [unit_type]: id=Nym Sentinel, race=elf
 #. [female]
-#: data/campaigns/Under_the_Burning_Suns/units/Desert_Sentinel.cfg:122
+#: data/campaigns/Under_the_Burning_Suns/units/Desert_Sentinel.cfg:126
 #: data/campaigns/Under_the_Burning_Suns/units/Nym.cfg:141
 msgid "female^Desert Sentinel"
 msgstr "Woestijnschildwacht"
@@ -17115,6 +17110,21 @@ msgstr "De Lange Duisternis (3)"
 msgid "The Long Dark (4)"
 msgstr "De Lange Duisternis (4)"
 
+#, fuzzy
+#~ msgid ""
+#~ "Desert Sentinels patrol the sands; they are trained to avoid enemies when "
+#~ "it is advantageous. They can cripple opponents with their bolas and are "
+#~ "deadly with their swords.\n"
+#~ "\n"
+#~ "The skirmish ability allows the rogue to ignore enemy units' zones of "
+#~ "control and thus move unhindered around them."
+#~ msgstr ""
+#~ "Woestijnwachters bewaken de woestijn; ze zijn getraind om vijanden te "
+#~ "ontlopen als dat beter uitkomt. Ze kunnen hun tegenstanders met hun "
+#~ "bola's vertragen en dodelijk toeslaan met hun zwaard.\n"
+#~ "\n"
+#~ "Bijzonderheden: Deze warzaaiers negeren vijandelijke beheersingszones."
+
 #~ msgid "THE END"
 #~ msgstr "EINDE"
 
@@ -17606,16 +17616,6 @@ msgstr "De Lange Duisternis (4)"
 #~ "in Wesnoth. Ze zijn geoefend met zwaard en boog, maar hebben, zoals de "
 #~ "meesten van hun soort, een voorkeur voor het zwaard. Deze elven zijn vlug "
 #~ "te voet en vechten het sterkst op het open zand."
-
-#, fuzzy
-#~ msgid ""
-#~ "Desert Sentinels patrol the sands; they are trained to avoid enemies when "
-#~ "it is advantageous. They can cripple opponents with their bolas and are "
-#~ "deadly with their swords."
-#~ msgstr ""
-#~ "Woestijn schildwachten patrouilleren over het zand; ze zijn getraind om "
-#~ "vijanden te ontlopen wanneer deze voordeel hebben. Ze kunnen vijanden met "
-#~ "hun bolas verlammen and zijn dodelijk met hun zwaarden."
 
 #, fuzzy
 #~ msgid "Hey Naru, the rocks have stopped falling. You can come out now!"
