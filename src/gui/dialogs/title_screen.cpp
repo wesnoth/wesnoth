@@ -215,6 +215,7 @@ void ttitle_screen::pre_show(CVideo& video, twindow& window)
 			std::map<std::string, string_map> page;
 
 			widget["label"] = tip["text"];
+			widget["use_markup"] = "true";
 			page["tip"] = widget;
 
 			widget["label"] = tip["source"];
