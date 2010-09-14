@@ -2000,7 +2000,7 @@ void display::draw_invalidated() {
 	SDL_Rect clip_rect = get_clip_rect();
 	surface screen = get_screen_surface();
 	clip_rect_setter set_clip_rect(screen, &clip_rect);
-	foreach (map_location loc, invalidated_) {
+	foreach (const map_location& loc, invalidated_) {
 		int xpos = get_location_x(loc);
 		int ypos = get_location_y(loc);
 
