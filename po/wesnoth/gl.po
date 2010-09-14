@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-09-13 11:11+0200\n"
+"POT-Creation-Date: 2010-09-14 18:29+0200\n"
 "PO-Revision-Date: 2010-08-13 11:47+0200\n"
 "Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
 "Language-Team: Galician <kde-i18n-doc@kde.org>\n"
@@ -6375,7 +6375,7 @@ msgstr "pesadelo"
 #, fuzzy
 msgid ""
 "Liminal units fight better during twilight while fighting normally during "
-"day and night. \n"
+"day and night.\n"
 "\n"
 "Twilight: +25% Damage"
 msgstr ""
@@ -6599,7 +6599,8 @@ msgstr "Monte $name,Agolada"
 # Cantidade: (1 + *) / 100
 #. [language]
 #: data/hardwired/english.cfg:39
-msgid "$road|’s Rest,$road|’s Waypoint,$road|bury,$road|ham,$name|bury,$name|ham"
+msgid ""
+"$road|’s Rest,$road|’s Waypoint,$road|bury,$road|ham,$name|bury,$name|ham"
 msgstr "$name do Camiño,A Estrada"
 
 # Vilas ─ Marismas.
@@ -6703,9 +6704,8 @@ msgstr ""
 #: data/hardwired/tips.cfg:148 data/hardwired/tips.cfg:156
 #: data/hardwired/tips.cfg:164 data/hardwired/tips.cfg:172
 #: data/hardwired/tips.cfg:176 data/hardwired/tips.cfg:180
-#: data/hardwired/tips.cfg:184 data/hardwired/tips.cfg:192
-#: data/hardwired/tips.cfg:196 data/hardwired/tips.cfg:200
-#: data/hardwired/tips.cfg:205
+#: data/hardwired/tips.cfg:188 data/hardwired/tips.cfg:192
+#: data/hardwired/tips.cfg:197 data/hardwired/tips.cfg:201
 #, fuzzy
 msgid "<i>― The Wesnoth Tactical Guide</i>"
 msgstr "─ A guía táctica de Wesnoth"
@@ -7254,19 +7254,6 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:183
 msgid ""
-"You can send the Wesnoth Project an anonymous summary of your progress using "
-"the 'Help Wesnoth' button (indicated by the envelope icon near the lower-"
-"right-hand corner of the game main screen). This information is vital so we "
-"can adjust campaign difficulty."
-msgstr ""
-"Podes enviarlle ao Proxecto Wesnoth un resumo anónimo dos teus progresos "
-"mediante o botón «Axudar co Wesnoth» (indicado pola icona do sobre na "
-"esquina inferior dereita da pantalla principal do xogo). Esta información é "
-"vital para que poidamos axustar o nivel de dificultade das campañas."
-
-#. [tip]
-#: data/hardwired/tips.cfg:187
-msgid ""
 "To advance low-level units quickly, team them with a veteran and use the "
 "veteran to damage a joint target heavily enough for the junior partner to "
 "get in the killing blow."
@@ -7276,13 +7263,33 @@ msgstr ""
 "compartido para que a unidade de nivel inferior poida matar ao obxectivo."
 
 #. [tip]
-#: data/hardwired/tips.cfg:188
+#: data/hardwired/tips.cfg:184
 #, fuzzy
 msgid "<i>― Queen Li’sar, 528YW</i>"
 msgstr "─ Raíña Li'sar, 528 d.W."
 
 #. [tip]
+#: data/hardwired/tips.cfg:187
+msgid ""
+"If an enemy benefits more from a rare terrain type than you do, occupying "
+"that terrain will deprive them of its benefits."
+msgstr ""
+"Se un inimigo se beneficia máis ca ti dun tipo de terreo raro, ocupando ese "
+"terreo privaralo dos seus beneficios."
+
+#. [tip]
 #: data/hardwired/tips.cfg:191
+msgid ""
+"Few units have good defenses in water; a line of attackers along the edge of "
+"a river can inflict heavy casualties. Elves can use the edge of a forest in "
+"a similar manner, and dwarves can do the same with mountains."
+msgstr ""
+"Poucas unidades se defenden ben na auga. Unha liña de atacantes ao longo da "
+"beira dun río pode causar numerosas baixas. Dun xeito similar, os elfos "
+"poden aproveitar os límites dos bosques, e os ananos as lombas das montañas."
+
+#. [tip]
+#: data/hardwired/tips.cfg:196
 msgid ""
 "You cannot undo a move that reveals any fog or shroud. Toggle the 'Delay "
 "Shroud Updates' option on when you need to move units while retaining the "
@@ -7294,27 +7301,7 @@ msgstr ""
 "para desfacer os seus movementos."
 
 #. [tip]
-#: data/hardwired/tips.cfg:195
-msgid ""
-"If an enemy benefits more from a rare terrain type than you do, occupying "
-"that terrain will deprive them of its benefits."
-msgstr ""
-"Se un inimigo se beneficia máis ca ti dun tipo de terreo raro, ocupando ese "
-"terreo privaralo dos seus beneficios."
-
-#. [tip]
-#: data/hardwired/tips.cfg:199
-msgid ""
-"Few units have good defenses in water; a line of attackers along the edge of "
-"a river can inflict heavy casualties. Elves can use the edge of a forest in "
-"a similar manner, and dwarves can do the same with mountains."
-msgstr ""
-"Poucas unidades se defenden ben na auga. Unha liña de atacantes ao longo da "
-"beira dun río pode causar numerosas baixas. Dun xeito similar, os elfos "
-"poden aproveitar os límites dos bosques, e os ananos as lombas das montañas."
-
-#. [tip]
-#: data/hardwired/tips.cfg:204
+#: data/hardwired/tips.cfg:200
 msgid ""
 "In many campaign scenarios, you may issue simple instructions for your "
 "computer-controlled allies using the right-click context menu."
@@ -8457,42 +8444,43 @@ msgstr "alcance da arma: "
 msgid "Damage type: "
 msgstr "tipo de dano: "
 
-#: src/generate_report.cpp:449
-msgid "vs"
-msgstr "contra"
+#: src/generate_report.cpp:427
+#, fuzzy
+msgid "Damage versus: "
+msgstr "tipo de dano: "
 
-#: src/generate_report.cpp:468
+#: src/generate_report.cpp:480
 #, fuzzy
 msgid "Accuracy :"
 msgstr "% de precisión"
 
-#: src/generate_report.cpp:473
+#: src/generate_report.cpp:485
 msgid "Parry :"
 msgstr ""
 
-#: src/generate_report.cpp:488
+#: src/generate_report.cpp:500
 #, fuzzy
 msgid "Weapon special: "
 msgstr "Propiedades das armas"
 
-#: src/generate_report.cpp:522
+#: src/generate_report.cpp:534
 msgid "Lawful units: "
 msgstr "Unidades legais: "
 
-#: src/generate_report.cpp:523
+#: src/generate_report.cpp:535
 msgid "Neutral units: "
 msgstr "Unidades neutrais: "
 
-#: src/generate_report.cpp:524
+#: src/generate_report.cpp:536
 msgid "Chaotic units: "
 msgstr "Unidades caóticas: "
 
-#: src/generate_report.cpp:527
+#: src/generate_report.cpp:539
 #, fuzzy
 msgid "Liminal units: "
 msgstr "Unidades legais: "
 
-#: src/generate_report.cpp:708
+#: src/generate_report.cpp:720
 msgid "Observers:"
 msgstr "Observadores:"
 
@@ -10813,6 +10801,20 @@ msgstr "leal"
 #: src/unit_types.cpp:969
 msgid "female^neutral"
 msgstr "neutral"
+
+#~ msgid ""
+#~ "You can send the Wesnoth Project an anonymous summary of your progress "
+#~ "using the 'Help Wesnoth' button (indicated by the envelope icon near the "
+#~ "lower-right-hand corner of the game main screen). This information is "
+#~ "vital so we can adjust campaign difficulty."
+#~ msgstr ""
+#~ "Podes enviarlle ao Proxecto Wesnoth un resumo anónimo dos teus progresos "
+#~ "mediante o botón «Axudar co Wesnoth» (indicado pola icona do sobre na "
+#~ "esquina inferior dereita da pantalla principal do xogo). Esta información "
+#~ "é vital para que poidamos axustar o nivel de dificultade das campañas."
+
+#~ msgid "vs"
+#~ msgstr "contra"
 
 #~ msgid "Multiplayer_AI^Default AI"
 #~ msgstr "AI por defecto"

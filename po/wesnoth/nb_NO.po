@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth 1.1.1\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-09-13 11:01+0200\n"
+"POT-Creation-Date: 2010-09-14 18:29+0200\n"
 "PO-Revision-Date: 2009-04-05 10:50+0100\n"
 "Last-Translator: Gaute Storli Nielsen <gauteamus(at)gmail(dot)com>\n"
 "Language-Team: None\n"
@@ -5858,7 +5858,7 @@ msgstr "Marerit"
 #, fuzzy
 msgid ""
 "Liminal units fight better during twilight while fighting normally during "
-"day and night. \n"
+"day and night.\n"
 "\n"
 "Twilight: +25% Damage"
 msgstr ""
@@ -5998,7 +5998,8 @@ msgstr ""
 
 #. [language]
 #: data/hardwired/english.cfg:39
-msgid "$road|’s Rest,$road|’s Waypoint,$road|bury,$road|ham,$name|bury,$name|ham"
+msgid ""
+"$road|’s Rest,$road|’s Waypoint,$road|bury,$road|ham,$name|bury,$name|ham"
 msgstr ""
 
 #. [language]
@@ -6092,9 +6093,8 @@ msgstr ""
 #: data/hardwired/tips.cfg:148 data/hardwired/tips.cfg:156
 #: data/hardwired/tips.cfg:164 data/hardwired/tips.cfg:172
 #: data/hardwired/tips.cfg:176 data/hardwired/tips.cfg:180
-#: data/hardwired/tips.cfg:184 data/hardwired/tips.cfg:192
-#: data/hardwired/tips.cfg:196 data/hardwired/tips.cfg:200
-#: data/hardwired/tips.cfg:205
+#: data/hardwired/tips.cfg:188 data/hardwired/tips.cfg:192
+#: data/hardwired/tips.cfg:197 data/hardwired/tips.cfg:201
 msgid "<i>― The Wesnoth Tactical Guide</i>"
 msgstr ""
 
@@ -6600,19 +6600,6 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:183
-#, fuzzy
-msgid ""
-"You can send the Wesnoth Project an anonymous summary of your progress using "
-"the 'Help Wesnoth' button (indicated by the envelope icon near the lower-"
-"right-hand corner of the game main screen). This information is vital so we "
-"can adjust campaign difficulty."
-msgstr ""
-"Du kan sende en anonym oppsummering av fremgangen din ved å trykke 'Hjelp "
-"Wesnoth' knappen. Denne informasjonen er nyttig så vi kan balansere "
-"utfordringene i felttog og fraksjoner. "
-
-#. [tip]
-#: data/hardwired/tips.cfg:187
 msgid ""
 "To advance low-level units quickly, team them with a veteran and use the "
 "veteran to damage a joint target heavily enough for the junior partner to "
@@ -6620,27 +6607,19 @@ msgid ""
 msgstr ""
 
 #. [tip]
-#: data/hardwired/tips.cfg:188
+#: data/hardwired/tips.cfg:184
 msgid "<i>― Queen Li’sar, 528YW</i>"
 msgstr ""
 
 #. [tip]
-#: data/hardwired/tips.cfg:191
-msgid ""
-"You cannot undo a move that reveals any fog or shroud. Toggle the 'Delay "
-"Shroud Updates' option on when you need to move units while retaining the "
-"ability to undo."
-msgstr ""
-
-#. [tip]
-#: data/hardwired/tips.cfg:195
+#: data/hardwired/tips.cfg:187
 msgid ""
 "If an enemy benefits more from a rare terrain type than you do, occupying "
 "that terrain will deprive them of its benefits."
 msgstr ""
 
 #. [tip]
-#: data/hardwired/tips.cfg:199
+#: data/hardwired/tips.cfg:191
 msgid ""
 "Few units have good defenses in water; a line of attackers along the edge of "
 "a river can inflict heavy casualties. Elves can use the edge of a forest in "
@@ -6648,7 +6627,15 @@ msgid ""
 msgstr ""
 
 #. [tip]
-#: data/hardwired/tips.cfg:204
+#: data/hardwired/tips.cfg:196
+msgid ""
+"You cannot undo a move that reveals any fog or shroud. Toggle the 'Delay "
+"Shroud Updates' option on when you need to move units while retaining the "
+"ability to undo."
+msgstr ""
+
+#. [tip]
+#: data/hardwired/tips.cfg:200
 msgid ""
 "In many campaign scenarios, you may issue simple instructions for your "
 "computer-controlled allies using the right-click context menu."
@@ -7816,42 +7803,43 @@ msgstr "våpenrekkevidde: "
 msgid "Damage type: "
 msgstr "skadetype: "
 
-#: src/generate_report.cpp:449
-msgid "vs"
-msgstr "mot"
+#: src/generate_report.cpp:427
+#, fuzzy
+msgid "Damage versus: "
+msgstr "skadetype: "
 
-#: src/generate_report.cpp:468
+#: src/generate_report.cpp:480
 #, fuzzy
 msgid "Accuracy :"
 msgstr "totalskade"
 
-#: src/generate_report.cpp:473
+#: src/generate_report.cpp:485
 msgid "Parry :"
 msgstr ""
 
-#: src/generate_report.cpp:488
+#: src/generate_report.cpp:500
 #, fuzzy
 msgid "Weapon special: "
 msgstr "Spesielle våpen"
 
-#: src/generate_report.cpp:522
+#: src/generate_report.cpp:534
 msgid "Lawful units: "
 msgstr "Hederlige enheter: "
 
-#: src/generate_report.cpp:523
+#: src/generate_report.cpp:535
 msgid "Neutral units: "
 msgstr "Nøytrale enheter: "
 
-#: src/generate_report.cpp:524
+#: src/generate_report.cpp:536
 msgid "Chaotic units: "
 msgstr "Lyssky enheter: "
 
-#: src/generate_report.cpp:527
+#: src/generate_report.cpp:539
 #, fuzzy
 msgid "Liminal units: "
 msgstr "Hederlige enheter: "
 
-#: src/generate_report.cpp:708
+#: src/generate_report.cpp:720
 msgid "Observers:"
 msgstr "Observatører:"
 
@@ -10261,6 +10249,20 @@ msgstr "lojal"
 #, fuzzy
 msgid "female^neutral"
 msgstr "Overfallskvinne"
+
+#, fuzzy
+#~ msgid ""
+#~ "You can send the Wesnoth Project an anonymous summary of your progress "
+#~ "using the 'Help Wesnoth' button (indicated by the envelope icon near the "
+#~ "lower-right-hand corner of the game main screen). This information is "
+#~ "vital so we can adjust campaign difficulty."
+#~ msgstr ""
+#~ "Du kan sende en anonym oppsummering av fremgangen din ved å trykke 'Hjelp "
+#~ "Wesnoth' knappen. Denne informasjonen er nyttig så vi kan balansere "
+#~ "utfordringene i felttog og fraksjoner. "
+
+#~ msgid "vs"
+#~ msgstr "mot"
 
 #, fuzzy
 #~ msgid "nightly regeneration"
