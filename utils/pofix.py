@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
 # pofix - perform string fixups on incoming .po files.
 #
@@ -46,6 +47,9 @@ stringfixes = {
 ("wqy-zenhei.ttc,DejaVuSans.ttf", "wqy-zenhei.ttc,DejaVuSans.ttf,Andagii.ttf"),
 ("WenQuanYi Zen Hei,DejaVu Sans,", "WenQuanYi Zen Hei,DejaVu Sans,Andagii"),
 ("Icelandic translation", "Icelandic Translation"),
+
+# "Familiarise" is not used in American English
+("or familiarise yourself", "or familiarize yourself"),
 ),
 
 "wesnoth-aoi" : (
@@ -134,7 +138,7 @@ stringfixes = {
 ),
 
 "wesnoth-manual" : (
-# In English, if you "chop a piece of meat", there is a strong 
+# In English, if you "chop a piece of meat", there is a strong
 # implication that you regard it as food. The term "flesh" does
 # not have this implication.
 #
@@ -199,7 +203,7 @@ stringfixes = {
 ("funny that the lich-Lord", "funny that the lich-lord"),
 ("evil Lich in the catacombs", "evil lich in the catacombs"),
 ("The Lich was carrying", "The lich was carrying"),
-("defeated the Lich and returned", "defeated the lich and returned",), 
+("defeated the Lich and returned", "defeated the lich and returned",),
 ("know that Lich you",  "know that lich you"),
 ("Lich. Maybe you", "lich. Maybe you"),
 ("Young Prince Haldric.", "young Prince Haldric."),
@@ -218,7 +222,7 @@ stringfixes = {
 # This may imply a translation change in languages with question
 # inflections in their grammar.
 #
-# One other change replaces "menfolk" with "humans"; the former 
+# One other change replaces "menfolk" with "humans"; the former
 # has an idiomatic sense in American English that you don't want.
 #
 ("Now Deoran, take", "Now, Deoran, take"),
@@ -319,7 +323,7 @@ if __name__ == '__main__':
                         #complain loudly
                         print "pofix: old string\n\t\"%s\"\n equals new string\n\t\"%s\"\nexiting." % (old, new)
                         sys.exit(1)
-                    #this check is problematic and the last clause is added to prevent false 
+                    #this check is problematic and the last clause is added to prevent false
                     #positives in case that new is a substring of old, though this can also
                     #lead to "real" probs not found, the real check would be "does replacing
                     #old with new lead to duplicate msgids? (including old ones marked with #~)"
