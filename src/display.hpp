@@ -790,7 +790,7 @@ protected:
 public:
 
 	/**
-	 * Add an item to the drawing buffer.
+	 * Add an item to the drawing buffer. You need to update screen on affected area
 	 *
 	 * @param layer              The layer to draw on.
 	 * @param loc                The hex the image belongs to, needed for the

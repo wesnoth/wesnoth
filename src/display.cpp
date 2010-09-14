@@ -866,8 +866,8 @@ void display::drawing_buffer_commit()
 			SDL_Rect *srcrectArg = (srcrect.x | srcrect.y | srcrect.w | srcrect.h)
 				? &srcrect : NULL;
 			SDL_BlitSurface(surf, srcrectArg, screen, &dstrect);
+			//NOTE: the screen part should already be marked as 'to update'
 		}
-		update_rect(blit.x(), blit.y(), zoom_, zoom_);
 	}
 	drawing_buffer_clear();
 }
@@ -2003,6 +2003,9 @@ void display::draw_invalidated() {
 	foreach (map_location loc, invalidated_) {
 		int xpos = get_location_x(loc);
 		int ypos = get_location_y(loc);
+
+		update_rect(xpos, ypos, zoom_, zoom_);
+
 		const bool on_map = get_map().on_board(loc);
 		SDL_Rect hex_rect = create_rect(xpos, ypos, zoom_, zoom_);
 		if(!rects_overlap(hex_rect,clip_rect)) {
