@@ -823,8 +823,8 @@ protected:
 	 * Invalidate controls and panels when changed after they have been drawn
 	 * initially. Useful for dynamic theme modification.
 	 */
-	bool draw_init();
-	void draw_wrap(bool update,bool force,bool changed);
+	void draw_init();
+	void draw_wrap(bool update,bool force);
 
 	/** Used to indicate to drawing funtions that we are doing a map screenshot */
 	bool map_screenshot_;

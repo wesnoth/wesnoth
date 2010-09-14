@@ -1222,12 +1222,10 @@ void display::set_diagnostic(const std::string& msg)
 	}
 }
 
-bool display::draw_init()
+void display::draw_init()
 {
-	bool changed = false;
-
 	if (get_map().empty()) {
-		return changed;
+		return;
 	}
 
 	if(benchmark) {
@@ -1237,7 +1235,6 @@ bool display::draw_init()
 	if(!panelsDrawn_) {
 		draw_all_panels();
 		panelsDrawn_ = true;
-		changed = true;
 	}
 
 	if(redraw_background_) {
@@ -1263,11 +1260,9 @@ bool display::draw_init()
 
 		redrawMinimap_ = true;
 	}
-
-	return changed;
 }
 
-void display::draw_wrap(bool update,bool force,bool changed)
+void display::draw_wrap(bool update, bool force)
 {
 	static const int time_between_draws = preferences::draw_delay();
 	const int current_time = SDL_GetTicks();
@@ -1276,21 +1271,17 @@ void display::draw_wrap(bool update,bool force,bool changed)
 	if(redrawMinimap_) {
 		redrawMinimap_ = false;
 		draw_minimap();
-		changed = true;
 	}
 
 	if(update) {
-		if(force || changed) {
-			update_display();
-			if(!force && wait_time > 0) {
-				// If it's not time yet to draw, delay until it is
-				SDL_Delay(wait_time);
-			}
+		update_display();
+		if(!force && wait_time > 0) {
+			// If it's not time yet to draw, delay until it is
+			SDL_Delay(wait_time);
 		}
 
 		// Set the theortical next draw time
 		nextDraw_ += time_between_draws;
-
 
 		// If the next draw already should have been finished,
 		// we'll enter an update frenzy, so make sure that the
@@ -1946,7 +1937,7 @@ void display::draw(bool update,bool force) {
 
 	local_tod_light_ = has_time_area() && preferences::get("local_tod_light", false);
 
-	bool changed = draw_init();
+	draw_init();
 	pre_draw();
 	// invalidate all that needs to be invalidated
 	invalidate_animations();
@@ -1969,19 +1960,17 @@ void display::draw(bool update,bool force) {
 		 * ran if invalidated_.empty() == true.
 		 */
 		if(!invalidated_.empty() || preferences::show_haloes()) {
-			changed = true;
 			draw_invalidated();
 			invalidated_.clear();
 		}
 		drawing_buffer_commit();
 		post_commit();
 		draw_sidebar();
-		/** @todo FIXME: This changed can probably be smarter */
-		changed = true;
+
 		// Simulate slow PC:
 		//SDL_Delay(2*simulate_delay + rand() % 20);
 	}
-	draw_wrap(update, force, changed);
+	draw_wrap(update, force);
 }
 
 map_labels& display::labels()
