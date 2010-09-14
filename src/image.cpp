@@ -81,20 +81,21 @@ private:
 template <typename T>
 bool locator::in_cache(cache_type<T> &cache) const
 {
-	return index_ == -1 ? false : cache.get_element(index_).loaded;
+	return index_ < 0 ? false : cache.get_element(index_).loaded;
 }
 
 template <typename T>
 const T &locator::locate_in_cache(cache_type<T> &cache) const
 {
 	static T dummy;
-	return index_ == -1 ? dummy : cache.get_element(index_).item;
+	return index_ < 0 ? dummy : cache.get_element(index_).item;
 }
 
 template <typename T>
 void locator::add_to_cache(cache_type<T> &cache, const T &data) const
 {
-	if (index_ != -1 ) cache.get_element(index_) = cache_item<T>(data);
+	if (index_ >= 0)
+		cache.get_element(index_) = cache_item<T>(data);
 }
 
 }
