@@ -2064,10 +2064,11 @@ void display::draw_hex(const map_location& loc) {
 	}
 
 	// Paint arrows
-	arrows_list_t arrows_in_hex = arrows_map_[loc];
-	foreach(arrow* a, arrows_in_hex)
-	{
-		a->draw_hex(loc);
+	arrows_map_t::const_iterator arrows_in_hex = arrows_map_.find(loc);
+	if(arrows_in_hex != arrows_map_.end()) {
+		foreach(arrow* const a, arrows_in_hex->second) {
+			a->draw_hex(loc);
+		}
 	}
 
 	// Apply shroud, fog and linger overlay
