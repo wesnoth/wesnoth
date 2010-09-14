@@ -44,29 +44,17 @@ static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
 #define LOG_DP LOG_STREAM(info, log_display)
 
-/**
- * Iterators from this dummy list are needed to ensure that iterator member
- * of cache_item is always non-singular iterator thus avoiding
- * "Copy-contruct from singular iterator" error when libstdc++ debug mode
- * is enabled. Note copying a singular iterator is undefined behaviour by
- * the C++ standard.
- */
-static std::list<int> dummy_list;
-
 template<typename T>
 struct cache_item
 {
-	cache_item(): loaded(false), item(), position(dummy_list.end())
-	{
-	}
+	cache_item(): item(), loaded(false)
+	{}
 
-	cache_item(const T &item): loaded(true), item(item), position(dummy_list.end())
-	{
-	}
+	cache_item(const T &item): item(item), loaded(true)
+	{}
 
-	bool loaded;
 	T item;
-	std::list<int>::iterator position;
+	bool loaded;
 };
 
 namespace image {
@@ -75,24 +63,18 @@ template<typename T>
 class cache_type
 {
 public:
-	cache_type(): cache_size_(0), cache_max_size_(2000), lru_list_(), content_()
-	{
+	cache_type(): content_()
+	{}
+
+	cache_item<T> &get_element(int index) {
+		if (static_cast<unsigned>(index) >= content_.size())
+			content_.resize(index + 1);
+		return content_[index];
 	}
 
-	cache_item<T> &get_element(int index);
-	void on_load(int index);
-
-	void flush()
-	{
-		content_.clear();
-		lru_list_.clear();
-		cache_size_ = 0;
-	}
+	void flush() { content_.clear(); }
 
 private:
-	int cache_size_;
-	int cache_max_size_;
-	std::list<int> lru_list_;
 	std::vector<cache_item<T> > content_;
 };
 
@@ -113,7 +95,6 @@ template <typename T>
 void locator::add_to_cache(cache_type<T> &cache, const T &data) const
 {
 	if (index_ != -1 ) cache.get_element(index_) = cache_item<T>(data);
-	cache.on_load(index_);
 }
 
 }
@@ -1214,36 +1195,6 @@ bool precached_file_exists(const std::string& file)
 		return b->second;
 	else
 		return false;
-}
-
-template<typename T>
-cache_item<T>& cache_type<T>::get_element(int index)
-{
-	assert (index != -1);
-	if (unsigned(index) >= content_.size()) content_.resize(index + 1);
-	cache_item<T>& elt = content_[index];
-	if(elt.loaded) {
-		assert(*elt.position == index);
-		lru_list_.erase(elt.position);
-		lru_list_.push_front(index);
-		elt.position = lru_list_.begin();
-	}
-	return elt;
-}
-template<typename T>
-void cache_type<T>::on_load(int index){
-	if(index == -1) return ;
-	cache_item<T>& elt = content_[index];
-	if(!elt.loaded) return ;
-	lru_list_.push_front(index);
-	elt.position = lru_list_.begin();
-	while(cache_size_ > cache_max_size_-100) {
-		cache_item<T>& elt = content_[lru_list_.back()];
-		elt.loaded=false;
-		elt.item = T();
-		lru_list_.pop_back();
-		cache_size_--;
-	}
 }
 
 } // end namespace image
