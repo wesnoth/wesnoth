@@ -1275,7 +1275,7 @@ void display::draw_wrap(bool update, bool force)
 
 	if(update) {
 		update_display();
-		if(!force && wait_time > 0) {
+		if(!force && !benchmark && wait_time > 0) {
 			// If it's not time yet to draw, delay until it is
 			SDL_Delay(wait_time);
 		}
