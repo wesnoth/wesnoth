@@ -50,6 +50,9 @@ stringfixes = {
 
 # "Familiarise" is not used in American English
 ("or familiarise yourself", "or familiarize yourself"),
+
+# Correct spelling
+("has a tool-tip", "has a tooltip"),
 ),
 
 "wesnoth-aoi" : (
