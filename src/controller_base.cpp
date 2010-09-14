@@ -211,14 +211,16 @@ void controller_base::play_slice(bool is_delay_enabled)
 	scrolling_ = handle_scroll(key, mousex, mousey, mouse_flags);
 
 	get_display().draw();
-	if (!scrolling_) {
-		if (was_scrolling) {
-			// scrolling ended, update the cursor and the brightened hex
-			get_mouse_handler_base().mouse_update(browse_);
-		}
-		if (is_delay_enabled){
-			get_display().delay((SDL_GetAppState() & SDL_APPACTIVE) != 0 ? 0 : 200);
-		}
+
+	// be nice when window is not visible
+	// NOTE should be handled by display instead, to only disable drawing
+	if (is_delay_enabled && (SDL_GetAppState() & SDL_APPACTIVE) == 0) {
+		get_display().delay(200);
+	}
+
+	if (!scrolling_ && was_scrolling) {
+		// scrolling ended, update the cursor and the brightened hex
+		get_mouse_handler_base().mouse_update(browse_);
 	}
 	slice_end();
 }
