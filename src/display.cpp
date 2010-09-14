@@ -1281,11 +1281,11 @@ void display::draw_wrap(bool update,bool force,bool changed)
 
 	if(update) {
 		if(force || changed) {
+			update_display();
 			if(!force && wait_time > 0) {
 				// If it's not time yet to draw, delay until it is
 				SDL_Delay(wait_time);
 			}
-			update_display();
 		}
 
 		// Set the theortical next draw time
