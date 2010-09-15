@@ -1018,6 +1018,69 @@ bool in_mask_surface(const surface &surf, const surface &mask)
 	return true;
 }
 
+surface submerge_alpha(const surface &surf, int depth, float alpha_base, float alpha_delta,  bool optimize)
+{
+	if(surf== NULL) {
+		return NULL;
+	}
+
+	surface nsurf(make_neutral_surface(surf));
+
+	{
+		surface_lock lock(nsurf);
+
+		Uint32* beg = lock.pixels();
+		Uint32* limit = beg + (nsurf->h-depth) * nsurf->w ;
+		Uint32* end = beg + nsurf->w * nsurf->h;
+		beg = limit; // directlt jump to the bottom part
+
+		while(beg != end){
+			Uint8 alpha = (*beg) >> 24;
+
+			if(alpha) {
+				Uint8 r, g, b;
+				r = (*beg) >> 16;
+				g = (*beg) >> 8;
+				b = (*beg);
+				int d = (beg-limit)/nsurf->w;  // current depth in pixels
+				float a = alpha_base - d * alpha_delta;
+				fixed_t amount = ftofxp(a<0?0:a);
+				alpha = std::min<unsigned>(unsigned(fxpmult(alpha,amount)),255);
+				*beg = (alpha << 24) + (r << 16) + (g << 8) + b;
+			}
+
+			++beg;
+		}
+
+/*
+		for(int y = submerge_height; y < nsurf->h; ++y) {
+			Uint32* cur = beg + y * nsurf->w;
+			Uint32* row_end = beg + (y+1) * nsurf->w;
+			float d = y * 1.0 / depth;
+			double a = 0.2;//std::max<double>(0, (1-d)*0.3);
+			fixed_t amount = ftofxp(a);
+			while(cur != row_end) {
+				Uint8 alpha = (*cur) >> 24;
+
+				if(alpha) {
+					Uint8 r, g, b;
+					r = (*cur) >> 16;
+					g = (*cur) >> 8;
+					b = (*cur);
+					alpha = std::min<unsigned>(unsigned(fxpmult(alpha,amount)),255);
+					*cur = (alpha << 24) + (r << 16) + (g << 8) + b;
+				}
+
+				++cur;
+			}
+		}*/
+
+	}
+
+	return optimize ? create_optimized_surface(nsurf) : nsurf;
+
+}
+
 surface light_surface(const surface &surf, const surface &lightmap, bool optimize)
 {
 	if(surf == NULL) {

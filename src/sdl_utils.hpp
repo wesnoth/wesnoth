@@ -240,6 +240,15 @@ surface mask_surface(const surface &surf, const surface &mask);
 /** Check if a surface fit into a mask */
 bool in_mask_surface(const surface &surf, const surface &mask);
 
+/** Progressively reduce alpha of bottom part of the surface
+ *  @param surf              The source surface.
+ *  @param depth             The height of the bottom part in pixels
+ *  @param alpha_base        The alpha adjustement at the interface
+ *  @param alpha_delta       The alpha adjustement reduction rate by pixel depth
+ *  @param optimize_format   Optimize by converting to result to display
+*/
+surface submerge_alpha(const surface &surf, int depth, float alpha_base, float alpha_delta, bool optimize=true);
+
 /** Light surf using lightmap (RGB=128,128,128 means no change) */
 surface light_surface(const surface &surf, const surface &lightmap, bool optimize=true);
 
