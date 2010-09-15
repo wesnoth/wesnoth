@@ -48,7 +48,7 @@ ir dalinkitės jais su kitais.
 \fB\-\-bpp\fP\fI\ skaičius\fP
 nustato bitų vienam pikseliui vertę. Pavyzdžiui: \fB\-\-bpp 32\fP
 .TP 
-\fB\-c, \-\-campaign[[<difficulty>] <id_campaign> [<id_scenario>]]\fP
+\fB\-c, \-\-campaign[[<sunkumas>] <kampanijos_id> [<scenarijaus_id>]]\fP
 goes directly to the campaign based on the parameters.  The difficulty is a
 number between 1 and current campaign's difficulties number.  The default
 difficulty is 1.  The scenario must be one of the campaign's child
@@ -62,7 +62,7 @@ the configuration directory outside the $HOME or "My Documents\eMy Games"
 \fB\-\-config\-path\fP
 išveda naudotojo konfigūracijos aplanko kelią ir išeina.
 .TP 
-\fB\-\-data\-dir <directory>\fP
+\fB\-\-data\-dir <aplankas>\fP
 overrides the data directory with the one specified
 .TP 
 \fB\-d, \-\-debug\fP
@@ -103,7 +103,7 @@ sets the severity level of the log domains.  \fBall\fP can be used to match any
 log domain. Available levels: \fBerror\fP,\ \fBwarning\fP,\ \fBinfo\fP,\ \fBdebug\fP.
 By default the \fBerror\fP level is used.
 .TP 
-\fB\-\-logdomains\ [filter]\fP
+\fB\-\-logdomains\ [filtras]\fP
 lists defined log domains (only the ones containing \fBfilter\fP if used) and
 exits
 .TP 
