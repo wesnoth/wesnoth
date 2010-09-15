@@ -719,31 +719,13 @@ protected:
 	class drawing_buffer_key
 	{
 	private:
-		// store x, y, and layer in one 32 bit integer
-		// 4 most significant bits == layer group   => 16
-		// 10 second most significant bits == y     => 1024
-		// 8 third most significant bits == layer   => 256
-		// 10 least significant bits == x           => 1024
 		unsigned int key_;
 
 		static const tdrawing_layer layer_groups[];
 		static const unsigned int max_layer_group;
 
-		enum {
-			MaxBorder = 3
-		};
 	public:
-		drawing_buffer_key(const map_location &loc, tdrawing_layer layer)
-		{
-			// max_layer_group + 1 is the last valid entry in layer_groups, but it is always > layer
-			// thus the first --g is a given => start with max_layer_groups right away
-			unsigned int g = max_layer_group;
-			while (layer < layer_groups[g]) {
-				--g;
-			}
-			key_  = (g << 28) | (static_cast<unsigned int>(loc.y + MaxBorder) << 18);
-			key_ |= (static_cast<unsigned int>(layer) << 10) | static_cast<unsigned int>(loc.x + MaxBorder);
-		}
+		drawing_buffer_key(const map_location &loc, tdrawing_layer layer);
 
 		bool operator<(const drawing_buffer_key &rhs) const { return key_ < rhs.key_; }
 	};

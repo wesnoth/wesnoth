@@ -834,6 +834,56 @@ const display::tdrawing_layer display::drawing_buffer_key::layer_groups[] = {
 // no need to change this if layer_groups above is changed
 const unsigned int display::drawing_buffer_key::max_layer_group = sizeof(display::drawing_buffer_key::layer_groups) / sizeof(display::tdrawing_layer) - 2;
 
+enum {
+	// you may adjust the following when needed:
+
+	// maximum border. 3 should be safe even if a larger border is in use somewhere
+	MAX_BORDER           = 3,
+
+	// store x, y, and layer in one 32 bit integer
+	// 4 most significant bits == layer group   => 16
+	BITS_FOR_LAYER_GROUP = 4,
+
+	// 10 second most significant bits == y     => 1024
+	BITS_FOR_Y           = 10,
+
+	// 1 third most significant bit == x parity => 2
+	BITS_FOR_X_PARITY    = 1,
+
+	// 8 fourth most significant bits == layer   => 256
+	BITS_FOR_LAYER       = 8,
+
+	// 9 least significant bits == x / 2        => 512 (really 1024 for x)
+	BITS_FOR_X_OVER_2    = 9
+};
+
+inline display::drawing_buffer_key::drawing_buffer_key(const map_location &loc, tdrawing_layer layer)
+{
+	// max_layer_group + 1 is the last valid entry in layer_groups, but it is always > layer
+	// thus the first --g is a given => start with max_layer_groups right away
+	unsigned int g = max_layer_group;
+	while (layer < layer_groups[g]) {
+		--g;
+	}
+
+	enum {
+		SHIFT_LAYER          = BITS_FOR_X_OVER_2,
+		SHIFT_X_PARITY       = BITS_FOR_LAYER + SHIFT_LAYER,
+		SHIFT_Y              = BITS_FOR_X_PARITY + SHIFT_X_PARITY,
+		SHIFT_LAYER_GROUP    = BITS_FOR_Y + SHIFT_Y
+	};
+	BOOST_STATIC_ASSERT(SHIFT_LAYER_GROUP + BITS_FOR_LAYER_GROUP == sizeof(key_) * 8);
+
+	// the parity of x must be more significant than the layer but less significant than y.
+	// Thus basically every row is splitted in two: First the row containing all the odd x
+	// then the row containing all the even x. Since thus the least significant bit of x is
+	// not required for x ordering anymore it can be shifted out to the right.
+	const unsigned int x_parity = static_cast<unsigned int>(loc.x) & 1;
+	key_  = (g << SHIFT_LAYER_GROUP) | (static_cast<unsigned int>(loc.y + MAX_BORDER) << SHIFT_Y);
+	key_ |= (x_parity << SHIFT_X_PARITY);
+	key_ |= (static_cast<unsigned int>(layer) << SHIFT_LAYER) | static_cast<unsigned int>(loc.x + MAX_BORDER) / 2;
+}
+
 void display::drawing_buffer_commit()
 {
 	// std::list::sort() is a stable sort
