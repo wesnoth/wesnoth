@@ -112,9 +112,8 @@ msgstr "Uždrausti autoišsaugojimus."
 
 #. [ai]: id=testing_ai_default
 #: data/ai/ais/testing_ai_default.cfg:5
-#, fuzzy
 msgid "Multiplayer_AI^RCA AI"
-msgstr "Daug žaidėjų"
+msgstr "RCA DI"
 
 #. [time]: id=underground
 #. [illuminated_time]: id=underground_illum
@@ -3068,8 +3067,8 @@ msgid ""
 "focusing on defeating $ai_controller.side_$ally_side|_current_settings."
 "focus_on_enemy.side_description|."
 msgstr ""
-"Ypatingas: $ai_controller.side_$ally_side|_current_settings."
-"currently_doing_special_description"
+"Ypatingas: $ai_controller.side_$ally_side|_current_settings.focus_on_enemy."
+"side_description|."
 
 #. [then]
 #. [else]
@@ -3112,8 +3111,8 @@ msgid ""
 "focusing on protecting $ai_controller.side_$ally_side|_current_settings."
 "protect.side_description|."
 msgstr ""
-"Ypatingas: $ai_controller.side_$ally_side|_current_settings."
-"currently_doing_special_description"
+"Ypatingas: $ai_controller.side_$ally_side|_current_settings.protect."
+"side_description|."
 
 #. [option]: type=objective
 #: data/core/macros/ai_controller.cfg:352
@@ -3163,7 +3162,6 @@ msgstr "nieko nenustatyta."
 
 #. [do]
 #: data/core/macros/ai_controller.cfg:644
-#, fuzzy
 msgid ""
 "Objective: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_objective_description\n"
@@ -3173,7 +3171,7 @@ msgstr ""
 "Tikslas: $ai_controller.side_$ally_side|_current_settings."
 "currently_doing_objective_description\n"
 "Elgesys: $ai_controller.side_$ally_side|_current_settings."
-"currently_doing_behaviour_description"
+"currently_doing_behavior_description"
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:652
@@ -3317,13 +3315,12 @@ msgid "Poison is seeping through the veins of this unit at this very moment."
 msgstr ""
 
 #: data/core/macros/items.cfg:287
-#, fuzzy
 msgid ""
 "Sprinkling this water on melee weapons grants them the <i>arcane</i> damage "
 "type until the end of the current scenario. Should $unit.name use it?"
 msgstr ""
 "Apšlaksčius kontaktinius ginklus šiuo vandeniu, jie iki scenarijaus pabaigos "
-"darys „paslaptingą“ žalą. Ar norite, kad $unit.name paimtų vandenį?"
+"darys <i>paslaptingą</i> žalą. Ar norite, kad $unit.name paimtų vandenį?"
 
 #: data/core/macros/items.cfg:288
 msgid "I am not suited to the use of this item! Let another take it."
@@ -3336,13 +3333,12 @@ msgstr "Šventas vanduo"
 
 #. [object]
 #: data/core/macros/items.cfg:293
-#, fuzzy
 msgid ""
 "This water will make melee weapons have the <i>arcane</i> damage type until "
 "the end of the current scenario."
 msgstr ""
-"Šiuo vandeniu apšlakstyti kontaktiniai ginklai darys „paslaptingą“ žalą iki "
-"scenarijaus pabaigos. "
+"Šiuo vandeniu apšlakstyti kontaktiniai ginklai darys <i>paslaptingą<i> žalą "
+"iki scenarijaus pabaigos. "
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:322
@@ -4460,15 +4456,13 @@ msgstr "Normaliai kaunasi nepalankiu dienos/nakties laiku"
 
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:175
-#, fuzzy
 msgid "feral"
-msgstr "Iš viso"
+msgstr "laukinis"
 
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:176
-#, fuzzy
 msgid "female^feral"
-msgstr "neutrali"
+msgstr "laukinė"
 
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:177
@@ -5486,7 +5480,6 @@ msgstr "<i>― Didysis magas Delfadoras, 516VM</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:7
-#, fuzzy
 msgid ""
 "In the 'Actions' menu, you can select 'Show Enemy Moves' to highlight all "
 "possible hexes your adversary can actually move to (assuming your units stay "
@@ -5495,7 +5488,7 @@ msgid ""
 msgstr ""
 "„Veiksmų“ meniu galite pasirinkti „Rodyti priešų ėjimus“, kad paryškintumėte "
 "visus langelius į kurios gali eiti jūsų priešininkas (tariant, kad jūsų "
-"daliniai stovės ten kur jie yra). Naudokite tai, kad įsitikintumėte jog "
+"daliniai stovės ten, kur jie yra). Naudokite tai, kad įsitikintumėte, jog "
 "priešas negali kitą ėjimą pasiekti jūsų silpnų arba sužeistų dalinių."
 
 #. [tip]
@@ -5725,7 +5718,6 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:83
-#, fuzzy
 msgid ""
 "Don’t move an injured unit if you don’t have to — let it rest. If a unit "
 "does not move or attack, it will recover two hitpoints at the beginning of "
@@ -5886,7 +5878,6 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:143
-#, fuzzy
 msgid ""
 "If you move a unit, but don’t attack or discover any additional information, "
 "you can undo your move by pressing 'u'."
@@ -7096,9 +7087,8 @@ msgid "Damage: "
 msgstr "Žala: "
 
 #: src/generate_report.cpp:395
-#, fuzzy
 msgid "Base damage: "
-msgstr "Bendra žala"
+msgstr "Bazinė žala: "
 
 #: src/generate_report.cpp:397
 msgid "Time of day: "
@@ -7685,7 +7675,6 @@ msgid "Select unit:"
 msgstr "Pasirinkite dalinį:"
 
 #: src/menu_events.cpp:769
-#, fuzzy
 msgid "You don’t have enough gold to recruit that unit"
 msgstr "Neturite pakankamai aukso, kad pasamdytumėte šį dalinį"
 
@@ -8095,7 +8084,7 @@ msgstr "Išjungti derinimo režimą."
 
 #: src/menu_events.cpp:2543 src/menu_events.cpp:2547
 msgid "<command>[;<command>...]"
-msgstr ""
+msgstr "<komanda>[;<komanda>...]"
 
 #: src/menu_events.cpp:2543
 msgid "Execute a Lua statement."
@@ -8119,7 +8108,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2553
 msgid "<name>[=<command>]"
-msgstr ""
+msgstr "<pavadinimas>[=<komanda>]"
 
 #: src/menu_events.cpp:2553
 msgid "Set or show alias to a command"
@@ -8127,7 +8116,7 @@ msgstr "Nustatyti arba rodyti komandos sinonimą"
 
 #: src/menu_events.cpp:2555
 msgid "<var>=<value>"
-msgstr ""
+msgstr "<kintamasis>=<reikšmė>"
 
 #: src/menu_events.cpp:2555
 msgid "Set a scenario variable."
@@ -8135,7 +8124,7 @@ msgstr "Nustatyti scenarijaus kintamąjį."
 
 #: src/menu_events.cpp:2557
 msgid "<var>"
-msgstr ""
+msgstr "<kintamasis>"
 
 #: src/menu_events.cpp:2557
 msgid "Show a scenario variable."
@@ -8240,9 +8229,8 @@ msgid "Removed from list: $nick"
 msgstr "Pašalintas iš sąrašo: $nick"
 
 #: src/menu_events.cpp:2864 src/menu_events.cpp:2882
-#, fuzzy
 msgid "friends and ignores list"
-msgstr "Ignoruojamųjų sąraše"
+msgstr "draugų ir ignoruojamųjų sąrašas"
 
 #: src/menu_events.cpp:2882
 msgid "There are no players on your friends or ignore list."
@@ -8320,7 +8308,7 @@ msgstr "Išjungtas derinimo režimas!"
 
 #: src/menu_events.cpp:3376
 msgid "Unsafe Lua scripts."
-msgstr ""
+msgstr "Nesaugūs Lua scenarijai."
 
 #: src/menu_events.cpp:3377
 msgid ""
@@ -8331,11 +8319,11 @@ msgstr ""
 
 #: src/menu_events.cpp:3380
 msgid "Unsafe mode enabled!"
-msgstr ""
+msgstr "Įjungtas nesaugus režimas!"
 
 #: src/menu_events.cpp:3423
 msgid "Variable not found"
-msgstr ""
+msgstr "Kintamasis nerastas"
 
 #: src/menu_events.cpp:3467
 msgid ""
@@ -9443,6 +9431,3 @@ msgstr "ištikima"
 #: src/unit_types.cpp:969
 msgid "female^neutral"
 msgstr "neutrali"
-
-#~ msgid "vs"
-#~ msgstr "prieš"
