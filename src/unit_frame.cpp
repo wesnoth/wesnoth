@@ -556,8 +556,17 @@ std::set<map_location> unit_frame::get_overlaped_hex(const int frame_time,const 
 	// we always invalidate our own hex because we need to be called at redraw time even
 	// if we don't draw anything in the hex itself
 	std::set<map_location> result;
-	if(tmp_offset==0 && current_data.x == 0 && current_data.y == 0 && image::is_in_hex(image_loc)) {
+	if(tmp_offset==0 && current_data.x == 0 && image::is_in_hex(image_loc)) {
 		result.insert(src);
+		if(current_data.y < 0) {
+			result.insert(src.get_direction(map_location::NORTH));
+			result.insert(src.get_direction(map_location::NORTH_EAST));
+			result.insert(src.get_direction(map_location::NORTH_WEST));
+		} else if(current_data.y > 0) {
+			result.insert(src.get_direction(map_location::SOUTH));
+			result.insert(src.get_direction(map_location::SOUTH_EAST));
+			result.insert(src.get_direction(map_location::SOUTH_WEST));
+		}
 	} else {
 		surface image;
 		if(!image_loc.is_void() && image_loc.get_filename() != "") { // invalid diag image, or not diagonal
