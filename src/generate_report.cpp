@@ -134,14 +134,16 @@ report generate_report(TYPE type,
 		str << u->level();
 
 		tooltip << _("Level: ")
-			<< "<b>" << u->level() << "</b>\n"
-			<< _("Advances to:") << "\n"
-			<< "<b>";
+			<< "<b>" << u->level() << "</b>\n";
+
 		const std::vector<std::string>& adv_to = u->advances_to();
-		foreach (const std::string& s, adv_to){
-			tooltip << "\t" << s << "\n";
+		if(adv_to.empty()) {
+			tooltip << _("No advancement");
+		} else {
+			tooltip << _("Advances to:") << "\n"
+					<< "<b>\t" << utils::join(adv_to, "\n\t") << "</b>";
 		}
-		tooltip << "</b>";
+
 		return report(str.str(), "", tooltip.str());
 	}
 	case UNIT_AMLA: {
