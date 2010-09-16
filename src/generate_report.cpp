@@ -331,12 +331,6 @@ report generate_report(TYPE type,
 	case UNIT_WEAPONS: {
 		report res;
 
-		size_t team_index = u->side() - 1;
-		if(team_index >= teams.size()) {
-			std::cerr << "illegal team index in reporting: " << team_index << "\n";
-			return res;
-		}
-
 		foreach (const attack_type &at, u->attacks())
 		{
 			at.set_specials_context(displayed_unit_hex, map_location(), *u);
@@ -428,22 +422,27 @@ report generate_report(TYPE type,
 				<< _("Damage type: ")  << "<b>" << lang_type << "</b>\n"
 				<< _("Damage versus: ") << "\n";
 
-			// Find all the unit types on the map, and
-			// show this weapon's bonus against all the different units.
-			// Don't show invisible units, except if they are in our team or allied.
-			std::set<std::string> seen_units;
-			std::map<int,std::set<std::string> > resistances;
-			for(unit_map::const_iterator u_it = units.begin(); u_it != units.end(); ++u_it) {
-				const map_location& loc = u_it->get_location();
-				if (teams[team_index].is_enemy(u_it->side()) &&
-				    !viewing_team.fogged(loc) &&
-				    seen_units.count(u_it->type_id()) == 0 &&
-				    (!viewing_team.is_enemy(u_it->side()) ||
-				     !u_it->invisible(loc)))
-				{
-					seen_units.insert(u_it->type_id());
-					int resistance = u_it->resistance_against(at, false, loc);
-					resistances[resistance].insert(u_it->type_name());
+			// Show this weapon damage and resistanceagainst all the different units.
+
+			// map storing each resistance value and types having it
+			// we want weak resistances (=good damage) first
+			std::map<int, std::set<std::string>, std::greater<int> > resistances;
+			std::set<std::string> seen_types;
+			const team& unit_team = teams[u->side() - 1];
+			foreach(const unit& enemy, units) {
+				// Don't show allies
+				if (!unit_team.is_enemy(enemy.side()))
+					continue;
+
+				// Don't show invisible units
+				const map_location& loc = enemy.get_location();
+				if (viewing_team.fogged(loc) || (viewing_team.is_enemy(enemy.side()) && enemy.invisible(loc)))
+					continue;
+
+				bool new_type = seen_types.insert(enemy.type_id()).second;
+				if(new_type) {
+					int resistance = enemy.resistance_against(at, false, loc);
+					resistances[resistance].insert(enemy.type_name());
 				}
 			}
 
@@ -456,19 +455,12 @@ report generate_report(TYPE type,
 
 			//ignore leadership bonus
 
-			// use reverse order to show higher damage bonus first
-			for(std::map<int,std::set<std::string> >::reverse_iterator resist = resistances.rbegin(); resist != resistances.rend(); ++resist) {
-				int damage = round_damage(base_damage, damage_multiplier * resist->first, damage_divisor);
+			typedef std::pair<int, std::set<std::string> > resist_units;
+			foreach(const resist_units& resist, resistances) {
+				int damage = round_damage(base_damage, damage_multiplier * resist.first, damage_divisor);
 				tooltip << "<b>" << damage << "</b>  "
-						<< "<i>(" << signed_percent(resist->first-100) << ")</i> : ";
-				for(std::set<std::string>::const_iterator i = resist->second.begin(); i != resist->second.end(); ++i) {
-					if(i != resist->second.begin()) {
-						tooltip << ", ";
-					}
-
-					tooltip << *i;
-				}
-				tooltip << "\n";
+						<< "<i>(" << signed_percent(resist.first-100) << ")</i> : "
+						<< utils::join(resist.second, ", ") << "\n";
 			}
 
 			res.add_text(flush(str), flush(tooltip));
