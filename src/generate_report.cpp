@@ -274,9 +274,9 @@ report generate_report(TYPE type,
 	}
 	case UNIT_ADVANCEMENT_OPTIONS: {
 		report res;
-		const std::map<std::string,std::string> &adv_icons = u->advancement_icons();
-		for(std::map<std::string,std::string>::const_iterator i=adv_icons.begin();i!=adv_icons.end();++i){
-			res.add_image(i->first,i->second);
+		typedef std::pair<std::string, std::string> pair_string;
+		foreach(const pair_string& ps, u->advancement_icons()){
+			res.add_image(ps.first,ps.second);
 		}
 		return res;
 	}
