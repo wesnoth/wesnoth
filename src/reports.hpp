@@ -96,7 +96,7 @@ namespace reports {
 	};
 
 	report generate_report(TYPE type,
-		const team &current_team,
+		const team &viewing_team,
 			       int current_side, int active_side,
 			       const map_location& loc, const map_location& mouseover, const map_location& displayed_unit_hex,
 		const std::set<std::string> &observers,

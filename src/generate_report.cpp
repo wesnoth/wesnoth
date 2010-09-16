@@ -64,7 +64,7 @@ static std::string flush(std::ostringstream &s)
 static char const *naps = "</span>";
 
 report generate_report(TYPE type,
-                       const team &current_team, int current_side, int playing_side,
+                       const team &viewing_team, int current_side, int playing_side,
                        const map_location& loc, const map_location& mouseover, const map_location& displayed_unit_hex,
                        const std::set<std::string> &observers,
                        const config& level, bool show_everything)
@@ -76,7 +76,7 @@ report generate_report(TYPE type,
 	const unit *u = NULL;
 
 	if((int(type) >= int(UNIT_REPORTS_BEGIN) && int(type) < int(UNIT_REPORTS_END)) || type == POSITION){
-		u = get_visible_unit(displayed_unit_hex, current_team, show_everything);
+		u = get_visible_unit(displayed_unit_hex, viewing_team, show_everything);
 		if (!u && type != POSITION) {
 			return report();
 		}
@@ -436,9 +436,9 @@ report generate_report(TYPE type,
 			for(unit_map::const_iterator u_it = units.begin(); u_it != units.end(); ++u_it) {
 				const map_location& loc = u_it->get_location();
 				if (teams[team_index].is_enemy(u_it->side()) &&
-				    !current_team.fogged(loc) &&
+				    !viewing_team.fogged(loc) &&
 				    seen_units.count(u_it->type_id()) == 0 &&
-				    (!current_team.is_enemy(u_it->side()) ||
+				    (!viewing_team.is_enemy(u_it->side()) ||
 				     !u_it->invisible(loc)))
 				{
 					seen_units.insert(u_it->type_id());
@@ -520,10 +520,10 @@ report generate_report(TYPE type,
 	case TIME_OF_DAY: {
 		time_of_day tod;
 
-		if (current_team.shrouded(mouseover)) {
+		if (viewing_team.shrouded(mouseover)) {
 			// Don't show time on shrouded tiles.
 			tod = resources::tod_manager->get_time_of_day();
-		} else if (current_team.fogged(mouseover)) {
+		} else if (viewing_team.fogged(mouseover)) {
 			// Don't show illuminated time on fogged tiles.
 			tod = resources::tod_manager->get_time_of_day(mouseover);
 		} else {
@@ -557,7 +557,7 @@ report generate_report(TYPE type,
 	// when it is not the active player's turn.
 	case GOLD: {
 		//Supposes the full/"pathfind" unit map is applied
-		int fake_gold = current_team.gold() - resources::whiteboard->get_spent_gold_for(current_side);
+		int fake_gold = viewing_team.gold() - resources::whiteboard->get_spent_gold_for(current_side);
 		char const *end = naps;
 		if (current_side != playing_side)
 			str << span_color(font::GRAY_COLOR);
@@ -569,15 +569,15 @@ report generate_report(TYPE type,
 		break;
 	}
 	case VILLAGES: {
-		const team_data data = calculate_team_data(current_team,current_side);
+		const team_data data = calculate_team_data(viewing_team,current_side);
 		if (current_side != playing_side)
 			str << span_color(font::GRAY_COLOR);
 		str << data.villages << '/';
-		if (current_team.uses_shroud()) {
+		if (viewing_team.uses_shroud()) {
 			int unshrouded_villages = 0;
 			std::vector<map_location>::const_iterator i = map.villages().begin();
 			for (; i != map.villages().end(); ++i) {
-				if (!current_team.shrouded(*i))
+				if (!viewing_team.shrouded(*i))
 					++unshrouded_villages;
 			}
 			str << unshrouded_villages;
@@ -597,7 +597,7 @@ report generate_report(TYPE type,
 		break;
 	}
 	case UPKEEP: {
-		const team_data data = calculate_team_data(current_team,current_side);
+		const team_data data = calculate_team_data(viewing_team,current_side);
 		if (current_side != playing_side)
 			str << span_color(font::GRAY_COLOR);
 		str << data.expenses << " (" << data.upkeep << ")";
@@ -606,7 +606,7 @@ report generate_report(TYPE type,
 		break;
 	}
 	case EXPENSES: {
-		const team_data data = calculate_team_data(current_team,current_side);
+		const team_data data = calculate_team_data(viewing_team,current_side);
 		if (current_side != playing_side)
 			str << span_color(font::GRAY_COLOR);
 		str << data.expenses;
@@ -615,7 +615,7 @@ report generate_report(TYPE type,
 		break;
 	}
 	case INCOME: {
-		team_data data = calculate_team_data(current_team, current_side);
+		team_data data = calculate_team_data(viewing_team, current_side);
 		char const *end = naps;
 		if (current_side != playing_side)
 			str << span_color(font::GRAY_COLOR);
@@ -627,7 +627,7 @@ report generate_report(TYPE type,
 		break;
 	}
 	case TERRAIN: {
-		if(!map.on_board(mouseover) || current_team.shrouded(mouseover))
+		if(!map.on_board(mouseover) || viewing_team.shrouded(mouseover))
 			break;
 
 		const t_translation::t_terrain terrain = map.get_terrain(mouseover);
@@ -638,11 +638,11 @@ report generate_report(TYPE type,
 
 		if(map.is_village(mouseover)) {
 			int owner = village_owner(mouseover, teams) + 1;
-			if(owner == 0 || current_team.fogged(mouseover)) {
+			if(owner == 0 || viewing_team.fogged(mouseover)) {
 				str << map.get_terrain_info(terrain).income_description();
 			} else if(owner == current_side) {
 				str << map.get_terrain_info(terrain).income_description_own();
-			} else if(current_team.is_enemy(owner)) {
+			} else if(viewing_team.is_enemy(owner)) {
 				str << map.get_terrain_info(terrain).income_description_enemy();
 			} else {
 				str << map.get_terrain_info(terrain).income_description_ally();
@@ -683,7 +683,7 @@ report generate_report(TYPE type,
 			break;
 		if(displayed_unit_hex != mouseover && displayed_unit_hex != loc)
 			break;
-		if(current_team.shrouded(mouseover))
+		if(viewing_team.shrouded(mouseover))
 			break;
 
 		int move_cost = u->movement_cost(terrain);
@@ -748,8 +748,8 @@ report generate_report(TYPE type,
 	case REPORT_COUNTDOWN: {
 		int min;
 		int sec;
-		if (current_team.countdown_time() > 0){
-			sec = current_team.countdown_time() / 1000;
+		if (viewing_team.countdown_time() > 0){
+			sec = viewing_team.countdown_time() / 1000;
 			char const *end = naps;
 			if (current_side != playing_side)
 				str << span_color(font::GRAY_COLOR);
