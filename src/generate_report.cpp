@@ -147,12 +147,12 @@ report generate_report(TYPE type,
 		return report(str.str(), "", tooltip.str());
 	}
 	case UNIT_AMLA: {
-	  report res;
-		const std::vector<std::pair<std::string,std::string> > &amla_icons=u->amla_icons();
-	  for(std::vector<std::pair<std::string,std::string> >::const_iterator i=amla_icons.begin();i!=amla_icons.end();++i){
-	    res.add_image(i->first,i->second);
-	  }
-	  return(res);
+		report res;
+		typedef std::pair<std::string, std::string> pair_string;
+		foreach(const pair_string& ps, u->amla_icons()) {
+			res.add_image(ps.first,ps.second);
+		}
+		return(res);
 	}
 	case UNIT_TRAITS: {
 		report res;
