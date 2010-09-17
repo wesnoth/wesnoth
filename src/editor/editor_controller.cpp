@@ -616,6 +616,26 @@ void editor_controller::resize_map_dialog()
 	}
 }
 
+void editor_controller::save_all_maps()
+{
+	int current = current_context_index_;
+	for(size_t i = 0; i < map_contexts_.size(); ++i) {
+		switch_context(i);
+		save_map();
+	}
+	switch_context(current);
+}
+
+void editor_controller::save_map()
+{
+	const std::string& name = get_map_context().get_filename();
+	if (name.empty() || is_directory(name)) {
+		save_map_as_dialog();
+	} else {
+		write_map();
+	}
+}
+
 bool editor_controller::save_map_as(const std::string& filename)
 {
 	size_t is_open = check_open_map(filename);
@@ -629,7 +649,7 @@ bool editor_controller::save_map_as(const std::string& filename)
 	bool embedded = get_map_context().is_embedded();
 	get_map_context().set_filename(filename);
 	get_map_context().set_embedded(false);
-	if (!save_map(true)) {
+	if (!write_map(true)) {
 		get_map_context().set_filename(old_filename);
 		get_map_context().set_embedded(embedded);
 		return false;
@@ -638,7 +658,7 @@ bool editor_controller::save_map_as(const std::string& filename)
 	}
 }
 
-bool editor_controller::save_map(bool display_confirmation)
+bool editor_controller::write_map(bool display_confirmation)
 {
 	try {
 		get_map_context().save();
@@ -919,7 +939,9 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 			quit_confirm(EXIT_QUIT_TO_DESKTOP);
 			return true;
 		case TITLE_SCREEN__RELOAD_WML:
-			quit_confirm(EXIT_RELOAD_DATA);
+			save_all_maps();
+			do_quit_ = true;
+			quit_mode_ = EXIT_RELOAD_DATA;
 			return true;
 		case HOTKEY_EDITOR_SETTINGS:
 			editor_settings_dialog();
@@ -1002,12 +1024,7 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 			new_map_dialog();
 			return true;
 		case HOTKEY_EDITOR_MAP_SAVE:
-			if (get_map_context().get_filename().empty()
-			|| is_directory(get_map_context().get_filename())) {
-				save_map_as_dialog();
-			} else {
-				save_map();
-			}
+			save_map();
 			return true;
 		case HOTKEY_EDITOR_MAP_SAVE_AS:
 			save_map_as_dialog();

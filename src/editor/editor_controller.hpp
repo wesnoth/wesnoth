@@ -155,6 +155,11 @@ class editor_controller : public controller_base,
 		/** Display a load map dialog and process user input. */
 		void resize_map_dialog();
 
+		void save_all_maps();
+
+		/** Save the map, open dialog if not named yet. */
+		void save_map();
+
 		/**
 		 * Save the map under a given filename.
 		 * @return true on success
@@ -165,7 +170,7 @@ class editor_controller : public controller_base,
 		 * Save the map under a given filename. Displays an error message on failure.
 		 * @return true on success
 		 */
-		bool save_map(bool display_confirmation = false);
+		bool write_map(bool display_confirmation = false);
 
 		/**
 		 * Create a new map.
