@@ -804,7 +804,7 @@ std::vector<surface> display::get_terrain_images(const map_location &loc,
 }
 
 void display::drawing_buffer_add(const tdrawing_layer layer,
-		const map_location& loc, int x, int y, const surface surf,
+		const map_location& loc, int x, int y, const surface& surf,
 		const SDL_Rect &clip)
 {
 	drawing_buffer_.push_back(tblit(layer, loc, x, y, surf, clip));

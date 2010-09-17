@@ -780,7 +780,7 @@ public:
 	 * @param blit               The structure to blit.
 	 */
 	void drawing_buffer_add(const tdrawing_layer layer,
-			const map_location& loc, int x, int y, const surface surf,
+			const map_location& loc, int x, int y, const surface& surf,
 			const SDL_Rect &clip = SDL_Rect());
 
 	void drawing_buffer_add(const tdrawing_layer layer,
