@@ -325,7 +325,7 @@ void show_hotkeys_dialog (display & disp, config *save_config)
 	gui::menu menu_(disp.video(), menu_items, false, height, -1, &sorter, &gui::menu::bluebg_style);
 	menu_.sort_by(0);
 	menu_.reset_selection();
-	menu_.set_width(font::relative_size(400));
+	menu_.set_width(font::relative_size(500));
 	menu_.set_location(xpos + font::relative_size(20), ypos);
 
 	gui::button change_button (disp.video(), _("Change Hotkey"));
