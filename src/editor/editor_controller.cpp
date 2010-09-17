@@ -45,6 +45,10 @@
 
 #include <boost/bind.hpp>
 
+namespace {
+static std::vector<std::string> saved_windows_;
+}
+
 namespace editor {
 
 /**
@@ -327,8 +331,16 @@ int editor_controller::add_map_context(map_context* mc)
 
 void editor_controller::create_default_context()
 {
-	map_context* mc = new map_context(editor_map(game_config_, 44, 33, t_translation::GRASS_LAND));
-	add_map_context(mc);
+	if(saved_windows_.empty()) {
+		map_context* mc = new map_context(editor_map(game_config_, 44, 33, t_translation::GRASS_LAND));
+		add_map_context(mc);
+	} else {
+		foreach(const std::string& filename, saved_windows_) {
+			map_context* mc = new map_context(game_config_, filename);
+			add_map_context(mc);
+		}
+		saved_windows_.clear();
+	}
 }
 
 void editor_controller::close_current_context()
@@ -613,11 +625,22 @@ void editor_controller::resize_map_dialog()
 	}
 }
 
-void editor_controller::save_all_maps()
+void editor_controller::save_all_maps(bool auto_save_windows)
 {
 	int current = current_context_index_;
+	saved_windows_.clear();
 	for(size_t i = 0; i < map_contexts_.size(); ++i) {
 		switch_context(i);
+		std::string name = get_map_context().get_filename();
+		if(auto_save_windows) {
+			if(name.empty() || is_directory(name)) {
+				std::ostringstream s;
+				s << default_dir_ << "/" << "window_" << i;
+				name = s.str();
+				get_map_context().set_filename(name);
+			}
+		}
+		saved_windows_.push_back(name);
 		save_map();
 	}
 	switch_context(current);
@@ -937,7 +960,7 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 			quit_confirm(EXIT_QUIT_TO_DESKTOP);
 			return true;
 		case TITLE_SCREEN__RELOAD_WML:
-			save_all_maps();
+			save_all_maps(true);
 			do_quit_ = true;
 			quit_mode_ = EXIT_RELOAD_DATA;
 			return true;

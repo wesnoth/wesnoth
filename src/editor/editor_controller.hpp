@@ -122,7 +122,10 @@ class editor_controller : public controller_base,
 		 */
 		int add_map_context(map_context* mc);
 
-		/** Creates a default map context object, used to ensure there is always at least one. */
+		/**
+		 * Creates a default map context object, used to ensure there is always at least one.
+		 * Except when we saved windows, in which case reopen them
+		 */
 		void create_default_context();
 
 		/** Closes the active map context. Switches to a valid context afterward or creates a dummy one. */
@@ -155,7 +158,12 @@ class editor_controller : public controller_base,
 		/** Display a load map dialog and process user input. */
 		void resize_map_dialog();
 
-		void save_all_maps();
+		/**
+		 * Save all maps, open dialog if not named yet, except when using
+		 * auto_save_windows which will name unnamed maps "windows_N".
+		 * Also record all filenames for future reopening.
+		 */
+		void save_all_maps(bool auto_save_windows = false);
 
 		/** Save the map, open dialog if not named yet. */
 		void save_map();
