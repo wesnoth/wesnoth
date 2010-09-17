@@ -858,6 +858,7 @@ enum {
 };
 
 inline display::drawing_buffer_key::drawing_buffer_key(const map_location &loc, tdrawing_layer layer)
+	: key_(0)
 {
 	// max_layer_group + 1 is the last valid entry in layer_groups, but it is always > layer
 	// thus the first --g is a given => start with max_layer_groups right away
