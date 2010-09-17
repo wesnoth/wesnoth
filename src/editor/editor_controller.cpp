@@ -846,6 +846,7 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 		case HOTKEY_EDITOR_TERRAIN_PALETTE_SWAP:
 			return true; //editor hotkeys we can always do
 		case HOTKEY_EDITOR_MAP_SAVE:
+		case HOTKEY_EDITOR_MAP_SAVE_ALL:
 		case HOTKEY_EDITOR_SWITCH_MAP:
 		case HOTKEY_EDITOR_CLOSE_MAP:
 			return true;
@@ -1022,6 +1023,9 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 			return true;
 		case HOTKEY_EDITOR_MAP_SAVE:
 			save_map();
+			return true;
+		case HOTKEY_EDITOR_MAP_SAVE_ALL:
+			save_all_maps();
 			return true;
 		case HOTKEY_EDITOR_MAP_SAVE_AS:
 			save_map_as_dialog();
