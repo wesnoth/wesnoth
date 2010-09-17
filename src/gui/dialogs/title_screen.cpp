@@ -22,7 +22,6 @@
 #include "gettext.hpp"
 #include "log.hpp"
 #include "gui/auxiliary/timer.hpp"
-#include "gui/dialogs/addon_connect.hpp"
 #include "gui/dialogs/language_selection.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
@@ -185,12 +184,6 @@ void ttitle_screen::pre_show(CVideo& video, twindow& window)
 		variant(_("Version") + std::string(" ") + game_config::revision));
 
 	/**** Set the buttons ****/
-	connect_signal_mouse_left_click(
-			  find_widget<tbutton>(&window, "addons", false)
-			, boost::bind(
-				  show_dialog<gui2::taddon_connect>
-				, boost::ref(video)));
-
 	connect_signal_mouse_left_click(
 			  find_widget<tbutton>(&window, "language", false)
 			, boost::bind(
