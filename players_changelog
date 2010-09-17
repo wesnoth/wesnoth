@@ -3,9 +3,14 @@ changes may be omitted). For a complete list of changes, see the main
 changelog: http://svn.gna.org/viewcvs/*checkout*/wesnoth/trunk/changelog
 
 Version 1.9.1+svn:
+ * Campaigns:
+   * Legend of Wesmere:
+     * Map updates.
+     * Implemented gold carryover between the multiplayer chapters.
+     * Added extra keeps to keep up with the growing number of leaders.
  * Language and i18n:
    * Updated translations: Indonesian, Russian.
-* Graphics:   
+ * Graphics:
    * Terrain:
      * Any Castle or Keep except Dwarvish can now be combined without large gaps or extra walls.
 
@@ -20,6 +25,34 @@ Version 1.9.1:
    * Eastern Invasion:
      * Increased Owaec's hitpoints and attack stats, and added a new weapon
        special to his morningstar on levels 2 and 3.
+   * Legend of Wesmere:
+     * Splitted the multiplayer port into five chapters with 3 difficult levels each.
+       * (Beta)  Chapter one, a two player campaign, ends after scenario 3.
+       * (Beta)  Chapter two, a three player campaign, ends after scenario 7.
+       * (Alpha)  Chapter three, a four player campaign, ends after scenario 13.
+       * (Alpha) Chapter four, a four player campaign, ends after scenario 17.
+       * (Alpha) Chapter five, a two player campaign, ends with the single player version.
+       * There is no savefile compatibility between saves from an older version
+         of Wesnoth.
+     * Scenarios
+       * Scenario one's objectives changed.
+       * Completed a rewrite of scenario 5, changing the objectives, ai and
+         game mechanism slightly.
+       * Scenario 7
+         * Shortened by letting the orcs flee if their numbers went too low.
+         * The player can choose between two different starting positions for
+           Olurf.
+       * Rebalanced Scenario 14.
+     * Miscellaneous and bug fixes:
+       * Renamed some of the locations at the Kalian to fit with the map
+         changes.
+       * Fixed scenario number 5 where the gold carrier's overlay was not
+         removed.
+       * Fixed the bug with the army split up before scenario number 9.
+       * Map and coding updates regarding the new terrain types and graphics.
+       * Added keeps to every scenario to match the number of leaders
+         (singleplayer) or sides (multiplayer).
+       * Removed the obselete Haldric the second portrait.
    * The Rise of Wesnoth:
      * Made surprise enemy spawns appear in a less immediately dangerous way in
        'The Midlands', 'The Swamp of Esten', 'Peoples in Decline',
