@@ -71,7 +71,7 @@ private:
 	bool refreshed_;
 };
 
-editor_controller::editor_controller(const config &game_config, CVideo& video, map_context* init_map_context /*=NULL*/)
+editor_controller::editor_controller(const config &game_config, CVideo& video)
 	: controller_base(SDL_GetTicks(), game_config, video)
 	, mouse_handler_base()
 	, rng_(NULL)
@@ -102,11 +102,8 @@ editor_controller::editor_controller(const config &game_config, CVideo& video, m
 	, use_mdi_(preferences::editor::use_mdi())
 	, default_dir_(preferences::editor::default_dir())
 {
-	if (init_map_context == NULL) {
-		create_default_context();
-	} else {
-		add_map_context(init_map_context);
-	}
+	create_default_context();
+
 	if (default_dir_.empty()) {
 		default_dir_ = get_dir(get_dir(get_user_data_dir() + "/editor") + "/maps");
 	}

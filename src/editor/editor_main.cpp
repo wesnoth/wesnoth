@@ -35,7 +35,7 @@ EXIT_STATUS start(const config& game_conf, CVideo& video, const std::string& fil
 		hotkey::deactivate_all_scopes();
 		hotkey::set_scope_active(hotkey::SCOPE_GENERAL);
 		hotkey::set_scope_active(hotkey::SCOPE_EDITOR);
-		editor_controller editor(game_conf, video, NULL);
+		editor_controller editor(game_conf, video);
 		if (!filename.empty()) {
 			if (is_directory(filename)) {
 				editor.set_default_dir(filename);
