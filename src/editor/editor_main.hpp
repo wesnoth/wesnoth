@@ -26,6 +26,7 @@ namespace editor {
 enum EXIT_STATUS {
 	EXIT_NORMAL,
 	EXIT_QUIT_TO_DESKTOP,
+	EXIT_RELOAD_DATA,
 	EXIT_ERROR
 };
 

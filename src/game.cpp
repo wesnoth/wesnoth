@@ -1637,12 +1637,22 @@ void game_controller::play_replay()
 #ifndef DISABLE_EDITOR
 editor::EXIT_STATUS game_controller::start_editor(const std::string& filename)
 {
-    cache_.clear_defines();
-    cache_.add_define("EDITOR");
-	load_game_cfg();
-    const binary_paths_manager bin_paths_manager(game_config());
-	::init_textdomains(game_config());
-	return editor::start(game_config(), video_, filename);
+	while(true){
+		cache_.clear_defines();
+		cache_.add_define("EDITOR");
+		load_game_cfg();
+		const binary_paths_manager bin_paths_manager(game_config());
+		::init_textdomains(game_config());
+
+		editor::EXIT_STATUS res = editor::start(game_config(), video_, filename);
+
+		if(res != editor::EXIT_RELOAD_DATA)
+			return res;
+
+		reload_changed_game_config();
+		image::flush_cache();
+	}
+	return editor::EXIT_ERROR; // not supposed to happen
 }
 #endif
 

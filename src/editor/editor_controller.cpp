@@ -818,6 +818,7 @@ bool editor_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, int 
 			return true;
 		case HOTKEY_EDITOR_PARTIAL_UNDO:
 			return true;
+		case TITLE_SCREEN__RELOAD_WML:
 		case HOTKEY_EDITOR_QUIT_TO_DESKTOP:
 		case HOTKEY_EDITOR_SETTINGS:
 		case HOTKEY_EDITOR_MAP_NEW:
@@ -916,6 +917,9 @@ bool editor_controller::execute_command(hotkey::HOTKEY_COMMAND command, int inde
 			return true;
 		case HOTKEY_EDITOR_QUIT_TO_DESKTOP:
 			quit_confirm(EXIT_QUIT_TO_DESKTOP);
+			return true;
+		case TITLE_SCREEN__RELOAD_WML:
+			quit_confirm(EXIT_RELOAD_DATA);
 			return true;
 		case HOTKEY_EDITOR_SETTINGS:
 			editor_settings_dialog();
