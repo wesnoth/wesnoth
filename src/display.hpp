@@ -735,7 +735,7 @@ protected:
 	{
 	public:
 		tblit(const tdrawing_layer layer, const map_location& loc,
-				const int x, const int y, const surface surf,
+				const int x, const int y, const surface& surf,
 				const SDL_Rect& clip)
 			: x_(x), y_(y), surf_(1, surf), clip_(clip),
 			key_(loc, layer)
