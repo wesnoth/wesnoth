@@ -134,7 +134,7 @@ static void animate_logo(
 		  unsigned long& timer_id
 		, unsigned& percentage
 		, tprogress_bar& progress_bar
-		, twindow& window)
+		, twindow& /*window*/)
 {
 	assert(percentage <= 100);
 	++percentage;
@@ -146,8 +146,9 @@ static void animate_logo(
 	 * this possible problem. Of course this is expensive but the logo is
 	 * animated once so the cost is only once.
 	 */
-	window.set_dirty();
-
+	/// @todo overlap seems currently impossible(crash), this allow to skip this.
+	/// Depending how that is fixed (allow it or prevent it), you may need to renable this
+	//window.set_dirty();
 
 	if(percentage == 100) {
 		remove_timer(timer_id);
