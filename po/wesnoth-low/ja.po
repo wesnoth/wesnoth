@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-09-14 18:29+0200\n"
-"PO-Revision-Date: 2010-09-14 18:56+0900\n"
+"POT-Creation-Date: 2010-09-15 19:36+0200\n"
+"PO-Revision-Date: 2010-09-17 20:39+0900\n"
 "Last-Translator: clearpotion <clearpotion+fantasy@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
 "Language: \n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Poedit-Bookmarks: 275,-1,-1,-1,-1,-1,-1,-1,-1,-1\n"
+"X-Poedit-Bookmarks: 456,-1,-1,-1,-1,-1,-1,-1,-1,-1\n"
 "X-Poedit-Basepath: C:\\Program Files\\Battle for Wesnoth 1.8.3\n"
 
 #. [campaign]: id=LOW
@@ -4148,14 +4148,15 @@ msgid ""
 "reluctantly, been training Kalenz in a selected few of the secrets of "
 "Crelanu’s book..."
 msgstr ""
-"Tath での戦いが終わったことで、Kalenz と Landar は Crelanu が示した危険だが不"
-"可欠な計画を実行する時が来たことを知りました。その一方で Cleodilは不本意なが"
-"らにCrelanu の魔法書からいくつか選んだ秘法を Kalenz に教えていました……。"
+"Tath の戦いの終結と共に、Kalenz と Landar は、 Crelanu が示した危険だが不可欠"
+"な計画を実行に移す時が訪れた事を自覚しました。その一方で、 Cleodilは不本意な"
+"がらにCrelanu の魔法書からいくつか選んだ秘法を、 Kalenz に教えていました……。"
 
 # 18氏より essence　の訳を精神か本質に変更　→　精神に変えたものの合わないので本質に再度変更
 # 精神 : 肉体だけでなく精神も危険
 # 本質 : 肉体や精神はおろか本質から危険
 # この計画は貴方の肉体だけではなく、貴方自身の精神にとっても危険です。
+# %todo 閣下　から Kalenzに言い直す方法を考えるのは、1.9で
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:53
 #, fuzzy
@@ -4164,10 +4165,10 @@ msgid ""
 "safely. My heart aches when I think of you going into such danger as this. "
 "It is peril not merely to your body, but to the essence of yourself."
 msgstr ""
-"私が教えられることは思い切ってお教えしました。閣下…… いえ、Kalenzさま ……私は"
-"貴方が無事に戻ってくることを願って止みません。貴方があのような危険に陥ってし"
-"まうのかと思うと胸が痛みます。この計画は貴方の肉体はおろか、貴方の本質に至る"
-"まで危険なのです。"
+"私が教えられることは思い切ってお教えしました。閣下…… Kalenz ……私は貴方が無事"
+"に戻ってくることを願って止みません。貴方がそんな危険な状態に陥ってしまうのか"
+"と思うと胸が痛みます。この計画は貴方の肉体はおろか、貴方の本質に至るまで危険"
+"なのです。"
 
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:58
@@ -4184,6 +4185,7 @@ msgstr ""
 "は、もっと耐えられそうにありません。哀しみに押し潰されてしまいそうです。"
 
 # 以降KalenzのCleodilに対する呼びかけは　貴方→貴女　むふｗ
+# →キザにw
 #. [part]
 #: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:68
 #, fuzzy
@@ -4192,7 +4194,7 @@ msgid ""
 "night, Cleodil. You will be my guide out of darkness."
 msgstr ""
 "私の目は見開いている。危険に向かって、そして……貴女を。Cleodil、貴女は夜空の星"
-"のように輝いている。貴女が私を闇の中から導いてくれるだろう。"
+"のように輝いている。貴女には、闇の中から外へと導く私の星になって欲しいのだ。"
 
 # Brurbar 大帝　お好みで
 #. [side]: type=Orcish Sovereign, id=Great Chief Brurbar
@@ -4311,7 +4313,7 @@ msgstr "俺こそが最強の将軍だ！ 俺が頭だ！"
 #. [message]: id=Gvur
 #: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:398
 msgid "No way anyone will steal my throne!"
-msgstr "誰にも決してわしの玉座を盗ませやしねえぞ！"
+msgstr "誰にも決してわしの玉座を盗ませやしねえ！"
 
 #. [message]: id=Khrubar
 #: data/campaigns/Legend_of_Wesmere/scenarios/16_The_Chief_must_die.cfg:402
@@ -4567,13 +4569,13 @@ msgstr ""
 msgid ""
 "Our defenses are stretched thin. Men, prepare to face another orcish attack!"
 msgstr ""
-"我々の防御は伸びてしまって薄くなっている。戦士たちよ、更なるオークの攻撃に備"
+"我々の防御は広がって手薄になってしまった。戦士たちよ、更なるオークの攻撃に備"
 "えよ！"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/17_Breaking_the_siege.cfg:283
 msgid "The North Elves still stand. Prepare for battle!"
-msgstr "北部エルフはまだ持ち堪えている。戦闘準備！"
+msgstr "北部エルフはまだ持ち堪えているぞ。戦闘準備！"
 
 #. [message]: id=Kalenz
 #: data/campaigns/Legend_of_Wesmere/scenarios/17_Breaking_the_siege.cfg:293
