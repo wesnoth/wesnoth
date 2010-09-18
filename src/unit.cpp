@@ -1223,9 +1223,22 @@ bool unit::internal_matches_filter(const vconfig& cfg, const map_location& loc, 
 		return false;
 	}
 
-	config::attribute_value cfg_id = cfg["id"];
-	if (!cfg_id.blank() && cfg_id.str() != id()) {
-		return false;
+	const config::attribute_value cfg_id = cfg["id"];
+	if (!cfg_id.blank()) {
+		const std::string& id = cfg_id;
+		const std::string& this_id = this->id();
+
+		if (id == this_id) {
+		}
+		else if (std::find(id.begin(), id.end(), ',') == id.end()){
+			return false;
+		}
+		else {
+			const std::vector<std::string>& ids = utils::split(id);
+			if (std::find(ids.begin(), ids.end(), this_id) == ids.end()) {
+				return false;
+			}
+		}
 	}
 
 	// Allow 'speaker' as an alternative to id, since people use it so often
