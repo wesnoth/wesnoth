@@ -37,6 +37,11 @@
 
 #include <libintl.h>
 
+#ifdef setlocale
+// Someone in libintl world decided it was a good idea to define a "setlocale" macro.
+#undef setlocale
+#endif
+
 const char* egettext(const char*);
 const char* sgettext(const char*);
 const char* dsgettext(const char * domainname, const char *msgid);
