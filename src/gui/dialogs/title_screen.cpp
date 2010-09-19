@@ -17,6 +17,7 @@
 
 #include "gui/dialogs/title_screen.hpp"
 
+#include "display.hpp"
 #include "game_config.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
@@ -29,6 +30,7 @@
 #include "gui/widgets/progress_bar.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
+#include "preferences_display.hpp"
 #include "titlescreen.hpp"
 
 #include <boost/bind.hpp>
@@ -156,7 +158,25 @@ static void animate_logo(
 	}
 }
 
-void ttitle_screen::post_build(CVideo&, twindow& window)
+static bool fullscreen(CVideo& video)
+{
+	preferences::set_fullscreen(video , !preferences::fullscreen());
+
+	// Setting to fullscreen doesn't seem to generate a resize event.
+	const SDL_Rect& rect = screen_area();
+
+	SDL_Event event;
+	event.type = SDL_VIDEORESIZE;
+	event.resize.type = SDL_VIDEORESIZE;
+	event.resize.w = rect.w;
+	event.resize.h = rect.h;
+
+	SDL_PushEvent(&event);
+
+	return true;
+}
+
+void ttitle_screen::post_build(CVideo& video, twindow& window)
 {
 	/** @todo Should become a title screen hotkey. */
 	window.register_hotkey(hotkey::TITLE_SCREEN__RELOAD_WML
@@ -164,6 +184,9 @@ void ttitle_screen::post_build(CVideo&, twindow& window)
 					  &hotkey
 					, boost::ref(window)
 					, gui::RELOAD_GAME_DATA));
+
+	window.register_hotkey(hotkey::HOTKEY_FULLSCREEN
+			, boost::bind(fullscreen, boost::ref(video)));
 }
 
 void ttitle_screen::pre_show(CVideo& video, twindow& window)
