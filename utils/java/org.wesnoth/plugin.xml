@@ -736,5 +736,43 @@
             value="true">
       </persistent>
    </extension>
-
+   <extension
+         point="org.eclipse.ui.activities">
+      <activity
+            id="org.wesnoth.product.disableextra"
+            name="disable_extra_features">
+         <enabledWhen>
+            <with variable="true">
+               <equals
+                     value="false">
+               </equals>
+            </with></enabledWhen>
+      </activity>
+      <activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.jdt.ui.wizards.*"> </activityPatternBinding>
+      <activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.jdt.debug.ui.snippetEditor.NewSnippetFileCreationWizard"> </activityPatternBinding>
+      <activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.team.cvs.ui.newLocation"> </activityPatternBinding>
+      <activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.team.cvs.ui.newProjectCheckout"> </activityPatternBinding>
+      <activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.emf.ecore.presentation.EcoreModelWizardID"> </activityPatternBinding>
+      <activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.emf.codegen.ecore.ui.EmptyProjectWizard"> </activityPatternBinding>
+      <activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.emf.mwe2.language.ui.wizard.NewMwe2FileWizard"> </activityPatternBinding>
+      <activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.emf.mwe.internal.ui.wizard.NewWorkflowFileWizard"> </activityPatternBinding>
+      <activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.mylyn.tasks.ui.wizards.*"> </activityPatternBinding>
+      <activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.wst.xml.ui.internal.wizards.*"> </activityPatternBinding>
+      <activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.wst.xml.ui.XMLExampleProjectCreationWizard"> </activityPatternBinding>
+      <activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.xpand.ui.wizard.*"> </activityPatternBinding>
+      <activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.xtend.shared.ui.wizard.*"> </activityPatternBinding>
+      <activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.xtend.xtend.wizard.*"> </activityPatternBinding>
+      <activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.xtext.xtext.ui.wizard.*"> </activityPatternBinding>
+      <activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.xtend.check.ui.wizard.NewCheckFileWizard"> </activityPatternBinding>
+      <activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.xtext.examples.*"> </activityPatternBinding>
+      <activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.wst.xsd.ui.internal.wizards.*"> </activityPatternBinding>
+      <activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.wst.dtd.ui.internal.wizard.*"> </activityPatternBinding>
+      <activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.ui.externaltools.*"> </activityPatternBinding>
+      <activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.debug.*"> </activityPatternBinding>
+      <activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.mylyn.tasks.ui.bug.report.*"> </activityPatternBinding>
+	<activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.ui.actions.showKeyAssistHandler.*"> </activityPatternBinding>
+	<activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.ui.cheatsheets.actions.CheatSheetHelpMenuAction.*"> </activityPatternBinding>
+	<activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/.*"> </activityPatternBinding>
+	<activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/.*"> </activityPatternBinding>
+   </extension>
 </plugin>
