@@ -286,9 +286,9 @@ add_library(wesnoth-lua STATIC EXCLUDE_FROM_ALL ${libwesnoth-lua_STAT_SRC})
 set(wesnoth-main_SRC
 	about.cpp
 	actions.cpp
+	addon/client.cpp
 	addon/manager.cpp
 	addon/validation.cpp
-	addon_client.cpp
 	ai/actions.cpp
 	ai/composite/ai.cpp
 	ai/composite/aspect.cpp

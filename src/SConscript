@@ -154,9 +154,9 @@ libcutter = client_env.Library("cutter", libcutter_sources)
 wesnoth_sources = Split("""
     about.cpp
     actions.cpp
+    addon/client.cpp
     addon/manager.cpp
     addon/validation.cpp
-    addon_client.cpp
     ai/actions.cpp
     ai/composite/ai.cpp
     ai/composite/aspect.cpp

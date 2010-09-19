@@ -1,4 +1,4 @@
-#include "addon_client.hpp"
+#include "addon/client.hpp"
 #include "foreach.hpp"
 #include "log.hpp"
 #include "serialization/parser.hpp"
