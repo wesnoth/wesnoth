@@ -1234,8 +1234,7 @@ void twindow::signal_handler_sdl_video_resize(
 			const event::tevent event, bool& handled, const tpoint& new_size)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
-#if 0
-	/** @todo enable when gui2 becomes the master event handler. */
+
 	if(new_size.x < preferences::min_allowed_width()
 			|| new_size.y < preferences::min_allowed_height()) {
 
@@ -1257,7 +1256,7 @@ void twindow::signal_handler_sdl_video_resize(
 				<< " resize aborted, resize failed.\n";
 		return;
 	}
-#endif
+
 	settings::gamemap_width += new_size.x - settings::screen_width ;
 	settings::gamemap_height += new_size.y - settings::screen_height ;
 	settings::screen_width = new_size.x;
