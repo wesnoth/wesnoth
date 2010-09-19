@@ -115,7 +115,7 @@ then
 fi
 
 # Make tests default in svn version
-svn_in_version=`expr match "$WESNOTH_VERSION" '.*svn'`
+svn_in_version=`expr "$WESNOTH_VERSION" : '.*svn'`
 test_build=yes
 if test $svn_in_version = 0 
 then
