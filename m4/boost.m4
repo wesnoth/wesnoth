@@ -397,7 +397,7 @@ AC_DEFUN([BOOST_GRAPH],
 AC_DEFUN([BOOST_IOSTREAMS],
 [BOOST_FIND_LIB([iostreams], [$1],
                 [boost/iostreams/device/file_descriptor.hpp],
-                [boost::iostreams::file_descriptor fd(0); fd.close();])
+                [boost::iostreams::file_descriptor fd; fd.close();])
 ])# BOOST_IOSTREAMS
 
 
