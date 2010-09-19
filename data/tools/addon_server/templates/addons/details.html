@@ -1,0 +1,118 @@
+{% extends "addons/base.html" %}
+{% load webdesign %}
+{% block title %}Wesnoth Addon: {{addon.name}}{% endblock %}
+
+{% block content %}
+<style type="text/css">
+#addon_toplevel {
+	border-spacing: 5px;
+}
+.addon_box {
+	border: 1px solid #000;
+	background: #E7D9C0;
+	vertical-align: top;
+}
+#addon_left {
+	width: 70%;
+}
+#addon_right {
+	width: 30%;
+}
+#ratebox, #ratebox form {
+	display: inline;
+}
+#addon_icon {
+	float: right;
+}
+</style>	
+	<center><h1>{{addon.name}} {{addon.ver}}</h1></center><br />
+	<table border=0 width="100%" id="addon_toplevel">
+		<tr>
+			<td width="70%" id="addon_left" class="addon_box">
+			<table border=0 cellpadding=4 width="100%">
+				<tr>
+					<td valign="top">
+						<h3>Description:</h3>
+						{{addon.desc}}
+						<h3>Authors:</h3>
+						<ul>
+							{% for author in addon.authors.all %}
+							<li>{{author}}</li>
+							{% endfor %}
+						</ul>
+						<h3>User rating:</h3>
+						{% if addon.get_rating %}
+							{{addon.get_rating|floatformat:1}} <img src="/test_media/stars_{{addon.get_rating|floatformat:0}}.gif"/>						
+						{% else %}
+							No user ratings yet.
+						{% endif %}
+					<div id="ratebox">
+					Your rating: 
+					<form action="{% url addons.views.rate addon.id %}" method="post">
+						<SELECT NAME="rating">
+						<OPTION VALUE="1"		  >1 - Awful
+						<OPTION VALUE="2"		  >2 - Not too good
+						<OPTION VALUE="3" SELECTED >3 - Average
+						<OPTION VALUE="4"		  >4 - Decent
+						<OPTION VALUE="5"		  >5 - Very good
+						</SELECT>
+						<button type="submit">Rate</button>
+					</form>
+					</div>
+					{% if rated %}
+							<p style="color: #005a00; font-weight: bold">Thank you for rating!</p>
+					{% endif %}
+					</td>
+				</tr>
+			</table>
+			</td>
+			<td id="addon_right" class="addon_box" valign="top">
+			<table cellpadding=4 width="100%">
+				<tr>
+					<td>
+						<img src="/icons/{{addon.img}}" alt="Addon icon" id="addon_icon" width="72" height="72"/>
+						<h3>{{addon.name}}</h3>
+						<ul>
+							<li><b>Version:</b> {{addon.ver}}
+							<li><b>Type:</b> {{addon.type.get_name}}
+							{% if addon.file_size %}
+							<li><b>Size:</b> {{addon.file_tbz.size|filesizeformat}}
+							{% else %}
+							<li><b>Size: File not found</b></li>
+							{% endif %}
+						</ul>
+
+						<center>
+						<form action="{% url addons.views.getFile addon.id %}" method="get">
+						<br />
+						<button type="submit" style="width: 100%; height: 50px">Download</button>
+						</form>
+						</center>
+
+						<br/>
+						<h3>Traffic:</h3>
+						<ul>
+							<li>Downloaded {{addon.downloads}} times</li>
+							<li>Uploaded {{addon.uploads}} times</li>
+							<li>Last update: {{addon.lastUpdate}}</li>
+						</ul>
+
+						<br/>
+						<h3>Other actions:</h3>
+						<ul>
+							<li><a href="/addons/removeForm/{{addon.id}}">Remove addon</a> (requires author or admin privileges)</li>
+							<!--<li><a href="/addons/report/{{addon.id}}">Report broken or offensive content</a></li>-->
+						</ul>
+					</td>
+				</tr>
+			</table>
+			</td>
+		</tr>
+	</table>
+	<br/>
+	<center><a href="{% url addons.views.index %}">Back to the addon list</a></center>
+
+<br />
+<br />
+
+{% endblock %}

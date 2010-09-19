@@ -1,0 +1,185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="{{ LANGUAGE_CODE }}" xml:lang="{{ LANGUAGE_CODE }}" {% if LANGUAGE_BIDI %}dir="rtl"{% endif %}>
+<head>
+<title>{% block title %}{% endblock %}</title>
+<link rel="stylesheet" type="text/css" href="{% block stylesheet %}{% load adminmedia %}{% admin_media_prefix %}css/base.css{% endblock %}" />
+<!--<link rel='stylesheet' href="/test_media/main.css" type="text/css" media="screen" />
+<link rel='stylesheet' href="/test_media/home.css" type="text/css" media="screen" />-->
+<style type="text/css">
+#header2 {
+  margin: 0;
+  padding: 0;
+  background: #444 url('/test_media/headerbg.jpg') top repeat-x;
+  border-bottom: 1px solid #000;
+  font: 0.88em sans-serif;
+}
+
+#header2 #logo2 {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+#header2 #logo2 img {
+  margin: 0;
+  margin-bottom: -3px;
+  padding: 0;
+  border: none;
+}
+
+#header2 #logo2 a {
+  margin: 0;
+  padding: 0;
+  color: #654;
+  text-decoration: none;
+  font-size: 0.8em;
+}
+#nav {
+	font: 0.88em sans-serif;
+}
+#nav a {
+	font-size: 12px;
+	line-height: 21px;
+	font-size: 1.2em;
+	font-weight: normal;
+}
+#nav {
+  margin: 0;
+  margin-top: -0px;
+  padding: 3px 4px 15px 4px;
+  background: #272727 url('/test_media/navbg.png') repeat-x bottom;
+  text-align: center;
+  border-top: 1px solid #595959;
+}
+
+#nav ul, #nav li {
+  display: inline;
+  margin: 0;
+  padding: 0;
+}
+
+#nav li {
+  padding: 0 5px;
+}
+
+#nav a {
+  /*color: #A74;*/
+  /*color: #DBB672;*/
+  color: #B48648;
+  font-family: "Trebuchet MS", sans-serif;
+  font-weight: bold;
+  font-size: 1.15em;
+  text-decoration: none;
+}
+
+#nav a:hover {
+  color: #CCC;
+}
+#footer2 {
+  margin: 10px 22px; 
+  padding: 10px 0;
+  font-size: 0.85em;
+  font-family: sans-serif;
+  border-top: 1px solid #999;
+}
+
+#footer2 a {
+  font-family: sans-serif;
+  color: #333;
+}
+</style>
+
+{% block extrastyle %}{% endblock %}
+<!--[if lte IE 7]><link rel="stylesheet" type="text/css" href="{% block stylesheet_ie %}{% load adminmedia %}{% admin_media_prefix %}css/ie.css{% endblock %}" /><![endif]-->
+{% if LANGUAGE_BIDI %}<link rel="stylesheet" type="text/css" href="{% block stylesheet_rtl %}{% admin_media_prefix %}css/rtl.css{% endblock %}" />{% endif %}
+{% block extrahead %}{% endblock %}
+{% block blockbots %}<meta name="robots" content="NONE,NOARCHIVE" />{% endblock %}
+</head>
+{% load i18n %}
+
+<body class="{% if is_popup %}popup {% endif %}{% block bodyclass %}{% endblock %}">
+
+
+
+<div id="header2">
+  <div id="logo2">
+    <a href="{% url addons.views.index %}"><img alt="Wesnoth logo" src="/test_media/logo.png" /></a>
+  </div>
+</div>
+
+<div id="nav">
+  <ul>
+    <li><a href="{% url addons.views.index %}">Addons</a></li>
+    <li><a href="{% url addons.views.publishForm %}">Publish</a></li>
+    <li><a href="http://localhost:8000/admin/">Admin</a></li>
+    <li><a href="http://www.wesnoth.org/">Wesnoth.org</a></li>
+  </ul>
+</div>
+<br/>
+<!-- Container -->
+<div id="container">
+
+    {% if not is_popup %}
+    <!-- Header -->
+    <div id="header">
+        <div id="branding">
+        {% block branding %}{% endblock %}
+        </div>
+        {% if user.is_authenticated and user.is_staff %}
+        <div id="user-tools">
+            {% trans 'Welcome,' %}
+            <strong>{% firstof user.first_name user.username %}</strong>.
+            {% block userlinks %}
+                {% url django-admindocs-docroot as docsroot %}
+                {% if docsroot %}
+                    <a href="{{ docsroot }}">{% trans 'Documentation' %}</a> /
+                {% endif %}
+                {% url admin:password_change as password_change_url %}
+                {% if password_change_url %}
+                    <a href="{{ password_change_url }}">
+                {% else %}
+                    <a href="{{ root_path }}password_change/">
+                {% endif %}
+                {% trans 'Change password' %}</a> /
+                {% url admin:logout as logout_url %}
+                {% if logout_url %}
+                    <a href="{{ logout_url }}">
+                {% else %}
+                    <a href="{{ root_path }}logout/">
+                {% endif %}
+                {% trans 'Log out' %}</a>
+            {% endblock %}
+        </div>
+        {% endif %}
+        {% block nav-global %}{% endblock %}
+    </div>
+    <!-- END Header -->
+    {% block breadcrumbs %}<div class="breadcrumbs"><a href="/">{% trans 'Home' %}</a>{% if title %} &rsaquo; {{ title }}{% endif %}</div>{% endblock %}
+    {% endif %}
+
+        {% if messages %}
+        <ul class="messagelist">{% for message in messages %}<li>{{ message }}</li>{% endfor %}</ul>
+        {% endif %}
+
+    <!-- Content -->
+    <div id="content" class="{% block coltype %}colM{% endblock %}">
+        {% block pretitle %}{% endblock %}
+        {% block content_title %}{% if title %}<h1>{{ title }}</h1>{% endif %}{% endblock %}
+        {% block content %}
+        {% block object-tools %}{% endblock %}
+        {{ content }}
+        {% endblock %}
+        {% block sidebar %}{% endblock %}
+        <br class="clear" />
+    </div>
+    <!-- END Content -->
+
+    {% block footer %}<div id="footer"></div>{% endblock %}
+</div>
+<!-- END Container -->
+<div id="footer2">
+<p>Portions <a href="http://www.wesnoth.org/wiki/Wesnoth:Copyrights">Copyright</a> &copy; 2003-2010 The Battle for Wesnoth</p>
+<p>Developed by PSI TEAM F</p>
+</div>
+</body>
+</html>

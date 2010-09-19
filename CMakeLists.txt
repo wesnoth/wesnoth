@@ -19,7 +19,8 @@ set(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS true)
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
 
 find_package(SDL 1.2.7 REQUIRED)
-find_package(Boost 1.35 REQUIRED COMPONENTS iostreams regex)
+find_package(Boost 1.35 REQUIRED COMPONENTS iostreams regex thread)
+find_package(CURL REQUIRED)
 # yes, gettext is *required* even when NLS is deactivated (this is to compile
 # src/gettext.cpp since it includes libintl.h)
 find_package(Gettext REQUIRED)
@@ -222,6 +223,9 @@ endif(USE_ANA_NETWORK)
 
 # get languages
 file(READ po/LINGUAS LINGUAS)
+if(NOT LINGUAS)
+	set(LINGUAS " ")
+endif(NOT LINGUAS)
 string(REPLACE "\n" "" LINGUAS ${LINGUAS})
 separate_arguments(LINGUAS)
 

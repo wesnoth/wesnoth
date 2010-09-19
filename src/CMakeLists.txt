@@ -19,6 +19,7 @@ include_directories( ${SDL_INCLUDE_DIR} )
 include_directories( ${PANGOCAIRO_INCLUDE_DIRS} )
 include_directories( ${GETTEXT_INCLUDE_DIR} )
 include_directories( ${LIBDBUS_INCLUDE_DIRS} )
+include_directories( ${CURL_INCLUDE_DIRS} )
 
 #optional dependencies
 if(SDLIMAGE_INCLUDE_DIR)
@@ -82,6 +83,8 @@ set(game-external-libs
 	${PANGOCAIRO_LIBRARIES}
 	${FONTCONFIG_LIBRARIES}
 	${LIBDBUS_LIBRARIES}
+	${CURL_LIBRARIES}
+	${Boost_THREAD_LIBRARY}
 )
 
 if(MSVC)
@@ -285,6 +288,7 @@ set(wesnoth-main_SRC
 	actions.cpp
 	addon/manager.cpp
 	addon/validation.cpp
+	addon_client.cpp
 	ai/actions.cpp
 	ai/composite/ai.cpp
 	ai/composite/aspect.cpp
@@ -416,6 +420,7 @@ set(wesnoth-main_SRC
 	gui/dialogs/mp_create_game.cpp
 	gui/dialogs/mp_method_selection.cpp
 	gui/dialogs/mp_cmd_wrapper.cpp
+	gui/dialogs/network_progress.cpp
 	gui/dialogs/title_screen.cpp
 	gui/dialogs/transient_message.cpp
 	gui/dialogs/unit_attack.cpp

@@ -1,0 +1,68 @@
+{% extends "addons/base.html" %}
+
+{% block title %}Addon list{% endblock %}
+
+{% block content %}
+<script type="text/javascript" src="/test_media/js/sorttable-good.js"></script>
+<script type="text/javascript">
+var zzfg = new domFunction(function() {
+	document.getElementById("iconh").innerHTML = st_getInnerText(document.getElementById("iconh"));
+	});
+</script>
+<style type="text/css">
+#addonlist thead tr th {
+	border-bottom: 2px solid black;
+}
+#addonlist tbody tr {
+	background-color: #E7D9C0;
+}
+#addonlist tbody tr.alternate {
+	background-color: transparent;
+}
+</style>
+<center><h1>Addons</h1></center><br />
+<table width="100%" class="sortable" id="addonlist">
+<thead><tr>
+<th align="left" width="15%">Type</th>
+<th align="left" id="iconh">Icon</th>
+<th align="left">Name</th>
+<th align="left" width="13%">User rating</th>
+<th align="left" width="20%">Traffic</th>
+<th align="left">Size</th>
+</tr>
+</thead>
+{% regroup addon_list|dictsort:"name" by name as addon_list_s %}
+{% for name in addon_list_s %}
+{% for addon in name.list %}
+<tr {% cycle 'class="alternate"' '' %}>
+	<td>{{addon.type.get_name}}</td>
+	
+	<td><span style="display:none">{{addon.name}}</span>
+	<a href="{% url addons.views.details addon.id %}">
+		<img src="/icons/{{addon.img}}" alt="{{addon.img}}"/ width="72" height="72" />
+	</a></td>
+	
+	<td>{{addon.name}} {{addon.ver}}<br />
+	<a href="{% url addons.views.details addon.id %}">Details</a></td>
+
+	{% if addon.get_rating %}	
+		<td>{{addon.get_rating|floatformat:1}} / 5.0<br /> <img src="/test_media/stars_{{addon.get_rating|floatformat:0}}_small.gif"/></td>
+	{% else %}
+		<td>-- / 5.0 <br /> <small>(no ratings yet)</small></td>
+	{% endif %}
+	
+	<td><span style="display:none">{{addon.downloads|stringformat:"09d"}}</span>{{addon.downloads}} downloads <br/> {{addon.uploads}} uploads</td>
+
+	{% if addon.file_size %}
+		<td><span style="display:none">{{addon.file_tbz.size|stringformat:"09d"}}</span>{{addon.file_tbz.size|filesizeformat}} <br />
+		<b><a href="{% url addons.views.getFile addon.id %}">Download</a></b>
+		</td>
+	{% else %}
+		<td>File not found</td>
+	{% endif %}
+</tr>
+{% endfor %}
+{% endfor %}
+</table>
+
+{% endblock %}

@@ -1,0 +1,7 @@
+{% load wml_extras %}
+{% autoescape off %}
+[message]
+    type="{{msgTitle|wml_escape}}"
+    message="{{msgText|wml_escape}}"
+[/message]
+{% endautoescape %}

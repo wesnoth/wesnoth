@@ -1,0 +1,7 @@
+{% load wml_extras %}
+{% autoescape off %}
+[error]
+    type="{{errorType|wml_escape}}"
+    message="{{errorDesc|wml_escape}}"
+[/error]
+{% endautoescape %}

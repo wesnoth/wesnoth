@@ -1,0 +1,159 @@
+{% extends "addons/base.html" %}
+
+{% block extraHead %}
+{% if publish_success %}
+<meta 
+   http-equiv="refresh" 
+   content="3; url={% url addons.views.details addonId %}" />
+{% endif %}
+{% endblock %}
+
+{% block title %}Publish addon{% endblock %}
+
+{% block content %}
+<script type="text/javascript" src="/test_media/js/jquery.js"></script>
+<script type="text/javascript" src="/test_media/js/jquery.progressbar.min.js"></script>
+<script type="text/javascript">
+var progress_key = '4b519da583d47';
+$(document).ready(function() {
+	$("#pb1").progressBar({ callback: function(data) { 
+		if (data.running_value == 100) { document.forms[0].submit(); } }});
+});
+function fakeProgress() {
+	$('#pb1').progressBar(100);
+	return false;
+}
+</script>
+<style type="text/css">
+fieldset {
+	border: 1px solid black;
+	margin: 0 auto;
+	width: 80%;
+	text-align: center
+}
+
+label.inputLabel {
+	height: 100%; 
+	margin: 0;
+}
+
+label.credentials {	
+	{% if errors_credentials %} 
+		color: #F00; 
+		font-weight: bold;
+	{% endif %}
+}
+
+label.pbl {	
+	{% if errors_pbl %} 
+		color: #F00; 
+		font-weight: bold;
+	{% endif %}
+}
+
+label.zip {	
+	{% if errors_zip %} 
+		color: #F00; 
+		font-weight: bold;
+	{% endif %}
+}
+
+div.formLine {
+	style="height: 50%;
+}
+
+div.labelBlock {
+	width: 50%; 
+	height: 100%;
+	float: left; 
+	text-align: right;
+}
+
+div.inputBlock {
+	width: 50%; 
+	height: 100%;
+	float: right; 
+	text-align: left;
+}
+
+div.spacer {
+	clear:both; 
+	padding: 3px;
+}
+
+</style>
+	<center><h1>Publish your addon</h1><br />	
+	<form action="{% url addons.views.publish %}" method="post"
+				enctype="multipart/form-data" onSubmit="return fakeProgress();">
+	<table width="65%" style="border-style: solid; border-width: 1px; border-color: #000;
+	background-color: #E7D9C0;">
+	    <tr>
+	        <td valign=top>
+				
+					<fieldset>
+						<legend>Forum credentials</legend>
+						<div class="formLine">
+							<div class="labelBlock">
+							<label for="login" class="inputLabel, credentials">Login:</label>
+							</div>						
+						
+							<div class="inputBlock">
+							<input type="text" name="login" value="{{loginVal}}"></input>
+							</div>						
+						</div>
+						
+						<div class="spacer"></div>
+						
+						<div class="formLine">
+							<div class="labelBlock">
+							<label for="password" class="inputLabel, credentials">Pasword:</label>
+							</div>
+							
+							<div class="inputBlock">
+							<input type="password" name="password"></input>
+							</div>						
+						</div>
+						
+					</fieldset>
+					
+		    </td>
+		    </tr>
+		    <tr>
+		    <td valign=top>
+					<fieldset>
+						<legend>Addon to be published or updated</legend>					
+						<div class="formLine">
+							<div class="labelBlock">
+							<label for="zip" class="inputLabel, zip">Wml addon file:</label>
+							</div>
+							
+							<div class="inputBlock">
+							<input size="15" type="file" name="wml"></input>
+							</div>
+						</div>	
+					</div>
+					</fieldset>
+		    </td>
+		    </tr>
+		    <tr>
+		    <td colspan=2>
+					<center>
+						<input type="submit" value="Publish" style="width: 200px; height: 40px"></input><br/>
+						Progress: <span class="progressBar" id="pb1">0%</span>
+					</center>
+				
+				<center>
+				{% if errors_credentials %}<p style="color: #F00; font-weight: bold">Login and/or password incorrect</p>{% endif %}
+				{% if errors_author %}<p style="color: #F00; font-weight: bold">You are not one of the authors</p>{% endif %}
+				{% if errors_pbl %}<p style="color: #F00; font-weight: bold">PBL File incorrect or missing</p>{% endif %}
+				{% if errors_zip %}<p style="color: #F00; font-weight: bold">Zipped addon folder incorrect or missing</p>{% endif %}
+				{% if publish_success %}
+				<p style="color: #005a00; font-weight: bold">Your addon has been published, thank you!</p>
+				<p>Click <a href="{% url addons.views.details addonId %}">here</a> if you aren't automatically redirected to the details page within 10 seconds</p>{% endif %}
+				</center>
+			</td>
+		</tr>	            
+	</table>
+	</form>	
+
+{% endblock %}

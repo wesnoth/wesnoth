@@ -1,0 +1,28 @@
+{% extends "addons/base.html" %}
+{% load webdesign %}
+{% block title %}An error has occured{% endblock %}
+
+{% block content %}
+<style type="text/css">
+#addon_toplevel {
+	border-spacing: 5px;
+}
+.addon_box {
+	border: 1px solid #000;
+	background: #E7D9C0;
+	vertical-align: top;
+}
+</style>	
+	<center><h1>An error has occured: {{errorType}}</h1></center><br />
+	<table border=0 width="70%">
+		{% for errorLine in errorDesc %}
+		{{errorLine}}<br />
+		{% endfor %}
+	</table>
+	<br/>
+	<center><a href="{% url addons.views.index %}">Back to the addon list</a></center>
+
+<br />
+<br />
+
+{% endblock %}

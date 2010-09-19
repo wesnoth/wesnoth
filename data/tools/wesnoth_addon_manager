@@ -11,6 +11,7 @@ add-ons.
 
 import sys, os.path, re, time, glob, shutil
 from subprocess import Popen
+sys.path.append("..") #TODO FIXME assume wesnoth package in PYTHONPATH?
 import wesnoth.wmldata as wmldata
 import wesnoth.wmlparser as wmlparser
 from wesnoth.campaignserver_client import CampaignClient
@@ -27,13 +28,12 @@ if __name__ == "__main__":
 
     optionparser = optparse.OptionParser()
     optionparser.add_option("-a", "--address", help = "specify server address",
-        default = "add-ons.wesnoth.org")
+        default = "127.0.0.1")
     optionparser.add_option("--html",
         help = "Output a HTML overview into the given directory.",)
     optionparser.add_option("-p", "--port",
-        help = "specify server port or BfW version (%s)" % " or ".join(
-        map(lambda x: x[1], CampaignClient.portmap)),
-        default = CampaignClient.portmap[0][0])
+        help = "specify server port",
+        default = 8000)
     optionparser.add_option("-l", "--list", help = "list available add-ons",
         action = "store_true",)
     optionparser.add_option("-w", "--wml",
@@ -47,6 +47,8 @@ if __name__ == "__main__":
         default = ".")
     optionparser.add_option("-P", "--password",
         help = "password to use")
+    optionparser.add_option("-L", "--login",
+        help = "user login to use")
     optionparser.add_option("-d", "--download",
         help = "download the named add-on; " +
         "name may be a Python regexp matched against all add-on names " +
@@ -78,7 +80,7 @@ if __name__ == "__main__":
         help = "be even more verbose for everything",
         action = "store_true",)
     optionparser.add_option("-r", "--remove",
-        help = "remove the named add-on from the server, " +
+        help = "remove the add-on from the server, " +
         "set the password -P")
     optionparser.add_option("-R", "--raw-download",
         action = "store_true",
@@ -89,27 +91,16 @@ if __name__ == "__main__":
     optionparser.add_option("-U", "--unpack",
         help = "unpack the file UNPACK as a binary WML packet " +
         "(specify the add-on path with -c)")
-    optionparser.add_option("--change-passphrase", nargs = 3,
-        metavar = "ADD-ON OLD NEW",
-        help = "Change the passphrase for ADD-ON from OLD to NEW")
     options, args = optionparser.parse_args()
 
     port = options.port
-    if "." in options.port:
-        for (portnum, version) in CampaignClient.portmap:
-            if options.port == version:
-                port = portnum
-                break
-        else:
-            sys.stderr.write("Unknown BfW version %s\n" % options.port)
-            sys.exit(1)
-
     address = options.address
+
     if not ":" in address:
         address += ":" + str(port)
 
-    def get(name, version, uploads, cdir):
-        mythread = cs.get_campaign_raw_async(name)
+    def get(id, name, version, uploads, cdir):
+        mythread = cs.get_campaign_raw_async(id)
 
         pcounter = 0
         while not mythread.event.isSet():
@@ -122,7 +113,10 @@ if __name__ == "__main__":
             file(name, "w").write(mythread.data)
         else:
             decoded = cs.decode(mythread.data)
-            dirname = os.path.join(cdir, name)
+	    if decoded.get_text_val("name") != None:
+		name = decoded.get_text_val("name")
+
+            dirname = os.path.join(cdir.strip(), name.strip())
             oldcfg_path = os.path.join(cdir, name + ".cfg")
 
             # Try to remove old campaign in case it exists.
@@ -161,6 +155,25 @@ if __name__ == "__main__":
                         sys.stderr.write("Creating tarball with command: tar " +
                             "cjf %(tarname)s -C %(cdir)s %(name)s\n" % locals())
                     Popen(["tar", "cjf", tarname, "-C", cdir, name])
+    
+    def search_addons(addon_list, pattern):
+	if not addon_list:
+		return []
+	fetchlist = []
+	campaigns = addon_list.get_or_create_sub("campaigns")
+	for campaign in campaigns.get_all("campaign"):
+       		name = campaign.get_text_val("name", "?")
+		type = campaign.get_text_val("type", "")
+		version = campaign.get_text_val("version", "")
+		uploads = campaign.get_text_val("uploads", "")
+		id = campaign.get_text_val("remote_id", "")
+		if re.escape(pattern).replace("\\_", "_") == pattern:
+			if name == pattern:
+				fetchlist.append((id, name, version, uploads))
+		elif not options.type or options.type == type:
+			if re.search(pattern, name):
+				fetchlist.append((id, name, version, uploads))
+	return fetchlist
 
     def get_info(name):
         """
@@ -221,29 +234,23 @@ if __name__ == "__main__":
 
     elif options.download:
         cs = CampaignClient(address)
-        fetchlist = []
         campaign_list = data = cs.list_campaigns()
-        if data:
-            campaigns = data.get_or_create_sub("campaigns")
-            for campaign in campaigns.get_all("campaign"):
-                name = campaign.get_text_val("name", "?")
-                type = campaign.get_text_val("type", "")
-                version = campaign.get_text_val("version", "")
-                uploads = campaign.get_text_val("uploads", "")
-                if re.escape(options.download).replace("\\_", "_") == options.download:
-                    if name == options.download:
-                        fetchlist.append((name, version, uploads))
-                elif not options.type or options.type == type:
-                    if re.search(options.download, name):
-                        fetchlist.append((name, version, uploads))
+	fetchlist = search_addons(campaign_list, options.download)
 
-        for name, version, uploads in fetchlist:
+	if len(fetchlist) == 0:
+		print "No addon found"
+
+        for id, name, version, uploads in fetchlist:
             info = os.path.join(options.campaigns_dir, name, "_info.cfg")
+	    print info
             local_uploads, local_version = get_info(info)
             if uploads != local_uploads:
                 # The uploads > local_uploads likely means a server reset
                 if version != local_version or uploads > local_uploads:
-                    get(name, version, uploads, options.campaigns_dir)
+		    try:
+                    	get(id, name, version, uploads, options.campaigns_dir)
+		    except wmlparser.Error:
+			print "Addon", "'" +  name + "'", "is corrupted"
                 else:
                     print "Not downloading", name, \
                         "as the version already is", local_version, \
@@ -259,20 +266,24 @@ if __name__ == "__main__":
         decoded = cs.decode(data)
         print "Unpacking %s..." % options.unpack
         cs.unpackdir(decoded, options.campaigns_dir,  verbose = True)
+
     elif options.remove:
         cs = CampaignClient(address)
-        data = cs.delete_campaign(options.remove, options.password)
-        for message in data.find_all("message", "error"):
-            print message.get_text_val("message")
+        campaign_list = cs.list_campaigns()
+	fetchlist = search_addons(campaign_list, options.remove)
 
-    elif options.change_passphrase:
-        cs = CampaignClient(address)
-        data = cs.change_passphrase(*options.change_passphrase)
-        for message in data.find_all("message", "error"):
-            print message.get_text_val("message")
+	if len(fetchlist) == 0:
+		print "No addon found"
+	
+	for id, name, version, uploads in fetchlist:
+		print "Trying to remove addon name:", name
+		data = cs.delete_campaign(id, options.login, options.password)
+	       	for message in data.find_all("message", "error"):
+	    		print message.get_text_val("message")
 
     elif options.upload:
         cs = CampaignClient(address)
+	
         if os.path.isdir(options.upload):
             # else basename returns an empty string
             options.upload = options.upload.rstrip("/")
@@ -320,21 +331,19 @@ if __name__ == "__main__":
                 "Thumbs.db"]
 
         stuff = {}
-        for field in ["title", "author", "passphrase", "description",
+        for field in ["title", "author", "description",
             "version", "icon", "type", "email", "translate"]:
             stuff[field] = pbl.get_text_val(field)
-        
-        mythread = cs.put_campaign_async(name, cfgfile, wmldir, ign, stuff)
 
-        pcounter = 0
-        while not mythread.event.isSet():
-            mythread.event.wait(1)
-            if cs.counter != pcounter:
-                print "%d/%d" % (cs.counter, cs.length)
-                pcounter = cs.counter
+	creds = {}
+	creds['login'] = options.login
+	creds['password'] = options.password
 
-        for message in mythread.data.find_all("message", "error"):
+        resp = cs.put_campaign(name, cfgfile, wmldir, ign, stuff, creds)	
+
+        for message in resp.find_all("message", "error"):
             print message.get_text_val("message")
+	
 
     elif options.update or options.status:
         if options.status:
@@ -358,6 +367,7 @@ if __name__ == "__main__":
                 info = os.path.join(d, "_info.cfg")
                 sversion = campaigns[dirname].get_text_val("version", "")
                 srev = campaigns[dirname].get_text_val("uploads", "")
+                id = campaigns[dirname].get_text_val("remote_id", "")
                 if os.path.exists(info):
                     lrev, lversion = get_info(info)
                     if not srev:
@@ -373,17 +383,17 @@ if __name__ == "__main__":
                             (lrev, srev))
                         if srev > lrev: # server reset?
                             if options.update:
-                                get(dirname, sversion, srev, cdir)
+                                get(id, dirname, sversion, srev, cdir)
                     else:
                         sys.stdout.write(" * " + dirname + " - you have " +
                             "revision " + lrev + " but revision " + srev +
                             " is available.\n")
-                        if options.update: get(dirname, sversion, srev, cdir)
+                        if options.update: get(id, dirname, sversion, srev, cdir)
                 else:
                     sys.stdout.write(" ? " + dirname + 
                         " - is installed but has no " +
                         "version info.\n")
-                    if options.update: get(dirname, sversion, srev, cdir)
+                    if options.update: get(id, dirname, sversion, srev, cdir)
             else:
                 sys.stdout.write(" - %s - is installed but not on server.\n" %
                     dirname)

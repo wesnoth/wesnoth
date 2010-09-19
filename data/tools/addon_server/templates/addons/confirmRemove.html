@@ -1,0 +1,62 @@
+{% extends "addons/base.html" %}
+
+{% block title %}Remove addon{% endblock %}
+{% block extraHead %}
+{% if remove_success %}
+<meta 
+   http-equiv="refresh" 
+   content="3; url={% url addons.views.index %}" />
+{% endif %}
+{% endblock %}
+{% block content %}
+<script type="text/javascript" src="/test_media/js/jquery.js"></script>
+<script type="text/javascript" src="/test_media/js/jquery.progressbar.min.js"></script>
+<style type="text/css">
+fieldset {
+	border: 1px solid black;
+	margin: 0 auto;
+	width: 80%;
+	text-align: center
+}
+</style>
+	<center><h1>Remove addon: {{addon.name}} {{addon.ver}}</h1>
+	<h3>Last updated: {{addon.lastUpdate}}</h3><br />	
+	<table border=0 width="40%" style="border-style: solid; border-width: 1px; border-color: #000;
+	background-color: #E7D9C0;">
+	    <tr>
+	        <td>
+	        	{% if not remove_success %}
+				<form action="{% url addons.views.remove addon.id %}" method="post"
+				enctype="multipart/form-data" onSubmit="return fakeProgress();">
+					<fieldset>
+						<legend>Forum credentials</legend>
+						<p align=right {% if errors_credentials %}style="color: #F00; font-weight: bold"{% endif %}>Login: <input size="30" type="text" name="login" value="{{loginVal}}"></input></p>
+						<p align=right {% if errors_credentials %}style="color: #F00; font-weight: bold"{% endif %}>Pasword: <input size="30" type="password" name="password"></input></p>
+						
+					</fieldset>
+					<br/>
+					<center>
+						<input type="submit" value="Remove this addon" onClick="return confirm('Press OK if you really want to remove this addon. This cannot be undone.')"></input><br/>
+					</center>
+				</form>
+			{% endif %}
+				<center>
+				{% if errors_credentials %}<p style="color: #F00; font-weight: bold">Login and/or password incorrect</p>
+				{% endif %}
+				{% if errors_permissions and not errors_credentials %}<p style="color: #F00; font-weight: bold">You don't have permission to remove this addon</p>
+				{% endif %}
+				{% if errors_pbl %}<p style="color: #F00; font-weight: bold">PBL File incorrect or missing</p>{% endif %}
+				{% if errors_zip %}<p style="color: #F00; font-weight: bold">Zipped addon folder incorrect or missing</p>{% endif %}
+				{% if remove_success %}
+				<p style="color: #005a00; font-weight: bold">The addon has been removed.</p>
+				<p>Click <a href="{% url addons.views.index %}">here</a> if you aren't automatically redirected to the index page within 10 seconds</p>{% endif %}
+				</center>
+			</td>
+		</tr>	            
+	</table>
+	<br/>
+	{% if not remove_success %}
+	<a href="{% url addons.views.details addon.id %}">Back to addon details</a>
+	{% endif %}
+
+{% endblock %}

@@ -1,0 +1,27 @@
+{% load wml_extras %}
+{% autoescape off %}
+[campaigns]
+timestamp={{ timestamp }}
+total={{ addons|length }}
+{% for addon in addons %}
+[campaign]
+	remote_id={{ addon.id }}
+	author={{ addon.authors.all|join:', '|wml_escape }}
+	dependencies=
+	description={{ addon.desc|wml_escape }}
+	downloads={{ addon.downloads }}
+	filename={{ addon.filename|wml_escape }}
+	icon={{ addon.img|wml_escape }}
+	name={{ addon.name|wml_escape }}
+	rating={{ addon.get_rating }}
+	size={{ addon.size }}
+	timestamp={{ addon.timestamp }}
+	title={{ addon.name|wml_escape }}
+	translate=false
+	uploads={{ addon.uploads }}
+	version={{ addon.ver|wml_escape }}
+	type={{ addon.type|wml_escape }}
+[/campaign]
+{% endfor %}
+[/campaigns]
+{% endautoescape %}
