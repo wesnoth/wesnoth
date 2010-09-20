@@ -194,7 +194,7 @@ const struct {
 	{ hotkey::HOTKEY_SPEAK_ALL, "speaktoall", N_("Speak to All"), false, hotkey::SCOPE_GAME },
 	{ hotkey::HOTKEY_HELP, "help", N_("Help"), false, hotkey::SCOPE_GENERAL },
 	{ hotkey::HOTKEY_CHAT_LOG, "chatlog", N_("View Chat Log"), false, hotkey::SCOPE_GAME },
-	{ hotkey::HOTKEY_LANGUAGE, "changelanguage", N_("Change the language"), true, hotkey::SCOPE_GENERAL },
+	{ hotkey::HOTKEY_LANGUAGE, "changelanguage", N_("Change the language"), false, hotkey::SCOPE_GENERAL },
 
 	{ hotkey::HOTKEY_USER_CMD, "command", N_("Enter user command"), false, hotkey::SCOPE_GENERAL },
 	{ hotkey::HOTKEY_CUSTOM_CMD, "customcommand", N_("Custom command"), false, hotkey::SCOPE_GAME },
