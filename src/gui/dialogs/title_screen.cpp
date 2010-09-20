@@ -210,6 +210,72 @@ void ttitle_screen::post_build(CVideo& video, twindow& window)
 					  &hotkey
 					, boost::ref(window)
 					, gui::EDIT_PREFERENCES));
+
+	static const boost::function<void()> next_tip_wrapper = boost::bind(
+			  &ttitle_screen::update_tip
+			, this
+			, boost::ref(window)
+			, true);
+
+	window.register_hotkey(hotkey::TITLE_SCREEN__NEXT_TIP
+			, boost::bind(function_wrapper<bool, boost::function<void()> >
+				, true
+				, boost::cref(next_tip_wrapper)));
+
+	static const boost::function<void()> previous_tip_wrapper = boost::bind(
+			  &ttitle_screen::update_tip
+			, this
+			, boost::ref(window)
+			, false);
+
+	window.register_hotkey(hotkey::TITLE_SCREEN__PREVIOUS_TIP
+			, boost::bind(function_wrapper<bool, boost::function<void()> >
+				, true
+				, boost::cref(previous_tip_wrapper)));
+
+	window.register_hotkey(hotkey::TITLE_SCREEN__TUTORIAL
+				, boost::bind(
+					  &hotkey
+					, boost::ref(window)
+					, gui::TUTORIAL));
+
+	window.register_hotkey(hotkey::TITLE_SCREEN__TUTORIAL
+				, boost::bind(
+					  &hotkey
+					, boost::ref(window)
+					, gui::TUTORIAL));
+
+	window.register_hotkey(hotkey::TITLE_SCREEN__CAMPAIGN
+				, boost::bind(
+					  &hotkey
+					, boost::ref(window)
+					, gui::NEW_CAMPAIGN));
+
+	window.register_hotkey(hotkey::TITLE_SCREEN__MULTIPLAYER
+				, boost::bind(
+					  &hotkey
+					, boost::ref(window)
+					, gui::MULTIPLAYER));
+
+	window.register_hotkey(hotkey::TITLE_SCREEN__ADDONS
+				, boost::bind(
+					  &hotkey
+					, boost::ref(window)
+					, gui::GET_ADDONS));
+
+#ifndef DISABLE_EDITOR
+	window.register_hotkey(hotkey::TITLE_SCREEN__EDITOR
+				, boost::bind(
+					  &hotkey
+					, boost::ref(window)
+					, gui::START_MAP_EDITOR));
+#endif
+
+	window.register_hotkey(hotkey::TITLE_SCREEN__CREDITS
+				, boost::bind(
+					  &hotkey
+					, boost::ref(window)
+					, gui::SHOW_ABOUT));
 }
 
 void ttitle_screen::pre_show(CVideo& video, twindow& window)
