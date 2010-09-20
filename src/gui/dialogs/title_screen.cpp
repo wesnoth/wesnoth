@@ -186,6 +186,24 @@ void ttitle_screen::post_build(CVideo& video, twindow& window)
 
 	window.register_hotkey(hotkey::HOTKEY_FULLSCREEN
 			, boost::bind(fullscreen, boost::ref(video)));
+
+	window.register_hotkey(hotkey::HOTKEY_LANGUAGE
+				, boost::bind(
+					  &hotkey
+					, boost::ref(window)
+					, gui::CHANGE_LANGUAGE));
+
+	window.register_hotkey(hotkey::HOTKEY_LOAD_GAME
+				, boost::bind(
+					  &hotkey
+					, boost::ref(window)
+					, gui::LOAD_GAME));
+
+	window.register_hotkey(hotkey::HOTKEY_HELP
+				, boost::bind(
+					  &hotkey
+					, boost::ref(window)
+					, gui::SHOW_HELP));
 }
 
 void ttitle_screen::pre_show(CVideo& video, twindow& window)
