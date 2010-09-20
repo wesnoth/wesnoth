@@ -497,3 +497,13 @@ function wml_actions.move_unit(cfg)
 		end
 	end
 end
+
+function wml_actions.capture_village(cfg)
+	local side = cfg.side
+	if side then side = tonumber(side) or helper.wml_error("invalid side in [capture_village]") end
+	local locs = wesnoth.get_locations(cfg)
+
+	for i, loc in ipairs(locs) do
+		wesnoth.set_village_owner(loc[1], loc[2], side)
+	end
+end

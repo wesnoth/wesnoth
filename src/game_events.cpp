@@ -2189,17 +2189,6 @@ WML_HANDLER_FUNCTION(store_villages, /*event_info*/, cfg)
 	varinfo.vars->append(to_store);
 }
 
-// Command to take control of a village for a certain side
-WML_HANDLER_FUNCTION(capture_village, /*event_info*/, cfg)
-{
-	int side_num = cfg["side"].to_int();
-	foreach (const map_location &loc, parse_location_range(cfg["x"], cfg["y"])) {
-		if (resources::game_map->is_village(loc)) {
-			get_village(loc, side_num);
-		}
-	}
-}
-
 WML_HANDLER_FUNCTION(end_turn, /*event_info*/, /*cfg*/)
 {
 	resources::controller->force_end_turn();
