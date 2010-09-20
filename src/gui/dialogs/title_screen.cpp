@@ -204,6 +204,12 @@ void ttitle_screen::post_build(CVideo& video, twindow& window)
 					  &hotkey
 					, boost::ref(window)
 					, gui::SHOW_HELP));
+
+	window.register_hotkey(hotkey::HOTKEY_PREFERENCES
+				, boost::bind(
+					  &hotkey
+					, boost::ref(window)
+					, gui::EDIT_PREFERENCES));
 }
 
 void ttitle_screen::pre_show(CVideo& video, twindow& window)
