@@ -80,18 +80,19 @@ std::vector<std::string> get_text(const std::string &campaign)
 {
 	std::vector< std::string > res;
 
-	config::child_itors children = about_list.child_range("about");
+	config::child_itors about_entries = about_list.child_range("about");
 
-	foreach (const config &child, children)
-	{
-		// just finished a particular campaign
-		if (campaign == child["id"]) {
-			add_lines(res, child);
+	if (!campaign.empty()) {
+		foreach (const config &about, about_entries) {
+			// just finished a particular campaign
+			if (campaign == about["id"]) {
+				add_lines(res, about);
+			}
 		}
 	}
 
-	foreach (const config &child, children) {
-	  add_lines(res, child);
+	foreach (const config &about, about_entries) {
+		add_lines(res, about);
 	}
 
 	return res;
