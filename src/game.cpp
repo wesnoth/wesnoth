@@ -457,7 +457,45 @@ game_controller::game_controller(int argc, char** argv) :
 			// the work-in-progress new storyscreen code.
 			// Don't document.
 			set_new_storyscreen(true);
-		} else if(val == "--new-widgets") {
+        } /* //These commented lines should be used to implement support of connection
+             //through a proxy via command line options.
+             //The ANA network module should implement these methods (while the SDL_net won't.)
+            else if(val == "--proxy") {
+            network::enable_connection_through_proxy();
+        } else if(val == "--proxy-address") {
+            if ( argv_[ arg_ + 1][0] != '-')
+            {
+                network::enable_connection_through_proxy();
+                network::set_proxy_address( argv_[ ++arg_ ] );
+            }
+            else
+                throw std::runtime_error("Proxy address option requires address");
+
+        } else if(val == "--proxy-port") {
+            if ( argv_[ arg_ + 1][0] != '-')
+            {
+                network::enable_connection_through_proxy();
+                network::set_proxy_port( argv_[ ++arg_ ] );
+            }
+            else
+                throw std::runtime_error("Proxy port option requires port");
+        } else if(val == "--proxy-user") {
+            if ( argv_[ arg_ + 1][0] != '-')
+            {
+                network::enable_connection_through_proxy();
+                network::set_proxy_user( argv_[ ++arg_ ] );
+            }
+            else
+                throw std::runtime_error("Proxy user option requires user name");
+        } else if(val == "--proxy-password") {
+            if ( argv_[ arg_ + 1][0] != '-')
+            {
+                network::enable_connection_through_proxy();
+                network::set_proxy_port( argv_[ ++arg_ ] );
+            }
+            else
+                throw std::runtime_error("Proxy password option requires password");
+        } */else if(val == "--new-widgets") {
 			// This is a hidden option to enable the new widget toolkit.
 			gui2::new_widgets = true;
 #ifndef DISABLE_EDITOR

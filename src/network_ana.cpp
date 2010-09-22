@@ -190,9 +190,9 @@ namespace network {
         return ana_manager.disconnect( handle );
     }
 
-    void queue_disconnect(network::connection /*sock*/)
+    void queue_disconnect(network::connection handle )
     {
-        throw("TODO:Not implemented queue_disconnect");
+        ana_manager.disconnect( handle );
     }
 
     connection receive_data(config&           cfg,
