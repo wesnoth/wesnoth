@@ -111,6 +111,8 @@ stringfixes = {
 ("Don't make a wish.", "Don’t make a wish."),
 ("$name's", "$name|’s"),
 ("$road's", "$road|’s"),
+("$login's", "$login|’s"),
+("$name|'s turn", "$name|’s turn"),
 
 # "Familiarise" is not used in American English
 ("familiarise yourself", "familiarize yourself"),
