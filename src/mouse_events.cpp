@@ -652,8 +652,8 @@ int mouse_handler::fill_weapon_choices(std::vector<battle_context>& bc_vector, u
 
 int mouse_handler::show_attack_dialog(const map_location& attacker_loc, const map_location& defender_loc)
 {
-	unit_map::iterator attacker = find_unit(attacker_loc);
-	unit_map::iterator defender = find_unit(defender_loc);
+	unit_map::iterator attacker = units_.find(attacker_loc);
+	unit_map::iterator defender = units_.find(defender_loc);
 
 	std::vector<battle_context> bc_vector;
 	int best = fill_weapon_choices(bc_vector, attacker, defender);
