@@ -181,6 +181,9 @@ public:
 	const t_string& objectives() const { return info_.objectives; }
 	bool objectives_changed() const { return info_.objectives_changed; }
 
+	/**
+	 * arg n: a side number to compare to
+	 */
 	bool is_enemy(int n) const {
 		const size_t index = size_t(n-1);
 		if(index < enemies_.size()) {
