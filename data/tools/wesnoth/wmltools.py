@@ -14,7 +14,7 @@ resource_extensions = map_extensions + image_extensions + sound_extensions
 image_reference = r"[A-Za-z0-9{}.][A-Za-z0-9_/+{}.-]*\.(png|jpg)(?=(~.*)?)"
 
 def is_root(dirname):
-    "Is the specified path the filesysten root?"
+    "Is the specified path the filesystem root?"
     return dirname == os.sep or (os.sep == '\\' and dirname.endswith(':\\'))
 
 def pop_to_top(whoami):
@@ -317,7 +317,7 @@ class Reference:
 
 class CrossRef:
     macro_reference = re.compile(r"\{([A-Z_][A-Za-z0-9_:]*)(?!\.)\b")
-    file_reference =  re.compile(r"[A-Za-z0-9{}.][A-Za-z0-9_/+{}.-]*\.(" + "|".join(resource_extensions) + ")(?=(~.*)?)")
+    file_reference =  re.compile(r"[A-Za-z0-9{}.][A-Za-z0-9_/+{}.@-]*\.(" + "|".join(resource_extensions) + ")(?=(~.*)?)")
     tag_parse = re.compile("\s*([a-z_]+)\s*=(.*)") 
     def mark_matching_resources(self, pattern, fn, n):
         "Mark all definitions matching a specified pattern with a reference."
