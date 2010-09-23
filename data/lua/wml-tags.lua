@@ -208,7 +208,7 @@ local function handle_event_commands(cfg)
 	for i = 1, #cfg do
 		local v = cfg[i]
 		local cmd = v[1]
-		if not string.find(cmd, "^filter") then
+		if not string.find(cmd, "^filter") and cmd ~= "condition" then
 			cmd = wml_actions[cmd] or
 				helper.wml_error(string.format("[%s] not supported", cmd))
 			cmd(v[2])

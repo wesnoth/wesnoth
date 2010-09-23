@@ -2864,6 +2864,14 @@ static bool process_event(game_events::event_handler& handler, const game_events
 	scoped_weapon_info second_weapon("second_weapon", ev.data.child("second"));
 	vconfig filters(handler.get_config());
 
+
+	foreach (const vconfig &condition, filters.get_children("condition"))
+	{
+		if (!game_events::conditional_passed(condition)) {
+			return false;
+		}
+	}
+
 	foreach (const vconfig &f, filters.get_children("filter"))
 	{
 		if (unit1 == units->end() || !game_events::unit_matches_filter(*unit1, f)) {
