@@ -282,22 +282,22 @@ void enable_connection_through_proxy()
 {
     throw std::runtime_error("Proxy not available while using SDL_net. Use ANA instead.");
 }
-void set_proxy_address ( const std::string& address  )
+void set_proxy_address ( const std::string& )
 {
     throw std::runtime_error("Proxy not available while using SDL_net. Use ANA instead.");
 }
 
-void set_proxy_port    ( const std::string& port     )
+void set_proxy_port    ( const std::string& )
 {
     throw std::runtime_error("Proxy not available while using SDL_net. Use ANA instead.");
 }
 
-void set_proxy_user    ( const std::string& user     )
+void set_proxy_user    ( const std::string& )
 {
     throw std::runtime_error("Proxy not available while using SDL_net. Use ANA instead.");
 }
 
-void set_proxy_password( const std::string& password )
+void set_proxy_password( const std::string& )
 {
     throw std::runtime_error("Proxy not available while using SDL_net. Use ANA instead.");
 }
