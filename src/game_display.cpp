@@ -505,7 +505,7 @@ void game_display::draw_minimap_units()
 				, round_double(u_w)
 				, round_double(u_h));
 
-		SDL_FillRect(video().getSurface(), &r, mapped_col);
+		sdl_fill_rect(video().getSurface(), &r, mapped_col);
 	}
 }
 
@@ -574,7 +574,7 @@ void game_display::draw_bar(const std::string& image, int xpos, int ypos,
 		const Uint8 r_alpha = std::min<unsigned>(unsigned(fxpmult(alpha,255)),255);
 		surface filled_surf = create_compatible_surface(bar_surf, bar_loc.w, height - unfilled);
 		SDL_Rect filled_area = create_rect(0, 0, bar_loc.w, height-unfilled);
-		SDL_FillRect(filled_surf,&filled_area,SDL_MapRGBA(bar_surf->format,col.r,col.g,col.b, r_alpha));
+		sdl_fill_rect(filled_surf,&filled_area,SDL_MapRGBA(bar_surf->format,col.r,col.g,col.b, r_alpha));
 		drawing_buffer_add(LAYER_UNIT_BAR, loc, xpos + bar_loc.x, ypos + bar_loc.y + unfilled, filled_surf);
 	}
 }

@@ -303,7 +303,7 @@ void twidget::draw_debug_border(surface& frame_buffer)
 					, debug_border_color_, frame_buffer);
 			break;
 		case 2:
-			SDL_FillRect(frame_buffer, &r, debug_border_color_);
+			sdl_fill_rect(frame_buffer, &r, debug_border_color_);
 			break;
 		default:
 			assert(false);

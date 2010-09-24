@@ -2042,7 +2042,7 @@ void display::clear_screen()
 {
 	surface const disp(screen_.getSurface());
 	SDL_Rect area = screen_area();
-	SDL_FillRect(disp, &area, SDL_MapRGB(disp->format, 0, 0, 0));
+	sdl_fill_rect(disp, &area, SDL_MapRGB(disp->format, 0, 0, 0));
 }
 
 const SDL_Rect& display::get_clip_rect()
@@ -2158,7 +2158,7 @@ void display::draw_hex(const map_location& loc) {
 			surface text = font::get_rendered_text(lexical_cast<std::string>(loc), font::SIZE_SMALL, font::NORMAL_COLOR);
 			surface bg = create_neutral_surface(text->w, text->h);
 			SDL_Rect bg_rect = create_rect(0, 0, text->w, text->h);
-			SDL_FillRect(bg, &bg_rect, 0xaa000000);
+			sdl_fill_rect(bg, &bg_rect, 0xaa000000);
 			off_x -= text->w / 2;
 			if (draw_terrain_codes_) {
 				off_y -= text->h;
@@ -2174,7 +2174,7 @@ void display::draw_hex(const map_location& loc) {
 			surface text = font::get_rendered_text(lexical_cast<std::string>(get_map().get_terrain(loc)), font::SIZE_SMALL, font::NORMAL_COLOR);
 			surface bg = create_neutral_surface(text->w, text->h);
 			SDL_Rect bg_rect = create_rect(0, 0, text->w, text->h);
-			SDL_FillRect(bg, &bg_rect, 0xaa000000);
+			sdl_fill_rect(bg, &bg_rect, 0xaa000000);
 			off_x -= text->w / 2;
 			if (!draw_coordinates_) {
 				off_y -= text->h / 2;

@@ -130,6 +130,10 @@ inline void sdl_blit(SDL_Surface* src, SDL_Rect* src_rect, SDL_Surface* dst, SDL
 	SDL_BlitSurface(src, src_rect, dst, dst_rect);
 }
 
+inline void sdl_fill_rect(SDL_Surface* dst, SDL_Rect* dst_rect, const Uint32 color){
+	SDL_FillRect(dst, dst_rect, color);
+}
+
 surface make_neutral_surface(const surface &surf);
 surface create_neutral_surface(int w, int h);
 surface create_optimized_surface(const surface &surf);

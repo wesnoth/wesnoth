@@ -141,7 +141,7 @@ void textbox::draw_cursor(int pos, CVideo &video) const
 				, location().h);
 
 		surface const frame_buffer = video.getSurface();
-		SDL_FillRect(frame_buffer,&rect,SDL_MapRGB(frame_buffer->format,255,255,255));
+		sdl_fill_rect(frame_buffer,&rect,SDL_MapRGB(frame_buffer->format,255,255,255));
 	}
 }
 

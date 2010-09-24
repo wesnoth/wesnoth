@@ -1736,7 +1736,7 @@ void blit_surface(const surface& src,
 void fill_rect_alpha(SDL_Rect &rect, Uint32 color, Uint8 alpha, const surface &target)
 {
 	if(alpha == SDL_ALPHA_OPAQUE) {
-		SDL_FillRect(target,&rect,color);
+		sdl_fill_rect(target,&rect,color);
 		return;
 	} else if(alpha == SDL_ALPHA_TRANSPARENT) {
 		return;
@@ -1748,7 +1748,7 @@ void fill_rect_alpha(SDL_Rect &rect, Uint32 color, Uint8 alpha, const surface &t
 	}
 
 	SDL_Rect r = {0,0,rect.w,rect.h};
-	SDL_FillRect(tmp,&r,color);
+	sdl_fill_rect(tmp,&r,color);
 	SDL_SetAlpha(tmp,SDL_SRCALPHA,alpha);
 	sdl_blit(tmp,NULL,target,&rect);
 }
@@ -1954,10 +1954,10 @@ void draw_rectangle(int x, int y, int w, int h, Uint32 color,surface target)
 	SDL_Rect left = create_rect(x, y, 1, h);
 	SDL_Rect right = create_rect(x + w - 1, y, 1, h);
 
-	SDL_FillRect(target,&top,color);
-	SDL_FillRect(target,&bot,color);
-	SDL_FillRect(target,&left,color);
-	SDL_FillRect(target,&right,color);
+	sdl_fill_rect(target,&top,color);
+	sdl_fill_rect(target,&bot,color);
+	sdl_fill_rect(target,&left,color);
+	sdl_fill_rect(target,&right,color);
 }
 
 void draw_solid_tinted_rectangle(int x, int y, int w, int h,
@@ -1976,7 +1976,7 @@ void draw_centered_on_background(surface surf, const SDL_Rect& rect, const SDL_C
 	Uint32 col = SDL_MapRGBA(target->format, color.r, color.g, color.b, color.unused);
 	//TODO: only draw background outside the image
 	SDL_Rect r = rect;
-	SDL_FillRect(target, &r, col);
+	sdl_fill_rect(target, &r, col);
 
 	if (surf != NULL) {
 		r.x = rect.x + (rect.w-surf->w)/2;
