@@ -427,18 +427,15 @@ void battle_prediction_pane::get_hp_distrib_surface(const std::vector<std::pair<
 
 	// Create the surface.
 	surf = create_neutral_surface(width, height);
-	// following SDL code will use color key,
-	// so we need to remove the alpha channel to make it work
-	// FIXME: use standard alpha and blit_surface instead
+
+	// Dsiable alpha channel to avoid problem with sdl_blit
 	SDL_SetAlpha(surf, 0, SDL_ALPHA_OPAQUE);
 
 	SDL_Rect clip_rect = create_rect(0, 0, width, height);
-	Uint32 grey_color = SDL_MapRGB(surf->format, 0xb7, 0xc1, 0xc1);
-	Uint32 transparent_color = SDL_MapRGB(surf->format, 1, 1, 1);
+	Uint32 grey_color = SDL_MapRGBA(surf->format, 0xb7, 0xc1, 0xc1, 255);
 
-	// Enable transparency.
-	SDL_SetColorKey(surf, SDL_SRCCOLORKEY, transparent_color);
-	sdl_fill_rect(surf, &clip_rect, transparent_color);
+	Uint32 background_color = SDL_MapRGBA(surf->format, 25, 25, 25, 255);
+	sdl_fill_rect(surf, &clip_rect, background_color);
 
 	// Draw the surrounding borders and separators.
 	SDL_Rect top_border_rect = create_rect(0, 0, width, 2);
