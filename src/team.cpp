@@ -200,6 +200,19 @@ void team::team_info::read(const config &cfg)
 	       << ", share_maps: " << share_maps << ", share_view: " << share_view << ".\n";
 }
 
+char const *team::team_info::controller_string() const
+{
+	switch(controller) {
+	case AI: return "ai";
+	case HUMAN: return "human";
+	case HUMAN_AI: return "human_ai";
+	case NETWORK: return "network";
+	case NETWORK_AI: return "network_ai";
+	case EMPTY: return "null";
+	default: assert(false); return NULL;
+	}
+}
+
 void team::team_info::write(config& cfg) const
 {
 	cfg["gold"] = gold;
@@ -225,16 +238,7 @@ void team::team_info::write(config& cfg) const
 	cfg["no_leader"] = no_leader;
 	cfg["hidden"] = hidden;
 	cfg["scroll_to_leader"] = scroll_to_leader;
-
-	switch(controller) {
-	case AI: cfg["controller"] = "ai"; break;
-	case HUMAN: cfg["controller"] = "human"; break;
-	case HUMAN_AI: cfg["controller"] = "human_ai"; break;
-	case NETWORK: cfg["controller"] = "network"; break;
-	case NETWORK_AI: cfg["controller"] = "network_ai"; break;
-	case EMPTY: cfg["controller"] = "null"; break;
-	default: assert(false); return;
-	}
+	cfg["controller"] = controller_string();
 
 	std::stringstream can_recruit_str;
 	for(std::set<std::string>::const_iterator cr = can_recruit.begin(); cr != can_recruit.end(); ++cr) {
