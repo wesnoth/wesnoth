@@ -506,3 +506,12 @@ function wml_actions.capture_village(cfg)
 		wesnoth.set_village_owner(loc[1], loc[2], side)
 	end
 end
+
+function wml_actions.terrain(cfg)
+	local terrain = cfg.terrain or helper.wml_error("[terrain] missing required terrain= attribute")
+	cfg = helper.shallow_literal(cfg)
+	cfg.terrain = nil
+	for i, loc in ipairs(wesnoth.get_locations(cfg)) do
+		wesnoth.set_terrain(loc[1], loc[2], terrain, cfg.layer, cfg.replace_if_failed)
+	end
+end

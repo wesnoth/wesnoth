@@ -1567,23 +1567,6 @@ void change_terrain(const map_location &loc, const t_translation::t_terrain &t,
 	}
 }
 
-// Changing the terrain
-WML_HANDLER_FUNCTION(terrain, /*event_info*/, cfg)
-{
-	t_translation::t_terrain terrain = t_translation::read_terrain_code(cfg["terrain"]);
-	if (terrain == t_translation::NONE_TERRAIN) return;
-
-	gamemap::tmerge_mode mode = gamemap::BOTH;
-	if (cfg["layer"] == "base") mode = gamemap::BASE; else
-	if (cfg["layer"] == "overlay") mode = gamemap::OVERLAY;
-
-	bool replace_if_failed = cfg["replace_if_failed"].to_bool();
-
-	foreach (const map_location &loc, parse_location_range(cfg["x"], cfg["y"], true)) {
-		change_terrain(loc, terrain, mode, replace_if_failed);
-	}
-}
-
 // Creating a mask of the terrain
 WML_HANDLER_FUNCTION(terrain_mask, /*event_info*/, cfg)
 {
