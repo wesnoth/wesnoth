@@ -485,6 +485,42 @@ class ana_network_manager : public ana::listener_handler,
          */
         bool disconnect( network::connection handle);
 
+        //@{
+        /**
+         * Attempt to connect through a proxy (as opposed to directly.)
+         *
+         * Use the set_proxy_* methods to configure the connection options.
+         */
+        void enable_connection_through_proxy();
+
+        /**
+         * Set the address of the proxy. Default: "localhost".
+         *
+         * @param address: Network address where the proxy server should be running.
+         */
+        void set_proxy_address ( const std::string& address  );
+
+        /**
+         * Set the port of the proxy. Default: "3128".
+         *
+         * @param port: Network port where the proxy server should be listening.
+         */
+        void set_proxy_port    ( const std::string& port     );
+
+        /**
+         * Set the user to authenticate with the proxy. Default: "".
+         *
+         * @param user: User name to use for authentication purposes.
+         */
+        void set_proxy_user    ( const std::string& user     );
+
+        /**
+         * Set the password to authenticate with the proxy. Default: "".
+         *
+         * @param password: Password to use for authentication purposes.
+         */
+        void set_proxy_password( const std::string& password );
+        //@}
     private:
         virtual void handle_send(ana::error_code, ana::net_id, ana::operation_id);
 
@@ -493,6 +529,24 @@ class ana_network_manager : public ana::listener_handler,
                                      ana::read_buffer buffer);
 
         virtual void handle_disconnect(ana::error_code /*error_code*/, ana::net_id client);
+
+        struct proxy_settings
+        {
+            proxy_settings() :
+                enabled(false),
+                address(),
+                port(),
+                user(),
+                password()
+            {
+            }
+
+            bool        enabled;
+            std::string address;
+            std::string port;
+            std::string user;
+            std::string password;
+        };
 
         /**
          * Pack a config object to an outpt stream using compression.
@@ -523,6 +577,8 @@ class ana_network_manager : public ana::listener_handler,
 
         /** Client IDs that have disconnected from a serve (used in servers applications.) */
         std::queue< ana::net_id >    disconnected_ids_;
+
+        proxy_settings               proxy_settings_;
 };
 
 #endif

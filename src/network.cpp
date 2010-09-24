@@ -276,6 +276,32 @@ void set_raw_data_only()
 	network_worker_pool::set_raw_data_only();
 }
 
+// --- Proxy methods
+void enable_connection_through_proxy()
+{
+    throw std::runtime_error("Proxy not available while using SDL_net. Use ANA instead.");
+}
+void set_proxy_address ( const std::string& address  )
+{
+    throw std::runtime_error("Proxy not available while using SDL_net. Use ANA instead.");
+}
+
+void set_proxy_port    ( const std::string& port     )
+{
+    throw std::runtime_error("Proxy not available while using SDL_net. Use ANA instead.");
+}
+
+void set_proxy_user    ( const std::string& user     )
+{
+    throw std::runtime_error("Proxy not available while using SDL_net. Use ANA instead.");
+}
+
+void set_proxy_password( const std::string& password )
+{
+    throw std::runtime_error("Proxy not available while using SDL_net. Use ANA instead.");
+}
+// --- End Proxy methods
+
 server_manager::server_manager(int port, CREATE_SERVER create_server) : free_(false), connection_(0)
 {
 	if(create_server != NO_SERVER && !server_socket) {

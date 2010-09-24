@@ -457,7 +457,7 @@ game_controller::game_controller(int argc, char** argv) :
 			// the work-in-progress new storyscreen code.
 			// Don't document.
 			set_new_storyscreen(true);
-        } /* //These commented lines should be used to implement support of connection
+        }  //These commented lines should be used to implement support of connection
              //through a proxy via command line options.
              //The ANA network module should implement these methods (while the SDL_net won't.)
             else if(val == "--proxy") {
@@ -491,11 +491,11 @@ game_controller::game_controller(int argc, char** argv) :
             if ( argv_[ arg_ + 1][0] != '-')
             {
                 network::enable_connection_through_proxy();
-                network::set_proxy_port( argv_[ ++arg_ ] );
+                network::set_proxy_password( argv_[ ++arg_ ] );
             }
             else
                 throw std::runtime_error("Proxy password option requires password");
-        } */else if(val == "--new-widgets") {
+        } else if(val == "--new-widgets") {
 			// This is a hidden option to enable the new widget toolkit.
 			gui2::new_widgets = true;
 #ifndef DISABLE_EDITOR
