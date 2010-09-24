@@ -726,11 +726,14 @@ static int impl_vconfig_collect(lua_State *L)
 		return 1; \
 	}
 
-#define return_string_attrib(name, accessor) \
+#define return_cstring_attrib(name, accessor) \
 	if (strcmp(m, name) == 0) { \
-		lua_pushstring(L, accessor.c_str()); \
+		lua_pushstring(L, accessor); \
 		return 1; \
 	}
+
+#define return_string_attrib(name, accessor) \
+	return_cstring_attrib(name, accessor.c_str())
 
 #define return_int_attrib(name, accessor) \
 	if (strcmp(m, name) == 0) { \
@@ -1294,6 +1297,7 @@ static int impl_side_get(lua_State *L)
 	return_bool_attrib("objectives_changed", t.objectives_changed());
 	return_tstring_attrib("user_team_name", t.user_team_name());
 	return_string_attrib("team_name", t.team_name());
+	return_cstring_attrib("controller", t.controller_string());
 
 	if (strcmp(m, "recruit") == 0) {
 		std::set<std::string> const &recruits = t.recruits();
@@ -1331,6 +1335,7 @@ static int impl_side_set(lua_State *L)
 	modify_bool_attrib("objectives_changed", t.set_objectives_changed(value));
 	modify_tstring_attrib("user_team_name", t.change_team(t.team_name(), value));
 	modify_string_attrib("team_name", t.change_team(value, t.user_team_name()));
+	modify_string_attrib("controller", t.change_controller(value));
 
 	if (strcmp(m, "recruit") == 0) {
 		t.set_recruits(std::set<std::string>());
