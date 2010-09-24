@@ -35,6 +35,7 @@
 #include <iomanip>
 #include <set>
 #include <cstring>
+#include <stdexcept>
 
 #include <signal.h>
 #if defined(_WIN32) || defined(__WIN32__) || defined (WIN32)
