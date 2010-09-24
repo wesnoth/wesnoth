@@ -839,8 +839,23 @@ static int impl_unit_collect(lua_State *L)
  */
 static int impl_unit_get(lua_State *L)
 {
-	unit const *pu = static_cast<lua_unit *>(lua_touserdata(L, 1))->get();
+	lua_unit *lu = static_cast<lua_unit *>(lua_touserdata(L, 1));
 	char const *m = luaL_checkstring(L, 2);
+
+	if (strcmp(m, "valid") == 0)
+	{
+		if (lu->on_map())
+			lua_pushstring(L, "recall");
+		else if (lu->on_recall_list())
+			lua_pushstring(L, "map");
+		else if (lu->get())
+			lua_pushstring(L, "private");
+		else
+			return 0;
+		return 1;
+	}
+
+	unit const *pu = lu->get();
 	if (!pu) return luaL_argerror(L, 1, "unknown unit");
 	unit const &u = *pu;
 
