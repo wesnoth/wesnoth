@@ -393,7 +393,7 @@ void ui::draw_contents()
 	background = scale_surface(background, video().getx(), video().gety());
 	if(background == NULL)
 		return;
-	SDL_BlitSurface(background, NULL, video().getSurface(), NULL);
+	sdl_blit(background, NULL, video().getSurface(), NULL);
 	update_whole_screen();
 
 	hide_children(false);

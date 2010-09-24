@@ -282,20 +282,20 @@ void show_about(display &disp, const std::string &campaign)
 
 		if (redraw_mapimage) {
 			// draw map to screen, thus erasing all text
-			SDL_BlitSurface(map_image, NULL, screen, NULL);
+			sdl_blit(map_image, NULL, screen, NULL);
 			update_rect(screen_rect);
 
 			// redraw the dialog
 			f.draw_background();
 			f.draw_border();
 			// cache the dialog background (alpha blending + blurred map)
-			SDL_BlitSurface(screen, &text_rect, text_surf, NULL);
+			sdl_blit(screen, &text_rect, text_surf, NULL);
 			redraw_mapimage = false;
 		} else {
 			// redraw the saved part of the dialog where text scrolled
 			// thus erasing all text
 			SDL_Rect modified = create_rect(0, 0, max_text_width, text_rect.h);
-			SDL_BlitSurface(text_surf, &modified, screen, &text_rect_blit);
+			sdl_blit(text_surf, &modified, screen, &text_rect_blit);
 			update_rect(text_rect);
 		}
 

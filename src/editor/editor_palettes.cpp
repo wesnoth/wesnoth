@@ -460,7 +460,7 @@ void terrain_palette::draw(bool force) {
 				   size_specs_.terrain_size, size_specs_.terrain_size));
 			}
 
-			SDL_BlitSurface(base_image, NULL, screen, &dstrect);
+			sdl_blit(base_image, NULL, screen, &dstrect);
 		}
 
 		const std::string filename = "terrain/" + map().get_terrain_info(terrain).editor_image() + ".png";
@@ -482,7 +482,7 @@ void terrain_palette::draw(bool force) {
 				size_specs_.terrain_size, size_specs_.terrain_size));
 		}
 
-		SDL_BlitSurface(image, NULL, screen, &dstrect);
+		sdl_blit(image, NULL, screen, &dstrect);
 
 		SDL_Surface* const screen = gui_.video().getSurface();
 		Uint32 color;
@@ -646,7 +646,7 @@ void brush_bar::draw(bool force) {
 			image.assign(scale_surface(image, size_, size_));
 		}
 		SDL_Rect dstrect = create_rect(x, size_specs_.brush_y, image->w, image->h);
-		SDL_BlitSurface(image, NULL, screen, &dstrect);
+		sdl_blit(image, NULL, screen, &dstrect);
 		const Uint32 color = i == selected_brush_size() ?
 			SDL_MapRGB(screen->format,0xFF,0x00,0x00) :
 			SDL_MapRGB(screen->format,0x00,0x00,0x00);

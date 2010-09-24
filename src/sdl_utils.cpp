@@ -1750,7 +1750,7 @@ void fill_rect_alpha(SDL_Rect &rect, Uint32 color, Uint8 alpha, const surface &t
 	SDL_Rect r = {0,0,rect.w,rect.h};
 	SDL_FillRect(tmp,&r,color);
 	SDL_SetAlpha(tmp,SDL_SRCALPHA,alpha);
-	SDL_BlitSurface(tmp,NULL,target,&rect);
+	sdl_blit(tmp,NULL,target,&rect);
 }
 
 surface get_surface_portion(const surface &src, SDL_Rect &area, bool optimize_format)
@@ -1779,7 +1779,7 @@ surface get_surface_portion(const surface &src, SDL_Rect &area, bool optimize_fo
 		return NULL;
 	}
 
-	SDL_BlitSurface(src, &area, dst, NULL);
+	sdl_blit(src, &area, dst, NULL);
 
 	return optimize_format ? display_format_alpha(dst) : dst;
 }
@@ -1920,7 +1920,7 @@ void surface_restorer::restore(SDL_Rect const &dst) const
 	SDL_Rect src = dst2;
 	src.x -= rect_.x;
 	src.y -= rect_.y;
-	SDL_BlitSurface(surface_, &src, target_->getSurface(), &dst2);
+	sdl_blit(surface_, &src, target_->getSurface(), &dst2);
 	update_rect(dst2);
 }
 
@@ -1929,7 +1929,7 @@ void surface_restorer::restore() const
 	if (surface_.null())
 		return;
 	SDL_Rect dst = rect_;
-	SDL_BlitSurface(surface_, NULL, target_->getSurface(), &dst);
+	sdl_blit(surface_, NULL, target_->getSurface(), &dst);
 	update_rect(rect_);
 }
 
@@ -1981,7 +1981,7 @@ void draw_centered_on_background(surface surf, const SDL_Rect& rect, const SDL_C
 	if (surf != NULL) {
 		r.x = rect.x + (rect.w-surf->w)/2;
 		r.y = rect.y + (rect.h-surf->h)/2;
-		SDL_BlitSurface(surf, NULL, target, &r);
+		sdl_blit(surf, NULL, target, &r);
 	}
 	update_rect(rect);
 }

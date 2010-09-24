@@ -1250,11 +1250,11 @@ void tcanvas::blit(surface& surf, SDL_Rect rect)
 			SDL_Rect r = rect;
 			surface s = get_surface_portion(surf, r, true);
 			s = blur_surface(s, blur_depth_);
-			SDL_BlitSurface(s, NULL, surf, &rect);
+			sdl_blit(s, NULL, surf, &rect);
 		}
 	}
 
-	SDL_BlitSurface(canvas_, NULL, surf, &rect);
+	sdl_blit(canvas_, NULL, surf, &rect);
 }
 
 void tcanvas::parse_cfg(const config& cfg)

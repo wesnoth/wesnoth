@@ -100,14 +100,14 @@ void textbox::append_text(const std::string& text, bool auto_scroll, const SDL_C
 	SDL_SetAlpha(new_text.get(),0,0);
 	SDL_SetAlpha(text_image_.get(),0,0);
 
-	SDL_BlitSurface(text_image_,NULL,new_surface,NULL);
+	sdl_blit(text_image_,NULL,new_surface,NULL);
 
 	SDL_Rect target = create_rect(0
 			, text_image_->h
 			, new_text->w
 			, new_text->h);
 
-	SDL_BlitSurface(new_text,NULL,new_surface,&target);
+	sdl_blit(new_text,NULL,new_surface,&target);
 	text_image_.assign(new_surface);
 
 	text_.resize(text_.size() + wtext.size());
@@ -198,7 +198,7 @@ void textbox::draw_contents()
 			}
 		}
 
-		SDL_BlitSurface(text_image_, &src, surf, &dest);
+		sdl_blit(text_image_, &src, surf, &dest);
 	}
 
 	draw_cursor((cursor_pos_ == 0 ? 0 : cursor_pos_ - 1), video());

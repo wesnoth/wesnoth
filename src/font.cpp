@@ -752,7 +752,7 @@ static surface render_text(const std::string& text, int fontsize, const SDL_Colo
 					j_end = i->end(); j != j_end; ++j) {
 				SDL_SetAlpha(*j, 0, 0); // direct blit without alpha blending
 				SDL_Rect dstrect = create_rect(xpos, ypos, 0, 0);
-				SDL_BlitSurface(*j, NULL, res, &dstrect);
+				sdl_blit(*j, NULL, res, &dstrect);
 				xpos += (*j)->w;
 				height = std::max<size_t>((*j)->h, height);
 			}
@@ -827,7 +827,7 @@ SDL_Rect draw_text_line(surface gui_surface, const SDL_Rect& area, int size,
 		SDL_Rect src = dest;
 		src.x = 0;
 		src.y = 0;
-		SDL_BlitSurface(surface,&src,gui_surface,&dest);
+		sdl_blit(surface,&src,gui_surface,&dest);
 	}
 
 	if(use_tooltips) {
@@ -1047,8 +1047,8 @@ void floating_label::draw(surface screen)
 
 	SDL_Rect rect = create_rect(xpos(surf_->w), ypos_, surf_->w, surf_->h);
 	const clip_rect_setter clip_setter(screen, &clip_rect_);
-	SDL_BlitSurface(screen,&rect,buf_,NULL);
-	SDL_BlitSurface(surf_,NULL,screen,&rect);
+	sdl_blit(screen,&rect,buf_,NULL);
+	sdl_blit(surf_,NULL,screen,&rect);
 
 	update_rect(rect);
 }
@@ -1061,7 +1061,7 @@ void floating_label::undraw(surface screen)
 
 	SDL_Rect rect = create_rect(xpos(surf_->w), ypos_, surf_->w, surf_->h);
 	const clip_rect_setter clip_setter(screen, &clip_rect_);
-	SDL_BlitSurface(buf_,NULL,screen,&rect);
+	sdl_blit(buf_,NULL,screen,&rect);
 
 	update_rect(rect);
 

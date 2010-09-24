@@ -330,7 +330,7 @@ void CVideo::blit_surface(int x, int y, surface surf, SDL_Rect* srcrect, SDL_Rec
 	SDL_Rect dst = create_rect(x, y, 0, 0);
 
 	const clip_rect_setter clip_setter(target, clip_rect, clip_rect != NULL);
-	SDL_BlitSurface(surf,srcrect,target,&dst);
+	sdl_blit(surf,srcrect,target,&dst);
 }
 
 void CVideo::make_fake()

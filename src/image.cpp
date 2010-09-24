@@ -424,7 +424,7 @@ static void add_localized_overlay (const std::string& ovr_file, const surface &o
 	area.y = 0;
 	area.w = ovr_surf->w;
 	area.h = ovr_surf->h;
-	SDL_BlitSurface(ovr_surf, 0, orig_surf, &area);
+	sdl_blit(ovr_surf, 0, orig_surf, &area);
 }
 
 surface locator::load_image_file() const

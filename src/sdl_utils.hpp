@@ -126,6 +126,10 @@ private:
 
 bool operator<(const surface& a, const surface& b);
 
+inline void sdl_blit(SDL_Surface* src, SDL_Rect* src_rect, SDL_Surface* dst, SDL_Rect* dst_rect){
+	SDL_BlitSurface(src, src_rect, dst, dst_rect);
+}
+
 surface make_neutral_surface(const surface &surf);
 surface create_neutral_surface(int w, int h);
 surface create_optimized_surface(const surface &surf);
@@ -281,9 +285,9 @@ surface flop_surface(const surface &surf, bool optimize=true);
 surface create_compatible_surface(const surface &surf, int width = -1, int height = -1);
 
 /**
- *  Replacement for SDL_BlitSurface.
+ *  Replacement for sdl_blit.
  *
- *  SDL_BlitSurface has problems with blitting partly transparent surfaces so
+ *  sdl_blit has problems with blitting partly transparent surfaces so
  *  this is a replacement. It ignores the SDL_SRCALPHA and SDL_SRCCOLORKEY
  *  flags. src and dst will have the SDL_RLEACCEL flag removed.
  *  The return value of SDL_BlistSurface is normally ignored so no return value.

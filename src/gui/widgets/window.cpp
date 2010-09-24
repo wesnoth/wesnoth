@@ -522,7 +522,7 @@ int twindow::show(const bool restore, const unsigned auto_close_timeout)
 		// restore area
 		if(restore) {
 			SDL_Rect rect = get_rect();
-			SDL_BlitSurface(restorer_, 0, video_.getSurface(), &rect);
+			sdl_blit(restorer_, 0, video_.getSurface(), &rect);
 			update_rect(get_rect());
 			font::undraw_floating_labels(video_.getSurface());
 		}
@@ -534,7 +534,7 @@ int twindow::show(const bool restore, const unsigned auto_close_timeout)
 	// restore area
 	if(restore) {
 		SDL_Rect rect = get_rect();
-		SDL_BlitSurface(restorer_, 0, video_.getSurface(), &rect);
+		sdl_blit(restorer_, 0, video_.getSurface(), &rect);
 		update_rect(get_rect());
 		font::undraw_floating_labels(video_.getSurface());
 	}
@@ -559,7 +559,7 @@ void twindow::draw()
 		// doesn't work yet we need to undraw the window.
 		if(restorer_) {
 			SDL_Rect rect = get_rect();
-			SDL_BlitSurface(restorer_, 0, frame_buffer, &rect);
+			sdl_blit(restorer_, 0, frame_buffer, &rect);
 			// Since the old area might be bigger as the new one, invalidate
 			// it.
 			update_rect(rect);
@@ -666,7 +666,7 @@ void twindow::draw()
 
 		// Restore.
 		SDL_Rect rect = get_rect();
-		SDL_BlitSurface(restorer_, 0, frame_buffer, &rect);
+		sdl_blit(restorer_, 0, frame_buffer, &rect);
 
 		// Background.
 		for(std::vector<twidget*>::iterator itor = item.begin();
@@ -1009,7 +1009,7 @@ void twindow::do_show_tooltip(const tpoint& location, const t_string& tooltip)
 void twindow::do_remove_tooltip()
 {
 	SDL_Rect rect = tooltip_.get_rect();
-	SDL_BlitSurface(tooltip_restorer_, 0, video_.getSurface(), &rect);
+	sdl_blit(tooltip_restorer_, 0, video_.getSurface(), &rect);
 	update_rect(tooltip_.get_rect());
 
 	tooltip_.set_visible(twidget::HIDDEN);

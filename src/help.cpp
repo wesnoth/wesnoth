@@ -2632,7 +2632,7 @@ void help_text_area::draw_contents()
 					++dst.y;
 				}
 			}
-			SDL_BlitSurface(it->surf, NULL, screen, &dst);
+			sdl_blit(it->surf, NULL, screen, &dst);
 		}
 	}
 	update_rect(loc);

@@ -127,7 +127,7 @@ void loadscreen::draw_screen(const std::string &text)
 		// Check if we have enough pixels to display it.
 		if (area.x > 0 && area.y > 0) {
 			pby_offset_ = (pbh + area.h)/2;
-			SDL_BlitSurface (logo, 0, gdis, &area);
+			sdl_blit (logo, 0, gdis, &area);
 		} else {
 			ERR_DP << "loadscreen: Logo image is too big." << std::endl;
 		}

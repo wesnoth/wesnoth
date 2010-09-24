@@ -909,14 +909,14 @@ void display::drawing_buffer_commit()
 
 	foreach(const tblit &blit, drawing_buffer_) {
 		foreach(const surface& surf, blit.surf()) {
-			// Note that dstrect can be changed by SDL_BlitSurface
+			// Note that dstrect can be changed by sdl_blit
 			// and so a new instance should be initialized
-			// to pass to each call to SDL_BlitSurface.
+			// to pass to each call to sdl_blit.
 			SDL_Rect dstrect = create_rect(blit.x(), blit.y(), 0, 0);
 			SDL_Rect srcrect = blit.clip();
 			SDL_Rect *srcrectArg = (srcrect.x | srcrect.y | srcrect.w | srcrect.h)
 				? &srcrect : NULL;
-			SDL_BlitSurface(surf, srcrectArg, screen, &dstrect);
+			sdl_blit(surf, srcrectArg, screen, &dstrect);
 			//NOTE: the screen part should already be marked as 'to update'
 		}
 	}
@@ -1096,7 +1096,7 @@ static void draw_label(CVideo& video, surface target, const theme::label& label)
 				surf.assign(scale_surface(surf,loc.w,loc.h));
 			}
 
-			SDL_BlitSurface(surf,NULL,target,&loc);
+			sdl_blit(surf,NULL,target,&loc);
 		}
 
 		if(text.empty() == false) {
@@ -1141,7 +1141,7 @@ static void draw_background(surface screen, const SDL_Rect& area, const std::str
 	for(unsigned int w = 0, w_off = area.x; w < w_count; ++w, w_off += width) {
 		for(unsigned int h = 0, h_off = area.y; h < h_count; ++h, h_off += height) {
 			SDL_Rect clip = create_rect(w_off, h_off, 0, 0);
-			SDL_BlitSurface(background, NULL, screen, &clip);
+			sdl_blit(background, NULL, screen, &clip);
 		}
 	}
 }
@@ -1541,7 +1541,7 @@ bool display::scroll(int xmove, int ymove)
 	srcrect.x -= dx;
 	srcrect.y -= dy;
 	if (!screen_.update_locked())
-		SDL_BlitSurface(screen,&srcrect,screen,&dstrect);
+		sdl_blit(screen,&srcrect,screen,&dstrect);
 
 //This is necessary to avoid a crash in some SDL versions on some systems
 //see http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=462794
@@ -2223,13 +2223,13 @@ void display::draw_image_for_report(surface& img, SDL_Rect& rect)
 			target.h = visible_area.h;
 		}
 
-		SDL_BlitSurface(img,&visible_area,screen_.getSurface(),&target);
+		sdl_blit(img,&visible_area,screen_.getSurface(),&target);
 	} else {
 		if(img->w != rect.w || img->h != rect.h) {
 			img.assign(scale_surface(img,rect.w,rect.h));
 		}
 
-		SDL_BlitSurface(img,NULL,screen_.getSurface(),&target);
+		sdl_blit(img,NULL,screen_.getSurface(),&target);
 	}
 }
 
@@ -2254,7 +2254,7 @@ void display::refresh_report(reports::TYPE report_num, reports::report report)
 	surface &surf = reportSurfaces_[report_num];
 
 	if (surf) {
-		SDL_BlitSurface(surf, NULL, screen_.getSurface(), &rect);
+		sdl_blit(surf, NULL, screen_.getSurface(), &rect);
 		update_rect(rect);
 	}
 
