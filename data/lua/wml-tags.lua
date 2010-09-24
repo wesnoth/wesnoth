@@ -57,7 +57,7 @@ function wml_actions.chat(cfg)
 	else
 		for v in string.gmatch(side_list, "[^%s,][^,]*") do
 			local side = wesnoth.get_side(tonumber(v))
-			if side.__cfg.controller == "human" then
+			if side.controller == "human" then
 				wesnoth.message(speaker, message)
 				break
 			end
