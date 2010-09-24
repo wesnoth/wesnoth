@@ -447,15 +447,9 @@ function wml_actions.move_unit(cfg)
 	cfg.to_x, cfg.to_y, cfg.fire_event = nil, nil, nil
 	local units = wesnoth.get_units(cfg)
 
-	local function proxy_unit_is_valid(unit)
-		local function dummy() return unit.x end
-		return pcall(dummy)
-	end
-
 	local pattern = "[^%s,]+"
 	for current_unit_index, current_unit in ipairs(units) do
-		if fire_event and not proxy_unit_is_valid(current_unit) then
-		else
+		if not fire_event or current_unit.valid then
 			local xs, ys = string.gmatch(to_x, pattern), string.gmatch(to_y, pattern)
 			local move_string_x = current_unit.x
 			local move_string_y = current_unit.y
