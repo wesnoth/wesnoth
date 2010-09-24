@@ -1372,16 +1372,31 @@ static int intf_get_terrain(lua_State *L)
  * Sets a terrain code.
  * - Args 1,2: map location.
  * - Arg 3: terrain code string.
+ * - Arg 4: layer: (overlay|base|both, default=both)
+ * - Arg 5: replace_if_failed, default = no
  */
 static int intf_set_terrain(lua_State *L)
 {
 	int x = luaL_checkint(L, 1);
 	int y = luaL_checkint(L, 2);
-	char const *m = luaL_checkstring(L, 3);
+	t_translation::t_terrain terrain = t_translation::read_terrain_code(luaL_checkstring(L, 3));
+	if (terrain == t_translation::NONE_TERRAIN) return 0;
 
-	t_translation::t_terrain t = t_translation::read_terrain_code(m);
-	if (t != t_translation::NONE_TERRAIN)
-		change_terrain(map_location(x - 1, y - 1), t, gamemap::BOTH, false);
+	gamemap::tmerge_mode mode = gamemap::BOTH;
+	bool replace_if_failed = false;
+	if (!lua_isnone(L, 4)) {
+		if (!lua_isnil(L, 4)) {
+			const char* const layer = luaL_checkstring(L, 4);
+			if (strcmp(layer, "base") == 0) mode = gamemap::BASE;
+			else if (strcmp(layer, "overlay") == 0) mode = gamemap::OVERLAY;
+		}
+
+		if(!lua_isnoneornil(L, 5)) {
+			replace_if_failed = lua_toboolean(L, 5);
+		}
+	}
+
+	change_terrain(map_location(x - 1, y - 1), terrain, mode, replace_if_failed);
 	return 0;
 }
 
