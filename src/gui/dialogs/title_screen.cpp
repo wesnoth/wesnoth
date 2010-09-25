@@ -37,6 +37,7 @@
 
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
+#define WRN_CF LOG_STREAM(warn, log_config)
 
 namespace gui2 {
 
@@ -395,7 +396,10 @@ void ttitle_screen::update_tip(twindow& window, const bool previous)
 {
 	next_tip_of_day(tips_, previous);
 	const config *tip = get_tip_of_day(tips_);
-	assert(tip);
+	if(!tip) {
+		WRN_CF << "There are not tips of day defined.\n";
+		return;
+	}
 
 	find_widget<tlabel>(&window, "tip", false).set_label((*tip)["text"]);
 	find_widget<tlabel>(&window, "source", false).set_label((*tip)["source"]);
