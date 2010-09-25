@@ -2462,7 +2462,7 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 							int v = i.second.to_int();
 							config::attribute_value &dst = def[i.first];
 							if (!replace) {
-								int w = dst;
+								int w = dst.to_int(100);
 								v += w;
 								if ((w >= 0 && v < 0) || (w < 0 && v > 0)) v = 0;
 								else if (v < -100) v = -100;
