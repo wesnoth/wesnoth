@@ -2455,9 +2455,21 @@ void unit::add_modification(const std::string& type, const config& mod, bool no_
 					}
 					movement_costs_.clear();
 				} else if (apply_to == "defense") {
-					config &mv = cfg_.child_or_add("defense");
+					config &def = cfg_.child_or_add("defense");
 					if (const config &ap = effect.child("defense")) {
-						mod_mdr_merge(mv, ap, !effect["replace"].to_bool());
+						bool replace = effect["replace"].to_bool();
+						foreach (const config::attribute &i, ap.attribute_range()) {
+							int v = i.second.to_int();
+							config::attribute_value &dst = def[i.first];
+							if (!replace) {
+								int w = dst;
+								v += w;
+								if ((w >= 0 && v < 0) || (w < 0 && v > 0)) v = 0;
+								else if (v < -100) v = -100;
+								else if (v > 100) v = 100;
+							}
+							dst = v;
+						}
 					}
 					defense_mods_.clear();
 				} else if (apply_to == "resistance") {
