@@ -326,7 +326,9 @@ void lua_ai_action_handler::handle(config &cfg, bool configOut)
 	else if (luaW_pcall(L, 1, 2, true))
 	{
 		int score = lua_tointeger(L, initial_top + 1);
-		luaW_toconfig(L, initial_top + 2, cfg);
+		if (!luaW_toconfig(L, initial_top + 2, cfg)) {
+			ERR_LUA << "Failed to parsed WML object returned by AI function.\n";
+		}
 		cfg["score"] = score; // write score to the config
 	}
 
