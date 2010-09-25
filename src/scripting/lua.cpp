@@ -845,9 +845,9 @@ static int impl_unit_get(lua_State *L)
 	if (strcmp(m, "valid") == 0)
 	{
 		if (lu->on_map())
-			lua_pushstring(L, "recall");
-		else if (lu->on_recall_list())
 			lua_pushstring(L, "map");
+		else if (lu->on_recall_list())
+			lua_pushstring(L, "recall");
 		else if (lu->get())
 			lua_pushstring(L, "private");
 		else
