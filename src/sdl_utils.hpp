@@ -126,11 +126,11 @@ private:
 
 bool operator<(const surface& a, const surface& b);
 
-inline void sdl_blit(SDL_Surface* src, SDL_Rect* src_rect, SDL_Surface* dst, SDL_Rect* dst_rect){
+inline void sdl_blit(const surface& src, SDL_Rect* src_rect, const surface& dst, SDL_Rect* dst_rect){
 	SDL_BlitSurface(src, src_rect, dst, dst_rect);
 }
 
-inline void sdl_fill_rect(SDL_Surface* dst, SDL_Rect* dst_rect, const Uint32 color){
+inline void sdl_fill_rect(const surface& dst, SDL_Rect* dst_rect, const Uint32 color){
 	SDL_FillRect(dst, dst_rect, color);
 }
 
