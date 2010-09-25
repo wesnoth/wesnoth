@@ -292,6 +292,7 @@ void ttitle_screen::pre_show(CVideo& video, twindow& window)
 
 	set_restore(false);
 	window.set_click_dismiss(false);
+	window.set_enter_disabled(true);
 	window.set_escape_disabled(true);
 
 	/**** Set the version number ****/
