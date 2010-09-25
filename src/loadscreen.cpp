@@ -118,16 +118,15 @@ void loadscreen::draw_screen(const std::string &text)
 	}
 
 	// Draw logo if it was succesfully loaded.
-	if (!logo_surface_.null() && !logo_drawn_) {
-		SDL_Surface *logo = logo_surface_.get();
-		area.x = (screen_.getx () - logo->w) / 2;
-		area.y = ((scry - logo->h) / 2) - pbh;
-		area.w = logo->w;
-		area.h = logo->h;
+	if (logo_surface_ && !logo_drawn_) {
+		area.x = (screen_.getx () - logo_surface_->w) / 2;
+		area.y = ((scry - logo_surface_->h) / 2) - pbh;
+		area.w = logo_surface_->w;
+		area.h = logo_surface_->h;
 		// Check if we have enough pixels to display it.
 		if (area.x > 0 && area.y > 0) {
 			pby_offset_ = (pbh + area.h)/2;
-			sdl_blit (logo, 0, gdis, &area);
+			sdl_blit(logo_surface_, 0, gdis, &area);
 		} else {
 			ERR_DP << "loadscreen: Logo image is too big." << std::endl;
 		}

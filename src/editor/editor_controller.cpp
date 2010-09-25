@@ -1313,14 +1313,14 @@ void editor_controller::redraw_toolbar()
 			SDL_Rect r = a.second->toolbar_button()->location(gui().screen_area());
 			SDL_Rect outline = create_rect(r.x - 2, r.y - 2, r.h + 4, r.w + 4);
 			//outline = intersect_rects(r, gui().screen_area());
-			SDL_Surface* const screen = gui().video().getSurface();
+			surface screen = gui().video().getSurface();
 			Uint32 color;
 			if (a.second == mouse_action_) {
 				color = SDL_MapRGB(screen->format, 0xFF, 0x00, 0x00);
 			} else {
 				color = SDL_MapRGB(screen->format, 0x00, 0x00, 0x00);
 			}
-			draw_rectangle(outline.x, outline.y, outline.w, outline.h, color, gui().video().getSurface());
+			draw_rectangle(outline.x, outline.y, outline.w, outline.h, color, screen);
 			update_rect(outline);
 		}
 	}
