@@ -305,7 +305,9 @@ void tcontrol::impl_draw_background(surface& frame_buffer)
 	canvas(get_state()).blit(frame_buffer, get_rect());
 }
 
-tpoint tcontrol::get_best_text_size(const tpoint& minimum_size, const tpoint& maximum_size) const
+tpoint tcontrol::get_best_text_size(
+		  const tpoint& minimum_size
+		, const tpoint& maximum_size) const
 {
 	log_scope2(log_gui_layout, LOG_SCOPE_HEADER);
 
@@ -321,9 +323,9 @@ tpoint tcontrol::get_best_text_size(const tpoint& minimum_size, const tpoint& ma
 	renderer_.set_alignment(text_alignment_);
 
 	// Try with the minimum wanted size.
-	const int maximum_width =  text_maximum_width_ != 0
-		? text_maximum_width_
-		: maximum_size.x;
+	const int maximum_width = text_maximum_width_ != 0
+			? text_maximum_width_
+			: maximum_size.x;
 
 	renderer_.set_maximum_width(maximum_width);
 
