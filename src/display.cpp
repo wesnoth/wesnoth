@@ -63,16 +63,14 @@ static lg::log_domain log_display("display");
 namespace {
 #ifdef USE_TINY_GUI
 	const int DefaultZoom = 36;
-	const int SmallZoom   = 16;
 #else
 	const int DefaultZoom = 72;
-	const int SmallZoom   = 36;
 #endif
+	const int SmallZoom   = DefaultZoom / 2;
 
 	const int MinZoom = 4;
 	const int MaxZoom = 200;
 	size_t sunset_delay = 0;
-	size_t sunset_timer = 0;
 
 	bool benchmark = false;
 
@@ -953,6 +951,7 @@ void display::flip()
 	const surface frameBuffer = get_video_surface();
 
 	// This is just the debug function "sunset" to progressively darken the map area
+	static size_t sunset_timer = 0;
 	if (sunset_delay && ++sunset_timer > sunset_delay) {
 		sunset_timer = 0;
 		SDL_Rect r = map_outside_area(); // Use frameBuffer to also test the UI
