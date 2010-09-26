@@ -929,7 +929,7 @@ void display::drawing_buffer_clear()
 void display::sunset(const size_t delay)
 {
 	// This allow both parametric and toggle use
-	sunset_delay = (sunset_delay == 0 && delay == 0) ? 5 : delay;
+	sunset_delay = (sunset_delay == 0 && delay == 0) ? 3 : delay;
 }
 
 void display::toggle_benchmark()
