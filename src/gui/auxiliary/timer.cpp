@@ -155,7 +155,7 @@ remove_timer(const unsigned long id)
 
 	std::map<unsigned long, ttimer>::iterator itor = timers.find(id);
 	if(itor == timers.end()) {
-		WRN_GUI_E << "Can't remove timer since it no longer exists.\n";
+		LOG_GUI_E << "Can't remove timer since it no longer exists.\n";
 		return false;
 	}
 
@@ -187,7 +187,7 @@ execute_timer(const unsigned long id)
 
 	std::map<unsigned long, ttimer>::iterator itor = timers.find(id);
 	if(itor == timers.end()) {
-		WRN_GUI_E << "Can't execute timer since it no longer exists.\n";
+		LOG_GUI_E << "Can't execute timer since it no longer exists.\n";
 		return false;
 	}
 
