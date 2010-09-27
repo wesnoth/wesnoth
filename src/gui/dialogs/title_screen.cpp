@@ -54,7 +54,7 @@ void show_language_dialog(CVideo& video, twindow& window)
 {
 	window.set_retval(static_cast<twindow::tretval>(gui::CHANGE_LANGUAGE));
 	return;
- 	//NOTE following code doesn't redraw the titlescreen, reload tips and images
+	//NOTE following code doesn't redraw the titlescreen, reload tips and images
 	tlanguage_selection dlg;
 	dlg.show(video);
 	if(dlg.get_retval() == twindow::OK) {
