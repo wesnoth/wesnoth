@@ -1569,6 +1569,7 @@ void menu_handler::create_unit(mouse_handler& mousehandler)
 
 		const map_location& loc = mousehandler.get_last_hex();
 		units_.replace(loc, chosen);
+		unit_display::unit_recruited(loc);
 
 		if(map_.is_village(loc)) {
 			get_village(loc, chosen.side());
