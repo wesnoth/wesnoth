@@ -131,7 +131,7 @@ void loadscreen::draw_screen(const std::string &text)
 			ERR_DP << "loadscreen: Logo image is too big." << std::endl;
 		}
 		logo_drawn_ = true;
-		SDL_UpdateRect(gdis, area.x, area.y, area.w, area.h);
+		update_rect(area.x, area.y, area.w, area.h);
 	}
 	int pbx = (scrx - pbw)/2;					// Horizontal location.
 	int pby = (scry - pbh)/2 + pby_offset_;		// Vertical location.
@@ -180,10 +180,11 @@ void loadscreen::draw_screen(const std::string &text)
 		textarea_.y = pby + pbh + 4*(bw + bispw);
 		textarea_ = font::draw_text(&screen_,textarea_,font::SIZE_NORMAL,font::NORMAL_COLOR,text,textarea_.x,textarea_.y);
 		SDL_Rect refresh = union_rects(oldarea, textarea_);
-		SDL_UpdateRect(gdis, refresh.x, refresh.y, refresh.w, refresh.h);
+		update_rect(refresh.x, refresh.y, refresh.w, refresh.h);
 	}
 	// Update the rectangle.
-	SDL_UpdateRect(gdis, pbx, pby, pbw + 2*(bw + bispw), pbh + 2*(bw + bispw));
+	update_rect(pbx, pby, pbw + 2*(bw + bispw), pbh + 2*(bw + bispw));
+	screen_.flip();
 }
 
 void loadscreen::clear_screen()
@@ -194,7 +195,8 @@ void loadscreen::clear_screen()
 	surface const disp(screen_.getSurface());      // Screen surface.
 	// Make everything black.
 	sdl_fill_rect(disp,&area,SDL_MapRGB(disp->format,0,0,0));
-	SDL_Flip(disp);
+	update_whole_screen();
+	screen_.flip();
 }
 
 loadscreen *loadscreen::global_loadscreen = 0;
