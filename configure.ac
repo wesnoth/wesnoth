@@ -847,6 +847,19 @@ if test -e "data/core/music/main_menu.ogg" ; then
     LIBS=$OLD_LIBS
 fi
 
+
+#######################################################################
+# OpenGL                                                              #
+#######################################################################
+
+AC_CHECK_HEADER([GL/gl.h],
+		[],
+		[AC_MSG_ERROR([*** GL/gl include files not found!
+You should install development package.])])
+
+GL_LIBS="-lGL"
+LIBS="$LIBS $GL_LIBS"
+
 #######################################################################
 # Check for ZLib                                                      #
 #######################################################################
