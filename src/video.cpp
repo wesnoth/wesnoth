@@ -29,6 +29,8 @@
 #include "sdl_utils.hpp"
 #include "video.hpp"
 
+#include <GL/gl.h>
+
 #include <vector>
 #include <map>
 #include <algorithm>
@@ -68,6 +70,9 @@ static unsigned int get_flags(unsigned int flags)
 #endif
 	if((flags&SDL_FULLSCREEN) == 0)
 		flags |= SDL_RESIZABLE;
+
+	//OGL
+	flags |= SDL_OPENGL;
 
 	return flags;
 }
@@ -382,7 +387,31 @@ int CVideo::setMode( int x, int y, int bits_per_pixel, int flags )
 		return 0;
 
 	fullScreen = (flags & FULL_SCREEN) != 0;
+
+	//Be sure to use double buffering
+	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+
 	frameBuffer = SDL_SetVideoMode( x, y, bits_per_pixel, flags );
+
+	//the clip rectangle of frame buffer is not always reset when using OpengGL
+	SDL_SetClipRect(SDL_GetVideoSurface(), NULL);
+
+	int vsync_err = SDL_GL_SetAttribute(SDL_GL_SWAP_CONTROL, 1);
+	if (vsync_err) {
+		ERR_DP << "Can't set V-Sync (error:" << SDL_GetError() << ")\n";
+	}
+
+	glViewport(0, 0, x, y);
+
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	glOrtho(0, x, y, 0, -1, 1);
+
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
+
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	if( frameBuffer != NULL ) {
 		image::set_pixel_format(frameBuffer->format);
@@ -412,12 +441,18 @@ void CVideo::flip()
 	if(fake_screen_)
 		return;
 
+	//OpenGL Flip
+	glFlush();
+	SDL_GL_SwapBuffers();
+
+	// Note that this step seems useless in X11 windowed mode
+	// NOTE: maybe always use update_all is faster ?
 	if(update_all) {
-		::SDL_Flip(frameBuffer);
-	} else if(update_rects.empty() == false) {
+		sdl_flip(frameBuffer);
+	} else if(!update_rects.empty()) {
 		calc_rects();
 		if(!update_rects.empty()) {
-			SDL_UpdateRects(frameBuffer, update_rects.size(), &update_rects[0]);
+			sdl_update_rects(frameBuffer, update_rects.size(), &update_rects[0]);
 		}
 	}
 

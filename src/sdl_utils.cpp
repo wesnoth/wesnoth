@@ -23,6 +23,8 @@
 #include "sdl_utils.hpp"
 #include "video.hpp"
 
+#include <GL/gl.h>
+
 #include <algorithm>
 #include <cassert>
 #include <cstring>
@@ -156,6 +158,126 @@ static SDL_PixelFormat& get_neutral_pixel_format()
 		return format;
 	}
 
+void sdl_blit(const surface& src, SDL_Rect* src_rect, const surface& dst, SDL_Rect* dst_rect)
+{
+	if(src == NULL || dst == NULL)
+		return;
+
+	surface screen = SDL_GetVideoSurface();
+
+	if(src != screen && dst != screen) {
+		SDL_BlitSurface(src, src_rect, dst, dst_rect);
+		return;
+	}
+
+	SDL_Rect sr = create_rect(0, 0, src->w, src->h);
+	if(src_rect)
+		sr = intersect_rects(sr, *src_rect);
+
+	int shift_x = dst_rect ? dst_rect->x : 0;
+	int shift_y = dst_rect ? dst_rect->y : 0;
+
+	SDL_Rect dr = create_rect(shift_x, shift_y, sr.w, sr.h);
+
+	SDL_Rect clip_rect;
+	SDL_GetClipRect(dst, &clip_rect);
+	dr = intersect_rects(dr, clip_rect);
+
+	// SDL_BlitSurface is supposed to return the blitted area
+	if(dst_rect)
+		*dst_rect = dr;
+
+	// translate dest rect into src coordinates before intersecting them
+	SDL_Rect r = dr;
+	r.x += sr.x - shift_x;
+	r.y += sr.y - shift_y;
+	sr = intersect_rects(sr, r);
+
+	if(src != screen && dst == screen) {
+		glPixelStorei(GL_UNPACK_ROW_LENGTH, src->w);
+		glPixelStorei(GL_UNPACK_SKIP_PIXELS, sr.x);
+		glPixelStorei(GL_UNPACK_SKIP_ROWS, sr.y);
+		glPixelZoom(1,-1);
+
+		glRasterPos2i(dr.x, dr.y);
+
+		surface_lock src_lock(src);
+		glDrawPixels(sr.w, sr.h, GL_BGRA, GL_UNSIGNED_BYTE, src_lock.pixels());
+	} else if(src == screen && dst != screen) {
+		glPixelStorei(GL_PACK_ROW_LENGTH, dst->w);
+		glPixelStorei(GL_PACK_SKIP_PIXELS, dr.x);
+		// TODO maybe incorrect when top and bottom are clipped ?
+		glPixelStorei(GL_PACK_SKIP_ROWS, dst->h - sr.h);
+
+		surface_lock dst_lock(dst);
+		// glReadPixels uses bottom-left coordinates
+		glReadPixels(sr.x, screen->h - sr.y - sr.h, sr.w, sr.h, GL_BGRA, GL_UNSIGNED_BYTE, dst_lock.pixels());
+
+		//Need to flop pixels data
+		//TODO avoid this by using smarter glPixelZoom ?
+		Uint32* const pixels = reinterpret_cast<Uint32*>(dst_lock.pixels());
+		for(int x = 0; x != dst->w; ++x) {
+			for(int y = 0; y != dst->h/2; ++y) {
+				const int index1 = y*dst->w + x;
+				const int index2 = (dst->h-y-1)*dst->w + x;
+				std::swap(pixels[index1],pixels[index2]);
+			}
+		}
+	} else if(src == screen && dst == screen) {
+		glPixelZoom(1,1);
+		// RasterPos uses top-left coordinates, but blit will go up
+		glRasterPos2i(dr.x, dr.y + sr.h);
+		// glCopyPixels uses bottom-left coordinates
+		glCopyPixels(sr.x, screen->h - sr.h - sr.y, sr.w, sr.h, GL_COLOR);
+	}
+}
+
+void sdl_fill_rect(const surface& dst, SDL_Rect *dst_rect, Uint32 color)
+{
+	if(dst != SDL_GetVideoSurface()) {
+		SDL_FillRect(dst, dst_rect, color);
+	} else {
+		SDL_Rect dr;
+		SDL_GetClipRect(dst, &dr);
+		if(dst_rect)
+			dr = intersect_rects(*dst_rect, dr);
+
+		Uint8 r,g,b,a;
+		SDL_GetRGBA(color, dst->format, &r,&g, &b, &a);
+		// SDL didn't support alpha, so we do the same
+		glColor4f(r/255.0, g/255.0, b/255.0, 1.0);
+		glBegin(GL_QUADS); {
+			glVertex2i(dr.x, dr.y);
+			glVertex2i(dr.x + dr.w, dr.y);
+			glVertex2i(dr.x + dr.w, dr.y + dr.h);
+			glVertex2i(dr.x, dr.y + dr.h);
+		}
+		glEnd();
+	}
+}
+
+void sdl_flip(const surface& screen)
+{
+	SDL_Rect rect = create_rect(0, 0, screen->w, screen->h);
+	sdl_update_rects(screen, 1, &rect);
+}
+
+void sdl_update_rects(const surface& screen, int numrects, SDL_Rect *rects)
+{
+	// Copy front buffer to back buffer to simulate how SDL_UpdateRects works
+	glReadBuffer(GL_FRONT);
+	glDrawBuffer(GL_BACK);
+	glPixelZoom(1,1);
+	for(int i=0; i < numrects; ++i) {
+		const SDL_Rect& r = rects[i];
+		glRasterPos2i(r.x, r.y + r.h);
+		glCopyPixels(r.x, screen->h - r.h - r.y, r.w, r.h, GL_COLOR);
+	}
+	glDrawBuffer(GL_BACK);
+	glReadBuffer(GL_BACK);
+}
+
+
 surface make_neutral_surface(const surface &surf)
 {
 	if(surf == NULL) {
@@ -193,6 +315,11 @@ surface create_optimized_surface(const surface &surf)
 {
 	if(surf == NULL)
 		return NULL;
+
+	//OGL
+	//for the SDL-by-OGL hack, "optimized" is neutral
+	//NOTE: we should check if the surface is already neutral
+	return make_neutral_surface(surf);
 
 	surface const result = display_format_alpha(surf);
 	if(result == surf) {
@@ -1165,6 +1292,19 @@ surface blur_surface(const surface &surf, int depth, bool optimize)
 
 void blur_surface(surface& surf, SDL_Rect rect, unsigned depth)
 {
+	//OGL
+	// this function directly works on pixel data
+	// but this doesn't work with OpenGL framebuffer,
+	// so we need an intermediate copy
+	if(surf == SDL_GetVideoSurface()){
+		surface s = get_surface_portion(surf, rect, false);
+		//NOTE: this other blur_surface function will call us again
+		//but not with a screen surface, so no infinite recursion
+		s = blur_surface(s, depth);
+		sdl_blit(s, NULL, surf, &rect);
+		return;
+	}
+
 	if(surf == NULL) {
 		return;
 	}
@@ -1748,8 +1888,8 @@ void fill_rect_alpha(SDL_Rect &rect, Uint32 color, Uint8 alpha, const surface &t
 	}
 
 	SDL_Rect r = {0,0,rect.w,rect.h};
+	color = (alpha << 24) + (color & 0x00FFFFFF);
 	sdl_fill_rect(tmp,&r,color);
-	SDL_SetAlpha(tmp,SDL_SRCALPHA,alpha);
 	sdl_blit(tmp,NULL,target,&rect);
 }
 
