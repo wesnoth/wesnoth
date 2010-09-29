@@ -396,7 +396,8 @@ int CVideo::setMode( int x, int y, int bits_per_pixel, int flags )
 	//the clip rectangle of frame buffer is not always reset when using OpengGL
 	SDL_SetClipRect(SDL_GetVideoSurface(), NULL);
 
-	int vsync_err = SDL_GL_SetAttribute(SDL_GL_SWAP_CONTROL, 1);
+	///@TODO temporary disable v-sync
+	int vsync_err = SDL_GL_SetAttribute(SDL_GL_SWAP_CONTROL, 0);
 	if (vsync_err) {
 		ERR_DP << "Can't set V-Sync (error:" << SDL_GetError() << ")\n";
 	}
