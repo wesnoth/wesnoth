@@ -51,6 +51,11 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw)
 	if(minimap == NULL)
 		return surface(NULL);
 
+	//OGL
+	//needed to make the SDL_Blit works (need opaque destination)
+	//not sure why needed by the OGL change
+	sdl_fill_rect(minimap, NULL, 0xFF000000);
+
 	typedef mini_terrain_cache_map cache_map;
 	cache_map *normal_cache = &mini_terrain_cache;
 	cache_map *fog_cache = &mini_fogged_terrain_cache;
