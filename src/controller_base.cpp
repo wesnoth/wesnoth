@@ -25,6 +25,7 @@
 
 static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
+#define WRN_DP LOG_STREAM(warn, log_display)
 
 controller_base::controller_base(
 		int ticks, const config& game_config, CVideo& /*video*/) :
@@ -112,6 +113,12 @@ void controller_base::handle_event(const SDL_Event& event)
 			}
 		}
 		break;
+	case SDL_VIDEOEXPOSE: {
+		//OGL
+		WRN_DP << "Desktop triggers a full redraw.\n";
+		get_display().redraw_everything();
+		break;
+	}
 	default:
 		break;
 	}
