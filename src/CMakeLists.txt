@@ -120,6 +120,7 @@ endif(USE_ANA_NETWORK)
 set(tools-external-libs
 	${common-external-libs}
 	${SDLIMAGE_LIBRARY}
+	${OPENGL_LIBRARIES}
 )
 
 if(ENABLE_FRIBIDI AND FRIBIDI_LIBRARIES)
