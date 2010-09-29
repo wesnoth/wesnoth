@@ -703,15 +703,6 @@ private:
 	tformula<std::string> image_name_;
 
 	/**
-	 * When an image needs to be scaled in one direction there are two options:
-	 * - scale, which interpolates the image.
-	 * - stretch, which used the first row/column and copies those pixels.
-	 *
-	 * @todo Remove in 1.9.
-	 */
-	bool stretch_;
-
-	/**
 	 * Determines the way an image will be resized.
 	 *
 	 * If the image is smaller is needed it needs to resized, how is determined
@@ -741,7 +732,6 @@ timage::timage(const config& cfg)
 	, src_clip_()
 	, image_()
 	, image_name_(cfg["name"])
-	, stretch_(cfg["stretch"].to_bool())
 	, resize_mode_(get_resize_mode(cfg["resize_mode"]))
 	, vertical_mirror_(cfg["vertical_mirror"])
 {
@@ -794,17 +784,6 @@ timage::timage(const config& cfg)
  * @end_table
  * Also the general variables are available, see [[#general_variables|Line]].
  */
-
-	if(!cfg["stretch"].empty()) {
-		///@deprecated 1.9.2 field 'stretch instead or 'resize_mode'
-		ERR_GUI_D << "Image: The field 'stretch' is deprecated and "
-				"will be removed in 1.9.2. Use 'resize_mode' instead.\n";
-	}
-
-	/** @todo Remove in 1.9. */
-	if(stretch_ && resize_mode_ != stretch) {
-		resize_mode_ = stretch;
-	}
 
 	if(!image_name_.has_formula()) {
 		surface tmp(image::get_image(image::locator(cfg["name"])));
