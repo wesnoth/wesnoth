@@ -45,13 +45,19 @@ local function get_team(cfg, tag)
 end
 
 function wml_actions.chat(cfg)
-	local speaker = tostring(cfg.speaker or "WML")
 	local side_list = cfg.side
 	local message = tostring(cfg.message) or
 		helper.wml_error "[chat] missing required message= attribute."
-	if wesnoth.get_variable(speaker .. ".id") then
-		speaker = wesnoth.get_variable(speaker .. ".name")
+
+	local speaker = cfg.speaker
+	if speaker then
+		speaker = tostring(speaker)
+		local speaking_unit = wesnoth.get_variable(speaker)
+		if speaking_unit then speaker = wesnoth.get_variable(speaker .. ".name") end
+	else
+		speaker = "WML"
 	end
+
 	if not side_list then
 		wesnoth.message(speaker, message)
 	else
@@ -363,21 +369,24 @@ function wml_actions.store_reachable_locations(cfg)
 	local range = cfg.range or "movement"
 	local variable = cfg.variable or helper.wml_error "[store_reachable_locations] missing required variable= key"
 
-	wesnoth.set_variable(variable)
 
+	local locs = {}
 	for i,unit in ipairs(wesnoth.get_units(unit_filter)) do
 		local reach = wesnoth.find_reach(unit)
 
 		for j,loc in ipairs(reach) do
 			if wesnoth.match_location(loc[1], loc[2], location_filter) then
-				wesnoth.fire("store_locations", { variable=variable, x=loc[1], y=loc[2], { "or", { find_in=variable } } })
+
+				table.insert(locs, {loc[1], loc[2]})
 			end
 		end
 	end
-	
+
 	if range == "attack" then
 		-- doesn't work yet
 	end
+
+	helper.set_variable_array(variable, locs)
 end
 
 function wml_actions.hide_unit(cfg)
