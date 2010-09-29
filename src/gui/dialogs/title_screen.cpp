@@ -41,33 +41,6 @@ static lg::log_domain log_config("config");
 
 namespace gui2 {
 
-namespace {
-
-template<class D>
-void show_dialog(CVideo& video)
-{
-	D dlg;
-	dlg.show(video);
-}
-
-void show_language_dialog(CVideo& video, twindow& window)
-{
-	window.set_retval(static_cast<twindow::tretval>(gui::CHANGE_LANGUAGE));
-	return;
-	//NOTE following code doesn't redraw the titlescreen, reload tips and images
-	tlanguage_selection dlg;
-	dlg.show(video);
-	if(dlg.get_retval() == twindow::OK) {
-		/*
-		 * This call both reloads all texts in the new translation for the
-		 * widgets and then finds the new best layout in the new language.
-		 */
-		window.invalidate_layout();
-	}
-}
-
-} // namespace
-
 /*WIKI
  * @page = GUIWindowDefinitionWML
  * @order = 2_title_screen
@@ -302,14 +275,6 @@ void ttitle_screen::pre_show(CVideo& video, twindow& window)
 	}
 	window.canvas()[0].set_variable("revision_number",
 		variant(_("Version") + std::string(" ") + game_config::revision));
-
-	/**** Set the buttons ****/
-	connect_signal_mouse_left_click(
-			  find_widget<tbutton>(&window, "language", false)
-			, boost::bind(
-				  show_language_dialog
-				, boost::ref(video)
-				, boost::ref(window)));
 
 	/**** Set the tip of the day ****/
 	/*
