@@ -74,8 +74,7 @@ void show_language_dialog(CVideo& video, twindow& window)
  *
  * == Title screen ==
  *
- * This shows the title screen. This dialog is still under construction and
- * is only shown when --new-widgets are used.
+ * This shows the title screen.
  *
  * @begin{table}[dialog_widgets]
  * addons & & button & m &
