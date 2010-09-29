@@ -53,7 +53,7 @@ function wml_actions.chat(cfg)
 	if speaker then
 		speaker = tostring(speaker)
 		local speaking_unit = wesnoth.get_variable(speaker)
-		if speaking_unit then speaker = wesnoth.get_variable(speaker .. ".name") end
+		if speaking_unit then speaker = speaking_unit.name end
 	else
 		speaker = "WML"
 	end
