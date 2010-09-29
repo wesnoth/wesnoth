@@ -785,20 +785,6 @@ timage::timage(const config& cfg)
  * Also the general variables are available, see [[#general_variables|Line]].
  */
 
-	if(!image_name_.has_formula()) {
-		surface tmp(image::get_image(image::locator(cfg["name"])));
-
-		if(!tmp) {
-			ERR_GUI_D << "Image: '" << cfg["name"]
-					<< "' not found and won't be drawn.\n";
-			return;
-		}
-
-		image_.assign(make_neutral_surface(tmp));
-		assert(image_);
-		src_clip_ = ::create_rect(0, 0, image_->w, image_->h);
-	}
-
 	const std::string& debug = (cfg["debug"]);
 	if(!debug.empty()) {
 		DBG_GUI_P << "Image: found debug message '" << debug << "'.\n";
@@ -815,31 +801,29 @@ void timage::draw(surface& canvas
 	 * silly unless there has been a resize. So to optimize we should use an
 	 * extra flag or do the calculation in a separate routine.
 	 */
-	if(image_name_.has_formula()) {
-		const std::string& name = image_name_(variables);
+	const std::string& name = image_name_(variables);
 
-		if(name.empty()) {
-			DBG_GUI_D
-					<< "Image: formula returned no value, will not be drawn.\n";
-			return;
-		}
-
-		surface tmp(image::get_image(image::locator(name)));
-
-		if(!tmp) {
-			ERR_GUI_D << "Image: formula returned name '"
-					<< name << "'not found and won't be drawn.\n";
-			return;
-		}
-
-		image_.assign(make_neutral_surface(tmp));
-		assert(image_);
-		src_clip_ = ::create_rect(0, 0, image_->w, image_->h);
-	} else if(!image_){
-		// The warning about no image should already have taken place
-		// so leave silently.
+	if(name.empty()) {
+		DBG_GUI_D
+				<< "Image: formula returned no value, will not be drawn.\n";
 		return;
 	}
+
+	/*
+	 * The locator might return a different surface for every call so we can't
+	 * cache the output, also not if no formula is used.
+	 */
+	surface tmp(image::get_image(image::locator(name)));
+
+	if(!tmp) {
+		ERR_GUI_D << "Image: '" << name
+				<< "' not found and won't be drawn.\n";
+		return;
+	}
+
+	image_.assign(make_neutral_surface(tmp));
+	assert(image_);
+	src_clip_ = ::create_rect(0, 0, image_->w, image_->h);
 
 	game_logic::map_formula_callable local_variables(variables);
 	local_variables.add("image_original_width", variant(image_->w));
