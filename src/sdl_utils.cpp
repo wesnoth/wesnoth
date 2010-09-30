@@ -205,9 +205,8 @@ void sdl_blit(const surface& src, SDL_Rect* src_rect, const surface& dst, SDL_Re
 		glDrawPixels(sr.w, sr.h, GL_BGRA, GL_UNSIGNED_BYTE, src_lock.pixels());
 	} else if(src == screen && dst != screen) {
 		glPixelStorei(GL_PACK_ROW_LENGTH, dst->w);
-		glPixelStorei(GL_PACK_SKIP_PIXELS, dr.x);
-		// TODO maybe incorrect when top and bottom are clipped ?
-		glPixelStorei(GL_PACK_SKIP_ROWS, dst->h - sr.h);
+		glPixelStorei(GL_PACK_SKIP_PIXELS, dr.x + src_rect ? (sr.x - src_rect->x) : 0);
+		glPixelStorei(GL_PACK_SKIP_ROWS, -dr.y + src_rect ? (src_rect->y + src_rect->h - (sr.y + sr.h)) : 0);
 
 		surface_lock dst_lock(dst);
 		// glReadPixels uses bottom-left coordinates
