@@ -369,15 +369,14 @@ function wml_actions.store_reachable_locations(cfg)
 	local range = cfg.range or "movement"
 	local variable = cfg.variable or helper.wml_error "[store_reachable_locations] missing required variable= key"
 
+	wesnoth.set_variable(variable)
 
-	local locs = {}
 	for i,unit in ipairs(wesnoth.get_units(unit_filter)) do
 		local reach = wesnoth.find_reach(unit)
 
 		for j,loc in ipairs(reach) do
 			if wesnoth.match_location(loc[1], loc[2], location_filter) then
-
-				table.insert(locs, {loc[1], loc[2]})
+				wesnoth.fire("store_locations", { variable=variable, x=loc[1], y=loc[2], { "or", { find_in=variable } } })
 			end
 		end
 	end
@@ -385,8 +384,6 @@ function wml_actions.store_reachable_locations(cfg)
 	if range == "attack" then
 		-- doesn't work yet
 	end
-
-	helper.set_variable_array(variable, locs)
 end
 
 function wml_actions.hide_unit(cfg)
