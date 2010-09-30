@@ -437,6 +437,10 @@ int CVideo::setMode( int x, int y, int bits_per_pixel, int flags )
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
+	//we will only use back buffer for drawing
+	glDrawBuffer(GL_BACK);
+	glReadBuffer(GL_BACK);
+
 	image::set_pixel_format(frameBuffer->format);
 
 	return frameBuffer->format->BitsPerPixel;
@@ -464,11 +468,8 @@ void CVideo::flip()
 	if(fake_screen_)
 		return;
 
-	//OpenGL Flip
 	glFlush();
-	SDL_GL_SwapBuffers();
 
-	// Note that this step seems useless in X11 windowed mode
 	// NOTE: maybe always use update_all is faster ?
 	if(update_all) {
 		sdl_flip(frameBuffer);

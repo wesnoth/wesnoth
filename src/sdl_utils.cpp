@@ -264,9 +264,11 @@ void sdl_flip(const surface& screen)
 
 void sdl_update_rects(const surface& screen, int numrects, SDL_Rect *rects)
 {
-	// Copy front buffer to back buffer to simulate how SDL_UpdateRects works
-	glReadBuffer(GL_FRONT);
-	glDrawBuffer(GL_BACK);
+	// Copy back buffer to front buffer to simulate how SDL_UpdateRects works
+	// This might cause some tearing but not more than SDL
+	// (unless the speed difference make it more visible)
+	glReadBuffer(GL_BACK);
+	glDrawBuffer(GL_FRONT);
 	glPixelZoom(1,1);
 	for(int i=0; i < numrects; ++i) {
 		const SDL_Rect& r = rects[i];
