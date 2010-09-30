@@ -38,6 +38,7 @@
 static lg::log_domain log_display("display");
 #define LOG_DP LOG_STREAM(info, log_display)
 #define ERR_DP LOG_STREAM(err, log_display)
+#define WRN_DP LOG_STREAM(warn, log_display)
 
 namespace {
 	bool fullScreen = false;
@@ -389,24 +390,46 @@ int CVideo::setMode( int x, int y, int bits_per_pixel, int flags )
 	fullScreen = (flags & FULL_SCREEN) != 0;
 
 	//Be sure to use double buffering
-	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
+	const int double_buffer = 1;
+	//Disbale V-sync for the moment
+	//TODO enable this later, update error message below
+	const int vsync = 0;
+
+	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, double_buffer);
+	SDL_GL_SetAttribute(SDL_GL_SWAP_CONTROL, vsync);
 
 	frameBuffer = SDL_SetVideoMode( x, y, bits_per_pixel, flags );
+
+	if(frameBuffer == NULL) {
+		ERR_DP << "Can't set video mode.\n";
+		throw CVideo::error();
+	}
+
+	int val = 0;
+
+	if(SDL_GL_GetAttribute(SDL_GL_DOUBLEBUFFER, &val)) {
+		WRN_DP << "Can't verify double-buffering status.\n";
+	} else if(val != double_buffer) {
+		ERR_DP << "Can't set double-buffering.\n";
+		throw CVideo::error();
+	}
+
+	if(SDL_GL_GetAttribute(SDL_GL_SWAP_CONTROL, &val)) {
+		WRN_DP << "Can't verify V-Sync status.\n";
+	} else if (val != vsync) {
+		ERR_DP << "Can't disable V-sync.\n";
+	}
 
 	//the clip rectangle of frame buffer is not always reset when using OpengGL
 	SDL_SetClipRect(SDL_GetVideoSurface(), NULL);
 
-	///@TODO temporary disable v-sync
-	int vsync_err = SDL_GL_SetAttribute(SDL_GL_SWAP_CONTROL, 0);
-	if (vsync_err) {
-		ERR_DP << "Can't set V-Sync (error:" << SDL_GetError() << ")\n";
-	}
-
-	glViewport(0, 0, x, y);
+	glViewport(0, 0, frameBuffer->w, frameBuffer->h);
 
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	glOrtho(0, x, y, 0, -1, 1);
+
+	// we reverse Y coordinates to imitate SDL
+	glOrtho(0, frameBuffer->w, frameBuffer->h, 0, -1, 1);
 
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
@@ -414,10 +437,9 @@ int CVideo::setMode( int x, int y, int bits_per_pixel, int flags )
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-	if( frameBuffer != NULL ) {
-		image::set_pixel_format(frameBuffer->format);
-		return bits_per_pixel;
-	} else	return 0;
+	image::set_pixel_format(frameBuffer->format);
+
+	return frameBuffer->format->BitsPerPixel;
 }
 
 bool CVideo::modeChanged()
