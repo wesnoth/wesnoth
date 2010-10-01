@@ -30,17 +30,36 @@
 #include <cstring>
 #include <iostream>
 
-surface_lock::surface_lock(const surface &surf) : surface_(surf), locked_(false)
+
+/// Check that the surface is neutral bpp 32, possibly with an empty alpha channel.
+inline bool is_neutral(const surface& surf)
 {
+	return (surf->format->BytesPerPixel == 4 &&
+		surf->format->Rmask == 0xFF0000u &&
+		(surf->format->Amask | 0xFF000000u) == 0xFF000000u);
+}
+
+surface_lock::surface_lock(surface &surf) : surface_(surf), locked_(false)
+{
+	assert(is_neutral(surface_));
 	if (SDL_MUSTLOCK(surface_))
 		locked_ = SDL_LockSurface(surface_) == 0;
-	// Check that the surface is neutral bpp 32, possibly with an empty alpha channel.
-	assert(surface_->format->BytesPerPixel == 4 &&
-		surface_->format->Rmask == 0xFF0000u &&
-		(surface_->format->Amask | 0xFF000000u) == 0xFF000000u);
 }
 
 surface_lock::~surface_lock()
+{
+	if (locked_)
+		SDL_UnlockSurface(surface_);
+}
+
+const_surface_lock::const_surface_lock(const surface &surf) : surface_(surf), locked_(false)
+{
+	assert(is_neutral(surface_));
+	if (SDL_MUSTLOCK(surface_))
+		locked_ = SDL_LockSurface(surface_) == 0;
+}
+
+const_surface_lock::~const_surface_lock()
 {
 	if (locked_)
 		SDL_UnlockSurface(surface_);
@@ -158,7 +177,7 @@ static SDL_PixelFormat& get_neutral_pixel_format()
 		return format;
 	}
 
-void sdl_blit(const surface& src, SDL_Rect* src_rect, const surface& dst, SDL_Rect* dst_rect)
+void sdl_blit(const surface& src, SDL_Rect* src_rect, surface& dst, SDL_Rect* dst_rect)
 {
 	if(src == NULL || dst == NULL)
 		return;
@@ -201,7 +220,7 @@ void sdl_blit(const surface& src, SDL_Rect* src_rect, const surface& dst, SDL_Re
 
 		glRasterPos2i(dr.x, dr.y);
 
-		surface_lock src_lock(src);
+		const_surface_lock src_lock(src);
 		glDrawPixels(sr.w, sr.h, GL_BGRA, GL_UNSIGNED_BYTE, src_lock.pixels());
 	} else if(src == screen && dst != screen) {
 		glPixelStorei(GL_PACK_ROW_LENGTH, dst->w);
@@ -214,7 +233,7 @@ void sdl_blit(const surface& src, SDL_Rect* src_rect, const surface& dst, SDL_Re
 
 		//Need to flop pixels data
 		//TODO avoid this by using smarter glPixelZoom ?
-		Uint32* const pixels = reinterpret_cast<Uint32*>(dst_lock.pixels());
+		Uint32* const pixels = dst_lock.pixels();
 		for(int x = 0; x != dst->w; ++x) {
 			for(int y = 0; y != dst->h/2; ++y) {
 				const int index1 = y*dst->w + x;
@@ -231,7 +250,7 @@ void sdl_blit(const surface& src, SDL_Rect* src_rect, const surface& dst, SDL_Re
 	}
 }
 
-void sdl_fill_rect(const surface& dst, SDL_Rect *dst_rect, Uint32 color)
+void sdl_fill_rect(surface& dst, SDL_Rect *dst_rect, Uint32 color)
 {
 	if(dst != SDL_GetVideoSurface()) {
 		SDL_FillRect(dst, dst_rect, color);
@@ -360,11 +379,11 @@ surface stretch_surface_horizontal(
 
 	{
 		// Extra scoping used for the surface_lock.
-		surface_lock src_lock(src);
+		const_surface_lock src_lock(src);
 		surface_lock dst_lock(dst);
 
-		Uint32* const src_pixels = reinterpret_cast<Uint32*>(src_lock.pixels());
-		Uint32* dst_pixels = reinterpret_cast<Uint32*>(dst_lock.pixels());
+		const Uint32* const src_pixels = src_lock.pixels();
+		Uint32* dst_pixels = dst_lock.pixels();
 
 		for(unsigned y = 0; y < static_cast<unsigned>(src->h); ++y) {
 			const Uint32 pixel = src_pixels [y * src->w];
@@ -405,11 +424,11 @@ surface stretch_surface_vertical(
 
 	{
 		// Extra scoping used for the surface_lock.
-		surface_lock src_lock(src);
+		const_surface_lock src_lock(src);
 		surface_lock dst_lock(dst);
 
-		Uint32* const src_pixels = reinterpret_cast<Uint32*>(src_lock.pixels());
-		Uint32* dst_pixels = reinterpret_cast<Uint32*>(dst_lock.pixels());
+		const Uint32* const src_pixels = src_lock.pixels();
+		Uint32* dst_pixels = dst_lock.pixels();
 
 		for(unsigned y = 0; y < static_cast<unsigned>(h); ++y) {
 		  for(unsigned x = 0; x < static_cast<unsigned>(src->w); ++x) {
@@ -456,11 +475,11 @@ surface scale_surface(const surface &surf, int w, int h, bool optimize)
 	const fixed_t yratio = fxpdiv(surf->h,h);
 
 	{
-		surface_lock src_lock(src);
+		const_surface_lock src_lock(src);
 		surface_lock dst_lock(dst);
 
-		Uint32* const src_pixels = reinterpret_cast<Uint32*>(src_lock.pixels());
-		Uint32* const dst_pixels = reinterpret_cast<Uint32*>(dst_lock.pixels());
+		const Uint32* const src_pixels = src_lock.pixels();
+		Uint32* const dst_pixels = dst_lock.pixels();
 
 		fixed_t ysrc = ftofxp(0.0);
 		for(int ydst = 0; ydst != h; ++ydst, ysrc += yratio) {
@@ -469,7 +488,7 @@ surface scale_surface(const surface &surf, int w, int h, bool optimize)
 				const int xsrcint = fxptoi(xsrc);
 				const int ysrcint = fxptoi(ysrc);
 
-				Uint32* const src_word = src_pixels + ysrcint*src->w + xsrcint;
+				const Uint32* const src_word = src_pixels + ysrcint*src->w + xsrcint;
 				Uint32* const dst_word = dst_pixels +    ydst*dst->w + xdst;
 				const int dx = (xsrcint + 1 < src->w) ? 1 : 0;
 				const int dy = (ysrcint + 1 < src->h) ? src->w : 0;
@@ -617,11 +636,11 @@ surface scale_opaque_surface(const surface &surf, int w, int h, bool optimize_fo
 	const fixed_t yratio = fxpdiv(surf->h,h);
 
 	{
-		surface_lock src_lock(src);
+		const_surface_lock src_lock(src);
 		surface_lock dst_lock(dst);
 
-		Uint32* const src_pixels = reinterpret_cast<Uint32*>(src_lock.pixels());
-		Uint32* const dst_pixels = reinterpret_cast<Uint32*>(dst_lock.pixels());
+		const Uint32* const src_pixels = src_lock.pixels();
+		Uint32* const dst_pixels = dst_lock.pixels();
 
 		fixed_t ysrc = ftofxp(0.0);
 		for(int ydst = 0; ydst != h; ++ydst, ysrc += yratio) {
@@ -630,7 +649,7 @@ surface scale_opaque_surface(const surface &surf, int w, int h, bool optimize_fo
 				const int xsrcint = fxptoi(xsrc);
 				const int ysrcint = fxptoi(ysrc);
 
-				Uint32* const src_word = src_pixels + ysrcint*src->w + xsrcint;
+				const Uint32* const src_word = src_pixels + ysrcint*src->w + xsrcint;
 				Uint32* const dst_word = dst_pixels +    ydst*dst->w + xdst;
 				const int dx = (xsrcint + 1 < src->w) ? 1 : 0;
 				const int dy = (ysrcint + 1 < src->h) ? src->w : 0;
@@ -707,11 +726,11 @@ surface scale_surface_blended(const surface &surf, int w, int h, bool optimize)
 			              static_cast<double>(h);
 
 	{
-		surface_lock src_lock(src);
+		const_surface_lock src_lock(src);
 		surface_lock dst_lock(dst);
 
-		Uint32* const src_pixels = reinterpret_cast<Uint32*>(src_lock.pixels());
-		Uint32* const dst_pixels = reinterpret_cast<Uint32*>(dst_lock.pixels());
+		const Uint32* const src_pixels = src_lock.pixels();
+		Uint32* const dst_pixels = dst_lock.pixels();
 
 		double ysrc = 0.0;
 		for(int ydst = 0; ydst != h; ++ydst, ysrc += yratio) {
@@ -1069,12 +1088,12 @@ surface mask_surface(const surface &surf, const surface &mask)
 
 	{
 		surface_lock lock(nsurf);
-		surface_lock mlock(nmask);
+		const_surface_lock mlock(nmask);
 
 		Uint32* beg = lock.pixels();
 		Uint32* end = beg + nsurf->w*surf->h;
-		Uint32* mbeg = mlock.pixels();
-		Uint32* mend = mbeg + nmask->w*nmask->h;
+		const Uint32* mbeg = mlock.pixels();
+		const Uint32* mend = mbeg + nmask->w*nmask->h;
 
 		while(beg != end && mbeg != mend) {
 			Uint8 alpha = (*beg) >> 24;
@@ -1124,10 +1143,10 @@ bool in_mask_surface(const surface &surf, const surface &mask)
 
 	{
 		surface_lock lock(nsurf);
-		surface_lock mlock(nmask);
+		const_surface_lock mlock(nmask);
 
-		Uint32* mbeg = mlock.pixels();
-		Uint32* mend = mbeg + nmask->w*nmask->h;
+		const Uint32* mbeg = mlock.pixels();
+		const Uint32* mend = mbeg + nmask->w*nmask->h;
 		Uint32* beg = lock.pixels();
 		// no need for 'end', because both surfaces have same size
 
@@ -1236,12 +1255,12 @@ surface light_surface(const surface &surf, const surface &lightmap, bool optimiz
 	}
 	{
 		surface_lock lock(nsurf);
-		surface_lock llock(nlightmap);
+		const_surface_lock llock(nlightmap);
 
 		Uint32* beg = lock.pixels();
 		Uint32* end = beg + nsurf->w * nsurf->h;
-		Uint32* lbeg = llock.pixels();
-		Uint32* lend = lbeg + nlightmap->w * nlightmap->h;
+		const Uint32* lbeg = llock.pixels();
+		const Uint32* lend = lbeg + nlightmap->w * nlightmap->h;
 
 		while(beg != end && lbeg != lend) {
 			Uint8 alpha = (*beg) >> 24;
@@ -1578,14 +1597,14 @@ surface cut_surface(const surface &surf, SDL_Rect const &r)
 	if(src_rect.x >= surf->w || src_rect.y >= surf->h)
 		return res;
 
-	surface_lock slock(surf);
+	const_surface_lock slock(surf);
 	surface_lock rlock(res);
 
-	Uint8* src = reinterpret_cast<Uint8 *>(slock.pixels());
+	const Uint8* src = reinterpret_cast<const Uint8 *>(slock.pixels());
 	Uint8* dest = reinterpret_cast<Uint8 *>(rlock.pixels());
 
 	for(int y = 0; y < src_rect.h && (src_rect.y + y) < surf->h; ++y) {
-		Uint8* line_src  = src  + (src_rect.y + y) * spitch + src_rect.x * sbpp;
+		const Uint8* line_src  = src  + (src_rect.y + y) * spitch + src_rect.x * sbpp;
 		Uint8* line_dest = dest + (dst_rect.y + y) * rpitch + dst_rect.x * rbpp;
 		size_t size = src_rect.w + src_rect.x <= surf->w ? src_rect.w : surf->w - src_rect.x;
 
@@ -1790,11 +1809,11 @@ void blit_surface(const surface& src,
 
 	{
 		// Extra scoping used for the surface_lock.
-		surface_lock src_lock(src);
+		const_surface_lock src_lock(src);
 		surface_lock dst_lock(dst);
 
-		Uint32* const src_pixels = reinterpret_cast<Uint32*>(src_lock.pixels());
-		Uint32* dst_pixels = reinterpret_cast<Uint32*>(dst_lock.pixels());
+		const Uint32* const src_pixels = src_lock.pixels();
+		Uint32* dst_pixels = dst_lock.pixels();
 
 		for(unsigned y = 0; y < height; ++y) {
 			for(unsigned x = 0; x < width; ++x) {
@@ -1874,7 +1893,7 @@ void blit_surface(const surface& src,
 
 
 
-void fill_rect_alpha(SDL_Rect &rect, Uint32 color, Uint8 alpha, const surface &target)
+void fill_rect_alpha(SDL_Rect &rect, Uint32 color, Uint8 alpha, surface &target)
 {
 	if(alpha == SDL_ALPHA_OPAQUE) {
 		sdl_fill_rect(target,&rect,color);
@@ -1943,7 +1962,7 @@ struct not_alpha
 SDL_Rect get_non_transparent_portion(const surface &surf)
 {
 	SDL_Rect res = {0,0,0,0};
-	const surface nsurf(make_neutral_surface(surf));
+	surface nsurf(make_neutral_surface(surf));
 	if(nsurf == NULL) {
 		std::cerr << "failed to make neutral surface\n";
 		return res;

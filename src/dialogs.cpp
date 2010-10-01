@@ -367,7 +367,7 @@ void save_preview_pane::draw_contents()
 		}
 	}
 
-	surface const screen = video().getSurface();
+	surface screen = video().getSurface();
 
 	SDL_Rect const &loc = location();
 	const SDL_Rect area = create_rect(loc.x + save_preview_border
@@ -746,7 +746,7 @@ void unit_preview_pane::draw_contents()
 
 	const bool right_align = left_side();
 
-	surface const screen = video().getSurface();
+	surface screen = video().getSurface();
 
 	SDL_Rect const &loc = location();
 	const SDL_Rect area = create_rect(loc.x + unit_preview_border

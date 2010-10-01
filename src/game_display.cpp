@@ -881,7 +881,7 @@ const SDL_Rect& game_display::calculate_energy_bar(surface surf)
 
 	surface image(make_neutral_surface(surf));
 
-	surface_lock image_lock(image);
+	const_surface_lock image_lock(image);
 	const Uint32* const begin = image_lock.pixels();
 
 	for(int y = 0; y != image->h; ++y) {
