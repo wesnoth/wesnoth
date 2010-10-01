@@ -326,7 +326,7 @@ CVideo::~CVideo()
 
 void CVideo::blit_surface(int x, int y, surface surf, SDL_Rect* srcrect, SDL_Rect* clip_rect)
 {
-	const surface target(getSurface());
+	surface target(getSurface());
 	SDL_Rect dst = create_rect(x, y, 0, 0);
 
 	const clip_rect_setter clip_setter(target, clip_rect, clip_rect != NULL);
@@ -437,7 +437,7 @@ bool CVideo::update_locked() const
 	return updatesLocked_ > 0;
 }
 
-surface CVideo::getSurface()
+surface& CVideo::getSurface()
 {
 	return frameBuffer;
 }

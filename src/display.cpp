@@ -889,7 +889,7 @@ void display::drawing_buffer_commit()
 	drawing_buffer_.sort();
 
 	SDL_Rect clip_rect = map_area();
-	const surface screen = get_screen_surface();
+	surface screen = get_screen_surface();
 	clip_rect_setter set_clip_rect(screen, &clip_rect);
 
 	/*
@@ -948,7 +948,7 @@ void display::flip()
 		return;
 	}
 
-	const surface frameBuffer = get_video_surface();
+	surface frameBuffer = get_video_surface();
 
 	// This is just the debug function "sunset" to progressively darken the map area
 	static size_t sunset_timer = 0;
@@ -2039,7 +2039,7 @@ const map_labels& display::labels() const
 
 void display::clear_screen()
 {
-	surface const disp(screen_.getSurface());
+	surface disp(screen_.getSurface());
 	SDL_Rect area = screen_area();
 	sdl_fill_rect(disp, &area, SDL_MapRGB(disp->format, 0, 0, 0));
 }

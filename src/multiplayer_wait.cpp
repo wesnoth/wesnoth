@@ -68,7 +68,7 @@ void wait::leader_preview_pane::draw_contents()
 {
 	bg_restore();
 
-	surface const screen = video().getSurface();
+	surface screen = video().getSurface();
 
 	SDL_Rect const &loc = location();
 	const SDL_Rect area = create_rect(loc.x + leader_pane_border

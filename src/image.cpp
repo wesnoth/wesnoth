@@ -413,7 +413,7 @@ static std::string get_localized_path (const std::string& file, const std::strin
 }
 
 // Load overlay image and compose it with the original surface.
-static void add_localized_overlay (const std::string& ovr_file, const surface &orig_surf)
+static void add_localized_overlay (const std::string& ovr_file, surface &orig_surf)
 {
 	surface ovr_surf = IMG_Load(ovr_file.c_str());
 	if (ovr_surf.null()) {

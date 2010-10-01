@@ -126,11 +126,11 @@ private:
 
 bool operator<(const surface& a, const surface& b);
 
-inline void sdl_blit(const surface& src, SDL_Rect* src_rect, const surface& dst, SDL_Rect* dst_rect){
+inline void sdl_blit(const surface& src, SDL_Rect* src_rect, surface& dst, SDL_Rect* dst_rect){
 	SDL_BlitSurface(src, src_rect, dst, dst_rect);
 }
 
-inline void sdl_fill_rect(const surface& dst, SDL_Rect* dst_rect, const Uint32 color){
+inline void sdl_fill_rect(surface& dst, SDL_Rect* dst_rect, const Uint32 color){
 	SDL_FillRect(dst, dst_rect, color);
 }
 
@@ -305,7 +305,7 @@ surface create_compatible_surface(const surface &surf, int width = -1, int heigh
 void blit_surface(const surface& src,
 	const SDL_Rect* srcrect, surface& dst, const SDL_Rect* dstrect);
 
-void fill_rect_alpha(SDL_Rect &rect, Uint32 color, Uint8 alpha, const surface &target);
+void fill_rect_alpha(SDL_Rect &rect, Uint32 color, Uint8 alpha, surface &target);
 
 SDL_Rect get_non_transparent_portion(const surface &surf);
 

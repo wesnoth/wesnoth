@@ -1752,7 +1752,7 @@ void blit_surface(const surface& src,
 
 
 
-void fill_rect_alpha(SDL_Rect &rect, Uint32 color, Uint8 alpha, const surface &target)
+void fill_rect_alpha(SDL_Rect &rect, Uint32 color, Uint8 alpha, surface &target)
 {
 	if(alpha == SDL_ALPHA_OPAQUE) {
 		sdl_fill_rect(target,&rect,color);

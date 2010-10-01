@@ -106,7 +106,7 @@ void loadscreen::draw_screen(const std::string &text)
 	// Height of the lighting line.
 	int	lightning_thickness = 2;
 
-	surface const gdis = screen_.getSurface();
+	surface gdis = screen_.getSurface();
 	SDL_Rect area;
 
 	// Pump events and make sure to redraw the logo if there's a chance that it's been obscured
@@ -192,7 +192,7 @@ void loadscreen::clear_screen()
 	int scrx = screen_.getx();                     //< Screen width.
 	int scry = screen_.gety();                     //< Screen height.
 	SDL_Rect area = create_rect(0, 0, scrx, scry); // Screen area.
-	surface const disp(screen_.getSurface());      // Screen surface.
+	surface disp(screen_.getSurface());      // Screen surface.
 	// Make everything black.
 	sdl_fill_rect(disp,&area,SDL_MapRGB(disp->format,0,0,0));
 	update_whole_screen();

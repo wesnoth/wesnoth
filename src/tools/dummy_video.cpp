@@ -18,9 +18,11 @@
 #include "../video.hpp"
 #include "../sdl_utils.hpp"
 
-surface CVideo::getSurface()
+static surface dummy_screen_surface(NULL);
+
+surface& CVideo::getSurface()
 {
-	return NULL;
+	return dummy_screen_surface;
 }
 
 void update_rect(const SDL_Rect&)

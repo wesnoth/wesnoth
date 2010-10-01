@@ -64,7 +64,7 @@ class CVideo : private boost::noncopyable {
 	void blit_surface(int x, int y, surface surf, SDL_Rect* srcrect=NULL, SDL_Rect* clip_rect=NULL);
 	void flip();
 
-	surface getSurface();
+	surface& getSurface();
 
 	bool isFullScreen() const;
 
