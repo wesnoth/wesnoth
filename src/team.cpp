@@ -256,9 +256,9 @@ void team::team_info::write(config& cfg) const
 	if(music.empty() == false)
 		cfg["music"] = music;
 
-	cfg["color"] = str_cast(color);
+	cfg["color"] = color;
 	///@deprecated 1.9.2 'colour' also written in team
-	cfg["colour"] = str_cast(color);
+	cfg["colour"] = color;
 
 	cfg["persistent"] = persistent;
 
