@@ -510,6 +510,7 @@ linechanges = (
         ("[colour_adjust]", "[color_adjust]"),
         ("[/colour_adjust]", "[/color_adjust]"),
         ("colour=", "color="),
+        ("colour_lock=", "color_lock="),
         )
 
 def validate_on_pop(tagstack, closer, filename, lineno):
