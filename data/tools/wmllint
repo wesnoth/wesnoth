@@ -511,6 +511,9 @@ linechanges = (
         ("[/colour_adjust]", "[/color_adjust]"),
         ("colour=", "color="),
         ("colour_lock=", "color_lock="),
+        # Changes just before 1.9.2
+        ("[removeitem]", "[remove_item]"),
+        ("[/removeitem]", "[/remove_item]"),
         )
 
 def validate_on_pop(tagstack, closer, filename, lineno):
