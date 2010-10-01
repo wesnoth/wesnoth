@@ -328,12 +328,23 @@ SDL_Color create_color(const unsigned char red
  */
 struct surface_lock
 {
-	surface_lock(const surface &surf);
+	surface_lock(surface &surf);
 	~surface_lock();
 
 	Uint32* pixels() { return reinterpret_cast<Uint32*>(surface_->pixels); }
 private:
-	SDL_Surface *surface_;
+	surface& surface_;
+	bool locked_;
+};
+
+struct const_surface_lock
+{
+	const_surface_lock(const surface &surf);
+	~const_surface_lock();
+
+	const Uint32* pixels() const { return reinterpret_cast<const Uint32*>(surface_->pixels); }
+private:
+	const surface& surface_;
 	bool locked_;
 };
 

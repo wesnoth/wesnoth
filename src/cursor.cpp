@@ -56,8 +56,8 @@ static SDL_Cursor* create_cursor(surface surf)
 
 	// See http://sdldoc.csn.ul.ie/sdlcreatecursor.php for documentation
 	// on the format that data has to be in to pass to SDL_CreateCursor
-	surface_lock lock(nsurf);
-	const Uint32* const pixels = reinterpret_cast<Uint32*>(lock.pixels());
+	const_surface_lock lock(nsurf);
+	const Uint32* const pixels = lock.pixels();
 	for(int y = 0; y != nsurf->h; ++y) {
 		for(int x = 0; x != nsurf->w; ++x) {
 
