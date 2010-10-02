@@ -771,7 +771,7 @@ bool compress_saves()
 
 bool startup_effect()
 {
-	return preferences::get("startup_effect", true);
+	return preferences::get("startup_effect", false);
 }
 
 std::string get_chat_timestamp(const time_t& t) {
