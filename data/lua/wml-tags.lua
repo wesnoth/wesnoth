@@ -378,11 +378,11 @@ function wml_actions.store_reachable_locations(cfg)
 			if wesnoth.match_location(loc[1], loc[2], location_filter) then
 				wesnoth.fire("store_locations", { variable=variable, x=loc[1], y=loc[2], { "or", { find_in=variable } } })
 			end
-		end
-	end
 
-	if range == "attack" then
-		-- doesn't work yet
+			if range == "attack" then
+			    wesnoth.fire("store_locations", { variable=variable, find_in=variable, { "or", { { "filter_adjacent_location", { x=loc[1], y=loc[2] } } } }, { "and", location_filter } })
+			end
+		end
 	end
 end
 
