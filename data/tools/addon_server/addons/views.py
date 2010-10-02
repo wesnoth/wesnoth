@@ -7,7 +7,7 @@ from django.utils.datetime_safe import datetime
 from django.contrib.auth import authenticate
 from django.core.files import File
 from django.http import Http404
-from settings import MEDIA_ROOT
+from settings import MEDIA_ROOT, WESNOTH_IMAGES_DIR, ICONS_ROOT
 import logging   
 import logging.handlers
 import re, random, shutil, os.path, sys
@@ -27,15 +27,12 @@ formatter = logging.Formatter(LOG_MSG_FORMAT)
 handler.setFormatter(formatter)
 logger.addHandler(handler)
 
-icons_dir = '../game/data/core/images/'
-ICONS_ROOT = MEDIA_ROOT + '/icons/'
-
-def wml_error_response(title, error):
+def wml_error_response(title, error, request):
 	return render_to_response('addons/error.wml',
 		{'errorType':title, 'errorDesc':error},
 		context_instance = RequestContext(request))
 		
-def wml_message_response(title, message):
+def wml_message_response(title, message, request):
 	return render_to_response('addons/message.wml',
 		{'msgTitle':title, 'msgText':message},
 		context_instance = RequestContext(request))
@@ -113,7 +110,7 @@ def rate(request, addon_id):
 			raise ValueError("Bad rating")
 	except (KeyError, ValueError):
 		if 'wml' in request.GET:
-			return wml_error_response("Wrong rating value", "Wrong rating value. This may signal a game version vs. server version mismatch.")
+			return wml_error_response("Wrong rating value", "Wrong rating value. This may signal a game version vs. server version mismatch.", request)
 		else:
 			return HttpResponseServerError("bad rating value")	
 	r = Rating()
@@ -122,7 +119,7 @@ def rate(request, addon_id):
 	r.addon = addon
 	r.save()
 	if 'wml' in request.GET:
-		return wml_message_response("Rating successful", "Thank you for rating!")
+		return wml_message_response("Rating successful", "Thank you for rating!", request)
 	else:
 		return render_to_response('addons/details.html',
 			{'rated' : True, 'addon_id': addon_id, 'addon': addon, 'rate_val': value},
@@ -180,7 +177,7 @@ def publish(request):
 
 	if 'wml' in request.GET:
 		def error_response(title, error, **kwargs):
-			return wml_error_response(title, error)
+			return wml_error_response(title, error, request)
 	else:
 		def error_response(title, error, **kwargs):
 			data = {'errorType':title, 'errorDesc':error, 'loginVal':login}
@@ -276,7 +273,7 @@ def publish(request):
 	
 	if not os.path.exists(ICONS_ROOT):
 		os.makedirs(ICONS_ROOT)
-	shutil.copyfile(icons_dir + addon.img, ICONS_ROOT + addon.img)
+	shutil.copyfile(WESNOTH_IMAGES_DIR + addon.img, ICONS_ROOT + addon.img)
 	addon.desc = keys_vals['description']
 	addon.type = addon_type
 	addon.file_wml = file_wml
@@ -300,7 +297,7 @@ def publish(request):
 	logger.info("User %s from %s has successfully published addon #%d (%s)"
 		% (login, request.META['REMOTE_ADDR'], addon.id, addon.name))
 	if ('wml' in request.GET):
-		return wml_message_response('Success', 'Addon published successfully')
+		return wml_message_response('Success', 'Addon published successfully', request)
 	else:
 		return render_to_response('addons/publishForm.html',
 			{'publish_success' : True, 'loginVal' : login, 'addonId' : addon.id},
@@ -321,13 +318,13 @@ def remove(request, addon_id):
 		addon = Addon.get_addon(addon_id)
 	except (Addon.DoesNotExist):
 		if 'wml' in request.GET:
-			return wml_error_response("Could not remove addon from server", "Addon not found")
+			return wml_error_response("Could not remove addon from server", "Addon not found", request)
 		else:
 			raise Http404
 	
 	if('login' not in request.POST or 'password' not in request.POST):
 		if 'wml' in request.GET:
-			return wml_error_response("Could not remove addon from server", "Login and/or password incorrect")
+			return wml_error_response("Could not remove addon from server", "Login and/or password incorrect", request)
 		else:
 			return render_to_response('addons/error.html', 
 				{ 'errorType':'No login or password', 'errorDesc': ['Login and/or password was not supplied']},
@@ -350,15 +347,15 @@ def remove(request, addon_id):
 		addon.delete()
 		logger.info("Addon #"+addon_id+"("+addon.name+") deleted by user "+login)
 		if 'wml' in request.GET:
-			return wml_message_response("Addon removed from server", "Addon was successfully removed from server")
+			return wml_message_response("Addon removed from server", "Addon was successfully removed from server", request)
 	if (errors_credentials):
 		logger.info("Attempt to login as "+login+" from "+request.META['REMOTE_ADDR']+" failed during an attempt to remove addon #"+addon_id+"("+addon.name+")");
 		if 'wml' in request.GET:
-			return wml_error_response("Could not remove addon from server", "Login and/or password incorrect")
+			return wml_error_response("Could not remove addon from server", "Login and/or password incorrect", request)
 	if (errors_permissions):
 		logger.info("Attempt to remove addon #"+addon_id+"("+addon.name+") by "+login+" from "+request.META['REMOTE_ADDR']+" failed due to insufficient permissions.");
 		if 'wml' in request.GET:
-			return wml_error_response("Could not remove addon from server", "You don't have permission to remove this addon")
+			return wml_error_response("Could not remove addon from server", "You don't have permission to remove this addon", request)
 	return render_to_response('addons/confirmRemove.html',
 		{'addon_id':addon_id, 'addon': addon, 
 			'errors_credentials':errors_credentials,
