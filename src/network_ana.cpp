@@ -109,6 +109,33 @@ namespace network {
     {
     }
 
+    // --- Proxy methods
+    void enable_connection_through_proxy()
+    {
+        ana_manager.enable_connection_through_proxy();
+    }
+    void set_proxy_address ( const std::string& address  )
+    {
+        ana_manager.set_proxy_address( address );
+    }
+
+    void set_proxy_port    ( const std::string& port     )
+    {
+        ana_manager.set_proxy_port( port );
+    }
+
+    void set_proxy_user    ( const std::string& user     )
+    {
+        ana_manager.set_proxy_user( user );
+    }
+
+    void set_proxy_password( const std::string& password )
+    {
+        ana_manager.set_proxy_password( password );
+    }
+    // --- End Proxy methods
+
+
     pending_statistics get_pending_stats()
     {
         //TODO: implement this feature, this is only to avoid segfaults when /query netstats is sent
@@ -190,9 +217,9 @@ namespace network {
         return ana_manager.disconnect( handle );
     }
 
-    void queue_disconnect(network::connection /*sock*/)
+    void queue_disconnect(network::connection handle )
     {
-        throw("TODO:Not implemented queue_disconnect");
+        ana_manager.disconnect( handle );
     }
 
     connection receive_data(config&           cfg,

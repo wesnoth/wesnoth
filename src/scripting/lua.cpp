@@ -726,11 +726,14 @@ static int impl_vconfig_collect(lua_State *L)
 		return 1; \
 	}
 
-#define return_string_attrib(name, accessor) \
+#define return_cstring_attrib(name, accessor) \
 	if (strcmp(m, name) == 0) { \
-		lua_pushstring(L, accessor.c_str()); \
+		lua_pushstring(L, accessor); \
 		return 1; \
 	}
+
+#define return_string_attrib(name, accessor) \
+	return_cstring_attrib(name, accessor.c_str())
 
 #define return_int_attrib(name, accessor) \
 	if (strcmp(m, name) == 0) { \
@@ -836,8 +839,23 @@ static int impl_unit_collect(lua_State *L)
  */
 static int impl_unit_get(lua_State *L)
 {
-	unit const *pu = static_cast<lua_unit *>(lua_touserdata(L, 1))->get();
+	lua_unit *lu = static_cast<lua_unit *>(lua_touserdata(L, 1));
 	char const *m = luaL_checkstring(L, 2);
+
+	if (strcmp(m, "valid") == 0)
+	{
+		if (lu->on_map())
+			lua_pushstring(L, "map");
+		else if (lu->on_recall_list())
+			lua_pushstring(L, "recall");
+		else if (lu->get())
+			lua_pushstring(L, "private");
+		else
+			return 0;
+		return 1;
+	}
+
+	unit const *pu = lu->get();
 	if (!pu) return luaL_argerror(L, 1, "unknown unit");
 	unit const &u = *pu;
 
@@ -1268,7 +1286,7 @@ static int intf_is_enemy(lua_State *L)
 	unsigned side_2 = luaL_checkint(L, 2) - 1;
 	std::vector<team> &teams = *resources::teams;
 	if (side_1 >= teams.size() || side_2 >= teams.size()) return 0;
-	lua_pushboolean(L, teams[side_1].is_enemy(side_2));
+	lua_pushboolean(L, teams[side_1].is_enemy(side_2 + 1));
 	return 1;
 }
 
@@ -1294,6 +1312,7 @@ static int impl_side_get(lua_State *L)
 	return_bool_attrib("objectives_changed", t.objectives_changed());
 	return_tstring_attrib("user_team_name", t.user_team_name());
 	return_string_attrib("team_name", t.team_name());
+	return_cstring_attrib("controller", t.controller_string());
 
 	if (strcmp(m, "recruit") == 0) {
 		std::set<std::string> const &recruits = t.recruits();
@@ -1331,6 +1350,7 @@ static int impl_side_set(lua_State *L)
 	modify_bool_attrib("objectives_changed", t.set_objectives_changed(value));
 	modify_tstring_attrib("user_team_name", t.change_team(t.team_name(), value));
 	modify_string_attrib("team_name", t.change_team(value, t.user_team_name()));
+	modify_string_attrib("controller", t.change_controller(value));
 
 	if (strcmp(m, "recruit") == 0) {
 		t.set_recruits(std::set<std::string>());
@@ -1367,16 +1387,31 @@ static int intf_get_terrain(lua_State *L)
  * Sets a terrain code.
  * - Args 1,2: map location.
  * - Arg 3: terrain code string.
+ * - Arg 4: layer: (overlay|base|both, default=both)
+ * - Arg 5: replace_if_failed, default = no
  */
 static int intf_set_terrain(lua_State *L)
 {
 	int x = luaL_checkint(L, 1);
 	int y = luaL_checkint(L, 2);
-	char const *m = luaL_checkstring(L, 3);
+	t_translation::t_terrain terrain = t_translation::read_terrain_code(luaL_checkstring(L, 3));
+	if (terrain == t_translation::NONE_TERRAIN) return 0;
 
-	t_translation::t_terrain t = t_translation::read_terrain_code(m);
-	if (t != t_translation::NONE_TERRAIN)
-		change_terrain(map_location(x - 1, y - 1), t, gamemap::BOTH, false);
+	gamemap::tmerge_mode mode = gamemap::BOTH;
+	bool replace_if_failed = false;
+	if (!lua_isnone(L, 4)) {
+		if (!lua_isnil(L, 4)) {
+			const char* const layer = luaL_checkstring(L, 4);
+			if (strcmp(layer, "base") == 0) mode = gamemap::BASE;
+			else if (strcmp(layer, "overlay") == 0) mode = gamemap::OVERLAY;
+		}
+
+		if(!lua_isnoneornil(L, 5)) {
+			replace_if_failed = lua_toboolean(L, 5);
+		}
+	}
+
+	change_terrain(map_location(x - 1, y - 1), terrain, mode, replace_if_failed);
 	return 0;
 }
 
@@ -2690,6 +2725,20 @@ static int intf_remove_tile_overlay(lua_State *L)
 	return 0;
 }
 
+/**
+ * Delays engine for a while.
+ * Arg 1: integer.
+ */
+static int intf_delay(lua_State *L)
+{
+	unsigned final = SDL_GetTicks() + luaL_checkinteger(L, 1);
+	do {
+		resources::controller->play_slice(false);
+		resources::screen->delay(10);
+	} while (int(final - SDL_GetTicks()) > 0);
+	return 0;
+}
+
 LuaKernel::LuaKernel(const config &cfg)
 	: mState(luaL_newstate()), level_(cfg)
 {
@@ -2717,6 +2766,7 @@ LuaKernel::LuaKernel(const config &cfg)
 		{ "add_tile_overlay",         &intf_add_tile_overlay         },
 		{ "copy_unit",                &intf_copy_unit                },
 		{ "create_unit",              &intf_create_unit              },
+		{ "delay",                    &intf_delay                    },
 		{ "dofile",                   &intf_dofile                   },
 		{ "eval_conditional",         &intf_eval_conditional         },
 		{ "extract_unit",             &intf_extract_unit             },

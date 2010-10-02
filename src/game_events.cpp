@@ -727,13 +727,6 @@ WML_HANDLER_FUNCTION(colour_adjust, /*event_info*/, cfg)
 	color_adjust(cfg);
 }
 
-
-WML_HANDLER_FUNCTION(delay, /*event_info*/, cfg)
-{
-	game_display &screen = *resources::screen;
-	screen.delay(cfg["time"]);
-}
-
 WML_HANDLER_FUNCTION(scroll, /*event_info*/, cfg)
 {
 	game_display &screen = *resources::screen;
@@ -1567,23 +1560,6 @@ void change_terrain(const map_location &loc, const t_translation::t_terrain &t,
 	}
 }
 
-// Changing the terrain
-WML_HANDLER_FUNCTION(terrain, /*event_info*/, cfg)
-{
-	t_translation::t_terrain terrain = t_translation::read_terrain_code(cfg["terrain"]);
-	if (terrain == t_translation::NONE_TERRAIN) return;
-
-	gamemap::tmerge_mode mode = gamemap::BOTH;
-	if (cfg["layer"] == "base") mode = gamemap::BASE; else
-	if (cfg["layer"] == "overlay") mode = gamemap::OVERLAY;
-
-	bool replace_if_failed = cfg["replace_if_failed"].to_bool();
-
-	foreach (const map_location &loc, parse_location_range(cfg["x"], cfg["y"], true)) {
-		change_terrain(loc, terrain, mode, replace_if_failed);
-	}
-}
-
 // Creating a mask of the terrain
 WML_HANDLER_FUNCTION(terrain_mask, /*event_info*/, cfg)
 {
@@ -2187,17 +2163,6 @@ WML_HANDLER_FUNCTION(store_villages, /*event_info*/, cfg)
 	}
 	varinfo.vars->clear_children(varinfo.key);
 	varinfo.vars->append(to_store);
-}
-
-// Command to take control of a village for a certain side
-WML_HANDLER_FUNCTION(capture_village, /*event_info*/, cfg)
-{
-	int side_num = cfg["side"].to_int();
-	foreach (const map_location &loc, parse_location_range(cfg["x"], cfg["y"])) {
-		if (resources::game_map->is_village(loc)) {
-			get_village(loc, side_num);
-		}
-	}
 }
 
 WML_HANDLER_FUNCTION(end_turn, /*event_info*/, /*cfg*/)
@@ -2874,6 +2839,14 @@ static bool process_event(game_events::event_handler& handler, const game_events
 	scoped_weapon_info first_weapon("weapon", ev.data.child("first"));
 	scoped_weapon_info second_weapon("second_weapon", ev.data.child("second"));
 	vconfig filters(handler.get_config());
+
+
+	foreach (const vconfig &condition, filters.get_children("condition"))
+	{
+		if (!game_events::conditional_passed(condition)) {
+			return false;
+		}
+	}
 
 	foreach (const vconfig &f, filters.get_children("filter"))
 	{

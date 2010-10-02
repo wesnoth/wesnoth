@@ -194,7 +194,7 @@ const struct {
 	{ hotkey::HOTKEY_SPEAK_ALL, "speaktoall", N_("Speak to All"), false, hotkey::SCOPE_GAME },
 	{ hotkey::HOTKEY_HELP, "help", N_("Help"), false, hotkey::SCOPE_GENERAL },
 	{ hotkey::HOTKEY_CHAT_LOG, "chatlog", N_("View Chat Log"), false, hotkey::SCOPE_GAME },
-	{ hotkey::HOTKEY_LANGUAGE, "changelanguage", N_("Change the language"), true, hotkey::SCOPE_GENERAL },
+	{ hotkey::HOTKEY_LANGUAGE, "changelanguage", N_("Change the language"), false, hotkey::SCOPE_GENERAL },
 
 	{ hotkey::HOTKEY_USER_CMD, "command", N_("Enter user command"), false, hotkey::SCOPE_GENERAL },
 	{ hotkey::HOTKEY_CUSTOM_CMD, "customcommand", N_("Custom command"), false, hotkey::SCOPE_GAME },
@@ -211,6 +211,65 @@ const struct {
 		, true
 		, hotkey::SCOPE_GENERAL
 	},
+	{
+		  hotkey::TITLE_SCREEN__NEXT_TIP
+		, "title_screen__next_tip"
+		, N_("Next tip of the day")
+		, false
+		, hotkey::SCOPE_GENERAL
+	},
+	{
+		  hotkey::TITLE_SCREEN__PREVIOUS_TIP
+		, "title_screen__previous_tip"
+		, N_("Previous tip of the day")
+		, false
+		, hotkey::SCOPE_GENERAL
+	},
+	{
+		  hotkey::TITLE_SCREEN__TUTORIAL
+		, "title_screen__tutorial"
+		, N_("Start tutorial")
+		, false
+		, hotkey::SCOPE_GENERAL
+	},
+	{
+		  hotkey::TITLE_SCREEN__CAMPAIGN
+		, "title_screen__campaign"
+		, N_("Start a campaign")
+		, false
+		, hotkey::SCOPE_GENERAL
+	},
+	{
+		  hotkey::TITLE_SCREEN__MULTIPLAYER
+		, "title_screen__multiplayer"
+		, N_("Start a multiplayer game")
+		, false
+		, hotkey::SCOPE_GENERAL
+	},
+	{
+		  hotkey::TITLE_SCREEN__ADDONS
+		, "title_screen__addons"
+		, N_("Manage addons")
+		, false
+		, hotkey::SCOPE_GENERAL
+	},
+#ifndef DISABLE_EDITOR
+	{
+		  hotkey::TITLE_SCREEN__EDITOR
+		, "title_screen__editor"
+		, N_("Start the editor")
+		, false
+		, hotkey::SCOPE_GENERAL
+	},
+#endif
+	{
+		  hotkey::TITLE_SCREEN__CREDITS
+		, "title_screen__credits"
+		, N_("Show the credits")
+		, false
+		, hotkey::SCOPE_GENERAL
+	},
+
 	{ hotkey::HOTKEY_NULL, NULL, NULL, true, hotkey::SCOPE_GENERAL }
 };
 

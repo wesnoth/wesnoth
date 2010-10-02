@@ -413,7 +413,7 @@ static std::string get_localized_path (const std::string& file, const std::strin
 }
 
 // Load overlay image and compose it with the original surface.
-static void add_localized_overlay (const std::string& ovr_file, const surface &orig_surf)
+static void add_localized_overlay (const std::string& ovr_file, surface &orig_surf)
 {
 	surface ovr_surf = IMG_Load(ovr_file.c_str());
 	if (ovr_surf.null()) {
@@ -424,7 +424,7 @@ static void add_localized_overlay (const std::string& ovr_file, const surface &o
 	area.y = 0;
 	area.w = ovr_surf->w;
 	area.h = ovr_surf->h;
-	SDL_BlitSurface(ovr_surf, 0, orig_surf, &area);
+	sdl_blit(ovr_surf, 0, orig_surf, &area);
 }
 
 surface locator::load_image_file() const

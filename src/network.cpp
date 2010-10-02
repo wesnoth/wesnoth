@@ -35,6 +35,7 @@
 #include <iomanip>
 #include <set>
 #include <cstring>
+#include <stdexcept>
 
 #include <signal.h>
 #if defined(_WIN32) || defined(__WIN32__) || defined (WIN32)
@@ -275,6 +276,32 @@ void set_raw_data_only()
 {
 	network_worker_pool::set_raw_data_only();
 }
+
+// --- Proxy methods
+void enable_connection_through_proxy()
+{
+    throw std::runtime_error("Proxy not available while using SDL_net. Use ANA instead.");
+}
+void set_proxy_address ( const std::string& )
+{
+    throw std::runtime_error("Proxy not available while using SDL_net. Use ANA instead.");
+}
+
+void set_proxy_port    ( const std::string& )
+{
+    throw std::runtime_error("Proxy not available while using SDL_net. Use ANA instead.");
+}
+
+void set_proxy_user    ( const std::string& )
+{
+    throw std::runtime_error("Proxy not available while using SDL_net. Use ANA instead.");
+}
+
+void set_proxy_password( const std::string& )
+{
+    throw std::runtime_error("Proxy not available while using SDL_net. Use ANA instead.");
+}
+// --- End Proxy methods
 
 server_manager::server_manager(int port, CREATE_SERVER create_server) : free_(false), connection_(0)
 {

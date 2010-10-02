@@ -587,7 +587,8 @@ ana_network_manager::ana_network_manager() :
     components_(),
     server_manager_(),
     disconnected_components_(),
-    disconnected_ids_()
+    disconnected_ids_(),
+    proxy_settings_()
 {
 }
 
@@ -628,7 +629,16 @@ network::connection ana_network_manager::create_client_and_connect(std::string h
 
         client->set_raw_data_mode();
         client->set_connect_timeout( ana::time::seconds(10) );
-        client->connect( &handler );
+
+        if ( proxy_settings_.enabled )
+            client->connect_through_proxy( proxy_settings_.address,
+                                           proxy_settings_.port,
+                                           &handler,
+                                           proxy_settings_.user,
+                                           proxy_settings_.password);
+        else
+            client->connect( &handler );
+
         client->set_listener_handler( this );
         client->run();
 
@@ -1032,7 +1042,11 @@ network::connection ana_network_manager::read_from( const ana_component_set::ite
             if ( (*it)->is_server() )
                 handler.wait_completion( (*it)->server(), timeout_ms );
             else
-                handler.wait_completion( (*it)->client(), timeout_ms );
+                if ( (*it)->get_wesnoth_id() != 0 )
+                    handler.wait_completion( (*it)->client(), timeout_ms );
+                else
+                    return 0;
+                //Don't try to read from a still unconnected client
         }
 
         (*it)->listener()->set_listener_handler( this );
@@ -1216,6 +1230,34 @@ bool ana_network_manager::disconnect( network::connection handle)
     }
     return true;
 }
+
+// --- Proxy methods
+void ana_network_manager::enable_connection_through_proxy()
+{
+    proxy_settings_.enabled = true;
+}
+
+void ana_network_manager::set_proxy_address ( const std::string& address  )
+{
+    proxy_settings_.address = address;
+}
+
+void ana_network_manager::set_proxy_port    ( const std::string& port     )
+{
+    proxy_settings_.port = port;
+}
+
+void ana_network_manager::set_proxy_user    ( const std::string& user     )
+{
+    proxy_settings_.user = user;
+}
+
+void ana_network_manager::set_proxy_password( const std::string& password )
+{
+    proxy_settings_.password = password;
+}
+// --- End Proxy methods
+
 
 void ana_network_manager::handle_send(ana::error_code error_code,
                                       ana::net_id client,

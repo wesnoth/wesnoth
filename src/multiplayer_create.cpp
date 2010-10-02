@@ -225,7 +225,7 @@ create::create(game_display& disp, const config &cfg, chat& c, config& gamelist)
 
 	utils::string_map i18n_symbols;
 	i18n_symbols["login"] = preferences::login();
-	name_entry_.set_text(vgettext("$login's game", i18n_symbols));
+	name_entry_.set_text(vgettext("$login|’s game", i18n_symbols));
 
 	gamelist_updated();
 }

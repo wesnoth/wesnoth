@@ -425,6 +425,8 @@ twindow::tretval twindow::get_retval_by_id(const std::string& id)
 		return static_cast<tretval>(gui::LOAD_GAME);
 	} else if(id == "addons") {
 		return static_cast<tretval>(gui::GET_ADDONS);
+	} else if(id == "language") {
+		return static_cast<tretval>(gui::CHANGE_LANGUAGE);
 	} else if(id == "preferences") {
 		return static_cast<tretval>(gui::EDIT_PREFERENCES);
 
@@ -522,7 +524,7 @@ int twindow::show(const bool restore, const unsigned auto_close_timeout)
 		// restore area
 		if(restore) {
 			SDL_Rect rect = get_rect();
-			SDL_BlitSurface(restorer_, 0, video_.getSurface(), &rect);
+			sdl_blit(restorer_, 0, video_.getSurface(), &rect);
 			update_rect(get_rect());
 			font::undraw_floating_labels(video_.getSurface());
 		}
@@ -534,7 +536,7 @@ int twindow::show(const bool restore, const unsigned auto_close_timeout)
 	// restore area
 	if(restore) {
 		SDL_Rect rect = get_rect();
-		SDL_BlitSurface(restorer_, 0, video_.getSurface(), &rect);
+		sdl_blit(restorer_, 0, video_.getSurface(), &rect);
 		update_rect(get_rect());
 		font::undraw_floating_labels(video_.getSurface());
 	}
@@ -559,7 +561,7 @@ void twindow::draw()
 		// doesn't work yet we need to undraw the window.
 		if(restorer_) {
 			SDL_Rect rect = get_rect();
-			SDL_BlitSurface(restorer_, 0, frame_buffer, &rect);
+			sdl_blit(restorer_, 0, frame_buffer, &rect);
 			// Since the old area might be bigger as the new one, invalidate
 			// it.
 			update_rect(rect);
@@ -666,7 +668,7 @@ void twindow::draw()
 
 		// Restore.
 		SDL_Rect rect = get_rect();
-		SDL_BlitSurface(restorer_, 0, frame_buffer, &rect);
+		sdl_blit(restorer_, 0, frame_buffer, &rect);
 
 		// Background.
 		for(std::vector<twidget*>::iterator itor = item.begin();
@@ -1009,7 +1011,7 @@ void twindow::do_show_tooltip(const tpoint& location, const t_string& tooltip)
 void twindow::do_remove_tooltip()
 {
 	SDL_Rect rect = tooltip_.get_rect();
-	SDL_BlitSurface(tooltip_restorer_, 0, video_.getSurface(), &rect);
+	sdl_blit(tooltip_restorer_, 0, video_.getSurface(), &rect);
 	update_rect(tooltip_.get_rect());
 
 	tooltip_.set_visible(twidget::HIDDEN);
@@ -1234,8 +1236,7 @@ void twindow::signal_handler_sdl_video_resize(
 			const event::tevent event, bool& handled, const tpoint& new_size)
 {
 	DBG_GUI_E << LOG_HEADER << ' ' << event << ".\n";
-#if 0
-	/** @todo enable when gui2 becomes the master event handler. */
+
 	if(new_size.x < preferences::min_allowed_width()
 			|| new_size.y < preferences::min_allowed_height()) {
 
@@ -1257,7 +1258,7 @@ void twindow::signal_handler_sdl_video_resize(
 				<< " resize aborted, resize failed.\n";
 		return;
 	}
-#endif
+
 	settings::gamemap_width += new_size.x - settings::screen_width ;
 	settings::gamemap_height += new_size.y - settings::screen_height ;
 	settings::screen_width = new_size.x;

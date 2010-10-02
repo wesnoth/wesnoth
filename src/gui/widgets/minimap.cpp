@@ -224,7 +224,7 @@ void tminimap::impl_draw_background(surface& frame_buffer)
 
 	const ::surface surf = get_image(rect.w, rect.h);
 	if(surf) {
-		SDL_BlitSurface(surf, NULL, frame_buffer, &rect);
+		sdl_blit(surf, NULL, frame_buffer, &rect);
 	}
 }
 

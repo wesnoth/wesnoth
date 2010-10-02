@@ -1,21 +1,60 @@
 Version 1.9.1+svn:
  * Campaigns:
+   * Descent into Darkness:
+     * Made 'Alone at Last' easier.
    * Legend of Wesmere:
      * Map updates.
      * Implemented gold carryover between the multiplayer chapters.
      * Added extra keeps to keep up with the growing number of leaders.
+   * Liberty:
+     * New (unanimated) sprites for the Rogue Mage unit line.
  * Graphics:
    * Terrain:
      * Any Castle or Keep except Dwarvish can now be combined without large gaps
        or extra walls.
-     * Added variant of chasm bridge for over water
-     * New transitions from all Hills and Mountains to Water
-     * Underground and chasm friendly volcanoes
+     * Added variant of chasm bridge for over water.
+     * New transitions from all Hills and Mountains to Water.
+     * Underground and chasm friendly volcanoes.
+     * A new desaturated color of shallow water (Wwg).
+     * Much improved lava transitions.
+     * A new desaturated ocean color (Wog).
+     * New Waterfall automatically placed between chasm and water or swamp.
+   * Animations: new standing animation for Fencer, idle animations for Spearman.
+   * Portraits: Drake Blademaster, Hurricane Drake, Drake Flameheart.
+   * Units: New base frame and animations for Mudcrawler.
  * Language and i18n:
-   * Updated translations: Chinese (Traditional), Indonesian, Japanese, Russian
+   * Updated translations: Chinese (Traditional), Czech, Dutch, Indonesian,
+     Japanese, Portuguese (Brazil), Russian, Shavian, Slovak, Vietnamese.
  * User interface:
    * Fixed: Addon dialog in title screen shows last host again.
    * Fixed: Fullscreen hotkey works again in the title screen.
+   * Fixed: Termination of the game when making the title screen small
+     (bug #16724).
+   * Fixed: A resize glitch causing resize events to be lost.
+   * Changed: All buttons in the title screen now have a hotkey.
+   * Changed: Refresh cache hotkey is CTRL+F5 on the Mac by default now.
+   * Fixed: Don't trigger an assertion failure if no tips are defined
+     (bug #16731).
+   * Fixed: Enter no longer shows the credits in the title screen.
+   * Changed: The title screen now has a maximum width for the tips text.
+   * Changed: Improved the layout of the title screen.
+   * Fixed: Changing the language updates map and logo in title screen
+     (bug #16631).
+   * Fixed: No longer cut off large title screen logos (bug #16632).
+ * WML Engine:
+   * id= in SUFs now accepts a comma-separated list.
+   * [capture_village] now accepts a full SLF.
+   * events can be fired depending on a [condition].
+   * Added support for SLF to [terrain]. Note that the SLF's terrain= key is
+     not valid; terrain= specifies the new terrain instead like it used to do.
+     Filtering for terrain can be done with the [terrain][and]terrain=
+     workaround.
+   * Renamed [removeitem] to [remove_item].
+   * added new parameters directional_x and directional_y to animations
+ * Miscellaneous and bugfixes:
+   * Changed: Lowered severity of some gui2 timer log messages.
+   * Units created in debug mode now play their recruit animation (FR #16766).
+   * Fixed: properly update cmake revision numbers (bug #16483)
 
 Version 1.9.1:
  * AI:
@@ -118,6 +157,9 @@ Version 1.9.1:
      the village aliasing change listed below.
  * Unit changes and balancing:
    * Decreased the melee and ranged attack of the Footpad from 5-2 to 4-2.
+   * Decreased the XP requirement of the Mage from 60 to 54.
+   * Decreased the XP requirement of the White Mage from 150 to 136.
+   * Decreased the XP requirement of the Mermaid Priestess from 150 to 132.
    * Added the Ghast unit from DiD to core with new base frame and animations.
    * Made the Giant Rat have a normal AMLA instead of an AMLA with no fullheal.
    * All bats are now given a 'feral' trait which caps their defense on villages

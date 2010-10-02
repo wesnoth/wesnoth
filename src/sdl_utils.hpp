@@ -126,6 +126,14 @@ private:
 
 bool operator<(const surface& a, const surface& b);
 
+inline void sdl_blit(const surface& src, SDL_Rect* src_rect, surface& dst, SDL_Rect* dst_rect){
+	SDL_BlitSurface(src, src_rect, dst, dst_rect);
+}
+
+inline void sdl_fill_rect(surface& dst, SDL_Rect* dst_rect, const Uint32 color){
+	SDL_FillRect(dst, dst_rect, color);
+}
+
 surface make_neutral_surface(const surface &surf);
 surface create_neutral_surface(int w, int h);
 surface create_optimized_surface(const surface &surf);
@@ -281,9 +289,9 @@ surface flop_surface(const surface &surf, bool optimize=true);
 surface create_compatible_surface(const surface &surf, int width = -1, int height = -1);
 
 /**
- *  Replacement for SDL_BlitSurface.
+ *  Replacement for sdl_blit.
  *
- *  SDL_BlitSurface has problems with blitting partly transparent surfaces so
+ *  sdl_blit has problems with blitting partly transparent surfaces so
  *  this is a replacement. It ignores the SDL_SRCALPHA and SDL_SRCCOLORKEY
  *  flags. src and dst will have the SDL_RLEACCEL flag removed.
  *  The return value of SDL_BlistSurface is normally ignored so no return value.
@@ -297,7 +305,7 @@ surface create_compatible_surface(const surface &surf, int width = -1, int heigh
 void blit_surface(const surface& src,
 	const SDL_Rect* srcrect, surface& dst, const SDL_Rect* dstrect);
 
-void fill_rect_alpha(SDL_Rect &rect, Uint32 color, Uint8 alpha, const surface &target);
+void fill_rect_alpha(SDL_Rect &rect, Uint32 color, Uint8 alpha, surface &target);
 
 SDL_Rect get_non_transparent_portion(const surface &surf);
 
@@ -320,12 +328,23 @@ SDL_Color create_color(const unsigned char red
  */
 struct surface_lock
 {
-	surface_lock(const surface &surf);
+	surface_lock(surface &surf);
 	~surface_lock();
 
 	Uint32* pixels() { return reinterpret_cast<Uint32*>(surface_->pixels); }
 private:
-	SDL_Surface *surface_;
+	surface& surface_;
+	bool locked_;
+};
+
+struct const_surface_lock
+{
+	const_surface_lock(const surface &surf);
+	~const_surface_lock();
+
+	const Uint32* pixels() const { return reinterpret_cast<const Uint32*>(surface_->pixels); }
+private:
+	const surface& surface_;
 	bool locked_;
 };
 

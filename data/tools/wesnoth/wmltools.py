@@ -14,7 +14,7 @@ resource_extensions = map_extensions + image_extensions + sound_extensions
 image_reference = r"[A-Za-z0-9{}.][A-Za-z0-9_/+{}.-]*\.(png|jpg)(?=(~.*)?)"
 
 def is_root(dirname):
-    "Is the specified path the filesysten root?"
+    "Is the specified path the filesystem root?"
     return dirname == os.sep or (os.sep == '\\' and dirname.endswith(':\\'))
 
 def pop_to_top(whoami):
@@ -165,7 +165,7 @@ def formaltype(f):
         ftype = "range"
     elif f in ("ALIGN",):
         ftype = "alignment"
-    elif f in ("TYPES",):
+    elif f in ("TYPES"):
         ftype = "types"
     elif f.startswith("ADJACENT") or f.startswith("TERRAINLIST") or f == "RESTRICTING":
         ftype = "terrain_pattern"
@@ -173,7 +173,7 @@ def formaltype(f):
         ftype = "terrain_code"
     elif f in ("NAME", "NAMESPACE", "VAR", "IMAGESTEM", "ID", "FLAG", "BUILDER") or f.endswith("_NAME") or f.endswith("_ID") or f.endswith("_VAR"):
         ftype = "name"
-    elif f in ("ID_STRING", "NAME_STRING", "DESCRIPTION"):
+    elif f in ("ID_STRING", "NAME_STRING", "DESCRIPTION", "IPF"):
         ftype = "optional_string"
     elif f in ("STRING", "TYPE", "TEXT") or f.endswith("_STRING") or f.endswith("_TYPE") or f.endswith("_TEXT"):
         ftype = "string"
@@ -317,7 +317,7 @@ class Reference:
 
 class CrossRef:
     macro_reference = re.compile(r"\{([A-Z_][A-Za-z0-9_:]*)(?!\.)\b")
-    file_reference =  re.compile(r"[A-Za-z0-9{}.][A-Za-z0-9_/+{}.-]*\.(" + "|".join(resource_extensions) + ")(?=(~.*)?)")
+    file_reference =  re.compile(r"[A-Za-z0-9{}.][A-Za-z0-9_/+{}.@-]*\.(" + "|".join(resource_extensions) + ")(?=(~.*)?)")
     tag_parse = re.compile("\s*([a-z_]+)\s*=(.*)") 
     def mark_matching_resources(self, pattern, fn, n):
         "Mark all definitions matching a specified pattern with a reference."
@@ -645,11 +645,11 @@ class CrossRef:
                         if name in self.fileref and self.visible_from(name, fn, n):
                             self.fileref[name].append(fn, n+1)
                             continue
-                        # If the name contains subtitutable parts, count
+                        # If the name contains substitutable parts, count
                         # it as a reference to everything the substitutions
                         # could potentially match.
-                        elif '{' in name:
-                            pattern = re.sub(r"\{[^}]*\}", '.*', name)
+                        elif '{' in name or '@' in name:
+                            pattern = re.sub(r"(\{[^}]*\}|@R0|@V)", '.*', name)
                             key = self.mark_matching_resources(pattern, fn,n+1)
                             if key:
                                 self.fileref[key].append(fn, n+1)

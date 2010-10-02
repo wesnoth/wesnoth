@@ -53,7 +53,7 @@ static void the_end_old(display &disp, std::string text, unsigned int duration)
 
 	SDL_Rect area = screen_area();
 	CVideo &video = disp.video();
-	SDL_FillRect(video.getSurface(),&area,0);
+	sdl_fill_rect(video.getSurface(),&area,0);
 
 	update_whole_screen();
 	disp.flip();
@@ -66,7 +66,7 @@ static void the_end_old(display &disp, std::string text, unsigned int duration)
 
 	for(size_t n = 0; n < 255; n += 5) {
 		if(n)
-			SDL_FillRect(video.getSurface(),&area,0);
+			sdl_fill_rect(video.getSurface(),&area,0);
 
 		const SDL_Color col = create_color(n, n, n, n);
 		font::draw_text(&video,area,font_size,col,text,area.x,area.y);

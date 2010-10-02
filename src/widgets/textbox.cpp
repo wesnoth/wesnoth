@@ -95,19 +95,19 @@ void textbox::append_text(const std::string& text, bool auto_scroll, const SDL_C
 	const wide_string& wtext = utils::string_to_wstring(text);
 
 	const surface new_text = add_text_line(wtext, color);
-	const surface new_surface = create_compatible_surface(text_image_,std::max<size_t>(text_image_->w,new_text->w),text_image_->h+new_text->h);
+	surface new_surface = create_compatible_surface(text_image_,std::max<size_t>(text_image_->w,new_text->w),text_image_->h+new_text->h);
 
 	SDL_SetAlpha(new_text.get(),0,0);
 	SDL_SetAlpha(text_image_.get(),0,0);
 
-	SDL_BlitSurface(text_image_,NULL,new_surface,NULL);
+	sdl_blit(text_image_,NULL,new_surface,NULL);
 
 	SDL_Rect target = create_rect(0
 			, text_image_->h
 			, new_text->w
 			, new_text->h);
 
-	SDL_BlitSurface(new_text,NULL,new_surface,&target);
+	sdl_blit(new_text,NULL,new_surface,&target);
 	text_image_.assign(new_surface);
 
 	text_.resize(text_.size() + wtext.size());
@@ -140,8 +140,8 @@ void textbox::draw_cursor(int pos, CVideo &video) const
 				, 1
 				, location().h);
 
-		surface const frame_buffer = video.getSurface();
-		SDL_FillRect(frame_buffer,&rect,SDL_MapRGB(frame_buffer->format,255,255,255));
+		surface frame_buffer = video.getSurface();
+		sdl_fill_rect(frame_buffer,&rect,SDL_MapRGB(frame_buffer->format,255,255,255));
 	}
 }
 
@@ -198,7 +198,7 @@ void textbox::draw_contents()
 			}
 		}
 
-		SDL_BlitSurface(text_image_, &src, surf, &dest);
+		sdl_blit(text_image_, &src, surf, &dest);
 	}
 
 	draw_cursor((cursor_pos_ == 0 ? 0 : cursor_pos_ - 1), video());

@@ -192,7 +192,7 @@ void part_ui::render_background()
 		0, 0, video_.getx(), video_.gety(), 0, 0, 0, 1.0,
 		video_.getSurface()
 	);
-	SDL_BlitSurface(background_, NULL, video_.getSurface(), &base_rect_);
+	sdl_blit(background_, NULL, video_.getSurface(), &base_rect_);
 }
 
 bool part_ui::render_floating_images()
@@ -208,7 +208,7 @@ bool part_ui::render_floating_images()
 		const floating_image& fi = p_.get_floating_images()[fi_n];
 
 		if(!ri.image.null()) {
-			SDL_BlitSurface(ri.image, NULL, video_.getSurface(), &ri.rect);
+			sdl_blit(ri.image, NULL, video_.getSurface(), &ri.rect);
 			update_rect(ri.rect);
 		}
 

@@ -105,6 +105,7 @@ public:
 
 		enum CONTROLLER { HUMAN, HUMAN_AI, AI, NETWORK, NETWORK_AI, EMPTY };
 		CONTROLLER controller;
+		char const *controller_string() const;
 
 		bool share_maps, share_view;
 		bool disallow_observers;
@@ -206,6 +207,7 @@ public:
 	}
 
 	team_info::CONTROLLER controller() const { return info_.controller; }
+	char const *controller_string() const { return info_.controller_string(); }
 	const std::string& color() const { return info_.color; }
 	bool is_human() const { return info_.controller == team_info::HUMAN; }
 	bool is_human_ai() const { return info_.controller == team_info::HUMAN_AI; }

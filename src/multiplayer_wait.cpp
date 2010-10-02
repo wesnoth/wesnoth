@@ -68,7 +68,7 @@ void wait::leader_preview_pane::draw_contents()
 {
 	bg_restore();
 
-	surface const screen = video().getSurface();
+	surface screen = video().getSurface();
 
 	SDL_Rect const &loc = location();
 	const SDL_Rect area = create_rect(loc.x + leader_pane_border
@@ -120,7 +120,7 @@ void wait::leader_preview_pane::draw_contents()
 		if(!unit_image.null()) {
 			image_rect.w = unit_image->w;
 			image_rect.h = unit_image->h;
-			SDL_BlitSurface(unit_image,NULL,screen,&image_rect);
+			sdl_blit(unit_image,NULL,screen,&image_rect);
 		}
 
 		font::draw_text(&video(),area,font::SIZE_PLUS,font::NORMAL_COLOR,faction,area.x + 110, area.y + 60);

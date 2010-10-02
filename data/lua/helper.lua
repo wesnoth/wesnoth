@@ -303,4 +303,11 @@ function helper.shallow_parsed(cfg)
 	end
 end
 
+function helper.rand (possible_values)
+	wml_actions.set_variable({ name = "LUA_rand", rand = possible_values })
+	local result = wesnoth.get_variable("LUA_rand")
+	wesnoth.set_variable("LUA_rand")
+	return result
+end
+
 return helper

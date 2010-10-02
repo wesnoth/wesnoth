@@ -367,7 +367,7 @@ void save_preview_pane::draw_contents()
 		}
 	}
 
-	surface const screen = video().getSurface();
+	surface screen = video().getSurface();
 
 	SDL_Rect const &loc = location();
 	const SDL_Rect area = create_rect(loc.x + save_preview_border
@@ -392,7 +392,7 @@ void save_preview_pane::draw_contents()
 			SDL_Rect image_rect = create_rect(area.x, area.y, image->w, image->h);
 			ypos += image_rect.h + save_preview_border;
 
-			SDL_BlitSurface(image,NULL,screen,&image_rect);
+			sdl_blit(image,NULL,screen,&image_rect);
 		}
 	}
 
@@ -445,7 +445,7 @@ void save_preview_pane::draw_contents()
 				, map_surf->h);
 
 		ypos = std::max<int>(ypos,map_rect.y + map_rect.h + save_preview_border);
-		SDL_BlitSurface(map_surf,NULL,screen,&map_rect);
+		sdl_blit(map_surf,NULL,screen,&map_rect);
 	}
 
 	char time_buf[256] = {0};
@@ -746,7 +746,7 @@ void unit_preview_pane::draw_contents()
 
 	const bool right_align = left_side();
 
-	surface const screen = video().getSurface();
+	surface screen = video().getSurface();
 
 	SDL_Rect const &loc = location();
 	const SDL_Rect area = create_rect(loc.x + unit_preview_border
@@ -771,7 +771,7 @@ void unit_preview_pane::draw_contents()
 				, unit_image->w
 				, unit_image->h);
 
-		SDL_BlitSurface(unit_image,NULL,screen,&rect);
+		sdl_blit(unit_image,NULL,screen,&rect);
 		image_rect = rect;
 	}
 

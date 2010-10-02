@@ -56,8 +56,8 @@ static SDL_Cursor* create_cursor(surface surf)
 
 	// See http://sdldoc.csn.ul.ie/sdlcreatecursor.php for documentation
 	// on the format that data has to be in to pass to SDL_CreateCursor
-	surface_lock lock(nsurf);
-	const Uint32* const pixels = reinterpret_cast<Uint32*>(lock.pixels());
+	const_surface_lock lock(nsurf);
+	const Uint32* const pixels = lock.pixels();
 	for(int y = 0; y != nsurf->h; ++y) {
 		for(int x = 0; x != nsurf->w; ++x) {
 
@@ -268,10 +268,10 @@ void draw(surface screen)
 			, cursor_y - shift_y[current_cursor]
 			, surf->w
 			, surf->h);
-	SDL_BlitSurface(screen,&area,cursor_buf,NULL);
+	sdl_blit(screen,&area,cursor_buf,NULL);
 
 	// Blit the surface
-	SDL_BlitSurface(surf,NULL,screen,&area);
+	sdl_blit(surf,NULL,screen,&area);
 
 	if(must_update) {
 		update_rect(area);
@@ -292,7 +292,7 @@ void undraw(surface screen)
 			, cursor_y - shift_y[current_cursor]
 			, cursor_buf->w
 			, cursor_buf->h);
-	SDL_BlitSurface(cursor_buf,NULL,screen,&area);
+	sdl_blit(cursor_buf,NULL,screen,&area);
 	update_rect(area);
 }
 

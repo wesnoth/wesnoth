@@ -37,35 +37,9 @@
 
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
+#define WRN_CF LOG_STREAM(warn, log_config)
 
 namespace gui2 {
-
-namespace {
-
-template<class D>
-void show_dialog(CVideo& video)
-{
-	D dlg;
-	dlg.show(video);
-}
-
-void show_language_dialog(CVideo& video, twindow& window)
-{
-	window.set_retval(static_cast<twindow::tretval>(gui::CHANGE_LANGUAGE));
-	return;
- 	//NOTE following code doesn't redraw the titlescreen, reload tips and images
-	tlanguage_selection dlg;
-	dlg.show(video);
-	if(dlg.get_retval() == twindow::OK) {
-		/*
-		 * This call both reloads all texts in the new translation for the
-		 * widgets and then finds the new best layout in the new language.
-		 */
-		window.invalidate_layout();
-	}
-}
-
-} // namespace
 
 /*WIKI
  * @page = GUIWindowDefinitionWML
@@ -73,8 +47,7 @@ void show_language_dialog(CVideo& video, twindow& window)
  *
  * == Title screen ==
  *
- * This shows the title screen. This dialog is still under construction and
- * is only shown when --new-widgets are used.
+ * This shows the title screen.
  *
  * @begin{table}[dialog_widgets]
  * addons & & button & m &
@@ -136,7 +109,7 @@ static void animate_logo(
 		  unsigned long& timer_id
 		, unsigned& percentage
 		, tprogress_bar& progress_bar
-		, twindow& /*window*/)
+		, twindow& window)
 {
 	assert(percentage <= 100);
 	++percentage;
@@ -148,9 +121,8 @@ static void animate_logo(
 	 * this possible problem. Of course this is expensive but the logo is
 	 * animated once so the cost is only once.
 	 */
-	/// @todo overlap seems currently impossible(crash), this allow to skip this.
-	/// Depending how that is fixed (allow it or prevent it), you may need to renable this
-	//window.set_dirty();
+	window.set_dirty();
+
 
 	if(percentage == 100) {
 		remove_timer(timer_id);
@@ -187,6 +159,102 @@ void ttitle_screen::post_build(CVideo& video, twindow& window)
 
 	window.register_hotkey(hotkey::HOTKEY_FULLSCREEN
 			, boost::bind(fullscreen, boost::ref(video)));
+
+	window.register_hotkey(hotkey::HOTKEY_LANGUAGE
+				, boost::bind(
+					  &hotkey
+					, boost::ref(window)
+					, gui::CHANGE_LANGUAGE));
+
+	window.register_hotkey(hotkey::HOTKEY_LOAD_GAME
+				, boost::bind(
+					  &hotkey
+					, boost::ref(window)
+					, gui::LOAD_GAME));
+
+	window.register_hotkey(hotkey::HOTKEY_HELP
+				, boost::bind(
+					  &hotkey
+					, boost::ref(window)
+					, gui::SHOW_HELP));
+
+	window.register_hotkey(hotkey::HOTKEY_PREFERENCES
+				, boost::bind(
+					  &hotkey
+					, boost::ref(window)
+					, gui::EDIT_PREFERENCES));
+
+	static const boost::function<void()> next_tip_wrapper = boost::bind(
+			  &ttitle_screen::update_tip
+			, this
+			, boost::ref(window)
+			, true);
+
+	window.register_hotkey(hotkey::TITLE_SCREEN__NEXT_TIP
+			, boost::bind(function_wrapper<bool, boost::function<void()> >
+				, true
+				, boost::cref(next_tip_wrapper)));
+
+	static const boost::function<void()> previous_tip_wrapper = boost::bind(
+			  &ttitle_screen::update_tip
+			, this
+			, boost::ref(window)
+			, false);
+
+	window.register_hotkey(hotkey::TITLE_SCREEN__PREVIOUS_TIP
+			, boost::bind(function_wrapper<bool, boost::function<void()> >
+				, true
+				, boost::cref(previous_tip_wrapper)));
+
+	window.register_hotkey(hotkey::TITLE_SCREEN__TUTORIAL
+				, boost::bind(
+					  &hotkey
+					, boost::ref(window)
+					, gui::TUTORIAL));
+
+	window.register_hotkey(hotkey::TITLE_SCREEN__TUTORIAL
+				, boost::bind(
+					  &hotkey
+					, boost::ref(window)
+					, gui::TUTORIAL));
+
+	window.register_hotkey(hotkey::TITLE_SCREEN__CAMPAIGN
+				, boost::bind(
+					  &hotkey
+					, boost::ref(window)
+					, gui::NEW_CAMPAIGN));
+
+	window.register_hotkey(hotkey::TITLE_SCREEN__MULTIPLAYER
+				, boost::bind(
+					  &hotkey
+					, boost::ref(window)
+					, gui::MULTIPLAYER));
+
+	window.register_hotkey(hotkey::TITLE_SCREEN__ADDONS
+				, boost::bind(
+					  &hotkey
+					, boost::ref(window)
+					, gui::GET_ADDONS));
+
+#ifndef DISABLE_EDITOR
+	window.register_hotkey(hotkey::TITLE_SCREEN__EDITOR
+				, boost::bind(
+					  &hotkey
+					, boost::ref(window)
+					, gui::START_MAP_EDITOR));
+#endif
+
+	window.register_hotkey(hotkey::TITLE_SCREEN__CREDITS
+				, boost::bind(
+					  &hotkey
+					, boost::ref(window)
+					, gui::SHOW_ABOUT));
+
+	window.register_hotkey(hotkey::HOTKEY_QUIT_GAME
+				, boost::bind(
+					  &hotkey
+					, boost::ref(window)
+					, gui::QUIT_GAME));
 }
 
 void ttitle_screen::pre_show(CVideo& video, twindow& window)
@@ -196,6 +264,7 @@ void ttitle_screen::pre_show(CVideo& video, twindow& window)
 
 	set_restore(false);
 	window.set_click_dismiss(false);
+	window.set_enter_disabled(true);
 	window.set_escape_disabled(true);
 
 	/**** Set the version number ****/
@@ -206,14 +275,6 @@ void ttitle_screen::pre_show(CVideo& video, twindow& window)
 	}
 	window.canvas()[0].set_variable("revision_number",
 		variant(_("Version") + std::string(" ") + game_config::revision));
-
-	/**** Set the buttons ****/
-	connect_signal_mouse_left_click(
-			  find_widget<tbutton>(&window, "language", false)
-			, boost::bind(
-				  show_language_dialog
-				, boost::ref(video)
-				, boost::ref(window)));
 
 	/**** Set the tip of the day ****/
 	/*
@@ -300,7 +361,10 @@ void ttitle_screen::update_tip(twindow& window, const bool previous)
 {
 	next_tip_of_day(tips_, previous);
 	const config *tip = get_tip_of_day(tips_);
-	assert(tip);
+	if(!tip) {
+		WRN_CF << "There are not tips of day defined.\n";
+		return;
+	}
 
 	find_widget<tlabel>(&window, "tip", false).set_label((*tip)["text"]);
 	find_widget<tlabel>(&window, "source", false).set_label((*tip)["source"]);

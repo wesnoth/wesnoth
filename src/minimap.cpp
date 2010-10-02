@@ -98,7 +98,7 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw)
 						if(overlay != NULL && overlay != tile) {
 							surface combined = create_compatible_surface(tile, tile->w, tile->h);
 							SDL_Rect r = create_rect(0,0,0,0);
-							SDL_BlitSurface(tile, NULL, combined, &r);
+							sdl_blit(tile, NULL, combined, &r);
 							r.x = std::max(0, (tile->w - overlay->w)/2);
 							r.y = std::max(0, (tile->h - overlay->h)/2);
 							blit_surface(overlay, NULL, combined, &r);
@@ -131,7 +131,7 @@ surface getMinimap(int w, int h, const gamemap &map, const team *vw)
 						, 0);
 
 				if(surf != NULL)
-					SDL_BlitSurface(surf, NULL, minimap, &maprect);
+					sdl_blit(surf, NULL, minimap, &maprect);
 			}
 		}
 	}

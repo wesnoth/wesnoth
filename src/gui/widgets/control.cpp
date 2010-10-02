@@ -158,17 +158,19 @@ void tcontrol::request_reduce_width(const unsigned maximum_width)
 tpoint tcontrol::calculate_best_size() const
 {
 	assert(config_);
-	tpoint result(config_->default_width, config_->default_height);
-	if(! label_.empty()) {
-		// If no label text set we use the predefined value.
-
-		/**
-		 * @todo The value send should subtract the border size
-		 * and readd it after calculation to get the proper result.
-		 */
-		result = get_best_text_size(result);
+	if(label_.empty()) {
+		DBG_GUI_L << LOG_HEADER << " empty label return default.\n";
+		return get_config_default_size();
 	}
 
+	const tpoint minimum = get_config_default_size();
+	const tpoint maximum = get_config_maximum_size();
+
+	/**
+	 * @todo The value send should subtract the border size
+	 * and readd it after calculation to get the proper result.
+	 */
+	tpoint result = get_best_text_size(minimum, maximum);
 	DBG_GUI_L << LOG_HEADER
 			<< " label '" << debug_truncate(label_)
 			<< "' result " << result
@@ -303,7 +305,9 @@ void tcontrol::impl_draw_background(surface& frame_buffer)
 	canvas(get_state()).blit(frame_buffer, get_rect());
 }
 
-tpoint tcontrol::get_best_text_size(const tpoint& minimum_size, const tpoint& maximum_size) const
+tpoint tcontrol::get_best_text_size(
+		  const tpoint& minimum_size
+		, const tpoint& maximum_size) const
 {
 	log_scope2(log_gui_layout, LOG_SCOPE_HEADER);
 
@@ -319,9 +323,9 @@ tpoint tcontrol::get_best_text_size(const tpoint& minimum_size, const tpoint& ma
 	renderer_.set_alignment(text_alignment_);
 
 	// Try with the minimum wanted size.
-	const int maximum_width =  text_maximum_width_ != 0
-		? text_maximum_width_
-		: maximum_size.x;
+	const int maximum_width = text_maximum_width_ != 0
+			? text_maximum_width_
+			: maximum_size.x;
 
 	renderer_.set_maximum_width(maximum_width);
 

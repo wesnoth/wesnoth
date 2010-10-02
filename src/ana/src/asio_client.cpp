@@ -93,7 +93,7 @@ void asio_client::handle_proxy_connection(const boost::system::error_code& ec,
 
     inform_connection_result( handler, ec);
 
-    if ( ! ec )
+    if ( ( ! ec ) && ( ana::client::header_mode() ) )
         run_listener();
 
     delete proxy_;

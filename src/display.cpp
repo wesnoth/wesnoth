@@ -63,16 +63,14 @@ static lg::log_domain log_display("display");
 namespace {
 #ifdef USE_TINY_GUI
 	const int DefaultZoom = 36;
-	const int SmallZoom   = 16;
 #else
 	const int DefaultZoom = 72;
-	const int SmallZoom   = 36;
 #endif
+	const int SmallZoom   = DefaultZoom / 2;
 
 	const int MinZoom = 4;
 	const int MaxZoom = 200;
 	size_t sunset_delay = 0;
-	size_t sunset_timer = 0;
 
 	bool benchmark = false;
 
@@ -891,7 +889,7 @@ void display::drawing_buffer_commit()
 	drawing_buffer_.sort();
 
 	SDL_Rect clip_rect = map_area();
-	const surface screen = get_screen_surface();
+	surface screen = get_screen_surface();
 	clip_rect_setter set_clip_rect(screen, &clip_rect);
 
 	/*
@@ -909,14 +907,14 @@ void display::drawing_buffer_commit()
 
 	foreach(const tblit &blit, drawing_buffer_) {
 		foreach(const surface& surf, blit.surf()) {
-			// Note that dstrect can be changed by SDL_BlitSurface
+			// Note that dstrect can be changed by sdl_blit
 			// and so a new instance should be initialized
-			// to pass to each call to SDL_BlitSurface.
+			// to pass to each call to sdl_blit.
 			SDL_Rect dstrect = create_rect(blit.x(), blit.y(), 0, 0);
 			SDL_Rect srcrect = blit.clip();
 			SDL_Rect *srcrectArg = (srcrect.x | srcrect.y | srcrect.w | srcrect.h)
 				? &srcrect : NULL;
-			SDL_BlitSurface(surf, srcrectArg, screen, &dstrect);
+			sdl_blit(surf, srcrectArg, screen, &dstrect);
 			//NOTE: the screen part should already be marked as 'to update'
 		}
 	}
@@ -931,7 +929,7 @@ void display::drawing_buffer_clear()
 void display::sunset(const size_t delay)
 {
 	// This allow both parametric and toggle use
-	sunset_delay = (sunset_delay == 0 && delay == 0) ? 5 : delay;
+	sunset_delay = (sunset_delay == 0 && delay == 0) ? 3 : delay;
 }
 
 void display::toggle_benchmark()
@@ -950,9 +948,10 @@ void display::flip()
 		return;
 	}
 
-	const surface frameBuffer = get_video_surface();
+	surface frameBuffer = get_video_surface();
 
 	// This is just the debug function "sunset" to progressively darken the map area
+	static size_t sunset_timer = 0;
 	if (sunset_delay && ++sunset_timer > sunset_delay) {
 		sunset_timer = 0;
 		SDL_Rect r = map_outside_area(); // Use frameBuffer to also test the UI
@@ -1096,7 +1095,7 @@ static void draw_label(CVideo& video, surface target, const theme::label& label)
 				surf.assign(scale_surface(surf,loc.w,loc.h));
 			}
 
-			SDL_BlitSurface(surf,NULL,target,&loc);
+			sdl_blit(surf,NULL,target,&loc);
 		}
 
 		if(text.empty() == false) {
@@ -1141,7 +1140,7 @@ static void draw_background(surface screen, const SDL_Rect& area, const std::str
 	for(unsigned int w = 0, w_off = area.x; w < w_count; ++w, w_off += width) {
 		for(unsigned int h = 0, h_off = area.y; h < h_count; ++h, h_off += height) {
 			SDL_Rect clip = create_rect(w_off, h_off, 0, 0);
-			SDL_BlitSurface(background, NULL, screen, &clip);
+			sdl_blit(background, NULL, screen, &clip);
 		}
 	}
 }
@@ -1541,7 +1540,7 @@ bool display::scroll(int xmove, int ymove)
 	srcrect.x -= dx;
 	srcrect.y -= dy;
 	if (!screen_.update_locked())
-		SDL_BlitSurface(screen,&srcrect,screen,&dstrect);
+		sdl_blit(screen,&srcrect,screen,&dstrect);
 
 //This is necessary to avoid a crash in some SDL versions on some systems
 //see http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=462794
@@ -2040,9 +2039,9 @@ const map_labels& display::labels() const
 
 void display::clear_screen()
 {
-	surface const disp(screen_.getSurface());
+	surface disp(screen_.getSurface());
 	SDL_Rect area = screen_area();
-	SDL_FillRect(disp, &area, SDL_MapRGB(disp->format, 0, 0, 0));
+	sdl_fill_rect(disp, &area, SDL_MapRGB(disp->format, 0, 0, 0));
 }
 
 const SDL_Rect& display::get_clip_rect()
@@ -2158,7 +2157,7 @@ void display::draw_hex(const map_location& loc) {
 			surface text = font::get_rendered_text(lexical_cast<std::string>(loc), font::SIZE_SMALL, font::NORMAL_COLOR);
 			surface bg = create_neutral_surface(text->w, text->h);
 			SDL_Rect bg_rect = create_rect(0, 0, text->w, text->h);
-			SDL_FillRect(bg, &bg_rect, 0xaa000000);
+			sdl_fill_rect(bg, &bg_rect, 0xaa000000);
 			off_x -= text->w / 2;
 			if (draw_terrain_codes_) {
 				off_y -= text->h;
@@ -2174,7 +2173,7 @@ void display::draw_hex(const map_location& loc) {
 			surface text = font::get_rendered_text(lexical_cast<std::string>(get_map().get_terrain(loc)), font::SIZE_SMALL, font::NORMAL_COLOR);
 			surface bg = create_neutral_surface(text->w, text->h);
 			SDL_Rect bg_rect = create_rect(0, 0, text->w, text->h);
-			SDL_FillRect(bg, &bg_rect, 0xaa000000);
+			sdl_fill_rect(bg, &bg_rect, 0xaa000000);
 			off_x -= text->w / 2;
 			if (!draw_coordinates_) {
 				off_y -= text->h / 2;
@@ -2223,13 +2222,13 @@ void display::draw_image_for_report(surface& img, SDL_Rect& rect)
 			target.h = visible_area.h;
 		}
 
-		SDL_BlitSurface(img,&visible_area,screen_.getSurface(),&target);
+		sdl_blit(img,&visible_area,screen_.getSurface(),&target);
 	} else {
 		if(img->w != rect.w || img->h != rect.h) {
 			img.assign(scale_surface(img,rect.w,rect.h));
 		}
 
-		SDL_BlitSurface(img,NULL,screen_.getSurface(),&target);
+		sdl_blit(img,NULL,screen_.getSurface(),&target);
 	}
 }
 
@@ -2254,7 +2253,7 @@ void display::refresh_report(reports::TYPE report_num, reports::report report)
 	surface &surf = reportSurfaces_[report_num];
 
 	if (surf) {
-		SDL_BlitSurface(surf, NULL, screen_.getSurface(), &rect);
+		sdl_blit(surf, NULL, screen_.getSurface(), &rect);
 		update_rect(rect);
 	}
 

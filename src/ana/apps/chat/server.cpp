@@ -147,7 +147,7 @@ class ChatServer : public listener_handler,
                 handle_disconnect(error, client);
         }
 
-        server*                          server_;
+        server*                       server_;
         std::map<net_id, std::string> names_;
 };
 

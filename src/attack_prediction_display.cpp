@@ -427,37 +427,34 @@ void battle_prediction_pane::get_hp_distrib_surface(const std::vector<std::pair<
 
 	// Create the surface.
 	surf = create_neutral_surface(width, height);
-	// following SDL code will use color key,
-	// so we need to remove the alpha channel to make it work
-	// FIXME: use standard alpha and blit_surface instead
+
+	// Dsiable alpha channel to avoid problem with sdl_blit
 	SDL_SetAlpha(surf, 0, SDL_ALPHA_OPAQUE);
 
 	SDL_Rect clip_rect = create_rect(0, 0, width, height);
-	Uint32 grey_color = SDL_MapRGB(surf->format, 0xb7, 0xc1, 0xc1);
-	Uint32 transparent_color = SDL_MapRGB(surf->format, 1, 1, 1);
+	Uint32 grey_color = SDL_MapRGBA(surf->format, 0xb7, 0xc1, 0xc1, 255);
 
-	// Enable transparency.
-	SDL_SetColorKey(surf, SDL_SRCCOLORKEY, transparent_color);
-	SDL_FillRect(surf, &clip_rect, transparent_color);
+	Uint32 background_color = SDL_MapRGBA(surf->format, 25, 25, 25, 255);
+	sdl_fill_rect(surf, &clip_rect, background_color);
 
 	// Draw the surrounding borders and separators.
 	SDL_Rect top_border_rect = create_rect(0, 0, width, 2);
-	SDL_FillRect(surf, &top_border_rect, grey_color);
+	sdl_fill_rect(surf, &top_border_rect, grey_color);
 
 	SDL_Rect bottom_border_rect = create_rect(0, height - 2, width, 2);
-	SDL_FillRect(surf, &bottom_border_rect, grey_color);
+	sdl_fill_rect(surf, &bottom_border_rect, grey_color);
 
 	SDL_Rect left_border_rect = create_rect(0, 0, 2, height);
-	SDL_FillRect(surf, &left_border_rect, grey_color);
+	sdl_fill_rect(surf, &left_border_rect, grey_color);
 
 	SDL_Rect right_border_rect = create_rect(width - 2, 0, 2, height);
-	SDL_FillRect(surf, &right_border_rect, grey_color);
+	sdl_fill_rect(surf, &right_border_rect, grey_color);
 
 	SDL_Rect hp_sep_rect = create_rect(hp_sep, 0, 2, height);
-	SDL_FillRect(surf, &hp_sep_rect, grey_color);
+	sdl_fill_rect(surf, &hp_sep_rect, grey_color);
 
 	SDL_Rect percent_sep_rect = create_rect(width - percent_sep - 2, 0, 2, height);
-	SDL_FillRect(surf, &percent_sep_rect, grey_color);
+	sdl_fill_rect(surf, &percent_sep_rect, grey_color);
 
 	// Draw the rows (lower HP values are at the bottom).
 	for(int i = 0; i < static_cast<int>(hp_prob_vector.size()); i++) {
@@ -505,16 +502,16 @@ void battle_prediction_pane::get_hp_distrib_surface(const std::vector<std::pair<
 		int bar_len = std::max<int>(static_cast<int>((prob * (bar_space - 4)) + 0.5), 2);
 
 		SDL_Rect bar_rect_1 = create_rect(hp_sep + 4, 6 + (fs + 2) * i, bar_len, 8);
-		SDL_FillRect(surf, &bar_rect_1, blend_rgb(surf, row_color.r, row_color.g, row_color.b, 100));
+		sdl_fill_rect(surf, &bar_rect_1, blend_rgb(surf, row_color.r, row_color.g, row_color.b, 100));
 
 		SDL_Rect bar_rect_2 = create_rect(hp_sep + 4, 7 + (fs + 2) * i, bar_len, 6);
-		SDL_FillRect(surf, &bar_rect_2, blend_rgb(surf, row_color.r, row_color.g, row_color.b, 66));
+		sdl_fill_rect(surf, &bar_rect_2, blend_rgb(surf, row_color.r, row_color.g, row_color.b, 66));
 
 		SDL_Rect bar_rect_3 = create_rect(hp_sep + 4, 8 + (fs + 2) * i, bar_len, 4);
-		SDL_FillRect(surf, &bar_rect_3, blend_rgb(surf, row_color.r, row_color.g, row_color.b, 33));
+		sdl_fill_rect(surf, &bar_rect_3, blend_rgb(surf, row_color.r, row_color.g, row_color.b, 33));
 
 		SDL_Rect bar_rect_4 = create_rect(hp_sep + 4, 9 + (fs + 2) * i, bar_len, 2);
-		SDL_FillRect(surf, &bar_rect_4, blend_rgb(surf, row_color.r, row_color.g, row_color.b, 0));
+		sdl_fill_rect(surf, &bar_rect_4, blend_rgb(surf, row_color.r, row_color.g, row_color.b, 0));
 
 		// Draw probability percentage, aligned right.
 		format_prob(str_buf, prob);

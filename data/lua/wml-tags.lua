@@ -45,20 +45,25 @@ local function get_team(cfg, tag)
 end
 
 function wml_actions.chat(cfg)
-	local speaker = tostring(cfg.speaker or "WML")
 	local side_list = cfg.side
 	local message = tostring(cfg.message) or
 		helper.wml_error "[chat] missing required message= attribute."
-	if wesnoth.get_variable(speaker .. ".id") then
-		speaker = wesnoth.get_variable(speaker .. ".name")
+
+	local speaker = cfg.speaker
+	if speaker then
+		speaker = tostring(speaker)
+		local speaking_unit = wesnoth.get_variable(speaker)
+		if speaking_unit then speaker = speaking_unit.name end
+	else
+		speaker = "WML"
 	end
+
 	if not side_list then
 		wesnoth.message(speaker, message)
 	else
-		side_list = side_list .. ","
-		for v in string.gmatch(side_list, "(%w+),") do
+		for v in string.gmatch(side_list, "[^%s,][^,]*") do
 			local side = wesnoth.get_side(tonumber(v))
-			if side.__cfg.controller == "human" then
+			if side.controller == "human" then
 				wesnoth.message(speaker, message)
 				break
 			end
@@ -208,7 +213,7 @@ local function handle_event_commands(cfg)
 	for i = 1, #cfg do
 		local v = cfg[i]
 		local cmd = v[1]
-		if not string.find(cmd, "^filter") then
+		if not string.find(cmd, "^filter") and cmd ~= "condition" then
 			cmd = wml_actions[cmd] or
 				helper.wml_error(string.format("[%s] not supported", cmd))
 			cmd(v[2])
@@ -357,6 +362,30 @@ function wml_actions.store_locations(cfg)
 	end
 end
 
+function wml_actions.store_reachable_locations(cfg)
+	local unit_filter = helper.get_child(cfg, "filter") or
+		helper.wml_error "[store_reachable_locations] missing required [filter] tag"
+	local location_filter = helper.get_child(cfg, "filter_location")
+	local range = cfg.range or "movement"
+	local variable = cfg.variable or helper.wml_error "[store_reachable_locations] missing required variable= key"
+
+	wesnoth.set_variable(variable)
+
+	for i,unit in ipairs(wesnoth.get_units(unit_filter)) do
+		local reach = wesnoth.find_reach(unit)
+
+		for j,loc in ipairs(reach) do
+			if wesnoth.match_location(loc[1], loc[2], location_filter) then
+				wesnoth.fire("store_locations", { variable=variable, x=loc[1], y=loc[2], { "or", { find_in=variable } } })
+			end
+		end
+	end
+
+	if range == "attack" then
+		-- doesn't work yet
+	end
+end
+
 function wml_actions.hide_unit(cfg)
 	for i,u in ipairs(wesnoth.get_units(cfg)) do
 		u.hidden = true
@@ -448,15 +477,9 @@ function wml_actions.move_unit(cfg)
 	cfg.to_x, cfg.to_y, cfg.fire_event = nil, nil, nil
 	local units = wesnoth.get_units(cfg)
 
-	local function proxy_unit_is_valid(unit)
-		local function dummy() return unit.x end
-		return pcall(dummy)
-	end
-
 	local pattern = "[^%s,]+"
 	for current_unit_index, current_unit in ipairs(units) do
-		if fire_event and not proxy_unit_is_valid(current_unit) then
-		else
+		if not fire_event or current_unit.valid then
 			local xs, ys = string.gmatch(to_x, pattern), string.gmatch(to_y, pattern)
 			local move_string_x = current_unit.x
 			local move_string_y = current_unit.y
@@ -496,4 +519,29 @@ function wml_actions.move_unit(cfg)
 			end
 		end
 	end
+end
+
+function wml_actions.capture_village(cfg)
+	local side = cfg.side
+	if side then side = tonumber(side) or helper.wml_error("invalid side in [capture_village]") end
+	local locs = wesnoth.get_locations(cfg)
+
+	for i, loc in ipairs(locs) do
+		wesnoth.set_village_owner(loc[1], loc[2], side)
+	end
+end
+
+function wml_actions.terrain(cfg)
+	local terrain = cfg.terrain or helper.wml_error("[terrain] missing required terrain= attribute")
+	cfg = helper.shallow_literal(cfg)
+	cfg.terrain = nil
+	for i, loc in ipairs(wesnoth.get_locations(cfg)) do
+		wesnoth.set_terrain(loc[1], loc[2], terrain, cfg.layer, cfg.replace_if_failed)
+	end
+end
+
+function wml_actions.delay(cfg)
+	local delay = tonumber(cfg.time) or
+		helper.wml_error "[delay] missing required time= attribute."
+	wesnoth.delay(delay)
 end

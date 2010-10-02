@@ -192,7 +192,7 @@ bool effect::render()
 		return false;
 	}
 
-	surface const screen = disp->get_screen_surface();
+	surface screen = disp->get_screen_surface();
 
 	const clip_rect_setter clip_setter(screen, &clip_rect);
 	if(buffer_ == NULL || buffer_->w != rect.w || buffer_->h != rect.h) {
@@ -200,10 +200,10 @@ bool effect::render()
 		buffer_.assign(get_surface_portion(screen,rect));
 	} else {
 		SDL_Rect rect = rect_;
-		SDL_BlitSurface(screen,&rect,buffer_,NULL);
+		sdl_blit(screen,&rect,buffer_,NULL);
 	}
 
-	SDL_BlitSurface(surf_,NULL,screen,&rect);
+	sdl_blit(surf_,NULL,screen,&rect);
 
 	update_rect(rect_);
 
@@ -216,7 +216,7 @@ void effect::unrender()
 		return;
 	}
 
-	surface const screen = disp->get_screen_surface();
+	surface screen = disp->get_screen_surface();
 
 	SDL_Rect clip_rect = disp->map_outside_area();
 	const clip_rect_setter clip_setter(screen, &clip_rect);
@@ -231,7 +231,7 @@ void effect::unrender()
 	const int ypos = y_ + screeny - surf_->h/2;
 
 	SDL_Rect rect = create_rect(xpos, ypos, surf_->w, surf_->h);
-	SDL_BlitSurface(buffer_,NULL,screen,&rect);
+	sdl_blit(buffer_,NULL,screen,&rect);
 	update_rect(rect);
 }
 

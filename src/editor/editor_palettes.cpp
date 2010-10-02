@@ -414,7 +414,7 @@ void terrain_palette::draw(bool force) {
 	}
 	unsigned int starting = tstart_;
 	unsigned int ending = starting + nterrains_;
-	SDL_Surface* const screen = gui_.video().getSurface();
+	surface screen = gui_.video().getSurface();
 	if(ending > num_terrains()){
 		ending = num_terrains();
 	}
@@ -460,7 +460,7 @@ void terrain_palette::draw(bool force) {
 				   size_specs_.terrain_size, size_specs_.terrain_size));
 			}
 
-			SDL_BlitSurface(base_image, NULL, screen, &dstrect);
+			sdl_blit(base_image, NULL, screen, &dstrect);
 		}
 
 		const std::string filename = "terrain/" + map().get_terrain_info(terrain).editor_image() + ".png";
@@ -482,9 +482,9 @@ void terrain_palette::draw(bool force) {
 				size_specs_.terrain_size, size_specs_.terrain_size));
 		}
 
-		SDL_BlitSurface(image, NULL, screen, &dstrect);
+		sdl_blit(image, NULL, screen, &dstrect);
 
-		SDL_Surface* const screen = gui_.video().getSurface();
+		surface screen = gui_.video().getSurface();
 		Uint32 color;
 		if (terrain == selected_bg_terrain() && terrain == selected_fg_terrain()) {
 			color = SDL_MapRGB(screen->format,0xFF,0x00,0xFF);
@@ -633,7 +633,7 @@ void brush_bar::draw(bool force) {
 	int x = loc.x;
 	// Everything will be redrawn even though only one little part may
 	// have changed, but that happens so seldom so we'll settle with this.
-	SDL_Surface* const screen = gui_.video().getSurface();
+	surface screen = gui_.video().getSurface();
 	for (size_t i = 0; i < brushes_.size(); i++) {
 		std::string filename = brushes_[i].image();
 		surface image(image::get_image(filename));
@@ -646,7 +646,7 @@ void brush_bar::draw(bool force) {
 			image.assign(scale_surface(image, size_, size_));
 		}
 		SDL_Rect dstrect = create_rect(x, size_specs_.brush_y, image->w, image->h);
-		SDL_BlitSurface(image, NULL, screen, &dstrect);
+		sdl_blit(image, NULL, screen, &dstrect);
 		const Uint32 color = i == selected_brush_size() ?
 			SDL_MapRGB(screen->format,0xFF,0x00,0x00) :
 			SDL_MapRGB(screen->format,0x00,0x00,0x00);
