@@ -539,3 +539,9 @@ function wml_actions.terrain(cfg)
 		wesnoth.set_terrain(loc[1], loc[2], terrain, cfg.layer, cfg.replace_if_failed)
 	end
 end
+
+function wml_actions.delay(cfg)
+	local delay = tonumber(cfg.time) or
+		helper.wml_error "[delay] missing required time= attribute."
+	wesnoth.delay(delay)
+end

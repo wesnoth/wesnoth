@@ -727,13 +727,6 @@ WML_HANDLER_FUNCTION(colour_adjust, /*event_info*/, cfg)
 	color_adjust(cfg);
 }
 
-
-WML_HANDLER_FUNCTION(delay, /*event_info*/, cfg)
-{
-	game_display &screen = *resources::screen;
-	screen.delay(cfg["time"]);
-}
-
 WML_HANDLER_FUNCTION(scroll, /*event_info*/, cfg)
 {
 	game_display &screen = *resources::screen;
