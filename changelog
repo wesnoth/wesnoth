@@ -12,19 +12,19 @@ Version 1.9.1+svn:
    * Terrain:
      * Any Castle or Keep except Dwarvish can now be combined without large gaps
        or extra walls.
-     * Added variant of chasm bridge for over water
-     * New transitions from all Hills and Mountains to Water
-     * Underground and chasm friendly volcanoes
-     * A new desaturated color of shallow water (Wwg)
-     * Much improved lava transitions
-     * A new desaturated ocean color (Wog)
-     * New Waterfall automatically placed between chasm and water or swamp
+     * Added variant of chasm bridge for over water.
+     * New transitions from all Hills and Mountains to Water.
+     * Underground and chasm friendly volcanoes.
+     * A new desaturated color of shallow water (Wwg).
+     * Much improved lava transitions.
+     * A new desaturated ocean color (Wog).
+     * New Waterfall automatically placed between chasm and water or swamp.
    * Animations: new standing animation for Fencer, idle animations for Spearman.
    * Portraits: Drake Blademaster, Hurricane Drake, Drake Flameheart.
    * Units: New base frame and animations for Mudcrawler.
  * Language and i18n:
    * Updated translations: Chinese (Traditional), Czech, Dutch, Indonesian,
-     Japanese, Portuguese (Brazil), Russian, Shavian, Slovak, Vietnamese
+     Japanese, Portuguese (Brazil), Russian, Shavian, Slovak, Vietnamese.
  * User interface:
    * Fixed: Addon dialog in title screen shows last host again.
    * Fixed: Fullscreen hotkey works again in the title screen.
@@ -42,9 +42,9 @@ Version 1.9.1+svn:
      (bug #16631).
    * Fixed: No longer cut off large title screen logos (bug #16632).
  * WML Engine:
-   * id= in SUFs now accepts a comma-separated list
-   * [capture_village] now accepts a full SLF
-   * events can be fired depending on a [condition]
+   * id= in SUFs now accepts a comma-separated list.
+   * [capture_village] now accepts a full SLF.
+   * events can be fired depending on a [condition].
    * Added support for SLF to [terrain]. Note that the SLF's terrain= key is
      not valid; terrain= specifies the new terrain instead like it used to do.
      Filtering for terrain can be done with the [terrain][and]terrain=
@@ -52,7 +52,7 @@ Version 1.9.1+svn:
    * Renamed [removeitem] to [remove_item].
  * Miscellaneous and bugfixes:
    * Changed: Lowered severity of some gui2 timer log messages.
-   * Units created in debug mode now play their recruit animation (FR #16766)
+   * Units created in debug mode now play their recruit animation (FR #16766).
    * Fixed: properly update cmake revision numbers (bug #16483)
 
 Version 1.9.1:
