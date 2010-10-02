@@ -1,5 +1,6 @@
 from django.shortcuts import render_to_response, redirect
 from django.http import HttpResponse, HttpResponseServerError
+from django.template import RequestContext
 from addons.models import *
 from django.core.exceptions import ObjectDoesNotExist
 from django.utils.datetime_safe import datetime
@@ -31,18 +32,21 @@ ICONS_ROOT = MEDIA_ROOT + '/icons/'
 
 def wml_error_response(title, error):
 	return render_to_response('addons/error.wml',
-		{'errorType':title, 'errorDesc':error})
+		{'errorType':title, 'errorDesc':error},
+		context_instance = RequestContext(request))
 		
 def wml_message_response(title, message):
 	return render_to_response('addons/message.wml',
-		{'msgTitle':title, 'msgText':message})
+		{'msgTitle':title, 'msgText':message},
+		context_instance = RequestContext(request))
 
 def index(request):
 	if 'wml' in request.GET:
 		t = datetime.now()
 		timestamp=str(int(time.mktime(t.timetuple())))
 		return render_to_response('addons/addonList.wml',
-			{'addons':addonList(), 'timestamp':timestamp})
+			{'addons':addonList(), 'timestamp':timestamp},
+			context_instance = RequestContext(request))
 	else:
 		addon_list = Addon.objects.all().order_by('-name')
 		for addon in addon_list:
@@ -50,7 +54,9 @@ def index(request):
 				addon.file_size = addon.file_tbz.size
 			except (IOError, ValueError, OSError):
 				addon.file_size = False
-		return render_to_response('addons/addonList.html', {'addon_list': addon_list})
+		return render_to_response('addons/addonList.html',
+			{'addon_list': addon_list},
+			context_instance = RequestContext(request))
 	
 
 def addonList():
@@ -79,7 +85,9 @@ def details(request, addon_id):
 		addon.file_size = addon.file_tbz.size
 	except (IOError, NameError, ValueError, OSError):
 		addon.file_size = False
-	return render_to_response('addons/details.html', {'addon': addon})
+	return render_to_response('addons/details.html', 
+		{'addon': addon},
+		context_instance = RequestContext(request))
 
 def getFile(request, addon_id):
 	logger.info("Download of addon "+str(addon_id)+" requested from "+request.META['REMOTE_ADDR']);
@@ -116,7 +124,9 @@ def rate(request, addon_id):
 	if 'wml' in request.GET:
 		return wml_message_response("Rating successful", "Thank you for rating!")
 	else:
-		return render_to_response('addons/details.html', {'rated' : True, 'addon_id': addon_id, 'addon': addon, 'rate_val': value})
+		return render_to_response('addons/details.html',
+			{'rated' : True, 'addon_id': addon_id, 'addon': addon, 'rate_val': value},
+			context_instance = RequestContext(request))
 
 def parse_pbl(pbl_data):
 	keys_vals = {}
@@ -173,9 +183,10 @@ def publish(request):
 			return wml_error_response(title, error)
 	else:
 		def error_response(title, error, **kwargs):
-			dict = {'errorType':title, 'errorDesc':error, 'loginVal':login}
+			data = {'errorType':title, 'errorDesc':error, 'loginVal':login}
 			for k in kwargs.keys(): dict[k] = kwargs[k]
-			return render_to_response('addons/publishForm.html', dict)
+			return render_to_response('addons/publishForm.html', data,
+				context_instance = RequestContext(request))
 
 	if user is None:
 		logger.info("Attempt to login as %s from %s failed during publication"
@@ -292,14 +303,18 @@ def publish(request):
 		return wml_message_response('Success', 'Addon published successfully')
 	else:
 		return render_to_response('addons/publishForm.html',
-			{'publish_success' : True, 'loginVal' : login, 'addonId' : addon.id})
+			{'publish_success' : True, 'loginVal' : login, 'addonId' : addon.id},
+			context_instance = RequestContext(request))
 
 def publishForm(request):
-	return render_to_response('addons/publishForm.html')
+	return render_to_response('addons/publishForm.html',
+		context_instance = RequestContext(request))
 	
 def removeForm(request, addon_id):
 	addon = Addon.objects.get(id=addon_id)
-	return render_to_response('addons/confirmRemove.html', {'addon_id':addon_id,'addon': addon})
+	return render_to_response('addons/confirmRemove.html',
+		{'addon_id':addon_id,'addon': addon},
+		context_instance = RequestContext(request))
 	
 def remove(request, addon_id):
 	try:
@@ -314,7 +329,9 @@ def remove(request, addon_id):
 		if 'wml' in request.GET:
 			return wml_error_response("Could not remove addon from server", "Login and/or password incorrect")
 		else:
-			return render_to_response('addons/error.html', { 'errorType':'No login or password', 'errorDesc': ['Login and/or password was not supplied']})
+			return render_to_response('addons/error.html', 
+				{ 'errorType':'No login or password', 'errorDesc': ['Login and/or password was not supplied']},
+				context_instance = RequestContext(request))
 	logger.info("Attempt to remove addon from "+request.META['REMOTE_ADDR']);
 	login = request.POST['login']
 	user = authenticate(username=login, password=request.POST['password'])
@@ -343,11 +360,12 @@ def remove(request, addon_id):
 		if 'wml' in request.GET:
 			return wml_error_response("Could not remove addon from server", "You don't have permission to remove this addon")
 	return render_to_response('addons/confirmRemove.html',
-							  {'addon_id':addon_id,
-							   'addon': addon, 'errors_credentials':errors_credentials,
-							   'errors_permissions':errors_permissions,
-							   'remove_success':not(errors_credentials or errors_permissions)
-							   })
+		{'addon_id':addon_id, 'addon': addon, 
+			'errors_credentials':errors_credentials,
+			'errors_permissions':errors_permissions,
+			'remove_success':not(errors_credentials or errors_permissions)
+		},
+		context_instance = RequestContext(request))
 
 def adminWescampLog(request):
 	if request.user.is_staff:

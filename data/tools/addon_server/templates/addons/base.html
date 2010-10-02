@@ -8,8 +8,8 @@
   <style type="text/css">@import url('http://www.wesnoth.org/mw/skins/glamdrol/home.css');</style>-->
   <!--<style type="text/css">@import url('http://www.wesnoth.org/mw/skins/glamdrol/main.css');</style>
   <style type="text/css">@import url('http://www.wesnoth.org/mw/skins/glamdrol/home.css');</style>-->
-  <link rel='stylesheet' href="/test_media/main.css" type="text/css" media="screen" />
-  <link rel='stylesheet' href="/test_media/home.css" type="text/css" media="screen" />
+  <link rel='stylesheet' href="{{MEDIA_URL}}main.css" type="text/css" media="screen" />
+  <link rel='stylesheet' href="{{MEDIA_URL}}home.css" type="text/css" media="screen" />
   {% block extraHead %}{% endblock %}
   <title>{% block title %}Prototyp{% endblock %}</title>
 </head>
@@ -21,7 +21,7 @@
 
 <div id="header">
   <div id="logo">
-    <a href="{% url addons.views.index %}"><img alt="Wesnoth logo" src="/test_media/logo.png" /></a>
+    <a href="{% url addons.views.index %}"><img alt="Wesnoth logo" src="{{MEDIA_URL}}logo.png" /></a>
   </div>
 </div>
 

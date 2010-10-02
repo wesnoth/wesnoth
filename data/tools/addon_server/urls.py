@@ -1,5 +1,6 @@
 from django.conf.urls.defaults import *
 from django.contrib import admin
+from django.conf import settings
 admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -21,10 +22,10 @@ urlpatterns = patterns('',
 	(r'^addons/publish/$', 'addons.views.publish'),
 	(r'^admin/wescamp-log/$', 'addons.views.adminWescampLog'),
 	(r'^admin/wescamp-update/$', 'addons.views.adminWescampUpdate'),
-	(r'^test_media/(?P<path>.*)$', 'django.views.static.serve',
-		{'document_root': './test_media'}),
+	(r'^media/(?P<path>.*)$', 'django.views.static.serve',
+		{'document_root': settings.MEDIA_ROOT}),
 	(r'^icons/(?P<path>.*)$', 'django.views.static.serve',
-		{'document_root': './test_media/icons'}),
+		{'document_root': settings.MEDIA_ROOT}),
 	(r'^$', 'django.views.generic.simple.redirect_to', {'url': 'addons/'})
 
 )

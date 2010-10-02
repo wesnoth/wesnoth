@@ -42,7 +42,7 @@
 						</ul>
 						<h3>User rating:</h3>
 						{% if addon.get_rating %}
-							{{addon.get_rating|floatformat:1}} <img src="/test_media/stars_{{addon.get_rating|floatformat:0}}.gif"/>						
+							{{addon.get_rating|floatformat:1}} <img src="{{MEDIA_URL}}stars_{{addon.get_rating|floatformat:0}}.gif"/>						
 						{% else %}
 							No user ratings yet.
 						{% endif %}

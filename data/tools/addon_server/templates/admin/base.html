@@ -3,13 +3,13 @@
 <head>
 <title>{% block title %}{% endblock %}</title>
 <link rel="stylesheet" type="text/css" href="{% block stylesheet %}{% load adminmedia %}{% admin_media_prefix %}css/base.css{% endblock %}" />
-<!--<link rel='stylesheet' href="/test_media/main.css" type="text/css" media="screen" />
-<link rel='stylesheet' href="/test_media/home.css" type="text/css" media="screen" />-->
+<!--<link rel='stylesheet' href="{{MEDIA_URL}}main.css" type="text/css" media="screen" />
+<link rel='stylesheet' href="{{MEDIA_URL}}home.css" type="text/css" media="screen" />-->
 <style type="text/css">
 #header2 {
   margin: 0;
   padding: 0;
-  background: #444 url('/test_media/headerbg.jpg') top repeat-x;
+  background: #444 url('{{MEDIA_URL}}headerbg.jpg') top repeat-x;
   border-bottom: 1px solid #000;
   font: 0.88em sans-serif;
 }
@@ -47,7 +47,7 @@
   margin: 0;
   margin-top: -0px;
   padding: 3px 4px 15px 4px;
-  background: #272727 url('/test_media/navbg.png') repeat-x bottom;
+  background: #272727 url('{{MEDIA_URL}}navbg.png') repeat-x bottom;
   text-align: center;
   border-top: 1px solid #595959;
 }
@@ -103,7 +103,7 @@
 
 <div id="header2">
   <div id="logo2">
-    <a href="{% url addons.views.index %}"><img alt="Wesnoth logo" src="/test_media/logo.png" /></a>
+    <a href="{% url addons.views.index %}"><img alt="Wesnoth logo" src="{{MEDIA_URL}}logo.png" /></a>
   </div>
 </div>
 

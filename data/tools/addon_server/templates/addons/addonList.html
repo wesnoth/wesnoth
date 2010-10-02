@@ -3,7 +3,7 @@
 {% block title %}Addon list{% endblock %}
 
 {% block content %}
-<script type="text/javascript" src="/test_media/js/sorttable-good.js"></script>
+<script type="text/javascript" src="{{MEDIA_URL}}js/sorttable-good.js"></script>
 <script type="text/javascript">
 var zzfg = new domFunction(function() {
 	document.getElementById("iconh").innerHTML = st_getInnerText(document.getElementById("iconh"));
@@ -46,7 +46,7 @@ var zzfg = new domFunction(function() {
 	<a href="{% url addons.views.details addon.id %}">Details</a></td>
 
 	{% if addon.get_rating %}	
-		<td>{{addon.get_rating|floatformat:1}} / 5.0<br /> <img src="/test_media/stars_{{addon.get_rating|floatformat:0}}_small.gif"/></td>
+		<td>{{addon.get_rating|floatformat:1}} / 5.0<br /> <img src="{{MEDIA_URL}}stars_{{addon.get_rating|floatformat:0}}_small.gif"/></td>
 	{% else %}
 		<td>-- / 5.0 <br /> <small>(no ratings yet)</small></td>
 	{% endif %}
