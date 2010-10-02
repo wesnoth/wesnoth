@@ -628,8 +628,8 @@ std::set<map_location> unit_frame::get_overlaped_hex(const int frame_time,const 
 #endif
 			bool facing_north = direction == map_location::NORTH_WEST || direction == map_location::NORTH || direction == map_location::NORTH_EAST;
 			if(primary) facing_north = true;
-			int my_x = current_data.x- image->w/2;
-			int my_y = current_data.y- image->h/2;
+			int my_x = current_data.x+d2- image->w/2;
+			int my_y = current_data.y+d2- image->h/2;
 			if(facing_west) {
 				my_x += current_data.directional_x;
 			} else {
