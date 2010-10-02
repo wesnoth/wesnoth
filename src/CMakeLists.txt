@@ -112,25 +112,23 @@ find_program(SVNVERSION_EXECUTABLE "svnversion")
 
 set(REVISION_FILE)
 if(SVNVERSION_EXECUTABLE)
-  execute_process(COMMAND ${SVNVERSION_EXECUTABLE} -n ${CMAKE_SOURCE_DIR}
-                  OUTPUT_VARIABLE SVN_VERSION)
-  if(SVN_VERSION MATCHES [0-9]+.*)
-    add_custom_command(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/revision-stamp
-                      COMMAND ${CMAKE_COMMAND}
-                      -DSVNVERSION_EXECUTABLE="${SVNVERSION_EXECUTABLE}" -DSRC_DIR="${CMAKE_SOURCE_DIR}"
-                      -P "${CMAKE_MODULE_PATH}/revision.cmake"
-                      WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-                      COMMENT "Updating revision")
+	execute_process(COMMAND ${SVNVERSION_EXECUTABLE} -n ${CMAKE_SOURCE_DIR}
+		OUTPUT_VARIABLE SVN_VERSION)
+	if(SVN_VERSION MATCHES [0-9]+.*)
+		add_custom_target(update_revision ALL
+			COMMAND ${CMAKE_COMMAND}
+				-DSVNVERSION_EXECUTABLE="${SVNVERSION_EXECUTABLE}"
+				-DSRC_DIR="${CMAKE_SOURCE_DIR}"
+				-P "${CMAKE_MODULE_PATH}/revision.cmake"
+			WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+			COMMENT "Updating revision")
 
-    add_custom_command(OUTPUT revision.hpp
-                       COMMAND ${CMAKE_COMMAND}
-                       -E copy ${CMAKE_CURRENT_BINARY_DIR}/revision-stamp ${CMAKE_CURRENT_SOURCE_DIR}/revision.hpp
-                       DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/revision-stamp)
-
-    set(REVISION_FILE revision.hpp)
-    add_definitions(-DHAVE_REVISION)
-  endif(SVN_VERSION MATCHES [0-9]+.*)
-  
+		set(REVISION_FILE revision.hpp)
+		set_source_files_properties(
+			revision.hpp
+			PROPERTIES GENERATED true)
+		add_definitions(-DHAVE_REVISION)
+	endif(SVN_VERSION MATCHES [0-9]+.*)
 endif(SVNVERSION_EXECUTABLE)
 
 if(MSVC)
@@ -204,6 +202,9 @@ endif(ENABLE_POOL_ALLOC AND NOT WIN32)
 # internal reference is the name given here
 add_library(wesnoth-core STATIC EXCLUDE_FROM_ALL ${libwesnoth-core_STAT_SRC})
 
+if(SVNVERSION_EXECUTABLE)
+	add_dependencies(wesnoth-core update_revision)
+endif(SVNVERSION_EXECUTABLE)
 ########### Wesnoth main source files ###############
 
 # Depending on whether the game or the game and the tests are build the main
