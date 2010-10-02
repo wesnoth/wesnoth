@@ -84,6 +84,8 @@ class frame_parameters{
 	double submerge;
 	int x;
 	int y;
+	int directional_x;
+	int directional_y;
 	int drawing_layer;
 	bool in_hex;
 	bool diagonal_in_hex;
@@ -109,6 +111,8 @@ class frame_builder {
 		frame_builder & submerge(const std::string& submerge);
 		frame_builder & x(const std::string& x);
 		frame_builder & y(const std::string& y);
+		frame_builder & directional_x(const std::string& directional_x);
+		frame_builder & directional_y(const std::string& directional_y);
 		frame_builder & drawing_layer(const std::string& drawing_layer);
 		/** getters for the different parameters */
 	private:
@@ -131,6 +135,8 @@ class frame_builder {
 		std::string submerge_;
 		std::string x_;
 		std::string y_;
+		std::string directional_x_;
+		std::string directional_y_;
 		std::string drawing_layer_;
 };
 /**
@@ -173,6 +179,8 @@ class frame_parsed_parameters {
 		progressive_double submerge_;
 		progressive_int x_;
 		progressive_int y_;
+		progressive_int directional_x_;
+		progressive_int directional_y_;
 		progressive_int drawing_layer_;
 };
 /** Describe a unit's animation sequence. */

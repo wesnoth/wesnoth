@@ -162,6 +162,8 @@ frame_parameters::frame_parameters() :
 	submerge(0.0),
 	x(0),
 	y(0),
+	directional_x(0),
+	directional_y(0),
 	drawing_layer(display::LAYER_UNIT_DEFAULT - display::LAYER_UNIT_FIRST),
 	in_hex(false),
 	diagonal_in_hex(false)
@@ -186,6 +188,8 @@ frame_builder::frame_builder() :
 	submerge_(""),
 	x_(""),
 	y_(""),
+	directional_x_(""),
+	directional_y_(""),
 	drawing_layer_(str_cast(display::LAYER_UNIT_DEFAULT - display::LAYER_UNIT_FIRST))
 {}
 
@@ -208,6 +212,8 @@ frame_builder::frame_builder(const config& cfg,const std::string& frame_string) 
 	submerge_(cfg[frame_string + "submerge"]),
 	x_(cfg[frame_string + "x"]),
 	y_(cfg[frame_string + "y"]),
+	directional_x_(cfg[frame_string + "directional_x"]),
+	directional_y_(cfg[frame_string + "directional_y"]),
 	drawing_layer_(cfg[frame_string + "layer"])
 {
 	std::vector<std::string> color = utils::split(cfg[frame_string + "text_color"]);
@@ -296,6 +302,16 @@ frame_builder & frame_builder::y(const std::string& y)
 	y_=y;
 	return *this;
 }
+frame_builder & frame_builder::directional_x(const std::string& directional_x)
+{
+	directional_x_=directional_x;
+	return *this;
+}
+frame_builder & frame_builder::directional_y(const std::string& directional_y)
+{
+	directional_y_=directional_y;
+	return *this;
+}
 frame_builder & frame_builder::drawing_layer(const std::string& drawing_layer)
 {
 	drawing_layer_=drawing_layer;
@@ -322,6 +338,8 @@ frame_parsed_parameters::frame_parsed_parameters(const frame_builder & builder, 
 	submerge_(builder.submerge_,duration_),
 	x_(builder.x_,duration_),
 	y_(builder.y_,duration_),
+	directional_x_(builder.directional_x_,duration_),
+	directional_y_(builder.directional_y_,duration_),
 	drawing_layer_(builder.drawing_layer_,duration_)
 {}
 
@@ -337,6 +355,8 @@ bool frame_parsed_parameters::does_not_change() const
 		submerge_.does_not_change() &&
 		x_.does_not_change() &&
 		y_.does_not_change() &&
+		directional_x_.does_not_change() &&
+		directional_y_.does_not_change() &&
 		drawing_layer_.does_not_change();
 }
 bool frame_parsed_parameters::need_update() const
@@ -350,6 +370,8 @@ bool frame_parsed_parameters::need_update() const
 			!submerge_.does_not_change() ||
 			!x_.does_not_change() ||
 			!y_.does_not_change() ||
+			!directional_x_.does_not_change() ||
+			!directional_y_.does_not_change() ||
 			!drawing_layer_.does_not_change() ) {
 			return true;
 	}
@@ -377,6 +399,8 @@ const frame_parameters frame_parsed_parameters::parameters(int current_time) con
 	result.submerge = submerge_.get_current_element(current_time);
 	result.x = x_.get_current_element(current_time);
 	result.y = y_.get_current_element(current_time);
+	result.directional_x = directional_x_.get_current_element(current_time);
+	result.directional_y = directional_y_.get_current_element(current_time);
 	result.drawing_layer = drawing_layer_.get_current_element(current_time,display::LAYER_UNIT_DEFAULT-display::LAYER_UNIT_FIRST);
 	return result;
 }
@@ -422,6 +446,8 @@ void frame_parsed_parameters::override( int duration
 		submerge_=progressive_double(submerge_.get_original(),duration);
 		x_=progressive_int(x_.get_original(),duration);
 		y_=progressive_int(y_.get_original(),duration);
+		directional_x_=progressive_int(directional_x_.get_original(),duration);
+		directional_y_=progressive_int(directional_y_.get_original(),duration);
 		duration_ = duration;
 	}
 }
@@ -477,8 +503,20 @@ void unit_frame::redraw(const int frame_time,bool first_time,const map_location 
 #endif
 		bool facing_north = direction == map_location::NORTH_WEST || direction == map_location::NORTH || direction == map_location::NORTH_EAST;
 		if(primary) facing_north = true;
-		game_display::get_singleton()->render_image(x + current_data.x- image->w/2,
-			       	y  + current_data.y- image->h/2,
+		int my_x = x + current_data.x- image->w/2;
+		int my_y = y + current_data.y- image->h/2;
+		if(facing_west) {
+			my_x += current_data.directional_x;
+		} else {
+			my_x -= current_data.directional_x;
+		}
+		if(facing_north) {
+			my_y += current_data.directional_y;
+		} else {
+			my_y -= current_data.directional_y;
+		}
+
+		game_display::get_singleton()->render_image( my_x,my_y,
 			       	static_cast<display::tdrawing_layer>(display::LAYER_UNIT_FIRST+current_data.drawing_layer),
 			       	src, image, facing_west, false,
 				ftofxp(current_data.highlight_ratio), current_data.blend_with,
@@ -556,13 +594,21 @@ std::set<map_location> unit_frame::get_overlaped_hex(const int frame_time,const 
 	// we always invalidate our own hex because we need to be called at redraw time even
 	// if we don't draw anything in the hex itself
 	std::set<map_location> result;
-	if(tmp_offset==0 && current_data.x == 0 && image::is_in_hex(image_loc)) {
+	if(tmp_offset==0 && current_data.x == 0 && current_data.directional_x == 0 && image::is_in_hex(image_loc)) {
 		result.insert(src);
-		if(current_data.y < 0) {
+		int my_y = current_data.y;
+		bool facing_north = direction == map_location::NORTH_WEST || direction == map_location::NORTH || direction == map_location::NORTH_EAST;
+		if(primary) facing_north = true;
+		if(facing_north) {
+			my_y += current_data.directional_y;
+		} else {
+			my_y -= current_data.directional_y;
+		}
+		if(my_y < 0) {
 			result.insert(src.get_direction(map_location::NORTH));
 			result.insert(src.get_direction(map_location::NORTH_EAST));
 			result.insert(src.get_direction(map_location::NORTH_WEST));
-		} else if(current_data.y > 0) {
+		} else if(my_y > 0) {
 			result.insert(src.get_direction(map_location::SOUTH));
 			result.insert(src.get_direction(map_location::SOUTH_EAST));
 			result.insert(src.get_direction(map_location::SOUTH_WEST));
@@ -575,8 +621,28 @@ std::set<map_location> unit_frame::get_overlaped_hex(const int frame_time,const 
 					);
 		}
 		if (image != NULL) {
-			const int x = static_cast<int>(tmp_offset * xdst + (1.0-tmp_offset) * xsrc)+current_data.x+d2-(image->w/2);
-			const int y = static_cast<int>(tmp_offset * ydst + (1.0-tmp_offset) * ysrc)+current_data.y+d2-(image->h/2);
+#ifdef LOW_MEM
+			bool facing_west = false;
+#else
+			bool facing_west = direction == map_location::NORTH_WEST || direction == map_location::SOUTH_WEST;
+#endif
+			bool facing_north = direction == map_location::NORTH_WEST || direction == map_location::NORTH || direction == map_location::NORTH_EAST;
+			if(primary) facing_north = true;
+			int my_x = current_data.x- image->w/2;
+			int my_y = current_data.y- image->h/2;
+			if(facing_west) {
+				my_x += current_data.directional_x;
+			} else {
+				my_x -= current_data.directional_x;
+			}
+			if(facing_north) {
+				my_y += current_data.directional_y;
+			} else {
+				my_y -= current_data.directional_y;
+			}
+
+			const int x = static_cast<int>(tmp_offset * xdst + (1.0-tmp_offset) * xsrc)+my_x;
+			const int y = static_cast<int>(tmp_offset * ydst + (1.0-tmp_offset) * ysrc)+my_y;
 			const SDL_Rect r = create_rect(x, y, image->w, image->h);
 			// check if our underlying hexes are invalidated
 			// if we need to update ourselve because we changed, invalidate our hexes
@@ -685,6 +751,11 @@ const frame_parameters unit_frame::merge_parameters(int current_time,const frame
 	/** the engine provide y modification for terrain with height adjust and flying units */
 	result.y = current_val.y?current_val.y:animation_val.y;
 	result.y += engine_val.y;
+
+	assert(engine_val.directional_x == 0);
+	result.directional_x = current_val.directional_x?current_val.directional_x:animation_val.directional_x;
+	assert(engine_val.directional_y == 0);
+	result.directional_y = current_val.directional_y?current_val.directional_y:animation_val.directional_y;
 
 	assert(engine_val.drawing_layer == display::LAYER_UNIT_DEFAULT-display::LAYER_UNIT_FIRST);
 	result.drawing_layer = current_val.drawing_layer !=  display::LAYER_UNIT_DEFAULT-display::LAYER_UNIT_FIRST?
