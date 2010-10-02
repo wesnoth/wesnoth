@@ -4,6 +4,7 @@
 #include "serialization/parser.hpp"
 #include <boost/bind.hpp>
 #include <boost/thread/thread.hpp>
+#include <boost/regex.hpp>
 #include <fstream>
 #include <sstream>
 #include <iomanip>
@@ -11,6 +12,7 @@
 static lg::log_domain log_ad("addons");
 #define DBG_AD LOG_STREAM(debug, log_ad)
 #define LOG_AD LOG_STREAM(info, log_ad)
+#define WRN_AD LOG_STREAM(warn, log_ad)
 #define ERR_AD LOG_STREAM(err, log_ad) 
 
 namespace network {
@@ -144,7 +146,15 @@ void addon_client::flush(const std::string& buffer)
 	if (http_code == 404) {
 		throw addon_client_error("Not found");
 	} else if (http_code == 500) {
-		throw addon_client_error("Server error");
+		boost::regex re("<h1>(.*)</h1>");
+		boost::smatch matches;
+		std::string reason = "?";
+		boost::match_flag_type flags = boost::match_default; 
+		if (boost::regex_search(buffer.begin(), buffer.end(), matches, re, flags)) {
+			reason = std::string(matches[1].first, matches[1].second);
+			WRN_AD << "Server error: " << reason << "\n";
+		}
+		throw addon_client_error("Server error: " + reason);
 	} else if (http_code != 200) {
 		throw addon_client_error("Server response not recognized");
 	}
@@ -299,7 +309,9 @@ void addon_client::async_entry(
 	catch(addon_client_error e)
 	{
 		std::ostringstream error;
-		error << "[error]" << std::endl << "message=" << e.what() << std::endl <<"[/error]";
+		error << "[error]\n" 
+			<< "message=\"" << e.what() << "\"\n" 
+			<< "[/error]";
 		async_response_buffer_ = error.str();
 	}
 	pd->set_running(false);
