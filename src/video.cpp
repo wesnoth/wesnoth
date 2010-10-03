@@ -427,7 +427,16 @@ static void test_buffers()
 		ERR_DP << "Can't copy from back buffer to front buffer.\n";
 	}
 
-	//TODO check scrolling (from back to back buffers)
+	col_write = 0xFF7788FF;
+	glDrawBuffer(GL_BACK);
+	glDrawPixels(1, 1, GL_BGRA, GL_UNSIGNED_BYTE, &col_write);
+	glReadBuffer(GL_BACK);
+	glRasterPos2i(x+1, y);
+	glCopyPixels(x, ry, 1, 1, GL_COLOR);
+	glReadPixels(x+1, ry, 1, 1, GL_BGRA, GL_UNSIGNED_BYTE, &col_read);
+	if(col_read != col_write) {
+		ERR_DP << "Can't copy from back buffer to back buffer.\n";
+	}
 }
 
 
