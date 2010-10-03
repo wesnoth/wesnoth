@@ -181,7 +181,7 @@ def publish(request):
 		val = decoded_wml.get_text_val(k)
 		if val is not None:
 			val = val.strip()
-		if val is None or len(val) < 1:
+		if not val:
 			logger.info("Required WML key '%s' missing while publishing addon by %s from %s"
 				% (k, login, request.META['REMOTE_ADDR']))
 			return error_response("Mandatory key '%s' missing" % k, ['pbl'])
@@ -203,18 +203,22 @@ def publish(request):
 		addon.name = pbl_info['title']
 		addon.uploads = 1
 		addon.downloads = 0
-
-	if addon.file_tbz:
-		addon.file_tbz.delete()
-	if addon.file_wml:
-		addon.file_wml.delete()
+	def safe_del(fn, info=""):
+		if fn:
+			try:
+				fn.delete()
+			except Exception, e:
+				logger.warn("Unable to delete addon %d (%s) %s file %s: %s" 
+				% (addon.id, addon.name, info, fn, str(e)))
+	safe_del(addon.file_tbz, 'tbz')
+	safe_del(addon.file_wml, 'wml')
 	if file_wml is not None:
 		file_wml.name = addon.name + '.wml'
 	else:
 		file = open(ADDONS_ROOT + addon.name + ".wml", 'wb')
 		file.write(file_data)
 		file.close()
-		file_wml = ADDONS_URL + addon.name + ".wml"
+		file_wml = ADDONS_DIR + addon.name + ".wml"
 
 	tmp_dir_name = "%016x" % random.getrandbits(128) #???
 	cs = CampaignClient()
