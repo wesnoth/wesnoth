@@ -458,10 +458,10 @@ int CVideo::setMode( int x, int y, int bits_per_pixel, int flags )
 	const int double_buffer = 1;
 	//Disbale V-sync for the moment
 	//TODO enable this later, update error message below
-	const int vsync = 0;
+	//const int vsync = 0;
 
 	SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, double_buffer);
-	SDL_GL_SetAttribute(SDL_GL_SWAP_CONTROL, vsync);
+	//SDL_GL_SetAttribute(SDL_GL_SWAP_CONTROL, vsync);
 
 	frameBuffer = SDL_SetVideoMode( x, y, bits_per_pixel, flags );
 
@@ -479,11 +479,11 @@ int CVideo::setMode( int x, int y, int bits_per_pixel, int flags )
 		throw CVideo::error();
 	}
 
-	if(SDL_GL_GetAttribute(SDL_GL_SWAP_CONTROL, &val)) {
-		WRN_DP << "Can't verify V-Sync status.\n";
-	} else if (val != vsync) {
-		ERR_DP << "Can't disable V-sync.\n";
-	}
+// 	if(SDL_GL_GetAttribute(SDL_GL_SWAP_CONTROL, &val)) {
+// 		WRN_DP << "Can't verify V-Sync status.\n";
+// 	} else if (val != vsync) {
+// 		ERR_DP << "Can't disable V-sync.\n";
+// 	}
 
 	//the clip rectangle of frame buffer is not always reset when using OpengGL
 	SDL_SetClipRect(SDL_GetVideoSurface(), NULL);
