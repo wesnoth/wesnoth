@@ -375,8 +375,10 @@ int CVideo::modePossible( int x, int y, int bits_per_pixel, int flags, bool curr
 	return bpp;
 }
 
-static void test_buffers()
+static bool test_buffers(bool flush)
 {
+	bool res = true;
+
 	glPixelStorei(GL_UNPACK_ROW_LENGTH, 1);
 	glPixelStorei(GL_UNPACK_SKIP_PIXELS, 0);
 	glPixelStorei(GL_UNPACK_SKIP_ROWS, 0);
@@ -396,9 +398,11 @@ static void test_buffers()
 	glDrawBuffer(GL_BACK);
 	glReadBuffer(GL_BACK);
 	glDrawPixels(1, 1, GL_BGRA, GL_UNSIGNED_BYTE, &col_write);
+	if(flush) glFlush();
 	glReadPixels(x, ry, 1, 1, GL_BGRA, GL_UNSIGNED_BYTE, &col_read);
 	if(col_read != col_write) {
 		ERR_DP << "Can't read or write on back buffer.\n";
+		res = false;
 	}
 
 	glDrawBuffer(GL_FRONT);
@@ -406,37 +410,47 @@ static void test_buffers()
 	glReadPixels(x, ry, 1, 1, GL_BGRA, GL_UNSIGNED_BYTE, &col_read);
 	if(col_read == col_write) {
 		ERR_DP << "Front buffer not separated from back buffer.\n";
+		res = false;
 	}
 
 	col_write = 0xFF3344FF;
 	glDrawPixels(1, 1, GL_BGRA, GL_UNSIGNED_BYTE, &col_write);
+	if(flush) glFlush();
 	glReadPixels(x, ry, 1, 1, GL_BGRA, GL_UNSIGNED_BYTE, &col_read);
 	if(col_read != col_write) {
 		ERR_DP << "Can't read or write on front buffer.\n";
+		res = false;
 	}
 
 	col_write = 0xFF5566FF;
 	glDrawBuffer(GL_BACK);
 	glDrawPixels(1, 1, GL_BGRA, GL_UNSIGNED_BYTE, &col_write);
+	if(flush) glFlush();
 	glReadBuffer(GL_BACK);
 	glDrawBuffer(GL_FRONT);
 	glCopyPixels(x, ry, 1, 1, GL_COLOR);
+	if(flush) glFlush();
 	glReadBuffer(GL_FRONT);
 	glReadPixels(x, ry, 1, 1, GL_BGRA, GL_UNSIGNED_BYTE, &col_read);
 	if(col_read != col_write) {
 		ERR_DP << "Can't copy from back buffer to front buffer.\n";
+		res = false;
 	}
 
 	col_write = 0xFF7788FF;
 	glDrawBuffer(GL_BACK);
 	glDrawPixels(1, 1, GL_BGRA, GL_UNSIGNED_BYTE, &col_write);
+	if(flush) glFlush();
 	glReadBuffer(GL_BACK);
 	glRasterPos2i(x+1, y);
 	glCopyPixels(x, ry, 1, 1, GL_COLOR);
+	if(flush) glFlush();
 	glReadPixels(x+1, ry, 1, 1, GL_BGRA, GL_UNSIGNED_BYTE, &col_read);
 	if(col_read != col_write) {
 		ERR_DP << "Can't copy from back buffer to back buffer.\n";
+		res = false;
 	}
+	return res;
 }
 
 
@@ -502,7 +516,12 @@ int CVideo::setMode( int x, int y, int bits_per_pixel, int flags )
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-	test_buffers();
+	if(test_buffers(false) == false) {
+		ERR_DP << "Read/write pixels test failed. Retry using glFlush().\n";
+		if(test_buffers(true) == false) {
+			ERR_DP << "Didn't help.\n";
+		}
+	}
 
 	//we will only use back buffer for drawing
 	glDrawBuffer(GL_BACK);
