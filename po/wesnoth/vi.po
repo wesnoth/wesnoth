@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-09-15 19:36+0200\n"
-"PO-Revision-Date: 2010-09-24 16:56+0700\n"
+"PO-Revision-Date: 2010-10-01 17:03+0700\n"
 "Last-Translator: Huynh Yen Loc <nightgaunt13@gmail.com>\n"
 "Language-Team: Vietnamese <>\n"
 "Language: vi\n"
@@ -1502,7 +1502,7 @@ msgstr ""
 "\n"
 "Các đơn vị có một lượng kinh nghiệm nhất định cần để nâng cấp (ít hơn 20% "
 "với các đơn vị có đặc điểm thông minh). Khi chúng đạt đến số lượng này, "
-"chúng nâng cấp ngay lập tức lên trình độ kế tiếp, phục hồi hoàn toàn máu. "
+"chúng nâng cấp ngay lập tức lên cấp độ kế tiếp, phục hồi hoàn toàn máu. "
 "Trong một số trường hợp, bạn sẽ được chọn hướng nâng cấp."
 
 #. [topic]: id=experience_and_advancement
@@ -1525,15 +1525,14 @@ msgstr ""
 "\n"
 "Hầu hết các đơn vị có ba cấp độ, nhưng không phải tất cả đều như thế. Một số "
 "ít đơn vị (chẳng hạn <ref>dst='unit_Mage' text='pháp sư'</ref>) có thể có "
-"bốn. Khi một đơn vị đã đạt đến trình độ tối đa, nó có thể nâng cấp sau trình "
-"độ tối đa. Nâng cấp sau trình độ tối đa sẽ làm thay đổi đơn vị mỗi lần nó "
-"đạt đến mục tiêu kinh nghiệm, nhưng đơn vị vẫn giữ nguyên trình độ. Hiệu lực "
-"nâng cấp sau trình độ tối đa thường là tăng lượng máu tối đa lên 3 và hồi "
-"máu hoàn toàn. Nâng cấp sau trình độ tối đa lần đầu thường sẽ đạt đến sau "
-"khi giành được 150 KN (120 KN với các đơn vị thông minh). Tuy nhiên, giành "
-"được nâng cấp sau trình độ tối đa dần dần trở nên khó hơn sau mỗi lần nâng "
-"cấp, do đó tìm cách nâng cấp những đơn vị có trình độ thấp thường hữu ích "
-"hơn."
+"bốn. Khi một đơn vị đã đạt đến cấp độ tối đa, nó có thể Nâng cấp sau Cấp độ "
+"Tối đa (NCSCĐTĐ). NCSCĐTĐ sẽ làm thay đổi đơn vị mỗi lần nó đạt đến mục tiêu "
+"kinh nghiệm, nhưng đơn vị vẫn giữ nguyên cấp độ. Hiệu lực nâng cấp sau cấp "
+"độ tối đa thường là tăng lượng máu tối đa lên 3 và hồi máu hoàn toàn. Nâng "
+"cấp sau cấp độ tối đa lần đầu thường sẽ đạt đến sau khi giành được 150 KN "
+"(120 KN với các đơn vị thông minh). Tuy nhiên, giành được nâng cấp sau cấp "
+"độ tối đa dần dần trở nên khó hơn sau mỗi lần nâng cấp, do đó tìm cách nâng "
+"cấp những đơn vị có cấp độ thấp thường hữu ích hơn."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:307
@@ -1662,10 +1661,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Thu nhập thì đơn giản. Bạn có thu nhập cơ bản là 2 lượng vàng mỗi lượt. Với "
-"mỗi ngôi làng bạn kiểm soát, bạn giành thêm một lượng vàng mỗi lượt. Do đó, "
-"nếu bạn có mười ngôi làng, bạn sẽ có 12 lượng vàng mỗi lượt. Chi phí bảo trì "
-"bị trừ vào thu nhập này, như chi tiết bên dưới."
+"Thu nhập thì khá đơn giản. Bạn có thu nhập cơ bản là 2 lượng vàng mỗi lượt. "
+"Với mỗi ngôi làng bạn kiểm soát, bạn giành thêm một lượng vàng mỗi lượt. Do "
+"đó, nếu bạn có mười ngôi làng, bạn sẽ có 12 lượng vàng mỗi lượt. Chi phí bảo "
+"trì bị trừ vào thu nhập này, như chi tiết bên dưới."
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:328
@@ -1681,13 +1680,12 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Phí bảo trì cũng khá đơn giản. Mỗi đơn vị đòi một lượng phí bảo trì bằng "
-"trình độ của nó. Bạn có thể nuôi quân có <italic>text=tổng</italic> trình độ "
-"bằng số lượng ngôi làng bạn có, mà không phải trả bất kỳ phí bảo trì nào. "
-"Tuy nhiên, với mỗi trình độ của đơn vị vượt quá số lượng ngôi làng bạn có, "
-"bạn phải trả một lượng vàng mỗi lượt. Ví dụ, nếu bạn có mười hai đơn vị "
-"trình độ một và mười ngôi làng, bạn sẽ phải trả hai lượng vàng mỗi lượt làm "
-"phí bảo trì."
+"Phí bảo trì cũng khá đơn giản. Mỗi đơn vị đòi một lượng phí bảo trì bằng cấp "
+"độ của nó. Bạn có thể nuôi quân có <italic>text=tổng</italic> cấp độ bằng số "
+"lượng ngôi làng bạn có, mà không phải trả bất kỳ phí bảo trì nào. Tuy nhiên, "
+"với mỗi cấp độ của đơn vị vượt quá số lượng ngôi làng bạn có, bạn phải trả "
+"một lượng vàng mỗi lượt. Ví dụ, nếu bạn có mười hai đơn vị cấp độ một và "
+"mười ngôi làng, bạn sẽ phải trả hai lượng vàng mỗi lượt làm phí bảo trì."
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:330
@@ -1700,9 +1698,9 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Chi phí bảo trì bị trừ vào thu nhập của bạn, do đó trong trường hợp tổng "
-"trình độ của các đơn vị là mười hai và mười ngôi làng, thu nhập tổng hợp của "
-"bạn sẽ là 10 lượng vàng mỗi lượt."
+"Chi phí bảo trì bị trừ vào thu nhập của bạn, do đó trong trường hợp tổng cấp "
+"độ của các đơn vị là mười hai và mười ngôi làng, thu nhập tổng hợp của bạn "
+"sẽ là 10 lượng vàng mỗi lượt."
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:331
@@ -1828,9 +1826,9 @@ msgstr ""
 "\n"
 "\n"
 "Các đơn vị thông minh rất hữu ích ở đầu một chiến dịch vì chúng có thể nâng "
-"cấp lên trình độ cao nhanh hơn. Về sau trong chiến dịch, thông minh không "
-"hữu ích lắm bởi vì Nâng cấp sau trình độ tối đa không phải là một thay đổi "
-"có ý nghĩa bằng nâng cấp trình độ. Nếu bạn có nhiều đơn vị ở 'trình độ tối "
+"cấp lên cấp độ cao nhanh hơn. Về sau trong chiến dịch, thông minh không hữu "
+"ích lắm bởi vì Nâng cấp sau Cấp độ Tối đa (NCSCĐTĐ) không phải là một thay "
+"đổi có ý nghĩa bằng nâng cấp cấp độ. Nếu bạn có nhiều đơn vị ở 'cấp độ tối "
 "đa', bạn có thể gọi lại các đơn vị có những đặc điểm khác tốt hơn."
 
 #. [topic]: id=traits_quick
@@ -1876,7 +1874,7 @@ msgstr "Bền bỉ"
 msgid "Resilient units have 4 HP plus 1 HP per level more than usual."
 msgstr ""
 "Các đơn vị bền bỉ có nhiều hơn bình thường 4 đơn vị máu cộng thêm 1 đơn vị "
-"máu với mỗi trình độ."
+"máu với mỗi cấp độ."
 
 #. [topic]: id=traits_resilient
 #: data/core/help.cfg:389
@@ -1954,8 +1952,8 @@ msgid ""
 "cost."
 msgstr ""
 "Các đơn vị trung thành không đòi phí bảo trì. Hầu hết các đơn vị đều đòi một "
-"chi phí bảo trì ở cuối mỗi lượt, bằng với trình độ của chúng. Các đơn vị "
-"trung thành không đòi chi phí này."
+"chi phí bảo trì ở cuối mỗi lượt, bằng với cấp độ của chúng. Các đơn vị trung "
+"thành không đòi chi phí này."
 
 #. [topic]: id=traits_loyal
 #: data/core/help.cfg:411
@@ -2097,7 +2095,7 @@ msgstr ""
 "\n"
 "\n"
 "Các đơn vị khỏe mạnh có nhiều hơn bình thường 1 đơn vị máu cộng thêm 1 đơn "
-"vị máu với mỗi trình độ và phục hồi 2 đơn vị máu khi nghỉ ngơi sau mỗi lượt "
+"vị máu với mỗi cấp độ và phục hồi 2 đơn vị máu khi nghỉ ngơi sau mỗi lượt "
 "chúng không chiến đấu. Chúng cũng chịu thiệt hại do độc tố ít hơn một phần "
 "tư."
 
@@ -3233,10 +3231,10 @@ msgstr ""
 "Đơn vị này có thể lãnh đạo các đơn vị cùng phe đứng cạnh nó, làm cho chúng "
 "chiến đấu tốt hơn.\n"
 "\n"
-"Các đơn vị cùng phe có trình độ thấp hơn đứng cạnh sẽ gây nhiều thiệt hại "
-"hơn khi chiến đấu. Khi một đơn vị đứng cạnh, có cấp thấp hơn, và ở cùng phe "
-"với đơn vị có khả năng lãnh đạo giao chiến, các đòn tấn công của nó gây "
-"thiệt hại nhiều hơn 25% nhân với mức chênh lệch trình độ của chúng."
+"Các đơn vị cùng phe có cấp độ thấp hơn đứng cạnh sẽ gây nhiều thiệt hại hơn "
+"khi chiến đấu. Khi một đơn vị đứng cạnh, có cấp thấp hơn, và ở cùng phe với "
+"đơn vị có khả năng lãnh đạo giao chiến, các đòn tấn công của nó gây thiệt "
+"hại nhiều hơn 25% nhân với mức chênh lệch cấp độ của chúng."
 
 #. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:347
@@ -6620,8 +6618,8 @@ msgid ""
 "level units that are about to level up than with those same units at a "
 "higher level."
 msgstr ""
-"Bắt đầu màn kế tiếp trong một chiến dịch với các đơn vị trình độ thấp nhưng "
-"sắp sửa nâng cấp thường tốt hơn là bắt đầu với cùng các đơn vị đó ở trình độ "
+"Bắt đầu màn kế tiếp trong một chiến dịch với các đơn vị cấp độ thấp nhưng "
+"sắp sửa nâng cấp thường tốt hơn là bắt đầu với cùng các đơn vị đó ở cấp độ "
 "cao."
 
 #. [tip]
@@ -6834,8 +6832,8 @@ msgid ""
 "level opponent."
 msgstr ""
 "Đánh đòn kết liễu một đơn vị kẻ thù là cách tốt nhất để giành kinh nghiệm. "
-"Các đơn vị giết được một kẻ thù sẽ giành tám điểm kinh nghiệm với mỗi trình "
-"độ của đơn vị chúng giết, hoặc bốn điểm kinh nghiệm với một đối thủ trình độ "
+"Các đơn vị giết được một kẻ thù sẽ giành tám điểm kinh nghiệm với mỗi cấp độ "
+"của đơn vị chúng giết, hoặc bốn điểm kinh nghiệm với một đối thủ cấp độ "
 "không."
 
 #. [tip]
@@ -6928,8 +6926,8 @@ msgid ""
 "same side fight better. Use leaders to help your other units level up faster."
 msgstr ""
 "Các đơn vị có khả năng 'lãnh đạo' giúp các đơn vị đứng cạnh ở cùng phe có "
-"trình độ thấp hơn chiến đấu tốt hơn. Sử dụng người lãnh đạo để giúp các đơn "
-"vị khác của bạn nâng cấp nhanh hơn."
+"cấp độ thấp hơn chiến đấu tốt hơn. Sử dụng người lãnh đạo để giúp các đơn vị "
+"khác của bạn nâng cấp nhanh hơn."
 
 #. [tip]
 #: data/hardwired/tips.cfg:131
@@ -7020,8 +7018,8 @@ msgid ""
 "Units are healed when they advance a level. Used wisely, this can turn a "
 "fight."
 msgstr ""
-"Các đơn vị hồi máu khi chúng nâng cấp trình độ. Nếu biết sử dụng một cách "
-"khôn ngoan, điều này có thể cục diện một trận đấu."
+"Các đơn vị hồi máu khi chúng nâng cấp. Nếu biết sử dụng một cách khôn ngoan, "
+"điều này có thể thay đổi cục diện một trận đấu."
 
 #. [tip]
 #: data/hardwired/tips.cfg:167
@@ -7041,10 +7039,10 @@ msgid ""
 "from advancing a level, so it is generally more useful to try to advance "
 "your lower-level units instead."
 msgstr ""
-"Thay vì tăng cấp, các đơn vị cấp cao giành được một 'Nâng cấp sau trình độ "
-"tối đa', thường tăng lượng máu tối đa của đơn vị lên ba và hồi máu.Điều này "
+"Thay vì tăng cấp, các đơn vị cấp cao giành được một 'Nâng cấp sau Trình độ "
+"Tối đa', thường tăng lượng máu tối đa của đơn vị lên ba và hồi máu. Điều này "
 "là ít hơn nhiều so với những lợi ích bình thường có được từ việc nâng cấp "
-"bình thường.Do đó việc nâng cấp các đơn vị cấp thấp luôn hữu ich hơn."
+"bình thường. Do đó việc nâng cấp các đơn vị cấp thấp luôn hữu ích hơn."
 
 #. [tip]
 #: data/hardwired/tips.cfg:175
@@ -7939,7 +7937,7 @@ msgstr "Hồ sơ"
 
 #: src/dialogs.cpp:809 src/help.cpp:1341
 msgid "level"
-msgstr "trình độ"
+msgstr "cấp độ"
 
 #: src/dialogs.cpp:822 src/help.cpp:1444
 msgid "HP: "
@@ -8562,7 +8560,7 @@ msgstr "Đang tải các tập tin dữ liệu"
 
 #: src/loadscreen.cpp:233
 msgid "Loading level"
-msgstr "Đang tải trình độ"
+msgstr "Đang tải cấp độ"
 
 #: src/loadscreen.cpp:234
 msgid "Initializing teams"
@@ -8606,11 +8604,11 @@ msgstr "Bạn có thực sự muốn thải hồi đơn vị không?"
 
 #: src/menu_events.cpp:97
 msgid "My lord, this unit is an experienced one, having advanced levels! "
-msgstr "Thưa ngài, đơn vị này là một đơn vị có kinh nghiệm, có trình độ cao! "
+msgstr "Thưa ngài, đơn vị này là một đơn vị có kinh nghiệm, có cấp độ cao! "
 
 #: src/menu_events.cpp:101
 msgid "My lord, this unit is close to advancing a level! "
-msgstr "Thưa ngài, đơn vị này sắp sửa nâng cấp trình độ! "
+msgstr "Thưa ngài, đơn vị này sắp sửa nâng cấp! "
 
 #: src/menu_events.cpp:193
 msgid "Statistics"
@@ -10477,7 +10475,7 @@ msgstr " di chuyển"
 
 #: src/unit.cpp:2550
 msgid "$effect_description per level"
-msgstr "$effect_description mỗi trình độ"
+msgstr "$effect_description mỗi cấp độ"
 
 #: src/unit_types.cpp:190 src/unit_types.cpp:260
 msgid "damage"
@@ -10642,7 +10640,7 @@ msgstr "trung lập"
 #~ msgstr "Bắt đầu một hướng dẫn để làm quen với trò chơi"
 
 #~ msgid "Start a new single player campaign"
-#~ msgstr "Bắt đầu một màn một người chơi  mới"
+#~ msgstr "Bắt đầu một chiến dịch một người chơi mới"
 
 #~ msgid ""
 #~ "Play multiplayer (hotseat, LAN, or Internet), or a single scenario "
