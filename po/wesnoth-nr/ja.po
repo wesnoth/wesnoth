@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wescamp-i 18n\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-09-15 19:36+0200\n"
+"POT-Creation-Date: 2010-10-03 21:59+0200\n"
 "PO-Revision-Date: 2010-09-19 02:29+0900\n"
 "Last-Translator: clearpotion <clearpotion+fantasy@gmail.com>\n"
 "Language-Team: \n"
@@ -263,11 +263,13 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:48
+#, fuzzy
 msgid ""
 "As quickly as it had begun, it was over. Konrad reached the entrance to the "
 "tunnels and ushered his men through. Then he turned one last time to face "
 "the peasants. Raising his sword in salute and farewell, he called out to "
-"them: “Hold fast your hope, for one day you shall be free!” Then he was gone."
+"them: <i>“Hold fast your hope, for one day you shall be free!”</i> Then he "
+"was gone."
 msgstr ""
 "事の始まりと同様、終わりも速かった。Konrad は部下に連れられて坑道の入口に着い"
 "た。そして最後に一度だけ振り返って農奴達を見た。剣を捧げ持ち別れの礼を取る"
@@ -1720,20 +1722,16 @@ msgstr ""
 msgid "WHO GOES THERE?"
 msgstr "そこにいるのは誰だ？"
 
-#. [message]: role=Supporter
+#. [message]: speaker=Hamel
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:381
+#, fuzzy
+msgid "(<i>Wince</i>)."
+msgstr "返答は無い"
+
+#. [message]: role=Supporter
+#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:385
 msgid "Oops, I spoke too soon."
 msgstr "おおっと、早とちりしたようだ。"
-
-# 動作確認した感じでは、「しかめる」が合う気がする。
-# とんでもないことをしでかしての意味なら「怯んで」もいいが、Hamelがちょっとだけ気弱な感じがする。
-# Hamelを怖いボスにしたければ「嫌な顔をして」もいいと思う。
-# お好みで。
-#. [message]: speaker=Hamel
-#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:385
-#, fuzzy
-msgid "(<i>Wince</i>) You can turn the volume down, pal."
-msgstr "(顔をしかめて） 声を落とせるだろう、お前。"
 
 #. [message]: speaker=Camerin
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:389
@@ -5492,12 +5490,13 @@ msgstr "(肩をすくめて) 他に選択の余地は無さそうだ。"
 
 #. [message]: id=Camerin
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:777
+#, fuzzy
 msgid ""
 "Come on, guys, it will be great! Those orcs will never know what hit them! "
 "Together we’ll rip them to shreds! If you are planning to retire after this, "
 "this is the perfect chance for you guys to go out with a bang! You guys will "
-"become legends! “The two terrible mages, risen from the dead to devastate "
-"the orcish hordes!”"
+"become legends! <i>“The two terrible mages, risen from the dead to devastate "
+"the orcish hordes!”</i>"
 msgstr ""
 "さあみんな、これはすごいことになるぞ！ あのオークどもは何を相手にしているか分"
 "かっちゃいないんだ！ 一緒にあやつらをバラバラに引き裂いてやろう！ もしこの後"
@@ -7241,11 +7240,12 @@ msgstr ""
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:202
+#, fuzzy
 msgid ""
-"Princess, we are not seeking to do business here: “I do this for you and you "
-"do this for me.” No, we seek to build everlasting friendships which will "
-"forever ensure the peace and prosperity of these northlands. Therefore, let "
-"there be no talk of debts and repayments between us."
+"Princess, we are not seeking to do business here: <i>“I do this for you and "
+"you do this for me.”</i> No, we seek to build everlasting friendships which "
+"will forever ensure the peace and prosperity of these northlands. Therefore, "
+"let there be no talk of debts and repayments between us."
 msgstr ""
 "王女様、俺達は取引をしようとしているわけじゃない。「お前のために何々をしてや"
 "るから、あんたは俺に何々をしろ。」そうではなく、北の大地の永遠の平和と繁栄を"
@@ -7505,12 +7505,13 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/09b_Judgement.cfg:17
+#, fuzzy
 msgid ""
 "Tallin raised his eyes to look into Abhai’s and Abhai met his gaze — "
 "confidence meeting uncertainty, faith meeting doubt, assurance meeting "
-"apprehension. “I have faith in you, my boy,” Abhai said, “Take this, and put "
-"your doubts at rest.” Tallin held the gaze for one more long moment — and "
-"then took the Rod of Justice in a white-knuckled grip."
+"apprehension. <i>“I have faith in you, my boy,”</i> Abhai said, <i>“Take "
+"this, and put your doubts at rest.”</i> Tallin held the gaze for one more "
+"long moment — and then took the Rod of Justice in a white-knuckled grip."
 msgstr ""
 "Tallin は 目を上げ、Abhai の目を凝視し、Abhai も彼と視線を交え凝視した。――自"
 "信は不確実に逢い、信頼は懐疑に逢い、保証は懸念に逢った。 「信頼しているよ、マ"
@@ -10808,6 +10809,14 @@ msgstr "完全に気の触れた狂人だったが、いなくなると確実に
 #: data/campaigns/Northern_Rebirth/utils/utils.cfg:79
 msgid "Arthian"
 msgstr "Arthian"
+
+# 動作確認した感じでは、「しかめる」が合う気がする。
+# とんでもないことをしでかしての意味なら「怯んで」もいいが、Hamelがちょっとだけ気弱な感じがする。
+# Hamelを怖いボスにしたければ「嫌な顔をして」もいいと思う。
+# お好みで。
+#, fuzzy
+#~ msgid "(<i>Wince</i>) You can turn the volume down, pal."
+#~ msgstr "(顔をしかめて） 声を落とせるだろう、お前。"
 
 # このシナリオでは、ほぼ100%武器が弓、熊手、槍。貫通系のズドッに変更してみた。
 #~ msgid " *STAB*"
