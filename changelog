@@ -44,7 +44,7 @@ Version 1.9.1+svn:
  * WML Engine:
    * id= in SUFs now accepts a comma-separated list.
    * [capture_village] now accepts a full SLF.
-   * events can be fired depending on a [condition].
+   * events can be fired depending on a condition using [filter_condition].
    * Added support for SLF to [terrain]. Note that the SLF's terrain= key is
      not valid; terrain= specifies the new terrain instead like it used to do.
      Filtering for terrain can be done with the [terrain][and]terrain=
