@@ -41,15 +41,12 @@ fieldset {
 				</form>
 			{% endif %}
 				<center>
-				{% if errors_credentials %}<p style="color: #F00; font-weight: bold">Login and/or password incorrect</p>
+				{% if error_title %}
+					<p style="color: #F00; font-weight: bold">{{error_title}}: {{error_desc}}</p>
 				{% endif %}
-				{% if errors_permissions and not errors_credentials %}<p style="color: #F00; font-weight: bold">You don't have permission to remove this addon</p>
-				{% endif %}
-				{% if errors_pbl %}<p style="color: #F00; font-weight: bold">PBL File incorrect or missing</p>{% endif %}
-				{% if errors_zip %}<p style="color: #F00; font-weight: bold">Zipped addon folder incorrect or missing</p>{% endif %}
 				{% if remove_success %}
-				<p style="color: #005a00; font-weight: bold">The addon has been removed.</p>
-				<p>Click <a href="{% url addons.views.index %}">here</a> if you aren't automatically redirected to the index page within 10 seconds</p>{% endif %}
+					<p style="color: #005a00; font-weight: bold">The addon has been removed.</p>
+					<p>Click <a href="{% url addons.views.index %}">here</a> if you aren't automatically redirected to the index page within 10 seconds</p>{% endif %}
 				</center>
 			</td>
 		</tr>	            

@@ -39,6 +39,10 @@ MEDIA_ROOT = './media/'
 
 ICONS_ROOT = MEDIA_ROOT + 'icons/'
 
+ADDONS_DIR = 'addons/'
+
+ADDONS_ROOT = MEDIA_ROOT + ADDONS_DIR
+
 WESNOTH_DATA_DIR = '../../'
 
 WESNOTH_IMAGES_DIR = WESNOTH_DATA_DIR + 'core/images/'
@@ -47,6 +51,10 @@ WESNOTH_IMAGES_DIR = WESNOTH_DATA_DIR + 'core/images/'
 # trailing slash if there is a path component (optional in other cases).
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
 MEDIA_URL = '/media/'
+
+ICONS_URL = MEDIA_URL + 'icons/'
+
+ADDONS_URL = MEDIA_URL + ADDONS_DIR
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.

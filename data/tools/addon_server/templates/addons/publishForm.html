@@ -38,21 +38,21 @@ label.inputLabel {
 }
 
 label.credentials {	
-	{% if errors_credentials %} 
+	{% if errorField_login %} 
 		color: #F00; 
 		font-weight: bold;
 	{% endif %}
 }
 
 label.pbl {	
-	{% if errors_pbl %} 
+	{% if errorField_pbl %} 
 		color: #F00; 
 		font-weight: bold;
 	{% endif %}
 }
 
 label.zip {	
-	{% if errors_zip %} 
+	{% if errorField_zip %} 
 		color: #F00; 
 		font-weight: bold;
 	{% endif %}
@@ -89,32 +89,31 @@ div.spacer {
 	background-color: #E7D9C0;">
 	    <tr>
 	        <td valign=top>
-				
-					<fieldset>
-						<legend>Forum credentials</legend>
-						<div class="formLine">
-							<div class="labelBlock">
-							<label for="login" class="inputLabel, credentials">Login:</label>
-							</div>						
-						
-							<div class="inputBlock">
-							<input type="text" name="login" value="{{loginVal}}"></input>
-							</div>						
+				<fieldset>
+					<legend>Forum credentials</legend>
+					<div class="formLine">
+						<div class="labelBlock">
+						<label for="login" class="inputLabel credentials">Login:</label>
+						</div>						
+					
+						<div class="inputBlock">
+						<input type="text" name="login" value="{{loginVal}}"></input>
+						</div>						
+					</div>
+					
+					<div class="spacer"></div>
+					
+					<div class="formLine">
+						<div class="labelBlock">
+						<label for="password" class="inputLabel credentials">Password:</label>
 						</div>
 						
-						<div class="spacer"></div>
-						
-						<div class="formLine">
-							<div class="labelBlock">
-							<label for="password" class="inputLabel, credentials">Pasword:</label>
-							</div>
-							
-							<div class="inputBlock">
-							<input type="password" name="password"></input>
-							</div>						
-						</div>
-						
-					</fieldset>
+						<div class="inputBlock">
+						<input type="password" name="password"></input>
+						</div>						
+					</div>
+					
+				</fieldset>
 					
 		    </td>
 		    </tr>
@@ -124,7 +123,7 @@ div.spacer {
 						<legend>Addon to be published or updated</legend>					
 						<div class="formLine">
 							<div class="labelBlock">
-							<label for="zip" class="inputLabel, zip">Wml addon file:</label>
+							<label for="zip" class="inputLabel zip">Wml addon file:</label>
 							</div>
 							
 							<div class="inputBlock">
@@ -143,13 +142,12 @@ div.spacer {
 					</center>
 				
 				<center>
-				{% if errors_credentials %}<p style="color: #F00; font-weight: bold">Login and/or password incorrect</p>{% endif %}
-				{% if errors_author %}<p style="color: #F00; font-weight: bold">You are not one of the authors</p>{% endif %}
-				{% if errors_pbl %}<p style="color: #F00; font-weight: bold">PBL File incorrect or missing</p>{% endif %}
-				{% if errors_zip %}<p style="color: #F00; font-weight: bold">Zipped addon folder incorrect or missing</p>{% endif %}
+				{% if error_title %}
+					<p style="color: #F00; font-weight: bold">{{error_title}}: {{error_desc}}</p>
+				{% endif %}
 				{% if publish_success %}
-				<p style="color: #005a00; font-weight: bold">Your addon has been published, thank you!</p>
-				<p>Click <a href="{% url addons.views.details addonId %}">here</a> if you aren't automatically redirected to the details page within 10 seconds</p>{% endif %}
+					<p style="color: #005a00; font-weight: bold">Your addon has been published, thank you!</p>
+					<p>Click <a href="{% url addons.views.details addonId %}">here</a> if you aren't automatically redirected to the details page within 10 seconds</p>{% endif %}
 				</center>
 			</td>
 		</tr>	            

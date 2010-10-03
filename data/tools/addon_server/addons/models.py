@@ -1,5 +1,6 @@
 from django.db import models
 from django.db.models import Avg
+from settings import ADDONS_DIR
 
 class Author(models.Model):
 	name = models.CharField(max_length=30)
@@ -21,8 +22,8 @@ class Addon(models.Model):
 	ver = models.CharField(max_length=200)
 	downloads = models.IntegerField(default=0)
 	uploads = models.IntegerField(default=0)
-	file_tbz = models.FileField(upload_to='addons')
-	file_wml = models.FileField(upload_to='addons')
+	file_tbz = models.FileField(upload_to=ADDONS_DIR)
+	file_wml = models.FileField(upload_to=ADDONS_DIR)
 	type = models.ForeignKey(AddonType)
 	authors = models.ManyToManyField(Author)
 	desc = models.TextField()
