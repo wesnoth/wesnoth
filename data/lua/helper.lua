@@ -310,4 +310,15 @@ function helper.rand (possible_values)
 	return result
 end
 
+function helper.deprecate(msg, f)
+	return function(...)
+		if msg then
+			wesnoth.message("WML warning", msg)
+			-- trigger the message only once
+			msg = nil
+		end
+		return f(...)
+	end
+end
+
 return helper
