@@ -375,6 +375,62 @@ int CVideo::modePossible( int x, int y, int bits_per_pixel, int flags, bool curr
 	return bpp;
 }
 
+static void test_buffers()
+{
+	glPixelStorei(GL_UNPACK_ROW_LENGTH, 1);
+	glPixelStorei(GL_UNPACK_SKIP_PIXELS, 0);
+	glPixelStorei(GL_UNPACK_SKIP_ROWS, 0);
+	glPixelStorei(GL_PACK_ROW_LENGTH, 1);
+	glPixelStorei(GL_PACK_SKIP_PIXELS, 0);
+	glPixelStorei(GL_PACK_SKIP_ROWS, 0);
+	glPixelZoom(1,-1);
+
+	Uint32 col_write = 0xFF1122FF; //use opaque alpha
+	Uint32 col_read = 0;
+
+	int x = 42;
+	int y = 42;
+	int ry = frameBuffer->h-y-1;
+	glRasterPos2i(x, y);
+
+	glDrawBuffer(GL_BACK);
+	glReadBuffer(GL_BACK);
+	glDrawPixels(1, 1, GL_BGRA, GL_UNSIGNED_BYTE, &col_write);
+	glReadPixels(x, ry, 1, 1, GL_BGRA, GL_UNSIGNED_BYTE, &col_read);
+	if(col_read != col_write) {
+		ERR_DP << "Can't read or write on back buffer.\n";
+	}
+
+	glDrawBuffer(GL_FRONT);
+	glReadBuffer(GL_FRONT);
+	glReadPixels(x, ry, 1, 1, GL_BGRA, GL_UNSIGNED_BYTE, &col_read);
+	if(col_read == col_write) {
+		ERR_DP << "Front buffer not separated from back buffer.\n";
+	}
+
+	col_write = 0xFF3344FF;
+	glDrawPixels(1, 1, GL_BGRA, GL_UNSIGNED_BYTE, &col_write);
+	glReadPixels(x, ry, 1, 1, GL_BGRA, GL_UNSIGNED_BYTE, &col_read);
+	if(col_read != col_write) {
+		ERR_DP << "Can't read or write on front buffer.\n";
+	}
+
+	col_write = 0xFF5566FF;
+	glDrawBuffer(GL_BACK);
+	glDrawPixels(1, 1, GL_BGRA, GL_UNSIGNED_BYTE, &col_write);
+	glReadBuffer(GL_BACK);
+	glDrawBuffer(GL_FRONT);
+	glCopyPixels(x, ry, 1, 1, GL_COLOR);
+	glReadBuffer(GL_FRONT);
+	glReadPixels(x, ry, 1, 1, GL_BGRA, GL_UNSIGNED_BYTE, &col_read);
+	if(col_read != col_write) {
+		ERR_DP << "Can't copy from back buffer to front buffer.\n";
+	}
+
+	//TODO check scrolling (from back to back buffers)
+}
+
+
 int CVideo::setMode( int x, int y, int bits_per_pixel, int flags )
 {
 	update_rects.clear();
@@ -436,6 +492,8 @@ int CVideo::setMode( int x, int y, int bits_per_pixel, int flags )
 
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+	test_buffers();
 
 	//we will only use back buffer for drawing
 	glDrawBuffer(GL_BACK);
