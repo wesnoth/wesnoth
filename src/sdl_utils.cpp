@@ -242,11 +242,14 @@ void sdl_blit(const surface& src, SDL_Rect* src_rect, surface& dst, SDL_Rect* ds
 			}
 		}
 	} else if(src == screen && dst == screen) {
+		//Disable blending, attempting to fix ghosting with some driver
+		glDisable(GL_BLEND);
 		glPixelZoom(1,1);
 		// RasterPos uses top-left coordinates, but blit will go up
 		glRasterPos2i(dr.x, dr.y + sr.h);
 		// glCopyPixels uses bottom-left coordinates
 		glCopyPixels(sr.x, screen->h - sr.h - sr.y, sr.w, sr.h, GL_COLOR);
+		glEnable(GL_BLEND);
 	}
 }
 
@@ -285,6 +288,10 @@ void sdl_update_rects(const surface& screen, int numrects, SDL_Rect *rects)
 	// Copy back buffer to front buffer to simulate how SDL_UpdateRects works
 	// This might cause some tearing but not more than SDL
 	// (unless the speed difference make it more visible)
+
+	//Disable blending, attempting to fix ghosting with some driver
+	glDisable(GL_BLEND);
+
 	glReadBuffer(GL_BACK);
 	glDrawBuffer(GL_FRONT);
 	glPixelZoom(1,1);
@@ -295,6 +302,8 @@ void sdl_update_rects(const surface& screen, int numrects, SDL_Rect *rects)
 	}
 	glDrawBuffer(GL_BACK);
 	glReadBuffer(GL_BACK);
+
+	glEnable(GL_BLEND);
 }
 
 
