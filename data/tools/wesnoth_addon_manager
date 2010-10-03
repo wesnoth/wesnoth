@@ -15,6 +15,7 @@ sys.path.append("..") #TODO FIXME assume wesnoth package in PYTHONPATH?
 import wesnoth.wmldata as wmldata
 import wesnoth.wmlparser as wmlparser
 from wesnoth.campaignserver_client import CampaignClient
+from urllib2 import HTTPError
 
 if __name__ == "__main__":
     import optparse
@@ -339,7 +340,12 @@ if __name__ == "__main__":
 	creds['login'] = options.login
 	creds['password'] = options.password
 
-        resp = cs.put_campaign(name, cfgfile, wmldir, ign, stuff, creds)	
+        
+        try:
+            resp = cs.put_campaign(name, cfgfile, wmldir, ign, stuff, creds)
+        except HTTPError, e:
+            print e.read()
+            resp = None 
 
         for message in resp.find_all("message", "error"):
             print message.get_text_val("message")
