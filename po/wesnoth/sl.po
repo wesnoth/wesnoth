@@ -10,9 +10,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-09-23 12:54+0200\n"
-"PO-Revision-Date: 2006-08-14 19:33+0200\n"
-"Last-Translator: Jaka Kranjc <wesnoth@prinas.si>\n"
+"POT-Creation-Date: 2010-09-24 19:34+0200\n"
+"PO-Revision-Date: 2010-10-04 14:32+0100\n"
+"Last-Translator: Klemen Košir <klemen913@gmail.com>\n"
 "Language-Team: Slovenian\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -46,12 +46,12 @@ msgstr "Drsenje z miško"
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:33
 msgid "Keep scrolling when mouse leaves window"
-msgstr ""
+msgstr "Nadaljuj z drsenjem, ko miška zapusti okno"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:40
 msgid "Animate Map"
-msgstr ""
+msgstr "Animiraj karto"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:47
@@ -66,6 +66,7 @@ msgstr ""
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:61
+#, fuzzy
 msgid "Show Combat"
 msgstr "Prikaži boj"
 
@@ -104,19 +105,17 @@ msgstr ""
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:107
 msgid "Disable notifications"
-msgstr ""
+msgstr "Onemogoči obvestila"
 
 #. [ai]: id=default # id is needed uniquely identify a MP AI, it is not needed in the scenario AI
 #: data/ai/ais/default_ai.cfg:4
-#, fuzzy
 msgid "Multiplayer_AI^Default AI"
-msgstr "Večigralnost"
+msgstr "Privzeta UI"
 
 #. [ai]: id=testing_ai_default
 #: data/ai/ais/testing_ai_default.cfg:5
-#, fuzzy
 msgid "Multiplayer_AI^RCA AI"
-msgstr "Večigralnost"
+msgstr "RCA UI"
 
 #. [time]: id=underground
 #. [illuminated_time]: id=underground_illum
@@ -135,12 +134,14 @@ msgstr "zastrupljen"
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:749
 #: data/core/macros/abilities.cfg:554
+#, fuzzy
 msgid "berserk"
 msgstr "berzerk"
 
 #. [berserk]: id=berserk
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:752
 #: data/core/macros/abilities.cfg:556
+#, fuzzy
 msgid ""
 "Berserk:\n"
 "Whether used offensively or defensively, this attack presses the engagement "
@@ -153,6 +154,7 @@ msgstr ""
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:765
 #: data/core/macros/abilities.cfg:640
+#, fuzzy
 msgid "magical"
 msgstr "čaroben"
 
@@ -171,12 +173,14 @@ msgstr ""
 #. [firststrike]: id=firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:780
 #: data/core/macros/abilities.cfg:689
+#, fuzzy
 msgid "firststrike"
 msgstr "prvi napad"
 
 #. [firststrike]: id=firststrike
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:783
 #: data/core/macros/abilities.cfg:691
+#, fuzzy
 msgid ""
 "First Strike:\n"
 "This unit always strikes first with this attack, even if they are defending."
@@ -188,9 +192,8 @@ msgstr ""
 #. [then]
 #: data/campaigns/Under_the_Burning_Suns/scenarios/12_The_Final_Confrontation.cfg:1240
 #: src/actions.cpp:1285
-#, fuzzy
 msgid "female^slowed"
-msgstr "Izobčenka"
+msgstr "upočasnjena"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [else]
@@ -202,6 +205,7 @@ msgstr "upočasnjen"
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:16
 #: data/core/macros/abilities.cfg:10
+#, fuzzy
 msgid "heals +4"
 msgstr "ranocelnik +4"
 
@@ -236,6 +240,7 @@ msgstr ""
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:45
 #: data/core/macros/abilities.cfg:30
+#, fuzzy
 msgid "heals +8"
 msgstr "ranocelnik +8"
 
@@ -249,6 +254,7 @@ msgstr "Tatica"
 #. [heals]: id=healing
 #: data/campaigns/Under_the_Burning_Suns/utils/abilities.cfg:51
 #: data/core/macros/abilities.cfg:36
+#, fuzzy
 msgid ""
 "Heals +8:\n"
 "This unit combines herbal remedies with magic to heal units more quickly "
@@ -271,7 +277,7 @@ msgstr ""
 #. [about]
 #: data/core/about.cfg:7
 msgid "Programming"
-msgstr ""
+msgstr "Programiranje"
 
 #. [about]
 #: data/core/about.cfg:210
@@ -293,7 +299,7 @@ msgstr "Glasba"
 #. [about]
 #: data/core/about.cfg:617
 msgid "Sound Effects"
-msgstr ""
+msgstr "Zvočni učinki"
 
 #. [about]
 #: data/core/about.cfg:633
@@ -309,6 +315,7 @@ msgstr "Večigralske karte"
 
 #. [about]
 #: data/core/about.cfg:741
+#, fuzzy
 msgid "Packagers"
 msgstr "Paketarji"
 
@@ -320,6 +327,7 @@ msgstr "Razno"
 
 #. [about]
 #: data/core/about.cfg:1033
+#, fuzzy
 msgid "Internationalization Managers"
 msgstr "Upravitelji internacionalizacije"
 
@@ -332,13 +340,12 @@ msgstr "Angleški (GB) prevod"
 #. [about]
 #: data/core/about.cfg:1065
 msgid "Afrikaans Translation"
-msgstr "Afrikaanski prevod"
+msgstr "Afrikanski prevod"
 
 #. [about]
 #: data/core/about.cfg:1081
-#, fuzzy
 msgid "Arabic Translation"
-msgstr "Srbski prevod"
+msgstr "Arabski prevod"
 
 #. [about]
 #: data/core/about.cfg:1088
@@ -362,15 +369,13 @@ msgstr "Kitajski prevod"
 
 #. [about]
 #: data/core/about.cfg:1223
-#, fuzzy
 msgid "Chinese (Taiwan) Translation"
-msgstr "Kitajski prevod"
+msgstr "Kitajski (tajvanski) prevod"
 
 #. [about]
 #: data/core/about.cfg:1245
-#, fuzzy
 msgid "Croatian Translation"
-msgstr "Katalonski prevod"
+msgstr "Hrvaški prevod"
 
 #. [about]
 #: data/core/about.cfg:1252
@@ -390,7 +395,7 @@ msgstr "Nizozemski prevod"
 #. [about]
 #: data/core/about.cfg:1404
 msgid "English (GB) Translation"
-msgstr "Angleški (GB) prevod"
+msgstr "Angleški (VB) prevod"
 
 #. [about]
 #: data/core/about.cfg:1417
@@ -401,7 +406,7 @@ msgstr "Angleški (GB) prevod"
 #. [about]
 #: data/core/about.cfg:1441
 msgid "Esperanto Translation"
-msgstr "Prevod v Esperanto"
+msgstr "Esperanto prevod"
 
 #. [about]
 #: data/core/about.cfg:1460
@@ -425,15 +430,13 @@ msgstr "Francoski prevod"
 
 #. [about]
 #: data/core/about.cfg:1682
-#, fuzzy
 msgid "Friulian Translation"
-msgstr "Filipinski prevod"
+msgstr "Furlanski prevod"
 
 #. [about]
 #: data/core/about.cfg:1689
-#, fuzzy
 msgid "Galician Translation"
-msgstr "Slovenski prevod"
+msgstr "Galicijski prevod"
 
 #. [about]
 #: data/core/about.cfg:1725
@@ -457,9 +460,8 @@ msgstr "Madžarski prevod"
 
 #. [about]
 #: data/core/about.cfg:1900
-#, fuzzy
 msgid "Icelandic Translation"
-msgstr "Italjanski prevod"
+msgstr "Islandski prevod"
 
 #. [about]
 #: data/core/about.cfg:1910
@@ -488,27 +490,23 @@ msgstr "Latinski prevod"
 
 #. [about]
 #: data/core/about.cfg:2048
-#, fuzzy
 msgid "Latvian Translation"
-msgstr "Latinski prevod"
+msgstr "Latvijski prevod"
 
 #. [about]
 #: data/core/about.cfg:2059
-#, fuzzy
 msgid "Lithuanian Translation"
-msgstr "Italjanski prevod"
+msgstr "Litovski prevod"
 
 #. [about]
 #: data/core/about.cfg:2076
-#, fuzzy
 msgid "Macedonian Translation"
-msgstr "Indonezijski prevod"
+msgstr "Makedonski prevod"
 
 #. [about]
 #: data/core/about.cfg:2084
-#, fuzzy
 msgid "Marathi Translation"
-msgstr "Latinski prevod"
+msgstr "Maratski prevod"
 
 #. [about]
 #: data/core/about.cfg:2093
@@ -532,9 +530,8 @@ msgstr "Portugalski (Brazilija) prevod"
 
 #. [about]
 #: data/core/about.cfg:2204
-#, fuzzy
 msgid "Romanian Translation"
-msgstr "Estonski prevod"
+msgstr "Romunski prevod"
 
 #. [about]
 #: data/core/about.cfg:2212
@@ -573,24 +570,22 @@ msgstr "Turški prevod"
 
 #. [about]
 #: data/core/about.cfg:2449
-#, fuzzy
 msgid "Valencian (southern Catalan) Translation"
-msgstr "Slovenski prevod"
+msgstr "Valencijski (južnokatalonski) prevod"
 
 #. [about]
 #: data/core/about.cfg:2462
-#, fuzzy
 msgid "Vietnamese Translation"
-msgstr "Kitajski prevod"
+msgstr "Vietnamski prevod"
 
 #. [about]
 #: data/core/about.cfg:2478
-#, fuzzy
 msgid "RACV's Translation"
-msgstr "Kitajski prevod"
+msgstr "Valencijski (RACV) prevod"
 
 #. [about]
 #: data/core/about.cfg:2485
+#, fuzzy
 msgid "Bots"
 msgstr "IRC roboti"
 
@@ -603,6 +598,7 @@ msgstr "Uvod"
 #. [section]: id=gameplay
 #. [topic]: id=..gameplay
 #: data/core/help.cfg:27 data/core/help.cfg:135
+#, fuzzy
 msgid "Gameplay"
 msgstr "Igra"
 
@@ -610,6 +606,7 @@ msgstr "Igra"
 #. [section]: id=traits_section
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:33 data/core/help.cfg:355 src/menu_events.cpp:847
+#, fuzzy
 msgid "Traits"
 msgstr "Značilnosti"
 
@@ -622,21 +619,22 @@ msgstr "Enote"
 #. [section]: id=abilities_section
 #. [topic]: id=..abilities_section
 #: data/core/help.cfg:51 data/core/help.cfg:99
+#, fuzzy
 msgid "Abilities"
-msgstr "Sposobnosti"
+msgstr "Sposobnosti / Zmožnosti"
 
 #. [section]: id=weapon_specials
 #. [topic]: id=..weapon_specials
 #: data/core/help.cfg:59 data/core/help.cfg:108
+#, fuzzy
 msgid "Weapon Specials"
 msgstr "Posebnosti orožij"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [section]: id=factions_section
 #: data/core/help.cfg:67 src/help.cpp:1287 src/help.cpp:1289
-#, fuzzy
 msgid "Factions"
-msgstr "Stran"
+msgstr "Frakcije"
 
 #. [section]: id=terrains
 #. [topic]: id=..terrains
@@ -673,9 +671,8 @@ msgstr ""
 
 #. [topic]: id=.unknown_unit
 #: data/core/help.cfg:118
-#, fuzzy
 msgid "Unknown Unit"
-msgstr "Neznan scenarij"
+msgstr "Neznana enota"
 
 #. [topic]: id=.unknown_unit
 #: data/core/help.cfg:121
@@ -693,6 +690,7 @@ msgstr "Pregled"
 
 #. [topic]: id=introduction_topic
 #: data/core/help.cfg:129
+#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -712,11 +710,13 @@ msgstr ""
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:141
+#, fuzzy
 msgid "Fundamentals of Gameplay"
 msgstr "Osnove igranja"
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:142
+#, fuzzy
 msgid ""
 "These pages outline all you need to know to play Battle for Wesnoth. They "
 "cover how to play and the basic mechanics behind the game. As you play the "
@@ -731,6 +731,7 @@ msgstr ""
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:144
+#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -773,6 +774,7 @@ msgstr "O igri"
 
 #. [topic]: id=about_game
 #: data/core/help.cfg:153
+#, fuzzy
 msgid ""
 "The game takes place over a series of battles, called scenarios. Each "
 "scenario pits your troops against the troops of one or more adversaries. You "
@@ -790,6 +792,7 @@ msgstr ""
 
 #. [topic]: id=about_game
 #: data/core/help.cfg:155
+#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -807,7 +810,7 @@ msgstr ""
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:161
 msgid "Victory and Defeat"
-msgstr ""
+msgstr "Zmaga in poraz"
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:162
@@ -863,6 +866,7 @@ msgstr ""
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:174
+#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -895,6 +899,7 @@ msgstr ""
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:178
+#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -931,6 +936,7 @@ msgstr "Krogle"
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:188
+#, fuzzy
 msgid ""
 "On top of the energy bar shown next to each unit of yours is an orb. For "
 "units you control, this orb is:"
@@ -940,36 +946,43 @@ msgstr ""
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:189
+#, fuzzy
 msgid "green if it hasn't moved this turn,"
 msgstr "zelena, če se enota to potezo še ni premaknila,"
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:190
+#, fuzzy
 msgid "yellow if it has moved, but could still move further or attack, or"
 msgstr "rumena, če se je, ampak bi se še lahko ali pa lahko napade, ali pa"
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:191
+#, fuzzy
 msgid "red if it has used all its movement this turn."
 msgstr "rdeča, če je porabila že vse gibalne točke za to potezo."
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:192
+#, fuzzy
 msgid "The orb is blue if the unit is an ally you do not control."
 msgstr "Krogla je modra, če je enota zavezniška."
 
 #. [topic]: id=orbs
 #: data/core/help.cfg:193
+#, fuzzy
 msgid "Enemy units have no orb on top of their energy bar."
 msgstr "Sovražne enote pa nimajo krogle."
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:200
+#, fuzzy
 msgid "Hitpoints and Experience"
-msgstr "Zdravje in izkušnje"
+msgstr "Življenjske in ___ točke"
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:201
+#, fuzzy
 msgid ""
 "Each unit has a certain number of hitpoints (HP). If the hitpoints of a unit "
 "drop below 1, the unit dies. Each unit also has a certain number of "
@@ -982,6 +995,7 @@ msgstr ""
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:205
+#, fuzzy
 msgid ""
 "The hitpoints and experience points are both indicated in the status pane "
 "using two numbers (the current value and the maximum value the unit can "
@@ -1011,6 +1025,7 @@ msgstr "Premikanje"
 
 #. [topic]: id=movement
 #: data/core/help.cfg:214
+#, fuzzy
 msgid ""
 "Movement in Battle for Wesnoth is simple. Click on the unit you wish to move "
 "to select it, then click on the hex you wish to move it to. When a unit is "
@@ -1025,20 +1040,21 @@ msgid ""
 "a move in a village you don't already own will also use up a unit's "
 "movement, but will still allow it to attack."
 msgstr ""
-"Premikanje v Battle for Wesnoth je preprosto: kliknite na enoto, ki jo "
-"želite premakniti, da jo označite in potem še na ploščo kamor hočete da gre. "
-"Ko je enota izbrana, bodo vse plošče, kamor lahko to potezo gre, osvetljene, "
-"ostale pa motne. Če miško premaknete na osvetljeno ploščo, se bo prikazala "
-"obramba, ki bi jo enota tam imela. Če pa miško premaknete na motno ploščo, "
-"se bo prikazalo še število potrebnih potez, da jo enota doseže. Ob kliku se "
-"bo enota začela premikati proti njej po najhitrejši poti in tako tudi "
-"nadaljevala v naslednji(h) potezah.Če ob prvem premiku ne porabite vseh "
-"gibalnih točk, lahko enoto premaknete še enkrat. To je uporabno, ko hočete, "
-"da dve enoti zamenjata mesti. Napad bo porabil vse gibalne točke. Zavzetje "
-"vasi tudi, a enota bo še vedno lahko napadla."
+"Premikanje v igri Bitka za Wesnoth je preprosto. Kliknite na enoto, ki jo "
+"želite premakniti, da jo označite, nato pa kliknite na polje, kamor jo "
+"želite premakniti. Ko je enota izbrana, bodo vse plošče, kamor lahko to "
+"potezo gre, osvetljene, ostale pa motne. Če miško premaknete na osvetljeno "
+"ploščo, se bo prikazala obramba, ki bi jo enota tam imela. Če pa miško "
+"premaknete na motno ploščo, se bo prikazalo še število potrebnih potez, da "
+"jo enota doseže. Ob kliku se bo enota začela premikati proti njej po "
+"najhitrejši poti in tako tudi nadaljevala v naslednji(h) potezah.Če ob prvem "
+"premiku ne porabite vseh gibalnih točk, lahko enoto premaknete še enkrat. To "
+"je uporabno, ko hočete, da dve enoti zamenjata mesti. Napad bo porabil vse "
+"gibalne točke. Zavzetje vasi tudi, a enota bo še vedno lahko napadla."
 
 #. [topic]: id=movement
 #: data/core/help.cfg:216
+#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1086,6 +1102,7 @@ msgstr ""
 
 #. [topic]: id=movement
 #: data/core/help.cfg:220
+#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1101,6 +1118,7 @@ msgstr ""
 
 #. [topic]: id=shroud_and_fog
 #: data/core/help.cfg:227
+#, fuzzy
 msgid "Shroud and Fog of War"
 msgstr "Koprena in megla"
 
@@ -1136,11 +1154,13 @@ msgstr ""
 
 #. [topic]: id=combat
 #: data/core/help.cfg:237
+#, fuzzy
 msgid "Combat"
 msgstr "Boj"
 
 #. [topic]: id=combat
 #: data/core/help.cfg:238
+#, fuzzy
 msgid ""
 "Combat in Battle for Wesnoth always takes place between units in adjacent "
 "hexes. Click on your unit, and click on the enemy you want to attack: your "
@@ -1171,10 +1191,11 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"<header>text='Vrstni red in števlo napadov'</header>"
+"<header>text='Vrstni red in število udarcev'</header>"
 
 #. [topic]: id=combat
 #: data/core/help.cfg:242
+#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1197,6 +1218,7 @@ msgstr ""
 
 #. [topic]: id=combat
 #: data/core/help.cfg:244
+#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1208,6 +1230,7 @@ msgstr ""
 
 #. [topic]: id=combat
 #: data/core/help.cfg:246
+#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1250,6 +1273,7 @@ msgstr ""
 
 #. [topic]: id=combat
 #: data/core/help.cfg:250
+#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1302,6 +1326,7 @@ msgstr ""
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:260
+#, fuzzy
 msgid "Damage Types and Resistance"
 msgstr "Vrste škode in odpornosti"
 
@@ -1323,6 +1348,7 @@ msgstr ""
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:263
+#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1356,6 +1382,7 @@ msgstr ""
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:267
+#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1370,11 +1397,13 @@ msgstr ""
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:273
+#, fuzzy
 msgid "Time of Day"
 msgstr "Čas dneva"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:277
+#, fuzzy
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 " Lawful units get +25% damage in daytime, and -25% damage at night.\n"
@@ -1388,6 +1417,7 @@ msgstr ""
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:280
+#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1417,7 +1447,7 @@ msgstr "Jutro"
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:282 data/core/macros/schedules.cfg:26
 msgid "Afternoon"
-msgstr "Popoldne"
+msgstr "Popoldan"
 
 #. [time]: id=dusk
 #. [topic]: id=time_of_day
@@ -1429,16 +1459,17 @@ msgstr "Mrak"
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:284 data/core/macros/schedules.cfg:46
 msgid "First Watch"
-msgstr "Prva Straža"
+msgstr "Prva straža"
 
 #. [time]: id=second_watch
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:285 data/core/macros/schedules.cfg:58
 msgid "Second Watch"
-msgstr "Druga Straža"
+msgstr "Druga straža"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:287
+#, fuzzy
 msgid ""
 "Keep in mind that some scenarios take place underground, where it is "
 "perpetually night!"
@@ -1448,11 +1479,13 @@ msgstr ""
 
 #. [topic]: id=experience_and_advancement
 #: data/core/help.cfg:294
+#, fuzzy
 msgid "Experience and Advancement"
 msgstr "Izkušnje in napredovanja"
 
 #. [topic]: id=experience_and_advancement
 #: data/core/help.cfg:295
+#, fuzzy
 msgid ""
 "If both units survive a combat, they gain a number of experience points "
 "equal to the level of the unit they're fighting. If a unit kills another in "
@@ -1466,6 +1499,7 @@ msgstr ""
 
 #. [topic]: id=experience_and_advancement
 #: data/core/help.cfg:297
+#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1554,7 +1588,7 @@ msgid ""
 "Villages: A unit which starts a turn in a village will heal 8HP."
 msgstr ""
 "\n"
-"Vasi: Enota, ki začne svojo potezo v vasi, se bo pozdravila za 8HP."
+"Vasi: enota, ki bo začela potezo v vasi, se bo pozdravila za 8 HP."
 
 #. [topic]: id=healing
 #: data/core/help.cfg:311
@@ -1600,6 +1634,7 @@ msgstr ""
 
 #. [topic]: id=healing
 #: data/core/help.cfg:315
+#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1615,11 +1650,13 @@ msgstr ""
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:322
+#, fuzzy
 msgid "Income and Upkeep"
 msgstr "Prihodki in plače"
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:323
+#, fuzzy
 msgid ""
 "In Wesnoth, it is not enough simply to recruit units and fight. You must "
 "watch your gold as well, especially in campaigns, where you can carry extra "
@@ -1632,6 +1669,7 @@ msgstr ""
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:325
+#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1649,6 +1687,7 @@ msgstr ""
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:327
+#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1670,6 +1709,7 @@ msgstr ""
 
 #. [topic]: id=income_and_upkeep
 #: data/core/help.cfg:329
+#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1722,10 +1762,11 @@ msgstr ""
 "Vedite pa, da zdaj že dovolj veste za igranje kampanje Prestolonaslednik. "
 "Zabavajte se in vso srečo!"
 
+# Preveri!
 #. [topic]: id=about
 #: data/core/help.cfg:342
 msgid "ingame_help_item^Contributors"
-msgstr ""
+msgstr "Sodelujoči"
 
 #. [topic]: id=license
 #: data/core/help.cfg:348
@@ -1734,6 +1775,7 @@ msgstr "Licenca"
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:357
+#, fuzzy
 msgid ""
 "Most units have two traits. However, Undead units are assigned the single "
 "trait 'Undead', and Woses do not receive any traits. Traits are "
@@ -1782,10 +1824,11 @@ msgstr ""
 #. [topic]: id=traits_intelligent
 #: data/core/help.cfg:369
 msgid "Intelligent"
-msgstr "Pameten"
+msgstr "Inteligenten"
 
 #. [topic]: id=traits_intelligent
 #: data/core/help.cfg:370
+#, fuzzy
 msgid "Intelligent units require 20% less experience than usual to advance."
 msgstr ""
 "Pametne enote potrebujejo 20% manj izkušenj za napredovanje na naslednji "
@@ -1793,6 +1836,7 @@ msgstr ""
 
 #. [topic]: id=traits_intelligent
 #: data/core/help.cfg:372
+#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1825,6 +1869,7 @@ msgstr ""
 
 #. [topic]: id=traits_quick
 #: data/core/help.cfg:380
+#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1856,6 +1901,7 @@ msgstr "Odporne enote imajo 10% +3 več HP kot ponavadi."
 
 #. [topic]: id=traits_resilient
 #: data/core/help.cfg:388
+#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1879,6 +1925,7 @@ msgstr "Močan"
 
 #. [topic]: id=traits_strong
 #: data/core/help.cfg:394
+#, fuzzy
 msgid ""
 "Strong units do 1 more damage for every successful strike in melee combat, "
 "and have 1 more HP."
@@ -1888,6 +1935,7 @@ msgstr ""
 
 #. [topic]: id=traits_strong
 #: data/core/help.cfg:396
+#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1906,7 +1954,7 @@ msgstr ""
 #. [topic]: id=traits_fearless
 #: data/core/help.cfg:401
 msgid "Fearless"
-msgstr ""
+msgstr "Neustrašen"
 
 #. [topic]: id=traits_fearless
 #: data/core/help.cfg:402
@@ -1920,6 +1968,7 @@ msgstr "Zvest"
 
 #. [topic]: id=traits_loyal
 #: data/core/help.cfg:408
+#, fuzzy
 msgid ""
 "Loyal units don't incur upkeep. Most units incur an upkeep cost at the end "
 "of every turn, which is equal to their level. Loyal units do not incur this "
@@ -1930,6 +1979,7 @@ msgstr ""
 
 #. [topic]: id=traits_loyal
 #: data/core/help.cfg:410
+#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -1962,6 +2012,7 @@ msgstr "Nemrtve enote so imune na strup."
 
 #. [topic]: id=traits_undead
 #: data/core/help.cfg:418
+#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2006,12 +2057,14 @@ msgstr "Spreten"
 
 #. [topic]: id=traits_dextrous
 #: data/core/help.cfg:432
+#, fuzzy
 msgid ""
 "Dextrous units do 1 more damage for every successful strike in ranged combat."
 msgstr "Spretne enote naredijo z vsakim zadetkom na daleč 1 točko škode več."
 
 #. [topic]: id=traits_dextrous
 #: data/core/help.cfg:434
+#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -2051,9 +2104,8 @@ msgstr ""
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:447
-#, fuzzy
 msgid "Dim"
-msgstr "Srednje"
+msgstr "Omejen"
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:448
@@ -2072,9 +2124,8 @@ msgstr ""
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:455
-#, fuzzy
 msgid "Slow"
-msgstr "Upočasnjen"
+msgstr "Počasen"
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:456
@@ -2097,7 +2148,7 @@ msgstr ""
 #. [topic]: id=traits_weak
 #: data/core/help.cfg:463
 msgid "Weak"
-msgstr ""
+msgstr "Šibek"
 
 #. [topic]: id=traits_weak
 #: data/core/help.cfg:464
@@ -2119,6 +2170,7 @@ msgstr ""
 
 #. [topic]: id=terrain_flat
 #: data/core/help.cfg:484
+#, fuzzy
 msgid ""
 "Grassland represents open plains, whether cultivated, cut back for grazing, "
 "or wild. Being open ground, Grassland is both very easy to move across, but "
@@ -2193,6 +2245,7 @@ msgstr "Griči"
 
 #. [topic]: id=terrain_hills
 #: data/core/help.cfg:520
+#, fuzzy
 msgid ""
 "Hills represent any reasonably rough terrain, with enough dips and rises in "
 "the ground to provide some cover. Hills are difficult for most troops to "
@@ -2220,6 +2273,7 @@ msgstr "Gore"
 
 #. [topic]: id=terrain_mountains
 #: data/core/help.cfg:532
+#, fuzzy
 msgid ""
 "Mountains are steep enough that units often have to climb over obstacles to "
 "move. By this nature, they provide a considerable defensive bonus for most "
@@ -2246,6 +2300,7 @@ msgstr "Močvirje"
 
 #. [topic]: id=terrain_swamp_water
 #: data/core/help.cfg:544
+#, fuzzy
 msgid ""
 "Swamps represent any sort of wetlands. Swamps slow down nearly everyone, and "
 "inhibit their ability to defend themselves. An exception to this is any race "
@@ -2272,6 +2327,7 @@ msgstr "Plitva voda"
 
 #. [topic]: id=terrain_shallow_water
 #: data/core/help.cfg:556
+#, fuzzy
 msgid ""
 "Shallow water represents any body of water deep enough to come up to roughly "
 "a man's waist. This is enough to slow down nearly anyone and leave them wide "
@@ -2299,6 +2355,7 @@ msgstr "Globoka voda"
 
 #. [topic]: id=terrain_deep_water
 #: data/core/help.cfg:568
+#, fuzzy
 msgid ""
 "Deep water represents any body of water deep enough to cover a man's head. "
 "Most units cannot enter deep water: it is the domain of units which can "
@@ -2367,6 +2424,7 @@ msgstr "Pesek"
 
 #. [topic]: id=terrain_sand
 #: data/core/help.cfg:606
+#, fuzzy
 msgid ""
 "The instability of sand makes it harder for most units to cross, and leaves "
 "them wide open to attack. In contrast, the wide feet or snakelike bodies of "
@@ -2425,6 +2483,7 @@ msgstr ""
 
 #. [topic]: id=terrain_rockbound_cave
 #: data/core/help.cfg:635
+#, fuzzy
 msgid "Rockbound Cave"
 msgstr "Skalovita jama"
 
@@ -2453,6 +2512,7 @@ msgstr ""
 
 #. [topic]: id=terrain_illuminated_cave
 #: data/core/help.cfg:647
+#, fuzzy
 msgid "Illuminated Cave"
 msgstr "Osvetljena jama"
 
@@ -2473,6 +2533,7 @@ msgstr ""
 
 #. [topic]: id=terrain_fungus
 #: data/core/help.cfg:657
+#, fuzzy
 msgid "Mushroom Grove"
 msgstr "Glivni gaj"
 
@@ -2588,11 +2649,13 @@ msgstr ""
 
 #. [topic]: id=terrain_ford
 #: data/core/help.cfg:717
+#, fuzzy
 msgid "River Ford"
 msgstr "Plitvina"
 
 #. [topic]: id=terrain_ford
 #: data/core/help.cfg:720
+#, fuzzy
 msgid ""
 "When a river happens to be extremely shallow, passing over it is a trivial "
 "matter for land based units. Moreover, any creature best adapted to swimming "
@@ -2608,9 +2671,8 @@ msgstr ""
 
 #. [topic]: id=terrain_reef
 #: data/core/help.cfg:727
-#, fuzzy
 msgid "Coastal Reef"
-msgstr "Grad"
+msgstr ""
 
 #. [topic]: id=terrain_reef
 #: data/core/help.cfg:732
@@ -2656,9 +2718,8 @@ msgstr ""
 
 #. [topic]: id=terrain_impassable
 #: data/core/help.cfg:751
-#, fuzzy
 msgid "Impassable"
-msgstr "Neprehodne gore"
+msgstr "Neprehodno"
 
 #. [topic]: id=terrain_impassable
 #: data/core/help.cfg:754
@@ -2684,7 +2745,8 @@ msgid ""
 "\n"
 msgstr ""
 "\n"
-"Počisti sporočila."
+"Počisti sporočila.\n"
+"\n"
 
 #. [topic]: id=general_commands
 #: data/core/help.cfg:776
@@ -2901,6 +2963,9 @@ msgid ""
 "Create a unit of the specified type on the selected hex.\n"
 "\n"
 msgstr ""
+"\n"
+"Ustvari enoto navedene vrste na izbranem polju.\n"
+"\n"
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:843
@@ -2925,6 +2990,9 @@ msgid ""
 "Immediately advances to the next scenario in a campaign.\n"
 "\n"
 msgstr ""
+"\n"
+"Takoj napreduje na naslednji scenarij v kampanji.\n"
+"\n"
 
 #. [topic]: id=debug_commands
 #: data/core/help.cfg:852
@@ -2968,6 +3036,7 @@ msgstr ""
 
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:51
+#, fuzzy
 msgid "cures"
 msgstr "razstrupljevalec"
 
@@ -2979,6 +3048,7 @@ msgstr "Princesa"
 
 #. [heals]: id=curing
 #: data/core/macros/abilities.cfg:54
+#, fuzzy
 msgid ""
 "Cures:\n"
 "A curer can cure a unit of poison, although that unit will receive no "
@@ -2990,6 +3060,7 @@ msgstr ""
 
 #. [regenerate]: id=regenerates
 #: data/core/macros/abilities.cfg:76
+#, fuzzy
 msgid "regenerates"
 msgstr "regeneracija"
 
@@ -3013,6 +3084,7 @@ msgstr ""
 
 #. [resistance]: id=steadfast
 #: data/core/macros/abilities.cfg:98
+#, fuzzy
 msgid "steadfast"
 msgstr "neomajnost"
 
@@ -3024,6 +3096,7 @@ msgstr "neomajnost"
 
 #. [resistance]: id=steadfast
 #: data/core/macros/abilities.cfg:101
+#, fuzzy
 msgid ""
 "Steadfast:\n"
 "This unit's resistances are doubled, up to a maximum of 50%, when defending. "
@@ -3037,6 +3110,7 @@ msgstr ""
 #: data/core/macros/abilities.cfg:114 data/core/macros/abilities.cfg:137
 #: data/core/macros/abilities.cfg:172 data/core/macros/abilities.cfg:219
 #: data/core/macros/abilities.cfg:278
+#, fuzzy
 msgid "leadership"
 msgstr "vodenje"
 
@@ -3071,6 +3145,7 @@ msgstr ""
 
 #. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:347
+#, fuzzy
 msgid "skirmisher"
 msgstr "izogibalec"
 
@@ -3082,6 +3157,7 @@ msgstr "izogibalec"
 
 #. [skirmisher]: id=skirmisher
 #: data/core/macros/abilities.cfg:350
+#, fuzzy
 msgid ""
 "Skirmisher:\n"
 "This unit is skilled in moving past enemies quickly, and ignores all enemy "
@@ -3093,6 +3169,7 @@ msgstr ""
 
 #. [illuminates]: id=illumination
 #: data/core/macros/abilities.cfg:363
+#, fuzzy
 msgid "illuminates"
 msgstr "svetloba"
 
@@ -3104,6 +3181,7 @@ msgstr "svetloba"
 
 #. [illuminates]: id=illumination
 #: data/core/macros/abilities.cfg:368
+#, fuzzy
 msgid ""
 "Illuminates:\n"
 "This unit illuminates the surrounding area, making lawful units fight "
@@ -3121,6 +3199,7 @@ msgstr ""
 
 #. [teleport]: id=teleport
 #: data/core/macros/abilities.cfg:378
+#, fuzzy
 msgid "teleport"
 msgstr "teleportiranje"
 
@@ -3144,6 +3223,7 @@ msgstr ""
 
 #. [hides]: id=ambush
 #: data/core/macros/abilities.cfg:390 data/core/macros/abilities.cfg:392
+#, fuzzy
 msgid "ambush"
 msgstr "zaseda"
 
@@ -3173,6 +3253,7 @@ msgstr ""
 #. [hides]: id=nightstalk
 #: data/core/macros/abilities.cfg:416 data/core/macros/abilities.cfg:417
 #: data/core/macros/abilities.cfg:422
+#, fuzzy
 msgid "nightstalk"
 msgstr "nočni zalezovalec"
 
@@ -3197,7 +3278,7 @@ msgstr ""
 #: data/core/macros/abilities.cfg:423
 #, fuzzy
 msgid "female^nightstalk"
-msgstr "nočni zalezovalec"
+msgstr "nočna zalezovalka"
 
 #. [hides]: id=concealment
 #: data/core/macros/abilities.cfg:442 data/core/macros/abilities.cfg:448
@@ -3231,6 +3312,7 @@ msgstr ""
 
 #. [hides]: id=submerge
 #: data/core/macros/abilities.cfg:468 data/core/macros/abilities.cfg:474
+#, fuzzy
 msgid "submerge"
 msgstr "potop"
 
@@ -3283,6 +3365,7 @@ msgstr ""
 
 #. [damage]: id=backstab
 #: data/core/macros/abilities.cfg:566
+#, fuzzy
 msgid "backstab"
 msgstr "vbod v hrbet"
 
@@ -3302,6 +3385,7 @@ msgstr ""
 #. [plague]: id=plague({TYPE}), type={TYPE}
 #. [plague]: id=plague, type=Walking Corpse
 #: data/core/macros/abilities.cfg:580 data/core/macros/abilities.cfg:592
+#, fuzzy
 msgid "plague"
 msgstr "kuga"
 
@@ -3335,6 +3419,7 @@ msgstr ""
 
 #. [slow]: id=slow
 #: data/core/macros/abilities.cfg:604
+#, fuzzy
 msgid "slows"
 msgstr "upočasni"
 
@@ -3373,11 +3458,13 @@ msgstr ""
 
 #. [chance_to_hit]: id=marksman
 #: data/core/macros/abilities.cfg:626
+#, fuzzy
 msgid "marksman"
 msgstr "ostrostrelec"
 
 #. [chance_to_hit]: id=marksman
 #: data/core/macros/abilities.cfg:628
+#, fuzzy
 msgid ""
 "Marksman:\n"
 "When used offensively, this attack always has at least a 60% chance to hit."
@@ -3387,6 +3474,7 @@ msgstr ""
 
 #. [swarm]: id=swarm
 #: data/core/macros/abilities.cfg:653
+#, fuzzy
 msgid "swarm"
 msgstr "mrgolenje"
 
@@ -3407,6 +3495,7 @@ msgstr ""
 
 #. [damage]: id=charge
 #: data/core/macros/abilities.cfg:664
+#, fuzzy
 msgid "charge"
 msgstr "naskok"
 
@@ -3424,11 +3513,13 @@ msgstr ""
 
 #. [drains]: id=drains
 #: data/core/macros/abilities.cfg:678
+#, fuzzy
 msgid "drains"
 msgstr "črpa"
 
 #. [drains]: id=drains
 #: data/core/macros/abilities.cfg:680
+#, fuzzy
 msgid ""
 "Drain:\n"
 "This unit drains health from living units, healing itself for half the "
@@ -3538,9 +3629,8 @@ msgstr ""
 #: data/core/macros/ai_controller.cfg:492
 #: data/core/macros/ai_controller.cfg:884
 #: data/core/macros/ai_controller.cfg:919
-#, fuzzy
 msgid "Back"
-msgstr "Črna"
+msgstr "Nazaj"
 
 #. [option]: type=objective
 #: data/core/macros/ai_controller.cfg:363
@@ -3636,17 +3726,17 @@ msgstr ""
 #. [literal]
 #: data/core/macros/ai_controller.cfg:854
 msgid "Set objective..."
-msgstr ""
+msgstr "Nastavi cilj ..."
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:894
 msgid "Set behavior..."
-msgstr ""
+msgstr "Nastavi obnašanje ..."
 
 #. [literal]
 #: data/core/macros/ai_controller.cfg:934
 msgid "Exit"
-msgstr ""
+msgstr "Izhod"
 
 #: data/core/macros/ai_controller.cfg:1061
 msgid "Set special orders..."
@@ -3687,11 +3777,13 @@ msgstr "Največji HP bonus +"
 
 #. [advancement]: id=tough_{HP_ADVANCE_NUMBER}
 #: data/core/macros/amla.cfg:38
+#, fuzzy
 msgid ", MAX XP +25%"
 msgstr ", MAX XP +25%"
 
 #. [advancement]: id=tough_{HP_ADVANCE_NUMBER}
 #: data/core/macros/amla.cfg:38
+#, fuzzy
 msgid "Max HP bonus +"
 msgstr "Največji HP bonus +"
 
@@ -3719,18 +3811,24 @@ msgid ""
 "\n"
 "100% of finishing gold carried over to the next scenario."
 msgstr ""
+"\n"
+"100% končnega zlata se prenese v naslednji scenarij."
 
 #: data/core/macros/carryover-utils.cfg:26
 msgid ""
 "\n"
 "40% of finishing gold carried over to the next scenario."
 msgstr ""
+"\n"
+"40% končnega zlata se prenese v naslednji scenarij."
 
 #: data/core/macros/carryover-utils.cfg:30
 msgid ""
 "\n"
 "20% of finishing gold carried over to the next scenario."
 msgstr ""
+"\n"
+"20% končnega zlata se prenese v naslednji scenarij."
 
 #. [objective]: description=<span color='white'>, condition=win
 #: data/core/macros/carryover-utils.cfg:34
@@ -3748,11 +3846,13 @@ msgstr ""
 
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:42
+#, fuzzy
 msgid "A swift victory"
 msgstr "Hitro zmago"
 
 #. [message]: speaker=unit
 #: data/core/macros/items.cfg:49
+#, fuzzy
 msgid ""
 "With this golden coin, I wish that this battle end in a swift and safe "
 "victory."
@@ -3762,26 +3862,31 @@ msgstr ""
 
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:55
+#, fuzzy
 msgid "Lots of gold"
 msgstr "Ogromno zlata"
 
 #. [message]: speaker=unit
 #: data/core/macros/items.cfg:62
+#, fuzzy
 msgid "I wish this single gold coin be returned ten-fold to me."
 msgstr "Želim si, da bi se mi ta zlati kovanec desetkrat povrnil."
 
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:68
+#, fuzzy
 msgid "Peace throughout Wesnoth."
 msgstr "Mir po vsem Wesnothu."
 
 #. [message]: speaker=unit
 #: data/core/macros/items.cfg:75
+#, fuzzy
 msgid "The only thing worth wishing for is peace throughout the land."
 msgstr "Le mir po vsej deželi je vreden te želje."
 
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:81
+#, fuzzy
 msgid "Don't make a wish."
 msgstr "Ničesar si ne zaželi."
 
@@ -3799,16 +3904,19 @@ msgstr "Osvetljena jama"
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:226
+#, fuzzy
 msgid "Potion of Healing"
 msgstr "Napitek Zdravljenja"
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:229
+#, fuzzy
 msgid "A feeling of well-being overwhelms the drinker."
 msgstr "Pivca preplavi občutek dobrega počutja."
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:230
+#, fuzzy
 msgid "You are not worthy of healing."
 msgstr "Niste vredni zdravljenja."
 
@@ -3819,6 +3927,7 @@ msgstr "Strup"
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:267
+#, fuzzy
 msgid "Poison is seeping through the veins of this unit at this very moment."
 msgstr "Strup se, v tem trenutku, pretaka po žilah te enote."
 
@@ -3829,6 +3938,7 @@ msgid ""
 msgstr ""
 
 #: data/core/macros/items.cfg:288
+#, fuzzy
 msgid "I am not suited to the use of this item! Let another take it."
 msgstr "Jaz nisem primeren za uporabo tega predmeta! Naj ga vzame nekdo drug."
 
@@ -3846,79 +3956,94 @@ msgstr ""
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:322
+#, fuzzy
 msgid "Potion of Strength"
 msgstr "Napitek Moči"
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:325
+#, fuzzy
 msgid "Strength is given to the drinker."
 msgstr "Pivec postane močnejši."
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:365
+#, fuzzy
 msgid "Potion of Decay"
 msgstr "Napitek Razpadanja"
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:368
+#, fuzzy
 msgid "This poor unit drank something really bad."
 msgstr "Ta uboga enota je popila nekaj zelo slabega."
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:402
+#, fuzzy
 msgid "Ring of Regeneration"
 msgstr "Prstan Regeneracije"
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:405
+#, fuzzy
 msgid "This ring will heal the bearer a little each turn."
 msgstr "Ta prstan bo, vsako potezo, nosilca rahlo pozdravil."
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:441
+#, fuzzy
 msgid "Ring of Slowness"
 msgstr "Prstan Počasnosti"
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:444
+#, fuzzy
 msgid "The bearer of this ring is slowed."
 msgstr "Nosilec tega prstana je upočasnjen."
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:478
+#, fuzzy
 msgid "Staff of Swiftness"
 msgstr "Palica Okretnosti"
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:481
+#, fuzzy
 msgid "This staff will grant the bearer swift movement."
 msgstr "Ta palica bo naredila svojega nosilca hitrejšega."
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:482
+#, fuzzy
 msgid "Only magical beings can wield such an object."
 msgstr "Samo čarobna bitja lahko uporabljajo tak predmet."
 
 #: data/core/macros/items.cfg:532
+#, fuzzy
 msgid "Only the mermen can use this item!"
 msgstr "Samo povodni možje lahko uporabljajo ta predmet!"
 
 #: data/core/macros/items.cfg:532
 msgid "Should $unit.name pick up the trident?"
-msgstr ""
+msgstr "Naj $unit.name pobere trizob?"
 
 #. [object]
 #: data/core/macros/items.cfg:534
+#, fuzzy
 msgid "Storm Trident"
 msgstr "Nevihtni Trizob"
 
 #. [object]
 #: data/core/macros/items.cfg:537
+#, fuzzy
 msgid "This trident allows a merman to shoot electric bolts at his enemies!"
 msgstr "Ta trizob povodnemu možu omogoča, da na svoje sovražnike meče strele!"
 
 #. [effect]: type=fire
 #: data/core/macros/items.cfg:541
+#, fuzzy
 msgid "storm trident"
 msgstr "nevihtni trizob"
 
@@ -3934,6 +4059,15 @@ msgid ""
 "Merritos Gark,Morusté,Murr,Omataké,Reshan,Vashitt,Velnick,Veralon,Veramo,"
 "Verath,Verditt,Verkon,Verlinn,Vermad,Vertick,Vladnir"
 msgstr ""
+"Egar,Elch,Ga'ash,Gadé Ihn,Gakré Ohm,Galeck,Galsh,Garadin,Garchin,Gark,Garlan,"
+"Garlin Ohn,Garrutin,Gart'lo,Garushi,Gashinar,Gashol,Gaushii,Gaustun,Gegchi,"
+"Gelka Kon,Gelknick,Gillan,Gisharri,Gost,Grada,Græt Ihn,Grashen,Gravlan,Grag,"
+"Grelnit,Grenn Ohn,Greth,Gribbel,Gridda,Grish,Gron Ihn,Ka,Kahn Ih,Karigan,"
+"Karri Kon,Karron,Kask,Kegrid,Kerath Ihn,Kerath Kor,Klash,Kon Garashé,Kraag,"
+"Krall Ohn,Kran Kor,Krash,Kraslar,Krenli,Kruggen,Kun,Mah Toa,Margian,"
+"Mar'Ildian,Markan,Markinos,Mar Ohn,Marra Di'lek,Marrito,Marritos,Merkush,"
+"Merritos Gark,Morusté,Murr,Omataké,Reshan,Vashitt,Velnick,Veralon,Veramo,"
+"Verath,Verditt,Verkon,Verlinn,Vermad,Vertick,Vladnir"
 
 #: data/core/macros/names.cfg:19
 msgid ""
@@ -3941,6 +4075,9 @@ msgid ""
 "Eshi,Olath,Omage,Omagrra,Orra Ka,Orridan,Orrida,Oshibi,Vallin,Valnirra,"
 "Valnitt,Velisk,Verra,Vellin Ka,Veshtar,Vushtin"
 msgstr ""
+"Alen Ka,Alinash Mal,Ashirt,Auginet Ka,Auuglann,Damell,Dell,Demla,Dinsill,"
+"Eshi,Olath,Omage,Omagrra,Orra Ka,Orridan,Orrida,Oshibi,Vallin,Valnirra,"
+"Valnitt,Velisk,Verra,Vellin Ka,Veshtar,Vushtin"
 
 #: data/core/macros/names.cfg:23
 msgid ""
@@ -3988,6 +4125,49 @@ msgid ""
 "Trithduril,Trithduring,Trithdurlos,Trithdurol,Trithdursil,Trithdurus,"
 "Triththaas,Triththail,Triththaing,Triththasol,Triththaus"
 msgstr ""
+"Aigaithas,Aigaithil,Aigaithing,Aigaithol,Aigalas,Aigaling,Aigalis,Aigalol,"
+"Aigalsil,Aigatas,Aigatis,Aigatlos,Aigatsil,Aigatsol,Aigatus,Aigcatas,"
+"Aigcatil,Aigcating,Aigcatis,Aigcatsil,Aigcatsol,Aigcatus,Aigdring,Aigdris,"
+"Aigdrlos,Aigdrsil,Aigdrsol,Aigduras,Aigdurlos,Aigdursol,Aigthaing,Aigthais,"
+"Aigthasil,Aigthaus,Alaithas,Alaithis,Alaithlos,Alaithol,Alaithsol,Alaithus,"
+"Alalas,Alalil,Alalol,Alalsol,Alalus,Alatas,Alatil,Alating,Alatlos,Alatsil,"
+"Alcatil,Alcatis,Alcatlos,Alcatsil,Aldras,Aldril,Aldring,Aldris,Aldrlos,"
+"Aldrol,Aldrsol,Alduras,Aldurlos,Aldurol,Althaas,Althail,Althalos,Althaol,"
+"Althasil,Althasol,Althaus,Anaithas,Anaithil,Anaithing,Anaithis,Anaithsil,"
+"Anaithus,Analil,Anallos,Analol,Analsil,Analus,Anatas,Anating,Anatis,Anatol,"
+"Anatsol,Ancatas,Ancatil,Ancatol,Ancatus,Andril,Andris,Andrlos,Andrus,Anduril,"
+"Andurol,Andursol,Andurus,Anthaas,Anthaing,Anthais,Anthaol,Anthasil,Anthasol,"
+"Anthaus,Augaithas,Augaithing,Augaithsil,Augaithus,Augalas,Augaling,Augalol,"
+"Augating,Augatlos,Augatol,Augatsil,Augatsol,Augcatas,Augcatil,Augcatis,"
+"Augcatol,Augcatsil,Augcatus,Augdras,Augdris,Augdrsil,Augdrus,Augduras,"
+"Augduril,Augduring,Augdurol,Augdursol,Augdurus,Augthail,Augthais,Augthalos,"
+"Augthaol,Dulaithil,Dulaithing,Dulaithlos,Dulaithsil,Dulaithsol,Dulalas,"
+"Dulaling,Dulalis,Dulalsil,Dulatil,Dulating,Dulatol,Dulatsol,Dulatus,Dulcatil,"
+"Dulcating,Dulcatlos,Dulcatol,Dulcatsil,Dulcatsol,Duldril,Duldris,Duldrlos,"
+"Duldrol,Duldrsil,Duldrus,Dulduras,Dulduring,Duldursil,Duldurus,Dulthalos,"
+"Dulthasil,Dulthasol,Dulthaus,Glamaithil,Glamaithis,Glamaithol,Glamaithsol,"
+"Glamalil,Glamaling,Glamalis,Glamallos,Glamalsil,Glamalus,Glamatil,Glamatus,"
+"Glamcatas,Glamcatil,Glamcating,Glamcatsil,Glamcatus,Glamdras,Glamdril,"
+"Glamdrlos,Glamdrsol,Glamduras,Glamduril,Glamduring,Glamduris,Glamdursol,"
+"Glamthaas,Glamthaol,Glamthasil,Glamthasol,Glamthaus,Glomin,Gomaithas,"
+"Gomaithil,Gomaithol,Gomaithsol,Gomalil,Gomalis,Gomalus,Gomatas,Gomatil,"
+"Gomating,Gomatis,Gomatlos,Gomatol,Gomcatil,Gomcatis,Gomcatlos,Gomdras,"
+"Gomdril,Gomdring,Gomdris,Gomdrol,Gomdrsil,Gomduris,Gomdurlos,Gomdursil,"
+"Gomdursol,Gomdurus,Gomthaas,Gomthalos,Gomthasol,Naraithil,Naraithing,"
+"Naraithol,Naraithsil,Naraithsol,Naraithus,Naralas,Naralil,Naralsil,Naralus,"
+"Naratlos,Naratol,Naratsil,Narcating,Narcatis,Narcatol,Narcatsil,Narcatsol,"
+"Nardras,Nardril,Nardring,Nardris,Nardrol,Nardrsil,Nardrsol,Nardrus,Narduras,"
+"Narduril,Nardurol,Narthalos,Narthaol,Pelaithas,Pelaithil,Pelaithing,"
+"Pelaithis,Pelaithlos,Pelaithol,Pelaithsil,Pelaithsol,Pelalil,Pelaling,"
+"Pelalis,Pelalsil,Pelalsol,Pelalus,Pelatil,Pelating,Pelatis,Pelatol,Pelatsil,"
+"Pelatus,Pelcating,Pelcatlos,Pelcatol,Pelcatsil,Peldras,Peldril,Peldrsol,"
+"Peldrus,Pelduril,Pelduring,Pelduris,Peldurol,Peldursol,Peldurus,Pelthaas,"
+"Pelthail,Pelthasil,Trithaithas,Trithaithil,Trithaithis,Trithaithlos,"
+"Trithaithol,Trithaithsil,Trithaithsol,Trithaithus,Trithalis,Trithalol,"
+"Trithatas,Trithatil,Trithatlos,Trithatsol,Trithcatlos,Trithcatsol,Trithcatus,"
+"Trithdril,Trithdring,Trithdris,Trithdrlos,Trithdrol,Trithdrsol,Trithdrus,"
+"Trithduril,Trithduring,Trithdurlos,Trithdurol,Trithdursil,Trithdurus,"
+"Triththaas,Triththail,Triththaing,Triththasol,Triththaus"
 
 #: data/core/macros/names.cfg:27
 msgid ""
@@ -4049,6 +4229,63 @@ msgid ""
 "Vándel,Vandir,Varalas,Vararion,Vebril,Vebrilas,Vebrinduil,Vel,Vilith,Vol,"
 "Vólas,Vóldur,Vondel,Vorfin,Vorfindil,Vulas,Vuldur,Vunduil,Vylas,Vyldor"
 msgstr ""
+"Amadrieriand,Amáril,Amelad,Ameldor,Amendel,Ameng,Amilmaldur,Amilmalith,"
+"Amilmandir,Amind,Amiol,Amiorion,Amithrarion,Amóldor,Amorfimir,Amorfir,Amowyn,"
+"Amulas,Amundil,Anán,Anebrin,Anebrir,Anémbor,Anénduil,Anerion,Anilad,Anil-"
+"Gawyn,Anilmambor,Anilmariand,Anior,Anithranduil,Anol,Anon,Anorfing,Anundil,"
+"Belán,Belandil,Belarandel,Belel,Belén,Belil-Gandil,Belilmand,Belilmang,"
+"Beliondil,Beliril,Belithraldor,Belithrawyn,Belólad,Belómir,Belondel,Belyrion,"
+"Cadriembor,Cadrieriand,Cálad,Caladrielas,Calándel,Caldur,Cáldur,Calebrindel,"
+"Calebrindir,Calénduil,Calil-Gandir,Calil-Gawyn,Calioriand,Caliril,Calónduil,"
+"Caloril,Cándir,Canduil,Caraldur,Carang,Célad,Celadrieriand,Celang,Celaral,"
+"Celarandil,Celáriand,Celebririon,Celelas,Celendel,Celér,Celilmalas,Celiondir,"
+"Celior,Celiorion,Celong,Celór,Celóril,Celorion,Celundir,Celuwyn,Celyndel,"
+"Cénduil,Cindil,Ciong,Cithralad,Cithraldur,Cithrand,Cithrandel,Cithraril,Col,"
+"Corfil,Corfildur,Cówyn,Cun,Cundir,Cylas,Delán,Delánd,Delandel,Delaraldur,"
+"Deláril,Delawyn,Deléng,Delilmaldor,Deliol,Delithrar,Deliwyn,Delóldor,"
+"Delorfilad,Delorfilith,Delorion,Delundil,Eäradriendel,Eäradrier,Eäránduil,"
+"Eäraralad,Eärebrindel,Eäréldor,Eäreng,Eärérion,Eärithrandil,Eäromir,"
+"Eärorfiriand,Eäryldur,Eäryriand,Eladrieng,Elálith,Elánd,Elándil,Elebrildor,"
+"Elebrindel,Elebriril,Elélas,Elémbor,Elemir,Elen,Elil-Garil,Elilmaldur,"
+"Eliomir,Eliondil,Elolas,Elólas,Elor,Elorfilad,Elradrien,Elralith,Elran,"
+"Elreldur,Elrilmand,Elrioldor,Elriolith,Elrithralith,Elrithranduil,Elrorfir,"
+"Elval,Elvandir,Elvaramir,Elváwyn,Elvebrind,Elvebrindel,Elvélith,Elvémir,"
+"Elverion,Elvil-Garion,Elvilmaldur,Elvilmaril,Elvioldur,Elvombor,Elvónduil,"
+"Elvorfimir,Elvorfiriand,Elvorfiril,Elvóriand,Elvund,Elyldor,Elyrion,Eowambor,"
+"Eowanduil,Eowar,Eowaraldor,Eowaran,Eowarar,Eowariand,Eowarion,Eowebrind,"
+"Eowémir,Eowil-Garion,Eowimbor,Eowiomir,Eowithrawyn,Eowóldur,Eoworfildor,"
+"Eowówyn,Eowylas,Fadriendel,Fandel,Farandir,Fáwyn,Fendel,Fer,Filman,Fioril,"
+"Fithraril,Forfilas,Fyrion,Gadriendil,Gadrieng,Galadrieldor,Galálad,Galálas,"
+"Galalith,Galar,Galelas,Galeldur,Galelith,Galémbor,Galithrariand,Galoldur,"
+"Galuldur,Galur,Galurion,Gambor,Gán,Ganduil,Garaldor,Gararil,Gelad,Géril,Gil-"
+"Gandel,Gil-Gang,Giombor,Githral,Githralad,Gladriendil,Glal,Glámbor,Glandil,"
+"Glarang,Glararil,Glilmal,Glimir,Glior,Glólas,Gloldor,Glómir,Glon,Glul,Golad,"
+"Gor,Gumbor,Gyl,Gymbor,Gyn,Harariand,Háriand,Hebril,Hemir,Hénduil,Hilas,Hil-"
+"Garion,Hilmariand,Hiong,Hirion,Hithrandel,Horfilad,Horfindel,Hundel,Hymir,"
+"Hyrion,Hywyn,Isadrieng,Isándir,Isarandel,Isarar,Iselas,Isér,Isilmandel,"
+"Isirion,Isithral,Isól,Isóndel,Isóng,Isorfilad,Isorfindir,Isuwyn,Isyndel,"
+"Legal,Legaran,Legémir,Legéril,Legilad,Legil-Gal,Legiondel,Legithralith,"
+"Legorfindil,Legorfirion,Legówyn,Legyl,Legyn,Linduilas,Lómadrieril,Lómarand,"
+"Lómariand,Lómebrilad,Lómebrind,Lómémbor,Lómilmaril,Lómiriand,Lómorfindil,"
+"Lómowyn,Madrieril,Maldur,Mánduil,Maraldur,Mebrin,Méng,Mérion,Miolith,Miomir,"
+"Mithrand,Mondir,Móndir,Morfilas,Morfin,Morfiriand,Mylith,Nadrieldor,Nalith,"
+"Nán,Nél,Nil-Galas,Nil-Galith,Nil-Gar,Nilmar,Nóndel,Norfildor,Norfilith,"
+"Norfindil,Norfindir,Numbor,Nyldur,Padrieriand,Padrieril,Pamir,Paraldor,"
+"Parariand,Pilmalad,Pindir,Pór,Porfildur,Pumbor,Pyldur,Rebrir,Réndir,"
+"Rilmandil,Rithrandil,Ról,Róldor,Roldur,Róldur,Rorfilad,Rorfindil,Rówyn,Ryn,"
+"Sadrielas,Sebrin,Sebriril,Sénd,Sil-Gal,Sólad,Sorfind,Sóriand,Tadriendir,"
+"Taral,Taraldur,Táriand,Tendel,Téwyn,Thradrieriand,Thrambor,Thraral,Threbring,"
+"Thrélad,Thréldur,Thril-Gamir,Thril-Gandir,Thril-Gar,Thrilmandel,Thrimir,"
+"Thrion,Thrithran,Throlas,Thrón,Thróng,Thrund,Thryriand,Til-Gan,Tilmalad,"
+"Tilmalas,Tinandir,Tinarambor,Tinarariand,Tinén,Tinil-Ganduil,Tinilmand,"
+"Tinilmawyn,Tinimir,Tinindil,Tinithrar,Tinoldor,Tinond,Tinorfind,Tinorfiriand,"
+"Tinóriand,Tinowyn,Tinun,Tinyl,Tion,Tolas,Torfildur,Tówyn,Tylad,Unadrieldor,"
+"Unadrier,Unál,Unalas,Unálas,Unaraldur,Unaril,Unárion,Unebrin,Unebrind,"
+"Uneldor,Unil,Unil-Gan,Uniolith,Unioril,Unólith,Unombor,Unóndel,Unondir,"
+"Unorfildor,Unorfiril,Unorfiwyn,Unulad,Uradrielas,Uradrierion,Urálas,Urálith,"
+"Urambor,Urér,Uril-Gambor,Urilmalith,Uróldor,Urorfildor,Urul,Urymir,Válad,Ván,"
+"Vándel,Vandir,Varalas,Vararion,Vebril,Vebrilas,Vebrinduil,Vel,Vilith,Vol,"
+"Vólas,Vóldur,Vondel,Vorfin,Vorfindil,Vulas,Vuldur,Vunduil,Vylas,Vyldor"
 
 #: data/core/macros/names.cfg:28
 msgid ""
@@ -4117,14 +4354,78 @@ msgid ""
 "Vithrang,Vithraniel,Viwiel,Vódia,Vóng,Vorficlya,Vorfing,Vorfirith,Vorfiwiel,"
 "Vówien"
 msgstr ""
+"Amadrielia,Amadrielindë,Amadriendra,Amadriewen,Amarang,Amebrilindë,Amedë,"
+"Améthien,Amewien,Amil-Gadith,Amil-Garith,Amilmadia,Amiolith,Amionia,"
+"Amithraniel,Amithrawien,Amiwen,Amodë,Amorfilith,Amorith,Amulia,Amuviel,"
+"Amuwen,Analia,Anang,Anaraclya,Anáthien,Anebriniel,Anilmarith,Aning,Aniorith,"
+"Anówien,Anundra,Anuthiel,Anuthien,Anylindë,Anythien,Anywien,Belaclya,"
+"Beladrielith,Beladriewen,Beladriewien,Belarania,Belaraviel,Belebrindra,"
+"Belendra,Beliolia,Belithraniel,Belithrawiel,Belithrawien,Belowen,Belulindë,"
+"Cádë,Cadriewen,Caladrieng,Calándra,Calang,Calánia,Calebriwien,Calewen,"
+"Calewiel,Calil-Galith,Calilmalith,Calithraclya,Calóniel,Calorfiniel,Calówien,"
+"Caluclya,Ceclya,Celadë,Celália,Celálindë,Celarandra,Celararith,Celárith,"
+"Celebriniel,Celebriviel,Celelith,Celéng,Celérith,Celidien,Celilith,Celindë,"
+"Celiodë,Celioniel,Celith,Celithradith,Celódith,Celorfilindë,Celorfing,"
+"Celorfiwien,Celówien,Celylia,Cethien,Cing,Cithralith,Cithrania,Cithrawen,"
+"Cólindë,Corfiviel,Cydia,Delararith,Delebrinia,Deléthien,Delil-Ganiel,"
+"Deliowen,Delithrathiel,Delóndra,Delorfilindë,Delorfithien,Deloviel,Delydien,"
+"Eäradriedien,Eärániel,Eärarawien,Eärélia,Eärenia,Eärewen,Eäréwiel,Eärilmadë,"
+"Eärilmathien,Eäriolith,Eärithrang,Eärorfiwien,Eärudë,Eladriedë,Eladrielia,"
+"Elarawiel,Elebrindra,Eledë,Elelith,Elil-Gang,Elilmalia,Elilmawien,"
+"Elithraclya,Elithradien,Elóndra,Elorfing,Elorfithien,Elradrierith,Elránia,"
+"Elrebridith,Elréthiel,Elrilindë,Elrilmandra,Elrilmathien,Elrithiel,"
+"Elrithradith,Elriwen,Elródith,Elrorfidia,Eluviel,Elvádia,Elvánia,Elvil-"
+"Gawien,Elvilmathiel,Elviniel,Elviondra,Elvithrang,Elvithrathien,Elvowien,"
+"Elvyniel,Elvyviel,Elynia,Elywen,Eowalia,Eowarawien,Eowathiel,Eowebridith,"
+"Eowedith,Eowidien,Eowil-Galindë,Eowilindë,Eowiowien,Eowylia,Eowyniel,"
+"Fadriedith,Fadrielia,Fadriendra,Fadrienia,Falindë,Fáthiel,Fathien,Fáwien,"
+"Feclya,Féthiel,Fil-Galia,Fil-Gathiel,Fil-Gawien,Filmaclya,Fioniel,Fódë,"
+"Fólindë,Fulindë,Gadrieclya,Gadrieviel,Galadriethien,Galándra,Galaraniel,"
+"Galebrilia,Galebrindra,Galédë,Galedien,Galéwiel,Galil-Gania,Galilmadia,"
+"Galiothiel,Galithrathien,Galólia,Galolindë,Galorfiwiel,Galothiel,Galowen,"
+"Galundra,Galyniel,Gathien,Gáviel,Gebririth,Gewen,Gil-Gawien,Gilia,Gioniel,"
+"Gioviel,Giowen,Githrania,Githrawiel,Glália,Glebrithien,Gléndra,Glilmadien,"
+"Glilmawiel,Glithiel,Gloclya,Glodith,Glorfilith,Gloviel,Glowiel,Goclya,Godien,"
+"Gólia,Golindë,Guviel,Harawiel,Haviel,Háwien,Héclya,Hedia,Helith,Hewen,Hil-"
+"Gania,Hiodë,Hiwien,Hodia,Hódia,Horfinia,Horfiwien,Hóthiel,Huclya,Hunia,"
+"Huthien,Hyclya,Hythiel,Hythien,Isadrieng,Isáwen,Isebridien,Isebrinia,Isendra,"
+"Iséng,Iseviel,Isil-Garith,Isilindë,Isithradë,Isithradien,Isithrarith,"
+"Isithrawiel,Isóthien,Legádë,Legadien,Legadrieclya,Legadriedë,Legadrieniel,"
+"Legaraclya,Legebrilia,Legelith,Legeng,Legéniel,Legethiel,Legidia,Legil-"
+"Galindë,Legilmadith,Legilmawiel,Legithralindë,Legithrandra,Legithrania,"
+"Legolith,Legondra,Legorfidë,Lómániel,Lómebriclya,Lómebriniel,Lómedia,"
+"Lómeniel,Lómiclya,Lómilindë,Lómilmathiel,Lómilmawiel,Lómithradë,Lómithrarith,"
+"Lómódë,Lómolith,Lómóndra,Lómorfing,Lómorith,Lómudia,Lómulindë,Lómuniel,"
+"Lómuthiel,Lómynia,Lómythien,Mádia,Madrieclya,Maraclya,Mebriwiel,Meclya,"
+"Medien,Mil-Gathiel,Mil-Gathien,Milindë,Milith,Miowen,Miowiel,Mithradë,"
+"Mithralindë,Módë,Módia,Moniel,Morfilindë,Munia,Myndra,Mywiel,Narania,"
+"Naraniel,Náviel,Nawen,Newen,Nil-Gang,Nilmadia,Niodien,Niolia,Niothien,"
+"Nithraniel,Nithrarith,Nowen,Nydith,Pádia,Padriedith,Paralindë,Parandra,Pawen,"
+"Pebridien,Pil-Gadia,Pil-Gadien,Pilindë,Pindra,Pong,Porfindra,Porfiwien,"
+"Póviel,Pulia,Puthien,Reniel,Réviel,Ril-Gawien,Rindra,Riothien,Róng,Rorfiviel,"
+"Sadrienia,Sadrierith,Sálindë,Sáng,Saradith,Sarandra,Sédith,Sendra,Sethien,"
+"Silmaclya,Silmathiel,Sioclya,Siorith,Sithrang,Sithrawen,Soniel,Sothiel,"
+"Sothien,Syniel,Tadrierith,Tang,Taradien,Tarathiel,Tathiel,Terith,Thradia,"
+"Thrália,Thraraviel,Threbriniel,Thredien,Thrérith,Thridith,Thrinia,"
+"Thrithradia,Thrithrandra,Thrithraniel,Throlith,Throng,Throthiel,Thrulith,"
+"Thruthien,Thryng,Til-Gandra,Tilmaclya,Tilmaviel,Tináclya,Tinadriethien,"
+"Tinálindë,Tinaraniel,Tinarathien,Tinawiel,Tinebrithiel,Tinerith,Tinil-Gania,"
+"Tinil-Gawiel,Tiniolith,Tinithrathiel,Tinóng,Tinorfilith,Tinorfithien,Tinudia,"
+"Tiorith,Tithrathien,Tówiel,Tuniel,Unadrieng,Unáthien,Unebridë,Unénia,Unil-"
+"Gadia,Unilmadia,Unindra,Uniodë,Uniolia,Uniong,Unionia,Unóndra,Unorfiwen,"
+"Unulindë,Unuviel,Unynia,Uraclya,Uradriedia,Uránia,Urárith,Urebriclya,Ureclya,"
+"Urilmadia,Urilmawiel,Uriolia,Urithralindë,Uruthien,Uryrith,Vadrierith,"
+"Vadrieviel,Vadriewen,Varawiel,Vebrithien,Vil-Gandra,Violindë,Viowiel,"
+"Vithrang,Vithraniel,Viwiel,Vódia,Vóng,Vorficlya,Vorfing,Vorfirith,Vorfiwiel,"
+"Vówien"
 
 #: data/core/macros/names.cfg:33
 msgid "Graa,Greaa,Gree,Kaaa,Kassshh,Kessshh,Korro,Kraa,Kuu,Kzaaa,Kzuuu"
-msgstr ""
+msgstr "Graa,Greaa,Gree,Kaaa,Kassshh,Kessshh,Korro,Kraa,Kuu,Kzaaa,Kzuuu"
 
 #: data/core/macros/names.cfg:34
 msgid "Kaasa,Kayya,Keyya,Kiira,Korra"
-msgstr ""
+msgstr "Kaasa,Kayya,Keyya,Kiira,Korra"
 
 #: data/core/macros/names.cfg:38
 msgid ""
@@ -4176,6 +4477,53 @@ msgid ""
 "Yrinvan,Yrirraent,Yroddry,Yrullyn,Yrumyr,Yrunnyn,Yrunvan,Yryllyn,Yrymyr,"
 "Yrynyc,Yryrcyn"
 msgstr ""
+"Addraecyn,Addraenvan,Addraer,Addraercyn,Addraryn,Addreddry,Addredry,"
+"Addregwyn,Addrenyc,Addreoddry,Addreoddyn,Addreonyc,Addreorcyn,Addreran,"
+"Addribryn,Addriddyn,Addrocyn,Addroryn,Addrunvan,Addrurcyn,Addryllyn,"
+"Addrynvan,Aethacyn,Aethadry,Aethaec,Aethaeran,Aethaeryn,Aethagwyn,Aethanry,"
+"Aetharcyn,Aethec,Aethellyn,Aethenvan,Aetheoc,Aetheollyn,Aetheonyc,Aetheorcyn,"
+"Aethercyn,Aetherraent,Aethibryn,Aethiddry,Aethircyn,Aethobryn,Aethoddyn,"
+"Aethonnyn,Aethuc,Aethudry,Aethugwyn,Aethun,Aethunry,Aethydry,Aethynyc,Blac,"
+"Bladoc,Blaec,Blaedry,Blanry,Blebryn,Bledoc,Blemyr,Blennyn,Blenvan,Bleollyn,"
+"Blercyn,Blidd,Bliddry,Blillyn,Blinvan,Blollyn,Blubryn,Blucyn,Bludry,Blullyn,"
+"Bluran,Blybryn,Blydd,Blygwyn,Blymyr,Blyr,Bucyn,Cac,Cadry,Caebryn,Caedry,"
+"Caeran,Caercyn,Car,Carac,Caraddry,Caradoc,Caraedry,Caraennyn,Cararyn,Caredd,"
+"Careddry,Caregwyn,Caren,Careobryn,Careogwyn,Careonvan,Careorraent,Careoryn,"
+"Carercyn,Caric,Cariddry,Carocyn,Caroddyn,Caror,Caroran,Carraent,Carudoc,"
+"Carullyn,Carygwyn,Caryn,Cebryn,Cemyr,Cennyn,Ceoc,Ceoddry,Ceoddyn,Ceomyr,"
+"Ceonnyn,Ceonry,Ceoryn,Cicyn,Cin,Cinry,Coc,Convan,Corcyn,Cubryn,Cunry,Curyn,"
+"Cynyc,Cyryn,Dac,Dadd,Dadoc,Daeddry,Daedoc,Daellyn,Demyr,Denvan,Deodd,Deollyn,"
+"Deonyc,Derraent,Dibryn,Dinnyn,Dircyn,Dycyn,Dyddyn,Gaddry,Gaebryn,Gaedry,"
+"Gaercyn,Gagwyn,Gan,Gannyn,Gar,Gecyn,Geddyn,Gegwyn,Geodry,Ginvan,Glacyn,"
+"Gladoc,Glaercyn,Glarraent,Gleddry,Gleoddyn,Gleran,Gliddyn,Glillyn,Glinry,"
+"Glircyn,Gloddry,Gloddyn,Glonry,Glonvan,Glumyr,Glun,Glunry,Glunvan,Glyc,Glydd,"
+"Glydoc,Glynry,Glynvan,Glyran,Goc,Gor,Gubryn,Gudd,Gullyn,Gumyr,Gur,Gwadoc,"
+"Gwaec,Gwaeddyn,Gwan,Gweddyn,Gwegwyn,Gwellyn,Gwennyn,Gwenyc,Gweocyn,Gweodd,"
+"Gweodoc,Gweodry,Gweogwyn,Gweoran,Gwidoc,Gwilam,Gwodd,Gwoddyn,Gwollyn,Gwor,"
+"Gwucyn,Gwudoc,Gwumyr,Gwuran,Gwybryn,Gwycyn,Gwyddry,Gwydoc,Gwymyr,Gwynnyn,"
+"Gydoc,Gyllyn,Gymyr,Haldar,Labryn,Ladoc,Laellyn,Lan,Lannyn,Laran,Lec,Lemyr,"
+"Lenvan,Leogwyn,Lercyn,Ligwyn,Lin,Liryn,Lonnyn,Lorraent,Luddry,Ludoc,Lunnyn,"
+"Lunvan,Lurraent,Mac,Maddyn,Maennyn,Manry,Manyc,Marcyn,Mec,Menvan,Meollyn,"
+"Meon,Meonnyn,Meorraent,Middry,Midry,Mimyr,Modd,Moddry,Monry,Moran,Morcyn,"
+"Mubryn,Mudoc,Mugwyn,Murcyn,Mydoc,Mygwyn,Myn,Myrraent,Owac,Owadd,Owaddyn,"
+"Owaecyn,Owaedry,Owain,Owarcyn,Owaryn,Owecyn,Owedry,Oweomyr,Oweor,Oweorcyn,"
+"Oweran,Owercyn,Owidry,Owinvan,Owinyc,Owodd,Owoddry,Owogwyn,Owollyn,Oworan,"
+"Oworcyn,Oworraent,Owuddry,Owuddyn,Owugwyn,Owur,Owyran,Rabryn,Radd,Ranvan,Rar,"
+"Reoddyn,Reodry,Rhaecyn,Rhaedoc,Rhaemyr,Rhaerraent,Rhanry,Rharcyn,Rhenry,"
+"Rhenvan,Rhenyc,Rheodd,Rheoddyn,Rheollyn,Rheor,Rheoran,Rheorraent,Rheran,"
+"Rherraent,Rhobryn,Rhodry,Rhollyn,Rhonvan,Rhubryn,Rhugwyn,Rhunyc,Rhur,Rhygwyn,"
+"Rhyllyn,Rhynyc,Rhyrcyn,Rhyrraent,Rocyn,Roddyn,Romyr,Ron,Ronry,Rubryn,Ruddry,"
+"Rumyr,Run,Rurcyn,Rybryn,Rycyn,Ryddry,Rygwyn,Rynnyn,Rynry,Saec,Saellyn,Saemyr,"
+"Saenvan,Saercyn,Sanyc,Saran,Sarraent,Secyn,Seddyn,Sedry,Sellyn,Sennyn,"
+"Seoddry,Seorcyn,Sercyn,Siddry,Simyr,Siryn,Sodd,Sodry,Soran,Suc,Sudd,Surcyn,"
+"Sydd,Syran,Syryn,Tabryn,Taec,Taedd,Taedoc,Taemyr,Taenvan,Taercyn,Tanry,"
+"Tarcyn,Teddyn,Tegwyn,Ten,Tennyn,Tenvan,Teobryn,Teoddyn,Teor,Teorcyn,Terraent,"
+"Tinry,Tinvan,Tiryn,Todd,Tudd,Tuddry,Tudoc,Tunvan,Turraent,Tyddyn,Vaddyn,"
+"Vaeddyn,Vaedry,Vaennyn,Varcyn,Ven,Vennyn,Veocyn,Veoddyn,Veodry,Veogwyn,"
+"Veomyr,Vinvan,Vinyc,Virraent,Vobryn,Vogwyn,Vonry,Vuddyn,Vugwyn,Vyc,Vygwyn,"
+"Vyrcyn,Yracyn,Yraec,Yran,Yrannyn,Yranvan,Yraryn,Yredd,Yreddyn,Yregwyn,Yreryn,"
+"Yrinvan,Yrirraent,Yroddry,Yrullyn,Yrumyr,Yrunnyn,Yrunvan,Yryllyn,Yrymyr,"
+"Yrynyc,Yryrcyn"
 
 #: data/core/macros/names.cfg:39
 msgid ""
@@ -4225,6 +4573,51 @@ msgid ""
 "Ysedda,Ysell,Yselonna,Ysilyan,Ysinoic,Ysodda,Ysongwen,Ysonoic,Ysura,Yswniver,"
 "Ysycla,Ysylla,Ysylyan,Ysyrka,Ysyssa"
 msgstr ""
+"Alabrylla,Alaebrylla,Alaeniver,Alalla,Alalonna,Alaryan,Aleacla,Aleaniver,"
+"Aleara,Alearka,Alena,Alengwen,Alilonna,Alingwen,Alolla,Alolonna,Alora,"
+"Alubrylla,Aluniver,Aluryan,Alussa,Alwcla,Alwllyra,Alwlyan,Alwna,Alybrylla,"
+"Alynoic,Alyra,Alyryan,Braedda,Brassa,Bravyan,Breabrylla,Breall,Brealla,"
+"Brealonna,Breana,Brell,Brellyra,Brera,Brerka,Breryan,Bricla,Brirka,Brobrylla,"
+"Brollyra,Brona,Bronoic,Brora,Brorka,Brungwen,Bruryan,Brwra,Brycla,Brynoic,"
+"Caella,Caena,Caengwen,Caevyan,Call,Calla,Cassa,Cealonna,Cera,Ceryan,Cibrylla,"
+"Cicla,Cinoic,Cira,Cissa,Clacla,Claella,Claelyan,Claenoic,Clalla,Clallyra,"
+"Clara,Clarka,Clavyan,Cleacla,Cleall,Clealyan,Cleana,Cleanoic,Clenoic,"
+"Clibrylla,Clill,Clillyra,Clilyan,Clinoic,Clissa,Clobrylla,Clollyra,Clona,"
+"Clongwen,Clungwen,Clurka,Cluvyan,Clwdda,Clwlla,Clwvyan,Clydda,Clylla,Cora,"
+"Coryan,Cucla,Cudda,Curyan,Cwdda,Cwlonna,Cwngwen,Cwvyan,Cydda,Cylla,Cyllyra,"
+"Cylyan,Cyniver,Cyvyan,Daedda,Daelyan,Daengwen,Daenoic,Dalla,Dallyra,Dangwen,"
+"Dara,Dassa,Deanoic,Deassa,Della,Devyan,Dicla,Diniver,Dissa,Dollyra,Dullyra,"
+"Dulonna,Dwbrylla,Dwdda,Dwna,Dwnoic,Dwra,Dybrylla,Dydda,Dyssa,Elacla,Elaedda,"
+"Elaell,Elaelonna,Elaessa,Elaevyan,Elallyra,Elalonna,Elara,Elavyan,Elealla,"
+"Eleanoic,Elearka,Elenoic,Elerka,Elivyan,Elulonna,Elurka,Elwllyra,Elwlonna,"
+"Elwngwen,Elwra,Elycla,Elyllyra,Elyngwen,Elyniver,Elyrka,Gwaera,Gwaessa,"
+"Gwangwen,Gweacla,Gwedda,Gwerka,Gwicla,Gwirka,Gwobrylla,Gwoll,Gwona,Gwongwen,"
+"Gwonoic,Gworyan,Gwullyra,Gwussa,Gwwcla,Gwwna,Gwwvyan,Gwycla,Gwydda,Heldra,"
+"Jacla,Jaena,Jaerka,Jaevyan,Jalyan,Jana,Jarka,Jassa,Jeabrylla,Jealla,Jeanoic,"
+"Jeniver,Jiryan,Jissa,Joll,Jolla,Jona,Jongwen,Jonoic,Jora,Jorka,Jovyan,Judda,"
+"Jull,Julonna,Jura,Jwll,Jwlyan,Jycla,Jyniver,Jynoic,Jyrka,Jyvyan,Laeniver,"
+"Laenoic,Laeryan,Langwen,Larka,Lassa,Lealonna,Lealyan,Ledda,Lelonna,Lelyan,"
+"Lengwen,Lerka,Lessa,Lidda,Lill,Lina,Lirka,Liryan,Livyan,Locla,Lodda,Lollyra,"
+"Lolonna,Lulla,Lulyan,Lungwen,Lunoic,Luryan,Lwcla,Lwlla,Lwnoic,Lwryan,Lycla,"
+"Lylla,Lylyan,Lyna,Lynoic,Maecla,Maeniver,Mavyan,Meacla,Mealyan,Meana,"
+"Meangwen,Meanoic,Medda,Melonna,Mengwen,Meniver,Meradda,Meraecla,Meraelyan,"
+"Merall,Merallyra,Meralonna,Merana,Meranoic,Merealonna,Mereangwen,Mereaniver,"
+"Merebrylla,Merella,Merengwen,Meressa,Merilyan,Merina,Merinoic,Merissa,"
+"Merivyan,Merolla,Merolyan,Merona,Meroniver,Merubrylla,Merudda,Merurka,"
+"Merwlla,Merwnoic,Merwryan,Merydda,Merylyan,Messa,Milonna,Molyan,Moniver,"
+"Mossa,Mudda,Mullyra,Mulyan,Muryan,Mwbrylla,Mwlyan,Mwngwen,Mwnoic,Mycla,Myll,"
+"Mylla,Myra,Myvyan,Nabrylla,Naebrylla,Naecla,Naell,Nalyan,Nangwen,Nealla,"
+"Neallyra,Nealonna,Neavyan,Nera,Nessa,Ninoic,Niryan,Nivyan,Nobrylla,Nolla,"
+"Nonoic,Norka,Noryan,Nucla,Nulla,Nulyan,Nungwen,Nuvyan,Nwllyra,Nwryan,Nwvyan,"
+"Nybrylla,Nyll,Nylyan,Nyryan,Nyssa,Nyvyan,Raebrylla,Raera,Raerka,Ralonna,Rara,"
+"Rarka,Rassa,Reacla,Realla,Reana,Reangwen,Rella,Relyan,Rengwen,Rerka,Revyan,"
+"Rilonna,Rilyan,Rirka,Rora,Rucla,Ruryan,Rwdda,Rwlla,Rwllyra,Rwlonna,Rwngwen,"
+"Rybrylla,Ryna,Ryngwen,Saell,Saellyra,Saeniver,Saerka,Saessa,Sallyra,Sanoic,"
+"Sara,Sassa,Searka,Sena,Senoic,Sera,Silonna,Sira,Siryan,Sona,Sorka,Subrylla,"
+"Sull,Sulonna,Sulyan,Sura,Sussa,Swlla,Swlyan,Swngwen,Swnoic,Swvyan,Syllyra,"
+"Sylyan,Syssa,Ysacla,Ysaenoic,Ysaerka,Ysanoic,Yseacla,Ysealonna,Ysealyan,"
+"Ysedda,Ysell,Yselonna,Ysilyan,Ysinoic,Ysodda,Ysongwen,Ysonoic,Ysura,Yswniver,"
+"Ysycla,Ysylla,Ysylyan,Ysyrka,Ysyssa"
 
 #: data/core/macros/names.cfg:43
 msgid ""
@@ -4239,6 +4632,16 @@ msgid ""
 "Xartrez,Xasz,Xaztex,Xerxix,Xirasz,Xirr,Xirtras,Xirtrez,Xirz,Zandler,Zedrix,"
 "Zilrix,Zizzasz,Zslap,Zzalkz,Zzupde"
 msgstr ""
+"Amprixta,Anexir,Anitraz,Arix,Axiz,Bzz'Kza,Chamil,Cleezi,Clezz,Fazzis,"
+"Fizztrax,Flixta,Flizzil,Frikes,Frizzle,Hasz,Heffez,Hertrazzir,Hesz,Hezzir,"
+"Hezzis,Hix,Inexis,Irix,Jezzix,Jizz,Kaliez,Kepzs,Kernix,Kersezz,Kertrasz,Kerx,"
+"Kerxenix,Kezz,Klexaz,Klezyx,Krarax,Krenarex,Krex,Krinex,Krisess,Laizix,Lazki,"
+"Lixeez,Merax,Mexiss,Moxanzz,Naxisz,Nix,Pekzs,Plaxis,Plesix,Presch,Sailik,"
+"Salanix,Salik,Sandix,Saprazz,Satras,Skalix,Skandix,Skazix,Skeely,Skeezix,"
+"Sklizle,Skrez,Slizilx,Sprizz,Ssexur,Ssizer,Ssorix,Sszasz,Sterizz,Talerez,"
+"Tarex,Tarnix,Tezzaz,Tirasch,Tirax,Tirix,Trezz,Venezz,Vriss,Waks,Xaffrasz,"
+"Xartrez,Xasz,Xaztex,Xerxix,Xirasz,Xirr,Xirtras,Xirtrez,Xirz,Zandler,Zedrix,"
+"Zilrix,Zizzasz,Zslap,Zzalkz,Zzupde"
 
 #: data/core/macros/names.cfg:47
 msgid ""
@@ -4250,6 +4653,13 @@ msgid ""
 "Tanaoa,Tangaloa,Tangaroa,Thaumas,Tikitiki,Tini,Tinilau,Tinirau,Toniwha,"
 "Triton,Vizi,Vodnik,Vourukasa"
 msgstr ""
+"Absu,Abzu,Aigaion,Alastyn,Apalala,Apam,Apsu,Aremata,Atlahua,Atlaua,Barinthus,"
+"Dhakhan,Dylan,Elcmar,Ember,Enki,Faro,Habaek,Ikatere,Jamm,Jin,Kinilau,Kulullu,"
+"Labuna,Laut,Lir,Llyr,Ludd,Makara,Maui,Melicertes,Mimir,Natat,Nechtan,Neptune,"
+"Nereus,Nethuns,Njord,Nuada,Nudd,Nudimmud,Nun,Oceanus,Okeanos,Phorcys,Pontus,"
+"Popoa,Poseidon,Proteus,Raja,Rau,Rorua,Ryujin,Scylla,Sinilau,Sisiutl,Tagaloa,"
+"Tanaoa,Tangaloa,Tangaroa,Thaumas,Tikitiki,Tini,Tinilau,Tinirau,Toniwha,"
+"Triton,Vizi,Vodnik,Vourukasa"
 
 #: data/core/macros/names.cfg:48
 msgid ""
@@ -4258,6 +4668,10 @@ msgid ""
 "Wata,Marina,Miranda,Miriam,Molpe,Parthenope,Pelagia,Pisinoe,Rân,Sedna,Stella "
 "Maris,Thelxiepia,Tirgata,Vatea,Ved-Ava,Veen emo,Vete-ema"
 msgstr ""
+"Aglaopheme,Amphitrite,Aphrodite,Ariel,Atargatis,Calypso,Delphine,Derceto,"
+"Diktynna,Electra,Galatea,Himeropa,Jengu,Leucosia,Ligia,Lori Lamaris,Mama "
+"Wata,Marina,Miranda,Miriam,Molpe,Parthenope,Pelagia,Pisinoe,Rân,Sedna,Stella "
+"Maris,Thelxiepia,Tirgata,Vatea,Ved-Ava,Veen emo,Vete-ema"
 
 #: data/core/macros/names.cfg:52
 msgid ""
@@ -4268,6 +4682,12 @@ msgid ""
 "Sekol,Silas,Skell,Skepz,Slell,Snol,Soill,Sorkol,Srell,Trixoz,Vilail,Vissal,"
 "Vlanis,Xabrak,Xamalel,Xinas,Xnamos,Xopkon,Zalsp,Zlek,Zpsek,Zsekp"
 msgstr ""
+"Abraxas,Aleiss,Amail,Axmail,Blanal,Bleii,Blo,Bress,Briss,Gaxmol,Griam,Griss,"
+"Grissileii,Hailoss,Hainoss,Harxos,Huzel,Inaloss,Ineii,Issal,Klezel,Kras,"
+"Krezkps,Kzap,Lamaiss,Lameii,Lexpek,Liness,Lobor,Maissol,Malinos,Milbor,"
+"Mileii,Nildloss,Oxpeii,Poniaz,Psell,Pson,Pzakp,Reii,Sassal,Saxil,Saxrireii,"
+"Sekol,Silas,Skell,Skepz,Slell,Snol,Soill,Sorkol,Srell,Trixoz,Vilail,Vissal,"
+"Vlanis,Xabrak,Xamalel,Xinas,Xnamos,Xopkon,Zalsp,Zlek,Zpsek,Zsekp"
 
 #: data/core/macros/names.cfg:53
 msgid ""
@@ -4279,6 +4699,13 @@ msgid ""
 "Vissalai,Vlanissa,Xabrak,Xamalia,Xina,Xinasia,Xnamas,Xopkne,Zalsp,Zlek,Zpsek,"
 "Zsekp"
 msgstr ""
+"Aliasse,Amailis,Axmailia,Blai,Blanalai,Bli,Bliana,Brassas,Brissal,Gaxmail,"
+"Griama,Grissa,Grissilai,Haila,Haina,Harxias,Huzi,Inai,Inalai,Issalai,Klez,"
+"Kras,Krezkps,Kzap,Lamai,Lamaissa,Lexpek,Liabra,Lilin,Linassa,Maissa,Malina,"
+"Mila,Milbra,Nildlasi,Oxpel,Poniazal,Psal,Psen,Pzakp,Riaa,Sall,Sassalia,"
+"Saxiala,Saxririaa,Sek,Skal,Skepz,Sla,Snelia,Srak,Sral,Szak,Trixzed,Vilaila,"
+"Vissalai,Vlanissa,Xabrak,Xamalia,Xina,Xinasia,Xnamas,Xopkne,Zalsp,Zlek,Zpsek,"
+"Zsekp"
 
 #: data/core/macros/names.cfg:57
 msgid ""
@@ -4289,6 +4716,12 @@ msgid ""
 "Markaak,Markuk,Merknik,Nargak,Olk,Orkut,Reknak,Takolak,Trabuk,Trakkon,Urkar,"
 "Urkark"
 msgstr ""
+"Akoark,Akort,Akzalk,Arkarm,Barkuk,Blokkar,Borkuk,Bukkak,Bulruk,Corkkar,"
+"Delkkak,Garkuk,Gnukk,Goruk,Grak,Gurk,Gurm,Kalknix,Karak,Karbuk,Kargnak,"
+"Karterak,Kayrak,Kelkrar,Kerta,Kilkrar,Kingrok,Kirk,Klud,Kokkan,Kolk,Komak,"
+"Korgnak,Kork,Koruck,Kramak,Krog,Krukrak,Krumuk,Kuknuk,Kurkur,Kurmak,Makron,"
+"Markaak,Markuk,Merknik,Nargak,Olk,Orkut,Reknak,Takolak,Trabuk,Trakkon,Urkar,"
+"Urkark"
 
 #: data/core/macros/names.cfg:61
 msgid ""
@@ -4325,6 +4758,38 @@ msgid ""
 "Vrogar,Vrogor,Vrolo,Vrong,Vrorg,Vrork,Vrudish,Vrugdush,Vrulg,Vrung,Vruol,"
 "Vrurg,Vrurt,Vruurk,Vudish,Vuk,Vulg,Vulo,Vunak,Vurag,Vurbag,Vurg,Vushnak"
 msgstr ""
+"Badush,Bagar,Bagdish,Barag,Barbag,Bart,Bashnak,Bidish,Bidush,Bik,Bilg,Bilo,"
+"Binak,Bink,Biol,Birt,Bogar,Bogdish,Bogdush,Bogor,Bok,Bolg,Bong,Borg,Bork,"
+"Bort,Boshnak,Budush,Bugdish,Buk,Bunak,Bung,Bunk,Burag,Burg,Burk,Buurk,"
+"Eradash,Eradish,Eragdish,Eragdush,Eragor,Eranak,Erang,Erarag,Erarg,Erart,"
+"Erigdush,Erik,Erinak,Eriol,Erirag,Erirbag,Erirg,Erirt,Erishnak,Eriurk,"
+"Erogdish,Erogdush,Erok,Erong,Eronk,Erorbag,Erudish,Erudush,Erugar,Erugdush,"
+"Erulo,Erunk,Eruol,Erurag,Eruurk,Gadash,Gagar,Gagdush,Gagor,Galo,Ganak,Gank,"
+"Gaol,Garag,Gashnak,Gigor,Ginak,Ging,Gink,Girt,Gogdish,Gogdush,Gong,Gork,Gort,"
+"Goshnak,Gradash,Gragar,Gragor,Grak,Gralg,Gralo,Granak,Graol,Grarbag,Gridash,"
+"Gridish,Gridush,Grigar,Grigor,Grilg,Grilo,Grink,Grirag,Grirg,Grirk,Grishnak,"
+"Grodish,Grogar,Grogdish,Grok,Grolg,Grong,Gronk,Grorag,Grorg,Grork,Grort,"
+"Groshnak,Grudash,Grugar,Grugdish,Grugdush,Gruk,Grulo,Grunk,Gruol,Grurg,Grurk,"
+"Grurt,Gruurk,Gugdish,Gugdush,Gulg,Gulo,Gunak,Gurbag,Gurt,Gushnak,Hadash,"
+"Hadish,Hadush,Hagar,Hagdush,Hagor,Hak,Halg,Hank,Hashnak,Hidash,Hidish,Hidush,"
+"Higdush,Hilg,Hinak,Hing,Hink,Hiol,Hirag,Hirg,Hodush,Hogar,Hogor,Hong,Hool,"
+"Horbag,Hork,Hort,Hoshnak,Hudash,Hudish,Hugor,Huk,Hulg,Hulo,Hunk,Huol,Hurag,"
+"Hurbag,Hurk,Hushnak,Huurk,Pagdish,Pagor,Palg,Palo,Paol,Parag,Pashnak,Pidush,"
+"Pigdish,Pigdush,Pilg,Pinak,Pink,Pirbag,Podash,Podish,Podush,Pogdish,Polg,"
+"Porbag,Porg,Pork,Port,Poshnak,Pradish,Pragdush,Pragor,Pralg,Pralo,Prang,"
+"Praol,Prarag,Prarbag,Prarg,Prark,Prart,Prashnak,Praurk,Pridish,Prigar,"
+"Prigdish,Prigor,Prilg,Prilo,Prinak,Priol,Prirbag,Prirg,Prirt,Priurk,Prodash,"
+"Prodish,Prodush,Prolg,Prolo,Pronak,Prong,Pronk,Prool,Prourk,Prudish,Prugar,"
+"Prugdish,Pruk,Prunak,Prunk,Prurg,Prurk,Pruurk,Puk,Pulg,Pulo,Punak,Pung,Punk,"
+"Purag,Purbag,Purg,Puurk,Radash,Ragar,Ragdish,Rak,Rang,Rank,Raol,Rarag,Rarbag,"
+"Rark,Rashnak,Raurk,Rigor,Rik,Rilg,Rinak,Rink,Rirg,Rirk,Rodish,Rodush,Rogdish,"
+"Rok,Rolo,Ronak,Rudash,Rugar,Rugdish,Ruk,Rung,Ruol,Rurag,Rushnak,Vadash,"
+"Vadish,Vadush,Vak,Valo,Vank,Varag,Varbag,Vigar,Vigdish,Vigor,Vilg,Vilo,Vink,"
+"Virag,Virt,Vishnak,Vogdish,Vogor,Vonak,Vong,Vorg,Vork,Voshnak,Vourk,Vradash,"
+"Vragar,Vragdush,Vragor,Vralo,Vrang,Vrarbag,Vrarg,Vrart,Vraurk,Vridash,"
+"Vridish,Vrigor,Vrik,Vrinak,Vring,Vrirt,Vrishnak,Vriurk,Vrodash,Vrodish,"
+"Vrogar,Vrogor,Vrolo,Vrong,Vrorg,Vrork,Vrudish,Vrugdush,Vrulg,Vrung,Vruol,"
+"Vrurg,Vrurt,Vruurk,Vudish,Vuk,Vulg,Vulo,Vunak,Vurag,Vurbag,Vurg,Vushnak"
 
 #: data/core/macros/names.cfg:65
 msgid ""
@@ -4333,6 +4798,10 @@ msgid ""
 "Nak,Nuk Kar,Pag,Reck,Rok,Ruk,Sark,Shak,Shuf,Stuh,Targ,Thog,Thruf,Thur,Tohg,"
 "Torg,Trok,Tsok,Tuh,Tuk Ruh,Ugg,Üh,Urg,Urgh,Urk,Vak,Zog,Zuug"
 msgstr ""
+"Äg,Agh,Bog Äh,Borb,Brag,Brag Goh,Brok,Dak,Drog,Frok,Ga,Gah,Gark,Gnarf,Grar,"
+"Grokk,Grumph,Gulk,Hak,Hask,Hoth,Hug Bah,Hu Kah,Kak,Krak,Krug,Kub,Kuh,Lok,Luk,"
+"Nak,Nuk Kar,Pag,Reck,Rok,Ruk,Sark,Shak,Shuf,Stuh,Targ,Thog,Thruf,Thur,Tohg,"
+"Torg,Trok,Tsok,Tuh,Tuk Ruh,Ugg,Üh,Urg,Urgh,Urk,Vak,Zog,Zuug"
 
 #: data/core/macros/names.cfg:69
 msgid ""
@@ -4349,6 +4818,18 @@ msgid ""
 "Temtunnongetem,Tondenkontenkon,Troombadoom,Tumtentantarun,Tumtonnongatum,"
 "Tumtumgamtomtom,Wonrunmaldin,Wudadoonopl"
 msgstr ""
+"Bludebalmen,Boladrumbadrum,Bolwuldelman,Bombempomgontor,Bomtanbomkenton,"
+"Bomtanbomtonum,Bregalad,Bremdebubde,Brenbasnudnem,Brendumadoak,"
+"Brommantendronnor,Brumbendublun,Brumennarunom,Brummdlebroak,Bumbadadabum,"
+"Buomdumdenlol,Carnimirië,Dabumdabumtam,Dammantongonnur,Danmonlulbam,"
+"Debundbemun,Delmduelmdelom,Diblembumnde,Dolmannumbil,Drongnoblemdu,"
+"Dulmandarook,Dulwulmendom,Dumdumdumatum,Elmaroomadrum,Grelmadrumbumadum,"
+"Gulladroamadoak,Gumabeladrelm,Laffalialomdium,Landunwonbam,Lassemista,"
+"Lefnublemdde,Libleddnumm,Lolmandindel,Monlamwimdan,Muldondindal,"
+"Mundionalafla,Mundumblemdum,Munnamdulbon,Nanmildaldum,Nunmaldildun,Orofarnië,"
+"Pambedrumne,Pomtamkomtrobum,Rithramcamhan,Tantondernintan,Temtundembenn,"
+"Temtunnongetem,Tondenkontenkon,Troombadoom,Tumtentantarun,Tumtonnongatum,"
+"Tumtumgamtomtom,Wonrunmaldin,Wudadoonopl"
 
 #: data/core/macros/names.cfg:73
 msgid ""
@@ -4366,6 +4847,7 @@ msgstr ""
 #. [time]: id=deep_underground
 #. [illuminated_time]: id=deep_underground_illum
 #: data/core/macros/schedules.cfg:84 data/core/macros/schedules.cfg:93
+#, fuzzy
 msgid "Deep Underground"
 msgstr "Globoko podzemlje"
 
@@ -4378,6 +4860,7 @@ msgid ""
 msgstr "Posebnosti orožja"
 
 #: data/core/macros/special-notes.cfg:8
+#, fuzzy
 msgid ""
 " Spirits have very unusual resistances to damage, and move quite slowly over "
 "open water."
@@ -4397,11 +4880,10 @@ msgstr ""
 #: data/core/macros/special-notes.cfg:14
 #, fuzzy
 msgid " This unit is capable of basic healing."
-msgstr ""
-" Ta enota je sposobna zdraviti druge okoli sebe in jih po potrebi "
-"razstrupiti."
+msgstr " Ta enota je sposobna osnovnega zdravljenja."
 
 #: data/core/macros/special-notes.cfg:17
+#, fuzzy
 msgid ""
 " This unit is capable of healing those around it, and curing them of poison."
 msgstr ""
@@ -4568,12 +5050,12 @@ msgstr "zvest"
 
 #. [trait]: id=loyal
 #: data/core/macros/traits.cfg:9
-#, fuzzy
 msgid "female^loyal"
-msgstr "Izobčenka"
+msgstr "zvesta"
 
 #. [trait]: id=loyal
 #: data/core/macros/traits.cfg:10
+#, fuzzy
 msgid "Zero upkeep"
 msgstr "Brez plače"
 
@@ -4584,9 +5066,8 @@ msgstr "nemrtev"
 
 #. [trait]: id=undead
 #: data/core/macros/traits.cfg:23
-#, fuzzy
 msgid "female^undead"
-msgstr "Vagabondka"
+msgstr "nemrtva"
 
 #. [trait]: id=undead
 #. [trait]: id=mechanical
@@ -4597,15 +5078,13 @@ msgstr "Imun na strup"
 
 #. [trait]: id=mechanical
 #: data/core/macros/traits.cfg:37
-#, fuzzy
 msgid "mechanical"
-msgstr "čaroben"
+msgstr "mehanski"
 
 #. [trait]: id=mechanical
 #: data/core/macros/traits.cfg:38
-#, fuzzy
 msgid "female^mechanical"
-msgstr "Tatica"
+msgstr "mehanska"
 
 #. [trait]: id=strong
 #: data/core/macros/traits.cfg:51
@@ -4614,9 +5093,8 @@ msgstr "močan"
 
 #. [trait]: id=strong
 #: data/core/macros/traits.cfg:52
-#, fuzzy
 msgid "female^strong"
-msgstr "Vagabondka"
+msgstr "močna"
 
 #. [trait]: id=dextrous
 #: data/core/macros/traits.cfg:69
@@ -4625,9 +5103,8 @@ msgstr "spreten"
 
 #. [trait]: id=dextrous
 #: data/core/macros/traits.cfg:70
-#, fuzzy
 msgid "female^dextrous"
-msgstr "spreten"
+msgstr "spretna"
 
 #. [trait]: id=quick
 #: data/core/macros/traits.cfg:83
@@ -4636,20 +5113,18 @@ msgstr "hiter"
 
 #. [trait]: id=quick
 #: data/core/macros/traits.cfg:84
-#, fuzzy
 msgid "female^quick"
-msgstr "Princesa"
+msgstr "hitra"
 
 #. [trait]: id=intelligent
 #: data/core/macros/traits.cfg:100
 msgid "intelligent"
-msgstr "pameten"
+msgstr "inteligenten"
 
 #. [trait]: id=intelligent
 #: data/core/macros/traits.cfg:101
-#, fuzzy
 msgid "female^intelligent"
-msgstr "pameten"
+msgstr "inteligentna"
 
 #. [trait]: id=resilient
 #: data/core/macros/traits.cfg:113
@@ -4658,9 +5133,8 @@ msgstr "odporen"
 
 #. [trait]: id=resilient
 #: data/core/macros/traits.cfg:114
-#, fuzzy
 msgid "female^resilient"
-msgstr "odporen"
+msgstr "odporna"
 
 #. [trait]: id=healthy
 #: data/core/macros/traits.cfg:131
@@ -4680,15 +5154,13 @@ msgstr ""
 
 #. [trait]: id=fearless
 #: data/core/macros/traits.cfg:150 data/core/macros/traits.cfg:163
-#, fuzzy
 msgid "fearless"
-msgstr "Princesa"
+msgstr "neustrašen"
 
 #. [trait]: id=fearless
 #: data/core/macros/traits.cfg:151 data/core/macros/traits.cfg:164
-#, fuzzy
 msgid "female^fearless"
-msgstr "Princesa"
+msgstr "neustrašna"
 
 #. [trait]: id=fearless
 #: data/core/macros/traits.cfg:152 data/core/macros/traits.cfg:165
@@ -4698,49 +5170,42 @@ msgstr ""
 #. [trait]: id=weak
 #: data/core/macros/traits.cfg:173
 msgid "weak"
-msgstr ""
+msgstr "šibek"
 
 #. [trait]: id=weak
 #: data/core/macros/traits.cfg:174
-#, fuzzy
 msgid "female^weak"
-msgstr "Vagabondka"
+msgstr "šibka"
 
 #. [trait]: id=slow
 #: data/core/macros/traits.cfg:191
-#, fuzzy
 msgid "slow"
-msgstr "upočasni"
+msgstr "počasen"
 
 #. [trait]: id=slow
 #: data/core/macros/traits.cfg:192
-#, fuzzy
 msgid "female^slow"
-msgstr "Izobčenka"
+msgstr "počasna"
 
 #. [trait]: id=dim
 #: data/core/macros/traits.cfg:208
-#, fuzzy
 msgid "dim"
-msgstr "Srednje"
+msgstr "omejen"
 
 #. [trait]: id=dim
 #: data/core/macros/traits.cfg:209
-#, fuzzy
 msgid "female^dim"
-msgstr "Princesa"
+msgstr "omejena"
 
 #. [trait]: id=aged
 #: data/core/macros/traits.cfg:221
-#, fuzzy
 msgid "aged"
-msgstr "na daleč"
+msgstr "postaran"
 
 #. [trait]: id=aged
 #: data/core/macros/traits.cfg:222
-#, fuzzy
 msgid "female^aged"
-msgstr "Princesa"
+msgstr "postarana"
 
 #. [color_range]: id=red
 #. [color_range]: id=1
@@ -4808,9 +5273,8 @@ msgstr "Turkizna"
 
 #. [race]: id=bats, description=
 #: data/core/units.cfg:42
-#, fuzzy
 msgid "race^Bat"
-msgstr "Ljudje"
+msgstr "Netopir"
 
 #. [race]: id=bats, description=
 #: data/core/units.cfg:43
@@ -4820,9 +5284,8 @@ msgstr "Ljudje"
 
 #. [race]: id=bats, description=
 #: data/core/units.cfg:44
-#, fuzzy
 msgid "race^Bats"
-msgstr "Ljudje"
+msgstr "Netopirji"
 
 #. [race]: id=drake
 #: data/core/units.cfg:52
@@ -4911,20 +5374,18 @@ msgstr ""
 
 #. [race]: id=dwarf
 #: data/core/units.cfg:87
-#, fuzzy
 msgid "race^Dwarf"
-msgstr "Trol"
+msgstr "Škrat"
 
 #. [race]: id=dwarf
 #: data/core/units.cfg:88
-#, fuzzy
 msgid "race+female^Dwarf"
-msgstr "Trol"
+msgstr "Škratinja"
 
 #. [race]: id=dwarf
 #: data/core/units.cfg:89
 msgid "race^Dwarves"
-msgstr ""
+msgstr "Škratje"
 
 #. [race]: id=dwarf
 #: data/core/units.cfg:94
@@ -4978,21 +5439,18 @@ msgstr ""
 
 #. [race]: id=elf
 #: data/core/units.cfg:106
-#, fuzzy
 msgid "race^Elf"
-msgstr "Trol"
+msgstr "Vilin"
 
 #. [race]: id=elf
 #: data/core/units.cfg:107
-#, fuzzy
 msgid "race+female^Elf"
-msgstr "Trol"
+msgstr "Vilinka"
 
 #. [race]: id=elf
 #: data/core/units.cfg:108
-#, fuzzy
 msgid "race^Elves"
-msgstr "Trol"
+msgstr "Vilini"
 
 #. [race]: id=elf
 #: data/core/units.cfg:118
@@ -5036,9 +5494,8 @@ msgstr ""
 
 #. [race]: id=goblin, description=
 #: data/core/units.cfg:128
-#, fuzzy
 msgid "race^Goblin"
-msgstr "Trol"
+msgstr "Goblin"
 
 #. [race]: id=goblin, description=
 #: data/core/units.cfg:129
@@ -5049,13 +5506,12 @@ msgstr "Trol"
 #. [race]: id=goblin, description=
 #: data/core/units.cfg:130
 msgid "race^Goblins"
-msgstr ""
+msgstr "Goblini"
 
 #. [race]: id=gryphon, description=
 #: data/core/units.cfg:143
-#, fuzzy
 msgid "race^Gryphon"
-msgstr "Trol"
+msgstr "Grifon"
 
 #. [race]: id=gryphon, description=
 #: data/core/units.cfg:144
@@ -5065,25 +5521,21 @@ msgstr "Trol"
 
 #. [race]: id=gryphon, description=
 #: data/core/units.cfg:145
-#, fuzzy
 msgid "race^Gryphons"
-msgstr "Trol"
+msgstr "Grifoni"
 
 #. [race]: id=human
 #: data/core/units.cfg:160
-#, fuzzy
 msgid "race^Human"
-msgstr "Ljudje"
+msgstr "Človek"
 
 #. [race]: id=human
 #: data/core/units.cfg:161
-#, fuzzy
 msgid "race+female^Human"
-msgstr "Ljudje"
+msgstr "Človek"
 
 #. [race]: id=human
 #: data/core/units.cfg:162
-#, fuzzy
 msgid "race^Humans"
 msgstr "Ljudje"
 
@@ -5131,21 +5583,18 @@ msgstr ""
 
 #. [race]: id=lizard, description=
 #: data/core/units.cfg:177
-#, fuzzy
 msgid "race^Saurian"
-msgstr "Nemrtvi"
+msgstr "Zavrijec"
 
 #. [race]: id=lizard, description=
 #: data/core/units.cfg:178
-#, fuzzy
 msgid "race+female^Saurian"
-msgstr "Nemrtvi"
+msgstr "Zavrijka"
 
 #. [race]: id=lizard, description=
 #: data/core/units.cfg:179
-#, fuzzy
 msgid "race^Saurians"
-msgstr "Nemrtvi"
+msgstr "Zavrijci"
 
 #. [race]: id=mechanical, description=
 #: data/core/units.cfg:188
@@ -5177,37 +5626,33 @@ msgstr ""
 
 #. [race]: id=monster, description=
 #: data/core/units.cfg:209
-#, fuzzy
 msgid "race^Monster"
-msgstr "Trol"
+msgstr "Pošast"
 
 #. [race]: id=monster, description=
 #: data/core/units.cfg:210
 msgid "race^Monsters"
-msgstr ""
+msgstr "Pošasti"
 
 #. [race]: id=naga, description=
 #: data/core/units.cfg:218
-#, fuzzy
 msgid "race^Naga"
-msgstr "Ljudje"
+msgstr "Naga"
 
 #. [race]: id=naga, description=
 #: data/core/units.cfg:219
-#, fuzzy
 msgid "race^Nagani"
-msgstr "Ljudje"
+msgstr "Nagini"
 
 #. [race]: id=naga, description=
 #: data/core/units.cfg:220
 msgid "race^Nagas"
-msgstr ""
+msgstr "Nage"
 
 #. [race]: id=ogre, description=
 #: data/core/units.cfg:228
-#, fuzzy
 msgid "race^Ogre"
-msgstr "Trol"
+msgstr "Oger"
 
 #. [race]: id=ogre, description=
 #: data/core/units.cfg:229
@@ -5218,25 +5663,22 @@ msgstr "Trol"
 #. [race]: id=ogre, description=
 #: data/core/units.cfg:230
 msgid "race^Ogres"
-msgstr ""
+msgstr "Ogri"
 
 #. [race]: id=orc
 #: data/core/units.cfg:239
-#, fuzzy
 msgid "race^Orc"
-msgstr "Trol"
+msgstr "Ork"
 
 #. [race]: id=orc
 #: data/core/units.cfg:240
-#, fuzzy
 msgid "race+female^Orc"
-msgstr "Trol"
+msgstr "Orkinja"
 
 #. [race]: id=orc
 #: data/core/units.cfg:241
-#, fuzzy
 msgid "race^Orcs"
-msgstr "Trol"
+msgstr "Orki"
 
 #. [race]: id=orc
 #: data/core/units.cfg:251
@@ -5300,7 +5742,6 @@ msgstr ""
 
 #. [race]: id=troll
 #: data/core/units.cfg:258
-#, fuzzy
 msgid "race^Troll"
 msgstr "Trol"
 
@@ -5312,9 +5753,8 @@ msgstr "Trol"
 
 #. [race]: id=troll
 #: data/core/units.cfg:260
-#, fuzzy
 msgid "race^Trolls"
-msgstr "Trol"
+msgstr "Troli"
 
 #. [race]: id=troll
 #: data/core/units.cfg:266
@@ -5362,13 +5802,11 @@ msgstr "Nemrtvi"
 
 #. [race]: id=undead
 #: data/core/units.cfg:281
-#, fuzzy
 msgid "race+female^Undead"
-msgstr "Nemrtvi"
+msgstr "Nemrtva"
 
 #. [race]: id=undead
 #: data/core/units.cfg:282
-#, fuzzy
 msgid "race+plural^Undead"
 msgstr "Nemrtvi"
 
@@ -5403,33 +5841,28 @@ msgstr ""
 
 #. [race]: id=wolf, description=
 #: data/core/units.cfg:296
-#, fuzzy
 msgid "race^Wolf"
-msgstr "Trol"
+msgstr "Volk"
 
 #. [race]: id=wolf, description=
 #: data/core/units.cfg:297
-#, fuzzy
 msgid "race^Wolves"
-msgstr "Trol"
+msgstr "Volkovi"
 
 #. [race]: id=wose, description=
 #: data/core/units.cfg:306
-#, fuzzy
 msgid "race^Wose"
-msgstr "Trol"
+msgstr "Ent"
 
 #. [race]: id=wose, description=
 #: data/core/units.cfg:307
-#, fuzzy
 msgid "race^Woses"
-msgstr "Trol"
+msgstr "Enti"
 
 #. [server]
 #: data/game_config.cfg:4
-#, fuzzy
 msgid "Official Wesnoth Server"
-msgstr "Poveži se z uradnim strežnikom"
+msgstr "Uradni strežnik Wesnoth"
 
 #. [server]
 #: data/game_config.cfg:8 data/game_config.cfg:12
@@ -5454,10 +5887,11 @@ msgstr "Težko"
 #. [language]
 #: data/hardwired/english.cfg:6
 msgid "Nightmare"
-msgstr ""
+msgstr "Nočna mora"
 
 #. [language]
 #: data/hardwired/english.cfg:11
+#, fuzzy
 msgid ""
 "Lawful units fight better during the day, and worse at night.\n"
 "\n"
@@ -5471,6 +5905,7 @@ msgstr ""
 
 #. [language]
 #: data/hardwired/english.cfg:12
+#, fuzzy
 msgid ""
 "Neutral units are unaffected by day and night, fighting equally well under "
 "both conditions."
@@ -5480,6 +5915,7 @@ msgstr ""
 
 #. [language]
 #: data/hardwired/english.cfg:16
+#, fuzzy
 msgid ""
 "Chaotic units fight better at night, and worse during the day.\n"
 "\n"
@@ -5493,6 +5929,7 @@ msgstr ""
 
 #. [language]
 #: data/hardwired/english.cfg:19
+#, fuzzy
 msgid "$name's Bridge,$name's Crossing"
 msgstr "most $name,križišče pri $name"
 
@@ -5503,6 +5940,7 @@ msgstr ""
 
 #. [language]
 #: data/hardwired/english.cfg:21
+#, fuzzy
 msgid "$name River,River $name"
 msgstr "reka $name, reka $name"
 
@@ -5590,36 +6028,41 @@ msgstr ""
 
 #. [language]
 #: data/hardwired/english.cfg:39
+#, fuzzy
 msgid "melee"
 msgstr "na blizu"
 
 #. [language]
 #: data/hardwired/english.cfg:40
+#, fuzzy
 msgid "ranged"
 msgstr "na daleč"
 
 #. [language]
 #: data/hardwired/english.cfg:43
 msgid "blade"
-msgstr "oster"
+msgstr "rezilo"
 
 #. [language]
 #: data/hardwired/english.cfg:44
+#, fuzzy
 msgid "pierce"
 msgstr "koničast"
 
 #. [language]
 #: data/hardwired/english.cfg:45
+#, fuzzy
 msgid "impact"
 msgstr "top"
 
 #. [language]
 #: data/hardwired/english.cfg:46
 msgid "fire"
-msgstr "ognjen"
+msgstr "ogenj"
 
 #. [language]
 #: data/hardwired/english.cfg:47
+#, fuzzy
 msgid "cold"
 msgstr "mrzel"
 
@@ -5637,7 +6080,7 @@ msgstr "DejaVuSans.ttf,Andagii.ttf,wqy-zenhei.ttc"
 #. [fonts]
 #: data/hardwired/fonts.cfg:8
 msgid "DejaVu Sans,Andagii,WenQuanYi Zen Hei"
-msgstr ""
+msgstr "DejaVu Sans,Andagii,WenQuanYi Zen Hei"
 
 #. [tip]
 #: data/hardwired/tips.cfg:3
@@ -5649,8 +6092,9 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:4 data/hardwired/tips.cfg:132
+#, fuzzy
 msgid "- Great Mage Delfador, 516YW"
-msgstr ""
+msgstr "- Veliki čarodej Delfador, 516LW"
 
 #. [tip]
 #: data/hardwired/tips.cfg:7
@@ -5691,7 +6135,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:12
 msgid "- King Konrad, 536YW"
-msgstr ""
+msgstr "- Kralj Konrad, 526LW"
 
 #. [tip]
 #: data/hardwired/tips.cfg:15
@@ -5752,15 +6196,16 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:39
+#, fuzzy
 msgid ""
 "On www.wesnoth.org you can find strategy guides, technical support, the "
 "history of Wesnoth, and much more."
-msgstr ""
+msgstr "Na spletni strani www.wesnoth.org lahko najdete "
 
 #. [tip]
 #: data/hardwired/tips.cfg:40
 msgid "- The Wesnoth Community"
-msgstr ""
+msgstr "- Skupnost Wesnoth"
 
 #. [tip]
 #: data/hardwired/tips.cfg:43
@@ -5814,6 +6259,7 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:59
+#, fuzzy
 msgid ""
 "The terrain your units are occupying determines the chance your opponents "
 "have of hitting them in battle. The defensive rating for the currently "
@@ -5913,7 +6359,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:88 data/hardwired/tips.cfg:168
 msgid "- Sir Kaylan, 498YW"
-msgstr ""
+msgstr "- Ser Kaylan, 498LW"
 
 #. [tip]
 #: data/hardwired/tips.cfg:91
@@ -5929,7 +6375,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:92
 msgid "- Sir Kaylan, 502YW"
-msgstr ""
+msgstr "- Ser Kaylan, 502LW"
 
 #. [tip]
 #: data/hardwired/tips.cfg:95
@@ -5966,6 +6412,7 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:107
+#, fuzzy
 msgid ""
 "If you are attacked from several directions, it may be a good idea to send "
 "expendable units in some directions to delay enemy units."
@@ -5975,6 +6422,7 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:111
+#, fuzzy
 msgid ""
 "Do not be afraid to retreat and regroup; it is often the key to victory."
 msgstr ""
@@ -5984,10 +6432,11 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:112
 msgid "- Meneldur, 123YW"
-msgstr ""
+msgstr "- Meneldur, 123LW"
 
 #. [tip]
 #: data/hardwired/tips.cfg:115
+#, fuzzy
 msgid ""
 "In most campaigns you will receive a gold bonus for finishing early, "
 "depending on the number of villages on the map and the number of turns you "
@@ -6001,6 +6450,7 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:119
+#, fuzzy
 msgid ""
 "Your leader can recruit or recall units from any keep inside a castle, not "
 "just the keep they start on. You can capture a keep from an enemy and "
@@ -6046,6 +6496,7 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:135
+#, fuzzy
 msgid "Use lines of units to screen injured units to let them recover."
 msgstr ""
 "Uporabljajte linije za varovanje ranjenih enot, da si te lahko v miru "
@@ -6054,15 +6505,17 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:136
 msgid "- Princess Li'sar, 515YW"
-msgstr ""
+msgstr "- Princesa Li'sar, 515LW"
 
 #. [tip]
 #: data/hardwired/tips.cfg:139
+#, fuzzy
 msgid "Read the hotkeys list in the preferences menu."
 msgstr "V nastavitvah si preberite seznam hitrih tipk."
 
 #. [tip]
 #: data/hardwired/tips.cfg:143
+#, fuzzy
 msgid ""
 "If you move a unit, but don't attack or discover any additional information, "
 "you can undo your move by pressing 'u'."
@@ -6072,6 +6525,7 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:147
+#, fuzzy
 msgid ""
 "You can see how far enemy units can move by moving the mouse cursor over "
 "them."
@@ -6081,6 +6535,7 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:151
+#, fuzzy
 msgid ""
 "Use healers to support your attacks - they will win you battles without "
 "needing to attack anything themselves."
@@ -6094,6 +6549,7 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:155
+#, fuzzy
 msgid ""
 "The 'slow' attack ability makes enemy units move slower and halves the "
 "damage they do on all attacks until they end a turn."
@@ -6114,6 +6570,7 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:163
+#, fuzzy
 msgid ""
 "Units are healed when they advance a level. Used wisely, this can turn a "
 "fight."
@@ -6123,6 +6580,7 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:167
+#, fuzzy
 msgid ""
 "Charging units are best used against enemies they can kill with a single "
 "blow."
@@ -6159,6 +6617,7 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:179
+#, fuzzy
 msgid ""
 "Nearly every icon and word in Wesnoth's playing screen has a tooltip. Place "
 "your mouse pointer over one to get an explanation or description."
@@ -6190,7 +6649,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:190
 msgid "- Queen Li'sar, 528YW"
-msgstr ""
+msgstr "- Kraljica Li'sar, 528LW"
 
 #. [tip]
 #: data/hardwired/tips.cfg:193
@@ -6245,14 +6704,12 @@ msgid ""
 msgstr ""
 
 #: data/temp-file_send_data_strings.cfg:15
-#, fuzzy
 msgid "Send"
-msgstr "Pesek"
+msgstr "Pošlji"
 
 #: data/temp-file_send_data_strings.cfg:16
-#, fuzzy
 msgid "Don't send"
-msgstr "Ne sprašuj me več!"
+msgstr "Ne pošlji"
 
 #: data/temp-file_send_data_strings.cfg:18
 msgid "Do not ask every time before sending data"
@@ -6282,9 +6739,8 @@ msgstr "Končaj potezo"
 #. [menu]: id=button-endturn2
 #: data/themes/default.cfg:154 data/themes/default.cfg:775
 #: data/themes/default.cfg:1033 data/themes/dfool.cfg:166
-#, fuzzy
 msgid "End Scenario"
-msgstr "Oddaljen scenarij"
+msgstr "Končaj scenarij"
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]: id=label-hp
@@ -6323,12 +6779,14 @@ msgstr "enote"
 #. [label]: id=upkeep-icon
 #: data/themes/default.cfg:258 data/themes/dfool.cfg:293
 #: data/themes/experimental.cfg:226
+#, fuzzy
 msgid "upkeep"
-msgstr "plače"
+msgstr "vzdrževanje"
 
 #. [label]: id=income-icon
 #: data/themes/default.cfg:267 data/themes/dfool.cfg:302
 #: data/themes/experimental.cfg:235
+#, fuzzy
 msgid "income"
 msgstr "prihodek"
 
@@ -6352,6 +6810,7 @@ msgstr "stopnja"
 
 #. [change]: id=actions-menu
 #: data/themes/default.cfg:1004
+#, fuzzy
 msgid "Act."
 msgstr "Akc."
 
@@ -6364,16 +6823,19 @@ msgstr "Konec"
 
 #. [label]: id=label-mp
 #: data/themes/dfool.cfg:257
+#, fuzzy
 msgid "MP"
 msgstr "MP"
 
 #. [label]: id=replay-label
 #: data/themes/macros.cfg:59
+#, fuzzy
 msgid "Replay"
 msgstr "Vnovično predvajanje"
 
 #. [menu]: id=button-playreplay, type=image
 #: data/themes/macros.cfg:74
+#, fuzzy
 msgid "Play"
 msgstr "Igraj "
 
@@ -6385,21 +6847,25 @@ msgstr "neprestano vnovično predvajanje"
 
 #. [menu]: id=button-stopreplay, type=image
 #: data/themes/macros.cfg:92
+#, fuzzy
 msgid "Stop"
 msgstr "Ustavi"
 
 #. [menu]: id=button-stopreplay, type=image
 #: data/themes/macros.cfg:93
+#, fuzzy
 msgid "pause at end of turn"
 msgstr "pavza ob koncu poteze"
 
 #. [menu]: id=button-resetreplay, type=image
 #: data/themes/macros.cfg:110
+#, fuzzy
 msgid "Reset"
 msgstr "Ponastavi"
 
 #. [menu]: id=button-resetreplay, type=image
 #: data/themes/macros.cfg:111
+#, fuzzy
 msgid "reset to beginning"
 msgstr "ponastavi na začetek"
 
@@ -6410,16 +6876,19 @@ msgstr "Naslednja poteza"
 
 #. [menu]: id=button-nextturn, type=image
 #: data/themes/macros.cfg:129
+#, fuzzy
 msgid "play turn"
 msgstr "igraj potezo"
 
 #. [menu]: id=button-nextside, type=image
 #: data/themes/macros.cfg:146
+#, fuzzy
 msgid "Next Side"
 msgstr "Naslednja stran"
 
 #. [menu]: id=button-nextside, type=image
 #: data/themes/macros.cfg:147
+#, fuzzy
 msgid "play side turn"
 msgstr "igraj potezo strani"
 
@@ -6431,6 +6900,7 @@ msgstr "Napitek Razpadanja"
 
 #. [menu]: id=skip-animation, type=checkbox
 #: data/themes/macros.cfg:179
+#, fuzzy
 msgid "Skip animation"
 msgstr "Preskoči animacije"
 
@@ -6440,15 +6910,18 @@ msgid "Close"
 msgstr "Zapri"
 
 #: src/actions.cpp:372
+#, fuzzy
 msgid "You don't have a leader to recruit with."
 msgstr "Nimate voditelja, s katerim bi lahko vpoklicovali."
 
 #: src/actions.cpp:379
+#, fuzzy
 msgid "You must have your leader on a keep to recruit or recall units."
 msgstr ""
 "Če hočete vpoklicati ali priklicati enote, mora biti vaš voditelj v trdnjavi."
 
 #: src/actions.cpp:398
+#, fuzzy
 msgid "There are no vacant castle tiles in which to recruit a unit."
 msgstr "Na voljo ni prostih gradov, kjer bi lahko vpoklicovali."
 
@@ -6463,9 +6936,8 @@ msgid "An invalid defender weapon got selected."
 msgstr "Izbrana je bila neveljavna era"
 
 #: src/actions.cpp:1280
-#, fuzzy
 msgid "female^poisoned"
-msgstr "Vagabondka"
+msgstr "zastrupljena"
 
 #: src/actions.cpp:1290
 #, fuzzy
@@ -6477,6 +6949,7 @@ msgid "petrified"
 msgstr ""
 
 #: src/actions.cpp:2484
+#, fuzzy
 msgid "Ambushed!"
 msgstr "Zaseda!"
 
@@ -6546,17 +7019,16 @@ msgid "MB"
 msgstr "MB"
 
 #: src/addon_management.cpp:430
-#, fuzzy
 msgid "GB"
-msgstr "B"
+msgstr "GB"
 
 #: src/addon_management.cpp:463
 msgid "addon_type^Campaign"
-msgstr ""
+msgstr "Kampanja"
 
 #: src/addon_management.cpp:465
 msgid "addon_type^Scenario"
-msgstr ""
+msgstr "Scenarij"
 
 #: src/addon_management.cpp:467
 #, fuzzy
@@ -6580,7 +7052,7 @@ msgstr "Oddaljen scenarij"
 
 #: src/addon_management.cpp:475
 msgid "addon_type^MP campaign"
-msgstr ""
+msgstr "VI kampanja"
 
 #: src/addon_management.cpp:477
 msgid "addon_type^Resources"
@@ -6593,12 +7065,11 @@ msgstr "Oddaljen scenarij"
 
 #: src/addon_management.cpp:481
 msgid "addon_type^(unknown)"
-msgstr ""
+msgstr "(neznano)"
 
 #: src/addon_management.cpp:511
-#, fuzzy
 msgid "Dependencies"
-msgstr "Nastavitve"
+msgstr "Odvisnosti"
 
 #: src/addon_management.cpp:515
 msgid ""
@@ -6620,6 +7091,7 @@ msgstr ""
 
 #: src/addon_management.cpp:539 src/addon_management.cpp:613
 #: src/multiplayer.cpp:215 src/multiplayer.cpp:274 src/multiplayer_ui.cpp:80
+#, fuzzy
 msgid "Connection timed out"
 msgstr "Povezava je potekla"
 
@@ -6629,6 +7101,7 @@ msgid "The server responded with an error: \"$error|\""
 msgstr "Strežnik se je odzval z napako: \""
 
 #: src/addon_management.cpp:551
+#, fuzzy
 msgid "Terms"
 msgstr "Pogoji"
 
@@ -6637,18 +7110,19 @@ msgid "Sending add-on"
 msgstr "Pošiljanje dodatka"
 
 #: src/addon_management.cpp:590 src/addon_management.cpp:615
+#, fuzzy
 msgid "The server responded with an error: \""
 msgstr "Strežnik se je odzval z napako: \""
 
 #: src/addon_management.cpp:593 src/addon_management.cpp:618
 #: src/multiplayer_wait.cpp:394
+#, fuzzy
 msgid "Response"
 msgstr "Odziv"
 
 #: src/addon_management.cpp:645
-#, fuzzy
 msgid "Downloading add-on: $addon_title|..."
-msgstr "Prenašanje dodatka ..."
+msgstr "Prenašanje dodatka: $addon_title ..."
 
 #: src/addon_management.cpp:660
 msgid ""
@@ -6683,7 +7157,7 @@ msgstr[3] ""
 
 #: src/addon_management.cpp:807
 msgid "No add-ons to update"
-msgstr ""
+msgstr "Ni dodatkov za posodobitev"
 
 #: src/addon_management.cpp:808
 msgid "Could not find any updated add-ons on this server."
@@ -6695,14 +7169,12 @@ msgid "Name"
 msgstr "Ime"
 
 #: src/addon_management.cpp:820
-#, fuzzy
 msgid "New version"
-msgstr "Različica"
+msgstr "Nova različica"
 
 #: src/addon_management.cpp:820
-#, fuzzy
 msgid "Old version"
-msgstr "Različica"
+msgstr "Stara različica"
 
 #: src/addon_management.cpp:821 src/addon_management.cpp:1019
 msgid "Author"
@@ -6713,18 +7185,16 @@ msgid "Size"
 msgstr "Velikost"
 
 #: src/addon_management.cpp:872
-#, fuzzy
 msgid "Update add-ons"
-msgstr "Pošiljanje dodatka"
+msgstr "Posodobi dodatke"
 
 #: src/addon_management.cpp:873
 msgid "Select an add-on to update:"
-msgstr ""
+msgstr "Izberite dodatek, ki ga želite posodobiti:"
 
 #: src/addon_management.cpp:887
-#, fuzzy
 msgid "Update all"
-msgstr "Jamska stena"
+msgstr "Posodobi vse"
 
 #: src/addon_management.cpp:944
 #, fuzzy
@@ -6748,11 +7218,11 @@ msgstr "Dobi dodatke"
 
 #: src/addon_management.cpp:955
 msgid "Add-on updated successfully."
-msgstr ""
+msgstr "Dodatek uspešno posodobljen."
 
 #: src/addon_management.cpp:956
 msgid "All add-ons updated successfully."
-msgstr ""
+msgstr "Vsi dodatki uspešno posodobljeni."
 
 #: src/addon_management.cpp:979
 #, fuzzy
@@ -6760,6 +7230,7 @@ msgid "Connecting to add-ons server..."
 msgstr "Povezovanje s strežnikom ..."
 
 #: src/addon_management.cpp:982 src/network.cpp:369 src/network.cpp:377
+#, fuzzy
 msgid "Could not connect to host."
 msgstr "Ni se možno povezati z gostiteljem."
 
@@ -6788,40 +7259,41 @@ msgstr "Vrsta"
 
 #: src/addon_management.cpp:1093
 msgid "Publish add-on: "
-msgstr "Objavi dodatek: "
+msgstr "Objavi dodatek:"
 
 #: src/addon_management.cpp:1099
 msgid "Delete add-on: "
-msgstr "Izbriši dodatek: "
+msgstr "Izbriši dodatek:"
 
 #: src/addon_management.cpp:1105
+#, fuzzy
 msgid "There are no add-ons available for download from this server."
 msgstr "Na tem strežniku ni na voljo nobenega dodatka."
 
 #: src/addon_management.cpp:1118
-#, fuzzy
 msgid "Get add-ons"
 msgstr "Dobi dodatke"
 
 #: src/addon_management.cpp:1119
 msgid "Choose the add-on to download."
-msgstr "Izberite dodatek za prenos"
+msgstr "Izberite dodatek za prenos."
 
 #: src/addon_management.cpp:1131 src/dialogs.cpp:596 src/menu_events.cpp:916
 #: src/menu_events.cpp:1473
-#, fuzzy
 msgid "Filter: "
-msgstr "Sposobnosti: "
+msgstr "Filter:"
 
 #: src/addon_management.cpp:1136
 msgid "Description"
-msgstr ""
+msgstr "Opis"
 
 #: src/addon_management.cpp:1173
+#, fuzzy
 msgid "Network communication error."
 msgstr "Napaka v mrežni komunikaciji."
 
 #: src/addon_management.cpp:1176
+#, fuzzy
 msgid "Remote host disconnected."
 msgstr "Oddaljeni gostitelj je prekinil povezavo."
 
@@ -6849,31 +7321,31 @@ msgstr "Pošiljanje dodatka"
 
 #: src/addon_management.cpp:1221
 msgid "Are you sure you want to remove the add-on '$addon|'?"
-msgstr ""
+msgstr "Ali res želite odstraniti dodatek '$addon|'?"
 
 #: src/addon_management.cpp:1227 src/multiplayer.cpp:227
 msgid "Confirm"
-msgstr ""
+msgstr "Potrdi"
 
 #: src/addon_management.cpp:1240
-#, fuzzy
 msgid "Add-on '$addon|' deleted."
-msgstr "Dodatek nameščen"
+msgstr "Dodatek '$addon|' izbrisan."
 
 #: src/addon_management.cpp:1245
-#, fuzzy
 msgid "Add-on deleted"
-msgstr "Dodatek nameščen"
+msgstr "Dodatek izbrisan"
 
 #: src/addon_management.cpp:1253
+#, fuzzy
 msgid "Add-on could not be deleted properly:"
-msgstr ""
+msgstr "Dodatka ni mogoče pravilno izbrisati:"
 
 #: src/attack_prediction_display.cpp:107 src/attack_prediction_display.cpp:217
 msgid "Attacker"
 msgstr "Napadalec"
 
 #: src/attack_prediction_display.cpp:108 src/attack_prediction_display.cpp:216
+#, fuzzy
 msgid "Defender"
 msgstr "Branitelj"
 
@@ -6883,10 +7355,12 @@ msgid "Expected Battle Result (HP)"
 msgstr "Pričakovan izid (hp)"
 
 #: src/attack_prediction_display.cpp:218
+#, fuzzy
 msgid " resistance vs "
 msgstr " odpornost na "
 
 #: src/attack_prediction_display.cpp:219
+#, fuzzy
 msgid " vulnerability vs "
 msgstr " šibkost na "
 
@@ -6899,40 +7373,48 @@ msgid "Time of day"
 msgstr "Čas dneva"
 
 #: src/attack_prediction_display.cpp:246
+#, fuzzy
 msgid "Leadership"
 msgstr "Vodenje"
 
 #: src/attack_prediction_display.cpp:253
+#, fuzzy
 msgid "Total damage"
 msgstr "Skupna škoda"
 
 #: src/attack_prediction_display.cpp:260 src/mouse_events.cpp:670
+#, fuzzy
 msgid "No usable weapon"
 msgstr "Ni orožja"
 
 #: src/attack_prediction_display.cpp:265
+#, fuzzy
 msgid "Chance of being unscathed"
 msgstr "Verjetnost da se ne poškuduje"
 
 #: src/attack_prediction_display.cpp:547 src/mouse_events.cpp:739
+#, fuzzy
 msgid "Damage Calculations"
 msgstr "Izračun škode"
 
 #: src/dialogs.cpp:128
+#, fuzzy
 msgid "Advance Unit"
 msgstr "Napredovanje"
 
 #: src/dialogs.cpp:129
+#, fuzzy
 msgid "What should our victorious unit become?"
 msgstr "Kaj naj postane ta zmagoslavna enota?"
 
 #: src/dialogs.cpp:232
+#, fuzzy
 msgid "No objectives available"
 msgstr "Na voljo ni nobenih ciljev"
 
 #: src/dialogs.cpp:261
 msgid "Do you really want to delete this game?"
-msgstr "Ali zares želite izbrisati ta shranjeni položaj?"
+msgstr "Ali res želite izbrisati to igro?"
 
 #: src/dialogs.cpp:263
 msgid "Don't ask me again!"
@@ -6943,17 +7425,17 @@ msgid "%a %b %d %H:%M %Y"
 msgstr "%a %b %d %H:%M %Y"
 
 #: src/dialogs.cpp:444
+#, fuzzy
 msgid "#(Invalid)"
 msgstr "#(Neveljaven)"
 
 #: src/dialogs.cpp:462
-#, fuzzy
 msgid "Campaign: $campaign_name"
-msgstr "Razvijalci kampanj"
+msgstr "Kampanja: $campaign_name"
 
 #: src/dialogs.cpp:469
 msgid "Multiplayer"
-msgstr "Večigralnost"
+msgstr "Večigralstvo"
 
 #: src/dialogs.cpp:471
 msgid "Tutorial"
@@ -6961,7 +7443,7 @@ msgstr "Vodič"
 
 #: src/dialogs.cpp:479 src/savegame.cpp:947
 msgid "replay"
-msgstr "vnovično predvajanje"
+msgstr "posnetek"
 
 #: src/dialogs.cpp:481 src/savegame.cpp:1019
 msgid "Turn"
@@ -6997,6 +7479,7 @@ msgid "%b %d"
 msgstr "%b %d"
 
 #: src/dialogs.cpp:552
+#, fuzzy
 msgid "No Saved Games"
 msgstr "Ni shranjenih položajev"
 
@@ -7019,10 +7502,12 @@ msgid "Load Game"
 msgstr "Naloži igro"
 
 #: src/dialogs.cpp:589
+#, fuzzy
 msgid "Choose the game to load"
 msgstr "Izberite igro, ki jo želite naložiti"
 
 #: src/dialogs.cpp:603
+#, fuzzy
 msgid "Show replay"
 msgstr "Pokaži posnetek igre"
 
@@ -7033,7 +7518,7 @@ msgstr "Prekliči"
 
 #: src/dialogs.cpp:610 src/multiplayer_create.cpp:87
 msgid "OK"
-msgstr "OK"
+msgstr "V redu"
 
 #: src/dialogs.cpp:611 src/dialogs.cpp:1025 src/dialogs.cpp:1132
 #: src/multiplayer_connect.cpp:1032 src/multiplayer_create.cpp:86
@@ -7042,6 +7527,7 @@ msgid "Cancel"
 msgstr "Prekliči"
 
 #: src/dialogs.cpp:614
+#, fuzzy
 msgid "Delete Save"
 msgstr "Izbriši shranjen položaj"
 
@@ -7063,21 +7549,24 @@ msgstr "XP: "
 
 #: src/dialogs.cpp:787 src/help.cpp:1437
 msgid "Moves: "
-msgstr "Premiki: "
+msgstr "Premikov:"
 
 #: src/game.cpp:573 src/game.cpp:1304
 msgid "The Battle for Wesnoth"
-msgstr "The Battle for Wesnoth"
+msgstr "Bitka za Wesnoth"
 
 #: src/game.cpp:902 src/game.cpp:910
+#, fuzzy
 msgid "The file you have tried to load is corrupt"
 msgstr "Datoteka, ki ste jo poskušali naložiti, je pokvarjena"
 
 #: src/game.cpp:905 src/game.cpp:913 src/savegame.cpp:534
+#, fuzzy
 msgid "The file you have tried to load is corrupt: '"
 msgstr "Datoteka, ki ste jo poskusili naložiti, je pokvarjena: '"
 
 #: src/game.cpp:917
+#, fuzzy
 msgid "File I/O Error while reading the game"
 msgstr "I/O Napaka pri branju igre"
 
@@ -7116,14 +7605,17 @@ msgid "Error while starting server: "
 msgstr "Napaka med igranjem: "
 
 #: src/game.cpp:1264 src/playcampaign.cpp:131 src/playcampaign.cpp:406
+#, fuzzy
 msgid "The game could not be loaded: "
 msgstr "Igre ni bilo možno naložiti: "
 
 #: src/game.cpp:1266 src/playcampaign.cpp:133 src/playcampaign.cpp:409
+#, fuzzy
 msgid "Error while playing the game: "
 msgstr "Napaka med igranjem: "
 
 #: src/game.cpp:1284 src/playcampaign.cpp:135 src/playcampaign.cpp:412
+#, fuzzy
 msgid "The game map could not be loaded: "
 msgstr "Karte ni bilo možno naložiti: "
 
@@ -7141,23 +7633,25 @@ msgid "ERROR DETAILS:"
 msgstr "PODROBNOSTI NAPAKE:"
 
 #: src/game.cpp:1449
+#, fuzzy
 msgid "Error loading game configuration files: '"
 msgstr "Napaka pri nalaganju nastavitvenih datotek: '"
 
 #: src/game.cpp:1450
+#, fuzzy
 msgid "' (The game will now exit)"
 msgstr "' (Igra se bo zaključila)"
 
 #: src/game.cpp:1459
-#, fuzzy
 msgid "Loading data files"
-msgstr "Branje datotek enot."
+msgstr "Nalaganje podatkovnih datotek"
 
 #: src/game.cpp:1885
 msgid "Loading game configuration."
-msgstr "Nalaganje nastavitev."
+msgstr "Nalaganje nastavitev igre."
 
 #: src/game.cpp:1891
+#, fuzzy
 msgid "Re-initialize fonts for the current language."
 msgstr "Ponastavi pisave za trenutni jezik."
 
@@ -7167,6 +7661,7 @@ msgid "Searching for installed add-ons."
 msgstr "Pošiljanje dodatka"
 
 #: src/game.cpp:1908
+#, fuzzy
 msgid "Loading title screen."
 msgstr "Nalaganje uvodnega zaslona."
 
@@ -7176,14 +7671,12 @@ msgid "Invalid color range: "
 msgstr "Neveljavna barva"
 
 #: src/game_events.cpp:204
-#, fuzzy
 msgid "Error: "
-msgstr "Napaka"
+msgstr "Napaka:"
 
 #: src/game_events.cpp:207
-#, fuzzy
 msgid "Warning: "
-msgstr "Jutro"
+msgstr "Opozorilo:"
 
 #: src/game_events.cpp:210
 msgid "Debug: "
@@ -7198,14 +7691,17 @@ msgid "[unit_worth]'s filter didn't match any units!"
 msgstr ""
 
 #: src/generate_report.cpp:128
+#, fuzzy
 msgid "invisible: "
 msgstr "nevidna: "
 
 #: src/generate_report.cpp:129
+#, fuzzy
 msgid "This unit is invisible. It cannot be seen or attacked by enemy units."
 msgstr "Ta enota je nevidna. Sovražniki je ne morejo niti videti niti napasti."
 
 #: src/generate_report.cpp:132
+#, fuzzy
 msgid "slowed: "
 msgstr "upočasnjena: "
 
@@ -7217,10 +7713,12 @@ msgid ""
 msgstr "Ta enota je upočasnjena. V boju bo naredila samo polovično škodo."
 
 #: src/generate_report.cpp:136
+#, fuzzy
 msgid "poisoned: "
 msgstr "zastrupljena: "
 
 #: src/generate_report.cpp:137
+#, fuzzy
 msgid ""
 "This unit is poisoned. It will lose 8 HP every turn until it can seek a cure "
 "to the poison in a village or from a friendly unit with the 'cures' "
@@ -7245,15 +7743,15 @@ msgid "This unit has been petrified. It may not move or attack."
 msgstr "Ta enota je okamenela. Ne more se ne premikati ne napadati."
 
 #: src/generate_report.cpp:195
-#, fuzzy
 msgid "Resistances: "
-msgstr "Odpornosti"
+msgstr "Odpornosti: "
 
 #: src/generate_report.cpp:197
 msgid "(Att / Def)"
 msgstr ""
 
 #: src/generate_report.cpp:214 src/multiplayer_create.cpp:413
+#, fuzzy
 msgid "Experience Modifier: "
 msgstr "Izkustveni prikrojevalec: "
 
@@ -7275,9 +7773,9 @@ msgstr[2] ""
 msgstr[3] ""
 
 #: src/generate_report.cpp:294
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "tooltip^% accuracy"
-msgstr "Skupna škoda"
+msgstr "% natančnost"
 
 #: src/generate_report.cpp:300
 #, fuzzy, no-c-format
@@ -7285,18 +7783,21 @@ msgid "tooltip^% parry"
 msgstr "Skupna škoda"
 
 #: src/generate_report.cpp:310
+#, fuzzy
 msgid "weapon range: "
 msgstr "doseg orožja: "
 
 #: src/generate_report.cpp:311
+#, fuzzy
 msgid "damage type: "
-msgstr "tip škode: "
+msgstr "vrsta škode: "
 
 #: src/generate_report.cpp:332
 msgid "vs"
 msgstr "proti"
 
 #: src/generate_report.cpp:385
+#, fuzzy
 msgid "Lawful units: "
 msgstr "Zakonite enote: "
 
@@ -7305,30 +7806,31 @@ msgid "Neutral units: "
 msgstr "Nevtralne enote: "
 
 #: src/generate_report.cpp:387
+#, fuzzy
 msgid "Chaotic units: "
 msgstr "Kaotične enote: "
 
 #: src/generate_report.cpp:565
+#, fuzzy
 msgid "Observers:"
 msgstr "Opazovalci:"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:204 src/multiplayer_lobby.cpp:431
-#, fuzzy
 msgid "Unknown era: $era_id"
-msgstr "Neznana era"
+msgstr "Neznano obdoje: $era_id"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:209 src/multiplayer_lobby.cpp:435
 msgid "Unknown era"
-msgstr "Neznana era"
+msgstr "Neznano obdobje"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:264 src/multiplayer_lobby.cpp:497
+#, fuzzy
 msgid "Remote scenario"
 msgstr "Oddaljen scenarij"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:272 src/multiplayer_lobby.cpp:504
-#, fuzzy
 msgid "Unknown scenario: $scenario_id"
-msgstr "Neznan scenarij: '"
+msgstr "Neznan scenarij: $scenario_id"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:277 src/multiplayer_lobby.cpp:508
 msgid "Unknown scenario"
@@ -7340,9 +7842,8 @@ msgid "Reloaded game"
 msgstr "Naloži enoigralski shranjen položaj"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:294 src/multiplayer_lobby.cpp:529
-#, fuzzy
 msgid "Turn "
-msgstr "Poteza"
+msgstr "Poteza "
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:298 src/multiplayer_lobby.cpp:533
 #, fuzzy
@@ -7360,17 +7861,18 @@ msgstr "Megla"
 #: src/gui/dialogs/lobby/lobby_data.cpp:307
 #: src/gui/dialogs/lobby/lobby_data.cpp:310 src/multiplayer_create.cpp:84
 #: src/multiplayer_lobby.cpp:548 src/multiplayer_lobby.cpp:554
+#, fuzzy
 msgid "Shroud"
 msgstr "Koprena"
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:312 src/multiplayer_lobby.cpp:558
+#, fuzzy
 msgid "none"
 msgstr "brez"
 
 #: src/gui/dialogs/lobby_player_info.cpp:65
-#, fuzzy
 msgid "In game:"
-msgstr "Ime:"
+msgstr "V igri:"
 
 #: src/gui/dialogs/lobby_player_info.cpp:67
 msgid "(observing)"
@@ -7385,9 +7887,8 @@ msgid "In lobby"
 msgstr ""
 
 #: src/gui/dialogs/lobby_player_info.cpp:96
-#, fuzzy
 msgid "On friends list"
-msgstr "Dodan na seznam ignoriranih: "
+msgstr "Na seznamu prijateljev"
 
 #: src/gui/dialogs/lobby_player_info.cpp:101
 #, fuzzy
@@ -7427,33 +7928,28 @@ msgstr ""
 "<header>text='Verjetnost zadetka'</header>"
 
 #: src/help.cpp:1249
-#, fuzzy
 msgid "Leaders:"
-msgstr "Vodja: "
+msgstr "Vodje:"
 
-# preveri
 #: src/help.cpp:1258
-#, fuzzy
 msgid "Recruits:"
 msgstr "Vpoklicane enote: "
 
 #: src/help.cpp:1272 src/multiplayer_create.cpp:79
 msgid "Era:"
-msgstr "Era:"
+msgstr "Obdobje:"
 
 #: src/help.cpp:1280
-#, fuzzy
 msgid "Factions:"
-msgstr "Stran"
+msgstr "Frakcije:"
 
 #: src/help.cpp:1290
 msgid "Factions are only used in multiplayer"
-msgstr ""
+msgstr "Frakcije so uporabljene samo v večigralstvu"
 
 #: src/help.cpp:1365
-#, fuzzy
 msgid "Advances from: "
-msgstr "Napreduje v: "
+msgstr "Napreduje iz:"
 
 #: src/help.cpp:1367
 msgid "Advances to: "
@@ -7465,9 +7961,8 @@ msgid "race^Miscellaneous"
 msgstr "Razno"
 
 #: src/help.cpp:1396
-#, fuzzy
 msgid "Race: "
-msgstr "buzdovan"
+msgstr "Rasa: "
 
 #: src/help.cpp:1403
 msgid "Abilities: "
@@ -7483,31 +7978,35 @@ msgid "Cost: "
 msgstr "Cena: "
 
 #: src/help.cpp:1439
+#, fuzzy
 msgid "Alignment: "
 msgstr "Poravnava: "
 
 #: src/help.cpp:1445
+#, fuzzy
 msgid "Required XP: "
 msgstr "Potrebni XP: "
 
 #: src/help.cpp:1454
 msgid "unit help^Attacks"
-msgstr ""
+msgstr "Napadi"
 
 #: src/help.cpp:1461
-#, fuzzy
 msgid "unit help^Name"
-msgstr "Izhod iz igre"
+msgstr "Ime"
 
 #: src/help.cpp:1463
+#, fuzzy
 msgid "Strikes"
-msgstr "Udarci"
+msgstr "Število udarcev:"
 
 #: src/help.cpp:1464
+#, fuzzy
 msgid "Range"
 msgstr "Doseg"
 
 #: src/help.cpp:1465
+#, fuzzy
 msgid "Special"
 msgstr "Posebnosti orožja"
 
@@ -7517,13 +8016,14 @@ msgstr "Odpornosti"
 
 #: src/help.cpp:1519
 msgid "Attack Type"
-msgstr "Tip napada"
+msgstr "Vrsta napada"
 
 #: src/help.cpp:1520
 msgid "Resistance"
 msgstr "Odpornost"
 
 #: src/help.cpp:1555
+#, fuzzy
 msgid "Terrain Modifiers"
 msgstr "Terenski prikrojevalci"
 
@@ -7536,26 +8036,24 @@ msgid "Defense"
 msgstr "Obramba"
 
 #: src/help.cpp:1561
+#, fuzzy
 msgid "Movement Cost"
 msgstr "Cena premika"
 
 #: src/help.cpp:1762
-#, fuzzy
 msgid "<header>text='Units of this race'</header>"
-msgstr ""
-"\n"
-"\n"
-"<header>text='Verjetnost zadetka'</header>"
+msgstr "<header>text='Enote te rase'</header>"
 
 #: src/help.cpp:2683 src/menu_events.cpp:570
 msgid " < Back"
-msgstr "< Nazaj"
+msgstr " < Nazaj"
 
 #: src/help.cpp:2684
 msgid "Forward >"
 msgstr "Naprej >"
 
 #: src/help.cpp:2796
+#, fuzzy
 msgid "Reference to unknown topic: "
 msgstr "Povezava do neznane teme: "
 
@@ -7564,10 +8062,12 @@ msgid "corrupted original file"
 msgstr ""
 
 #: src/help.cpp:3146
+#, fuzzy
 msgid "The Battle for Wesnoth Help"
-msgstr "Pomoč za The Battle for Wesnoth "
+msgstr "Pomoč za igro Bitka za Wesnoth"
 
 #: src/help.cpp:3202
+#, fuzzy
 msgid "Parse error when parsing help text: "
 msgstr "Napaka med razčlenjevanjem pomoči: "
 
@@ -7581,19 +8081,18 @@ msgstr "Privzeti sistemski jezik"
 
 #: src/leader_list.cpp:137 src/menu_events.cpp:1463
 #: src/multiplayer_connect.cpp:221 src/multiplayer_connect.cpp:265
-#, fuzzy
 msgid "gender^Random"
 msgstr "Naključno"
 
 #: src/leader_list.cpp:147 src/multiplayer_connect.cpp:217
 #: src/multiplayer_connect.cpp:261
 msgid "Female ♀"
-msgstr ""
+msgstr "Ženska ♀"
 
 #: src/leader_list.cpp:151 src/multiplayer_connect.cpp:219
 #: src/multiplayer_connect.cpp:263
 msgid "Male ♂"
-msgstr ""
+msgstr "Moški ♂"
 
 #: src/leader_list.cpp:162 src/leader_list.cpp:187
 msgid "Random"
@@ -7604,19 +8103,16 @@ msgid "?"
 msgstr "?"
 
 #: src/loadscreen.cpp:244
-#, fuzzy
 msgid "Verifying cache..."
-msgstr "Preverjanje predpomnilnika."
+msgstr "Preverjanje predpomnilnika ..."
 
 #: src/loadscreen.cpp:262
-#, fuzzy
 msgid "Reading unit files..."
-msgstr "Branje datotek enot."
+msgstr "Branje datotek enot ..."
 
 #: src/loadscreen.cpp:280
-#, fuzzy
 msgid "Reading files and creating cache..."
-msgstr "Branje datotek in ustvarjanje predpomnilnika."
+msgstr "Branje datotek in ustvarjanje predpomnilnika ..."
 
 #: src/map.cpp:163
 msgid "A map without a header is not supported"
@@ -7662,6 +8158,7 @@ msgid "Statistics"
 msgstr "Statistika"
 
 #: src/menu_events.cpp:207
+#, fuzzy
 msgid "Moves"
 msgstr "Premiki"
 
@@ -7671,7 +8168,6 @@ msgid "Status"
 msgstr "Statistika"
 
 #: src/menu_events.cpp:210 src/menu_events.cpp:844
-#, fuzzy
 msgid "Level^Lvl."
 msgstr "Stopnja"
 
@@ -7705,14 +8201,16 @@ msgstr "Vasi"
 
 #: src/menu_events.cpp:374
 msgid "status^Units"
-msgstr ""
+msgstr "Enote"
 
 #: src/menu_events.cpp:375
+#, fuzzy
 msgid "Upkeep"
 msgstr "Plače"
 
 #: src/menu_events.cpp:376 src/multiplayer_connect.cpp:1029
 #: src/multiplayer_wait.cpp:507
+#, fuzzy
 msgid "Income"
 msgstr "Prihodki"
 
@@ -7722,14 +8220,12 @@ msgid "Current Status"
 msgstr "Trenutni vzdrževalec:"
 
 #: src/menu_events.cpp:478
-#, fuzzy
 msgid "More >"
-msgstr "Več"
+msgstr "Več >"
 
 #: src/menu_events.cpp:496
-#, fuzzy
 msgid "scenario settings^Leader"
-msgstr "Začetek scenarija"
+msgstr "Vodja"
 
 #: src/menu_events.cpp:498
 #, fuzzy
@@ -7757,23 +8253,20 @@ msgid ""
 msgstr ""
 
 #: src/menu_events.cpp:502
-#, fuzzy
 msgid "scenario settings^Fog"
-msgstr "Začetek scenarija"
+msgstr "Megla"
 
 #: src/menu_events.cpp:503
-#, fuzzy
 msgid "scenario settings^Shroud"
-msgstr "Začetek scenarija"
+msgstr "Koprena"
 
 #: src/menu_events.cpp:550 src/menu_events.cpp:551
-#, fuzzy
 msgid "no"
-msgstr "Sneg"
+msgstr "ne"
 
 #: src/menu_events.cpp:550 src/menu_events.cpp:551
 msgid "yes"
-msgstr ""
+msgstr "da"
 
 #: src/menu_events.cpp:567
 #, fuzzy
@@ -7781,24 +8274,23 @@ msgid "Scenario Settings"
 msgstr "Začetek scenarija"
 
 #: src/menu_events.cpp:589
-#, fuzzy
 msgid "Save the Map As"
-msgstr "Dèli karto z zavezniki"
+msgstr "Shrani karto kot"
 
 #: src/menu_events.cpp:594
-#, fuzzy
 msgid "The map already exists. Do you want to overwrite it?"
-msgstr "Shranjeni položaj že obstaja. Ali ga želite prepisati?"
+msgstr "Karta že obstaja. Jo želite prepisati?"
 
 #: src/menu_events.cpp:606
 msgid "Map saved."
-msgstr ""
+msgstr "Karta shranjena."
 
 #: src/menu_events.cpp:610
 msgid "Could not save the map: $msg"
-msgstr ""
+msgstr "Karte ni mogoče shraniti: $msg"
 
 #: src/menu_events.cpp:625
+#, fuzzy
 msgid "Chat Log"
 msgstr "Dnevnik pogovorov"
 
@@ -7825,6 +8317,7 @@ msgstr[2] "Zlata"
 msgstr[3] "Zlata"
 
 #: src/menu_events.cpp:706
+#, fuzzy
 msgid "You have no units available to recruit."
 msgstr "Nikogar ne morete vpoklicati."
 
@@ -7837,14 +8330,17 @@ msgid "Select unit:"
 msgstr "Izberite enoto:"
 
 #: src/menu_events.cpp:765
+#, fuzzy
 msgid "You don't have enough gold to recruit that unit"
 msgstr "Za vpoklic te enote nimate dovolj zlata"
 
 #: src/menu_events.cpp:811
+#, fuzzy
 msgid "You are separated from your soldiers and may not recall them"
 msgstr "Od svojih enot ste ločeni in jih ne morete priklicati"
 
 #: src/menu_events.cpp:834
+#, fuzzy
 msgid ""
 "There are no troops available to recall\n"
 "(You must have veteran survivors from a previous scenario)"
@@ -7857,6 +8353,7 @@ msgid "Recall"
 msgstr "Prikliči"
 
 #: src/menu_events.cpp:920
+#, fuzzy
 msgid "Dismiss Unit"
 msgstr "Odpravi enoto"
 
@@ -7864,17 +8361,19 @@ msgstr "Odpravi enoto"
 #, fuzzy
 msgid "You must have at least 1 gold piece to recall a unit"
 msgid_plural "You must have at least $cost gold pieces to recall a unit"
-msgstr[0] "Za priklic enote potrebujete vsaj $cost zlata"
+msgstr[0] "Za priklic enote potrebujete vsaj $cost zlato"
 msgstr[1] "Za priklic enote potrebujete vsaj $cost zlata"
 msgstr[2] "Za priklic enote potrebujete vsaj $cost zlata"
 msgstr[3] "Za priklic enote potrebujete vsaj $cost zlata"
 
 #: src/menu_events.cpp:1305
+#, fuzzy
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
 msgstr "Niste še začeli svoje poteze. Ali jo res želite končati?"
 
 #: src/menu_events.cpp:1313 src/menu_events.cpp:1318
+#, fuzzy
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr "Nekatere enote se še lahko premaknejo. Ali res želite končati potezo?"
 
@@ -7883,25 +8382,24 @@ msgid "Rename Unit"
 msgstr "Preimenuj enoto"
 
 #: src/menu_events.cpp:1436
-#, fuzzy
 msgid "Race"
-msgstr "buzdovan"
+msgstr "Rasa"
 
+# Debug?
 #: src/menu_events.cpp:1460
 msgid "Create Unit (Debug!)"
-msgstr ""
+msgstr "Ustvari enoto (razhroščevanje!)"
 
 #: src/menu_events.cpp:1463 src/multiplayer_wait.cpp:127
-#, fuzzy
 msgid "Gender: "
-msgstr "Vodja: "
+msgstr "Spol:"
 
 #: src/menu_events.cpp:1550
+#, fuzzy
 msgid "Place Label"
 msgstr "Postavi oznako"
 
 #: src/menu_events.cpp:1552
-#, fuzzy
 msgid "Label: "
 msgstr "Oznaka:"
 
@@ -7911,13 +8409,13 @@ msgid "Team only"
 msgstr "Turkizna"
 
 #: src/menu_events.cpp:1756
+#, fuzzy
 msgid "Search"
 msgstr "Iskanje"
 
 #: src/menu_events.cpp:1937
-#, fuzzy
 msgid "This command is currently unavailable."
-msgstr "Na voljo ni nobenih ciljev"
+msgstr "Ukaz trenutno ni na voljo."
 
 #: src/menu_events.cpp:1943
 msgid ""
@@ -7933,12 +8431,11 @@ msgstr ""
 
 #: src/menu_events.cpp:1953
 msgid "do not translate the 'all'^[all|<command>]"
-msgstr ""
+msgstr "[all|<ukaz>]"
 
 #: src/menu_events.cpp:1997
-#, fuzzy
 msgid "Error:"
-msgstr "Napaka"
+msgstr "Napaka:"
 
 #: src/menu_events.cpp:2003
 msgid "Missing argument $arg_id"
@@ -7951,13 +8448,12 @@ msgid ""
 msgstr ""
 
 #: src/menu_events.cpp:2051 src/menu_events.cpp:2052 src/menu_events.cpp:2075
-#, fuzzy
 msgid "help"
-msgstr "Pomoč"
+msgstr "pomoč"
 
 #: src/menu_events.cpp:2052
 msgid "Type $help_command <command> for more info."
-msgstr ""
+msgstr "Za več podrobnosti vpišite $help_command <ukaz>."
 
 #: src/menu_events.cpp:2063
 #, fuzzy
@@ -7967,7 +8463,7 @@ msgstr "Na voljo ni nobenih ciljev"
 #: src/menu_events.cpp:2068
 #, fuzzy
 msgid "Usage:"
-msgstr "Sporočilo:"
+msgstr "Raba:"
 
 #: src/menu_events.cpp:2073
 msgid "aliases:"
@@ -7998,7 +8494,7 @@ msgstr ""
 #: src/menu_events.cpp:2238 src/menu_events.cpp:2240 src/menu_events.cpp:2265
 #: src/menu_events.cpp:2267 src/menu_events.cpp:2269 src/menu_events.cpp:2283
 msgid "<nick>"
-msgstr ""
+msgstr "<vzdevek>"
 
 #: src/menu_events.cpp:2233
 msgid "Unban a user. He does not have to be in the game but on the server."
@@ -8025,9 +8521,8 @@ msgid "Send a message to the server admins currently online"
 msgstr ""
 
 #: src/menu_events.cpp:2254
-#, fuzzy
 msgid "<message>"
-msgstr "Sporočilo:"
+msgstr "<sporočilo>"
 
 #: src/menu_events.cpp:2254
 #, fuzzy
@@ -8045,7 +8540,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2259
 msgid "<nick> <message>"
-msgstr ""
+msgstr "<vzdevek> <sporočilo>"
 
 #: src/menu_events.cpp:2263
 msgid "<level> <domain>"
@@ -8079,7 +8574,7 @@ msgstr "Prikaži seznam ignoriranih. Uporaba: /ignore list"
 #: src/menu_events.cpp:2274
 #, fuzzy
 msgid "Display version information."
-msgstr "Najdene ni bilo nobene ere"
+msgstr "Prikaži podatke o različici."
 
 #: src/menu_events.cpp:2276
 msgid "<password> <email (optional)>"
@@ -8164,7 +8659,7 @@ msgstr "Mrežni igralec"
 
 #: src/menu_events.cpp:2429
 msgid "Refresh gui."
-msgstr ""
+msgstr "Osveži uporabniški vmesnik."
 
 #: src/menu_events.cpp:2431
 msgid "Switch a side to/from AI control."
@@ -8185,32 +8680,28 @@ msgstr ""
 #: src/menu_events.cpp:2436
 #, fuzzy
 msgid "Clear chat history."
-msgstr ""
-"\n"
-"Počisti sporočila."
+msgstr "Počisti sporočila."
 
 #: src/menu_events.cpp:2438
 msgid "Visualize the screen refresh procedure."
 msgstr ""
 
+# Kratica?
 #: src/menu_events.cpp:2439
-#, fuzzy
 msgid "Show fps."
-msgstr "Pokaži posnetek igre"
+msgstr "Prikaži FPS."
 
 #: src/menu_events.cpp:2441
-#, fuzzy
 msgid "Save game."
-msgstr "Shrani igro"
+msgstr "Shrani igro."
 
 #: src/menu_events.cpp:2443
-#, fuzzy
 msgid "Quit game."
-msgstr "Izhod iz igre"
+msgstr "Končaj igro."
 
 #: src/menu_events.cpp:2447
 msgid "Save and quit."
-msgstr ""
+msgstr "Shrani in končaj."
 
 #: src/menu_events.cpp:2450
 msgid "Ignore replay errors."
@@ -8222,7 +8713,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2454
 msgid "<id>"
-msgstr ""
+msgstr "<id>"
 
 #: src/menu_events.cpp:2454
 #, fuzzy
@@ -8230,22 +8721,20 @@ msgid "Advance to the next scenario, or scenario identified by 'id'"
 msgstr "Čakanje na začetek igre..."
 
 #: src/menu_events.cpp:2457
-#, fuzzy
 msgid "Choose next scenario"
-msgstr "Prenašam naslednjo stopnjo..."
+msgstr "Izberi naslednji scenarij"
 
 #: src/menu_events.cpp:2460
-#, fuzzy
 msgid "Turn debug mode on."
-msgstr "Splošni ukazi"
+msgstr "Vklopi način razhroščevanja."
 
 #: src/menu_events.cpp:2462
 msgid "Turn debug mode off."
-msgstr ""
+msgstr "Izklopi način razhroščevanja."
 
 #: src/menu_events.cpp:2464 src/menu_events.cpp:2468
 msgid "<command>[;<command>...]"
-msgstr ""
+msgstr "<ukaz>[;<ukaz>...]"
 
 #: src/menu_events.cpp:2464
 msgid "Execute a Lua statement."
@@ -8265,7 +8754,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2472
 msgid "<name>[=<command>]"
-msgstr ""
+msgstr "<ime>[=<ukaz>]"
 
 #: src/menu_events.cpp:2472
 msgid "Set or show alias to a command"
@@ -8273,7 +8762,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2474
 msgid "<var>=<value>"
-msgstr ""
+msgstr "<spremenljivka>=<vrednost>"
 
 #: src/menu_events.cpp:2474
 msgid "Set a scenario variable."
@@ -8281,7 +8770,7 @@ msgstr ""
 
 #: src/menu_events.cpp:2476
 msgid "<var>"
-msgstr ""
+msgstr "<spremenljivka>"
 
 #: src/menu_events.cpp:2476
 msgid "Show a scenario variable."
@@ -8296,9 +8785,8 @@ msgid "Discover all units in help."
 msgstr ""
 
 #: src/menu_events.cpp:2490
-#, fuzzy
 msgid "Create a unit."
-msgstr "Ustvari igro"
+msgstr "Ustvari enoto."
 
 #: src/menu_events.cpp:2492
 #, fuzzy
@@ -8326,14 +8814,14 @@ msgstr ""
 msgid "Toggle overlaying of terrain codes on hexes."
 msgstr ""
 
+# Stopnja?
 #: src/menu_events.cpp:2548
 msgid "Unknown debug level: '$level'."
-msgstr ""
+msgstr "Neznana raven razhroščevanja: '$level'."
 
 #: src/menu_events.cpp:2550 src/menu_events.cpp:2559
-#, fuzzy
 msgid "error"
-msgstr "Napaka"
+msgstr "napaka"
 
 #: src/menu_events.cpp:2557
 msgid "Unknown debug domain: '$domain'."
@@ -8353,9 +8841,8 @@ msgstr ""
 
 #: src/menu_events.cpp:2740 src/menu_events.cpp:2759
 #: src/multiplayer_connect.cpp:699
-#, fuzzy
 msgid "(empty)"
-msgstr "Prazno"
+msgstr "(prazno)"
 
 #: src/menu_events.cpp:2740 src/menu_events.cpp:2746 src/menu_events.cpp:2796
 #, fuzzy
@@ -8368,24 +8855,23 @@ msgid "Added to ignore list: $nick"
 msgstr "Dodan na seznam ignoriranih: "
 
 #: src/menu_events.cpp:2749 src/menu_events.cpp:2768
-#, fuzzy
 msgid "Invalid username: $nick"
-msgstr "Neveljavno uporabniško ime: "
+msgstr "Neveljavno uporabniško ime: $nick"
 
 #: src/menu_events.cpp:2759 src/menu_events.cpp:2766 src/menu_events.cpp:2792
 #, fuzzy
 msgid "friends list"
 msgstr "Dodan na seznam ignoriranih: "
 
+# Dodam "/a"?
 #: src/menu_events.cpp:2766
-#, fuzzy
 msgid "Added to friends list: $nick"
-msgstr "Dodan na seznam ignoriranih: "
+msgstr "Dodan na seznam prijateljev: $nick"
 
+# Dodam "/a"?
 #: src/menu_events.cpp:2782
-#, fuzzy
 msgid "Removed from list: $nick"
-msgstr "Odstranjen s seznama ignoriranih: "
+msgstr "Odstranjen s seznama: $nick"
 
 #: src/menu_events.cpp:2782 src/menu_events.cpp:2800
 #, fuzzy
@@ -8397,9 +8883,8 @@ msgid "There are no players on your friends or ignore list."
 msgstr ""
 
 #: src/menu_events.cpp:2805
-#, fuzzy
 msgid "version"
-msgstr "Različica"
+msgstr "različica"
 
 #: src/menu_events.cpp:2821
 msgid "registering with password *** and no email address"
@@ -8428,6 +8913,7 @@ msgid "requesting information for user $nick"
 msgstr "Najdene ni bilo nobene ere"
 
 #: src/menu_events.cpp:2983
+#, fuzzy
 msgid "Couldn't find label or unit containing the string '$search'."
 msgstr "Nisem našel oznake ali enote z '$search' v imenu."
 
@@ -8449,7 +8935,7 @@ msgstr ""
 
 #: src/menu_events.cpp:3151
 msgid "Choose Scenario (Debug!)"
-msgstr ""
+msgstr "Izberi scenarij (razhroščevanje!)"
 
 #: src/menu_events.cpp:3172
 #, fuzzy
@@ -8491,18 +8977,16 @@ msgid ""
 msgstr ""
 
 #: src/menu_events.cpp:3333
-#, fuzzy
 msgid "Invalid unit type"
-msgstr "Neveljavno ime oznake"
+msgstr "Neveljavna vrsta enote"
 
 #: src/menu_events.cpp:3346
-#, fuzzy
 msgid "Invalid location"
-msgstr "Neveljavna barva"
+msgstr "Neveljavno mesto"
 
 #: src/menu_events.cpp:3382
 msgid "ai"
-msgstr ""
+msgstr "ui"
 
 #: src/menu_events.cpp:3392 src/menu_events.cpp:3407
 msgid "prompt^Command:"
@@ -8514,6 +8998,7 @@ msgid "User-Command#3"
 msgstr "Ukazi"
 
 #: src/mouse_events.cpp:669 src/mouse_events.cpp:749
+#, fuzzy
 msgid "Attack Enemy"
 msgstr "Napadi"
 
@@ -8534,10 +9019,11 @@ msgid ""
 "The server requires version '$version1' while you are using version "
 "'$version2'"
 msgstr ""
-"Strežnik zahteva različico '$version1' vi pa uporabljate različico "
+"Strežnik zahteva različico '$version1', vi pa uporabljate različico "
 "'$version2'"
 
 #: src/multiplayer.cpp:168
+#, fuzzy
 msgid "Server-side redirect loop"
 msgstr "Preusmeritve na strani strežnika"
 
@@ -8561,8 +9047,9 @@ msgid ""
 msgstr ""
 
 #: src/multiplayer.cpp:305
+#, fuzzy
 msgid "The nick '$nick' is too long. Nicks must be 18 characters or less."
-msgstr ""
+msgstr "Vzdevek '$nick' je predolg. Vzdevki morajo "
 
 #: src/multiplayer.cpp:308
 msgid "The nick '$nick' is reserved and cannot be used by players."
@@ -8597,6 +9084,7 @@ msgstr ""
 
 #: src/multiplayer_connect.cpp:95 src/multiplayer_connect.cpp:485
 #: src/multiplayer_connect.cpp:629
+#, fuzzy
 msgid "Normal"
 msgstr "Navadna"
 
@@ -8616,12 +9104,13 @@ msgid "+"
 msgstr "+"
 
 #: src/multiplayer_connect.cpp:659
+#, fuzzy
 msgid "(Vacant slot)"
 msgstr "(Prosto mesto)"
 
 #: src/multiplayer_connect.cpp:667
 msgid "Anonymous local player"
-msgstr "Anonimen lokalni igralec"
+msgstr "Anonimen krajevni igralec"
 
 #: src/multiplayer_connect.cpp:680 src/multiplayer_connect.cpp:1443
 msgid "Computer Player"
@@ -8629,20 +9118,20 @@ msgstr "Računalniški igralec"
 
 #: src/multiplayer_connect.cpp:683
 msgid "$playername $side"
-msgstr ""
+msgstr "$playername $side"
 
 #: src/multiplayer_connect.cpp:687
+#, fuzzy
 msgid "(Empty slot)"
 msgstr "(Prazno mesto)"
 
 #: src/multiplayer_connect.cpp:694
 msgid "(Reserved for $playername)"
-msgstr ""
+msgstr "(rezervirano za $playername)"
 
 #: src/multiplayer_connect.cpp:806
-#, fuzzy
 msgid "Reserved"
-msgstr "Rezervoar: "
+msgstr "Rezervirano"
 
 #: src/multiplayer_connect.cpp:807
 msgid "--give--"
@@ -8654,6 +9143,7 @@ msgid "Only random sides in the current era."
 msgstr "Brez nenakjljučnih strani v trenutni eri"
 
 #: src/multiplayer_connect.cpp:966
+#, fuzzy
 msgid "Unable to find a leader type for faction $faction"
 msgstr "Ni bilo mogoče najti voditeljske enote za $faction"
 
@@ -8668,12 +9158,11 @@ msgstr "Igralec/Vrsta"
 
 #: src/multiplayer_connect.cpp:1025
 msgid "Faction"
-msgstr "Stran"
+msgstr "Frakcija"
 
 #: src/multiplayer_connect.cpp:1026
-#, fuzzy
 msgid "Team/Gender"
-msgstr "Branitelj"
+msgstr "Ekipa/Spol"
 
 #: src/multiplayer_connect.cpp:1027
 msgid "Color"
@@ -8689,16 +9178,18 @@ msgid "The scenario is invalid because it has no id."
 msgstr "Scenarij je neveljaven, ker nima nobenih strani."
 
 #: src/multiplayer_connect.cpp:1045
+#, fuzzy
 msgid "The scenario is invalid because it has no sides."
 msgstr "Scenarij je neveljaven, ker nima nobenih strani."
 
 #: src/multiplayer_connect.cpp:1440
+#, fuzzy
 msgid "Network Player"
 msgstr "Mrežni igralec"
 
 #: src/multiplayer_connect.cpp:1442
 msgid "Local Player"
-msgstr "Lokalni igralec"
+msgstr "Krajevni igralec"
 
 #: src/multiplayer_connect.cpp:1444
 msgid "Empty"
@@ -8706,7 +9197,7 @@ msgstr "Prazno"
 
 #: src/multiplayer_connect.cpp:1589
 msgid "Cannot find era $era"
-msgstr "Ni mogoče najti ere $era"
+msgstr "Obdobja $era ni mogoče najti"
 
 #: src/multiplayer_connect.cpp:1614
 #, fuzzy
@@ -8716,6 +9207,7 @@ msgstr ""
 "@Premagaj sovražne voditelje"
 
 #: src/multiplayer_connect.cpp:1718
+#, fuzzy
 msgid "Waiting for players to join..."
 msgstr "Čakanje na igralce..."
 
@@ -8732,10 +9224,12 @@ msgid "Name of game:"
 msgstr "Ime igre:"
 
 #: src/multiplayer_create.cpp:80
+#, fuzzy
 msgid "Map to play:"
 msgstr "Karta:"
 
 #: src/multiplayer_create.cpp:81 src/multiplayer_lobby.cpp:272
+#, fuzzy
 msgid "Use map settings"
 msgstr "Uporabi nastavitve scenarija"
 
@@ -8745,63 +9239,74 @@ msgid "Random start time"
 msgstr "Naključna karta (zimska)"
 
 #: src/multiplayer_create.cpp:83
+#, fuzzy
 msgid "Fog Of War"
 msgstr "Megla"
 
 #: src/multiplayer_create.cpp:85
+#, fuzzy
 msgid "Observers"
 msgstr "Opazovalci"
 
 #: src/multiplayer_create.cpp:88
+#, fuzzy
 msgid "Regenerate"
 msgstr "Ponovno ustvari"
 
 #: src/multiplayer_create.cpp:89
 msgid "Settings..."
-msgstr "Nastavitve..."
+msgstr "Nastavitve ..."
 
 #: src/multiplayer_create.cpp:90
 msgid "Set Password..."
-msgstr ""
+msgstr "Nastavi geslo ..."
 
 #: src/multiplayer_create.cpp:107
-#, fuzzy
 msgid "Load Game..."
-msgstr "Naloži igro"
+msgstr "Naloži igro ..."
 
 #: src/multiplayer_create.cpp:143
+#, fuzzy
 msgid "The maximum number of turns the game can last"
 msgstr "Maksimalno trajanje igre"
 
 #: src/multiplayer_create.cpp:146
+#, fuzzy
 msgid "Enables user time limit"
 msgstr "Omogoči časovno omejitev"
 
 #: src/multiplayer_create.cpp:152
+#, fuzzy
 msgid "Longest time allowed for first turn (seconds)"
 msgstr "Najdaljše možno trajanje prve poteze (v sekundah)"
 
 #: src/multiplayer_create.cpp:158
+#, fuzzy
 msgid "Longest time possible for any turn (seconds)"
 msgstr "Najdaljše možno trajanje drugih potez (v sekundah)"
 
 #: src/multiplayer_create.cpp:164
+#, fuzzy
 msgid "Time for general tasks each turn (seconds)"
 msgstr "Čas v potezi za splošna opravila (v sekundah)"
 
 #: src/multiplayer_create.cpp:170
+#, fuzzy
 msgid "Time for each attack, recruit, and capture"
 msgstr "Čas za vsak napad, vpoklic in zavzetje"
 
 #: src/multiplayer_create.cpp:175
+#, fuzzy
 msgid "The amount of income each village yields per turn"
 msgstr "Višina prihodkov vsake vasi (na potezo)"
 
 #: src/multiplayer_create.cpp:181
+#, fuzzy
 msgid "The amount of experience a unit needs to advance"
 msgstr "Količina izkušenj potrebnih za napredovanje"
 
 #: src/multiplayer_create.cpp:184
+#, fuzzy
 msgid "Use scenario specific settings"
 msgstr "Uporabi scenarijeve nastavitve"
 
@@ -8810,26 +9315,32 @@ msgid "Randomize time of day in begin"
 msgstr ""
 
 #: src/multiplayer_create.cpp:190
+#, fuzzy
 msgid "Enemy units cannot be seen unless they are in range of your units"
 msgstr "Sovražne enote so nevidne, razen če so v dosegu vaših enot"
 
 #: src/multiplayer_create.cpp:193
+#, fuzzy
 msgid "The map is unknown until your units explore it"
 msgstr "Karta je skrita dokler je vaše enote ne raziščejo"
 
 #: src/multiplayer_create.cpp:196
+#, fuzzy
 msgid "Allow users who are not playing to watch the game"
 msgstr "Dovoli uporabnikom, ki ne igrajo, da opazujejo igro"
 
 #: src/multiplayer_create.cpp:200
+#, fuzzy
 msgid "Share View"
 msgstr "Dèli pogled z zavezniki"
 
 #: src/multiplayer_create.cpp:201
+#, fuzzy
 msgid "Share Maps"
 msgstr "Dèli karto z zavezniki"
 
 #: src/multiplayer_create.cpp:202
+#, fuzzy
 msgid "Share None"
 msgstr "Ničesar ne dèli"
 
@@ -8839,34 +9350,36 @@ msgid "No eras found."
 msgstr "Najdene ni bilo nobene ere"
 
 #: src/multiplayer_create.cpp:213
+#, fuzzy
 msgid "No eras found"
 msgstr "Najdene ni bilo nobene ere"
 
 #: src/multiplayer_create.cpp:226
+#, fuzzy
 msgid "$login's game"
 msgstr "Gostitelj: $login"
 
 #: src/multiplayer_create.cpp:287
+#, fuzzy
 msgid "Invalid era selected"
 msgstr "Izbrana je bila neveljavna era"
 
 #: src/multiplayer_create.cpp:333
-#, fuzzy
 msgid "The map is invalid."
-msgstr "Igra je končana"
+msgstr "Karta je neveljavna."
 
 #: src/multiplayer_create.cpp:335
+#, fuzzy
 msgid "You must enter a name."
 msgstr "Vnesti morate ime."
 
 #: src/multiplayer_create.cpp:343
 msgid "Set Password"
-msgstr ""
+msgstr "Nastavi geslo"
 
 #: src/multiplayer_create.cpp:344 src/multiplayer_lobby.cpp:901
-#, fuzzy
 msgid "Password: "
-msgstr "meč"
+msgstr "Geslo:"
 
 #: src/multiplayer_create.cpp:344
 msgid ""
@@ -8874,30 +9387,37 @@ msgid ""
 msgstr ""
 
 #: src/multiplayer_create.cpp:352
+#, fuzzy
 msgid "Turns: "
 msgstr "Potez: "
 
 #: src/multiplayer_create.cpp:354
+#, fuzzy
 msgid "Unlimited Turns"
 msgstr "Časovno neomejena igra"
 
 #: src/multiplayer_create.cpp:382
+#, fuzzy
 msgid "Init. Limit: "
 msgstr "Omejitev prve poteze: "
 
 #: src/multiplayer_create.cpp:387
+#, fuzzy
 msgid "Turn Bonus: "
 msgstr "Bonus na potezo: "
 
 #: src/multiplayer_create.cpp:391
+#, fuzzy
 msgid "Reservoir: "
 msgstr "Rezervoar: "
 
 #: src/multiplayer_create.cpp:396
+#, fuzzy
 msgid "Action Bonus: "
 msgstr "Bonus na dejanja: "
 
 #: src/multiplayer_create.cpp:403
+#, fuzzy
 msgid "Village Gold: "
 msgstr "Prihodki vasi: "
 
@@ -8906,29 +9426,29 @@ msgid "Exp. Mod.: "
 msgstr ""
 
 #: src/multiplayer_create.cpp:548
+#, fuzzy
 msgid "Players: "
 msgstr "Igralci: "
 
 #: src/multiplayer_create.cpp:549
-#, fuzzy
 msgid "Size: "
-msgstr "Velikost"
+msgstr "Velikost:"
 
 #: src/multiplayer_lobby.cpp:119
+#, fuzzy
 msgid "--no games open--"
 msgstr "--nobena igra ne poteka--"
 
 #: src/multiplayer_lobby.cpp:153
-#, fuzzy
 msgid " (Unknown Era)"
-msgstr "Neznana era"
+msgstr " (neznano obdobje)"
 
 #: src/multiplayer_lobby.cpp:536 src/multiplayer_lobby.cpp:899
-#, fuzzy
 msgid "Password Required"
-msgstr "meč"
+msgstr "Potrebno je geslo"
 
 #: src/multiplayer_lobby.cpp:720 src/multiplayer_wait.cpp:174
+#, fuzzy
 msgid "Game Lobby"
 msgstr "Čakalnica"
 
@@ -8937,10 +9457,12 @@ msgid "Observe Game"
 msgstr "Opazuj igro"
 
 #: src/multiplayer_lobby.cpp:726
+#, fuzzy
 msgid "Join Game"
 msgstr "Pridruži se igri"
 
 #: src/multiplayer_lobby.cpp:728
+#, fuzzy
 msgid "Quick Replays"
 msgstr "Hitre ponovitve"
 
@@ -8950,12 +9472,11 @@ msgstr "Nastavitve"
 
 #: src/multiplayer_lobby.cpp:732
 msgid "Quit"
-msgstr "Izhod"
+msgstr "Končaj"
 
 #: src/multiplayer_lobby.cpp:734
-#, fuzzy
 msgid "Apply Filter"
-msgstr "Sposobnosti: "
+msgstr "Uveljavi filter"
 
 #: src/multiplayer_lobby.cpp:735
 msgid "Invert"
@@ -8971,11 +9492,11 @@ msgid "Friends in Game"
 msgstr ""
 
 #: src/multiplayer_lobby.cpp:738
-#, fuzzy
 msgid "Filter:"
-msgstr "Sposobnosti: "
+msgstr "Filter:"
 
 #: src/multiplayer_lobby.cpp:747
+#, fuzzy
 msgid "Skip quickly to the active turn when observing"
 msgstr "Hitri preskok na trenutno potezo (pri opazovanju)"
 
@@ -9021,16 +9542,17 @@ msgstr "Izberite enoto:"
 msgid "Leader: "
 msgstr "Vodja: "
 
-# preveri
 #: src/multiplayer_wait.cpp:129
 msgid "Recruits: "
 msgstr "Vpoklicane enote: "
 
 #: src/multiplayer_wait.cpp:176
+#, fuzzy
 msgid "Waiting for game to start..."
 msgstr "Čakanje na začetek igre..."
 
 #: src/multiplayer_wait.cpp:199
+#, fuzzy
 msgid "Getting game data..."
 msgstr "Pridobivanje podatkov o igri..."
 
@@ -9040,13 +9562,13 @@ msgid "No era information found."
 msgstr "Najdene ni bilo nobene ere"
 
 #: src/multiplayer_wait.cpp:265
+#, fuzzy
 msgid "No multiplayer sides found"
 msgstr "Najdenih ni bilo nič strani"
 
 #: src/multiplayer_wait.cpp:298
-#, fuzzy
 msgid "Choose your faction:"
-msgstr "Izberite stran:"
+msgstr "Izberite frakcijo:"
 
 #: src/multiplayer_wait.cpp:298
 msgid "Starting position: "
@@ -9060,21 +9582,23 @@ msgstr[1] ""
 msgstr[2] ""
 msgstr[3] ""
 
-# handle??
 #: src/network.cpp:106
+#, fuzzy
 msgid "invalid network handle"
 msgstr "nepravilna mrežna ročica"
 
 #: src/network.cpp:139
+#, fuzzy
 msgid "Client disconnected"
 msgstr "Odjemalec je prekinil povezavo."
 
-# |s
 #: src/network.cpp:528
+#, fuzzy
 msgid "Could not add socket to socket set"
 msgstr "Ni bilo mogoče dodati vtičnice"
 
 #: src/network.cpp:540
+#, fuzzy
 msgid "Could not send initial handshake"
 msgstr "Ni bilo mogoče začeti rokovanja"
 
@@ -9083,22 +9607,20 @@ msgid "Terrain with a movement cost less than 1 encountered."
 msgstr ""
 
 #: src/play_controller.cpp:143
-#, fuzzy
 msgid "Loading level"
-msgstr "Nalaganje uvodnega zaslona."
+msgstr "Nalaganje stopnje"
 
 #: src/play_controller.cpp:165
 msgid "Initializing teams"
-msgstr ""
+msgstr "Nastavljanje začetnih vrednosti ekip"
 
 #: src/play_controller.cpp:197
-#, fuzzy
 msgid "Loading units"
-msgstr "Branje datotek enot."
+msgstr "Nalaganje enot"
 
 #: src/play_controller.cpp:204 src/play_controller.cpp:215
 msgid "Initializing display"
-msgstr ""
+msgstr "Nastavljanje začetnih vrednosti prikaza"
 
 #: src/play_controller.cpp:211
 msgid "time left for current turn"
@@ -9116,10 +9638,12 @@ msgstr "Prekini igro"
 
 #: src/play_controller.cpp:958 src/savegame.cpp:293 src/savegame.cpp:305
 #: src/savegame.cpp:973 src/savegame.cpp:975
+#, fuzzy
 msgid "Auto-Save"
 msgstr "Samodejno shranjen položaj"
 
 #: src/play_controller.cpp:965
+#, fuzzy
 msgid "Back to turn "
 msgstr "Nazaj k potezi "
 
@@ -9143,17 +9667,15 @@ msgstr ""
 #: src/playcampaign.cpp:478
 #, fuzzy
 msgid "Downloading next scenario..."
-msgstr "Prenašam naslednjo stopnjo..."
+msgstr "Prejemanje naslednjega scenarija ..."
 
 #: src/playcampaign.cpp:626
-#, fuzzy
 msgid "Do you want to save your game?"
-msgstr "Ali zares želite izbrisati ta shranjeni položaj?"
+msgstr "Želite shraniti igro?"
 
 #: src/playcampaign.cpp:645
-#, fuzzy
 msgid "Unknown scenario: '$scenario|'"
-msgstr "Neznan scenarij: '"
+msgstr "Neznan scenarij: '$scenario|'"
 
 #: src/playmp_controller.cpp:93
 msgid "$name has taken control"
@@ -9188,6 +9710,7 @@ msgid "Remaining gold: "
 msgstr "Preostalo zlato: "
 
 #: src/playsingle_controller.cpp:216
+#, fuzzy
 msgid "Early finish bonus: "
 msgstr "Bonus za zgodnji konec: "
 
@@ -9196,10 +9719,12 @@ msgid "per turn"
 msgstr "na potezo"
 
 #: src/playsingle_controller.cpp:219
+#, fuzzy
 msgid "Turns finished early: "
 msgstr "Preostalih potez: "
 
 #: src/playsingle_controller.cpp:221
+#, fuzzy
 msgid "Bonus: "
 msgstr "Bonus: "
 
@@ -9217,6 +9742,7 @@ msgid "Bonus Gold: "
 msgstr "Bonus: "
 
 #: src/playsingle_controller.cpp:233
+#, fuzzy
 msgid "Retained Gold: "
 msgstr "Ohranjeno zlato: "
 
@@ -9262,7 +9788,7 @@ msgstr "Konec igre"
 
 #: src/playsingle_controller.cpp:406
 msgid "The game is over."
-msgstr "Igra je končana"
+msgstr "Igre je konec."
 
 #: src/playsingle_controller.cpp:489
 #, fuzzy
@@ -9279,6 +9805,7 @@ msgid "It is now $name|'s turn"
 msgstr "Vaša poteza se je začela"
 
 #: src/playsingle_controller.cpp:870
+#, fuzzy
 msgid "Scenario Report"
 msgstr "Scenarijsko poročilo"
 
@@ -9287,6 +9814,7 @@ msgid "Victory"
 msgstr "Zmaga"
 
 #: src/playsingle_controller.cpp:873
+#, fuzzy
 msgid "You have emerged victorious!"
 msgstr "Zmagali ste!"
 
@@ -9296,16 +9824,15 @@ msgstr "Zamenjaj z UI"
 
 #: src/playturn.cpp:220
 msgid "Replace with local player"
-msgstr "Zamenjaj z lokalnim igralcem"
+msgstr "Zamenjaj s krajevnim igralcem"
 
 #: src/playturn.cpp:221
 msgid "Abort game"
 msgstr "Prekini igro"
 
 #: src/playturn.cpp:227 src/playturn.cpp:241
-#, fuzzy
 msgid "Replace with $player"
-msgstr "Zamenjaj z lokalnim igralcem"
+msgstr "Zamenjaj z $player"
 
 #: src/playturn.cpp:247
 #, fuzzy
@@ -9314,9 +9841,10 @@ msgstr "je zapustil igro. Kaj boste storili?"
 
 #: src/savegame.cpp:205 src/savegame.cpp:207
 msgid " replay"
-msgstr "vnovično predvajanje"
+msgstr " posnetek"
 
 #: src/savegame.cpp:444 src/savegame.cpp:448
+#, fuzzy
 msgid "Warning: The file you have tried to load is corrupt. Loading anyway.\n"
 msgstr ""
 "Datoteka, ki ste jo poskušali naložiti, je pokvarjena. Vseeno bo naložena.\n"
@@ -9329,6 +9857,7 @@ msgstr ""
 "naložiti?"
 
 #: src/savegame.cpp:491
+#, fuzzy
 msgid ""
 "This save is from a different version of the game. Do you want to try to "
 "load it?"
@@ -9337,16 +9866,15 @@ msgstr ""
 "naložiti?"
 
 #: src/savegame.cpp:540
+#, fuzzy
 msgid "This is not a multiplayer save"
 msgstr "To ni večigralski shranjen položaj"
 
 #: src/savegame.cpp:606
-#, fuzzy
 msgid "The game could not be saved: "
-msgstr "Igre ni bilo možno shraniti"
+msgstr "Igre ni mogoče shraniti:"
 
 #: src/savegame.cpp:693
-#, fuzzy
 msgid "Name: "
 msgstr "Ime:"
 
@@ -9357,7 +9885,7 @@ msgstr "Shranjeni položaj že obstaja. Ali ga želite prepisati?"
 
 #: src/savegame.cpp:694
 msgid "Overwrite?"
-msgstr "Prepiši?"
+msgstr "Prepišem?"
 
 #: src/savegame.cpp:704
 #, fuzzy
@@ -9371,19 +9899,20 @@ msgid "Saved"
 msgstr "Shranjeno"
 
 #: src/savegame.cpp:766
+#, fuzzy
 msgid "The game has been saved"
 msgstr "Igra je bila shranjena"
 
 #: src/savegame.cpp:800 src/savegame.cpp:825
 msgid "Could not write to file"
-msgstr "Ni bilo mogoče pisati v datoteko."
+msgstr "Ni mogoče pisati v datoteko"
 
 #: src/savegame.cpp:938
-#, fuzzy
 msgid "Save Replay"
-msgstr "Vnovično predvajanje"
+msgstr "Shrani posnetek"
 
 #: src/savegame.cpp:956
+#, fuzzy
 msgid "Could not auto save the game. Please save the game manually."
 msgstr "Ni bilo mogoče samodejno shraniti igre. Shranite jo ročno."
 
@@ -9392,14 +9921,17 @@ msgid "Save Game"
 msgstr "Shrani igro"
 
 #: src/serialization/parser.cpp:129
+#, fuzzy
 msgid "Unexpected characters at line start"
 msgstr "Nepričakovani znaki na začetku vrstice"
 
 #: src/serialization/parser.cpp:159
+#, fuzzy
 msgid "Missing closing tag for tag $tag at $pos"
 msgstr "Manjka zaključna oznaka oznake $tag pri $pos"
 
 #: src/serialization/parser.cpp:174
+#, fuzzy
 msgid "Unterminated [element] tag"
 msgstr "Nezaključena oznaka [element]"
 
@@ -9408,18 +9940,22 @@ msgid "Invalid tag name"
 msgstr "Neveljavno ime oznake"
 
 #: src/serialization/parser.cpp:187
+#, fuzzy
 msgid "Unterminated [+element] tag"
 msgstr "Nezaključena oznaka [+element]"
 
 #: src/serialization/parser.cpp:203
+#, fuzzy
 msgid "Invalid closing tag name"
 msgstr "Neveljavno ime zaključne oznake"
 
 #: src/serialization/parser.cpp:206
+#, fuzzy
 msgid "Unterminated closing tag"
 msgstr "Nezaključena zaključna oznaka"
 
 #: src/serialization/parser.cpp:208
+#, fuzzy
 msgid "Unexpected closing tag"
 msgstr "Nepričakovana zaključna oznaka"
 
@@ -9431,7 +9967,7 @@ msgstr ""
 
 #: src/serialization/parser.cpp:241 src/serialization/parser.cpp:253
 msgid "Empty variable name"
-msgstr "Prazna spremenljivka"
+msgstr "Prazno ime spremenljivke"
 
 #: src/serialization/parser.cpp:247
 msgid "Unexpected characters after variable name (expected , or =)"
@@ -9439,6 +9975,7 @@ msgstr ""
 "Nepričakovani znaki za imenom spremenljivke (pričakovana sta ',' ali '=')"
 
 #: src/serialization/parser.cpp:282 src/serialization/parser.cpp:306
+#, fuzzy
 msgid "Unterminated quoted string"
 msgstr "Nezaključen niz z navedkom"
 
@@ -9447,19 +9984,20 @@ msgid "$error, value '$value', previous '$previous_value' at $pos"
 msgstr ""
 
 #: src/serialization/parser.cpp:352
-#, fuzzy
 msgid "$error, value '$value' at $pos"
-msgstr "$error pri $pos"
+msgstr "$error, vrednost '$value' pri $pos"
 
 #: src/statistics_dialog.cpp:69 src/statistics_dialog.cpp:125
 msgid "Recruits"
 msgstr "Vpoklicane enote"
 
 #: src/statistics_dialog.cpp:73 src/statistics_dialog.cpp:136
+#, fuzzy
 msgid "Recalls"
 msgstr "Priklicane enote"
 
 #: src/statistics_dialog.cpp:77 src/statistics_dialog.cpp:146
+#, fuzzy
 msgid "Advancements"
 msgstr "Napredovanja"
 
@@ -9472,14 +10010,12 @@ msgid "Kills"
 msgstr "Sovražnikove izgube"
 
 #: src/statistics_dialog.cpp:106
-#, fuzzy
 msgid "Details"
-msgstr "rep"
+msgstr "Podrobnosti"
 
 #: src/statistics_dialog.cpp:174
-#, fuzzy
 msgid "Damage"
-msgstr "škoda"
+msgstr "Škoda"
 
 #: src/statistics_dialog.cpp:175
 #, fuzzy
@@ -9501,6 +10037,7 @@ msgid "Taken"
 msgstr ""
 
 #: src/storyscreen/controller.cpp:130
+#, fuzzy
 msgid "Next"
 msgstr "Naslednji"
 
@@ -9509,20 +10046,23 @@ msgid "Skip"
 msgstr "Preskoči"
 
 #: src/terrain.cpp:159
+#, fuzzy
 msgid "Allied village"
 msgstr "Zavezniška vas"
 
 #: src/terrain.cpp:164
+#, fuzzy
 msgid "Enemy village"
 msgstr "Sovražna vas"
 
 #: src/terrain.cpp:169
+#, fuzzy
 msgid "Owned village"
 msgstr "Naša vas"
 
 #: src/theme.cpp:313
 msgid "border_size should be between 0.0 and 0.5."
-msgstr ""
+msgstr "border_size mora biti med 0.0 in 0.5."
 
 #: src/titlescreen.cpp:418
 msgid "TitleScreen button^Tutorial"
@@ -9530,7 +10070,7 @@ msgstr "Vodič"
 
 #: src/titlescreen.cpp:419
 msgid "TitleScreen button^Campaign"
-msgstr "Kampanje"
+msgstr "Kampanja"
 
 #: src/titlescreen.cpp:420
 msgid "TitleScreen button^Multiplayer"
@@ -9538,17 +10078,15 @@ msgstr "Večigralstvo"
 
 #: src/titlescreen.cpp:421
 msgid "TitleScreen button^Load"
-msgstr "Naloži"
+msgstr "Naloži igro"
 
 #: src/titlescreen.cpp:422
-#, fuzzy
 msgid "TitleScreen button^Add-ons"
-msgstr "Prenesi dodatke"
+msgstr "Dodatki"
 
 #: src/titlescreen.cpp:424
-#, fuzzy
 msgid "TitleScreen button^Map Editor"
-msgstr "Izhod"
+msgstr "Urejevalnik kart"
 
 #: src/titlescreen.cpp:426
 msgid "TitleScreen button^Language"
@@ -9559,38 +10097,37 @@ msgid "TitleScreen button^Preferences"
 msgstr "Nastavitve"
 
 #: src/titlescreen.cpp:428
-#, fuzzy
 msgid "TitleScreen button^Credits"
-msgstr "Izhod"
+msgstr "Zasluge"
 
 #: src/titlescreen.cpp:429
 msgid "TitleScreen button^Quit"
 msgstr "Izhod"
 
 #: src/titlescreen.cpp:432
-#, fuzzy
 msgid "TitleScreen button^Previous"
-msgstr "Izhod"
+msgstr "Prejšnji"
 
 #: src/titlescreen.cpp:433
-#, fuzzy
 msgid "TitleScreen button^Next"
-msgstr "Izhod"
+msgstr "Naslednji"
 
 #: src/titlescreen.cpp:434
-#, fuzzy
 msgid "TitleScreen button^Help"
-msgstr "Naloži"
+msgstr "Pomoč"
 
 #: src/titlescreen.cpp:438
+#, fuzzy
 msgid "Start a tutorial to familiarize yourself with the game"
 msgstr "Začni vodič da se navadim na igro"
 
 #: src/titlescreen.cpp:439
+#, fuzzy
 msgid "Start a new single player campaign"
 msgstr "Začni novo enoigralsko kampanjo"
 
 #: src/titlescreen.cpp:440
+#, fuzzy
 msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
@@ -9599,29 +10136,29 @@ msgstr ""
 "umetno inteligenco"
 
 #: src/titlescreen.cpp:441
-#, fuzzy
 msgid "Load a saved game"
-msgstr "Naloži enoigralski shranjen položaj"
+msgstr "Naložite shranjeno igro"
 
 #: src/titlescreen.cpp:442
+#, fuzzy
 msgid "Download usermade campaigns, eras, or map packs"
-msgstr "Prenesi uporabniške kampanje, ere ali komplete kart"
+msgstr "Prenesite uporabniške kampanje, obdobja ali komplete kart"
 
 #: src/titlescreen.cpp:444
 msgid "Start the map editor"
-msgstr ""
+msgstr "Zaženite urejevalnik kart"
 
 #: src/titlescreen.cpp:446
 msgid "Change the language"
-msgstr "Spremeni jezik (prevod)"
+msgstr "Spremenite jezik"
 
 #: src/titlescreen.cpp:447
 msgid "Configure the game's settings"
-msgstr "Uredi nastavitve igre"
+msgstr "Uredite nastavitve igre"
 
 #: src/titlescreen.cpp:448
 msgid "View the credits"
-msgstr "Poglej zasluge"
+msgstr "Oglejte si zasluge"
 
 #: src/titlescreen.cpp:449
 msgid "Quit the game"
@@ -9638,7 +10175,7 @@ msgstr ""
 #: src/titlescreen.cpp:452
 #, fuzzy
 msgid "Show Battle for Wesnoth help"
-msgstr "Pomoč za The Battle for Wesnoth "
+msgstr "Prikaži pomoč za igro Bitka za Wesnoth"
 
 #: src/tod_manager.cpp:103 src/tod_manager.cpp:136 src/tod_manager.cpp:238
 #: src/tod_manager.cpp:251 src/tod_manager.cpp:301
@@ -9650,13 +10187,12 @@ msgid "Unknown unit type '$type|' while generating traits"
 msgstr ""
 
 #: src/unit.cpp:2285 src/unit.cpp:2472 src/unit.cpp:2545
-#, fuzzy
 msgid " and "
-msgstr "Pesek"
+msgstr " in "
 
 #: src/unit.cpp:2296
 msgid "$attack_list|: $effect_description"
-msgstr ""
+msgstr "$attack_list|: $effect_description"
 
 #: src/unit.cpp:2361
 #, fuzzy
@@ -9678,25 +10214,24 @@ msgstr ""
 
 #: src/unit.cpp:2554
 msgid "$trait_name|: $trait_description "
-msgstr ""
+msgstr "$trait_name|: $trait_description "
 
 #: src/unit_types.cpp:193 src/unit_types.cpp:259
 #, fuzzy
 msgid "damage"
 msgid_plural "damage"
 msgstr[0] "škoda"
-msgstr[1] "škoda"
-msgstr[2] "škoda"
-msgstr[3] "škoda"
+msgstr[1] "škodi"
+msgstr[2] "škode"
+msgstr[3] "škod"
 
 #: src/unit_types.cpp:203 src/unit_types.cpp:266
-#, fuzzy
 msgid "strike"
 msgid_plural "strikes"
-msgstr[0] "udarci"
-msgstr[1] "udarci"
+msgstr[0] "udarec"
+msgstr[1] "udarca"
 msgstr[2] "udarci"
-msgstr[3] "udarci"
+msgstr[3] "udarcev"
 
 #: src/unit_types.cpp:214
 #, fuzzy, no-c-format
@@ -9721,19 +10256,16 @@ msgid "neutral"
 msgstr "nevtralen"
 
 #: src/unit_types.cpp:1008
-#, fuzzy
 msgid "female^chaotic"
-msgstr "Tatica"
+msgstr "kaotična"
 
 #: src/unit_types.cpp:1008
-#, fuzzy
 msgid "female^lawful"
-msgstr "Izobčenka"
+msgstr "zakonita"
 
 #: src/unit_types.cpp:1008
-#, fuzzy
 msgid "female^neutral"
-msgstr "Vagabondka"
+msgstr "nevtralna"
 
 #, fuzzy
 #~ msgid "TitleScreen button^Help Wesnoth"
