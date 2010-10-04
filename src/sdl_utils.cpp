@@ -177,6 +177,12 @@ static SDL_PixelFormat& get_neutral_pixel_format()
 		return format;
 	}
 
+struct blend_disabler
+{
+	blend_disabler() { glDisable(GL_BLEND); }
+	~blend_disabler() { glEnable(GL_BLEND); }
+};
+
 void sdl_blit(const surface& src, SDL_Rect* src_rect, surface& dst, SDL_Rect* dst_rect)
 {
 	if(src == NULL || dst == NULL)
@@ -223,6 +229,7 @@ void sdl_blit(const surface& src, SDL_Rect* src_rect, surface& dst, SDL_Rect* ds
 		const_surface_lock src_lock(src);
 		glDrawPixels(sr.w, sr.h, GL_BGRA, GL_UNSIGNED_BYTE, src_lock.pixels());
 	} else if(src == screen && dst != screen) {
+		blend_disabler bd;
 		glPixelStorei(GL_PACK_ROW_LENGTH, dst->w);
 		glPixelStorei(GL_PACK_SKIP_PIXELS, dr.x + src_rect ? (sr.x - src_rect->x) : 0);
 		glPixelStorei(GL_PACK_SKIP_ROWS, -dr.y + src_rect ? (src_rect->y + src_rect->h - (sr.y + sr.h)) : 0);
@@ -242,14 +249,12 @@ void sdl_blit(const surface& src, SDL_Rect* src_rect, surface& dst, SDL_Rect* ds
 			}
 		}
 	} else if(src == screen && dst == screen) {
-		//Disable blending, attempting to fix ghosting with some driver
-		glDisable(GL_BLEND);
+		blend_disabler bd;
 		glPixelZoom(1,1);
 		// RasterPos uses top-left coordinates, but blit will go up
 		glRasterPos2i(dr.x, dr.y + sr.h);
 		// glCopyPixels uses bottom-left coordinates
 		glCopyPixels(sr.x, screen->h - sr.h - sr.y, sr.w, sr.h, GL_COLOR);
-		glEnable(GL_BLEND);
 	}
 }
 
@@ -289,8 +294,7 @@ void sdl_update_rects(const surface& screen, int numrects, SDL_Rect *rects)
 	// This might cause some tearing but not more than SDL
 	// (unless the speed difference make it more visible)
 
-	//Disable blending, attempting to fix ghosting with some driver
-	glDisable(GL_BLEND);
+	blend_disabler bd;
 
 	glReadBuffer(GL_BACK);
 	glDrawBuffer(GL_FRONT);
@@ -302,8 +306,6 @@ void sdl_update_rects(const surface& screen, int numrects, SDL_Rect *rects)
 	}
 	glDrawBuffer(GL_BACK);
 	glReadBuffer(GL_BACK);
-
-	glEnable(GL_BLEND);
 }
 
 
