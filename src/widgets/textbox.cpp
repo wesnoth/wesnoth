@@ -82,7 +82,7 @@ void textbox::set_text(const std::string& text, const SDL_Color& color)
 
 void textbox::append_text(const std::string& text, bool auto_scroll, const SDL_Color& color)
 {
-	if(text_image_.get() == NULL) {
+	if(text_image_ == NULL) {
 		set_text(text, color);
 		return;
 	}
@@ -97,8 +97,8 @@ void textbox::append_text(const std::string& text, bool auto_scroll, const SDL_C
 	const surface new_text = add_text_line(wtext, color);
 	surface new_surface = create_compatible_surface(text_image_,std::max<size_t>(text_image_->w,new_text->w),text_image_->h+new_text->h);
 
-	SDL_SetAlpha(new_text.get(),0,0);
-	SDL_SetAlpha(text_image_.get(),0,0);
+	SDL_SetAlpha(new_text.sdl(),0,0);
+	SDL_SetAlpha(text_image_.sdl(),0,0);
 
 	sdl_blit(text_image_,NULL,new_surface,NULL);
 

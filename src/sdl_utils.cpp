@@ -218,7 +218,7 @@ SDL_Rect create_rect(const int x, const int y, const int w, const int h)
 
 bool operator<(const surface& a, const surface& b)
 {
-	return a.get() < b.get();
+	return a.sdl() < b.sdl();
 }
 
 static SDL_PixelFormat& get_neutral_pixel_format()

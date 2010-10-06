@@ -152,19 +152,19 @@ public:
 	}
 
 	operator SDL_Surface*() const {
-		return get();
+		return sdl();
 	}
 
-	SDL_Surface* get() const {
+	SDL_Surface* sdl() const {
 		return (sdl_tex_ && sdl_tex_->sdl_surface_) ? sdl_tex_->sdl_surface_ : NULL;
 	}
 
 	SDL_Surface* operator->() const {
-		return get();
+		return sdl();
 	}
 
 	bool null() const {
-		return get() == NULL;
+		return sdl() == NULL;
 	}
 
 	/// just a request, will be really loaded only when needed
