@@ -278,6 +278,26 @@ void sdl_blit(const surface& src, SDL_Rect* src_rect, surface& dst, SDL_Rect* ds
 	sr = intersect_rects(sr, r);
 
 	if(src != screen && dst == screen) {
+		unsigned id = src.get_texture();
+		if(id > 0) {
+			glEnable(GL_TEXTURE_2D);
+			glBindTexture(GL_TEXTURE_2D, id);
+			// FIXME Clipping is ignored (need to rewrite this rectangle mess)
+			glBegin(GL_QUADS); {
+				glTexCoord2i(0, 0);
+				glVertex2i(dr.x, dr.y);
+				glTexCoord2i(1, 0);
+				glVertex2i(dr.x + dr.w, dr.y);
+				glTexCoord2i(1, 1);
+				glVertex2i(dr.x + dr.w, dr.y + dr.h);
+				glTexCoord2i(0, 1);
+				glVertex2i(dr.x, dr.y + dr.h);
+			}
+			glEnd();
+			glDisable(GL_TEXTURE_2D);
+			return;
+		}
+
 		glPixelStorei(GL_UNPACK_ROW_LENGTH, src->w);
 		glPixelStorei(GL_UNPACK_SKIP_PIXELS, sr.x);
 		glPixelStorei(GL_UNPACK_SKIP_ROWS, sr.y);
@@ -409,7 +429,11 @@ surface create_optimized_surface(const surface &surf)
 	//OGL
 	//for the SDL-by-OGL hack, "optimized" is neutral
 	//NOTE: we should check if the surface is already neutral
-	return make_neutral_surface(surf);
+	surface res = make_neutral_surface(surf);
+
+	res.load_texture();
+
+	return res;
 }
 
 surface stretch_surface_horizontal(

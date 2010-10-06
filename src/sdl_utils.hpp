@@ -82,9 +82,11 @@ private:
 	/// when valid the texture must be the same image as the SDL_Surface
 	struct sdl_tex
 	{
-		sdl_tex() : sdl_surface_(NULL), texture_(NULL), refcount_(1), is_screen_(false) {}
+		sdl_tex() : sdl_surface_(NULL), texture_(NULL), refcount_(1),
+				is_screen_(false), load_texture_(false) {}
 
-		sdl_tex(SDL_Surface* surf) : sdl_surface_(surf), texture_(NULL), refcount_(1), is_screen_(surf == SDL_GetVideoSurface()) {}
+		sdl_tex(SDL_Surface* surf) : sdl_surface_(surf), texture_(NULL), refcount_(1),
+				is_screen_(surf == SDL_GetVideoSurface()), load_texture_(false) {}
 
 		~sdl_tex() {
 			delete texture_;
@@ -94,17 +96,22 @@ private:
 				SDL_FreeSurface(sdl_surface_);
 		}
 
-		void load_texture(){
-			texture_ = new texture(sdl_surface_);
+		unsigned get_texture(){
+			if(load_texture_) {
+				if(sdl_surface_)
+					texture_ = new texture(sdl_surface_);
+				load_texture_ = false;
+			}
+			return texture_ ? texture_->id_ : 0;
 		}
 
-		friend struct surface;
-
 		private:
+		friend struct surface;
 		SDL_Surface* sdl_surface_;
 		texture* texture_;
 		int refcount_;
 		bool is_screen_;
+		bool load_texture_;
 	};
 
 	void add_ref() const {
@@ -144,21 +151,32 @@ public:
 		return *this;
 	}
 
-	operator SDL_Surface*() const { return get(); }
-
-	SDL_Surface* get() const { return (sdl_tex_ && sdl_tex_->sdl_surface_) ? sdl_tex_->sdl_surface_ : NULL;}
-
-	SDL_Surface* operator->() const { return get(); }
-
-	bool null() const { return get() == NULL; }
-
-	void load_texture() const {
-		if(get_texture() == 0)
-			sdl_tex_->load_texture();
+	operator SDL_Surface*() const {
+		return get();
 	}
 
-	unsigned get_texture() const
-		{return (sdl_tex_ && sdl_tex_->texture_) ? sdl_tex_->texture_->id_ : 0;}
+	SDL_Surface* get() const {
+		return (sdl_tex_ && sdl_tex_->sdl_surface_) ? sdl_tex_->sdl_surface_ : NULL;
+	}
+
+	SDL_Surface* operator->() const {
+		return get();
+	}
+
+	bool null() const {
+		return get() == NULL;
+	}
+
+	/// just a request, will be really loaded only when needed
+	void load_texture() const {
+		if(sdl_tex_)
+			sdl_tex_->load_texture_ = true;
+	}
+
+	/// get texture id. Triggers texture loading if texturing was requested
+	unsigned get_texture() const {
+		return sdl_tex_ ? sdl_tex_->get_texture() : 0;
+	}
 
 private:
 	sdl_tex* sdl_tex_;
