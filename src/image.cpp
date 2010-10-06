@@ -115,6 +115,7 @@ image::image_cache images_,
 
 // cache storing if each image fit in a hex
 image::bool_cache in_hex_info_;
+image::bool_cache is_empty_info_;
 
 // const int cache_version_ = 0;
 
@@ -154,6 +155,7 @@ void flush_cache()
 	brightened_images_.flush();
 	semi_brightened_images_.flush();
 	in_hex_info_.flush();
+	is_empty_info_.flush();
 	mini_terrain_cache.clear();
 	mini_fogged_terrain_cache.clear();
 	reversed_images_.clear();
@@ -1110,6 +1112,22 @@ bool is_in_hex(const locator& i_locator)
 
 		//std::cout << "in_hex : " << i_locator.get_filename()
 		//		<< " " << (res ? "yes" : "no") << "\n";
+
+		return res;
+	}
+}
+
+bool is_empty(const locator& i_locator)
+{
+	if(i_locator.in_cache(is_empty_info_)) {
+		return i_locator.locate_in_cache(is_empty_info_);
+	} else {
+		const surface image(get_image(i_locator, UNSCALED));
+
+		///@TODO use a dedicated function for this
+		bool res = in_mask_surface(image, get_image("misc/blank-hex.png", UNSCALED));
+
+		i_locator.add_to_cache(is_empty_info_, res);
 
 		return res;
 	}

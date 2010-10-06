@@ -208,6 +208,11 @@ namespace image {
 	///return false if the image has not the standard size.
 	bool is_in_hex(const locator& i_locator);
 
+	///function to check if an image is empty
+	///return false if the image has not the standard size.
+	///@TODO accept any size
+	bool is_empty(const locator& i_locator);
+
 	///function to reverse an image. The image MUST have originally been returned from
 	///an image:: function. Returned images have the same semantics as for get_image()
 	///and must be freed using SDL_FreeSurface()
