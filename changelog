@@ -43,6 +43,8 @@ Version 1.9.1+svn:
    * Fixed: Changing the language updates map and logo in title screen
      (bug #16631).
    * Fixed: No longer cut off large title screen logos (bug #16632).
+   * Refresh cache (F5) works in editor.
+   * Add a "Save All Maps" menu item and hotkey in editor.
  * WML Engine:
    * id= in SUFs now accepts a comma-separated list.
    * [capture_village] now accepts a full SLF.
@@ -57,6 +59,7 @@ Version 1.9.1+svn:
    * Changed: Lowered severity of some gui2 timer log messages.
    * Units created in debug mode now play their recruit animation (FR #16766).
    * Fixed: properly update cmake revision numbers (bug #16483)
+   * Fixed: hotkeys dialog in editor is big enough to display them correctly.
 
 Version 1.9.1:
  * AI:
