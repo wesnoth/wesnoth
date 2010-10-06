@@ -67,62 +67,105 @@ SDL_Rect union_rects(const SDL_Rect &rect1, const SDL_Rect &rect2);
  */
 SDL_Rect create_rect(const int x, const int y, const int w, const int h);
 
+
+struct texture
+{
+	texture(SDL_Surface* surf);
+	~texture();
+	unsigned id_;
+};
+
 struct surface
 {
 private:
-	static void sdl_add_ref(SDL_Surface *surf)
+	/// structure containing pointers to an SDL_Surface and a texture
+	/// when valid the texture must be the same image as the SDL_Surface
+	struct sdl_tex
 	{
-		if (surf != NULL)
-			++surf->refcount;
-	}
+		sdl_tex() : sdl_surface_(NULL), texture_(NULL), refcount_(1), is_screen_(false) {}
 
-	struct free_sdl_surface {
-		void operator()(SDL_Surface *surf) const
-		{
-			if (surf != NULL)
-				 SDL_FreeSurface(surf);
+		sdl_tex(SDL_Surface* surf) : sdl_surface_(surf), texture_(NULL), refcount_(1), is_screen_(surf == SDL_GetVideoSurface()) {}
+
+		~sdl_tex() {
+			delete texture_;
+			//NOTE The screen surface don't need to be freed
+			// and do it after after SDL_Quit causes segfault
+			if(!is_screen_)
+				SDL_FreeSurface(sdl_surface_);
 		}
+
+		void load_texture(){
+			texture_ = new texture(sdl_surface_);
+		}
+
+		friend struct surface;
+
+		private:
+		SDL_Surface* sdl_surface_;
+		texture* texture_;
+		int refcount_;
+		bool is_screen_;
 	};
 
-	typedef util::scoped_resource<SDL_Surface*,free_sdl_surface> scoped_sdl_surface;
+	void add_ref() const {
+		if(sdl_tex_)
+			++(sdl_tex_->refcount_);
+	}
+
+	void free_ref() const {
+		if(sdl_tex_) {
+			--(sdl_tex_->refcount_);
+		 	if(sdl_tex_->refcount_ == 0)
+				delete sdl_tex_;
+		}
+	}
+
 public:
-	surface() : surface_(NULL)
-	{}
+	surface() : sdl_tex_(NULL) {}
 
-	surface(SDL_Surface *surf) : surface_(surf)
-	{}
+	surface(SDL_Surface *surf) : sdl_tex_(new sdl_tex(surf)) {}
 
-	surface(const surface& o) : surface_(o.surface_.get())
-	{
-		sdl_add_ref(surface_.get());
+	surface(const surface& o) : sdl_tex_(o.sdl_tex_) {
+		add_ref();
 	}
 
-	void assign(const surface& o)
-	{
-		SDL_Surface *surf = o.surface_.get();
-		sdl_add_ref(surf); // need to be done before assign to avoid corruption on "a=a;"
-		surface_.assign(surf);
+	~surface() {
+		free_ref();
 	}
 
-	surface& operator=(const surface& o)
-	{
+	void assign(const surface& o) {
+		o.add_ref();
+		free_ref();
+		sdl_tex_ = o.sdl_tex_;
+	}
+
+	surface& operator=(const surface& o) {
 		assign(o);
 		return *this;
 	}
 
-	operator SDL_Surface*() const { return surface_.get(); }
+	operator SDL_Surface*() const { return get(); }
 
-	SDL_Surface* get() const { return surface_.get(); }
+	SDL_Surface* get() const { return (sdl_tex_ && sdl_tex_->sdl_surface_) ? sdl_tex_->sdl_surface_ : NULL;}
 
-	SDL_Surface* operator->() const { return surface_.get(); }
+	SDL_Surface* operator->() const { return get(); }
 
-	void assign(SDL_Surface* surf) { surface_.assign(surf); }
+	bool null() const { return get() == NULL; }
 
-	bool null() const { return surface_.get() == NULL; }
+	void load_texture() const {
+		if(get_texture() == 0)
+			sdl_tex_->load_texture();
+	}
+
+	unsigned get_texture() const
+		{return (sdl_tex_ && sdl_tex_->texture_) ? sdl_tex_->texture_->id_ : 0;}
 
 private:
-	scoped_sdl_surface surface_;
+	sdl_tex* sdl_tex_;
 };
+
+
+
 
 bool operator<(const surface& a, const surface& b);
 

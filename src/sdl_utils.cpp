@@ -31,6 +31,65 @@
 #include <iostream>
 
 
+
+texture::texture(SDL_Surface* surf) : id_(0)
+{
+	if(SDL_GetVideoSurface() == NULL) {
+		//TODO better check for this
+		// I think color cursor try to do this
+		std::cerr << "Trying to create a texture before having OpenGL context\n";
+		return;
+	}
+
+	if(surf == NULL) {
+		std::cerr << "Trying to create a texture from a NULL surface.\n";
+		return;
+	}
+
+	glGenTextures(1, &id_);
+	glBindTexture(GL_TEXTURE_2D, id_);
+
+	assert(id_ != 0);
+
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
+
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+
+	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
+
+	glPixelStorei(GL_UNPACK_ROW_LENGTH, surf->w);
+	glPixelStorei(GL_UNPACK_SKIP_PIXELS, 0);
+	glPixelStorei(GL_UNPACK_SKIP_ROWS, 0);
+
+	GLint level = 0;
+	GLuint internal_format = GL_RGBA;
+	GLint border = 0;
+	GLenum format = GL_BGRA;
+	GLenum data_type = GL_UNSIGNED_BYTE;
+
+	SDL_LockSurface(surf);
+
+	glTexImage2D(GL_TEXTURE_2D,
+				 level,
+				 internal_format,
+				 surf->w, surf->h,
+				 border,
+				 format,
+				 data_type,
+				 surf->pixels);
+
+	SDL_UnlockSurface(surf);
+}
+
+texture::~texture()
+{
+	if(id_ > 0) {
+		glDeleteTextures(1, &id_);
+	}
+}
+
 /// Check that the surface is neutral bpp 32, possibly with an empty alpha channel.
 inline bool is_neutral(const surface& surf)
 {
@@ -351,17 +410,6 @@ surface create_optimized_surface(const surface &surf)
 	//for the SDL-by-OGL hack, "optimized" is neutral
 	//NOTE: we should check if the surface is already neutral
 	return make_neutral_surface(surf);
-
-	surface const result = display_format_alpha(surf);
-	if(result == surf) {
-		std::cerr << "resulting surface is the same as the source!!!\n";
-	} else if(result == NULL) {
-		return surf;
-	}
-
-	SDL_SetAlpha(result,SDL_SRCALPHA|SDL_RLEACCEL,SDL_ALPHA_OPAQUE);
-
-	return result;
 }
 
 surface stretch_surface_horizontal(
