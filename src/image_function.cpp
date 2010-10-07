@@ -82,6 +82,11 @@ surface blit_function::operator()(const surface& src) const
 	return nsrc;
 }
 
+surface mask_function::operator()(const surface& src) const
+{
+	return mask_surface(src, mask_);
+}
+
 surface light_function::operator()(const surface& src) const
 {
 	return light_surface(src, surf_);;
