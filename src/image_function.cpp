@@ -84,7 +84,12 @@ surface blit_function::operator()(const surface& src) const
 
 surface mask_function::operator()(const surface& src) const
 {
-	return mask_surface(src, mask_);
+	if(src->w == mask_->w &&  src->h == mask_->h && x_ == 0 && y_ == 0)
+		return mask_surface(src, mask_);
+	SDL_Rect r = create_rect(x_, y_, 0, 0);
+	surface new_mask = create_neutral_surface(src->w, src->h);
+	blit_surface(mask_, NULL, new_mask, &r);
+	return mask_surface(src, new_mask);
 }
 
 surface light_function::operator()(const surface& src) const

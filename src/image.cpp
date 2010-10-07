@@ -736,8 +736,12 @@ surface locator::load_image_sub_file() const
 							x = lexical_cast_default<int>(param[1]);
 							y = lexical_cast_default<int>(param[2]);
 						}
-						surface surf = get_image(param[0]);
-						functor_queue.push_back(new mask_function(surf, x, y));
+						if(x >= 0 && y >= 0) { //required by blit_surface
+							surface surf = get_image(param[0]);
+							functor_queue.push_back(new mask_function(surf, x, y));
+						} else {
+							ERR_DP << "negative position arguments in ~MASK() function\n";
+						}
 					} else {
 						ERR_DP << "no arguments passed to the ~MASK() function\n";
 					}
