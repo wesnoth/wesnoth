@@ -409,6 +409,9 @@ int CVideo::setMode( int x, int y, int bits_per_pixel, int flags )
 		throw CVideo::error();
 	}
 
+	std::cout << "OpenGL: " << glGetString(GL_VERSION) << "\n";
+	std::cout << "GPU: " << glGetString(GL_RENDERER) << " by "<< glGetString(GL_VENDOR) << "\n";
+
 	int val = 0;
 
 	if(SDL_GL_GetAttribute(SDL_GL_DOUBLEBUFFER, &val)) {
