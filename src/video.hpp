@@ -124,6 +124,11 @@ private:
 	int help_string_;
 
 	int updatesLocked_;
+
+	//Frame Buffer Object
+	unsigned fbo_;
+	//Texture attached to Frame Buffer Object
+	unsigned fbo_tex_;
 };
 
 //an object which will lock the display for the duration of its lifetime.

@@ -325,6 +325,10 @@ void sdl_blit(const surface& src, SDL_Rect* src_rect, surface& dst, SDL_Rect* ds
 				const int index1 = y*dst->w + x;
 				const int index2 = (dst->h-y-1)*dst->w + x;
 				std::swap(pixels[index1],pixels[index2]);
+				// screen parts should be opaque
+				//TODO: improve this, maybe disable blending when blitting
+				pixels[index1] |= 0xFF000000;
+				pixels[index2] |= 0xFF000000;
 			}
 		}
 	} else if(src == screen && dst == screen) {
@@ -369,22 +373,34 @@ void sdl_flip(const surface& screen)
 
 void sdl_update_rects(const surface& screen, int numrects, SDL_Rect *rects)
 {
-	// Copy back buffer to front buffer to simulate how SDL_UpdateRects works
-	// This might cause some tearing but not more than SDL
-	// (unless the speed difference make it more visible)
+	// Draw FBO texture to simulate how SDL_UpdateRects works
 
 	blend_disabler bd;
 
-	glReadBuffer(GL_BACK);
-	glDrawBuffer(GL_FRONT);
-	glPixelZoom(1,1);
+	glEnable(GL_TEXTURE_2D);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
+	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
+
+	float w = screen->w;
+	float h = screen->h;
+	glBegin(GL_QUADS);
 	for(int i=0; i < numrects; ++i) {
 		const SDL_Rect& r = rects[i];
-		glRasterPos2i(r.x, r.y + r.h);
-		glCopyPixels(r.x, screen->h - r.h - r.y, r.w, r.h, GL_COLOR);
+		//we need to do a vertical flip
+		glTexCoord2f(r.x/w, 1.0 - r.y/h);
+		glVertex2i(r.x, r.y);
+		glTexCoord2f((r.x+r.w)/w, 1.0 - r.y/h);
+		glVertex2i(r.x+r.w, r.y);
+		glTexCoord2f((r.x+r.w)/w, 1.0 - (r.y+r.h)/h);
+		glVertex2i(r.x+r.w, r.y+r.h);
+		glTexCoord2f(r.x/w, 1.0 - (r.y+r.h)/h);
+		glVertex2i(r.x, r.y+r.h);
 	}
-	glDrawBuffer(GL_BACK);
-	glReadBuffer(GL_BACK);
+	glEnd();
+	glDisable(GL_TEXTURE_2D);
 }
 
 

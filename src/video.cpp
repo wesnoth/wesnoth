@@ -29,6 +29,7 @@
 #include "sdl_utils.hpp"
 #include "video.hpp"
 
+#define GL_GLEXT_PROTOTYPES
 #include <GL/gl.h>
 
 #include <vector>
@@ -297,7 +298,7 @@ void update_whole_screen()
 {
 	update_all = true;
 }
-CVideo::CVideo(FAKE_TYPES type) : mode_changed_(false), bpp_(0), fake_screen_(false), help_string_(0), updatesLocked_(0)
+CVideo::CVideo(FAKE_TYPES type) : mode_changed_(false), bpp_(0), fake_screen_(false), help_string_(0), updatesLocked_(0), fbo_(0), fbo_tex_(0)
 {
 	initSDL();
 	switch(type)
@@ -325,6 +326,9 @@ void CVideo::initSDL()
 
 CVideo::~CVideo()
 {
+	glDeleteTextures(1, &fbo_tex_);
+	glDeleteFramebuffersEXT(1, &fbo_);
+
 	LOG_DP << "calling SDL_Quit()\n";
 	SDL_Quit();
 	LOG_DP << "called SDL_Quit()\n";
@@ -374,85 +378,6 @@ int CVideo::modePossible( int x, int y, int bits_per_pixel, int flags, bool curr
 	}
 	return bpp;
 }
-
-static bool test_buffers(bool flush)
-{
-	bool res = true;
-
-	glPixelStorei(GL_UNPACK_ROW_LENGTH, 1);
-	glPixelStorei(GL_UNPACK_SKIP_PIXELS, 0);
-	glPixelStorei(GL_UNPACK_SKIP_ROWS, 0);
-	glPixelStorei(GL_PACK_ROW_LENGTH, 1);
-	glPixelStorei(GL_PACK_SKIP_PIXELS, 0);
-	glPixelStorei(GL_PACK_SKIP_ROWS, 0);
-	glPixelZoom(1,-1);
-
-	Uint32 col_write = 0xFF1122FF; //use opaque alpha
-	Uint32 col_read = 0;
-
-	int x = 42;
-	int y = 42;
-	int ry = frameBuffer->h-y-1;
-	glRasterPos2i(x, y);
-
-	glDrawBuffer(GL_BACK);
-	glReadBuffer(GL_BACK);
-	glDrawPixels(1, 1, GL_BGRA, GL_UNSIGNED_BYTE, &col_write);
-	if(flush) glFlush();
-	glReadPixels(x, ry, 1, 1, GL_BGRA, GL_UNSIGNED_BYTE, &col_read);
-	if(col_read != col_write) {
-		ERR_DP << "Can't read or write on back buffer.\n";
-		res = false;
-	}
-
-	glDrawBuffer(GL_FRONT);
-	glReadBuffer(GL_FRONT);
-	glReadPixels(x, ry, 1, 1, GL_BGRA, GL_UNSIGNED_BYTE, &col_read);
-	if(col_read == col_write) {
-		ERR_DP << "Front buffer not separated from back buffer.\n";
-		res = false;
-	}
-
-	col_write = 0xFF3344FF;
-	glDrawPixels(1, 1, GL_BGRA, GL_UNSIGNED_BYTE, &col_write);
-	if(flush) glFlush();
-	glReadPixels(x, ry, 1, 1, GL_BGRA, GL_UNSIGNED_BYTE, &col_read);
-	if(col_read != col_write) {
-		ERR_DP << "Can't read or write on front buffer.\n";
-		res = false;
-	}
-
-	col_write = 0xFF5566FF;
-	glDrawBuffer(GL_BACK);
-	glDrawPixels(1, 1, GL_BGRA, GL_UNSIGNED_BYTE, &col_write);
-	if(flush) glFlush();
-	glReadBuffer(GL_BACK);
-	glDrawBuffer(GL_FRONT);
-	glCopyPixels(x, ry, 1, 1, GL_COLOR);
-	if(flush) glFlush();
-	glReadBuffer(GL_FRONT);
-	glReadPixels(x, ry, 1, 1, GL_BGRA, GL_UNSIGNED_BYTE, &col_read);
-	if(col_read != col_write) {
-		ERR_DP << "Can't copy from back buffer to front buffer.\n";
-		res = false;
-	}
-
-	col_write = 0xFF7788FF;
-	glDrawBuffer(GL_BACK);
-	glDrawPixels(1, 1, GL_BGRA, GL_UNSIGNED_BYTE, &col_write);
-	if(flush) glFlush();
-	glReadBuffer(GL_BACK);
-	glRasterPos2i(x+1, y);
-	glCopyPixels(x, ry, 1, 1, GL_COLOR);
-	if(flush) glFlush();
-	glReadPixels(x+1, ry, 1, 1, GL_BGRA, GL_UNSIGNED_BYTE, &col_read);
-	if(col_read != col_write) {
-		ERR_DP << "Can't copy from back buffer to back buffer.\n";
-		res = false;
-	}
-	return res;
-}
-
 
 int CVideo::setMode( int x, int y, int bits_per_pixel, int flags )
 {
@@ -516,16 +441,36 @@ int CVideo::setMode( int x, int y, int bits_per_pixel, int flags )
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-	if(test_buffers(false) == false) {
-		ERR_DP << "Read/write pixels test failed. Retry using glFlush().\n";
-		if(test_buffers(true) == false) {
-			ERR_DP << "Didn't help.\n";
-		}
+	// Now setting up the Frame Buffer Object used for rendering
+	// (can be already there when doing resolution change)
+	if(fbo_ == 0)
+		glGenFramebuffersEXT(1, &fbo_);
+
+	if(fbo_ == 0) {
+		ERR_DP << "Can't create Frame Buffer Object.\n";
+		throw CVideo::error();
+	}
+	glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, fbo_);
+	glViewport(0, 0, frameBuffer->w, frameBuffer->h);
+
+	// Create texture for the FBO and attach it
+	if(fbo_tex_ == 0)
+		glGenTextures(1, &fbo_tex_);
+	glBindTexture(GL_TEXTURE_2D, fbo_tex_);
+	glTexImage2D(GL_TEXTURE_2D, 0 /*level*/, GL_RGBA, frameBuffer->w, frameBuffer->h,
+			0 /*border*/, GL_BGRA, GL_UNSIGNED_BYTE, NULL /*data*/);
+	glFramebufferTexture2DEXT(GL_FRAMEBUFFER_EXT, GL_COLOR_ATTACHMENT0_EXT, GL_TEXTURE_2D, fbo_tex_, 0);
+
+	// Check FBO status
+	GLenum fbo_status = glCheckFramebufferStatusEXT(GL_FRAMEBUFFER_EXT);
+	if(fbo_status != GL_FRAMEBUFFER_COMPLETE_EXT) {
+		ERR_DP << "Can't setup Frame Buffer Object.\n";
+		throw CVideo::error();
 	}
 
-	//we will only use back buffer for drawing
-	glDrawBuffer(GL_BACK);
-	glReadBuffer(GL_BACK);
+	// We will always read and write only on the FBO
+	glDrawBuffer(GL_COLOR_ATTACHMENT0_EXT);
+	glReadBuffer(GL_COLOR_ATTACHMENT0_EXT);
 
 	image::set_pixel_format(frameBuffer->format);
 
@@ -554,9 +499,17 @@ void CVideo::flip()
 	if(fake_screen_)
 		return;
 
-	glFlush();
+	//TODO: the FBO stuff should be into sdl_* functions to truly emulate SDL
 
-	// NOTE: maybe always use update_all is faster ?
+	// Stop rendering on FBO, and now use back buffer
+	glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, 0);
+	glDrawBuffer(GL_BACK);
+
+	// Render the texture attached to the FBO on the back buffer
+	glBindTexture(GL_TEXTURE_2D, fbo_tex_);
+
+	//NOTE: update_all seems to prevent black blinking in fullscreen for GUI
+	update_all = true;
 	if(update_all) {
 		sdl_flip(frameBuffer);
 	} else if(!update_rects.empty()) {
@@ -565,6 +518,13 @@ void CVideo::flip()
 			sdl_update_rects(frameBuffer, update_rects.size(), &update_rects[0]);
 		}
 	}
+	// Back buffer is updated now, we can swap
+	SDL_GL_SwapBuffers();
+
+	//restore normal rendering on FBO
+	glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, fbo_);
+	glDrawBuffer(GL_COLOR_ATTACHMENT0_EXT);
+	glReadBuffer(GL_COLOR_ATTACHMENT0_EXT);
 
 	clear_updates();
 }
