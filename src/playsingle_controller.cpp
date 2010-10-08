@@ -239,17 +239,6 @@ void playsingle_controller::whiteboard_bump_down_action()
 	whiteboard_manager_->contextual_bump_down_action();
 }
 
-
-#ifdef USRCMD2
-void playsingle_controller::user_command_2(){
-	menu_handler_.user_command_2();
-}
-
-void playsingle_controller::user_command_3(){
-	menu_handler_.user_command_3();
-}
-#endif
-
 void playsingle_controller::report_victory(
 	std::ostringstream &report, int player_gold, int remaining_gold,
 	int finishing_bonus_per_turn, int turns_left, int finishing_bonus)

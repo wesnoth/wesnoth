@@ -200,10 +200,6 @@ const struct {
 	{ hotkey::HOTKEY_CUSTOM_CMD, "customcommand", N_("Custom command"), false, hotkey::SCOPE_GAME },
 	{ hotkey::HOTKEY_AI_FORMULA, "aiformula", N_("Run AI formula"), false, hotkey::SCOPE_GAME },
 	{ hotkey::HOTKEY_CLEAR_MSG, "clearmessages", N_("Clear messages"), false, hotkey::SCOPE_GAME },
-#ifdef USRCMD2
-	{ hotkey::HOTKEY_USER_CMD_2, "usercommand#2", N_("User-Command#2"), false, hotkey::SCOPE_GAME },
-	{ hotkey::HOTKEY_USER_CMD_3, "usercommand#3", N_("User-Command#3"), false, hotkey::SCOPE_GAME },
-#endif
 	{
 		  hotkey::TITLE_SCREEN__RELOAD_WML
 		, "title_screen__reload_wml"
@@ -891,16 +887,6 @@ bool command_executor::execute_command(HOTKEY_COMMAND command, int /*index*/)
 		case HOTKEY_CLEAR_MSG:
 			clear_messages();
 			break;
-#ifdef USRCMD2
-		case HOTKEY_USER_CMD_2:
-			//user_command();
-			user_command_2();
-			break;
-		case HOTKEY_USER_CMD_3:
-			user_command_3();
-			break;
-#endif
-
 		 case HOTKEY_LANGUAGE:
 			change_language();
 			break;
