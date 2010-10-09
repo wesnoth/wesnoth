@@ -474,6 +474,8 @@ int CVideo::setMode( int x, int y, int bits_per_pixel, int flags )
 	}
 	glBindTexture(GL_TEXTURE_2D, fbo_tex_);
 
+	// Some driver use mipmap as default, but since we don't generate those
+	// the FBO will be considered 'incomplete'
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 
