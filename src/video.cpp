@@ -474,6 +474,9 @@ int CVideo::setMode( int x, int y, int bits_per_pixel, int flags )
 	}
 	glBindTexture(GL_TEXTURE_2D, fbo_tex_);
 
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+
 	glTexImage2D(GL_TEXTURE_2D, 0 /*level*/, GL_RGBA, frameBuffer->w, frameBuffer->h,
 			0 /*border*/, GL_BGRA, GL_UNSIGNED_BYTE, NULL /*data*/);
 	glFramebufferTexture2DEXT(GL_FRAMEBUFFER_EXT, GL_COLOR_ATTACHMENT0_EXT, GL_TEXTURE_2D, fbo_tex_, 0);
