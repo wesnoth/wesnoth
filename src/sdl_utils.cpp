@@ -256,7 +256,7 @@ void sdl_blit(const surface& src, SDL_Rect* src_rect, surface& dst, SDL_Rect* ds
 
 	SDL_Rect sr = create_rect(0, 0, src->w, src->h);
 	if(src_rect)
-		sr = intersect_rects(sr, *src_rect);
+		sr = *src_rect;
 
 	int shift_x = dst_rect ? dst_rect->x : 0;
 	int shift_y = dst_rect ? dst_rect->y : 0;
@@ -275,23 +275,26 @@ void sdl_blit(const surface& src, SDL_Rect* src_rect, surface& dst, SDL_Rect* ds
 	SDL_Rect r = dr;
 	r.x += sr.x - shift_x;
 	r.y += sr.y - shift_y;
-	sr = intersect_rects(sr, r);
+	r = intersect_rects(sr, r);
 
 	if(src != screen && dst == screen) {
 		unsigned id = src.get_texture();
 		if(id > 0) {
 			glEnable(GL_TEXTURE_2D);
 			glBindTexture(GL_TEXTURE_2D, id);
+
 			// FIXME Clipping is ignored (need to rewrite this rectangle mess)
 			glBegin(GL_QUADS); {
-				glTexCoord2i(0, 0);
+				float w = src->w;
+				float h = src->h;
+				glTexCoord2f(r.x/w, r.y/h);
 				glVertex2i(dr.x, dr.y);
-				glTexCoord2i(1, 0);
-				glVertex2i(dr.x + dr.w, dr.y);
-				glTexCoord2i(1, 1);
-				glVertex2i(dr.x + dr.w, dr.y + dr.h);
-				glTexCoord2i(0, 1);
-				glVertex2i(dr.x, dr.y + dr.h);
+				glTexCoord2f((r.x+r.w)/w, r.y/h);
+				glVertex2i(dr.x + r.w, dr.y);
+				glTexCoord2f((r.x+r.w)/w, (r.y+r.h)/h);
+				glVertex2i(dr.x + r.w, dr.y + r.h);
+				glTexCoord2f(r.x/w, (r.y+r.h)/h);
+				glVertex2i(dr.x, dr.y + r.h);
 			}
 			glEnd();
 			glDisable(GL_TEXTURE_2D);
@@ -299,23 +302,23 @@ void sdl_blit(const surface& src, SDL_Rect* src_rect, surface& dst, SDL_Rect* ds
 		}
 
 		glPixelStorei(GL_UNPACK_ROW_LENGTH, src->w);
-		glPixelStorei(GL_UNPACK_SKIP_PIXELS, sr.x);
-		glPixelStorei(GL_UNPACK_SKIP_ROWS, sr.y);
+		glPixelStorei(GL_UNPACK_SKIP_PIXELS, r.x);
+		glPixelStorei(GL_UNPACK_SKIP_ROWS, r.y);
 		glPixelZoom(1,-1);
 
 		glRasterPos2i(dr.x, dr.y);
 
 		const_surface_lock src_lock(src);
-		glDrawPixels(sr.w, sr.h, GL_BGRA, GL_UNSIGNED_BYTE, src_lock.pixels());
+		glDrawPixels(r.w, r.h, GL_BGRA, GL_UNSIGNED_BYTE, src_lock.pixels());
 	} else if(src == screen && dst != screen) {
 		blend_disabler bd;
 		glPixelStorei(GL_PACK_ROW_LENGTH, dst->w);
-		glPixelStorei(GL_PACK_SKIP_PIXELS, dr.x + src_rect ? (sr.x - src_rect->x) : 0);
-		glPixelStorei(GL_PACK_SKIP_ROWS, -dr.y + src_rect ? (src_rect->y + src_rect->h - (sr.y + sr.h)) : 0);
+		glPixelStorei(GL_PACK_SKIP_PIXELS, dr.x + r.x - sr.x);
+		glPixelStorei(GL_PACK_SKIP_ROWS, -dr.y + (sr.y + sr.h) - (r.y + r.h));
 
 		surface_lock dst_lock(dst);
 		// glReadPixels uses bottom-left coordinates
-		glReadPixels(sr.x, screen->h - sr.y - sr.h, sr.w, sr.h, GL_BGRA, GL_UNSIGNED_BYTE, dst_lock.pixels());
+		glReadPixels(r.x, screen->h - r.y - r.h, r.w, r.h, GL_BGRA, GL_UNSIGNED_BYTE, dst_lock.pixels());
 
 		//Need to flop pixels data
 		//TODO avoid this by using smarter glPixelZoom ?
@@ -335,9 +338,9 @@ void sdl_blit(const surface& src, SDL_Rect* src_rect, surface& dst, SDL_Rect* ds
 		blend_disabler bd;
 		glPixelZoom(1,1);
 		// RasterPos uses top-left coordinates, but blit will go up
-		glRasterPos2i(dr.x, dr.y + sr.h);
+		glRasterPos2i(dr.x, dr.y + r.h);
 		// glCopyPixels uses bottom-left coordinates
-		glCopyPixels(sr.x, screen->h - sr.h - sr.y, sr.w, sr.h, GL_COLOR);
+		glCopyPixels(r.x, screen->h - r.h - r.y, r.w, r.h, GL_COLOR);
 	}
 }
 
