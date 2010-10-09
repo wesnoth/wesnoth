@@ -772,7 +772,11 @@
       <activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.mylyn.tasks.ui.bug.report.*"> </activityPatternBinding>
 	<activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.ui.actions.showKeyAssistHandler.*"> </activityPatternBinding>
 	<activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.ui.cheatsheets.actions.CheatSheetHelpMenuAction.*"> </activityPatternBinding>
-	<activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/.*"> </activityPatternBinding>
-	<activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/.*"> </activityPatternBinding>
+   </extension>
+   <extension
+         point="org.eclipse.ui.startup">
+      <startup
+            class="org.wesnoth.product.ActionWiper">
+      </startup>
    </extension>
 </plugin>
