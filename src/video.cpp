@@ -468,13 +468,47 @@ int CVideo::setMode( int x, int y, int bits_per_pixel, int flags )
 	// Create texture for the FBO and attach it
 	if(fbo_tex_ == 0)
 		glGenTextures(1, &fbo_tex_);
+	if(fbo_tex_ == 0) {
+		ERR_DP << "Can't create texture for FBO.\n";
+		throw CVideo::error();
+	}
 	glBindTexture(GL_TEXTURE_2D, fbo_tex_);
+
 	glTexImage2D(GL_TEXTURE_2D, 0 /*level*/, GL_RGBA, frameBuffer->w, frameBuffer->h,
 			0 /*border*/, GL_BGRA, GL_UNSIGNED_BYTE, NULL /*data*/);
 	glFramebufferTexture2DEXT(GL_FRAMEBUFFER_EXT, GL_COLOR_ATTACHMENT0_EXT, GL_TEXTURE_2D, fbo_tex_, 0);
 
 	// Check FBO status
 	GLenum fbo_status = glCheckFramebufferStatusEXT(GL_FRAMEBUFFER_EXT);
+	switch(fbo_status) {
+		case GL_FRAMEBUFFER_COMPLETE_EXT:
+			break; //all ok
+		case GL_FRAMEBUFFER_UNSUPPORTED_EXT:
+			ERR_DP << "GL_FRAMEBUFFER_UNSUPPORTED_EXT\n";
+			break;
+		case GL_FRAMEBUFFER_UNDEFINED:
+			ERR_DP << "GL_FRAMEBUFFER_UNDEFINED\n";
+			break;
+		case GL_FRAMEBUFFER_INCOMPLETE_ATTACHMENT:
+			ERR_DP << "GL_FRAMEBUFFER_INCOMPLETE_ATTACHMENT\n";
+			break;
+		case GL_FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT:
+			ERR_DP << "GL_FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT\n";
+			break;
+		case GL_FRAMEBUFFER_INCOMPLETE_DRAW_BUFFER:
+			ERR_DP << "GL_FRAMEBUFFER_INCOMPLETE_DRAW_BUFFER\n";
+			break;
+		case GL_FRAMEBUFFER_ATTACHMENT_OBJECT_TYPE:
+			ERR_DP << "GL_FRAMEBUFFER_ATTACHMENT_OBJECT_TYPE\n";
+			break;
+		case GL_FRAMEBUFFER_INCOMPLETE_READ_BUFFER:
+			ERR_DP << "GL_FRAMEBUFFER_INCOMPLETE_READ_BUFFER\n";
+			break;
+		default:
+			ERR_DP << "Unknown FBO error\n";
+			break;
+	}
+
 	if(fbo_status != GL_FRAMEBUFFER_COMPLETE_EXT) {
 		ERR_DP << "Can't setup Frame Buffer Object.\n";
 		throw CVideo::error();
