@@ -23,6 +23,7 @@
 #include "sdl_utils.hpp"
 #include "video.hpp"
 
+#define GL_GLEXT_PROTOTYPES
 #include <GL/gl.h>
 
 #include <algorithm>
