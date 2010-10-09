@@ -412,6 +412,15 @@ int CVideo::setMode( int x, int y, int bits_per_pixel, int flags )
 	std::cout << "OpenGL: " << glGetString(GL_VERSION) << "\n";
 	std::cout << "GPU: " << glGetString(GL_RENDERER) << " by "<< glGetString(GL_VENDOR) << "\n";
 
+	//TODO move extension checking in proper function
+	std::ostringstream ext;
+	ext << glGetString(GL_EXTENSIONS);
+	std::string extensions = ext.str();
+	if(extensions.find("GL_EXT_framebuffer_object",0) == std::string::npos) {
+		ERR_DP << "Driver don't support GL_EXT_framebuffer_object.\n";
+		throw CVideo::error();
+	}
+
 	int val = 0;
 
 	if(SDL_GL_GetAttribute(SDL_GL_DOUBLEBUFFER, &val)) {
