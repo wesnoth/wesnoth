@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-09-13 11:01+0200\n"
+"POT-Creation-Date: 2010-10-03 21:59+0200\n"
 "PO-Revision-Date: 2010-04-18 22:14+0100\n"
 "Last-Translator: VladimírSlávik <slavik.vladimir@nospam@seznam.cz>\n"
 "Language-Team: Czech <wesnoth-cs-l@nospam.buchtovi.cz>\n"
@@ -280,11 +280,13 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:48
+#, fuzzy
 msgid ""
 "As quickly as it had begun, it was over. Konrad reached the entrance to the "
 "tunnels and ushered his men through. Then he turned one last time to face "
 "the peasants. Raising his sword in salute and farewell, he called out to "
-"them: “Hold fast your hope, for one day you shall be free!” Then he was gone."
+"them: <i>“Hold fast your hope, for one day you shall be free!”</i> Then he "
+"was gone."
 msgstr ""
 "Tak jak rychle to začalo to i skončilo. Konrád dosáhl vchodu do tunelů a "
 "poslal své vojáky dovnitř. Pak se naposled otočil k sedlákům, pozvedl meč v "
@@ -1770,18 +1772,16 @@ msgstr ""
 msgid "WHO GOES THERE?"
 msgstr "KDO TAM?"
 
-#. [message]: role=Supporter
+#. [message]: speaker=Hamel
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:381
+#, fuzzy
+msgid "(<i>Wince</i>)."
+msgstr "Žádná odpověď."
+
+#. [message]: role=Supporter
+#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:385
 msgid "Oops, I spoke too soon."
 msgstr "Jejda, tak asi ne."
-
-# ten pohyb!
-# Hamel
-#. [message]: speaker=Hamel
-#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:385
-#, fuzzy
-msgid "(<i>Wince</i>) You can turn the volume down, pal."
-msgstr " *škub* Nemusíš tak řvát, chlapče."
 
 #. [message]: speaker=Camerin
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:389
@@ -5565,12 +5565,13 @@ msgstr " *krčí ramena* Nemyslím, že by se nabízela nějaká lepší alterna
 
 #. [message]: id=Camerin
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:777
+#, fuzzy
 msgid ""
 "Come on, guys, it will be great! Those orcs will never know what hit them! "
 "Together we’ll rip them to shreds! If you are planning to retire after this, "
 "this is the perfect chance for you guys to go out with a bang! You guys will "
-"become legends! “The two terrible mages, risen from the dead to devastate "
-"the orcish hordes!”"
+"become legends! <i>“The two terrible mages, risen from the dead to devastate "
+"the orcish hordes!”</i>"
 msgstr ""
 "Bude to skvělé! Ti skřeti se nikdy nedozví co se stalo, úplně je roztrháme "
 "na hadry! Jestli se chcete potom odebrat na odpočinek, je tohle skvělá "
@@ -7298,11 +7299,12 @@ msgstr ""
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:202
+#, fuzzy
 msgid ""
-"Princess, we are not seeking to do business here: “I do this for you and you "
-"do this for me.” No, we seek to build everlasting friendships which will "
-"forever ensure the peace and prosperity of these northlands. Therefore, let "
-"there be no talk of debts and repayments between us."
+"Princess, we are not seeking to do business here: <i>“I do this for you and "
+"you do this for me.”</i> No, we seek to build everlasting friendships which "
+"will forever ensure the peace and prosperity of these northlands. Therefore, "
+"let there be no talk of debts and repayments between us."
 msgstr ""
 "Princezno, nehodláme přece obchodovat a vyvažovat pečlivě hodnoty na obou "
 "stranách, něco za něco. Chceme přátelství, které bude trvat, které zajistí "
@@ -7563,9 +7565,9 @@ msgstr ""
 msgid ""
 "Tallin raised his eyes to look into Abhai’s and Abhai met his gaze — "
 "confidence meeting uncertainty, faith meeting doubt, assurance meeting "
-"apprehension. “I have faith in you, my boy,” Abhai said, “Take this, and put "
-"your doubts at rest.” Tallin held the gaze for one more long moment — and "
-"then took the Rod of Justice in a white-knuckled grip."
+"apprehension. <i>“I have faith in you, my boy,”</i> Abhai said, <i>“Take "
+"this, and put your doubts at rest.”</i> Tallin held the gaze for one more "
+"long moment — and then took the Rod of Justice in a white-knuckled grip."
 msgstr ""
 "Tallin pozvedl oči a jeho pohled se střetl s Abhaiovým - důvěra s "
 "nejistotou, víra s pochybami, přesvědčení s obavou. „Věřím, že to zvládneš, "
@@ -10894,6 +10896,12 @@ msgstr "Byl naprosto šílený, ale i tak mi stejně bude chybět."
 #: data/campaigns/Northern_Rebirth/utils/utils.cfg:79
 msgid "Arthian"
 msgstr "Arthian"
+
+# ten pohyb!
+# Hamel
+#, fuzzy
+#~ msgid "(<i>Wince</i>) You can turn the volume down, pal."
+#~ msgstr " *škub* Nemusíš tak řvát, chlapče."
 
 #~ msgid " *STAB*"
 #~ msgstr " *bodnutí*"

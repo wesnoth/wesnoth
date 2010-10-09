@@ -72,7 +72,6 @@ namespace game_config
 
 	namespace images {
 	extern std::string game_title,
-			game_logo,
 			// orbs and hp/xp bar
 			moved_orb,
 			unmoved_orb,

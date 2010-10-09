@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.8\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-09-14 18:29+0200\n"
+"POT-Creation-Date: 2010-10-03 21:59+0200\n"
 "PO-Revision-Date: 2010-09-13 14:22+0100\n"
 "Last-Translator: Nils Kneuper <crazy-ivanovic  AT gmx  D O  T net>\n"
 "Language-Team: irc://irc.freenode.net/#wesnoth-de\n"
@@ -1018,13 +1018,13 @@ msgstr ""
 msgid ""
 "Last night, before the rock storm, I heard a voice in my sleep. It sounded "
 "like sweet music, and somehow I knew it was Eloh. I still remember her exact "
-"words: “You must be strong, young elf, for you enter a time of peril. The "
+"words: <i>“You must be strong, young elf, for you enter a time of peril. The "
 "home you know will be destroyed, and you must lead your people to a new "
 "land. To the north you will find salvation and peace. Cross the desert and "
-"head to the mountains. Fear not, for I will guide you and protect you.” I’m "
-"not sure why I’m the one she chose to appeal to, but if this is her will, I "
-"will see it done. Our home is gone and the desert is a harsh place. If Eloh "
-"has prepared a new home for us, then I will lead us there."
+"head to the mountains. Fear not, for I will guide you and protect you.”</i> "
+"I’m not sure why I’m the one she chose to appeal to, but if this is her "
+"will, I will see it done. Our home is gone and the desert is a harsh place. "
+"If Eloh has prepared a new home for us, then I will lead us there."
 msgstr ""
 "Letzte Nacht, vor dem Felssturm, hörte ich eine Stimme, die im Traum zu mir "
 "sprach. Sie klang wie süße Musik und ich wusste irgendwie, dass es Eloh war. "
@@ -3619,9 +3619,9 @@ msgid ""
 "the passage. The freezing water pours out into a large pool. At the bottom "
 "of the pool I can see a skeleton still gripping a sword. The blade seems to "
 "glow faintly blue. The pool isn’t very deep, I could easily wade in and pick "
-"it up. But someone else has carved a crude message in the wall. “If you dare "
-"to take this blade here, your greatest fear will surely appear.” It looks "
-"like a nice sword, but do I dare chance it?"
+"it up. But someone else has carved a crude message in the wall. <i>“If you "
+"dare to take this blade here, your greatest fear will surely appear.”</i> It "
+"looks like a nice sword, but do I dare chance it?"
 msgstr ""
 "Wie seltsam. Am Ende dieses Ganges hat jemand einen Springbrunnen grob in "
 "den Fels gemeißelt. Das eiskalte Wasser sprudelt in ein großes Becken. Am "
@@ -5508,7 +5508,8 @@ msgstr ""
 
 #. [message]: speaker=Troll Chieftain
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:2061
-msgid "Destroy the invaders! Make them pay for their slaughter!"
+#, fuzzy
+msgid "Destroy the invaders! Make them pay for the murders they have done!"
 msgstr "Vernichtet die Eindringlinge! Sie sollen für dieses Massaker bezahlen!"
 
 #. [message]: speaker=High Advisor
@@ -5700,9 +5701,11 @@ msgstr ""
 
 #. [message]: speaker=$explorer.id
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:2442
+#, fuzzy
 msgid ""
 "There is a chasm here cutting off the end of the crypt. It must be rather "
-"recent, it cuts off the path leading to a rather ornate stone coffin."
+"recent; the edges are still raw and crumbling. It cuts off the path leading "
+"to a rather ornate stone coffin."
 msgstr ""
 "Da ist eine abrupte Kluft am Ende der Krypta. Sie muss erst vor kurzem "
 "entstanden sein und schneidet den Weg zu einem weiteren reich verzierten "
@@ -6394,9 +6397,10 @@ msgid ""
 "dwarf. The tomb seems empty except for this ornate stone coffin. The "
 "skeleton inside the coffin has long since vanished into dust. All that’s "
 "left are a few ceremonial trinkets and this shining golden belt. Inscribed "
-"on this inside are the words: “May you have the toughness to stay standing "
-"long after your enemies fall.’ Grave robbing is never a good thing to do, "
-"but this belt looks magical and its former owner certainly won’t miss it."
+"on this inside are the words: <i>“May you have the toughness to stay "
+"standing long after your enemies fall.”</i> Grave robbing is never a good "
+"thing to do, but this belt looks magical and its former owner certainly "
+"won’t miss it."
 msgstr ""
 "Den Runen nach zu urteilen, mit denen diese Wand übersät ist, ist das hier "
 "die alte Grabstätte eines Zwerges. Das Grab scheint leer zu sein, bis auf "
@@ -11491,7 +11495,8 @@ msgstr "Ich habe keine Wahl. Lebt wohl."
 msgid ""
 "Oh Eloh, you know how long I have faithfully served you. I ask you now a "
 "boon in return. Do not kill the boy Kaleh, he is just doing what his heart "
-"tells him to do. Did you not say, “To err is elven, but to forgive divine”?"
+"tells him to do. Did you not say, <i>“To err is elven, but to forgive "
+"divine”</i>?"
 msgstr ""
 "Oh Eloh, Ihr wisst wie lange ich Euch treu ergeben war. Und jetzt bitte ich "
 "Euch um eine kleine Gunst als Gegenleistung. Tötet nicht den Jungen, Kaleh. "
@@ -15755,7 +15760,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Divine_Avatar.cfg:24
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Divine_Incarnation.cfg:24
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Darawf.cfg:22
-#: data/campaigns/Under_the_Burning_Suns/units/monsters/Small_Mudcrawler.cfg:46
+#: data/campaigns/Under_the_Burning_Suns/units/monsters/Small_Mudcrawler.cfg:14
 msgid "fist"
 msgstr "Faust"
 
@@ -16214,23 +16219,13 @@ msgstr "Feuerklauen"
 msgid "fire breath"
 msgstr "Feueratem"
 
-#. [unit_type]: id=Small Mudcrawler, race=monster
-#: data/campaigns/Under_the_Burning_Suns/units/monsters/Small_Mudcrawler.cfg:5
+#. [unit_type]: id=Small Mudcrawler
+#: data/campaigns/Under_the_Burning_Suns/units/monsters/Small_Mudcrawler.cfg:8
 msgid "Small Mudcrawler"
 msgstr "Kleiner Schlammkriecher"
 
-#. [unit_type]: id=Small Mudcrawler, race=monster
-#: data/campaigns/Under_the_Burning_Suns/units/monsters/Small_Mudcrawler.cfg:19
-msgid ""
-"Small Mudcrawlers are beings of soil and water. They attack by spraying "
-"boiling water on their foes, or by punching with their fists."
-msgstr ""
-"Kleine Schlammkriecher sind Geschöpfe aus Erde und Wasser. Sie können "
-"kochend heißes Wasser auf ihre Gegner sprühen, oder sie mit ihren Fäusten "
-"schlagen."
-
 #. [attack]: type=impact
-#: data/campaigns/Under_the_Burning_Suns/units/monsters/Small_Mudcrawler.cfg:55
+#: data/campaigns/Under_the_Burning_Suns/units/monsters/Small_Mudcrawler.cfg:23
 msgid "mud glob"
 msgstr "Schlammklumpen"
 
@@ -16916,7 +16911,7 @@ msgstr ""
 msgid ""
 "That night, as I slept, I dreamt again, for the first time since that first "
 "fateful night. Eloh came to me again, and this time she appeared in a vision "
-"as a beautiful glowing figure, as bright as the suns. She said “Have "
+"as a beautiful glowing figure, as bright as the suns. She said <i>“Have "
 "courage, for though soon you shall go through a time of darkness, all your "
 "trials shall be richly rewarded in the end. You must go under the northern "
 "mountains, not over them. You will find the ruins of an ancient watch tower "
@@ -16926,8 +16921,8 @@ msgid ""
 "my suns, I shall contact you. But beware those who lurk in the darkness, "
 "they hide from my light, and must not be trusted. I have no power in the "
 "dark, so you are my hand of justice. Punish the non-believers. Go now, and "
-"fear not the dark.” And again, just like before, I was woken up by a shout "
-"in the night."
+"fear not the dark.”</i> And again, just like before, I was woken up by a "
+"shout in the night."
 msgstr ""
 "In dieser Nacht hatte ich wieder einen Traum – zum ersten Mal seit jener "
 "schicksalhaften ersten Nacht. Eloh kam wieder in einer Vision zu mir und "
@@ -17810,6 +17805,14 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/utils/traits.cfg:10
 msgid "Immune to drain, poison and plague"
 msgstr ""
+
+#~ msgid ""
+#~ "Small Mudcrawlers are beings of soil and water. They attack by spraying "
+#~ "boiling water on their foes, or by punching with their fists."
+#~ msgstr ""
+#~ "Kleine Schlammkriecher sind Geschöpfe aus Erde und Wasser. Sie können "
+#~ "kochend heißes Wasser auf ihre Gegner sprühen, oder sie mit ihren Fäusten "
+#~ "schlagen."
 
 #~ msgid "Go'hag"
 #~ msgstr "Go'hag"

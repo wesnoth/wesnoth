@@ -34,7 +34,7 @@ public:
 	const std::string& minimap_image_overlay() const { return minimap_image_overlay_; }
 	const std::string& editor_image() const { return editor_image_; }
 	const t_string& name() const { return name_; }
-        const t_string& description() const { return description_.empty() ? name_ : description_; }
+	const t_string& description() const { return description_.empty() ? name_ : description_; }
 	const std::string& id() const { return id_; }
 
 	bool hide_in_editor() const { return hide_in_editor_; }

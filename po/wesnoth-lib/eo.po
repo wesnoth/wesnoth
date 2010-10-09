@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.4-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-09-15 19:36+0200\n"
+"POT-Creation-Date: 2010-10-03 21:59+0200\n"
 "PO-Revision-Date: 2008-03-01 17:08+0200\n"
 "Last-Translator: Aleksej Korgenkov <grimpanto@mail.ru>\n"
 "Language-Team: none\n"
@@ -17,55 +17,74 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Language: Esperanto\n"
 
-#. [terrain_type]: id=deep_water
-#: data/core/terrain.cfg:21
-msgid "Deep Water"
+#. [terrain_type]: id=deep_water_grey
+#: data/core/terrain.cfg:18
+#, fuzzy
+msgid "Deep Water Grey"
 msgstr "Profunda Akvo"
 
+#. [terrain_type]: id=deep_water
+#: data/core/terrain.cfg:28
+#, fuzzy
+msgid "Deep Water Medium"
+msgstr "Profunda Akvo"
+
+#. [terrain_type]: id=deep_water_tropical
+#: data/core/terrain.cfg:37
+#, fuzzy
+msgid "Deep Water Tropical"
+msgstr "Profunda Akvo"
+
+#. [terrain_type]: id=gray_tropical_water
+#: data/core/terrain.cfg:47
+#, fuzzy
+msgid "Gray Shallow Water"
+msgstr "Malprofunda akvo"
+
 #. [terrain_type]: id=shallow_water
-#: data/core/terrain.cfg:40
+#: data/core/terrain.cfg:58
 msgid "Shallow Water"
 msgstr "Malprofunda akvo"
 
 #. [terrain_type]: id=ford
-#: data/core/terrain.cfg:60
+#: data/core/terrain.cfg:78
 msgid "Ford"
 msgstr ""
 
 #. [terrain_type]: id=reef
-#: data/core/terrain.cfg:70
+#: data/core/terrain.cfg:88
 #, fuzzy
 msgid "Coastal Reef"
 msgstr "Bordregiono"
 
 #. [terrain_type]: id=swamp_water
-#: data/core/terrain.cfg:82
+#: data/core/terrain.cfg:99
 msgid "Swamp"
 msgstr "Marĉo"
 
 #. [terrain_type]: id=sand
-#: data/core/terrain.cfg:263
+#: data/core/terrain.cfg:266
 msgid "Sand"
 msgstr "Sablo"
 
 #. [terrain_type]: id=oasis
-#: data/core/terrain.cfg:272
+#: data/core/terrain.cfg:275
 msgid "Oasis"
 msgstr "Oazo"
 
 #. [terrain_type]: id=sand_rubble
-#: data/core/terrain.cfg:283
+#: data/core/terrain.cfg:286
 msgid "Rubble"
 msgstr "Restaĵoj"
 
 #. [terrain_type]: id=forest
-#: data/core/terrain.cfg:408
+#: data/core/terrain.cfg:409
 msgid "Forest"
 msgstr "Arbaro"
 
 #. [terrain_type]: id=deciduous_forest_winter_snow
 #. [terrain_type]: id=mixed_forest_winter_snow
-#: data/core/terrain.cfg:463 data/core/terrain.cfg:508
+#: data/core/terrain.cfg:464 data/core/terrain.cfg:509
 msgid "Snow Forest"
 msgstr "Neĝa Arbaro"
 
@@ -112,50 +131,50 @@ msgid "Forested Snow Hills"
 msgstr "Neĝaj montetoj"
 
 #. [terrain_type]: id=lit
-#: data/core/terrain.cfg:727
+#: data/core/terrain.cfg:725
 msgid "Lit"
 msgstr ""
 
 #. [terrain_type]: id=cave
-#: data/core/terrain.cfg:738
+#: data/core/terrain.cfg:736
 msgid "Cave"
 msgstr "Kaverno"
 
 #. [terrain_type]: id=fungus
-#: data/core/terrain.cfg:777
+#: data/core/terrain.cfg:775
 msgid "Mushroom Grove"
 msgstr "Funga Bosko"
 
 #. [terrain_type]: id=fungus_beam
-#: data/core/terrain.cfg:786
+#: data/core/terrain.cfg:784
 msgid "Mushroom Grove Lit"
 msgstr "Lumigita Funga Bosko"
 
 #. [terrain_type]: id=rocky_cave
-#: data/core/terrain.cfg:797
+#: data/core/terrain.cfg:795
 msgid "Rockbound Cave"
 msgstr "Ŝtona kaverno"
 
 #. [terrain_type]: id=mermen_village
 #. [terrain_type]: id=swamp_merfolk-village
-#: data/core/terrain.cfg:1342 data/core/terrain.cfg:1355
+#: data/core/terrain.cfg:1336 data/core/terrain.cfg:1349
 #, fuzzy
 msgid "Aquatic Village"
 msgstr "Vilaĝo"
 
 #. [terrain_type]: id=castle
 #. [terrain_type]: id=castle_overlay
-#: data/core/terrain.cfg:1420 data/core/terrain.cfg:1675
+#: data/core/terrain.cfg:1413 data/core/terrain.cfg:1667
 msgid "Castle"
 msgstr "Kastelo"
 
 #. [terrain_type]: id=sunkenruin
-#: data/core/terrain.cfg:1477
+#: data/core/terrain.cfg:1470
 msgid "Sunken Ruin"
 msgstr "Subakvigita Ruino"
 
 #. [terrain_type]: id=swampruin
-#: data/core/terrain.cfg:1489
+#: data/core/terrain.cfg:1482
 msgid "Swamp Ruin"
 msgstr "Marĉa Ruino"
 
@@ -170,23 +189,23 @@ msgstr "Marĉa Ruino"
 #. [terrain_type]: id=ruined_keep
 #. [terrain_type]: id=desert_keep
 #. [terrain_type]: id=keep_overlay
-#: data/core/terrain.cfg:1518 data/core/terrain.cfg:1531
-#: data/core/terrain.cfg:1544 data/core/terrain.cfg:1557
-#: data/core/terrain.cfg:1570 data/core/terrain.cfg:1583
-#: data/core/terrain.cfg:1596 data/core/terrain.cfg:1609
-#: data/core/terrain.cfg:1622 data/core/terrain.cfg:1661
-#: data/core/terrain.cfg:1687
+#: data/core/terrain.cfg:1510 data/core/terrain.cfg:1523
+#: data/core/terrain.cfg:1536 data/core/terrain.cfg:1549
+#: data/core/terrain.cfg:1562 data/core/terrain.cfg:1575
+#: data/core/terrain.cfg:1588 data/core/terrain.cfg:1601
+#: data/core/terrain.cfg:1614 data/core/terrain.cfg:1653
+#: data/core/terrain.cfg:1679
 msgid "Keep"
 msgstr "Defendejo"
 
 #. [terrain_type]: id=sunken_keep
-#: data/core/terrain.cfg:1635
+#: data/core/terrain.cfg:1627
 #, fuzzy
 msgid "Sunken Keep"
 msgstr "Subakvigita Ruino"
 
 #. [terrain_type]: id=swamp_keep
-#: data/core/terrain.cfg:1648
+#: data/core/terrain.cfg:1640
 #, fuzzy
 msgid "Swamp Keep"
 msgstr "Marĉo"
@@ -198,48 +217,58 @@ msgstr "Marĉo"
 #. [terrain_type]: id=bridgechasm
 #. [terrain_type]: id=bridgechasmdiag1
 #. [terrain_type]: id=bridgechasmdiag2
-#: data/core/terrain.cfg:1706 data/core/terrain.cfg:1718
-#: data/core/terrain.cfg:1730 data/core/terrain.cfg:1744
-#: data/core/terrain.cfg:1756 data/core/terrain.cfg:1768
-#: data/core/terrain.cfg:1782 data/core/terrain.cfg:1792
-#: data/core/terrain.cfg:1804
+#: data/core/terrain.cfg:1697 data/core/terrain.cfg:1709
+#: data/core/terrain.cfg:1721 data/core/terrain.cfg:1735
+#: data/core/terrain.cfg:1747 data/core/terrain.cfg:1759
+#: data/core/terrain.cfg:1773 data/core/terrain.cfg:1783
+#: data/core/terrain.cfg:1795
 msgid "Bridge"
 msgstr "Ponto"
 
 #. [toggle_button]: id=shroud
 #. [terrain_type]: id=shroud
-#: data/core/terrain.cfg:1843 data/gui/default/window/mp_create_game.cfg:471
+#: data/core/terrain.cfg:1832 data/gui/default/window/mp_create_game.cfg:471
 msgid "Shroud"
 msgstr "Vualo"
 
 #. [terrain_type]: id=fog
-#: data/core/terrain.cfg:1852
+#: data/core/terrain.cfg:1841
 msgid "Fog"
 msgstr "Nebulo"
 
+#. [terrain_type]: id=volcano_deprecate
+#: data/core/terrain.cfg:1865
+msgid "Deprecated.  Use 'Mv'"
+msgstr ""
+
+#. [terrain_type]: id=b
+#: data/core/terrain.cfg:1896
+msgid "Test B"
+msgstr ""
+
 #. [terrain_type]: id=flat
-#: data/core/terrain.cfg:1895
+#: data/core/terrain.cfg:1909
 msgid "Flat"
 msgstr ""
 
 #. [terrain_type]: id=frozen
-#: data/core/terrain.cfg:1902
+#: data/core/terrain.cfg:1916
 msgid "Frozen"
 msgstr ""
 
 #. [terrain_type]: id=village
-#: data/core/terrain.cfg:1909
+#: data/core/terrain.cfg:1923
 msgid "Village"
 msgstr "Vilaĝo"
 
 #. [terrain_type]: id=impassable
-#: data/core/terrain.cfg:1916
+#: data/core/terrain.cfg:1930
 #, fuzzy
 msgid "Impassable"
 msgstr "Netrapaseblaj Montoj"
 
 #. [terrain_type]: id=unwalkable
-#: data/core/terrain.cfg:1923
+#: data/core/terrain.cfg:1937
 msgid "Unwalkable"
 msgstr ""
 
@@ -442,7 +471,7 @@ msgstr "Krei Novan Mapon"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_resize_map.cfg:27 src/hotkeys.cpp:163
+#: data/gui/default/window/editor_resize_map.cfg:27 src/hotkeys.cpp:164
 msgid "Resize Map"
 msgstr "Ŝanĝi grandecon de mapo"
 
@@ -503,7 +532,7 @@ msgstr ""
 #. [button]: id=next_tip
 #: data/gui/default/window/editor_settings.cfg:75
 #: data/gui/default/window/editor_settings.cfg:76
-#: data/gui/default/window/title_screen.cfg:180
+#: data/gui/default/window/title_screen.cfg:176
 #, fuzzy
 msgid "Next"
 msgstr "Plua Unuo"
@@ -609,8 +638,8 @@ msgstr ""
 #. [grid]
 #: data/gui/default/window/formula_debugger.cfg:226
 #: data/gui/default/window/lobby_main.cfg:660
-#: data/gui/default/window/title_screen.cfg:235 src/hotkeys.cpp:661
-#: src/hotkeys.cpp:967
+#: data/gui/default/window/title_screen.cfg:231 src/hotkeys.cpp:721
+#: src/hotkeys.cpp:1027
 msgid "Quit"
 msgstr "Finu ludon"
 
@@ -776,7 +805,7 @@ msgstr "Fermi"
 #. [grid]
 #. [label]
 #: data/gui/default/window/language_selection.cfg:31
-#: data/gui/default/window/title_screen.cfg:232
+#: data/gui/default/window/title_screen.cfg:228
 msgid "Language"
 msgstr ""
 
@@ -930,7 +959,7 @@ msgstr "Sablo"
 #. [button]: id=show_preferences
 #. [grid]
 #: data/gui/default/window/lobby_main.cfg:666
-#: data/gui/default/window/title_screen.cfg:233
+#: data/gui/default/window/title_screen.cfg:229
 #: src/game_preferences_display.cpp:55 src/hotkeys.cpp:81
 msgid "Preferences"
 msgstr "Preferoj"
@@ -1224,7 +1253,7 @@ msgstr ""
 #. [label]
 #. [grid]
 #: data/gui/default/window/mp_method_selection.cfg:31
-#: data/gui/default/window/title_screen.cfg:228
+#: data/gui/default/window/title_screen.cfg:224
 #: src/gui/dialogs/data_manage.cpp:206 src/gui/dialogs/game_load.cpp:301
 #, fuzzy
 msgid "Multiplayer"
@@ -1290,117 +1319,117 @@ msgstr "Elekti ĉiiujn"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=help
-#: data/gui/default/window/title_screen.cfg:149 src/hotkeys.cpp:194
+#: data/gui/default/window/title_screen.cfg:145 src/hotkeys.cpp:195
 msgid "Help"
 msgstr "Helpo"
 
 #. [button]: id=help
-#: data/gui/default/window/title_screen.cfg:150
+#: data/gui/default/window/title_screen.cfg:146
 msgid "Show Battle for Wesnoth help"
 msgstr ""
 
 #. [button]: id=previous_tip
-#: data/gui/default/window/title_screen.cfg:165
+#: data/gui/default/window/title_screen.cfg:161
 #, fuzzy
 msgid "Previous"
 msgstr "Antaŭa Unuo"
 
 #. [button]: id=previous_tip
-#: data/gui/default/window/title_screen.cfg:166
+#: data/gui/default/window/title_screen.cfg:162
 msgid "Show previous tip of the day"
 msgstr ""
 
 #. [button]: id=next_tip
-#: data/gui/default/window/title_screen.cfg:181
+#: data/gui/default/window/title_screen.cfg:177
 msgid "Show next tip of the day"
 msgstr ""
 
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:226
+#: data/gui/default/window/title_screen.cfg:222
 msgid "Start a tutorial to familiarize yourself with the game"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:226
+#: data/gui/default/window/title_screen.cfg:222
 #: src/gui/dialogs/data_manage.cpp:208 src/gui/dialogs/game_load.cpp:303
 #, fuzzy
 msgid "Tutorial"
 msgstr "Dialogo de movo"
 
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:227
+#: data/gui/default/window/title_screen.cfg:223
 msgid "Campaign"
 msgstr ""
 
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:227
+#: data/gui/default/window/title_screen.cfg:223
 msgid "Start a new single player campaign"
 msgstr ""
 
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:228
+#: data/gui/default/window/title_screen.cfg:224
 msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
 msgstr ""
 
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:229
+#: data/gui/default/window/title_screen.cfg:225
 #, fuzzy
 msgid "Load"
 msgstr "Vojo"
 
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:229
+#: data/gui/default/window/title_screen.cfg:225
 #, fuzzy
 msgid "Load a saved game"
 msgstr "Krei Novan Mapon"
 
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:230
+#: data/gui/default/window/title_screen.cfg:226
 msgid "Add-ons"
 msgstr ""
 
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:230
+#: data/gui/default/window/title_screen.cfg:226
 msgid "Download usermade campaigns, eras, or map packs"
 msgstr ""
 
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:231
+#: data/gui/default/window/title_screen.cfg:227
 #, fuzzy
-msgid "Editor"
+msgid "Map Editor"
 msgstr "Forlasi la redaktilon"
 
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:231
+#: data/gui/default/window/title_screen.cfg:227
 msgid "Start the map editor"
 msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:232 src/hotkeys.cpp:196
+#: data/gui/default/window/title_screen.cfg:228 src/hotkeys.cpp:197
 msgid "Change the language"
 msgstr "Ŝanghi lingvon"
 
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:233
+#: data/gui/default/window/title_screen.cfg:229
 msgid "Configure the game’s settings"
 msgstr ""
 
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:234
+#: data/gui/default/window/title_screen.cfg:230
 msgid "Credits"
 msgstr ""
 
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:234
+#: data/gui/default/window/title_screen.cfg:230
 msgid "View the credits"
 msgstr ""
 
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:235
+#: data/gui/default/window/title_screen.cfg:231
 #, fuzzy
 msgid "Quit the game"
 msgstr "Fini la ludon"
@@ -1932,11 +1961,11 @@ msgstr ""
 msgid "Rectangle doesn't fit on canvas."
 msgstr ""
 
-#: src/gui/auxiliary/canvas.cpp:1093
+#: src/gui/auxiliary/canvas.cpp:1056
 msgid "Text has a font size of 0."
 msgstr ""
 
-#: src/gui/auxiliary/canvas.cpp:1162
+#: src/gui/auxiliary/canvas.cpp:1125
 msgid "Text doesn't start on canvas."
 msgstr ""
 
@@ -2013,7 +2042,7 @@ msgid "No nodes defined for a tree view."
 msgstr ""
 
 #: src/gui/auxiliary/window_builder/tree_view.cpp:86
-msgid "[node]id 'root' is reserved for the implentation."
+msgid "[node]id 'root' is reserved for the implementation."
 msgstr ""
 
 #: src/gui/auxiliary/window_builder/tree_view.cpp:90
@@ -2107,11 +2136,11 @@ msgstr "Eraro"
 msgid "Load Game..."
 msgstr "Legi ludon"
 
-#: src/gui/dialogs/title_screen.cpp:182
+#: src/gui/dialogs/title_screen.cpp:274
 msgid "Version "
 msgstr ""
 
-#: src/gui/dialogs/title_screen.cpp:185
+#: src/gui/dialogs/title_screen.cpp:277
 msgid "Version"
 msgstr ""
 
@@ -2139,11 +2168,11 @@ msgstr "Neniu servilo estis difinita."
 msgid "Unknown builder id for tree view node."
 msgstr ""
 
-#: src/gui/widgets/window.cpp:808
+#: src/gui/widgets/window.cpp:810
 msgid "Click dismiss needs a 'click_dismiss' or 'ok' button."
 msgstr ""
 
-#: src/gui/widgets/window.cpp:833 src/gui/widgets/window.cpp:866
+#: src/gui/widgets/window.cpp:835 src/gui/widgets/window.cpp:868
 #: src/tests/gui/test_gui2.cpp:230
 msgid "Failed to show a dialog, which doesn't fit on the screen."
 msgstr ""
@@ -2196,7 +2225,7 @@ msgstr "Defaŭlta zomo"
 msgid "Toggle Full Screen"
 msgstr "Tuta ekrano"
 
-#: src/hotkeys.cpp:60 src/hotkeys.cpp:922
+#: src/hotkeys.cpp:60 src/hotkeys.cpp:982
 msgid "Screenshot"
 msgstr "Ekrankopio"
 
@@ -2386,237 +2415,277 @@ msgid "Save Map As"
 msgstr "Konservi mapon"
 
 #: src/hotkeys.cpp:122
+#, fuzzy
+msgid "Save All Maps"
+msgstr "Konservi mapon"
+
+#: src/hotkeys.cpp:123
 msgid "Revert All Changes"
 msgstr ""
 
-#: src/hotkeys.cpp:123
+#: src/hotkeys.cpp:124
 #, fuzzy
 msgid "Map Information"
 msgstr "Generatoro de mapoj"
 
-#: src/hotkeys.cpp:125
+#: src/hotkeys.cpp:126
 msgid "Swap fore- and background terrains"
 msgstr ""
 
-#: src/hotkeys.cpp:126
+#: src/hotkeys.cpp:127
 #, fuzzy
 msgid "Next Tool"
 msgstr "Plua movo"
 
-#: src/hotkeys.cpp:127
+#: src/hotkeys.cpp:128
 msgid "Paint Tool"
 msgstr ""
 
-#: src/hotkeys.cpp:128
+#: src/hotkeys.cpp:129
 msgid "Fill Tool"
 msgstr ""
 
-#: src/hotkeys.cpp:129
+#: src/hotkeys.cpp:130
 #, fuzzy
 msgid "Selection Tool"
 msgstr "Elekti ĉiiujn"
 
-#: src/hotkeys.cpp:131
+#: src/hotkeys.cpp:132
 msgid "Set Starting Positions Tool"
 msgstr ""
 
-#: src/hotkeys.cpp:132
+#: src/hotkeys.cpp:133
 #, fuzzy
 msgid "Next Brush"
 msgstr "Plua movo"
 
-#: src/hotkeys.cpp:133
+#: src/hotkeys.cpp:134
 #, fuzzy
 msgid "Default Brush"
 msgstr "Defaŭlta zomo"
 
-#: src/hotkeys.cpp:134
+#: src/hotkeys.cpp:135
 msgid "Cut"
 msgstr "Eltondi"
 
-#: src/hotkeys.cpp:135
+#: src/hotkeys.cpp:136
 msgid "Copy"
 msgstr "Kopii"
 
-#: src/hotkeys.cpp:136
+#: src/hotkeys.cpp:137
 msgid "Paste"
 msgstr "Enmeti"
 
-#: src/hotkeys.cpp:137
+#: src/hotkeys.cpp:138
 msgid "Export selected coordinates to system clipboard"
 msgstr ""
 
-#: src/hotkeys.cpp:139
+#: src/hotkeys.cpp:140
 msgid "Select All"
 msgstr "Elekti ĉiiujn"
 
-#: src/hotkeys.cpp:141
+#: src/hotkeys.cpp:142
 msgid "Select Inverse"
 msgstr ""
 
-#: src/hotkeys.cpp:143
+#: src/hotkeys.cpp:144
 #, fuzzy
 msgid "Select None"
 msgstr "Elekti ĉiiujn"
 
-#: src/hotkeys.cpp:145
+#: src/hotkeys.cpp:146
 msgid "Rotate Clipboard Clockwise"
 msgstr ""
 
-#: src/hotkeys.cpp:147
+#: src/hotkeys.cpp:148
 msgid "Rotate Clipboard Counter-Clockwise"
 msgstr ""
 
-#: src/hotkeys.cpp:149
+#: src/hotkeys.cpp:150
 msgid "Flip Clipboard Horizontally"
 msgstr ""
 
-#: src/hotkeys.cpp:151
+#: src/hotkeys.cpp:152
 msgid "Flip Clipboard Vertically"
 msgstr ""
 
-#: src/hotkeys.cpp:153
+#: src/hotkeys.cpp:154
 msgid "Rotate Selection"
 msgstr "Turni markitan"
 
-#: src/hotkeys.cpp:155
+#: src/hotkeys.cpp:156
 #, fuzzy
 msgid "Flip Selection"
 msgstr "Plenigi markitan"
 
-#: src/hotkeys.cpp:157
+#: src/hotkeys.cpp:158
 msgid "Fill Selection"
 msgstr "Plenigi markitan"
 
-#: src/hotkeys.cpp:159
+#: src/hotkeys.cpp:160
 #, fuzzy
 msgid "Generate Tiles In Selection"
 msgstr "Turni markitan"
 
-#: src/hotkeys.cpp:161
+#: src/hotkeys.cpp:162
 msgid "Randomize Tiles In Selection"
 msgstr ""
 
-#: src/hotkeys.cpp:165
+#: src/hotkeys.cpp:166
 #, fuzzy
 msgid "Rotate Map"
 msgstr "Legi mapon"
 
-#: src/hotkeys.cpp:167
+#: src/hotkeys.cpp:168
 #, fuzzy
 msgid "Generate Map"
 msgstr "Generi Novan Mapon"
 
-#: src/hotkeys.cpp:169
+#: src/hotkeys.cpp:170
 msgid "Apply a Mask"
 msgstr ""
 
-#: src/hotkeys.cpp:171
+#: src/hotkeys.cpp:172
 #, fuzzy
 msgid "Create Mask"
 msgstr "Konservi la ludon"
 
-#: src/hotkeys.cpp:173
+#: src/hotkeys.cpp:174
 #, fuzzy
 msgid "Refresh Display"
 msgstr "Ekrano"
 
-#: src/hotkeys.cpp:175
+#: src/hotkeys.cpp:176
 #, fuzzy
 msgid "Update Terrain Transitions"
 msgstr "Ĝisdatigi trapasojn"
 
-#: src/hotkeys.cpp:177
+#: src/hotkeys.cpp:178
 #, fuzzy
 msgid "Auto-update Terrain Transitions"
 msgstr "Ĝisdatigi trapasojn"
 
-#: src/hotkeys.cpp:179
+#: src/hotkeys.cpp:180
 msgid "Refresh Image Cache"
 msgstr "Refreŝigi Memorkaŝon de Bildoj"
 
-#: src/hotkeys.cpp:181
+#: src/hotkeys.cpp:182
 msgid "Draw Hex Coordinates"
 msgstr ""
 
-#: src/hotkeys.cpp:183
+#: src/hotkeys.cpp:184
 #, fuzzy
 msgid "Draw Terrain Codes"
 msgstr "Bildigi terenon"
 
-#: src/hotkeys.cpp:188
+#: src/hotkeys.cpp:189
 msgid "Delay Shroud Updates"
 msgstr "Haltigi Aktualigon de Vualo"
 
-#: src/hotkeys.cpp:189
+#: src/hotkeys.cpp:190
 msgid "Update Shroud Now"
 msgstr "Aktualigi Vualon Nun"
 
-#: src/hotkeys.cpp:190
+#: src/hotkeys.cpp:191
 msgid "Continue Move"
 msgstr "Daŭri movon"
 
-#: src/hotkeys.cpp:191
+#: src/hotkeys.cpp:192
 msgid "Find Label or Unit"
 msgstr "Trovi markon aŭ batalunuon "
 
-#: src/hotkeys.cpp:192
+#: src/hotkeys.cpp:193
 msgid "Speak to Ally"
 msgstr "Diri al la aliancano"
 
-#: src/hotkeys.cpp:193
+#: src/hotkeys.cpp:194
 msgid "Speak to All"
 msgstr "Diri al ĉiuj"
 
-#: src/hotkeys.cpp:195
+#: src/hotkeys.cpp:196
 msgid "View Chat Log"
 msgstr "Montri babil-protokolo"
 
-#: src/hotkeys.cpp:198
+#: src/hotkeys.cpp:199
 msgid "Enter user command"
 msgstr "Enmeti uzantordono"
 
-#: src/hotkeys.cpp:199
+#: src/hotkeys.cpp:200
 #, fuzzy
 msgid "Custom command"
 msgstr "Enmeti uzantordono"
 
-#: src/hotkeys.cpp:200
+#: src/hotkeys.cpp:201
 msgid "Run AI formula"
 msgstr ""
 
-#: src/hotkeys.cpp:201
+#: src/hotkeys.cpp:202
 msgid "Clear messages"
 msgstr "Forigi mesaĝojn"
 
-#: src/hotkeys.cpp:203
+#: src/hotkeys.cpp:204
 msgid "User-Command#2"
 msgstr "Uzant-Komando#2"
 
-#: src/hotkeys.cpp:204
+#: src/hotkeys.cpp:205
 msgid "User-Command#3"
 msgstr "Uzant-Komando#3"
 
-#: src/hotkeys.cpp:209
+#: src/hotkeys.cpp:210
 #, fuzzy
 msgid "Refresh WML"
 msgstr "Ekrano"
 
-#: src/hotkeys.cpp:661 src/hotkeys.cpp:967
+#: src/hotkeys.cpp:217
+msgid "Next tip of the day"
+msgstr ""
+
+#: src/hotkeys.cpp:224
+#, fuzzy
+msgid "Previous tip of the day"
+msgstr "Antaŭa Unuo"
+
+#: src/hotkeys.cpp:231
+#, fuzzy
+msgid "Start tutorial"
+msgstr "Dialogo de movo"
+
+#: src/hotkeys.cpp:238
+msgid "Start a campaign"
+msgstr ""
+
+#: src/hotkeys.cpp:245
+msgid "Start a multiplayer game"
+msgstr ""
+
+#: src/hotkeys.cpp:252
+#, fuzzy
+msgid "Manage addons"
+msgstr "Ĝisdatigi trapasojn"
+
+#: src/hotkeys.cpp:260
+msgid "Start the editor"
+msgstr ""
+
+#: src/hotkeys.cpp:268
+msgid "Show the credits"
+msgstr ""
+
+#: src/hotkeys.cpp:721 src/hotkeys.cpp:1027
 msgid "Do you really want to quit?"
 msgstr "Ĉu vi vere volas fini ludon?"
 
-#: src/hotkeys.cpp:922
+#: src/hotkeys.cpp:982
 #, fuzzy
 msgid "Map-Screenshot"
 msgstr "Ekrankopio"
 
-#: src/hotkeys.cpp:929
+#: src/hotkeys.cpp:989
 #, fuzzy
 msgid "Screenshot done"
 msgstr "Ekrankopio"
 
-#: src/hotkeys.cpp:931
+#: src/hotkeys.cpp:991
 #, fuzzy
 msgid "Screenshot failed"
 msgstr "Ekrankopio"

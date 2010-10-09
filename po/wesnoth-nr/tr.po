@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-nr\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-09-13 11:01+0200\n"
+"POT-Creation-Date: 2010-10-03 21:59+0200\n"
 "PO-Revision-Date: 2009-02-23 19:44+0200\n"
 "Last-Translator: Nilgün Belma Bugüner <nilgun@belgeler.gen.tr>\n"
 "Language-Team: Turkish <wesnoth-tr@googlegroups.com>\n"
@@ -275,11 +275,13 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:48
+#, fuzzy
 msgid ""
 "As quickly as it had begun, it was over. Konrad reached the entrance to the "
 "tunnels and ushered his men through. Then he turned one last time to face "
 "the peasants. Raising his sword in salute and farewell, he called out to "
-"them: “Hold fast your hope, for one day you shall be free!” Then he was gone."
+"them: <i>“Hold fast your hope, for one day you shall be free!”</i> Then he "
+"was gone."
 msgstr ""
 "Döğüş başladığı kadar çabuk bitmişti. Konrad tünellerin girişine ulaştı ve "
 "adamları onu takip etti. Tünellere girmeden önce köylülere döndü, kılıcını "
@@ -1763,16 +1765,16 @@ msgstr ""
 msgid "WHO GOES THERE?"
 msgstr "KİM VAR ORADA?"
 
-#. [message]: role=Supporter
+#. [message]: speaker=Hamel
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:381
+#, fuzzy
+msgid "(<i>Wince</i>)."
+msgstr "Cevap yok"
+
+#. [message]: role=Supporter
+#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:385
 msgid "Oops, I spoke too soon."
 msgstr "Aman. Çok erken konuştum."
-
-#. [message]: speaker=Hamel
-#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:385
-#, fuzzy
-msgid "(<i>Wince</i>) You can turn the volume down, pal."
-msgstr "(ürkerek) Sesi biraz kıs, dostum."
 
 #. [message]: speaker=Camerin
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:389
@@ -5541,12 +5543,13 @@ msgstr "(omuz silkerek) Başka seçeneğimiz olduğunu sanmıyorum."
 
 #. [message]: id=Camerin
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:777
+#, fuzzy
 msgid ""
 "Come on, guys, it will be great! Those orcs will never know what hit them! "
 "Together we’ll rip them to shreds! If you are planning to retire after this, "
 "this is the perfect chance for you guys to go out with a bang! You guys will "
-"become legends! “The two terrible mages, risen from the dead to devastate "
-"the orcish hordes!”"
+"become legends! <i>“The two terrible mages, risen from the dead to devastate "
+"the orcish hordes!”</i>"
 msgstr ""
 "Gelin arkadaşlar, bu harika olacak! Bu orklar neye uğradıklarını "
 "şaşıracaklar! Birlikte hepsini kuşbaşı kuşbaşı doğrayalım! Bundan sonra "
@@ -7287,11 +7290,12 @@ msgstr ""
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:202
+#, fuzzy
 msgid ""
-"Princess, we are not seeking to do business here: “I do this for you and you "
-"do this for me.” No, we seek to build everlasting friendships which will "
-"forever ensure the peace and prosperity of these northlands. Therefore, let "
-"there be no talk of debts and repayments between us."
+"Princess, we are not seeking to do business here: <i>“I do this for you and "
+"you do this for me.”</i> No, we seek to build everlasting friendships which "
+"will forever ensure the peace and prosperity of these northlands. Therefore, "
+"let there be no talk of debts and repayments between us."
 msgstr ""
 "Prenses biz burada iş ortağı aramıyoruz;‘Sen şunu yaparsam ben de bunu "
 "yaparım.’ gibi bir müttefiklik arayışı değil bizimkisi. Tüm kuzeyin sonsuza "
@@ -7554,9 +7558,9 @@ msgstr ""
 msgid ""
 "Tallin raised his eyes to look into Abhai’s and Abhai met his gaze — "
 "confidence meeting uncertainty, faith meeting doubt, assurance meeting "
-"apprehension. “I have faith in you, my boy,” Abhai said, “Take this, and put "
-"your doubts at rest.” Tallin held the gaze for one more long moment — and "
-"then took the Rod of Justice in a white-knuckled grip."
+"apprehension. <i>“I have faith in you, my boy,”</i> Abhai said, <i>“Take "
+"this, and put your doubts at rest.”</i> Tallin held the gaze for one more "
+"long moment — and then took the Rod of Justice in a white-knuckled grip."
 msgstr ""
 "Talin Abhay’a bakmak için gözlerini kaldırdı ve bir an için göz göze "
 "geldiler. Abhay ‘Sana güveniyorum, oğlum.’ dedi ve ekledi ‘Al bunu ve "
@@ -10887,6 +10891,10 @@ msgstr "Tam bir deliydi, ne yazık ki onu kaybettik."
 #, fuzzy
 msgid "Arthian"
 msgstr "Vahıkalmış"
+
+#, fuzzy
+#~ msgid "(<i>Wince</i>) You can turn the volume down, pal."
+#~ msgstr "(ürkerek) Sesi biraz kıs, dostum."
 
 #~ msgid " *STAB*"
 #~ msgstr " *KÜT*"

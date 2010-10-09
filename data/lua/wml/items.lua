@@ -51,7 +51,7 @@ function wml_actions.item(cfg)
 	wml_actions.redraw {}
 end
 
-function wml_actions.removeitem(cfg)
+function wml_actions.remove_item(cfg)
 	local x, y = tonumber(cfg.x), tonumber(cfg.y)
 	if not x or not y then
 		local context = wesnoth.current.event_context
@@ -75,3 +75,7 @@ function wml_actions.removeitem(cfg)
 		scenario_items[x * 10000 + y] = nil
 	end
 end
+
+-- [removeitem] is deprecated, so print a WML error and call [remove_item]
+-- Remove after 1.9.3
+wml_actions.removeitem = helper.deprecate("Usage of [removeitem] is deprecated; support will be removed in 1.9.3. Use [remove_item] instead.", wml_actions.remove_item)

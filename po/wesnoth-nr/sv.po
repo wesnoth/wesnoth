@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-09-13 11:01+0200\n"
+"POT-Creation-Date: 2010-10-03 21:59+0200\n"
 "PO-Revision-Date: 2008-04-03 10:29+0100\n"
 "Last-Translator: Gustav Tiger <admin@tigge.org>\n"
 "Language-Team: Swedish\n"
@@ -278,11 +278,13 @@ msgstr ""
 
 #. [part]
 #: data/campaigns/Northern_Rebirth/scenarios/01_Breaking_the_Chains.cfg:48
+#, fuzzy
 msgid ""
 "As quickly as it had begun, it was over. Konrad reached the entrance to the "
 "tunnels and ushered his men through. Then he turned one last time to face "
 "the peasants. Raising his sword in salute and farewell, he called out to "
-"them: “Hold fast your hope, for one day you shall be free!” Then he was gone."
+"them: <i>“Hold fast your hope, for one day you shall be free!”</i> Then he "
+"was gone."
 msgstr ""
 "Lika fort som det hade börjat, var det över. Konrad nådde ingången till "
 "tunnlarna och ledde in sina män. Sen vände han sig mot bönderna en sista "
@@ -1786,16 +1788,16 @@ msgstr ""
 msgid "WHO GOES THERE?"
 msgstr "VEM DÄR?"
 
-#. [message]: role=Supporter
+#. [message]: speaker=Hamel
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:381
+#, fuzzy
+msgid "(<i>Wince</i>)."
+msgstr "Inget svar"
+
+#. [message]: role=Supporter
+#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:385
 msgid "Oops, I spoke too soon."
 msgstr "Hoppsan, det var visst lite väl tidigt sagt."
-
-#. [message]: speaker=Hamel
-#: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:385
-#, fuzzy
-msgid "(<i>Wince</i>) You can turn the volume down, pal."
-msgstr " *ryck* Dämpa dig lite, polarn."
 
 #. [message]: speaker=Camerin
 #: data/campaigns/Northern_Rebirth/scenarios/04_Clearing_the_Mines.cfg:389
@@ -5668,12 +5670,13 @@ msgstr " *rycker på axlarna* Jag antar att vi inte har något val."
 
 #. [message]: id=Camerin
 #: data/campaigns/Northern_Rebirth/scenarios/07a_Settling_Disputes.cfg:777
+#, fuzzy
 msgid ""
 "Come on, guys, it will be great! Those orcs will never know what hit them! "
 "Together we’ll rip them to shreds! If you are planning to retire after this, "
 "this is the perfect chance for you guys to go out with a bang! You guys will "
-"become legends! “The two terrible mages, risen from the dead to devastate "
-"the orcish hordes!”"
+"become legends! <i>“The two terrible mages, risen from the dead to devastate "
+"the orcish hordes!”</i>"
 msgstr ""
 "Kom igen, killar, det kommer att bli kul! De där orcherna kommer aldrig att "
 "begripa vad som hände! Tillsammans kommer vi att slita dem i bitar! Om ni "
@@ -7474,11 +7477,12 @@ msgstr ""
 
 #. [message]: speaker=Tallin
 #: data/campaigns/Northern_Rebirth/scenarios/09a_Introductions.cfg:202
+#, fuzzy
 msgid ""
-"Princess, we are not seeking to do business here: “I do this for you and you "
-"do this for me.” No, we seek to build everlasting friendships which will "
-"forever ensure the peace and prosperity of these northlands. Therefore, let "
-"there be no talk of debts and repayments between us."
+"Princess, we are not seeking to do business here: <i>“I do this for you and "
+"you do this for me.”</i> No, we seek to build everlasting friendships which "
+"will forever ensure the peace and prosperity of these northlands. Therefore, "
+"let there be no talk of debts and repayments between us."
 msgstr ""
 "Prinsessan, vi försöker inte göra affärer här: 'Jag gör det här för dig och "
 "du det här för mig'. Nej vi försöker att bygga ett bestående vänskapsband "
@@ -7748,9 +7752,9 @@ msgstr ""
 msgid ""
 "Tallin raised his eyes to look into Abhai’s and Abhai met his gaze — "
 "confidence meeting uncertainty, faith meeting doubt, assurance meeting "
-"apprehension. “I have faith in you, my boy,” Abhai said, “Take this, and put "
-"your doubts at rest.” Tallin held the gaze for one more long moment — and "
-"then took the Rod of Justice in a white-knuckled grip."
+"apprehension. <i>“I have faith in you, my boy,”</i> Abhai said, <i>“Take "
+"this, and put your doubts at rest.”</i> Tallin held the gaze for one more "
+"long moment — and then took the Rod of Justice in a white-knuckled grip."
 msgstr ""
 "Tallin tittade på Abhai, och deras blickar möttes - självförtroende mötte "
 "osäkerhet, tro mötte osäkerhet, förvissning mötte förståelse."
@@ -11151,6 +11155,10 @@ msgstr "Han var totalt galen, men jag kommer verkligen att sakna honom."
 #, fuzzy
 msgid "Arthian"
 msgstr "Ro’Arthian"
+
+#, fuzzy
+#~ msgid "(<i>Wince</i>) You can turn the volume down, pal."
+#~ msgstr " *ryck* Dämpa dig lite, polarn."
 
 #~ msgid " *STAB*"
 #~ msgstr " *HUGG*"

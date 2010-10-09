@@ -6,25 +6,28 @@ Version 1.9.1+svn:
      * Map updates.
      * Implemented gold carryover between the multiplayer chapters.
      * Added extra keeps to keep up with the growing number of leaders.
+     * Fixed scenario 04 not being playable.
    * Liberty:
      * New (unanimated) sprites for the Rogue Mage unit line.
  * Graphics:
    * Terrain:
      * Any Castle or Keep except Dwarvish can now be combined without large gaps
        or extra walls.
-     * Added variant of chasm bridge for over water
-     * New transitions from all Hills and Mountains to Water
-     * Underground and chasm friendly volcanoes
-     * A new desaturated color of shallow water (Wwg)
-     * Much improved lava transitions
-     * A new desaturated ocean color (Wog)
-     * New Waterfall automatically placed between chasm and water or swamp
-   * Animations: new standing animation for Fencer, idle animations for Spearman.
+     * Added variant of chasm bridge for over water.
+     * New transitions from all Hills and Mountains to Water.
+     * Underground and chasm friendly volcanoes.
+     * A new desaturated color of shallow water (Wwg).
+     * Much improved lava transitions.
+     * A new desaturated ocean color (Wog).
+     * New Waterfall automatically placed between chasm and water or swamp.
+   * Animations: new standing animation for Fencer, idle animations for
+     Spearman.
    * Portraits: Drake Blademaster, Hurricane Drake, Drake Flameheart.
    * Units: New base frame and animations for Mudcrawler.
  * Language and i18n:
-   * Updated translations: Chinese (Traditional), Czech, Dutch, Indonesian,
-     Japanese, Portuguese (Brazil), Russian, Shavian, Slovak, Vietnamese
+   * Updated translations: Chinese (Traditional), Czech, Dutch, Galician,
+     Indonesian, Japanese, Portuguese (Brazil), Russian, Shavian, Slovak,
+     Slovenian, Vietnamese
  * User interface:
    * Fixed: Addon dialog in title screen shows last host again.
    * Fixed: Fullscreen hotkey works again in the title screen.
@@ -41,17 +44,24 @@ Version 1.9.1+svn:
    * Fixed: Changing the language updates map and logo in title screen
      (bug #16631).
    * Fixed: No longer cut off large title screen logos (bug #16632).
+   * Refresh cache (F5) works in editor.
+   * Add a "Save All Maps" menu item and hotkey in editor.
  * WML Engine:
-   * id= in SUFs now accepts a comma-separated list
-   * [capture_village] now accepts a full SLF
-   * events can be fired depending on a [condition]
+   * id= in SUFs now accepts a comma-separated list.
+   * [capture_village] now accepts a full SLF.
+   * events can be fired depending on a condition using [filter_condition].
    * Added support for SLF to [terrain]. Note that the SLF's terrain= key is
      not valid; terrain= specifies the new terrain instead like it used to do.
      Filtering for terrain can be done with the [terrain][and]terrain=
      workaround.
+   * Renamed [removeitem] to [remove_item].
+   * added new parameters directional_x and directional_y to animations
+   * Made it so that units affected by [hide_unit] don't appear on the minimap (FR #16796)
  * Miscellaneous and bugfixes:
    * Changed: Lowered severity of some gui2 timer log messages.
-   * Units created in debug mode now play their recruit animation (FR #16766)
+   * Units created in debug mode now play their recruit animation (FR #16766).
+   * Fixed: properly update cmake revision numbers (bug #16483)
+   * Fixed: hotkeys dialog in editor is big enough to display them correctly.
 
 Version 1.9.1:
  * AI:

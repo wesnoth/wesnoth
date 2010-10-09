@@ -62,7 +62,7 @@ twidget* tbuilder_tree_view::build() const
 	widget->set_indention_step_size(indention_step_size);
 
 	DBG_GUI_G << "Window builder: placed tree_view '"
-		<< id << "' with defintion '"
+		<< id << "' with definition '"
 		<< definition << "'.\n";
 
 	boost::intrusive_ptr<const ttree_view_definition::tresolution> conf =
@@ -83,7 +83,7 @@ tbuilder_tree_view::tnode::tnode(const config& cfg)
 	VALIDATE(!id.empty(), missing_mandatory_wml_key("node", "id"));
 
 	VALIDATE(id != "root"
-			, _("[node]id 'root' is reserved for the implentation."));
+			, _("[node]id 'root' is reserved for the implementation."));
 
 	const config& node_definition = cfg.child("node_definition");
 

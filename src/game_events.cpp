@@ -727,13 +727,6 @@ WML_HANDLER_FUNCTION(colour_adjust, /*event_info*/, cfg)
 	color_adjust(cfg);
 }
 
-
-WML_HANDLER_FUNCTION(delay, /*event_info*/, cfg)
-{
-	game_display &screen = *resources::screen;
-	screen.delay(cfg["time"]);
-}
-
 WML_HANDLER_FUNCTION(scroll, /*event_info*/, cfg)
 {
 	game_display &screen = *resources::screen;
@@ -2848,7 +2841,7 @@ static bool process_event(game_events::event_handler& handler, const game_events
 	vconfig filters(handler.get_config());
 
 
-	foreach (const vconfig &condition, filters.get_children("condition"))
+	foreach (const vconfig &condition, filters.get_children("filter_condition"))
 	{
 		if (!game_events::conditional_passed(condition)) {
 			return false;

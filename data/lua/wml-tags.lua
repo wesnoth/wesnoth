@@ -20,6 +20,7 @@ wesnoth.require "lua/wml/objectives.lua"
 wesnoth.require "lua/wml/items.lua"
 
 local helper = wesnoth.require "lua/helper.lua"
+local location_set = wesnoth.require "lua/location_set.lua"
 local wml_actions = wesnoth.wml_actions
 
 local function trim(s)
@@ -213,7 +214,7 @@ local function handle_event_commands(cfg)
 	for i = 1, #cfg do
 		local v = cfg[i]
 		local cmd = v[1]
-		if not string.find(cmd, "^filter") and cmd ~= "condition" then
+		if not string.find(cmd, "^filter") then
 			cmd = wml_actions[cmd] or
 				helper.wml_error(string.format("[%s] not supported", cmd))
 			cmd(v[2])
@@ -369,21 +370,25 @@ function wml_actions.store_reachable_locations(cfg)
 	local range = cfg.range or "movement"
 	local variable = cfg.variable or helper.wml_error "[store_reachable_locations] missing required variable= key"
 
-	wesnoth.set_variable(variable)
+	local res = location_set.create()
 
 	for i,unit in ipairs(wesnoth.get_units(unit_filter)) do
 		local reach = wesnoth.find_reach(unit)
 
 		for j,loc in ipairs(reach) do
 			if wesnoth.match_location(loc[1], loc[2], location_filter) then
-				wesnoth.fire("store_locations", { variable=variable, x=loc[1], y=loc[2], { "or", { find_in=variable } } })
+				res:insert(loc[1], loc[2])
+			end
+
+			if range == "attack" then
+				res:of_pairs(wesnoth.get_locations
+					{ { "filter_adjacent_location", { x=loc[1], y=loc[2] } },
+					  { "and", location_filter } })
 			end
 		end
 	end
 
-	if range == "attack" then
-		-- doesn't work yet
-	end
+	res:to_wml_var(variable)
 end
 
 function wml_actions.hide_unit(cfg)
@@ -538,4 +543,10 @@ function wml_actions.terrain(cfg)
 	for i, loc in ipairs(wesnoth.get_locations(cfg)) do
 		wesnoth.set_terrain(loc[1], loc[2], terrain, cfg.layer, cfg.replace_if_failed)
 	end
+end
+
+function wml_actions.delay(cfg)
+	local delay = tonumber(cfg.time) or
+		helper.wml_error "[delay] missing required time= attribute."
+	wesnoth.delay(delay)
 end

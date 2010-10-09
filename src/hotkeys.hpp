@@ -104,10 +104,6 @@ enum HOTKEY_COMMAND {
 	HOTKEY_CUSTOM_CMD,
 	HOTKEY_AI_FORMULA,
 	HOTKEY_CLEAR_MSG,
-#ifdef USRCMD2
-	HOTKEY_USER_CMD_2,
-	HOTKEY_USER_CMD_3,
-#endif
 	/* Gui2 specific hotkeys. */
 	TITLE_SCREEN__RELOAD_WML,
 	TITLE_SCREEN__NEXT_TIP,
@@ -303,10 +299,6 @@ public:
 	virtual void custom_command() {}
 	virtual void ai_formula() {}
 	virtual void clear_messages() {}
-#ifdef USRCMD2
-	virtual void user_command_2() {}
-	virtual void user_command_3() {}
-#endif
 	virtual void change_language() {}
 	virtual void play_replay() {}
 	virtual void reset_replay() {}

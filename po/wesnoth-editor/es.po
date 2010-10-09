@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: es\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-09-13 11:01+0200\n"
+"POT-Creation-Date: 2010-10-03 21:59+0200\n"
 "PO-Revision-Date: 2009-12-15 18:27+0100\n"
 "Last-Translator: Diego J. <diegojromerolopez@gmail.com>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -186,23 +186,23 @@ msgstr "Ventana"
 msgid "villages"
 msgstr "aldeas"
 
-#: src/editor/editor_controller.cpp:123
+#: src/editor/editor_controller.cpp:124
 msgid "Quit Editor"
 msgstr "Salir del editor"
 
-#: src/editor/editor_controller.cpp:278
+#: src/editor/editor_controller.cpp:279
 msgid "Fatal error"
 msgstr "Error grave"
 
-#: src/editor/editor_controller.cpp:303 src/editor/editor_controller.cpp:1064
+#: src/editor/editor_controller.cpp:304 src/editor/editor_controller.cpp:1109
 msgid "(New Map)"
 msgstr "(Nuevo mapa)"
 
-#: src/editor/editor_controller.cpp:309
+#: src/editor/editor_controller.cpp:310
 msgid "Do you really want to quit?"
 msgstr "¿Realmente desea salir?"
 
-#: src/editor/editor_controller.cpp:311
+#: src/editor/editor_controller.cpp:312
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
@@ -210,7 +210,7 @@ msgstr ""
 "¿Realmente desea salir? Se perderán los cambios en el mapa desde la última "
 "vez que lo guardó."
 
-#: src/editor/editor_controller.cpp:313
+#: src/editor/editor_controller.cpp:314
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -218,78 +218,78 @@ msgstr ""
 "¿Realmente desea salir? Se perderán los cambios en los siguientes mapas "
 "desde la última vez que los guardó:"
 
-#: src/editor/editor_controller.cpp:318
+#: src/editor/editor_controller.cpp:319
 msgid "Quit"
 msgstr "Salir"
 
-#: src/editor/editor_controller.cpp:375
+#: src/editor/editor_controller.cpp:384
 msgid "No editor time-of-day found."
 msgstr "No se encontró una hora del día para el editor."
 
-#: src/editor/editor_controller.cpp:411
+#: src/editor/editor_controller.cpp:420
 msgid "Unsaved Changes"
 msgstr "Cambios sin guardar"
 
-#: src/editor/editor_controller.cpp:412
+#: src/editor/editor_controller.cpp:421
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
 msgstr ""
 "¿Desea abandonar todos los cambios efectuados en el mapa desde que lo guardó "
 "por última vez?"
 
-#: src/editor/editor_controller.cpp:430
+#: src/editor/editor_controller.cpp:439
 msgid "Choose a Map to Open"
 msgstr "Escoja un mapa a cargar"
 
-#: src/editor/editor_controller.cpp:465
+#: src/editor/editor_controller.cpp:474
 msgid "Save the Map As"
 msgstr "Guardar el mapa como"
 
-#: src/editor/editor_controller.cpp:469
+#: src/editor/editor_controller.cpp:478
 msgid "The file already exists. Do you want to overwrite it?"
 msgstr "El mapa ya existe. ¿Desea sobreescribirlo?"
 
-#: src/editor/editor_controller.cpp:486
+#: src/editor/editor_controller.cpp:495
 msgid "No random map generators found."
 msgstr "No se encontraron generadores de mapa aleatorio"
 
-#: src/editor/editor_controller.cpp:499 src/editor/editor_controller.cpp:503
+#: src/editor/editor_controller.cpp:508 src/editor/editor_controller.cpp:512
 msgid "Map creation failed."
 msgstr "Falló la creación del mapa."
 
-#: src/editor/editor_controller.cpp:518
+#: src/editor/editor_controller.cpp:527
 msgid "Choose a mask to apply"
 msgstr "Escoja una máscara a aplicar"
 
-#: src/editor/editor_controller.cpp:525
+#: src/editor/editor_controller.cpp:534
 msgid "Error loading mask"
 msgstr "Error al cargar la máscara"
 
-#: src/editor/editor_controller.cpp:540
+#: src/editor/editor_controller.cpp:549
 msgid "Choose target map"
 msgstr "Escoja mapa de destino"
 
-#: src/editor/editor_controller.cpp:547 src/editor/editor_controller.cpp:711
+#: src/editor/editor_controller.cpp:556 src/editor/editor_controller.cpp:751
 msgid "Error loading map"
 msgstr "Error al cargar el mapa"
 
-#: src/editor/editor_controller.cpp:625 src/editor/editor_controller.cpp:667
+#: src/editor/editor_controller.cpp:665 src/editor/editor_controller.cpp:707
 msgid "This map is already open."
 msgstr "Este mapa ya se encuentra abierto."
 
-#: src/editor/editor_controller.cpp:646
+#: src/editor/editor_controller.cpp:686
 msgid "Map saved."
 msgstr "Mapa guardado."
 
-#: src/editor/editor_controller.cpp:690
+#: src/editor/editor_controller.cpp:730
 msgid "Loaded embedded map data"
 msgstr "Cargar datos incrustados de mapa"
 
-#: src/editor/editor_controller.cpp:691 src/editor/editor_controller.cpp:705
+#: src/editor/editor_controller.cpp:731 src/editor/editor_controller.cpp:745
 msgid "Map loaded from scenario"
 msgstr "Mapa cargado desde escenario"
 
-#: src/editor/editor_controller.cpp:701
+#: src/editor/editor_controller.cpp:741
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
@@ -297,31 +297,31 @@ msgstr ""
 "Archivo de mapa referenciado cargado:\n"
 "$new"
 
-#: src/editor/editor_controller.cpp:1094
+#: src/editor/editor_controller.cpp:1139
 msgid "Undo"
 msgstr "Deshacer"
 
-#: src/editor/editor_controller.cpp:1096
+#: src/editor/editor_controller.cpp:1141
 msgid "Can’t Undo"
 msgstr "No se puede deshacer"
 
-#: src/editor/editor_controller.cpp:1100
+#: src/editor/editor_controller.cpp:1145
 msgid "Redo"
 msgstr "Rehacer"
 
-#: src/editor/editor_controller.cpp:1102
+#: src/editor/editor_controller.cpp:1147
 msgid "Can’t Redo"
 msgstr "No se puede rehacer"
 
-#: src/editor/editor_controller.cpp:1107
+#: src/editor/editor_controller.cpp:1152
 msgid "Auto-update Terrain Transitions: Yes"
 msgstr "Actualizar automáticamente transiciones de terreno: sí"
 
-#: src/editor/editor_controller.cpp:1110
+#: src/editor/editor_controller.cpp:1155
 msgid "Auto-update Terrain Transitions: Partial"
 msgstr "Actualizar automáticamente transiciones de terreno: parcial"
 
-#: src/editor/editor_controller.cpp:1114
+#: src/editor/editor_controller.cpp:1159
 msgid "Auto-update Terrain Transitions: No"
 msgstr "Actualizar automáticamente transiciones de terreno: no"
 

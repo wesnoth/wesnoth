@@ -2725,6 +2725,20 @@ static int intf_remove_tile_overlay(lua_State *L)
 	return 0;
 }
 
+/**
+ * Delays engine for a while.
+ * Arg 1: integer.
+ */
+static int intf_delay(lua_State *L)
+{
+	unsigned final = SDL_GetTicks() + luaL_checkinteger(L, 1);
+	do {
+		resources::controller->play_slice(false);
+		resources::screen->delay(10);
+	} while (int(final - SDL_GetTicks()) > 0);
+	return 0;
+}
+
 LuaKernel::LuaKernel(const config &cfg)
 	: mState(luaL_newstate()), level_(cfg)
 {
@@ -2752,6 +2766,7 @@ LuaKernel::LuaKernel(const config &cfg)
 		{ "add_tile_overlay",         &intf_add_tile_overlay         },
 		{ "copy_unit",                &intf_copy_unit                },
 		{ "create_unit",              &intf_create_unit              },
+		{ "delay",                    &intf_delay                    },
 		{ "dofile",                   &intf_dofile                   },
 		{ "eval_conditional",         &intf_eval_conditional         },
 		{ "extract_unit",             &intf_extract_unit             },
