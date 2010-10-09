@@ -476,7 +476,10 @@ side_actions::iterator side_actions::find_first_action_of(unit const* unit, side
 
 side_actions::iterator side_actions::find_first_action_of(unit const* unit)
 {
-	return find_first_action_of(unit, begin());
+	if (empty())
+		return end();
+	else
+		return find_first_action_of(unit, begin());
 }
 
 side_actions::iterator side_actions::find_last_action_of(unit const* unit, side_actions::iterator start_position)
@@ -490,6 +493,7 @@ side_actions::iterator side_actions::find_last_action_of(unit const* unit, side_
 			if (action->get_unit() == unit)
 			{
 				iterator found_position = position.base();
+				//need to decrement after changing from reverse to regular operator
 				return --found_position;
 			}
 		}
@@ -499,7 +503,10 @@ side_actions::iterator side_actions::find_last_action_of(unit const* unit, side_
 
 side_actions::iterator side_actions::find_last_action_of(unit const* unit)
 {
-	return find_last_action_of(unit, end() - 1);
+	if (empty())
+		return end();
+	else
+		return find_last_action_of(unit, end() - 1);
 }
 
 bool side_actions::unit_has_actions(unit const* unit)
