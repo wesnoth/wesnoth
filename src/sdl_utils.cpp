@@ -64,7 +64,7 @@ texture::texture(SDL_Surface* surf) : id_(0)
 	glPixelStorei(GL_UNPACK_SKIP_ROWS, 0);
 
 	GLint level = 0;
-	GLuint internal_format = GL_RGBA;
+	GLuint internal_format = GL_RGBA8;
 	GLint border = 0;
 	GLenum format = GL_BGRA;
 	GLenum data_type = GL_UNSIGNED_BYTE;

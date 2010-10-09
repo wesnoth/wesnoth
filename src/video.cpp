@@ -481,7 +481,7 @@ int CVideo::setMode( int x, int y, int bits_per_pixel, int flags )
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
 
-	glTexImage2D(GL_TEXTURE_2D, 0 /*level*/, GL_RGBA, frameBuffer->w, frameBuffer->h,
+	glTexImage2D(GL_TEXTURE_2D, 0 /*level*/, GL_RGBA8, frameBuffer->w, frameBuffer->h,
 			0 /*border*/, GL_BGRA, GL_UNSIGNED_BYTE, NULL /*data*/);
 	glFramebufferTexture2DEXT(GL_FRAMEBUFFER_EXT, GL_COLOR_ATTACHMENT0_EXT, GL_TEXTURE_2D, fbo_tex_, 0);
 
