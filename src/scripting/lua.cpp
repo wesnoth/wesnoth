@@ -111,6 +111,7 @@ static char const gettextKey = 0;
 static char const gettypeKey = 0;
 static char const getunitKey = 0;
 static char const tstringKey = 0;
+static char const unitvarKey = 0;
 static char const ustatusKey = 0;
 static char const vconfigKey = 0;
 
@@ -887,6 +888,15 @@ static int impl_unit_get(lua_State *L)
 		lua_setmetatable(L, -2);
 		return 1;
 	}
+	if (strcmp(m, "variables") == 0) {
+		lua_createtable(L, 1, 0);
+		lua_pushvalue(L, 1);
+		lua_rawseti(L, -2, 1);
+		lua_pushlightuserdata(L, (void *)&unitvarKey);
+		lua_rawget(L, LUA_REGISTRYINDEX);
+		lua_setmetatable(L, -2);
+		return 1;
+	}
 	return_bool_attrib("hidden", u.get_hidden());
 	return_bool_attrib("petrified", u.incapacitated());
 	return_bool_attrib("resting", u.resting());
@@ -961,6 +971,73 @@ static int impl_unit_status_set(lua_State *L)
 	if (!u) return luaL_argerror(L, 1, "unknown unit");
 	char const *m = luaL_checkstring(L, 2);
 	u->set_state(m, lua_toboolean(L, 3));
+	return 0;
+}
+
+/**
+ * Gets the variable of a unit (__index metamethod).
+ * - Arg 1: table containing the userdata containing the unit id.
+ * - Arg 2: string containing the name of the status.
+ * - Ret 1: boolean.
+ */
+static int impl_unit_variables_get(lua_State *L)
+{
+	if (!lua_istable(L, 1))
+		return luaL_typerror(L, 1, "unit variables");
+	lua_rawgeti(L, 1, 1);
+	unit const *u = luaW_tounit(L, -1);
+	if (!u) return luaL_argerror(L, 1, "unknown unit");
+	char const *m = luaL_checkstring(L, 2);
+	return_cfgref_attrib("__cfg", u->variables());
+	luaW_pushscalar(L, u->variables()[m]);
+	return 1;
+}
+
+/**
+ * Sets the variable of a unit (__newindex metamethod).
+ * - Arg 1: table containing the userdata containing the unit id.
+ * - Arg 2: string containing the name of the status.
+ * - Arg 3: scalar.
+ */
+static int impl_unit_variables_set(lua_State *L)
+{
+	if (!lua_istable(L, 1))
+		return luaL_typerror(L, 1, "unit variables");
+	lua_rawgeti(L, 1, 1);
+	unit *u = luaW_tounit(L, -1);
+	if (!u) return luaL_argerror(L, 1, "unknown unit");
+	char const *m = luaL_checkstring(L, 2);
+	if (strcmp(m, "__cfg") == 0) {
+		u->variables() = luaW_checkconfig(L, 3);
+		return 0;
+	}
+	config::attribute_value &v = u->variables()[m];
+	switch (lua_type(L, 3)) {
+		case LUA_TNIL:
+			u->variables().remove_attribute(m);
+			break;
+		case LUA_TBOOLEAN:
+			v = bool(lua_toboolean(L, 3));
+			break;
+		case LUA_TNUMBER:
+		{
+			double n = lua_tonumber(L, 3);
+			if (n != int(n)) v = n;
+			else v = int(n);
+			break;
+		}
+		case LUA_TSTRING:
+			v = lua_tostring(L, 3);
+			break;
+		case LUA_TUSERDATA:
+			if (luaW_hasmetatable(L, 3, tstringKey)) {
+				v = *static_cast<t_string *>(lua_touserdata(L, 3));
+				break;
+			}
+			// no break
+		default:
+			return luaL_typerror(L, 3, "WML scalar");
+	}
 	return 0;
 }
 
@@ -2879,6 +2956,17 @@ LuaKernel::LuaKernel(const config &cfg)
 	lua_pushcfunction(L, impl_unit_status_set);
 	lua_setfield(L, -2, "__newindex");
 	lua_pushstring(L, "unit status");
+	lua_setfield(L, -2, "__metatable");
+	lua_rawset(L, LUA_REGISTRYINDEX);
+
+	// Create the unit variables metatable.
+	lua_pushlightuserdata(L, (void *)&unitvarKey);
+	lua_createtable(L, 0, 3);
+	lua_pushcfunction(L, impl_unit_variables_get);
+	lua_setfield(L, -2, "__index");
+	lua_pushcfunction(L, impl_unit_variables_set);
+	lua_setfield(L, -2, "__newindex");
+	lua_pushstring(L, "unit variables");
 	lua_setfield(L, -2, "__metatable");
 	lua_rawset(L, LUA_REGISTRYINDEX);
 
