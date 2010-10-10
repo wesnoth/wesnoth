@@ -361,7 +361,7 @@ bool fbo::init(unsigned w, unsigned h, unsigned attach)
 	}
 
 	if(fbo_id_ == 0)
-		glGenFramebuffersEXT(1, &fbo_id_);
+		glext::glGenFramebuffersEXT(1, &fbo_id_);
 
 	if(fbo_id_ == 0) {
 		ERR_DP << "Can't create new FBO.\n";
