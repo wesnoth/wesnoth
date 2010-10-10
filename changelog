@@ -46,6 +46,9 @@ Version 1.9.1+svn:
    * Fixed: No longer cut off large title screen logos (bug #16632).
    * Refresh cache (F5) works in editor.
    * Add a "Save All Maps" menu item and hotkey in editor.
+   * Whiteboard planning system:
+   	 * Fixed: Crash when creating a planned move on Windows (bug #16705)
+   	 * New "Execute all actions" command bound to CTRL+y
  * WML Engine:
    * id= in SUFs now accepts a comma-separated list.
    * [capture_village] now accepts a full SLF.
