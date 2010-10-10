@@ -298,7 +298,97 @@ void update_whole_screen()
 {
 	update_all = true;
 }
-CVideo::CVideo(FAKE_TYPES type) : mode_changed_(false), bpp_(0), fake_screen_(false), help_string_(0), updatesLocked_(0), fbo_(0), fbo_tex_(0)
+
+fbo::~fbo()
+{
+	glDeleteTextures(1, &fbo_id_);
+	glDeleteFramebuffersEXT(1, &tex_id_);
+}
+
+bool fbo::init(unsigned w, unsigned h, unsigned attach)
+{
+	attach_ = attach;
+
+	GLint max_attach = 0;
+	glGetIntegerv(GL_MAX_COLOR_ATTACHMENTS, &max_attach);
+	if(attach_ >= max_attach) {
+		ERR_DP << "Not enough FBO colour attachment points.\n";
+		return false;
+	}
+
+	if(fbo_id_ == 0)
+		glGenFramebuffersEXT(1, &fbo_id_);
+
+	if(fbo_id_ == 0) {
+		ERR_DP << "Can't create new FBO.\n";
+		return false;
+	}
+
+	glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, fbo_id_);
+	glViewport(0, 0, w, h);
+
+	// Create texture for the FBO and attach it
+	if(tex_id_ == 0)
+		glGenTextures(1, &tex_id_);
+	if(tex_id_ == 0) {
+		ERR_DP << "Can't create new texture for FBO.\n";
+		return false;
+	}
+	glBindTexture(GL_TEXTURE_2D, tex_id_);
+
+	// Disable mipmaps since we don't generate them
+	// and some drivers will not consider FBO 'complete' with such incomplete texture
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
+
+	glTexImage2D(GL_TEXTURE_2D, 0 /*level*/, GL_RGBA8, frameBuffer->w, frameBuffer->h,
+			0 /*border*/, GL_BGRA, GL_UNSIGNED_BYTE, NULL /*data*/);
+	glFramebufferTexture2DEXT(GL_FRAMEBUFFER_EXT, GL_COLOR_ATTACHMENT0_EXT + attach_, GL_TEXTURE_2D, tex_id_, 0);
+
+	// Check FBO status
+	GLenum fbo_status = glCheckFramebufferStatusEXT(GL_FRAMEBUFFER_EXT);
+	if(fbo_status == GL_FRAMEBUFFER_COMPLETE_EXT)
+			return true; //ok, we are done
+
+	// status error, report it
+	#define FBO_ERROR_CASE(val) case val: ERR_DP << #val << "\n"; break;
+	switch(fbo_status) {
+		FBO_ERROR_CASE(GL_FRAMEBUFFER_UNSUPPORTED_EXT)
+		FBO_ERROR_CASE(GL_FRAMEBUFFER_UNDEFINED)
+		FBO_ERROR_CASE(GL_FRAMEBUFFER_INCOMPLETE_ATTACHMENT)
+		FBO_ERROR_CASE(GL_FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT)
+		FBO_ERROR_CASE(GL_FRAMEBUFFER_INCOMPLETE_DRAW_BUFFER)
+		FBO_ERROR_CASE(GL_FRAMEBUFFER_ATTACHMENT_OBJECT_TYPE)
+		FBO_ERROR_CASE(GL_FRAMEBUFFER_INCOMPLETE_READ_BUFFER)
+		default:
+			ERR_DP << "Unknown FBO error\n";
+			break;
+	}
+	#undef FBO_ERROR_CASE
+	return false;
+}
+
+void fbo::enable()
+{
+	glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, fbo_id_);
+	glDrawBuffer(GL_COLOR_ATTACHMENT0_EXT + attach_);
+	glReadBuffer(GL_COLOR_ATTACHMENT0_EXT + attach_);
+}
+
+void fbo::disable()
+{
+	glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, 0);
+	glDrawBuffer(GL_BACK);
+	glReadBuffer(GL_BACK);
+}
+
+void fbo::bind_texture() {
+	glBindTexture(GL_TEXTURE_2D, tex_id_);
+}
+
+CVideo::CVideo(FAKE_TYPES type) : mode_changed_(false), bpp_(0), fake_screen_(false), help_string_(0), updatesLocked_(0), fbo_()
 {
 	initSDL();
 	switch(type)
@@ -326,9 +416,6 @@ void CVideo::initSDL()
 
 CVideo::~CVideo()
 {
-	glDeleteTextures(1, &fbo_tex_);
-	glDeleteFramebuffersEXT(1, &fbo_);
-
 	LOG_DP << "calling SDL_Quit()\n";
 	SDL_Quit();
 	LOG_DP << "called SDL_Quit()\n";
@@ -455,75 +542,13 @@ int CVideo::setMode( int x, int y, int bits_per_pixel, int flags )
 
 	// Now setting up the Frame Buffer Object used for rendering
 	// (can be already there when doing resolution change)
-	if(fbo_ == 0)
-		glGenFramebuffersEXT(1, &fbo_);
-
-	if(fbo_ == 0) {
-		ERR_DP << "Can't create Frame Buffer Object.\n";
+	if(fbo_.init(frameBuffer->w, frameBuffer->h, 0) == false){
+		ERR_DP << "Can't initialize FBO.\n";
 		throw CVideo::error();
-	}
-	glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, fbo_);
-	glViewport(0, 0, frameBuffer->w, frameBuffer->h);
-
-	// Create texture for the FBO and attach it
-	if(fbo_tex_ == 0)
-		glGenTextures(1, &fbo_tex_);
-	if(fbo_tex_ == 0) {
-		ERR_DP << "Can't create texture for FBO.\n";
-		throw CVideo::error();
-	}
-	glBindTexture(GL_TEXTURE_2D, fbo_tex_);
-
-	// Disable mipmaps since we don't generate them
-	// and some drivers will not consider FBO 'complete' with such incomplete texture
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
-
-	glTexImage2D(GL_TEXTURE_2D, 0 /*level*/, GL_RGBA8, frameBuffer->w, frameBuffer->h,
-			0 /*border*/, GL_BGRA, GL_UNSIGNED_BYTE, NULL /*data*/);
-	glFramebufferTexture2DEXT(GL_FRAMEBUFFER_EXT, GL_COLOR_ATTACHMENT0_EXT, GL_TEXTURE_2D, fbo_tex_, 0);
-
-	// Check FBO status
-	GLenum fbo_status = glCheckFramebufferStatusEXT(GL_FRAMEBUFFER_EXT);
-	switch(fbo_status) {
-		case GL_FRAMEBUFFER_COMPLETE_EXT:
-			break; //all ok
-		case GL_FRAMEBUFFER_UNSUPPORTED_EXT:
-			ERR_DP << "GL_FRAMEBUFFER_UNSUPPORTED_EXT\n";
-			break;
-		case GL_FRAMEBUFFER_UNDEFINED:
-			ERR_DP << "GL_FRAMEBUFFER_UNDEFINED\n";
-			break;
-		case GL_FRAMEBUFFER_INCOMPLETE_ATTACHMENT:
-			ERR_DP << "GL_FRAMEBUFFER_INCOMPLETE_ATTACHMENT\n";
-			break;
-		case GL_FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT:
-			ERR_DP << "GL_FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT\n";
-			break;
-		case GL_FRAMEBUFFER_INCOMPLETE_DRAW_BUFFER:
-			ERR_DP << "GL_FRAMEBUFFER_INCOMPLETE_DRAW_BUFFER\n";
-			break;
-		case GL_FRAMEBUFFER_ATTACHMENT_OBJECT_TYPE:
-			ERR_DP << "GL_FRAMEBUFFER_ATTACHMENT_OBJECT_TYPE\n";
-			break;
-		case GL_FRAMEBUFFER_INCOMPLETE_READ_BUFFER:
-			ERR_DP << "GL_FRAMEBUFFER_INCOMPLETE_READ_BUFFER\n";
-			break;
-		default:
-			ERR_DP << "Unknown FBO error\n";
-			break;
-	}
-
-	if(fbo_status != GL_FRAMEBUFFER_COMPLETE_EXT) {
-		ERR_DP << "Can't setup Frame Buffer Object.\n";
-		throw CVideo::error();
-	}
+	};
 
 	// We will always read and write only on the FBO
-	glDrawBuffer(GL_COLOR_ATTACHMENT0_EXT);
-	glReadBuffer(GL_COLOR_ATTACHMENT0_EXT);
+	fbo_.enable();
 
 	image::set_pixel_format(frameBuffer->format);
 
@@ -552,14 +577,11 @@ void CVideo::flip()
 	if(fake_screen_)
 		return;
 
-	//TODO: the FBO stuff should be into sdl_* functions to truly emulate SDL
-
 	// Stop rendering on FBO, and now use back buffer
-	glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, 0);
-	glDrawBuffer(GL_BACK);
+	fbo_.disable();
 
 	// Render the texture attached to the FBO on the back buffer
-	glBindTexture(GL_TEXTURE_2D, fbo_tex_);
+	fbo_.bind_texture();
 
 	//NOTE: update_all seems to prevent black blinking in fullscreen for GUI
 	update_all = true;
@@ -575,9 +597,7 @@ void CVideo::flip()
 	SDL_GL_SwapBuffers();
 
 	//restore normal rendering on FBO
-	glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, fbo_);
-	glDrawBuffer(GL_COLOR_ATTACHMENT0_EXT);
-	glReadBuffer(GL_COLOR_ATTACHMENT0_EXT);
+	fbo_.enable();
 
 	clear_updates();
 }

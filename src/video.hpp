@@ -39,6 +39,20 @@ void update_rect(size_t x, size_t y, size_t w, size_t h);
 void update_rect(const SDL_Rect& rect);
 void update_whole_screen();
 
+struct fbo{
+	fbo() : fbo_id_(0), tex_id_(0), attach_(-1) {}
+	~fbo();
+	bool init(unsigned w, unsigned h, unsigned attach);
+	void enable();
+	void disable();
+	void bind_texture();
+private:
+	unsigned fbo_id_;
+	unsigned tex_id_;
+	int attach_;
+};
+
+
 class CVideo : private boost::noncopyable {
      public:
 		 enum FAKE_TYPES {
@@ -126,9 +140,7 @@ private:
 	int updatesLocked_;
 
 	//Frame Buffer Object
-	unsigned fbo_;
-	//Texture attached to Frame Buffer Object
-	unsigned fbo_tex_;
+	fbo fbo_;
 };
 
 //an object which will lock the display for the duration of its lifetime.
