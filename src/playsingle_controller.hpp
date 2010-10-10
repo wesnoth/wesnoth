@@ -61,6 +61,7 @@ public:
 	// Whiteboard hotkeys
 	virtual void whiteboard_toggle();
 	virtual void whiteboard_execute_action();
+	virtual void whiteboard_execute_all_actions();
 	virtual void whiteboard_delete_action();
 	virtual void whiteboard_bump_up_action();
 	virtual void whiteboard_bump_down_action();

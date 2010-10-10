@@ -90,6 +90,11 @@ void manager::print_help_once()
 		//print_to_chat("[execute action]", "'" + hk_execute.get_name() + "'");
 		hotkeys << "Execute: " << hk_execute.get_name() << ", ";
 	}
+	const hotkey::hotkey_item& hk_execute_all = hotkey::get_hotkey(hotkey::HOTKEY_WB_EXECUTE_ALL_ACTIONS);
+	if(!hk_execute_all.null()) {
+		//print_to_chat("[execute action]", "'" + hk_execute_all.get_name() + "'");
+		hotkeys << "Execute all: " << hk_execute_all.get_name() << ", ";
+	}
 	const hotkey::hotkey_item& hk_delete = hotkey::get_hotkey(hotkey::HOTKEY_WB_DELETE_ACTION);
 	if(!hk_delete.null()) {
 		//print_to_chat("[delete action]", "'" + hk_delete.get_name() + "'");
@@ -595,6 +600,19 @@ void manager::contextual_execute()
 			viewer_actions()->execute_next();
 			executing_actions_ = false;
 		}
+	}
+}
+
+void manager::execute_all_actions()
+{
+	if (!(executing_actions_ || viewer_actions()->empty() || resources::controller->is_linger_mode())
+			&& resources::controller->current_side() == resources::screen->viewing_side())
+	{
+		erase_temp_move();
+		validate_viewer_actions();
+		executing_actions_ = true;
+		viewer_actions()->execute_all();
+		executing_actions_ = false;
 	}
 }
 

@@ -225,6 +225,10 @@ void playsingle_controller::whiteboard_execute_action(){
 	whiteboard_manager_->contextual_execute();
 }
 
+void playsingle_controller::whiteboard_execute_all_actions(){
+	whiteboard_manager_->execute_all_actions();
+}
+
 void playsingle_controller::whiteboard_delete_action(){
 	whiteboard_manager_->contextual_delete();
 }
@@ -1020,6 +1024,7 @@ bool playsingle_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, 
 		case hotkey::HOTKEY_WB_TOGGLE:
 			return true;
 		case hotkey::HOTKEY_WB_EXECUTE_ACTION:
+		case hotkey::HOTKEY_WB_EXECUTE_ALL_ACTIONS:
 		case hotkey::HOTKEY_WB_DELETE_ACTION:
 			return resources::whiteboard->can_execute_hotkey();
 		case hotkey::HOTKEY_WB_BUMP_UP_ACTION:

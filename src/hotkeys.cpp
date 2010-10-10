@@ -105,6 +105,7 @@ const struct {
 	// Whiteboard commands
 	{ hotkey::HOTKEY_WB_TOGGLE, "wbtoggle", N_("Toggle planning mode"), false, hotkey::SCOPE_GAME },
 	{ hotkey::HOTKEY_WB_EXECUTE_ACTION, "wbexecuteaction", N_("Execute planned action"), false, hotkey::SCOPE_GAME },
+	{ hotkey::HOTKEY_WB_EXECUTE_ALL_ACTIONS, "wbexecuteallactions", N_("Execute all actions"), false, hotkey::SCOPE_GAME },
 	{ hotkey::HOTKEY_WB_DELETE_ACTION, "wbdeleteaction", N_("Delete planned action"), false, hotkey::SCOPE_GAME },
 	{ hotkey::HOTKEY_WB_BUMP_UP_ACTION, "wbbumpupaction", N_("Move action up queue"), false, hotkey::SCOPE_GAME },
 	{ hotkey::HOTKEY_WB_BUMP_DOWN_ACTION, "wbbumpdownaction", N_("Move action down queue"), false, hotkey::SCOPE_GAME },
@@ -922,6 +923,9 @@ bool command_executor::execute_command(HOTKEY_COMMAND command, int /*index*/)
 			 break;
 		 case HOTKEY_WB_EXECUTE_ACTION:
 			 whiteboard_execute_action();
+			 break;
+		 case HOTKEY_WB_EXECUTE_ALL_ACTIONS:
+			 whiteboard_execute_all_actions();
 			 break;
 		 case HOTKEY_WB_DELETE_ACTION:
 			 whiteboard_delete_action();

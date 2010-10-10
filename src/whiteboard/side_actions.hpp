@@ -64,18 +64,21 @@ public:
 
 	/**
 	 * Executes the first action in the queue, and then deletes it.
-	 * @return An iterator to the action itself if not finished, or else to the new first in line.
-	 *         Returns end() if no actions remain.
+	 * @return true - if the action was completed successfully
 	 */
-	iterator execute_next();
+	bool execute_next();
+
+	/**
+	 * Execute all actions in sequence until the fist attack, or until an action fails to execute.
+	 */
+	void execute_all();
 
 	/**
 	 * Executes the specified action, if it exists in the queue.
 	 * If the action is not finished, it's moved at the end of the queue.
-	 * @return An iterator to the action itself if not finished, or else the next action in the queue.
-	 *         Returns end() if no actions remain.
+	 * @return true - if the action was completed successfully
 	 */
-	iterator execute(iterator position);
+	bool execute(iterator position);
 
 	/**
 	 * Returns the iterator for the first (executed earlier) action within the actions queue.

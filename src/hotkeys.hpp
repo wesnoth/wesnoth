@@ -65,6 +65,7 @@ enum HOTKEY_COMMAND {
 	// Whiteboard commands
 	HOTKEY_WB_TOGGLE,
 	HOTKEY_WB_EXECUTE_ACTION,
+	HOTKEY_WB_EXECUTE_ALL_ACTIONS,
 	HOTKEY_WB_DELETE_ACTION,
 	HOTKEY_WB_BUMP_UP_ACTION,
 	HOTKEY_WB_BUMP_DOWN_ACTION,
@@ -311,6 +312,7 @@ public:
 	virtual void replay_skip_animation() {}
 	virtual void whiteboard_toggle() {}
 	virtual void whiteboard_execute_action() {}
+	virtual void whiteboard_execute_all_actions() {}
 	virtual void whiteboard_delete_action() {}
 	virtual void whiteboard_bump_up_action() {}
 	virtual void whiteboard_bump_down_action() {}
