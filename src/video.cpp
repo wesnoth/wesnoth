@@ -389,7 +389,7 @@ bool fbo::init(unsigned w, unsigned h, unsigned attach)
 
 	glTexImage2D(GL_TEXTURE_2D, 0 /*level*/, GL_RGBA8, frameBuffer->w, frameBuffer->h,
 			0 /*border*/, GL_BGRA, GL_UNSIGNED_BYTE, NULL /*data*/);
-	glFramebufferTexture2DEXT(GL_FRAMEBUFFER_EXT, GL_COLOR_ATTACHMENT0_EXT + attach_, GL_TEXTURE_2D, tex_id_, 0);
+	glext::glFramebufferTexture2DEXT(GL_FRAMEBUFFER_EXT, GL_COLOR_ATTACHMENT0_EXT + attach_, GL_TEXTURE_2D, tex_id_, 0);
 
 	// Check FBO status
 	GLenum fbo_status = glext::glCheckFramebufferStatusEXT(GL_FRAMEBUFFER_EXT);
