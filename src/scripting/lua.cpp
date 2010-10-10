@@ -331,12 +331,8 @@ bool luaW_toconfig(lua_State *L, int index, config &cfg, int tstring_meta)
 				v = bool(lua_toboolean(L, -1));
 				break;
 			case LUA_TNUMBER:
-			{
-				double n = lua_tonumber(L, -1);
-				if (n != int(n)) v = n;
-				else v = int(n);
+				v = lua_tonumber(L, -1);
 				break;
-			}
 			case LUA_TSTRING:
 				v = lua_tostring(L, -1);
 				break;
@@ -1020,12 +1016,8 @@ static int impl_unit_variables_set(lua_State *L)
 			v = bool(lua_toboolean(L, 3));
 			break;
 		case LUA_TNUMBER:
-		{
-			double n = lua_tonumber(L, 3);
-			if (n != int(n)) v = n;
-			else v = int(n);
+			v = lua_tonumber(L, 3);
 			break;
-		}
 		case LUA_TSTRING:
 			v = lua_tostring(L, 3);
 			break;
@@ -1259,12 +1251,8 @@ static int intf_set_variable(lua_State *L)
 			v.as_scalar() = bool(lua_toboolean(L, 2));
 			break;
 		case LUA_TNUMBER:
-		{
-			double n = lua_tonumber(L, -1);
-			if (n != int(n)) v.as_scalar() = n;
-			else v.as_scalar() = int(n);
+			v.as_scalar() = lua_tonumber(L, 2);
 			break;
-		}
 		case LUA_TSTRING:
 			v.as_scalar() = lua_tostring(L, 2);
 			break;
