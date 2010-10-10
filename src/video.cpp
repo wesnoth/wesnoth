@@ -583,8 +583,6 @@ void CVideo::flip()
 	// Render the texture attached to the FBO on the back buffer
 	fbo_.bind_texture();
 
-	//NOTE: update_all seems to prevent black blinking in fullscreen for GUI
-	update_all = true;
 	if(update_all) {
 		sdl_flip(frameBuffer);
 	} else if(!update_rects.empty()) {
@@ -600,6 +598,9 @@ void CVideo::flip()
 	fbo_.enable();
 
 	clear_updates();
+
+	//NOTE: update_all seems to prevent black blinking in fullscreen for GUI
+	update_all = true;
 }
 
 void CVideo::lock_updates(bool value)
