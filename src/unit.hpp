@@ -280,6 +280,9 @@ public:
 
 	std::string image_ellipse() const { return cfg_["ellipse"]; }
 
+	config &variables() { return variables_; }
+	const config &variables() const { return variables_; }
+
 	std::string usage() const { return cfg_["usage"]; }
 	unit_type::ALIGNMENT alignment() const { return alignment_; }
 	const unit_race* race() const { return race_; }
