@@ -41,6 +41,49 @@ static lg::log_domain log_display("display");
 #define ERR_DP LOG_STREAM(err, log_display)
 #define WRN_DP LOG_STREAM(warn, log_display)
 
+// handle extension functions
+// TODO: currently only used here, but should be moves to some gl.hpp files
+namespace glext
+{
+// Declare a pointer to the extension function and name its type
+#define GLEXT_DECL(type, name) \
+	typedef type name##_t;\
+	name##_t name;
+
+// functions used by FBO extension
+GLEXT_DECL(PFNGLBINDFRAMEBUFFEREXTPROC, glBindFramebufferEXT);
+GLEXT_DECL(PFNGLGENFRAMEBUFFERSEXTPROC, glGenFramebuffersEXT);
+GLEXT_DECL(PFNGLDELETEFRAMEBUFFERSEXTPROC, glDeleteFramebuffersEXT);
+GLEXT_DECL(PFNGLCHECKFRAMEBUFFERSTATUSEXTPROC, glCheckFramebufferStatusEXT);
+GLEXT_DECL(PFNGLFRAMEBUFFERTEXTURE2DEXTPROC, glFramebufferTexture2DEXT);
+
+// Get the pointer to the extension function,
+// check if existing and report its name if error
+#define GLEXT_GET(name, error) \
+	glext::name = (name##_t) SDL_GL_GetProcAddress(#name); \
+	if(!glext::name) { \
+		error += std::string(#name) + " "; \
+	}
+
+// load and check all extension functions
+bool init_functions()
+{
+	std::string err;
+	GLEXT_GET(glBindFramebufferEXT, err);
+	GLEXT_GET(glGenFramebuffersEXT, err);
+	GLEXT_GET(glDeleteFramebuffersEXT, err);
+	GLEXT_GET(glCheckFramebufferStatusEXT, err);
+	GLEXT_GET(glFramebufferTexture2DEXT, err);
+	if(!err.empty()) {
+		ERR_DP << "Can't find extensions functions: " << err << "\n";
+		return false;
+	}
+	return true;
+}
+
+} //namespace glext
+
+
 namespace {
 	bool fullScreen = false;
 	int disallow_resize = 0;
@@ -302,7 +345,7 @@ void update_whole_screen()
 fbo::~fbo()
 {
 	glDeleteTextures(1, &fbo_id_);
-	glDeleteFramebuffersEXT(1, &tex_id_);
+	glext::glDeleteFramebuffersEXT(1, &tex_id_);
 }
 
 bool fbo::init(unsigned w, unsigned h, unsigned attach)
@@ -324,7 +367,7 @@ bool fbo::init(unsigned w, unsigned h, unsigned attach)
 		return false;
 	}
 
-	glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, fbo_id_);
+	glext::glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, fbo_id_);
 	glViewport(0, 0, w, h);
 
 	// Create texture for the FBO and attach it
@@ -348,7 +391,7 @@ bool fbo::init(unsigned w, unsigned h, unsigned attach)
 	glFramebufferTexture2DEXT(GL_FRAMEBUFFER_EXT, GL_COLOR_ATTACHMENT0_EXT + attach_, GL_TEXTURE_2D, tex_id_, 0);
 
 	// Check FBO status
-	GLenum fbo_status = glCheckFramebufferStatusEXT(GL_FRAMEBUFFER_EXT);
+	GLenum fbo_status = glext::glCheckFramebufferStatusEXT(GL_FRAMEBUFFER_EXT);
 	if(fbo_status == GL_FRAMEBUFFER_COMPLETE_EXT)
 			return true; //ok, we are done
 
@@ -372,14 +415,14 @@ bool fbo::init(unsigned w, unsigned h, unsigned attach)
 
 void fbo::enable()
 {
-	glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, fbo_id_);
+	glext::glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, fbo_id_);
 	glDrawBuffer(GL_COLOR_ATTACHMENT0_EXT + attach_);
 	glReadBuffer(GL_COLOR_ATTACHMENT0_EXT + attach_);
 }
 
 void fbo::disable()
 {
-	glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, 0);
+	glext::glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, 0);
 	glDrawBuffer(GL_BACK);
 	glReadBuffer(GL_BACK);
 }
@@ -505,6 +548,12 @@ int CVideo::setMode( int x, int y, int bits_per_pixel, int flags )
 	std::string extensions = ext.str();
 	if(extensions.find("GL_EXT_framebuffer_object",0) == std::string::npos) {
 		ERR_DP << "Driver don't support GL_EXT_framebuffer_object.\n";
+		throw CVideo::error();
+	}
+
+	//We have OpenGL context now, load extension functions
+	if(glext::init_functions() == false) {
+		ERR_DP << "Missing OpenGL extension functions.\n";
 		throw CVideo::error();
 	}
 
