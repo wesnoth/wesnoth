@@ -513,8 +513,7 @@ side_actions::iterator side_actions::find_last_action_of(unit const* unit, side_
 		reverse_iterator position(start_position);
 		for (--position ; position != rend(); ++position)
 		{
-			action_ptr action = *position;
-			if (action->get_unit() == unit)
+			if ((*position)->get_unit() == unit)
 			{
 				iterator found_position = position.base();
 				//need to decrement after changing from reverse to regular operator
