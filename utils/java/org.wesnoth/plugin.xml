@@ -748,6 +748,7 @@
                </equals>
             </with></enabledWhen>
       </activity>
+      
       <activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.jdt.ui.wizards.*"> </activityPatternBinding>
       <activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.jdt.debug.ui.snippetEditor.NewSnippetFileCreationWizard"> </activityPatternBinding>
       <activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.team.cvs.ui.newLocation"> </activityPatternBinding>
@@ -772,6 +773,14 @@
       <activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.mylyn.tasks.ui.bug.report.*"> </activityPatternBinding>
 	<activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.ui.actions.showKeyAssistHandler.*"> </activityPatternBinding>
 	<activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.ui.cheatsheets.actions.CheatSheetHelpMenuAction.*"> </activityPatternBinding>
+	<!-- This is for real now. I'm really pissed off. Disable the WHOLE plugin -->
+	<activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.mylyn.task.*"> </activityPatternBinding>
+	<activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.jdt.*"> </activityPatternBinding>
+	<activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.xtend.*"> </activityPatternBinding>
+	<activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.team.*"> </activityPatternBinding>
+	<activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.wst.*"> </activityPatternBinding>
+	<activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.team.internal.ccvs*"> </activityPatternBinding>
+	<activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.search.*"> </activityPatternBinding>
    </extension>
    <extension
          point="org.eclipse.ui.startup">

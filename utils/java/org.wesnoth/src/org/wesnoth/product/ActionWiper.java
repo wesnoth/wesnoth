@@ -20,7 +20,10 @@ public class ActionWiper implements IStartup, IPerspectiveListener {
 
     private static final String[] ACTIONS_2_WIPE = new String[] {
             "org.eclipse.search.searchActionSet",
-            "org.eclipse.ui.run"
+            "org.eclipse.debug.ui.breakpointActionSet",
+            "org.eclipse.debug.ui.debugActionSet",
+            "org.eclipse.debug.ui.launchActionSet",
+            "org.eclipse.debug.ui.profileActionSet"
 //            "org.eclipse.ui.edit.text.actionSet.presentation",
 //            "org.eclipse.ui.edit.text.actionSet.openExternalFile",
 //            "org.eclipse.ui.edit.text.actionSet.annotationNavigation",
