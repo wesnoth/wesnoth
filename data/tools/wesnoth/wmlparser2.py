@@ -479,11 +479,15 @@ If verbose, insert a linebreak after every brace and comma (put every item on it
         if verbose:
             sys.stdout.write(sdepth1)
         print '[',
+        first_tag = True
         for tag in pair[1]:
+            if first_tag:
+                first_tag = False
+            else:
+                sys.stdout.write(",")
             if verbose:
                 sys.stdout.write(sdepth2)
             jsonify(tag, verbose, depth + 2)
-            sys.stdout.write(",")
         if verbose:
             sys.stdout.write(sdepth2)
         sys.stdout.write("]")
