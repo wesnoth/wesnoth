@@ -356,8 +356,7 @@ bool fbo::init(unsigned w, unsigned h, unsigned attach)
 	GLint max_attach = 0;
 	glGetIntegerv(GL_MAX_COLOR_ATTACHMENTS, &max_attach);
 	if(attach_ >= max_attach) {
-		ERR_DP << "Not enough FBO colour attachment points.\n";
-		return false;
+		ERR_DP << "Not enough FBO colour attachment points (" << max_attach << ").\n";
 	}
 
 	if(fbo_id_ == 0)
