@@ -100,6 +100,11 @@ public:
 	bool empty() const { return actions_.empty(); }
 
 	/**
+	 * Returns the number of actions in the action queue.
+	 */
+	size_t size() const { return actions_.size(); }
+
+	/**
 	 * Empties the action queue.
 	 */
 	void clear() { actions_.clear(); }
