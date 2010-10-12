@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
-
    <extension
          id="Wesnoth_Eclipse_Plugin.projectBuilder"
          name="Wesnoth Project Builder"
@@ -781,6 +780,7 @@
 	<activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.wst.*"> </activityPatternBinding>
 	<activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.team.internal.ccvs*"> </activityPatternBinding>
 	<activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.search.*"> </activityPatternBinding>
+	<activityPatternBinding  activityId="org.wesnoth.product.disableextra" pattern=".*/org.eclipse.ant.*"> </activityPatternBinding>
    </extension>
    <extension
          point="org.eclipse.ui.startup">

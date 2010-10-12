@@ -72,7 +72,5 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor
 		MenuManager helpMenu = new MenuManager("&Help", "help");
 		helpMenu.add(aboutAction_);
 		menuBar.add(helpMenu);
-
-		//WorkspaceUtils.getWorkbenchWindow().getActivePage().hideActionSet("org.eclipse.search.menu");
 	}
 }
