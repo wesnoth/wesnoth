@@ -11,6 +11,7 @@ package org.wesnoth.product;
 import org.eclipse.ui.IFolderLayout;
 import org.eclipse.ui.IPageLayout;
 import org.eclipse.ui.IPerspectiveFactory;
+import org.eclipse.ui.console.IConsoleConstants;
 
 public class WMLPerspective implements IPerspectiveFactory
 {
@@ -39,6 +40,7 @@ public class WMLPerspective implements IPerspectiveFactory
         IFolderLayout bottom = layout.createFolder("bottom", IPageLayout.BOTTOM, 0.76f, editorArea);
         bottom.addView(IPageLayout.ID_PROBLEM_VIEW);
         bottom.addView(IPageLayout.ID_PROGRESS_VIEW);
+        bottom.addView(IConsoleConstants.ID_CONSOLE_VIEW);
 
         IFolderLayout right = layout.createFolder("right", IPageLayout.RIGHT, 0.68f, editorArea);
         right.addView(IPageLayout.ID_OUTLINE);
