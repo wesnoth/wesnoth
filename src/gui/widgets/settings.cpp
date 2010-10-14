@@ -28,6 +28,7 @@
 #include "foreach.hpp"
 #include "gettext.hpp"
 #include "gui/auxiliary/log.hpp"
+#include "gui/auxiliary/tips.hpp"
 #include "gui/widgets/window.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/preprocessor.hpp"
@@ -54,6 +55,13 @@ namespace settings {
 	std::string sound_toggle_button_click = "";
 	std::string sound_toggle_panel_click = "";
 	std::string sound_slider_adjust = "";
+
+	std::vector<ttip> tips;
+
+	std::vector<ttip> get_tips()
+	{
+		return tips::shuffle(tips);
+	}
 
 } // namespace settings
 
@@ -135,6 +143,7 @@ private:
 	std::string sound_toggle_button_click_;
 	std::string sound_toggle_panel_click_;
 	std::string sound_slider_adjust_;
+	std::vector<ttip> tips_;
 };
 
 const std::string& tgui_definition::read(const config& cfg)
@@ -353,6 +362,8 @@ const std::string& tgui_definition::read(const config& cfg)
 	sound_toggle_panel_click_ = settings["sound_toggle_panel_click"].str();
 	sound_slider_adjust_ = settings["sound_slider_adjust"].str();
 
+	tips_ = tips::load(cfg);
+
 	return id;
 }
 
@@ -367,6 +378,7 @@ void tgui_definition::activate() const
 	settings::sound_toggle_button_click = sound_toggle_button_click_;
 	settings::sound_toggle_panel_click = sound_toggle_panel_click_;
 	settings::sound_slider_adjust = sound_slider_adjust_;
+	settings::tips = tips_;
 }
 
 void tgui_definition::load_widget_definitions(
@@ -448,7 +460,6 @@ void load_settings()
 	current_gui = guis.find("default");
 	current_gui->second.activate();
 }
-
 
 tstate_definition::tstate_definition(const config &cfg) :
 	canvas()

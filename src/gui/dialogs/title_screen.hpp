@@ -18,8 +18,6 @@
 
 #include "gui/dialogs/dialog.hpp"
 
-#include "config.hpp"
-
 namespace gui2 {
 
 class ttitle_screen : public tdialog
@@ -47,9 +45,6 @@ private:
 	/** Inherited from tdialog. */
 	void post_show(twindow& window);
 
-	/** Hold the tips of the day. */
-	config tips_;
-
 	/** The progress bar time for the logo. */
 	unsigned long logo_timer_id_;
 
@@ -61,12 +56,6 @@ private:
 	 *                            one.
 	 */
 	void update_tip(twindow& window, const bool previous);
-
-	/** Helper to forward the call to update_tip. */
-	static void next_tip(twidget* caller);
-
-	/** Helper to forward the call to update_tip. */
-	static void previous_tip(twidget* caller);
 };
 
 } // namespace gui2
