@@ -58,7 +58,9 @@ if env["PLATFORM"] != "win32":
         filesystem_env.Append(CPPDEFINES = "LOCALEDIR='\"$localedirname\"'")
         if not os.path.isabs(env['localedirname']):
             filesystem_env.Append(CPPDEFINES = "HAS_RELATIVE_LOCALEDIR")
-    if env['prefsdir']:
+    if env['version_suffix'] and not env['prefsdir']:
+        filesystem_env['prefsdir'] = ".wesnoth$version_suffix"
+    if filesystem_env['prefsdir']:
         filesystem_env.Append(CPPDEFINES = "PREFERENCES_DIR='\"$prefsdir\"'")
 
 libwesnoth_core_sources.extend([
