@@ -29,30 +29,6 @@ const config* get_tip_of_day(config& tips_of_day);
 
 namespace gui {
 
-/**
- * Values for the menu-items of the main menu.
- *
- * The code assumes TUTORIAL is the first item.
- * The values are also used as the button retour values, where 0 means no
- * automatic value so we need to avoid 0.
- */
-enum TITLE_RESULT { TUTORIAL = 1,		/**< Start special campaign 'tutorial' */
-					NEW_CAMPAIGN,		/**< Let user select a campaign to play */
-					MULTIPLAYER,		/**< Play single scenario against humans or AI */
-					LOAD_GAME, GET_ADDONS,
-#ifndef DISABLE_EDITOR
-					START_MAP_EDITOR,
-#endif
-                    CHANGE_LANGUAGE, EDIT_PREFERENCES,
-					SHOW_ABOUT,			/**< Show credits */
-					QUIT_GAME,
-					TIP_PREVIOUS,		/**< Show previous tip-of-the-day */
-					TIP_NEXT,			/**< Show next tip-of-the-day */
-					SHOW_HELP,
-					REDRAW_BACKGROUND,	/**< Used after an action needing a redraw (ex: fullscreen) */
-					RELOAD_GAME_DATA,	/**< Used to reload all game data */
-					NOTHING				/**< Default, nothing done, no redraw needed */
-				  };
 }
 
 #endif

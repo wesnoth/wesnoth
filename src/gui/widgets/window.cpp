@@ -31,6 +31,7 @@
 #include "gui/auxiliary/log.hpp"
 #include "gui/auxiliary/layout_exception.hpp"
 #include "gui/auxiliary/window_builder/control.hpp"
+#include "gui/dialogs/title_screen.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/settings.hpp"
 #ifdef DEBUG_WINDOW_LAYOUT_GRAPHS
@@ -38,7 +39,6 @@
 #endif
 #include "preferences.hpp"
 #include "preferences_display.hpp"
-#include "titlescreen.hpp"
 #include "video.hpp"
 
 #include <boost/bind.hpp>
@@ -400,15 +400,15 @@ twindow::tretval twindow::get_retval_by_id(const std::string& id)
 	 * add some namespaces to avoid names clashing.
 	 */
 	} else if(id == "tutorial") {
-		return static_cast<tretval>(gui::TUTORIAL);
+		return static_cast<tretval>(ttitle_screen::TUTORIAL);
 #ifndef DISABLE_EDITOR
 	} else if(id == "editor") {
-		return static_cast<tretval>(gui::START_MAP_EDITOR);
+		return static_cast<tretval>(ttitle_screen::START_MAP_EDITOR);
 #endif
 	} else if(id == "credits") {
-		return static_cast<tretval>(gui::SHOW_ABOUT);
+		return static_cast<tretval>(ttitle_screen::SHOW_ABOUT);
 	} else if(id == "quit") {
-		return static_cast<tretval>(gui::QUIT_GAME);
+		return static_cast<tretval>(ttitle_screen::QUIT_GAME);
 
 	/**
 	 * The hacks which are here so the old engine can handle the event. The new
@@ -416,19 +416,19 @@ twindow::tretval twindow::get_retval_by_id(const std::string& id)
 	 * engine to make certain things happen.
 	 */
 	} else if(id == "help") {
-		return static_cast<tretval>(gui::SHOW_HELP);
+		return static_cast<tretval>(ttitle_screen::SHOW_HELP);
 	} else if(id == "campaign") {
-		return static_cast<tretval>(gui::NEW_CAMPAIGN);
+		return static_cast<tretval>(ttitle_screen::NEW_CAMPAIGN);
 	} else if(id == "multiplayer") {
-		return static_cast<tretval>(gui::MULTIPLAYER);
+		return static_cast<tretval>(ttitle_screen::MULTIPLAYER);
 	} else if(id == "load") {
-		return static_cast<tretval>(gui::LOAD_GAME);
+		return static_cast<tretval>(ttitle_screen::LOAD_GAME);
 	} else if(id == "addons") {
-		return static_cast<tretval>(gui::GET_ADDONS);
+		return static_cast<tretval>(ttitle_screen::GET_ADDONS);
 	} else if(id == "language") {
-		return static_cast<tretval>(gui::CHANGE_LANGUAGE);
+		return static_cast<tretval>(ttitle_screen::CHANGE_LANGUAGE);
 	} else if(id == "preferences") {
-		return static_cast<tretval>(gui::EDIT_PREFERENCES);
+		return static_cast<tretval>(ttitle_screen::EDIT_PREFERENCES);
 
 	// default if nothing matched
 	} else {

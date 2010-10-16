@@ -32,7 +32,6 @@
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
 #include "preferences_display.hpp"
-#include "titlescreen.hpp"
 
 #include <boost/bind.hpp>
 
@@ -87,9 +86,9 @@ namespace gui2 {
 
 REGISTER_WINDOW(title_screen)
 
-static bool hotkey(twindow& window, const gui::TITLE_RESULT title_result)
+static bool hotkey(twindow& window, const ttitle_screen::tresult result)
 {
-	window.set_retval(static_cast<twindow::tretval>(title_result));
+	window.set_retval(static_cast<twindow::tretval>(result));
 
 	return true;
 }
@@ -156,7 +155,7 @@ void ttitle_screen::post_build(CVideo& video, twindow& window)
 				, boost::bind(
 					  &hotkey
 					, boost::ref(window)
-					, gui::RELOAD_GAME_DATA));
+					, RELOAD_GAME_DATA));
 
 	window.register_hotkey(hotkey::HOTKEY_FULLSCREEN
 			, boost::bind(fullscreen, boost::ref(video)));
@@ -165,25 +164,25 @@ void ttitle_screen::post_build(CVideo& video, twindow& window)
 				, boost::bind(
 					  &hotkey
 					, boost::ref(window)
-					, gui::CHANGE_LANGUAGE));
+					, CHANGE_LANGUAGE));
 
 	window.register_hotkey(hotkey::HOTKEY_LOAD_GAME
 				, boost::bind(
 					  &hotkey
 					, boost::ref(window)
-					, gui::LOAD_GAME));
+					, LOAD_GAME));
 
 	window.register_hotkey(hotkey::HOTKEY_HELP
 				, boost::bind(
 					  &hotkey
 					, boost::ref(window)
-					, gui::SHOW_HELP));
+					, SHOW_HELP));
 
 	window.register_hotkey(hotkey::HOTKEY_PREFERENCES
 				, boost::bind(
 					  &hotkey
 					, boost::ref(window)
-					, gui::EDIT_PREFERENCES));
+					, EDIT_PREFERENCES));
 
 	static const boost::function<void()> next_tip_wrapper = boost::bind(
 			  &ttitle_screen::update_tip
@@ -211,51 +210,51 @@ void ttitle_screen::post_build(CVideo& video, twindow& window)
 				, boost::bind(
 					  &hotkey
 					, boost::ref(window)
-					, gui::TUTORIAL));
+					, TUTORIAL));
 
 	window.register_hotkey(hotkey::TITLE_SCREEN__TUTORIAL
 				, boost::bind(
 					  &hotkey
 					, boost::ref(window)
-					, gui::TUTORIAL));
+					, TUTORIAL));
 
 	window.register_hotkey(hotkey::TITLE_SCREEN__CAMPAIGN
 				, boost::bind(
 					  &hotkey
 					, boost::ref(window)
-					, gui::NEW_CAMPAIGN));
+					, NEW_CAMPAIGN));
 
 	window.register_hotkey(hotkey::TITLE_SCREEN__MULTIPLAYER
 				, boost::bind(
 					  &hotkey
 					, boost::ref(window)
-					, gui::MULTIPLAYER));
+					, MULTIPLAYER));
 
 	window.register_hotkey(hotkey::TITLE_SCREEN__ADDONS
 				, boost::bind(
 					  &hotkey
 					, boost::ref(window)
-					, gui::GET_ADDONS));
+					, GET_ADDONS));
 
 #ifndef DISABLE_EDITOR
 	window.register_hotkey(hotkey::TITLE_SCREEN__EDITOR
 				, boost::bind(
 					  &hotkey
 					, boost::ref(window)
-					, gui::START_MAP_EDITOR));
+					, START_MAP_EDITOR));
 #endif
 
 	window.register_hotkey(hotkey::TITLE_SCREEN__CREDITS
 				, boost::bind(
 					  &hotkey
 					, boost::ref(window)
-					, gui::SHOW_ABOUT));
+					, SHOW_ABOUT));
 
 	window.register_hotkey(hotkey::HOTKEY_QUIT_GAME
 				, boost::bind(
 					  &hotkey
 					, boost::ref(window)
-					, gui::QUIT_GAME));
+					, QUIT_GAME));
 }
 
 void ttitle_screen::pre_show(CVideo& video, twindow& window)
