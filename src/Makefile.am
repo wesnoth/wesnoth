@@ -274,7 +274,6 @@ wesnoth_source = \
 	team.cpp \
 	terrain_filter.cpp \
 	text.cpp \
-	titlescreen.cpp \
 	tod_manager.cpp \
 	tooltips.cpp \
 	unit.cpp \

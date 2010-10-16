@@ -501,7 +501,6 @@ set(wesnoth-main_SRC
 	storyscreen/render.cpp
 	team.cpp
 	terrain_filter.cpp
-	titlescreen.cpp
 	tod_manager.cpp
 	tooltips.cpp
 	unit.cpp
