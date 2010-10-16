@@ -19,34 +19,54 @@
 
 #include "config.hpp"
 #include "foreach.hpp"
+#include "game_preferences.hpp"
+#include "serialization/string_utils.cpp"
 
 namespace gui2 {
 
-ttip::ttip(const t_string& text, const t_string& source)
+ttip::ttip(const t_string& text
+		, const t_string& source
+		, const std::string& unit_filter)
 	: text_(text)
 	, source_(source)
+	, unit_filter_(utils::split(unit_filter))
 {
 }
 
 namespace tips {
 
-
-/** @todo Implement the filtering of the tips. */
 std::vector<ttip> load(const config& cfg)
 {
 	std::vector<ttip> result;
 
 	foreach(const config &tip, cfg.child_range("tip")) {
-		result.push_back(ttip(tip["text"], tip["source"]));
+		result.push_back(ttip(tip["text"]
+				, tip["source"]
+				, tip["encountered_units"]));
 	}
 
 	return result;
 }
 
-/** @todo Implement the filtering of the tips. */
 std::vector<ttip> shuffle(const std::vector<ttip>& tips)
 {
-	std::vector<ttip> result = tips;
+	std::vector<ttip> result;
+
+	const std::set<std::string>& units = preferences::encountered_units();
+
+	foreach(const ttip& tip, tips) {
+		if(tip.unit_filter_.empty()) {
+			result.push_back(tip);
+		} else {
+			foreach(const std::string& unit, tip.unit_filter_) {
+				if(units.find(unit) != units.end()) {
+					result.push_back(tip);
+					break;
+				}
+			}
+		}
+	}
+
 	std::random_shuffle(result.begin(), result.end());
 	return result;
 }

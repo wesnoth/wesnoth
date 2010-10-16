@@ -60,10 +60,25 @@ public:
 
 private:
 	friend std::vector<ttip> tips::load(const config&);
-	ttip(const t_string& text, const t_string& source);
+	friend std::vector<ttip> tips::shuffle(const std::vector<ttip>& tips);
+	ttip(const t_string& text
+			, const t_string& source
+			, const std::string& unit_filter);
 
+	/** The text of the tip. */
 	t_string text_;
+
+	/** The source of the tip. */
 	t_string source_;
+
+	/**
+	 * List of units to filter the tip upon.
+	 *
+	 * If the list is empty the tip is shown.
+	 * Else the unit must have encountered at least one of the units in the
+	 * list.
+	 */
+	std::vector<std::string> unit_filter_;
 };
 
 } // namespace gui2
