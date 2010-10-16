@@ -471,12 +471,12 @@ report generate_report(TYPE type,
 					<< "  " << accuracy_parry << "</span>\n";
 				int accuracy = at.accuracy();
 				if(accuracy) {
-					tooltip << _("Accuracy :") << "<b>"
+					tooltip << _("Accuracy:") << "<b>"
 						<< signed_percent(accuracy) << "</b>\n";
 				}
 				int parry = at.parry();
 				if(parry) {
-					tooltip << _("Parry :") << "<b>"
+					tooltip << _("Parry:") << "<b>"
 						<< signed_percent(parry) << "</b>\n";
 				}
 				res.add_text(flush(str), flush(tooltip));

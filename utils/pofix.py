@@ -2353,6 +2353,9 @@ stringfixes = {
 # Fix capitalization
 # conversion added in 1.9.0+svn
 ("Rooting Out A Mage", "Rooting Out a Mage"),
+
+# Punctuation error.
+("brother still, And", "brother still And"),
 ),
 
 "wesnoth-units" : (
