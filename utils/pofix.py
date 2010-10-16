@@ -2320,6 +2320,8 @@ stringfixes = {
 ("You were right, Kapou'e, the", "You were right, Kapou’e, the"),
 ("You're right. I can", "You’re right. I can"),
 ("young upstart called Kapou'e. He", "young upstart called Kapou’e. He"),
+
+("eaten that Grüü,", "eaten that, Grüü"),
 ),
 
 "wesnoth-tb" : (
