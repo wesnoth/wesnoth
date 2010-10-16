@@ -40,6 +40,10 @@ report_file()
 
 for i in $filelist; do
     result=`pngcheck $i`
+    if [ $? -ne 0 ]; then
+        echo "Failure executing pngcheck. Exiting."
+        exit 1
+    fi
     if echo $result|grep 'RGB+alpha'>/dev/null
     then
         rgba=$(($rgba+1))
