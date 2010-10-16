@@ -2355,7 +2355,8 @@ stringfixes = {
 ("Rooting Out A Mage", "Rooting Out a Mage"),
 
 # Punctuation error.
-("brother still, And", "brother still And"),
+# fixed in 1.9.1+svn
+("brother still And", "brother still. And"),
 ),
 
 "wesnoth-units" : (
