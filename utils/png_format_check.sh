@@ -65,7 +65,7 @@ for i in $filelist; do
         report_file $i 'palette'
     else
         other=$(($other+1))
-        report_file $i "`sed -e 's/^.*(//;s/).*$//;' <<< $result`"
+        report_file $i "`echo $result | sed -e 's/^.*(//;s/).*$//;'`"
     echo $result
     fi
 done
