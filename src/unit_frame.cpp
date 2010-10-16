@@ -164,9 +164,9 @@ frame_parameters::frame_parameters() :
 	y(0),
 	directional_x(0),
 	directional_y(0),
-	drawing_layer(display::LAYER_UNIT_DEFAULT - display::LAYER_UNIT_FIRST),
-	in_hex(false),
-	diagonal_in_hex(false)
+	auto_vflip(false),
+	auto_hflip(true),
+	drawing_layer(display::LAYER_UNIT_DEFAULT - display::LAYER_UNIT_FIRST)
 {}
 
 frame_builder::frame_builder() :
@@ -190,6 +190,8 @@ frame_builder::frame_builder() :
 	y_(""),
 	directional_x_(""),
 	directional_y_(""),
+	auto_vflip_(false),
+	auto_hflip_(false),
 	drawing_layer_(str_cast(display::LAYER_UNIT_DEFAULT - display::LAYER_UNIT_FIRST))
 {}
 
@@ -214,6 +216,8 @@ frame_builder::frame_builder(const config& cfg,const std::string& frame_string) 
 	y_(cfg[frame_string + "y"]),
 	directional_x_(cfg[frame_string + "directional_x"]),
 	directional_y_(cfg[frame_string + "directional_y"]),
+	auto_vflip_(cfg[frame_string + "auto_vflip"].to_bool(frame_string.empty()?false:true)),
+	auto_hflip_(cfg[frame_string + "auto_hflip"].to_bool(true)),
 	drawing_layer_(cfg[frame_string + "layer"])
 {
 	std::vector<std::string> color = utils::split(cfg[frame_string + "text_color"]);
@@ -312,6 +316,16 @@ frame_builder & frame_builder::directional_y(const std::string& directional_y)
 	directional_y_=directional_y;
 	return *this;
 }
+frame_builder & frame_builder::auto_vflip(const bool auto_vflip)
+{
+	auto_vflip_=auto_vflip;
+	return *this;
+}
+frame_builder & frame_builder::auto_hflip(const bool auto_hflip)
+{
+	auto_hflip_=auto_hflip;
+	return *this;
+}
 frame_builder & frame_builder::drawing_layer(const std::string& drawing_layer)
 {
 	drawing_layer_=drawing_layer;
@@ -340,6 +354,8 @@ frame_parsed_parameters::frame_parsed_parameters(const frame_builder & builder, 
 	y_(builder.y_,duration_),
 	directional_x_(builder.directional_x_,duration_),
 	directional_y_(builder.directional_y_,duration_),
+	auto_vflip_(builder.auto_vflip_),
+	auto_hflip_(builder.auto_hflip_),
 	drawing_layer_(builder.drawing_layer_,duration_)
 {}
 
@@ -401,6 +417,8 @@ const frame_parameters frame_parsed_parameters::parameters(int current_time) con
 	result.y = y_.get_current_element(current_time);
 	result.directional_x = directional_x_.get_current_element(current_time);
 	result.directional_y = directional_y_.get_current_element(current_time);
+	result.auto_vflip = auto_vflip_;
+	result.auto_hflip = auto_hflip_;
 	result.drawing_layer = drawing_layer_.get_current_element(current_time,display::LAYER_UNIT_DEFAULT-display::LAYER_UNIT_FIRST);
 	return result;
 }
@@ -502,7 +520,8 @@ void unit_frame::redraw(const int frame_time,bool first_time,const map_location 
 		bool facing_west = direction == map_location::NORTH_WEST || direction == map_location::SOUTH_WEST;
 #endif
 		bool facing_north = direction == map_location::NORTH_WEST || direction == map_location::NORTH || direction == map_location::NORTH_EAST;
-		if(primary) facing_north = true;
+		if(!current_data.auto_hflip) facing_west = false;
+		if(!current_data.auto_vflip) facing_north = true;
 		int my_x = x + current_data.x- image->w/2;
 		int my_y = y + current_data.y- image->h/2;
 		if(facing_west) {
@@ -534,14 +553,14 @@ void unit_frame::redraw(const int frame_time,bool first_time,const map_location 
 				break;
 			case map_location::SOUTH_EAST:
 			case map_location::SOUTH:
-				if(primary) {
+				if(!current_data.auto_vflip) {
 					orientation = halo::NORMAL;
 				} else {
 					orientation = halo::VREVERSE;
 				}
 				break;
 			case map_location::SOUTH_WEST:
-				if(primary) {
+				if(!current_data.auto_hflip) {
 					orientation = halo::HREVERSE;
 				} else {
 					orientation = halo::HVREVERSE;
@@ -598,7 +617,7 @@ std::set<map_location> unit_frame::get_overlaped_hex(const int frame_time,const 
 		result.insert(src);
 		int my_y = current_data.y;
 		bool facing_north = direction == map_location::NORTH_WEST || direction == map_location::NORTH || direction == map_location::NORTH_EAST;
-		if(primary) facing_north = true;
+		if(!current_data.auto_vflip) facing_north = true;
 		if(facing_north) {
 			my_y += current_data.directional_y;
 		} else {
@@ -627,7 +646,8 @@ std::set<map_location> unit_frame::get_overlaped_hex(const int frame_time,const 
 			bool facing_west = direction == map_location::NORTH_WEST || direction == map_location::SOUTH_WEST;
 #endif
 			bool facing_north = direction == map_location::NORTH_WEST || direction == map_location::NORTH || direction == map_location::NORTH_EAST;
-			if(primary) facing_north = true;
+			if(!current_data.auto_vflip) facing_north = true;
+			if(!current_data.auto_hflip) facing_west = false;
 			int my_x = current_data.x+d2- image->w/2;
 			int my_y = current_data.y+d2- image->h/2;
 			if(facing_west) {
@@ -761,6 +781,13 @@ const frame_parameters unit_frame::merge_parameters(int current_time,const frame
 	result.drawing_layer = current_val.drawing_layer !=  display::LAYER_UNIT_DEFAULT-display::LAYER_UNIT_FIRST?
 		current_val.drawing_layer:animation_val.drawing_layer;
 
+	/** the engine provide us with default value to compare with, we update if different */
+	result.auto_hflip = engine_val.auto_hflip;
+	if(animation_val.auto_hflip != engine_val.auto_hflip) result.auto_hflip = animation_val.auto_hflip;
+	if(current_val.auto_hflip != engine_val.auto_hflip) result.auto_hflip = current_val.auto_hflip;
+	result.auto_vflip = engine_val.auto_vflip;
+	if(animation_val.auto_vflip != engine_val.auto_vflip) result.auto_vflip = animation_val.auto_vflip;
+	if(current_val.auto_vflip != engine_val.auto_vflip) result.auto_vflip = current_val.auto_vflip;
 #ifdef LOW_MEM
 	if(primary) {
 		result.image= engine_val.image;

@@ -101,15 +101,19 @@ move::~move()
 	if (resources::teams)
 	{
 		side_actions_ptr side_actions = resources::teams->at(team_index()).get_side_actions();
-		side_actions::iterator action = side_actions->find_last_action_of(unit_);
-		if (action != side_actions->end())
+
+		LOG_WB << "Entering ~move, side_actions size is " << side_actions->size() << "\n";
+
+		side_actions::iterator action_it = side_actions->find_last_action_of(unit_);
+		if (action_it != side_actions->end())
 		{
-			if (move_ptr move = boost::dynamic_pointer_cast<class move>(*action))
+			if (move_ptr move = boost::dynamic_pointer_cast<class move>(*action_it))
 			{
 				if (move->fake_unit_)
 					move->fake_unit_->set_ghosted(true);
 			}
 		}
+
 	}
 
 	//reminder: here we rely on the ~arrow destructor to invalidate

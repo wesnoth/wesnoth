@@ -31,6 +31,7 @@
 namespace gui2 {
 
 struct tgui_definition;
+class ttip;
 
 /** Do we wish to use the new library or not. */
 extern bool new_widgets;
@@ -156,6 +157,8 @@ void load_widget_definitions(
 		extern std::string sound_toggle_button_click;
 		extern std::string sound_toggle_panel_click;
 		extern std::string sound_slider_adjust;
+
+		std::vector<ttip> get_tips();
 	}
 
 } // namespace gui2

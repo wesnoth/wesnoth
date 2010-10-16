@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-utbs\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-09-14 18:29+0200\n"
+"POT-Creation-Date: 2010-10-03 21:59+0200\n"
 "PO-Revision-Date: 2010-03-05 01:53+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -980,16 +980,17 @@ msgstr ""
 
 #. [message]: speaker=Kaleh
 #: data/campaigns/Under_the_Burning_Suns/scenarios/01_The_Morning_After.cfg:1353
+#, fuzzy
 msgid ""
 "Last night, before the rock storm, I heard a voice in my sleep. It sounded "
 "like sweet music, and somehow I knew it was Eloh. I still remember her exact "
-"words: “You must be strong, young elf, for you enter a time of peril. The "
+"words: <i>“You must be strong, young elf, for you enter a time of peril. The "
 "home you know will be destroyed, and you must lead your people to a new "
 "land. To the north you will find salvation and peace. Cross the desert and "
-"head to the mountains. Fear not, for I will guide you and protect you.” I’m "
-"not sure why I’m the one she chose to appeal to, but if this is her will, I "
-"will see it done. Our home is gone and the desert is a harsh place. If Eloh "
-"has prepared a new home for us, then I will lead us there."
+"head to the mountains. Fear not, for I will guide you and protect you.”</i> "
+"I’m not sure why I’m the one she chose to appeal to, but if this is her "
+"will, I will see it done. Our home is gone and the desert is a harsh place. "
+"If Eloh has prepared a new home for us, then I will lead us there."
 msgstr ""
 "Prošle noći, prije oluje, začuh glas u snu. Zvučaše kao mila muzika, nekako "
 "osjećah da je Elohin. Tačno pamtim njene riječi: „Moraš biti jak, mladi "
@@ -3426,9 +3427,9 @@ msgid ""
 "the passage. The freezing water pours out into a large pool. At the bottom "
 "of the pool I can see a skeleton still gripping a sword. The blade seems to "
 "glow faintly blue. The pool isn’t very deep, I could easily wade in and pick "
-"it up. But someone else has carved a crude message in the wall. “If you dare "
-"to take this blade here, your greatest fear will surely appear.” It looks "
-"like a nice sword, but do I dare chance it?"
+"it up. But someone else has carved a crude message in the wall. <i>“If you "
+"dare to take this blade here, your greatest fear will surely appear.”</i> It "
+"looks like a nice sword, but do I dare chance it?"
 msgstr ""
 "Vrlo čudno. Neko je na kraju prolaza od kamena isklesao grubu fontanu. "
 "Ledena voda ističe u veliki bazen. Na dnu mogu da vidim skelet koji još "
@@ -5266,7 +5267,8 @@ msgstr ""
 
 #. [message]: speaker=Troll Chieftain
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:2061
-msgid "Destroy the invaders! Make them pay for their slaughter!"
+#, fuzzy
+msgid "Destroy the invaders! Make them pay for the murders they have done!"
 msgstr "Uništite uljeze! Neka plate za svoje pokolje!"
 
 #. [message]: speaker=High Advisor
@@ -5447,9 +5449,11 @@ msgstr ""
 
 #. [message]: speaker=$explorer.id
 #: data/campaigns/Under_the_Burning_Suns/scenarios/06a_In_the_Tunnels_of_Trolls.cfg:2442
+#, fuzzy
 msgid ""
 "There is a chasm here cutting off the end of the crypt. It must be rather "
-"recent, it cuts off the path leading to a rather ornate stone coffin."
+"recent; the edges are still raw and crumbling. It cuts off the path leading "
+"to a rather ornate stone coffin."
 msgstr ""
 "Ponor ovdje odsijeca kraj grobnice. Mora da je skorijeg postanka, presijeca "
 "put koji vodi ka prilično okićenom kamenom kovčegu."
@@ -6121,9 +6125,10 @@ msgid ""
 "dwarf. The tomb seems empty except for this ornate stone coffin. The "
 "skeleton inside the coffin has long since vanished into dust. All that’s "
 "left are a few ceremonial trinkets and this shining golden belt. Inscribed "
-"on this inside are the words: “May you have the toughness to stay standing "
-"long after your enemies fall.’ Grave robbing is never a good thing to do, "
-"but this belt looks magical and its former owner certainly won’t miss it."
+"on this inside are the words: <i>“May you have the toughness to stay "
+"standing long after your enemies fall.”</i> Grave robbing is never a good "
+"thing to do, but this belt looks magical and its former owner certainly "
+"won’t miss it."
 msgstr ""
 "Prema runama što prekrivaju zid, ovo mora biti grobnica nekog drevnog "
 "patuljka. Izgleda prazno, osim ovog ukrašenog kamenog kovčega. Skelet unutar "
@@ -10949,7 +10954,8 @@ msgstr "Nemam izbora, zbogom."
 msgid ""
 "Oh Eloh, you know how long I have faithfully served you. I ask you now a "
 "boon in return. Do not kill the boy Kaleh, he is just doing what his heart "
-"tells him to do. Did you not say, “To err is elven, but to forgive divine”?"
+"tells him to do. Did you not say, <i>“To err is elven, but to forgive "
+"divine”</i>?"
 msgstr ""
 "O, Eloh, znaš koliko dugo sam ti vijerno služila. Sada tražim tvoje "
 "dobročinstvo zauzvrat. Nemoj ubiti dječaka Kaleha, on čini samo ono što mu "
@@ -14944,7 +14950,7 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Divine_Avatar.cfg:24
 #: data/campaigns/Under_the_Burning_Suns/units/elves/Divine_Incarnation.cfg:24
 #: data/campaigns/Under_the_Burning_Suns/units/monsters/Darawf.cfg:22
-#: data/campaigns/Under_the_Burning_Suns/units/monsters/Small_Mudcrawler.cfg:46
+#: data/campaigns/Under_the_Burning_Suns/units/monsters/Small_Mudcrawler.cfg:14
 msgid "fist"
 msgstr "pesnica"
 
@@ -15388,22 +15394,13 @@ msgstr "vatrokandže"
 msgid "fire breath"
 msgstr "vatrodah"
 
-#. [unit_type]: id=Small Mudcrawler, race=monster
-#: data/campaigns/Under_the_Burning_Suns/units/monsters/Small_Mudcrawler.cfg:5
+#. [unit_type]: id=Small Mudcrawler
+#: data/campaigns/Under_the_Burning_Suns/units/monsters/Small_Mudcrawler.cfg:8
 msgid "Small Mudcrawler"
 msgstr "mali muljogmiz"
 
-#. [unit_type]: id=Small Mudcrawler, race=monster
-#: data/campaigns/Under_the_Burning_Suns/units/monsters/Small_Mudcrawler.cfg:19
-msgid ""
-"Small Mudcrawlers are beings of soil and water. They attack by spraying "
-"boiling water on their foes, or by punching with their fists."
-msgstr ""
-"Mali muljogmizi su stvorenja od zemljišta i vode. Napadaju prašeći ključalom "
-"vodom na svoje protivnike, ili udarajući pesnicama."
-
 #. [attack]: type=impact
-#: data/campaigns/Under_the_Burning_Suns/units/monsters/Small_Mudcrawler.cfg:55
+#: data/campaigns/Under_the_Burning_Suns/units/monsters/Small_Mudcrawler.cfg:23
 msgid "mud glob"
 msgstr "muljogruda"
 
@@ -16050,7 +16047,7 @@ msgstr ""
 msgid ""
 "That night, as I slept, I dreamt again, for the first time since that first "
 "fateful night. Eloh came to me again, and this time she appeared in a vision "
-"as a beautiful glowing figure, as bright as the suns. She said “Have "
+"as a beautiful glowing figure, as bright as the suns. She said <i>“Have "
 "courage, for though soon you shall go through a time of darkness, all your "
 "trials shall be richly rewarded in the end. You must go under the northern "
 "mountains, not over them. You will find the ruins of an ancient watch tower "
@@ -16060,8 +16057,8 @@ msgid ""
 "my suns, I shall contact you. But beware those who lurk in the darkness, "
 "they hide from my light, and must not be trusted. I have no power in the "
 "dark, so you are my hand of justice. Punish the non-believers. Go now, and "
-"fear not the dark.” And again, just like before, I was woken up by a shout "
-"in the night."
+"fear not the dark.”</i> And again, just like before, I was woken up by a "
+"shout in the night."
 msgstr ""
 "Te noći dok sam spavao ponovo mi dođoše snovi, po prvi put poslije one "
 "sudbinske noći. Eloh mi je ponovo došla, i ovog puta se predstavi u vidu "
@@ -16883,6 +16880,13 @@ msgstr ""
 #: data/campaigns/Under_the_Burning_Suns/utils/traits.cfg:10
 msgid "Immune to drain, poison and plague"
 msgstr ""
+
+#~ msgid ""
+#~ "Small Mudcrawlers are beings of soil and water. They attack by spraying "
+#~ "boiling water on their foes, or by punching with their fists."
+#~ msgstr ""
+#~ "Mali muljogmizi su stvorenja od zemljišta i vode. Napadaju prašeći "
+#~ "ključalom vodom na svoje protivnike, ili udarajući pesnicama."
 
 # |, no-check-spell
 #~ msgid "Hahaha!.."

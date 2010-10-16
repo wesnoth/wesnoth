@@ -225,6 +225,10 @@ void playsingle_controller::whiteboard_execute_action(){
 	whiteboard_manager_->contextual_execute();
 }
 
+void playsingle_controller::whiteboard_execute_all_actions(){
+	whiteboard_manager_->execute_all_actions();
+}
+
 void playsingle_controller::whiteboard_delete_action(){
 	whiteboard_manager_->contextual_delete();
 }
@@ -238,17 +242,6 @@ void playsingle_controller::whiteboard_bump_down_action()
 {
 	whiteboard_manager_->contextual_bump_down_action();
 }
-
-
-#ifdef USRCMD2
-void playsingle_controller::user_command_2(){
-	menu_handler_.user_command_2();
-}
-
-void playsingle_controller::user_command_3(){
-	menu_handler_.user_command_3();
-}
-#endif
 
 void playsingle_controller::report_victory(
 	std::ostringstream &report, int player_gold, int remaining_gold,
@@ -1031,6 +1024,7 @@ bool playsingle_controller::can_execute_command(hotkey::HOTKEY_COMMAND command, 
 		case hotkey::HOTKEY_WB_TOGGLE:
 			return true;
 		case hotkey::HOTKEY_WB_EXECUTE_ACTION:
+		case hotkey::HOTKEY_WB_EXECUTE_ALL_ACTIONS:
 		case hotkey::HOTKEY_WB_DELETE_ACTION:
 			return resources::whiteboard->can_execute_hotkey();
 		case hotkey::HOTKEY_WB_BUMP_UP_ACTION:

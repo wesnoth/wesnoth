@@ -78,7 +78,4 @@ end
 
 -- [removeitem] is deprecated, so print a WML error and call [remove_item]
 -- Remove after 1.9.3
-function wml_actions.removeitem(cfg)
-	wml_actions.remove_item(cfg)
-	helper.wml_error "Usage of [removeitem] is deprecated; support will be removed in 1.9.3. Use [remove_item] instead."
-end
+wml_actions.removeitem = helper.deprecate("Usage of [removeitem] is deprecated; support will be removed in 1.9.3. Use [remove_item] instead.", wml_actions.remove_item)

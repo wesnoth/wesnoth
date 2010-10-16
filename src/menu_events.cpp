@@ -3619,23 +3619,6 @@ void menu_handler::clear_messages()
 	gui_->clear_chat_messages();	// also clear debug-messages and WML-error-messages
 }
 
-#ifdef USRCMD2
-// not used yet - for future hotkey-commands:
-void menu_handler::user_command_2()
-{
-	gui2::show_transient_message(*gui_.video(), "Test", "User-Command#2");
-	//sound::play_bell(game_config::sounds::turn_bell);
-	sound::play_bell("bell.wav");
-}
-
-void menu_handler::user_command_3()
-{
-	gui2::show_transient_message(*gui_.video(), "Info", _("User-Command#3"));
-	//gui2::show_error_message(disp().video(), "User-Command#3");
-	//sound::play_sound("heal.wav");
-	sound::play_sound("select.wav");
-}
-#endif
 void menu_handler::change_controller(const std::string& side, const std::string& controller)
 {
 	config cfg;

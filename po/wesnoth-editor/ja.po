@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.7.x-SVN\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-09-13 11:01+0200\n"
+"POT-Creation-Date: 2010-10-03 21:59+0200\n"
 "PO-Revision-Date: 2010-01-31 12:03+0900\n"
 "Last-Translator: \n"
 "Language-Team: none\n"
@@ -181,23 +181,23 @@ msgstr "ウィンドウ"
 msgid "villages"
 msgstr "村"
 
-#: src/editor/editor_controller.cpp:123
+#: src/editor/editor_controller.cpp:124
 msgid "Quit Editor"
 msgstr "エディタを終了"
 
-#: src/editor/editor_controller.cpp:278
+#: src/editor/editor_controller.cpp:279
 msgid "Fatal error"
 msgstr "致命的なエラー"
 
-#: src/editor/editor_controller.cpp:303 src/editor/editor_controller.cpp:1064
+#: src/editor/editor_controller.cpp:304 src/editor/editor_controller.cpp:1109
 msgid "(New Map)"
 msgstr "（新規マップ）"
 
-#: src/editor/editor_controller.cpp:309
+#: src/editor/editor_controller.cpp:310
 msgid "Do you really want to quit?"
 msgstr "本当に終了してもよろしいですか？"
 
-#: src/editor/editor_controller.cpp:311
+#: src/editor/editor_controller.cpp:312
 msgid ""
 "Do you really want to quit? Changes in the map since the last save will be "
 "lost."
@@ -205,7 +205,7 @@ msgstr ""
 "本当に終了してもよろしいですか？ 最後に保存したところからのマップの変更は失わ"
 "れます。"
 
-#: src/editor/editor_controller.cpp:313
+#: src/editor/editor_controller.cpp:314
 msgid ""
 "Do you really want to quit? The following maps were modified and all changes "
 "since the last save will be lost:"
@@ -213,76 +213,76 @@ msgstr ""
 "本当に終了してもよろしいですか？ マップは変更されていますが、最後に保存したと"
 "ころからの変更は全て失われます。"
 
-#: src/editor/editor_controller.cpp:318
+#: src/editor/editor_controller.cpp:319
 msgid "Quit"
 msgstr "終了"
 
-#: src/editor/editor_controller.cpp:375
+#: src/editor/editor_controller.cpp:384
 msgid "No editor time-of-day found."
 msgstr "エディタの時刻設定が見つかりません。"
 
-#: src/editor/editor_controller.cpp:411
+#: src/editor/editor_controller.cpp:420
 msgid "Unsaved Changes"
 msgstr "保存されていない変更点"
 
-#: src/editor/editor_controller.cpp:412
+#: src/editor/editor_controller.cpp:421
 msgid ""
 "Do you want to discard all changes you made to the map since the last save?"
 msgstr "最後に保存したところからの変更を全て放棄しますか？"
 
-#: src/editor/editor_controller.cpp:430
+#: src/editor/editor_controller.cpp:439
 msgid "Choose a Map to Open"
 msgstr "読み込むマップを選択"
 
-#: src/editor/editor_controller.cpp:465
+#: src/editor/editor_controller.cpp:474
 msgid "Save the Map As"
 msgstr "マップに名前を付けて保存"
 
-#: src/editor/editor_controller.cpp:469
+#: src/editor/editor_controller.cpp:478
 msgid "The file already exists. Do you want to overwrite it?"
 msgstr "マップはすでに存在します。上書きしますか？"
 
-#: src/editor/editor_controller.cpp:486
+#: src/editor/editor_controller.cpp:495
 msgid "No random map generators found."
 msgstr "ランダムマップジェネレータがありません。"
 
-#: src/editor/editor_controller.cpp:499 src/editor/editor_controller.cpp:503
+#: src/editor/editor_controller.cpp:508 src/editor/editor_controller.cpp:512
 msgid "Map creation failed."
 msgstr "マップの作成に失敗しました。"
 
-#: src/editor/editor_controller.cpp:518
+#: src/editor/editor_controller.cpp:527
 msgid "Choose a mask to apply"
 msgstr "適用するマスクを選択"
 
-#: src/editor/editor_controller.cpp:525
+#: src/editor/editor_controller.cpp:534
 msgid "Error loading mask"
 msgstr "マスクの読み込みに失敗"
 
-#: src/editor/editor_controller.cpp:540
+#: src/editor/editor_controller.cpp:549
 msgid "Choose target map"
 msgstr "ターゲットマップを選択"
 
-#: src/editor/editor_controller.cpp:547 src/editor/editor_controller.cpp:711
+#: src/editor/editor_controller.cpp:556 src/editor/editor_controller.cpp:751
 msgid "Error loading map"
 msgstr "マップの読み込みに失敗"
 
-#: src/editor/editor_controller.cpp:625 src/editor/editor_controller.cpp:667
+#: src/editor/editor_controller.cpp:665 src/editor/editor_controller.cpp:707
 msgid "This map is already open."
 msgstr "このマップは既に開かれています。"
 
-#: src/editor/editor_controller.cpp:646
+#: src/editor/editor_controller.cpp:686
 msgid "Map saved."
 msgstr "マップを保存しました。"
 
-#: src/editor/editor_controller.cpp:690
+#: src/editor/editor_controller.cpp:730
 msgid "Loaded embedded map data"
 msgstr "読み込まれた埋め込みマップデータ"
 
-#: src/editor/editor_controller.cpp:691 src/editor/editor_controller.cpp:705
+#: src/editor/editor_controller.cpp:731 src/editor/editor_controller.cpp:745
 msgid "Map loaded from scenario"
 msgstr "シナリオからを読み込まれたマップ"
 
-#: src/editor/editor_controller.cpp:701
+#: src/editor/editor_controller.cpp:741
 msgid ""
 "Loaded referenced map file:\n"
 "$new"
@@ -290,31 +290,31 @@ msgstr ""
 "読み込まれた参照マップ:\n"
 "$new"
 
-#: src/editor/editor_controller.cpp:1094
+#: src/editor/editor_controller.cpp:1139
 msgid "Undo"
 msgstr "元に戻す"
 
-#: src/editor/editor_controller.cpp:1096
+#: src/editor/editor_controller.cpp:1141
 msgid "Can’t Undo"
 msgstr "アンドゥできません"
 
-#: src/editor/editor_controller.cpp:1100
+#: src/editor/editor_controller.cpp:1145
 msgid "Redo"
 msgstr "やり直す"
 
-#: src/editor/editor_controller.cpp:1102
+#: src/editor/editor_controller.cpp:1147
 msgid "Can’t Redo"
 msgstr "リドゥできません"
 
-#: src/editor/editor_controller.cpp:1107
+#: src/editor/editor_controller.cpp:1152
 msgid "Auto-update Terrain Transitions: Yes"
 msgstr "地形変化を自動的に更新: 有効"
 
-#: src/editor/editor_controller.cpp:1110
+#: src/editor/editor_controller.cpp:1155
 msgid "Auto-update Terrain Transitions: Partial"
 msgstr "地形変化を自動的に更新: 部分的"
 
-#: src/editor/editor_controller.cpp:1114
+#: src/editor/editor_controller.cpp:1159
 msgid "Auto-update Terrain Transitions: No"
 msgstr "地形変化を自動的に更新: 無効"
 

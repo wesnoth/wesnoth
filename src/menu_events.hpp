@@ -85,10 +85,6 @@ public:
 	void custom_command();
 	void ai_formula();
 	void clear_messages();
-#ifdef USRCMD2
-	void user_command_2();
-	void user_command_3();
-#endif
 	std::vector<std::string> get_commands_list();
 
 	unit_map::iterator current_unit();

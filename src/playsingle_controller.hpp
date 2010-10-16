@@ -61,13 +61,10 @@ public:
 	// Whiteboard hotkeys
 	virtual void whiteboard_toggle();
 	virtual void whiteboard_execute_action();
+	virtual void whiteboard_execute_all_actions();
 	virtual void whiteboard_delete_action();
 	virtual void whiteboard_bump_up_action();
 	virtual void whiteboard_bump_down_action();
-#ifdef USRCMD2
-	virtual void user_command_2();
-	virtual void user_command_3();
-#endif
 	void linger();
 
 	virtual void force_end_level(LEVEL_RESULT res)

@@ -148,6 +148,24 @@ private:
 };
 
 /**
+ * Mask (MASK) function.
+ */
+
+class mask_function : public function_base
+{
+public:
+	mask_function(const surface& mask, int x, int y)
+		: mask_(mask), x_(x), y_(y)
+	{}
+	virtual surface operator()(const surface& src) const;
+
+private:
+	surface mask_;
+	int x_;
+	int y_;
+};
+
+/**
  * LIGHT (L) function.
  */
 

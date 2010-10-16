@@ -35,4 +35,11 @@ public class ApplicationWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
         configurer.setShowFastViewBars(true);
         configurer.setShowCoolBar(true);
     }
+
+    @Override
+    public void postWindowCreate()
+    {
+    	super.postWindowCreate();
+    	this.getWindowConfigurer().getWindow().getActivePage().hideActionSet("org.eclipse.ui.run");
+    }
 }

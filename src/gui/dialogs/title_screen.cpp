@@ -23,6 +23,7 @@
 #include "gettext.hpp"
 #include "log.hpp"
 #include "gui/auxiliary/timer.hpp"
+#include "gui/auxiliary/tips.hpp"
 #include "gui/dialogs/language_selection.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
@@ -34,6 +35,8 @@
 #include "titlescreen.hpp"
 
 #include <boost/bind.hpp>
+
+#include <algorithm>
 
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
@@ -56,7 +59,7 @@ namespace gui2 {
  * language & & button & m &
  *         The button to change the language. $
  *
- * tips & & multi_page & o &
+ * tips & & multi_page & m &
  *         A multi_page to hold all tips, when this widget is used the area of
  *         the tips doesn't need to be resized when the next or previous button
  *         is pressed. $
@@ -93,10 +96,8 @@ static bool hotkey(twindow& window, const gui::TITLE_RESULT title_result)
 
 ttitle_screen::ttitle_screen()
 	: video_(NULL)
-	, tips_()
 	, logo_timer_id_(0)
 {
-	read_tips_of_day(tips_);
 }
 
 ttitle_screen::~ttitle_screen()
@@ -105,6 +106,7 @@ ttitle_screen::~ttitle_screen()
 		remove_timer(logo_timer_id_);
 	}
 }
+
 static void animate_logo(
 		  unsigned long& timer_id
 		, unsigned& percentage
@@ -122,7 +124,6 @@ static void animate_logo(
 	 * animated once so the cost is only once.
 	 */
 	window.set_dirty();
-
 
 	if(percentage == 100) {
 		remove_timer(timer_id);
@@ -277,33 +278,29 @@ void ttitle_screen::pre_show(CVideo& video, twindow& window)
 		variant(_("Version") + std::string(" ") + game_config::revision));
 
 	/**** Set the tip of the day ****/
-	/*
-	 * NOTE: although the tips are set in the multi_page only the first page
-	 * will be used and the widget content is set there. This is a kind of
-	 * hack, but will be fixed when this dialog will be moved out of
-	 * --new-widgets. Then the tips part of the code no longer needs to be
-	 *  shared with the other title screen and can be moved here.
-	 */
-	tmulti_page* tip_pages =
-			find_widget<tmulti_page>(&window, "tips", false, false);
-	if(tip_pages) {
-		foreach(const config& tip, tips_.child_range("tip")) {
+	tmulti_page& tip_pages = find_widget<tmulti_page>(&window, "tips", false);
 
-			string_map widget;
-			std::map<std::string, string_map> page;
-
-			widget["label"] = tip["text"];
-			widget["use_markup"] = "true";
-			page["tip"] = widget;
-
-			widget["label"] = tip["source"];
-			widget["use_markup"] = "true";
-			page["source"] = widget;
-
-			tip_pages->add_page(page);
-
-		}
+	std::vector<ttip> tips(settings::get_tips());
+	if(tips.empty()) {
+		WRN_CF << "There are not tips of day available.\n";
 	}
+
+	foreach(const ttip& tip, tips) {
+
+		string_map widget;
+		std::map<std::string, string_map> page;
+
+		widget["label"] = tip.text();
+		widget["use_markup"] = "true";
+		page["tip"] = widget;
+
+		widget["label"] = tip.source();
+		widget["use_markup"] = "true";
+		page["source"] = widget;
+
+		tip_pages.add_page(page);
+	}
+
 	update_tip(window, true);
 
 	connect_signal_mouse_left_click(
@@ -359,46 +356,25 @@ void ttitle_screen::post_show(twindow& /*window*/)
 
 void ttitle_screen::update_tip(twindow& window, const bool previous)
 {
-	next_tip_of_day(tips_, previous);
-	const config *tip = get_tip_of_day(tips_);
-	if(!tip) {
-		WRN_CF << "There are not tips of day defined.\n";
+	tmulti_page& tips = find_widget<tmulti_page>(&window, "tips", false);
+	if(tips.get_page_count() == 0) {
 		return;
 	}
 
-	find_widget<tlabel>(&window, "tip", false).set_label((*tip)["text"]);
-	find_widget<tlabel>(&window, "source", false).set_label((*tip)["source"]);
-
-	/**
-	 * @todo Need to move the real tips "calculation" to this file so we can
-	 * move through the pages.
-	 *
-	 */
-	if(!find_widget<tmulti_page>(&window, "tips", false, false)) {
-		window.invalidate_layout();
+	int page = tips.get_selected_page();
+	if(previous) {
+		if(page <= 0) {
+			page = tips.get_page_count();
+		}
+		--page;
+	} else {
+		++page;
+		if(static_cast<unsigned>(page) >= tips.get_page_count()) {
+			page = 0;
+		}
 	}
-}
 
-void ttitle_screen::next_tip(twidget* caller)
-{
-	ttitle_screen *dialog = dynamic_cast<ttitle_screen*>(caller->dialog());
-	assert(dialog);
-
-	twindow *window = caller->get_window();
-	assert(window);
-
-	dialog->update_tip(*window, true);
-}
-
-void ttitle_screen::previous_tip(twidget* caller)
-{
-	ttitle_screen *dialog = dynamic_cast<ttitle_screen*>(caller->dialog());
-	assert(dialog);
-
-	twindow *window = caller->get_window();
-	assert(window);
-
-	dialog->update_tip(*window, false);
+	tips.select_page(page);
 }
 
 } // namespace gui2

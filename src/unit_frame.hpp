@@ -86,9 +86,9 @@ class frame_parameters{
 	int y;
 	int directional_x;
 	int directional_y;
+	bool auto_vflip;
+	bool auto_hflip;
 	int drawing_layer;
-	bool in_hex;
-	bool diagonal_in_hex;
 } ;
 /**
  * easily build frame parameters with the serialized constructors
@@ -113,6 +113,8 @@ class frame_builder {
 		frame_builder & y(const std::string& y);
 		frame_builder & directional_x(const std::string& directional_x);
 		frame_builder & directional_y(const std::string& directional_y);
+		frame_builder & auto_vflip(const bool auto_vflip);
+		frame_builder & auto_hflip(const bool auto_hflip);
 		frame_builder & drawing_layer(const std::string& drawing_layer);
 		/** getters for the different parameters */
 	private:
@@ -137,6 +139,8 @@ class frame_builder {
 		std::string y_;
 		std::string directional_x_;
 		std::string directional_y_;
+		bool auto_vflip_;
+		bool auto_hflip_;
 		std::string drawing_layer_;
 };
 /**
@@ -181,6 +185,8 @@ class frame_parsed_parameters {
 		progressive_int y_;
 		progressive_int directional_x_;
 		progressive_int directional_y_;
+		bool auto_vflip_;
+		bool auto_hflip_;
 		progressive_int drawing_layer_;
 };
 /** Describe a unit's animation sequence. */

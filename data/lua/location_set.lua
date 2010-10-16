@@ -17,6 +17,14 @@ function methods:empty()
 	return next(self.values)
 end
 
+function methods:size()
+	local sz = 0
+	for p,v in pairs(self.values) do
+		sz = sz + 1
+	end
+	return sz
+end
+
 function methods:clear()
 	self.values = {}
 end

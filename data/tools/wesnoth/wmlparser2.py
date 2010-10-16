@@ -448,15 +448,18 @@ class Parser:
 #                                                                      #
 ########################################################################
 
-def strify(string):
-    """
+try:
+    strify = __import__("json").dumps
+except ImportError:
+    def strify(string):
+        """
 Massage a string into what appears to be a JSON-compatible form.
 This can be replaced with json.dumps() in python 2.6.
 """
-    s = repr(string)
-    front = s.index("'")
-    s = s.replace('"', '\\"')
-    return '"%s"' % s[front+1:len(s)-1]
+        s = repr(string)
+        front = s.index("'")
+        s = s.replace('"', '\\"')
+        return '"%s"' % s[front+1:len(s)-1]
 
 def jsonify(tree, verbose=False, depth=0):
     """
@@ -468,18 +471,40 @@ If verbose, insert a linebreak after every brace and comma (put every item on it
     first = True
     sdepth1 = "\n" + " " * depth
     sdepth2 = sdepth1 + " "
-    for child in tree.data:
+    for pair in tree.speedy_tags.iteritems():
         if first:
             first = False
         else:
             sys.stdout.write(",")
         if verbose:
             sys.stdout.write(sdepth2)
-        print'"%s":' % child.name,
+        print '"%s":' % pair[0],
+        if verbose:
+            sys.stdout.write(sdepth1)
+        print '[',
+        first_tag = True
+        for tag in pair[1]:
+            if first_tag:
+                first_tag = False
+            else:
+                sys.stdout.write(",")
+            if verbose:
+                sys.stdout.write(sdepth2)
+            jsonify(tag, verbose, depth + 2)
+        if verbose:
+            sys.stdout.write(sdepth2)
+        sys.stdout.write("]")
+    for child in tree.data:
         if isinstance(child, TagNode):
-            jsonify(child, verbose, depth + 1)
+            continue
+        if first:
+            first = False
         else:
-            print strify(child.get_text()),
+            sys.stdout.write(",")
+        if verbose:
+            sys.stdout.write(sdepth2)
+        print '"%s":' % child.name,
+        print strify(child.get_text()),
     if verbose:
         sys.stdout.write(sdepth1)
     sys.stdout.write("}")

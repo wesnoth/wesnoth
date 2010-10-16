@@ -120,6 +120,7 @@ wesnoth_source = \
 	gui/auxiliary/event/handler.cpp \
 	gui/auxiliary/log.cpp \
 	gui/auxiliary/timer.cpp \
+	gui/auxiliary/tips.cpp \
 	gui/auxiliary/widget_definition.cpp \
 	gui/auxiliary/widget_definition/button.cpp \
 	gui/auxiliary/widget_definition/horizontal_scrollbar.cpp \
