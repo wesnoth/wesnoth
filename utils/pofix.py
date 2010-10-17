@@ -1457,6 +1457,9 @@ stringfixes = {
 ("years, however, I ha' noticed that there", "years, however, I ha’ noticed that there"),
 ("you shall be free!' Then he was", "you shall be free!” Then he was"),
 ("your kind that won't leave US in", "your kind that won’t leave <i>us</i> in"),
+
+# Use American spelling
+("Judgement", "Judgment"),
 ),
 
 "wesnoth-thot" : (
