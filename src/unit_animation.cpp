@@ -175,7 +175,7 @@ unit_animation::unit_animation(int start_time,
 		hits_(),
 		value2_(),
 		sub_anims_(),
-		unit_anim_(start_time),
+		unit_anim_(start_time,true),
 		src_(),
 		dst_(),
 		invalidated_(false),
@@ -373,7 +373,7 @@ void unit_animation::fill_initial_animations( std::vector<unit_animation> & anim
 
 
 	if( animation_base.empty() )
-		animation_base.push_back(unit_animation(0,frame_builder().image(default_image).duration(1),"",unit_animation::DEFAULT_ANIM));
+		animation_base.push_back(unit_animation(0,frame_builder().image(default_image).duration(1).auto_hflip(true),"",unit_animation::DEFAULT_ANIM));
 
 	animations.push_back(unit_animation(0,frame_builder().image(default_image).duration(1),"_disabled_",0));
 	animations.push_back(unit_animation(0,frame_builder().image(default_image).duration(300).

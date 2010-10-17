@@ -88,10 +88,10 @@ class unit_animation
 		class particule:public animated<unit_frame>
 	{
 		public:
-			explicit particule(int start_time=0) :
+			explicit particule(int start_time=0,bool primary = false) :
 				animated<unit_frame>(start_time),
 				accelerate(true),
-				parameters_(),
+				parameters_(frame_builder().auto_hflip(primary)),
 				halo_id_(0),
 				last_frame_begin_time_(0)
 				{};
