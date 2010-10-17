@@ -595,7 +595,7 @@ void create::process_event()
 				preferences::fog());
 
 			shroud_game_.set_check(map_settings ?
-				cfg["shroud"].to_bool(true) :
+				cfg["shroud"].to_bool(false) :
 				preferences::shroud());
 		}
 

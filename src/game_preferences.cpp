@@ -495,7 +495,7 @@ void set_fog(bool value)
 
 bool shroud()
 {
-	return preferences::get("mp_shroud", true);
+	return preferences::get("mp_shroud", false);
 }
 
 void set_shroud(bool value)
