@@ -99,10 +99,12 @@ std::string gamemap::get_terrain_editor_string(const t_translation::t_terrain& t
 {
 	std::string str =
 		get_terrain_info(terrain).editor_name();
+	std::string desc =
+		get_terrain_info(terrain).description();
 
-	if(str != get_terrain_info(terrain).description()) {
+	if(str != desc) {
 		str += "/";
-		str += get_terrain_info(terrain).description();
+		str += desc;
 	}
 
 	str += " ";
