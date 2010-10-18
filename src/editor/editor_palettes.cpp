@@ -37,14 +37,6 @@ static bool is_valid_terrain(t_translation::t_terrain c) {
 	return !(c == t_translation::VOID_TERRAIN || c == t_translation::FOGGED);
 }
 
-static const std::string& terrain_display_name(const terrain_type& t_info)
-{
-	if(t_info.editor_name().empty()) {
-		return t_info.name();
-	}
-	return t_info.editor_name();
-}
-
 terrain_group::terrain_group(const config& cfg, display& gui):
 	id(cfg["id"]), name(cfg["name"].t_str()),
 	button(gui.video(), "", gui::button::TYPE_CHECK, cfg["icon"]),
@@ -311,7 +303,7 @@ void terrain_palette::update_selected_terrains()
 std::string terrain_palette::get_terrain_string(const t_translation::t_terrain t)
 {
 	std::stringstream str;
-	const std::string& name = terrain_display_name(map().get_terrain_info(t));
+	const std::string& name = map().get_terrain_info(t).editor_name();
 
 	const t_translation::t_list& underlying = map().underlying_union_terrain(t);
 	str << name;
@@ -320,7 +312,7 @@ std::string terrain_palette::get_terrain_string(const t_translation::t_terrain t
 		for(t_translation::t_list::const_iterator i = underlying.begin();
 			i != underlying.end(); ++i) {
 
-			str << terrain_display_name(map().get_terrain_info(*i));
+			str << map().get_terrain_info(*i).editor_name();
 			if(i+1 != underlying.end()) {
 				str << ",";
 			}
