@@ -20,7 +20,7 @@
 #include "config.hpp"
 #include "foreach.hpp"
 #include "game_preferences.hpp"
-#include "serialization/string_utils.cpp"
+#include "serialization/string_utils.hpp"
 
 namespace gui2 {
 
