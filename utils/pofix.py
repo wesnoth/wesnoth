@@ -2322,6 +2322,11 @@ stringfixes = {
 ("young upstart called Kapou'e. He", "young upstart called Kapou’e. He"),
 
 ("eaten that Grüü,", "eaten that, Grüü"),
+
+# Fix capitalization
+("\"Shan Taum The Smug\"", "\"Shan Taum the Smug\""),
+("The Siege Of Barag Gór", "The Siege of Barag Gór"),
+("End Of Peace", "End of Peace"),
 ),
 
 "wesnoth-tb" : (
