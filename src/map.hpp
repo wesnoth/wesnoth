@@ -51,6 +51,8 @@ public:
 	 * Get a formatted terrain name -- terrain (underlying, terrains)
 	 */
 	std::string get_terrain_string(const t_translation::t_terrain& terrain) const;
+	std::string get_terrain_editor_string(const t_translation::t_terrain& terrain) const;
+	std::string get_underlying_terrain_string(const t_translation::t_terrain& terrain) const;
 
 	const t_translation::t_list& underlying_mvt_terrain(const map_location& loc) const
 		{ return underlying_mvt_terrain(get_terrain(loc)); }
@@ -60,6 +62,8 @@ public:
 		{ return underlying_union_terrain(get_terrain(loc)); }
 	std::string get_terrain_string(const map_location& loc) const
 		{ return get_terrain_string(get_terrain(loc)); }
+	std::string get_terrain_editor_string(const map_location& loc) const
+		{ return get_terrain_editor_string(get_terrain(loc)); }
 	bool is_village(t_translation::t_terrain terrain) const
 		{ return get_terrain_info(terrain).is_village(); }
 	int gives_healing(t_translation::t_terrain terrain) const

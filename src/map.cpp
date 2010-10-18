@@ -82,23 +82,53 @@ const t_translation::t_list& gamemap::underlying_union_terrain(t_translation::t_
 	}
 }
 
+
+
 std::string gamemap::get_terrain_string(const t_translation::t_terrain& terrain) const
 {
-	std::stringstream ss;
-	const std::string& name = get_terrain_info(terrain).description();
+	std::string str =
+		get_terrain_info(terrain).description();
+
+	str += " ";
+	str += get_underlying_terrain_string(terrain);
+
+	return str;
+}
+
+std::string gamemap::get_terrain_editor_string(const t_translation::t_terrain& terrain) const
+{
+	std::string str =
+		get_terrain_info(terrain).editor_name();
+
+	if(str != get_terrain_info(terrain).description()) {
+		str += "/";
+		str += get_terrain_info(terrain).description();
+	}
+
+	str += " ";
+	str += get_underlying_terrain_string(terrain);
+
+	return str;
+}
+
+std::string gamemap::get_underlying_terrain_string(const t_translation::t_terrain& terrain) const
+{
+	std::string str;
+
 	const t_translation::t_list& underlying = underlying_union_terrain(terrain);
 	assert(!underlying.empty());
-	ss << name;
+
 	if(underlying.size() > 1 || underlying[0] != terrain) {
-		ss << " (";
+		str += "(";
         t_translation::t_list::const_iterator i = underlying.begin();
-        ss << get_terrain_info(*i).name();
+        str += get_terrain_info(*i).name();
         while (++i != underlying.end()) {
-            ss << "," << get_terrain_info(*i).name();
+			str += "," + get_terrain_info(*i).name();
         }
-		ss << ")";
+		str += ")";
 	}
-	return ss.str();
+
+	return str;
 }
 
 void gamemap::write_terrain(const map_location &loc, config& cfg) const

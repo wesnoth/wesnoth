@@ -37,6 +37,14 @@ static bool is_valid_terrain(t_translation::t_terrain c) {
 	return !(c == t_translation::VOID_TERRAIN || c == t_translation::FOGGED);
 }
 
+static const std::string& terrain_display_name(const terrain_type& t_info)
+{
+	if(t_info.editor_name().empty()) {
+		return t_info.name();
+	}
+	return t_info.editor_name();
+}
+
 terrain_group::terrain_group(const config& cfg, display& gui):
 	id(cfg["id"]), name(cfg["name"].t_str()),
 	button(gui.video(), "", gui::button::TYPE_CHECK, cfg["icon"]),
@@ -98,6 +106,7 @@ terrain_palette::terrain_palette(display &gui, const size_specs &sizes,
 	foreach (const t_translation::t_terrain& t, terrains_) {
 		const terrain_type& t_info = map().get_terrain_info(t);
 		DBG_ED << "Palette: processing terrain " << t_info.name()
+			<< "(editor name: '" << t_info.editor_name() << "') "
 			<< "(" << t_info.number() << ")"
 			<< ": " << t_info.editor_group() << "\n";
 
@@ -302,7 +311,8 @@ void terrain_palette::update_selected_terrains()
 std::string terrain_palette::get_terrain_string(const t_translation::t_terrain t)
 {
 	std::stringstream str;
-	const std::string& name = map().get_terrain_info(t).name();
+	const std::string& name = terrain_display_name(map().get_terrain_info(t));
+
 	const t_translation::t_list& underlying = map().underlying_union_terrain(t);
 	str << name;
 	if(underlying.size() != 1 || underlying[0] != t) {
@@ -310,7 +320,7 @@ std::string terrain_palette::get_terrain_string(const t_translation::t_terrain t
 		for(t_translation::t_list::const_iterator i = underlying.begin();
 			i != underlying.end(); ++i) {
 
-			str << map().get_terrain_info(*i).name();
+			str << terrain_display_name(map().get_terrain_info(*i));
 			if(i+1 != underlying.end()) {
 				str << ",";
 			}
@@ -501,7 +511,7 @@ void terrain_palette::draw(bool force) {
 		draw_rectangle(dstrect.x, dstrect.y, image->w, image->h, color, screen);
 
 		bool is_core = non_core_terrains_.find(terrain) == non_core_terrains_.end();
-		tooltip_text << map().get_terrain_string(terrain);
+		tooltip_text << map().get_terrain_editor_string(terrain);
 		if (gui_.get_draw_terrain_codes()) {
 			tooltip_text << " - " << terrain;
 		}
