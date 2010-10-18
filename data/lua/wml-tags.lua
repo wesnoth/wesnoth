@@ -279,6 +279,20 @@ function wml_actions.scroll_to_unit(cfg)
 	wesnoth.scroll_to_tile(u.x, u.y, cfg.check_fogged)
 end
 
+function wml_actions.select_unit(cfg)
+	local u = wesnoth.get_units(cfg)[1]
+	if not u then return end
+	local fire_event = cfg.fire_event
+	local hilight = (cfg.hilight or true)
+
+	wesnoth.select_hex(u.x, u.y)
+
+	if hilight then wesnoth.hilight_hex(u.x, u.y) end
+	if fire_event then
+		wesnoth.fire_event("select", u.x, u.y)
+	end
+end
+
 function wml_actions.unit_overlay(cfg)
 	local img = cfg.image
 	for i,u in ipairs(wesnoth.get_units(cfg)) do

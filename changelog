@@ -69,6 +69,8 @@ Version 1.9.1+svn:
    * added new parameters directional_x and directional_y to animations
    * added new parameters auto_vflip and auto_hflip to animations
    * Made it so that units affected by [hide_unit] don't appear on the minimap (FR #16796)
+   * New [select_unit] tag, with optional fire_event (def. no) and hilight_hex (def. yes)
+     attributes (FR #16819)
  * Miscellaneous and bugfixes:
    * Changed: Lowered severity of some gui2 timer log messages.
    * Units created in debug mode now play their recruit animation (FR #16766).
