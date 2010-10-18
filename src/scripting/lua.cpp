@@ -1341,6 +1341,20 @@ static int intf_require(lua_State *L)
 }
 
 /**
+ * Hilights the given location on the map.
+ * - Args 1,2: location.
+ */
+static int intf_hilight_hex(lua_State *L)
+{
+	int x = luaL_checkinteger(L, 1) - 1;
+	int y = luaL_checkinteger(L, 2) - 1;
+	const map_location loc(x, y);
+	resources::screen->highlight_hex(loc);
+	resources::screen->display_unit_hex(loc);
+	return 0;
+}
+
+/**
  * Returns whether the first side is an enemy of the second one.
  * - Args 1,2: side numbers.
  * - Ret 1: boolean.
@@ -2345,6 +2359,18 @@ static int intf_scroll_to_tile(lua_State *L)
 	return 0;
 }
 
+/**
+ * Selects the given location on the map.
+ * - Args 1,2: location.
+ */
+static int intf_select_hex(lua_State *L)
+{
+	int x = luaL_checkinteger(L, 1) - 1;
+	int y = luaL_checkinteger(L, 2) - 1;
+	resources::screen->select_hex(map_location(x, y));
+	return 0;
+}
+
 struct lua_synchronize : mp_sync::user_choice
 {
 	lua_State *L;
@@ -2851,6 +2877,7 @@ LuaKernel::LuaKernel(const config &cfg)
 		{ "get_units",                &intf_get_units                },
 		{ "get_variable",             &intf_get_variable             },
 		{ "get_village_owner",        &intf_get_village_owner        },
+		{ "hilight_hex",              &intf_hilight_hex              },
 		{ "is_enemy",                 &intf_is_enemy                 },
 		{ "match_location",           &intf_match_location           },
 		{ "match_unit",               &intf_match_unit               },
@@ -2861,6 +2888,7 @@ LuaKernel::LuaKernel(const config &cfg)
 		{ "remove_tile_overlay",      &intf_remove_tile_overlay      },
 		{ "require",                  &intf_require                  },
 		{ "scroll_to_tile",           &intf_scroll_to_tile           },
+		{ "select_hex",               &intf_select_hex               },
 		{ "set_dialog_callback",      &intf_set_dialog_callback      },
 		{ "set_dialog_canvas",        &intf_set_dialog_canvas        },
 		{ "set_dialog_value",         &intf_set_dialog_value         },
