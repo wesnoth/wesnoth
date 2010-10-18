@@ -1085,6 +1085,9 @@ stringfixes = {
 ("4p — Isar's Cross", "4p — Isar’s Cross"),
 ("6p — Crusaders' Field", "6p — Crusaders’ Field"),
 ("Frankly, I haven't got a", "Frankly, I haven’t got a"),
+
+# Fix spelling
+("enemy spawnpoints and types", "enemy spawn points and types"),
 ),
 
 "wesnoth-nr" : (
