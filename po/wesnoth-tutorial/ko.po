@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-05-24 17:53+0200\n"
-"PO-Revision-Date: 2006-03-19 13:20+0100\n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2010-10-18 11:51+0900\n"
+"Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -17,11 +17,13 @@ msgid ""
 "\n"
 "<big>Click a mouse button or press spacebar to continue...</big>"
 msgstr ""
+"\n"
+"<big>마우스 클릭이나 스페이스바로 넘어갑니다...</big>"
 
 #. [tutorial]: id=tutorial
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:49
 msgid "Wesnoth Tutorial"
-msgstr ""
+msgstr "Wesnoth 연습 게임"
 
 #. [side]: type=Fighter, id=student
 #. [command]
@@ -33,14 +35,14 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:295
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:296
 msgid "Konrad"
-msgstr ""
+msgstr "Konrad"
 
 #. [unit]: id=Delfador, type=Elder Mage
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:134
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:141
 msgid "Delfador"
-msgstr ""
+msgstr "Delfador"
 
 #. [objectives]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:149
@@ -51,21 +53,26 @@ msgid ""
 "Healing\n"
 "Recruiting"
 msgstr ""
+"당신은 다음 사항들의 기초를 익히게 됩니다:\n"
+"이동\n"
+"공격\n"
+"회복\n"
+"소집"
 
 #. [objective]: condition=win
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:151
 msgid "Destroy a fierce enemy"
-msgstr ""
+msgstr "사나운 적(?)을 격파하라"
 
 #. [objective]: condition=lose
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:155
 msgid "Get yourself killed"
-msgstr ""
+msgstr "자살한다"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:167
 msgid "Who would you like to play?"
-msgstr ""
+msgstr "주인공을 누구로 할까요?"
 
 #. [unit]: type=Fighteress, id=student
 #. [command]
@@ -75,13 +82,13 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:191
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:365
 msgid "Li'sar"
-msgstr ""
+msgstr "Li'sar"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:206
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:213
 msgid "<big>Welcome to Wesnoth!</big>"
-msgstr ""
+msgstr "<big>Wesnoth 세계에 오신걸 환영합니다!</big>"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:208
@@ -89,6 +96,8 @@ msgid ""
 "\n"
 "For this tutorial, you are playing Konrad. "
 msgstr ""
+"\n"
+"당신은 이 연습 게임에서 Konrad의 역할을 하게 됩니다."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:209
@@ -96,7 +105,7 @@ msgstr ""
 msgid ""
 "You are standing in the keep, and your mentor Delfador is on the east side "
 "of the river."
-msgstr ""
+msgstr "당신은 본성에 서 있으며, 당신의 멘토 Delfador가 강의 동쪽에 있습니다."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:215
@@ -104,6 +113,8 @@ msgid ""
 "\n"
 "For this tutorial, you are playing Li'sar. "
 msgstr ""
+"\n"
+"당신은 이 연습 게임에서 Li'sar의 역할을 하게 됩니다."
 
 #. [event]
 #. [event]: id=student moves 0}
@@ -112,7 +123,7 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:393
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:513
 msgid "Left click on Konrad"
-msgstr ""
+msgstr "Konrad를 클릭"
 
 #. [event]
 #. [event]: id=student moves 0}
@@ -121,7 +132,7 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:394
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:514
 msgid "Left click on Li'sar"
-msgstr ""
+msgstr "Li'sar를 클릭"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:240
@@ -129,6 +140,8 @@ msgid ""
 "<big>You have selected Konrad.</big>\n"
 "The places he can move to are highlighted."
 msgstr ""
+"<big>당신은 Konrad를 선택했습니다.</big>\n"
+"그가 움직일 수 있는 부분이 밝게 표시됩니다."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:247
@@ -136,26 +149,28 @@ msgid ""
 "<big>You have selected Li'sar.</big>\n"
 "The places she can move to are highlighted."
 msgstr ""
+"<big>당신은 Li'sar를 선택했습니다.</big>\n"
+"그녀가 움직일 수 있는 부분이 밝게 표시됩니다."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:252
 msgid "HERE"
-msgstr ""
+msgstr "여기"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:258
 msgid "Move Konrad next to Delfador by clicking on the tile marked 'HERE'."
-msgstr ""
+msgstr "'여기'로 표시된 타일을 클릭해서 Konrad를 Delfador 옆으로 움직이세요."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:262
 msgid "Move Li'sar next to Delfador by clicking on the tile marked 'HERE'."
-msgstr ""
+msgstr "'여기'로 표시된 타일을 클릭해서 Li'sar를 Delfador 옆으로 움직이세요."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:267
 msgid "Left click on tile labeled HERE"
-msgstr ""
+msgstr "여기라고 씌어진 타일을 클릭"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:294
@@ -164,48 +179,51 @@ msgid ""
 "You moved to the wrong place! After this message, you can press 'u' to undo, "
 "then try again."
 msgstr ""
+"<big>이런!</big>\n"
+"당신은 잘못된 곳으로 이동했습니다! 이 메세지가 닫히고 나면, 'u'를 눌러서 행동"
+"을 취소하고 다시 시도할 수 있습니다."
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:316
 msgid "Good morning, Delfador! Is it time to attack things?"
-msgstr ""
+msgstr "좋은 아침이에요, Delfador! 이제 뭔가 공격해볼 수 있나요?"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:320
 msgid "Um, well..."
-msgstr ""
+msgstr "흐음, 글쎄..."
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:324
 msgid "Have you found an orc for me to fight, huh? A troll?"
-msgstr ""
+msgstr "제가 싸워 볼 오크는 찾으셨나요, 네? 아님 트롤?"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:328
 msgid "Quiet! I will summon an enemy for you..."
-msgstr ""
+msgstr "가만 있게! 자네의 적수를 소환해주지..."
 
 #. [event]: id=student moves 0}
 #. [unit_type]: id=Quintain, race=mechanical
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:356
 #: data/campaigns/tutorial/units/Quintain.cfg:4
 msgid "Quintain"
-msgstr "창 과녁"
+msgstr "인간형 과녁"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:360
 msgid "... this quintain!"
-msgstr ""
+msgstr "... 이 과녁이라네!"
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:364
 msgid "A quintain? You want me to pretend to fight a dummy?"
-msgstr ""
+msgstr "과녁이요? 모형이랑 싸우는 척이라도 해야되나요?"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:368
 msgid "Child, you have 32 hitpoints and a sword. I'm fairly sure you'll win."
-msgstr ""
+msgstr "자네에겐 HP 32와 검이 있으니, 확실히 이길 수 있겠지."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:373
@@ -214,6 +232,9 @@ msgid ""
 "(the quintain). You will see an attack description. When you click OK, "
 "Konrad will attack."
 msgstr ""
+"과녁을 공격하려면, 먼저 공격자 (Konrad) 를 설정하고 타겟 (인간형 과녁) 을 선"
+"택해야 합니다. 그러면 공격 정보표를 볼 수 있습니다. 확인을 누르면 Konrad가 공"
+"격합니다."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:378
@@ -222,31 +243,34 @@ msgid ""
 "(the quintain). You will see an attack description. When you click OK, "
 "Li'sar will attack."
 msgstr ""
+"과녁을 공격하려면, 먼저 공격자 (Li'sar) 를 설정하고 타겟 (인간형 과녁) 을 선"
+"택해야 합니다. 그러면 공격 정보표를 볼 수 있습니다. 확인을 누르면 Li'sar가 공"
+"격합니다."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:389
 msgid "Click on the quintain to attack it"
-msgstr ""
+msgstr "인간형 과녁을 클릭해서 공격하세요"
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:425
 msgid "Hey! This quintain fights back!"
-msgstr ""
+msgstr "이봐요! 이 모형 반격하잖아요!"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:429
 msgid "Hmm, maybe we should have started with a doll."
-msgstr ""
+msgstr "흐음, 보통 인형으로 시작하는 편이 나았을지도 모르겠군."
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:433
 msgid "Should I retreat?"
-msgstr ""
+msgstr "물러날까요?"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:437
 msgid "Good idea!"
-msgstr ""
+msgstr "좋은 생각이네!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:442
@@ -254,6 +278,8 @@ msgid ""
 "Note: the tiny blue crown above Delfador means you will lose the game if he "
 "is killed. You will also lose the game if your leader (Konrad) is killed."
 msgstr ""
+"참고: Delfador 위에 있는 작은 파란색 관은 그가 죽는다면 당신이 게임오버됨을 "
+"의미합니다. 또한 당신의 리더 (Konrad)가 죽어도 패배합니다."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:445
@@ -261,6 +287,8 @@ msgid ""
 "Note: the tiny blue crown above Delfador means you will lose the game if he "
 "is killed. You will also lose the game if your leader (Li'sar) is killed."
 msgstr ""
+"참고: Delfador 위에 있는 작은 파란색 관은 그가 죽는다면 당신이 게임오버됨을 "
+"의미합니다. 또한 당신의 리더 (Li'sar)가 죽어도 패배합니다."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:457
@@ -268,6 +296,7 @@ msgid ""
 "Unfortunately, you've used up your turn attacking the quintain. The quintain "
 "will now get a turn."
 msgstr ""
+"안됐네만 자네는 과녁을 공격하는데 턴을 이미 써 버렸네. 이제 과녁의 차례네."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:462
@@ -275,11 +304,12 @@ msgid ""
 "female^Unfortunately, you've used up your turn attacking the quintain. The "
 "quintain will now get a turn."
 msgstr ""
+"안됐네만 자네는 과녁을 공격하는데 턴을 이미 써 버렸네. 이제 과녁의 차례네."
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:468
 msgid "The DUMMY gets a turn?"
-msgstr ""
+msgstr "모형 주제에 턴을 갖는다고요?"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:474
@@ -289,16 +319,19 @@ msgid ""
 "every time, you'll drop from $student_hp to $future_hp hit points. Brace "
 "yourself!"
 msgstr ""
+"그래. 이건 마법의 과녁이라네.\n"
+"이제 이 과녁은 각각 3의 데미지를 줄 5번의 기회를 갖는다네. 만약 전부 맞으면 "
+"자네의 HP는 $student_hp 에서 $future_hp 로 떨어지겠지. 잘 버텨보게!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:477
 msgid "Click on the End Turn button on the bottom right"
-msgstr ""
+msgstr "오른쪽 밑에 있는 턴 종료 버튼을 클릭"
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:498
 msgid "Ouch! I need to heal! Only $student_hp hitpoints left!"
-msgstr ""
+msgstr "으악! 회복이 필요해요! HP가 $student_hp 뿐이야!"
 
 #. [event]
 #. [then]
@@ -313,6 +346,8 @@ msgid ""
 "There is a village on the other side of the river. Visiting villages is a "
 "good idea, and ending your turn in one will heal you. To the village!"
 msgstr ""
+"강 건너에 마을이 있네. 마을에 들르는 것은 좋은 선택이지. 그리고 그곳에서 턴"
+"을 마치면 회복이 된다네. 마을로 가게!"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:510
@@ -320,16 +355,18 @@ msgid ""
 "female^There is a village on the other side of the river. Visiting villages "
 "is a good idea, and ending your turn in one will heal you. To the village!"
 msgstr ""
+"강 건너에 마을이 있네. 마을에 들르는 것은 좋은 선택이지. 그리고 그곳에서 턴"
+"을 마치면 회복이 된다네. 마을로 가게!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:523
 msgid "Click on the village to move Konrad"
-msgstr ""
+msgstr "마을을 클릭해서 Konrad를 이동시키세요"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:524
 msgid "Click on the village to move Li'sar"
-msgstr ""
+msgstr "마을을 클릭해서 Li'sar를 이동시키세요"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:542
@@ -339,6 +376,9 @@ msgid ""
 "provide the gold needed to recruit units. Each turn, you gain two gold plus "
 "one for every village you own."
 msgstr ""
+"마을을 점령했습니다! 이제 마을에는 당신의 깃발이 펄럭이고 그 마을은 스크린 위"
+"에 있는 총 아군 마을 수에 포함됩니다(집 아이콘 옆). 마을은 유닛의 소집에 필요"
+"한 금을 제공합니다. 매 턴마다 당신이 가진 마을 하나당 금 2가 모입니다."
 
 #. [event]
 #. [then]
@@ -349,7 +389,7 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:848
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:900
 msgid "Click on the End Turn button"
-msgstr ""
+msgstr "턴 종료 버튼을 클릭"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:582
@@ -357,6 +397,8 @@ msgid ""
 "You're about to be healed by $hp_difference hitpoints, but I think you're "
 "going to need some help against that quintain."
 msgstr ""
+"자네는 HP $hp_difference 까지 회복할테지만, 자네가 저 과녁을 처치하는 덴 도움"
+"이 좀 필요할 것 같군."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:587
@@ -364,18 +406,20 @@ msgid ""
 "female^You're about to be healed by $hp_difference hitpoints, but I think "
 "you're going to need some help against that quintain."
 msgstr ""
+"자네는 HP $hp_difference 까지 회복할테지만, 자네가 저 과녁을 처치하는 덴 도움"
+"이 좀 필요할 것 같군."
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:593
 msgid "I'll recruit some elves!"
-msgstr ""
+msgstr "엘프를 좀 소집해야겠어요!"
 
 #. [event]
 #. [then]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:595
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:976
 msgid "Keep"
-msgstr ""
+msgstr "본성"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:600
@@ -383,6 +427,7 @@ msgid ""
 "A splendid idea. You can recruit two units if you return to the keep. You "
 "have plenty of gold for that."
 msgstr ""
+"멋진 생각이네. 본성에 돌아가면 유닛 둘을 소집할 수 있을걸세. 돈은 충분하다네."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:605
@@ -390,16 +435,17 @@ msgid ""
 "female^A splendid idea. You can recruit two units if you return to the keep. "
 "You have plenty of gold for that."
 msgstr ""
+"멋진 생각이네. 본성에 돌아가면 유닛 둘을 소집할 수 있을걸세. 돈은 충분하다네."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:611
 msgid "Move Konrad to the keep"
-msgstr ""
+msgstr "Konrad를 본성으로 이동"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:612
 msgid "Move Li'sar to the keep"
-msgstr ""
+msgstr "Li'sar를 본성으로 이동"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:630
@@ -408,11 +454,14 @@ msgid ""
 "right-clicking and selecting 'Recruit'. This time you will only be given one "
 "type of unit to choose: the Elvish Fighter."
 msgstr ""
+"당신이 본성에 있으면 성채 타일을 오른쪽 클릭하고 '소집'을 선택함으로써 그곳"
+"에 유닛을 소집할 수 있습니다. 이번에 당신이 선택할 수 있는 유닛 종류는 엘프 "
+"전사 하나뿐입니다."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:634
 msgid "Right click on one castle tile and select Recruit"
-msgstr ""
+msgstr "성채 타일 하나를 오른쪽 클릭해서 소집을 선택"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:670
@@ -423,23 +472,27 @@ msgid ""
 "Note: after this dialog, you can move the mouse over a unit to see a "
 "description on the right of the screen."
 msgstr ""
+"새로 소집된 유닛들은 이 턴에선 아무것도 하지 못합니다. 당신은 다음 턴에 이들"
+"을 조작할 수 있습니다.\n"
+"참고: 이 대화창이 닫히면, 당신은 유닛 위에 커서를 놓아서 화면 오른쪽에 나타나"
+"는 유닛 설명을 볼 수 있습니다."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:681
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:713
 msgid "Right click on the other castle tile and Recruit another unit"
-msgstr ""
+msgstr "나머지 성채 타일을 오른쪽 클릭해서 또다른 유닛을 소집"
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:735
 msgid ""
 "Hey, the quintain just healed 2 hitpoints! I'd better attack it at once!"
-msgstr ""
+msgstr "이봐요, 과녁이 방금 HP 2를 회복했어요! 어서 공격해야겠어요!"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:739
 msgid "Yes, if a unit doesn't do anything for a turn, it will slowly heal."
-msgstr ""
+msgstr "그래, 한 턴동안 아무것도 하지 않은 유닛은 느린 속도로 회복하게 된다네."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:745
@@ -454,11 +507,13 @@ msgid ""
 "But before you send your fighters against the quintain, you should know they "
 "have two kinds of attack..."
 msgstr ""
+"그런데 자네가 전사들을 과녁으로 보내기 전에, 그들이 두 가지의 공격형태를 가지"
+"고 있다는 걸 알아야 하네..."
 
 #. [message]: id=student
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:763
 msgid "I'll tell them to use the one that does the most damage!"
-msgstr ""
+msgstr "제일 큰 데미지를 주는 걸로 공격시키겠어요!"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:767
@@ -466,17 +521,17 @@ msgid ""
 "And which would that be? The sword (5-4) or the bow (3-3)? I suppose you'll "
 "find out..."
 msgstr ""
+"그럼 어느 것이 나을까? 검 (5-4) 일까 활 (3-3) 일까? 자넨 알아낼 거라 믿네..."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:769
-#, fuzzy
 msgid "Left click on an Elvish Fighter"
-msgstr "엘프 파이터"
+msgstr "엘프 전사를 클릭"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:770
 msgid "End your turn and attack again."
-msgstr ""
+msgstr "턴을 종료하고 다시 공격하세요."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:789
@@ -485,11 +540,13 @@ msgid ""
 "now would you?\n"
 "Use the fighters you recruited first; they'll be a lot of help."
 msgstr ""
+"또 과녁에게 돌격하는 바보같은 일은 하지 않을 거라 보네, 어떤가?\n"
+"고용한 전사들을 이용하게. 그들은 큰 도움이 될거야."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:800
 msgid "Left click on the Quintain to attack it."
-msgstr ""
+msgstr "인간형 과녁을 클릭해서 공격하세요."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:837
@@ -498,6 +555,8 @@ msgid ""
 "attack. Quintain defended with its melee attack (3-5). The ranged attack was "
 "safer."
 msgstr ""
+"자네의 엘프는 근접 공격인 검(5-4 또는 4회 공격, 각 데미지 5)을 썼네. 과녁은 "
+"자기의 근접 공격 (3-5)으로 방어했네. 원격 공격이 더 안전하지."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:845
@@ -507,6 +566,9 @@ msgid ""
 "was safer.\n"
 "End your turn, then attack again."
 msgstr ""
+"자네의 엘프는 근접 공격인 검(5-4 또는 4회 공격, 각 데미지 5)을 썼네. 과녁은 "
+"자기의 근접 공격 (3-5)으로 방어했네. 원격 공격이 더 안전하지.\n"
+"턴을 종료하고, 다시 공격하게."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:857
@@ -515,12 +577,15 @@ msgid ""
 "attack. The quintain defended with its melee attack (3-5).\n"
 "You should tell the other Elf to use the bow."
 msgstr ""
+"자네의 엘프는 근접 공격인 검(5-4 또는 4회 공격, 각 데미지 5)을 썼네. 과녁은 "
+"자기의 근접 공격 (3-5)으로 방어했네.\n"
+"다른 엘프에게 활을 쓰라고 해보게."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:860
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:909
 msgid "Attack with the other Elf"
-msgstr ""
+msgstr "다른 엘프로 공격"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:889
@@ -530,6 +595,8 @@ msgid ""
 "The quintain has no ranged attack, only a melee attack, so it could not "
 "defend itself."
 msgstr ""
+"자네의 엘프는 원격 공격인 활(3-3 또는 3회 공격, 각 데미지 3)을 썼네. 과녁에"
+"는 원격 공격이 없고 오로지 근접 공격만 있어서 자기 자신을 방어할 수 없네."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:897
@@ -539,16 +606,19 @@ msgid ""
 "defend itself.\n"
 "End your turn, then attack again."
 msgstr ""
+"자네의 엘프는 원격 공격인 활(3-3 또는 3회 공격, 각 데미지 3)을 썼네. 과녁에"
+"는 원격 공격이 없고 오로지 근접 공격만 있어서 자기 자신을 방어할 수 없네.\n"
+"턴을 종료하고 다시 공격하게."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:928
 msgid "Keep attacking with both elves until the quintain is finished!"
-msgstr ""
+msgstr "과녁을 끝장낼때까지 두 엘프들로 계속 공격하게!"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:942
 msgid "Maybe you should recruit another elf?"
-msgstr ""
+msgstr "아마 엘프를 더 소환해야 할지도?"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:948
@@ -556,6 +626,8 @@ msgid ""
 "Note:\n"
 "You can right click on a unit to see a detailed Unit Description."
 msgstr ""
+"참고:\n"
+"당신은 유닛을 오른쪽 클릭해서 자세한 유닛 설명을 볼 수 있습니다."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:971
@@ -565,6 +637,9 @@ msgid ""
 "needed. Take special care of units with the highest experience points (XP) "
 "so they can level up!"
 msgstr ""
+"참고:\n"
+"부상병을 마을로 물리고 필요하다면 추가 소집을 하십시오. 가장 높은 경험치를 가"
+"진 유닛은 특별한 주의를 갖고 돌보아 그들이 레벨업을 할 수 있게 하십시오!"
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:990
@@ -573,6 +648,9 @@ msgid ""
 "Each village you own can support a single unit for free. After that, each "
 "unit costs you one gold per turn."
 msgstr ""
+"참고:\n"
+"당신이 가진 각 마을은 하나의 유닛을 공짜로 쓸 수 있게 해 줍니다. 유닛이 더 많"
+"아지면, 각 유닛은 당신에게 턴당 금 1을 요구합니다."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1007
@@ -583,6 +661,11 @@ msgid ""
 "will have a chance to choose which one you want. Note that level 2 units "
 "cost you twice as much to support as level 1 units."
 msgstr ""
+"참고:\n"
+"유닛이 충분한 경험치를 얻으면 (경험치 바는 오른쪽의 더 작은 바입니다), 승급"
+"을 하게 됩니다. 엘프 전사들은 두 가지 선택지가 있어 당신은 둘중 원하는 것을 "
+"선택하게 됩니다. 레벨 2 유닛을 유지하는데는 레벨 1 유닛의 두 배가 든다는 점"
+"을 참고하십시오."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1024
@@ -594,11 +677,16 @@ msgid ""
 "dummy's attacks are magical, however, so they have a 70% chance of hitting "
 "you wherever you stand."
 msgstr ""
+"참고:\n"
+"유닛을 선택하면 지형 타일마다 다른 비율을 볼 수 있습니다. % 비율이 높을수록 "
+"유닛이 가진 방어력은 높습니다. 예를 들어, 성채와 마을에서의 방어력은 좋지만 "
+"강에서의 방어력은 나쁩니다. 하지만 꼭두각시의 공격은 마법으로, 당신이 어디에 "
+"서 있든간에 70%의 명중률을 갖습니다."
 
 #. [message]: speaker=second_unit
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1049
 msgid "The quintain is dead, and I have gained more experience!"
-msgstr ""
+msgstr "과녁이 부서지고, 내게 더 많은 경험치가 쌓였어요!"
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1054
@@ -607,6 +695,8 @@ msgid ""
 "Yes, you gain experience through battle, especially by killing an opponent. "
 "Gain enough experience and you'll become more powerful."
 msgstr ""
+"그래, 자네는 전투를 통해서 경험치를 얻는데, 특히 상대를 처치했을때 더 많이 얻"
+"게되지. 충분한 경험치를 쌓으면 자네는 더 강해질걸세."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1055
@@ -614,6 +704,8 @@ msgid ""
 " Now, Konrad, I will leave you with more dummies to practice on! After that, "
 "we have real work to do..."
 msgstr ""
+" 자, Konrad, 자네가 연습할 수 있게 더 많은 꼭두각시를 만들어주겠네! 다음번에"
+"는 진짜 일이 생길걸세..."
 
 #. [message]: id=Delfador
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1059
@@ -621,6 +713,8 @@ msgid ""
 " Now, Li'sar, I will leave you with more dummies to practice on! After that, "
 "we have real work to do..."
 msgstr ""
+" 자, Li'sar, 자네가 연습할 수 있게 더 많은 꼭두각시를 만들어주겠네! 다음번에"
+"는 진짜 일이 생길걸세..."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1098
@@ -629,21 +723,24 @@ msgid ""
 "These dummies only attack if you are a single tile away. With care, you "
 "should be able to kill them one at a time."
 msgstr ""
+"참고:\n"
+"이 꼭두각시들은 당신과의 거리가 한 칸 이하일때만 공격합니다. 약간만 주의하면 "
+"당신은 그들을 각개격파할 수 있습니다."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1107
 msgid "Do you want to keep practicing?"
-msgstr ""
+msgstr "연습을 더 하기 바라십니까?"
 
 #. [option]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1109
 msgid "Yes, I'm still figuring it out."
-msgstr ""
+msgstr "그래, 난 아직 더 감을 잡아야 겠어."
 
 #. [option]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1112
 msgid "No, I think I've got it."
-msgstr ""
+msgstr "아니, 이제 할 수 있어."
 
 #. [message]: speaker=narrator
 #: data/campaigns/tutorial/scenarios/1_Tutorial.cfg:1153
@@ -653,12 +750,18 @@ msgid ""
 "state of your troops before clicking 'End Scenario' to continue to the next "
 "scenario."
 msgstr ""
+"승리 메세지가 뜨면, 시나리오가 끝났다는 표시로 맵이 회색빛으로 변하지만, 당신"
+"은 '시나리오 마치기'를 선택해서 다음 시나리오로 가기 전에 부대의 마지막 위치"
+"나 상태 등을 확인해 볼 수 있습니다."
 
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:27
 msgid ""
 "<big>Remember:</big>\n"
 "You can press 'u' to undo most things; useful for correcting mistakes."
 msgstr ""
+"<big>기억하세요:</big>\n"
+"당신은 'u'를 눌러서 대부분의 행동을 취소할 수 있습니다. 이것은 실수한 것을 되"
+"돌리는데 유용합니다."
 
 #. [unit]: id=Galdrad, type=Elvish Captain
 #. [message]: speaker=narrator
@@ -667,7 +770,7 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:62
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:388
 msgid "Galdrad"
-msgstr ""
+msgstr "Galdrad"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:74
@@ -676,6 +779,9 @@ msgid ""
 "unit does more damage, and intelligent means it requires less experience to "
 "advance a level."
 msgstr ""
+"는 두 가지 특성을 갖고 있지: strong and intelligent. Strong 유닛이 더 큰 데미"
+"지를 준다는걸 의미하고, Intelligent 다음 레벨로 승급하는데 필요한 경험치가 "
+"더 적다는걸 의미해."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Speaking.cfg:87
@@ -683,11 +789,13 @@ msgid ""
 " has two traits: quick and resilient. Quick means a unit can move one tile "
 "further each turn, and resilient means it has more hitpoints."
 msgstr ""
+"에게는 두가지 특성이 있어: quick and resilient. Quick 유닛이 턴당 한 칸씩 더 "
+"갈 수 있다는걸 의미하고, resilient HP가 더 많다는걸 의미해."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:25
 msgid "Patch of forest"
-msgstr ""
+msgstr "작은 숲"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:26
@@ -695,11 +803,13 @@ msgid ""
 "Now put an unwounded unit, preferably a fighter, in that patch of forest on "
 "the south-east of the island; a nice, defensible spot."
 msgstr ""
+"이제 부상을 입지 않은 유닛을 섬의 남동쪽에 있는 작은 섬으로 보내. 되도록이면 "
+"전사가 좋아. 괜찮은 방어 지점이지."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:27
 msgid "Can one unit survive against all those enemies?"
-msgstr ""
+msgstr "유닛 하나가 저 많은 적들에게서 살아남을 수 있나요?"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:28
@@ -708,17 +818,20 @@ msgid ""
 "she will heal it 4 hitpoints per turn. Just be careful not to expose the "
 "Shaman to attack since she is fairly weak herself."
 msgstr ""
+"약간의 도움만 있다면 가능하지. 방어 유닛 곁에 샤먼을 보내두면 그녀가 턴당 HP "
+"4를 회복시켜 줄거야. 샤먼은 매우 약하니까 그녀가 공격에 노출되지 않게 조심하"
+"도록."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:29
 msgid "Move a unit (fighter if possible) to the patch of forest"
-msgstr ""
+msgstr "유닛을(가능하면 전사를) 작은 숲으로 보내십시오"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:36
 msgid ""
 "Advance other units onto the island or to capture villages, then End Turn"
-msgstr ""
+msgstr "다른 유닛을 섬에 보내거나 마을을 점령하고, 턴을 종료하십시오"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:174
@@ -726,63 +839,64 @@ msgid ""
 "That unit is about one kill (8 experience points) away from gaining a level! "
 "Do not let it die!"
 msgstr ""
+"그 유닛은 한 마리만 더 잡으면(경험치 8) 승급할 수 있어! 죽게 놔두면 안돼!"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:226
 msgid "I hope I have a chance to retreat after this!"
-msgstr ""
+msgstr "이후에 물러날 기회가 있기를!"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:237
 msgid "One lucky attack by an Orcish Grunt, and I'm done for!"
-msgstr ""
+msgstr "오크 졸개에게 운나쁘게 한방만 맞으면, 당하고 말거야!"
 
 #. [message]: speaker=second_unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:248
 msgid "Ouch! I could make use of some healing in a village."
-msgstr ""
+msgstr "아야! 마을에서 회복을 좀 해야겠어."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:275
 msgid "I have $side.gold gold; enough to recruit!"
-msgstr ""
+msgstr "$side.gold 골드가 있으니, 소집하기는 충분하겠어!"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:276
 msgid "Yes, keep recruiting more units: I think you might need them!"
-msgstr ""
+msgstr "그래, 유닛을 계속 소집하도록 해. 아마 그들이 필요하게 될테니!"
 
 #. [tutorial]: id=2_Tutorial
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:286
 msgid "Wesnoth Tutorial Part II"
-msgstr ""
+msgstr "Wesnoth 연습 게임 2편"
 
 #. [side]: type=Orcish Warrior, id=Thrag
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:307
 msgid "Thrag"
-msgstr ""
+msgstr "Thrag"
 
 #. [objective]: condition=win
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:332
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:371
 msgid "Defeat the Orc Leader"
-msgstr ""
+msgstr "오크 대장을 격파하라"
 
 #. [objective]: condition=lose
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:336
 msgid "Death of Konrad"
-msgstr ""
+msgstr "Konrad의 죽음"
 
 #. [objective]: condition=lose
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:340
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:379
 msgid "Turns run out"
-msgstr ""
+msgstr "턴 오버"
 
 #. [objective]: condition=lose
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:375
 msgid "Death of Li'sar"
-msgstr ""
+msgstr "Li'sar의 죽음"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:415
@@ -790,11 +904,13 @@ msgid ""
 "Ho Galdrad! Has Delfador conjured something else to beat me with? A flock of "
 "scarecrows, perhaps?"
 msgstr ""
+"오 Galdrad! Delfador가 날 쓰러뜨릴만한 뭔가 또다른 마술을 부려놨나요? 허수아"
+"비떼라든가?"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:417
 msgid "This is no game, Konrad! "
-msgstr ""
+msgstr "이건 노는게 아니야, Konrad!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:418
@@ -804,23 +920,26 @@ msgid ""
 "to enter here. We Elves are fast and hard to hit in forests. You must defeat "
 "their leader so they never threaten us again. I will advise you."
 msgstr ""
+"오크들이 강 건너에 기지를 세웠어. 감히 엘프 영역에 들어오다니 간이 부은 놈들"
+"이지. 우리 엘프들은 숲에서는 빠르고 잘 피할 수 있어. 네가 저들의 대장을 물리"
+"쳐서 저들이 우릴 다시 위협하지 못하게 하도록 해. 내가 조언해주지."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:418
 msgid "This is no game, Li'sar! "
-msgstr ""
+msgstr "이건 노는게 아니야, Li'sar!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:421
 msgid "What should I do?"
-msgstr ""
+msgstr "뭘 해야 하나요?"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:426
 msgid ""
 "First, we will have to deal with the Orcish Grunt stationed in the middle of "
 "the river. He should be little trouble."
-msgstr ""
+msgstr "먼저, 우리는 강 중간에 배치된 오크 졸개를 상대해야돼. 좀 성가실거야."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:427
@@ -828,6 +947,8 @@ msgid ""
 "By then, their leader will have recruited units to send against us and the "
 "real fight will begin."
 msgstr ""
+"그때쯤에 저들의 대장은 우리에게 보낼 병력을 소집할테고 본격적인 싸움이 시작되"
+"겠지."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:428
@@ -836,7 +957,7 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:431
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:432
 msgid "SHALLOW"
-msgstr ""
+msgstr "얕음"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:433
@@ -844,7 +965,7 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:435
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:436
 msgid "DEEP"
-msgstr ""
+msgstr "깊음"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:438
@@ -854,6 +975,10 @@ msgid ""
 "east; but we could stand on the shore and force them to fight us from the "
 "water, where they are exposed and we are protected by the forest."
 msgstr ""
+"저 어둡고 푸른 물결이 보이나? 저긴 너무 깊어서 어느 쪽도 건널 수가 없어. 동쪽"
+"엔 더 밝은 파란색 여울이 띠를 이루고 있는데, 저들은 더 얕은 저곳으로 천천히 "
+"헤엄쳐 올 수밖에 없지. 하지만 우리는 강가에 버티고 서서 저들이 물 속에서 드러"
+"난 채로 싸우는 동안 숲 속에서 안전하게 저들을 상대할 수 있지."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:449
@@ -862,6 +987,8 @@ msgid ""
 "the key: it has a village for healing injured units and forests in which we "
 "fight so well."
 msgstr ""
+"좀더 나은 공격 수단은 다리를 통해 오는거야. 저 중앙의 섬이 요점이지. 여기엔 "
+"부상병을 치료할 수 있는 마을이 있고, 우리가 싸우기 좋은 숲이 있어."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:455
@@ -871,6 +998,10 @@ msgid ""
 "Two Elvish Archers\n"
 "One Elvish Shaman"
 msgstr ""
+"시작하려면, 우리에겐 약간의 병력이 필요해:\n"
+"엘프 전사 둘\n"
+"엘프 궁사 둘\n"
+"엘프 샤먼 하나"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:530
@@ -879,6 +1010,9 @@ msgid ""
 "$recall_xp1 experience points. You should recall them now so they can gain "
 "more experience, rather than recruiting new ones."
 msgstr ""
+"네 연습게임 동안에 $recall_name1 와(/과) $recall_name2 은(/는) 경험치를 "
+"$recall_xp1 포인트 얻었어. 새로운 병력을 소집하기보다는 그들을 재소집해서 경"
+"험치를 더 쌓게 하도록 해."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:533
@@ -887,6 +1021,9 @@ msgid ""
 "and $recall_name2 gained $recall_xp2. You should recall them now so they can "
 "gain more experience, rather than recruiting new ones."
 msgstr ""
+"네 연습게임 동안에 $recall_name1 은(/는) 경험치를 $recall_xp1 포인트 얻었고, "
+"$recall_name2 은(/는) $recall_xp2 포인트 얻었어. 새로운 병력을 소집하기보다"
+"는 그들을 재소집해서 경험치를 더 쌓게 하도록 해."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:539
@@ -895,16 +1032,19 @@ msgid ""
 "You should recall that unit now, and recruit a second one (which is cheaper "
 "than recalling, anyway)."
 msgstr ""
+"네 연습게임 동안에 $recall_name1 은(/는) 경험치를 $recall_xp1 포인트 얻었어. "
+"그 유닛을 재소집하고, 다른 병력 하나를 소집해.(어쨌든 재소집하는 것보다는 싸"
+"니까)"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:542
 msgid "RECALL $recall_name1"
-msgstr ""
+msgstr "$recall_name1 를 재소집"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:543
 msgid "Right click on the tile north-east of you and recall $recall_name1"
-msgstr ""
+msgstr "북동쪽 칸을 오른쪽 클릭해서 $recall_name1 을 재소집"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:552
@@ -914,6 +1054,9 @@ msgid ""
 "experience so it's more efficient to recruit new ones. Recruit an Elvish "
 "Fighter."
 msgstr ""
+"저번 전투에서 경험치를 얻은 엘프 전사가 있다면, 지금의 전장에서 그들을 재소집"
+"할 수 있어. 하지만 두 유닛 모두 경험치가 별로 없어서 새로 소집하는 것이 더 효"
+"율적이야. 엘프 전사를 소집해."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:555
@@ -921,23 +1064,25 @@ msgid ""
 "If you had any experienced units alive from your last battle we would recall "
 "them. Instead we must recruit a new Elvish Fighter."
 msgstr ""
+"지난 전투에서 살아남은 경험 있는 유닛이 있다면 그들을 재소집하면 되지만, 아무"
+"도 없으니 새 엘프 전사를 소집해야해."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:558
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:814
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:857
 msgid "Elvish Fighter"
-msgstr "엘프 파이터"
+msgstr "엘프 전사"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:559
 msgid "Right click on the tile north-east of you and recruit an Elvish Fighter"
-msgstr ""
+msgstr "북동쪽 칸을 오른쪽 클릭해서 엘프 전사를 소집"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:599
 msgid "No! I said recruit an Elvish SHAMAN! Now try again..."
-msgstr ""
+msgstr "아니야! 난 엘프 <big>샤먼</big>을 소집하라고 했어! 다시 해보도록 해..."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:608
@@ -946,11 +1091,13 @@ msgid ""
 "it. It also has a special attack which slows enemies, halving the damage "
 "they do!"
 msgstr ""
+"샤먼은 매우 약한 유닛이지만 주변의 유닛을 치료하는 능력이 있어. 또한 샤먼은 "
+"적을 느리게 해서 그들의 데미지를 반감시키는 특수 공격을 쓸 수 있지!"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:609
 msgid "So, should I end my turn now?"
-msgstr ""
+msgstr "그럼, 이제 턴을 종료하나요?"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:611
@@ -959,86 +1106,92 @@ msgid ""
 "cost you 5 gold in upkeep, leaving you 3 gold poorer per turn. You need more "
 "income."
 msgstr ""
+"소집된 유닛들은 아무도 움직일 수 없지만, 넌 아직 가능하지. 너의 유닛 다섯은 "
+"유지비 5 골드를 요구해서 턴마다 3 골드씩을 잃게 만들어. 네겐 더 많은 수입이 "
+"필요해."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:613
 msgid "Move Konrad to capture a village"
-msgstr ""
+msgstr "Konrad를 이동시켜 마을을 점령"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:614
 msgid "Move Li'sar to capture a village"
-msgstr ""
+msgstr "Li'sar를 이동시켜 마을을 점령"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:631
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:670
 msgid "No! I said recruit an Elvish ARCHER! Now try again..."
-msgstr ""
+msgstr "아니야! 난 엘프 <big>궁사</big>를 소집하라고 했어! 다시 해보도록 해..."
 
 #. [unit]: id=Eowynial, type=Elvish Archer
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:637
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:649
 msgid "Eowynial"
-msgstr ""
+msgstr "Eowynial"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:653
 msgid "Shaman"
-msgstr ""
+msgstr "샤먼"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:654
 msgid "Recruit an Elvish Shaman to your north"
-msgstr ""
+msgstr "북쪽에 엘프 샤먼을 소집"
 
 #. [unit]: id=Elriend, type=Elvish Archer
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:676
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:687
 msgid "Elriend"
-msgstr ""
+msgstr "Elriend"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:710
 msgid "No! I said RECALL $recall_name2|! Now try again..."
 msgstr ""
+"아니야! 난 $recall_name2|를 <big>재소집</big>하라고 했어! 다시 해보도록 해..."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:719
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:756
 msgid "Archer #1"
-msgstr ""
+msgstr "궁사 #1"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:720
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:757
 msgid "Archer #2"
-msgstr ""
+msgstr "궁사 #2"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:722
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:759
 msgid "Recruit two Elvish Archers in tiles to your west"
-msgstr ""
+msgstr "서쪽의 빈칸에 엘프 궁사 둘을 소집하세요"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:735
 msgid "No! I said recruit an Elvish FIGHTER! Now try again..."
-msgstr ""
+msgstr "아니야! 난 엘프 <big>전사</big>를 소집하라고 했어! 다시 해보도록 해..."
 
 #. [unit]: id=Golir, type=Elvish Fighter
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:741
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:752
 msgid "Golir"
-msgstr ""
+msgstr "Golir"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:790
 msgid "No! I said recall $recall_name1, not $recall_name2|! Now try again..."
 msgstr ""
+"아니야! $recall_name1 을 재소집해야지, $recall_name2|가 아니야! 다시 해보도"
+"록 해..."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:794
@@ -1046,22 +1199,24 @@ msgid ""
 "No! I said RECALL $recall_name1 from the last battle, not recruit a new "
 "$recruit.language_name|! Now try again..."
 msgstr ""
+"아니야! 난 이전의 전투에서 남은 $recall_name1 을 재소집하라고 했지, 새로이 "
+"$recruit.language_name|를 소집하라고 하지 않았어! 다시 해보도록 해..."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:810
 msgid "Right click on the tile east of you and recall $recall_name2"
-msgstr ""
+msgstr "동쪽의 빈칸을 오른쪽 클릭하여 $recall_name2 를 재소집하세요"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:811
 msgid "RECALL $recall_name2"
-msgstr ""
+msgstr "$recall_name2 를 재소집"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:815
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:858
 msgid "Right click on the tile east of you and recruit an Elvish Fighter"
-msgstr ""
+msgstr "동쪽의 빈칸을 오른족 클릭하여 엘프 전사를 소집"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:838
@@ -1069,18 +1224,20 @@ msgid ""
 "$recruit.language_name|? I said RECRUIT a new ELVISH FIGHTER. Now try "
 "again..."
 msgstr ""
+"$recruit.language_name|? 난 새로운 <big>엘프 전사</big>를 <big>소집</big>하라"
+"고 말했어. 다시 해보도록 해..."
 
 #. [unit]: id=Elindel, type=Elvish Fighter
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:845
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:856
 msgid "Elindel"
-msgstr ""
+msgstr "Elindel"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:885
 msgid "You've learned well, Konrad! "
-msgstr ""
+msgstr "잘했어, Konrad!"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:886
@@ -1089,18 +1246,20 @@ msgid ""
 "The village supports one unit and pays 1 gold per turn. You're only losing 1 "
 "gold per turn now."
 msgstr ""
+"마을은 유닛 하나의 유지비를 지원하고 턴당 금 1을 제공해. 이제 넌 턴당 금 1 만"
+"을 잃게 될거야."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:887
 msgid "You've learned well, Li'sar! "
-msgstr ""
+msgstr "잘했어, Li'sar!"
 
 #. [then]
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:890
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1018
 msgid "End your turn"
-msgstr ""
+msgstr "턴을 종료합니다"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:896
@@ -1108,6 +1267,8 @@ msgid ""
 "You've captured all the villages around the keep, but stay near so you can "
 "recruit more units."
 msgstr ""
+"넌 본성 근처에 있는 모든 마을을 점령했지만, 더 많은 유닛을 재소집할 수 있게 "
+"본성 근처에 남아있는 편이 좋아."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:911
@@ -1115,6 +1276,8 @@ msgid ""
 "You should leave the villages near your keep for Konrad to capture, as he "
 "needs to stay nearby to recruit more units anyway."
 msgstr ""
+"Konrad는 어차피 소집을 위해 남아있어야 하므로 본성 주변의 마을들은 Konrad가 "
+"점령하도록 두는 편이 좋습니다."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:912
@@ -1122,11 +1285,13 @@ msgid ""
 "You should leave the villages near your keep for Li'sar to capture, as she "
 "needs to stay nearby to recruit more units anyway."
 msgstr ""
+"Li'sar는 어차피 소집을 위해 남아있어야 하므로 본성 주변의 마을들은 Li'sar가 "
+"점령하도록 두는 편이 좋습니다."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:918
 msgid "Orcs have no ranged attack, so use your archers against them."
-msgstr ""
+msgstr "오크에겐 원격 공격이 없으니까, 궁사들로 저들을 상대해."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:921
@@ -1134,6 +1299,8 @@ msgid ""
 "Attack the orc with an Archer\n"
 "(move mouse over units to see description on right)"
 msgstr ""
+"궁사로 오크를 공격하세요\n"
+"(오른쪽 클릭으로 유닛 설명을 보려면 해당 유닛에 커서를 이동합니다)"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:929
@@ -1141,6 +1308,8 @@ msgid ""
 "Excellent. Elves are well-protected in the forest. There's only a 30% chance "
 "of hitting an Elvish Archer in forests."
 msgstr ""
+"정말 잘했어. 엘프들은 숲에서의 방어력이 좋아. 숲에 있는 엘프 궁사에 대한 명중"
+"률은 30%밖에 되지 않지."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:938
@@ -1149,17 +1318,18 @@ msgid ""
 "unit will have an 80% chance of being hit when the enemy counter-attacks! "
 "Cancel!"
 msgstr ""
+"적이 근처에 있을 때 물 속에 있는 것은 매우 위험해! 적이 반격을 가했을때 너의 "
+"유닛이 맞을 확률은 80%야! 취소하도록 해!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:944
 msgid "Attack the Orc with the other Archer"
-msgstr ""
+msgstr "다른 궁사로 오크를 공격"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:956
-#, fuzzy
 msgid "Fighter to HERE"
-msgstr "엘프 파이터"
+msgstr "'여기'로 전사를 이동"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:957
@@ -1167,6 +1337,8 @@ msgid ""
 "Your other units cannot reach that Orc this turn. Send a Fighter to the "
 "village to the far east. It will take two turns to reach it."
 msgstr ""
+"너의 다른 유닛들은 이번 턴에 오크에게 갈 수 없어. 전사를 동쪽 멀리 있는 마을"
+"로 보내. 거기에 도착하는데는 2 턴이 걸릴거야."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:958
@@ -1175,11 +1347,14 @@ msgid ""
 "clicking on the destination. A number will indicate how many turns it will "
 "take until that unit reaches the tile."
 msgstr ""
+"당신은 유닛을 선택하고 목적지를 선택해서 그 유닛이 여러 턴동안 이동하게 할 "
+"수 있습니다. 유닛이 해당 칸에 도착하기까지 몇 턴이 걸릴지가 숫자로 표시됩니"
+"다."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:959
 msgid "Tell a Fighter to move to the far east village"
-msgstr ""
+msgstr "전사에게 동쪽의 마을로 이동하도록 명령"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:977
@@ -1187,41 +1362,44 @@ msgid ""
 "Send the other Fighter and the Shaman south so they can attack next turn, "
 "then return to the keep to recruit more units!"
 msgstr ""
+"다른 전사와 샤먼을 남쪽으로 보내서 그들이 다음 턴에 공격할 수 있게 하고, 본성"
+"으로 돌아와서 유닛을 더 소집하도록 해!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:978
 msgid "Move your Fighter and Shaman south, then return Konrad to the Keep"
-msgstr ""
+msgstr "전사와 샤먼을 남쪽으로 보내고, Konrad를 본성으로 돌려보내세요"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:979
 msgid "Move your Fighter and Shaman south, then return Li'sar to the Keep"
-msgstr ""
+msgstr "전사와 샤먼을 남쪽으로 보내고, Li'sar를 본성으로 돌려보내세요"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:989
 msgid "Recruit another Archer and a Fighter"
-msgstr ""
+msgstr "다른 궁사와 전사를 소집하세요"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1004
 msgid "I have no more money to recruit!"
-msgstr ""
+msgstr "더 소집할 수 있는 돈이 없어요!"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1005
 msgid "This is often a problem, which is why owning villages is important."
 msgstr ""
+"자주 그런 문제가 발생하기 때문에, 마을을 얼마나 갖고 있느냐가 매우 중요하지."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1006
 msgid "Move Konrad to another (unowned) village"
-msgstr ""
+msgstr "Konrad를 다른 미점령 마을로 이동"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1007
 msgid "Move Li'sar to another (unowned) village"
-msgstr ""
+msgstr "Li'sar를 다른 미점령 마을로 이동"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1032
@@ -1229,11 +1407,12 @@ msgid ""
 "That Grunt is blocking the bridge! We must occupy that island before the "
 "Wolf Riders reach it."
 msgstr ""
+"저 졸개가 다리를 막고 있어! 늑대 기병들이 도착하기 전에 저 섬을 점령해야해."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1033
 msgid "Can't our units just move around him?"
-msgstr ""
+msgstr "우리 유닛들이 저 졸개를 돌아서 가면 안되나요?"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1036
@@ -1243,7 +1422,7 @@ msgstr ""
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1040
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1041
 msgid "ZoC"
-msgstr ""
+msgstr "ZoC"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1044
@@ -1253,18 +1432,22 @@ msgid ""
 "To move your troops onto that island without wading slowly through the "
 "water, you'll have to kill him."
 msgstr ""
+"안돼. 일단 네가 적 유닛에 가까워지면, 너는 그것의 '통제 권역'에 들어가서 그 "
+"턴에는 더 이상 움직일 수 없게 돼.\n"
+"천천히 헤엄쳐 가지 않고서 저 섬에 부대를 이동시키려면, 저것을 처치할 수밖에 "
+"없어."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1045
 msgid "Attack the orc with an Archer"
-msgstr ""
+msgstr "오크를 궁사로 공격"
 
 #. [then]
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1071
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1084
 msgid "Advance other units and capture villages, then End Turn"
-msgstr ""
+msgstr "다른 유닛을 전진시켜서 마을을 점령하고, 턴을 종료하세요"
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1076
@@ -1272,6 +1455,9 @@ msgid ""
 "No other units can reach that Orc. I hope my archer survives its counter-"
 "attack! I'd better grab more villages and move everyone closer for next turn."
 msgstr ""
+"다른 유닛은 저 오크에게 닿을 수 없어요. 내 궁사가 저 녀석의 반격에서 살아남"
+"길 바래야겠어요! 다음 턴에 더 많은 마을을 손에 넣고 모두를 좀더 가까이 보내야"
+"겠어요."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1077
@@ -1279,18 +1465,20 @@ msgid ""
 "Yes. If your Shaman stands just behind that unit on the bridge, it will heal "
 "it at the beginning of the next turn."
 msgstr ""
+"그래. 샤먼이 다리 위에 있는 유닛 바로 뒤에 있으면 다음 턴이 시작할때 그것을 "
+"치료할 수 있어."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1078
 msgid "Move your Shaman onto the bridge to stand behind your other unit"
-msgstr ""
+msgstr "샤먼을 다리 위로 보내서 당신의 다른 유닛 뒤에 있게 하십시오"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1124
 msgid ""
 "Be careful: if you stand on the bridge you are exposed to attack from "
 "multiple directions!"
-msgstr ""
+msgstr "조심해. 다리 위에 있으면 넌 여러 방향에서 공격에 노출된다구!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1137
@@ -1299,6 +1487,8 @@ msgid ""
 "unit will have an 80% chance of being hit! Cancel, and wait for them to "
 "attack you!"
 msgstr ""
+"적이 근처에 있을 때 물 속에 있는 것은 매우 위험해! 너의 유닛이 맞을 확률은 "
+"80%야! 취소하고 그들이 널 공격할때까지 기다리도록 해!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1147
@@ -1306,6 +1496,8 @@ msgid ""
 "Don't forget about your fighter in the east; you can move him south to that "
 "last village near the channel."
 msgstr ""
+"동쪽에 있는 전사를 잊으면 안돼. 그를 남쪽 수로 근처에 있는 마지막 마을로 이동"
+"시켜."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1153
@@ -1313,6 +1505,8 @@ msgid ""
 "We need to take that village, otherwise they will take it next turn! Move "
 "your wounded unit onto the village so it can heal, then kill that Orc!"
 msgstr ""
+"우리가 저 마을을 차지하지 않으면, 저들이 다음 턴에 마을을 차지할거야! 부상병"
+"을 마을로 보내서 회복시키고, 저 오크를 처치해!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1165
@@ -1321,6 +1515,9 @@ msgid ""
 "25% stronger at night and 25% weaker in the day. You are lawful: stronger by "
 "day. Elves are neutral: unaffected by night and day."
 msgstr ""
+"조심해! 지금은 야간이야. 오크들은 혼돈 계열이라 밤에는 공격력이 25% 강해지고 "
+"낮에는 25% 약해져. 너는 질서 계열이라 낮에 더 강하지. 엘프들은 중립 계열이라 "
+"밤낮의 영향을 받지 않아."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1166
@@ -1328,6 +1525,8 @@ msgid ""
 "After this dialog, hold the mouse over the landscape image below the minimap "
 "on the right to see a description of the time of day."
 msgstr ""
+"이 대화가 끝나면, 커서를 오른쪽 미니맵 아래의 지형 이미지에 두고 시간대에 대"
+"한 설명을 읽어보십시오."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1173
@@ -1335,11 +1534,13 @@ msgid ""
 "Remember to retreat your wounded units to villages. Healers can only heal 4 "
 "hitpoints at a time, while villages can heal 8 (the maximum for any unit)."
 msgstr ""
+"부상병을 마을로 후퇴시켜야 한다는걸 기억하십시오. 치료사들은 한번에 HP 4밖에 "
+"치료할 수 없지만, 마을에서는 8을 치료할 수 있습니다(최대치까지)."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1180
 msgid "Defend here"
-msgstr ""
+msgstr "여기를 방어하세요"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1181
@@ -1347,6 +1548,8 @@ msgid ""
 "Beware of those Orcs crossing the river! If they get into the forest they'll "
 "be hard to dislodge!"
 msgstr ""
+"강을 건너고 있는 오크들을 주의해! 저들이 숲에 들어오게 되면 몰아내기 어려워"
+"져!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1188
@@ -1355,11 +1558,17 @@ msgid ""
 "automatically select the next unit. SPACE will indicate a unit is finished.\n"
 "When 'n' no longer selects a new unit, you can end your turn."
 msgstr ""
+"'n' 키를 누르면 자동으로 다음 유닛이 선택되므로 매 턴마다 이것을 통해 모든 유"
+"닛이 사용되었는지 파악할 수 있습니다. 스페이스 바는 유닛의 조작이 끝났음을 표"
+"시하여 'n' 키의 대상에서 벗어나게 합니다.\n"
+"'n' 키를 눌러도 새 유닛이 선택되지 않으면, 턴을 마치셔도 됩니다."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1193
 msgid "You only need to defeat the leader to win (see Main Menu->Objectives)."
 msgstr ""
+"당신은 적의 대장을 격파해야만 승리할 수 있습니다 (메인 메뉴 -> 목표 를 보십시"
+"오)."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1198
@@ -1367,6 +1576,8 @@ msgid ""
 "Remember to recruit troops useful for the situation. Archers are "
 "particularly effective against Grunts, Wolf Riders and their leader."
 msgstr ""
+"상황에 따라 유용한 부대를 소집해야 함을 기억하십시오. 궁사들은 졸개, 늑대 기"
+"병과 그들의 대장에게 특히 효과적입니다."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1216
@@ -1374,6 +1585,8 @@ msgid ""
 "Stay near the keep! You need to be on a keep to recruit more units, and I "
 "doubt the Orc leader will let you use his!"
 msgstr ""
+"본성 근처에 있도록 해! 넌 본성에서 유닛을 더 소집해야해. 설마 오크 대장이 자"
+"기 부하를 쓰라고 내어주진 않을테니!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1230
@@ -1381,6 +1594,8 @@ msgid ""
 "Their leader has moved into that village! He's not as stupid as I thought. "
 "The village heals him each turn and provides good defense."
 msgstr ""
+"저들의 대장이 저 마을로 이동했어! 생각만큼 멍청하진 않나보군. 마을은 매 턴 그"
+"에게 치료를 베풀고 방어력을 높은 수준으로 올려줘."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1241
@@ -1388,6 +1603,8 @@ msgid ""
 "That unit has captured our village! You'd better get him out; it heals him "
 "each turn and provides good defense."
 msgstr ""
+"저 유닛이 우리 마을을 점령했어! 저 녀석을 쫓아내는 편이 좋아. 마을은 매 턴 그"
+"에게 치료를 베풀고 방어력을 높은 수준으로 올려줘."
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1253
@@ -1395,6 +1612,8 @@ msgid ""
 "Using me to attack is risky! I can slow the opponent with my ranged attack, "
 "but I hope you have a plan if I miss!"
 msgstr ""
+"나를 공격에 보내는건 위험부담이 커요! 난 원격 공격으로 상대를 느리게 할 수 있"
+"지만, 내가 실패했을 경우를 대비했길 바래요!"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1289
@@ -1403,6 +1622,8 @@ msgid ""
 "You are close to killing their leader! The unit who finishes him will gain "
 "16 experience points because he is level 2. Choose your unit carefully!"
 msgstr ""
+"이제 저들의 대장을 거의 다 잡았어! 그는 레벨 2이기 때문에 그를 처치하는 유닛"
+"은 16 포인트의 경험치를 쌓을거야. 주의해서 병사를 선택하도록 해!"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1354
@@ -1410,6 +1631,8 @@ msgid ""
 "We will miss $deadguy.name| because he had $deadguy.experience experience "
 "points, meaning he would have advanced to level 2 soon."
 msgstr ""
+"우린 $deadguy.experience 의 경험치를 갖고 있던 $deadguy.name|를 그리워 할거"
+"야. 그는 곧 레벨 2로 승급할 수 있었는데."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1357
@@ -1417,6 +1640,8 @@ msgid ""
 "We will miss $deadguy.name| because she had $deadguy.experience experience "
 "points, meaning she would have advanced to level 2 soon."
 msgstr ""
+"우린 $deadguy.experience 의 경험치를 갖고 있던 $deadguy.name|를 그리워 할거"
+"야. 그녀는 곧 레벨 2로 승급할 수 있었는데."
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1368
@@ -1424,12 +1649,16 @@ msgid ""
 "We will miss $deadguy.name|, but it's better than one of our experienced "
 "troops dying!"
 msgstr ""
+"$deadguy.name|의 죽음은 아쉬운 일이지만, 높은 경험치를 쌓은 부대가 죽는 것보"
+"다는 나은 일이야!"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1381
 msgid ""
 "Losing a healer hurts all the troops! Keep them out of the enemy's reach!"
 msgstr ""
+"치료사를 잃는 건 부대 전체에 타격을 주게 돼! 그들을 적의 사거리에 닿지 않도"
+"록 지켜!"
 
 #. [then]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1382
@@ -1438,12 +1667,15 @@ msgid ""
 "see all the possible enemy moves at once with the 'Show Enemy Moves' command "
 "from the 'Actions' menu."
 msgstr ""
+"당신은 적에게 커서를 옮겨서 그들이 어디까지 이동할 수 있는지 볼 수 있습니다. "
+"또한 '행동' 메뉴의 '모든 적의 이동을 본다' 명령을 선택하면 모든 적의 이동 가"
+"능 영역을 볼 수 있습니다."
 
 #. [else]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1386
 msgid ""
 "Level 2 units are powerful, but not invulnerable! Goodbye, $deadguy.name|."
-msgstr ""
+msgstr "레벨 2 유닛은 강력하지만, 무적의 존재는 아니야! 잘가, $deadguy.name|."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1401
@@ -1451,6 +1683,8 @@ msgid ""
 "Beware of the Orc leader: he can do 36 hitpoints of damage at night! Attack "
 "with many units at once during the day."
 msgstr ""
+"오크 대장을 조심해. 그는 야간에는 한방에 36 데미지까지 줄 수 있어! 주간에 여"
+"러 유닛으로 공격하도록 해."
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1421
@@ -1459,6 +1693,9 @@ msgid ""
 "I always have a 60% chance of hitting with my Marksman ability, and I deal 9 "
 "damage each for 4 attacks. Use me to dislodge hard-to-hit units."
 msgstr ""
+"승급을 통해 난 완전히 회복되었어1\n"
+"난 나의 명사수 능력으로 언제나 60%의 명중률을 갖고, 4번의 공격으로 각각 9의 "
+"데미지를 줄 수 있어. 맞추기 어려운 유닛을 몰아낼 때 나를 쓰도록 해."
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1430
@@ -1467,6 +1704,9 @@ msgid ""
 "I always have a 60% chance of hitting with my Marksman ability, and I deal 9 "
 "damage each for 4 attacks. Use me to dislodge hard-to-hit units."
 msgstr ""
+"승급을 통해 난 완전히 회복되었어1\n"
+"난 나의 명사수 능력으로 언제나 60%의 명중률을 갖고, 4번의 공격으로 각각 9의 "
+"데미지를 줄 수 있어. 맞추기 어려운 유닛을 몰아낼 때 나를 쓰도록 해."
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1446
@@ -1476,6 +1716,9 @@ msgid ""
 "can hide in forests where enemies can only see me if they are right next to "
 "me."
 msgstr ""
+"승급을 통해 난 완전히 회복되었어!\n"
+"난 활과 검 모두에 능하고, 특별한 능력인 기습을 가지고 있어. 난 숲에 숨어서 적"
+"이 근처에 올때까지 날 볼 수 없게 할 수 있지."
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1460
@@ -1484,6 +1727,9 @@ msgid ""
 "I am good with both bow and sword, and I have a special ability: leadership. "
 "Level 1 units around me do 25% more damage, so position me carefully."
 msgstr ""
+"승급을 통해 난 완전히 회복되었어!\n"
+"난 활과 검 모두에 능하고, 특별한 능력인 통솔을 가지고 있어. 내 근처의 레벨 1 "
+"유닛들이 입히는 데미지는 25% 증가하니까, 주의해서 내 위치를 정해야해."
 
 #. [message]: speaker=unit
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1475
@@ -1491,11 +1737,13 @@ msgid ""
 "Advancing a level has fully healed me!\n"
 "I am particularly good with the sword, dealing 8 damage in 4 attacks."
 msgstr ""
+"승급을 통해 난 완전히 회복되었어!\n"
+"난 검에 특히 강해서, 4번 공격하고 각 8의 데미지를 줄 수 있지."
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1659
 msgid "You took too long! We'll never be rid of these Orcs!"
-msgstr ""
+msgstr "너무 오래 걸려! 우린 저 오크들을 좇아낼 수 없을거야!"
 
 #. [event]
 #: data/campaigns/tutorial/scenarios/2_Tutorial.cfg:1677
@@ -1505,12 +1753,15 @@ msgid ""
 "Throne. The South Guard was specifically designed as a beginner's campaign. "
 "Konrad, Li'sar and Delfador are characters from Heir to the Throne."
 msgstr ""
+"너의 승리야! 이제 넌 남부 경비대, 오크족의 습격, 두 형제 이야기나 왕좌의 후계"
+"자 같은 초급 캠페인을 하고싶을거야. 남부 경비대는 특별히 초심자들을 위해 구성"
+"된 캠페인이야. Konrad, Li'sar와 Delfador는 왕좌의 후계자 편에서 나오는 인물들"
+"이지."
 
 #. [unit_type]: id=Fighter, race=human
 #: data/campaigns/tutorial/units/Fighter.cfg:4
-#, fuzzy
 msgid "Fighter"
-msgstr "엘프 파이터"
+msgstr "투사"
 
 #. [unit_type]: id=Fighteress, race=human
 #. [unit_type]: id=Fighter, race=human
@@ -1521,22 +1772,23 @@ msgid ""
 "attack from enemies. However, they have the potential to become great "
 "warriors one day."
 msgstr ""
+"젊고 용맹한 투사들은 검에 숙달되어 있으며, 적의 공격으로부터 취약하다. 하지"
+"만 그들은 언젠가 대단한 전사가 될 자질을 가지고 있다."
 
 #. [attack]: type=blade
 #: data/campaigns/tutorial/units/Fighter.cfg:22
 msgid "sword"
-msgstr "소드"
+msgstr "검"
 
 #. [unit_type]: id=Fighteress, race=human
 #: data/campaigns/tutorial/units/Fighteress.cfg:4
 msgid "female^Fighter"
-msgstr "파이터"
+msgstr "투사"
 
 #. [attack]: type=blade
 #: data/campaigns/tutorial/units/Fighteress.cfg:21
-#, fuzzy
 msgid "saber"
-msgstr "세이버"
+msgstr "기병도"
 
 #. [unit_type]: id=Quintain, race=mechanical
 #: data/campaigns/tutorial/units/Quintain.cfg:14
@@ -1544,11 +1796,13 @@ msgid ""
 "Quintains are used to practice swordplay and jousting on. It would be "
 "extremely unusual to be attacked by one."
 msgstr ""
+"인간형 과녁은 검술과 승마술을 연습하는데 사용된다. 이것으로부터 공격받는다는"
+"건 대단히 이례적인 일이다."
 
 #. [attack]: type=impact
 #: data/campaigns/tutorial/units/Quintain.cfg:22
 msgid "flail"
-msgstr "플레일"
+msgstr "도리깨"
 
 #~ msgid "staff"
 #~ msgstr "스태프"
