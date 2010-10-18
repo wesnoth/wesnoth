@@ -382,22 +382,42 @@ function wml_actions.store_reachable_locations(cfg)
 		helper.wml_error "[store_reachable_locations] missing required [filter] tag"
 	local location_filter = helper.get_child(cfg, "filter_location")
 	local range = cfg.range or "movement"
+	local moves = cfg.moves or "current"
+	local viewing_side = cfg.viewing_side or 0
 	local variable = cfg.variable or helper.wml_error "[store_reachable_locations] missing required variable= key"
 
 	local res = location_set.create()
 
 	for i,unit in ipairs(wesnoth.get_units(unit_filter)) do
-		local reach = wesnoth.find_reach(unit)
+		local reach
+
+		if range == "movement" or range == "attack" then
+			if moves == "max" then
+				local real_moves = unit.moves
+				unit.moves = unit.max_moves
+				reach = wesnoth.find_reach(unit, { viewing_side = viewing_side } )
+				unit.moves = real_moves
+			else
+				reach = wesnoth.find_reach(unit)
+			end
+		elseif range == "vision" then
+			local real_moves = unit.moves
+			unit.moves = unit.max_moves
+			reach = wesnoth.find_reach(unit, { viewing_side = viewing_side, ignore_units=yes } )
+			unit.moves = real_moves
+		end
+
+		-- TODO: the radius expansion for "vision" and "attack" is way too slow
 
 		for j,loc in ipairs(reach) do
 			if wesnoth.match_location(loc[1], loc[2], location_filter) then
 				res:insert(loc[1], loc[2])
 			end
 
-			if range == "attack" then
-				res:of_pairs(wesnoth.get_locations
-					{ { "filter_adjacent_location", { x=loc[1], y=loc[2] } },
-					  { "and", location_filter } })
+			if range == "vision" or range == "attack" then
+			  res:of_pairs(wesnoth.get_locations
+				{ { "filter_adjacent_location", { x=loc[1], y=loc[2] } },
+				  { "and", location_filter } })
 			end
 		end
 	end
