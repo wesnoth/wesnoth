@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-10-03 21:59+0200\n"
+"POT-Creation-Date: 2010-10-19 12:43+0200\n"
 "PO-Revision-Date: 2010-06-20 20:24+0200\n"
 "Last-Translator: Adrián Chaves Fernández <adriyetichaves@gmail.com>\n"
 "Language-Team: Galician <proxecto@trasno.net>\n"
@@ -26,23 +26,29 @@ msgstr ""
 #. [terrain_type]: id=deep_water_grey
 #: data/core/terrain.cfg:18
 #, fuzzy
-msgid "Deep Water Grey"
+msgid "Grey Deep Water"
 msgstr "Auga profunda"
 
 #. [terrain_type]: id=deep_water
 #: data/core/terrain.cfg:28
 #, fuzzy
-msgid "Deep Water Medium"
+msgid "Deep Water"
+msgstr "Auga profunda"
+
+#. [terrain_type]: id=deep_water
+#: data/core/terrain.cfg:29
+#, fuzzy
+msgid "Medium Deep Water"
 msgstr "Auga profunda"
 
 #. [terrain_type]: id=deep_water_tropical
-#: data/core/terrain.cfg:37
+#: data/core/terrain.cfg:38
 #, fuzzy
-msgid "Deep Water Tropical"
-msgstr "Auga profunda"
+msgid "Tropical Deep Water"
+msgstr "Selva tropical"
 
 #. [terrain_type]: id=gray_tropical_water
-#: data/core/terrain.cfg:47
+#: data/core/terrain.cfg:48
 #, fuzzy
 msgid "Gray Shallow Water"
 msgstr "Auga superficial"
@@ -50,6 +56,18 @@ msgstr "Auga superficial"
 #. [terrain_type]: id=shallow_water
 #: data/core/terrain.cfg:58
 msgid "Shallow Water"
+msgstr "Auga superficial"
+
+#. [terrain_type]: id=shallow_water
+#: data/core/terrain.cfg:59
+#, fuzzy
+msgid "Medium Shallow Water"
+msgstr "Auga superficial"
+
+#. [terrain_type]: id=tropical_water
+#: data/core/terrain.cfg:68
+#, fuzzy
+msgid "Tropical Shallow Water"
 msgstr "Auga superficial"
 
 #. [terrain_type]: id=ford
@@ -67,210 +85,852 @@ msgstr "Arrecife costeiro"
 msgid "Swamp"
 msgstr "Braña"
 
+#. [terrain_type]: id=quagmire
+#: data/core/terrain.cfg:108
+msgid "Muddy Quagmire"
+msgstr ""
+
+#. [terrain_type]: id=grassland
+#: data/core/terrain.cfg:125
+msgid "Green Grass"
+msgstr ""
+
+#. [terrain_type]: id=savanna
+#: data/core/terrain.cfg:135
+msgid "Semi-dry Grass"
+msgstr ""
+
+#. [terrain_type]: id=grass_dry
+#: data/core/terrain.cfg:145
+msgid "Dry Grass"
+msgstr ""
+
+#. [terrain_type]: id=leaf_litter
+#: data/core/terrain.cfg:154
+msgid "Leaf Litter"
+msgstr ""
+
+#. [terrain_type]: id=dirt_dark
+#: data/core/terrain.cfg:165
+#, fuzzy
+msgid "Dark Dirt"
+msgstr "Terra"
+
+#. [terrain_type]: id=dirt
+#: data/core/terrain.cfg:174
+msgid "Regular Dirt"
+msgstr ""
+
+#. [terrain_type]: id=road
+#: data/core/terrain.cfg:183
+#, fuzzy
+msgid "Dry Dirt"
+msgstr "Terra"
+
+#. [terrain_type]: id=road
+#: data/core/terrain.cfg:192
+msgid "Regular Cobbles"
+msgstr ""
+
+#. [terrain_type]: id=road_clean
+#: data/core/terrain.cfg:201
+#, fuzzy
+msgid "Clean Grey Cobbles"
+msgstr "Limpar as etiquetas"
+
+#. [terrain_type]: id=stone_path
+#: data/core/terrain.cfg:210
+msgid "Overgrown Cobbles"
+msgstr ""
+
+#. [terrain_type]: id=ice
+#: data/core/terrain.cfg:223
+msgid "Ice"
+msgstr "Xeo"
+
+#. [terrain_type]: id=snow
+#: data/core/terrain.cfg:232
+msgid "Snow"
+msgstr "Neve"
+
+#. [terrain_type]: id=desert
+#: data/core/terrain.cfg:245
+#, fuzzy
+msgid "Desert Sands"
+msgstr "Montañas desérticas"
+
 #. [terrain_type]: id=sand
-#: data/core/terrain.cfg:266
+#: data/core/terrain.cfg:254
 msgid "Sand"
 msgstr "Area"
 
+#. [terrain_type]: id=sand
+#: data/core/terrain.cfg:255
+msgid "Beach Sands"
+msgstr ""
+
 #. [terrain_type]: id=oasis
-#: data/core/terrain.cfg:275
+#: data/core/terrain.cfg:263
 msgid "Oasis"
 msgstr "Oasis"
 
 #. [terrain_type]: id=sand_rubble
-#: data/core/terrain.cfg:286
+#: data/core/terrain.cfg:274
 msgid "Rubble"
 msgstr "Cascallos"
 
+#. [terrain_type]: id=crater
+#: data/core/terrain.cfg:284
+msgid "Crater"
+msgstr "Cráter"
+
+#. [terrain_type]: id=flowers_mixed
+#: data/core/terrain.cfg:298
+#, fuzzy
+msgid "Mixed Flowers"
+msgstr "Bosque frondoso no outono"
+
+#. [terrain_type]: id=farm
+#: data/core/terrain.cfg:307
+msgid "Farmland"
+msgstr "Terra de cultivo"
+
+#. [terrain_type]: id=stones_small
+#: data/core/terrain.cfg:316
+msgid "Stones"
+msgstr ""
+
+#. [terrain_type]: id=mushrooms_small
+#: data/core/terrain.cfg:325
+#, fuzzy
+msgid "Small Mushrooms"
+msgstr "Colonia de cogomelos"
+
+#. [terrain_type]: id=mushrooms_farm
+#: data/core/terrain.cfg:334
+#, fuzzy
+msgid "Mushroom Farm"
+msgstr "Colonia de cogomelos"
+
+#. [terrain_type]: id=desert_plants
+#: data/core/terrain.cfg:343
+#, fuzzy
+msgid "Desert Plants"
+msgstr "Montañas desérticas"
+
+#. [terrain_type]: id=desert_plants_sans_bones
+#: data/core/terrain.cfg:352
+#, fuzzy
+msgid "Desert Plants without Bones"
+msgstr "Montañas desérticas"
+
+#. [terrain_type]: id=windmill
+#: data/core/terrain.cfg:361
+msgid "Windmill"
+msgstr ""
+
+#. [terrain_type]: id=great_tree
+#: data/core/terrain.cfg:374
+msgid "Great Tree"
+msgstr "Árbore grande"
+
+#. [terrain_type]: id=tropical_forest
+#: data/core/terrain.cfg:384
+msgid "Tropical Forest"
+msgstr "Selva tropical"
+
 #. [terrain_type]: id=forest
-#: data/core/terrain.cfg:409
+#: data/core/terrain.cfg:394
 msgid "Forest"
 msgstr "Bosque"
 
+#. [terrain_type]: id=forest
+#: data/core/terrain.cfg:395
+msgid "Pine Forest"
+msgstr "Bosque de piñeiros"
+
+#. [terrain_type]: id=snow_forest
+#: data/core/terrain.cfg:404
+msgid "Snowy Pine Forest"
+msgstr "Bosque de piñeiros nevado"
+
+#. [terrain_type]: id=deciduous_forest_summer
+#: data/core/terrain.cfg:415
+msgid "Summer Deciduous Forest"
+msgstr "Bosque caducifolio no verán"
+
+#. [terrain_type]: id=deciduous_forest_fall
+#: data/core/terrain.cfg:425
+msgid "Fall Deciduous Forest"
+msgstr "Bosque caducifolio no outono"
+
+#. [terrain_type]: id=deciduous_forest_winter
+#: data/core/terrain.cfg:435
+msgid "Winter Deciduous Forest"
+msgstr "Bosque caducifolio no inverno"
+
 #. [terrain_type]: id=deciduous_forest_winter_snow
+#: data/core/terrain.cfg:445
+msgid "Snowy Deciduous Forest"
+msgstr "Bosque caducifolio nevado"
+
+#. [terrain_type]: id=mixed_forest_summer
+#: data/core/terrain.cfg:456
+msgid "Summer Mixed Forest"
+msgstr "Bosque frondoso no verán"
+
+#. [terrain_type]: id=mixed_forest_fall
+#: data/core/terrain.cfg:466
+#, fuzzy
+msgid "Fall Mixed Forest"
+msgstr "Bosque frondoso nevado"
+
+#. [terrain_type]: id=mixed_forest_winter
+#: data/core/terrain.cfg:476
+msgid "Winter Mixed Forest"
+msgstr "Bosque frondoso no inverno"
+
 #. [terrain_type]: id=mixed_forest_winter_snow
-#: data/core/terrain.cfg:464 data/core/terrain.cfg:509
-msgid "Snow Forest"
-msgstr "Bosque nevado"
+#: data/core/terrain.cfg:486
+msgid "Snowy Mixed Forest"
+msgstr "Bosque frondoso nevado"
 
 #. [terrain_type]: id=hills
-#: data/core/terrain.cfg:525
+#: data/core/terrain.cfg:501
 msgid "Hills"
 msgstr "Outeiros"
 
+#. [terrain_type]: id=hills_dry
+#: data/core/terrain.cfg:509
+#, fuzzy
+msgid "Dry Hills"
+msgstr "Outeiros"
+
 #. [terrain_type]: id=desert_hills
-#: data/core/terrain.cfg:543
+#: data/core/terrain.cfg:518
 msgid "Dunes"
 msgstr "Dunas"
 
 #. [terrain_type]: id=snow_hills
-#: data/core/terrain.cfg:553
+#: data/core/terrain.cfg:528
 msgid "Snow Hills"
 msgstr "Outeiros nevados"
 
 #. [terrain_type]: id=mountains
-#: data/core/terrain.cfg:567
+#: data/core/terrain.cfg:542
 msgid "Mountains"
 msgstr "Montañas"
 
+#. [terrain_type]: id=desert_mountains
+#: data/core/terrain.cfg:550
+#, fuzzy
+msgid "Dry Mountains"
+msgstr "Montañas"
+
+#. [terrain_type]: id=snow_mountains
+#: data/core/terrain.cfg:559
+msgid "Snowy Mountains"
+msgstr "Montañas nevadas"
+
 #. [terrain_type]: id=forested_hills
-#. [terrain_type]: id=deciduous_forest_summer_hills
-#. [terrain_type]: id=deciduous_forest_winter_hills
-#. [terrain_type]: id=mixed_forest_summer_hills
-#. [terrain_type]: id=mixed_forest_fall_hills
-#. [terrain_type]: id=mixed_forest_winter_hills
-#: data/core/terrain.cfg:600 data/core/terrain.cfg:620
-#: data/core/terrain.cfg:642 data/core/terrain.cfg:664
-#: data/core/terrain.cfg:675 data/core/terrain.cfg:686
+#: data/core/terrain.cfg:573
 msgid "Forested Hills"
 msgstr "Bosque elevado"
 
 #. [terrain_type]: id=forested_snow_hills
-#. [terrain_type]: id=deciduous_forest_winter_snow_hills
-#. [terrain_type]: id=mixed_forest_winter_snow_hills
-#: data/core/terrain.cfg:610 data/core/terrain.cfg:653
-#: data/core/terrain.cfg:697
+#: data/core/terrain.cfg:583
 msgid "Forested Snow Hills"
 msgstr "Bosque elevado nevado"
 
+#. [terrain_type]: id=deciduous_forest_summer_hills
+#: data/core/terrain.cfg:593
+msgid "Summer Deciduous Forested Hills"
+msgstr "Bosque caducifolio elevado no verán"
+
+#. [terrain_type]: id=deciduous_forest_fall_hills
+#: data/core/terrain.cfg:603
+msgid "Fall Deciduous Forested Hills"
+msgstr "Bosque caducifolio elevado no outono"
+
+#. [terrain_type]: id=deciduous_forest_winter_hills
+#: data/core/terrain.cfg:613
+msgid "Winter Deciduous Forested Hills"
+msgstr "Bosque caducifolio elevado no inverno"
+
+#. [terrain_type]: id=deciduous_forest_winter_snow_hills
+#: data/core/terrain.cfg:623
+msgid "Snowy Deciduous Forested Hills"
+msgstr "Bosque caducifolio elevado nevado"
+
+#. [terrain_type]: id=mixed_forest_summer_hills
+#: data/core/terrain.cfg:633
+msgid "Summer Mixed Forested Hills"
+msgstr "Bosque frondoso elevado no verán"
+
+#. [terrain_type]: id=mixed_forest_fall_hills
+#: data/core/terrain.cfg:643
+#, fuzzy
+msgid "Fall Mixed Forested Hills"
+msgstr "Bosque frondoso elevado nevado"
+
+#. [terrain_type]: id=mixed_forest_winter_hills
+#: data/core/terrain.cfg:653
+msgid "Winter Mixed Forested Hills"
+msgstr "Bosque frondoso elevado no inverno"
+
+#. [terrain_type]: id=mixed_forest_winter_snow_hills
+#: data/core/terrain.cfg:663
+msgid "Snowy Mixed Forested Hills"
+msgstr "Bosque frondoso elevado nevado"
+
+#. [terrain_type]
+#: data/core/terrain.cfg:676
+msgid "Basic Wooden Floor"
+msgstr ""
+
 #. [terrain_type]: id=lit
-#: data/core/terrain.cfg:725
+#: data/core/terrain.cfg:689
 msgid "Lit"
 msgstr "Luz"
 
+#. [terrain_type]: id=lit
+#: data/core/terrain.cfg:690
+msgid "Beam of Light"
+msgstr ""
+
 #. [terrain_type]: id=cave
-#: data/core/terrain.cfg:736
+#: data/core/terrain.cfg:700
 msgid "Cave"
 msgstr "Cova"
 
+#. [terrain_type]: id=cave
+#: data/core/terrain.cfg:701
+#, fuzzy
+msgid "Cave Floor"
+msgstr "Parede dunha cova"
+
+#. [terrain_type]: id=cave_earthy
+#: data/core/terrain.cfg:709
+msgid "Earthy Cave Floor"
+msgstr ""
+
+#. [terrain_type]: id=flagstones_dark
+#: data/core/terrain.cfg:718
+msgid "Dark Flagstones"
+msgstr ""
+
+#. [terrain_type]: id=cave_path
+#: data/core/terrain.cfg:727
+#, fuzzy
+msgid "Cave Path"
+msgstr "Camiño dunha cova"
+
 #. [terrain_type]: id=fungus
-#: data/core/terrain.cfg:775
+#: data/core/terrain.cfg:736
 msgid "Mushroom Grove"
 msgstr "Colonia de cogomelos"
 
 #. [terrain_type]: id=fungus_beam
-#: data/core/terrain.cfg:784
+#: data/core/terrain.cfg:745
 msgid "Mushroom Grove Lit"
 msgstr "Colonia de cogomelos iluminada"
 
 #. [terrain_type]: id=rocky_cave
-#: data/core/terrain.cfg:795
+#: data/core/terrain.cfg:756
 msgid "Rockbound Cave"
 msgstr "Cova rochosa"
 
+#. [terrain_type]: id=rails
+#. [terrain_type]: id=railsdiag1
+#. [terrain_type]: id=railsdiag2
+#: data/core/terrain.cfg:768 data/core/terrain.cfg:780
+#: data/core/terrain.cfg:792
+msgid "Mine Rail"
+msgstr ""
+
+#. [terrain_type]: id=canyon
+#: data/core/terrain.cfg:809
+msgid "Regular Chasm"
+msgstr ""
+
+#. [terrain_type]: id=chasm_earthy
+#: data/core/terrain.cfg:819
+msgid "Earthy Chasm"
+msgstr ""
+
+#. [terrain_type]: id=abyss
+#: data/core/terrain.cfg:829
+msgid "Ethereal Abyss"
+msgstr ""
+
+#. [terrain_type]: id=lava_chasm
+#: data/core/terrain.cfg:839
+msgid "Lava chasm"
+msgstr "Abismo de lava"
+
+#. [terrain_type]: id=lava
+#: data/core/terrain.cfg:849
+msgid "Lava"
+msgstr "Lava"
+
+#. [terrain_type]: id=volcano
+#: data/core/terrain.cfg:860
+msgid "Volcano"
+msgstr ""
+
+#. [terrain_type]: id=cloud
+#: data/core/terrain.cfg:875
+#, fuzzy
+msgid "Impassable Regular Mountains"
+msgstr "Montañas desérticas infranqueables"
+
+#. [terrain_type]: id=clouddesert
+#: data/core/terrain.cfg:885
+msgid "Impassable Desert Mountains"
+msgstr "Montañas desérticas infranqueables"
+
+#. [terrain_type]: id=cloud_snow
+#: data/core/terrain.cfg:895
+#, fuzzy
+msgid "Impassable Snowy Mountains"
+msgstr "Montañas infranqueables"
+
+#. [terrain_type]: id=cavewall
+#: data/core/terrain.cfg:906
+#, fuzzy
+msgid "Natural Cave Wall"
+msgstr "Parede dunha cova"
+
+#. [terrain_type]: id=cavewall_hewn
+#: data/core/terrain.cfg:917
+#, fuzzy
+msgid "Hewn Cave Wall"
+msgstr "Parede dunha cova"
+
+#. [terrain_type]: id=cavewall_earthy
+#: data/core/terrain.cfg:927
+msgid "Natural Earthy Cave Wall"
+msgstr ""
+
+#. [terrain_type]: id=cavewall_earthy_hewn
+#: data/core/terrain.cfg:937
+msgid "Reinforced Earthy Cave Wall"
+msgstr ""
+
+#. [terrain_type]: id=wall_stone
+#: data/core/terrain.cfg:948
+#, fuzzy
+msgid "Stone Wall"
+msgstr "Parede dunha cova"
+
+#. [terrain_type]: id=wall_stone_lit
+#: data/core/terrain.cfg:959
+msgid "Lit Stone Wall"
+msgstr ""
+
+#. [terrain_type]: id=impassable_overlay
+#: data/core/terrain.cfg:969
+#, fuzzy
+msgid "Impassable Overlay"
+msgstr "Infranqueable"
+
+#. [terrain_type]: id=void
+#: data/core/terrain.cfg:980
+msgid "Void"
+msgstr "Baleiro"
+
+#. [terrain_type]: id=desert_village
+#: data/core/terrain.cfg:996
+#, fuzzy
+msgid "Adobe Village"
+msgstr "Vila"
+
+#. [terrain_type]: id=desert_village
+#: data/core/terrain.cfg:1009
+msgid "Desert Tent Village"
+msgstr ""
+
+#. [terrain_type]: id=orcish_village
+#: data/core/terrain.cfg:1024
+#, fuzzy
+msgid "Orcish Village"
+msgstr "Vila"
+
+#. [terrain_type]: id=orcish_snow_village
+#: data/core/terrain.cfg:1037
+msgid "Snowy Orcish Village"
+msgstr ""
+
+#. [terrain_type]: id=elven_snow_village
+#: data/core/terrain.cfg:1052
+msgid "Snowy Elven Village"
+msgstr ""
+
+#. [terrain_type]: id=elven_village
+#: data/core/terrain.cfg:1065
+#, fuzzy
+msgid "Elven Village"
+msgstr "Vila"
+
+#. [terrain_type]: id=human_village
+#: data/core/terrain.cfg:1080
+msgid "Cottage"
+msgstr ""
+
+#. [terrain_type]: id=snow_village
+#: data/core/terrain.cfg:1093
+#, fuzzy
+msgid "Snowy Cottage"
+msgstr "Montañas nevadas"
+
+#. [terrain_type]: id=city_village
+#: data/core/terrain.cfg:1106
+#, fuzzy
+msgid "Human City Village"
+msgstr "Vila"
+
+#. [terrain_type]: id=city_village_wno
+#: data/core/terrain.cfg:1119
+msgid "Snowy Human City Village"
+msgstr ""
+
+#. [terrain_type]: id=hill_village
+#: data/core/terrain.cfg:1132
+msgid "Hill Stone Village"
+msgstr ""
+
+#. [terrain_type]: id=snow-hill_village
+#: data/core/terrain.cfg:1145
+msgid "Snowy Hill Stone Village"
+msgstr ""
+
+#. [terrain_type]: id=tropical_forest_village
+#: data/core/terrain.cfg:1158
+#, fuzzy
+msgid "Tropical Village"
+msgstr "Selva tropical"
+
+#. [terrain_type]: id=camp_village
+#: data/core/terrain.cfg:1171
+#, fuzzy
+msgid "Tent Village"
+msgstr "Vila"
+
+#. [terrain_type]: id=drake_village
+#: data/core/terrain.cfg:1183
+#, fuzzy
+msgid "Drake Village"
+msgstr "Vila"
+
+#. [terrain_type]: id=underground_village
+#: data/core/terrain.cfg:1197
+#, fuzzy
+msgid "Cave Village"
+msgstr "Vila"
+
+#. [terrain_type]: id=dwarven_village
+#: data/core/terrain.cfg:1209
+#, fuzzy
+msgid "Dwarven Village"
+msgstr "Vila"
+
+#. [terrain_type]: id=hut_village
+#: data/core/terrain.cfg:1221
+#, fuzzy
+msgid "Hut"
+msgstr "Cortar"
+
+#. [terrain_type]: id=hut_snow_village
+#: data/core/terrain.cfg:1233
+#, fuzzy
+msgid "Snowy Hut"
+msgstr "Montañas nevadas"
+
+#. [terrain_type]: id=logcabin_village
+#: data/core/terrain.cfg:1245
+msgid "Log Cabin"
+msgstr ""
+
+#. [terrain_type]: id=logcabin_snow_village
+#: data/core/terrain.cfg:1257
+#, fuzzy
+msgid "Snowy Log Cabin"
+msgstr "Montañas nevadas"
+
+#. [terrain_type]: id=swamp_village
+#: data/core/terrain.cfg:1271
+#, fuzzy
+msgid "Swamp Village"
+msgstr "Vila"
+
 #. [terrain_type]: id=mermen_village
 #. [terrain_type]: id=swamp_merfolk-village
-#: data/core/terrain.cfg:1336 data/core/terrain.cfg:1349
+#: data/core/terrain.cfg:1283 data/core/terrain.cfg:1296
 #, fuzzy
 msgid "Aquatic Village"
 msgstr "Vila"
 
+#. [terrain_type]: id=mermen_village
+#: data/core/terrain.cfg:1284
+msgid "Shallow Merfolk Village"
+msgstr ""
+
+#. [terrain_type]: id=swamp_merfolk-village
+#: data/core/terrain.cfg:1297
+msgid "Swamp Merfolk Village"
+msgstr ""
+
+#. [terrain_type]: id=encampment
+#: data/core/terrain.cfg:1312
+msgid "Encampment"
+msgstr "Campamento"
+
+#. [terrain_type]: id=encampment_snow
+#: data/core/terrain.cfg:1323
+#, fuzzy
+msgid "Snowy Encampment"
+msgstr "Campamento"
+
+#. [terrain_type]: id=orcish_fort
+#: data/core/terrain.cfg:1334
+#, fuzzy
+msgid "Orcish Castle"
+msgstr "Castelo"
+
+#. [terrain_type]: id=snow_orcish_fort
+#: data/core/terrain.cfg:1345
+msgid "Snowy Orcish Castle"
+msgstr ""
+
 #. [terrain_type]: id=castle
 #. [terrain_type]: id=castle_overlay
-#: data/core/terrain.cfg:1413 data/core/terrain.cfg:1667
+#: data/core/terrain.cfg:1356 data/core/terrain.cfg:1598
 msgid "Castle"
 msgstr "Castelo"
 
+#. [terrain_type]: id=castle
+#: data/core/terrain.cfg:1357
+#, fuzzy
+msgid "Human Castle"
+msgstr "Castelo"
+
+#. [terrain_type]: id=snow_castle
+#: data/core/terrain.cfg:1367
+#, fuzzy
+msgid "Snowy Human Castle"
+msgstr "Montañas nevadas"
+
+#. [terrain_type]: id=elven_castle
+#: data/core/terrain.cfg:1377
+#, fuzzy
+msgid "Elvish Castle"
+msgstr "Castelo"
+
+#. [terrain_type]: id=dwarven_castle
+#: data/core/terrain.cfg:1388
+#, fuzzy
+msgid "Dwarven Castle"
+msgstr "Castelo"
+
+#. [terrain_type]: id=ruin
+#: data/core/terrain.cfg:1399
+#, fuzzy
+msgid "Ruined Castle"
+msgstr "Torre dun castelo en ruínas"
+
 #. [terrain_type]: id=sunkenruin
-#: data/core/terrain.cfg:1470
+#: data/core/terrain.cfg:1410
 msgid "Sunken Ruin"
 msgstr "Ruína somerxida"
 
 #. [terrain_type]: id=swampruin
-#: data/core/terrain.cfg:1482
+#: data/core/terrain.cfg:1422
 msgid "Swamp Ruin"
 msgstr "Ruína brañenta"
 
+#. [terrain_type]: id=sand_castle
+#: data/core/terrain.cfg:1434
+#, fuzzy
+msgid "Desert Castle"
+msgstr "Montañas desérticas"
+
 #. [terrain_type]: id=encampment_keep
+#: data/core/terrain.cfg:1449
+msgid "Encampment Keep"
+msgstr "Torre dun campamento"
+
 #. [terrain_type]: id=encampment_snow_keep
+#: data/core/terrain.cfg:1461
+#, fuzzy
+msgid "Snowy Encampment Keep"
+msgstr "Torre dun campamento"
+
 #. [terrain_type]: id=orcish_keep
+#: data/core/terrain.cfg:1473
+#, fuzzy
+msgid "Orcish Keep"
+msgstr "Torre dunha fortaleza"
+
 #. [terrain_type]: id=snow_orcish_keep
+#: data/core/terrain.cfg:1485
+msgid "Snowy Orcish Keep"
+msgstr ""
+
 #. [terrain_type]: id=human_keep
-#. [terrain_type]: id=snow_keep
-#. [terrain_type]: id=elven_keep
-#. [terrain_type]: id=dwarven_keep
-#. [terrain_type]: id=ruined_keep
 #. [terrain_type]: id=desert_keep
 #. [terrain_type]: id=keep_overlay
-#: data/core/terrain.cfg:1510 data/core/terrain.cfg:1523
-#: data/core/terrain.cfg:1536 data/core/terrain.cfg:1549
-#: data/core/terrain.cfg:1562 data/core/terrain.cfg:1575
-#: data/core/terrain.cfg:1588 data/core/terrain.cfg:1601
-#: data/core/terrain.cfg:1614 data/core/terrain.cfg:1653
-#: data/core/terrain.cfg:1679
+#: data/core/terrain.cfg:1497 data/core/terrain.cfg:1584
+#: data/core/terrain.cfg:1610
 msgid "Keep"
 msgstr "Torre"
 
+#. [terrain_type]: id=human_keep
+#: data/core/terrain.cfg:1498
+#, fuzzy
+msgid "Castle Human Keep"
+msgstr "Torre dun castelo"
+
+#. [terrain_type]: id=snow_keep
+#: data/core/terrain.cfg:1510
+#, fuzzy
+msgid "Snowy Castle Keep"
+msgstr "Torre dun castelo"
+
+#. [terrain_type]: id=elven_keep
+#: data/core/terrain.cfg:1522
+#, fuzzy
+msgid "Elven Castle Keep"
+msgstr "Torre dun castelo"
+
+#. [terrain_type]: id=dwarven_keep
+#: data/core/terrain.cfg:1534
+#, fuzzy
+msgid "Dwarven Castle Keep"
+msgstr "Torre dun castelo"
+
+#. [terrain_type]: id=ruined_keep
+#: data/core/terrain.cfg:1546
+msgid "Ruined Castle Keep"
+msgstr "Torre dun castelo en ruínas"
+
 #. [terrain_type]: id=sunken_keep
-#: data/core/terrain.cfg:1627
+#: data/core/terrain.cfg:1558
 #, fuzzy
 msgid "Sunken Keep"
 msgstr "Torre dun castelo somerxido"
 
+#. [terrain_type]: id=sunken_keep
+#: data/core/terrain.cfg:1559
+#, fuzzy
+msgid "Sunken Castle Keep"
+msgstr "Torre dun castelo en ruínas"
+
 #. [terrain_type]: id=swamp_keep
-#: data/core/terrain.cfg:1640
+#: data/core/terrain.cfg:1571
 #, fuzzy
 msgid "Swamp Keep"
 msgstr "Braña"
 
+#. [terrain_type]: id=swamp_keep
+#: data/core/terrain.cfg:1572
+#, fuzzy
+msgid "Swamp Castle Keep"
+msgstr "Torre dun castelo"
+
+#. [terrain_type]: id=desert_keep
+#: data/core/terrain.cfg:1585
+#, fuzzy
+msgid "Desert Keep"
+msgstr "Deserto"
+
+#. [terrain_type]: id=castle_overlay
+#: data/core/terrain.cfg:1599
+#, fuzzy
+msgid "Castle Overlay"
+msgstr "Torre dun castelo"
+
+#. [terrain_type]: id=keep_overlay
+#: data/core/terrain.cfg:1611
+msgid "Keep Overlay"
+msgstr ""
+
 #. [terrain_type]: id=bridge
 #. [terrain_type]: id=bridgediag1
 #. [terrain_type]: id=bridgediag2
+#: data/core/terrain.cfg:1628 data/core/terrain.cfg:1639
+#: data/core/terrain.cfg:1650
+#, fuzzy
+msgid "Wood Bridge"
+msgstr "Ponte"
+
 #. [terrain_type]: id=stone_bridge
+#: data/core/terrain.cfg:1663 data/core/terrain.cfg:1674
+#: data/core/terrain.cfg:1685
+msgid "Basic Stone Bridge"
+msgstr ""
+
 #. [terrain_type]: id=bridgechasm
 #. [terrain_type]: id=bridgechasmdiag1
 #. [terrain_type]: id=bridgechasmdiag2
-#: data/core/terrain.cfg:1697 data/core/terrain.cfg:1709
-#: data/core/terrain.cfg:1721 data/core/terrain.cfg:1735
-#: data/core/terrain.cfg:1747 data/core/terrain.cfg:1759
-#: data/core/terrain.cfg:1773 data/core/terrain.cfg:1783
-#: data/core/terrain.cfg:1795
-msgid "Bridge"
+#: data/core/terrain.cfg:1698 data/core/terrain.cfg:1708
+#: data/core/terrain.cfg:1719
+#, fuzzy
+msgid "Chasm Bridge"
 msgstr "Ponte"
+
+#. [terrain_type]: id=off_map
+#: data/core/terrain.cfg:1735
+msgid "Off Map"
+msgstr ""
+
+#. [terrain_type]: id=off_map2
+#: data/core/terrain.cfg:1744
+msgid "Experimental Fake Map Edge"
+msgstr ""
 
 #. [toggle_button]: id=shroud
 #. [terrain_type]: id=shroud
-#: data/core/terrain.cfg:1832 data/gui/default/window/mp_create_game.cfg:471
+#: data/core/terrain.cfg:1753 data/gui/default/window/mp_create_game.cfg:471
 msgid "Shroud"
 msgstr "Manto"
 
 #. [terrain_type]: id=fog
-#: data/core/terrain.cfg:1841
+#: data/core/terrain.cfg:1762
 msgid "Fog"
 msgstr "Néboa"
 
 #. [terrain_type]: id=volcano_deprecate
-#: data/core/terrain.cfg:1865
+#: data/core/terrain.cfg:1786
 msgid "Deprecated.  Use 'Mv'"
 msgstr ""
 
 #. [terrain_type]: id=b
-#: data/core/terrain.cfg:1896
+#: data/core/terrain.cfg:1816
 msgid "Test B"
 msgstr ""
 
 #. [terrain_type]: id=flat
-#: data/core/terrain.cfg:1909
+#: data/core/terrain.cfg:1829
 msgid "Flat"
 msgstr "Chaira"
 
 #. [terrain_type]: id=frozen
-#: data/core/terrain.cfg:1916
+#: data/core/terrain.cfg:1836
 msgid "Frozen"
 msgstr "Conxelado"
 
 #. [terrain_type]: id=village
-#: data/core/terrain.cfg:1923
+#: data/core/terrain.cfg:1843
 msgid "Village"
 msgstr "Vila"
 
 #. [terrain_type]: id=impassable
-#: data/core/terrain.cfg:1930
+#: data/core/terrain.cfg:1850
 msgid "Impassable"
 msgstr "Infranqueable"
 
 #. [terrain_type]: id=unwalkable
-#: data/core/terrain.cfg:1937
+#: data/core/terrain.cfg:1857
 msgid "Unwalkable"
 msgstr "Intransitable"
 
@@ -440,7 +1100,7 @@ msgstr "Xerar"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_new_map.cfg:27 src/hotkeys.cpp:118
+#: data/gui/default/window/editor_new_map.cfg:27 src/hotkeys.cpp:119
 msgid "New Map"
 msgstr "Novo mapa"
 
@@ -464,7 +1124,7 @@ msgstr "Crear un novo mapa"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_resize_map.cfg:27 src/hotkeys.cpp:164
+#: data/gui/default/window/editor_resize_map.cfg:27 src/hotkeys.cpp:165
 msgid "Resize Map"
 msgstr "Cambiar as dimensións"
 
@@ -507,7 +1167,7 @@ msgstr "Cambiar as dimensións do mapa"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
-#: data/gui/default/window/editor_settings.cfg:38 src/hotkeys.cpp:116
+#: data/gui/default/window/editor_settings.cfg:38 src/hotkeys.cpp:117
 msgid "Editor Settings"
 msgstr "Configuración do editor"
 
@@ -622,8 +1282,8 @@ msgstr "Execución paso a paso"
 #. [grid]
 #: data/gui/default/window/formula_debugger.cfg:226
 #: data/gui/default/window/lobby_main.cfg:660
-#: data/gui/default/window/title_screen.cfg:231 src/hotkeys.cpp:721
-#: src/hotkeys.cpp:1027
+#: data/gui/default/window/title_screen.cfg:231 src/hotkeys.cpp:718
+#: src/hotkeys.cpp:1017
 msgid "Quit"
 msgstr "Saír"
 
@@ -1276,7 +1936,7 @@ msgstr "Seleccionar"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [button]: id=help
-#: data/gui/default/window/title_screen.cfg:145 src/hotkeys.cpp:195
+#: data/gui/default/window/title_screen.cfg:145 src/hotkeys.cpp:196
 msgid "Help"
 msgstr "Axuda"
 
@@ -1363,7 +2023,7 @@ msgstr ""
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
-#: data/gui/default/window/title_screen.cfg:228 src/hotkeys.cpp:197
+#: data/gui/default/window/title_screen.cfg:228 src/hotkeys.cpp:198
 msgid "Change the language"
 msgstr "Cambiar a lingua"
 
@@ -2114,17 +2774,17 @@ msgstr "Versión"
 msgid "Mandatory widget '$id' hasn't been defined."
 msgstr "Non se definiu o trebello obrigatorio “$id”."
 
-#: src/gui/widgets/settings.cpp:390
+#: src/gui/widgets/settings.cpp:402
 msgid ""
 "Widget definition '$definition' doesn't contain the definition for '$id'."
 msgstr ""
 "A definición do trebello “$definition” non contén a definición de “$id”."
 
-#: src/gui/widgets/settings.cpp:446
+#: src/gui/widgets/settings.cpp:458
 msgid "No default gui defined."
 msgstr "Non se definiu a interface gráfica por defecto."
 
-#: src/gui/widgets/settings.cpp:473
+#: src/gui/widgets/settings.cpp:484
 msgid "No state or draw section defined."
 msgstr "Non se definiu ningunha sección de debuxo ou de estado."
 
@@ -2189,7 +2849,7 @@ msgstr "Ampliación por defecto"
 msgid "Toggle Full Screen"
 msgstr "Pór a pantalla completa"
 
-#: src/hotkeys.cpp:60 src/hotkeys.cpp:982
+#: src/hotkeys.cpp:60 src/hotkeys.cpp:972
 msgid "Screenshot"
 msgstr "Captura de pantalla"
 
@@ -2213,7 +2873,7 @@ msgstr "Cambiarlle o nome á unidade"
 msgid "Save Replay"
 msgstr "Gardar a repetición"
 
-#: src/hotkeys.cpp:67 src/hotkeys.cpp:120
+#: src/hotkeys.cpp:67 src/hotkeys.cpp:121
 msgid "Save Map"
 msgstr "Gardar o mapa"
 
@@ -2338,299 +2998,295 @@ msgid "Execute planned action"
 msgstr ""
 
 #: src/hotkeys.cpp:108
-msgid "Delete planned action"
+msgid "Execute all actions"
 msgstr ""
 
 #: src/hotkeys.cpp:109
-msgid "Move action up queue"
+msgid "Delete planned action"
 msgstr ""
 
 #: src/hotkeys.cpp:110
+msgid "Move action up queue"
+msgstr ""
+
+#: src/hotkeys.cpp:111
 msgid "Move action down queue"
 msgstr ""
 
-#: src/hotkeys.cpp:113
+#: src/hotkeys.cpp:114
 msgid "Quit to Desktop"
 msgstr "Saír ao escritorio"
 
-#: src/hotkeys.cpp:114
+#: src/hotkeys.cpp:115
 msgid "Close Map"
 msgstr "Pechar o mapa"
 
-#: src/hotkeys.cpp:115
+#: src/hotkeys.cpp:116
 msgid "Switch Map"
 msgstr "Cambiar de mapa"
 
-#: src/hotkeys.cpp:117
+#: src/hotkeys.cpp:118
 msgid "Partial Undo"
 msgstr "Desfacer parcial"
 
-#: src/hotkeys.cpp:119
+#: src/hotkeys.cpp:120
 msgid "Load Map"
 msgstr "Cargar un mapa"
 
-#: src/hotkeys.cpp:121
+#: src/hotkeys.cpp:122
 msgid "Save Map As"
 msgstr "Gardar o mapa coma"
 
-#: src/hotkeys.cpp:122
+#: src/hotkeys.cpp:123
 #, fuzzy
 msgid "Save All Maps"
 msgstr "Gardar o mapa"
 
-#: src/hotkeys.cpp:123
+#: src/hotkeys.cpp:124
 msgid "Revert All Changes"
 msgstr "Desbotar todos os cambios"
 
-#: src/hotkeys.cpp:124
+#: src/hotkeys.cpp:125
 msgid "Map Information"
 msgstr "Información do mapa"
 
-#: src/hotkeys.cpp:126
+#: src/hotkeys.cpp:127
 msgid "Swap fore- and background terrains"
 msgstr "Intercambiar os terreos en primeiro e segundo plano"
 
-#: src/hotkeys.cpp:127
+#: src/hotkeys.cpp:128
 msgid "Next Tool"
 msgstr "Seguinte ferramenta"
 
-#: src/hotkeys.cpp:128
+#: src/hotkeys.cpp:129
 msgid "Paint Tool"
 msgstr "Ferramenta de pintura"
 
-#: src/hotkeys.cpp:129
+#: src/hotkeys.cpp:130
 msgid "Fill Tool"
 msgstr "Ferramenta de recheo"
 
-#: src/hotkeys.cpp:130
+#: src/hotkeys.cpp:131
 msgid "Selection Tool"
 msgstr "Ferramenta de selección"
 
-#: src/hotkeys.cpp:132
+#: src/hotkeys.cpp:133
 msgid "Set Starting Positions Tool"
 msgstr "Ferramenta de definición das posicións iniciais"
 
-#: src/hotkeys.cpp:133
+#: src/hotkeys.cpp:134
 msgid "Next Brush"
 msgstr "Seguinte brocha"
 
-#: src/hotkeys.cpp:134
+#: src/hotkeys.cpp:135
 msgid "Default Brush"
 msgstr "Brocha por defecto"
 
-#: src/hotkeys.cpp:135
+#: src/hotkeys.cpp:136
 msgid "Cut"
 msgstr "Cortar"
 
-#: src/hotkeys.cpp:136
+#: src/hotkeys.cpp:137
 msgid "Copy"
 msgstr "Copiar"
 
-#: src/hotkeys.cpp:137
+#: src/hotkeys.cpp:138
 msgid "Paste"
 msgstr "Pegar"
 
-#: src/hotkeys.cpp:138
+#: src/hotkeys.cpp:139
 msgid "Export selected coordinates to system clipboard"
 msgstr "Exportar as coordenadas seleccionadas ao portarretallos do sistema"
 
-#: src/hotkeys.cpp:140
+#: src/hotkeys.cpp:141
 msgid "Select All"
 msgstr "Seleccionar todo"
 
-#: src/hotkeys.cpp:142
+#: src/hotkeys.cpp:143
 msgid "Select Inverse"
 msgstr "Inverter a selección"
 
-#: src/hotkeys.cpp:144
+#: src/hotkeys.cpp:145
 msgid "Select None"
 msgstr "Non seleccionar nada"
 
-#: src/hotkeys.cpp:146
+#: src/hotkeys.cpp:147
 msgid "Rotate Clipboard Clockwise"
 msgstr "Rotar o que hai no portarretallos no sentido das agullas do reloxo"
 
-#: src/hotkeys.cpp:148
+#: src/hotkeys.cpp:149
 msgid "Rotate Clipboard Counter-Clockwise"
 msgstr ""
 "Rotar o que hai no portarretallos no sentido contrario ao das agullas do "
 "reloxo"
 
-#: src/hotkeys.cpp:150
+#: src/hotkeys.cpp:151
 msgid "Flip Clipboard Horizontally"
 msgstr "Voltear horizontalmente o que hai no portarretallos"
 
-#: src/hotkeys.cpp:152
+#: src/hotkeys.cpp:153
 msgid "Flip Clipboard Vertically"
 msgstr "Voltear verticalmente o que hai no portarretallos"
 
-#: src/hotkeys.cpp:154
+#: src/hotkeys.cpp:155
 msgid "Rotate Selection"
 msgstr "Rotar a selección"
 
-#: src/hotkeys.cpp:156
+#: src/hotkeys.cpp:157
 msgid "Flip Selection"
 msgstr "Voltear a selección"
 
-#: src/hotkeys.cpp:158
+#: src/hotkeys.cpp:159
 msgid "Fill Selection"
 msgstr "Encher a selección"
 
-#: src/hotkeys.cpp:160
+#: src/hotkeys.cpp:161
 msgid "Generate Tiles In Selection"
 msgstr "Xerar hexágonos na selección"
 
-#: src/hotkeys.cpp:162
+#: src/hotkeys.cpp:163
 msgid "Randomize Tiles In Selection"
 msgstr "Xerar ao chou os hexágonos da selección"
 
-#: src/hotkeys.cpp:166
+#: src/hotkeys.cpp:167
 msgid "Rotate Map"
 msgstr "Rotar o mapa"
 
-#: src/hotkeys.cpp:168
+#: src/hotkeys.cpp:169
 msgid "Generate Map"
 msgstr "Xerar un mapa"
 
-#: src/hotkeys.cpp:170
+#: src/hotkeys.cpp:171
 msgid "Apply a Mask"
 msgstr "Aplicar unha máscara"
 
-#: src/hotkeys.cpp:172
+#: src/hotkeys.cpp:173
 msgid "Create Mask"
 msgstr "Crear unha máscara"
 
-#: src/hotkeys.cpp:174
+#: src/hotkeys.cpp:175
 msgid "Refresh Display"
 msgstr "Actualizar a pantalla"
 
-#: src/hotkeys.cpp:176
+#: src/hotkeys.cpp:177
 msgid "Update Terrain Transitions"
 msgstr "Actualizar as transicións dos terreos"
 
-#: src/hotkeys.cpp:178
+#: src/hotkeys.cpp:179
 msgid "Auto-update Terrain Transitions"
 msgstr "Actualizar automaticamente as transicións dos terreos"
 
-#: src/hotkeys.cpp:180
+#: src/hotkeys.cpp:181
 msgid "Refresh Image Cache"
 msgstr "Actualizar a caché das imaxes"
 
-#: src/hotkeys.cpp:182
+#: src/hotkeys.cpp:183
 msgid "Draw Hex Coordinates"
 msgstr "Amosar as coordenadas dos hexágonos"
 
-#: src/hotkeys.cpp:184
+#: src/hotkeys.cpp:185
 msgid "Draw Terrain Codes"
 msgstr "Amosar os códigos dos terreos"
 
-#: src/hotkeys.cpp:189
+#: src/hotkeys.cpp:190
 msgid "Delay Shroud Updates"
 msgstr "Retardar as actualizacións do manto"
 
-#: src/hotkeys.cpp:190
+#: src/hotkeys.cpp:191
 msgid "Update Shroud Now"
 msgstr "Actualizar o manto"
 
-#: src/hotkeys.cpp:191
+#: src/hotkeys.cpp:192
 msgid "Continue Move"
 msgstr "Continuar o movemento"
 
-#: src/hotkeys.cpp:192
+#: src/hotkeys.cpp:193
 msgid "Find Label or Unit"
 msgstr "Buscar un elemento ou unidade"
 
-#: src/hotkeys.cpp:193
+#: src/hotkeys.cpp:194
 msgid "Speak to Ally"
 msgstr "Falar cos aliados"
 
-#: src/hotkeys.cpp:194
+#: src/hotkeys.cpp:195
 msgid "Speak to All"
 msgstr "Falar con todos"
 
-#: src/hotkeys.cpp:196
+#: src/hotkeys.cpp:197
 msgid "View Chat Log"
 msgstr "Ver o rexistro das conversas"
 
-#: src/hotkeys.cpp:199
+#: src/hotkeys.cpp:200
 msgid "Enter user command"
 msgstr "Introducir unha orde do usuario"
 
-#: src/hotkeys.cpp:200
+#: src/hotkeys.cpp:201
 msgid "Custom command"
 msgstr "Orde personalizada"
 
-#: src/hotkeys.cpp:201
+#: src/hotkeys.cpp:202
 msgid "Run AI formula"
 msgstr "Executar a Formula da intelixencia artificial"
 
-#: src/hotkeys.cpp:202
+#: src/hotkeys.cpp:203
 msgid "Clear messages"
 msgstr "Limpar as mensaxes"
 
-#: src/hotkeys.cpp:204
-msgid "User-Command#2"
-msgstr "Orde do usuario 2"
-
-#: src/hotkeys.cpp:205
-msgid "User-Command#3"
-msgstr "Orde do usuario 3"
-
-#: src/hotkeys.cpp:210
+#: src/hotkeys.cpp:207
 #, fuzzy
 msgid "Refresh WML"
 msgstr "Actualizar"
 
-#: src/hotkeys.cpp:217
+#: src/hotkeys.cpp:214
 msgid "Next tip of the day"
 msgstr ""
 
-#: src/hotkeys.cpp:224
+#: src/hotkeys.cpp:221
 #, fuzzy
 msgid "Previous tip of the day"
 msgstr "Unidade anterior"
 
-#: src/hotkeys.cpp:231
+#: src/hotkeys.cpp:228
 #, fuzzy
 msgid "Start tutorial"
 msgstr "Titorial"
 
 # Aparece encabezando a lista de campañas, convidando ao usuario a xogar unha.
-#: src/hotkeys.cpp:238
+#: src/hotkeys.cpp:235
 #, fuzzy
 msgid "Start a campaign"
 msgstr "Xogar unha campaña"
 
-#: src/hotkeys.cpp:245
+#: src/hotkeys.cpp:242
 msgid "Start a multiplayer game"
 msgstr ""
 
-#: src/hotkeys.cpp:252
+#: src/hotkeys.cpp:249
 #, fuzzy
 msgid "Manage addons"
 msgstr "Actualizar os complementos"
 
-#: src/hotkeys.cpp:260
+#: src/hotkeys.cpp:257
 msgid "Start the editor"
 msgstr ""
 
-#: src/hotkeys.cpp:268
+#: src/hotkeys.cpp:265
 msgid "Show the credits"
 msgstr ""
 
-#: src/hotkeys.cpp:721 src/hotkeys.cpp:1027
+#: src/hotkeys.cpp:718 src/hotkeys.cpp:1017
 msgid "Do you really want to quit?"
 msgstr "Seguro que quere saír?"
 
-#: src/hotkeys.cpp:982
+#: src/hotkeys.cpp:972
 msgid "Map-Screenshot"
 msgstr "Captura-do-mapa"
 
-#: src/hotkeys.cpp:989
+#: src/hotkeys.cpp:979
 msgid "Screenshot done"
 msgstr "Fíxose a captura"
 
-#: src/hotkeys.cpp:991
+#: src/hotkeys.cpp:981
 msgid "Screenshot failed"
 msgstr "Houbo un erro ao facer a captura"
 
@@ -2797,57 +3453,28 @@ msgstr ""
 msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr "Non se definiu a clave obrigatoria “$key|” na sección “[$section|]”."
 
-#~ msgid "Ice"
-#~ msgstr "Xeo"
-
-#~ msgid "Snow"
-#~ msgstr "Neve"
-
-#~ msgid "Crater"
-#~ msgstr "Cráter"
+#, fuzzy
+#~ msgid "Deep Water Medium"
+#~ msgstr "Auga profunda"
 
 #, fuzzy
-#~ msgid "Mixed Flowers"
-#~ msgstr "Bosque frondoso no outono"
+#~ msgid "Deep Water Tropical"
+#~ msgstr "Auga profunda"
 
-#~ msgid "Farmland"
-#~ msgstr "Terra de cultivo"
+#~ msgid "Snow Forest"
+#~ msgstr "Bosque nevado"
 
-#, fuzzy
-#~ msgid "Mushrooms"
-#~ msgstr "Colonia de cogomelos"
+#~ msgid "User-Command#2"
+#~ msgstr "Orde do usuario 2"
 
-#, fuzzy
-#~ msgid "Mushroom Farm"
-#~ msgstr "Colonia de cogomelos"
-
-#, fuzzy
-#~ msgid "Desert Plants"
-#~ msgstr "Montañas desérticas"
+#~ msgid "User-Command#3"
+#~ msgstr "Orde do usuario 3"
 
 #~ msgid "Chasm"
 #~ msgstr "Abismo"
 
-#~ msgid "Lava chasm"
-#~ msgstr "Abismo de lava"
-
-#~ msgid "Lava"
-#~ msgstr "Lava"
-
-#~ msgid "Impassable Mountains"
-#~ msgstr "Montañas infranqueables"
-
-#~ msgid "Cave Wall"
-#~ msgstr "Parede dunha cova"
-
 #~ msgid "Wall"
 #~ msgstr "Muro"
-
-#~ msgid "Void"
-#~ msgstr "Baleiro"
-
-#~ msgid "Castle Keep"
-#~ msgstr "Torre dun castelo"
 
 #~ msgid "None"
 #~ msgstr "Nada"
@@ -2858,83 +3485,14 @@ msgstr "Non se definiu a clave obrigatoria “$key|” na sección “[$section|
 #~ msgid "Error creating or aquiring an image."
 #~ msgstr "Houbo un erro ao crear ou adquirir unha imaxe."
 
-#~ msgid "Encampment"
-#~ msgstr "Campamento"
-
 #~ msgid "Fort"
 #~ msgstr "Fortaleza"
 
 #~ msgid "Ruin"
 #~ msgstr "Ruína"
 
-#~ msgid "Encampment Keep"
-#~ msgstr "Torre dun campamento"
-
-#~ msgid "Fort Keep"
-#~ msgstr "Torre dunha fortaleza"
-
 #~ msgid "Elven Keep"
 #~ msgstr "Torre dos elfos"
-
-#~ msgid "Ruined Castle Keep"
-#~ msgstr "Torre dun castelo en ruínas"
-
-#~ msgid "Desert"
-#~ msgstr "Deserto"
-
-#~ msgid "Snowy Pine Forest"
-#~ msgstr "Bosque de piñeiros nevado"
-
-#~ msgid "Great Tree"
-#~ msgstr "Árbore grande"
-
-#~ msgid "Pine Forest"
-#~ msgstr "Bosque de piñeiros"
-
-#~ msgid "Tropical Forest"
-#~ msgstr "Selva tropical"
-
-#~ msgid "Summer Deciduous Forest"
-#~ msgstr "Bosque caducifolio no verán"
-
-#~ msgid "Fall Deciduous Forest"
-#~ msgstr "Bosque caducifolio no outono"
-
-#~ msgid "Winter Deciduous Forest"
-#~ msgstr "Bosque caducifolio no inverno"
-
-#~ msgid "Snowy Deciduous Forest"
-#~ msgstr "Bosque caducifolio nevado"
-
-#~ msgid "Summer Mixed Forest"
-#~ msgstr "Bosque frondoso no verán"
-
-#~ msgid "Winter Mixed Forest"
-#~ msgstr "Bosque frondoso no inverno"
-
-#~ msgid "Snowy Mixed Forest"
-#~ msgstr "Bosque frondoso nevado"
-
-#~ msgid "Summer Deciduous Forested Hills"
-#~ msgstr "Bosque caducifolio elevado no verán"
-
-#~ msgid "Fall Deciduous Forested Hills"
-#~ msgstr "Bosque caducifolio elevado no outono"
-
-#~ msgid "Winter Deciduous Forested Hills"
-#~ msgstr "Bosque caducifolio elevado no inverno"
-
-#~ msgid "Snowy Deciduous Forested Hills"
-#~ msgstr "Bosque caducifolio elevado nevado"
-
-#~ msgid "Summer Mixed Forested Hills"
-#~ msgstr "Bosque frondoso elevado no verán"
-
-#~ msgid "Winter Mixed Forested Hills"
-#~ msgstr "Bosque frondoso elevado no inverno"
-
-#~ msgid "Snowy Mixed Forested Hills"
-#~ msgstr "Bosque frondoso elevado nevado"
 
 #~ msgid "Grassland"
 #~ msgstr "Herbal"
@@ -2942,23 +3500,11 @@ msgstr "Non se definiu a clave obrigatoria “$key|” na sección “[$section|
 #~ msgid "Savanna"
 #~ msgstr "Sabana"
 
-#~ msgid "Snowy Mountains"
-#~ msgstr "Montañas nevadas"
-
 #~ msgid "Road"
 #~ msgstr "Camiño"
 
-#~ msgid "Dirt"
-#~ msgstr "Terra"
-
-#~ msgid "Cave path"
-#~ msgstr "Camiño dunha cova"
-
 #~ msgid "River Ford"
 #~ msgstr "Vao dun río"
-
-#~ msgid "Impassable Desert Mountains"
-#~ msgstr "Montañas desérticas infranqueables"
 
 #~ msgid ""
 #~ "mouseover^Use new lobby interface (only works after a manual reconnect to "

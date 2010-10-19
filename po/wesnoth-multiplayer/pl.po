@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-10-03 21:59+0200\n"
+"POT-Creation-Date: 2010-10-19 12:43+0200\n"
 "PO-Revision-Date: 2010-04-26 12:21+0100\n"
 "Last-Translator: Zbigniew Banach <z.banach@wsisiz.edu.pl>\n"
 "Language-Team:  <z.banach@wsisiz.edu.pl>\n"
@@ -1533,75 +1533,92 @@ msgstr "6g - Heksciastko"
 msgid "2 vs. 2 or 3 vs. 3 team game."
 msgstr "Gra drużynowa: 2 na 2 lub 3 na 3."
 
-#. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:202
-msgid "Turn 2: Loyalists"
-msgstr "Tura 2: Lojaliści"
-
-#. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:207
-msgid "Turn 5: Knalgans"
-msgstr "Tura 5: Knalganie"
-
-#. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:212
-msgid "Turn 8: Rebels"
-msgstr "Tura 8: Rebelianci"
-
-#. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:217
-msgid "Turn 11: Northerners"
-msgstr "Tura 11: Ludy północy"
-
-#. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:222
-msgid "Turn 14: Drakes"
-msgstr "Tura 14: Smoki"
-
-#. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:227
-msgid "Turn 17: Undead"
-msgstr "Tura 17: Nieumarli"
-
-#. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:232
-msgid "Tower of Doom"
-msgstr "Wieża Przeznaczenia"
-
 #. [multiplayer]: id=multiplayer_6p_Team_Survival
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:364
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:291
 msgid "6p — Team Survival"
 msgstr "6g - Przeżycie zespołowe"
 
 #. [multiplayer]: id=multiplayer_6p_Team_Survival
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:367
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:293
 msgid "Scenario where the objective is to survive for as long as possible."
 msgstr ""
 "Celem scenariusza jest przetrwanie tak długo, jak tylko jest to możliwe."
 
 #. [multiplayer]: id=multiplayer_6p_Team_Survival
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:375
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:302
+msgid "Attacker"
+msgstr "Atakujący"
+
+#. [multiplayer]: id=multiplayer_6p_Team_Survival
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:307
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:312
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:317
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:322
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:327
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:332
+msgid "Defender"
+msgstr "Broniący się"
+
+#. [objective]: condition=win
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:343
+#, fuzzy
+msgid "Survive all enemy attacks"
+msgstr "Przeżyj wszystkie ataki przeciwnika."
+
+#. [objective]: condition=lose
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:349
+#, fuzzy
+msgid "Death of your team leaders"
+msgstr "Śmierć przywódców Twoich drużyn."
+
+#. [note]
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:354
 msgid "Hint: Learning the enemy spawn points and types helps a lot."
 msgstr ""
 "Podpowiedź: Bardzo pomaga poznanie typów i miejsc wylęgania jednostek wroga."
 
-#. [multiplayer]: id=multiplayer_6p_Team_Survival
+#. [label]
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:360
+msgid "Turn 2: Loyalists"
+msgstr "Tura 2: Lojaliści"
+
+#. [label]
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:365
+msgid "Turn 5: Knalgans"
+msgstr "Tura 5: Knalganie"
+
+#. [label]
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:370
+msgid "Turn 8: Rebels"
+msgstr "Tura 8: Rebelianci"
+
+#. [label]
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:375
-msgid "Survive for 32 turns."
-msgstr "Przeżyj 32 tury."
+msgid "Turn 11: Northerners"
+msgstr "Tura 11: Ludy północy"
 
-#. [multiplayer]: id=multiplayer_6p_Team_Survival
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:376
-msgid "Survive all enemy attacks."
-msgstr "Przeżyj wszystkie ataki przeciwnika."
+#. [label]
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:380
+msgid "Turn 14: Drakes"
+msgstr "Tura 14: Smoki"
 
-#. [multiplayer]: id=multiplayer_6p_Team_Survival
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:377
-msgid "Death of your team leaders."
-msgstr "Śmierć przywódców Twoich drużyn."
+#. [label]
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:385
+msgid "Turn 17: Undead"
+msgstr "Tura 17: Nieumarli"
 
-#. [multiplayer]: id=multiplayer_6p_Team_Survival
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:399
+#. [label]
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:390
+msgid "Tower of Doom"
+msgstr "Wieża Przeznaczenia"
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:497
+msgid "Faery"
+msgstr "Wróżka"
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:498
 msgid ""
 "Congratulations for surviving the map that so many people claim is "
 "impossible. Frankly, I haven’t got a clue as to how you did it, so send me "
@@ -1611,39 +1628,19 @@ msgstr ""
 "Szczerze mówiąc nie mam pojęcia, jak Ci się to udało, więc prześlij mi "
 "powtórkę swojej rozgrywki mailem na adres roze@roze.mine.nu. Dziękuję!"
 
-#. [multiplayer]: id=multiplayer_6p_Team_Survival
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:399
-msgid "Faery"
-msgstr "Wróżka"
-
-#. [multiplayer]: id=multiplayer_6p_Team_Survival
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:402
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:512
 msgid "Death"
 msgstr "Śmierć"
 
-#. [multiplayer]: id=multiplayer_6p_Team_Survival
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:402
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:513
 msgid ""
 "You have lost this game, but fear not. You can always try again. And again. "
 "And again. *Muahahaha*"
 msgstr ""
 "Niestety nie udało Ci ukończyć tej gry, ale nie przejmuj się. Zawsze możesz "
 "spróbować jeszcze raz. I jeszcze raz. I jeszcze raz. *Muahahaha*"
-
-#. [multiplayer]: id=multiplayer_6p_Team_Survival
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:408
-msgid "Attacker"
-msgstr "Atakujący"
-
-#. [multiplayer]: id=multiplayer_6p_Team_Survival
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:413
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:418
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:423
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:428
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:433
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:438
-msgid "Defender"
-msgstr "Broniący się"
 
 #. [multiplayer]: id=multiplayer_The_Manzivan_Traps
 #: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:7
@@ -1841,6 +1838,9 @@ msgid ""
 msgstr ""
 "Test wydajności Wesnoth, użyj --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end"
+
+#~ msgid "Survive for 32 turns."
+#~ msgstr "Przeżyj 32 tury."
 
 #, fuzzy
 #~ msgid "2p - Fast To Madness"

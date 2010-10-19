@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.5.0-svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-10-03 21:59+0200\n"
+"POT-Creation-Date: 2010-10-19 12:43+0200\n"
 "PO-Revision-Date: 2008-04-24 21:05+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -1238,109 +1238,104 @@ msgstr ""
 msgid "2 vs. 2 or 3 vs. 3 team game."
 msgstr ""
 
-#. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:202
-msgid "Turn 2: Loyalists"
-msgstr ""
-
-#. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:207
-msgid "Turn 5: Knalgans"
-msgstr ""
-
-#. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:212
-msgid "Turn 8: Rebels"
-msgstr ""
-
-#. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:217
-msgid "Turn 11: Northerners"
-msgstr ""
-
-#. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:222
-msgid "Turn 14: Drakes"
-msgstr ""
-
-#. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:227
-msgid "Turn 17: Undead"
-msgstr ""
-
-#. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:232
-msgid "Tower of Doom"
-msgstr ""
-
 #. [multiplayer]: id=multiplayer_6p_Team_Survival
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:364
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:291
 msgid "6p — Team Survival"
 msgstr ""
 
 #. [multiplayer]: id=multiplayer_6p_Team_Survival
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:367
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:293
 msgid "Scenario where the objective is to survive for as long as possible."
 msgstr ""
 
 #. [multiplayer]: id=multiplayer_6p_Team_Survival
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:375
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:302
+msgid "Attacker"
+msgstr ""
+
+#. [multiplayer]: id=multiplayer_6p_Team_Survival
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:307
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:312
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:317
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:322
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:327
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:332
+msgid "Defender"
+msgstr ""
+
+#. [objective]: condition=win
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:343
+msgid "Survive all enemy attacks"
+msgstr ""
+
+#. [objective]: condition=lose
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:349
+msgid "Death of your team leaders"
+msgstr ""
+
+#. [note]
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:354
 msgid "Hint: Learning the enemy spawn points and types helps a lot."
 msgstr ""
 
-#. [multiplayer]: id=multiplayer_6p_Team_Survival
+#. [label]
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:360
+msgid "Turn 2: Loyalists"
+msgstr ""
+
+#. [label]
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:365
+msgid "Turn 5: Knalgans"
+msgstr ""
+
+#. [label]
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:370
+msgid "Turn 8: Rebels"
+msgstr ""
+
+#. [label]
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:375
-msgid "Survive for 32 turns."
+msgid "Turn 11: Northerners"
 msgstr ""
 
-#. [multiplayer]: id=multiplayer_6p_Team_Survival
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:376
-msgid "Survive all enemy attacks."
+#. [label]
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:380
+msgid "Turn 14: Drakes"
 msgstr ""
 
-#. [multiplayer]: id=multiplayer_6p_Team_Survival
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:377
-msgid "Death of your team leaders."
+#. [label]
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:385
+msgid "Turn 17: Undead"
 msgstr ""
 
-#. [multiplayer]: id=multiplayer_6p_Team_Survival
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:399
+#. [label]
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:390
+msgid "Tower of Doom"
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:497
+msgid "Faery"
+msgstr ""
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:498
 msgid ""
 "Congratulations for surviving the map that so many people claim is "
 "impossible. Frankly, I haven’t got a clue as to how you did it, so send me "
 "the replay by mail to: roze@roze.mine.nu. Thank You!"
 msgstr ""
 
-#. [multiplayer]: id=multiplayer_6p_Team_Survival
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:399
-msgid "Faery"
-msgstr ""
-
-#. [multiplayer]: id=multiplayer_6p_Team_Survival
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:402
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:512
 msgid "Death"
 msgstr ""
 
-#. [multiplayer]: id=multiplayer_6p_Team_Survival
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:402
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:513
 msgid ""
 "You have lost this game, but fear not. You can always try again. And again. "
 "And again. *Muahahaha*"
-msgstr ""
-
-#. [multiplayer]: id=multiplayer_6p_Team_Survival
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:408
-msgid "Attacker"
-msgstr ""
-
-#. [multiplayer]: id=multiplayer_6p_Team_Survival
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:413
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:418
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:423
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:428
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:433
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:438
-msgid "Defender"
 msgstr ""
 
 #. [multiplayer]: id=multiplayer_The_Manzivan_Traps

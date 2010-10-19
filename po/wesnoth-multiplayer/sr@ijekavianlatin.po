@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-multiplayer\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-10-03 21:59+0200\n"
+"POT-Creation-Date: 2010-10-19 12:43+0200\n"
 "PO-Revision-Date: 2010-04-28 16:24+0200\n"
 "Last-Translator: Dalibor Djuric <dalibor.djuric@mozilla-srbija.org>\n"
 "Language-Team: Serbian\n"
@@ -1518,74 +1518,91 @@ msgstr "6i: Šestokolač"
 msgid "2 vs. 2 or 3 vs. 3 team game."
 msgstr "Timska igra 2 na 2 ili 3 na 3."
 
-#. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:202
-msgid "Turn 2: Loyalists"
-msgstr "Potez 2: Lojalisti"
-
-#. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:207
-msgid "Turn 5: Knalgans"
-msgstr "Potez 5: Knalganci"
-
-#. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:212
-msgid "Turn 8: Rebels"
-msgstr "Potez 8: Pobunjenici"
-
-#. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:217
-msgid "Turn 11: Northerners"
-msgstr "Potez 11: Sjevernjaci"
-
-#. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:222
-msgid "Turn 14: Drakes"
-msgstr "Potez 14: Zmagovi"
-
-#. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:227
-msgid "Turn 17: Undead"
-msgstr "Potez 17: Nemrtvi"
-
-#. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:232
-msgid "Tower of Doom"
-msgstr "Kula propasti"
-
 #. [multiplayer]: id=multiplayer_6p_Team_Survival
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:364
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:291
 msgid "6p — Team Survival"
 msgstr "6i: Timski opstanak"
 
 #. [multiplayer]: id=multiplayer_6p_Team_Survival
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:367
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:293
 msgid "Scenario where the objective is to survive for as long as possible."
 msgstr "Scenario u kome je cilj preživjeti koliko je dugo moguće."
 
 #. [multiplayer]: id=multiplayer_6p_Team_Survival
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:375
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:302
+msgid "Attacker"
+msgstr "napadač"
+
+#. [multiplayer]: id=multiplayer_6p_Team_Survival
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:307
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:312
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:317
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:322
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:327
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:332
+msgid "Defender"
+msgstr "branilac"
+
+#. [objective]: condition=win
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:343
+#, fuzzy
+msgid "Survive all enemy attacks"
+msgstr "Preživite li sve neprijateljske nalete."
+
+#. [objective]: condition=lose
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:349
+#, fuzzy
+msgid "Death of your team leaders"
+msgstr "Stradaju li vaši vođi timova."
+
+#. [note]
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:354
 msgid "Hint: Learning the enemy spawn points and types helps a lot."
 msgstr ""
 "Savet: Upoznavanje neprijateljskih mjesta izranjanja i tipova dosta pomaže."
 
-#. [multiplayer]: id=multiplayer_6p_Team_Survival
+#. [label]
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:360
+msgid "Turn 2: Loyalists"
+msgstr "Potez 2: Lojalisti"
+
+#. [label]
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:365
+msgid "Turn 5: Knalgans"
+msgstr "Potez 5: Knalganci"
+
+#. [label]
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:370
+msgid "Turn 8: Rebels"
+msgstr "Potez 8: Pobunjenici"
+
+#. [label]
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:375
-msgid "Survive for 32 turns."
-msgstr "Opstanete li 32 poteza."
+msgid "Turn 11: Northerners"
+msgstr "Potez 11: Sjevernjaci"
 
-#. [multiplayer]: id=multiplayer_6p_Team_Survival
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:376
-msgid "Survive all enemy attacks."
-msgstr "Preživite li sve neprijateljske nalete."
+#. [label]
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:380
+msgid "Turn 14: Drakes"
+msgstr "Potez 14: Zmagovi"
 
-#. [multiplayer]: id=multiplayer_6p_Team_Survival
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:377
-msgid "Death of your team leaders."
-msgstr "Stradaju li vaši vođi timova."
+#. [label]
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:385
+msgid "Turn 17: Undead"
+msgstr "Potez 17: Nemrtvi"
 
-#. [multiplayer]: id=multiplayer_6p_Team_Survival
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:399
+#. [label]
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:390
+msgid "Tower of Doom"
+msgstr "Kula propasti"
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:497
+msgid "Faery"
+msgstr "Vila"
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:498
 msgid ""
 "Congratulations for surviving the map that so many people claim is "
 "impossible. Frankly, I haven’t got a clue as to how you did it, so send me "
@@ -1595,40 +1612,20 @@ msgstr ""
 "Iskreno, pojma nemam kako ste to postigli, stoga me izvijestite na: "
 "roze@roze.mine.nu — hvala vam!"
 
-#. [multiplayer]: id=multiplayer_6p_Team_Survival
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:399
-msgid "Faery"
-msgstr "Vila"
-
-#. [multiplayer]: id=multiplayer_6p_Team_Survival
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:402
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:512
 msgid "Death"
 msgstr "Smrt"
 
 # well-spelled: Бвахахахаааа
-#. [multiplayer]: id=multiplayer_6p_Team_Survival
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:402
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:513
 msgid ""
 "You have lost this game, but fear not. You can always try again. And again. "
 "And again. *Muahahaha*"
 msgstr ""
 "Izgubili ste ovu partiju, ali ne brinite. Uvijek se možete nanovo iskušati. "
 "I nanovo. I nanovo. *Bvahahahaaaa*"
-
-#. [multiplayer]: id=multiplayer_6p_Team_Survival
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:408
-msgid "Attacker"
-msgstr "napadač"
-
-#. [multiplayer]: id=multiplayer_6p_Team_Survival
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:413
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:418
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:423
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:428
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:433
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:438
-msgid "Defender"
-msgstr "branilac"
 
 #. [multiplayer]: id=multiplayer_The_Manzivan_Traps
 #: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:7
@@ -1823,3 +1820,6 @@ msgid ""
 msgstr ""
 "Proba performansi, upotrijebite: --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end"
+
+#~ msgid "Survive for 32 turns."
+#~ msgstr "Opstanete li 32 poteza."

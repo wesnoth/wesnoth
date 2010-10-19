@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-10-03 21:59+0200\n"
+"POT-Creation-Date: 2010-10-19 12:43+0200\n"
 "PO-Revision-Date: 2010-07-25 20:53+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -205,6 +205,7 @@ msgstr "战爪"
 #: data/core/units/drakes/Inferno.cfg:53 data/core/units/drakes/Sky.cfg:137
 #: data/core/units/drakes/Warrior.cfg:48
 #: data/core/units/monsters/Fire_Dragon.cfg:49
+#: data/core/units/monsters/Fire_Guardian.cfg:40
 msgid "fire breath"
 msgstr "火焰吐息"
 
@@ -309,7 +310,7 @@ msgstr ""
 #: data/core/units/goblins/Spearman.cfg:53
 #: data/core/units/humans/Horseman.cfg:36
 #: data/core/units/humans/Loyalist_Javelineer.cfg:40
-#: data/core/units/humans/Loyalist_Spearman.cfg:113
+#: data/core/units/humans/Loyalist_Spearman.cfg:144
 #: data/core/units/merfolk/Hoplite.cfg:48
 #: data/core/units/merfolk/Hunter.cfg:38 data/core/units/merfolk/Hunter.cfg:46
 #: data/core/units/merfolk/Javelineer.cfg:37
@@ -758,7 +759,7 @@ msgstr ""
 #: data/core/units/dwarves/Sentinel.cfg:60
 #: data/core/units/dwarves/Stalwart.cfg:55
 #: data/core/units/humans/Loyalist_Javelineer.cfg:51
-#: data/core/units/humans/Loyalist_Spearman.cfg:125
+#: data/core/units/humans/Loyalist_Spearman.cfg:156
 msgid "javelin"
 msgstr "标枪"
 
@@ -796,8 +797,8 @@ msgid ""
 "These hardy dwarves are sometimes away from their caves for long periods, "
 "scouting and patrolling the borders. They spend this time watching for "
 "invaders, and fighting bandits and thieves who encroach on dwarvish "
-"territory. They are powerful pathfinders in a melee, and from a distance "
-"their deftly thrown axes can rival the power and accuracy of a human archer."
+"territory. They are powerful fighters in a melee, and from a distance their "
+"deftly thrown axes can rival the power and accuracy of a human archer."
 msgstr ""
 "这些吃苦耐劳的矮人有时会长时间离开他们的洞穴，去边境侦察或者巡逻。在这段时间"
 "里他们提防着入侵者，与侵占着矮人领土的土匪和盗贼作战。在白刃战中他们是强大的"
@@ -3437,6 +3438,27 @@ msgstr "咬"
 #: data/core/units/monsters/Fire_Dragon.cfg:40
 msgid "tail"
 msgstr "尾击"
+
+#. [unit_type]: id=Fire Guardian, race=monster
+#: data/core/units/monsters/Fire_Guardian.cfg:4
+#, fuzzy
+msgid "Fire Guardian"
+msgstr "烈火巨龙"
+
+#. [unit_type]: id=Fire Guardian, race=monster
+#: data/core/units/monsters/Fire_Guardian.cfg:28
+msgid ""
+"Fire Guardians are spirits of smoke and flame. No one is exactly sure where "
+"they come from, but they are occasionally summoned by powerful mages to do "
+"their bidding. When not being controlled they like to frolic in pools of "
+"lava and take great delight in burning anything they can reach."
+msgstr ""
+
+#. [attack]: type=fire
+#: data/core/units/monsters/Fire_Guardian.cfg:31
+#, fuzzy
+msgid "fire claws"
+msgstr "爪"
 
 #. [unit_type]: id=Giant Mudcrawler, race=monster
 #: data/core/units/monsters/Giant_Mudcrawler.cfg:4

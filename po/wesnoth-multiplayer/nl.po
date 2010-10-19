@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.11+CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-10-03 21:59+0200\n"
+"POT-Creation-Date: 2010-10-19 12:43+0200\n"
 "PO-Revision-Date: 2010-06-22 22:52+0100\n"
 "Last-Translator: Koen Vervloesem <koen@vervloesem.eu>\n"
 "Language-Team: Dutch translation <AI0867@gmail.com>\n"
@@ -1571,74 +1571,91 @@ msgstr "6p — Hexcake"
 msgid "2 vs. 2 or 3 vs. 3 team game."
 msgstr "2-tegen-2 of 3-tegen-3 teamspel."
 
-#. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:202
-msgid "Turn 2: Loyalists"
-msgstr "Beurt 2: Loyalisten"
-
-#. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:207
-msgid "Turn 5: Knalgans"
-msgstr "Beurt 5: Knalgas"
-
-#. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:212
-msgid "Turn 8: Rebels"
-msgstr "Beurt 8: Rebellen"
-
-#. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:217
-msgid "Turn 11: Northerners"
-msgstr "Beurt 11: Noorderlingen"
-
-#. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:222
-msgid "Turn 14: Drakes"
-msgstr "Beurt 14: Draken"
-
-#. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:227
-msgid "Turn 17: Undead"
-msgstr "Beurt 17: Ondoden"
-
-#. [label]
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:232
-msgid "Tower of Doom"
-msgstr "Toren van onheil"
-
 #. [multiplayer]: id=multiplayer_6p_Team_Survival
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:364
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:291
 #, fuzzy
 msgid "6p — Team Survival"
 msgstr "6p — Teamoverleving"
 
 #. [multiplayer]: id=multiplayer_6p_Team_Survival
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:367
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:293
 msgid "Scenario where the objective is to survive for as long as possible."
 msgstr "Scenario waarbij het doel is om zo lang mogelijk te overleven."
 
 #. [multiplayer]: id=multiplayer_6p_Team_Survival
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:375
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:302
+msgid "Attacker"
+msgstr "Aanvaller"
+
+#. [multiplayer]: id=multiplayer_6p_Team_Survival
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:307
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:312
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:317
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:322
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:327
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:332
+msgid "Defender"
+msgstr "Verdediger"
+
+#. [objective]: condition=win
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:343
+#, fuzzy
+msgid "Survive all enemy attacks"
+msgstr "Overleef alle vijandelijke aanvallen."
+
+#. [objective]: condition=lose
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:349
+#, fuzzy
+msgid "Death of your team leaders"
+msgstr "Dood van je teamleiders."
+
+#. [note]
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:354
 msgid "Hint: Learning the enemy spawn points and types helps a lot."
 msgstr "Tip: De vijandelijke opwekpunten en types leren helpt veel."
 
-#. [multiplayer]: id=multiplayer_6p_Team_Survival
+#. [label]
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:360
+msgid "Turn 2: Loyalists"
+msgstr "Beurt 2: Loyalisten"
+
+#. [label]
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:365
+msgid "Turn 5: Knalgans"
+msgstr "Beurt 5: Knalgas"
+
+#. [label]
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:370
+msgid "Turn 8: Rebels"
+msgstr "Beurt 8: Rebellen"
+
+#. [label]
 #: data/multiplayer/scenarios/6p_Team_Survival.cfg:375
-msgid "Survive for 32 turns."
-msgstr "Overleef 32 beurten."
+msgid "Turn 11: Northerners"
+msgstr "Beurt 11: Noorderlingen"
 
-#. [multiplayer]: id=multiplayer_6p_Team_Survival
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:376
-msgid "Survive all enemy attacks."
-msgstr "Overleef alle vijandelijke aanvallen."
+#. [label]
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:380
+msgid "Turn 14: Drakes"
+msgstr "Beurt 14: Draken"
 
-#. [multiplayer]: id=multiplayer_6p_Team_Survival
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:377
-msgid "Death of your team leaders."
-msgstr "Dood van je teamleiders."
+#. [label]
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:385
+msgid "Turn 17: Undead"
+msgstr "Beurt 17: Ondoden"
 
-#. [multiplayer]: id=multiplayer_6p_Team_Survival
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:399
+#. [label]
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:390
+msgid "Tower of Doom"
+msgstr "Toren van onheil"
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:497
+msgid "Faery"
+msgstr "Feëriek"
+
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:498
 msgid ""
 "Congratulations for surviving the map that so many people claim is "
 "impossible. Frankly, I haven’t got a clue as to how you did it, so send me "
@@ -1649,39 +1666,19 @@ msgstr ""
 "ik het op prijs stellen als je de replay wilt e-mailen naar: roze@roze.mine."
 "nu. Dank U!"
 
-#. [multiplayer]: id=multiplayer_6p_Team_Survival
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:399
-msgid "Faery"
-msgstr "Feëriek"
-
-#. [multiplayer]: id=multiplayer_6p_Team_Survival
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:402
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:512
 msgid "Death"
 msgstr "Dood"
 
-#. [multiplayer]: id=multiplayer_6p_Team_Survival
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:402
+#. [message]: speaker=narrator
+#: data/multiplayer/scenarios/6p_Team_Survival.cfg:513
 msgid ""
 "You have lost this game, but fear not. You can always try again. And again. "
 "And again. *Muahahaha*"
 msgstr ""
 "Je hebt dit spel verloren maar wanhoop niet. Je kan steeds opnieuw proberen. "
 "En opnieuw. En opnieuw. *Muahahaha*"
-
-#. [multiplayer]: id=multiplayer_6p_Team_Survival
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:408
-msgid "Attacker"
-msgstr "Aanvaller"
-
-#. [multiplayer]: id=multiplayer_6p_Team_Survival
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:413
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:418
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:423
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:428
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:433
-#: data/multiplayer/scenarios/6p_Team_Survival.cfg:438
-msgid "Defender"
-msgstr "Verdediger"
 
 #. [multiplayer]: id=multiplayer_The_Manzivan_Traps
 #: data/multiplayer/scenarios/6p_The_Manzivan_Traps.cfg:7
@@ -1882,6 +1879,9 @@ msgid ""
 msgstr ""
 "Een wesnoth benchmark, gebruik --no-delay --multiplayer --"
 "scenario=wesbench_shroud_walk --exit-at-end."
+
+#~ msgid "Survive for 32 turns."
+#~ msgstr "Overleef 32 beurten."
 
 #~ msgid "2p - Fast To Madness"
 #~ msgstr "2p - Snel naar Waanzin"
