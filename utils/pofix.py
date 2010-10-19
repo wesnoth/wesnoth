@@ -3763,6 +3763,9 @@ stringfixes = {
 ("Don't ask me again!", "Don’t ask me again!"),
 ("dedicated server 'wesnothd'", "dedicated server ‘wesnothd’"),
 ("the game's settings", "the game’s settings"),
+
+# Fix capitalization
+("Lava chasm", "Lava Chasm"),
 ),
 
 "wesnoth-manual" : (
