@@ -114,9 +114,6 @@ stringfixes = {
 ("$login's", "$login|’s"),
 ("$name|'s turn", "$name|’s turn"),
 
-# "Familiarise" is not used in American English
-("familiarise yourself", "familiarize yourself"),
-
 ("if it hasn't moved this", "if it hasn’t moved this"),
 ("to activate 'delay shroud updates' in the", "to activate ‘delay shroud updates’ in the"),
 ("update via 'update shroud now' (or the", "update via ‘update shroud now’ (or the"),
