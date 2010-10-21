@@ -1303,7 +1303,7 @@ namespace {
 			}
 
 			// Handle download
-			install_addon(disp, addons[index], types[index], titles[index],
+			install_addon(disp, addons[index], titles[index], types[index],
 			              uploads[index], versions[index], net_manager, sock, do_refresh);
 			if (!addon_dependencies_met(disp, addons_tree, addons[index], net_manager, sock, do_refresh)) {
 				const std::string err_title = _("Installation of some dependency failed");
