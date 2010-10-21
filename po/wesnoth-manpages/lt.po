@@ -180,12 +180,12 @@ msgstr "išveda naudotojo konfigūracijos aplanko kelią ir išeina."
 #: ../../doc/man/wesnoth.6:64
 #, no-wrap
 msgid "B<--data-dir E<lt>directoryE<gt>>"
-msgstr "B<--data-dir E<lt>aplankasE<gt>>"
+msgstr "B<--data-dir E<lt>aplankas<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:67
 msgid "overrides the data directory with the one specified"
-msgstr ""
+msgstr "naudoja nurodytą duomenų aplanką"
 
 # type: TP
 #. type: TP
@@ -483,7 +483,7 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:167
 #, no-wrap
 msgid "B<--preprocess-input-macros E<lt>source fileE<gt>>"
-msgstr ""
+msgstr "B<--preprocess-input-macros E<lt>šaltinio failasE<gt>>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:171
@@ -496,7 +496,7 @@ msgstr ""
 #: ../../doc/man/wesnoth.6:171
 #, no-wrap
 msgid "B<--preprocess-output-macros [E<lt>target fileE<gt>]>"
-msgstr ""
+msgstr "B<--preprocess-output-macros [E<lt>išvesties failasE<gt>]>"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:177
@@ -808,7 +808,7 @@ msgstr "nustato ėjimų skaičių pasirinktam scenarijui. Numatyta B<50>."
 #: ../../doc/man/wesnoth.6:268 ../../doc/man/wesnothd.6:265
 #, no-wrap
 msgid "EXIT STATUS"
-msgstr ""
+msgstr "IŠĖJIMO BŪSENA"
 
 #. type: Plain text
 #: ../../doc/man/wesnoth.6:271
@@ -817,6 +817,9 @@ msgid ""
 "fonts, etc) initialization error. An exit status of 2 indicates an error "
 "with the command line options."
 msgstr ""
+"Normali išėjimo būsena yra 0. Išėjimo būsena lygi 1 nurodo paleidimo klaidą "
+"(SDL, video, šriftų ir t.t.). Išėjimo būsena lygi 2 nurodo klaidą komandinės "
+"eilutės parametruose."
 
 # type: SH
 #. type: SH
@@ -1288,12 +1291,11 @@ msgstr "B<passwd>"
 # type: Plain text
 #. type: Plain text
 #: ../../doc/man/wesnothd.6:150
-#, fuzzy
 msgid ""
 "The password used to gain admin privileges (via B</query admin >I<password>)."
 msgstr ""
-"Slaptažodis naudojamas gauti administratoriaus teises. Paprastai jis "
-"prasideda „admin “."
+"Slaptažodis, naudojamas gauti administratoriaus teises (per B</query admin "
+">I<slaptažodis>)."
 
 #. type: TP
 #: ../../doc/man/wesnothd.6:150
