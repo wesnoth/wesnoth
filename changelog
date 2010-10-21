@@ -76,6 +76,8 @@ Version 1.9.1+svn:
    * Made it so that units affected by [hide_unit] don't appear on the minimap (FR #16796)
    * New [select_unit] tag, with optional fire_event (def. no) and hilight_hex (def. yes)
      attributes (FR #16819)
+   * New [message] scroll= attribute to specify whether the game view should
+     scroll to the speaking unit (defaults to yes) (FR #16843)
  * Miscellaneous and bugfixes:
    * Changed: Lowered severity of some gui2 timer log messages.
    * Units created in debug mode now play their recruit animation (FR #16766).

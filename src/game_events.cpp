@@ -2352,7 +2352,8 @@ namespace {
  */
 unit_map::iterator handle_speaker(
 		const game_events::queued_event& event_info,
-		const vconfig& cfg)
+		const vconfig& cfg,
+		bool scroll)
 {
 	unit_map *units = resources::units;
 	game_display &screen = *resources::screen;
@@ -2372,11 +2373,13 @@ unit_map::iterator handle_speaker(
 	}
 	if(speaker != units->end()) {
 		LOG_NG << "set speaker to '" << speaker->name() << "'\n";
-		LOG_DP << "scrolling to speaker..\n";
 		const map_location &spl = speaker->get_location();
 		screen.highlight_hex(spl);
-		int offset_from_center = std::max<int>(0, spl.y - 1);
-		screen.scroll_to_tile(map_location(spl.x, offset_from_center));
+		if(scroll) {
+			LOG_DP << "scrolling to speaker..\n";
+			const int offset_from_center = std::max<int>(0, spl.y - 1);
+			screen.scroll_to_tile(map_location(spl.x, offset_from_center));
+		}
 		screen.highlight_hex(spl);
 	} else if(speaker_str == "narrator") {
 		LOG_NG << "no speaker\n";
@@ -2583,7 +2586,7 @@ WML_HANDLER_FUNCTION(message, event_info, cfg)
 		}
 	}
 
-	unit_map::iterator speaker = handle_speaker(event_info, cfg);
+	unit_map::iterator speaker = handle_speaker(event_info, cfg, cfg["scroll"].to_bool(true));
 	if (speaker == resources::units->end() && cfg["speaker"] != "narrator") {
 		// No matching unit found, so the dialog can't come up.
 		// Continue onto the next message.
