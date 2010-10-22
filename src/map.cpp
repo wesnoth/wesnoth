@@ -123,7 +123,7 @@ std::string gamemap::get_underlying_terrain_string(const t_translation::t_terrai
         t_translation::t_list::const_iterator i = underlying.begin();
         str += get_terrain_info(*i).name();
         while (++i != underlying.end()) {
-			str += "," + get_terrain_info(*i).name();
+			str += ", " + get_terrain_info(*i).name();
         }
 		str += ")";
 	}
