@@ -89,7 +89,6 @@ std::string gamemap::get_terrain_string(const t_translation::t_terrain& terrain)
 	std::string str =
 		get_terrain_info(terrain).description();
 
-	str += " ";
 	str += get_underlying_terrain_string(terrain);
 
 	return str;
@@ -107,7 +106,6 @@ std::string gamemap::get_terrain_editor_string(const t_translation::t_terrain& t
 		str += desc;
 	}
 
-	str += " ";
 	str += get_underlying_terrain_string(terrain);
 
 	return str;
@@ -121,7 +119,7 @@ std::string gamemap::get_underlying_terrain_string(const t_translation::t_terrai
 	assert(!underlying.empty());
 
 	if(underlying.size() > 1 || underlying[0] != terrain) {
-		str += "(";
+		str += " (";
         t_translation::t_list::const_iterator i = underlying.begin();
         str += get_terrain_info(*i).name();
         while (++i != underlying.end()) {
