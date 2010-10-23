@@ -1015,6 +1015,9 @@ stringfixes = {
 ("you our army's vanguard? Hurry,", "you our army’s vanguard? Hurry,"),
 ("You won't get very", "You won’t get very"),
 ("'dastone'. I am", "‘dastone’. I am"),
+
+# Fix capitalization
+("\"LOW\"", "\"LoW\""),
 ),
 
 "wesnoth-multiplayer" : (
