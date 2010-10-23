@@ -82,7 +82,8 @@ void terrain_builder::tile::rebuild_cache(const std::string& tod, logs* log)
 			///@TODO improve this
 			unsigned int rnd = ri.rand / 7919; //just the 1000th prime
 			img_list.push_back(variant.images[rnd % variant.images.size()]);
-			img_list.back().set_animation_time(ri.rand % img_list.back().get_animation_duration());
+			if(variant.random_start)
+				img_list.back().set_animation_time(ri.rand % img_list.back().get_animation_duration());
 
 			if(log) {
 				log->push_back(std::make_pair(&ri, &variant));
@@ -563,11 +564,12 @@ void terrain_builder::rotate_rule(building_rule &ret, int angle,
 	replace_rotate_tokens(ret, angle, rot);
 }
 
-terrain_builder::rule_image_variant::rule_image_variant(const std::string &image_string, const std::string& variations, const std::string& tod) :
+terrain_builder::rule_image_variant::rule_image_variant(const std::string &image_string, const std::string& variations, const std::string& tod, bool random_start) :
 		image_string(image_string),
 		variations(variations),
 		images(),
-		tods()
+		tods(),
+		random_start(random_start)
 {
 	if(!tod.empty()) {
 		const std::vector<std::string> tod_list = utils::split(tod);
@@ -607,15 +609,17 @@ void terrain_builder::add_images_from_config(rule_imagelist& images, const confi
 			const std::string &name = variant["name"];
 			const std::string &variations = img["variations"];
 			const std::string &tod = variant["tod"];
+			bool random_start = variant["random_start"].to_bool(true);
 
-			images.back().variants.push_back(rule_image_variant(name, variations, tod));
+			images.back().variants.push_back(rule_image_variant(name, variations, tod, random_start));
 		}
 
 		// Adds the main (default) variant of the image at the end,
 		// (will be used only if previous variants don't match)
 		const std::string &name = img["name"];
 		const std::string &variations = img["variations"];
-		images.back().variants.push_back(rule_image_variant(name, variations));
+		bool random_start = img["random_start"].to_bool(true);
+		images.back().variants.push_back(rule_image_variant(name, variations, random_start));
 	}
 }
 
