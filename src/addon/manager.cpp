@@ -388,7 +388,7 @@ namespace {
 					}
 				};
 				std::replace(i->begin(), i->end(), '_', ' ');
-				i++;
+				++i;
 			}
 		}
 		// process items of type Addon/_main.cfg too
@@ -398,7 +398,7 @@ namespace {
 			if (file_exists(parent_dir + *i + "/_main.cfg")) {
 				std::replace(i->begin(), i->end(), '_', ' ');
 				files.push_back(*i);
-				i++;
+				++i;
 			} else {
 				i = dirs.erase(i);
 			}
