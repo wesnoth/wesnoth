@@ -107,6 +107,7 @@ struct tgui_definition
 		, sound_toggle_button_click_()
 		, sound_toggle_panel_click_()
 		, sound_slider_adjust_()
+		, tips_()
 	{
 	}
 
