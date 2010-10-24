@@ -119,7 +119,7 @@ protected:
 		}
 
 		~node() {
-			for (child_map::iterator i = children_.begin(); i != children_.end(); i++)
+			for (child_map::iterator i = children_.begin(); i != children_.end(); ++i)
 				delete (i->second);
 		}
 		config &cfg() { return cfg_; }

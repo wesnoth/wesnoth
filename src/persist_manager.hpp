@@ -33,7 +33,7 @@ class persist_manager {
 		persist_manager() : in_transaction_(false),contexts_() {}
 		virtual ~persist_manager() {
 			cancel_transaction();
-			for (context_map::iterator i = contexts_.begin(); i != contexts_.end(); i++)
+			for (context_map::iterator i = contexts_.begin(); i != contexts_.end(); ++i)
 				delete (i->second);
 		}
 		persist_context &get_context(const std::string &ns);
