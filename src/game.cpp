@@ -2475,6 +2475,7 @@ int main(int argc, char** argv)
 		return 1;
 	} catch(gui::button::error&) {
 		std::cerr << "Could not create button: Image could not be found\n";
+		return 1;
 	} catch(CVideo::quit&) {
 		//just means the game should quit
 	} catch(end_level_exception&) {
@@ -2486,6 +2487,7 @@ int main(int argc, char** argv)
 	} catch(game_logic::formula_error& e) {
 		std::cerr << e.what()
 			<< "\n\nGame will be aborted.\n";
+		return 1;
 	} catch(game::error &) {
 		// A message has already been displayed.
 		return 1;
