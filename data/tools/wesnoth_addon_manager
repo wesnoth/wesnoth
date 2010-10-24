@@ -317,7 +317,9 @@ if __name__ == "__main__":
                 "*.js",
                 "*.vbs",
                 "*.o",
-                "Thumbs.db"]
+                "Thumbs.db",
+                "*.wesnoth",
+                "*.project"]
 
         stuff = {}
         for field in ["title", "author", "passphrase", "description",

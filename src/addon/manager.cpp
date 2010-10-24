@@ -193,6 +193,9 @@ namespace {
 		files.push_back("*.o");
 		/* Remove junk created by certain file manager ;) */
 		files.push_back("Thumbs.db");
+        /* Eclipse plugin */
+        files.push_back("*.wesnoth");
+        files.push_back("*.project");
     }
 }
 
