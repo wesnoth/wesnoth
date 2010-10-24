@@ -1366,7 +1366,7 @@ void ana_network_manager::handle_disconnect(ana::error_code /*error_code*/, ana:
     }
     else
     {
-        for (it = components_.begin(); it != components_.end(); it++ )
+        for (it = components_.begin(); it != components_.end(); ++it )
             if ( (*it)->is_server() )
                 if ( server_manager_[ (*it)->server() ]->is_a_client( client ) )
                 {
