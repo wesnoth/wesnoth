@@ -493,7 +493,7 @@ const std::string manager::internal_evaluate_command( side_number side, const st
 
 		for (int cmd_id=n; cmd_id>0; --cmd_id){
 			strstream << j->get_number() << "    :" << j->get_command() << '\n';
-			j++;//this is *reverse* iterator
+			++j;//this is *reverse* iterator
 		}
 
 		return strstream.str();
@@ -542,7 +542,7 @@ const std::string manager::internal_evaluate_command( side_number side, const st
 			std::deque< command_history_item >::reverse_iterator j = history_.rbegin();
 			//yes, the iterator could be precisely positioned (since command numbers go 1,2,3,4,..). will do it later.
 			while ( (j!=history_.rend()) && (j->get_number()!=command) ){
-				j++;// this is *reverse* iterator
+				++j;// this is *reverse* iterator
 			}
 			if (j!=history_.rend()){
 				return evaluate_command(side,j->get_command());//no infinite loop since '!' commands are not present in history
