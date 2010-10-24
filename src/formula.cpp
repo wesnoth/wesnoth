@@ -913,7 +913,7 @@ expression_ptr parse_expression(const token* i1, const token* i2, function_symbo
 			} else if(i1->type == TOKEN_DECIMAL) {
 				iterator dot = i1->begin;
 				while( *dot != '.' )
-					dot++;
+					++dot;
 
 				int n = atoi(std::string(i1->begin,dot).c_str());
 
