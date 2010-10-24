@@ -425,8 +425,8 @@ void editor_action_shuffle_area::perform_without_undo(map_context& mc) const
 		t_translation::t_terrain tmp = mc.get_map().get_terrain(*orig_it);
 		mc.draw_terrain(mc.get_map().get_terrain(*shuffle_it), *orig_it);
 		mc.draw_terrain(tmp, *shuffle_it);
-		orig_it++;
-		shuffle_it++;
+		++orig_it;
+		++shuffle_it;
 	}
 	mc.set_needs_terrain_rebuild();
 }
