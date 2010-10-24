@@ -169,7 +169,7 @@ static std::string do_interpolation(const std::string &str, const variable_set& 
 			// (Yes, that's a WML 'pointer' of sorts. They are sometimes useful.)
 			// If there should still be a '|' there afterwards to affect other variable names (unlikely),
 			// just put another '|' there, one matching each '$', e.g. "$$var_containing_var_name||blah"
-			var_end++;
+			++var_end;
 		}
 
 
