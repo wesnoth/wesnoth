@@ -1202,7 +1202,7 @@ void undraw_floating_labels(surface screen)
 			context.erase(j->first);
 			labels.erase(j++);
 		} else {
-			j++;
+			++j;
 		}
 	}
 }
