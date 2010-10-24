@@ -780,7 +780,7 @@ void ui::gamelist_updated(bool silent)
 		reg_str = u_itor->registered ? registered_user_tag : "";
 		user_strings.push_back(u_itor->name);
 		menu_strings.push_back(img_str + reg_str + color_str + name_str + HELP_STRING_SEPARATOR + name_str);
-		u_itor++;
+		++u_itor;
 	}
 
 	set_user_list(user_strings, silent);
