@@ -1911,6 +1911,11 @@ stringfixes = {
 ("and I'll defend them to", "and I’ll defend them to"),
 ("Named 'Eyestalks' for obvious reasons,", "Named ‘Eyestalks’ for obvious reasons,"),
 ("your units are 'lawful'. This means that", "your units are <i>lawful</i>. This means that"), # new <i> tags
+
+# Fix capitalization
+("Return To Kerlath", "Return to Kerlath"),
+("Into The Depths", "Into the Depths"),
+("Proven By The Sword", "Proven by the Sword"),
 ),
 
 "wesnoth-sof" : (
