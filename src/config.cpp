@@ -63,7 +63,7 @@ config::attribute_value &config::attribute_value::operator=(bool v)
 
 config::attribute_value &config::attribute_value::operator=(int v)
 {
-	value = v;
+	value = double(v);
 	return *this;
 }
 
@@ -103,7 +103,6 @@ bool config::attribute_value::to_bool(bool def) const
 
 int config::attribute_value::to_int(int def) const
 {
-	if (const int *p = boost::get<const int>(&value)) return *p;
 	if (const double *p = boost::get<const double>(&value)) return int(*p);
 	return def;
 }
@@ -111,7 +110,6 @@ int config::attribute_value::to_int(int def) const
 double config::attribute_value::to_double(double def) const
 {
 	if (const double *p = boost::get<const double>(&value)) return *p;
-	if (const int *p = boost::get<const int>(&value)) return *p;
 	return def;
 }
 
@@ -124,8 +122,6 @@ struct config_attribute_str_visitor : boost::static_visitor<std::string>
 		static std::string s_yes("yes"), s_no("no");
 		return b ? s_yes : s_no;
 	}
-	std::string operator()(int i) const
-	{ return str_cast(i); }
 	std::string operator()(double d) const
 	{ return str_cast(d); }
 	std::string operator()(std::string const &s) const
