@@ -1531,6 +1531,10 @@ stringfixes = {
 ("We're snowed in. Our", "We’re snowed in. Our"),
 ("What's this? Large orcish", "What’s this? Large orcish"),
 ("Ye're young and not", "Ye’re young and not"),
+
+# Fixed capitalization
+("At The East Gate", "At the East Gate"),
+("Reclaiming The Past", "Reclaiming the Past"),
 ),
 
 "wesnoth-trow" : (
