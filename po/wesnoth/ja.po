@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 0.8.8-CVS\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-10-19 12:51+0200\n"
-"PO-Revision-Date: 2010-10-18 01:08+0900\n"
+"PO-Revision-Date: 2010-10-26 10:58+0900\n"
 "Last-Translator: IWAI, Masaharu <iwaim.sub@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
 "Language: \n"
@@ -1377,7 +1377,6 @@ msgstr "時刻"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:278
-#, fuzzy
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 " Lawful units get +25% damage in daytime, and −25% damage at night.\n"
@@ -1390,6 +1389,7 @@ msgstr ""
 "す。\n"
 " 混沌ユニットは夜間は +25% のダメージ修正、昼間は −25% のダメージ修正を得ま"
 "す。\n"
+" 黄昏ユニットは夕方は +25% のダメージ修正を得ます。\n"
 " 中立ユニットは時間の影響を受けません。"
 
 #. [topic]: id=time_of_day
@@ -3186,8 +3186,8 @@ msgid ""
 "difference in their levels."
 msgstr ""
 "統率:\n"
-"このユニットは隣接した自軍が所有するユニットを指揮し、それらがうまく戦えるよ"
-"うにします。\n"
+"このユニットは隣接した自軍ユニットを指揮し、それらがうまく戦えるようにしま"
+"す。\n"
 "\n"
 "隣接している低レベルの自軍が所有するユニットは戦闘時により多くのダメージを与"
 "えるようになります。このユニットとのレベルの差に応じて、与えるダメージが 25% "
@@ -4925,8 +4925,8 @@ msgid ""
 "more damage in combat, though this only applies to units of lower level."
 msgstr ""
 " このユニットの統率力により、隣接する同一陣営のユニットは戦闘においてより大き"
-"なダメージを与えることができますが、より下位レベルのユニットにのみ適用されま"
-"す。"
+"なダメージを与えることができます。これはより下位レベルのユニットにのみ適用さ"
+"れます。"
 
 #: data/core/macros/special-notes.cfg:32
 msgid ""
@@ -6308,10 +6308,9 @@ msgid ""
 "\n"
 "Twilight: +25% Damage"
 msgstr ""
-"秩序ユニットは戦いにおいて、日中強く、夜間に弱くなります。\n"
+"黄昏ユニットは戦いにおいて、夕方に強く、昼夜は普通に戦えます。\n"
 "\n"
-"日中: +25% ダメージ\n"
-"夜間: −25% ダメージ"
+"夕方: +25% ダメージ"
 
 #. [language]
 #: data/hardwired/english.cfg:15
@@ -6661,20 +6660,19 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:41
-#, fuzzy
 msgid "<i>― The Wesnoth Community</i>"
-msgstr "- Wesnoth コミュニティー"
+msgstr "<i>― Wesnoth コミュニティー</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:44
-#, fuzzy
 msgid ""
 "<i>Lawful</i> units fight better by day, and <i>chaotic</i> units fight "
 "better at night. <i>Neutral</i> units are unaffected by the time of day. The "
 "rare <i>Liminal</i> unit type fights best during the twilight hours."
 msgstr ""
-"秩序ユニットは昼間の戦闘に強く、混沌ユニットは夜間の戦闘に強い。中立ユニット"
-"は昼夜の影響を受けない。"
+"<i>秩序</i>ユニットは昼間の戦闘に強く、<i>混沌</i>ユニットは夜間の戦闘に強"
+"い。<i>中立</i>ユニットは昼夜の影響を受けない。稀有な<i>黄昏</i>ユニットは夕"
+"暮れ時に最も強い。"
 
 #. [tip]
 #: data/hardwired/tips.cfg:45
@@ -6693,9 +6691,8 @@ msgstr "適切な計画であっても、もし間違った時刻に攻撃すれ
 #: data/hardwired/tips.cfg:49 data/hardwired/tips.cfg:73
 #: data/hardwired/tips.cfg:125 data/hardwired/tips.cfg:133
 #: data/hardwired/tips.cfg:213
-#, fuzzy
 msgid "<i>― Haldric II, 42YW, Handbook of Tactical Analysis: Volume I</i>"
-msgstr "- 戦術分析のハンドブック 第 1 巻 - Haldric II 世, 42YW"
+msgstr "<i>― 戦術分析のハンドブック 第 1 巻 - Haldric II 世, 42YW</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:52
@@ -8158,18 +8155,16 @@ msgid "Name: "
 msgstr "名前: "
 
 #: src/generate_report.cpp:101
-#, fuzzy
 msgid "Type: "
-msgstr "型"
+msgstr "型: "
 
 #: src/generate_report.cpp:113 src/help.cpp:1404
 msgid "Race: "
 msgstr "種族: "
 
 #: src/generate_report.cpp:136
-#, fuzzy
 msgid "Level: "
-msgstr "レベル"
+msgstr "レベル: "
 
 #: src/generate_report.cpp:141
 #, fuzzy
@@ -8294,9 +8289,8 @@ msgid "Time of day: "
 msgstr "時刻"
 
 #: src/generate_report.cpp:397
-#, fuzzy
 msgid "Leadership: "
-msgstr "統率"
+msgstr "統率: "
 
 #: src/generate_report.cpp:401
 #, fuzzy
@@ -8360,9 +8354,8 @@ msgid "Chaotic units: "
 msgstr "混沌ユニット: "
 
 #: src/generate_report.cpp:533
-#, fuzzy
 msgid "Liminal units: "
-msgstr "秩序ユニット: "
+msgstr "黄昏ユニット: "
 
 #: src/generate_report.cpp:714
 msgid "Observers:"
@@ -10605,7 +10598,7 @@ msgstr "秩序"
 
 #: src/unit_types.cpp:968
 msgid "liminal"
-msgstr ""
+msgstr "黄昏"
 
 #: src/unit_types.cpp:968
 msgid "neutral"
@@ -10620,9 +10613,8 @@ msgid "female^lawful"
 msgstr "秩序"
 
 #: src/unit_types.cpp:969
-#, fuzzy
 msgid "female^liminal"
-msgstr "忠義"
+msgstr "黄昏"
 
 #: src/unit_types.cpp:969
 msgid "female^neutral"

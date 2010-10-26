@@ -1,6 +1,5 @@
-# #-#-#-#-#  wesnoth.cpp1.po (Battle for Wesnoth VERSION)  #-#-#-#-#
 # Japanese translations for Battle for Wesnoth package.
-# Copyright (C) 2005-2006 Wesnoth development team
+# Copyright (C) 2005-2010 Wesnoth development team
 # This file is distributed under the same license as the Battle for Wesnoth package.
 # Automatically generated, 2005.
 # Nobuhito Okada <okyada@gmail.com>, 2005-2006.
@@ -10,10 +9,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Battle for Wesnoth 1.8.4+svn\n"
+"Project-Id-Version: Battle for Wesnoth svn-trunk\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-10-19 12:51+0200\n"
-"PO-Revision-Date: 2010-10-20 18:47+0900\n"
+"PO-Revision-Date: 2010-10-26 10:42+0900\n"
 "Last-Translator: IWAI, Masaharu <iwaim.sub@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
 "Language: \n"
@@ -35,10 +34,10 @@ msgid ""
 "blood of those they attack, thereby gaining some of the health lost by their "
 "victims."
 msgstr ""
-"吸血コウモリという名前は彼らの赤い色合いから名づけられました。その赤い姿は彼"
-"らが好む食事を象徴する印です。これらの生き物は素早く、攻撃する相手から血を吸"
-"うことができます。それにより、彼らの犠牲者が失った生命力の一部を得ることがで"
-"きるのです。"
+"吸血コウモリという名は、体の色合いから名づけられました。その赤い姿は彼らが好"
+"む食事を象徴しています。素早く動き、攻撃目標から血を吸うことができます。それ"
+"により、彼らの犠牲者が失った生命力の一部を自身の生命力として得ることができる"
+"のです。"
 
 #. [attack]: type=blade
 #. [attack]: type=pierce
@@ -68,8 +67,8 @@ msgid ""
 "Bats, gaining the ability to drain not merely the blood but the very life "
 "energy of their victims."
 msgstr ""
-"最も不道徳で肉食の成功した吸血コウモリは戦慄コウモリとなり、ただ犠牲者の血を"
-"吸うだけではなく、生命エネルギーを吸い取る能力を得ます。"
+"最も不道徳で、肉食の吸血コウモリは戦慄コウモリと呼ばれます。ただ犠牲者の血を"
+"吸うだけではなく、生命エネルギーまでもを吸い取る能力を獲得しています。"
 
 #. [unit_type]: id=Vampire Bat, race=bats
 #: data/core/units/bats/Bat_Vampire.cfg:4
@@ -98,8 +97,8 @@ msgid ""
 "Propelled by oars or small sails, boats are used to travel short distances "
 "and in shallows where large ships cannot navigate."
 msgstr ""
-"オールや小さな帆によって進む小舟は短距離を移動する場合や、大きな船では航行す"
-"ることのできない浅瀬を移動するのに使われます。"
+"オールや小さな帆によって進む小舟は、短距離を移動する場合や大きな船では航行す"
+"ることのできない浅瀬を移動するために使われます。"
 
 #. [unit_type]: id=Galleon, race=mechanical
 #: data/core/units/boats/Galleon.cfg:6
@@ -194,7 +193,7 @@ msgstr ""
 "彼らが着ている鎧がなければ、ある種のドレークは本物のドラゴンと区別がつかない"
 "かも知れません。少なくともドラゴンが伝説にすぎない他の劣った種族にとっては。"
 "「アルマゲドンドレーク」として知られている生き物は非常に大きいもので、とてつ"
-"もない炎に対して免疫があり、また保有しています。"
+"もない炎に対して耐性をもち、また、とてつもない炎を操ります。"
 
 #. [attack]: type=blade
 #: data/core/units/drakes/Armageddon.cfg:57 data/core/units/drakes/Fire.cfg:42
@@ -713,11 +712,11 @@ msgid ""
 "having practiced this skill hunting in the mountains. Their maneuverability "
 "makes them dangerous and tricky foes."
 msgstr ""
-"Dwarvish Explorersは並ぶ者のない生存者です。携帯している装備のみで、彼らは新"
-"しい鉱石の層や堆積した鉱床を探して、数ヶ月間森や山脈の周辺を歩き回ることがで"
-"きます。そのため彼らの格闘能力は他のドワーフに劣りますが、山では狩猟に使用し"
-"ていたので、他のドワーフは斧投げではかないません。彼らはその機動性により危険"
-"で油断のならない敵となります。"
+"Dwarvish Explorersほど生存術に長けた者はいません。携帯している装備のみで数ヶ"
+"月間森や山脈周辺を探索し、新しい鉱石の層や堆積した鉱床を探しだします。格闘能"
+"力は他のドワーフよりも劣りますが、山で狩猟に使っている斧投げでは他のドワーフ"
+"よりも習熟しています。彼らの機動性は、敵にとっては危険で油断がならないもので"
+"す。"
 
 #. [attack]: type=blade
 #: data/core/units/dwarves/Explorer.cfg:42 data/core/units/dwarves/Lord.cfg:52
@@ -752,9 +751,9 @@ msgid ""
 "terrain or underground. Their power and endurance more than compensate for "
 "their relatively poor mobility."
 msgstr ""
-"ドワーフの戦士は強固な戦斧とハンマーを装備し、これによって近接戦闘では敵を恐"
-"れさせます。彼らは山岳や地下の地形で優れています。彼らの力と耐久力は比較的乏"
-"しい機動力を補って余りあるものです。"
+"ドワーフの戦士は強固な戦斧とハンマーを装備しており、近接戦闘では敵に恐れられ"
+"ています。彼らは山岳や地下の地形に適応しています。その力と耐久力は比較的乏し"
+"い機動力を補って余りあるものです。"
 
 #. [attack]: type=impact
 #: data/core/units/dwarves/Fighter.cfg:55 data/core/units/dwarves/Lord.cfg:61
@@ -830,10 +829,10 @@ msgid ""
 "territory. They are powerful fighters in a melee, and from a distance their "
 "deftly thrown axes can rival the power and accuracy of a human archer."
 msgstr ""
-"これらの頑丈なドワーフは国境の偵察や巡視のために長い間洞窟から離れることが"
-"時々あります。彼らはこの時間を侵入者の警戒や、ドワーフの縄張りに侵入したなら"
-"ず者や盗賊との戦いに費やします。彼らは近接戦では強力な戦士で、距離を置いても"
-"彼らの器用な手投げ斧は人間の射手の力と精度に匹敵します。"
+"これらの頑丈なドワーフは、しばしば国境の偵察や巡視のために長期間にわたって洞"
+"窟から離れます。このとき、彼らは侵入者に対する警戒し、ドワーフ族の縄張りに侵"
+"入してきたならず者や盗賊と戦います。近接戦では強力な戦士であり、距離を置いた"
+"ときは器用な手投げ斧を用います。その精度と威力は人間族の射手にも匹敵します。"
 
 #. [unit_type]: id=Dwarvish Runemaster, race=dwarf
 #: data/core/units/dwarves/Runemaster.cfg:4
@@ -880,12 +879,12 @@ msgid ""
 "However, they pay for their speed with the poorer protection provided by "
 "their lighter armor."
 msgstr ""
-"ドワーフは短距離ではより背の高い種族にはかなわないものの、重い鎧に妨げられな"
-"ければ、彼らの恐ろしいほどの持久力と忍耐力で最速の者にも拮抗します。Dwarvish "
-"Scoutsはそのことを武器に、主力の前に並んで兵の動きと配置を報告してきたり、重"
-"要な目標を確保したりします。戦闘以外では、彼らはしばしばドワーフの共同体間の"
-"通信を中継します。しかしながら、彼らは速さの代償として、軽い鎧により防御が貧"
-"弱になっています。"
+"ドワーフ族は短距離ではより背の高い種族たちにはかないません。一方、重い鎧に妨"
+"げられなければ、長距離では、持ち前の恐ろしいほどの持久力と忍耐力により最速の"
+"者にも拮抗します。Dwarvish Scoutsはこの特長により、主力よりも前に出て軍団の動"
+"きと配置を調査してきたり、重要な目標を確保したりします。戦闘時以外では、ド"
+"ワーフの共同体間の通信の伝達を行います。しかしながら、彼らはその速さの代償と"
+"して軽い鎧しか身につけていないので、防御は貧弱です。"
 
 #. [unit_type]: id=Dwarvish Sentinel, race=dwarf
 #: data/core/units/dwarves/Sentinel.cfg:4
@@ -3547,7 +3546,7 @@ msgstr ""
 #. [unit_type]: id=Cuttle Fish, race=monster
 #: data/core/units/monsters/Cuttle_Fish.cfg:4
 msgid "Cuttle Fish"
-msgstr "殺人魚"
+msgstr "大王イカ"
 
 #. [unit_type]: id=Cuttle Fish, race=monster
 #: data/core/units/monsters/Cuttle_Fish.cfg:18
@@ -3557,9 +3556,9 @@ msgid ""
 "distance. The best way to survive an encounter with these monsters is to "
 "remain ashore."
 msgstr ""
-"殺人魚は海中の巨大な生物です。彼らは巨大な触手によって敵を掴んだり、毒を含ん"
-"だ墨を吐いたりできます。彼らと遭遇して生き残る最善の方法は、浅瀬にとどまるこ"
-"とです。"
+"大王イカは海棲の巨大な生物です。強力な触手によって敵を捕らえたり、有毒の墨を"
+"吐いたりできます。この化け物と遭遇した際に、生き延びる最善の手段は浅瀬に留ま"
+"る事です。"
 
 #. [attack]: type=impact
 #: data/core/units/monsters/Cuttle_Fish.cfg:49
@@ -4511,8 +4510,8 @@ msgstr ""
 "れるものは広く知られています。グールは人間であったときの記憶がまったくない獣"
 "です。裸のような生まれたままの姿でよろよろさまよい、死肉で腹を満たします。\n"
 "\n"
-"文明化された土地すべてにおいて、最大の禁忌として使用禁止になっているのは、こ"
-"のような理由があるからです。"
+"文明化された土地すべてにおいて、降霊術が最大の禁忌として使用禁止になっている"
+"のは、このような理由があるからです。"
 
 #. [unit_type]: id=Necrophage, race=undead
 #: data/core/units/undead/Corpse_Necrophage.cfg:4
