@@ -2,7 +2,6 @@
 #define VARIANT_HPP_INCLUDED
 
 #include <boost/shared_ptr.hpp>
-#include <string>
 #include <map>
 #include <vector>
 
