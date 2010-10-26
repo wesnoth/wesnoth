@@ -20,12 +20,6 @@
 #include "sdl_utils.hpp"
 #include "terrain_translation.hpp"
 
-#include "SDL.h"
-
-#include <map>
-#include <string>
-#include <vector>
-
 ///this module manages the cache of images. With an image name, you can get
 ///the surface corresponding to that image.
 //
