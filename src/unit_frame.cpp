@@ -22,8 +22,6 @@
 #include "sound.hpp"
 #include "unit_frame.hpp"
 
-#define UNIT_FRAME_H_PART2
-
 
 progressive_string::progressive_string(const std::string & data,int duration) :
 	data_(),
@@ -140,8 +138,6 @@ return data_.empty() ||
 // Force compilation of the following template instantiations
 template class progressive_<int>;
 template class progressive_<double>;
-
-#undef UNIT_FRAME_H_PART2
 
 frame_parameters::frame_parameters() :
 	duration(0),
