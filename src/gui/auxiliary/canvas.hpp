@@ -23,13 +23,9 @@
 #define GUI_AUXILIARY_CANVAS_HPP_INCLUDED
 
 #include "formula_callable.hpp"
-#include "reference_counted_object.hpp"
 #include "sdl_utils.hpp"
 
-#include <vector>
-
 class config;
-struct surface;
 class variant;
 
 namespace gui2 {
