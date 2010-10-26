@@ -33,7 +33,6 @@
 
 #include <map>
 #include <iosfwd>
-#include <string>
 #include <vector>
 #include <boost/variant/variant.hpp>
 
