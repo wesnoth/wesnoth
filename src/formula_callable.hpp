@@ -16,9 +16,6 @@
 #ifndef FORMULA_CALLABLE_HPP_INCLUDED
 #define FORMULA_CALLABLE_HPP_INCLUDED
 
-#include <map>
-#include <string>
-
 #include "reference_counted_object.hpp"
 #include "variant.hpp"
 
