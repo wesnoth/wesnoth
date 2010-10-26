@@ -27,8 +27,6 @@ public:
 
 	~ttitle_screen();
 
-	CVideo* video() { return video_; }
-
 	/**
 	 * Values for the menu-items of the main menu.
 	 *
@@ -63,8 +61,6 @@ public:
 			};
 
 private:
-	/** Used in show in order to show child windows. */
-	CVideo* video_;
 
 	/** Inherited from tdialog, implemented by REGISTER_WINDOW. */
 	virtual const std::string& window_id() const;
@@ -74,9 +70,6 @@ private:
 
 	/** Inherited from tdialog. */
 	void pre_show(CVideo& video, twindow& window);
-
-	/** Inherited from tdialog. */
-	void post_show(twindow& window);
 
 	/** The progress bar time for the logo. */
 	unsigned long logo_timer_id_;

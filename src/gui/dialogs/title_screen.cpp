@@ -94,8 +94,7 @@ static bool hotkey(twindow& window, const ttitle_screen::tresult result)
 }
 
 ttitle_screen::ttitle_screen()
-	: video_(NULL)
-	, logo_timer_id_(0)
+	: logo_timer_id_(0)
 {
 }
 
@@ -257,11 +256,8 @@ void ttitle_screen::post_build(CVideo& video, twindow& window)
 					, QUIT_GAME));
 }
 
-void ttitle_screen::pre_show(CVideo& video, twindow& window)
+void ttitle_screen::pre_show(CVideo&, twindow& window)
 {
-	assert(!video_);
-	video_ = &video;
-
 	set_restore(false);
 	window.set_click_dismiss(false);
 	window.set_enter_disabled(true);
@@ -346,11 +342,6 @@ void ttitle_screen::pre_show(CVideo& video, twindow& window)
 					, true);
 		}
 	}
-}
-
-void ttitle_screen::post_show(twindow& /*window*/)
-{
-	video_ = NULL;
 }
 
 void ttitle_screen::update_tip(twindow& window, const bool previous)
