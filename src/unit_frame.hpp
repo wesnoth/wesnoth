@@ -25,10 +25,6 @@
 
 class config;
 
-#include <string>
-#include <vector>
-#include <set>
-
 class progressive_string {
 	public:
 		progressive_string(const std::string& data = "",int duration = 0);
