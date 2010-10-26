@@ -27,7 +27,6 @@
 #include <iosfwd>
 #include <map>
 #include <string>
-#include <vector>
 
 //older versions of SDL don't define the
 //mouse wheel macros, so define them ourselves
