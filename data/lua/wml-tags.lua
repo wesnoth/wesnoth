@@ -386,43 +386,42 @@ function wml_actions.store_reachable_locations(cfg)
 	local viewing_side = cfg.viewing_side or 0
 	local variable = cfg.variable or helper.wml_error "[store_reachable_locations] missing required variable= key"
 
-	local res = location_set.create()
+	local reach = location_set.create()
+	local unit_reach = location_set.create()
 
 	for i,unit in ipairs(wesnoth.get_units(unit_filter)) do
-		local reach
+		unit_reach:clear()
 
 		if range == "movement" or range == "attack" then
 			if moves == "max" then
 				local real_moves = unit.moves
 				unit.moves = unit.max_moves
-				reach = wesnoth.find_reach(unit, { viewing_side = viewing_side } )
+				unit_reach = location_set.of_pairs(wesnoth.find_reach(unit, { viewing_side = viewing_side } ))
 				unit.moves = real_moves
 			else
-				reach = wesnoth.find_reach(unit)
+				unit_reach = location_set.of_pairs(wesnoth.find_reach(unit, { viewing_side = viewing_side } ))
 			end
 		elseif range == "vision" then
 			local real_moves = unit.moves
 			unit.moves = unit.max_moves
-			reach = wesnoth.find_reach(unit, { viewing_side = viewing_side, ignore_units=yes } )
+			unit_reach = location_set.of_pairs(wesnoth.find_reach(unit, { viewing_side = viewing_side, ignore_units=yes } ))
 			unit.moves = real_moves
 		end
 
-		-- TODO: the radius expansion for "vision" and "attack" is way too slow
-
-		for j,loc in ipairs(reach) do
-			if wesnoth.match_location(loc[1], loc[2], location_filter) then
-				res:insert(loc[1], loc[2])
-			end
-
-			if range == "vision" or range == "attack" then
-			  res:of_pairs(wesnoth.get_locations
-				{ { "filter_adjacent_location", { x=loc[1], y=loc[2] } },
-				  { "and", location_filter } })
-			end
+		if range == "vision" or range == "attack" then
+			unit_reach:to_wml_var "unit_reach_array"
+			reach:of_pairs(wesnoth.get_locations { find_in = "unit_reach_array", radius = "1" } )
+			unit_reach:of_wml_var "unit_reach_array"
 		end
+
+		reach:union(unit_reach)
 	end
 
-	res:to_wml_var(variable)
+	reach:to_wml_var(variable)
+	reach = location_set.of_pairs(wesnoth.get_locations { find_in = variable, { "and", location_filter } } )
+	reach:to_wml_var(variable)
+
+	wesnoth.set_variable("unit_reach_array")
 end
 
 function wml_actions.hide_unit(cfg)
