@@ -18,11 +18,7 @@
 #ifndef UNIT_H_INCLUDED
 #define UNIT_H_INCLUDED
 
-#include "config.hpp"
 #include "formula_callable.hpp"
-#include "map_location.hpp"
-#include "portrait.hpp"
-#include "race.hpp"
 #include "unit_types.hpp"
 #include "unit_map.hpp"
 
@@ -30,10 +26,6 @@ class game_display;
 class game_state;
 class vconfig;
 class team;
-
-#include <string>
-#include <vector>
-#include <list>
 
 class unit_ability_list
 {
