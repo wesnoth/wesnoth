@@ -53,10 +53,10 @@ namespace test_utils {
 		operator size_t&()
 		{ return time_;}
 
-		timing operator+(const size_t& t)
+		timing operator+(const size_t& t) const
 		{ return timing(time_ + t*step_size);}
 
-		timing operator+(const int& t)
+		timing operator+(const int& t) const
 		{ return *this + size_t(t);}
 
 		timing& operator+=(const size_t& t)
