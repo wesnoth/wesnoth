@@ -29,11 +29,13 @@ public:
 	ttransient_message(const std::string& title,
 			bool title_use_markup,
 			const std::string& message,
-			bool message_use_markup)
+			bool message_use_markup,
+			const std::string& image)
 		: title_(title)
 		, title_use_markup_(title_use_markup)
 		, message_(message)
 		, message_use_markup_(message_use_markup)
+		, image_(image)
 	{}
 
 protected:
@@ -44,14 +46,17 @@ private:
 	/** The title for the dialog. */
 	std::string title_;
 
-	/** Use  markup for the title. */
+	/** Use markup for the title. */
 	bool title_use_markup_;
 
 	/** The message to show to the user. */
 	std::string message_;
 
-	/** Use  markup for the message. */
+	/** Use markup for the message. */
 	bool message_use_markup_;
+
+	/** An optional image to show at the left of the text. */
+	std::string image_;
 
 	/** Inherited from tdialog, implemented by REGISTER_WINDOW. */
 	virtual const std::string& window_id() const;
@@ -70,11 +75,13 @@ private:
  *                            upon.
  * @param title               The title of the dialog.
  * @param message             The message to show in the dialog.
+ * @param image               An image to show in the dialog.
  * @param message_use_markup  Use markup for the message?
  * @param title_use_markup    Use markup for the title?
  */
 void show_transient_message(CVideo& video, const std::string& title,
 	const std::string& message,
+	const std::string& image = std::string(),
 	bool message_use_markup = false,
 	bool title_use_markup = false);
 
@@ -87,10 +94,12 @@ void show_transient_message(CVideo& video, const std::string& title,
  * @param video               The video which contains the surface to draw
  *                            upon.
  * @param message             The message to show in the dialog.
+ * @param image               An image to show in the dialog.
  * @param message_use_markup  Use markup for the message?
  */
 void show_transient_error_message(CVideo& video
 		, const std::string& message
+		, const std::string& image = std::string()
 		, bool message_use_markup = false);
 
 } // namespace gui2

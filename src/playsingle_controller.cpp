@@ -964,7 +964,7 @@ void playsingle_controller::store_gold(bool obs)
 	}
 
 	if (end_level.carryover_report) {
-		gui2::show_transient_message(gui_->video(), title, report.str(), true);
+		gui2::show_transient_message(gui_->video(), title, report.str(), "", true);
 	}
 }
 

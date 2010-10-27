@@ -18,6 +18,7 @@
 #include "gui/dialogs/transient_message.hpp"
 
 #include "gettext.hpp"
+#include "gui/widgets/image.hpp"
 #include "gui/widgets/label.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
@@ -37,22 +38,30 @@ void ttransient_message::pre_show(CVideo& /*video*/, twindow& window)
 	message.set_label(message_);
 	message.set_use_markup(message_use_markup_);
 	message.set_can_wrap(true);
+
+	timage& image = find_widget<timage>(&window, "image", false);
+
+	if(!image_.empty()) {
+		image.set_image(image_);;
+	}
 }
 
 void show_transient_message(CVideo& video, const std::string& title,
-	const std::string& message, bool message_use_markup, bool title_use_markup)
+	const std::string& message, const std::string& image,
+	bool message_use_markup, bool title_use_markup)
 {
 	ttransient_message dlg(title, title_use_markup,
-			message, message_use_markup);
+			message, message_use_markup, image);
 	dlg.show(video);
 }
 
 void show_transient_error_message(CVideo& video
 		, const std::string& message
+		, const std::string& image
 		, bool message_use_markup)
 {
 	LOG_STREAM(err, lg::general) << message << '\n';
-	show_transient_message(video, _("Error"), message, message_use_markup);
+	show_transient_message(video, _("Error"), message, image, message_use_markup);
 }
 
 } // namespace gui2
