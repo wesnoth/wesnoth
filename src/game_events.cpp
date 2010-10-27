@@ -29,6 +29,7 @@
 #include "game_preferences.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/gamestate_inspector.hpp"
+#include "gui/dialogs/transient_message.hpp"
 #include "gui/dialogs/wml_message.hpp"
 #include "gui/widgets/window.hpp"
 #include "help.hpp"
@@ -1729,25 +1730,11 @@ WML_HANDLER_FUNCTION(object, event_info, cfg)
 
 	if (!cfg["silent"].to_bool())
 	{
-		surface surface(NULL);
-
-		if(image.empty() == false) {
-			surface.assign(image::get_image(image));
-		}
-
 		// Redraw the unit, with its new stats
 		resources::screen->draw();
 
 		try {
-			unsigned lifetime = average_frame_time
-				* cfg["duration"].to_int(prevent_misclick_duration);
-
-			wml_event_dialog to_show(*resources::screen, (surface.null() ? caption : ""), text);
-			if(!surface.null()) {
-				to_show.set_image(surface, caption);
-			}
-			to_show.layout();
-			to_show.show(lifetime);
+			gui2::show_transient_message(resources::screen->video(), caption, text, image, true);
 		} catch(utils::invalid_utf8_exception&) {
 			// we already had a warning so do nothing.
 		}

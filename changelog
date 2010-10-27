@@ -65,6 +65,8 @@ Version 1.9.1+svn:
    * Fixed: No longer cut off large title screen logos (bug #16632).
    * Refresh cache (F5) works in editor.
    * Add a "Save All Maps" menu item and hotkey in editor.
+   * [object] description messages are now shown using GUI2, allowing usage of Pango
+     markup (bug #16859).
    * Whiteboard planning system:
      * Fixed: Crash when creating a planned move on Windows (bug #16705)
      * New "Execute all actions" command bound to CTRL+y
