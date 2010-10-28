@@ -20,12 +20,7 @@
 
 class CVideo;
 
-#include "SDL.h"
-
-#include "global.hpp"
 #include "sdl_utils.hpp"
-
-#include <string>
 
 class loadscreen {
 	public:
