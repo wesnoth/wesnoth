@@ -16,17 +16,9 @@
 #ifndef WIDGET_MENU_HPP_INCLUDED
 #define WIDGET_MENU_HPP_INCLUDED
 
-#include <map>
 #include <set>
-#include <string>
-#include <vector>
-
-
-#include "../sdl_utils.hpp"
 
 #include "scrollarea.hpp"
-
-#include "SDL.h"
 
 namespace image{
 	class locator;
