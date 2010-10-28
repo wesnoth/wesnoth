@@ -22,8 +22,6 @@
 #include "hotkeys.hpp"
 #include "key.hpp"
 
-#include <vector>
-
 class CVideo;
 
 namespace events {
