@@ -19,9 +19,6 @@
 #include "tstring.hpp"
 #include "terrain_translation.hpp"
 
-#include <map>
-#include <string>
-
 class terrain_type
 {
 public:
