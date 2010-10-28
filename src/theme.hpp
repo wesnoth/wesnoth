@@ -21,10 +21,6 @@
 #ifndef THEME_HPP_INCLUDED
 #define THEME_HPP_INCLUDED
 
-#include <map>
-#include <string>
-#include <vector>
-
 #include "SDL.h"
 #include "config.hpp"
 #include "generic_event.hpp"
