@@ -21,8 +21,6 @@
 class display;
 
 #include "map_location.hpp"
-#include <set>
-#include <string>
 
 namespace halo
 {
