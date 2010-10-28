@@ -25,9 +25,6 @@
 #include "map_location.hpp"
 #include "terrain_translation.hpp"
 
-#include <map>
-#include <set>
-
 class config;
 class gamemap;
 namespace image{ class locator; }
