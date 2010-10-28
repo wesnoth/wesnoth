@@ -16,10 +16,6 @@
 #ifndef RACE_HPP_INCLUDED
 #define RACE_HPP_INCLUDED
 
-#include <map>
-#include <string>
-#include <vector>
-
 #include "config.hpp"
 #include "serialization/string_utils.hpp"
 
