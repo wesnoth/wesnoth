@@ -17,12 +17,9 @@
 #define TEXTBOX_HPP_INCLUDED
 
 #include "../serialization/string_utils.hpp"
-#include "../sdl_utils.hpp"
 #include "font.hpp"
 
 #include "scrollarea.hpp"
-
-#include "SDL.h"
 
 namespace gui {
 
