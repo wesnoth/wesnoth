@@ -16,14 +16,11 @@
 #define FONT_HPP_INCLUDED
 
 #include "exceptions.hpp"
-#include "SDL.h"
 #include "SDL_ttf.h"
 
-class CVideo;
-class t_string;
 #include "sdl_utils.hpp"
 
-#include <string>
+class t_string;
 
 namespace font {
 
