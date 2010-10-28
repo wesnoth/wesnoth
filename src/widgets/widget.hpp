@@ -19,11 +19,6 @@
 #include "../events.hpp"
 #include "../sdl_utils.hpp"
 
-#include "SDL.h"
-
-#include <string>
-#include <vector>
-
 class CVideo;
 
 namespace gui {
