@@ -15,16 +15,9 @@
 #ifndef BUTTON_H_INCLUDED
 #define BUTTON_H_INCLUDED
 
-#include "SDL.h"
-
 #include "widget.hpp"
 
 #include "../exceptions.hpp"
-#include "../sdl_utils.hpp"
-
-#include <string>
-#include <vector>
-#include <string>
 
 namespace gui {
 
