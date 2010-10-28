@@ -21,8 +21,6 @@
 
 #include "widgets/label.hpp"
 #include "widgets/textbox.hpp"
-#include "widgets/button.hpp"
-#include "widgets/menu.hpp"
 #include "key.hpp"
 
 namespace gui {
