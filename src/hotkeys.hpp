@@ -18,9 +18,6 @@
 #include "events.hpp"
 #include "tstring.hpp"
 
-#include <string>
-#include <vector>
-
 class config;
 class display;
 
