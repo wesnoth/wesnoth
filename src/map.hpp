@@ -23,10 +23,6 @@ class config;
 #include "terrain.hpp"
 #include "map_location.hpp"
 
-#include <map>
-#include <string>
-#include <vector>
-
 #define MAX_MAP_AREA	65536
 
 /**
