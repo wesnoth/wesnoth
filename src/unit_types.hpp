@@ -16,15 +16,8 @@
 #define UNIT_TYPES_H_INCLUDED
 
 #include "unit_animation.hpp"
-#include "config.hpp"
-#include "map_location.hpp"
 #include "portrait.hpp"
 #include "race.hpp"
-
-#include <set>
-#include <string>
-#include <vector>
-
 
 class gamemap;
 class unit;
