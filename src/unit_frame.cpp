@@ -162,6 +162,7 @@ frame_parameters::frame_parameters() :
 	directional_y(0),
 	auto_vflip(false),
 	auto_hflip(true),
+	primary_frame(t_unset),
 	drawing_layer(display::LAYER_UNIT_DEFAULT - display::LAYER_UNIT_FIRST)
 {}
 
@@ -188,6 +189,7 @@ frame_builder::frame_builder() :
 	directional_y_(""),
 	auto_vflip_(false),
 	auto_hflip_(false),
+	primary_frame_(t_unset),
 	drawing_layer_(str_cast(display::LAYER_UNIT_DEFAULT - display::LAYER_UNIT_FIRST))
 {}
 
@@ -216,6 +218,13 @@ frame_builder::frame_builder(const config& cfg,const std::string& frame_string) 
 	auto_hflip_(cfg[frame_string + "auto_hflip"].to_bool(true)),
 	drawing_layer_(cfg[frame_string + "layer"])
 {
+	if(!cfg.has_attribute(frame_string + "primary")) {
+		primary_frame_ = t_unset;
+	} else if(cfg[frame_string + "primary"].to_bool()) {
+		primary_frame_ = t_true;
+	} else {
+		primary_frame_ = t_false;
+	}
 	std::vector<std::string> color = utils::split(cfg[frame_string + "text_color"]);
 	if (color.size() == 3) {
 		text_color_ = display::rgb(atoi(color[0].c_str()),
@@ -322,6 +331,12 @@ frame_builder & frame_builder::auto_hflip(const bool auto_hflip)
 	auto_hflip_=auto_hflip;
 	return *this;
 }
+frame_builder & frame_builder::primary_frame(const bool primary_frame)
+{
+	if(primary_frame) primary_frame_ = t_true;
+	else primary_frame_ = t_false;
+	return *this;
+}
 frame_builder & frame_builder::drawing_layer(const std::string& drawing_layer)
 {
 	drawing_layer_=drawing_layer;
@@ -352,6 +367,7 @@ frame_parsed_parameters::frame_parsed_parameters(const frame_builder & builder, 
 	directional_y_(builder.directional_y_,duration_),
 	auto_vflip_(builder.auto_vflip_),
 	auto_hflip_(builder.auto_hflip_),
+	primary_frame_(builder.primary_frame_),
 	drawing_layer_(builder.drawing_layer_,duration_)
 {}
 
@@ -415,6 +431,7 @@ const frame_parameters frame_parsed_parameters::parameters(int current_time) con
 	result.directional_y = directional_y_.get_current_element(current_time);
 	result.auto_vflip = auto_vflip_;
 	result.auto_hflip = auto_hflip_;
+	result.primary_frame = primary_frame_;
 	result.drawing_layer = drawing_layer_.get_current_element(current_time,display::LAYER_UNIT_DEFAULT-display::LAYER_UNIT_FIRST);
 	return result;
 }
@@ -467,7 +484,7 @@ void frame_parsed_parameters::override( int duration
 }
 
 
-void unit_frame::redraw(const int frame_time,bool first_time,const map_location & src,const map_location & dst,int*halo_id,const frame_parameters & animation_val,const frame_parameters & engine_val,const bool primary)const
+void unit_frame::redraw(const int frame_time,bool first_time,const map_location & src,const map_location & dst,int*halo_id,const frame_parameters & animation_val,const frame_parameters & engine_val)const
 {
 	const int xsrc = game_display::get_singleton()->get_location_x(src);
 	const int ysrc = game_display::get_singleton()->get_location_y(src);
@@ -475,7 +492,7 @@ void unit_frame::redraw(const int frame_time,bool first_time,const map_location 
 	const int ydst = game_display::get_singleton()->get_location_y(dst);
 	const map_location::DIRECTION direction = src.get_relative_dir(dst);
 
-	const frame_parameters current_data = merge_parameters(frame_time,animation_val,engine_val,primary);
+	const frame_parameters current_data = merge_parameters(frame_time,animation_val,engine_val);
 	double tmp_offset = current_data.offset;
 
 		// debug code allowing to see the number of frames and their position
@@ -585,7 +602,7 @@ void unit_frame::redraw(const int frame_time,bool first_time,const map_location 
 		}
 	}
 }
-std::set<map_location> unit_frame::get_overlaped_hex(const int frame_time,const map_location & src,const map_location & dst,const frame_parameters & animation_val,const frame_parameters & engine_val,const bool primary) const
+std::set<map_location> unit_frame::get_overlaped_hex(const int frame_time,const map_location & src,const map_location & dst,const frame_parameters & animation_val,const frame_parameters & engine_val) const
 {
 	game_display* disp = game_display::get_singleton();
 	const int xsrc = disp->get_location_x(src);
@@ -594,7 +611,7 @@ std::set<map_location> unit_frame::get_overlaped_hex(const int frame_time,const 
 	const int ydst = disp->get_location_y(dst);
 	const map_location::DIRECTION direction = src.get_relative_dir(dst);
 
-	const frame_parameters current_data = merge_parameters(frame_time,animation_val,engine_val,primary);
+	const frame_parameters current_data = merge_parameters(frame_time,animation_val,engine_val);
 	double tmp_offset = current_data.offset;
 	int d2 = game_display::get_singleton()->hex_size() / 2;
 
@@ -680,7 +697,7 @@ std::set<map_location> unit_frame::get_overlaped_hex(const int frame_time,const 
 
 
 
-const frame_parameters unit_frame::merge_parameters(int current_time,const frame_parameters & animation_val,const frame_parameters & engine_val, bool primary) const
+const frame_parameters unit_frame::merge_parameters(int current_time,const frame_parameters & animation_val,const frame_parameters & engine_val) const
 {
 	/**
 	 * this function merges the value provided by
@@ -693,6 +710,11 @@ const frame_parameters unit_frame::merge_parameters(int current_time,const frame
 	 */
 	frame_parameters result;
 	const frame_parameters & current_val = builder_.parameters(current_time);
+	
+	result.primary_frame = engine_val.primary_frame;
+	if(animation_val.primary_frame != t_unset) result.primary_frame = animation_val.primary_frame;
+	if(current_val.primary_frame != t_unset) result.primary_frame = current_val.primary_frame;
+	const bool primary = result.primary_frame;
 
 	/** engine provides a default image to use for the unit when none is available */
 	result.image = current_val.image.is_void() || current_val.image.get_filename() == ""?animation_val.image:current_val.image;

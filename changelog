@@ -88,6 +88,7 @@ Version 1.9.1+svn:
      scroll to the speaking unit (defaults to yes) (FR #16843)
    * New key 'random_start' (default = yes) in [terrain_graphics][image]
      allowing to disable random animation shift in animated terrains.
+   * Added a new key "primary" to animation to separate frames that should be treated as primary from frames that shouldn't
  * Miscellaneous and bugfixes:
    * Changed: Lowered severity of some gui2 timer log messages.
    * Units created in debug mode now play their recruit animation (FR #16766).

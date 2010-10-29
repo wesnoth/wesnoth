@@ -1834,8 +1834,9 @@ void unit::redraw_unit()
 
 
 	if(get_state(STATE_PETRIFIED)) params.image_mod +="~GS()";
+	params.primary_frame = t_true;
 
-	const frame_parameters adjusted_params = anim_->get_current_params(params,true);
+	const frame_parameters adjusted_params = anim_->get_current_params(params);
 
 
 

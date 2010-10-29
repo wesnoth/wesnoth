@@ -68,9 +68,9 @@ class unit_animation
                 void pause_animation();
                 void restart_animation();
 		int get_current_frame_begin_time() const{ return unit_anim_.get_current_frame_begin_time() ; };
-		void redraw(const frame_parameters& value);
+		void redraw(frame_parameters& value);
 		void clear_haloes();
-		bool invalidate(const frame_parameters& value );
+		bool invalidate(frame_parameters& value );
 
 	friend class unit;
 
@@ -78,20 +78,21 @@ class unit_animation
 
 	protected:
 	// reserved to class unit, for the special case of redrawing the unit base frame
-	const frame_parameters get_current_params(const frame_parameters & default_val = frame_parameters(),bool primary = true) const { return unit_anim_.parameters(default_val,primary); };
+	const frame_parameters get_current_params(const frame_parameters & default_val = frame_parameters()) const { return unit_anim_.parameters(default_val); };
 	private:
 		explicit unit_animation(int start_time
 				, const unit_frame &frame
 				, const std::string& event = ""
-				, const int variation=DEFAULT_ANIM);
+				, const int variation=DEFAULT_ANIM
+				, const frame_builder & builder = frame_builder());
 
 		class particule:public animated<unit_frame>
 	{
 		public:
-			explicit particule(int start_time=0,bool primary = false) :
+			explicit particule(int start_time=0,const frame_builder &builder = frame_builder()) :
 				animated<unit_frame>(start_time),
 				accelerate(true),
-				parameters_(frame_builder().auto_hflip(primary)),
+				parameters_(builder),
 				halo_id_(0),
 				last_frame_begin_time_(0)
 				{};
@@ -109,10 +110,10 @@ class unit_animation
 					, const std::string& offset = ""
 					, const std::string& layer = ""
 					, const std::string& modifiers = "");
-			void redraw( const frame_parameters& value,const map_location &src, const map_location &dst, const bool primary=false);
-			std::set<map_location> get_overlaped_hex(const frame_parameters& value,const map_location &src, const map_location &dst, const bool primary = false);
+			void redraw( const frame_parameters& value,const map_location &src, const map_location &dst);
+			std::set<map_location> get_overlaped_hex(const frame_parameters& value,const map_location &src, const map_location &dst);
 			void start_animation(int start_time, bool cycles=false);
-			const frame_parameters parameters(const frame_parameters & default_val,bool primary) const { return get_current_frame().merge_parameters(get_current_frame_time(),parameters_.parameters(get_animation_time()-get_begin_time()),default_val,primary); };
+			const frame_parameters parameters(const frame_parameters & default_val) const { return get_current_frame().merge_parameters(get_current_frame_time(),parameters_.parameters(get_animation_time()-get_begin_time()),default_val); };
 			void clear_halo();
 			bool accelerate;
 		private:

@@ -161,7 +161,7 @@ static animation_branches prepare_animation(const config &cfg, const std::string
 }
 
 unit_animation::unit_animation(int start_time,
-	const unit_frame & frame, const std::string& event, const int variation) :
+	const unit_frame & frame, const std::string& event, const int variation, const frame_builder & builder) :
 		terrain_types_(),
 		unit_filter_(),
 		secondary_unit_filter_(),
@@ -175,7 +175,7 @@ unit_animation::unit_animation(int start_time,
 		hits_(),
 		value2_(),
 		sub_anims_(),
-		unit_anim_(start_time,true),
+		unit_anim_(start_time,builder),
 		src_(),
 		dst_(),
 		invalidated_(false),
@@ -855,13 +855,15 @@ void unit_animation::restart_animation()
 		anim_itor->second.restart_animation();
 	}
 }
-void unit_animation::redraw(const frame_parameters& value)
+void unit_animation::redraw(frame_parameters& value)
 {
 
 	invalidated_=false;
 	overlaped_hex_.clear();
 	std::map<std::string,particule>::iterator anim_itor =sub_anims_.begin();
-	unit_anim_.redraw(value,src_,dst_,true);
+	value.primary_frame = t_true;
+	unit_anim_.redraw(value,src_,dst_);
+	value.primary_frame = t_false;
 	for( /*null*/; anim_itor != sub_anims_.end() ; ++anim_itor) {
 		anim_itor->second.redraw( value,src_,dst_);
 	}
@@ -875,7 +877,7 @@ void unit_animation::clear_haloes()
 		anim_itor->second.clear_halo();
 	}
 }
-bool unit_animation::invalidate(const frame_parameters& value)
+bool unit_animation::invalidate(frame_parameters& value)
 {
 	if(invalidated_) return false;
 	game_display*disp = game_display::get_singleton();
@@ -883,9 +885,11 @@ bool unit_animation::invalidate(const frame_parameters& value)
 	if(overlaped_hex_.empty()) {
 		if(complete_redraw) {
 			std::map<std::string,particule>::iterator anim_itor =sub_anims_.begin();
-			overlaped_hex_ = unit_anim_.get_overlaped_hex(value,src_,dst_,true);
+			value.primary_frame = t_true;
+			overlaped_hex_ = unit_anim_.get_overlaped_hex(value,src_,dst_);
+			value.primary_frame = t_false;
 			for( /*null*/; anim_itor != sub_anims_.end() ; ++anim_itor) {
-				std::set<map_location> tmp = anim_itor->second.get_overlaped_hex(value,src_,dst_,true);
+				std::set<map_location> tmp = anim_itor->second.get_overlaped_hex(value,src_,dst_);
 				overlaped_hex_.insert(tmp.begin(),tmp.end());
 			}
 		} else {
@@ -917,15 +921,15 @@ bool unit_animation::invalidate(const frame_parameters& value)
 
 
 
-void unit_animation::particule::redraw(const frame_parameters& value,const map_location &src, const map_location &dst, const bool primary)
+void unit_animation::particule::redraw(const frame_parameters& value,const map_location &src, const map_location &dst)
 {
 	const unit_frame& current_frame= get_current_frame();
 	const frame_parameters default_val = parameters_.parameters(get_animation_time() -get_begin_time());
 	if(get_current_frame_begin_time() != last_frame_begin_time_ ) {
 		last_frame_begin_time_ = get_current_frame_begin_time();
-		current_frame.redraw(get_current_frame_time(),true,src,dst,&halo_id_,default_val,value,primary);
+		current_frame.redraw(get_current_frame_time(),true,src,dst,&halo_id_,default_val,value);
 	} else {
-		current_frame.redraw(get_current_frame_time(),false,src,dst,&halo_id_,default_val,value,primary);
+		current_frame.redraw(get_current_frame_time(),false,src,dst,&halo_id_,default_val,value);
 	}
 }
 void unit_animation::particule::clear_halo()
@@ -935,11 +939,11 @@ void unit_animation::particule::clear_halo()
 		halo_id_ = halo::NO_HALO;
 	}
 }
-std::set<map_location> unit_animation::particule::get_overlaped_hex(const frame_parameters& value,const map_location &src, const map_location &dst, const bool primary )
+std::set<map_location> unit_animation::particule::get_overlaped_hex(const frame_parameters& value,const map_location &src, const map_location &dst)
 {
 	const unit_frame& current_frame= get_current_frame();
 	const frame_parameters default_val = parameters_.parameters(get_animation_time() -get_begin_time());
-	return current_frame.get_overlaped_hex(get_current_frame_time(),src,dst,default_val,value,primary);
+	return current_frame.get_overlaped_hex(get_current_frame_time(),src,dst,default_val,value);
 
 }
 
