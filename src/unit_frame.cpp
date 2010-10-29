@@ -160,8 +160,8 @@ frame_parameters::frame_parameters() :
 	y(0),
 	directional_x(0),
 	directional_y(0),
-	auto_vflip(false),
-	auto_hflip(true),
+	auto_vflip(t_unset),
+	auto_hflip(t_unset),
 	primary_frame(t_unset),
 	drawing_layer(display::LAYER_UNIT_DEFAULT - display::LAYER_UNIT_FIRST)
 {}
@@ -187,8 +187,8 @@ frame_builder::frame_builder() :
 	y_(""),
 	directional_x_(""),
 	directional_y_(""),
-	auto_vflip_(false),
-	auto_hflip_(false),
+	auto_vflip_(t_unset),
+	auto_hflip_(t_unset),
 	primary_frame_(t_unset),
 	drawing_layer_(str_cast(display::LAYER_UNIT_DEFAULT - display::LAYER_UNIT_FIRST))
 {}
@@ -214,10 +214,22 @@ frame_builder::frame_builder(const config& cfg,const std::string& frame_string) 
 	y_(cfg[frame_string + "y"]),
 	directional_x_(cfg[frame_string + "directional_x"]),
 	directional_y_(cfg[frame_string + "directional_y"]),
-	auto_vflip_(cfg[frame_string + "auto_vflip"].to_bool(frame_string.empty()?false:true)),
-	auto_hflip_(cfg[frame_string + "auto_hflip"].to_bool(true)),
 	drawing_layer_(cfg[frame_string + "layer"])
 {
+	if(!cfg.has_attribute(frame_string + "auto_vflip")) {
+		auto_vflip_ = t_unset;
+	} else if(cfg[frame_string + "auto_vflip"].to_bool()) {
+		auto_vflip_ = t_true;
+	} else {
+		auto_vflip_ = t_false;
+	}
+	if(!cfg.has_attribute(frame_string + "auto_hflip")) {
+		auto_hflip_ = t_unset;
+	} else if(cfg[frame_string + "auto_hflip"].to_bool()) {
+		auto_hflip_ = t_true;
+	} else {
+		auto_hflip_ = t_false;
+	}
 	if(!cfg.has_attribute(frame_string + "primary")) {
 		primary_frame_ = t_unset;
 	} else if(cfg[frame_string + "primary"].to_bool()) {
@@ -323,12 +335,14 @@ frame_builder & frame_builder::directional_y(const std::string& directional_y)
 }
 frame_builder & frame_builder::auto_vflip(const bool auto_vflip)
 {
-	auto_vflip_=auto_vflip;
+	if(auto_vflip) auto_vflip_ = t_true;
+	else auto_vflip_ = t_false;
 	return *this;
 }
 frame_builder & frame_builder::auto_hflip(const bool auto_hflip)
 {
-	auto_hflip_=auto_hflip;
+	if(auto_hflip) auto_hflip_ = t_true;
+	else auto_hflip_ = t_false;
 	return *this;
 }
 frame_builder & frame_builder::primary_frame(const bool primary_frame)
@@ -801,11 +815,17 @@ const frame_parameters unit_frame::merge_parameters(int current_time,const frame
 
 	/** the engine provide us with default value to compare with, we update if different */
 	result.auto_hflip = engine_val.auto_hflip;
-	if(animation_val.auto_hflip != engine_val.auto_hflip) result.auto_hflip = animation_val.auto_hflip;
-	if(current_val.auto_hflip != engine_val.auto_hflip) result.auto_hflip = current_val.auto_hflip;
+	if(animation_val.auto_hflip != t_unset) result.auto_hflip = animation_val.auto_hflip;
+	if(current_val.auto_hflip != t_unset) result.auto_hflip = current_val.auto_hflip;
+	if(result.auto_hflip == t_unset) result.auto_hflip = t_true;
+	
 	result.auto_vflip = engine_val.auto_vflip;
-	if(animation_val.auto_vflip != engine_val.auto_vflip) result.auto_vflip = animation_val.auto_vflip;
-	if(current_val.auto_vflip != engine_val.auto_vflip) result.auto_vflip = current_val.auto_vflip;
+	if(animation_val.auto_vflip != t_unset) result.auto_vflip = animation_val.auto_vflip;
+	if(current_val.auto_vflip != t_unset) result.auto_vflip = current_val.auto_vflip;
+	if(result.auto_vflip == t_unset) {
+		if(primary) result.auto_vflip=t_false;
+		else result.auto_vflip = t_true;
+	}
 #ifdef LOW_MEM
 	if(primary) {
 		result.image= engine_val.image;

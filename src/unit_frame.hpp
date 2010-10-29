@@ -79,8 +79,8 @@ class frame_parameters{
 	int y;
 	int directional_x;
 	int directional_y;
-	bool auto_vflip;
-	bool auto_hflip;
+	tristate auto_vflip;
+	tristate auto_hflip;
 	tristate primary_frame;
 	int drawing_layer;
 } ;
@@ -134,8 +134,8 @@ class frame_builder {
 		std::string y_;
 		std::string directional_x_;
 		std::string directional_y_;
-		bool auto_vflip_;
-		bool auto_hflip_;
+		tristate auto_vflip_;
+		tristate auto_hflip_;
 		tristate primary_frame_;
 		std::string drawing_layer_;
 };
@@ -181,8 +181,8 @@ class frame_parsed_parameters {
 		progressive_int y_;
 		progressive_int directional_x_;
 		progressive_int directional_y_;
-		bool auto_vflip_;
-		bool auto_hflip_;
+		tristate auto_vflip_;
+		tristate auto_hflip_;
 		tristate primary_frame_;
 		progressive_int drawing_layer_;
 };
