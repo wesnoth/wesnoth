@@ -578,6 +578,7 @@ unit_type::unit_type(const unit_type& o) :
 	hide_help_(o.hide_help_),
 	advances_to_(o.advances_to_),
 	experience_needed_(o.experience_needed_),
+	in_advancefrom_(o.in_advancefrom_),
 	alignment_(o.alignment_),
 	movementType_(o.movementType_),
 	possibleTraits_(o.possibleTraits_),
@@ -623,6 +624,7 @@ unit_type::unit_type(config &cfg) :
 	hide_help_(false),
 	advances_to_(),
 	experience_needed_(0),
+	in_advancefrom_(false),
 	alignment_(),
 	movementType_(),
 	possibleTraits_(),
@@ -1025,9 +1027,17 @@ void unit_type::add_advancement(const unit_type &to_unit,int xp)
 		return;
 	}
 
-	if( xp > 0 && experience_needed_ > xp){
-        DBG_UT << "Lowering experience_needed from " << experience_needed_ << " to " << xp << " due to [advancefrom] of " << to_id << "\n";
-		experience_needed_ = xp;
+	if(xp > 0) {
+		//xp is 0 in case experience= wasn't given.
+		if(!in_advancefrom_) {
+			//This function is called for and only for an [advancefrom] tag in a unit_type referencing this unit_type.
+			in_advancefrom_ = true;
+			experience_needed_ = xp;
+		}
+		else if(experience_needed_ > xp) {
+			experience_needed_ = xp;
+		}
+		DBG_UT << "Changing experience_needed from " << experience_needed_ << " to " << xp << " due to [advancefrom] of " << to_id << "\n";
 	}
 
 	// Add advancements to gendered subtypes, if supported by to_unit

@@ -326,6 +326,7 @@ private:
 
 	std::vector<std::string> advances_to_;
 	int experience_needed_;
+	bool in_advancefrom_;
 
 
 	ALIGNMENT alignment_;
