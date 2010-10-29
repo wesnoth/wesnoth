@@ -89,6 +89,9 @@ Version 1.9.1+svn:
    * New key 'random_start' (default = yes) in [terrain_graphics][image]
      allowing to disable random animation shift in animated terrains.
    * Added a new key "primary" to animation to separate frames that should be treated as primary from frames that shouldn't
+   * Made it so that if several [advancefrom] tags for a certain base unit are encountered,
+      the lowest experience= keys from these is chosen (so if there's only one [advancefrom] referencing this base unit
+      the experience needed can be increased).
  * Miscellaneous and bugfixes:
    * Changed: Lowered severity of some gui2 timer log messages.
    * Units created in debug mode now play their recruit animation (FR #16766).
