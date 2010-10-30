@@ -50,6 +50,7 @@
 #include "persist_var.hpp"
 #include "whiteboard/manager.hpp"
 
+#include <boost/scoped_array.hpp>
 #include <boost/scoped_ptr.hpp>
 #include <boost/lexical_cast.hpp>
 #include <algorithm>
@@ -1040,7 +1041,8 @@ WML_HANDLER_FUNCTION(move_units_fake, /*event_info*/, cfg)
 
 	const vconfig::child_list unit_cfgs = cfg.get_children("fake_unit");
 	size_t num_units = unit_cfgs.size();
-	util::unique_ptr<unit> units[num_units];
+	boost::scoped_array<util::unique_ptr<unit> > units(
+		new util::unique_ptr<unit>[num_units]);
 	std::vector<std::vector<map_location> > paths;
 	paths.reserve(num_units);
 	game_display* disp = game_display::get_singleton();
