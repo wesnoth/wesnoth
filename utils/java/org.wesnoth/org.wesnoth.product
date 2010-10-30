@@ -25,9 +25,11 @@
       startupProgressRect="0,280,455,15"
       startupMessageRect="19,227,200,15"
       startupForegroundColor="000000" />
-   <launcher>
+   <launcher name="wesnoth_umc">
+      <linux icon="/org.wesnoth/icons/wesnoth_editor-icon.xpm"/>
       <solaris/>
-      <win useIco="false">
+      <win useIco="true">
+         <ico path="/org.wesnoth/icons/wesnoth_editor-icon.ico"/>
          <bmp/>
       </win>
    </launcher>
