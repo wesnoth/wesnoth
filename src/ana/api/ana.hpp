@@ -70,13 +70,11 @@
 #ifndef ANA_HPP
 #define ANA_HPP
 
-#define ANA_DETAIL_INTERNAL_HPP
 #include "common.hpp"               //Main definitions
 #include "timers.hpp"               //Timer related
 #include "stats.hpp"                //Network statistics
 #include "predicates.hpp"           //Client predicates, used for conditional sending
 #include "binary_streams.hpp"       //For serialization
-#undef  ANA_DETAIL_INTERNAL_HPP
 
 /** @namespace ana
  *

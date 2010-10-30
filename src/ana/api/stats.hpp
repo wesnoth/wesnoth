@@ -35,10 +35,6 @@
 
 #include "timers.hpp"
 
-#ifndef ANA_DETAIL_INTERNAL_HPP
-#error "Private file, do not include directly."
-#endif
-
 namespace ana
 {
     /** Type of collected network statistics. */
