@@ -1154,14 +1154,14 @@ bool game_controller::new_campaign()
 		state_.classification().scenario = campaign["first_scenario"].str();
 	else
 	{
-		config scenario;
+		bool found = false;
 		foreach(const config &sc, campaign.child_range("scenario"))
 		{
 			if (sc["id"] == jump_to_campaign_.scenario_id_)
-				scenario = sc;
+				found = true;
 		}
 
-		if (scenario == NULL)
+		if (!found)
 		{
 			std::cerr<<"No such scenario id to jump to: ["<<jump_to_campaign_.scenario_id_<<"]\n";
 			return false;
