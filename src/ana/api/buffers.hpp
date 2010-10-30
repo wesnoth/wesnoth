@@ -30,16 +30,14 @@
  *
  */
 
-#include <cstring>
-
-#include <boost/noncopyable.hpp>
-
 #ifndef ANA_BUFFERS_HPP
 #define ANA_BUFFERS_HPP
 
-#ifndef ANA_DETAIL_INTERNAL_HPP
-#error "Private file, do not include directly."
-#endif
+#include <cstring>
+#include <boost/noncopyable.hpp>
+#include <boost/asio.hpp>
+
+#include "ana/api/common.hpp"
 
 namespace ana
 {
