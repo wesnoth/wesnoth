@@ -26,7 +26,6 @@ std::string get_salt(const std::string& hash);
 bool is_valid_hash(const std::string& hash);
 std::string encode_hash(unsigned char* input);
 std::string create_hash(const std::string& password, const std::string& salt, int iteration_count =10);
-bool password_matches_hash(const std::string& password, const std::string& hash);
 
 } // namespace util
 
