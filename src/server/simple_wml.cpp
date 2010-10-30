@@ -387,11 +387,6 @@ node& node::set_attr_dup(const char* key, const string_span& value)
 	return set_attr(key, buf);
 }
 
-node& node::set_attr_dup_key_and_value(const char* key, const char* value)
-{
-	return set_attr(doc_->dup_string(key), doc_->dup_string(value));
-}
-
 node& node::set_attr_int(const char* key, int value)
 {
 	char buf[64];
