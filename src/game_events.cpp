@@ -52,7 +52,6 @@
 
 #include <boost/scoped_ptr.hpp>
 #include <boost/lexical_cast.hpp>
-#include <boost/ptr_container/ptr_vector.hpp>
 #include <algorithm>
 #include <iomanip>
 #include <iostream>
@@ -931,7 +930,7 @@ WML_HANDLER_FUNCTION(modify_turns, /*event_info*/, cfg)
 
 namespace {
 
-std::auto_ptr<unit> create_fake_unit(const vconfig& cfg)
+unit *create_fake_unit(const vconfig& cfg)
 {
 	std::string type = cfg["type"];
 	std::string variation = cfg["variation"];
@@ -941,8 +940,8 @@ std::auto_ptr<unit> create_fake_unit(const vconfig& cfg)
 
 	unit_race::GENDER gender = string_gender(cfg["gender"]);
 	const unit_type *ut = unit_types.find(type);
-	if (!ut) return std::auto_ptr<unit>();
-	std::auto_ptr<unit> fake_unit(new unit(ut, side_num + 1, false, gender));
+	if (!ut) return NULL;
+	unit *fake_unit = new unit(ut, side_num + 1, false, gender);
 
 	if(!variation.empty()) {
 		config mod;
@@ -1020,7 +1019,7 @@ std::vector<map_location> fake_unit_path(const unit& fake_unit, const std::vecto
 // that is just moving for the visual effect
 WML_HANDLER_FUNCTION(move_unit_fake, /*event_info*/, cfg)
 {
-	std::auto_ptr<unit> dummy_unit = create_fake_unit(cfg);
+	util::unique_ptr<unit> dummy_unit(create_fake_unit(cfg));
 	if(!dummy_unit.get())
 		return;
 
@@ -1041,7 +1040,7 @@ WML_HANDLER_FUNCTION(move_units_fake, /*event_info*/, cfg)
 
 	const vconfig::child_list unit_cfgs = cfg.get_children("fake_unit");
 	size_t num_units = unit_cfgs.size();
-	boost::ptr_vector<unit> units(num_units);
+	util::unique_ptr<unit> units[num_units];
 	std::vector<std::vector<map_location> > paths;
 	paths.reserve(num_units);
 	game_display* disp = game_display::get_singleton();
@@ -1054,15 +1053,16 @@ WML_HANDLER_FUNCTION(move_units_fake, /*event_info*/, cfg)
 		const std::vector<std::string> xvals = utils::split(config["x"]);
 		const std::vector<std::string> yvals = utils::split(config["y"]);
 		int skip_steps = config["skip_steps"];
-		units.push_back(create_fake_unit(config));
-		paths.push_back(fake_unit_path(units.back(), xvals, yvals));
+		unit *u = create_fake_unit(config);
+		units[paths.size()].reset(u);
+		paths.push_back(fake_unit_path(*u, xvals, yvals));
 		if(skip_steps > 0)
 			paths.back().insert(paths.back().begin(), skip_steps, paths.back().front());
 		longest_path = std::max(longest_path, paths.back().size());
 		DBG_NG << "Path " << paths.size() - 1 << " has length " << paths.back().size() << '\n';
 
-		units.back().set_location(paths.back().front());
-		disp->place_temporary_unit(&units.back());
+		u->set_location(paths.back().front());
+		disp->place_temporary_unit(u);
 	}
 
 	LOG_NG << "Units placed, longest path is " << longest_path << " long\n";
@@ -1077,16 +1077,17 @@ WML_HANDLER_FUNCTION(move_units_fake, /*event_info*/, cfg)
 			DBG_NG << "Moving unit " << un << ", doing step " << step << '\n';
 			path_step[0] = paths[un][step - 1];
 			path_step[1] = paths[un][step];
-			unit_display::move_unit(path_step, units[un], *resources::teams);
-			units[un].set_location(path_step[1]);
-			units[un].set_standing();
+			unit_display::move_unit(path_step, *units[un], *resources::teams);
+			units[un]->set_location(path_step[1]);
+			units[un]->set_standing();
 		}
 	}
 
 	LOG_NG << "Units moved\n";
 
-	foreach(unit& u, units)
-		disp->remove_temporary_unit(&u);
+	for(size_t un = 0; un < num_units; ++un) {
+		disp->remove_temporary_unit(units[un].get());
+	}
 
 	LOG_NG << "Units removed\n";
 }
