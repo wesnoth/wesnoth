@@ -33,9 +33,9 @@
 #ifndef ANA_COMMON_HPP
 #define ANA_COMMON_HPP
 
-#ifndef ANA_DETAIL_INTERNAL_HPP
-#error "Private file, do not include directly."
-#endif
+#include <boost/asio/detail/socket_ops.hpp>
+#include <boost/cstdint.hpp>
+#include <boost/system/error_code.hpp>
 
 namespace ana
 {
