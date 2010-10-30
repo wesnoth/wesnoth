@@ -41,7 +41,7 @@
 #include <set>
 #include <vector>
 
-#include "ana/api/common.hpp"
+#include "common.hpp"
 
 namespace ana
 {

@@ -37,7 +37,7 @@
 #include <boost/noncopyable.hpp>
 #include <boost/asio.hpp>
 
-#include "ana/api/common.hpp"
+#include "common.hpp"
 
 namespace ana
 {

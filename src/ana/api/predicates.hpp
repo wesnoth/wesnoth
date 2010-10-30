@@ -33,7 +33,7 @@
 #ifndef ANA_PREDICATES_HPP
 #define ANA_PREDICATES_HPP
 
-#include "ana/api/common.hpp"
+#include "common.hpp"
 
 namespace ana
 {
