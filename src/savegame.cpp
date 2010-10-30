@@ -856,7 +856,7 @@ scoped_ostream savegame::open_save_game(const std::string &label)
 void savegame::extract_summary_data_from_save(config& out)
 {
 	const bool has_replay = gamestate_.replay_data.empty() == false;
-	const bool has_snapshot = gamestate_.snapshot.child("side");
+	bool has_snapshot(gamestate_.snapshot.child("side"));
 
 	out["replay"] = has_replay;
 	out["snapshot"] = has_snapshot;

@@ -73,7 +73,7 @@ bool persist_file_context::clear_var(const std::string &global, bool immediate)
 		root_node_.init();
 	}
 	config &cfg = active_->cfg_.child_or_add("variables");
-	bool ret = cfg;
+	bool ret(cfg);
 	if (ret) {
 		bool exists = cfg.has_attribute(global);
 		if (!exists) {
