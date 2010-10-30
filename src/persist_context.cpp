@@ -28,11 +28,6 @@ config pack_scalar(const std::string &name, const t_string &val)
 	cfg[name] = val;
 	return cfg;
 }
-persist_context &persist_context::add_child(const std::string& /*key*/)  {
-//	children_[key] = new persist_context(namespace_.namespace_ + "." + key,this);
-//	children_[key]->cfg_.child_or_add(key);
-	return *this;//(children_[key]);
-}
 
 static std::string get_persist_cfg_name(const std::string &name_space) {
 	return (get_dir(get_user_data_dir() + "/persist/") + name_space + ".cfg");

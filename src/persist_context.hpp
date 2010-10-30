@@ -187,7 +187,6 @@ protected:
 		, in_transaction_(false)
 	{};
 
-	persist_context &add_child(const std::string &key);
 public:
 	virtual bool clear_var(const std::string &, bool immediate = false) = 0;
 	virtual config get_var(const std::string &) const = 0;
