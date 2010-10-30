@@ -325,7 +325,7 @@ void create::process_event()
 	if(launch_game_.pressed() || maps_menu_.double_clicked()) {
 		// check if the map is valid
 		const std::string& map_data = parameters_.scenario_data["map_data"];
-		boost::scoped_ptr<gamemap> map;
+		util::unique_ptr<gamemap> map;
 		try {
 			map.reset(new gamemap(game_config(), map_data));
 		} catch(incorrect_map_format_error&) {
@@ -503,9 +503,9 @@ void create::process_event()
 
 		const std::string& map_data = parameters_.scenario_data["map_data"];
 
-		std::auto_ptr<gamemap> map(NULL);
+		util::unique_ptr<gamemap> map;
 		try {
-			map = std::auto_ptr<gamemap>(new gamemap(game_config(), map_data));
+			map.reset(new gamemap(game_config(), map_data));
 		} catch(incorrect_map_format_error& e) {
 			ERR_CF << "map could not be loaded: " << e.message << "\n";
 
