@@ -33,9 +33,7 @@
 #ifndef ANA_PREDICATES_HPP
 #define ANA_PREDICATES_HPP
 
-#ifndef ANA_DETAIL_INTERNAL_HPP
-#error "Private file, do not include directly."
-#endif
+#include "ana/api/common.hpp"
 
 namespace ana
 {
