@@ -732,7 +732,6 @@ namespace {
 			std::map<std::string, version_info> remote_version_map;
 			foreach (const config &remote_addon, remote_addons_list)
 			{
-				if(remote_addon == NULL) continue; // shouldn't happen...
 				const std::string& name = remote_addon["name"];
 				if (std::find(dependencies.begin(), dependencies.end(), name) != dependencies.end()) {
 					const std::string& version = remote_addon["version"];
@@ -886,7 +885,6 @@ namespace {
 		std::map<std::string, version_info> remote_version_map;
 		foreach (const config &remote_addon, remote_addons_list)
 		{
-			if(remote_addon == NULL) continue; // shouldn't happen...
 			const std::string& name = remote_addon["name"];
 			const std::string& version = remote_addon["version"];
 			try {
