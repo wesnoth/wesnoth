@@ -716,7 +716,7 @@ void editor_controller::load_map(const std::string& filename, bool new_context)
 	if (new_context && check_switch_open_map(filename)) return;
 	LOG_ED << "Load map: " << filename << (new_context ? " (new)" : " (same)") << "\n";
 	try {
-		std::auto_ptr<map_context> mc(new map_context(game_config_, filename));
+		util::unique_ptr<map_context> mc(new map_context(game_config_, filename));
 		if (mc->get_filename() != filename) {
 			if (new_context && check_switch_open_map(mc->get_filename())) return;
 		}
