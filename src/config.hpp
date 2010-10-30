@@ -38,6 +38,7 @@
 
 #include "game_errors.hpp"
 #include "tstring.hpp"
+#include "wesconfig.h"
 
 class config;
 class vconfig;
@@ -64,6 +65,7 @@ class config
 	 */
 	void check_valid(const config &cfg) const;
 
+#ifndef HAVE_CXX0X
 	struct safe_bool_impl { void nonnull() {} };
 	/**
 	 * Used as the return type of the conversion operator for boolean contexts.
@@ -71,6 +73,7 @@ class config
 	 * conversion (C legacy): cfg["abc"] -> "abc"[bool(cfg)] -> 'b'
 	 */
 	typedef void (safe_bool_impl::*safe_bool)();
+#endif
 
 public:
 	// Create an empty node.
@@ -87,8 +90,13 @@ public:
 
 	config& operator=(const config& cfg);
 
+#ifdef HAVE_CXX0X
+	explicit operator bool() const
+	{ return this != &invalid; }
+#else
 	operator safe_bool() const
 	{ return this != &invalid ? &safe_bool_impl::nonnull : 0; }
+#endif
 
 	typedef std::vector<config*> child_list;
 	typedef std::map<std::string,child_list> child_map;
