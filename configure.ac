@@ -872,6 +872,21 @@ fi
 AC_MSG_CHECKING([for notifications])
 AC_MSG_RESULT([$found_notifications])
 
+#######################################################################
+# Check for C++0x features.                                           #
+#######################################################################
+
+AC_LANG([C++])
+AC_MSG_CHECKING([for C++0x features])
+AC_COMPILE_IFELSE([AC_LANG_SOURCE([
+struct A {
+	explicit operator bool() const;
+	A(A &&);
+};
+	])],
+	[AC_MSG_RESULT(yes)
+	AC_DEFINE([HAVE_CXX0X],,[Define if your compiler supports some C++0x features.])],
+	[AC_MSG_RESULT(no)])
 
 #######################################################################
 # Check for boost iostreams                                           #
