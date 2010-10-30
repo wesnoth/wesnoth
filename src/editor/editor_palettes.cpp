@@ -293,13 +293,6 @@ void terrain_palette::swap()
 }
 
 
-/** After the language is changed, the selected terrains needs an update. */
-void terrain_palette::update_selected_terrains()
-{
-	set_dirty();
-	update_report();
-}
-
 std::string terrain_palette::get_terrain_string(const t_translation::t_terrain t)
 {
 	std::stringstream str;
