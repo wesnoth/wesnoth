@@ -584,8 +584,7 @@ unit_type::unit_type(const unit_type& o) :
 	possibleTraits_(o.possibleTraits_),
 	genders_(o.genders_),
 	animations_(o.animations_),
-    build_status_(o.build_status_),
-	portraits_(o.portraits_)
+	build_status_(o.build_status_)
 {
 	gender_types_[0] = o.gender_types_[0] != NULL ? new unit_type(*o.gender_types_[0]) : NULL;
 	gender_types_[1] = o.gender_types_[1] != NULL ? new unit_type(*o.gender_types_[1]) : NULL;
@@ -630,8 +629,7 @@ unit_type::unit_type(config &cfg) :
 	possibleTraits_(),
 	genders_(),
 	animations_(),
-	build_status_(NOT_BUILT),
-	portraits_()
+	build_status_(NOT_BUILT)
 {
 	gender_types_[0] = NULL;
 	gender_types_[1] = NULL;
@@ -738,10 +736,6 @@ void unit_type::build_full(const movement_type_map &mv_types,
 	flag_rgb_ = cfg["flag_rgb"].str();
 	game_config::add_color_info(cfg);
 
-
-	foreach (const config &portrait, cfg_.child_range("portrait")) {
-		portraits_.push_back(tportrait(portrait));
-	}
 
 	// Deprecation messages, only seen when unit is parsed for the first time.
 

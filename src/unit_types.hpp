@@ -16,7 +16,6 @@
 #define UNIT_TYPES_H_INCLUDED
 
 #include "unit_animation.hpp"
-#include "portrait.hpp"
 #include "race.hpp"
 
 class gamemap;
@@ -284,8 +283,6 @@ public:
 
     BUILD_STATUS build_status() const { return build_status_; }
 
-	const std::vector<tportrait>& portraits() const { return portraits_; }
-
 	const config &get_cfg() const { return cfg_; }
 
 private:
@@ -341,9 +338,6 @@ private:
 	mutable std::vector<unit_animation> animations_;
 
 	BUILD_STATUS build_status_;
-
-	/** List with the portraits available for the unit. */
-	std::vector<tportrait> portraits_;
 };
 
 class unit_type_data
