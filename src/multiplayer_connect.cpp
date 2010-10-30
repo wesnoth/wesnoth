@@ -1741,7 +1741,7 @@ void connect::update_playerlist_state(bool silent)
 
 	// If the "gamelist_" variable has users, use it.
 	// Else, extracts the user list from the actual player list.
-	if (gamelist().child("user") != NULL) {
+	if (gamelist().child("user")) {
 		ui::gamelist_updated(silent);
 	} else {
 		// Updates the player list

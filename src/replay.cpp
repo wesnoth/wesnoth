@@ -804,8 +804,7 @@ bool do_replay_handle(int side_num, const std::string &do_untill)
 		}
 
 		// We return if caller wants it for this tag
-		if (!do_untill.empty()
-			&& cfg->child(do_untill) != NULL)
+		if (!do_untill.empty() && cfg->child(do_untill))
 		{
 			get_replay_source().revert_action();
 			return false;

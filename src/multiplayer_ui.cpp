@@ -142,7 +142,7 @@ void level_to_gamestate(config& level, game_state& state)
 	//It might be a MP campaign start-of-scenario save
 	//In this case, it's not entirely a new game, but not a save, either
 	//Check whether it is no savegame and the starting_pos contains [player] information
-	const bool start_of_scenario = (!saved_game && (state.starting_pos.child("player") != NULL));
+	bool start_of_scenario = !saved_game && state.starting_pos.child("player");
 
 	//If we start a fresh game, there won't be any snapshot information. If however this
 	//is a savegame, we got a valid snapshot here.

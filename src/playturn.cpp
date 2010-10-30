@@ -106,7 +106,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 		resources::screen->remove_observer(ob["name"]);
 	}
 
-	if(cfg.child("leave_game") != NULL) {
+	if (cfg.child("leave_game")) {
 		throw network::error("");
 	}
 
