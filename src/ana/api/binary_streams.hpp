@@ -36,9 +36,12 @@
 #ifndef BINARY_STREAMS_HPP
 #define BINARY_STREAMS_HPP
 
-#include <string>
-#include <assert.h>
+#include <list>
+#include <map>
 #include <set>
+#include <vector>
+
+#include "ana/api/common.hpp"
 
 namespace ana
 {
