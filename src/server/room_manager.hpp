@@ -51,7 +51,6 @@ public:
 	};
 
 	static PRIVILEGE_POLICY pp_from_string(const std::string& str);
-	static const char* string_from_pp(PRIVILEGE_POLICY pp);
 
 	/**
 	 * Load settings from the main config file

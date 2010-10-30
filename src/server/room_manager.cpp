@@ -77,17 +77,6 @@ room_manager::PRIVILEGE_POLICY room_manager::pp_from_string(const std::string& s
 	return PP_COUNT;
 }
 
-const char* room_manager::string_from_pp(room_manager::PRIVILEGE_POLICY pp)
-{
-	switch (pp) {
-		case PP_EVERYONE: return "everyone";
-		case PP_REGISTERED: return "registered";
-		case PP_ADMINS: return "admins";
-		case PP_NOBODY: return "nobody";
-		default: return "error";
-	}
-}
-
 void room_manager::load_config(const config& cfg)
 {
 	filename_ = cfg["room_save_file"].str();
