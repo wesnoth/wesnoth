@@ -2839,12 +2839,10 @@ std::string get_image(const vconfig& cfg, unit_map::iterator speaker)
 	std::string image = cfg["image"];
 	if (image.empty() && speaker != resources::units->end())
 	{
-		// At the moment we use a hack if the image in portrait has
-		// an image with the same name in the directory transparent
-		// that image is used.
 		image = speaker->second.profile();
-		const size_t offset = image.find_last_of('/');
-		if(offset != std::string::npos) {
+		std::string::size_type offset = image.find_last_of('~');
+		offset = image.find_last_of('/', offset);
+		if (offset != std::string::npos) {
 			image.insert(offset, "/transparent");
 		} else {
 			image = "transparent/" + image;
@@ -2860,13 +2858,12 @@ std::string get_image(const vconfig& cfg, unit_map::iterator speaker)
 			}
 #endif
 		}
-
-	} else if(!image.empty()) {
-		// At the moment we use a hack if the image in portrait has
-		// an image with the same name in the directory transparent
-		// that image is used.
-		const size_t offset = image.find_last_of('/');
-		if(offset != std::string::npos) {
+	}
+	else if (!image.empty())
+	{
+		std::string::size_type offset = image.find_last_of('~');
+		offset = image.find_last_of('/', offset);
+		if (offset != std::string::npos) {
 			image.insert(offset, "/transparent");
 		} else {
 			image = "transparent/" + image;
