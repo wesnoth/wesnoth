@@ -219,27 +219,6 @@ room* room_manager::get_create_room(const std::string &name, network::connection
 	return r;
 }
 
-void room_manager::delete_room(const std::string &name)
-{
-	room* r = get_room(name);
-	if (r == NULL) {
-		DBG_LOBBY << "Requested deletion of nonexistant room '" << name << "'\n";
-		return;
-	}
-	simple_wml::document doc;
-	simple_wml::node& exit = doc.root().add_child("exit_room");
-	exit.set_attr_dup("room", name.c_str());
-	exit.set_attr("reason", "room deleted");
-	r->send_data(doc);
-	if (r->persistent()) {
-		dirty_ = true;
-	}
-	rooms_by_name_.erase(name);
-	foreach (network::connection p, r->members()) {
-		rooms_by_player_[p].erase(r);
-	}
-}
-
 void room_manager::enter_lobby(network::connection player)
 {
 	lobby_->add_player(player);

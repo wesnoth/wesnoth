@@ -106,11 +106,6 @@ public:
 	room* get_create_room(const std::string& name, network::connection player);
 
 	/**
-	 * Delete a room. Players still in the room are kicked from it.
-	 */
-	void delete_room(const std::string& name);
-
-	/**
 	 * @return true iif the player is in the lobby
 	 */
 	bool in_lobby(network::connection player) const;
