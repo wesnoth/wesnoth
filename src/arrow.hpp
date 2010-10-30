@@ -64,8 +64,6 @@ public:
 	static std::string const STYLE_HIGHLIGHTED;
 	static std::string const STYLE_FOCUS;
 
-	void set_layer(display::tdrawing_layer const& layer);
-
 	arrow_path_t const& get_path() const;
 	arrow_path_t const& get_previous_path() const;
 
