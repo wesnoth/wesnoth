@@ -21,7 +21,6 @@
 namespace preferences {
 
 	bool lobby_sounds();
-	void set_lobby_sounds(bool v);
 
 	bool sort_list();
 	void _set_sort_list(bool show);

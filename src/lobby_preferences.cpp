@@ -25,11 +25,6 @@ bool lobby_sounds()
 	return preferences::get("lobby_sounds", true);
 }
 
-void set_lobby_sounds(bool v)
-{
-	preferences::set("lobby_sounds", v);
-}
-
 bool sort_list()
 {
 	return preferences::get("sort_list", true);
