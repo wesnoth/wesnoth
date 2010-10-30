@@ -56,8 +56,6 @@ namespace preferences {
 	void add_completed_campaign(const std::string& campaign_id);
 	void remove_friend(const std::string& nick);
 	void remove_ignore(const std::string& nick);
-	void clear_friends();
-	void clear_ignores();
 	bool is_friend(const std::string& nick);
 	bool is_ignored(const std::string& nick);
 	bool is_campaign_completed(const std::string& campaign_id);

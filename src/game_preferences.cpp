@@ -208,14 +208,6 @@ void remove_ignore(const std::string& nick) {
 	}
 }
 
-void clear_friends() {
-	preferences::set("friends", "");
-}
-
-void clear_ignores() {
-	preferences::set("ignores", "");
-}
-
 bool is_friend(const std::string& nick) {
 	initialize_friends();
 	return friends.find(nick) != friends.end();
