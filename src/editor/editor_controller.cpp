@@ -372,7 +372,7 @@ void editor_controller::switch_context(const int index)
 
 void editor_controller::replace_map_context(map_context* new_mc)
 {
-	std::auto_ptr<map_context> del(map_contexts_[current_context_index_]);
+	boost::scoped_ptr<map_context> del(map_contexts_[current_context_index_]);
 	map_context_refresher mcr(*this, *new_mc);
 	map_contexts_[current_context_index_] = new_mc;
 }
@@ -1287,7 +1287,7 @@ mouse_action* editor_controller::get_mouse_action()
 void editor_controller::perform_delete(editor_action* action)
 {
 	if (action) {
-		std::auto_ptr<editor_action> action_auto(action);
+		boost::scoped_ptr<editor_action> action_auto(action);
 		get_map_context().perform_action(*action);
 	}
 }
@@ -1295,7 +1295,7 @@ void editor_controller::perform_delete(editor_action* action)
 void editor_controller::perform_refresh_delete(editor_action* action, bool drag_part /* =false */)
 {
 	if (action) {
-		std::auto_ptr<editor_action> action_auto(action);
+		boost::scoped_ptr<editor_action> action_auto(action);
 		perform_refresh(*action, drag_part);
 	}
 }
@@ -1377,7 +1377,7 @@ void editor_controller::mouse_motion(int x, int y, const bool /*browse*/, bool u
 		//anything to the undo stack (hence a different
 		//perform_ call)
 		if (a != NULL) {
-			std::auto_ptr<editor_action> aa(a);
+			boost::scoped_ptr<editor_action> aa(a);
 			if (partial) {
 				get_map_context().perform_partial_action(*a);
 			} else {
