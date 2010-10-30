@@ -81,12 +81,6 @@ bool playerlist_group_players()
 	return preferences::get("lobby_playerlist_group_players", true);
 }
 
-void set_playerlist_group_players(bool v)
-{
-	return preferences::set("lobby_playerlist_group_players", v);
-}
-
-
 bool filter_lobby()
 {
 	return preferences::get("filter_lobby", false);
