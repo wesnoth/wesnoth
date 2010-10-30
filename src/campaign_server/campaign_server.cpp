@@ -186,9 +186,7 @@ namespace {
 		signal(SIGINT, exit_sigint);
 		signal(SIGTERM, exit_sigterm);
 
-		if(cfg_.child("campaigns") == NULL) {
-			cfg_.add_child("campaigns");
-		}
+		cfg_.child_or_add("campaigns");
 
 		// load the hooks
 		hooks_.insert(std::make_pair(std::string("hook_post_upload"), cfg_["hook_post_upload"]));
