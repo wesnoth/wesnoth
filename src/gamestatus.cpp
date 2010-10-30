@@ -715,7 +715,6 @@ protected:
 				}
 			} else {
 				//at the start of scenario, get the persistence information from starting_pos
-				assert(starting_pos_ != NULL);
 				if (const config &c =  starting_pos_.find_child("player","save_id",save_id_))  {
 					player_cfg_ = &c;
 				} else if (const config &c =  starting_pos_.find_child("side","save_id",save_id_))  {
