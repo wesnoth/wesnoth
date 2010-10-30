@@ -319,12 +319,6 @@ unsigned int get_ping_timeout()
 	return lexical_cast_default<unsigned>(preferences::get("ping_timeout"), 0);
 }
 
-void set_ping_timeout(unsigned int timeout)
-{
-	network::ping_timeout = timeout;
-	preferences::set("ping_timeout", int(timeout));
-}
-
 std::string campaign_server()
 {
 	if(!preferences::get("campaign_server").empty()) {

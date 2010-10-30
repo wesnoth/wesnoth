@@ -66,7 +66,6 @@ namespace preferences {
 	void set_network_host(const std::string& host);
 
 	unsigned int get_ping_timeout();
-	void set_ping_timeout(unsigned int timeout);
 
 	std::string campaign_server();
 	void set_campaign_server(const std::string& host);
