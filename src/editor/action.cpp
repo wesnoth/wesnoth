@@ -18,11 +18,12 @@
  * Editor action classes
  */
 #define GETTEXT_DOMAIN "wesnoth-editor"
-#include "action.hpp"
-#include "map_context.hpp"
 
-#include "../foreach.hpp"
-#include "../gettext.hpp"
+#include "editor/action.hpp"
+#include "editor/map_context.hpp"
+#include "foreach.hpp"
+#include "gettext.hpp"
+#include "util.hpp"
 
 namespace editor {
 
@@ -58,7 +59,7 @@ std::string editor_action::get_description() const
 
 editor_action* editor_action::perform(map_context& mc) const
 {
-	std::auto_ptr<editor_action> undo(new editor_action_whole_map(mc.get_map()));
+	util::unique_ptr<editor_action> undo(new editor_action_whole_map(mc.get_map()));
 	perform_without_undo(mc);
 	return undo.release();
 }
@@ -131,7 +132,7 @@ editor_action* editor_action_chain::pop_first_action() {
 	return last;
 }
 editor_action_chain* editor_action_chain::perform(map_context& mc) const {
-	std::auto_ptr<editor_action_chain> undo(new editor_action_chain());
+	util::unique_ptr<editor_action_chain> undo(new editor_action_chain());
 	foreach (editor_action* a, actions_) {
 		if (a != NULL) {
 			undo->append_action(a->perform(mc));
@@ -165,7 +166,7 @@ void editor_action_paste::extend(const editor_map& map, const std::set<map_locat
 editor_action_paste* editor_action_paste::perform(map_context& mc) const
 {
 	map_fragment mf(mc.get_map(), paste_.get_offset_area(offset_));
-	std::auto_ptr<editor_action_paste> undo(new editor_action_paste(mf));
+	util::unique_ptr<editor_action_paste> undo(new editor_action_paste(mf));
 	perform_without_undo(mc);
 	return undo.release();
 }
@@ -184,7 +185,7 @@ editor_action_paint_area* editor_action_paint_area::clone() const
 editor_action_paste* editor_action_paint_area::perform(map_context& mc) const
 {
 	map_fragment mf(mc.get_map(), area_);
-	std::auto_ptr<editor_action_paste> undo(new editor_action_paste(mf));
+	util::unique_ptr<editor_action_paste> undo(new editor_action_paste(mf));
 	perform_without_undo(mc);
 	return undo.release();
 }
@@ -201,7 +202,7 @@ editor_action_fill* editor_action_fill::clone() const
 editor_action_paint_area* editor_action_fill::perform(map_context& mc) const
 {
 	std::set<map_location> to_fill = mc.get_map().get_contigious_terrain_tiles(loc_);
-	std::auto_ptr<editor_action_paint_area> undo(new editor_action_paint_area(to_fill, mc.get_map().get_terrain(loc_)));
+	util::unique_ptr<editor_action_paint_area> undo(new editor_action_paint_area(to_fill, mc.get_map().get_terrain(loc_)));
 	mc.draw_terrain(t_, to_fill, one_layer_);
 	mc.set_needs_terrain_rebuild();
 	return undo.release();
@@ -219,7 +220,7 @@ editor_action_starting_position* editor_action_starting_position::clone() const
 }
 editor_action* editor_action_starting_position::perform(map_context& mc) const
 {
-	std::auto_ptr<editor_action> undo;
+	util::unique_ptr<editor_action> undo;
 	int old_player = mc.get_map().is_starting_position(loc_) + 1;
 	map_location old_loc = mc.get_map().starting_position(player_);
 	LOG_ED << "ssp perform, player_" << player_ << ", loc_ " << loc_ << ", old_player " << old_player << ", old_loc " << old_loc << "\n";
@@ -409,7 +410,7 @@ editor_action_shuffle_area* editor_action_shuffle_area::clone() const
 editor_action_paste* editor_action_shuffle_area::perform(map_context& mc) const
 {
 	map_fragment mf(mc.get_map(), area_);
-	std::auto_ptr<editor_action_paste> undo(new editor_action_paste(mf));
+	util::unique_ptr<editor_action_paste> undo(new editor_action_paste(mf));
 	perform_without_undo(mc);
 	return undo.release();
 }
