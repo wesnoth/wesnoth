@@ -58,11 +58,6 @@ public:
 	void load_config(const config& cfg);
 
 	/**
-	 * Get the room storage file name. If empty, rooms are not stored on disk.
-	 */
-	const std::string& storage_filename() const;
-
-	/**
 	 * Reads stored rooms from a file on disk, or returns immediately
 	 * if load_config was not called before or the storage filename is empty
 	 */
@@ -232,7 +227,7 @@ private:
 	t_player_stored_rooms_ player_stored_rooms_;
 
 	/**
-	 * Persistent room storage filename
+	 * Persistent room storage filename.  If empty, rooms are not stored on disk.
 	 */
 	std::string filename_;
 

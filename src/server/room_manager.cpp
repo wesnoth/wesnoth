@@ -85,11 +85,6 @@ void room_manager::load_config(const config& cfg)
 	if (pp != PP_COUNT) new_room_policy_ = pp;
 }
 
-const std::string& room_manager::storage_filename() const
-{
-	return filename_;
-}
-
 void room_manager::read_rooms()
 {
 	if (!filename_.empty() && file_exists(filename_)) {
