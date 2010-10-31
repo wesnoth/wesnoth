@@ -79,7 +79,13 @@ public:
 	// Create an empty node.
 	config();
 
-	config(const config& cfg);
+	config(const config &);
+	config &operator=(const config &);
+
+#ifdef HAVE_CXX0X
+	config(config &&);
+	config &operator=(config &&);
+#endif
 
 	/**
 	 * Creates a config object with an empty child of name @a child.
@@ -88,7 +94,6 @@ public:
 
 	~config();
 
-	config& operator=(const config& cfg);
 
 #ifdef HAVE_CXX0X
 	explicit operator bool() const

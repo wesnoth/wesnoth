@@ -209,6 +209,22 @@ config& config::operator=(const config& cfg)
 	return *this;
 }
 
+#ifdef HAVE_CXX0X
+config::config(config &&cfg):
+	values(std::move(cfg.values)),
+	children(std::move(cfg.children)),
+	ordered_children(std::move(cfg.ordered_children))
+{
+}
+
+config &config::operator=(config &&cfg)
+{
+	clear();
+	swap(cfg);
+	return *this;
+}
+#endif
+
 bool config::has_attribute(const std::string &key) const
 {
 	check_valid();
