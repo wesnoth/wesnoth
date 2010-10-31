@@ -2385,7 +2385,7 @@ std::string get_image(const vconfig& cfg, unit_map::iterator speaker)
 	if (image.empty() && speaker != resources::units->end())
 	{
 		image = speaker->profile();
-		std::string::size_type offset = image.find_last_of('~');
+		std::string::size_type offset = image.find('~');
 		offset = image.find_last_of('/', offset);
 		if (offset != std::string::npos) {
 			image.insert(offset, "/transparent");
@@ -2406,7 +2406,7 @@ std::string get_image(const vconfig& cfg, unit_map::iterator speaker)
 	}
 	else if (!image.empty())
 	{
-		std::string::size_type offset = image.find_last_of('~');
+		std::string::size_type offset = image.find('~');
 		offset = image.find_last_of('/', offset);
 		if (offset != std::string::npos) {
 			image.insert(offset, "/transparent");
