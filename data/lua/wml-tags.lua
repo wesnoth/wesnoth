@@ -404,13 +404,13 @@ function wml_actions.store_reachable_locations(cfg)
 		elseif range == "vision" then
 			local real_moves = unit.moves
 			unit.moves = unit.max_moves
-			unit_reach = location_set.of_pairs(wesnoth.find_reach(unit, { viewing_side = viewing_side, ignore_units=yes } ))
+			unit_reach = location_set.of_pairs(wesnoth.find_reach(unit, { viewing_side = viewing_side, ignore_units = true }))
 			unit.moves = real_moves
 		end
 
 		if range == "vision" or range == "attack" then
 			unit_reach:to_wml_var "unit_reach_array"
-			reach:of_pairs(wesnoth.get_locations { find_in = "unit_reach_array", radius = "1" } )
+			reach:of_pairs(wesnoth.get_locations { find_in = "unit_reach_array", radius = 1 })
 			unit_reach:of_wml_var "unit_reach_array"
 		end
 
