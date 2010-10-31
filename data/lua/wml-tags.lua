@@ -383,29 +383,24 @@ function wml_actions.store_reachable_locations(cfg)
 	local location_filter = helper.get_child(cfg, "filter_location")
 	local range = cfg.range or "movement"
 	local moves = cfg.moves or "current"
-	local viewing_side = cfg.viewing_side or 0
 	local variable = cfg.variable or helper.wml_error "[store_reachable_locations] missing required variable= key"
+	local reach_param = { viewing_side = cfg.viewing_side or 0 }
+	if range == "vision" then
+		moves = "max"
+		reach_param.ignore_units = true
+	end
 
 	local reach = location_set.create()
-	local unit_reach = location_set.create()
 
 	for i,unit in ipairs(wesnoth.get_units(unit_filter)) do
-		unit_reach:clear()
-
-		if range == "movement" or range == "attack" then
-			if moves == "max" then
-				local real_moves = unit.moves
-				unit.moves = unit.max_moves
-				unit_reach = location_set.of_pairs(wesnoth.find_reach(unit, { viewing_side = viewing_side } ))
-				unit.moves = real_moves
-			else
-				unit_reach = location_set.of_pairs(wesnoth.find_reach(unit, { viewing_side = viewing_side } ))
-			end
-		elseif range == "vision" then
-			local real_moves = unit.moves
+		local unit_reach
+		if moves == "max" then
+			local saved_moves = unit.moves
 			unit.moves = unit.max_moves
-			unit_reach = location_set.of_pairs(wesnoth.find_reach(unit, { viewing_side = viewing_side, ignore_units = true }))
-			unit.moves = real_moves
+			unit_reach = location_set.of_pairs(wesnoth.find_reach(unit, reach_param))
+			unit.moves = saved_moves
+		else
+			unit_reach = location_set.of_pairs(wesnoth.find_reach(unit, reach_param))
 		end
 
 		if range == "vision" or range == "attack" then
