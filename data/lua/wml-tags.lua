@@ -412,8 +412,11 @@ function wml_actions.store_reachable_locations(cfg)
 		reach:union(unit_reach)
 	end
 
-	reach:to_wml_var(variable)
-	reach = location_set.of_pairs(wesnoth.get_locations { find_in = variable, { "and", location_filter } } )
+	if location_filter then
+		reach = reach:filter(function(x, y)
+			return wesnoth.match_location(x, y, location_filter)
+		end)
+	end
 	reach:to_wml_var(variable)
 
 	wesnoth.set_variable("unit_reach_array")
