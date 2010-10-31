@@ -404,12 +404,15 @@ function wml_actions.store_reachable_locations(cfg)
 		end
 
 		if range == "vision" or range == "attack" then
-			unit_reach:to_wml_var "unit_reach_array"
-			reach:of_pairs(wesnoth.get_locations { find_in = "unit_reach_array", radius = 1 })
-			unit_reach:of_wml_var "unit_reach_array"
+			unit_reach:iter(function(x, y)
+				reach:insert(x, y)
+				for u,v in helper.adjacent_tiles(x, y) do
+					reach:insert(u, v)
+				end
+			end)
+		else
+			reach:union(unit_reach)
 		end
-
-		reach:union(unit_reach)
 	end
 
 	if location_filter then
@@ -418,8 +421,6 @@ function wml_actions.store_reachable_locations(cfg)
 		end)
 	end
 	reach:to_wml_var(variable)
-
-	wesnoth.set_variable("unit_reach_array")
 end
 
 function wml_actions.hide_unit(cfg)
