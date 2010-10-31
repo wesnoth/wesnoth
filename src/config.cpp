@@ -390,6 +390,18 @@ config& config::add_child(const std::string& key, const config& val)
 	return *v.back();
 }
 
+#ifdef HAVE_CXX0X
+config &config::add_child(const std::string &key, config &&val)
+{
+	check_valid(val);
+
+	child_list &v = children[key];
+	v.push_back(new config(std::move(val)));
+	ordered_children.push_back(child_pos(children.find(key), v.size() - 1));
+	return *v.back();
+}
+#endif
+
 config &config::add_child_at(const std::string &key, const config &val, unsigned index)
 {
 	check_valid(val);
