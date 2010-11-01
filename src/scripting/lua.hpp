@@ -39,6 +39,7 @@ public:
 	void initialize();
 	void save_game(config &);
 	void load_game();
+	void run_event(game_events::queued_event const &);
 	void set_wml_action(std::string const &, game_events::action_handler);
 	bool run_wml_action(std::string const &, vconfig const &,
 		game_events::queued_event const &);

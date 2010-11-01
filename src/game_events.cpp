@@ -3206,6 +3206,8 @@ namespace game_events {
 			// due to status changes by WML. Every event will flush the cache.
 			unit::clear_status_caches();
 
+			resources::lua_kernel->run_event(ev);
+
 			bool init_event_vars = true;
 
 			foreach(game_events::event_handler& handler, event_handlers) {

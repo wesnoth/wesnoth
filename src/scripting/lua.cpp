@@ -3190,6 +3190,21 @@ void LuaKernel::save_game(config &cfg)
 	}
 }
 
+/**
+ * Executes the game_events.on_event function.
+ */
+void LuaKernel::run_event(game_events::queued_event const &ev)
+{
+	lua_State *L = mState;
+
+	if (!luaW_getglobal(L, "wesnoth", "game_events", "on_event", NULL))
+		return;
+
+	queued_event_context dummy(&ev);
+	lua_pushstring(L, ev.name.c_str());
+	luaW_pcall(L, 1, 0, false);
+}
+
 LuaKernel::~LuaKernel()
 {
 	lua_close(mState);
