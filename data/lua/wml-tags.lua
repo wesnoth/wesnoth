@@ -357,7 +357,8 @@ function wml_actions.store_unit(cfg)
 end
 
 function wml_actions.sound(cfg)
-	wesnoth.play_sound(cfg.name, cfg["repeat"])
+	local name = cfg.name or helper.wml_error("[sound] missing required name= attribute")
+	wesnoth.play_sound(name, cfg["repeat"])
 end
 
 function wml_actions.store_locations(cfg)
