@@ -10,16 +10,24 @@ Version 1.9.1+svn:
      * Map updates.
      * Implemented gold carryover between the multiplayer chapters.
      * Added extra keeps to keep up with the growing number of leaders.
+   * Heir to the Throne:
+     * Fixed a bug causing Warven in 'Cliffs of Thoria' not able to move through
+       mountains.
    * Liberty:
+     * New set of portraits.
      * New (unanimated) sprites for the Rogue Mage unit line.
+     * Various balancing changes to the Rogue Mage unit line.
    * Northern Rebirth:
      * Make it possible to choose whether a unit should pick up the
        Rod of Justice or not.
+   * The South Guard:
+     * New portrait for Mal M'Brin.
 
  * Graphics:
    * Terrain:
      * Any Castle or Keep except Dwarvish can now be combined without large gaps
        or extra walls.
+     * New graphics for wooden bridges.
      * Added variant of chasm bridge for over water
      * New transitions from all Hills and Mountains to Water
      * A new desaturated color of ocean and shallow water
@@ -29,6 +37,7 @@ Version 1.9.1+svn:
    * Animations:
      * Standing anims: Fencer, Spearman, Dwarf Guard.
      * Idle anims: 2 for the Spearman.
+     * Fixed drakes flying or not flying over all the correct terrains.
    * Portraits: Drake Blademaster, Hurricane Drake, Drake Flameheart, alternate
      Swordsman.
    * Units: New base frame and animations for Mudcrawler.
@@ -42,6 +51,8 @@ Version 1.9.1+svn:
    * Decreased the physical resistances of the Dwarvish Scout and Dwarvish
      Pathfinder to 10% and those of the Dwarvish Explorer to 20%.
    * Decreased the village defense of Chocobone from 60% to 40%.
+   * Fixed villages on snow and sand hills providing worst instead of best
+     movement.
 
  * User interface:
    * Improved the layout of the title screen and fixed several bugs in it.
