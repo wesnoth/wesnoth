@@ -277,10 +277,6 @@ typedef std::map<std::string, wml_handler_function> static_wml_action_map;
 /** Map of the default action handlers known of the engine. */
 static static_wml_action_map static_wml_actions;
 
-typedef std::map<std::string, game_events::action_handler *> dynamic_wml_action_map;
-/** Map of the action handlers either provided by the engine or added by the current scenario. */
-static dynamic_wml_action_map dynamic_wml_actions;
-
 /**
  * WML_HANDLER_FUNCTION macro handles auto registeration for wml handlers
  *
@@ -3131,10 +3127,6 @@ namespace game_events {
 		manager_running = false;
 		events_queue.clear();
 		event_handlers.clear();
-		foreach (dynamic_wml_action_map::value_type &action, dynamic_wml_actions) {
-			delete action.second;
-		}
-		dynamic_wml_actions.clear();
 		delete resources::lua_kernel;
 		resources::lua_kernel = NULL;
 		unit_wml_ids.clear();
