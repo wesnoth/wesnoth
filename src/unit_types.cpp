@@ -1027,11 +1027,14 @@ void unit_type::add_advancement(const unit_type &to_unit,int xp)
 			//This function is called for and only for an [advancefrom] tag in a unit_type referencing this unit_type.
 			in_advancefrom_ = true;
 			experience_needed_ = xp;
+			DBG_UT << "Changing experience_needed from " << experience_needed_ << " to " << xp << " due to (first) [advancefrom] of " << to_id << "\n";
 		}
 		else if(experience_needed_ > xp) {
 			experience_needed_ = xp;
+			DBG_UT << "Lowering experience_needed from " << experience_needed_ << " to " << xp << " due to (multiple, lower) [advancefrom] of " << to_id << "\n";
 		}
-		DBG_UT << "Changing experience_needed from " << experience_needed_ << " to " << xp << " due to [advancefrom] of " << to_id << "\n";
+		else
+			DBG_UT << "Ignoring experience_needed change from " << experience_needed_ << " to " << xp << " due to (multiple, higher) [advancefrom] of " << to_id << "\n";
 	}
 
 	// Add advancements to gendered subtypes, if supported by to_unit
