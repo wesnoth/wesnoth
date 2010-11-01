@@ -14,6 +14,23 @@ local function add_overlay(x, y, cfg)
 	table.insert(items, cfg)
 end
 
+local function remove_overlay(x, y, name)
+	local items = scenario_items[x * 10000 + y]
+	if not items then return end
+	wesnoth.remove_tile_overlay(x, y, name)
+	if name then
+		for i = #items,1,-1 do
+			local item = items[i]
+			if item.image == name or item.halo == name then
+				table.remove(items, i)
+			end
+		end
+	end
+	if not name or #items == 0 then
+		scenario_items[x * 10000 + y] = nil
+	end
+end
+
 local old_on_save = game_events.on_save
 function game_events.on_save()
 	local custom_cfg = old_on_save()
@@ -59,23 +76,21 @@ function wml_actions.remove_item(cfg)
 			helper.wml_error "[remove_item] missing required x= and y= attributes."
 		y = context.y1
 	end
-	local items = scenario_items[x * 10000 + y]
-	if not items then return end
-	local name = cfg.image
-	wesnoth.remove_tile_overlay(x, y, name)
-	if name then
-		for i = #items,1,-1 do
-			local item = items[i]
-			if item.image == name or item.halo == name then
-				table.remove(items, i)
-			end
-		end
-	end
-	if not name or #items == 0 then
-		scenario_items[x * 10000 + y] = nil
-	end
+	remove_overlay(x, y, cfg.image)
 end
 
 -- [removeitem] is deprecated, so print a WML error and call [remove_item]
 -- Remove after 1.9.3
 wml_actions.removeitem = helper.deprecate("Usage of [removeitem] is deprecated; support will be removed in 1.9.3. Use [remove_item] instead.", wml_actions.remove_item)
+
+local methods = { remove = remove_overlay }
+
+function methods.place_image(x, y, name)
+	add_overlay(x, y, { x = x, y = y, image = name })
+end
+
+function methods.place_halo(x, y, name)
+	add_overlay(x, y, { x = x, y = y, halo = name })
+end
+
+return methods
