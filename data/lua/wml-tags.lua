@@ -270,7 +270,9 @@ function wml_actions.switch(cfg)
 end
 
 function wml_actions.scroll_to(cfg)
-	wesnoth.scroll_to_tile(cfg.x, cfg.y, cfg.check_fogged)
+	local x = tonumber(cfg.x) or helper.wml_error("invalid x= in [scroll_to]")
+	local y = tonumber(cfg.y) or helper.wml_error("invalid y= in [scroll_to]")
+	wesnoth.scroll_to_tile(x, y, cfg.check_fogged)
 end
 
 function wml_actions.scroll_to_unit(cfg)
