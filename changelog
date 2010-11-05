@@ -14,11 +14,18 @@ Version 1.9.1+svn:
        mountains.
    * Liberty:
      * New set of portraits.
+     * Changed Relnan's character to a woman.
      * New (unanimated) sprites for the Rogue Mage unit line.
      * Various balancing changes to the Rogue Mage unit line.
    * Northern Rebirth:
      * Make it possible to choose whether a unit should pick up the
        Rod of Justice or not.
+   * The Rise of Wesnoth:
+     * New set of portraits, except for Jevyan and Rithrandil.
+     * Gave Jevyan's familiar a custom unit type.
+   * Sceptre of Fire:
+     * Thursagan can now advance to Dwarvish Arcanister.
+     * New (unanimated) sprites for the Dwarvish Miner.
    * Son of the Black Eye:
      * Changes to the objectives and gameplay of 'Clash of Armies'.
    * The South Guard:
@@ -60,6 +67,8 @@ Version 1.9.1+svn:
    * Moved the Fire Guardian unit to core.
    * Fixed villages on snow and sand hills providing worst instead of best
      movement.
+   * The complete Dwarvish Runesmith line moved from SoF to core along with new
+     sprites.
  * User interface:
    * Fixed: Addon dialog in title screen shows last host again.
    * Fixed: Addon download progress dialog shows the correct addon name again.
@@ -108,7 +117,7 @@ Version 1.9.1+svn:
    * Added a new key "primary" to animation to separate frames that should be
      treated as primary from frames that shouldn't
    * Made it so that if several [advancefrom] tags for a certain base unit are
-     encountered, the lowest experience= keys from these is chosen (so if 
+     encountered, the lowest experience= keys from these is chosen (so if
      there's only one [advancefrom] referencing this base unit the experience
      needed can be increased).
  * Miscellaneous and bugfixes:
