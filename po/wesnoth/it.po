@@ -7,13 +7,13 @@
 #
 # Automatically generated, 2004.
 # Alessio D'Ascanio <otaku@fastwebnet.it>, 2004, 2005.
-# Luciano Montanaro <mikelima@cirulla.net>, 2006, 2007, 2008, 2009.
+# Luciano Montanaro <mikelima@cirulla.net>, 2006, 2007, 2008, 2009, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: it\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-10-19 12:51+0200\n"
-"PO-Revision-Date: 2010-04-24 12:31+0200\n"
+"PO-Revision-Date: 2010-10-31 23:57+0100\n"
 "Last-Translator: Luciano Montanaro <mikelima@cirulla.net>\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "Language: it\n"
@@ -58,14 +58,13 @@ msgstr "Anima la mappa"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:47
-#, fuzzy
 msgid "Local time of day light"
-msgstr "Scegli a caso l'ora d'inizio"
+msgstr "Ora del giorno locale"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:48
 msgid "Local time of day light effect (use more memory)."
-msgstr ""
+msgstr "Effetti per l'ora del giorno locale (usa più memoria)."
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:55
@@ -118,9 +117,8 @@ msgstr "Suoni nella lobby"
 
 #. [advanced_preference]: type=boolean
 #: data/advanced_preferences.cfg:115
-#, fuzzy
 msgid "Disable notifications"
-msgstr "Disabilita i salvataggi automatici."
+msgstr "Disabilita notifiche"
 
 #. [ai]: id=testing_ai_default
 #: data/ai/ais/testing_ai_default.cfg:5
@@ -686,7 +684,6 @@ msgstr "Introduzione"
 
 #. [topic]: id=introduction_topic
 #: data/core/help.cfg:129
-#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -699,13 +696,13 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Battle for Wesnoth è un gioco strategico a turni di ambientazione fantasy, "
-"abbastanza differente dalla maggior parte dei moderni giochi strategici. "
-"Mentre altri giochi ricercano la complessità, Battle for Wesnoth punta sulla "
-"semplicità delle regole e della modalità di gioco. Ciò tuttavia non rende il "
-"gioco piatto, perché nonostante le semplici regole, il gioco può divenire "
-"strategicamente molto complesso, ed è quindi facile da imparare, ma "
-"difficile da padroneggiare completamente."
+"<italic>text='Battle for Wesnoth'</italic> è un gioco strategico a turni di "
+"ambientazione fantasy, abbastanza differente dalla maggior parte dei moderni "
+"giochi strategici. Mentre altri giochi ricercano la complessità, Battle for "
+"Wesnoth punta sulla semplicità delle regole e della modalità di gioco. Ciò "
+"tuttavia non rende il gioco piatto perché, nonostante le regole semplici, il "
+"gioco può divenire strategicamente molto complesso, e quindi è facile da "
+"imparare, ma difficile da padroneggiare completamente."
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:141
@@ -1432,7 +1429,6 @@ msgstr "Periodo del giorno"
 
 #. [topic]: id=time_of_day
 #: data/core/help.cfg:278
-#, fuzzy
 msgid ""
 "The time of day affects the damage of certain units as follows:\n"
 " Lawful units get +25% damage in daytime, and −25% damage at night.\n"
@@ -1441,10 +1437,9 @@ msgid ""
 " Neutral units are unaffected by the time of day."
 msgstr ""
 "Il periodo del giorno influisce sul danno di alcune unità come segue:\n"
-" le unità legali causano +25% danni in più durante il giorno e −25% durante "
-"la notte,\n"
-" le unità caotiche causano +25% danni in più durante la notte e −25% durante "
-"il giorno,\n"
+" Le unità legali causano +25% danni in più di giorno e −25% di notte.\n"
+" le unità caotiche causano +25% danni in più di notte e −25% di giorno,\n"
+" le unità liminali causano +25% danni in più durante il crepuscolo,\n"
 " le unità neutrali non subiscono alcun effetto."
 
 #. [topic]: id=time_of_day
@@ -1799,18 +1794,18 @@ msgstr "Licenza"
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:358
-#, fuzzy
 msgid ""
 "Most units have two traits. However, Undead units are assigned the single "
 "trait <italic>text='Undead'</italic>, and Woses do not receive any traits. "
 "Traits are modifications that change a unit’s attributes slightly. They are "
 "usually randomly assigned to a unit when it is recruited."
 msgstr ""
-"La maggior parte delle unità hanno due qualità, con l'eccezione dei non-"
-"morti ai quali viene assegnata la sola qualità “non-morto” e i wose che non "
-"ricevono alcuna qualità. Le qualità sono delle modifiche che cambiano le "
-"caratteristiche di un'unità. Generalmente vengono assegnate all'unità in "
-"maniera casuale quando viene reclutata."
+"La maggior parte delle unità hanno due caratteristiche, con l'eccezione dei "
+"non-morti ai quali viene assegnata la sola caratteristica <italic>text='non-"
+"morto'</italic> e i wose che non ricevono alcuna caratteristica. Le "
+"caratteristiche sono delle modifiche che cambiano leggermente gli attributi "
+"di un'unità. Generalmente vengono assegnate all'unità in maniera casuale "
+"quando viene reclutata."
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:360
@@ -1824,10 +1819,10 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Le qualità disponibili per tutte le unità diverse dai non-morti sono "
-"<ref>dst='traits_intelligent' text='intelligente'</ref>, "
-"<ref>dst='traits_quick' text='veloce'</ref>, <ref>dst='traits_resilient' "
-"text='resistente'</ref>, e <ref>dst='traits_strong' text='forte'</ref>."
+"Le caratteristiche disponibili per tutte le unità diverse dai non-morti sono "
+"<ref>dst='traits_intelligent' text='Intelligente'</ref>, "
+"<ref>dst='traits_quick' text='Veloce'</ref>, <ref>dst='traits_resilient' "
+"text='resistente'</ref>, e <ref>dst='traits_strong' text='Forte'</ref>."
 
 #. [topic]: id=..traits_section
 #: data/core/help.cfg:364
@@ -1841,7 +1836,7 @@ msgid ""
 msgstr ""
 "\n"
 "\n"
-"Le altre qualità che possono essere assegnate alle unità sono "
+"Le altre caratteristiche che possono essere assegnate alle unità sono "
 "<ref>dst='traits_dextrous' text='Agile'</ref>, <ref>dst='traits_loyal' "
 "text='Leale'</ref> e <ref>dst='traits_undead' text='Non-morto'</ref>.\n"
 "\n"
@@ -1986,9 +1981,8 @@ msgstr ""
 
 #. [topic]: id=traits_feral
 #: data/core/help.cfg:408
-#, fuzzy
 msgid "Feral"
-msgstr "Totale"
+msgstr "Selvatico"
 
 #. [topic]: id=traits_feral
 #: data/core/help.cfg:409
@@ -2190,11 +2184,9 @@ msgstr "Lento"
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:463
-#, fuzzy
 msgid "Slow units have −1 movement but 5% more hitpoints."
 msgstr ""
-"Le unità lente hanno 1 punto di movimento in meno, ma il 5% di PF in più del "
-"normale."
+"Le unità lente hanno 1 punto di movimento in meno, ma il 5% di PF in più."
 
 #. [topic]: id=traits_slow
 #: data/core/help.cfg:465
@@ -3040,7 +3032,6 @@ msgstr ""
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:838
-#, fuzzy
 msgid ""
 "\n"
 "Send a private message to a user. When in a game, it is not possible to send "
@@ -3048,8 +3039,10 @@ msgid ""
 "game.\n"
 "\n"
 msgstr ""
+"\n"
 "Invia un messaggio privato. Non si possono mandare messaggi a giocatori che "
-"non controllano una fazione della partita a cui stai giocando."
+"non controllano una fazione della partita a cui stai giocando.\n"
+"\n"
 
 #. [topic]: id=mp_commands
 #: data/core/help.cfg:841
@@ -3710,13 +3703,12 @@ msgstr ""
 
 #. [note]
 #: data/core/macros/ai_controller.cfg:5
-#, fuzzy
 msgid ""
 "In this scenario, you may issue instructions to an allied side by right-"
 "clicking on them."
 msgstr ""
-"In molti scenari di campagne puoi dare semplici istruzioni ai tuoi alleati "
-"controllati dal computer usando il menù contestuale del tasto destro.."
+"In questo scenario puoi dare semplici istruzioni ai tuoi alleati usando il "
+"menù contestuale del tasto destro."
 
 #. [overview_message_has_instructions]: speaker=narrator
 #. [overview_message_no_instructions]: speaker=narrator
@@ -4028,13 +4020,12 @@ msgid "Poison is seeping through the veins of this unit at this very moment."
 msgstr "Il veleno scorre nelle vene di questa unità proprio ora."
 
 #: data/core/macros/items.cfg:287
-#, fuzzy
 msgid ""
 "Sprinkling this water on melee weapons grants them the <i>arcane</i> damage "
 "type until the end of the current scenario. Should $unit.name use it?"
 msgstr ""
-"Quest'acqua infonderà alle armi bianche il tipo di danno “esoterico” fino "
-"alla fine dello scenario. Vuoi che $unit.name la usi?"
+"Quest'acqua infonderà alle armi bianche il tipo di danno <i>esoterico</i> "
+"fino alla fine dello scenario. Vuoi che $unit.name la usi?"
 
 #: data/core/macros/items.cfg:288
 msgid "I am not suited to the use of this item! Let another take it."
@@ -4047,13 +4038,12 @@ msgstr "Acqua santa"
 
 #. [object]
 #: data/core/macros/items.cfg:293
-#, fuzzy
 msgid ""
 "This water will make melee weapons have the <i>arcane</i> damage type until "
 "the end of the current scenario."
 msgstr ""
-"Quest'acqua infonderà alle armi bianche il tipo di danno “esoterico” fino "
-"alla fine dello scenario."
+"Quest'acqua infonderà alle armi bianche il tipo di danno <i>esoterico</i> "
+"fino alla fine dello scenario."
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:322
@@ -4928,9 +4918,8 @@ msgstr ""
 
 #. [objective]: condition=lose
 #: data/core/macros/objective-utils.cfg:54
-#, fuzzy
 msgid "Turns run out"
-msgstr "Turni: "
+msgstr "Turni finiti"
 
 #: data/core/macros/objective-utils.cfg:61 data/lua/wml/objectives.lua:100
 msgid "Early finish bonus."
@@ -4945,9 +4934,8 @@ msgid "<small>(early finish bonus)</small>"
 msgstr "<small>(premio per turni risparmiati)</small>"
 
 #: data/core/macros/objective-utils.cfg:72
-#, fuzzy
 msgid "(early finish bonus)"
-msgstr "Premio per i turni risparmiati."
+msgstr "(premio per turni risparmiati)"
 
 #: data/core/macros/objective-utils.cfg:76 data/lua/wml/objectives.lua:110
 msgid "No gold carried over to the next scenario."
@@ -4982,9 +4970,8 @@ msgid "Alternative objective:"
 msgstr "Obiettivo alternativo:"
 
 #: data/core/macros/objective-utils.cfg:99
-#, fuzzy
 msgid "Bonus objective:"
-msgstr "Obiettivo alternativo:"
+msgstr "Obiettivo con premio:"
 
 #. [message]: speaker=narrator
 #: data/core/macros/scenario-utils.cfg:108
@@ -5278,15 +5265,13 @@ msgstr "meccanica"
 
 #. [trait]: id=elemental
 #: data/core/macros/traits.cfg:52
-#, fuzzy
 msgid "elemental"
-msgstr "occultamento"
+msgstr "elementale"
 
 #. [trait]: id=elemental
 #: data/core/macros/traits.cfg:53
-#, fuzzy
 msgid "female^elemental"
-msgstr "leale"
+msgstr "elementale"
 
 #. [trait]: id=strong
 #: data/core/macros/traits.cfg:66
@@ -5371,20 +5356,18 @@ msgstr ""
 
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:190
-#, fuzzy
 msgid "feral"
-msgstr "Totale"
+msgstr "selvatico"
 
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:191
-#, fuzzy
 msgid "female^feral"
-msgstr "neutrale"
+msgstr "selvatica"
 
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:192
 msgid "Receive only 40% defense in villages"
-msgstr ""
+msgstr "Riceve solo il 40% di difesa nei villaggi"
 
 #. [trait]: id=weak
 #: data/core/macros/traits.cfg:200
@@ -6497,18 +6480,16 @@ msgstr "Incubo"
 
 #. [language]
 #: data/hardwired/english.cfg:10
-#, fuzzy
 msgid ""
 "Liminal units fight better during twilight while fighting normally during "
 "day and night.\n"
 "\n"
 "Twilight: +25% Damage"
 msgstr ""
-"Le unità legali combattono meglio durante il giorno e sono notevolmente "
-"svantaggiate durante la notte.\n"
+"Le unità liminali combattono meglio durante il crepuscolo e combattono "
+"normalmente di giorno e di notte.\n"
 "\n"
-"Giorno: +25% Danno\n"
-"Notte: −25% Danno"
+"Crepuscolo: +25% Danno"
 
 #. [language]
 #: data/hardwired/english.cfg:15
@@ -6705,35 +6686,32 @@ msgstr "DejaVu Sans,Andagii,WenQuanYi Zen Hei"
 
 #. [tip]
 #: data/hardwired/tips.cfg:4
-#, fuzzy
 msgid ""
 "Don’t neglect to earn your leader experience! You need to keep him safe, but "
 "if you coddle him too much he may be too weak to survive future battles."
 msgstr ""
 "Non trascurare l'esperienza del tuo condottiero! Devi tenerlo al sicuro, ma "
-"se esageri nel proteggerlo potrebbe trovarsi ad un livello di esperienza "
-"troppo basso per sopravvivere alle future battaglie."
+"se lo proteggi troppo potrebbe restare troppo debole per sopravvivere alle "
+"future battaglie."
 
 #. [tip]
 #: data/hardwired/tips.cfg:5 data/hardwired/tips.cfg:137
-#, fuzzy
 msgid "<i>― Great Mage Delfador, 516YW</i>"
-msgstr "- Gran mago Delfador, 516AW"
+msgstr "<i>– Gran mago Delfador, 516AW</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:8
-#, fuzzy
 msgid ""
 "In the <b>Actions</b> menu, you can select <b>Show Enemy Moves</b> to "
 "highlight all the hexes your adversary can move to (assuming your units stay "
 "where they are). Use this to make sure the enemy can’t reach your weak or "
 "injured units on his next turn."
 msgstr ""
-"Dal menu «Azioni» puoi selezionare «Mostra le mosse del nemico» per "
-"evidenziare tutti i possibili esagoni in cui l'avversario si può muovere "
+"Dal menu <b>Azioni</b> puoi selezionare <b>Mostra le mosse del nemico</b> "
+"per evidenziare tutti i possibili esagoni in cui l'avversario si può muovere "
 "(con l'assunto che le tue unità stiano dove si trovano). Usa questa "
 "possibilità per assicurarti che i nemici non possano raggiungere le tue "
-"unità ferite o deboli durante il turno successivo."
+"unità ferite o deboli durante il suo turno."
 
 #. [tip]
 #: data/hardwired/tips.cfg:9 data/hardwired/tips.cfg:21
@@ -6752,9 +6730,8 @@ msgstr ""
 #: data/hardwired/tips.cfg:197 data/hardwired/tips.cfg:205
 #: data/hardwired/tips.cfg:225 data/hardwired/tips.cfg:234
 #: data/hardwired/tips.cfg:238
-#, fuzzy
 msgid "<i>― The Wesnoth Tactical Guide</i>"
-msgstr "- La guida tattica di Wesnoth"
+msgstr "<i>– La guida tattica di Wesnoth</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:12
@@ -6770,9 +6747,8 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:13
-#, fuzzy
 msgid "<i>― King Konrad, 536YW</i>"
-msgstr "- Re Konrad, 536AW"
+msgstr "<i>– Re Konrad, 536AW</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:16
@@ -6790,9 +6766,8 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:17 data/hardwired/tips.cfg:129
-#, fuzzy
 msgid "<i>― Memoirs of Gweddry, 627YW</i>"
-msgstr "- Memorie di Gweddry, 627AW"
+msgstr "<i>– Memorie di Gweddry, 627AW</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:20
@@ -6836,9 +6811,8 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:29 data/hardwired/tips.cfg:105
 #: data/hardwired/tips.cfg:209 data/hardwired/tips.cfg:221
-#, fuzzy
 msgid "<i>― High Lord Kalenz, 470YW</i>"
-msgstr "- Gran signore Kalenz, 470AW"
+msgstr "<i>– Gran signore Kalenz, 470AW</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:32
@@ -6874,9 +6848,8 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:41
-#, fuzzy
 msgid "<i>― The Wesnoth Community</i>"
-msgstr "- La comunità di Wesnoth"
+msgstr "<i>– La comunità di Wesnoth</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:44
@@ -6892,10 +6865,11 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:45
-#, fuzzy
 msgid ""
 "<i>― Royal Compendium of Battle Terminology: Volume II (reprinted 221YW)</i>"
-msgstr "- Compendio reale di terminologia di battaglia - Volume II 212AW"
+msgstr ""
+"<i>– Compendio reale di terminologia di battaglia: Volume II (ristampa 221AW)"
+"</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:48
@@ -6909,9 +6883,8 @@ msgstr ""
 #: data/hardwired/tips.cfg:49 data/hardwired/tips.cfg:73
 #: data/hardwired/tips.cfg:125 data/hardwired/tips.cfg:133
 #: data/hardwired/tips.cfg:213
-#, fuzzy
 msgid "<i>― Haldric II, 42YW, Handbook of Tactical Analysis: Volume I</i>"
-msgstr "- Manuale di analisi tattica volume I – Haldric II, 42AW"
+msgstr "<i>– Haldric II, 42AW, Manuale di analisi tattica: Volume I</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:52
@@ -7021,9 +6994,8 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:77
-#, fuzzy
 msgid "<i>― Haldric II, 43YW, Handbook of Tactical Analysis: Volume II</i>"
-msgstr "- Manuale di analisi tattica volume I – Haldric II, 42AW"
+msgstr "<i>– Haldric II, 43AW, Manuale di analisi tattica: Volume II</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:80
@@ -7072,9 +7044,8 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:93 data/hardwired/tips.cfg:173
-#, fuzzy
 msgid "<i>― Sir Kaylan, 498YW</i>"
-msgstr "― Sir Kaylan, 498AW"
+msgstr "<i>― Sir Kaylan, 498AW</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:96
@@ -7088,9 +7059,8 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:97
-#, fuzzy
 msgid "<i>― Sir Kaylan, 502YW</i>"
-msgstr "― Sir Kaylan, 502AW"
+msgstr "<i>― Sir Kaylan, 502AW</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:100
@@ -7143,9 +7113,8 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:117
-#, fuzzy
 msgid "<i>― Meneldur, 123YW</i>"
-msgstr "― Meneldur, 123AW"
+msgstr "<i>― Meneldur, 123AW</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:120
@@ -7216,9 +7185,8 @@ msgstr "Usa linee di unità per difendere le unità ferite e per farle curare."
 
 #. [tip]
 #: data/hardwired/tips.cfg:141
-#, fuzzy
 msgid "<i>― Princess Li’sar, 515YW</i>"
-msgstr "- Principessa Li'sar, 515AW"
+msgstr "<i>– Principessa Li’sar, 515AW</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:144
@@ -7256,31 +7224,27 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:157 data/hardwired/tips.cfg:201
-#, fuzzy
 msgid "<i>― The Scroll of Chantal, 516YW</i>"
-msgstr "- La pergamena di Chantal, 516AW"
+msgstr "<i>– La pergamena di Chantal, 516AW</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:160
-#, fuzzy
 msgid ""
 "The <i>Slow</i> attack makes enemy units move slower and halves the damage "
 "they do on all attacks until they end a turn."
 msgstr ""
-"L'abilità di attacco “rallenta” rende i nemici più lenti e dimezza il danno "
-"che essi causano a ogni attacco."
+"L'abilità di attacco <i>Rallenta</i> rende i nemici più lenti e dimezza il "
+"danno che causano a ogni attacco fino alla fine del turno."
 
 #. [tip]
 #: data/hardwired/tips.cfg:164
-#, fuzzy
 msgid "<i>Arcane</i> attacks are very powerful against undead."
-msgstr "L'attacco esoterico è molto potente contro i non-morti."
+msgstr "L'attacco <i>Esoterico</i> è molto potente contro i non-morti."
 
 #. [tip]
 #: data/hardwired/tips.cfg:165
-#, fuzzy
 msgid "<i>― Great Sage Dacyn, 626YW</i>"
-msgstr "- Gran saggio Dacyn, 626AW"
+msgstr "<i>– Gran saggio Dacyn, 626AW</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:168
@@ -7340,9 +7304,8 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:185
-#, fuzzy
 msgid "<i>― Queen Li’sar, 528YW</i>"
-msgstr "- Regina Li'sar, 528AW"
+msgstr "<i>– Regina Li’sar, 528AW</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:188
@@ -7422,7 +7385,7 @@ msgstr ""
 #. [tip]
 #: data/hardwired/tips.cfg:217 data/hardwired/tips.cfg:229
 msgid "<i>― Lord Hamel of Knalga</i>"
-msgstr ""
+msgstr "<i>― Lord Hamel di Knalga</i>"
 
 #. [tip]
 #: data/hardwired/tips.cfg:220
@@ -7486,11 +7449,11 @@ msgstr ""
 
 #: data/lua/wml/objectives.lua:53
 msgid "Notes:"
-msgstr ""
+msgstr "Note:"
 
 #: data/lua/wml/objectives.lua:79
 msgid "(%d turns left)"
-msgstr ""
+msgstr "(%d turni rimasti)"
 
 #: data/lua/wml/objectives.lua:112
 #, fuzzy
@@ -7891,9 +7854,8 @@ msgid "Type"
 msgstr "Tipo"
 
 #: src/addon/manager.cpp:809
-#, fuzzy
 msgid "Install dependencies"
-msgstr "Dipendenze"
+msgstr "Installa dipendenze"
 
 #: src/addon/manager.cpp:810
 msgid ""
@@ -7906,7 +7868,7 @@ msgstr[1] ""
 
 #: src/addon/manager.cpp:839
 msgid "Installation of a dependency failed"
-msgstr ""
+msgstr "Installazione di una dipendenza non riuscita"
 
 #: src/addon/manager.cpp:841
 msgid ""
@@ -7916,7 +7878,7 @@ msgstr ""
 
 #: src/addon/manager.cpp:855
 msgid "Installation failed"
-msgstr ""
+msgstr "Installazione non riuscita"
 
 #: src/addon/manager.cpp:857 src/addon/manager.cpp:1086
 msgid "The following add-on could not be downloaded or updated successfully:"
@@ -7975,7 +7937,7 @@ msgstr "Aggiorna tutte"
 #: src/addon/manager.cpp:1051 src/addon/manager.cpp:1068
 #: src/addon/manager.cpp:1309
 msgid "Installation of some dependency failed"
-msgstr ""
+msgstr "Installazione di alcune dipendenze non riuscita"
 
 #: src/addon/manager.cpp:1053 src/addon/manager.cpp:1070
 #: src/addon/manager.cpp:1311
@@ -8041,13 +8003,12 @@ msgid "Choose the add-on to download."
 msgstr "Scegli l'estensione da scaricare."
 
 #: src/addon/manager.cpp:1260
-#, fuzzy
 msgid "Download"
-msgstr "Scaricamenti"
+msgstr "Scarica"
 
 #: src/addon/manager.cpp:1261
 msgid "Done"
-msgstr ""
+msgstr "Fatto"
 
 #: src/addon/manager.cpp:1272 src/dialogs.cpp:622 src/menu_events.cpp:929
 #: src/menu_events.cpp:1541
@@ -8306,9 +8267,8 @@ msgid "File I/O Error while reading the game"
 msgstr "Errore di I/O di un file durante la lettura del gioco"
 
 #: src/game.cpp:1004
-#, fuzzy
 msgid "File I/O Error while reading the game: '"
-msgstr "Errore di I/O di un file durante la lettura del gioco"
+msgstr "Errore di I/O di un file durante la lettura della partita: '"
 
 #: src/game.cpp:1102
 msgid "No campaigns are available.\n"
@@ -8399,33 +8359,28 @@ msgid "Name: "
 msgstr "Nome: "
 
 #: src/generate_report.cpp:101
-#, fuzzy
 msgid "Type: "
-msgstr "Tipo"
+msgstr "Tipo: "
 
 #: src/generate_report.cpp:113 src/help.cpp:1404
 msgid "Race: "
 msgstr "Razza: "
 
 #: src/generate_report.cpp:136
-#, fuzzy
 msgid "Level: "
-msgstr "Livello"
+msgstr "Livello: "
 
 #: src/generate_report.cpp:141
-#, fuzzy
 msgid "No advancement"
-msgstr "Avanzamenti"
+msgstr "Nessun avanzamento"
 
 #: src/generate_report.cpp:143
-#, fuzzy
 msgid "Advances to:"
-msgstr "Avanza come: "
+msgstr "Avanza a:"
 
 #: src/generate_report.cpp:166
-#, fuzzy
 msgid "Trait: "
-msgstr "Caratteristiche"
+msgstr "Caratteristica:"
 
 #: src/generate_report.cpp:180
 msgid "invisible: "
@@ -8480,7 +8435,6 @@ msgid "Alignment: "
 msgstr "Allineamento: "
 
 #: src/generate_report.cpp:219
-#, fuzzy
 msgid "Ability: "
 msgstr "Abilità: "
 
@@ -8497,61 +8451,52 @@ msgid "Experience Modifier: "
 msgstr "Modificatori dell'esperienza: "
 
 #: src/generate_report.cpp:290
-#, fuzzy
 msgid "Terrain: "
-msgstr "Terreno"
+msgstr "Terreno: "
 
 #: src/generate_report.cpp:307
 msgid "maximum^max."
-msgstr ""
+msgstr "max."
 
 #: src/generate_report.cpp:307
 msgid "minimum^min."
-msgstr ""
+msgstr "min."
 
 #: src/generate_report.cpp:312
-#, fuzzy
 msgid "Defense: "
-msgstr "Difesa"
+msgstr "Difesa: "
 
 #: src/generate_report.cpp:387
-#, fuzzy
 msgid "Weapon: "
-msgstr "portata dell'arma: "
+msgstr "Arma: "
 
 #: src/generate_report.cpp:388
-#, fuzzy
 msgid "Damage: "
-msgstr "Danni"
+msgstr "Danno: "
 
 #: src/generate_report.cpp:391
-#, fuzzy
 msgid "Base damage: "
-msgstr "Danno totale"
+msgstr "Danno base: "
 
 #: src/generate_report.cpp:393
-#, fuzzy
 msgid "Time of day: "
-msgstr "Periodo del giorno"
+msgstr "Ora del giorno: "
 
 #: src/generate_report.cpp:397
-#, fuzzy
 msgid "Leadership: "
-msgstr "Comando"
+msgstr "Comando: "
 
 #: src/generate_report.cpp:401
-#, fuzzy
 msgid "Slowed: "
-msgstr "rallentato: "
+msgstr "Rallentato: "
 
 #: src/generate_report.cpp:405
-#, fuzzy
 msgid "Attacks: "
-msgstr "Attaccante"
+msgstr "Attacchi: "
 
 #: src/generate_report.cpp:407
 msgid "Base attacks: "
-msgstr ""
+msgstr "Attacchi base: "
 
 #: src/generate_report.cpp:409
 #, fuzzy
@@ -8559,12 +8504,10 @@ msgid "Swarm: "
 msgstr "sciame"
 
 #: src/generate_report.cpp:421
-#, fuzzy
 msgid "Weapon range: "
-msgstr "portata dell'arma: "
+msgstr "Portata dell'arma: "
 
 #: src/generate_report.cpp:422
-#, fuzzy
 msgid "Damage type: "
 msgstr "Tipo di danno: "
 
@@ -8574,9 +8517,8 @@ msgid "Damage versus: "
 msgstr "Tipo di danno: "
 
 #: src/generate_report.cpp:474
-#, fuzzy
 msgid "Accuracy:"
-msgstr "% accuratezza"
+msgstr "Accuratezza:"
 
 #: src/generate_report.cpp:479
 #, fuzzy
@@ -8601,9 +8543,8 @@ msgid "Chaotic units: "
 msgstr "Unità caotiche: "
 
 #: src/generate_report.cpp:533
-#, fuzzy
 msgid "Liminal units: "
-msgstr "Unità legali: "
+msgstr "Unità liminali: "
 
 #: src/generate_report.cpp:714
 msgid "Observers:"
@@ -8861,42 +8802,34 @@ msgid "?"
 msgstr "?"
 
 #: src/loadscreen.cpp:222
-#, fuzzy
 msgid "Initializing user interface"
-msgstr "Preparazione squadre"
+msgstr "Preparazione interfaccia utente"
 
 #: src/loadscreen.cpp:223
-#, fuzzy
 msgid "Loading game configuration"
-msgstr "Caricamento della configurazione di gioco."
+msgstr "Caricamento della configurazione di gioco"
 
 #: src/loadscreen.cpp:224 src/loadscreen.cpp:231
-#, fuzzy
 msgid "Verifying cache"
-msgstr "Verifica della cache..."
+msgstr "Verifica della cache"
 
 #: src/loadscreen.cpp:225 src/loadscreen.cpp:232
-#, fuzzy
 msgid "Reading files and creating cache"
-msgstr "Lettura dei file e creazione della cache..."
+msgstr "Lettura dei file e creazione della cache"
 
 #: src/loadscreen.cpp:226 src/loadscreen.cpp:233
-#, fuzzy
 msgid "Reading unit files"
-msgstr "Caricamento file delle unità..."
+msgstr "Lettura file delle unità"
 
 #: src/loadscreen.cpp:227
-#, fuzzy
 msgid "Re-initialize fonts for the current language"
-msgstr "Reimpostazione dei font per la lingua corrente."
+msgstr "Reimpostazione dei font per la lingua attuale"
 
 #: src/loadscreen.cpp:228
-#, fuzzy
 msgid "Searching for installed add-ons"
-msgstr "Controllo delle estensioni installate."
+msgstr "Ricerca delle estensioni installate"
 
 #: src/loadscreen.cpp:229
-#, fuzzy
 msgid "Loading title screen"
 msgstr "Caricamento schermata dei titoli"
 
@@ -9160,18 +9093,17 @@ msgid ""
 msgstr "Non hai ancora iniziato il tuo turno. Sei sicuro di volerlo terminare?"
 
 #: src/menu_events.cpp:1371
-#, fuzzy
 msgid ""
 "Some units have planned actions left. Do you really want to end your turn?"
 msgstr ""
-"Alcune unità hanno dei movimenti a disposizione. Vuoi davvero terminare il "
-"tuo turno?"
+"Alcune unità hanno delle mosse a disposizione. Vuoi davvero terminare il tuo "
+"turno?"
 
 #: src/menu_events.cpp:1379 src/menu_events.cpp:1384
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
-"Alcune unità hanno dei movimenti a disposizione. Vuoi davvero terminare il "
-"tuo turno?"
+"Alcune unità hanno delle mosse a disposizione. Vuoi davvero terminare il tuo "
+"turno?"
 
 #: src/menu_events.cpp:1419
 msgid "Rename Unit"
@@ -9764,9 +9696,8 @@ msgstr ""
 "Non posso cambiare il controllo della fazione fuori dai limiti: «$side»."
 
 #: src/menu_events.cpp:3243
-#, fuzzy
 msgid "Layers"
-msgstr "Giocatori: "
+msgstr "Strati"
 
 #: src/menu_events.cpp:3316
 msgid "Choose Scenario (Debug!)"
@@ -9786,7 +9717,7 @@ msgstr "Modalità di debug disattivata!"
 
 #: src/menu_events.cpp:3377
 msgid "Unsafe Lua scripts."
-msgstr ""
+msgstr "Script lua non sicuri."
 
 #: src/menu_events.cpp:3378
 msgid ""
@@ -9876,7 +9807,7 @@ msgstr ""
 
 #: src/multiplayer.cpp:173
 msgid "Server-side redirect loop"
-msgstr "Ciclo di eeindirizzamenti sul server"
+msgstr "Ciclo di reindirizzamenti sul server"
 
 #: src/multiplayer.cpp:262
 msgid "Bad data received from server"
@@ -10039,7 +9970,7 @@ msgstr "Lo scenario non è valido perché non ha alcuno schieramento."
 
 #: src/multiplayer_connect.cpp:1096
 msgid "Enter a name for the new player"
-msgstr ""
+msgstr "Inserisci il nome del nuovo giocatore"
 
 #: src/multiplayer_connect.cpp:1459
 msgid "Network Player"
@@ -10066,9 +9997,8 @@ msgid "Waiting for players to join..."
 msgstr "In attesa degli altri giocatori..."
 
 #: src/multiplayer_connect.cpp:1739
-#, fuzzy
 msgid "Waiting for players to choose factions..."
-msgstr "In attesa degli altri giocatori..."
+msgstr "In attesa che i giocatori scelgano le fazioni..."
 
 #: src/multiplayer_create.cpp:52 src/multiplayer_lobby.cpp:730
 msgid "Create Game"
@@ -10426,9 +10356,8 @@ msgstr "Impossibile inviare l'handshake iniziale"
 
 #: src/network_manager_ana.cpp:650 src/network_manager_ana.cpp:667
 #: src/network_manager_ana.cpp:689
-#, fuzzy
 msgid "Could not connect to host"
-msgstr "Impossibile connettersi all'host remoto."
+msgstr "Impossibile connettersi all'host"
 
 #: src/pathfind/pathfind.cpp:487
 msgid "Terrain with a movement cost less than 1 encountered."
@@ -10895,7 +10824,7 @@ msgstr "legale"
 
 #: src/unit_types.cpp:968
 msgid "liminal"
-msgstr ""
+msgstr "liminale"
 
 #: src/unit_types.cpp:968
 msgid "neutral"
@@ -10910,9 +10839,8 @@ msgid "female^lawful"
 msgstr "legale"
 
 #: src/unit_types.cpp:969
-#, fuzzy
 msgid "female^liminal"
-msgstr "leale"
+msgstr "liminale"
 
 #: src/unit_types.cpp:969
 msgid "female^neutral"

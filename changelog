@@ -51,8 +51,8 @@ Version 1.9.1+svn:
    * Units: New base frame and animations for Mudcrawler.
  * Language and i18n:
    * Updated translations: Chinese (Traditional), Czech, Dutch, Galician,
-     Indonesian, Japanese, Korean, Lithuanian, Portuguese (Brazil), Russian,
-     Shavian, Slovak, Slovenian, Vietnamese
+     German, Indonesian, Italian, Japanese, Korean, Lithuanian,
+     Portuguese (Brazil), Russian, Shavian, Slovak, Slovenian, Vietnamese
  * Unit changes and balancing:
    * Decreased the physical resistances of the Dwarvish Scout and Dwarvish
      Pathfinder to 10% and those of the Dwarvish Explorer to 20%.
@@ -79,8 +79,8 @@ Version 1.9.1+svn:
    * Fixed: No longer cut off large title screen logos (bug #16632).
    * Refresh cache (F5) works in editor.
    * Add a "Save All Maps" menu item and hotkey in editor.
-   * [object] description messages are now shown using GUI2, allowing usage of Pango
-     markup (bug #16859).
+   * [object] description messages are now shown using GUI2, allowing usage of
+     Pango markup (bug #16859).
    * Whiteboard planning system:
      * Fixed: Crash when creating a planned move on Windows (bug #16705)
      * New "Execute all actions" command bound to CTRL+y
@@ -95,19 +95,22 @@ Version 1.9.1+svn:
    * Renamed [removeitem] to [remove_item].
    * added new parameters directional_x and directional_y to animations
    * added new parameters auto_vflip and auto_hflip to animations
-   * Made it so that units affected by [hide_unit] don't appear on the minimap (FR #16796)
+   * Made it so that units affected by [hide_unit] don't appear on the minimap
+     (FR #16796)
    * New [store_reachable_locations] tag for storing the locations reachable (by
      movement, attack or vision) of units.
-   * New [select_unit] tag, with optional fire_event (def. no) and hilight_hex (def. yes)
-     attributes (FR #16819)
+   * New [select_unit] tag, with optional fire_event (def. no) and hilight_hex
+     (def. yes) attributes (FR #16819)
    * New [message] scroll= attribute to specify whether the game view should
      scroll to the speaking unit (defaults to yes) (FR #16843)
    * New key 'random_start' (default = yes) in [terrain_graphics][image]
      allowing to disable random animation shift in animated terrains.
-   * Added a new key "primary" to animation to separate frames that should be treated as primary from frames that shouldn't
-   * Made it so that if several [advancefrom] tags for a certain base unit are encountered,
-      the lowest experience= keys from these is chosen (so if there's only one [advancefrom] referencing this base unit
-      the experience needed can be increased).
+   * Added a new key "primary" to animation to separate frames that should be
+     treated as primary from frames that shouldn't
+   * Made it so that if several [advancefrom] tags for a certain base unit are
+     encountered, the lowest experience= keys from these is chosen (so if 
+     there's only one [advancefrom] referencing this base unit the experience
+     needed can be increased).
  * Miscellaneous and bugfixes:
    * Changed: Lowered severity of some gui2 timer log messages.
    * Units created in debug mode now play their recruit animation (FR #16766).
