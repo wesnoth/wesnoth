@@ -591,9 +591,8 @@ void menu_handler::save_map()
 		if (res == 0) {
 
 			if (file_exists(input_name)) {
-				overwrite = gui::dialog(*gui_, "",
-					_("The map already exists. Do you want to overwrite it?"),
-					gui::YES_NO).show();
+				const int res = gui2::show_message((*gui_).video(), "", _("The map already exists. Do you want to overwrite it?"), gui2::tmessage::yes_no_buttons);
+				overwrite = res == gui2::twindow::CANCEL ? 1 : 0;
 			}
 			else
 				overwrite = 0;
