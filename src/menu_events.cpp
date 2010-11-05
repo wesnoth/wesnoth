@@ -3515,8 +3515,8 @@ void console_handler::do_discover() {
 	}
 }
 void console_handler::do_undiscover() {
-	const int res = gui::dialog(*menu_handler_.gui_, "Undiscover", _("Do you wish to clear all of your discovered units from help?"),gui::YES_NO).show();
-	if(res == 0) {
+	const int res = gui2::show_message((*menu_handler_.gui_).video(), "Undiscover", _("Do you wish to clear all of your discovered units from help?"), gui2::tmessage::yes_no_buttons);
+	if(res != gui2::twindow::CANCEL) {
 		preferences::encountered_units().clear();
 	}
 }
