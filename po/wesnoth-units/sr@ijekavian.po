@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth-units\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-10-19 12:43+0200\n"
+"POT-Creation-Date: 2010-11-05 17:17+0100\n"
 "PO-Revision-Date: 2010-03-02 11:21+0100\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian\n"
@@ -335,7 +335,7 @@ msgstr ""
 #: data/core/units/saurians/Flanker.cfg:48
 #: data/core/units/saurians/Skirmisher.cfg:132
 #: data/core/units/saurians/Skirmisher.cfg:141
-#: data/core/units/undead/Skele_Chocobone.cfg:26
+#: data/core/units/undead/Skele_Chocobone.cfg:29
 msgid "spear"
 msgstr "копље"
 
@@ -633,6 +633,32 @@ msgstr ""
 "кроз непријатељске редове. Тако се боре већ вијековима, одјевени у кожу "
 "прекривену керамичким плочицама и наоружани ратним сјечивима преко надланица."
 
+#. [unit_type]: id=Dwarvish Arcanister, race=dwarf
+#: data/core/units/dwarves/Arcanister.cfg:4
+#, fuzzy
+msgid "Dwarvish Arcanister"
+msgstr "патуљ-борац"
+
+#. [unit_type]: id=Dwarvish Arcanister, race=dwarf
+#: data/core/units/dwarves/Arcanister.cfg:32
+msgid ""
+"The most powerful of all the runecrafters, the Dwarvish Arcanister destroys "
+"wounded enemies almost instantly, and rarely fails to cause a wound when "
+"that is his intent. His skill in runecrafting is unrivaled, and the glyphs "
+"he carves into his weapons and armor deflect the blows of his enemies."
+msgstr ""
+
+#. [attack]: type=impact
+#: data/core/units/dwarves/Arcanister.cfg:49
+#: data/core/units/dwarves/Fighter.cfg:55 data/core/units/dwarves/Lord.cfg:61
+#: data/core/units/dwarves/Runemaster.cfg:42
+#: data/core/units/dwarves/Runesmith.cfg:47
+#: data/core/units/dwarves/Steelclad.cfg:61
+#: data/core/units/trolls/Great.cfg:27 data/core/units/trolls/Hero.cfg:27
+#: data/core/units/trolls/Warrior.cfg:27
+msgid "hammer"
+msgstr "чекић"
+
 #. [unit_type]: id=Dwarvish Berserker, race=dwarf
 #: data/core/units/dwarves/Berserker.cfg:4
 msgid "Dwarvish Berserker"
@@ -710,7 +736,7 @@ msgid "Dwarvish Explorer"
 msgstr "патуљ-истраживач"
 
 #. [unit_type]: id=Dwarvish Explorer, race=dwarf
-#: data/core/units/dwarves/Explorer.cfg:24
+#: data/core/units/dwarves/Explorer.cfg:19
 msgid ""
 "Dwarvish Explorers are peerless survivalists. Using only the equipment they "
 "carry, they can range for months around the forests and mountains looking "
@@ -727,18 +753,18 @@ msgstr ""
 "противницима."
 
 #. [attack]: type=blade
-#: data/core/units/dwarves/Explorer.cfg:42 data/core/units/dwarves/Lord.cfg:52
+#: data/core/units/dwarves/Explorer.cfg:37 data/core/units/dwarves/Lord.cfg:52
 #: data/core/units/dwarves/Steelclad.cfg:52
 #: data/core/units/undead/Skele_Death_Knight.cfg:45
 msgid "battle axe"
 msgstr "бојна сјекира"
 
 #. [attack]: type=blade
-#: data/core/units/dwarves/Explorer.cfg:51
+#: data/core/units/dwarves/Explorer.cfg:46
 #: data/core/units/dwarves/Fighter.cfg:47
-#: data/core/units/dwarves/Pathfinder.cfg:155
-#: data/core/units/dwarves/Pathfinder.cfg:163
-#: data/core/units/dwarves/Scout.cfg:37 data/core/units/dwarves/Scout.cfg:45
+#: data/core/units/dwarves/Pathfinder.cfg:160
+#: data/core/units/dwarves/Pathfinder.cfg:168
+#: data/core/units/dwarves/Scout.cfg:41 data/core/units/dwarves/Scout.cfg:49
 #: data/core/units/undead/Skele_Deathblade.cfg:162
 #: data/core/units/undead/Skele_Draug.cfg:43
 #: data/core/units/undead/Skele_Revenant.cfg:43
@@ -763,14 +789,6 @@ msgstr ""
 "жестоким противницима у блиској борби. Изврсни су на планинском терену и у "
 "пећинама. Њихова снага и издржљивост више него надокнађују понешто слабу "
 "покретљивост."
-
-#. [attack]: type=impact
-#: data/core/units/dwarves/Fighter.cfg:55 data/core/units/dwarves/Lord.cfg:61
-#: data/core/units/dwarves/Steelclad.cfg:61
-#: data/core/units/trolls/Great.cfg:27 data/core/units/trolls/Hero.cfg:27
-#: data/core/units/trolls/Warrior.cfg:27
-msgid "hammer"
-msgstr "чекић"
 
 #. [unit_type]: id=Dwarvish Guardsman, race=dwarf
 #: data/core/units/dwarves/Guardsman.cfg:4
@@ -831,7 +849,7 @@ msgid "Dwarvish Pathfinder"
 msgstr "патуљ-наступач"
 
 #. [unit_type]: id=Dwarvish Pathfinder, race=dwarf
-#: data/core/units/dwarves/Pathfinder.cfg:18
+#: data/core/units/dwarves/Pathfinder.cfg:23
 #, fuzzy
 msgid ""
 "These hardy dwarves are sometimes away from their caves for long periods, "
@@ -852,26 +870,30 @@ msgid "Dwarvish Runemaster"
 msgstr "патуљ-рунотворац"
 
 #. [unit_type]: id=Dwarvish Runemaster, race=dwarf
-#: data/core/units/dwarves/Runemaster.cfg:21
+#: data/core/units/dwarves/Runemaster.cfg:25
 msgid ""
-"Dwarven magic most often manifests itself by the inscription of runes in the "
-"surface of an object, which by their mere presence somehow imbue it with "
-"power. Though rarely seen in combat, a master of these runes can put them to "
-"terrifying use."
+"Except for those with almost supernatural skill, the highest rank a "
+"runecrafter can rise to is that of the Dwarvish Runemaster. Striking blows "
+"nearly as powerful as those of the best warriors, they would be fearsome "
+"without their craft, but with it they are also nigh on invincible, since "
+"their runes cause the physical blows of their enemies to deal less damage "
+"than would be expected."
 msgstr ""
-"Патуљачка магија се најчешће исказује урезивањем руна у површ објекта, које "
-"га својим самим присуством некако прожимају моћи. Иако ријетко виђени у "
-"борби, мајстор руна може их употријебити са страшном дјелотворношћу."
 
-#. [attack]: type=impact
-#: data/core/units/dwarves/Runemaster.cfg:38
-msgid "runic hammer"
-msgstr "рунски чекић"
+#. [unit_type]: id=Dwarvish Runesmith, race=dwarf
+#: data/core/units/dwarves/Runesmith.cfg:4
+#, fuzzy
+msgid "Dwarvish Runesmith"
+msgstr "патуљ-рунотворац"
 
-#. [attack]: type=fire
-#: data/core/units/dwarves/Runemaster.cfg:47
-msgid "lightning bolt"
-msgstr "сноп муња"
+#. [unit_type]: id=Dwarvish Runesmith, race=dwarf
+#: data/core/units/dwarves/Runesmith.cfg:30
+msgid ""
+"Dwarvish runesmiths, now practiced at their craft, carve arcane runes into "
+"their weapons and armor. These runes infuse the runesmith’s blows with power "
+"and accuracy, and disrupt the blows of their enemies, causing them to strike "
+"softly, weakly and on the armor of the defender."
+msgstr ""
 
 #. [unit_type]: id=Dwarvish Scout, race=dwarf
 #: data/core/units/dwarves/Scout.cfg:4
@@ -879,7 +901,7 @@ msgid "Dwarvish Scout"
 msgstr "патуљ-извиђач"
 
 #. [unit_type]: id=Dwarvish Scout, race=dwarf
-#: data/core/units/dwarves/Scout.cfg:19
+#: data/core/units/dwarves/Scout.cfg:23
 msgid ""
 "Although the dwarves cannot match the taller races in a sprint, when "
 "unencumbered by heavy armor their tremendous stamina and endurance allows "
@@ -4137,12 +4159,13 @@ msgstr "орко-главник"
 
 #. [unit_type]: id=Orcish Leader, race=orc
 #: data/core/units/orcs/Leader.cfg:20
+#, fuzzy
 msgid ""
 "Unusually cunning orcs tend to find themselves as the leaders of warrior "
-"bands. They carry a bow out of necessity, but are much more skilled with the "
-"sword. These orcs are powerful fighters, but they also have a certain "
-"rapport with their kin, especially goblins, and can inspire them to fight "
-"with uncharacteristic boldness."
+"bands. They carry a crossbow out of necessity, but are much more skilled "
+"with the sword. These orcs are powerful fighters, but they also have a "
+"certain rapport with their kin, especially goblins, and can inspire them to "
+"fight with uncharacteristic boldness."
 msgstr ""
 "Необично лукави оркови се често налазе у улози вођева ратничких дружина. "
 "Носе и лук за случајеве нужде, али су много вјештији са мачем. Ови су оркови "
@@ -4156,10 +4179,11 @@ msgstr "орко-владар"
 
 #. [unit_type]: id=Orcish Ruler, race=orc
 #: data/core/units/orcs/Ruler.cfg:19
+#, fuzzy
 msgid ""
 "Any orc who can keep a large tribe from feuding and in-fighting is often "
 "unusually intelligent and commanding, and is inevitably very strong as well. "
-"They are skilled with both sword and bow, but their real talent lies in "
+"They are skilled with both sword and crossbow, but their real talent lies in "
 "their rare ability to rally other orcs to battle, to give orders that are "
 "followed not out of fear, but loyalty."
 msgstr ""
@@ -4918,7 +4942,7 @@ msgid "Chocobone"
 msgstr "чококост"
 
 #. [unit_type]: id=Chocobone, race=undead
-#: data/core/units/undead/Skele_Chocobone.cfg:21
+#: data/core/units/undead/Skele_Chocobone.cfg:24
 msgid ""
 "Riding the bones of ostrich-like large birds once used as mounts by a lost "
 "civilization, the skeletal Chocobones can move faster than most cavalry "
@@ -5246,3 +5270,20 @@ msgstr ""
 "\n"
 "Ивери су сасвим нератоборни, али посједују велику снагу. Међутим, нити "
 "обичавају, нити могу да се брзо крећу наоколо."
+
+#~ msgid ""
+#~ "Dwarven magic most often manifests itself by the inscription of runes in "
+#~ "the surface of an object, which by their mere presence somehow imbue it "
+#~ "with power. Though rarely seen in combat, a master of these runes can put "
+#~ "them to terrifying use."
+#~ msgstr ""
+#~ "Патуљачка магија се најчешће исказује урезивањем руна у површ објекта, "
+#~ "које га својим самим присуством некако прожимају моћи. Иако ријетко "
+#~ "виђени у борби, мајстор руна може их употријебити са страшном "
+#~ "дјелотворношћу."
+
+#~ msgid "runic hammer"
+#~ msgstr "рунски чекић"
+
+#~ msgid "lightning bolt"
+#~ msgstr "сноп муња"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-10-03 21:59+0200\n"
+"POT-Creation-Date: 2010-11-05 17:17+0100\n"
 "PO-Revision-Date: 2010-08-13 15:41+0200\n"
 "Last-Translator: Victor Sergienko <singalen@gmail.com>\n"
 "Language-Team: Russian <bugs.wesnoth.org>\n"
@@ -267,7 +267,7 @@ msgstr "Орки пробились через оборону речного ф�
 #: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:118
 #: data/campaigns/Descent_Into_Darkness/scenarios/05_Orc_War.cfg:169
 #: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:137
-#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:324
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:322
 #: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:120
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:68
 #: data/campaigns/Descent_Into_Darkness/scenarios/08_A_Small_Favor2.cfg:393
@@ -803,7 +803,7 @@ msgstr ""
 msgid "Excellent. I’m eager to move on to the real foes."
 msgstr "Отлично. Я жажду встретиться с настоящим врагом."
 
-#. [scenario]: id=03_A_Haunting_in_Winter
+#. [scenario]: id=03_A_Haunting_in_Winter, race=dwarf (
 #: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:6
 msgid "A Haunting in Winter"
 msgstr "Зимняя охота"
@@ -881,7 +881,7 @@ msgid "I... I will try."
 msgstr "Я... Я постараюсь."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:212
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:198
 msgid ""
 "Dwarves! They have often been our allies against the orc hordes. Surely they "
 "will allow us to winter with them."
@@ -889,8 +889,8 @@ msgstr ""
 "Гномы! Они всегда были нашими союзниками в битвах с орками. Уверен, что они "
 "разрешат нам перезимовать здесь."
 
-#. [message]: speaker=unit
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:221
+#. [message]: speaker=second_unit
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:207
 #, fuzzy
 msgid ""
 "Two necromancers are at the cave entrance! Up yer axes, boys, if ye dinna’ "
@@ -900,12 +900,12 @@ msgstr ""
 "стать ходячими скелетами."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:225
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:211
 msgid "Or not. Why do they hate us so much?"
 msgstr "Или нет... Почему они так ненавидят нас?"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:229
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:215
 msgid ""
 "People fear that which they don’t understand, and death, after all, is the "
 "greatest mystery. Those who dare to investigate that mystery are bound to "
@@ -919,12 +919,12 @@ msgstr ""
 "с орками, а пока... Эти гномы не оставляют нам выбора."
 
 #. [event]: type=Ghost side 4}
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:256
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:242
 msgid "Tortured Soul"
 msgstr "Истерзанная душа"
 
 #. [message]
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:262
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:248
 msgid ""
 "Free! Your foul spells cannot enslave me any longer, Malin the Damned. You "
 "shall pay for keeping me from my final rest!"
@@ -933,7 +933,7 @@ msgstr ""
 "Проклятый! Ты заплатишь за то, что не дал мне обрести покой!"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:266
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:252
 msgid ""
 "Fool boy! Your will must be stronger or you will never be able to control "
 "your soldiers well enough to face the orcs. Many are the young necromancers "
@@ -946,13 +946,13 @@ msgstr ""
 "обратились против них. Теперь он будет нападать на тебя неустанно!"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:270
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:256
 #, fuzzy
 msgid "But why are they attacking me? And what should I do?!"
 msgstr "Но почему он нападает на меня? Что мне делать?!"
 
 #. [message]: speaker=Darken Volk
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:274
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:260
 msgid ""
 "Destroy the rebel quickly and all will be well. Wait, and he will begin to "
 "turn the rest of your forces against you."
@@ -961,7 +961,7 @@ msgstr ""
 "промедлишь, то она поведёт остальных твоих солдат против тебя же."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:309
+#: data/campaigns/Descent_Into_Darkness/scenarios/03_A_Haunting_in_Winter.cfg:295
 msgid ""
 "I think I’ve got the rest of them under control now. That was a close call."
 msgstr ""
@@ -1052,7 +1052,7 @@ msgid "The ice doesn’t look very thick..."
 msgstr "Лёд не кажется достаточно прочным..."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:251
+#: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:249
 msgid ""
 "The weak ice gives way beneath the undead creature, who becomes mired in the "
 "thick mud at the lake’s bottom."
@@ -1061,7 +1061,7 @@ msgstr ""
 "вязнет в иле на дне озера."
 
 #. [message]: speaker=narrator
-#: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:259
+#: data/campaigns/Descent_Into_Darkness/scenarios/04_Beginning_of_the_Revenge.cfg:257
 msgid ""
 "The weak ice gives way beneath the heavy warrior, who drowns in the frigid "
 "mountain waters."
@@ -1394,12 +1394,12 @@ msgstr ""
 "одновременно. Мне необходимо срочно бежать на запад к Тёмному Вольку!"
 
 #. [objective]: condition=win
-#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:320
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:318
 msgid "Escape to the northwest"
 msgstr "Бегите на северо-запад"
 
 #. [message]: speaker=Dela Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:342
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:340
 msgid ""
 "While our forces must stay here to fight off your pet orcs, when we are done "
 "I shall come after you. You are my brother no longer."
@@ -1410,7 +1410,7 @@ msgstr ""
 
 # Антон Колесов 22.08.2007 — boil — вроде как прыщ. Проклятие прыщами... Может быть я не понял юмора авторов, но решил перевести как "болезненные язвы".
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:347
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:345
 #, fuzzy
 msgid ""
 "Gods of Darkness, how did it come to this? My own sister determined on my "
@@ -1427,7 +1427,7 @@ msgstr ""
 "Академии."
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:351
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:349
 msgid ""
 "Now the only being who still wants to keep me alive is a necromancer. Curse "
 "them all! Live or die, I’ll have my revenge on those that have wronged me."
@@ -1437,7 +1437,7 @@ msgstr ""
 "противостоит мне!"
 
 #. [message]: speaker=Malin Keshar
-#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:375
+#: data/campaigns/Descent_Into_Darkness/scenarios/06_Return_to_Parthyn.cfg:373
 msgid "See how you die when you spurn the help of Malin Keshar!"
 msgstr ""
 "А теперь посмотри на свою смерть, после того как ты отверг помощь Малина "
@@ -1616,8 +1616,7 @@ msgstr ""
 "мертвецами."
 
 #. [message]: speaker=unit
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:348
-#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:377
+#: data/campaigns/Descent_Into_Darkness/scenarios/07_A_Small_Favor.cfg:360
 msgid "Here is the entrance! Hurry!"
 msgstr "Здесь вход! Скорее!"
 

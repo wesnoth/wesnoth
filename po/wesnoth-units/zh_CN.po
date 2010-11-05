@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wesnoth\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-10-19 12:43+0200\n"
+"POT-Creation-Date: 2010-11-05 17:17+0100\n"
 "PO-Revision-Date: 2010-07-25 20:53+0800\n"
 "Last-Translator: CloudiDust <cloudidust@gmail.com>\n"
 "Language-Team: Chinese/Simplified <i18n-translation@lists.linux.net.cn>\n"
@@ -323,7 +323,7 @@ msgstr ""
 #: data/core/units/saurians/Flanker.cfg:48
 #: data/core/units/saurians/Skirmisher.cfg:132
 #: data/core/units/saurians/Skirmisher.cfg:141
-#: data/core/units/undead/Skele_Chocobone.cfg:26
+#: data/core/units/undead/Skele_Chocobone.cfg:29
 msgid "spear"
 msgstr "矛"
 
@@ -604,6 +604,32 @@ msgstr ""
 "他们穿着被陶瓷片覆盖的皮甲，在手背上绑着传统的战刃参加战斗，如同已经战斗了几"
 "百年一样。"
 
+#. [unit_type]: id=Dwarvish Arcanister, race=dwarf
+#: data/core/units/dwarves/Arcanister.cfg:4
+#, fuzzy
+msgid "Dwarvish Arcanister"
+msgstr "矮人战士"
+
+#. [unit_type]: id=Dwarvish Arcanister, race=dwarf
+#: data/core/units/dwarves/Arcanister.cfg:32
+msgid ""
+"The most powerful of all the runecrafters, the Dwarvish Arcanister destroys "
+"wounded enemies almost instantly, and rarely fails to cause a wound when "
+"that is his intent. His skill in runecrafting is unrivaled, and the glyphs "
+"he carves into his weapons and armor deflect the blows of his enemies."
+msgstr ""
+
+#. [attack]: type=impact
+#: data/core/units/dwarves/Arcanister.cfg:49
+#: data/core/units/dwarves/Fighter.cfg:55 data/core/units/dwarves/Lord.cfg:61
+#: data/core/units/dwarves/Runemaster.cfg:42
+#: data/core/units/dwarves/Runesmith.cfg:47
+#: data/core/units/dwarves/Steelclad.cfg:61
+#: data/core/units/trolls/Great.cfg:27 data/core/units/trolls/Hero.cfg:27
+#: data/core/units/trolls/Warrior.cfg:27
+msgid "hammer"
+msgstr "锤"
+
 #. [unit_type]: id=Dwarvish Berserker, race=dwarf
 #: data/core/units/dwarves/Berserker.cfg:4
 msgid "Dwarvish Berserker"
@@ -677,7 +703,7 @@ msgid "Dwarvish Explorer"
 msgstr "矮人探险者"
 
 #. [unit_type]: id=Dwarvish Explorer, race=dwarf
-#: data/core/units/dwarves/Explorer.cfg:24
+#: data/core/units/dwarves/Explorer.cfg:19
 msgid ""
 "Dwarvish Explorers are peerless survivalists. Using only the equipment they "
 "carry, they can range for months around the forests and mountains looking "
@@ -692,18 +718,18 @@ msgstr ""
 "险而棘手的敌人。"
 
 #. [attack]: type=blade
-#: data/core/units/dwarves/Explorer.cfg:42 data/core/units/dwarves/Lord.cfg:52
+#: data/core/units/dwarves/Explorer.cfg:37 data/core/units/dwarves/Lord.cfg:52
 #: data/core/units/dwarves/Steelclad.cfg:52
 #: data/core/units/undead/Skele_Death_Knight.cfg:45
 msgid "battle axe"
 msgstr "战斧"
 
 #. [attack]: type=blade
-#: data/core/units/dwarves/Explorer.cfg:51
+#: data/core/units/dwarves/Explorer.cfg:46
 #: data/core/units/dwarves/Fighter.cfg:47
-#: data/core/units/dwarves/Pathfinder.cfg:155
-#: data/core/units/dwarves/Pathfinder.cfg:163
-#: data/core/units/dwarves/Scout.cfg:37 data/core/units/dwarves/Scout.cfg:45
+#: data/core/units/dwarves/Pathfinder.cfg:160
+#: data/core/units/dwarves/Pathfinder.cfg:168
+#: data/core/units/dwarves/Scout.cfg:41 data/core/units/dwarves/Scout.cfg:49
 #: data/core/units/undead/Skele_Deathblade.cfg:162
 #: data/core/units/undead/Skele_Draug.cfg:43
 #: data/core/units/undead/Skele_Revenant.cfg:43
@@ -727,14 +753,6 @@ msgstr ""
 "矮人战士使用强有力的战斧和大锤，使得他们在近战中成为令人恐惧的对手。他们非常"
 "擅长在山岭和地下世界作战。他们的力量和耐力要弥补速度上的相对缓慢是绰绰有余"
 "的。"
-
-#. [attack]: type=impact
-#: data/core/units/dwarves/Fighter.cfg:55 data/core/units/dwarves/Lord.cfg:61
-#: data/core/units/dwarves/Steelclad.cfg:61
-#: data/core/units/trolls/Great.cfg:27 data/core/units/trolls/Hero.cfg:27
-#: data/core/units/trolls/Warrior.cfg:27
-msgid "hammer"
-msgstr "锤"
 
 #. [unit_type]: id=Dwarvish Guardsman, race=dwarf
 #: data/core/units/dwarves/Guardsman.cfg:4
@@ -791,7 +809,7 @@ msgid "Dwarvish Pathfinder"
 msgstr "矮人寻路者"
 
 #. [unit_type]: id=Dwarvish Pathfinder, race=dwarf
-#: data/core/units/dwarves/Pathfinder.cfg:18
+#: data/core/units/dwarves/Pathfinder.cfg:23
 #, fuzzy
 msgid ""
 "These hardy dwarves are sometimes away from their caves for long periods, "
@@ -811,26 +829,30 @@ msgid "Dwarvish Runemaster"
 msgstr "矮人符文大师"
 
 #. [unit_type]: id=Dwarvish Runemaster, race=dwarf
-#: data/core/units/dwarves/Runemaster.cfg:21
+#: data/core/units/dwarves/Runemaster.cfg:25
 msgid ""
-"Dwarven magic most often manifests itself by the inscription of runes in the "
-"surface of an object, which by their mere presence somehow imbue it with "
-"power. Though rarely seen in combat, a master of these runes can put them to "
-"terrifying use."
+"Except for those with almost supernatural skill, the highest rank a "
+"runecrafter can rise to is that of the Dwarvish Runemaster. Striking blows "
+"nearly as powerful as those of the best warriors, they would be fearsome "
+"without their craft, but with it they are also nigh on invincible, since "
+"their runes cause the physical blows of their enemies to deal less damage "
+"than would be expected."
 msgstr ""
-"矮人的魔法通常表现在物体表面雕琢的符文上，仅仅由于符文的存在，这些物体就被通"
-"过某种方式附上了魔力。使用符文的大师在战斗中很少见，但是他们使用起符文来十分"
-"可怕。"
 
-#. [attack]: type=impact
-#: data/core/units/dwarves/Runemaster.cfg:38
-msgid "runic hammer"
-msgstr "符文锤"
+#. [unit_type]: id=Dwarvish Runesmith, race=dwarf
+#: data/core/units/dwarves/Runesmith.cfg:4
+#, fuzzy
+msgid "Dwarvish Runesmith"
+msgstr "矮人符文大师"
 
-#. [attack]: type=fire
-#: data/core/units/dwarves/Runemaster.cfg:47
-msgid "lightning bolt"
-msgstr "闪电球"
+#. [unit_type]: id=Dwarvish Runesmith, race=dwarf
+#: data/core/units/dwarves/Runesmith.cfg:30
+msgid ""
+"Dwarvish runesmiths, now practiced at their craft, carve arcane runes into "
+"their weapons and armor. These runes infuse the runesmith’s blows with power "
+"and accuracy, and disrupt the blows of their enemies, causing them to strike "
+"softly, weakly and on the armor of the defender."
+msgstr ""
 
 #. [unit_type]: id=Dwarvish Scout, race=dwarf
 #: data/core/units/dwarves/Scout.cfg:4
@@ -838,7 +860,7 @@ msgid "Dwarvish Scout"
 msgstr "矮人侦察兵"
 
 #. [unit_type]: id=Dwarvish Scout, race=dwarf
-#: data/core/units/dwarves/Scout.cfg:19
+#: data/core/units/dwarves/Scout.cfg:23
 msgid ""
 "Although the dwarves cannot match the taller races in a sprint, when "
 "unencumbered by heavy armor their tremendous stamina and endurance allows "
@@ -3865,12 +3887,13 @@ msgstr "兽人领袖"
 
 #. [unit_type]: id=Orcish Leader, race=orc
 #: data/core/units/orcs/Leader.cfg:20
+#, fuzzy
 msgid ""
 "Unusually cunning orcs tend to find themselves as the leaders of warrior "
-"bands. They carry a bow out of necessity, but are much more skilled with the "
-"sword. These orcs are powerful fighters, but they also have a certain "
-"rapport with their kin, especially goblins, and can inspire them to fight "
-"with uncharacteristic boldness."
+"bands. They carry a crossbow out of necessity, but are much more skilled "
+"with the sword. These orcs are powerful fighters, but they also have a "
+"certain rapport with their kin, especially goblins, and can inspire them to "
+"fight with uncharacteristic boldness."
 msgstr ""
 "那些非同一般地狡猾的兽人经常发现自己成为了武士团的领袖。出于需要，他们会携带"
 "一把弓，但他们却更加擅长于剑术。这些兽人是强大的战士，他们和族人之间同时也有"
@@ -3883,10 +3906,11 @@ msgstr "兽人统治者"
 
 #. [unit_type]: id=Orcish Ruler, race=orc
 #: data/core/units/orcs/Ruler.cfg:19
+#, fuzzy
 msgid ""
 "Any orc who can keep a large tribe from feuding and in-fighting is often "
 "unusually intelligent and commanding, and is inevitably very strong as well. "
-"They are skilled with both sword and bow, but their real talent lies in "
+"They are skilled with both sword and crossbow, but their real talent lies in "
 "their rare ability to rally other orcs to battle, to give orders that are "
 "followed not out of fear, but loyalty."
 msgstr ""
@@ -4594,7 +4618,7 @@ msgid "Chocobone"
 msgstr "骷髅骑士"
 
 #. [unit_type]: id=Chocobone, race=undead
-#: data/core/units/undead/Skele_Chocobone.cfg:21
+#: data/core/units/undead/Skele_Chocobone.cfg:24
 msgid ""
 "Riding the bones of ostrich-like large birds once used as mounts by a lost "
 "civilization, the skeletal Chocobones can move faster than most cavalry "
@@ -4901,6 +4925,22 @@ msgstr ""
 "\n"
 "树人们完全不好战，却拥有着强大的力量。然而，他们不习惯四处移动，在这样做的时"
 "候速度也不快。"
+
+#~ msgid ""
+#~ "Dwarven magic most often manifests itself by the inscription of runes in "
+#~ "the surface of an object, which by their mere presence somehow imbue it "
+#~ "with power. Though rarely seen in combat, a master of these runes can put "
+#~ "them to terrifying use."
+#~ msgstr ""
+#~ "矮人的魔法通常表现在物体表面雕琢的符文上，仅仅由于符文的存在，这些物体就被"
+#~ "通过某种方式附上了魔力。使用符文的大师在战斗中很少见，但是他们使用起符文来"
+#~ "十分可怕。"
+
+#~ msgid "runic hammer"
+#~ msgstr "符文锤"
+
+#~ msgid "lightning bolt"
+#~ msgstr "闪电球"
 
 #, fuzzy
 #~ msgid ""

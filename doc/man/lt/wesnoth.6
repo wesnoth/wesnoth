@@ -63,7 +63,7 @@ the configuration directory outside the $HOME or "My Documents\eMy Games"
 išveda naudotojo konfigūracijos aplanko kelią ir išeina.
 .TP 
 \fB\-\-data\-dir <aplankas>\fP
-overrides the data directory with the one specified
+naudoja nurodytą duomenų aplanką
 .TP 
 \fB\-d, \-\-debug\fP
 įjungia papildomas komandinio režimo opcijas žaidimo metu (daugiau
@@ -144,11 +144,11 @@ list the data/core won't be preprocessed.  Example: \fB\-p
 ~/wesnoth/data/campaigns/tutorial ~/result\fP or
 \fB\-p=MULTIPLAYER,MY_OWN_CAMPAIGN ~/wesnoth/data/campaign/camp ~/result\fP
 .TP 
-\fB\-\-preprocess\-input\-macros <source file>\fP
+\fB\-\-preprocess\-input\-macros <šaltinio failas>\fP
 used only by the '\-\-preprocess' command.  Specifies a file that contains
 [preproc_define]s to be included before preprocessing.
 .TP 
-\fB\-\-preprocess\-output\-macros [<target file>]\fP
+\fB\-\-preprocess\-output\-macros [<išvesties failas>]\fP
 used only by the '\-\-preprocess' command.  Will output all preprocessed
 macros in the target file. If the file is not specified the output will be
 file '_MACROS_.cfg' in the target directory of preprocess's command.  This
@@ -228,11 +228,11 @@ an id. Factions are described in the data/multiplayer.cfg file.
 \fB\-\-turns=\fP\fIvertė\fP
 nustato ėjimų skaičių pasirinktam scenarijui. Numatyta \fB50\fP.
 .
-.SH "EXIT STATUS"
+.SH "IŠĖJIMO BŪSENA"
 .
-Normal exit status is 0. An exit status of 1 indicates an (SDL, video,
-fonts, etc) initialization error. An exit status of 2 indicates an error
-with the command line options.
+Normali išėjimo būsena yra 0. Išėjimo būsena lygi 1 nurodo paleidimo klaidą
+(SDL, video, šriftų ir t.t.). Išėjimo būsena lygi 2 nurodo klaidą komandinės
+eilutės parametruose.
 .
 .SH AUTORIUS
 .
