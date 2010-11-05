@@ -316,8 +316,8 @@ void editor_controller::quit_confirm(EXIT_STATUS mode)
 			message += "\n" + str;
 		}
 	}
-	int res = gui::dialog(gui(),_("Quit"),message,gui::YES_NO).show();
-	if (res == 0) {
+	const int res = gui2::show_message(gui().video(), _("Quit"), message, gui2::tmessage::yes_no_buttons);
+	if(res != gui2::twindow::CANCEL) {
 		do_quit_ = true;
 		quit_mode_ = mode;
 	}
@@ -417,8 +417,8 @@ void editor_controller::editor_settings_dialog_redraw_callback(int r, int g, int
 bool editor_controller::confirm_discard()
 {
 	if (get_map_context().modified()) {
-		return !gui::dialog(gui(), _("Unsaved Changes"),
-			_("Do you want to discard all changes you made to the map since the last save?"), gui::YES_NO).show();
+		const int res = gui2::show_message(gui().video(), _("Unsaved Changes"), _("Do you want to discard all changes you made to the map since the last save?"), gui2::tmessage::yes_no_buttons);
+		return gui2::twindow::CANCEL != res;
 	} else {
 		return true;
 	}
