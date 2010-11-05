@@ -103,8 +103,8 @@ gui::dialog_button_action::RESULT delete_recall_unit::button_pressed(int menu_se
 		}
 
 		if(!message.str().empty()) {
-			const int res = gui::dialog(disp_,"",message.str(),gui::YES_NO).show();
-			if(res != 0) {
+			const int res = gui2::show_message(disp_.video(), "", message.str(), gui2::tmessage::yes_no_buttons);
+			if(res == gui2::twindow::CANCEL) {
 				return gui::CONTINUE_DIALOG;
 			}
 		}
