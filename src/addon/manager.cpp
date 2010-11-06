@@ -27,6 +27,7 @@
 #include "gui/dialogs/addon_connect.hpp"
 #include "gui/dialogs/addon_list.hpp"
 #include "gui/dialogs/message.hpp"
+#include "gui/dialogs/simple_item_selector.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
@@ -1350,26 +1351,22 @@ namespace {
 		gui::menu::basic_sorter sorter;
 		sorter.set_alpha_sort(1);
 
-		int index = 0;
+		int index = -1;
 		int res;
 
 		do {
-			gui::dialog addon_dialog(disp,
-							_("Uninstall add-ons"), _("Choose the add-on to remove."),
-							gui::OK_CANCEL);
-			gui::menu::imgsel_style &addon_style = gui::menu::bluebg_style;
-
-			gui::menu *addon_menu = new gui::menu(disp.video(), addons, false, -1,
-					gui::dialog::max_menu_width, &sorter, &addon_style, false);
-			addon_dialog.set_menu(addon_menu);
-			index = addon_dialog.show();
-
-			if(index < 0)
+			gui2::tsimple_item_selector dlg(
+				_("Uninstall add-ons"), _("Choose the add-on to remove."), addons);
+			dlg.set_selected_index(index);
+			dlg.show(disp.video());
+			index = dlg.selected_index();
+			
+			if(index == -1)
 				return;
 
 			std::string confirm_message = _("Are you sure you want to remove the add-on '$addon|'?");
 			utils::string_map symbols;
-			symbols["addon"] = addons.at(index);
+			symbols["addon"] = addons.at(static_cast<size_t>(index));
 			confirm_message = utils::interpolate_variables_into_string(confirm_message, &symbols);
 
 			res = gui2::show_message(disp.video()
