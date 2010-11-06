@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.9.x-SVN\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-11-05 17:17+0100\n"
-"PO-Revision-Date: 2010-10-20 23:48+0900\n"
+"POT-Creation-Date: 2010-11-05 17:41+0100\n"
+"PO-Revision-Date: 2010-11-06 00:55+0900\n"
 "Last-Translator: IWAI, Masaharu <iwaim.sub@gmail.com>\n"
 "Language-Team: Japanese Translation Team\n"
 "Language: \n"
@@ -1934,7 +1934,7 @@ msgstr "ヘルプ"
 #. [button]: id=help
 #: data/gui/default/window/title_screen.cfg:147
 msgid "Show Battle for Wesnoth help"
-msgstr ""
+msgstr "Battle for Wesnoth のヘルプを表示します"
 
 #. [button]: id=previous_tip
 #: data/gui/default/window/title_screen.cfg:162
@@ -1944,17 +1944,17 @@ msgstr "前へ"
 #. [button]: id=previous_tip
 #: data/gui/default/window/title_screen.cfg:163
 msgid "Show previous tip of the day"
-msgstr ""
+msgstr "前のヒントを表示します"
 
 #. [button]: id=next_tip
 #: data/gui/default/window/title_screen.cfg:178
 msgid "Show next tip of the day"
-msgstr ""
+msgstr "次のヒントを表示します"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:223
 msgid "Start a tutorial to familiarize yourself with the game"
-msgstr ""
+msgstr "ゲームに慣れるためのチュートリアルを開始します"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
@@ -1971,7 +1971,7 @@ msgstr "キャンペーン"
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:224
 msgid "Start a new single player campaign"
-msgstr ""
+msgstr "新たに一人用キャンペーンを開始します"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:225
@@ -1979,6 +1979,8 @@ msgid ""
 "Play multiplayer (hotseat, LAN, or Internet), or a single scenario against "
 "the AI"
 msgstr ""
+"マルチプレイヤーゲーム（交互に一台か、LAN、あるいはインターネット）、または "
+"AI との対戦で単一シナリオをプレイします"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:226
@@ -1988,7 +1990,7 @@ msgstr "再開"
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:226
 msgid "Load a saved game"
-msgstr "保存されたゲームを再開する"
+msgstr "保存されたゲームを読み込みます"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:227
@@ -1999,6 +2001,7 @@ msgstr "アドオン"
 #: data/gui/default/window/title_screen.cfg:227
 msgid "Download usermade campaigns, eras, or map packs"
 msgstr ""
+"ユーザーが作成したキャンペーン、時代、マップのパッケージをダウンロードします"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:228
@@ -2008,7 +2011,7 @@ msgstr "マップエディタ"
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:228
 msgid "Start the map editor"
-msgstr "マップエディタを起動する"
+msgstr "マップエディタを起動します"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [grid]
@@ -2019,7 +2022,7 @@ msgstr "言語を変更します"
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:230
 msgid "Configure the game’s settings"
-msgstr ""
+msgstr "ゲームの設定を行います"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:231
@@ -2029,23 +2032,22 @@ msgstr "クレジット"
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:231
 msgid "View the credits"
-msgstr "クレジットを見る"
+msgstr "クレジットを表示します"
 
 #. [grid]
 #: data/gui/default/window/title_screen.cfg:232
-#, fuzzy
 msgid "Quit the game"
-msgstr "ゲームを終了"
+msgstr "ゲームを終了します"
 
 #. [button]: id=ok
 #: data/gui/default/window/unit_attack.cfg:195
 msgid "Attack"
-msgstr ""
+msgstr "攻撃"
 
 #. [label]
 #: data/gui/default/window/unit_attack.cfg:255
 msgid "Attack enemy"
-msgstr ""
+msgstr "敵を攻撃する"
 
 #. #-#-#-#-#  wesnoth-lib.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [label]
@@ -2731,9 +2733,8 @@ msgid "Load Game..."
 msgstr "ゲームを再開しています……"
 
 #: src/gui/dialogs/title_screen.cpp:270
-#, fuzzy
 msgid "Version "
-msgstr "バージョン: "
+msgstr "バージョン "
 
 #: src/gui/dialogs/title_screen.cpp:273
 msgid "Version"
@@ -3205,39 +3206,35 @@ msgstr "更新"
 
 #: src/hotkeys.cpp:214
 msgid "Next tip of the day"
-msgstr ""
+msgstr "本日の次のヒント"
 
 #: src/hotkeys.cpp:221
-#, fuzzy
 msgid "Previous tip of the day"
-msgstr "前のユニット"
+msgstr "本日の前のヒント"
 
 #: src/hotkeys.cpp:228
-#, fuzzy
 msgid "Start tutorial"
-msgstr "チュートリアル"
+msgstr "チュートリアルの開始"
 
 #: src/hotkeys.cpp:235
-#, fuzzy
 msgid "Start a campaign"
-msgstr "キャンペーンをプレイする"
+msgstr "キャンペーンの開始"
 
 #: src/hotkeys.cpp:242
 msgid "Start a multiplayer game"
-msgstr ""
+msgstr "マルチプレイヤーゲームの開始"
 
 #: src/hotkeys.cpp:249
-#, fuzzy
 msgid "Manage addons"
-msgstr "アドオンを更新する"
+msgstr "アドオンの管理"
 
 #: src/hotkeys.cpp:257
 msgid "Start the editor"
-msgstr ""
+msgstr "エディタの開始"
 
 #: src/hotkeys.cpp:265
 msgid "Show the credits"
-msgstr ""
+msgstr "クレジットの表示"
 
 #: src/hotkeys.cpp:718 src/hotkeys.cpp:1017
 msgid "Do you really want to quit?"
