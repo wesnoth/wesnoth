@@ -1,6 +1,24 @@
+
 --! #textdomain wesnoth
 
 local helper = {}
+
+
+--! Returns an iterator over teams matching a given side filter that can be used in a for-in loop.
+function wesnoth.get_sides(cfg)
+	local function f(s)
+		local i = s.i
+		local team
+		repeat
+			i = i + 1
+			team = wesnoth.get_side(i)
+			if not team then return nil end
+		until wesnoth.match_side(i,cfg)
+		s.i = i
+		return team
+	end
+	return f, { i = 0 }
+end
 
 --! Interrupts the current execution and displays a chat message that looks like a WML error.
 function helper.wml_error(m)

@@ -265,6 +265,7 @@ wesnoth_source = \
 	scripting/lua.cpp \
 	sha1.cpp \
 	settings.cpp \
+	side_filter.cpp \
 	statistics.cpp \
 	statistics_dialog.cpp \
 	storyscreen/interface.cpp \

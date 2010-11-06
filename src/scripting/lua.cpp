@@ -49,6 +49,7 @@
 #include "resources.hpp"
 #include "terrain_filter.hpp"
 #include "terrain_translation.hpp"
+#include "side_filter.hpp"
 #include "sound.hpp"
 #include "unit.hpp"
 #include "ai/lua/core.hpp"
@@ -2760,6 +2761,30 @@ static int intf_match_location(lua_State *L)
 	return 1;
 }
 
+
+
+/**
+ * Matches a side against the given filter.
+ * - Args 1: side number.
+ * - Arg 2: WML table.
+ * - Ret 1: boolean.
+ */
+static int intf_match_side(lua_State *L)
+{
+	unsigned side = luaL_checkinteger(L, 1);
+	if (side >= resources::teams->size()) return 0;
+	vconfig filter = luaW_checkvconfig(L, 2, true);
+
+	if (filter.null()) {
+		lua_pushboolean(L, true);
+		return 1;
+	}
+
+	side_filter s_filter(filter);
+	lua_pushboolean(L, s_filter.match(side));
+	return 1;
+}
+
 /**
  * Adds a modification to a unit.
  * - Arg 1: unit.
@@ -2878,6 +2903,7 @@ LuaKernel::LuaKernel(const config &cfg)
 		{ "highlight_hex",            &intf_highlight_hex            },
 		{ "is_enemy",                 &intf_is_enemy                 },
 		{ "match_location",           &intf_match_location           },
+		{ "match_side",               &intf_match_side               },
 		{ "match_unit",               &intf_match_unit               },
 		{ "message",                  &intf_message                  },
 		{ "play_sound",               &intf_play_sound               },
