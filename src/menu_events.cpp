@@ -37,6 +37,7 @@
 #include "gui/dialogs/wml_message.hpp"
 #include "gui/dialogs/gamestate_inspector.hpp"
 #include "gui/dialogs/data_manage.hpp"
+#include "gui/dialogs/simple_item_selector.hpp"
 #include "gui/dialogs/unit_create.hpp"
 #include "gui/widgets/settings.hpp"
 #include "gui/widgets/window.hpp"
@@ -3312,11 +3313,14 @@ void console_handler::do_choose_level() {
 	std::sort(options.begin(), options.end());
 	int choice = 0;
 	{
-		gui::dialog menu(*menu_handler_.gui_, _("Choose Scenario (Debug!)"), "", gui::OK_CANCEL);
-		menu.set_menu(options);
-		menu.get_menu().move_selection(next);
-		choice = menu.show();
+		gui2::tsimple_item_selector dlg(_("Choose Scenario (Debug!)"), "", options);
+		dlg.set_selected_index(next);
+		dlg.show(menu_handler_.gui_->video());
+		choice = dlg.selected_index();
 	}
+
+	if(choice == -1)
+		return;
 
 	if (size_t(choice) < options.size()) {
 		menu_handler_.gamestate_.classification().next_scenario = options[choice];

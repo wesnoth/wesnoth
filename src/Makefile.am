@@ -189,6 +189,7 @@ wesnoth_source = \
 	gui/dialogs/mp_create_game.cpp \
 	gui/dialogs/mp_method_selection.cpp \
 	gui/dialogs/mp_cmd_wrapper.cpp \
+	gui/dialogs/simple_item_selector.cpp \
 	gui/dialogs/title_screen.cpp \
 	gui/dialogs/transient_message.cpp \
 	gui/dialogs/unit_attack.cpp \
