@@ -752,7 +752,7 @@ WML_HANDLER_FUNCTION(inspect, /*event_info*/, cfg)
 
 WML_HANDLER_FUNCTION(modify_ai, /*event_info*/, cfg)
 {
-	int side_num = cfg["side"];
+	int side_num = cfg["side"].to_int(1);
 	if (side_num==0) {
 		return;
 	}
