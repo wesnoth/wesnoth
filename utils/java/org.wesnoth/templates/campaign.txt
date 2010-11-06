@@ -17,11 +17,12 @@
 
 	first_scenario=$$first_scenario
 
-	#ifdef $$define
-		# add here custom code
-		{~add-ons/$$project_name/scenarios}
-		[+units]
-			{~add-ons/$$project_name/units}
-		[/units]
-	#endif
 [/campaign]
+
+#ifdef $$define
+	# add here custom code
+	{~add-ons/$$project_name/scenarios}
+	[+units]
+		{~add-ons/$$project_name/units}
+	[/units]
+#endif
