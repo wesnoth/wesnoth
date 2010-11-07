@@ -421,6 +421,8 @@
 		<Unit filename="..\..\src\gui\dialogs\mp_create_game.hpp" />
 		<Unit filename="..\..\src\gui\dialogs\mp_method_selection.cpp" />
 		<Unit filename="..\..\src\gui\dialogs\mp_method_selection.hpp" />
+		<Unit filename="..\..\src\gui\dialogs\simple_item_selector.cpp" />
+		<Unit filename="..\..\src\gui\dialogs\simple_item_selector.hpp" />
 		<Unit filename="..\..\src\gui\dialogs\title_screen.cpp" />
 		<Unit filename="..\..\src\gui\dialogs\title_screen.hpp" />
 		<Unit filename="..\..\src\gui\dialogs\transient_message.cpp" />
@@ -635,8 +637,6 @@
 			<Option compilerVar="CC" />
 			<Option compiler="gcc" use="1" buildCommand="$compiler $options -DDISABLE_POOL_ALLOC $includes -c $file -o $object" />
 		</Unit>
-		<Unit filename="..\..\src\portrait.cpp" />
-		<Unit filename="..\..\src\portrait.hpp" />
 		<Unit filename="..\..\src\preferences.cpp" />
 		<Unit filename="..\..\src\preferences.hpp" />
 		<Unit filename="..\..\src\preferences_display.cpp" />
