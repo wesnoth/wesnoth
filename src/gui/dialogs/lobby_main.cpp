@@ -1217,17 +1217,6 @@ void tlobby_main::add_active_window_message(const std::string& sender, const std
 	append_to_chatbox(ss.str());
 }
 
-void tlobby_main::next_active_window()
-{
-	if (open_windows_.size() < 2) return;
-	if (active_window_ == open_windows_.size() - 1) {
-		active_window_ = 0;
-	} else {
-		active_window_++;
-	}
-	active_window_changed();
-}
-
 void tlobby_main::switch_to_window(tlobby_chat_window* t)
 {
 	switch_to_window(t - &open_windows_[0]);

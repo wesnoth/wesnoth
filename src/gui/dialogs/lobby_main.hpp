@@ -240,11 +240,6 @@ private:
 	void add_active_window_message(const std::string& sender, const std::string& message);
 
 	/**
-	 * Switch to the next active window
-	 */
-	void next_active_window();
-
-	/**
 	 * Switch to the window given by a vaild pointer (e.g. received from a call
 	 * to *_window_open)
 	 */
