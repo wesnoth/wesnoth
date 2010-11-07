@@ -1304,10 +1304,9 @@ void play_controller::process_oos(const std::string& msg) const
 {
 	if (game_config::ignore_replay_errors) return;
 
-	/** @todo FIXME: activate translation support after string freeze */
 	std::stringstream message;
-	message << "The game is out of sync. It might not make much sense to continue. Do you want to save your game?";
-	message << "\n\nError details:\n\n" << msg;
+	message << _("The game is out of sync. It might not make much sense to continue. Do you want to save your game?");
+	message << "\n\n" << _("Error details:") << "\n\n" << msg;
 
 	savegame::oos_savegame save(to_config());
 	save.save_game_interactive(resources::screen->video(), message.str(), gui::YES_NO); // can throw end_level_exception
