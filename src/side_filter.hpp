@@ -37,7 +37,7 @@ public:
 	side_filter(const vconfig& cfg, const bool flat_tod = false);
 	side_filter(const vconfig& cfg, const side_filter& original);
 	/** Default implementation, but defined out-of-line for efficiency reasons. */
-	~side_filter();
+	virtual ~side_filter();
 
 	side_filter(const side_filter &other);
 	side_filter& operator=(const side_filter &other);
