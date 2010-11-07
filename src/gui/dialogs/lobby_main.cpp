@@ -1630,11 +1630,6 @@ void tlobby_main::send_message_to_active_window(const std::string& input)
 	}
 }
 
-void tlobby_main::next_window_button_callback(twindow& /*window*/)
-{
-	next_active_window();
-}
-
 void tlobby_main::close_window_button_callback(twindow& /*window*/)
 {
 	close_active_window();

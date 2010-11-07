@@ -300,8 +300,6 @@ private:
 
 	void send_message_to_active_window(const std::string& input);
 
-	void next_window_button_callback(twindow& window);
-
 	void close_window_button_callback(twindow& window);
 
 	void create_button_callback(twindow& window);
