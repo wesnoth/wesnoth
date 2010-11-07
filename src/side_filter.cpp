@@ -29,10 +29,6 @@
 static lg::log_domain log_engine_sf("engine/side_filter");
 #define ERR_NG LOG_STREAM(err, log_engine_sf)
 
-side_filter::~side_filter()
-{
-}
-
 #ifdef _MSC_VER
 // This is a workaround for a VC bug; this constructor is never called
 // and so we don't care about the warnings this quick fix generates
@@ -127,17 +123,17 @@ bool side_filter::match(const team& t) const
 		//handle [and]
 		if(cond_name == "and")
 		{
-			matches = matches && side_filter(cond_cfg, *this)(t);
+			matches = matches && side_filter(cond_cfg, *this).match(t);
 		}
 		//handle [or]
 		else if(cond_name == "or")
 		{
-			matches = matches || side_filter(cond_cfg, *this)(t);
+			matches = matches || side_filter(cond_cfg, *this).match(t);
 		}
 		//handle [not]
 		else if(cond_name == "not")
 		{
-			matches = matches && !side_filter(cond_cfg, *this)(t);
+			matches = matches && !side_filter(cond_cfg, *this).match(t);
 		}
 			++cond;
 	}

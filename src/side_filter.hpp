@@ -36,8 +36,6 @@ public:
 
 	side_filter(const vconfig& cfg, const bool flat_tod = false);
 	side_filter(const vconfig& cfg, const side_filter& original);
-	/** Default implementation, but defined out-of-line for efficiency reasons. */
-	virtual ~side_filter();
 
 	side_filter(const side_filter &other);
 	side_filter& operator=(const side_filter &other);
@@ -45,8 +43,6 @@ public:
 	//match: returns true if and only if the given team matches this filter
 	bool match(const team& t) const;
 	bool match(const int side) const;
-	virtual bool operator()(const team& t) { return this->match(t); }
-	virtual bool operator()(const int side) { return this->match(side); }
 
 	//get_teams: gets all teams on the map that match this filter
 	// @param teams - out parameter containing the results
