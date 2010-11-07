@@ -404,6 +404,7 @@ set(wesnoth-main_SRC
 	gui/dialogs/campaign_selection.cpp
 	gui/dialogs/data_manage.cpp
 	gui/dialogs/dialog.cpp
+	gui/dialogs/edit_label.cpp
 	gui/dialogs/formula_debugger.cpp
 	gui/dialogs/game_load.cpp
 	gui/dialogs/game_delete.cpp

@@ -32,6 +32,7 @@
 #include "game_events.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
+#include "gui/dialogs/edit_label.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "gui/dialogs/wml_message.hpp"
@@ -1616,27 +1617,30 @@ void menu_handler::label_terrain(mouse_handler& mousehandler, bool team_only)
 	if (map_.on_board(loc) == false) {
 		return;
 	}
-	gui::dialog d(*gui_, _("Place Label"), "", gui::OK_CANCEL);
-	const terrain_label* old_label = gui_->labels().get_label(loc);
-	d.set_textbox(_("Label: "), (old_label ? old_label->text() : ""), map_labels::get_max_chars());
-	d.add_option(_("Team only"), team_only, gui::dialog::BUTTON_CHECKBOX_LEFT);
 
-	if(!d.show()) {
+	const terrain_label* old_label = gui_->labels().get_label(loc);
+	std::string label = old_label ? old_label->text() : "";
+	gui2::tedit_label d(label, team_only);
+	d.show(gui_->video());
+
+	if(d.get_retval() != gui2::twindow::CANCEL) {
 		std::string team_name;
 		SDL_Color color = font::LABEL_COLOR;
 
-		if (d.option_checked()) {
+		label = d.label();
+
+		if (d.team_only()) {
 			team_name = gui_->labels().team_name();
 		} else {
 			color = int_to_color(team::get_side_rgb(gui_->viewing_side()));
 		}
 		const std::string& old_team_name = old_label ? old_label->team_name() : "";
 		// remove the old label if we changed the team_name
-		if (d.option_checked() == (old_team_name == "")) {
+		if (d.team_only() == (old_team_name == "")) {
 			const terrain_label* old = gui_->labels().set_label(loc, "", old_team_name, color);
 			if (old) recorder.add_label(old);
 		}
-		const terrain_label* res = gui_->labels().set_label(loc, d.textbox_text(), team_name, color);
+		const terrain_label* res = gui_->labels().set_label(loc, label, team_name, color);
 		if (res)
 			recorder.add_label(res);
 	}
