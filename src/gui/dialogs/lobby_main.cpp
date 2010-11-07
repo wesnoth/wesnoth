@@ -989,14 +989,7 @@ void tlobby_main::pre_show(CVideo& /*video*/, twindow& window)
 				  &tlobby_main::create_button_callback
 				, this
 				, boost::ref(window)));
-/*
-	connect_signal_mouse_left_click(
-			  find_widget<tbutton>(&window, "show_help", false)
-			, boost::bind(
-				  &tlobby_main::show_help_button_callback
-				, this
-				, boost::ref(window)));
-*/
+
 	connect_signal_mouse_left_click(
 			  find_widget<tbutton>(&window, "refresh", false)
 			, boost::bind(
@@ -1650,10 +1643,6 @@ void tlobby_main::show_preferences_button_callback(gui2::twindow& window)
 
 		network::send_data(config("refresh_lobby"), 0, true);
 	}
-}
-
-void tlobby_main::show_help_button_callback(gui2::twindow& /*window*/)
-{
 }
 
 void tlobby_main::room_switch_callback(twindow& /*window*/)

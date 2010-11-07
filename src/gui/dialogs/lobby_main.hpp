@@ -301,8 +301,6 @@ private:
 
 	void show_preferences_button_callback(twindow& window);
 
-	void show_help_button_callback(twindow& window);
-
 	void refresh_button_callback(twindow& window);
 
 	void quit_button_callback(twindow& window);
