@@ -2771,7 +2771,7 @@ static int intf_match_location(lua_State *L)
  */
 static int intf_match_side(lua_State *L)
 {
-	unsigned side = luaL_checkinteger(L, 1);
+	unsigned side = luaL_checkinteger(L, 1) - 1;
 	if (side >= resources::teams->size()) return 0;
 	vconfig filter = luaW_checkvconfig(L, 2, true);
 
@@ -2781,7 +2781,7 @@ static int intf_match_side(lua_State *L)
 	}
 
 	side_filter s_filter(filter);
-	lua_pushboolean(L, s_filter.match(side));
+	lua_pushboolean(L, s_filter.match(side + 1));
 	return 1;
 }
 
