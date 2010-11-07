@@ -416,7 +416,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				return res;
 			}
 
-			const int dlg_res = gui::dialog(disp,"Game Over",
+			const int dlg_res = gui::dialog(disp, _("Game Over"),
 				_("This scenario has ended. Do you want to continue the campaign?"),
 				gui::YES_NO).show();
 			if (dlg_res != 0) {
