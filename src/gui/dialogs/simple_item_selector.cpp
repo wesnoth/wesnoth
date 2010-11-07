@@ -18,6 +18,7 @@
 #include "gui/dialogs/simple_item_selector.hpp"
 
 #include "foreach.hpp"
+#include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
 	#include "gui/widgets/list.hpp"
@@ -38,6 +39,8 @@ tsimple_item_selector::tsimple_item_selector(const std::string& title, const std
 	, markup_title_(title_uses_markup)
 	, markup_msg_(message_uses_markup)
 	, items_(items)
+	, ok_label_()
+	, cancel_label_()
 {
 }
 
@@ -68,6 +71,14 @@ void tsimple_item_selector::pre_show(CVideo& /*video*/, twindow& window)
 	}
 
 	index_ = -1;
+
+	if(!ok_label_.empty()) {
+		find_widget<tbutton>(&window, "ok", false).set_label(ok_label_);
+	}
+
+	if(!cancel_label_.empty()) {
+		find_widget<tbutton>(&window, "cancel", false).set_label(cancel_label_);
+	}
 }
 
 void tsimple_item_selector::post_show(twindow& window)

@@ -38,12 +38,20 @@ public:
 	int selected_index() const         { return index_;  }
 	void set_selected_index(int index) { index_ = index; }
 
+	void set_ok_label(const std::string& s) { ok_label_ = s; }
+	const std::string& ok_label() const     { return ok_label_; }
+
+	void set_cancel_label(const std::string& s) { cancel_label_ = s; }
+	const std::string& cancel_label() const     { return cancel_label_; }
+
 private:
 	int index_;
 
 	std::string title_, msg_;
 	bool markup_title_, markup_msg_;
 	list_type items_;
+
+	std::string ok_label_, cancel_label_;
 
 	/** Inherited from tdialog, implemented by REGISTER_WINDOW. */
 	virtual const std::string& window_id() const;

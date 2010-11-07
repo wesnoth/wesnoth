@@ -1358,6 +1358,7 @@ namespace {
 			gui2::tsimple_item_selector dlg(
 				_("Uninstall add-ons"), _("Choose the add-on to remove."), addons);
 			dlg.set_selected_index(index);
+			dlg.set_ok_label(_("Remove"));
 			dlg.show(disp.video());
 			index = dlg.selected_index();
 			
