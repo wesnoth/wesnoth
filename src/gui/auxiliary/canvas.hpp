@@ -75,14 +75,6 @@ public:
 	tcanvas();
 
 	/**
-	 * Constructor.
-	 *
-	 * @param cfg                 The config object with the data to draw, see
-	 *                            http://www.wesnoth.org/wiki/GUICanvasWML
-	 */
-	explicit tcanvas(const config& cfg);
-
-	/**
 	 * Draws the canvas.
 	 *
 	 * Sets the config of the canvas to the one send and does a forced redraw.

@@ -1154,18 +1154,6 @@ tcanvas::tcanvas()
 {
 }
 
-tcanvas::tcanvas(const config& cfg)
-	: shapes_()
-	, blur_depth_(0)
-	, w_(0)
-	, h_(0)
-	, canvas_()
-	, variables_()
-	, dirty_(true)
-{
-	parse_cfg(cfg);
-}
-
 void tcanvas::draw(const config& cfg)
 {
 	parse_cfg(cfg);
