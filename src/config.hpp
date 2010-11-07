@@ -333,9 +333,6 @@ public:
 		const std::string &value) const
 	{ return const_cast<config *>(this)->find_child(key, name, value); }
 
-	const config &find_child_recursive(const std::string &key,
-		const std::string &name, const std::string &value) const;
-
 	void clear_children(const std::string& key);
 
 	/**
