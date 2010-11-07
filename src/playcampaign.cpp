@@ -25,6 +25,7 @@
 #include "game_preferences.hpp"
 #include "gui/dialogs/message.hpp"
 #include "gui/dialogs/transient_message.hpp"
+#include "gui/widgets/window.hpp"
 #include "playcampaign.hpp"
 #include "map_create.hpp"
 #include "persist_manager.hpp"
@@ -416,10 +417,11 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				return res;
 			}
 
-			const int dlg_res = gui::dialog(disp, _("Game Over"),
+			const int dlg_res = gui2::show_message(disp.video(), _("Game Over"),
 				_("This scenario has ended. Do you want to continue the campaign?"),
-				gui::YES_NO).show();
-			if (dlg_res != 0) {
+				gui2::tmessage::yes_no_buttons);
+
+			if(res == gui2::twindow::CANCEL) {
 				gamestate.snapshot = config();
 				return res;
 			}
