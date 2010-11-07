@@ -325,12 +325,6 @@ std::string get_next_filename(const std::string& name, const std::string& extens
 }
 
 
-std::string get_upload_dir()
-{
-	const std::string dir_path = get_user_data_dir() + "/upload";
-	return get_dir(dir_path);
-}
-
 std::string get_dir(const std::string& dir_path)
 {
 	DIR* dir = opendir(dir_path.c_str());
