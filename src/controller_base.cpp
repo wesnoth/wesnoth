@@ -44,12 +44,6 @@ int controller_base::get_ticks() {
 	return ticks_;
 }
 
-bool controller_base::can_execute_command(
-		hotkey::HOTKEY_COMMAND /*command*/, int /*index*/) const
-{
-	return false;
-}
-
 void controller_base::handle_event(const SDL_Event& event)
 {
 	if(gui::in_dialog()) {
