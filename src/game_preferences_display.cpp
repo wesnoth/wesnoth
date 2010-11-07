@@ -22,6 +22,7 @@
 #include "foreach.hpp"
 #include "game_preferences.hpp"
 #include "gettext.hpp"
+#include "gui/dialogs/simple_item_selector.hpp"
 #include "gui/dialogs/transient_message.hpp"
 #include "lobby_preferences.hpp"
 #include "preferences_display.hpp"
@@ -1259,8 +1260,11 @@ bool show_theme_dialog(display& disp)
 	int action = 0;
 	std::vector<std::string> options = disp.get_theme().get_known_themes();
 	if(!options.empty()){
-		std::string current_theme=_("Saved Theme Preference: ")+preferences::theme();
-		action = gui::show_dialog(disp,NULL,"",current_theme,gui::OK_CANCEL,&options);
+		gui2::tsimple_item_selector dlg(_("Choose theme"), _("Saved preference:") + (" " + preferences::theme()), options);
+
+		dlg.show(disp.video());
+		action = dlg.selected_index();
+
 		if(action >= 0){
 		preferences::set_theme(options[action]);
 		//it would be preferable for the new theme to take effect
