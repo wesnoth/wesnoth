@@ -36,7 +36,7 @@ static lg::log_domain log_engine_sf("engine/side_filter");
 #pragma warning(disable:4413)
 side_filter::side_filter():
 	cfg_(vconfig::unconstructed_vconfig()),
-	flat_(),
+	flat_()
 {
 	assert(false);
 }
