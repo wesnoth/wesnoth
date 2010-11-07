@@ -77,16 +77,6 @@ public:
 	/**
 	 * Draws the canvas.
 	 *
-	 * Sets the config of the canvas to the one send and does a forced redraw.
-	 *
-	 * @param cfg                 The config object with the data to draw, see
-	 *                            http://www.wesnoth.org/wiki/GUICanvasWML
-	 */
-	void draw(const config& cfg);
-
-	/**
-	 * Draws the canvas.
-	 *
 	 * @param force               If the canvas isn't dirty it isn't redrawn
 	 *                            unless force is set to true.
 	 */

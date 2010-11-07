@@ -1154,12 +1154,6 @@ tcanvas::tcanvas()
 {
 }
 
-void tcanvas::draw(const config& cfg)
-{
-	parse_cfg(cfg);
-	draw(true);
-}
-
 void tcanvas::draw(const bool force)
 {
 	log_scope2(log_gui_draw, "Canvas: drawing.");
