@@ -47,7 +47,6 @@ private:
 	void list_item_clicked(twindow& window);
 	void delete_button_callback(twindow& window);
 
-	void evaluate_summary_string(std::stringstream& str, const config& cfg_summary);
 	void fill_game_list(twindow& window, std::vector<savegame::save_info>& games);
 
 	tfield_text* txtFilter_;
