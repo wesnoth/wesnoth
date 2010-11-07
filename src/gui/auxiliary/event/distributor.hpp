@@ -354,16 +354,6 @@ private:
 	/** Function to do the real removal of the tooltip. */
 	virtual void do_remove_tooltip() = 0;
 
-	/**
-	 * The function to do the real job of showing the help popup.
-	 *
-	 * @param location            The location in the window where to show the
-	 *                            help popup.
-	 * @param help_popup          The message to show.
-	 */
-	virtual void do_show_help_popup(
-		const tpoint& location, const t_string& help_popup) = 0;
-
 	/** Function to do the real removal of the help popup. */
 	virtual void do_remove_help_popup() = 0;
 
