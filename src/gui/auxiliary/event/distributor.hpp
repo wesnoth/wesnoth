@@ -284,18 +284,6 @@ public:
 	/** Removes the currently shown tooltip. */
 	void remove_tooltip();
 
-	/**
-	 * Shows a help message.
-	 *
-	 * A help message is like a tooltip, but in general contains more info and
-	 * the user needs to trigger it (most of the time with the F1 button).
-	 *
-	 * @param message             The message to show.
-	 * @param timeout             The time the help message is shown, 0 means
-	 *                            forever.
-	 */
-	void show_help_popup(const t_string& message, const unsigned timeout);
-
 	/** Removes the currently show tooltip. */
 	void remove_help_popup();
 
