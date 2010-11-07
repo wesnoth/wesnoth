@@ -421,7 +421,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				_("This scenario has ended. Do you want to continue the campaign?"),
 				gui2::tmessage::yes_no_buttons);
 
-			if(res == gui2::twindow::CANCEL) {
+			if(dlg_res == gui2::twindow::CANCEL) {
 				gamestate.snapshot = config();
 				return res;
 			}
