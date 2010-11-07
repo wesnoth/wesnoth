@@ -216,10 +216,9 @@ void replay_controller::process_oos(const std::string& msg) const
 {
 	if (game_config::ignore_replay_errors) return;
 
-	/** @todo FIXME: activate translation support after string freeze */
 	std::stringstream message;
-	message << "The replay is corrupt/out of sync. It might not make much sense to continue. Do you want to save the game?";
-	message << "\n\nError details:\n\n" << msg;
+	message << _("The replay is corrupt/out of sync. It might not make much sense to continue. Do you want to save the game?");
+	message << "\n\n" << _("Error details:") << "\n\n" << msg;
 
 	savegame::oos_savegame save(to_config());
 	save.save_game_interactive(resources::screen->video(), message.str(), gui::YES_NO); // can throw end_level_exception
