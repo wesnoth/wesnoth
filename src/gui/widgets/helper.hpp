@@ -137,16 +137,6 @@ unsigned decode_font_style(const std::string& style);
 t_string missing_widget(const std::string& id);
 
 /**
- * Gets an unique id for a widget.
- *
- * The id will have extra leading underscores so it's in the private range and
- * can't collide with user defined ids.
- *
- * @returns                       The id.
- */
-std::string get_uid();
-
-/**
  * Gets a formula object with the screen size.
  *
  * @param variable                A formula object in which the screen_width,
