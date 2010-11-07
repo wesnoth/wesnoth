@@ -1005,7 +1005,7 @@ std::string default_generate_map(size_t width, size_t height, size_t island_size
 		if(best_ranking == 0) {
 			//FIXME: Make this error message translatable (not possible atm due to string freeze)
 			ERR_NG << "No castle location found, aborting.\n";
-			std::string error = "No valid castle location found. Too many or too few mountain hexes? (please check the 'max hill size' parameter)";
+			std::string error = _("No valid castle location found. Too many or too few mountain hexes? (please check the 'max hill size' parameter)");
 			throw mapgen_exception(error);
 		}
 		assert(std::find(castles.begin(), castles.end(), best_loc) == castles.end());
