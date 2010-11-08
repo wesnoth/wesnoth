@@ -1562,7 +1562,7 @@ static int intf_set_village_owner(lua_State *L)
 
 	int old_side = village_owner(loc, teams) + 1;
 	if (new_side == old_side || new_side < 0 || new_side > (int)teams.size()
-		|| new_side && !resources::units->find_leader(new_side).valid())
+		|| (new_side && !resources::units->find_leader(new_side).valid()))
 		return 0;
 
 	if (old_side) teams[old_side - 1].lose_village(loc);
