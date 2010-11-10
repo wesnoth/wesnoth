@@ -95,9 +95,14 @@
 # "wmllint: display off".  The repair attempts (only) may also be
 # suppressed with the --stringfreeze option.
 #
-# A special comment "#wmllint: notecheck off" will disable error messages on
-# traits with no corresponding {SPECIAL_NOTE} explanations.  The comment
-# "#wmllint: notecheck on" will re-enable this check.
+# A special comment "# wmllint: notecheck off" will disable checking unit types
+# for consistency between abilities/weapon specials and usage of special notes
+# macros in their descriptions.
+# The comment "# wmllint: notecheck on" will re-enable this check.
+#
+# A special comment "# wmllint: deathcheck off" will disable the check whether
+# dying units speak in their death events.
+# The comment "# wmllint: deathcheck on" will re-enable this check.
 #
 # A magic comment of the form "wmllint: general spellings word1
 # word2..."  will declare the tokens word1, word2, etc. to be
@@ -856,10 +861,10 @@ def global_sanity_check(filename, lines):
     trait_note = dict(notepairs)
     note_trait = dict(map(lambda p: (p[1], p[0]), notepairs))
     for nav in WmllintIterator(lines, filename):
-        if nav.text.startswith("wmllint: notecheck off"):
+        if "wmllint: notecheck off" in nav.text:
             notecheck = False
             continue
-        elif nav.text.startswith("wmllint: notecheck on"):
+        elif "wmllint: notecheck on" in nav.text:
             notecheck = True
         #print "Element = %s, text = %s" % (nav.element, `nav.text`)
         if nav.element == "[unit_type]":
@@ -901,7 +906,7 @@ def global_sanity_check(filename, lines):
                 if missing_traits:
                     print '"%s", line %d: unit %s is missing traits %s' \
                           % (filename, in_unit_type, unit_id, "+".join(missing_traits))
-                if not (notes or traits) and has_special_notes:
+                if notecheck and not (notes or traits) and has_special_notes:
                     print '"%s", line %d: unit %s has superfluous {SPECIAL_NOTES}' \
                          % (filename, in_unit_type, unit_id)
                 if not "[theme]" in nav.ancestors() and not "[base_unit]" in nav.ancestors() and not unit_race:
@@ -958,11 +963,11 @@ def global_sanity_check(filename, lines):
     die_event = False
     deathcheck = True
     for nav in WmllintIterator(lines, filename):
-        if nav.text.startswith("wmllint: deathcheck off"):
+        if "wmllint: deathcheck off" in nav.text:
             deathcheck = False
             continue
-        elif nav.text.startswith("wmllint: deathcheck on"):
-            notecheck = True
+        elif "wmllint: deathcheck on" in nav.text:
+            deathcheck = True
         if "[/event]" in nav.text:
             filter_subject = None
             die_event = False
