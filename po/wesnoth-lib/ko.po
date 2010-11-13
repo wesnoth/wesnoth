@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-11-05 17:17+0100\n"
-"PO-Revision-Date: 2006-03-21 12:58-0800\n"
-"Last-Translator: Andrew <Sfradix@hotmail.com>\n"
+"POT-Creation-Date: 2010-11-05 17:41+0100\n"
+"PO-Revision-Date: 2010-11-13 14:01+0900\n"
+"Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
@@ -25,7 +25,6 @@ msgstr "깊은 물"
 
 #. [terrain_type]: id=deep_water
 #: data/core/terrain.cfg:28
-#, fuzzy
 msgid "Deep Water"
 msgstr "깊은 물"
 
@@ -39,7 +38,7 @@ msgstr "깊은 물"
 #: data/core/terrain.cfg:38
 #, fuzzy
 msgid "Tropical Deep Water"
-msgstr "열대 숲"
+msgstr "깊은 물"
 
 #. [terrain_type]: id=gray_tropical_water
 #: data/core/terrain.cfg:48
@@ -71,9 +70,8 @@ msgstr ""
 
 #. [terrain_type]: id=reef
 #: data/core/terrain.cfg:88
-#, fuzzy
 msgid "Coastal Reef"
-msgstr "성"
+msgstr "산호초"
 
 #. [terrain_type]: id=swamp_water
 #: data/core/terrain.cfg:99
@@ -109,7 +107,7 @@ msgstr ""
 #: data/core/terrain.cfg:165
 #, fuzzy
 msgid "Dark Dirt"
-msgstr "흙"
+msgstr "흙밭"
 
 #. [terrain_type]: id=dirt
 #: data/core/terrain.cfg:174
@@ -120,7 +118,7 @@ msgstr ""
 #: data/core/terrain.cfg:183
 #, fuzzy
 msgid "Dry Dirt"
-msgstr "흙"
+msgstr "흙밭"
 
 #. [terrain_type]: id=road
 #: data/core/terrain.cfg:192
@@ -152,7 +150,7 @@ msgstr "눈"
 #: data/core/terrain.cfg:245
 #, fuzzy
 msgid "Desert Sands"
-msgstr "산"
+msgstr "사막 산맥"
 
 #. [terrain_type]: id=sand
 #: data/core/terrain.cfg:254
@@ -172,22 +170,23 @@ msgstr "오아시스"
 #. [terrain_type]: id=sand_rubble
 #: data/core/terrain.cfg:274
 msgid "Rubble"
-msgstr ""
+msgstr "자갈밭"
 
 #. [terrain_type]: id=crater
 #: data/core/terrain.cfg:284
 msgid "Crater"
-msgstr ""
+msgstr "구덩이"
 
 #. [terrain_type]: id=flowers_mixed
 #: data/core/terrain.cfg:298
+#, fuzzy
 msgid "Mixed Flowers"
-msgstr ""
+msgstr "가을 혼합수림"
 
 #. [terrain_type]: id=farm
 #: data/core/terrain.cfg:307
 msgid "Farmland"
-msgstr ""
+msgstr "논밭"
 
 #. [terrain_type]: id=stones_small
 #: data/core/terrain.cfg:316
@@ -196,27 +195,25 @@ msgstr ""
 
 #. [terrain_type]: id=mushrooms_small
 #: data/core/terrain.cfg:325
-#, fuzzy
 msgid "Small Mushrooms"
-msgstr "버섯 동굴"
+msgstr ""
 
 #. [terrain_type]: id=mushrooms_farm
 #: data/core/terrain.cfg:334
 #, fuzzy
 msgid "Mushroom Farm"
-msgstr "버섯 동굴"
+msgstr "버섯 수풀"
 
 #. [terrain_type]: id=desert_plants
 #: data/core/terrain.cfg:343
 #, fuzzy
 msgid "Desert Plants"
-msgstr "산"
+msgstr "사막 산맥"
 
 #. [terrain_type]: id=desert_plants_sans_bones
 #: data/core/terrain.cfg:352
-#, fuzzy
 msgid "Desert Plants without Bones"
-msgstr "산"
+msgstr ""
 
 #. [terrain_type]: id=windmill
 #: data/core/terrain.cfg:361
@@ -226,7 +223,7 @@ msgstr ""
 #. [terrain_type]: id=great_tree
 #: data/core/terrain.cfg:374
 msgid "Great Tree"
-msgstr ""
+msgstr "큰 나무"
 
 #. [terrain_type]: id=tropical_forest
 #: data/core/terrain.cfg:384
@@ -240,63 +237,53 @@ msgstr "숲"
 
 #. [terrain_type]: id=forest
 #: data/core/terrain.cfg:395
-#, fuzzy
 msgid "Pine Forest"
-msgstr "숲"
+msgstr "소나무 숲"
 
 #. [terrain_type]: id=snow_forest
 #: data/core/terrain.cfg:404
-#, fuzzy
 msgid "Snowy Pine Forest"
-msgstr "적의 움직임 표시"
+msgstr "눈 덮인 솔숲"
 
 #. [terrain_type]: id=deciduous_forest_summer
 #: data/core/terrain.cfg:415
-#, fuzzy
 msgid "Summer Deciduous Forest"
-msgstr "숲"
+msgstr "여름 낙엽수림"
 
 #. [terrain_type]: id=deciduous_forest_fall
 #: data/core/terrain.cfg:425
-#, fuzzy
 msgid "Fall Deciduous Forest"
-msgstr "숲"
+msgstr "가을 낙엽수림"
 
 #. [terrain_type]: id=deciduous_forest_winter
 #: data/core/terrain.cfg:435
-#, fuzzy
 msgid "Winter Deciduous Forest"
-msgstr "숲"
+msgstr "겨울 낙엽수림"
 
 #. [terrain_type]: id=deciduous_forest_winter_snow
 #: data/core/terrain.cfg:445
-#, fuzzy
 msgid "Snowy Deciduous Forest"
-msgstr "숲"
+msgstr "눈 쌓인 낙엽수림"
 
 #. [terrain_type]: id=mixed_forest_summer
 #: data/core/terrain.cfg:456
-#, fuzzy
 msgid "Summer Mixed Forest"
-msgstr "숲"
+msgstr "여름 혼합수림"
 
 #. [terrain_type]: id=mixed_forest_fall
 #: data/core/terrain.cfg:466
-#, fuzzy
 msgid "Fall Mixed Forest"
-msgstr "숲"
+msgstr "가을 혼합수림"
 
 #. [terrain_type]: id=mixed_forest_winter
 #: data/core/terrain.cfg:476
-#, fuzzy
 msgid "Winter Mixed Forest"
-msgstr "숲"
+msgstr "겨울 혼합수림"
 
 #. [terrain_type]: id=mixed_forest_winter_snow
 #: data/core/terrain.cfg:486
-#, fuzzy
 msgid "Snowy Mixed Forest"
-msgstr "적의 움직임 표시"
+msgstr "눈 쌓인 혼합수림"
 
 #. [terrain_type]: id=hills
 #: data/core/terrain.cfg:501
@@ -305,9 +292,8 @@ msgstr "언덕"
 
 #. [terrain_type]: id=hills
 #: data/core/terrain.cfg:502
-#, fuzzy
 msgid "Regular Hills"
-msgstr "언덕"
+msgstr ""
 
 #. [terrain_type]: id=hills_dry
 #: data/core/terrain.cfg:510
@@ -323,7 +309,7 @@ msgstr "모래 언덕"
 #. [terrain_type]: id=snow_hills
 #: data/core/terrain.cfg:529
 msgid "Snow Hills"
-msgstr ""
+msgstr "눈밭 언덕"
 
 #. [terrain_type]: id=mountains
 #: data/core/terrain.cfg:543
@@ -334,72 +320,63 @@ msgstr "산"
 #: data/core/terrain.cfg:551
 #, fuzzy
 msgid "Dry Mountains"
-msgstr "산"
+msgstr "사막 산맥"
 
 #. [terrain_type]: id=snow_mountains
 #: data/core/terrain.cfg:560
-#, fuzzy
 msgid "Snowy Mountains"
-msgstr "산"
+msgstr "눈 쌓인 산맥"
 
 #. [terrain_type]: id=forested_hills
 #: data/core/terrain.cfg:574
-#, fuzzy
 msgid "Forested Hills"
-msgstr "숲"
+msgstr "숲 언덕"
 
 #. [terrain_type]: id=forested_snow_hills
 #: data/core/terrain.cfg:584
 msgid "Forested Snow Hills"
-msgstr ""
+msgstr "눈밭 숲 언덕"
 
 #. [terrain_type]: id=deciduous_forest_summer_hills
 #: data/core/terrain.cfg:594
-#, fuzzy
 msgid "Summer Deciduous Forested Hills"
-msgstr "숲"
+msgstr "여름 활엽수림 언덕"
 
 #. [terrain_type]: id=deciduous_forest_fall_hills
 #: data/core/terrain.cfg:604
-#, fuzzy
 msgid "Fall Deciduous Forested Hills"
-msgstr "숲"
+msgstr "가을 활엽수림 언덕"
 
 #. [terrain_type]: id=deciduous_forest_winter_hills
 #: data/core/terrain.cfg:614
-#, fuzzy
 msgid "Winter Deciduous Forested Hills"
-msgstr "숲"
+msgstr "겨울 활엽수림 언덕"
 
 #. [terrain_type]: id=deciduous_forest_winter_snow_hills
 #: data/core/terrain.cfg:624
-#, fuzzy
 msgid "Snowy Deciduous Forested Hills"
-msgstr "숲"
+msgstr "눈 쌓인 활엽수림 언덕"
 
 #. [terrain_type]: id=mixed_forest_summer_hills
 #: data/core/terrain.cfg:634
-#, fuzzy
 msgid "Summer Mixed Forested Hills"
-msgstr "숲"
+msgstr "여름 혼합수림 언덕"
 
 #. [terrain_type]: id=mixed_forest_fall_hills
 #: data/core/terrain.cfg:644
 #, fuzzy
 msgid "Fall Mixed Forested Hills"
-msgstr "숲"
+msgstr "눈 쌓인 혼합수림 언덕"
 
 #. [terrain_type]: id=mixed_forest_winter_hills
 #: data/core/terrain.cfg:654
-#, fuzzy
 msgid "Winter Mixed Forested Hills"
-msgstr "숲"
+msgstr "겨울 혼합수림 언덕"
 
 #. [terrain_type]: id=mixed_forest_winter_snow_hills
 #: data/core/terrain.cfg:664
-#, fuzzy
 msgid "Snowy Mixed Forested Hills"
-msgstr "숲"
+msgstr "눈 쌓인 혼합수림 언덕"
 
 #. [terrain_type]
 #: data/core/terrain.cfg:677
@@ -409,7 +386,7 @@ msgstr ""
 #. [terrain_type]: id=lit
 #: data/core/terrain.cfg:690
 msgid "Lit"
-msgstr ""
+msgstr "빛남"
 
 #. [terrain_type]: id=lit
 #: data/core/terrain.cfg:691
@@ -441,23 +418,23 @@ msgstr ""
 #: data/core/terrain.cfg:728
 #, fuzzy
 msgid "Cave Path"
-msgstr "동굴 벽"
+msgstr "동굴 통로"
 
 #. [terrain_type]: id=fungus
 #: data/core/terrain.cfg:737
 msgid "Mushroom Grove"
-msgstr "버섯 동굴"
+msgstr "버섯 수풀"
 
 #. [terrain_type]: id=fungus_beam
 #: data/core/terrain.cfg:746
 #, fuzzy
 msgid "Lit Mushroom Grove"
-msgstr "버섯 동굴"
+msgstr "버섯 수풀"
 
 #. [terrain_type]: id=rocky_cave
 #: data/core/terrain.cfg:757
 msgid "Rockbound Cave"
-msgstr "암성 동굴"
+msgstr "암석 동굴"
 
 #. [terrain_type]: id=rails
 #. [terrain_type]: id=railsdiag1
@@ -469,13 +446,15 @@ msgstr ""
 
 #. [terrain_type]: id=canyon
 #: data/core/terrain.cfg:810
+#, fuzzy
 msgid "Regular Chasm"
-msgstr ""
+msgstr "용암 간극"
 
 #. [terrain_type]: id=chasm_earthy
 #: data/core/terrain.cfg:820
+#, fuzzy
 msgid "Earthy Chasm"
-msgstr ""
+msgstr "용암 간극"
 
 #. [terrain_type]: id=abyss
 #: data/core/terrain.cfg:830
@@ -485,7 +464,7 @@ msgstr ""
 #. [terrain_type]: id=lava_chasm
 #: data/core/terrain.cfg:840
 msgid "Lava Chasm"
-msgstr ""
+msgstr "용암 간극"
 
 #. [terrain_type]: id=lava
 #: data/core/terrain.cfg:850
@@ -501,19 +480,19 @@ msgstr ""
 #: data/core/terrain.cfg:875
 #, fuzzy
 msgid "Regular Impassable Mountains"
-msgstr "산"
+msgstr "정복불능 산맥"
 
 #. [terrain_type]: id=clouddesert
 #: data/core/terrain.cfg:884
 #, fuzzy
 msgid "Desert Impassable Mountains"
-msgstr "산"
+msgstr "정복불능 산맥"
 
 #. [terrain_type]: id=cloud_snow
 #: data/core/terrain.cfg:893
 #, fuzzy
 msgid "Snowy Impassable Mountains"
-msgstr "산"
+msgstr "정복불능 산맥"
 
 #. [terrain_type]: id=cavewall
 #: data/core/terrain.cfg:903
@@ -550,13 +529,14 @@ msgstr ""
 
 #. [terrain_type]: id=impassable_overlay
 #: data/core/terrain.cfg:963
+#, fuzzy
 msgid "Impassable Overlay"
-msgstr ""
+msgstr "통과불능"
 
 #. [terrain_type]: id=void
 #: data/core/terrain.cfg:974
 msgid "Void"
-msgstr ""
+msgstr "공허"
 
 #. [terrain_type]: id=desert_village
 #: data/core/terrain.cfg:989
@@ -606,25 +586,22 @@ msgstr ""
 #: data/core/terrain.cfg:1091
 #, fuzzy
 msgid "Snowy Cottage"
-msgstr "산"
+msgstr "눈 쌓인 산맥"
 
 #. [terrain_type]: id=city_village
 #: data/core/terrain.cfg:1103
-#, fuzzy
 msgid "Human City"
-msgstr "성"
+msgstr ""
 
 #. [terrain_type]: id=city_village_wno
 #: data/core/terrain.cfg:1115
-#, fuzzy
 msgid "Snowy Human City"
-msgstr "산"
+msgstr ""
 
 #. [terrain_type]: id=city_village
 #: data/core/terrain.cfg:1127
-#, fuzzy
 msgid "Ruined Human City"
-msgstr "성"
+msgstr ""
 
 #. [terrain_type]: id=hill_village
 #: data/core/terrain.cfg:1139
@@ -670,7 +647,7 @@ msgstr "잘라내기"
 #: data/core/terrain.cfg:1225
 #, fuzzy
 msgid "Snowy Hut"
-msgstr "산"
+msgstr "눈 쌓인 산맥"
 
 #. [terrain_type]: id=logcabin_village
 #: data/core/terrain.cfg:1237
@@ -681,7 +658,7 @@ msgstr ""
 #: data/core/terrain.cfg:1249
 #, fuzzy
 msgid "Snowy Log Cabin"
-msgstr "산"
+msgstr "눈 쌓인 산맥"
 
 #. [terrain_type]: id=swamp_village
 #: data/core/terrain.cfg:1263
@@ -709,12 +686,13 @@ msgstr ""
 #. [terrain_type]: id=encampment
 #: data/core/terrain.cfg:1304
 msgid "Encampment"
-msgstr ""
+msgstr "기지"
 
 #. [terrain_type]: id=encampment_snow
 #: data/core/terrain.cfg:1315
+#, fuzzy
 msgid "Snowy Encampment"
-msgstr ""
+msgstr "기지"
 
 #. [terrain_type]: id=orcish_fort
 #: data/core/terrain.cfg:1326
@@ -743,7 +721,7 @@ msgstr "성"
 #: data/core/terrain.cfg:1359
 #, fuzzy
 msgid "Snowy Human Castle"
-msgstr "산"
+msgstr "눈 쌓인 산맥"
 
 #. [terrain_type]: id=elven_castle
 #: data/core/terrain.cfg:1369
@@ -761,41 +739,42 @@ msgstr "성"
 #: data/core/terrain.cfg:1391
 #, fuzzy
 msgid "Ruined Human Castle"
-msgstr "성"
+msgstr "무너진 성 본영"
 
 #. [terrain_type]: id=sunkenruin
 #: data/core/terrain.cfg:1402
+#, fuzzy
 msgid "Sunken Human Ruin"
-msgstr ""
+msgstr "수중 잔해"
 
 #. [terrain_type]: id=swampruin
 #: data/core/terrain.cfg:1414
+#, fuzzy
 msgid "Swamp Human Ruin"
-msgstr ""
+msgstr "늪지 잔해"
 
 #. [terrain_type]: id=sand_castle
 #: data/core/terrain.cfg:1426
 #, fuzzy
 msgid "Desert Castle"
-msgstr "산"
+msgstr "성"
 
 #. [terrain_type]: id=encampment_keep
 #: data/core/terrain.cfg:1441
-#, fuzzy
 msgid "Encampment Keep"
-msgstr "늪"
+msgstr "기지 본영"
 
 #. [terrain_type]: id=encampment_snow_keep
 #: data/core/terrain.cfg:1453
 #, fuzzy
 msgid "Snowy Encampment Keep"
-msgstr "늪"
+msgstr "기지 본영"
 
 #. [terrain_type]: id=orcish_keep
 #: data/core/terrain.cfg:1465
 #, fuzzy
 msgid "Orcish Keep"
-msgstr "성"
+msgstr "요새 본성"
 
 #. [terrain_type]: id=snow_orcish_keep
 #: data/core/terrain.cfg:1477
@@ -808,48 +787,49 @@ msgstr ""
 #: data/core/terrain.cfg:1489 data/core/terrain.cfg:1576
 #: data/core/terrain.cfg:1602
 msgid "Keep"
-msgstr ""
+msgstr "본성"
 
 #. [terrain_type]: id=human_keep
 #: data/core/terrain.cfg:1490
 #, fuzzy
 msgid "Human Castle Keep"
-msgstr "성"
+msgstr "수중 성 본영"
 
 #. [terrain_type]: id=snow_keep
 #: data/core/terrain.cfg:1502
 #, fuzzy
 msgid "Snowy Human Castle Keep"
-msgstr "산"
+msgstr "수중 성 본영"
 
 #. [terrain_type]: id=elven_keep
 #: data/core/terrain.cfg:1514
 #, fuzzy
 msgid "Elven Castle Keep"
-msgstr "성"
+msgstr "수중 성 본영"
 
 #. [terrain_type]: id=dwarven_keep
 #: data/core/terrain.cfg:1526
 #, fuzzy
 msgid "Dwarven Castle Keep"
-msgstr "성"
+msgstr "수중 성 본영"
 
 #. [terrain_type]: id=ruined_keep
 #: data/core/terrain.cfg:1538
 #, fuzzy
 msgid "Ruined Human Castle Keep"
-msgstr "성"
+msgstr "무너진 성 본영"
 
 #. [terrain_type]: id=sunken_keep
 #: data/core/terrain.cfg:1550
+#, fuzzy
 msgid "Sunken Keep"
-msgstr ""
+msgstr "수중 성 본영"
 
 #. [terrain_type]: id=sunken_keep
 #: data/core/terrain.cfg:1551
 #, fuzzy
 msgid "Sunken Human Castle Keep"
-msgstr "성"
+msgstr "수중 성 본영"
 
 #. [terrain_type]: id=swamp_keep
 #: data/core/terrain.cfg:1563
@@ -861,7 +841,7 @@ msgstr "늪"
 #: data/core/terrain.cfg:1564
 #, fuzzy
 msgid "Swamp Human Castle Keep"
-msgstr "성"
+msgstr "수중 성 본영"
 
 #. [terrain_type]: id=desert_keep
 #: data/core/terrain.cfg:1577
@@ -873,7 +853,7 @@ msgstr "사막"
 #: data/core/terrain.cfg:1591
 #, fuzzy
 msgid "Castle Overlay"
-msgstr "성"
+msgstr "성채 본성"
 
 #. [terrain_type]: id=keep_overlay
 #: data/core/terrain.cfg:1603
@@ -900,9 +880,8 @@ msgstr ""
 #. [terrain_type]: id=bridgechasmdiag2
 #: data/core/terrain.cfg:1690 data/core/terrain.cfg:1700
 #: data/core/terrain.cfg:1711
-#, fuzzy
 msgid "Cave Chasm Bridge"
-msgstr "다리"
+msgstr ""
 
 #. [terrain_type]: id=off_map
 #: data/core/terrain.cfg:1727
@@ -918,7 +897,7 @@ msgstr ""
 #. [terrain_type]: id=shroud
 #: data/core/terrain.cfg:1745 data/gui/default/window/mp_create_game.cfg:471
 msgid "Shroud"
-msgstr "맵 가리기"
+msgstr "장막"
 
 #. [terrain_type]: id=fog
 #: data/core/terrain.cfg:1754
@@ -928,12 +907,12 @@ msgstr "안개"
 #. [terrain_type]: id=flat
 #: data/core/terrain.cfg:1821
 msgid "Flat"
-msgstr ""
+msgstr "평지"
 
 #. [terrain_type]: id=frozen
 #: data/core/terrain.cfg:1828
 msgid "Frozen"
-msgstr ""
+msgstr "영구 동토"
 
 #. [terrain_type]: id=village
 #: data/core/terrain.cfg:1835
@@ -943,12 +922,12 @@ msgstr "마을"
 #. [terrain_type]: id=impassable
 #: data/core/terrain.cfg:1842
 msgid "Impassable"
-msgstr ""
+msgstr "통과불능"
 
 #. [terrain_type]: id=unwalkable
 #: data/core/terrain.cfg:1849
 msgid "Unwalkable"
-msgstr ""
+msgstr "도보불능"
 
 #. [label]
 #. [column]
@@ -957,7 +936,7 @@ msgstr ""
 #: data/gui/default/window/mp_method_selection.cfg:148
 #: data/gui/default/window/mp_server_list.cfg:41
 msgid "Connect to Server"
-msgstr ""
+msgstr "서버에 연결"
 
 #. [label]
 #: data/gui/default/window/addon_connect.cfg:51
@@ -979,9 +958,8 @@ msgstr ""
 #. [button]: id=remove_addons
 #: data/gui/default/window/addon_connect.cfg:172
 #: data/gui/default/window/addon_connect.cfg:173
-#, fuzzy
 msgid "Remove Add-ons"
-msgstr "재취소"
+msgstr "추가 기능 삭제"
 
 #. [button]: id=ok
 #: data/gui/default/window/addon_connect.cfg:205
@@ -1323,9 +1301,8 @@ msgstr "파일 삭제"
 
 #. [label]: id=lblMessage
 #: data/gui/default/window/game_delete.cfg:52
-#, fuzzy
 msgid "Do you really want to delete this game?"
-msgstr "정말로 종료하시겠습니까?"
+msgstr "정말 이 파일을 삭제하시겠습니까?"
 
 #. [toggle_button]: id=dont_ask_again
 #: data/gui/default/window/game_delete.cfg:72
@@ -1611,7 +1588,7 @@ msgstr ""
 #. [toggle_button]: id=filter_vacant_slots
 #: data/gui/default/window/lobby_main.cfg:598
 msgid "Vacant slots"
-msgstr ""
+msgstr "빈 자리 있는 방"
 
 #. [toggle_button]: id=filter_invert
 #: data/gui/default/window/lobby_main.cfg:604
@@ -1679,12 +1656,12 @@ msgstr "라벨 삭제"
 #. [button]: id=add_to_friends
 #: data/gui/default/window/lobby_player_info.cfg:91
 msgid "Add to friends list"
-msgstr ""
+msgstr "친구목록에 추가"
 
 #. [button]: id=add_to_ignores
 #: data/gui/default/window/lobby_player_info.cfg:100
 msgid "Add to ignores list"
-msgstr ""
+msgstr "무시목록에 추가"
 
 #. [button]: id=remove_from_list
 #: data/gui/default/window/lobby_player_info.cfg:109
@@ -1820,7 +1797,6 @@ msgstr ""
 
 #. [label]: id=map_players
 #: data/gui/default/window/mp_create_game.cfg:140
-#, fuzzy
 msgid "Players: "
 msgstr "플레이어 수:"
 
@@ -1862,9 +1838,8 @@ msgstr ""
 
 #. [label]
 #: data/gui/default/window/mp_create_game.cfg:372
-#, fuzzy
 msgid "Village gold"
-msgstr "마을"
+msgstr "마을당 수입"
 
 #. [toggle_button]: id=fog
 #: data/gui/default/window/mp_create_game.cfg:452
@@ -1935,31 +1910,37 @@ msgid ""
 "\n"
 "The Battle for Wesnoth forum can be found at http://www.wesnoth.org/forum/"
 msgstr ""
+"당신은 공식 멀티플레이 서버에 당신의 포럼 아이디와 암호로 접속할 수 있습니"
+"다.\n"
+"서버에 들어가려고 꼭 가입할 필요는 없습니다. 포럼에 등록된 아이디로 접속할때 "
+"외에는 암호는 필요없습니다.\n"
+"\n"
+"Battle for Wesnoth 포럼 주소는 http://www.wesnoth.org/forum/"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:138
 msgid "Join Official Server"
-msgstr ""
+msgstr "공식 서버 접속"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:139
 msgid "Log on to the official Wesnoth multiplayer server"
-msgstr ""
+msgstr "공식 Wesnoth 멀티플레이 서버에 접속합니다"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:149
 msgid "Join a different server"
-msgstr ""
+msgstr "다른 서버 접속"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:158
 msgid "Host Networked Game"
-msgstr ""
+msgstr "네트워크 게임 열기"
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:159
 msgid "Host a game using dedicated server ‘wesnothd’"
-msgstr ""
+msgstr "전용 서버 'wesnothd'를 통해 게임 호스트가 됩니다."
 
 #. [column]
 #: data/gui/default/window/mp_method_selection.cfg:168
@@ -2188,7 +2169,7 @@ msgstr ""
 
 #: src/game_preferences_display.cpp:162
 msgid "Accelerated Speed"
-msgstr "빠른 속도"
+msgstr "가속"
 
 #: src/game_preferences_display.cpp:163
 msgid "Skip AI Moves"
@@ -2204,11 +2185,11 @@ msgstr "격자 표시"
 
 #: src/game_preferences_display.cpp:166 src/game_preferences_display.cpp:349
 msgid "Save Replay on SP/MP Victory or MP Defeat"
-msgstr ""
+msgstr "싱글/멀티플레이 승리시나 멀티플레이 패배시 리플레이 저장"
 
 #: src/game_preferences_display.cpp:167 src/game_preferences_display.cpp:352
 msgid "Delete Auto-Saves on SP/MP Victory or MP Defeat"
-msgstr ""
+msgstr "싱글/멀티플레이 승리시나 멀티플레이 패배시 자동저장파일 삭제"
 
 #: src/game_preferences_display.cpp:168
 #, fuzzy
@@ -2249,11 +2230,11 @@ msgstr ""
 
 #: src/game_preferences_display.cpp:177
 msgid "Multiplayer Options"
-msgstr ""
+msgstr "멀티플레이 설정"
 
 #: src/game_preferences_display.cpp:181
 msgid "Show Floating Labels"
-msgstr "데미지 라벨 표시"
+msgstr ""
 
 #: src/game_preferences_display.cpp:182
 msgid "Turn Dialog"
@@ -2311,11 +2292,11 @@ msgstr "채팅 시간 표시"
 
 #: src/game_preferences_display.cpp:196
 msgid "sound^Advanced Options"
-msgstr ""
+msgstr "고급 설정"
 
 #: src/game_preferences_display.cpp:197
 msgid "sound^Standard Options"
-msgstr ""
+msgstr "기본 설정"
 
 #: src/game_preferences_display.cpp:198
 msgid "User Interface Sounds"
@@ -2500,11 +2481,11 @@ msgstr ""
 
 #: src/game_preferences_display.cpp:379
 msgid "Add this username to your friends list"
-msgstr ""
+msgstr "이 사용자를 친구목록에 추가"
 
 #: src/game_preferences_display.cpp:380
 msgid "Add this username to your ignores list"
-msgstr ""
+msgstr "이 사용자를 무시목록에 추가"
 
 #: src/game_preferences_display.cpp:381
 msgid "Remove this username from your list"
@@ -2788,15 +2769,15 @@ msgstr ""
 
 #: src/gui/dialogs/lobby_main.cpp:1587
 msgid "Password Required"
-msgstr ""
+msgstr "비밀방"
 
 #: src/gui/dialogs/lobby_main.cpp:1588
 msgid "Joining this game requires a password."
-msgstr ""
+msgstr "이 방에 들어가려면 암호를 입력하세요."
 
 #: src/gui/dialogs/lobby_main.cpp:1589
 msgid "Password: "
-msgstr ""
+msgstr "암호:"
 
 #: src/gui/dialogs/message.cpp:190 src/gui/dialogs/transient_message.cpp:64
 msgid "Error"
@@ -2912,7 +2893,7 @@ msgstr "유닛 설명"
 
 #: src/hotkeys.cpp:64
 msgid "Rename Unit"
-msgstr "유닛 이름 설정"
+msgstr "이름 붙이기"
 
 #: src/hotkeys.cpp:66
 #, fuzzy
@@ -2925,15 +2906,15 @@ msgstr "맵 저장"
 
 #: src/hotkeys.cpp:69
 msgid "Recruit"
-msgstr "유닛 징병"
+msgstr "소집"
 
 #: src/hotkeys.cpp:70
 msgid "Repeat Recruit"
-msgstr "징병 반복"
+msgstr "소집 반복"
 
 #: src/hotkeys.cpp:71
 msgid "Recall"
-msgstr "유닛 부르기"
+msgstr "재소집"
 
 #: src/hotkeys.cpp:72
 msgid "End Turn"
@@ -2982,11 +2963,11 @@ msgstr "통계"
 
 #: src/hotkeys.cpp:85 src/hotkeys.cpp:95
 msgid "Stop"
-msgstr ""
+msgstr "정지"
 
 #: src/hotkeys.cpp:86 src/hotkeys.cpp:93
 msgid "Play"
-msgstr ""
+msgstr "재생"
 
 #: src/hotkeys.cpp:88
 #, fuzzy
@@ -3266,11 +3247,11 @@ msgstr ""
 
 #: src/hotkeys.cpp:194
 msgid "Speak to Ally"
-msgstr ""
+msgstr "동맹에게만"
 
 #: src/hotkeys.cpp:195
 msgid "Speak to All"
-msgstr ""
+msgstr "모두에게"
 
 #: src/hotkeys.cpp:197
 msgid "View Chat Log"
@@ -3408,15 +3389,15 @@ msgstr ""
 
 #: src/mapgen_dialog.cpp:315
 msgid "Coastal"
-msgstr ""
+msgstr "해안"
 
 #: src/mapgen_dialog.cpp:315
 msgid "Inland"
-msgstr ""
+msgstr "내륙"
 
 #: src/mapgen_dialog.cpp:315
 msgid "Island"
-msgstr ""
+msgstr "섬"
 
 #: src/marked-up_text.cpp:423
 msgid "The maximum text width is less than 1."
@@ -3506,55 +3487,44 @@ msgid "In section '[$section|]' the mandatory key '$key|' isn't set."
 msgstr ""
 
 #, fuzzy
-#~ msgid "Mushroom Grove Lit"
-#~ msgstr "버섯 동굴"
-
-#, fuzzy
-#~ msgid "Human City Village"
-#~ msgstr "마을"
-
-#, fuzzy
-#~ msgid "Castle Human Keep"
-#~ msgstr "성"
-
-#, fuzzy
-#~ msgid "Snowy Castle Keep"
-#~ msgstr "성"
-
-#, fuzzy
-#~ msgid "Deep Water Medium"
-#~ msgstr "깊은 물"
-
-#, fuzzy
-#~ msgid "Deep Water Tropical"
-#~ msgstr "깊은 물"
-
-#~ msgid "Chasm"
-#~ msgstr "협곡"
-
-#, fuzzy
-#~ msgid "Wall"
-#~ msgstr "동굴 벽"
-
-#, fuzzy
 #~ msgid "None"
 #~ msgstr "아니오"
 
-#, fuzzy
 #~ msgid "Fort"
-#~ msgstr "숲"
+#~ msgstr "요새"
+
+#~ msgid "Ruin"
+#~ msgstr "잔해"
+
+#~ msgid "Elven Keep"
+#~ msgstr "엘프 본성"
+
+#~ msgid "Snow Forest"
+#~ msgstr "눈밭 숲"
 
 #~ msgid "Grassland"
 #~ msgstr "초원"
 
 #~ msgid "Savanna"
-#~ msgstr "대초원"
+#~ msgstr "열대 초원"
+
+#~ msgid "Chasm"
+#~ msgstr "간극"
 
 #~ msgid "Road"
 #~ msgstr "길"
 
+#~ msgid "Mushroom Grove Lit"
+#~ msgstr "빛나는 버섯 수풀"
+
 #~ msgid "River Ford"
 #~ msgstr "시내"
+
+#~ msgid "Impassable Desert Mountains"
+#~ msgstr "정복불능 사막 산맥"
+
+#~ msgid "Wall"
+#~ msgstr "벽"
 
 #, fuzzy
 #~ msgid "Save The Map"

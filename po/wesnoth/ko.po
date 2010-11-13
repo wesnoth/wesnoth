@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
-"POT-Creation-Date: 2010-11-05 17:17+0100\n"
-"PO-Revision-Date: 2010-10-28 13:51+0900\n"
+"POT-Creation-Date: 2010-11-05 17:41+0100\n"
+"PO-Revision-Date: 2010-11-13 16:12+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -145,8 +145,8 @@ msgid ""
 "until one of the combatants is slain, or 30 rounds of attacks have occurred."
 msgstr ""
 "광전사:\n"
-"이 공격은 모든 공방시에 적아 중 하나가 죽거나, 30번의 공방이 이루어질 때까지 "
-"강제적으로 전투를 지속합니다."
+"공격이나 방어시 이 공격을 쓰면, 적아 중 하나가 죽거나 30번의 공방이 이루어질 "
+"때까지 강제로 전투를 계속합니다."
 
 #. [chance_to_hit]: id=magical
 #: data/campaigns/Under_the_Burning_Suns/scenarios/03_Stirring_in_the_Night.cfg:835
@@ -590,37 +590,37 @@ msgstr "특성"
 #. [topic]: id=..units
 #: data/core/help.cfg:42 data/core/help.cfg:93
 msgid "Units"
-msgstr "유닛 설명"
+msgstr ""
 
 #. [section]: id=abilities_section
 #. [topic]: id=..abilities_section
 #: data/core/help.cfg:51 data/core/help.cfg:99
 msgid "Abilities"
-msgstr "능력"
+msgstr ""
 
 #. [section]: id=weapon_specials
 #. [topic]: id=..weapon_specials
 #: data/core/help.cfg:59 data/core/help.cfg:108
 msgid "Weapon Specials"
-msgstr "특수 능력"
+msgstr ""
 
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [section]: id=factions_section
 #: data/core/help.cfg:67 src/help.cpp:1295 src/help.cpp:1297
 msgid "Factions"
-msgstr "당파"
+msgstr ""
 
 #. [section]: id=terrains
 #. [topic]: id=..terrains
 #: data/core/help.cfg:74 data/core/help.cfg:476
 msgid "Terrains"
-msgstr "지형"
+msgstr ""
 
 #. [section]: id=commands
 #. [topic]: id=..commands
 #: data/core/help.cfg:81 data/core/help.cfg:778
 msgid "Commands"
-msgstr "명령어"
+msgstr ""
 
 #. [topic]: id=..abilities_section
 #: data/core/help.cfg:102
@@ -690,6 +690,7 @@ msgstr "게임의 핵심요소"
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:142
+#, fuzzy
 msgid ""
 "These pages outline all you need to know to play <italic>text='Battle for "
 "Wesnoth'</italic>. They cover how to play and the basic mechanics behind the "
@@ -697,9 +698,15 @@ msgid ""
 "come across new aspects of the game. For more detailed information on "
 "special situations and exceptions, please follow the links included."
 msgstr ""
+"이 도움말은 당신이 Battle for Wesnoth를 플레이하기 위해 알아야 할 모든 것을 "
+"요약하고 있으며, 그 내용은 플레이 방법에서부터 게임의 기본 동작구조까지 포괄"
+"하고 있습니다. 당신이 게임을 하면서 새로운 것을 발견해낼 때마다 그것에 대한 "
+"새로운 정보가 이 페이지들 사이에 추가됩니다. 특수한 상황과 예외들에 관해 더 "
+"자세한 정보를 얻고 싶다면, 포함된 링크를 따라가세요."
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:144
+#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -711,6 +718,14 @@ msgid ""
 "Wesnoth'</italic> can be quite challenging, you may wish to start on "
 "<italic>text=Easy</italic>."
 msgstr ""
+"\n"
+"\n"
+"본격적인 게임에 들어가기 전에 메인 메뉴의 <italic>text=연습 게임</italic> 버"
+"튼을 클릭하십시오. 연습 게임은 대화식으로 구성되어 당신에게 Wesnoth의 기본지"
+"식을 알려줄 길라잡이가 되어줍니다. 연습 게임을 마치셨다면, <italic>text=캠페"
+"인</italic> 버튼을 누르고 <italic>text='왕좌의 후계자'</italic>를 선택해서 왕"
+"좌의 후계자 캠페인을 먼저 하시는 편을 추천합니다. Battle for Wesnoth가 어렵다"
+"고 느껴진다면 <italic>text=쉬운 모드</italic>로 시작하실 수 있습니다."
 
 #. [topic]: id=fundamentals
 #: data/core/help.cfg:147
@@ -721,6 +736,10 @@ msgid ""
 "encounter new <ref>dst='..abilities_section' text='abilities'</ref> for the "
 "first time."
 msgstr ""
+"게임 중에 스테이터스 패널에 보여지는 정보 같은 여러 가지 요소들에 마우스를 올"
+"리면 각 요소를 설명해 주는 간략한 서술이 뜬다는 점을 기억하십시오. 이것은 당"
+"신이 모르는 새로운 <ref>dst='..abilities_section' text='능력'</ref>을 발견했"
+"을 때 특히 유용합니다."
 
 #. [topic]: id=about_game
 #: data/core/help.cfg:152
@@ -777,9 +796,15 @@ msgid ""
 "rescuing someone, or solving a puzzle, or holding out against a siege until "
 "a certain number of turns have elapsed."
 msgstr ""
+"시나리오 시작시 뜨는 승리조건을 유의해서 보십시오. 보통은 모든 적 대장을 격파"
+"하면 승리할 수 있고, 당신의 대장이 죽으면 패배합니다. 하지만 시나리오에 다른 "
+"승리조건 - 예를 들면 당신의 대장을 특정 지점에 두는 것, 누군가와 대화 혹은 구"
+"출, 퍼즐 풀기 또는 일정 턴수가 지날 때까지 적의 포위망 속에서 견뎌내기 같은 "
+"것 - 이 붙어 있을 수도 있습니다."
 
 #. [topic]: id=victory_and_defeat
 #: data/core/help.cfg:164
+#, fuzzy
 msgid ""
 "\n"
 "\n"
@@ -789,6 +814,11 @@ msgid ""
 "multiplayer game) chatting with other players before pressing that button to "
 "advance."
 msgstr ""
+"\n"
+"\n"
+"시나리오에서 승리하면, 맵이 회색으로 칠해지면서 '턴 넘기기' 버튼이 '시나리오 "
+"넘기기' 버튼으로 바뀝니다. 당신은 그 버튼을 누르기 전에 세이브 옵션을 바꾸거"
+"나 다른 플레이어와 채팅을 할 수 있습니다.(멀티플레이시)"
 
 #. [topic]: id=recruit_and_recall
 #: data/core/help.cfg:171
@@ -921,7 +951,7 @@ msgstr "적 유닛에게는 체력 바 위에 구슬이 없습니다."
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:200
 msgid "Hitpoints and Experience"
-msgstr ""
+msgstr "체력과 경험치"
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:201
@@ -931,6 +961,10 @@ msgid ""
 "experience points (XP). A freshly recruited unit starts with no experience "
 "points, and gains experience by fighting enemies."
 msgstr ""
+"모든 유닛은 각자의 HP(체력 포인트)를 가지고 있습니다. 유닛의 HP가 1 미만으로 "
+"떨어지면 그 유닛은 죽게 됩니다. 모든 유닛은 또한 각자의 XP(경험 포인트)도 가"
+"지고 있습니다. 갓 소집된 유닛은 0 XP로 시작하고, 적과 싸우면서 경험을 쌓아갑"
+"니다."
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:205
@@ -939,6 +973,8 @@ msgid ""
 "using two numbers (the current value and the maximum value the unit can "
 "have)."
 msgstr ""
+"체력 포인트와 경험 포인트는 스테이터스 패널에 각각 두 가지의 숫자(현재의 값"
+"과 유닛이 가질 수 있는 최대 수치)로 표시되어 있습니다."
 
 #. [topic]: id=hitpoints
 #: data/core/help.cfg:206
@@ -948,14 +984,19 @@ msgid ""
 "experience bar, which turns white as the unit is about to "
 "<ref>dst='experience_and_advancement' text='advance'</ref>."
 msgstr ""
+"체력 포인트는 유닛 옆의 초록, 노랑 또는 빨간 색의 에너지바로도 표시됩니다. 1 "
+"이상의 XP를 가진 유닛은 따로 파란 색의 경험치 바를 갖는데, 그 색깔은 "
+"<ref>dst='experience_and_advancement' text='승급'</ref>이 가까워질수록 점점 "
+"하얀색으로 변해갑니다."
 
 #. [topic]: id=movement
 #: data/core/help.cfg:213
 msgid "Movement"
-msgstr ""
+msgstr "이동"
 
 #. [topic]: id=movement
 #: data/core/help.cfg:214
+#, fuzzy
 msgid ""
 "Movement in <italic>text='Battle for Wesnoth'</italic> is simple. Click on "
 "the unit you wish to move to select it, then click on the hex you wish to "
@@ -970,6 +1011,17 @@ msgid ""
 "up its movement. Ending a move in a village you don’t already own will also "
 "use up a unit’s movement, but will still allow it to attack."
 msgstr ""
+"Battle for wesnoth에서 이동하는 법은 간단합니다. 움직이고 싶은 유닛을 클릭해"
+"서 선택하고, 당신이 가고 싶은 칸을 선택합니다. 유닛이 선택되면 이번 턴에 그것"
+"이 움직일 수 있는 모든 칸이 밝게 표시되고, 맵의 모든 다른 칸들은 흐릿하게 나"
+"옵니다. 밝게 표시된 칸 위로 마우스를 올리면 그 유닛이 목표 칸으로 이동했을때"
+"의 방어율이 그 칸에 보여집니다. 커서가 흐릿한 칸 위에 있으면 추가로 그 칸에 "
+"도달하기까지 몇 턴이 걸리는지 표시되고, 클릭하면 그 유닛은 이번 턴 및 이어지"
+"는 턴 동안 그 칸까지의 최단 거리로 이동합니다. 만약 당신이 유닛을 이동시키고 "
+"나서 그 유닛의 이동력이 남아 있다면, 그 유닛은 더 이동할 수 있습니다. 이 점"
+"은 두 유닛간의 위치를 바꿀때 유용합니다. 공격은 공격자 유닛의 이동력을 전부 "
+"소모합니다. 점령하지 못한 마을에서 이동을 완료하는 것(마을 점령) 또한 이동력"
+"을 다 소모해버리지만, 공격은 할 수 있습니다."
 
 #. [topic]: id=movement
 #: data/core/help.cfg:216
@@ -986,6 +1038,15 @@ msgid ""
 "it, selecting Unit Description, and then looking at <italic>text='Terrain "
 "Modifiers'</italic>."
 msgstr ""
+"\n"
+"\n"
+"모든 유닛은 목표 칸으로 이동하면서 매 칸을 지날때마다 그 칸의 지형에 따라 이"
+"동력을 소모하는데, 그 소모량은 유닛마다 다릅니다. 예를 들어, 초지로 이동하는 "
+"것은 거의 항상 이동력 1을 소모합니다. 칸에 들어갈 때 얼마나 많은 이동력을 쓰"
+"느냐는 유닛의 종류에 달려있습니다 - 숲에서 이동시에 엘프 유닛들이 쓰는 이동력"
+"은 1이지만, 기마병은 3을 씁니다. 당신은 유닛을 오른쪽 클릭하여 유닛 설명을 선"
+"택하고, 그 내용 중 지형별 이동력 수정 항목을 보면서 유닛이 특정 지형에 들어"
+"갈 때 얼마나 많은 이동력을 소모하는지를 알 수 있습니다."
 
 #. [topic]: id=movement
 #: data/core/help.cfg:218
@@ -999,6 +1060,12 @@ msgid ""
 "as only <ref>dst='ability_skirmisher' text='Skirmishers'</ref> can ignore "
 "zones of control."
 msgstr ""
+"\n"
+"\n"
+"또 한가지 주의할 점은 지배 영역(ZOC)입니다. 각 유닛은 그 바로 주변 칸들에 지"
+"배 권역을 형성하여 그 칸에 들어오는 모든 적 유닛의 이동을 즉시 종료하게 합니"
+"다. 오직 척후 능력을 가진 유닛들만이 ZOC를 무시할 수 있기 때문에, 어떻게 하"
+"면 ZOC를 유리하게 쓸 수 있을지 알아내는 것은 Wesnoth에서 중요한 부분입니다.."
 
 #. [topic]: id=movement
 #: data/core/help.cfg:220
@@ -1009,11 +1076,16 @@ msgid ""
 "Cmd-v. Ctrl-b or Cmd-b shows where the enemy could move, if your units were "
 "not on the map to block their progress."
 msgstr ""
+"\n"
+"\n"
+"적이 다음 턴에 이동가능한 영역을 보려면, Ctrl-v나 Cmd-v를 누르십시오. Ctrl-b"
+"나 Cmd-b는 ZOC 등으로 그들의 이동을 막는 당신의 유닛이 맵에 없다고 가정했을 "
+"때 적이 이동가능한 영역을 보여줍니다."
 
 #. [topic]: id=shroud_and_fog
 #: data/core/help.cfg:227
 msgid "Shroud and Fog of War"
-msgstr ""
+msgstr "장막과 안개"
 
 #. [topic]: id=shroud_and_fog
 #: data/core/help.cfg:230
@@ -1037,14 +1109,31 @@ msgid ""
 "a manual update via ‘update shroud now’ (or the end of your turn) and "
 "thereby perserve your ability to undo movement."
 msgstr ""
+"어떤 시나리오에서는 맵의 일부가 숨겨져 있습니다. 이 맵을 숨기는 방식에는 따"
+"로 또는 동시에 쓰이는 두 가지 요소가 존재합니다. 어둠의 장막은 그 지역에 있"
+"는 지형과 유닛 모두를 가립니다. 하지만 일단 장막을 치우면 당신은 항상 그 지점"
+"을 볼 수 있습니다. 전쟁의 안개는 유닛과 마을의 소유자(가 당신이나 동맹이 아"
+"닐 경우)만을 가립니다. 전쟁의 안개는 유닛이 근처에 있을 때 일시적으로 사라지"
+"지만, 유닛이 떠나면 원상복귀됩니다. 어둠의 장막과 전쟁의 안개는 모두 유닛에 "
+"의해 지워지는데, 그 범위는 각 유닛의 턴당 이동가능범위입니다.(ZOC와 적 유닛"
+"은 무시됩니다)\n"
+"\n"
+"일반적으로 전투나 소집과 같은 무작위적 결과를 내는 사건이 생기면 그 이전에 있"
+"었던 유닛의 이동은 되돌릴 수 없습니다. 탐험을 통해 장막이나 안개를 지웠을 때"
+"에도 그 이전의 상태로 돌아갈 수 없습니다. 당신은 행동 메뉴에서 '장막 갱신을 "
+"지연' 옵션을 선택할 수도 있습니다. 이 옵션을 선택하면 무작위 사건이 발생하거"
+"나 '지금 장막을 갱신'을 통해 수동으로 갱신하지 않는 한(또는 턴이 종료될때까"
+"지) 유닛이 장막이나 안개를 지우지 못하게 함으로써 행동을 되돌릴 기회를 남겨줍"
+"니다."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:237
 msgid "Combat"
-msgstr ""
+msgstr "전투"
 
 #. [topic]: id=combat
 #: data/core/help.cfg:238
+#, fuzzy
 msgid ""
 "Combat in <italic>text='Battle for Wesnoth'</italic> always takes place "
 "between units in adjacent hexes. Click on your unit, and click on the enemy "
@@ -1057,6 +1146,14 @@ msgid ""
 "fangs; and ranged, which usually involves weapons such as bows, spears and "
 "fireballs."
 msgstr ""
+"Battle for Wesnoth에서의 전투는 항상 근접한 칸에 붙은 유닛들간에만 일어납니"
+"다. 유닛을 클릭하고, 당신이 공격하고자 하는 적을 클릭하십시오: 당신의 유닛은 "
+"적 유닛에게 다가가며, 둘이 나란히 섰을 때 전투가 일어납니다. 공격자와 방어자"
+"는 각자에게 할당된 타격회수를 전부 소모할때까지 공격을 주고받습니다. 공격자"
+"는 자기가 가진 무기 중에서 공격에 쓸 것을 정하고, 방어자는 자신의 무기 중에 "
+"동일한 형태의 무기 중의 하나로 반격합니다. 공격의 형태는 두 종류가 있습니다: "
+"대체로 검, 도끼나 송곳니와 같은 무기는 근접형이며, 활, 창이나 파이어볼과 같"
+"은 무기는 원격형입니다."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:240
@@ -1065,6 +1162,9 @@ msgid ""
 "\n"
 "<header>text='Order and number of strikes'</header>"
 msgstr ""
+"\n"
+"\n"
+"<header>text='공격 순서와 타격 회수'</header>"
 
 #. [topic]: id=combat
 #: data/core/help.cfg:242
@@ -1079,6 +1179,14 @@ msgid ""
 "5 damage, while an Orcish Grunt with a 9–2 attack can only strike twice (but "
 "at 9 damage for each hit)."
 msgstr ""
+"\n"
+"\n"
+"공격자가 선공하며, 방어자는 반격합니다. 각 타격은 맞을 때마다 일정량의 피해"
+"를 주고, 빗나가면 아무런 피해도 주지 않습니다. 타격은 각 유닛이 자기의 타격회"
+"수를 전부 소모할때까지 오고갑니다. 유닛이 갖는 타격 회수는 서로 다릅니다. 예"
+"를 들면 5-4 공격의 엘프 전사는 4번 타격하고, 각 명중당 5의 데미지를 주며, "
+"9-2 공격의 오크 졸개는 2번밖에 때릴 수 없습니다(하지만 각 명중당 9의 데미지"
+"를 줍니다)."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:244
@@ -1087,6 +1195,9 @@ msgid ""
 "\n"
 "<header>text='Chance to hit'</header>"
 msgstr ""
+"\n"
+"\n"
+"<header>text='명중률'</header>"
 
 #. [topic]: id=combat
 #: data/core/help.cfg:246
@@ -1101,6 +1212,14 @@ msgid ""
 "Conversely, the elf’s chance of hitting the attacker in return depends on "
 "what terrain the attacker is in."
 msgstr ""
+"\n"
+"\n"
+"모든 유닛에게는 각자가 서 있는 지형에 따른 피격 확률이 있습니다. 이것은 스테"
+"이터스 창에도 떠 있지만, 유닛을 오른쪽 클릭해서 유닛 설명을 선택하여 지형 수"
+"정 항목을 보아도 찾을 수 있습니다. 예를 들면, 대다수 엘프들은 숲에서 70%의 방"
+"어율을 갖고 있기 때문에 그들을 공격하는 유닛의 명중률은 고작 30%에 불과합니"
+"다. 반대로 엘프의 반격시 공격자를 맞힐 기회는 공격자가 어떤 지형에 서 있느냐"
+"에 달려 있습니다."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:248
@@ -1113,6 +1232,12 @@ msgid ""
 "regardless of terrain, and, when used offensively, Marksmen always have at "
 "least a 60% chance to hit, regardless of terrain."
 msgstr ""
+"\n"
+"\n"
+"이 규칙에는 <ref>dst='weaponspecial_magical' text='마법 공격'</ref>과 "
+"<ref>dst='weaponspecial_marksman' text='저격'</ref>의 2 가지 예외가 있습니"
+"다. 마법 공격은 지형에 관계없이 언제나 명중률이 70%로 고정되며, 저격 공격은 "
+"지형에 관계없이 최소 60%의 명중률을 보장받습니다."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:250
@@ -1121,6 +1246,9 @@ msgid ""
 "\n"
 "<header>text=Damage</header>"
 msgstr ""
+"\n"
+"\n"
+"<header>text=데미지</header>"
 
 #. [topic]: id=combat
 #: data/core/help.cfg:252
@@ -1135,6 +1263,14 @@ msgid ""
 "modified by the circumstances, select <italic>text='Damage Calculations'</"
 "italic> in the attack selection menu."
 msgstr ""
+"\n"
+"\n"
+"타격이 명중하면 공격 무기에 달린 기본 피해가 가해집니다. 예를 들어 5-4 공격"
+"의 엘프 전사의 공격은 5의 기본 피해를 입힙니다. 이것은 대체로 "
+"<ref>dst='damage_types_and_resistance' text='저항력'</ref>과 "
+"<ref>dst='time_of_day' text='시간대'</ref>라는 두 가지 요소로 인해 수정됩니"
+"다. 기본 데미지가 상황에 따라 어떻게 변화하는지를 알고 싶다면, 공격 선택 메뉴"
+"에서 <italic>text='데미지 계산'</italic> 버튼을 클릭하세요."
 
 #. [topic]: id=combat
 #: data/core/help.cfg:254
@@ -1146,6 +1282,12 @@ msgid ""
 "<ref>dst='weaponspecial_charge' text='Charge'</ref>, which doubles the "
 "damage dealt by both attacker and defender when the unit with Charge attacks."
 msgstr ""
+"\n"
+"\n"
+"일부 유닛은 전투에서 가하는 데미지에 영향을 주는 특수 능력을 갖추고 있습니"
+"다. 이 중 가장 흔한 것이 <ref>dst='weaponspecial_charge' text='돌격'</ref>으"
+"로, 유닛이 돌격 공격을 가하면 공격자와 방어자가 서로에게 가하는 데미지가 모"
+"두 2배가 됩니다."
 
 #. [topic]: id=damage_types_and_resistance
 #: data/core/help.cfg:260
@@ -1609,20 +1751,16 @@ msgstr ""
 
 #. [topic]: id=traits_loyal
 #: data/core/help.cfg:414
-#, fuzzy
 msgid "Loyal"
-msgstr "충성"
+msgstr ""
 
 #. [topic]: id=traits_loyal
 #: data/core/help.cfg:415
-#, fuzzy
 msgid ""
 "Loyal units don’t incur upkeep. Most units incur an upkeep cost at the end "
 "of every turn, which is equal to their level. Loyal units do not incur this "
 "cost."
 msgstr ""
-"충성 유닛은 유지비가 들지 않습니다.대부분의 유니들은 매 턴 끝마다 그들의 레벨"
-"과 동일한 유지 비용을 내는데, 충성 유닛은 이 유지 비용을 내지 않습니다. "
 
 #. [topic]: id=traits_loyal
 #: data/core/help.cfg:417
@@ -1686,16 +1824,14 @@ msgstr ""
 
 #. [topic]: id=traits_dextrous
 #: data/core/help.cfg:438
-#, fuzzy
 msgid "Dextrous"
-msgstr "민첩"
+msgstr ""
 
 #. [topic]: id=traits_dextrous
 #: data/core/help.cfg:439
-#, fuzzy
 msgid ""
 "Dextrous units do 1 more damage for every successful strike in ranged combat."
-msgstr "민첩 유닛은 활로 성공적인 공격 시 1의 추가 데미지를 줍니다."
+msgstr ""
 
 #. [topic]: id=traits_dextrous
 #: data/core/help.cfg:441
@@ -1732,9 +1868,8 @@ msgstr ""
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:454
-#, fuzzy
 msgid "Dim"
-msgstr "보통"
+msgstr ""
 
 #. [topic]: id=traits_dim
 #: data/core/help.cfg:455
@@ -2075,9 +2210,8 @@ msgstr ""
 #. #-#-#-#-#  wesnoth.wml.pot (PACKAGE VERSION)  #-#-#-#-#
 #. [topic]: id=terrain_village
 #: data/core/help.cfg:685 src/terrain.cpp:157
-#, fuzzy
 msgid "Village"
-msgstr "마을"
+msgstr ""
 
 #. [topic]: id=terrain_village
 #: data/core/help.cfg:692
@@ -2146,9 +2280,8 @@ msgstr ""
 
 #. [topic]: id=terrain_ford
 #: data/core/help.cfg:733
-#, fuzzy
 msgid "River Ford"
-msgstr "시내"
+msgstr ""
 
 #. [topic]: id=terrain_ford
 #: data/core/help.cfg:736
@@ -2179,9 +2312,8 @@ msgstr ""
 
 #. [topic]: id=terrain_bridge
 #: data/core/help.cfg:755
-#, fuzzy
 msgid "Bridge"
-msgstr "다리"
+msgstr ""
 
 #. [topic]: id=terrain_bridge
 #: data/core/help.cfg:761
@@ -2829,6 +2961,10 @@ msgid ""
 "that is slowed will feature a snail icon in its sidebar information when it "
 "is selected."
 msgstr ""
+"둔화:\n"
+"이 공격은 해당 턴 동안 타겟을 둔화시킵니다. 둔화되면 공격 데미지가 절반이 되"
+"며 한 칸을 이동할 때 드는 이동력이 두 배가 됩니다. 둔화된 유닛이 선택되면 사"
+"이드바 정보에 달팽이 마크가 붙습니다."
 
 #. [petrifies]: id=petrifies
 #: data/core/macros/abilities.cfg:615
@@ -2846,7 +2982,7 @@ msgstr ""
 #. [chance_to_hit]: id=marksman
 #: data/core/macros/abilities.cfg:626
 msgid "marksman"
-msgstr ""
+msgstr "저격"
 
 #. [chance_to_hit]: id=marksman
 #: data/core/macros/abilities.cfg:628
@@ -2854,6 +2990,8 @@ msgid ""
 "Marksman:\n"
 "When used offensively, this attack always has at least a 60% chance to hit."
 msgstr ""
+"저격:\n"
+"방어가 아닌 공격에 이 무기를 사용하면 항상 60% 이상의 명중률을 갖습니다."
 
 #. [swarm]: id=swarm
 #: data/core/macros/abilities.cfg:653
@@ -2882,6 +3020,9 @@ msgid ""
 "When used offensively, this attack deals double damage to the target. It "
 "also causes this unit to take double damage from the target’s counterattack."
 msgstr ""
+"돌격:\n"
+"방어가 아닌 공격에 이 무기를 사용하면 이 공격은 목표물에 두 배의 데미지를 줍"
+"니다. 하지만 목표물이 반격할때 받는 데미지도 두 배가 됩니다."
 
 #. [drains]: id=drains
 #: data/core/macros/abilities.cfg:678
@@ -2895,11 +3036,14 @@ msgid ""
 "This unit drains health from living units, healing itself for half the "
 "amount of damage it deals (rounded down)."
 msgstr ""
+"흡수:\n"
+"이 유닛은 생명체 유닛에게 준 데미지의 절반을 그로부터 흡수해서 자신을 치유합"
+"니다.(소수점 이하 내림)"
 
 #. [poison]: id=poison
 #: data/core/macros/abilities.cfg:700
 msgid "poison"
-msgstr ""
+msgstr "중독"
 
 #. [poison]: id=poison
 #: data/core/macros/abilities.cfg:702
@@ -2909,6 +3053,9 @@ msgid ""
 "until they are cured or are reduced to 1 HP. Poison can not, of itself, kill "
 "a unit."
 msgstr ""
+"중독:\n"
+"이 공격은 생명체 목표물을 중독시킵니다. 중독된 유닛은 치유되거나 HP가 1이 될"
+"때까지 매 턴 HP 8을 잃게 됩니다. 독만으로는 유닛을 죽일 수 없습니다."
 
 #. [set_menu_item]: id=ai_controller_leader_control_{CONTROLLED_SIDE}
 #: data/core/macros/ai.cfg:494
@@ -2961,9 +3108,8 @@ msgstr ""
 
 #. [caution]
 #: data/core/macros/ai_controller.cfg:60
-#, fuzzy
 msgid "defensive."
-msgstr "방어"
+msgstr ""
 
 #. [focus_on_enemy]
 #: data/core/macros/ai_controller.cfg:71
@@ -3003,9 +3149,8 @@ msgstr ""
 #: data/core/macros/ai_controller.cfg:320
 #: data/core/macros/ai_controller.cfg:709
 #: data/core/macros/ai_controller.cfg:800
-#, fuzzy
 msgid "Back"
-msgstr " < 뒤로"
+msgstr ""
 
 #. [protect]
 #: data/core/macros/ai_controller.cfg:201
@@ -3046,28 +3191,24 @@ msgstr ""
 
 #. [revoke_objective_orders]
 #: data/core/macros/ai_controller.cfg:449
-#, fuzzy
 msgid "Clear objective orders"
-msgstr "취소"
+msgstr ""
 
 #. [revoke_behavior_orders]
 #: data/core/macros/ai_controller.cfg:461
-#, fuzzy
 msgid "Clear behavior orders"
-msgstr "취소"
+msgstr ""
 
 #. [revoke_all_orders]
 #: data/core/macros/ai_controller.cfg:474
-#, fuzzy
 msgid "Clear all orders"
-msgstr "취소"
+msgstr ""
 
 #. [then]
 #: data/core/macros/ai_controller.cfg:591
 #: data/core/macros/ai_controller.cfg:602
-#, fuzzy
 msgid "none set."
-msgstr "없음"
+msgstr ""
 
 #. [do]
 #: data/core/macros/ai_controller.cfg:644
@@ -3114,9 +3255,8 @@ msgid "moving leader to $x1|,$y1|."
 msgstr ""
 
 #: data/core/macros/ai_controller.cfg:980
-#, fuzzy
 msgid "Clear special orders"
-msgstr "취소"
+msgstr ""
 
 #: data/core/macros/ai_controller.cfg:981
 msgid ""
@@ -3141,31 +3281,25 @@ msgstr ""
 
 #. [message]: speaker=narrator
 #: data/core/macros/items.cfg:39
-#, fuzzy
 msgid "You have come across a wishing well. What would you like to wish for?"
 msgstr ""
-"당신은 소원의 우물을 지나갔습니다.\n"
-" 어떤 소원을 빌으시겠습니까?"
 
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:42
-#, fuzzy
 msgid "A swift victory"
-msgstr "신속한 승리"
+msgstr ""
 
 #. [message]: speaker=unit
 #: data/core/macros/items.cfg:49
-#, fuzzy
 msgid ""
 "With this golden coin, I wish that this battle end in a swift and safe "
 "victory."
-msgstr "이 금빛의 동전들과 함께, 나는 이 전쟁이 안전하고 빠르게 끝내길 원한다."
+msgstr ""
 
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:55
-#, fuzzy
 msgid "Lots of gold"
-msgstr "많은 양의 금"
+msgstr ""
 
 #. [message]: speaker=unit
 #: data/core/macros/items.cfg:62
@@ -3174,39 +3308,33 @@ msgstr ""
 
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:68
-#, fuzzy
 msgid "Peace throughout Wesnoth."
-msgstr "Wesnoth 전체의 평화"
+msgstr ""
 
 #. [message]: speaker=unit
 #: data/core/macros/items.cfg:75
-#, fuzzy
 msgid "The only thing worth wishing for is peace throughout the land."
-msgstr "제일 나쁜 소원은 이 땅 전체의 평화일 뿐이다."
+msgstr ""
 
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:81
-#, fuzzy
 msgid "Don’t make a wish."
-msgstr "소원을 빌지 않는다."
+msgstr ""
 
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:148
-#, fuzzy
 msgid "Take it"
-msgstr "유닛 이름설정"
+msgstr ""
 
 #. [option]: speaker=narrator
 #: data/core/macros/items.cfg:166
-#, fuzzy
 msgid "Leave it"
-msgstr "유닛 이름설정"
+msgstr ""
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:226
-#, fuzzy
 msgid "Potion of Healing"
-msgstr "회복의 물약"
+msgstr ""
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:229
@@ -3220,9 +3348,8 @@ msgstr ""
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:264
-#, fuzzy
 msgid "Poison"
-msgstr "독"
+msgstr ""
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:267
@@ -3241,9 +3368,8 @@ msgstr ""
 
 #. [object]
 #: data/core/macros/items.cfg:290
-#, fuzzy
 msgid "Holy Water"
-msgstr "성수"
+msgstr ""
 
 #. [object]
 #: data/core/macros/items.cfg:293
@@ -3254,39 +3380,33 @@ msgstr ""
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:322
-#, fuzzy
 msgid "Potion of Strength"
-msgstr "힘의 물약"
+msgstr ""
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:325
-#, fuzzy
 msgid "Strength is given to the drinker."
-msgstr "마시는 자에게 힘을 부여합니다."
+msgstr ""
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:365
-#, fuzzy
 msgid "Potion of Decay"
-msgstr "쇠약의 물약"
+msgstr ""
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:368
-#, fuzzy
 msgid "This poor unit drank something really bad."
-msgstr "이 불행한 유닛은 매우 안좋은 무엇인가를 마셨습니다."
+msgstr ""
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:402
-#, fuzzy
 msgid "Ring of Regeneration"
-msgstr "재생의 반지"
+msgstr ""
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:405
-#, fuzzy
 msgid "This ring will heal the bearer a little each turn."
-msgstr "이 반지는 각 턴 당 체력을 조금씩 채워줍니다."
+msgstr ""
 
 #. [object]: id={ID}
 #: data/core/macros/items.cfg:441
@@ -3843,12 +3963,11 @@ msgid "Deep Underground"
 msgstr ""
 
 #: data/core/macros/special-notes.cfg:5
-#, fuzzy
 msgid ""
 "\n"
 "\n"
 "Special Notes:"
-msgstr "특수"
+msgstr ""
 
 #: data/core/macros/special-notes.cfg:8
 msgid ""
@@ -4012,15 +4131,13 @@ msgstr ""
 
 #. [trait]: id=loyal
 #: data/core/macros/traits.cfg:8
-#, fuzzy
 msgid "loyal"
-msgstr "충성"
+msgstr ""
 
 #. [trait]: id=loyal
 #: data/core/macros/traits.cfg:9
-#, fuzzy
 msgid "female^loyal"
-msgstr "엘프 실프"
+msgstr ""
 
 #. [trait]: id=loyal
 #: data/core/macros/traits.cfg:10
@@ -4079,15 +4196,13 @@ msgstr "힘센"
 
 #. [trait]: id=dextrous
 #: data/core/macros/traits.cfg:84
-#, fuzzy
 msgid "dextrous"
-msgstr "민첩"
+msgstr ""
 
 #. [trait]: id=dextrous
 #: data/core/macros/traits.cfg:85
-#, fuzzy
 msgid "female^dextrous"
-msgstr "민첩"
+msgstr ""
 
 #. [trait]: id=quick
 #: data/core/macros/traits.cfg:98
@@ -4126,9 +4241,8 @@ msgstr "건강한"
 
 #. [trait]: id=healthy
 #: data/core/macros/traits.cfg:147
-#, fuzzy
 msgid "female^healthy"
-msgstr "파이터"
+msgstr ""
 
 #. [trait]: id=healthy
 #: data/core/macros/traits.cfg:148
@@ -4142,9 +4256,8 @@ msgstr "용기"
 
 #. [trait]: id=fearless
 #: data/core/macros/traits.cfg:166 data/core/macros/traits.cfg:179
-#, fuzzy
 msgid "female^fearless"
-msgstr "레드 메이지"
+msgstr ""
 
 #. [trait]: id=fearless
 #: data/core/macros/traits.cfg:167 data/core/macros/traits.cfg:180
@@ -4161,7 +4274,7 @@ msgstr "전체"
 #: data/core/macros/traits.cfg:191
 #, fuzzy
 msgid "female^feral"
-msgstr "중립 계열"
+msgstr "시간대 중성"
 
 #. [trait]: id=feral
 #: data/core/macros/traits.cfg:192
@@ -4211,9 +4324,8 @@ msgstr "늙은"
 #. [color_range]: id=red
 #. [color_range]: id=1
 #: data/core/team-colors.cfg:14 data/core/team-colors.cfg:83
-#, fuzzy
 msgid "Red"
-msgstr "빨간색"
+msgstr ""
 
 #. [color_range]: id=lightred
 #: data/core/team-colors.cfg:20
@@ -4228,58 +4340,50 @@ msgstr ""
 #. [color_range]: id=blue
 #. [color_range]: id=2
 #: data/core/team-colors.cfg:32 data/core/team-colors.cfg:89
-#, fuzzy
 msgid "Blue"
-msgstr "파란색"
+msgstr ""
 
 #. [color_range]: id=green
 #. [color_range]: id=3
 #: data/core/team-colors.cfg:38 data/core/team-colors.cfg:95
-#, fuzzy
 msgid "Green"
-msgstr "초록색"
+msgstr ""
 
 #. [color_range]: id=purple
 #. [color_range]: id=4
 #: data/core/team-colors.cfg:44 data/core/team-colors.cfg:101
-#, fuzzy
 msgid "Purple"
-msgstr "자주색"
+msgstr ""
 
 #. [color_range]: id=black
 #. [color_range]: id=5
 #: data/core/team-colors.cfg:50 data/core/team-colors.cfg:113
-#, fuzzy
 msgid "Black"
-msgstr " < 뒤로"
+msgstr ""
 
 #. [color_range]: id=brown
 #. [color_range]: id=6
 #: data/core/team-colors.cfg:56 data/core/team-colors.cfg:125
-#, fuzzy
 msgid "Brown"
-msgstr "갈색"
+msgstr ""
 
 #. [color_range]: id=orange
 #. [color_range]: id=7
 #: data/core/team-colors.cfg:62 data/core/team-colors.cfg:107
-#, fuzzy
 msgid "Orange"
-msgstr "적황색"
+msgstr ""
 
 #. [color_range]: id=white
 #. [color_range]: id=8
 #: data/core/team-colors.cfg:68 data/core/team-colors.cfg:119
-#, fuzzy
 msgid "White"
-msgstr "흰색"
+msgstr ""
 
 #. [color_range]: id=teal
 #. [color_range]: id=9
 #: data/core/team-colors.cfg:74 data/core/team-colors.cfg:131
-#, fuzzy
 msgid "Teal"
-msgstr "팀"
+msgstr ""
 
 #. [race]: id=bats
 #: data/core/units.cfg:42
@@ -4997,52 +5101,50 @@ msgid ""
 "\n"
 "Twilight: +25% Damage"
 msgstr ""
-"질서 유닛은 낮에 강하며 밤에 약합니다.\n"
+"주행성 유닛은 낮에 더 잘 싸우고, 밤에 더 못 싸웁니다.\n"
 "\n"
-"낮: +25% 데미지\n"
-"밤: −25% 데미지"
+"낮: 데미지 +25%\n"
+"밤: 데미지 −25%"
 
 #. [language]
 #: data/hardwired/english.cfg:15
-#, fuzzy
 msgid ""
 "Lawful units fight better during the day, and worse at night.\n"
 "\n"
 "Day: +25% Damage\n"
 "Night: −25% Damage"
 msgstr ""
-"질서 유닛은 낮에 강하며 밤에 약합니다.\n"
+"주행성 유닛은 낮에 더 잘 싸우고, 밤에 더 못 싸웁니다.\n"
 "\n"
-"낮: +25% 데미지\n"
-"밤: −25% 데미지"
+"낮: 데미지 +25%\n"
+"밤: 데미지 −25%"
 
 #. [language]
 #: data/hardwired/english.cfg:16
-#, fuzzy
 msgid ""
 "Neutral units are unaffected by day and night, fighting equally well under "
 "both conditions."
 msgstr ""
-"중립 유닛은 낮과 밤에 아무런 이득이 없으며, 전투시 동일한 상태를 가집니다."
+"시간대 중립 유닛은 밤낮의 영향을 받지 않아서 어떤 상황에서도 동일한 전투력을 "
+"발휘합니다."
 
 #. [language]
 #: data/hardwired/english.cfg:20
-#, fuzzy
 msgid ""
 "Chaotic units fight better at night, and worse during the day.\n"
 "\n"
 "Day: −25% Damage\n"
 "Night: +25% Damage"
 msgstr ""
-"혼돈 유닛은 밤에 강하며 낮에 약합니다.\n"
+"야행성 유닛은 밤에 더 잘 싸우고, 낮에 더 못 싸웁니다.\n"
 "\n"
-"낮: −25% 데미지\n"
-"밤: +25% 데미지"
+"낮: 데미지 −25%\n"
+"밤: 데미지 +25%"
 
 #. [language]
 #: data/hardwired/english.cfg:23
 msgid "$name|’s Bridge,$name|’s Crossing"
-msgstr ""
+msgstr "$name|’s 다리,$name|’s 도하점"
 
 #. [language]
 #: data/hardwired/english.cfg:24
@@ -5052,17 +5154,17 @@ msgstr ""
 #. [language]
 #: data/hardwired/english.cfg:25
 msgid "$name River,River $name"
-msgstr ""
+msgstr "$name 강,강 $name"
 
 #. [language]
 #: data/hardwired/english.cfg:26
 msgid "$name Forest,$name|’s Forest"
-msgstr ""
+msgstr "$name 숲,$name|의 숲"
 
 #. [language]
 #: data/hardwired/english.cfg:27
 msgid "$name Lake"
-msgstr ""
+msgstr "$name 호수"
 
 #. [language]
 #: data/hardwired/english.cfg:28
@@ -5169,7 +5271,7 @@ msgstr "화염"
 #. [language]
 #: data/hardwired/english.cfg:51
 msgid "cold"
-msgstr "빙결"
+msgstr "냉기"
 
 #. [language]
 #: data/hardwired/english.cfg:52
@@ -5178,9 +5280,8 @@ msgstr "신령"
 
 #. [fonts]
 #: data/hardwired/fonts.cfg:7
-#, fuzzy
 msgid "DejaVuSans.ttf,Andagii.ttf,wqy-zenhei.ttc"
-msgstr "gkai00mp.ttf,sazanami-gothic.ttf,DejaVuSans.ttf"
+msgstr ""
 
 #. [fonts]
 #: data/hardwired/fonts.cfg:8
@@ -5396,15 +5497,11 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:68
-#, fuzzy
 msgid ""
 "You can reuse units from a previous scenario by selecting <b>Recall</b> from "
 "the <b>Actions</b> menu. By recalling the same units over and over, you can "
 "build up a powerful and experienced army."
 msgstr ""
-"당신은 게임 메뉴 중 '유닛 불러오기' 를 통하여 전 시나리오에 썼던 유닛을 쓸 "
-"수 있습니다. 같은 유닛을 계속 불러오고 불러오면, 당신은 강력하고 경험있는 병"
-"력을 만들 수 있습니다."
 
 #. [tip]
 #: data/hardwired/tips.cfg:72
@@ -5458,14 +5555,11 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:92
-#, fuzzy
 msgid ""
 "Foot units tend to defend better in villages and castles than in other "
 "terrain types, while most mounted units do not gain any defensive advantages "
 "from villages or castles."
 msgstr ""
-"대부분의 보행 유닛들은 마을과 성안에서 다른 지역보다 방어를 잘합니다, 반면에 "
-"대부분의 기마 유닛들은 마을이나 성안에서 아무런 이점도 없습니다."
 
 #. [tip]
 #: data/hardwired/tips.cfg:93 data/hardwired/tips.cfg:173
@@ -5498,13 +5592,10 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:104
-#, fuzzy
 msgid ""
 "Elvish units move and fight well in forest. Dwarvish units move and fight "
 "well in hills, mountains and caves."
 msgstr ""
-"엘프 유닛들은 숲에서 매우 잘 이동하고 잘 싸웁니다. 드워프 유닛들은 언덕과 산"
-"에서 매우 잘 이동하며 잘 싸웁니다."
 
 #. [tip]
 #: data/hardwired/tips.cfg:108
@@ -5552,13 +5643,10 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:128
-#, fuzzy
 msgid ""
 "Skeletons are resistant to piercing, bladed and cold-based attacks but are "
 "vulnerable to impact, fire, and arcane attacks."
 msgstr ""
-"스켈레톤은 관통과 검 공격에 저항이 있지만, 불, 신성 그리고 충돌 공격에 약합니"
-"다."
 
 #. [tip]
 #: data/hardwired/tips.cfg:132
@@ -5590,29 +5678,22 @@ msgstr "- Li'sar 왕녀, Wesnoth력 515년"
 
 #. [tip]
 #: data/hardwired/tips.cfg:144
-#, fuzzy
 msgid "Read the <b>Hotkeys</b> list in the <b>Preferences</b> menu."
-msgstr "게임 옵션 메뉴에 있는 단축키 목록을 읽으십시오."
+msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:148
-#, fuzzy
 msgid ""
 "If you move a unit, but don’t attack or discover any additional information, "
 "you can undo your move by pressing <b>u</b>."
 msgstr ""
-"만일 당신이 유닛을 움직인다 하더라도 아무도 공격하지말고 아무런 행동도 하지마"
-"십시오. 당신은 'u' 키를 눌러서 행동을 취소할 수 있습니다."
 
 #. [tip]
 #: data/hardwired/tips.cfg:152
-#, fuzzy
 msgid ""
 "You can see how far enemy units can move by moving the mouse cursor over "
 "them."
 msgstr ""
-"당신은 마우스 커서를 적 유닛들에게 이동시키는 것으로 적 유닛들이 얼마나 멀리 "
-"있는지 볼 수 있습니다."
 
 #. [tip]
 #: data/hardwired/tips.cfg:156
@@ -5635,9 +5716,8 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:164
-#, fuzzy
 msgid "<i>Arcane</i> attacks are very powerful against undead."
-msgstr "신성 공격은 언데드에 대항하여 매우 강력합니다."
+msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:165
@@ -5646,13 +5726,10 @@ msgstr ""
 
 #. [tip]
 #: data/hardwired/tips.cfg:168
-#, fuzzy
 msgid ""
 "Units are healed when they advance a level. Used wisely, this can turn a "
 "fight."
 msgstr ""
-"유닛들이 레벨업을 할 경우 모든 체력이 차게됩니다. 이것을 총명하게 사용하면 전"
-"투를 역전할 수 있습니다."
 
 #. [tip]
 #: data/hardwired/tips.cfg:172
@@ -5812,9 +5889,8 @@ msgid "Victory:"
 msgstr "승리조건:"
 
 #: data/lua/wml/objectives.lua:51
-#, fuzzy
 msgid "Defeat:"
-msgstr "기본"
+msgstr ""
 
 #: data/lua/wml/objectives.lua:52
 msgid "Gold carryover:"
@@ -5856,9 +5932,8 @@ msgstr "메뉴"
 #. [menu]: id=actions-menu
 #: data/themes/default.cfg:131 data/themes/dfool.cfg:150
 #: data/themes/experimental.cfg:112
-#, fuzzy
 msgid "Actions"
-msgstr "행동"
+msgstr ""
 
 #. [menu]: id=button-endturn
 #. [change]: id=button-endturn
@@ -5955,27 +6030,23 @@ msgstr ""
 
 #. [label]: id=replay-label
 #: data/themes/macros.cfg:59
-#, fuzzy
 msgid "Replay"
-msgstr "리플레이"
+msgstr ""
 
 #. [menu]: id=button-playreplay, type=image
 #: data/themes/macros.cfg:74
-#, fuzzy
 msgid "Play"
-msgstr "플레이어 수:"
+msgstr ""
 
 #. [menu]: id=button-playreplay, type=image
 #: data/themes/macros.cfg:75
-#, fuzzy
 msgid "continuous replay"
-msgstr " 리플레이"
+msgstr ""
 
 #. [menu]: id=button-stopreplay, type=image
 #: data/themes/macros.cfg:92
-#, fuzzy
 msgid "Stop"
-msgstr "GLA"
+msgstr ""
 
 #. [menu]: id=button-stopreplay, type=image
 #: data/themes/macros.cfg:93
@@ -5984,9 +6055,8 @@ msgstr ""
 
 #. [menu]: id=button-resetreplay, type=image
 #: data/themes/macros.cfg:110
-#, fuzzy
 msgid "Reset"
-msgstr "사막"
+msgstr ""
 
 #. [menu]: id=button-resetreplay, type=image
 #: data/themes/macros.cfg:111
@@ -5995,9 +6065,8 @@ msgstr ""
 
 #. [menu]: id=button-nextturn, type=image
 #: data/themes/macros.cfg:128
-#, fuzzy
 msgid "Next Turn"
-msgstr "다음 턴"
+msgstr ""
 
 #. [menu]: id=button-nextturn, type=image
 #: data/themes/macros.cfg:129
@@ -6016,9 +6085,8 @@ msgstr ""
 
 #. [menu]: id=show-what
 #: data/themes/macros.cfg:163
-#, fuzzy
 msgid "Point of view"
-msgstr "쇠약의 물약"
+msgstr ""
 
 #. [menu]: id=skip-animation, type=checkbox
 #: data/themes/macros.cfg:179
@@ -6027,9 +6095,8 @@ msgstr "애니메이션 생략"
 
 #: src/about.cpp:200 src/help.cpp:3141 src/menu_events.cpp:315
 #: src/menu_events.cpp:342 src/statistics_dialog.cpp:114
-#, fuzzy
 msgid "Close"
-msgstr "닫기"
+msgstr ""
 
 #: src/actions.cpp:374
 msgid "You don’t have a leader to recruit with."
@@ -6186,9 +6253,8 @@ msgid "Response"
 msgstr ""
 
 #: src/addon/manager.cpp:596
-#, fuzzy
 msgid "Downloading add-on: $addon_title|..."
-msgstr "캠페인 다운 로드 중..."
+msgstr ""
 
 #: src/addon/manager.cpp:611
 msgid ""
@@ -6196,14 +6262,12 @@ msgid ""
 msgstr ""
 
 #: src/addon/manager.cpp:660
-#, fuzzy
 msgid "The add-on '$addon_title|' has been successfully installed."
-msgstr "캠페인이 설치되었습니다."
+msgstr ""
 
 #: src/addon/manager.cpp:661
-#, fuzzy
 msgid "Add-on Installed"
-msgstr "캠패인 설치됨"
+msgstr ""
 
 #: src/addon/manager.cpp:761 src/addon/manager.cpp:947
 #: src/addon/manager.cpp:1159 src/dialogs.cpp:597 src/menu_events.cpp:203
@@ -6227,9 +6291,8 @@ msgstr "용량"
 
 #: src/addon/manager.cpp:762 src/addon/manager.cpp:1160 src/help.cpp:1470
 #: src/menu_events.cpp:202 src/menu_events.cpp:854 src/menu_events.cpp:1505
-#, fuzzy
 msgid "Type"
-msgstr "종류"
+msgstr ""
 
 #: src/addon/manager.cpp:811
 msgid "Install dependencies"
@@ -6264,9 +6327,8 @@ msgid_plural ""
 msgstr[0] ""
 
 #: src/addon/manager.cpp:920
-#, fuzzy
 msgid "Outdated add-ons"
-msgstr "저장된 게임 삭제"
+msgstr ""
 
 #: src/addon/manager.cpp:922
 msgid ""
@@ -6286,28 +6348,24 @@ msgid "Could not find any updated add-ons on this server."
 msgstr ""
 
 #: src/addon/manager.cpp:947
-#, fuzzy
 msgid "New version"
-msgstr "버젼:"
+msgstr ""
 
 #: src/addon/manager.cpp:947
-#, fuzzy
 msgid "Old version"
-msgstr "버젼:"
+msgstr ""
 
 #: src/addon/manager.cpp:999
-#, fuzzy
 msgid "Update add-ons"
-msgstr "저장된 게임 삭제"
+msgstr ""
 
 #: src/addon/manager.cpp:1000
 msgid "Select an add-on to update:"
 msgstr ""
 
 #: src/addon/manager.cpp:1014
-#, fuzzy
 msgid "Update all"
-msgstr "동굴 벽"
+msgstr ""
 
 #: src/addon/manager.cpp:1052 src/addon/manager.cpp:1069
 #: src/addon/manager.cpp:1310
@@ -6322,14 +6380,12 @@ msgid ""
 msgstr ""
 
 #: src/addon/manager.cpp:1085
-#, fuzzy
 msgid "Update failed"
-msgstr "동굴 벽"
+msgstr ""
 
 #: src/addon/manager.cpp:1095
-#, fuzzy
 msgid "Update succeeded"
-msgstr "저장된 게임 삭제"
+msgstr ""
 
 #: src/addon/manager.cpp:1096
 msgid "Add-on updated successfully."
@@ -6340,9 +6396,8 @@ msgid "All add-ons updated successfully."
 msgstr ""
 
 #: src/addon/manager.cpp:1120
-#, fuzzy
 msgid "Connecting to add-ons server..."
-msgstr "서버 접속 중"
+msgstr ""
 
 #: src/addon/manager.cpp:1123 src/network.cpp:397 src/network.cpp:405
 msgid "Could not connect to host."
@@ -6365,23 +6420,20 @@ msgid "Publish add-on: "
 msgstr ""
 
 #: src/addon/manager.cpp:1240
-#, fuzzy
 msgid "Delete add-on: "
-msgstr "저장된 게임 삭제"
+msgstr ""
 
 #: src/addon/manager.cpp:1246
 msgid "There are no add-ons available for download from this server."
 msgstr ""
 
 #: src/addon/manager.cpp:1259
-#, fuzzy
 msgid "Get add-ons"
-msgstr "저장된 게임 삭제"
+msgstr ""
 
 #: src/addon/manager.cpp:1260
-#, fuzzy
 msgid "Choose the add-on to download."
-msgstr "다운로드 할 캠페인을 고르십시오."
+msgstr ""
 
 #: src/addon/manager.cpp:1261
 msgid "Download"
@@ -6415,14 +6467,12 @@ msgid ""
 msgstr ""
 
 #: src/addon/manager.cpp:1346
-#, fuzzy
 msgid "You have no add-ons installed."
-msgstr "캠페인이 설치되었습니다."
+msgstr ""
 
 #: src/addon/manager.cpp:1358
-#, fuzzy
 msgid "Choose the add-on to remove."
-msgstr "다운로드 할 캠페인을 고르십시오."
+msgstr ""
 
 #: src/addon/manager.cpp:1358
 msgid "Uninstall add-ons"
@@ -6437,28 +6487,24 @@ msgid "Confirm"
 msgstr ""
 
 #: src/addon/manager.cpp:1389
-#, fuzzy
 msgid "Add-on '$addon|' deleted."
-msgstr "캠패인 설치됨"
+msgstr ""
 
 #: src/addon/manager.cpp:1394
-#, fuzzy
 msgid "Add-on deleted"
-msgstr "캠패인 설치됨"
+msgstr ""
 
 #: src/addon/manager.cpp:1402
 msgid "Add-on could not be deleted properly:"
 msgstr ""
 
 #: src/attack_prediction_display.cpp:106 src/attack_prediction_display.cpp:236
-#, fuzzy
 msgid "Attacker"
-msgstr "공격 종류"
+msgstr ""
 
 #: src/attack_prediction_display.cpp:107 src/attack_prediction_display.cpp:235
-#, fuzzy
 msgid "Defender"
-msgstr "방어"
+msgstr ""
 
 #: src/attack_prediction_display.cpp:125
 msgid "Expected Battle Result (HP)"
@@ -6469,34 +6515,28 @@ msgid "Time of day"
 msgstr "시간대"
 
 #: src/attack_prediction_display.cpp:224
-#, fuzzy
 msgid "Leadership"
-msgstr "리더쉽"
+msgstr ""
 
 #: src/attack_prediction_display.cpp:237
-#, fuzzy
 msgid " resistance vs "
-msgstr "저항력"
+msgstr ""
 
 #: src/attack_prediction_display.cpp:238
-#, fuzzy
 msgid " vulnerability vs "
-msgstr "공격자 약점 vs"
+msgstr ""
 
 #: src/attack_prediction_display.cpp:248
-#, fuzzy
 msgid "Slowed"
-msgstr "둔함"
+msgstr ""
 
 #: src/attack_prediction_display.cpp:253
-#, fuzzy
 msgid "Total damage"
-msgstr "총 데미지"
+msgstr ""
 
 #: src/attack_prediction_display.cpp:260 src/mouse_events.cpp:835
-#, fuzzy
 msgid "No usable weapon"
-msgstr "무기 선택:"
+msgstr ""
 
 #: src/attack_prediction_display.cpp:265
 msgid "Chance of being unscathed"
@@ -6555,9 +6595,8 @@ msgid "Turn"
 msgstr "턴 수"
 
 #: src/dialogs.cpp:509
-#, fuzzy
 msgid "Scenario Start"
-msgstr "시나리오 시작"
+msgstr ""
 
 #: src/dialogs.cpp:512
 msgid "Difficulty: "
@@ -6623,29 +6662,24 @@ msgid "Delete Save"
 msgstr "세이브 파일 삭제"
 
 #: src/dialogs.cpp:696
-#, fuzzy
 msgid "Profile"
-msgstr "프로필"
+msgstr ""
 
 #: src/dialogs.cpp:809 src/help.cpp:1341
-#, fuzzy
 msgid "level"
-msgstr "레벨"
+msgstr ""
 
 #: src/dialogs.cpp:822 src/help.cpp:1444
-#, fuzzy
 msgid "HP: "
-msgstr "체력:"
+msgstr ""
 
 #: src/dialogs.cpp:825
-#, fuzzy
 msgid "XP: "
-msgstr "경험치:"
+msgstr ""
 
 #: src/dialogs.cpp:829 src/help.cpp:1445
-#, fuzzy
 msgid "Moves: "
-msgstr "이동력:"
+msgstr ""
 
 #: src/game.cpp:672 src/game.cpp:1468
 msgid "The Battle for Wesnoth"
@@ -6736,9 +6770,8 @@ msgid "Error: "
 msgstr ""
 
 #: src/game_events.cpp:179
-#, fuzzy
 msgid "Warning: "
-msgstr "아침"
+msgstr ""
 
 #: src/game_events.cpp:182
 msgid "Debug: "
@@ -6750,19 +6783,16 @@ msgstr ""
 
 #: src/generate_report.cpp:94 src/multiplayer_connect.cpp:1097
 #: src/savegame.cpp:694
-#, fuzzy
 msgid "Name: "
-msgstr "이름:"
+msgstr ""
 
 #: src/generate_report.cpp:101
-#, fuzzy
 msgid "Type: "
-msgstr "종류"
+msgstr ""
 
 #: src/generate_report.cpp:113 src/help.cpp:1404
-#, fuzzy
 msgid "Race: "
-msgstr "철퇴"
+msgstr ""
 
 #: src/generate_report.cpp:136
 #, fuzzy
@@ -6840,23 +6870,20 @@ msgid "Ability: "
 msgstr "밝음"
 
 #: src/generate_report.cpp:255
-#, fuzzy
 msgid "Resistances: "
-msgstr "저항력"
+msgstr ""
 
 #: src/generate_report.cpp:257
 msgid "(Att / Def)"
 msgstr ""
 
 #: src/generate_report.cpp:272 src/multiplayer_create.cpp:415
-#, fuzzy
 msgid "Experience Modifier: "
-msgstr "경험치 변경:"
+msgstr ""
 
 #: src/generate_report.cpp:290
-#, fuzzy
 msgid "Terrain: "
-msgstr "지형"
+msgstr ""
 
 #: src/generate_report.cpp:307
 msgid "maximum^max."
@@ -6867,24 +6894,21 @@ msgid "minimum^min."
 msgstr ""
 
 #: src/generate_report.cpp:312
-#, fuzzy
 msgid "Defense: "
-msgstr "방어"
+msgstr ""
 
 #: src/generate_report.cpp:387
-#, fuzzy
 msgid "Weapon: "
-msgstr "무기 사정거리:"
+msgstr ""
 
 #: src/generate_report.cpp:388
 #, fuzzy
 msgid "Damage: "
-msgstr "데미지"
+msgstr "입은 데미지"
 
 #: src/generate_report.cpp:391
-#, fuzzy
 msgid "Base damage: "
-msgstr "총 데미지"
+msgstr ""
 
 #: src/generate_report.cpp:393
 #, fuzzy
@@ -6894,7 +6918,7 @@ msgstr "시간대"
 #: src/generate_report.cpp:397
 #, fuzzy
 msgid "Leadership: "
-msgstr "리더쉽"
+msgstr "통솔"
 
 #: src/generate_report.cpp:401
 #, fuzzy
@@ -6902,9 +6926,8 @@ msgid "Slowed: "
 msgstr "둔화:"
 
 #: src/generate_report.cpp:405
-#, fuzzy
 msgid "Attacks: "
-msgstr "공격 종류"
+msgstr ""
 
 #: src/generate_report.cpp:407
 msgid "Base attacks: "
@@ -6915,58 +6938,49 @@ msgid "Swarm: "
 msgstr ""
 
 #: src/generate_report.cpp:421
-#, fuzzy
 msgid "Weapon range: "
-msgstr "무기 사정거리:"
+msgstr ""
 
 #: src/generate_report.cpp:422
 #, fuzzy
 msgid "Damage type: "
-msgstr "데미지 종류:"
+msgstr "입은 데미지"
 
 #: src/generate_report.cpp:423
-#, fuzzy
 msgid "Damage versus: "
-msgstr "데미지 종류:"
+msgstr ""
 
 #: src/generate_report.cpp:474
-#, fuzzy
 msgid "Accuracy:"
-msgstr "총 데미지"
+msgstr ""
 
 #: src/generate_report.cpp:479
 msgid "Parry:"
 msgstr ""
 
 #: src/generate_report.cpp:494
-#, fuzzy
 msgid "Weapon special: "
-msgstr "특수 능력"
+msgstr ""
 
 #: src/generate_report.cpp:528
-#, fuzzy
 msgid "Lawful units: "
-msgstr "질서 유닛:"
+msgstr ""
 
 #: src/generate_report.cpp:529
-#, fuzzy
 msgid "Neutral units: "
-msgstr "중립 유닛:"
+msgstr ""
 
 #: src/generate_report.cpp:530
-#, fuzzy
 msgid "Chaotic units: "
-msgstr "혼돈 유닛:"
+msgstr ""
 
 #: src/generate_report.cpp:533
-#, fuzzy
 msgid "Liminal units: "
-msgstr "질서 유닛:"
+msgstr ""
 
 #: src/generate_report.cpp:714
-#, fuzzy
 msgid "Observers:"
-msgstr "관람자:"
+msgstr ""
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:205 src/multiplayer_lobby.cpp:434
 msgid "Unknown era: $era_id"
@@ -6989,14 +7003,12 @@ msgid "Unknown scenario"
 msgstr ""
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:285 src/multiplayer_lobby.cpp:516
-#, fuzzy
 msgid "Reloaded game"
-msgstr "저장 된 게임을 불러옵니다"
+msgstr ""
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:296 src/multiplayer_lobby.cpp:532
-#, fuzzy
 msgid "Turn "
-msgstr "턴"
+msgstr ""
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:300 src/multiplayer_lobby.cpp:536
 msgid "Vacant Slot:"
@@ -7004,26 +7016,22 @@ msgid_plural "Vacant Slots:"
 msgstr[0] ""
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:306 src/multiplayer_lobby.cpp:547
-#, fuzzy
 msgid "Fog"
-msgstr "안개"
+msgstr ""
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:309
 #: src/gui/dialogs/lobby/lobby_data.cpp:312 src/multiplayer_create.cpp:86
 #: src/multiplayer_lobby.cpp:551 src/multiplayer_lobby.cpp:557
-#, fuzzy
 msgid "Shroud"
-msgstr "맵 가리기"
+msgstr ""
 
 #: src/gui/dialogs/lobby/lobby_data.cpp:314 src/multiplayer_lobby.cpp:561
-#, fuzzy
 msgid "none"
-msgstr "없음"
+msgstr ""
 
 #: src/gui/dialogs/lobby_player_info.cpp:98
-#, fuzzy
 msgid "In game:"
-msgstr "이름:"
+msgstr ""
 
 #: src/gui/dialogs/lobby_player_info.cpp:100
 msgid "(observing)"
@@ -7070,24 +7078,20 @@ msgid "<header>text='Units having this ability'</header>"
 msgstr ""
 
 #: src/help.cpp:1257
-#, fuzzy
 msgid "Leaders:"
-msgstr "리더"
+msgstr ""
 
 #: src/help.cpp:1266
-#, fuzzy
 msgid "Recruits:"
-msgstr "유닛 징병"
+msgstr ""
 
 #: src/help.cpp:1280 src/multiplayer_create.cpp:81
-#, fuzzy
 msgid "Era:"
-msgstr "시대:"
+msgstr ""
 
 #: src/help.cpp:1288
-#, fuzzy
 msgid "Factions:"
-msgstr "종족"
+msgstr ""
 
 #: src/help.cpp:1298
 msgid "Factions are only used in multiplayer"
@@ -7110,14 +7114,12 @@ msgid "Abilities: "
 msgstr ""
 
 #: src/help.cpp:1428
-#, fuzzy
 msgid "Ability Upgrades: "
-msgstr "밝음"
+msgstr ""
 
 #: src/help.cpp:1446
-#, fuzzy
 msgid "Cost: "
-msgstr "이동력:"
+msgstr ""
 
 #: src/help.cpp:1453
 msgid "Required XP: "
@@ -7128,73 +7130,60 @@ msgid "unit help^Attacks"
 msgstr ""
 
 #: src/help.cpp:1469
-#, fuzzy
 msgid "unit help^Name"
-msgstr "게임을 나갑니다"
+msgstr ""
 
 #: src/help.cpp:1471
-#, fuzzy
 msgid "Strikes"
-msgstr "공격"
+msgstr ""
 
 #: src/help.cpp:1472
-#, fuzzy
 msgid "Range"
-msgstr "레인지"
+msgstr ""
 
 #: src/help.cpp:1473
-#, fuzzy
 msgid "Special"
-msgstr "특수"
+msgstr ""
 
 #: src/help.cpp:1523
-#, fuzzy
 msgid "Resistances"
-msgstr "저항력"
+msgstr ""
 
 #: src/help.cpp:1527
-#, fuzzy
 msgid "Attack Type"
-msgstr "공격 종류"
+msgstr ""
 
 #: src/help.cpp:1528
-#, fuzzy
 msgid "Resistance"
-msgstr "저항력"
+msgstr ""
 
 #: src/help.cpp:1563
-#, fuzzy
 msgid "Terrain Modifiers"
-msgstr "지형 효과"
+msgstr ""
 
 #: src/help.cpp:1567
-#, fuzzy
 msgid "Terrain"
-msgstr "지형"
+msgstr ""
 
 #: src/help.cpp:1568
-#, fuzzy
 msgid "Defense"
-msgstr "방어"
+msgstr ""
 
 #: src/help.cpp:1569
-#, fuzzy
 msgid "Movement Cost"
-msgstr "이동력"
+msgstr ""
 
 #: src/help.cpp:1770
 msgid "<header>text='Units of this race'</header>"
 msgstr ""
 
 #: src/help.cpp:2681 src/menu_events.cpp:571
-#, fuzzy
 msgid " < Back"
-msgstr " < 뒤로"
+msgstr ""
 
 #: src/help.cpp:2682
-#, fuzzy
 msgid "Forward >"
-msgstr "앞으로 >"
+msgstr ""
 
 #: src/help.cpp:2794
 msgid "Reference to unknown topic: "
@@ -7222,9 +7211,8 @@ msgstr ""
 
 #: src/leader_list.cpp:138 src/menu_events.cpp:1531
 #: src/multiplayer_connect.cpp:223 src/multiplayer_connect.cpp:267
-#, fuzzy
 msgid "gender^Random"
-msgstr "랜덤"
+msgstr ""
 
 #: src/leader_list.cpp:148 src/multiplayer_connect.cpp:219
 #: src/multiplayer_connect.cpp:263
@@ -7237,9 +7225,8 @@ msgid "Male ♂"
 msgstr "남성 ♂"
 
 #: src/leader_list.cpp:163 src/leader_list.cpp:188
-#, fuzzy
 msgid "Random"
-msgstr "랜덤"
+msgstr ""
 
 #: src/leader_list.cpp:236 src/leader_list.cpp:242
 msgid "?"
@@ -7262,9 +7249,8 @@ msgid "Reading files and creating cache"
 msgstr ""
 
 #: src/loadscreen.cpp:226 src/loadscreen.cpp:233
-#, fuzzy
 msgid "Reading unit files"
-msgstr "서버로부터 파일 읽는 중"
+msgstr ""
 
 #: src/loadscreen.cpp:227
 msgid "Re-initialize fonts for the current language"
@@ -7303,9 +7289,8 @@ msgid "Building terrain rules"
 msgstr ""
 
 #: src/loadscreen.cpp:240
-#, fuzzy
 msgid "Starting game"
-msgstr "게임 나가기"
+msgstr ""
 
 #: src/map.cpp:194
 msgid "A map without a header is not supported"
@@ -7316,18 +7301,16 @@ msgid "Random maps with an odd width aren't supported."
 msgstr ""
 
 #: src/menu_events.cpp:94 src/menu_events.cpp:97 src/menu_events.cpp:101
-#, fuzzy
 msgid "Do you really want to dismiss him?"
-msgstr "정말로 이 게임을 지우시겠습니까?"
+msgstr ""
 
 #: src/menu_events.cpp:94
 msgid "My lord, this unit is loyal and requires no upkeep! "
 msgstr ""
 
 #: src/menu_events.cpp:95 src/menu_events.cpp:98 src/menu_events.cpp:102
-#, fuzzy
 msgid "Do you really want to dismiss her?"
-msgstr "정말로 이 게임을 지우시겠습니까?"
+msgstr ""
 
 #: src/menu_events.cpp:97
 msgid "My lord, this unit is an experienced one, having advanced levels! "
@@ -7338,105 +7321,89 @@ msgid "My lord, this unit is close to advancing a level! "
 msgstr ""
 
 #: src/menu_events.cpp:193
-#, fuzzy
 msgid "Statistics"
-msgstr "통계"
+msgstr ""
 
 #: src/menu_events.cpp:204
 msgid "Moves"
 msgstr ""
 
 #: src/menu_events.cpp:205
-#, fuzzy
 msgid "Status"
-msgstr "통계"
+msgstr ""
 
 #: src/menu_events.cpp:207 src/menu_events.cpp:856
-#, fuzzy
 msgid "Level^Lvl."
-msgstr "레벨"
+msgstr ""
 
 #: src/menu_events.cpp:209
 msgid "unit list^Traits"
 msgstr ""
 
 #: src/menu_events.cpp:307
-#, fuzzy
 msgid "Unit List"
-msgstr "유닛 목록"
+msgstr ""
 
 #: src/menu_events.cpp:313 src/menu_events.cpp:335
 msgid "Scroll To"
 msgstr ""
 
 #: src/menu_events.cpp:367
-#, fuzzy
 msgid "Leader"
-msgstr "리더"
+msgstr ""
 
 #: src/menu_events.cpp:368 src/multiplayer_connect.cpp:1000
-#, fuzzy
 msgid "Team"
-msgstr "팀"
+msgstr ""
 
 #: src/menu_events.cpp:369 src/multiplayer_connect.cpp:1011
-#, fuzzy
 msgid "Gold"
-msgstr "금"
+msgstr ""
 
 #: src/menu_events.cpp:370
-#, fuzzy
 msgid "Villages"
-msgstr "마을 수"
+msgstr ""
 
 #: src/menu_events.cpp:371
 msgid "status^Units"
 msgstr ""
 
 #: src/menu_events.cpp:372
-#, fuzzy
 msgid "Upkeep"
-msgstr "유지비"
+msgstr ""
 
 #: src/menu_events.cpp:373 src/multiplayer_connect.cpp:1012
 #: src/multiplayer_wait.cpp:510
-#, fuzzy
 msgid "Income"
-msgstr "수입비"
+msgstr ""
 
 #: src/menu_events.cpp:478
-#, fuzzy
 msgid "Current Status"
-msgstr "통계"
+msgstr ""
 
 #: src/menu_events.cpp:479
-#, fuzzy
 msgid "More >"
-msgstr "더 보기"
+msgstr ""
 
 #: src/menu_events.cpp:497
-#, fuzzy
 msgid "scenario settings^Leader"
-msgstr "시나리오 시작"
+msgstr ""
 
 #: src/menu_events.cpp:499
-#, fuzzy
 msgid "scenario settings^Side"
-msgstr "시나리오 시작"
+msgstr ""
 
 #: src/menu_events.cpp:500
-#, fuzzy
 msgid ""
 "scenario settings^Start\n"
 "Gold"
-msgstr "시나리오 시작"
+msgstr ""
 
 #: src/menu_events.cpp:501
-#, fuzzy
 msgid ""
 "scenario settings^Base\n"
 "Income"
-msgstr "시나리오 시작"
+msgstr ""
 
 #: src/menu_events.cpp:502
 msgid ""
@@ -7445,28 +7412,24 @@ msgid ""
 msgstr ""
 
 #: src/menu_events.cpp:503
-#, fuzzy
 msgid "scenario settings^Fog"
-msgstr "시나리오 시작"
+msgstr ""
 
 #: src/menu_events.cpp:504
-#, fuzzy
 msgid "scenario settings^Shroud"
-msgstr "시나리오 시작"
+msgstr ""
 
 #: src/menu_events.cpp:551 src/menu_events.cpp:552
-#, fuzzy
 msgid "no"
-msgstr "눈"
+msgstr ""
 
 #: src/menu_events.cpp:551 src/menu_events.cpp:552
 msgid "yes"
 msgstr ""
 
 #: src/menu_events.cpp:568
-#, fuzzy
 msgid "Scenario Settings"
-msgstr "시나리오 시작"
+msgstr ""
 
 #: src/menu_events.cpp:590
 msgid "Save the Map As"
@@ -7501,10 +7464,9 @@ msgid "Send to observers only"
 msgstr "관전자만이 볼 수 있음"
 
 #: src/menu_events.cpp:702
-#, fuzzy
 msgid "unit^Gold"
 msgid_plural "Gold"
-msgstr[0] "금"
+msgstr[0] ""
 
 #: src/menu_events.cpp:709
 msgid "You have no units available to recruit."
@@ -7515,9 +7477,8 @@ msgid "Recruit"
 msgstr "소집"
 
 #: src/menu_events.cpp:722 src/menu_events.cpp:924
-#, fuzzy
 msgid "Select unit:"
-msgstr "유닛 선택:"
+msgstr ""
 
 #: src/menu_events.cpp:769
 msgid "You don’t have enough gold to recruit that unit"
@@ -7549,53 +7510,46 @@ msgid_plural "You must have at least $cost gold pieces to recall a unit"
 msgstr[0] ""
 
 #: src/menu_events.cpp:1363
-#, fuzzy
 msgid ""
 "You have not started your turn yet. Do you really want to end your turn?"
-msgstr "당신의 턴을 아직 시작하지 않았습니다. 정말로 턴을 종료하시겠습니까?"
+msgstr ""
 
 #: src/menu_events.cpp:1371
-#, fuzzy
 msgid ""
 "Some units have planned actions left. Do you really want to end your turn?"
-msgstr "당신의 턴을 아직 시작하지 않았습니다. 정말로 턴을 종료하시겠습니까?"
+msgstr ""
 
 #: src/menu_events.cpp:1379 src/menu_events.cpp:1384
 msgid "Some units have movement left. Do you really want to end your turn?"
 msgstr ""
 
 #: src/menu_events.cpp:1419
-#, fuzzy
 msgid "Rename Unit"
-msgstr "유닛 이름설정"
+msgstr ""
 
 #: src/menu_events.cpp:1504
-#, fuzzy
 msgid "Race"
-msgstr "철퇴"
+msgstr ""
 
 #: src/menu_events.cpp:1528
 msgid "Create Unit (Debug!)"
 msgstr ""
 
 #: src/menu_events.cpp:1531 src/multiplayer_wait.cpp:130
-#, fuzzy
 msgid "Gender: "
-msgstr "서버:"
+msgstr ""
 
 #: src/menu_events.cpp:1619
 msgid "Place Label"
 msgstr ""
 
 #: src/menu_events.cpp:1621
-#, fuzzy
 msgid "Label: "
-msgstr "라벨:"
+msgstr ""
 
 #: src/menu_events.cpp:1622
-#, fuzzy
 msgid "Team only"
-msgstr "팀"
+msgstr ""
 
 #: src/menu_events.cpp:1823
 msgid "Search"
@@ -7622,9 +7576,8 @@ msgid "do not translate the 'all'^[all|<command>]"
 msgstr ""
 
 #: src/menu_events.cpp:2070
-#, fuzzy
 msgid "Error:"
-msgstr "시대:"
+msgstr ""
 
 #: src/menu_events.cpp:2076
 msgid "Missing argument $arg_id"
@@ -7649,9 +7602,8 @@ msgid " No help available."
 msgstr ""
 
 #: src/menu_events.cpp:2141
-#, fuzzy
 msgid "Usage:"
-msgstr "이동력:"
+msgstr ""
 
 #: src/menu_events.cpp:2146
 msgid "aliases:"
@@ -7662,9 +7614,8 @@ msgid "(A) - admin command"
 msgstr ""
 
 #: src/menu_events.cpp:2274 src/menu_events.cpp:2477
-#, fuzzy
 msgid "(admin only)"
-msgstr "팀"
+msgstr ""
 
 #: src/menu_events.cpp:2294
 msgid ""
@@ -7709,9 +7660,8 @@ msgid "Send a message to the server admins currently online"
 msgstr ""
 
 #: src/menu_events.cpp:2322
-#, fuzzy
 msgid "<message>"
-msgstr "이동력:"
+msgstr ""
 
 #: src/menu_events.cpp:2322
 msgid "Send an emotion or personal action in chat."
@@ -7788,18 +7738,16 @@ msgid "<room>"
 msgstr ""
 
 #: src/menu_events.cpp:2355
-#, fuzzy
 msgid "Join a room."
-msgstr "방 접속하기"
+msgstr ""
 
 #: src/menu_events.cpp:2358
 msgid "Part a room."
 msgstr ""
 
 #: src/menu_events.cpp:2360
-#, fuzzy
 msgid "List room members."
-msgstr "서버 접속"
+msgstr ""
 
 #: src/menu_events.cpp:2362
 msgid "List available rooms."
@@ -7830,9 +7778,8 @@ msgid "(debug command)"
 msgstr ""
 
 #: src/menu_events.cpp:2476
-#, fuzzy
 msgid "(network only)"
-msgstr "네트워크 플레이어"
+msgstr ""
 
 #: src/menu_events.cpp:2501
 msgid "Refresh gui."
@@ -7871,19 +7818,16 @@ msgid "Debug layers from terrain under the mouse."
 msgstr ""
 
 #: src/menu_events.cpp:2515
-#, fuzzy
 msgid "Show fps."
-msgstr "리플레이 보기"
+msgstr ""
 
 #: src/menu_events.cpp:2517
-#, fuzzy
 msgid "Save game."
-msgstr "게임 저장"
+msgstr ""
 
 #: src/menu_events.cpp:2519
-#, fuzzy
 msgid "Quit game."
-msgstr "게임을 나갑니다"
+msgstr ""
 
 #: src/menu_events.cpp:2523
 msgid "Save and quit."
@@ -7902,14 +7846,12 @@ msgid "<id>"
 msgstr ""
 
 #: src/menu_events.cpp:2530
-#, fuzzy
 msgid "Advance to the next scenario, or scenario identified by 'id'"
-msgstr "캠페인 다운 로드 중..."
+msgstr ""
 
 #: src/menu_events.cpp:2533
-#, fuzzy
 msgid "Choose next scenario"
-msgstr "캠페인 다운 로드 중..."
+msgstr ""
 
 #: src/menu_events.cpp:2536
 msgid ""
@@ -8000,9 +7942,8 @@ msgid "'Undiscover' all units in help."
 msgstr ""
 
 #: src/menu_events.cpp:2571
-#, fuzzy
 msgid "Create a unit."
-msgstr "방 만들기"
+msgstr ""
 
 #: src/menu_events.cpp:2573
 msgid "Toggle fog for the current player."
@@ -8058,9 +7999,8 @@ msgstr ""
 
 #: src/menu_events.cpp:2823 src/menu_events.cpp:2842
 #: src/multiplayer_connect.cpp:699
-#, fuzzy
 msgid "(empty)"
-msgstr "없음"
+msgstr ""
 
 #: src/menu_events.cpp:2823 src/menu_events.cpp:2829 src/menu_events.cpp:2879
 msgid "ignores list"
@@ -8095,9 +8035,8 @@ msgid "There are no players on your friends or ignore list."
 msgstr ""
 
 #: src/menu_events.cpp:2888
-#, fuzzy
 msgid "version"
-msgstr "버젼:"
+msgstr ""
 
 #: src/menu_events.cpp:2904
 msgid "registering with password *** and no email address"
@@ -8225,24 +8164,20 @@ msgid ""
 msgstr ""
 
 #: src/mouse_events.cpp:834 src/mouse_events.cpp:914
-#, fuzzy
 msgid "Attack Enemy"
-msgstr "적 공격하기"
+msgstr ""
 
 #: src/mouse_events.cpp:915
-#, fuzzy
 msgid "Choose weapon:"
-msgstr "무기 선택:"
+msgstr ""
 
 #: src/multiplayer.cpp:142 src/multiplayer.cpp:179
-#, fuzzy
 msgid "Connecting to Server..."
-msgstr "서버 접속 중"
+msgstr ""
 
 #: src/multiplayer.cpp:152
-#, fuzzy
 msgid "Reading from Server..."
-msgstr "서버로부터 파일 읽는 중"
+msgstr ""
 
 #: src/multiplayer.cpp:162
 msgid ""
@@ -8336,9 +8271,8 @@ msgid "Anonymous local player"
 msgstr ""
 
 #: src/multiplayer_connect.cpp:680 src/multiplayer_connect.cpp:1462
-#, fuzzy
 msgid "Computer Player"
-msgstr "컴퓨터 플레이어"
+msgstr ""
 
 #: src/multiplayer_connect.cpp:683
 msgid "$playername $side"
@@ -8353,9 +8287,8 @@ msgid "(Reserved for $playername)"
 msgstr ""
 
 #: src/multiplayer_connect.cpp:795
-#, fuzzy
 msgid "Reserved"
-msgstr "서버:"
+msgstr ""
 
 #: src/multiplayer_connect.cpp:796
 msgid "--give--"
@@ -8370,14 +8303,12 @@ msgid "Unable to find a leader type for faction $faction"
 msgstr ""
 
 #: src/multiplayer_connect.cpp:985
-#, fuzzy
 msgid "Game Lobby: "
-msgstr "게임 로비"
+msgstr ""
 
 #: src/multiplayer_connect.cpp:1007
-#, fuzzy
 msgid "Player/Type"
-msgstr "플레이어/종류"
+msgstr ""
 
 #: src/multiplayer_connect.cpp:1008
 msgid "Faction"
@@ -8413,108 +8344,89 @@ msgid "Enter a name for the new player"
 msgstr ""
 
 #: src/multiplayer_connect.cpp:1459
-#, fuzzy
 msgid "Network Player"
-msgstr "네트워크 플레이어"
+msgstr ""
 
 #: src/multiplayer_connect.cpp:1461
-#, fuzzy
 msgid "Local Player"
-msgstr "로컬 플레이어"
+msgstr ""
 
 #: src/multiplayer_connect.cpp:1463
-#, fuzzy
 msgid "Empty"
-msgstr "없음"
+msgstr ""
 
 #: src/multiplayer_connect.cpp:1614
 msgid "Cannot find era $era"
 msgstr ""
 
 #: src/multiplayer_connect.cpp:1639
-#, fuzzy
 msgid "Defeat enemy leader(s)"
 msgstr ""
-"승리 조건\n"
-"@적의 리더(들)을 물리치십시오"
 
 #: src/multiplayer_connect.cpp:1738
-#, fuzzy
 msgid "Waiting for players to join..."
-msgstr "플레이어 접속을 기다리는 중..."
+msgstr ""
 
 #: src/multiplayer_connect.cpp:1739
 #, fuzzy
 msgid "Waiting for players to choose factions..."
-msgstr "플레이어 접속을 기다리는 중..."
+msgstr "게임이 시작하길 기다립니다..."
 
 #: src/multiplayer_create.cpp:52 src/multiplayer_lobby.cpp:730
-#, fuzzy
 msgid "Create Game"
-msgstr "방 만들기"
+msgstr ""
 
 #: src/multiplayer_create.cpp:65
-#, fuzzy
 msgid "Time limit"
-msgstr "시간 제한"
+msgstr ""
 
 #: src/multiplayer_create.cpp:78
-#, fuzzy
 msgid "Name of game:"
-msgstr "게임 이름:"
+msgstr ""
 
 #: src/multiplayer_create.cpp:82
-#, fuzzy
 msgid "Map to play:"
-msgstr "맵 선택:"
+msgstr ""
 
 #: src/multiplayer_create.cpp:83 src/multiplayer_lobby.cpp:275
-#, fuzzy
 msgid "Use map settings"
-msgstr "유즈맵 세팅"
+msgstr ""
 
 #: src/multiplayer_create.cpp:84
 msgid "Random start time"
 msgstr ""
 
 #: src/multiplayer_create.cpp:85
-#, fuzzy
 msgid "Fog Of War"
-msgstr "전쟁의 안개"
+msgstr ""
 
 #: src/multiplayer_create.cpp:87
-#, fuzzy
 msgid "Observers"
-msgstr "관람자"
+msgstr ""
 
 #: src/multiplayer_create.cpp:90
-#, fuzzy
 msgid "Regenerate"
-msgstr "재생성"
+msgstr ""
 
 #: src/multiplayer_create.cpp:91
-#, fuzzy
 msgid "Settings..."
-msgstr "설정"
+msgstr ""
 
 #: src/multiplayer_create.cpp:92
 msgid "Set Password..."
 msgstr ""
 
 #: src/multiplayer_create.cpp:109
-#, fuzzy
 msgid "Load Game..."
-msgstr "게임 불러오기"
+msgstr ""
 
 #: src/multiplayer_create.cpp:145
-#, fuzzy
 msgid "The maximum number of turns the game can last"
-msgstr "게임의 최대 턴 수 "
+msgstr ""
 
 #: src/multiplayer_create.cpp:148
-#, fuzzy
 msgid "Enables user time limit"
-msgstr "시간 제한을 허용합니다"
+msgstr ""
 
 #: src/multiplayer_create.cpp:154
 msgid "Longest time allowed for first turn (seconds)"
@@ -8533,53 +8445,44 @@ msgid "Time for each attack, recruit, and capture"
 msgstr ""
 
 #: src/multiplayer_create.cpp:177
-#, fuzzy
 msgid "The amount of income each village yields per turn"
-msgstr "턴 당 얻게 되는 마을의 금"
+msgstr ""
 
 #: src/multiplayer_create.cpp:183
-#, fuzzy
 msgid "The amount of experience a unit needs to advance"
-msgstr "유닛이 필요한 경험치의 양"
+msgstr ""
 
 #: src/multiplayer_create.cpp:186
-#, fuzzy
 msgid "Use scenario specific settings"
-msgstr "자세한 시나리오 설정을 합니다"
+msgstr ""
 
 #: src/multiplayer_create.cpp:189
 msgid "Randomize time of day in begin"
 msgstr ""
 
 #: src/multiplayer_create.cpp:192
-#, fuzzy
 msgid "Enemy units cannot be seen unless they are in range of your units"
-msgstr "적의 유닛이 당신의 유닛의 사정거리에 오지 않는 이상 보이지 않습니다"
+msgstr ""
 
 #: src/multiplayer_create.cpp:195
-#, fuzzy
 msgid "The map is unknown until your units explore it"
-msgstr "당신의 유닛이 탐험을 할 때 까지 맵이 보이지 않습니다."
+msgstr ""
 
 #: src/multiplayer_create.cpp:198
-#, fuzzy
 msgid "Allow users who are not playing to watch the game"
-msgstr "플레이어들이 관람을 할 수 있도록 허용합니다"
+msgstr ""
 
 #: src/multiplayer_create.cpp:202
-#, fuzzy
 msgid "Share View"
-msgstr "시야 공유"
+msgstr ""
 
 #: src/multiplayer_create.cpp:203
-#, fuzzy
 msgid "Share Maps"
-msgstr "맵 공유"
+msgstr ""
 
 #: src/multiplayer_create.cpp:204
-#, fuzzy
 msgid "Share None"
-msgstr "공유 안함"
+msgstr ""
 
 #: src/multiplayer_create.cpp:214
 msgid "No eras found."
@@ -8602,9 +8505,8 @@ msgid "The map is invalid."
 msgstr ""
 
 #: src/multiplayer_create.cpp:337
-#, fuzzy
 msgid "You must enter a name."
-msgstr "이름을 입력해야만 합니다."
+msgstr ""
 
 #: src/multiplayer_create.cpp:345
 msgid "Set Password"
@@ -8753,9 +8655,8 @@ msgid "Invalid Color"
 msgstr ""
 
 #: src/multiplayer_ui.cpp:432
-#, fuzzy
 msgid "Selected user: "
-msgstr "유닛 선택:"
+msgstr ""
 
 #: src/multiplayer_wait.cpp:128
 msgid "Leader: "
@@ -8855,14 +8756,12 @@ msgid "This scenario has ended. Do you want to continue the campaign?"
 msgstr ""
 
 #: src/playcampaign.cpp:446
-#, fuzzy
 msgid "Downloading next scenario..."
-msgstr "캠페인 다운 로드 중..."
+msgstr ""
 
 #: src/playcampaign.cpp:592
-#, fuzzy
 msgid "Do you want to save your game?"
-msgstr "리플레이를 생략하시겠습니까?"
+msgstr ""
 
 #: src/playcampaign.cpp:611
 msgid "Unknown scenario: '$scenario|'"
@@ -8873,18 +8772,16 @@ msgid "$name has taken control"
 msgstr ""
 
 #: src/playmp_controller.cpp:93
-#, fuzzy
 msgid "Turn changed"
-msgstr "레인지"
+msgstr ""
 
 #: src/playmp_controller.cpp:224
 msgid "Undoing moves not yet transmitted to the server."
 msgstr ""
 
 #: src/playmp_controller.cpp:397
-#, fuzzy
 msgid "Waiting for next scenario..."
-msgstr "캠페인 다운 로드 중..."
+msgstr ""
 
 #: src/playmp_controller.cpp:526
 msgid ""
@@ -8929,9 +8826,8 @@ msgid "Bonus Gold: "
 msgstr "보너스 금:"
 
 #: src/playsingle_controller.cpp:272
-#, fuzzy
 msgid "Retained Gold: "
-msgstr "마을 금:"
+msgstr ""
 
 #: src/playsingle_controller.cpp:285
 msgid ""
@@ -8977,9 +8873,8 @@ msgid "It is now $name|’s turn"
 msgstr ""
 
 #: src/playsingle_controller.cpp:897
-#, fuzzy
 msgid "Scenario Report"
-msgstr "시나리오 시작"
+msgstr ""
 
 #: src/playsingle_controller.cpp:900
 msgid "Victory"
@@ -9006,9 +8901,8 @@ msgid "Replace with $player"
 msgstr "$player 로 교체"
 
 #: src/playturn.cpp:244
-#, fuzzy
 msgid "$player has left the game. What do you want to do?"
-msgstr "이(가) 나갔습니다. 무엇을 하시겠습니까?"
+msgstr ""
 
 #: src/savegame.cpp:207 src/savegame.cpp:209
 msgid " replay"
@@ -9049,9 +8943,8 @@ msgid "Save names should not end on '.gz'. Please choose a different name."
 msgstr ""
 
 #: src/savegame.cpp:771
-#, fuzzy
 msgid "Saved"
-msgstr "모래"
+msgstr ""
 
 #: src/savegame.cpp:771
 msgid "The game has been saved"
@@ -9154,9 +9047,8 @@ msgid "Details"
 msgstr "상세 정보"
 
 #: src/statistics_dialog.cpp:175
-#, fuzzy
 msgid "Damage"
-msgstr "데미지"
+msgstr ""
 
 #: src/statistics_dialog.cpp:176
 msgid "Overall"
@@ -9203,18 +9095,16 @@ msgid "Unknown unit type '$type|' while generating traits"
 msgstr ""
 
 #: src/unit.cpp:2325 src/unit.cpp:2522 src/unit.cpp:2593
-#, fuzzy
 msgid " and "
-msgstr "모래"
+msgstr ""
 
 #: src/unit.cpp:2336
 msgid "$attack_list|: $effect_description"
 msgstr ""
 
 #: src/unit.cpp:2397
-#, fuzzy
 msgid "moves"
-msgstr "이동력:"
+msgstr ""
 
 #: src/unit.cpp:2412 src/unit.cpp:2546
 msgid "XP to advance"
@@ -9229,21 +9119,19 @@ msgid "$effect_description per level"
 msgstr ""
 
 #: src/unit_types.cpp:190 src/unit_types.cpp:260
-#, fuzzy
 msgid "damage"
 msgid_plural "damage"
-msgstr[0] "데미지"
+msgstr[0] ""
 
 #: src/unit_types.cpp:201 src/unit_types.cpp:268
-#, fuzzy
 msgid "strike"
 msgid_plural "strikes"
-msgstr[0] "공격"
+msgstr[0] ""
 
 #: src/unit_types.cpp:213
-#, fuzzy, no-c-format
+#, no-c-format
 msgid "% accuracy"
-msgstr "총 데미지"
+msgstr ""
 
 #: src/unit_types.cpp:224
 #, no-c-format
@@ -9252,11 +9140,11 @@ msgstr ""
 
 #: src/unit_types.cpp:964
 msgid "chaotic"
-msgstr "혼돈 계열"
+msgstr "야행성"
 
 #: src/unit_types.cpp:964
 msgid "lawful"
-msgstr "질서 계열"
+msgstr "주행성"
 
 #: src/unit_types.cpp:964
 msgid "liminal"
@@ -9264,52 +9152,27 @@ msgstr ""
 
 #: src/unit_types.cpp:964
 msgid "neutral"
-msgstr "중립 계열"
+msgstr "시간대 중성"
 
 #: src/unit_types.cpp:965
 msgid "female^chaotic"
-msgstr "혼돈 계열"
+msgstr "야행성"
 
 #: src/unit_types.cpp:965
 msgid "female^lawful"
-msgstr "질서 계열"
+msgstr "주행성"
 
 #: src/unit_types.cpp:965
 #, fuzzy
 msgid "female^liminal"
-msgstr "엘프 실프"
+msgstr "광휘"
 
 #: src/unit_types.cpp:965
 msgid "female^neutral"
-msgstr "중립 계열"
+msgstr "시간대 중성"
 
 #~ msgid "Multiplayer_AI^Default AI"
 #~ msgstr "기본 AI"
-
-#, fuzzy
-#~ msgid "About to upload statistics — Help us make Wesnoth better for you!"
-#~ msgstr "더 좋은 Wesnoth를 만들기 위해 도와주십시오!"
-
-#, fuzzy
-#~ msgid "Send"
-#~ msgstr "모래"
-
-#, fuzzy
-#~ msgid "Don’t send"
-#~ msgstr "다시 묻지 않음"
-
-#, fuzzy
-#~ msgid "tooltip^damage"
-#~ msgid_plural "damage"
-#~ msgstr[0] "총 데미지"
-
-#, fuzzy
-#~ msgid "tooltip^% accuracy"
-#~ msgstr "총 데미지"
-
-#, fuzzy
-#~ msgid "tooltip^% parry"
-#~ msgstr "총 데미지"
 
 #~ msgid "TitleScreen button^Tutorial"
 #~ msgstr "연습 게임"
@@ -9559,9 +9422,6 @@ msgstr "중립 계열"
 
 #~ msgid "DejaVuSans.ttf,sazanami-gothic.ttf,gkai00mp.ttf"
 #~ msgstr "gkai00mp.ttf,sazanami-gothic.ttf,DejaVuSans.ttf"
-
-#~ msgid "Damage Taken"
-#~ msgstr "입은 데미지"
 
 #, fuzzy
 #~ msgid ""
