@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.wesnoth.Logger;
+import org.wesnoth.Messages;
 import org.wesnoth.utils.ResourceUtils;
 
 
@@ -90,7 +91,7 @@ public class Define
 		DefinesSAXHandler handler = (DefinesSAXHandler) ResourceUtils.
 				getWMLSAXHandlerFromResource(file, new DefinesSAXHandler());
 
-		Logger.getInstance().log("loaded " + handler.getDefines().size() + " defines for file: " + file);
+		Logger.getInstance().log(Messages.Define_0 + handler.getDefines().size() + Messages.Define_1 + file);
 		return handler.getDefines();
 	}
 
@@ -102,9 +103,9 @@ public class Define
 	public static String toStringFormatted()
 	{
 		StringBuilder res = new StringBuilder();
-		res.append("[preproc_define]");
+		res.append("[preproc_define]"); //$NON-NLS-1$
 		//res.append("\tname=\"\"");
-		res.append("[/preproc_define]");
+		res.append("[/preproc_define]"); //$NON-NLS-1$
 		return res.toString();
 	}
 }

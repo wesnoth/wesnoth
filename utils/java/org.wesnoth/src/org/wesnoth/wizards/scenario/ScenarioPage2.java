@@ -15,6 +15,7 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
+import org.wesnoth.Messages;
 import org.wesnoth.wizards.NewWizardPageTemplate;
 
 
@@ -27,9 +28,9 @@ public class ScenarioPage2 extends NewWizardPageTemplate
 	 * Create the wizard.
 	 */
 	public ScenarioPage2() {
-		super("scenarioPage2");
-		setTitle("Scenario file");
-		setDescription("Set multiplayer scenario details");
+		super("scenarioPage2"); //$NON-NLS-1$
+		setTitle(Messages.ScenarioPage2_1);
+		setDescription(Messages.ScenarioPage2_2);
 	}
 
 	/**
@@ -47,7 +48,7 @@ public class ScenarioPage2 extends NewWizardPageTemplate
 		container.setLayout(new GridLayout(1, false));
 
 		chkIsMultiplayerScenario_ = new Button(container, SWT.CHECK);
-		chkIsMultiplayerScenario_.setText("This is a multiplayer scenario");
+		chkIsMultiplayerScenario_.setText(Messages.ScenarioPage2_3);
 		new Label(container, SWT.NONE);
 		chkIsMultiplayerScenario_.addSelectionListener(new SelectionAdapter() {
 			@Override
@@ -62,7 +63,7 @@ public class ScenarioPage2 extends NewWizardPageTemplate
 		chkAllowNewGame_ = new Button(container, SWT.CHECK);
 		chkAllowNewGame_.setSelection(true);
 		chkAllowNewGame_.setEnabled(false);
-		chkAllowNewGame_.setText("Allow new game");
+		chkAllowNewGame_.setText(Messages.ScenarioPage2_4);
 	}
 
 	private void setMPSettings(boolean status)
@@ -72,7 +73,7 @@ public class ScenarioPage2 extends NewWizardPageTemplate
 
 	public String getAllowNewGame()
 	{
-		return isMultiplayerScenario() ? String.valueOf(chkAllowNewGame_.getSelection()) : "";
+		return isMultiplayerScenario() ? String.valueOf(chkAllowNewGame_.getSelection()) : ""; //$NON-NLS-1$
 	}
 
 	public boolean isMultiplayerScenario()

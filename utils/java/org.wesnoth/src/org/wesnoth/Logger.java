@@ -50,17 +50,17 @@ public class Logger {
 			return;
 		try
 		{
-			String logFilePath = String.format("%s/logs/log%s.txt",
+			String logFilePath = String.format("%s/logs/log%s.txt", //$NON-NLS-1$
 				WorkspaceUtils.getTemporaryFolder(), WorkspaceUtils.getRandomFileName());
 
-			new File(WorkspaceUtils.getTemporaryFolder() + "/logs/").mkdirs();
+			new File(WorkspaceUtils.getTemporaryFolder() + "/logs/").mkdirs(); //$NON-NLS-1$
 
 			logWriter_ = new BufferedWriter(new FileWriter(logFilePath));
-			log("Logging started.");
-			log("Error codes: 1 - INFO, 2 - WARNING, 4 - ERROR");
+			log(Messages.Logger_2);
+			log(Messages.Logger_3);
 		} catch (IOException e)
 		{
-			GUIUtils.showErrorMessageBox("There was an error trying to open the log." +
+			GUIUtils.showErrorMessageBox(Messages.Logger_4 +
 					e.getMessage());
 			e.printStackTrace();
 		}
@@ -75,7 +75,7 @@ public class Logger {
 			return;
 		try
 		{
-			log("Logging ended.");
+			log(Messages.Logger_5);
 			logWriter_.close();
 		} catch (IOException e)
 		{
@@ -139,8 +139,8 @@ public class Logger {
 		{
 			try
 			{
-				logWriter_.write(String.format("%s | %d | %s\n",
-						new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()),
+				logWriter_.write(String.format("%s | %d | %s\n", //$NON-NLS-1$
+						new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()), //$NON-NLS-1$
 						severity,  message));
 				logWriter_.flush();
 			} catch (IOException e)

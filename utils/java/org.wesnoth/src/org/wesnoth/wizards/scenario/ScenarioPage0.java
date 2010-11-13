@@ -27,6 +27,7 @@ import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Spinner;
 import org.eclipse.swt.widgets.Text;
+import org.wesnoth.Messages;
 import org.wesnoth.wizards.NewWizardPageTemplate;
 
 
@@ -69,9 +70,9 @@ public class ScenarioPage0 extends NewWizardPageTemplate
 	 * @param pageName
 	 */
 	public ScenarioPage0() {
-		super("scenarioPage0");
-		setTitle("Scenario File");
-		setDescription("Create a new scenario file.");
+		super("scenarioPage0"); //$NON-NLS-1$
+		setTitle(Messages.ScenarioPage0_1);
+		setDescription(Messages.ScenarioPage0_2);
 	}
 
 	@Override
@@ -93,7 +94,7 @@ public class ScenarioPage0 extends NewWizardPageTemplate
 		};
 
 		lblproject = new Label(container, SWT.NULL);
-		lblproject.setText("Project* :");
+		lblproject.setText(Messages.ScenarioPage0_3);
 		txtProject_ = new Text(container, SWT.BORDER | SWT.SINGLE);
 		txtProject_.setEditable(false);
 		gd_txtProject_ = new GridData(GridData.FILL_HORIZONTAL);
@@ -108,7 +109,7 @@ public class ScenarioPage0 extends NewWizardPageTemplate
 		});
 
 		Button btnBrowse_ = new Button(container, SWT.PUSH);
-		btnBrowse_.setText("Browse...");
+		btnBrowse_.setText(Messages.ScenarioPage0_4);
 		btnBrowse_.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e)
@@ -120,7 +121,7 @@ public class ScenarioPage0 extends NewWizardPageTemplate
 		});
 
 		lblFileName = new Label(container, SWT.NULL);
-		lblFileName.setText("File name* :");
+		lblFileName.setText(Messages.ScenarioPage0_5);
 		txtFileName_ = new Text(container, SWT.BORDER | SWT.SINGLE);
 		gd_txtFileName_ = new GridData(GridData.FILL_HORIZONTAL);
 		txtFileName_.setLayoutData(gd_txtFileName_);
@@ -128,7 +129,7 @@ public class ScenarioPage0 extends NewWizardPageTemplate
 		new Label(container, SWT.NONE);
 
 		lblScenarioId = new Label(container, SWT.NULL);
-		lblScenarioId.setText("Scenario Id* :");
+		lblScenarioId.setText(Messages.ScenarioPage0_6);
 		txtScenarioId_ = new Text(container, SWT.BORDER | SWT.SINGLE);
 		gd_txtScenarioId_ = new GridData(GridData.FILL_HORIZONTAL);
 		txtScenarioId_.setLayoutData(gd_txtScenarioId_);
@@ -138,7 +139,7 @@ public class ScenarioPage0 extends NewWizardPageTemplate
 		new Label(container, SWT.NONE);
 
 		lblScenarioName = new Label(container, SWT.NULL);
-		lblScenarioName.setText("Scenario name:");
+		lblScenarioName.setText(Messages.ScenarioPage0_7);
 		txtScenarioName_ = new Text(container, SWT.BORDER | SWT.SINGLE);
 		gd_txtScenarioName_ = new GridData(GridData.FILL_HORIZONTAL);
 		txtScenarioName_.setLayoutData(gd_txtScenarioName_);
@@ -146,14 +147,14 @@ public class ScenarioPage0 extends NewWizardPageTemplate
 		new Label(container, SWT.NONE);
 
 		lblNextScenarioId = new Label(container, SWT.NONE);
-		lblNextScenarioId.setText("Next scenario Id :");
+		lblNextScenarioId.setText(Messages.ScenarioPage0_8);
 
 		txtNextScenarioId_ = new Text(container, SWT.BORDER);
 		txtNextScenarioId_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 		new Label(container, SWT.NONE);
 
 		lblNumberOfTurns = new Label(container, SWT.NONE);
-		lblNumberOfTurns.setText("Number of turns:");
+		lblNumberOfTurns.setText(Messages.ScenarioPage0_9);
 
 		txtTurns_ = new Spinner(container, SWT.BORDER);
 		txtTurns_.setMinimum(-1);
@@ -164,7 +165,7 @@ public class ScenarioPage0 extends NewWizardPageTemplate
 		new Label(container, SWT.NONE);
 
 		lblMapData = new Label(container, SWT.NONE);
-		lblMapData.setText("Map data:");
+		lblMapData.setText(Messages.ScenarioPage0_10);
 
 		txtMapData_ = new Text(container, SWT.BORDER);
 		txtMapData_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
@@ -176,11 +177,11 @@ public class ScenarioPage0 extends NewWizardPageTemplate
 				handleBrowseMap();
 			}
 		});
-		btnBrowseMap.setText("Browse...");
+		btnBrowseMap.setText(Messages.ScenarioPage0_11);
 		new Label(container, SWT.NONE);
 
 		chkEmbeddedMap_ = new Button(container, SWT.CHECK);
-		chkEmbeddedMap_.setText("Embedded map");
+		chkEmbeddedMap_.setText(Messages.ScenarioPage0_12);
 		new Label(container, SWT.NONE);
 
 		if (getWizard().getSelectionContainer() != null)
@@ -197,51 +198,51 @@ public class ScenarioPage0 extends NewWizardPageTemplate
 
 		IResource container = ResourcesPlugin.getWorkspace().getRoot().findMember(new Path(getProjectName()));
 		String fileName = getFileName();
-		String warningMessage = "";
+		String warningMessage = ""; //$NON-NLS-1$
 
 		if (getProjectName().isEmpty())
 		{
-			setErrorMessage("An existing campaign must be specified");
+			setErrorMessage(Messages.ScenarioPage0_14);
 			return;
 		}
 		if (container == null || (container.getType() & (IResource.PROJECT | IResource.FOLDER)) == 0)
 		{
-			setErrorMessage("The campaign must be created first and the selected folder to exist.");
+			setErrorMessage(Messages.ScenarioPage0_15);
 			return;
 		}
 
 		if (!container.isAccessible())
 		{
-			setErrorMessage("The campaign project must be writable");
+			setErrorMessage(Messages.ScenarioPage0_16);
 			return;
 		}
 
-		if (!getProjectName().contains("scenarios"))
+		if (!getProjectName().contains("scenarios")) //$NON-NLS-1$
 		{
-			warningMessage += "The scenario *should* be created in the \"campaign_project/scenarios\" folder.";
+			warningMessage += Messages.ScenarioPage0_18;
 		}
 
 		if (fileName.isEmpty())
 		{
-			setErrorMessage("File name must be specified.");
+			setErrorMessage(Messages.ScenarioPage0_19);
 			return;
 		}
 		if (fileName.replace('\\', '/').indexOf('/', 1) > 0)
 		{
-			setErrorMessage("File name must be valid.");
+			setErrorMessage(Messages.ScenarioPage0_20);
 			return;
 		}
 
 		int dotLoc = fileName.lastIndexOf('.');
-		if (dotLoc == -1 || !(fileName.substring(dotLoc + 1).equalsIgnoreCase("cfg")))
+		if (dotLoc == -1 || !(fileName.substring(dotLoc + 1).equalsIgnoreCase("cfg"))) //$NON-NLS-1$
 		{
-			setErrorMessage("File extension must be \"cfg\".");
+			setErrorMessage(Messages.ScenarioPage0_22);
 			return;
 		}
 
 		if (txtScenarioId_.getText().isEmpty())
 		{
-			setErrorMessage("The scenario ID cannot be empty.");
+			setErrorMessage(Messages.ScenarioPage0_23);
 			return;
 		}
 
@@ -257,7 +258,7 @@ public class ScenarioPage0 extends NewWizardPageTemplate
 
 		if (rawMapPath_ == null)
 		{
-			txtMapData_.setText("");
+			txtMapData_.setText(""); //$NON-NLS-1$
 			return;
 		}
 
@@ -267,17 +268,17 @@ public class ScenarioPage0 extends NewWizardPageTemplate
 		if (!homePath.isEmpty() && homePath.charAt(0) == '/')
 			homePath = homePath.substring(1);
 
-		txtMapData_.setText(String.format("{~add-ons/%s/maps/%s}",
+		txtMapData_.setText(String.format("{~add-ons/%s/maps/%s}", //$NON-NLS-1$
 				homePath, new File(rawMapPath_).getName()));
 	}
 
 	private void handleBrowseMap()
 	{
 		FileDialog dialog = new FileDialog(getShell());
-		dialog.setText("Select a map file");
+		dialog.setText(Messages.ScenarioPage0_26);
 		if (container_ != null)
 			dialog.setFilterPath(container_.getLocation().toOSString());
-		dialog.setFilterExtensions(new String[] { "*.map" });
+		dialog.setFilterExtensions(new String[] { "*.map" }); //$NON-NLS-1$
 		rawMapPath_ = dialog.open();
 		updateMapPath();
 	}

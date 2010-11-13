@@ -40,6 +40,6 @@ public class ApplicationWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
     public void postWindowCreate()
     {
     	super.postWindowCreate();
-    	this.getWindowConfigurer().getWindow().getActivePage().hideActionSet("org.eclipse.ui.run");
+    	this.getWindowConfigurer().getWindow().getActivePage().hideActionSet("org.eclipse.ui.run"); //$NON-NLS-1$
     }
 }

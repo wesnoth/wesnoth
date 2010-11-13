@@ -42,7 +42,7 @@ public class WizardUtils
 		wizardDialog.getShell().setLocation(x, y);
 		wizardDialog.setHelpAvailable(true);
 		Activator.getDefault().getWorkbench().getHelpSystem().setHelp(wizardDialog.getShell(),
-				"Wesnoth_Eclipse_Plugin.wizardHelp");
+				"Wesnoth_Eclipse_Plugin.wizardHelp"); //$NON-NLS-1$
 
 		return wizardDialog.open();
 	}

@@ -38,6 +38,7 @@ import org.eclipse.jface.dialogs.DialogSettings;
 import org.eclipse.swt.SWT;
 import org.wesnoth.Constants;
 import org.wesnoth.Logger;
+import org.wesnoth.Messages;
 import org.wesnoth.templates.ReplaceableParameter;
 import org.wesnoth.templates.TemplateProvider;
 import org.xml.sax.InputSource;
@@ -88,17 +89,17 @@ public class ResourceUtils
 	public static String getFileContents(File file)
 	{
 		if (!file.exists() || !file.isFile())
-			return "";
+			return ""; //$NON-NLS-1$
 
-		String contentsString = "";
+		String contentsString = ""; //$NON-NLS-1$
 		BufferedReader reader = null;
 		try
 		{
-			String line = "";
+			String line = ""; //$NON-NLS-1$
 			reader = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
 			while ((line = reader.readLine()) != null)
 			{
-				contentsString += (line + "\n");
+				contentsString += (line + "\n"); //$NON-NLS-1$
 			}
 		} catch (IOException e)
 		{
@@ -148,8 +149,8 @@ public class ResourceUtils
 
 		} catch (CoreException e)
 		{
-			Logger.getInstance().log("Error creating the resource" + resourceName, IStatus.ERROR);
-			GUIUtils.showMessageBox("Error creating the resource" + resourceName, SWT.ICON_ERROR);
+			Logger.getInstance().log(Messages.ResourceUtils_4 + resourceName, IStatus.ERROR);
+			GUIUtils.showMessageBox(Messages.ResourceUtils_5 + resourceName, SWT.ICON_ERROR);
 			Logger.getInstance().logException(e);
 		}
 	}
@@ -178,8 +179,8 @@ public class ResourceUtils
 		IFile file = project.getFile(fileName);
 		if (fileContentsString == null)
 		{
-			fileContentsString = "";
-			Logger.getInstance().log("file contents are null", IStatus.WARNING);
+			fileContentsString = ""; //$NON-NLS-1$
+			Logger.getInstance().log(Messages.ResourceUtils_7, IStatus.WARNING);
 		}
 
 		if (file.exists() && overwrite)
@@ -212,7 +213,7 @@ public class ResourceUtils
 				(force == false && wesnothFile.exists() == false))
 			{
 				createNewFile(wesnothFile.getAbsolutePath());
-				new DialogSettings("project").save(path);
+				new DialogSettings("project").save(path); //$NON-NLS-1$
 			}
 		}
 		catch (Exception e) {
@@ -233,7 +234,7 @@ public class ResourceUtils
 			createNewFile(antFile.getAbsolutePath());
 			FileWriter writer = new FileWriter(antFile);
 			writer.write(
-					TemplateProvider.getInstance().getProcessedTemplate("build_xml", params));
+					TemplateProvider.getInstance().getProcessedTemplate("build_xml", params)); //$NON-NLS-1$
 			writer.close();
 		}
 		catch (Exception e) {
@@ -289,7 +290,7 @@ public class ResourceUtils
 		if (fileName == null || propertyName.isEmpty())
 			return null;
 
-		String value = "";
+		String value = ""; //$NON-NLS-1$
 		File file = new File(fileName);
 		if (!file.exists())
 			return null;
@@ -298,10 +299,10 @@ public class ResourceUtils
 		if (fileContents == null)
 			return null;
 
-		int index = fileContents.indexOf(propertyName + "=");
+		int index = fileContents.indexOf(propertyName + "="); //$NON-NLS-1$
 		if (index == -1)
 		{
-			Logger.getInstance().log(String.format("property %s not found in file %s",
+			Logger.getInstance().log(String.format(Messages.ResourceUtils_12,
 					propertyName, fileName));
 			return null;
 		}
@@ -341,26 +342,26 @@ public class ResourceUtils
 		if (resource instanceof IProject)
 		{
 			IProject project = (IProject)resource;
-			if (project.getFile("_main.cfg").exists())
-				targetResource = project.getFile("_main.cfg");
+			if (project.getFile("_main.cfg").exists()) //$NON-NLS-1$
+				targetResource = project.getFile("_main.cfg"); //$NON-NLS-1$
 		}
 
 		if (targetResource == null && resource instanceof IFolder)
 		{
 			IFolder folder = (IFolder)resource;
-			if (folder.getFile(new Path("_main.cfg")).exists())
-				targetResource = folder.getFile(new Path("_main.cfg"));
+			if (folder.getFile(new Path("_main.cfg")).exists()) //$NON-NLS-1$
+				targetResource = folder.getFile(new Path("_main.cfg")); //$NON-NLS-1$
 		}
 
 		if (targetResource == null && resource instanceof IFile)
 		{
-			if (resource.getName().equals("_main.cfg"))
+			if (resource.getName().equals("_main.cfg")) //$NON-NLS-1$
 					targetResource = (IFile) resource;
 			else
 			{
 				IProject project = resource.getProject();
-				if (project.getFile("_main.cfg").exists())
-					targetResource = project.getFile("_main.cfg");
+				if (project.getFile("_main.cfg").exists()) //$NON-NLS-1$
+					targetResource = project.getFile("_main.cfg"); //$NON-NLS-1$
 				else
 				{
 					// this might be the case of "user addon's" project
@@ -374,7 +375,7 @@ public class ResourceUtils
 							container = container.getParent();
 						}
 						IFile file = project.getFile(
-								container.getProjectRelativePath().toOSString() + "/_main.cfg");
+								container.getProjectRelativePath().toOSString() + "/_main.cfg"); //$NON-NLS-1$
 						if (file.exists())
 							targetResource = file;
 					}
@@ -440,7 +441,7 @@ public class ResourceUtils
 		}
 		catch (SAXException e) {
 			Logger.getInstance().logException(e);
-			Logger.getInstance().logError("Using output: " + parser.getOutputContent());
+			Logger.getInstance().logError(Messages.ResourceUtils_21 + parser.getOutputContent());
 			return null;
 		}
 		catch (Exception e)
@@ -458,10 +459,10 @@ public class ResourceUtils
 	@Deprecated
 	public static boolean isCampaignFile(String fileName)
 	{
-		if (!fileName.endsWith(".cfg"))
+		if (!fileName.endsWith(".cfg")) //$NON-NLS-1$
 			return false;
 		String fileContentString = ResourceUtils.getFileContents(new File(fileName));
-		return (fileContentString.contains("[campaign]") && fileContentString.contains("[/campaign]"));
+		return (fileContentString.contains("[campaign]") && fileContentString.contains("[/campaign]")); //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**
@@ -472,10 +473,10 @@ public class ResourceUtils
 	@Deprecated
 	public static boolean isScenarioFile(String fileName)
 	{
-		if (!fileName.endsWith(".cfg"))
+		if (!fileName.endsWith(".cfg")) //$NON-NLS-1$
 			return false;
 		String fileContentString = ResourceUtils.getFileContents(new File(fileName));
-		return (fileContentString.contains("[scenario]") && fileContentString.contains("[/scenario]"));
+		return (fileContentString.contains("[scenario]") && fileContentString.contains("[/scenario]")); //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	/**
@@ -507,14 +508,14 @@ public class ResourceUtils
 		// "sourcefile", line <linenumber>: error message
 		try
 		{
-			final String pivot = ", line ";
+			final String pivot = ", line "; //$NON-NLS-1$
 			int pivotIndex =  line.indexOf(pivot, 2);
 
 			String sourceFile = line.substring(1, pivotIndex - 1);
 			int lineNumber = Integer.parseInt(
 					line.substring(pivotIndex + pivot.length(),
-							line.indexOf(":", pivotIndex + pivot.length() + 1)));
-			String message = line.substring(line.indexOf(" ", pivotIndex + pivot.length() + 1));
+							line.indexOf(":", pivotIndex + pivot.length() + 1))); //$NON-NLS-1$
+			String message = line.substring(line.indexOf(" ", pivotIndex + pivot.length() + 1)); //$NON-NLS-1$
 
 			// Get the file
 			IFile file = ResourcesPlugin.getWorkspace().getRoot().

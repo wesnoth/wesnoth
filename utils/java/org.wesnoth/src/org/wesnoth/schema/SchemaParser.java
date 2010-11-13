@@ -16,6 +16,7 @@ import java.util.Stack;
 
 import org.wesnoth.Constants;
 import org.wesnoth.Logger;
+import org.wesnoth.Messages;
 import org.wesnoth.preferences.Preferences;
 import org.wesnoth.utils.ResourceUtils;
 import org.wesnoth.utils.StringUtils;
@@ -47,7 +48,7 @@ public class SchemaParser
 	public void parseSchema(boolean force)
 	{
 		parseSchema(force, Preferences.getString(
-				Constants.P_WESNOTH_WORKING_DIR) + "/data/schema.cfg");
+				Constants.P_WESNOTH_WORKING_DIR) + "/data/schema.cfg"); //$NON-NLS-1$
 	}
 
 	/**
@@ -59,7 +60,7 @@ public class SchemaParser
 	{
 		if (parsingDone_ && !force)
 		{
-			Logger.getInstance().log("schema not parsed since there is already in cache.");
+			Logger.getInstance().log(Messages.SchemaParser_1);
 			return;
 		}
 
@@ -70,7 +71,7 @@ public class SchemaParser
 			tags_.clear();
 		}
 
-		Logger.getInstance().log("parsing schema " + (force == true ? "forced" : ""));
+		Logger.getInstance().log(Messages.SchemaParser_2 + (force == true ? Messages.SchemaParser_3 : "")); //$NON-NLS-1$
 		File schemaFile = new File(schemaPath);
 		String res = ResourceUtils.getFileContents(schemaFile);
 		String[] lines = StringUtils.getLines(res);
@@ -81,13 +82,13 @@ public class SchemaParser
 		{
 			String line = lines[index];
 			// skip comments and empty lines
-			if (StringUtils.startsWith(line, "#") || line.matches("^[\t ]*$"))
+			if (StringUtils.startsWith(line, "#") || line.matches("^[\t ]*$")) //$NON-NLS-1$ //$NON-NLS-2$
 				continue;
 
-			if (StringUtils.startsWith(line, "["))
+			if (StringUtils.startsWith(line, "[")) //$NON-NLS-1$
 			{
 				// closing tag
-				if (line.charAt(line.indexOf("[") + 1) == '/')
+				if (line.charAt(line.indexOf("[") + 1) == '/') //$NON-NLS-1$
 				{
 					// propagate the 'needsexpanding' property to upper levels
 					boolean expand = false;
@@ -105,17 +106,17 @@ public class SchemaParser
 				// opening tag
 				else
 				{
-					String tagName = line.substring(line.indexOf("[") + 1, line.indexOf("]"));
+					String tagName = line.substring(line.indexOf("[") + 1, line.indexOf("]")); //$NON-NLS-1$ //$NON-NLS-2$
 					String simpleTagName = tagName;
-					String extendedTagName = "";
-					if (tagName.split(":").length > 1)
+					String extendedTagName = ""; //$NON-NLS-1$
+					if (tagName.split(":").length > 1) //$NON-NLS-1$
 					{
-						simpleTagName = tagName.split(":")[0];
-						extendedTagName = tagName.split(":")[1];
+						simpleTagName = tagName.split(":")[0]; //$NON-NLS-1$
+						extendedTagName = tagName.split(":")[1]; //$NON-NLS-1$
 					}
 					tagStack.push(simpleTagName);
 
-					if (!tagName.equals("description"))
+					if (!tagName.equals("description")) //$NON-NLS-1$
 					{
 						if (tags_.containsKey(simpleTagName))
 						{
@@ -138,32 +139,32 @@ public class SchemaParser
 			else
 			{
 				// top level - primitives defined
-				if (tagStack.peek().equals("schema"))
+				if (tagStack.peek().equals("schema")) //$NON-NLS-1$
 				{
-					String[] tokens = line.split("=");
+					String[] tokens = line.split("="); //$NON-NLS-1$
 					if (tokens.length != 2)
 					{
 						Logger.getInstance().logError(
-								"Error. invalid primitive on line :" + index);
+								Messages.SchemaParser_18 + index);
 						continue;
 					}
 					primitives_.put(tokens[0].trim(), tokens[1].trim());
 				}
-				else if (tagStack.peek().equals("description"))
+				else if (tagStack.peek().equals("description")) //$NON-NLS-1$
 				{
-					String[] tokens = line.trim().split("=");
-					String value = "";
+					String[] tokens = line.trim().split("="); //$NON-NLS-1$
+					String value = ""; //$NON-NLS-1$
 					// this *should* happen only in [description]
 					// multi-line string
 					if (StringUtils.countOf(tokens[1], '"') % 2 != 0)
 					{
-						value = tokens[1] + "\n";
+						value = tokens[1] + "\n"; //$NON-NLS-1$
 						++index;
 						while (StringUtils.countOf(lines[index], '"') % 2 == 0 &&
-								!StringUtils.startsWith(lines[index], "#") &&
+								!StringUtils.startsWith(lines[index], "#") && //$NON-NLS-1$
 								index < lines.length)
 						{
-							value += (lines[index] + "\n");
+							value += (lines[index] + "\n"); //$NON-NLS-1$
 							++index;
 						}
 						value += lines[index];
@@ -178,35 +179,35 @@ public class SchemaParser
 						value = value.substring(1, value.length() - 1);
 					}
 
-					currentTag.setDescription(new Tag("description", '?'));
+					currentTag.setDescription(new Tag(Messages.SchemaParser_25, '?'));
 					currentTag.getDescription().getKeyChildren().add(
-							new TagKey(tokens[0], '?', "", value, true));
+							new TagKey(tokens[0], '?', "", value, true)); //$NON-NLS-1$
 				}
 				else
 				{
 					String tmpLine = line.trim();
-					if (line.contains("#"))
-						tmpLine = line.substring(0, line.lastIndexOf("#")).trim();
-					String[] tokens = tmpLine.split("=");
+					if (line.contains("#")) //$NON-NLS-1$
+						tmpLine = line.substring(0, line.lastIndexOf("#")).trim(); //$NON-NLS-1$
+					String[] tokens = tmpLine.split("="); //$NON-NLS-1$
 
 					if (tokens.length != 2)
 					{
 						Logger.getInstance().logError(
-								"Error. invalid attribute on line :" + index);
+								Messages.SchemaParser_30 + index);
 						continue;
 					}
 
-					String[] value = tokens[1].substring(1, tokens[1].length() - 1).split(" ");
+					String[] value = tokens[1].substring(1, tokens[1].length() - 1).split(" "); //$NON-NLS-1$
 					if (value.length != 2)
 					{
 						Logger.getInstance().logError(
-								"Error. invalid attribute value on line:" + index);
+								Messages.SchemaParser_32 + index);
 						continue;
 					}
 
 					if (currentTag != null)
 					{
-						if (tokens[0].startsWith("_")) // reference to another tag
+						if (tokens[0].startsWith("_")) // reference to another tag //$NON-NLS-1$
 						{
 							Tag targetTag = null;
 							if (tags_.containsKey(value[1]))
@@ -224,10 +225,10 @@ public class SchemaParser
 						{
 							if (primitives_.get(value[1]) == null)
 								Logger.getInstance().logError(
-								"Undefined primitive type in schema.cfg for: " + value[1]);
+								Messages.SchemaParser_34 + value[1]);
 
 							currentTag.addKey(tokens[0], primitives_.get(value[1]),
-									getCardinality(value[0]), value[1].equals("tstring"));
+									getCardinality(value[0]), value[1].equals("tstring")); //$NON-NLS-1$
 						}
 					}
 					else
@@ -245,7 +246,7 @@ public class SchemaParser
 			expandTag(tag,0);
 		}
 
-		Logger.getInstance().log("parsing done");
+		Logger.getInstance().log(Messages.SchemaParser_36);
 		parsingDone_ = true;
 
 //		try
@@ -341,17 +342,17 @@ public class SchemaParser
 	public String getOutput(Tag tag, int indent)
 	{
 		if (tag == null)
-			return "";
+			return ""; //$NON-NLS-1$
 		StringBuilder res = new StringBuilder();
 		// tag name
-		res.append(StringUtils.multiples("\t", indent) + "[" + tag.getName() + "]\n");
+		res.append(StringUtils.multiples("\t", indent) + "[" + tag.getName() + "]\n"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 		// tag description (if any)
 		res.append(getOutput(tag.getDescription(), indent + 1));
 
 		for (TagKey key : tag.getKeyChildren())
 		{
-			res.append(StringUtils.multiples("\t", indent) +
-					"\t" + key.getName() + "=" + key.getValue() + "\n");
+			res.append(StringUtils.multiples("\t", indent) + //$NON-NLS-1$
+					"\t" + key.getName() + "=" + key.getValue() + "\n"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 		}
 		for (Tag tmpTag : tag.getTagChildren())
 		{
@@ -362,8 +363,8 @@ public class SchemaParser
 		}
 
 		// closing tag
-		res.append(StringUtils.multiples("\t", indent) +
-				"[/" + tag.getName() + "]\n");
+		res.append(StringUtils.multiples("\t", indent) + //$NON-NLS-1$
+				"[/" + tag.getName() + "]\n"); //$NON-NLS-1$ //$NON-NLS-2$
 		return res.toString();
 	}
 
@@ -377,13 +378,13 @@ public class SchemaParser
 	 */
 	public char getCardinality(String value)
 	{
-		if (value.equals("required"))
+		if (value.equals("required")) //$NON-NLS-1$
 			return '1';
-		else if (value.equals("optional"))
+		else if (value.equals("optional")) //$NON-NLS-1$
 			return '?';
-		else if (value.equals("repeated"))
+		else if (value.equals("repeated")) //$NON-NLS-1$
 			return '*';
-		else if (value.equals("forbidden"))
+		else if (value.equals("forbidden")) //$NON-NLS-1$
 			return '-';
 		return 'a';
 	}

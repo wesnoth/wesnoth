@@ -20,6 +20,7 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.wesnoth.Logger;
+import org.wesnoth.Messages;
 import org.wesnoth.templates.TemplateProvider;
 import org.wesnoth.utils.StringUtils;
 import org.wesnoth.wizards.NewWizardPageTemplate;
@@ -33,27 +34,27 @@ public class WizardLauncherPage1 extends NewWizardPageTemplate
 	private Group					grpCustomTag_;
 
 	public WizardLauncherPage1() {
-		super("wizardLauncherPage1");
-		setTitle("Wizard Launcher");
-		setDescription("Select wizard to launch");
+		super("wizardLauncherPage1"); //$NON-NLS-1$
+		setTitle(Messages.WizardLauncherPage1_1);
+		setDescription(Messages.WizardLauncherPage1_2);
 
 		list_ = new HashMap<String, String>();
 
-		String[] templates = StringUtils.getLines(TemplateProvider.getInstance().getTemplate("wizards"));
+		String[] templates = StringUtils.getLines(TemplateProvider.getInstance().getTemplate(Messages.WizardLauncherPage1_3));
 
 		for (String line : templates)
 		{
-			if (StringUtils.startsWith(line, "#"))
+			if (StringUtils.startsWith(line, "#")) //$NON-NLS-1$
 				continue;
-			String[] tokens = line.split(":");
+			String[] tokens = line.split(":"); //$NON-NLS-1$
 			if (tokens.length != 2)
 			{
-				Logger.getInstance().logError("Error in template 'wizards' on line:" + line);
+				Logger.getInstance().logError(Messages.WizardLauncherPage1_6 + line);
 				continue;
 			}
 			list_.put(tokens[0], tokens[1]);
 		}
-		list_.put("Other", "_");
+		list_.put(Messages.WizardLauncherPage1_7, "_"); //$NON-NLS-1$
 	}
 
 	@Override
@@ -67,16 +68,16 @@ public class WizardLauncherPage1 extends NewWizardPageTemplate
 
 		Label label = new Label(container, SWT.NONE);
 		label.setBounds(5, 25, 141, 15);
-		label.setText("    ");
+		label.setText("    "); //$NON-NLS-1$
 
 		Label label_1 = new Label(container, SWT.NONE);
 		label_1.setBounds(151, 25, 146, 15);
-		label_1.setText(" ");
+		label_1.setText(" "); //$NON-NLS-1$
 		Label label_2 = new Label(container, SWT.NONE);
 		label_2.setBounds(146, 85, 0, 15);
 
 		Label label_3 = new Label(container, SWT.NONE);
-		label_3.setText("Select a Wizard and then press finish: ");
+		label_3.setText(Messages.WizardLauncherPage1_11);
 		label_3.setBounds(142, 63, 267, 15);
 
 		cmbWizardName_ = new Combo(container, SWT.READ_ONLY);
@@ -91,12 +92,12 @@ public class WizardLauncherPage1 extends NewWizardPageTemplate
 			{
 				if (!(e.getSource() instanceof Combo))
 					return;
-				grpCustomTag_.setVisible(((Combo) e.getSource()).getText().equals("Other"));
+				grpCustomTag_.setVisible(((Combo) e.getSource()).getText().equals(Messages.WizardLauncherPage1_12));
 			}
 		});
 
 		grpCustomTag_ = new Group(container, SWT.NONE);
-		grpCustomTag_.setText("Custom tag:");
+		grpCustomTag_.setText(Messages.WizardLauncherPage1_13);
 		grpCustomTag_.setBounds(142, 131, 267, 76);
 		grpCustomTag_.setVisible(false);
 
@@ -106,7 +107,7 @@ public class WizardLauncherPage1 extends NewWizardPageTemplate
 
 	public String getTagName()
 	{
-		return cmbWizardName_.getText().equals("Other") == true ?
+		return cmbWizardName_.getText().equals(Messages.WizardLauncherPage1_14) == true ?
 					txtOtherTag_.getText() : list_.get(cmbWizardName_.getText());
 	}
 

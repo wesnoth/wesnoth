@@ -24,6 +24,7 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.xtext.ui.editor.preferences.fields.LabelFieldEditor;
 import org.wesnoth.Activator;
 import org.wesnoth.Constants;
+import org.wesnoth.Messages;
 import org.wesnoth.templates.ReplaceableParameter;
 import org.wesnoth.templates.TemplateProvider;
 import org.wesnoth.utils.StringUtils;
@@ -54,13 +55,13 @@ public class WesnothPreferencesPage extends AbstractPreferencePage
 		super(GRID);
 
 		setPreferenceStore(Activator.getDefault().getPreferenceStore());
-		setDescription("Wesnoth User-Made-Content Plugin preferences");
+		setDescription(Messages.WesnothPreferencesPage_0);
 
 		wmlToolsList_ = new ArrayList<String>();
-		wmlToolsList_.add("wmllint");
-		wmlToolsList_.add("wmlindent");
-		wmlToolsList_.add("wmlscope");
-		wmlToolsList_.add("wesnoth_addon_manager");
+		wmlToolsList_.add("wmllint"); //$NON-NLS-1$
+		wmlToolsList_.add("wmlindent"); //$NON-NLS-1$
+		wmlToolsList_.add("wmlscope"); //$NON-NLS-1$
+		wmlToolsList_.add("wesnoth_addon_manager"); //$NON-NLS-1$
 	}
 
 	/**
@@ -82,7 +83,7 @@ public class WesnothPreferencesPage extends AbstractPreferencePage
 		};
 
 		wesnothExecutableField_ = new FileFieldEditor(Constants.P_WESNOTH_EXEC_PATH,
-				"Wesnoth executable path*:", getFieldEditorParent());
+				Messages.WesnothPreferencesPage_5, getFieldEditorParent());
 		wesnothExecutableField_.getTextControl(getFieldEditorParent()).
 			addModifyListener(new ModifyListener() {
 				@Override
@@ -101,25 +102,25 @@ public class WesnothPreferencesPage extends AbstractPreferencePage
 					}
 				}
 			});
-		addField(wesnothExecutableField_, "The executable used to launch wesnoth (wesnoth / wesnoth.exe");
+		addField(wesnothExecutableField_, Messages.WesnothPreferencesPage_6);
 
 		wesnothWorkingDirField_ = new DirectoryFieldEditor(Constants.P_WESNOTH_WORKING_DIR,
-				"Working directory*:", getFieldEditorParent());
+				Messages.WesnothPreferencesPage_7, getFieldEditorParent());
 		wesnothWorkingDirField_.getTextControl(getFieldEditorParent()).
 			addModifyListener(listener);
-		addField(wesnothWorkingDirField_, "This directory should containing data, manual, images directories of wesnoth.");
+		addField(wesnothWorkingDirField_, Messages.WesnothPreferencesPage_8);
 
 		wesnothUserDirField_ = new DirectoryFieldEditor(Constants.P_WESNOTH_USER_DIR,
-				"User data directory*:", getFieldEditorParent());
-		addField(wesnothUserDirField_, "This directory should contain the data/add-ons/ directory, where user addons are stored.");
+				Messages.WesnothPreferencesPage_9, getFieldEditorParent());
+		addField(wesnothUserDirField_, Messages.WesnothPreferencesPage_10);
 
 		wmlToolsField_ = new DirectoryFieldEditor(Constants.P_WESNOTH_WMLTOOLS_DIR,
-				"WML* tools directory*:", getFieldEditorParent());
-		addField(wmlToolsField_, "This directory should contain the wmltools: wmllint, wmlscope, wmlindent, etc.");
+				Messages.WesnothPreferencesPage_11, getFieldEditorParent());
+		addField(wmlToolsField_, Messages.WesnothPreferencesPage_12);
 
-		addField(new FileFieldEditor(Constants.P_PYTHON_PATH, "Python executable path*:", getFieldEditorParent()));
+		addField(new FileFieldEditor(Constants.P_PYTHON_PATH, Messages.WesnothPreferencesPage_13, getFieldEditorParent()));
 
-		addField(new LabelFieldEditor("All fields marked with an (*) are mandatory.", getFieldEditorParent()));
+		addField(new LabelFieldEditor(Messages.WesnothPreferencesPage_14, getFieldEditorParent()));
 		guessDefaultPaths();
 	}
 
@@ -137,23 +138,23 @@ public class WesnothPreferencesPage extends AbstractPreferencePage
 	 */
 	private void guessDefaultPaths()
 	{
-		String os = "linux";
+		String os = "linux"; //$NON-NLS-1$
 		if (Constants.IS_MAC_MACHINE)
-			os = "mac";
+			os = "mac"; //$NON-NLS-1$
 		else if (Constants.IS_WINDOWS_MACHINE)
-			os = "windows";
+			os = "windows"; //$NON-NLS-1$
 
 		List<ReplaceableParameter> params = new ArrayList<ReplaceableParameter>();
-		params.add(new ReplaceableParameter("$$home_path", System.getProperty("user.home")));
+		params.add(new ReplaceableParameter("$$home_path", System.getProperty("user.home"))); //$NON-NLS-1$ //$NON-NLS-2$
 
 		testPaths(StringUtils.getLines(
-				TemplateProvider.getInstance().getProcessedTemplate(os + "_exec", params)),
+				TemplateProvider.getInstance().getProcessedTemplate(os + "_exec", params)), //$NON-NLS-1$
 				wesnothExecutableField_);
 		testPaths(StringUtils.getLines(
-				TemplateProvider.getInstance().getProcessedTemplate(os + "_data", params)),
+				TemplateProvider.getInstance().getProcessedTemplate(os + "_data", params)), //$NON-NLS-1$
 				wesnothWorkingDirField_);
 		testPaths(StringUtils.getLines(
-				TemplateProvider.getInstance().getProcessedTemplate(os + "_user", params)),
+				TemplateProvider.getInstance().getProcessedTemplate(os + "_user", params)), //$NON-NLS-1$
 				wesnothUserDirField_);
 
 		// guess the working dir based on executable's path
@@ -175,7 +176,7 @@ public class WesnothPreferencesPage extends AbstractPreferencePage
 		if (wmlToolsField_.getStringValue().isEmpty() &&
 			!wesnothWorkingDirField_.getStringValue().isEmpty())
 		{
-			String path = wesnothWorkingDirField_.getStringValue() + "/data/tools";
+			String path = wesnothWorkingDirField_.getStringValue() + "/data/tools"; //$NON-NLS-1$
 			if (testWMLToolsPath(path))
 				wmlToolsField_.setStringValue(path);
 		}
@@ -194,7 +195,7 @@ public class WesnothPreferencesPage extends AbstractPreferencePage
 		{
 			if (!(new File(path + Path.SEPARATOR + tool).exists()))
 			{
-				setErrorMessage(String.format("'%s' cannot be found in the wml tools path",
+				setErrorMessage(String.format(Messages.WesnothPreferencesPage_24,
 						tool));
 				return false;
 			}
@@ -229,13 +230,13 @@ public class WesnothPreferencesPage extends AbstractPreferencePage
 	private void unsetInvalidProperties()
 	{
 		if (!wesnothExecutableField_.isValid())
-			wesnothExecutableField_.setStringValue("");
+			wesnothExecutableField_.setStringValue(""); //$NON-NLS-1$
 		if (!wesnothUserDirField_.isValid())
-			wesnothUserDirField_.setStringValue("");
+			wesnothUserDirField_.setStringValue(""); //$NON-NLS-1$
 		if (!wesnothWorkingDirField_.isValid())
-			wesnothWorkingDirField_.setStringValue("");
+			wesnothWorkingDirField_.setStringValue(""); //$NON-NLS-1$
 		if (!wmlToolsField_.isValid())
-			wmlToolsField_.setStringValue("");
+			wmlToolsField_.setStringValue(""); //$NON-NLS-1$
 	}
 
 	@Override

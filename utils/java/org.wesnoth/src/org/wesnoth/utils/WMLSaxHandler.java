@@ -47,22 +47,22 @@ public class WMLSaxHandler extends DefaultHandler
        String rawName, Attributes attributes)
     {
     	stack_.push(rawName);
-    	if (rawName.equals("set_variable"))
+    	if (rawName.equals("set_variable")) //$NON-NLS-1$
     	{
     		STATUS = SET_VARIABLE;
     		tmpVar_ = new Variable();
     	}
-    	else if (rawName.equals("set_variables"))
+    	else if (rawName.equals("set_variables")) //$NON-NLS-1$
     	{
     		STATUS = SET_VARIABLE_ARRAY;
     		tmpVar_ = new Variable();
     		tmpVar_.setIsArray(true);
     	}
-    	else if (rawName.equals("campaign"))
+    	else if (rawName.equals("campaign")) //$NON-NLS-1$
     	{
     		cfg_.setIsCampaign(true);
     	}
-    	else if (rawName.equals("scenario"))
+    	else if (rawName.equals("scenario")) //$NON-NLS-1$
     	{
     		cfg_.setIsScenario(true);
     	}
@@ -75,28 +75,28 @@ public class WMLSaxHandler extends DefaultHandler
     	if (stack_.empty() == false)
     	{
     		String peek = stack_.peek();
-    		if (peek.equals("id"))
+    		if (peek.equals("id")) //$NON-NLS-1$
     		{
-    			if (stack_.get(stack_.size() - 2).equals("campaign"))
+    			if (stack_.get(stack_.size() - 2).equals("campaign")) //$NON-NLS-1$
     				cfg_.setCampaignId(new String(ch, start, length));
-    			else if (stack_.get(stack_.size() - 2).equals("scenario"))
+    			else if (stack_.get(stack_.size() - 2).equals("scenario")) //$NON-NLS-1$
     				cfg_.setScenarioId(new String(ch, start, length));
     		}
 
 			if (STATUS == SET_VARIABLE ||
 				STATUS == SET_VARIABLE_ARRAY)
 			{
-				if (peek.equals("name"))
+				if (peek.equals("name")) //$NON-NLS-1$
 				{
 					String name = new String(ch, start, length);
-					if (name.contains("[")) // we have an array
+					if (name.contains("[")) // we have an array //$NON-NLS-1$
 					{
 						tmpVar_.setIsArray(true);
 						name = name.substring(0, name.indexOf('['));
 					}
-					System.out.println("added variable: [" + name +
-							(tmpVar_.isArray()?" - array -]": "]") +
-							" file: [" + filePath_ + "]");
+					System.out.println("added variable: [" + name + //$NON-NLS-1$
+							(tmpVar_.isArray()?" - array -]": "]") + //$NON-NLS-1$ //$NON-NLS-2$
+							" file: [" + filePath_ + "]"); //$NON-NLS-1$ //$NON-NLS-2$
 					tmpVar_.setName(name);
 					tmpVar_.setOffset(start);
 					tmpVar_.setLocation(filePath_);
@@ -113,7 +113,7 @@ public class WMLSaxHandler extends DefaultHandler
     {
     	super.endElement(uri, localName, qName);
     	stack_.pop();
-    	if (qName.equals("set_variable"))
+    	if (qName.equals("set_variable")) //$NON-NLS-1$
     		STATUS = 0;
     }
 

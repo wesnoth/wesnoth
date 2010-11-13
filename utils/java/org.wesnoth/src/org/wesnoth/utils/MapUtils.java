@@ -16,6 +16,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.FileDialog;
 import org.wesnoth.Activator;
 import org.wesnoth.Logger;
+import org.wesnoth.Messages;
 
 
 public class MapUtils
@@ -27,14 +28,14 @@ public class MapUtils
 	{
 		if (WorkspaceUtils.getSelectedFolder() == null)
 		{
-			Logger.getInstance().log("no directory selected (importMap)",
-				"Please select a directory before importing a map");
+			Logger.getInstance().log(Messages.MapUtils_0,
+				Messages.MapUtils_1);
 			return;
 		}
 
 		FileDialog mapDialog = new FileDialog(Activator.getShell(), SWT.OPEN);
-		mapDialog.setText("Import wesnoth map");
-		mapDialog.setFilterExtensions(new String[] {"*.map" });
+		mapDialog.setText(Messages.MapUtils_2);
+		mapDialog.setFilterExtensions(new String[] {"*.map" }); //$NON-NLS-1$
 		String file = mapDialog.open();
 
 		if (file == null)
@@ -48,7 +49,7 @@ public class MapUtils
 
 			if (target.exists())
 			{
-				if (GUIUtils.showMessageBox("There is already an existing map with the same name. Overwrite?",
+				if (GUIUtils.showMessageBox(Messages.MapUtils_4,
 						SWT.ICON_QUESTION | SWT.YES | SWT.NO) == SWT.NO)
 					return;
 			}

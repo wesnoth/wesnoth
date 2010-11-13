@@ -46,12 +46,12 @@ public class ProjectCache
 		configFiles_ = new HashMap<String, ConfigFile>();
 		defines_ = new HashMap<String, Define>(0);
 		propertiesTimetamp_ = 0;
-		properties_ = new DialogSettings("project");
+		properties_ = new DialogSettings("project"); //$NON-NLS-1$
 
 		wesnothFile_ = new File(project.getLocation().toOSString()  +
-							"/.wesnoth");
+							"/.wesnoth"); //$NON-NLS-1$
 		definesFile_ = new File (PreprocessorUtils.getInstance().getTemporaryLocation(
-				project.getFile("_main.cfg"))  + "/_MACROS_.cfg");
+				project.getFile("_main.cfg"))  + "/_MACROS_.cfg"); //$NON-NLS-1$ //$NON-NLS-2$
 
 		ResourceUtils.createWesnothFile(wesnothFile_.getAbsolutePath(), false);
 		readProperties(true);
@@ -85,27 +85,27 @@ public class ProjectCache
 				properties_.load(wesnothFile_.getAbsolutePath());
 			}
 
-			if (properties_.getSection("configs") != null)
+			if (properties_.getSection("configs") != null) //$NON-NLS-1$
 			{
-				for(IDialogSettings config : properties_.getSection("configs").getSections())
+				for(IDialogSettings config : properties_.getSection("configs").getSections()) //$NON-NLS-1$
 				{
-					if (config.getName().startsWith("config") == false)
+					if (config.getName().startsWith("config") == false) //$NON-NLS-1$
 						continue;
 
-					ConfigFile tmp = new ConfigFile(config.get("filename"));
-					tmp.setScenarioId(config.get("scenario_id"));
-					tmp.setCampaignId(config.get("campaign_id"));
+					ConfigFile tmp = new ConfigFile(config.get("filename")); //$NON-NLS-1$
+					tmp.setScenarioId(config.get("scenario_id")); //$NON-NLS-1$
+					tmp.setCampaignId(config.get("campaign_id")); //$NON-NLS-1$
 
-					for(IDialogSettings variable : config.getSection("variables").getSections())
+					for(IDialogSettings variable : config.getSection("variables").getSections()) //$NON-NLS-1$
 					{
-						if (variable.getName().startsWith("var") == false)
+						if (variable.getName().startsWith("var") == false) //$NON-NLS-1$
 							continue;
 						tmp.getVariables().add(
-								new Variable(variable.get("name"),
-										variable.get("location"),
-										variable.getInt("offset")));
+								new Variable(variable.get("name"), //$NON-NLS-1$
+										variable.get("location"), //$NON-NLS-1$
+										variable.getInt("offset"))); //$NON-NLS-1$
 					}
-					configFiles_.put(config.get("filename"), tmp);
+					configFiles_.put(config.get("filename"), tmp); //$NON-NLS-1$
 				}
 			}
 			propertiesTimetamp_ = wesnothFile_.lastModified();
@@ -172,22 +172,22 @@ public class ProjectCache
 		{
 			// save config files info
 			int configCnt = 0;
-			IDialogSettings configsSection = properties_.addNewSection("configs");
+			IDialogSettings configsSection = properties_.addNewSection("configs"); //$NON-NLS-1$
 			for(ConfigFile config : configFiles_.values())
 			{
-				IDialogSettings configSection = configsSection.addNewSection("config" + configCnt);
-				configSection.put("scenario_id", config.getScenarioId());
-				configSection.put("campaign_id", config.getCampaignId());
-				configSection.put("filename", config.getFilename());
+				IDialogSettings configSection = configsSection.addNewSection("config" + configCnt); //$NON-NLS-1$
+				configSection.put("scenario_id", config.getScenarioId()); //$NON-NLS-1$
+				configSection.put("campaign_id", config.getCampaignId()); //$NON-NLS-1$
+				configSection.put("filename", config.getFilename()); //$NON-NLS-1$
 
-				IDialogSettings variablesSection = configSection.addNewSection("variables");
+				IDialogSettings variablesSection = configSection.addNewSection("variables"); //$NON-NLS-1$
 				int varCnt = 0;
 				for(Variable var : config.getVariables())
 				{
-					IDialogSettings varSection = variablesSection.addNewSection("var" + varCnt);
-					varSection.put("name", var.getName());
-					varSection.put("location", var.getLocation());
-					varSection.put("offset", var.getOffset());
+					IDialogSettings varSection = variablesSection.addNewSection("var" + varCnt); //$NON-NLS-1$
+					varSection.put("name", var.getName()); //$NON-NLS-1$
+					varSection.put("location", var.getLocation()); //$NON-NLS-1$
+					varSection.put("offset", var.getOffset()); //$NON-NLS-1$
 
 					++varCnt;
 				}

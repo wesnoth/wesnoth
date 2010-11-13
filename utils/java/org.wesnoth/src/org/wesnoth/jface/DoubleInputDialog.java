@@ -30,14 +30,14 @@ public class DoubleInputDialog extends Dialog
 	private Label	lblValue1;
 	private Label	lblValue2;
 
-	private String	resStr1	= "", resStr2 = "";
-	private String	val1String	= "", val2String = "";
+	private String	resStr1	= "", resStr2 = ""; //$NON-NLS-1$ //$NON-NLS-2$
+	private String	val1String	= "", val2String = ""; //$NON-NLS-1$ //$NON-NLS-2$
 
 	public DoubleInputDialog(Shell parentShell, String value1String, String value2String) {
 		super(parentShell);
 		setShellStyle(SWT.DIALOG_TRIM);
-		val1String = value1String + ":";
-		val2String = value2String + ":";
+		val1String = value1String + ":"; //$NON-NLS-1$
+		val2String = value2String + ":"; //$NON-NLS-1$
 	}
 
 	@Override

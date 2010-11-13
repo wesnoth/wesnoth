@@ -9,6 +9,7 @@ import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.dialogs.ContainerSelectionDialog;
 import org.wesnoth.Activator;
+import org.wesnoth.Messages;
 
 
 public class NewWizardPageTemplate extends WizardPage
@@ -22,7 +23,7 @@ public class NewWizardPageTemplate extends WizardPage
 	public void createControl(Composite parent)
 	{
 		Activator.getDefault().getWorkbench().getHelpSystem().setHelp(getShell(),
-				"Wesnoth_Eclipse_Plugin.wizardHelp");
+				"Wesnoth_Eclipse_Plugin.wizardHelp"); //$NON-NLS-1$
 	}
 
 	@Override
@@ -38,7 +39,7 @@ public class NewWizardPageTemplate extends WizardPage
 	public Path handleBrowseContainer()
 	{
 		ContainerSelectionDialog dialog = new ContainerSelectionDialog(getShell(),
-				ResourcesPlugin.getWorkspace().getRoot(), false, "Select a container");
+				ResourcesPlugin.getWorkspace().getRoot(), false, Messages.NewWizardPageTemplate_1);
 		if (dialog.open() == ContainerSelectionDialog.OK)
 		{
 			Object[] result = dialog.getResult();

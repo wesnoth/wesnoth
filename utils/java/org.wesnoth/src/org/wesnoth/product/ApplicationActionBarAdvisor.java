@@ -17,6 +17,7 @@ import org.eclipse.ui.actions.ActionFactory;
 import org.eclipse.ui.actions.ActionFactory.IWorkbenchAction;
 import org.eclipse.ui.application.ActionBarAdvisor;
 import org.eclipse.ui.application.IActionBarConfigurer;
+import org.wesnoth.Messages;
 
 public class ApplicationActionBarAdvisor extends ActionBarAdvisor
 {
@@ -51,25 +52,25 @@ public class ApplicationActionBarAdvisor extends ActionBarAdvisor
 	@Override
 	protected void fillMenuBar(IMenuManager menuBar)
 	{
-		MenuManager fileMenu = new MenuManager("&File", "wesnoth.file");
+		MenuManager fileMenu = new MenuManager(Messages.ApplicationActionBarAdvisor_0, "wesnoth.file"); //$NON-NLS-1$
 		fileMenu.add(newWizardDropDownAction_);
 		fileMenu.add(quitAction_);
 		menuBar.add(fileMenu);
 
-		MenuManager editMenu = new MenuManager("&Edit", IWorkbenchActionConstants.M_EDIT);
+		MenuManager editMenu = new MenuManager(Messages.ApplicationActionBarAdvisor_2, IWorkbenchActionConstants.M_EDIT);
 		menuBar.add(editMenu);
 
 		// wesnoth
 		menuBar.add(new GroupMarker(IWorkbenchActionConstants.MB_ADDITIONS));
 
-		MenuManager projectMenu = new MenuManager("&Project", IWorkbenchActionConstants.M_PROJECT);
+		MenuManager projectMenu = new MenuManager(Messages.ApplicationActionBarAdvisor_3, IWorkbenchActionConstants.M_PROJECT);
 		menuBar.add(projectMenu);
 
-		MenuManager windowMenu = new MenuManager("&Window", IWorkbenchActionConstants.M_WINDOW);
+		MenuManager windowMenu = new MenuManager(Messages.ApplicationActionBarAdvisor_4, IWorkbenchActionConstants.M_WINDOW);
 		windowMenu.add(prefAction_);
 		menuBar.add(windowMenu);
 
-		MenuManager helpMenu = new MenuManager("&Help", "help");
+		MenuManager helpMenu = new MenuManager(Messages.ApplicationActionBarAdvisor_5, "help"); //$NON-NLS-1$
 		helpMenu.add(aboutAction_);
 		menuBar.add(helpMenu);
 	}

@@ -17,16 +17,17 @@ import org.eclipse.ui.IStartup;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
+import org.wesnoth.Messages;
 
 public class ActionWiper implements IStartup, IPerspectiveListener
 {
 	private static final String[]	ACTIONS_2_WIPE	= new String[] {
-			"org.eclipse.search.searchActionSet",
-			"org.eclipse.debug.ui.breakpointActionSet",
-			"org.eclipse.debug.ui.debugActionSet",
-			"org.eclipse.debug.ui.launchActionSet",
-			"org.eclipse.debug.ui.profileActionSet",
-			"org.eclipse.ui.externaltools.ExternalToolsSet"
+			"org.eclipse.search.searchActionSet", //$NON-NLS-1$
+			"org.eclipse.debug.ui.breakpointActionSet", //$NON-NLS-1$
+			"org.eclipse.debug.ui.debugActionSet", //$NON-NLS-1$
+			"org.eclipse.debug.ui.launchActionSet", //$NON-NLS-1$
+			"org.eclipse.debug.ui.profileActionSet", //$NON-NLS-1$
+			"org.eclipse.ui.externaltools.ExternalToolsSet" //$NON-NLS-1$
 													// "org.eclipse.ui.edit.text.actionSet.presentation",
 													// "org.eclipse.ui.edit.text.actionSet.openExternalFile",
 													// "org.eclipse.ui.edit.text.actionSet.annotationNavigation",
@@ -58,7 +59,7 @@ public class ActionWiper implements IStartup, IPerspectiveListener
 				Menu menu = page.getWorkbenchWindow().getShell().getMenuBar();
 				for (MenuItem item : menu.getItems())
 				{
-					if (item.getText().equals("&Run"))
+					if (item.getText().equals(Messages.ActionWiper_6))
 					{
 						item.dispose();
 					}

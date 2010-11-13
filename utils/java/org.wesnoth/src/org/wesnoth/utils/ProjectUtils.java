@@ -19,6 +19,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.jface.dialogs.DialogSettings;
 import org.wesnoth.Constants;
 import org.wesnoth.Logger;
+import org.wesnoth.Messages;
 import org.wesnoth.templates.ReplaceableParameter;
 import org.wesnoth.templates.TemplateProvider;
 
@@ -97,17 +98,17 @@ public class ProjectUtils
 		else if (handle.getLocation() != null)
 			projectPath = handle.getLocation().toOSString();
 
-		monitor.subTask("Cleaning files...");
+		monitor.subTask(Messages.ProjectUtils_0);
 		if (projectPath != null)
 		{
 			// cleanup existing files
-			ResourceUtils.removeFile(projectPath + "/.wesnoth");
-			ResourceUtils.removeFile(projectPath + "/.project");
-			ResourceUtils.removeFile(projectPath + "/.build.xml");
+			ResourceUtils.removeFile(projectPath + "/.wesnoth"); //$NON-NLS-1$
+			ResourceUtils.removeFile(projectPath + "/.project"); //$NON-NLS-1$
+			ResourceUtils.removeFile(projectPath + "/.build.xml"); //$NON-NLS-1$
 		}
 		monitor.worked(5);
 
-		monitor.subTask("Creating project '" + handle.getName() + "' ...");
+		monitor.subTask(String.format(Messages.ProjectUtils_4, handle.getName()));
 		// create the project
 		try{
 			if (description == null)
@@ -125,7 +126,7 @@ public class ProjectUtils
 			handle.open(monitor);
 		monitor.worked(10);
 
-		monitor.subTask("Configuring project...");
+		monitor.subTask(Messages.ProjectUtils_6);
 		// add wesnoth nature
 		IProjectDescription tmpDescription = handle.getDescription();
 		tmpDescription.setNatureIds(new String[] { Constants.NATURE_WESNOTH /*,
@@ -137,10 +138,10 @@ public class ProjectUtils
 		if (createBuildXML)
 		{
 			ArrayList<ReplaceableParameter> param = new ArrayList<ReplaceableParameter>();
-			param.add(new ReplaceableParameter("$$project_name", handle.getName()));
-			param.add(new ReplaceableParameter("$$project_dir_name", handle.getName()));
-			ResourceUtils.createFile(handle, "build.xml",
-					TemplateProvider.getInstance().getProcessedTemplate("build_xml", param), true);
+			param.add(new ReplaceableParameter("$$project_name", handle.getName())); //$NON-NLS-1$
+			param.add(new ReplaceableParameter("$$project_dir_name", handle.getName())); //$NON-NLS-1$
+			ResourceUtils.createFile(handle, "build.xml", //$NON-NLS-1$
+					TemplateProvider.getInstance().getProcessedTemplate("build_xml", param), true); //$NON-NLS-1$
 		}
 		monitor.worked(10);
 		return 0;

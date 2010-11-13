@@ -31,10 +31,10 @@ public class RegenerateBuildFiles extends ObjectActionDelegate
 			if (element instanceof IProject)
 			{
 				ArrayList<ReplaceableParameter> param = new ArrayList<ReplaceableParameter>();
-				param.add(new ReplaceableParameter("$$project_name", (((IProject)element).getName())));
-				param.add(new ReplaceableParameter("$$project_dir_name", ((IProject)element).getName()));
-				ResourceUtils.createFile((IProject)element, "build.xml",
-						TemplateProvider.getInstance().getProcessedTemplate("build_xml", param), true);
+				param.add(new ReplaceableParameter("$$project_name", (((IProject)element).getName()))); //$NON-NLS-1$
+				param.add(new ReplaceableParameter("$$project_dir_name", ((IProject)element).getName())); //$NON-NLS-1$
+				ResourceUtils.createFile((IProject)element, "build.xml", //$NON-NLS-1$
+						TemplateProvider.getInstance().getProcessedTemplate("build_xml", param), true); //$NON-NLS-1$
 				try
 				{
 					((IProject)element).refreshLocal(IResource.DEPTH_ONE, new NullProgressMonitor());

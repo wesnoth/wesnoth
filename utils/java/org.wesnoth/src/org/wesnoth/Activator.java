@@ -78,12 +78,12 @@ public class Activator extends AbstractUIPlugin
 			if (!checkConditions())
 			{
 				GUIUtils.showInfoMessageBox(
-						"Hello!\n" +
-						"Welcome to 'Wesnoth User Made Content Eclipse Plugin'.\n" +
-						"Since this is the first time you are using it " +
-						"I'll guide you through setting it up.\n\n" +
-						"First you'll have to setup your preferences.\n" +
-				"Press OK to continue.");
+						Messages.Activator_0 +
+						Messages.Activator_1 +
+						Messages.Activator_2 +
+						Messages.Activator_3 +
+						Messages.Activator_4 +
+				Messages.Activator_5);
 				WorkspaceUtils.setupWorkspace(true);
 			}
 		}

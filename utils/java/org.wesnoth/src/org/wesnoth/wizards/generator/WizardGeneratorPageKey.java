@@ -20,6 +20,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
+import org.wesnoth.Messages;
 import org.wesnoth.schema.TagKey;
 import org.wesnoth.utils.StringUtils;
 import org.wesnoth.wizards.NewWizardPageTemplate;
@@ -34,8 +35,8 @@ public class WizardGeneratorPageKey extends NewWizardPageTemplate
 
 	public WizardGeneratorPageKey(String tagName, List<TagKey> keys,
 			int startIndex, int endIndex, byte indent) {
-		super("wizardPageKey" + startIndex);
-		setTitle(tagName + " new wizard");
+		super(Messages.WizardGeneratorPageKey_0 + startIndex);
+		setTitle(tagName + Messages.WizardGeneratorPageKey_1);
 		//setDescription(String.format("page %d to %d out of %d", startIndex, endIndex, keys.size()));
 
 		indent_ = indent;
@@ -63,15 +64,15 @@ public class WizardGeneratorPageKey extends NewWizardPageTemplate
 			Label label = new Label(container_, SWT.NONE);
 			label.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
 			// add star to required items
-			label.setText(key.getName() + (key.isRequired() ? "*" : "") + ":");
+			label.setText(key.getName() + (key.isRequired() ? "*" : "") + ":"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 
 			// if the is an enum create a combobox instead of textbox
 			if (key.isEnum())
 			{
 				Combo combo = new Combo(container_, SWT.READ_ONLY);
 				combo.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
-				combo.setData("name", key.getName());
-				String[] items = key.getValue().split(",");
+				combo.setData("name", key.getName()); //$NON-NLS-1$
+				String[] items = key.getValue().split(","); //$NON-NLS-1$
 				combo.setItems(items);
 				combo.select(0);
 			}
@@ -80,12 +81,12 @@ public class WizardGeneratorPageKey extends NewWizardPageTemplate
 				Text textBox = new Text(container_, SWT.BORDER);
 				textBox.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
 
-				textBox.setData("name", key.getName());
-				textBox.setData("valType", key.getValue());
-				textBox.setData("card", key.getCardinality());
-				textBox.setData("trans", key.isTranslatable());
+				textBox.setData("name", key.getName()); //$NON-NLS-1$
+				textBox.setData("valType", key.getValue()); //$NON-NLS-1$
+				textBox.setData("card", key.getCardinality()); //$NON-NLS-1$
+				textBox.setData("trans", key.isTranslatable()); //$NON-NLS-1$
 				if (key.isRequired())
-					textBox.setData("comp", false); // is textbox complete
+					textBox.setData("comp", false); // is textbox complete //$NON-NLS-1$
 
 				textBox.addModifyListener(new ModifyListener() {
 					@Override
@@ -95,15 +96,15 @@ public class WizardGeneratorPageKey extends NewWizardPageTemplate
 						return;
 
 					Text txt = ((Text) e.getSource());
-					if (txt.getData("comp") == null)
+					if (txt.getData("comp") == null) //$NON-NLS-1$
 						return;
 
-					if ((txt.getText().isEmpty() && (txt.getData("card").toString().equals("1"))) || // cardinality
-						!txt.getText().matches(txt.getData("valType").toString()) // regex
+					if ((txt.getText().isEmpty() && (txt.getData("card").toString().equals("1"))) || // cardinality //$NON-NLS-1$ //$NON-NLS-2$
+						!txt.getText().matches(txt.getData("valType").toString()) // regex //$NON-NLS-1$
 					)
-						txt.setData("comp", false);
+						txt.setData("comp", false); //$NON-NLS-1$
 					else
-						txt.setData("comp", true);
+						txt.setData("comp", true); //$NON-NLS-1$
 					updatePageIsComplete();
 				}
 				});
@@ -121,14 +122,14 @@ public class WizardGeneratorPageKey extends NewWizardPageTemplate
 			if (!(child instanceof Text)) // don't check comboboxes
 				continue;
 
-			if (child.getData("comp") == null)
+			if (child.getData("comp") == null) //$NON-NLS-1$
 				continue;
 
-			if (child.getData("comp").toString().equals("false"))
+			if (child.getData("comp").toString().equals("false")) //$NON-NLS-1$ //$NON-NLS-2$
 			{
-				setErrorMessage(child.getData("name") +
-						" is empty or does not match required value\n"
-						+ child.getData("valType"));
+				setErrorMessage(child.getData("name") + //$NON-NLS-1$
+						Messages.WizardGeneratorPageKey_22
+						+ child.getData("valType")); //$NON-NLS-1$
 				return;
 			}
 		}
@@ -144,14 +145,14 @@ public class WizardGeneratorPageKey extends NewWizardPageTemplate
 		{
 			if (!(child instanceof Text || child instanceof Combo))
 				continue;
-			String text = "";
+			String text = ""; //$NON-NLS-1$
 			if (child instanceof Text)
-				text = (child.getData("trans").toString().equals("true") == true ? "_" : "") +
-						"\"" + ((Text) child).getText() + "\"";
+				text = (child.getData("trans").toString().equals("true") == true ? "_" : "") + //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
+						"\"" + ((Text) child).getText() + "\""; //$NON-NLS-1$ //$NON-NLS-2$
 			else
 				text = ((Combo) child).getText();
-			result.append(StringUtils.multiples("\t", indent_) +
-								child.getData("name") + "=" + text + "\n");
+			result.append(StringUtils.multiples("\t", indent_) + //$NON-NLS-1$
+								child.getData("name") + "=" + text + "\n"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
 		}
 		return result.toString();
 	}

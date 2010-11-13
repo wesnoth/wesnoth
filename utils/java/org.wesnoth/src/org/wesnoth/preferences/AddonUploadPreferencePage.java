@@ -17,6 +17,7 @@ import org.eclipse.jface.preference.StringFieldEditor;
 import org.eclipse.xtext.ui.editor.preferences.fields.LabelFieldEditor;
 import org.wesnoth.Activator;
 import org.wesnoth.Constants;
+import org.wesnoth.Messages;
 import org.wesnoth.jface.RegexStringFieldEditor;
 
 public class AddonUploadPreferencePage extends AbstractPreferencePage
@@ -27,48 +28,48 @@ public class AddonUploadPreferencePage extends AbstractPreferencePage
 	{
 		super(GRID);
 		ports_ = new HashMap<String, String>();
-		ports_.put("15002", "1.9.x");
-		ports_.put("15001", "1.8.x");
-		ports_.put("15003", "1.6.x");
-		ports_.put("15005", "1.4.x");
-		ports_.put("15004", "trunk");
+		ports_.put("15002", "1.9.x"); //$NON-NLS-1$ //$NON-NLS-2$
+		ports_.put("15001", "1.8.x"); //$NON-NLS-1$ //$NON-NLS-2$
+		ports_.put("15003", "1.6.x"); //$NON-NLS-1$ //$NON-NLS-2$
+		ports_.put("15005", "1.4.x"); //$NON-NLS-1$ //$NON-NLS-2$
+		ports_.put("15004", "trunk"); //$NON-NLS-1$ //$NON-NLS-2$
 
 		setPreferenceStore(Activator.getDefault().getPreferenceStore());
-		setDescription("Addon uploader preferences");
+		setDescription(Messages.AddonUploadPreferencePage_10);
 	}
 
 	@Override
 	protected void createFieldEditors()
 	{
 		addField(new StringFieldEditor(Constants.P_WAU_PASSWORD,
-				"Password (stored in plain text)", getFieldEditorParent()),
-				"This is the password used to authenticate to the addons server");
+				Messages.AddonUploadPreferencePage_11, getFieldEditorParent()),
+				Messages.AddonUploadPreferencePage_12);
 		addField(new BooleanFieldEditor(Constants.P_WAU_VERBOSE,
-				"Verbose", 1, getFieldEditorParent()));
+				Messages.AddonUploadPreferencePage_13, 1, getFieldEditorParent()));
 
 		addField(new RegexStringFieldEditor(Constants.P_WAU_ADDRESS,
-				"Address", "[^:]*",
-				"The address must not contain any port number as it's set below.",
+				Messages.AddonUploadPreferencePage_14, Messages.AddonUploadPreferencePage_15,
+				Messages.AddonUploadPreferencePage_16,
 				getFieldEditorParent()),
-				"The address used to connect to the addons server.");
+				Messages.AddonUploadPreferencePage_17);
 
 		StringBuilder ports = new StringBuilder();
 		StringBuilder portsRegex = new StringBuilder();
-		portsRegex.append("(");
+		portsRegex.append("("); //$NON-NLS-1$
 		for (Entry<String, String> item : ports_.entrySet())
 		{
-			portsRegex.append(item.getKey() + "|");
-			ports.append(String.format("\t%s - %s\n", item.getKey(), item.getValue()));
+			portsRegex.append(item.getKey() + "|"); //$NON-NLS-1$
+			ports.append(String.format("\t%s - %s\n", item.getKey(), item.getValue())); //$NON-NLS-1$
 		}
 		portsRegex.deleteCharAt(portsRegex.length() - 1);
-		portsRegex.append(")*");
+		portsRegex.append(")*"); //$NON-NLS-1$
 
 		//System.out.println(portsRegex.toString());
 		addField(new RegexStringFieldEditor(Constants.P_WAU_PORT,
-				"Port", portsRegex.toString(),
-				"Invalid port number", getFieldEditorParent()),
-				"Based on this number you will upload the addons to a separate addon server.");
-		addField(new LabelFieldEditor("Ports available by wesnoth's version:\n" +
+				Messages.AddonUploadPreferencePage_22, portsRegex.toString(),
+				Messages.AddonUploadPreferencePage_23, getFieldEditorParent()),
+				Messages.AddonUploadPreferencePage_24);
+		addField(new LabelFieldEditor(Messages.AddonUploadPreferencePage_25 +
 				ports.toString(), getFieldEditorParent()));
 	}
 }

@@ -30,6 +30,7 @@ import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
 import org.wesnoth.Logger;
+import org.wesnoth.Messages;
 import org.wesnoth.templates.ReplaceableParameter;
 import org.wesnoth.templates.TemplateProvider;
 import org.wesnoth.utils.GUIUtils;
@@ -57,7 +58,7 @@ public class ScenarioNewWizard extends NewWizardTemplate
 	 */
 	public ScenarioNewWizard() {
 		super();
-		setWindowTitle("Create a new scenario");
+		setWindowTitle(Messages.ScenarioNewWizard_0);
 		setNeedsProgressMonitor(true);
 	}
 
@@ -73,7 +74,7 @@ public class ScenarioNewWizard extends NewWizardTemplate
 		if (selectionContainer_ != null)
 		{
 			DialogSettings props = ProjectUtils.getPropertiesForProject(selectionContainer_.getProject());
-			if (props.get("difficulties") != null)
+			if (props.get("difficulties") != null) //$NON-NLS-1$
 			{
 				page1_ = new ScenarioPage1();
 				addPage(page1_);
@@ -133,13 +134,13 @@ public class ScenarioNewWizard extends NewWizardTemplate
 	private void doFinish(String containerName, String fileName, IProgressMonitor monitor)
 			throws Exception
 	{
-		monitor.beginTask("Creating " + fileName, 2);
+		monitor.beginTask(Messages.ScenarioNewWizard_2 + fileName, 2);
 		IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
 		IResource resource = root.findMember(new Path(containerName));
 
 		if (!resource.exists() || !(resource instanceof IContainer))
 		{
-			throw new Exception("Container \"" + containerName + "\" does not exist.");
+			throw new Exception(Messages.ScenarioNewWizard_3 + containerName + Messages.ScenarioNewWizard_4);
 		}
 
 		final IContainer container = (IContainer) resource;
@@ -169,7 +170,7 @@ public class ScenarioNewWizard extends NewWizardTemplate
 		}
 
 		monitor.worked(1);
-		monitor.setTaskName("Opening file for editing...");
+		monitor.setTaskName(Messages.ScenarioNewWizard_5);
 		getShell().getDisplay().asyncExec(new Runnable() {
 			@Override
 			public void run()
@@ -196,15 +197,15 @@ public class ScenarioNewWizard extends NewWizardTemplate
 		ArrayList<ReplaceableParameter> params = new ArrayList<ReplaceableParameter>();
 
 		// common variables (sp + mp)
-		params.add(new ReplaceableParameter("$$scenario_id", page0_.getScenarioId()));
-		params.add(new ReplaceableParameter("$$next_scenario_id", page0_.getNextScenarioId()));
-		params.add(new ReplaceableParameter("$$scenario_name", page0_.getScenarioName()));
+		params.add(new ReplaceableParameter("$$scenario_id", page0_.getScenarioId())); //$NON-NLS-1$
+		params.add(new ReplaceableParameter("$$next_scenario_id", page0_.getNextScenarioId())); //$NON-NLS-1$
+		params.add(new ReplaceableParameter("$$scenario_name", page0_.getScenarioName())); //$NON-NLS-1$
 
-		String mapData = "";
+		String mapData = ""; //$NON-NLS-1$
 		if (!page0_.getMapData().isEmpty())
 		{
-			String userMapPath = page0_.getMapData().replace("~add-ons",
-					container.getParent().getLocation().toOSString() + "/");
+			String userMapPath = page0_.getMapData().replace("~add-ons", //$NON-NLS-1$
+					container.getParent().getLocation().toOSString() + "/"); //$NON-NLS-1$
 			// trim the '{' and '}'
 			userMapPath  = userMapPath.substring(1,userMapPath.length() - 1);
 
@@ -218,28 +219,28 @@ public class ScenarioNewWizard extends NewWizardTemplate
 				mapData = ResourceUtils.getFileContents(new File(userMapPath));
 			}
 		}
-		params.add(new ReplaceableParameter("$$map_data", mapData));
-		params.add(new ReplaceableParameter("$$turns_number", String.valueOf(page0_.getTurnsNumber())));
+		params.add(new ReplaceableParameter("$$map_data", mapData)); //$NON-NLS-1$
+		params.add(new ReplaceableParameter("$$turns_number", String.valueOf(page0_.getTurnsNumber()))); //$NON-NLS-1$
 
-		String startingGold = "";
+		String startingGold = ""; //$NON-NLS-1$
 		if (page1_ != null)
 		{
 			startingGold = page1_.getStartingGoldByDifficulties();
 			if (startingGold == null)
-				throw new Exception("incorrect arguments");
+				throw new Exception(Messages.ScenarioNewWizard_15);
 		}
-		params.add(new ReplaceableParameter("$$starting_gold", startingGold));
+		params.add(new ReplaceableParameter("$$starting_gold", startingGold)); //$NON-NLS-1$
 
 		// multiplayer only variables
-		params.add(new ReplaceableParameter("$$allow_new_game", page2_.getAllowNewGame()));
+		params.add(new ReplaceableParameter("$$allow_new_game", page2_.getAllowNewGame())); //$NON-NLS-1$
 
 		String template = TemplateProvider.getInstance().getProcessedTemplate(
-				page2_.isMultiplayerScenario() ? "multiplayer" : "scenario", params);
+				page2_.isMultiplayerScenario() ? "multiplayer" : "scenario", params); //$NON-NLS-1$ //$NON-NLS-2$
 
 		if (template == null)
 		{
 			GUIUtils.showMessageBox(WorkspaceUtils.getWorkbenchWindow(),
-					"Template for \"scenario\" not found.");
+					Messages.ScenarioNewWizard_20);
 			return null;
 		}
 

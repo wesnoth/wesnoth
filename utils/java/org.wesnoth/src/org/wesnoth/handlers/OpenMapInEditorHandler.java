@@ -12,6 +12,7 @@ import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.resources.IFile;
 import org.wesnoth.Logger;
+import org.wesnoth.Messages;
 import org.wesnoth.utils.GameUtils;
 import org.wesnoth.utils.WorkspaceUtils;
 
@@ -24,15 +25,15 @@ public class OpenMapInEditorHandler extends AbstractHandler
 		IFile selectedFile = WorkspaceUtils.getSelectedFile();
 		if (selectedFile == null)
 		{
-			Logger.getInstance().log("file null (open map handler)",
-					"Please select a file before proceeding");
+			Logger.getInstance().log(Messages.OpenMapInEditorHandler_0,
+					Messages.OpenMapInEditorHandler_1);
 			return null;
 		}
 
-		if (!selectedFile.getName().endsWith(".map"))
+		if (!selectedFile.getName().endsWith(".map")) //$NON-NLS-1$
 		{
-			Logger.getInstance().log("non-map file selected: "+selectedFile.getName(),
-					"Please select a '.map' file");
+			Logger.getInstance().log(Messages.OpenMapInEditorHandler_3+selectedFile.getName(),
+					Messages.OpenMapInEditorHandler_4);
 			return null;
 		}
 

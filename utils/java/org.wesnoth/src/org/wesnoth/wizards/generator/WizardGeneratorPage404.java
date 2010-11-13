@@ -13,16 +13,17 @@ import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
+import org.wesnoth.Messages;
 import org.wesnoth.wizards.NewWizardPageTemplate;
 
 
 public class WizardGeneratorPage404 extends NewWizardPageTemplate
 {
 	public WizardGeneratorPage404(String tag) {
-		super("wizardGeneratorPage404");
-		setErrorMessage("content not found for tag '" + tag + "'");
-		setTitle("404 Not Found");
-		setDescription("Ooops!");
+		super("wizardGeneratorPage404"); //$NON-NLS-1$
+		setErrorMessage(String.format(Messages.WizardGeneratorPage404_1,tag));
+		setTitle(Messages.WizardGeneratorPage404_3);
+		setDescription(Messages.WizardGeneratorPage404_4);
 	}
 
 	@Override
@@ -38,6 +39,6 @@ public class WizardGeneratorPage404 extends NewWizardPageTemplate
 		Label lblThisIsSooo = new Label(container, SWT.WRAP);
 		lblThisIsSooo.setFont(font);
 		lblThisIsSooo.setBounds(10, 89, 554, 137);
-		lblThisIsSooo.setText("It seems something is missing from schema.cfg.");
+		lblThisIsSooo.setText(Messages.WizardGeneratorPage404_5);
 	}
 }

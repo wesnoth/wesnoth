@@ -19,6 +19,7 @@ import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
+import org.wesnoth.Messages;
 import org.wesnoth.utils.StringUtils;
 import org.wesnoth.wizards.NewWizardPageTemplate;
 
@@ -35,9 +36,9 @@ public class CampaignPage2 extends NewWizardPageTemplate
 	 * Create the wizard.
 	 */
 	public CampaignPage2() {
-		super("campaignPage2");
-		setTitle("Campaign details");
-		setDescription("Set the campaign details");
+		super("campaignPage2"); //$NON-NLS-1$
+		setTitle(Messages.CampaignPage2_1);
+		setDescription(Messages.CampaignPage2_2);
 	}
 
 	/**
@@ -70,11 +71,11 @@ public class CampaignPage2 extends NewWizardPageTemplate
 
 				if (!txtDifficulties_.getText().contains(dif))
 				{
-					txtDifficulties_.append("," + dif);
+					txtDifficulties_.append("," + dif); //$NON-NLS-1$
 				}
 				else
 				{
-					txtDifficulties_.setText(txtDifficulties_.getText().replace(dif, ""));
+					txtDifficulties_.setText(txtDifficulties_.getText().replace(dif, "")); //$NON-NLS-1$
 				}
 
 				txtDifficulties_.setText(StringUtils.removeIncorrectCharacters(txtDifficulties_.getText(), ',', true, true));
@@ -89,7 +90,7 @@ public class CampaignPage2 extends NewWizardPageTemplate
 		container.setLayout(new GridLayout(5, false));
 
 		Label lblId = new Label(container, SWT.NONE);
-		lblId.setText("ID* :");
+		lblId.setText(Messages.CampaignPage2_5);
 
 		txtID_ = new Text(container, SWT.BORDER);
 		txtID_.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
@@ -99,7 +100,7 @@ public class CampaignPage2 extends NewWizardPageTemplate
 		new Label(container, SWT.NONE);
 
 		Label lblAbbreviation = new Label(container, SWT.NONE);
-		lblAbbreviation.setText("Abbreviation* :");
+		lblAbbreviation.setText(Messages.CampaignPage2_6);
 
 		txtAbbrev_ = new Text(container, SWT.BORDER);
 		GridData gd_txtAbbrev_ = new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1);
@@ -111,7 +112,7 @@ public class CampaignPage2 extends NewWizardPageTemplate
 		new Label(container, SWT.NONE);
 
 		Label lblDefine = new Label(container, SWT.NONE);
-		lblDefine.setText("Define* :");
+		lblDefine.setText(Messages.CampaignPage2_7);
 
 		txtDefine_ = new Text(container, SWT.BORDER);
 		GridData gd_txtDefine_ = new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1);
@@ -123,7 +124,7 @@ public class CampaignPage2 extends NewWizardPageTemplate
 		new Label(container, SWT.NONE);
 
 		Label lblDifficulties = new Label(container, SWT.NONE);
-		lblDifficulties.setText("Difficulties:");
+		lblDifficulties.setText(Messages.CampaignPage2_8);
 
 		txtDifficulties_ = new Text(container, SWT.BORDER);
 		GridData gd_txtDifficulties_ = new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1);
@@ -131,19 +132,19 @@ public class CampaignPage2 extends NewWizardPageTemplate
 		txtDifficulties_.setLayoutData(gd_txtDifficulties_);
 
 		Button chkDiffEasy_ = new Button(container, SWT.CHECK);
-		chkDiffEasy_.setText("EASY");
+		chkDiffEasy_.setText("EASY"); //$NON-NLS-1$
 		chkDiffEasy_.addSelectionListener(selectionListener);
 
 		Button chkDiffNormal_ = new Button(container, SWT.CHECK);
-		chkDiffNormal_.setText("NORMAL");
+		chkDiffNormal_.setText("NORMAL"); //$NON-NLS-1$
 		chkDiffNormal_.addSelectionListener(selectionListener);
 
 		Button chkDiffHard_ = new Button(container, SWT.CHECK);
-		chkDiffHard_.setText("HARD");
+		chkDiffHard_.setText("HARD"); //$NON-NLS-1$
 		chkDiffHard_.addSelectionListener(selectionListener);
 
 		Label lblFirstScenario = new Label(container, SWT.NONE);
-		lblFirstScenario.setText("First Scenario:");
+		lblFirstScenario.setText(Messages.CampaignPage2_12);
 
 		txtFirstScenario_ = new Text(container, SWT.BORDER);
 		GridData gd_txtFirstScenario_ = new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1);
@@ -165,19 +166,19 @@ public class CampaignPage2 extends NewWizardPageTemplate
 
 		if (txtID_.getText().isEmpty())
 		{
-			setErrorMessage("Please specify an ID.");
+			setErrorMessage(Messages.CampaignPage2_13);
 			return;
 		}
 
 		if (txtAbbrev_.getText().isEmpty())
 		{
-			setErrorMessage("Please specify an abbreviation.");
+			setErrorMessage(Messages.CampaignPage2_14);
 			return;
 		}
 
 		if (txtDefine_.getText().isEmpty())
 		{
-			setErrorMessage("Please specify a define.");
+			setErrorMessage(Messages.CampaignPage2_15);
 			return;
 		}
 

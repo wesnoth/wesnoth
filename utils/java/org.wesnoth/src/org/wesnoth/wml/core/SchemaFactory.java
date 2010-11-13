@@ -3,6 +3,7 @@ package org.wesnoth.wml.core;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import org.wesnoth.Messages;
 import org.wesnoth.wml.schema.SchemaAttribute;
 import org.wesnoth.wml.schema.SchemaChild;
 import org.wesnoth.wml.schema.SchemaTag;
@@ -26,51 +27,51 @@ public class SchemaFactory {
 		schemaAttributesMap = new LinkedHashMap<String,SchemaAttribute>();
 		schemaTagsMap = new LinkedHashMap<String,SchemaTag>();
 		SchemaTagImpl scenario = new SchemaTagImpl();
-		scenario.setName("scenario");
-		scenario.setDescription("this is a scenario tag");
-		schemaTagsMap.put("scenario", scenario);
+		scenario.setName("scenario"); //$NON-NLS-1$
+		scenario.setDescription(Messages.SchemaFactory_1);
+		schemaTagsMap.put("scenario", scenario); //$NON-NLS-1$
 
 		SchemaTagImpl campaign = new SchemaTagImpl();
-		campaign.setName("campaign");
-		campaign.setDescription("this is a campaign tag");
+		campaign.setName("campaign"); //$NON-NLS-1$
+		campaign.setDescription(Messages.SchemaFactory_4);
 
-		SchemaAttributeImpl string = new SchemaAttributeImpl("string");
-		schemaAttributesMap.put("string", string);
-		SchemaAttributeImpl tstring = new SchemaAttributeImpl("tstring");
-		schemaAttributesMap.put("tstring", tstring);
-		SchemaAttributeImpl identifier = new SchemaAttributeImpl("identifier");
-		schemaAttributesMap.put("identifier", identifier);
-		SchemaAttributeImpl path = new SchemaAttributeImpl("path");
-		schemaAttributesMap.put("path", path);
-		SchemaAttributeImpl integer = new SchemaAttributeImpl("integer");
-		schemaAttributesMap.put("integer", integer);
+		SchemaAttributeImpl string = new SchemaAttributeImpl("string"); //$NON-NLS-1$
+		schemaAttributesMap.put("string", string); //$NON-NLS-1$
+		SchemaAttributeImpl tstring = new SchemaAttributeImpl("tstring"); //$NON-NLS-1$
+		schemaAttributesMap.put("tstring", tstring); //$NON-NLS-1$
+		SchemaAttributeImpl identifier = new SchemaAttributeImpl("identifier"); //$NON-NLS-1$
+		schemaAttributesMap.put("identifier", identifier); //$NON-NLS-1$
+		SchemaAttributeImpl path = new SchemaAttributeImpl("path"); //$NON-NLS-1$
+		schemaAttributesMap.put("path", path); //$NON-NLS-1$
+		SchemaAttributeImpl integer = new SchemaAttributeImpl("integer"); //$NON-NLS-1$
+		schemaAttributesMap.put("integer", integer); //$NON-NLS-1$
 
-		campaign.addAttribute(new SchemaAttributeChildImpl("abbrev",identifier,SchemaChild.REQUIRED));
+		campaign.addAttribute(new SchemaAttributeChildImpl("abbrev",identifier,SchemaChild.REQUIRED)); //$NON-NLS-1$
 
-		campaign.addAttribute(new SchemaAttributeChildImpl("define",identifier,SchemaChild.REQUIRED));
+		campaign.addAttribute(new SchemaAttributeChildImpl("define",identifier,SchemaChild.REQUIRED)); //$NON-NLS-1$
 
-		campaign.addAttribute(new SchemaAttributeChildImpl("description",tstring,SchemaChild.REQUIRED));
+		campaign.addAttribute(new SchemaAttributeChildImpl("description",tstring,SchemaChild.REQUIRED)); //$NON-NLS-1$
 
-		campaign.addAttribute(new SchemaAttributeChildImpl("difficulties",string,SchemaChild.REQUIRED));
+		campaign.addAttribute(new SchemaAttributeChildImpl("difficulties",string,SchemaChild.REQUIRED)); //$NON-NLS-1$
 
-		campaign.addAttribute(new SchemaAttributeChildImpl("difficulty_descriptions",string,SchemaChild.REQUIRED));
+		campaign.addAttribute(new SchemaAttributeChildImpl("difficulty_descriptions",string,SchemaChild.REQUIRED)); //$NON-NLS-1$
 
-		campaign.addAttribute(new SchemaAttributeChildImpl("extra_defines",string,SchemaChild.OPTIONAL));
+		campaign.addAttribute(new SchemaAttributeChildImpl("extra_defines",string,SchemaChild.OPTIONAL)); //$NON-NLS-1$
 
-		campaign.addAttribute(new SchemaAttributeChildImpl("first_scenario",identifier,SchemaChild.REQUIRED));
+		campaign.addAttribute(new SchemaAttributeChildImpl("first_scenario",identifier,SchemaChild.REQUIRED)); //$NON-NLS-1$
 
-		campaign.addAttribute(new SchemaAttributeChildImpl("icon",path,SchemaChild.OPTIONAL));
+		campaign.addAttribute(new SchemaAttributeChildImpl("icon",path,SchemaChild.OPTIONAL)); //$NON-NLS-1$
 
-		campaign.addAttribute(new SchemaAttributeChildImpl("id",string,SchemaChild.REQUIRED));
+		campaign.addAttribute(new SchemaAttributeChildImpl("id",string,SchemaChild.REQUIRED)); //$NON-NLS-1$
 
-		campaign.addAttribute(new SchemaAttributeChildImpl("image",path,SchemaChild.OPTIONAL));
+		campaign.addAttribute(new SchemaAttributeChildImpl("image",path,SchemaChild.OPTIONAL)); //$NON-NLS-1$
 
-		campaign.addAttribute(new SchemaAttributeChildImpl("name",tstring,SchemaChild.REQUIRED));
+		campaign.addAttribute(new SchemaAttributeChildImpl("name",tstring,SchemaChild.REQUIRED)); //$NON-NLS-1$
 
-		campaign.addAttribute(new SchemaAttributeChildImpl("rank",integer,SchemaChild.REQUIRED));
+		campaign.addAttribute(new SchemaAttributeChildImpl("rank",integer,SchemaChild.REQUIRED)); //$NON-NLS-1$
 
 
-		schemaTagsMap.put("campaign", campaign);
+		schemaTagsMap.put("campaign", campaign); //$NON-NLS-1$
 	}
 
 }

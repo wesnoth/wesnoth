@@ -56,7 +56,7 @@ public class DefinesSAXHandler extends DefaultHandler
 		super.endElement(uri, localName, qName);
 		stack_.pop();
 
-		if (qName.equals("preproc_define"))
+		if (qName.equals("preproc_define")) //$NON-NLS-1$
 		{
 			// create the define
 			defines_.put(name_, new Define(name_, value_, textdomain_,
@@ -75,10 +75,10 @@ public class DefinesSAXHandler extends DefaultHandler
 			return;
 		String element = stack_.peek();
 
-		if (element.equals("name"))
+		if (element.equals("name")) //$NON-NLS-1$
 		{
 			// we have name at: 1 - preproc_define, 2 - argument
-			if (stack_.get(stack_.size() - 2).equals("argument"))
+			if (stack_.get(stack_.size() - 2).equals("argument")) //$NON-NLS-1$
 			{
 				arguments_.add(new String(ch, start, length));
 			}
@@ -87,19 +87,19 @@ public class DefinesSAXHandler extends DefaultHandler
 				name_ = new String(ch, start, length);
 			}
 		}
-		else if (element.equals("value"))
+		else if (element.equals("value")) //$NON-NLS-1$
 		{
 			value_ = new String(ch, start, length);
 		}
-		else if (element.equals("textdomain"))
+		else if (element.equals("textdomain")) //$NON-NLS-1$
 		{
 			textdomain_ = new String(ch, start, length);
 		}
-		else if (element.equals("linenum"))
+		else if (element.equals("linenum")) //$NON-NLS-1$
 		{
 			linenum_ = Integer.valueOf(new String(ch, start, length));
 		}
-		else if (element.equals("location"))
+		else if (element.equals("location")) //$NON-NLS-1$
 		{
 			location_ = new String(ch, start, length);
 		}
@@ -110,11 +110,11 @@ public class DefinesSAXHandler extends DefaultHandler
 	 */
 	private void resetValues()
 	{
-		name_ = "";
-		value_ = "";
+		name_ = ""; //$NON-NLS-1$
+		value_ = ""; //$NON-NLS-1$
 		linenum_ = 0;
-		location_ = "";
-		textdomain_ = "";
+		location_ = ""; //$NON-NLS-1$
+		textdomain_ = ""; //$NON-NLS-1$
 		arguments_ = new ArrayList<String>();
 	}
 

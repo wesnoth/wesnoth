@@ -27,6 +27,7 @@ import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
 import org.wesnoth.Logger;
+import org.wesnoth.Messages;
 import org.wesnoth.wizards.NewWizardTemplate;
 
 
@@ -94,19 +95,19 @@ public class NewConfigFileWizard extends NewWizardTemplate {
 			IProgressMonitor monitor)throws Exception
 	{
 		// create the file
-		monitor.beginTask("Creating " + fileName, 2);
+		monitor.beginTask(Messages.NewConfigFileWizard_0 + fileName, 2);
 		IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
 		IResource resource = root.findMember(new Path(containerName));
 
 		if (!resource.exists() || !(resource instanceof IContainer))
 		{
-			throw new Exception("Container \"" + containerName + "\" does not exist.");
+			throw new Exception(Messages.NewConfigFileWizard_1 + containerName + Messages.NewConfigFileWizard_2);
 		}
 
 		IContainer container = (IContainer) resource;
 		final IFile file = container.getFile(new Path(fileName));
 		try {
-			InputStream stream = new ByteArrayInputStream("".getBytes());
+			InputStream stream = new ByteArrayInputStream("".getBytes()); //$NON-NLS-1$
 			if (file.exists()) {
 				file.setContents(stream, true, true, monitor);
 			} else {
@@ -117,7 +118,7 @@ public class NewConfigFileWizard extends NewWizardTemplate {
 			Logger.getInstance().logException(e);
 		}
 		monitor.worked(1);
-		monitor.setTaskName("Opening file for editing...");
+		monitor.setTaskName(Messages.NewConfigFileWizard_4);
 		getShell().getDisplay().asyncExec(new Runnable() {
 			public void run() {
 				IWorkbenchPage page =

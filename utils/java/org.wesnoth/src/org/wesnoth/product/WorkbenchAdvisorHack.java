@@ -31,29 +31,29 @@ public abstract class WorkbenchAdvisorHack extends WorkbenchAdvisor
 	protected void declareWorkbenchImages()
 	{
 		final String ICONS_PATH = "$nl$/icons/full/";//$NON-NLS-1$
-		final String PATH_ELOCALTOOL = ICONS_PATH + "elcl16/"; // Enabled
+		final String PATH_ELOCALTOOL = ICONS_PATH + "elcl16/"; // Enabled //$NON-NLS-1$
 		// //$NON-NLS-1$
 
 		// toolbar
 		// icons.
-		final String PATH_DLOCALTOOL = ICONS_PATH + "dlcl16/"; // Disabled
+		final String PATH_DLOCALTOOL = ICONS_PATH + "dlcl16/"; // Disabled //$NON-NLS-1$
 		// //$NON-NLS-1$
 		// //$NON-NLS-1$
 		// toolbar
 		// icons.
-		final String PATH_ETOOL = ICONS_PATH + "etool16/"; // Enabled toolbar
+		final String PATH_ETOOL = ICONS_PATH + "etool16/"; // Enabled toolbar //$NON-NLS-1$
 		// //$NON-NLS-1$
 		// //$NON-NLS-1$
 		// icons.
-		final String PATH_DTOOL = ICONS_PATH + "dtool16/"; // Disabled toolbar
+		final String PATH_DTOOL = ICONS_PATH + "dtool16/"; // Disabled toolbar //$NON-NLS-1$
 		// //$NON-NLS-1$
 		// //$NON-NLS-1$
 		// icons.
-		final String PATH_OBJECT = ICONS_PATH + "obj16/"; // Model object
+		final String PATH_OBJECT = ICONS_PATH + "obj16/"; // Model object //$NON-NLS-1$
 		// //$NON-NLS-1$
 		// //$NON-NLS-1$
 		// icons
-		final String PATH_WIZBAN = ICONS_PATH + "wizban/"; // Wizard
+		final String PATH_WIZBAN = ICONS_PATH + "wizban/"; // Wizard //$NON-NLS-1$
 		// //$NON-NLS-1$
 		// //$NON-NLS-1$
 		// icons

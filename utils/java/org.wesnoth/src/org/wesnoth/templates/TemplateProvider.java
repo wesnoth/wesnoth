@@ -20,6 +20,7 @@ import java.util.regex.Pattern;
 
 import org.wesnoth.Constants;
 import org.wesnoth.Logger;
+import org.wesnoth.Messages;
 import org.wesnoth.utils.Pair;
 import org.wesnoth.utils.StringUtils;
 
@@ -46,7 +47,7 @@ public class TemplateProvider
 	{
 		try
 		{
-			Logger.getInstance().log("reading templates from: " +
+			Logger.getInstance().log(Messages.TemplateProvider_0 +
 					Constants.PLUGIN_FULL_PATH + Constants.TEMPLATES_FILENAME);
 
 			BufferedReader reader = new BufferedReader(
@@ -58,16 +59,16 @@ public class TemplateProvider
 			while ((line = reader.readLine()) != null)
 			{
 				// comment
-				if (line.startsWith("#") || line.matches("^[\t ]*$"))
+				if (line.startsWith("#") || line.matches("^[\t ]*$")) //$NON-NLS-1$ //$NON-NLS-2$
 					continue;
 
 				// 0 - template name | 1 - template file
-				String[] tokensStrings = line.split(" ");
+				String[] tokensStrings = line.split(" "); //$NON-NLS-1$
 
 				if (tokensStrings.length != 2)
 					continue;
 
-				content = "";
+				content = ""; //$NON-NLS-1$
 
 				if (new File(Constants.PLUGIN_FULL_PATH + tokensStrings[1]).exists())
 				{
@@ -101,7 +102,7 @@ public class TemplateProvider
 		if (tmpTemplate == null || parameters == null)
 			return null;
 
-		String result = "";
+		String result = ""; //$NON-NLS-1$
 		String[] template = StringUtils.getLines(tmpTemplate);
 		boolean skipLine;
 
@@ -115,16 +116,16 @@ public class TemplateProvider
 					template[i] = StringUtils.replaceWithIndent(template[i],
 									param.paramName, param.paramValue);
 
-					if (!templateName.equals("build_xml") &&
+					if (!templateName.equals("build_xml") && //$NON-NLS-1$
 						(param.paramValue == null || param.paramValue.isEmpty()))
 					{
 						// we don't have any value supplied -
 						// let's comment that line (if it's not already commented)
 						// or remove it if it's empty
-						if (!(StringUtils.startsWith(template[i], "#")))
+						if (!(StringUtils.startsWith(template[i], "#"))) //$NON-NLS-1$
 						{
-							template[i] = "#" + template[i];
-							Pattern pattern = Pattern.compile("#[\t ]*");
+							template[i] = "#" + template[i]; //$NON-NLS-1$
+							Pattern pattern = Pattern.compile("#[\t ]*"); //$NON-NLS-1$
 							Matcher matcher = pattern.matcher(template[i]);
 							if (matcher.matches())
 							{
@@ -136,7 +137,7 @@ public class TemplateProvider
 			}
 
 			if (skipLine == false)
-				result += template[i] + "\n";
+				result += template[i] + "\n"; //$NON-NLS-1$
 		}
 		return result;
 	}
@@ -149,7 +150,7 @@ public class TemplateProvider
 	public String getTemplate(String name)
 	{
 		if (templates_.get(name) == null)
-			return "";
+			return ""; //$NON-NLS-1$
 		return templates_.get(name);
 	}
 
@@ -169,18 +170,18 @@ public class TemplateProvider
 
 		for (String line : StringUtils.getLines(structureTemplate))
 		{
-			if (StringUtils.startsWith(line, "#"))
+			if (StringUtils.startsWith(line, "#")) //$NON-NLS-1$
 				continue;
 
-			if (line.contains(":")) // file with template
+			if (line.contains(":")) // file with template //$NON-NLS-1$
 			{
-				String[] tmpLine = line.split(":");
+				String[] tmpLine = line.split(":"); //$NON-NLS-1$
 
 				// oops. error
 				if (tmpLine.length != 2)
 				{
 					Logger.getInstance().logError(
-							String.format("error parsing 'structure template' (%s) on line %s",
+							String.format(Messages.TemplateProvider_15,
 									structureTemplate, line));
 					continue;
 				}

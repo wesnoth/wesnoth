@@ -17,6 +17,7 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.ui.console.MessageConsole;
 import org.wesnoth.Constants;
 import org.wesnoth.Logger;
+import org.wesnoth.Messages;
 import org.wesnoth.preferences.Preferences;
 
 
@@ -56,8 +57,8 @@ public class GameUtils
 	{
 		if (WorkspaceUtils.getSelectedResource() == null)
 		{
-			GUIUtils.showWarnMessageBox("Please select a directory or a resource inside the " +
-					"campaign project before.");
+			GUIUtils.showWarnMessageBox(Messages.GameUtils_0 +
+					Messages.GameUtils_1);
 			return;
 		}
 
@@ -75,20 +76,20 @@ public class GameUtils
 
 			if (campaignId == null)
 			{
-				GUIUtils.showErrorMessageBox("You need to have a valid campaign file (_main.cfg)" +
-						" in your directory or selected.");
+				GUIUtils.showErrorMessageBox(Messages.GameUtils_2 +
+						Messages.GameUtils_3);
 				return;
 			}
 
 			if (scenario == true && scenarioId == null)
 			{
-				GUIUtils.showErrorMessageBox("I couldn't get the scenario's ID " +
-						"or the file is not a scenario.");
+				GUIUtils.showErrorMessageBox(Messages.GameUtils_4 +
+						Messages.GameUtils_5);
 				return;
 			}
 
 			List<String> args = new ArrayList<String>();
-			args.add("-c");
+			args.add("-c"); //$NON-NLS-1$
 			args.add(campaignId);
 			if (scenario == true)
 				args.add(scenarioId);
@@ -118,7 +119,7 @@ public class GameUtils
 		String workingDir = Preferences.getString(Constants.P_WESNOTH_WORKING_DIR);
 		if (wesnothExec.isEmpty() || workingDir.isEmpty())
 		{
-			GUIUtils.showErrorMessageBox("Please set the wesnoth's executable path first.");
+			GUIUtils.showErrorMessageBox(Messages.GameUtils_7);
 			return;
 		}
 
@@ -126,13 +127,13 @@ public class GameUtils
 			args.addAll(extraArgs);
 
 		// add the user's data directory path
-		args.add("--config-dir");
+		args.add("--config-dir"); //$NON-NLS-1$
 		args.add(Preferences.getString(Constants.P_WESNOTH_USER_DIR));
 
 		// we need to add the working dir (backward compatibility)
 		args.add(workingDir);
 
-		MessageConsole console = GUIUtils.createConsole("Wesnoth game:", null, true);
+		MessageConsole console = GUIUtils.createConsole(Messages.GameUtils_9, null, true);
 		ExternalToolInvoker.launchTool(wesnothExec, args,
 				new OutputStream[] { console.newMessageStream() },
 				new OutputStream[] { console.newMessageStream() });
@@ -143,7 +144,7 @@ public class GameUtils
 	 */
 	public static void startEditor()
 	{
-		startEditor("");
+		startEditor(""); //$NON-NLS-1$
 	}
 
 	/**
@@ -154,8 +155,8 @@ public class GameUtils
 	{
 		if (file == null || !file.exists())
 		{
-			Logger.getInstance().log("non-existing map file",
-					"Please select an existing map file before opening it.");
+			Logger.getInstance().log(Messages.GameUtils_11,
+					Messages.GameUtils_12);
 			return;
 		}
 
@@ -181,7 +182,7 @@ public class GameUtils
 
 		List<String> args = new ArrayList<String>(3);
 
-		args.add("-e");
+		args.add("-e"); //$NON-NLS-1$
 		if (mapName != null && !(mapName.isEmpty()))
 			args.add(mapName);
 

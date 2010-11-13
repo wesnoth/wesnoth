@@ -21,6 +21,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.wesnoth.Logger;
+import org.wesnoth.Messages;
 import org.wesnoth.utils.EditorUtils;
 import org.wesnoth.utils.WizardUtils;
 import org.wesnoth.wizards.NewWizardTemplate;
@@ -33,7 +34,7 @@ public class WizardLauncher extends NewWizardTemplate
 	WizardGenerator		wizard_;
 
 	public WizardLauncher() {
-		setWindowTitle("Wizard launcher");
+		setWindowTitle(Messages.WizardLauncher_0);
 		setNeedsProgressMonitor(true);
 	}
 
@@ -53,7 +54,7 @@ public class WizardLauncher extends NewWizardTemplate
 	public boolean performFinish()
 	{
 		wizard_ = new WizardGenerator(page1_.getTagDescription() +
-							" new wizard", page1_.getTagName(), (byte) 0);
+							Messages.WizardLauncher_1, page1_.getTagName(), (byte) 0);
 		WizardUtils.launchWizard(wizard_, getShell(), selection_);
 		if (!wizard_.isFinished())
 			return false;
@@ -95,7 +96,7 @@ public class WizardLauncher extends NewWizardTemplate
 			final String fileName = page0_.getFileName();
 
 			// create the file
-			monitor.beginTask("Creating " + fileName, 10);
+			monitor.beginTask(Messages.WizardLauncher_2 + fileName, 10);
 			IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
 			IResource resource = root.findMember(new Path(containerName));
 
@@ -116,7 +117,7 @@ public class WizardLauncher extends NewWizardTemplate
 			stream.close();
 
 			monitor.worked(5);
-			monitor.setTaskName("Opening file for editing...");
+			monitor.setTaskName(Messages.WizardLauncher_3);
 			getShell().getDisplay().asyncExec(new Runnable() {
 				@Override
 				public void run()
