@@ -19,6 +19,11 @@ public class WMLTestsImpl extends WMLTests
 	private static final String WS="RULE_WS";
 	private static final String SL_COMMENT="RULE_SL_COMMENT";
 
+	public void testINT()
+	{
+		checkTokenisation("1", INT);
+	}
+
 	public void testID(){
 		checkTokenisation("a", ID);
 		checkTokenisation("abc", ID);
