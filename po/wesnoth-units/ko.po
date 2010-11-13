@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Battle for Wesnoth 1.1.1+svn\n"
 "Report-Msgid-Bugs-To: http://bugs.wesnoth.org/\n"
 "POT-Creation-Date: 2010-05-24 17:53+0200\n"
-"PO-Revision-Date: 2010-10-28 14:42+0900\n"
+"PO-Revision-Date: 2010-11-05 20:47+0900\n"
 "Last-Translator: mistzone <drier22@gmail.com>\n"
 "Language-Team: none\n"
 "Language: \n"
@@ -221,9 +221,8 @@ msgstr ""
 #: data/core/units/drakes/Clasher.cfg:39
 #: data/core/units/drakes/Enforcer.cfg:36
 #: data/core/units/drakes/Thrasher.cfg:23
-#, fuzzy
 msgid "war talon"
-msgstr "war talon"
+msgstr "전투 갈고리"
 
 #. [unit_type]: id=Drake Burner, race=drake
 #: data/core/units/drakes/Burner.cfg:4
@@ -326,9 +325,8 @@ msgstr ""
 #. [attack]: type=impact
 #: data/core/units/drakes/Enforcer.cfg:45
 #: data/core/units/drakes/Thrasher.cfg:41
-#, fuzzy
 msgid "ram"
-msgstr "ram"
+msgstr "충각"
 
 #. [attack]: type=pierce
 #. [attack]: type=blade
@@ -472,7 +470,7 @@ msgstr ""
 #. [unit_type]: id=Sky Drake, race=drake
 #: data/core/units/drakes/Sky.cfg:4
 msgid "Sky Drake"
-msgstr "천공의 바룡"
+msgstr "천공의 반룡"
 
 #. [unit_type]: id=Sky Drake, race=drake
 #: data/core/units/drakes/Sky.cfg:19
@@ -552,7 +550,7 @@ msgstr ""
 #: data/core/units/dwarves/Berserker.cfg:44
 #: data/core/units/dwarves/Ulfserker.cfg:45
 msgid "berserker frenzy"
-msgstr "광전사의 광란"
+msgstr "광전사 난무"
 
 #. [unit_type]: id=Dwarvish Dragonguard, race=dwarf
 #: data/core/units/dwarves/Dragonguard.cfg:4
@@ -1087,7 +1085,7 @@ msgstr ""
 #. [unit_type]: id=Elvish High Lord, race=elf
 #: data/core/units/elves/High_Lord.cfg:4
 msgid "Elvish High Lord"
-msgstr "고위 하이 엘프"
+msgstr "엘프 대군주"
 
 #. [unit_type]: id=Elvish High Lord, race=elf
 #: data/core/units/elves/High_Lord.cfg:19
@@ -1115,7 +1113,7 @@ msgstr ""
 #. [unit_type]: id=Elvish Lord, race=elf
 #: data/core/units/elves/Lord.cfg:4
 msgid "Elvish Lord"
-msgstr "하이 엘프"
+msgstr "엘프 군주"
 
 #. [unit_type]: id=Elvish Lord, race=elf
 #: data/core/units/elves/Lord.cfg:18
@@ -1128,7 +1126,7 @@ msgstr ""
 #. [unit_type]: id=Elvish Marksman, race=elf
 #: data/core/units/elves/Marksman.cfg:4
 msgid "Elvish Marksman"
-msgstr "엘프 명사수"
+msgstr "엘프 저격수"
 
 #. [unit_type]: id=Elvish Marksman, race=elf
 #: data/core/units/elves/Marksman.cfg:20
@@ -1151,7 +1149,7 @@ msgstr "장궁"
 #. [female]
 #: data/core/units/elves/Marksman.cfg:183
 msgid "female^Elvish Marksman"
-msgstr "엘프 명사수"
+msgstr "엘프 저격수"
 
 #. [unit_type]: id=Elvish Marshal, race=elf
 #: data/core/units/elves/Marshal.cfg:4
@@ -1273,7 +1271,7 @@ msgstr ""
 #. [unit_type]: id=Elvish Sharpshooter, race=elf
 #: data/core/units/elves/Sharpshooter.cfg:4
 msgid "Elvish Sharpshooter"
-msgstr "엘프 저격수"
+msgstr "엘프 명사수"
 
 #. [unit_type]: id=Elvish Sharpshooter, race=elf
 #: data/core/units/elves/Sharpshooter.cfg:21
@@ -1287,7 +1285,7 @@ msgstr ""
 #. [female]
 #: data/core/units/elves/Sharpshooter.cfg:182
 msgid "female^Elvish Sharpshooter"
-msgstr "엘프 저격수"
+msgstr "엘프 명사수"
 
 #. [unit_type]: id=Elvish Shyde, race=elf
 #: data/core/units/elves/Shyde.cfg:4
@@ -1400,6 +1398,12 @@ msgid ""
 "The wolves they are given are bred for speed and strength, making them quite "
 "dangerous in combat."
 msgstr ""
+"고블린 '기사'들은 그 명칭을 공유하는 인간과는 거의 공통점이 없는데, 그것은 그"
+"들의 적들이 조롱의 의미로 붙인 이름이기 때문이다. 유사점은 단지 그들이 늑대 "
+"기병들의 엘리트, 즉 몇몇 대담한 습격에 성공하여 승진한 이들이라는 것이다.\n"
+"\n"
+"그들이 받는 늑대들은 빠르고 힘있게 키워진 것으로, 전투에서 꽤 위험한 존재이"
+"다."
 
 #. [unit_type]: id=Goblin Pillager, race=wolf
 #: data/core/units/goblins/Pillager.cfg:4
@@ -3491,6 +3495,10 @@ msgid ""
 "tales about trolls, and to see the stories made flesh does nothing to "
 "diminish their grandeur."
 msgstr ""
+"특별한 힘을 가지고 태어난 트롤이 연륜과 지혜를 갖게 되면, 그것은 몇 세대에 걸"
+"쳐 기록될 대단한 괴수가 된다. 그들의 힘과 교활함은 트롤에 대한 대부분의 이야"
+"기에서 써먹는 소재이며, 그들아 실제로 행한 이야기 또한 그 위엄에 걸맞는 것이"
+"다."
 
 #. [unit_type]: id=Troll Hero, race=troll
 #: data/core/units/trolls/Hero.cfg:4
@@ -3674,6 +3682,8 @@ msgid ""
 "A being of this order is a revenant of ages long past. Anyone who encounters "
 "an Ancient Lich likely has far worse things to worry about than death."
 msgstr ""
+"이 주문의 존재는 오랜 옛 시대의 망령이다. 이 고대의 리치와 조우하는 자는 죽"
+"음 보다도 더 나쁜 것을 걱정해야 할 것이다."
 
 #. [attack]: type=cold
 #: data/core/units/undead/Necro_Ancient_Lich.cfg:60
@@ -3709,6 +3719,13 @@ msgid ""
 "In such condition, their only weapon is the craft they have so committed "
 "themselves to learning."
 msgstr ""
+"문명화된 세상에서 흑마법을 익히다가 잡히면 누구든 사형이기 때문에, 수련생들"
+"을 모으기 위한 이 기술의 유인은 정말로 큰 보상이어야 한다. 그리고 주어지는 보"
+"상이란 것은 더도 덜도 아닌 불멸이기 때문에 이 기술을 추구하는 이들은 항상 존"
+"재한다. 비밀스런 종교 집단에 숨어들거나, 어둠의 지하조직에 가입한 이 광신도들"
+"이 견뎌내야 하는 훈련은 종종 그들을 탈진하거나 쇠약해지게 만든다.\n"
+"\n"
+"이런 상황에서, 그들의 무기는 그들이 스스로 배운 기술 뿐이다."
 
 #. [attack]: type=cold
 #: data/core/units/undead/Necro_Dark_Adept.cfg:43
@@ -3754,6 +3771,7 @@ msgstr "흑마녀"
 
 #. [female]
 #: data/core/units/undead/Necro_Dark_Sorcerer.cfg:257
+#, fuzzy
 msgid ""
 "The dread inspired by black magic comes chiefly from how little is known "
 "about it by the common man. Dark sorceresses have begun to unlock the "
@@ -3771,6 +3789,12 @@ msgid ""
 "a loyalty any tyrant would dream of, and it is tempting to those with even "
 "the merest desire for power."
 msgstr ""
+"흑마법에 대한 공포는 주로 일반인들이 그것에 대해 얼마나 무지한가로부터온다. "
+"흑마녀들은 생사 - 후자는 매우 일으키기 쉬운 - 의 비밀을 열기 시작했다. 이 작"
+"업은 혼과 비활성 물질 간의 첫번째 반짝이는 이어짐을 주고, 이 끈을 증혹시키는 "
+"첫번째의 성공적인 실험을 준다. 죽음 너머의 공포스런 미지의 것을 얼핏 보게 되"
+"면, 그에 대해 아는 것은 피할 수 없다.\n"
+"\n"
 
 #. [unit_type]: id=Lich, race=undead
 #: data/core/units/undead/Necro_Lich.cfg:4
