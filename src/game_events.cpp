@@ -631,27 +631,6 @@ WML_HANDLER_FUNCTION(teleport, event_info, cfg)
 	resources::screen->draw();
 }
 
-WML_HANDLER_FUNCTION(unpetrify, /*event_info*/, cfg)
-{
-	const vconfig filter = cfg.child("filter");
-	// Store which side will need a shroud/fog update
-	std::vector<bool> clear_fog_side(resources::teams->size(), false);
-
-	foreach (unit &u, *resources::units) {
-		if (!u.get_state(unit::STATE_PETRIFIED)) continue;
-		if (filter.null() || game_events::unit_matches_filter(u, filter)) {
-			u.set_state(unit::STATE_PETRIFIED, false);
-			clear_fog_side[u.side() - 1] = true;
-		}
-	}
-
-	for (size_t side = 0; side != resources::teams->size(); ++side) {
-		if (clear_fog_side[side] && (*resources::teams)[side].auto_shroud_updates()) {
-			clear_shroud(side + 1);
-		}
-	}
-}
-
 WML_HANDLER_FUNCTION(allow_recruit, /*event_info*/, cfg)
 {
 	int side_num = cfg["side"].to_int(1);

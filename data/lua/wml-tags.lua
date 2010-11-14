@@ -589,8 +589,22 @@ end
 function wml_actions.floating_text(cfg)
 	local locs = wesnoth.get_locations(cfg)
 	local text = cfg.text or helper.wml_error("[floating_text] missing required text= attribute")
-	
+
 	for i, loc in ipairs(locs) do
-		wesnoth.float_label(loc[1], loc[2], text) 
-	end     
+		wesnoth.float_label(loc[1], loc[2], text)
+	end
+end
+
+function wml_actions.petrify(cfg)
+	for index, unit in ipairs(wesnoth.get_units(cfg)) do
+		unit.status.petrified = true
+		wml_actions.redraw({ side = unit.side }) -- may be unneccessary
+	end
+end
+
+function wml_actions.unpetrify(cfg)
+	for index, unit in ipairs(wesnoth.get_units(cfg)) do
+		unit.status.petrified = false
+		wml_actions.redraw({ side = unit.side }) -- may be unneccessary
+	end
 end
