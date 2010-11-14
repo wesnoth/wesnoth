@@ -585,3 +585,12 @@ function wml_actions.delay(cfg)
 		helper.wml_error "[delay] missing required time= attribute."
 	wesnoth.delay(delay)
 end
+
+function wml_actions.floating_text(cfg)
+	local locs = wesnoth.get_locations(cfg)
+	local text = cfg.text or helper.wml_error("[floating_text] missing required text= attribute")
+	
+	for i, loc in ipairs(locs) do
+		wesnoth.float_label(loc[1], loc[2], text) 
+	end     
+end
