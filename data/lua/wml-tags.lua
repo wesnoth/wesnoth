@@ -600,11 +600,19 @@ function wml_actions.petrify(cfg)
 		unit.status.petrified = true
 		wml_actions.redraw({ side = unit.side }) -- may be unneccessary
 	end
+
+	for index, unit in ipairs(wesnoth.get_recall_units(cfg)) do
+		unit.status.petrified = true
+	end
 end
 
 function wml_actions.unpetrify(cfg)
 	for index, unit in ipairs(wesnoth.get_units(cfg)) do
 		unit.status.petrified = false
 		wml_actions.redraw({ side = unit.side }) -- may be unneccessary
+	end
+
+	for index, unit in ipairs(wesnoth.get_recall_units(cfg)) do
+		unit.status.petrified = false
 	end
 end
