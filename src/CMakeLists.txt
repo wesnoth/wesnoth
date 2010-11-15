@@ -349,6 +349,7 @@ set(wesnoth-main_SRC
 	gui/auxiliary/event/distributor.cpp
 	gui/auxiliary/event/handler.cpp
 	gui/auxiliary/log.cpp
+	gui/auxiliary/old_markup.cpp
 	gui/auxiliary/timer.cpp
 	gui/auxiliary/tips.cpp
 	gui/auxiliary/widget_definition.cpp

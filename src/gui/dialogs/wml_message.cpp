@@ -18,6 +18,7 @@
 #include "gui/dialogs/wml_message.hpp"
 
 #include "foreach.hpp"
+#include "gui/auxiliary/old_markup.hpp"
 #include "gui/widgets/button.hpp"
 #include "gui/widgets/label.hpp"
 #ifdef GUI2_EXPERIMENTAL_LISTBOX
@@ -96,64 +97,26 @@ void twml_message_::pre_show(CVideo& /*video*/, twindow& window)
 	// Find the option list related fields.
 	tlistbox& options = find_widget<tlistbox>(&window, "input_list", true);
 
-	/*
-	 * The options have some special markup:
-	 * A line starting with a * means select that line.
-	 * A line starting with a & means more special markup.
-	 * - The part until the = is the name of an image.
-	 * - The part until the second = is the first column.
-	 * - The rest is the third column (the wiki only specifies two columns
-	 *   so only implement two of them).
-	 */
-	/**
-	 * @todo This syntax looks like a bad hack, it would be nice to write
-	 * a new syntax which doesn't use those hacks (also avoids the problem
-	 * with special meanings for certain characters.
-	 */
 	if(!option_list_.empty()) {
 		std::map<std::string, string_map> data;
 		for(size_t i = 0; i < option_list_.size(); ++i) {
-			std::string icon;
-			std::string label = option_list_[i];
-			std::string description;
+			/**
+			 * @todo This syntax looks like a bad hack, it would be nice to write
+			 * a new syntax which doesn't use those hacks (also avoids the problem
+			 * with special meanings for certain characters.
+			 */
+			legacy_menu_item item(option_list_[i]);
 
-			// Handle selection.
-			if(!label.empty() && label[0] == '*') {
+			if(item.is_default()) {
 				// Number of items hasn't been increased yet so i is ok.
 				*chosen_option_ = i;
-				label.erase(0, 1);
-			}
-
-			// Handle the special case with an image.
-			std::string::size_type pos = label.find('=');
-			if (pos != std::string::npos && (label[0] == '&' || pos == 0)) {
-				if (pos) icon = label.substr(1, pos - 1);
-				label.erase(0, pos + 1);
-			}
-
-			// Search for an '=' symbol that is not inside markup.
-			std::string::size_type prev = 0;
-			bool open = false;
-			while ((pos = label.find('=', prev)) != std::string::npos) {
-				for (std::string::size_type i = prev; i != pos; ++i) {
-					switch (label[i]) {
-					case '<': open = true; break;
-					case '>': open = false; break;
-					}
-				}
-				if (!open) break;
-				prev = pos + 1;
-			}
-			if (pos != std::string::npos) {
-				description = label.substr(pos + 1);
-				label.erase(pos);
 			}
 
 			// Add the data.
-			data["icon"]["label"] = icon;
-			data["label"]["label"] = label;
+			data["icon"]["label"] = item.icon();
+			data["label"]["label"] = item.label();
 			data["label"]["use_markup"] = "true";
-			data["description"]["label"] = description;
+			data["description"]["label"] = item.description();
 			data["description"]["use_markup"] = "true";
 			options.add_row(data);
 		}
