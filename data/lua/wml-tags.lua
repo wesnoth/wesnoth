@@ -528,6 +528,8 @@ function wml_actions.move_unit(cfg)
 			while true do
 				x = tonumber(x) or helper.wml_error(coordinate_error)
 				y = tonumber(y) or helper.wml_error(coordinate_error)
+				local move_cost = wesnoth.unit_movement_cost(current_unit, wesnoth.get_terrain(x, y))
+				if move_cost >= 99 then helper.wml_error(coordinate_error) end
 				x, y = wesnoth.find_vacant_tile(x, y, current_unit)
 				move_string_x = string.format("%s,%u", move_string_x, x)
 				move_string_y = string.format("%s,%u", move_string_y, y)
