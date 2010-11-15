@@ -404,7 +404,7 @@ std::string find_recruit_location(int side, map_location &recruit_loc, bool need
 }
 
 void place_recruit(const unit &u, const map_location &recruit_location,
-    bool is_recall, bool show, bool full_movement,
+    bool is_recall, bool show, bool fire_event, bool full_movement,
     bool wml_triggered)
 {
 	LOG_NG << "placing new unit on location " << recruit_location << "\n";
@@ -425,8 +425,10 @@ void place_recruit(const unit &u, const map_location &recruit_location,
 
 	if (is_recall)
 	{
-		LOG_NG << "firing prerecall event\n";
-		game_events::fire("prerecall",recruit_location);
+		if (fire_event) {
+			LOG_NG << "firing prerecall event\n";
+			game_events::fire("prerecall",recruit_location);
+		}
 	}
 	else
 	{
@@ -451,8 +453,10 @@ void place_recruit(const unit &u, const map_location &recruit_location,
 	}
 	if (is_recall)
 	{
-		LOG_NG << "firing recall event\n";
-		game_events::fire("recall",recruit_location);
+		if (fire_event) {
+			LOG_NG << "firing recall event\n";
+			game_events::fire("recall",recruit_location);
+		}
 	}
 	else
 	{
