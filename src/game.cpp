@@ -41,6 +41,7 @@
 #include "gamestatus.hpp"
 #include "gettext.hpp"
 #include "gui/dialogs/addon_connect.hpp"
+#include "gui/dialogs/campaign_difficulty.hpp"
 #include "gui/dialogs/campaign_selection.hpp"
 #include "gui/dialogs/language_selection.hpp"
 #include "gui/dialogs/message.hpp"
@@ -1184,10 +1185,10 @@ bool game_controller::new_campaign()
 				std::copy(difficulties.begin(),difficulties.end(),difficulty_options.begin());
 			}
 
-			gui::dialog dlg(disp(), _("Difficulty"),
-				_("Select difficulty level:"), gui::OK_CANCEL);
-			dlg.set_menu(difficulty_options);
-			if(dlg.show() == -1) {
+			gui2::tcampaign_difficulty dlg(difficulty_options);
+			dlg.show(disp().video());
+
+			if(dlg.selected_index() == -1) {
 				if (jump_to_campaign_.campaign_id_.empty() == false)
 				{
 					jump_to_campaign_.campaign_id_ = "";
@@ -1195,7 +1196,7 @@ bool game_controller::new_campaign()
 				// canceled difficulty dialog, relaunch the campaign selection dialog
 				return new_campaign();
 			}
-			difficulty = dlg.result();
+			difficulty = dlg.selected_index();
 		}
 		else
 		{
