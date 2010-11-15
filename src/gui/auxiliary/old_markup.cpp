@@ -20,8 +20,12 @@ namespace gui2 {
 legacy_menu_item::legacy_menu_item(const std::string& str)
 	: icon_(), label_(str), desc_(), default_(false)
 {
+	if(label_.empty()) {
+		return;
+	}
+
 	// Handle selection.
-	if(!label_.empty() && label_[0] == '*') {
+	if(label_[0] == '*') {
 		default_ = true;
 		label_.erase(0, 1);
 	}

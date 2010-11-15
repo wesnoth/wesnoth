@@ -41,7 +41,7 @@ class legacy_menu_item
 	 * with special meanings for certain characters.
 	 */
 public:
-	legacy_menu_item(const std::string& str);
+	legacy_menu_item(const std::string& str = std::string());
 
 	const std::string& icon() const {
 		return icon_;
@@ -57,6 +57,15 @@ public:
 
 	bool is_default() const {
 		return default_;
+	}
+
+	legacy_menu_item& operator=(const legacy_menu_item& o) {
+		if(&o != this) {
+			icon_ = o.icon_;
+			label_ = o.label_;
+			desc_ = o.desc_;
+		}
+		return *this;
 	}
 
 private:
