@@ -10,14 +10,15 @@ The release team should empty this file after each release.
 
 ***
 
-A new set of campaign portraits for both Liberty (by kitty) and for The Rise of Wesnoth (by LordBob). The latter has an unfortunate bug causing Haldric's default portrait to never show up; this can be fixed by replacing the file data/campaigns/The_Rise_Of_Wesnoth/scenarios/01_A_Summer_of_Storms.cfg with the fixed file attached to this post.
+Various additional game interface dialogs have been converted to the new GUI2 toolkit in this release.
 
-Ivanovic: could you attach r47442 of the abovementioned file to the post,
-please?
+[list]
+[*]Every yes/no confirmation dialog, except for the add-ons dependencies resolution window.
+[*]The gamemap labels editor dialog.
+[*]The following list-type dialogs: display resolution (Preferences), theme selection (Preferences), remove add-ons (Add-ons) scenario selection (Debug :cl), campaign difficulty selection (Campaigns).
+[/list]
 
-***
-
-REPLACE ME WITH CONTENT...
+Add-on authors who were using old-style markup in the campaign difficulty options (the difficulty_descriptions attribute under [campaign]) should be aware that only Pango markup is supported now, combined with menu item markup as in [message] [option] tags.
 
 ***
 
