@@ -115,7 +115,7 @@ turn_info::PROCESS_DATA_RESULT turn_info::process_network_data(const config& cfg
 	config::const_child_itors turns = cfg.child_range("turn");
 	if (turns.first != turns.second && from != network::null_connection) {
 		//forward the data to other peers
-		network::send_data_all_except(cfg, from, true);
+		network::send_data_all_except(cfg, from);
 	}
 
 	foreach (const config &t, turns)
@@ -323,7 +323,7 @@ void turn_info::change_controller(const std::string& side, const std::string& co
 	change["side"] = side;
 	change["controller"] = controller;
 
-	network::send_data(cfg, 0, true);
+	network::send_data(cfg, 0);
 }
 
 
@@ -334,7 +334,7 @@ void turn_info::change_side_controller(const std::string& side, const std::strin
 	change["side"] = side;
 	change["player"] = player;
 	if (own_side) change["own_side"] = true;
-	network::send_data(cfg, 0, true);
+	network::send_data(cfg, 0);
 }
 
 #if 0

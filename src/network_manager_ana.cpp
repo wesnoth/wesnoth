@@ -873,7 +873,7 @@ void ana_network_manager::read_config( const ana::read_buffer& buffer, config& c
     read_gz(cfg, input);
 }
 
-size_t ana_network_manager::send_all( const config& cfg, bool /*zipped*/ )
+size_t ana_network_manager::send_all( const config& cfg )
 {
     const std::string output_string = compress_config(cfg);
 
@@ -902,12 +902,8 @@ size_t ana_network_manager::send_all( const config& cfg, bool /*zipped*/ )
 }
 
 size_t ana_network_manager::send( network::connection connection_num ,
-                                  const config&       cfg,
-                                  bool                zipped )
+                                  const config&       cfg )
 {
-    if ( ! zipped )
-        throw std::runtime_error("All send operations should be zipped");
-
     const std::string output_string = compress_config(cfg);
 
 

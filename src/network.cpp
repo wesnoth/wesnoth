@@ -707,7 +707,7 @@ connection receive_data(config& cfg, connection connection_num, unsigned int tim
 	return 0;
 }
 
-connection receive_data(config& cfg, connection connection_num, bool* gzipped, bandwidth_in_ptr* bandwidth_in)
+connection receive_data(config& cfg, connection connection_num, bandwidth_in_ptr* bandwidth_in)
 {
 	if(!socket_set) {
 		return 0;
@@ -767,7 +767,7 @@ connection receive_data(config& cfg, connection connection_num, bool* gzipped, b
 	{
 		bandwidth_in = &temp;
 	}
-	sock = network_worker_pool::get_received_data(sock,cfg, gzipped, *bandwidth_in);
+	sock = network_worker_pool::get_received_data(sock,cfg, *bandwidth_in);
 	if (sock == NULL) {
 		if (!is_server() && last_ping != 0 && ping_timeout != 0)
 		{
@@ -1053,12 +1053,7 @@ void send_file(const std::string& filename, connection connection_num, const std
 
 }
 
-/**
- * @todo Note the gzipped parameter should be removed later, we want to send
- * all data gzipped. This can be done once the campaign server is also updated
- * to work with gzipped data.
- */
-size_t send_data(const config& cfg, connection connection_num, const bool gzipped, const std::string& packet_type)
+size_t send_data(const config& cfg, connection connection_num, const std::string& packet_type)
 {
 	DBG_NW << "in send_data()...\n";
 
@@ -1077,7 +1072,7 @@ size_t send_data(const config& cfg, connection connection_num, const bool gzippe
 		for(sockets_list::const_iterator i = sockets.begin();
 		    i != sockets.end(); ++i) {
 			DBG_NW << "server socket: " << server_socket << "\ncurrent socket: " << *i << "\n";
-			size = send_data(cfg,*i, gzipped, packet_type);
+			size = send_data(cfg,*i, packet_type);
 		}
 		return size;
 	}
@@ -1090,7 +1085,7 @@ size_t send_data(const config& cfg, connection connection_num, const bool gzippe
 	}
 
 	LOG_NW << "SENDING to: " << connection_num << ": " << cfg;
-	return network_worker_pool::queue_data(info->second.sock, cfg, gzipped, packet_type);
+	return network_worker_pool::queue_data(info->second.sock, cfg, packet_type);
 }
 
 void send_raw_data(const char* buf, int len, connection connection_num, const std::string& packet_type)
@@ -1128,15 +1123,14 @@ void process_send_queue(connection, size_t)
 	check_error();
 }
 
-/** @todo Note the gzipped parameter should be removed later. */
-void send_data_all_except(const config& cfg, connection connection_num, const bool gzipped, const std::string& packet_type)
+void send_data_all_except(const config& cfg, connection connection_num, const std::string& packet_type)
 {
 	for(sockets_list::const_iterator i = sockets.begin(); i != sockets.end(); ++i) {
 		if(*i == connection_num) {
 			continue;
 		}
 
-		send_data(cfg,*i, gzipped, packet_type);
+		send_data(cfg,*i, packet_type);
 	}
 }
 

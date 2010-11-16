@@ -916,7 +916,7 @@ void lobby::process_event()
 			if(!password.empty()) {
 				join["password"] = password;
 			}
-			network::send_data(response, 0, true);
+			network::send_data(response, 0);
 
 			if(observe) {
 				if (game.started){

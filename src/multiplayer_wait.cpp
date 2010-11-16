@@ -316,7 +316,7 @@ void wait::join_game(bool observe)
 			change["faction"] = faction_choice;
 			change["leader"] = leader_choice;
 			change["gender"] = gender_choice;
-			network::send_data(faction, 0, true);
+			network::send_data(faction, 0);
 		}
 
 	}

@@ -443,7 +443,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 			}
 
 			// Ask for the next scenario data.
-			network::send_data(config("load_next_scenario"), 0, true);
+			network::send_data(config("load_next_scenario"), 0);
 			config cfg;
 			std::string msg = _("Downloading next scenario...");
 			do {
@@ -552,7 +552,7 @@ LEVEL_RESULT play_game(display& disp, game_state& gamestate, const config& game_
 				foreach (config& side, gamestate.starting_pos.child_range("side"))
 					next_cfg.add_child("side", side);
 
-				network::send_data(cfg, 0, true);
+				network::send_data(cfg, 0);
 			}
 		}
 

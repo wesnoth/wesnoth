@@ -118,7 +118,6 @@ struct buffer {
 		config_buf(),
 		config_error(""),
 		stream(),
-		gzipped(false),
 		raw_buffer()
 		{}
 
@@ -126,12 +125,6 @@ struct buffer {
 	mutable config config_buf;
 	std::string config_error;
 	std::ostringstream stream;
-
-	/**
-	 * Do we wish to send the data gzipped, if not use binary wml. This needs
-	 * to stay until the last user of binary_wml has been removed.
-	 */
-	bool gzipped;
 
 	/**
 	 * This field is used if we're sending a raw buffer instead of through a
@@ -356,19 +349,13 @@ bool receive_with_timeout(TCPsocket s, char* buf, size_t nbytes,
 	return true;
 }
 
-static void output_to_buffer(TCPsocket sock, const config& cfg, std::ostringstream& compressor, bool gzipped)
+/**
+ * @todo See if the TCPsocket argument should be removed.
+ */
+static void output_to_buffer(TCPsocket /*sock*/, const config& cfg, std::ostringstream& compressor)
 {
-	if(gzipped) {
-		config_writer writer(compressor, true);
-		writer.write(cfg);
-	} else {
-		compression_schema *compress;
-		{
-			const threading::lock lock(*schemas_mutex);
-			compress = &schemas.insert(std::pair<TCPsocket,schema_pair>(sock,schema_pair())).first->second.outgoing;
-		}
-		write_compressed(compressor, cfg, *compress);
-	}
+	config_writer writer(compressor, true);
+	writer.write(cfg);
 }
 
 static void make_network_buffer(const char* input, int len, std::vector<char>& buf)
@@ -784,15 +771,16 @@ static int process_queue(void* shard_num)
 			try {
 				if(stream.peek() == 31) {
 					read_gz(received_data->config_buf, stream);
-					received_data->gzipped = true;
 				} else {
+					/// @todo This should probably be deprecated some day,
+					/// if this network layer isn't replaced by ANA
+					ERR_NW << "Receiving binary WML. Who is sending this?\n";
 					compression_schema *compress;
 					{
 						const threading::lock lock_schemas(*schemas_mutex);
 						compress = &schemas.insert(std::pair<TCPsocket,schema_pair>(sock,schema_pair())).first->second.incoming;
 					}
 					read_compressed(received_data->config_buf, stream, *compress);
-					received_data->gzipped = false;
 				}
 			} catch(config::error &e)
 			{
@@ -930,7 +918,7 @@ void receive_data(TCPsocket sock)
 	}
 }
 
-TCPsocket get_received_data(TCPsocket sock, config& cfg, bool* gzipped,network::bandwidth_in_ptr& bandwidth_in)
+TCPsocket get_received_data(TCPsocket sock, config& cfg, network::bandwidth_in_ptr& bandwidth_in)
 {
 	assert(!raw_data_only);
 	const threading::lock lock_received(*received_mutex);
@@ -950,16 +938,12 @@ TCPsocket get_received_data(TCPsocket sock, config& cfg, bool* gzipped,network::
 		std::string error = (*itor)->config_error;
 		buffer* buf = *itor;
 		received_data_queue.erase(itor);
-		if (gzipped)
-			*gzipped = buf->gzipped;
 		delete buf;
 		throw config::error(error);
 	} else {
 		cfg.swap((*itor)->config_buf);
 		const TCPsocket res = (*itor)->sock;
 		buffer* buf = *itor;
-		if (gzipped)
-			*gzipped = buf->gzipped;
 		bandwidth_in.reset(new network::bandwidth_in((*itor)->raw_buffer.size()));
 		received_data_queue.erase(itor);
 		delete buf;
@@ -1011,13 +995,12 @@ void queue_file(TCPsocket sock, const std::string& filename)
  	queue_buffer(sock, queued_buf);
 }
 
-size_t queue_data(TCPsocket sock,const config& buf, const bool gzipped, const std::string& packet_type)
+size_t queue_data(TCPsocket sock,const config& buf, const std::string& packet_type)
 {
 	DBG_NW << "queuing data...\n";
 
 	buffer* queued_buf = new buffer(sock);
-	output_to_buffer(sock, buf, queued_buf->stream, gzipped);
-	queued_buf->gzipped = gzipped;
+	output_to_buffer(sock, buf, queued_buf->stream);
 	const size_t size = queued_buf->stream.str().size();
 
 	network::add_bandwidth_out(packet_type, size);

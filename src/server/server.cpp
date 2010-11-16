@@ -911,7 +911,7 @@ void server::process_login(const network::connection sock,
 				<< ":" << config_it->second["port"] << "\n";
 			config response;
 			response.add_child("redirect",config_it->second);
-			network::send_data(response, sock, true, "redirect");
+			network::send_data(response, sock, "redirect");
 			return;
 		}
 		// Check if it's a version we should start a proxy for.
@@ -943,7 +943,7 @@ void server::process_login(const network::connection sock,
 			ERR_SERVER << "ERROR: This server doesn't accept any versions at all.\n";
 			response["version"] = "null";
 		}
-		network::send_data(response, sock, true, "error");
+		network::send_data(response, sock, "error");
 		return;
 	}
 

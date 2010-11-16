@@ -465,7 +465,7 @@ void ui::handle_event(const SDL_Event& event)
 			//if the dialog has been open for a long time, refresh the lobby
 			config request;
 			request.add_child("refresh_lobby");
-			network::send_data(request, 0, true);
+			network::send_data(request, 0);
 		}
 	}
 	if(users_menu_.selection() > 0 // -1 indicates an invalid selection
@@ -489,7 +489,7 @@ void ui::send_chat_message(const std::string& message, bool /*allies_only*/)
 	data.add_child("message", msg);
 
 	add_chat_message(time(NULL), preferences::login(),0, message);	//local echo
-	network::send_data(data, 0, true);
+	network::send_data(data, 0);
 }
 
 
@@ -575,7 +575,7 @@ void ui::process_network_data(const config& data, const network::connection /*so
 			} catch(config::error& e) {
 				ERR_CF << "Error while applying the gamelist diff: '"
 					<< e.message << "' Getting a new gamelist.\n";
-				network::send_data(config("refresh_lobby"), 0, true);
+				network::send_data(config("refresh_lobby"), 0);
 			}
 			gamelist_refresh_ = true;
 		}

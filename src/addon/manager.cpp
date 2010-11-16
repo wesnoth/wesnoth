@@ -491,7 +491,7 @@ namespace {
 	{
 		config request_terms;
 		request_terms.add_child("request_terms");
-		network::send_data(request_terms, sock, true);
+		network::send_data(request_terms, sock);
 		config data;
 		sock = network::receive_data(data,sock,5000);
 		if(!sock) {
@@ -539,7 +539,7 @@ namespace {
 		data.add_child("upload",cfg).add_child("data",addon_data);
 
 		LOG_NET << "uploading add-on...\n";
-		network::send_data(data, sock, true);
+		network::send_data(data, sock);
 
 		sock = dialogs::network_send_dialog(disp,_("Sending add-on"),data,sock);
 		if(!sock) {
@@ -564,7 +564,7 @@ namespace {
 		config data;
 		data.add_child("delete",msg);
 
-		network::send_data(data, sock, true);
+		network::send_data(data, sock);
 
 		sock = network::receive_data(data,sock,5000);
 		if(!sock) {
@@ -588,7 +588,7 @@ namespace {
 		// Proceed to download and install
 		config request;
 		request.add_child("request_campaign")["name"] = addon_id;
-		network::send_data(request, sock, true);
+		network::send_data(request, sock);
 
 		utils::string_map syms;
 		syms["addon_title"] = addon_title;
@@ -1127,7 +1127,7 @@ namespace {
 
 			config cfg;
 			cfg.add_child("request_campaign_list");
-			network::send_data(cfg, sock, true);
+			network::send_data(cfg, sock);
 			network::connection res = dialogs::network_receive_dialog(disp, _("Requesting list of add-ons"), cfg, sock);
 			if(!res) {
 				return;

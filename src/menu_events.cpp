@@ -2680,7 +2680,7 @@ void chat_handler::send_command(const std::string& cmd, const std::string& args 
 	} else if (cmd == "part") {
 		data.add_child("room_part")["room"] = args;
 	}
-	network::send_data(data, 0, true);
+	network::send_data(data, 0);
 }
 
 void chat_handler::do_speak(const std::string& message, bool allies_only)
@@ -2714,7 +2714,7 @@ void chat_handler::send_whisper(const std::string& receiver, const std::string& 
 	cwhisper["message"] = message;
 	cwhisper["sender"] = preferences::login();
 	data.add_child("whisper", cwhisper);
-	network::send_data(data, 0, true);
+	network::send_data(data, 0);
 }
 
 void chat_handler::add_whisper_sent(const std::string& receiver, const std::string& message)
@@ -2739,7 +2739,7 @@ void chat_handler::send_chat_room_message(const std::string& room,
 	cmsg["message"] = message;
 	cmsg["sender"] = preferences::login();
 	data.add_child("message", cmsg);
-	network::send_data(data, 0, true);
+	network::send_data(data, 0);
 }
 
 void chat_handler::add_chat_room_message_sent(const std::string &room, const std::string &message)
@@ -2775,7 +2775,7 @@ void chat_command_handler::do_room_query_noarg()
 	config data;
 	config& q = data.add_child("room_query");
 	q.add_child(get_cmd());
-	network::send_data(data, 0, true);
+	network::send_data(data, 0);
 }
 
 void chat_command_handler::do_room_query()
@@ -2785,7 +2785,7 @@ void chat_command_handler::do_room_query()
 	config& q = data.add_child("room_query");
 	q["room"] = get_arg(1);
 	q.add_child(get_cmd());
-	network::send_data(data, 0, true);
+	network::send_data(data, 0);
 }
 
 void chat_command_handler::do_gen_room_query()
@@ -2796,7 +2796,7 @@ void chat_command_handler::do_gen_room_query()
 	q["room"] = get_arg(1);
 	config& c = q.add_child(get_arg(2));
 	c["value"] = get_data(3);
-	network::send_data(data, 0, true);
+	network::send_data(data, 0);
 }
 
 void chat_command_handler::do_whisper()
@@ -2914,7 +2914,7 @@ void chat_command_handler::do_register() {
 	}
 	print(_("nick registration"), msg);
 
-	network::send_data(data, 0, true);
+	network::send_data(data, 0);
 }
 
 void chat_command_handler::do_drop() {
@@ -2925,7 +2925,7 @@ void chat_command_handler::do_drop() {
 
 	print(_("nick registration"), _("dropping your username"));
 
-	network::send_data(data, 0, true);
+	network::send_data(data, 0);
 }
 
 void chat_command_handler::do_set() {
@@ -2943,7 +2943,7 @@ void chat_command_handler::do_set() {
 	symbols["value"] = get_arg(2);
 	print(_("nick registration"), VGETTEXT("setting $var to $value", symbols));
 
-	network::send_data(data, 0, true);
+	network::send_data(data, 0);
 }
 
 void chat_command_handler::do_info() {
@@ -2957,7 +2957,7 @@ void chat_command_handler::do_info() {
 	symbols["nick"] = get_arg(1);
 	print(_("nick registration"), VGETTEXT("requesting information for user $nick", symbols));
 
-	network::send_data(data, 0, true);
+	network::send_data(data, 0);
 }
 
 void chat_command_handler::do_details() {
@@ -2966,7 +2966,7 @@ void chat_command_handler::do_details() {
 	config& nickserv = data.add_child("nickserv");
 	nickserv.add_child("details");
 
-	network::send_data(data, 0, true);
+	network::send_data(data, 0);
 }
 
 void menu_handler::send_chat_message(const std::string& message, bool allies_only)
@@ -3632,7 +3632,7 @@ void menu_handler::change_controller(const std::string& side, const std::string&
 	config& change = cfg.add_child("change_controller");
 	change["side"] = side;
 	change["controller"] = controller;
-	network::send_data(cfg, 0, true);
+	network::send_data(cfg, 0);
 }
 
 void menu_handler::change_side_controller(const std::string& side, const std::string& player, bool own_side)
@@ -3646,7 +3646,7 @@ void menu_handler::change_side_controller(const std::string& side, const std::st
 		change["own_side"] = true;
 	}
 
-	network::send_data(cfg, 0, true);
+	network::send_data(cfg, 0);
 }
 } // end namespace events
 

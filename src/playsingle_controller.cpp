@@ -425,7 +425,7 @@ LEVEL_RESULT playsingle_controller::play_scenario(
 				info["type"] = "termination";
 				info["condition"] = "game over";
 				info["result"] = gamestate_.classification().completion;
-				network::send_data(cfg, 0, true);
+				network::send_data(cfg, 0);
 			} else {
 				gui2::show_transient_message(gui_->video(),_("Game Over"),
 									_("The game is over."));

@@ -421,10 +421,10 @@ class ana_network_manager : public ana::listener_handler,
         size_t number_of_connections() const;
 
         /** Send data to all created components. */
-        size_t send_all( const config& cfg, bool zipped );
+        size_t send_all( const config& cfg );
 
         /** Send data to the component with a given ID. */
-        size_t send( network::connection connection_num , const config& cfg, bool zipped );
+        size_t send( network::connection connection_num , const config& cfg );
 
         size_t send_raw_data( const char*, size_t, network::connection);
 

@@ -129,7 +129,7 @@ void verify_and_get_global_variable(const vconfig &pcfg)
 						config data;
 						data.add_child("wait_global");
 						data.child("wait_global")["side"] = side;
-						network::send_data(data,0,true);
+						network::send_data(data,0);
 					}
 					while (get_replay_source().at_end()) {
 						ai::manager::raise_user_interact();
