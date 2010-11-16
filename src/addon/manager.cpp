@@ -539,7 +539,6 @@ namespace {
 		data.add_child("upload",cfg).add_child("data",addon_data);
 
 		LOG_NET << "uploading add-on...\n";
-		// @todo Should be enabled once the campaign server can be recompiled.
 		network::send_data(data, sock, true);
 
 		sock = dialogs::network_send_dialog(disp,_("Sending add-on"),data,sock);
