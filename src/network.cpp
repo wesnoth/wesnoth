@@ -689,7 +689,7 @@ connection receive_data(config& cfg, connection connection_num, unsigned int tim
 	unsigned int start_ticks = SDL_GetTicks();
 	while(true) {
 		const connection res = receive_data(
-				cfg,connection_num, static_cast<bool*>(0) , bandwidth_in);
+				cfg,connection_num, bandwidth_in);
 		if(res != 0) {
 			return res;
 		}
