@@ -276,10 +276,6 @@ BOOST_AUTO_TEST_CASE( test_detect_errors )
 {
 }
 
-BOOST_AUTO_TEST_CASE( test_binary_wml )
-{
-}
-
 BOOST_AUTO_TEST_CASE( test_broken_data )
 {
 }

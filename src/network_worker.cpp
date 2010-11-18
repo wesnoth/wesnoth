@@ -30,7 +30,6 @@
 #include "filesystem.hpp"
 #include "thread.hpp"
 #include "serialization/binary_or_text.hpp"
-#include "serialization/binary_wml.hpp"
 #include "serialization/parser.hpp"
 #include "wesconfig.h"
 
@@ -139,21 +138,6 @@ bool managed = false, raw_data_only = false;
 typedef std::vector< buffer* > buffer_set;
 buffer_set outgoing_bufs[NUM_SHARDS];
 
-struct schema_pair
-{
-	schema_pair() :
-		incoming(),
-		outgoing()
-	{
-	}
-
-	compression_schema incoming, outgoing;
-};
-
-typedef std::map<TCPsocket,schema_pair> schema_map;
-
-schema_map schemas; //schemas_mutex
-
 /** a queue of sockets that we are waiting to receive on */
 typedef std::vector<TCPsocket> receive_list;
 receive_list pending_receives[NUM_SHARDS];
@@ -171,7 +155,6 @@ socket_stats_map transfer_stats; // stats_mutex
 int socket_errors[NUM_SHARDS];
 threading::mutex* shard_mutexes[NUM_SHARDS];
 threading::mutex* stats_mutex = NULL;
-threading::mutex* schemas_mutex = NULL;
 threading::mutex* received_mutex = NULL;
 threading::condition* cond[NUM_SHARDS];
 
@@ -772,15 +755,8 @@ static int process_queue(void* shard_num)
 				if(stream.peek() == 31) {
 					read_gz(received_data->config_buf, stream);
 				} else {
-					/// @todo This should probably be deprecated some day,
-					/// if this network layer isn't replaced by ANA
+					/// @todo Possibly complain more loudly
 					ERR_NW << "Receiving binary WML. Who is sending this?\n";
-					compression_schema *compress;
-					{
-						const threading::lock lock_schemas(*schemas_mutex);
-						compress = &schemas.insert(std::pair<TCPsocket,schema_pair>(sock,schema_pair())).first->second.incoming;
-					}
-					read_compressed(received_data->config_buf, stream, *compress);
 				}
 			} catch(config::error &e)
 			{
@@ -812,7 +788,6 @@ manager::manager(size_t p_min_threads,size_t p_max_threads) : active_(!managed)
 			cond[i] = new threading::condition();
 		}
 		stats_mutex = new threading::mutex();
-		schemas_mutex = new threading::mutex();
 		received_mutex = new threading::mutex();
 
 		min_threads = p_min_threads;
@@ -863,10 +838,8 @@ manager::~manager()
  		}
 
 		delete stats_mutex;
-		delete schemas_mutex;
 		delete received_mutex;
 		stats_mutex = 0;
-		schemas_mutex = 0;
 		received_mutex = 0;
 
 		for(int i = 0; i != NUM_SHARDS; ++i) {
@@ -1062,10 +1035,6 @@ bool close_socket(TCPsocket sock)
 		const threading::lock lock(*shard_mutexes[shard]);
 
 		pending_receives[shard].erase(std::remove(pending_receives[shard].begin(),pending_receives[shard].end(),sock),pending_receives[shard].end());
-		{
-			const threading::lock lock_schemas(*schemas_mutex);
-			schemas.erase(sock);
-		}
 
 		const socket_state_map::iterator lock_it = sockets_locked[shard].find(sock);
 		if(lock_it == sockets_locked[shard].end()) {
@@ -1098,8 +1067,6 @@ TCPsocket detect_error()
 					sockets_locked[shard].erase(i++);
 					pending_receives[shard].erase(std::remove(pending_receives[shard].begin(),pending_receives[shard].end(),sock),pending_receives[shard].end());
 					remove_buffers(sock);
-					const threading::lock lock_schema(*schemas_mutex);
-					schemas.erase(sock);
 					return sock;
 				}
 				else

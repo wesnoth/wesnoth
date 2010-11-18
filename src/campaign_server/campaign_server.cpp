@@ -25,7 +25,6 @@
 #include "log.hpp"
 #include "network_worker.hpp"
 #include "serialization/binary_or_text.hpp"
-#include "serialization/binary_wml.hpp"
 #include "serialization/parser.hpp"
 #include "serialization/string_utils.hpp"
 #include "game_config.hpp"
@@ -235,33 +234,6 @@ namespace {
 	/// @todo Check if this function has any purpose left
 	void campaign_server::convert_binary_to_gzip()
 	{
-		if (!cfg_["converted_to_gzipped_data"].to_bool())
-		{
-			// Convert all addons to gzip
-			config::const_child_itors camps = campaigns().child_range("campaign");
-			LOG_CS << "Converting all stored addons to gzip format. Number of addons: "
-				<< std::distance(camps.first, camps.second) << '\n';
-
-			foreach (const config &cm, camps)
-			{
-				LOG_CS << "Converting " << cm["name"] << '\n';
-				std::string filename = cm["filename"];
-				scoped_istream binary_stream = istream_file(filename);
- 				config data;
- 				if (binary_stream->peek() == 31) //This is gzip file allready
- 				{
- 					LOG_CS << "Already converted\n";
- 					continue;
- 				}
- 				read_compressed(data, *binary_stream);
-
-				scoped_ostream gzip_stream = ostream_file(filename);
-				config_writer writer(*gzip_stream, true, compress_level_);
-				writer.write(data);
-			}
-
-			cfg_["converted_to_gzipped_data"] = true;
-		}
 		if (!cfg_["encoded"].to_bool())
 		{
 			// Convert all addons to gzip
