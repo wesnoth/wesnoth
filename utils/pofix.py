@@ -1088,6 +1088,8 @@ stringfixes = {
 
 # Fix spelling
 ("enemy spawnpoints and types", "enemy spawn points and types"),
+
+("dog, are yer legs made of stone?!?", "dog, are yer legs made of stone?!"),
 ),
 
 "wesnoth-nr" : (
