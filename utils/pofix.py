@@ -324,6 +324,8 @@ stringfixes = {
 # Fix screw up
 # conversion added in 1.9.0+svn
 ("‘The book was", "“The book was"),
+
+("DID", "DiD"),
 ),
 
 "wesnoth-dm" : (
