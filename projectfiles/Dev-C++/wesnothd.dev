@@ -989,16 +989,6 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit180]
-FileName=..\..\src\serialization\binary_wml.cpp
-CompileCpp=1
-Folder=Wesnoth
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
 [Unit182]
 FileName=..\..\src\serialization\parser.cpp
 CompileCpp=1
@@ -2319,16 +2309,6 @@ BuildCmd=
 
 [Unit1]
 FileName=..\..\src\serialization\binary_or_text.cpp
-CompileCpp=1
-Folder=wesnothd
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit2]
-FileName=..\..\src\serialization\binary_wml.cpp
 CompileCpp=1
 Folder=wesnothd
 Compile=1

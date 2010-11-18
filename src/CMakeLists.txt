@@ -209,7 +209,6 @@ set(libwesnoth-core_STAT_SRC
 	util.cpp
 	version.cpp
 	serialization/binary_or_text.cpp
-	serialization/binary_wml.cpp
 	serialization/parser.cpp
 	serialization/preprocessor.cpp
 	serialization/string_utils.cpp

@@ -271,7 +271,6 @@
 		B5599B020EC62181008DD061 /* sha1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999A30EC62181008DD061 /* sha1.cpp */; };
 		B5599B030EC62181008DD061 /* settings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999A50EC62181008DD061 /* settings.cpp */; };
 		B5599B040EC62181008DD061 /* binary_or_text.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999A70EC62181008DD061 /* binary_or_text.cpp */; };
-		B5599B050EC62181008DD061 /* binary_wml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999A90EC62181008DD061 /* binary_wml.cpp */; };
 		B5599B060EC62181008DD061 /* parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999AB0EC62181008DD061 /* parser.cpp */; };
 		B5599B070EC62181008DD061 /* preprocessor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999AD0EC62181008DD061 /* preprocessor.cpp */; };
 		B5599B080EC62181008DD061 /* string_utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999AF0EC62181008DD061 /* string_utils.cpp */; };
@@ -566,7 +565,6 @@
 		B597C59A0FACD6CA00CE81F5 /* editor_main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B559A0030EC8FE2E008DD061 /* editor_main.cpp */; };
 		B597C59B0FACD6CA00CE81F5 /* listbox.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5A9BCFF0ECA805A002BE442 /* listbox.cpp */; };
 		B597C59C0FACD6CA00CE81F5 /* action.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599FF70EC8FE2E008DD061 /* action.cpp */; };
-		B597C59D0FACD6CA00CE81F5 /* binary_wml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999A90EC62181008DD061 /* binary_wml.cpp */; };
 		B597C59E0FACD6CA00CE81F5 /* color_range.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599AAA0EC62181008DD061 /* color_range.cpp */; };
 		B597C59F0FACD6CA00CE81F5 /* game_events.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A7B0EC62181008DD061 /* game_events.cpp */; };
 		B597C5A00FACD6CA00CE81F5 /* theme.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B559998D0EC62181008DD061 /* theme.cpp */; };
@@ -838,7 +836,6 @@
 		B5BB6C7B0F89427C00444FBF /* gettext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A710EC62181008DD061 /* gettext.cpp */; };
 		B5BB6C800F89435300444FBF /* log.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599A020EC62181008DD061 /* log.cpp */; };
 		B5BB6C820F89437400444FBF /* color_range.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599AAA0EC62181008DD061 /* color_range.cpp */; };
-		B5BB6C840F8943B000444FBF /* binary_wml.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999A90EC62181008DD061 /* binary_wml.cpp */; };
 		B5BB6C860F8943F600444FBF /* config_cache.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5599AA40EC62181008DD061 /* config_cache.cpp */; };
 		B5BB6C880F89441700444FBF /* sha1.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999A30EC62181008DD061 /* sha1.cpp */; };
 		B5BB6C8D0F89447200444FBF /* binary_or_text.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B55999A70EC62181008DD061 /* binary_or_text.cpp */; };
@@ -1276,8 +1273,6 @@
 		B55999A50EC62181008DD061 /* settings.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = settings.cpp; path = ../src/settings.cpp; sourceTree = "<group>"; };
 		B55999A70EC62181008DD061 /* binary_or_text.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = binary_or_text.cpp; sourceTree = "<group>"; };
 		B55999A80EC62181008DD061 /* binary_or_text.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = binary_or_text.hpp; sourceTree = "<group>"; };
-		B55999A90EC62181008DD061 /* binary_wml.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = binary_wml.cpp; sourceTree = "<group>"; };
-		B55999AA0EC62181008DD061 /* binary_wml.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = binary_wml.hpp; sourceTree = "<group>"; };
 		B55999AB0EC62181008DD061 /* parser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = parser.cpp; sourceTree = "<group>"; };
 		B55999AC0EC62181008DD061 /* parser.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = parser.hpp; sourceTree = "<group>"; };
 		B55999AD0EC62181008DD061 /* preprocessor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = preprocessor.cpp; sourceTree = "<group>"; };
@@ -2618,8 +2613,6 @@
 			children = (
 				B55999A70EC62181008DD061 /* binary_or_text.cpp */,
 				B55999A80EC62181008DD061 /* binary_or_text.hpp */,
-				B55999A90EC62181008DD061 /* binary_wml.cpp */,
-				B55999AA0EC62181008DD061 /* binary_wml.hpp */,
 				B55999AB0EC62181008DD061 /* parser.cpp */,
 				B55999AC0EC62181008DD061 /* parser.hpp */,
 				B55999AD0EC62181008DD061 /* preprocessor.cpp */,
@@ -3307,7 +3300,6 @@
 				B5599B020EC62181008DD061 /* sha1.cpp in Sources */,
 				B5599B030EC62181008DD061 /* settings.cpp in Sources */,
 				B5599B040EC62181008DD061 /* binary_or_text.cpp in Sources */,
-				B5599B050EC62181008DD061 /* binary_wml.cpp in Sources */,
 				B5599B060EC62181008DD061 /* parser.cpp in Sources */,
 				B5599B070EC62181008DD061 /* preprocessor.cpp in Sources */,
 				B5599B080EC62181008DD061 /* string_utils.cpp in Sources */,
@@ -3751,7 +3743,6 @@
 				B597C59A0FACD6CA00CE81F5 /* editor_main.cpp in Sources */,
 				B597C59B0FACD6CA00CE81F5 /* listbox.cpp in Sources */,
 				B597C59C0FACD6CA00CE81F5 /* action.cpp in Sources */,
-				B597C59D0FACD6CA00CE81F5 /* binary_wml.cpp in Sources */,
 				B597C59E0FACD6CA00CE81F5 /* color_range.cpp in Sources */,
 				B597C59F0FACD6CA00CE81F5 /* game_events.cpp in Sources */,
 				B597C5A00FACD6CA00CE81F5 /* theme.cpp in Sources */,
@@ -4066,7 +4057,6 @@
 				B5BB6C7B0F89427C00444FBF /* gettext.cpp in Sources */,
 				B5BB6C800F89435300444FBF /* log.cpp in Sources */,
 				B5BB6C820F89437400444FBF /* color_range.cpp in Sources */,
-				B5BB6C840F8943B000444FBF /* binary_wml.cpp in Sources */,
 				B5BB6C860F8943F600444FBF /* config_cache.cpp in Sources */,
 				B5BB6C880F89441700444FBF /* sha1.cpp in Sources */,
 				B5BB6C8D0F89447200444FBF /* binary_or_text.cpp in Sources */,

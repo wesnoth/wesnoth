@@ -25,7 +25,6 @@
 #include "config.hpp"
 #include "log.hpp"
 #include "wesconfig.h"
-#include "serialization/binary_wml.hpp"
 #include "serialization/parser.hpp"
 
 
