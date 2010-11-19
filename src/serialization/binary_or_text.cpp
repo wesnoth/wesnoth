@@ -33,18 +33,6 @@
 static lg::log_domain log_config("config");
 #define ERR_CF LOG_STREAM(err, log_config)
 
-bool detect_format_and_read(config &cfg, std::istream &in)
-{
-	unsigned char c = in.peek();
-	if (c < 4) {
-		ERR_CF << "Binary WML encountered\n";
-		return true;
-	} else {
-		read(cfg, in);
-		return false;
-	}
-}
-
 config_writer::config_writer(
 	std::ostream &out, bool compress, int level) :
 		filter_(),

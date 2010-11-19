@@ -94,7 +94,7 @@ void room_manager::read_rooms()
 		if (compress_stored_rooms_) {
 			read_gz(cfg, *file);
 		} else {
-			detect_format_and_read(cfg, *file);
+			read(cfg, *file);
 		}
 
 		foreach (const config &c, cfg.child_range("room")) {

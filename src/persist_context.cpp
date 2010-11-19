@@ -20,6 +20,7 @@
 #include "persist_context.hpp"
 #include "persist_manager.hpp"
 #include "serialization/binary_or_text.hpp"
+#include "serialization/parser.hpp"
 #include "util.hpp"
 
 config pack_scalar(const std::string &name, const t_string &val)
@@ -42,7 +43,7 @@ void persist_file_context::load() {
 		scoped_istream file_stream = istream_file(cfg_name);
 		if (!(file_stream->fail())) {
 			try {
-				detect_format_and_read(cfg_,*file_stream);
+				read(cfg_,*file_stream);
 			} catch (config::error &err) {
 				LOG_PERSIST << err.message;
 			}
